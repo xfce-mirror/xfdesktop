@@ -109,6 +109,20 @@ static void backdrop_create_channel (McsPlugin * mcs_plugin);
 static gboolean backdrop_write_options (McsPlugin * mcs_plugin);
 static void run_dialog (McsPlugin * mcs_plugin);
 
+static void
+filesel_response_accept(GtkWidget *w, gpointer user_data)
+{
+	GtkDialog *dialog = GTK_DIALOG(user_data);
+	gtk_dialog_response(dialog, GTK_RESPONSE_ACCEPT);
+}
+
+static void
+filesel_response_cancel(GtkWidget *w, gpointer user_data)
+{
+	GtkDialog *dialog = GTK_DIALOG(user_data);
+	gtk_dialog_response(dialog, GTK_RESPONSE_CANCEL);
+}
+
 static GdkPixbuf *
 backdrop_icon_at_size (int width, int height)
 {
@@ -291,31 +305,6 @@ update_path (BackdropDialog * bd)
     }
 
     mcs_manager_notify (bd->plugin->manager, BACKDROP_CHANNEL);
-}
-
-/* dialog responses */
-static void
-dialog_delete (BackdropDialog * bd)
-{
-    is_running = FALSE;
-
-    backdrop_write_options (bd->plugin);
-
-    gtk_widget_destroy (bd->dialog);
-    g_free (bd);
-}
-
-static void
-dialog_response (GtkWidget * dialog, int response, BackdropDialog * bd)
-{
-    switch (response)
-    {
-	case GTK_RESPONSE_HELP:
-	    xfce_exec("xfhelp4 xfdesktop.html", FALSE, FALSE, NULL);
-	    break;
-	default:
-	    dialog_delete (bd);
-    }
 }
 
 /* color button */
@@ -603,38 +592,7 @@ add_file_entry (GtkWidget * vbox, GtkSizeGroup * sg, BackdropDialog * bd)
 		      G_CALLBACK (file_entry_lost_focus), bd);
 }
 
-#if !GTK_CHECK_VERSION(2, 4, 0)
-/* button box */
-/* file selection with optional image preview */
-static void
-fs_ok_cb (GtkWidget * b, BackdropDialog * bd)
-{
-    GtkFileSelection *fs;
-    const char *path;
-
-    if (!is_running)
-	return;
-
-    fs = GTK_FILE_SELECTION (gtk_widget_get_toplevel (b));
-
-    path = gtk_file_selection_get_filename (fs);
-
-    if (path)
-    {
-	g_free (backdrop_path);
-	backdrop_path = g_strdup (path);
-
-	update_path (bd);
-
-	gtk_entry_set_text (GTK_ENTRY (bd->file_entry), path);
-	gtk_editable_set_position (GTK_EDITABLE (bd->file_entry), -1);
-    }
-
-    gtk_widget_destroy (GTK_WIDGET (fs));
-}
-
-#else
-
+#if GTK_CHECK_VERSION(2, 4, 0)
 static void
 update_preview_cb(GtkFileChooser *chooser, gpointer data)
 {
@@ -666,8 +624,8 @@ browse_cb (GtkWidget * b, BackdropDialog * bd)
 	
 	preview = gtk_image_new();
 	chooser = gtk_file_chooser_dialog_new(_("Select backdrop image or list file"),
-			GTK_WINDOW(bd->dialog), GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_OPEN,
-			GTK_RESPONSE_ACCEPT, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
+			GTK_WINDOW(bd->dialog), GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
+			GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 	
 	filter = gtk_file_filter_new();
 	gtk_file_filter_set_name(filter, _("All Files"));
@@ -707,7 +665,7 @@ browse_cb (GtkWidget * b, BackdropDialog * bd)
 	
 	gtk_widget_show(chooser);
 	if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
-		char *filename;
+		gchar *filename;
 		
 		filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(chooser));
 		if(filename) {
@@ -720,48 +678,39 @@ browse_cb (GtkWidget * b, BackdropDialog * bd)
 	}
 	gtk_widget_destroy(chooser);
 #else
-    static GtkFileSelection *fs = NULL;
-    GtkFileSelection **fs_ptr;
-    char *title;
+	GtkWidget *fs;
 
-    if (fs)
-    {
-	gtk_window_present (GTK_WINDOW (fs));
-	return;
-    }
+	fs = preview_file_selection_new(_("Select backdrop image or list file"), TRUE);
 
-    title = _("Select backdrop image or list file");
-    fs = GTK_FILE_SELECTION (preview_file_selection_new (title, TRUE));
+	if(backdrop_path)
+		gtk_file_selection_set_filename(GTK_FILE_SELECTION(fs), backdrop_path);
+	else {
+		gchar *dir = g_build_path(G_DIR_SEPARATOR_S, DATADIR, "xfce4",
+				"backdrops/", NULL);
+		gtk_file_selection_set_filename(GTK_FILE_SELECTION(fs), dir);
+		g_free(dir);
+	}
+	gtk_file_selection_hide_fileop_buttons(GTK_FILE_SELECTION(fs));
+	gtk_window_set_transient_for(GTK_WINDOW(fs), GTK_WINDOW(bd->dialog));
+	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fs)->ok_button), "clicked",
+			G_CALLBACK(filesel_response_accept), fs);
+	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fs)->cancel_button), "clicked",
+			G_CALLBACK(filesel_response_cancel), fs);
 
-    gtk_file_selection_hide_fileop_buttons (fs);
-
-    if (backdrop_path)
-    {
-	gtk_file_selection_set_filename (fs, backdrop_path);
-    }
-    else
-    {
-	char *dir = g_build_filename (DATADIR, "xfce4", "backdrops/", NULL);
-
-	gtk_file_selection_set_filename (fs, dir);
-	g_free (dir);
-    }
-
-    gtk_window_set_transient_for (GTK_WINDOW (fs), GTK_WINDOW (bd->dialog));
-
-    g_signal_connect (fs->ok_button, "clicked", G_CALLBACK (fs_ok_cb), bd);
-
-    g_signal_connect_swapped (fs->cancel_button, "clicked",
-			      G_CALLBACK (gtk_widget_destroy), fs);
-
-    g_signal_connect (fs, "delete-event", G_CALLBACK (gtk_widget_destroy),
-		      fs);
-
-    /* gcc doesn't like (gpointer*)&fs */
-    fs_ptr = &fs;
-    g_object_add_weak_pointer (G_OBJECT (fs), (gpointer *) fs_ptr);
-
-    gtk_widget_show (GTK_WIDGET (fs));
+	gtk_widget_show(fs);
+	if(gtk_dialog_run(GTK_DIALOG(fs)) == GTK_RESPONSE_ACCEPT) {
+		const gchar *filename;
+		
+		filename = gtk_file_selection_get_filename(GTK_FILE_SELECTION(fs));
+		if(filename) {
+			g_free(backdrop_path);
+			backdrop_path = g_strdup(filename);
+			update_path(bd);
+			gtk_entry_set_text(GTK_ENTRY(bd->file_entry), filename);
+			gtk_editable_set_position(GTK_EDITABLE(bd->file_entry), -1);
+		}
+	}
+	gtk_widget_destroy(fs);
 #endif
 }
 
@@ -927,7 +876,7 @@ toggle_set_background (GtkToggleButton * tb, BackdropDialog * bd)
 }
 
 /* the dialog */
-static GtkWidget *
+static BackdropDialog *
 create_backdrop_dialog (McsPlugin * mcs_plugin)
 {
     GtkWidget *mainvbox, *frame, *vbox, *header;
@@ -941,20 +890,15 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
     bd->dialog = gtk_dialog_new_with_buttons (_("Backdrop"), NULL,
 					      GTK_DIALOG_NO_SEPARATOR,
 					      GTK_STOCK_CLOSE,
-					      GTK_RESPONSE_OK,
+					      GTK_RESPONSE_ACCEPT,
 #ifndef NO_HELP_BUTTON
 					      GTK_STOCK_HELP,
 					      GTK_RESPONSE_HELP,
 #endif
 					      NULL);
 
-    gtk_dialog_set_default_response (GTK_DIALOG (bd->dialog),
-				     GTK_RESPONSE_OK);
-    g_signal_connect (bd->dialog, "response", G_CALLBACK (dialog_response),
-		      bd);
-    g_signal_connect_swapped (bd->dialog, "delete_event",
-			      G_CALLBACK (dialog_delete), bd);
-
+	gtk_dialog_set_default_response(GTK_DIALOG(bd->dialog), GTK_RESPONSE_ACCEPT);
+	
     mainvbox = GTK_DIALOG (bd->dialog)->vbox;
 
     /* header */
@@ -1017,26 +961,42 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 
     set_dnd_dest (bd);
 
-    return bd->dialog;
+    return bd;
 }
 
 static void
 run_dialog (McsPlugin * mcs_plugin)
 {
-    static GtkWidget *dialog = NULL;
+	static BackdropDialog *bd = NULL;
+	gboolean done = FALSE;
+	
+	if(is_running) {
+		if(bd && bd->dialog)
+			gtk_window_present(GTK_WINDOW(bd->dialog));
+		return;
+	}
+	
+	is_running = TRUE;
 
-    if (is_running)
-    {
-	gtk_window_present (GTK_WINDOW (dialog));
-	return;
-    }
-
-    is_running = TRUE;
-
-    dialog = create_backdrop_dialog (mcs_plugin);
-
-    gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);
-    gtk_widget_show (dialog);
+    bd = create_backdrop_dialog(mcs_plugin);
+    gtk_window_set_position(GTK_WINDOW(bd->dialog), GTK_WIN_POS_CENTER);
+    gtk_widget_show(bd->dialog);
+	while(!done) {
+		switch(gtk_dialog_run(GTK_DIALOG(bd->dialog))) {
+			case GTK_RESPONSE_HELP:
+				xfce_exec("xfhelp4 xfdesktop.html", FALSE, FALSE, NULL);
+				break;
+			
+			default:
+				backdrop_write_options(bd->plugin);
+				is_running = FALSE;
+				gtk_widget_destroy(bd->dialog);
+				g_free(bd);
+				bd = NULL;
+				done = TRUE;
+				break;
+		}
+	}
 }
 
 /* macro defined in manager-plugin.h */
