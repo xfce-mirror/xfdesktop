@@ -473,7 +473,7 @@ set_background (XfceBackground * background)
     GdkPixbuf *pixbuf;
 
     if (!background->set_background)
-	return;
+	return FALSE;
 
     if (background->show_image)
 	pixbuf = create_image (background);
