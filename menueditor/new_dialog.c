@@ -28,7 +28,7 @@
 
 #include "menueditor.h"
 
-#include "new.h"
+#include "new_dialog.h"
 
 void menu_save_cb(GtkWidget *widget, gpointer data);
 
