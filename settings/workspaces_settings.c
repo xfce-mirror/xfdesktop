@@ -487,7 +487,7 @@ static void dialog_closed(McsManager *manager)
 static void run_dialog(McsPlugin *plugin )
 {
     static GtkWidget *dialog = NULL;
-    GtkWidget *mainvbox, *header, *label, *vbox;
+    GtkWidget *mainvbox, *header, *frame, *vbox;
 
     if (dialog)
     {
@@ -523,26 +523,35 @@ static void run_dialog(McsPlugin *plugin )
     gtk_widget_show(header);
     gtk_box_pack_start(GTK_BOX(mainvbox), header, FALSE, TRUE, 0);
 
-    label = gtk_label_new(_("Set number of workspaces and give\n"
-			    "them names that can be used by\n"
-			    "other programs"));
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
-    gtk_misc_set_padding(GTK_MISC(label), BORDER, 4);
+    add_spacer(GTK_BOX(mainvbox));
+
+    /* Number of workspaces */
+    frame = gtk_frame_new(_("Workspaces"));
+    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER-1);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(mainvbox), frame, FALSE, FALSE, 0);
     
     vbox = gtk_vbox_new(FALSE, BORDER);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
     gtk_widget_show(vbox);
-    gtk_box_pack_start(GTK_BOX(mainvbox), vbox, TRUE, TRUE, 0);
+    gtk_container_add(GTK_CONTAINER(frame), vbox);
 
-    add_spacer(GTK_BOX(vbox));
-	    
     add_count_spinbox(vbox, plugin->manager);
 
-    add_spacer(GTK_BOX(vbox));
+    /* Workspace names */
+    frame = gtk_frame_new(_("Workspace names"));
+    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER-1);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
+    
+    vbox = gtk_vbox_new(FALSE, BORDER);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
+    gtk_widget_show(vbox);
+    gtk_container_add(GTK_CONTAINER(frame), vbox);
 
     add_names_treeview(vbox, plugin->manager);
 
-    gtk_widget_set_size_request(dialog, -1, 300);
+    gtk_widget_set_size_request(dialog, -1, 350);
 
     gtk_widget_show(dialog);
 }

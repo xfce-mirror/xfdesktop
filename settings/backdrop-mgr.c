@@ -538,6 +538,7 @@ static void add_file_entry(GtkWidget *vbox, ListDialog *ld)
     ld->file_entry = gtk_entry_new();
     gtk_widget_show(ld->file_entry);
     gtk_entry_set_text(GTK_ENTRY(ld->file_entry), ld->filename);
+    gtk_widget_set_size_request(ld->file_entry, 300, -1);
     gtk_box_pack_start(GTK_BOX(hbox), ld->file_entry, TRUE, TRUE, 0);
     
     button = gtk_button_new_with_label("...");
@@ -553,7 +554,7 @@ static void list_mgr_dialog(const char *title, GtkWidget *parent,
 			     ListMgrCb callback, gpointer data)
 {
     static GtkWidget *dialog = NULL;
-    GtkWidget *mainvbox, *vbox, *header, *button;
+    GtkWidget *mainvbox, *frame, *vbox, *header, *button;
     ListDialog *ld;
 
     if (dialog)
@@ -608,14 +609,29 @@ static void list_mgr_dialog(const char *title, GtkWidget *parent,
     gtk_box_pack_start(GTK_BOX(mainvbox), header, FALSE, TRUE, 0);
     gtk_widget_set_size_request(header, -1, 50);
 
+    frame = gtk_frame_new(_("Image files"));
+    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER-1);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
+    
     vbox = gtk_vbox_new(FALSE, BORDER);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
     gtk_widget_show(vbox);
-    gtk_box_pack_start(GTK_BOX(mainvbox), vbox, TRUE, TRUE, 0);
+    gtk_container_add(GTK_CONTAINER(frame), vbox);
 
     add_tree_view(vbox, path, ld);
     
     add_list_buttons(vbox, ld);
+
+    frame = gtk_frame_new(_("List file"));
+    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER-1);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(mainvbox), frame, FALSE, FALSE, 0);
+    
+    vbox = gtk_vbox_new(FALSE, BORDER);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
+    gtk_widget_show(vbox);
+    gtk_container_add(GTK_CONTAINER(frame), vbox);
 
     add_file_entry(vbox, ld);
 

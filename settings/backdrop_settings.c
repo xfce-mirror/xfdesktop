@@ -218,7 +218,7 @@ static gboolean backdrop_write_options(McsPlugin * mcs_plugin)
     return result;
 }
 
-/* sub header */
+/* sub header
 static void add_sub_header(GtkWidget *vbox, const char *name)
 {
     char *markup;
@@ -233,7 +233,7 @@ static void add_sub_header(GtkWidget *vbox, const char *name)
     gtk_widget_show(label);
     gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
 }
-
+ */
 /* something changed */
 static void update_path(BackdropDialog *bd)
 {
@@ -781,7 +781,7 @@ static void add_style_options(GtkWidget *vbox, GtkSizeGroup *sg,
 /* the dialog */
 static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
 {
-    GtkWidget *mainvbox, *vbox, *header;
+    GtkWidget *mainvbox, *frame, *vbox, *header;
     GtkSizeGroup *sg;
     BackdropDialog *bd;
 
@@ -807,25 +807,31 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
     header = create_header(bd->plugin->icon, _("Background settings"));
     gtk_box_pack_start(GTK_BOX(mainvbox), header, FALSE, TRUE, 0);
 
-    /* color vbox */
+    add_spacer(GTK_BOX(mainvbox));
+
+    /* color */
+    frame = gtk_frame_new(_("Color"));
+    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER-1);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
+    
     vbox = gtk_vbox_new(FALSE, BORDER);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
-    gtk_box_pack_start(GTK_BOX(mainvbox), vbox, TRUE, TRUE, 0);
     gtk_widget_show(vbox);
-
-    // add_sub_header(vbox, _("Color"));
+    gtk_container_add(GTK_CONTAINER(frame), vbox);
     
     add_color_button(vbox, bd);
 
-    add_spacer(GTK_BOX(mainvbox));
-
     /* image vbox */
+    frame = gtk_frame_new(_("Image"));
+    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER-1);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
+    
     vbox = gtk_vbox_new(FALSE, BORDER);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
-    gtk_box_pack_start(GTK_BOX(mainvbox), vbox, TRUE, TRUE, 0);
     gtk_widget_show(vbox);
-
-    add_sub_header(vbox, _("Image"));
+    gtk_container_add(GTK_CONTAINER(frame), vbox);
     
     /* file entry and style radio buttons */
     sg = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
