@@ -274,14 +274,15 @@ static void dialog_delete(BackdropDialog * bd)
 
     backdrop_write_options(bd->plugin);
 
-    g_free(bd);
     gtk_widget_destroy(bd->dialog);
+    g_free(bd);
 }
 
 static void dialog_response(GtkWidget * dialog, int response,
                             BackdropDialog * bd)
 {
-        dialog_delete(bd);
+    dialog_delete(bd);
+    g_free(bd);
 }
 
 /* color button */
@@ -808,7 +809,7 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
     gtk_box_pack_start(GTK_BOX(mainvbox), vbox, TRUE, TRUE, 0);
     gtk_widget_show(vbox);
 
-    add_sub_header(vbox, _("Color"));
+    // add_sub_header(vbox, _("Color"));
     
     add_color_button(vbox, bd);
 
