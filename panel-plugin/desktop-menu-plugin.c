@@ -43,6 +43,7 @@ typedef struct _DMPlugin {
 	GtkWidget *button;
 	GtkWidget *image;
 	XfceDesktopMenu *desktop_menu;
+	gboolean use_default_menu;
 	gchar *menu_file;
 	gchar *icon_file;
 	gboolean show_menu_icons;
@@ -59,6 +60,9 @@ static gchar *
 dmp_get_real_path(const gchar *raw_path)
 {
 	gchar *path;
+	
+	if(!raw_path)
+		return NULL;
 	
 	if(strstr(raw_path, "$XDG_CONFIG_DIRS/") == raw_path)
 		return xfce_resource_lookup(XFCE_RESOURCE_CONFIG, raw_path+17);
@@ -214,6 +218,7 @@ static DMPlugin *
 dmp_new()
 {
 	DMPlugin *dmp = g_new0(DMPlugin, 1);
+	dmp->use_default_menu = TRUE;
 	
 	dmp->show_menu_icons = TRUE;  /* default */
 	dmp->tooltip = gtk_tooltips_new();
@@ -258,23 +263,49 @@ dmp_read_config(Control *control, xmlNodePtr node)
 	xmlChar *value;
 	DMPlugin *dmp = control->data;
 	GdkPixbuf *pix;
+	gboolean redo_desktop_menu = FALSE, migration__got_menu_bool = FALSE;
+	
+	value = xmlGetProp(node, (const xmlChar *)"use_default_menu");
+	if(value) {
+		migration__got_menu_bool = TRUE;
+		if(*value == '1') {
+			if(!dmp->use_default_menu)
+				redo_desktop_menu = TRUE;
+			dmp->use_default_menu = TRUE;
+		} else {
+			if(dmp->use_default_menu)
+				redo_desktop_menu = TRUE;
+			dmp->use_default_menu = FALSE;
+		}
+		xmlFree(value);
+	}
 	
 	value = xmlGetProp(node, (const xmlChar *)"menu_file");
 	if(value) {
-		gchar *path;
+		if(!migration__got_menu_bool)
+			dmp->use_default_menu = FALSE;
 		
-		if(dmp->desktop_menu)
-			xfce_desktop_menu_destroy(dmp->desktop_menu);
+		if(!dmp->use_default_menu)
+			redo_desktop_menu = TRUE;
+		
 		if(dmp->menu_file)
 			g_free(dmp->menu_file);
-		
-		path = dmp_get_real_path(value);
-		dmp->desktop_menu = xfce_desktop_menu_new(path, TRUE);
-		g_free(path);
-		dmp->menu_file = g_strdup(value);
-	} else {
+		dmp->menu_file = value;
+	} else
+		dmp->use_default_menu = TRUE;
+	
+	if(redo_desktop_menu) {
 		if(dmp->desktop_menu)
-			dmp->menu_file = g_strdup(xfce_desktop_menu_get_menu_file(dmp->desktop_menu));
+			xfce_desktop_menu_destroy(dmp->desktop_menu);
+		
+		if(dmp->use_default_menu)
+			dmp->desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
+		else {
+			gchar *path;
+			path = dmp_get_real_path(dmp->menu_file);
+			dmp->desktop_menu = xfce_desktop_menu_new(path, TRUE);
+			g_free(path);
+		}
 	}
 	
 	value = xmlGetProp(node, (const xmlChar *)"icon_file");
@@ -316,6 +347,7 @@ dmp_write_config(Control *control, xmlNodePtr node)
 {
 	DMPlugin *dmp = control->data;
 	
+	xmlSetProp(node, (const xmlChar *)"use_default_menu", dmp->use_default_menu ? "1" : "0");
 	xmlSetProp(node, (const xmlChar *)"menu_file", dmp->menu_file ? dmp->menu_file : "");
 	xmlSetProp(node, (const xmlChar *)"icon_file", dmp->icon_file ? dmp->icon_file : "");
 	xmlSetProp(node, (const xmlChar *)"show_menu_icons", dmp->show_menu_icons ? "1" : "0");
@@ -470,30 +502,94 @@ icon_chk_cb(GtkToggleButton *w, gpointer user_data)
 }
 
 static void
+dmp_use_desktop_menu_toggled_cb(GtkToggleButton *tb, gpointer user_data)
+{
+	DMPlugin *dmp = user_data;
+	
+	if(gtk_toggle_button_get_active(tb)) {
+		GtkWidget *hbox;
+		
+		dmp->use_default_menu = TRUE;
+		
+		hbox = g_object_get_data(G_OBJECT(tb), "dmp-child-hbox");
+		gtk_widget_set_sensitive(hbox, FALSE);
+		
+		if(dmp->desktop_menu)
+			xfce_desktop_menu_destroy(dmp->desktop_menu);
+		dmp->desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
+	}
+}
+
+static void
+dmp_use_custom_menu_toggled_cb(GtkToggleButton *tb, gpointer user_data)
+{
+	DMPlugin *dmp = user_data;
+	
+	if(gtk_toggle_button_get_active(tb)) {
+		GtkWidget *hbox;
+		
+		dmp->use_default_menu = FALSE;
+		
+		hbox = g_object_get_data(G_OBJECT(tb), "dmp-child-hbox");
+		gtk_widget_set_sensitive(hbox, TRUE);
+		
+		if(dmp->menu_file) {
+			if(dmp->desktop_menu)
+				xfce_desktop_menu_destroy(dmp->desktop_menu);
+			dmp->desktop_menu = xfce_desktop_menu_new(dmp->menu_file, TRUE);
+		}
+	}
+}
+
+static void
 dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 {
 	DMPlugin *dmp = ctrl->data;
-	GtkWidget *vbox, *hbox;
-	GtkWidget *label, *image, *filebutton, *chk;
-	GtkSizeGroup *sg;
+	GtkWidget *topvbox, *vbox, *hbox;
+	GtkWidget *label, *image, *filebutton, *chk, *radio, *frame, *spacer;
 	
 	xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
+	topvbox = gtk_vbox_new(FALSE, BORDER/2);
+	gtk_widget_show(topvbox);
+	gtk_container_add(con, topvbox);
+	
+	frame = xfce_framebox_new(_("Menu File"), TRUE);
+	gtk_widget_show(frame);
+	gtk_box_pack_start(GTK_BOX(topvbox), frame, FALSE, FALSE, 0);
+	
 	vbox = gtk_vbox_new(FALSE, BORDER/2);
 	gtk_widget_show(vbox);
-	gtk_container_add(con, vbox);
+	xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
 	
-	hbox = gtk_hbox_new(FALSE, BORDER);
+	/* 2nd radio button's child hbox */
+	hbox = gtk_hbox_new(FALSE, BORDER/2);
 	gtk_widget_show(hbox);
+	
+	radio = gtk_radio_button_new_with_mnemonic(NULL, _("Use default _desktop menu file"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(radio), dmp->use_default_menu);
+	gtk_widget_show(radio);
+	gtk_box_pack_start(GTK_BOX(vbox), radio, FALSE, FALSE, 0);
+	g_signal_connect(G_OBJECT(radio), "toggled",
+			G_CALLBACK(dmp_use_desktop_menu_toggled_cb), dmp);
+	g_object_set_data(G_OBJECT(radio), "dmp-child-hbox", hbox);
+	
+	radio = gtk_radio_button_new_with_mnemonic_from_widget(GTK_RADIO_BUTTON(radio),
+			_("Use _custom menu file:"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(radio), !dmp->use_default_menu);
+	gtk_widget_show(radio);
+	gtk_box_pack_start(GTK_BOX(vbox), radio, FALSE, FALSE, 0);
+	g_signal_connect(G_OBJECT(radio), "toggled",
+			G_CALLBACK(dmp_use_custom_menu_toggled_cb), dmp);
+	g_object_set_data(G_OBJECT(radio), "dmp-child-hbox", hbox);
+	
+	/* now pack in the child hbox */
 	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	
-	sg = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
-	
-	label = gtk_label_new_with_mnemonic(_("_Menu file:"));
-	gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
-	gtk_widget_show(label);
-	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
-	gtk_size_group_add_widget(sg, label);
+	spacer = gtk_alignment_new(0.5, 0.5, 1, 1);
+	gtk_widget_show(spacer);
+	gtk_box_pack_start(GTK_BOX(hbox), spacer, FALSE, FALSE, 0);
+	gtk_widget_set_size_request(spacer, 16, -1);
 	
 	dmp->file_entry = gtk_entry_new();
 	if(dmp->menu_file)
@@ -519,7 +615,17 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 	g_signal_connect(G_OBJECT(filebutton), "clicked",
 			G_CALLBACK(filebutton_click_cb), dmp);
 	
-	hbox = gtk_hbox_new(FALSE, BORDER);
+	gtk_widget_set_sensitive(hbox, !dmp->use_default_menu);
+	
+	frame = xfce_framebox_new(_("Icons"), TRUE);
+	gtk_widget_show(frame);
+	gtk_box_pack_start(GTK_BOX(topvbox), frame, FALSE, FALSE, 0);
+	
+	vbox = gtk_vbox_new(FALSE, BORDER/2);
+	gtk_widget_show(vbox);
+	xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
+	
+	hbox = gtk_hbox_new(FALSE, BORDER/2);
 	gtk_widget_show(hbox);
 	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	
@@ -527,7 +633,6 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 	gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
 	gtk_widget_show(label);
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
-	gtk_size_group_add_widget(sg, label);
 	
 	dmp->icon_entry = gtk_entry_new();
 	if(dmp->icon_file)
