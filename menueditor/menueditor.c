@@ -153,20 +153,20 @@ gboolean command_exists(const gchar *command)
 /****************************************************/
 void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command){
   GtkWidget *filesel_dialog;
-  gchar *filename = NULL;
 
   filesel_dialog = xfce_file_chooser_dialog_new (_("Select command"), GTK_WINDOW (menueditor_app.main_window),
 						 XFCE_FILE_CHOOSER_ACTION_OPEN,
 						 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 						 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 
-  filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
-
   if(gtk_dialog_run(GTK_DIALOG(filesel_dialog)) == GTK_RESPONSE_ACCEPT){
+    gchar *filename = NULL;
+
+    filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
     gtk_entry_set_text (entry_command, filename);
+    g_free(filename);
   }
 
-  g_free(filename);
   gtk_widget_hide(GTK_WIDGET(filesel_dialog));
 }
 
@@ -176,20 +176,20 @@ void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command){
 void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon){
   //TODO add preview and filter for icon
   GtkWidget *filesel_dialog;
-  gchar *filename = NULL;
 
   filesel_dialog = xfce_file_chooser_dialog_new (_("Select icon"), GTK_WINDOW (menueditor_app.main_window),
 						 XFCE_FILE_CHOOSER_ACTION_OPEN,
 						 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 						 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 
-  filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
-
   if(gtk_dialog_run(GTK_DIALOG(filesel_dialog)) == GTK_RESPONSE_ACCEPT){
+    gchar *filename = NULL;
+
+    filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));  
     gtk_entry_set_text (entry_icon, filename);
+    g_free(filename);
   }
 
-  g_free(filename);
   gtk_widget_hide(GTK_WIDGET(filesel_dialog));
 }
 
