@@ -404,17 +404,26 @@ static void
 update_window_style (GtkWidget * win, GdkPixmap * pixmap)
 {
     GtkStyle *style;
-
-    /*  free any previously allocated pixmap  */
-	gtk_widget_show(win);
-	style = gtk_widget_get_style(win);
-	if(style->bg_pixmap[GTK_STATE_NORMAL])
-		g_object_unref(style->bg_pixmap[GTK_STATE_NORMAL]);
 	
-	/* set new pixmap */
-    style->bg_pixmap[GTK_STATE_NORMAL] = pixmap;
-    gtk_widget_set_style (win, style);
-    gtk_widget_queue_draw (win);
+	/* make sure the window is realized */
+	gtk_widget_show(win);
+	
+	/* clear the old pixmap, if any */
+	gtk_widget_set_style(win, NULL);
+	
+	/* create a new style, attach it to the window, and add the new pixmap */
+	style = gtk_style_new();
+	gtk_style_attach(style, win->window);
+	if(style->bg_pixmap[GTK_STATE_NORMAL]) {
+		/* if the style already has a BG pixmap set, ditch it */
+		g_object_unref(G_OBJECT(style->bg_pixmap[GTK_STATE_NORMAL]));
+	}
+	style->bg_pixmap[GTK_STATE_NORMAL] = pixmap;
+	
+	/* set the widget's window style and queue it for drawing */
+	gtk_widget_set_style(win, style);
+	g_object_unref(G_OBJECT(style));
+	gtk_widget_queue_draw(win);
 }
 
 static void
