@@ -1,10 +1,7 @@
 /*
  *  desktop-menu-file.[ch] - routines for parsing an xfdeskop menu xml file
  *
- *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
- *                     2003 Biju Chacko (botsie@users.sourceforge.net)
- *                     2004 Danny Milosavljevic <danny.milo@gmx.net>
- *                     2004 Brian Tarricone <bjt23@cornell.edu>
+ *  Copyright (C) 2004 Brian Tarricone <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
