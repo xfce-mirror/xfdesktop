@@ -321,10 +321,13 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		menu = _ensure_path(desktop_menu, path);
 		mi = xfce_app_menu_item_new_from_desktop_entry(de,
 				desktop_menu->use_menu_icons);
+		if(!mi)
+			goto cleanup;
 		name = xfce_app_menu_item_get_name(XFCE_APP_MENU_ITEM(mi));
 		g_snprintf(tmppath, 2048, "%s/%s", path, name);
 		if(desktop_menu->menu_entry_hash && 
-                   g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath)) {
+				g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath))
+		{
 			gtk_widget_destroy(mi);
 			goto cleanup;
 		}
@@ -353,10 +356,13 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		menu = _ensure_path(desktop_menu, path);
 		mi = xfce_app_menu_item_new_from_desktop_entry(de,
 				desktop_menu->use_menu_icons);
+		if(!mi)
+			goto cleanup;
 		name = xfce_app_menu_item_get_name(XFCE_APP_MENU_ITEM(mi));
 		g_snprintf(tmppath, 2048, "%s/%s", path, name);
 		if(desktop_menu->menu_entry_hash && 
-                   g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath)) {
+				g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath))
+		{
 			gtk_widget_destroy(mi);
 			goto cleanup;
 		}
@@ -386,10 +392,13 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 			menu = _ensure_path(desktop_menu, path);
 			mi = xfce_app_menu_item_new_from_desktop_entry(de,
 					desktop_menu->use_menu_icons);
+			if(!mi)
+				goto cleanup;
 			name = xfce_app_menu_item_get_name(XFCE_APP_MENU_ITEM(mi));
 			g_snprintf(tmppath, 2048, "%s/%s", path, name);
 			if(desktop_menu->menu_entry_hash && 
-                           g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath)) {
+					g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath))
+			{
 				gtk_widget_destroy(mi);
 				g_free(path);
 				path = NULL;
