@@ -22,24 +22,28 @@
 
 #include <X11/Xlib.h>
 #include <assert.h>
+#include <libxml/parser.h>
 
 #include "main.h"
 #include "menu.h"
-#define DEBUG 1
+/* #define DEBUG 1 */
 #include "debug.h"
 
+static GList *MainMenuData; /* TODO: Free this at some point */
+
 typedef enum __MenuItemTypeEnum {
-    MI_PROGRAM,
+    MI_APP,
     MI_SEPARATOR,
     MI_SUBMENU,
-    MI_TITLE
+    MI_TITLE,
+    MI_BUILTIN
 } MenuItemType;
 
 typedef struct __MenuItemStruct {
     MenuItemType type;          /* Type of Menu Item    */
     char        *path;          /* path to item         */
     char        *cmd;           /* shell cmd to execute */
-    gboolean    wants_term;     /* execute in terminal  */
+    gboolean    term;     /* execute in terminal  */
     GdkPixbuf   *icon;          /* icon to display      */
 } MenuItem;
 
@@ -54,11 +58,21 @@ void do_exec(gpointer callback_data, guint callback_action, GtkWidget *widget)
 void do_term_exec(gpointer callback_data, guint callback_action, GtkWidget *widget)
 {
     char *cmd;
+    const char *term_cmd;
 
-    /* TODO: Fix hard-coded call to xterm */
-    cmd = g_strconcat( "xterm -e ", (char *) callback_data, NULL);
+    term_cmd = g_getenv("TERMCMD");
+    if (term_cmd) {
+        cmd = g_strconcat(term_cmd, " -e ", (char *) callback_data, NULL);
+    } else {
+        cmd = g_strconcat("xterm -e ", (char *) callback_data, NULL);
+    }
+
     g_spawn_command_line_async(cmd, NULL);
+    
     g_free(cmd);
+    if (term_cmd) { g_free(term_cmd); }
+
+    return;
 }
 
 static gboolean popup_menu(GdkEventButton *ev);
@@ -268,38 +282,186 @@ static  GtkWidget *create_windowlist_menu(void)
     return menu3;
 }
 
-static MenuItem items[] = {
-    { MI_TITLE, "/Desktop Menu", NULL, FALSE, NULL },
-    { MI_SEPARATOR, "/sep", NULL, FALSE, NULL },
-    { MI_PROGRAM, "/Terminal", "xterm", FALSE, NULL },
-    { MI_PROGRAM, "/Run...", "xfrun4", FALSE, NULL },
-    { MI_PROGRAM, "/Settings Manager", "xfce-setting-show", FALSE, NULL },
-    { MI_SEPARATOR, "/sep", NULL, FALSE, NULL },
-    { MI_PROGRAM, "/Help", "xfhelp", FALSE, NULL },
-};
-
-GList *parse_menu(void)
+char *get_menu_file(void)
 {
-    int i;
+    gchar *filename = NULL;
+    gchar *env = NULL;
 
-    GList *menu_data = NULL;
-    
-    DBG("\n");
-    
-    for (i = 0; i < G_N_ELEMENTS(items); i++) {
-        menu_data = g_list_append(menu_data, (gpointer) &items[i]);
+    env = g_getenv("XFCE_DISABLE_USER_CONFIG");
+
+    if (!env || strcmp(env,"0")) {
+        filename = g_build_filename(g_get_home_dir(), ".xfce4", "menu.xml", NULL);
+        if (g_file_test(filename, G_FILE_TEST_EXISTS)) {
+            return filename;
+
+        }
     }
 
-    assert(menu_data != NULL);
+    filename = g_build_filename(SYSCONFDIR, "xfce4", "menu.xml", NULL);
+    if (g_file_test(filename, G_FILE_TEST_EXISTS)) {
+        return filename;
+    }
+
+    fprintf(stderr, "%s: Could not locate a menu definition file", PACKAGE);
+    return NULL;
+
+}
+
+MenuItem *parse_node_attr(MenuItemType type, xmlDocPtr doc, xmlNodePtr cur, char *path)
+{
+    MenuItem *mi = NULL; 
+    xmlChar *name = NULL;
+    xmlChar *cmd = NULL;
+    xmlChar *term = NULL;
+    xmlChar *visible = NULL;
     
+    DBG("\n");
+
+    visible = xmlGetProp(cur, "visible");
+    if ( visible && !xmlStrcmp(visible, (xmlChar *)"no")) {
+        xmlFree(visible);
+        return NULL;
+    }
+
+    mi = g_new(MenuItem, 1);
+
+    name = xmlGetProp(cur, "name");
+    if (name == NULL) {
+        mi->path = g_build_path("/", path, "No Name", NULL);
+    } else {
+        mi->path = g_build_path("/", path, name, NULL);
+    }
+
+    cmd = xmlGetProp(cur, "cmd");
+    if (cmd) {
+        /* I'm doing this so that I can do a g_free on it later */
+        mi->cmd = g_strdup(cmd);
+    } else {
+        mi->cmd = NULL;
+    }
+
+    term = xmlGetProp(cur, "term");
+    if ( term && !xmlStrcmp(term, (xmlChar *)"yes")) {
+        mi->term = TRUE;
+    } else {
+        mi->term = FALSE;
+    }
+
+    mi->type = type;
+    mi->icon = NULL; /* TODO: Load a pixbuf from icon filename */
+
+    /* clean up */
+    if (visible) { xmlFree(visible); }
+    if (name) { xmlFree(name); }
+    if (cmd) { xmlFree(cmd); }
+    if (term) { xmlFree(term); }
+    
+    return mi;
+}
+
+GList *parse_menu_node(xmlDocPtr doc, xmlNodePtr parent, char *path, GList *menu_data)
+{
+    MenuItem *mi;
+    xmlNodePtr cur;
+
+    DBG("\n");
+    
+    for (cur = parent->xmlChildrenNode; cur != NULL; cur = cur->next) {
+        if ((!xmlStrcmp(cur->name, (const xmlChar *)"menu"))){
+            mi = parse_node_attr(MI_SUBMENU, doc, cur, path);
+            if (mi) {
+                menu_data = g_list_append(menu_data, mi);
+
+                /* recurse */
+                menu_data = parse_menu_node(doc, cur, mi->path, menu_data);
+            }
+        }
+        if ((!xmlStrcmp(cur->name, (const xmlChar *)"app"))){
+            mi = parse_node_attr(MI_APP, doc, cur, path);
+            if (mi) {
+                menu_data = g_list_append(menu_data, mi);
+            }
+        }
+        if ((!xmlStrcmp(cur->name, (const xmlChar *)"separator"))){
+            mi = parse_node_attr(MI_SEPARATOR, doc, cur, path);
+            if (mi) {
+                menu_data = g_list_append(menu_data, mi);
+            }
+        }
+        if ((!xmlStrcmp(cur->name, (const xmlChar *)"title"))){
+            mi = parse_node_attr(MI_TITLE, doc, cur, path);
+            if (mi) {
+                menu_data = g_list_append(menu_data, mi);
+            }
+        }
+        if ((!xmlStrcmp(cur->name, (const xmlChar *)"builtin"))){
+            mi = parse_node_attr(MI_BUILTIN, doc, cur, path);
+            if (mi) {
+                menu_data = g_list_append(menu_data, mi);
+            }
+        }
+    }
+    assert(menu_data);
     return menu_data;
 }
+
+    
+
+GList *parse_menu_file(void)
+{
+    xmlDocPtr doc;
+    xmlNodePtr cur;
+    char *filename;
+    GList *menu_data = NULL;
+
+    /* find out which menu file to parse */
+    filename = get_menu_file();
+    DBG("Menu file:%s\n",filename);
+
+    /* Open xml menu definition File */
+    doc = xmlParseFile(filename);
+    if (doc == NULL) {
+        fprintf(stderr, "%s: Could not parse %s.\n", PACKAGE, filename);
+        g_free(filename);
+        return NULL;
+    }
+
+    /* verify that it is not an empty file */
+    cur = xmlDocGetRootElement(doc);
+    if (cur == NULL) {
+        fprintf(stderr, "%s: empty document: %s\n", PACKAGE, filename);
+        xmlFreeDoc(doc);
+        g_free(filename);
+        return NULL;
+    }
+
+
+    DBG("Root Element: %s\n", cur->name);
+
+    /* Verify that this file is actually related to xfdesktop */
+    if (xmlStrcmp(cur->name, (const xmlChar *)"xfdesktop-menu")) {
+        fprintf(stderr,
+                "%s: document '%s' of the wrong type, root node != xfdesktop-menu",
+                PACKAGE, filename);
+        xmlFreeDoc(doc);
+        g_free(filename);
+        return NULL;
+    }
+    menu_data = parse_menu_node(doc, cur, "/", menu_data);
+
+    /* clean up */
+    xmlFreeDoc(doc);
+    g_free(filename);
+
+    return menu_data;
+}
+
 
 GtkItemFactoryEntry parse_item(MenuItem *item)
 {
     GtkItemFactoryEntry t;
 
-    DBG("%s (type=%d)\n", item->path, item->type);
+    DBG("%s (type=%d) (term=%d)\n", item->path, item->type, item->term);
     
     t.path = item->path;
     t.accelerator = NULL;
@@ -309,8 +471,8 @@ GtkItemFactoryEntry parse_item(MenuItem *item)
        t.extra_data = item->icon; */
 
     switch (item->type) {
-        case MI_PROGRAM:
-            t.callback = (item->wants_term ? do_term_exec : do_exec);
+        case MI_APP:
+            t.callback = (item->term ? do_term_exec : do_exec);
             t.item_type = "<Item>";
             break;
         case MI_SEPARATOR:
@@ -332,6 +494,25 @@ GtkItemFactoryEntry parse_item(MenuItem *item)
     return t;
 }
 
+void free_menu_data(GList *menu_data)
+{
+    MenuItem *mi;
+    GList *li;
+
+    for (li = menu_data; li; li = li->next)
+    {
+        mi=li->data;
+
+        if (mi) {
+            if (mi->path) { g_free(mi->path); }
+            if (mi->cmd) { g_free(mi->cmd); }
+            g_free(mi);
+        }
+    }
+    g_list_free(menu_data);
+}
+
+    
 
 void create_menu_items(GtkItemFactory *ifactory)
 {
@@ -344,7 +525,11 @@ void create_menu_items(GtkItemFactory *ifactory)
      * TODO: Replace the following line with code  to call multiple
      * menu parsers and merge their content
      */
-    menu_data = parse_menu();
+    menu_data = parse_menu_file();
+    if (menu_data == NULL) {
+        fprintf(stderr, "%s: Error parsing menu file\n", PACKAGE);
+        return;
+    }
 
     for (li = menu_data; li; li = li->next)
     {
@@ -356,7 +541,10 @@ void create_menu_items(GtkItemFactory *ifactory)
     }
 
     /* clean up */
-    g_list_free(menu_data);
+    /* free_menu_data(menu_data); */
+    /* Hmmm ... if you do this the menus don't work */
+    /* Lets save it in a global var and worry about it later */
+    MainMenuData = menu_data;    
     
     return;
 }
@@ -405,4 +593,6 @@ gboolean popup_menu(GdkEventButton *ev)
 
     return FALSE;
 }
+
+
 
