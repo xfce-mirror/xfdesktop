@@ -41,6 +41,7 @@ void addentry_option_launcher_cb(GtkWidget *widget, struct _controls_add *contro
   gtk_widget_set_sensitive(controls->entry_command,TRUE);
   gtk_widget_set_sensitive(controls->label_icon,TRUE);
   gtk_widget_set_sensitive(controls->entry_icon,TRUE);
+  gtk_widget_set_sensitive(controls->snotify_checkbutton,TRUE);
 }
 
 void addentry_option_submenu_cb(GtkWidget *widget, struct _controls_add *controls)
@@ -52,6 +53,7 @@ void addentry_option_submenu_cb(GtkWidget *widget, struct _controls_add *control
   gtk_widget_set_sensitive(controls->entry_command,FALSE);
   gtk_widget_set_sensitive(controls->label_icon,FALSE);
   gtk_widget_set_sensitive(controls->entry_icon,FALSE);
+  gtk_widget_set_sensitive(controls->snotify_checkbutton,FALSE);
 }
 
 void addentry_option_separator_cb(GtkWidget *widget, struct _controls_add *controls)
@@ -63,6 +65,7 @@ void addentry_option_separator_cb(GtkWidget *widget, struct _controls_add *contr
   gtk_widget_set_sensitive(controls->entry_command,FALSE);
   gtk_widget_set_sensitive(controls->label_icon,FALSE);
   gtk_widget_set_sensitive(controls->entry_icon,FALSE);
+  gtk_widget_set_sensitive(controls->snotify_checkbutton,FALSE);
 }
 
 void addentry_option_title_cb(GtkWidget *widget, struct _controls_add *controls)
@@ -74,6 +77,7 @@ void addentry_option_title_cb(GtkWidget *widget, struct _controls_add *controls)
   gtk_widget_set_sensitive(controls->entry_command,FALSE);
   gtk_widget_set_sensitive(controls->label_icon,FALSE);
   gtk_widget_set_sensitive(controls->entry_icon,FALSE);
+  gtk_widget_set_sensitive(controls->snotify_checkbutton,FALSE);
 }
 
 void addentry_option_quit_cb(GtkWidget *widget, struct _controls_add *controls)
@@ -85,6 +89,7 @@ void addentry_option_quit_cb(GtkWidget *widget, struct _controls_add *controls)
   gtk_widget_set_sensitive(controls->entry_command,FALSE);
   gtk_widget_set_sensitive(controls->label_icon,FALSE);
   gtk_widget_set_sensitive(controls->entry_icon,FALSE);
+  gtk_widget_set_sensitive(controls->snotify_checkbutton,FALSE);
 }
 
 /*******************/
@@ -122,7 +127,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 				       GTK_STOCK_OK,
 				       GTK_RESPONSE_OK,NULL);
 
-  table = gtk_table_new(4,2,TRUE);
+  table = gtk_table_new(5,2,TRUE);
 
   /* Header */
   header_image = gtk_image_new_from_stock("gtk-add", GTK_ICON_SIZE_LARGE_TOOLBAR);
@@ -208,12 +213,17 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
   gtk_table_attach(GTK_TABLE(table), label_icon, 0, 1, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
   gtk_table_attach(GTK_TABLE(table), hbox_icon, 1, 2, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
 
+  controls.label_icon=label_icon;
+  controls.entry_icon=hbox_icon;
+
+  /* Start Notify check button */
+  controls.snotify_checkbutton = gtk_check_button_new_with_label(_("Start notify"));
+  gtk_table_attach(GTK_TABLE(table), controls.snotify_checkbutton, 1, 2, 4, 5, GTK_FILL, GTK_SHRINK, 0, 0);
+
   gtk_table_set_row_spacings(GTK_TABLE(table), 5);
   gtk_table_set_col_spacings(GTK_TABLE(table), 5);
   gtk_container_set_border_width(GTK_CONTAINER(table),10);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), table, FALSE, FALSE, 0);
-  controls.label_icon=label_icon;
-  controls.entry_icon=hbox_icon;
 
   /* Show dialog */
   gtk_window_set_default_size(GTK_WINDOW(dialog),350,100);
@@ -271,6 +281,9 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 	if(icon)
 	  xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(entry_icon)));
       }
+
+      if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(controls.snotify_checkbutton)))
+	xmlSetProp(node,"snotify","true");
 
       xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(entry_name)));
       xmlSetProp(node,"cmd",gtk_entry_get_text(GTK_ENTRY(entry_command)));
