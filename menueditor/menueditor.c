@@ -210,12 +210,27 @@ void not_yet_cb(GtkWidget *widget, gpointer data)
 gboolean confirm_quit_cb(GtkWidget *widget,gpointer data)
 {
   if(menueditor_app.menu_modified == TRUE){
-    if(xfce_confirm ( _("Do you want to save before closing the menu ?"), GTK_STOCK_YES, NULL))
-      menu_save_cb(widget,data);
+    gint response = GTK_RESPONSE_NONE;
+
+    response = xfce_message_dialog (GTK_WINDOW (menueditor_app.main_window), "Question",
+				    GTK_STOCK_DIALOG_QUESTION,
+				    _("Do you want to save before closing the menu ?"),
+				    _("You have modified the menu, do you want to save it before quitting ?"),
+				    XFCE_CUSTOM_STOCK_BUTTON, _("Forget modifications"), GTK_STOCK_QUIT, GTK_RESPONSE_NO,
+				    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+				    GTK_STOCK_SAVE, GTK_RESPONSE_YES, NULL);
+
+    switch(response){
+    case GTK_RESPONSE_YES:
+      menu_save_cb (widget, data);
+      break;
+    case GTK_RESPONSE_CANCEL:
+      return TRUE;
+    }
   }
 
-  xmlFreeDoc(menueditor_app.xml_menu_file); 
-  menueditor_app.xml_menu_file=NULL;
+  xmlFreeDoc (menueditor_app.xml_menu_file); 
+  menueditor_app.xml_menu_file = NULL;
   gtk_main_quit();
 
   return FALSE;
@@ -1070,8 +1085,6 @@ void create_main_window()
 		   G_CALLBACK(treeview_drag_data_get_cb),
 		   NULL);
 
-  /* Selection in the treeview */
-
   /* Add accelerators */
   gtk_window_add_accel_group (GTK_WINDOW (menueditor_app.main_window), menueditor_app.accel_group);
 
@@ -1096,6 +1109,7 @@ void create_main_window()
   gtk_widget_set_sensitive(menueditor_app.treeview,FALSE);
 
   gtk_widget_set_sensitive(menueditor_app.edit_menu.menu_item,FALSE);
+
   /* Show all */
   gtk_tree_view_expand_all (GTK_TREE_VIEW(menueditor_app.treeview));
 
