@@ -36,6 +36,8 @@ void xfce_desktop_menu_stop_autoregen_impl(XfceDesktopMenu *desktop_menu);
 void xfce_desktop_menu_force_regen_impl(XfceDesktopMenu *desktop_menu);
 void xfce_desktop_menu_destroy_impl(XfceDesktopMenu *desktop_menu);
 
+extern GdkPixbuf *dummy_icon;
+
 #ifdef BDEBUG
 #define BD(fmt, args...) \
 	do { \

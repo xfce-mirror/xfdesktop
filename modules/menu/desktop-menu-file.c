@@ -197,7 +197,6 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			return;
 		k = _find_attribute(attribute_names, "term");
 		l = _find_attribute(attribute_names, "snotify");
-		m = (state->desktop_menu->use_menu_icons ? _find_attribute(attribute_names, "icon") : -1);
 		
 		mi = xfce_app_menu_item_new_with_command(attribute_values[i],
 				attribute_values[j]);
@@ -209,9 +208,16 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		if(l != -1 && !strcmp(attribute_values[l], "true"))
 			xfce_app_menu_item_set_startup_notification(XFCE_APP_MENU_ITEM(mi),
 					TRUE);
-		if(m != -1 && *attribute_values[m])
-			xfce_app_menu_item_set_icon_name(XFCE_APP_MENU_ITEM(mi),
-					attribute_values[m]);
+		if(state->desktop_menu->use_menu_icons) {
+			m = _find_attribute(attribute_names, "icon");
+			if(m != -1)
+				xfce_app_menu_item_set_icon_name(XFCE_APP_MENU_ITEM(mi),
+						attribute_values[m]);
+			if(!XFCE_APP_MENU_ITEM(mi)->image_menu_item.image) {
+				GtkWidget *image = gtk_image_new_from_pixbuf(dummy_icon);
+				xfce_app_menu_item_set_image(XFCE_APP_MENU_ITEM(mi), image);
+			}
+		}
 		
 		gtk_widget_set_name(mi, "xfdesktopmenu");
 		gtk_widget_show(mi);
@@ -236,21 +242,29 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		i = _find_attribute(attribute_names, "name");
 		if(i == -1)
 				return;
-		j = (state->desktop_menu->use_menu_icons ? _find_attribute(attribute_names, "icon") : -1);
 		
-		if(j == -1)
+		if(!state->desktop_menu->use_menu_icons)
 			mi = gtk_menu_item_new_with_label(attribute_values[i]);
 		else {
-			GdkPixbuf *pix;
+			GdkPixbuf *pix = NULL;
 			GtkWidget *image;
+			
 			mi = gtk_image_menu_item_new_with_label(attribute_values[i]);
-			pix = xfce_load_themed_icon(attribute_values[j], 
-					_xfce_desktop_menu_icon_size);
-			if(pix) {
-				image = gtk_image_new_from_pixbuf(pix);
-				gtk_widget_show(image);
-				gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
-				g_object_unref(G_OBJECT(pix));
+			
+			j = _find_attribute(attribute_names, "icon");
+			if(j != -1) {
+				pix = xfce_load_themed_icon(attribute_values[j], 
+						_xfce_desktop_menu_icon_size);
+				if(pix) {
+					image = gtk_image_new_from_pixbuf(pix);
+					gtk_widget_show(image);
+					gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
+					g_object_unref(G_OBJECT(pix));
+				}
+			}
+			if(!pix) {
+				image = gtk_image_new_from_pixbuf(dummy_icon);
+				xfce_app_menu_item_set_image(XFCE_APP_MENU_ITEM(mi), image);
 			}
 		}
 		gtk_widget_set_name(mi, "xfdesktopmenu");
@@ -303,22 +317,31 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		j = _find_attribute(attribute_names, "cmd");
 		if(j == -1)
 			return;
-		k = (state->desktop_menu->use_menu_icons ? _find_attribute(attribute_names, "icon") : -1);
 		
-		if(k == -1)
+		if(!state->desktop_menu->use_menu_icons)
 			mi = gtk_menu_item_new_with_label(attribute_values[i]);
 		else {
-			GdkPixbuf *pix;
+			GdkPixbuf *pix = NULL;
 			GtkWidget *image;
+			
 			mi = gtk_image_menu_item_new_with_label(attribute_values[i]);
-			pix = xfce_load_themed_icon(attribute_values[k],
-					_xfce_desktop_menu_icon_size);
-			if(pix) {
-				image = gtk_image_new_from_pixbuf(pix);
-				gtk_widget_show(image);
-				gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
-				g_object_unref(pix);
+			
+			k = _find_attribute(attribute_names, "icon");
+			if(k != -1) {
+				pix = xfce_load_themed_icon(attribute_values[k],
+						_xfce_desktop_menu_icon_size);
+				if(pix) {
+					image = gtk_image_new_from_pixbuf(pix);
+					gtk_widget_show(image);
+					gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
+					g_object_unref(pix);
+				}
 			}
+			if(!pix) {
+				image = gtk_image_new_from_pixbuf(dummy_icon);
+				xfce_app_menu_item_set_image(XFCE_APP_MENU_ITEM(mi), image);
+			}
+				
 		}
 		gtk_widget_set_name(mi, "xfdesktopmenu");
 		g_signal_connect(G_OBJECT(mi), "activate", G_CALLBACK(_do_builtin),
@@ -339,21 +362,29 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		i = _find_attribute(attribute_names, "name");
 		if(i == -1)
 			return;
-		j = _find_attribute(attribute_names, "icon");
 		
-		if(j == -1)
+		if(!state->desktop_menu->use_menu_icons)
 			mi = gtk_menu_item_new_with_label(attribute_values[i]);
 		else {
 			GdkPixbuf *pix;
 			GtkWidget *image;
+			
 			mi = gtk_image_menu_item_new_with_label(attribute_values[i]);
-			pix = xfce_load_themed_icon(attribute_values[j],
-					_xfce_desktop_menu_icon_size);
-			if(pix) {
-				image = gtk_image_new_from_pixbuf(pix);
-				gtk_widget_show(image);
-				gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
-				g_object_unref(pix);
+			
+			j = _find_attribute(attribute_names, "icon");
+			if(j != -1) {
+				pix = xfce_load_themed_icon(attribute_values[j],
+						_xfce_desktop_menu_icon_size);
+				if(pix) {
+					image = gtk_image_new_from_pixbuf(pix);
+					gtk_widget_show(image);
+					gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
+					g_object_unref(pix);
+				}
+			}
+			if(!pix) {
+				image = gtk_image_new_from_pixbuf(dummy_icon);
+				xfce_app_menu_item_set_image(XFCE_APP_MENU_ITEM(mi), image);
 			}
 		}
 		gtk_widget_set_sensitive(mi, FALSE);

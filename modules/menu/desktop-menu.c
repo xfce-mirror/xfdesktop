@@ -69,6 +69,7 @@
 #include "desktop-menu-private.h"
 #include "desktop-menu.h"
 #include "desktop-menu-file.h"
+#include "dummy_icon.h"
 
 #ifndef PATH_MAX
 #define PATH_MAX 4096
@@ -79,6 +80,7 @@
 #define EVENTMASK (ButtonPressMask|SubstructureNotifyMask|PropertyChangeMask)
 
 /*< private >*/
+GdkPixbuf *dummy_icon = NULL;
 gint _xfce_desktop_menu_icon_size = 24;
 static GList *timeout_handles = NULL;
 static time_t last_theme_change = 0;
@@ -373,6 +375,11 @@ g_module_check_init(GModule *module)
 	_xfce_desktop_menu_icon_size = _calc_icon_size();
 	xfce_app_menu_item_set_icon_size(_xfce_desktop_menu_icon_size);
 	
+	if(dummy_icon)
+		g_object_unref(G_OBJECT(dummy_icon));
+	dummy_icon = xfce_inline_icon_at_size(dummy_icon_data,
+			_xfce_desktop_menu_icon_size, _xfce_desktop_menu_icon_size);
+	
 #if GTK_CHECK_VERSION(2, 4, 0)
 	notify_itheme = gtk_icon_theme_get_default();
 	g_signal_connect(G_OBJECT(notify_itheme), "changed",
@@ -420,4 +427,8 @@ g_module_unload(GModule *module)
 		g_list_free(timeout_handles);
 	}
 	timeout_handles = NULL;
+	
+	if(dummy_icon)
+		g_object_unref(G_OBJECT(dummy_icon));
+	dummy_icon = NULL;
 }
