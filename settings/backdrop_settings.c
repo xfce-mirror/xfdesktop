@@ -95,7 +95,7 @@ BackdropDialog;
 static gboolean is_running = FALSE;
 
 static char *backdrop_path = NULL;
-static int backdrop_style = CENTERED;
+static int backdrop_style = SCALED;
 static int showimage = 1;
 static McsColor backdrop_color;
 
