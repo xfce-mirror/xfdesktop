@@ -812,7 +812,7 @@ static gboolean button_press_event(GtkWidget * win, GdkEventButton * ev,
 
         menu3 = create_windowlist_menu();
 
-        gtk_menu_popup(GTK_MENU(menu3), NULL, NULL, NULL, NULL, 1, ev->time);
+        gtk_menu_popup(GTK_MENU(menu3), NULL, NULL, NULL, NULL, 0, ev->time);
 
         return TRUE;
     }
@@ -822,7 +822,7 @@ static gboolean button_press_event(GtkWidget * win, GdkEventButton * ev,
 
         if (menu1)
         {
-            gtk_menu_popup(GTK_MENU(menu1), NULL, NULL, NULL, NULL, 1, ev->time);
+            gtk_menu_popup(GTK_MENU(menu1), NULL, NULL, NULL, NULL, 0, ev->time);
             return TRUE;
         }
     }
