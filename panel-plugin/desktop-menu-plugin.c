@@ -94,6 +94,56 @@ dmp_free(Control *c)
 	g_free(dmp);
 }
 
+static void
+dmp_position_menu (GtkMenu *menu, int *x, int *y, gboolean *push_in, 
+				   GtkWidget *button)
+{
+	GdkWindow *p;
+	int xbutton, ybutton, xparent, yparent;
+	int side;
+	GtkRequisition req;
+
+	gtk_widget_size_request (GTK_WIDGET (menu), &req);
+
+	xbutton = button->allocation.x;
+	ybutton = button->allocation.y;
+	
+	p = gtk_widget_get_parent_window (button);
+	gdk_window_get_root_origin (p, &xparent, &yparent);
+
+	side = panel_get_side ();
+
+	/* set x and y to topleft corner of the button */
+	*x = xbutton + xparent;
+	*y = ybutton + yparent;
+
+	switch (side)
+	{
+		case LEFT:
+			*x += button->allocation.width;
+			*y += button->allocation.height - req.height;
+			break;
+		case RIGHT:
+			*x -= req.width;
+			*y += button->allocation.height - req.height;
+			break;
+		case TOP:
+			*y += button->allocation.height;
+			break;
+		default:
+			*y -= req.height;
+	}
+
+	if (*x < 0)
+		*x = 0;
+
+	if (*y < 0)
+		*y = 0;
+
+	/* TODO: wtf is this ? */
+	*push_in = FALSE;
+}
+
 static gboolean
 dmp_popup(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
 {
@@ -114,8 +164,9 @@ dmp_popup(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
 	menu = xfce_desktop_menu_get_widget(dmp->desktop_menu);
 	if(menu) {
 		panel_register_open_menu(menu);
-		gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, evt->button,
-				evt->time);
+		gtk_menu_popup(GTK_MENU(menu), NULL, NULL, 
+				(GtkMenuPositionFunc)dmp_position_menu, dmp->evtbox->parent, 
+				evt->button, evt->time);
 	}
 	
 	return TRUE;
