@@ -121,7 +121,7 @@ static void set_num_screens(gpointer num)
 static GtkWidget *create_window_list_item(NetkWindow *win)
 {
     const char *name = NULL;
-    char *label;
+    GString *label;
     GtkWidget *mi;
 
     if (netk_window_is_skip_pager(win) || netk_window_is_skip_tasklist(win))
@@ -129,15 +129,23 @@ static GtkWidget *create_window_list_item(NetkWindow *win)
     
     if (!name)
 	name = netk_window_get_name(win);
-    
-    if (netk_window_is_minimized(win))
-	label = g_strconcat("(", name, ")", NULL);
-    else
-	label = g_strdup(name);
-    
-    mi = gtk_menu_item_new_with_label(label);
-    g_free(label);
+   
+    label = g_string_new(name);
 
+    if (label->len >= 15) {
+    	g_string_truncate(label, 15);
+	g_string_append(label, " ...");
+    }
+
+    if (netk_window_is_minimized(win)) {
+	g_string_prepend(label, "[");
+	g_string_append(label, "]");
+    }
+	
+    mi = gtk_menu_item_new_with_label(label->str);
+    
+    g_string_free(label,TRUE);
+    
     return mi;
 }
 
