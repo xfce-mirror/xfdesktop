@@ -157,7 +157,7 @@ create_window_list_item (NetkWindow * win)
 			w = gdk_pixbuf_get_width(tmp);
 			h = gdk_pixbuf_get_height(tmp);
 			if(w != 22 || h != 22) {
-				icon = gdk_pixbuf_scale_simple(tmp, 24, 24, GDK_INTERP_BILINEAR);
+				icon = gdk_pixbuf_scale_simple(tmp, 22, 22, GDK_INTERP_BILINEAR);
 				/* the GdkPixbuf returned by netk_window_get_icon() should never
 				 * be freed, but if we scale the image, we need to free it */
 				free_icon = TRUE;
@@ -434,14 +434,6 @@ menu_init (XfceDesktop * xfdesktop)
 			G_CALLBACK(button_press), xfdesktop);
 	g_signal_connect(G_OBJECT(xfdesktop->fullscreen), "scroll-event",
 			G_CALLBACK(button_scroll), xfdesktop);
-}
-
-void
-menu_load_settings(XfceDesktop *xfdesktop)
-{
-    TRACE ("dummy");
-	/* yeah, this will do something "soon" */
-	
 }
 
 void

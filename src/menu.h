@@ -26,7 +26,6 @@
 
 void menu_init_global(McsClient *client);
 void menu_cleanup_global();
-void menu_init (XfceDesktop * xfdesktop);
 void menu_cleanup(XfceDesktop *xfdesktop);
 void menu_load_settings (XfceDesktop * xfdesktop);
 void menu_force_regen (void);
