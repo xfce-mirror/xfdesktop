@@ -245,7 +245,7 @@ do_exec (gpointer callback_data, guint callback_action, GtkWidget * widget)
 #ifdef HAVE_SETSID
 			setsid();
 #endif
-			if(execlp((char *)callback_data, (char *)callback_data))
+			if(execlp((char *)callback_data, (char *)callback_data), NULL)
 				g_warning("%s: unable to spawn %s: %s\n", PACKAGE, (char *)callback_data, strerror(errno));
 			_exit(0);
 			break;
@@ -880,10 +880,8 @@ button_scroll (GtkWidget * w, GdkEventScroll * sevent)
 void
 menu_init (XfceDesktop * xfdesktop)
 {
-#ifdef HAVE_GETENV
-    const char *kdedir = getenv("KDEDIR");
-	gchar extradir[1024];
-#endif
+    const gchar *kdedir = g_getenv("KDEDIR");
+	gchar *kde_icon_dir = NULL;
 	
     TRACE ("dummy");
     netk_screen = xfdesktop->netk_screen;
@@ -897,10 +895,11 @@ menu_init (XfceDesktop * xfdesktop)
 	itheme = gtk_icon_theme_get_default();
 	
 	gtk_icon_theme_prepend_search_path(itheme, XFCEDATADIR "/themes");
-#ifdef HAVE_GETENV
-	g_snprintf(extradir, 1024, "%s/share/icons", kdedir);
-	gtk_icon_theme_append_search_path(itheme, extradir);
-#endif
+	if(kdedir) {
+		kde_icon_dir = g_strdup_printf("%s/share/icons", kdedir);
+		gtk_icon_theme_append_search_path(itheme, extradir);
+		g_free(kde_icon_dir);
+	}
 	
 	/* track icon theme changes (from the panel) */
     if(!client) {

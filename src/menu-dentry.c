@@ -73,17 +73,12 @@ static char *dentry_paths[] = {
  */
 static gchar *
 sanitise_dentry_cmd(gchar *cmd) {
-	gchar *newstr, *p;
+	gchar *p;
 	
-	if(!cmd || !strchr(cmd, '%') || !(p=strchr(cmd, ' ')))
-		return cmd;
-	*p = 0;
+	if(cmd && strchr(cmd, '%') && (p=strchr(cmd, ' ')))
+		*p = 0;
 	
-	newstr = g_malloc0(strlen(cmd)+1);
-	strcpy(newstr, cmd);
-	g_free(cmd);
-	
-	return newstr;
+	return cmd;
 }
 
 static gint
@@ -354,9 +349,8 @@ menu_dentry_parse_files(const char *basepath, MenuPathType pathtype)
 	gchar const *n;
 	gchar *s;
 	gchar *catfile = g_build_filename(XFCEDATADIR, "xfce-registered-categories.xml", NULL);
-#ifdef HAVE_GETENV
-	const char *kdedir = getenv("KDEDIR");
-#endif
+	const gchar *kdedir = g_getenv("KDEDIR");
+	gchar *kde_dentry_path = NULL;
 	
 	menuspec_parse_categories(catfile);
 	g_free(catfile);
@@ -367,7 +361,7 @@ menu_dentry_parse_files(const char *basepath, MenuPathType pathtype)
 		if (d) {
 			while ((n = g_dir_read_name (d)) != NULL) {
 				if (g_str_has_suffix (n, ".desktop")) {
-					s = g_build_path ("/", pathd, n, NULL);
+					s = g_build_filename(pathd, n, NULL);
 					menu_data = parse_dentry_file (s, menu_data, basepath,
 							pathtype);
 					g_free (s);
@@ -377,23 +371,24 @@ menu_dentry_parse_files(const char *basepath, MenuPathType pathtype)
 			d = NULL;
 		}
 	}
-#ifdef HAVE_GETENV
-	if(kdedir) {
-		gchar *kde_dentry_path = g_strdup_printf("%s/share/applications/kde/", kdedir);
-		d = g_dir_open(kde_dentry_path, 0, NULL);
-		if(d) {
-			while((n=g_dir_read_name(d))) {
-				if(g_str_has_suffix(n, ".desktop")) {
-					s = g_build_path("/", kde_dentry_path, n, NULL);
-					menu_data = parse_dentry_file(s, menu_data, basepath, pathtype);
-					g_free(s);
-				}
+	
+	if(kdedir)
+		kde_dentry_path = g_strdup_printf("%s/share/applications/kde", kdedir);
+	else
+		kde_dentry_path = g_strdup("/usr/share/applications/kde");
+	d = g_dir_open(kde_dentry_path, 0, NULL);
+	if(d) {
+		while((n=g_dir_read_name(d))) {
+			if(g_str_has_suffix(n, ".desktop")) {
+				s = g_build_filename(kde_dentry_path, n, NULL);
+				menu_data = parse_dentry_file(s, menu_data, basepath, pathtype);
+				g_free(s);
 			}
-			g_dir_close(d);
 		}
-		g_free(kde_dentry_path);
+		g_dir_close(d);
 	}
-#endif
+	g_free(kde_dentry_path);
+
 	menuspec_free();
 	
 	return menu_data;
