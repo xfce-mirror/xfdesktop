@@ -50,6 +50,7 @@
 #define RCFILE "workspaces.xml"
 #define ICON_SIZE 48
 #define MAX_COUNT 32
+#define DEFAULT_NBR_WS 4
 
 static NetkScreen *netk_screen = NULL;
 static int ws_count = 1;
@@ -181,10 +182,14 @@ static void create_workspaces_channel(McsManager *manager)
     if (setting)
     {
 	ws_count = setting->data.v_int;
-
-	/* only the first time when wm isn't running yet */
-	set_ws_count_hint((long) ws_count);
     }
+    else
+    {
+	ws_count = DEFAULT_NBR_WS;
+    }
+    /* only the first time when wm isn't running yet */
+    set_ws_count_hint((long) ws_count);
+    
 
     /* ws names */
     setting = mcs_manager_setting_lookup(manager, "names", WORKSPACES_CHANNEL);
