@@ -297,7 +297,6 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
 {
 	XfceDesktop *desktop = user_data;
 	gint w, h, i;
-	GdkRectangle rect;
 	
 	g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 	
