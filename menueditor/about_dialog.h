@@ -22,7 +22,6 @@
 #define __HAVE_ABOUTDIALOG_HEADER
 
 /* Prototype */
-void about_cb(GtkWidget *widget, gpointer data);
+void about_cb (GtkWidget * widget, gpointer data);
 
 #endif
-

@@ -22,8 +22,10 @@
 #define __HAVE_ADDDIALOG_HEADER
 
 /* Structure */
-struct _controls_add{
-  enum {LAUNCHER, SUBMENU, SEPARATOR, TITLE, INCLUDE, QUIT} entry_type;
+struct _controls_add
+{
+  enum
+  { LAUNCHER, SUBMENU, SEPARATOR, TITLE, INCLUDE, QUIT } entry_type;
   GtkWidget *label_name;
   GtkWidget *entry_name;
   GtkWidget *label_command;
@@ -37,6 +39,6 @@ struct _controls_add{
 };
 
 /* Prototype */
-void add_entry_cb(GtkWidget *widget, gpointer data);
+void add_entry_cb (GtkWidget * widget, gpointer data);
 
 #endif

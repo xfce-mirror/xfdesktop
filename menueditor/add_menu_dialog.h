@@ -22,8 +22,10 @@
 #define __HAVE_ADDMENU_HEADER
 
 /* Structure */
-struct _controls_menu{
-  enum {MENUFILE, SYSTEM} menu_type;
+struct _controls_menu
+{
+  enum
+  { MENUFILE, SYSTEM } menu_type;
   GtkWidget *hbox_source;
   GtkWidget *label_source;
   GtkWidget *checkbutton_unique;
@@ -32,6 +34,6 @@ struct _controls_menu{
 };
 
 /* Prototype */
-void add_menu_cb (GtkWidget *widget, gpointer data);
+void add_menu_cb (GtkWidget * widget, gpointer data);
 
 #endif

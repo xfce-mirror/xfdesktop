@@ -51,19 +51,22 @@
 /***********/
 /* Globals */
 /***********/
-void browse_command_cb (GtkWidget *widget, gpointer data);
-void browse_icon_cb (GtkWidget *widget, gpointer data);
-gboolean command_exists (const gchar *command);
-void menu_save_cb (GtkWidget *widget, gpointer data);
+void browse_command_cb (GtkWidget * widget, gpointer data);
+void browse_icon_cb (GtkWidget * widget, gpointer data);
+gboolean command_exists (const gchar * command);
+void menu_save_cb (GtkWidget * widget, gpointer data);
 /* Load the menu in the tree */
-void load_menu_in_tree (xmlNodePtr menu, GtkTreeIter *p, gpointer data);
+void load_menu_in_tree (xmlNodePtr menu, GtkTreeIter * p, gpointer data);
 
-enum {ICON_COLUMN, NAME_COLUMN, COMMAND_COLUMN, HIDDEN_COLUMN,
-      POINTER_COLUMN, NUM_COLUMNS};
+enum
+{ ICON_COLUMN, NAME_COLUMN, COMMAND_COLUMN, HIDDEN_COLUMN,
+  POINTER_COLUMN, NUM_COLUMNS
+};
 
 typedef struct _menueditor_app MenuEditor;
 
-struct _menueditor_app{
+struct _menueditor_app
+{
   gboolean menu_modified;
   gchar menu_file_name[255];
   xmlDocPtr xml_menu_file;

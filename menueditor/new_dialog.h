@@ -22,6 +22,6 @@
 #define __HAVE_NEW_HEADER
 
 /* Prototype */
-void new_menu_cb(GtkWidget *widget, gpointer data);
+void new_menu_cb (GtkWidget * widget, gpointer data);
 
 #endif

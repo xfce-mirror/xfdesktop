@@ -22,7 +22,7 @@
 #define __HAVE_MOVE_HEADER
 
 /* Prototypes */
-void entry_down_cb(GtkWidget *widget, gpointer data);
-void entry_up_cb(GtkWidget *widget, gpointer data);
+void entry_down_cb (GtkWidget * widget, gpointer data);
+void entry_up_cb (GtkWidget * widget, gpointer data);
 
 #endif

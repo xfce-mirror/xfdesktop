@@ -22,7 +22,7 @@
 #define __HAVE_EDIT_HEADER
 
 /* Prototype */
-void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColumn *col, gpointer data);
-void popup_edit_cb(GtkWidget *widget, gpointer data);
+void treeview_activate_cb (GtkWidget * widget, GtkTreePath * path, GtkTreeViewColumn * col, gpointer data);
+void popup_edit_cb (GtkWidget * widget, gpointer data);
 
 #endif
