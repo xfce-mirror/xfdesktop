@@ -44,7 +44,7 @@
 #include <libxml/parser.h>
 
 #include <libxfce4util/i18n.h>
-#include <libxfce4util/xfce_desktop_entry.h>
+#include <libxfce4util/xfce-desktopentry.h>
 
 #include "menu-dentry.h"
 #include "menu.h"
