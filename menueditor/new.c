@@ -79,20 +79,12 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
 
   table = gtk_table_new(2,2,TRUE);
   
-#ifndef DISABLE_CVS
   /* Header */
   header_image = gtk_image_new_from_stock("gtk-justify-fill", GTK_ICON_SIZE_LARGE_TOOLBAR);
   header_text = g_strdup_printf("%s", _("New menu"));
-#warning only works with CVS version of libxfcegui4 (you should better use --disable-cvs to not use CVS functions)
   header = create_header_with_image (header_image, header_text);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);
   g_free (header_text);
-#else
-  header_text = g_strdup_printf("%s", _("New menu"));
-  header = create_header (NULL, header_text);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);
-  g_free (header_text);
-#endif
 
   /* Name */
   label_title = gtk_label_new(_("Title :"));

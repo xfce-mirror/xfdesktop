@@ -115,20 +115,12 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 
   table = gtk_table_new(4,2,TRUE);
 
-#ifndef DISABLE_CVS
   /* Header */
   header_image = gtk_image_new_from_stock("gtk-add", GTK_ICON_SIZE_LARGE_TOOLBAR);
   header_text = g_strdup_printf("%s", _("Add menu entry"));
-#warning only works with CVS version of libxfcegui4 (you should better use --disable-cvs to not use CVS functions)
   header = create_header_with_image (header_image, header_text);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);
   g_free (header_text);
-#else
-  header_text = g_strdup_printf("%s", _("Add menu entry"));
-  header = create_header (NULL, header_text);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);
-  g_free (header_text);
-#endif
 
   /* Type */
   label_type = gtk_label_new(_("Type :"));
@@ -199,7 +191,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
   entry_icon = gtk_entry_new();
   button_browse2 = gtk_button_new_with_label("...");
 
-  g_signal_connect ((gpointer) button_browse2, "clicked", G_CALLBACK (browse_command_cb), entry_icon);
+  g_signal_connect ((gpointer) button_browse2, "clicked", G_CALLBACK (browse_icon_cb), entry_icon);
 
   gtk_box_pack_start (GTK_BOX (hbox_icon), entry_icon, FALSE, FALSE, 0);
   gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse2, FALSE, FALSE, 0);

@@ -27,7 +27,6 @@
 #include "move.h"
 #include "new.h"
 #include "dnd.h"
-#include "undo.h"
 
 /***************************************************************/
 /* find_icon code copy of Brian J. Tarricone's xfdesktop patch */
@@ -127,6 +126,19 @@ void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command){
   GtkWidget *filesel_dialog;
 
   filesel_dialog = gtk_file_selection_new(_("Select command"));
+
+  if(gtk_dialog_run(GTK_DIALOG(filesel_dialog)) == GTK_RESPONSE_OK){
+    gtk_entry_set_text (entry_command,
+			gtk_file_selection_get_filename (GTK_FILE_SELECTION(filesel_dialog)));
+  }
+
+  gtk_widget_destroy(GTK_WIDGET(filesel_dialog));
+}
+
+void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_command){
+  GtkWidget *filesel_dialog;
+
+  filesel_dialog = preview_file_selection_new(_("Select icon"), TRUE);
 
   if(gtk_dialog_run(GTK_DIALOG(filesel_dialog)) == GTK_RESPONSE_OK){
     gtk_entry_set_text (entry_command,
@@ -715,11 +727,6 @@ void create_main_window()
   gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menueditor_app.edit_menu.menu_item), image_file_menu);
   menueditor_app.edit_menu.menu = gtk_menu_new ();
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (menueditor_app.edit_menu.menu_item), menueditor_app.edit_menu.menu);
-  
-  menueditor_app.edit_menu.undo = gtk_image_menu_item_new_from_stock ("gtk-undo", accel_group);
-  gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menueditor_app.edit_menu.undo);
-  menu_separator = gtk_separator_menu_item_new();
-  gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menu_separator);
   menueditor_app.edit_menu.add = gtk_image_menu_item_new_from_stock ("gtk-add", accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menueditor_app.edit_menu.add);
   menueditor_app.edit_menu.add_menu = gtk_image_menu_item_new_with_mnemonic (_("Add an external menu..."));
@@ -778,14 +785,6 @@ void create_main_window()
 							 "",
 							 _("Close current menu"), NULL,
 							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(close_menu_cb), NULL);
-  gtk_toolbar_append_space (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar));
-  tmp_toolbar_icon = gtk_image_new_from_stock("gtk-undo",GTK_ICON_SIZE_LARGE_TOOLBAR);
-  menueditor_app.main_toolbar.undo = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
-							 GTK_TOOLBAR_CHILD_BUTTON,
-							 NULL,
-							 "",
-							 _("Undo the last action"), NULL,
-							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(not_yet_cb), NULL);
   gtk_toolbar_append_space (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar));
   tmp_toolbar_icon = gtk_image_new_from_stock("gtk-add",GTK_ICON_SIZE_LARGE_TOOLBAR);
   menueditor_app.main_toolbar.add = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
@@ -899,9 +898,6 @@ void create_main_window()
                     G_CALLBACK (confirm_quit_cb),
                     NULL);
 
-  g_signal_connect ((gpointer) menueditor_app.edit_menu.undo, "activate",
-                    G_CALLBACK (not_yet_cb),
-		    NULL);
   g_signal_connect ((gpointer) menueditor_app.edit_menu.add_menu, "activate",
                     G_CALLBACK (add_menu_cb),
                     NULL);
@@ -1127,7 +1123,6 @@ int main (int argc, char *argv[])
   textdomain (GETTEXT_PACKAGE);
 
   menueditor_app.xml_menu_file=NULL;
-  undo_list = g_slist_alloc();
 
   gtk_init(&argc, &argv);
   
@@ -1155,8 +1150,6 @@ int main (int argc, char *argv[])
     menu_open_default_cb(NULL, NULL);
 
   gtk_main();
-
-  g_slist_free(undo_list);
 
   return 0;
 }

@@ -18,9 +18,7 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#ifndef DISABLE_CVS
 #include <libxfce4util/xfce-desktopentry.h>
-#endif
 
 #include "dnd.h"
 

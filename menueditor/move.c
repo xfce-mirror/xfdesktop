@@ -52,7 +52,7 @@ void my_tree_store_swap_down(GtkTreeStore *tree_store,
   gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), a, HIDDEN_COLUMN, &val_hidden);
   hidden = g_value_get_boolean(&val_hidden);
   gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), a, ICON_COLUMN, &val_icon);
-  icon = (GdkPixbuf*) g_value_get_object(&val_icon);
+  icon = g_value_get_object(&val_icon);
   gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), a, POINTER_COLUMN, &val_pointer);
   node = g_value_get_pointer(&val_pointer);
 
@@ -98,7 +98,7 @@ void my_tree_store_swap_up(GtkTreeStore *tree_store,
 
   /* Get the values of a */
   gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), a, ICON_COLUMN, &val_icon);
-  icon = (gchar*) g_value_get_object(&val_icon);
+  icon = g_value_get_object(&val_icon);
   gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), a, NAME_COLUMN, &val_name);
   str_name = (gchar*) g_value_get_string(&val_name);
   gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), a, COMMAND_COLUMN, &val_command);

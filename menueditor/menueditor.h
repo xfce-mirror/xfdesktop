@@ -84,6 +84,7 @@ void visible_column_toggled_cb(GtkCellRendererToggle *toggle,
 void filesel_saveas_ok(GtkWidget *widget, GtkFileSelection *filesel_dialog);
 void delete_entry_cb(GtkWidget *widget, gpointer data);
 void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command);
+void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_command);
 
 /* Main window */
 void create_main_window();
@@ -176,7 +177,6 @@ struct _menueditor_app{
      struct _edit_menu{
        GtkWidget* menu;
        GtkWidget* menu_item;
-       GtkWidget* undo;
        GtkWidget* add;
        GtkWidget* add_menu;
        GtkWidget* del;
@@ -196,7 +196,6 @@ struct _menueditor_app{
        GtkWidget* open;
        GtkWidget* save;
        GtkWidget* close;
-       GtkWidget* undo;
        GtkWidget* add;
        GtkWidget* del;
        GtkWidget* up;

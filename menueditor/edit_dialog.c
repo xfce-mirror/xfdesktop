@@ -72,19 +72,11 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
 
   /* Header */
-#ifndef DISABLE_CVS
   header_image = gtk_image_new_from_stock("gtk-justify-fill", GTK_ICON_SIZE_LARGE_TOOLBAR);
   header_text = g_strdup_printf("%s", _("Edit menu entry"));
-#warning only works with CVS version of libxfcegui4 (you should better use --disable-cvs to not use CVS functions)
   header = create_header_with_image (header_image, header_text);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);
   g_free (header_text);
-#else
-  header_text = g_strdup_printf("%s", _("Edit menu entry"));
-  header = create_header (NULL, header_text);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);
-  g_free (header_text);
-#endif
 
   /* Choose the edition dialog */
   if(!xmlStrcmp(node->name,(xmlChar*)"separator") ){
@@ -176,7 +168,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     button_browse2 = gtk_button_new_with_label("...");
     gtk_box_pack_start (GTK_BOX (hbox_icon), icon_entry, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse2, FALSE, FALSE, 0);
-    g_signal_connect ((gpointer) button_browse2, "clicked", G_CALLBACK (browse_command_cb), icon_entry);
+    g_signal_connect ((gpointer) button_browse2, "clicked", G_CALLBACK (browse_icon_cb), icon_entry);
 
     hbox_command = gtk_hbox_new(FALSE,0);
     name_label = gtk_label_new(_("Name :"));
