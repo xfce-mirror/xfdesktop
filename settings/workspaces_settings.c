@@ -89,8 +89,14 @@ mcs_plugin_init(McsPlugin *mcs_plugin)
 
     create_workspaces_channel(mcs_plugin->manager);
     
-    watch_workspaces_hint(mcs_plugin->manager);
-
+    /* XXX I don't think this should be called at all.
+       Problem is when the module is unloaded, the callback
+       remains and crashes the MCS manager on workspace count
+       change.
+       Safer to remove it for now.
+       
+       watch_workspaces_hint(mcs_plugin->manager); 
+     */
     return MCS_PLUGIN_INIT_OK;
 }
 
