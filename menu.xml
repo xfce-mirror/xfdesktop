@@ -11,7 +11,7 @@
     <app name="Midnight Commander" cmd="mc" term="yes"/>
     <separator/>
     <app name="Help" cmd="xfhelp"/>
-    <!-- This doesn't work yet -->
-    <builtin name="quit" visible="no"/>
+    <!-- Set visible to yes to use this item -->
+    <builtin name="Quit" cmd="quit" visible="no"/>
 </xfdesktop-menu>
 
