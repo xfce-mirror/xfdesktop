@@ -159,6 +159,8 @@ void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command){
 						 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 						 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 
+  xfce_file_chooser_set_filename (XFCE_FILE_CHOOSER (filesel_dialog), gtk_entry_get_text (entry_command));
+
   if(gtk_dialog_run(GTK_DIALOG(filesel_dialog)) == GTK_RESPONSE_ACCEPT){
     gchar *filename = NULL;
 
@@ -181,6 +183,8 @@ void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon){
 						 XFCE_FILE_CHOOSER_ACTION_OPEN,
 						 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 						 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
+
+  xfce_file_chooser_set_filename (XFCE_FILE_CHOOSER (filesel_dialog), gtk_entry_get_text (entry_icon));
 
   if(gtk_dialog_run(GTK_DIALOG(filesel_dialog)) == GTK_RESPONSE_ACCEPT){
     gchar *filename = NULL;
