@@ -427,6 +427,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   xmlFree(prop_icon);
   xmlFree(prop_type);
   xmlFree(prop_src);
+  xmlFree(prop_snotify);
 
   gtk_widget_destroy (dialog);
 }
