@@ -58,6 +58,10 @@ void about_cb(GtkWidget *widget, gpointer data)
 			     "Jens Luedicke",
 			     "perldude@lunar-linux.org",
 			     _("Contributor"));
+  xfce_about_info_add_credit(info,
+			     "Francois Le Clainche",
+			     "fleclainche@wanadoo.fr",
+			     _("Icon designer"));
 
   icon = gdk_pixbuf_new_from_xpm_data(icon48_xpm);
 
