@@ -765,7 +765,7 @@ menu_dentry_legacy_init()
 	if(is_inited)
 		return;
 
-	apps = xfce_resource_lookup_all(XFCE_RESOURCE_DATA, "apps/");
+	apps = xfce_resource_lookup_all(XFCE_RESOURCE_DATA, "gnome/apps/");
 	for(napps = 0; apps[napps] != NULL; ++napps);
 
 	applnk = xfce_resource_lookup_all(XFCE_RESOURCE_DATA, "applnk/");
