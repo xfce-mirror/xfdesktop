@@ -5,7 +5,7 @@ dnl
 
 AC_INIT([configure.ac])
 
-AM_INIT_AUTOMAKE([xfdesktop], [3.99.4])
+AM_INIT_AUTOMAKE([xfdesktop], [4.0.2])
 
 AM_CONFIG_HEADER([config.h])
 
@@ -27,17 +27,18 @@ AC_CHECK_HEADERS(fcntl.h signal.h stddef.h sys/wait.h time.h)
 AC_CHECK_FUNCS(sigaction srandom)
 
 dnl Check for i18n support
-BM_I18N([xfdesktop], [ca de es es_MX fi fr hu ja pl ko lt ms nl pt_PT ru ta tr zh_CN zh_TW])
+BM_I18N([xfdesktop], [az ca cs de es es_MX fi fr hi hu it ja pl ko lt ms nl
+	 pt_PT ru sv ta tr uk vi zh_CN zh_TW])
 
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE
 
-BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 3.99.4)
+BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.0.0)
 BM_DEPEND([LIBXML], libxml-2.0, 2.4.0)
-BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [3.99.4])
+BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [4.0.0])
 
 dnl Configure the MCS plugins
-XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [3.99.4])
+XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.0.0])
 
 dnl Check for debuggin support
 BM_DEBUG_SUPPORT
@@ -48,6 +49,8 @@ common/Makefile
 doc/Makefile
 doc/C/Makefile
 doc/C/images/Makefile
+doc/fr/Makefile
+doc/fr/images/Makefile
 Makefile
 po/Makefile.in
 settings/Makefile
