@@ -211,20 +211,23 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
     g_free(iter_to_insert);
   }else if (sd->target == gdk_atom_intern("text/plain", FALSE) && sd->data) {
     gchar *filename=NULL;
+    gchar *temp = NULL;
+    gchar *buf = NULL;
     GtkTreePath *path = NULL;
     GtkTreeViewDropPosition position;    
 
-    if(g_str_has_prefix(sd->data,"file://")){
-      gchar *source=&((sd->data)[7]);
+    if(g_str_has_prefix(sd->data,"file://"))
+      buf = g_build_filename(&(sd->data)[7], NULL);
+    else if(g_str_has_prefix(sd->data,"file:"))
+      buf = g_build_filename(&(sd->data)[5], NULL);
 
-      filename = g_strndup(source, strlen(sd->data)-8);
-      filename[strlen(filename)-1]='\0';
-    }else if(g_str_has_prefix(sd->data,"file:")){
-      gchar *source=&((sd->data)[5]);
-
-      filename = g_strndup(source, strlen(sd->data)-6);
-      filename[strlen(filename)-1]='\0';
-      }
+    /* Remove \n at the end of filename (if present) */
+    temp = strtok(buf, "\n");
+    if(!g_file_test(temp, G_FILE_TEST_EXISTS))
+      filename = g_strndup(temp, strlen(temp)-1);
+    else
+      filename = g_strdup(temp);
+    g_free(buf);
 
     if(gtk_tree_view_get_dest_row_at_pos(GTK_TREE_VIEW(widget), x, y, &path, &position)) {
       XfceDesktopEntry *de=NULL;
@@ -249,7 +252,9 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       node_target = g_value_get_pointer(&val);
 
       de = xfce_desktop_entry_new (filename, cat, 3);
-      g_return_if_fail (xfce_desktop_entry_parse(de));
+      if(!de)
+	return;
+
       g_return_if_fail (xfce_desktop_entry_get_string (de,
 						       "Name",
 						       TRUE,
@@ -281,8 +286,8 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
 	return;
       }
 
-      gtk_tree_store_insert_after (menueditor_app.treestore,
-				   &iter, NULL, &iter_target);
+      gtk_tree_store_insert_before (menueditor_app.treestore,
+				    &iter, NULL, &iter_target);
           
       name = g_strdup_printf(NAME_FORMAT, value_name);
       command = g_strdup_printf(COMMAND_FORMAT, value_command);
@@ -368,8 +373,8 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
 	return;
       }
 
-      gtk_tree_store_insert_after (menueditor_app.treestore,
-				   &iter, NULL, &iter_target);
+      gtk_tree_store_insert_before (menueditor_app.treestore,
+				    &iter, NULL, &iter_target);
           
       name = g_strdup_printf(NAME_FORMAT, value_name);
       command = g_strdup_printf(COMMAND_FORMAT, value_command);
