@@ -4,8 +4,8 @@
 noinst_LTLIBRARIES = libxfdesktop.la
 
 libxfdesktop_la_SOURCES =						\
-	background-common.c						\
-	background-common.h
+	backdrop-common.c						\
+	backdrop-common.h
 
 if BUILD_DESKTOP_MENU_STUB
 libxfdesktop_la_SOURCES += desktop-menu-stub.c desktop-menu-stub.h

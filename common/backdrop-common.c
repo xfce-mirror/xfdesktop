@@ -31,7 +31,7 @@
 #include <libxfce4util/debug.h>
 #include <libxfcegui4/dialogs.h>
 
-#include "background-common.h"
+#include "backdrop-common.h"
 
 gboolean
 is_backdrop_list (const char *path)

@@ -17,8 +17,8 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#ifndef __XFDESKTOP_BACKDROP_H__
-#define __XFDESKTOP_BACKDROP_H__
+#ifndef __XFDESKTOP_BACKDROP_COMMON_H__
+#define __XFDESKTOP_BACKDROP_COMMON_H__
 
 #include <glib.h>
 
@@ -27,19 +27,23 @@
 #define LIST_TEXT           "# xfce backdrop list"
 
 /* styles */
-typedef enum
-{
-    TILED,
+typedef enum {
+    TILED = 0,
     CENTERED,
     SCALED,
     STRETCHED,
     AUTO,
     NONE
-}
-XfceBackgroundStyle;
+} XfceBackdropStyle;
+
+typedef enum {
+	SOLID_COLOR = 0,
+	HORIZ_GRADIENT,
+	VERT_GRADIENT
+} XfceColorStyle;
 
 extern gchar **get_list_from_file (const gchar *);
 
 extern gboolean is_backdrop_list (const char *path);
 
-#endif /* !__XFDESKTOP_BACKDROP_H__ */
+#endif /* !__XFDESKTOP_BACKDROP_COMMON_H__ */
