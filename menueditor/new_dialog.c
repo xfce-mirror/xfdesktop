@@ -37,6 +37,7 @@ void menu_save_cb(GtkWidget *widget, gpointer data);
 /************/
 void new_menu_cb(GtkWidget *widget, gpointer data)
 {
+  MenuEditor *me;
   GtkWidget *dialog;
   GtkWidget *table;
   GtkWidget *header;
@@ -49,40 +50,42 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
   GtkWidget *hbox_filename;
   GtkWidget *button_browse;
 
-  /* is there any opened menu ? */
-  if(menueditor_app.xml_menu_file!=NULL){
-    dialog = gtk_message_dialog_new(GTK_WINDOW(menueditor_app.main_window),
-				    GTK_DIALOG_DESTROY_WITH_PARENT,
-				    GTK_MESSAGE_QUESTION,
-				    GTK_BUTTONS_YES_NO,
-				    _("Are you sure you want to close the current menu?"));
+  me = (MenuEditor *) data;
 
-    if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_NO){
-      gtk_widget_destroy(dialog);
+  /* is there any opened menu ? */
+  if (me->xml_menu_file){
+    dialog = gtk_message_dialog_new (GTK_WINDOW (me->main_window),
+				     GTK_DIALOG_DESTROY_WITH_PARENT,
+				     GTK_MESSAGE_QUESTION,
+				     GTK_BUTTONS_YES_NO,
+				     _("Are you sure you want to close the current menu?"));
+
+    if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_NO){
+      gtk_widget_destroy (dialog);
       return;
     }
     
-    gtk_widget_destroy(dialog);
+    gtk_widget_destroy (dialog);
   }
 
   /* Current menu has been modified, saving ? */
-  if(menueditor_app.menu_modified==TRUE){
-    dialog = gtk_message_dialog_new(GTK_WINDOW(menueditor_app.main_window),
-				    GTK_DIALOG_DESTROY_WITH_PARENT,
-				    GTK_MESSAGE_QUESTION,
-				    GTK_BUTTONS_YES_NO,
-				    _("Do you want to save before closing the file?"));
+  if(me->menu_modified){
+    dialog = gtk_message_dialog_new (GTK_WINDOW (me->main_window),
+				     GTK_DIALOG_DESTROY_WITH_PARENT,
+				     GTK_MESSAGE_QUESTION,
+				     GTK_BUTTONS_YES_NO,
+				     _("Do you want to save before closing the file?"));
 
-    if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES)
-      menu_save_cb(widget,data);
+    if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
+      menu_save_cb (widget, data);
 
-    gtk_widget_destroy(dialog);
+    gtk_widget_destroy (dialog);
   }
 
   /* get the filename and name for the new menu */
   
   dialog = gtk_dialog_new_with_buttons(_("New menu"),
-				       GTK_WINDOW(menueditor_app.main_window),
+				       GTK_WINDOW (me->main_window),
 				       GTK_DIALOG_DESTROY_WITH_PARENT,
 				       GTK_STOCK_CANCEL,
 				       GTK_RESPONSE_CANCEL,
@@ -135,7 +138,7 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
       /* Test if all field are filled */
       if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_filename)))==0 ||
 	 strlen(gtk_entry_get_text(GTK_ENTRY(entry_title)))==0){
-	GtkWidget *dialog_warning = gtk_message_dialog_new (GTK_WINDOW(menueditor_app.main_window),
+	GtkWidget *dialog_warning = gtk_message_dialog_new (GTK_WINDOW (me->main_window),
 							    GTK_DIALOG_DESTROY_WITH_PARENT,
 							    GTK_MESSAGE_WARNING,
 							    GTK_BUTTONS_OK,
@@ -146,45 +149,45 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
 	return;
       }
 
-      gtk_tree_store_clear(GTK_TREE_STORE(menueditor_app.treestore));
+      gtk_tree_store_clear (GTK_TREE_STORE (me->treestore));
 
       /* Create the new xml file */
-      g_stpcpy(menueditor_app.menu_file_name,gtk_entry_get_text(GTK_ENTRY(entry_filename)));
-      xml_empty_file = fopen(menueditor_app.menu_file_name,"w");
-      fprintf(xml_empty_file,"%s\n",empty_xml);
-      fclose(xml_empty_file);
+      g_stpcpy(me->menu_file_name, gtk_entry_get_text (GTK_ENTRY (entry_filename)));
+      xml_empty_file = fopen (me->menu_file_name, "w");
+      fprintf (xml_empty_file, "%s\n", empty_xml);
+      fclose (xml_empty_file);
 
       /* Add the node to the tree */
-      menueditor_app.xml_menu_file = xmlParseFile(menueditor_app.menu_file_name);
-      root_node = xmlDocGetRootElement(menueditor_app.xml_menu_file);
+      me->xml_menu_file = xmlParseFile (me->menu_file_name);
+      root_node = xmlDocGetRootElement (me->xml_menu_file);
 
-      if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_title)))!=0){
-	title_node = xmlNewNode(NULL,"title");
-	xmlSetProp(title_node,"name",gtk_entry_get_text(GTK_ENTRY(entry_title)));
-	xmlSetProp(title_node,"visible","yes");
+      if (strlen (gtk_entry_get_text (GTK_ENTRY (entry_title))) != 0){
+	title_node = xmlNewNode (NULL, "title");
+	xmlSetProp (title_node, "name", gtk_entry_get_text (GTK_ENTRY (entry_title)));
+	xmlSetProp (title_node, "visible", "yes");
 	
 	xmlAddChild(root_node, title_node);
 
-	gtk_tree_store_append (menueditor_app.treestore, &p, NULL);
-	gtk_tree_store_set (menueditor_app.treestore, &p, 0, NULL,
-			    NAME_COLUMN, gtk_entry_get_text(GTK_ENTRY(entry_title)),
+	gtk_tree_store_append (me->treestore, &p, NULL);
+	gtk_tree_store_set (me->treestore, &p, 0, NULL,
+			    NAME_COLUMN, gtk_entry_get_text (GTK_ENTRY (entry_title)),
 			    COMMAND_COLUMN, "", POINTER_COLUMN, title_node, -1);
       }
     
       /* Terminate operations */
-      gtk_tree_view_expand_all (GTK_TREE_VIEW(menueditor_app.treeview));
+      gtk_tree_view_expand_all (GTK_TREE_VIEW(me->treeview));
     
-      menueditor_app.menu_modified=TRUE;
-      gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
-      gtk_widget_set_sensitive(menueditor_app.main_toolbar.close,TRUE);
-      gtk_widget_set_sensitive(menueditor_app.main_toolbar.add,TRUE);
+      me->menu_modified = TRUE;
+      gtk_widget_set_sensitive (me->toolbar_save, TRUE);
+      gtk_widget_set_sensitive (me->toolbar_close, TRUE);
+      gtk_widget_set_sensitive (me->toolbar_add, TRUE);
       
-      gtk_widget_set_sensitive(menueditor_app.edit_menu.menu_item,TRUE);
+      gtk_widget_set_sensitive (me->edit_menu_item, TRUE);
     
-      gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
-      gtk_widget_set_sensitive(menueditor_app.file_menu.saveas,TRUE);
-      gtk_widget_set_sensitive(menueditor_app.file_menu.close,TRUE);
-      gtk_widget_set_sensitive(menueditor_app.treeview,TRUE);
+      gtk_widget_set_sensitive (me->file_menu_save, TRUE);
+      gtk_widget_set_sensitive (me->file_menu_saveas, TRUE);
+      gtk_widget_set_sensitive (me->file_menu_close, TRUE);
+      gtk_widget_set_sensitive (me->treeview, TRUE);
   }
 
   gtk_widget_destroy (dialog);

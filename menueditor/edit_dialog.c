@@ -53,8 +53,9 @@ void editmenu_option_system_cb (GtkWidget *widget, struct _controls_menu *contro
   gtk_widget_set_sensitive(controls->checkbutton_unique,TRUE);
 }
 
-void edit_selection(GtkTreeSelection *selection)
+void edit_selection (GtkTreeSelection *selection, gpointer data)
 {
+  MenuEditor *me;
   xmlNodePtr node;
   GtkTreeModel *model;
   GtkTreeIter iter;
@@ -85,10 +86,12 @@ void edit_selection(GtkTreeSelection *selection)
   xmlChar *prop_style = NULL;
   xmlChar *prop_unique = NULL;
 
+  me = (MenuEditor *) data;
+
   /* Retrieve the xmlNodePtr of the menu entry */
   gtk_tree_selection_get_selected (selection, &model, &iter);
 	
-  gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, POINTER_COLUMN, &val);
+  gtk_tree_model_get_value (GTK_TREE_MODEL (me->treestore), &iter, POINTER_COLUMN, &val);
   node = g_value_get_pointer(&val);
 
   if(!node){
@@ -98,7 +101,7 @@ void edit_selection(GtkTreeSelection *selection)
 
   /* Create dialog for editing */
   dialog = gtk_dialog_new_with_buttons(_("Edit menu entry"),
-				       GTK_WINDOW(menueditor_app.main_window),
+				       GTK_WINDOW (me->main_window),
 				       GTK_DIALOG_DESTROY_WITH_PARENT,
 				       GTK_STOCK_CANCEL,
 				       GTK_RESPONSE_CANCEL,
@@ -421,7 +424,6 @@ void edit_selection(GtkTreeSelection *selection)
   /* Commit change if needed */
   while((response = gtk_dialog_run (GTK_DIALOG (dialog)))){
     if(response == GTK_RESPONSE_OK){
-      XfceIconTheme *icontheme = xfce_icon_theme_get_for_screen (NULL);
       gchar *name = NULL;
       gchar *command = NULL;
 
@@ -429,7 +431,7 @@ void edit_selection(GtkTreeSelection *selection)
       GdkPixbuf *icon = NULL;
       
       /* unref the icon */
-      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, ICON_COLUMN, &val_icon);
+      gtk_tree_model_get_value (GTK_TREE_MODEL (me->treestore), &iter, ICON_COLUMN, &val_icon);
       icon = g_value_get_object(&val_icon);
 
       if(icon){
@@ -439,7 +441,7 @@ void edit_selection(GtkTreeSelection *selection)
 
       /* set the new icon if there is one otherwise use the dummy one */
       if( (icon_entry && strlen (gtk_entry_get_text (GTK_ENTRY (icon_entry))) != 0) ){
-	icon = xfce_icon_theme_load (icontheme, (gchar*) gtk_entry_get_text (GTK_ENTRY (icon_entry)), ICON_SIZE);
+	icon = xfce_icon_theme_load (me->icon_theme, (gchar*) gtk_entry_get_text (GTK_ENTRY (icon_entry)), ICON_SIZE);
 	if(!icon)
 	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
@@ -541,17 +543,17 @@ void edit_selection(GtkTreeSelection *selection)
     
       }
 
-      gtk_tree_store_set (menueditor_app.treestore, &iter, 
+      gtk_tree_store_set (me->treestore, &iter, 
 			  ICON_COLUMN, icon,
 			  NAME_COLUMN, name,
 			  COMMAND_COLUMN, command, -1);
       
-      g_free(name);
-      g_free(command);
+      g_free (name);
+      g_free (command);
 
-      menueditor_app.menu_modified=TRUE;
-      gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
-      gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
+      me->menu_modified = TRUE;
+      gtk_widget_set_sensitive (me->file_menu_save, TRUE);
+      gtk_widget_set_sensitive (me->toolbar_save, TRUE);
       break;
     }else{
       break;
@@ -573,11 +575,17 @@ void edit_selection(GtkTreeSelection *selection)
 /* Edition */
 void popup_edit_cb(GtkWidget *widget, gpointer data)
 {
-  edit_selection(gtk_tree_view_get_selection (GTK_TREE_VIEW (menueditor_app.treeview)));
+  MenuEditor *me;
+
+  me = (MenuEditor *) data;
+  edit_selection(gtk_tree_view_get_selection (GTK_TREE_VIEW (me->treeview)), data);
 }
 
 void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColumn *col, gpointer data)
 {
-  edit_selection(gtk_tree_view_get_selection (GTK_TREE_VIEW (menueditor_app.treeview)));
+  MenuEditor *me;
+
+  me = (MenuEditor *) data;
+  edit_selection(gtk_tree_view_get_selection (GTK_TREE_VIEW (me->treeview)), data);
 }
 

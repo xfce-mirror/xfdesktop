@@ -56,6 +56,7 @@ void addmenu_option_system_cb (GtkWidget *widget, struct _controls_menu *control
 
 void add_menu_cb (GtkWidget *widget, gpointer data)
 {
+  MenuEditor *me;
   GtkWidget *dialog;
   GtkWidget *header;
   GtkWidget *mitem;
@@ -73,8 +74,10 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 
   gchar *header_text;
 
+  me = (MenuEditor *) data;
+
   dialog = gtk_dialog_new_with_buttons(_("Add an external menu"),
-				       GTK_WINDOW(menueditor_app.main_window),
+				       GTK_WINDOW (me->main_window),
 				       GTK_DIALOG_DESTROY_WITH_PARENT,
 				       GTK_STOCK_CANCEL,
 				       GTK_RESPONSE_CANCEL,
@@ -174,26 +177,26 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
       GdkPixbuf *icon = NULL;
       xmlNodePtr node = NULL, root_node = NULL, selection_node = NULL;
       GtkTreeIter iter, selection_iter, parent;
-      GtkTreeModel *tree_model = GTK_TREE_MODEL(menueditor_app.treestore);
+      GtkTreeModel *tree_model = GTK_TREE_MODEL (me->treestore);
       GValue val = { 0, };
       gboolean ret_selection, is_menu = FALSE;
       gchar *name = NULL;
       gchar *source = NULL;
 
       /* use the dummy icon for same height as the others entries */
-      icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
+      icon = xfce_inline_icon_at_size (dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
       /* Retrieve the root node of the xml tree */
-      root_node = xmlDocGetRootElement(menueditor_app.xml_menu_file);
+      root_node = xmlDocGetRootElement (me->xml_menu_file);
 
       /* Retrieve the selected item */
-      ret_selection = gtk_tree_selection_get_selected (gtk_tree_view_get_selection(GTK_TREE_VIEW(menueditor_app.treeview)),
+      ret_selection = gtk_tree_selection_get_selected (gtk_tree_view_get_selection (GTK_TREE_VIEW (me->treeview)),
 						       &tree_model,
 						       &selection_iter);
       /* Check if the entry is a submenu */
       if(ret_selection){
-	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &selection_iter, POINTER_COLUMN, &val);
-	selection_node = g_value_get_pointer(&val);
+	gtk_tree_model_get_value (GTK_TREE_MODEL (me->treestore), &selection_iter, POINTER_COLUMN, &val);
+	selection_node = g_value_get_pointer (&val);
 	if(!xmlStrcmp(selection_node->name,(xmlChar*)"menu")){
 	  parent = selection_iter;
 	  is_menu = TRUE;
@@ -242,7 +245,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 	  xmlFreeNode(node);
 	  continue;
 	}
-	gtk_tree_store_append (menueditor_app.treestore, &iter, NULL);
+	gtk_tree_store_append (me->treestore, &iter, NULL);
       }else{
 	if(is_menu){
 	  if(xmlAddChild(selection_node, node) == NULL){
@@ -250,9 +253,8 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 	    xmlFreeNode(node);
 	    continue;
 	  }
-	  gtk_tree_store_append (menueditor_app.treestore,
-				 &iter, &parent);
-	  gtk_tree_view_expand_all (GTK_TREE_VIEW(menueditor_app.treeview));
+	  gtk_tree_store_append (me->treestore, &iter, &parent);
+	  gtk_tree_view_expand_all (GTK_TREE_VIEW(me->treeview));
 	}else{
 
 	  if(xmlAddNextSibling(selection_node, node) == NULL){
@@ -260,24 +262,23 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 	    xmlFreeNode(node);
 	    continue;
 	  }
-	  gtk_tree_store_insert_after (menueditor_app.treestore,
-				       &iter, NULL, &selection_iter);
+	  gtk_tree_store_insert_after (me->treestore, &iter, NULL, &selection_iter);
 	}
       }
 
-      gtk_tree_store_set (menueditor_app.treestore, &iter, 
+      gtk_tree_store_set (me->treestore, &iter, 
 			  ICON_COLUMN, icon, 
 			  NAME_COLUMN, name, 
 			  COMMAND_COLUMN, source,
 			  POINTER_COLUMN, node, -1);
 
-      menueditor_app.menu_modified=TRUE;
-      gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
-      gtk_widget_set_sensitive(menueditor_app.file_menu.saveas,TRUE);
-      gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
+      me->menu_modified = TRUE;
+      gtk_widget_set_sensitive (me->file_menu_save, TRUE);
+      gtk_widget_set_sensitive (me->file_menu_saveas, TRUE);
+      gtk_widget_set_sensitive (me->toolbar_save, TRUE);
 
-      g_free(name);
-      g_free(source);
+      g_free (name);
+      g_free (source);
 
       break;
     }else{

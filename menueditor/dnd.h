@@ -24,9 +24,9 @@
 /* Prototypes */
 void treeview_drag_data_get_cb(GtkWidget *widget, GdkDragContext *dc, 
 			       GtkSelectionData *data, guint info,
-			       guint time, gpointer *null);
+			       guint time, gpointer user_data);
 void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
 			       guint x, guint y, GtkSelectionData *sd,
-			       guint info, guint t);
+			       guint info, guint t, gpointer user_data);
 
 #endif

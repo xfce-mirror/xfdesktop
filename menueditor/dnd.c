@@ -51,8 +51,12 @@ inline void show_str(char *str)
 
 void treeview_drag_data_get_cb(GtkWidget *widget, GdkDragContext *dc, 
 			       GtkSelectionData *data, guint info,
-			       guint time, gpointer *null)
+			       guint time, gpointer user_data)
 {
+  MenuEditor *me;
+
+  me = (MenuEditor *) user_data;
+
   if (data->target == gdk_atom_intern("XFCE_MENU_ENTRY", FALSE)) {
     GtkTreeRowReference *ref = g_object_get_data(G_OBJECT(dc), "gtk-tree-view-source-row");
     GtkTreePath *sourcerow = gtk_tree_row_reference_get_path(ref);
@@ -61,7 +65,7 @@ void treeview_drag_data_get_cb(GtkWidget *widget, GdkDragContext *dc,
     if(!sourcerow)
       return;
 
-    gtk_tree_model_get_iter(GTK_TREE_MODEL(menueditor_app.treestore), iter, sourcerow);
+    gtk_tree_model_get_iter (GTK_TREE_MODEL (me->treestore), iter, sourcerow);
 
     gtk_selection_data_set (data,
 			    gdk_atom_intern ("XFCE_MENU_ENTRY", FALSE),
@@ -75,9 +79,11 @@ void treeview_drag_data_get_cb(GtkWidget *widget, GdkDragContext *dc,
 
 void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
 			       guint x, guint y, GtkSelectionData *sd,
-			       guint info, guint t)
+			       guint info, guint t, gpointer user_data)
 {
-  XfceIconTheme *icontheme = xfce_icon_theme_get_for_screen (NULL);
+  MenuEditor *me;
+
+  me = (MenuEditor *) user_data;
 
   if (sd->target == gdk_atom_intern("XFCE_MENU_ENTRY", FALSE) && sd->data) {
     GtkTreeIter *iter_to_insert = NULL;
@@ -102,13 +108,11 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       xmlChar *prop_cmd = NULL;
       xmlChar *prop_src = NULL;
 
-      path_to_insert = gtk_tree_model_get_path(GTK_TREE_MODEL(menueditor_app.treestore), iter_to_insert);
+      path_to_insert = gtk_tree_model_get_path (GTK_TREE_MODEL (me->treestore), iter_to_insert);
 
-      gtk_tree_model_get_iter(GTK_TREE_MODEL(menueditor_app.treestore),
-                              &iter, path);
+      gtk_tree_model_get_iter (GTK_TREE_MODEL (me->treestore), &iter, path);
 
-      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore),
-                                &iter, POINTER_COLUMN, &val1);
+      gtk_tree_model_get_value (GTK_TREE_MODEL (me->treestore), &iter, POINTER_COLUMN, &val1);
       node_sibling = g_value_get_pointer(&val1);
       if(!node_sibling){
 	gtk_drag_finish(dc, FALSE, (dc->action == GDK_ACTION_MOVE), t);
@@ -117,12 +121,10 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
 	return;
       }
 
-      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore),
-                                iter_to_insert, POINTER_COLUMN, &val2);
+      gtk_tree_model_get_value (GTK_TREE_MODEL (me->treestore), iter_to_insert, POINTER_COLUMN, &val2);
       node_to_insert = g_value_get_pointer(&val2);
 
-      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore),
-                                iter_to_insert, ICON_COLUMN, &val3);
+      gtk_tree_model_get_value (GTK_TREE_MODEL (me->treestore), iter_to_insert, ICON_COLUMN, &val3);
       icon = g_value_get_object(&val3);
 
       prop_name = xmlGetProp(node_to_insert, "name");
@@ -165,8 +167,7 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       /* move in the gtk and xml tree */
       switch(gtk_tree_path_compare(path, path_to_insert)){
       case -1:
-	gtk_tree_store_insert_before(menueditor_app.treestore, &iter_new, NULL,
-				     &iter);
+	gtk_tree_store_insert_before (me->treestore, &iter_new, NULL, &iter);
 	xmlAddPrevSibling(node_sibling, node_to_insert);
 	break;
       case 0:
@@ -176,13 +177,12 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
 	gtk_drag_finish(dc, FALSE, (dc->action == GDK_ACTION_MOVE), t);
 	return;
       case 1:
-	gtk_tree_store_insert_after(menueditor_app.treestore, &iter_new, NULL,
-				    &iter);
-	xmlAddNextSibling(node_sibling, node_to_insert);
+	gtk_tree_store_insert_after (me->treestore, &iter_new, NULL, &iter);
+	xmlAddNextSibling (node_sibling, node_to_insert);
       }
 
 
-      gtk_tree_store_set (menueditor_app.treestore, &iter_new,
+      gtk_tree_store_set (me->treestore, &iter_new,
 			  ICON_COLUMN, icon,
 			  NAME_COLUMN, str_name,
 			  COMMAND_COLUMN, str_command,
@@ -191,13 +191,13 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
 
       if(!xmlStrcmp(node_to_insert->name,"menu")){
 	load_menu_in_tree(node_to_insert->xmlChildrenNode, &iter_new);
-	gtk_tree_view_expand_all (GTK_TREE_VIEW(menueditor_app.treeview));      
+	gtk_tree_view_expand_all (GTK_TREE_VIEW (me->treeview));      
       }
 
       /* Modified ! */
-      menueditor_app.menu_modified=TRUE;
-      gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
-      gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
+      me->menu_modified = TRUE;
+      gtk_widget_set_sensitive (me->file_menu_save, TRUE);
+      gtk_widget_set_sensitive (me->toolbar_save, TRUE);
 
       xmlFree(prop_name);
       xmlFree(prop_cmd);
@@ -250,11 +250,9 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       gboolean icon_found = FALSE;
       GdkPixbuf *icon = NULL;
 
-      gtk_tree_model_get_iter(GTK_TREE_MODEL(menueditor_app.treestore),
-                              &iter_target, path);
+      gtk_tree_model_get_iter (GTK_TREE_MODEL (me->treestore), &iter_target, path);
 
-      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore),
-                                &iter_target, POINTER_COLUMN, &val);
+      gtk_tree_model_get_value (GTK_TREE_MODEL (me->treestore), &iter_target, POINTER_COLUMN, &val);
       node_target = g_value_get_pointer(&val);
 
       de = xfce_desktop_entry_new (filename, cat, 3);
@@ -281,9 +279,9 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       xmlSetProp(node, "cmd", value_command);
       if(icon_found){
 	xmlSetProp(node, "icon", value_icon);
-	icon = xfce_icon_theme_load(icontheme, value_icon, ICON_SIZE);
+	icon = xfce_icon_theme_load (me->icon_theme, value_icon, ICON_SIZE);
       }else
-	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
+	icon = xfce_inline_icon_at_size (dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
       if(xmlAddPrevSibling(node_target, node) == NULL){
 	perror("xmlAddPrevSibling");
@@ -292,13 +290,12 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
 	return;
       }
 
-      gtk_tree_store_insert_before (menueditor_app.treestore,
-				    &iter, NULL, &iter_target);
+      gtk_tree_store_insert_before (me->treestore, &iter, NULL, &iter_target);
           
       name = g_strdup_printf(NAME_FORMAT, value_name);
       command = g_strdup_printf(COMMAND_FORMAT, value_command);
 
-      gtk_tree_store_set (menueditor_app.treestore, &iter, 
+      gtk_tree_store_set (me->treestore, &iter, 
 			  ICON_COLUMN, icon, 
 			  NAME_COLUMN, name, 
 			  COMMAND_COLUMN, command,
@@ -312,9 +309,9 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       g_object_unref (G_OBJECT (de));
 
       /* Modified ! */
-      menueditor_app.menu_modified=TRUE;
-      gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
-      gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
+      me->menu_modified = TRUE;
+      gtk_widget_set_sensitive (me->file_menu_save, TRUE);
+      gtk_widget_set_sensitive (me->toolbar_save, TRUE);
     }
 
     g_free(filename);
@@ -339,11 +336,9 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       gboolean icon_found = FALSE;
       GdkPixbuf *icon = NULL;
 
-      gtk_tree_model_get_iter(GTK_TREE_MODEL(menueditor_app.treestore),
-                              &iter_target, path);
+      gtk_tree_model_get_iter(GTK_TREE_MODEL (me->treestore), &iter_target, path);
 
-      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore),
-                                &iter_target, POINTER_COLUMN, &val);
+      gtk_tree_model_get_value (GTK_TREE_MODEL (me->treestore), &iter_target, POINTER_COLUMN, &val);
       node_target = g_value_get_pointer(&val);
 
       de = xfce_desktop_entry_new_from_data (sd->data, cat, 3);
@@ -367,9 +362,9 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       xmlSetProp(node, "cmd", value_command);
       if(icon_found){
 	xmlSetProp(node, "icon", value_icon);
-	icon = xfce_icon_theme_load(icontheme, value_icon, ICON_SIZE);
+	icon = xfce_icon_theme_load (me->icon_theme, value_icon, ICON_SIZE);
       }else
-	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
+	icon = xfce_inline_icon_at_size (dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
       if(xmlAddPrevSibling(node_target, node) == NULL){
 	perror("xmlAddPrevSibling");
@@ -378,32 +373,31 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
 	return;
       }
 
-      gtk_tree_store_insert_before (menueditor_app.treestore,
-				    &iter, NULL, &iter_target);
+      gtk_tree_store_insert_before (me->treestore, &iter, NULL, &iter_target);
           
       name = g_strdup_printf(NAME_FORMAT, value_name);
       command = g_strdup_printf(COMMAND_FORMAT, value_command);
 
-      gtk_tree_store_set (menueditor_app.treestore, &iter, 
+      gtk_tree_store_set (me->treestore, &iter, 
 			  ICON_COLUMN, icon, 
 			  NAME_COLUMN, name, 
 			  COMMAND_COLUMN, command,
 			  POINTER_COLUMN, node, -1);
 
-      g_free(value_name);
-      g_free(value_command);
-      g_free(value_icon);
-      g_free(name);
-      g_free(command);
+      g_free (value_name);
+      g_free (value_command);
+      g_free (value_icon);
+      g_free (name);
+      g_free (command);
       g_object_unref (G_OBJECT (de));
 
       /* Modified ! */
-      menueditor_app.menu_modified=TRUE;
-      gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
-      gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
+      me->menu_modified = TRUE;
+      gtk_widget_set_sensitive (me->file_menu_save, TRUE);
+      gtk_widget_set_sensitive (me->toolbar_save, TRUE);
     }
 
-    gtk_drag_finish(dc, TRUE, (dc->action == GDK_ACTION_COPY), t);
+    gtk_drag_finish (dc, TRUE, (dc->action == GDK_ACTION_COPY), t);
   }
 
 }

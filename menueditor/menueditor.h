@@ -33,8 +33,6 @@
 #include <libxml/parser.h>
 
 /* includes for xfce4 */
-#include <libxfce4mcs/mcs-client.h>
-#include <libxfcegui4/icons.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfce4util/libxfce4util.h>
 
@@ -48,80 +46,67 @@
 #define INCLUDE_FORMAT "<span style='italic' color='dark green'>%s</span>"
 #define INCLUDE_PATH_FORMAT "<span style='italic' color='dark green'>%s</span>"
 
-/* definitions for mcsclient */
-#ifndef PATH_MAX
-#define PATH_MAX 4096
-#endif
-#define CHANNEL "xfce"
-
 #define ICON_SIZE 24
 
 /***********/
 /* Globals */
 /***********/
-/*static guchar icon_size = 24; uuugh... this is a h file */
+void browse_command_cb (GtkWidget *widget, GtkEntry *entry_command, gpointer data);
+void browse_icon_cb (GtkWidget *widget, GtkEntry *entry_icon, gpointer data);
+gboolean command_exists (const gchar *command);
 
-void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command);
-void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon);
-gboolean command_exists(const gchar *command);
+enum {ICON_COLUMN, NAME_COLUMN, COMMAND_COLUMN, HIDDEN_COLUMN,
+      POINTER_COLUMN, NUM_COLUMNS};
 
-enum {ICON_COLUMN, NAME_COLUMN, COMMAND_COLUMN, HIDDEN_COLUMN, POINTER_COLUMN};
+typedef struct _menueditor_app MenuEditor;
 
 struct _menueditor_app{
   gboolean menu_modified;
   gchar menu_file_name[255];
   xmlDocPtr xml_menu_file;
+
+  XfceIconTheme *icon_theme;
   GtkWidget *main_window;
+
   /* AccelGroup */
   GtkAccelGroup *accel_group;
+
   /* Tree */
   GtkWidget *treeview;
   GtkTreeStore *treestore;
-  /* Menus */
-  GtkWidget* main_menubar;
-     struct _file_menu{
-       GtkWidget* menu;
-       GtkWidget* menu_item;
-       GtkWidget* new;
-       GtkWidget* open;
-       GtkWidget* open_default;
-       GtkWidget* save;
-       GtkWidget* saveas;
-       GtkWidget* close;
-       GtkWidget* exit;
-     } file_menu;
 
-     struct _edit_menu{
-       GtkWidget* menu;
-       GtkWidget* menu_item;
-       GtkWidget* add;
-       GtkWidget* add_menu;
-       GtkWidget* del;
-       GtkWidget* up;
-       GtkWidget* down;
-     } edit_menu;
-  
-     struct _help_menu{
-       GtkWidget* menu;
-       GtkWidget* menu_item;
-       GtkWidget* about;
-     } help_menu;
+  /* Menus */
+  GtkWidget *file_menu_item;
+  GtkWidget *file_menu_new;
+  GtkWidget *file_menu_open;
+  GtkWidget *file_menu_default;
+  GtkWidget *file_menu_save;
+  GtkWidget *file_menu_saveas;
+  GtkWidget *file_menu_close;
+  GtkWidget *file_menu_exit;
+
+  GtkWidget *edit_menu_item;
+  GtkWidget *edit_menu_add;
+  GtkWidget *edit_menu_add_menu;
+  GtkWidget *edit_menu_del;
+  GtkWidget *edit_menu_up;
+  GtkWidget *edit_menu_down;
+
+  GtkWidget *help_menu_item;
+  GtkWidget *help_menu_about;
+
   /* Toolbar */
-     struct _main_toolbar{
-       GtkWidget* toolbar;
-       GtkWidget* new;
-       GtkWidget* open;
-       GtkWidget* save;
-       GtkWidget* close;
-       GtkWidget* collapse;
-       GtkWidget* expand;
-       GtkWidget* add;
-       GtkWidget* del;
-       GtkWidget* up;
-       GtkWidget* down;
-     } main_toolbar;
-  
-} menueditor_app;
+  GtkWidget *toolbar_new;
+  GtkWidget *toolbar_open;
+  GtkWidget *toolbar_save;
+  GtkWidget *toolbar_close;
+  GtkWidget *toolbar_collapse;
+  GtkWidget *toolbar_expand;
+  GtkWidget *toolbar_add;
+  GtkWidget *toolbar_del;
+  GtkWidget *toolbar_up;
+  GtkWidget *toolbar_down;
+};
 
 
 #endif

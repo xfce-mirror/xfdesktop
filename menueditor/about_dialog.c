@@ -26,52 +26,34 @@
 /*************/
 void about_cb(GtkWidget *widget, gpointer data)
 {
-  XfceIconTheme *icontheme = xfce_icon_theme_get_for_screen (NULL);
+  MenuEditor *me;
   XfceAboutInfo *info;
   GtkWidget *dialog;
   GdkPixbuf *icon;
 
-  info = xfce_about_info_new(
-      "xfce4-menueditor",
-      VERSION,
-      _("A menu editor for Xfce4"),
-      XFCE_COPYRIGHT_TEXT("2004", "Jean-Francois Wauthy"),
-      XFCE_LICENSE_GPL);
-  xfce_about_info_set_homepage(info, "http://www.xfce.org/");
+  me = (MenuEditor *) data;
+
+  info = xfce_about_info_new ("xfce4-menueditor",   VERSION, _("A menu editor for Xfce4"),
+			      XFCE_COPYRIGHT_TEXT ("2004", "Xfce Dev Team"), XFCE_LICENSE_GPL);
+  xfce_about_info_set_homepage (info, "http://www.xfce.org/");
 
   /* Credits */
-  xfce_about_info_add_credit(info,
-			     "Jean-Francois Wauthy",
-			     "pollux@xfce.org",
-			     _("Core developer"));
-  xfce_about_info_add_credit(info,
-			     "Brian Tarricone",
-			     "bjt23@cornell.edu",
-			     _("Contributor"));
-  xfce_about_info_add_credit(info,
-			     "Danny Milosavljevic",
-			     "danny.milo@gmx.net",
-			     _("Contributor"));
-  xfce_about_info_add_credit(info,
-			     "Jens Luedicke",
-			     "perldude@lunar-linux.org",
-			     _("Contributor"));
-  xfce_about_info_add_credit(info,
-			     "Francois Le Clainche",
-			     "fleclainche@wanadoo.fr",
-			     _("Icon designer"));
+  xfce_about_info_add_credit (info, "Jean-Francois Wauthy", "pollux@xfce.org", _("Core developer"));
+  xfce_about_info_add_credit (info, "Brian Tarricone", "bjt23@cornell.edu", _("Contributor"));
+  xfce_about_info_add_credit (info, "Danny Milosavljevic", "danny.milo@gmx.net", _("Contributor"));
+  xfce_about_info_add_credit (info, "Jens Luedicke", "perldude@lunar-linux.org", _("Contributor"));
+  xfce_about_info_add_credit (info, "Francois Le Clainche", "fleclainche@xfce.org", _("Icon designer"));
 
-  icon = xfce_icon_theme_load (icontheme, "xfce4-menueditor" , 48);
+  icon = xfce_icon_theme_load (me->icon_theme, "xfce4-menueditor" , 48);
 
-  dialog = xfce_about_dialog_new(GTK_WINDOW(menueditor_app.main_window), 
-				 info, icon);
+  dialog = xfce_about_dialog_new (GTK_WINDOW (me->main_window), info, icon);
 
-  gtk_window_set_default_size(GTK_WINDOW(dialog),500,400);
-  xfce_about_info_free(info);
+  gtk_window_set_default_size (GTK_WINDOW (dialog),500,400);
+  xfce_about_info_free (info);
 
-  gtk_dialog_run(GTK_DIALOG(dialog));
+  gtk_dialog_run (GTK_DIALOG (dialog));
   
-  gtk_widget_destroy(dialog);
+  gtk_widget_destroy (dialog);
 
-  g_object_unref(icon);
+  g_object_unref (icon);
 }
