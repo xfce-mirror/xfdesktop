@@ -475,7 +475,7 @@ void menu_open_default_cb(GtkWidget *widget, gpointer data)
     menueditor_app.xml_menu_file=NULL;
   }
 
-  home_menu = g_build_filename(xfce_get_userdir(), G_DIR_SEPARATOR_S, "menu.xml", NULL);
+  home_menu = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,"xfce4/desktop/menu.xml", TRUE);
 
   if(g_file_test(home_menu, G_FILE_TEST_EXISTS))
     open_menu_file(home_menu);
@@ -1319,7 +1319,7 @@ static gchar* get_default_menu_file ()
 	const gchar *env = g_getenv("XFCE_DISABLE_USER_CONFIG");
 
 	if(!env || !strcmp(env, "0")) {
-		gchar *usermenu = xfce_get_userfile("menu.xml", NULL);
+		gchar *usermenu = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,"xfce4/desktop/menu.xml", FALSE);
 		if(g_file_test(usermenu, G_FILE_TEST_IS_REGULAR))
 			return usermenu;
 		g_free(usermenu);
