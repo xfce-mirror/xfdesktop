@@ -796,7 +796,7 @@ void create_main_window()
   /* Window */
   menueditor_app.main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title(GTK_WINDOW(menueditor_app.main_window),
-		       "XFce4-MenuEditor");
+		       "Xfce4-MenuEditor");
   g_signal_connect(G_OBJECT(menueditor_app.main_window), "delete_event",
 		     G_CALLBACK(confirm_quit_cb), NULL);
   gtk_window_set_default_size(GTK_WINDOW(menueditor_app.main_window),600,450);
@@ -1192,7 +1192,7 @@ void open_menu_file(gchar *menu_file)
   menueditor_app.menu_modified=FALSE;
 
   /* Set window's title */
-  window_title = g_strdup_printf("XFce4-MenuEditor - %s", menu_file);
+  window_title = g_strdup_printf("Xfce4-MenuEditor - %s", menu_file);
   gtk_window_set_title(GTK_WINDOW(menueditor_app.main_window), window_title);
   g_free(window_title);
 }
