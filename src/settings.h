@@ -20,16 +20,19 @@
 #ifndef __XFDESKTOP_SETTING__
 #define __XFDESKTOP_SETTING__
 
+#include <libxfce4mcs/mcs-client.h>
 #include "main.h"
 
-typedef void (*ChannelCallback) (const char *name, McsAction action,
-				 McsSetting * setting,
-				 XfceDesktop * xfdesktop);
+typedef void (*ChannelCallback)(const char *channel_name, McsClient *client,
+		McsAction action, McsSetting *setting);
 
-void settings_init (XfceDesktop * xfdesktop);
+void settings_init_global();
+void settings_cleanup_global();
 
-void settings_cleanup (XfceDesktop * xfdesktop);
+void settings_init(XfceDesktop *xfdesktop);
 
-void register_channel_callback (XfceDesktop *xfdesktop, const char *name, ChannelCallback callback);
+void register_channel(const char *channel_name, ChannelCallback callback);
+
+extern McsClient *mcs_client;
 
 #endif /* !__XFDESKTOP_SETTING__ */

@@ -23,22 +23,21 @@
 #include <X11/Xlib.h>
 #include <gtk/gtkwidget.h>
 #include <libxfcegui4/netk-screen.h>
-#include <libxfce4mcs/mcs-common.h>
-#include <libxfce4mcs/mcs-client.h>
 
-typedef struct
-{
-    Display *dpy;
+#include "backdrop.h"
+
+typedef struct {
     int xscreen;
     Window root;
 
     NetkScreen *netk_screen;
     GtkWidget *fullscreen;
+	XfceBackdrop *backdrop;
+	
+	McsClient *client;  /* this will be a pointer to the global McsClient */
+} XfceDesktop;
 
-    McsClient *client;
-	GHashTable *settings_hash;
-}
-XfceDesktop;
+extern GList *desktops;
 
 extern void quit (void);
 

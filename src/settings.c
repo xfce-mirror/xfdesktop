@@ -1,6 +1,7 @@
 /*  xfce4
  *  
  *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
+ *                     2004 Brian Tarricone <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -48,19 +49,16 @@
 
 #include "settings.h"
 
-void
-register_channel_callback(XfceDesktop *xfdesktop, const char *name,
-		ChannelCallback callback)
-{
-	g_hash_table_insert(xfdesktop->settings_hash, (gpointer)name,
-			(gpointer)callback);
-}
+/* globals - yuck */
+static McsClient *mcs_client = NULL;
+static GHashTable *settings_hash = NULL;
 
-static void
-init_settings_hash(XfceDesktop *xfdesktop)
+void
+register_channel(const char *channel_name, ChannelCallback callback)
 {
-	TRACE ("dummy");
-	xfdesktop->settings_hash = g_hash_table_new(g_str_hash, g_str_equal);
+	g_hash_table_insert(settings_hash, (gpointer)channel_name,
+			(gpointer)callback);
+	mcs_client_add_channel(mcs_client, channel_name);
 }
 
 static void
@@ -70,20 +68,20 @@ notify_cb(const char *name, const char *channel_name, McsAction action,
     ChannelCallback update_channel;
 
 	TRACE ("dummy");
-	update_channel = g_hash_table_lookup(xfdesktop->settings_hash, channel_name);
+	
+	update_channel = g_hash_table_lookup(settings_hash, channel_name);
 	
 	if(update_channel)
-		update_channel(name, action, setting, xfdesktop);
+		update_channel(channel_name, mcs_client, action, setting);
 	else
-		g_printerr("%s: Unknown settings channel: %s\n", PACKAGE,
+		g_warning("%s: Unknown settings channel: %s\n", PACKAGE,
 				channel_name);
 }
 
 GdkFilterReturn
-client_event_filter (GdkXEvent * xevent, GdkEvent * event,
-		     XfceDesktop * xfdesktop)
+client_event_filter (GdkXEvent * xevent, GdkEvent * event, gpointer user_data)
 {
-    if (mcs_client_process_event (xfdesktop->client, (XEvent *) xevent))
+    if (mcs_client_process_event (mcs_client, (XEvent *) xevent))
 	return GDK_FILTER_REMOVE;
     else
 	return GDK_FILTER_CONTINUE;
@@ -137,31 +135,37 @@ start_mcs_manager (void)
 }
 
 void
-settings_init(XfceDesktop * xfdesktop)
+settings_init(XfceDesktop *xfdesktop)
 {
-	TRACE ("dummy");
-
-	if(!xfdesktop->settings_hash)
-		init_settings_hash(xfdesktop);
-
-	if(!manager_is_running(xfdesktop->dpy, xfdesktop->xscreen))
-		start_mcs_manager();
-
-	xfdesktop->client = mcs_client_new(xfdesktop->dpy, xfdesktop->xscreen,
-			(McsNotifyFunc)notify_cb, (McsWatchFunc)watch_cb,
-			(gpointer)xfdesktop);
-
-	if(!xfdesktop->client || !manager_is_running(xfdesktop->dpy, xfdesktop->xscreen))
-		g_critical("%s: could not connect to settings manager!", PACKAGE);
+	xfdesktop->client = mcs_client;
 }
 
 void
-settings_cleanup (XfceDesktop * xfdesktop)
+settings_init_global()
 {
-	TRACE("dummy");
+	int xscreen = DefaultScreen(GDK_DISPLAY());
+	
+	if(!manager_is_running(GDK_DISPLAY(), xscreen))
+		start_mcs_manager();
 
-	if(xfdesktop->client)
-		mcs_client_destroy(xfdesktop->client);
+	mcs_client = mcs_client_new(GDK_DISPLAY(), xscreen,
+			(McsNotifyFunc)notify_cb, (McsWatchFunc)watch_cb, NULL);
 
-	xfdesktop->client = NULL;
+	if(!mcs_client || !manager_is_running(GDK_DISPLAY(), xscreen))
+		g_critical("%s: could not connect to settings manager!", PACKAGE);
+	
+	if(!settings_hash)
+		settings_hash = g_hash_table_new(g_str_hash, g_str_equal);
+}
+
+void
+settings_cleanup_global()
+{
+	if(mcs_client)
+		mcs_client_destroy(mcs_client);
+	mcs_client = NULL;
+	
+	if(settings_hash)
+		g_hash_table_destroy(settings_hash);
+	settings_hash = NULL;
 }

@@ -97,7 +97,7 @@ static void
 load_settings(XfceDesktop *xfdesktop)
 {
 	DBG("load settings");
-	background_load_settings(xfdesktop);
+	backdrop_load_settings(xfdesktop->backdrop);
 	menu_load_settings(xfdesktop);
 }
 
@@ -148,7 +148,7 @@ client_message_received(GtkWidget * widget, GdkEventClient * event,
 	}
 	else if (strcmp (WINDOWLIST_MESSAGE, event->data.b) == 0)
 	{
-	    popup_windowlist (0, GDK_CURRENT_TIME);
+	    popup_windowlist (0, GDK_CURRENT_TIME, xfdesktop);
 	    return TRUE;
 	}
     }
@@ -180,7 +180,6 @@ check_is_running (Window * xid)
 static void
 xfdesktop_set_selection(XfceDesktop *xfdesktop)
 {
-	Display *dpy = xfdesktop->dpy;
 	int scr = xfdesktop->xscreen;
 	GtkWidget *gtkwin = xfdesktop->fullscreen;
 	Window win;
@@ -191,16 +190,16 @@ xfdesktop_set_selection(XfceDesktop *xfdesktop)
 		char selection_name[100];
 
 		sprintf(selection_name, XFDESKTOP_SELECTION_FMT, scr);
-		selection_atom = XInternAtom(dpy, selection_name, False);
+		selection_atom = XInternAtom(GDK_DISPLAY(), selection_name, False);
 	}
 
 	if(!manager_atom)
-		manager_atom = XInternAtom(gdk_display, "MANAGER", False);
+		manager_atom = XInternAtom(GDK_DISPLAY(), "MANAGER", False);
 
 	win = GDK_WINDOW_XID(gtkwin->window);
 
-	XSelectInput (dpy, win, PropertyChangeMask | ButtonPressMask);
-	XSetSelectionOwner (dpy, selection_atom, win, GDK_CURRENT_TIME);
+	XSelectInput (GDK_DISPLAY(), win, PropertyChangeMask | ButtonPressMask);
+	XSetSelectionOwner (GDK_DISPLAY(), selection_atom, win, GDK_CURRENT_TIME);
 
 	/* listen for client messages */
 	g_signal_connect(gtkwin, "client-event",
@@ -209,7 +208,7 @@ xfdesktop_set_selection(XfceDesktop *xfdesktop)
 	/* Check to see if we managed to claim the selection. If not,
 	* we treat it as if we got it then immediately lost it
 	*/
-	if (XGetSelectionOwner (dpy, selection_atom) == win) {
+	if (XGetSelectionOwner (GDK_DISPLAY(), selection_atom) == win) {
 		XClientMessageEvent xev;
 		Window root = xfdesktop->root;
 
@@ -223,7 +222,7 @@ xfdesktop_set_selection(XfceDesktop *xfdesktop)
 		xev.data.l[3] = 0;	/* manager specific data */
 		xev.data.l[4] = 0;	/* manager specific data */
 
-		XSendEvent (dpy, root, False, StructureNotifyMask, (XEvent *) & xev);
+		XSendEvent (GDK_DISPLAY(), root, False, StructureNotifyMask, (XEvent *) & xev);
 	} else {
 		g_error ("%s: could not set selection ownership", PACKAGE);
 		exit (1);
@@ -318,7 +317,6 @@ xfdesktop_init(XfceDesktop *xfdesktop, gint screen)
 {
 	TRACE ("initialization");
 	
-	xfdesktop->dpy = GDK_DISPLAY();
 	xfdesktop->xscreen = screen;
 	xfdesktop->root = GDK_ROOT_WINDOW();
 	
@@ -330,7 +328,7 @@ xfdesktop_init(XfceDesktop *xfdesktop, gint screen)
 	xfdesktop_set_selection(xfdesktop);
 	
 	settings_init(xfdesktop);
-	background_init(xfdesktop);
+	xfdesktop->backdrop = backdrop_new(screen, xfdesktop->fullscreen, xfdesktop->client);
 	menu_init(xfdesktop);
 
 #if GTK_CHECK_VERSION(2,2,0)
@@ -348,8 +346,7 @@ static void
 xfdesktop_cleanup(XfceDesktop *xfdesktop)
 {
     TRACE ("cleaning up");
-    settings_cleanup(xfdesktop);
-    background_cleanup(xfdesktop);
+    backdrop_cleanup(xfdesktop->backdrop);
 	menu_cleanup(xfdesktop);
 	
 	g_free(xfdesktop);
@@ -464,16 +461,23 @@ main (int argc, char **argv)
     client_session->die = die;
     session_managed = session_init (client_session);
 	
+	settings_init_global();
+	menu_init_global();
+	
 	nscreens = gdk_display_get_n_screens(gdk_display_get_default());
 	for(i=0; i<nscreens; i++) {
 		xfdesktop = g_new0(XfceDesktop, 1);
 		xfdesktop_init(xfdesktop, i);
 		desktops = g_list_append(desktops, xfdesktop);
 	}
+	
+	backdrop_settings_init();
 
     gtk_main();
 	
+	menu_cleanup_global();
 	xfdesktop_cleanup_all();
+	settings_cleanup_global();
 
     return 0;
 }

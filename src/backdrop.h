@@ -20,12 +20,33 @@
 #ifndef __XFDESKTOP_BACKDROP_H__
 #define __XFDESKTOP_BACKDROP_H__
 
-#include "main.h"
+#include <gtk/gtkwidget.h>
+#include <libxfce4mcs/mcs-client.h>
 
-void background_init (XfceDesktop * xfdesktop);
+#include "backdrop-common.h"
 
-void background_load_settings (XfceDesktop * xfdesktop);
+typedef struct {
+    Window root;
+	int xscreen;
+    Atom atom;
+    Atom e_atom;
 
-void background_cleanup (XfceDesktop * xfdesktop);
+    GtkWidget *win;
+
+    guint set_backdrop:1;
+    guint color_only:1;
+
+    GdkColor color1;
+	GdkColor color2;
+    char *path;
+    XfceBackdropStyle style;
+	
+	McsClient *client;  /* FIXME */
+} XfceBackdrop;
+
+void backdrop_settings_init();
+XfceBackdrop *backdrop_new(gint screen, GtkWidget *fullscreen, McsClient *client);
+void backdrop_load_settings(XfceBackdrop *xfbackdrop);
+void backdrop_cleanup(XfceBackdrop *xfbackdrop);
 
 #endif /* __XFDESKTOP_BACKDROP_H__ */

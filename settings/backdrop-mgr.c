@@ -54,7 +54,7 @@
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "settings_common.h"
-#include "background-common.h"
+#include "backdrop-common.h"
 #include "backdrop-mgr.h"
 
 static gchar *_listdlg_last_dir;
@@ -403,16 +403,15 @@ list_remove_cb(GtkWidget * b, GtkTreeView *treeview)
 	remove_file(treeview);
 }
 
-#if GTK_CHECK_VERSION(2, 4, 0)
 static void
-update_preview_cb(GtkFileChooser *chooser, gpointer data)
+update_preview_cb(XfceFileChooser *chooser, gpointer data)
 {
 	GtkImage *preview;
 	char *filename;
 	GdkPixbuf *pix = NULL;
 	
 	preview = GTK_IMAGE(data);
-	filename = gtk_file_chooser_get_preview_filename(chooser);
+	filename = xfce_file_chooser_get_filename(chooser);
 	
 	if(g_file_test(filename, G_FILE_TEST_IS_REGULAR))
 		pix = gdk_pixbuf_new_from_file_at_size(filename, 250, 250, NULL);
@@ -422,28 +421,25 @@ update_preview_cb(GtkFileChooser *chooser, gpointer data)
 		gtk_image_set_from_pixbuf(preview, pix);
 		g_object_unref(G_OBJECT(pix));
 	}
-	gtk_file_chooser_set_preview_widget_active(chooser, (pix != NULL));
+	xfce_file_chooser_set_preview_widget_active(chooser, (pix != NULL));
 }
-#endif
 
 static void
 list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 {
-#if GTK_CHECK_VERSION(2, 4, 0)
 	GtkWidget *chooser, *preview, *dialog;
 	GtkFileFilter *filter;
 	
 	dialog = gtk_widget_get_toplevel(GTK_WIDGET(treeview));
 	
-	preview = gtk_image_new();
-	chooser = gtk_file_chooser_dialog_new(_("Select backdrop image file"),
-			GTK_WINDOW(dialog), GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
+	chooser = xfce_file_chooser_dialog_new(_("Select backdrop image file"),
+			GTK_WINDOW(dialog), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
 			GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 	
 	filter = gtk_file_filter_new();
 	gtk_file_filter_set_name(filter, _("All Files"));
 	gtk_file_filter_add_pattern(filter, "*");
-	gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
 	filter = gtk_file_filter_new();
 	gtk_file_filter_set_name(filter, _("Image Files"));
 	gtk_file_filter_add_pattern(filter, "*.png");
@@ -452,26 +448,28 @@ list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 	gtk_file_filter_add_pattern(filter, "*.svg");
 	gtk_file_filter_add_pattern(filter, "*.xpm");
 	gtk_file_filter_add_pattern(filter, "*.gif");
-	gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
 	
-	gtk_file_chooser_set_local_only(GTK_FILE_CHOOSER(chooser), TRUE);
-	gtk_file_chooser_add_shortcut_folder(GTK_FILE_CHOOSER(chooser),
+	xfce_file_chooser_set_local_only(XFCE_FILE_CHOOSER(chooser), TRUE);
+	xfce_file_chooser_add_shortcut_folder(XFCE_FILE_CHOOSER(chooser),
 			DATADIR "/xfce4/backdrops", NULL);
 	
 	if(_listdlg_last_dir)
-		gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(chooser),
+		xfce_file_chooser_set_current_folder(XFCE_FILE_CHOOSER(chooser),
 				_listdlg_last_dir);
 	
-	gtk_file_chooser_set_preview_widget(GTK_FILE_CHOOSER(chooser), preview);
-	gtk_file_chooser_set_preview_widget_active(GTK_FILE_CHOOSER(chooser), FALSE);
-	g_signal_connect(G_OBJECT(chooser), "update-preview",
-			G_CALLBACK(update_preview_cb), preview);
+	preview = gtk_image_new();
+	gtk_widget_show(preview);
+	xfce_file_chooser_set_preview_widget(XFCE_FILE_CHOOSER(chooser), preview);
+	xfce_file_chooser_set_preview_widget_active(XFCE_FILE_CHOOSER(chooser), FALSE);
+	xfce_file_chooser_set_preview_callback(XFCE_FILE_CHOOSER(chooser),
+			(PreviewUpdateFunc)update_preview_cb, preview);
 	
 	gtk_widget_show(chooser);
 	if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
 		gchar *filename;
 		
-		filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(chooser));
+		filename = xfce_file_chooser_get_filename(XFCE_FILE_CHOOSER(chooser));
 		if(filename) {
 			if(_listdlg_last_dir)
 				g_free(_listdlg_last_dir);
@@ -481,35 +479,6 @@ list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 		}
 	}
 	gtk_widget_destroy(chooser);
-#else
-	GtkWidget *fs, *dialog;
-
-	fs = preview_file_selection_new(_("Select backdrop image file"), TRUE);
-	gtk_file_selection_hide_fileop_buttons(GTK_FILE_SELECTION(fs));
-	if(_listdlg_last_dir)
-		gtk_file_selection_set_filename(GTK_FILE_SELECTION(fs), _listdlg_last_dir);
-
-	dialog = gtk_widget_get_toplevel(GTK_WIDGET(treeview));
-	gtk_window_set_transient_for(GTK_WINDOW(fs), GTK_WINDOW(dialog));
-	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fs)->ok_button), "clicked",
-			G_CALLBACK(filesel_response_accept), fs);
-	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fs)->cancel_button), "clicked",
-			G_CALLBACK(filesel_response_cancel), fs);
-	
-	gtk_widget_show(fs);
-	if(gtk_dialog_run(GTK_DIALOG(fs)) == GTK_RESPONSE_ACCEPT) {
-		const gchar *filename;
-		
-		filename = gtk_file_selection_get_filename(GTK_FILE_SELECTION(fs));
-		if(filename) {
-			if(_listdlg_last_dir)
-				g_free(_listdlg_last_dir);
-			_listdlg_last_dir = g_path_get_dirname(filename);
-			add_file(filename, GTK_LIST_STORE(gtk_tree_view_get_model(treeview)));
-		}
-	}
-	gtk_widget_destroy(fs);
-#endif
 }
 
 static void
@@ -572,63 +541,42 @@ add_list_buttons(GtkWidget *vbox, GtkTreeView *treeview)
 static void
 filename_browse_cb(GtkWidget *b, GtkWidget *file_entry)
 {
-#if GTK_CHECK_VERSION(2, 4, 0)
 	GtkWidget *chooser, *preview, *dialog;
 	GtkFileFilter *filter;
 	
 	dialog = gtk_widget_get_toplevel(b);
 	
 	preview = gtk_image_new();
-	chooser = gtk_file_chooser_dialog_new(_("Choose backdrop list filename"),
-			GTK_WINDOW(dialog), GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
+	chooser = xfce_file_chooser_dialog_new(_("Choose backdrop list filename"),
+			GTK_WINDOW(dialog), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
 			GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 	
 	filter = gtk_file_filter_new();
 	gtk_file_filter_set_name(filter, _("All Files"));
 	gtk_file_filter_add_pattern(filter, "*");
-	gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
 	filter = gtk_file_filter_new();
 	gtk_file_filter_set_name(filter, _("List Files"));
 	gtk_file_filter_add_pattern(filter, "*.list");
-	gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
 	
-	gtk_file_chooser_set_local_only(GTK_FILE_CHOOSER(chooser), TRUE);
+	xfce_file_chooser_set_local_only(XFCE_FILE_CHOOSER(chooser), TRUE);
 	
 	if(_listdlg_last_dir)
-		gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(chooser),
+		xfce_file_chooser_set_current_folder(XFCE_FILE_CHOOSER(chooser),
 				_listdlg_last_dir);
 	
 	gtk_widget_show(chooser);
 	if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
 		gchar *path;
 		
-		path = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(chooser));
+		path = xfce_file_chooser_get_filename(XFCE_FILE_CHOOSER(chooser));
 		if(path) {
 			gtk_entry_set_text(GTK_ENTRY(file_entry), path);
 			g_free(path);
 		}
 	}
 	gtk_widget_destroy(chooser);
-#else
-	GtkWidget *fs, *dialog;
-	const gchar *path;
-
-    fs = preview_file_selection_new(_("Choose backdrop list filename"), TRUE);
-
-	dialog = gtk_widget_get_toplevel(b);
-    gtk_window_set_transient_for(GTK_WINDOW(fs), GTK_WINDOW(dialog));
-	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fs)->ok_button), "clicked",
-			G_CALLBACK(filesel_response_accept), fs);
-	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fs)->cancel_button), "clicked",
-			G_CALLBACK(filesel_response_cancel), fs);
-
-    if(gtk_dialog_run(GTK_DIALOG(fs)) == GTK_RESPONSE_ACCEPT) {
-		path = gtk_file_selection_get_filename(GTK_FILE_SELECTION(fs));
-		if(path)
-			gtk_entry_set_text(GTK_ENTRY(file_entry), path);
-	}
-	gtk_widget_destroy(fs);
-#endif
 }
 
 static GtkWidget *

@@ -562,8 +562,6 @@ update_backdrop_channel(const char *channel_name, McsClient *client,
 	TRACE ("dummy");
 	DBG ("processing change in \"%s\"", channel_name);
 	
-	g_print("entering update_backdrop_channel() on %s setting %s\n", channel_name, setting->name);
-	
 	if(strcmp(channel_name, BACKDROP_CHANNEL))
 		return;
 	
@@ -577,7 +575,6 @@ update_backdrop_channel(const char *channel_name, McsClient *client,
 			if(!p)
 				return;
 			screen_num = atoi(p+1);
-			g_print("  settings change for desktop on screen %d\n", screen_num);
 			if(screen_num < 0)
 				return;
 			
@@ -599,7 +596,6 @@ update_backdrop_channel(const char *channel_name, McsClient *client,
 				if(backdrop->path)
 					g_free(backdrop->path);
 				backdrop->path = g_strdup(setting->data.v_string);
-				g_print("setting new backdrop: %s\n", backdrop->path);
 			} else if(strstr(setting->name, "color1_") == setting->name) {
 				backdrop->color1.red = setting->data.v_color.red;
 				backdrop->color1.green = setting->data.v_color.green;

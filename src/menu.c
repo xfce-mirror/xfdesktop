@@ -69,7 +69,6 @@
 
 #define WLIST_MAXLEN 20
 
-static NetkScreen *netk_screen = NULL;
 static GtkWidget *windowlist = NULL;
 #ifdef USE_DESKTOP_MENU
 static XfceDesktopMenu *desktop_menu = NULL;
@@ -179,7 +178,7 @@ create_window_list_item (NetkWindow * win, GList **pix_unref_needed)
 }
 
 static GtkWidget *
-create_windowlist_menu (GList **pix_unref_needed)
+create_windowlist_menu (GList **pix_unref_needed, XfceDesktop *xfdesktop)
 {
     int i, n;
     GList *windows, *li;
@@ -201,9 +200,9 @@ create_windowlist_menu (GList **pix_unref_needed)
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
 
-    windows = netk_screen_get_windows_stacked (netk_screen);
-    n = netk_screen_get_workspace_count (netk_screen);
-    aws = netk_screen_get_active_workspace (netk_screen);
+    windows = netk_screen_get_windows_stacked (xfdesktop->netk_screen);
+    n = netk_screen_get_workspace_count (xfdesktop->netk_screen);
+    aws = netk_screen_get_active_workspace (xfdesktop->netk_screen);
 
     for (i = 0; i < n; i++)
     {
@@ -211,7 +210,7 @@ create_windowlist_menu (GList **pix_unref_needed)
 	const char *realname;
 	gboolean active;
 
-	ws = netk_screen_get_workspace (netk_screen, i);
+	ws = netk_screen_get_workspace (xfdesktop->netk_screen, i);
 	realname = netk_workspace_get_name (ws);
 
 	active = (ws == aws);
@@ -323,7 +322,7 @@ popup_menu (int button, guint32 time)
 }
 
 void
-popup_windowlist (int button, guint32 time)
+popup_windowlist (int button, guint32 time, XfceDesktop *xfdesktop)
 {
     static GtkWidget *menu = NULL;
 	static GList *pix_unref_needed = NULL, *l;
@@ -340,24 +339,25 @@ popup_windowlist (int button, guint32 time)
 		pix_unref_needed = NULL;
 	}
 
-    windowlist = menu = create_windowlist_menu (&pix_unref_needed);
+    windowlist = menu = create_windowlist_menu (&pix_unref_needed, xfdesktop);
 
     gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, button, time);
 }
 
 static gboolean
-button_press (GtkWidget * w, GdkEventButton * bevent)
+button_press (GtkWidget * w, GdkEventButton * bevent, gpointer user_data)
 {
     int button = bevent->button;
     int state = bevent->state;
     gboolean handled = FALSE;
+	XfceDesktop *xfdesktop = user_data;
 
     DBG ("button press (0x%x)", button);
 
     if (button == 2 || (button == 1 && state & GDK_SHIFT_MASK &&
 			state & GDK_CONTROL_MASK))
     {
-	popup_windowlist (button, bevent->time);
+	popup_windowlist (button, bevent->time, xfdesktop);
 	handled = TRUE;
     }
 #ifdef USE_DESKTOP_MENU
@@ -372,33 +372,34 @@ button_press (GtkWidget * w, GdkEventButton * bevent)
 }
 
 static gboolean
-button_scroll (GtkWidget * w, GdkEventScroll * sevent)
+button_scroll (GtkWidget * w, GdkEventScroll * sevent, gpointer user_data)
 {
     GdkScrollDirection direction = sevent->direction;
     NetkWorkspace *ws = NULL;
     gint n, active;
+	XfceDesktop *xfdesktop = user_data;
 
     DBG ("scroll");
 
-    n = netk_screen_get_workspace_count (netk_screen);
+    n = netk_screen_get_workspace_count (xfdesktop->netk_screen);
 
     if (n <= 1)
 	return FALSE;
 
-    ws = netk_screen_get_active_workspace (netk_screen);
+    ws = netk_screen_get_active_workspace (xfdesktop->netk_screen);
     active = netk_workspace_get_number (ws);
 
     if (direction == GDK_SCROLL_UP || direction == GDK_SCROLL_LEFT)
     {
 	ws = (active > 0) ?
-	    netk_screen_get_workspace (netk_screen, active - 1) :
-	    netk_screen_get_workspace (netk_screen, n - 1);
+	    netk_screen_get_workspace (xfdesktop->netk_screen, active - 1) :
+	    netk_screen_get_workspace (xfdesktop->netk_screen, n - 1);
     }
     else
     {
 	ws = (active < n - 1) ?
-	    netk_screen_get_workspace (netk_screen, active + 1) :
-	    netk_screen_get_workspace (netk_screen, 0);
+	    netk_screen_get_workspace (xfdesktop->netk_screen, active + 1) :
+	    netk_screen_get_workspace (xfdesktop->netk_screen, 0);
     }
 
     netk_workspace_activate (ws);
@@ -426,19 +427,37 @@ void
 menu_init (XfceDesktop * xfdesktop)
 {	
     TRACE ("dummy");
-    netk_screen = xfdesktop->netk_screen;
-
     DBG ("connecting callbacks");
+	
+	g_signal_connect(G_OBJECT(xfdesktop->fullscreen), "button-press-event",
+			G_CALLBACK(button_press), xfdesktop);
+	g_signal_connect(G_OBJECT(xfdesktop->fullscreen), "scroll-event",
+			G_CALLBACK(button_scroll), xfdesktop);
+}
 
+void
+menu_load_settings (XfceDesktop * xfdesktop)
+{
+    TRACE ("dummy");
+	/* yeah, this will do something "soon" */
+}
+
+void
+menu_cleanup(XfceDesktop *xfdesktop)
+{
+	g_signal_handlers_disconnect_by_func(G_OBJECT(xfdesktop->fullscreen),
+			G_CALLBACK(button_press), xfdesktop);
+	g_signal_handlers_disconnect_by_func(G_OBJECT(xfdesktop->fullscreen),
+			G_CALLBACK(button_scroll), xfdesktop);
+}
+
+void
+menu_init_global()
+{
 #ifdef HAVE_SIGNAL_H
 	signal(SIGCHLD, SIG_IGN);
 #endif
 	
-    g_signal_connect (xfdesktop->fullscreen, "button-press-event",
-		      G_CALLBACK (button_press), NULL);
-
-    g_signal_connect (xfdesktop->fullscreen, "scroll-event",
-		      G_CALLBACK (button_scroll), NULL);
 #if USE_DESKTOP_MENU
 	if((module_desktop_menu=xfce_desktop_menu_stub_init())) {
 		desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
@@ -449,21 +468,21 @@ menu_init (XfceDesktop * xfdesktop)
 }
 
 void
-menu_load_settings (XfceDesktop * xfdesktop)
+menu_cleanup_global()
 {
-    TRACE ("dummy");
-}
-
-void
-menu_cleanup(XfceDesktop *xfdesktop)
-{
+	if(windowlist)
+		gtk_widget_destroy(windowlist);
+	windowlist = NULL;
+	
 #ifdef USE_DESKTOP_MENU
 	if(module_desktop_menu) {
 		if(desktop_menu) {
 			xfce_desktop_menu_stop_autoregen(desktop_menu);
 			xfce_desktop_menu_destroy(desktop_menu);
 		}
+		desktop_menu = NULL;
 		xfce_desktop_menu_stub_cleanup_all(module_desktop_menu);
+		module_desktop_menu = NULL;
 	}
 #endif
 }
