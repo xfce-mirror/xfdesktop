@@ -67,7 +67,7 @@ static void menu_dentry_legacy_add_all(XfceDesktopMenu *desktop_menu,
 static const char *dentry_keywords [] = {
    "Name", "Comment", "Icon", "Hidden", "StartupNotify",
    "Categories", "OnlyShowIn", "Exec", "Terminal",
-   "NoDisplay",
+   "NoDisplay", "GenericName",
 };
 
 /* these .desktop files _should_ have an OnlyShowIn key, but don't.  i'm going
