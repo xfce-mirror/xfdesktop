@@ -101,7 +101,7 @@ get_paths_simple_single(GNode *node, gpointer data)
 			foundcat = g_hash_table_lookup(cat_to_displayname, n->data);
 			if(!foundcat)
 				foundcat = n->data;
-			g_ptr_array_add(mtfpi->paths, g_build_path("/", foundcat, NULL));
+			g_ptr_array_add(mtfpi->paths, g_strconcat("/", foundcat, NULL));
 			return TRUE;
 		}
 	}

@@ -120,6 +120,42 @@ prune_generic_paths(GPtrArray *paths)
 		g_ptr_array_remove(paths, g_ptr_array_index(arr, i));
 }
 
+static GList *
+ensure_path(const gchar *basepath, const gchar *path, GList *menu_data)
+{
+	MenuItem *mi;
+	gchar *newpath, *p;
+	
+	p = (gchar *)path;
+	while((p=strchr(p+1, '/'))) {
+		gchar *tmppath = g_strdup(path);
+		*(tmppath+(p-path)) = 0;
+		menu_data = ensure_path(basepath, tmppath, menu_data);
+		g_free(tmppath);
+	}
+	
+	if(basepath) {
+		if(basepath[strlen(basepath)-1] == '/' && *path == '/')
+			newpath = g_strconcat(basepath, path+1, NULL);
+		else if(basepath[strlen(basepath)-1] == '/' || *path == '/')
+			newpath = g_strconcat(basepath, path, NULL);
+		else
+			newpath = g_strconcat(basepath, "/", path, NULL);
+	} else
+		newpath = g_strdup(path);
+	
+	if(!g_hash_table_lookup(menu_entry_hash, newpath)) {
+		mi = g_new0(MenuItem, 1);
+		mi->type = MI_SUBMENU;
+		mi->path = newpath;
+		menu_data = g_list_append(menu_data, mi);
+		g_hash_table_insert(menu_entry_hash, mi->path, GINT_TO_POINTER(1));
+	} else
+		g_free(newpath);
+	
+	return menu_data;
+}
+
 static MenuItem *
 parse_dentry_attr (MenuItemType type, XfceDesktopEntry *de, 
 		gchar const *basepath, gchar const *path)
@@ -184,7 +220,7 @@ parse_dentry_attr (MenuItemType type, XfceDesktopEntry *de,
 		gchar *p;
 		while((p=strchr(name, '/')))
 			*p = ' ';
-		g_hash_table_insert(menu_entry_hash, g_strdup(mi->path), GINT_TO_POINTER(1));
+		g_hash_table_insert(menu_entry_hash, mi->path, GINT_TO_POINTER(1));
 	}
 	
 	if (cmd)
@@ -209,7 +245,7 @@ parse_dentry (XfceDesktopEntry *de, GList *menu_data, const char *basepath,
 	MenuItem *mi;
 	gint i;
 	GPtrArray *newpaths;
-	gchar *name;
+	gchar *name, *path;
 
 	gchar *onlyshowin;
 	gchar *tmp;
@@ -264,20 +300,27 @@ parse_dentry (XfceDesktopEntry *de, GList *menu_data, const char *basepath,
 	
 	if(pathtype == MPATH_SIMPLE_UNIQUE) {
 		/* grab first of the most general */
-		mi = parse_dentry_attr (MI_APP, de, basepath, g_ptr_array_index(newpaths, 0));
+		path = g_ptr_array_index(newpaths, 0);
+		menu_data = ensure_path(basepath, path, menu_data);
+		mi = parse_dentry_attr (MI_APP, de, basepath, path);
 		if(mi)
 			menu_data = g_list_append (menu_data, mi);
 	} else if(pathtype == MPATH_MULTI_UNIQUE) {
 		/* grab most specific */
-		mi = parse_dentry_attr (MI_APP, de, basepath,
-				g_ptr_array_index(newpaths, newpaths->len-1));
+		path = g_ptr_array_index(newpaths, newpaths->len-1);
+		menu_data = ensure_path(basepath, path, menu_data);
+		mi = parse_dentry_attr (MI_APP, de, basepath, path);
 		if(mi)
 			menu_data = g_list_append (menu_data, mi);
 	} else {
+		for(i=0; i < newpaths->len; i++)
+			menu_data = ensure_path(basepath, g_ptr_array_index(newpaths, i),
+					menu_data);
 		if(pathtype == MPATH_MULTI)
 			prune_generic_paths(newpaths);
 		for(i=0; i < newpaths->len; i++) {
-			mi = parse_dentry_attr (MI_APP, de, basepath, g_ptr_array_index(newpaths, i));
+			path = g_ptr_array_index(newpaths, i);
+			mi = parse_dentry_attr (MI_APP, de, basepath, path);
 			if(mi)
 				menu_data = g_list_append (menu_data, mi);
 		}

@@ -92,25 +92,18 @@ static gint
 get_menuitem_height()
 {
 	GtkWidget *tmp;
-	PangoContext *pcontext;
+	GtkStyle *style;
 	PangoFontDescription *pfdesc;
-	PangoLanguage *plang;
-	PangoFontMetrics *pfmetrics;
 	gint totheight;
 	
 	tmp = gtk_label_new("foo");
+	gtk_widget_set_name(tmp, "xfdesktopmenu");
 	gtk_widget_show(tmp);
-	pcontext = gtk_widget_get_pango_context(tmp);
-	g_object_ref(G_OBJECT(pcontext));
-	gtk_widget_destroy(tmp);
-	pfdesc = pango_context_get_font_description(pcontext);
-	plang = pango_context_get_language(pcontext);
-	pfmetrics = pango_context_get_metrics(pcontext, pfdesc, plang);
-	totheight = PANGO_PIXELS((pango_font_metrics_get_ascent(pfmetrics) +
-			pango_font_metrics_get_descent(pfmetrics)));
+	style = gtk_rc_get_style(tmp);
+	pfdesc = style->font_desc;
+	totheight = PANGO_PIXELS(pango_font_description_get_size(pfdesc));
 	totheight += 7;  /* FIXME: fudge factor */
-	//g_object_unref(G_OBJECT(pfmetrics));  /* FIXME: crashes with, leaks without */
-	g_object_unref(G_OBJECT(pcontext));
+	gtk_widget_destroy(tmp);
 
 	return totheight;
 }

@@ -369,7 +369,7 @@ create_desktop_menu (void)
 	static GtkItemFactory *ifactory = NULL;
     struct stat st;
     static char *filename = NULL;
-    GtkWidget *img;
+    GtkWidget *img, *mi;
     GtkImageMenuItem *imgitem;
 	GtkItemFactoryEntry entry;
 	GdkPixbuf *pix;
@@ -416,8 +416,7 @@ create_desktop_menu (void)
 
 	if(menu_entry_hash)
 		g_hash_table_destroy(menu_entry_hash);
-	menu_entry_hash = g_hash_table_new_full(g_str_hash, g_str_equal,
-			(GDestroyNotify)g_free, NULL);
+	menu_entry_hash = g_hash_table_new_full(g_str_hash, g_str_equal, NULL, NULL);
 	
 	/* main source of menu data: the menu file */
 	menu_data = menu_file_parse (filename, NULL);
@@ -439,14 +438,16 @@ create_desktop_menu (void)
 		}
 
 		entry = parse_item (item);
-    
+		
 		if(!EditMode) {
 			gtk_item_factory_create_item (ifactory, &entry, item->cmd, 1);
+			mi = gtk_item_factory_get_item (ifactory, item->path);
+			gtk_widget_set_name(mi, "xfdesktopmenu");
 			if (use_menu_icons && item->icon) {
-				pix = menu_icon_find(item->icon);
-				if(pix) {
-					imgitem = GTK_IMAGE_MENU_ITEM (gtk_item_factory_get_item (ifactory, item->path));
-					if (imgitem) {
+				imgitem = GTK_IMAGE_MENU_ITEM(mi);
+				if(imgitem) {
+					pix = menu_icon_find(item->icon);
+					if(pix) {
 						img = gtk_image_new_from_pixbuf (pix);
 						gtk_widget_show (img);
 						gtk_image_menu_item_set_image (imgitem, img);

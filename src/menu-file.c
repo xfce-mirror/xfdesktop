@@ -104,7 +104,7 @@ parse_node_attr (MenuItemType type, xmlDocPtr doc, xmlNodePtr cur, const char *p
 			g_free(mi);
 			return NULL;
 		} else
-			g_hash_table_insert(menu_entry_hash, g_strdup(mi->path), GINT_TO_POINTER(1));
+			g_hash_table_insert(menu_entry_hash, mi->path, GINT_TO_POINTER(1));
     }
     cmd = xmlGetProp (cur, "cmd");
     if (cmd)
