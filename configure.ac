@@ -68,6 +68,10 @@ AC_PROG_LIBTOOL
 AC_OUTPUT([
 xfdesktop.spec
 Makefile
+doc/Makefile
+doc/images/Makefile
+doc/html/Makefile
+doc/xml/Makefile
 src/Makefile
 settings/Makefile
 backdrops/Makefile

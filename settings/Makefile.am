@@ -1,9 +1,8 @@
 backdropdir = $(libdir)/xfce-mcs-manager/plugins/
 #menudir = $(libdir)/xfce-mcs-manager/plugins/
 workspacesdir = $(libdir)/xfce-mcs-manager/plugins/
-marginsdir = $(libdir)/xfce-mcs-manager/plugins/
 
-EXTRA_DIST = backdrop.png margins.png workspaces.png
+EXTRA_DIST = backdrop.png workspaces.png
 
 # backdrop
 backdrop_LTLIBRARIES = backdrop_settings.la
@@ -39,19 +38,8 @@ settings_common.c settings_common.h
 workspaces_settings_la_CFLAGS = -Wall @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ @MCS_MANAGER_CFLAGS@ -DG_DISABLE_DEPRECATED -DSYSCONFDIR=\"$(sysconfdir)\" -DDATADIR=\"$(datadir)\" 
 workspaces_settings_la_LIBADD = @LIBS@ @X_LIBS@  @BASE_DEPENDENCIES_LIBS@ @MCS_MANAGER_LIBS@
 
-# margins
-margins_LTLIBRARIES = margins_settings.la
-margins_settings_la_LDFLAGS =  -module -avoid-version
-
-margins_settings_la_SOURCES =  debug.h \
-margins-icon.h margins_settings.c margins_settings.h \
-settings_common.c settings_common.h
-
-margins_settings_la_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ @MCS_MANAGER_CFLAGS@ -DG_DISABLE_DEPRECATED -DSYSCONFDIR=\"$(sysconfdir)\" -DDATADIR=\"$(datadir)\" 
-margins_settings_la_LIBADD = @LIBS@ @X_LIBS@  @BASE_DEPENDENCIES_LIBS@ @MCS_MANAGER_LIBS@
-
 # icons (left out: menu-icon.h)
-noinst_DATA = backdrop-icon.h workspaces-icon.h margins-icon.h
+noinst_DATA = backdrop-icon.h workspaces-icon.h 
 
 BACKDROP_IMAGE=backdrop.png
 BACKDROP_ARG=backdrop_icon_data $(srcdir)/$(BACKDROP_IMAGE)
@@ -70,11 +58,5 @@ WORKSPACES_ARG=workspaces_icon_data $(srcdir)/$(WORKSPACES_IMAGE)
 
 workspaces-icon.h: $(WORKSPACES_IMAGE)
 	$(GDK_PIXBUF_CSOURCE) --raw --build-list $(WORKSPACES_ARG) > $(srcdir)/workspaces-icon.h
-
-MARGINS_IMAGE=margins.png
-MARGINS_ARG=margins_icon_data $(srcdir)/$(MARGINS_IMAGE)
-
-margins-icon.h: $(MARGINS_IMAGE)
-	$(GDK_PIXBUF_CSOURCE) --raw --build-list $(MARGINS_ARG) > $(srcdir)/margins-icon.h
 
 

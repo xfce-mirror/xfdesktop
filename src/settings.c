@@ -33,7 +33,6 @@
 #include "main.h"
 #include "backdrop.h"
 #include "menu.h"
-#include "margins.h"
 #include "workspaces.h"
 #include "settings.h"
 
@@ -60,7 +59,6 @@ static void init_settings_hash(void)
     
     add_backdrop_callback(settings_hash);
     add_menu_callback(settings_hash);
-    add_margins_callback(settings_hash);
     add_workspaces_callback(settings_hash);
 }
 
@@ -70,7 +68,6 @@ void load_settings(void)
     TRACE();
     backdrop_load_settings(client);
     menu_load_settings(client);
-    margins_load_settings(client);
     workspaces_load_settings(client);
 }
 
@@ -153,7 +150,6 @@ void watch_settings(GtkWidget *window, NetkScreen *screen)
     TRACE();
     backdrop_init(window);
     menu_init(window, screen);
-    margins_init(window);
     /* no workspaces init needed */
 
     if (!settings_hash)

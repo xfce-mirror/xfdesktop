@@ -5,7 +5,7 @@ confdir=$(sysconfdir)/xfce4
 EXTRA_DIST = xfdesktop.spec xfdesktop.spec.in TODO
 conf_DATA = menu.xml
 
-SUBDIRS = src settings backdrops
+SUBDIRS = doc src settings backdrops
 
 distclean-local:
 	-rm -rf xfdesktop.spec *.cache *~

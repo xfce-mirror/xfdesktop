@@ -5,8 +5,6 @@ backdrop.c \
 backdrop.h \
 main.c \
 main.h \
-margins.c \
-margins.h \
 menu.c \
 menu.h \
 settings.c \
