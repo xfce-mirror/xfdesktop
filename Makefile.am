@@ -6,6 +6,7 @@ confdir = $(sysconfdir)/xfce4
 
 conf_DATA = 								\
 	menu.xml 							\
+	menu.xml.az 							\
 	menu.xml.de 							\
 	menu.xml.fr 							\
 	menu.xml.nl  							\
