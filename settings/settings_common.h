@@ -82,5 +82,6 @@ typedef struct {
 extern void create_channel (McsManager *, const char *, const char *);
 extern gboolean save_channel (McsManager *, const char *, const char *);
 extern void add_spacer (GtkBox *);
+gboolean xfdesktop_check_image_file(const gchar *filename);
 
 #endif /* !__XFDESKTOP_SETTINGS_COMMON_H__ */

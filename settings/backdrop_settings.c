@@ -1096,6 +1096,7 @@ static void
 run_dialog (McsPlugin * mcs_plugin)
 {
 	static BackdropDialog *bd = NULL;
+	GdkPixbuf *win_icon;
 	
 	if(is_running) {
 		if(bd && bd->dialog) {
@@ -1106,13 +1107,18 @@ run_dialog (McsPlugin * mcs_plugin)
 	}
 	
 	is_running = TRUE;
-
-        bd = create_backdrop_dialog(mcs_plugin);
-        gtk_window_set_position(GTK_WINDOW(bd->dialog), GTK_WIN_POS_CENTER);
+	
+	bd = create_backdrop_dialog(mcs_plugin);
+	win_icon = xfce_themed_icon_load("xfce4-backdrop", 48);
+	if(win_icon) {
+		gtk_window_set_icon(GTK_WINDOW(bd->dialog), win_icon);
+		g_object_unref(G_OBJECT(win_icon));
+	}
+	gtk_window_set_position(GTK_WINDOW(bd->dialog), GTK_WIN_POS_CENTER);
 	g_signal_connect(G_OBJECT(bd->dialog), "response",
 			G_CALLBACK(run_dialog_cb), bd);
 	gtk_window_set_modal(GTK_WINDOW(bd->dialog), FALSE);
-        gtk_widget_show(bd->dialog);
+	gtk_widget_show(bd->dialog);
 }
 
 /* macro defined in manager-plugin.h */

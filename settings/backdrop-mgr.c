@@ -63,48 +63,12 @@
 
 static gchar *_listdlg_last_dir;
 
-#if !GTK_CHECK_VERSION(2, 4, 0)
-static void
-filesel_response_accept(GtkWidget *w, gpointer user_data)
-{
-	GtkDialog *dialog = GTK_DIALOG(user_data);
-	gtk_dialog_response(dialog, GTK_RESPONSE_ACCEPT);
-}
-
-static void
-filesel_response_cancel(GtkWidget *w, gpointer user_data)
-{
-	GtkDialog *dialog = GTK_DIALOG(user_data);
-	gtk_dialog_response(dialog, GTK_RESPONSE_CANCEL);
-}
-#endif
-
-/* add file to list */
-static gboolean
-check_image (const char *path)
-{
-    GdkPixbuf *tmp;
-    GError *error = NULL;
-	gboolean ret = TRUE;
-
-    tmp = gdk_pixbuf_new_from_file(path, &error);
-
-	if(!tmp) {
-		g_warning ("Could not create image from file %s: %s\n", path,
-				error->message);
-		ret = FALSE;
-	} else
-		g_object_unref(G_OBJECT(tmp));
-	
-	return ret;
-}
-
 static void
 add_file(const gchar *path, GtkListStore *ls)
 {
 	GtkTreeIter iter;
 
-	if(!check_image(path))
+	if(!xfdesktop_check_image_file(path))
 		return;
 
 	gtk_list_store_append(ls, &iter);
@@ -187,21 +151,25 @@ read_file(const gchar *filename, GtkListStore *ls, GtkWidget *parent)
 	gchar **file;
 	GtkWidget *pdlg, *lbl, *pbar;
 	gchar *pathlbl;
+	struct stat st;
+	gint size_tot = -1, size_read = 0;
 	
 	pdlg = gtk_dialog_new();
 	gtk_window_set_title(GTK_WINDOW(pdlg), _("Backdrop"));
 	gtk_dialog_set_has_separator(GTK_DIALOG(pdlg), FALSE);
 	gtk_window_set_transient_for(GTK_WINDOW(pdlg), GTK_WINDOW(parent));
 	gtk_window_set_destroy_with_parent(GTK_WINDOW(pdlg), TRUE);
-	gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 6);
+	gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 12);
 	
 	pathlbl = g_strdup_printf(_("Adding files from list %s..."), filename);
 	lbl = gtk_label_new(pathlbl);
+	gtk_misc_set_alignment(GTK_MISC(lbl), 0.5, 0.5);
 	gtk_widget_show(lbl);
 	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), lbl, FALSE, FALSE, 0);
 	
+	add_spacer(GTK_BOX(GTK_DIALOG(pdlg)->vbox));
+	
 	pbar = gtk_progress_bar_new();
-	gtk_progress_bar_set_pulse_step(GTK_PROGRESS_BAR(pbar), 0.1);
 	gtk_widget_show(pbar);
 	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), pbar, FALSE, FALSE, 0);
 	
@@ -210,9 +178,20 @@ read_file(const gchar *filename, GtkListStore *ls, GtkWidget *parent)
 		gtk_main_iteration();
 
 	if((files = get_list_from_file (filename)) != NULL) {
+		if(!stat(filename, &st))
+			size_tot = st.st_size;
+		else
+			gtk_progress_bar_set_pulse_step(GTK_PROGRESS_BAR(pbar), 0.1);
+		
 		for(file = files; *file != NULL; file++) {
 			add_file(*file, ls);
-			gtk_progress_bar_pulse(GTK_PROGRESS_BAR(pbar));
+			
+			if(size_tot == -1)
+				gtk_progress_bar_pulse(GTK_PROGRESS_BAR(pbar));
+			else {
+				size_read += strlen(*file)+1;
+				gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(pbar), (gdouble)size_read/size_tot);
+			}
 			while(gtk_events_pending())
 				gtk_main_iteration();
 		}
@@ -489,19 +468,6 @@ add_tree_view(GtkWidget *vbox, const gchar *path)
 	return GTK_TREE_VIEW(treeview);
 }
 
-/* list buttons */
-#if 0
-static void
-list_up_cb (GtkWidget * b, ListDialog * ld)
-{
-}
-
-static void
-list_down_cb (GtkWidget * b, ListDialog * ld)
-{
-}
-#endif
-
 static void
 list_remove_cb(GtkWidget * b, GtkTreeView *treeview)
 {
@@ -593,11 +559,14 @@ list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 				gtk_dialog_set_has_separator(GTK_DIALOG(pdlg), FALSE);
 				gtk_window_set_transient_for(GTK_WINDOW(pdlg), GTK_WINDOW(dialog));
 				gtk_window_set_destroy_with_parent(GTK_WINDOW(pdlg), TRUE);
-				gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 6);
+				gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 12);
 				
 				lbl = gtk_label_new(_("Adding multiple files..."));
+				gtk_misc_set_alignment(GTK_MISC(lbl), 0.5, 0.5);
 				gtk_widget_show(lbl);
 				gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), lbl, FALSE, FALSE, 0);
+				
+				add_spacer(GTK_BOX(GTK_DIALOG(pdlg)->vbox));
 				
 				pbar = gtk_progress_bar_new();
 				gtk_widget_show(pbar);
@@ -636,28 +605,6 @@ add_list_buttons(GtkWidget *vbox, GtkTreeView *treeview)
     gtk_widget_show (hbox);
     gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
 
-    /* up 
-       button = gtk_button_new();
-       gtk_widget_show(button);
-       gtk_container_add(GTK_CONTAINER(hbox), button);
-
-       image = gtk_image_new_from_stock(GTK_STOCK_GO_UP, GTK_ICON_SIZE_BUTTON);
-       gtk_widget_show(image);
-       gtk_container_add(GTK_CONTAINER(button), image);
-
-       g_signal_connect(button, "clicked", G_CALLBACK(list_up_cb), ld);
-     */
-    /* down 
-       button = gtk_button_new();
-       gtk_widget_show(button);
-       gtk_container_add(GTK_CONTAINER(hbox), button);
-
-       image = gtk_image_new_from_stock(GTK_STOCK_GO_DOWN, GTK_ICON_SIZE_BUTTON);
-       gtk_widget_show(image);
-       gtk_container_add(GTK_CONTAINER(button), image);
-
-       g_signal_connect(button, "clicked", G_CALLBACK(list_down_cb), ld);
-     */
     /* remove */
     button = gtk_button_new ();
     gtk_widget_show (button);
