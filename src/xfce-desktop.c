@@ -181,6 +181,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 	GdkScreen *gscreen;
 	GdkRectangle rect;
 	GdkEventExpose evt;
+	XID xid;
 	
 	TRACE("dummy");
 	
@@ -247,6 +248,16 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 		if(!pmap)
 			return;
 	}
+	
+	/* set root property */
+	xid = GDK_DRAWABLE_XID(pmap);
+	gdk_error_trap_push();
+	gdk_property_change(
+			gdk_screen_get_root_window(XFCE_DESKTOP(desktop)->priv->gscreen),
+			gdk_atom_intern("_XROOTPMAP_ID", FALSE),
+			gdk_atom_intern("PIXMAP", FALSE), 32,
+			GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
+	gdk_error_trap_pop();
 	
 	/* clear the old pixmap, if any */
 	gtk_widget_set_style(desktop, NULL);
