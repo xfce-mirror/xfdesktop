@@ -3,7 +3,7 @@ dnl
 dnl xfdesktop - xfce4's desktop manager
 dnl
 
-dml version info
+dnl version info
 m4_define([xfdesktop_version], [4.3.0])
 
 dnl init autoconf
