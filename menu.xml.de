@@ -78,6 +78,19 @@
 	<app name="Panel" cmd="xfce-setting-show xfce"/>
 -->
     </menu>
+
+    <separator/>
+    <!-- Verwenden Sie die folgende Zeile, um das automatisch generierte
+         Menü auf dieser Ebene einzuführen. Wenn Sie möchten, können Sie
+         dieses in ein eigenes Untermenü tun.
+    -->
+    <include type="system" style="simple" unique="true"/>
+
+    <!-- Verwenden Sie die folgende Zeile, wenn sie eine externe Menüdatei
+         einbinden wollen.
+    -->
+    <!-- <include type="file" src="menu2.xml"/> -->
+
     <separator/>
     <app name="Hilfe" cmd="xfhelp4"/>
     <!-- <separator/> -->
