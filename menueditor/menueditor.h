@@ -51,8 +51,8 @@
 /***********/
 /* Globals */
 /***********/
-void browse_command_cb (GtkWidget *widget, GtkEntry *entry_command, gpointer data);
-void browse_icon_cb (GtkWidget *widget, GtkEntry *entry_icon, gpointer data);
+void browse_command_cb (GtkWidget *widget, gpointer data);
+void browse_icon_cb (GtkWidget *widget, gpointer data);
 gboolean command_exists (const gchar *command);
 
 enum {ICON_COLUMN, NAME_COLUMN, COMMAND_COLUMN, HIDDEN_COLUMN,
@@ -106,6 +106,9 @@ struct _menueditor_app{
   GtkWidget *toolbar_del;
   GtkWidget *toolbar_up;
   GtkWidget *toolbar_down;
+
+  GtkWidget *entry_command;
+  GtkWidget *entry_icon;
 };
 
 

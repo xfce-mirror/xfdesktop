@@ -141,7 +141,7 @@ gboolean command_exists(const gchar *command)
 /****************************************************/
 /* browse for a command and set it in entry_command */
 /****************************************************/
-void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command, gpointer data)
+void browse_command_cb(GtkWidget *widget, gpointer data)
 {
   MenuEditor *me;
   GtkWidget *filesel_dialog;
@@ -153,12 +153,12 @@ void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command, gpointer data
 					  GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 					  GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 
-  if (strlen (gtk_entry_get_text (entry_command)) != 0) {
+  if (strlen (gtk_entry_get_text (GTK_ENTRY (me->entry_command))) != 0) {
     gchar *cmd_buf = NULL;
     gchar *cmd_tok = NULL;
     gchar *programpath = NULL;
 
-    cmd_buf = g_strdup (gtk_entry_get_text (entry_command));
+    cmd_buf = g_strdup (gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
     cmd_tok = strtok (cmd_buf, " ");
     programpath = g_find_program_in_path (cmd_buf);
     xfce_file_chooser_set_filename (XFCE_FILE_CHOOSER (filesel_dialog), programpath);
@@ -171,7 +171,7 @@ void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command, gpointer data
     gchar *filename = NULL;
 
     filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
-    gtk_entry_set_text (entry_command, filename);
+    gtk_entry_set_text (GTK_ENTRY (me->entry_command), filename);
     g_free (filename);
   }
 
@@ -201,7 +201,7 @@ static void browse_icon_update_preview_cb (XfceFileChooser *chooser, gpointer da
   xfce_file_chooser_set_preview_widget_active (chooser, (pix != NULL));
 }
 
-void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon, gpointer data)
+void browse_icon_cb(GtkWidget *widget, gpointer data)
 {
   MenuEditor *me;
   GtkWidget *filesel_dialog, *preview;
@@ -236,10 +236,10 @@ void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon, gpointer data)
   xfce_file_chooser_set_preview_callback (XFCE_FILE_CHOOSER (filesel_dialog),
 					  (PreviewUpdateFunc)browse_icon_update_preview_cb, preview);
 
-  if (strlen (gtk_entry_get_text (entry_icon)) != 0){
+  if (strlen (gtk_entry_get_text (GTK_ENTRY (me->entry_icon))) != 0){
     gchar *iconpath = NULL;
 
-    iconpath = xfce_icon_theme_lookup (me->icon_theme, gtk_entry_get_text (entry_icon), ICON_SIZE);
+    iconpath = xfce_icon_theme_lookup (me->icon_theme, gtk_entry_get_text (GTK_ENTRY (me->entry_icon)), ICON_SIZE);
     xfce_file_chooser_set_filename (XFCE_FILE_CHOOSER (filesel_dialog), iconpath);
 
     g_free (iconpath);
@@ -249,7 +249,7 @@ void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon, gpointer data)
     gchar *filename = NULL;
 
     filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));  
-    gtk_entry_set_text (entry_icon, filename);
+    gtk_entry_set_text (GTK_ENTRY (me->entry_icon), filename);
     g_free (filename);
   }
 

@@ -67,10 +67,7 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
   gchar *header_text;
 
   GtkWidget* name_entry = NULL;
-  GtkWidget* command_entry = NULL;
-  GtkWidget *icon_entry = NULL;
   struct _controls_menu controls;
-  GtkWidget *entry_source = NULL;
   GtkWidget *checkbutton_snotify = NULL;
   GtkWidget *checkbutton_term = NULL;
 
@@ -172,12 +169,12 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
     /* Source */
     controls.hbox_source = gtk_hbox_new(FALSE, 0);
     controls.label_source = gtk_label_new(_("Source:"));
-    entry_source = gtk_entry_new();
+    me->entry_command = gtk_entry_new();
     button_browse = gtk_button_new_with_label("...");
 
-    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), entry_source);
+    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), me);
 
-    gtk_box_pack_start (GTK_BOX (controls.hbox_source), entry_source, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (controls.hbox_source), me->entry_command, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (controls.hbox_source), button_browse, FALSE, FALSE, 0);
 
     gtk_table_attach(GTK_TABLE(table), controls.label_source, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
@@ -216,7 +213,7 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
     /* Initialize states */
     if(!xmlStrcmp(prop_type, (xmlChar*)"file")){
       controls.menu_type = MENUFILE;
-      gtk_entry_set_text(GTK_ENTRY(entry_source), prop_src);
+      gtk_entry_set_text (GTK_ENTRY (me->entry_command), prop_src);
       gtk_widget_set_sensitive(controls.hbox_source,TRUE);
       gtk_widget_set_sensitive(controls.label_source,TRUE);
       gtk_widget_set_sensitive(controls.label_style,FALSE);
@@ -253,24 +250,24 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
     /* Icon */
     hbox_icon = gtk_hbox_new(FALSE, 0);
     icon_label = gtk_label_new(_("Icon:"));
-    icon_entry = gtk_entry_new();
+    me->entry_icon = gtk_entry_new();
     button_browse2 = gtk_button_new_with_label("...");
-    gtk_box_pack_start (GTK_BOX (hbox_icon), icon_entry, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox_icon), me->entry_icon, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse2, FALSE, FALSE, 0);
-    g_signal_connect ((gpointer) button_browse2, "clicked", G_CALLBACK (browse_icon_cb), icon_entry);
+    g_signal_connect ((gpointer) button_browse2, "clicked", G_CALLBACK (browse_icon_cb), me);
 
     hbox_command = gtk_hbox_new(FALSE,0);
     name_label = gtk_label_new(_("Name:"));
     command_label = gtk_label_new(_("Command:"));
 
     name_entry = gtk_entry_new();
-    command_entry = gtk_entry_new();
+    me->entry_command = gtk_entry_new();
 
     button_browse = gtk_button_new_with_label("...");
 
-    gtk_box_pack_start (GTK_BOX (hbox_command), command_entry, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox_command), me->entry_command, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox_command), button_browse, FALSE, FALSE, 0);
-    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), command_entry);
+    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), me);
 
     checkbutton_snotify = gtk_check_button_new_with_mnemonic(_("Use startup _notification"));
     checkbutton_term = gtk_check_button_new_with_mnemonic(_("Run in _terminal"));
@@ -293,9 +290,9 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
     if(prop_name)
       gtk_entry_set_text(GTK_ENTRY(name_entry), prop_name);
     if(prop_cmd)
-      gtk_entry_set_text(GTK_ENTRY(command_entry), prop_cmd);
+      gtk_entry_set_text(GTK_ENTRY(me->entry_command), prop_cmd);
     if(prop_icon)
-      gtk_entry_set_text(GTK_ENTRY(icon_entry), prop_icon);
+      gtk_entry_set_text (GTK_ENTRY (me->entry_icon), prop_icon);
 
     if(prop_snotify && !xmlStrcmp(prop_snotify, (xmlChar*)"true"))
       gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbutton_snotify), TRUE);
@@ -316,11 +313,11 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
     /* Icon */
     hbox_icon = gtk_hbox_new(FALSE, 0);
     icon_label = gtk_label_new(_("Icon:"));
-    icon_entry = gtk_entry_new();
+    me->entry_icon = gtk_entry_new();
     button_browse = gtk_button_new_with_label("...");
-    gtk_box_pack_start (GTK_BOX (hbox_icon), icon_entry, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox_icon), me->entry_icon, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse, FALSE, FALSE, 0);
-    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_icon_cb), icon_entry);
+    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_icon_cb), me);
 
     table = gtk_table_new(3,2,FALSE);
 
@@ -338,7 +335,7 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
     if(prop_name)
       gtk_entry_set_text(GTK_ENTRY(name_entry), prop_name);
     if(prop_icon)
-      gtk_entry_set_text(GTK_ENTRY(icon_entry), prop_icon);
+      gtk_entry_set_text (GTK_ENTRY (me->entry_icon), prop_icon);
 
     gtk_window_set_default_size(GTK_WINDOW(dialog),200,100);
   }else if(!xmlStrcmp(node->name,(xmlChar*)"builtin")){
@@ -354,11 +351,11 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
     /* Icon */
     hbox_icon = gtk_hbox_new(FALSE, 0);
     icon_label = gtk_label_new(_("Icon:"));
-    icon_entry = gtk_entry_new();
+    me->entry_icon = gtk_entry_new();
     button_browse = gtk_button_new_with_label("...");
-    gtk_box_pack_start (GTK_BOX (hbox_icon), icon_entry, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox_icon), me->entry_icon, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse, FALSE, FALSE, 0);
-    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_icon_cb), icon_entry);
+    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_icon_cb), me);
     
     table = gtk_table_new(2,2,FALSE);
 
@@ -376,7 +373,7 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
     if(prop_name)
       gtk_entry_set_text(GTK_ENTRY(name_entry), prop_name);
     if(prop_icon)
-      gtk_entry_set_text(GTK_ENTRY(icon_entry), prop_icon);
+      gtk_entry_set_text (GTK_ENTRY (me->entry_icon), prop_icon);
 
     gtk_window_set_default_size(GTK_WINDOW(dialog),200,100);
   }else if(!xmlStrcmp(node->name,(xmlChar*)"title")){
@@ -391,11 +388,11 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
     /* Icon */
     hbox_icon = gtk_hbox_new(FALSE, 0);
     icon_label = gtk_label_new(_("Icon:"));
-    icon_entry = gtk_entry_new();
+    me->entry_icon = gtk_entry_new();
     button_browse = gtk_button_new_with_label("...");
-    gtk_box_pack_start (GTK_BOX (hbox_icon), icon_entry, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox_icon), me->entry_icon, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse, FALSE, FALSE, 0);
-    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_icon_cb), icon_entry);
+    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_icon_cb), me);
 
     name_label = gtk_label_new(_("Title:"));
     name_entry = gtk_entry_new();
@@ -414,7 +411,7 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
     if(prop_name)
       gtk_entry_set_text(GTK_ENTRY(name_entry), prop_name);
     if(prop_icon)
-      gtk_entry_set_text(GTK_ENTRY(icon_entry), prop_icon);
+      gtk_entry_set_text (GTK_ENTRY (me->entry_icon), prop_icon);
 
     gtk_window_set_default_size(GTK_WINDOW(dialog),200,100);
   }
@@ -440,12 +437,12 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
       }
 
       /* set the new icon if there is one otherwise use the dummy one */
-      if( (icon_entry && strlen (gtk_entry_get_text (GTK_ENTRY (icon_entry))) != 0) ){
-	icon = xfce_icon_theme_load (me->icon_theme, (gchar*) gtk_entry_get_text (GTK_ENTRY (icon_entry)), ICON_SIZE);
+      if( (me->entry_icon && strlen (gtk_entry_get_text (GTK_ENTRY (me->entry_icon))) != 0) ){
+	icon = xfce_icon_theme_load (me->icon_theme, (gchar*) gtk_entry_get_text (GTK_ENTRY (me->entry_icon)), ICON_SIZE);
 	if(!icon)
 	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
-	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
+	xmlSetProp(node,"icon",gtk_entry_get_text (GTK_ENTRY (me->entry_icon)));
       }else{
 	xmlAttrPtr icon_prop;
 	
@@ -458,13 +455,13 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
 
       if(!xmlStrcmp(node->name,(xmlChar*)"app")){
 	/* Test if the command exists */
-	if(!command_exists(gtk_entry_get_text(GTK_ENTRY(command_entry)))){
+	if(!command_exists(gtk_entry_get_text(GTK_ENTRY(me->entry_command)))){
 	  xfce_warn(_("The command doesn't exist !"));
 	  continue;
 	}
 
 	xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
-	xmlSetProp(node,"cmd",gtk_entry_get_text(GTK_ENTRY(command_entry)));
+	xmlSetProp(node,"cmd",gtk_entry_get_text(GTK_ENTRY(me->entry_command)));
 
 	if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbutton_snotify)))
 	  xmlSetProp(node, "snotify", "true");
@@ -486,7 +483,7 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
 	}
 
 	name = g_strdup_printf(NAME_FORMAT, gtk_entry_get_text (GTK_ENTRY (name_entry)));
-	command = g_strdup_printf(COMMAND_FORMAT, gtk_entry_get_text (GTK_ENTRY (command_entry)));
+	command = g_strdup_printf(COMMAND_FORMAT, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
       }else if(!xmlStrcmp(node->name,(xmlChar*)"menu")){
 	name = g_strdup_printf (MENU_FORMAT, gtk_entry_get_text(GTK_ENTRY(name_entry)));
 	command = g_strdup ("");
@@ -509,10 +506,10 @@ void edit_selection (GtkTreeSelection *selection, gpointer data)
 	switch(controls.menu_type){
 	case MENUFILE:
 	  name = g_strdup_printf (INCLUDE_FORMAT, _("--- include ---"));
-	  command = g_strdup_printf (INCLUDE_PATH_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_source)));
+	  command = g_strdup_printf (INCLUDE_PATH_FORMAT, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
 
 	  xmlSetProp(node,"type", "file");
-	  xmlSetProp(node,"src",gtk_entry_get_text(GTK_ENTRY(entry_source)));
+	  xmlSetProp(node,"src",gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
 	
 	  /* remove unique and style props if needed */
 	  unique_prop = xmlHasProp(node, "unique");

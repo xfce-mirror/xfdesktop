@@ -67,7 +67,6 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
   GtkWidget *optionmenu_type;
 
   struct _controls_menu controls;
-  GtkWidget *entry_source;
   GtkWidget *button_browse;
 
   gint response;
@@ -122,12 +121,12 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
   /* Source */
   controls.hbox_source = gtk_hbox_new(FALSE, 0);
   controls.label_source = gtk_label_new(_("Source:"));
-  entry_source = gtk_entry_new();
+  me->entry_command = gtk_entry_new();
   button_browse = gtk_button_new_with_label("...");
 
-  g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), entry_source);
+  g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), me);
 
-  gtk_box_pack_start (GTK_BOX (controls.hbox_source), entry_source, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (controls.hbox_source), me->entry_command, FALSE, FALSE, 0);
   gtk_box_pack_start (GTK_BOX (controls.hbox_source), button_browse, FALSE, FALSE, 0);
 
   gtk_table_attach(GTK_TABLE(table), controls.label_source, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
@@ -205,8 +204,8 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 
       if(controls.menu_type == MENUFILE){
 	/* Test if all field are filled */
-	if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_source)))==0){
-	  xfce_warn(_("The 'Source' field is required."));
+	if(strlen (gtk_entry_get_text (GTK_ENTRY (me->entry_command)))==0){
+	  xfce_warn (_("The 'Source' field is required."));
 	  continue;
 	}
 
@@ -214,11 +213,11 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 	node = xmlNewNode(NULL, "include");
 
 	xmlSetProp(node,"type","file");
-	xmlSetProp(node,"src", gtk_entry_get_text(GTK_ENTRY(entry_source)));
+	xmlSetProp(node,"src", gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
 
-	name = g_strdup_printf(INCLUDE_FORMAT, _("--- include ---"));
-	source = g_strdup_printf(INCLUDE_PATH_FORMAT,
-				 gtk_entry_get_text(GTK_ENTRY(entry_source)));
+	name = g_strdup_printf (INCLUDE_FORMAT, _("--- include ---"));
+	source = g_strdup_printf (INCLUDE_PATH_FORMAT,
+				  gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
       }
 
       if(controls.menu_type == SYSTEM){

@@ -117,11 +117,9 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
   GtkWidget *label_name;
   GtkWidget *entry_name;
   GtkWidget *label_command;
-  GtkWidget *entry_command;
   GtkWidget *button_browse;
   GtkWidget *hbox_command;
   GtkWidget *label_icon;
-  GtkWidget *entry_icon;
   GtkWidget *button_browse2;
   GtkWidget *hbox_icon;
 
@@ -201,12 +199,12 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
   /* Command */
   hbox_command = gtk_hbox_new(FALSE,0);
   label_command = gtk_label_new(_("Command:"));
-  entry_command = gtk_entry_new();
+  me->entry_command = gtk_entry_new();
   button_browse = gtk_button_new_with_label("...");
 
-  g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), entry_command);
+  g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), me);
 
-  gtk_box_pack_start (GTK_BOX (hbox_command), entry_command, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox_command), me->entry_command, FALSE, FALSE, 0);
   gtk_box_pack_start (GTK_BOX (hbox_command), button_browse, FALSE, FALSE, 0);
 
   gtk_table_attach(GTK_TABLE(table), label_command, 0, 1, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
@@ -217,12 +215,12 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
   /* Icon */
   hbox_icon = gtk_hbox_new(FALSE,0);
   label_icon = gtk_label_new(_("Icon:"));
-  entry_icon = gtk_entry_new();
+  me->entry_icon = gtk_entry_new();
   button_browse2 = gtk_button_new_with_label("...");
 
-  g_signal_connect ((gpointer) button_browse2, "clicked", G_CALLBACK (browse_icon_cb), entry_icon);
+  g_signal_connect ((gpointer) button_browse2, "clicked", G_CALLBACK (browse_icon_cb), me);
 
-  gtk_box_pack_start (GTK_BOX (hbox_icon), entry_icon, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox_icon), me->entry_icon, FALSE, FALSE, 0);
   gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse2, FALSE, FALSE, 0);
 
   gtk_table_attach(GTK_TABLE(table), label_icon, 0, 1, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
@@ -280,13 +278,13 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
       /* Check if all required fields are filled correctly */
       switch(controls.entry_type){
       case LAUNCHER:
-	if(!command_exists(gtk_entry_get_text(GTK_ENTRY(entry_command)))){
+	if(!command_exists (gtk_entry_get_text (GTK_ENTRY (me->entry_command)))){
 	  xfce_warn (_("The command doesn't exist !"));
 	  continue;
 	}
 
 	if(strlen (gtk_entry_get_text (GTK_ENTRY (entry_name))) == 0 ||
-	   strlen (gtk_entry_get_text (GTK_ENTRY (entry_command))) == 0){
+	   strlen (gtk_entry_get_text (GTK_ENTRY (me->entry_command))) == 0){
 	  xfce_warn ( _("All fields must be filled to add an item."));
 	  continue;
 	}
@@ -308,11 +306,11 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
       node = xmlNewNode (NULL, "new");
 
       /* Set icon if needed */
-      if( (entry_icon && strlen (gtk_entry_get_text (GTK_ENTRY (entry_icon))) != 0) ){
-	icon = xfce_icon_theme_load ( me->icon_theme, (gchar*) gtk_entry_get_text (GTK_ENTRY (entry_icon)), ICON_SIZE);
+      if( (me->entry_icon && strlen (gtk_entry_get_text (GTK_ENTRY (me->entry_icon))) != 0) ){
+	icon = xfce_icon_theme_load ( me->icon_theme, (gchar*) gtk_entry_get_text (GTK_ENTRY (me->entry_icon)), ICON_SIZE);
 	if(!icon)
 	  icon = xfce_inline_icon_at_size (dummy_icon_data, ICON_SIZE, ICON_SIZE);
-	xmlSetProp (node,"icon", gtk_entry_get_text (GTK_ENTRY (entry_icon)));
+	xmlSetProp (node,"icon", gtk_entry_get_text (GTK_ENTRY (me->entry_icon)));
       }else{
 	icon = xfce_inline_icon_at_size (dummy_icon_data, ICON_SIZE, ICON_SIZE);
       }
@@ -329,10 +327,10 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 	  xmlSetProp(node, "term", "yes");
 
 	xmlSetProp(node, "name", gtk_entry_get_text (GTK_ENTRY(entry_name)));
-	xmlSetProp(node, "cmd", gtk_entry_get_text (GTK_ENTRY(entry_command)));
+	xmlSetProp(node, "cmd", gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
 
 	name = g_strdup_printf(NAME_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_name)));
-	command = g_strdup_printf(COMMAND_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_command)));
+	command = g_strdup_printf(COMMAND_FORMAT, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
 	break;
       case SUBMENU:
 	/* Set node name */

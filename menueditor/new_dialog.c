@@ -44,7 +44,6 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
   GtkWidget *header_image;
   gchar *header_text;
   GtkWidget *label_filename;
-  GtkWidget *entry_filename;
   GtkWidget *label_title;
   GtkWidget *entry_title;
   GtkWidget *hbox_filename;
@@ -110,14 +109,14 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
 
   /* Filename */
   label_filename = gtk_label_new(_("Filename:"));
-  entry_filename = gtk_entry_new();
+  me->entry_command = gtk_entry_new();
   button_browse = gtk_button_new_with_label("...");
   hbox_filename = gtk_hbox_new(FALSE,0);
 
-  gtk_box_pack_start (GTK_BOX (hbox_filename), entry_filename, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox_filename), me->entry_command, FALSE, FALSE, 0);
   gtk_box_pack_start (GTK_BOX (hbox_filename), button_browse, FALSE, FALSE, 0);
 
-  g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), entry_filename);
+  g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), me);
 
   gtk_table_attach(GTK_TABLE(table), label_filename, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
   gtk_table_attach(GTK_TABLE(table), hbox_filename, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
@@ -136,7 +135,7 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
       GtkTreeIter p;
 
       /* Test if all field are filled */
-      if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_filename)))==0 ||
+      if(strlen(gtk_entry_get_text(GTK_ENTRY(me->entry_command)))==0 ||
 	 strlen(gtk_entry_get_text(GTK_ENTRY(entry_title)))==0){
 	GtkWidget *dialog_warning = gtk_message_dialog_new (GTK_WINDOW (me->main_window),
 							    GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -152,7 +151,7 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
       gtk_tree_store_clear (GTK_TREE_STORE (me->treestore));
 
       /* Create the new xml file */
-      g_stpcpy(me->menu_file_name, gtk_entry_get_text (GTK_ENTRY (entry_filename)));
+      g_stpcpy(me->menu_file_name, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
       xml_empty_file = fopen (me->menu_file_name, "w");
       fprintf (xml_empty_file, "%s\n", empty_xml);
       fclose (xml_empty_file);
