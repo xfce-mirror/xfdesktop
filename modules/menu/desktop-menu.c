@@ -54,9 +54,7 @@
 #include <gmodule.h>
 #include <glib.h>
 
-#include <libxfce4util/debug.h>
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/util.h>
+#include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfcegui4/xfce-appmenuitem.h>
 

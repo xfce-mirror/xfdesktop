@@ -54,8 +54,7 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/util.h>
+#include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <xfce-mcs-manager/manager-plugin.h>
 
@@ -643,7 +642,7 @@ new_list_cb(GtkWidget *w, BackdropPanel *bp)
 static void
 add_button_box (GtkWidget *vbox, BackdropPanel *bp)
 {
-    GtkWidget *hbox, *align, *new_list_button;
+    GtkWidget *hbox, *new_list_button;
 
     hbox = gtk_hbox_new (FALSE, BORDER);
     gtk_widget_show (hbox);
@@ -786,7 +785,7 @@ toggle_set_background(GtkToggleButton *tb, BackdropPanel *bp)
 static BackdropDialog *
 create_backdrop_dialog (McsPlugin * mcs_plugin)
 {
-    GtkWidget *mainvbox, *frame, *vbox, *hbox, *header, *label, *table, *mi,
+    GtkWidget *mainvbox, *frame, *vbox, *hbox, *header, *label, *mi,
 			*menu, *button, *image;
     GtkSizeGroup *sg;
     BackdropDialog *bd;

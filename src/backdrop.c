@@ -64,6 +64,7 @@
 #include "backdrop-common.h"
 
 #include "main.h"
+#include "menu.h"
 #include "settings.h"
 #include "backdrop.h"
 

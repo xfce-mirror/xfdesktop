@@ -95,9 +95,9 @@ dmp_popup(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
 		return FALSE;
 	
 	if(!menu_gmod)
-		return;
+		return FALSE;
 	
-	g_return_if_fail(dmp != NULL && dmp->desktop_menu != NULL);
+	g_return_val_if_fail(dmp != NULL && dmp->desktop_menu != NULL, FALSE);
 	
 	if(xfce_desktop_menu_need_update(dmp->desktop_menu))
 		xfce_desktop_menu_force_regen(dmp->desktop_menu);
@@ -310,7 +310,7 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 {
 	DMPlugin *dmp = ctrl->data;
 	GtkWidget *vbox, *hbox;
-	GtkWidget *label, *entry, *image, *filebutton, *chk;
+	GtkWidget *label, *image, *filebutton, *chk;
 	
 	vbox = gtk_vbox_new(FALSE, 6);
 	gtk_widget_show(vbox);

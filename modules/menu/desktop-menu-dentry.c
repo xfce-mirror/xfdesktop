@@ -41,10 +41,7 @@
 
 #include <gtk/gtk.h>
 
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/debug.h>
-#include <libxfce4util/util.h>
-#include <libxfce4util/xfce-desktopentry.h>
+#include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/xfce-appmenuitem.h>
 #include <libxfcegui4/icons.h>
 
@@ -665,7 +662,6 @@ static void
 menu_dentry_legacy_init()
 {
 	static gboolean is_inited = FALSE;
-	gint i;
 	
 	if(is_inited)
 		return;

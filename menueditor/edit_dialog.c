@@ -607,7 +607,6 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     }else if(!xmlStrcmp(node->name,(xmlChar*)"include")){
       gchar *name=NULL;
       gchar *source=NULL;
-      xmlAttrPtr src_prop;
       xmlAttrPtr unique_prop;
       xmlAttrPtr style_prop;
 

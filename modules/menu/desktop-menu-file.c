@@ -67,8 +67,7 @@
 #include <gtk/gtk.h>
 #include <glib.h>
 
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/util.h>
+#include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/xfce-appmenuitem.h>
 #include <libxfcegui4/icons.h>
 
@@ -362,7 +361,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		if(!state->desktop_menu->use_menu_icons)
 			mi = gtk_menu_item_new_with_label(attribute_values[i]);
 		else {
-			GdkPixbuf *pix;
+			GdkPixbuf *pix = NULL;
 			GtkWidget *image;
 			
 			mi = gtk_image_menu_item_new_with_label(attribute_values[i]);

@@ -24,6 +24,7 @@
 #include <libxfce4mcs/mcs-client.h>
 #include "main.h"
 
+void menu_init (XfceDesktop *desktop);
 void menu_init_global(McsClient *client);
 void menu_cleanup_global();
 void menu_cleanup(XfceDesktop *xfdesktop);

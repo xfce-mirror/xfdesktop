@@ -53,8 +53,7 @@
 #endif
 
 #include <libxfce4mcs/mcs-manager.h>
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/util.h>
+#include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "settings_common.h"
@@ -115,7 +114,6 @@ add_file(const gchar *path, GtkListStore *ls)
 static void
 add_dir(const gchar *path, GtkListStore *ls, GtkWidget *parent)
 {
-	GtkTreeIter iter;
 	GDir *dir;
 	const gchar *file;
 	gchar fullpath[PATH_MAX];
@@ -138,7 +136,7 @@ add_dir(const gchar *path, GtkListStore *ls, GtkWidget *parent)
 	gtk_window_set_destroy_with_parent(GTK_WINDOW(pdlg), TRUE);
 	gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 6);
 	
-	pathlbl = g_strdup_printf(_("Adding files from directory %s..."), path, NULL);
+	pathlbl = g_strdup_printf(_("Adding files from directory %s..."), path);
 	lbl = gtk_label_new(pathlbl);
 	gtk_widget_show(lbl);
 	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), lbl, FALSE, FALSE, 0);
@@ -189,7 +187,6 @@ read_file(const gchar *filename, GtkListStore *ls, GtkWidget *parent)
 	gchar **file;
 	GtkWidget *pdlg, *lbl, *pbar;
 	gchar *pathlbl;
-	gint nfiles = 0, curfile = 0;
 	
 	pdlg = gtk_dialog_new();
 	gtk_window_set_title(GTK_WINDOW(pdlg), _("Backdrop"));
@@ -198,7 +195,7 @@ read_file(const gchar *filename, GtkListStore *ls, GtkWidget *parent)
 	gtk_window_set_destroy_with_parent(GTK_WINDOW(pdlg), TRUE);
 	gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 6);
 	
-	pathlbl = g_strdup_printf(_("Adding files from list %s..."), filename, NULL);
+	pathlbl = g_strdup_printf(_("Adding files from list %s..."), filename);
 	lbl = gtk_label_new(pathlbl);
 	gtk_widget_show(lbl);
 	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), lbl, FALSE, FALSE, 0);
@@ -578,7 +575,7 @@ list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 	if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
 		GSList *filenames, *l;
 		gint nfiles = 0, curfile = 0;
-		GtkWidget *pdlg, *lbl, *pbar;
+		GtkWidget *pdlg=NULL, *lbl, *pbar=NULL;
 		
 		gtk_widget_hide(chooser);
 		while(gtk_events_pending())
@@ -762,8 +759,7 @@ static void
 list_mgr_dialog_new(const gchar *title, GtkWidget *parent, const gchar *path,
 	GtkWidget **dialog, GtkWidget **entry, GtkTreeView **tv)
 {
-    GtkWidget *mainvbox, *frame, *vbox, *header, *button;
-	const gchar *filename;
+    GtkWidget *mainvbox, *frame, *vbox, *header;
 
 	g_return_if_fail(dialog != NULL && entry != NULL && tv != NULL);
 	

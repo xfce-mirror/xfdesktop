@@ -28,7 +28,7 @@
 #include <gtk/gtk.h>
 
 #include <libxfce4mcs/mcs-manager.h>
-#include <libxfce4util/util.h>
+#include <libxfce4util/libxfce4util.h>
 
 #include "settings_common.h"
 
