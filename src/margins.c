@@ -23,7 +23,9 @@
 
 #include "main.h"
 #include "margins.h"
+#include "settings.h"
 #include "settings/margins_settings.h"
+
 
 static Window xwin;
 static DesktopMargins margins;
@@ -90,7 +92,11 @@ static void update_margins_channel(const char *name, McsAction action,
     switch (action)
     {
         case MCS_ACTION_NEW:
-	    /* fall through */
+	    /* fall through unless we are in init state */
+	    if (init_settings)
+	    {
+	        return;
+	    }
         case MCS_ACTION_CHANGED:
 	    margin = setting->data.v_int;
 

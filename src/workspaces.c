@@ -23,6 +23,7 @@
 
 #include "main.h"
 #include "workspaces.h"
+#include "settings.h"
 #include "settings/workspaces_settings.h"
 
 static void set_workspace_count(int n)
@@ -108,7 +109,11 @@ static void update_workspaces_channel(const char *name, McsAction action,
     switch (action)
     {
         case MCS_ACTION_NEW:
-	    /* fall through */
+	    /* fall through unless we are in init state */
+	    if (init_settings)
+	    {
+	        return;
+	    }
         case MCS_ACTION_CHANGED:
 	    if (strcmp(name, "count") == 0)
 		set_workspace_count(setting->data.v_int);

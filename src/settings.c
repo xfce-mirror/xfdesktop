@@ -43,6 +43,12 @@ static GHashTable *settings_hash = NULL;
 static Display *dpy;
 static int xscreen;
 
+/* init_settings is a flag that dramatically speeds up startup 
+   by avoiding the computation of the backdrop image every time 
+   a settings is added at startup
+ */
+gboolean init_settings = TRUE;
+
 /*  mcs client 
  *  ----------
 */
@@ -165,10 +171,12 @@ void watch_settings(GtkWidget *window, NetkScreen *screen)
 */
 	return;
     }
- 
+    
+    init_settings = TRUE;
     g_hash_table_foreach(settings_hash, (GHFunc)add_channel, client);
+    init_settings = FALSE;
 
-/*    load_settings();*/
+    load_settings();
 }
 
 void stop_watch(void)

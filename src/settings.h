@@ -20,6 +20,12 @@
 #ifndef __XFDESKTOP_SETTING
 #define __XFDESKTOP_SETTING
 
+/* init_settings is a flag that dramatically speeds up startup 
+   by avoiding the computation of the backdrop image every time 
+   a settings is added at startup
+ */
+extern gboolean init_settings;
+
 void run_settings_dialog(void);
 
 void watch_settings(GtkWidget *window, NetkScreen *screen);

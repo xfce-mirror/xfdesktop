@@ -23,6 +23,7 @@
 
 #include "main.h"
 #include "backdrop.h"
+#include "settings.h"
 
 /* common stuff is defined here */
 #include "settings/backdrop_settings.h"
@@ -99,13 +100,16 @@ void backdrop_init(GtkWidget * window)
 }
 
 /* settings client */
-static void update_backdrop_channel(const char *name, McsAction action,
-				    McsSetting *setting)
+static void update_backdrop_channel(const char *name, McsAction action, McsSetting *setting)
 {
     switch (action)
     {
         case MCS_ACTION_NEW:
-	    /* fall through */
+	    /* fall through unless we are in init state */
+	    if (init_settings)
+	    {
+	        return;
+	    }
         case MCS_ACTION_CHANGED:
 	    if (strcmp(name, "style") == 0)
 	    {
