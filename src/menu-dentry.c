@@ -78,11 +78,7 @@ static char *blacklist[] = {
 	NULL
 };
 	
-/* this is to work around some abuses of the Exec= parameter, e.g.:
- * Exec=kmix -caption "%c" %i %m
- * *cough*KDE*cough*
- * this function frees the string you give it, and allocates a new one
- */
+/* we don't want most command-line parameters if they're given. */
 static gchar *
 sanitise_dentry_cmd(gchar *cmd) {
 	gchar *p;
@@ -172,19 +168,20 @@ parse_dentry_attr (MenuItemType type, XfceDesktopEntry *de,
 	gchar *ifile = NULL;
 	int term;
 	gint i;
-	
-	mi = g_new0 (MenuItem, 1);
-	mi->type = type;
-	mi->icon = NULL;
 
 	cmd = NULL;
 	xfce_desktop_entry_get_string (de, "Exec", TRUE, &cmd);
+	if(!cmd)
+		return NULL;
 	for(i=0; blacklist[i]; i++) {
 		if(strstr(cmd, blacklist[i]) == cmd) {
-			g_free(mi);
+			g_free(cmd);
 			return NULL;
 		}
 	}
+	
+	mi = g_new0(MenuItem, 1);
+	mi->type = type;
 	
 	if (!xfce_desktop_entry_get_string (de, "Name", TRUE, &name)) {
 		/* siigh.. */
