@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-10-01 07:31+0200\n"
-"PO-Revision-Date: 2004-08-24 23:06+0200\n"
+"PO-Revision-Date: 2004-10-15 14:20+0200\n"
 "Last-Translator: Ilkka Ollakka <ilkka.ollakka@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +55,6 @@ msgid "Separator"
 msgstr "Erotin"
 
 #: menueditor/add_dialog.c:171
-#, fuzzy
 msgid "Title"
 msgstr "Otsikko"
 
@@ -116,9 +115,8 @@ msgid "Add an external menu"
 msgstr "Lisää ulkoinen valikko"
 
 #: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:151
-#, fuzzy
 msgid "File"
-msgstr "Tiedosto:"
+msgstr "Tiedosto"
 
 #: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:156
 msgid "System"
@@ -174,9 +172,8 @@ msgstr "Erotinta ei voi muokata"
 
 #. Name
 #: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:104
-#, fuzzy
 msgid "Title:"
-msgstr "Tiedosto:"
+msgstr "Otsikko:"
 
 #: menueditor/menueditor.c:148
 msgid "Select command"
@@ -245,15 +242,13 @@ msgid "Save as..."
 msgstr "Tallenna nimellä"
 
 #: menueditor/menueditor.c:799
-#, fuzzy
 msgid "Edit"
 msgstr "Muokkaa"
 
 #. File menu
 #: menueditor/menueditor.c:1005
-#, fuzzy
 msgid "_File"
-msgstr "Tiedosto:"
+msgstr "Tiedosto"
 
 #: menueditor/menueditor.c:1014
 msgid "Open default menu"
@@ -318,9 +313,8 @@ msgid "Expand the tree"
 msgstr "Avaa puu"
 
 #: menueditor/menueditor.c:1130
-#, fuzzy
 msgid "Name"
-msgstr "Nimi:"
+msgstr "Nimi"
 
 #: menueditor/menueditor.c:1132
 msgid "Command"
@@ -549,9 +543,8 @@ msgid "Fi_rst Color:"
 msgstr "Ensinmäinen väri:"
 
 #: settings/backdrop_settings.c:985
-#, fuzzy
 msgid "_Second Color:"
-msgstr "Toinen väri:"
+msgstr "Toinen väri"
 
 #. set color only checkbox
 #: settings/backdrop_settings.c:1006
@@ -652,103 +645,25 @@ msgid ""
 msgstr "    -windowlist  Näyttää ikkunalistan (nykyisessä hiiden kohdassa)\n"
 
 #: src/windowlist.c:183
-#, fuzzy, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Työpöytä %d</b>"
 
 #: src/windowlist.c:188
-#, fuzzy, c-format
+#, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Työpöytä %d</i>"
 
 #: src/windowlist.c:244 src/windowlist.c:247
-#, fuzzy
 msgid "_Add Workspace"
 msgstr "Lisää työpöytä"
 
 #: src/windowlist.c:254
-#, fuzzy, c-format
+#,  c-format
 msgid "_Remove Workspace %d"
 msgstr "Poista työpöytä %d"
 
 #: src/windowlist.c:256
-#, fuzzy, c-format
+#,  c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Poista työpöytä '%s'"
 
-#~ msgid "Backdrop"
-#~ msgstr "Taustakuva"
-
-#~ msgid "Adding files from directory %s..."
-#~ msgstr "Lisätään tiedostoja hakemistosta %s..."
-
-#~ msgid "Adding files from list %s..."
-#~ msgstr "Lisätään tiedostoja listasta %s..."
-
-#~ msgid "Adding multiple files..."
-#~ msgstr "Lisätään useita tiedostoja..."
-
-#~ msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-#~ msgstr "XfceDesktopMenu: xfce-registered-categories.xml ei löydy"
-
-#~ msgid "%s: missing or unknown attribute for 'related' element\n"
-#~ msgstr "%s: puuttuva tai tuntematon attribuutti liittyvälle elementille\n"
-
-#~ msgid "%s: unknown xml element %s\n"
-#~ msgstr "%s: tuntematon xml-elementti %s\n"
-
-#~ msgid "Not yet implemented!"
-#~ msgstr "Ei vielä käytössä!"
-
-#, fuzzy
-#~ msgid "Select backdrop color"
-#~ msgstr "Valitse taustaväri"
-
-#~ msgid "New.list"
-#~ msgstr "Uusi.lista"
-
-#, fuzzy
-#~ msgid "Desktop background"
-#~ msgstr "Työpöytä: taustakuva"
-
-#~ msgid "_Browse..."
-#~ msgstr "Se_laa..."
-
-#~ msgid "Background"
-#~ msgstr "Tausta"
-
-#~ msgid "Background Settings"
-#~ msgstr "Taustan asetukset"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr "Työpöydät"
-
-#~ msgid "Change name"
-#~ msgstr "Muuta nimeä"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Paina työpöydän nimeä muokataksesi sitä"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "Työpöytien lukumäärä"
-
-#~ msgid "Workspaces"
-#~ msgstr "Työpöydät"
-
-#~ msgid "Workspace names"
-#~ msgstr "Työpöytien nimet"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "xfdesktop virhe: ladattaessa taustakuvaa %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "Poista työpöytä"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr ""
-#~ "xfdesktop: istunnon hallintaan ei saatu yhteyttä! tarkista asennuksesi."
-
-#~ msgid "Workspace"
-#~ msgstr "Työpöytä"
