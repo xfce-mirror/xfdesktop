@@ -328,7 +328,7 @@ main(int argc, char **argv)
 #endif
 
     client_session = client_session_new(argc, argv, NULL /* data */ , 
-	    				SESSION_RESTART_IF_RUNNING, 40);
+	    				SESSION_RESTART_IF_RUNNING, 35);
 
     client_session->die = die;
 
