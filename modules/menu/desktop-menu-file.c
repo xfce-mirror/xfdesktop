@@ -500,7 +500,7 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 		NULL,
 		NULL
 	};
-	struct MenuFileParserState state;
+	struct MenuFileParserState state = { FALSE, NULL, NULL, NULL, "", NULL, 0 };
 	gboolean ret = FALSE;
 	GError *err = NULL;
 #ifdef HAVE_MMAP
@@ -619,12 +619,12 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 	if(state.branches)
 		g_queue_free(state.branches);
 	if(state.paths) {
-#if !GTK_CHECK_VERSION(2, 4, 0)
+#if GTK_CHECK_VERSION(2, 4, 0)
+		g_queue_foreach(state.paths, (GFunc)g_free, NULL);
+#else
 		gchar *tmp;
 		while((tmp=g_queue_pop_tail(state.paths)))
 			g_free(tmp);
-#else
-		g_queue_foreach(state.paths, (GFunc)g_free, NULL);
 #endif
 		g_queue_free(state.paths);
 	}
