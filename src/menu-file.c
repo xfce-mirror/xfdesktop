@@ -160,7 +160,7 @@ parse_node_attr (MenuItemType type, xmlDocPtr doc, xmlNodePtr cur, const char *p
 static gint
 cmp_menu_paths(gconstpointer a, gconstpointer b)
 {
-	return g_strcasecmp(((MenuItem *)a)->path, ((MenuItem *)b)->path);
+	return g_utf8_collate(((MenuItem *)a)->path, ((MenuItem *)b)->path);
 }
 
 static GList *
