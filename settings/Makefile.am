@@ -6,7 +6,7 @@ EXTRA_DIST = xfce-backdrop-settings.desktop
 #
 # backdrop settings
 #
-backdropdir = @XFCE_MCS_MANAGER_PLUGINSDIR@
+backdropdir = $(libdir)/xfce4/mcs-plugins
 
 backdrop_LTLIBRARIES = backdrop_settings.la
 

@@ -1,4 +1,4 @@
-plugindir = @XFCE4_PANEL_PLUGINSDIR@
+plugindir = $(libdir)/xfce4/panel-plugins
 
 plugin_LTLIBRARIES = libdesktopmenu.la
 
