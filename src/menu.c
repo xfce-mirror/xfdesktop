@@ -303,7 +303,7 @@ create_windowlist_menu (GList **pix_unref_needed)
 void
 popup_menu (int button, guint32 time)
 {
-#ifdef BUILD_DESKTOP_MENU
+#ifdef USE_DESKTOP_MENU
 	GtkWidget *menu_widget;
 	
 	if(!module_desktop_menu)
@@ -360,7 +360,7 @@ button_press (GtkWidget * w, GdkEventButton * bevent)
 	popup_windowlist (button, bevent->time);
 	handled = TRUE;
     }
-#ifdef BUILD_DESKTOP_MENU
+#ifdef USE_DESKTOP_MENU
     else if (button == 3 || (button == 1 && state & GDK_SHIFT_MASK))
     {
 	popup_menu (button, bevent->time);
