@@ -109,7 +109,39 @@ static gboolean EditMode = FALSE;
  *******************************************************************************
  */
 
-static gboolean menu_check_update(gpointer data)
+static gint
+calc_icon_size()
+{
+	static guchar icon_sizes[] = { 12, 16, 24, 32, 48, 72, 96, 0 };
+	gint i, icon_size = -1;
+	GtkWidget *tmp;
+	GtkStyle *style;
+	PangoFontDescription *pfdesc;
+	gint totheight;
+	
+	/* determine widget height */
+	tmp = gtk_label_new("foo");
+	gtk_widget_set_name(tmp, "xfdesktopmenu");
+	gtk_widget_show(tmp);
+	style = gtk_rc_get_style(tmp);
+	pfdesc = style->font_desc;
+	totheight = PANGO_PIXELS(pango_font_description_get_size(pfdesc));
+	totheight += 12;  /* FIXME: fudge factor */
+	gtk_widget_destroy(tmp);
+
+	/* figure out an ideal icon size */
+	for(i=0; icon_sizes[i]; i++) {
+		if(icon_sizes[i] < totheight)
+			icon_size = icon_sizes[i];
+		else
+			break;
+	}
+	
+	return icon_size;
+}
+
+static gboolean
+menu_check_update(gpointer data)
 {
 	if(menu_file_need_update() || last_theme_change > last_menu_gen || !desktop_menu)
 		desktop_menu = create_desktop_menu();
@@ -375,7 +407,7 @@ create_desktop_menu (void)
 	GdkPixbuf *pix;
 	MenuItem *item = NULL;
 	GList *li, *menu_data = NULL;
-	gint i;
+	gint i, icon_size;
 
     TRACE ("dummy");
     if (!filename || is_using_system_rc)
@@ -427,7 +459,11 @@ create_desktop_menu (void)
         
 	g_hash_table_destroy(menu_entry_hash);
 	menu_entry_hash = NULL;
-		
+	
+	icon_size = calc_icon_size();
+	if(icon_size < 0)
+		icon_size = 24;
+	
 	for (li = menu_data; li; li = li->next) {
 		/* parse current item */
 		item = (MenuItem *) li->data;
@@ -446,7 +482,7 @@ create_desktop_menu (void)
 			if (use_menu_icons && item->icon) {
 				imgitem = GTK_IMAGE_MENU_ITEM(mi);
 				if(imgitem) {
-					pix = menu_icon_find(item->icon);
+					pix = menu_icon_find(item->icon, icon_size);
 					if(pix) {
 						img = gtk_image_new_from_pixbuf (pix);
 						gtk_widget_show (img);

@@ -24,6 +24,6 @@
 
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
-GdkPixbuf *menu_icon_find(const gchar *filename);
+GdkPixbuf *menu_icon_find(const gchar *filename, gint size);
 
 #endif

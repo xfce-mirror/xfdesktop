@@ -88,26 +88,6 @@ static const gchar *pix_ext[] = {
 	NULL
 };
 
-static gint
-get_menuitem_height()
-{
-	GtkWidget *tmp;
-	GtkStyle *style;
-	PangoFontDescription *pfdesc;
-	gint totheight;
-	
-	tmp = gtk_label_new("foo");
-	gtk_widget_set_name(tmp, "xfdesktopmenu");
-	gtk_widget_show(tmp);
-	style = gtk_rc_get_style(tmp);
-	pfdesc = style->font_desc;
-	totheight = PANGO_PIXELS(pango_font_description_get_size(pfdesc));
-	totheight += 7;  /* FIXME: fudge factor */
-	gtk_widget_destroy(tmp);
-
-	return totheight;
-}
-
 static gboolean
 menu_icon_find_prefix(const gchar *prefix, const gchar **dirs,
 		const gchar *filename, gchar *icon_path)
@@ -137,10 +117,9 @@ menu_icon_find_prefix(const gchar *prefix, const gchar **dirs,
 }
 
 GdkPixbuf *
-menu_icon_find(const gchar *filename)
+menu_icon_find(const gchar *filename, gint size)
 {
-	static guchar icon_sizes[] = { 12, 16, 24, 32, 48, 72, 96, 0 };
-	static gshort icon_size = -1;
+
 	gushort mi_height;
     gboolean found = FALSE;
     GdkPixbuf *miicon = NULL;
@@ -156,22 +135,10 @@ menu_icon_find(const gchar *filename)
 		return dummy_icon;
 #endif
 
-	if(icon_size == -1) {
-		/* figure out an ideal icon size */
-		mi_height = get_menuitem_height();
-		for(i=0; icon_sizes[i]; i++) {
-			if(icon_sizes[i] < mi_height)
-				icon_size = icon_sizes[i];
-			else
-				break;
-		}
-	}
-	
 	/* size the dummy icon so we maintain proper menuitem size */
 	if(!dummy_icon) {
 		GdkPixbuf *tmpicon = gdk_pixbuf_new_from_inline(-1, my_pixbuf, FALSE, NULL);
-		dummy_icon = gdk_pixbuf_scale_simple(tmpicon, icon_size,
-				icon_size, GDK_INTERP_BILINEAR);
+		dummy_icon = gdk_pixbuf_scale_simple(tmpicon, size,	size, GDK_INTERP_BILINEAR);
 		g_object_unref(G_OBJECT(tmpicon));
 	}
 	
@@ -218,10 +185,9 @@ menu_icon_find(const gchar *filename)
 		if (miicon) {
 			w = gdk_pixbuf_get_width (miicon);
 			h = gdk_pixbuf_get_height (miicon);
-			if (w != icon_size || h != icon_size) {
+			if (w != size || h != size) {
 				GdkPixbuf *tmp;
-				tmp = gdk_pixbuf_scale_simple (miicon, icon_size, icon_size,
-						GDK_INTERP_BILINEAR);
+				tmp = gdk_pixbuf_scale_simple (miicon, size, size, GDK_INTERP_BILINEAR);
 				g_object_unref (G_OBJECT (miicon));
 				miicon = tmp;
 			}
