@@ -37,12 +37,22 @@
 /*#define DBG(fmt, args...) ({fprintf(stderr, __FILE__ ", line %d: ", __LINE__); fprintf(stderr , fmt , ## args );})*/
 #define DBG(fmt, args...) 																\
 		({																				\
-			fprintf(stderr, "%s: line %d: %s(): ", __FILE__ , __LINE__, __DBG_FUNCTION); 	\
+			fprintf(stderr, "\n%s: line %d: %s(): ", __FILE__ , __LINE__, __DBG_FUNCTION); 	\
 			fprintf(stderr , fmt , ## args );											\
 		})
 #else
 /* #define DBG(fmt, args...) do {} while(0) */
 #define DBG(fmt, args...)
+#endif
+
+#if defined(DEBUG_TRACE) && DEBUG_TRACE
+
+#define TRACE() 																\
+		({																				\
+			fprintf(stderr, "\n%s: line %d: %s(): ", __FILE__ , __LINE__, __DBG_FUNCTION); 	\
+		})
+#else
+#define TRACE()
 #endif
 
 #endif /* __DEBUG_H__ */
