@@ -23,8 +23,8 @@
 void menu_init(GtkWidget *, NetkScreen *);
 void menu_load_settings(McsClient *);
 void add_menu_callback(GHashTable *);
-void popup_menu(void);
-void popup_windowlist(void);
+void popup_menu(int button, guint32 time);
+void popup_windowlist(int button, guint32 time);
 
 #endif	/* !__XFDESKTOP_MENU_H__ */
 

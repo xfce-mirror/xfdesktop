@@ -796,7 +796,7 @@ static gboolean button_scroll_event (GtkWidget *widget, GdkEventScroll *event)
  * -----------------------
 */
 void
-popup_menu (void)
+popup_menu (int button, guint32 time)
 {
     static GtkWidget *menu = NULL;
     
@@ -804,13 +804,13 @@ popup_menu (void)
 
     if (menu)
     {
-	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0, 
-		       GDK_CURRENT_TIME);
+	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 
+		       button, time);
     }
 }
 
 void
-popup_windowlist (void)
+popup_windowlist (int button, guint32 time)
 {
     static GtkWidget *menu = NULL;
 
@@ -821,8 +821,8 @@ popup_windowlist (void)
 
     menu = create_windowlist_menu();
 
-    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0, 
-	    	   GDK_CURRENT_TIME);
+    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 
+		   button, time);
 }
 
 /*  Initialization and event handling
@@ -835,14 +835,14 @@ static gboolean button_press_event(GtkWidget * win, GdkEventButton * ev,
     if(ev->button == 2 || 
        (ev->button == 1 && ev->state & GDK_SHIFT_MASK & GDK_CONTROL_MASK ))
     {
-	popup_windowlist ();
+	popup_windowlist (ev->button, ev->time);
 
         return TRUE;
     }
     else if(ev->button == 3 || 
        (ev->button == 1 && ev->state & GDK_SHIFT_MASK))
     {
-	popup_menu();
+	popup_menu(ev->button, ev->time);
 
 	return TRUE;
     }

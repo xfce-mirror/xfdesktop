@@ -128,12 +128,12 @@ client_message_received (GtkWidget * widget, GdkEventClient * event,
 	}
 	else if (strcmp (MENU_MESSAGE, event->data.b) == 0)
 	{
-	    popup_menu ();
+	    popup_menu (0, gtk_get_current_event_time ());
 	    return TRUE;
 	}
 	else if (strcmp (WINDOWLIST_MESSAGE, event->data.b) == 0)
 	{
-	    popup_windowlist ();
+	    popup_windowlist (0, gtk_get_current_event_time ());
 	    return TRUE;
 	}
     }
