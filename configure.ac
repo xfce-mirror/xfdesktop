@@ -32,12 +32,12 @@ BM_I18N([xfdesktop], [ca de es fi fr ja pl ms nl ru ta tr zh_CN])
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE
 
-BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 3.91.0)
-BM_DEPEND(LIBXML, libxml-2.0, 2.4.0)
-BM_DEPEND(LIBXFCE4MCS_CLIENT,  libxfce4mcs-client-1.0, 0.0.4)
+BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 3.91.0)
+BM_DEPEND([LIBXML], libxml-2.0, 2.4.0)
+BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [3.91.0])
 
 dnl Configure the MCS plugins
-XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [0.2.0])
+XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [3.91.0])
 
 dnl Check for debuggin support
 BM_DEBUG_SUPPORT
