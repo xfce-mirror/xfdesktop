@@ -2,11 +2,11 @@
 
 SUBDIRS = backdrops common doc po settings src
 
-EXTRA_DIST = xfdesktop.spec.in TODO
-
 confdir = $(sysconfdir)/xfce4
 
 conf_DATA = menu.xml
+
+EXTRA_DIST = $(conf_DATA) xfdesktop.spec TODO
 
 distclean-local:
 	-rm -rf xfdesktop.spec *.cache *~

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
-"POT-Creation-Date: 2003-04-06 13:07+0200\n"
+"POT-Creation-Date: 2003-05-05 08:08+0200\n"
 "PO-Revision-Date: 2003-04-06 13:09--100\n"
 "Last-Translator: Moritz Heiber <mistermoe@hackerboard.de>\n"
 "Language-Team: NONE <none@none>\n"
@@ -18,11 +18,13 @@ msgstr ""
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your changes"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
 msgstr ""
 "Konnte Datei %s: %s nicht abspeichern\n"
 "\n"
-"Bitte anderen Speicherplatz wählen oder Abbrechen um die Änderungen zu verwerfen"
+"Bitte anderen Speicherplatz wählen oder Abbrechen um die Änderungen zu "
+"verwerfen"
 
 #: settings/backdrop-mgr.c:392
 msgid "Select image file"
@@ -32,8 +34,7 @@ msgstr "Bilddatei auswählen"
 msgid "Choose backdrop list filename"
 msgstr "Namen für Liste mit Hintergrundbildern auswählen"
 
-#: settings/backdrop-mgr.c:525
-#: settings/backdrop_settings.c:558
+#: settings/backdrop-mgr.c:525 settings/backdrop_settings.c:558
 msgid "File:"
 msgstr "Datei:"
 
@@ -159,8 +160,7 @@ msgid "Number of workspaces:"
 msgstr "Anzahl der Workspaces:"
 
 #. Number of workspaces
-#: settings/workspaces_settings.c:522
-#: settings/workspaces_settings.c:553
+#: settings/workspaces_settings.c:522 settings/workspaces_settings.c:553
 msgid "Workspaces"
 msgstr "Workspaces"
 
@@ -182,11 +182,6 @@ msgstr "XFdesktop Fehler: lade Hintergrundbild: %s\n"
 msgid "Desktop"
 msgstr "Arbeitsplatz"
 
-#: src/menu.c:632
-#: src/menu.c:637
-msgid "Workspace"
-msgstr "Workspace"
-
 #: src/menu.c:688
 msgid "Add workspace"
 msgstr "Workspace hinzufügen"
@@ -196,6 +191,12 @@ msgid "Delete workspace"
 msgstr "Workspace entfernen"
 
 #: src/settings.c:186
-msgid "xfdesktop: could not connect to settings manager!Please check your installation."
-msgstr "XFdesktop: Konnte keine Verbindung zum Einstellungsmanager herstellen! Prüfen Sie Ihre Installation."
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr ""
+"XFdesktop: Konnte keine Verbindung zum Einstellungsmanager herstellen! "
+"Prüfen Sie Ihre Installation."
 
+#~ msgid "Workspace"
+#~ msgstr "Workspace"

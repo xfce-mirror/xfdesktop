@@ -25,6 +25,7 @@ backdrop_settings_la_SOURCES =						\
 	settings_common.h
 
 backdrop_settings_la_CFLAGS =						\
+	-I$(top_srcdir)							\
 	-I$(top_srcdir)/common						\
 	@XFCE_MCS_MANAGER_CFLAGS@					\
 	-DLOCALEDIR=\"$(localedir)\"					\
@@ -56,6 +57,7 @@ workspaces_settings_la_SOURCES =					\
 	settings_common.h
 
 workspaces_settings_la_CFLAGS =						\
+	-I$(top_srcdir)							\
 	-I$(top_srcdir)/common						\
 	@XFCE_MCS_MANAGER_CFLAGS@					\
 	-DLOCALEDIR=\"$(localedir)\"					\

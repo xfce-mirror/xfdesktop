@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
-"POT-Creation-Date: 2003-04-06 13:07+0200\n"
+"POT-Creation-Date: 2003-05-05 08:08+0200\n"
 "PO-Revision-Date: 2003-04-25 18:44--200\n"
 "Last-Translator: Ilkka Ollakka <ilkka.j.ollakka@students.oamk.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,13 @@ msgstr ""
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your changes"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
 msgstr ""
 "Tiedostoa %s ei voitu tallentaa: %s\n"
 "\n"
-"Valitse muu sijainti tiedostolla tai paina peruuta napiia hylätäksesti muutokset"
+"Valitse muu sijainti tiedostolla tai paina peruuta napiia hylätäksesti "
+"muutokset"
 
 #: settings/backdrop-mgr.c:392
 msgid "Select image file"
@@ -32,8 +34,7 @@ msgstr "Valitse kuvatiedosto"
 msgid "Choose backdrop list filename"
 msgstr "Valitse taustakuvalistan tiedostonimi"
 
-#: settings/backdrop-mgr.c:525
-#: settings/backdrop_settings.c:558
+#: settings/backdrop-mgr.c:525 settings/backdrop_settings.c:558
 msgid "File:"
 msgstr "Tiedosto:"
 
@@ -159,8 +160,7 @@ msgid "Number of workspaces:"
 msgstr "Työpöytien lukumäärä:"
 
 #. Number of workspaces
-#: settings/workspaces_settings.c:522
-#: settings/workspaces_settings.c:553
+#: settings/workspaces_settings.c:522 settings/workspaces_settings.c:553
 msgid "Workspaces"
 msgstr "Työpöydät"
 
@@ -182,11 +182,6 @@ msgstr "xfdesktop virhe: ladattaessa taustakuvaa %s\n"
 msgid "Desktop"
 msgstr "Työpöytä"
 
-#: src/menu.c:632
-#: src/menu.c:637
-msgid "Workspace"
-msgstr "Työpöytä"
-
 #: src/menu.c:688
 msgid "Add workspace"
 msgstr "Lisää työpöytä"
@@ -196,6 +191,11 @@ msgid "Delete workspace"
 msgstr "Poista työpöytä"
 
 #: src/settings.c:186
-msgid "xfdesktop: could not connect to settings manager!Please check your installation."
-msgstr "xfdesktop: istunnon hallintaan ei saatu yhteyttä! tarkista asennuksesi."
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr ""
+"xfdesktop: istunnon hallintaan ei saatu yhteyttä! tarkista asennuksesi."
 
+#~ msgid "Workspace"
+#~ msgstr "Työpöytä"

@@ -12,6 +12,7 @@ xfdesktop_SOURCES =							\
 	workspaces.h
 
 xfdesktop_CFLAGS = 							\
+	-I$(top_srcdir)							\
 	-I$(top_srcdir)/common						\
 	@LIBX11_CFLAGS@							\
 	@LIBXFCE4MCS_CLIENT_CFLAGS@					\

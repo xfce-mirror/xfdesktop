@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
-"POT-Creation-Date: 2003-04-06 13:07+0200\n"
+"POT-Creation-Date: 2003-05-05 08:08+0200\n"
 "PO-Revision-Date: 2003-04-27 18:44--200\n"
 "Last-Translator: Paweł Pastuła <pastulap@poczta.onet.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,8 @@ msgstr ""
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your changes"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
 msgstr ""
 "Nie mogę zapisać pliku: %s\n"
 "\n"
@@ -32,8 +33,7 @@ msgstr "Wybierz plik z tłem"
 msgid "Choose backdrop list filename"
 msgstr "Wybierz nazwę pliku dla listy"
 
-#: settings/backdrop-mgr.c:525
-#: settings/backdrop_settings.c:558
+#: settings/backdrop-mgr.c:525 settings/backdrop_settings.c:558
 msgid "File:"
 msgstr "Plik:"
 
@@ -139,7 +139,7 @@ msgstr "Pulpit: obszar roboczy"
 
 #: settings/workspaces_settings.c:323
 msgid "Change name"
-msgstr "Zmień nazwę" 
+msgstr "Zmień nazwę"
 
 #: settings/workspaces_settings.c:334
 #, c-format
@@ -159,8 +159,7 @@ msgid "Number of workspaces:"
 msgstr "Liczba obszarów roboczych"
 
 #. Number of workspaces
-#: settings/workspaces_settings.c:522
-#: settings/workspaces_settings.c:553
+#: settings/workspaces_settings.c:522 settings/workspaces_settings.c:553
 msgid "Workspaces"
 msgstr "Obszary robocze"
 
@@ -182,11 +181,6 @@ msgstr "xfdesktop error: wczytywanie obrazka z tłem: %s\n"
 msgid "Desktop"
 msgstr "Pulpit"
 
-#: src/menu.c:632
-#: src/menu.c:637
-msgid "Workspace"
-msgstr "Obszar roboczy"
-
 #: src/menu.c:688
 msgid "Add workspace"
 msgstr "Dodaj obszar roboczy"
@@ -196,6 +190,12 @@ msgid "Delete workspace"
 msgstr "Usuń obszar roboczy"
 
 #: src/settings.c:186
-msgid "xfdesktop: could not connect to settings manager!Please check your installation."
-msgstr "xfdesktop: nie mogę się połączyć z menadżerem ustawień! Proszę sprawdź czy instalacja jest poprawna."
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr ""
+"xfdesktop: nie mogę się połączyć z menadżerem ustawień! Proszę sprawdź czy "
+"instalacja jest poprawna."
 
+#~ msgid "Workspace"
+#~ msgstr "Obszar roboczy"
