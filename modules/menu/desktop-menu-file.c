@@ -474,25 +474,28 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 	}
 #endif
 	
-	if(desktop_menu->menufiles_watch) {
-		g_list_free(desktop_menu->menufiles_watch);
-		desktop_menu->menufiles_watch = NULL;
-	}
-	if(desktop_menu->menufile_mtimes) {
-		g_free(desktop_menu->menufile_mtimes);
-		desktop_menu->menufile_mtimes = NULL;
-	}
-	if(desktop_menu->dentrydir_mtimes) {
-		g_free(desktop_menu->dentrydir_mtimes);
-		desktop_menu->dentrydir_mtimes = NULL;
-	}
-	if(desktop_menu->legacydir_mtimes) {
-		g_free(desktop_menu->legacydir_mtimes);
-		desktop_menu->legacydir_mtimes = NULL;
+	if(is_root) {
+		if(desktop_menu->menufiles_watch) {
+			g_list_free(desktop_menu->menufiles_watch);
+			desktop_menu->menufiles_watch = NULL;
+		}
+		if(desktop_menu->menufile_mtimes) {
+			g_free(desktop_menu->menufile_mtimes);
+			desktop_menu->menufile_mtimes = NULL;
+		}
+		if(desktop_menu->dentrydir_mtimes) {
+			g_free(desktop_menu->dentrydir_mtimes);
+			desktop_menu->dentrydir_mtimes = NULL;
+		}
+		if(desktop_menu->legacydir_mtimes) {
+			g_free(desktop_menu->legacydir_mtimes);
+			desktop_menu->legacydir_mtimes = NULL;
+		}
 	}
 	
 	if(!desktop_menu->filename || other_filename) {
-		g_free(desktop_menu->filename);
+		if(desktop_menu->filename)
+			g_free(desktop_menu->filename);
 		desktop_menu->filename = g_strdup(filename);
 	}
 	state.started = FALSE;
