@@ -229,6 +229,16 @@ static void list_dialog_response(GtkWidget *w, int response, ListDialog *ld)
 {
     if (response == GTK_RESPONSE_OK)
     {
+	const char *temp;
+
+	temp = gtk_entry_get_text(GTK_ENTRY(ld->file_entry));
+
+	if (temp && strlen(temp))
+	{
+	    g_free(ld->filename);
+	    ld->filename = g_strdup(temp);
+	}
+	
 	if (ld->changed)
 	{
 	    if (!save_list_file(ld))
