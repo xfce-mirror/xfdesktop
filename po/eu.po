@@ -95,11 +95,11 @@ msgstr "Exekutatu _terminalean"
 
 #: menueditor/add_dialog.c:285 menueditor/edit_dialog.c:468
 msgid "The command doesn't exist !"
-msgstr "Komadoa ez dago!"
+msgstr "Komadoa ez dago !"
 
 #: menueditor/add_dialog.c:291
 msgid "All fields must be filled to add an item."
-msgstr "Eremu guztiak bete behar dira sarrera gehitzeko"
+msgstr "Eremu guztiak bete behar dira sarrera gehitzeko."
 
 #: menueditor/add_dialog.c:300
 msgid "The 'Name' field is required."
@@ -121,7 +121,7 @@ msgstr "Kanpo menu bat gehitu"
 
 #: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:152
 msgid "File"
-msgstr "Fitxategia:"
+msgstr "Fitxategia"
 
 #: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:157
 msgid "System"
@@ -134,7 +134,7 @@ msgstr "Iturburua:"
 #. Style
 #: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:185
 msgid "Style:"
-msgstr "Estiloa"
+msgstr "Estiloa:"
 
 #: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:188
 msgid "Simple"
@@ -201,11 +201,11 @@ msgstr "Irudi Fitxategiak"
 
 #: menueditor/menueditor.c:500 menueditor/menueditor.c:903
 msgid "Do you want to save before closing the menu ?"
-msgstr "Menua itxi aurretik gorde nahi al duzu?"
+msgstr "Menua itxi aurretik gorde nahi al duzu ?"
 
 #: menueditor/menueditor.c:502
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Menua aldatu duzu, atera aurretik gorde nahi al duzu?"
+msgstr "Menua aldatu duzu, atera aurretik gorde nahi al duzu ?"
 
 #: menueditor/menueditor.c:504
 msgid "Forget modifications"
@@ -218,7 +218,7 @@ msgstr "Galdera"
 
 #: menueditor/menueditor.c:692
 msgid "Do you want to save before opening the default menu ?"
-msgstr "Lehenetsitako menua ireki aurretik gorde nahi al duzu?"
+msgstr "Lehenetsitako menua ireki aurretik gorde nahi al duzu ?"
 
 #: menueditor/menueditor.c:694 menueditor/menueditor.c:753
 #: menueditor/menueditor.c:905
@@ -227,7 +227,7 @@ msgstr "Aldaketak alda batetara utzi"
 
 #: menueditor/menueditor.c:751
 msgid "Do you want to save before opening an other menu ?"
-msgstr "Beste menu bat iraki aurretik gorde nahi al duzu?"
+msgstr "Beste menu bat iraki aurretik gorde nahi al duzu ?"
 
 #: menueditor/menueditor.c:764
 msgid "Open menu file"
@@ -407,35 +407,29 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Ezin da xfce4-menueditor abiarazi: %s"
 
 #: panel-plugin/desktop-menu-plugin.c:663
-#, fuzzy
 msgid "Button _title:"
-msgstr "_Botoi ikonoa:"
+msgstr "Botoi _titulua:"
 
 #: panel-plugin/desktop-menu-plugin.c:676
-#, fuzzy
 msgid "Menu File"
-msgstr "Irudi Fitxategia"
+msgstr "Menu Fitxategia"
 
 #: panel-plugin/desktop-menu-plugin.c:688
-#, fuzzy
 msgid "Use default _desktop menu file"
-msgstr "_Editatu idazmahai menua"
+msgstr "Erabili lehenetsiriko i_dazmahai menu fitxategia"
 
 #: panel-plugin/desktop-menu-plugin.c:697
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "Menu fitxategia ireki"
+msgstr "Erabili _pertsonalizaturiko menu fitxategia:"
 
 #: panel-plugin/desktop-menu-plugin.c:749
 #: panel-plugin/desktop-menu-plugin.c:751
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "_Menua"
+msgstr "_Editatu Menua"
 
 #: panel-plugin/desktop-menu-plugin.c:758
-#, fuzzy
 msgid "Icons"
-msgstr "Ikonoa:"
+msgstr "Ikonoak"
 
 #: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
@@ -452,10 +446,9 @@ msgid ""
 "\n"
 "Please choose another location or press cancel in the dialog to discard your "
 "changes"
-msgstr ""
-"Ezin da %s fitxategia gorde: %s\n"
+msgstr "Ezin da %s fitxategia gorde: %s\n"
 "\n"
-"Mesedez, beste kokapen bat aukeratu edo sakatu \"cancelar\" aldaketak ez "
+"Mesedez, beste kokapen bat aukeratu edo ezeztatu sakatu aldaketak ez "
 "gordetzeko"
 
 #: settings/backdrop-mgr.c:409
@@ -476,7 +469,7 @@ msgstr "Atzekaldeen zerrenda"
 
 #: settings/backdrop-mgr.c:599
 msgid "Image files"
-msgstr "Irudi Fitxategia"
+msgstr "Irudi fitxategiak"
 
 #: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
@@ -586,7 +579,7 @@ msgstr "_Atzekaldeko kolorea:"
 #. set color only checkbox
 #: settings/backdrop_settings.c:1006
 msgid "Set color _only"
-msgstr "kolorea _bakarrik ezarri"
+msgstr "Kolorea _bakarrik ezarri"
 
 #: settings/backdrop_settings.c:1021
 msgid "Image"
@@ -656,7 +649,7 @@ msgstr "_Editatu idazmahai menua"
 #: src/main.c:300
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr "%s: aukera ezezaguna: %s\n"
+msgstr "%s: Aukera ezezaguna: %s\n"
 
 #: src/main.c:301
 msgid "Options are:\n"
@@ -780,3 +773,4 @@ msgstr "_Ezabatu '%s' Idazmahai Birtuala"
 #~ msgstr ""
 #~ "xfdesktop:Ezin izan da aukeren administratzailearekin konektatu! Mesedez, "
 #~ "egiaztatuzure instalazioa."
+
