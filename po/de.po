@@ -6,8 +6,8 @@ msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-03-06 20:09+0100\n"
-"PO-Revision-Date: 2003-11-23 05:46-0000\n"
-"Last-Translator: Artjom Simon <hoek@linuxartist.org>\n"
+"PO-Revision-Date: 2004-03-06 21:11-0000\n"
+"Last-Translator: Moritz Heiber <moe@xfce.org>\n"
 "Language-Team: NONE <none@none>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Konnte Datei %s: %s nicht abspeichern\n"
 "\n"
-"Bitte anderen Speicherplatz wählen oder Abbrechen um die Änderungen zu "
+"Bitte anderen Speicherplatz wählen oder Abbrechen um die Änderungen zu"
 "verwerfen"
 
 #: settings/backdrop-mgr.c:510
@@ -60,7 +60,7 @@ msgstr "Liste mit Hintergrundbildern bearbeiten"
 
 #: settings/backdrop_settings.c:144
 msgid "Desktop Backdrop"
-msgstr "Desktop-Hintergrund"
+msgstr "Hintergrund"
 
 #: settings/backdrop_settings.c:370
 msgid "Select backdrop color"
@@ -112,7 +112,7 @@ msgstr "_Skaliert"
 
 #: settings/backdrop_settings.c:807
 msgid "_Stretched"
-msgstr "_Verzogen"
+msgstr "_Ausgebreitet"
 
 #: settings/backdrop_settings.c:814
 msgid "_Auto"
@@ -126,7 +126,7 @@ msgstr "Hintergrund"
 #. header
 #: settings/backdrop_settings.c:875
 msgid "Backdrop Settings"
-msgstr "Desktop-Hintergrund"
+msgstr "Hintergrund"
 
 #. color
 #: settings/backdrop_settings.c:881
@@ -139,7 +139,6 @@ msgid "Image"
 msgstr "Bild"
 
 #: settings/backdrop_settings.c:919
-#, fuzzy
 msgid "Don't set backdrop"
 msgstr "Kein Hintergrundbild"
 
@@ -147,7 +146,8 @@ msgstr "Kein Hintergrundbild"
 msgid ""
 "%s: There was an error loading image:\n"
 "%s\n"
-msgstr "%s: Fehler beim Laden des Hintergrundbilds\n%s\n"
+msgstr "%s: Fehler beim Laden des Hintergrundbildes\n"
+"%s\n"
 
 #: src/main.c:265
 msgid "Desktop"
@@ -159,11 +159,11 @@ msgstr "Ohne Namen"
 
 #: src/menu.c:703
 msgid "Add workspace"
-msgstr "Workspace hinzufügen"
+msgstr "Virtuellen Desktop hinzufügen"
 
 #: src/menu.c:710
 msgid "Delete workspace"
-msgstr "Workspace entfernen"
+msgstr "Virtuellen Desktop entfernen"
 
 #: src/menuspec.c:54
 msgid "/Other"
@@ -172,16 +172,16 @@ msgstr "/Andere"
 #: src/menuspec.c:263
 #, c-format
 msgid "%s: missing or unknown attribute for 'related' element\n"
-msgstr "%s: fehlendes/unbekanntes Attribut für 'related'-Element\n"
+msgstr "%s: Fehlendes/unbekanntes Attribut für zusammenhängendes Element\n"
 
 #: src/menuspec.c:268
 #, c-format
 msgid "%s: unknown xml element %s\n"
-msgstr "%s: unbekanntes XML-Element %s\n"
+msgstr "%s: Unbekanntes XML-Element %s\n"
 
 #: menueditor/about_dialog.c:39
 msgid "An menueditor for XFce4"
-msgstr "Ein Menü-Editor für Xfce4"
+msgstr "Ein Menüeditor für Xfce4"
 
 #: menueditor/about_dialog.c:46
 msgid "Core developer"
@@ -189,13 +189,13 @@ msgstr "Hauptentwickler"
 
 #: menueditor/add_dialog.c:110 menueditor/add_dialog.c:122
 msgid "Add menu entry"
-msgstr "Menü-Eintrag hinzufügen"
+msgstr "Menüeintrag hinzufügen"
 
 #. Type
 #: menueditor/add_dialog.c:128 menueditor/add_menu_dialog.c:76
 #: menueditor/edit_dialog.c:113
 msgid "Type :"
-msgstr "Art :"
+msgstr "Art:"
 
 #: menueditor/add_dialog.c:131
 msgid "Launcher"
@@ -221,23 +221,23 @@ msgstr "Beenden"
 #: menueditor/add_dialog.c:166 menueditor/edit_dialog.c:188
 #: menueditor/edit_dialog.c:223 menueditor/edit_dialog.c:244
 msgid "Name :"
-msgstr "Name :"
+msgstr "Name:"
 
 #: menueditor/add_dialog.c:176 menueditor/edit_dialog.c:189
 msgid "Command :"
-msgstr "Kommando :"
+msgstr "Kommando:"
 
 #: menueditor/add_dialog.c:192 menueditor/edit_dialog.c:180
 msgid "Icon :"
-msgstr "Symbol :"
+msgstr "Symbol:"
 
 #: menueditor/add_dialog.c:252
 msgid ""
 "All the field are not filled !!!\n"
 "Adding nothing"
 msgstr ""
-"Nicht alle Felder sind ausgefüllt worden !!!\n"
-"Daher wird nichts hinzugefügt"
+"Nicht alle Felder sind ausgefüllt worden!\n"
+"Es wird nichts hinzugefügt"
 
 #: menueditor/add_dialog.c:324 menueditor/add_dialog.c:430
 #: menueditor/add_dialog.c:490
@@ -245,7 +245,7 @@ msgid ""
 "Name field is not filled !!!\n"
 "Adding nothing"
 msgstr ""
-"Namensfeld wurde nicht ausgefüllt !!!\n"
+"Namensfeld wurde nicht ausgefüllt!\n"
 "Daher wird nichts hinzugefügt"
 
 #: menueditor/add_dialog.c:414 menueditor/dnd.c:139
@@ -255,7 +255,7 @@ msgstr "--- Trennstrich ---"
 
 #: menueditor/add_dialog.c:539
 msgid "quit"
-msgstr "beenden"
+msgstr "Beenden"
 
 #: menueditor/add_menu_dialog.c:59 menueditor/add_menu_dialog.c:67
 msgid "Add an external menu"
@@ -271,37 +271,36 @@ msgstr "System"
 
 #: menueditor/add_menu_dialog.c:101 menueditor/edit_dialog.c:136
 msgid "Source :"
-msgstr "Quelle :"
+msgstr "Quelle:"
 
 #: menueditor/add_menu_dialog.c:157
 msgid ""
 "Source field is not filled !!!\n"
 "Adding nothing"
 msgstr ""
-"Quellfeld ist nicht ausgefüllt !!!\n"
+"Quellfeld ist nicht ausgefüllt!\n"
 "Es wird nichts hinzugefügt"
 
 #: menueditor/add_menu_dialog.c:201 menueditor/add_menu_dialog.c:251
 #: menueditor/dnd.c:141 menueditor/edit_dialog.c:365
 #: menueditor/edit_dialog.c:381 menueditor/menueditor.c:289
 msgid "--- include ---"
-msgstr "--- include ---"
+msgstr "--- Einschließen ---"
 
 #: menueditor/add_menu_dialog.c:252 menueditor/dnd.c:146
 #: menueditor/edit_dialog.c:383 menueditor/menueditor.c:292
 msgid "system"
-msgstr "system"
+msgstr "System"
 
 #. Create dialog for editing
 #: menueditor/edit_dialog.c:73 menueditor/edit_dialog.c:84
 msgid "Edit menu entry"
-msgstr "Menü-Eintrag bearbeiten"
+msgstr "Menüeintrag bearbeiten"
 
 #. Name
 #: menueditor/edit_dialog.c:265 menueditor/new.c:92
-#, fuzzy
 msgid "Title :"
-msgstr "Titel :"
+msgstr "Titel:"
 
 #: menueditor/menueditor.c:125
 msgid "Select command"
@@ -313,12 +312,12 @@ msgstr "Symbol auswählen"
 
 #: menueditor/menueditor.c:158
 msgid "Not yet implemented !!!"
-msgstr "Noch nicht eingebaut !!!"
+msgstr "Noch nicht implementiert!"
 
 #: menueditor/menueditor.c:174 menueditor/menueditor.c:399
 #: menueditor/menueditor.c:434 menueditor/menueditor.c:557 menueditor/new.c:64
 msgid "Do you want to save before closing the file ?"
-msgstr "Wollen Sie vor dem Schließen speichern ?"
+msgstr "Wollen Sie vor dem Schließen speichern?"
 
 #: menueditor/menueditor.c:445 menueditor/menueditor.c:535
 msgid "Menu file selection"
@@ -326,7 +325,6 @@ msgstr "Auswahl der Menüdatei"
 
 #. File menu
 #: menueditor/menueditor.c:760
-#, fuzzy
 msgid "_File"
 msgstr "_Datei"
 
@@ -354,11 +352,11 @@ msgstr "Ü_ber ..."
 
 #: menueditor/menueditor.c:820
 msgid "Create a new XFCE4 menu file"
-msgstr "Neue XFCE4-Menüdatei anlegen"
+msgstr "Neue Xfce4-Menüdatei anlegen"
 
 #: menueditor/menueditor.c:827
 msgid "Open XFCE4 menu file"
-msgstr "XFCE4-Menüdatei öffnen"
+msgstr "Xfce4-Menüdatei öffnen"
 
 #: menueditor/menueditor.c:834
 msgid "Save current menu"
@@ -370,7 +368,7 @@ msgstr "Dieses Menü schließen"
 
 #: menueditor/menueditor.c:849
 msgid "Add an entry to the menu"
-msgstr "Eintrag zu Menü hinzufügen"
+msgstr "Eintrag zum Menü hinzufügen"
 
 #: menueditor/menueditor.c:856
 msgid "Delete the current entry"
@@ -385,7 +383,6 @@ msgid "Move down the current entry"
 msgstr "Eintrag nach unten"
 
 #: menueditor/menueditor.c:904
-#, fuzzy
 msgid "Name"
 msgstr "Name:"
 
@@ -403,44 +400,44 @@ msgstr "Zeiger"
 
 #: menueditor/menueditor.c:1061
 msgid "Corrupted file or incorrect file format !"
-msgstr "Beschädigte Datei oder falsches Dateiformat !"
+msgstr "Beschädigte Datei oder falsches Dateiformat!"
 
 #: menueditor/menueditor.c:1063
 msgid "Corrupted file or incorrect file format !\n"
-msgstr "Beschädigte Datei oder falsches Dateiformat !\n"
+msgstr "Beschädigte Datei oder falsches Dateiformat!\n"
 
 #: menueditor/menueditor.c:1081
 msgid "No root element in file !"
-msgstr "Kein Wurzelelement in Datei gefunden !"
+msgstr "Kein Wurzelelement in Datei gefunden!"
 
 #: menueditor/menueditor.c:1083
 msgid "No root element in file !\n"
-msgstr "Kein Wurzelelement in Datei gefunden !\n"
+msgstr "Kein Wurzelelement in Datei gefunden!\n"
 
 #: menueditor/menueditor.c:1099
 msgid "Bad datafile format !"
-msgstr "Format der Datendatei ist falsch !"
+msgstr "Format der Datendatei ist falsch!"
 
 #: menueditor/menueditor.c:1101
 msgid "Bad datafile format !\n"
-msgstr "Format der Datendatei ist falsch !\n"
+msgstr "Format der Datendatei ist falsch!\n"
 
 #: menueditor/menueditor.c:1209
 #, c-format
 msgid "File %s doesn't exist !"
-msgstr "Datei %s existiert nicht !"
+msgstr "Datei %s existiert nicht!"
 
 #: menueditor/move.c:188
 msgid "Do you want to move the item into the parent menu ?"
-msgstr "Wollen Sie den Eintrag in das Vater-Menü verschieben ?"
+msgstr "Wollen Sie den Eintrag in das vorherige Menü verschieben?"
 
 #: menueditor/move.c:281
 msgid "Do you want to move the item into the submenu ?"
-msgstr "Wollen Sie den Eintrag in das Untermenü verschieben ?"
+msgstr "Wollen Sie den Eintrag in das Untermenü verschieben?"
 
 #: menueditor/new.c:48
 msgid "Are you sure to close the current menu ?"
-msgstr "Wollen Sie dieses Menü wirklich schließen ?"
+msgstr "Wollen Sie dieses Menü wirklich schließen?"
 
 #. get the filename and name for the new menu
 #: menueditor/new.c:74 menueditor/new.c:86
@@ -449,11 +446,9 @@ msgstr "Neues Menü"
 
 #. Filename
 #: menueditor/new.c:99
-#, fuzzy
 msgid "Filename :"
-msgstr "Datei :"
+msgstr "Datei:"
 
 #: menueditor/new.c:132
 msgid "All the field are not filled !!!"
-msgstr "Nicht alle Felder wurden ausgefüllt !!!"
-
+msgstr "Nicht alle Felder wurden ausgefüllt!"
