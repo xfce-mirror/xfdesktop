@@ -1,7 +1,7 @@
 <?xml version='1.0'?> 
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "Nov 2003"> 
+  <!ENTITY date "Apr 2004"> 
   <!ENTITY appversion "4.1"> 
   <!ENTITY app "<application>xfdesktop</application>"> 
 ]>
@@ -11,7 +11,7 @@
 <!-- Header --> 
 <articleinfo>
 
-  <title>XFce 4 Desktop Manager</title>
+  <title>Xfce 4 Desktop Manager</title>
   
 
 <copyright>
@@ -21,6 +21,11 @@
 
 <copyright>
    <year>2003</year> <holder>François Le Clainche</holder>
+</copyright>
+
+
+<copyright>
+   <year>2004</year> <holder>Brian Tarricone</holder>
 </copyright>
 
 
@@ -58,7 +63,15 @@
        <address><email>fleclainche@wanadoo.fr</email></address>
        </affiliation>
     </author>
-				  
+	
+	
+	<author>
+		<firstname>Brian</firstname> <surname>Tarricone</surname>
+		<affiliation>
+			<address><email>kelnos@xfce.org</email></address>
+		</affiliation>
+	</author>
+
 
 <!-- This is appropriate place for other contributors: translators,
 maintainers, etc. Commented out by default.
@@ -92,36 +105,37 @@ maintainers, etc. Commented out by default.
 <sect1 id="xfdesktop-intro">
   <title>Introduction</title>
 
-  <para>The &app; application manages the desktop background. It sets a
-    background image and/or color and it pops up a menu when you click on it
-    with your right or middle mouse button. Along with the application, a 
-    settings dialog is installed for use with the 
-    <emphasis>XFce 4 Settings Manager</emphasis>. This dialog allows you to 
-    change the background image and color. You can also request xfdesktop to
-    not set the background, in order to allow another program to perform that
+  <para>The &app; application manages the desktop backdrop. It sets a
+    backdrop image and/or color and it can optionall pop up an applications
+	menu when you click on it with the right mouse button.  It also displays a
+	window list of all running applications after a middle button clic.
+    Along with the application, a  settings dialog is installed for use with the 
+    <emphasis>Xfce 4 Settings Manager</emphasis>. This dialog allows you to 
+    change the backdrop image and color. You can also request xfdesktop to
+    not set the backdrop, in order to allow another program to perform that
     task.
   </para>
 
 </sect1>
 
 <sect1 id="xfdesktop-background">
-  <title>Background</title>
+  <title>Backdrop</title>
 
-  <para>You can start the background properties dialog by clicking on the
-    "Desktop background" button in the 
+  <para>You can start the backdrop properties dialog by clicking on the
+    "Backdrop" button in the 
     <ulink url="xfce-mcs-manager.html#manager-dialog" 
       type="http">settings manager dialog</ulink>.
   </para>
 
   <figure id="xfdesktop-background-fig">
-    <title>Background Settings</title> 
+    <title>Backdrop Settings</title> 
     <screenshot>
       <mediaobject>
 	<imageobject>
 	  <imagedata fileref="images/xfdesktop-background.png" format="PNG"/>
 	</imageobject> 
 	<textobject>
-	  <phrase>Shows background settings dialog.
+	  <phrase>Shows backdrop settings dialog.
 	  </phrase>
 	</textobject>
       </mediaobject>
@@ -132,26 +146,26 @@ maintainers, etc. Commented out by default.
     <varlistentry>
       <term>Color</term>
       <listitem>
-	<para>Click the "Background color" button, and a new dialog will
+	<para>Click the "Backdrop color" button, and a new dialog will
 	  appear :</para>
 	 
 	<figure id="select_bg_color-fig">
-	  <title>Select background color</title>
+	  <title>Select backdrop color</title>
 	  <screenshot>
 	    <mediaobject>
 	      <imageobject>
 		<imagedata fileref="images/select_bg_color.png" format="PNG"/>
 	      </imageobject>
 	      <textobject>
-		<phrase>Shows the Select background color dialog</phrase>
+		<phrase>Shows the Select backdrop color dialog</phrase>
 	      </textobject>
 	    </mediaobject>
 	  </screenshot>
 	</figure>
 
 	<para>This dialog allows you to choose a color for the desktop
-	  background. This color will fill the entire root window, and will
-	  remain visible through a transparent background image. There are
+	  backdrop. This color will fill the entire root window, and will
+	  remain visible through a transparent backdrop image. There are
 	  several ways to do that:
 	</para>
 
@@ -172,7 +186,7 @@ maintainers, etc. Commented out by default.
 	</itemizedlist>
 
 	<para>Select the "Use color only" option if you want &app; to ignore
-	  the backgroung image and only use the choosen color.
+	  the backdrop image and only use the choosen color.
 	</para>
 	  
       </listitem>
@@ -183,18 +197,18 @@ maintainers, etc. Commented out by default.
 
       <listitem>
 	<para>The "File" entry shows the path to the currently selected
-	  background image. If you want to change it, just drop and image 
+	  backdrop image. If you want to change it, just drop and image 
 	  on the dialog from a file manager, or edit the path, or click the 
 	  "Browse" button, and a classic file-browsing dialog will appear.
 	  </para>
 
 	<para>Three Style options (Tiled, Scaled, and Centered) can be used to
-	  specify the fitting of the background image on the screen, depending
+	  specify the fitting of the backdrop image on the screen, depending
 	  on its size. You can also select the "Automatic" item if you want to
 	  let &app; take care of this setting.
 	</para>
 
-	<para>You can create a list of background images that will be randomly
+	<para>You can create a list of backdrop images that will be randomly
 	  used at startup. Click the "New list" button to open the list 
 	  editing dialog:
 	</para>
@@ -222,13 +236,13 @@ maintainers, etc. Commented out by default.
 	  if you select it in the list and click the "minus" button. When your
 	  list is complete, click the "Save" button to save it. If you want to
 	  modify its content later, use the "Edit list" button of the
-	  Background settings manager.
+	  Backdrop settings manager.
 	</para>
 	
 	<para>You can recover an older list by dropping its name.list file on 
-	the background settings dialog from a file manager.</para>
+	the backdrop settings dialog from a file manager.</para>
 
-	<para>To refresh the background with a new random image from the list
+	<para>To refresh the backdrop with a new random image from the list
 	  just run the &app; command again, e.g. from a terminal or the run 
 	  dialog, or &app; <arg>-reload</arg>.
 	</para>
@@ -238,12 +252,12 @@ maintainers, etc. Commented out by default.
     </varlistentry>
     
     <varlistentry>
-      <term>Don't set background</term>
+      <term>Don't set backdrop</term>
 
       <listitem>
-	<para>There are many programs that can set the background image. If
+	<para>There are many programs that can set the backdrop image. If
 	  you prefer to use one of those programs, you can check this option
-	  and xfdesktop will refrain from setting the background.
+	  and xfdesktop will refrain from setting the backdrop.
 	</para>
       </listitem>
     </varlistentry>
@@ -256,29 +270,26 @@ maintainers, etc. Commented out by default.
   <title>&app; root menu</title>
 
   <para>&app; provides a mouse menu that appears when you click on the 
-    desktop background with your right or middle mouse button.
+    desktop backdrop with your right or middle mouse button.
   </para>
 
-  <para>A right-click on the desktop background opens a menu that allows you to
+  <para>A right-click on the desktop backdrop opens a menu that allows you to
     start some applications. Its configuration file, menu.xml, can be found
     under the path <filename>$sysconfdir/xfce4/menu.xml</filename>. For binary 
     packages $sysconfdir is often <filename>/etc</filename> and for source
     compiles it defaults to <filename>/usr/local/etc</filename>.
   </para>
 
-  <para>Currently the only way to change the menu is to edit the menu file
-    manually. Hopefully, future versions of XFce 4 will provide a graphical
-    menu editor. For now, you should copy the <filename>menu.xml</filename>
-    file to <filename>~/.xfce4/menu.xml</filename> and edit that. It is not
-    difficult; just have a good look at the file and the commented out
-    examples. Being a little bit familiar with reading xml or html files will 
-    make it easier. Icons are currently not supported in the menu, so the icon
-    field won't have any effect.
+  <para>While it is possible to edit the file manually, the recommended method
+    for editing the menu.xml file is via the Xfce 4 Menu Editor, which can be
+	found by running <application>xfce4-menueditor</application>.  The menu
+	editor also supports drag'n'drop from the file manager.
   </para>
 
-  <para>NOTE: The menu.xml file has to be in utf-8 encoding for the toolkit to
-    be able to display accented or other non-ASCII characters. Therefore, you
-    need an editor that supports utf-8, like <application>gedit</application>.
+  <para>NOTE: If you choose to edit the file manually, menu.xml has to be in
+    UTF-8 encoding for the toolkit to be able to display accented or other
+	non-ASCII characters. Therefore, you need an editor that supports UTF-8,
+	like <application>gedit</application>.
   </para>
 
   <figure id="root-menu-fig">
@@ -296,7 +307,7 @@ maintainers, etc. Commented out by default.
     </screenshot>
   </figure>
 
-  <para>A middle-click on the desktop background shows a list of all opened 
+  <para>A middle-click on the desktop backdrop shows a list of all opened 
     windows ordered by workspace. It also allows you to add or remove 
     a workspace.
   </para>
@@ -318,8 +329,8 @@ maintainers, etc. Commented out by default.
 
   <para>You can open the menu or window list from the commandline as well.
     This can be useful for keyboard shortcuts. To open the menu run the
-    command &app; <arg>-menu</arg> and for the windowlist use &app;
-    <arg>-windowlist</arg>.
+    command &app; <application>-menu</application>, and for the windowlist use
+	&app; <application>-windowlist</application>.
   </para>
 
 </sect1>
@@ -329,22 +340,22 @@ maintainers, etc. Commented out by default.
 
   <para>&app; was written by Jasper Huijsmans
     (<email>huysmans@users.sourceforge.net</email>), Olivier Fourdan 
-    (<email>fourdan@xfce.org</email>) and Biju Chacko
-    (<email>botsie@myrealbox.com</email>).
-    To find more information, please visit the 
-    <ulink url="http://www.xfce.org" type="http">XFce web site</ulink>. 
+    (<email>fourdan@xfce.org</email>), Biju Chacko
+    (<email>botsie@myrealbox.com</email>), and Brian Tarricone
+	(<email>kelnos@xfce.org</email>).
+    For more information, please visit the 
+    <ulink url="http://www.xfce.org" type="http">Xfce web site</ulink>. 
   </para>
 
   <para>To report a bug or make a suggestion regarding this application or
     this manual, send an email to the 
-    <ulink url="http://www.moongroup.com/mailman/listinfo/xfce4-dev/"
+    <ulink url="http://www.lunar-linux.org/mailman/listinfo/xfce4-dev/"
       type="http">xfce4-dev</ulink> mailing list &mdash; this is the preferred
-    method &mdash; or use the bug tracking system at the
-    <ulink url="http://sourceforge.net/projects/xfce" 
-      type="http">XFce SourceForge project site</ulink>. 
+    method &mdash; or use the Xfce's <ulink url="http://bugs.xfce.org/">bug
+	tracking system</ulink>.
     If you have questions about the use or installation of this package,
     please ask on the 
-    <ulink url="http://www.moongroup.com/mailman/listinfo/xfce/"
+    <ulink url="http://www.lunar-linux.org/mailman/listinfo/xfce/"
       type="http">xfce</ulink> mailing list. 
   </para>
     
@@ -361,4 +372,3 @@ maintainers, etc. Commented out by default.
 </sect1>
 
 </article>
-
