@@ -365,8 +365,8 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 G_MODULE_EXPORT void
 xfce_control_class_init(ControlClass *cc)
 {
-	cc->name = "desktop-menu";
-	cc->caption = _("Desktop Menu");
+	cc->name = "xfce-menu";
+	cc->caption = _("Xfce Menu");
 	
 	cc->create_control = (CreateControlFunc)dmp_create;
 	cc->read_config = dmp_read_config;
