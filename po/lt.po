@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 3.99.2\n"
-"POT-Creation-Date: 2003-07-19 09:59+0200\n"
+"POT-Creation-Date: 2003-08-13 19:16+0200\n"
 "PO-Revision-Date: 2003-08-03 01:25+0300\n"
 "Last-Translator: Mantas <zaz@xxx.lt>\n"
 "Language-Team: Lithuania <zaz@xxx.lt>\n"
@@ -19,44 +19,46 @@ msgstr ""
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your changes"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
 msgstr ""
 "Negalima iðsaugoti failo %s: %s\n"
 "\n"
-"Pasirinkite kità vietà arba paspauskite atðaukti dialogo lange norëdami paðalinti pakeitimus"
+"Pasirinkite kità vietà arba paspauskite atðaukti dialogo lange norëdami "
+"paðalinti pakeitimus"
 
-#: settings/backdrop-mgr.c:506
+#: settings/backdrop-mgr.c:510
 msgid "Select image file"
 msgstr "Pasirinkite paveikslo failà"
 
-#: settings/backdrop-mgr.c:612
+#: settings/backdrop-mgr.c:622
 #, fuzzy
 msgid "Choose backdrop list filename"
 msgstr "Pasirinkite backdrop sàraðo failo vardà"
 
-#: settings/backdrop-mgr.c:682
+#: settings/backdrop-mgr.c:694
 msgid "New.list"
 msgstr "Naujas .list"
 
-#: settings/backdrop-mgr.c:686
+#: settings/backdrop-mgr.c:698
 #, fuzzy
 msgid "Backdrop List"
 msgstr "Backdrop sàraðas"
 
-#: settings/backdrop-mgr.c:722
+#: settings/backdrop-mgr.c:734
 msgid "Image files"
 msgstr "Paveiksliukø failai"
 
-#: settings/backdrop-mgr.c:737
+#: settings/backdrop-mgr.c:749
 msgid "List file"
 msgstr "Failø sàraðas"
 
-#: settings/backdrop-mgr.c:755
+#: settings/backdrop-mgr.c:767
 #, fuzzy
 msgid "Create backdrop list"
 msgstr "Sukurti backdrop sàraðà"
 
-#: settings/backdrop-mgr.c:762
+#: settings/backdrop-mgr.c:774
 #, fuzzy
 msgid "Edit backdrop list"
 msgstr "Redaguoti backdrop sàraðà"
@@ -66,75 +68,75 @@ msgstr "Redaguoti backdrop sàraðà"
 msgid "Desktop: backdrop"
 msgstr "Darbalaukis: backdrop"
 
-#: settings/backdrop_settings.c:360
+#: settings/backdrop_settings.c:358
 msgid "Select background color"
 msgstr "Pasirinkite fono spalvà"
 
-#: settings/backdrop_settings.c:410
+#: settings/backdrop_settings.c:408
 msgid "Background color:"
 msgstr "Fono spalva:"
 
-#: settings/backdrop_settings.c:440
+#: settings/backdrop_settings.c:438
 msgid "Use color only:"
 msgstr "Naudoti tiktai spalvà:"
 
-#: settings/backdrop_settings.c:566
+#: settings/backdrop_settings.c:564
 msgid "File:"
 msgstr "Failas:"
 
-#: settings/backdrop_settings.c:623
+#: settings/backdrop_settings.c:625
 msgid "Select background image or list file"
 msgstr "Pasirinkite fono paveiksliukà ar áraðykite failà"
 
-#: settings/backdrop_settings.c:698
+#: settings/backdrop_settings.c:702
 msgid "_Browse..."
 msgstr "_Narðyti..."
 
-#: settings/backdrop_settings.c:702
+#: settings/backdrop_settings.c:706
 msgid "New list"
 msgstr "Naujas sàraðas"
 
-#: settings/backdrop_settings.c:706
+#: settings/backdrop_settings.c:710
 msgid "Edit list"
 msgstr "Redaguoti sàraðà"
 
-#: settings/backdrop_settings.c:744
+#: settings/backdrop_settings.c:748
 msgid "Style:"
 msgstr "Stilius:"
 
-#: settings/backdrop_settings.c:752
+#: settings/backdrop_settings.c:756
 msgid "_Tiled"
 msgstr "_Iðklotas"
 
-#: settings/backdrop_settings.c:758
+#: settings/backdrop_settings.c:762
 msgid "_Scaled"
 msgstr "_Mastelis"
 
-#: settings/backdrop_settings.c:765
+#: settings/backdrop_settings.c:769
 msgid "_Centered"
 msgstr "_Centeruotas"
 
-#: settings/backdrop_settings.c:772
+#: settings/backdrop_settings.c:776
 msgid "_Auto"
 msgstr "_Automatiðkai"
 
 #. the dialog
-#: settings/backdrop_settings.c:798
+#: settings/backdrop_settings.c:802
 msgid "Background"
 msgstr "Fonas"
 
 #. header
-#: settings/backdrop_settings.c:816
+#: settings/backdrop_settings.c:820
 msgid "Background Settings"
 msgstr "Fono nuostatos"
 
 #. color
-#: settings/backdrop_settings.c:822
+#: settings/backdrop_settings.c:826
 msgid "Color"
 msgstr "Spalva"
 
 #. image vbox
-#: settings/backdrop_settings.c:834
+#: settings/backdrop_settings.c:838
 msgid "Image"
 msgstr "Paveiksliukas"
 
@@ -164,8 +166,7 @@ msgid "Number of workspaces:"
 msgstr "Darbo vietø skaièius"
 
 #. Number of workspaces
-#: settings/workspaces_settings.c:528
-#: settings/workspaces_settings.c:558
+#: settings/workspaces_settings.c:528 settings/workspaces_settings.c:558
 msgid "Workspaces"
 msgstr "Darbo vietos"
 
@@ -178,7 +179,7 @@ msgstr "Darbo vietos nuostatos"
 msgid "Workspace names"
 msgstr "Darbo vietø vardas"
 
-#: src/backdrop.c:423
+#: src/backdrop.c:487
 #, fuzzy, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
 msgstr "xfdesktop klaida: ákraunant backdrop paveiksliukà: %s\n"
@@ -187,15 +188,18 @@ msgstr "xfdesktop klaida: ákraunant backdrop paveiksliukà: %s\n"
 msgid "Desktop"
 msgstr "Darbalaukis"
 
-#: src/menu.c:711
+#: src/menu.c:736
 msgid "Add workspace"
 msgstr "Pridëti darbo vietà"
 
-#: src/menu.c:718
+#: src/menu.c:743
 msgid "Delete workspace"
 msgstr "Paðalinti darbo vietà"
 
 #: src/settings.c:186
-msgid "xfdesktop: could not connect to settings manager!Please check your installation."
-msgstr "xfdesktop: neámanoma susijungti su nuostatø tvarkykle! Patikrinkite savo instaliacijà."
-
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr ""
+"xfdesktop: neámanoma susijungti su nuostatø tvarkykle! Patikrinkite savo "
+"instaliacijà."
