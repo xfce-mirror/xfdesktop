@@ -33,7 +33,7 @@ BM_I18N([xfdesktop], [az ca cs de es es_MX eu fa_IR fi fr hi hu it ja pl ko lt
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE
 
-BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.1.5)
+BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.1.8)
 BM_DEPEND([LIBXFCE4UTIL], libxfce4util-1.0, 4.1.3)
 BM_DEPEND([LIBXML], libxml-2.0, 2.4.0)
 BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [4.0.0])

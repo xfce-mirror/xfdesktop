@@ -1043,6 +1043,10 @@ Optional Features:
   --disable-debug         Include no debugging support default
   --enable-profiling      Generate extra code to write profile information
   --disable-profiling     No extra code for profiling (default)
+  --enable-gcov           compile with coverage profiling instrumentation (gcc
+                          only)
+  --disable-gcov          do not generate coverage profiling instrumentation
+                          (default)
   --enable-asserts        Enable assert statements (default)
   --disable-asserts       Disable assert statements (USE WITH CARE!!!)
 
@@ -5370,7 +5374,7 @@ ia64-*-hpux*)
   ;;
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5373 "configure"' > conftest.$ac_ext
+  echo '#line 5377 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -6480,7 +6484,7 @@ fi
 
 
 # Provide some information about the compiler.
-echo "$as_me:6483:" \
+echo "$as_me:6487:" \
      "checking for Fortran 77 compiler version" >&5
 ac_compiler=`set X $ac_compile; echo $2`
 { (eval echo "$as_me:$LINENO: \"$ac_compiler --version </dev/null >&5\"") >&5
@@ -7514,11 +7518,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7517: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7521: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7521: \$? = $ac_status" >&5
+   echo "$as_me:7525: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -7747,11 +7751,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7750: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7754: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7754: \$? = $ac_status" >&5
+   echo "$as_me:7758: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -7807,11 +7811,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7810: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7814: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:7814: \$? = $ac_status" >&5
+   echo "$as_me:7818: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -9186,7 +9190,7 @@ linux*)
   libsuff=
   case "$host_cpu" in
   x86_64*)
-    echo '#line 9189 "configure"' > conftest.$ac_ext
+    echo '#line 9193 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -10046,7 +10050,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10049 "configure"
+#line 10053 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -10144,7 +10148,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10147 "configure"
+#line 10151 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -12323,11 +12327,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:12326: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:12330: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:12330: \$? = $ac_status" >&5
+   echo "$as_me:12334: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -12383,11 +12387,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:12386: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:12390: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:12390: \$? = $ac_status" >&5
+   echo "$as_me:12394: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -12939,7 +12943,7 @@ linux*)
   libsuff=
   case "$host_cpu" in
   x86_64*)
-    echo '#line 12942 "configure"' > conftest.$ac_ext
+    echo '#line 12946 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -13799,7 +13803,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 13802 "configure"
+#line 13806 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -13897,7 +13901,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 13900 "configure"
+#line 13904 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -14724,11 +14728,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14727: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14731: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:14731: \$? = $ac_status" >&5
+   echo "$as_me:14735: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -14784,11 +14788,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14787: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14791: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:14791: \$? = $ac_status" >&5
+   echo "$as_me:14795: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -16143,7 +16147,7 @@ linux*)
   libsuff=
   case "$host_cpu" in
   x86_64*)
-    echo '#line 16146 "configure"' > conftest.$ac_ext
+    echo '#line 16150 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -16873,11 +16877,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:16876: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:16880: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:16880: \$? = $ac_status" >&5
+   echo "$as_me:16884: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -17106,11 +17110,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17109: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17113: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:17113: \$? = $ac_status" >&5
+   echo "$as_me:17117: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -17166,11 +17170,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17169: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17173: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:17173: \$? = $ac_status" >&5
+   echo "$as_me:17177: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -18545,7 +18549,7 @@ linux*)
   libsuff=
   case "$host_cpu" in
   x86_64*)
-    echo '#line 18548 "configure"' > conftest.$ac_ext
+    echo '#line 18552 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -19405,7 +19409,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 19408 "configure"
+#line 19412 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -19503,7 +19507,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 19506 "configure"
+#line 19510 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -24001,23 +24005,23 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for libxfcegui4-1.0 >= 4.1.5" >&5
-echo $ECHO_N "checking for libxfcegui4-1.0 >= 4.1.5... $ECHO_C" >&6
+        echo "$as_me:$LINENO: checking for libxfcegui4-1.0 >= 4.1.8" >&5
+echo $ECHO_N "checking for libxfcegui4-1.0 >= 4.1.8... $ECHO_C" >&6
 
-        if $PKG_CONFIG --exists "libxfcegui4-1.0 >= 4.1.5" ; then
+        if $PKG_CONFIG --exists "libxfcegui4-1.0 >= 4.1.8" ; then
             echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
             echo "$as_me:$LINENO: checking LIBXFCEGUI4_CFLAGS" >&5
 echo $ECHO_N "checking LIBXFCEGUI4_CFLAGS... $ECHO_C" >&6
-            LIBXFCEGUI4_CFLAGS=`$PKG_CONFIG --cflags "libxfcegui4-1.0 >= 4.1.5"`
+            LIBXFCEGUI4_CFLAGS=`$PKG_CONFIG --cflags "libxfcegui4-1.0 >= 4.1.8"`
             echo "$as_me:$LINENO: result: $LIBXFCEGUI4_CFLAGS" >&5
 echo "${ECHO_T}$LIBXFCEGUI4_CFLAGS" >&6
 
             echo "$as_me:$LINENO: checking LIBXFCEGUI4_LIBS" >&5
 echo $ECHO_N "checking LIBXFCEGUI4_LIBS... $ECHO_C" >&6
-            LIBXFCEGUI4_LIBS=`$PKG_CONFIG --libs "libxfcegui4-1.0 >= 4.1.5"`
+            LIBXFCEGUI4_LIBS=`$PKG_CONFIG --libs "libxfcegui4-1.0 >= 4.1.8"`
             echo "$as_me:$LINENO: result: $LIBXFCEGUI4_LIBS" >&5
 echo "${ECHO_T}$LIBXFCEGUI4_LIBS" >&6
         else
@@ -24025,7 +24029,7 @@ echo "${ECHO_T}$LIBXFCEGUI4_LIBS" >&6
             LIBXFCEGUI4_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            LIBXFCEGUI4_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfcegui4-1.0 >= 4.1.5"`
+            LIBXFCEGUI4_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfcegui4-1.0 >= 4.1.8"`
             echo $LIBXFCEGUI4_PKG_ERRORS
         fi
 
@@ -24040,12 +24044,12 @@ echo "${ECHO_T}$LIBXFCEGUI4_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:$LINENO: error: Library requirements (libxfcegui4-1.0 >= 4.1.5) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (libxfcegui4-1.0 >= 4.1.5) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+     { { echo "$as_me:$LINENO: error: Library requirements (libxfcegui4-1.0 >= 4.1.8) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libxfcegui4-1.0 >= 4.1.8) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
-  LIBXFCEGUI4_REQUIRED_VERSION=4.1.5
+  LIBXFCEGUI4_REQUIRED_VERSION=4.1.8
 
 
 
@@ -24490,11 +24494,11 @@ cat >>confdefs.h <<\_ACEOF
 #define DEBUG_TRACE 1
 _ACEOF
 
-      CFLAGS="$CFLAGS -g3 -Wall -Werror -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED"
+      CFLAGS="$CFLAGS -g3 -Wall -Werror -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DXFCE_DISABLE_DEPRECATED"
       echo "$as_me:$LINENO: result: full" >&5
 echo "${ECHO_T}full" >&6
     else
-      CFLAGS="$CFLAGS -g -Wall -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED"
+      CFLAGS="$CFLAGS -g -Wall -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DXFCE_DISABLE_DEPRECATED"
       echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
     fi
@@ -24515,6 +24519,25 @@ fi;
 echo $ECHO_N "checking whether to build with profiling support... $ECHO_C" >&6
   if test x"$enable_profiling" != x"no"; then
     CFLAGS="$CFLAGS -pg"
+    echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6
+  else
+    echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6
+  fi
+
+  # Check whether --enable-gcov or --disable-gcov was given.
+if test "${enable_gcov+set}" = set; then
+  enableval="$enable_gcov"
+
+else
+  enable_gcov=no
+fi;
+
+  echo "$as_me:$LINENO: checking whether to compile with coverage profiling instrumentation" >&5
+echo $ECHO_N "checking whether to compile with coverage profiling instrumentation... $ECHO_C" >&6
+  if test x"$enable_gcov" != x"no"; then
+    CFLAGS="$CFLAGS -fprofile-arcs -ftest-coverage"
     echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
   else

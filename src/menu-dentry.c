@@ -60,7 +60,7 @@ static GList *menu_dentry_legacy_add_all(GList *menu_data,
 		const gchar *basepath,MenuPathType pathtype);
 
 static const char *dentry_keywords [] = {
-   "Name", "Comment", "Icon", "Hidden",
+   "Name", "Comment", "Icon", "Hidden", "StartupNotify",
    "Categories", "OnlyShowIn", "Exec", "Terminal",
 };
 
@@ -214,6 +214,7 @@ menu_dentry_parse_dentry_attr(MenuItemType type, XfceDesktopEntry *de,
 	gchar *name = NULL;
 	gchar *cmd = NULL;
 	gchar *ifile = NULL;
+	gchar *snotify = NULL;
 	gchar *p;
 	int term;
 	gint i;
@@ -252,6 +253,12 @@ menu_dentry_parse_dentry_attr(MenuItemType type, XfceDesktopEntry *de,
 	term = 0;
 	xfce_desktop_entry_get_int (de, "Terminal", &term);
 	
+	snotify = 0;
+	if(xfce_desktop_entry_get_string(de, "StartupNotify", TRUE, &snotify)) {
+		if(!strcmp(snotify, "true"))
+			mi->snotify = TRUE;
+	}
+	
 	xfce_desktop_entry_get_string (de, "Icon", TRUE, &ifile);
 	
 	mi->path = _build_path(basepath, path, name);
@@ -277,7 +284,10 @@ menu_dentry_parse_dentry_attr(MenuItemType type, XfceDesktopEntry *de,
 		
 	if (term)
 		mi->term = TRUE;
-		
+	
+	if(snotify)
+		g_free(snotify);
+	
 	mi->icon = ifile;
 
 	g_free (name);

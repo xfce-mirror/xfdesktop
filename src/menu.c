@@ -185,65 +185,13 @@ free_menu_data (GList * menu_data)
 }
 
 static void
-do_exec (gpointer callback_data, guint callback_action, GtkWidget * widget)
+do_exec(gpointer callback_data, guint callback_action, GtkWidget * widget)
 {
-#if 0 /* until i figure out why this doesn't work (brian) */
-    TRACE ("dummy");
-
-	switch(fork()) {
-		case -1:
-			g_warning("%s: unable to fork()\n", PACKAGE);
-			break;
-		
-		case 0:
-#ifdef HAVE_SETSID
-			setsid();
-#endif
-			if(execlp((char *)callback_data, (char *)callback_data), NULL)
-				g_warning("%s: unable to spawn %s: %s\n", PACKAGE, (char *)callback_data, strerror(errno));
-			_exit(0);
-			break;
-		default:
-			break;
-	}
-#else
-	if(callback_data)
-		g_spawn_command_line_async((char *)callback_data, NULL);
-#endif
-}
-
-static void
-do_term_exec (gpointer callback_data, guint callback_action,
-	      GtkWidget * widget)
-{
-
-#if 0 /* until i figure out why this doesn't work (brian) */
-    TRACE ("dummy");
-
-	switch(fork()) {
-		case -1:
-			g_warning("%s: unable to fork()\n", PACKAGE);
-			break;
-		
-		case 0:
-#ifdef HAVE_SETSID
-			setsid();
-#endif
-			if(execlp("xfterm4", "xfterm4", "-e", (char *)callback_data, NULL))
-				g_warning("%s: unable to spawn %s: %s\n", PACKAGE, (char *)callback_data, strerror(errno));
-			_exit(0);
-			break;
-		default:
-			break;
-	}
-#else
-	char *cmd;
-	if(callback_data) {
-		cmd = g_strconcat("xfterm4 -e ", (char *)callback_data, NULL);
-		g_spawn_command_line_async(cmd, NULL);
-		g_free(cmd);
-	}
-#endif
+	MenuItem *mi = callback_data;
+	g_return_if_fail(mi != NULL);
+	
+	if(!xfce_exec(mi->cmd, mi->term, mi->snotify, NULL))
+		g_warning("%s: unable to spawn '%s'\n", PACKAGE, mi->cmd);
 }
 
 static void
@@ -341,7 +289,7 @@ parse_item (MenuItem * item)
         switch (item->type)
         {
             case MI_APP:
-                t.callback = (item->term ? do_term_exec : do_exec);
+                t.callback = do_exec;
 				if(use_menu_icons)
 					t.item_type = "<ImageItem>";
 				else
@@ -481,7 +429,7 @@ create_desktop_menu (void)
 		entry = parse_item (item);
 		
 		if(!EditMode) {
-			gtk_item_factory_create_item (ifactory, &entry, item->cmd, 1);
+			gtk_item_factory_create_item (ifactory, &entry, item, 1);
 			mi = gtk_item_factory_get_item (ifactory, item->path);
 			gtk_widget_set_name(mi, "xfdesktopmenu");
 			if (use_menu_icons && item->icon) {

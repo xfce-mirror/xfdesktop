@@ -43,6 +43,7 @@ typedef struct __MenuItemStruct
     gboolean term;			/* execute in terminal  */
     char *icon;				/* icon to display      */
 	GdkPixbuf *pix_free;	/* pointer to pixbuf to free */
+	gboolean snotify;		/* startup notification? */
 } MenuItem;
 
 extern GHashTable *menu_entry_hash;

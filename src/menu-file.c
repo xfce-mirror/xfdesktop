@@ -77,6 +77,7 @@ parse_node_attr (MenuItemType type, xmlDocPtr doc, xmlNodePtr cur, const char *p
     xmlChar *term = NULL;
     xmlChar *visible = NULL;
     xmlChar *ifile = NULL;
+	xmlChar *snotify = NULL;
 
     visible = xmlGetProp (cur, "visible");
     if (visible && !xmlStrcmp (visible, (xmlChar *) "no"))
@@ -132,6 +133,10 @@ parse_node_attr (MenuItemType type, xmlDocPtr doc, xmlNodePtr cur, const char *p
     ifile = xmlGetProp(cur, "icon");
     mi->icon = ifile;
     
+	snotify = xmlGetProp(cur, "snotify");
+	if(snotify && !xmlStrcmp(snotify, (const xmlChar *)"true"))
+		mi->snotify = TRUE;
+	
     /* clean up */
     if (visible)
         xmlFree (visible);
@@ -144,6 +149,9 @@ parse_node_attr (MenuItemType type, xmlDocPtr doc, xmlNodePtr cur, const char *p
 
     if (term)
         xmlFree (term);
+	
+	if(snotify)
+		xmlFree(snotify);
 
     return mi;
 }
