@@ -672,64 +672,65 @@ gboolean treeview_button_pressed_cb(GtkTreeView *treeview, GdkEventButton *event
   GtkTreeIter iter;
   GValue val = { 0, };
   xmlNodePtr node;
-  GtkWidget* popup_menu;
-  GtkWidget* edit_menuitem;
-  GtkWidget* add_menuitem;
-  GtkWidget* addmenu_menuitem;
-  GtkWidget* del_menuitem;
-  GtkWidget* moveup_menuitem;
-  GtkWidget* movedown_menuitem;
-  GtkWidget* separator_menuitem;
-
+  
   if (!gtk_tree_view_get_path_at_pos(treeview, event->x, event->y, &path, NULL, NULL, NULL))
     return FALSE;
 
   gtk_tree_model_get_iter(GTK_TREE_MODEL(menueditor_app.treestore), &iter, path);
   gtk_tree_model_get_value(GTK_TREE_MODEL(menueditor_app.treestore), &iter, POINTER_COLUMN, &val);
   node = g_value_get_pointer(&val);
-
-  if(!xmlStrcmp(node->name, "separator"))
-    return FALSE;
-
-  /* Create the popup menu */
-  popup_menu = gtk_menu_new ();
-
-  edit_menuitem = gtk_image_menu_item_new_with_mnemonic (_("Edit"));
-  gtk_container_add (GTK_CONTAINER (popup_menu), edit_menuitem);
-  separator_menuitem = gtk_separator_menu_item_new();
-  gtk_container_add (GTK_CONTAINER (popup_menu), separator_menuitem);
-  add_menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_ADD, menueditor_app.accel_group);
-  gtk_container_add (GTK_CONTAINER (popup_menu), add_menuitem);
-  addmenu_menuitem = gtk_image_menu_item_new_with_mnemonic (_("Add an external menu"));
-  gtk_container_add (GTK_CONTAINER (popup_menu), addmenu_menuitem);
-  del_menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_REMOVE, menueditor_app.accel_group);
-  gtk_container_add (GTK_CONTAINER (popup_menu), del_menuitem);
-  separator_menuitem = gtk_separator_menu_item_new();
-  gtk_container_add (GTK_CONTAINER (popup_menu), separator_menuitem);
-  moveup_menuitem = gtk_image_menu_item_new_from_stock (GTK_STOCK_GO_UP, menueditor_app.accel_group);
-  gtk_container_add (GTK_CONTAINER (popup_menu), moveup_menuitem);
-  movedown_menuitem = gtk_image_menu_item_new_from_stock (GTK_STOCK_GO_DOWN, menueditor_app.accel_group);
-  gtk_container_add (GTK_CONTAINER (popup_menu), movedown_menuitem);
-
-  g_signal_connect ((gpointer) edit_menuitem, "activate",
-		    G_CALLBACK (popup_edit_cb), NULL);
-  g_signal_connect ((gpointer) add_menuitem, "activate",
-                    G_CALLBACK (add_entry_cb), NULL);
-  g_signal_connect ((gpointer) addmenu_menuitem, "activate",
-                    G_CALLBACK (add_menu_cb), NULL);
-  g_signal_connect ((gpointer) del_menuitem, "activate",
-                    G_CALLBACK (delete_entry_cb),NULL);
-  g_signal_connect ((gpointer) moveup_menuitem, "activate",
-                    G_CALLBACK (entry_up_cb), NULL);
-  g_signal_connect ((gpointer) movedown_menuitem, "activate",
-                    G_CALLBACK (entry_down_cb), NULL);
-
-  gtk_widget_show_all(popup_menu);
-
+  
   /* Right click draws the context menu */
-  if ((event->button == 3) && (event->type == GDK_BUTTON_PRESS))
+  if ((event->button == 3) && (event->type == GDK_BUTTON_PRESS)){
+    GtkWidget* popup_menu;
+    GtkWidget* edit_menuitem;
+    GtkWidget* add_menuitem;
+    GtkWidget* addmenu_menuitem;
+    GtkWidget* del_menuitem;
+    GtkWidget* moveup_menuitem;
+    GtkWidget* movedown_menuitem;
+    GtkWidget* separator_menuitem;
+
+    if(!xmlStrcmp(node->name, "separator"))
+      return FALSE;
+
+    /* Create the popup menu */
+    popup_menu = gtk_menu_new ();
+
+    edit_menuitem = gtk_image_menu_item_new_with_mnemonic (_("Edit"));
+    gtk_container_add (GTK_CONTAINER (popup_menu), edit_menuitem);
+    separator_menuitem = gtk_separator_menu_item_new();
+    gtk_container_add (GTK_CONTAINER (popup_menu), separator_menuitem);
+    add_menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_ADD, menueditor_app.accel_group);
+    gtk_container_add (GTK_CONTAINER (popup_menu), add_menuitem);
+    addmenu_menuitem = gtk_image_menu_item_new_with_mnemonic (_("Add an external menu"));
+    gtk_container_add (GTK_CONTAINER (popup_menu), addmenu_menuitem);
+    del_menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_REMOVE, menueditor_app.accel_group);
+    gtk_container_add (GTK_CONTAINER (popup_menu), del_menuitem);
+    separator_menuitem = gtk_separator_menu_item_new();
+    gtk_container_add (GTK_CONTAINER (popup_menu), separator_menuitem);
+    moveup_menuitem = gtk_image_menu_item_new_from_stock (GTK_STOCK_GO_UP, menueditor_app.accel_group);
+    gtk_container_add (GTK_CONTAINER (popup_menu), moveup_menuitem);
+    movedown_menuitem = gtk_image_menu_item_new_from_stock (GTK_STOCK_GO_DOWN, menueditor_app.accel_group);
+    gtk_container_add (GTK_CONTAINER (popup_menu), movedown_menuitem);
+
+    g_signal_connect ((gpointer) edit_menuitem, "activate",
+		      G_CALLBACK (popup_edit_cb), NULL);
+    g_signal_connect ((gpointer) add_menuitem, "activate",
+		      G_CALLBACK (add_entry_cb), NULL);
+    g_signal_connect ((gpointer) addmenu_menuitem, "activate",
+		      G_CALLBACK (add_menu_cb), NULL);
+    g_signal_connect ((gpointer) del_menuitem, "activate",
+		      G_CALLBACK (delete_entry_cb),NULL);
+    g_signal_connect ((gpointer) moveup_menuitem, "activate",
+		      G_CALLBACK (entry_up_cb), NULL);
+    g_signal_connect ((gpointer) movedown_menuitem, "activate",
+		      G_CALLBACK (entry_down_cb), NULL);
+
+    gtk_widget_show_all(popup_menu);
     gtk_menu_popup(GTK_MENU(popup_menu), NULL, NULL, NULL, NULL,
 		   event->button, gtk_get_current_event_time());
+  }
   
   return FALSE;
 }
