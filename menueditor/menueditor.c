@@ -760,8 +760,6 @@ void create_main_window()
   /* File menu */
   menueditor_app.file_menu.menu_item = gtk_image_menu_item_new_with_mnemonic (_("_File"));
   gtk_container_add (GTK_CONTAINER (menueditor_app.main_menubar), menueditor_app.file_menu.menu_item);
-  image_file_menu = gtk_image_new_from_stock ("gtk-open", GTK_ICON_SIZE_MENU);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menueditor_app.file_menu.menu_item), image_file_menu);
   menueditor_app.file_menu.menu = gtk_menu_new ();
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (menueditor_app.file_menu.menu_item), menueditor_app.file_menu.menu);
 
@@ -785,8 +783,6 @@ void create_main_window()
   /* Edit menu */
   menueditor_app.edit_menu.menu_item = gtk_image_menu_item_new_with_mnemonic(_("_Edit"));
   gtk_container_add (GTK_CONTAINER (menueditor_app.main_menubar), menueditor_app.edit_menu.menu_item);
-  image_file_menu = gtk_image_new_from_stock ("gtk-dnd", GTK_ICON_SIZE_MENU);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menueditor_app.edit_menu.menu_item), image_file_menu);
   menueditor_app.edit_menu.menu = gtk_menu_new ();
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (menueditor_app.edit_menu.menu_item), menueditor_app.edit_menu.menu);
   menueditor_app.edit_menu.add = gtk_image_menu_item_new_from_stock ("gtk-add", accel_group);
@@ -805,8 +801,6 @@ void create_main_window()
   /* Help menu */
   menueditor_app.help_menu.menu_item = gtk_image_menu_item_new_with_mnemonic(_("_Help"));
   gtk_container_add (GTK_CONTAINER (menueditor_app.main_menubar), menueditor_app.help_menu.menu_item);
-  image_file_menu = gtk_image_new_from_stock ("gtk-help", GTK_ICON_SIZE_MENU);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menueditor_app.help_menu.menu_item), image_file_menu);
   menueditor_app.help_menu.menu = gtk_menu_new ();
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (menueditor_app.help_menu.menu_item), menueditor_app.help_menu.menu);
   
