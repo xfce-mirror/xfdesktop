@@ -210,9 +210,20 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 
   while(menu != NULL){
     gboolean hidden = FALSE;
+
     GdkPixbuf *icon = NULL;
+
     xmlChar *prop_visible = NULL;
     xmlChar *prop_icon = NULL;
+    xmlChar* prop_name = NULL;
+    xmlChar* prop_cmd = NULL;
+    xmlChar *prop_type = NULL;
+    xmlChar *prop_src = NULL;
+
+    gchar *name = NULL;
+    gchar *cmd = NULL;
+    gchar *src = NULL;
+    gchar *title = NULL;
 
     prop_visible = xmlGetProp(menu, "visible");
     prop_icon = xmlGetProp(menu, "icon");
@@ -229,8 +240,6 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 
     /* separator */
     if(!xmlStrcmp(menu->name,(xmlChar*)"separator")){
-      gchar *name=NULL;
-
       name = g_strdup_printf(SEPARATOR_FORMAT,
 			     _("--- separator ---"));
 
@@ -241,41 +250,26 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			  COMMAND_COLUMN, "",
 			  HIDDEN_COLUMN, hidden,
 			  POINTER_COLUMN, menu, -1);
-
-      g_free(name);
     }
     /* launcher */
     if(!xmlStrcmp(menu->name,(xmlChar*)"app")){
-      gchar *name = NULL;
-      gchar *command = NULL;
-      xmlChar* prop_name = NULL;
-      xmlChar* prop_cmd = NULL;
-
       prop_name = xmlGetProp(menu, "name");
       prop_cmd = xmlGetProp(menu, "cmd");
 
       name = g_strdup_printf(NAME_FORMAT, prop_name);
-      command = g_strdup_printf(COMMAND_FORMAT, prop_cmd);
+      cmd = g_strdup_printf(COMMAND_FORMAT, prop_cmd);
 
       gtk_tree_store_append (menueditor_app.treestore, &c, p);
       gtk_tree_store_set (menueditor_app.treestore, &c, 
 			  ICON_COLUMN, icon,
 			  NAME_COLUMN, name,
-			  COMMAND_COLUMN, command,
+			  COMMAND_COLUMN, cmd,
 			  HIDDEN_COLUMN, hidden,
 			  POINTER_COLUMN, menu, -1);
-      
-      xmlFree(prop_name);
-      xmlFree(prop_cmd);
-      g_free(command);
-      g_free(name);
     }
   
     /* menu */
     if(!xmlStrcmp(menu->name,(xmlChar*)"menu")){
-      gchar *name = NULL;
-      xmlChar *prop_name = NULL;
-
       prop_name = xmlGetProp(menu, "name");
 
       name = g_strdup_printf(MENU_FORMAT, prop_name);
@@ -288,18 +282,10 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			  HIDDEN_COLUMN, hidden,
 			  POINTER_COLUMN, menu, -1);
       load_menu_in_tree(menu->xmlChildrenNode,&c);
-
-      xmlFree(prop_name);
-      g_free(name);
     }
 
     /* include */
     if(!xmlStrcmp(menu->name,(xmlChar*)"include")){
-      gchar *src = NULL;
-      gchar *name = NULL;
-      xmlChar *prop_type = NULL;
-      xmlChar *prop_src = NULL;
-
       prop_type = xmlGetProp(menu, "type");
       prop_src = xmlGetProp(menu, "src");
 
@@ -317,20 +303,10 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			  COMMAND_COLUMN, src,
 			  HIDDEN_COLUMN, hidden,
 			  POINTER_COLUMN, menu, -1);
-
-      xmlFree(prop_type);
-      xmlFree(prop_src);
-      g_free(src);
-      g_free(name);
     }
 
     /* builtin */
     if(!xmlStrcmp(menu->name,(xmlChar*)"builtin")){
-      gchar *name = NULL;
-      gchar *cmd = NULL;
-      xmlChar *prop_name = NULL;
-      xmlChar *prop_cmd = NULL;
-
       prop_name = xmlGetProp(menu, "name");
       prop_cmd = xmlGetProp(menu , "cmd");
 
@@ -344,17 +320,9 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			  COMMAND_COLUMN, cmd,
 			  HIDDEN_COLUMN, hidden,
 			  POINTER_COLUMN, menu, -1);
-
-      xmlFree(prop_name);
-      xmlFree(prop_cmd);
-      g_free(name);
-      g_free(cmd);
     }
     /* title */
     if(!xmlStrcmp(menu->name,(xmlChar*)"title")){
-      gchar *title = NULL;
-      xmlChar *prop_name = NULL;
-
       prop_name = xmlGetProp(menu, "name");
 
       title = g_strdup_printf(TITLE_FORMAT, prop_name);
@@ -366,13 +334,20 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			  COMMAND_COLUMN, "", 
 			  HIDDEN_COLUMN, hidden, 
 			  POINTER_COLUMN, menu , -1);
-
-      xmlFree(prop_name);
-      g_free(title);
     }
 
+    g_free(name);
+    g_free(cmd);
+    g_free(src);
+    g_free(title);
+
+    xmlFree(prop_type);
+    xmlFree(prop_src);
+    xmlFree(prop_name);
+    xmlFree(prop_cmd);
     xmlFree(prop_visible);
     xmlFree(prop_icon);
+
     menu = menu->next;
   }
 
@@ -672,13 +647,13 @@ gboolean treeview_button_pressed_cb(GtkTreeView *treeview, GdkEventButton *event
   /* Create the popup menu */
   popup_menu = gtk_menu_new ();
 
-  edit_menuitem = gtk_image_menu_item_new_with_mnemonic (_("Edit..."));
+  edit_menuitem = gtk_image_menu_item_new_with_mnemonic (_("Edit"));
   gtk_container_add (GTK_CONTAINER (popup_menu), edit_menuitem);
   separator_menuitem = gtk_separator_menu_item_new();
   gtk_container_add (GTK_CONTAINER (popup_menu), separator_menuitem);
   add_menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_ADD, menueditor_app.accel_group);
   gtk_container_add (GTK_CONTAINER (popup_menu), add_menuitem);
-  addmenu_menuitem = gtk_image_menu_item_new_with_mnemonic (_("Add an external menu..."));
+  addmenu_menuitem = gtk_image_menu_item_new_with_mnemonic (_("Add an external menu"));
   gtk_container_add (GTK_CONTAINER (popup_menu), addmenu_menuitem);
   del_menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_REMOVE, menueditor_app.accel_group);
   gtk_container_add (GTK_CONTAINER (popup_menu), del_menuitem);
@@ -689,6 +664,8 @@ gboolean treeview_button_pressed_cb(GtkTreeView *treeview, GdkEventButton *event
   movedown_menuitem = gtk_image_menu_item_new_from_stock (GTK_STOCK_GO_DOWN, menueditor_app.accel_group);
   gtk_container_add (GTK_CONTAINER (popup_menu), movedown_menuitem);
 
+  g_signal_connect ((gpointer) edit_menuitem, "activate",
+		    G_CALLBACK (popup_edit_cb), NULL);
   g_signal_connect ((gpointer) add_menuitem, "activate",
                     G_CALLBACK (add_entry_cb), NULL);
   g_signal_connect ((gpointer) addmenu_menuitem, "activate",
