@@ -186,7 +186,7 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
 	GtkWidget *mi = NULL, *parent = NULL, *submenu, *img;
 	GdkPixbuf *pix = NULL;
 	gchar *tmppath, *p, *q;
-	const gchar *icon;
+	const gchar *icon = NULL;
 	gint menu_pos;
 	
 	BD("%s", path);
@@ -550,7 +550,7 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 		MenuPathType pathtype, gboolean do_legacy)
 {
 	gint i, totdirs = 0;
-	gchar **dentry_paths, *catfile, *kdepath, *homepath;
+	gchar **dentry_paths, *catfile, *kdepath = NULL, *homepath;
 	const gchar *pathd, *kdedir = g_getenv("KDEDIR");
 	GDir *d;
 	struct stat st;

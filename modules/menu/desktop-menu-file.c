@@ -588,7 +588,7 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 	gboolean ret = FALSE;
 	GError *err = NULL;
 #ifdef HAVE_MMAP
-	gint fd;
+	gint fd = -1;
 	void *maddr = NULL;
 #endif
 	
