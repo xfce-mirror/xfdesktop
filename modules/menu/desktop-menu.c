@@ -54,7 +54,6 @@
 #include <gmodule.h>
 #include <glib.h>
 
-#include <libxfce4mcs/mcs-client.h>
 #include <libxfce4util/debug.h>
 #include <libxfce4util/i18n.h>
 #include <libxfce4util/util.h>
@@ -70,59 +69,22 @@
 #define PATH_MAX 4096
 #endif
 
-/* where to find the current panel icon theme (if any) */
-#define CHANNEL "xfce"
 #define DEFAULT_ICON_THEME "Curve"
 
 #define EVENTMASK (ButtonPressMask|SubstructureNotifyMask|PropertyChangeMask)
 
-/*< private */
+/*< private >*/
 gint _xfce_desktop_menu_icon_size = 24;
 static GList *timeout_handles = NULL;
-static McsClient *client = NULL;
+static GtkIconTheme *notify_itheme = NULL;
 static time_t last_theme_change = 0;
-
-static GdkFilterReturn
-client_event_filter1(GdkXEvent * xevent, GdkEvent * event, gpointer data)
-{
-	if(mcs_client_process_event (client, (XEvent *)xevent))
-		return GDK_FILTER_REMOVE;
-	else
-		return GDK_FILTER_CONTINUE;
-}
+static gchar *cur_icon_theme = NULL;
 
 static void
-mcs_watch_cb(Window window, Bool is_start, long mask, void *cb_data)
+itheme_changed_cb(GtkIconTheme *itheme, gpointer user_data)
 {
-	GdkWindow *gdkwin;
-
-	gdkwin = gdk_window_lookup (window);
-
-	if(is_start)
-		gdk_window_add_filter (gdkwin, client_event_filter1, NULL);
-	else
-		gdk_window_remove_filter (gdkwin, client_event_filter1, NULL);
+	last_theme_change = time(NULL);
 }
-
-
-static void
-mcs_notify_cb(const gchar *name, const gchar *channel_name, McsAction action,
-              McsSetting *setting, void *cb_data)
-{
-	if(strcasecmp(channel_name, CHANNEL) || !setting)
-		return;
-			
-	if((action==MCS_ACTION_NEW || action==MCS_ACTION_CHANGED) &&
-			!strcmp(setting->name, "theme") && setting->type==MCS_TYPE_STRING)
-	{
-		gchar *origin = g_strdup_printf("%s:%d", __FILE__, __LINE__);
-		gtk_settings_set_string_property(gtk_settings_get_default(),
-				"gtk-icon-theme-name", setting->data.v_string, origin);
-		g_free(origin);
-		last_theme_change = time(NULL);
-	}
-}
-
 
 static gboolean
 _generate_menu(XfceDesktopMenu *desktop_menu)
@@ -215,7 +177,6 @@ _calc_icon_size()
 	PangoLayout *playout;
 	PangoFontDescription *pfdesc;
 	
-	
 	/* determine widget height */
 	w = gtk_label_new("foo");
 	gtk_widget_set_name(w, "xfdesktopmenu");
@@ -285,16 +246,35 @@ xfce_desktop_menu_get_widget_impl(XfceDesktopMenu *desktop_menu)
 G_MODULE_EXPORT gboolean
 xfce_desktop_menu_need_update_impl(XfceDesktopMenu *desktop_menu)
 {
+	gboolean modified = FALSE;
+	
 	g_return_val_if_fail(desktop_menu != NULL, FALSE);
 	
 	TRACE("desktop_menu: %p", desktop_menu);
+	
+	if(gtk_major_version == 2 && gtk_minor_version < 4) {
+		GtkSettings *settings;
+		gchar *theme = NULL;
+		settings = gtk_settings_get_default();
+		g_object_get(G_OBJECT(settings), "gtk-icon-theme-name", &theme, NULL);
+		if(theme && *theme && !cur_icon_theme) {
+			cur_icon_theme = theme;
+			last_theme_change = time(NULL);
+		} else if(theme && *theme && strcmp(theme, cur_icon_theme)) {
+			g_free(cur_icon_theme);
+			cur_icon_theme = theme;
+			last_theme_change = time(NULL);
+		}
+	}
+	
 	if(desktop_menu_file_need_update(desktop_menu) ||
 			last_theme_change > desktop_menu->last_menu_gen ||
 			!desktop_menu->menu)
 	{
-		return TRUE;
+		modified = TRUE;
 	}
-	return FALSE;
+	
+	return modified;
 }
 
 G_MODULE_EXPORT void
@@ -349,20 +329,16 @@ xfce_desktop_menu_destroy_impl(XfceDesktopMenu *desktop_menu)
 G_MODULE_EXPORT gchar *
 g_module_check_init(GModule *module)
 {
-	/* track icon theme changes (from the panel) */
-    if(!client) {
-        Display *dpy = GDK_DISPLAY();
-        int screen = XDefaultScreen(dpy);
-        
-        if(!mcs_client_check_manager(dpy, screen, "xfce-mcs-manager"))
-            g_warning("%s: mcs manager not running\n", PACKAGE);
-        client = mcs_client_new(dpy, screen, mcs_notify_cb, mcs_watch_cb, NULL);
-        if(client)
-            mcs_client_add_channel(client, CHANNEL);
-    }
-	
 	_xfce_desktop_menu_icon_size = _calc_icon_size();
 	xfce_app_menu_item_set_icon_size(_xfce_desktop_menu_icon_size);
+	
+	if(gtk_major_version >= 2
+			|| (gtk_major_version == 2 && gtk_minor_version >= 4))
+	{
+		notify_itheme = gtk_icon_theme_get_default();
+		g_signal_connect(G_OBJECT(notify_itheme), "changed",
+				G_CALLBACK(itheme_changed_cb), NULL);
+	}
 	
 	return NULL;
 }
@@ -372,14 +348,20 @@ g_module_unload(GModule *module)
 {
 	GList *l;
 	
+	if(notify_itheme && (gtk_major_version >= 2
+			|| (gtk_major_version == 2 && gtk_minor_version >= 4)))
+	{
+		g_signal_handlers_disconnect_by_func(G_OBJECT(notify_itheme),
+				itheme_changed_cb, NULL);
+		if(cur_icon_theme)
+			g_free(cur_icon_theme);
+		cur_icon_theme = NULL;
+	}
+	
 	if(timeout_handles) {
 		for(l=timeout_handles; l; l=l->next)
 			g_source_remove(GPOINTER_TO_UINT(l->data));
 		g_list_free(timeout_handles);
 	}
 	timeout_handles = NULL;
-	
-	if(client)
-		mcs_client_destroy(client);
-	client = NULL;
 }
