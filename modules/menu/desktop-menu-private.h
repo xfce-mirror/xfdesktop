@@ -32,7 +32,6 @@ struct _XfceDesktopMenu {
 	time_t last_menu_gen;  /* last time this menu was generated */
 	GHashTable *menu_entry_hash;  /* list of entries in the menu */
 	GHashTable *menu_branches;
-	GList *pix_free;  /* a list of GdkPixbufs that need to be freed */
 	
 	GList *menufiles_watch;  /* a list of files to watch */
 	time_t *menufile_mtimes;
@@ -43,9 +42,8 @@ struct _XfceDesktopMenu {
 	GtkWidget *dentry_basemenu;
 };
 
-extern GdkPixbuf *dummy_icon;
-
 /*< private >*/
 void _xfce_desktop_menu_free_menudata(struct _XfceDesktopMenu *desktop_menu);
+extern int _xfce_desktop_menu_icon_size;
 
 #endif  /* !def __DESKTOP_MENU_PRIVATE_H__ */

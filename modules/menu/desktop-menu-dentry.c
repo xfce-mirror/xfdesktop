@@ -231,19 +231,21 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
 	if(desktop_menu->use_menu_icons) {
 		icon = desktop_menuspec_displayname_to_icon(q);
 		if(icon) {
-			pix = xfce_load_themed_icon(icon, 24);  /* FIXME: size */
+			pix = xfce_load_themed_icon(icon, _xfce_desktop_menu_icon_size);
 			if(pix) {
 				mi = gtk_image_menu_item_new_with_label(q);
+				gtk_widget_set_name(mi, "xfdesktopmenu");
 				img = gtk_image_new_from_pixbuf(pix);
 				gtk_widget_show(img);
 				gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-				desktop_menu->pix_free = g_list_prepend(desktop_menu->pix_free,
-						pix);
+				g_object_unref(G_OBJECT(pix));
 			}
 		}
 	}
-	if(!mi)
+	if(!mi) {
 		mi = gtk_menu_item_new_with_label(q);
+		gtk_widget_set_name(mi, "xfdesktopmenu");
+	}
 	g_object_set_data_full(G_OBJECT(mi), "item-name", g_strdup(q),
 			(GDestroyNotify)g_free);
 	
@@ -319,6 +321,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		menu = _ensure_path(desktop_menu, path);
 		mi = xfce_app_menu_item_new_from_desktop_entry(de,
 				desktop_menu->use_menu_icons);
+		gtk_widget_set_name(mi, "xfdesktopmenu");
 		name = xfce_app_menu_item_get_name(XFCE_APP_MENU_ITEM(mi));
 		g_snprintf(tmppath, 2048, "%s/%s", path, name);
 		if(g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath))
@@ -336,6 +339,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		menu = _ensure_path(desktop_menu, path);
 		mi = xfce_app_menu_item_new_from_desktop_entry(de,
 				desktop_menu->use_menu_icons);
+		gtk_widget_set_name(mi, "xfdesktopmenu");
 		name = xfce_app_menu_item_get_name(XFCE_APP_MENU_ITEM(mi));
 		g_snprintf(tmppath, 2048, "%s/%s", path, name);
 		if(g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath))
@@ -354,6 +358,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 			menu = _ensure_path(desktop_menu, path);
 			mi = xfce_app_menu_item_new_from_desktop_entry(de,
 					desktop_menu->use_menu_icons);
+			gtk_widget_set_name(mi, "xfdesktopmenu");
 			name = xfce_app_menu_item_get_name(XFCE_APP_MENU_ITEM(mi));
 			g_snprintf(tmppath, 2048, "%s/%s", path, name);
 			if(g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath))
@@ -560,10 +565,8 @@ menu_dentry_legacy_process_dir(XfceDesktopMenu *desktop_menu,
 			 * and it's non-trivial and error-prone to convert them into
 			 * something compliant. */
 			g_snprintf(newbasedir, PATH_MAX, "%s/%s", basedir, file);
-			if(!catdir)
-				catdir = file;
-			menu_dentry_legacy_process_dir(desktop_menu, newbasedir, catdir,
-					pathtype);
+			menu_dentry_legacy_process_dir(desktop_menu, newbasedir,
+					(catdir ? catdir : file), pathtype);
 		} else if(catdir && g_str_has_suffix(file, ".desktop")) {
 			/* we're also going to ignore category-less .desktop files. */
 			menu_dentry_legacy_parse_dentry_file(desktop_menu, fullpath,

@@ -62,7 +62,6 @@
 #include <libxfcegui4/xgtkicontheme.h>
 #include <libxfcegui4/xfce-appmenuitem.h>
 
-//#include "main.h"
 #include "desktop-menu-private.h"
 #include "desktop-menu.h"
 #include "desktop-menu-file.h"
@@ -77,42 +76,11 @@
 
 #define EVENTMASK (ButtonPressMask|SubstructureNotifyMask|PropertyChangeMask)
 
+/*< private */
+gint _xfce_desktop_menu_icon_size = 24;
 static GList *timeout_handles = NULL;
 static McsClient *client = NULL;
 static time_t last_theme_change = 0;
-
-static gint
-_calc_icon_size()
-{
-	static guchar icon_sizes[] = {
-			12, 16, 22, 24, 32, 36, 48, 64, 72, 96, 128, 192, 0
-	};
-	gint i, icon_size = -1;
-	GtkWidget *tmp;
-	GtkStyle *style;
-	PangoFontDescription *pfdesc;
-	gint totheight;
-	
-	/* determine widget height */
-	tmp = gtk_label_new("foo");
-	gtk_widget_set_name(tmp, "xfdesktopmenu");
-	gtk_widget_show(tmp);
-	style = gtk_rc_get_style(tmp);
-	pfdesc = style->font_desc;
-	totheight = PANGO_PIXELS(pango_font_description_get_size(pfdesc));
-	totheight += 12;  /* FIXME: fudge factor */
-	gtk_widget_destroy(tmp);
-
-	/* figure out an ideal icon size */
-	for(i=0; icon_sizes[i]; i++) {
-		if(icon_sizes[i] < totheight)
-			icon_size = icon_sizes[i];
-		else
-			break;
-	}
-	
-	return icon_size;
-}
 
 static GdkFilterReturn
 client_event_filter1(GdkXEvent * xevent, GdkEvent * event, gpointer data)
@@ -215,11 +183,6 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 		gtk_widget_destroy(desktop_menu->menu);
 	if(desktop_menu->menu_entry_hash)
 		g_hash_table_destroy(desktop_menu->menu_entry_hash);
-	if(desktop_menu->pix_free) {
-		for(l=desktop_menu->pix_free; l; l=l->next)
-			g_object_unref(G_OBJECT(l->data));
-		g_list_free(desktop_menu->pix_free);
-	}
 	if(desktop_menu->menufiles_watch) {
 		for(l=desktop_menu->menufiles_watch; l; l=l->next)
 			g_free(l->data);
@@ -234,11 +197,49 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 	
 	desktop_menu->menu = NULL;
 	desktop_menu->menu_entry_hash = NULL;
-	desktop_menu->pix_free = NULL;
 	desktop_menu->menufiles_watch = NULL;
 	desktop_menu->menufile_mtimes = NULL;
 	desktop_menu->dentrydir_mtimes = NULL;
 	desktop_menu->legacydir_mtimes = NULL;
+}
+
+static gint
+_calc_icon_size()
+{
+	static guchar icon_sizes[] = { 12, 16, 22, 24, 32, 36, 48, 64, 72, 96, 128, 0 };
+	gint i, icon_size = -1;
+	GtkWidget *w;
+	GtkStyle *style;
+	gint width, height;
+	PangoContext *pctx;
+	PangoLayout *playout;
+	PangoFontDescription *pfdesc;
+	
+	
+	/* determine widget height */
+	w = gtk_label_new("foo");
+	gtk_widget_set_name(w, "xfdesktopmenu");
+	gtk_widget_show(w);
+	style = gtk_rc_get_style(w);
+	pfdesc = style->font_desc;
+	
+	pctx = gtk_widget_get_pango_context(w);
+	pango_context_set_font_description(pctx, pfdesc);
+	playout = pango_layout_new(pctx);
+	pango_layout_get_pixel_size(playout, &width, &height);
+	g_object_unref(G_OBJECT(pctx));
+	g_object_unref(G_OBJECT(playout));
+	gtk_widget_destroy(w);
+
+	/* figure out an ideal icon size */
+	for(i=0; icon_sizes[i]; i++) {
+		if(icon_sizes[i] < height)
+			icon_size = icon_sizes[i];
+		else
+			break;
+	}
+	
+	return icon_size;
 }
 
 static gboolean
@@ -356,6 +357,9 @@ g_module_check_init(GModule *module)
         if(client)
             mcs_client_add_channel(client, CHANNEL);
     }
+	
+	_xfce_desktop_menu_icon_size = _calc_icon_size();
+	xfce_app_menu_item_set_icon_size(_xfce_desktop_menu_icon_size);
 	
 	return NULL;
 }
