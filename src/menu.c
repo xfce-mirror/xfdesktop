@@ -21,11 +21,44 @@
 #include <string.h>
 
 #include <X11/Xlib.h>
+#include <assert.h>
 
 #include "main.h"
 #include "menu.h"
+#define DEBUG 1
+#include "debug.h"
+
+typedef enum __MenuItemTypeEnum {
+    MI_PROGRAM,
+    MI_SEPARATOR,
+    MI_SUBMENU,
+    MI_TITLE
+} MenuItemType;
+
+typedef struct __MenuItemStruct {
+    MenuItemType type;          /* Type of Menu Item    */
+    char        *path;          /* path to item         */
+    char        *cmd;           /* shell cmd to execute */
+    gboolean    wants_term;     /* execute in terminal  */
+    GdkPixbuf   *icon;          /* icon to display      */
+} MenuItem;
 
 static NetkScreen *netk_screen = NULL;
+
+void do_exec(gpointer callback_data, guint callback_action, GtkWidget *widget)
+{
+    g_spawn_command_line_async((char *)callback_data, NULL);
+}
+
+
+void do_term_exec(gpointer callback_data, guint callback_action, GtkWidget *widget)
+{
+    char *cmd;
+
+    // TODO: Fix hard-coded call to xterm
+    cmd = g_strconcat( "xterm -e ", (char *) callback_data, NULL);
+    g_spawn_command_line_async(cmd, NULL);
+}
 
 static void do_help(void)
 {
@@ -46,6 +79,7 @@ static void settings_mgr(void)
     g_spawn_command_line_async("xfce-setting-show", NULL);
 }
 
+#if 0
 static GtkItemFactoryEntry main_items[] = {
   { N_("/Desktop menu"), NULL, NULL,        0, "<Title>" },
   { "/sep",              NULL, NULL,        0, "<Separator>" },
@@ -59,6 +93,9 @@ static GtkItemFactoryEntry main_items[] = {
   { N_("/E_xit"),        NULL, quit,        0, "<Item>" },
 #endif
 };
+#endif
+
+/* static GtkItemFactoryEntry *main_items; */
 
 static gboolean popup_menu(GdkEventButton *ev);
 
@@ -267,14 +304,110 @@ static  GtkWidget *create_windowlist_menu(void)
     return menu3;
 }
 
+GList *parse_menu(void)
+{
+    static MenuItem items[] = {
+        { MI_TITLE, "/Desktop Menu", NULL, FALSE, NULL },
+        { MI_SEPARATOR, "/sep", NULL, FALSE, NULL },
+        { MI_PROGRAM, "/Terminal", "xterm", FALSE, NULL },
+        { MI_PROGRAM, "/Run...", "xfrun4", FALSE, NULL },
+        { MI_PROGRAM, "/Settings Manager", "xfce-setting-show", FALSE, NULL }
+    };
+    int i;
+
+    GList *menu_data = NULL;
+    
+    DBG("");
+    
+    for (i = 0; i < G_N_ELEMENTS(items); i++) {
+        menu_data = g_list_append(menu_data, (gpointer) &items[i]);
+    }
+
+    assert(menu_data != NULL);
+    
+    return menu_data;
+}
+
+GtkItemFactoryEntry parse_item(MenuItem *item)
+{
+    GtkItemFactoryEntry t;
+
+    DBG("");
+    
+    t.path = item->path;
+    t.accelerator = NULL;
+    t.callback_action = 0;
+
+    // disable for now
+    // t.extra_data = item->icon; 
+
+    switch (item->type) {
+        case MI_PROGRAM:
+            t.callback = (item->wants_term ? do_term_exec : do_exec);
+            t.item_type = "<Item>";
+            break;
+        case MI_SEPARATOR:
+            t.callback = NULL;
+            t.item_type = "<Separator>";
+            break;
+        case MI_SUBMENU:
+            t.callback = NULL;
+            t.item_type = "<Branch>";
+            break;
+        case MI_TITLE:
+            t.callback = NULL;
+            t.item_type = "<Title>";
+            break;
+        default:
+            break;
+    }
+                
+                             
+        
+    return t;
+}
+
+
+void create_menu_items(GtkItemFactory *ifactory)
+{
+
+    GtkItemFactoryEntry entry;
+    GList *menu_data = NULL;
+    MenuItem *item = NULL;
+
+    /*
+     * TODO: Replace the following line with code  to call multiple
+     * menu parsers and merge their content
+     */
+    menu_data = parse_menu();
+
+    assert(menu_data != NULL);
+
+    while (menu_data != NULL) {
+
+        // parse current item
+        item = (MenuItem *) menu_data->data;
+        assert(item != NULL);
+        entry = parse_item(item);
+        gtk_item_factory_create_item(ifactory, &entry, item->cmd, 1);
+        
+        //go to next item
+        menu_data = g_list_next(menu_data);
+    }
+
+    //clean up
+    g_list_free(menu_data);
+    
+    return;
+}
+
 static GtkWidget *create_desktop_menu(void)
 {
     GtkItemFactory *ifactory;
 
     ifactory = gtk_item_factory_new(GTK_TYPE_MENU, "<popup>", NULL);
 
-    gtk_item_factory_create_items(ifactory, G_N_ELEMENTS(main_items), 
-				  main_items, NULL);
+    create_menu_items(ifactory);
 
     return gtk_item_factory_get_widget(ifactory, "<popup>");
 }
@@ -285,29 +418,29 @@ gboolean popup_menu(GdkEventButton *ev)
     static GtkWidget *menu3 = NULL;
 
     if (ev->button == 3 || 
-	    (ev->button == 1 && ev->state & GDK_SHIFT_MASK))
+            (ev->button == 1 && ev->state & GDK_SHIFT_MASK))
     {
-	if(menu3)
-	{
-	    gtk_widget_destroy(menu3);
-	}
-	
-	menu3 = create_windowlist_menu();
-	
-	gtk_menu_popup(GTK_MENU(menu3), NULL, NULL, NULL, NULL, 1, ev->time);
-	
-	return TRUE;
+        if(menu3)
+        {
+            gtk_widget_destroy(menu3);
+        }
+
+        menu3 = create_windowlist_menu();
+
+        gtk_menu_popup(GTK_MENU(menu3), NULL, NULL, NULL, NULL, 1, ev->time);
+
+        return TRUE;
     }
     else if (ev->button == 1)
     {
-	if (!menu1)
-	{
-	    menu1 = create_desktop_menu();
-	}
+        if (!menu1)
+        {
+            menu1 = create_desktop_menu();
+        }
 
-	gtk_menu_popup(GTK_MENU(menu1), NULL, NULL, NULL, NULL, 1, ev->time);
+        gtk_menu_popup(GTK_MENU(menu1), NULL, NULL, NULL, NULL, 1, ev->time);
 
-	return TRUE;
+        return TRUE;
     }
 
     return FALSE;
