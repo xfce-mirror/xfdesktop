@@ -23,7 +23,7 @@
 #include <glib.h>
 
 #define BACKDROP_CHANNEL    "BACKDROP"
-
+#define DEFAULT_BACKDROP    DATADIR "/xfce4/backdrops/xfce-stripes.png"
 #define LIST_TEXT           "# xfce backdrop list"
 
 /* styles */

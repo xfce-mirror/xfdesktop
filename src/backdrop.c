@@ -726,9 +726,10 @@ backdrop_load_settings(XfceBackdrop *backdrop)
 	if(MCS_SUCCESS == mcs_client_get_setting(client, setting_name,
 			BACKDROP_CHANNEL, &setting))
 	{
-		backdrop->set_backdrop = setting->data.v_int;
+		backdrop->set_backdrop = setting->data.v_int == 0 ? FALSE : TRUE;
 		mcs_setting_free(setting);
-	}
+	} else
+		backdrop->set_backdrop = TRUE;
 
 	g_snprintf(setting_name, 128, "style_%d", backdrop->xscreen);
 	if(MCS_SUCCESS == mcs_client_get_setting(client, setting_name,
@@ -736,7 +737,8 @@ backdrop_load_settings(XfceBackdrop *backdrop)
 	{
 		backdrop->style = setting->data.v_int;
 		mcs_setting_free(setting);
-	}
+	} else
+		backdrop->style = STRETCHED;
 
 	g_snprintf(setting_name, 128, "path_%d", backdrop->xscreen);
 	if(MCS_SUCCESS == mcs_client_get_setting (client, setting_name,
@@ -746,9 +748,9 @@ backdrop_load_settings(XfceBackdrop *backdrop)
 			g_free(backdrop->path);
 			backdrop->path = g_strdup(setting->data.v_string);
 		}
-		
 		mcs_setting_free(setting);
-	}
+	} else
+		backdrop->path = g_strdup(DEFAULT_BACKDROP);
 
 	g_snprintf(setting_name, 128, "color1_%d", backdrop->xscreen);
 	if(MCS_SUCCESS == mcs_client_get_setting(client, setting_name,
@@ -757,7 +759,6 @@ backdrop_load_settings(XfceBackdrop *backdrop)
 		backdrop->color1.red = setting->data.v_color.red;
 		backdrop->color1.green = setting->data.v_color.green;
 		backdrop->color1.blue = setting->data.v_color.blue;
-
 		mcs_setting_free (setting);
 	}
 	
@@ -776,9 +777,10 @@ backdrop_load_settings(XfceBackdrop *backdrop)
 	if(MCS_SUCCESS == mcs_client_get_setting(client, setting_name,
 			BACKDROP_CHANNEL, &setting))
 	{
-		backdrop->color_only = setting->data.v_int;
+		backdrop->color_only = setting->data.v_int == 0 ? FALSE : TRUE;
 		mcs_setting_free(setting);
-	}
+	} else
+		backdrop->color_only = FALSE;
 
 	DBG("set backdrop %s", backdrop->set_backdrop ? "from settings" : "from root property");
 	if(backdrop->set_backdrop) {

@@ -18,9 +18,8 @@ xfdesktop_CFLAGS = 							\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@GMODULE_CFLAGS@							\
 	-DLOCALEDIR=\"$(localedir)\"					\
-	-DDATADIR=\"$(pkgdatadir)\"					\
+	-DDATADIR=\"$(datadir)\"					\
 	-DSYSCONFDIR=\"$(sysconfdir)\"			\
-	-DXFCEDATADIR=\"$(datadir)/xfce4\"		\
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\"
 
 xfdesktop_LDADD =							\

@@ -73,8 +73,6 @@
 #define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream
 #endif
 
-#define DEFAULT_BACKDROP (DATADIR "/xfce4/backdrops/xfce-stripes.png")
-
 /* important stuff to keep track of */
 typedef struct {
     McsPlugin *plugin;
@@ -239,9 +237,9 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 		if(setting)
 			bp->style = setting->data.v_int;
 		else {
-			bp->style = AUTO;
+			bp->style = STRETCHED;
 			mcs_manager_set_int(mcs_plugin->manager, setting_name,
-					BACKDROP_CHANNEL, AUTO);
+					BACKDROP_CHANNEL, bp->style);
 		}
 		
 		/* color 1 */
@@ -302,7 +300,7 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 		else {
 			bp->color_style = SOLID_COLOR;
 			mcs_manager_set_int(mcs_plugin->manager, setting_name,
-					BACKDROP_CHANNEL, SOLID_COLOR);
+					BACKDROP_CHANNEL, bp->color_style);
 		}
 		
 		screens = g_list_append(screens, bp);
