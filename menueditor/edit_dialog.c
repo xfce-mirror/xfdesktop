@@ -445,6 +445,9 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 	xmlRemoveProp(icon_prop);
       }else{
 	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
+	if(!icon)
+	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
+
 	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
       }
 
@@ -509,6 +512,9 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 	xmlRemoveProp(icon_prop);
       }else{
 	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
+	if(!icon)
+	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
+
 	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
       }
       gtk_tree_store_set (menueditor_app.treestore, &iter,
@@ -545,6 +551,9 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 	xmlRemoveProp(icon_prop);
       }else{
 	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
+	if(!icon)
+	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
+
 	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
       }
 
@@ -583,6 +592,9 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 	xmlRemoveProp(icon_prop);
       }else{
 	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
+	if(!icon)
+	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
+
 	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
       }
 
