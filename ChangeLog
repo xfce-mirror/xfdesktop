@@ -1,26 +1,47 @@
-2003-01-15 23:11  huysmans
+2003-01-18  xfce
+
+	* src/: backdrop.c, main.c: * Remove double buffering in desktop
+	window otherwise gtk allocates twice the size of the screen in
+	video memory which can show to be unusable even on a GeForce II MX
+	with 32Mb using 3D because the video RAM alloted to pixmaps cannot
+	handle the total amount of pixmaps.  * Reduce scale quality to
+	BILINEAR instead of HYPER because it takes too long even on a PIV
+	1.7GHz scalling from 1024x768 to 1280x768
+
+2003-01-16  xfce
+
+	* Makefile.in, aclocal.m4, autogen.sh, config.guess, config.sub,
+	configure, settings/Makefile.in, src/Makefile.in: Try to fix
+	libtool error
+
+2003-01-16  huysmans
+
+	* ChangeLog, settings/Makefile.am, settings/Makefile.in: Make sure
+	icons are included in dist tarball
+
+2003-01-15  huysmans
 
 	* src/backdrop.c: Small compile fix
 
-2003-01-15 23:08  huysmans
+2003-01-15  huysmans
 
 	* settings/backdrop-mgr.c: Fix a couple of bugs again and again
 
-2003-01-15 23:03  huysmans
+2003-01-15  huysmans
 
 	* settings/: backdrop-mgr.c, backdrop_settings.c: Fix a couple of
 	bugs
 
-2003-01-15 22:45  huysmans
+2003-01-15  huysmans
 
 	* ChangeLog, src/Makefile.am, src/Makefile.in, src/backdrop.c,
 	src/margins.c: Fix a compile error (?)
 
-2003-01-15 20:30  huysmans
+2003-01-15  huysmans
 
 	* settings/backdrop_settings.c: Fix crash in backdrop dialogs
 
-2003-01-15 20:09  huysmans
+2003-01-15  huysmans
 
 	* AUTHORS, COPYING, ChangeLog, INSTALL, Makefile.am, Makefile.in,
 	NEWS, README, TODO, aclocal.m4, autogen.sh, compile, config.guess,
