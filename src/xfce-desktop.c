@@ -625,6 +625,16 @@ desktop_expose_cb(GtkWidget *w, GdkEventExpose *evt, gpointer user_data)
 }
 
 
+static void
+style_set_cb(GtkWidget *w, GtkStyle *old, XfceDesktop *desktop)
+{	
+    int i;
+    
+	for(i = 0; i < desktop->priv->nbackdrops; i++) 
+        backdrop_changed_cb(desktop->priv->backdrops[i], desktop);
+}
+
+
 /* public api */
 
 /**
@@ -713,6 +723,9 @@ xfce_desktop_new(GdkScreen *gscreen, McsClient *mcs_client)
 	gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSE);
 	g_signal_connect(G_OBJECT(desktop), "expose-event",
 			G_CALLBACK(desktop_expose_cb), NULL);
+	
+	g_signal_connect(G_OBJECT(desktop), "style-set",
+			G_CALLBACK(style_set_cb), desktop);
 	
 	return GTK_WIDGET(desktop);
 }
