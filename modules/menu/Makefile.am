@@ -1,8 +1,8 @@
 plugindir = $(libdir)/xfce4/modules
 
-plugin_LTLIBRARIES = libxfce4_desktop_menu.la
+plugin_LTLIBRARIES = xfce4_desktop_menu.la
 
-libxfce4_desktop_menu_la_SOURCES = \
+xfce4_desktop_menu_la_SOURCES = \
 	desktop-menu.c \
 	desktop-menu.h \
 	desktop-menu-cache.c \
@@ -16,27 +16,28 @@ libxfce4_desktop_menu_la_SOURCES = \
 	desktop-menu-private.h \
 	dummy_icon.h
 
-libxfce4_desktop_menu_la_CFLAGS = \
+xfce4_desktop_menu_la_CFLAGS = \
 	@GMODULE_CFLAGS@ \
 	@LIBXFCEGUI4_CFLAGS@ \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DDATADIR=\"$(datadir)\"
 
-libxfce4_desktop_menu_la_LDFLAGS = \
+xfce4_desktop_menu_la_LDFLAGS = \
 	-export-dynamic \
-	-avoid-version
+	-avoid-version \
+	-module
 
 if HAVE_CYGWIN
-  libxfce4_desktop_menu_la_LDFLAGS += \
+  xfce4_desktop_menu_la_LDFLAGS += \
 	-no-undefined \
 	-export-symbols $(top_srcdir)/src/xfdesktop.def
 endif
 
-libxfce4_desktop_menu_la_LIBADD = \
+xfce4_desktop_menu_la_LIBADD = \
 	@GMODULE_LIBS@ \
 	@LIBXFCEGUI4_LIBS@
 
 xfceconfdir = $(sysconfdir)/xdg/xfce4/desktop
 xfceconf_DATA = xfce-registered-categories.xml
 
-EXTRA_DIST = xfce-registered-categories.xml
+EXTRA_DIST = $(xfceconf_DATA)

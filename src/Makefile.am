@@ -26,13 +26,13 @@ xfdesktop_CFLAGS = \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\"
 
-xfdesktop_LDADD = \
-	$(top_builddir)/common/libxfdesktop.la \
+# cygwin link order requires this split
+xfdesktop_LDADD = $(top_builddir)/common/libxfdesktop.la
+if BUILD_DESKTOP_MENU
+  xfdesktop_LDADD += $(top_builddir)/common/libxfdesktop-menu.la
+endif
+xfdesktop_LDADD += \
 	@LIBX11_LDFLAGS@ \
 	@LIBX11_LIBS@ \
 	@LIBXFCEGUI4_LIBS@ \
 	@LIBXFCE4MCS_CLIENT_LIBS@
-
-if BUILD_DESKTOP_MENU
-  xfdesktop_LDADD += $(top_builddir)/common/libxfdesktop-menu.la
-endif

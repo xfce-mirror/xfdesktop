@@ -15,7 +15,7 @@
 @SET_MAKE@
 
 
-SOURCES = $(libxfce4_desktop_menu_la_SOURCES)
+SOURCES = $(xfce4_desktop_menu_la_SOURCES)
 
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
@@ -56,23 +56,22 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(plugindir)" "$(DESTDIR)$(xfceconfdir)"
 pluginLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(plugin_LTLIBRARIES)
-libxfce4_desktop_menu_la_DEPENDENCIES =
-am_libxfce4_desktop_menu_la_OBJECTS =  \
-	libxfce4_desktop_menu_la-desktop-menu.lo \
-	libxfce4_desktop_menu_la-desktop-menu-cache.lo \
-	libxfce4_desktop_menu_la-desktop-menu-file.lo \
-	libxfce4_desktop_menu_la-desktop-menu-dentry.lo \
-	libxfce4_desktop_menu_la-desktop-menuspec.lo
-libxfce4_desktop_menu_la_OBJECTS =  \
-	$(am_libxfce4_desktop_menu_la_OBJECTS)
+xfce4_desktop_menu_la_DEPENDENCIES =
+am_xfce4_desktop_menu_la_OBJECTS =  \
+	xfce4_desktop_menu_la-desktop-menu.lo \
+	xfce4_desktop_menu_la-desktop-menu-cache.lo \
+	xfce4_desktop_menu_la-desktop-menu-file.lo \
+	xfce4_desktop_menu_la-desktop-menu-dentry.lo \
+	xfce4_desktop_menu_la-desktop-menuspec.lo
+xfce4_desktop_menu_la_OBJECTS = $(am_xfce4_desktop_menu_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
-@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Plo
+@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) \
@@ -81,8 +80,8 @@ LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) \
 CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
-SOURCES = $(libxfce4_desktop_menu_la_SOURCES)
-DIST_SOURCES = $(libxfce4_desktop_menu_la_SOURCES)
+SOURCES = $(xfce4_desktop_menu_la_SOURCES)
+DIST_SOURCES = $(xfce4_desktop_menu_la_SOURCES)
 xfceconfDATA_INSTALL = $(INSTALL_DATA)
 DATA = $(xfceconf_DATA)
 ETAGS = etags
@@ -252,8 +251,8 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 plugindir = $(libdir)/xfce4/modules
-plugin_LTLIBRARIES = libxfce4_desktop_menu.la
-libxfce4_desktop_menu_la_SOURCES = \
+plugin_LTLIBRARIES = xfce4_desktop_menu.la
+xfce4_desktop_menu_la_SOURCES = \
 	desktop-menu.c \
 	desktop-menu.h \
 	desktop-menu-cache.c \
@@ -267,23 +266,24 @@ libxfce4_desktop_menu_la_SOURCES = \
 	desktop-menu-private.h \
 	dummy_icon.h
 
-libxfce4_desktop_menu_la_CFLAGS = \
+xfce4_desktop_menu_la_CFLAGS = \
 	@GMODULE_CFLAGS@ \
 	@LIBXFCEGUI4_CFLAGS@ \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DDATADIR=\"$(datadir)\"
 
-libxfce4_desktop_menu_la_LDFLAGS = \
+xfce4_desktop_menu_la_LDFLAGS = \
 	-export-dynamic \
-	-avoid-version\
+	-avoid-version \
+	-module\
 $(am__append_1)
-libxfce4_desktop_menu_la_LIBADD = \
+xfce4_desktop_menu_la_LIBADD = \
 	@GMODULE_LIBS@ \
 	@LIBXFCEGUI4_LIBS@
 
 xfceconfdir = $(sysconfdir)/xdg/xfce4/desktop
 xfceconf_DATA = xfce-registered-categories.xml
-EXTRA_DIST = xfce-registered-categories.xml
+EXTRA_DIST = $(xfceconf_DATA)
 all: all-am
 
 .SUFFIXES:
@@ -344,8 +344,8 @@ clean-pluginLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
-libxfce4_desktop_menu.la: $(libxfce4_desktop_menu_la_OBJECTS) $(libxfce4_desktop_menu_la_DEPENDENCIES) 
-	$(LINK) -rpath $(plugindir) $(libxfce4_desktop_menu_la_LDFLAGS) $(libxfce4_desktop_menu_la_OBJECTS) $(libxfce4_desktop_menu_la_LIBADD) $(LIBS)
+xfce4_desktop_menu.la: $(xfce4_desktop_menu_la_OBJECTS) $(xfce4_desktop_menu_la_DEPENDENCIES) 
+	$(LINK) -rpath $(plugindir) $(xfce4_desktop_menu_la_LDFLAGS) $(xfce4_desktop_menu_la_OBJECTS) $(xfce4_desktop_menu_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -353,11 +353,11 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
@@ -383,125 +383,125 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ $<
 
-libxfce4_desktop_menu_la-desktop-menu.o: desktop-menu.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menu.o -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menu.o `test -f 'desktop-menu.c' || echo '$(srcdir)/'`desktop-menu.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Po"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu.c' object='libxfce4_desktop_menu_la-desktop-menu.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Po' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.TPo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menu.o: desktop-menu.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menu.o -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Tpo" -c -o xfce4_desktop_menu_la-desktop-menu.o `test -f 'desktop-menu.c' || echo '$(srcdir)/'`desktop-menu.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Po"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu.c' object='xfce4_desktop_menu_la-desktop-menu.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Po' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menu.o `test -f 'desktop-menu.c' || echo '$(srcdir)/'`desktop-menu.c
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menu.o `test -f 'desktop-menu.c' || echo '$(srcdir)/'`desktop-menu.c
 
-libxfce4_desktop_menu_la-desktop-menu.obj: desktop-menu.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menu.obj -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menu.obj `if test -f 'desktop-menu.c'; then $(CYGPATH_W) 'desktop-menu.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Po"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu.c' object='libxfce4_desktop_menu_la-desktop-menu.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Po' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.TPo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menu.obj: desktop-menu.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menu.obj -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Tpo" -c -o xfce4_desktop_menu_la-desktop-menu.obj `if test -f 'desktop-menu.c'; then $(CYGPATH_W) 'desktop-menu.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Po"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu.c' object='xfce4_desktop_menu_la-desktop-menu.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Po' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menu.obj `if test -f 'desktop-menu.c'; then $(CYGPATH_W) 'desktop-menu.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu.c'; fi`
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menu.obj `if test -f 'desktop-menu.c'; then $(CYGPATH_W) 'desktop-menu.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu.c'; fi`
 
-libxfce4_desktop_menu_la-desktop-menu.lo: desktop-menu.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menu.lo -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menu.lo `test -f 'desktop-menu.c' || echo '$(srcdir)/'`desktop-menu.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Plo"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu.c' object='libxfce4_desktop_menu_la-desktop-menu.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.Plo' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu.TPlo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menu.lo: desktop-menu.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menu.lo -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Tpo" -c -o xfce4_desktop_menu_la-desktop-menu.lo `test -f 'desktop-menu.c' || echo '$(srcdir)/'`desktop-menu.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Plo"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu.c' object='xfce4_desktop_menu_la-desktop-menu.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.Plo' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menu.lo `test -f 'desktop-menu.c' || echo '$(srcdir)/'`desktop-menu.c
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menu.lo `test -f 'desktop-menu.c' || echo '$(srcdir)/'`desktop-menu.c
 
-libxfce4_desktop_menu_la-desktop-menu-cache.o: desktop-menu-cache.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menu-cache.o -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menu-cache.o `test -f 'desktop-menu-cache.c' || echo '$(srcdir)/'`desktop-menu-cache.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Po"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-cache.c' object='libxfce4_desktop_menu_la-desktop-menu-cache.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Po' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.TPo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menu-cache.o: desktop-menu-cache.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menu-cache.o -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Tpo" -c -o xfce4_desktop_menu_la-desktop-menu-cache.o `test -f 'desktop-menu-cache.c' || echo '$(srcdir)/'`desktop-menu-cache.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Po"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-cache.c' object='xfce4_desktop_menu_la-desktop-menu-cache.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Po' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menu-cache.o `test -f 'desktop-menu-cache.c' || echo '$(srcdir)/'`desktop-menu-cache.c
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menu-cache.o `test -f 'desktop-menu-cache.c' || echo '$(srcdir)/'`desktop-menu-cache.c
 
-libxfce4_desktop_menu_la-desktop-menu-cache.obj: desktop-menu-cache.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menu-cache.obj -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menu-cache.obj `if test -f 'desktop-menu-cache.c'; then $(CYGPATH_W) 'desktop-menu-cache.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu-cache.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Po"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-cache.c' object='libxfce4_desktop_menu_la-desktop-menu-cache.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Po' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.TPo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menu-cache.obj: desktop-menu-cache.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menu-cache.obj -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Tpo" -c -o xfce4_desktop_menu_la-desktop-menu-cache.obj `if test -f 'desktop-menu-cache.c'; then $(CYGPATH_W) 'desktop-menu-cache.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu-cache.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Po"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-cache.c' object='xfce4_desktop_menu_la-desktop-menu-cache.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Po' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menu-cache.obj `if test -f 'desktop-menu-cache.c'; then $(CYGPATH_W) 'desktop-menu-cache.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu-cache.c'; fi`
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menu-cache.obj `if test -f 'desktop-menu-cache.c'; then $(CYGPATH_W) 'desktop-menu-cache.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu-cache.c'; fi`
 
-libxfce4_desktop_menu_la-desktop-menu-cache.lo: desktop-menu-cache.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menu-cache.lo -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menu-cache.lo `test -f 'desktop-menu-cache.c' || echo '$(srcdir)/'`desktop-menu-cache.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Plo"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-cache.c' object='libxfce4_desktop_menu_la-desktop-menu-cache.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.Plo' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-cache.TPlo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menu-cache.lo: desktop-menu-cache.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menu-cache.lo -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Tpo" -c -o xfce4_desktop_menu_la-desktop-menu-cache.lo `test -f 'desktop-menu-cache.c' || echo '$(srcdir)/'`desktop-menu-cache.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Plo"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-cache.c' object='xfce4_desktop_menu_la-desktop-menu-cache.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.Plo' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-cache.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menu-cache.lo `test -f 'desktop-menu-cache.c' || echo '$(srcdir)/'`desktop-menu-cache.c
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menu-cache.lo `test -f 'desktop-menu-cache.c' || echo '$(srcdir)/'`desktop-menu-cache.c
 
-libxfce4_desktop_menu_la-desktop-menu-file.o: desktop-menu-file.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menu-file.o -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menu-file.o `test -f 'desktop-menu-file.c' || echo '$(srcdir)/'`desktop-menu-file.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Po"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-file.c' object='libxfce4_desktop_menu_la-desktop-menu-file.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Po' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.TPo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menu-file.o: desktop-menu-file.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menu-file.o -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Tpo" -c -o xfce4_desktop_menu_la-desktop-menu-file.o `test -f 'desktop-menu-file.c' || echo '$(srcdir)/'`desktop-menu-file.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Po"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-file.c' object='xfce4_desktop_menu_la-desktop-menu-file.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Po' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menu-file.o `test -f 'desktop-menu-file.c' || echo '$(srcdir)/'`desktop-menu-file.c
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menu-file.o `test -f 'desktop-menu-file.c' || echo '$(srcdir)/'`desktop-menu-file.c
 
-libxfce4_desktop_menu_la-desktop-menu-file.obj: desktop-menu-file.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menu-file.obj -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menu-file.obj `if test -f 'desktop-menu-file.c'; then $(CYGPATH_W) 'desktop-menu-file.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu-file.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Po"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-file.c' object='libxfce4_desktop_menu_la-desktop-menu-file.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Po' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.TPo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menu-file.obj: desktop-menu-file.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menu-file.obj -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Tpo" -c -o xfce4_desktop_menu_la-desktop-menu-file.obj `if test -f 'desktop-menu-file.c'; then $(CYGPATH_W) 'desktop-menu-file.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu-file.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Po"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-file.c' object='xfce4_desktop_menu_la-desktop-menu-file.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Po' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menu-file.obj `if test -f 'desktop-menu-file.c'; then $(CYGPATH_W) 'desktop-menu-file.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu-file.c'; fi`
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menu-file.obj `if test -f 'desktop-menu-file.c'; then $(CYGPATH_W) 'desktop-menu-file.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu-file.c'; fi`
 
-libxfce4_desktop_menu_la-desktop-menu-file.lo: desktop-menu-file.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menu-file.lo -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menu-file.lo `test -f 'desktop-menu-file.c' || echo '$(srcdir)/'`desktop-menu-file.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Plo"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-file.c' object='libxfce4_desktop_menu_la-desktop-menu-file.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.Plo' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-file.TPlo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menu-file.lo: desktop-menu-file.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menu-file.lo -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Tpo" -c -o xfce4_desktop_menu_la-desktop-menu-file.lo `test -f 'desktop-menu-file.c' || echo '$(srcdir)/'`desktop-menu-file.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Plo"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-file.c' object='xfce4_desktop_menu_la-desktop-menu-file.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.Plo' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-file.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menu-file.lo `test -f 'desktop-menu-file.c' || echo '$(srcdir)/'`desktop-menu-file.c
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menu-file.lo `test -f 'desktop-menu-file.c' || echo '$(srcdir)/'`desktop-menu-file.c
 
-libxfce4_desktop_menu_la-desktop-menu-dentry.o: desktop-menu-dentry.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menu-dentry.o -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menu-dentry.o `test -f 'desktop-menu-dentry.c' || echo '$(srcdir)/'`desktop-menu-dentry.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Po"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-dentry.c' object='libxfce4_desktop_menu_la-desktop-menu-dentry.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Po' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.TPo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menu-dentry.o: desktop-menu-dentry.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menu-dentry.o -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Tpo" -c -o xfce4_desktop_menu_la-desktop-menu-dentry.o `test -f 'desktop-menu-dentry.c' || echo '$(srcdir)/'`desktop-menu-dentry.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Po"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-dentry.c' object='xfce4_desktop_menu_la-desktop-menu-dentry.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Po' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menu-dentry.o `test -f 'desktop-menu-dentry.c' || echo '$(srcdir)/'`desktop-menu-dentry.c
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menu-dentry.o `test -f 'desktop-menu-dentry.c' || echo '$(srcdir)/'`desktop-menu-dentry.c
 
-libxfce4_desktop_menu_la-desktop-menu-dentry.obj: desktop-menu-dentry.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menu-dentry.obj -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menu-dentry.obj `if test -f 'desktop-menu-dentry.c'; then $(CYGPATH_W) 'desktop-menu-dentry.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu-dentry.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Po"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-dentry.c' object='libxfce4_desktop_menu_la-desktop-menu-dentry.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Po' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.TPo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menu-dentry.obj: desktop-menu-dentry.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menu-dentry.obj -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Tpo" -c -o xfce4_desktop_menu_la-desktop-menu-dentry.obj `if test -f 'desktop-menu-dentry.c'; then $(CYGPATH_W) 'desktop-menu-dentry.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu-dentry.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Po"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-dentry.c' object='xfce4_desktop_menu_la-desktop-menu-dentry.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Po' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menu-dentry.obj `if test -f 'desktop-menu-dentry.c'; then $(CYGPATH_W) 'desktop-menu-dentry.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu-dentry.c'; fi`
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menu-dentry.obj `if test -f 'desktop-menu-dentry.c'; then $(CYGPATH_W) 'desktop-menu-dentry.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu-dentry.c'; fi`
 
-libxfce4_desktop_menu_la-desktop-menu-dentry.lo: desktop-menu-dentry.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menu-dentry.lo -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menu-dentry.lo `test -f 'desktop-menu-dentry.c' || echo '$(srcdir)/'`desktop-menu-dentry.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Plo"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-dentry.c' object='libxfce4_desktop_menu_la-desktop-menu-dentry.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.Plo' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menu-dentry.TPlo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menu-dentry.lo: desktop-menu-dentry.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menu-dentry.lo -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Tpo" -c -o xfce4_desktop_menu_la-desktop-menu-dentry.lo `test -f 'desktop-menu-dentry.c' || echo '$(srcdir)/'`desktop-menu-dentry.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Plo"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-dentry.c' object='xfce4_desktop_menu_la-desktop-menu-dentry.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.Plo' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menu-dentry.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menu-dentry.lo `test -f 'desktop-menu-dentry.c' || echo '$(srcdir)/'`desktop-menu-dentry.c
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menu-dentry.lo `test -f 'desktop-menu-dentry.c' || echo '$(srcdir)/'`desktop-menu-dentry.c
 
-libxfce4_desktop_menu_la-desktop-menuspec.o: desktop-menuspec.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menuspec.o -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menuspec.o `test -f 'desktop-menuspec.c' || echo '$(srcdir)/'`desktop-menuspec.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Po"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menuspec.c' object='libxfce4_desktop_menu_la-desktop-menuspec.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Po' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.TPo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menuspec.o: desktop-menuspec.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menuspec.o -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Tpo" -c -o xfce4_desktop_menu_la-desktop-menuspec.o `test -f 'desktop-menuspec.c' || echo '$(srcdir)/'`desktop-menuspec.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Po"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menuspec.c' object='xfce4_desktop_menu_la-desktop-menuspec.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Po' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menuspec.o `test -f 'desktop-menuspec.c' || echo '$(srcdir)/'`desktop-menuspec.c
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menuspec.o `test -f 'desktop-menuspec.c' || echo '$(srcdir)/'`desktop-menuspec.c
 
-libxfce4_desktop_menu_la-desktop-menuspec.obj: desktop-menuspec.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menuspec.obj -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menuspec.obj `if test -f 'desktop-menuspec.c'; then $(CYGPATH_W) 'desktop-menuspec.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menuspec.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Po"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menuspec.c' object='libxfce4_desktop_menu_la-desktop-menuspec.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Po' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.TPo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menuspec.obj: desktop-menuspec.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menuspec.obj -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Tpo" -c -o xfce4_desktop_menu_la-desktop-menuspec.obj `if test -f 'desktop-menuspec.c'; then $(CYGPATH_W) 'desktop-menuspec.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menuspec.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Po"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menuspec.c' object='xfce4_desktop_menu_la-desktop-menuspec.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Po' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menuspec.obj `if test -f 'desktop-menuspec.c'; then $(CYGPATH_W) 'desktop-menuspec.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menuspec.c'; fi`
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menuspec.obj `if test -f 'desktop-menuspec.c'; then $(CYGPATH_W) 'desktop-menuspec.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menuspec.c'; fi`
 
-libxfce4_desktop_menu_la-desktop-menuspec.lo: desktop-menuspec.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT libxfce4_desktop_menu_la-desktop-menuspec.lo -MD -MP -MF "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Tpo" -c -o libxfce4_desktop_menu_la-desktop-menuspec.lo `test -f 'desktop-menuspec.c' || echo '$(srcdir)/'`desktop-menuspec.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Tpo" "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Plo"; else rm -f "$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menuspec.c' object='libxfce4_desktop_menu_la-desktop-menuspec.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.Plo' tmpdepfile='$(DEPDIR)/libxfce4_desktop_menu_la-desktop-menuspec.TPlo' @AMDEPBACKSLASH@
+xfce4_desktop_menu_la-desktop-menuspec.lo: desktop-menuspec.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -MT xfce4_desktop_menu_la-desktop-menuspec.lo -MD -MP -MF "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Tpo" -c -o xfce4_desktop_menu_la-desktop-menuspec.lo `test -f 'desktop-menuspec.c' || echo '$(srcdir)/'`desktop-menuspec.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Tpo" "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Plo"; else rm -f "$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menuspec.c' object='xfce4_desktop_menu_la-desktop-menuspec.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.Plo' tmpdepfile='$(DEPDIR)/xfce4_desktop_menu_la-desktop-menuspec.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o libxfce4_desktop_menu_la-desktop-menuspec.lo `test -f 'desktop-menuspec.c' || echo '$(srcdir)/'`desktop-menuspec.c
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_desktop_menu_la_CFLAGS) $(CFLAGS) -c -o xfce4_desktop_menu_la-desktop-menuspec.lo `test -f 'desktop-menuspec.c' || echo '$(srcdir)/'`desktop-menuspec.c
 
 mostlyclean-libtool:
 	-rm -f *.lo
