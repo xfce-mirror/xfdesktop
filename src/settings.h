@@ -30,6 +30,6 @@ void settings_init (XfceDesktop * xfdesktop);
 
 void settings_cleanup (XfceDesktop * xfdesktop);
 
-void register_channel_callback (const char *name, ChannelCallback callback);
+void register_channel_callback (XfceDesktop *xfdesktop, const char *name, ChannelCallback callback);
 
 #endif /* !__XFDESKTOP_SETTING__ */

@@ -36,6 +36,7 @@ typedef struct
     GtkWidget *fullscreen;
 
     McsClient *client;
+	GHashTable *settings_hash;
 }
 XfceDesktop;
 

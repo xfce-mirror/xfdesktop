@@ -73,8 +73,7 @@
 #define MENU_MESSAGE "menu"
 #define WINDOWLIST_MESSAGE "windowlist"
 
-/* globals */
-static XfceDesktop xfdesktop;
+GList *desktops;
 
 static SessionClient *client_session = NULL;
 static gboolean session_managed = FALSE;
@@ -95,11 +94,11 @@ quit (void)
 }
 
 static void
-load_settings ()
+load_settings(XfceDesktop *xfdesktop)
 {
-    DBG ("load settings");
-    background_load_settings (&xfdesktop);
-    menu_load_settings (&xfdesktop);
+	DBG("load settings");
+	background_load_settings(xfdesktop);
+	menu_load_settings(xfdesktop);
 }
 
 /* client messages */
@@ -127,17 +126,19 @@ send_client_message (Window xid, const char *msg)
 }
 
 static gboolean
-client_message_received (GtkWidget * widget, GdkEventClient * event,
+client_message_received(GtkWidget * widget, GdkEventClient * event,
 			 gpointer user_data)
 {
+	XfceDesktop *xfdesktop = user_data;
+	
     TRACE ("client message received");
 
     if (event->data_format == 8)
     {
 	if (strcmp (RELOAD_MESSAGE, event->data.b) == 0)
 	{
-	    load_settings ();
-		menu_force_regen ();
+	    load_settings(xfdesktop);
+		menu_force_regen();
 	    return TRUE;
 	}
 	else if (strcmp (MENU_MESSAGE, event->data.b) == 0)
@@ -160,13 +161,13 @@ client_message_received (GtkWidget * widget, GdkEventClient * event,
 static gboolean
 check_is_running (Window * xid)
 {
-    TRACE ("check for running instance on screen %d", xfdesktop.xscreen);
+    TRACE ("check for running instance on screen %d", DefaultScreen(GDK_DISPLAY()));
 
     if (!selection_atom)
     {
 	char selection_name[100];
 
-	sprintf (selection_name, XFDESKTOP_SELECTION_FMT, xfdesktop.xscreen);
+	sprintf (selection_name, XFDESKTOP_SELECTION_FMT, DefaultScreen(GDK_DISPLAY()));
 	selection_atom = XInternAtom (GDK_DISPLAY (), selection_name, False);
     }
 
@@ -177,11 +178,11 @@ check_is_running (Window * xid)
 }
 
 static void
-xfdesktop_set_selection (void)
+xfdesktop_set_selection(XfceDesktop *xfdesktop)
 {
-	Display *dpy = xfdesktop.dpy;
-	int scr = xfdesktop.xscreen;
-	GtkWidget *gtkwin = xfdesktop.fullscreen;
+	Display *dpy = xfdesktop->dpy;
+	int scr = xfdesktop->xscreen;
+	GtkWidget *gtkwin = xfdesktop->fullscreen;
 	Window win;
 	
 	TRACE ("claiming xfdesktop manager selection for screen %d", scr);
@@ -202,15 +203,15 @@ xfdesktop_set_selection (void)
 	XSetSelectionOwner (dpy, selection_atom, win, GDK_CURRENT_TIME);
 
 	/* listen for client messages */
-	g_signal_connect (gtkwin, "client-event",
-	G_CALLBACK (client_message_received), NULL);
+	g_signal_connect(gtkwin, "client-event",
+			G_CALLBACK(client_message_received), xfdesktop);
 
 	/* Check to see if we managed to claim the selection. If not,
 	* we treat it as if we got it then immediately lost it
 	*/
 	if (XGetSelectionOwner (dpy, selection_atom) == win) {
 		XClientMessageEvent xev;
-		Window root = xfdesktop.root;
+		Window root = xfdesktop->root;
 
 		xev.type = ClientMessage;
 		xev.window = root;
@@ -302,77 +303,93 @@ create_fullscreen_window (void)
  * This is Gtk+ >= 2.2 only for now, should be no problem after all.
  */
 static void
-xfdesktop_size_changed (GdkScreen * screen)
+xfdesktop_size_changed(GdkScreen *screen, gpointer user_data)
 {
-    gdk_window_move_resize (xfdesktop.fullscreen->window, 0, 0,
-			    gdk_screen_width (), gdk_screen_height ());
-    load_settings ();
+	XfceDesktop *xfdesktop = user_data;
+
+	gdk_window_move_resize(xfdesktop->fullscreen->window, 0, 0,
+			gdk_screen_width(), gdk_screen_height());
+	load_settings(xfdesktop);
 }
 #endif
 
 static void
-xfdesktop_init (void)
+xfdesktop_init(XfceDesktop *xfdesktop, gint screen)
 {
-    TRACE ("initialization");
-
-    xfdesktop.dpy = GDK_DISPLAY ();
-    xfdesktop.xscreen = DefaultScreen (xfdesktop.dpy);
-    xfdesktop.root = GDK_ROOT_WINDOW ();
-
-    xfdesktop.netk_screen = netk_screen_get_default ();
-    netk_screen_force_update (xfdesktop.netk_screen);
-
-    xfdesktop.fullscreen = create_fullscreen_window ();
-
-    xfdesktop_set_selection ();
-
-    settings_init (&xfdesktop);
-    background_init (&xfdesktop);
-    menu_init (&xfdesktop);
+	TRACE ("initialization");
+	
+	xfdesktop->dpy = GDK_DISPLAY();
+	xfdesktop->xscreen = screen;
+	xfdesktop->root = GDK_ROOT_WINDOW();
+	
+	xfdesktop->netk_screen = netk_screen_get(screen);
+	netk_screen_force_update(xfdesktop->netk_screen);
+	
+	xfdesktop->fullscreen = create_fullscreen_window();
+	
+	xfdesktop_set_selection(xfdesktop);
+	
+	settings_init(xfdesktop);
+	background_init(xfdesktop);
+	menu_init(xfdesktop);
 
 #if GTK_CHECK_VERSION(2,2,0)
-    g_signal_connect (G_OBJECT (gdk_screen_get_default ()), "size-changed",
-		      G_CALLBACK (xfdesktop_size_changed), NULL);
+	g_signal_connect(G_OBJECT(gdk_display_get_screen(gdk_display_get_default(), screen)),
+			"size-changed", G_CALLBACK(xfdesktop_size_changed), xfdesktop);
 #endif
 
-    load_settings ();
-    gtk_widget_show (xfdesktop.fullscreen);
-    gdk_window_lower (xfdesktop.fullscreen->window);
-    load_settings ();
+	load_settings(xfdesktop);
+	gtk_widget_show(xfdesktop->fullscreen);
+	gdk_window_lower(xfdesktop->fullscreen->window);
+	load_settings(xfdesktop);
 }
 
 static void
-xfdesktop_cleanup (void)
+xfdesktop_cleanup(XfceDesktop *xfdesktop)
 {
     TRACE ("cleaning up");
-    settings_cleanup (&xfdesktop);
-    background_cleanup (&xfdesktop);
-	menu_cleanup(&xfdesktop);
+    settings_cleanup(xfdesktop);
+    background_cleanup(xfdesktop);
+	menu_cleanup(xfdesktop);
+	
+	g_free(xfdesktop);
+}
+
+static void
+xfdesktop_cleanup_all()
+{
+	GList *l;
+	for(l=desktops; l; l=l->next)
+		xfdesktop_cleanup((XfceDesktop *)l->data);
+	
+	g_list_free(desktops);
+	desktops = NULL;
 }
 
 static void
 die (gpointer client_data)
 {
-    TRACE ("dummy");
-    gtk_main_quit ();
+    TRACE("dummy");
+    gtk_main_quit();
 }
 
 static void
 sighandler (int sig)
 {
-    TRACE ("signal %d caught", sig);
+	GList *l;
+	TRACE ("signal %d caught", sig);
 
-    switch (sig)
-    {
-	case SIGUSR1:
-	    load_settings ();
-		menu_force_regen();
-	    break;
+	switch(sig) {
+		case SIGUSR1:
+			for(l=desktops; l; l=l->next)
+				load_settings((XfceDesktop *)l->data);
+			menu_force_regen();
+			break;
 
-	default:
-	    gtk_main_quit ();
-	    break;
-    }
+		default:
+			gtk_main_quit ();
+			break;
+	}
 }
 
 int
@@ -382,6 +399,9 @@ main (int argc, char **argv)
     struct sigaction act;
 #endif
     Window xid;
+	XfceDesktop *xfdesktop;
+	gint i, nscreens;
+	GdkScreen *curscreen;
 	
 	if(argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V"))) {
 		g_print("\tThis is %s version %s for Xfce %s\n", PACKAGE, VERSION,
@@ -443,12 +463,17 @@ main (int argc, char **argv)
 					 SESSION_RESTART_IF_RUNNING, 35);
     client_session->die = die;
     session_managed = session_init (client_session);
+	
+	nscreens = gdk_display_get_n_screens(gdk_display_get_default());
+	for(i=0; i<nscreens; i++) {
+		xfdesktop = g_new0(XfceDesktop, 1);
+		xfdesktop_init(xfdesktop, i);
+		desktops = g_list_append(desktops, xfdesktop);
+	}
 
-    xfdesktop_init ();
-
-    gtk_main ();
-
-    xfdesktop_cleanup ();
+    gtk_main();
+	
+	xfdesktop_cleanup_all();
 
     return 0;
 }

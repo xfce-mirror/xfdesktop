@@ -191,6 +191,34 @@ get_path_from_listfile (const gchar * listfile)
     return (const char *) files[(previndex = i)];
 }
 
+#include <X11/X.h>
+#include <X11/Xlib.h>
+#include <gdk/gdkx.h>
+
+static void net_wm_set_property(GtkWidget * window, char *atom,
+				gint state)
+{
+    XEvent xev;
+    Atom type, property;
+
+    type = XInternAtom(GDK_DISPLAY(), "_NET_WM_STATE", FALSE);
+    property = XInternAtom(GDK_DISPLAY(), atom, FALSE);
+
+    xev.type = ClientMessage;
+    xev.xclient.type = ClientMessage;
+    xev.xclient.window = GDK_WINDOW_XWINDOW(window->window);
+    xev.xclient.message_type = type;
+    xev.xclient.format = 32;
+    xev.xclient.data.l[0] = state;
+    xev.xclient.data.l[1] = property;
+    xev.xclient.data.l[2] = 0;
+
+    XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False,
+	       SubstructureNotifyMask, &xev);
+}
+
+#include <gtk/gtkwindow.h>
+
 /* load image from file */
 static GdkPixbuf *
 create_image (XfceBackground * background)
@@ -211,9 +239,28 @@ create_image (XfceBackground * background)
 
     if (error)
     {
-	xfce_err (_("%s: There was an error loading image:\n%s\n"),
-		  PACKAGE, error->message);
-
+	//xfce_err (_("%s: There was an error loading image:\n%s\n"),
+	//	  PACKAGE, error->message);
+	//Atom win_layer = XInternAtom(GDK_DISPLAY(), "_WIN_LAYER", FALSE);
+	//long val = 10;
+	GtkWidget *dlg = gtk_message_dialog_new(NULL, GTK_DIALOG_NO_SEPARATOR,
+			GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, _("%s: There was an error loading image:\n%s\n"),
+			PACKAGE, error->message);
+	//gtk_window_set_type_hint(GTK_WINDOW(dlg), GDK_WINDOW_TYPE_HINT_MENU);
+	gtk_window_set_position(GTK_WINDOW(dlg), GTK_WIN_POS_CENTER);
+	//gtk_widget_map(dlg);
+	gtk_widget_show(dlg);
+	//net_wm_set_property(dlg, "_NET_WM_STATE_ABOVE", TRUE);
+	//net_wm_set_property(dlg, "_NET_WM_STATE_STAYS_ON_TOP", TRUE);
+	net_wm_set_property(GTK_WIDGET(GTK_WINDOW(dlg)), "_NET_WM_STATE_ABOVE", TRUE);
+	net_wm_set_property(GTK_WIDGET(GTK_WINDOW(dlg)), "_NET_WM_STATE_STAYS_ON_TOP", TRUE);
+	//gtk_window_set_keep_above(GTK_WINDOW(dlg), TRUE);
+	
+	//XChangeProperty(GDK_DISPLAY(), GDK_WINDOW_XWINDOW(GTK_WIDGET(GTK_WINDOW(dlg))->window),
+	//		win_layer, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)&val, 1);
+	gtk_dialog_run(GTK_DIALOG(dlg));
+	gtk_widget_destroy(dlg);
+	
 	g_error_free (error);
 
 	return NULL;
@@ -693,7 +740,7 @@ background_init (XfceDesktop * xfdesktop)
 				create_pixmap (background, NULL), FALSE);
 
     /* connect callback for settings changes */
-    register_channel_callback (BACKDROP_CHANNEL,
+    register_channel_callback (xfdesktop, BACKDROP_CHANNEL,
 			       (ChannelCallback) update_backdrop_channel);
 
     init_settings = TRUE;
