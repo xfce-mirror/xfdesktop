@@ -35,7 +35,7 @@ extern char icon_theme[128];
 GdkPixbuf *dummy_icon = NULL;
 
 /* nb: when adding paths here, make sure they have a trailing '/' */
-static gchar const *pix_paths[] = {
+static const gchar *pix_paths[] = {
 	XFCEDATADIR "/themes/%s/",  /* for xfce4 theme-specific path */
 	"/usr/share/icons/%s/scalable/apps/",  /* ditto */
 	"/usr/share/icons/%s/48x48/apps/",  /* ditto */
@@ -53,11 +53,21 @@ static gchar const *pix_paths[] = {
 	"/usr/share/icons/locolor/scalable/apps/",  /* fallbacks */
 	"/usr/share/icons/locolor/48x48/apps/",
 	"/usr/share/icons/locolor/32x32/apps/",
+	"/usr/share/icons/",  /* broken, but some apps do it anyway */
+	NULL
+};
+
+static const gchar *user_paths[] = {
+	"%s/.icons/%s",
+	"%s/.icons/hicolor/scalable/apps/%s",
+	"%s/.icons/hicolor/48x48/apps/%s",
+	"%s/.icons/hicolor/32x32/apps/%s",
+	"%s/.pixmaps/%s",
 	NULL
 };
 
 #ifdef HAVE_GETENV
-static gchar *kdefmts[] = {
+static const gchar *kdefmts[] = {
 	"%s/share/icons/default.kde/scalable/apps/%s",
 	"%s/share/icons/default.kde/48x48/apps/%s",
 	"%s/share/icons/default.kde/32x32/apps/%s",
@@ -68,7 +78,7 @@ static gchar *kdefmts[] = {
 };
 #endif
 
-static gchar const *pix_ext[] = {
+static const gchar *pix_ext[] = {
 #ifdef USE_LEAKY_SVG
 	".svgz",
 	".svg",
@@ -103,6 +113,34 @@ get_menuitem_height()
 	g_object_unref(G_OBJECT(pcontext));
 
 	return totheight;
+}
+
+static gboolean
+menu_icon_find_prefix(const gchar *prefix, const gchar **dirs,
+		const gchar *filename, gchar *icon_path)
+{
+	gint i, j;
+	
+	if(!prefix || !dirs || !filename || !icon_path)
+		return FALSE;
+	
+	for(i=0; dirs[i]; i++) {
+		g_snprintf(icon_path, PATH_MAX, dirs[i], prefix, filename);
+		if(g_strrstr(icon_path, ".") <= g_strrstr(icon_path, "/")) {
+			int len = strlen(icon_path);
+			for(j=0; pix_ext[j]; j++) {
+				icon_path[len] = 0;
+				g_strlcat(icon_path, pix_ext[j], PATH_MAX);
+				if(g_file_test(icon_path, G_FILE_TEST_EXISTS))
+					return TRUE;
+			}
+		} else {
+			if(g_file_test(icon_path, G_FILE_TEST_EXISTS))
+				return TRUE;
+		}
+	}
+	
+	return FALSE;
 }
 
 GdkPixbuf *
@@ -174,24 +212,12 @@ menu_icon_find(const gchar *filename)
 			}
 		}
 #ifdef HAVE_GETENV
-		if(!found && kdedir && *kdedir=='/' && strcmp(kdedir, "/usr")) {
-			for(i=0; kdefmts[i] && !found; i++) {
-				g_snprintf(icon_path, PATH_MAX, kdefmts[i], kdedir, filename);
-				if(g_strrstr(icon_path, ".") <= g_strrstr(icon_path, "/")) {
-					int len = strlen(icon_path);
-					for(j=0; pix_ext[j] && !found; j++) {
-						icon_path[len] = 0;
-						g_strlcat(icon_path, pix_ext[j], PATH_MAX);
-						if(g_file_test(icon_path, G_FILE_TEST_EXISTS))
-							found = TRUE;
-					}
-				} else {
-					if(g_file_test(icon_path, G_FILE_TEST_EXISTS))
-						found = TRUE;
-				}
-			}
-		}
+		if(!found && kdedir && *kdedir=='/' && strcmp(kdedir, "/usr"))
+			found = menu_icon_find_prefix(kdedir, kdefmts, filename, icon_path);
 #endif
+		if(!found)
+			found = menu_icon_find_prefix((const gchar *)xfce_get_homedir(),
+					user_paths,	filename, icon_path);
 	}
 	if (found) {
 		miicon = gdk_pixbuf_new_from_file (icon_path, NULL);
