@@ -50,6 +50,9 @@
 #include "main.h"
 #include "menu.h"
 
+/* max length window list menu items */
+#define WLIST_MAXLEN 20
+
 
 static NetkScreen *netk_screen = NULL;
 static GList *MainMenuData;     /* TODO: Free this at some point */
@@ -571,9 +574,9 @@ static GtkWidget *create_window_list_item(NetkWindow * win)
 
     label = g_string_new(name);
 
-    if(label->len >= 15)
+    if(label->len >= WLIST_MAXLEN)
     {
-        g_string_truncate(label, 15);
+        g_string_truncate(label, WLIST_MAXLEN);
         g_string_append(label, " ...");
     }
 
