@@ -840,7 +840,7 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
     add_spacer(GTK_BOX(mainvbox));
 
     /* color */
-    frame = gtk_frame_new(_("Color"));
+    frame = frame_box(_("Color"), GTK_SHADOW_NONE);
     gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
@@ -853,7 +853,7 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
     add_color_button(vbox, bd);
 
     /* image vbox */
-    bd->image_frame = gtk_frame_new(_("Image"));
+    bd->image_frame = frame_box(_("Image"), GTK_SHADOW_NONE);
     gtk_container_set_border_width(GTK_CONTAINER(bd->image_frame), BORDER);
     gtk_widget_set_sensitive(bd->image_frame, showimage);
     gtk_widget_show(bd->image_frame);

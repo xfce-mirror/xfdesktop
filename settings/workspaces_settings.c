@@ -550,7 +550,7 @@ static void run_dialog(McsPlugin *plugin )
     add_spacer(GTK_BOX(mainvbox));
 
     /* Number of workspaces */
-    frame = gtk_frame_new(_("Workspaces"));
+    frame = frame_box(_("Workspaces"), GTK_SHADOW_NONE);
     gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, FALSE, FALSE, 0);
@@ -563,7 +563,7 @@ static void run_dialog(McsPlugin *plugin )
     add_count_spinbox(vbox, plugin->manager);
 
     /* Workspace names */
-    frame = gtk_frame_new(_("Workspace names"));
+    frame = frame_box(_("Workspace names"), GTK_SHADOW_NONE);
     gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);

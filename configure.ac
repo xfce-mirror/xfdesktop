@@ -5,7 +5,7 @@ dnl
 
 AC_INIT([common/backdrop.c])
 
-AM_INIT_AUTOMAKE([xfdesktop], [3.90.0])
+AM_INIT_AUTOMAKE([xfdesktop], [3.91.0])
 
 AM_CONFIG_HEADER([config.h])
 
@@ -32,7 +32,7 @@ BM_I18N([xfdesktop], [ca de es fi fr ja pl ms nl ru ta tr zh_CN])
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE
 
-BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 0.0.17)
+BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 3.91.0)
 BM_DEPEND(LIBXML, libxml-2.0, 2.4.0)
 BM_DEPEND(LIBXFCE4MCS_CLIENT,  libxfce4mcs-client-1.0, 0.0.4)
 
