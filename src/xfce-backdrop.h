@@ -1,0 +1,94 @@
+/*
+ *  backdrop - xfce4's desktop manager
+ *
+ *  Copyright (c) 2004 Brian Tarricone, <bjt23@cornell.edu>
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Library General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+#ifndef _XFCE_BACKDROP_H_
+#define _XFCE_BACKDROP_H_
+
+#include <glib.h>
+#include <glib-object.h>
+#include <gdk/gdkscreen.h>
+#include <gdk/gdkcolor.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
+
+#include "xfdesktop-common.h"  /* for style enums */
+
+G_BEGIN_DECLS
+
+#define XFCE_TYPE_BACKDROP              (xfce_backdrop_get_type())
+#define XFCE_BACKDROP(object)           (G_TYPE_CHECK_INSTANCE_CAST((object), XFCE_TYPE_BACKDROP, XfceBackdrop))
+#define XFCE_BACKDROP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), XFCE_TYPE_BACKDROP, XfceBackdropClass))
+#define XFCE_IS_BACKDROP(object)        (G_TYPE_CHECK_INSTANCE_TYPE((object), XFCE_TYPE_BACKDROP))
+#define XFCE_IS_BACKDROP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE((klass), XFCE_TYPE_BACKDROP))
+#define XFCE_BACKDROP_GET_CLASS(object) (G_TYPE_INSTANCE_GET_CLASS((object), XFCE_TYPE_BACKDROP, XfceBackdropClass))
+
+typedef struct _XfceBackdrop XfceBackdrop;
+typedef struct _XfceBackdropClass XfceBackdropClass;
+typedef struct _XfceBackdropPriv XfceBackdropPriv;
+
+struct _XfceBackdrop
+{
+	GObject gobject;
+	
+	/*< private >*/
+	XfceBackdropPriv *priv;
+};
+
+struct _XfceBackdropClass
+{
+	GObjectClass parent_class;
+	
+	/*< signals >*/
+	void (*changed)(XfceBackdrop *backdrop);
+};
+
+GType xfce_backdrop_get_type             () G_GNUC_CONST;
+
+XfceBackdrop *xfce_backdrop_new          ();
+
+XfceBackdrop *xfce_backdrop_new_with_size(gint width,
+                                          gint height);
+
+void xfce_backdrop_set_size              (XfceBackdrop *backdrop,
+                                          gint width,
+                                          gint height);
+
+void xfce_backdrop_set_color_style       (XfceBackdrop *backdrop,
+                                          XfceBackdropColorStyle style);
+
+void xfce_backdrop_set_first_color       (XfceBackdrop *backdrop,
+                                          GdkColor *color);
+
+void xfce_backdrop_set_second_color      (XfceBackdrop *backdrop,
+                                          GdkColor *color);
+
+void xfce_backdrop_set_show_image        (XfceBackdrop *backdrop,
+                                          gboolean show_image);
+
+void xfce_backdrop_set_image_style       (XfceBackdrop *backdrop,
+                                          XfceBackdropImageStyle style);
+
+void xfce_backdrop_set_image_filename    (XfceBackdrop *backdrop,
+                                          const gchar *filename);
+
+GdkPixbuf *xfce_backdrop_get_pixbuf      (XfceBackdrop *backdrop);
+
+G_END_DECLS
+
+#endif

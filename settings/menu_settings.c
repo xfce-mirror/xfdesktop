@@ -23,7 +23,7 @@
 
 #include <libxfcegui4/libxfcegui4.h>
 
-#include "backdrop-common.h"
+#include "xfdesktop-common.h"
 #include "settings_common.h"
 
 enum {
@@ -137,8 +137,6 @@ create_menu_page(BackdropDialog *bd)
 #endif
 	
 	page = gtk_vbox_new(FALSE, 6);
-
-	add_spacer(GTK_BOX(page));
 	
 	frame = xfce_framebox_new("Window List", TRUE);
 	gtk_widget_show(frame);

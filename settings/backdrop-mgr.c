@@ -57,7 +57,7 @@
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "settings_common.h"
-#include "backdrop-common.h"
+#include "xfdesktop-common.h"
 #include "backdrop-mgr.h"
 #include "settings_common.h"
 
@@ -794,7 +794,7 @@ list_mgr_dialog_new(const gchar *title, GtkWidget *parent, const gchar *path,
 
     *tv = add_tree_view(vbox, path);
 	if(!path)
-		 path = xfce_get_homefile(_("New.list"), NULL);
+		 path = xfce_get_userfile(_("backdrops.list"), NULL);
 
     add_list_buttons(vbox, *tv);
 
@@ -839,8 +839,9 @@ edit_list_file(const gchar *path, GtkWidget *parent, ListMgrCb callback,
 	GtkWidget *dialog = NULL, *entry = NULL;
 	GtkTreeView *tv = NULL;
 	GtkListStore *ls;
+	BackdropPanel *bp = data;
 	Display *dpy = GDK_DISPLAY();
-	Window xroot = GDK_WINDOW_XID(gdk_get_default_root_window());
+	Window xroot;
 	gchar propname[256];
 	Atom prop, type;
 	int fmt;
@@ -854,9 +855,10 @@ edit_list_file(const gchar *path, GtkWidget *parent, ListMgrCb callback,
 			&entry, &tv);
 	ls = GTK_LIST_STORE(gtk_tree_view_get_model(tv));
 	
-	g_snprintf(propname, 256, "XFDESKTOP_IMAGE_FILE_%d",
-			((BackdropPanel *)data)->xscreen);
+	g_snprintf(propname, 256, "XFDESKTOP_IMAGE_FILE_%d", bp->monitor);
 	prop = gdk_x11_atom_to_xatom(gdk_atom_intern(propname, FALSE));
+	xroot = GDK_WINDOW_XID(gdk_screen_get_root_window(
+			gdk_display_get_screen(gdk_display_get_default(), bp->xscreen)));
 	XGrabServer(dpy);
 	if(XGetWindowProperty(dpy, xroot, prop, 0L, (long)PATH_MAX, False,
 			AnyPropertyType, &type, &fmt, &len, &after, &curimg) == Success

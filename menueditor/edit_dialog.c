@@ -453,7 +453,7 @@ void edit_selection(GtkTreeSelection *selection)
 	icon_prop = xmlHasProp(node, "icon");
 	xmlRemoveProp(icon_prop);
       }else{
-	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
+	icon = xfce_themed_icon_load((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
 	if(!icon)
 	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
@@ -520,7 +520,7 @@ void edit_selection(GtkTreeSelection *selection)
 	icon_prop = xmlHasProp(node, "icon");
 	xmlRemoveProp(icon_prop);
       }else{
-	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
+	icon = xfce_themed_icon_load((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
 	if(!icon)
 	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
@@ -559,7 +559,7 @@ void edit_selection(GtkTreeSelection *selection)
 	icon_prop = xmlHasProp(node, "icon");
 	xmlRemoveProp(icon_prop);
       }else{
-	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
+	icon = xfce_themed_icon_load((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
 	if(!icon)
 	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
@@ -600,7 +600,7 @@ void edit_selection(GtkTreeSelection *selection)
 	icon_prop = xmlHasProp(node, "icon");
 	xmlRemoveProp(icon_prop);
       }else{
-	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
+	icon = xfce_themed_icon_load((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
 	if(!icon)
 	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 

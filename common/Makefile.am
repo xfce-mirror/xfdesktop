@@ -1,17 +1,18 @@
-# common/Makefile.am
-#
-
 noinst_LTLIBRARIES = libxfdesktop.la
 
-libxfdesktop_la_SOURCES =						\
-	backdrop-common.c						\
-	backdrop-common.h
+libxfdesktop_la_SOURCES = \
+	xfdesktop-common.c \
+	xfdesktop-common.h
+
+libxfdesktop_la_CFLAGS = \
+	@LIBXFCEGUI4_CFLAGS@ \
+	@GTK_CFLAGS@
 
 if BUILD_DESKTOP_MENU
-libxfdesktop_la_SOURCES += desktop-menu-stub.c desktop-menu-stub.h
-endif
-	
-libxfdesktop_la_CFLAGS =						\
-	@LIBXFCEGUI4_CFLAGS@						\
-	@GMODULE_CFLAGS@						\
+  noinst_LTLIBRARIES += libxfdesktop-menu.la
+  libxfdesktop_menu_la_SOURCES = desktop-menu-stub.c desktop-menu-stub.h
+  libxfdesktop_menu_la_CFLAGS = \
+	@GMODULE_CFLAGS@ \
+	@GTK_CFLAGS@ \
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\"
+endif

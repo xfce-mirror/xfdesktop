@@ -23,6 +23,9 @@
 
 #include "config.h"
 
+#ifdef GTK_DISABLE_DEPRECATED
+#undef GTK_DISABLE_DEPRECATED
+#endif
 #include <gtk/gtk.h>
 #if GTK_CHECK_VERSION(2, 4, 0)
 #include <gtk/gtkicontheme.h>

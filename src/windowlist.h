@@ -22,21 +22,19 @@
  *     Copyright (C) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
  */
 
-#ifndef _XFDESKTOP__SETTINGS_H_
-#define _XFDESKTOP__SETTINGS_H_
+#ifndef _XFDESKTOP__WINDOWLIST_H_
+#define _XFDESKTOP__WINDOWLIST_H_
 
-#include <glib.h>
+#include <gdk/gdkscreen.h>
 
 #include <libxfce4mcs/mcs-client.h>
 
 G_BEGIN_DECLS
 
-typedef gboolean (*SettingsCallback)(McsClient *client, McsAction action, McsSetting *setting, gpointer user_data);
-
-McsClient *settings_init();
-void settings_register_callback(SettingsCallback cb, gpointer user_data);
-void settings_reload_all();
-void settings_cleanup();
+void windowlist_init(McsClient *mcs_client);
+void popup_windowlist(GdkScreen *gscreen, gint button, guint32 time);
+gboolean windowlist_settings_changed(McsClient *client, McsAction action, McsSetting *setting, gpointer user_data);
+void windowlist_cleanup();
 
 G_END_DECLS
 

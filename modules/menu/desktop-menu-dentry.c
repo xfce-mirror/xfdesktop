@@ -18,7 +18,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
- 
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -123,7 +123,7 @@ _get_path_depth(const gchar *path)
 {
 	gchar *p;
 	gint cnt = 0;
-	TRACE("dummy");
+	//TRACE("dummy");
 	for(p=strchr(path, '/'); p; p=strchr(p+1, '/'))
 		cnt++;
 	
@@ -136,7 +136,7 @@ _prune_generic_paths(GPtrArray *paths)
 {
 	gint i, j;
 	GPtrArray *arr = g_ptr_array_sized_new(5);
-	TRACE("dummy");
+	//TRACE("dummy");
 	for(i=0; i<paths->len; i++) {
 		gchar *comp = g_ptr_array_index(paths, i);
 		for(j=0; j<paths->len; j++) {
@@ -182,7 +182,7 @@ _menu_shell_insert_sorted(GtkMenuShell *menu_shell, GtkWidget *mi,
 	gint i;
 	gchar *cmpname;
 	
-	TRACE("dummy");
+	//TRACE("dummy");
 	
 	items = gtk_container_get_children(GTK_CONTAINER(menu_shell));
 	for(i=0; items; items=items->next, i++)  {
@@ -231,7 +231,7 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
 		
 		icon = desktop_menuspec_displayname_to_icon(q);
 		if(icon) {
-			pix = xfce_load_themed_icon(icon, _xfce_desktop_menu_icon_size);
+			pix = xfce_themed_icon_load(icon, _xfce_desktop_menu_icon_size);
 			if(pix) {
 				img = gtk_image_new_from_pixbuf(pix);
 				gtk_widget_show(img);
@@ -273,7 +273,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 	const gchar *name;
 	gchar tmppath[2048];
 	
-	TRACE("dummy");
+	//TRACE("dummy");
 
 	xfce_desktop_entry_get_string (de, "OnlyShowIn", FALSE, &onlyshowin);
 	/* each element needs to be ';'-terminated.  i'm not working around
@@ -421,12 +421,13 @@ menu_dentry_parse_dentry_file(XfceDesktopMenu *desktop_menu,
 		const gchar *filename, MenuPathType pathtype) 
 {
 	XfceDesktopEntry *dentry;
-	TRACE("dummy");
+	
+	//TRACE("dummy");
 
 	dentry = xfce_desktop_entry_new(filename, dentry_keywords,
 			G_N_ELEMENTS(dentry_keywords));
 	if(dentry) {
-		if(xfce_desktop_entry_parse(dentry))
+		//if(xfce_desktop_entry_parse(dentry))
 			menu_dentry_parse_dentry(desktop_menu, dentry, pathtype, FALSE, NULL);
 		g_object_unref(G_OBJECT(dentry));
 	}
@@ -471,8 +472,6 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 	gint i, totdirs = 0;
 	gchar const *pathd;
 	GDir *d;
-	gchar const *n;
-	gchar *s;
 	const gchar *kdedir = g_getenv("KDEDIR");
 	gchar kde_dentry_path[PATH_MAX];
 	gchar *catfile_user = xfce_get_userfile(CATEGORIES_FILE, NULL);
@@ -610,7 +609,7 @@ menu_dentry_legacy_parse_dentry_file(XfceDesktopMenu *desktop_menu,
 	dentry = xfce_desktop_entry_new(filename, dentry_keywords,
 			G_N_ELEMENTS(dentry_keywords));
 	if(dentry) {
-		if(xfce_desktop_entry_parse(dentry))
+		//if(xfce_desktop_entry_parse(dentry))
 			menu_dentry_parse_dentry(desktop_menu, dentry, pathtype, TRUE, category);
 		g_object_unref(G_OBJECT(dentry));
 	}

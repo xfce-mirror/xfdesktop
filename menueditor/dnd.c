@@ -275,7 +275,7 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       xmlSetProp(node, "cmd", value_command);
       if(icon_found){
 	xmlSetProp(node, "icon", value_icon);
-	icon = xfce_load_themed_icon(value_icon, ICON_SIZE);
+	icon = xfce_themed_icon_load(value_icon, ICON_SIZE);
       }else
 	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
@@ -341,7 +341,6 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       node_target = g_value_get_pointer(&val);
 
       de = xfce_desktop_entry_new_from_data (sd->data, cat, 3);
-      g_return_if_fail (xfce_desktop_entry_parse(de));
       g_return_if_fail (xfce_desktop_entry_get_string (de,
 						       "Name",
 						       TRUE,
@@ -362,7 +361,7 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       xmlSetProp(node, "cmd", value_command);
       if(icon_found){
 	xmlSetProp(node, "icon", value_icon);
-	icon = xfce_load_themed_icon(value_icon, ICON_SIZE);
+	icon = xfce_themed_icon_load(value_icon, ICON_SIZE);
       }else
 	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 

@@ -1,5 +1,5 @@
 Summary: 	Desktop manager for the Xfce Desktop Environment
-Name: 		xfdesktop
+Name: 		xfdesktop-ng
 Version: 	@VERSION@
 Release: 	1
 License:	GPL
@@ -7,13 +7,15 @@ URL: 		http://www.xfce.org/
 Source0: 	%{name}-%{version}.tar.gz
 Group: 		User Interface/Desktops
 BuildRoot: 	%{_tmppath}/%{name}-root
+Requires:   gtk >= @GTK_REQUIRED_VERSION@
 Requires:	libxfce4mcs >= @LIBXFCE4MCS_CLIENT_REQUIRED_VERSION@
 Requires:	libxfcegui4 >= @LIBXFCEGUI4_REQUIRED_VERSION@
+BuildRequires:  gtk >= @GTK_REQUIRED_VERSION@
 BuildRequires:	libxfce4mcs-devel >= @LIBXFCE4MCS_CLIENT_REQUIRED_VERSION@
 BuildRequires: 	libxfcegui4-devel >= @LIBXFCEGUI4_REQUIRED_VERSION@
 
 %description
-xfdesktop contain a desktop manager for the Xfce Desktop Environment
+xfdesktop is a desktop manager for the Xfce Desktop Environment
 
 %prep
 %setup -q
@@ -37,4 +39,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/locale/
 %{_datadir}/xfce4/
 %{_libdir}/xfce4/mcs-plugins/
-
+%{_libdir}/xfce4/modules/

@@ -27,7 +27,8 @@
 
 #include <gtk/gtkbox.h>
 #include <xfce-mcs-manager/manager-plugin.h>
-#include "backdrop-common.h"
+
+#include "xfdesktop-common.h"
 
 #define BORDER 5
 
@@ -49,15 +50,15 @@ typedef struct {
 typedef struct {
 	/* which screen this panel is for */
 	gint xscreen;
+	gint monitor;
 	
 	/* the settings themselves */
-	gboolean set_backdrop;
-	gchar *image_path;
-	XfceBackdropStyle style;
-	gboolean color_only;
 	McsColor color1;
 	McsColor color2;
-	XfceColorStyle color_style;
+	XfceBackdropColorStyle color_style;
+	gboolean show_image;
+	gchar *image_path;
+	XfceBackdropImageStyle style;
 	
 	/* the panel's GUI controls */
 	GtkWidget *color_frame;
@@ -65,14 +66,13 @@ typedef struct {
 	GtkWidget *color1_box;
 	GtkWidget *color2_hbox;
 	GtkWidget *color2_box;
-	GtkWidget *color_only_chk;
 	
 	GtkWidget *image_frame;
+	GtkWidget *show_image_chk;
+	GtkWidget *image_frame_inner;
 	GtkWidget *file_entry;
 	GtkWidget *edit_list_button;
 	GtkWidget *style_combo;
-	
-	GtkWidget *set_backdrop_chk;
 	
 	/* backreference */
 	BackdropDialog *bd;

@@ -17,4 +17,4 @@ libdesktopmenu_la_CFLAGS = \
 
 libdesktopmenu_la_LIBADD = \
 	@XFCE4_PANEL_LIBS@ \
-	$(top_srcdir)/common/libxfdesktop.la
+	$(top_builddir)/common/libxfdesktop-menu.la

@@ -23,6 +23,8 @@
 #include "move.h"
 #include "../modules/menu/dummy_icon.h"
 
+extern void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p);
+
 /******************************************/
 /* Workaround for gtk_tree_store_swap bug */
 /* i hope it will be fixed in  2.4.2      */
@@ -61,7 +63,7 @@ void my_tree_store_swap_down(GtkTreeStore *tree_store,
 
   /* Load the icon */
   if(prop_icon)
-    icon = xfce_load_themed_icon(prop_icon, ICON_SIZE);
+    icon = xfce_themed_icon_load(prop_icon, ICON_SIZE);
   else
     icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
@@ -217,7 +219,7 @@ void my_tree_store_swap_up(GtkTreeStore *tree_store,
 
   /* Load the icon */
   if(prop_icon)
-    icon = xfce_load_themed_icon(prop_icon, ICON_SIZE);
+    icon = xfce_themed_icon_load(prop_icon, ICON_SIZE);
   else
     icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 

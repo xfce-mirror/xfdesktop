@@ -56,7 +56,7 @@ dmp_set_size(Control *c, int size)
 	GdkPixbuf *pix;
 
 	if(dmp->icon_file) {
-		pix = xfce_load_themed_icon(dmp->icon_file,
+		pix = xfce_themed_icon_load(dmp->icon_file,
 				icon_size[settings.size] - 2*border_width);
 		if(pix) {
 			xfce_iconbutton_set_pixbuf(XFCE_ICONBUTTON(dmp->button), pix);
@@ -170,7 +170,7 @@ dmp_read_config(Control *control, xmlNodePtr node)
 	
 	value = xmlGetProp(node, (const xmlChar *)"icon_file");
 	if(value) {
-		pix = xfce_load_themed_icon(value,
+		pix = xfce_themed_icon_load(value,
 				icon_size[settings.size] - 2*border_width);
 		if(pix) {
 			if(dmp->icon_file)
@@ -182,7 +182,7 @@ dmp_read_config(Control *control, xmlNodePtr node)
 			xmlFree(value);
 	} else {
 		dmp->icon_file = g_strdup(DEFAULT_BUTTON_ICON);
-		pix = xfce_load_themed_icon(dmp->icon_file,
+		pix = xfce_themed_icon_load(dmp->icon_file,
 				icon_size[settings.size] - 2*border_width);
 		if(pix) {
 			xfce_iconbutton_set_pixbuf(XFCE_ICONBUTTON(dmp->button), pix);
@@ -221,7 +221,7 @@ entry_focus_out_cb(GtkWidget *w, GdkEventFocus *evt, gpointer user_data)
 		g_free(dmp->icon_file);
 	
 	dmp->icon_file = gtk_editable_get_chars(GTK_EDITABLE(w), 0, -1);
-	pix = xfce_load_themed_icon(dmp->icon_file,
+	pix = xfce_themed_icon_load(dmp->icon_file,
 			icon_size[settings.size] - 2*border_width);
 	if(pix) {
 		xfce_iconbutton_set_pixbuf(XFCE_ICONBUTTON(dmp->button), pix);

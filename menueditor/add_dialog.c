@@ -304,7 +304,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
       node = xmlNewNode(NULL, "app");
 
       if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_icon)))!=0){
-	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
+	icon = xfce_themed_icon_load((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
 	if(!icon)
 	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(entry_icon)));
@@ -393,7 +393,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
       xmlSetProp(node,"visible","yes");
 
       if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_icon)))!=0){
-	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
+	icon = xfce_themed_icon_load((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
 
 	if(icon)
 	  xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(entry_icon)));
@@ -508,7 +508,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
       xmlSetProp(node,"visible","yes");
 
       if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_icon)))!=0){
-	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
+	icon = xfce_themed_icon_load((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
 	if(icon)
 	  xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(entry_icon)));
 	else
@@ -582,7 +582,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
       xmlSetProp(node,"cmd","quit");
 
       if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_icon)))!=0){
-	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
+	icon = xfce_themed_icon_load((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
 	if(icon)
 	  xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(entry_icon)));
 	else

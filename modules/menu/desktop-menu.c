@@ -1,6 +1,6 @@
 /*  xfce4
  *  
- *  Copyright (C) 2002-2003 Jasper Huijsmans (jasper@xfce.org)
+ *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
  *                     2003 Biju Chacko (botsie@users.sourceforge.net)
  *                     2004 Danny Milosavljevic <danny.milo@gmx.net>
  *                     2004 Brian Tarricone <bjt23@cornell.edu>
@@ -67,6 +67,7 @@
 #include "desktop-menu-private.h"
 #include "desktop-menu.h"
 #include "desktop-menu-file.h"
+#include "desktop-menu-dentry.h"
 #include "dummy_icon.h"
 
 #ifndef PATH_MAX
@@ -192,9 +193,8 @@ _menu_check_update(gpointer data)
 	modified = xfce_desktop_menu_need_update_impl(desktop_menu);
 	
 	newfilename = desktop_menu_file_get_menufile();
-	if(!desktop_menu->filename || strcmp(desktop_menu->filename, newfilename)) {
-		if(desktop_menu->filename)
-			g_free(desktop_menu->filename);
+	if(strcmp(desktop_menu->filename, newfilename)) {
+		g_free(desktop_menu->filename);
 		desktop_menu->filename = newfilename;
 		modified = TRUE;
 	} else
@@ -236,6 +236,7 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 	desktop_menu->legacydir_mtimes = NULL;
 }
 
+#if 0
 static gint
 _calc_icon_size()
 {
@@ -276,6 +277,7 @@ _calc_icon_size()
 	
 	return icon_size;
 }
+#endif
 
 static gboolean
 _generate_menu_initial(gpointer data) {
@@ -399,7 +401,11 @@ xfce_desktop_menu_destroy_impl(XfceDesktopMenu *desktop_menu)
 G_MODULE_EXPORT gchar *
 g_module_check_init(GModule *module)
 {
-	_xfce_desktop_menu_icon_size = _calc_icon_size();
+	gint w, h;
+	
+	//_xfce_desktop_menu_icon_size = _calc_icon_size();
+	gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
+	_xfce_desktop_menu_icon_size = w;
 	xfce_app_menu_item_set_icon_size(_xfce_desktop_menu_icon_size);
 	
 	if(dummy_icon)

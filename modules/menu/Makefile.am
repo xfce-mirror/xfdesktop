@@ -11,7 +11,8 @@ libxfce4_desktop_menu_la_SOURCES = \
 	desktop-menu-dentry.h \
 	desktop-menuspec.c \
 	desktop-menuspec.h \
-	desktop-menu-private.h
+	desktop-menu-private.h \
+	dummy_icon.h
 
 libxfce4_desktop_menu_la_CFLAGS = \
 	@GMODULE_CFLAGS@ \

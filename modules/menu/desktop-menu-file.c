@@ -248,7 +248,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			
 			j = _find_attribute(attribute_names, "icon");
 			if(j != -1) {
-				pix = xfce_load_themed_icon(attribute_values[j], 
+				pix = xfce_themed_icon_load(attribute_values[j], 
 						_xfce_desktop_menu_icon_size);
 				if(pix) {
 					image = gtk_image_new_from_pixbuf(pix);
@@ -323,7 +323,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			
 			k = _find_attribute(attribute_names, "icon");
 			if(k != -1) {
-				pix = xfce_load_themed_icon(attribute_values[k],
+				pix = xfce_themed_icon_load(attribute_values[k],
 						_xfce_desktop_menu_icon_size);
 				if(pix) {
 					image = gtk_image_new_from_pixbuf(pix);
@@ -368,7 +368,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			
 			j = _find_attribute(attribute_names, "icon");
 			if(j != -1) {
-				pix = xfce_load_themed_icon(attribute_values[j],
+				pix = xfce_themed_icon_load(attribute_values[j],
 						_xfce_desktop_menu_icon_size);
 				if(pix) {
 					image = gtk_image_new_from_pixbuf(pix);
@@ -461,7 +461,7 @@ menu_file_xml_end(GMarkupParseContext *context, const gchar *element_name,
 	struct MenuFileParserState *state = user_data;
 	gchar *p;
 	
-	TRACE("dummy");
+	//TRACE("dummy");
 	
 	if(!strcmp(element_name, "menu")) {
 		if(state->hidelevel)
@@ -505,7 +505,7 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 	void *maddr = NULL;
 #endif
 	
-	TRACE("dummy");
+	//TRACE("dummy");
 
 	g_return_val_if_fail(desktop_menu != NULL && menu != NULL, FALSE);
 
