@@ -210,7 +210,7 @@ do_builtin (gpointer callback_data, guint callback_action, GtkWidget * widget)
 		MainMenuData = NULL;
 		
 		create_desktop_menu();
-	} else if (!strcmp (builtin, "quit"))
+	} else if (strcmp (builtin, "quit"))
 		quit ();
 }
 
