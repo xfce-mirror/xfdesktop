@@ -347,7 +347,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			GdkPixbuf *pix;
 			GtkWidget *image;
 			mi = gtk_image_menu_item_new_with_label(attribute_values[i]);
-			pix = xfce_load_themed_icon(attribute_values[k],
+			pix = xfce_load_themed_icon(attribute_values[j],
 					_xfce_desktop_menu_icon_size);
 			if(pix) {
 				image = gtk_image_new_from_pixbuf(pix);
