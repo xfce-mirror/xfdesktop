@@ -355,21 +355,13 @@ gchar *
 menu_file_get()
 {
 	gchar filename[PATH_MAX];
-	gchar paths[PATH_MAX*3+2];
-	const gchar *env;
-
-	env = g_getenv("XFCE_DISABLE_USER_CONFIG");
+	const gchar *env = g_getenv("XFCE_DISABLE_USER_CONFIG");
 
 	if(!env || !strcmp(env, "0")) {
-		const gchar *userdir = xfce_get_userdir();
-		g_snprintf(paths, PATH_MAX, "%s/%%F.%%L:%s/%%F.%%l:%s/%%F", userdir,
-				userdir, userdir);
-		if(xfce_get_path_localized(filename, PATH_MAX, paths, "menu.xml",
-				G_FILE_TEST_IS_REGULAR))
-		{
-			is_using_system_rc = FALSE;
-			return g_strdup(filename);
-		}
+		gchar *usermenu = xfce_get_userfile("menu.xml", NULL);
+		if(g_file_test(usermenu, G_FILE_TEST_IS_REGULAR))
+			return usermenu;
+		g_free(usermenu);
 	}
 
 	if(xfce_get_path_localized(filename, PATH_MAX, SEARCHPATH,
