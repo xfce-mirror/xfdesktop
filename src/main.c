@@ -325,10 +325,6 @@ xfdesktop_init(XfceDesktop *xfdesktop, gint screen)
 	
 	g_signal_connect(G_OBJECT(xfdesktop->gscreen), "size-changed",
 			G_CALLBACK(xfdesktop_size_changed), xfdesktop);
-
-	gtk_widget_show(xfdesktop->fullscreen);
-	gdk_window_lower(xfdesktop->fullscreen->window);
-	load_settings(xfdesktop);
 }
 
 static void
@@ -460,6 +456,14 @@ main (int argc, char **argv)
 	}
 	
 	backdrop_settings_init();
+	
+	/* now that we have the settings inited, load them, and show the window */
+	for(i=0; i<nscreens; i++) {
+		XfceDesktop *xfdesktop = g_list_nth_data(desktops, i);
+		load_settings(xfdesktop);
+		gtk_widget_show(xfdesktop->fullscreen);
+		gdk_window_lower(xfdesktop->fullscreen->window);
+	}
 
     gtk_main();
 

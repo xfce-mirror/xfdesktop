@@ -22,10 +22,6 @@
 #include <config.h>
 #endif
 
-#ifdef GDK_MULTIHEAD_SAFE
-#undef GDK_MULTIHEAD_SAFE
-#endif
-
 #ifdef HAVE_SYS_STAT_H
 #include <sys/stat.h>
 #endif
@@ -70,6 +66,8 @@
 #include "main.h"
 #include "settings.h"
 #include "backdrop.h"
+
+static gboolean init_settings = FALSE;
 
 static void remove_old_pixmap (XfceBackdrop *backdrop);
 static GdkFilterReturn monitor_backdrop(GdkXEvent *ev, GdkEvent *gev,
@@ -412,7 +410,7 @@ update_window_style (GtkWidget * win, GdkPixmap * pixmap)
 	style = gtk_widget_get_style(win);
 	if(style->bg_pixmap[GTK_STATE_NORMAL])
 		g_object_unref(style->bg_pixmap[GTK_STATE_NORMAL]);
-
+	
 	/* set new pixmap */
     style->bg_pixmap[GTK_STATE_NORMAL] = pixmap;
     gtk_widget_set_style (win, style);
@@ -566,7 +564,9 @@ update_backdrop_channel(const char *channel_name, McsClient *client,
 	
 	switch (action) {
 		case MCS_ACTION_NEW:
-			/* fall through.  yes, we get set twice, but i want it that way. */
+			if(init_settings)
+				return;
+			/* fall through if not in init state */
 		case MCS_ACTION_CHANGED:
 			p = g_strrstr(setting->name, "_");
 			if(!p)
@@ -710,7 +710,9 @@ void
 backdrop_settings_init()
 {
 	/* connect callback for settings changes */
+	init_settings = TRUE;
     register_channel(BACKDROP_CHANNEL, (ChannelCallback)update_backdrop_channel);
+	init_settings = FALSE;
 }
 
 void
@@ -750,7 +752,7 @@ backdrop_load_settings(XfceBackdrop *backdrop)
 		}
 		mcs_setting_free(setting);
 	} else
-		backdrop->path = g_strdup(DEFAULT_BACKDROP);
+		;//backdrop->path = g_strdup(DEFAULT_BACKDROP);
 
 	g_snprintf(setting_name, 128, "color1_%d", backdrop->xscreen);
 	if(MCS_SUCCESS == mcs_client_get_setting(client, setting_name,
