@@ -167,7 +167,7 @@ _menu_check_update(gpointer data)
 	modified = xfce_desktop_menu_need_update_impl(desktop_menu);
 	
 	if(desktop_menu->using_default_menu) {
-		newfilename = desktop_menu_file_get_menufile();
+		newfilename = xfce_desktop_get_menufile();
 		if(!desktop_menu->menufile_mtimes || 
                    !g_hash_table_lookup(desktop_menu->menufile_mtimes, newfilename)) {
 			g_free(desktop_menu->filename);
@@ -225,7 +225,7 @@ xfce_desktop_menu_new_impl(const gchar *menu_file, gboolean deferred)
 	if(menu_file)
 		desktop_menu->filename = g_strdup(menu_file);
 	else {
-		desktop_menu->filename = desktop_menu_file_get_menufile();
+		desktop_menu->filename = xfce_desktop_get_menufile();
 		desktop_menu->using_default_menu = TRUE;
 	}
 	
