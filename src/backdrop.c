@@ -362,6 +362,9 @@ static void set_backdrop(const char *path, int style, int show, GdkColor *color)
 
 	pixmap = create_background_pixmap(pixbuf, style, color);
         gstyle->bg_pixmap[GTK_STATE_NORMAL] = pixmap;
+        gdk_window_set_back_pixmap (GDK_ROOT_PARENT (), pixmap, 0);
+        gdk_window_clear (GDK_ROOT_PARENT ());
+        gdk_flush ();
     }
     else
     {
