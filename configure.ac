@@ -45,11 +45,11 @@ dnl required
 BM_DEPEND([GMODULE], [gmodule-2.0], [2.2.0])
 BM_DEPEND([GOBJECT], [gobject-2.0], [2.2.0])
 BM_DEPEND([GTK], [gtk+-2.0], [2.2.0])
-BM_DEPEND([LIBXFCE4UTIL], libxfce4util-1.0, 4.1.13)
-BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.1.25)
-BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [4.1.0])
-XFCE_PANEL_PLUGIN([XFCE4_PANEL], [4.1.0])
-XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.1.0])
+BM_DEPEND([LIBXFCE4UTIL], libxfce4util-1.0, 4.1.91)
+BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.1.91)
+BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [4.1.91])
+XFCE_PANEL_PLUGIN([XFCE4_PANEL], [4.1.91])
+XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.1.91])
 
 dnl check for libxml2 for menueditor
 BM_DEPEND_CHECK([LIBXML], libxml-2.0, 2.4.0, [libxml2],
