@@ -43,7 +43,6 @@
 /* Pixmaps */
 #include "me-icon16.xpm"
 #include "me-icon32.xpm"
-//#include "me-icon24.xpm"
 #include "me-icon48.xpm"
 
 /* Search path for menu.xml file */
@@ -1080,7 +1079,6 @@ void create_main_window()
 
   gtk_widget_set_sensitive(menueditor_app.edit_menu.menu_item,FALSE);
   /* Show all */
-  //  gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (menueditor_app.treeview), FALSE);
   gtk_tree_view_expand_all (GTK_TREE_VIEW(menueditor_app.treeview));
 
 
