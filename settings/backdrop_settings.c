@@ -117,14 +117,7 @@ typedef struct {
 
 /* there can be only one */
 static gboolean is_running = FALSE;
-
 static GList *screens;  /* list of BackdropPanels */
-
-static int set_background = 1;
-static char *backdrop_path = NULL;
-static int backdrop_style = STRETCHED;
-static int showimage = 1;
-static McsColor backdrop_color;
 
 static void backdrop_create_channel (McsPlugin * mcs_plugin);
 static gboolean backdrop_write_options (McsPlugin * mcs_plugin);
@@ -999,6 +992,8 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 		/* set color only checkbox */
 		bp->color_only_chk = gtk_check_button_new_with_mnemonic(_("Set color _only"));
 		gtk_widget_show(bp->color_only_chk);
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(bp->color_only_chk),
+				bp->color_only);
 		gtk_box_pack_start(GTK_BOX(vbox), bp->color_only_chk, FALSE, FALSE, 0);
 		g_signal_connect(G_OBJECT(bp->color_only_chk), "toggled",
 				G_CALLBACK(showimage_toggle), bp);
@@ -1067,6 +1062,9 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 				G_CALLBACK(toggle_set_background), bp);
 		toggle_set_background(GTK_TOGGLE_BUTTON(bp->set_backdrop_chk), bp);
 		
+		/* set sensitive state of image settings based on 'Use color only' */
+		showimage_toggle(bp->color_only_chk, bp);
+		
 		add_spacer(GTK_BOX(page));
 		
 		if(nscreens == 1) {
@@ -1100,10 +1098,27 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 }
 
 static void
+run_dialog_cb(GtkButton *btn, gint resp, BackdropDialog *bd)
+{
+	switch(resp) {
+			case GTK_RESPONSE_HELP:
+				xfce_exec("xfhelp4 xfdesktop.html", FALSE, FALSE, NULL);
+				break;
+			
+			default:
+				backdrop_write_options(bd->plugin);
+				is_running = FALSE;
+				gtk_widget_destroy(bd->dialog);
+				g_free(bd);
+				bd = NULL;
+				break;
+	}
+}
+
+static void
 run_dialog (McsPlugin * mcs_plugin)
 {
 	static BackdropDialog *bd = NULL;
-	gboolean done = FALSE;
 	
 	if(is_running) {
 		if(bd && bd->dialog) {
@@ -1117,24 +1132,10 @@ run_dialog (McsPlugin * mcs_plugin)
 
     bd = create_backdrop_dialog(mcs_plugin);
     gtk_window_set_position(GTK_WINDOW(bd->dialog), GTK_WIN_POS_CENTER);
+	g_signal_connect(G_OBJECT(bd->dialog), "response",
+			G_CALLBACK(run_dialog_cb), bd);
 	gtk_window_set_modal(GTK_WINDOW(bd->dialog), FALSE);
     gtk_widget_show(bd->dialog);
-	while(!done) {
-		switch(gtk_dialog_run(GTK_DIALOG(bd->dialog))) {
-			case GTK_RESPONSE_HELP:
-				xfce_exec("xfhelp4 xfdesktop.html", FALSE, FALSE, NULL);
-				break;
-			
-			default:
-				backdrop_write_options(bd->plugin);
-				is_running = FALSE;
-				gtk_widget_destroy(bd->dialog);
-				g_free(bd);
-				bd = NULL;
-				done = TRUE;
-				break;
-		}
-	}
 }
 
 /* macro defined in manager-plugin.h */
