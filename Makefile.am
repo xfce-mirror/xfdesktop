@@ -4,7 +4,13 @@ SUBDIRS = backdrops common doc po settings src
 
 confdir = $(sysconfdir)/xfce4
 
-conf_DATA = menu.xml menu.xml.de menu.xml.fr menu.xml.nl menu.xml.ca
+conf_DATA = 								\
+	menu.xml 							\
+	menu.xml.de 							\
+	menu.xml.fr 							\
+	menu.xml.nl  							\
+	menu.xml.ca 							\
+	menu.xml.zh_CN
 
 EXTRA_DIST = $(conf_DATA) xfdesktop.spec TODO
 
