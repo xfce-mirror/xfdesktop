@@ -70,8 +70,6 @@
 #define RCFILE "backdrop.xml"
 #define PLUGIN_NAME "backdrop"
 
-#define DEFAULT_ICON_SIZE 48
-
 #ifdef HAVE_GDK_PIXBUF_NEW_FROM_STREAM
 #define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream
 #endif
@@ -98,33 +96,6 @@ dlg_response_cancel(GtkWidget *w, gpointer user_data)
 	gtk_dialog_response(dialog, GTK_RESPONSE_CANCEL);
 }
 
-
-static GdkPixbuf *
-backdrop_icon_at_size (int width, int height)
-{
-    GdkPixbuf *base;
-
-    base = gdk_pixbuf_new_from_inline (-1, backdrop_icon_data, FALSE, NULL);
-
-    g_assert (base);
-
-    if ((width <= 0 || height <= 0))
-    {
-	return base;
-    }
-    else
-    {
-	GdkPixbuf *scaled;
-
-	scaled = gdk_pixbuf_scale_simple (base, width, height,
-					  GDK_INTERP_BILINEAR);
-
-	g_object_unref (G_OBJECT (base));
-
-	return scaled;
-    }
-}
-
 McsPluginInitResult
 mcs_plugin_init (McsPlugin * mcs_plugin)
 {
@@ -134,8 +105,8 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
     mcs_plugin->caption = g_strdup (_("Desktop"));
     mcs_plugin->run_dialog = run_dialog;
 
-    mcs_plugin->icon = backdrop_icon_at_size (DEFAULT_ICON_SIZE,
-					      DEFAULT_ICON_SIZE);
+    mcs_plugin->icon = gdk_pixbuf_new_from_inline(-1, backdrop_icon_data,
+			FALSE, NULL);
 
     backdrop_create_channel (mcs_plugin);
 
