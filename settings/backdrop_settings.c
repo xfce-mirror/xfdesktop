@@ -265,9 +265,9 @@ static void update_path(BackdropDialog *bd)
     {
         gtk_widget_set_sensitive(bd->edit_list_button, TRUE);
         
-        /* set style to AUTOMATIC and set insensitive */
+        /* set style to AUTOMATIC and set insensitive
 	gtk_option_menu_set_history(GTK_OPTION_MENU(bd->style_om), AUTO);
-        gtk_widget_set_sensitive(bd->style_om, FALSE);
+        gtk_widget_set_sensitive(bd->style_om, FALSE); */
     }
     else
     {
