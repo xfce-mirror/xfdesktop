@@ -516,19 +516,19 @@ set_backdrop_from_root_property(XfceBackdrop *backdrop)
 			AnyPropertyType, &type, &format, &length, &after,
 			&data);
 
-    if ((type == XA_PIXMAP) && (format == 32) && (length == 1))
-    {
-	GdkPixmap *pixmap = gdk_pixmap_foreign_new (*((Pixmap *) data));
+	if((type == XA_PIXMAP) && (format == 32) && (length == 1) && data) {
+		GdkPixmap *pixmap;
+		if(!(pixmap=gdk_pixmap_lookup(*((Pixmap *)data))))
+			pixmap = gdk_pixmap_foreign_new (*((Pixmap *) data));
+		else
+			g_object_ref(G_OBJECT(pixmap));
 
-	if (pixmap)
-	{
-	    update_window_style (backdrop->win, pixmap);
+		if(pixmap)
+			update_window_style (backdrop->win, pixmap);
+		else {
+			DBG ("Unable to obtain pixmap from _XROOTPMAP_ID property");
+		}
 	}
-	else
-	{
-	    DBG ("Unable to obtain pixmap from _XROOTPMAP_ID property");
-	}
-    }
 
 /*UNGRAB:*/
     XUngrabServer (GDK_DISPLAY());
