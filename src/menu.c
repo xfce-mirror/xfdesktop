@@ -470,7 +470,7 @@ static GtkWidget *create_desktop_menu(void)
 {
     struct stat st;
     static char *filename = NULL;
-    static time_t ctime = 0;
+    static time_t mtime = 0;
 
     TRACE("dummy");
     if (!filename || is_using_system_rc)
@@ -489,7 +489,7 @@ static GtkWidget *create_desktop_menu(void)
             g_free(filename);
         }
         filename = get_menu_file();
-        ctime = 0;
+        mtime = 0;
     }
 
     /* Still no luck? Something got broken! */
@@ -502,7 +502,7 @@ static GtkWidget *create_desktop_menu(void)
         return NULL;
     }
     
-    if (!ifactory || !MainMenuData || ctime < st.st_ctime)
+    if (!ifactory || !MainMenuData || mtime < st.st_mtime)
     {
         GtkItemFactoryEntry entry;
         MenuItem *item = NULL;
@@ -552,7 +552,7 @@ static GtkWidget *create_desktop_menu(void)
         /* Hmmm ... if you do this the menus don't work */
         /* Lets save it in a global var and worry about it later */
         MainMenuData = menu_data;
-        ctime = st.st_ctime;
+        mtime = st.st_mtime;
     }
 
     return gtk_item_factory_get_widget(ifactory, "<popup>");
