@@ -60,7 +60,7 @@
 #define CATEGORIES_FILE "xfce-registered-categories.xml"
 
 static void menu_dentry_legacy_init();
-G_INLINE_FUNC gboolean menu_dentry_legacy_need_update(XfceDesktopMenu *desktop_menu);
+gboolean menu_dentry_legacy_need_update(XfceDesktopMenu *desktop_menu);
 static void menu_dentry_legacy_add_all(XfceDesktopMenu *desktop_menu,
 		MenuPathType pathtype);
 
@@ -87,7 +87,7 @@ static gchar **legacy_dirs = NULL;
 static GHashTable *dir_to_cat = NULL;
 
 /* we don't want most command-line parameters if they're given. */
-G_INLINE_FUNC gchar *
+gchar *
 _sanitise_dentry_cmd(gchar *cmd)
 {
 	gchar *p;
@@ -101,7 +101,7 @@ _sanitise_dentry_cmd(gchar *cmd)
 	return cmd;
 }
 
-G_INLINE_FUNC gint
+gint
 _get_path_depth(const gchar *path)
 {
 	gchar *p;
