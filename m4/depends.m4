@@ -21,6 +21,8 @@ AC_HELP_STRING([--enable-$4], [Enable checking for $5 (default=$6)])
 AC_HELP_STRING([--disable-$4], [Disable checking for $5]),
     [ac_cv_$1_check=$enableval], [ac_cv_$1_check=$6])
 
+  $1_FOUND="no"
+
   if test x"$ac_cv_$1_check" = x"yes"; then
     AC_MSG_CHECKING([for $2 >= $3])
     if $PKG_CONFIG --atleast-version=$3 $2 2> /dev/null; then
@@ -30,7 +32,6 @@ AC_HELP_STRING([--disable-$4], [Disable checking for $5]),
       $1_FOUND="yes"
     else
       AC_MSG_RESULT([no])
-      $1_FOUND="no"
     fi
   fi
 ])
