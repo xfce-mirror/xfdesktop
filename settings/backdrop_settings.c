@@ -61,7 +61,7 @@
 static char *backdrop_path = NULL;
 static int backdrop_style = CENTERED;
 static int showimage = 1;
-static McsColor backdrop_color = {12079,13107,20046,0};
+static McsColor backdrop_color;
 
 static void backdrop_create_channel(McsPlugin * mcs_plugin);
 static gboolean backdrop_write_options(McsPlugin * mcs_plugin);
@@ -154,13 +154,17 @@ static void backdrop_create_channel(McsPlugin * mcs_plugin)
 	    				 BACKDROP_CHANNEL);
     if(setting)
     {
-	backdrop_color.red = setting->data.v_color.red;
+	backdrop_color.red   = setting->data.v_color.red;
         backdrop_color.green = setting->data.v_color.green;
-        backdrop_color.blue = setting->data.v_color.blue;
+        backdrop_color.blue  = setting->data.v_color.blue;
         backdrop_color.alpha = setting->data.v_color.alpha;
     }
     else
     {
+	backdrop_color.red   = (guint16) 12079;
+        backdrop_color.green = (guint16) 13107;
+        backdrop_color.blue  = (guint16) 20046;
+        backdrop_color.alpha = (guint16) 0;
 	mcs_manager_set_color(mcs_plugin->manager, "color", BACKDROP_CHANNEL, 
 		    	      &backdrop_color);
     }
