@@ -249,7 +249,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-plugindir = $(libdir)/xfce4/panel-plugins
+plugindir = @XFCE4_PANEL_PLUGINSDIR@
 plugin_LTLIBRARIES = libdesktopmenu.la
 libdesktopmenu_la_LDFLAGS = -avoid-version -export-dynamic -module \
 	$(am__append_1)
@@ -260,7 +260,8 @@ libdesktopmenu_la_CFLAGS = \
 	-I$(top_srcdir)/common \
 	@XFCE4_PANEL_CFLAGS@ \
 	-DDATADIR=\"$(datadir)\" \
-	-DLOCALEDIR=\"$(localedir)\" 
+	-DLOCALEDIR=\"$(localedir)\" \
+	-DBINDIR=\"$(bindir)\"
 
 libdesktopmenu_la_LIBADD = \
 	@XFCE4_PANEL_LIBS@ \

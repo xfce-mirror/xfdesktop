@@ -529,7 +529,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			k = _find_attribute(attribute_names, "unique");
 			l = _find_attribute(attribute_names, "legacy");
 			
-			if(k != -1 && !strcmp(attribute_values[i], "false"))
+			if(k != -1 && !strcmp(attribute_values[k], "false"))
 				only_unique = FALSE;				
 			if(l != -1 && !strcmp(attribute_values[l], "false"))
 				do_legacy = FALSE;

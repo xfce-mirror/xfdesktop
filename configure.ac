@@ -4,7 +4,7 @@ dnl xfdesktop - xfce4's desktop manager
 dnl
 
 dml version info
-m4_define([xfdesktop_version], [4.2.0])
+m4_define([xfdesktop_version], [4.2.1])
 
 dnl init autoconf
 AC_INIT([xfdesktop], [xfdesktop_version], [bjt23@cornell.edu])
@@ -33,9 +33,9 @@ AC_CHECK_HEADERS(fcntl.h math.h signal.h stddef.h string.h sys/stat.h sys/types.
 AC_CHECK_FUNCS(mmap sigaction srandom)
 
 dnl Check for i18n support
-BM_I18N([xfdesktop], [ar az be bg ca cs de en_GB es es_MX et eu fa fi fr gu
-		      he hi hu it ja pl ko lt ms nb_NO nl pa pt_BR pt_PT ro
-		      ru sk sv ta tr uk vi zh_CN zh_TW])
+BM_I18N([xfdesktop], [ar az be bg ca cs da de en_GB es es_MX et eu fa fi fr gu \
+                      he hi hu it ja pl ko lt ms nb_NO nl pa pt_BR pt_PT ro \
+                      ru sk sv ta tr uk vi zh_CN zh_TW])
 
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE
@@ -100,10 +100,6 @@ common/Makefile
 doc/Makefile
 doc/C/Makefile
 doc/C/images/Makefile
-doc/fr/Makefile
-doc/fr/images/Makefile
-doc/it/Makefile
-doc/it/images/Makefile
 menueditor/Makefile
 modules/Makefile
 modules/menu/Makefile

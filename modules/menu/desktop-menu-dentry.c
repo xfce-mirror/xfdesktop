@@ -60,7 +60,7 @@
 #define CATEGORIES_FILE "xfce-registered-categories.xml"
 
 static void menu_dentry_legacy_init();
-G_INLINE_FUNC gboolean menu_dentry_legacy_need_update(XfceDesktopMenu *desktop_menu);
+gboolean menu_dentry_legacy_need_update(XfceDesktopMenu *desktop_menu);
 static void menu_dentry_legacy_add_all(XfceDesktopMenu *desktop_menu,
 		MenuPathType pathtype);
 
@@ -87,7 +87,7 @@ static gchar **legacy_dirs = NULL;
 static GHashTable *dir_to_cat = NULL;
 
 /* we don't want most command-line parameters if they're given. */
-G_INLINE_FUNC gchar *
+gchar *
 _sanitise_dentry_cmd(gchar *cmd)
 {
 	gchar *p;
@@ -101,7 +101,7 @@ _sanitise_dentry_cmd(gchar *cmd)
 	return cmd;
 }
 
-G_INLINE_FUNC gint
+gint
 _get_path_depth(const gchar *path)
 {
 	gchar *p;
@@ -287,6 +287,19 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		goto cleanup;
 	if((p = strchr(exec, ' ')))
 		*p = 0;
+    /* filter out quotes around the command (yeah, people do that!) */
+    if (exec[0] == '"') {
+        int i;
+
+        for (i = 1; exec[i-1] != '\0'; ++i) {
+            if (exec[i] != '"')
+                exec[i-1] = exec[i];
+            else {
+                exec[i-1] = '\0';
+                break;
+            }
+        }
+    }
 	if(blacklist && g_hash_table_lookup(blacklist, exec))
 		goto cleanup;
 	p = g_find_program_in_path(exec);
@@ -296,9 +309,9 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 
 	xfce_desktop_entry_get_string (de, "Categories", TRUE, &categories);
 	
-	if(categories) {
+	if(categories || !is_legacy) {
 		/* hack: leave out items that look like they are KDE control panels */
-		if(strstr(categories, ";X-KDE-"))
+		if(categories && strstr(categories, ";X-KDE-"))
 			goto cleanup;
 		
 		if(pathtype==MPATH_SIMPLE || pathtype==MPATH_SIMPLE_UNIQUE)
@@ -311,8 +324,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 	} else if(is_legacy) {
 		newpaths = g_ptr_array_new();
 		g_ptr_array_add(newpaths, g_strdup(extra_cat));
-	} else
-		goto cleanup;
+	}
 	
 	if(pathtype == MPATH_SIMPLE_UNIQUE) {
 		/* grab first of the most general */

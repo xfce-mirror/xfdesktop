@@ -8,141 +8,141 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-17 23:16+0200\n"
-"PO-Revision-Date: 2004-11-27 22:40+ZONE\n"
+"POT-Creation-Date: 2005-03-12 12:22+0100\n"
+"PO-Revision-Date: 2005-01-17 21:46+0900\n"
 "Last-Translator: ByungHyun Choi<byunghyunchoi@rtlinux.or.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: menueditor/about_dialog.c:36
+#: menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
 msgstr "Xfce4 메뉴 편집기"
 
 #. Credits
-#: menueditor/about_dialog.c:41
+#: menueditor/about_dialog.c:43
 msgid "Core developer"
 msgstr "만든 이"
 
-#: menueditor/about_dialog.c:42 menueditor/about_dialog.c:43
-#: menueditor/about_dialog.c:44
+#: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:46
 msgid "Contributor"
 msgstr "도와주신 분들"
 
-#: menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:47
 msgid "Icon designer"
 msgstr "아이콘 디자인"
 
-#: menueditor/add_dialog.c:132 menueditor/add_dialog.c:147
+#: menueditor/add_dialog.c:138 menueditor/add_dialog.c:150
 msgid "Add menu entry"
 msgstr "메뉴 항목 추가"
 
 #. Type
-#: menueditor/add_dialog.c:153 menueditor/add_menu_dialog.c:98
-#: menueditor/edit_dialog.c:148
+#: menueditor/add_dialog.c:156 menueditor/add_menu_dialog.c:98
+#: menueditor/edit_dialog.c:149
 msgid "Type:"
 msgstr "형태:"
 
-#: menueditor/add_dialog.c:156
+#: menueditor/add_dialog.c:159
 msgid "Launcher"
 msgstr "실행기"
 
-#: menueditor/add_dialog.c:161
+#: menueditor/add_dialog.c:164
 msgid "Submenu"
 msgstr "하위 메뉴"
 
-#: menueditor/add_dialog.c:166
+#: menueditor/add_dialog.c:169
 msgid "Separator"
 msgstr "분리 표시"
 
-#: menueditor/add_dialog.c:171
+#: menueditor/add_dialog.c:174
 msgid "Title"
 msgstr "제목"
 
-#: menueditor/add_dialog.c:176
+#: menueditor/add_dialog.c:179
 msgid "Quit"
 msgstr "종료"
 
 #. Name
-#: menueditor/add_dialog.c:191 menueditor/edit_dialog.c:260
-#: menueditor/edit_dialog.c:310 menueditor/edit_dialog.c:348
+#: menueditor/add_dialog.c:194 menueditor/edit_dialog.c:263
+#: menueditor/edit_dialog.c:314 menueditor/edit_dialog.c:353
 msgid "Name:"
 msgstr "이름:"
 
-#: menueditor/add_dialog.c:201 menueditor/edit_dialog.c:261
+#: menueditor/add_dialog.c:204 menueditor/edit_dialog.c:264
 msgid "Command:"
 msgstr "명령:"
 
-#: menueditor/add_dialog.c:217 menueditor/edit_dialog.c:252
-#: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
-#: menueditor/edit_dialog.c:390
+#: menueditor/add_dialog.c:220 menueditor/edit_dialog.c:255
+#: menueditor/edit_dialog.c:319 menueditor/edit_dialog.c:358
+#: menueditor/edit_dialog.c:396
 msgid "Icon:"
 msgstr "아이콘:"
 
 #. Start Notify check button
-#: menueditor/add_dialog.c:233 menueditor/edit_dialog.c:272
+#: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:275
 msgid "Use startup _notification"
 msgstr "시작과 동시에 알림(_n)"
 
 #. Run in terminal check button
-#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:273
+#: menueditor/add_dialog.c:240 menueditor/edit_dialog.c:276
 msgid "Run in _terminal"
 msgstr "터미널에서 실행하기(_t)"
 
-#: menueditor/add_dialog.c:282 menueditor/edit_dialog.c:459
+#: menueditor/add_dialog.c:285 menueditor/edit_dialog.c:468
 msgid "The command doesn't exist !"
 msgstr "명령어가 없네요!"
 
-#: menueditor/add_dialog.c:288
+#: menueditor/add_dialog.c:291
 msgid "All fields must be filled to add an item."
 msgstr "모든 항목을 입력해야 합니다."
 
-#: menueditor/add_dialog.c:296
+#: menueditor/add_dialog.c:300
 msgid "The 'Name' field is required."
 msgstr "'이름'을 입력하세요."
 
-#: menueditor/add_dialog.c:350 menueditor/dnd.c:152
-#: menueditor/menueditor.c:346 menueditor/move.c:90 menueditor/move.c:248
+#: menueditor/add_dialog.c:356 menueditor/dnd.c:153
+#: menueditor/menueditor.c:579 menueditor/move.c:87 menueditor/move.c:225
 msgid "--- separator ---"
 msgstr "--- 분리 표시 ---"
 
-#: menueditor/add_dialog.c:375 menueditor/edit_dialog.c:494
+#: menueditor/add_dialog.c:381 menueditor/edit_dialog.c:505
 msgid "quit"
 msgstr "종료"
 
-#: menueditor/add_menu_dialog.c:78 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:805
+#: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
+#: menueditor/menueditor.c:1031
 msgid "Add an external menu"
 msgstr "외부 메뉴 추가"
 
-#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:151
+#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:152
 msgid "File"
 msgstr "화일"
 
-#: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:156
+#: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:157
 msgid "System"
 msgstr "시스템"
 
-#: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:171
+#: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:172
 msgid "Source:"
 msgstr "위치:"
 
 #. Style
-#: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:184
+#: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:185
 msgid "Style:"
 msgstr "표현 방식:"
 
-#: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:187
+#: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:188
 msgid "Simple"
 msgstr "단순"
 
-#: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:190
+#: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:191
 msgid "Multilevel"
 msgstr "다단계"
 
 #. Unique
-#: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:203
+#: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:204
 msgid "_Unique entries only"
 msgstr "항목이 중복되지 않도록 함(_U)"
 
@@ -150,21 +150,21 @@ msgstr "항목이 중복되지 않도록 함(_U)"
 msgid "The 'Source' field is required."
 msgstr "'위치'를 설정해 주어야 합니다."
 
-#: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:235
-#: menueditor/dnd.c:154 menueditor/edit_dialog.c:508
-#: menueditor/edit_dialog.c:521 menueditor/menueditor.c:394
-#: menueditor/move.c:120 menueditor/move.c:278
+#: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:234
+#: menueditor/dnd.c:156 menueditor/edit_dialog.c:521
+#: menueditor/edit_dialog.c:534 menueditor/menueditor.c:618
+#: menueditor/move.c:111 menueditor/move.c:249
 msgid "--- include ---"
 msgstr "--- 외부 메뉴 ---"
 
-#: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:159
-#: menueditor/edit_dialog.c:522 menueditor/menueditor.c:397
-#: menueditor/move.c:123 menueditor/move.c:281
+#: menueditor/add_menu_dialog.c:235 menueditor/dnd.c:161
+#: menueditor/edit_dialog.c:535 menueditor/menueditor.c:621
+#: menueditor/move.c:114 menueditor/move.c:252
 msgid "system"
 msgstr "시스템"
 
 #. Create dialog for editing
-#: menueditor/edit_dialog.c:100 menueditor/edit_dialog.c:113
+#: menueditor/edit_dialog.c:103 menueditor/edit_dialog.c:113
 msgid "Edit menu entry"
 msgstr "메뉴 항목 수정"
 
@@ -173,64 +173,64 @@ msgid "Separators cannot be edited"
 msgstr "분리표시는 수정할 수 없습니다."
 
 #. Name
-#: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:104
+#: menueditor/edit_dialog.c:403 menueditor/new_dialog.c:100
 msgid "Title:"
 msgstr "제목:"
 
-#: menueditor/menueditor.c:148
+#: menueditor/menueditor.c:371
 msgid "Select command"
 msgstr "명령 선택"
 
-#: menueditor/menueditor.c:209
+#: menueditor/menueditor.c:435
 msgid "Select icon"
 msgstr "아이콘 선택"
 
-#: menueditor/menueditor.c:215 panel-plugin/desktop-menu-plugin.c:389
+#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
 #: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "모든 화일"
 
-#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:395
+#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
 #: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "그림 화일"
 
-#: menueditor/menueditor.c:272 menueditor/menueditor.c:679
+#: menueditor/menueditor.c:500 menueditor/menueditor.c:903
 msgid "Do you want to save before closing the menu ?"
 msgstr "메뉴를 닫기 전에 저장하시렵니까?"
 
-#: menueditor/menueditor.c:273
+#: menueditor/menueditor.c:502
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "메뉴를 수정하셨군요, 종료하기 전에 저장하시렵니까?"
 
-#: menueditor/menueditor.c:274
+#: menueditor/menueditor.c:504
 msgid "Forget modifications"
 msgstr "수정한 것 버리기"
 
-#: menueditor/menueditor.c:473 menueditor/menueditor.c:531
-#: menueditor/menueditor.c:677
+#: menueditor/menueditor.c:690 menueditor/menueditor.c:749
+#: menueditor/menueditor.c:901
 msgid "Question"
 msgstr "궁금"
 
-#: menueditor/menueditor.c:475
+#: menueditor/menueditor.c:692
 msgid "Do you want to save before opening the default menu ?"
 msgstr "기본 메뉴를 열기 전에 저장하시렵니까?"
 
-#: menueditor/menueditor.c:477 menueditor/menueditor.c:535
-#: menueditor/menueditor.c:681
+#: menueditor/menueditor.c:694 menueditor/menueditor.c:753
+#: menueditor/menueditor.c:905
 msgid "Ignore modifications"
 msgstr "수정한 것 무시"
 
-#: menueditor/menueditor.c:533
+#: menueditor/menueditor.c:751
 msgid "Do you want to save before opening an other menu ?"
 msgstr "다른 메뉴를 열기 전에 저장하시렵니까?"
 
-#: menueditor/menueditor.c:546
+#: menueditor/menueditor.c:764
 msgid "Open menu file"
 msgstr "메뉴 화일 열기"
 
-#: menueditor/menueditor.c:580 menueditor/menueditor.c:591
+#: menueditor/menueditor.c:799 menueditor/menueditor.c:810
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -239,119 +239,119 @@ msgstr ""
 "%s에 기록할 수 없습니다 : \n"
 "%s"
 
-#: menueditor/menueditor.c:622
+#: menueditor/menueditor.c:844
 msgid "Save as..."
 msgstr "다른 이름으로..."
 
-#: menueditor/menueditor.c:799
+#: menueditor/menueditor.c:1025
 msgid "Edit"
 msgstr "목록 수정"
 
 #. File menu
-#: menueditor/menueditor.c:1005
+#: menueditor/menueditor.c:1225
 msgid "_File"
 msgstr "화일(_F)"
 
-#: menueditor/menueditor.c:1014
+#: menueditor/menueditor.c:1234
 msgid "Open default menu"
 msgstr "기본 메뉴 열기"
 
 #. Edit menu
-#: menueditor/menueditor.c:1028
+#: menueditor/menueditor.c:1248
 msgid "_Edit"
 msgstr "수정(_E)"
 
-#: menueditor/menueditor.c:1034
+#: menueditor/menueditor.c:1254
 msgid "Add an external menu..."
 msgstr "외부 메뉴 추가..."
 
 #. Help menu
-#: menueditor/menueditor.c:1046
+#: menueditor/menueditor.c:1266
 msgid "_Help"
 msgstr "도움말(_H)"
 
-#: menueditor/menueditor.c:1051
+#: menueditor/menueditor.c:1271
 msgid "_About..."
 msgstr "메뉴 편집기에 대하여...(_A)"
 
-#: menueditor/menueditor.c:1061
+#: menueditor/menueditor.c:1283
 msgid "Create a new Xfce4 menu file"
 msgstr "새로운 Xfce4 메뉴 화일을 만듭니다."
 
-#: menueditor/menueditor.c:1065
+#: menueditor/menueditor.c:1289
 msgid "Open an Xfce4 menu file"
 msgstr "Xfce4 메뉴 화일을 엽니다."
 
-#: menueditor/menueditor.c:1069
+#: menueditor/menueditor.c:1295
 msgid "Save current menu"
 msgstr "현재 메뉴를 저장합니다."
 
-#: menueditor/menueditor.c:1073
+#: menueditor/menueditor.c:1300
 msgid "Close current menu"
 msgstr "현재 메뉴를 닫습니다."
 
-#: menueditor/menueditor.c:1078
+#: menueditor/menueditor.c:1306
 msgid "Add an entry to the menu"
 msgstr "메뉴에 항목을 추가합니다."
 
-#: menueditor/menueditor.c:1082
+#: menueditor/menueditor.c:1312
 msgid "Delete the current entry"
 msgstr "현재 항목을 삭제합니다."
 
-#: menueditor/menueditor.c:1086
+#: menueditor/menueditor.c:1318
 msgid "Move the current entry up"
 msgstr "현재 항목을 위로 보냅니다."
 
-#: menueditor/menueditor.c:1090
+#: menueditor/menueditor.c:1324
 msgid "Move the current entry down"
 msgstr "현재 항목을 아래로 보냅니다."
 
-#: menueditor/menueditor.c:1095
+#: menueditor/menueditor.c:1331
 msgid "Collapse the tree"
 msgstr "하위 메뉴를 숨깁니다."
 
-#: menueditor/menueditor.c:1099
+#: menueditor/menueditor.c:1336
 msgid "Expand the tree"
 msgstr "하위 메뉴를 보여 줍니다."
 
-#: menueditor/menueditor.c:1130
+#: menueditor/menueditor.c:1365
 msgid "Name"
 msgstr "이름:"
 
-#: menueditor/menueditor.c:1132
+#: menueditor/menueditor.c:1368
 msgid "Command"
 msgstr "명령"
 
-#: menueditor/menueditor.c:1134
+#: menueditor/menueditor.c:1369
 msgid "Hidden"
 msgstr "숨김"
 
-#: menueditor/menueditor.c:1136
+#: menueditor/menueditor.c:1370
 msgid "Pointer"
 msgstr "포인터"
 
-#: menueditor/menueditor.c:1260
+#: menueditor/menueditor.c:1472
 msgid "Corrupted file or incorrect file format !"
 msgstr "화일이 손상되었거나 형식이 틀립니다!"
 
-#: menueditor/menueditor.c:1273
+#: menueditor/menueditor.c:1485
 msgid "No root element in file !"
 msgstr "화일에 root element가 없습니다!"
 
-#: menueditor/menueditor.c:1284
+#: menueditor/menueditor.c:1496
 msgid "Bad datafile format !"
 msgstr "화일 형식이 이상합니다!"
 
-#: menueditor/menueditor.c:1388
+#: menueditor/menueditor.c:1626
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "%s가 없습니다."
 
-#: menueditor/move.c:408
+#: menueditor/move.c:370
 msgid "Do you want to move the item into the parent menu?"
 msgstr "항목을 상위 메뉴로 옮기시렵니까?"
 
-#: menueditor/move.c:512
+#: menueditor/move.c:469
 msgid "Do you want to move the item into the submenu?"
 msgstr "항목을 하위 메뉴로 옮기시렵니까?"
 
@@ -359,21 +359,21 @@ msgstr "항목을 하위 메뉴로 옮기시렵니까?"
 msgid "Are you sure you want to close the current menu?"
 msgstr "현재 메뉴를 닫으시렵니까?"
 
-#: menueditor/new_dialog.c:76
+#: menueditor/new_dialog.c:75
 msgid "Do you want to save before closing the file?"
 msgstr "화일을 닫기 전에 저장하시렵니까?"
 
 #. get the filename and name for the new menu
-#: menueditor/new_dialog.c:86 menueditor/new_dialog.c:98
+#: menueditor/new_dialog.c:85 menueditor/new_dialog.c:94
 msgid "New menu"
 msgstr "새로운 메뉴"
 
 #. Filename
-#: menueditor/new_dialog.c:111
+#: menueditor/new_dialog.c:107
 msgid "Filename:"
 msgstr "화일:"
 
-#: menueditor/new_dialog.c:144
+#: menueditor/new_dialog.c:141
 msgid "All fields are required."
 msgstr "모든 항목을 입력해야합니다."
 
@@ -381,36 +381,68 @@ msgstr "모든 항목을 입력해야합니다."
 msgid "/Other"
 msgstr "기타"
 
-#: panel-plugin/desktop-menu-plugin.c:204
-#: panel-plugin/desktop-menu-plugin.c:532
+#: panel-plugin/desktop-menu-plugin.c:279
+#: panel-plugin/desktop-menu-plugin.c:805
 msgid "Xfce Menu"
 msgstr "Xfce 메뉴"
 
-#: panel-plugin/desktop-menu-plugin.c:372
+#: panel-plugin/desktop-menu-plugin.c:493
 msgid "Select Icon"
 msgstr "아이콘 선택"
 
-#: panel-plugin/desktop-menu-plugin.c:374
+#: panel-plugin/desktop-menu-plugin.c:495
 msgid "Select Menu File"
 msgstr "메뉴 화일 선택"
 
-#: panel-plugin/desktop-menu-plugin.c:403
+#: panel-plugin/desktop-menu-plugin.c:524
 msgid "Menu Files"
 msgstr "메뉴 화일"
 
-#: panel-plugin/desktop-menu-plugin.c:462
-msgid "_Menu file:"
-msgstr "메뉴 화일(_M):"
+#: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "Xfce4 메뉴 편집기 기동 실패: %s"
 
-#: panel-plugin/desktop-menu-plugin.c:496
+#: panel-plugin/desktop-menu-plugin.c:663
+#, fuzzy
+msgid "Button _title:"
+msgstr "버튼 아이콘(_B):"
+
+#: panel-plugin/desktop-menu-plugin.c:676
+#, fuzzy
+msgid "Menu File"
+msgstr "메뉴 화일"
+
+#: panel-plugin/desktop-menu-plugin.c:688
+#, fuzzy
+msgid "Use default _desktop menu file"
+msgstr "데스크탑 메뉴 편집(_E)"
+
+#: panel-plugin/desktop-menu-plugin.c:697
+#, fuzzy
+msgid "Use _custom menu file:"
+msgstr "메뉴 화일 열기"
+
+#: panel-plugin/desktop-menu-plugin.c:749
+#: panel-plugin/desktop-menu-plugin.c:751
+#, fuzzy
+msgid "_Edit Menu"
+msgstr "메뉴(_M)"
+
+#: panel-plugin/desktop-menu-plugin.c:758
+#, fuzzy
+msgid "Icons"
+msgstr "아이콘:"
+
+#: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
 msgstr "버튼 아이콘(_B):"
 
-#: panel-plugin/desktop-menu-plugin.c:521
+#: panel-plugin/desktop-menu-plugin.c:794
 msgid "Show _icons in menu"
 msgstr "메뉴에 아이콘 보이기(_i)"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:112
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -461,7 +493,7 @@ msgstr "배경화면 목록을 수정합니다."
 
 #. the dialog
 #: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
-#: src/xfce-desktop.c:670
+#: src/xfce-desktop.c:676
 msgid "Desktop"
 msgstr "데스크탑"
 
@@ -589,11 +621,6 @@ msgstr "화면 %d, 모니터 %d"
 msgid "_Menu"
 msgstr "메뉴(_M)"
 
-#: settings/menu_settings.c:132
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "Xfce4 메뉴 편집기 기동 실패: %s"
-
 #: settings/menu_settings.c:153
 msgid "Window List"
 msgstr "창 목록"
@@ -633,7 +660,8 @@ msgstr "옵션은 다음과 같니다:\n"
 
 #: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "    -reload      모든 설정을 새로 읽어 오고, 그림 목록을 새로 고칩니다.\n"
+msgstr ""
+"    -reload      모든 설정을 새로 읽어 오고, 그림 목록을 새로 고칩니다.\n"
 
 #: src/main.c:303
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
@@ -645,26 +673,29 @@ msgid ""
 msgstr ""
 "    -windowlist  창 목록을 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
 
-#: src/windowlist.c:183
+#: src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>작업공간 %d</b>"
 
-#: src/windowlist.c:188
+#: src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>작업공간 %d</i>"
 
-#: src/windowlist.c:244 src/windowlist.c:247
+#: src/windowlist.c:268 src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "작업공간 추가(_A)"
 
-#: src/windowlist.c:254
+#: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "작업공간 %d 삭제(_R)"
 
-#: src/windowlist.c:256
+#: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "작업공간 '%s' 삭제(_R)"
+
+#~ msgid "_Menu file:"
+#~ msgstr "메뉴 화일(_M):"
