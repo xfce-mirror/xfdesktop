@@ -541,7 +541,7 @@ browse_cb(GtkWidget *b, BackdropPanel *bp)
 	GtkWidget *chooser, *preview;
 	XfceFileFilter *filter;
 	
-	chooser = xfce_file_chooser_dialog_new(_("Select backdrop image or list file"),
+	chooser = xfce_file_chooser_new(_("Select backdrop image or list file"),
 			GTK_WINDOW(bp->bd->dialog), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
 			GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 	

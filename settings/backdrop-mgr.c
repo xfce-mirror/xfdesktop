@@ -537,7 +537,7 @@ list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 	
 	dialog = gtk_widget_get_toplevel(GTK_WIDGET(treeview));
 	
-	chooser = xfce_file_chooser_dialog_new(_("Select backdrop image file"),
+	chooser = xfce_file_chooser_new(_("Select backdrop image file"),
 			GTK_WINDOW(dialog), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
 			GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 	
@@ -693,7 +693,7 @@ filename_browse_cb(GtkWidget *b, GtkWidget *file_entry)
 	dialog = gtk_widget_get_toplevel(b);
 	
 	preview = gtk_image_new();
-	chooser = xfce_file_chooser_dialog_new(_("Choose backdrop list filename"),
+	chooser = xfce_file_chooser_new(_("Choose backdrop list filename"),
 			GTK_WINDOW(dialog), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
 			GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 	

@@ -261,7 +261,7 @@ filebutton_click_cb(GtkWidget *w, gpointer user_data)
 	gchar *filename;
 	XfceFileFilter *filter;
 	
-	chooser = xfce_file_chooser_dialog_new(_("Select Icon"),
+	chooser = xfce_file_chooser_new(_("Select Icon"),
 			GTK_WINDOW(gtk_widget_get_toplevel(w)),
 			XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
 			GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
