@@ -53,6 +53,13 @@ void editmenu_option_system_cb (GtkWidget *widget, struct _controls_menu *contro
   gtk_widget_set_sensitive(controls->checkbutton_unique,TRUE);
 }
 
+void popup_edit_cb(GtkWidget *widget, gpointer data)
+{
+  printf("%s\n",_("Not yet implemented !"));
+}
+
+
+
 /* Edition */
 void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColumn *col, gpointer data)
 {

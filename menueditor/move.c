@@ -25,7 +25,7 @@
 
 /******************************************/
 /* Workaround for gtk_tree_store_swap bug */
-/* i hope it will be fixed int 2.4.2      */
+/* i hope it will be fixed in  2.4.2      */
 /******************************************/
 void my_tree_store_swap_down(GtkTreeStore *tree_store,
 			     GtkTreeIter *a,
