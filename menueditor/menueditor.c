@@ -1319,7 +1319,7 @@ static gchar* get_default_menu_file ()
 	const gchar *env = g_getenv("XFCE_DISABLE_USER_CONFIG");
 
 	if(!env || !strcmp(env, "0")) {
-		gchar *usermenu = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,"xfce4/desktop/menu.xml", FALSE);
+		gchar *usermenu = xfce_resource_lookup(XFCE_RESOURCE_CONFIG,"xfce4/desktop/menu.xml");
 		if(g_file_test(usermenu, G_FILE_TEST_IS_REGULAR))
 			return usermenu;
 		g_free(usermenu);

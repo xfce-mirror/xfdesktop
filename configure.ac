@@ -33,7 +33,7 @@ AC_CHECK_HEADERS(fcntl.h math.h signal.h stddef.h string.h sys/stat.h sys/types.
 AC_CHECK_FUNCS(mmap sigaction srandom)
 
 dnl Check for i18n support
-BM_I18N([xfdesktop], [ar az bg ca cs de es es_MX et eu fa_IR fi fr he hi hu
+BM_I18N([xfdesktop], [ar az be bg ca cs de es es_MX et eu fa_IR fi fr he hi hu
 		      it ja pl ko lt ms nl pt_BR pt_PT ru sk sv ta tr uk vi
 		      zh_CN zh_TW])
 
