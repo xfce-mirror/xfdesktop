@@ -215,6 +215,7 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 			bp->set_backdrop = setting->data.v_int == 0 ? FALSE : TRUE;
 		else {
 			DBG ("no setbackground settings");
+			bp->set_backdrop = TRUE;
 			mcs_manager_set_int(mcs_plugin->manager, setting_name,
 					BACKDROP_CHANNEL, 1);
 		}
@@ -237,9 +238,11 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 				BACKDROP_CHANNEL);
 		if(setting)
 			bp->style = setting->data.v_int;
-		else
+		else {
+			bp->style = AUTO;
 			mcs_manager_set_int(mcs_plugin->manager, setting_name,
 					BACKDROP_CHANNEL, AUTO);
+		}
 		
 		/* color 1 */
 		g_snprintf(setting_name, 128, "color1_%d", i);
@@ -284,9 +287,11 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 				BACKDROP_CHANNEL);
 		if(setting)
 			bp->color_only = setting->data.v_int == 0 ? FALSE : TRUE;
-		else
+		else {
+			bp->color_only = FALSE;
 			mcs_manager_set_int(mcs_plugin->manager, setting_name,
-					BACKDROP_CHANNEL, 1);
+					BACKDROP_CHANNEL, 0);
+		}
 		
 		/* the color style */
 		g_snprintf(setting_name, 128, "colorstyle_%d", i);
@@ -294,9 +299,11 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 				BACKDROP_CHANNEL);
 		if(setting)
 			bp->color_style = setting->data.v_int;
-		else
+		else {
+			bp->color_style = SOLID_COLOR;
 			mcs_manager_set_int(mcs_plugin->manager, setting_name,
 					BACKDROP_CHANNEL, SOLID_COLOR);
+		}
 		
 		screens = g_list_append(screens, bp);
 	}
