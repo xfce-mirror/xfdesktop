@@ -813,7 +813,7 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
 
     gtk_dialog_set_default_response(GTK_DIALOG(bd->dialog), GTK_RESPONSE_OK);
 
-    gtk_window_set_position(GTK_WINDOW(bd->dialog), GTK_WIN_POS_CENTER_ALWAYS);
+    gtk_window_set_position(GTK_WINDOW(bd->dialog), GTK_WIN_POS_CENTER);
 
     g_signal_connect(bd->dialog, "response", G_CALLBACK(dialog_response), bd);
     g_signal_connect_swapped(bd->dialog, "delete_event",
