@@ -387,6 +387,7 @@ static void set_backdrop(const char *path, int style, int show, GdkColor *color)
 	{
 	    g_warning("xfdesktop: error loading backdrop image:\n%s\n", error->message);
 	    g_error_free(error);
+	    pixbuf = NULL;
 	}
     }
     else
@@ -417,7 +418,7 @@ static void set_backdrop(const char *path, int style, int show, GdkColor *color)
     }
     else
     {
-        gstyle->bg_pixmap[GTK_STATE_NORMAL] = NULL;
+	gstyle->bg_pixmap[GTK_STATE_NORMAL] = NULL;
 	gdk_property_delete(gdk_get_default_root_window(), gdk_atom_intern("_XROOTPMAP_ID", FALSE));
 	gdk_window_clear (GDK_ROOT_PARENT ());
     }
