@@ -550,28 +550,26 @@ static void run_dialog(McsPlugin *plugin )
     add_spacer(GTK_BOX(mainvbox));
 
     /* Number of workspaces */
-    frame = frame_box(_("Workspaces"), GTK_SHADOW_NONE);
-    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
+    frame = xfce_framebox_new (_("Workspaces"), TRUE);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, FALSE, FALSE, 0);
     
     vbox = gtk_vbox_new(FALSE, BORDER);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
     gtk_widget_show(vbox);
-    gtk_container_add(GTK_CONTAINER(frame), vbox);
+    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
     add_count_spinbox(vbox, plugin->manager);
 
     /* Workspace names */
-    frame = frame_box(_("Workspace names"), GTK_SHADOW_NONE);
-    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
+    frame = xfce_framebox_new (_("Workspace names"), TRUE);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
     
     vbox = gtk_vbox_new(FALSE, BORDER);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
     gtk_widget_show(vbox);
-    gtk_container_add(GTK_CONTAINER(frame), vbox);
+    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
 
     add_names_treeview(vbox, plugin->manager);
 

@@ -840,20 +840,19 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
     add_spacer(GTK_BOX(mainvbox));
 
     /* color */
-    frame = frame_box(_("Color"), GTK_SHADOW_NONE);
-    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
+    frame = xfce_framebox_new (_("Color"), TRUE);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
     
     vbox = gtk_vbox_new(FALSE, BORDER);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
     gtk_widget_show(vbox);
-    gtk_container_add(GTK_CONTAINER(frame), vbox);
+    xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
     
     add_color_button(vbox, bd);
 
     /* image vbox */
-    bd->image_frame = frame_box(_("Image"), GTK_SHADOW_NONE);
+    bd->image_frame = xfce_framebox_new (_("Image"), TRUE);
     gtk_container_set_border_width(GTK_CONTAINER(bd->image_frame), BORDER);
     gtk_widget_set_sensitive(bd->image_frame, showimage);
     gtk_widget_show(bd->image_frame);
@@ -862,7 +861,7 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
     vbox = gtk_vbox_new(FALSE, 2 * BORDER);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
     gtk_widget_show(vbox);
-    gtk_container_add(GTK_CONTAINER(bd->image_frame), vbox);
+    xfce_framebox_add (XFCE_FRAMEBOX (bd->image_frame), vbox);
     
     /* file entry and style radio buttons */
     sg = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
