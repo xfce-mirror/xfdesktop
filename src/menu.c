@@ -804,7 +804,7 @@ menu_init (XfceDesktop * xfdesktop)
 		size = calc_icon_size();
 		if(size < 0)
 			size = 24;
-		dummy_icon = inline_icon_at_size(my_pixbuf, size, size);
+		dummy_icon = xfce_inline_icon_at_size(my_pixbuf, size, size);
 	}
 	
 	/* track icon theme changes (from the panel) */
