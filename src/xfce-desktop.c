@@ -71,7 +71,6 @@
 static void xfce_desktop_class_init(XfceDesktopClass *klass);
 static void xfce_desktop_init(XfceDesktop *desktop);
 static void xfce_desktop_finalize(GObject *object);
-static void xfce_desktop_destroy(GtkObject *object);
 
 struct _XfceDesktopPriv
 {
@@ -585,16 +584,12 @@ static void
 xfce_desktop_class_init(XfceDesktopClass *klass)
 {
 	GObjectClass *gobject_class;
-	GtkObjectClass *gtkobject_class;
 	
 	gobject_class = (GObjectClass *)klass;
-	gtkobject_class = (GtkObjectClass *)klass;
 	
 	parent_class = g_type_class_peek_parent(klass);
 	
 	gobject_class->finalize = xfce_desktop_finalize;
-	
-	gtkobject_class->destroy = xfce_desktop_destroy;
 }
 
 static void
@@ -605,7 +600,7 @@ xfce_desktop_init(XfceDesktop *desktop)
 }
 
 static void
-xfce_desktop_destroy(GtkObject *object)
+xfce_desktop_finalize(GObject *object)
 {
 	XfceDesktop *desktop = XFCE_DESKTOP(object);
 	gint i;
@@ -613,10 +608,6 @@ xfce_desktop_destroy(GtkObject *object)
 	gchar property_name[128];
 	
 	g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-	
-	if(desktop->priv->destroyed)
-		return;
-	desktop->priv->destroyed = TRUE;
 	
 	groot = gdk_screen_get_root_window(desktop->priv->gscreen);
 	gdk_property_delete(groot, gdk_atom_intern("XFCE_DESKTOP_WINDOW", FALSE));
@@ -633,16 +624,6 @@ xfce_desktop_destroy(GtkObject *object)
 		g_free(desktop->priv->backdrops);
 		desktop->priv->backdrops = NULL;
 	}
-	
-	GTK_OBJECT_CLASS(parent_class)->destroy(object);
-}
-
-static void
-xfce_desktop_finalize(GObject *object)
-{
-	XfceDesktop *desktop = XFCE_DESKTOP(object);
-	
-	g_return_if_fail(desktop != NULL);
 	
 	g_free(desktop->priv);
 	desktop->priv = NULL;

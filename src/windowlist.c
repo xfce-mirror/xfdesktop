@@ -159,7 +159,7 @@ windowlist_create(GdkScreen *gscreen)
 	gint nworkspaces, i;
 	NetkWorkspace *active_workspace, *netk_workspace;
 	gchar *ws_label, *rm_label;
-	const gchar *ws_name;
+	const gchar *ws_name = NULL;
 	GList *windows, *l;
 	NetkWindow *netk_window;
 	gint w, h;

@@ -493,7 +493,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
 {
 	GdkPixbuf *final_image, *image = NULL, *tmp;
 	gint i, j;
-	gint w, h, iw, ih;
+	gint w, h, iw = 0, ih = 0;
 	XfceBackdropImageStyle istyle;
 	gint dx, dy, xo, yo;
 	gdouble xscale, yscale;
