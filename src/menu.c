@@ -55,47 +55,11 @@ void do_term_exec(gpointer callback_data, guint callback_action, GtkWidget *widg
 {
     char *cmd;
 
-    // TODO: Fix hard-coded call to xterm
+    /* TODO: Fix hard-coded call to xterm */
     cmd = g_strconcat( "xterm -e ", (char *) callback_data, NULL);
     g_spawn_command_line_async(cmd, NULL);
+    g_free(cmd);
 }
-
-static void do_help(void)
-{
-}
-
-static void do_run(void)
-{
-    g_spawn_command_line_async("xfrun4", NULL);
-}
-
-static void do_xterm(void)
-{
-    g_spawn_command_line_async("xterm", NULL);
-}
-
-static void settings_mgr(void)
-{
-    g_spawn_command_line_async("xfce-setting-show", NULL);
-}
-
-#if 0
-static GtkItemFactoryEntry main_items[] = {
-  { N_("/Desktop menu"), NULL, NULL,        0, "<Title>" },
-  { "/sep",              NULL, NULL,        0, "<Separator>" },
-  { N_("/X _Terminal"), NULL, do_xterm,  0, "<Item>" },
-  { N_("/_Run program ..."), NULL, do_run,  0, "<Item>" },
-  { N_("/_Settings manager"), NULL, settings_mgr,  0, "<Item>" },
-  { "/sep",              NULL, NULL,        0, "<Separator>" },
-  { N_("/_Help"),        NULL, do_help,     0, "<Item>" },
-#if 0
-  { "/sep",              NULL, NULL,        0, "<Separator>" },
-  { N_("/E_xit"),        NULL, quit,        0, "<Item>" },
-#endif
-};
-#endif
-
-/* static GtkItemFactoryEntry *main_items; */
 
 static gboolean popup_menu(GdkEventButton *ev);
 
@@ -304,20 +268,23 @@ static  GtkWidget *create_windowlist_menu(void)
     return menu3;
 }
 
+static MenuItem items[] = {
+    { MI_TITLE, "/Desktop Menu", NULL, FALSE, NULL },
+    { MI_SEPARATOR, "/sep", NULL, FALSE, NULL },
+    { MI_PROGRAM, "/Terminal", "xterm", FALSE, NULL },
+    { MI_PROGRAM, "/Run...", "xfrun4", FALSE, NULL },
+    { MI_PROGRAM, "/Settings Manager", "xfce-setting-show", FALSE, NULL },
+    { MI_SEPARATOR, "/sep", NULL, FALSE, NULL },
+    { MI_PROGRAM, "/Help", "xfhelp", FALSE, NULL },
+};
+
 GList *parse_menu(void)
 {
-    static MenuItem items[] = {
-        { MI_TITLE, "/Desktop Menu", NULL, FALSE, NULL },
-        { MI_SEPARATOR, "/sep", NULL, FALSE, NULL },
-        { MI_PROGRAM, "/Terminal", "xterm", FALSE, NULL },
-        { MI_PROGRAM, "/Run...", "xfrun4", FALSE, NULL },
-        { MI_PROGRAM, "/Settings Manager", "xfce-setting-show", FALSE, NULL }
-    };
     int i;
 
     GList *menu_data = NULL;
     
-    DBG("");
+    DBG("\n");
     
     for (i = 0; i < G_N_ELEMENTS(items); i++) {
         menu_data = g_list_append(menu_data, (gpointer) &items[i]);
@@ -332,14 +299,14 @@ GtkItemFactoryEntry parse_item(MenuItem *item)
 {
     GtkItemFactoryEntry t;
 
-    DBG("");
+    DBG("%s (type=%d)\n", item->path, item->type);
     
     t.path = item->path;
     t.accelerator = NULL;
-    t.callback_action = 0;
+    t.callback_action = 1; /* non-zero ! */
 
-    // disable for now
-    // t.extra_data = item->icon; 
+    /* disable for now
+       t.extra_data = item->icon; */
 
     switch (item->type) {
         case MI_PROGRAM:
@@ -361,8 +328,6 @@ GtkItemFactoryEntry parse_item(MenuItem *item)
         default:
             break;
     }
-                
-                             
         
     return t;
 }
@@ -372,7 +337,7 @@ void create_menu_items(GtkItemFactory *ifactory)
 {
 
     GtkItemFactoryEntry entry;
-    GList *menu_data = NULL;
+    GList *li, *menu_data = NULL;
     MenuItem *item = NULL;
 
     /*
@@ -381,21 +346,16 @@ void create_menu_items(GtkItemFactory *ifactory)
      */
     menu_data = parse_menu();
 
-    assert(menu_data != NULL);
-
-    while (menu_data != NULL) {
-
-        // parse current item
-        item = (MenuItem *) menu_data->data;
+    for (li = menu_data; li; li = li->next)
+    {
+        /* parse current item */
+        item = (MenuItem *) li->data;
         assert(item != NULL);
         entry = parse_item(item);
         gtk_item_factory_create_item(ifactory, &entry, item->cmd, 1);
-        
-        //go to next item
-        menu_data = g_list_next(menu_data);
     }
 
-    //clean up
+    /* clean up */
     g_list_free(menu_data);
     
     return;
