@@ -95,7 +95,7 @@ static XfceBackground *background = NULL;
 
 static void remove_old_pixmap (XfceBackground * background);
 
-static void set_background (XfceBackground * background);
+static gboolean set_background (XfceBackground * background);
 
 static GdkFilterReturn monitor_background (GdkXEvent * ev, GdkEvent * gev,
 					   XfceBackground * background);
@@ -464,7 +464,9 @@ update_root_window (GtkWidget * win, GdkPixmap * pixmap)
     gdk_flush ();
 }
 
-static void
+/* note: always return FALSE here, as this is also used as a GSourceFunc via
+ * g_idle_add(), and shouldn't be run more than once. */
+static gboolean
 set_background (XfceBackground * background)
 {
     GdkPixmap *pixmap;
@@ -485,6 +487,8 @@ set_background (XfceBackground * background)
 
     if (pixbuf)
 	g_object_unref (pixbuf);
+	
+	return FALSE;
 }
 
 /* monitor _XROOT_PMAP_ID property */
@@ -619,7 +623,7 @@ update_backdrop_channel (const char *name, McsAction action,
 	    }
 
 	    if (background->set_background)
-		set_background (background);
+			g_idle_add((GSourceFunc)set_background, background);
 
 	    break;
 	case MCS_ACTION_DELETED:
