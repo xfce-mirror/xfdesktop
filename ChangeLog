@@ -1,3 +1,106 @@
+2003-12-16 09:21  jasper
+
+	* Makefile.am, Makefile.in, menu.xml.az: Add Azerbaijani
+	  translations
+
+2003-12-15 23:25  olivier
+
+	* po/xfdesktop.pot, settings/workspaces_settings.c: Fix a
+	  (potential) crash in workspace plugins
+
+2003-12-15 22:35  jasper
+
+	* configure, configure.ac, po/az.gmo, po/az.po: Add Azerbaijani
+	  translations
+
+2003-12-13 23:31  olivier
+
+	* configure, configure.ac, settings/workspaces_settings.c: Use long
+	  as passed value for desktop count
+
+2003-12-05 08:59  jasper
+
+	* configure, configure.ac, po/it.gmo, po/it.po: Add italian
+	  translation
+
+2003-12-01 12:49  jasper
+
+	* Makefile.am, Makefile.in, menu.xml.vi, po/ca.gmo: Update
+	  vietnamese translations
+
+2003-12-01 12:03  jasper
+
+	* po/ca.po: Update catalan translations
+
+2003-11-16 09:44  jasper
+
+	* po/: cs.gmo, cs.po: Update Czech translations
+
+2003-11-12 08:02  jasper
+
+	* po/: ca.gmo, cs.gmo, de.gmo, es.gmo, es_MX.gmo, fi.gmo, fr.gmo,
+	  hi.gmo, hu.gmo, ja.gmo, ko.gmo, lt.gmo, ms.gmo, nl.gmo, pl.gmo,
+	  pt_PT.gmo, ru.gmo, sv.gmo, ta.gmo, tr.gmo, uk.gmo, vi.gmo,
+	  zh_CN.gmo, zh_TW.gmo: Forgot gmo files update
+
+2003-11-11 19:35  jasper
+
+	* po/: ca.po, cs.po, de.po, es.po, es_MX.po, fi.po, fr.po, hi.po,
+	  hu.po, ja.po, ko.po, lt.po, ms.po, nl.po, pl.po, pt_PT.po, ru.po,
+	  sv.po, ta.po, tr.po, uk.po, vi.po, xfdesktop.pot, zh_CN.po,
+	  zh_TW.po: Update po files, just in case something changed ...
+
+2003-11-09 20:09  jasper
+
+	* configure, configure.ac, po/cs.gmo, po/cs.po: Add Check
+	  translations
+
+2003-11-08 11:47  jasper
+
+	* doc/fr/images/: xfdesktop-workspace.png,
+	  xfdesktop-workspaces.png: fix image name
+
+2003-11-07 22:09  jasper
+
+	* configure, configure.ac, doc/Makefile.am, doc/Makefile.in,
+	  doc/C/xfdesktop.html, doc/fr/Makefile.am, doc/fr/Makefile.in,
+	  doc/fr/xfdesktop.html, doc/fr/xfdesktop.xml,
+	  doc/fr/images/Makefile.am, doc/fr/images/Makefile.in,
+	  doc/fr/images/root_menu.png, doc/fr/images/root_menu2.png,
+	  doc/fr/images/select_bg_color.png,
+	  doc/fr/images/xfdesktop-background.png,
+	  doc/fr/images/xfdesktop-list.png,
+	  doc/fr/images/xfdesktop-workspaces.png: Add French documentation
+
+2003-11-03 19:06  jasper
+
+	* configure, configure.ac, po/uk.gmo, po/uk.po: Add Ukranian
+	  translations
+
+2003-11-02 00:28  olivier
+
+	* configure, configure.ac, po/hi.gmo, po/hi.po: Add Hindi
+	  translation
+
+2003-10-25 00:31  jasper
+
+	* configure, configure.ac, po/vi.gmo, po/vi.po:
+	  Add vietnamese translations by Lam Vinh Nien <nienvl@yahoo.ca>.
+
+2003-10-24 13:29  jasper
+
+	* src/menu.c: Use mtime instead of ctime to check if menu changed.
+
+2003-10-17 18:32  jasper
+
+	* configure, configure.ac, po/sv.gmo, po/sv.po: Add/update swedish
+	  translations
+
+2003-10-13 20:30  jasper
+
+	* ChangeLog: Update ChangeLog's after syncing with SF. Everything
+	  should now be up-to-date.
+
 2003-09-27 13:20  huysmans
 
 	* Makefile.am, Makefile.in, menu.xml.ta, po/ta.gmo, po/ta.po:
