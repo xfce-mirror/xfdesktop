@@ -71,7 +71,7 @@
 #define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream
 #endif
 
-#define DEFAULT_BACKDROP (DATADIR "/xfce4/backdrops/xfce4logo.png")
+#define DEFAULT_BACKDROP (DATADIR "/xfce4/backdrops/xfce-turbulence.png")
 
 /* important stuff to keep track of */
 typedef struct
@@ -203,9 +203,9 @@ static void backdrop_create_channel(McsPlugin * mcs_plugin)
     }
     else
     {
-	backdrop_color.red   = (guint16) 12079;
-        backdrop_color.green = (guint16) 13107;
-        backdrop_color.blue  = (guint16) 20046;
+	backdrop_color.red   = (guint16) 8224;
+        backdrop_color.green = (guint16) 16448;
+        backdrop_color.blue  = (guint16) 24672;
         backdrop_color.alpha = (guint16) 0;
 	mcs_manager_set_color(mcs_plugin->manager, "color", BACKDROP_CHANNEL, 
 		    	      &backdrop_color);
