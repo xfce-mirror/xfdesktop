@@ -96,7 +96,8 @@ desktop_menu_stub_init(GError **err)
 		return NULL;
 	}
 	
-	filename = g_module_build_path(XFCEMODDIR, "xfce4_desktop_menu");
+/*	filename = g_module_build_path(XFCEMODDIR, "xfce4_desktop_menu");*/
+	filename = g_build_filename(XFCEMODDIR, "xfce4_desktop_menu." G_MODULE_SUFFIX, NULL);
 	module = g_module_open(filename, 0);
 	g_free(filename);
 	
