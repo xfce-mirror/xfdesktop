@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFDesktop 4.0\n"
-"POT-Creation-Date: 2003-05-05 08:08+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-06-01 18:52+0200\n"
 "PO-Revision-Date: 2003-05-13 21:54+0600\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -19,46 +20,46 @@ msgstr ""
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your changes"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
 msgstr ""
 "%s §ºÁ¢ì¸ ÓÊÂÅ¢ø¨Ä: %s\n"
 "\n"
 "§Å§Ã¡÷ þ¼õ §¾Ã¢×¦ºöÂ×õ «øÄÐ ¯¨ÃÂ¡¼Ä¢ø '¿£ìÌ' «Óò¾×õ"
 
-#: settings/backdrop-mgr.c:392
+#: settings/backdrop-mgr.c:402
 msgid "Select image file"
 msgstr "µÅ¢Âõ §¸¡ôÒ ¦¾Ã¢× ¦ºöÂ×õ"
 
-#: settings/backdrop-mgr.c:498
+#: settings/backdrop-mgr.c:508
 msgid "Choose backdrop list filename"
 msgstr "À¢ýÉ½¢-µÅ¢Âõ ÀðÊÂø §¸¡ôÒô ¦ÀÂ÷ ¦¾Ã¢×¦ºö¸"
 
-#: settings/backdrop-mgr.c:525
-#: settings/backdrop_settings.c:558
+#: settings/backdrop-mgr.c:535 settings/backdrop_settings.c:586
 msgid "File:"
 msgstr "§¸¡ôÒ:"
 
-#: settings/backdrop-mgr.c:564
+#: settings/backdrop-mgr.c:574
 msgid "New.list"
 msgstr "Ò¾¢Â.ÀðÊÂø"
 
-#: settings/backdrop-mgr.c:568
+#: settings/backdrop-mgr.c:578
 msgid "Backdrop List"
 msgstr "À¢ýÉ½¢-µÅ¢Âõ ÀðÊÂø"
 
-#: settings/backdrop-mgr.c:602
+#: settings/backdrop-mgr.c:612
 msgid "Image files"
 msgstr "µÅ¢Âì §¸¡ôÒ¸û"
 
-#: settings/backdrop-mgr.c:616
+#: settings/backdrop-mgr.c:626
 msgid "List file"
 msgstr "ÀðÊÂø §¸¡ôÒ"
 
-#: settings/backdrop-mgr.c:636
+#: settings/backdrop-mgr.c:646
 msgid "Create backdrop list"
 msgstr "À¢ýÉ½¢-µÅ¢Âõ ÀðÊÂø À¨¼ì¸×õ"
 
-#: settings/backdrop-mgr.c:643
+#: settings/backdrop-mgr.c:653
 msgid "Edit backdrop list"
 msgstr "À¢ýÉ½¢-µÅ¢Âõ ÀðÊÂø ¦¾¡Ì"
 
@@ -68,71 +69,71 @@ msgstr ""
 "¸½¢§Á¨º: \n"
 "À¢ýÉ½¢-µÅ¢Âõ"
 
-#: settings/backdrop_settings.c:356
+#: settings/backdrop_settings.c:384
 msgid "Select background color"
 msgstr "À¢ýÉ½¢ Åñ½ò¨¾ ¦¾Ã¢×¦ºöÂ×õ"
 
-#: settings/backdrop_settings.c:402
+#: settings/backdrop_settings.c:430
 msgid "Background color:"
 msgstr "À¢ýÉ½¢ Åñ½õ: "
 
-#: settings/backdrop_settings.c:432
+#: settings/backdrop_settings.c:460
 msgid "Use color only:"
 msgstr "Åñ½õ ÁðÎõ ÀÂýÀÎò¾×õ:"
 
-#: settings/backdrop_settings.c:615
+#: settings/backdrop_settings.c:643
 msgid "Select background image or list file"
 msgstr "À¢ýÉ½¢-µÅ¢Âõ «øÄÐ ÀðÊÂø §¸¡ôÒ ¦¾Ã¢×¦ºöÂ×õ"
 
-#: settings/backdrop_settings.c:690
+#: settings/backdrop_settings.c:718
 msgid "_Browse..."
 msgstr "_§Á§Ä¡Î..."
 
-#: settings/backdrop_settings.c:694
+#: settings/backdrop_settings.c:722
 msgid "New list"
 msgstr "Ò¾¢Â ÀðÊÂø"
 
-#: settings/backdrop_settings.c:698
+#: settings/backdrop_settings.c:726
 msgid "Edit list"
 msgstr "ÀðÊÂ¨Ä ¾¢ÕòÐ¸"
 
-#: settings/backdrop_settings.c:750
+#: settings/backdrop_settings.c:778
 msgid "Style:"
 msgstr "À¡½¢:"
 
-#: settings/backdrop_settings.c:756
+#: settings/backdrop_settings.c:784
 msgid "_Tiled"
 msgstr "¿¸ø ÀÎòÐ¸"
 
-#: settings/backdrop_settings.c:763
+#: settings/backdrop_settings.c:791
 msgid "_Scaled"
 msgstr "_ÓØò ¾¢¨ÃÂ¢Öõ"
 
-#: settings/backdrop_settings.c:768
+#: settings/backdrop_settings.c:796
 msgid "_Centered"
 msgstr "_¿ÎÅ¢ø"
 
-#: settings/backdrop_settings.c:773
+#: settings/backdrop_settings.c:801
 msgid "_Automatic"
 msgstr "_¾¡É¡¸§Å"
 
 #. the dialog
-#: settings/backdrop_settings.c:815
+#: settings/backdrop_settings.c:852
 msgid "Background"
 msgstr "À¢ýÉ½¢"
 
 #. header
-#: settings/backdrop_settings.c:832
+#: settings/backdrop_settings.c:869
 msgid "Background Settings"
 msgstr "À¢ýÉ½¢ «¨ÁôÒ¸û"
 
 #. color
-#: settings/backdrop_settings.c:838
+#: settings/backdrop_settings.c:875
 msgid "Color"
 msgstr "Åñ½õ"
 
 #. image vbox
-#: settings/backdrop_settings.c:851
+#: settings/backdrop_settings.c:888
 msgid "Image"
 msgstr "µÅ¢Âõ"
 
@@ -164,8 +165,7 @@ msgid "Number of workspaces:"
 msgstr "±ò¾¨É §Å¨Ä ­¼í¸û:"
 
 #. Number of workspaces
-#: settings/workspaces_settings.c:522
-#: settings/workspaces_settings.c:553
+#: settings/workspaces_settings.c:522 settings/workspaces_settings.c:553
 msgid "Workspaces"
 msgstr "§Å¨Ä þ¼í¸û"
 
@@ -187,15 +187,16 @@ msgstr "xfdesktop À¢¨Æ: À¢ýÉ½¢ µÅ¢Âõ ²üÈôÀÎ¸¢ýÈÐ: %s\n
 msgid "Desktop"
 msgstr "¸É¢§Á¨º"
 
-#: src/menu.c:688
+#: src/menu.c:696
 msgid "Add workspace"
 msgstr "§Å¨Ä þ¼õ §º÷ì¸×õ"
 
-#: src/menu.c:695
+#: src/menu.c:703
 msgid "Delete workspace"
 msgstr "§Å¨Ä þ¼õ «Æ¢ì¸×õ"
 
 #: src/settings.c:186
-msgid "xfdesktop: could not connect to settings manager!Please check your installation."
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
 msgstr "xfdesktop: «¨ÁôÒ¸û §ÁÄ¡ÇÕ¼ý þ¨½ôÒ ¦¸¡ûÇ ÓÊÂÅ¢ø¨Ä! ¿¢ÚÅ¸¨Ä ºÃ¢À¡÷ì¸×õ."
-

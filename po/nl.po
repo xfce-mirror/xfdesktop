@@ -6,13 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-05-05 08:08+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-06-01 18:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jasper Huijsmans <huysmans@users.sourceforge.net\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: settings/backdrop-mgr.c:174
 #, c-format
@@ -26,39 +27,39 @@ msgstr ""
 "\n"
 "Kies een andere locatie of druk op annuleren in het dialoogvenster"
 
-#: settings/backdrop-mgr.c:392
+#: settings/backdrop-mgr.c:402
 msgid "Select image file"
 msgstr "Bestand selecteren"
 
-#: settings/backdrop-mgr.c:498
+#: settings/backdrop-mgr.c:508
 msgid "Choose backdrop list filename"
 msgstr "Kies bestandsnaam voor achtergrondenlijst"
 
-#: settings/backdrop-mgr.c:525 settings/backdrop_settings.c:558
+#: settings/backdrop-mgr.c:535 settings/backdrop_settings.c:586
 msgid "File:"
 msgstr "Bestand:"
 
-#: settings/backdrop-mgr.c:564
+#: settings/backdrop-mgr.c:574
 msgid "New.list"
-msgstr "Nieuw.lijst"
+msgstr "Nieuwe.lijst"
 
-#: settings/backdrop-mgr.c:568
+#: settings/backdrop-mgr.c:578
 msgid "Backdrop List"
 msgstr "Achtergrondenlijst"
 
-#: settings/backdrop-mgr.c:602
+#: settings/backdrop-mgr.c:612
 msgid "Image files"
 msgstr "Plaatjes"
 
-#: settings/backdrop-mgr.c:616
+#: settings/backdrop-mgr.c:626
 msgid "List file"
 msgstr "Bestand"
 
-#: settings/backdrop-mgr.c:636
+#: settings/backdrop-mgr.c:646
 msgid "Create backdrop list"
 msgstr "Lijst van achtergronden maken"
 
-#: settings/backdrop-mgr.c:643
+#: settings/backdrop-mgr.c:653
 msgid "Edit backdrop list"
 msgstr "Lijst van achtergronden aanpassen"
 
@@ -66,71 +67,71 @@ msgstr "Lijst van achtergronden aanpassen"
 msgid "Desktop: backdrop"
 msgstr "Bureaublad: achtergrond"
 
-#: settings/backdrop_settings.c:356
+#: settings/backdrop_settings.c:384
 msgid "Select background color"
 msgstr "Achtergrondkleur selecteren"
 
-#: settings/backdrop_settings.c:402
+#: settings/backdrop_settings.c:430
 msgid "Background color:"
 msgstr "Achtergrondkleur:"
 
-#: settings/backdrop_settings.c:432
+#: settings/backdrop_settings.c:460
 msgid "Use color only:"
 msgstr "Alleen kleur gebruiken"
 
-#: settings/backdrop_settings.c:615
+#: settings/backdrop_settings.c:643
 msgid "Select background image or list file"
 msgstr "Achtergrondplaatje of lijst selecteren"
 
-#: settings/backdrop_settings.c:690
+#: settings/backdrop_settings.c:718
 msgid "_Browse..."
 msgstr "_Bladeren..."
 
-#: settings/backdrop_settings.c:694
+#: settings/backdrop_settings.c:722
 msgid "New list"
 msgstr "Nieuwe lijst"
 
-#: settings/backdrop_settings.c:698
+#: settings/backdrop_settings.c:726
 msgid "Edit list"
 msgstr "Lijst aanpassen"
 
-#: settings/backdrop_settings.c:750
+#: settings/backdrop_settings.c:778
 msgid "Style:"
 msgstr "Stijl:"
 
-#: settings/backdrop_settings.c:756
+#: settings/backdrop_settings.c:784
 msgid "_Tiled"
 msgstr "_Naast elkaar"
 
-#: settings/backdrop_settings.c:763
+#: settings/backdrop_settings.c:791
 msgid "_Scaled"
 msgstr "_Schalen"
 
-#: settings/backdrop_settings.c:768
+#: settings/backdrop_settings.c:796
 msgid "_Centered"
 msgstr "_Centreren"
 
-#: settings/backdrop_settings.c:773
+#: settings/backdrop_settings.c:801
 msgid "_Automatic"
 msgstr "_Automatisch"
 
 #. the dialog
-#: settings/backdrop_settings.c:815
+#: settings/backdrop_settings.c:852
 msgid "Background"
 msgstr "Achtergrond"
 
 #. header
-#: settings/backdrop_settings.c:832
+#: settings/backdrop_settings.c:869
 msgid "Background Settings"
 msgstr "Achtergrond Opties"
 
 #. color
-#: settings/backdrop_settings.c:838
+#: settings/backdrop_settings.c:875
 msgid "Color"
 msgstr "Kleur"
 
 #. image vbox
-#: settings/backdrop_settings.c:851
+#: settings/backdrop_settings.c:888
 msgid "Image"
 msgstr "Plaatje"
 
@@ -182,11 +183,11 @@ msgstr "xfdesktop fout: laden achtergrondplaatje: %s\n"
 msgid "Desktop"
 msgstr "Bureaublad"
 
-#: src/menu.c:688
+#: src/menu.c:696
 msgid "Add workspace"
 msgstr "Bureaublad toevoegen"
 
-#: src/menu.c:695
+#: src/menu.c:703
 msgid "Delete workspace"
 msgstr "Bureaublad verwijderen"
 
@@ -195,6 +196,5 @@ msgid ""
 "xfdesktop: could not connect to settings manager!Please check your "
 "installation."
 msgstr ""
-"xfdesktop: Kon geen verbinding krijgen met de optiemanager! Controleer "
-"a.u.b. uw installatie."
-
+"xfdesktop: Kon geen verbinding krijgen met de optiemanager! Controleer a.u."
+"b. uw installatie."
