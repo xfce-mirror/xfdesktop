@@ -246,8 +246,10 @@ xfce_backdrop_dispose(GObject *object)
 	
 	g_return_if_fail(backdrop != NULL);
 	
-	if(backdrop->priv->image_path)
+	if(backdrop->priv->image_path) {
 		g_free(backdrop->priv->image_path);
+		backdrop->priv->image_path = NULL;
+	}
 	
 	(*G_OBJECT_CLASS(parent_class)->dispose)(object);
 }
