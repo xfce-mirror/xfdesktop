@@ -220,10 +220,14 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       buf = g_build_filename(&(sd->data)[7], NULL);
     else if(g_str_has_prefix(sd->data,"file:"))
       buf = g_build_filename(&(sd->data)[5], NULL);
+    else
+      buf = g_strdup(sd->data);
 
     /* Remove \n at the end of filename (if present) */
     temp = strtok(buf, "\n");
-    if(!g_file_test(temp, G_FILE_TEST_EXISTS))
+    if(!temp)
+      filename = g_strdup(buf);
+    else if(!g_file_test(temp, G_FILE_TEST_EXISTS))
       filename = g_strndup(temp, strlen(temp)-1);
     else
       filename = g_strdup(temp);
