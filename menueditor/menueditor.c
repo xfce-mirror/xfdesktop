@@ -27,6 +27,7 @@
 #endif
 
 #include <time.h>
+#include <errno.h>
 
 #include <libxfce4util/i18n.h>
 
@@ -470,14 +471,8 @@ void quit_cb(GtkWidget *widget, gpointer data)
   gtk_main_quit();
 }
 
-/* Save the menu file */
-void menu_save_cb(GtkWidget *widget, gpointer data)
-{
+gboolean menufile_save(){
   gchar *tmp_filename = NULL;
-
-  menueditor_app.menu_modified=FALSE;
-  gtk_widget_set_sensitive(menueditor_app.file_menu.save,FALSE);
-  gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,FALSE);
   
   /* Save the menu file with atomicity */
   tmp_filename = g_strdup_printf("%s.tmp", menueditor_app.menu_file_name);
@@ -485,55 +480,48 @@ void menu_save_cb(GtkWidget *widget, gpointer data)
   xmlSaveFormatFile(tmp_filename, menueditor_app.xml_menu_file, 1);
   if(unlink(menueditor_app.menu_file_name)){
     perror("unlink(menueditor_app.menu_file_name)");
+    xfce_err(_("Cannot write in %s : \n%s"), menueditor_app.menu_file_name, strerror(errno));
     g_free(tmp_filename);
-    return;
+    return FALSE;
   }
   if(link(tmp_filename, menueditor_app.menu_file_name)){
     perror("link(tmp_filename, menueditor_app.menu_file_name)");
     g_free(tmp_filename);
-    return;
+    return FALSE;
   }
   if(unlink(tmp_filename)){
     perror("unlink(tmp_filename)");
+    xfce_err(_("Cannot write in %s : \n%s"), tmp_filename, strerror(errno));
     g_free(tmp_filename);
-    return;
+    return FALSE;
   }
   g_free(tmp_filename);
+
+  return TRUE;
+}
+
+/* Save the menu file */
+void menu_save_cb(GtkWidget *widget, gpointer data)
+{
+  if(menufile_save()){
+    menueditor_app.menu_modified=FALSE;
+    gtk_widget_set_sensitive(menueditor_app.file_menu.save,FALSE);
+    gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,FALSE);
+  }
 }
 
 /* File Selection ok button callback */
 void filesel_saveas_ok(GtkWidget *widget, GtkFileSelection *filesel_dialog)
 {
-  gchar *tmp_filename = NULL;
-
   gtk_widget_hide(GTK_WIDGET(filesel_dialog));
 
-  menueditor_app.menu_modified=FALSE;
-  gtk_widget_set_sensitive(menueditor_app.file_menu.save,FALSE);
-  gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,FALSE);
   g_stpcpy(menueditor_app.menu_file_name,gtk_file_selection_get_filename(filesel_dialog)); 
 
-  /* Save the menu file with atomicity */
-  tmp_filename = g_strdup_printf("%s.tmp", menueditor_app.menu_file_name);
-
-  xmlSaveFormatFile(tmp_filename, menueditor_app.xml_menu_file, 1);
-  if(unlink(menueditor_app.menu_file_name)){
-    perror("unlink(menueditor_app.menu_file_name)");
-    g_free(tmp_filename);
-    return;
+  if(menufile_save()){
+      menueditor_app.menu_modified=FALSE;
+      gtk_widget_set_sensitive(menueditor_app.file_menu.save,FALSE);
+      gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,FALSE);
   }
-  if(link(tmp_filename, menueditor_app.menu_file_name)){
-    perror("link(tmp_filename, menueditor_app.menu_file_name)");
-    g_free(tmp_filename);
-    return;
-  }
-  if(unlink(tmp_filename)){
-    perror("unlink(tmp_filename)");
-    g_free(tmp_filename);
-    return;
-  }
-  printf("ok\n");
-  g_free(tmp_filename);
 }
 
 /* Ask the filename and save the menu into */
@@ -541,7 +529,7 @@ void menu_saveas_cb(GtkWidget *widget, gpointer data)
 {
   GtkWidget *filesel_dialog;
 
-  filesel_dialog = gtk_file_selection_new(_("Menu file selection"));
+  filesel_dialog = gtk_file_selection_new(_("Save as..."));
   gtk_file_selection_set_filename (GTK_FILE_SELECTION(filesel_dialog), 
 				   "menu.xml");
 
@@ -623,6 +611,7 @@ gboolean treeview_button_pressed_cb(GtkTreeView *treeview, GdkEventButton *event
   GValue val = { 0, };
   xmlNodePtr node;
   GtkWidget* popup_menu;
+  GtkWidget* edit_menuitem;
   GtkWidget* add_menuitem;
   GtkWidget* addmenu_menuitem;
   GtkWidget* del_menuitem;
@@ -642,7 +631,11 @@ gboolean treeview_button_pressed_cb(GtkTreeView *treeview, GdkEventButton *event
 
   /* Create the popup menu */
   popup_menu = gtk_menu_new ();
-  
+
+  edit_menuitem = gtk_image_menu_item_new_with_mnemonic (_("Edit..."));
+  gtk_container_add (GTK_CONTAINER (popup_menu), edit_menuitem);
+  separator_menuitem = gtk_separator_menu_item_new();
+  gtk_container_add (GTK_CONTAINER (popup_menu), separator_menuitem);
   add_menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_ADD, menueditor_app.accel_group);
   gtk_container_add (GTK_CONTAINER (popup_menu), add_menuitem);
   addmenu_menuitem = gtk_image_menu_item_new_with_mnemonic (_("Add an external menu..."));
