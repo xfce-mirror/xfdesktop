@@ -7,12 +7,13 @@ confdir = $(sysconfdir)/xfce4
 conf_DATA = 								\
 	menu.xml 							\
 	menu.xml.az 							\
+	menu.xml.ca 							\
 	menu.xml.de 							\
 	menu.xml.fa_IR 							\
 	menu.xml.fr 							\
-	menu.xml.nl  							\
-	menu.xml.ca 							\
 	menu.xml.hu 							\
+	menu.xml.ms  							\
+	menu.xml.nl  							\
 	menu.xml.ta 							\
 	menu.xml.tr 							\
 	menu.xml.vi 							\
