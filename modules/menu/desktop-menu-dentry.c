@@ -563,7 +563,7 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 	if(!catfile)
 		return;
 	if(!desktop_menuspec_parse_categories(catfile)) {
-		g_critical(_("XfceDesktopMenu: Unable to find xfce-registered-categories.xml"));
+		g_critical("XfceDesktopMenu: Unable to find xfce-registered-categories.xml");
 		return;
 	}
 	

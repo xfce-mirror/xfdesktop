@@ -358,12 +358,11 @@ menuspec_xml_start(GMarkupParseContext *context, const gchar *element_name,
 				g_hash_table_remove(cats_orphans, attribute_values[0]);
 			}
 		} else
-			g_warning(_("%s: missing or unknown attribute for 'related' element\n"),
-					PACKAGE);
+			g_warning("XfceDesktopMenu: missing or unknown attribute for 'related' element\n");
 	} else if(!strcmp(element_name, "xfce-registered-categories"))
 		state->started = TRUE;
 	else
-		g_warning(_("%s: unknown xml element %s\n"), PACKAGE, element_name);
+		g_warning("XfceDesktopMenu: unknown xml element %s\n", element_name);
 }
 
 static void
