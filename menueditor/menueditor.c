@@ -137,14 +137,42 @@ gboolean command_exists(const gchar *command)
 {
   gchar *cmd_buf = NULL;
   gchar *cmd_tok = NULL;
+  const gchar *path = NULL;
+  gchar *path_buf = NULL;
+  gchar *path_tok = NULL;
   gboolean result = FALSE;
+
+  path = g_getenv("PATH");
 
   cmd_buf = g_strdup(command);
   cmd_tok = strtok(cmd_buf, " ");
 
   result =  g_file_test(cmd_tok, G_FILE_TEST_IS_EXECUTABLE);
+
+  if(!path){
+    g_free(cmd_buf);
+
+    return result;
+  }
+  
+  path_buf = g_strdup(path);
+  path_tok = strtok(path_buf, ":");
+  
+  result =  g_file_test(cmd_tok, G_FILE_TEST_IS_EXECUTABLE);
+  
+  while(path_tok && !result){
+    gchar *cmd_full = NULL;
+
+    cmd_full = g_build_path (G_DIR_SEPARATOR_S, path_tok, G_DIR_SEPARATOR_S, cmd_tok, NULL);
+    
+    result =  g_file_test(cmd_full, G_FILE_TEST_IS_EXECUTABLE);
+    
+    g_free(cmd_full);
+    path_tok = strtok(NULL, ":");
+  }
   
   g_free(cmd_buf);
+  g_free(path_buf);
 
   return result;
 }

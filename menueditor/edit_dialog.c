@@ -413,10 +413,6 @@ void edit_selection(GtkTreeSelection *selection)
 
   /* Commit change if needed */
   if(gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK){
-    menueditor_app.menu_modified=TRUE;
-    gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
-    gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
-
     if(!xmlStrcmp(node->name,(xmlChar*)"app")){
       GdkPixbuf *icon = NULL;
       gchar *name=NULL;
@@ -674,6 +670,9 @@ void edit_selection(GtkTreeSelection *selection)
       }
     
     }
+    menueditor_app.menu_modified=TRUE;
+    gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
+    gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
   }
   xmlFree(prop_name);
   xmlFree(prop_cmd);
@@ -685,7 +684,7 @@ void edit_selection(GtkTreeSelection *selection)
   xmlFree(prop_style);
   xmlFree(prop_unique);
 
-  gtk_widget_destroy (dialog);
+  gtk_widget_destroy (dialog);  
 }
 
 /* Edition */
