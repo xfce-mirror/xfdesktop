@@ -75,14 +75,18 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
     if(gtk_tree_view_get_dest_row_at_pos(GTK_TREE_VIEW(widget), x, y, &path, &position)) {
       /* if we're here, I think it means the drop is ok */	
       GtkTreeIter iter, iter_new;
-      gchar *str_name=NULL, *str_command=NULL;
-      gboolean hidden=FALSE;
+      gchar *str_name = NULL, *str_command = NULL;
+      gboolean hidden = FALSE;
       GValue val1 = {0};
       GValue val2 = {0};
       GValue val3 = {0};
       xmlNodePtr node_sibling;
       xmlNodePtr node_to_insert;
-      GdkPixbuf *icon=NULL;
+      GdkPixbuf *icon = NULL;
+      xmlChar *prop_visible = NULL;
+      xmlChar *prop_name = NULL;
+      xmlChar *prop_cmd = NULL;
+      xmlChar *prop_src = NULL;
 
       gtk_tree_model_get_iter(GTK_TREE_MODEL(menueditor_app.treestore),
                               &iter, path);
@@ -105,11 +109,16 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
                                 iter_to_insert, ICON_COLUMN, &val3);
       icon = g_value_get_object(&val3);
 
-      if(!xmlStrcmp(xmlGetProp(node_to_insert,"visible"),"no"))
+      prop_name = xmlGetProp(node_to_insert, "name");
+      prop_cmd = xmlGetProp(node_to_insert, "cmd");
+      prop_visible = xmlGetProp(node_to_insert, "visible");
+      prop_src = xmlGetProp(node_to_insert, "src");
+
+      if(!xmlStrcmp(prop_visible, "no"))
         hidden=TRUE;
 
       if(!xmlStrcmp(node_to_insert->name,"title")){
-	str_name = g_strdup_printf(TITLE_FORMAT, xmlGetProp(node_to_insert,"name"));
+	str_name = g_strdup_printf(TITLE_FORMAT, prop_name);
         /* move in the gtk tree */
         gtk_tree_store_insert_before(menueditor_app.treestore, &iter_new, NULL, &iter);
         gtk_tree_store_set (menueditor_app.treestore, &iter_new, 0, NULL, 
@@ -122,8 +131,8 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
         xmlAddPrevSibling(node_sibling, node_to_insert);
       }else if(!xmlStrcmp(node_to_insert->name,"app")){
 
-        str_name = g_strdup_printf(NAME_FORMAT, xmlGetProp(node_to_insert, "name"));
-        str_command = g_strdup_printf(COMMAND_FORMAT, xmlGetProp(node_to_insert, "cmd"));
+        str_name = g_strdup_printf(NAME_FORMAT, prop_name);
+        str_command = g_strdup_printf(COMMAND_FORMAT, prop_cmd);
 	
         /* move in the gtk tree */
 	gtk_tree_store_insert_before(menueditor_app.treestore, &iter_new, NULL, &iter);
@@ -149,7 +158,7 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
 	  return;
 	}
 
-	str_name = g_strdup_printf(MENU_FORMAT, xmlGetProp(node_to_insert, "name"));
+	str_name = g_strdup_printf(MENU_FORMAT, prop_name);
 
         /* move in the gtk tree */
 	gtk_tree_store_insert_before(menueditor_app.treestore, &iter_new, NULL, 
@@ -183,8 +192,8 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       }else if(!xmlStrcmp(node_to_insert->name,"include")){
         str_name = g_strdup_printf(INCLUDE_FORMAT, _("--- include ---"));
 
-	if(xmlHasProp(node_to_insert, "icon"))
-	  str_command = g_strdup_printf(INCLUDE_PATH_FORMAT, xmlGetProp(node_to_insert, "src"));
+	if(xmlHasProp(node_to_insert, "src"))
+	  str_command = g_strdup_printf(INCLUDE_PATH_FORMAT, prop_src);
 	else
 	  str_command = g_strdup_printf(INCLUDE_PATH_FORMAT, _("system"));
 
@@ -200,8 +209,8 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
         /* move in the xml tree */
         xmlAddPrevSibling(node_sibling, node_to_insert);
       }else if(!xmlStrcmp(node_to_insert->name,"builtin")){
-        str_name = g_strdup_printf(NAME_FORMAT, xmlGetProp(node_to_insert, "name"));
-        str_command = g_strdup_printf(COMMAND_FORMAT, xmlGetProp(node_to_insert, "cmd"));
+        str_name = g_strdup_printf(NAME_FORMAT, prop_name);
+        str_command = g_strdup_printf(COMMAND_FORMAT, prop_cmd);
         /* move in the gtk tree */
 	gtk_tree_store_insert_before(menueditor_app.treestore, &iter_new, NULL,
 &iter);
@@ -216,17 +225,19 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
         xmlAddPrevSibling(node_sibling, node_to_insert);
       }
 
-
       /* Modified ! */
       menueditor_app.menu_modified=TRUE;
       gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
       gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
 
+      xmlFree(prop_name);
+      xmlFree(prop_cmd);
+      xmlFree(prop_visible);
+      xmlFree(prop_src);
       g_free(str_name);
       g_free(str_command);
       gtk_tree_path_free(path);
       gtk_drag_finish(dc, TRUE, (dc->action == GDK_ACTION_MOVE), t);
-      
     }
 
     g_free(iter_to_insert);
@@ -314,7 +325,6 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       menueditor_app.menu_modified=TRUE;
       gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
       gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
-
     }
 
     g_free(filename);

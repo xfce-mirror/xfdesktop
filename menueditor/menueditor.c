@@ -195,14 +195,17 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
   GtkTreeIter c;
 
   while(menu != NULL){
-      gboolean hidden=FALSE;
-    
+    gboolean hidden=FALSE;
+    xmlChar *prop_visible=NULL;
+
+    prop_visible = xmlGetProp(menu, "visible");
+
+    if(prop_visible && !xmlStrcmp(prop_visible,(xmlChar*)"no"))
+      hidden=TRUE;
+
     /* separator */
     if(!xmlStrcmp(menu->name,(xmlChar*)"separator")){
       gchar *name=NULL;
-
-      if(xmlGetProp(menu,"visible") && !xmlStrcmp(xmlGetProp(menu,"visible"),(xmlChar*)"no"))
-	hidden=TRUE;
 
       name = g_strdup_printf(SEPARATOR_FORMAT,
 			     _("--- separator ---"));
@@ -219,16 +222,18 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
     /* launcher */
     if(!xmlStrcmp(menu->name,(xmlChar*)"app")){
       GdkPixbuf *icon = NULL;
-      gchar *name=NULL;
-      gchar *command=NULL;
+      gchar *name = NULL;
+      gchar *command = NULL;
+      xmlChar* prop_name = NULL;
+      xmlChar* prop_cmd = NULL;
+      xmlChar *prop_icon = NULL;
 
-      if(xmlGetProp(menu,"visible") && !xmlStrcmp(xmlGetProp(menu,"visible"),(xmlChar*)"no"))
-	hidden=TRUE;
-      
-      name = g_strdup_printf(NAME_FORMAT,
-			     xmlGetProp(menu,"name"));
-      command = g_strdup_printf(COMMAND_FORMAT,
-				xmlGetProp(menu,"cmd"));
+      prop_name = xmlGetProp(menu, "name");
+      prop_cmd = xmlGetProp(menu, "cmd");
+      prop_icon = xmlGetProp(menu, "icon");
+
+      name = g_strdup_printf(NAME_FORMAT, prop_name);
+      command = g_strdup_printf(COMMAND_FORMAT, prop_cmd);
 
       gtk_tree_store_append (menueditor_app.treestore, &c, p);
       gtk_tree_store_set (menueditor_app.treestore, &c, 
@@ -236,26 +241,28 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			  COMMAND_COLUMN, command,
 			  HIDDEN_COLUMN, hidden,
 			  POINTER_COLUMN, menu, -1);
-      if(xmlGetProp(menu,"icon"))
+      if(prop_icon)
 	/* Load the icon */
-	icon = xfce_load_themed_icon(xmlGetProp(menu,"icon"), ICON_SIZE);
+	icon = xfce_load_themed_icon(prop_icon, ICON_SIZE);
 
       gtk_tree_store_set (menueditor_app.treestore, &c,
 			  ICON_COLUMN, icon, -1);
-	
+
+      xmlFree(prop_name);
+      xmlFree(prop_cmd);
+      xmlFree(prop_icon);
       g_free(command);
       g_free(name);
     }
   
     /* menu */
     if(!xmlStrcmp(menu->name,(xmlChar*)"menu")){
-      gchar *name=NULL;
+      gchar *name = NULL;
+      xmlChar *prop_name = NULL;
 
-      if(xmlGetProp(menu,"visible") && !xmlStrcmp(xmlGetProp(menu,"visible"),(xmlChar*)"no"))
-	hidden=TRUE;
+      prop_name = xmlGetProp(menu, "name");
 
-      name = g_strdup_printf(MENU_FORMAT,
-			      xmlGetProp(menu,"name"));
+      name = g_strdup_printf(MENU_FORMAT, prop_name);
       
       gtk_tree_store_append (menueditor_app.treestore, &c, p);
       gtk_tree_store_set (menueditor_app.treestore, &c, 0, NULL,
@@ -265,23 +272,26 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			  POINTER_COLUMN, menu, -1);
       load_menu_in_tree(menu->xmlChildrenNode,&c);
 
+      xmlFree(prop_name);
       g_free(name);
     }
 
     /* include */
     if(!xmlStrcmp(menu->name,(xmlChar*)"include")){
-      gchar *src=NULL;
-      gchar *name=NULL;
+      gchar *src = NULL;
+      gchar *name = NULL;
+      xmlChar *prop_type = NULL;
+      xmlChar *prop_src = NULL;
 
-      if(xmlGetProp(menu,"visible") && !xmlStrcmp(xmlGetProp(menu,"visible"),(xmlChar*)"no"))
-	hidden=TRUE;
+      prop_type = xmlGetProp(menu, "type");
+      prop_src = xmlGetProp(menu, "src");
 
       name = g_strdup_printf(INCLUDE_FORMAT,_("--- include ---"));
 
-      if(!xmlStrcmp(xmlGetProp(menu,"type"),(xmlChar*)"system"))
+      if(!xmlStrcmp(prop_type, (xmlChar*)"system"))
 	src = g_strdup_printf(INCLUDE_PATH_FORMAT,_("system"));
       else
-	src = g_strdup_printf(INCLUDE_PATH_FORMAT,xmlGetProp(menu,"src"));
+	src = g_strdup_printf(INCLUDE_PATH_FORMAT, prop_src);
       
       gtk_tree_store_append (menueditor_app.treestore, &c, p);
       gtk_tree_store_set (menueditor_app.treestore, &c, 0, NULL,
@@ -290,20 +300,24 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			  HIDDEN_COLUMN, hidden,
 			  POINTER_COLUMN, menu, -1);
 
+      xmlFree(prop_type);
+      xmlFree(prop_src);
       g_free(src);
       g_free(name);
     }
 
     /* builtin */
     if(!xmlStrcmp(menu->name,(xmlChar*)"builtin")){
-      gchar *name=NULL;
-      gchar *cmd=NULL;
+      gchar *name = NULL;
+      gchar *cmd = NULL;
+      xmlChar *prop_name = NULL;
+      xmlChar *prop_cmd = NULL;
 
-      if(xmlGetProp(menu,"visible") && !xmlStrcmp(xmlGetProp(menu,"visible"),(xmlChar*)"no"))
-	hidden=TRUE;
+      prop_name = xmlGetProp(menu, "name");
+      prop_cmd = xmlGetProp(menu , "cmd");
 
-      name = g_strdup_printf(NAME_FORMAT, xmlGetProp(menu,"name"));
-      cmd = g_strdup_printf(COMMAND_FORMAT, xmlGetProp(menu,"cmd"));
+      name = g_strdup_printf(NAME_FORMAT, prop_name);
+      cmd = g_strdup_printf(COMMAND_FORMAT, prop_cmd);
 
       gtk_tree_store_append (menueditor_app.treestore, &c, p);
       gtk_tree_store_set (menueditor_app.treestore, &c, 0, NULL,
@@ -312,7 +326,7 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			  HIDDEN_COLUMN, hidden,
 			  POINTER_COLUMN, menu, -1);
 
-      if(!xmlStrcmp(xmlGetProp(menu,"cmd"),(xmlChar*)"quit")){
+      if(!xmlStrcmp(prop_cmd,(xmlChar*)"quit")){
 	GdkPixbuf *icon;
 
 	icon = xfce_load_themed_icon ("minipower", ICON_SIZE);
@@ -320,18 +334,19 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			    ICON_COLUMN, icon, -1);
       }
 
+      xmlFree(prop_name);
+      xmlFree(prop_cmd);
       g_free(name);
       g_free(cmd);
     }
     /* title */
     if(!xmlStrcmp(menu->name,(xmlChar*)"title")){
-      gchar *title=NULL;
+      gchar *title = NULL;
+      xmlChar *prop_name = NULL;
 
-      if(!xmlGetProp(menu,"visible") && !xmlStrcmp(xmlGetProp(menu,"visible"),(xmlChar*)"no"))
-	hidden=TRUE;
+      prop_name = xmlGetProp(menu, "name");
 
-      title = g_strdup_printf(TITLE_FORMAT,
-			     xmlGetProp(menu,"name"));
+      title = g_strdup_printf(TITLE_FORMAT, prop_name);
 
       gtk_tree_store_append (menueditor_app.treestore, &c, p);
       gtk_tree_store_set (menueditor_app.treestore, &c, 0, NULL, 
@@ -340,8 +355,10 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			  HIDDEN_COLUMN, hidden, 
 			  POINTER_COLUMN, menu , -1);
 
+      xmlFree(prop_name);
       g_free(title);
     }
+    xmlFree(prop_visible);
     menu = menu->next;
   }
 

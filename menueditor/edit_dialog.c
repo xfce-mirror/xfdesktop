@@ -54,6 +54,12 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   struct _controls_menu controls;
   GtkWidget *entry_source;
 
+  xmlChar *prop_name = NULL;
+  xmlChar *prop_cmd = NULL;
+  xmlChar *prop_icon = NULL;
+  xmlChar *prop_type = NULL;
+  xmlChar *prop_src = NULL;
+
   /* Retrieve the xmlNodePtr of the menu entry */
   gtk_tree_model_get_iter(GTK_TREE_MODEL(menueditor_app.treestore), &iter, path);
 	
@@ -79,6 +85,12 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   header = create_header_with_image (header_image, header_text);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);
   g_free (header_text);
+
+  prop_name = xmlGetProp(node, "name");
+  prop_cmd = xmlGetProp(node, "cmd");
+  prop_icon = xmlGetProp(node, "icon");
+  prop_type = xmlGetProp(node, "type");
+  prop_src = xmlGetProp(node, "src");
 
   /* Choose the edition dialog */
   if(!xmlStrcmp(node->name,(xmlChar*)"separator") ){
@@ -139,7 +151,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), table, FALSE, FALSE, 0);
 
     /* Initialize states */
-    if(!xmlStrcmp(xmlGetProp(node,"type"),(xmlChar*)"file")){
+    if(!xmlStrcmp(prop_type, (xmlChar*)"file")){
       controls.menu_type=MENUFILE;
       gtk_widget_set_sensitive(controls.hbox_source,TRUE);
       gtk_widget_set_sensitive(controls.label_source,TRUE);
@@ -198,10 +210,10 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), table, FALSE, FALSE, 0);
 
-    gtk_entry_set_text(GTK_ENTRY(name_entry), xmlGetProp(node,"name"));
-    gtk_entry_set_text(GTK_ENTRY(command_entry), xmlGetProp(node,"cmd"));
-    if(xmlGetProp(node,"icon"))
-      gtk_entry_set_text(GTK_ENTRY(icon_entry), xmlGetProp(node,"icon"));
+    gtk_entry_set_text(GTK_ENTRY(name_entry), prop_name);
+    gtk_entry_set_text(GTK_ENTRY(command_entry), prop_cmd);
+    if(prop_icon)
+      gtk_entry_set_text(GTK_ENTRY(icon_entry), prop_icon);
 
     gtk_window_set_default_size(GTK_WINDOW(dialog),300,150);
   }else if(!xmlStrcmp(node->name,(xmlChar*)"menu")){
@@ -222,7 +234,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), table, FALSE, FALSE, 0);
 
-    gtk_entry_set_text(GTK_ENTRY(name_entry), xmlGetProp(node,"name"));
+    gtk_entry_set_text(GTK_ENTRY(name_entry), prop_name);
 
     gtk_window_set_default_size(GTK_WINDOW(dialog),200,100);
   }else if(!xmlStrcmp(node->name,(xmlChar*)"builtin")){
@@ -243,7 +255,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), table, FALSE, FALSE, 0);
 
-    gtk_entry_set_text(GTK_ENTRY(name_entry), xmlGetProp(node,"name"));
+    gtk_entry_set_text(GTK_ENTRY(name_entry), prop_name);
 
     gtk_window_set_default_size(GTK_WINDOW(dialog),200,100);
   }else if(!xmlStrcmp(node->name,(xmlChar*)"title")){
@@ -264,7 +276,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), table, FALSE, FALSE, 0);
 
-    gtk_entry_set_text(GTK_ENTRY(name_entry), xmlGetProp(node,"name"));
+    gtk_entry_set_text(GTK_ENTRY(name_entry), prop_name);
 
     gtk_window_set_default_size(GTK_WINDOW(dialog),200,100);
   }
@@ -382,5 +394,11 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     
     }
   }
+  xmlFree(prop_name);
+  xmlFree(prop_cmd);
+  xmlFree(prop_icon);
+  xmlFree(prop_type);
+  xmlFree(prop_src);
+
   gtk_widget_destroy (dialog);
 }
