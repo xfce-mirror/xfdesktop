@@ -3,68 +3,11 @@
 /* Define for debugging support */
 #undef DEBUG
 
-/* Define glib required version. */
-#undef GLIB_REQUIRED_VERSION
-
-/* Define gtk required version. */
-#undef GTK_REQUIRED_VERSION
-
-/* Define to 1 if you have the <inttypes.h> header file. */
-#undef HAVE_INTTYPES_H
-
-/* Define to 1 if you have the `X11' library (-lX11). */
+/* Define if libX11 is available */
 #undef HAVE_LIBX11
-
-/* Define to 1 if you have the `Xext' library (-lXext). */
-#undef HAVE_LIBXEXT
-
-/* Define to 1 if you have the `Xpm' library (-lXpm). */
-#undef HAVE_LIBXPM
-
-/* Define to 1 if you have the <memory.h> header file. */
-#undef HAVE_MEMORY_H
-
-/* Define to 1 if you have the `setlocale' function. */
-#undef HAVE_SETLOCALE
 
 /* Define to 1 if you have the `srandom' function. */
 #undef HAVE_SRANDOM
-
-/* Define to 1 if you have the <stdint.h> header file. */
-#undef HAVE_STDINT_H
-
-/* Define to 1 if you have the <stdlib.h> header file. */
-#undef HAVE_STDLIB_H
-
-/* Define to 1 if you have the `strchr' function. */
-#undef HAVE_STRCHR
-
-/* Define to 1 if you have the <strings.h> header file. */
-#undef HAVE_STRINGS_H
-
-/* Define to 1 if you have the <string.h> header file. */
-#undef HAVE_STRING_H
-
-/* Define to 1 if you have the `strrchr' function. */
-#undef HAVE_STRRCHR
-
-/* Define to 1 if you have the `strstr' function. */
-#undef HAVE_STRSTR
-
-/* Define to 1 if you have the <sys/stat.h> header file. */
-#undef HAVE_SYS_STAT_H
-
-/* Define to 1 if you have the <sys/types.h> header file. */
-#undef HAVE_SYS_TYPES_H
-
-/* Define to 1 if you have the <unistd.h> header file. */
-#undef HAVE_UNISTD_H
-
-/* Define libxfce4mcs required version. */
-#undef LIBXFCE4MCS_REQUIRED_VERSION
-
-/* Define libxfcegui4 required version. */
-#undef LIBXFCEGUI4_REQUIRED_VERSION
 
 /* Name of package */
 #undef PACKAGE
@@ -83,9 +26,6 @@
 
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
-
-/* Define pango required version. */
-#undef PANGO_REQUIRED_VERSION
 
 /* Define to 1 if you have the ANSI C header files. */
 #undef STDC_HEADERS

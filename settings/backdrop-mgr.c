@@ -32,7 +32,7 @@
 #include <unistd.h>
 
 #include "settings_common.h"
-#include "backdrop_settings.h"
+#include "backdrop.h"
 #include "backdrop-mgr.h"
 
 #include <libxfce4util/util.h>
@@ -129,57 +129,15 @@ static void remove_file(ListDialog *ld)
 static void
 read_file(const char *filename, ListDialog *ld)
 {
-    gchar *contents;
-    struct stat sb;
     gchar **files;
     gchar **file;
-    int fd;
 
-#ifdef O_SHLOCK
-    if ((fd = open(filename, O_RDONLY | O_SHLOCK, 0)) < 0) {
-#else
-    if ((fd = open(filename, O_RDONLY, 0)) < 0) {
-#endif
-        xfce_err(_("Unable to open file %s: %s"), filename, g_strerror(errno));
-        return;
+    if ((files = get_list_from_file(filename)) != NULL) {
+        for (file = files; *file != NULL; file++)
+	        add_file(*file, ld);
+
+        g_strfreev(files);
     }
-
-    if (fstat(fd, &sb) < 0) {
-        xfce_err(_("Unable to stat %s: %s"), filename, g_strerror(errno));
-        goto finished;
-    }
-
-    if ((contents = malloc((size_t)sb.st_size + 1)) == NULL) {
-        xfce_err(_("Unable to allocate %u bytes of memory: %s"),
-                (unsigned)sb.st_size, g_strerror(errno));
-        goto finished;
-    }
-
-    if (read(fd, contents, sb.st_size) < sb.st_size) {
-        xfce_err(_("Unable to read contents of %s into buffer: %s"),
-                filename, g_strerror(errno));
-        goto finished2;
-    }
-
-    contents[sb.st_size] = '\0';
-
-    if (strncmp(LIST_TEXT, contents, sizeof(LIST_TEXT) - 1) != 0) {
-        xfce_err(_("Not a backdrop list file: %s\n"), filename);
-        goto finished2;
-    }
-
-    files = g_strsplit(contents + sizeof(LIST_TEXT), "\n", -1);
-
-    for (file = files; *file != NULL; file++)
-	    add_file(*file, ld);
-
-    g_strfreev(files);
-
-finished2:
-    free(contents);
-
-finished:
-    (void)close(fd);
 }
 
 static gboolean

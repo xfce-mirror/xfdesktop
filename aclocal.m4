@@ -783,6 +783,32 @@ AC_CONFIG_COMMANDS_PRE(
 Usually this means the macro was only invoked conditionally.])
 fi])])
 
+# Like AC_CONFIG_HEADER, but automatically create stamp file. -*- Autoconf -*-
+
+# Copyright 1996, 1997, 2000, 2001 Free Software Foundation, Inc.
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+# 02111-1307, USA.
+
+AC_PREREQ([2.52])
+
+# serial 6
+
+# AM_CONFIG_HEADER is obsolete.  It has been replaced by AC_CONFIG_HEADERS.
+AU_DEFUN([AM_CONFIG_HEADER], [AC_CONFIG_HEADERS($@)])
+
 # Add --enable-maintainer-mode option to configure.
 # From Jim Meyering
 
@@ -821,32 +847,6 @@ AC_DEFUN([AM_MAINTAINER_MODE],
 )
 
 AU_DEFUN([jm_MAINTAINER_MODE], [AM_MAINTAINER_MODE])
-
-# Like AC_CONFIG_HEADER, but automatically create stamp file. -*- Autoconf -*-
-
-# Copyright 1996, 1997, 2000, 2001 Free Software Foundation, Inc.
-
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2, or (at your option)
-# any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
-# 02111-1307, USA.
-
-AC_PREREQ([2.52])
-
-# serial 6
-
-# AM_CONFIG_HEADER is obsolete.  It has been replaced by AC_CONFIG_HEADERS.
-AU_DEFUN([AM_CONFIG_HEADER], [AC_CONFIG_HEADERS($@)])
 
 
 # serial 46 AC_PROG_LIBTOOL
@@ -1678,6 +1678,125 @@ AC_DEFUN([LT_AC_PROG_GCJ],
 [AC_CHECK_TOOL(GCJ, gcj, no)
   test "x${GCJFLAGS+set}" = xset || GCJFLAGS="-g -O2"
   AC_SUBST(GCJFLAGS)
+])
+
+dnl From Benedikt Meurer (benedikt.meurer@unix-ag.uni-siegen.de)
+dnl Check for X11
+
+AC_DEFUN([BM_LIBX11],
+[
+  AC_REQUIRE([AC_PATH_XTRA])
+  AC_REQUIRE([BM_RPATH_SUPPORT])
+  LIBX11_CFLAGS= LIBX11_LDFLAGS= LIBX11_LIBS=
+  if test "$no_x" != "yes"; then
+    AC_CHECK_LIB(X11, main,
+    [
+      AC_DEFINE(HAVE_LIBX11, 1, Define if libX11 is available)
+      LIBX11_CFLAGS="$X_CFLAGS"
+      for option in $X_PRE_LIBS $X_EXTRA_LIBS $X_LIBS; do
+      	case "$option" in
+        -L*)
+          path=`echo $option | sed 's/^-L//'`
+          if test "x$path" != "x"; then
+            LIBX11_LDFLAGS="$LIBX11_LDFLAGS -L$path"
+            if test -n "$LD_RPATH"; then
+              LIBX11_LDFLAGS="$LIBX11_LDFLAGS $LD_RPATH$path"
+            fi
+          fi
+          ;;
+        *)
+          LIBX11_LIBS="$LIBX11_LIBS $option"
+          ;;
+        esac
+      done
+      if ! echo $LIBX11_LIBS | grep -q -- '-lX11'; then
+        LIBX11_LIBS="$LIBX11_LIBS -lX11"
+      fi
+    ], [], [$X_CFLAGS $X_PRE_LIBS $X_EXTRA_LIBS $X_LIBS])
+  fi
+  AC_SUBST(LIBX11_CFLAGS)
+  AC_SUBST(LIBX11_LDFLAGS)
+  AC_SUBST(LIBX11_LIBS)
+])
+
+AC_DEFUN([BM_LIBX11_REQUIRE],
+[
+  AC_REQUIRE([BM_LIBX11])
+  if test "$no_x" == "yes"; then
+    AC_MSG_ERROR([X Window system libraries and header files are required])
+  fi
+])
+
+AC_DEFUN([BM_LIBSM],
+[
+  AC_REQUIRE([BM_LIBX11])
+  LIBSM_CFLAGS= LIBSM_LDFLAGS= LIBSM_LIBS=
+  if test "$no_x" != "yes"; then
+    AC_CHECK_LIB(SM, SmcSaveYourselfDone,
+    [
+      AC_DEFINE(HAVE_LIBSM, 1, Define if libSM is available)
+      LIBSM_CFLAGS="$LIBX11_CFLAGS"
+      LIBSM_LDFLAGS="$LIBX11_LDFLAGS"
+      LIBSM_LIBS="$LIBX11_LIBS"
+      if ! echo $LIBSM_LIBS | grep -q -- '-lSM'; then
+        LIBSM_LIBS="$LIBSM_LIBS -lSM -lICE"
+      fi
+    ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS -lICE])
+  fi
+  AC_SUBST(LIBSM_CFLAGS)
+  AC_SUBST(LIBSM_LDFLAGS)
+  AC_SUBST(LIBSM_LIBS)
+])
+
+AC_DEFUN([BM_LIBXINERAMA],
+[
+  AC_ARG_ENABLE(xinerama,
+AC_HELP_STRING([--enable-xinerama], [enable xinerama extension])
+AC_HELP_STRING([--disable-xinerama], [disable xinerama extension [default]]),
+      [], [enable_xinerama=no])
+  LIBXINERAMA_CFLAGS= LIBXINERAMA_LDFLAGS= LIBXINERAMA_LIBS=
+  if test "x$enable_xinerama" = "xyes"; then
+    AC_REQUIRE([BM_LIBX11_REQUIRE])
+    AC_CHECK_LIB(Xinerama, XineramaQueryScreens,
+    [
+      AC_DEFINE(HAVE_LIBXINERAMA, 1, Define if XFree86 Xinerama is available)
+      LIBXINERAMA_CFLAGS="$LIBX11_CFLAGS"
+      LIBXINERAMA_LDFLAGS="$LIBX11_LDFLAGS"
+      LIBXINERAMA_LIBS="$LIBX11_LIBS"
+      if ! echo $LIBXINERAMA_LIBS | grep -q -- '-lXinerama'; then
+        LIBXINERAMA_LIBS="$LIBXINERAMA_LIBS -lXinerama"
+      fi
+      if ! echo $LIBXINERAMA_LIBS | grep -q -- '-lXext'; then
+        LIBXINERAMA_LIBS="$LIBXINERAMA_LIBS -lXext"
+      fi
+    ],[], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS -lXext])
+  fi
+  AC_SUBST(LIBXINERAMA_CFLAGS)
+  AC_SUBST(LIBXINERAMA_LDFLAGS)
+  AC_SUBST(LIBXINERAMA_LIBS)
+])
+
+
+dnl From Benedikt Meurer (benedikt.meurer@unix-ag.uni-siegen.de)
+dnl
+dnl Workaround for some broken ELF systems
+dnl
+
+AC_DEFUN([BM_RPATH_SUPPORT],
+[
+  AC_ARG_ENABLE(rpath,
+AC_HELP_STRING([--enable-rpath], [Specify run path to the ELF linker (default)])
+AC_HELP_STRING([--disable-rpath], [Do not use -rpath (use with care!!)]),
+    [ac_cv_rpath=$enableval], [ac_cv_rpath=yes])
+  AC_MSG_CHECKING([whether to use -rpath])
+  LD_RPATH=
+  if test "x$ac_cv_rpath" != "xno"; then
+    LD_RPATH="-Wl,-R"
+    AC_MSG_RESULT([yes])
+  else
+    LD_RPATH=""
+    AC_MSG_RESULT([no])
+  fi
 ])
 
 

@@ -35,9 +35,6 @@
 #include "backdrop.h"
 #include "settings.h"
 
-/* common stuff is defined here */
-#include "settings/backdrop_settings.h"
-
 static GtkWidget *fullscreen_window = NULL;
 static int screen_width = 0;
 static int screen_height = 0;
@@ -197,61 +194,6 @@ void backdrop_load_settings(McsClient *client)
     }
     
     set_backdrop(backdrop_path, backdrop_style, showimage, &backdrop_color);
-}
-
-/* setting the background */
-static char **
-get_list_from_file(const char *filename)
-{
-    gchar *contents;
-    struct stat sb;
-    gchar **files;
-    int fd;
-
-    files = NULL;
-
-#ifdef O_SHLOCK
-    if ((fd = open(filename, O_RDONLY | O_SHLOCK, 0)) < 0) {
-#else
-    if ((fd = open(filename, O_RDONLY, 0)) < 0) {
-#endif
-        xfce_err(_("Unable to open file %s: %s"), filename, g_strerror(errno));
-        return(NULL);
-    }
-
-    if (fstat(fd, &sb) < 0) {
-        xfce_err(_("Unable to stat %s: %s"), filename, g_strerror(errno));
-        goto finished;
-    }
-
-    if ((contents = malloc((size_t)sb.st_size + 1)) == NULL) {
-        xfce_err(_("Unable to allocate %u bytes of memory: %s"),
-                (unsigned)sb.st_size, g_strerror(errno));
-        goto finished;
-    }
-
-    if (read(fd, contents, sb.st_size) < sb.st_size) {
-        xfce_err(_("Unable to read contents of %s into buffer: %s"),
-                filename, g_strerror(errno));
-        goto finished2;
-    }
-
-    if (strncmp(LIST_TEXT, contents, sizeof(LIST_TEXT) - 1) != 0) {
-        xfce_err(_("Not a backdrop list file: %s"), filename);
-        goto finished2;
-    }
-
-    contents[sb.st_size] = '\0';
-
-    files = g_strsplit(contents + sizeof(LIST_TEXT), "\n", -1);
-
-finished2:
-    free(contents);
-
-finished:
-    (void)close(fd);
-
-    return(files);
 }
 
 static int

@@ -43,28 +43,26 @@ static gboolean session_managed = FALSE;
 
 static Window selection_window;
 
-void quit(void)
+void
+quit(void)
 {
     TRACE();
+
     if (session_managed)
-    {
-	logout_session(client_session);
-    }
+	    logout_session(client_session);
     else
-    {
-	gtk_main_quit();
-    }
+	    gtk_main_quit();
 }
 
 /* client message */
 #define RELOAD_MESSAGE "reload"
 
-static void send_client_message(Window xid)
+static void
+send_client_message(Window xid)
 {
     GdkEventClient gev;
     GtkWidget *win;
 
-    TRACE();
     win = gtk_invisible_new();
     gtk_widget_realize(win);
     

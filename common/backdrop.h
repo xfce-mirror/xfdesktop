@@ -1,6 +1,6 @@
-/*  xfce4
- *  
- *  Copyright (C) 2002 Jasper Huijsmans (huysmans@users.sourceforge.net)
+/*
+ *  Copyright (C) 2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
+ *  Copyright (C) 2003 Benedikt Meurer (benedikt.meurer@unix-ag.uni-siegen.de)
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,16 +17,24 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#ifndef __XFDESKTOP_BACKGROUND_H
-#define __XFDESKTOP_BACKGROUND_H
+#ifndef __XFDESKTOP_BACKDROP_H__
+#define __XFDESKTOP_BACKDROP_H__
 
-#include "main.h"
+#include <glib.h>
 
-void backdrop_init(GtkWidget *window);
+#define BACKDROP_CHANNEL    "BACKDROP"
 
-void backdrop_load_settings(McsClient *client);
+#define LIST_TEXT           "# xfce backdrop list"
 
-void add_backdrop_callback(GHashTable *ht);
+/* styles */
+enum {
+    TILED,
+    SCALED,
+    CENTERED,
+    AUTO,
+    NONE
+};
 
-#endif /* __XFDESKTOP_BACKGROUND_H */
+extern gchar **get_list_from_file(const gchar *);
 
+#endif  /* !__XFDESKTOP_BACKDROP_H__ */

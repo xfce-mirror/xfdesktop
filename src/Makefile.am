@@ -1,18 +1,36 @@
-bin_PROGRAMS =  xfdesktop
+bin_PROGRAMS = xfdesktop
 
-xfdesktop_SOURCES = \
-backdrop.c \
-backdrop.h \
-main.c \
-main.h \
-menu.c \
-menu.h \
-settings.c \
-settings.h \
-workspaces.c \
-workspaces.h
+xfdesktop_SOURCES =							\
+	backdrop.c							\
+	main.c								\
+	main.h								\
+	menu.c								\
+	menu.h								\
+	settings.c							\
+	settings.h							\
+	workspaces.c							\
+	workspaces.h
 
-xfdesktop_CFLAGS = -Wall -I$(top_srcdir) @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ @MCS_CLIENT_CFLAGS@ -DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DDATADIR=\"$(pkgdatadir)\" -DSYSCONFDIR=\"$(sysconfdir)\" -DVERSION=\"@VERSION@\"  -I..
-xfdesktop_LDADD = @LIBS@ @X_LIBS@  @BASE_DEPENDENCIES_LIBS@ @MCS_CLIENT_LIBS@
+xfdesktop_CFLAGS = 							\
+	-I$(top_srcdir)/common						\
+	@CFLAGS@							\
+	@GTK_CFLAGS@							\
+	@LIBX11_CFLAGS@							\
+	@LIBXFCE4MCS_CLIENT_CFLAGS@					\
+	@LIBXFCE4UTIL_CFLAGS@						\
+	@LIBXFCEGUI4_CFLAGS@						\
+	@LIBXML_CFLAGS@							\
+	-DDATADIR=\"$(pkgdatadir)\"					\
+	-DSYSCONFDIR=\"$(sysconfdir)\"					\
+	-DVERSION=\"@VERSION@\"
 
-
+xfdesktop_LDADD =							\
+	$(top_srcdir)/common/libxfdesktop.la				\
+	@LIBS@								\
+	@GTK_LIBS@							\
+	@LIBX11_LDFLAGS@						\
+	@LIBX11_LIBS@							\
+	@LIBXFCE4MCS_CLIENT_LIBS@					\
+	@LIBXFCE4UTIL_LIBS@						\
+	@LIBXFCEGUI4_LIBS@						\
+	@LIBXML_LIBS@

@@ -270,45 +270,8 @@ PACKAGE_VERSION=
 PACKAGE_STRING=
 PACKAGE_BUGREPORT=
 
-ac_unique_file="xfdesktop.spec.in"
-# Factoring default headers for most tests.
-ac_includes_default="\
-#include <stdio.h>
-#if HAVE_SYS_TYPES_H
-# include <sys/types.h>
-#endif
-#if HAVE_SYS_STAT_H
-# include <sys/stat.h>
-#endif
-#if STDC_HEADERS
-# include <stdlib.h>
-# include <stddef.h>
-#else
-# if HAVE_STDLIB_H
-#  include <stdlib.h>
-# endif
-#endif
-#if HAVE_STRING_H
-# if !STDC_HEADERS && HAVE_MEMORY_H
-#  include <memory.h>
-# endif
-# include <string.h>
-#endif
-#if HAVE_STRINGS_H
-# include <strings.h>
-#endif
-#if HAVE_INTTYPES_H
-# include <inttypes.h>
-#else
-# if HAVE_STDINT_H
-#  include <stdint.h>
-# endif
-#endif
-#if HAVE_UNISTD_H
-# include <unistd.h>
-#endif"
-
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS VERSION INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S RANLIB ac_ct_RANLIB LIBTOOL CPP X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS EGREP GLIB_REQUIRED_VERSION GTK_REQUIRED_VERSION PANGO_REQUIRED_VERSION LIBXFCEGUI4_REQUIRED_VERSION LIBXFCE4MCS_REQUIRED_VERSION PKG_CONFIG BASE_DEPENDENCIES_CFLAGS BASE_DEPENDENCIES_LIBS MCS_CLIENT_CFLAGS MCS_CLIENT_LIBS MCS_MANAGER_CFLAGS MCS_MANAGER_LIBS GDK_PIXBUF_CSOURCE LIBOBJS LTLIBOBJS'
+ac_unique_file="common/backdrop.c"
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S RANLIB ac_ct_RANLIB LIBTOOL CPP EGREP X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS LIBX11_CFLAGS LIBX11_LDFLAGS LIBX11_LIBS PKG_CONFIG GLIB_CFLAGS GLIB_LIBS GTK_CFLAGS GTK_LIBS LIBXFCEGUI4_CFLAGS LIBXFCEGUI4_LIBS LIBXFCE4UTIL_CFLAGS LIBXFCE4UTIL_LIBS LIBXML_CFLAGS LIBXML_LIBS LIBXFCE4MCS_CLIENT_CFLAGS LIBXFCE4MCS_CLIENT_LIBS LIBXFCE4MCS_MANAGER_CFLAGS LIBXFCE4MCS_MANAGER_LIBS LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -860,6 +823,8 @@ Optional Features:
   --enable-static=PKGS  build static libraries default=yes
   --enable-fast-install=PKGS  optimize for fast installation default=yes
   --disable-libtool-lock  avoid locking (might break parallel builds)
+  --enable-rpath          Specify run path to the ELF linker (default)
+  --disable-rpath         Do not use -rpath (use with care!!)
   --enable-debug=yes|no|full
                           Build with debugging support
   --disable-debug         Include no debugging support default
@@ -1287,9 +1252,6 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
-VERSION=`date +%y%m%d`
-
-
 am__api_version="1.7"
 ac_aux_dir=
 for ac_dir in $srcdir $srcdir/.. $srcdir/../..; do
@@ -1554,7 +1516,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=xfdesktop
- VERSION=$VERSION
+ VERSION=0.1
 
 
 cat >>confdefs.h <<_ACEOF
@@ -1680,6 +1642,10 @@ INSTALL_STRIP_PROGRAM="\${SHELL} \$(install_sh) -c -s"
 
 
 
+
+          ac_config_headers="$ac_config_headers config.h"
+
+
 echo "$as_me:$LINENO: checking whether to enable maintainer-specific portions of Makefiles" >&5
 echo $ECHO_N "checking whether to enable maintainer-specific portions of Makefiles... $ECHO_C" >&6
     # Check whether --enable-maintainer-mode or --disable-maintainer-mode was given.
@@ -1704,12 +1670,6 @@ fi
   MAINT=$MAINTAINER_MODE_TRUE
 
 
-
-          ac_config_headers="$ac_config_headers config.h"
-
-
-# Honor aclocal flags
-ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
@@ -3595,7 +3555,7 @@ test x"$pic_mode" = xno && libtool_flags="$libtool_flags --prefer-non-pic"
 case $host in
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 3598 "configure"' > conftest.$ac_ext
+  echo '#line 3558 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -4025,6 +3985,266 @@ ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+
+echo "$as_me:$LINENO: checking for egrep" >&5
+echo $ECHO_N "checking for egrep... $ECHO_C" >&6
+if test "${ac_cv_prog_egrep+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  if echo a | (grep -E '(a|b)') >/dev/null 2>&1
+    then ac_cv_prog_egrep='grep -E'
+    else ac_cv_prog_egrep='egrep'
+    fi
+fi
+echo "$as_me:$LINENO: result: $ac_cv_prog_egrep" >&5
+echo "${ECHO_T}$ac_cv_prog_egrep" >&6
+ EGREP=$ac_cv_prog_egrep
+
+
+echo "$as_me:$LINENO: checking for ANSI C header files" >&5
+echo $ECHO_N "checking for ANSI C header files... $ECHO_C" >&6
+if test "${ac_cv_header_stdc+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  cat >conftest.$ac_ext <<_ACEOF
+#line $LINENO "configure"
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string.h>
+#include <float.h>
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+  (eval $ac_compile) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+         { ac_try='test -s conftest.$ac_objext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_cv_header_stdc=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+ac_cv_header_stdc=no
+fi
+rm -f conftest.$ac_objext conftest.$ac_ext
+
+if test $ac_cv_header_stdc = yes; then
+  # SunOS 4.x string.h does not declare mem*, contrary to ANSI.
+  cat >conftest.$ac_ext <<_ACEOF
+#line $LINENO "configure"
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+#include <string.h>
+
+_ACEOF
+if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
+  $EGREP "memchr" >/dev/null 2>&1; then
+  :
+else
+  ac_cv_header_stdc=no
+fi
+rm -f conftest*
+
+fi
+
+if test $ac_cv_header_stdc = yes; then
+  # ISC 2.0.2 stdlib.h does not declare free, contrary to ANSI.
+  cat >conftest.$ac_ext <<_ACEOF
+#line $LINENO "configure"
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+#include <stdlib.h>
+
+_ACEOF
+if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
+  $EGREP "free" >/dev/null 2>&1; then
+  :
+else
+  ac_cv_header_stdc=no
+fi
+rm -f conftest*
+
+fi
+
+if test $ac_cv_header_stdc = yes; then
+  # /bin/cc in Irix-4.0.5 gets non-ANSI ctype macros unless using -ansi.
+  if test "$cross_compiling" = yes; then
+  :
+else
+  cat >conftest.$ac_ext <<_ACEOF
+#line $LINENO "configure"
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+#include <ctype.h>
+#if ((' ' & 0x0FF) == 0x020)
+# define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+# define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
+#else
+# define ISLOWER(c) \
+                   (('a' <= (c) && (c) <= 'i') \
+                     || ('j' <= (c) && (c) <= 'r') \
+                     || ('s' <= (c) && (c) <= 'z'))
+# define TOUPPER(c) (ISLOWER(c) ? ((c) | 0x40) : (c))
+#endif
+
+#define XOR(e, f) (((e) && !(f)) || (!(e) && (f)))
+int
+main ()
+{
+  int i;
+  for (i = 0; i < 256; i++)
+    if (XOR (islower (i), ISLOWER (i))
+        || toupper (i) != TOUPPER (i))
+      exit(2);
+  exit (0);
+}
+_ACEOF
+rm -f conftest$ac_exeext
+if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+  (eval $ac_link) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && { ac_try='./conftest$ac_exeext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  :
+else
+  echo "$as_me: program exited with status $ac_status" >&5
+echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+( exit $ac_status )
+ac_cv_header_stdc=no
+fi
+rm -f core core.* *.core gmon.out bb.out conftest$ac_exeext conftest.$ac_objext conftest.$ac_ext
+fi
+fi
+fi
+echo "$as_me:$LINENO: result: $ac_cv_header_stdc" >&5
+echo "${ECHO_T}$ac_cv_header_stdc" >&6
+if test $ac_cv_header_stdc = yes; then
+
+cat >>confdefs.h <<\_ACEOF
+#define STDC_HEADERS 1
+_ACEOF
+
+fi
+
+
+for ac_func in srandom
+do
+as_ac_var=`echo "ac_cv_func_$ac_func" | $as_tr_sh`
+echo "$as_me:$LINENO: checking for $ac_func" >&5
+echo $ECHO_N "checking for $ac_func... $ECHO_C" >&6
+if eval "test \"\${$as_ac_var+set}\" = set"; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  cat >conftest.$ac_ext <<_ACEOF
+#line $LINENO "configure"
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+/* System header to define __stub macros and hopefully few prototypes,
+    which can conflict with char $ac_func (); below.
+    Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
+    <limits.h> exists even on freestanding compilers.  */
+#ifdef __STDC__
+# include <limits.h>
+#else
+# include <assert.h>
+#endif
+/* Override any gcc2 internal prototype to avoid an error.  */
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+/* We use char because int might match the return type of a gcc2
+   builtin and then its argument prototype would still apply.  */
+char $ac_func ();
+/* The GNU C library defines this for functions which it implements
+    to always fail with ENOSYS.  Some functions are actually named
+    something starting with __ and the normal name is an alias.  */
+#if defined (__stub_$ac_func) || defined (__stub___$ac_func)
+choke me
+#else
+char (*f) () = $ac_func;
+#endif
+#ifdef __cplusplus
+}
+#endif
+
+int
+main ()
+{
+return f != $ac_func;
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+  (eval $ac_link) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+         { ac_try='test -s conftest$ac_exeext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  eval "$as_ac_var=yes"
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+eval "$as_ac_var=no"
+fi
+rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
+fi
+echo "$as_me:$LINENO: result: `eval echo '${'$as_ac_var'}'`" >&5
+echo "${ECHO_T}`eval echo '${'$as_ac_var'}'`" >&6
+if test `eval echo '${'$as_ac_var'}'` = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define `echo "HAVE_$ac_func" | $as_tr_cpp` 1
+_ACEOF
+
+fi
+done
 
 
 echo "$as_me:$LINENO: checking for X" >&5
@@ -5223,479 +5443,33 @@ fi
 
 fi
 
-echo "$as_me:$LINENO: checking for egrep" >&5
-echo $ECHO_N "checking for egrep... $ECHO_C" >&6
-if test "${ac_cv_prog_egrep+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
+
+  # Check whether --enable-rpath or --disable-rpath was given.
+if test "${enable_rpath+set}" = set; then
+  enableval="$enable_rpath"
+  ac_cv_rpath=$enableval
 else
-  if echo a | (grep -E '(a|b)') >/dev/null 2>&1
-    then ac_cv_prog_egrep='grep -E'
-    else ac_cv_prog_egrep='egrep'
-    fi
-fi
-echo "$as_me:$LINENO: result: $ac_cv_prog_egrep" >&5
-echo "${ECHO_T}$ac_cv_prog_egrep" >&6
- EGREP=$ac_cv_prog_egrep
-
-
-echo "$as_me:$LINENO: checking for ANSI C header files" >&5
-echo $ECHO_N "checking for ANSI C header files... $ECHO_C" >&6
-if test "${ac_cv_header_stdc+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  cat >conftest.$ac_ext <<_ACEOF
-#line $LINENO "configure"
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-#include <stdlib.h>
-#include <stdarg.h>
-#include <string.h>
-#include <float.h>
-
-int
-main ()
-{
-
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext
-if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
-  (eval $ac_compile) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } &&
-         { ac_try='test -s conftest.$ac_objext'
-  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
-  (eval $ac_try) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }; }; then
-  ac_cv_header_stdc=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-ac_cv_header_stdc=no
-fi
-rm -f conftest.$ac_objext conftest.$ac_ext
-
-if test $ac_cv_header_stdc = yes; then
-  # SunOS 4.x string.h does not declare mem*, contrary to ANSI.
-  cat >conftest.$ac_ext <<_ACEOF
-#line $LINENO "configure"
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-#include <string.h>
-
-_ACEOF
-if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
-  $EGREP "memchr" >/dev/null 2>&1; then
-  :
-else
-  ac_cv_header_stdc=no
-fi
-rm -f conftest*
-
-fi
-
-if test $ac_cv_header_stdc = yes; then
-  # ISC 2.0.2 stdlib.h does not declare free, contrary to ANSI.
-  cat >conftest.$ac_ext <<_ACEOF
-#line $LINENO "configure"
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-#include <stdlib.h>
-
-_ACEOF
-if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
-  $EGREP "free" >/dev/null 2>&1; then
-  :
-else
-  ac_cv_header_stdc=no
-fi
-rm -f conftest*
-
-fi
-
-if test $ac_cv_header_stdc = yes; then
-  # /bin/cc in Irix-4.0.5 gets non-ANSI ctype macros unless using -ansi.
-  if test "$cross_compiling" = yes; then
-  :
-else
-  cat >conftest.$ac_ext <<_ACEOF
-#line $LINENO "configure"
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-#include <ctype.h>
-#if ((' ' & 0x0FF) == 0x020)
-# define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
-# define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
-#else
-# define ISLOWER(c) \
-                   (('a' <= (c) && (c) <= 'i') \
-                     || ('j' <= (c) && (c) <= 'r') \
-                     || ('s' <= (c) && (c) <= 'z'))
-# define TOUPPER(c) (ISLOWER(c) ? ((c) | 0x40) : (c))
-#endif
-
-#define XOR(e, f) (((e) && !(f)) || (!(e) && (f)))
-int
-main ()
-{
-  int i;
-  for (i = 0; i < 256; i++)
-    if (XOR (islower (i), ISLOWER (i))
-        || toupper (i) != TOUPPER (i))
-      exit(2);
-  exit (0);
-}
-_ACEOF
-rm -f conftest$ac_exeext
-if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
-  (eval $ac_link) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && { ac_try='./conftest$ac_exeext'
-  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
-  (eval $ac_try) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }; }; then
-  :
-else
-  echo "$as_me: program exited with status $ac_status" >&5
-echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-( exit $ac_status )
-ac_cv_header_stdc=no
-fi
-rm -f core core.* *.core gmon.out bb.out conftest$ac_exeext conftest.$ac_objext conftest.$ac_ext
-fi
-fi
-fi
-echo "$as_me:$LINENO: result: $ac_cv_header_stdc" >&5
-echo "${ECHO_T}$ac_cv_header_stdc" >&6
-if test $ac_cv_header_stdc = yes; then
-
-cat >>confdefs.h <<\_ACEOF
-#define STDC_HEADERS 1
-_ACEOF
-
-fi
-
-
-
-
-
-
-for ac_func in setlocale srandom strchr strrchr strstr
-do
-as_ac_var=`echo "ac_cv_func_$ac_func" | $as_tr_sh`
-echo "$as_me:$LINENO: checking for $ac_func" >&5
-echo $ECHO_N "checking for $ac_func... $ECHO_C" >&6
-if eval "test \"\${$as_ac_var+set}\" = set"; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  cat >conftest.$ac_ext <<_ACEOF
-#line $LINENO "configure"
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-/* System header to define __stub macros and hopefully few prototypes,
-    which can conflict with char $ac_func (); below.
-    Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
-    <limits.h> exists even on freestanding compilers.  */
-#ifdef __STDC__
-# include <limits.h>
-#else
-# include <assert.h>
-#endif
-/* Override any gcc2 internal prototype to avoid an error.  */
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-/* We use char because int might match the return type of a gcc2
-   builtin and then its argument prototype would still apply.  */
-char $ac_func ();
-/* The GNU C library defines this for functions which it implements
-    to always fail with ENOSYS.  Some functions are actually named
-    something starting with __ and the normal name is an alias.  */
-#if defined (__stub_$ac_func) || defined (__stub___$ac_func)
-choke me
-#else
-char (*f) () = $ac_func;
-#endif
-#ifdef __cplusplus
-}
-#endif
-
-int
-main ()
-{
-return f != $ac_func;
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext conftest$ac_exeext
-if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
-  (eval $ac_link) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } &&
-         { ac_try='test -s conftest$ac_exeext'
-  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
-  (eval $ac_try) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }; }; then
-  eval "$as_ac_var=yes"
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-eval "$as_ac_var=no"
-fi
-rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
-fi
-echo "$as_me:$LINENO: result: `eval echo '${'$as_ac_var'}'`" >&5
-echo "${ECHO_T}`eval echo '${'$as_ac_var'}'`" >&6
-if test `eval echo '${'$as_ac_var'}'` = yes; then
-  cat >>confdefs.h <<_ACEOF
-#define `echo "HAVE_$ac_func" | $as_tr_cpp` 1
-_ACEOF
-
-fi
-done
-
-# On IRIX 5.3, sys/types and inttypes.h are conflicting.
-
-
-
-
-
-
-
-
-
-for ac_header in sys/types.h sys/stat.h stdlib.h string.h memory.h strings.h \
-                  inttypes.h stdint.h unistd.h
-do
-as_ac_Header=`echo "ac_cv_header_$ac_header" | $as_tr_sh`
-echo "$as_me:$LINENO: checking for $ac_header" >&5
-echo $ECHO_N "checking for $ac_header... $ECHO_C" >&6
-if eval "test \"\${$as_ac_Header+set}\" = set"; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  cat >conftest.$ac_ext <<_ACEOF
-#line $LINENO "configure"
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-$ac_includes_default
-
-#include <$ac_header>
-_ACEOF
-rm -f conftest.$ac_objext
-if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
-  (eval $ac_compile) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } &&
-         { ac_try='test -s conftest.$ac_objext'
-  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
-  (eval $ac_try) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }; }; then
-  eval "$as_ac_Header=yes"
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-eval "$as_ac_Header=no"
-fi
-rm -f conftest.$ac_objext conftest.$ac_ext
-fi
-echo "$as_me:$LINENO: result: `eval echo '${'$as_ac_Header'}'`" >&5
-echo "${ECHO_T}`eval echo '${'$as_ac_Header'}'`" >&6
-if test `eval echo '${'$as_ac_Header'}'` = yes; then
-  cat >>confdefs.h <<_ACEOF
-#define `echo "HAVE_$ac_header" | $as_tr_cpp` 1
-_ACEOF
-
-fi
-
-done
-
-
-
-
-
-for ac_header in stdlib.h string.h unistd.h
-do
-as_ac_Header=`echo "ac_cv_header_$ac_header" | $as_tr_sh`
-if eval "test \"\${$as_ac_Header+set}\" = set"; then
-  echo "$as_me:$LINENO: checking for $ac_header" >&5
-echo $ECHO_N "checking for $ac_header... $ECHO_C" >&6
-if eval "test \"\${$as_ac_Header+set}\" = set"; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-fi
-echo "$as_me:$LINENO: result: `eval echo '${'$as_ac_Header'}'`" >&5
-echo "${ECHO_T}`eval echo '${'$as_ac_Header'}'`" >&6
-else
-  # Is the header compilable?
-echo "$as_me:$LINENO: checking $ac_header usability" >&5
-echo $ECHO_N "checking $ac_header usability... $ECHO_C" >&6
-cat >conftest.$ac_ext <<_ACEOF
-#line $LINENO "configure"
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-$ac_includes_default
-#include <$ac_header>
-_ACEOF
-rm -f conftest.$ac_objext
-if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
-  (eval $ac_compile) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } &&
-         { ac_try='test -s conftest.$ac_objext'
-  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
-  (eval $ac_try) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }; }; then
-  ac_header_compiler=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-ac_header_compiler=no
-fi
-rm -f conftest.$ac_objext conftest.$ac_ext
-echo "$as_me:$LINENO: result: $ac_header_compiler" >&5
-echo "${ECHO_T}$ac_header_compiler" >&6
-
-# Is the header present?
-echo "$as_me:$LINENO: checking $ac_header presence" >&5
-echo $ECHO_N "checking $ac_header presence... $ECHO_C" >&6
-cat >conftest.$ac_ext <<_ACEOF
-#line $LINENO "configure"
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-#include <$ac_header>
-_ACEOF
-if { (eval echo "$as_me:$LINENO: \"$ac_cpp conftest.$ac_ext\"") >&5
-  (eval $ac_cpp conftest.$ac_ext) 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } >/dev/null; then
-  if test -s conftest.err; then
-    ac_cpp_err=$ac_c_preproc_warn_flag
+  ac_cv_rpath=yes
+fi;
+  echo "$as_me:$LINENO: checking whether to use -rpath" >&5
+echo $ECHO_N "checking whether to use -rpath... $ECHO_C" >&6
+  LD_RPATH=
+  if test "x$ac_cv_rpath" != "xno"; then
+    LD_RPATH="-Wl,-R"
+    echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6
   else
-    ac_cpp_err=
+    LD_RPATH=""
+    echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6
   fi
-else
-  ac_cpp_err=yes
-fi
-if test -z "$ac_cpp_err"; then
-  ac_header_preproc=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-  ac_header_preproc=no
-fi
-rm -f conftest.err conftest.$ac_ext
-echo "$as_me:$LINENO: result: $ac_header_preproc" >&5
-echo "${ECHO_T}$ac_header_preproc" >&6
-
-# So?  What about this header?
-case $ac_header_compiler:$ac_header_preproc in
-  yes:no )
-    { echo "$as_me:$LINENO: WARNING: $ac_header: accepted by the compiler, rejected by the preprocessor!" >&5
-echo "$as_me: WARNING: $ac_header: accepted by the compiler, rejected by the preprocessor!" >&2;}
-    { echo "$as_me:$LINENO: WARNING: $ac_header: proceeding with the preprocessor's result" >&5
-echo "$as_me: WARNING: $ac_header: proceeding with the preprocessor's result" >&2;}
-    (
-      cat <<\_ASBOX
-## ------------------------------------ ##
-## Report this to bug-autoconf@gnu.org. ##
-## ------------------------------------ ##
-_ASBOX
-    ) |
-      sed "s/^/$as_me: WARNING:     /" >&2
-    ;;
-  no:yes )
-    { echo "$as_me:$LINENO: WARNING: $ac_header: present but cannot be compiled" >&5
-echo "$as_me: WARNING: $ac_header: present but cannot be compiled" >&2;}
-    { echo "$as_me:$LINENO: WARNING: $ac_header: check for missing prerequisite headers?" >&5
-echo "$as_me: WARNING: $ac_header: check for missing prerequisite headers?" >&2;}
-    { echo "$as_me:$LINENO: WARNING: $ac_header: proceeding with the preprocessor's result" >&5
-echo "$as_me: WARNING: $ac_header: proceeding with the preprocessor's result" >&2;}
-    (
-      cat <<\_ASBOX
-## ------------------------------------ ##
-## Report this to bug-autoconf@gnu.org. ##
-## ------------------------------------ ##
-_ASBOX
-    ) |
-      sed "s/^/$as_me: WARNING:     /" >&2
-    ;;
-esac
-echo "$as_me:$LINENO: checking for $ac_header" >&5
-echo $ECHO_N "checking for $ac_header... $ECHO_C" >&6
-if eval "test \"\${$as_ac_Header+set}\" = set"; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  eval "$as_ac_Header=$ac_header_preproc"
-fi
-echo "$as_me:$LINENO: result: `eval echo '${'$as_ac_Header'}'`" >&5
-echo "${ECHO_T}`eval echo '${'$as_ac_Header'}'`" >&6
-
-fi
-if test `eval echo '${'$as_ac_Header'}'` = yes; then
-  cat >>confdefs.h <<_ACEOF
-#define `echo "HAVE_$ac_header" | $as_tr_cpp` 1
-_ACEOF
-
-fi
-
-done
 
 
 
-echo "$as_me:$LINENO: checking for main in -lX11" >&5
+
+  LIBX11_CFLAGS= LIBX11_LDFLAGS= LIBX11_LIBS=
+  if test "$no_x" != "yes"; then
+    echo "$as_me:$LINENO: checking for main in -lX11" >&5
 echo $ECHO_N "checking for main in -lX11... $ECHO_C" >&6
 if test "${ac_cv_lib_X11_main+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
@@ -5744,277 +5518,45 @@ fi
 echo "$as_me:$LINENO: result: $ac_cv_lib_X11_main" >&5
 echo "${ECHO_T}$ac_cv_lib_X11_main" >&6
 if test $ac_cv_lib_X11_main = yes; then
-  cat >>confdefs.h <<_ACEOF
+
+
+cat >>confdefs.h <<\_ACEOF
 #define HAVE_LIBX11 1
 _ACEOF
 
-  LIBS="-lX11 $LIBS"
+      LIBX11_CFLAGS="$X_CFLAGS"
+      for option in $X_PRE_LIBS $X_EXTRA_LIBS $X_LIBS; do
+      	case "$option" in
+        -L*)
+          path=`echo $option | sed 's/^-L//'`
+          if test "x$path" != "x"; then
+            LIBX11_LDFLAGS="$LIBX11_LDFLAGS -L$path"
+            if test -n "$LD_RPATH"; then
+              LIBX11_LDFLAGS="$LIBX11_LDFLAGS $LD_RPATH$path"
+            fi
+          fi
+          ;;
+        *)
+          LIBX11_LIBS="$LIBX11_LIBS $option"
+          ;;
+        esac
+      done
+      if ! echo $LIBX11_LIBS | grep -q -- '-lX11'; then
+        LIBX11_LIBS="$LIBX11_LIBS -lX11"
+      fi
 
-else
-  { { echo "$as_me:$LINENO: error: libX11 is missing from your system: Make sure you have both the  X Window System libraries and development headers correctly installed" >&5
-echo "$as_me: error: libX11 is missing from your system: Make sure you have both the  X Window System libraries and development headers correctly installed" >&2;}
-   { (exit 1); exit 1; }; }
-fi
-
-
-echo "$as_me:$LINENO: checking for main in -lXext" >&5
-echo $ECHO_N "checking for main in -lXext... $ECHO_C" >&6
-if test "${ac_cv_lib_Xext_main+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lXext $X_CFLAGS $X_PRE_LIBS $X_EXTRA_LIBS $X_LIBS $LIBS"
-cat >conftest.$ac_ext <<_ACEOF
-#line $LINENO "configure"
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-
-int
-main ()
-{
-main ();
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext conftest$ac_exeext
-if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
-  (eval $ac_link) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } &&
-         { ac_try='test -s conftest$ac_exeext'
-  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
-  (eval $ac_try) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }; }; then
-  ac_cv_lib_Xext_main=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-ac_cv_lib_Xext_main=no
-fi
-rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-echo "$as_me:$LINENO: result: $ac_cv_lib_Xext_main" >&5
-echo "${ECHO_T}$ac_cv_lib_Xext_main" >&6
-if test $ac_cv_lib_Xext_main = yes; then
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBXEXT 1
-_ACEOF
-
-  LIBS="-lXext $LIBS"
-
-else
-  { { echo "$as_me:$LINENO: error: The X Window System installed on this machine does not support the shape extension" >&5
-echo "$as_me: error: The X Window System installed on this machine does not support the shape extension" >&2;}
-   { (exit 1); exit 1; }; }
-fi
-
-
-echo "$as_me:$LINENO: checking for main in -lXpm" >&5
-echo $ECHO_N "checking for main in -lXpm... $ECHO_C" >&6
-if test "${ac_cv_lib_Xpm_main+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lXpm $X_CFLAGS $X_PRE_LIBS $X_EXTRA_LIBS $X_LIBS $LIBS"
-cat >conftest.$ac_ext <<_ACEOF
-#line $LINENO "configure"
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-
-int
-main ()
-{
-main ();
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext conftest$ac_exeext
-if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
-  (eval $ac_link) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } &&
-         { ac_try='test -s conftest$ac_exeext'
-  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
-  (eval $ac_try) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }; }; then
-  ac_cv_lib_Xpm_main=yes
-else
-  echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-ac_cv_lib_Xpm_main=no
-fi
-rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-echo "$as_me:$LINENO: result: $ac_cv_lib_Xpm_main" >&5
-echo "${ECHO_T}$ac_cv_lib_Xpm_main" >&6
-if test $ac_cv_lib_Xpm_main = yes; then
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBXPM 1
-_ACEOF
-
-  LIBS="-lXpm $LIBS"
-
-else
-  { { echo "$as_me:$LINENO: error: libXpm is missing from your system: Make sure you have both the Xpm libraries and development headers correctly installed" >&5
-echo "$as_me: error: libXpm is missing from your system: Make sure you have both the Xpm libraries and development headers correctly installed" >&2;}
-   { (exit 1); exit 1; }; }
-fi
-
-
-## Versions of dependencies
-GLIB_REQUIRED_VERSION=2.0.0
-GTK_REQUIRED_VERSION=2.0.0
-PANGO_REQUIRED_VERSION=1.0.0
-LIBXFCEGUI4_REQUIRED_VERSION=0.0.15
-LIBXFCE4MCS_REQUIRED_VERSION=0.0.4
-
-
-cat >>confdefs.h <<_ACEOF
-#define GLIB_REQUIRED_VERSION $GLIB_REQUIRED_VERSION
-_ACEOF
-
-
-cat >>confdefs.h <<_ACEOF
-#define GTK_REQUIRED_VERSION $GTK_REQUIRED_VERSION
-_ACEOF
-
-
-cat >>confdefs.h <<_ACEOF
-#define PANGO_REQUIRED_VERSION $PANGO_REQUIRED_VERSION
-_ACEOF
-
-
-cat >>confdefs.h <<_ACEOF
-#define LIBXFCEGUI4_REQUIRED_VERSION $LIBXFCEGUI4_REQUIRED_VERSION
-_ACEOF
-
-
-cat >>confdefs.h <<_ACEOF
-#define LIBXFCE4MCS_REQUIRED_VERSION $LIBXFCE4MCS_REQUIRED_VERSION
-_ACEOF
-
-
-
-
-
-
-
-
-
-  succeeded=no
-
-  if test -z "$PKG_CONFIG"; then
-    # Extract the first word of "pkg-config", so it can be a program name with args.
-set dummy pkg-config; ac_word=$2
-echo "$as_me:$LINENO: checking for $ac_word" >&5
-echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
-if test "${ac_cv_path_PKG_CONFIG+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  case $PKG_CONFIG in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_PKG_CONFIG="$PKG_CONFIG" # Let the user override the test with a path.
-  ;;
-  *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-  for ac_exec_ext in '' $ac_executable_extensions; do
-  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_path_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
-    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-done
-
-  test -z "$ac_cv_path_PKG_CONFIG" && ac_cv_path_PKG_CONFIG="no"
-  ;;
-esac
-fi
-PKG_CONFIG=$ac_cv_path_PKG_CONFIG
-
-if test -n "$PKG_CONFIG"; then
-  echo "$as_me:$LINENO: result: $PKG_CONFIG" >&5
-echo "${ECHO_T}$PKG_CONFIG" >&6
-else
-  echo "$as_me:$LINENO: result: no" >&5
-echo "${ECHO_T}no" >&6
 fi
 
   fi
 
-  if test "$PKG_CONFIG" = "no" ; then
-     echo "*** The pkg-config script could not be found. Make sure it is"
-     echo "*** in your path, or set the PKG_CONFIG environment variable"
-     echo "*** to the full path to pkg-config."
-     echo "*** Or see http://www.freedesktop.org/software/pkgconfig to get pkg-config."
-  else
-     PKG_CONFIG_MIN_VERSION=0.9.0
-     if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION libxfcegui4-1.0 >= $LIBXFCEGUI4_REQUIRED_VERSION libxml-2.0 libxfce4util-1.0 >= 0.0.0" >&5
-echo $ECHO_N "checking for glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION libxfcegui4-1.0 >= $LIBXFCEGUI4_REQUIRED_VERSION libxml-2.0 libxfce4util-1.0 >= 0.0.0... $ECHO_C" >&6
-
-        if $PKG_CONFIG --exists "glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION libxfcegui4-1.0 >= $LIBXFCEGUI4_REQUIRED_VERSION libxml-2.0 libxfce4util-1.0 >= 0.0.0" ; then
-            echo "$as_me:$LINENO: result: yes" >&5
-echo "${ECHO_T}yes" >&6
-            succeeded=yes
-
-            echo "$as_me:$LINENO: checking BASE_DEPENDENCIES_CFLAGS" >&5
-echo $ECHO_N "checking BASE_DEPENDENCIES_CFLAGS... $ECHO_C" >&6
-            BASE_DEPENDENCIES_CFLAGS=`$PKG_CONFIG --cflags "glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION libxfcegui4-1.0 >= $LIBXFCEGUI4_REQUIRED_VERSION libxml-2.0 libxfce4util-1.0 >= 0.0.0"`
-            echo "$as_me:$LINENO: result: $BASE_DEPENDENCIES_CFLAGS" >&5
-echo "${ECHO_T}$BASE_DEPENDENCIES_CFLAGS" >&6
-
-            echo "$as_me:$LINENO: checking BASE_DEPENDENCIES_LIBS" >&5
-echo $ECHO_N "checking BASE_DEPENDENCIES_LIBS... $ECHO_C" >&6
-            BASE_DEPENDENCIES_LIBS=`$PKG_CONFIG --libs "glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION libxfcegui4-1.0 >= $LIBXFCEGUI4_REQUIRED_VERSION libxml-2.0 libxfce4util-1.0 >= 0.0.0"`
-            echo "$as_me:$LINENO: result: $BASE_DEPENDENCIES_LIBS" >&5
-echo "${ECHO_T}$BASE_DEPENDENCIES_LIBS" >&6
-        else
-            BASE_DEPENDENCIES_CFLAGS=""
-            BASE_DEPENDENCIES_LIBS=""
-            ## If we have a custom action on failure, don't print errors, but
-            ## do set a variable so people can do so.
-            BASE_DEPENDENCIES_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION libxfcegui4-1.0 >= $LIBXFCEGUI4_REQUIRED_VERSION libxml-2.0 libxfce4util-1.0 >= 0.0.0"`
-            echo $BASE_DEPENDENCIES_PKG_ERRORS
-        fi
 
 
 
-     else
-        echo "*** Your version of pkg-config is too old. You need version $PKG_CONFIG_MIN_VERSION or newer."
-        echo "*** See http://www.freedesktop.org/software/pkgconfig"
-     fi
-  fi
 
-  if test $succeeded = yes; then
-     :
-  else
-     { { echo "$as_me:$LINENO: error: Library requirements (glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION libxfcegui4-1.0 >= $LIBXFCEGUI4_REQUIRED_VERSION libxml-2.0 libxfce4util-1.0 >= 0.0.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION pango >= $PANGO_REQUIRED_VERSION libxfcegui4-1.0 >= $LIBXFCEGUI4_REQUIRED_VERSION libxml-2.0 libxfce4util-1.0 >= 0.0.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+
+  if test "$no_x" == "yes"; then
+    { { echo "$as_me:$LINENO: error: X Window system libraries and header files are required" >&5
+echo "$as_me: error: X Window system libraries and header files are required" >&2;}
    { (exit 1); exit 1; }; }
   fi
 
@@ -6073,32 +5615,32 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for libxfce4mcs-client-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION" >&5
-echo $ECHO_N "checking for libxfce4mcs-client-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION... $ECHO_C" >&6
+        echo "$as_me:$LINENO: checking for glib-2.0 >= 2.0.0" >&5
+echo $ECHO_N "checking for glib-2.0 >= 2.0.0... $ECHO_C" >&6
 
-        if $PKG_CONFIG --exists "libxfce4mcs-client-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION" ; then
+        if $PKG_CONFIG --exists "glib-2.0 >= 2.0.0" ; then
             echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
-            echo "$as_me:$LINENO: checking MCS_CLIENT_CFLAGS" >&5
-echo $ECHO_N "checking MCS_CLIENT_CFLAGS... $ECHO_C" >&6
-            MCS_CLIENT_CFLAGS=`$PKG_CONFIG --cflags "libxfce4mcs-client-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION"`
-            echo "$as_me:$LINENO: result: $MCS_CLIENT_CFLAGS" >&5
-echo "${ECHO_T}$MCS_CLIENT_CFLAGS" >&6
+            echo "$as_me:$LINENO: checking GLIB_CFLAGS" >&5
+echo $ECHO_N "checking GLIB_CFLAGS... $ECHO_C" >&6
+            GLIB_CFLAGS=`$PKG_CONFIG --cflags "glib-2.0 >= 2.0.0"`
+            echo "$as_me:$LINENO: result: $GLIB_CFLAGS" >&5
+echo "${ECHO_T}$GLIB_CFLAGS" >&6
 
-            echo "$as_me:$LINENO: checking MCS_CLIENT_LIBS" >&5
-echo $ECHO_N "checking MCS_CLIENT_LIBS... $ECHO_C" >&6
-            MCS_CLIENT_LIBS=`$PKG_CONFIG --libs "libxfce4mcs-client-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION"`
-            echo "$as_me:$LINENO: result: $MCS_CLIENT_LIBS" >&5
-echo "${ECHO_T}$MCS_CLIENT_LIBS" >&6
+            echo "$as_me:$LINENO: checking GLIB_LIBS" >&5
+echo $ECHO_N "checking GLIB_LIBS... $ECHO_C" >&6
+            GLIB_LIBS=`$PKG_CONFIG --libs "glib-2.0 >= 2.0.0"`
+            echo "$as_me:$LINENO: result: $GLIB_LIBS" >&5
+echo "${ECHO_T}$GLIB_LIBS" >&6
         else
-            MCS_CLIENT_CFLAGS=""
-            MCS_CLIENT_LIBS=""
+            GLIB_CFLAGS=""
+            GLIB_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            MCS_CLIENT_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4mcs-client-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION"`
-            echo $MCS_CLIENT_PKG_ERRORS
+            GLIB_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "glib-2.0 >= 2.0.0"`
+            echo $GLIB_PKG_ERRORS
         fi
 
 
@@ -6112,8 +5654,8 @@ echo "${ECHO_T}$MCS_CLIENT_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4mcs-client-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (libxfce4mcs-client-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+     { { echo "$as_me:$LINENO: error: Library requirements (glib-2.0 >= 2.0.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (glib-2.0 >= 2.0.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
@@ -6171,32 +5713,32 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for libxfce4mcs-manager-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION xfce-mcs-manager >= 0.1" >&5
-echo $ECHO_N "checking for libxfce4mcs-manager-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION xfce-mcs-manager >= 0.1... $ECHO_C" >&6
+        echo "$as_me:$LINENO: checking for gtk+-2.0 >= 2.0.0" >&5
+echo $ECHO_N "checking for gtk+-2.0 >= 2.0.0... $ECHO_C" >&6
 
-        if $PKG_CONFIG --exists "libxfce4mcs-manager-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION xfce-mcs-manager >= 0.1" ; then
+        if $PKG_CONFIG --exists "gtk+-2.0 >= 2.0.0" ; then
             echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
-            echo "$as_me:$LINENO: checking MCS_MANAGER_CFLAGS" >&5
-echo $ECHO_N "checking MCS_MANAGER_CFLAGS... $ECHO_C" >&6
-            MCS_MANAGER_CFLAGS=`$PKG_CONFIG --cflags "libxfce4mcs-manager-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION xfce-mcs-manager >= 0.1"`
-            echo "$as_me:$LINENO: result: $MCS_MANAGER_CFLAGS" >&5
-echo "${ECHO_T}$MCS_MANAGER_CFLAGS" >&6
+            echo "$as_me:$LINENO: checking GTK_CFLAGS" >&5
+echo $ECHO_N "checking GTK_CFLAGS... $ECHO_C" >&6
+            GTK_CFLAGS=`$PKG_CONFIG --cflags "gtk+-2.0 >= 2.0.0"`
+            echo "$as_me:$LINENO: result: $GTK_CFLAGS" >&5
+echo "${ECHO_T}$GTK_CFLAGS" >&6
 
-            echo "$as_me:$LINENO: checking MCS_MANAGER_LIBS" >&5
-echo $ECHO_N "checking MCS_MANAGER_LIBS... $ECHO_C" >&6
-            MCS_MANAGER_LIBS=`$PKG_CONFIG --libs "libxfce4mcs-manager-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION xfce-mcs-manager >= 0.1"`
-            echo "$as_me:$LINENO: result: $MCS_MANAGER_LIBS" >&5
-echo "${ECHO_T}$MCS_MANAGER_LIBS" >&6
+            echo "$as_me:$LINENO: checking GTK_LIBS" >&5
+echo $ECHO_N "checking GTK_LIBS... $ECHO_C" >&6
+            GTK_LIBS=`$PKG_CONFIG --libs "gtk+-2.0 >= 2.0.0"`
+            echo "$as_me:$LINENO: result: $GTK_LIBS" >&5
+echo "${ECHO_T}$GTK_LIBS" >&6
         else
-            MCS_MANAGER_CFLAGS=""
-            MCS_MANAGER_LIBS=""
+            GTK_CFLAGS=""
+            GTK_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            MCS_MANAGER_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4mcs-manager-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION xfce-mcs-manager >= 0.1"`
-            echo $MCS_MANAGER_PKG_ERRORS
+            GTK_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "gtk+-2.0 >= 2.0.0"`
+            echo $GTK_PKG_ERRORS
         fi
 
 
@@ -6210,22 +5752,25 @@ echo "${ECHO_T}$MCS_MANAGER_LIBS" >&6
   if test $succeeded = yes; then
      :
   else
-     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4mcs-manager-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION xfce-mcs-manager >= 0.1) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (libxfce4mcs-manager-1.0 >= $LIBXFCE4MCS_REQUIRED_VERSION xfce-mcs-manager >= 0.1) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+     { { echo "$as_me:$LINENO: error: Library requirements (gtk+-2.0 >= 2.0.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (gtk+-2.0 >= 2.0.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
   fi
 
 
-# Extract the first word of "gdk-pixbuf-csource", so it can be a program name with args.
-set dummy gdk-pixbuf-csource; ac_word=$2
+  succeeded=no
+
+  if test -z "$PKG_CONFIG"; then
+    # Extract the first word of "pkg-config", so it can be a program name with args.
+set dummy pkg-config; ac_word=$2
 echo "$as_me:$LINENO: checking for $ac_word" >&5
 echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
-if test "${ac_cv_path_GDK_PIXBUF_CSOURCE+set}" = set; then
+if test "${ac_cv_path_PKG_CONFIG+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
-  case $GDK_PIXBUF_CSOURCE in
+  case $PKG_CONFIG in
   [\\/]* | ?:[\\/]*)
-  ac_cv_path_GDK_PIXBUF_CSOURCE="$GDK_PIXBUF_CSOURCE" # Let the user override the test with a path.
+  ac_cv_path_PKG_CONFIG="$PKG_CONFIG" # Let the user override the test with a path.
   ;;
   *)
   as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
@@ -6235,34 +5780,472 @@ do
   test -z "$as_dir" && as_dir=.
   for ac_exec_ext in '' $ac_executable_extensions; do
   if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_path_GDK_PIXBUF_CSOURCE="$as_dir/$ac_word$ac_exec_ext"
+    ac_cv_path_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
     echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
     break 2
   fi
 done
 done
 
-  test -z "$ac_cv_path_GDK_PIXBUF_CSOURCE" && ac_cv_path_GDK_PIXBUF_CSOURCE="no"
+  test -z "$ac_cv_path_PKG_CONFIG" && ac_cv_path_PKG_CONFIG="no"
   ;;
 esac
 fi
-GDK_PIXBUF_CSOURCE=$ac_cv_path_GDK_PIXBUF_CSOURCE
+PKG_CONFIG=$ac_cv_path_PKG_CONFIG
 
-if test -n "$GDK_PIXBUF_CSOURCE"; then
-  echo "$as_me:$LINENO: result: $GDK_PIXBUF_CSOURCE" >&5
-echo "${ECHO_T}$GDK_PIXBUF_CSOURCE" >&6
+if test -n "$PKG_CONFIG"; then
+  echo "$as_me:$LINENO: result: $PKG_CONFIG" >&5
+echo "${ECHO_T}$PKG_CONFIG" >&6
 else
   echo "$as_me:$LINENO: result: no" >&5
 echo "${ECHO_T}no" >&6
 fi
 
+  fi
 
-if test x"$GDK_PIXBUF_CSOURCE" = xno; then
-  { { echo "$as_me:$LINENO: error: gdk-pixbuf-csource executable not found in your path - should be installed with GTK" >&5
-echo "$as_me: error: gdk-pixbuf-csource executable not found in your path - should be installed with GTK" >&2;}
+  if test "$PKG_CONFIG" = "no" ; then
+     echo "*** The pkg-config script could not be found. Make sure it is"
+     echo "*** in your path, or set the PKG_CONFIG environment variable"
+     echo "*** to the full path to pkg-config."
+     echo "*** Or see http://www.freedesktop.org/software/pkgconfig to get pkg-config."
+  else
+     PKG_CONFIG_MIN_VERSION=0.9.0
+     if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
+        echo "$as_me:$LINENO: checking for libxfcegui4-1.0 >= 0.0.17" >&5
+echo $ECHO_N "checking for libxfcegui4-1.0 >= 0.0.17... $ECHO_C" >&6
+
+        if $PKG_CONFIG --exists "libxfcegui4-1.0 >= 0.0.17" ; then
+            echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6
+            succeeded=yes
+
+            echo "$as_me:$LINENO: checking LIBXFCEGUI4_CFLAGS" >&5
+echo $ECHO_N "checking LIBXFCEGUI4_CFLAGS... $ECHO_C" >&6
+            LIBXFCEGUI4_CFLAGS=`$PKG_CONFIG --cflags "libxfcegui4-1.0 >= 0.0.17"`
+            echo "$as_me:$LINENO: result: $LIBXFCEGUI4_CFLAGS" >&5
+echo "${ECHO_T}$LIBXFCEGUI4_CFLAGS" >&6
+
+            echo "$as_me:$LINENO: checking LIBXFCEGUI4_LIBS" >&5
+echo $ECHO_N "checking LIBXFCEGUI4_LIBS... $ECHO_C" >&6
+            LIBXFCEGUI4_LIBS=`$PKG_CONFIG --libs "libxfcegui4-1.0 >= 0.0.17"`
+            echo "$as_me:$LINENO: result: $LIBXFCEGUI4_LIBS" >&5
+echo "${ECHO_T}$LIBXFCEGUI4_LIBS" >&6
+        else
+            LIBXFCEGUI4_CFLAGS=""
+            LIBXFCEGUI4_LIBS=""
+            ## If we have a custom action on failure, don't print errors, but
+            ## do set a variable so people can do so.
+            LIBXFCEGUI4_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfcegui4-1.0 >= 0.0.17"`
+            echo $LIBXFCEGUI4_PKG_ERRORS
+        fi
+
+
+
+     else
+        echo "*** Your version of pkg-config is too old. You need version $PKG_CONFIG_MIN_VERSION or newer."
+        echo "*** See http://www.freedesktop.org/software/pkgconfig"
+     fi
+  fi
+
+  if test $succeeded = yes; then
+     :
+  else
+     { { echo "$as_me:$LINENO: error: Library requirements (libxfcegui4-1.0 >= 0.0.17) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libxfcegui4-1.0 >= 0.0.17) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
    { (exit 1); exit 1; }; }
+  fi
+
+
+  succeeded=no
+
+  if test -z "$PKG_CONFIG"; then
+    # Extract the first word of "pkg-config", so it can be a program name with args.
+set dummy pkg-config; ac_word=$2
+echo "$as_me:$LINENO: checking for $ac_word" >&5
+echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
+if test "${ac_cv_path_PKG_CONFIG+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  case $PKG_CONFIG in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_PKG_CONFIG="$PKG_CONFIG" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+  for ac_exec_ext in '' $ac_executable_extensions; do
+  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
+    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+done
+
+  test -z "$ac_cv_path_PKG_CONFIG" && ac_cv_path_PKG_CONFIG="no"
+  ;;
+esac
+fi
+PKG_CONFIG=$ac_cv_path_PKG_CONFIG
+
+if test -n "$PKG_CONFIG"; then
+  echo "$as_me:$LINENO: result: $PKG_CONFIG" >&5
+echo "${ECHO_T}$PKG_CONFIG" >&6
+else
+  echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6
 fi
 
+  fi
+
+  if test "$PKG_CONFIG" = "no" ; then
+     echo "*** The pkg-config script could not be found. Make sure it is"
+     echo "*** in your path, or set the PKG_CONFIG environment variable"
+     echo "*** to the full path to pkg-config."
+     echo "*** Or see http://www.freedesktop.org/software/pkgconfig to get pkg-config."
+  else
+     PKG_CONFIG_MIN_VERSION=0.9.0
+     if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
+        echo "$as_me:$LINENO: checking for libxfce4util-1.0 >= 0.0.0" >&5
+echo $ECHO_N "checking for libxfce4util-1.0 >= 0.0.0... $ECHO_C" >&6
+
+        if $PKG_CONFIG --exists "libxfce4util-1.0 >= 0.0.0" ; then
+            echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6
+            succeeded=yes
+
+            echo "$as_me:$LINENO: checking LIBXFCE4UTIL_CFLAGS" >&5
+echo $ECHO_N "checking LIBXFCE4UTIL_CFLAGS... $ECHO_C" >&6
+            LIBXFCE4UTIL_CFLAGS=`$PKG_CONFIG --cflags "libxfce4util-1.0 >= 0.0.0"`
+            echo "$as_me:$LINENO: result: $LIBXFCE4UTIL_CFLAGS" >&5
+echo "${ECHO_T}$LIBXFCE4UTIL_CFLAGS" >&6
+
+            echo "$as_me:$LINENO: checking LIBXFCE4UTIL_LIBS" >&5
+echo $ECHO_N "checking LIBXFCE4UTIL_LIBS... $ECHO_C" >&6
+            LIBXFCE4UTIL_LIBS=`$PKG_CONFIG --libs "libxfce4util-1.0 >= 0.0.0"`
+            echo "$as_me:$LINENO: result: $LIBXFCE4UTIL_LIBS" >&5
+echo "${ECHO_T}$LIBXFCE4UTIL_LIBS" >&6
+        else
+            LIBXFCE4UTIL_CFLAGS=""
+            LIBXFCE4UTIL_LIBS=""
+            ## If we have a custom action on failure, don't print errors, but
+            ## do set a variable so people can do so.
+            LIBXFCE4UTIL_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4util-1.0 >= 0.0.0"`
+            echo $LIBXFCE4UTIL_PKG_ERRORS
+        fi
+
+
+
+     else
+        echo "*** Your version of pkg-config is too old. You need version $PKG_CONFIG_MIN_VERSION or newer."
+        echo "*** See http://www.freedesktop.org/software/pkgconfig"
+     fi
+  fi
+
+  if test $succeeded = yes; then
+     :
+  else
+     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4util-1.0 >= 0.0.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libxfce4util-1.0 >= 0.0.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+   { (exit 1); exit 1; }; }
+  fi
+
+
+  succeeded=no
+
+  if test -z "$PKG_CONFIG"; then
+    # Extract the first word of "pkg-config", so it can be a program name with args.
+set dummy pkg-config; ac_word=$2
+echo "$as_me:$LINENO: checking for $ac_word" >&5
+echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
+if test "${ac_cv_path_PKG_CONFIG+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  case $PKG_CONFIG in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_PKG_CONFIG="$PKG_CONFIG" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+  for ac_exec_ext in '' $ac_executable_extensions; do
+  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
+    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+done
+
+  test -z "$ac_cv_path_PKG_CONFIG" && ac_cv_path_PKG_CONFIG="no"
+  ;;
+esac
+fi
+PKG_CONFIG=$ac_cv_path_PKG_CONFIG
+
+if test -n "$PKG_CONFIG"; then
+  echo "$as_me:$LINENO: result: $PKG_CONFIG" >&5
+echo "${ECHO_T}$PKG_CONFIG" >&6
+else
+  echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6
+fi
+
+  fi
+
+  if test "$PKG_CONFIG" = "no" ; then
+     echo "*** The pkg-config script could not be found. Make sure it is"
+     echo "*** in your path, or set the PKG_CONFIG environment variable"
+     echo "*** to the full path to pkg-config."
+     echo "*** Or see http://www.freedesktop.org/software/pkgconfig to get pkg-config."
+  else
+     PKG_CONFIG_MIN_VERSION=0.9.0
+     if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
+        echo "$as_me:$LINENO: checking for libxml-2.0 >= 2.4.0" >&5
+echo $ECHO_N "checking for libxml-2.0 >= 2.4.0... $ECHO_C" >&6
+
+        if $PKG_CONFIG --exists "libxml-2.0 >= 2.4.0" ; then
+            echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6
+            succeeded=yes
+
+            echo "$as_me:$LINENO: checking LIBXML_CFLAGS" >&5
+echo $ECHO_N "checking LIBXML_CFLAGS... $ECHO_C" >&6
+            LIBXML_CFLAGS=`$PKG_CONFIG --cflags "libxml-2.0 >= 2.4.0"`
+            echo "$as_me:$LINENO: result: $LIBXML_CFLAGS" >&5
+echo "${ECHO_T}$LIBXML_CFLAGS" >&6
+
+            echo "$as_me:$LINENO: checking LIBXML_LIBS" >&5
+echo $ECHO_N "checking LIBXML_LIBS... $ECHO_C" >&6
+            LIBXML_LIBS=`$PKG_CONFIG --libs "libxml-2.0 >= 2.4.0"`
+            echo "$as_me:$LINENO: result: $LIBXML_LIBS" >&5
+echo "${ECHO_T}$LIBXML_LIBS" >&6
+        else
+            LIBXML_CFLAGS=""
+            LIBXML_LIBS=""
+            ## If we have a custom action on failure, don't print errors, but
+            ## do set a variable so people can do so.
+            LIBXML_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxml-2.0 >= 2.4.0"`
+            echo $LIBXML_PKG_ERRORS
+        fi
+
+
+
+     else
+        echo "*** Your version of pkg-config is too old. You need version $PKG_CONFIG_MIN_VERSION or newer."
+        echo "*** See http://www.freedesktop.org/software/pkgconfig"
+     fi
+  fi
+
+  if test $succeeded = yes; then
+     :
+  else
+     { { echo "$as_me:$LINENO: error: Library requirements (libxml-2.0 >= 2.4.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libxml-2.0 >= 2.4.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+   { (exit 1); exit 1; }; }
+  fi
+
+
+  succeeded=no
+
+  if test -z "$PKG_CONFIG"; then
+    # Extract the first word of "pkg-config", so it can be a program name with args.
+set dummy pkg-config; ac_word=$2
+echo "$as_me:$LINENO: checking for $ac_word" >&5
+echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
+if test "${ac_cv_path_PKG_CONFIG+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  case $PKG_CONFIG in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_PKG_CONFIG="$PKG_CONFIG" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+  for ac_exec_ext in '' $ac_executable_extensions; do
+  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
+    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+done
+
+  test -z "$ac_cv_path_PKG_CONFIG" && ac_cv_path_PKG_CONFIG="no"
+  ;;
+esac
+fi
+PKG_CONFIG=$ac_cv_path_PKG_CONFIG
+
+if test -n "$PKG_CONFIG"; then
+  echo "$as_me:$LINENO: result: $PKG_CONFIG" >&5
+echo "${ECHO_T}$PKG_CONFIG" >&6
+else
+  echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6
+fi
+
+  fi
+
+  if test "$PKG_CONFIG" = "no" ; then
+     echo "*** The pkg-config script could not be found. Make sure it is"
+     echo "*** in your path, or set the PKG_CONFIG environment variable"
+     echo "*** to the full path to pkg-config."
+     echo "*** Or see http://www.freedesktop.org/software/pkgconfig to get pkg-config."
+  else
+     PKG_CONFIG_MIN_VERSION=0.9.0
+     if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
+        echo "$as_me:$LINENO: checking for libxfce4mcs-client-1.0 >= 0.0.4" >&5
+echo $ECHO_N "checking for libxfce4mcs-client-1.0 >= 0.0.4... $ECHO_C" >&6
+
+        if $PKG_CONFIG --exists "libxfce4mcs-client-1.0 >= 0.0.4" ; then
+            echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6
+            succeeded=yes
+
+            echo "$as_me:$LINENO: checking LIBXFCE4MCS_CLIENT_CFLAGS" >&5
+echo $ECHO_N "checking LIBXFCE4MCS_CLIENT_CFLAGS... $ECHO_C" >&6
+            LIBXFCE4MCS_CLIENT_CFLAGS=`$PKG_CONFIG --cflags "libxfce4mcs-client-1.0 >= 0.0.4"`
+            echo "$as_me:$LINENO: result: $LIBXFCE4MCS_CLIENT_CFLAGS" >&5
+echo "${ECHO_T}$LIBXFCE4MCS_CLIENT_CFLAGS" >&6
+
+            echo "$as_me:$LINENO: checking LIBXFCE4MCS_CLIENT_LIBS" >&5
+echo $ECHO_N "checking LIBXFCE4MCS_CLIENT_LIBS... $ECHO_C" >&6
+            LIBXFCE4MCS_CLIENT_LIBS=`$PKG_CONFIG --libs "libxfce4mcs-client-1.0 >= 0.0.4"`
+            echo "$as_me:$LINENO: result: $LIBXFCE4MCS_CLIENT_LIBS" >&5
+echo "${ECHO_T}$LIBXFCE4MCS_CLIENT_LIBS" >&6
+        else
+            LIBXFCE4MCS_CLIENT_CFLAGS=""
+            LIBXFCE4MCS_CLIENT_LIBS=""
+            ## If we have a custom action on failure, don't print errors, but
+            ## do set a variable so people can do so.
+            LIBXFCE4MCS_CLIENT_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4mcs-client-1.0 >= 0.0.4"`
+            echo $LIBXFCE4MCS_CLIENT_PKG_ERRORS
+        fi
+
+
+
+     else
+        echo "*** Your version of pkg-config is too old. You need version $PKG_CONFIG_MIN_VERSION or newer."
+        echo "*** See http://www.freedesktop.org/software/pkgconfig"
+     fi
+  fi
+
+  if test $succeeded = yes; then
+     :
+  else
+     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4mcs-client-1.0 >= 0.0.4) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libxfce4mcs-client-1.0 >= 0.0.4) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+   { (exit 1); exit 1; }; }
+  fi
+
+
+  succeeded=no
+
+  if test -z "$PKG_CONFIG"; then
+    # Extract the first word of "pkg-config", so it can be a program name with args.
+set dummy pkg-config; ac_word=$2
+echo "$as_me:$LINENO: checking for $ac_word" >&5
+echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
+if test "${ac_cv_path_PKG_CONFIG+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  case $PKG_CONFIG in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_PKG_CONFIG="$PKG_CONFIG" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+  for ac_exec_ext in '' $ac_executable_extensions; do
+  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
+    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+done
+
+  test -z "$ac_cv_path_PKG_CONFIG" && ac_cv_path_PKG_CONFIG="no"
+  ;;
+esac
+fi
+PKG_CONFIG=$ac_cv_path_PKG_CONFIG
+
+if test -n "$PKG_CONFIG"; then
+  echo "$as_me:$LINENO: result: $PKG_CONFIG" >&5
+echo "${ECHO_T}$PKG_CONFIG" >&6
+else
+  echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6
+fi
+
+  fi
+
+  if test "$PKG_CONFIG" = "no" ; then
+     echo "*** The pkg-config script could not be found. Make sure it is"
+     echo "*** in your path, or set the PKG_CONFIG environment variable"
+     echo "*** to the full path to pkg-config."
+     echo "*** Or see http://www.freedesktop.org/software/pkgconfig to get pkg-config."
+  else
+     PKG_CONFIG_MIN_VERSION=0.9.0
+     if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
+        echo "$as_me:$LINENO: checking for libxfce4mcs-manager-1.0 >= 0.0.4" >&5
+echo $ECHO_N "checking for libxfce4mcs-manager-1.0 >= 0.0.4... $ECHO_C" >&6
+
+        if $PKG_CONFIG --exists "libxfce4mcs-manager-1.0 >= 0.0.4" ; then
+            echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6
+            succeeded=yes
+
+            echo "$as_me:$LINENO: checking LIBXFCE4MCS_MANAGER_CFLAGS" >&5
+echo $ECHO_N "checking LIBXFCE4MCS_MANAGER_CFLAGS... $ECHO_C" >&6
+            LIBXFCE4MCS_MANAGER_CFLAGS=`$PKG_CONFIG --cflags "libxfce4mcs-manager-1.0 >= 0.0.4"`
+            echo "$as_me:$LINENO: result: $LIBXFCE4MCS_MANAGER_CFLAGS" >&5
+echo "${ECHO_T}$LIBXFCE4MCS_MANAGER_CFLAGS" >&6
+
+            echo "$as_me:$LINENO: checking LIBXFCE4MCS_MANAGER_LIBS" >&5
+echo $ECHO_N "checking LIBXFCE4MCS_MANAGER_LIBS... $ECHO_C" >&6
+            LIBXFCE4MCS_MANAGER_LIBS=`$PKG_CONFIG --libs "libxfce4mcs-manager-1.0 >= 0.0.4"`
+            echo "$as_me:$LINENO: result: $LIBXFCE4MCS_MANAGER_LIBS" >&5
+echo "${ECHO_T}$LIBXFCE4MCS_MANAGER_LIBS" >&6
+        else
+            LIBXFCE4MCS_MANAGER_CFLAGS=""
+            LIBXFCE4MCS_MANAGER_LIBS=""
+            ## If we have a custom action on failure, don't print errors, but
+            ## do set a variable so people can do so.
+            LIBXFCE4MCS_MANAGER_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxfce4mcs-manager-1.0 >= 0.0.4"`
+            echo $LIBXFCE4MCS_MANAGER_PKG_ERRORS
+        fi
+
+
+
+     else
+        echo "*** Your version of pkg-config is too old. You need version $PKG_CONFIG_MIN_VERSION or newer."
+        echo "*** See http://www.freedesktop.org/software/pkgconfig"
+     fi
+  fi
+
+  if test $succeeded = yes; then
+     :
+  else
+     { { echo "$as_me:$LINENO: error: Library requirements (libxfce4mcs-manager-1.0 >= 0.0.4) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libxfce4mcs-manager-1.0 >= 0.0.4) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+   { (exit 1); exit 1; }; }
+  fi
 
 
 
@@ -6296,7 +6279,7 @@ echo "${ECHO_T}no" >&6
   fi
 
 
-                                                                                          ac_config_files="$ac_config_files xfdesktop.spec Makefile doc/Makefile doc/images/Makefile doc/html/Makefile doc/xml/Makefile src/Makefile settings/Makefile backdrops/Makefile"
+                                                                                                    ac_config_files="$ac_config_files xfdesktop.spec Makefile common/Makefile doc/Makefile doc/images/Makefile doc/html/Makefile doc/xml/Makefile src/Makefile settings/Makefile backdrops/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -6854,6 +6837,7 @@ do
   # Handling of arguments.
   "xfdesktop.spec" ) CONFIG_FILES="$CONFIG_FILES xfdesktop.spec" ;;
   "Makefile" ) CONFIG_FILES="$CONFIG_FILES Makefile" ;;
+  "common/Makefile" ) CONFIG_FILES="$CONFIG_FILES common/Makefile" ;;
   "doc/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
   "doc/images/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/images/Makefile" ;;
   "doc/html/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/html/Makefile" ;;
@@ -6948,12 +6932,12 @@ s,@ECHO_C@,$ECHO_C,;t t
 s,@ECHO_N@,$ECHO_N,;t t
 s,@ECHO_T@,$ECHO_T,;t t
 s,@LIBS@,$LIBS,;t t
-s,@VERSION@,$VERSION,;t t
 s,@INSTALL_PROGRAM@,$INSTALL_PROGRAM,;t t
 s,@INSTALL_SCRIPT@,$INSTALL_SCRIPT,;t t
 s,@INSTALL_DATA@,$INSTALL_DATA,;t t
 s,@CYGPATH_W@,$CYGPATH_W,;t t
 s,@PACKAGE@,$PACKAGE,;t t
+s,@VERSION@,$VERSION,;t t
 s,@ACLOCAL@,$ACLOCAL,;t t
 s,@AUTOCONF@,$AUTOCONF,;t t
 s,@AUTOMAKE@,$AUTOMAKE,;t t
@@ -6998,24 +6982,29 @@ s,@RANLIB@,$RANLIB,;t t
 s,@ac_ct_RANLIB@,$ac_ct_RANLIB,;t t
 s,@LIBTOOL@,$LIBTOOL,;t t
 s,@CPP@,$CPP,;t t
+s,@EGREP@,$EGREP,;t t
 s,@X_CFLAGS@,$X_CFLAGS,;t t
 s,@X_PRE_LIBS@,$X_PRE_LIBS,;t t
 s,@X_LIBS@,$X_LIBS,;t t
 s,@X_EXTRA_LIBS@,$X_EXTRA_LIBS,;t t
-s,@EGREP@,$EGREP,;t t
-s,@GLIB_REQUIRED_VERSION@,$GLIB_REQUIRED_VERSION,;t t
-s,@GTK_REQUIRED_VERSION@,$GTK_REQUIRED_VERSION,;t t
-s,@PANGO_REQUIRED_VERSION@,$PANGO_REQUIRED_VERSION,;t t
-s,@LIBXFCEGUI4_REQUIRED_VERSION@,$LIBXFCEGUI4_REQUIRED_VERSION,;t t
-s,@LIBXFCE4MCS_REQUIRED_VERSION@,$LIBXFCE4MCS_REQUIRED_VERSION,;t t
+s,@LIBX11_CFLAGS@,$LIBX11_CFLAGS,;t t
+s,@LIBX11_LDFLAGS@,$LIBX11_LDFLAGS,;t t
+s,@LIBX11_LIBS@,$LIBX11_LIBS,;t t
 s,@PKG_CONFIG@,$PKG_CONFIG,;t t
-s,@BASE_DEPENDENCIES_CFLAGS@,$BASE_DEPENDENCIES_CFLAGS,;t t
-s,@BASE_DEPENDENCIES_LIBS@,$BASE_DEPENDENCIES_LIBS,;t t
-s,@MCS_CLIENT_CFLAGS@,$MCS_CLIENT_CFLAGS,;t t
-s,@MCS_CLIENT_LIBS@,$MCS_CLIENT_LIBS,;t t
-s,@MCS_MANAGER_CFLAGS@,$MCS_MANAGER_CFLAGS,;t t
-s,@MCS_MANAGER_LIBS@,$MCS_MANAGER_LIBS,;t t
-s,@GDK_PIXBUF_CSOURCE@,$GDK_PIXBUF_CSOURCE,;t t
+s,@GLIB_CFLAGS@,$GLIB_CFLAGS,;t t
+s,@GLIB_LIBS@,$GLIB_LIBS,;t t
+s,@GTK_CFLAGS@,$GTK_CFLAGS,;t t
+s,@GTK_LIBS@,$GTK_LIBS,;t t
+s,@LIBXFCEGUI4_CFLAGS@,$LIBXFCEGUI4_CFLAGS,;t t
+s,@LIBXFCEGUI4_LIBS@,$LIBXFCEGUI4_LIBS,;t t
+s,@LIBXFCE4UTIL_CFLAGS@,$LIBXFCE4UTIL_CFLAGS,;t t
+s,@LIBXFCE4UTIL_LIBS@,$LIBXFCE4UTIL_LIBS,;t t
+s,@LIBXML_CFLAGS@,$LIBXML_CFLAGS,;t t
+s,@LIBXML_LIBS@,$LIBXML_LIBS,;t t
+s,@LIBXFCE4MCS_CLIENT_CFLAGS@,$LIBXFCE4MCS_CLIENT_CFLAGS,;t t
+s,@LIBXFCE4MCS_CLIENT_LIBS@,$LIBXFCE4MCS_CLIENT_LIBS,;t t
+s,@LIBXFCE4MCS_MANAGER_CFLAGS@,$LIBXFCE4MCS_MANAGER_CFLAGS,;t t
+s,@LIBXFCE4MCS_MANAGER_LIBS@,$LIBXFCE4MCS_MANAGER_LIBS,;t t
 s,@LIBOBJS@,$LIBOBJS,;t t
 s,@LTLIBOBJS@,$LTLIBOBJS,;t t
 CEOF

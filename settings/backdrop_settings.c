@@ -40,7 +40,7 @@
 #include <libxfce4util/util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
-#include "backdrop_settings.h"
+#include "backdrop.h"
 #include "backdrop-icon.h"
 #include "backdrop-mgr.h"
 

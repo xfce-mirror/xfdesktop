@@ -1,6 +1,6 @@
-/*  xfce4
- *  
+/*
  *  Copyright (C) 2002 Jasper Huijsmans (huysmans@users.sourceforge.net)
+ *  Copyright (C) 2003 Benedikt Meurer (benedikt.meurer@unix-ag.uni-siegen.de)
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -15,30 +15,47 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-*/
-
-#ifndef __XFDESKTOP_MAIN_H
-#define __XFDESKTOP_MAIN_H
+ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 
-#include <gtk/gtk.h>
-#include <libxfcegui4/libxfcegui4.h>
-#include <libxfce4mcs/mcs-client.h>
+#include <string.h>
 
-#define _(x) x
-#define N_(x) x
+#include <glib.h>
+#include <libxfcegui4/dialogs.h>
 
-void quit(void);
+#include "backdrop.h"
 
-#define DEBUG_TRACE 0
-#include "debug.h"
 
-extern void backdrop_init(GtkWidget *);
-extern void backdrop_load_settings(McsClient *);
-extern void add_backdrop_callback(GHashTable *);
+gchar **
+get_list_from_file(const gchar *filename)
+{
+    gchar *contents;
+    GError *error;
+    gchar **files;
+    gsize length;
 
-#endif /* __XFDESKTOP_MAIN_H */
+    files = NULL;
+
+    if (!g_file_get_contents(filename, &contents, &length, &error)) {
+        xfce_err("Unable to get backdrop image list from file %s: %s",
+                filename, error->message);
+        g_error_free(error);
+        return(NULL);
+    }
+
+    if (strncmp(LIST_TEXT, contents, sizeof(LIST_TEXT) - 1) != 0) {
+        xfce_err("Not a backdrop image list file: %s", filename);
+        goto finished;
+    }
+
+    files = g_strsplit(contents + sizeof(LIST_TEXT), "\n", -1);
+
+finished:
+    g_free(contents);
+
+    return(files);
+}
 
