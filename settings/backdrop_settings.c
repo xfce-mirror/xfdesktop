@@ -66,7 +66,7 @@
 #define RCFILE "backdrop.xml"
 #define PLUGIN_NAME "backdrop"
 
-#define DEFAULT_ICON_SIZE 32
+#define DEFAULT_ICON_SIZE 48
 
 #ifdef HAVE_GDK_PIXBUF_NEW_FROM_STREAM
 #define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream
