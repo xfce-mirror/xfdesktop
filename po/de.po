@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-01 07:31+0200\n"
+"POT-Creation-Date: 2004-10-17 23:16+0200\n"
 "PO-Revision-Date: 2004-09-21 12:55+0200\n"
 "Last-Translator: Moritz Heiber <moe@xfce.org>\n"
 "Language-Team: NONE <none@none>\n"
@@ -182,13 +182,13 @@ msgstr "Kommando auswählen"
 msgid "Select icon"
 msgstr "Symbol auswählen"
 
-#: menueditor/menueditor.c:215 panel-plugin/desktop-menu-plugin.c:373
+#: menueditor/menueditor.c:215 panel-plugin/desktop-menu-plugin.c:389
 #: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Alle Dateien"
 
-#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:379
+#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:395
 #: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Bilddateien"
@@ -379,36 +379,36 @@ msgstr "Alle Felder müssen ausgefüllt sein."
 msgid "/Other"
 msgstr "/Andere"
 
-#: panel-plugin/desktop-menu-plugin.c:191
-#: panel-plugin/desktop-menu-plugin.c:516
+#: panel-plugin/desktop-menu-plugin.c:204
+#: panel-plugin/desktop-menu-plugin.c:532
 msgid "Xfce Menu"
 msgstr "Xfce Menü"
 
-#: panel-plugin/desktop-menu-plugin.c:356
+#: panel-plugin/desktop-menu-plugin.c:372
 msgid "Select Icon"
 msgstr "Icon auswählen"
 
-#: panel-plugin/desktop-menu-plugin.c:358
+#: panel-plugin/desktop-menu-plugin.c:374
 msgid "Select Menu File"
 msgstr "Menüdatei auswählen"
 
-#: panel-plugin/desktop-menu-plugin.c:387
+#: panel-plugin/desktop-menu-plugin.c:403
 msgid "Menu Files"
 msgstr "Menüdateien"
 
-#: panel-plugin/desktop-menu-plugin.c:446
+#: panel-plugin/desktop-menu-plugin.c:462
 msgid "_Menu file:"
 msgstr "_Menüdatei:"
 
-#: panel-plugin/desktop-menu-plugin.c:480
+#: panel-plugin/desktop-menu-plugin.c:496
 msgid "_Button icon:"
 msgstr "Buttonicon:"
 
-#: panel-plugin/desktop-menu-plugin.c:505
+#: panel-plugin/desktop-menu-plugin.c:521
 msgid "Show _icons in menu"
 msgstr "Icons im Menü anzeigen"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:115
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:112
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -460,7 +460,7 @@ msgstr "Liste mit Hintergrundbildern bearbeiten"
 
 #. the dialog
 #: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
-#: src/xfce-desktop.c:691
+#: src/xfce-desktop.c:670
 msgid "Desktop"
 msgstr "Desktop"
 
