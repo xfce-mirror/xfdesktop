@@ -259,7 +259,8 @@ libdesktopmenu_la_SOURCES = \
 libdesktopmenu_la_CFLAGS = \
 	-I$(top_srcdir)/common \
 	@XFCE4_PANEL_CFLAGS@ \
-	-DDATADIR=\"$(datadir)\"
+	-DDATADIR=\"$(datadir)\" \
+	-DLOCALEDIR=\"$(localedir)\" 
 
 libdesktopmenu_la_LIBADD = \
 	@XFCE4_PANEL_LIBS@ \

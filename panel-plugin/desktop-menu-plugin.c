@@ -450,6 +450,8 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 	GtkWidget *label, *image, *filebutton, *chk;
 	GtkSizeGroup *sg;
 	
+	xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+
 	vbox = gtk_vbox_new(FALSE, BORDER/2);
 	gtk_widget_show(vbox);
 	gtk_container_add(con, vbox);
