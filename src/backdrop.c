@@ -196,12 +196,13 @@ static char **get_list_from_file(const char *listfile)
     char *contents, *s1;
     GError *error = NULL;
     char **files = NULL;
+    gchar *message = NULL;
 
     TRACE();
     if (!g_file_get_contents(listfile, &contents, NULL, &error))
     {
-	g_warning("xfdesktop: error reading backdrop list file: %s\n",
-		  error->message);
+	message = g_strconcat("xfdesktop error: reading backdrop list file:\n", error->message, NULL);
+	show_error(message);	  
 	
 	return NULL;
     }
@@ -209,8 +210,8 @@ static char **get_list_from_file(const char *listfile)
     if (strncmp(LIST_TEXT, contents, strlen(LIST_TEXT)) != 0)
     {
 	g_free(contents);
-	g_warning("xfdesktop: not a backdrop list file: %s\n",
-		  listfile);
+	message = g_strconcat("xfdesktop error: not a backdrop list file:\n", listfile, NULL);
+	show_error(message);	  
 	
 	return NULL;
     }
@@ -219,7 +220,8 @@ static char **get_list_from_file(const char *listfile)
         
     files = g_strsplit(s1, "\n", -1);
     g_free(contents);
-    
+    g_free(message);    
+
     return files;
 }
 
@@ -378,6 +380,7 @@ static void set_backdrop(const char *path, int style, int show, GdkColor *color)
     GtkStyle *gstyle;
     GdkPixmap *pixmap = NULL;
     GdkPixbuf *pixbuf = NULL;
+    gchar *message = NULL;
 
     /* This call is used to free any previous allocated pixmap */
     gtk_widget_set_style(fullscreen_window, NULL);
@@ -396,7 +399,10 @@ static void set_backdrop(const char *path, int style, int show, GdkColor *color)
 	pixbuf = gdk_pixbuf_new_from_file(path, &error);
 	if(error)
 	{
-	    g_warning("xfdesktop: error loading backdrop image:\n%s\n", error->message);
+	    message = g_strconcat("xfdesktop error: loading backdrop image:\n", error->message, NULL);
+	    show_error(message);	  
+
+	    g_free(message); 
 	    g_error_free(error);
 	    pixbuf = NULL;
 	}
