@@ -774,13 +774,13 @@ update_brightness(GtkRange *w, BackdropPanel *bp)
     mcs_manager_notify(bp->bd->plugin->manager, BACKDROP_CHANNEL);
 }
 
-#if 0
+/* this is a workaround for a gtk bug.  it seems that if you move the slider
+ * around a bit, and try to go back to zero, you often get "-0" displayed */
 static gchar *
 hscale_format(GtkScale *w, gdouble val, gpointer user_data)
 {
-	return g_strdup_printf("%d %%", (gint)val);
+	return g_strdup_printf("%d", (gint)val);
 }
-#endif
 
 static void
 add_brightness_slider(GtkWidget *vbox, BackdropPanel *bp)
@@ -791,7 +791,7 @@ add_brightness_slider(GtkWidget *vbox, BackdropPanel *bp)
 	gtk_widget_show(hbox);
 	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	
-	label = gtk_label_new_with_mnemonic(_("_Brightness:"));
+	label = gtk_label_new_with_mnemonic(_("Adjust _Brightness:"));
 	gtk_widget_show(label);
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 4);
 	
@@ -806,8 +806,8 @@ add_brightness_slider(GtkWidget *vbox, BackdropPanel *bp)
 	gtk_box_pack_start(GTK_BOX(hbox), hscale, TRUE, TRUE, 4);
 	g_signal_connect(G_OBJECT(hscale), "value-changed",
 			G_CALLBACK(update_brightness), bp);
-	//g_signal_connect(G_OBJECT(hscale), "format-value",
-	//		G_CALLBACK(hscale_format), NULL);
+	g_signal_connect(G_OBJECT(hscale), "format-value",
+			G_CALLBACK(hscale_format), NULL);
 }
 
 #if 0

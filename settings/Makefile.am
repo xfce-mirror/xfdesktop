@@ -29,7 +29,8 @@ backdrop_settings_la_CFLAGS =						\
 	-I$(top_srcdir)/common						\
 	@XFCE_MCS_MANAGER_CFLAGS@					\
 	-DLOCALEDIR=\"$(localedir)\"					\
-	-DDATADIR=\"$(datadir)\"
+	-DDATADIR=\"$(datadir)\"					\
+	-DBINDIR=\"$(bindir)\"
 
 backdrop_settings_la_LIBADD =						\
 	$(top_builddir)/common/libxfdesktop.la

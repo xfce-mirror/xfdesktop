@@ -124,7 +124,14 @@ init_menu_settings(McsPlugin *plugin)
 static void
 _edit_menu_cb(GtkWidget *w, gpointer user_data)
 {
-	xfce_exec("xfce4-menueditor", FALSE, FALSE, NULL);
+	GError *err = NULL;
+	
+	if(!xfce_exec(BINDIR "/xfce4-menueditor", FALSE, FALSE, NULL)
+			&& !xfce_exec("xfce4-menueditor", FALSE, FALSE, &err))
+	{
+		xfce_warn(_("Unable to launch xfce4-menueditor: %s"), err->message);
+		g_error_free(err);
+	}
 }
 #endif
 
