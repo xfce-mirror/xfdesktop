@@ -61,7 +61,7 @@ dmp_set_size(Control *c, int size)
 	/* if we have one, see if the size is ok */
 	if(dmp->icon) {
 		w = gdk_pixbuf_get_width(dmp->icon);
-		if(w == settings.size)
+		if(w == icon_size[settings.size])
 			return;
 	}
 	
