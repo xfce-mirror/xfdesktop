@@ -5,7 +5,7 @@ dnl
 
 AC_INIT([configure.ac])
 
-AM_INIT_AUTOMAKE([xfdesktop], [4.0.3])
+AM_INIT_AUTOMAKE([xfdesktop], [4.0.4])
 
 AM_CONFIG_HEADER([config.h])
 
@@ -27,8 +27,8 @@ AC_CHECK_HEADERS(fcntl.h signal.h stddef.h sys/wait.h time.h)
 AC_CHECK_FUNCS(sigaction srandom)
 
 dnl Check for i18n support
-BM_I18N([xfdesktop], [az ca cs de es es_MX fi fr hi hu it ja pl ko lt ms nl
-	 no pl pt_PT ru sv ta tr uk vi zh_CN zh_TW])
+BM_I18N([xfdesktop], [az ca cs de es es_MX fa_IR fi fr hi hu it ja pl
+	 ko lt ms nl no pl pt_PT ru sv ta tr uk vi zh_CN zh_TW])
 
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE
