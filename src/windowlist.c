@@ -42,7 +42,7 @@
 #include "windowlist.h"
 #include "xfdesktop-common.h"
 
-#define WLIST_MAXLEN 25
+#define WLIST_MAXLEN 30
 
 static GtkWidget *windowlist = NULL;
 static gboolean show_windowlist = TRUE;
@@ -113,8 +113,6 @@ menu_item_from_netk_window(NetkWindow *netk_window, gint icon_width,
 	
 	label = g_malloc0(WLIST_MAXLEN+13);
 	
-	if(netk_workspace != active_workspace)
-		g_strlcat(label, "<i>", WLIST_MAXLEN+13);
 	if(netk_window_is_minimized(netk_window))
 		g_strlcat(label, "[", WLIST_MAXLEN+13);
 	g_strlcat(label, title, strlen(label)+WLIST_MAXLEN);
@@ -122,8 +120,6 @@ menu_item_from_netk_window(NetkWindow *netk_window, gint icon_width,
 		g_strlcat(label, "...", WLIST_MAXLEN+13);
 	if(netk_window_is_minimized(netk_window))
 		g_strlcat(label, "]", WLIST_MAXLEN+13);
-	if(netk_workspace != active_workspace)
-		g_strlcat(label, "</i>", WLIST_MAXLEN+13);
 	
 	if(show_windowlist_icons) {
 		icon = netk_window_get_icon(netk_window);
@@ -143,8 +139,6 @@ menu_item_from_netk_window(NetkWindow *netk_window, gint icon_width,
 		gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
 	} else
 		mi = gtk_menu_item_new_with_label(label);
-	gtk_label_set_use_markup(GTK_LABEL(gtk_bin_get_child(GTK_BIN(mi))), TRUE);
-	
 	g_free(label);
 	
 	return mi;
@@ -224,8 +218,13 @@ windowlist_create(GdkScreen *gscreen)
 			if(!mi)
 				continue;
 			if(netk_workspace != active_workspace) {
-				gtk_widget_modify_fg(gtk_bin_get_child(GTK_BIN(mi)),
-						GTK_STATE_NORMAL, &(style->fg[GTK_STATE_INSENSITIVE]));
+				GtkWidget *lbl = gtk_bin_get_child(GTK_BIN(mi));
+				PangoFontDescription *pfd = pango_font_description_from_string("italic");
+				
+				gtk_widget_modify_fg(lbl, GTK_STATE_NORMAL,
+						&(style->fg[GTK_STATE_INSENSITIVE]));
+				gtk_widget_modify_font(lbl, pfd);
+				pango_font_description_free(pfd);
 			}
 			gtk_widget_show(mi);
 			gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
