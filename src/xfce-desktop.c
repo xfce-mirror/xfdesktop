@@ -79,8 +79,6 @@ struct _XfceDesktopPriv
 	
 	guint nbackdrops;
 	XfceBackdrop **backdrops;
-	
-	gboolean destroyed;
 };
 
 GtkWindowClass *parent_class = NULL;
