@@ -70,18 +70,6 @@ static const char *dentry_keywords [] = {
    "NoDisplay",
 };
 
-#if 0
-static char *dentry_paths[] = {
-	DATADIR "/applications",
-	"/usr/share/applications",
-	"/usr/local/share/applications",
-	"/opt/gnome/share/applications",
-	"/opt/gnome2/share/applications",
-	"/opt/kde/share/applications",
-	NULL
-};
-#endif
-
 /* these .desktop files _should_ have an OnlyShowIn key, but don't.  i'm going
  * to match by the Exec field.  */
 static char *blacklist_arr[] = {
@@ -95,22 +83,8 @@ static char *blacklist_arr[] = {
 	NULL
 };
 static GHashTable *blacklist = NULL;
-
-#if 0
-static const gchar *legacy_dirs[] = {
-	"/usr/share/gnome/apps",
-	"/usr/local/share/gnome/apps",
-	"/opt/gnome/share/apps",
-	"/usr/share/applnk",
-	"/usr/local/share/applnk",
-	NULL
-};
-#else
 static gchar **legacy_dirs = NULL;
-#endif
-
 static GHashTable *dir_to_cat = NULL;
-
 
 /* we don't want most command-line parameters if they're given. */
 G_INLINE_FUNC gchar *
@@ -581,11 +555,9 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 		MenuPathType pathtype, gboolean do_legacy)
 {
 	gint i, totdirs = 0;
-	gchar **dentry_paths, *catfile;
-	gchar const *pathd;
+	gchar **dentry_paths, *catfile, *kdepath, *homepath;
+	const gchar *pathd, *kdedir = g_getenv("KDEDIR");
 	GDir *d;
-	const gchar *kdedir = g_getenv("KDEDIR");
-	gchar kde_dentry_path[PATH_MAX];
 	struct stat st;
 	
 	g_return_if_fail(desktop_menu != NULL);
@@ -612,9 +584,21 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 			g_str_equal, (GDestroyNotify)g_free, NULL);
 	
 	/* lookup applications/ directories */
+	homepath = xfce_get_homefile(".local", "share", NULL);
+	if(kdedir) {
+		kdepath = g_build_path(G_DIR_SEPARATOR_S, kdedir, "share");
+		xfce_resource_push_path(XFCE_RESOURCE_DATA, kdepath);
+	}
 	xfce_resource_push_path(XFCE_RESOURCE_DATA, DATADIR);
+	xfce_resource_push_path(XFCE_RESOURCE_DATA, homepath);
 	dentry_paths = xfce_resource_lookup_all(XFCE_RESOURCE_DATA, "applications/");
 	xfce_resource_pop_path(XFCE_RESOURCE_DATA);
+	xfce_resource_pop_path(XFCE_RESOURCE_DATA);
+	if(kdedir) {
+		xfce_resource_pop_path(XFCE_RESOURCE_DATA);
+		g_free(kdepath);
+	}
+	g_free(homepath);
 
 	for(i = 0; dentry_paths[i]; i++) {
 		pathd = dentry_paths[i];
@@ -631,20 +615,6 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 		}
 	}
 	g_strfreev (dentry_paths);
-	
-	if(kdedir && strcmp(kdedir, "/usr") && strcmp(kdedir, "/opt/kde")) {
-		g_snprintf(kde_dentry_path, PATH_MAX, "%s/share/applications",
-				kdedir);
-		d = g_dir_open(kde_dentry_path, 0, NULL);
-		if(d) {
-			if(!stat(kde_dentry_path, &st)) {
-				g_hash_table_insert(desktop_menu->dentrydir_mtimes,
-						g_strdup(kde_dentry_path), GUINT_TO_POINTER(st.st_mtime));
-			}
-			totdirs += dentry_recurse_dir(d, kde_dentry_path, desktop_menu, pathtype);
-			g_dir_close(d);
-		}
-	}
 	
 	if(do_legacy) {
 		menu_dentry_legacy_init();
