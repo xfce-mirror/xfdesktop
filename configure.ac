@@ -28,7 +28,7 @@ AC_CHECK_FUNCS(sigaction srandom)
 
 dnl Check for i18n support
 BM_I18N([xfdesktop], [ca de es es_MX fi fr hu ja pl ko lt ms nl pt_PT ru sv ta
-	 tr zh_CN zh_TW])
+	 tr vi zh_CN zh_TW])
 
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE
