@@ -586,7 +586,7 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 	/* lookup applications/ directories */
 	homepath = xfce_get_homefile(".local", "share", NULL);
 	if(kdedir) {
-		kdepath = g_build_path(G_DIR_SEPARATOR_S, kdedir, "share");
+		kdepath = g_build_path(G_DIR_SEPARATOR_S, kdedir, "share", NULL);
 		xfce_resource_push_path(XFCE_RESOURCE_DATA, kdepath);
 	}
 	xfce_resource_push_path(XFCE_RESOURCE_DATA, DATADIR);
