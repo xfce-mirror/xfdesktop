@@ -440,6 +440,7 @@ update_window_style (GtkWidget * win, GdkPixmap * pixmap)
 static void
 update_root_window (GtkWidget * win, GdkPixmap * pixmap)
 {
+    gdk_error_trap_push ();
     if (pixmap)
     {
 	XID id = GDK_DRAWABLE_XID (pixmap);
@@ -456,6 +457,7 @@ update_root_window (GtkWidget * win, GdkPixmap * pixmap)
 			     gdk_atom_intern ("_XROOTPMAP_ID", FALSE));
     }
 
+    gdk_error_trap_pop ();
     gdk_flush ();
 }
 
