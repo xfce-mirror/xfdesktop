@@ -405,9 +405,6 @@ update_window_style (GtkWidget * win, GdkPixmap * pixmap)
 {
     GtkStyle *style;
 	
-	/* make sure the window is realized */
-	gtk_widget_show(win);
-	
 	/* clear the old pixmap, if any */
 	gtk_widget_set_style(win, NULL);
 	

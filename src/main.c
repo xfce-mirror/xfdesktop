@@ -459,7 +459,7 @@ main (int argc, char **argv)
 	
 	/* now that we have the settings inited, load them, and show the window */
 	for(i=0; i<nscreens; i++) {
-		XfceDesktop *xfdesktop = g_list_nth_data(desktops, i);
+		xfdesktop = g_list_nth_data(desktops, i);
 		load_settings(xfdesktop);
 		gtk_widget_show(xfdesktop->fullscreen);
 		gdk_window_lower(xfdesktop->fullscreen->window);
