@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xfdesktop-menu [
+	<!ENTITY menu2 SYSTEM "menu2.xml">
+]>
+
+<!-- 
+     XFce 4 menü dosyası açıklaması: 
+     =================================
+     Bu kısımda menü dosyası biçemi hakkında açıklama yapılacak. Gerçek
+     örnekler için aşağıdaki menüye bakınız.
+-->
+
+<!-- Açıklamalar bu şekilde olacak ;-) -->
+
+<!-- 
+
+  + Herşey tam olarak bir çift <xfdesktop-menu></xfdesktop-menu> etiketi 
+    arasındadır.
+
+  + Uygulamalar:
+    <app name="Menü adı" cmd="Çalıştırılacak komut" term="no" visible="yes" />
+    'term' uygulamanın terminal oturumunda çalışacağını belirler
+    Sadece 'name' ve 'cmd'nin olması zorunlu.
+
+  + Ayıraçlar:
+    <separator/>
+
+  + Altmenüler:
+    <menu name="Menü ismi" visible="yes"></menu>
+    Sadece 'name' gerekli.
+    'menu' etiketleri arasında çok sayıda uygulama, ayıraç ve menü kullanılabilir.
+
+  + Başlıklar
+    <title name="Menü ismi" />
+    Menü için seçilemeyen bir başlık oluşturur
+    
+  + Başka dosyaları ekleme:
+    Başka dosyalar bir xml hilesi ile kullanılabilir. Bu biraz daha karmaşıktır.
+
+    Öncelikle dosya başlığında entity adında bir girdinin olması gerekiyor. 
+    Aşağıda 'menu2' adındaki girdi 'menu2.xml' dosyasını gösteren örneğe bakın.
+    Böylece '&entityname;' menü dosyasının herhangi bir yerinde kullanılabilir 
+    ve girdinin olduğu bölüm tanımlanan dosya içeriği ile değiştirilir.
+    Bu özellik gnome menülerini çevirmeye yarayan bir uygulama(*) kullanarak 
+    oluşturduğunuz dosyayı kullanmak için oldukça kullanışlı.
+    
+    (*) http://menumaker.sourceforge.net/
+-->
+<xfdesktop-menu>
+    <title name="Masaüstü Menüsü" visible="yes" />
+    <separator/>
+    <app name="Uygulama Çalıştır..." cmd="xfrun4"/>
+    <separator/>
+    <app name="Terminal" cmd="xfterm4" />
+    <app name="Dosya Yöneticisi (xffm)" cmd="xffm"/>
+    <app name="Web Tarayıcı" cmd="mozilla"/>
+    <separator/>
+    <menu name="Ayarlar" visible="yes">
+        <app name="Tüm Ayarlar..." cmd="xfce-setting-show"/>
+        <app name="Arka Plan..." cmd="xfce-setting-show backdrop"/>
+<!-- 
+        <app name="Arka Plan" cmd="xfce-setting-show backdrop"/>
+	<app name="Çalışma Alanları" cmd="xfce-setting-show workspaces"/>
+	<app name="Dosya Yöneticisi (xffm)" cmd="xfce-setting-show xffm"/>
+	<app name="Kullanıcı Arayüzü (gtk+)" cmd="xfce-setting-show ui"/>
+	<app name="Simge Kutusu" cmd="xfce-setting-show xfibx"/>
+        <app name="Fare" cmd="xfce-setting-show mouse"/>
+        <app name="Görev Çubuğu" cmd="xfce-setting-show taskbar"/>
+	<app name="Klavye" cmd="xfce-setting-show keyboard"/>
+	<app name="Pencere Yöneticisi" cmd="xfce-setting-show xfwm4"/>
+	<app name="Ekran Sınırları" cmd="xfce-setting-show xfwm_margins"/>
+	<app name="Panel" cmd="xfce-setting-show xfce"/>
+-->
+    </menu>
+    <separator/>
+    <app name="Yardım" cmd="xfhelp4"/>
+    <!-- <separator/> -->
+    <!-- Kullanabilmek içi 'visible' değerini 'yes' yapın .
+      Bu masaüstü yöneticisinden çıkmayı sağlayacaktır. Eğer 'exec xfdesktop' 
+      satırını ~/.xinitrc dosyanıza eklediyseniz, bu menü öğesi X oturumundan 
+      çıkmak için kullanılabilir.
+    -->
+    <builtin name="Çık" cmd="quit" visible="no"/>
+    <!-- Bir dosya eklemek için örnek:
+      1) DOCTYPE etiketinde (yukarıdaki açıklamalar) ENTITY'yi belirleyin
+      2) Entity'yi bu dosyada kullanın: 
+    -->
+    <!--
+    &menu2;
+    -->
+</xfdesktop-menu>
+
