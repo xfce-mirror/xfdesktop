@@ -13,9 +13,16 @@
 
   <title>XFce 4 Desktop Manager</title>
   
-  <copyright>
-    <year>2003</year> <holder>MAIN AUTHOR</holder>
-  </copyright>
+
+<copyright>
+   <year>2003</year> <holder>Jasper Huijsmans</holder>
+</copyright>
+
+
+<copyright>
+   <year>2003</year> <holder>François Le Clainche</holder>
+</copyright>
+
 
 <!-- translators: uncomment this:
 
@@ -38,11 +45,20 @@
   <authorgroup>
 
     <author>
-      <firstname>MAIN</firstname> <surname>AUTHOR</surname>
+      <firstname>Jasper</firstname> <surname>Huijsmans</surname>
       <affiliation>
-	<address><email>M.AUTHOR@WRITERS.COM</email></address>
-      </affiliation>
+       <address><email>huysmans@users.sourceforge.net</email></address>
+       </affiliation>
     </author>
+
+
+    <author>
+      <firstname>François</firstname> <surname>Le Clainche</surname>
+      <affiliation>
+       <address><email>fleclainche@wanadoo.fr</email></address>
+       </affiliation>
+    </author>
+				  
 
 <!-- This is appropriate place for other contributors: translators,
 maintainers, etc. Commented out by default.
@@ -76,7 +92,7 @@ maintainers, etc. Commented out by default.
 
   <para>The &app; application manages the desktop background. It sets a
     background image and/or color and it pops up a menu when you click on it
-    with your mouse. Along with the apllication two settings dialogs are
+    with your mouse. Along with the application, two settings dialogs are
     installed that can be used with the 
     <emphasis>XFce 4 Settings Manager</emphasis>. These dialogs allow you to
     change the background image and color and manage the number of workspaces 
@@ -87,6 +103,8 @@ maintainers, etc. Commented out by default.
 
 <sect1 id="xfdesktop-background">
   <title>Background</title>
+
+<para>You can start the Background Settings manager by clicking on the "Desktop: backdrop" button in the <ulink url="xfce-mcs-manager.html#manager-dialog" type="http">XFce 4 Settings manager</ulink></para>.
 
   <figure id="xfdesktop-background-fig">
     <title>Background Settings</title> 
@@ -102,7 +120,51 @@ maintainers, etc. Commented out by default.
       </mediaobject>
     </screenshot>
   </figure>
-  
+
+<variablelist>
+<varlistentry>
+<term>Color</term>
+<listitem>
+	<para>Click the "Background color" button, and a new dialog will appear :</para>
+	 
+	 <figure id="select_bg_color-fig">
+	  <title>Select background color</title>
+	   <screenshot>
+	    <mediaobject>
+	      <imageobject>
+	       <imagedata fileref="images/select_bg_color.png" format="PNG"/>
+	      </imageobject>
+	     <textobject>
+	      <phrase>Shows the Select background color dialog</phrase>
+	     </textobject>
+	    </mediaobject>
+	   </screenshot>
+	  </figure>
+
+	<para>This dialog allows you to choose a color for the desktop background. This color will fill the entire root window, and will remain visible through a transparent background image. There are several ways to do that :</para>
+
+	<itemizedlist>
+        <listitem>you can use the colored ring with a triangle inside : select the color you want from the outer ring, then select the darkness or lightness of that color using the inner triangle. Corresponding values of brightness, deepness, and amount of red, green and blue light in the color appear through the entries on the right side of the window.</listitem>	
+        <listitem>you can click the eyedropper, then click anywhere on your screen to select the color</listitem>
+	<listitem>you can enter an HTML-style hexadecimal color value, or simply a color name, in the "Color Name" entry</listitem>
+        </itemizedlist>
+
+	<para>Select the "Use color only" option if you want &app; to ignore the backgroung image and only use the choosen color.</para>
+	  
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>Image</term>
+
+<listitem>
+
+	<para>The "File" entry shows the path to the currently selected background image. If you want to change it, just edit the path, or click the "Browse" button, and a classic file-browsing dialog will appear.</para>
+
+	<para>Three Style options (Tiled, Scaled, and Centered) can be used to specify the fitting of the background image on the screen, depending on its size. You can also select the "Automatic" item if you want &app; to take care of this setting.</para>
+
+	<para>You can create a list of background images that will be randomly used when &app; starts. Click the "New list" button to open a new dialog :</para>
+
   <figure id="xfdesktop-list-fig">
     <title>Backdrop List</title> 
     <screenshot>
@@ -117,11 +179,22 @@ maintainers, etc. Commented out by default.
       </mediaobject>
     </screenshot>
   </figure>
-  
+
+	<para>You may want to change the default path and name of your custom.list list of backdrops in the "List file" entry.</para>
+
+	<para>You can easily add an image file by clicking the "plus" button. That action will open a file-browsing window. You can remove a file, if you select it in the list and click the "minus" button. When your list is complete, click the "Save" button to save it. If you want to modify its content later, use the "Edit list" button of the Background settings manager.</para>
+
+</listitem>
+
+</varlistentry>
+</variablelist>
+	
 </sect1>
 
 <sect1 id="xfdesktop-workspace">
   <title>Workspaces</title>
+
+<para>You can start the Workspace Settings manager by clicking on the "Desktop: workspaces" button in the <ulink url="xfce-mcs-manager.html#manager-dialog" type="http">XFce 4 Settings manager</ulink></para>.
 
   <figure id="xfdesktop-workspace-fig">
     <title>Workspace Settings</title> 
@@ -132,6 +205,73 @@ maintainers, etc. Commented out by default.
 	</imageobject> 
 	<textobject>
 	  <phrase>Shows workspace settings dialog.
+	  </phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+<variablelist>
+
+<varlistentry>
+<term>Workspaces</term>
+
+<listitem>
+
+<para>That option allows you too choose the number of workspaces you want to use (between 1 and 32).</para>
+
+</listitem>
+
+</varlistentry>
+
+<varlistentry>
+<term>Worspace names</term>
+
+<listitem>
+
+<para>This field shows the list of avaible workspaces. If you want to edit the name of one of them, click its number and a fill the entry of the dialog that will then appear. When it's done, click the "Apply" button, or just press the Enter key, to return to the list.</para>
+
+</listitem>
+
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
+<sect1 id="xfdesktop-menu">
+  <title>&app; root menu</title>
+
+<para>&app; provides a mouse menu that appears when you click the desktop background.</para>
+
+<para>A left-click on the desktop background opens a menu that allows you to start some applications. Its configuration file, menu.xml, can be found under the path $prefix/etc/xfce4/menu.xml.</para>
+
+<figure id="root-menu-fig">
+    <title>&app; left-click mouse menu</title> 
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/root_menu.png" format="PNG"/>
+	</imageobject> 
+	<textobject>
+	  <phrase>Shows &app; left-click mouse menu.
+	  </phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+<para>A right-click on the desktop background shows a list of all opened windows classified by workspace. Moreover, it allows you to add or remove a workspace from the mouse.</para>
+
+<figure id="root-menu2-fig">
+    <title>&app; right-click mouse menu</title> 
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/root_menu2.png" format="PNG"/>
+	</imageobject> 
+	<textobject>
+	  <phrase>Shows &app; right-click mouse menu.
 	  </phrase>
 	</textobject>
       </mediaobject>
