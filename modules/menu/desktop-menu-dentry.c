@@ -1,8 +1,9 @@
 /*
- *  menu-dentry.[ch] - routines for gathering .desktop entry data
+ *  desktop-menu-dentry.[ch] - routines for gathering .desktop entry data
  *
  *  Copyright (C) 2004 Danny Milosavljevic <danny.milo@gmx.net>
  *                2004 Brian Tarricone <bjt23@cornell.edu>
+ *                2004 Benedikt Meurer <benny@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -68,6 +69,7 @@ static const char *dentry_keywords [] = {
    "Categories", "OnlyShowIn", "Exec", "Terminal",
 };
 
+#if 0
 static char *dentry_paths[] = {
 	DATADIR "/applications",
 	"/usr/share/applications",
@@ -77,6 +79,7 @@ static char *dentry_paths[] = {
 	"/opt/kde/share/applications",
 	NULL
 };
+#endif
 
 /* these .desktop files _should_ have an OnlyShowIn key, but don't.  i'm going
  * to match by the Exec field.  */
@@ -505,6 +508,7 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 		MenuPathType pathtype, gboolean do_legacy)
 {
 	gint i, totdirs = 0;
+	gchar **dentry_paths;
 	gchar const *pathd;
 	GDir *d;
 	const gchar *kdedir = g_getenv("KDEDIR");
@@ -544,6 +548,11 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 	else
 		i = 0;
 
+	/* lookup applications/ directories */
+	xfce_resource_push_path (XFCE_RESOURCE_DATA, DATADIR);
+	dentry_paths = xfce_resource_lookup_all (XFCE_RESOURCE_DATA, "applications/");
+	xfce_resource_pop_path (XFCE_RESOURCE_DATA);
+	
 	for(; dentry_paths[i]; i++) {
 		pathd = dentry_paths[i];
 		totdirs++;
@@ -558,7 +567,8 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 			g_dir_close(d);
 		}
 	}
-
+	g_strfreev (dentry_paths);
+	
 	if(kdedir && strcmp(kdedir, "/usr") && strcmp(kdedir, "/opt/kde")) {
 		g_snprintf(kde_dentry_path, PATH_MAX, "%s/share/applications",
 				kdedir);
