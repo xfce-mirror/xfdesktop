@@ -231,7 +231,7 @@ static GtkWidget *create_fullscreen_window(void)
     }
 
     gtk_widget_add_events(win, 
-	    GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
+	    GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_SCROLL_MASK);
 
     return win;
 }

@@ -1,7 +1,7 @@
 /*  xfce4
  *  
  *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
- *  		      2003 Biju Chacko (botsie@users.sourceforge.net)
+ *                    2003 Biju Chacko (botsie@users.sourceforge.net)
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -130,7 +130,7 @@ void do_builtin(gpointer callback_data, guint callback_action, GtkWidget * widge
     }
     else if (!strcmp(builtin, "quit"))
     {
-	quit();
+        quit();
     }
 }
 
@@ -163,10 +163,10 @@ char *get_menu_file(void)
             return filename;
 
         }
-	else
-	{
-	    g_free(filename);
-	}
+        else
+        {
+            g_free(filename);
+        }
     }
 
     filename = g_build_filename(SYSCONFDIR, "xfce4", "menu.xml", NULL);
@@ -176,7 +176,7 @@ char *get_menu_file(void)
     }
     else
     {
-	g_free(filename);
+        g_free(filename);
     }
 
     g_warning("%s: Could not locate a menu definition file", PACKAGE);
@@ -429,65 +429,65 @@ static GtkWidget *create_desktop_menu(void)
 
     TRACE();
     if (!filename)
-	filename = get_menu_file();
+        filename = get_menu_file();
     
     /* may have been removed */
     if (!stat(filename, &st))
     {
-	g_free(filename);
-	filename = get_menu_file();
-	ctime = 0;
+        g_free(filename);
+        filename = get_menu_file();
+        ctime = 0;
     }
 
     if (!ifactory || !MainMenuData || ctime < st.st_ctime)
     {
-	GtkItemFactoryEntry entry;
-	MenuItem *item = NULL;
-	GList *li, *menu_data = NULL;
-	
-	if (!ifactory)
-	    ifactory = gtk_item_factory_new(GTK_TYPE_MENU, "<popup>", NULL);
+        GtkItemFactoryEntry entry;
+        MenuItem *item = NULL;
+        GList *li, *menu_data = NULL;
+        
+        if (!ifactory)
+            ifactory = gtk_item_factory_new(GTK_TYPE_MENU, "<popup>", NULL);
 
-	if (MainMenuData)
-	{
-	    g_list_foreach(MainMenuData, (GFunc)remove_factory_item, ifactory);
-	    free_menu_data(MainMenuData);
-	}
-	
-	/*
-	 * TODO: Replace the following line with code  to call multiple
-	 * menu parsers and merge their content
-	 */
-	menu_data = parse_menu_file(filename);
-	if(menu_data == NULL)
-	{
-	    g_warning("%s: Error parsing menu file %s\n", 
-		      PACKAGE, filename);
-	}
+        if (MainMenuData)
+        {
+            g_list_foreach(MainMenuData, (GFunc)remove_factory_item, ifactory);
+            free_menu_data(MainMenuData);
+        }
+        
+        /*
+         * TODO: Replace the following line with code  to call multiple
+         * menu parsers and merge their content
+         */
+        menu_data = parse_menu_file(filename);
+        if(menu_data == NULL)
+        {
+            g_warning("%s: Error parsing menu file %s\n", 
+                      PACKAGE, filename);
+        }
 
-	for(li = menu_data; li; li = li->next)
-	{
-	    /* parse current item */
-	    item = (MenuItem *) li->data;
-	    assert(item != NULL);
-	    entry = parse_item(item);
+        for(li = menu_data; li; li = li->next)
+        {
+            /* parse current item */
+            item = (MenuItem *) li->data;
+            assert(item != NULL);
+            entry = parse_item(item);
 
             if (!EditMode) 
             {
-	        gtk_item_factory_create_item(ifactory, &entry, item->cmd, 1);
+                gtk_item_factory_create_item(ifactory, &entry, item->cmd, 1);
             }
             else
             {
-	        gtk_item_factory_create_item(ifactory, &entry, item, 1);
+                gtk_item_factory_create_item(ifactory, &entry, item, 1);
             }
-	}
+        }
 
-	/* clean up */
-	/* free_menu_data(menu_data); */
-	/* Hmmm ... if you do this the menus don't work */
-	/* Lets save it in a global var and worry about it later */
-	MainMenuData = menu_data;
-	ctime = st.st_ctime;
+        /* clean up */
+        /* free_menu_data(menu_data); */
+        /* Hmmm ... if you do this the menus don't work */
+        /* Lets save it in a global var and worry about it later */
+        MainMenuData = menu_data;
+        ctime = st.st_ctime;
     }
 
     return gtk_item_factory_get_widget(ifactory, "<popup>");
@@ -581,7 +581,7 @@ static GtkWidget *create_windowlist_menu(void)
     menu3 = gtk_menu_new();
     style = gtk_widget_get_style(menu3);
 
-/*	mi = gtk_menu_item_new_with_label(_("Window list"));
+/*      mi = gtk_menu_item_new_with_label(_("Window list"));
     gtk_widget_set_sensitive(mi, FALSE);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
@@ -597,27 +597,27 @@ static GtkWidget *create_windowlist_menu(void)
     for(i = 0; i < n; i++)
     {
         char *ws_name;
-	const char *realname;
+        const char *realname;
         gboolean active;
-	
+        
         ws = netk_screen_get_workspace(netk_screen, i);
-	realname = netk_workspace_get_name(ws);
-	
+        realname = netk_workspace_get_name(ws);
+        
         active = (ws == aws);
 
-	if (realname)
-	{
-	    ws_name = g_strdup_printf("%s: <i>%s</i>", _("Workspace"), 
-		    		      realname);
-	}
-	else
-	{
-	    ws_name = g_strdup_printf("%s: <i>%d</i>", _("Workspace"), i+1);
-	}
-	
+        if (realname)
+        {
+            ws_name = g_strdup_printf("%s: <i>%s</i>", _("Workspace"), 
+                                      realname);
+        }
+        else
+        {
+            ws_name = g_strdup_printf("%s: <i>%d</i>", _("Workspace"), i+1);
+        }
+        
         mi = gtk_menu_item_new_with_label(ws_name);
-	g_free(ws_name);
-	
+        g_free(ws_name);
+        
         label = gtk_bin_get_child(GTK_BIN(mi));
         gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
         gtk_widget_show(mi);
@@ -680,6 +680,47 @@ static GtkWidget *create_windowlist_menu(void)
     return menu3;
 }
 
+static gboolean button_scroll_event (GtkWidget *widget, GdkEventScroll *event)
+{
+    gint n, active;
+    NetkWorkspace *ws = NULL;
+
+    g_return_val_if_fail (event != NULL, FALSE);  
+
+    n = netk_screen_get_workspace_count(netk_screen);
+    active = netk_workspace_get_number(netk_screen_get_active_workspace(netk_screen));
+
+    switch(event->direction)
+    {
+        case GDK_SCROLL_UP:
+        case GDK_SCROLL_LEFT:
+            if (active > 0)
+            {
+                ws = netk_screen_get_workspace(netk_screen, active - 1);
+                if (ws)
+                {
+                    netk_workspace_activate(ws);
+                }
+            }
+            break;
+        case GDK_SCROLL_DOWN:
+        case GDK_SCROLL_RIGHT:
+            if (active < n - 1)
+            {
+                ws = netk_screen_get_workspace(netk_screen, active + 1);
+                if (ws)
+                {
+                    netk_workspace_activate(ws);
+                }
+            }
+            break;
+        default:
+            break;
+    }
+
+    return TRUE;
+}
+
 /*  Initialization and event handling
  *  ---------------------------------
 */
@@ -722,6 +763,8 @@ void menu_init(GtkWidget * window, NetkScreen * screen)
 
     g_signal_connect(window, "button-press-event",
                      G_CALLBACK(button_press_event), NULL);
+    g_signal_connect(window, "scroll-event",
+                     G_CALLBACK(button_scroll_event), NULL);
 }
 
 void menu_load_settings(McsClient * client)
