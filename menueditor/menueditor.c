@@ -597,6 +597,18 @@ void close_menu_cb(GtkWidget *widget, gpointer data)
   gtk_widget_set_sensitive(menueditor_app.treeview,FALSE);
 }
 
+/* Collapse the treeview */
+void collapse_tree_cb(GtkWidget *widget, gpointer data)
+{
+  gtk_tree_view_collapse_all (GTK_TREE_VIEW(menueditor_app.treeview));
+}
+
+/* Expand the treeview */
+void expand_tree_cb(GtkWidget *widget, gpointer data)
+{
+  gtk_tree_view_expand_all (GTK_TREE_VIEW(menueditor_app.treeview));
+}
+
 void treeview_cursor_changed_cb(GtkTreeView *treeview,gpointer user_data)
 {
   GtkTreeIter iter;
@@ -916,6 +928,21 @@ void create_main_window()
 							 "",
 							 _("Close current menu"), NULL,
 							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(close_menu_cb), NULL);
+  gtk_toolbar_append_space (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar));
+  tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_ZOOM_OUT,GTK_ICON_SIZE_LARGE_TOOLBAR);
+  menueditor_app.main_toolbar.collapse = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
+							 GTK_TOOLBAR_CHILD_BUTTON,
+							 NULL,
+							 "",
+							 _("Collapse the tree"), NULL,
+							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(collapse_tree_cb), NULL);
+  tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_ZOOM_IN,GTK_ICON_SIZE_LARGE_TOOLBAR);
+  menueditor_app.main_toolbar.expand = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
+							 GTK_TOOLBAR_CHILD_BUTTON,
+							 NULL,
+							 "",
+							 _("Expand the tree"), NULL,
+							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(expand_tree_cb), NULL);
   gtk_toolbar_append_space (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar));
   tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_ADD,GTK_ICON_SIZE_LARGE_TOOLBAR);
   menueditor_app.main_toolbar.add = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),

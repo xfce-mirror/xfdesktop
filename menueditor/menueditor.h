@@ -115,6 +115,8 @@ struct _menueditor_app{
        GtkWidget* open;
        GtkWidget* save;
        GtkWidget* close;
+       GtkWidget* collapse;
+       GtkWidget* expand;
        GtkWidget* add;
        GtkWidget* del;
        GtkWidget* up;
