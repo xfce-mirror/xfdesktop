@@ -1188,7 +1188,7 @@ run_dialog (McsPlugin * mcs_plugin)
 		gtk_window_set_icon(GTK_WINDOW(bd->dialog), win_icon);
 		g_object_unref(G_OBJECT(win_icon));
 	}
-	gtk_window_set_position(GTK_WINDOW(bd->dialog), GTK_WIN_POS_CENTER);
+	xfce_gtk_window_center_on_monitor_with_pointer (GTK_WINDOW (bd->dialog));
 	g_signal_connect(G_OBJECT(bd->dialog), "response",
 			G_CALLBACK(run_dialog_cb), bd);
 	gtk_window_set_modal(GTK_WINDOW(bd->dialog), FALSE);
