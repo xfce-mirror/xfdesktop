@@ -179,7 +179,7 @@ void entry_up_cb(GtkWidget *widget, gpointer data)
     gtk_tree_path_up(path_up);
     ret_iter = gtk_tree_model_get_iter (model,&iter_up,path_up);
 
-    if(gtk_tree_path_get_depth(path_up) > 1 && ret_iter){
+    if(gtk_tree_path_get_depth(path_up) > 0 && ret_iter){
       /* Move into the parent menu ? */
       GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(menueditor_app.main_window),
 				      GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -193,6 +193,8 @@ void entry_up_cb(GtkWidget *widget, gpointer data)
 	GValue val2 = { 0, };
 	GValue val3 = { 0, };
 	GValue val4 = { 0, };
+	GValue val5 = { 0, };
+	GdkPixbuf *icon;
 	gchar *str_name;
 	gchar *str_command;
 	xmlNodePtr node, node_parent;
@@ -212,15 +214,19 @@ void entry_up_cb(GtkWidget *widget, gpointer data)
 				     &iter_up);
 
 	/* Copy the values of the current iter */
-	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, NAME_COLUMN, &val1);
-	str_name = (gchar*) g_value_get_string(&val1);
-	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, COMMAND_COLUMN, &val2);
-	str_command = (gchar*) g_value_get_string(&val2);
-	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, POINTER_COLUMN, &val3);
-	node = g_value_get_pointer(&val3);
+	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, ICON_COLUMN, &val1);
+	icon = g_value_get_object(&val1);
+	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, NAME_COLUMN, &val2);
+	str_name = (gchar*) g_value_get_string(&val2);
+	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, COMMAND_COLUMN, &val3);
+	str_command = (gchar*) g_value_get_string(&val3);
+	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, POINTER_COLUMN, &val4);
+	node = g_value_get_pointer(&val4);
 	
-	gtk_tree_store_set (menueditor_app.treestore, &iter_new, 0, NULL, 
-			    NAME_COLUMN, str_name, COMMAND_COLUMN, str_command,
+	gtk_tree_store_set (menueditor_app.treestore, &iter_new,
+			    ICON_COLUMN, icon, 
+			    NAME_COLUMN, str_name,
+			    COMMAND_COLUMN, str_command,
 			    POINTER_COLUMN, node , -1);
 
 	g_free(str_name);
@@ -234,8 +240,8 @@ void entry_up_cb(GtkWidget *widget, gpointer data)
 				 gtk_tree_model_get_path(model, &iter_new),
 				 NULL,FALSE);
 	/* Move the element in the xml tree */
-	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter_up, POINTER_COLUMN, &val4);
-	node_parent = g_value_get_pointer(&val4);
+	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter_up, POINTER_COLUMN, &val5);
+	node_parent = g_value_get_pointer(&val5);
 	xmlAddPrevSibling(node_parent, node);
 	
       }
@@ -286,9 +292,11 @@ void entry_down_cb(GtkWidget *widget, gpointer data)
 	GValue val2 = { 0, };
 	GValue val3 = { 0, };
 	GValue val4 = { 0, };
+	GValue val5 = { 0, };
 	gchar *str_name;
 	gchar *str_command;
 	xmlNodePtr node, node_next;
+	GdkPixbuf *icon;
 	gint children = 0;
 
 	/* Modified ! */
@@ -302,15 +310,21 @@ void entry_down_cb(GtkWidget *widget, gpointer data)
 	gtk_tree_store_prepend (menueditor_app.treestore, &iter_new, &iter_next);
 
 	/* Copy the values of the current iter */
-	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, NAME_COLUMN, &val1);
-	str_name = (gchar*) g_value_get_string(&val1);
-	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, COMMAND_COLUMN, &val2);
-	str_command = (gchar*) g_value_get_string(&val2);
-	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, POINTER_COLUMN, &val3);
-	node = g_value_get_pointer(&val3);
+	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, ICON_COLUMN, &val1);
+	icon = g_value_get_object(&val1);
+	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, NAME_COLUMN, &val2);
+	str_name = (gchar*) g_value_get_string(&val2);
+	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, COMMAND_COLUMN, &val3);
+	str_command = (gchar*) g_value_get_string(&val3);
+	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, POINTER_COLUMN, &val4);
+	node = g_value_get_pointer(&val4);
 	
-	gtk_tree_store_set (menueditor_app.treestore, &iter_new, 0, NULL, 
-			    NAME_COLUMN, str_name, COMMAND_COLUMN, str_command, POINTER_COLUMN, node , -1);
+	
+	gtk_tree_store_set (menueditor_app.treestore, &iter_new, 
+			    ICON_COLUMN, icon, 
+			    NAME_COLUMN, str_name, 
+			    COMMAND_COLUMN, str_command, 
+			    POINTER_COLUMN, node , -1);
 
 	g_free(str_name);
 	g_free(str_command);
@@ -331,8 +345,8 @@ void entry_down_cb(GtkWidget *widget, gpointer data)
 				     &iter_child,&iter_next);
 	children = gtk_tree_model_iter_n_children(GTK_TREE_MODEL(menueditor_app.treestore),
 						  &iter_next);
-	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter_next, POINTER_COLUMN, &val4);
-	node_next = g_value_get_pointer(&val4);
+	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter_next, POINTER_COLUMN, &val5);
+	node_next = g_value_get_pointer(&val5);
 
 	if(children > 1)
 	  xmlAddPrevSibling(node_next->xmlChildrenNode, node);
