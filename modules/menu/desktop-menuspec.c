@@ -357,7 +357,7 @@ desktop_menuspec_parse_categories(const gchar *filename)
 	gpcontext = g_markup_parse_context_new(&gmparser, 0, &state, NULL);
 
     if(!g_markup_parse_context_parse(gpcontext, file_contents, st.st_size, &err)) {
-		g_warning("%s: error parsing XFce registered categories file (%d): %s\n",
+		g_warning("%s: error parsing Xfce registered categories file (%d): %s\n",
 				PACKAGE, err->code, err->message);
 		g_error_free(err);
 		g_hash_table_destroy(cats_orphans);

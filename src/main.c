@@ -384,8 +384,12 @@ main (int argc, char **argv)
     Window xid;
 	
 	if(argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V"))) {
-		printf("Xfce4 %s %s, linked against libxfce4util %s\n", PACKAGE,
-				XFDESKTOP_VERSION, xfce_version_string());
+		g_print("\tThis is %s version %s for Xfce %s\n", PACKAGE, VERSION,
+				xfce_version_string());
+		g_print("\tbuilt with GTK+-%d.%d.%d, ", GTK_MAJOR_VERSION,
+				GTK_MINOR_VERSION, GTK_MICRO_VERSION);
+        g_print("linked with GTK+-%d.%d.%d.\n", gtk_major_version,
+				gtk_minor_version, gtk_micro_version);
 		exit(0);
 	}
 

@@ -1,4 +1,4 @@
-Summary: 	Desktop manager for the XFce Desktop Environment
+Summary: 	Desktop manager for the Xfce Desktop Environment
 Name: 		xfdesktop
 Version: 	@VERSION@
 Release: 	1
@@ -13,7 +13,7 @@ BuildRequires:	libxfce4mcs-devel >= @LIBXFCE4MCS_CLIENT_REQUIRED_VERSION@
 BuildRequires: 	libxfcegui4-devel >= @LIBXFCEGUI4_REQUIRED_VERSION@
 
 %description
-xfdesktop contain a desktop manager for the XFce Desktop Environment
+xfdesktop contain a desktop manager for the Xfce Desktop Environment
 
 %prep
 %setup -q

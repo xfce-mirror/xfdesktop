@@ -1,6 +1,6 @@
 dnl configure.ac
 dnl
-dnl xfdesktop - desktop manager for the XFce Desktop environment
+dnl xfdesktop - desktop manager for the Xfce Desktop environment
 dnl
 
 dnl version information
@@ -16,7 +16,6 @@ AC_PREREQ([2.50])
 
 dnl init automake
 XFDESKTOP_VERSION=xfdesktop_version
-AC_SUBST(XFDESKTOP_VERSION)
 AM_INIT_AUTOMAKE([xfdesktop], [$XFDESKTOP_VERSION])
 
 AM_CONFIG_HEADER([config.h])
