@@ -36,12 +36,14 @@ struct _XfceDesktopMenu {
 	/* stuff related to checking if we need to regenerate the menu */
 	GList *menufiles_watch;
 	time_t *menufile_mtimes;
-	time_t *dentrydir_mtimes;
+	GHashTable *dentrydir_mtimes;
 	time_t *legacydir_mtimes;
 	
 	/* tells the system menu generator about its root menu */
 	gchar *dentry_basepath;
 	GtkWidget *dentry_basemenu;
+	
+	gboolean modified;
 };
 
 /*< private >*/

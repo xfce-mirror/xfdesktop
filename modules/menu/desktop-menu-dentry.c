@@ -68,11 +68,12 @@ static const char *dentry_keywords [] = {
 };
 
 static char *dentry_paths[] = {
-	"/usr/local/share/applications",
+	DATADIR "/applications",
 	"/usr/share/applications",
+	"/usr/local/share/applications",
 	"/opt/gnome/share/applications",
 	"/opt/gnome2/share/applications",
-	"/usr/share/applications/kde",
+	"/opt/kde/share/applications",
 	NULL
 };
 
@@ -431,6 +432,38 @@ menu_dentry_parse_dentry_file(XfceDesktopMenu *desktop_menu,
 	}
 }
 
+static gint
+dentry_recurse_dir(GDir *dir, const gchar *path, XfceDesktopMenu *desktop_menu,
+		MenuPathType pathtype)
+{
+	const gchar *file;
+	gchar *fullpath;
+	GDir *d1;
+	gint ndirs = 1;
+	struct stat st;
+	
+	while((file=g_dir_read_name(dir))) {
+		if(g_str_has_suffix(file, ".desktop")) {
+			fullpath = g_build_filename(path, file, NULL);
+			menu_dentry_parse_dentry_file(desktop_menu, fullpath, pathtype);
+			g_free(fullpath);
+		} else {
+			fullpath = g_build_path(G_DIR_SEPARATOR_S, path, file, NULL);
+			if((d1=g_dir_open(fullpath, 0, NULL))) {
+				if(!stat(fullpath, &st)) {
+					g_hash_table_insert(desktop_menu->dentrydir_mtimes,
+							g_strdup(fullpath), GUINT_TO_POINTER(st.st_mtime));
+				}
+				ndirs += dentry_recurse_dir(d1, fullpath, desktop_menu, pathtype);
+				g_dir_close(d1);
+			}
+			g_free(fullpath);
+		}
+	}
+	
+	return ndirs;
+}
+
 void
 desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu, 
 		MenuPathType pathtype, gboolean do_legacy)
@@ -444,6 +477,7 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 	gchar kde_dentry_path[PATH_MAX];
 	gchar *catfile_user = xfce_get_userfile(CATEGORIES_FILE, NULL);
 	gchar *catfile = g_build_filename(SYSCONFDIR, "xfce4", CATEGORIES_FILE, NULL);
+	struct stat st;
 
 	g_return_if_fail(desktop_menu != NULL);
 
@@ -472,39 +506,42 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 		for(i=0; blacklist_arr[i]; i++)
 			g_hash_table_insert(blacklist, blacklist_arr[i], GINT_TO_POINTER(1));
 	}
+	
+	if(desktop_menu->dentrydir_mtimes)
+		g_hash_table_destroy(desktop_menu->dentrydir_mtimes);
+	desktop_menu->dentrydir_mtimes = g_hash_table_new_full(g_str_hash,
+			g_str_equal, (GDestroyNotify)g_free, NULL);
+	
+	if(!strcmp(DATADIR, "/usr") || !strcmp(DATADIR, "/usr/local"))
+		i = 1;
+	else
+		i = 0;
 
-	for(i = 0; dentry_paths[i]; i++) {
+	for(; dentry_paths[i]; i++) {
 		pathd = dentry_paths[i];
 		totdirs++;
 
-		d = g_dir_open (pathd, 0, NULL);
-		if (d) {
-			while ((n = g_dir_read_name (d)) != NULL) {
-				if (g_str_has_suffix (n, ".desktop")) {
-					s = g_build_filename(pathd, n, NULL);
-					menu_dentry_parse_dentry_file(desktop_menu, s, pathtype);
-					g_free (s);
-				}
+		d = g_dir_open(pathd, 0, NULL);
+		if(d) {
+			if(!stat(pathd, &st)) {
+				g_hash_table_insert(desktop_menu->dentrydir_mtimes,
+						g_strdup(pathd), GUINT_TO_POINTER(st.st_mtime));
 			}
-			g_dir_close (d);
-			d = NULL;
+			totdirs += dentry_recurse_dir(d, pathd, desktop_menu, pathtype);
+			g_dir_close(d);
 		}
 	}
 
-	if(kdedir && strcmp(kdedir, "/usr")) {
-		g_snprintf(kde_dentry_path, PATH_MAX, "%s/share/applications/kde",
+	if(kdedir && strcmp(kdedir, "/usr") && strcmp(kdedir, "/opt/kde")) {
+		g_snprintf(kde_dentry_path, PATH_MAX, "%s/share/applications",
 				kdedir);
-		totdirs++;
 		d = g_dir_open(kde_dentry_path, 0, NULL);
 		if(d) {
-			while((n=g_dir_read_name(d))) {
-				if(g_str_has_suffix(n, ".desktop")) {
-					s = g_build_filename(kde_dentry_path, n, NULL);
-					BD(s);
-					menu_dentry_parse_dentry_file(desktop_menu, s, pathtype);
-					g_free(s);
-				}
+			if(!stat(kde_dentry_path, &st)) {
+				g_hash_table_insert(desktop_menu->dentrydir_mtimes,
+						g_strdup(kde_dentry_path), GUINT_TO_POINTER(st.st_mtime));
 			}
+			totdirs += dentry_recurse_dir(d, kde_dentry_path, desktop_menu, pathtype);
 			g_dir_close(d);
 		}
 	}
@@ -514,35 +551,40 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 		menu_dentry_legacy_add_all(desktop_menu, pathtype);
 	}
 	
-	if(!desktop_menu->dentrydir_mtimes) {
-		desktop_menu->dentrydir_mtimes = g_new0(time_t, totdirs);
-		desktop_menu_dentry_need_update(desktop_menu);  /* init the array */
-	}
-
 	desktop_menuspec_free();
+}
+
+static void
+dentry_need_update_check_ht(gpointer key, gpointer value, gpointer user_data)
+{
+	XfceDesktopMenu *desktop_menu = user_data;
+	struct stat st;
+	
+	if(!stat((const char *)key, &st)) {
+		if(st.st_mtime > GPOINTER_TO_UINT(value)) {
+			g_hash_table_replace(desktop_menu->dentrydir_mtimes,
+					g_strdup((gchar *)key), GUINT_TO_POINTER(st.st_mtime));
+			desktop_menu->modified = TRUE;
+		}
+	}
 }
 
 gboolean
 desktop_menu_dentry_need_update(XfceDesktopMenu *desktop_menu)
 {
-	gint i;
-	gboolean modified = FALSE;
-	struct stat st;
-	
 	g_return_val_if_fail(desktop_menu != NULL, FALSE);
 	
-	for(i=0; dentry_paths[i]; i++) {
-		if(!stat(dentry_paths[i], &st)) {
-			if(st.st_mtime > desktop_menu->dentrydir_mtimes[i]) {
-				desktop_menu->dentrydir_mtimes[i] = st.st_mtime;
-				modified = TRUE;
-			}
-		}
-	}
+	if(!desktop_menu->dentrydir_mtimes)
+		return TRUE;
 	
-	modified = (menu_dentry_legacy_need_update(desktop_menu) ? TRUE : modified);
+	desktop_menu->modified = FALSE;
+	g_hash_table_foreach(desktop_menu->dentrydir_mtimes,
+			dentry_need_update_check_ht, desktop_menu);
+		
+	desktop_menu->modified = (menu_dentry_legacy_need_update(desktop_menu)
+	                          || desktop_menu->modified);
 	
-	return modified;
+	return desktop_menu->modified;
 }
 
 /*******************************************************************************

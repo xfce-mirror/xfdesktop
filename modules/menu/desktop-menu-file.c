@@ -448,6 +448,8 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 							MPATH_SIMPLE, do_legacy);
 				}
 			}
+			
+			state->desktop_menu->using_system_menu = TRUE;
 		}
 	}
 }
@@ -555,6 +557,7 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 			g_free(desktop_menu->legacydir_mtimes);
 			desktop_menu->legacydir_mtimes = NULL;
 		}
+		desktop_menu->using_system_menu = FALSE;
 	}
 	
 	if(!desktop_menu->filename || other_filename) {
@@ -651,8 +654,6 @@ desktop_menu_file_need_update(XfceDesktopMenu *desktop_menu)
 			modified = TRUE;
 		}
 	}
-	if(desktop_menu->using_system_menu)
-		modified = (desktop_menu_dentry_need_update(desktop_menu) ? TRUE : modified);
 	
 	return modified;
 }

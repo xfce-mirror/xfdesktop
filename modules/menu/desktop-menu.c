@@ -196,7 +196,8 @@ _menu_check_update(gpointer data)
 		g_free(desktop_menu->filename);
 		desktop_menu->filename = newfilename;
 		modified = TRUE;
-	}
+	} else
+		g_free(newfilename);
 	
 	if(modified)
 		_generate_menu(desktop_menu);
@@ -222,7 +223,7 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 	if(desktop_menu->menufile_mtimes)
 		g_free(desktop_menu->menufile_mtimes);
 	if(desktop_menu->dentrydir_mtimes)
-		g_free(desktop_menu->dentrydir_mtimes);
+		g_hash_table_destroy(desktop_menu->dentrydir_mtimes);
 	if(desktop_menu->legacydir_mtimes)
 		g_free(desktop_menu->legacydir_mtimes);
 	
@@ -317,20 +318,20 @@ xfce_desktop_menu_get_widget_impl(XfceDesktopMenu *desktop_menu)
 G_MODULE_EXPORT gboolean
 xfce_desktop_menu_need_update_impl(XfceDesktopMenu *desktop_menu)
 {
-	gboolean modified = FALSE;
-	
 	g_return_val_if_fail(desktop_menu != NULL, FALSE);
 	
 	TRACE("desktop_menu: %p", desktop_menu);
 	
-	if(desktop_menu_file_need_update(desktop_menu) ||
-			last_settings_change > desktop_menu->last_menu_gen ||
-			!desktop_menu->menu)
+	if(desktop_menu_file_need_update(desktop_menu)
+			|| (desktop_menu->using_system_menu
+				&& desktop_menu_dentry_need_update(desktop_menu))
+			|| last_settings_change > desktop_menu->last_menu_gen
+			|| !desktop_menu->menu)
 	{
-		modified = TRUE;
+		return TRUE;
 	}
 	
-	return modified;
+	return FALSE;
 }
 
 G_MODULE_EXPORT void

@@ -16,8 +16,8 @@ libxfce4_desktop_menu_la_SOURCES = \
 libxfce4_desktop_menu_la_CFLAGS = \
 	@GMODULE_CFLAGS@ \
 	@LIBXFCEGUI4_CFLAGS@ \
-	-DXFCEDATADIR=\"$(datadir)/xfce4\" \
-	-DSYSCONFDIR=\"$(sysconfdir)\"
+	-DSYSCONFDIR=\"$(sysconfdir)\" \
+	-DDATADIR=\"$(datadir)\"
 
 libxfce4_desktop_menu_la_LDFLAGS = \
 	-export-dynamic \
