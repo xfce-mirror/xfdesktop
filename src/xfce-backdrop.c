@@ -70,7 +70,7 @@ static guint backdrop_signals[LAST_SIGNAL] = { 0 };
 static GdkPixbuf *
 adjust_brightness(GdkPixbuf *src, gint amount)
 {
-	GdkPixbuf *new;
+	GdkPixbuf *newpix;
 	GdkPixdata pdata;
 	gboolean has_alpha = FALSE;
 	gint i, len;
@@ -102,8 +102,8 @@ adjust_brightness(GdkPixbuf *src, gint amount)
 		pdata.pixel_data[i] = scaled;
 	}
 	
-	new = gdk_pixbuf_from_pixdata(&pdata, TRUE, &err);
-	if(!new) {
+	newpix = gdk_pixbuf_from_pixdata(&pdata, TRUE, &err);
+	if(!newpix) {
 		g_warning("%s: Unable to modify image brightness: %s", PACKAGE,
 				err->message);
 		g_error_free(err);
@@ -111,7 +111,7 @@ adjust_brightness(GdkPixbuf *src, gint amount)
 	}
 	g_object_unref(G_OBJECT(src));
 	
-	return new;
+	return newpix;
 }
 
 static GdkPixbuf *
