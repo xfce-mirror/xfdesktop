@@ -624,14 +624,15 @@ desktop_expose_cb(GtkWidget *w, GdkEventExpose *evt, gpointer user_data)
     return TRUE;
 }
 
-
 static void
-style_set_cb(GtkWidget *w, GtkStyle *old, XfceDesktop *desktop)
-{	
-    int i;
+style_set_cb(GtkWidget *w, GtkStyle *old, gpointer user_data)
+{
+    XfceDesktop *desktop = user_data;
     
-	for(i = 0; i < desktop->priv->nbackdrops; i++) 
-        backdrop_changed_cb(desktop->priv->backdrops[i], desktop);
+    if(desktop->priv->bg_pixmap) {
+        gdk_window_set_back_pixmap(w->window, desktop->priv->bg_pixmap, FALSE);
+        gtk_widget_queue_draw(w);
+    }
 }
 
 
