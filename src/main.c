@@ -410,7 +410,6 @@ main (int argc, char **argv)
     Window xid;
 	XfceDesktop *xfdesktop;
 	gint i, nscreens;
-	GdkScreen *curscreen;
 	
 	if(argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V"))) {
 		g_print("\tThis is %s version %s for Xfce %s\n", PACKAGE, VERSION,
