@@ -67,6 +67,7 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <glib.h>
+#include <gmodule.h>
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
@@ -81,7 +82,7 @@ enum {
 	MI_BUILTIN_QUIT = 1
 };
 
-extern void quit(gboolean force);
+G_MODULE_IMPORT void quit(gboolean force);
 
 struct MenuFileParserState {
 	gboolean started;

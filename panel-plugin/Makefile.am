@@ -7,6 +7,12 @@ libdesktopmenu_la_LDFLAGS = \
 	-export-dynamic \
 	-module
 
+if HAVE_CYGWIN
+  libdesktopmenu_la_LDFLAGS += \
+	-no-undefined \
+	-export-symbols $(datadir)/xfce4/devel/panel.def
+endif
+
 libdesktopmenu_la_SOURCES = \
 	desktop-menu-plugin.c
 

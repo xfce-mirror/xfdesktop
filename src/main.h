@@ -25,12 +25,13 @@
 #ifndef _XFDESKTOP__MAIN_H_
 #define _XFDESKTOP__MAIN_H_
 
+#include <gmodule.h>
 #include <gtk/gtkwidget.h>
 
 G_BEGIN_DECLS
 
 gboolean client_message_received(GtkWidget *w, GdkEventClient *evt, gpointer user_data);
-void quit(gboolean force);
+G_MODULE_IMPORT void quit(gboolean force);
 
 G_END_DECLS
 

@@ -26,6 +26,12 @@ libxfce4_desktop_menu_la_LDFLAGS = \
 	-export-dynamic \
 	-avoid-version
 
+if HAVE_CYGWIN
+  libxfce4_desktop_menu_la_LDFLAGS += \
+	-no-undefined \
+	-export-symbols $(top_srcdir)/src/xfdesktop.def
+endif
+
 libxfce4_desktop_menu_la_LIBADD = \
 	@GMODULE_LIBS@ \
 	@LIBXFCEGUI4_LIBS@

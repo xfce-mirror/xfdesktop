@@ -37,6 +37,10 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 host_triplet = @host@
+@HAVE_CYGWIN_TRUE@am__append_1 = \
+@HAVE_CYGWIN_TRUE@	-no-undefined \
+@HAVE_CYGWIN_TRUE@	-export-symbols $(datadir)/xfce4/devel/panel.def
+
 subdir = panel-plugin
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -124,6 +128,8 @@ GOBJECT_REQUIRED_VERSION = @GOBJECT_REQUIRED_VERSION@
 GTK_CFLAGS = @GTK_CFLAGS@
 GTK_LIBS = @GTK_LIBS@
 GTK_REQUIRED_VERSION = @GTK_REQUIRED_VERSION@
+HAVE_CYGWIN_FALSE = @HAVE_CYGWIN_FALSE@
+HAVE_CYGWIN_TRUE = @HAVE_CYGWIN_TRUE@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -239,8 +245,8 @@ plugin_LTLIBRARIES = libdesktopmenu.la
 libdesktopmenu_la_LDFLAGS = \
 	-avoid-version \
 	-export-dynamic \
-	-module
-
+	-module\
+$(am__append_1)
 libdesktopmenu_la_SOURCES = \
 	desktop-menu-plugin.c
 

@@ -10,11 +10,17 @@ backdropdir = @XFCE_MCS_MANAGER_PLUGINSDIR@
 
 backdrop_LTLIBRARIES = backdrop_settings.la
 
-backdrop_settings_la_LDFLAGS =						\
-	-avoid-version							\
+backdrop_settings_la_LDFLAGS = \
+	-avoid-version \
 	-module
 
-backdrop_settings_la_SOURCES =						\
+if HAVE_CYGWIN
+  backdrop_settings_la_LDFLAGS += \
+	-no-undefined \
+	-export-symbols $(datadir)/xfce4/devel/mcs-manager.def
+endif
+
+backdrop_settings_la_SOURCES = \
 	backdrop_settings.c						\
 	backdrop-mgr.c							\
 	backdrop-mgr.h							\
@@ -33,6 +39,12 @@ backdrop_settings_la_CFLAGS =						\
 
 backdrop_settings_la_LIBADD =						\
 	$(top_builddir)/common/libxfdesktop.la
+
+if HAVE_CYGWIN
+  backdrop_settings_la_LIBADD += \
+	@XFCE_MCS_MANAGER_LIBS@ \
+	@LIBX11_LIBS@
+endif
 
 appsdir = $(datadir)/applications
 apps_DATA = xfce-backdrop-settings.desktop

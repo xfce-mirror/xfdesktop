@@ -38,6 +38,10 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 host_triplet = @host@
+@HAVE_CYGWIN_TRUE@am__append_1 = \
+@HAVE_CYGWIN_TRUE@	-no-undefined \
+@HAVE_CYGWIN_TRUE@	-export-symbols $(top_srcdir)/src/xfdesktop.def
+
 subdir = modules/menu
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -135,6 +139,8 @@ GOBJECT_REQUIRED_VERSION = @GOBJECT_REQUIRED_VERSION@
 GTK_CFLAGS = @GTK_CFLAGS@
 GTK_LIBS = @GTK_LIBS@
 GTK_REQUIRED_VERSION = @GTK_REQUIRED_VERSION@
+HAVE_CYGWIN_FALSE = @HAVE_CYGWIN_FALSE@
+HAVE_CYGWIN_TRUE = @HAVE_CYGWIN_TRUE@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -269,8 +275,8 @@ libxfce4_desktop_menu_la_CFLAGS = \
 
 libxfce4_desktop_menu_la_LDFLAGS = \
 	-export-dynamic \
-	-avoid-version
-
+	-avoid-version\
+$(am__append_1)
 libxfce4_desktop_menu_la_LIBADD = \
 	@GMODULE_LIBS@ \
 	@LIBXFCEGUI4_LIBS@

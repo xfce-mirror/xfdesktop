@@ -16,3 +16,7 @@ if BUILD_DESKTOP_MENU
 	@GTK_CFLAGS@ \
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\"
 endif
+
+if HAVE_CYGWIN
+  libxfdesktop_menu_la_LDLAGS = -no-undefined
+endif

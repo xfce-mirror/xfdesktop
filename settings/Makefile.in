@@ -41,6 +41,14 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 host_triplet = @host@
+@HAVE_CYGWIN_TRUE@am__append_1 = \
+@HAVE_CYGWIN_TRUE@	-no-undefined \
+@HAVE_CYGWIN_TRUE@	-export-symbols $(datadir)/xfce4/devel/mcs-manager.def
+
+@HAVE_CYGWIN_TRUE@am__append_2 = \
+@HAVE_CYGWIN_TRUE@	@XFCE_MCS_MANAGER_LIBS@ \
+@HAVE_CYGWIN_TRUE@	@LIBX11_LIBS@
+
 subdir = settings
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -55,8 +63,9 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(backdropdir)" "$(DESTDIR)$(appsdir)"
 backdropLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(backdrop_LTLIBRARIES)
+am__DEPENDENCIES_1 =
 backdrop_settings_la_DEPENDENCIES =  \
-	$(top_builddir)/common/libxfdesktop.la
+	$(top_builddir)/common/libxfdesktop.la $(am__DEPENDENCIES_1)
 am_backdrop_settings_la_OBJECTS =  \
 	backdrop_settings_la-backdrop_settings.lo \
 	backdrop_settings_la-backdrop-mgr.lo \
@@ -137,6 +146,8 @@ GOBJECT_REQUIRED_VERSION = @GOBJECT_REQUIRED_VERSION@
 GTK_CFLAGS = @GTK_CFLAGS@
 GTK_LIBS = @GTK_LIBS@
 GTK_REQUIRED_VERSION = @GTK_REQUIRED_VERSION@
+HAVE_CYGWIN_FALSE = @HAVE_CYGWIN_FALSE@
+HAVE_CYGWIN_TRUE = @HAVE_CYGWIN_TRUE@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -255,9 +266,9 @@ EXTRA_DIST = xfce-backdrop-settings.desktop
 backdropdir = @XFCE_MCS_MANAGER_PLUGINSDIR@
 backdrop_LTLIBRARIES = backdrop_settings.la
 backdrop_settings_la_LDFLAGS = \
-	-avoid-version							\
-	-module
-
+	-avoid-version \
+	-module\
+$(am__append_1)
 backdrop_settings_la_SOURCES = \
 	backdrop_settings.c						\
 	backdrop-mgr.c							\
@@ -276,8 +287,8 @@ backdrop_settings_la_CFLAGS = \
 	-DBINDIR=\"$(bindir)\"
 
 backdrop_settings_la_LIBADD = \
-	$(top_builddir)/common/libxfdesktop.la
-
+	$(top_builddir)/common/libxfdesktop.la\
+$(am__append_2)
 appsdir = $(datadir)/applications
 apps_DATA = xfce-backdrop-settings.desktop
 all: all-am

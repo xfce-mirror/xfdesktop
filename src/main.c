@@ -40,6 +40,7 @@
 
 #include <X11/Xlib.h>
 #include <gtk/gtk.h>
+#include <gmodule.h>
 
 #include <libxfce4util/i18n.h>
 #include <libxfce4mcs/mcs-client.h>
@@ -60,7 +61,7 @@
 SessionClient *client_session = NULL;
 gboolean is_session_managed = FALSE;
 
-void
+G_MODULE_EXPORT void
 quit(gboolean force)
 {
 	if(is_session_managed)
