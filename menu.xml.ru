@@ -53,7 +53,7 @@
 
 <xfdesktop-menu>
 
-	<title name="Меню рабочего стола"/>
+	<title name="Меню рабочего стола" icon="xfce4-backdrop"/>
 
 	<separator/>
 
@@ -61,7 +61,7 @@
 
 	<separator/>
 
-	<app name="Терминал" cmd="xfterm4" icon="terminal"/>
+	<app name="Терминал" cmd="xfterm4" icon="gnome-terminal"/>
 	<app name="Файловый менеджер (xffm)" cmd="xffm" icon="file-manager"/>
 	<app name="Интернет-браузер" cmd="mozilla" icon="gnome-globe"/>
 
