@@ -343,22 +343,16 @@ xfce_desktop_menu_destroy_impl(XfceDesktopMenu *desktop_menu)
 	
 	xfce_desktop_menu_stop_autoregen_impl(desktop_menu);
 	
-	TRACE("autogen stupped, freeing menu data");
-	
 	_xfce_desktop_menu_free_menudata(desktop_menu);
-	TRACE("menudata freed, freeing filename (maybe)");
 	if(desktop_menu->filename) {
 		g_free(desktop_menu->filename);
 		desktop_menu->filename = NULL;
 	}
-	TRACE("filename freed, freeing cache file suffix (maybe)");
 	if(desktop_menu->cache_file_suffix) {
 		g_free(desktop_menu->cache_file_suffix);
 		desktop_menu->cache_file_suffix = NULL;
 	}
-	TRACE("about to free desktop menu struct");
 	g_free(desktop_menu);
-	TRACE("exiting");
 }
 
 static void

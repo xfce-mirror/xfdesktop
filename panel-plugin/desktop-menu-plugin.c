@@ -83,10 +83,8 @@ dmp_free(Control *c)
 {
 	DMPlugin *dmp = c->data;
 	
-	if(dmp->desktop_menu) {
-		TRACE("calling menu_destroy()");
+	if(dmp->desktop_menu)
 		xfce_desktop_menu_destroy(dmp->desktop_menu);
-	}
 	if(dmp->tooltip)
 		gtk_object_sink(GTK_OBJECT(dmp->tooltip));
 	
@@ -225,23 +223,17 @@ dmp_read_config(Control *control, xmlNodePtr node)
 	
 	value = xmlGetProp(node, (const xmlChar *)"menu_file");
 	if(value) {
-		if(dmp->desktop_menu) {
-			TRACE("calling menu_destroy()");
+		if(dmp->desktop_menu)
 			xfce_desktop_menu_destroy(dmp->desktop_menu);
-			TRACE("called menu_destroy()");
-		}
 		if(dmp->menu_file)
 			g_free(dmp->menu_file);
-		TRACE("creating new menu");
 		dmp->desktop_menu = xfce_desktop_menu_new(value, TRUE);
-		TRACE("created new menu");
 		dmp->menu_file = g_strdup(value);
 	} else {
 		if(dmp->desktop_menu)
 			dmp->menu_file = g_strdup(xfce_desktop_menu_get_menu_file(dmp->desktop_menu));
 	}
 	
-	TRACE("getting icon file");
 	value = xmlGetProp(node, (const xmlChar *)"icon_file");
 	if(value) {
 		pix = xfce_themed_icon_load(value,
@@ -264,7 +256,6 @@ dmp_read_config(Control *control, xmlNodePtr node)
 		}
 	}
 	
-	TRACE("getting show menu icons");
 	value = xmlGetProp(node, (const xmlChar *)"show_menu_icons");
 	if(value) {
 		if(*value == '0')
@@ -275,8 +266,6 @@ dmp_read_config(Control *control, xmlNodePtr node)
 			xfce_desktop_menu_set_show_icons(dmp->desktop_menu, dmp->show_menu_icons);
 		xmlFree(value);
 	}
-	
-	TRACE("exiting");
 }
 
 static void
@@ -316,7 +305,6 @@ entry_focus_out_cb(GtkWidget *w, GdkEventFocus *evt, gpointer user_data)
 		if(dmp->desktop_menu) {
 			cur_file = xfce_desktop_menu_get_menu_file(dmp->desktop_menu);
 			if(strcmp(dmp->menu_file, cur_file)) {
-				TRACE("calling menu_destroy()");
 				xfce_desktop_menu_destroy(dmp->desktop_menu);
 				dmp->desktop_menu = xfce_desktop_menu_new(dmp->menu_file, TRUE);
 				if(!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(dmp->icons_chk)))
