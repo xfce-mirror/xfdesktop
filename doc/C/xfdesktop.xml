@@ -1,9 +1,9 @@
 <?xml version='1.0'?> 
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "May 2003"> 
+  <!ENTITY date "July 2003"> 
   <!ENTITY app "<application>xfdesktop</application>"> 
-  <!ENTITY appversion "3.90"> 
+  <!ENTITY appversion "3.99.3"> 
 ]>
 
 <article id="xfdesktop" lang="en">
@@ -94,10 +94,10 @@ maintainers, etc. Commented out by default.
 
   <para>The &app; application manages the desktop background. It sets a
     background image and/or color and it pops up a menu when you click on it
-    with your mouse. Along with the application, two settings dialogs are
-    installed for use with the <emphasis>XFce 4 Settings Manager</emphasis>. 
-    These dialogs allow you to change the background image and color and 
-    manage the number of workspaces or virtual desktops.    
+    with your right or middle mouse button. Along with the application, two 
+    settings dialogs are installed for use with the 
+    <emphasis>XFce 4 Settings Manager</emphasis>. These dialogs allow you to 
+    change the background image and color and manage the number of workspaces.
   </para>
 
 </sect1>
@@ -224,6 +224,11 @@ maintainers, etc. Commented out by default.
 	  Background settings manager.
 	</para>
 
+	<para>To refresh the background with a new random image from the list
+	  just run the &app; command again, e.g. from a terminal or the run 
+	  dialog.
+	</para>
+
       </listitem>
 
     </varlistentry>
@@ -286,10 +291,10 @@ maintainers, etc. Commented out by default.
   <title>&app; root menu</title>
 
   <para>&app; provides a mouse menu that appears when you click on the 
-    desktop background.
+    desktop background with your right or middle mouse button.
   </para>
 
-  <para>A left-click on the desktop background opens a menu that allows you to
+  <para>A right-click on the desktop background opens a menu that allows you to
     start some applications. Its configuration file, menu.xml, can be found
     under the path <filename>$sysconfdir/xfce4/menu.xml</filename>. For binary 
     packages $sysconfdir is often <filename>/etc</filename> and for source
@@ -312,33 +317,34 @@ maintainers, etc. Commented out by default.
   </para>
 
   <figure id="root-menu-fig">
-    <title>&app; left-click mouse menu</title>
+    <title>&app; right-click mouse menu</title>
     <screenshot>
       <mediaobject>
 	<imageobject>
 	  <imagedata fileref="images/root_menu.png" format="PNG"/>
 	</imageobject> 
 	<textobject>
-	  <phrase>Shows &app; left-click mouse menu.
+	  <phrase>Shows &app; right-click mouse menu.
 	  </phrase>
 	</textobject>
       </mediaobject>
     </screenshot>
   </figure>
 
-  <para>A right-click on the desktop background shows a list of all opened
-    windows classified by workspace. Moreover, it allows you to add or remove
-    a workspace from the mouse.</para>
+  <para>A middle-click on the desktop background shows a list of all opened 
+    windows ordered by workspace. It also allows you to add or remove 
+    a workspace.
+  </para>
 
   <figure id="root-menu2-fig">
-    <title>&app; right-click mouse menu</title> 
+    <title>&app; middle-click mouse menu</title> 
     <screenshot>
       <mediaobject>
 	<imageobject>
 	  <imagedata fileref="images/root_menu2.png" format="PNG"/>
 	</imageobject> 
 	<textobject>
-	  <phrase>Shows &app; right-click mouse menu.
+	  <phrase>Shows &app; middle-click mouse menu.
 	  </phrase>
 	</textobject>
       </mediaobject>
