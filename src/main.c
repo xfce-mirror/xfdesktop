@@ -139,6 +139,7 @@ client_message_received (GtkWidget * widget, GdkEventClient * event,
 	if (strcmp (RELOAD_MESSAGE, event->data.b) == 0)
 	{
 	    load_settings ();
+		menu_force_regen ();
 	    return TRUE;
 	}
 	else if (strcmp (MENU_MESSAGE, event->data.b) == 0)

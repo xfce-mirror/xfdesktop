@@ -556,6 +556,12 @@ create_desktop_menu (void)
     return gtk_item_factory_get_widget (ifactory, "<popup>");
 }
 
+void
+menu_force_regen()
+{
+	desktop_menu = create_desktop_menu();
+}
+
 
 /*******************************************************************************  
  *  Window list menu
