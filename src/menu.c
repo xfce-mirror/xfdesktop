@@ -359,7 +359,7 @@ create_desktop_menu (void)
 	GdkPixbuf *pix;
 	MenuItem *item = NULL;
 	GList *li, *menu_data = NULL;
-	gint i, icon_size;
+	gint icon_size;
 
     TRACE ("dummy");
     if (!filename || is_using_system_rc)
