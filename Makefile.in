@@ -71,9 +71,6 @@ FFLAGS = @FFLAGS@
 GETTEXT_PACKAGE = @GETTEXT_PACKAGE@
 GMOFILES = @GMOFILES@
 GMSGFMT = @GMSGFMT@
-GTK_CFLAGS = @GTK_CFLAGS@
-GTK_LIBS = @GTK_LIBS@
-GTK_REQUIRED_VERSION = @GTK_REQUIRED_VERSION@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -200,7 +197,7 @@ RECURSIVE_TARGETS = info-recursive dvi-recursive pdf-recursive \
 DIST_COMMON = README AUTHORS COPYING ChangeLog INSTALL Makefile.am \
 	Makefile.in NEWS TODO aclocal.m4 compile config.guess \
 	config.h.in config.sub configure configure.ac depcomp \
-	install-sh ltcf-c.sh ltconfig ltmain.sh missing mkinstalldirs \
+	install-sh ltconfig ltmain.sh missing mkinstalldirs \
 	xfdesktop.spec.in
 DIST_SUBDIRS = $(SUBDIRS)
 all: config.h

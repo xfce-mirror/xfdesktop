@@ -74,9 +74,6 @@ FFLAGS = @FFLAGS@
 GETTEXT_PACKAGE = @GETTEXT_PACKAGE@
 GMOFILES = @GMOFILES@
 GMSGFMT = @GMSGFMT@
-GTK_CFLAGS = @GTK_CFLAGS@
-GTK_LIBS = @GTK_LIBS@
-GTK_REQUIRED_VERSION = @GTK_REQUIRED_VERSION@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -185,16 +182,11 @@ libxfdesktop_la_SOURCES = \
 
 
 libxfdesktop_la_CFLAGS = \
-	@LIBXFCEGUI4_CFLAGS@						\
-	@GTK_CFLAGS@
+	@LIBXFCEGUI4_CFLAGS@
 
 
 libxfdesktop_la_LDFLAGS = \
 	-export-dynamic
-
-
-libxfdesktop_la_LIBADD = \
-	@GTK_LIBS@
 
 subdir = common
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -203,7 +195,7 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 LTLIBRARIES = $(noinst_LTLIBRARIES)
 
-libxfdesktop_la_DEPENDENCIES =
+libxfdesktop_la_LIBADD =
 am_libxfdesktop_la_OBJECTS = libxfdesktop_la-backdrop.lo
 libxfdesktop_la_OBJECTS = $(am_libxfdesktop_la_OBJECTS)
 
