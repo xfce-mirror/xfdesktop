@@ -76,6 +76,7 @@ struct _XfceDesktopPriv
 {
 	GdkScreen *gscreen;
 	NetkScreen *netk_screen;
+	GtkStyle *style;
 	
 	guint nbackdrops;
 	XfceBackdrop **backdrops;
@@ -247,13 +248,12 @@ static void
 backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 {
 	GtkWidget *desktop = user_data;
-	GtkStyle *style;
+	GtkStyle *style = XFCE_DESKTOP(desktop)->priv->style;
 	GdkPixbuf *pix;
 	GdkPixmap *pmap = NULL;
 	GdkColormap *cmap;
 	GdkScreen *gscreen;
 	GdkRectangle rect;
-	GdkEventExpose evt;
 	Pixmap xid;
 	GdkWindow *groot;
 	
@@ -284,7 +284,6 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 		 * probably still faster than redoing the whole thing. */
 		GdkPixmap *cur_pmap = NULL;
 		GdkPixbuf *cur_pbuf = NULL;
-		//GdkRectangle rect;
 		gint i, n = -1, swidth, sheight;
 		
 		for(i = 0; i < XFCE_DESKTOP(desktop)->priv->nbackdrops; i++) {
@@ -301,9 +300,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 		swidth = gdk_screen_get_width(gscreen);
 		sheight = gdk_screen_get_height(gscreen);
 		
-		style = gtk_widget_get_style(desktop);
-		if(style)
-			cur_pmap = style->bg_pixmap[GTK_STATE_NORMAL];
+		cur_pmap = style->bg_pixmap[GTK_STATE_NORMAL];
 		if(cur_pmap) {
 			gint pw, ph;
 			gdk_drawable_get_size(GDK_DRAWABLE(cur_pmap), &pw, &ph);
@@ -353,36 +350,13 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 	gdk_error_trap_pop();
 	
 	/* clear the old pixmap, if any */
-	style = gtk_widget_get_style(desktop);
-	if(style->bg_pixmap[GTK_STATE_NORMAL]) {
+	if(style->bg_pixmap[GTK_STATE_NORMAL])
 		g_object_unref(G_OBJECT(style->bg_pixmap[GTK_STATE_NORMAL]));
-		style->bg_pixmap[GTK_STATE_NORMAL] = NULL;
-	}
-	gtk_widget_set_style(desktop, NULL);
 	
-	/* create a new style, attach it to the window, and add the new pixmap */
-	style = gtk_style_new();
-	gtk_style_attach(style, desktop->window);
-	if(style->bg_pixmap[GTK_STATE_NORMAL]) {
-		/* if the style already has a BG pixmap set, ditch it */
-		g_object_unref(G_OBJECT(style->bg_pixmap[GTK_STATE_NORMAL]));
-	}
+	/* set the new pixmap and tell gtk to redraw it */
 	style->bg_pixmap[GTK_STATE_NORMAL] = pmap;
-	
-	/* set the widget's window style and queue it for drawing */
-	gtk_widget_set_style(desktop, style);
-	g_object_unref(G_OBJECT(style));
-	/* FIXME: all we should need to do is gtk_widget_queue_draw_area(), but that
-	 * isn't working for some reason */
-	/* gtk_widget_queue_draw_area(desktop, rect.x, rect.y, rect.width, rect.height); */
-	evt.type = GDK_EXPOSE;
-	evt.window = desktop->window;
-	evt.send_event = FALSE;
-	memcpy(&evt.area, &rect, sizeof(GdkRectangle));
-	evt.region = gdk_region_rectangle(&rect);
-	evt.count = 0;
-	gtk_widget_send_expose(desktop, (GdkEvent *)&evt);
-	gdk_region_destroy(evt.region);
+	gtk_style_set_background(style, desktop->window, GTK_STATE_NORMAL);
+	gtk_widget_queue_draw_area(desktop, rect.x, rect.y, rect.width, rect.height);
 }
 
 static void
@@ -603,6 +577,7 @@ static void
 xfce_desktop_init(XfceDesktop *desktop)
 {
 	desktop->priv = g_new0(XfceDesktopPriv, 1);
+	desktop->priv->style = gtk_style_new();
 	GTK_WINDOW(desktop)->type = GTK_WINDOW_TOPLEVEL;
 }
 
@@ -631,6 +606,13 @@ xfce_desktop_finalize(GObject *object)
 		g_free(desktop->priv->backdrops);
 		desktop->priv->backdrops = NULL;
 	}
+	
+	if(desktop->priv->style->bg_pixmap[GTK_STATE_NORMAL]) {
+		g_object_unref(G_OBJECT(desktop->priv->style->bg_pixmap[GTK_STATE_NORMAL]));
+		desktop->priv->style->bg_pixmap[GTK_STATE_NORMAL] = NULL;
+	}
+	
+	g_object_unref(G_OBJECT(desktop->priv->style));
 	
 	g_free(desktop->priv);
 	desktop->priv = NULL;
