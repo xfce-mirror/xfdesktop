@@ -21,7 +21,8 @@ xfdesktop_CFLAGS = 							\
 	-DDATADIR=\"$(pkgdatadir)\"					\
 	-DSYSCONFDIR=\"$(sysconfdir)\"			\
 	-DXFCEDATADIR=\"$(datadir)/xfce4\"		\
-	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\"
+	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\"	\
+	-DXFDESKTOP_VERSION=\"@XFDESKTOP_VERSION@\"
 	
 
 xfdesktop_LDADD =							\

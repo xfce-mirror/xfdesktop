@@ -56,9 +56,8 @@
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 
+#include <libxfce4util/libxfce4util.h>
 #include <libxfce4mcs/mcs-client.h>
-#include <libxfce4util/debug.h>
-#include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "main.h"
@@ -75,7 +74,6 @@
 #define WINDOWLIST_MESSAGE "windowlist"
 
 /* globals */
-
 static XfceDesktop xfdesktop;
 
 static SessionClient *client_session = NULL;
@@ -384,6 +382,12 @@ main (int argc, char **argv)
     struct sigaction act;
 #endif
     Window xid;
+	
+	if(argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V"))) {
+		printf("Xfce4 xfdesktop %s, linked against libxfce4util %s\n",
+				XFDESKTOP_VERSION, xfce_version_string());
+		exit(0);
+	}
 
     /* bind gettext textdomain */
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");

@@ -3,9 +3,21 @@ dnl
 dnl xfdesktop - desktop manager for the XFce Desktop environment
 dnl
 
-AC_INIT([configure.ac])
+dnl version information
+m4_define([xfdesktop_version_major], [4])
+m4_define([xfdesktop_version_minor], [1])
+m4_define([xfdesktop_version_micro], [1])
+m4_define([xfdesktop_version], [xfdesktop_version_major.xfdesktop_version_minor.xfdesktop_version_micro])
 
-AM_INIT_AUTOMAKE([xfdesktop], [4.1.1])
+dnl init autoconf
+AC_COPYRIGHT([Copyright (c) 2002-2004 The Xfce development team. All rights reserved.])
+AC_INIT([configure.ac], [xfdesktop_version], [xfce4-dev@xfce.org])
+AC_PREREQ([2.50])
+
+dnl init automake
+XFDESKTOP_VERSION=xfdesktop_version
+AC_SUBST(XFDESKTOP_VERSION)
+AM_INIT_AUTOMAKE([xfdesktop], [$XFDESKTOP_VERSION])
 
 AM_CONFIG_HEADER([config.h])
 
