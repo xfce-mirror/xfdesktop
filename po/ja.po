@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-10 19:37+0100\n"
+"POT-Creation-Date: 2005-03-03 23:57-0800\n"
 "PO-Revision-Date: 2005-02-22 02:33+0900\n"
 "Last-Translator: Daichi Kawahata <daichik@users.sourceforge.net>\n"
 "Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
@@ -185,13 +185,13 @@ msgstr "コマンド選択"
 msgid "Select icon"
 msgstr "アイコン選択"
 
-#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:390
+#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
 #: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "全てのファイル"
 
-#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:396
+#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
 #: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "画像ファイル"
@@ -342,7 +342,7 @@ msgstr "ファイルのルート要素がありません !"
 msgid "Bad datafile format !"
 msgstr "不正なデータファイル形式です !"
 
-#: menueditor/menueditor.c:1599
+#: menueditor/menueditor.c:1626
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "ファイル %s は存在しません!"
@@ -381,32 +381,64 @@ msgstr "全ての項目が必須です。"
 msgid "/Other"
 msgstr "/その他"
 
-#: panel-plugin/desktop-menu-plugin.c:205
-#: panel-plugin/desktop-menu-plugin.c:535
+#: panel-plugin/desktop-menu-plugin.c:279
+#: panel-plugin/desktop-menu-plugin.c:805
 msgid "Xfce Menu"
 msgstr "Xfce メニュー"
 
-#: panel-plugin/desktop-menu-plugin.c:373
+#: panel-plugin/desktop-menu-plugin.c:493
 msgid "Select Icon"
 msgstr "アイコン選択"
 
-#: panel-plugin/desktop-menu-plugin.c:375
+#: panel-plugin/desktop-menu-plugin.c:495
 msgid "Select Menu File"
 msgstr "メニューファイルを選択"
 
-#: panel-plugin/desktop-menu-plugin.c:404
+#: panel-plugin/desktop-menu-plugin.c:524
 msgid "Menu Files"
 msgstr "メニューファイル"
 
-#: panel-plugin/desktop-menu-plugin.c:465
-msgid "_Menu file:"
-msgstr "メニューファイル(_M):"
+#: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "xfce4-menueditor を実行できません: %s"
 
-#: panel-plugin/desktop-menu-plugin.c:499
+#: panel-plugin/desktop-menu-plugin.c:663
+#, fuzzy
+msgid "Button _title:"
+msgstr "ボタンアイコン(_B):"
+
+#: panel-plugin/desktop-menu-plugin.c:676
+#, fuzzy
+msgid "Menu File"
+msgstr "メニューファイル"
+
+#: panel-plugin/desktop-menu-plugin.c:688
+#, fuzzy
+msgid "Use default _desktop menu file"
+msgstr "デスクトップメニューを編集(_E)"
+
+#: panel-plugin/desktop-menu-plugin.c:697
+#, fuzzy
+msgid "Use _custom menu file:"
+msgstr "メニューファイルを開く"
+
+#: panel-plugin/desktop-menu-plugin.c:749
+#: panel-plugin/desktop-menu-plugin.c:751
+#, fuzzy
+msgid "_Edit Menu"
+msgstr "メニュー(_M)"
+
+#: panel-plugin/desktop-menu-plugin.c:758
+#, fuzzy
+msgid "Icons"
+msgstr "アイコン:"
+
+#: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
 msgstr "ボタンアイコン(_B):"
 
-#: panel-plugin/desktop-menu-plugin.c:524
+#: panel-plugin/desktop-menu-plugin.c:794
 msgid "Show _icons in menu"
 msgstr "メニューでアイコンを表示(_I):"
 
@@ -590,11 +622,6 @@ msgstr "画面 %d, モニタ %d"
 msgid "_Menu"
 msgstr "メニュー(_M)"
 
-#: settings/menu_settings.c:132
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "xfce4-menueditor を実行できません: %s"
-
 #: settings/menu_settings.c:153
 msgid "Window List"
 msgstr "ウィンドウリスト"
@@ -645,26 +672,29 @@ msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  ウィンドウリストをポップアップ (現在のマウス位置で)\n"
 
-#: src/windowlist.c:176
+#: src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>ワークスペース %d</b>"
 
-#: src/windowlist.c:184
+#: src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>ワークスペース %d</i>"
 
-#: src/windowlist.c:247 src/windowlist.c:250
+#: src/windowlist.c:268 src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "ワークスペースを追加する(_A)"
 
-#: src/windowlist.c:258
+#: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "ワークスペース %d を削除する(_R)"
 
-#: src/windowlist.c:261
+#: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース '%s' を削除する(_R)"
+
+#~ msgid "_Menu file:"
+#~ msgstr "メニューファイル(_M):"
