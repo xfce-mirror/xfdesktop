@@ -99,6 +99,7 @@ quit (void)
 static void
 load_settings ()
 {
+    DBG ("load settings");
     background_load_settings (&xfdesktop);
     menu_load_settings (&xfdesktop);
 }    
@@ -241,7 +242,6 @@ create_fullscreen_window (void)
 {
     GdkAtom atom;
     GtkWidget *win;
-    GtkStyle *style;
     Window xid;
 
     TRACE ("create fullscreen window");
@@ -256,15 +256,11 @@ create_fullscreen_window (void)
     gtk_widget_set_size_request (win, gdk_screen_width (),
 				 gdk_screen_height ());
 
-    gtk_window_move (win, 0, 0);
+    gtk_window_move (GTK_WINDOW(win), 0, 0);
     
     gtk_widget_realize (win);
 
     gtk_window_set_title (GTK_WINDOW (win), _("Desktop"));
-    style = gtk_widget_get_style (win);
-
-    gtk_widget_modify_bg (win, GTK_STATE_NORMAL, &(style->black));
-    gtk_widget_modify_base (win, GTK_STATE_NORMAL, &(style->black));
     
     /* Remove double buffering in desktop window otherwise
        gtk allocates twice the size of the screen in video memory
@@ -323,11 +319,6 @@ xfdesktop_init (void)
 
     xfdesktop.fullscreen = create_fullscreen_window ();
 
-    /* color the root window black
-     * we will not do anything more with it */
-    gdk_window_set_background (gdk_get_default_root_window(), 
-	    		       &(xfdesktop.fullscreen->style->black));
-
     xfdesktop_set_selection ();
 
     settings_init (&xfdesktop);
@@ -342,6 +333,7 @@ xfdesktop_init (void)
     load_settings();
     gtk_widget_show (xfdesktop.fullscreen);
     gdk_window_lower (xfdesktop.fullscreen->window);
+    load_settings();
 }
 
 static void

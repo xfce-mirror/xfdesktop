@@ -74,6 +74,7 @@ typedef struct
     Display *dpy;
     Window root;
     Atom atom;
+    Atom e_atom;
 
     GtkWidget *win;
     
@@ -89,6 +90,8 @@ XfceBackground;
 static gboolean init_settings = TRUE;
 
 static XfceBackground *background = NULL;
+
+static void remove_old_pixmap (XfceBackground *background);
 
 static void set_background (XfceBackground * background);
 
@@ -436,6 +439,25 @@ set_background_from_root_property(XfceBackground *background)
     TRACE ("dummy");
     XGrabServer (dpy);
 
+    /* first try _ESETROOT_PMAP_ID */
+    XGetWindowProperty (dpy, w, background->e_atom, 0L, 1L, False, 
+	    		AnyPropertyType, &type, &format, &length, &after, 
+			&data);
+
+    if ((type == XA_PIXMAP) && (format == 32) && (length == 1))
+    {
+	GdkPixmap *pixmap = gdk_pixmap_foreign_new (*((Pixmap *) data));
+
+	DBG ("Update background from _XROOTPMAP_ID property");
+	
+	if (pixmap)
+	{
+	    update_window_style (background->win, pixmap);
+	    goto UNGRAB;
+	}
+    }
+
+    /* _XROOTPMAP_ID */
     XGetWindowProperty (dpy, w, background->atom, 0L, 1L, False, 
 	    		AnyPropertyType, &type, &format, &length, &after, 
 			&data);
@@ -443,9 +465,17 @@ set_background_from_root_property(XfceBackground *background)
     if ((type == XA_PIXMAP) && (format == 32) && (length == 1))
     {
 	GdkPixmap *pixmap = gdk_pixmap_foreign_new (*((Pixmap *) data));
-	update_window_style (background->win, pixmap);
-    }
 
+	DBG ("Update background from _XROOTPMAP_ID property");
+	
+	if (pixmap)
+	    update_window_style (background->win, pixmap);
+	else
+	    DBG ("Unable to obtain pixmap from _XROOTPMAP_ID property");
+
+    }
+    
+UNGRAB:
     XUngrabServer (dpy);
 }
 
@@ -489,6 +519,12 @@ update_backdrop_channel (const char *name, McsAction action,
 	    {
 		background->set_background = setting->data.v_int;
 		DBG ("set_background = %d", background->set_background);
+
+		if (background->set_background)
+		{
+		    /* we don't use _ESETROOT_PMAP_ID */
+		    remove_old_pixmap (background);
+		}
 	    }
 	    else if (strcmp (name, "style") == 0)
 	    {
@@ -523,9 +559,11 @@ update_backdrop_channel (const char *name, McsAction action,
 
 /* removes _ESETROOT_PMAP_ID */
 static void
-remove_old_pixmap (Display *dpy, Window w)
+remove_old_pixmap (XfceBackground *background)
 {
-    Atom e_prop = XInternAtom (dpy, "ESETROOT_PMAP_ID", False);
+    Display *dpy = background->dpy;
+    Window w = background->root;
+    Atom e_prop = background->e_atom;
     Atom type;
     int format;
     unsigned long length, after;
@@ -560,15 +598,24 @@ background_init (XfceDesktop *xfdesktop)
 
     background->dpy = xfdesktop->dpy;
     background->root = xfdesktop->root;
+    
     background->atom = XInternAtom (xfdesktop->dpy, "_XROOTPMAP_ID", False);
+    background->atom = XInternAtom (xfdesktop->dpy, "ESETROOT_PMAP_ID", False);
+    
     background->win = xfdesktop->fullscreen;
+    
     background->set_background = TRUE;
     background->show_image = TRUE;
     background->style = TILED;
 
-    /* we don't use _ESETROOT_PMAP_ID */
-    remove_old_pixmap (xfdesktop->dpy, xfdesktop->root);
+    set_background (background);
 
+    /* color the root window black
+     * we will not do anything more with it */
+    root = gdk_get_default_root_window ();
+    gdk_window_set_back_pixmap (gdk_get_default_root_window(), 
+	    		        create_pixmap (background, NULL), FALSE);
+    
     /* connect callback for settings changes */
     register_channel_callback (BACKDROP_CHANNEL, 
 	    		       (ChannelCallback) update_backdrop_channel);
@@ -578,8 +625,6 @@ background_init (XfceDesktop *xfdesktop)
     init_settings = FALSE;
     
     /* watch _XROOTPMAP_ID root property */
-    root = gdk_get_default_root_window ();
-    
     gdk_window_add_filter (root, (GdkFilterFunc)monitor_background, 
 	    		   background);
     
@@ -639,11 +684,19 @@ background_load_settings (XfceDesktop *xfdesktop)
 	mcs_setting_free (setting);
     }
 
+    DBG ("set background %s", background->set_background ? "from settings" :
+	    "from root property");
     if (background->set_background)
+    {
+	/* we don't use _ESETROOT_PMAP_ID */
+	remove_old_pixmap (background);
+	
 	set_background (background);
+    }
     else
+    {
 	set_background_from_root_property(background);
-
+    }
 }
 
 void
