@@ -48,6 +48,10 @@
 #include <unistd.h>
 #endif
 
+#ifndef PATH_MAX
+#define PATH_MAX 256
+#endif
+
 #include <libxfce4mcs/mcs-manager.h>
 #include <libxfce4util/i18n.h>
 #include <libxfce4util/util.h>
@@ -107,6 +111,59 @@ add_file(const gchar *path, GtkListStore *ls)
 	gtk_list_store_append(ls, &iter);
 	gtk_list_store_set(ls, &iter, 0, path, -1);
 }
+
+static void
+add_dir(const gchar *path, GtkListStore *ls, GtkWidget *parent)
+{
+	GtkTreeIter iter;
+	GDir *dir;
+	const gchar *file;
+	gchar fullpath[PATH_MAX];
+	GtkWidget *pdlg, *lbl, *pbar;
+	gchar *pathlbl;
+	gint nfiles = 0, curfile = 0;
+	
+	dir = g_dir_open(path, 0, NULL);
+	if(!dir)
+		return;
+	/* get file count - lame */
+	while(g_dir_read_name(dir))
+		nfiles++;
+	g_dir_rewind(dir);
+	
+	pdlg = gtk_dialog_new();
+	gtk_window_set_title(GTK_WINDOW(pdlg), _("Backdrop"));
+	gtk_dialog_set_has_separator(GTK_DIALOG(pdlg), FALSE);
+	gtk_window_set_transient_for(GTK_WINDOW(pdlg), GTK_WINDOW(parent));
+	gtk_window_set_destroy_with_parent(GTK_WINDOW(pdlg), TRUE);
+	gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 6);
+	
+	pathlbl = g_strdup_printf(_("Adding files from directory %s..."), path, NULL);
+	lbl = gtk_label_new(pathlbl);
+	gtk_widget_show(lbl);
+	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), lbl, FALSE, FALSE, 0);
+	
+	pbar = gtk_progress_bar_new();
+	gtk_widget_show(pbar);
+	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), pbar, FALSE, FALSE, 0);
+	
+	gtk_widget_show(pdlg);
+	while(gtk_events_pending())
+		gtk_main_iteration();
+	
+	while((file = g_dir_read_name(dir))) {
+		g_snprintf(fullpath, PATH_MAX, "%s%s%s", path, G_DIR_SEPARATOR_S, file);
+		if(!g_file_test(fullpath, G_FILE_TEST_IS_DIR))
+			add_file(fullpath, ls);
+		gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(pbar), (gdouble)++curfile / nfiles);
+		while(gtk_events_pending())
+			gtk_main_iteration();
+	}
+	g_dir_close(dir);
+	
+	gtk_widget_destroy(pdlg);
+	g_free(pathlbl);
+}	
 
 /* remove from list */
 static void
@@ -318,7 +375,10 @@ on_drag_data_received (GtkWidget * w, GdkDragContext * context,
 
 	for(li = flist; li; li = li->next) {
 		file = li->data;
-		add_file(file, (GtkListStore *)user_data);
+		if(g_file_test(file, G_FILE_TEST_IS_DIR))
+			add_dir(file, (GtkListStore *)user_data, gtk_widget_get_toplevel(w));
+		else
+			add_file(file, (GtkListStore *)user_data);
 	}
 
 	gtk_drag_finish(context, FALSE, (context->action == GDK_ACTION_MOVE), time);
@@ -453,6 +513,7 @@ list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 	xfce_file_chooser_set_local_only(XFCE_FILE_CHOOSER(chooser), TRUE);
 	xfce_file_chooser_add_shortcut_folder(XFCE_FILE_CHOOSER(chooser),
 			DATADIR "/xfce4/backdrops", NULL);
+	xfce_file_chooser_set_select_multiple(XFCE_FILE_CHOOSER(chooser), TRUE);
 	
 	if(_listdlg_last_dir)
 		xfce_file_chooser_set_current_folder(XFCE_FILE_CHOOSER(chooser),
@@ -467,15 +528,55 @@ list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 	
 	gtk_widget_show(chooser);
 	if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
-		gchar *filename;
+		GSList *filenames, *l;
+		gint nfiles = 0, curfile = 0;
+		GtkWidget *pdlg, *lbl, *pbar;
 		
-		filename = xfce_file_chooser_get_filename(XFCE_FILE_CHOOSER(chooser));
-		if(filename) {
+		gtk_widget_hide(chooser);
+		while(gtk_events_pending())
+			gtk_main_iteration();
+		
+		filenames = xfce_file_chooser_get_filenames(XFCE_FILE_CHOOSER(chooser));
+		if(filenames) {
 			if(_listdlg_last_dir)
 				g_free(_listdlg_last_dir);
-			_listdlg_last_dir = g_path_get_dirname(filename);
-			add_file(filename, GTK_LIST_STORE(gtk_tree_view_get_model(treeview)));
-			g_free(filename);
+			_listdlg_last_dir = g_path_get_dirname(filenames->data);
+			
+			nfiles = g_slist_length(filenames);
+			if(nfiles > 4) {
+				pdlg = gtk_dialog_new();
+				gtk_window_set_title(GTK_WINDOW(pdlg), _("Backdrop"));
+				gtk_dialog_set_has_separator(GTK_DIALOG(pdlg), FALSE);
+				gtk_window_set_transient_for(GTK_WINDOW(pdlg), GTK_WINDOW(dialog));
+				gtk_window_set_destroy_with_parent(GTK_WINDOW(pdlg), TRUE);
+				gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 6);
+				
+				lbl = gtk_label_new(_("Adding multiple files..."));
+				gtk_widget_show(lbl);
+				gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), lbl, FALSE, FALSE, 0);
+				
+				pbar = gtk_progress_bar_new();
+				gtk_widget_show(pbar);
+				gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), pbar, FALSE, FALSE, 0);
+				
+				gtk_widget_show(pdlg);
+				while(gtk_events_pending())
+					gtk_main_iteration();
+			}
+			
+			for(l=filenames; l; l=l->next) {
+				add_file(l->data, GTK_LIST_STORE(gtk_tree_view_get_model(treeview)));
+				g_free(l->data);
+				if(nfiles > 4) {
+					gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(pbar), (gdouble)++curfile / nfiles);
+					while(gtk_events_pending())
+						gtk_main_iteration();
+				}
+			}
+			g_slist_free(filenames);
+			
+			if(nfiles > 4)
+				gtk_widget_destroy(pdlg);
 		}
 	}
 	gtk_widget_destroy(chooser);
