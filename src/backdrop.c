@@ -128,6 +128,7 @@ get_path_from_listfile (const gchar * listfile)
 
     if (!listfile)
     {
+	DBG ("no listfile\n");
 	g_free (prevfile);
 	prevfile = NULL;
 	return NULL;
@@ -135,6 +136,7 @@ get_path_from_listfile (const gchar * listfile)
 
     if (stat (listfile, &st) < 0)
     {
+	DBG ("stat listfile failed\n");
 	g_free (prevfile);
 	prevfile = NULL;
 	mtime = 0;
@@ -157,6 +159,7 @@ get_path_from_listfile (const gchar * listfile)
     switch (n)
     {
 	case 0:
+	    DBG ("no files in list\n");
 	    return NULL;
 
 	case 1:
@@ -200,7 +203,7 @@ create_image (XfceBackground * background)
 	return NULL;
 
     if (is_backdrop_list (background->path))
-	path = get_path_from_listfile (path);
+	path = get_path_from_listfile (background->path);
     else
 	path = (const char *) background->path;
 
