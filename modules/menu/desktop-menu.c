@@ -192,9 +192,9 @@ _menu_check_update(gpointer data)
 	modified = xfce_desktop_menu_need_update_impl(desktop_menu);
 	
 	newfilename = desktop_menu_file_get_menufile();
-	if(!desktop_menu->filename || 
-	   strcmp(desktop_menu->filename, newfilename)) {
-		g_free(desktop_menu->filename);
+	if(!desktop_menu->filename || strcmp(desktop_menu->filename, newfilename)) {
+		if(desktop_menu->filename)
+			g_free(desktop_menu->filename);
 		desktop_menu->filename = newfilename;
 		modified = TRUE;
 	} else
