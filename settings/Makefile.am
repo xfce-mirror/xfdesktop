@@ -3,7 +3,9 @@
 
 EXTRA_DIST =								\
 	backdrop.png							\
-	workspaces.png
+	workspaces.png							\
+	menu_settings.c							\
+	menu_settings.h
 
 #
 # backdrop settings
