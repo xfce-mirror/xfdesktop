@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-03 23:57-0800\n"
-"PO-Revision-Date: 2004-09-21 12:55+0200\n"
+"PO-Revision-Date: 2005-03-05 10:10+0100\n"
 "Last-Translator: Moritz Heiber <moe@xfce.org>\n"
 "Language-Team: NONE <none@none>\n"
 "MIME-Version: 1.0\n"
@@ -402,35 +402,29 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Konnte xfce4-menueditor nicht starten: %s"
 
 #: panel-plugin/desktop-menu-plugin.c:663
-#, fuzzy
 msgid "Button _title:"
-msgstr "Buttonicon:"
+msgstr "Buttontitel:"
 
 #: panel-plugin/desktop-menu-plugin.c:676
-#, fuzzy
 msgid "Menu File"
-msgstr "Menüdateien"
+msgstr "Menüdatei"
 
 #: panel-plugin/desktop-menu-plugin.c:688
-#, fuzzy
 msgid "Use default _desktop menu file"
-msgstr "_Desktopmenü bearbeiten"
+msgstr "Benutze voreingestellte Menüdatei"
 
 #: panel-plugin/desktop-menu-plugin.c:697
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "Xfce4-Menüdatei öffnen"
+msgstr "Eigene Menüdatei benutzen"
 
 #: panel-plugin/desktop-menu-plugin.c:749
 #: panel-plugin/desktop-menu-plugin.c:751
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "_Menü"
+msgstr "_Menü bearbeiten"
 
 #: panel-plugin/desktop-menu-plugin.c:758
-#, fuzzy
 msgid "Icons"
-msgstr "Icon:"
+msgstr "Icons"
 
 #: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
@@ -694,30 +688,3 @@ msgstr "_Arbeitsfläche %d entfernen"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Arbeitsfläche '%s' entfernen"
-
-#~ msgid "_Menu file:"
-#~ msgstr "_Menüdatei:"
-
-#~ msgid "Backdrop"
-#~ msgstr "Hintergrund"
-
-#~ msgid "Adding files from directory %s..."
-#~ msgstr "Füge Dateien aus Verzeichnis %s hinzu..."
-
-#~ msgid "Adding files from list %s..."
-#~ msgstr "Füge Dateien von Liste %s hinzu..."
-
-#~ msgid "Adding multiple files..."
-#~ msgstr "Mehrere Dateien hinzufügen..."
-
-#~ msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-#~ msgstr "XfceDesktopMenü: Konnte xfce-registered-categories.xml nicht finden"
-
-#~ msgid "%s: missing or unknown attribute for 'related' element\n"
-#~ msgstr "%s: Fehlendes/unbekanntes Attribut für zusammenhängendes Element\n"
-
-#~ msgid "%s: unknown xml element %s\n"
-#~ msgstr "%s: Unbekanntes XML-Element %s\n"
-
-#~ msgid "Not yet implemented!"
-#~ msgstr "Noch nicht implementiert!"
