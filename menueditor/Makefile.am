@@ -41,4 +41,6 @@ apps_in_files = xfce-menueditor.desktop.in
 apps_DATA = $(apps_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
-EXTRA_DIST = xfce-menueditor.desktop.in
+EXTRA_DIST = $(apps_in_files)
+
+DISTCLEANFILES = $(apps_DATA)
