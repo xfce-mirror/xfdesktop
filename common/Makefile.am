@@ -8,9 +8,7 @@ libxfdesktop_la_SOURCES =						\
 	backdrop.h
 
 libxfdesktop_la_CFLAGS =						\
-	@GLIB_CFLAGS@							\
-	@LIBXFCEGUI4_CFLAGS@						\
-	@PANGO_CFLAGS@
+	@LIBXFCEGUI4_CFLAGS@
 
 libxfdesktop_la_LDFLAGS =						\
 	-export-dynamic

@@ -26,11 +26,8 @@ backdrop_settings_la_SOURCES =						\
 
 backdrop_settings_la_CFLAGS =						\
 	-I$(top_srcdir)/common						\
-	@GLIB_CFLAGS@							\
-	@GTK_CFLAGS@							\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
-	@PANGO_CFLAGS@							\
 	-DLOCALEDIR=\"$(localedir)\"					\
 	-DDATADIR=\"$(datadir)\"
 
@@ -61,11 +58,8 @@ workspaces_settings_la_SOURCES =					\
 
 workspaces_settings_la_CFLAGS =						\
 	-I$(top_srcdir)/common						\
-	@GLIB_CFLAGS@							\
-	@GTK_CFLAGS@							\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
-	@PANGO_CFLAGS@							\
 	-DLOCALEDIR=\"$(localedir)\"					\
 	-DDATADIR=\"$(datadir)\"
 

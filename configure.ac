@@ -32,11 +32,7 @@ BM_I18N([xfdesktop], [de fi fr pl nl])
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE
 
-BM_DEPEND(GLIB, glib-2.0, 2.0.0)
-BM_DEPEND(PANGO, pango, 1.0.0)
-BM_DEPEND(GTK, gtk+-2.0, 2.0.0)
 BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 0.0.17)
-BM_DEPEND(LIBXFCE4UTIL, libxfce4util-1.0, 0.0)
 BM_DEPEND(LIBXML, libxml-2.0, 2.4.0)
 BM_DEPEND(LIBXFCE4MCS_CLIENT,  libxfce4mcs-client-1.0, 0.0.4)
 BM_DEPEND(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, 0.0.4)
