@@ -59,6 +59,33 @@ static gboolean is_backdrop_list(const char *path)
     return is_list;
 }
 
+static void remove_old_pixmap(void)
+{
+    Display *dpy = GDK_DISPLAY ();
+    Window w = GDK_ROOT_WINDOW ();
+    Atom type;
+    int format;
+    unsigned long length, after;
+    unsigned char *data;
+    Atom e_prop = XInternAtom (dpy, "ESETROOT_PMAP_ID", False);
+
+    XGrabServer(dpy);
+
+    XGetWindowProperty(dpy, w, e_prop, 0L, 1L, False, AnyPropertyType,
+                       &type, &format, &length, &after, &data);
+
+    if ((type == XA_PIXMAP) && (format == 32) && (length == 1)) 
+    {
+        gdk_error_trap_push ();
+        XKillClient(dpy, *((Pixmap *)data));
+	gdk_flush ();
+	gdk_error_trap_pop ();
+	XDeleteProperty(dpy, w, e_prop);
+    }
+    
+    XUngrabServer(dpy);
+}
+
 void backdrop_init(GtkWidget * window)
 {
     fullscreen_window = window;
@@ -66,6 +93,8 @@ void backdrop_init(GtkWidget * window)
     screen_width = gdk_screen_width();
     screen_height = gdk_screen_height();
 
+    remove_old_pixmap();
+    
     cmap = gtk_widget_get_colormap(fullscreen_window);
 }
 
