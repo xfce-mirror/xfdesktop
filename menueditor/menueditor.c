@@ -464,22 +464,68 @@ void quit_cb(GtkWidget *widget, gpointer data)
 /* Save the menu file */
 void menu_save_cb(GtkWidget *widget, gpointer data)
 {
+  gchar *tmp_filename = NULL;
+
   menueditor_app.menu_modified=FALSE;
   gtk_widget_set_sensitive(menueditor_app.file_menu.save,FALSE);
   gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,FALSE);
-  xmlSaveFormatFile(menueditor_app.menu_file_name,menueditor_app.xml_menu_file,1);
+  
+  /* Save the menu file with atomicity */
+  tmp_filename = g_strdup_printf("%s.tmp", menueditor_app.menu_file_name);
+
+  xmlSaveFormatFile(tmp_filename, menueditor_app.xml_menu_file, 1);
+  if(unlink(menueditor_app.menu_file_name)){
+    perror("unlink(menueditor_app.menu_file_name)");
+    g_free(tmp_filename);
+    return;
+  }
+  if(link(tmp_filename, menueditor_app.menu_file_name)){
+    perror("link(tmp_filename, menueditor_app.menu_file_name)");
+    g_free(tmp_filename);
+    return;
+  }
+  if(unlink(tmp_filename)){
+    perror("unlink(tmp_filename)");
+    g_free(tmp_filename);
+    return;
+  }
+  printf("ok\n");
+  g_free(tmp_filename);
 }
 
 /* File Selection ok button callback */
 void filesel_saveas_ok(GtkWidget *widget, GtkFileSelection *filesel_dialog)
 {
+  gchar *tmp_filename = NULL;
+
   gtk_widget_hide(GTK_WIDGET(filesel_dialog));
 
   menueditor_app.menu_modified=FALSE;
   gtk_widget_set_sensitive(menueditor_app.file_menu.save,FALSE);
   gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,FALSE);
   g_stpcpy(menueditor_app.menu_file_name,gtk_file_selection_get_filename(filesel_dialog)); 
-  xmlSaveFormatFile(menueditor_app.menu_file_name,menueditor_app.xml_menu_file,1);
+
+  /* Save the menu file with atomicity */
+  tmp_filename = g_strdup_printf("%s.tmp", menueditor_app.menu_file_name);
+
+  xmlSaveFormatFile(tmp_filename, menueditor_app.xml_menu_file, 1);
+  if(unlink(menueditor_app.menu_file_name)){
+    perror("unlink(menueditor_app.menu_file_name)");
+    g_free(tmp_filename);
+    return;
+  }
+  if(link(tmp_filename, menueditor_app.menu_file_name)){
+    perror("link(tmp_filename, menueditor_app.menu_file_name)");
+    g_free(tmp_filename);
+    return;
+  }
+  if(unlink(tmp_filename)){
+    perror("unlink(tmp_filename)");
+    g_free(tmp_filename);
+    return;
+  }
+  printf("ok\n");
+  g_free(tmp_filename);
 }
 
 /* Ask the filename and save the menu into */
