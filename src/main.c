@@ -275,6 +275,7 @@ static void sighandler(int sig)
 
 int main(int argc, char **argv)
 {
+    struct sigaction act;
     Window xid;
 
     TRACE();
@@ -286,10 +287,18 @@ int main(int argc, char **argv)
 /*	g_message("xfdesktop: already running\n");*/
 	return 0;
     }
-    
-    signal(SIGHUP, &sighandler);
-    signal(SIGTERM, &sighandler);
-    signal(SIGINT, &sighandler);
+
+    /* use POSIX signal handling */
+    act.sa_handler = sighandler;
+    sigemptyset(&act.sa_mask);
+#ifdef SA_RESTART
+    act.sa_flags = SA_RESTART;
+#else
+    act.sa_flags = 0;
+#endif
+    sigaction(SIGHUP, &act, NULL);
+    sigaction(SIGINT, &act, NULL);
+    sigaction(SIGTERM, &act, NULL);
 
     client_session = client_session_new(argc, argv, NULL /* data */ , 
 	    				SESSION_RESTART_IF_RUNNING, 40);
