@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xfdesktop-menu [
+	<!ENTITY menu2 SYSTEM "menu2.xml">
+]>
+
+<!-- 
+     توضیح پرونده‌ی فهرست  XFce 4 : 
+     =================================
+	    در اينجا سعي مي‌کنيم که قالب پرونده‌ی فهرست را توضيح دهيم. برای مثالها نگاهي به	  
+	خود فهرست در زير بياندازيد.
+	
+-->
+
+<!-- بدين طريق مي‌توانيد يک توضيح را بسازيد ;-) -->
+
+<!-- 
+ 
+ + هر چيز دقيقا بين يک جفت از  
+    <xfdesktop-menu></xfdesktop-menu> گيره‌ها.
+
+  + برنامه‌های کاربردی:
+
+    <app name="نام در فهرست" cmd="فرمان برای اجرا" term="no" visible="yes" />
+    'term' تعيين مي‌کند که آيا نياز به پايانه برای اجرا مي‌باشد
+    فقط 'name' و'cmd' لازم است.
+
+  + جداسازها:
+    <separator/>
+
+  + زيرفهرست‌ها:
+    <menu name="نام در فهرست" visible="yes"></menu>
+    فقط 'name' لازم است.
+ بين گيره‌های فهرست مي‌توانيد برنامه‌ها، جداسازها و فهرست‌های بيشتری را تعيين کنيد.
+ 
+
+  + عنوان‌ها
+    <title name="نام در فهرست" />
+يک عنوان فهرست غير حساس را ايجاد مي‌کند    
+    
+  + اضافه کردن پرونده‌های بيشتر:
+پرونده‌های ديگر مي‌توانند بوسيله‌ی يک کلک xml اضافه گردند. اين کمي پيچيده است.
+اول بايد يک وجود را در سرآيند پرونده تعريف کنيد. در بالا، ما يک وجود 'menu2' را
+برای اشاره کردن به پرونده‌ی "menu2.xml" تعريف کرده‌ايم. سپس مي‌توانيد '&entityname:'
+را در هر جای پرونده‌ی فهرست استفاده کرده و آن با محتويات پرونده‌يي که آن وجود به آن
+اشاره مي‌کند جايگزين خواهد گرديد.
+اين مي‌تواند برای مثال اگر شما دست‌نويسي را ساخته که يک فهرست گنوم را توليد مي‌کند
+و آن را در پرونده‌ی جداگانه قرار مي‌دهد مفيد باشد.
+    
+-->
+<xfdesktop-menu>
+    <title name="فهرست روميزی" visible="yes" />
+    <separator/>
+    <app name="اجرای برنامه..." cmd="xfrun4"/>
+    <separator/>
+    <app name="پايانه" cmd="xfterm4" />
+    <app name="مدير پرونده (xffm)" cmd="xffm"/>
+    <app name="مرورگر وب" cmd="mozilla"/>
+    <separator/>
+    <menu name="تنظيمات" visible="yes">
+        <app name="همه‌ی تنظيمات..." cmd="xfce-setting-show"/>
+        <app name="پس‌زمينه..." cmd="xfce-setting-show backdrop"/>
+<!-- 
+        <app name="پس‌زمينه" cmd="xfce-setting-show backdrop"/>
+	<app name="فضاهای کار" cmd="xfce-setting-show workspaces"/>
+	<app name="مدير پرونده (xffm)" cmd="xfce-setting-show xffm"/>
+	<app name="واسط کاربری (gtk+)" cmd="xfce-setting-show ui"/>
+	<app name="جعبه‌ی شمايل" cmd="xfce-setting-show xfibx"/>
+        <app name="موشي" cmd="xfce-setting-show mouse"/>
+        <app name="نوار کار" cmd="xfce-setting-show taskbar"/>
+	<app name="صفحه‌کليد" cmd="xfce-setting-show keyboard"/>
+	<app name="مدير پنجره" cmd="xfce-setting-show xfwm4"/>
+	<app name="حاشيه‌ها" cmd="xfce-setting-show xfwm_margins"/>
+	<app name="پيشخوان" cmd="xfce-setting-show xfce"/>
+-->
+    </menu>
+    <separator/>
+    <app name="راهنما" cmd="xfhelp4"/>
+    <!-- <separator/> -->
+    <!-- برای استفاده از اين آيتم 'visible' را به 'yes' بگذاريد.
+اين مدير روميزی را ترک مي‌کند. اگر شما 'exec xfdesktop' را
+در آخر ~/.xinitrc خود بگذاريد، اين آيتم فهرست مي‌تواند برای
+خروج از نشست X استفاده گردد.
+    -->
+
+    <builtin name="ترک کردن" cmd="quit" visible="no"/>
+    <!-- مثالي برای چگونگي اضافه کردن يک پرونده:
+۱) يک وجود را در گيره‌ی DOCTYPE اعلام کنيد (بالا را ببينيد)
+۲) وجود را در پرونده اضافه کنيد:
+    -->
+    <!--
+    &menu2;
+    -->
+</xfdesktop-menu>
+

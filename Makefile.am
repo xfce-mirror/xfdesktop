@@ -8,6 +8,7 @@ conf_DATA = 								\
 	menu.xml 							\
 	menu.xml.az 							\
 	menu.xml.de 							\
+	menu.xml.fa_IR 							\
 	menu.xml.fr 							\
 	menu.xml.nl  							\
 	menu.xml.ca 							\
