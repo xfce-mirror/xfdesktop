@@ -414,7 +414,7 @@ load_initial_settings(XfceDesktop *desktop, McsClient *mcs_client)
 			mcs_setting_free(setting);
 			setting = NULL;
 		} else
-			xfce_backdrop_set_brightness(backdrop, 100);
+			xfce_backdrop_set_brightness(backdrop, 0);
 	}
 }
 

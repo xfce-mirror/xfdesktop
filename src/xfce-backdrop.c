@@ -30,12 +30,19 @@
 #include <string.h>
 #endif
 
+#include <math.h>
+
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gdk-pixbuf/gdk-pixdata.h>
 
 #include "xfce-backdrop.h"
+
+#ifdef round
+#undef round
+#endif
+#define round(x) ( (gdouble)(x)-(gint)(x) >= 0.5 ? ((gint)(x))+1 : (gint)(x) )
 
 static void xfce_backdrop_class_init(XfceBackdropClass *klass);
 static void xfce_backdrop_init(XfceBackdrop *backdrop);
@@ -66,6 +73,53 @@ static GObjectClass *parent_class = NULL;
 static guint backdrop_signals[LAST_SIGNAL] = { 0 };
 
 /* helper functions */
+
+static GdkPixbuf *
+adjust_brightness(GdkPixbuf *src, gint amount)
+{
+	GdkPixbuf *new;
+	GdkPixdata pdata;
+	gboolean has_alpha = FALSE;
+	gint i, len;
+	gdouble scaled_val;
+	GError *err = NULL;
+	
+	g_return_val_if_fail(src != NULL, NULL);
+	if(amount == 0)
+		return src;
+	
+	gdk_pixdata_from_pixbuf(&pdata, src, FALSE);
+	has_alpha = (pdata.pixdata_type & GDK_PIXDATA_COLOR_TYPE_RGBA);
+	if(pdata.length < 1)
+		len = pdata.width * pdata.height * (has_alpha?4:3);
+	else
+		len = pdata.length - GDK_PIXDATA_HEADER_LENGTH;
+	
+	for(i = 0; i < len; i++) {
+		gshort scaled;
+		
+		if(has_alpha && (i+1)%4)
+			continue;
+		
+		scaled = pdata.pixel_data[i] + amount;
+		if(scaled > 255)
+			scaled = 255;
+		if(scaled < 0)
+			scaled = 0;
+		pdata.pixel_data[i] = scaled;
+	}
+	
+	new = gdk_pixbuf_from_pixdata(&pdata, TRUE, &err);
+	if(!new) {
+		g_warning("%s: Unable to modify image brightness: %s", PACKAGE,
+				err->message);
+		g_error_free(err);
+		return src;
+	}
+	g_object_unref(G_OBJECT(src));
+	
+	return new;
+}
 
 static GdkPixbuf *
 create_solid(GdkColor *color, gint width, gint height)
@@ -131,7 +185,8 @@ create_gradient(GdkColor *color1, GdkColor *color2, gint width, gint height,
 	
 	pix = gdk_pixbuf_from_pixdata(&pixdata, TRUE, &err);
 	if(!pix) {
-		g_warning("Unable to create color gradient: %s\n", err->message);
+		g_warning("%s: Unable to create color gradient: %s\n", PACKAGE,
+				err->message);
 		g_error_free(err);
 	}
 	
@@ -413,10 +468,11 @@ xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
 /**
  * xfce_backdrop_set_brightness:
  * @backdrop: An #XfceBackdrop.
- * @brightness: A brightness percentage.
+ * @brightness: A brightness value.
  *
- * Sets the brightness of the backdrop to a percent value between 0 and 100.
- * This value is applied to the entire image, after compositing.
+ * Modifies the brightness of the backdrop using a value between -128 and 127.
+ * A value of 0 indicates that the brightness should not be changed.  This value
+ * is applied to the entire image, after compositing.
  **/
 void
 xfce_backdrop_set_brightness(XfceBackdrop *backdrop, gint brightness)
@@ -478,13 +534,8 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
 	}
 	
 	if(!image) {
-		if(backdrop->priv->brightness != 100) {
-			gdouble brightness = (gdouble)backdrop->priv->brightness / 100;
-			GdkPixbuf *tmp = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, w, h);
-			gdk_pixbuf_saturate_and_pixelate(final_image, tmp, brightness, FALSE);
-			g_object_unref(G_OBJECT(final_image));
-			final_image = tmp;
-		}
+		if(backdrop->priv->brightness != 0)
+			final_image = adjust_brightness(final_image, backdrop->priv->brightness);
 		
 		return final_image;
 	}
@@ -564,13 +615,8 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
 	if(image)
 		g_object_unref(G_OBJECT(image));
 	
-	if(backdrop->priv->brightness != 100) {
-		gdouble brightness = (gdouble)backdrop->priv->brightness / 100;
-		GdkPixbuf *tmp = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, w, h);
-		gdk_pixbuf_saturate_and_pixelate(final_image, tmp, brightness, FALSE);
-		g_object_unref(G_OBJECT(final_image));
-		final_image = tmp;
-	}
+	if(backdrop->priv->brightness != 0)
+		final_image = adjust_brightness(final_image, backdrop->priv->brightness);
 	
 	return final_image;
 }

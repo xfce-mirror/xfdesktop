@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFDesktop 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-19 03:45-0400\n"
+"POT-Creation-Date: 2004-06-21 15:58-0400\n"
 "PO-Revision-Date: 2003-09-24 17:36-0500\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -103,7 +103,7 @@ msgid "The 'Name' field is required."
 msgstr ""
 
 #: menueditor/add_dialog.c:475 menueditor/dnd.c:150
-#: menueditor/menueditor.c:264 menueditor/move.c:90 menueditor/move.c:246
+#: menueditor/menueditor.c:278 menueditor/move.c:90 menueditor/move.c:246
 msgid "--- separator ---"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgid "quit"
 msgstr ""
 
 #: menueditor/add_menu_dialog.c:73 menueditor/add_menu_dialog.c:84
-#: menueditor/menueditor.c:688
+#: menueditor/menueditor.c:693
 msgid "Add an external menu"
 msgstr ""
 
@@ -153,13 +153,13 @@ msgstr ""
 
 #: menueditor/add_menu_dialog.c:247 menueditor/add_menu_dialog.c:303
 #: menueditor/dnd.c:152 menueditor/edit_dialog.c:625
-#: menueditor/edit_dialog.c:647 menueditor/menueditor.c:312
+#: menueditor/edit_dialog.c:647 menueditor/menueditor.c:326
 #: menueditor/move.c:120 menueditor/move.c:276
 msgid "--- include ---"
 msgstr ""
 
 #: menueditor/add_menu_dialog.c:304 menueditor/dnd.c:157
-#: menueditor/edit_dialog.c:649 menueditor/menueditor.c:315
+#: menueditor/edit_dialog.c:649 menueditor/menueditor.c:329
 #: menueditor/move.c:123 menueditor/move.c:279
 msgid "system"
 msgstr ""
@@ -175,154 +175,154 @@ msgstr ""
 msgid "Title:"
 msgstr "கோப்பு:"
 
-#: menueditor/menueditor.c:159
+#: menueditor/menueditor.c:158
 msgid "Select command"
 msgstr ""
 
-#: menueditor/menueditor.c:172
+#: menueditor/menueditor.c:181
 msgid "Select icon"
 msgstr ""
 
-#: menueditor/menueditor.c:192
+#: menueditor/menueditor.c:206
 msgid "Not yet implemented!"
 msgstr ""
 
-#: menueditor/menueditor.c:208 menueditor/menueditor.c:409
-#: menueditor/menueditor.c:462 menueditor/menueditor.c:589
+#: menueditor/menueditor.c:222 menueditor/menueditor.c:405
+#: menueditor/menueditor.c:458 menueditor/menueditor.c:594
 #: menueditor/new_dialog.c:74
 msgid "Do you want to save before closing the file?"
 msgstr ""
 
-#: menueditor/menueditor.c:473
-msgid "Menu file selection"
+#: menueditor/menueditor.c:468
+msgid "Open menu file"
 msgstr ""
 
-#: menueditor/menueditor.c:501 menueditor/menueditor.c:512
+#: menueditor/menueditor.c:506 menueditor/menueditor.c:517
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
 
-#: menueditor/menueditor.c:567
+#: menueditor/menueditor.c:541
 msgid "Save as..."
 msgstr ""
 
-#: menueditor/menueditor.c:682
+#: menueditor/menueditor.c:687
 #, fuzzy
 msgid "Edit"
 msgstr "பட்டியலை திருத்துக"
 
 #. File menu
-#: menueditor/menueditor.c:869
+#: menueditor/menueditor.c:874
 #, fuzzy
 msgid "_File"
 msgstr "கோப்பு:"
 
-#: menueditor/menueditor.c:878
+#: menueditor/menueditor.c:883
 msgid "Open default menu"
 msgstr ""
 
 #. Edit menu
-#: menueditor/menueditor.c:892
+#: menueditor/menueditor.c:897
 msgid "_Edit"
 msgstr ""
 
-#: menueditor/menueditor.c:898
+#: menueditor/menueditor.c:903
 msgid "Add an external menu..."
 msgstr ""
 
 #. Help menu
-#: menueditor/menueditor.c:910
+#: menueditor/menueditor.c:915
 msgid "_Help"
 msgstr ""
 
-#: menueditor/menueditor.c:915
+#: menueditor/menueditor.c:920
 msgid "_About..."
 msgstr ""
 
-#: menueditor/menueditor.c:929
+#: menueditor/menueditor.c:934
 msgid "Create a new Xfce4 menu file"
 msgstr ""
 
-#: menueditor/menueditor.c:936
+#: menueditor/menueditor.c:941
 msgid "Open an Xfce4 menu file"
 msgstr ""
 
-#: menueditor/menueditor.c:943
+#: menueditor/menueditor.c:948
 msgid "Save current menu"
 msgstr ""
 
-#: menueditor/menueditor.c:950
+#: menueditor/menueditor.c:955
 msgid "Close current menu"
 msgstr ""
 
-#: menueditor/menueditor.c:958
-msgid "Collapse the tree"
-msgstr ""
-
-#: menueditor/menueditor.c:965
-msgid "Expand the tree"
-msgstr ""
-
-#: menueditor/menueditor.c:973
+#: menueditor/menueditor.c:963
 msgid "Add an entry to the menu"
 msgstr ""
 
-#: menueditor/menueditor.c:980
+#: menueditor/menueditor.c:970
 msgid "Delete the current entry"
 msgstr ""
 
-#: menueditor/menueditor.c:987
+#: menueditor/menueditor.c:977
 msgid "Move the current entry up"
 msgstr ""
 
-#: menueditor/menueditor.c:994
+#: menueditor/menueditor.c:984
 msgid "Move the current entry down"
 msgstr ""
 
-#: menueditor/menueditor.c:1027
+#: menueditor/menueditor.c:992
+msgid "Collapse the tree"
+msgstr ""
+
+#: menueditor/menueditor.c:999
+msgid "Expand the tree"
+msgstr ""
+
+#: menueditor/menueditor.c:1033
 #, fuzzy
 msgid "Name"
 msgstr "பெயர்:"
 
-#: menueditor/menueditor.c:1029
+#: menueditor/menueditor.c:1035
 msgid "Command"
 msgstr ""
 
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1037
 msgid "Hidden"
 msgstr ""
 
-#: menueditor/menueditor.c:1033
+#: menueditor/menueditor.c:1039
 msgid "Pointer"
 msgstr ""
 
-#: menueditor/menueditor.c:1172
+#: menueditor/menueditor.c:1178
 msgid "Corrupted file or incorrect file format !"
 msgstr ""
 
-#: menueditor/menueditor.c:1174
+#: menueditor/menueditor.c:1180
 msgid "Corrupted file or incorrect file format !\n"
 msgstr ""
 
-#: menueditor/menueditor.c:1192
+#: menueditor/menueditor.c:1198
 msgid "No root element in file !"
 msgstr ""
 
-#: menueditor/menueditor.c:1194
+#: menueditor/menueditor.c:1200
 msgid "No root element in file !\n"
 msgstr ""
 
-#: menueditor/menueditor.c:1210
+#: menueditor/menueditor.c:1216
 msgid "Bad datafile format !"
 msgstr ""
 
-#: menueditor/menueditor.c:1212
+#: menueditor/menueditor.c:1218
 msgid "Bad datafile format !\n"
 msgstr ""
 
-#: menueditor/menueditor.c:1333
+#: menueditor/menueditor.c:1339
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr ""
@@ -354,7 +354,7 @@ msgstr "கோப்பு:"
 msgid "All fields are required."
 msgstr ""
 
-#: modules/menu/desktop-menu-dentry.c:504
+#: modules/menu/desktop-menu-dentry.c:497
 msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
 msgstr ""
 
@@ -382,12 +382,12 @@ msgid "Select Icon"
 msgstr ""
 
 #: panel-plugin/desktop-menu-plugin.c:274 settings/backdrop-mgr.c:545
-#: settings/backdrop-mgr.c:701 settings/backdrop_settings.c:578
+#: settings/backdrop-mgr.c:701 settings/backdrop_settings.c:549
 msgid "All Files"
 msgstr ""
 
 #: panel-plugin/desktop-menu-plugin.c:279 settings/backdrop-mgr.c:549
-#: settings/backdrop_settings.c:582
+#: settings/backdrop_settings.c:553
 #, fuzzy
 msgid "Image Files"
 msgstr "ஓவியக் கோப்புகள்"
@@ -472,155 +472,155 @@ msgid "Edit backdrop list"
 msgstr "பின்னணி-ஓவியம் பட்டியல் தொகு"
 
 #. the dialog
-#: settings/backdrop_settings.c:134 settings/backdrop_settings.c:872
-#: src/xfce-desktop.c:577
+#: settings/backdrop_settings.c:105 settings/backdrop_settings.c:845
+#: src/xfce-desktop.c:579
 msgid "Desktop"
 msgstr "கனிமேசை"
 
-#: settings/backdrop_settings.c:360
+#: settings/backdrop_settings.c:331
 #, fuzzy
 msgid "Select backdrop color"
 msgstr "பின்னணி வண்ணத்தை தெரிவுசெய்யவும்"
 
-#: settings/backdrop_settings.c:573
+#: settings/backdrop_settings.c:544
 #, fuzzy
 msgid "Select backdrop image or list file"
 msgstr "பின்னணி-ஓவியம் அல்லது பட்டியல் கோப்பு தெரிவுசெய்யவும்"
 
-#: settings/backdrop_settings.c:591
+#: settings/backdrop_settings.c:562
 msgid "List Files (*.list)"
 msgstr ""
 
-#: settings/backdrop_settings.c:677
+#: settings/backdrop_settings.c:648
 #, fuzzy
 msgid "_Edit list..."
 msgstr "பட்டியலை திருத்துக"
 
-#: settings/backdrop_settings.c:685
+#: settings/backdrop_settings.c:656
 #, fuzzy
 msgid "_New list..."
 msgstr "புதிய பட்டியல்"
 
-#: settings/backdrop_settings.c:721
+#: settings/backdrop_settings.c:692
 #, fuzzy
 msgid "S_tyle:"
 msgstr "பாணி:"
 
-#: settings/backdrop_settings.c:729
+#: settings/backdrop_settings.c:700
 #, fuzzy
 msgid "Tiled"
 msgstr "நகல் படுத்துக"
 
-#: settings/backdrop_settings.c:736
+#: settings/backdrop_settings.c:707
 #, fuzzy
 msgid "Centered"
 msgstr "_நடுவில்"
 
-#: settings/backdrop_settings.c:743
+#: settings/backdrop_settings.c:714
 #, fuzzy
 msgid "Scaled"
 msgstr "_முழுத் திரையிலும்"
 
-#: settings/backdrop_settings.c:750
+#: settings/backdrop_settings.c:721
 msgid "Stretched"
 msgstr ""
 
-#: settings/backdrop_settings.c:757
+#: settings/backdrop_settings.c:728
 #, fuzzy
 msgid "Auto"
 msgstr "_தானாகவே"
 
-#: settings/backdrop_settings.c:821
+#: settings/backdrop_settings.c:794
 msgid "_Brightness:"
 msgstr ""
 
 #. header
-#: settings/backdrop_settings.c:887
+#: settings/backdrop_settings.c:860
 #, fuzzy
 msgid "Desktop Settings"
 msgstr "வேலை þடங்கள் அமைப்புகள்"
 
-#: settings/backdrop_settings.c:911
+#: settings/backdrop_settings.c:884
 #, fuzzy
 msgid "_Backdrops"
 msgstr "பின்னணி-ஓவியம் பட்டியல்"
 
 #. color settings frame
-#: settings/backdrop_settings.c:937
+#: settings/backdrop_settings.c:910
 msgid "Color"
 msgstr "வண்ணம்"
 
-#: settings/backdrop_settings.c:951
+#: settings/backdrop_settings.c:924
 #, fuzzy
 msgid "_Color Style:"
 msgstr "பாணி:"
 
-#: settings/backdrop_settings.c:960
+#: settings/backdrop_settings.c:933
 #, fuzzy
 msgid "Solid Color"
 msgstr "வண்ணம்"
 
-#: settings/backdrop_settings.c:967
+#: settings/backdrop_settings.c:940
 msgid "Horizontal Gradient"
 msgstr ""
 
-#: settings/backdrop_settings.c:974
+#: settings/backdrop_settings.c:947
 msgid "Vertical Gradient"
 msgstr ""
 
-#: settings/backdrop_settings.c:995
+#: settings/backdrop_settings.c:968
 msgid "Fi_rst Color:"
 msgstr ""
 
-#: settings/backdrop_settings.c:1014
+#: settings/backdrop_settings.c:987
 #, fuzzy
 msgid "_Second Color:"
 msgstr "பின்னணி வண்ணம்: "
 
 #. set color only checkbox
-#: settings/backdrop_settings.c:1033
+#: settings/backdrop_settings.c:1006
 #, fuzzy
 msgid "Set color _only"
 msgstr "வண்ணம் மட்டும் பயன்படுத்தவும்:"
 
-#: settings/backdrop_settings.c:1048
+#: settings/backdrop_settings.c:1021
 msgid "Image"
 msgstr "ஓவியம்"
 
-#: settings/backdrop_settings.c:1056
+#: settings/backdrop_settings.c:1029
 #, fuzzy
 msgid "Show _Image"
 msgstr "ஓவியம்"
 
-#: settings/backdrop_settings.c:1078
+#: settings/backdrop_settings.c:1051
 #, fuzzy
 msgid "_File:"
 msgstr "கோப்பு:"
 
 #. don't set backdrop checkbox
-#: settings/backdrop_settings.c:1115
+#: settings/backdrop_settings.c:1088
 #, fuzzy
 msgid "_Don't set backdrop"
 msgstr "பின்னணி வண்ணத்தை தெரிவுசெய்யவும்"
 
 #. add the single backdrop settings page to the main notebook
-#: settings/backdrop_settings.c:1135
+#: settings/backdrop_settings.c:1108
 #, fuzzy
 msgid "_Backdrop"
 msgstr "பின்னணி-ஓவியம் பட்டியல்"
 
-#: settings/backdrop_settings.c:1143 settings/backdrop_settings.c:1145
+#: settings/backdrop_settings.c:1116 settings/backdrop_settings.c:1118
 #, c-format
 msgid "Screen %d"
 msgstr ""
 
 #. and if we have multiple screens, each with multiple monitors
-#: settings/backdrop_settings.c:1150
+#: settings/backdrop_settings.c:1123
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr ""
 
-#: settings/backdrop_settings.c:1164
+#: settings/backdrop_settings.c:1137
 msgid "_Menu"
 msgstr ""
 
