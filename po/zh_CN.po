@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-11-11 16:21+0100\n"
-"PO-Revision-Date: 2003-07-10 23:35+0100\n"
+"POT-Creation-Date: 2003-11-14 19:03+0100\n"
+"PO-Revision-Date: 2004-01-19 23:35+0100\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -58,81 +58,85 @@ msgstr "创建背景列表"
 msgid "Edit backdrop list"
 msgstr "编辑背景列表"
 
-#: settings/backdrop_settings.c:156
-msgid "Desktop: backdrop"
-msgstr "桌面: 背景"
+#: settings/backdrop_settings.c:149
+msgid "Desktop background"
+msgstr "桌面背景"
 
-#: settings/backdrop_settings.c:357
+#: settings/backdrop_settings.c:363
 msgid "Select background color"
 msgstr "选择背景颜色"
 
-#: settings/backdrop_settings.c:407
+#: settings/backdrop_settings.c:413
 msgid "Background color:"
 msgstr "背景颜色:"
 
-#: settings/backdrop_settings.c:437
+#: settings/backdrop_settings.c:443
 msgid "Use color only:"
 msgstr "仅使用颜色:"
 
-#: settings/backdrop_settings.c:563
+#: settings/backdrop_settings.c:569
 msgid "File:"
 msgstr "文件:"
 
-#: settings/backdrop_settings.c:624
+#: settings/backdrop_settings.c:630
 msgid "Select background image or list file"
 msgstr "选择背景图像或者列出文件"
 
-#: settings/backdrop_settings.c:701
+#: settings/backdrop_settings.c:707
 msgid "_Browse..."
 msgstr "浏览(_B)..."
 
-#: settings/backdrop_settings.c:705
+#: settings/backdrop_settings.c:711
 msgid "New list"
 msgstr "新列表"
 
-#: settings/backdrop_settings.c:709
+#: settings/backdrop_settings.c:715
 msgid "Edit list"
 msgstr "部件列表"
 
-#: settings/backdrop_settings.c:747
+#: settings/backdrop_settings.c:753
 msgid "Style:"
 msgstr "风格:"
 
-#: settings/backdrop_settings.c:755
+#: settings/backdrop_settings.c:761
 msgid "_Tiled"
 msgstr "平铺(_T)"
 
-#: settings/backdrop_settings.c:761
+#: settings/backdrop_settings.c:767
 msgid "_Scaled"
 msgstr "拉伸(_S)"
 
-#: settings/backdrop_settings.c:768
+#: settings/backdrop_settings.c:774
 msgid "_Centered"
 msgstr "居中(_C)"
 
-#: settings/backdrop_settings.c:775
+#: settings/backdrop_settings.c:781
 msgid "_Auto"
 msgstr "自动(_A)"
 
 #. the dialog
-#: settings/backdrop_settings.c:801
+#: settings/backdrop_settings.c:820
 msgid "Background"
 msgstr "背景"
 
 #. header
-#: settings/backdrop_settings.c:819
+#: settings/backdrop_settings.c:838
 msgid "Background Settings"
 msgstr "背景设置"
 
 #. color
-#: settings/backdrop_settings.c:825
+#: settings/backdrop_settings.c:844
 msgid "Color"
 msgstr "颜色"
 
 #. image vbox
-#: settings/backdrop_settings.c:837
+#: settings/backdrop_settings.c:856
 msgid "Image"
 msgstr "图像"
+
+#: settings/backdrop_settings.c:882
+msgid "Don't set background"
+msgstr "不设置背景"
 
 #: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
@@ -173,28 +177,27 @@ msgstr "工作区设置"
 msgid "Workspace names"
 msgstr "工作区名称"
 
-#: src/backdrop.c:487
+#: src/backdrop.c:508
 #, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
 msgstr "xfdesktop错误: 加载背景图像: %s\n"
 
-#: src/main.c:249
-msgid "Desktop"
-msgstr "桌面"
-
-#: src/menu.c:736
+#: src/menu.c:735
 msgid "Add workspace"
 msgstr "添加工作区"
 
-#: src/menu.c:743
+#: src/menu.c:742
 msgid "Delete workspace"
 msgstr "删除工作区"
 
-#: src/settings.c:186
+#: src/settings.c:182
 msgid ""
 "xfdesktop: could not connect to settings manager!Please check your "
 "installation."
 msgstr "xfdesktop: 无法连接到配置管理器！请检查您的安装是否正确。"
+
+#~ msgid "Desktop"
+#~ msgstr "桌面"
 
 #~ msgid "Workspace"
 #~ msgstr "工作区"
