@@ -260,13 +260,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
       node = xmlNewNode(NULL, "app");
 
       if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_icon)))!=0){
-	GdkPixbuf *tmpicon;
-
-	tmpicon = gdk_pixbuf_new_from_file (gtk_entry_get_text(GTK_ENTRY(entry_icon)),
-					    NULL);
-	icon = gdk_pixbuf_scale_simple (tmpicon, icon_size, icon_size,
-					GDK_INTERP_BILINEAR);
-	g_object_unref (G_OBJECT (tmpicon));
+	icon = find_icon(gtk_entry_get_text(GTK_ENTRY(entry_icon)));
 	if(icon)
 	  xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(entry_icon)));
       }

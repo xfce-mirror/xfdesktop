@@ -279,7 +279,6 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
     if(!xmlStrcmp(node->name,(xmlChar*)"app")){
       GdkPixbuf *icon = NULL;
-      GdkPixbuf *tmpicon = NULL;
       gchar *name=NULL;
       gchar *command=NULL;
 
@@ -293,11 +292,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 	icon_prop = xmlHasProp(node, "icon");
 	xmlRemoveProp(icon_prop);
       }else{
-	tmpicon = gdk_pixbuf_new_from_file (gtk_entry_get_text(GTK_ENTRY(icon_entry)),
-					    NULL);
-	icon = gdk_pixbuf_scale_simple (tmpicon, icon_size, icon_size,
-					GDK_INTERP_BILINEAR);
-	g_object_unref (G_OBJECT (tmpicon));
+	icon = find_icon(gtk_entry_get_text(GTK_ENTRY(icon_entry)));
 	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
       }
 

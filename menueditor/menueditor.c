@@ -53,6 +53,7 @@ static gchar *kdefmts[] = {
 #endif
 static gchar const *pix_paths[] = {
   "/usr/share/xfce4/themes/%s/",  /* for xfce4 theme-specific path */
+  "/usr/share/xfce4/themes/%s/apps/",
   "/usr/share/icons/%s/scalable/apps/",  /* ditto */
   "/usr/share/icons/%s/48x48/apps/",  /* ditto */
   "/usr/share/icons/%s/32x32/apps/",  /* ditto */
@@ -112,9 +113,6 @@ void create_main_window();
 /* Load the menu in the tree */
 void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p);
 
-/* Find the icon */
-static GdkPixbuf * find_icon (gchar const *ifile);
-
 /**********************************************/
 /* mcs client code copy of Brian J. Tarricone */
 /**********************************************/
@@ -170,7 +168,7 @@ mcs_notify_cb(const gchar *name, const gchar *channel_name, McsAction action,
 /* find_icon code copy of Brian J. Tarricone's xfdesktop patch */
 /* i hope it will be included in a xfce4 lib                   */
 /***************************************************************/
-static GdkPixbuf * find_icon (gchar const *ifile)
+GdkPixbuf * find_icon (gchar const *ifile)
 {
   gboolean found;
   GdkPixbuf *miicon;
@@ -668,13 +666,10 @@ void treeview_cursor_changed_cb(GtkTreeView *treeview,gpointer user_data)
 {
   GtkTreeIter iter;
   GtkTreeModel *tree_model=GTK_TREE_MODEL(menueditor_app.treestore);
-  gboolean ret;
-  
-  ret = gtk_tree_selection_get_selected (gtk_tree_view_get_selection(GTK_TREE_VIEW(menueditor_app.treeview)),
-					 &tree_model,
-					 &iter);
 
-  if(ret){
+  if(gtk_tree_selection_get_selected (gtk_tree_view_get_selection(GTK_TREE_VIEW(menueditor_app.treeview)),
+					 &tree_model,
+					 &iter)){
     gtk_widget_set_sensitive(menueditor_app.main_toolbar.add,TRUE);
     gtk_widget_set_sensitive(menueditor_app.main_toolbar.del,TRUE);
     gtk_widget_set_sensitive(menueditor_app.main_toolbar.up,TRUE);
@@ -695,20 +690,25 @@ void delete_entry_cb(GtkWidget *widget, gpointer data)
   GtkTreeSelection *selection=gtk_tree_view_get_selection(GTK_TREE_VIEW(menueditor_app.treeview));
   GtkTreeModel *model=GTK_TREE_MODEL(menueditor_app.treestore);
   GtkTreeIter iter;
-  xmlNodePtr node;
-  GValue val = { 0, };
 
-  gboolean ret;
+  if(gtk_tree_selection_get_selected (selection,&model,&iter)){
+    xmlNodePtr node;
+    GdkPixbuf *icon=NULL;
 
-  ret = gtk_tree_selection_get_selected (selection,&model,&iter);
+    GValue val_node = { 0, };
+    GValue val_icon = { 0, };
 
-  if(ret){
-    /* Retrieve the xmlNodePtr of the menu entry */
-    gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, POINTER_COLUMN, &val);
-    node = g_value_get_pointer(&val);
+    /* Retrieve the xmlNodePtr of the menu entry and free it */
+    gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, POINTER_COLUMN, &val_node);
+    node = g_value_get_pointer(&val_node);
     xmlUnlinkNode(node);
     xmlFreeNode(node);
-    
+    /* Retrieve the GdkPixbuf pointer on the icon and free it */
+    gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, ICON_COLUMN, &val_icon);
+    icon = g_value_get_object(&val_icon);
+    if(G_IS_OBJECT (icon))
+      g_object_unref(icon);
+
     gtk_tree_store_remove (GTK_TREE_STORE(menueditor_app.treestore),&iter);
 
     /* Modified ! */
