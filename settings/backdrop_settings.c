@@ -62,17 +62,12 @@
 #include <xfce-mcs-manager/manager-plugin.h>
 
 #include "xfdesktop-common.h"
-#include "backdrop-icon.h"
 #include "backdrop-mgr.h"
 #include "settings_common.h"
 #include "menu_settings.h"
 
 #define RCFILE "backdrop.xml"
 #define PLUGIN_NAME "backdrop"
-
-#ifdef HAVE_GDK_PIXBUF_NEW_FROM_STREAM
-#define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream
-#endif
 
 /* there can be only one */
 static gboolean is_running = FALSE;
@@ -91,8 +86,7 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
     mcs_plugin->caption = g_strdup (_("Desktop"));
     mcs_plugin->run_dialog = run_dialog;
 
-    mcs_plugin->icon = gdk_pixbuf_new_from_inline(-1, backdrop_icon_data,
-			FALSE, NULL);
+    mcs_plugin->icon = xfce_themed_icon_load("xfce4-backdrop", 32);
 
     backdrop_create_channel (mcs_plugin);
 
