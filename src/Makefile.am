@@ -7,8 +7,6 @@ xfdesktop_SOURCES =							\
 	main.h								\
 	menu.c								\
 	menu.h								\
-	menu-icon.c							\
-	menu-icon.h							\
 	menu-file.c							\
 	menu-file.h							\
 	menu-dentry.c						\

@@ -59,12 +59,12 @@
 #include <libxfce4util/i18n.h>
 #include <libxfce4util/util.h>
 #include <libxfcegui4/libxfcegui4.h>
+#include <libxfcegui4/xgtkicontheme.h>
 
 #include "main.h"
 #include "menu.h"
 #include "menu-file.h"
 #include "menu-dentry.h"
-#include "menu-icon.h"
 #include "dummy.h"
 
 #ifndef PATH_MAX
@@ -83,7 +83,7 @@
 static GtkWidget *create_desktop_menu();
 
 /* ugly */
-extern GdkPixbuf *dummy_icon;
+GdkPixbuf *dummy_icon;
 
 /* a bit hackish, but works well enough */
 gboolean is_using_system_rc = TRUE;
@@ -95,7 +95,7 @@ static GList *MainMenuData;	/* TODO: Free this at some point */
 static time_t last_menu_gen = 0;
 
 static McsClient *client = NULL;
-gchar icon_theme[128];  /* so menu-icon.c can see this */
+static GtkIconTheme *itheme = NULL;
 static time_t last_theme_change = 0;
 
 GHashTable *menu_entry_hash = NULL;
@@ -138,6 +138,53 @@ calc_icon_size()
 	}
 	
 	return icon_size;
+}
+#include <stdio.h>
+GdkPixbuf *
+menu_icon_find(const gchar *filename, gint size)
+{	
+	GdkPixbuf *pix, *tmp;
+	gint w, h;
+	gchar *p;
+	
+	if(!dummy_icon) {
+		GdkPixbuf *tmpicon = gdk_pixbuf_new_from_inline(-1, my_pixbuf, FALSE,
+				NULL);
+		dummy_icon = gdk_pixbuf_scale_simple(tmpicon, size,	size,
+				GDK_INTERP_BILINEAR);
+		g_object_unref(G_OBJECT(tmpicon));
+	}
+	
+	g_return_val_if_fail(filename && *filename, dummy_icon);
+	
+	
+	
+	if(*filename == '/')
+		pix = gdk_pixbuf_new_from_file(filename, NULL);
+	else if(g_strrstr(filename, "/")) {
+		/* GtkIconTheme doesn't like relative pathnames */
+		gchar *tmp = g_strconcat("/usr/share/pixmaps/", filename, NULL);
+		pix = gdk_pixbuf_new_from_file(tmp, NULL);
+		g_free(tmp);
+	} else {
+		/* GtkIconTheme doesn't like icon names with extensions */
+		if((p=g_strrstr(filename, ".")))
+			*p = 0;
+		
+		pix = gtk_icon_theme_load_icon(itheme, filename, 24, 0, NULL);
+	}
+
+	if(pix) {
+		w = gdk_pixbuf_get_width(pix);
+		h = gdk_pixbuf_get_height(pix);
+		if(w != size || h != size) {
+			tmp = gdk_pixbuf_scale_simple(pix, size, size, GDK_INTERP_BILINEAR);
+			g_object_unref(G_OBJECT(pix));
+			pix = tmp;
+		}
+	}
+	
+	return (pix ? pix : dummy_icon);
 }
 
 static gboolean
@@ -311,7 +358,10 @@ mcs_notify_cb(const gchar *name, const gchar *channel_name, McsAction action,
 	if((action==MCS_ACTION_NEW || action==MCS_ACTION_CHANGED) &&
 			!strcmp(setting->name, "theme") && setting->type==MCS_TYPE_STRING)
 	{
-		g_strlcpy(icon_theme, setting->data.v_string, 128);
+		gchar *origin = g_strdup_printf("%s:%d", __FILE__, __LINE__);
+		gtk_settings_set_string_property(gtk_settings_get_default(),
+				"gtk-icon-theme-name", setting->data.v_string, origin);
+		g_free(origin);
 		last_theme_change = time(NULL);
 	}
 }
@@ -829,6 +879,11 @@ button_scroll (GtkWidget * w, GdkEventScroll * sevent)
 void
 menu_init (XfceDesktop * xfdesktop)
 {
+#ifdef HAVE_GETENV
+    const char *kdedir = getenv("KDEDIR");
+	gchar extradir[1024];
+#endif
+	
     TRACE ("dummy");
     netk_screen = xfdesktop->netk_screen;
 
@@ -836,6 +891,14 @@ menu_init (XfceDesktop * xfdesktop)
 
 #ifdef HAVE_SIGNAL_H
 	signal(SIGCHLD, SIG_IGN);
+#endif
+	
+	itheme = gtk_icon_theme_get_default();
+	
+	gtk_icon_theme_prepend_search_path(itheme, XFCEDATADIR "/themes");
+#ifdef HAVE_GETENV
+	g_snprintf(extradir, 1024, "%s/share/icons", kdedir);
+	gtk_icon_theme_append_search_path(itheme, extradir);
 #endif
 	
 	/* track icon theme changes (from the panel) */
@@ -848,8 +911,6 @@ menu_init (XfceDesktop * xfdesktop)
         client = mcs_client_new(dpy, screen, mcs_notify_cb, mcs_watch_cb, NULL);
         if(client)
             mcs_client_add_channel(client, CHANNEL);
-        else
-            g_strlcpy(icon_theme, DEFAULT_ICON_THEME, 128);
     }
 	
 	/* create the menu */

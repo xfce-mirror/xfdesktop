@@ -48,7 +48,6 @@
 
 #include "menu-dentry.h"
 #include "menu.h"
-#include "menu-icon.h"
 #include "menuspec.h"
 
 #ifndef PATH_MAX

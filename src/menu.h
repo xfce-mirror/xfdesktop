@@ -53,5 +53,6 @@ void menu_init (XfceDesktop * xfdesktop);
 void menu_load_settings (XfceDesktop * xfdesktop);
 void popup_menu (int button, guint32 time);
 void popup_windowlist (int button, guint32 time);
+GdkPixbuf *menu_icon_find(const gchar *filename, gint size);
 
 #endif /* !__XFDESKTOP_MENU_H__ */

@@ -54,7 +54,6 @@
 
 #include "menu-file.h"
 #include "menu.h"
-#include "menu-icon.h"
 #include "menu-dentry.h"
 
 #ifndef PATH_MAX
