@@ -301,7 +301,6 @@ menu_dentry_parse_dentry (XfceDesktopEntry *de, GList *menu_data,
 		const gchar *extra_cat)
 {
 	gchar *categories = NULL, *hidden = NULL, *path = NULL, *onlyshowin = NULL;
-	gchar **catv;
 	MenuItem *mi;
 	gint i;
 	GPtrArray *newpaths = NULL;
