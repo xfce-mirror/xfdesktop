@@ -487,7 +487,7 @@ create_desktop_menu (void)
 			if (use_menu_icons && item->icon) {
 				imgitem = GTK_IMAGE_MENU_ITEM(mi);
 				if(imgitem) {
-					pix = load_themed_icon(item->icon, icon_size);
+					pix = xfce_load_themed_icon(item->icon, icon_size);
 					if(!pix)
 						pix = dummy_icon;
 					img = gtk_image_new_from_pixbuf (pix);
