@@ -5,7 +5,7 @@ dnl
 
 AC_INIT([configure.ac])
 
-AM_INIT_AUTOMAKE([xfdesktop], [4.1.0])
+AM_INIT_AUTOMAKE([xfdesktop], [4.1.1])
 
 AM_CONFIG_HEADER([config.h])
 
@@ -54,6 +54,7 @@ doc/fr/Makefile
 doc/fr/images/Makefile
 Makefile
 menueditor/Makefile
+pixmaps/Makefile
 po/Makefile.in
 settings/Makefile
 src/Makefile

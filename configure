@@ -1809,7 +1809,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=xfdesktop
- VERSION=4.1.0
+ VERSION=4.1.1
 
 
 cat >>confdefs.h <<_ACEOF
@@ -20956,8 +20956,8 @@ cat >>confdefs.h <<\_ACEOF
 _ACEOF
 
 
-  ALL_LINGUAS="az ca cs de es es_MX fa_IR fi fr hi hu it ja pl ko lt ms
-	 nl pt_BR pt_PT ru sv ta tr uk vi zh_CN zh_TW"
+  ALL_LINGUAS="az ca cs de es es_MX eu fa_IR fi fr hi hu it ja pl ko lt
+	 ms nl pt_BR pt_PT ru sv ta tr uk vi zh_CN zh_TW"
 
 
 
@@ -24524,7 +24524,7 @@ echo "${ECHO_T}yes" >&6
   fi
 
 
-                                                                                                                                  ac_config_files="$ac_config_files backdrops/Makefile common/Makefile doc/Makefile doc/C/Makefile doc/C/images/Makefile doc/fr/Makefile doc/fr/images/Makefile Makefile menueditor/Makefile po/Makefile.in settings/Makefile src/Makefile xfdesktop.spec"
+                                                                                                                                            ac_config_files="$ac_config_files backdrops/Makefile common/Makefile doc/Makefile doc/C/Makefile doc/C/images/Makefile doc/fr/Makefile doc/fr/images/Makefile Makefile menueditor/Makefile pixmaps/Makefile po/Makefile.in settings/Makefile src/Makefile xfdesktop.spec"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -25105,6 +25105,7 @@ do
   "doc/fr/images/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/fr/images/Makefile" ;;
   "Makefile" ) CONFIG_FILES="$CONFIG_FILES Makefile" ;;
   "menueditor/Makefile" ) CONFIG_FILES="$CONFIG_FILES menueditor/Makefile" ;;
+  "pixmaps/Makefile" ) CONFIG_FILES="$CONFIG_FILES pixmaps/Makefile" ;;
   "po/Makefile.in" ) CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
   "settings/Makefile" ) CONFIG_FILES="$CONFIG_FILES settings/Makefile" ;;
   "src/Makefile" ) CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
