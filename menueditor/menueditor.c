@@ -324,9 +324,11 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
       gchar *cmd = NULL;
       xmlChar *prop_name = NULL;
       xmlChar *prop_cmd = NULL;
+      xmlChar *prop_icon = NULL;
 
       prop_name = xmlGetProp(menu, "name");
       prop_cmd = xmlGetProp(menu , "cmd");
+      prop_icon = xmlGetProp(menu, "icon");
 
       name = g_strdup_printf(NAME_FORMAT, prop_name);
       cmd = g_strdup_printf(COMMAND_FORMAT, prop_cmd);
@@ -338,16 +340,17 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			  HIDDEN_COLUMN, hidden,
 			  POINTER_COLUMN, menu, -1);
 
-      if(!xmlStrcmp(prop_cmd,(xmlChar*)"quit")){
+      if(prop_icon){
 	GdkPixbuf *icon;
 
-	icon = xfce_load_themed_icon ("minipower", ICON_SIZE);
+	icon = xfce_load_themed_icon (prop_icon, ICON_SIZE);
 	gtk_tree_store_set (menueditor_app.treestore, &c,
 			    ICON_COLUMN, icon, -1);
       }
 
       xmlFree(prop_name);
       xmlFree(prop_cmd);
+      xmlFree(prop_icon);
       g_free(name);
       g_free(cmd);
     }
