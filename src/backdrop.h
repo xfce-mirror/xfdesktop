@@ -39,6 +39,7 @@ typedef struct {
 
     GdkColor color1;
 	GdkColor color2;
+	XfceColorStyle color_style;
     char *path;
     XfceBackdropStyle style;
 	
