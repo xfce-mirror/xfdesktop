@@ -34,18 +34,8 @@
 #include <libxfcegui4/icons.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfcegui4/xgtkicontheme.h>
-#include <libxfce4util/util.h>
+#include <libxfce4util/libxfce4util.h>
 
-/* include and definitions for intl */
-#include <libintl.h>
-#undef _
-#define _(String) dgettext (PACKAGE, String)
-#ifdef gettext_noop
- #define N_(String) gettext_noop (String)
-#else
- #define N_(String) (String)
-#endif
- 
 /* definitions of fonts in the tree */
 #define TITLE_FORMAT "<span weight='bold' color='dim grey' style='italic'>%s</span>"
 #define MENU_FORMAT "<span weight='bold'>%s</span>"
