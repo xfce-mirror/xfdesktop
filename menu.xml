@@ -60,17 +60,19 @@
     <menu name="Settings" visible="yes">
         <app name="All Settings" cmd="xfce-setting-show"/>
 	<separator/>
+<!-- 
         <app name="Background" cmd="xfce-setting-show backdrop"/>
 	<app name="Workspaces" cmd="xfce-setting-show workspaces"/>
 	<app name="File manager (xffm)" cmd="xfce-setting-show xffm"/>
 	<app name="User interface (gtk+)" cmd="xfce-setting-show ui"/>
-	<!-- <app name="Icon box" cmd="xfce-setting-show xfibx"/> -->
+	<app name="Icon box" cmd="xfce-setting-show xfibx"/>
         <app name="Mouse" cmd="xfce-setting-show mouse"/>
         <app name="Taskbar" cmd="xfce-setting-show taskbar"/>
 	<app name="Keyboard" cmd="xfce-setting-show keyboard"/>
 	<app name="Window manager" cmd="xfce-setting-show xfwm4"/>
 	<app name="Margins" cmd="xfce-setting-show xfwm_margins"/>
 	<app name="Panel" cmd="xfce-setting-show xfce"/>
+-->
     </menu>
     <separator/>
     <app name="Help" cmd="xfhelp4"/>
