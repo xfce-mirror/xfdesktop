@@ -1,0 +1,711 @@
+# Danish translations for xfdesktop package.
+# Copyright (C) 2002-2005 Olivier Fourdan
+# This file is distributed under the same license as the xfdesktop package.
+# Jesper Berth <bigsanta@berthit.dk>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop 4.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-08-25 22:59+0200\n"
+"PO-Revision-Date: 2005-02-25 13:17+0100\n"
+"Last-Translator: Jesper Berth <bigsanta@berthit.dk>\n"
+"Language-Team: Danish <dansk@klid.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: menueditor/about_dialog.c:36
+msgid "A menu editor for Xfce4"
+msgstr "Menu editor til Xfce4"
+
+#: menueditor/about_dialog.c:45
+msgid "Core developer"
+msgstr "Hoved udvikler"
+
+#: menueditor/about_dialog.c:49 menueditor/about_dialog.c:53
+#: menueditor/about_dialog.c:57
+msgid "Contributor"
+msgstr "Bidragsyder"
+
+#: menueditor/about_dialog.c:61
+msgid "Icon designer"
+msgstr "Ikon designer"
+
+#: menueditor/add_dialog.c:131 menueditor/add_dialog.c:146
+msgid "Add menu entry"
+msgstr "Tilføj menu punk"
+
+#. Type
+#: menueditor/add_dialog.c:152 menueditor/add_menu_dialog.c:96
+#: menueditor/edit_dialog.c:148
+msgid "Type:"
+msgstr "Type:"
+
+#: menueditor/add_dialog.c:155
+msgid "Launcher"
+msgstr "Afvikler"
+
+#: menueditor/add_dialog.c:160
+msgid "Submenu"
+msgstr "Undermenu"
+
+#: menueditor/add_dialog.c:165
+msgid "Separator"
+msgstr "Seperator"
+
+#: menueditor/add_dialog.c:170
+msgid "Title"
+msgstr "Titel"
+
+#: menueditor/add_dialog.c:175
+msgid "Quit"
+msgstr "Luk"
+
+#. Name
+#: menueditor/add_dialog.c:190 menueditor/edit_dialog.c:260
+#: menueditor/edit_dialog.c:310 menueditor/edit_dialog.c:348
+msgid "Name:"
+msgstr "Navn:"
+
+#: menueditor/add_dialog.c:200 menueditor/edit_dialog.c:261
+msgid "Command:"
+msgstr "Komando:"
+
+#: menueditor/add_dialog.c:216 menueditor/edit_dialog.c:252
+#: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
+#: menueditor/edit_dialog.c:390
+msgid "Icon:"
+msgstr "Ikon:"
+
+#. Start Notify check button
+#: menueditor/add_dialog.c:232 menueditor/edit_dialog.c:272
+msgid "Use startup _notification"
+msgstr "Brug startop påmindelse"
+
+#. Run in terminal check button
+#: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:273
+msgid "Run in _terminal"
+msgstr "Kør i terminal"
+
+#: menueditor/add_dialog.c:281 menueditor/edit_dialog.c:459
+msgid "The command doesn't exist !"
+msgstr "Komandoen findes ikke!"
+
+#: menueditor/add_dialog.c:287
+msgid "All fields must be filled to add an item."
+msgstr "Alle felter skal udfyldes for at tilføje et punkt"
+
+#: menueditor/add_dialog.c:295
+msgid "The 'Name' field is required."
+msgstr "Feltet 'Navn' er påkrævet."
+
+#: menueditor/add_dialog.c:349 menueditor/dnd.c:150
+#: menueditor/menueditor.c:339 menueditor/move.c:90 menueditor/move.c:246
+msgid "--- separator ---"
+msgstr "--- seperator---"
+
+#: menueditor/add_dialog.c:374 menueditor/edit_dialog.c:496
+msgid "quit"
+msgstr "Luk"
+
+#: menueditor/add_menu_dialog.c:76 menueditor/add_menu_dialog.c:87
+#: menueditor/menueditor.c:770
+msgid "Add an external menu"
+msgstr "Tilføj en ekstern menu"
+
+#: menueditor/add_menu_dialog.c:101 menueditor/edit_dialog.c:151
+msgid "File"
+msgstr "Fil"
+
+#: menueditor/add_menu_dialog.c:106 menueditor/edit_dialog.c:156
+msgid "System"
+msgstr "System"
+
+#: menueditor/add_menu_dialog.c:121 menueditor/edit_dialog.c:171
+msgid "Source:"
+msgstr "Kilde"
+
+#. Style
+#: menueditor/add_menu_dialog.c:134 menueditor/edit_dialog.c:184
+msgid "Style:"
+msgstr "Stil"
+
+#: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:187
+msgid "Simple"
+msgstr "Simpel"
+
+#: menueditor/add_menu_dialog.c:140 menueditor/edit_dialog.c:190
+msgid "Multilevel"
+msgstr "Flere niveauer"
+
+#. Unique
+#: menueditor/add_menu_dialog.c:153 menueditor/edit_dialog.c:203
+msgid "_Unique entries only"
+msgstr "Kun unikke linier"
+
+#: menueditor/add_menu_dialog.c:206
+msgid "The 'Source' field is required."
+msgstr "Feltet 'Kilde' er påkrævet"
+
+#: menueditor/add_menu_dialog.c:216 menueditor/add_menu_dialog.c:233
+#: menueditor/dnd.c:152 menueditor/edit_dialog.c:510
+#: menueditor/edit_dialog.c:523 menueditor/menueditor.c:387
+#: menueditor/move.c:120 menueditor/move.c:276
+msgid "--- include ---"
+msgstr "--- inkludere ---"
+
+#: menueditor/add_menu_dialog.c:234 menueditor/dnd.c:157
+#: menueditor/edit_dialog.c:524 menueditor/menueditor.c:390
+#: menueditor/move.c:123 menueditor/move.c:279
+msgid "system"
+msgstr "system"
+
+#. Create dialog for editing
+#: menueditor/edit_dialog.c:100 menueditor/edit_dialog.c:113
+msgid "Edit menu entry"
+msgstr "Ændre menu punkt"
+
+#: menueditor/edit_dialog.c:131
+msgid "Separators cannot be edited"
+msgstr "Seperatore kan ikke ændres"
+
+#. Name
+#: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:102
+msgid "Title:"
+msgstr "Titel"
+
+#: menueditor/menueditor.c:156
+msgid "Select command"
+msgstr "Vælg komando"
+
+#: menueditor/menueditor.c:213
+msgid "Select icon"
+msgstr "Vælg ikon"
+
+#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:372
+#: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
+#: settings/backdrop_settings.c:467
+msgid "All Files"
+msgstr "All filer"
+
+#: menueditor/menueditor.c:223 panel-plugin/desktop-menu-plugin.c:378
+#: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:471
+msgid "Image Files"
+msgstr "Billed filer"
+
+#: menueditor/menueditor.c:266
+msgid "Not yet implemented!"
+msgstr "Er ikke implementeret endnu!"
+
+#: menueditor/menueditor.c:277 menueditor/menueditor.c:659
+msgid "Do you want to save before closing the menu ?"
+msgstr "Vil du gemme før du lukker menuer ?"
+
+#: menueditor/menueditor.c:278
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr "Du har ændret menuen, vil du gemme inden du lukker ?"
+
+#: menueditor/menueditor.c:279
+msgid "Forget modifications"
+msgstr "Glem ændringer"
+
+#: menueditor/menueditor.c:463 menueditor/menueditor.c:518
+#: menueditor/menueditor.c:657
+msgid "Question"
+msgstr "Spørgsmål"
+
+#: menueditor/menueditor.c:465
+msgid "Do you want to save before opening the default menu ?"
+msgstr "Vil du gemme før du åbner standard menuen ?"
+
+#: menueditor/menueditor.c:467 menueditor/menueditor.c:522
+#: menueditor/menueditor.c:661
+msgid "Ignore modifications"
+msgstr "Ignorer ændringer"
+
+#: menueditor/menueditor.c:520
+msgid "Do you want to save before opening an other menu ?"
+msgstr "Vil du gemme før du åbner en anden menu ?"
+
+#: menueditor/menueditor.c:533
+msgid "Open menu file"
+msgstr "Åben menu fil"
+
+#: menueditor/menueditor.c:571 menueditor/menueditor.c:582
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr ""
+"Kan ikke skrive til %s : \n"
+"%s"
+
+#: menueditor/menueditor.c:606
+msgid "Save as..."
+msgstr "Gem som..."
+
+#: menueditor/menueditor.c:764
+msgid "Edit"
+msgstr "Ændre"
+
+#. File menu
+#: menueditor/menueditor.c:951
+msgid "_File"
+msgstr "Fil"
+
+#: menueditor/menueditor.c:960
+msgid "Open default menu"
+msgstr "Åben standard menu"
+
+#. Edit menu
+#: menueditor/menueditor.c:974
+msgid "_Edit"
+msgstr "Ændre"
+
+#: menueditor/menueditor.c:980
+msgid "Add an external menu..."
+msgstr "Tilføj en ekstern menu..."
+
+#. Help menu
+#: menueditor/menueditor.c:992
+msgid "_Help"
+msgstr "Hjælp"
+
+#: menueditor/menueditor.c:997
+msgid "_About..."
+msgstr "Om..."
+
+#: menueditor/menueditor.c:1011
+msgid "Create a new Xfce4 menu file"
+msgstr "Lav en ny Xfce4 menu fil"
+
+#: menueditor/menueditor.c:1018
+msgid "Open an Xfce4 menu file"
+msgstr "Åben en Xfce4 menu fil"
+
+#: menueditor/menueditor.c:1025
+msgid "Save current menu"
+msgstr "Gem nuværende menu"
+
+#: menueditor/menueditor.c:1032
+msgid "Close current menu"
+msgstr "Luk nuværende menu"
+
+#: menueditor/menueditor.c:1040
+msgid "Add an entry to the menu"
+msgstr "Tilføj et element til menuen"
+
+#: menueditor/menueditor.c:1047
+msgid "Delete the current entry"
+msgstr "Slet det nuværende element"
+
+#: menueditor/menueditor.c:1054
+msgid "Move the current entry up"
+msgstr "Flyt det nuværende element op"
+
+#: menueditor/menueditor.c:1061
+msgid "Move the current entry down"
+msgstr "Flyt det nuværende element ned"
+
+#: menueditor/menueditor.c:1069
+msgid "Collapse the tree"
+msgstr "Saml treet"
+
+#: menueditor/menueditor.c:1076
+msgid "Expand the tree"
+msgstr "Udvid treet"
+
+#: menueditor/menueditor.c:1110
+msgid "Name"
+msgstr "Navn"
+
+#: menueditor/menueditor.c:1112
+msgid "Command"
+msgstr "Komando"
+
+#: menueditor/menueditor.c:1114
+msgid "Hidden"
+msgstr "Skjult"
+
+#: menueditor/menueditor.c:1116
+msgid "Pointer"
+msgstr "Markør"
+
+#: menueditor/menueditor.c:1248
+msgid "Corrupted file or incorrect file format !"
+msgstr "Korrupt fil eller forkert fil format!"
+
+#: menueditor/menueditor.c:1261
+msgid "No root element in file !"
+msgstr "Intet root element i filen!"
+
+#: menueditor/menueditor.c:1272
+msgid "Bad datafile format !"
+msgstr "Dårligt datafil format!"
+
+#: menueditor/menueditor.c:1388
+#, c-format
+msgid "File %s doesn't exist !"
+msgstr "Filen %s eksisterer ikke!"
+
+#: menueditor/move.c:401
+msgid "Do you want to move the item into the parent menu?"
+msgstr "Vil du flytte elementet til hoved menu ?"
+
+#: menueditor/move.c:500
+msgid "Do you want to move the item into the submenu?"
+msgstr "Vil du flytte elementet til undermenuen ?"
+
+#: menueditor/new_dialog.c:58
+msgid "Are you sure you want to close the current menu?"
+msgstr "Er du sikker på at du vil lukke den nuværende menu ?"
+
+#: menueditor/new_dialog.c:74
+msgid "Do you want to save before closing the file?"
+msgstr "Vil du gemme før du lukker filen ?"
+
+#. get the filename and name for the new menu
+#: menueditor/new_dialog.c:84 menueditor/new_dialog.c:96
+msgid "New menu"
+msgstr "Ny menu"
+
+#. Filename
+#: menueditor/new_dialog.c:109
+msgid "Filename:"
+msgstr "Filnavn:"
+
+#: menueditor/new_dialog.c:142
+msgid "All fields are required."
+msgstr "Alle felter er påkrævet."
+
+#: modules/menu/desktop-menu-dentry.c:536
+msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
+msgstr ""
+
+#: modules/menu/desktop-menuspec.c:62
+msgid "/Other"
+msgstr "/Andre"
+
+#: modules/menu/desktop-menuspec.c:361
+#, c-format
+msgid "%s: missing or unknown attribute for 'related' element\n"
+msgstr "%s: mangler eller ukendt attribut for 'relateret' element\n"
+
+#: modules/menu/desktop-menuspec.c:366
+#, c-format
+msgid "%s: unknown xml element %s\n"
+msgstr "%s: ukendt xml element %s\n"
+
+#: panel-plugin/desktop-menu-plugin.c:192
+#: panel-plugin/desktop-menu-plugin.c:515
+msgid "Xfce Menu"
+msgstr "Xfce Menu"
+
+#: panel-plugin/desktop-menu-plugin.c:355
+msgid "Select Icon"
+msgstr "Vælg Ikon"
+
+#: panel-plugin/desktop-menu-plugin.c:357
+msgid "Select Menu File"
+msgstr "Vælg menu fil"
+
+#: panel-plugin/desktop-menu-plugin.c:386
+msgid "Menu Files"
+msgstr "Menu filer"
+
+#: panel-plugin/desktop-menu-plugin.c:445
+msgid "_Menu file:"
+msgstr "Menu fil:"
+
+#: panel-plugin/desktop-menu-plugin.c:479
+msgid "_Button icon:"
+msgstr "Knap ikon:"
+
+#: panel-plugin/desktop-menu-plugin.c:504
+msgid "Show _icons in menu"
+msgstr "Vis ikoner i menuen"
+
+#: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
+#: settings/backdrop-mgr.c:553
+msgid "Backdrop"
+msgstr "Baggrund"
+
+#: settings/backdrop-mgr.c:100
+#, c-format
+msgid "Adding files from directory %s..."
+msgstr "Tilføj filer fra bibliotek %s..."
+
+#: settings/backdrop-mgr.c:160
+#, c-format
+msgid "Adding files from list %s..."
+msgstr "Tilføj filer fra listen %s..."
+
+#: settings/backdrop-mgr.c:215
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"Kunne ikke gemme fil %s: %s\n"
+"\n"
+"Vælg en anden lokation eller tryk afbryd for at kassere dine ændringer"
+
+#: settings/backdrop-mgr.c:502
+msgid "Select backdrop image file"
+msgstr "Vælg Baggrunds billed fil"
+
+#: settings/backdrop-mgr.c:559
+msgid "Adding multiple files..."
+msgstr "Tilføj flere filer..."
+
+#: settings/backdrop-mgr.c:637
+msgid "Choose backdrop list filename"
+msgstr "Vælg Baggrunds liste filnavn"
+
+#: settings/backdrop-mgr.c:646
+msgid "List Files"
+msgstr "List filer"
+
+#: settings/backdrop-mgr.c:709
+msgid "Backdrop List"
+msgstr "Baggrunds liste"
+
+#: settings/backdrop-mgr.c:726
+msgid "Image files"
+msgstr "Billed filer"
+
+#: settings/backdrop-mgr.c:736
+msgid "backdrops.list"
+msgstr "backdrops.list"
+
+#: settings/backdrop-mgr.c:742
+msgid "List file"
+msgstr "Liste fil"
+
+#: settings/backdrop-mgr.c:762
+msgid "Create backdrop list"
+msgstr "Lav Baggrunds liste"
+
+#: settings/backdrop-mgr.c:793
+msgid "Edit backdrop list"
+msgstr "Ændre Baggrunds liste"
+
+#. the dialog
+#: settings/backdrop_settings.c:86 settings/backdrop_settings.c:765
+#: src/xfce-desktop.c:597
+msgid "Desktop"
+msgstr "Desktop"
+
+#: settings/backdrop_settings.c:462
+msgid "Select backdrop image or list file"
+msgstr "Vælg Baggrunds billed eller filliste"
+
+#: settings/backdrop_settings.c:480
+msgid "List Files (*.list)"
+msgstr "List filer (*.list)"
+
+#: settings/backdrop_settings.c:565
+msgid "_Edit list..."
+msgstr "Ændre liste"
+
+#: settings/backdrop_settings.c:573
+msgid "_New list..."
+msgstr "Ny liste"
+
+#: settings/backdrop_settings.c:609
+msgid "S_tyle:"
+msgstr "Stil"
+
+#: settings/backdrop_settings.c:617
+msgid "Tiled"
+msgstr "Ved siden af"
+
+#: settings/backdrop_settings.c:624
+msgid "Centered"
+msgstr "Centreret"
+
+#: settings/backdrop_settings.c:631
+msgid "Scaled"
+msgstr "Skaleret"
+
+#: settings/backdrop_settings.c:638
+msgid "Stretched"
+msgstr "Udstrukket"
+
+#: settings/backdrop_settings.c:645
+msgid "Auto"
+msgstr "Auto"
+
+#: settings/backdrop_settings.c:711
+msgid "Adjust _Brightness:"
+msgstr "Juster lysstyrke"
+
+#. header
+#: settings/backdrop_settings.c:780
+msgid "Desktop Settings"
+msgstr "Desktop indstillinger"
+
+#: settings/backdrop_settings.c:808
+msgid "_Backdrops"
+msgstr "Baggrund"
+
+#. color settings frame
+#: settings/backdrop_settings.c:834
+msgid "Color"
+msgstr "Farve"
+
+#: settings/backdrop_settings.c:848
+msgid "_Color Style:"
+msgstr "Farve stil"
+
+#: settings/backdrop_settings.c:857
+msgid "Solid Color"
+msgstr "Solid farve"
+
+#: settings/backdrop_settings.c:864
+msgid "Horizontal Gradient"
+msgstr "Horisontalt farveovergang"
+
+#: settings/backdrop_settings.c:871
+msgid "Vertical Gradient"
+msgstr "Vertikal farveovergang"
+
+#: settings/backdrop_settings.c:892
+msgid "Fi_rst Color:"
+msgstr "Første farve"
+
+#: settings/backdrop_settings.c:913
+msgid "_Second Color:"
+msgstr "Anden farve"
+
+#. set color only checkbox
+#: settings/backdrop_settings.c:934
+msgid "Set color _only"
+msgstr "Set kun farve"
+
+#: settings/backdrop_settings.c:949
+msgid "Image"
+msgstr "Billed"
+
+#: settings/backdrop_settings.c:957
+msgid "Show _Image"
+msgstr "Vis billed"
+
+#: settings/backdrop_settings.c:979
+msgid "_File:"
+msgstr "Fil:"
+
+#. don't set backdrop checkbox
+#: settings/backdrop_settings.c:1016
+msgid "_Don't set backdrop"
+msgstr "Set ikke baggrund"
+
+#. add the single backdrop settings page to the main notebook
+#: settings/backdrop_settings.c:1039
+msgid "_Backdrop"
+msgstr "Baggrund"
+
+#: settings/backdrop_settings.c:1047 settings/backdrop_settings.c:1049
+#, c-format
+msgid "Screen %d"
+msgstr "Skærm %d"
+
+#. and if we have multiple screens, each with multiple monitors
+#: settings/backdrop_settings.c:1054
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Skærm %d, Monitor %d"
+
+#: settings/backdrop_settings.c:1068
+msgid "_Menu"
+msgstr "Menu"
+
+#: settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "Kunne ikke starte xfce4-menueditor: %s"
+
+#: settings/menu_settings.c:153
+msgid "Window List"
+msgstr "Vindues liste"
+
+#: settings/menu_settings.c:161
+msgid "Show window _list"
+msgstr "Vis vindues liste"
+
+#: settings/menu_settings.c:176
+msgid "Show _window icons"
+msgstr "Vis vindues ikoner"
+
+#: settings/menu_settings.c:189
+msgid "Desktop Menu"
+msgstr "Desktop menu"
+
+#: settings/menu_settings.c:197
+msgid "Show desktop _menu"
+msgstr "Vis desktop menu"
+
+#: settings/menu_settings.c:212
+msgid "Show _application icons"
+msgstr "Vis program ikoner"
+
+#: settings/menu_settings.c:223
+msgid "_Edit desktop menu"
+msgstr "Ændre desktop menu"
+
+#: src/main.c:262
+#, c-format
+msgid "%s: Unknown option: %s\n"
+msgstr "%s: Ukendt valg: %s\n"
+
+#: src/main.c:263
+msgid "Options are:\n"
+msgstr "Valgmuligheder: \n"
+
+#: src/main.c:264
+msgid "    -reload      Reload all settings, refresh image list\n"
+msgstr "    -genopfrisk	  Genopfrisk alle indstillinger, og billled liste\n"
+
+#: src/main.c:265
+msgid "    -menu        Pop up the menu (at the current mouse position)\n"
+msgstr "     -menu 	  Åben menuen (på musens possition)\n"
+
+#: src/main.c:266
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+"    -vinduesliste  Åben vindues listen (på musens possition)\n"
+
+#: src/menu.c:73
+#, c-format
+msgid ""
+"%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
+msgstr ""
+"%s: Kunne ikke initialicere menu modul. Højre kliks menuen vil ikke være tilgængelig.\n"
+
+#: src/windowlist.c:183
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>arbejdsområde %d</b>"
+
+#: src/windowlist.c:188
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr "<i>arbejdsområde %d</i>"
+
+#: src/windowlist.c:244 src/windowlist.c:247
+msgid "_Add Workspace"
+msgstr "Tilføj arbejdsområde"
+
+#: src/windowlist.c:254
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "Fjern arbejdsområde %d"
+
+#: src/windowlist.c:256
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "Fjern arbejdsområde '%s'"
