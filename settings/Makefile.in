@@ -176,7 +176,6 @@ target_alias = @target_alias@
 
 EXTRA_DIST = \
 	backdrop.png							\
-	workspaces.png							\
 	menu_settings.c							\
 	menu_settings.h
 
@@ -214,46 +213,14 @@ backdrop_settings_la_LIBADD = \
 	$(top_builddir)/common/libxfdesktop.la
 
 
-#
-# workspaces settings
-#
-workspacesdir = @XFCE_MCS_MANAGER_PLUGINSDIR@
-
-workspaces_LTLIBRARIES = workspaces_settings.la
-
-workspaces_settings_la_LDFLAGS = \
-	-avoid-version							\
-	-module
-
-
-workspaces_settings_la_SOURCES = \
-	workspaces-icon.h						\
-	workspaces_settings.c						\
-	workspaces_settings.h						\
-	settings_common.c						\
-	settings_common.h
-
-
-workspaces_settings_la_CFLAGS = \
-	-I$(top_srcdir)							\
-	-I$(top_srcdir)/common						\
-	@XFCE_MCS_MANAGER_CFLAGS@					\
-	-DLOCALEDIR=\"$(localedir)\"					\
-	-DDATADIR=\"$(datadir)\"
-
-
-workspaces_settings_la_LIBADD = \
-	$(top_builddir)/common/libxfdesktop.la
-
-
 # icons (left out: menu-icon.h)
-noinst_DATA = backdrop-icon.h workspaces-icon.h 
+noinst_DATA = backdrop-icon.h 
 subdir = settings
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
-LTLIBRARIES = $(backdrop_LTLIBRARIES) $(workspaces_LTLIBRARIES)
+LTLIBRARIES = $(backdrop_LTLIBRARIES)
 
 backdrop_settings_la_DEPENDENCIES = \
 	$(top_builddir)/common/libxfdesktop.la
@@ -262,12 +229,6 @@ am_backdrop_settings_la_OBJECTS = \
 	backdrop_settings_la-backdrop-mgr.lo \
 	backdrop_settings_la-settings_common.lo
 backdrop_settings_la_OBJECTS = $(am_backdrop_settings_la_OBJECTS)
-workspaces_settings_la_DEPENDENCIES = \
-	$(top_builddir)/common/libxfdesktop.la
-am_workspaces_settings_la_OBJECTS = \
-	workspaces_settings_la-workspaces_settings.lo \
-	workspaces_settings_la-settings_common.lo
-workspaces_settings_la_OBJECTS = $(am_workspaces_settings_la_OBJECTS)
 
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -275,9 +236,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = \
 @AMDEP_TRUE@	./$(DEPDIR)/backdrop_settings_la-backdrop-mgr.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/backdrop_settings_la-backdrop_settings.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/backdrop_settings_la-settings_common.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/workspaces_settings_la-settings_common.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/workspaces_settings_la-workspaces_settings.Plo
+@AMDEP_TRUE@	./$(DEPDIR)/backdrop_settings_la-settings_common.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
@@ -285,12 +244,11 @@ LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
 CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
-DIST_SOURCES = $(backdrop_settings_la_SOURCES) \
-	$(workspaces_settings_la_SOURCES)
+DIST_SOURCES = $(backdrop_settings_la_SOURCES)
 DATA = $(noinst_DATA)
 
 DIST_COMMON = Makefile.am Makefile.in
-SOURCES = $(backdrop_settings_la_SOURCES) $(workspaces_settings_la_SOURCES)
+SOURCES = $(backdrop_settings_la_SOURCES)
 
 all: all-am
 
@@ -329,38 +287,8 @@ clean-backdropLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
-workspacesLTLIBRARIES_INSTALL = $(INSTALL)
-install-workspacesLTLIBRARIES: $(workspaces_LTLIBRARIES)
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(workspacesdir)
-	@list='$(workspaces_LTLIBRARIES)'; for p in $$list; do \
-	  if test -f $$p; then \
-	    f="`echo $$p | sed -e 's|^.*/||'`"; \
-	    echo " $(LIBTOOL) --mode=install $(workspacesLTLIBRARIES_INSTALL) $(INSTALL_STRIP_FLAG) $$p $(DESTDIR)$(workspacesdir)/$$f"; \
-	    $(LIBTOOL) --mode=install $(workspacesLTLIBRARIES_INSTALL) $(INSTALL_STRIP_FLAG) $$p $(DESTDIR)$(workspacesdir)/$$f; \
-	  else :; fi; \
-	done
-
-uninstall-workspacesLTLIBRARIES:
-	@$(NORMAL_UNINSTALL)
-	@list='$(workspaces_LTLIBRARIES)'; for p in $$list; do \
-	    p="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(LIBTOOL) --mode=uninstall rm -f $(DESTDIR)$(workspacesdir)/$$p"; \
-	  $(LIBTOOL) --mode=uninstall rm -f $(DESTDIR)$(workspacesdir)/$$p; \
-	done
-
-clean-workspacesLTLIBRARIES:
-	-test -z "$(workspaces_LTLIBRARIES)" || rm -f $(workspaces_LTLIBRARIES)
-	@list='$(workspaces_LTLIBRARIES)'; for p in $$list; do \
-	  dir="`echo $$p | sed -e 's|/[^/]*$$||'`"; \
-	  test "$$dir" = "$$p" && dir=.; \
-	  echo "rm -f \"$${dir}/so_locations\""; \
-	  rm -f "$${dir}/so_locations"; \
-	done
 backdrop_settings.la: $(backdrop_settings_la_OBJECTS) $(backdrop_settings_la_DEPENDENCIES) 
 	$(LINK) -rpath $(backdropdir) $(backdrop_settings_la_LDFLAGS) $(backdrop_settings_la_OBJECTS) $(backdrop_settings_la_LIBADD) $(LIBS)
-workspaces_settings.la: $(workspaces_settings_la_OBJECTS) $(workspaces_settings_la_DEPENDENCIES) 
-	$(LINK) -rpath $(workspacesdir) $(workspaces_settings_la_LDFLAGS) $(workspaces_settings_la_OBJECTS) $(workspaces_settings_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT) core *.core
@@ -371,8 +299,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/backdrop_settings_la-backdrop-mgr.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/backdrop_settings_la-backdrop_settings.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/backdrop_settings_la-settings_common.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/workspaces_settings_la-settings_common.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/workspaces_settings_la-workspaces_settings.Plo@am__quote@
 
 distclean-depend:
 	-rm -rf ./$(DEPDIR)
@@ -509,72 +435,6 @@ backdrop_settings_la-settings_common.lo: settings_common.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(backdrop_settings_la_CFLAGS) $(CFLAGS) -c -o backdrop_settings_la-settings_common.lo `test -f 'settings_common.c' || echo '$(srcdir)/'`settings_common.c
 
-workspaces_settings_la-workspaces_settings.o: workspaces_settings.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_settings_la_CFLAGS) $(CFLAGS) -MT workspaces_settings_la-workspaces_settings.o -MD -MP -MF "$(DEPDIR)/workspaces_settings_la-workspaces_settings.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o workspaces_settings_la-workspaces_settings.o `test -f 'workspaces_settings.c' || echo '$(srcdir)/'`workspaces_settings.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_settings_la-workspaces_settings.Tpo" "$(DEPDIR)/workspaces_settings_la-workspaces_settings.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_settings_la-workspaces_settings.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='workspaces_settings.c' object='workspaces_settings_la-workspaces_settings.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_settings_la-workspaces_settings.Po' tmpdepfile='$(DEPDIR)/workspaces_settings_la-workspaces_settings.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_settings_la_CFLAGS) $(CFLAGS) -c -o workspaces_settings_la-workspaces_settings.o `test -f 'workspaces_settings.c' || echo '$(srcdir)/'`workspaces_settings.c
-
-workspaces_settings_la-workspaces_settings.obj: workspaces_settings.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_settings_la_CFLAGS) $(CFLAGS) -MT workspaces_settings_la-workspaces_settings.obj -MD -MP -MF "$(DEPDIR)/workspaces_settings_la-workspaces_settings.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o workspaces_settings_la-workspaces_settings.obj `if test -f 'workspaces_settings.c'; then $(CYGPATH_W) 'workspaces_settings.c'; else $(CYGPATH_W) '$(srcdir)/workspaces_settings.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_settings_la-workspaces_settings.Tpo" "$(DEPDIR)/workspaces_settings_la-workspaces_settings.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_settings_la-workspaces_settings.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='workspaces_settings.c' object='workspaces_settings_la-workspaces_settings.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_settings_la-workspaces_settings.Po' tmpdepfile='$(DEPDIR)/workspaces_settings_la-workspaces_settings.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_settings_la_CFLAGS) $(CFLAGS) -c -o workspaces_settings_la-workspaces_settings.obj `if test -f 'workspaces_settings.c'; then $(CYGPATH_W) 'workspaces_settings.c'; else $(CYGPATH_W) '$(srcdir)/workspaces_settings.c'; fi`
-
-workspaces_settings_la-workspaces_settings.lo: workspaces_settings.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_settings_la_CFLAGS) $(CFLAGS) -MT workspaces_settings_la-workspaces_settings.lo -MD -MP -MF "$(DEPDIR)/workspaces_settings_la-workspaces_settings.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o workspaces_settings_la-workspaces_settings.lo `test -f 'workspaces_settings.c' || echo '$(srcdir)/'`workspaces_settings.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_settings_la-workspaces_settings.Tpo" "$(DEPDIR)/workspaces_settings_la-workspaces_settings.Plo"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_settings_la-workspaces_settings.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='workspaces_settings.c' object='workspaces_settings_la-workspaces_settings.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_settings_la-workspaces_settings.Plo' tmpdepfile='$(DEPDIR)/workspaces_settings_la-workspaces_settings.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_settings_la_CFLAGS) $(CFLAGS) -c -o workspaces_settings_la-workspaces_settings.lo `test -f 'workspaces_settings.c' || echo '$(srcdir)/'`workspaces_settings.c
-
-workspaces_settings_la-settings_common.o: settings_common.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_settings_la_CFLAGS) $(CFLAGS) -MT workspaces_settings_la-settings_common.o -MD -MP -MF "$(DEPDIR)/workspaces_settings_la-settings_common.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o workspaces_settings_la-settings_common.o `test -f 'settings_common.c' || echo '$(srcdir)/'`settings_common.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_settings_la-settings_common.Tpo" "$(DEPDIR)/workspaces_settings_la-settings_common.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_settings_la-settings_common.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='settings_common.c' object='workspaces_settings_la-settings_common.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_settings_la-settings_common.Po' tmpdepfile='$(DEPDIR)/workspaces_settings_la-settings_common.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_settings_la_CFLAGS) $(CFLAGS) -c -o workspaces_settings_la-settings_common.o `test -f 'settings_common.c' || echo '$(srcdir)/'`settings_common.c
-
-workspaces_settings_la-settings_common.obj: settings_common.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_settings_la_CFLAGS) $(CFLAGS) -MT workspaces_settings_la-settings_common.obj -MD -MP -MF "$(DEPDIR)/workspaces_settings_la-settings_common.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o workspaces_settings_la-settings_common.obj `if test -f 'settings_common.c'; then $(CYGPATH_W) 'settings_common.c'; else $(CYGPATH_W) '$(srcdir)/settings_common.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_settings_la-settings_common.Tpo" "$(DEPDIR)/workspaces_settings_la-settings_common.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_settings_la-settings_common.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='settings_common.c' object='workspaces_settings_la-settings_common.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_settings_la-settings_common.Po' tmpdepfile='$(DEPDIR)/workspaces_settings_la-settings_common.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_settings_la_CFLAGS) $(CFLAGS) -c -o workspaces_settings_la-settings_common.obj `if test -f 'settings_common.c'; then $(CYGPATH_W) 'settings_common.c'; else $(CYGPATH_W) '$(srcdir)/settings_common.c'; fi`
-
-workspaces_settings_la-settings_common.lo: settings_common.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_settings_la_CFLAGS) $(CFLAGS) -MT workspaces_settings_la-settings_common.lo -MD -MP -MF "$(DEPDIR)/workspaces_settings_la-settings_common.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o workspaces_settings_la-settings_common.lo `test -f 'settings_common.c' || echo '$(srcdir)/'`settings_common.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/workspaces_settings_la-settings_common.Tpo" "$(DEPDIR)/workspaces_settings_la-settings_common.Plo"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/workspaces_settings_la-settings_common.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='settings_common.c' object='workspaces_settings_la-settings_common.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/workspaces_settings_la-settings_common.Plo' tmpdepfile='$(DEPDIR)/workspaces_settings_la-settings_common.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(workspaces_settings_la_CFLAGS) $(CFLAGS) -c -o workspaces_settings_la-settings_common.lo `test -f 'settings_common.c' || echo '$(srcdir)/'`settings_common.c
-
 mostlyclean-libtool:
 	-rm -f *.lo
 
@@ -675,7 +535,7 @@ check: check-am
 all-am: Makefile $(LTLIBRARIES) $(DATA)
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(backdropdir) $(DESTDIR)$(workspacesdir)
+	$(mkinstalldirs) $(DESTDIR)$(backdropdir)
 install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
@@ -703,7 +563,7 @@ maintainer-clean-generic:
 clean: clean-am
 
 clean-am: clean-backdropLTLIBRARIES clean-generic clean-libtool \
-	clean-workspacesLTLIBRARIES mostlyclean-am
+	mostlyclean-am
 
 distclean: distclean-am
 
@@ -718,8 +578,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-backdropLTLIBRARIES \
-	install-workspacesLTLIBRARIES
+install-data-am: install-backdropLTLIBRARIES
 
 install-exec-am:
 
@@ -746,32 +605,25 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-backdropLTLIBRARIES uninstall-info-am \
-	uninstall-workspacesLTLIBRARIES
+uninstall-am: uninstall-backdropLTLIBRARIES uninstall-info-am
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean \
-	clean-backdropLTLIBRARIES clean-generic clean-libtool \
-	clean-workspacesLTLIBRARIES ctags distclean distclean-compile \
-	distclean-depend distclean-generic distclean-libtool \
-	distclean-tags distdir dvi dvi-am info info-am install \
-	install-am install-backdropLTLIBRARIES install-data \
-	install-data-am install-exec install-exec-am install-info \
-	install-info-am install-man install-strip \
-	install-workspacesLTLIBRARIES installcheck installcheck-am \
-	installdirs maintainer-clean maintainer-clean-generic \
-	mostlyclean mostlyclean-compile mostlyclean-generic \
-	mostlyclean-libtool pdf pdf-am ps ps-am tags uninstall \
-	uninstall-am uninstall-backdropLTLIBRARIES uninstall-info-am \
-	uninstall-workspacesLTLIBRARIES
+	clean-backdropLTLIBRARIES clean-generic clean-libtool ctags \
+	distclean distclean-compile distclean-depend distclean-generic \
+	distclean-libtool distclean-tags distdir dvi dvi-am info \
+	info-am install install-am install-backdropLTLIBRARIES \
+	install-data install-data-am install-exec install-exec-am \
+	install-info install-info-am install-man install-strip \
+	installcheck installcheck-am installdirs maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-compile \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	tags uninstall uninstall-am uninstall-backdropLTLIBRARIES \
+	uninstall-info-am
 
 
 backdrop-icon.h: $(srcdir)/backdrop.png
 	gdk-pixbuf-csource --raw --build-list				\
 	backdrop_icon_data $(srcdir)/backdrop.png > backdrop-icon.h
-
-workspaces-icon.h: $(srcdir)/workspaces.png
-	gdk-pixbuf-csource --raw --build-list 				\
-	workspaces_icon_data $(srcdir)/workspaces.png > workspaces-icon.h
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

@@ -180,7 +180,6 @@ void do_edit(gpointer callback_data, guint callback_action, GtkWidget * widget)
 static gchar *
 get_menu_file(void)
 {
-    gchar buffer[PATH_MAX + 1];
     char *filename = NULL;
     char *path = NULL;
     const char *env;

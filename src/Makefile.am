@@ -7,9 +7,7 @@ xfdesktop_SOURCES =							\
 	menu.c								\
 	menu.h								\
 	settings.c							\
-	settings.h							\
-	workspaces.c							\
-	workspaces.h
+	settings.h							
 
 xfdesktop_CFLAGS = 							\
 	-I$(top_srcdir)							\

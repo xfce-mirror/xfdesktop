@@ -179,9 +179,7 @@ xfdesktop_SOURCES = \
 	menu.c								\
 	menu.h								\
 	settings.c							\
-	settings.h							\
-	workspaces.c							\
-	workspaces.h
+	settings.h							
 
 
 xfdesktop_CFLAGS = \
@@ -214,7 +212,7 @@ PROGRAMS = $(bin_PROGRAMS)
 
 am_xfdesktop_OBJECTS = xfdesktop-backdrop.$(OBJEXT) \
 	xfdesktop-main.$(OBJEXT) xfdesktop-menu.$(OBJEXT) \
-	xfdesktop-settings.$(OBJEXT) xfdesktop-workspaces.$(OBJEXT)
+	xfdesktop-settings.$(OBJEXT)
 xfdesktop_OBJECTS = $(am_xfdesktop_OBJECTS)
 xfdesktop_DEPENDENCIES = $(top_builddir)/common/libxfdesktop.la
 xfdesktop_LDFLAGS =
@@ -225,8 +223,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/xfdesktop-backdrop.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfdesktop-main.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfdesktop-menu.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/xfdesktop-settings.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/xfdesktop-workspaces.Po
+@AMDEP_TRUE@	./$(DEPDIR)/xfdesktop-settings.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
@@ -290,7 +287,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfdesktop-main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfdesktop-menu.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfdesktop-settings.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfdesktop-workspaces.Po@am__quote@
 
 distclean-depend:
 	-rm -rf ./$(DEPDIR)
@@ -459,39 +455,6 @@ xfdesktop-settings.lo: settings.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfdesktop-settings.Plo' tmpdepfile='$(DEPDIR)/xfdesktop-settings.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-settings.lo `test -f 'settings.c' || echo '$(srcdir)/'`settings.c
-
-xfdesktop-workspaces.o: workspaces.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -MT xfdesktop-workspaces.o -MD -MP -MF "$(DEPDIR)/xfdesktop-workspaces.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o xfdesktop-workspaces.o `test -f 'workspaces.c' || echo '$(srcdir)/'`workspaces.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfdesktop-workspaces.Tpo" "$(DEPDIR)/xfdesktop-workspaces.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfdesktop-workspaces.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='workspaces.c' object='xfdesktop-workspaces.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfdesktop-workspaces.Po' tmpdepfile='$(DEPDIR)/xfdesktop-workspaces.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-workspaces.o `test -f 'workspaces.c' || echo '$(srcdir)/'`workspaces.c
-
-xfdesktop-workspaces.obj: workspaces.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -MT xfdesktop-workspaces.obj -MD -MP -MF "$(DEPDIR)/xfdesktop-workspaces.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o xfdesktop-workspaces.obj `if test -f 'workspaces.c'; then $(CYGPATH_W) 'workspaces.c'; else $(CYGPATH_W) '$(srcdir)/workspaces.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfdesktop-workspaces.Tpo" "$(DEPDIR)/xfdesktop-workspaces.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfdesktop-workspaces.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='workspaces.c' object='xfdesktop-workspaces.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfdesktop-workspaces.Po' tmpdepfile='$(DEPDIR)/xfdesktop-workspaces.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-workspaces.obj `if test -f 'workspaces.c'; then $(CYGPATH_W) 'workspaces.c'; else $(CYGPATH_W) '$(srcdir)/workspaces.c'; fi`
-
-xfdesktop-workspaces.lo: workspaces.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -MT xfdesktop-workspaces.lo -MD -MP -MF "$(DEPDIR)/xfdesktop-workspaces.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o xfdesktop-workspaces.lo `test -f 'workspaces.c' || echo '$(srcdir)/'`workspaces.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfdesktop-workspaces.Tpo" "$(DEPDIR)/xfdesktop-workspaces.Plo"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/xfdesktop-workspaces.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='workspaces.c' object='xfdesktop-workspaces.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfdesktop-workspaces.Plo' tmpdepfile='$(DEPDIR)/xfdesktop-workspaces.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-workspaces.lo `test -f 'workspaces.c' || echo '$(srcdir)/'`workspaces.c
 
 mostlyclean-libtool:
 	-rm -f *.lo
