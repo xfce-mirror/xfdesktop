@@ -215,8 +215,8 @@ add_menu_cb (GtkWidget * widget, gpointer data)
         xmlSetProp (node, "type", "file");
         xmlSetProp (node, "src", gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
 
-        name = g_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
-        source = g_markup_printf_escaped (INCLUDE_PATH_FORMAT, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
+        name = menueditor_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
+        source = menueditor_markup_printf_escaped (INCLUDE_PATH_FORMAT, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
       }
 
       if (controls.menu_type == SYSTEM) {
@@ -231,8 +231,8 @@ add_menu_cb (GtkWidget * widget, gpointer data)
         if (gtk_option_menu_get_history (GTK_OPTION_MENU (controls.optionmenu_style)) != 0)
           xmlSetProp (node, "style", "multilevel");
 
-        name = g_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
-        source = g_markup_printf_escaped (INCLUDE_PATH_FORMAT, _("system"));
+        name = menueditor_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
+        source = menueditor_markup_printf_escaped (INCLUDE_PATH_FORMAT, _("system"));
       }
 
       /* Append entry in the tree */

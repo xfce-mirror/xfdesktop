@@ -132,11 +132,11 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
         hidden = TRUE;
 
       if (!xmlStrcmp (node_to_insert->name, "title")) {
-        str_name = g_markup_printf_escaped (TITLE_FORMAT, prop_name);
+        str_name = menueditor_markup_printf_escaped (TITLE_FORMAT, prop_name);
       }
       else if (!xmlStrcmp (node_to_insert->name, "app")) {
-        str_name = g_markup_printf_escaped (NAME_FORMAT, prop_name);
-        str_command = g_markup_printf_escaped (COMMAND_FORMAT, prop_cmd);
+        str_name = menueditor_markup_printf_escaped (NAME_FORMAT, prop_name);
+        str_command = menueditor_markup_printf_escaped (COMMAND_FORMAT, prop_cmd);
       }
       else if (!xmlStrcmp (node_to_insert->name, "menu")) {
         if (gtk_tree_path_is_descendant (path, path_to_insert)) {
@@ -147,22 +147,22 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
           return;
         }
 
-        str_name = g_markup_printf_escaped (MENU_FORMAT, prop_name);
+        str_name = menueditor_markup_printf_escaped (MENU_FORMAT, prop_name);
       }
       else if (!xmlStrcmp (node_to_insert->name, "separator")) {
-        str_name = g_markup_printf_escaped (SEPARATOR_FORMAT, _("--- separator ---"));
+        str_name = menueditor_markup_printf_escaped (SEPARATOR_FORMAT, _("--- separator ---"));
       }
       else if (!xmlStrcmp (node_to_insert->name, "include")) {
-        str_name = g_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
+        str_name = menueditor_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
 
         if (xmlHasProp (node_to_insert, "src"))
-          str_command = g_markup_printf_escaped (INCLUDE_PATH_FORMAT, prop_src);
+          str_command = menueditor_markup_printf_escaped (INCLUDE_PATH_FORMAT, prop_src);
         else
-          str_command = g_markup_printf_escaped (INCLUDE_PATH_FORMAT, _("system"));
+          str_command = menueditor_markup_printf_escaped (INCLUDE_PATH_FORMAT, _("system"));
       }
       else if (!xmlStrcmp (node_to_insert->name, "builtin")) {
-        str_name = g_markup_printf_escaped (NAME_FORMAT, prop_name);
-        str_command = g_markup_printf_escaped (COMMAND_FORMAT, prop_cmd);
+        str_name = menueditor_markup_printf_escaped (NAME_FORMAT, prop_name);
+        str_command = menueditor_markup_printf_escaped (COMMAND_FORMAT, prop_cmd);
       }
 
       /* move in the gtk and xml tree */
@@ -284,8 +284,8 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
 
       gtk_tree_store_insert_before (me->treestore, &iter, NULL, &iter_target);
 
-      name = g_markup_printf_escaped (NAME_FORMAT, value_name);
-      command = g_markup_printf_escaped (COMMAND_FORMAT, value_command);
+      name = menueditor_markup_printf_escaped (NAME_FORMAT, value_name);
+      command = menueditor_markup_printf_escaped (COMMAND_FORMAT, value_command);
 
       gtk_tree_store_set (me->treestore, &iter,
                           ICON_COLUMN, icon, NAME_COLUMN, name, COMMAND_COLUMN, command, POINTER_COLUMN, node, -1);
@@ -358,8 +358,8 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
 
       gtk_tree_store_insert_before (me->treestore, &iter, NULL, &iter_target);
 
-      name = g_markup_printf_escaped (NAME_FORMAT, value_name);
-      command = g_markup_printf_escaped (COMMAND_FORMAT, value_command);
+      name = menueditor_markup_printf_escaped (NAME_FORMAT, value_name);
+      command = menueditor_markup_printf_escaped (COMMAND_FORMAT, value_command);
 
       gtk_tree_store_set (me->treestore, &iter,
                           ICON_COLUMN, icon, NAME_COLUMN, name, COMMAND_COLUMN, command, POINTER_COLUMN, node, -1);

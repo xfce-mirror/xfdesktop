@@ -51,9 +51,7 @@
 /***********/
 /* Globals */
 /***********/
-#if !GLIB_CHECK_VERSION (2, 4, 0)
-char *g_markup_printf_escaped (const char *format, ...);
-#endif
+char *menueditor_markup_printf_escaped (const char *format, ...);
 
 void browse_command_cb (GtkWidget * widget, gpointer data);
 void browse_icon_cb (GtkWidget * widget, gpointer data);

@@ -69,7 +69,6 @@ static void delete_entry_cb (GtkWidget * widget, gpointer data);
 /* Main window */
 static void create_main_window (MenuEditor * me);
 
-#if !GLIB_CHECK_VERSION (2, 4, 0)
 /*******************************************************/
 /* Copy of g_markup_printf_escaped from the glib 2.4.8 */
 /*******************************************************/
@@ -158,7 +157,7 @@ find_conversion (const char *format, const char **after)
 }
 
 static char *
-g_markup_vprintf_escaped (const char *format, va_list args)
+menueditor_markup_vprintf_escaped (const char *format, va_list args)
 {
   GString *format1;
   GString *format2;
@@ -179,7 +178,7 @@ g_markup_vprintf_escaped (const char *format, va_list args)
    *
    * For instance, for:
    *
-   *  g_markup_printf_escaped ("%s ate %d apples", "Susan & Fred", 5);
+   *  menueditor_markup_printf_escaped ("%s ate %d apples", "Susan & Fred", 5);
    *
    * We form the two format strings "%sX%dX" and %sY%sY". The results
    * of formatting with those two strings are
@@ -277,19 +276,19 @@ cleanup:
 }
 
 char *
-g_markup_printf_escaped (const char *format, ...)
+menueditor_markup_printf_escaped (const char *format, ...)
 {
   char *result;
   va_list args;
 
-  DBG ("using the embedded version of g_markup_printf_escaped ()");
+  DBG ("using the embedded version of menueditor_markup_printf_escaped ()");
   va_start (args, format);
-  result = g_markup_vprintf_escaped (format, args);
+  result = menueditor_markup_vprintf_escaped (format, args);
   va_end (args);
 
   return result;
 }
-#endif
+
 /*****************************/
 /* Manage icon theme changes */
 /*****************************/
@@ -578,7 +577,7 @@ load_menu_in_tree (xmlNodePtr menu, GtkTreeIter * p, gpointer data)
 
     /* separator */
     if (!xmlStrcmp (menu->name, (xmlChar *) "separator")) {
-      name = g_markup_printf_escaped (SEPARATOR_FORMAT, _("--- separator ---"));
+      name = menueditor_markup_printf_escaped (SEPARATOR_FORMAT, _("--- separator ---"));
 
       gtk_tree_store_append (me->treestore, &c, p);
       gtk_tree_store_set (me->treestore, &c,
@@ -590,8 +589,8 @@ load_menu_in_tree (xmlNodePtr menu, GtkTreeIter * p, gpointer data)
       prop_name = xmlGetProp (menu, "name");
       prop_cmd = xmlGetProp (menu, "cmd");
 
-      name = g_markup_printf_escaped (NAME_FORMAT, prop_name);
-      cmd = g_markup_printf_escaped (COMMAND_FORMAT, prop_cmd);
+      name = menueditor_markup_printf_escaped (NAME_FORMAT, prop_name);
+      cmd = menueditor_markup_printf_escaped (COMMAND_FORMAT, prop_cmd);
 
       gtk_tree_store_append (me->treestore, &c, p);
       gtk_tree_store_set (me->treestore, &c,
@@ -603,7 +602,7 @@ load_menu_in_tree (xmlNodePtr menu, GtkTreeIter * p, gpointer data)
     if (!xmlStrcmp (menu->name, (xmlChar *) "menu")) {
       prop_name = xmlGetProp (menu, "name");
 
-      name = g_markup_printf_escaped (MENU_FORMAT, prop_name);
+      name = menueditor_markup_printf_escaped (MENU_FORMAT, prop_name);
 
       gtk_tree_store_append (me->treestore, &c, p);
       gtk_tree_store_set (me->treestore, &c,
@@ -617,12 +616,12 @@ load_menu_in_tree (xmlNodePtr menu, GtkTreeIter * p, gpointer data)
       prop_type = xmlGetProp (menu, "type");
       prop_src = xmlGetProp (menu, "src");
 
-      name = g_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
+      name = menueditor_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
 
       if (!xmlStrcmp (prop_type, (xmlChar *) "system"))
-        src = g_markup_printf_escaped (INCLUDE_PATH_FORMAT, _("system"));
+        src = menueditor_markup_printf_escaped (INCLUDE_PATH_FORMAT, _("system"));
       else
-        src = g_markup_printf_escaped (INCLUDE_PATH_FORMAT, prop_src);
+        src = menueditor_markup_printf_escaped (INCLUDE_PATH_FORMAT, prop_src);
 
       gtk_tree_store_append (me->treestore, &c, p);
       gtk_tree_store_set (me->treestore, &c,
@@ -635,8 +634,8 @@ load_menu_in_tree (xmlNodePtr menu, GtkTreeIter * p, gpointer data)
       prop_name = xmlGetProp (menu, "name");
       prop_cmd = xmlGetProp (menu, "cmd");
 
-      name = g_markup_printf_escaped (NAME_FORMAT, prop_name);
-      cmd = g_markup_printf_escaped (COMMAND_FORMAT, prop_cmd);
+      name = menueditor_markup_printf_escaped (NAME_FORMAT, prop_name);
+      cmd = menueditor_markup_printf_escaped (COMMAND_FORMAT, prop_cmd);
 
       gtk_tree_store_append (me->treestore, &c, p);
       gtk_tree_store_set (me->treestore, &c,
@@ -647,7 +646,7 @@ load_menu_in_tree (xmlNodePtr menu, GtkTreeIter * p, gpointer data)
     if (!xmlStrcmp (menu->name, (xmlChar *) "title")) {
       prop_name = xmlGetProp (menu, "name");
 
-      title = g_markup_printf_escaped (TITLE_FORMAT, prop_name);
+      title = menueditor_markup_printf_escaped (TITLE_FORMAT, prop_name);
 
       gtk_tree_store_append (me->treestore, &c, p);
       gtk_tree_store_set (me->treestore, &c,
