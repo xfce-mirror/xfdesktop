@@ -158,7 +158,7 @@ do_exec (gpointer callback_data, guint callback_action, GtkWidget * widget)
 	
 	switch(fork()) {
 		case -1:
-			g_error("%s: unable to fork()\n", PACKAGE);
+			g_warning("%s: unable to fork()\n", PACKAGE);
 			break;
 		
 		case 0:
@@ -166,7 +166,7 @@ do_exec (gpointer callback_data, guint callback_action, GtkWidget * widget)
 			setsid();
 #endif
 			if(execlp((char *)callback_data, (char *)callback_data))
-				g_error("%s: unable to spawn %s: %s\n", PACKAGE, (char *)callback_data, strerror(errno));
+				g_warning("%s: unable to spawn %s: %s\n", PACKAGE, (char *)callback_data, strerror(errno));
 			_exit(0);
 			break;
 		default:
@@ -182,7 +182,7 @@ do_term_exec (gpointer callback_data, guint callback_action,
 
 	switch(fork()) {
 		case -1:
-			g_error("%s: unable to fork()\n", PACKAGE);
+			g_warning("%s: unable to fork()\n", PACKAGE);
 			break;
 		
 		case 0:
@@ -190,7 +190,7 @@ do_term_exec (gpointer callback_data, guint callback_action,
 			setsid();
 #endif
 			if(execlp("xfterm4", "xfterm4", "-e", (char *)callback_data, NULL))
-				g_error("%s: unable to spawn %s: %s\n", PACKAGE, (char *)callback_data, strerror(errno));
+				g_warning("%s: unable to spawn %s: %s\n", PACKAGE, (char *)callback_data, strerror(errno));
 			_exit(0);
 			break;
 		default:
@@ -407,7 +407,7 @@ create_desktop_menu (void)
 	/* main source of menu data: the menu file */
 	menu_data = menu_file_parse (filename, NULL);
 	if(!menu_data) {
-		g_error("%s: Error parsing menu file %s\n", PACKAGE, filename);
+		g_warning("%s: Error parsing menu file %s\n", PACKAGE, filename);
 		return NULL;
 	}
         
