@@ -778,7 +778,7 @@ static gboolean button_press_event(GtkWidget * win, GdkEventButton * ev,
     static GtkWidget *menu3 = NULL;
 
     TRACE("dummy");
-    if(ev->button == 3 || (ev->button == 1 && ev->state & GDK_SHIFT_MASK))
+    if(ev->button == 2 || (ev->button == 1 && ev->state & GDK_SHIFT_MASK))
     {
         if(menu3)
         {
@@ -791,7 +791,7 @@ static gboolean button_press_event(GtkWidget * win, GdkEventButton * ev,
 
         return TRUE;
     }
-    else if(ev->button == 1)
+    else if(ev->button == 3)
     {
         menu1 = create_desktop_menu();
 
