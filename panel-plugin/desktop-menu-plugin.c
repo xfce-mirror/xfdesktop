@@ -19,6 +19,8 @@
  *
  *  Contributors:
  *    Jean-Francois Wauthy (option panel for choice between icon/text)
+ *    Jasper Huijsmans (menu placement function, toggle button, scaled image
+ *                      fixes)
  */
 
 #ifdef HAVE_CONFIG_H
@@ -63,7 +65,7 @@ dmp_set_size(Control *c, int size)
 	if(dmp->icon_file) {
 		pix = xfce_themed_icon_load(dmp->icon_file, s - border_width);
 		if(pix) {
-			xfce_scaled_image_set_from_pixbuf(XFCE_ICONBUTTON(dmp->image), pix);
+			xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), pix);
 			g_object_unref(G_OBJECT(pix));
 		}
 	}
@@ -258,7 +260,7 @@ dmp_read_config(Control *control, xmlNodePtr node)
 			if(dmp->icon_file)
 				g_free(dmp->icon_file);
 			dmp->icon_file = (gchar *)value;
-			xfce_scaled_image_set_from_pixbuf(XFCE_ICONBUTTON(dmp->image), pix);
+			xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), pix);
 			g_object_unref(G_OBJECT(pix));
 		} else
 			xmlFree(value);
@@ -267,7 +269,7 @@ dmp_read_config(Control *control, xmlNodePtr node)
 		pix = xfce_themed_icon_load(dmp->icon_file,
 				icon_size[settings.size] - 2*border_width);
 		if(pix) {
-			xfce_scaled_image_set_from_pixbuf(XFCE_ICONBUTTON(dmp->image), pix);
+			xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), pix);
 			g_object_unref(G_OBJECT(pix));
 		}
 	}
@@ -309,10 +311,10 @@ entry_focus_out_cb(GtkWidget *w, GdkEventFocus *evt, gpointer user_data)
 		pix = xfce_themed_icon_load(dmp->icon_file,
 				icon_size[settings.size] - 2*border_width);
 		if(pix) {
-			xfce_scaled_image_set_from_pixbuf(XFCE_ICONBUTTON(dmp->image), pix);
+			xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), pix);
 			g_object_unref(G_OBJECT(pix));
 		} else
-			xfce_scaled_image_set_from_pixbuf(XFCE_ICONBUTTON(dmp->image), NULL);
+			xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), NULL);
 	} else if(w == dmp->file_entry) {
 		if(dmp->menu_file)
 			g_free(dmp->menu_file);
