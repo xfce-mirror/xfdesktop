@@ -92,6 +92,8 @@ void about_cb(GtkWidget *widget, gpointer data)
   xfce_about_info_free(info);
 
   gtk_dialog_run(GTK_DIALOG(dialog));
+  
+  gtk_widget_destroy(dialog);
 
   g_object_unref(icon);
 }
