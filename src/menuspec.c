@@ -471,7 +471,13 @@ menuspec_get_path_multilevel(const gchar *categories)
 	return paths;
 }
 
-G_INLINE_FUNC void
+G_CONST_RETURN gchar *
+menuspec_cat_to_displayname(const gchar *category)
+{
+	return g_hash_table_lookup(cat_to_displayname, category);
+}
+
+void
 menuspec_path_free(GPtrArray *paths)
 {
 	if(!paths)

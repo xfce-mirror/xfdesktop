@@ -31,7 +31,8 @@ typedef enum {
 	MPATH_MULTI_UNIQUE
 } MenuPathType;
 
-GList *menu_dentry_parse_files(const char *basepath, MenuPathType pathtype);
+GList *menu_dentry_parse_files(const char *basepath, MenuPathType pathtype,
+		gboolean do_legacy);
 gboolean menu_dentry_need_update(void);
 
 #endif

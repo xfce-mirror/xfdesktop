@@ -54,20 +54,27 @@
 #define PATH_MAX 4096
 #endif
 
+static void menu_dentry_legacy_init();
+G_INLINE_FUNC gboolean menu_dentry_legacy_need_update();
+static GList *menu_dentry_legacy_add_all(GList *menu_data,
+		const gchar *basepath,MenuPathType pathtype);
+
 static const char *dentry_keywords [] = {
    "Name", "Comment", "Icon", "Hidden",
    "Categories", "OnlyShowIn", "Exec", "Terminal",
 };
 
 static char *dentry_paths[] = {
-	"/usr/local/share/applications/",
-	"/usr/share/applications/",
-	"/usr/share/applications/kde/",
-	"/usr/share/gnome/apps/",
+	"/usr/local/share/applications",
+	"/usr/share/applications",
+	"/opt/gnome/share/applications",
+	"/opt/gnome2/share/applications",
+	"/usr/share/applications/kde",
+	NULL
 };
 
 /* these .desktop files _should_ have an OnlyShowIn key, but don't.  i'm going
- * to match by the Exec field. */
+ * to match by the Exec field.  FIXME: move into hashtable? */
 static char *blacklist[] = {
 	"gnome-control-center",
 	"kmenuedit",
@@ -77,20 +84,36 @@ static char *blacklist[] = {
 	"kappfinder",
 	NULL
 };
-	
+
+static const gchar *legacy_dirs[] = {
+	"/usr/share/gnome/apps",
+	"/usr/local/share/gnome/apps",
+	"/opt/gnome/share/apps",
+	"/usr/share/applnk",
+	"/usr/local/share/applnk",
+	NULL
+};
+
+static time_t dentry_mtime = 0;
+static GHashTable *dir_to_cat = NULL;
+
+
 /* we don't want most command-line parameters if they're given. */
-static gchar *
-sanitise_dentry_cmd(gchar *cmd) {
+G_INLINE_FUNC gchar *
+_sanitise_dentry_cmd(gchar *cmd) {
 	gchar *p;
 	
+	/* this is the naive approach: if there's a '%' character in there, we're
+	 * going to strip all parameters.  this may not be the best thing to do,
+	 * but anything smarter is non-trivial and slow. */
 	if(cmd && strchr(cmd, '%') && (p=strchr(cmd, ' ')))
 		*p = 0;
 	
 	return cmd;
 }
 
-static gint
-get_path_depth(const gchar *path)
+G_INLINE_FUNC gint
+_get_path_depth(const gchar *path)
 {
 	gchar *p;
 	gint cnt = 0;
@@ -103,7 +126,7 @@ get_path_depth(const gchar *path)
 
 /* O(n^2).  dammit. */
 static void
-prune_generic_paths(GPtrArray *paths)
+_prune_generic_paths(GPtrArray *paths)
 {
 	gint i, j;
 	GPtrArray *arr = g_ptr_array_sized_new(5);
@@ -123,7 +146,7 @@ prune_generic_paths(GPtrArray *paths)
 }
 
 static GList *
-ensure_path(const gchar *basepath, const gchar *path, GList *menu_data)
+_ensure_path(const gchar *basepath, const gchar *path, GList *menu_data)
 {
 	MenuItem *mi;
 	gchar *newpath, *p;
@@ -132,7 +155,7 @@ ensure_path(const gchar *basepath, const gchar *path, GList *menu_data)
 	while((p=strchr(p+1, '/'))) {
 		gchar *tmppath = g_strdup(path);
 		*(tmppath+(p-path)) = 0;
-		menu_data = ensure_path(basepath, tmppath, menu_data);
+		menu_data = _ensure_path(basepath, tmppath, menu_data);
 		g_free(tmppath);
 	}
 	
@@ -158,14 +181,39 @@ ensure_path(const gchar *basepath, const gchar *path, GList *menu_data)
 	return menu_data;
 }
 
+static gchar *
+_build_path(const gchar *basepath, const gchar *path, const gchar *name)
+{
+	gchar *newpath = NULL;
+	
+	if(basepath) {
+		gboolean free_bp = FALSE;
+		
+		if(basepath[strlen(basepath)-1] == '/') {
+			basepath = g_strndup(basepath, strlen(basepath)-1);
+			free_bp = TRUE;
+		}
+		if(*path == '/')
+			newpath = g_strdup_printf ("%s%s/%s", basepath, path, name);
+		else
+			newpath = g_strdup_printf ("%s/%s/%s", basepath, path, name);
+		if(free_bp)
+			g_free((char *)basepath);
+	} else
+		newpath = g_strdup_printf ("%s/%s", path, name);
+	
+	return newpath;
+}
+
 static MenuItem *
-parse_dentry_attr (MenuItemType type, XfceDesktopEntry *de, 
+menu_dentry_parse_dentry_attr(MenuItemType type, XfceDesktopEntry *de, 
 		gchar const *basepath, gchar const *path)
 {
 	MenuItem *mi;
 	gchar *name = NULL;
 	gchar *cmd = NULL;
 	gchar *ifile = NULL;
+	gchar *p;
 	int term;
 	gint i;
 
@@ -197,25 +245,15 @@ parse_dentry_attr (MenuItemType type, XfceDesktopEntry *de,
 		g_free(tmp);
 	}
 	
+	while((p=strchr(name, '/')))
+		*p = ' ';
+	
 	term = 0;
 	xfce_desktop_entry_get_int (de, "Terminal", &term);
 	
 	xfce_desktop_entry_get_string (de, "Icon", TRUE, &ifile);
 	
-	if(basepath) {
-		gboolean free_bp = FALSE;
-		if(basepath[strlen(basepath)-1] == '/') {
-			basepath = g_strndup(basepath, strlen(basepath)-1);
-			free_bp = TRUE;
-		}
-		if(*path == '/')
-			mi->path = g_strdup_printf ("%s%s/%s", basepath, path, name);
-		else
-			mi->path = g_strdup_printf ("%s/%s/%s", basepath, path, name);
-		if(free_bp)
-			g_free((char *)basepath);
-	} else
-		mi->path = g_strdup_printf ("%s/%s", path, name);
+	mi->path = _build_path(basepath, path, name);
 	
 	if(g_hash_table_lookup(menu_entry_hash, mi->path)) {
 		g_free(mi->path);
@@ -234,7 +272,7 @@ parse_dentry_attr (MenuItemType type, XfceDesktopEntry *de,
 	}
 	
 	if (cmd)
-		mi->cmd = sanitise_dentry_cmd(cmd);
+		mi->cmd = _sanitise_dentry_cmd(cmd);
 		
 	if (term)
 		mi->term = TRUE;
@@ -247,95 +285,82 @@ parse_dentry_attr (MenuItemType type, XfceDesktopEntry *de,
 }
 
 static GList *
-parse_dentry (XfceDesktopEntry *de, GList *menu_data, const char *basepath,
-		MenuPathType pathtype)
+menu_dentry_parse_dentry (XfceDesktopEntry *de, GList *menu_data,
+		const gchar *basepath, MenuPathType pathtype, gboolean is_legacy,
+		const gchar *extra_cat)
 {
-	gchar *categories, *hidden;
+	gchar *categories = NULL, *hidden = NULL, *path = NULL, *onlyshowin = NULL;
 	gchar **catv;
 	MenuItem *mi;
 	gint i;
-	GPtrArray *newpaths;
-	gchar *name, *path;
+	GPtrArray *newpaths = NULL;
 
-	gchar *onlyshowin;
-	gchar *tmp;
-
-	categories = NULL;
-	hidden = NULL;
-	newpaths = NULL;
-	onlyshowin = NULL;
 	xfce_desktop_entry_get_string (de, "OnlyShowIn", FALSE, &onlyshowin);
-	if (onlyshowin) {
-		tmp = g_strdup_printf (";%s;", onlyshowin);
-		g_free (onlyshowin);
-		onlyshowin = tmp;
-		tmp = NULL;
-	}
-	
-	if (onlyshowin && !g_strrstr (onlyshowin, ";XFCE;")) {
-		g_free (onlyshowin);
-		return menu_data;
-	}
+	/* each element needs to be ';'-terminated.  i'm not working around
+	 * broken files. */
+	if(onlyshowin && !strstr(onlyshowin, "XFCE;"))
+		goto cleanup;
 
-	if (onlyshowin) {
-		g_free (onlyshowin);
-		onlyshowin = NULL;
-	}
-	
 	xfce_desktop_entry_get_string(de, "Hidden", FALSE, &hidden);
-	if(hidden && !g_strcasecmp(hidden, "true")) {
-		g_free(hidden);
-		return menu_data;
-	}
-	if (hidden)
-		g_free(hidden);
+	if(hidden && !g_strcasecmp(hidden, "true"))
+		goto cleanup;	
 
 	xfce_desktop_entry_get_string (de, "Categories", TRUE, &categories);
 	
-	/* hack: leave out items that look like they are KDE control panels */
-	if(categories && strstr(categories, ";X-KDE-")) {
-		g_free(categories);
-		return menu_data;
-	}
-	
-	if(pathtype==MPATH_SIMPLE || pathtype==MPATH_SIMPLE_UNIQUE)
-		newpaths = menuspec_get_path_simple(categories);
-	else if(pathtype==MPATH_MULTI || pathtype==MPATH_MULTI_UNIQUE)
-		newpaths = menuspec_get_path_multilevel(categories);
-	else
-		return NULL;
-	
-	if(!newpaths)
-		return NULL;
+	if(categories) {
+		/* hack: leave out items that look like they are KDE control panels */
+		if(strstr(categories, ";X-KDE-"))
+			goto cleanup;
+		
+		if(pathtype==MPATH_SIMPLE || pathtype==MPATH_SIMPLE_UNIQUE)
+			newpaths = menuspec_get_path_simple(categories);
+		else if(pathtype==MPATH_MULTI || pathtype==MPATH_MULTI_UNIQUE)
+			newpaths = menuspec_get_path_multilevel(categories);
+		
+		if(!newpaths)
+			goto cleanup;
+	} else if(is_legacy) {
+		newpaths = g_ptr_array_new();
+		g_ptr_array_add(newpaths, g_strdup(extra_cat));
+	} else
+		goto cleanup;
 	
 	if(pathtype == MPATH_SIMPLE_UNIQUE) {
 		/* grab first of the most general */
 		path = g_ptr_array_index(newpaths, 0);
-		menu_data = ensure_path(basepath, path, menu_data);
-		mi = parse_dentry_attr (MI_APP, de, basepath, path);
+		menu_data = _ensure_path(basepath, path, menu_data);
+		mi = menu_dentry_parse_dentry_attr(MI_APP, de, basepath, path);
 		if(mi)
-			menu_data = g_list_append (menu_data, mi);
+			menu_data = g_list_append(menu_data, mi);
 	} else if(pathtype == MPATH_MULTI_UNIQUE) {
 		/* grab most specific */
 		path = g_ptr_array_index(newpaths, newpaths->len-1);
-		menu_data = ensure_path(basepath, path, menu_data);
-		mi = parse_dentry_attr (MI_APP, de, basepath, path);
+		menu_data = _ensure_path(basepath, path, menu_data);
+		mi = menu_dentry_parse_dentry_attr(MI_APP, de, basepath, path);
 		if(mi)
-			menu_data = g_list_append (menu_data, mi);
+			menu_data = g_list_append(menu_data, mi);
 	} else {
 		for(i=0; i < newpaths->len; i++)
-			menu_data = ensure_path(basepath, g_ptr_array_index(newpaths, i),
+			menu_data = _ensure_path(basepath, g_ptr_array_index(newpaths, i),
 					menu_data);
 		if(pathtype == MPATH_MULTI)
-			prune_generic_paths(newpaths);
+			_prune_generic_paths(newpaths);
 		for(i=0; i < newpaths->len; i++) {
 			path = g_ptr_array_index(newpaths, i);
-			mi = parse_dentry_attr (MI_APP, de, basepath, path);
+			mi = menu_dentry_parse_dentry_attr(MI_APP, de, basepath, path);
 			if(mi)
-				menu_data = g_list_append (menu_data, mi);
+				menu_data = g_list_append(menu_data, mi);
 		}
 	}
 
+	cleanup:
+	
+	if(newpaths)
+		menuspec_path_free(newpaths);
+	if(onlyshowin)
+		g_free(onlyshowin);
+	if(hidden)
+		g_free(hidden);
 	if(categories)
 		g_free(categories);
 	
@@ -343,34 +368,38 @@ parse_dentry (XfceDesktopEntry *de, GList *menu_data, const char *basepath,
 }
 
 static GList *
-parse_dentry_file (char const *filename, GList *menu_data, const char *basepath,
-		MenuPathType pathtype) 
+menu_dentry_parse_dentry_file (const gchar *filename, GList *menu_data,
+		const gchar *basepath, MenuPathType pathtype) 
 {
 	XfceDesktopEntry *dentry;
 	dentry = xfce_desktop_entry_new (filename, dentry_keywords,
 			G_N_ELEMENTS (dentry_keywords));
 	xfce_desktop_entry_parse (dentry);
-	menu_data = parse_dentry (dentry, menu_data, basepath, pathtype);
+	menu_data = menu_dentry_parse_dentry(dentry, menu_data, basepath, pathtype,
+			FALSE, NULL);
 	g_object_unref (G_OBJECT (dentry));
 	return menu_data;
 }
 
 GList *
-menu_dentry_parse_files(const char *basepath, MenuPathType pathtype)
+menu_dentry_parse_files(const gchar *basepath, MenuPathType pathtype,
+		gboolean do_legacy)
 {
 	GList *menu_data = NULL;
-	gint	i;
+	gint i;
 	gchar const *pathd;
 	GDir *d;
 	gchar const *n;
 	gchar *s;
-	gchar *catfile = g_build_filename(XFCEDATADIR, "xfce-registered-categories.xml", NULL);
+	gchar *catfile = g_build_filename(XFCEDATADIR,
+			"xfce-registered-categories.xml", NULL);
 	const gchar *kdedir = g_getenv("KDEDIR");
-	gchar *kde_dentry_path = NULL;
+	gchar kde_dentry_path[PATH_MAX];
 	
 	menuspec_parse_categories(catfile);
 	g_free(catfile);
-	for(i = 0; i < G_N_ELEMENTS (dentry_paths); i++) {
+
+	for(i = 0; dentry_paths[i]; i++) {
 		pathd = dentry_paths[i];
 
 		d = g_dir_open (pathd, 0, NULL);
@@ -378,8 +407,8 @@ menu_dentry_parse_files(const char *basepath, MenuPathType pathtype)
 			while ((n = g_dir_read_name (d)) != NULL) {
 				if (g_str_has_suffix (n, ".desktop")) {
 					s = g_build_filename(pathd, n, NULL);
-					menu_data = parse_dentry_file (s, menu_data, basepath,
-							pathtype);
+					menu_data = menu_dentry_parse_dentry_file (s, menu_data,
+							basepath, pathtype);
 					g_free (s);
 				}
 			}
@@ -387,52 +416,178 @@ menu_dentry_parse_files(const char *basepath, MenuPathType pathtype)
 			d = NULL;
 		}
 	}
-	
-	if(kdedir)
-		kde_dentry_path = g_strdup_printf("%s/share/applications/kde", kdedir);
-	else
-		kde_dentry_path = g_strdup("/usr/share/applications/kde");
-	d = g_dir_open(kde_dentry_path, 0, NULL);
-	if(d) {
-		while((n=g_dir_read_name(d))) {
-			if(g_str_has_suffix(n, ".desktop")) {
-				s = g_build_filename(kde_dentry_path, n, NULL);
-				menu_data = parse_dentry_file(s, menu_data, basepath, pathtype);
-				g_free(s);
+
+	if(kdedir && strcmp(kdedir, "/usr")) {
+		g_snprintf(kde_dentry_path, PATH_MAX, "%s/share/applications/kde",
+				kdedir);
+		d = g_dir_open(kde_dentry_path, 0, NULL);
+		if(d) {
+			while((n=g_dir_read_name(d))) {
+				if(g_str_has_suffix(n, ".desktop")) {
+					s = g_build_filename(kde_dentry_path, n, NULL);
+					menu_data = menu_dentry_parse_dentry_file(s, menu_data,
+							basepath, pathtype);
+					g_free(s);
+				}
 			}
+			g_dir_close(d);
 		}
-		g_dir_close(d);
 	}
-	g_free(kde_dentry_path);
+
+	if(do_legacy) {
+		menu_dentry_legacy_init();
+		menu_data = menu_dentry_legacy_add_all(menu_data, basepath, pathtype);
+	}
 
 	menuspec_free();
-	
+
 	return menu_data;
 }
-
-static time_t
-dentry_mtimes[20] = {0};
 
 gboolean
 menu_dentry_need_update()
 {
 	gint i;
-	gboolean modified;
+	gboolean modified = FALSE;
 	struct stat st;
 	
-	modified = FALSE;
-	
-	for(i = 0; i < G_N_ELEMENTS (dentry_mtimes) && i < G_N_ELEMENTS (dentry_paths); i++) {
-		if(stat(dentry_paths[i], &st) == 0) {
-			if (st.st_mtime > dentry_mtimes[i]) {
-				dentry_mtimes[i] = st.st_mtime;
+	for(i=0; dentry_paths[i]; i++) {
+		if(!stat(dentry_paths[i], &st)) {
+			if(st.st_mtime > dentry_mtime) {
+				dentry_mtime = st.st_mtime;
 				modified = TRUE;
 			}
-		} else {
-			if (dentry_mtimes[i] > 0) {
-				/* was there, is gone now */
+		}
+	}
+	
+	modified = (menu_dentry_legacy_need_update() ? TRUE : modified);
+	
+	return (modified);
+}
+
+
+/*******************************************************************************
+ * legacy dir support.  bleh.
+ ******************************************************************************/
+
+static GList *
+menu_dentry_legacy_parse_dentry_file(const gchar *filename, GList *menu_data,
+		const gchar *catdir, const gchar *basepath, MenuPathType pathtype)
+{
+	XfceDesktopEntry *dentry;
+	gchar *category, *precat;
+
+	/* check for a conversion into a freedeskop-compliant category */
+	precat = g_hash_table_lookup(dir_to_cat, catdir);
+	if(!precat)
+		precat = (gchar *)catdir;
+	/* check for a conversion into a user-defined display name */
+	category = (gchar *)menuspec_cat_to_displayname(precat);
+	if(!category)
+		category = precat;
+	
+	dentry = xfce_desktop_entry_new(filename, dentry_keywords,
+			G_N_ELEMENTS(dentry_keywords));
+	xfce_desktop_entry_parse(dentry);
+	menu_data = menu_dentry_parse_dentry(dentry, menu_data, basepath, pathtype,
+			TRUE, category);
+	g_object_unref(G_OBJECT(dentry));
+	
+	return menu_data;
+}
+static GList *
+menu_dentry_legacy_process_dir(GList *menu_data, const gchar *basedir,
+		const gchar *catdir, const gchar *basepath, MenuPathType pathtype)
+{
+	GDir *dir = NULL;
+	gchar const *file;
+	gchar newbasedir[PATH_MAX], fullpath[PATH_MAX];
+	
+	if(!(dir = g_dir_open(basedir, 0, NULL)))
+		return menu_data;
+	
+	while((file = g_dir_read_name(dir))) {
+		g_snprintf(fullpath, PATH_MAX, "%s/%s", basedir, file);
+		if(g_file_test(fullpath, G_FILE_TEST_IS_DIR)) {
+			if(*file == '.' || strstr(file, "Settings")) /* FIXME: this is questionable */
+				continue;
+			/* i've made the decision to ignore categories with subdirectories.
+			 * that is, we're going to collapse them into their toplevel
+			 * category.  the subcategories i've seen are rather non-compliant,
+			 * and it's non-trivial and error-prone to convert them into
+			 * something compliant. */
+			g_snprintf(newbasedir, PATH_MAX, "%s/%s", basedir, file);
+			if(!catdir)
+				catdir = file;
+			menu_data = menu_dentry_legacy_process_dir(menu_data, newbasedir,
+					catdir, basepath, pathtype);
+		} else if(catdir && g_str_has_suffix(file, ".desktop")) {
+			/* we're also going to ignore category-less .desktop files. */
+			menu_data = menu_dentry_legacy_parse_dentry_file(fullpath,
+					menu_data, catdir, basepath, pathtype);
+		}
+	}
+	
+	g_dir_close(dir);	
+	
+	return menu_data;
+}
+
+static GList *
+menu_dentry_legacy_add_all(GList *menu_data, const gchar *basepath,
+		MenuPathType pathtype)
+{
+	gint i;
+	const gchar *kdedir = g_getenv("KDEDIR");
+	gchar extradir[PATH_MAX];
+	
+	for(i=0; legacy_dirs[i]; i++)
+		menu_data = menu_dentry_legacy_process_dir(menu_data, legacy_dirs[i],
+				NULL, basepath, pathtype);
+	
+	if(kdedir && strcmp(kdedir, "/usr")) {
+		g_snprintf(extradir, PATH_MAX, "%s/share/applnk", kdedir);
+		menu_data = menu_dentry_legacy_process_dir(menu_data, extradir, NULL,
+				basepath, pathtype);
+	}
+	
+	return menu_data;
+}
+
+static void
+menu_dentry_legacy_init()
+{
+	static gboolean is_inited = FALSE;
+	
+	if(is_inited)
+		return;
+	
+	dir_to_cat = g_hash_table_new(g_str_hash, g_str_equal);
+	g_hash_table_insert(dir_to_cat, "Internet", "Network");
+	g_hash_table_insert(dir_to_cat, "OpenOffice.org", "Office");
+	g_hash_table_insert(dir_to_cat, "Utilities", "Utility");
+	g_hash_table_insert(dir_to_cat, "Toys", "Utility");
+	g_hash_table_insert(dir_to_cat, "Multimedia", "AudioVideo");
+	g_hash_table_insert(dir_to_cat, "Applications", "Core");
+	
+	/* we'll keep this hashtable around for the lifetime of xfdesktop.  it'll
+	 * give us a slight performance boost during regenerations, and the memory
+	 * requirements should be of minimal impact. */
+	is_inited = TRUE;
+}
+
+gboolean
+menu_dentry_legacy_need_update()
+{
+	gint i;
+	gboolean modified = FALSE;
+	struct stat st;
+	
+	for(i=0; legacy_dirs[i]; i++) {
+		if(!stat(legacy_dirs[i], &st)) {
+			if(st.st_mtime > dentry_mtime) {
+				dentry_mtime = st.st_mtime;
 				modified = TRUE;
-				dentry_mtimes[i] = 0;
 			}
 		}
 	}

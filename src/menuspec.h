@@ -71,6 +71,8 @@ GPtrArray *menuspec_get_path_simple(const gchar *categories);
  */
 GPtrArray *menuspec_get_path_multilevel(const gchar *categories);
 
+G_CONST_RETURN gchar *menuspec_cat_to_displayname(const gchar *category);
+
 /**
  * @brief Frees menu path lists.
  *
@@ -80,6 +82,6 @@ GPtrArray *menuspec_get_path_multilevel(const gchar *categories);
  * @param paths A GPtrArray obtained from either menuspec_get_path_simple() or
  *              menuspec_get_path_multilevel().
  */
-void menuspec_path_free(GPtrArray *paths);
+G_INLINE_FUNC void menuspec_path_free(GPtrArray *paths);
 
 #endif /* ifdef __MENUSPEC_H__ */
