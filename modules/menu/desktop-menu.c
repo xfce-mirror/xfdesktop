@@ -150,7 +150,7 @@ _generate_menu(XfceDesktopMenu *desktop_menu, gboolean force)
 	return ret;
 }
 
-/* gtk_timeout handler */
+/* g_timeout handler */
 static gboolean
 _menu_check_update(gpointer data)
 {

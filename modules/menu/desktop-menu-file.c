@@ -82,7 +82,11 @@ enum {
 	MI_BUILTIN_QUIT = 1
 };
 
+#if 0
 G_MODULE_IMPORT void quit(gboolean force);
+#else
+static void (*builtin_quit)(gboolean) = NULL;
+#endif
 
 struct MenuFileParserState {
 	gboolean started;
@@ -114,7 +118,22 @@ _do_builtin(GtkMenuItem *mi, gpointer user_data)
 	
 	switch(type) {
 		case MI_BUILTIN_QUIT:
+#if 0
 			quit(FALSE);
+#else
+			if(!builtin_quit) {
+				GModule *parent_exe = g_module_open(NULL, 0);
+				if(parent_exe) {
+					if(g_module_symbol(parent_exe, "quit",
+							(gpointer)&builtin_quit))
+					{
+						builtin_quit(FALSE);
+					} else
+						g_warning("XfceDesktopMenu: Unable to find 'quit' symbol in parent executable.");
+				} else
+					g_warning("XfceDesktopMenu: Unable to dlopen() parent exe.");
+			}
+#endif
 			break;
 		default:
 			g_warning("XfceDesktopMenu: unknown builtin type (%d)\n", type);
@@ -699,7 +718,7 @@ desktop_menu_file_need_update(XfceDesktopMenu *desktop_menu)
 	
 	g_return_val_if_fail(desktop_menu != NULL, FALSE);
 	
-	if(!desktop_menu->menu)
+	if(!desktop_menu->menu || !desktop_menu->menufile_mtimes)
 		return TRUE;
 	
 	desktop_menu->modified = FALSE;

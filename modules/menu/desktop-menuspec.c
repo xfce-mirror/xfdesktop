@@ -493,12 +493,12 @@ desktop_menuspec_get_path_simple(const gchar *categories)
 
 	/* first check the toplevels */
 	for(i=0; cats[i]; i++) {
-		for(n=menu_tree->children; n; n=n->next) {
+		for(n = menu_tree->children; n; n = n->next) {
 			if(!strcmp(cats[i], (char *)n->data)) {
-				if (cat_to_displayname)
-                                        foundcat = g_hash_table_lookup(cat_to_displayname, n->data);
-                                else
-                                        foundcat = NULL;
+				if(cat_to_displayname)
+					foundcat = g_hash_table_lookup(cat_to_displayname, n->data);
+				else
+					foundcat = NULL;
 				if(!foundcat)
 					foundcat = n->data;
 				g_ptr_array_add(paths, g_build_path("/", foundcat, NULL));
