@@ -70,6 +70,8 @@ struct _menueditor_app{
   xmlDocPtr xml_menu_file;
   GtkWidget *main_window;
   GtkIconTheme *icon_theme;
+  /* AccelGroup */
+  GtkAccelGroup *accel_group;
   /* Tree */
   GtkWidget *treeview;
   GtkTreeStore *treestore;

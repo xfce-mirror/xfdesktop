@@ -617,6 +617,67 @@ void treeview_cursor_changed_cb(GtkTreeView *treeview,gpointer user_data)
 
 }
 
+gboolean treeview_button_pressed_cb(GtkTreeView *treeview, GdkEventButton *event, gpointer user_data)
+{
+  GtkTreePath *path;
+  GtkTreeIter iter;
+  GValue val = { 0, };
+  xmlNodePtr node;
+  GtkWidget* popup_menu;
+  GtkWidget* add_menuitem;
+  GtkWidget* addmenu_menuitem;
+  GtkWidget* del_menuitem;
+  GtkWidget* moveup_menuitem;
+  GtkWidget* movedown_menuitem;
+  GtkWidget* separator_menuitem;
+
+  if (!gtk_tree_view_get_path_at_pos(treeview, event->x, event->y, &path, NULL, NULL, NULL))
+    return FALSE;
+
+  gtk_tree_model_get_iter(GTK_TREE_MODEL(menueditor_app.treestore), &iter, path);
+  gtk_tree_model_get_value(GTK_TREE_MODEL(menueditor_app.treestore), &iter, POINTER_COLUMN, &val);
+  node = g_value_get_pointer(&val);
+
+  if(!xmlStrcmp(node->name, "separator"))
+    return FALSE;
+
+  /* Create the popup menu */
+  popup_menu = gtk_menu_new ();
+  
+  add_menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_ADD, menueditor_app.accel_group);
+  gtk_container_add (GTK_CONTAINER (popup_menu), add_menuitem);
+  addmenu_menuitem = gtk_image_menu_item_new_with_mnemonic (_("Add an external menu..."));
+  gtk_container_add (GTK_CONTAINER (popup_menu), addmenu_menuitem);
+  del_menuitem = gtk_image_menu_item_new_from_stock(GTK_STOCK_REMOVE, menueditor_app.accel_group);
+  gtk_container_add (GTK_CONTAINER (popup_menu), del_menuitem);
+  separator_menuitem = gtk_separator_menu_item_new();
+  gtk_container_add (GTK_CONTAINER (popup_menu), separator_menuitem);
+  moveup_menuitem = gtk_image_menu_item_new_from_stock (GTK_STOCK_GO_UP, menueditor_app.accel_group);
+  gtk_container_add (GTK_CONTAINER (popup_menu), moveup_menuitem);
+  movedown_menuitem = gtk_image_menu_item_new_from_stock (GTK_STOCK_GO_DOWN, menueditor_app.accel_group);
+  gtk_container_add (GTK_CONTAINER (popup_menu), movedown_menuitem);
+
+  g_signal_connect ((gpointer) add_menuitem, "activate",
+                    G_CALLBACK (add_entry_cb), NULL);
+  g_signal_connect ((gpointer) addmenu_menuitem, "activate",
+                    G_CALLBACK (add_menu_cb), NULL);
+  g_signal_connect ((gpointer) del_menuitem, "activate",
+                    G_CALLBACK (delete_entry_cb),NULL);
+  g_signal_connect ((gpointer) moveup_menuitem, "activate",
+                    G_CALLBACK (entry_up_cb), NULL);
+  g_signal_connect ((gpointer) movedown_menuitem, "activate",
+                    G_CALLBACK (entry_down_cb), NULL);
+
+  gtk_widget_show_all(popup_menu);
+
+  /* Right click draws the context menu */
+  if ((event->button == 3) && (event->type == GDK_BUTTON_PRESS))
+    gtk_menu_popup(GTK_MENU(popup_menu), NULL, NULL, NULL, NULL,
+		   event->button, gtk_get_current_event_time());
+  
+  return FALSE;
+}
+
 
 void delete_entry_cb(GtkWidget *widget, gpointer data)
 {
@@ -710,7 +771,6 @@ void visible_column_toggled_cb(GtkCellRendererToggle *toggle,
 void create_main_window()
 {
   GtkWidget *main_vbox;
-  GtkAccelGroup *accel_group;
 
   GtkWidget* tmp_toolbar_icon;
   /* Treeview */
@@ -731,7 +791,7 @@ void create_main_window()
   GtkTargetEntry gte[] = {{"XFCE_MENU_ENTRY", GTK_TARGET_SAME_WIDGET, 0},
 			  {"text/plain",0, 1}};
 
-  accel_group = gtk_accel_group_new ();
+  menueditor_app.accel_group = gtk_accel_group_new ();
   
   /* Window */
   menueditor_app.main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
@@ -769,21 +829,21 @@ void create_main_window()
   menueditor_app.file_menu.menu = gtk_menu_new ();
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (menueditor_app.file_menu.menu_item), menueditor_app.file_menu.menu);
 
-  menueditor_app.file_menu.new = gtk_image_menu_item_new_from_stock(GTK_STOCK_NEW, accel_group);
+  menueditor_app.file_menu.new = gtk_image_menu_item_new_from_stock(GTK_STOCK_NEW, menueditor_app.accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menueditor_app.file_menu.new);
-  menueditor_app.file_menu.open = gtk_image_menu_item_new_from_stock(GTK_STOCK_OPEN, accel_group);
+  menueditor_app.file_menu.open = gtk_image_menu_item_new_from_stock(GTK_STOCK_OPEN, menueditor_app.accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menueditor_app.file_menu.open);
   menueditor_app.file_menu.open_default = gtk_image_menu_item_new_with_mnemonic(_("Open default menu"));
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menueditor_app.file_menu.open_default);
-  menueditor_app.file_menu.save = gtk_image_menu_item_new_from_stock(GTK_STOCK_SAVE, accel_group);
+  menueditor_app.file_menu.save = gtk_image_menu_item_new_from_stock(GTK_STOCK_SAVE, menueditor_app.accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menueditor_app.file_menu.save);
-  menueditor_app.file_menu.saveas = gtk_image_menu_item_new_from_stock(GTK_STOCK_SAVE_AS, accel_group);
+  menueditor_app.file_menu.saveas = gtk_image_menu_item_new_from_stock(GTK_STOCK_SAVE_AS, menueditor_app.accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menueditor_app.file_menu.saveas);
-  menueditor_app.file_menu.close = gtk_image_menu_item_new_from_stock(GTK_STOCK_CLOSE, accel_group);
+  menueditor_app.file_menu.close = gtk_image_menu_item_new_from_stock(GTK_STOCK_CLOSE, menueditor_app.accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menueditor_app.file_menu.close);
   menu_separator = gtk_separator_menu_item_new();
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menu_separator);
-  menueditor_app.file_menu.exit = gtk_image_menu_item_new_from_stock (GTK_STOCK_QUIT, accel_group);
+  menueditor_app.file_menu.exit = gtk_image_menu_item_new_from_stock (GTK_STOCK_QUIT, menueditor_app.accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menueditor_app.file_menu.exit);
 
   /* Edit menu */
@@ -791,17 +851,17 @@ void create_main_window()
   gtk_container_add (GTK_CONTAINER (menueditor_app.main_menubar), menueditor_app.edit_menu.menu_item);
   menueditor_app.edit_menu.menu = gtk_menu_new ();
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (menueditor_app.edit_menu.menu_item), menueditor_app.edit_menu.menu);
-  menueditor_app.edit_menu.add = gtk_image_menu_item_new_from_stock (GTK_STOCK_ADD, accel_group);
+  menueditor_app.edit_menu.add = gtk_image_menu_item_new_from_stock (GTK_STOCK_ADD, menueditor_app.accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menueditor_app.edit_menu.add);
   menueditor_app.edit_menu.add_menu = gtk_image_menu_item_new_with_mnemonic (_("Add an external menu..."));
   gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menueditor_app.edit_menu.add_menu);
-  menueditor_app.edit_menu.del = gtk_image_menu_item_new_from_stock (GTK_STOCK_REMOVE, accel_group);
+  menueditor_app.edit_menu.del = gtk_image_menu_item_new_from_stock (GTK_STOCK_REMOVE, menueditor_app.accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menueditor_app.edit_menu.del);
   menu_separator = gtk_separator_menu_item_new();
   gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menu_separator);
-  menueditor_app.edit_menu.up = gtk_image_menu_item_new_from_stock (GTK_STOCK_GO_UP, accel_group);
+  menueditor_app.edit_menu.up = gtk_image_menu_item_new_from_stock (GTK_STOCK_GO_UP, menueditor_app.accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menueditor_app.edit_menu.up);
-  menueditor_app.edit_menu.down = gtk_image_menu_item_new_from_stock (GTK_STOCK_GO_DOWN, accel_group);
+  menueditor_app.edit_menu.down = gtk_image_menu_item_new_from_stock (GTK_STOCK_GO_DOWN, menueditor_app.accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menueditor_app.edit_menu.down);
 
   /* Help menu */
@@ -896,7 +956,6 @@ void create_main_window()
 
   name_column = gtk_tree_view_column_new ();
 
-  icon_cell = gtk_cell_renderer_pixbuf_new();
   gtk_tree_view_column_pack_start (name_column, icon_cell, FALSE);
   gtk_tree_view_column_set_attributes (name_column, icon_cell,
 				       "pixbuf", ICON_COLUMN,
@@ -938,47 +997,46 @@ void create_main_window()
   gtk_box_pack_start (GTK_BOX (main_vbox), statusbar, FALSE, FALSE, 0);
 
   /* Connect signals */
-  g_signal_connect ((gpointer) menueditor_app.file_menu.new, "activate",
-                    G_CALLBACK (new_menu_cb),
-                    NULL);
-  g_signal_connect ((gpointer) menueditor_app.file_menu.open, "activate",
-                    G_CALLBACK (menu_open_cb),
-                    NULL);
-  g_signal_connect ((gpointer) menueditor_app.file_menu.open_default, "activate",
-                    G_CALLBACK (menu_open_default_cb),
-                    NULL);
-  g_signal_connect ((gpointer) menueditor_app.file_menu.save, "activate",
-                    G_CALLBACK (menu_save_cb),
-                    NULL);
-  g_signal_connect ((gpointer) menueditor_app.file_menu.saveas, "activate",
-                    G_CALLBACK (menu_saveas_cb),
-                    NULL);
-  g_signal_connect ((gpointer) menueditor_app.file_menu.close, "activate",
-                    G_CALLBACK (close_menu_cb),
-                    NULL);
-  g_signal_connect ((gpointer) menueditor_app.file_menu.exit, "activate",
-                    G_CALLBACK (confirm_quit_cb),
-                    NULL);
 
-  g_signal_connect ((gpointer) menueditor_app.edit_menu.add_menu, "activate",
-                    G_CALLBACK (add_menu_cb),
-                    NULL);
+  /* For the menu */
+  g_signal_connect ((gpointer) menueditor_app.file_menu.new, "activate",
+                    G_CALLBACK (new_menu_cb), NULL);
+  g_signal_connect ((gpointer) menueditor_app.file_menu.open, "activate",
+                    G_CALLBACK (menu_open_cb), NULL);
+  g_signal_connect ((gpointer) menueditor_app.file_menu.open_default, "activate",
+                    G_CALLBACK (menu_open_default_cb), NULL);
+  g_signal_connect ((gpointer) menueditor_app.file_menu.save, "activate",
+                    G_CALLBACK (menu_save_cb), NULL);
+  g_signal_connect ((gpointer) menueditor_app.file_menu.saveas, "activate",
+                    G_CALLBACK (menu_saveas_cb), NULL);
+  g_signal_connect ((gpointer) menueditor_app.file_menu.close, "activate",
+                    G_CALLBACK (close_menu_cb), NULL);
+  g_signal_connect ((gpointer) menueditor_app.file_menu.exit, "activate",
+                    G_CALLBACK (confirm_quit_cb), NULL);
+
   g_signal_connect ((gpointer) menueditor_app.edit_menu.add, "activate",
-                    G_CALLBACK (add_entry_cb),
-                    NULL);
+                    G_CALLBACK (add_entry_cb), NULL);
+  g_signal_connect ((gpointer) menueditor_app.edit_menu.add_menu, "activate",
+                    G_CALLBACK (add_menu_cb), NULL);
   g_signal_connect ((gpointer) menueditor_app.edit_menu.del, "activate",
-                    G_CALLBACK (delete_entry_cb),
-                    NULL);
+                    G_CALLBACK (delete_entry_cb),NULL);
   g_signal_connect ((gpointer) menueditor_app.edit_menu.up, "activate",
-                    G_CALLBACK (entry_up_cb),
-                    NULL);
+                    G_CALLBACK (entry_up_cb), NULL);
   g_signal_connect ((gpointer) menueditor_app.edit_menu.down, "activate",
-                    G_CALLBACK (entry_down_cb),
-                    NULL);
+                    G_CALLBACK (entry_down_cb), NULL);
 
   g_signal_connect ((gpointer) menueditor_app.help_menu.about, "activate",
-                    G_CALLBACK (about_cb),
-                    NULL);
+                    G_CALLBACK (about_cb), NULL);
+
+  /* For the treeview */
+  g_signal_connect (G_OBJECT(menueditor_app.treeview), "button-press-event",
+		    G_CALLBACK (treeview_button_pressed_cb), NULL);
+  g_signal_connect (G_OBJECT(menueditor_app.treeview), "row-activated",
+		    G_CALLBACK (treeview_activate_cb), NULL);
+  g_signal_connect (G_OBJECT(menueditor_app.treeview), "cursor-changed",
+		    G_CALLBACK (treeview_cursor_changed_cb), NULL);
+  g_signal_connect (G_OBJECT(hidden_cell), "toggled",
+		    G_CALLBACK (visible_column_toggled_cb), NULL);
 
   /* Set up dnd */
   gtk_tree_view_enable_model_drag_source(GTK_TREE_VIEW(menueditor_app.treeview),
@@ -996,19 +1054,9 @@ void create_main_window()
 		   NULL);
 
   /* Selection in the treeview */
-  g_signal_connect (G_OBJECT(menueditor_app.treeview), "row-activated",
-                    G_CALLBACK (treeview_activate_cb),
-		    NULL);
-  g_signal_connect (G_OBJECT(menueditor_app.treeview), "cursor-changed",
-                    G_CALLBACK (treeview_cursor_changed_cb),
-		    NULL);
-  /* Change the hidden property */
-  g_signal_connect (G_OBJECT(hidden_cell), "toggled",
-                    G_CALLBACK (visible_column_toggled_cb),
-		    NULL);
 
   /* Add accelerators */
-  gtk_window_add_accel_group (GTK_WINDOW (menueditor_app.main_window), accel_group);
+  gtk_window_add_accel_group (GTK_WINDOW (menueditor_app.main_window), menueditor_app.accel_group);
 
   /* Deactivate the widgets not usable */
   gtk_widget_set_sensitive(menueditor_app.file_menu.save,FALSE);
