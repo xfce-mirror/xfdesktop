@@ -203,33 +203,15 @@ void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon){
 /*************/
 void not_yet_cb(GtkWidget *widget, gpointer data)
 {
-  GtkWidget *dialog = gtk_message_dialog_new (GTK_WINDOW(menueditor_app.main_window),
-					      GTK_DIALOG_DESTROY_WITH_PARENT,
-					      GTK_MESSAGE_WARNING,
-					      GTK_BUTTONS_OK,
-					      _("Not yet implemented!"));
-  gtk_dialog_run (GTK_DIALOG (dialog));
-  gtk_widget_destroy (dialog);
-  
+  xfce_info ( _("Not yet implemented!"));
 }
 
 /* Ask confirmation when exiting program */
 gboolean confirm_quit_cb(GtkWidget *widget,gpointer data)
 {
-  GtkWidget *dialog;
-
-  if(menueditor_app.menu_modified==TRUE){
-    dialog = gtk_message_dialog_new(GTK_WINDOW(menueditor_app.main_window),
-				    GTK_DIALOG_DESTROY_WITH_PARENT,
-				    GTK_MESSAGE_QUESTION,
-				    GTK_BUTTONS_YES_NO,
-				    _("Do you want to save before closing the file?"));
-    
-   
-    if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES)
+  if(menueditor_app.menu_modified == TRUE){
+    if(xfce_confirm ( _("Do you want to save before closing the menu ?"), GTK_STOCK_YES, NULL))
       menu_save_cb(widget,data);
-        
-    gtk_widget_destroy(dialog);
   }
 
   xmlFreeDoc(menueditor_app.xml_menu_file); 
@@ -400,20 +382,9 @@ void menu_open_default_cb(GtkWidget *widget, gpointer data)
   gchar *home_menu;
 
   /* Check if there is no other file opened */
-  if(menueditor_app.xml_menu_file != NULL){
-    if(menueditor_app.menu_modified==TRUE){
-      GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(menueditor_app.main_window),
-				      GTK_DIALOG_DESTROY_WITH_PARENT,
-				      GTK_MESSAGE_QUESTION,
-				      GTK_BUTTONS_YES_NO,
-				      _("Do you want to save before closing the file?"));
-      
-      if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES)
-	menu_save_cb(widget,NULL);
-
-      gtk_widget_destroy(dialog);
-    }
-
+  if(menueditor_app.xml_menu_file != NULL && menueditor_app.menu_modified){
+    if(xfce_confirm ( _("Do you want to save before closing the file?"), GTK_STOCK_YES, NULL))
+      menu_save_cb(widget,NULL);
   }
 
   if(menueditor_app.xml_menu_file != NULL){
@@ -453,20 +424,9 @@ void menu_open_cb(GtkWidget *widget, gpointer data)
   GtkWidget *filesel_dialog;
 
   /* Check if there is no other file opened */
-  if(menueditor_app.xml_menu_file != NULL){
-    if(menueditor_app.menu_modified==TRUE){
-      GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(menueditor_app.main_window),
-				      GTK_DIALOG_DESTROY_WITH_PARENT,
-				      GTK_MESSAGE_QUESTION,
-				      GTK_BUTTONS_YES_NO,
-				      _("Do you want to save before closing the file?"));
-      
-      if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES)
-	menu_save_cb(widget, NULL);
-
-      gtk_widget_destroy(dialog);
-    }
-
+  if(menueditor_app.xml_menu_file != NULL && menueditor_app.menu_modified){
+    if(xfce_confirm ( _("Do you want to save before closing the file?"), GTK_STOCK_YES, NULL))
+      menu_save_cb(widget, NULL);
   }
 
   filesel_dialog = xfce_file_chooser_new (_("Open menu file"), GTK_WINDOW (menueditor_app.main_window),
@@ -591,16 +551,8 @@ void menu_saveas_cb(GtkWidget *widget, gpointer data)
 void close_menu_cb(GtkWidget *widget, gpointer data)
 {
   if(menueditor_app.menu_modified==TRUE){
-    GtkWidget *dialog = gtk_message_dialog_new(GTK_WINDOW(menueditor_app.main_window),
-					     GTK_DIALOG_DESTROY_WITH_PARENT,
-					     GTK_MESSAGE_QUESTION,
-					     GTK_BUTTONS_YES_NO,
-					     _("Do you want to save before closing the file?"));
-
-    if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES)
+    if(xfce_confirm ( _("Do you want to save before closing the file ?"), GTK_STOCK_YES, NULL))
       menu_save_cb(widget,data);
-
-    gtk_widget_destroy(dialog);
   }
 
   xmlFreeDoc(menueditor_app.xml_menu_file);
@@ -1161,8 +1113,8 @@ void open_menu_file(gchar *menu_file)
   xmlNodePtr root;
   xmlNodePtr menu_entry;
 
-  if(menu_file==NULL){
-    g_warning ("%s: open_menu_file(): menu_file==NULL", PACKAGE);
+  if(menu_file == NULL){
+    g_warning ("%s: open_menu_file(): menu_file == NULL", PACKAGE);
     return;
   }
 
@@ -1173,17 +1125,10 @@ void open_menu_file(gchar *menu_file)
 
   /* Check if the format is correct */
   if(menueditor_app.xml_menu_file==NULL){
-    GtkWidget *dialog = gtk_message_dialog_new (GTK_WINDOW(menueditor_app.main_window),
-						GTK_DIALOG_DESTROY_WITH_PARENT,
-						GTK_MESSAGE_ERROR,
-						GTK_BUTTONS_OK,
-						_("Corrupted file or incorrect file format !"));
+    xfce_err ( _("Corrupted file or incorrect file format !"));
 #ifdef DEBUG
-    g_printerr(_("Corrupted file or incorrect file format !\n"));;
+    g_warning ( "%s\n", _("Corrupted file or incorrect file format !"));
 #endif
-    
-    gtk_dialog_run (GTK_DIALOG (dialog));
-    gtk_widget_destroy (dialog);
     
     xmlFreeDoc(menueditor_app.xml_menu_file);
     menueditor_app.xml_menu_file=NULL;
@@ -1193,17 +1138,10 @@ void open_menu_file(gchar *menu_file)
   root=xmlDocGetRootElement(menueditor_app.xml_menu_file);
 
   if(root==NULL){
-    GtkWidget *dialog = gtk_message_dialog_new (GTK_WINDOW(menueditor_app.main_window),
-						GTK_DIALOG_DESTROY_WITH_PARENT,
-						GTK_MESSAGE_ERROR,
-						GTK_BUTTONS_OK,
-						_("No root element in file !"));
+    xfce_err ( _("No root element in file !"));
 #ifdef DEBUG
-    g_printerr(_("No root element in file !\n"));;
+    g_warning ( "%s\n", _("No root element in file !"));
 #endif
-    
-    gtk_dialog_run (GTK_DIALOG (dialog));
-    gtk_widget_destroy (dialog);
     
     xmlFreeDoc(menueditor_app.xml_menu_file);
     menueditor_app.xml_menu_file=NULL;
@@ -1211,17 +1149,10 @@ void open_menu_file(gchar *menu_file)
   }
   
   if(xmlStrcmp(root->name,(xmlChar*)"xfdesktop-menu")){
-    GtkWidget *dialog = gtk_message_dialog_new (GTK_WINDOW(menueditor_app.main_window),
-						GTK_DIALOG_DESTROY_WITH_PARENT,
-						GTK_MESSAGE_ERROR,
-						GTK_BUTTONS_OK,
-						_("Bad datafile format !"));
+    xfce_err ( _("Bad datafile format !"));
 #ifdef DEBUG
-    g_printerr(_("Bad datafile format !\n"));;
+    g_warning ( "%s\n", _("Bad datafile format !"));
 #endif
-    
-    gtk_dialog_run (GTK_DIALOG (dialog));
-    gtk_widget_destroy (dialog);
     
     xmlFreeDoc(menueditor_app.xml_menu_file);
     menueditor_app.xml_menu_file=NULL;
