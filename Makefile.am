@@ -34,31 +34,35 @@ confdir = $(sysconfdir)/xdg/xfce4/desktop
 
 conf_DATA = 								\
 	menu.xml 							\
-	menu.xml.az 							\
-	menu.xml.ca 							\
 	menu.xml.de 							\
 	menu.xml.es							\
 	menu.xml.et							\
-	menu.xml.eu							\
-	menu.xml.fa_IR 							\
 	menu.xml.fi							\
 	menu.xml.fr 							\
 	menu.xml.he							\
-	menu.xml.hu 							\
 	menu.xml.ja							\
 	menu.xml.ko							\
-	menu.xml.ms  							\
 	menu.xml.nl  							\
 	menu.xml.pt_BR							\
 	menu.xml.ro							\
 	menu.xml.ru							\
 	menu.xml.sk							\
-	menu.xml.ta 							\
-	menu.xml.tr 							\
 	menu.xml.uk							\
 	menu.xml.vi 							\
-	menu.xml.zh_CN							\
 	menu.xml.zh_TW
+
+# the following have not been updated from the old 4.0.x menu
+#
+#	menu.xml.az 							
+#	menu.xml.ca 							
+#	menu.xml.eu							
+#	menu.xml.fa_IR 							
+#	menu.xml.hu 							
+#	menu.xml.ms  							
+#	menu.xml.ta 							
+#	menu.xml.tr 							
+#	menu.xml.zh_CN							
+
 
 manpagedir = $(mandir)/man1
 manpage_DATA = xfdesktop.1
