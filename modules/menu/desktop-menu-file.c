@@ -592,7 +592,7 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 	if(!file_contents && !g_file_get_contents(filename, &file_contents, NULL, &err)) {
 		if(err) {
 			g_warning("XfceDesktopMenu: Unable to read menu file '%s' (%d): %s\n",
-					err->code, err->message);
+					filename, err->code, err->message);
 			g_error_free(err);
 		}
 		goto cleanup;

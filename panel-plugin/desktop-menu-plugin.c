@@ -379,7 +379,6 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 	GtkWidget *vbox, *hbox;
 	GtkWidget *label, *image, *filebutton, *chk;
 	GtkSizeGroup *sg;
-	const gchar *menu_filename;
 	
 	vbox = gtk_vbox_new(FALSE, BORDER/2);
 	gtk_widget_show(vbox);
