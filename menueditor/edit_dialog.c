@@ -73,7 +73,7 @@ void edit_selection(GtkTreeSelection *selection)
   GtkWidget *checkbutton_snotify = NULL;
   GtkWidget *checkbutton_term = NULL;
 
-  int response;
+  gint response;
 
   xmlChar *prop_name = NULL;
   xmlChar *prop_cmd = NULL;
@@ -434,7 +434,13 @@ void edit_selection(GtkTreeSelection *selection)
       }
 
       /* set the new icon if there is one otherwise use the dummy one */
-      if((icon_entry && strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0) || !icon_entry){
+      if( (icon_entry && strlen (gtk_entry_get_text (GTK_ENTRY (icon_entry))) != 0) ){
+	icon = xfce_themed_icon_load ( (gchar*) gtk_entry_get_text (GTK_ENTRY (icon_entry)), ICON_SIZE);
+	if(!icon)
+	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
+
+	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
+      }else{
 	xmlAttrPtr icon_prop;
 	
 	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
@@ -442,12 +448,6 @@ void edit_selection(GtkTreeSelection *selection)
 	/* Remove the property in the xml tree */
 	icon_prop = xmlHasProp(node, "icon");
 	xmlRemoveProp(icon_prop);
-      }else if(icon_entry){
-	icon = xfce_themed_icon_load((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
-	if(!icon)
-	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
-
-	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
       }
 
       if(!xmlStrcmp(node->name,(xmlChar*)"app")){

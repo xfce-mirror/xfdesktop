@@ -69,7 +69,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
   GtkWidget *entry_source;
   GtkWidget *button_browse;
 
-  int response;
+  gint response;
 
   gchar *header_text;
 
@@ -174,7 +174,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
       GdkPixbuf *icon = NULL;
       xmlNodePtr node = NULL, root_node = NULL, selection_node = NULL;
       GtkTreeIter iter, selection_iter, parent;
-      GtkTreeModel *tree_model=GTK_TREE_MODEL(menueditor_app.treestore);
+      GtkTreeModel *tree_model = GTK_TREE_MODEL(menueditor_app.treestore);
       GValue val = { 0, };
       gboolean ret_selection, is_menu = FALSE;
       gchar *name = NULL;
