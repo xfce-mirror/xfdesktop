@@ -731,7 +731,7 @@ list_mgr_dialog (const char *title, GtkWidget * parent,
 
     mainvbox = GTK_DIALOG (dialog)->vbox;
 
-    header = create_header (NULL, title);
+    header = xfce_create_header (NULL, title);
     gtk_widget_show (header);
     gtk_box_pack_start (GTK_BOX (mainvbox), header, FALSE, TRUE, 0);
     gtk_widget_set_size_request (header, -1, 50);

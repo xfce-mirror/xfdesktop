@@ -872,7 +872,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
     mainvbox = GTK_DIALOG (bd->dialog)->vbox;
 
     /* header */
-    header = create_header (bd->plugin->icon, _("Backdrop Settings"));
+    header = xfce_create_header (bd->plugin->icon, _("Backdrop Settings"));
     gtk_box_pack_start (GTK_BOX (mainvbox), header, FALSE, TRUE, 0);
 
     add_spacer (GTK_BOX (mainvbox));
