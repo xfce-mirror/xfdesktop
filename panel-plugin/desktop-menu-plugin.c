@@ -27,6 +27,14 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+
+#ifndef PATH_MAX
+#define PATH_MAX 4096
+#endif
+
 #include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfcegui4/xfce_scaled_image.h>
@@ -56,6 +64,39 @@ typedef struct _DMPlugin {
     GtkWidget *icons_chk;
     GtkTooltips *tooltip;  /* needed? */
 } DMPlugin;
+
+
+
+#if GTK_CHECK_VERSION(2, 6, 0)
+/* util */
+GtkWidget *
+xfutil_custom_button_new(const gchar *text, const gchar *icon)
+{
+    GtkWidget *btn, *hbox, *img, *lbl;
+    
+    hbox = gtk_hbox_new(FALSE, 4);
+    gtk_widget_show(hbox);
+    
+    img = gtk_image_new_from_stock(icon, GTK_ICON_SIZE_BUTTON);
+    if(img) {
+        if(gtk_image_get_storage_type(GTK_IMAGE(img)) != GTK_IMAGE_EMPTY) {
+            gtk_widget_show(img);
+            gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, FALSE, 0);
+        } else
+            gtk_widget_destroy(img);
+    }
+    
+    lbl = gtk_label_new_with_mnemonic(text);
+    gtk_widget_show(lbl);
+    gtk_box_pack_start(GTK_BOX(hbox), lbl, FALSE, FALSE, 0);
+    
+    btn = gtk_button_new();
+    gtk_container_add(GTK_CONTAINER(btn), hbox);
+    gtk_label_set_mnemonic_widget(GTK_LABEL(lbl), btn);
+    
+    return btn;
+}
+#endif
 
 static gchar *
 dmp_get_real_path(const gchar *raw_path)
@@ -577,11 +618,36 @@ dmp_button_title_focus_out_cb(GtkWidget *w, GdkEventFocus *evt,
 }
 
 static void
+dmp_edit_menu_clicked_cb(GtkWidget *w, gpointer user_data)
+{
+    DMPlugin *dmp = user_data;
+    GError *err = NULL;
+    const gchar *menu_file;
+    gchar cmd[PATH_MAX];
+    
+    g_return_if_fail(dmp && dmp->desktop_menu);
+    
+    menu_file = xfce_desktop_menu_get_menu_file(dmp->desktop_menu);
+    if(!menu_file)
+        return;
+    
+    g_snprintf(cmd, PATH_MAX, "%s/xfce4-menueditor \"%s\"", BINDIR, menu_file);
+    if(xfce_exec(cmd, FALSE, FALSE, NULL))
+        return;
+    
+    g_snprintf(cmd, PATH_MAX, "xfce4-menueditor \"%s\"", menu_file);
+    if(!xfce_exec(cmd, FALSE, FALSE, &err)) {
+        xfce_warn(_("Unable to launch xfce4-menueditor: %s"), err->message);
+        g_error_free(err);
+    }
+}
+
+static void
 dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 {
     DMPlugin *dmp = ctrl->data;
-    GtkWidget *topvbox, *vbox, *hbox;
-    GtkWidget *label, *image, *filebutton, *chk, *radio, *frame, *spacer, *entry;
+    GtkWidget *topvbox, *vbox, *hbox, *frame, *spacer;
+    GtkWidget *label, *image, *filebutton, *chk, *radio, *entry, *btn;
     
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
@@ -669,6 +735,25 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
             G_CALLBACK(filebutton_click_cb), dmp);
     
     gtk_widget_set_sensitive(hbox, !dmp->use_default_menu);
+    
+    spacer = gtk_alignment_new(0.5, 0.5, 1, 1);
+    gtk_widget_show(spacer);
+    gtk_box_pack_start(GTK_BOX(vbox), spacer, FALSE, FALSE, 0);
+    gtk_widget_set_size_request(spacer, -1, 4);
+    
+    hbox = gtk_hbox_new(FALSE, BORDER/2);
+    gtk_widget_show(hbox);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+    
+#if GTK_CHECK_VERSION(2, 6, 0)
+    btn = xfutil_custom_button_new(_("_Edit Menu"), GTK_STOCK_EDIT);
+#else
+    btn = gtk_button_new_with_mnemonic(_("_Edit Menu"));
+#endif
+    gtk_widget_show(btn);
+    gtk_box_pack_end(GTK_BOX(hbox), btn, FALSE, FALSE, 0);
+    g_signal_connect(G_OBJECT(btn), "clicked",
+            G_CALLBACK(dmp_edit_menu_clicked_cb), dmp);
     
     frame = xfce_framebox_new(_("Icons"), TRUE);
     gtk_widget_show(frame);
