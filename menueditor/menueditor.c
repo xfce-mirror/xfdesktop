@@ -857,7 +857,8 @@ void create_main_window()
 
   /* DND */
   GtkTargetEntry gte[] = {{"XFCE_MENU_ENTRY", GTK_TARGET_SAME_WIDGET, 0},
-			  {"text/plain",0, 1}};
+			  {"text/plain",0, 1},
+			  {"application/x-desktop", 0, 2}};
 
   menueditor_app.accel_group = gtk_accel_group_new ();
   
@@ -1123,10 +1124,10 @@ void create_main_window()
 
   /* Set up dnd */
   gtk_tree_view_enable_model_drag_source(GTK_TREE_VIEW(menueditor_app.treeview),
-					 GDK_BUTTON1_MASK, gte, 2, 
+					 GDK_BUTTON1_MASK, gte, 3, 
 					 GDK_ACTION_MOVE);
   gtk_tree_view_enable_model_drag_dest(GTK_TREE_VIEW(menueditor_app.treeview),
-				       gte, 2,
+				       gte, 3,
 				       GDK_ACTION_COPY);
 
   g_signal_connect(G_OBJECT(menueditor_app.treeview), "drag-data-received",

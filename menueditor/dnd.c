@@ -248,7 +248,6 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
                                 &iter_target, POINTER_COLUMN, &val);
       node_target = g_value_get_pointer(&val);
 
-      printf("%s\n",filename);
       de = xfce_desktop_entry_new (filename, cat, 3);
       g_return_if_fail (xfce_desktop_entry_parse(de));
       g_return_if_fail (xfce_desktop_entry_get_string (de,
@@ -310,6 +309,10 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
     g_free(filename);
 
     gtk_drag_finish(dc, TRUE, (dc->action == GDK_ACTION_COPY), t);
+  }else if (sd->target == gdk_atom_intern("application/x-desktop", FALSE) && sd->data) {
+    printf("Not yet supported !!!\n");
+    printf("%s\n",sd->data);
+    gtk_drag_finish(dc, TRUE, (dc->action == GDK_ACTION_COPY), t);
   }
- 
+
 }
