@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2004-08-06 23:16+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Jasper Huijsmans <huysmans@users.sourceforge.net\n"
+"PO-Revision-Date: 2004-08-25 09:20+0200\n"
+"Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: menueditor/about_dialog.c:36
 msgid "A menu editor for Xfce4"
-msgstr ""
+msgstr "Een menu editor voor Xfce4"
 
 #: menueditor/about_dialog.c:45
 msgid "Core developer"
@@ -34,34 +34,33 @@ msgstr ""
 
 #: menueditor/add_dialog.c:131 menueditor/add_dialog.c:146
 msgid "Add menu entry"
-msgstr ""
+msgstr "Menu optie toevoegen"
 
 #. Type
 #: menueditor/add_dialog.c:152 menueditor/add_menu_dialog.c:96
 #: menueditor/edit_dialog.c:148
 msgid "Type:"
-msgstr ""
+msgstr "Type:"
 
 #: menueditor/add_dialog.c:155
 msgid "Launcher"
-msgstr ""
+msgstr "Starter"
 
 #: menueditor/add_dialog.c:160
 msgid "Submenu"
-msgstr ""
+msgstr "Submenu"
 
 #: menueditor/add_dialog.c:165
 msgid "Separator"
-msgstr ""
+msgstr "Scheidingslijn"
 
 #: menueditor/add_dialog.c:170
-#, fuzzy
 msgid "Title"
-msgstr "_Naast elkaar"
+msgstr "Titel"
 
 #: menueditor/add_dialog.c:175
 msgid "Quit"
-msgstr ""
+msgstr "Afsluiten"
 
 #. Name
 #: menueditor/add_dialog.c:190 menueditor/edit_dialog.c:260
@@ -71,62 +70,61 @@ msgstr "Naam:"
 
 #: menueditor/add_dialog.c:200 menueditor/edit_dialog.c:261
 msgid "Command:"
-msgstr ""
+msgstr "Commando:"
 
 #: menueditor/add_dialog.c:216 menueditor/edit_dialog.c:252
 #: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
 #: menueditor/edit_dialog.c:390
 msgid "Icon:"
-msgstr ""
+msgstr "Pictogram:"
 
 #. Start Notify check button
 #: menueditor/add_dialog.c:232 menueditor/edit_dialog.c:272
 msgid "Use startup _notification"
-msgstr ""
+msgstr "Opstartnotificatie gebruiken"
 
 #. Run in terminal check button
 #: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:273
 msgid "Run in _terminal"
-msgstr ""
+msgstr "Uitvoeren in _terminal"
 
 #: menueditor/add_dialog.c:281 menueditor/edit_dialog.c:459
 msgid "The command doesn't exist !"
-msgstr ""
+msgstr "Kon commando niet vinden!"
 
 #: menueditor/add_dialog.c:287
 msgid "All fields must be filled to add an item."
-msgstr ""
+msgstr "Alle vleden moeten worden ingevuld om een optie toe te voegen"
 
 #: menueditor/add_dialog.c:295
 msgid "The 'Name' field is required."
-msgstr ""
+msgstr "Het 'Naam' veld is verplicht."
 
 #: menueditor/add_dialog.c:349 menueditor/dnd.c:150
 #: menueditor/menueditor.c:274 menueditor/move.c:90 menueditor/move.c:246
 msgid "--- separator ---"
-msgstr ""
+msgstr "--- scheidingslijn ---"
 
 #: menueditor/add_dialog.c:374 menueditor/edit_dialog.c:496
 msgid "quit"
-msgstr ""
+msgstr "afsluiten"
 
 #: menueditor/add_menu_dialog.c:76 menueditor/add_menu_dialog.c:87
 #: menueditor/menueditor.c:705
 msgid "Add an external menu"
-msgstr ""
+msgstr "Een extern menu toevoegen"
 
 #: menueditor/add_menu_dialog.c:101 menueditor/edit_dialog.c:151
-#, fuzzy
 msgid "File"
-msgstr "Bestand:"
+msgstr "Bestand"
 
 #: menueditor/add_menu_dialog.c:106 menueditor/edit_dialog.c:156
 msgid "System"
-msgstr ""
+msgstr "Systeem"
 
 #: menueditor/add_menu_dialog.c:121 menueditor/edit_dialog.c:171
 msgid "Source:"
-msgstr ""
+msgstr "Bron:"
 
 #. Style
 #: menueditor/add_menu_dialog.c:134 menueditor/edit_dialog.c:184
@@ -135,191 +133,188 @@ msgstr "Stijl:"
 
 #: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:187
 msgid "Simple"
-msgstr ""
+msgstr "Simpel"
 
 #: menueditor/add_menu_dialog.c:140 menueditor/edit_dialog.c:190
 msgid "Multilevel"
-msgstr ""
+msgstr "Multilevel"
 
 #. Unique
 #: menueditor/add_menu_dialog.c:153 menueditor/edit_dialog.c:203
 msgid "_Unique entries only"
-msgstr ""
+msgstr "Enkel _unieke opties"
 
 #: menueditor/add_menu_dialog.c:206
 msgid "The 'Source' field is required."
-msgstr ""
+msgstr "Het 'Bron' veld is verplicht."
 
 #: menueditor/add_menu_dialog.c:216 menueditor/add_menu_dialog.c:233
 #: menueditor/dnd.c:152 menueditor/edit_dialog.c:510
 #: menueditor/edit_dialog.c:523 menueditor/menueditor.c:322
 #: menueditor/move.c:120 menueditor/move.c:276
 msgid "--- include ---"
-msgstr ""
+msgstr "--- extern menu ---"
 
 #: menueditor/add_menu_dialog.c:234 menueditor/dnd.c:157
 #: menueditor/edit_dialog.c:524 menueditor/menueditor.c:325
 #: menueditor/move.c:123 menueditor/move.c:279
 msgid "system"
-msgstr ""
+msgstr "systeem"
 
 #. Create dialog for editing
 #: menueditor/edit_dialog.c:100 menueditor/edit_dialog.c:113
 msgid "Edit menu entry"
-msgstr ""
+msgstr "Menu optie bewerken"
 
 #: menueditor/edit_dialog.c:131
 msgid "Separators cannot be edited"
-msgstr ""
+msgstr "Scheidingslijnen kunnen niet bewerkt worden"
 
 #. Name
 #: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:102
-#, fuzzy
 msgid "Title:"
-msgstr "Bestand:"
+msgstr "Titel:"
 
 #: menueditor/menueditor.c:152
 msgid "Select command"
-msgstr ""
+msgstr "Commando selecteren"
 
 #: menueditor/menueditor.c:177
 msgid "Select icon"
-msgstr ""
+msgstr "Pictogram selectern"
 
 #: menueditor/menueditor.c:201
 msgid "Not yet implemented!"
-msgstr ""
+msgstr "Nog niet geïmplementeerd!"
 
 #: menueditor/menueditor.c:212 menueditor/menueditor.c:594
 msgid "Do you want to save before closing the menu ?"
-msgstr ""
+msgstr "Wilt u de wijzigingen opslaan?"
 
 #: menueditor/menueditor.c:213
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr ""
+msgstr "Wilt u de wijzigingen opslaan?"
 
 #: menueditor/menueditor.c:214
 msgid "Forget modifications"
-msgstr ""
+msgstr "Wijzigingen negeren"
 
 #: menueditor/menueditor.c:398 menueditor/menueditor.c:453
 #: menueditor/menueditor.c:592
 msgid "Question"
-msgstr ""
+msgstr "Vraag"
 
 #: menueditor/menueditor.c:400
 msgid "Do you want to save before opening the default menu ?"
-msgstr ""
+msgstr "Wilt u de wijzigingen opslaan voor het openen van het standaard menu?"
 
 #: menueditor/menueditor.c:402 menueditor/menueditor.c:457
 #: menueditor/menueditor.c:596
 msgid "Ignore modifications"
-msgstr ""
+msgstr "Wijzigingen negeren"
 
 #: menueditor/menueditor.c:455
 msgid "Do you want to save before opening an other menu ?"
-msgstr ""
+msgstr "Wilt u de wijzigingen opslaan?"
 
 #: menueditor/menueditor.c:468
 msgid "Open menu file"
-msgstr ""
+msgstr "Open menubestand"
 
 #: menueditor/menueditor.c:506 menueditor/menueditor.c:517
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
-msgstr ""
+msgstr "Kan niet schrijven naar %s:\n"
+"%s"
 
 #: menueditor/menueditor.c:541
 msgid "Save as..."
-msgstr ""
+msgstr "Opslaan als..."
 
 #: menueditor/menueditor.c:699
-#, fuzzy
 msgid "Edit"
-msgstr "Lijst aanpassen"
+msgstr "Bewerken"
 
 #. File menu
 #: menueditor/menueditor.c:886
-#, fuzzy
 msgid "_File"
-msgstr "Bestand:"
+msgstr "_Bestand"
 
 #: menueditor/menueditor.c:895
 msgid "Open default menu"
-msgstr ""
+msgstr "Standaard menu openen"
 
 #. Edit menu
 #: menueditor/menueditor.c:909
 msgid "_Edit"
-msgstr ""
+msgstr "Be_werken"
 
 #: menueditor/menueditor.c:915
 msgid "Add an external menu..."
-msgstr ""
+msgstr "Extern menu toevoegen..."
 
 #. Help menu
 #: menueditor/menueditor.c:927
 msgid "_Help"
-msgstr ""
+msgstr "_Help"
 
 #: menueditor/menueditor.c:932
 msgid "_About..."
-msgstr ""
+msgstr "_Info..."
 
 #: menueditor/menueditor.c:946
 msgid "Create a new Xfce4 menu file"
-msgstr ""
+msgstr "Nieuw Xfce4 menu"
 
 #: menueditor/menueditor.c:953
 msgid "Open an Xfce4 menu file"
-msgstr ""
+msgstr "Open een Xfce4 menubestand"
 
 #: menueditor/menueditor.c:960
 msgid "Save current menu"
-msgstr ""
+msgstr "Huidig menu opslaan"
 
 #: menueditor/menueditor.c:967
 msgid "Close current menu"
-msgstr ""
+msgstr "Huidig menu sluiten"
 
 #: menueditor/menueditor.c:975
 msgid "Add an entry to the menu"
-msgstr ""
+msgstr "Menu-optie toevoegen"
 
 #: menueditor/menueditor.c:982
 msgid "Delete the current entry"
-msgstr ""
+msgstr "Huidige menu-optie verwijderen"
 
 #: menueditor/menueditor.c:989
 msgid "Move the current entry up"
-msgstr ""
+msgstr "Huidige menu-optie omhoog verplaatsen"
 
 #: menueditor/menueditor.c:996
 msgid "Move the current entry down"
-msgstr ""
+msgstr "Huidige menu-optie omlaag verplaatsen"
 
 #: menueditor/menueditor.c:1004
 msgid "Collapse the tree"
-msgstr ""
+msgstr "Boomstructuur inklappen"
 
 #: menueditor/menueditor.c:1011
 msgid "Expand the tree"
-msgstr ""
+msgstr "Boomstructuur uitklappen"
 
 #: menueditor/menueditor.c:1045
-#, fuzzy
 msgid "Name"
-msgstr "Naam:"
+msgstr "Naam"
 
 #: menueditor/menueditor.c:1047
 msgid "Command"
-msgstr ""
+msgstr "Commando"
 
 #: menueditor/menueditor.c:1049
 msgid "Hidden"
-msgstr ""
+msgstr "Verborgen"
 
 #: menueditor/menueditor.c:1051
 msgid "Pointer"
@@ -327,126 +322,122 @@ msgstr ""
 
 #: menueditor/menueditor.c:1183
 msgid "Corrupted file or incorrect file format !"
-msgstr ""
+msgstr "Beschadigd bestand of incorrect bestandsformaat!"
 
 #: menueditor/menueditor.c:1196
 msgid "No root element in file !"
-msgstr ""
+msgstr "Geen root-element gevonden!"
 
 #: menueditor/menueditor.c:1207
 msgid "Bad datafile format !"
-msgstr ""
+msgstr "Incorrect bestandsformaat!"
 
 #: menueditor/menueditor.c:1323
 #, c-format
 msgid "File %s doesn't exist !"
-msgstr ""
+msgstr "Bestand %s bestaat niet!"
 
 #: menueditor/move.c:401
 msgid "Do you want to move the item into the parent menu?"
-msgstr ""
+msgstr "Wilt u de menuoptie naar hogergelegen menu verplaatsen?"
 
 #: menueditor/move.c:500
 msgid "Do you want to move the item into the submenu?"
-msgstr ""
+msgstr "Wilt u de de menuoptie naar het submenu verplaatsen?"
 
 #: menueditor/new_dialog.c:58
 msgid "Are you sure you want to close the current menu?"
-msgstr ""
+msgstr "Huidig menu sluiten?"
 
 #: menueditor/new_dialog.c:74
 msgid "Do you want to save before closing the file?"
-msgstr ""
+msgstr "Wijzigingen opslaan?"
 
 #. get the filename and name for the new menu
 #: menueditor/new_dialog.c:84 menueditor/new_dialog.c:96
 msgid "New menu"
-msgstr ""
+msgstr "Nieuw menu"
 
 #. Filename
 #: menueditor/new_dialog.c:109
-#, fuzzy
 msgid "Filename:"
 msgstr "Bestand:"
 
 #: menueditor/new_dialog.c:142
 msgid "All fields are required."
-msgstr ""
+msgstr "Alle velden zijn verplicht."
 
 #: modules/menu/desktop-menu-dentry.c:532
 msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-msgstr ""
+msgstr "XfceDesktopMenu: Kon xfce-registered-categories.xml niet vinden"
 
 #: modules/menu/desktop-menuspec.c:61
 msgid "/Other"
-msgstr ""
+msgstr "/Overig"
 
 #: modules/menu/desktop-menuspec.c:279
 #, c-format
 msgid "%s: missing or unknown attribute for 'related' element\n"
-msgstr ""
+msgstr "%s: ontbrekend of onbekend attribuut voor 'related' element\n"
 
 #: modules/menu/desktop-menuspec.c:284
 #, c-format
 msgid "%s: unknown xml element %s\n"
-msgstr ""
+msgstr "%s: onbekend xml element %s\n"
 
 #: panel-plugin/desktop-menu-plugin.c:192
 #: panel-plugin/desktop-menu-plugin.c:515
 msgid "Xfce Menu"
-msgstr ""
+msgstr "Xfce Menu"
 
 #: panel-plugin/desktop-menu-plugin.c:355
 msgid "Select Icon"
-msgstr ""
+msgstr "Pictogram Selecteren"
 
 #: panel-plugin/desktop-menu-plugin.c:357
 msgid "Select Menu File"
-msgstr ""
+msgstr "Menubestand Selecteren"
 
 #: panel-plugin/desktop-menu-plugin.c:372 settings/backdrop-mgr.c:545
 #: settings/backdrop-mgr.c:700 settings/backdrop_settings.c:467
 msgid "All Files"
-msgstr ""
+msgstr "Alle Bestanden"
 
 #: panel-plugin/desktop-menu-plugin.c:378 settings/backdrop-mgr.c:549
 #: settings/backdrop_settings.c:471
-#, fuzzy
 msgid "Image Files"
 msgstr "Plaatjes"
 
 #: panel-plugin/desktop-menu-plugin.c:386
-#, fuzzy
 msgid "Menu Files"
-msgstr "Plaatjes"
+msgstr "Menubestanden"
 
 #: panel-plugin/desktop-menu-plugin.c:445
 msgid "_Menu file:"
-msgstr ""
+msgstr "_Menubestand:"
 
 #: panel-plugin/desktop-menu-plugin.c:479
 msgid "_Button icon:"
-msgstr ""
+msgstr "_Pictogram:"
 
 #: panel-plugin/desktop-menu-plugin.c:504
 msgid "Show _icons in menu"
-msgstr ""
+msgstr "Toon pictogrammen in menu"
 
 #: settings/backdrop-mgr.c:133 settings/backdrop-mgr.c:192
 #: settings/backdrop-mgr.c:592
-#, fuzzy
 msgid "Backdrop"
-msgstr "Achtergrondenlijst"
+msgstr "Achtergrond"
 
 #: settings/backdrop-mgr.c:139
 #, c-format
 msgid "Adding files from directory %s..."
-msgstr ""
+msgstr "Bestanden uit map %s toevoegen..."
 
 #: settings/backdrop-mgr.c:198
 #, c-format
 msgid "Adding files from list %s..."
-msgstr ""
+msgstr "Bestanden van lijst %s toevoegen..."
 
 #: settings/backdrop-mgr.c:240
 #, c-format
@@ -461,22 +452,20 @@ msgstr ""
 "Kies een andere locatie of druk op annuleren in het dialoogvenster"
 
 #: settings/backdrop-mgr.c:540
-#, fuzzy
 msgid "Select backdrop image file"
-msgstr "Bestand selecteren"
+msgstr "Plaatje selecteren voor achtergrond"
 
 #: settings/backdrop-mgr.c:598
 msgid "Adding multiple files..."
-msgstr ""
+msgstr "Meerderen bestanden toevoegen..."
 
 #: settings/backdrop-mgr.c:695
 msgid "Choose backdrop list filename"
 msgstr "Kies bestandsnaam voor achtergrondenlijst"
 
 #: settings/backdrop-mgr.c:704
-#, fuzzy
 msgid "List Files"
-msgstr "Bestand"
+msgstr "Lijst-bestanden"
 
 #: settings/backdrop-mgr.c:767
 msgid "Backdrop List"
@@ -487,9 +476,8 @@ msgid "Image files"
 msgstr "Plaatjes"
 
 #: settings/backdrop-mgr.c:794
-#, fuzzy
 msgid "backdrops.list"
-msgstr "Lijst van achtergronden aanpassen"
+msgstr "achtergronden.list"
 
 #: settings/backdrop-mgr.c:800
 msgid "List file"
@@ -510,67 +498,57 @@ msgid "Desktop"
 msgstr "Bureaublad"
 
 #: settings/backdrop_settings.c:462
-#, fuzzy
 msgid "Select backdrop image or list file"
 msgstr "Achtergrondplaatje of lijst selecteren"
 
 #: settings/backdrop_settings.c:480
 msgid "List Files (*.list)"
-msgstr ""
+msgstr "Lijsten (*.list)"
 
 #: settings/backdrop_settings.c:565
-#, fuzzy
 msgid "_Edit list..."
-msgstr "Lijst aanpassen"
+msgstr "Lijst _aanpassen..."
 
 #: settings/backdrop_settings.c:573
-#, fuzzy
 msgid "_New list..."
-msgstr "Nieuwe lijst"
+msgstr "_Nieuwe lijst..."
 
 #: settings/backdrop_settings.c:609
-#, fuzzy
 msgid "S_tyle:"
-msgstr "Stijl:"
+msgstr "S_tijl:"
 
 #: settings/backdrop_settings.c:617
-#, fuzzy
 msgid "Tiled"
-msgstr "_Naast elkaar"
+msgstr "Naast elkaar"
 
 #: settings/backdrop_settings.c:624
-#, fuzzy
 msgid "Centered"
-msgstr "_Centreren"
+msgstr "Centreren"
 
 #: settings/backdrop_settings.c:631
-#, fuzzy
 msgid "Scaled"
-msgstr "_Schalen"
+msgstr "Schalen"
 
 #: settings/backdrop_settings.c:638
 msgid "Stretched"
-msgstr ""
+msgstr "Uitrekken"
 
 #: settings/backdrop_settings.c:645
-#, fuzzy
 msgid "Auto"
-msgstr "_Automatisch"
+msgstr "Automatisch"
 
 #: settings/backdrop_settings.c:711
 msgid "Adjust _Brightness:"
-msgstr ""
+msgstr "Helderheid aanpassen:"
 
 #. header
 #: settings/backdrop_settings.c:780
-#, fuzzy
 msgid "Desktop Settings"
-msgstr "Virtuele Bureaubladen Opties"
+msgstr "Bureaublad Opties"
 
 #: settings/backdrop_settings.c:808
-#, fuzzy
 msgid "_Backdrops"
-msgstr "Achtergrondenlijst"
+msgstr "_Achtergronden"
 
 #. color settings frame
 #: settings/backdrop_settings.c:834
@@ -578,213 +556,155 @@ msgid "Color"
 msgstr "Kleur"
 
 #: settings/backdrop_settings.c:848
-#, fuzzy
 msgid "_Color Style:"
-msgstr "Stijl:"
+msgstr "_Kleur Stijl:"
 
 #: settings/backdrop_settings.c:857
-#, fuzzy
 msgid "Solid Color"
-msgstr "Kleur"
+msgstr "Vaste Kleur"
 
 #: settings/backdrop_settings.c:864
 msgid "Horizontal Gradient"
-msgstr ""
+msgstr "Horizontake Gradiënt"
 
 #: settings/backdrop_settings.c:871
 msgid "Vertical Gradient"
-msgstr ""
+msgstr "Verticale Gradiënt"
 
 #: settings/backdrop_settings.c:892
 msgid "Fi_rst Color:"
-msgstr ""
+msgstr "_Eerste Kleur:"
 
 #: settings/backdrop_settings.c:913
-#, fuzzy
 msgid "_Second Color:"
-msgstr "Achtergrondkleur:"
+msgstr "_Tweede Kleur:"
 
 #. set color only checkbox
 #: settings/backdrop_settings.c:934
-#, fuzzy
 msgid "Set color _only"
-msgstr "Alleen kleur gebruiken"
+msgstr "_Alleen kleur gebruiken"
 
 #: settings/backdrop_settings.c:949
 msgid "Image"
 msgstr "Plaatje"
 
 #: settings/backdrop_settings.c:957
-#, fuzzy
 msgid "Show _Image"
-msgstr "Plaatje"
+msgstr "Plaatje tonen"
 
 #: settings/backdrop_settings.c:979
-#, fuzzy
 msgid "_File:"
-msgstr "Bestand:"
+msgstr "_Bestand:"
 
 #. don't set backdrop checkbox
 #: settings/backdrop_settings.c:1016
-#, fuzzy
 msgid "_Don't set backdrop"
-msgstr "Achtergrondkleur selecteren"
+msgstr "Achtergrond _niet instellen"
 
 #. add the single backdrop settings page to the main notebook
 #: settings/backdrop_settings.c:1039
-#, fuzzy
 msgid "_Backdrop"
-msgstr "Achtergrondenlijst"
+msgstr "A_chtergrond"
 
 #: settings/backdrop_settings.c:1047 settings/backdrop_settings.c:1049
 #, c-format
 msgid "Screen %d"
-msgstr ""
+msgstr "Scherm %d"
 
 #. and if we have multiple screens, each with multiple monitors
 #: settings/backdrop_settings.c:1054
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr ""
+msgstr "Scherm %d, Monitor %d"
 
 #: settings/backdrop_settings.c:1068
 msgid "_Menu"
-msgstr ""
+msgstr "_menu"
 
 #: settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr ""
+msgstr "Kon xfce4-menueditor niet starten: %s"
 
 #: settings/menu_settings.c:151
 msgid "Window List"
-msgstr ""
+msgstr "Vensterlijst"
 
 #: settings/menu_settings.c:159
 msgid "Show window _list"
-msgstr ""
+msgstr "Vensterlijst _tonen"
 
 #: settings/menu_settings.c:174
 msgid "Show _window icons"
-msgstr ""
+msgstr "Venster_pictogrammen tonen"
 
 #: settings/menu_settings.c:187
-#, fuzzy
 msgid "Desktop Menu"
-msgstr "Bureaublad"
+msgstr "Bureaubladmenu"
 
 #: settings/menu_settings.c:195
 msgid "Show desktop _menu"
-msgstr ""
+msgstr "Bureaubladmenu tonen"
 
 #: settings/menu_settings.c:210
 msgid "Show _application icons"
-msgstr ""
+msgstr "P_rogrammapictogrammen tonen"
 
 #: settings/menu_settings.c:221
 msgid "_Edit desktop menu"
-msgstr ""
+msgstr "Bureaubladmenu be_werken"
 
 #: src/main.c:255
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr ""
+msgstr "%s: Onbekende optie: %s\n"
 
 #: src/main.c:256
 msgid "Options are:\n"
-msgstr ""
+msgstr "Mogelijk opties:\n"
 
 #: src/main.c:257
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr ""
+msgstr "    -reload	Instellingen opnieuw laden, bestandenlijst verversen\n"
 
 #: src/main.c:258
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr ""
+msgstr "    -menu	Buereaubladmenu tonen (op huidige muispositie)\n"
 
 #: src/main.c:259
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
+msgstr "    -windowlist	Vensterlijst tonen (op huidige muispositie)\n"
 
 #: src/menu.c:73
 #, c-format
 msgid ""
 "%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
 msgstr ""
+"%s: Kon menu module niet initialiseren. Rechter muisknopmenu zal niet "
+"beschikbaar zijn\n"
 
 #: src/windowlist.c:183
-#, fuzzy, c-format
+#, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "Bureaublad %d"
+msgstr "<b>Bureaublad %d</b>"
 
 #: src/windowlist.c:188
-#, fuzzy, c-format
+#, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "Bureaublad %d"
+msgstr "<i>Bureaublad %d</i>"
 
 #: src/windowlist.c:244 src/windowlist.c:247
-#, fuzzy
 msgid "_Add Workspace"
-msgstr "Bureaublad toevoegen"
+msgstr "Bureaublad _toevoegen"
 
 #: src/windowlist.c:254
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace %d"
-msgstr "Bureaublad %d"
+msgstr "Bureaublad %d _verwijderen"
 
 #: src/windowlist.c:256
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Bureaublad %d"
+msgstr "Bureaublad '%s' _verwijderen"
 
-#, fuzzy
-#~ msgid "Select backdrop color"
-#~ msgstr "Achtergrondkleur selecteren"
-
-#~ msgid "New.list"
-#~ msgstr "Nieuwe.lijst"
-
-#, fuzzy
-#~ msgid "Desktop background"
-#~ msgstr "Bureaublad: achtergrond"
-
-#~ msgid "_Browse..."
-#~ msgstr "_Bladeren..."
-
-#~ msgid "Background"
-#~ msgstr "Achtergrond"
-
-#~ msgid "Background Settings"
-#~ msgstr "Achtergrond Opties"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr "Bureaublad: virtuele bureaubladen"
-
-#~ msgid "Change name"
-#~ msgstr "Naam veranderen"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Klik om een bureaublad-naam te veranderen"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "Aantal bureaubladen"
-
-#~ msgid "Workspaces"
-#~ msgstr "Virtuele bureaubladen"
-
-#~ msgid "Workspace names"
-#~ msgstr "Bureaublad-namen"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "xfdesktop fout: laden achtergrondplaatje: %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "Bureaublad verwijderen"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr ""
-#~ "xfdesktop: Kon geen verbinding krijgen met de optiemanager! Controleer a."
-#~ "u.b. uw installatie."
