@@ -244,7 +244,24 @@ desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
 	*dentrydir_mtimes = g_hash_table_new_full(g_str_hash, g_str_equal,
 				(GDestroyNotify)g_free, NULL);
 	if(xfce_rc_has_group(rcfile, "directories")) {
+		const gchar *env_XDG_DATA_DIRS = g_getenv("XDG_DATA_DIRS");
+		
 		xfce_rc_set_group(rcfile, "directories");
+		
+		/* first check to see if XDG_DATA_DIRS has changed */
+		location = xfce_rc_read_entry(rcfile, "XDG_DATA_DIRS", NULL);
+		if((env_XDG_DATA_DIRS && !location) || (!env_XDG_DATA_DIRS && location)
+		   || (env_XDG_DATA_DIRS && location
+		       && g_ascii_strcasecmp(env_XDG_DATA_DIRS, location)))
+		{
+			xfce_rc_close(rcfile);
+			g_hash_table_destroy(*dentrydir_mtimes);
+			*dentrydir_mtimes = NULL;
+			g_hash_table_destroy(*menufile_mtimes);
+			*menufile_mtimes = NULL;
+			TRACE("exiting - failed");
+			return NULL;
+		}
 		
 		for(i = 0; TRUE; i++) {
 			g_snprintf(buf, 128, "location%d", i);
@@ -352,6 +369,7 @@ desktop_menu_cache_flush(const gchar *cache_file_suffix)
 	FILE *fp;
 	TraverseData td;
 	struct stat st;
+	const gchar *env_XDG_DATA_DIRS;
 	
 	if(!menu_tree)
 		return;
@@ -379,7 +397,11 @@ desktop_menu_cache_flush(const gchar *cache_file_suffix)
 			xfce_rc_write_int_entry(rcfile, buf, st.st_mtime);
 		}
 	}
+	
 	xfce_rc_set_group(rcfile, "directories");
+	env_XDG_DATA_DIRS = g_getenv("XDG_DATA_DIRS");
+	if(env_XDG_DATA_DIRS)
+		xfce_rc_write_entry(rcfile, "XDG_DATA_DIRS", env_XDG_DATA_DIRS);
 	for(i = 0, l = dentry_dirs; l; l = l->next, i++) {
 		gchar *dir = l->data;
 		if(!stat(dir, &st)) {
