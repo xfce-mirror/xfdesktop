@@ -120,10 +120,21 @@ init_menu_settings(McsPlugin *plugin)
 #endif
 }
 
+#if USE_DESKTOP_MENU
+static void
+_edit_menu_cb(GtkWidget *w, gpointer user_data)
+{
+	xfce_exec("xfce4-menueditor", FALSE, FALSE, NULL);
+}
+#endif
+
 GtkWidget *
 create_menu_page(BackdropDialog *bd)
 {
 	GtkWidget *page, *vbox, *frame, *frame1, *chk;
+#ifdef USE_DESKTOP_MENU
+	GtkWidget *hbox, *btn;
+#endif
 	
 	page = gtk_vbox_new(FALSE, 6);
 	
@@ -189,6 +200,15 @@ create_menu_page(BackdropDialog *bd)
 	gtk_widget_show(chk);
 	gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(chk), "toggled", G_CALLBACK(set_chk_option), bd);
+	
+	hbox = gtk_hbox_new(FALSE, 0);
+	gtk_widget_show(hbox);
+	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	
+	btn = gtk_button_new_with_mnemonic(_("_Edit desktop menu"));
+	gtk_widget_show(btn);
+	gtk_box_pack_start(GTK_BOX(hbox), btn, FALSE, FALSE, 0);
+	g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(_edit_menu_cb), NULL);
 	
 	gtk_widget_set_sensitive(frame1, show_desktopmenu);
 #endif

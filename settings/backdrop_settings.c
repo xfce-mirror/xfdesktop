@@ -832,7 +832,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 		gtk_widget_show(bd->screens_notebook);
 		gtk_box_pack_start(GTK_BOX(vbox), bd->screens_notebook, FALSE, FALSE, 0);
 		
-		label = gtk_label_new(_("Backdrops"));
+		label = gtk_label_new_with_mnemonic(_("_Backdrops"));
 		gtk_widget_show(label);
 		gtk_notebook_append_page(GTK_NOTEBOOK(bd->top_notebook), vbox, label);
 	}
@@ -1029,7 +1029,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 		
 		if(nscreens == 1) {
 			/* add the single backdrop settings page to the main notebook */
-			label = gtk_label_new(_("Backdrop"));
+			label = gtk_label_new_with_mnemonic(_("_Backdrop"));
 			gtk_widget_show(label);
 			gtk_notebook_append_page(GTK_NOTEBOOK(bd->top_notebook), page, label);
 		} else {
@@ -1047,7 +1047,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 	vbox = create_menu_page(bd);
 	gtk_widget_show(vbox);
 	
-	label = gtk_label_new(_("Menu"));
+	label = gtk_label_new_with_mnemonic(_("_Menu"));
 	gtk_widget_show(label);
 	gtk_notebook_append_page(GTK_NOTEBOOK(bd->top_notebook), vbox, label);
 	

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-10 16:00-0400\n"
+"POT-Creation-Date: 2004-05-11 12:31-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,23 +16,22 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. add the single backdrop settings page to the main notebook
-#: settings/backdrop-mgr.c:135 settings/backdrop-mgr.c:195
-#: settings/backdrop-mgr.c:596 settings/backdrop_settings.c:1033
+#: settings/backdrop-mgr.c:133 settings/backdrop-mgr.c:192
+#: settings/backdrop-mgr.c:593
 msgid "Backdrop"
 msgstr ""
 
-#: settings/backdrop-mgr.c:141
+#: settings/backdrop-mgr.c:139
 #, c-format
 msgid "Adding files from directory %s..."
 msgstr ""
 
-#: settings/backdrop-mgr.c:201
+#: settings/backdrop-mgr.c:198
 #, c-format
 msgid "Adding files from list %s..."
 msgstr ""
 
-#: settings/backdrop-mgr.c:243
+#: settings/backdrop-mgr.c:240
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -41,189 +40,198 @@ msgid ""
 "changes"
 msgstr ""
 
-#: settings/backdrop-mgr.c:543
+#: settings/backdrop-mgr.c:540
 msgid "Select backdrop image file"
 msgstr ""
 
-#: settings/backdrop-mgr.c:548 settings/backdrop-mgr.c:704
-#: settings/backdrop_settings.c:555 panel-plugin/desktop-menu-plugin.c:265
+#: settings/backdrop-mgr.c:545 settings/backdrop-mgr.c:701
+#: settings/backdrop_settings.c:554 panel-plugin/desktop-menu-plugin.c:265
 msgid "All Files"
 msgstr ""
 
-#: settings/backdrop-mgr.c:552 settings/backdrop_settings.c:559
+#: settings/backdrop-mgr.c:549 settings/backdrop_settings.c:558
 #: panel-plugin/desktop-menu-plugin.c:270
 msgid "Image Files"
 msgstr ""
 
-#: settings/backdrop-mgr.c:602
+#: settings/backdrop-mgr.c:599
 msgid "Adding multiple files..."
 msgstr ""
 
-#: settings/backdrop-mgr.c:699
+#: settings/backdrop-mgr.c:696
 msgid "Choose backdrop list filename"
 msgstr ""
 
-#: settings/backdrop-mgr.c:708
+#: settings/backdrop-mgr.c:705
 msgid "List Files"
 msgstr ""
 
-#: settings/backdrop-mgr.c:774
+#: settings/backdrop-mgr.c:770
 msgid "Backdrop List"
 msgstr ""
 
-#: settings/backdrop-mgr.c:791
+#: settings/backdrop-mgr.c:787
 msgid "Image files"
 msgstr ""
 
-#: settings/backdrop-mgr.c:801
+#: settings/backdrop-mgr.c:797
 msgid "New.list"
 msgstr ""
 
-#: settings/backdrop-mgr.c:807
+#: settings/backdrop-mgr.c:803
 msgid "List file"
 msgstr ""
 
-#: settings/backdrop-mgr.c:827
+#: settings/backdrop-mgr.c:823
 msgid "Create backdrop list"
 msgstr ""
 
-#: settings/backdrop-mgr.c:857
+#: settings/backdrop-mgr.c:853
 msgid "Edit backdrop list"
 msgstr ""
 
 #. the dialog
-#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:799
+#: settings/backdrop_settings.c:131 settings/backdrop_settings.c:798
 #: src/main.c:256
 msgid "Desktop"
 msgstr ""
 
-#: settings/backdrop_settings.c:338
+#: settings/backdrop_settings.c:337
 msgid "Select backdrop color"
 msgstr ""
 
-#: settings/backdrop_settings.c:550
+#: settings/backdrop_settings.c:549
 msgid "Select backdrop image or list file"
 msgstr ""
 
-#: settings/backdrop_settings.c:568
+#: settings/backdrop_settings.c:567
 msgid "List Files (*.list)"
 msgstr ""
 
-#: settings/backdrop_settings.c:652
+#: settings/backdrop_settings.c:651
 msgid "_Edit list..."
 msgstr ""
 
-#: settings/backdrop_settings.c:660
+#: settings/backdrop_settings.c:659
 msgid "_New list..."
 msgstr ""
 
-#: settings/backdrop_settings.c:696
+#: settings/backdrop_settings.c:695
 msgid "S_tyle:"
 msgstr ""
 
-#: settings/backdrop_settings.c:704
+#: settings/backdrop_settings.c:703
 msgid "Tiled"
 msgstr ""
 
-#: settings/backdrop_settings.c:711
+#: settings/backdrop_settings.c:710
 msgid "Centered"
 msgstr ""
 
-#: settings/backdrop_settings.c:718
+#: settings/backdrop_settings.c:717
 msgid "Scaled"
 msgstr ""
 
-#: settings/backdrop_settings.c:725
+#: settings/backdrop_settings.c:724
 msgid "Stretched"
 msgstr ""
 
-#: settings/backdrop_settings.c:732
+#: settings/backdrop_settings.c:731
 msgid "Auto"
 msgstr ""
 
 #. header
-#: settings/backdrop_settings.c:814
+#: settings/backdrop_settings.c:813
 msgid "Desktop Settings"
 msgstr ""
 
-#: settings/backdrop_settings.c:836
-msgid "Backdrops"
+#: settings/backdrop_settings.c:835
+msgid "_Backdrops"
 msgstr ""
 
 #. color settings frame
-#: settings/backdrop_settings.c:862
+#: settings/backdrop_settings.c:861
 msgid "Color"
 msgstr ""
 
-#: settings/backdrop_settings.c:876
+#: settings/backdrop_settings.c:875
 msgid "_Color Style:"
 msgstr ""
 
-#: settings/backdrop_settings.c:885
+#: settings/backdrop_settings.c:884
 msgid "Solid Color"
 msgstr ""
 
-#: settings/backdrop_settings.c:891
+#: settings/backdrop_settings.c:890
 msgid "Horizontal Gradient"
 msgstr ""
 
-#: settings/backdrop_settings.c:897
+#: settings/backdrop_settings.c:896
 msgid "Vertical Gradient"
 msgstr ""
 
-#: settings/backdrop_settings.c:917
+#: settings/backdrop_settings.c:916
 msgid "Fi_rst Color:"
 msgstr ""
 
-#: settings/backdrop_settings.c:936
+#: settings/backdrop_settings.c:935
 msgid "_Second Color:"
 msgstr ""
 
 #. set color only checkbox
-#: settings/backdrop_settings.c:954
+#: settings/backdrop_settings.c:953
 msgid "Set color _only"
 msgstr ""
 
-#: settings/backdrop_settings.c:968
+#: settings/backdrop_settings.c:967
 msgid "Image"
 msgstr ""
 
-#: settings/backdrop_settings.c:981
+#: settings/backdrop_settings.c:980
 msgid "_File:"
 msgstr ""
 
 #. don't set backdrop checkbox
-#: settings/backdrop_settings.c:1017
+#: settings/backdrop_settings.c:1016
 msgid "_Don't set backdrop"
 msgstr ""
 
+#. add the single backdrop settings page to the main notebook
+#: settings/backdrop_settings.c:1032
+msgid "_Backdrop"
+msgstr ""
+
 #. but if we have more than one, add them as pages to another
-#: settings/backdrop_settings.c:1038
+#: settings/backdrop_settings.c:1037
 #, c-format
 msgid "Screen %d"
 msgstr ""
 
-#: settings/backdrop_settings.c:1051
-msgid "Menu"
+#: settings/backdrop_settings.c:1050
+msgid "_Menu"
 msgstr ""
 
-#: settings/menu_settings.c:138
+#: settings/menu_settings.c:149
 msgid "Show window _list"
 msgstr ""
 
-#: settings/menu_settings.c:153
+#: settings/menu_settings.c:164
 msgid "Show _window icons"
 msgstr ""
 
-#: settings/menu_settings.c:171
+#: settings/menu_settings.c:182
 msgid "Show desktop _menu"
 msgstr ""
 
-#: settings/menu_settings.c:186
+#: settings/menu_settings.c:197
 msgid "Show _application icons"
 msgstr ""
 
-#: src/backdrop.c:230
+#: settings/menu_settings.c:208
+msgid "_Edit desktop menu"
+msgstr ""
+
+#: src/backdrop.c:231
 #, c-format
 msgid ""
 "%s: There was an error loading image:\n"
@@ -382,13 +390,13 @@ msgid "The 'Source' field is required."
 msgstr ""
 
 #: menueditor/add_menu_dialog.c:247 menueditor/add_menu_dialog.c:303
-#: menueditor/dnd.c:151 menueditor/edit_dialog.c:617
-#: menueditor/edit_dialog.c:639 menueditor/menueditor.c:306
+#: menueditor/dnd.c:151 menueditor/edit_dialog.c:616
+#: menueditor/edit_dialog.c:638 menueditor/menueditor.c:306
 msgid "--- include ---"
 msgstr ""
 
 #: menueditor/add_menu_dialog.c:304 menueditor/dnd.c:156
-#: menueditor/edit_dialog.c:641 menueditor/menueditor.c:309
+#: menueditor/edit_dialog.c:640 menueditor/menueditor.c:309
 msgid "system"
 msgstr ""
 
