@@ -4,7 +4,7 @@ dnl xfdesktop - xfce4's desktop manager
 dnl
 
 dml version info
-m4_define([xfdesktop_version], [4.2.1])
+m4_define([xfdesktop_version], [4.2.2])
 
 dnl init autoconf
 AC_INIT([xfdesktop], [xfdesktop_version], [bjt23@cornell.edu])
@@ -100,6 +100,8 @@ common/Makefile
 doc/Makefile
 doc/C/Makefile
 doc/C/images/Makefile
+doc/fr/Makefile
+doc/fr/images/Makefile
 menueditor/Makefile
 modules/Makefile
 modules/menu/Makefile
