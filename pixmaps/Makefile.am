@@ -29,8 +29,4 @@ EXTRA_DIST = \
 	$(icons32_DATA) \
 	$(icons48_DATA) \
 	$(iconssc_DATA) \
-	$(pixmaps_DATA) \
-	me-icon16.xpm \
-	me-icon24.xpm \
-	me-icon32.xpm \
-	me-icon48.xpm
+	$(pixmaps_DATA)
