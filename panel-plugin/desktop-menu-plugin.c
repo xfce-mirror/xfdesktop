@@ -36,6 +36,8 @@
 
 #include "desktop-menu-stub.h"
 
+#define DEFAULT_BUTTON_ICON  DATADIR "/pixmaps/xfce4_xicon1.png"
+
 typedef struct _DMPlugin {
 	GtkWidget *evtbox;
 	GtkWidget *button;
@@ -44,6 +46,7 @@ typedef struct _DMPlugin {
 	gboolean show_menu_icons;
 	
 	GtkWidget *entry;  /* FIXME */
+	GtkTooltips *tooltip;  /* needed? */
 } DMPlugin;
 
 static GModule *menu_gmod = NULL;
@@ -81,6 +84,8 @@ dmp_free(Control *c)
 	
 	if(dmp->desktop_menu)
 		xfce_desktop_menu_destroy(dmp->desktop_menu);
+	if(dmp->tooltip)
+		gtk_object_sink(GTK_OBJECT(dmp->tooltip));
 	
 	g_free(dmp);
 }
@@ -117,6 +122,7 @@ dmp_new()
 	DMPlugin *dmp = g_new0(DMPlugin, 1);
 	
 	dmp->show_menu_icons = TRUE;  /* default */
+	dmp->tooltip = gtk_tooltips_new();
 
 	dmp->evtbox = gtk_event_box_new();
 	gtk_container_set_border_width(GTK_CONTAINER(dmp->evtbox), 0);
@@ -127,14 +133,15 @@ dmp_new()
 	gtk_container_set_border_width(GTK_CONTAINER(dmp->button), 0);
 	gtk_widget_show(dmp->button);
 	gtk_container_add(GTK_CONTAINER(dmp->evtbox), dmp->button);
+	gtk_tooltips_set_tip(dmp->tooltip, dmp->button, _("Xfce Menu"), NULL);
 	
 	dmp->desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
 	xfce_desktop_menu_start_autoregen(dmp->desktop_menu, 10);
 	g_signal_connect(G_OBJECT(dmp->button), "button-press-event",
 			G_CALLBACK(dmp_popup), dmp);
 	
-	dmp->icon_file = g_strdup(DATADIR "/pixmaps/xfce4_xicon.png");
-
+	dmp->icon_file = g_strdup(DEFAULT_BUTTON_ICON);
+	
 	return dmp;
 }
 
@@ -176,7 +183,7 @@ dmp_read_config(Control *control, xmlNodePtr node)
 		} else
 			xmlFree(value);
 	} else {
-		dmp->icon_file = g_strdup(DATADIR "/pixmaps/xfce4_xicon.png");
+		dmp->icon_file = g_strdup(DEFAULT_BUTTON_ICON);
 		pix = xfce_load_themed_icon(dmp->icon_file,
 				icon_size[settings.size] - 2*border_width);
 		if(pix) {
