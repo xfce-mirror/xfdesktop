@@ -55,7 +55,10 @@ conf_DATA = 								\
 	menu.xml.zh_CN							\
 	menu.xml.zh_TW
 
-EXTRA_DIST = $(conf_DATA) xfdesktop.spec TODO
+EXTRA_DIST = $(conf_DATA) xfdesktop.spec TODO xfdesktop.1
+
+manpagedir = $(mandir)/man1
+manpage_DATA = xfdesktop.1
 
 distclean-local:
 	-rm -rf xfdesktop.spec *.cache *~

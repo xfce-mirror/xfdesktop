@@ -1,0 +1,73 @@
+.TH XFDESKTOP 1 "Version 4.1.90" "October 25, 2004"
+
+.SH NAME
+xfdesktop \- The Xfce 4 Desktop Environment's desktop manager
+
+.SH SYNOPSIS
+.B xfdesktop
+.br
+.B xfdesktop
+.I [options]
+.br
+
+.SH DESCRIPTION
+\fBxfdesktop\fP manages the desktop itself in the Xfce 4 Desktop Environment.
+This includes drawing the desktop backdrop and providing a right-click
+applications menu and middle-click window list menu.  Only one instance
+of xfdesktop can be running at a time, and should be started by running
+\fBxfdesktop\fP without any arguments.
+
+.SH OPTIONS
+.TP
+.B \-reload
+Causes an already-running instance of \fBxfdesktop\fP to reload all its
+settings, including loading a new random backdrop if using a backdrop list.
+.TP
+.B \-menu
+Causes an already-running instance of \fBxfdesktop\fP to pop up the
+applications menu at the current position of the mouse cursor.
+.TP
+.B \-windowlist
+Causes an already-running instance of \fBxfdesktop\fP to pop up the window
+list menu at the current position of the mouse cursor.
+
+.SH ENVIRONMENT
+\fBxfdesktop\fP's behavior is affected by the following environment variables.
+.PP
+.TP
+.B XDG_CONFIG_HOME
+Specifies the root for all user-specific configuration files.  If this
+environment variable is not present, it defaults to
+.I ~/.config
+.TP
+.B XDG_CACHE_HOME
+Specifies the root for all user-specific cache data.  If this environment
+variable is not present, it defaults to
+.I ~/.cache
+
+.SH FILES
+\fBxfdesktop\fP reads the contents of the applications menu from the
+file
+.IR $XDG_CONFIG_HOME/xfce4/desktop/menu.xml .
+\fBxfdesktop\fP also keeps some menu cache data in
+.IR $XDG_CACHE_HOME/xfce4/desktop/ .
+
+.SH BUGS
+Please report any bugs to
+.IR http://bugzilla.xfce.org/ .
+Development discussion should be conducted on the
+.IR xfce4-dev@xfce.org
+mailing list.  Usage-related questions should be directed to the
+.IR xfce@xfce.org
+mailing list.
+
+.SH HOMEPAGE
+.I http://xfce.org/
+
+.SH AUTHOR
+Jasper Huijsmans <huysmans@users.sourceforge.net>, Benedikt Meurer
+<benny@xfce.org>, and Brian Tarricone <bjt23@cornell.edu>.
+
+This manual page was originally written by Brian Tarricone
+.br
+<bjt23@cornell.edu>.
