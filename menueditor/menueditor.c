@@ -422,7 +422,7 @@ void menu_open_default_cb(GtkWidget *widget, gpointer data)
     menueditor_app.xml_menu_file=NULL;
   }
 
-  home_menu = g_build_filename(xfce_get_homedir(), G_DIR_SEPARATOR_S, ".xfce4/menu.xml", NULL);
+  home_menu = g_build_filename(xfce_get_userdir(), G_DIR_SEPARATOR_S, "menu.xml", NULL);
 
   if(g_file_test(home_menu, G_FILE_TEST_EXISTS))
     open_menu_file(home_menu);
