@@ -27,7 +27,7 @@ AC_CHECK_HEADERS(fcntl.h signal.h stddef.h sys/wait.h time.h)
 AC_CHECK_FUNCS(sigaction srandom)
 
 dnl Check for i18n support
-BM_I18N([xfdesktop], [ca de es es_MX fi fr hu ja pl ko lt ms nl ru ta tr zh_CN zh_TW])
+BM_I18N([xfdesktop], [ca de es es_MX fi fr hu ja pl ko lt ms nl pt_PT ru ta tr zh_CN zh_TW])
 
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE
