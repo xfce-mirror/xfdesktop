@@ -18,12 +18,16 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#include "menueditor.h"
-
-#include "add_dialog.h"
+#ifdef HAVE_CONFIG_H 
+#include <config.h>
+#endif
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
+
+#include "menueditor.h"
+
+#include "add_dialog.h"
 
 /*************************/
 /* Manage activated item */
