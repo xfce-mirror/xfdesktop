@@ -158,8 +158,16 @@ static GList *
 parse_node_incl(xmlNodePtr cur, const char *path)
 {
 	GList *incl_data = NULL;
-	xmlChar *type, *file = NULL, *style = NULL, *unique = NULL;
+	xmlChar *type, *file = NULL, *style = NULL, *unique = NULL, *vis;
 	gchar *fullfile = NULL;
+	
+	vis = xmlGetProp(cur, "visible");
+	if(vis && !xmlStrcmp(vis, (const xmlChar *)"false")) {
+		xmlFree(vis);
+		return NULL;
+	}
+	if(vis)
+		xmlFree(vis);
 	
 	type = xmlGetProp(cur, "type");
 	if(!type)
@@ -169,9 +177,10 @@ parse_node_incl(xmlNodePtr cur, const char *path)
 		file = xmlGetProp(cur, "src");
 		if(file) {
 			if(*file != '/')
-				fullfile = g_build_filename(g_get_home_dir(), ".xfce4", file, NULL);
+				fullfile = g_build_filename(xfce_get_homedir(), ".xfce4",
+						file, NULL);
 			else
-				fullfile = strdup(file);
+				fullfile = g_strdup(file);
 			
 			if(g_file_test(fullfile, G_FILE_TEST_EXISTS))
 				incl_data = menu_file_parse(fullfile, path);
