@@ -321,11 +321,13 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		menu = _ensure_path(desktop_menu, path);
 		mi = xfce_app_menu_item_new_from_desktop_entry(de,
 				desktop_menu->use_menu_icons);
-		gtk_widget_set_name(mi, "xfdesktopmenu");
 		name = xfce_app_menu_item_get_name(XFCE_APP_MENU_ITEM(mi));
 		g_snprintf(tmppath, 2048, "%s/%s", path, name);
-		if(g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath))
+		if(g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath)) {
+			gtk_widget_destroy(mi);
 			goto cleanup;
+		}
+		gtk_widget_set_name(mi, "xfdesktopmenu");
 		g_object_set_data(G_OBJECT(mi), "item-name", (gpointer)name);
 		gtk_widget_show(mi);
 		_menu_shell_insert_sorted(GTK_MENU_SHELL(menu), mi, name);
@@ -339,11 +341,13 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		menu = _ensure_path(desktop_menu, path);
 		mi = xfce_app_menu_item_new_from_desktop_entry(de,
 				desktop_menu->use_menu_icons);
-		gtk_widget_set_name(mi, "xfdesktopmenu");
 		name = xfce_app_menu_item_get_name(XFCE_APP_MENU_ITEM(mi));
 		g_snprintf(tmppath, 2048, "%s/%s", path, name);
-		if(g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath))
+		if(g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath)) {
+			gtk_widget_destroy(mi);
 			goto cleanup;
+		}
+		gtk_widget_set_name(mi, "xfdesktopmenu");
 		g_object_set_data(G_OBJECT(mi), "item-name", (gpointer)name);
 		gtk_widget_show(mi);
 		_menu_shell_insert_sorted(GTK_MENU_SHELL(menu), mi, name);
@@ -358,19 +362,23 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 			menu = _ensure_path(desktop_menu, path);
 			mi = xfce_app_menu_item_new_from_desktop_entry(de,
 					desktop_menu->use_menu_icons);
-			gtk_widget_set_name(mi, "xfdesktopmenu");
 			name = xfce_app_menu_item_get_name(XFCE_APP_MENU_ITEM(mi));
 			g_snprintf(tmppath, 2048, "%s/%s", path, name);
-			if(g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath))
+			if(g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath)) {
+				gtk_widget_destroy(mi);
+				g_free(path);
+				path = NULL;
 				continue;
+			}
+			gtk_widget_set_name(mi, "xfdesktopmenu");
 			g_object_set_data(G_OBJECT(mi), "item-name", (gpointer)name);
 			gtk_widget_show(mi);
 			_menu_shell_insert_sorted(GTK_MENU_SHELL(menu), mi, name);
 			g_hash_table_insert(desktop_menu->menu_entry_hash, _build_path(NULL,
 					path, name), GINT_TO_POINTER(1));
 			g_free(path);
-			path = NULL;
 		}
+		path = NULL;
 	}
 	
 	cleanup:
