@@ -287,6 +287,19 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		goto cleanup;
 	if((p = strchr(exec, ' ')))
 		*p = 0;
+    /* filter out quotes around the command (yeah, people do that!) */
+    if (exec[0] == '"') {
+        int i;
+
+        for (i = 1; exec[i-1] != '\0'; ++i) {
+            if (exec[i] != '"')
+                exec[i-1] = exec[i];
+            else {
+                exec[i-1] = '\0';
+                break;
+            }
+        }
+    }
 	if(blacklist && g_hash_table_lookup(blacklist, exec))
 		goto cleanup;
 	p = g_find_program_in_path(exec);
