@@ -112,7 +112,9 @@ static gboolean EditMode = FALSE;
 static gint
 calc_icon_size()
 {
-	static guchar icon_sizes[] = { 12, 16, 24, 32, 48, 72, 96, 0 };
+	static guchar icon_sizes[] = {
+			12, 16, 22, 24, 32, 36, 48, 64, 72, 96, 128, 192, 0
+	};
 	gint i, icon_size = -1;
 	GtkWidget *tmp;
 	GtkStyle *style;
