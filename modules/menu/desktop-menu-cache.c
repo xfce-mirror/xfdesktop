@@ -99,7 +99,6 @@ cache_node_children(GNode *node, gpointer data)
 	TraverseData *td = data;
 	FILE *fp = td->fp;
 	gchar tabs[64];  /* if the user has a > 63-level submenu, they deserve a segfault */
-	gchar *name_esc, *icon_esc;
 	
 	g_return_if_fail(entry);
 	
@@ -112,16 +111,9 @@ cache_node_children(GNode *node, gpointer data)
 			return;
 		
 		case DM_TYPE_MENU:
-			name_esc = entry->name
-					? g_markup_escape_text(entry->name, strlen(entry->name))
-					: g_strdup("");
-			icon_esc = entry->icon
-					? g_markup_escape_text(entry->icon, strlen(entry->icon))
-					: g_strdup("");
-			fprintf(fp, "%s<menu name=\"%s\" icon=\"%s\">\n", tabs, name_esc, icon_esc);
-			g_free(name_esc);
-			g_free(icon_esc);
-
+			fprintf(fp, "%s<menu name=\"%s\" icon=\"%s\">\n", tabs,
+					entry->name ? entry->name : "",
+					entry->icon ? entry->icon : "");
 			td->depth++;
 			g_node_children_foreach(node, G_TRAVERSE_ALL, cache_node_children, td);
 			td->depth--;
@@ -129,33 +121,19 @@ cache_node_children(GNode *node, gpointer data)
 			break;
 		
 		case DM_TYPE_APP:
-			name_esc = entry->name
-					? g_markup_escape_text(entry->name, strlen(entry->name))
-					: g_strdup("");
-			icon_esc = entry->icon
-					? g_markup_escape_text(entry->icon, strlen(entry->icon))
-					: g_strdup("");
 			fprintf(fp, "%s<app name=\"%s\" cmd=\"%s\" icon=\"%s\" term=\"%s\" snotify=\"%s\" />\n",
 					tabs,
-					name_esc,
+					entry->name ? entry->name : "",
 					entry->cmd ? entry->cmd : "",
-					icon_esc,
+					entry->icon ? entry->icon : "",
 					entry->needs_term ? "true" : "false",
 					entry->snotify ? "true" : "false");
-			g_free(name_esc);
-			g_free(icon_esc);
 			break;
 		
 		case DM_TYPE_TITLE:
-			name_esc = entry->name
-					? g_markup_escape_text(entry->name, strlen(entry->name))
-					: g_strdup("");
-			icon_esc = entry->icon
-					? g_markup_escape_text(entry->icon, strlen(entry->icon))
-					: g_strdup("");
-			fprintf(fp, "%s<title name=\"%s\" icon=\"%s\" />\n", tabs, name_esc, icon_esc);
-			g_free(name_esc);
-			g_free(icon_esc);
+			fprintf(fp, "%s<title name=\"%s\" icon=\"%s\" />\n", tabs,
+					entry->name ? entry->name : "",
+					entry->icon ? entry->icon : "");
 			break;
 		
 		case DM_TYPE_SEPARATOR:
@@ -163,16 +141,11 @@ cache_node_children(GNode *node, gpointer data)
 			break;
 		
 		case DM_TYPE_BUILTIN:
-			name_esc = entry->name
-					? g_markup_escape_text(entry->name, strlen(entry->name))
-					: g_strdup("");
-			icon_esc = entry->icon
-					? g_markup_escape_text(entry->icon, strlen(entry->icon))
-					: g_strdup("");
 			fprintf(fp, "%s<builtin name=\"%s\" cmd=\"%s\" icon=\"%s\" />\n",
-					tabs, name_esc, entry->cmd ? entry->cmd : "", icon_esc);
-			g_free(name_esc);
-			g_free(icon_esc);
+				tabs,
+				entry->name ? entry->name : "",
+				entry->cmd ? entry->cmd : "",
+				entry->icon ? entry->icon : "");
 			break;
 		
 		default:
@@ -269,9 +242,12 @@ desktop_menu_cache_add_entry(DesktopMenuCacheType type, const gchar *name,
 	
 	entry = g_new0(DesktopMenuCacheEntry, 1);
 	entry->type = type;
-	entry->name = g_strdup(name);
-	entry->cmd = g_strdup(cmd);
-	entry->icon = g_strdup(icon);
+	if(name)
+		entry->name = g_markup_escape_text(name, strlen(name));
+	if(cmd)
+		entry->cmd = g_markup_escape_text(cmd, strlen(cmd));
+	if(icon)
+		entry->icon = g_markup_escape_text(icon, strlen(icon));
 	entry->needs_term = needs_term;
 	entry->snotify = snotify;
 	
@@ -280,7 +256,6 @@ desktop_menu_cache_add_entry(DesktopMenuCacheType type, const gchar *name,
 	
 	if(type == DM_TYPE_MENU)
 		g_hash_table_insert(menu_hash, menu_widget, entry_node);
-	
 }
 
 void
