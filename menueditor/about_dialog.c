@@ -1,6 +1,6 @@
 /*   about_dialog.c */
 
-/*  Copyright (C)  Jean-Fran�ois Wauthy under GNU GPL
+/*  Copyright (C)  Jean-François Wauthy under GNU GPL
  *
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -40,7 +40,7 @@ about_cb (GtkWidget * widget, gpointer data)
   xfce_about_info_set_homepage (info, "http://www.xfce.org/");
 
   /* Credits */
-  xfce_about_info_add_credit (info, "Jean-Francois Wauthy", "pollux@xfce.org", _("Core developer"));
+  xfce_about_info_add_credit (info, "Jean-François Wauthy", "pollux@xfce.org", _("Core developer"));
   xfce_about_info_add_credit (info, "Brian Tarricone", "bjt23@cornell.edu", _("Contributor"));
   xfce_about_info_add_credit (info, "Danny Milosavljevic", "danny.milo@gmx.net", _("Contributor"));
   xfce_about_info_add_credit (info, "Jens Luedicke", "perldude@lunar-linux.org", _("Contributor"));
