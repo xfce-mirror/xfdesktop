@@ -23,6 +23,7 @@ xfce4_desktop_menu_la_CFLAGS = \
 	-DDATADIR=\"$(datadir)\"
 
 xfce4_desktop_menu_la_LDFLAGS = \
+	$(top_builddir)/common/libxfdesktop.la \
 	-export-dynamic \
 	-avoid-version \
 	-module

@@ -62,6 +62,8 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
+#include "../../common/xfdesktop-common.h"
+
 #include "desktop-menu-private.h"
 #include "desktop-menu.h"
 #include "desktop-menu-cache.h"

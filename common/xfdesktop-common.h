@@ -54,6 +54,7 @@ typedef enum
 gchar **get_list_from_file(const gchar *);
 gboolean is_backdrop_list(const gchar *path);
 gboolean xfdesktop_check_image_file(const gchar *filename);
+gchar *desktop_menu_file_get_menufile();
 
 G_END_DECLS
 

@@ -277,8 +277,9 @@ xfce4_desktop_menu_la_CFLAGS = \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DDATADIR=\"$(datadir)\"
 
-xfce4_desktop_menu_la_LDFLAGS = -export-dynamic -avoid-version -module \
-	$(am__append_1)
+xfce4_desktop_menu_la_LDFLAGS =  \
+	$(top_builddir)/common/libxfdesktop.la -export-dynamic \
+	-avoid-version -module $(am__append_1)
 xfce4_desktop_menu_la_LIBADD = \
 	@GMODULE_LIBS@ \
 	@LIBXFCEGUI4_LIBS@

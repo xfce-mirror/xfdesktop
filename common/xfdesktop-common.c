@@ -125,3 +125,63 @@ xfdesktop_check_image_file(const gchar *filename)
 	
 	return size_read;
 }
+
+gchar *
+desktop_menu_file_get_menufile()
+{
+	XfceKiosk *kiosk;
+	gboolean user_menu;
+	gchar filename[PATH_MAX], searchpath[PATH_MAX*3+2], **all_dirs;
+	gint i;
+
+	kiosk = xfce_kiosk_new("xfdesktop");
+	user_menu = xfce_kiosk_query(kiosk, "UserMenu");
+	xfce_kiosk_free(kiosk);
+	
+	if(!user_menu) {
+		const gchar *userhome = xfce_get_homedir();
+		all_dirs = xfce_resource_lookup_all(XFCE_RESOURCE_CONFIG,
+				"xfce4/desktop/");
+		
+		for(i = 0; all_dirs[i]; i++) {
+			if(strstr(all_dirs[i], userhome) != all_dirs[i]) {
+				g_snprintf(searchpath, PATH_MAX*3+2,
+						"%s%%F.%%L:%s%%F.%%l:%s%%F",
+						all_dirs[i], all_dirs[i], all_dirs[i]);
+				if(xfce_get_path_localized(filename, PATH_MAX, searchpath,
+						"menu.xml", G_FILE_TEST_IS_REGULAR))
+				{
+					g_strfreev(all_dirs);
+					return g_strdup(filename);
+				}
+			}			
+		}
+		g_strfreev(all_dirs);
+	} else {
+		gchar *menu_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
+				"xfce4/desktop/menu.xml", FALSE);
+		if(menu_file && g_file_test(menu_file, G_FILE_TEST_IS_REGULAR))
+			return menu_file;
+		else if(menu_file)
+			g_free(menu_file);
+		
+		all_dirs = xfce_resource_lookup_all(XFCE_RESOURCE_CONFIG,
+				"xfce4/desktop/");
+		for(i = 0; all_dirs[i]; i++) {
+			g_snprintf(searchpath, PATH_MAX*3+2,
+					"%s%%F.%%L:%s%%F.%%l:%s%%F",
+					all_dirs[i], all_dirs[i], all_dirs[i]);
+			if(xfce_get_path_localized(filename, PATH_MAX, searchpath,
+					"menu.xml", G_FILE_TEST_IS_REGULAR))
+			{
+				g_strfreev(all_dirs);
+				return g_strdup(filename);
+			}		
+		}
+		g_strfreev(all_dirs);
+	}
+
+    g_warning("%s: Could not locate a menu definition file", PACKAGE);
+
+    return NULL;
+}
