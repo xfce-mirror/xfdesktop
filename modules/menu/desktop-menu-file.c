@@ -223,13 +223,6 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 				g_build_path("/", state->cur_path, attribute_values[i], NULL),
 				GINT_TO_POINTER(1));
 		
-		gtk_drag_source_set(mi, GDK_MODIFIER_MASK, menu_dnd_targets,
-			n_menu_dnd_targets, GDK_ACTION_COPY);
-		g_signal_connect(G_OBJECT(mi), "drag-begin",
-				G_CALLBACK(menu_drag_begin_cb), NULL);
-		g_signal_connect(G_OBJECT(mi), "drag-data-get",
-				G_CALLBACK(menu_drag_data_get_cb), NULL);
-		
 		children = gtk_container_get_children(GTK_CONTAINER(state->cur_branch));
 		menu_pos = g_list_length(children) - 1;
 		g_list_free(children);

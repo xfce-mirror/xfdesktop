@@ -199,14 +199,6 @@ _menu_shell_insert_sorted(GtkMenuShell *menu_shell, GtkWidget *mi,
 			break;
 	}
 	
-	/* this should be somewhere else, but here's as good a place as any */
-	gtk_drag_source_set(mi, GDK_MODIFIER_MASK, menu_dnd_targets,
-			n_menu_dnd_targets, GDK_ACTION_COPY);
-	g_signal_connect(G_OBJECT(mi), "drag-begin",
-			G_CALLBACK(menu_drag_begin_cb), NULL);
-	g_signal_connect(G_OBJECT(mi), "drag-data-get",
-			G_CALLBACK(menu_drag_data_get_cb), NULL);
-	
 	gtk_menu_shell_insert(menu_shell, mi, i);
 	
 	return i;

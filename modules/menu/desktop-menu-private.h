@@ -53,10 +53,4 @@ struct _XfceDesktopMenu {
 void _xfce_desktop_menu_free_menudata(struct _XfceDesktopMenu *desktop_menu);
 extern gint _xfce_desktop_menu_icon_size;
 
-void menu_drag_begin_cb(GtkWidget *widget, GdkDragContext *drag_context, gpointer user_data);
-void menu_drag_data_get_cb(GtkWidget *widget, GdkDragContext *drag_context,
-		GtkSelectionData *data, guint info, guint time, gpointer user_data);
-extern const GtkTargetEntry menu_dnd_targets[];
-extern gint n_menu_dnd_targets;
-
 #endif  /* !def __DESKTOP_MENU_PRIVATE_H__ */
