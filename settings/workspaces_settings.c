@@ -41,8 +41,10 @@ static char **ws_names = NULL;
 
 static void run_dialog(McsPlugin *plugin);
 static void create_workspaces_channel(McsManager *manager);
+static void save_workspaces_channel(McsManager *manager);
 static void set_workspace_count(McsManager *manager, int count);
 static void set_workspace_names(McsManager *manager, char **names);
+static void watch_workspaces_hint(McsManager *manager);
 
 McsPluginInitResult mcs_plugin_init(McsPlugin *mcs_plugin)
 {
@@ -56,6 +58,8 @@ McsPluginInitResult mcs_plugin_init(McsPlugin *mcs_plugin)
 					   ICON_SIZE, ICON_SIZE);
 
     create_workspaces_channel(mcs_plugin->manager);
+    
+    watch_workspaces_hint(mcs_plugin->manager);
 
     return MCS_PLUGIN_INIT_OK;
 }
@@ -95,12 +99,52 @@ static void debug_array(char **array)
 #endif
 }
 
+static void update_names(McsManager *manager, int n)
+{
+    char **tmpnames;
+    int i, len;
+
+    len = array_size(ws_names);
+    
+    tmpnames = g_new(char*, n + 1);
+    tmpnames[n] = NULL;
+
+    for (i = 0; i < n; i++)
+    {
+	if (i < len)
+	    tmpnames[i] = g_strdup(ws_names[i]);
+	else
+	{
+	    const char *name;
+	    NetkWorkspace *ws = netk_screen_get_workspace(netk_screen,i);
+
+	    name = netk_workspace_get_name(ws);
+
+	    if (name && strlen(name))
+	    {
+		tmpnames[i] = g_strdup(name);
+	    }
+	    else
+	    {
+		char num[4];
+
+		snprintf(num, 3, "%d", i+1);
+		tmpnames[i] = g_strdup(num);
+	    }
+	}
+    }
+
+    g_strfreev(ws_names);
+    ws_names = tmpnames;
+
+    set_workspace_names(manager, ws_names);
+}
+
 /* create the channel and initialize settings */
 static void create_workspaces_channel(McsManager *manager)
 {
     McsSetting *setting;
-    int i, len, n;
-    char **tmpnames = NULL;
+    int len, n;
 
     create_channel(manager, WORKSPACES_CHANNEL, RCFILE);
 
@@ -119,47 +163,15 @@ static void create_workspaces_channel(McsManager *manager)
 
     if (setting)
     {
-	tmpnames = g_strsplit(setting->data.v_string, ":", -1);
+	ws_names = g_strsplit(setting->data.v_string, ":", -1);
     }
 
-    len = (tmpnames) ? array_size(tmpnames) : 0;
+    len = (ws_names) ? array_size(ws_names) : 0;
     n = (len > ws_count) ? len : ws_count;
     
-    ws_names = g_new(char*, n + 1);
-    ws_names[n] = NULL;
-        
-    for (i = 0; i < n; i++)
-    {
-	if (i < len && strlen(tmpnames[i]))
-	{
-	    ws_names[i] = g_strdup(tmpnames[i]);
-	}
-	else
-	{
-	    const char *name;
-	    NetkWorkspace *ws = netk_screen_get_workspace(netk_screen,i);
+    update_names(manager, n);
 
-	    name = netk_workspace_get_name(ws);
-
-	    if (name && strlen(name))
-	    {
-		ws_names[i] = g_strdup(name);
-	    }
-	    else
-	    {
-		char num[4];
-
-		snprintf(num, 3, "%d", i+1);
-		ws_names[i] = g_strdup(num);
-	    }
-	}
-    }
-
-    g_strfreev(tmpnames);
-
-    DBG("Test array:\n");
-    debug_array(ws_names);
-    set_workspace_names(manager, ws_names);
+    save_workspaces_channel(manager);
 }
 
 /* save the channel to file */
@@ -247,7 +259,7 @@ enum
    N_COLUMNS
 };
 
-static void treeview_set_rows(int n)
+static void treeview_set_rows(McsManager *manager, int n)
 {
     int i;
     GtkListStore *store;
@@ -297,27 +309,7 @@ static void treeview_set_rows(int n)
 	GtkTreeIter iter;
 
 	if (len < n)
-	{
-	    char **tmpnames = g_new(char*, n + 1);
-
-	    tmpnames[n] = NULL;
-
-	    for (i = 0; i < n; i++)
-	    {
-		if (i < len)
-		    tmpnames[i] = g_strdup(ws_names[i]);
-		else
-		{
-		    char num[4];
-
-		    snprintf(num, 3, "%d", i+1);
-		    tmpnames[i] = g_strdup(num);
-		}
-	    }
-
-	    g_strfreev(ws_names);
-	    ws_names = tmpnames;
-	}
+	    update_names(manager, n);
 	
 	for (i = treerows; i < n; i++)
 	{
@@ -461,7 +453,7 @@ static void add_names_treeview(GtkWidget *vbox, McsManager *manager)
     gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(treeview), FALSE);
 
     treerows=0;
-    treeview_set_rows(ws_count);
+    treeview_set_rows(manager, ws_count);
 
     renderer = gtk_cell_renderer_text_new ();
     column = gtk_tree_view_column_new_with_attributes ("Number", renderer,
@@ -497,7 +489,7 @@ static void count_changed(GtkSpinButton *spin, McsManager *manager)
     ws_count = n;
     set_workspace_count(manager, n);
 
-    treeview_set_rows(n);
+    treeview_set_rows(manager, n);
 }
 
 static void add_count_spinbox(GtkWidget *vbox, McsManager *manager)
@@ -618,4 +610,46 @@ static void run_dialog(McsPlugin *plugin )
     gtk_widget_show(dialog);
 }
 
+/* watch for changes by other programs */
+static void update_channel(NetkScreen *screen, NetkWorkspace *ws, 
+			   McsManager *manager)
+{
+    char **names;
+    char *string;
+    int i, len;
+
+    ws_count = netk_screen_get_workspace_count(screen);
+
+    /* ws count */
+    mcs_manager_set_int(manager, "count", WORKSPACES_CHANNEL, ws_count);
+    
+    /* ws names; only save current ws names */
+    names = g_new(char*, ws_count+1);
+    names[ws_count] = NULL;
+
+    len = array_size(ws_names);
+
+    if (len < ws_count)
+	update_names(manager, ws_count);
+    
+    for (i = 0; i < ws_count; i++)
+	names[i] = g_strdup(ws_names[i]);
+    
+    string = g_strjoinv(":", names);
+    g_strfreev(names);
+    
+    mcs_manager_set_string(manager, "names", WORKSPACES_CHANNEL, string);
+    g_free(string);
+    
+    mcs_manager_notify(manager, WORKSPACES_CHANNEL);
+    save_workspaces_channel(manager);
+}
+
+static void watch_workspaces_hint(McsManager *manager)
+{
+    g_signal_connect(netk_screen, "workspace-created",
+	    	     G_CALLBACK(update_channel), manager);
+    g_signal_connect(netk_screen, "workspace-destroyed",
+	    	     G_CALLBACK(update_channel), manager);
+}
 
