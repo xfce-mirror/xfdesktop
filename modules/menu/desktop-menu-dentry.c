@@ -397,9 +397,11 @@ menu_dentry_parse_dentry_file(XfceDesktopMenu *desktop_menu,
 	TRACE("dummy");
 	dentry = xfce_desktop_entry_new(filename, dentry_keywords,
 			G_N_ELEMENTS(dentry_keywords));
-	xfce_desktop_entry_parse(dentry);
-	menu_dentry_parse_dentry(desktop_menu, dentry, pathtype, FALSE, NULL);
-	g_object_unref(G_OBJECT(dentry));
+	if(dentry) {
+		if(xfce_desktop_entry_parse(dentry))
+			menu_dentry_parse_dentry(desktop_menu, dentry, pathtype, FALSE, NULL);
+		g_object_unref(G_OBJECT(dentry));
+	}
 }
 
 void
@@ -420,7 +422,7 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 
 	TRACE("base: %s", desktop_menu->dentry_basepath);
 	
-	if(g_file_test(catfile_user, G_FILE_TEST_IS_REGULAR)) {
+	if(g_file_test(catfile_user, G_FILE_TEST_EXISTS)) {
 		if(!desktop_menuspec_parse_categories(catfile_user)) {
 			if(!desktop_menuspec_parse_categories(catfile)) {
 				g_free(catfile);
@@ -538,9 +540,11 @@ menu_dentry_legacy_parse_dentry_file(XfceDesktopMenu *desktop_menu,
 	
 	dentry = xfce_desktop_entry_new(filename, dentry_keywords,
 			G_N_ELEMENTS(dentry_keywords));
-	xfce_desktop_entry_parse(dentry);
-	menu_dentry_parse_dentry(desktop_menu, dentry, pathtype, TRUE, category);
-	g_object_unref(G_OBJECT(dentry));
+	if(dentry) {
+		if(xfce_desktop_entry_parse(dentry))
+			menu_dentry_parse_dentry(desktop_menu, dentry, pathtype, TRUE, category);
+		g_object_unref(G_OBJECT(dentry));
+	}
 }
 
 static void

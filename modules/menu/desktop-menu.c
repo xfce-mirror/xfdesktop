@@ -206,8 +206,8 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 static gint
 _calc_icon_size()
 {
-	static guchar icon_sizes[] = { 12, 16, 22, 24, 32, 36, 48, 64, 72, 96, 128, 0 };
-	gint i, icon_size = -1;
+	static guchar icon_sizes[] = { 128, 96, 72, 64, 48, 36, 32, 24, 22, 16, 12, 0 };
+	gint i, icon_size = 128;
 	GtkWidget *w;
 	GtkStyle *style;
 	gint width, height;
@@ -230,10 +230,13 @@ _calc_icon_size()
 	g_object_unref(G_OBJECT(pctx));
 	g_object_unref(G_OBJECT(playout));
 	gtk_widget_destroy(w);
+	
+	/* warning: lame hack alert */
+	height += 3;
 
 	/* figure out an ideal icon size */
 	for(i=0; icon_sizes[i]; i++) {
-		if(icon_sizes[i] < height)
+		if(icon_sizes[i] >= height)
 			icon_size = icon_sizes[i];
 		else
 			break;
