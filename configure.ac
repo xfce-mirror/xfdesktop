@@ -34,7 +34,7 @@ dnl Check for X11 installed
 BM_LIBX11_REQUIRE
 
 XFCE_PANEL_PLUGIN([XFCE4_PANEL], [4.0.0])
-BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.1.8)
+BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.1.9)
 BM_DEPEND([LIBXFCE4UTIL], libxfce4util-1.0, 4.1.3)
 BM_DEPEND([LIBXML], libxml-2.0, 2.4.0)
 BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [4.0.0])
