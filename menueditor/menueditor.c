@@ -92,7 +92,7 @@ static gboolean icon_theme_update_foreach_func (GtkTreeModel *model, GtkTreePath
     if (icon)
       g_object_unref (icon);
     
-    icon = xfce_icon_theme_load (XFCE_ICON_THEME (data), prop_icon, ICON_SIZE);
+    icon = xfce_icon_theme_load (me->icon_theme, prop_icon, ICON_SIZE);
     gtk_tree_store_set (me->treestore, iter, ICON_COLUMN, icon, -1);
   }
 
@@ -111,7 +111,7 @@ static void icon_theme_changed_cb (XfceIconTheme *icon_theme, gpointer user_data
   model = gtk_tree_view_get_model (GTK_TREE_VIEW (me->treeview));
 
   if (model)
-    gtk_tree_model_foreach (model, &icon_theme_update_foreach_func, me->icon_theme);
+    gtk_tree_model_foreach (model, &icon_theme_update_foreach_func, me);
 }
 
 /*******************************/
