@@ -93,17 +93,16 @@ add_dir(const gchar *path, GtkListStore *ls, GtkWidget *parent)
 		nfiles++;
 	g_dir_rewind(dir);
 	
-	pdlg = gtk_dialog_new();
-	gtk_window_set_title(GTK_WINDOW(pdlg), _("Backdrop"));
-	gtk_dialog_set_has_separator(GTK_DIALOG(pdlg), FALSE);
-	gtk_window_set_transient_for(GTK_WINDOW(pdlg), GTK_WINDOW(parent));
-	gtk_window_set_destroy_with_parent(GTK_WINDOW(pdlg), TRUE);
-	gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 6);
+	pdlg = gtk_dialog_new_with_buttons(_("Backdrop"), GTK_WINDOW(parent),
+			GTK_DIALOG_NO_SEPARATOR|GTK_DIALOG_DESTROY_WITH_PARENT|GTK_DIALOG_MODAL, NULL);
+	gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 12);
 	
 	pathlbl = g_strdup_printf(_("Adding files from directory %s..."), path);
 	lbl = gtk_label_new(pathlbl);
 	gtk_widget_show(lbl);
 	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), lbl, FALSE, FALSE, 0);
+	
+	add_spacer(GTK_BOX(GTK_DIALOG(pdlg)->vbox));
 	
 	pbar = gtk_progress_bar_new();
 	gtk_widget_show(pbar);
@@ -154,11 +153,8 @@ read_file(const gchar *filename, GtkListStore *ls, GtkWidget *parent)
 	struct stat st;
 	gint size_tot = -1, size_read = 0;
 	
-	pdlg = gtk_dialog_new();
-	gtk_window_set_title(GTK_WINDOW(pdlg), _("Backdrop"));
-	gtk_dialog_set_has_separator(GTK_DIALOG(pdlg), FALSE);
-	gtk_window_set_transient_for(GTK_WINDOW(pdlg), GTK_WINDOW(parent));
-	gtk_window_set_destroy_with_parent(GTK_WINDOW(pdlg), TRUE);
+	pdlg = gtk_dialog_new_with_buttons(_("Backdrop"), GTK_WINDOW(parent),
+			GTK_DIALOG_NO_SEPARATOR|GTK_DIALOG_DESTROY_WITH_PARENT|GTK_DIALOG_MODAL, NULL);
 	gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 12);
 	
 	pathlbl = g_strdup_printf(_("Adding files from list %s..."), filename);
@@ -424,7 +420,7 @@ static GtkTargetEntry target_table[] = {
 };
 
 static GtkTreeView *
-add_tree_view(GtkWidget *vbox, const gchar *path)
+add_tree_view(GtkWidget *vbox, const gchar *path, GtkWidget *parent)
 {
     GtkWidget *treeview_scroll, *treeview;
     GtkListStore *store;
@@ -448,7 +444,7 @@ add_tree_view(GtkWidget *vbox, const gchar *path)
     gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(treeview), FALSE);
 
 	if(path)
-		read_file(path, store, gtk_widget_get_toplevel(vbox));
+		read_file(path, store, parent);
 
     g_object_unref (G_OBJECT (store));
 
@@ -498,13 +494,13 @@ update_preview_cb(XfceFileChooser *chooser, gpointer data)
 static void
 list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 {
-	GtkWidget *chooser, *preview, *dialog;
+	GtkWidget *chooser, *preview, *parent;
 	XfceFileFilter *filter;
 	
-	dialog = gtk_widget_get_toplevel(GTK_WIDGET(treeview));
+	parent = gtk_widget_get_toplevel(GTK_WIDGET(treeview));
 	
 	chooser = xfce_file_chooser_new(_("Select backdrop image file"),
-			GTK_WINDOW(dialog), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
+			GTK_WINDOW(parent), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
 			GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 	
 	filter = xfce_file_filter_new();
@@ -554,11 +550,10 @@ list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 			
 			nfiles = g_slist_length(filenames);
 			if(nfiles > 4) {
-				pdlg = gtk_dialog_new();
-				gtk_window_set_title(GTK_WINDOW(pdlg), _("Backdrop"));
-				gtk_dialog_set_has_separator(GTK_DIALOG(pdlg), FALSE);
-				gtk_window_set_transient_for(GTK_WINDOW(pdlg), GTK_WINDOW(dialog));
-				gtk_window_set_destroy_with_parent(GTK_WINDOW(pdlg), TRUE);
+				pdlg = gtk_dialog_new_with_buttons(_("Backdrop"),
+						GTK_WINDOW(parent),
+						GTK_DIALOG_NO_SEPARATOR|GTK_DIALOG_DESTROY_WITH_PARENT|GTK_DIALOG_MODAL,
+						NULL);
 				gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 12);
 				
 				lbl = gtk_label_new(_("Adding multiple files..."));
@@ -736,7 +731,7 @@ list_mgr_dialog_new(const gchar *title, GtkWidget *parent, const gchar *path,
     gtk_widget_show(vbox);
     xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
 
-    *tv = add_tree_view(vbox, path);
+    *tv = add_tree_view(vbox, path, *dialog);
 	if(!path)
 		 path = xfce_get_userfile(_("backdrops.list"), NULL);
 
