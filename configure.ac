@@ -4,7 +4,7 @@ dnl xfdesktop - xfce4's desktop manager
 dnl
 
 dml version info
-m4_define([xfdesktop_version], [4.1.99.3])
+m4_define([xfdesktop_version], [4.2.0])
 
 dnl init autoconf
 AC_INIT([xfdesktop], [xfdesktop_version], [bjt23@cornell.edu])
@@ -45,11 +45,11 @@ dnl required
 BM_DEPEND([GMODULE], [gmodule-2.0], [2.2.0])
 BM_DEPEND([GOBJECT], [gobject-2.0], [2.2.0])
 BM_DEPEND([GTK], [gtk+-2.0], [2.2.0])
-BM_DEPEND([LIBXFCE4UTIL], libxfce4util-1.0, 4.1.99)
-BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.1.99)
-BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [4.1.99])
-XFCE_PANEL_PLUGIN([XFCE4_PANEL], [4.1.99])
-XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.1.99])
+BM_DEPEND([LIBXFCE4UTIL], libxfce4util-1.0, 4.2.0)
+BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.2.0)
+BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [4.2.0])
+XFCE_PANEL_PLUGIN([XFCE4_PANEL], [4.2.0])
+XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.2.0])
 
 dnl check for libxml2 for menueditor
 BM_DEPEND_CHECK([LIBXML], libxml-2.0, 2.4.0, [libxml2],
