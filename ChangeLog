@@ -1,3 +1,197 @@
+2004-09-30 10:17  pollux
+
+	* po/: it.gmo, it.po: Updated Italian translations from Luca
+	  Marrocco <buildup@libero.it>
+
+2004-09-29 10:22  pollux
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  depcomp, install-sh, ltmain.sh, menu.xml.zh_TW,
+	  backdrops/Makefile.in, common/Makefile.in,
+	  menueditor/Makefile.in, modules/Makefile.in,
+	  modules/menu/Makefile.am, modules/menu/Makefile.in,
+	  modules/menu/xfce-registered-categories.xml.zh_TW,
+	  panel-plugin/Makefile.in, pixmaps/Makefile.in, po/zh_TW.gmo,
+	  po/zh_TW.po, settings/Makefile.in, src/Makefile.in: updated zh_TW
+	  translations from Ambrose Li <acli@ada.dhs.org>
+
+2004-09-29 09:59  pollux
+
+	* po/: zh_CN.gmo, zh_CN.po: updated zh_CN translations from yongtao
+	  yang <yongtao.yang@gmail.com>
+
+2004-09-27 09:07  kelnos
+
+	* settings/backdrop-mgr.c: bleh, some old compilers barf on this
+
+2004-09-27 09:00  kelnos
+
+	* common/xfdesktop-common.c, common/xfdesktop-common.h,
+	  settings/backdrop-mgr.c, settings/settings_common.c,
+	  settings/settings_common.h, src/xfce-desktop.c: remove image
+	  validation from backdrop list editor; handle fixing up list files
+	  in xfdesktop instead (bug #326)
+
+2004-09-26 11:56  jasper
+
+	* doc/: Makefile.in, C/Makefile.in, C/images/Makefile.in,
+	  fr/Makefile.in, fr/xfdesktop.html, fr/images/Makefile.in,
+	  it/Makefile.in, it/xfdesktop.html, it/images/Makefile.in: Fix
+	  html target for docs. Not build by default.
+
+2004-09-26 00:23  kelnos
+
+	* src/main.c: committing nils rennebarth's patch to forward scroll
+	  events and other unused mouse events to the (real) root window.
+	  with a couple style fixes, and making it non-broken for multihead
+	  ^_~
+
+2004-09-24 08:05  kelnos
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  configure.ac, depcomp, install-sh, ltmain.sh,
+	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
+	  doc/C/Makefile.in, doc/C/images/Makefile.in, doc/fr/Makefile.in,
+	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
+	  doc/it/images/Makefile.in, menueditor/Makefile.in,
+	  modules/Makefile.in, modules/menu/Makefile.in,
+	  panel-plugin/Makefile.in, pixmaps/Makefile.in, po/ar.gmo,
+	  po/ar.po, po/az.gmo, po/az.po, po/be.gmo, po/be.po, po/bg.gmo,
+	  po/bg.po, po/ca.gmo, po/ca.po, po/cs.gmo, po/cs.po, po/de.gmo,
+	  po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po,
+	  po/et.gmo, po/et.po, po/eu.gmo, po/eu.po, po/fa_IR.gmo,
+	  po/fa_IR.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/he.gmo,
+	  po/he.po, po/hi.gmo, po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo,
+	  po/it.po, po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo,
+	  po/lt.po, po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po, po/pl.gmo,
+	  po/pl.po, po/pt_BR.gmo, po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po,
+	  po/ru.gmo, po/ru.po, po/sk.gmo, po/sk.po, po/sv.gmo, po/sv.po,
+	  po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po,
+	  po/vi.gmo, po/vi.po, po/xfdesktop.pot, po/zh_CN.gmo, po/zh_CN.po,
+	  po/zh_TW.gmo, po/zh_TW.po, settings/Makefile.in,
+	  settings/backdrop-mgr.c, settings/backdrop_settings.c,
+	  src/Makefile.in: migrate ~/.xfce4/backdrops.list bump version to
+	  4.1.90
+
+2004-09-23 23:41  pollux
+
+	* menueditor/: dnd.c, menueditor.c, menueditor.h, move.c: fix #322
+	  (Mantis)
+
+2004-09-23 23:37  pollux
+
+	* configure, configure.ac, po/gu.gmo, po/gu.po: add Gujarati
+	  translations (GU) from Ankit Patel <ankit@redhat.com>
+
+2004-09-23 22:51  jasper
+
+	* panel-plugin/desktop-menu-plugin.c: Fix resizing problems (Bug
+	  #327)
+
+2004-09-23 21:20  jasper
+
+	* menueditor/menueditor.c: Fix crash when icon theme changes
+
+2004-09-23 11:42  jasper
+
+	* modules/menu/xfce-registered-categories.xml.nl: nl update
+
+2004-09-23 11:19  jasper
+
+	* menu.xml.nl: nl updte
+
+2004-09-23 11:09  jasper
+
+	* settings/xfce-backdrop-settings.desktop, po/nl.po: Better
+	  translation
+
+2004-09-23 10:22  jasper
+
+	* menueditor/xfce-menueditor.desktop,
+	  settings/xfce-backdrop-settings.desktop: Add nl translations
+
+2004-09-23 07:20  jasper
+
+	* menu.xml.nl, modules/menu/Makefile.am, modules/menu/Makefile.in,
+	  modules/menu/xfce-registered-categories.xml.nl: updated nl menu
+	  and categories file
+
+2004-09-23 04:30  kelnos
+
+	* src/: xfce-backdrop.c, xfce-desktop.c: whoops!  committed the
+	  wrong file. reverting xfce-desktop.c and committing my "just in
+	  case..." to xfce-backdrop.c
+
+2004-09-23 04:28  kelnos
+
+	* src/xfce-desktop.c: just in case...
+
+2004-09-22 18:16  pollux
+
+	* menueditor/: add_dialog.c, add_menu_dialog.c, edit_dialog.c,
+	  menueditor.c, menueditor.h, new_dialog.c: fix #324
+
+2004-09-22 09:21  kelnos
+
+	* po/: ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
+	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
+	  es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po, fa_IR.gmo,
+	  fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po, he.gmo, he.po, hi.gmo,
+	  hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po, ko.gmo,
+	  ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo,
+	  pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po,
+	  sk.gmo, sk.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po,
+	  uk.gmo, uk.po, vi.gmo, vi.po, xfdesktop.pot, zh_CN.gmo, zh_CN.po,
+	  zh_TW.gmo, zh_TW.po: run "make update-po && make"
+
+2004-09-22 09:20  kelnos
+
+	* modules/menu/: desktop-menu-dentry.c, desktop-menuspec.c: remove
+	  a couple strings that should NOT be translated
+
+2004-09-22 08:59  kelnos
+
+	* menu.xml: update menu a bit
+
+2004-09-22 05:46  kelnos
+
+	* modules/menu/desktop-menu-dentry.c: add GenericName to menu
+	  parser
+
+2004-09-22 05:18  kelnos
+
+	* menueditor/xfce-menueditor.desktop,
+	  settings/xfce-backdrop-settings.desktop: add GenericName tags to
+	  settings .desktop files
+
+2004-09-22 04:24  kelnos
+
+	* modules/menu/: desktop-menu-dentry.c, desktop-menu-file.c: revert
+	  speed-enhancing fix.	at least the menu widgets won't get all
+	  funky for some people (odd that i've never seen it.)
+
+2004-09-21 13:51  jasper
+
+	* po/: ar.gmo, ar.po, az.gmo, az.po, be.gmo, be.po, bg.gmo, bg.po,
+	  ca.gmo, ca.po, cs.gmo, cs.po, de.gmo, de.po, es.gmo, es.po,
+	  es_MX.gmo, es_MX.po, et.gmo, et.po, eu.gmo, eu.po, fa_IR.gmo,
+	  fa_IR.po, fi.gmo, fi.po, fr.gmo, fr.po, he.gmo, he.po, hi.gmo,
+	  hi.po, hu.gmo, hu.po, it.gmo, it.po, ja.gmo, ja.po, ko.gmo,
+	  ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po, pl.gmo,
+	  pl.po, pt_BR.gmo, pt_BR.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po,
+	  sk.gmo, sk.po, sv.gmo, sv.po, ta.gmo, ta.po, tr.gmo, tr.po,
+	  uk.gmo, uk.po, vi.gmo, vi.po, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
+	  zh_TW.po: Run make update-po at Moe's request.
+
+2004-09-21 12:59  moe
+
+	* po/de.po: Updating de.po. Need to run 'update-po' in all module
+	  directories
+
+2004-09-21 00:22  olivier
+
+	* ChangeLog, po/xfdesktop.pot: Update all ChangeLogs
+
 2004-09-20 13:46  pollux
 
 	* menueditor/: Makefile.am, Makefile.in, TODO, about_dialog.c,
