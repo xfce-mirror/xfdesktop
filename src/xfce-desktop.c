@@ -304,12 +304,20 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 		style = gtk_widget_get_style(desktop);
 		if(style)
 			cur_pmap = style->bg_pixmap[GTK_STATE_NORMAL];
+		if(cur_pmap) {
+			gint pw, ph;
+			gdk_drawable_get_size(GDK_DRAWABLE(cur_pmap), &pw, &ph);
+			if(pw == swidth && ph == sheight) {
+				cur_pbuf = gdk_pixbuf_get_from_drawable(NULL, 
+						GDK_DRAWABLE(cur_pmap), cmap, 0, 0, 0, 0, swidth,
+						sheight);
+			} else
+				cur_pmap = NULL;
+		}
+		/* if the style's bg_pixmap was empty, or the above failed... */
 		if(!cur_pmap) {
 			cur_pbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8,
 					swidth, sheight);
-		} else {
-			cur_pbuf = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE(cur_pmap),
-					cmap, 0, 0, 0, 0, swidth, sheight);
 		}
 		
 		gdk_screen_get_monitor_geometry(gscreen, n, &rect);
@@ -317,7 +325,8 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 				gdk_pixbuf_get_height(pix), cur_pbuf, rect.x, rect.y);
 		g_object_unref(G_OBJECT(pix));
 		pmap = NULL;
-		gdk_pixbuf_render_pixmap_and_mask_for_colormap(cur_pbuf, cmap, &pmap, NULL, 0);
+		gdk_pixbuf_render_pixmap_and_mask_for_colormap(cur_pbuf, cmap,
+				&pmap, NULL, 0);
 		g_object_unref(G_OBJECT(cur_pbuf));
 		if(!pmap)
 			return;
