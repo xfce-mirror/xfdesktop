@@ -88,7 +88,6 @@ activate_window(GtkWidget *w, gpointer user_data)
 	NetkWindow *netk_window = user_data;
 	
 	netk_workspace_activate(netk_window_get_workspace(netk_window));
-	g_usleep (500);
 	netk_window_activate(netk_window);
 }
 
