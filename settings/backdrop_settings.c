@@ -109,21 +109,20 @@ static void backdrop_create_channel (McsPlugin * mcs_plugin);
 static gboolean backdrop_write_options (McsPlugin * mcs_plugin);
 static void run_dialog (McsPlugin * mcs_plugin);
 
-#if !GTK_CHECK_VERSION(2, 4, 0)
 static void
-filesel_response_accept(GtkWidget *w, gpointer user_data)
+dlg_response_accept(GtkWidget *w, gpointer user_data)
 {
 	GtkDialog *dialog = GTK_DIALOG(user_data);
 	gtk_dialog_response(dialog, GTK_RESPONSE_ACCEPT);
 }
 
 static void
-filesel_response_cancel(GtkWidget *w, gpointer user_data)
+dlg_response_cancel(GtkWidget *w, gpointer user_data)
 {
 	GtkDialog *dialog = GTK_DIALOG(user_data);
 	gtk_dialog_response(dialog, GTK_RESPONSE_CANCEL);
 }
-#endif
+
 
 static GdkPixbuf *
 backdrop_icon_at_size (int width, int height)
@@ -309,74 +308,50 @@ update_path (BackdropDialog * bd)
     mcs_manager_notify (bd->plugin->manager, BACKDROP_CHANNEL);
 }
 
-/* color button */
-static void
-set_color (GtkWidget * b, BackdropDialog * bd)
-{
-    GdkColor color;
-    GtkColorSelectionDialog *dialog;
-    GtkColorSelection *sel;
-    GdkPixbuf *pixbuf;
-    guint32 rgba;
-
-    if (!is_running)
-	return;
-
-    dialog = GTK_COLOR_SELECTION_DIALOG (gtk_widget_get_toplevel (b));
-
-    sel = GTK_COLOR_SELECTION (dialog->colorsel);
-
-    gtk_color_selection_get_current_color (sel, &color);
-
-    backdrop_color.red = color.red;
-    backdrop_color.green = color.green;
-    backdrop_color.blue = color.blue;
-    bd->color = color;
-
-    mcs_manager_set_color (bd->plugin->manager, "color", BACKDROP_CHANNEL,
-			   &backdrop_color);
-    mcs_manager_notify (bd->plugin->manager, BACKDROP_CHANNEL);
-
-    pixbuf = gtk_image_get_pixbuf (GTK_IMAGE (bd->color_box));
-    rgba =
-	(((color.red & 0xff00) << 8) | ((color.green & 0xff00)) | ((color.
-								    blue &
-								    0xff00) >>
-								   8)) << 8;
-    gdk_pixbuf_fill (pixbuf, rgba);
-}
-
 static void
 color_picker (GtkWidget * b, BackdropDialog * bd)
 {
-    static GtkWidget *dialog = NULL;
-    GtkWidget *button, *sel;
+	GtkWidget *dialog;
+	GtkWidget *button, *sel;
+	GdkPixbuf *pixbuf;
+	GdkColor color;
+	guint32 rgba;
+	
+	dialog = gtk_color_selection_dialog_new(_("Select backdrop color"));
+	
+	gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_MOUSE);
+	
+	button = GTK_COLOR_SELECTION_DIALOG(dialog)->ok_button;
+	g_signal_connect(button, "clicked", G_CALLBACK(dlg_response_accept), dialog);
+	
+	button = GTK_COLOR_SELECTION_DIALOG (dialog)->cancel_button;
+	g_signal_connect(button, "clicked", G_CALLBACK (dlg_response_cancel), dialog);
+	
+	sel = GTK_COLOR_SELECTION_DIALOG(dialog)->colorsel;
+	gtk_color_selection_set_current_color(GTK_COLOR_SELECTION(sel), &(bd->color));
+	
+	gtk_widget_show(dialog);
+	if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
+		gtk_color_selection_get_current_color(GTK_COLOR_SELECTION(sel), &color);
 
-    if (dialog)
-    {
-	gtk_window_present (GTK_WINDOW (dialog));
-	return;
-    }
-
-    dialog = gtk_color_selection_dialog_new (_("Select backdrop color"));
-    g_object_add_weak_pointer (G_OBJECT (dialog), (gpointer) & dialog);
-
-    gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_MOUSE);
-
-    button = GTK_COLOR_SELECTION_DIALOG (dialog)->ok_button;
-    g_signal_connect (button, "clicked", G_CALLBACK (set_color), bd);
-    g_signal_connect_swapped (button, "clicked",
-			      G_CALLBACK (gtk_widget_destroy), dialog);
-
-    button = GTK_COLOR_SELECTION_DIALOG (dialog)->cancel_button;
-    g_signal_connect_swapped (button, "clicked",
-			      G_CALLBACK (gtk_widget_destroy), dialog);
-
-    sel = GTK_COLOR_SELECTION_DIALOG (dialog)->colorsel;
-
-    gtk_color_selection_set_current_color (GTK_COLOR_SELECTION (sel),
-					   &(bd->color));
-    gtk_widget_show (dialog);
+		backdrop_color.red = color.red;
+		backdrop_color.green = color.green;
+		backdrop_color.blue = color.blue;
+		bd->color = color;
+	
+		mcs_manager_set_color(bd->plugin->manager, "color", BACKDROP_CHANNEL,
+				   &backdrop_color);
+		mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
+	
+		pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(bd->color_box));
+		rgba =
+		(((color.red & 0xff00) << 8) | ((color.green & 0xff00)) | ((color.
+										blue &
+										0xff00) >>
+									   8)) << 8;
+		gdk_pixbuf_fill(pixbuf, rgba);
+	}
+	gtk_widget_destroy(dialog);
 }
 
 static void
@@ -982,6 +957,7 @@ run_dialog (McsPlugin * mcs_plugin)
 
     bd = create_backdrop_dialog(mcs_plugin);
     gtk_window_set_position(GTK_WINDOW(bd->dialog), GTK_WIN_POS_CENTER);
+	gtk_window_set_modal(GTK_WINDOW(bd->dialog), FALSE);
     gtk_widget_show(bd->dialog);
 	while(!done) {
 		switch(gtk_dialog_run(GTK_DIALOG(bd->dialog))) {
