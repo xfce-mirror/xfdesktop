@@ -398,8 +398,21 @@ void menu_open_default_cb(GtkWidget *widget, gpointer data)
 
   /* Check if there is no other file opened */
   if(menueditor_app.xml_menu_file != NULL && menueditor_app.menu_modified){
-    if(xfce_confirm ( _("Do you want to save before closing the file?"), GTK_STOCK_YES, NULL))
+    gint response;
+
+    response = xfce_message_dialog (GTK_WINDOW (menueditor_app.main_window), _("Question"),
+				    GTK_STOCK_DIALOG_QUESTION,
+				    _("Do you want to save before opening the default menu ?"),
+				    NULL,
+				    XFCE_CUSTOM_BUTTON, _("Ignore modifications"), GTK_RESPONSE_NO,
+				    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+				    GTK_STOCK_SAVE, GTK_RESPONSE_YES, NULL);
+    switch(response){
+    case GTK_RESPONSE_CANCEL:
+      return;
+    case GTK_RESPONSE_YES:
       menu_save_cb(widget,NULL);
+    }
   }
 
   if(menueditor_app.xml_menu_file != NULL){
@@ -440,8 +453,21 @@ void menu_open_cb(GtkWidget *widget, gpointer data)
 
   /* Check if there is no other file opened */
   if(menueditor_app.xml_menu_file != NULL && menueditor_app.menu_modified){
-    if(xfce_confirm ( _("Do you want to save before closing the file?"), GTK_STOCK_YES, NULL))
-      menu_save_cb(widget, NULL);
+    gint response;
+
+    response = xfce_message_dialog (GTK_WINDOW (menueditor_app.main_window), _("Question"),
+				    GTK_STOCK_DIALOG_QUESTION,
+				    _("Do you want to save before opening an other menu ?"),
+				    NULL,
+				    XFCE_CUSTOM_BUTTON, _("Ignore modifications"), GTK_RESPONSE_NO,
+				    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+				    GTK_STOCK_SAVE, GTK_RESPONSE_YES, NULL);
+    switch(response){
+    case GTK_RESPONSE_CANCEL:
+      return;
+    case GTK_RESPONSE_YES:
+      menu_save_cb(widget,NULL);
+    }
   }
 
   filesel_dialog = xfce_file_chooser_new (_("Open menu file"), GTK_WINDOW (menueditor_app.main_window),
@@ -566,8 +592,21 @@ void menu_saveas_cb(GtkWidget *widget, gpointer data)
 void close_menu_cb(GtkWidget *widget, gpointer data)
 {
   if(menueditor_app.menu_modified==TRUE){
-    if(xfce_confirm ( _("Do you want to save before closing the file ?"), GTK_STOCK_YES, NULL))
-      menu_save_cb(widget,data);
+    gint response;
+
+    response = xfce_message_dialog (GTK_WINDOW (menueditor_app.main_window), _("Question"),
+				    GTK_STOCK_DIALOG_QUESTION,
+				    _("Do you want to save before closing the menu ?"),
+				    NULL,
+				    XFCE_CUSTOM_BUTTON, _("Ignore modifications"), GTK_RESPONSE_NO,
+				    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+				    GTK_STOCK_SAVE, GTK_RESPONSE_YES, NULL);
+    switch(response){
+    case GTK_RESPONSE_CANCEL:
+      return;
+    case GTK_RESPONSE_YES:
+      menu_save_cb(widget,NULL);
+    }
   }
 
   xmlFreeDoc(menueditor_app.xml_menu_file);
@@ -1141,7 +1180,7 @@ void open_menu_file(gchar *menu_file)
   if(menueditor_app.xml_menu_file==NULL){
     xfce_err ( _("Corrupted file or incorrect file format !"));
 #ifdef DEBUG
-    g_warning ( "%s\n", _("Corrupted file or incorrect file format !"));
+    g_warning ( "%s\n", "Corrupted file or incorrect file format !");
 #endif
     
     xmlFreeDoc(menueditor_app.xml_menu_file);
@@ -1154,7 +1193,7 @@ void open_menu_file(gchar *menu_file)
   if(root==NULL){
     xfce_err ( _("No root element in file !"));
 #ifdef DEBUG
-    g_warning ( "%s\n", _("No root element in file !"));
+    g_warning ( "%s\n", "No root element in file !");
 #endif
     
     xmlFreeDoc(menueditor_app.xml_menu_file);
@@ -1165,7 +1204,7 @@ void open_menu_file(gchar *menu_file)
   if(xmlStrcmp(root->name,(xmlChar*)"xfdesktop-menu")){
     xfce_err ( _("Bad datafile format !"));
 #ifdef DEBUG
-    g_warning ( "%s\n", _("Bad datafile format !"));
+    g_warning ( "%s\n", "Bad datafile format !");
 #endif
     
     xmlFreeDoc(menueditor_app.xml_menu_file);
