@@ -32,5 +32,6 @@ typedef enum {
 } MenuPathType;
 
 GList *menu_dentry_parse_files(const char *basepath, MenuPathType pathtype);
+gboolean menu_dentry_need_update(void);
 
 #endif

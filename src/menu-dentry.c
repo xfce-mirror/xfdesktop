@@ -61,8 +61,10 @@ static const char *dentry_keywords [] = {
 };
 
 static char *dentry_paths[] = {
+	"/usr/local/share/applications/",
 	"/usr/share/applications/",
-	"/usr/share/applications/kde/"
+	"/usr/share/applications/kde/",
+	"/usr/share/gnome/apps/",
 };
 
 /* this is to work around some abuses of the Exec= parameter, e.g.:
@@ -353,4 +355,34 @@ menu_dentry_parse_files(const char *basepath, MenuPathType pathtype)
 	menuspec_free();
 	
 	return menu_data;
+}
+
+static time_t
+dentry_mtimes[20] = {0};
+
+gboolean
+menu_dentry_need_update()
+{
+	gint i;
+	gboolean modified;
+	struct stat st;
+	
+	modified = FALSE;
+	
+	for(i = 0; i < G_N_ELEMENTS (dentry_mtimes) && i < G_N_ELEMENTS (dentry_paths); i++) {
+		if(stat(dentry_paths[i], &st) == 0) {
+			if (st.st_mtime > dentry_mtimes[i]) {
+				dentry_mtimes[i] = st.st_mtime;
+				modified = TRUE;
+			}
+		} else {
+			if (dentry_mtimes[i] > 0) {
+				/* was there, is gone now */
+				modified = TRUE;
+				dentry_mtimes[i] = 0;
+			}
+		}
+	}
+	
+	return (modified);
 }
