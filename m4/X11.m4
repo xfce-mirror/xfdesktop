@@ -4,7 +4,6 @@ dnl Check for X11
 AC_DEFUN([BM_LIBX11],
 [
   AC_REQUIRE([AC_PATH_XTRA])
-  AC_REQUIRE([BM_RPATH_SUPPORT])
   LIBX11_CFLAGS= LIBX11_LDFLAGS= LIBX11_LIBS=
   if test "$no_x" != "yes"; then
     AC_CHECK_LIB(X11, main,
@@ -15,11 +14,8 @@ AC_DEFUN([BM_LIBX11],
       	case "$option" in
         -L*)
           path=`echo $option | sed 's/^-L//'`
-          if test "x$path" != "x"; then
+          if test x"$path" != x""; then
             LIBX11_LDFLAGS="$LIBX11_LDFLAGS -L$path"
-            if test -n "$LD_RPATH"; then
-              LIBX11_LDFLAGS="$LIBX11_LDFLAGS $LD_RPATH$path"
-            fi
           fi
           ;;
         *)
@@ -27,7 +23,7 @@ AC_DEFUN([BM_LIBX11],
           ;;
         esac
       done
-      if ! echo $LIBX11_LIBS | grep -q -- '-lX11'; then
+      if ! echo $LIBX11_LIBS | grep -- '-lX11' > /dev/null; then
         LIBX11_LIBS="$LIBX11_LIBS -lX11"
       fi
     ], [], [$X_CFLAGS $X_PRE_LIBS $X_EXTRA_LIBS $X_LIBS])
@@ -40,7 +36,7 @@ AC_DEFUN([BM_LIBX11],
 AC_DEFUN([BM_LIBX11_REQUIRE],
 [
   AC_REQUIRE([BM_LIBX11])
-  if test "$no_x" == "yes"; then
+  if test "$no_x" = "yes"; then
     AC_MSG_ERROR([X Window system libraries and header files are required])
   fi
 ])
@@ -56,7 +52,7 @@ AC_DEFUN([BM_LIBSM],
       LIBSM_CFLAGS="$LIBX11_CFLAGS"
       LIBSM_LDFLAGS="$LIBX11_LDFLAGS"
       LIBSM_LIBS="$LIBX11_LIBS"
-      if ! echo $LIBSM_LIBS | grep -q -- '-lSM'; then
+      if ! echo $LIBSM_LIBS | grep -- '-lSM' > /dev/null; then
         LIBSM_LIBS="$LIBSM_LIBS -lSM -lICE"
       fi
     ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS -lICE])
@@ -77,7 +73,7 @@ AC_DEFUN([BM_LIBXPM],
       LIBXPM_CFLAGS="$LIBX11_CFLAGS"
       LIBXPM_LDFLAGS="$LIBX11_LDFLAGS"
       LIBXPM_LIBS="$LIBX11_LIBS"
-      if ! echo $LIBXPM_LIBS | grep -q -- '-lXpm'; then
+      if ! echo $LIBXPM_LIBS | grep -- '-lXpm' > /dev/null; then
         LIBXPM_LIBS="$LIBXPM_LIBS -lXpm"
       fi
     ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS -lXpm])
@@ -111,10 +107,10 @@ AC_HELP_STRING([--disable-xinerama], [disable xinerama extension [default]]),
       LIBXINERAMA_CFLAGS="$LIBX11_CFLAGS"
       LIBXINERAMA_LDFLAGS="$LIBX11_LDFLAGS"
       LIBXINERAMA_LIBS="$LIBX11_LIBS"
-      if ! echo $LIBXINERAMA_LIBS | grep -q -- '-lXinerama'; then
+      if ! echo $LIBXINERAMA_LIBS | grep -- '-lXinerama' > /dev/null; then
         LIBXINERAMA_LIBS="$LIBXINERAMA_LIBS -lXinerama"
       fi
-      if ! echo $LIBXINERAMA_LIBS | grep -q -- '-lXext'; then
+      if ! echo $LIBXINERAMA_LIBS | grep -- '-lXext' > /dev/null; then
         LIBXINERAMA_LIBS="$LIBXINERAMA_LIBS -lXext"
       fi
     ],[], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS -lXext])
