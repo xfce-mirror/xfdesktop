@@ -408,7 +408,7 @@ g_module_check_init(GModule *module)
 					"xfce", &setting))
 			{
 				xfce_set_icon_theme(setting->data.v_string);
-				last_theme_change = time(NULL);
+				last_settings_change = time(NULL);
 				mcs_setting_free(setting);
 			}
 		}
