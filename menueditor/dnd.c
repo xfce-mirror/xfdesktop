@@ -283,8 +283,8 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       }else
 	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
-      if(xmlAddNextSibling(node_target, node) == NULL){
-	perror("xmlAddNextSibling");
+      if(xmlAddPrevSibling(node_target, node) == NULL){
+	perror("xmlAddPrevSibling");
 	xmlFreeNode(node);
 	gtk_drag_finish(dc, TRUE, (dc->action == GDK_ACTION_COPY), t);
 	return;
@@ -369,8 +369,8 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       }else
 	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
-      if(xmlAddNextSibling(node_target, node) == NULL){
-	perror("xmlAddNextSibling");
+      if(xmlAddPrevSibling(node_target, node) == NULL){
+	perror("xmlAddPrevSibling");
 	xmlFreeNode(node);
 	gtk_drag_finish(dc, TRUE, (dc->action == GDK_ACTION_COPY), t);
 	return;
