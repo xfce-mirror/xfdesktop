@@ -448,6 +448,36 @@ menu_cleanup(XfceDesktop *xfdesktop)
 			G_CALLBACK(button_scroll), xfdesktop);
 }
 
+#ifdef USE_DESKTOP_MENU
+static void
+_stop_menu_module() {
+	if(module_desktop_menu && desktop_menu) {
+		xfce_desktop_menu_stop_autoregen(desktop_menu);
+		xfce_desktop_menu_destroy(desktop_menu);
+	}
+	desktop_menu = NULL;
+	if(module_desktop_menu)
+		xfce_desktop_menu_stub_cleanup(module_desktop_menu);
+	module_desktop_menu = NULL;
+}
+
+static gboolean
+_start_menu_module()
+{
+	if(!module_desktop_menu)
+		module_desktop_menu = xfce_desktop_menu_stub_init();
+	if(module_desktop_menu && !desktop_menu) {
+		desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
+		xfce_desktop_menu_start_autoregen(desktop_menu, 10);
+		return TRUE;
+	} else if(!module_desktop_menu) {
+		g_warning("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n", PACKAGE);
+		return FALSE;
+	} else
+		return TRUE;
+}
+#endif
+
 void
 menu_init_global(McsClient *client)
 {
@@ -479,23 +509,13 @@ menu_init_global(McsClient *client)
 			BACKDROP_CHANNEL, &setting))
 	{
 		DBG ("desktop menu");
-		if(setting->data.v_int != 0 && !module_desktop_menu) {
-			if((module_desktop_menu=xfce_desktop_menu_stub_init())) {
-				desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
-				xfce_desktop_menu_start_autoregen(desktop_menu, 10);
-			} else
-				g_warning("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n", PACKAGE);
-		} else if(setting->data.v_int == 0 && module_desktop_menu) {
-			if(desktop_menu) {
-				xfce_desktop_menu_stop_autoregen(desktop_menu);
-				xfce_desktop_menu_destroy(desktop_menu);
-			}
-			desktop_menu = NULL;
-			xfce_desktop_menu_stub_cleanup(module_desktop_menu);
-			module_desktop_menu = NULL;
-		}
+		if(setting->data.v_int != 0 && !module_desktop_menu)
+			_start_menu_module();
+		else if(setting->data.v_int == 0 && module_desktop_menu)
+			_stop_menu_module();
 		mcs_setting_free(setting);
-	}
+	} else
+		_start_menu_module();
 	
 	if(MCS_SUCCESS == mcs_client_get_setting(client, "showdmi",
 			BACKDROP_CHANNEL, &setting))
@@ -518,15 +538,7 @@ menu_cleanup_global()
 	windowlist = NULL;
 	
 #ifdef USE_DESKTOP_MENU
-	if(module_desktop_menu) {
-		if(desktop_menu) {
-			xfce_desktop_menu_stop_autoregen(desktop_menu);
-			xfce_desktop_menu_destroy(desktop_menu);
-		}
-		desktop_menu = NULL;
-		xfce_desktop_menu_stub_cleanup(module_desktop_menu);
-		module_desktop_menu = NULL;
-	}
+	_stop_menu_module();
 #endif
 }
 
@@ -537,14 +549,14 @@ _create_dm_idled(gpointer user_data)
 	McsClient *client = (McsClient *)user_data;
 	McsSetting *setting;
 	
-	desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
-	xfce_desktop_menu_start_autoregen(desktop_menu, 10);
-	if(MCS_SUCCESS == mcs_client_get_setting(client, "showdmi",
-			BACKDROP_CHANNEL, &setting))
-	{
-		xfce_desktop_menu_set_show_icons(desktop_menu,
-				setting->data.v_int == 0 ? FALSE : TRUE);
-		mcs_setting_free(setting);
+	if(_start_menu_module()) {
+		if(MCS_SUCCESS == mcs_client_get_setting(client, "showdmi",
+				BACKDROP_CHANNEL, &setting))
+		{
+			xfce_desktop_menu_set_show_icons(desktop_menu,
+					setting->data.v_int == 0 ? FALSE : TRUE);
+			mcs_setting_free(setting);
+		}
 	}
 	
 	return FALSE;
@@ -561,20 +573,10 @@ menu_settings_changed(const char *channel_name, McsClient *client,
 		show_windowlist_icons = setting->data.v_int == 0 ? FALSE : TRUE;
 #ifdef USE_DESKTOP_MENU
 	else if(!strcmp(setting->name, "showdm")) {
-		if(setting->data.v_int != 0 && !module_desktop_menu) {
-			if((module_desktop_menu=xfce_desktop_menu_stub_init()))
-				g_idle_add((GSourceFunc)_create_dm_idled, client);
-			else
-				g_warning("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n", PACKAGE);
-		} else if(setting->data.v_int == 0 && module_desktop_menu) {
-			if(desktop_menu) {
-				xfce_desktop_menu_stop_autoregen(desktop_menu);
-				xfce_desktop_menu_destroy(desktop_menu);
-			}
-			desktop_menu = NULL;
-			xfce_desktop_menu_stub_cleanup(module_desktop_menu);
-			module_desktop_menu = NULL;
-		}
+		if(setting->data.v_int != 0 && !module_desktop_menu)
+			_start_menu_module();
+		else if(setting->data.v_int == 0 && module_desktop_menu)
+			_stop_menu_module();
 	} else if(!strcmp(setting->name, "showdmi")) {
 		if(desktop_menu) {
 			xfce_desktop_menu_set_show_icons(desktop_menu,
