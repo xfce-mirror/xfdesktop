@@ -450,7 +450,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
 	
 	g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
 	
-	if(backdrop->priv->image_path) {
+	if(backdrop->priv->show_image && backdrop->priv->image_path) {
 		image = gdk_pixbuf_new_from_file(backdrop->priv->image_path, NULL);
 		if(image) {
 			iw = gdk_pixbuf_get_width(image);
@@ -477,7 +477,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
 			final_image = create_solid(&backdrop->priv->color1, w, h);
 	}
 	
-	if(!image || !backdrop->priv->show_image) {
+	if(!image) {
 		if(backdrop->priv->brightness != 100) {
 			gdouble brightness = (gdouble)backdrop->priv->brightness / 100;
 			GdkPixbuf *tmp = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, w, h);
