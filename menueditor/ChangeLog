@@ -1,10 +1,272 @@
-2004-02-24 pollux
-	- manages icon theme changes
+2004-06-17  kelnos  <kelnos@xfce.org>
 
-2004-02-20 pollux
-	- uses xfce_about_dialog (with CVS libs)
-	- searches for icon in default directory
-	- French translations updated
+	* Makefile.in, add_dialog.c, dnd.c, edit_dialog.c, menueditor.c, menueditor.h, move.c:
+	merging in the new xfdesktop, version is 4.1.5 *crosses fingers*
+	this will fix the app crashing problem, and has full multihead support, among
+	a bunch of other improvements i won't list here.
+	also fixing some warnings in menueditor (for --enable-debug=full)
+
+2004-05-27  pollux  <pollux@xfce.org>
+
+	* dnd.c, menueditor.c:
+	DND from Rox, Nautilus, Xffm and Konqueror supported
+
+2004-05-26  pollux  <pollux@xfce.org>
+
+	* dnd.c: DND of a .desktop from Rox supported
+
+2004-05-25  pollux  <pollux@xfce.org>
+
+	* dnd.c, menueditor.c:
+	Finaly DND works with xffm (i haven't tested lastest code) and framework for application/x-desktop support
+
+	* dnd.c:
+	DND from a .desktop now supports Icon tag... doesn't work anymore with xffm (i don't know since when)...
+
+	* edit_dialog.c, menueditor.c: search for executable in PATH
+
+	* TODO, add_dialog.c, edit_dialog.c, menueditor.c, menueditor.h:
+	Check if the command exists
+
+	* about_dialog.c: Make about dialog taller by default
+
+2004-05-23  pollux  <pollux@xfce.org>
+
+	* menueditor.c, menueditor.h: collapse tree and expand tree added
+
+	* edit_dialog.c: popup->Edit now supported
+
+	* edit_dialog.c, edit_dialog.h, move.c: begin of popup->Edit
+
+	* menueditor.c: code cleaning
+
+2004-05-22  pollux  <pollux@xfce.org>
+
+	* about_dialog.c, move.c:
+	despite time running out before the exams, found time...
+	- my_gtk_tree_store_swap_up/down fully rewrited (fix bug reported by Jasper in which menu content wasn't moved), but moving with the up and down arrow still need a little work
+	- François added in the credits :-)
+
+2004-05-11  jasper  <jasper@xfce.org>
+
+	* edit_dialog.c, menueditor.c:
+	Fix warnings to allow compiling with --enable-debug=full.
+
+2004-05-07  pollux  <pollux@xfce.org>
+
+	* TODO, menueditor.c:
+	if ~/.xfce4/menu.xml doesn't exist, it's been created from the default menu (need to be tested with a rm -rf .xfce4)
+
+	* edit_dialog.c:
+	really uses the dummy icon when icon is not found (in edition)
+
+	* add_dialog.c, edit_dialog.c, menueditor.c:
+	use the dummy icon when icon is not set or not found
+
+2004-05-06  pollux  <pollux@xfce.org>
+
+	* menueditor.c: saveas problem fixed
+
+2004-05-05  pollux  <pollux@xfce.org>
+
+	* menueditor.c: tell the user when cannot save and why
+
+2004-05-04  kelnos  <kelnos@xfce.org>
+
+	* Makefile.in:
+	new directory inclusion/exclusion strategy to fix 'make distclean'
+
+2004-04-23  pollux  <pollux@xfce.org>
+
+	* menueditor.c: remove no more needed C++ style comments
+
+2004-04-22  kelnos  <kelnos@xfce.org>
+
+	* menueditor.c, menueditor.h, Makefile.in:
+	compiled fixes for gtk 2.2 users
+
+2004-04-18  pollux  <pollux@xfce.org>
+
+	* move.c:
+	when moving an entry in a submenu or a parent menu, the icon now moves with (bug reported by Jasper Huijsmans)
+
+2004-04-16  pollux  <pollux@xfce.org>
+
+	* menueditor.c: add --version support
+
+2004-04-15  pollux  <pollux@xfce.org>
+
+	* about_dialog.c, menueditor.c:
+	change all remainning occurences of XFce into Xfce
+
+2004-04-10  pollux  <pollux@xfce.org>
+
+	* xfce-menueditor.desktop: added french translations in the .desktop
+
+2004-04-09  pollux  <pollux@xfce.org>
+
+	* add_dialog.c, menueditor.c, menueditor.h:
+	- in add dialog : if icon isn't exist however stores the path
+	- add popup menu in the treeview
+
+2004-04-08  kelnos  <kelnos@xfce.org>
+
+	* new_dialog.c: whoops, missed a string
+
+	* Makefile.in, about_dialog.c, add_dialog.c, add_menu_dialog.c, edit_dialog.c, menueditor.c, move.c, new_dialog.c:
+	bunch of string fixes, aesthetic mods mainly
+	don't use "gtk-new", "gtk-open", etc., but GTK_STOCK_NEW, GTK_STOCK_OPEN
+
+2004-03-31  kelnos  <kelnos@xfce.org>
+
+	* Makefile.am, Makefile.in: fixing POTFILES.in and 'make dist'
+	also changing benny's email address at his request
+
+2004-03-24  pollux  <pollux@xfce.org>
+
+	* new.c, new.h, new_dialog.c, new_dialog.h: fix renaming file problem
+
+2004-03-24  kelnos  <kelnos@xfce.org>
+
+	* .cvsignore:
+	remove *.in from .cvsignore files... sorry for the spam again
+
+	* .cvsignore:
+	so tired of all the noise in 'cvs update' output (sorry for the commits
+	spam!)
+
+2004-03-24  pollux  <pollux@xfce.org>
+
+	* add_menu_dialog.c, edit_dialog.c, menueditor.c, Makefile.am, Makefile.in, add_dialog.c:
+	- new.c/h renamed into new_dialog.c/h
+	- add default response in dialogs
+
+2004-03-21  pollux  <pollux@xfce.org>
+
+	* TODO, edit_dialog.c:
+	fix memory leak : when editing previous icon wasn't unref
+
+2004-03-18  pollux  <pollux@xfce.org>
+
+	* menueditor.c:
+	(re)add support for "no" value in visible attribute for backward compatibility
+
+	* menueditor.c:
+	change visible attribute set of values from yes/no to true/false
+
+2004-03-17  pollux  <pollux@xfce.org>
+
+	* add_menu_dialog.c, add_menu_dialog.h, edit_dialog.c, menueditor.h:
+	added support for style and unique attribute for the include entry in the menu
+
+2004-03-15  pollux  <pollux@xfce.org>
+
+	* add_dialog.c, edit_dialog.c, menueditor.c:
+	support for icon in title and menu tag as brian asked
+
+2004-03-13  pollux  <pollux@xfce.org>
+
+	* add_dialog.c, add_dialog.h, edit_dialog.c:
+	added support for term attribute of a launcher
+
+2004-03-12  pollux  <pollux@xfce.org>
+
+	* add_dialog.c, edit_dialog.c, menueditor.c:
+	user can now set an icon to the builtin quit entry
+
+2004-03-07  pollux  <pollux@xfce.org>
+
+	* edit_dialog.c: i forgot a xmlFree
+
+	* TODO, add_dialog.c, add_dialog.h, edit_dialog.c, menueditor.c:
+	- added snotify tag support
+	- now the edited filename is showed in the titlebar
+
+	* TODO, about_dialog.c: - updated TODO
+	- added some contributors in the about dialog
+
+2004-03-07  kelnos  <kelnos@xfce.org>
+
+	* add_dialog.c, add_menu_dialog.c, dnd.c, edit_dialog.c, menueditor.c, new.c:
+	fix (hopefully) all warnings.  --enable-debug=full _should_ work now.
+	/me looks pointedly at dannym
+
+2004-03-06  dannym  <dannym@xfce.org>
+
+	* add_dialog.c, add_menu_dialog.c: config.h
+
+	* add_menu_dialog.c: add_menu_dialog.c: In function `add_menu_cb':
+	add_menu_dialog.c:68: Warnung: implicit declaration of function `create_header'
+	add_menu_dialog.c:68: Warnung: assignment makes pointer from integer without a cast
+	add_menu_dialog.c:152: Warnung: implicit declaration of function `strlen'
+	add_menu_dialog.c:125: Warnung: unused variable `root_iter'
+
+	* add_dialog.c:
+	using xfce_* prefixed functions now, add enumeration "INCLUDE" to switch (empty); pollux please check if correct
+
+	* add_dialog.c, menueditor.h:
+	warnings, warnings, let me compile with debugging info so I can debug, will you...
+
+2004-03-01  benny  <benny@xfce.org>
+
+	* menueditor.h:
+	libxfce4util provides the i18n macros, no need to redefine here :-)
+
+2004-02-29  pollux  <pollux@xfce.org>
+
+	* TODO, dnd.c, menueditor.c:
+	- more accurate dnd (if anybody has an idea to make it well tell me)
+
+2004-02-28  perldude  <perldude@xfce.org>
+
+	* menueditor.c: Removed menubar-icons.
+
+2004-02-27  pollux  <pollux@xfce.org>
+
+	* menueditor.c: - savings are now atomic (thx Benny)
+
+	* TODO, dnd.c, edit_dialog.c, menueditor.c:
+	- data acquired by xmlGetProp are now freed (remark from Brian)
+
+	* TODO, about_dialog.c, add_dialog.c, edit_dialog.c, menueditor.c, menueditor.h:
+	- menueditor now uses xfce_load_themed_icon instead of home made
+	load_icon_from_theme
+	- little changes in the about box
+
+2004-02-27  kelnos  <kelnos@xfce.org>
+
+	* xfce-menueditor.desktop:
+	* make sized icons for the backdrop settings panel and the menu editor,
+	  and install them to the hicolor icon theme.
+	* make the settings panel icon use xfce_load_themed_icon()
+	* change names to 'Xfce 4' from 'Xfce4' and remove extension from icon
+	  in .desktop files
+
+2004-02-26  pollux  <pollux@xfce.org>
+
+	* add_dialog.c, edit_dialog.c, menueditor.c, menueditor.h:
+	- the menueditor now uses gtk_icon_theme_load_icon instead of find_icon
+
+2004-02-25  pollux  <pollux@xfce.org>
+
+	* add_dialog.c, edit_dialog.c, menueditor.c, menueditor.h:
+	- add_dialog and edit_dialog now use find_icon
+	- when deleting an entry the GdkPixbuf of the icon is now freed
+
+	* about_dialog.c, about_dialog.h, add_dialog.c, add_dialog.h, add_menu_dialog.c, add_menu_dialog.h, dnd.c, dnd.h, edit_dialog.c, edit_dialog.h, menueditor.c, menueditor.h, move.c, move.h, new.c, new.h:
+	- menueditor.h is no more included in all .h but in the .c
+	- website in the about dialog changed in http://www.xfce.org
+	- some (little) code corrections
+
+2004-02-24  pollux  <pollux@xfce.org>
+
+	* menueditor.h, ChangeLog, TODO, menueditor.c:
+	the menueditor now uses the themed icons (need to be restarted to apply changes)
+
+2004-02-20 pollux   <pollux@xfce.org>
+	* uses xfce_about_dialog (with CVS libs)
+	* searches for icon in default directory
+	* French translations updated
 	
 *** merged into xfdesktop CVS, 16 Feb 2004 ***
 
