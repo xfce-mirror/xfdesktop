@@ -193,11 +193,18 @@ static GtkWidget *create_fullscreen_window(void)
 
     style = gtk_widget_get_style(win);
 
-    gtk_widget_modify_bg(win, GTK_STATE_NORMAL, 
-	    		 &(style->black));
-    gtk_widget_modify_base(win, GTK_STATE_NORMAL, 
-	    		   &(style->black));
-
+    gtk_widget_modify_bg(win, GTK_STATE_NORMAL, &(style->black));
+    gtk_widget_modify_base(win, GTK_STATE_NORMAL, &(style->black));
+    /* Remove double buffering in desktop window otherwise
+       gtk allocates twice the size of the screen in video memory
+       which can show to be unusable even on a GeForce II MX with 
+       32Mb using 3D because the video RAM alloted to pixmaps
+       cannot handle the total amount of pixmaps.
+     */
+    if (GTK_WIDGET_DOUBLE_BUFFERED(win))
+    {
+	gtk_widget_set_double_buffered(win, FALSE);
+    }
     /* TODO: Use gdk function when it supports this type */
     {
 	GdkAtom desktop_type;

@@ -234,8 +234,7 @@ static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style)
     {
         GdkPixbuf *old = pixbuf;
 
-        pixbuf = gdk_pixbuf_scale_simple(old, screen_width, screen_height,
-                 	                 GDK_INTERP_HYPER);
+        pixbuf = gdk_pixbuf_scale_simple(old, screen_width, screen_height, GDK_INTERP_BILINEAR);
 
         g_object_unref(old);
     }
