@@ -54,8 +54,10 @@ static GtkItemFactoryEntry main_items[] = {
   { N_("/_Settings manager"), NULL, settings_mgr,  0, "<Item>" },
   { "/sep",              NULL, NULL,        0, "<Separator>" },
   { N_("/_Help"),        NULL, do_help,     0, "<Item>" },
+#if 0
   { "/sep",              NULL, NULL,        0, "<Separator>" },
   { N_("/E_xit"),        NULL, quit,        0, "<Item>" },
+#endif
 };
 
 static gboolean popup_menu(GdkEventButton *ev);
