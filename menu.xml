@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xfdesktop-menu [
+	<!ENTITY menu2 SYSTEM "menu2.xml">
+]>
 <xfdesktop-menu>
     <title name="Desktop Menu" visible="yes" />
     <separator/>
-    <app name="Terminal" cmd="xterm" term="no" icon="xterm.png"/>
+    <app name="Terminal" cmd="xfterm4" term="no" icon="xterm.png"/>
     <app name="Run Program..." cmd="xfrun4"/> <!-- The rest have defaults -->
     <menu name="Settings" visible="yes">
         <app name="All Settings" cmd="xfce-setting-show"/>
-        <app name="Backdrop" cmd="xfce-setting-show backdrop"/>
+        <app name="Background" cmd="xfce-setting-show backdrop"/>
     </menu>
     <app name="Midnight Commander" cmd="mc" term="yes"/>
     <separator/>
     <app name="Help" cmd="xfhelp4"/>
     <!-- Set visible to yes to use this item -->
     <builtin name="Quit" cmd="quit" visible="no"/>
+    <!-- Example on how to include a file:
+      1) declare an ENTITY in the DOCTYPE tag (see above)
+      2) include entity in file: 
+    -->
+    <!--
+    &menu2;
+    -->
 </xfdesktop-menu>
 

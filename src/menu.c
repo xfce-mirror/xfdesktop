@@ -311,10 +311,17 @@ GList *parse_menu_file(const char *filename)
     xmlDocPtr doc;
     xmlNodePtr cur;
     GList *menu_data = NULL;
+    int prevdefault;
     
     TRACE();
+
+    prevdefault = xmlSubstituteEntitiesDefault(1);
+    
     /* Open xml menu definition File */
     doc = xmlParseFile(filename);
+    
+    xmlSubstituteEntitiesDefault(prevdefault);
+    
     if(doc == NULL)
     {
         g_warning("%s: Could not parse %s.\n", PACKAGE, filename);
