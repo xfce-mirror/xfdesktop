@@ -35,6 +35,7 @@
 #include "backdrop_settings.h"
 #include "backdrop-mgr.h"
 
+#include <libxfce4util/util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
 /* exported interface */
@@ -191,9 +192,9 @@ save_list_file(ListDialog *ld)
     int fd;
 
 #ifdef O_EXLOCK
-    if ((fd = open(ld->filename,O_CREAT|O_EXLOCK|O_TRUNC|O_WRONLY,S_IRWXU))<0) {
+    if ((fd = open(ld->filename,O_CREAT|O_EXLOCK|O_TRUNC|O_WRONLY, 0640)) < 0) {
 #else
-    if ((fd = open(ld->filename, O_CREAT | O_TRUNC | O_WRONLY, S_IRWXU)) < 0) {
+    if ((fd = open(ld->filename, O_CREAT | O_TRUNC | O_WRONLY, 0640)) < 0) {
 #endif
 	    xfce_err(_("Could not save file %s: %s\n\n"
 		      	   "Please choose another location or press "
@@ -572,10 +573,9 @@ static void list_mgr_dialog(const char *title, GtkWidget *parent,
     GtkWidget *mainvbox, *frame, *vbox, *header, *button;
     ListDialog *ld;
 
-    if (dialog)
-    {
-	gtk_window_present(GTK_WINDOW(dialog));
-	return;
+    if (dialog) {
+	    gtk_window_present(GTK_WINDOW(dialog));
+	    return;
     }
     
     ld = g_new0(ListDialog, 1);
@@ -584,9 +584,9 @@ static void list_mgr_dialog(const char *title, GtkWidget *parent,
     ld->data = data;
 
     if (path)
-	ld->filename = g_strdup(path);
+	    ld->filename = g_strdup(path);
     else
-	ld->filename = g_strdup(_("New.list"));
+	    ld->filename = xfce_get_homefile(_("New.list"), NULL);
     
     ld->last_dir = g_build_filename(DATADIR, "xfce4", "backdrops/", NULL);
     

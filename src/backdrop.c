@@ -267,12 +267,13 @@ count_elements(char **list)
 }
 
 static char *
-get_path_from_listfile(const char *listfile)
+get_path_from_listfile(const gchar *listfile)
 {
     static gboolean __initialized = FALSE;
-    static char *prevfile = NULL;
-    static char **files = NULL;
-    int n;
+    static gchar *prevfile = NULL;
+    static gchar **files = NULL;
+    static gint previndex = -1;
+    int i, n;
 
     TRACE();
 
@@ -286,8 +287,9 @@ get_path_from_listfile(const char *listfile)
 	    g_strfreev(files);
 	    g_free(prevfile);
 	
-	    prevfile = g_strdup(listfile);
 	    files = get_list_from_file(listfile);
+	    prevfile = g_strdup(listfile);
+        previndex = -1;
     }
     
     n = count_elements(files);
@@ -303,17 +305,23 @@ get_path_from_listfile(const char *listfile)
     /* NOTE: 4.3BSD random()/srandom() are a) stronger and b) faster than
      * ANSI-C rand()/srand(). So we use random() if available
      */
+    if (!__initialized) {
 #ifdef HAVE_SRANDOM
-    if (!__initialized)
         srandom(time(NULL));
-    n = random() % n;
 #else
-    if (!__initialized)
-        srand (time (NULL));
-    n = rand () % n;
+        srand(time(NULL));
 #endif
+    }
 
-    return(files[n]);
+    do {
+#ifdef HAVE_SRANDOM
+        i = random() % n;
+#else
+        i = rand () % n;
+#endif
+    } while (i == previndex);
+
+    return(files[(previndex = i)]);
 }
 
 static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style, GdkColor *color)
