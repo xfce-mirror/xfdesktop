@@ -68,6 +68,7 @@ void about_cb(GtkWidget *widget, gpointer data)
   dialog = xfce_about_dialog_new(GTK_WINDOW(menueditor_app.main_window), 
 				 info, icon);
 
+  gtk_window_set_default_size(GTK_WINDOW(dialog),500,400);
   xfce_about_info_free(info);
 
   gtk_dialog_run(GTK_DIALOG(dialog));
