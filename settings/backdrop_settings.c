@@ -131,7 +131,7 @@ McsPluginInitResult mcs_plugin_init(McsPlugin * mcs_plugin)
 static void backdrop_create_channel(McsPlugin * mcs_plugin)
 {
     McsSetting *setting;
-    const gchar *home = g_getenv("HOME");
+    const gchar *home = g_get_home_dir();
     gchar *rcfile = g_build_filename(home, ".xfce4", "settings",
                                      RCFILE, NULL);
 
@@ -207,7 +207,7 @@ static void backdrop_create_channel(McsPlugin * mcs_plugin)
 
 static gboolean backdrop_write_options(McsPlugin * mcs_plugin)
 {
-    const gchar *home = g_getenv("HOME");
+    const gchar *home = g_get_home_dir();
     gchar *rcfile = g_build_filename(home, ".xfce4", "settings", RCFILE, NULL);
     gboolean result;
 
