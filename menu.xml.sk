@@ -53,7 +53,7 @@
 
 <xfdesktop-menu>
 
-	<title name="Menu plochy"/>
+	<title name="Menu plochy" icon="xfce4-backdrop"/>
 
 	<separator/>
 
@@ -61,14 +61,14 @@
 
 	<separator/>
 
-	<app name="Terminál" cmd="xfterm4" icon="terminal"/>
+	<app name="Terminál" cmd="xfterm4" icon="gnome-terminal"/>
 	<app name="Správca súborov (xffm)" cmd="xffm" icon="file-manager"/>
 	<app name="Webový prehliadač" cmd="mozilla" icon="gnome-globe"/>
 
 	<separator/>
 
 	<menu name="Nastavenia" icon="gnome-settings">
-		<app name="Správca nastavení Xfce" cmd="xfce-setting-show" icon="gnome-settings"/>
+		<app name="Správca nastavení" cmd="xfce-setting-show" icon="gnome-settings"/>
 	</menu>
 
 	<separator/>

@@ -134,7 +134,7 @@ save_list_file_minus_one(const gchar *filename, const gchar **files, gint badi)
 	fclose(fp);
 }
 
-G_INLINE_FUNC gint
+gint
 count_elements(const gchar **list)
 {
 	gint i, c = 0;

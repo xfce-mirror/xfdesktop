@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-02 11:07+0100\n"
+"POT-Creation-Date: 2005-03-12 12:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -185,13 +185,13 @@ msgstr ""
 msgid "Select icon"
 msgstr ""
 
-#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:390
+#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
 #: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr ""
 
-#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:396
+#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
 #: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr ""
@@ -340,7 +340,7 @@ msgstr ""
 msgid "Bad datafile format !"
 msgstr ""
 
-#: menueditor/menueditor.c:1599
+#: menueditor/menueditor.c:1626
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr ""
@@ -379,32 +379,58 @@ msgstr ""
 msgid "/Other"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:205
-#: panel-plugin/desktop-menu-plugin.c:535
+#: panel-plugin/desktop-menu-plugin.c:279
+#: panel-plugin/desktop-menu-plugin.c:805
 msgid "Xfce Menu"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:373
+#: panel-plugin/desktop-menu-plugin.c:493
 msgid "Select Icon"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:375
+#: panel-plugin/desktop-menu-plugin.c:495
 msgid "Select Menu File"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:404
+#: panel-plugin/desktop-menu-plugin.c:524
 msgid "Menu Files"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:465
-msgid "_Menu file:"
+#: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:499
+#: panel-plugin/desktop-menu-plugin.c:663
+msgid "Button _title:"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:676
+msgid "Menu File"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:688
+msgid "Use default _desktop menu file"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:697
+msgid "Use _custom menu file:"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:749
+#: panel-plugin/desktop-menu-plugin.c:751
+msgid "_Edit Menu"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:758
+msgid "Icons"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:524
+#: panel-plugin/desktop-menu-plugin.c:794
 msgid "Show _icons in menu"
 msgstr ""
 
@@ -584,11 +610,6 @@ msgstr ""
 msgid "_Menu"
 msgstr ""
 
-#: settings/menu_settings.c:132
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr ""
-
 #: settings/menu_settings.c:153
 msgid "Window List"
 msgstr ""
@@ -639,26 +660,26 @@ msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 
-#: src/windowlist.c:176
+#: src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr ""
 
-#: src/windowlist.c:184
+#: src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr ""
 
-#: src/windowlist.c:247 src/windowlist.c:250
+#: src/windowlist.c:268 src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr ""
 
-#: src/windowlist.c:258
+#: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr ""
 
-#: src/windowlist.c:261
+#: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr ""

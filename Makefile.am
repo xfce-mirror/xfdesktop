@@ -36,14 +36,17 @@ conf_DATA = 								\
 	menu.xml 							\
 	menu.xml.az 							\
 	menu.xml.ca 							\
+	menu.xml.da							\
 	menu.xml.de 							\
 	menu.xml.es							\
 	menu.xml.et							\
 	menu.xml.eu							\
 	menu.xml.fa_IR 							\
+	menu.xml.fi							\
 	menu.xml.fr 							\
 	menu.xml.he							\
 	menu.xml.hu 							\
+	menu.xml.ja							\
 	menu.xml.ko							\
 	menu.xml.ms  							\
 	menu.xml.nl  							\
@@ -53,6 +56,7 @@ conf_DATA = 								\
 	menu.xml.sk							\
 	menu.xml.ta 							\
 	menu.xml.tr 							\
+	menu.xml.uk							\
 	menu.xml.vi 							\
 	menu.xml.zh_CN							\
 	menu.xml.zh_TW

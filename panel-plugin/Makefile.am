@@ -1,4 +1,4 @@
-plugindir = $(libdir)/xfce4/panel-plugins
+plugindir = @XFCE4_PANEL_PLUGINSDIR@
 
 plugin_LTLIBRARIES = libdesktopmenu.la
 
@@ -20,7 +20,8 @@ libdesktopmenu_la_CFLAGS = \
 	-I$(top_srcdir)/common \
 	@XFCE4_PANEL_CFLAGS@ \
 	-DDATADIR=\"$(datadir)\" \
-	-DLOCALEDIR=\"$(localedir)\" 
+	-DLOCALEDIR=\"$(localedir)\" \
+	-DBINDIR=\"$(bindir)\"
 
 libdesktopmenu_la_LIBADD = \
 	@XFCE4_PANEL_LIBS@ \

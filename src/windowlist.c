@@ -89,6 +89,23 @@ activate_window(GtkWidget *w, gpointer user_data)
 	netk_window_activate(netk_window);
 }
 
+static void
+window_destroyed_cb(gpointer data, GObject *where_the_object_was)
+{
+	GtkWidget *mi = data;
+	GtkWidget *menu = gtk_widget_get_parent(mi);
+	
+	if(mi && menu)
+		gtk_container_remove(GTK_CONTAINER(menu), mi);
+}
+
+static void
+mi_destroyed_cb(GtkObject *object, gpointer user_data)
+{
+	g_object_weak_unref(G_OBJECT(user_data),
+			(GWeakNotify)window_destroyed_cb, object);
+}
+
 static GtkWidget *
 menu_item_from_netk_window(NetkWindow *netk_window, gint icon_width,
 		gint icon_height)
@@ -230,8 +247,12 @@ windowlist_create(GdkScreen *gscreen)
 			}
 			gtk_widget_show(mi);
 			gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+			g_object_weak_ref(G_OBJECT(netk_window),
+					(GWeakNotify)window_destroyed_cb, mi);
 			g_signal_connect(G_OBJECT(mi), "activate",
 					G_CALLBACK(activate_window), netk_window);
+			g_signal_connect(G_OBJECT(mi), "destroy",
+					G_CALLBACK(mi_destroyed_cb), netk_window);
 		}
 		
 		mi = gtk_separator_menu_item_new();
