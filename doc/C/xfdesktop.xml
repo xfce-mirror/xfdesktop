@@ -1,9 +1,9 @@
 <?xml version='1.0'?> 
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "July 2003"> 
+  <!ENTITY date "Sep 2003"> 
+  <!ENTITY appversion "4.0"> 
   <!ENTITY app "<application>xfdesktop</application>"> 
-  <!ENTITY appversion "3.99.3"> 
 ]>
 
 <article id="xfdesktop" lang="en">
@@ -105,10 +105,10 @@ maintainers, etc. Commented out by default.
 <sect1 id="xfdesktop-background">
   <title>Background</title>
 
-  <para>You can start the Background Settings manager by clicking on the
-    "Desktop: backdrop" button in the <ulink
-      url="xfce-mcs-manager.html#manager-dialog" type="http">settings manager
-    dialog</ulink>.
+  <para>You can start the background properties dialog by clicking on the
+    "Desktop: backdrop" button in the 
+    <ulink url="xfce-mcs-manager.html#manager-dialog" 
+      type="http">settings manager dialog</ulink>.
   </para>
 
   <figure id="xfdesktop-background-fig">
@@ -188,14 +188,13 @@ maintainers, etc. Commented out by default.
 
 	<para>Three Style options (Tiled, Scaled, and Centered) can be used to
 	  specify the fitting of the background image on the screen, depending
-	  on its size. You can also select the "Automatic" item if you want
-	  &app; to take care of this setting.
+	  on its size. You can also select the "Automatic" item if you want to
+	  let &app; take care of this setting.
 	</para>
 
 	<para>You can create a list of background images that will be randomly
-	  used at startup. Running &app; again, for example from a terminal,
-	  will update randomly from the list. Click the "New list" button to
-	  open a new dialog:
+	  used at startup. Click the "New list" button to open the list 
+	  editing dialog:
 	</para>
 
 	<figure id="xfdesktop-list-fig">
@@ -268,7 +267,7 @@ maintainers, etc. Commented out by default.
     <varlistentry>
       <term>Workspaces</term>
       <listitem>
-	<para>That option allows you too choose the number of workspaces you
+	<para>This option allows you too choose the number of workspaces you
 	  want to use (between 1 and 32).
 	</para>
       </listitem>
@@ -368,9 +367,16 @@ maintainers, etc. Commented out by default.
   </para>
 
   <para>To report a bug or make a suggestion regarding this application or
-    this manual send an e-mail to the xfce4-dev mailing list or use the bug 
-    tracking system at the <ulink url="http://sourceforge.net/projects/xfce" 
+    this manual, send an email to the 
+    <ulink url="http://www.moongroup.com/mailman/listinfo/xfce4-dev/"
+      type="http">xfce4-dev</ulink> mailing list &mdash; this is the preferred
+    method &mdash; or use the bug tracking system at the
+    <ulink url="http://sourceforge.net/projects/xfce" 
       type="http">XFce SourceForge project site</ulink>. 
+    If you have questions about the use or installation of this package,
+    please ask on the 
+    <ulink url="http://www.moongroup.com/mailman/listinfo/xfce/"
+      type="http">xfce</ulink> mailing list. 
   </para>
     
   <para> This program is distributed under the terms of the
