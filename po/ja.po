@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
-"POT-Creation-Date: 2003-09-22 21:27+0200\n"
+"POT-Creation-Date: 2003-11-14 19:03+0100\n"
 "PO-Revision-Date: 2003-05-27 13:00+0900\n"
 "Last-Translator: Zhao Ji <zhao-ji@awz.ne.jp>\n"
 "Language-Team: NONE <none@none>\n"
@@ -58,82 +58,88 @@ msgstr "背景リスト作成"
 msgid "Edit backdrop list"
 msgstr "背景リスト編集"
 
-#: settings/backdrop_settings.c:156
-msgid "Desktop: backdrop"
+#: settings/backdrop_settings.c:149
+#, fuzzy
+msgid "Desktop background"
 msgstr "デスクトップ: 背景"
 
-#: settings/backdrop_settings.c:357
+#: settings/backdrop_settings.c:363
 msgid "Select background color"
 msgstr "背景色の選択"
 
-#: settings/backdrop_settings.c:407
+#: settings/backdrop_settings.c:413
 msgid "Background color:"
 msgstr "背景色:"
 
-#: settings/backdrop_settings.c:437
+#: settings/backdrop_settings.c:443
 msgid "Use color only:"
 msgstr "使用色数:"
 
-#: settings/backdrop_settings.c:563
+#: settings/backdrop_settings.c:569
 msgid "File:"
 msgstr "ファイル:"
 
-#: settings/backdrop_settings.c:624
+#: settings/backdrop_settings.c:630
 msgid "Select background image or list file"
 msgstr "背景画像かリスト・ファイルを選択"
 
-#: settings/backdrop_settings.c:701
+#: settings/backdrop_settings.c:707
 msgid "_Browse..."
 msgstr "閲覧...(_B)"
 
-#: settings/backdrop_settings.c:705
+#: settings/backdrop_settings.c:711
 msgid "New list"
 msgstr "新規リスト"
 
-#: settings/backdrop_settings.c:709
+#: settings/backdrop_settings.c:715
 msgid "Edit list"
 msgstr "リスト編集"
 
-#: settings/backdrop_settings.c:747
+#: settings/backdrop_settings.c:753
 msgid "Style:"
 msgstr "スタイル:"
 
-#: settings/backdrop_settings.c:755
+#: settings/backdrop_settings.c:761
 msgid "_Tiled"
 msgstr "タイル(_T)"
 
-#: settings/backdrop_settings.c:761
+#: settings/backdrop_settings.c:767
 msgid "_Scaled"
 msgstr "伸縮(_S)"
 
-#: settings/backdrop_settings.c:768
+#: settings/backdrop_settings.c:774
 msgid "_Centered"
 msgstr "中央(_C)"
 
-#: settings/backdrop_settings.c:775
+#: settings/backdrop_settings.c:781
 #, fuzzy
 msgid "_Auto"
 msgstr "自動(_A)"
 
 #. the dialog
-#: settings/backdrop_settings.c:801
+#: settings/backdrop_settings.c:820
 msgid "Background"
 msgstr "背景"
 
 #. header
-#: settings/backdrop_settings.c:819
+#: settings/backdrop_settings.c:838
 msgid "Background Settings"
 msgstr "背景設定"
 
 #. color
-#: settings/backdrop_settings.c:825
+#: settings/backdrop_settings.c:844
 msgid "Color"
 msgstr "カラー"
 
 #. image vbox
-#: settings/backdrop_settings.c:837
+#: settings/backdrop_settings.c:856
 msgid "Image"
 msgstr "イメージ"
+
+#: settings/backdrop_settings.c:882
+#, fuzzy
+msgid "Don't set background"
+msgstr "背景色の選択"
 
 #: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
@@ -174,29 +180,28 @@ msgstr "ワークスペース設定"
 msgid "Workspace names"
 msgstr "ワークスペース名"
 
-#: src/backdrop.c:487
+#: src/backdrop.c:508
 #, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
 msgstr "xfdesktop エラー: 背景イメージ読み込み: %s\n"
 
-#: src/main.c:249
-msgid "Desktop"
-msgstr "デスクトップ"
-
-#: src/menu.c:736
+#: src/menu.c:735
 msgid "Add workspace"
 msgstr "ワークスペース追加"
 
-#: src/menu.c:743
+#: src/menu.c:742
 msgid "Delete workspace"
 msgstr "ワークスペース削除"
 
-#: src/settings.c:186
+#: src/settings.c:182
 msgid ""
 "xfdesktop: could not connect to settings manager!Please check your "
 "installation."
 msgstr ""
 "xfdesktop: 設定マネージャーと接続できません！インストールを確認してください"
+
+#~ msgid "Desktop"
+#~ msgstr "デスクトップ"
 
 #~ msgid "Workspace"
 #~ msgstr "ワークスペース"

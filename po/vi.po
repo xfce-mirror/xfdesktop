@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
-"POT-Creation-Date: 2003-09-22 21:23+0200\n"
+"POT-Creation-Date: 2003-11-14 19:03+0100\n"
 "PO-Revision-Date: 2003-10-24 23:55+9\n"
 "Last-Translator: Lâm Vĩnh Niên <nienvl@yahoo.ca>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -58,81 +58,87 @@ msgstr "Tạo danh sách phông nền"
 msgid "Edit backdrop list"
 msgstr "Biên tập danh sách phông nền"
 
-#: settings/backdrop_settings.c:156
-msgid "Desktop: backdrop"
+#: settings/backdrop_settings.c:149
+#, fuzzy
+msgid "Desktop background"
 msgstr "Desktop: phông nền"
 
-#: settings/backdrop_settings.c:357
+#: settings/backdrop_settings.c:363
 msgid "Select background color"
 msgstr "Chọn màu nền"
 
-#: settings/backdrop_settings.c:407
+#: settings/backdrop_settings.c:413
 msgid "Background color:"
 msgstr "Màu nền"
 
-#: settings/backdrop_settings.c:437
+#: settings/backdrop_settings.c:443
 msgid "Use color only:"
 msgstr "Chỉ dùng màu:"
 
-#: settings/backdrop_settings.c:563
+#: settings/backdrop_settings.c:569
 msgid "File:"
 msgstr "Tập tin:"
 
-#: settings/backdrop_settings.c:624
+#: settings/backdrop_settings.c:630
 msgid "Select background image or list file"
 msgstr "Chọn hình ảnh nền hoặc tập tin danh sách"
 
-#: settings/backdrop_settings.c:701
+#: settings/backdrop_settings.c:707
 msgid "_Browse..."
 msgstr "_Duyệt..."
 
-#: settings/backdrop_settings.c:705
+#: settings/backdrop_settings.c:711
 msgid "New list"
 msgstr "Danh sách mới"
 
-#: settings/backdrop_settings.c:709
+#: settings/backdrop_settings.c:715
 msgid "Edit list"
 msgstr "Biên tập danh sách"
 
-#: settings/backdrop_settings.c:747
+#: settings/backdrop_settings.c:753
 msgid "Style:"
 msgstr "Kiểu:"
 
-#: settings/backdrop_settings.c:755
+#: settings/backdrop_settings.c:761
 msgid "_Tiled"
 msgstr "_Lợp"
 
-#: settings/backdrop_settings.c:761
+#: settings/backdrop_settings.c:767
 msgid "_Scaled"
 msgstr "_Vảy"
 
-#: settings/backdrop_settings.c:768
+#: settings/backdrop_settings.c:774
 msgid "_Centered"
 msgstr "_Chính giữa"
 
-#: settings/backdrop_settings.c:775
+#: settings/backdrop_settings.c:781
 msgid "_Auto"
 msgstr "_Tự động"
 
 #. the dialog
-#: settings/backdrop_settings.c:801
+#: settings/backdrop_settings.c:820
 msgid "Background"
 msgstr "Nền"
 
 #. header
-#: settings/backdrop_settings.c:819
+#: settings/backdrop_settings.c:838
 msgid "Background Settings"
 msgstr "Thiết lập nền"
 
 #. color
-#: settings/backdrop_settings.c:825
+#: settings/backdrop_settings.c:844
 msgid "Color"
 msgstr "Màu"
 
 #. image vbox
-#: settings/backdrop_settings.c:837
+#: settings/backdrop_settings.c:856
 msgid "Image"
 msgstr "Hình ảnh"
+
+#: settings/backdrop_settings.c:882
+#, fuzzy
+msgid "Don't set background"
+msgstr "Chọn màu nền"
 
 #: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
@@ -173,27 +179,26 @@ msgstr "Thiết lập không gian làm việc"
 msgid "Workspace names"
 msgstr ""
 
-#: src/backdrop.c:487
+#: src/backdrop.c:508
 #, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
 msgstr "lỗi xfdesktop: nạp tập tin phông nền: %s\n"
 
-#: src/main.c:249
-msgid "Desktop"
-msgstr "Desktop"
-
-#: src/menu.c:736
+#: src/menu.c:735
 msgid "Add workspace"
 msgstr "Thêm không gian làm việc"
 
-#: src/menu.c:743
+#: src/menu.c:742
 msgid "Delete workspace"
 msgstr "Xoá không gian làm việc"
 
-#: src/settings.c:186
+#: src/settings.c:182
 msgid ""
 "xfdesktop: could not connect to settings manager!Please check your "
 "installation."
 msgstr ""
-"xfdesktop: không thể nối vào trình quản lí các thiết lập! Vui lòng "
-"kiểm tra lại cài đặt."
+"xfdesktop: không thể nối vào trình quản lí các thiết lập! Vui lòng kiểm tra "
+"lại cài đặt."
+
+#~ msgid "Desktop"
+#~ msgstr "Desktop"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-09-22 21:27+0200\n"
+"POT-Creation-Date: 2003-11-14 19:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: ByungHyun Choi<byunghyunchoi@rtlinux.or.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,81 +57,87 @@ msgstr "배경화면 목록을 만듭니다."
 msgid "Edit backdrop list"
 msgstr "배경화면 목록을 수정합니다."
 
-#: settings/backdrop_settings.c:156
-msgid "Desktop: backdrop"
+#: settings/backdrop_settings.c:149
+#, fuzzy
+msgid "Desktop background"
 msgstr "데스크탑: 배경"
 
-#: settings/backdrop_settings.c:357
+#: settings/backdrop_settings.c:363
 msgid "Select background color"
 msgstr "배경색 선택"
 
-#: settings/backdrop_settings.c:407
+#: settings/backdrop_settings.c:413
 msgid "Background color:"
 msgstr "배경색:"
 
-#: settings/backdrop_settings.c:437
+#: settings/backdrop_settings.c:443
 msgid "Use color only:"
 msgstr "색상만 사용:"
 
-#: settings/backdrop_settings.c:563
+#: settings/backdrop_settings.c:569
 msgid "File:"
 msgstr "화일:"
 
-#: settings/backdrop_settings.c:624
+#: settings/backdrop_settings.c:630
 msgid "Select background image or list file"
 msgstr "배경화면 또는 목록을 선택"
 
-#: settings/backdrop_settings.c:701
+#: settings/backdrop_settings.c:707
 msgid "_Browse..."
 msgstr "찾아보기(_B)"
 
-#: settings/backdrop_settings.c:705
+#: settings/backdrop_settings.c:711
 msgid "New list"
 msgstr "새로운 목록"
 
-#: settings/backdrop_settings.c:709
+#: settings/backdrop_settings.c:715
 msgid "Edit list"
 msgstr "목록 수정"
 
-#: settings/backdrop_settings.c:747
+#: settings/backdrop_settings.c:753
 msgid "Style:"
 msgstr "표현 방식:"
 
-#: settings/backdrop_settings.c:755
+#: settings/backdrop_settings.c:761
 msgid "_Tiled"
 msgstr "바둑판(_T)"
 
-#: settings/backdrop_settings.c:761
+#: settings/backdrop_settings.c:767
 msgid "_Scaled"
 msgstr "크기조절(_S)"
 
-#: settings/backdrop_settings.c:768
+#: settings/backdrop_settings.c:774
 msgid "_Centered"
 msgstr "가운데(_C)"
 
-#: settings/backdrop_settings.c:775
+#: settings/backdrop_settings.c:781
 msgid "_Auto"
 msgstr "자동(_A)"
 
 #. the dialog
-#: settings/backdrop_settings.c:801
+#: settings/backdrop_settings.c:820
 msgid "Background"
 msgstr "배경화면"
 
 #. header
-#: settings/backdrop_settings.c:819
+#: settings/backdrop_settings.c:838
 msgid "Background Settings"
 msgstr "배경 설정"
 
 #. color
-#: settings/backdrop_settings.c:825
+#: settings/backdrop_settings.c:844
 msgid "Color"
 msgstr "색상"
 
 #. image vbox
-#: settings/backdrop_settings.c:837
+#: settings/backdrop_settings.c:856
 msgid "Image"
 msgstr "그림"
+
+#: settings/backdrop_settings.c:882
+#, fuzzy
+msgid "Don't set background"
+msgstr "배경색 선택"
 
 #: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
@@ -172,25 +178,24 @@ msgstr "작업공간 설정"
 msgid "Workspace names"
 msgstr "작업공간 이름"
 
-#: src/backdrop.c:487
+#: src/backdrop.c:508
 #, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
 msgstr ""
 
-#: src/main.c:249
-msgid "Desktop"
-msgstr "데스크탑"
-
-#: src/menu.c:736
+#: src/menu.c:735
 msgid "Add workspace"
 msgstr "작업공간 추가"
 
-#: src/menu.c:743
+#: src/menu.c:742
 msgid "Delete workspace"
 msgstr "작업공간 삭제"
 
-#: src/settings.c:186
+#: src/settings.c:182
 msgid ""
 "xfdesktop: could not connect to settings manager!Please check your "
 "installation."
 msgstr ""
+
+#~ msgid "Desktop"
+#~ msgstr "데스크탑"

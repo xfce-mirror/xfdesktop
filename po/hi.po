@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop.hi.po\n"
-"POT-Creation-Date: 2003-08-13 19:16+0200\n"
+"POT-Creation-Date: 2003-11-14 19:03+0100\n"
 "PO-Revision-Date: 2003-11-01 18:21+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-group@lists.sourceforge.net>\n"
@@ -58,70 +58,71 @@ msgstr "बैकड्राप सूची बनाएं"
 msgid "Edit backdrop list"
 msgstr "बैकड्रॉप सूची संपादित करें"
 
-#: settings/backdrop_settings.c:156
-msgid "Desktop: backdrop"
+#: settings/backdrop_settings.c:149
+#, fuzzy
+msgid "Desktop background"
 msgstr "डेस्कटॉप:  बैकड्रॉप"
 
-#: settings/backdrop_settings.c:358
+#: settings/backdrop_settings.c:363
 msgid "Select background color"
 msgstr "पृष्ठ भूमि रंग चुनें"
 
-#: settings/backdrop_settings.c:408
+#: settings/backdrop_settings.c:413
 msgid "Background color:"
 msgstr "पृष्ठभूमि का रंग "
 
-#: settings/backdrop_settings.c:438
+#: settings/backdrop_settings.c:443
 msgid "Use color only:"
 msgstr "सिर्फ रंग उपयोग में:"
 
-#: settings/backdrop_settings.c:564
+#: settings/backdrop_settings.c:569
 msgid "File:"
 msgstr " फाइल:"
 
-#: settings/backdrop_settings.c:625
+#: settings/backdrop_settings.c:630
 msgid "Select background image or list file"
 msgstr "पृष्ठ भूमि चित्र या सूची फाइल चुनें"
 
-#: settings/backdrop_settings.c:702
+#: settings/backdrop_settings.c:707
 msgid "_Browse..."
 msgstr "ब्राउज (_B)..."
 
-#: settings/backdrop_settings.c:706
+#: settings/backdrop_settings.c:711
 msgid "New list"
 msgstr "नई सूची"
 
-#: settings/backdrop_settings.c:710
+#: settings/backdrop_settings.c:715
 msgid "Edit list"
 msgstr "सूची सम्पादित करें "
 
-#: settings/backdrop_settings.c:748
+#: settings/backdrop_settings.c:753
 msgid "Style:"
 msgstr "शैली :"
 
-#: settings/backdrop_settings.c:756
+#: settings/backdrop_settings.c:761
 msgid "_Tiled"
 msgstr "टाइल्ड (_T)"
 
-#: settings/backdrop_settings.c:762
+#: settings/backdrop_settings.c:767
 msgid "_Scaled"
 msgstr "पूरे स्क्रीन में (स्केल्ड) (_S)"
 
-#: settings/backdrop_settings.c:769
+#: settings/backdrop_settings.c:774
 msgid "_Centered"
 msgstr "केंद्रित (_C)"
 
-#: settings/backdrop_settings.c:776
+#: settings/backdrop_settings.c:781
 msgid "_Auto"
 msgstr "स्वतः (_A)"
 
 #. the dialog
-#: settings/backdrop_settings.c:802
+#: settings/backdrop_settings.c:820
 msgid "Background"
 msgstr "पृष्ठभूमि"
 
 # gnome-session/splash.c:65
 #. header
-#: settings/backdrop_settings.c:820
+#: settings/backdrop_settings.c:838
 msgid "Background Settings"
 msgstr "पृष्ठभूमि सेटिंग्स"
 
@@ -130,14 +131,19 @@ msgstr "पृष्ठभूमि सेटिंग्स"
 # libgnomecanvas/gnome-canvas-text.c:430
 # libgnomecanvas/gnome-canvas-text.c:438
 #. color
-#: settings/backdrop_settings.c:826
+#: settings/backdrop_settings.c:844
 msgid "Color"
 msgstr "रंग"
 
 #. image vbox
-#: settings/backdrop_settings.c:838
+#: settings/backdrop_settings.c:856
 msgid "Image"
 msgstr "चित्र (इमेज)"
+
+#: settings/backdrop_settings.c:882
+#, fuzzy
+msgid "Don't set background"
+msgstr "पृष्ठ भूमि रंग चुनें"
 
 #: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
@@ -178,25 +184,24 @@ msgstr "कार्यस्थान सेटिंग्स"
 msgid "Workspace names"
 msgstr "कार्यस्थान नाम"
 
-#: src/backdrop.c:487
+#: src/backdrop.c:508
 #, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
 msgstr "एक्सएफ डेस्कटॉप त्रुटि: बैकड्राप चित्र लोड कर रहे: %s\n"
 
-#: src/main.c:249
-msgid "Desktop"
-msgstr "डेस्कटॉप"
-
-#: src/menu.c:736
+#: src/menu.c:735
 msgid "Add workspace"
 msgstr "कार्यस्थान जोड़ें"
 
-#: src/menu.c:743
+#: src/menu.c:742
 msgid "Delete workspace"
 msgstr "कार्यस्थान मिटाएं "
 
-#: src/settings.c:186
+#: src/settings.c:182
 msgid ""
 "xfdesktop: could not connect to settings manager!Please check your "
 "installation."
 msgstr "एक्सएफ डेस्कटॉप सेटिंग्स प्रबंधक से जुड़ नहीं सका. कृपया अपना इंस्टालेशन जांचें."
+
+#~ msgid "Desktop"
+#~ msgstr "डेस्कटॉप"

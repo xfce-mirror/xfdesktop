@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 3.99.3\n"
-"POT-Creation-Date: 2003-09-22 21:27+0200\n"
+"POT-Creation-Date: 2003-11-14 19:03+0100\n"
 "PO-Revision-Date: 2003-08-31 13:20+0800\n"
 "Last-Translator: Harun Musa <mharun@gmx.net>\n"
 "Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
@@ -60,81 +60,87 @@ msgstr "Cipta senarai latarbelakang"
 msgid "Edit backdrop list"
 msgstr "Edit senarai latarbelakang"
 
-#: settings/backdrop_settings.c:156
-msgid "Desktop: backdrop"
+#: settings/backdrop_settings.c:149
+#, fuzzy
+msgid "Desktop background"
 msgstr "Meja: latarbelakang"
 
-#: settings/backdrop_settings.c:357
+#: settings/backdrop_settings.c:363
 msgid "Select background color"
 msgstr "Pilih warna latarbelakang"
 
-#: settings/backdrop_settings.c:407
+#: settings/backdrop_settings.c:413
 msgid "Background color:"
 msgstr "Warna latarbelakang:"
 
-#: settings/backdrop_settings.c:437
+#: settings/backdrop_settings.c:443
 msgid "Use color only:"
 msgstr "Hanya guna warna:"
 
-#: settings/backdrop_settings.c:563
+#: settings/backdrop_settings.c:569
 msgid "File:"
 msgstr "Fail:"
 
-#: settings/backdrop_settings.c:624
+#: settings/backdrop_settings.c:630
 msgid "Select background image or list file"
 msgstr "Pilih imej latarbelakang atau senarai fail"
 
-#: settings/backdrop_settings.c:701
+#: settings/backdrop_settings.c:707
 msgid "_Browse..."
 msgstr "_Lungsur"
 
-#: settings/backdrop_settings.c:705
+#: settings/backdrop_settings.c:711
 msgid "New list"
 msgstr "Cipta senarai"
 
-#: settings/backdrop_settings.c:709
+#: settings/backdrop_settings.c:715
 msgid "Edit list"
 msgstr "Edit senarai"
 
-#: settings/backdrop_settings.c:747
+#: settings/backdrop_settings.c:753
 msgid "Style:"
 msgstr "Stail:"
 
-#: settings/backdrop_settings.c:755
+#: settings/backdrop_settings.c:761
 msgid "_Tiled"
 msgstr "_Tiled"
 
-#: settings/backdrop_settings.c:761
+#: settings/backdrop_settings.c:767
 msgid "_Scaled"
 msgstr "_Scaled"
 
-#: settings/backdrop_settings.c:768
+#: settings/backdrop_settings.c:774
 msgid "_Centered"
 msgstr "_Centered"
 
-#: settings/backdrop_settings.c:775
+#: settings/backdrop_settings.c:781
 msgid "_Auto"
 msgstr "_Auto"
 
 #. the dialog
-#: settings/backdrop_settings.c:801
+#: settings/backdrop_settings.c:820
 msgid "Background"
 msgstr "Latarbelakang"
 
 #. header
-#: settings/backdrop_settings.c:819
+#: settings/backdrop_settings.c:838
 msgid "Background Settings"
 msgstr "Tetapan Latarbelakang"
 
 #. color
-#: settings/backdrop_settings.c:825
+#: settings/backdrop_settings.c:844
 msgid "Color"
 msgstr "Warna"
 
 #. image vbox
-#: settings/backdrop_settings.c:837
+#: settings/backdrop_settings.c:856
 msgid "Image"
 msgstr "Imej"
+
+#: settings/backdrop_settings.c:882
+#, fuzzy
+msgid "Don't set background"
+msgstr "Pilih warna latarbelakang"
 
 #: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
@@ -175,27 +181,26 @@ msgstr "Tetapan Ruangkerja"
 msgid "Workspace names"
 msgstr "Nama ruangkerja"
 
-#: src/backdrop.c:487
+#: src/backdrop.c:508
 #, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
 msgstr "ralat xfdesktop: memuat imej latarbelakang: %s\n"
 
-#: src/main.c:249
-msgid "Desktop"
-msgstr "Meja"
-
-#: src/menu.c:736
+#: src/menu.c:735
 msgid "Add workspace"
 msgstr "Tambah ruangkerja"
 
-#: src/menu.c:743
+#: src/menu.c:742
 msgid "Delete workspace"
 msgstr "Padam ruangkerja"
 
-#: src/settings.c:186
+#: src/settings.c:182
 msgid ""
 "xfdesktop: could not connect to settings manager!Please check your "
 "installation."
 msgstr ""
 "xfdesktop: tak boleh sambung ke pengurus tetapan!Sila periksa pemasangan "
 "anda."
+
+#~ msgid "Desktop"
+#~ msgstr "Meja"
