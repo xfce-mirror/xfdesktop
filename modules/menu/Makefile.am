@@ -5,6 +5,8 @@ plugin_LTLIBRARIES = libxfce4_desktop_menu.la
 libxfce4_desktop_menu_la_SOURCES = \
 	desktop-menu.c \
 	desktop-menu.h \
+	desktop-menu-cache.c \
+	desktop-menu-cache.h \
 	desktop-menu-file.c \
 	desktop-menu-file.h \
 	desktop-menu-dentry.c \

@@ -66,6 +66,7 @@
 
 #include "desktop-menu-private.h"
 #include "desktop-menu.h"
+#include "desktop-menu-cache.h"
 #include "desktop-menu-file.h"
 #include "desktop-menu-dentry.h"
 #include "dummy_icon.h"
@@ -157,9 +158,10 @@ mcs_watch_cb(Window window, Bool is_start, long mask, void *cb_data)
 #endif
 
 static gboolean
-_generate_menu(XfceDesktopMenu *desktop_menu)
+_generate_menu(XfceDesktopMenu *desktop_menu, gboolean force)
 {
 	gboolean ret = TRUE;
+	gchar *menu_cache_file = NULL;
 	TRACE("dummy");
 
 	_xfce_desktop_menu_free_menudata(desktop_menu);
@@ -170,11 +172,29 @@ _generate_menu(XfceDesktopMenu *desktop_menu)
 			(GDestroyNotify)g_free, NULL);
 	g_hash_table_insert(desktop_menu->menu_branches, g_strdup("/"),
 			desktop_menu->menu);
-	if(!desktop_menu_file_parse(desktop_menu, desktop_menu->filename,
+	
+	if(!force)
+		menu_cache_file = desktop_menu_cache_is_valid();
+	if(menu_cache_file) {
+		if(!desktop_menu_file_parse(desktop_menu, menu_cache_file,
 			desktop_menu->menu, "/", TRUE))
-	{
-		_xfce_desktop_menu_free_menudata(desktop_menu);
-		ret = FALSE;
+		{
+			_xfce_desktop_menu_free_menudata(desktop_menu);
+			ret = FALSE;
+		}
+		g_free(menu_cache_file);
+	} else {
+		desktop_menu_cache_init(desktop_menu->menu);
+			
+		if(!desktop_menu_file_parse(desktop_menu, desktop_menu->filename,
+				desktop_menu->menu, "/", TRUE))
+		{
+			_xfce_desktop_menu_free_menudata(desktop_menu);
+			ret = FALSE;
+		}
+		
+		desktop_menu_cache_flush();
+		desktop_menu_cache_cleanup();
 	}
 	
 	desktop_menu->last_menu_gen = time(NULL);
@@ -214,7 +234,7 @@ _menu_check_update(gpointer data)
 		g_free(newfilename);
 	
 	if(modified)
-		_generate_menu(desktop_menu);
+		_generate_menu(desktop_menu, TRUE);
 	
 	return TRUE;
 }
@@ -253,7 +273,7 @@ static gboolean
 _generate_menu_initial(gpointer data) {
 	g_return_val_if_fail(data != NULL, FALSE);
 	
-	_generate_menu((XfceDesktopMenu *)data);
+	_generate_menu((XfceDesktopMenu *)data, FALSE);
 	
 	return FALSE;
 }
@@ -337,7 +357,7 @@ xfce_desktop_menu_new_impl(const gchar *menu_file, gboolean deferred)
 	if(deferred)
 		g_idle_add(_generate_menu_initial, desktop_menu);
 	else {
-		if(!_generate_menu(desktop_menu)) {
+		if(!_generate_menu(desktop_menu, FALSE)) {
 			g_free(desktop_menu);
 			desktop_menu = NULL;
 		}
@@ -404,7 +424,7 @@ xfce_desktop_menu_force_regen_impl(XfceDesktopMenu *desktop_menu)
 	TRACE("dummy");
 	g_return_if_fail(desktop_menu != NULL);
 	
-	_generate_menu(desktop_menu);
+	_generate_menu(desktop_menu, TRUE);
 }
 
 G_MODULE_EXPORT void
@@ -415,7 +435,7 @@ xfce_desktop_menu_set_show_icons_impl(XfceDesktopMenu *desktop_menu,
 	
 	if(desktop_menu->use_menu_icons != show_icons) {
 		desktop_menu->use_menu_icons = show_icons;
-		_generate_menu(desktop_menu);
+		_generate_menu(desktop_menu, TRUE);
 	}
 }
 

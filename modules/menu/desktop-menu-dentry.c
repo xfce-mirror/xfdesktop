@@ -50,6 +50,7 @@
 #include "desktop-menu-private.h"
 #include "desktop-menu.h"
 #include "desktop-menuspec.h"
+#include "desktop-menu-cache.h"
 
 #ifndef PATH_MAX
 #define PATH_MAX 4096
@@ -174,7 +175,7 @@ _build_path(const gchar *basepath, const gchar *path, const gchar *name)
 	return newpath;
 }
 
-static void
+static gint
 _menu_shell_insert_sorted(GtkMenuShell *menu_shell, GtkWidget *mi,
 		const gchar *name)
 {
@@ -200,6 +201,8 @@ _menu_shell_insert_sorted(GtkMenuShell *menu_shell, GtkWidget *mi,
 			G_CALLBACK(menu_drag_data_get_cb), NULL);
 	
 	gtk_menu_shell_insert(menu_shell, mi, i);
+	
+	return i;
 }
 
 /* returns menu widget */
@@ -210,7 +213,10 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
 	GdkPixbuf *pix = NULL;
 	gchar *tmppath, *p, *q;
 	const gchar *icon;
+	gint menu_pos;
+	
 	BD("%s", path);
+	
 	if((submenu=g_hash_table_lookup(desktop_menu->menu_branches, path)))
 		return submenu;
 	else {
@@ -260,8 +266,11 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
 	submenu = gtk_menu_new();
 	gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
 	gtk_widget_show_all(mi);
-	_menu_shell_insert_sorted(GTK_MENU_SHELL(parent), mi, q);
+	menu_pos = _menu_shell_insert_sorted(GTK_MENU_SHELL(parent), mi, q);
 	g_hash_table_insert(desktop_menu->menu_branches, g_strdup(path), submenu);
+	
+	desktop_menu_cache_add_entry(DM_TYPE_MENU, q, NULL, icon ? icon : NULL,
+			FALSE, FALSE, parent, menu_pos, submenu);
 	
 	BD("for the hell of it: basepath=%s", desktop_menu->dentry_basepath);
 	
@@ -275,7 +284,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 	gchar *categories = NULL, *hidden = NULL, *onlyshowin = NULL;
 	gchar *path = NULL, *exec = NULL, *p;
 	GtkWidget *mi = NULL, *menu;
-	gint i;
+	gint i, menu_pos;
 	GPtrArray *newpaths = NULL;
 	const gchar *name;
 	gchar tmppath[2048];
@@ -343,10 +352,16 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		}
 		g_object_set_data(G_OBJECT(mi), "item-name", (gpointer)name);
 		gtk_widget_show(mi);
-		_menu_shell_insert_sorted(GTK_MENU_SHELL(menu), mi, name);
+		menu_pos = _menu_shell_insert_sorted(GTK_MENU_SHELL(menu), mi, name);
 		BD("before hashtable: path=%s, name=%s", path, name);
 		g_hash_table_insert(desktop_menu->menu_entry_hash, _build_path(NULL,
 				path, name), GINT_TO_POINTER(1));
+		desktop_menu_cache_add_entry(DM_TYPE_APP, name,
+				xfce_app_menu_item_get_command(XFCE_APP_MENU_ITEM(mi)),
+				xfce_app_menu_item_get_icon_name(XFCE_APP_MENU_ITEM(mi)),
+				xfce_app_menu_item_get_needs_term(XFCE_APP_MENU_ITEM(mi)),
+				xfce_app_menu_item_get_startup_notification(XFCE_APP_MENU_ITEM(mi)),
+				menu, menu_pos, NULL);
 	} else if(pathtype == MPATH_MULTI_UNIQUE) {
 		/* grab most specific */
 		path = _build_path(desktop_menu->dentry_basepath,
@@ -368,9 +383,15 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		}
 		g_object_set_data(G_OBJECT(mi), "item-name", (gpointer)name);
 		gtk_widget_show(mi);
-		_menu_shell_insert_sorted(GTK_MENU_SHELL(menu), mi, name);
+		menu_pos = _menu_shell_insert_sorted(GTK_MENU_SHELL(menu), mi, name);
 		g_hash_table_insert(desktop_menu->menu_entry_hash, _build_path(NULL,
 				path, name), GINT_TO_POINTER(1));
+		desktop_menu_cache_add_entry(DM_TYPE_APP, name,
+				xfce_app_menu_item_get_command(XFCE_APP_MENU_ITEM(mi)),
+				xfce_app_menu_item_get_icon_name(XFCE_APP_MENU_ITEM(mi)),
+				xfce_app_menu_item_get_needs_term(XFCE_APP_MENU_ITEM(mi)),
+				xfce_app_menu_item_get_startup_notification(XFCE_APP_MENU_ITEM(mi)),
+				menu, menu_pos, NULL);
 	} else {
 		if(pathtype == MPATH_MULTI)
 			_prune_generic_paths(newpaths);
@@ -396,9 +417,15 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 			}
 			g_object_set_data(G_OBJECT(mi), "item-name", (gpointer)name);
 			gtk_widget_show(mi);
-			_menu_shell_insert_sorted(GTK_MENU_SHELL(menu), mi, name);
+			menu_pos = _menu_shell_insert_sorted(GTK_MENU_SHELL(menu), mi, name);
 			g_hash_table_insert(desktop_menu->menu_entry_hash, _build_path(NULL,
 					path, name), GINT_TO_POINTER(1));
+			desktop_menu_cache_add_entry(DM_TYPE_APP, name,
+					xfce_app_menu_item_get_command(XFCE_APP_MENU_ITEM(mi)),
+					xfce_app_menu_item_get_icon_name(XFCE_APP_MENU_ITEM(mi)),
+					xfce_app_menu_item_get_needs_term(XFCE_APP_MENU_ITEM(mi)),
+					xfce_app_menu_item_get_startup_notification(XFCE_APP_MENU_ITEM(mi)),
+					menu, menu_pos, NULL);
 			g_free(path);
 		}
 		path = NULL;
@@ -445,12 +472,14 @@ dentry_recurse_dir(GDir *dir, const gchar *path, XfceDesktopMenu *desktop_menu,
 	GDir *d1;
 	gint ndirs = 1;
 	struct stat st;
+	gboolean added = FALSE;
 	
 	while((file=g_dir_read_name(dir))) {
 		if(g_str_has_suffix(file, ".desktop")) {
 			fullpath = g_build_filename(path, file, NULL);
 			menu_dentry_parse_dentry_file(desktop_menu, fullpath, pathtype);
 			g_free(fullpath);
+			added = TRUE;
 		} else {
 			fullpath = g_build_path(G_DIR_SEPARATOR_S, path, file, NULL);
 			if((d1=g_dir_open(fullpath, 0, NULL))) {
@@ -464,6 +493,9 @@ dentry_recurse_dir(GDir *dir, const gchar *path, XfceDesktopMenu *desktop_menu,
 			g_free(fullpath);
 		}
 	}
+	
+	if(added)
+		desktop_menu_cache_add_dentrydir(path);
 	
 	return ndirs;
 }
@@ -624,6 +656,7 @@ menu_dentry_legacy_process_dir(XfceDesktopMenu *desktop_menu,
 	GDir *dir = NULL;
 	gchar const *file;
 	gchar newbasedir[PATH_MAX], fullpath[PATH_MAX];
+	gboolean added = FALSE;
 	
 	if(!(dir = g_dir_open(basedir, 0, NULL)))
 		return;
@@ -645,8 +678,12 @@ menu_dentry_legacy_process_dir(XfceDesktopMenu *desktop_menu,
 			/* we're also going to ignore category-less .desktop files. */
 			menu_dentry_legacy_parse_dentry_file(desktop_menu, fullpath,
 					catdir, pathtype);
+			added = TRUE;
 		}
 	}
+	
+	if(added)
+		desktop_menu_cache_add_dentrydir(basedir);
 	
 	g_dir_close(dir);
 }

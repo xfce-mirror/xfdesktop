@@ -74,6 +74,7 @@
 #include "desktop-menu.h"
 #include "desktop-menu-file.h"
 #include "desktop-menu-dentry.h"
+#include "desktop-menu-cache.h"
 
 #ifndef PATH_MAX
 #define PATH_MAX 4096
@@ -156,7 +157,8 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		const gchar **attribute_names, const gchar **attribute_values,
 		gpointer user_data, GError **error)
 {
-	gint i, j, k, l, m;
+	gint i, j, k, l, m, menu_pos;
+	GList *children;
 	GtkWidget *mi = NULL;
 	gchar tmppath[2048];
 	struct MenuFileParserState *state = user_data;
@@ -203,9 +205,10 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		if(l != -1 && !strcmp(attribute_values[l], "true"))
 			xfce_app_menu_item_set_startup_notification(XFCE_APP_MENU_ITEM(mi),
 					TRUE);
+		m = -1;
 		if(state->desktop_menu->use_menu_icons) {
 			m = _find_attribute(attribute_names, "icon");
-			if(m != -1)
+			if(m != -1 && *attribute_values[m])
 				xfce_app_menu_item_set_icon_name(XFCE_APP_MENU_ITEM(mi),
 						attribute_values[m]);
 			if(!XFCE_APP_MENU_ITEM(mi)->image_menu_item.image) {
@@ -226,7 +229,21 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 				G_CALLBACK(menu_drag_begin_cb), NULL);
 		g_signal_connect(G_OBJECT(mi), "drag-data-get",
 				G_CALLBACK(menu_drag_data_get_cb), NULL);
+		
+		children = gtk_container_get_children(GTK_CONTAINER(state->cur_branch));
+		menu_pos = g_list_length(children) - 1;
+		g_list_free(children);
+		
+		desktop_menu_cache_add_entry(DM_TYPE_APP,
+				attribute_values[i],
+				attribute_values[j],
+				m != -1 ? attribute_values[m] : NULL,
+				xfce_app_menu_item_get_needs_term(XFCE_APP_MENU_ITEM(mi)),
+				xfce_app_menu_item_get_startup_notification(XFCE_APP_MENU_ITEM(mi)),
+				state->cur_branch, menu_pos, NULL);
 	} else if(!strcmp(element_name, "menu")) {		
+		GtkWidget *parent_menu;
+		
 		if((i=_find_attribute(attribute_names, "visible")) != -1 &&
 				(!strcmp(attribute_values[i], "false") ||
 				!strcmp(attribute_values[i], "no")))
@@ -244,6 +261,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		if(i == -1)
 				return;
 		
+		j = -1;
 		if(!state->desktop_menu->use_menu_icons)
 			mi = gtk_menu_item_new_with_label(attribute_values[i]);
 		else {
@@ -253,7 +271,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			mi = gtk_image_menu_item_new_with_label(attribute_values[i]);
 			
 			j = _find_attribute(attribute_names, "icon");
-			if(j != -1) {
+			if(j != -1 && *attribute_values[j]) {
 				pix = xfce_themed_icon_load(attribute_values[j], 
 						_xfce_desktop_menu_icon_size);
 				if(pix) {
@@ -270,6 +288,11 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		}
 		gtk_widget_show(mi);
 		gtk_menu_shell_append(GTK_MENU_SHELL(state->cur_branch), mi);
+		
+		children = gtk_container_get_children(GTK_CONTAINER(state->cur_branch));
+		menu_pos = g_list_length(children) - 1;
+		g_list_free(children);
+		parent_menu = state->cur_branch;
 		
 		state->cur_branch = gtk_menu_new();
 		gtk_widget_show(state->cur_branch);
@@ -288,6 +311,14 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		}
 		g_hash_table_insert(state->desktop_menu->menu_branches,
 				g_strdup(state->cur_path), state->cur_branch);
+		
+		desktop_menu_cache_add_entry(DM_TYPE_MENU,
+				attribute_values[i],
+				NULL,
+				j != -1 ? attribute_values[j] : NULL,
+				FALSE,
+				FALSE,
+				parent_menu, menu_pos, state->cur_branch);
 	} else if(!strcmp(element_name, "separator")) {
 		if((i=_find_attribute(attribute_names, "visible")) != -1 &&
 				(!strcmp(attribute_values[i], "false") ||
@@ -299,6 +330,13 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		mi = gtk_separator_menu_item_new();
 		gtk_widget_show(mi);
 		gtk_menu_shell_append(GTK_MENU_SHELL(state->cur_branch), mi);
+		
+		children = gtk_container_get_children(GTK_CONTAINER(state->cur_branch));
+		menu_pos = g_list_length(children) - 1;
+		g_list_free(children);
+		
+		desktop_menu_cache_add_entry(DM_TYPE_SEPARATOR, NULL, NULL, NULL,
+				FALSE, FALSE, state->cur_branch, menu_pos, NULL);
 	} else if(!strcmp(element_name, "builtin")) {
 		if(state->hidelevel)
 			return;
@@ -317,6 +355,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		if(j == -1)
 			return;
 		
+		k = -1;
 		if(!state->desktop_menu->use_menu_icons)
 			mi = gtk_menu_item_new_with_label(attribute_values[i]);
 		else {
@@ -326,7 +365,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			mi = gtk_image_menu_item_new_with_label(attribute_values[i]);
 			
 			k = _find_attribute(attribute_names, "icon");
-			if(k != -1) {
+			if(k != -1 && *attribute_values[k]) {
 				pix = xfce_themed_icon_load(attribute_values[k],
 						_xfce_desktop_menu_icon_size);
 				if(pix) {
@@ -346,6 +385,18 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 				GINT_TO_POINTER(MI_BUILTIN_QUIT));
 		gtk_widget_show(mi);
 		gtk_menu_shell_append(GTK_MENU_SHELL(state->cur_branch), mi);
+		
+		children = gtk_container_get_children(GTK_CONTAINER(state->cur_branch));
+		menu_pos = g_list_length(children) - 1;
+		g_list_free(children);
+		
+		desktop_menu_cache_add_entry(DM_TYPE_BUILTIN,
+				attribute_values[i],
+				attribute_values[j],
+				k != -1 ? attribute_values[k] : NULL,
+				FALSE,
+				FALSE,
+				state->cur_branch, menu_pos, NULL);
 	} else if(!strcmp(element_name, "title")) {
 		if(state->hidelevel)
 			return;
@@ -361,6 +412,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		if(i == -1)
 			return;
 		
+		j = -1;
 		if(!state->desktop_menu->use_menu_icons)
 			mi = gtk_menu_item_new_with_label(attribute_values[i]);
 		else {
@@ -370,7 +422,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			mi = gtk_image_menu_item_new_with_label(attribute_values[i]);
 			
 			j = _find_attribute(attribute_names, "icon");
-			if(j != -1) {
+			if(j != -1 && *attribute_values[j]) {
 				pix = xfce_themed_icon_load(attribute_values[j],
 						_xfce_desktop_menu_icon_size);
 				if(pix) {
@@ -388,6 +440,18 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		gtk_widget_set_sensitive(mi, FALSE);
 		gtk_widget_show(mi);
 		gtk_menu_shell_append(GTK_MENU_SHELL(state->cur_branch), mi);
+		
+		children = gtk_container_get_children(GTK_CONTAINER(state->cur_branch));
+		menu_pos = g_list_length(children) - 1;
+		g_list_free(children);
+		
+		desktop_menu_cache_add_entry(DM_TYPE_TITLE,
+				attribute_values[i],
+				NULL,
+				j != -1 ? attribute_values[j] : NULL,
+				FALSE,
+				FALSE,
+				state->cur_branch, menu_pos, NULL);
 	} else if(!strcmp(element_name, "include")) {
 		if(state->hidelevel)
 			return;
@@ -406,14 +470,20 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			j = _find_attribute(attribute_names, "src");
 			if(j != -1) {
 				if(*attribute_values[j] == '/') {
-					desktop_menu_file_parse(state->desktop_menu,
+					if(desktop_menu_file_parse(state->desktop_menu,
 							attribute_values[j], state->cur_branch,
-							state->cur_path, FALSE);
+							state->cur_path, FALSE))
+					{
+						desktop_menu_cache_add_menufile(attribute_values[j]);
+					}
 				} else {
 					gchar *menuincfile = xfce_get_userfile(attribute_values[j],
 							NULL);
-					desktop_menu_file_parse(state->desktop_menu, menuincfile,
-							state->cur_branch, state->cur_path, FALSE);
+					if(desktop_menu_file_parse(state->desktop_menu, menuincfile,
+							state->cur_branch, state->cur_path, FALSE))
+					{
+						desktop_menu_cache_add_menufile(menuincfile);
+					}
 					g_free(menuincfile);
 				}
 			}
