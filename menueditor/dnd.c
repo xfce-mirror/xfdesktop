@@ -310,8 +310,89 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
 
     gtk_drag_finish(dc, TRUE, (dc->action == GDK_ACTION_COPY), t);
   }else if (sd->target == gdk_atom_intern("application/x-desktop", FALSE) && sd->data) {
-    printf("Not yet supported !!!\n");
-    printf("%s\n",sd->data);
+    GtkTreePath *path = NULL;
+    GtkTreeViewDropPosition position;    
+
+    if(gtk_tree_view_get_dest_row_at_pos(GTK_TREE_VIEW(widget), x, y, &path, &position)) {
+      XfceDesktopEntry *de=NULL;
+      const char *cat[]={"Name","Exec","Icon"};
+
+      xmlNodePtr node, node_target;
+      GtkTreeIter iter, iter_target;
+      GValue val = {0};
+      gchar *value_name = NULL;
+      gchar *value_command = NULL;
+      gchar *value_icon = NULL;
+      gchar* name = NULL;
+      gchar *command = NULL;
+      gboolean icon_found = FALSE;
+      GdkPixbuf *icon = NULL;
+
+      gtk_tree_model_get_iter(GTK_TREE_MODEL(menueditor_app.treestore),
+                              &iter_target, path);
+
+      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore),
+                                &iter_target, POINTER_COLUMN, &val);
+      node_target = g_value_get_pointer(&val);
+
+      de = xfce_desktop_entry_new_from_data (sd->data, cat, 3);
+      g_return_if_fail (xfce_desktop_entry_parse(de));
+      g_return_if_fail (xfce_desktop_entry_get_string (de,
+						       "Name",
+						       TRUE,
+						       &value_name));
+      g_return_if_fail (xfce_desktop_entry_get_string (de,
+						       "Exec",
+						       TRUE,
+						       &value_command));
+      icon_found = xfce_desktop_entry_get_string (de,
+						  "Icon",
+						  TRUE,
+						  &value_icon);
+
+      /* Create node */
+      node = xmlNewNode(NULL, "app");
+     
+      xmlSetProp(node, "name", value_name);
+      xmlSetProp(node, "cmd", value_command);
+      if(icon_found){
+	xmlSetProp(node, "icon", value_icon);
+	icon = xfce_load_themed_icon(value_icon, ICON_SIZE);
+      }else
+	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
+
+      if(xmlAddNextSibling(node_target, node) == NULL){
+	perror("xmlAddNextSibling");
+	xmlFreeNode(node);
+	gtk_drag_finish(dc, TRUE, (dc->action == GDK_ACTION_COPY), t);
+	return;
+      }
+
+      gtk_tree_store_insert_after (menueditor_app.treestore,
+				   &iter, NULL, &iter_target);
+          
+      name = g_strdup_printf(NAME_FORMAT, value_name);
+      command = g_strdup_printf(COMMAND_FORMAT, value_command);
+
+      gtk_tree_store_set (menueditor_app.treestore, &iter, 
+			  ICON_COLUMN, icon, 
+			  NAME_COLUMN, name, 
+			  COMMAND_COLUMN, command,
+			  POINTER_COLUMN, node, -1);
+
+      g_free(value_name);
+      g_free(value_command);
+      g_free(value_icon);
+      g_free(name);
+      g_free(command);
+      g_object_unref (G_OBJECT (de));
+
+      /* Modified ! */
+      menueditor_app.menu_modified=TRUE;
+      gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
+      gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
+    }
+
     gtk_drag_finish(dc, TRUE, (dc->action == GDK_ACTION_COPY), t);
   }
 
