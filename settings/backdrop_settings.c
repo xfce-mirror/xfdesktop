@@ -1037,6 +1037,9 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 			
 			add_spacer(GTK_BOX(page));
 			
+			if(!allow_custom_backdrop)
+				gtk_widget_set_sensitive(page, FALSE);
+			
 			if(nscreens == 1 && nmonitors == 1) {
 				/* add the single backdrop settings page to the main notebook */
 				label = gtk_label_new_with_mnemonic(_("_Backdrop"));
