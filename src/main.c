@@ -316,9 +316,9 @@ main(int argc, char **argv)
 #else
     act.sa_flags = 0;
 #endif
-    sigaction(SIGUSR1, &act, NULL);
-    sigaction(SIGINT, &act, NULL);
-    sigaction(SIGTERM, &act, NULL);
+    (void)sigaction(SIGUSR1, &act, NULL);
+    (void)sigaction(SIGINT, &act, NULL);
+    (void)sigaction(SIGTERM, &act, NULL);
 #else
     (void)signal(SIGUSR1, sighandler);
     (void)signal(SIGINT, sighandler);
