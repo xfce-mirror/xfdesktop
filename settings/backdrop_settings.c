@@ -58,6 +58,27 @@
 
 #define DEFAULT_BACKDROP (DATADIR "/xfce4/backdrops/xfce4logo.png")
 
+/* important stuff to keep track of */
+typedef struct
+{
+    McsPlugin *plugin;
+
+    /* options dialog */
+    GtkWidget *dialog;
+
+    GdkColor color;
+    GtkWidget *color_box;
+    GtkWidget *color_only_checkbox;
+    
+    GtkWidget *file_entry;
+    GtkWidget *edit_list_button;
+    GSList *style_rb_group;
+}
+BackdropDialog;
+
+/* there can be only one */
+static gboolean is_running = FALSE;
+
 static char *backdrop_path = NULL;
 static int backdrop_style = CENTERED;
 static int showimage = 1;
@@ -197,26 +218,6 @@ static gboolean backdrop_write_options(McsPlugin * mcs_plugin)
     return result;
 }
 
-/* important stuff to keep track of */
-typedef struct
-{
-    McsPlugin *plugin;
-
-    /* options dialog */
-    GtkWidget *dialog;
-
-    GtkWidget *color_box;
-    GtkWidget *color_only_checkbox;
-    
-    GtkWidget *file_entry;
-    GtkWidget *edit_list_button;
-    GSList *style_rb_group;
-}
-BackdropDialog;
-
-/* there can be only one */
-static gboolean is_running = FALSE;
-
 /* sub header */
 static void add_sub_header(GtkWidget *vbox, const char *name)
 {
@@ -296,6 +297,8 @@ static void set_color(GtkWidget *b, BackdropDialog *bd)
     GdkColor color;
     GtkColorSelectionDialog *dialog;
     GtkColorSelection *sel;
+    GdkPixbuf *pixbuf;
+    guint32 rgba;
 
     if (!is_running)
 	return;
@@ -309,21 +312,19 @@ static void set_color(GtkWidget *b, BackdropDialog *bd)
     backdrop_color.red = color.red;
     backdrop_color.green = color.green;
     backdrop_color.blue = color.blue;
-
+    bd->color = color;
+    
     update_color(bd);
-
-/*    gdk_colormap_alloc_color(gtk_widget_get_colormap(bd->color_box), 
-	    		     &color, FALSE, TRUE);*/
-    gtk_widget_modify_bg(bd->color_box, GTK_STATE_NORMAL, &color);
-    gtk_widget_modify_bg(bd->color_box, GTK_STATE_PRELIGHT, &color);
-    gtk_widget_modify_bg(bd->color_box, GTK_STATE_ACTIVE, &color);
+    
+    pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(bd->color_box));
+    rgba = (((color.red & 0xff00) << 8) | ((color.green & 0xff00)) | ((color.blue & 0xff00) >> 8)) << 8;
+    gdk_pixbuf_fill(pixbuf, rgba);
 }
 
 static void color_picker(GtkWidget *b, BackdropDialog *bd)
 {
     static GtkWidget *dialog = NULL;
     GtkWidget *button, *sel;
-    GtkStyle *style;
 
     if (dialog)
     {
@@ -347,9 +348,7 @@ static void color_picker(GtkWidget *b, BackdropDialog *bd)
 
     sel = GTK_COLOR_SELECTION_DIALOG(dialog)->colorsel;
     
-    style = gtk_widget_get_style(bd->color_box);
-    gtk_color_selection_set_current_color(GTK_COLOR_SELECTION(sel),
-	    				  &(style->bg[GTK_STATE_NORMAL]));
+    gtk_color_selection_set_current_color(GTK_COLOR_SELECTION(sel), &(bd->color));
     gtk_widget_show(dialog);
 }
 
@@ -364,7 +363,9 @@ static void add_color_button(GtkWidget *vbox, BackdropDialog *bd)
 {
     GtkWidget *hbox, *label, *frame, *button;
     GtkSizeGroup *sg;
+    GdkPixbuf *pixbuf;
     GdkColor color = {0x0000, 0x0000, 0x0000, 0x0000};
+    guint32 rgba;
 
     sg = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
     
@@ -388,20 +389,19 @@ static void add_color_button(GtkWidget *vbox, BackdropDialog *bd)
     gtk_widget_show(frame);
     gtk_container_add(GTK_CONTAINER(button), frame);
 
-    bd->color_box = gtk_event_box_new();
-    gtk_widget_set_size_request(bd->color_box, 40, 16);
-    gtk_widget_show(bd->color_box);
-    gtk_container_add(GTK_CONTAINER(frame), bd->color_box);
 
     color.red = backdrop_color.red;
     color.green = backdrop_color.green;
     color.blue = backdrop_color.blue;
+    bd->color = color;
+    
+    pixbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, 40, 16);
+    rgba = (((color.red & 0xff00) << 8) | ((color.green & 0xff00)) | ((color.blue & 0xff00) >> 8)) << 8;
+    gdk_pixbuf_fill(pixbuf, rgba);
 
-/*    gdk_colormap_alloc_color(gtk_widget_get_colormap(bd->color_box), 
-	    		     &color, FALSE, TRUE);*/
-    gtk_widget_modify_bg(bd->color_box, GTK_STATE_NORMAL, &color);
-    gtk_widget_modify_bg(bd->color_box, GTK_STATE_PRELIGHT, &color);
-    gtk_widget_modify_bg(bd->color_box, GTK_STATE_ACTIVE, &color);
+    bd->color_box = gtk_image_new_from_pixbuf(pixbuf);
+    gtk_widget_show(bd->color_box);
+    gtk_container_add(GTK_CONTAINER(frame), bd->color_box);
 
     g_signal_connect(button, "clicked", G_CALLBACK(color_picker), bd);
     

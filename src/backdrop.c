@@ -369,8 +369,8 @@ static void set_backdrop(const char *path, int style, int show, GdkColor *color)
     GdkPixmap *pixmap = NULL;
     GdkPixbuf *pixbuf = NULL;
 
-    gtk_widget_set_style(fullscreen_window, NULL);
-    gstyle = gtk_style_copy(gtk_widget_get_style(fullscreen_window));
+    gstyle = gtk_style_new();
+    // gstyle = gtk_style_copy(gtk_widget_get_style(fullscreen_window));
     
     if (show && path && *path)
     {
