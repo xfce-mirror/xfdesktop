@@ -341,8 +341,10 @@ load_initial_settings(XfceDesktop *desktop, McsClient *mcs_client)
 				const gchar *imgfile = get_path_from_listfile(setting->data.v_string);
 				xfce_backdrop_set_image_filename(backdrop, imgfile);
 				set_imgfile_root_property(desktop, imgfile, i);
-			} else
+			} else {
 				xfce_backdrop_set_image_filename(backdrop, setting->data.v_string);
+				set_imgfile_root_property(desktop, setting->data.v_string, i);
+			}
 			mcs_setting_free(setting);
 			setting = NULL;
 		} else
