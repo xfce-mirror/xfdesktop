@@ -154,8 +154,10 @@ static void create_workspaces_channel(McsManager *manager)
     setting = mcs_manager_setting_lookup(manager, "count", WORKSPACES_CHANNEL);
 
     if (setting)
+    {
 	ws_count = setting->data.v_int;
-
+	g_message ("setting found, value %i", ws_count);
+    }
     set_workspace_count(manager, ws_count);
     
     /* ws names */
@@ -198,13 +200,13 @@ static void set_workspace_count(McsManager *manager, int count)
     sev.window = GDK_ROOT_WINDOW();
     sev.message_type = xa_NET_NUMBER_OF_DESKTOPS;
     sev.data.l[0] = count;
+    g_message ("setting nbr of desktops to %i", count);
 
     gdk_error_trap_push();
-
+    XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(), xa_NET_NUMBER_OF_DESKTOPS, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)&count, 1);
     XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False,
                SubstructureNotifyMask | SubstructureRedirectMask,
                (XEvent *) & sev);
-
     gdk_flush();
     gdk_error_trap_pop();
 }
