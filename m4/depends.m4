@@ -1,4 +1,4 @@
-dnl From Benedikt Meurer (benedikt.meurer@unix-ag.uni-siegen.de)
+dnl From Benedikt Meurer <benny@xfce.org>
 dnl
 dnl
 
@@ -11,6 +11,8 @@ AC_DEFUN([BM_DEPEND],
 
 dnl
 dnl BM_DEPEND_CHECK(var, pkg, version, name, helpstring, default)
+dnl
+dnl defines var_FOUND="yes" if found, else var_FOUND="no"
 dnl
 AC_DEFUN([BM_DEPEND_CHECK],
 [
@@ -25,8 +27,10 @@ AC_HELP_STRING([--disable-$4], [Disable checking for $5]),
       AC_MSG_RESULT([yes])
       BM_DEPEND([$1], [$2], [$3])
       AC_DEFINE([HAVE_$1], [1], [Define if you have $2 >= $3])
+      $1_FOUND="yes"
     else
       AC_MSG_RESULT([no])
+      $1_FOUND="no"
     fi
   fi
 ])
