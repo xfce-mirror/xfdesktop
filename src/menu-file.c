@@ -46,6 +46,7 @@
 
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
+#include <glib.h>
 
 #include <libxml/parser.h>
 
