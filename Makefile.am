@@ -2,7 +2,7 @@
 
 EXTRA_DIST = xfdesktop.spec xfdesktop.spec.in TODO
 
-SUBDIRS = src settings
+SUBDIRS = src settings backdrops
 
 distclean-local:
 	-rm -rf xfdesktop.spec *.cache *~

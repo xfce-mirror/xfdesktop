@@ -139,7 +139,7 @@ target_alias = @target_alias@
 
 EXTRA_DIST = xfdesktop.spec xfdesktop.spec.in TODO
 
-SUBDIRS = src settings
+SUBDIRS = src settings backdrops
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs

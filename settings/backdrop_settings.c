@@ -56,12 +56,12 @@
 #define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream
 #endif
 
-#define DEFAULT_BACKDROP (DATADIR "/xfce4/backdrops/Xfcemice.jpg")
+#define DEFAULT_BACKDROP (DATADIR "/xfce4/backdrops/xfce4logo.png")
 
 static char *backdrop_path = NULL;
 static int backdrop_style = CENTERED;
 static int showimage = 1;
-static McsColor backdrop_color = {20303,22102,28784,0};
+static McsColor backdrop_color = {12079,13107,20046,0};
 
 static void backdrop_create_channel(McsPlugin * mcs_plugin);
 static gboolean backdrop_write_options(McsPlugin * mcs_plugin);

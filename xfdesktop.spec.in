@@ -39,5 +39,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc README TODO ChangeLog NEWS INSTALL COPYING AUTHORS
 %{_bindir}/*
-%{_datadir}/xfdesktop/
+%{_datadir}/*
 

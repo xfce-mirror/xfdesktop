@@ -70,5 +70,6 @@ xfdesktop.spec
 Makefile
 src/Makefile
 settings/Makefile
+backdrops/Makefile
 ])
 
