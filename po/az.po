@@ -1,0 +1,204 @@
+# Azerbaijani Turkish translation of xfdesktop.
+# Copyright (C) 2003 THE xfdesktop'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the xfdesktop package.
+# Mətin Əmirov <metin@karegen.com>, 2003.
+# , fuzzy
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-11-14 19:03+0100\n"
+"PO-Revision-Date: 2003-12-14 20:29+0200\n"
+"Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
+"Language-Team: Azerbaijani Turkish <linuxaz@azerimal.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#: settings/backdrop-mgr.c:175
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"%s faylı qeyd edilə bilmədi: %s\n"
+"\n"
+"Xahiş edirik başqa bir mövqe siçin ya da dəyişiklikləri ləğv etmək üçün dialoqda"
+"ləğv et düyməsini basın"
+
+#: settings/backdrop-mgr.c:510
+msgid "Select image file"
+msgstr "Rəsm faylını seç"
+
+#: settings/backdrop-mgr.c:622
+msgid "Choose backdrop list filename"
+msgstr "Arxa plan siyahısı üçün fayl adı seç"
+
+#: settings/backdrop-mgr.c:694
+msgid "New.list"
+msgstr "Yeni.list"
+
+#: settings/backdrop-mgr.c:698
+msgid "Backdrop List"
+msgstr "Arxa Plan Siyahısı"
+
+#: settings/backdrop-mgr.c:734
+msgid "Image files"
+msgstr "Rəsm faylları"
+
+#: settings/backdrop-mgr.c:749
+msgid "List file"
+msgstr "Siyahı faylı"
+
+#: settings/backdrop-mgr.c:767
+msgid "Create backdrop list"
+msgstr "Arxa plan siyahısı yarat"
+
+#: settings/backdrop-mgr.c:774
+msgid "Edit backdrop list"
+msgstr "Arxa plan siyahısını dəyişdir"
+
+#: settings/backdrop_settings.c:149
+msgid "Desktop background"
+msgstr "Masa üstü arxa planı"
+
+#: settings/backdrop_settings.c:363
+msgid "Select background color"
+msgstr "Arxa plan rəngini seç"
+
+#: settings/backdrop_settings.c:413
+msgid "Background color:"
+msgstr "Arxa plan rəngi:"
+
+#: settings/backdrop_settings.c:443
+msgid "Use color only:"
+msgstr "Təkcə rəng işlət:"
+
+#: settings/backdrop_settings.c:569
+msgid "File:"
+msgstr "Fayl:"
+
+#: settings/backdrop_settings.c:630
+msgid "Select background image or list file"
+msgstr "Arxa plan rəsmini ya da siyahı faylını seç"
+
+#: settings/backdrop_settings.c:707
+msgid "_Browse..."
+msgstr "_Gəz..."
+
+#: settings/backdrop_settings.c:711
+msgid "New list"
+msgstr "Yeni siyahı"
+
+#: settings/backdrop_settings.c:715
+msgid "Edit list"
+msgstr "Siyahını dəyişdir"
+
+#: settings/backdrop_settings.c:753
+msgid "Style:"
+msgstr "Tərz:"
+
+#: settings/backdrop_settings.c:761
+msgid "_Tiled"
+msgstr "_Döşə"
+
+#: settings/backdrop_settings.c:767
+msgid "_Scaled"
+msgstr "_Uyğunlaşdır"
+
+#: settings/backdrop_settings.c:774
+msgid "_Centered"
+msgstr "_Ortala"
+
+#: settings/backdrop_settings.c:781
+msgid "_Auto"
+msgstr "_Avtomatik"
+
+#. the dialog
+#: settings/backdrop_settings.c:820
+msgid "Background"
+msgstr "Arxa plan"
+
+#. header
+#: settings/backdrop_settings.c:838
+msgid "Background Settings"
+msgstr "Ara Plan Qurğuları"
+
+#. color
+#: settings/backdrop_settings.c:844
+msgid "Color"
+msgstr "Rəng"
+
+#. image vbox
+#: settings/backdrop_settings.c:856
+msgid "Image"
+msgstr "Rəsm"
+
+#: settings/backdrop_settings.c:882
+msgid "Don't set background"
+msgstr "Arxa plan olmasın"
+
+#: settings/workspaces_settings.c:85
+msgid "Desktop: workspaces"
+msgstr "Masa üstü: iş sahələri"
+
+#: settings/workspaces_settings.c:329
+msgid "Change name"
+msgstr "Adını dəyişdir"
+
+#: settings/workspaces_settings.c:340
+#, c-format
+msgid "Workspace %d"
+msgstr "İş sahəsi %d"
+
+#: settings/workspaces_settings.c:350
+msgid "Name:"
+msgstr "Adı:"
+
+#: settings/workspaces_settings.c:461
+msgid "Click on a workspace name to edit it"
+msgstr "Dəyişiklik etmək üçün iş sahəsinin adına tıqlayın"
+
+#: settings/workspaces_settings.c:492
+msgid "Number of workspaces:"
+msgstr "İş sahəsi miqdarı:"
+
+#. Number of workspaces
+#: settings/workspaces_settings.c:528 settings/workspaces_settings.c:558
+msgid "Workspaces"
+msgstr "İş sahələri"
+
+#: settings/workspaces_settings.c:551
+msgid "Workspace Settings"
+msgstr "İş Sahəsi Qurğuları"
+
+#. Workspace names
+#: settings/workspaces_settings.c:570
+msgid "Workspace names"
+msgstr "İş·sahəsi·adları"
+
+#: src/backdrop.c:508
+#, c-format
+msgid "xfdesktop error: loading backdrop image: %s\n"
+msgstr "xfdesktop xətası: arxa plan rəsmi yüklənə bilmədi: %s\n"
+
+#: src/menu.c:735
+msgid "Add workspace"
+msgstr "İş sahəsi əlavə et"
+
+#: src/menu.c:742
+msgid "Delete workspace"
+msgstr "İş sahəsini sil"
+
+#: src/settings.c:182
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr ""
+"xfdesktop: qurğu idarəçisinə bağlana bilmədi!Xahiş edirik qurulumunuzu"
+"yoxlayın."
+
