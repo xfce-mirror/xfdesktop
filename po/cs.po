@@ -1,134 +1,134 @@
+# translation of cs.po to Czech
 # Czech translation for xfdesktop
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Lukáš Konarovský <daeltar@daeltar.org>, 2003.
+# Alois Nespor <Alois.Nespor@seznam.cz>, 2004.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-17 23:16+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Lukas Konarovsky <daeltar@daeltar.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2004-09-23 22:43-0700\n"
+"PO-Revision-Date: 2004-10-29 18:12+0000\n"
+"Last-Translator: Alois Nespor <Alois.Nespor@seznam.cz>\n"
+"Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3\n"
 
 #: menueditor/about_dialog.c:36
 msgid "A menu editor for Xfce4"
-msgstr ""
+msgstr "Editor menu pro Xdce4"
 
 #. Credits
 #: menueditor/about_dialog.c:41
 msgid "Core developer"
-msgstr ""
+msgstr "Hlavní vývojář (patří mu ten největší dík)"
 
 #: menueditor/about_dialog.c:42 menueditor/about_dialog.c:43
 #: menueditor/about_dialog.c:44
 msgid "Contributor"
-msgstr ""
+msgstr "Přispěvovatel (taky díky)"
 
 #: menueditor/about_dialog.c:45
 msgid "Icon designer"
-msgstr ""
+msgstr "Návrh ikon"
 
 #: menueditor/add_dialog.c:132 menueditor/add_dialog.c:147
 msgid "Add menu entry"
-msgstr ""
+msgstr "Přidat položku menu"
 
 #. Type
 #: menueditor/add_dialog.c:153 menueditor/add_menu_dialog.c:98
 #: menueditor/edit_dialog.c:148
 msgid "Type:"
-msgstr ""
+msgstr "Typ:"
 
 #: menueditor/add_dialog.c:156
 msgid "Launcher"
-msgstr ""
+msgstr "Spouštěč"
 
 #: menueditor/add_dialog.c:161
 msgid "Submenu"
-msgstr ""
+msgstr "Podmenu"
 
 #: menueditor/add_dialog.c:166
 msgid "Separator"
-msgstr ""
+msgstr "Oddělovač"
 
 #: menueditor/add_dialog.c:171
-#, fuzzy
 msgid "Title"
-msgstr "_Dláždit"
+msgstr "Titulek"
 
 #: menueditor/add_dialog.c:176
 msgid "Quit"
-msgstr ""
+msgstr "Konec"
 
 #. Name
 #: menueditor/add_dialog.c:191 menueditor/edit_dialog.c:260
 #: menueditor/edit_dialog.c:310 menueditor/edit_dialog.c:348
 msgid "Name:"
-msgstr "Jméno:"
+msgstr "Název:"
 
 #: menueditor/add_dialog.c:201 menueditor/edit_dialog.c:261
 msgid "Command:"
-msgstr ""
+msgstr "Příkaz:"
 
 #: menueditor/add_dialog.c:217 menueditor/edit_dialog.c:252
 #: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
 #: menueditor/edit_dialog.c:390
 msgid "Icon:"
-msgstr ""
+msgstr "Ikona:"
 
 #. Start Notify check button
 #: menueditor/add_dialog.c:233 menueditor/edit_dialog.c:272
 msgid "Use startup _notification"
-msgstr ""
+msgstr "Použít startovací _oznámení"
 
 #. Run in terminal check button
 #: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:273
 msgid "Run in _terminal"
-msgstr ""
+msgstr "Pustit v _terminálu"
 
 #: menueditor/add_dialog.c:282 menueditor/edit_dialog.c:459
 msgid "The command doesn't exist !"
-msgstr ""
+msgstr "Příkaz neexistuje!"
 
 #: menueditor/add_dialog.c:288
 msgid "All fields must be filled to add an item."
-msgstr ""
+msgstr "Pro přidání položky musí být všechny pole vyplněné."
 
 #: menueditor/add_dialog.c:296
 msgid "The 'Name' field is required."
-msgstr ""
+msgstr "Pole Název musí být vyplněné."
 
-#: menueditor/add_dialog.c:350 menueditor/dnd.c:152
-#: menueditor/menueditor.c:346 menueditor/move.c:90 menueditor/move.c:248
+#: menueditor/add_dialog.c:350 menueditor/dnd.c:154
+#: menueditor/menueditor.c:349 menueditor/move.c:92 menueditor/move.c:250
 msgid "--- separator ---"
-msgstr ""
+msgstr "--- oddělovač ---"
 
 #: menueditor/add_dialog.c:375 menueditor/edit_dialog.c:494
 msgid "quit"
-msgstr ""
+msgstr "ukončit"
 
 #: menueditor/add_menu_dialog.c:78 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:805
+#: menueditor/menueditor.c:808
 msgid "Add an external menu"
-msgstr ""
+msgstr "Přidat externí menu"
 
 #: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:151
-#, fuzzy
 msgid "File"
-msgstr "Soubor:"
+msgstr "Soubor"
 
 #: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:156
 msgid "System"
-msgstr ""
+msgstr "Systém"
 
 #: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:171
 msgid "Source:"
-msgstr ""
+msgstr "Zdroj:"
 
 #. Style
 #: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:184
@@ -137,287 +137,297 @@ msgstr "Styl:"
 
 #: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:187
 msgid "Simple"
-msgstr ""
+msgstr "Jednoduché"
 
 #: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:190
 msgid "Multilevel"
-msgstr ""
+msgstr "Víceúrovňové"
 
 #. Unique
 #: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:203
 msgid "_Unique entries only"
-msgstr ""
+msgstr "Pouze _unikátní položky"
 
 #: menueditor/add_menu_dialog.c:208
 msgid "The 'Source' field is required."
-msgstr ""
+msgstr "Pole Zdroj musí být vyplněné."
 
 #: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:235
-#: menueditor/dnd.c:154 menueditor/edit_dialog.c:508
-#: menueditor/edit_dialog.c:521 menueditor/menueditor.c:394
-#: menueditor/move.c:120 menueditor/move.c:278
+#: menueditor/dnd.c:156 menueditor/edit_dialog.c:508
+#: menueditor/edit_dialog.c:521 menueditor/menueditor.c:397
+#: menueditor/move.c:122 menueditor/move.c:280
 msgid "--- include ---"
-msgstr ""
+msgstr "--- obsahuje ---"
 
-#: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:159
-#: menueditor/edit_dialog.c:522 menueditor/menueditor.c:397
-#: menueditor/move.c:123 menueditor/move.c:281
+#: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:161
+#: menueditor/edit_dialog.c:522 menueditor/menueditor.c:400
+#: menueditor/move.c:125 menueditor/move.c:283
 msgid "system"
-msgstr ""
+msgstr "systém"
 
 #. Create dialog for editing
 #: menueditor/edit_dialog.c:100 menueditor/edit_dialog.c:113
 msgid "Edit menu entry"
-msgstr ""
+msgstr "Upravit položku menu"
 
 #: menueditor/edit_dialog.c:131
 msgid "Separators cannot be edited"
-msgstr ""
+msgstr "Oddělovač nemůže být upravovaný"
 
 #. Name
 #: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:104
-#, fuzzy
 msgid "Title:"
-msgstr "Soubor:"
+msgstr "Titulek:"
 
-#: menueditor/menueditor.c:148
+#: menueditor/menueditor.c:151
 msgid "Select command"
-msgstr ""
+msgstr "Vybrat příkaz"
 
-#: menueditor/menueditor.c:209
+#: menueditor/menueditor.c:212
 msgid "Select icon"
-msgstr ""
+msgstr "Vybrat ikonu"
 
-#: menueditor/menueditor.c:215 panel-plugin/desktop-menu-plugin.c:389
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: menueditor/menueditor.c:218 panel-plugin/desktop-menu-plugin.c:371
+#: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
 #: settings/backdrop_settings.c:533
 msgid "All Files"
-msgstr ""
+msgstr "Všechny soubory"
 
-#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:395
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
-#, fuzzy
+#: menueditor/menueditor.c:222 panel-plugin/desktop-menu-plugin.c:377
+#: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Soubory s obrázky"
 
-#: menueditor/menueditor.c:272 menueditor/menueditor.c:679
+#: menueditor/menueditor.c:275 menueditor/menueditor.c:682
 msgid "Do you want to save before closing the menu ?"
-msgstr ""
+msgstr "Chcete uložit před zavřením menu?"
 
-#: menueditor/menueditor.c:273
+#: menueditor/menueditor.c:276
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr ""
+msgstr "Modifikovali jste menu, chcete jej uložit před ukončením ?"
 
-#: menueditor/menueditor.c:274
+#: menueditor/menueditor.c:277
 msgid "Forget modifications"
-msgstr ""
+msgstr "Zrušit modifikace."
 
-#: menueditor/menueditor.c:473 menueditor/menueditor.c:531
-#: menueditor/menueditor.c:677
+#: menueditor/menueditor.c:476 menueditor/menueditor.c:534
+#: menueditor/menueditor.c:680
 msgid "Question"
-msgstr ""
+msgstr "Otázka"
 
-#: menueditor/menueditor.c:475
+#: menueditor/menueditor.c:478
 msgid "Do you want to save before opening the default menu ?"
-msgstr ""
+msgstr "Chcete uložit před otevřením standartního menu?"
 
-#: menueditor/menueditor.c:477 menueditor/menueditor.c:535
-#: menueditor/menueditor.c:681
+#: menueditor/menueditor.c:480 menueditor/menueditor.c:538
+#: menueditor/menueditor.c:684
 msgid "Ignore modifications"
-msgstr ""
+msgstr "Ignorovat modifikace"
 
-#: menueditor/menueditor.c:533
+#: menueditor/menueditor.c:536
 msgid "Do you want to save before opening an other menu ?"
-msgstr ""
+msgstr "Chcete uložit před otevřením jiného menu ?"
 
-#: menueditor/menueditor.c:546
+#: menueditor/menueditor.c:549
 msgid "Open menu file"
-msgstr ""
+msgstr "Otevřít souborové menu"
 
-#: menueditor/menueditor.c:580 menueditor/menueditor.c:591
+#: menueditor/menueditor.c:583 menueditor/menueditor.c:594
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
+"Nelze zapisovat do %s : \n"
+"%s"
 
-#: menueditor/menueditor.c:622
+#: menueditor/menueditor.c:625
 msgid "Save as..."
-msgstr ""
+msgstr "Uložit jako..."
 
-#: menueditor/menueditor.c:799
-#, fuzzy
+#: menueditor/menueditor.c:802
 msgid "Edit"
-msgstr "Upravit seznam"
+msgstr "Upravit "
 
 #. File menu
-#: menueditor/menueditor.c:1005
-#, fuzzy
+#: menueditor/menueditor.c:1008
 msgid "_File"
-msgstr "Soubor:"
+msgstr "_Soubor"
 
-#: menueditor/menueditor.c:1014
+#: menueditor/menueditor.c:1017
 msgid "Open default menu"
-msgstr ""
+msgstr "Otevřít standartní menu"
 
 #. Edit menu
-#: menueditor/menueditor.c:1028
+#: menueditor/menueditor.c:1031
 msgid "_Edit"
-msgstr ""
+msgstr "_Upravit"
 
-#: menueditor/menueditor.c:1034
+#: menueditor/menueditor.c:1037
 msgid "Add an external menu..."
-msgstr ""
+msgstr "Přidat externí menu"
 
 #. Help menu
-#: menueditor/menueditor.c:1046
+#: menueditor/menueditor.c:1049
 msgid "_Help"
-msgstr ""
+msgstr "_Pomoc"
 
-#: menueditor/menueditor.c:1051
+#: menueditor/menueditor.c:1054
 msgid "_About..."
-msgstr ""
+msgstr "_O..."
 
-#: menueditor/menueditor.c:1061
+#: menueditor/menueditor.c:1064
 msgid "Create a new Xfce4 menu file"
-msgstr ""
+msgstr "Vytvořit souborové menu Xfce4 "
 
-#: menueditor/menueditor.c:1065
+#: menueditor/menueditor.c:1068
 msgid "Open an Xfce4 menu file"
-msgstr ""
+msgstr "Otevřít souborové menu Xfce4 "
 
-#: menueditor/menueditor.c:1069
+#: menueditor/menueditor.c:1072
 msgid "Save current menu"
-msgstr ""
+msgstr "Uložit aktuální menu"
 
-#: menueditor/menueditor.c:1073
+#: menueditor/menueditor.c:1076
 msgid "Close current menu"
-msgstr ""
+msgstr "Zavřít aktuální menu "
 
-#: menueditor/menueditor.c:1078
+#: menueditor/menueditor.c:1081
 msgid "Add an entry to the menu"
-msgstr ""
+msgstr "Přidat položku do menu"
 
-#: menueditor/menueditor.c:1082
+#: menueditor/menueditor.c:1085
 msgid "Delete the current entry"
-msgstr ""
+msgstr "Odstranit aktuální položku"
 
-#: menueditor/menueditor.c:1086
+#: menueditor/menueditor.c:1089
 msgid "Move the current entry up"
-msgstr ""
+msgstr "Přesunout aktuální položku nahoru"
 
-#: menueditor/menueditor.c:1090
+#: menueditor/menueditor.c:1093
 msgid "Move the current entry down"
-msgstr ""
+msgstr "Přesunout aktuální položku dolů"
 
-#: menueditor/menueditor.c:1095
+#: menueditor/menueditor.c:1098
 msgid "Collapse the tree"
-msgstr ""
+msgstr "Sbalit strom"
 
-#: menueditor/menueditor.c:1099
+#: menueditor/menueditor.c:1102
 msgid "Expand the tree"
-msgstr ""
+msgstr "Rozbalit strom"
 
-#: menueditor/menueditor.c:1130
-#, fuzzy
+#: menueditor/menueditor.c:1133
 msgid "Name"
-msgstr "Jméno:"
+msgstr "Název"
 
-#: menueditor/menueditor.c:1132
+#: menueditor/menueditor.c:1135
 msgid "Command"
-msgstr ""
+msgstr "Příkaz"
 
-#: menueditor/menueditor.c:1134
+#: menueditor/menueditor.c:1137
 msgid "Hidden"
-msgstr ""
+msgstr "Skryto"
 
-#: menueditor/menueditor.c:1136
+#: menueditor/menueditor.c:1139
 msgid "Pointer"
-msgstr ""
+msgstr "Kurzor"
 
-#: menueditor/menueditor.c:1260
+#: menueditor/menueditor.c:1263
 msgid "Corrupted file or incorrect file format !"
-msgstr ""
+msgstr "Poškozený soubor nebo nesprávný formát souboru !"
 
-#: menueditor/menueditor.c:1273
+#: menueditor/menueditor.c:1276
 msgid "No root element in file !"
-msgstr ""
+msgstr "Žádný kořenový prvek v souboru !"
 
-#: menueditor/menueditor.c:1284
+#: menueditor/menueditor.c:1287
 msgid "Bad datafile format !"
-msgstr ""
+msgstr "Špatný formát datového souboru !"
 
-#: menueditor/menueditor.c:1388
+#: menueditor/menueditor.c:1391
 #, c-format
 msgid "File %s doesn't exist !"
-msgstr ""
+msgstr "Soubor %s neexistuje !"
 
-#: menueditor/move.c:408
+#: menueditor/move.c:410
 msgid "Do you want to move the item into the parent menu?"
-msgstr ""
+msgstr "Chcete přesunout položku do základního menu ?"
 
-#: menueditor/move.c:512
+#: menueditor/move.c:514
 msgid "Do you want to move the item into the submenu?"
-msgstr ""
+msgstr "Chcete přesunout položku do podmenu ?"
 
 #: menueditor/new_dialog.c:60
 msgid "Are you sure you want to close the current menu?"
-msgstr ""
+msgstr "Jste si jistý, že chcete zavčít aktuální menu ?"
 
 #: menueditor/new_dialog.c:76
 msgid "Do you want to save before closing the file?"
-msgstr ""
+msgstr "Chcete uložit před uzavřením souboru?"
 
 #. get the filename and name for the new menu
 #: menueditor/new_dialog.c:86 menueditor/new_dialog.c:98
 msgid "New menu"
-msgstr ""
+msgstr "Nové menu"
 
 #. Filename
 #: menueditor/new_dialog.c:111
-#, fuzzy
 msgid "Filename:"
-msgstr "Soubor:"
+msgstr "Název souboru:"
 
 #: menueditor/new_dialog.c:144
 msgid "All fields are required."
-msgstr ""
+msgstr "Všechny pole musí být vyplněné."
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
-msgstr ""
+msgstr "/Ostatní"
 
-#: panel-plugin/desktop-menu-plugin.c:204
-#: panel-plugin/desktop-menu-plugin.c:532
+#: panel-plugin/desktop-menu-plugin.c:189
+#: panel-plugin/desktop-menu-plugin.c:514
 msgid "Xfce Menu"
-msgstr ""
+msgstr "Menu Xfce4"
 
-#: panel-plugin/desktop-menu-plugin.c:372
+#: panel-plugin/desktop-menu-plugin.c:354
 msgid "Select Icon"
-msgstr ""
+msgstr "Vybrat ikonu"
 
-#: panel-plugin/desktop-menu-plugin.c:374
+#: panel-plugin/desktop-menu-plugin.c:356
 msgid "Select Menu File"
-msgstr ""
+msgstr "Vybrat souborové menu"
 
-#: panel-plugin/desktop-menu-plugin.c:403
-#, fuzzy
+#: panel-plugin/desktop-menu-plugin.c:385
 msgid "Menu Files"
-msgstr "Soubory s obrázky"
+msgstr "Souborové menu"
 
-#: panel-plugin/desktop-menu-plugin.c:462
+#: panel-plugin/desktop-menu-plugin.c:444
 msgid "_Menu file:"
-msgstr ""
+msgstr "Souborové _menu:"
 
-#: panel-plugin/desktop-menu-plugin.c:496
+#: panel-plugin/desktop-menu-plugin.c:478
 msgid "_Button icon:"
-msgstr ""
+msgstr "_Tlačítko ikony:"
 
-#: panel-plugin/desktop-menu-plugin.c:521
+#: panel-plugin/desktop-menu-plugin.c:503
 msgid "Show _icons in menu"
-msgstr ""
+msgstr "Zobrazit _ikony v menu"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:112
+#: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
+#: settings/backdrop-mgr.c:553
+msgid "Backdrop"
+msgstr "Pozadí"
+
+#: settings/backdrop-mgr.c:100
+#, c-format
+msgid "Adding files from directory %s..."
+msgstr "Přidat soubory z adresáře %s..."
+
+#: settings/backdrop-mgr.c:160
+#, c-format
+msgid "Adding files from list %s..."
+msgstr "Přidat soubory ze seznamu %s..."
+
+#: settings/backdrop-mgr.c:215
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -427,116 +437,107 @@ msgid ""
 msgstr ""
 "Nemohu uložit soubor %s: %s\n"
 "\n"
-"Prosím vyberte jiné umístění nebo použijte cancel pro ztracení změn změn"
+"Prosím vyberte jiné umístění nebo použijte zrušit pro zrušení změn "
 
-#: settings/backdrop-mgr.c:409
-#, fuzzy
+#: settings/backdrop-mgr.c:502
 msgid "Select backdrop image file"
-msgstr "Vyberte soubor s obrázkem"
+msgstr "Vyberte soubor s obrázkem pro pozadí"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:559
+msgid "Adding multiple files..."
+msgstr "Přidat vícero souborů ..."
+
+#: settings/backdrop-mgr.c:637
 msgid "Choose backdrop list filename"
 msgstr "Vyberte soubor se seznamem obrázků"
 
-#: settings/backdrop-mgr.c:519
-#, fuzzy
+#: settings/backdrop-mgr.c:646
 msgid "List Files"
-msgstr "Soubor se seznamem obrázků"
+msgstr "Seznam souborů"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:709
 msgid "Backdrop List"
-msgstr "Seznam obrázků"
+msgstr "Zeznam pozadí"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:726
 msgid "Image files"
 msgstr "Soubory s obrázky"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:737 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
-#, fuzzy
 msgid "backdrops.list"
-msgstr "Upravit seznam obrázků"
+msgstr "seznam pozadí"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:745
 msgid "List file"
-msgstr "Soubor se seznamem obrázků"
+msgstr "Seznam souborů"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:765
 msgid "Create backdrop list"
-msgstr "Vytvořit seznam obrázků"
+msgstr "Vytvořit seznam pozadí"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:796
 msgid "Edit backdrop list"
-msgstr "Upravit seznam obrázků"
+msgstr "Editovat seznam pozadí"
 
 #. the dialog
 #: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
-#: src/xfce-desktop.c:670
+#: src/xfce-desktop.c:616
 msgid "Desktop"
 msgstr "Plocha"
 
 #: settings/backdrop_settings.c:528
-#, fuzzy
 msgid "Select backdrop image or list file"
-msgstr "Vybrat obrázek na pozadí nebo seznam obrázků"
+msgstr "Vybrat obrázek pozadí nebo soubor se seznamem"
 
 #: settings/backdrop_settings.c:546
 msgid "List Files (*.list)"
-msgstr ""
+msgstr "Seznam souborů (*.list)"
 
 #: settings/backdrop_settings.c:636
-#, fuzzy
 msgid "_Edit list..."
-msgstr "Upravit seznam"
+msgstr "_Upravit seznam..."
 
 #: settings/backdrop_settings.c:644
-#, fuzzy
 msgid "_New list..."
-msgstr "Nový seznam"
+msgstr "_Nový seznam..."
 
 #: settings/backdrop_settings.c:680
-#, fuzzy
 msgid "S_tyle:"
-msgstr "Styl:"
+msgstr "_Styl:"
 
 #: settings/backdrop_settings.c:688
-#, fuzzy
 msgid "Tiled"
-msgstr "_Dláždit"
+msgstr "Dláždit"
 
 #: settings/backdrop_settings.c:695
-#, fuzzy
 msgid "Centered"
-msgstr "_Centrovat"
+msgstr "Vycentrovat"
 
 #: settings/backdrop_settings.c:702
-#, fuzzy
 msgid "Scaled"
-msgstr "_Zvětšit"
+msgstr "Škálovat"
 
 #: settings/backdrop_settings.c:709
 msgid "Stretched"
-msgstr ""
+msgstr "Roztáhnout"
 
 #: settings/backdrop_settings.c:716
-#, fuzzy
 msgid "Auto"
-msgstr "_Automaticky"
+msgstr "Automaticky"
 
 #: settings/backdrop_settings.c:782
 msgid "Adjust _Brightness:"
-msgstr ""
+msgstr "Přizpůsobit _jas:"
 
 #. header
 #: settings/backdrop_settings.c:851
-#, fuzzy
 msgid "Desktop Settings"
-msgstr "Nastavení Pracovních Ploch"
+msgstr "Nastavení plochy"
 
 #: settings/backdrop_settings.c:880
-#, fuzzy
 msgid "_Backdrops"
-msgstr "Seznam obrázků"
+msgstr "_Pozadí"
 
 #. color settings frame
 #: settings/backdrop_settings.c:906
@@ -544,207 +545,146 @@ msgid "Color"
 msgstr "Barva"
 
 #: settings/backdrop_settings.c:920
-#, fuzzy
 msgid "_Color Style:"
-msgstr "Styl:"
+msgstr "Barevný styl:"
 
 #: settings/backdrop_settings.c:929
-#, fuzzy
 msgid "Solid Color"
-msgstr "Barva"
+msgstr "Plná (solidní) barva"
 
 #: settings/backdrop_settings.c:936
 msgid "Horizontal Gradient"
-msgstr ""
+msgstr "Horizontálně stupňovat"
 
 #: settings/backdrop_settings.c:943
 msgid "Vertical Gradient"
-msgstr ""
+msgstr "Vertikálně stupňovat"
 
 #: settings/backdrop_settings.c:964
 msgid "Fi_rst Color:"
-msgstr ""
+msgstr "_První barva:"
 
 #: settings/backdrop_settings.c:985
-#, fuzzy
 msgid "_Second Color:"
-msgstr "Barva pozadí:"
+msgstr "_Druhá barva:"
 
 #. set color only checkbox
 #: settings/backdrop_settings.c:1006
-#, fuzzy
 msgid "Set color _only"
-msgstr "Použít pouze barvu:"
+msgstr "Natavit _pouze barvu"
 
 #: settings/backdrop_settings.c:1021
 msgid "Image"
 msgstr "Obrázek"
 
 #: settings/backdrop_settings.c:1029
-#, fuzzy
 msgid "Show _Image"
-msgstr "Obrázek"
+msgstr "Ukázat _obrázek"
 
 #: settings/backdrop_settings.c:1051
-#, fuzzy
 msgid "_File:"
-msgstr "Soubor:"
+msgstr "_Soubor:"
 
 #. don't set backdrop checkbox
 #: settings/backdrop_settings.c:1088
-#, fuzzy
 msgid "_Don't set backdrop"
-msgstr "Plocha: Pozadí"
+msgstr "_Nenastavovat pozadí"
 
 #. add the single backdrop settings page to the main notebook
 #: settings/backdrop_settings.c:1111
-#, fuzzy
 msgid "_Backdrop"
-msgstr "Seznam obrázků"
+msgstr "_Pozadí"
 
 #: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
 #, c-format
 msgid "Screen %d"
-msgstr ""
+msgstr "Obraz %d"
 
 #. and if we have multiple screens, each with multiple monitors
 #: settings/backdrop_settings.c:1126
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr ""
+msgstr "Obraz %d, Monitor %d"
 
 #: settings/backdrop_settings.c:1140
 msgid "_Menu"
-msgstr ""
+msgstr "_Menu"
 
 #: settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr ""
+msgstr "Nelze spustit Xfce4 menu editor : %s"
 
 #: settings/menu_settings.c:153
 msgid "Window List"
-msgstr ""
+msgstr "Seznam oken"
 
 #: settings/menu_settings.c:161
 msgid "Show window _list"
-msgstr ""
+msgstr "Ukázat _seznam oken"
 
 #: settings/menu_settings.c:176
 msgid "Show _window icons"
-msgstr ""
+msgstr "Zobrazit ikony _oken"
 
 #: settings/menu_settings.c:189
-#, fuzzy
 msgid "Desktop Menu"
-msgstr "Plocha"
+msgstr "Menu plochy"
 
 #: settings/menu_settings.c:197
 msgid "Show desktop _menu"
-msgstr ""
+msgstr "Zobrazit _menu plochy"
 
 #: settings/menu_settings.c:212
 msgid "Show _application icons"
-msgstr ""
+msgstr "Zobrazit  ikony _aplikace"
 
 #: settings/menu_settings.c:223
 msgid "_Edit desktop menu"
-msgstr ""
+msgstr "_Upravit menu plochy"
 
-#: src/main.c:300
+#: src/main.c:265
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr ""
+msgstr "%s: Neznámá volba: %s\n"
 
-#: src/main.c:301
+#: src/main.c:266
 msgid "Options are:\n"
-msgstr ""
+msgstr "Možnosti jsou:\n"
 
-#: src/main.c:302
+#: src/main.c:267
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr ""
+msgstr "   - reload      Nahrát znovu všechny nastavení, obnovit seznam obrázků\n"
 
-#: src/main.c:303
+#: src/main.c:268
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr ""
+msgstr "    menu        Otevřít menu (na aktuální pozici kurzoru myši)\n"
 
-#: src/main.c:304
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
+#: src/main.c:269
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -windowlist  Otevřít seznam oken (na aktuální pozici kurzoru myši)\n"
 
 #: src/windowlist.c:183
-#, fuzzy, c-format
+#, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "Plocha %d"
+msgstr "<b>Pracovní plocha %d</b>"
 
 #: src/windowlist.c:188
-#, fuzzy, c-format
+#, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "Plocha %d"
+msgstr "<i>Pracovní plocha%d</i>"
 
 #: src/windowlist.c:244 src/windowlist.c:247
-#, fuzzy
 msgid "_Add Workspace"
-msgstr "Přidat plochu"
+msgstr "_Přidat pracovní plochu"
 
 #: src/windowlist.c:254
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace %d"
-msgstr "Plocha %d"
+msgstr "_Odebrat pracovní plochu %d"
 
 #: src/windowlist.c:256
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Plocha %d"
+msgstr "_Odebrat pracovní plochu %s"
 
-#, fuzzy
-#~ msgid "Backdrop"
-#~ msgstr "Seznam obrázků"
-
-#, fuzzy
-#~ msgid "Select backdrop color"
-#~ msgstr "Vybrat barvu pozadí"
-
-#~ msgid "New.list"
-#~ msgstr "Nový seznam"
-
-#~ msgid "_Browse..."
-#~ msgstr "_Procházet..."
-
-#~ msgid "Background"
-#~ msgstr "Pozadí"
-
-#~ msgid "Background Settings"
-#~ msgstr "Nastavení Pozadí"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr "Pracovní plochy"
-
-#~ msgid "Change name"
-#~ msgstr "Změnit jméno"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Klini na plochu k její změně"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "Počet pracovních ploch:"
-
-#~ msgid "Workspaces"
-#~ msgstr "Pracovní plochy"
-
-#~ msgid "Workspace names"
-#~ msgstr "Jména ploch"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "xfdesktop chyba: nemohu načíst obrázek: %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "Odstranit plochu"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr ""
-#~ "xfdesktop: nemohu se připojit k správci nastavení (settings manager)! "
-#~ "Prosím, zkontrolujte svojí instalaci."
