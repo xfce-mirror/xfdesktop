@@ -463,7 +463,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL GETTEXT_PACKAGE USE_NLS MSGFMT GMSGFMT XGETTEXT CATALOGS CATOBJEXT DATADIRNAME GMOFILES INSTOBJEXT INTLLIBS PO_IN_DATADIR_TRUE PO_IN_DATADIR_FALSE POFILES POSUB MKINSTALLDIRS localedir X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS LIBX11_CFLAGS LIBX11_LDFLAGS LIBX11_LIBS PKG_CONFIG XFCE4_PANEL_CFLAGS XFCE4_PANEL_LIBS XFCE4_PANEL_REQUIRED_VERSION XFCE4_PANEL_PLUGINSDIR LIBXFCEGUI4_CFLAGS LIBXFCEGUI4_LIBS LIBXFCEGUI4_REQUIRED_VERSION LIBXFCE4UTIL_CFLAGS LIBXFCE4UTIL_LIBS LIBXFCE4UTIL_REQUIRED_VERSION LIBXML_CFLAGS LIBXML_LIBS LIBXML_REQUIRED_VERSION LIBXFCE4MCS_CLIENT_CFLAGS LIBXFCE4MCS_CLIENT_LIBS LIBXFCE4MCS_CLIENT_REQUIRED_VERSION GMODULE_CFLAGS GMODULE_LIBS GMODULE_REQUIRED_VERSION GTHREAD_CFLAGS GTHREAD_LIBS GTHREAD_REQUIRED_VERSION XFCE_MCS_MANAGER_CFLAGS XFCE_MCS_MANAGER_LIBS XFCE_MCS_MANAGER_REQUIRED_VERSION XFCE_MCS_MANAGER_PLUGINSDIR LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL GETTEXT_PACKAGE USE_NLS MSGFMT GMSGFMT XGETTEXT CATALOGS CATOBJEXT DATADIRNAME GMOFILES INSTOBJEXT INTLLIBS PO_IN_DATADIR_TRUE PO_IN_DATADIR_FALSE POFILES POSUB MKINSTALLDIRS localedir X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS LIBX11_CFLAGS LIBX11_LDFLAGS LIBX11_LIBS PKG_CONFIG XFCE4_PANEL_CFLAGS XFCE4_PANEL_LIBS XFCE4_PANEL_REQUIRED_VERSION XFCE4_PANEL_PLUGINSDIR LIBXFCEGUI4_CFLAGS LIBXFCEGUI4_LIBS LIBXFCEGUI4_REQUIRED_VERSION LIBXFCE4UTIL_CFLAGS LIBXFCE4UTIL_LIBS LIBXFCE4UTIL_REQUIRED_VERSION LIBXFCE4MCS_CLIENT_CFLAGS LIBXFCE4MCS_CLIENT_LIBS LIBXFCE4MCS_CLIENT_REQUIRED_VERSION GMODULE_CFLAGS GMODULE_LIBS GMODULE_REQUIRED_VERSION GTHREAD_CFLAGS GTHREAD_LIBS GTHREAD_REQUIRED_VERSION LIBXML_CFLAGS LIBXML_LIBS LIBXML_REQUIRED_VERSION MENUEDITOR_DIR XFCE_MCS_MANAGER_CFLAGS XFCE_MCS_MANAGER_LIBS XFCE_MCS_MANAGER_REQUIRED_VERSION XFCE_MCS_MANAGER_PLUGINSDIR DESKTOP_MENU_DIR PANEL_PLUGIN_DIR LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -1038,6 +1038,9 @@ Optional Features:
   --enable-fast-install[=PKGS]
                           optimize for fast installation [default=yes]
   --disable-libtool-lock  avoid locking (might break parallel builds)
+  --enable-libxml2        Enable checking for libxml2 (for xfce4-menueditor)
+                          (default=yes)
+  --disable-libxml2       Disable checking for libxml2 (for xfce4-menueditor)
   --enable-debug=yes|no|full
                           Build with debugging support
   --disable-debug         Include no debugging support default
@@ -1049,6 +1052,9 @@ Optional Features:
                           (default)
   --enable-asserts        Enable assert statements (default)
   --disable-asserts       Disable assert statements (USE WITH CARE!!!)
+  --disable-desktop-menu  Do not build the desktop menu module
+                          (default=enabled)
+  --disable-panel-plugin  Do not build the panel plugin (default=enabled)
 
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
@@ -5374,7 +5380,7 @@ ia64-*-hpux*)
   ;;
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5377 "configure"' > conftest.$ac_ext
+  echo '#line 5383 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -6484,7 +6490,7 @@ fi
 
 
 # Provide some information about the compiler.
-echo "$as_me:6487:" \
+echo "$as_me:6493:" \
      "checking for Fortran 77 compiler version" >&5
 ac_compiler=`set X $ac_compile; echo $2`
 { (eval echo "$as_me:$LINENO: \"$ac_compiler --version </dev/null >&5\"") >&5
@@ -7518,11 +7524,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7521: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7527: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7525: \$? = $ac_status" >&5
+   echo "$as_me:7531: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -7751,11 +7757,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7754: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7760: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7758: \$? = $ac_status" >&5
+   echo "$as_me:7764: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -7811,11 +7817,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7814: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7820: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:7818: \$? = $ac_status" >&5
+   echo "$as_me:7824: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -9190,7 +9196,7 @@ linux*)
   libsuff=
   case "$host_cpu" in
   x86_64*)
-    echo '#line 9193 "configure"' > conftest.$ac_ext
+    echo '#line 9199 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -10050,7 +10056,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10053 "configure"
+#line 10059 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -10148,7 +10154,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10151 "configure"
+#line 10157 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -12327,11 +12333,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:12330: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:12336: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:12334: \$? = $ac_status" >&5
+   echo "$as_me:12340: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -12387,11 +12393,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:12390: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:12396: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:12394: \$? = $ac_status" >&5
+   echo "$as_me:12400: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -12943,7 +12949,7 @@ linux*)
   libsuff=
   case "$host_cpu" in
   x86_64*)
-    echo '#line 12946 "configure"' > conftest.$ac_ext
+    echo '#line 12952 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -13803,7 +13809,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 13806 "configure"
+#line 13812 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -13901,7 +13907,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 13904 "configure"
+#line 13910 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -14728,11 +14734,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14731: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14737: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:14735: \$? = $ac_status" >&5
+   echo "$as_me:14741: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -14788,11 +14794,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14791: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14797: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:14795: \$? = $ac_status" >&5
+   echo "$as_me:14801: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -16147,7 +16153,7 @@ linux*)
   libsuff=
   case "$host_cpu" in
   x86_64*)
-    echo '#line 16150 "configure"' > conftest.$ac_ext
+    echo '#line 16156 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -16877,11 +16883,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:16880: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:16886: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:16884: \$? = $ac_status" >&5
+   echo "$as_me:16890: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -17110,11 +17116,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17113: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17119: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:17117: \$? = $ac_status" >&5
+   echo "$as_me:17123: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -17170,11 +17176,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17173: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17179: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:17177: \$? = $ac_status" >&5
+   echo "$as_me:17183: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -18549,7 +18555,7 @@ linux*)
   libsuff=
   case "$host_cpu" in
   x86_64*)
-    echo '#line 18552 "configure"' > conftest.$ac_ext
+    echo '#line 18558 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -19409,7 +19415,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 19412 "configure"
+#line 19418 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -19507,7 +19513,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 19510 "configure"
+#line 19516 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -24320,108 +24326,6 @@ fi
   else
      PKG_CONFIG_MIN_VERSION=0.9.0
      if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
-        echo "$as_me:$LINENO: checking for libxml-2.0 >= 2.4.0" >&5
-echo $ECHO_N "checking for libxml-2.0 >= 2.4.0... $ECHO_C" >&6
-
-        if $PKG_CONFIG --exists "libxml-2.0 >= 2.4.0" ; then
-            echo "$as_me:$LINENO: result: yes" >&5
-echo "${ECHO_T}yes" >&6
-            succeeded=yes
-
-            echo "$as_me:$LINENO: checking LIBXML_CFLAGS" >&5
-echo $ECHO_N "checking LIBXML_CFLAGS... $ECHO_C" >&6
-            LIBXML_CFLAGS=`$PKG_CONFIG --cflags "libxml-2.0 >= 2.4.0"`
-            echo "$as_me:$LINENO: result: $LIBXML_CFLAGS" >&5
-echo "${ECHO_T}$LIBXML_CFLAGS" >&6
-
-            echo "$as_me:$LINENO: checking LIBXML_LIBS" >&5
-echo $ECHO_N "checking LIBXML_LIBS... $ECHO_C" >&6
-            LIBXML_LIBS=`$PKG_CONFIG --libs "libxml-2.0 >= 2.4.0"`
-            echo "$as_me:$LINENO: result: $LIBXML_LIBS" >&5
-echo "${ECHO_T}$LIBXML_LIBS" >&6
-        else
-            LIBXML_CFLAGS=""
-            LIBXML_LIBS=""
-            ## If we have a custom action on failure, don't print errors, but
-            ## do set a variable so people can do so.
-            LIBXML_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxml-2.0 >= 2.4.0"`
-            echo $LIBXML_PKG_ERRORS
-        fi
-
-
-
-     else
-        echo "*** Your version of pkg-config is too old. You need version $PKG_CONFIG_MIN_VERSION or newer."
-        echo "*** See http://www.freedesktop.org/software/pkgconfig"
-     fi
-  fi
-
-  if test $succeeded = yes; then
-     :
-  else
-     { { echo "$as_me:$LINENO: error: Library requirements (libxml-2.0 >= 2.4.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
-echo "$as_me: error: Library requirements (libxml-2.0 >= 2.4.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
-   { (exit 1); exit 1; }; }
-  fi
-
-  LIBXML_REQUIRED_VERSION=2.4.0
-
-
-
-
-  succeeded=no
-
-  if test -z "$PKG_CONFIG"; then
-    # Extract the first word of "pkg-config", so it can be a program name with args.
-set dummy pkg-config; ac_word=$2
-echo "$as_me:$LINENO: checking for $ac_word" >&5
-echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
-if test "${ac_cv_path_PKG_CONFIG+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  case $PKG_CONFIG in
-  [\\/]* | ?:[\\/]*)
-  ac_cv_path_PKG_CONFIG="$PKG_CONFIG" # Let the user override the test with a path.
-  ;;
-  *)
-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  test -z "$as_dir" && as_dir=.
-  for ac_exec_ext in '' $ac_executable_extensions; do
-  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
-    ac_cv_path_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
-    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-done
-
-  test -z "$ac_cv_path_PKG_CONFIG" && ac_cv_path_PKG_CONFIG="no"
-  ;;
-esac
-fi
-PKG_CONFIG=$ac_cv_path_PKG_CONFIG
-
-if test -n "$PKG_CONFIG"; then
-  echo "$as_me:$LINENO: result: $PKG_CONFIG" >&5
-echo "${ECHO_T}$PKG_CONFIG" >&6
-else
-  echo "$as_me:$LINENO: result: no" >&5
-echo "${ECHO_T}no" >&6
-fi
-
-  fi
-
-  if test "$PKG_CONFIG" = "no" ; then
-     echo "*** The pkg-config script could not be found. Make sure it is"
-     echo "*** in your path, or set the PKG_CONFIG environment variable"
-     echo "*** to the full path to pkg-config."
-     echo "*** Or see http://www.freedesktop.org/software/pkgconfig to get pkg-config."
-  else
-     PKG_CONFIG_MIN_VERSION=0.9.0
-     if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
         echo "$as_me:$LINENO: checking for libxfce4mcs-client-1.0 >= 4.0.0" >&5
 echo $ECHO_N "checking for libxfce4mcs-client-1.0 >= 4.0.0... $ECHO_C" >&6
 
@@ -24675,6 +24579,143 @@ echo "$as_me: error: Library requirements (gthread-2.0 >= 2.0.6) not met; consid
 
 
 
+  # Check whether --enable-libxml2 or --disable-libxml2 was given.
+if test "${enable_libxml2+set}" = set; then
+  enableval="$enable_libxml2"
+  ac_cv_LIBXML_check=$enableval
+else
+  ac_cv_LIBXML_check=yes
+fi;
+
+  if test x"$ac_cv_LIBXML_check" = x"yes"; then
+    echo "$as_me:$LINENO: checking for libxml-2.0 >= 2.4.0" >&5
+echo $ECHO_N "checking for libxml-2.0 >= 2.4.0... $ECHO_C" >&6
+    if $PKG_CONFIG --atleast-version=2.4.0 libxml-2.0 2> /dev/null; then
+      echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6
+
+
+  succeeded=no
+
+  if test -z "$PKG_CONFIG"; then
+    # Extract the first word of "pkg-config", so it can be a program name with args.
+set dummy pkg-config; ac_word=$2
+echo "$as_me:$LINENO: checking for $ac_word" >&5
+echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
+if test "${ac_cv_path_PKG_CONFIG+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  case $PKG_CONFIG in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_PKG_CONFIG="$PKG_CONFIG" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+  for ac_exec_ext in '' $ac_executable_extensions; do
+  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+    ac_cv_path_PKG_CONFIG="$as_dir/$ac_word$ac_exec_ext"
+    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+done
+
+  test -z "$ac_cv_path_PKG_CONFIG" && ac_cv_path_PKG_CONFIG="no"
+  ;;
+esac
+fi
+PKG_CONFIG=$ac_cv_path_PKG_CONFIG
+
+if test -n "$PKG_CONFIG"; then
+  echo "$as_me:$LINENO: result: $PKG_CONFIG" >&5
+echo "${ECHO_T}$PKG_CONFIG" >&6
+else
+  echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6
+fi
+
+  fi
+
+  if test "$PKG_CONFIG" = "no" ; then
+     echo "*** The pkg-config script could not be found. Make sure it is"
+     echo "*** in your path, or set the PKG_CONFIG environment variable"
+     echo "*** to the full path to pkg-config."
+     echo "*** Or see http://www.freedesktop.org/software/pkgconfig to get pkg-config."
+  else
+     PKG_CONFIG_MIN_VERSION=0.9.0
+     if $PKG_CONFIG --atleast-pkgconfig-version $PKG_CONFIG_MIN_VERSION; then
+        echo "$as_me:$LINENO: checking for libxml-2.0 >= 2.4.0" >&5
+echo $ECHO_N "checking for libxml-2.0 >= 2.4.0... $ECHO_C" >&6
+
+        if $PKG_CONFIG --exists "libxml-2.0 >= 2.4.0" ; then
+            echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6
+            succeeded=yes
+
+            echo "$as_me:$LINENO: checking LIBXML_CFLAGS" >&5
+echo $ECHO_N "checking LIBXML_CFLAGS... $ECHO_C" >&6
+            LIBXML_CFLAGS=`$PKG_CONFIG --cflags "libxml-2.0 >= 2.4.0"`
+            echo "$as_me:$LINENO: result: $LIBXML_CFLAGS" >&5
+echo "${ECHO_T}$LIBXML_CFLAGS" >&6
+
+            echo "$as_me:$LINENO: checking LIBXML_LIBS" >&5
+echo $ECHO_N "checking LIBXML_LIBS... $ECHO_C" >&6
+            LIBXML_LIBS=`$PKG_CONFIG --libs "libxml-2.0 >= 2.4.0"`
+            echo "$as_me:$LINENO: result: $LIBXML_LIBS" >&5
+echo "${ECHO_T}$LIBXML_LIBS" >&6
+        else
+            LIBXML_CFLAGS=""
+            LIBXML_LIBS=""
+            ## If we have a custom action on failure, don't print errors, but
+            ## do set a variable so people can do so.
+            LIBXML_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libxml-2.0 >= 2.4.0"`
+            echo $LIBXML_PKG_ERRORS
+        fi
+
+
+
+     else
+        echo "*** Your version of pkg-config is too old. You need version $PKG_CONFIG_MIN_VERSION or newer."
+        echo "*** See http://www.freedesktop.org/software/pkgconfig"
+     fi
+  fi
+
+  if test $succeeded = yes; then
+     :
+  else
+     { { echo "$as_me:$LINENO: error: Library requirements (libxml-2.0 >= 2.4.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+echo "$as_me: error: Library requirements (libxml-2.0 >= 2.4.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+   { (exit 1); exit 1; }; }
+  fi
+
+  LIBXML_REQUIRED_VERSION=2.4.0
+
+
+
+cat >>confdefs.h <<\_ACEOF
+#define HAVE_LIBXML 1
+_ACEOF
+
+    else
+      echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6
+    fi
+  fi
+
+if test "x$succeeded" = "xyes"; then
+	ENUEDITOR_DIR="menueditor"
+	build_menueditor="yes"
+else
+	MENUEDITOR_DIR=""
+	build_menueditor="no"
+fi
+
+
+
 
 
   succeeded=no
@@ -24878,6 +24919,39 @@ echo "${ECHO_T}no" >&6
     echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
   fi
+
+
+
+# Check whether --enable-desktop-menu or --disable-desktop-menu was given.
+if test "${enable_desktop_menu+set}" = set; then
+  enableval="$enable_desktop_menu"
+  ac_cv_enable_desktop_menu=$enableval
+else
+  ac_cv_enable_desktop_menu=yes
+fi;
+if test "x$ac_cv_enable_desktop_menu" = "xno"; then
+	DESKTOP_MENU_DIR=""
+	build_desktop_menu="no"
+else
+	DESKTOP_MENU_DIR="menu"
+	build_desktop_menu="yes"
+fi
+
+
+# Check whether --enable-panel-plugin or --disable-panel-plugin was given.
+if test "${enable_panel_plugin+set}" = set; then
+  enableval="$enable_panel_plugin"
+  ac_cv_enable_panel_plugin=$enableval
+else
+  ac_cv_enable_panel_plugin=yes
+fi;
+if test "x$ac_cv_enable_panel_plugin" = "xno" -o "x$build_desktop_menu" = "xno"; then
+	PANEL_PLUGIN_DIR=""
+	build_panel_plugin="no"
+else
+	PANEL_PLUGIN_DIR="panel-plugin"
+	build_panel_plugin="yes"
+fi
 
 
                                                                                                                                                                           ac_config_files="$ac_config_files backdrops/Makefile common/Makefile doc/Makefile doc/C/Makefile doc/C/images/Makefile doc/fr/Makefile doc/fr/images/Makefile Makefile menueditor/Makefile modules/Makefile modules/menu/Makefile panel-plugin/Makefile pixmaps/Makefile po/Makefile.in settings/Makefile src/Makefile xfdesktop.spec"
@@ -25658,9 +25732,6 @@ s,@LIBXFCEGUI4_REQUIRED_VERSION@,$LIBXFCEGUI4_REQUIRED_VERSION,;t t
 s,@LIBXFCE4UTIL_CFLAGS@,$LIBXFCE4UTIL_CFLAGS,;t t
 s,@LIBXFCE4UTIL_LIBS@,$LIBXFCE4UTIL_LIBS,;t t
 s,@LIBXFCE4UTIL_REQUIRED_VERSION@,$LIBXFCE4UTIL_REQUIRED_VERSION,;t t
-s,@LIBXML_CFLAGS@,$LIBXML_CFLAGS,;t t
-s,@LIBXML_LIBS@,$LIBXML_LIBS,;t t
-s,@LIBXML_REQUIRED_VERSION@,$LIBXML_REQUIRED_VERSION,;t t
 s,@LIBXFCE4MCS_CLIENT_CFLAGS@,$LIBXFCE4MCS_CLIENT_CFLAGS,;t t
 s,@LIBXFCE4MCS_CLIENT_LIBS@,$LIBXFCE4MCS_CLIENT_LIBS,;t t
 s,@LIBXFCE4MCS_CLIENT_REQUIRED_VERSION@,$LIBXFCE4MCS_CLIENT_REQUIRED_VERSION,;t t
@@ -25670,10 +25741,16 @@ s,@GMODULE_REQUIRED_VERSION@,$GMODULE_REQUIRED_VERSION,;t t
 s,@GTHREAD_CFLAGS@,$GTHREAD_CFLAGS,;t t
 s,@GTHREAD_LIBS@,$GTHREAD_LIBS,;t t
 s,@GTHREAD_REQUIRED_VERSION@,$GTHREAD_REQUIRED_VERSION,;t t
+s,@LIBXML_CFLAGS@,$LIBXML_CFLAGS,;t t
+s,@LIBXML_LIBS@,$LIBXML_LIBS,;t t
+s,@LIBXML_REQUIRED_VERSION@,$LIBXML_REQUIRED_VERSION,;t t
+s,@MENUEDITOR_DIR@,$MENUEDITOR_DIR,;t t
 s,@XFCE_MCS_MANAGER_CFLAGS@,$XFCE_MCS_MANAGER_CFLAGS,;t t
 s,@XFCE_MCS_MANAGER_LIBS@,$XFCE_MCS_MANAGER_LIBS,;t t
 s,@XFCE_MCS_MANAGER_REQUIRED_VERSION@,$XFCE_MCS_MANAGER_REQUIRED_VERSION,;t t
 s,@XFCE_MCS_MANAGER_PLUGINSDIR@,$XFCE_MCS_MANAGER_PLUGINSDIR,;t t
+s,@DESKTOP_MENU_DIR@,$DESKTOP_MENU_DIR,;t t
+s,@PANEL_PLUGIN_DIR@,$PANEL_PLUGIN_DIR,;t t
 s,@LIBOBJS@,$LIBOBJS,;t t
 s,@LTLIBOBJS@,$LTLIBOBJS,;t t
 CEOF
@@ -26400,3 +26477,10 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
+
+echo
+echo "Build Configuration:"
+echo "  Build menu editor (requires libxml2):      $build_menueditor"
+echo "  Build desktop menu module:                 $build_desktop_menu"
+echo "  Build desktop menu panel plugin:           $build_panel_plugin"
+echo

@@ -36,16 +36,56 @@ BM_LIBX11_REQUIRE
 XFCE_PANEL_PLUGIN([XFCE4_PANEL], [4.0.0])
 BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.1.10)
 BM_DEPEND([LIBXFCE4UTIL], libxfce4util-1.0, 4.1.3)
-BM_DEPEND([LIBXML], libxml-2.0, 2.4.0)
 BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [4.0.0])
 BM_DEPEND([GMODULE], gmodule-2.0, 2.0.6)
 BM_DEPEND([GTHREAD], gthread-2.0, 2.0.6)
+
+dnl check for libxml2 for menueditor
+BM_DEPEND_CHECK([LIBXML], libxml-2.0, 2.4.0, [libxml2], [libxml2 (for xfce4-menueditor)], [yes])
+if test "x$succeeded" = "xyes"; then
+	ENUEDITOR_DIR="menueditor"
+	build_menueditor="yes"
+else
+	MENUEDITOR_DIR=""
+	build_menueditor="no"
+fi
+AC_SUBST(MENUEDITOR_DIR)
 
 dnl Configure the MCS plugins
 XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.0.0])
 
 dnl Check for debuggin support
 BM_DEBUG_SUPPORT
+
+dnl Build options
+
+AC_ARG_ENABLE([desktop-menu],
+	AC_HELP_STRING([--disable-desktop-menu],
+		[Do not build the desktop menu module (default=enabled)]),
+	[ac_cv_enable_desktop_menu=$enableval],
+	[ac_cv_enable_desktop_menu=yes])
+if test "x$ac_cv_enable_desktop_menu" = "xno"; then
+	DESKTOP_MENU_DIR=""
+	build_desktop_menu="no"
+else
+	DESKTOP_MENU_DIR="menu"
+	build_desktop_menu="yes"
+fi
+AC_SUBST(DESKTOP_MENU_DIR)
+
+AC_ARG_ENABLE([panel-plugin],
+	[AC_HELP_STRING([--disable-panel-plugin],
+		[Do not build the panel plugin (default=enabled)])],
+	[ac_cv_enable_panel_plugin=$enableval],
+	[ac_cv_enable_panel_plugin=yes])
+if test "x$ac_cv_enable_panel_plugin" = "xno" -o "x$build_desktop_menu" = "xno"; then
+	PANEL_PLUGIN_DIR=""
+	build_panel_plugin="no"
+else
+	PANEL_PLUGIN_DIR="panel-plugin"
+	build_panel_plugin="yes"
+fi
+AC_SUBST(PANEL_PLUGIN_DIR)
 
 AC_OUTPUT([
 backdrops/Makefile
@@ -66,3 +106,10 @@ settings/Makefile
 src/Makefile
 xfdesktop.spec
 ])
+
+echo
+echo "Build Configuration:"
+echo "  Build menu editor (requires libxml2):      $build_menueditor"
+echo "  Build desktop menu module:                 $build_desktop_menu"
+echo "  Build desktop menu panel plugin:           $build_panel_plugin"
+echo

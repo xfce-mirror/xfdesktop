@@ -7,10 +7,10 @@ SUBDIRS = \
 	po \
 	settings \
 	src \
-	menueditor \
 	modules \
-	panel-plugin \
-	pixmaps
+	pixmaps \
+	$(PANEL_PLUGIN_DIR) \
+	$(MENUEDITOR_DIR)
 
 confdir = $(sysconfdir)/xfce4
 
