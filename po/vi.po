@@ -1,14 +1,14 @@
 # xfdesktop for XFCE
 # Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the xfdesktop package.
-# Lâm Vĩnh Niên <nienvl@yahoo.ca>, 2003.
+# This file is distributed under the same license as the xfwm4 package.
+# Lâm Vĩnh Niên <nienvl@yahoo.ca>, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-28 19:48-0700\n"
-"PO-Revision-Date: 2003-10-24 23:55+9\n"
+"POT-Creation-Date: 2004-08-15 23:28+0200\n"
+"PO-Revision-Date: 2004-09-08 15:40+9\n"
 "Last-Translator: Lâm Vĩnh Niên <nienvl@yahoo.ca>\n"
 "Language-Team: none <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,51 +17,50 @@ msgstr ""
 
 #: menueditor/about_dialog.c:36
 msgid "A menu editor for Xfce4"
-msgstr ""
+msgstr "Trình biên tập thực đơn cho Xfce4"
 
 #: menueditor/about_dialog.c:45
 msgid "Core developer"
-msgstr ""
+msgstr "Người phát triển chính"
 
 #: menueditor/about_dialog.c:49 menueditor/about_dialog.c:53
 #: menueditor/about_dialog.c:57
 msgid "Contributor"
-msgstr ""
+msgstr "Người đóng góp"
 
 #: menueditor/about_dialog.c:61
 msgid "Icon designer"
-msgstr ""
+msgstr "Người thiết kế biểu tượng"
 
 #: menueditor/add_dialog.c:131 menueditor/add_dialog.c:146
 msgid "Add menu entry"
-msgstr ""
+msgstr "Thêm đề mục thực đơn"
 
 #. Type
 #: menueditor/add_dialog.c:152 menueditor/add_menu_dialog.c:96
 #: menueditor/edit_dialog.c:148
 msgid "Type:"
-msgstr ""
+msgstr "Loại:"
 
 #: menueditor/add_dialog.c:155
 msgid "Launcher"
-msgstr ""
+msgstr "Trình gọi"
 
 #: menueditor/add_dialog.c:160
 msgid "Submenu"
-msgstr ""
+msgstr "Thực đơn phụ"
 
 #: menueditor/add_dialog.c:165
 msgid "Separator"
-msgstr ""
+msgstr "Dấu cách"
 
 #: menueditor/add_dialog.c:170
-#, fuzzy
 msgid "Title"
-msgstr "_Lợp"
+msgstr "Tiêu đề"
 
 #: menueditor/add_dialog.c:175
 msgid "Quit"
-msgstr ""
+msgstr "Thoát"
 
 #. Name
 #: menueditor/add_dialog.c:190 menueditor/edit_dialog.c:260
@@ -71,170 +70,167 @@ msgstr "Tên:"
 
 #: menueditor/add_dialog.c:200 menueditor/edit_dialog.c:261
 msgid "Command:"
-msgstr ""
+msgstr "Lệnh:"
 
 #: menueditor/add_dialog.c:216 menueditor/edit_dialog.c:252
 #: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
 #: menueditor/edit_dialog.c:390
 msgid "Icon:"
-msgstr ""
+msgstr "Biểu tượng:"
 
 #. Start Notify check button
 #: menueditor/add_dialog.c:232 menueditor/edit_dialog.c:272
 msgid "Use startup _notification"
-msgstr ""
+msgstr "Dùng thông _báo khởi động"
 
 #. Run in terminal check button
 #: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:273
 msgid "Run in _terminal"
-msgstr ""
+msgstr "Chạy ở _trạm cuối"
 
 #: menueditor/add_dialog.c:281 menueditor/edit_dialog.c:459
 msgid "The command doesn't exist !"
-msgstr ""
+msgstr "Lệnh này không tồn tại !"
 
 #: menueditor/add_dialog.c:287
 msgid "All fields must be filled to add an item."
-msgstr ""
+msgstr "Tất cả các khoản cần được điền để thêm mục mới"
 
 #: menueditor/add_dialog.c:295
 msgid "The 'Name' field is required."
-msgstr ""
+msgstr "Khoản 'Tên' cần thiết"
 
 #: menueditor/add_dialog.c:349 menueditor/dnd.c:150
 #: menueditor/menueditor.c:339 menueditor/move.c:90 menueditor/move.c:246
 msgid "--- separator ---"
-msgstr ""
+msgstr "--- dấu cách ---"
 
 #: menueditor/add_dialog.c:374 menueditor/edit_dialog.c:496
 msgid "quit"
-msgstr ""
+msgstr "thoát"
 
 #: menueditor/add_menu_dialog.c:76 menueditor/add_menu_dialog.c:87
 #: menueditor/menueditor.c:770
 msgid "Add an external menu"
-msgstr ""
+msgstr "Thêm thực đơn bên ngoài"
 
 #: menueditor/add_menu_dialog.c:101 menueditor/edit_dialog.c:151
-#, fuzzy
 msgid "File"
-msgstr "Tập tin:"
+msgstr "Tập tin"
 
 #: menueditor/add_menu_dialog.c:106 menueditor/edit_dialog.c:156
 msgid "System"
-msgstr ""
+msgstr "Hệ thống"
 
 #: menueditor/add_menu_dialog.c:121 menueditor/edit_dialog.c:171
 msgid "Source:"
-msgstr ""
+msgstr "Nguồn:"
 
 #. Style
 #: menueditor/add_menu_dialog.c:134 menueditor/edit_dialog.c:184
 msgid "Style:"
-msgstr "Kiểu:"
+msgstr "Phong cách:"
 
 #: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:187
 msgid "Simple"
-msgstr ""
+msgstr "Đơn giản"
 
 #: menueditor/add_menu_dialog.c:140 menueditor/edit_dialog.c:190
 msgid "Multilevel"
-msgstr ""
+msgstr "Đa cấp"
 
 #. Unique
 #: menueditor/add_menu_dialog.c:153 menueditor/edit_dialog.c:203
 msgid "_Unique entries only"
-msgstr ""
+msgstr "Chỉ các đề mục đơn _nhất"
 
 #: menueditor/add_menu_dialog.c:206
 msgid "The 'Source' field is required."
-msgstr ""
+msgstr "Khoảng 'Nguồn' cần thiết."
 
 #: menueditor/add_menu_dialog.c:216 menueditor/add_menu_dialog.c:233
 #: menueditor/dnd.c:152 menueditor/edit_dialog.c:510
 #: menueditor/edit_dialog.c:523 menueditor/menueditor.c:387
 #: menueditor/move.c:120 menueditor/move.c:276
 msgid "--- include ---"
-msgstr ""
+msgstr "--- gồm ---"
 
 #: menueditor/add_menu_dialog.c:234 menueditor/dnd.c:157
 #: menueditor/edit_dialog.c:524 menueditor/menueditor.c:390
 #: menueditor/move.c:123 menueditor/move.c:279
 msgid "system"
-msgstr ""
+msgstr "hệ thống"
 
 #. Create dialog for editing
 #: menueditor/edit_dialog.c:100 menueditor/edit_dialog.c:113
 msgid "Edit menu entry"
-msgstr ""
+msgstr "Biên tập đề mục thực đon"
 
 #: menueditor/edit_dialog.c:131
 msgid "Separators cannot be edited"
-msgstr ""
+msgstr "Không thể biên tập dấu cách"
 
 #. Name
 #: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:102
-#, fuzzy
 msgid "Title:"
-msgstr "Tập tin:"
+msgstr "Tiêu đề:"
 
 #: menueditor/menueditor.c:156
 msgid "Select command"
-msgstr ""
+msgstr "Chọn lệnh"
 
 #: menueditor/menueditor.c:213
 msgid "Select icon"
-msgstr ""
+msgstr "Chọn biểu tượng"
 
 #: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:372
 #: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
 #: settings/backdrop_settings.c:467
 msgid "All Files"
-msgstr ""
+msgstr "Mọi tập tin"
 
 #: menueditor/menueditor.c:223 panel-plugin/desktop-menu-plugin.c:378
 #: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:471
-#, fuzzy
 msgid "Image Files"
-msgstr "Tập tin hình ảnh"
+msgstr "Các tập tin hình ảnh"
 
 #: menueditor/menueditor.c:266
 msgid "Not yet implemented!"
-msgstr ""
+msgstr "Chưa được đưa vào"
 
 #: menueditor/menueditor.c:277 menueditor/menueditor.c:659
 msgid "Do you want to save before closing the menu ?"
-msgstr ""
+msgstr "Bạn có muốn lưu trước khi đóng thực đơn ?"
 
 #: menueditor/menueditor.c:278
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr ""
+msgstr "Bạn đã thay đổi thực đơn, bạn có muốn lưu trước khi thoát ?"
 
 #: menueditor/menueditor.c:279
 msgid "Forget modifications"
-msgstr ""
+msgstr "Quên các thay đổi"
 
 #: menueditor/menueditor.c:463 menueditor/menueditor.c:518
 #: menueditor/menueditor.c:657
 msgid "Question"
-msgstr ""
+msgstr "Câu hỏi"
 
 #: menueditor/menueditor.c:465
 msgid "Do you want to save before opening the default menu ?"
-msgstr ""
+msgstr "Bạn có muốn lưu trước khi mở thư mục mặc định ?"
 
 #: menueditor/menueditor.c:467 menueditor/menueditor.c:522
 #: menueditor/menueditor.c:661
 msgid "Ignore modifications"
-msgstr ""
+msgstr "Bỏ qua các thay đổi"
 
 #: menueditor/menueditor.c:520
 msgid "Do you want to save before opening an other menu ?"
-msgstr ""
+msgstr "Bạn có muốn lưu trước khi mở thực đơn khác ?"
 
 #: menueditor/menueditor.c:533
 msgid "Open menu file"
-msgstr ""
+msgstr "Mở tập tin thực đơn"
 
 #: menueditor/menueditor.c:571 menueditor/menueditor.c:582
 #, c-format
@@ -242,212 +238,208 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
+"Không thể viết vào %s : \n"
+"%s"
 
 #: menueditor/menueditor.c:606
 msgid "Save as..."
-msgstr ""
+msgstr "Lưu là..."
 
 #: menueditor/menueditor.c:764
-#, fuzzy
 msgid "Edit"
-msgstr "Biên tập danh sách"
+msgstr "Biên tập"
 
 #. File menu
 #: menueditor/menueditor.c:951
-#, fuzzy
 msgid "_File"
-msgstr "Tập tin:"
+msgstr "_Tập tin"
 
 #: menueditor/menueditor.c:960
 msgid "Open default menu"
-msgstr ""
+msgstr "Mở thực đơn mặc định"
 
 #. Edit menu
 #: menueditor/menueditor.c:974
 msgid "_Edit"
-msgstr ""
+msgstr "_Biên tập"
 
 #: menueditor/menueditor.c:980
 msgid "Add an external menu..."
-msgstr ""
+msgstr "Thêm thực đơn bên ngoài..."
 
 #. Help menu
 #: menueditor/menueditor.c:992
 msgid "_Help"
-msgstr ""
+msgstr "_Giúp đỡ"
 
 #: menueditor/menueditor.c:997
 msgid "_About..."
-msgstr ""
+msgstr "_Về..."
 
 #: menueditor/menueditor.c:1011
 msgid "Create a new Xfce4 menu file"
-msgstr ""
+msgstr "Tạo tập tin thực đơn Xfce4 mới"
 
 #: menueditor/menueditor.c:1018
 msgid "Open an Xfce4 menu file"
-msgstr ""
+msgstr "Mở tập tin thực đơn Xfce4"
 
 #: menueditor/menueditor.c:1025
 msgid "Save current menu"
-msgstr ""
+msgstr "Lưu thực đơn hiện tại"
 
 #: menueditor/menueditor.c:1032
 msgid "Close current menu"
-msgstr ""
+msgstr "Đóng thực đơn hiện tại"
 
 #: menueditor/menueditor.c:1040
 msgid "Add an entry to the menu"
-msgstr ""
+msgstr "Thêm đề mục vào thực đơn"
 
 #: menueditor/menueditor.c:1047
 msgid "Delete the current entry"
-msgstr ""
+msgstr "Xoá đề mục hiện tại"
 
 #: menueditor/menueditor.c:1054
 msgid "Move the current entry up"
-msgstr ""
+msgstr "Di chuyển đề mục hiện tại lên"
 
 #: menueditor/menueditor.c:1061
 msgid "Move the current entry down"
-msgstr ""
+msgstr "Di chuyển đề mục hiện tại xuống"
 
 #: menueditor/menueditor.c:1069
 msgid "Collapse the tree"
-msgstr ""
+msgstr "Khép cây"
 
 #: menueditor/menueditor.c:1076
 msgid "Expand the tree"
-msgstr ""
+msgstr "Mở cây"
 
 #: menueditor/menueditor.c:1110
-#, fuzzy
 msgid "Name"
-msgstr "Tên:"
+msgstr "Tên"
 
 #: menueditor/menueditor.c:1112
 msgid "Command"
-msgstr ""
+msgstr "Lệnh"
 
 #: menueditor/menueditor.c:1114
 msgid "Hidden"
-msgstr ""
+msgstr "Ẩn"
 
 #: menueditor/menueditor.c:1116
 msgid "Pointer"
-msgstr ""
+msgstr "Con trỏ"
 
 #: menueditor/menueditor.c:1248
 msgid "Corrupted file or incorrect file format !"
-msgstr ""
+msgstr "Tập tin hỏng hoặc định dạng không đúng !"
 
 #: menueditor/menueditor.c:1261
 msgid "No root element in file !"
-msgstr ""
+msgstr "Không có yếu tố gốc (root) trong tập tin !"
 
 #: menueditor/menueditor.c:1272
 msgid "Bad datafile format !"
-msgstr ""
+msgstr "Định dạng tập tin dữ liệu hỏng"
 
 #: menueditor/menueditor.c:1388
 #, c-format
 msgid "File %s doesn't exist !"
-msgstr ""
+msgstr "Tập tin %s không tồn tại"
 
 #: menueditor/move.c:401
 msgid "Do you want to move the item into the parent menu?"
-msgstr ""
+msgstr "Bạn có muốn di chuyển mục vào thực đơn mẹ?"
 
 #: menueditor/move.c:500
 msgid "Do you want to move the item into the submenu?"
-msgstr ""
+msgstr "Bạn có muốn di chuyển mục vào thực đơn phụ?"
 
 #: menueditor/new_dialog.c:58
 msgid "Are you sure you want to close the current menu?"
-msgstr ""
+msgstr "Bạn có chắc bạn muốn đóng thực đơn hiện tại?"
 
 #: menueditor/new_dialog.c:74
 msgid "Do you want to save before closing the file?"
-msgstr ""
+msgstr "Bạn có muốn lưu trước khi đóng tập tin?"
 
 #. get the filename and name for the new menu
 #: menueditor/new_dialog.c:84 menueditor/new_dialog.c:96
 msgid "New menu"
-msgstr ""
+msgstr "Thực đơn mới"
 
 #. Filename
 #: menueditor/new_dialog.c:109
-#, fuzzy
 msgid "Filename:"
-msgstr "Tập tin:"
+msgstr "Tên tập tin:"
 
 #: menueditor/new_dialog.c:142
 msgid "All fields are required."
-msgstr ""
+msgstr "Mọi khoản đều cần thiết."
 
 #: modules/menu/desktop-menu-dentry.c:536
 msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-msgstr ""
+msgstr "XfceDesktopMenu: Không tìm thấy xfce-registered-categories.xml"
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
-msgstr ""
+msgstr "/Khác"
 
 #: modules/menu/desktop-menuspec.c:361
 #, c-format
 msgid "%s: missing or unknown attribute for 'related' element\n"
-msgstr ""
+msgstr "%s: thiếu hoặc không rõ đặc tính cho yếu tố 'có liên hệ'\n"
 
 #: modules/menu/desktop-menuspec.c:366
 #, c-format
 msgid "%s: unknown xml element %s\n"
-msgstr ""
+msgstr "%s: yếu tố xml không rõ %s\n"
 
 #: panel-plugin/desktop-menu-plugin.c:192
 #: panel-plugin/desktop-menu-plugin.c:515
 msgid "Xfce Menu"
-msgstr ""
+msgstr "Thực đơn Xfce"
 
 #: panel-plugin/desktop-menu-plugin.c:355
 msgid "Select Icon"
-msgstr ""
+msgstr "Chọn biểu tượng"
 
 #: panel-plugin/desktop-menu-plugin.c:357
 msgid "Select Menu File"
-msgstr ""
+msgstr "Chọn tập tin thực đơn"
 
 #: panel-plugin/desktop-menu-plugin.c:386
-#, fuzzy
 msgid "Menu Files"
-msgstr "Tập tin hình ảnh"
+msgstr "Tập tin thực đơn"
 
 #: panel-plugin/desktop-menu-plugin.c:445
 msgid "_Menu file:"
-msgstr ""
+msgstr "Tập tin thự_c đơn:"
 
 #: panel-plugin/desktop-menu-plugin.c:479
 msgid "_Button icon:"
-msgstr ""
+msgstr "Biểu tượng _nút:"
 
 #: panel-plugin/desktop-menu-plugin.c:504
 msgid "Show _icons in menu"
-msgstr ""
+msgstr "Hiển thị _biểu tượng trong thực đơn"
 
 #: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
 #: settings/backdrop-mgr.c:553
-#, fuzzy
 msgid "Backdrop"
-msgstr "Danh sách phông nền"
+msgstr "Phông nền"
 
 #: settings/backdrop-mgr.c:100
 #, c-format
 msgid "Adding files from directory %s..."
-msgstr ""
+msgstr "Thêm tập tin từ thư mục %s..."
 
 #: settings/backdrop-mgr.c:160
 #, c-format
 msgid "Adding files from list %s..."
-msgstr ""
+msgstr "Thêm tập tin từ danh sách %s..."
 
 #: settings/backdrop-mgr.c:215
 #, c-format
@@ -459,25 +451,23 @@ msgid ""
 msgstr ""
 "Không thể lưu tập tin %s: %s\n"
 "\n"
-"Vui lòng chọn vị trí khác hoặc ấn huỷ bỏ trong hộp thoại để bỏ các thay đổi"
+"Vui lòng chọn vị trí khác hoặc ấn bỏ qua trong hộp thoại để huỷ bỏ thay đổi "
 
 #: settings/backdrop-mgr.c:502
-#, fuzzy
 msgid "Select backdrop image file"
-msgstr "Chọn tập tin hình ảnh"
+msgstr "Chọn tập tin hình ảnh phông nền"
 
 #: settings/backdrop-mgr.c:559
 msgid "Adding multiple files..."
-msgstr ""
+msgstr "Thêm nhiều tập tin..."
 
 #: settings/backdrop-mgr.c:637
 msgid "Choose backdrop list filename"
-msgstr "Chọn tập tin danh sách phông nền"
+msgstr "Chọn tên tập tin danh sách phông nền"
 
 #: settings/backdrop-mgr.c:646
-#, fuzzy
 msgid "List Files"
-msgstr "Tập tin danh sách"
+msgstr "Liệt kê tập tin"
 
 #: settings/backdrop-mgr.c:709
 msgid "Backdrop List"
@@ -488,13 +478,12 @@ msgid "Image files"
 msgstr "Tập tin hình ảnh"
 
 #: settings/backdrop-mgr.c:736
-#, fuzzy
 msgid "backdrops.list"
-msgstr "Biên tập danh sách phông nền"
+msgstr "backdrops.list"
 
 #: settings/backdrop-mgr.c:742
 msgid "List file"
-msgstr "Tập tin danh sách"
+msgstr "Liệt kê tập tin"
 
 #: settings/backdrop-mgr.c:762
 msgid "Create backdrop list"
@@ -511,278 +500,212 @@ msgid "Desktop"
 msgstr "Desktop"
 
 #: settings/backdrop_settings.c:462
-#, fuzzy
 msgid "Select backdrop image or list file"
-msgstr "Chọn hình ảnh nền hoặc tập tin danh sách"
+msgstr "Chọn hình ảnh phông nền hoặc tập tin danh sách"
 
 #: settings/backdrop_settings.c:480
 msgid "List Files (*.list)"
-msgstr ""
+msgstr " Liệt kê tập tin (*.list)"
 
 #: settings/backdrop_settings.c:565
-#, fuzzy
 msgid "_Edit list..."
-msgstr "Biên tập danh sách"
+msgstr "_Biên tập danh sách..."
 
 #: settings/backdrop_settings.c:573
-#, fuzzy
 msgid "_New list..."
-msgstr "Danh sách mới"
+msgstr "_Danh sách mới..."
 
 #: settings/backdrop_settings.c:609
-#, fuzzy
 msgid "S_tyle:"
-msgstr "Kiểu:"
+msgstr "_Phong cách:"
 
 #: settings/backdrop_settings.c:617
-#, fuzzy
 msgid "Tiled"
-msgstr "_Lợp"
+msgstr "Lợp"
 
 #: settings/backdrop_settings.c:624
-#, fuzzy
 msgid "Centered"
-msgstr "_Chính giữa"
+msgstr "Giữa"
 
 #: settings/backdrop_settings.c:631
-#, fuzzy
 msgid "Scaled"
-msgstr "_Vảy"
+msgstr "Vảy"
 
 #: settings/backdrop_settings.c:638
 msgid "Stretched"
-msgstr ""
+msgstr "Trải"
 
 #: settings/backdrop_settings.c:645
-#, fuzzy
 msgid "Auto"
-msgstr "_Tự động"
+msgstr "Tự động"
 
 #: settings/backdrop_settings.c:711
 msgid "Adjust _Brightness:"
-msgstr ""
+msgstr "Chỉnh độ _sáng:"
 
 #. header
 #: settings/backdrop_settings.c:780
-#, fuzzy
 msgid "Desktop Settings"
-msgstr "Thiết lập không gian làm việc"
+msgstr "Các thiết lập desktop"
 
 #: settings/backdrop_settings.c:808
-#, fuzzy
 msgid "_Backdrops"
-msgstr "Danh sách phông nền"
+msgstr "Phô_ng nền"
 
 #. color settings frame
 #: settings/backdrop_settings.c:834
 msgid "Color"
-msgstr "Màu"
+msgstr "Màu sắc"
 
 #: settings/backdrop_settings.c:848
-#, fuzzy
 msgid "_Color Style:"
-msgstr "Kiểu:"
+msgstr "Kiểu _màu:"
 
 #: settings/backdrop_settings.c:857
-#, fuzzy
 msgid "Solid Color"
-msgstr "Màu"
+msgstr "Màu đặc"
 
 #: settings/backdrop_settings.c:864
 msgid "Horizontal Gradient"
-msgstr ""
+msgstr "Độ lệch ngang"
 
 #: settings/backdrop_settings.c:871
 msgid "Vertical Gradient"
-msgstr ""
+msgstr "Độ lệch dọc"
 
 #: settings/backdrop_settings.c:892
 msgid "Fi_rst Color:"
-msgstr ""
+msgstr "Màu thứ _nhất:"
 
 #: settings/backdrop_settings.c:913
-#, fuzzy
 msgid "_Second Color:"
-msgstr "Màu nền"
+msgstr "Màu thứ _hai:"
 
 #. set color only checkbox
 #: settings/backdrop_settings.c:934
-#, fuzzy
 msgid "Set color _only"
-msgstr "Chỉ dùng màu:"
+msgstr "_Chỉ thiết lập màu"
 
 #: settings/backdrop_settings.c:949
 msgid "Image"
 msgstr "Hình ảnh"
 
 #: settings/backdrop_settings.c:957
-#, fuzzy
 msgid "Show _Image"
-msgstr "Hình ảnh"
+msgstr "Hiển thị hì_nh ảnh"
 
 #: settings/backdrop_settings.c:979
-#, fuzzy
 msgid "_File:"
-msgstr "Tập tin:"
+msgstr "_Tập tin:"
 
 #. don't set backdrop checkbox
 #: settings/backdrop_settings.c:1016
-#, fuzzy
 msgid "_Don't set backdrop"
-msgstr "Chọn màu nền"
+msgstr "_Đừng thiết lập phông nền"
 
 #. add the single backdrop settings page to the main notebook
 #: settings/backdrop_settings.c:1039
-#, fuzzy
 msgid "_Backdrop"
-msgstr "Danh sách phông nền"
+msgstr "_Phông nền"
 
 #: settings/backdrop_settings.c:1047 settings/backdrop_settings.c:1049
 #, c-format
 msgid "Screen %d"
-msgstr ""
+msgstr "Màn hình %d"
 
 #. and if we have multiple screens, each with multiple monitors
 #: settings/backdrop_settings.c:1054
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr ""
+msgstr "Màn hình %d, Monitor %d"
 
 #: settings/backdrop_settings.c:1068
 msgid "_Menu"
-msgstr ""
+msgstr "Thự_c đơn"
 
 #: settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr ""
+msgstr "Không thể gọi xfce4-menueditor: %s"
 
 #: settings/menu_settings.c:153
 msgid "Window List"
-msgstr ""
+msgstr "Danh sách cửa sổ"
 
 #: settings/menu_settings.c:161
 msgid "Show window _list"
-msgstr ""
+msgstr "Hiển thị _danh sách cửa sổ"
 
 #: settings/menu_settings.c:176
 msgid "Show _window icons"
-msgstr ""
+msgstr "Hiển thị biểu tượng cử_a sổ"
 
 #: settings/menu_settings.c:189
-#, fuzzy
 msgid "Desktop Menu"
-msgstr "Desktop"
+msgstr "Thực đơn desktop"
 
 #: settings/menu_settings.c:197
 msgid "Show desktop _menu"
-msgstr ""
+msgstr "Hiển thị thự_c đơn desktop"
 
 #: settings/menu_settings.c:212
 msgid "Show _application icons"
-msgstr ""
+msgstr "Hiển thị biểu tượng ứng _dụng"
 
 #: settings/menu_settings.c:223
 msgid "_Edit desktop menu"
-msgstr ""
+msgstr "_Biên tập thực đơn desktop"
 
 #: src/main.c:262
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr ""
+msgstr "%s: Tuỳ chọn không rõ: %s\n"
 
 #: src/main.c:263
 msgid "Options are:\n"
-msgstr ""
+msgstr "Tuỳ chọn là:\n"
 
 #: src/main.c:264
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr ""
+msgstr "    -reload     Nạp lại mọi thiết lập, làm tươi danh sách hình ảnh\n"
 
 #: src/main.c:265
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr ""
+msgstr "    -menu        Bập thực đơn (ở vị trí con chuột hiện tại)\n"
 
 #: src/main.c:266
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
+"    -windowlist  Bật danh sách cửa sổ (ở vị trí con chuột hiện tại)\n"
 
 #: src/menu.c:73
 #, c-format
 msgid ""
 "%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
 msgstr ""
+"%s: Không thể khởi động mô-đun thực đơn. Sẽ không có thực đơn chuột phả.\n"
 
 #: src/windowlist.c:183
-#, fuzzy, c-format
+#, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "Không gian làm việc %d"
+msgstr "<b>Vùng làm việc %d</b>"
 
 #: src/windowlist.c:188
-#, fuzzy, c-format
+#, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "Không gian làm việc %d"
+msgstr "<i>Vùng làm việc %d</i>"
 
 #: src/windowlist.c:244 src/windowlist.c:247
-#, fuzzy
 msgid "_Add Workspace"
-msgstr "Thêm không gian làm việc"
+msgstr "_Thêm vùng làm việc"
 
 #: src/windowlist.c:254
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace %d"
-msgstr "Không gian làm việc %d"
+msgstr "Gỡ _bỏ vùng làm việc %d"
 
 #: src/windowlist.c:256
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Không gian làm việc %d"
-
-#, fuzzy
-#~ msgid "Select backdrop color"
-#~ msgstr "Chọn màu nền"
-
-#~ msgid "New.list"
-#~ msgstr "New.list"
-
-#, fuzzy
-#~ msgid "Desktop background"
-#~ msgstr "Desktop: phông nền"
-
-#~ msgid "_Browse..."
-#~ msgstr "_Duyệt..."
-
-#~ msgid "Background"
-#~ msgstr "Nền"
-
-#~ msgid "Background Settings"
-#~ msgstr "Thiết lập nền"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr "Desktop: không gian làm việc"
-
-#~ msgid "Change name"
-#~ msgstr "Đổi tên"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Bấm chuột vào tên không gian làm việc để thay đổi"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "Số không gian làm việc"
-
-#~ msgid "Workspaces"
-#~ msgstr "Không gian làm việc"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "lỗi xfdesktop: nạp tập tin phông nền: %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "Xoá không gian làm việc"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr ""
-#~ "xfdesktop: không thể nối vào trình quản lí các thiết lập! Vui lòng kiểm "
-#~ "tra lại cài đặt."
+msgstr "Gỡ _bỏ vùng làm việc '%s'"
