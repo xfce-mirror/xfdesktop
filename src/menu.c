@@ -659,8 +659,13 @@ static GtkWidget *create_windowlist_menu(void)
         {
             win = li->data;
 
-            if(netk_window_get_workspace(win) != ws)
+	    /* sticky windows don;t match the workspace
+	     * only show them on the active workspace */
+            if(netk_window_get_workspace(win) != ws &&
+	       !(active && netk_window_is_sticky(win)))
+	    {
                 continue;
+	    }
 
             mi = create_window_list_item(win);
 
