@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-23 22:43-0700\n"
+"POT-Creation-Date: 2004-10-01 07:31+0200\n"
 "PO-Revision-Date: 2003-08-29 21:21+0800\n"
 "Last-Translator: Ambrose Li <acli@ada.dhs.org>\n"
 "Language-Team:  <>\n"
@@ -101,8 +101,8 @@ msgstr "要新增項目，就必須填寫所有欄位。"
 msgid "The 'Name' field is required."
 msgstr "「名稱」一欄必須填寫。"
 
-#: menueditor/add_dialog.c:350 menueditor/dnd.c:154
-#: menueditor/menueditor.c:349 menueditor/move.c:92 menueditor/move.c:250
+#: menueditor/add_dialog.c:350 menueditor/dnd.c:152
+#: menueditor/menueditor.c:346 menueditor/move.c:90 menueditor/move.c:248
 msgid "--- separator ---"
 msgstr "--- 分隔線 ---"
 
@@ -112,7 +112,7 @@ msgstr "退出"
 
 # NOTE 這裡的「Add」是在原地插入選單，並非新增之意
 #: menueditor/add_menu_dialog.c:78 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:808
+#: menueditor/menueditor.c:805
 msgid "Add an external menu"
 msgstr "插入外置選單"
 
@@ -153,16 +153,16 @@ msgid "The 'Source' field is required."
 msgstr "「來源」一欄必須填寫。"
 
 #: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:235
-#: menueditor/dnd.c:156 menueditor/edit_dialog.c:508
-#: menueditor/edit_dialog.c:521 menueditor/menueditor.c:397
-#: menueditor/move.c:122 menueditor/move.c:280
+#: menueditor/dnd.c:154 menueditor/edit_dialog.c:508
+#: menueditor/edit_dialog.c:521 menueditor/menueditor.c:394
+#: menueditor/move.c:120 menueditor/move.c:278
 msgid "--- include ---"
 msgstr "--- 插入 ---"
 
 # NOTE「系統選單」之略
-#: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:161
-#: menueditor/edit_dialog.c:522 menueditor/menueditor.c:400
-#: menueditor/move.c:125 menueditor/move.c:283
+#: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:159
+#: menueditor/edit_dialog.c:522 menueditor/menueditor.c:397
+#: menueditor/move.c:123 menueditor/move.c:281
 msgid "system"
 msgstr "系統"
 
@@ -180,61 +180,61 @@ msgstr "分隔線無法修改"
 msgid "Title:"
 msgstr "標題："
 
-#: menueditor/menueditor.c:151
+#: menueditor/menueditor.c:148
 msgid "Select command"
 msgstr "選擇指令"
 
-#: menueditor/menueditor.c:212
+#: menueditor/menueditor.c:209
 msgid "Select icon"
 msgstr "選擇圖示"
 
-#: menueditor/menueditor.c:218 panel-plugin/desktop-menu-plugin.c:371
-#: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
+#: menueditor/menueditor.c:215 panel-plugin/desktop-menu-plugin.c:373
+#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "所有檔案"
 
-#: menueditor/menueditor.c:222 panel-plugin/desktop-menu-plugin.c:377
-#: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:537
+#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:379
+#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "影像檔案"
 
-#: menueditor/menueditor.c:275 menueditor/menueditor.c:682
+#: menueditor/menueditor.c:272 menueditor/menueditor.c:679
 msgid "Do you want to save before closing the menu ?"
 msgstr "關閉此選單前要先行儲存嗎？"
 
-#: menueditor/menueditor.c:276
+#: menueditor/menueditor.c:273
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "您已對選單作出修改，退出前要先行儲存嗎？"
 
-#: menueditor/menueditor.c:277
+#: menueditor/menueditor.c:274
 msgid "Forget modifications"
 msgstr "放棄修改"
 
-#: menueditor/menueditor.c:476 menueditor/menueditor.c:534
-#: menueditor/menueditor.c:680
+#: menueditor/menueditor.c:473 menueditor/menueditor.c:531
+#: menueditor/menueditor.c:677
 msgid "Question"
 msgstr "問題"
 
-#: menueditor/menueditor.c:478
+#: menueditor/menueditor.c:475
 msgid "Do you want to save before opening the default menu ?"
 msgstr "開啟預設選單前要先行儲存嗎？"
 
-#: menueditor/menueditor.c:480 menueditor/menueditor.c:538
-#: menueditor/menueditor.c:684
+#: menueditor/menueditor.c:477 menueditor/menueditor.c:535
+#: menueditor/menueditor.c:681
 msgid "Ignore modifications"
 msgstr "忽略修改"
 
 # FIXME spelling mistake in source ("an other")
-#: menueditor/menueditor.c:536
+#: menueditor/menueditor.c:533
 msgid "Do you want to save before opening an other menu ?"
 msgstr "開啟另一選單前要先行儲存嗎？"
 
-#: menueditor/menueditor.c:549
+#: menueditor/menueditor.c:546
 msgid "Open menu file"
 msgstr "開啟選單檔案"
 
-#: menueditor/menueditor.c:583 menueditor/menueditor.c:594
+#: menueditor/menueditor.c:580 menueditor/menueditor.c:591
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -243,121 +243,121 @@ msgstr ""
 "無法寫入 %s：\n"
 "%s"
 
-#: menueditor/menueditor.c:625
+#: menueditor/menueditor.c:622
 msgid "Save as..."
 msgstr "另存新檔..."
 
-#: menueditor/menueditor.c:802
+#: menueditor/menueditor.c:799
 msgid "Edit"
 msgstr "編輯"
 
 #. File menu
-#: menueditor/menueditor.c:1008
+#: menueditor/menueditor.c:1005
 msgid "_File"
 msgstr "檔案(_F)"
 
-#: menueditor/menueditor.c:1017
+#: menueditor/menueditor.c:1014
 msgid "Open default menu"
 msgstr "開啟預設選單"
 
 #. Edit menu
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "_Edit"
 msgstr "編輯(_E)"
 
-#: menueditor/menueditor.c:1037
+#: menueditor/menueditor.c:1034
 msgid "Add an external menu..."
 msgstr "插入外置選單..."
 
 #. Help menu
-#: menueditor/menueditor.c:1049
+#: menueditor/menueditor.c:1046
 msgid "_Help"
 msgstr "說明(_H)"
 
-#: menueditor/menueditor.c:1054
+#: menueditor/menueditor.c:1051
 msgid "_About..."
 msgstr "關於(_A)..."
 
-#: menueditor/menueditor.c:1064
+#: menueditor/menueditor.c:1061
 msgid "Create a new Xfce4 menu file"
 msgstr "新增 Xfce4 選單檔案"
 
-#: menueditor/menueditor.c:1068
+#: menueditor/menueditor.c:1065
 msgid "Open an Xfce4 menu file"
 msgstr "開啟 Xfce4 選單檔案"
 
-#: menueditor/menueditor.c:1072
+#: menueditor/menueditor.c:1069
 msgid "Save current menu"
 msgstr "儲存目前的選單"
 
-#: menueditor/menueditor.c:1076
+#: menueditor/menueditor.c:1073
 msgid "Close current menu"
 msgstr "關閉目前的選單"
 
-#: menueditor/menueditor.c:1081
+#: menueditor/menueditor.c:1078
 msgid "Add an entry to the menu"
 msgstr "新增項目至選單"
 
-#: menueditor/menueditor.c:1085
+#: menueditor/menueditor.c:1082
 msgid "Delete the current entry"
 msgstr "移除目前的項目"
 
-#: menueditor/menueditor.c:1089
+#: menueditor/menueditor.c:1086
 msgid "Move the current entry up"
 msgstr "將目前的項目向上移"
 
-#: menueditor/menueditor.c:1093
+#: menueditor/menueditor.c:1090
 msgid "Move the current entry down"
 msgstr "將目前的項目向下移"
 
 # FIXME incomplete but temporarily ok
-#: menueditor/menueditor.c:1098
+#: menueditor/menueditor.c:1095
 msgid "Collapse the tree"
 msgstr "收起子選單"
 
 # FIXME incomplete but temporarily ok
-#: menueditor/menueditor.c:1102
+#: menueditor/menueditor.c:1099
 msgid "Expand the tree"
 msgstr "展開子選單"
 
-#: menueditor/menueditor.c:1133
+#: menueditor/menueditor.c:1130
 msgid "Name"
 msgstr "名稱"
 
-#: menueditor/menueditor.c:1135
+#: menueditor/menueditor.c:1132
 msgid "Command"
 msgstr "指令"
 
-#: menueditor/menueditor.c:1137
+#: menueditor/menueditor.c:1134
 msgid "Hidden"
 msgstr "隱藏"
 
-#: menueditor/menueditor.c:1139
+#: menueditor/menueditor.c:1136
 msgid "Pointer"
 msgstr ""
 
-#: menueditor/menueditor.c:1263
+#: menueditor/menueditor.c:1260
 msgid "Corrupted file or incorrect file format !"
 msgstr ""
 
-#: menueditor/menueditor.c:1276
+#: menueditor/menueditor.c:1273
 msgid "No root element in file !"
 msgstr ""
 
-#: menueditor/menueditor.c:1287
+#: menueditor/menueditor.c:1284
 msgid "Bad datafile format !"
 msgstr "檔案資料格式錯誤！"
 
-#: menueditor/menueditor.c:1391
+#: menueditor/menueditor.c:1388
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "檔案「%s」並不存在！"
 
-#: menueditor/move.c:410
+#: menueditor/move.c:408
 msgid "Do you want to move the item into the parent menu?"
 msgstr ""
 
-#: menueditor/move.c:514
+#: menueditor/move.c:512
 msgid "Do you want to move the item into the submenu?"
 msgstr "您要將項目移至子選單嗎？"
 
@@ -387,52 +387,36 @@ msgstr "所有欄位均必須填寫。"
 msgid "/Other"
 msgstr "/其他"
 
-#: panel-plugin/desktop-menu-plugin.c:189
-#: panel-plugin/desktop-menu-plugin.c:514
+#: panel-plugin/desktop-menu-plugin.c:191
+#: panel-plugin/desktop-menu-plugin.c:516
 msgid "Xfce Menu"
 msgstr "Xfce 選單"
 
-#: panel-plugin/desktop-menu-plugin.c:354
+#: panel-plugin/desktop-menu-plugin.c:356
 msgid "Select Icon"
 msgstr "選擇圖示"
 
-#: panel-plugin/desktop-menu-plugin.c:356
+#: panel-plugin/desktop-menu-plugin.c:358
 msgid "Select Menu File"
 msgstr "選擇選單檔案"
 
-#: panel-plugin/desktop-menu-plugin.c:385
+#: panel-plugin/desktop-menu-plugin.c:387
 msgid "Menu Files"
 msgstr "選單檔案"
 
-#: panel-plugin/desktop-menu-plugin.c:444
+#: panel-plugin/desktop-menu-plugin.c:446
 msgid "_Menu file:"
 msgstr "選單檔案(_M)："
 
-#: panel-plugin/desktop-menu-plugin.c:478
+#: panel-plugin/desktop-menu-plugin.c:480
 msgid "_Button icon:"
 msgstr "按鈕圖示(_B)："
 
-#: panel-plugin/desktop-menu-plugin.c:503
+#: panel-plugin/desktop-menu-plugin.c:505
 msgid "Show _icons in menu"
 msgstr "在選單內顯示圖示(_I)"
 
-#: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
-#: settings/backdrop-mgr.c:553
-msgid "Backdrop"
-msgstr "背景"
-
-# TODO check translation
-#: settings/backdrop-mgr.c:100
-#, c-format
-msgid "Adding files from directory %s..."
-msgstr "由目錄 %s 新增檔案中..."
-
-#: settings/backdrop-mgr.c:160
-#, c-format
-msgid "Adding files from list %s..."
-msgstr "由清單 %s 新增檔案中..."
-
-#: settings/backdrop-mgr.c:215
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:115
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -444,54 +428,49 @@ msgstr ""
 "\n"
 "請選擇其他位置，或在對話框中點選「取消」以放棄所作的修改"
 
-#: settings/backdrop-mgr.c:502
+#: settings/backdrop-mgr.c:409
 msgid "Select backdrop image file"
 msgstr "選擇背景影像檔案"
 
-# TODO 譯文有待改進
-#: settings/backdrop-mgr.c:559
-msgid "Adding multiple files..."
-msgstr "新增多個檔案中..."
-
-#: settings/backdrop-mgr.c:637
+#: settings/backdrop-mgr.c:510
 msgid "Choose backdrop list filename"
 msgstr "選擇背景清單檔案名稱"
 
 # NOTE「List file」表示「含檔案列表的檔案」，並非「列出檔案」之意
-#: settings/backdrop-mgr.c:646
+#: settings/backdrop-mgr.c:519
 msgid "List Files"
 msgstr "清單檔案"
 
-#: settings/backdrop-mgr.c:709
+#: settings/backdrop-mgr.c:582
 msgid "Backdrop List"
 msgstr "背景清單"
 
-#: settings/backdrop-mgr.c:726
+#: settings/backdrop-mgr.c:599
 msgid "Image files"
 msgstr "影像檔案"
 
 # TODO check
-#: settings/backdrop-mgr.c:737 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "背景清單"
 
 # NOTE「List file」表示「含檔案列表的檔案」，並非「列出檔案」之意
-#: settings/backdrop-mgr.c:745
+#: settings/backdrop-mgr.c:618
 msgid "List file"
 msgstr "清單檔案"
 
-#: settings/backdrop-mgr.c:765
+#: settings/backdrop-mgr.c:638
 msgid "Create backdrop list"
 msgstr "建立背景列表"
 
-#: settings/backdrop-mgr.c:796
+#: settings/backdrop-mgr.c:669
 msgid "Edit backdrop list"
 msgstr "編輯背景列表"
 
 #. the dialog
 #: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
-#: src/xfce-desktop.c:616
+#: src/xfce-desktop.c:691
 msgid "Desktop"
 msgstr "桌面"
 
@@ -655,24 +634,24 @@ msgstr "顯示應用程式圖示(_A)"
 msgid "_Edit desktop menu"
 msgstr "修改卓面選單(_E)"
 
-#: src/main.c:265
+#: src/main.c:300
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s：不明的選項：%s\n"
 
-#: src/main.c:266
+#: src/main.c:301
 msgid "Options are:\n"
 msgstr "選項如下：\n"
 
-#: src/main.c:267
+#: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      刷新所有選項及圖像清單\n"
 
-#: src/main.c:268
+#: src/main.c:303
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        (在目滑鼠游標的所在位置) 彈出選單\n"
 
-#: src/main.c:269
+#: src/main.c:304
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  (在目前滑鼠游標的所在位置) 彈出視窗清單\n"
@@ -701,6 +680,20 @@ msgstr "移除工作區 %d (_R)"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "移除工作區「%s」(_R)"
+
+#~ msgid "Backdrop"
+#~ msgstr "背景"
+
+# TODO check translation
+#~ msgid "Adding files from directory %s..."
+#~ msgstr "由目錄 %s 新增檔案中..."
+
+#~ msgid "Adding files from list %s..."
+#~ msgstr "由清單 %s 新增檔案中..."
+
+# TODO 譯文有待改進
+#~ msgid "Adding multiple files..."
+#~ msgstr "新增多個檔案中..."
 
 #~ msgid "Select backdrop color"
 #~ msgstr "選擇背景顏色"

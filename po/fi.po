@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-23 22:43-0700\n"
+"POT-Creation-Date: 2004-10-01 07:31+0200\n"
 "PO-Revision-Date: 2004-08-24 23:06+0200\n"
 "Last-Translator: Ilkka Ollakka <ilkka.ollakka@iki.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,8 +101,8 @@ msgstr "Kaikki kentät täytyy olla täytettynä"
 msgid "The 'Name' field is required."
 msgstr "'Nimi' kenttä vaaditaan."
 
-#: menueditor/add_dialog.c:350 menueditor/dnd.c:154
-#: menueditor/menueditor.c:349 menueditor/move.c:92 menueditor/move.c:250
+#: menueditor/add_dialog.c:350 menueditor/dnd.c:152
+#: menueditor/menueditor.c:346 menueditor/move.c:90 menueditor/move.c:248
 msgid "--- separator ---"
 msgstr "--- erotin ---"
 
@@ -111,7 +111,7 @@ msgid "quit"
 msgstr "lopeta"
 
 #: menueditor/add_menu_dialog.c:78 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:808
+#: menueditor/menueditor.c:805
 msgid "Add an external menu"
 msgstr "Lisää ulkoinen valikko"
 
@@ -151,15 +151,15 @@ msgid "The 'Source' field is required."
 msgstr "'Lähde' kenttä vaaditaan."
 
 #: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:235
-#: menueditor/dnd.c:156 menueditor/edit_dialog.c:508
-#: menueditor/edit_dialog.c:521 menueditor/menueditor.c:397
-#: menueditor/move.c:122 menueditor/move.c:280
+#: menueditor/dnd.c:154 menueditor/edit_dialog.c:508
+#: menueditor/edit_dialog.c:521 menueditor/menueditor.c:394
+#: menueditor/move.c:120 menueditor/move.c:278
 msgid "--- include ---"
 msgstr "--- sisällä ---"
 
-#: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:161
-#: menueditor/edit_dialog.c:522 menueditor/menueditor.c:400
-#: menueditor/move.c:125 menueditor/move.c:283
+#: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:159
+#: menueditor/edit_dialog.c:522 menueditor/menueditor.c:397
+#: menueditor/move.c:123 menueditor/move.c:281
 msgid "system"
 msgstr "järjestelmä"
 
@@ -178,60 +178,60 @@ msgstr "Erotinta ei voi muokata"
 msgid "Title:"
 msgstr "Tiedosto:"
 
-#: menueditor/menueditor.c:151
+#: menueditor/menueditor.c:148
 msgid "Select command"
 msgstr "Valitse komento"
 
-#: menueditor/menueditor.c:212
+#: menueditor/menueditor.c:209
 msgid "Select icon"
 msgstr "Valitse kuvake"
 
-#: menueditor/menueditor.c:218 panel-plugin/desktop-menu-plugin.c:371
-#: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
+#: menueditor/menueditor.c:215 panel-plugin/desktop-menu-plugin.c:373
+#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Kaikki tiedostot"
 
-#: menueditor/menueditor.c:222 panel-plugin/desktop-menu-plugin.c:377
-#: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:537
+#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:379
+#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Kuvatiedostot"
 
-#: menueditor/menueditor.c:275 menueditor/menueditor.c:682
+#: menueditor/menueditor.c:272 menueditor/menueditor.c:679
 msgid "Do you want to save before closing the menu ?"
 msgstr "Haluatko tallentaa ennen valikon sulkemista ?"
 
-#: menueditor/menueditor.c:276
+#: menueditor/menueditor.c:273
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "Olet muokannut valikkoa, halutko tallentaa sen ennen lopettamista ?"
 
-#: menueditor/menueditor.c:277
+#: menueditor/menueditor.c:274
 msgid "Forget modifications"
 msgstr "Poista muutokset"
 
-#: menueditor/menueditor.c:476 menueditor/menueditor.c:534
-#: menueditor/menueditor.c:680
+#: menueditor/menueditor.c:473 menueditor/menueditor.c:531
+#: menueditor/menueditor.c:677
 msgid "Question"
 msgstr "Kysymys"
 
-#: menueditor/menueditor.c:478
+#: menueditor/menueditor.c:475
 msgid "Do you want to save before opening the default menu ?"
 msgstr "Haluatko tallentaa ennen oletusvalikon avaamista ?"
 
-#: menueditor/menueditor.c:480 menueditor/menueditor.c:538
-#: menueditor/menueditor.c:684
+#: menueditor/menueditor.c:477 menueditor/menueditor.c:535
+#: menueditor/menueditor.c:681
 msgid "Ignore modifications"
 msgstr "Hylkää muutokset"
 
-#: menueditor/menueditor.c:536
+#: menueditor/menueditor.c:533
 msgid "Do you want to save before opening an other menu ?"
 msgstr "Haluatko tallentaa ennen toisen valikon avaamista"
 
-#: menueditor/menueditor.c:549
+#: menueditor/menueditor.c:546
 msgid "Open menu file"
 msgstr "Avaa valikkotiedosto"
 
-#: menueditor/menueditor.c:583 menueditor/menueditor.c:594
+#: menueditor/menueditor.c:580 menueditor/menueditor.c:591
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -240,122 +240,122 @@ msgstr ""
 "Tiedostoon %s ei voida kirjoittaa: \n"
 "%s"
 
-#: menueditor/menueditor.c:625
+#: menueditor/menueditor.c:622
 msgid "Save as..."
 msgstr "Tallenna nimellä"
 
-#: menueditor/menueditor.c:802
+#: menueditor/menueditor.c:799
 #, fuzzy
 msgid "Edit"
 msgstr "Muokkaa"
 
 #. File menu
-#: menueditor/menueditor.c:1008
+#: menueditor/menueditor.c:1005
 #, fuzzy
 msgid "_File"
 msgstr "Tiedosto:"
 
-#: menueditor/menueditor.c:1017
+#: menueditor/menueditor.c:1014
 msgid "Open default menu"
 msgstr "Avaa oletusvalikko"
 
 #. Edit menu
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "_Edit"
 msgstr "Muokkaa"
 
-#: menueditor/menueditor.c:1037
+#: menueditor/menueditor.c:1034
 msgid "Add an external menu..."
 msgstr "Lisää ulkoinen valikko..."
 
 #. Help menu
-#: menueditor/menueditor.c:1049
+#: menueditor/menueditor.c:1046
 msgid "_Help"
 msgstr "Apua"
 
-#: menueditor/menueditor.c:1054
+#: menueditor/menueditor.c:1051
 msgid "_About..."
 msgstr "Tietoja..."
 
-#: menueditor/menueditor.c:1064
+#: menueditor/menueditor.c:1061
 msgid "Create a new Xfce4 menu file"
 msgstr "Tee uusi Xfce4 valikkotiedosto"
 
-#: menueditor/menueditor.c:1068
+#: menueditor/menueditor.c:1065
 msgid "Open an Xfce4 menu file"
 msgstr "Avaa Xfce4 valikkotietosto"
 
-#: menueditor/menueditor.c:1072
+#: menueditor/menueditor.c:1069
 msgid "Save current menu"
 msgstr "Tallenna nykyinen valikko"
 
-#: menueditor/menueditor.c:1076
+#: menueditor/menueditor.c:1073
 msgid "Close current menu"
 msgstr "Sulje nykyinen valikko"
 
-#: menueditor/menueditor.c:1081
+#: menueditor/menueditor.c:1078
 msgid "Add an entry to the menu"
 msgstr "Lisää kohde valikkoon"
 
-#: menueditor/menueditor.c:1085
+#: menueditor/menueditor.c:1082
 msgid "Delete the current entry"
 msgstr "Poista nykyinen kohde"
 
-#: menueditor/menueditor.c:1089
+#: menueditor/menueditor.c:1086
 msgid "Move the current entry up"
 msgstr "Siirrä kohdetta ylös"
 
-#: menueditor/menueditor.c:1093
+#: menueditor/menueditor.c:1090
 msgid "Move the current entry down"
 msgstr "Siirrä kohdetta alas"
 
-#: menueditor/menueditor.c:1098
+#: menueditor/menueditor.c:1095
 msgid "Collapse the tree"
 msgstr "Sulje puu"
 
-#: menueditor/menueditor.c:1102
+#: menueditor/menueditor.c:1099
 msgid "Expand the tree"
 msgstr "Avaa puu"
 
-#: menueditor/menueditor.c:1133
+#: menueditor/menueditor.c:1130
 #, fuzzy
 msgid "Name"
 msgstr "Nimi:"
 
-#: menueditor/menueditor.c:1135
+#: menueditor/menueditor.c:1132
 msgid "Command"
 msgstr "Komento"
 
-#: menueditor/menueditor.c:1137
+#: menueditor/menueditor.c:1134
 msgid "Hidden"
 msgstr "Piilotettu"
 
-#: menueditor/menueditor.c:1139
+#: menueditor/menueditor.c:1136
 msgid "Pointer"
 msgstr "Kohdistin"
 
-#: menueditor/menueditor.c:1263
+#: menueditor/menueditor.c:1260
 msgid "Corrupted file or incorrect file format !"
 msgstr "Korruptoitunut tiedosto tai väärä tiedostotyyppi !"
 
-#: menueditor/menueditor.c:1276
+#: menueditor/menueditor.c:1273
 msgid "No root element in file !"
 msgstr "Ei aloituselementtiä tiedostossa !"
 
-#: menueditor/menueditor.c:1287
+#: menueditor/menueditor.c:1284
 msgid "Bad datafile format !"
 msgstr "Tiedoston formaatti väärä !"
 
-#: menueditor/menueditor.c:1391
+#: menueditor/menueditor.c:1388
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "Tiedosto %s ei ole olemassa !"
 
-#: menueditor/move.c:410
+#: menueditor/move.c:408
 msgid "Do you want to move the item into the parent menu?"
 msgstr "Haluatko siirtää kohteen ylempään valikkoon?"
 
-#: menueditor/move.c:514
+#: menueditor/move.c:512
 msgid "Do you want to move the item into the submenu?"
 msgstr "Haluatko siirtää kohteen alavalikkoon?"
 
@@ -385,51 +385,36 @@ msgstr "Kaikki kentät vaaditaan"
 msgid "/Other"
 msgstr "Muut"
 
-#: panel-plugin/desktop-menu-plugin.c:189
-#: panel-plugin/desktop-menu-plugin.c:514
+#: panel-plugin/desktop-menu-plugin.c:191
+#: panel-plugin/desktop-menu-plugin.c:516
 msgid "Xfce Menu"
 msgstr "Xfce valikko"
 
-#: panel-plugin/desktop-menu-plugin.c:354
+#: panel-plugin/desktop-menu-plugin.c:356
 msgid "Select Icon"
 msgstr "Valitse kuvake"
 
-#: panel-plugin/desktop-menu-plugin.c:356
+#: panel-plugin/desktop-menu-plugin.c:358
 msgid "Select Menu File"
 msgstr "Valitse valikkotiedosto"
 
-#: panel-plugin/desktop-menu-plugin.c:385
+#: panel-plugin/desktop-menu-plugin.c:387
 msgid "Menu Files"
 msgstr "Valikkotiedostot"
 
-#: panel-plugin/desktop-menu-plugin.c:444
+#: panel-plugin/desktop-menu-plugin.c:446
 msgid "_Menu file:"
 msgstr "Valikkotiedosto:"
 
-#: panel-plugin/desktop-menu-plugin.c:478
+#: panel-plugin/desktop-menu-plugin.c:480
 msgid "_Button icon:"
 msgstr "Napin kuvake:"
 
-#: panel-plugin/desktop-menu-plugin.c:503
+#: panel-plugin/desktop-menu-plugin.c:505
 msgid "Show _icons in menu"
 msgstr "Näytä kuvake val_ikossa"
 
-#: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
-#: settings/backdrop-mgr.c:553
-msgid "Backdrop"
-msgstr "Taustakuva"
-
-#: settings/backdrop-mgr.c:100
-#, c-format
-msgid "Adding files from directory %s..."
-msgstr "Lisätään tiedostoja hakemistosta %s..."
-
-#: settings/backdrop-mgr.c:160
-#, c-format
-msgid "Adding files from list %s..."
-msgstr "Lisätään tiedostoja listasta %s..."
-
-#: settings/backdrop-mgr.c:215
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:115
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -442,50 +427,46 @@ msgstr ""
 "Valitse muu sijainti tiedostolla tai paina peruuta napiia hylätäksesti "
 "muutokset"
 
-#: settings/backdrop-mgr.c:502
+#: settings/backdrop-mgr.c:409
 msgid "Select backdrop image file"
 msgstr "Valitse taustakuva"
 
-#: settings/backdrop-mgr.c:559
-msgid "Adding multiple files..."
-msgstr "Lisätään useita tiedostoja..."
-
-#: settings/backdrop-mgr.c:637
+#: settings/backdrop-mgr.c:510
 msgid "Choose backdrop list filename"
 msgstr "Valitse taustakuvalistan tiedostonimi"
 
-#: settings/backdrop-mgr.c:646
+#: settings/backdrop-mgr.c:519
 msgid "List Files"
 msgstr "Listatiedostot"
 
-#: settings/backdrop-mgr.c:709
+#: settings/backdrop-mgr.c:582
 msgid "Backdrop List"
 msgstr "Taustakuvalista"
 
-#: settings/backdrop-mgr.c:726
+#: settings/backdrop-mgr.c:599
 msgid "Image files"
 msgstr "Kuvatiedostot"
 
-#: settings/backdrop-mgr.c:737 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: settings/backdrop-mgr.c:745
+#: settings/backdrop-mgr.c:618
 msgid "List file"
 msgstr "Listatiedosto"
 
-#: settings/backdrop-mgr.c:765
+#: settings/backdrop-mgr.c:638
 msgid "Create backdrop list"
 msgstr "Luo taustakuvalista"
 
-#: settings/backdrop-mgr.c:796
+#: settings/backdrop-mgr.c:669
 msgid "Edit backdrop list"
 msgstr "Muokkaa taustakuvalistaa"
 
 #. the dialog
 #: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
-#: src/xfce-desktop.c:616
+#: src/xfce-desktop.c:691
 msgid "Desktop"
 msgstr "Työpöytä"
 
@@ -647,25 +628,25 @@ msgstr "Näytä ohjelmien kuvakkeet"
 msgid "_Edit desktop menu"
 msgstr "Muokkaa työpöytävalikkoa"
 
-#: src/main.c:265
+#: src/main.c:300
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Tuntematon optio: %s\n"
 
-#: src/main.c:266
+#: src/main.c:301
 msgid "Options are:\n"
 msgstr "Optiot ovat:\n"
 
-#: src/main.c:267
+#: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload     Lataa kaikki asetukset uudestaan, päivittää kuvalistan\n"
 
-#: src/main.c:268
+#: src/main.c:303
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Näyttää valikon (nykyisessä hiiren kohdassa)\n"
 
-#: src/main.c:269
+#: src/main.c:304
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Näyttää ikkunalistan (nykyisessä hiiden kohdassa)\n"
@@ -694,6 +675,18 @@ msgstr "Poista työpöytä %d"
 #, fuzzy, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Poista työpöytä '%s'"
+
+#~ msgid "Backdrop"
+#~ msgstr "Taustakuva"
+
+#~ msgid "Adding files from directory %s..."
+#~ msgstr "Lisätään tiedostoja hakemistosta %s..."
+
+#~ msgid "Adding files from list %s..."
+#~ msgstr "Lisätään tiedostoja listasta %s..."
+
+#~ msgid "Adding multiple files..."
+#~ msgstr "Lisätään useita tiedostoja..."
 
 #~ msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
 #~ msgstr "XfceDesktopMenu: xfce-registered-categories.xml ei löydy"

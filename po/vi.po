@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-23 22:43-0700\n"
+"POT-Creation-Date: 2004-10-01 07:31+0200\n"
 "PO-Revision-Date: 2004-09-08 15:40+9\n"
 "Last-Translator: Lâm Vĩnh Niên <nienvl@yahoo.ca>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -101,8 +101,8 @@ msgstr "Tất cả các khoản cần được điền để thêm mục mới"
 msgid "The 'Name' field is required."
 msgstr "Khoản 'Tên' cần thiết"
 
-#: menueditor/add_dialog.c:350 menueditor/dnd.c:154
-#: menueditor/menueditor.c:349 menueditor/move.c:92 menueditor/move.c:250
+#: menueditor/add_dialog.c:350 menueditor/dnd.c:152
+#: menueditor/menueditor.c:346 menueditor/move.c:90 menueditor/move.c:248
 msgid "--- separator ---"
 msgstr "--- dấu cách ---"
 
@@ -111,7 +111,7 @@ msgid "quit"
 msgstr "thoát"
 
 #: menueditor/add_menu_dialog.c:78 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:808
+#: menueditor/menueditor.c:805
 msgid "Add an external menu"
 msgstr "Thêm thực đơn bên ngoài"
 
@@ -150,15 +150,15 @@ msgid "The 'Source' field is required."
 msgstr "Khoảng 'Nguồn' cần thiết."
 
 #: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:235
-#: menueditor/dnd.c:156 menueditor/edit_dialog.c:508
-#: menueditor/edit_dialog.c:521 menueditor/menueditor.c:397
-#: menueditor/move.c:122 menueditor/move.c:280
+#: menueditor/dnd.c:154 menueditor/edit_dialog.c:508
+#: menueditor/edit_dialog.c:521 menueditor/menueditor.c:394
+#: menueditor/move.c:120 menueditor/move.c:278
 msgid "--- include ---"
 msgstr "--- gồm ---"
 
-#: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:161
-#: menueditor/edit_dialog.c:522 menueditor/menueditor.c:400
-#: menueditor/move.c:125 menueditor/move.c:283
+#: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:159
+#: menueditor/edit_dialog.c:522 menueditor/menueditor.c:397
+#: menueditor/move.c:123 menueditor/move.c:281
 msgid "system"
 msgstr "hệ thống"
 
@@ -176,60 +176,60 @@ msgstr "Không thể biên tập dấu cách"
 msgid "Title:"
 msgstr "Tiêu đề:"
 
-#: menueditor/menueditor.c:151
+#: menueditor/menueditor.c:148
 msgid "Select command"
 msgstr "Chọn lệnh"
 
-#: menueditor/menueditor.c:212
+#: menueditor/menueditor.c:209
 msgid "Select icon"
 msgstr "Chọn biểu tượng"
 
-#: menueditor/menueditor.c:218 panel-plugin/desktop-menu-plugin.c:371
-#: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
+#: menueditor/menueditor.c:215 panel-plugin/desktop-menu-plugin.c:373
+#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Mọi tập tin"
 
-#: menueditor/menueditor.c:222 panel-plugin/desktop-menu-plugin.c:377
-#: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:537
+#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:379
+#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Các tập tin hình ảnh"
 
-#: menueditor/menueditor.c:275 menueditor/menueditor.c:682
+#: menueditor/menueditor.c:272 menueditor/menueditor.c:679
 msgid "Do you want to save before closing the menu ?"
 msgstr "Bạn có muốn lưu trước khi đóng thực đơn ?"
 
-#: menueditor/menueditor.c:276
+#: menueditor/menueditor.c:273
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "Bạn đã thay đổi thực đơn, bạn có muốn lưu trước khi thoát ?"
 
-#: menueditor/menueditor.c:277
+#: menueditor/menueditor.c:274
 msgid "Forget modifications"
 msgstr "Quên các thay đổi"
 
-#: menueditor/menueditor.c:476 menueditor/menueditor.c:534
-#: menueditor/menueditor.c:680
+#: menueditor/menueditor.c:473 menueditor/menueditor.c:531
+#: menueditor/menueditor.c:677
 msgid "Question"
 msgstr "Câu hỏi"
 
-#: menueditor/menueditor.c:478
+#: menueditor/menueditor.c:475
 msgid "Do you want to save before opening the default menu ?"
 msgstr "Bạn có muốn lưu trước khi mở thư mục mặc định ?"
 
-#: menueditor/menueditor.c:480 menueditor/menueditor.c:538
-#: menueditor/menueditor.c:684
+#: menueditor/menueditor.c:477 menueditor/menueditor.c:535
+#: menueditor/menueditor.c:681
 msgid "Ignore modifications"
 msgstr "Bỏ qua các thay đổi"
 
-#: menueditor/menueditor.c:536
+#: menueditor/menueditor.c:533
 msgid "Do you want to save before opening an other menu ?"
 msgstr "Bạn có muốn lưu trước khi mở thực đơn khác ?"
 
-#: menueditor/menueditor.c:549
+#: menueditor/menueditor.c:546
 msgid "Open menu file"
 msgstr "Mở tập tin thực đơn"
 
-#: menueditor/menueditor.c:583 menueditor/menueditor.c:594
+#: menueditor/menueditor.c:580 menueditor/menueditor.c:591
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -238,119 +238,119 @@ msgstr ""
 "Không thể viết vào %s : \n"
 "%s"
 
-#: menueditor/menueditor.c:625
+#: menueditor/menueditor.c:622
 msgid "Save as..."
 msgstr "Lưu là..."
 
-#: menueditor/menueditor.c:802
+#: menueditor/menueditor.c:799
 msgid "Edit"
 msgstr "Biên tập"
 
 #. File menu
-#: menueditor/menueditor.c:1008
+#: menueditor/menueditor.c:1005
 msgid "_File"
 msgstr "_Tập tin"
 
-#: menueditor/menueditor.c:1017
+#: menueditor/menueditor.c:1014
 msgid "Open default menu"
 msgstr "Mở thực đơn mặc định"
 
 #. Edit menu
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "_Edit"
 msgstr "_Biên tập"
 
-#: menueditor/menueditor.c:1037
+#: menueditor/menueditor.c:1034
 msgid "Add an external menu..."
 msgstr "Thêm thực đơn bên ngoài..."
 
 #. Help menu
-#: menueditor/menueditor.c:1049
+#: menueditor/menueditor.c:1046
 msgid "_Help"
 msgstr "_Giúp đỡ"
 
-#: menueditor/menueditor.c:1054
+#: menueditor/menueditor.c:1051
 msgid "_About..."
 msgstr "_Về..."
 
-#: menueditor/menueditor.c:1064
+#: menueditor/menueditor.c:1061
 msgid "Create a new Xfce4 menu file"
 msgstr "Tạo tập tin thực đơn Xfce4 mới"
 
-#: menueditor/menueditor.c:1068
+#: menueditor/menueditor.c:1065
 msgid "Open an Xfce4 menu file"
 msgstr "Mở tập tin thực đơn Xfce4"
 
-#: menueditor/menueditor.c:1072
+#: menueditor/menueditor.c:1069
 msgid "Save current menu"
 msgstr "Lưu thực đơn hiện tại"
 
-#: menueditor/menueditor.c:1076
+#: menueditor/menueditor.c:1073
 msgid "Close current menu"
 msgstr "Đóng thực đơn hiện tại"
 
-#: menueditor/menueditor.c:1081
+#: menueditor/menueditor.c:1078
 msgid "Add an entry to the menu"
 msgstr "Thêm đề mục vào thực đơn"
 
-#: menueditor/menueditor.c:1085
+#: menueditor/menueditor.c:1082
 msgid "Delete the current entry"
 msgstr "Xoá đề mục hiện tại"
 
-#: menueditor/menueditor.c:1089
+#: menueditor/menueditor.c:1086
 msgid "Move the current entry up"
 msgstr "Di chuyển đề mục hiện tại lên"
 
-#: menueditor/menueditor.c:1093
+#: menueditor/menueditor.c:1090
 msgid "Move the current entry down"
 msgstr "Di chuyển đề mục hiện tại xuống"
 
-#: menueditor/menueditor.c:1098
+#: menueditor/menueditor.c:1095
 msgid "Collapse the tree"
 msgstr "Khép cây"
 
-#: menueditor/menueditor.c:1102
+#: menueditor/menueditor.c:1099
 msgid "Expand the tree"
 msgstr "Mở cây"
 
-#: menueditor/menueditor.c:1133
+#: menueditor/menueditor.c:1130
 msgid "Name"
 msgstr "Tên"
 
-#: menueditor/menueditor.c:1135
+#: menueditor/menueditor.c:1132
 msgid "Command"
 msgstr "Lệnh"
 
-#: menueditor/menueditor.c:1137
+#: menueditor/menueditor.c:1134
 msgid "Hidden"
 msgstr "Ẩn"
 
-#: menueditor/menueditor.c:1139
+#: menueditor/menueditor.c:1136
 msgid "Pointer"
 msgstr "Con trỏ"
 
-#: menueditor/menueditor.c:1263
+#: menueditor/menueditor.c:1260
 msgid "Corrupted file or incorrect file format !"
 msgstr "Tập tin hỏng hoặc định dạng không đúng !"
 
-#: menueditor/menueditor.c:1276
+#: menueditor/menueditor.c:1273
 msgid "No root element in file !"
 msgstr "Không có yếu tố gốc (root) trong tập tin !"
 
-#: menueditor/menueditor.c:1287
+#: menueditor/menueditor.c:1284
 msgid "Bad datafile format !"
 msgstr "Định dạng tập tin dữ liệu hỏng"
 
-#: menueditor/menueditor.c:1391
+#: menueditor/menueditor.c:1388
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "Tập tin %s không tồn tại"
 
-#: menueditor/move.c:410
+#: menueditor/move.c:408
 msgid "Do you want to move the item into the parent menu?"
 msgstr "Bạn có muốn di chuyển mục vào thực đơn mẹ?"
 
-#: menueditor/move.c:514
+#: menueditor/move.c:512
 msgid "Do you want to move the item into the submenu?"
 msgstr "Bạn có muốn di chuyển mục vào thực đơn phụ?"
 
@@ -380,51 +380,36 @@ msgstr "Mọi khoản đều cần thiết."
 msgid "/Other"
 msgstr "/Khác"
 
-#: panel-plugin/desktop-menu-plugin.c:189
-#: panel-plugin/desktop-menu-plugin.c:514
+#: panel-plugin/desktop-menu-plugin.c:191
+#: panel-plugin/desktop-menu-plugin.c:516
 msgid "Xfce Menu"
 msgstr "Thực đơn Xfce"
 
-#: panel-plugin/desktop-menu-plugin.c:354
+#: panel-plugin/desktop-menu-plugin.c:356
 msgid "Select Icon"
 msgstr "Chọn biểu tượng"
 
-#: panel-plugin/desktop-menu-plugin.c:356
+#: panel-plugin/desktop-menu-plugin.c:358
 msgid "Select Menu File"
 msgstr "Chọn tập tin thực đơn"
 
-#: panel-plugin/desktop-menu-plugin.c:385
+#: panel-plugin/desktop-menu-plugin.c:387
 msgid "Menu Files"
 msgstr "Tập tin thực đơn"
 
-#: panel-plugin/desktop-menu-plugin.c:444
+#: panel-plugin/desktop-menu-plugin.c:446
 msgid "_Menu file:"
 msgstr "Tập tin thự_c đơn:"
 
-#: panel-plugin/desktop-menu-plugin.c:478
+#: panel-plugin/desktop-menu-plugin.c:480
 msgid "_Button icon:"
 msgstr "Biểu tượng _nút:"
 
-#: panel-plugin/desktop-menu-plugin.c:503
+#: panel-plugin/desktop-menu-plugin.c:505
 msgid "Show _icons in menu"
 msgstr "Hiển thị _biểu tượng trong thực đơn"
 
-#: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
-#: settings/backdrop-mgr.c:553
-msgid "Backdrop"
-msgstr "Phông nền"
-
-#: settings/backdrop-mgr.c:100
-#, c-format
-msgid "Adding files from directory %s..."
-msgstr "Thêm tập tin từ thư mục %s..."
-
-#: settings/backdrop-mgr.c:160
-#, c-format
-msgid "Adding files from list %s..."
-msgstr "Thêm tập tin từ danh sách %s..."
-
-#: settings/backdrop-mgr.c:215
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:115
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -436,50 +421,46 @@ msgstr ""
 "\n"
 "Vui lòng chọn vị trí khác hoặc ấn bỏ qua trong hộp thoại để huỷ bỏ thay đổi "
 
-#: settings/backdrop-mgr.c:502
+#: settings/backdrop-mgr.c:409
 msgid "Select backdrop image file"
 msgstr "Chọn tập tin hình ảnh phông nền"
 
-#: settings/backdrop-mgr.c:559
-msgid "Adding multiple files..."
-msgstr "Thêm nhiều tập tin..."
-
-#: settings/backdrop-mgr.c:637
+#: settings/backdrop-mgr.c:510
 msgid "Choose backdrop list filename"
 msgstr "Chọn tên tập tin danh sách phông nền"
 
-#: settings/backdrop-mgr.c:646
+#: settings/backdrop-mgr.c:519
 msgid "List Files"
 msgstr "Liệt kê tập tin"
 
-#: settings/backdrop-mgr.c:709
+#: settings/backdrop-mgr.c:582
 msgid "Backdrop List"
 msgstr "Danh sách phông nền"
 
-#: settings/backdrop-mgr.c:726
+#: settings/backdrop-mgr.c:599
 msgid "Image files"
 msgstr "Tập tin hình ảnh"
 
-#: settings/backdrop-mgr.c:737 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: settings/backdrop-mgr.c:745
+#: settings/backdrop-mgr.c:618
 msgid "List file"
 msgstr "Liệt kê tập tin"
 
-#: settings/backdrop-mgr.c:765
+#: settings/backdrop-mgr.c:638
 msgid "Create backdrop list"
 msgstr "Tạo danh sách phông nền"
 
-#: settings/backdrop-mgr.c:796
+#: settings/backdrop-mgr.c:669
 msgid "Edit backdrop list"
 msgstr "Biên tập danh sách phông nền"
 
 #. the dialog
 #: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
-#: src/xfce-desktop.c:616
+#: src/xfce-desktop.c:691
 msgid "Desktop"
 msgstr "Desktop"
 
@@ -640,24 +621,24 @@ msgstr "Hiển thị biểu tượng ứng _dụng"
 msgid "_Edit desktop menu"
 msgstr "_Biên tập thực đơn desktop"
 
-#: src/main.c:265
+#: src/main.c:300
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Tuỳ chọn không rõ: %s\n"
 
-#: src/main.c:266
+#: src/main.c:301
 msgid "Options are:\n"
 msgstr "Tuỳ chọn là:\n"
 
-#: src/main.c:267
+#: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload     Nạp lại mọi thiết lập, làm tươi danh sách hình ảnh\n"
 
-#: src/main.c:268
+#: src/main.c:303
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Bập thực đơn (ở vị trí con chuột hiện tại)\n"
 
-#: src/main.c:269
+#: src/main.c:304
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Bật danh sách cửa sổ (ở vị trí con chuột hiện tại)\n"
@@ -685,6 +666,18 @@ msgstr "Gỡ _bỏ vùng làm việc %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Gỡ _bỏ vùng làm việc '%s'"
+
+#~ msgid "Backdrop"
+#~ msgstr "Phông nền"
+
+#~ msgid "Adding files from directory %s..."
+#~ msgstr "Thêm tập tin từ thư mục %s..."
+
+#~ msgid "Adding files from list %s..."
+#~ msgstr "Thêm tập tin từ danh sách %s..."
+
+#~ msgid "Adding multiple files..."
+#~ msgstr "Thêm nhiều tập tin..."
 
 #~ msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
 #~ msgstr "XfceDesktopMenu: Không tìm thấy xfce-registered-categories.xml"

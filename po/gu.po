@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-28 19:48-0700\n"
+"POT-Creation-Date: 2004-10-01 07:31+0200\n"
 "PO-Revision-Date: 2004-09-22 18:04+0530\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
 "Language-Team: Gujarati\n"
@@ -15,151 +15,153 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3.1\n"
-"Plural-Forms: Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"\n"
 
 #: menueditor/about_dialog.c:36
 msgid "A menu editor for Xfce4"
 msgstr "Xfce4 માટે મેનુ સંપાદક"
 
-#: menueditor/about_dialog.c:45
+#. Credits
+#: menueditor/about_dialog.c:41
 msgid "Core developer"
 msgstr "મૂળ વિકાસકાર"
 
-#: menueditor/about_dialog.c:49 menueditor/about_dialog.c:53
-#: menueditor/about_dialog.c:57
+#: menueditor/about_dialog.c:42 menueditor/about_dialog.c:43
+#: menueditor/about_dialog.c:44
 msgid "Contributor"
 msgstr "ફાળો આપનાર"
 
-#: menueditor/about_dialog.c:61
+#: menueditor/about_dialog.c:45
 msgid "Icon designer"
 msgstr "ચિહ્ન બનાવનાર"
 
-#: menueditor/add_dialog.c:131 menueditor/add_dialog.c:146
+#: menueditor/add_dialog.c:132 menueditor/add_dialog.c:147
 msgid "Add menu entry"
 msgstr "મેનુ પ્રવેશ ઉમેરો"
 
 #. Type
-#: menueditor/add_dialog.c:152 menueditor/add_menu_dialog.c:96
+#: menueditor/add_dialog.c:153 menueditor/add_menu_dialog.c:98
 #: menueditor/edit_dialog.c:148
 msgid "Type:"
 msgstr "પ્રકાર:"
 
-#: menueditor/add_dialog.c:155
+#: menueditor/add_dialog.c:156
 msgid "Launcher"
 msgstr "લોન્ચર"
 
-#: menueditor/add_dialog.c:160
+#: menueditor/add_dialog.c:161
 msgid "Submenu"
 msgstr "ઉપમેનુ"
 
-#: menueditor/add_dialog.c:165
+#: menueditor/add_dialog.c:166
 msgid "Separator"
 msgstr "વિભાજક"
 
-#: menueditor/add_dialog.c:170
+#: menueditor/add_dialog.c:171
 msgid "Title"
 msgstr "શીર્ષક"
 
-#: menueditor/add_dialog.c:175
+#: menueditor/add_dialog.c:176
 msgid "Quit"
 msgstr "બહાર નીકળો"
 
 #. Name
-#: menueditor/add_dialog.c:190 menueditor/edit_dialog.c:260
+#: menueditor/add_dialog.c:191 menueditor/edit_dialog.c:260
 #: menueditor/edit_dialog.c:310 menueditor/edit_dialog.c:348
 msgid "Name:"
 msgstr "નામ:"
 
-#: menueditor/add_dialog.c:200 menueditor/edit_dialog.c:261
+#: menueditor/add_dialog.c:201 menueditor/edit_dialog.c:261
 msgid "Command:"
 msgstr "આદેશ:"
 
-#: menueditor/add_dialog.c:216 menueditor/edit_dialog.c:252
+#: menueditor/add_dialog.c:217 menueditor/edit_dialog.c:252
 #: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
 #: menueditor/edit_dialog.c:390
 msgid "Icon:"
 msgstr "ચિહ્ન:"
 
 #. Start Notify check button
-#: menueditor/add_dialog.c:232 menueditor/edit_dialog.c:272
+#: menueditor/add_dialog.c:233 menueditor/edit_dialog.c:272
 msgid "Use startup _notification"
 msgstr "શરુઆતમાં સૂચન વાપરો (_n)"
 
 #. Run in terminal check button
-#: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:273
+#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:273
 msgid "Run in _terminal"
 msgstr "ટર્મિનલમાં ચલાવો (_t)"
 
-#: menueditor/add_dialog.c:281 menueditor/edit_dialog.c:459
+#: menueditor/add_dialog.c:282 menueditor/edit_dialog.c:459
 msgid "The command doesn't exist !"
 msgstr "આદેશ અસ્તિત્વમાં નથી !"
 
-#: menueditor/add_dialog.c:287
+#: menueditor/add_dialog.c:288
 msgid "All fields must be filled to add an item."
 msgstr "વસ્તુ ઉમેરવા માટે બધા ક્ષેત્રો ભરેલા જ હોવા જોઈએ."
 
-#: menueditor/add_dialog.c:295
+#: menueditor/add_dialog.c:296
 msgid "The 'Name' field is required."
 msgstr "'નામ' ક્ષેત્ર જરુરી છે."
 
-#: menueditor/add_dialog.c:349 menueditor/dnd.c:150
-#: menueditor/menueditor.c:339 menueditor/move.c:90 menueditor/move.c:246
+#: menueditor/add_dialog.c:350 menueditor/dnd.c:152
+#: menueditor/menueditor.c:346 menueditor/move.c:90 menueditor/move.c:248
 msgid "--- separator ---"
 msgstr "--- વિભાજક ---"
 
-#: menueditor/add_dialog.c:374 menueditor/edit_dialog.c:496
+#: menueditor/add_dialog.c:375 menueditor/edit_dialog.c:494
 msgid "quit"
 msgstr "બહાર નીકળો"
 
-#: menueditor/add_menu_dialog.c:76 menueditor/add_menu_dialog.c:87
-#: menueditor/menueditor.c:770
+#: menueditor/add_menu_dialog.c:78 menueditor/add_menu_dialog.c:89
+#: menueditor/menueditor.c:805
 msgid "Add an external menu"
 msgstr "બાહ્ય મેનુ ઉમેરો"
 
-#: menueditor/add_menu_dialog.c:101 menueditor/edit_dialog.c:151
+#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:151
 msgid "File"
 msgstr "ફાઈલ"
 
-#: menueditor/add_menu_dialog.c:106 menueditor/edit_dialog.c:156
+#: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:156
 msgid "System"
 msgstr "સિસ્ટમ"
 
-#: menueditor/add_menu_dialog.c:121 menueditor/edit_dialog.c:171
+#: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:171
 msgid "Source:"
 msgstr "સ્રોત:"
 
 #. Style
-#: menueditor/add_menu_dialog.c:134 menueditor/edit_dialog.c:184
+#: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:184
 msgid "Style:"
 msgstr "શૈલી:"
 
-#: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:187
+#: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:187
 msgid "Simple"
 msgstr "સરળ"
 
-#: menueditor/add_menu_dialog.c:140 menueditor/edit_dialog.c:190
+#: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:190
 msgid "Multilevel"
 msgstr "મલ્ટીલેવલ"
 
 #. Unique
-#: menueditor/add_menu_dialog.c:153 menueditor/edit_dialog.c:203
+#: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:203
 msgid "_Unique entries only"
 msgstr "માત્ર અનન્ય પ્રવેશો (_U)"
 
-#: menueditor/add_menu_dialog.c:206
+#: menueditor/add_menu_dialog.c:208
 msgid "The 'Source' field is required."
 msgstr "'સ્રોત' ક્ષેત્ર જરુરી છે."
 
-#: menueditor/add_menu_dialog.c:216 menueditor/add_menu_dialog.c:233
-#: menueditor/dnd.c:152 menueditor/edit_dialog.c:510
-#: menueditor/edit_dialog.c:523 menueditor/menueditor.c:387
-#: menueditor/move.c:120 menueditor/move.c:276
+#: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:235
+#: menueditor/dnd.c:154 menueditor/edit_dialog.c:508
+#: menueditor/edit_dialog.c:521 menueditor/menueditor.c:394
+#: menueditor/move.c:120 menueditor/move.c:278
 msgid "--- include ---"
 msgstr "--- સમાવો ---"
 
-#: menueditor/add_menu_dialog.c:234 menueditor/dnd.c:157
-#: menueditor/edit_dialog.c:524 menueditor/menueditor.c:390
-#: menueditor/move.c:123 menueditor/move.c:279
+#: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:159
+#: menueditor/edit_dialog.c:522 menueditor/menueditor.c:397
+#: menueditor/move.c:123 menueditor/move.c:281
 msgid "system"
 msgstr "સિસ્ટમ"
 
@@ -173,68 +175,64 @@ msgid "Separators cannot be edited"
 msgstr "વિભાજકોમાં ફેરફાર કરી શકાતો નથી"
 
 #. Name
-#: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:102
+#: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:104
 msgid "Title:"
 msgstr "શીર્ષક:"
 
-#: menueditor/menueditor.c:156
+#: menueditor/menueditor.c:148
 msgid "Select command"
 msgstr "આદેશ પસંદ કરો"
 
-#: menueditor/menueditor.c:213
+#: menueditor/menueditor.c:209
 msgid "Select icon"
 msgstr "ચિહ્ન પસંદ કરો"
 
-#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:372
-#: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
-#: settings/backdrop_settings.c:467
+#: menueditor/menueditor.c:215 panel-plugin/desktop-menu-plugin.c:373
+#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "બધી ફાઈલો"
 
-#: menueditor/menueditor.c:223 panel-plugin/desktop-menu-plugin.c:378
-#: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:471
+#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:379
+#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "ઈમેજ ફાઈલો"
 
-#: menueditor/menueditor.c:266
-msgid "Not yet implemented!"
-msgstr "હજુ અમલમાં મૂકાયું નથી!"
-
-#: menueditor/menueditor.c:277 menueditor/menueditor.c:659
+#: menueditor/menueditor.c:272 menueditor/menueditor.c:679
 msgid "Do you want to save before closing the menu ?"
 msgstr "શું તમે મેનું બંધ કર્યા પહેલા સંગ્રહવા માંગો છો?"
 
-#: menueditor/menueditor.c:278
+#: menueditor/menueditor.c:273
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "તમે મેનુ સુધારેલ છે, શું તમે બંધ કર્યા પહેલા સંગ્રહવા માંગો છો?"
 
-#: menueditor/menueditor.c:279
+#: menueditor/menueditor.c:274
 msgid "Forget modifications"
 msgstr "સુધારાઓ ભૂલી ગયા"
 
-#: menueditor/menueditor.c:463 menueditor/menueditor.c:518
-#: menueditor/menueditor.c:657
+#: menueditor/menueditor.c:473 menueditor/menueditor.c:531
+#: menueditor/menueditor.c:677
 msgid "Question"
 msgstr "પ્રશ્ન"
 
-#: menueditor/menueditor.c:465
+#: menueditor/menueditor.c:475
 msgid "Do you want to save before opening the default menu ?"
 msgstr "શું તમે મૂળભુત મેનુ ખોલ્યા પહેલા સંગ્રહ કરવા માંગો છો?"
 
-#: menueditor/menueditor.c:467 menueditor/menueditor.c:522
-#: menueditor/menueditor.c:661
+#: menueditor/menueditor.c:477 menueditor/menueditor.c:535
+#: menueditor/menueditor.c:681
 msgid "Ignore modifications"
 msgstr "સુધારાઓ અવગણો"
 
-#: menueditor/menueditor.c:520
+#: menueditor/menueditor.c:533
 msgid "Do you want to save before opening an other menu ?"
 msgstr "શું બીજુ મેનુ ખોલ્યા પહેલા સંગ્રહ કરવા માંગો છો?"
 
-#: menueditor/menueditor.c:533
+#: menueditor/menueditor.c:546
 msgid "Open menu file"
 msgstr "મેનુ ફાઈલ ખોલો"
 
-#: menueditor/menueditor.c:571 menueditor/menueditor.c:582
+#: menueditor/menueditor.c:580 menueditor/menueditor.c:591
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -243,106 +241,106 @@ msgstr ""
 "%s માં લખી શકતા નથી : \n"
 "%s"
 
-#: menueditor/menueditor.c:606
+#: menueditor/menueditor.c:622
 msgid "Save as..."
 msgstr "આ રીતે સંગ્રહ કરો..."
 
-#: menueditor/menueditor.c:764
+#: menueditor/menueditor.c:799
 msgid "Edit"
 msgstr "ફેરફાર કરો"
 
 #. File menu
-#: menueditor/menueditor.c:951
+#: menueditor/menueditor.c:1005
 msgid "_File"
 msgstr "ફાઈલ (_F)"
 
-#: menueditor/menueditor.c:960
+#: menueditor/menueditor.c:1014
 msgid "Open default menu"
 msgstr "મૂળભુત મેનુ ખોલો"
 
 #. Edit menu
-#: menueditor/menueditor.c:974
+#: menueditor/menueditor.c:1028
 msgid "_Edit"
 msgstr "ફેરફાર કરો (_E)"
 
-#: menueditor/menueditor.c:980
+#: menueditor/menueditor.c:1034
 msgid "Add an external menu..."
 msgstr "બાહ્ય મેનુ ઉમેરો..."
 
 #. Help menu
-#: menueditor/menueditor.c:992
+#: menueditor/menueditor.c:1046
 msgid "_Help"
 msgstr "મદદ (_H)"
 
-#: menueditor/menueditor.c:997
+#: menueditor/menueditor.c:1051
 msgid "_About..."
 msgstr "વિશે (_A)..."
 
-#: menueditor/menueditor.c:1011
+#: menueditor/menueditor.c:1061
 msgid "Create a new Xfce4 menu file"
 msgstr "નવી Xfce4 મેનુ ફાઈલ બનાવો"
 
-#: menueditor/menueditor.c:1018
+#: menueditor/menueditor.c:1065
 msgid "Open an Xfce4 menu file"
 msgstr "Xfce4 મેનુ ફાઈલ ખોલો"
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1069
 msgid "Save current menu"
 msgstr "વર્તમાન મેનુ ખોલો"
 
-#: menueditor/menueditor.c:1032
+#: menueditor/menueditor.c:1073
 msgid "Close current menu"
 msgstr "વર્તમાન મેનુ બંધ કરો"
 
-#: menueditor/menueditor.c:1040
+#: menueditor/menueditor.c:1078
 msgid "Add an entry to the menu"
 msgstr "મેનુમાં પ્રવેશ ઉમેરો"
 
-#: menueditor/menueditor.c:1047
+#: menueditor/menueditor.c:1082
 msgid "Delete the current entry"
 msgstr "વર્તમાન પ્રવેશ કાઢી નાંખો"
 
-#: menueditor/menueditor.c:1054
+#: menueditor/menueditor.c:1086
 msgid "Move the current entry up"
 msgstr "વર્તમાન પ્રવેશને ઉપર ખસેડો"
 
-#: menueditor/menueditor.c:1061
+#: menueditor/menueditor.c:1090
 msgid "Move the current entry down"
 msgstr "વર્તમાન પ્રવેશને નીચે ખસાડો"
 
-#: menueditor/menueditor.c:1069
+#: menueditor/menueditor.c:1095
 msgid "Collapse the tree"
 msgstr "ટ્રીને ભેગુ કરો"
 
-#: menueditor/menueditor.c:1076
+#: menueditor/menueditor.c:1099
 msgid "Expand the tree"
 msgstr "ટ્રીને વિસ્તૃત કરો"
 
-#: menueditor/menueditor.c:1110
+#: menueditor/menueditor.c:1130
 msgid "Name"
 msgstr "નામ"
 
-#: menueditor/menueditor.c:1112
+#: menueditor/menueditor.c:1132
 msgid "Command"
 msgstr "આદેશ"
 
-#: menueditor/menueditor.c:1114
+#: menueditor/menueditor.c:1134
 msgid "Hidden"
 msgstr "છુપુ"
 
-#: menueditor/menueditor.c:1116
+#: menueditor/menueditor.c:1136
 msgid "Pointer"
 msgstr "નિર્દેશક"
 
-#: menueditor/menueditor.c:1248
+#: menueditor/menueditor.c:1260
 msgid "Corrupted file or incorrect file format !"
 msgstr "બગડેલી ફાઈલ અથવા ફાઈલનું બંધારણ અયોગ્ય છે !"
 
-#: menueditor/menueditor.c:1261
+#: menueditor/menueditor.c:1273
 msgid "No root element in file !"
 msgstr "ફાઈલમાં કોઈ રુટ વસ્તુ નથી !"
 
-#: menueditor/menueditor.c:1272
+#: menueditor/menueditor.c:1284
 msgid "Bad datafile format !"
 msgstr "માહિતી ફાઈલનું ખરાબ બંધારણ !"
 
@@ -351,99 +349,70 @@ msgstr "માહિતી ફાઈલનું ખરાબ બંધારણ
 msgid "File %s doesn't exist !"
 msgstr "ફાઈલ %s અસ્તિત્વમાં નથી !"
 
-#: menueditor/move.c:401
+#: menueditor/move.c:408
 msgid "Do you want to move the item into the parent menu?"
 msgstr "શું તમે વસ્તુને તેના પિતૃ મેનુમાં ઉપર ખસેડવા માંગો છો?"
 
-#: menueditor/move.c:500
+#: menueditor/move.c:512
 msgid "Do you want to move the item into the submenu?"
 msgstr "શું તમે વસ્તુને તેના ઉપમેનુંમાં નીચે ખસેડવા માંગો છો?"
 
-#: menueditor/new_dialog.c:58
+#: menueditor/new_dialog.c:60
 msgid "Are you sure you want to close the current menu?"
 msgstr "શું તમે ખરેખર વર્તમાન મેનુ બંધ કરવા માંગો છો?"
 
-#: menueditor/new_dialog.c:74
+#: menueditor/new_dialog.c:76
 msgid "Do you want to save before closing the file?"
 msgstr "શું તમે ફાઈલ બંધ કર્યા પહેલા તેને સંગ્રહવા માંગો છો?"
 
 #. get the filename and name for the new menu
-#: menueditor/new_dialog.c:84 menueditor/new_dialog.c:96
+#: menueditor/new_dialog.c:86 menueditor/new_dialog.c:98
 msgid "New menu"
 msgstr "નવું મેનુ"
 
 #. Filename
-#: menueditor/new_dialog.c:109
+#: menueditor/new_dialog.c:111
 msgid "Filename:"
 msgstr "ફાઈલનામ:"
 
-#: menueditor/new_dialog.c:142
+#: menueditor/new_dialog.c:144
 msgid "All fields are required."
 msgstr "બધા ક્ષેત્રો જરુરી છે."
-
-#: modules/menu/desktop-menu-dentry.c:536
-msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-msgstr "Xfceડેસ્કટોપમેનુ: xfce-registered-categories.xml શોધવા માટે સમર્થ નથી"
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
 msgstr "/અન્ય"
 
-#: modules/menu/desktop-menuspec.c:361
-#, c-format
-msgid "%s: missing or unknown attribute for 'related' element\n"
-msgstr "%s: 'સંબંધિત' વસ્તુ માટે ખોવાયેલ અથવા અજ્ઞાત લક્ષણ\n"
-
-#: modules/menu/desktop-menuspec.c:366
-#, c-format
-msgid "%s: unknown xml element %s\n"
-msgstr "%s: અજ્ઞાત xml વસ્તુ %s\n"
-
-#: panel-plugin/desktop-menu-plugin.c:192
-#: panel-plugin/desktop-menu-plugin.c:515
+#: panel-plugin/desktop-menu-plugin.c:191
+#: panel-plugin/desktop-menu-plugin.c:516
 msgid "Xfce Menu"
 msgstr "Xfce મેનુ"
 
-#: panel-plugin/desktop-menu-plugin.c:355
+#: panel-plugin/desktop-menu-plugin.c:356
 msgid "Select Icon"
 msgstr "ચિહ્ન પસંદ કરો"
 
-#: panel-plugin/desktop-menu-plugin.c:357
+#: panel-plugin/desktop-menu-plugin.c:358
 msgid "Select Menu File"
 msgstr "મેનુ ફાઈલ પસંદ કરો"
 
-#: panel-plugin/desktop-menu-plugin.c:386
+#: panel-plugin/desktop-menu-plugin.c:387
 msgid "Menu Files"
 msgstr "મેનુ ફાઈલો"
 
-#: panel-plugin/desktop-menu-plugin.c:445
+#: panel-plugin/desktop-menu-plugin.c:446
 msgid "_Menu file:"
 msgstr "મેનુ ફાઈલ (_M):"
 
-#: panel-plugin/desktop-menu-plugin.c:479
+#: panel-plugin/desktop-menu-plugin.c:480
 msgid "_Button icon:"
 msgstr "બટન ચિહ્ન (_B):"
 
-#: panel-plugin/desktop-menu-plugin.c:504
+#: panel-plugin/desktop-menu-plugin.c:505
 msgid "Show _icons in menu"
 msgstr "મેનુમાં ચિહ્નો બતાવો (_i)"
 
-#: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
-#: settings/backdrop-mgr.c:553
-msgid "Backdrop"
-msgstr "બેકડ્રોપ"
-
-#: settings/backdrop-mgr.c:100
-#, c-format
-msgid "Adding files from directory %s..."
-msgstr "ફાઈલોને ડિરેક્ટરી %s માંથી ઉમેરી રહ્યા છીએ..."
-
-#: settings/backdrop-mgr.c:160
-#, c-format
-msgid "Adding files from list %s..."
-msgstr "ફાઈલોને યાદી %s માંથી ઉમેરી રહ્યા છીએ..."
-
-#: settings/backdrop-mgr.c:215
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:115
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -453,175 +422,173 @@ msgid ""
 msgstr ""
 "ફાઈલ %s સંગ્રહી શક્યા નહિં: %s\n"
 "\n"
-"મહેરબાની કરીને બીજી જગ્યા પસંદ કરો અથવા તમારા ફેરફારો રદ કરવા માટે રદ કરો બટન પર ક્લિક કરો"
+"મહેરબાની કરીને બીજી જગ્યા પસંદ કરો અથવા તમારા ફેરફારો રદ કરવા માટે રદ કરો બટન પર "
+"ક્લિક કરો"
 
-#: settings/backdrop-mgr.c:502
+#: settings/backdrop-mgr.c:409
 msgid "Select backdrop image file"
 msgstr "બેકડ્રોપ ઈમેજ ફાઈલ પસંદ કરો"
 
-#: settings/backdrop-mgr.c:559
-msgid "Adding multiple files..."
-msgstr "ઘણી ફાઈલો ઉમેરી રહ્યા છીએ..."
-
-#: settings/backdrop-mgr.c:637
+#: settings/backdrop-mgr.c:510
 msgid "Choose backdrop list filename"
 msgstr "બેકડ્રોપ યાદી ફાઈલનામ પસંદ કરી રહ્યા છીએ"
 
-#: settings/backdrop-mgr.c:646
+#: settings/backdrop-mgr.c:519
 msgid "List Files"
 msgstr "ફાઈલોની યાદી કરો"
 
-#: settings/backdrop-mgr.c:709
+#: settings/backdrop-mgr.c:582
 msgid "Backdrop List"
 msgstr "બેકડ્રોપ યાદી "
 
-#: settings/backdrop-mgr.c:726
+#: settings/backdrop-mgr.c:599
 msgid "Image files"
 msgstr "ઈમેજ ફાઈલો"
 
-#: settings/backdrop-mgr.c:736
+#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: settings/backdrop-mgr.c:742
+#: settings/backdrop-mgr.c:618
 msgid "List file"
 msgstr "ફાઈલની યાદી કરો"
 
-#: settings/backdrop-mgr.c:762
+#: settings/backdrop-mgr.c:638
 msgid "Create backdrop list"
 msgstr "બેકડ્રોપ યાદી બનાવો"
 
-#: settings/backdrop-mgr.c:793
+#: settings/backdrop-mgr.c:669
 msgid "Edit backdrop list"
 msgstr "બેકડ્રોપ યાદીમાં ફેરફાર કરો"
 
 #. the dialog
-#: settings/backdrop_settings.c:86 settings/backdrop_settings.c:765
-#: src/xfce-desktop.c:597
+#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
+#: src/xfce-desktop.c:691
 msgid "Desktop"
 msgstr "ડેસ્કટોપ"
 
-#: settings/backdrop_settings.c:462
+#: settings/backdrop_settings.c:528
 msgid "Select backdrop image or list file"
 msgstr "બેકડ્રોપ ઈમેજ અથવા યાદી ફાઈલ પસંદ કરો"
 
-#: settings/backdrop_settings.c:480
+#: settings/backdrop_settings.c:546
 msgid "List Files (*.list)"
 msgstr "ફાઈલોની યાદી કરો (*.list)"
 
-#: settings/backdrop_settings.c:565
+#: settings/backdrop_settings.c:636
 msgid "_Edit list..."
 msgstr "યાદીમાં ફેરફાર કરો (_E)..."
 
-#: settings/backdrop_settings.c:573
+#: settings/backdrop_settings.c:644
 msgid "_New list..."
 msgstr "નવી યાદી (_N)..."
 
-#: settings/backdrop_settings.c:609
+#: settings/backdrop_settings.c:680
 msgid "S_tyle:"
 msgstr "શૈલી (_t):"
 
-#: settings/backdrop_settings.c:617
+#: settings/backdrop_settings.c:688
 msgid "Tiled"
 msgstr "તકતીવાળુ"
 
-#: settings/backdrop_settings.c:624
+#: settings/backdrop_settings.c:695
 msgid "Centered"
 msgstr "કેન્દ્રિત"
 
-#: settings/backdrop_settings.c:631
+#: settings/backdrop_settings.c:702
 msgid "Scaled"
 msgstr "માપબદલાયેલ"
 
-#: settings/backdrop_settings.c:638
+#: settings/backdrop_settings.c:709
 msgid "Stretched"
 msgstr "ખેંચાયેલ"
 
-#: settings/backdrop_settings.c:645
+#: settings/backdrop_settings.c:716
 msgid "Auto"
 msgstr "આપોઆપ"
 
-#: settings/backdrop_settings.c:711
+#: settings/backdrop_settings.c:782
 msgid "Adjust _Brightness:"
 msgstr "તેજસ્વીતા સમતોલ કરો (_B):"
 
 #. header
-#: settings/backdrop_settings.c:780
+#: settings/backdrop_settings.c:851
 msgid "Desktop Settings"
 msgstr "ડેસ્કટોપ સુયોજનો"
 
-#: settings/backdrop_settings.c:808
+#: settings/backdrop_settings.c:880
 msgid "_Backdrops"
 msgstr "બેકડ્રોપ (_B)"
 
 #. color settings frame
-#: settings/backdrop_settings.c:834
+#: settings/backdrop_settings.c:906
 msgid "Color"
 msgstr "રંગ"
 
-#: settings/backdrop_settings.c:848
+#: settings/backdrop_settings.c:920
 msgid "_Color Style:"
 msgstr "રંગની શૈલી (_C):"
 
-#: settings/backdrop_settings.c:857
+#: settings/backdrop_settings.c:929
 msgid "Solid Color"
 msgstr "ઘાટો રંગ"
 
-#: settings/backdrop_settings.c:864
+#: settings/backdrop_settings.c:936
 msgid "Horizontal Gradient"
 msgstr "આડો ઢાળ"
 
-#: settings/backdrop_settings.c:871
+#: settings/backdrop_settings.c:943
 msgid "Vertical Gradient"
 msgstr "ઊભો ઢાળ"
 
-#: settings/backdrop_settings.c:892
+#: settings/backdrop_settings.c:964
 msgid "Fi_rst Color:"
 msgstr "પ્રથમ રંગ (_r):"
 
-#: settings/backdrop_settings.c:913
+#: settings/backdrop_settings.c:985
 msgid "_Second Color:"
 msgstr "બીજો રંગ (_S):"
 
 #. set color only checkbox
-#: settings/backdrop_settings.c:934
+#: settings/backdrop_settings.c:1006
 msgid "Set color _only"
 msgstr "માત્ર રંગ સુયોજિત કરો (_o)"
 
-#: settings/backdrop_settings.c:949
+#: settings/backdrop_settings.c:1021
 msgid "Image"
 msgstr "ઈમેજ"
 
-#: settings/backdrop_settings.c:957
+#: settings/backdrop_settings.c:1029
 msgid "Show _Image"
 msgstr "ઈમેજ બતાવો (_I)"
 
-#: settings/backdrop_settings.c:979
+#: settings/backdrop_settings.c:1051
 msgid "_File:"
 msgstr "ફાઈલ (_F):"
 
 #. don't set backdrop checkbox
-#: settings/backdrop_settings.c:1016
+#: settings/backdrop_settings.c:1088
 msgid "_Don't set backdrop"
 msgstr "બેકડ્રોપ સુયોજિત કરો નહિં (_D)"
 
 #. add the single backdrop settings page to the main notebook
-#: settings/backdrop_settings.c:1039
+#: settings/backdrop_settings.c:1111
 msgid "_Backdrop"
 msgstr "બેકડ્રોપ (_B)"
 
-#: settings/backdrop_settings.c:1047 settings/backdrop_settings.c:1049
+#: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
 #, c-format
 msgid "Screen %d"
 msgstr "સ્ક્રીન %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: settings/backdrop_settings.c:1054
+#: settings/backdrop_settings.c:1126
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "સ્ક્રીન %d, મોનિટર %d"
 
-#: settings/backdrop_settings.c:1068
+#: settings/backdrop_settings.c:1140
 msgid "_Menu"
 msgstr "મેનુ (_M)"
 
@@ -658,31 +625,27 @@ msgstr "કાર્યક્રમ ચિહ્નો બતાવો (_a)"
 msgid "_Edit desktop menu"
 msgstr "ડેસ્કટોપ મેનુમાં ફેરફાર કરો (_E)"
 
-#: src/main.c:262
+#: src/main.c:300
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: અજ્ઞાત વિકલ્પ: %s\n"
 
-#: src/main.c:263
+#: src/main.c:301
 msgid "Options are:\n"
 msgstr "વિકલ્પો છે:\n"
 
-#: src/main.c:264
+#: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      બધા સુયોજનો ફરીથી લાવો, ઈમેજ યાદી ફરીથી તાજી કરો\n"
 
-#: src/main.c:265
+#: src/main.c:303
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        મેનુને પોપઅપ કરે છે (માઉસની વર્તમાન જગ્યાએ)\n"
 
-#: src/main.c:266
-msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+#: src/main.c:304
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -menu        વિન્ડો યાદીને પોપઅપ કરે છે (માઉસની વર્તમાન જગ્યાએ)\n"
-
-#: src/menu.c:73
-#, c-format
-msgid "%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
-msgstr "%s: મેનુ મોડ્યુલનો પ્રારંભ કરવા સમર્થ નથી. જમણું-ક્લિક મેનુ ઉપ્લબ્ધ હશે.\n"
 
 #: src/windowlist.c:183
 #, c-format
@@ -708,3 +671,31 @@ msgstr "કામ કરવાની જગ્યા %d દૂર કરો (_R)
 msgid "_Remove Workspace '%s'"
 msgstr "કામ કરવાની જગ્યા %s દૂર કરો (_R)"
 
+#~ msgid "Not yet implemented!"
+#~ msgstr "હજુ અમલમાં મૂકાયું નથી!"
+
+#~ msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
+#~ msgstr "Xfceડેસ્કટોપમેનુ: xfce-registered-categories.xml શોધવા માટે સમર્થ નથી"
+
+#~ msgid "%s: missing or unknown attribute for 'related' element\n"
+#~ msgstr "%s: 'સંબંધિત' વસ્તુ માટે ખોવાયેલ અથવા અજ્ઞાત લક્ષણ\n"
+
+#~ msgid "%s: unknown xml element %s\n"
+#~ msgstr "%s: અજ્ઞાત xml વસ્તુ %s\n"
+
+#~ msgid "Backdrop"
+#~ msgstr "બેકડ્રોપ"
+
+#~ msgid "Adding files from directory %s..."
+#~ msgstr "ફાઈલોને ડિરેક્ટરી %s માંથી ઉમેરી રહ્યા છીએ..."
+
+#~ msgid "Adding files from list %s..."
+#~ msgstr "ફાઈલોને યાદી %s માંથી ઉમેરી રહ્યા છીએ..."
+
+#~ msgid "Adding multiple files..."
+#~ msgstr "ઘણી ફાઈલો ઉમેરી રહ્યા છીએ..."
+
+#~ msgid ""
+#~ "%s: Unable to initialise menu module. Right-click menu will be "
+#~ "unavailable.\n"
+#~ msgstr "%s: મેનુ મોડ્યુલનો પ્રારંભ કરવા સમર્થ નથી. જમણું-ક્લિક મેનુ ઉપ્લબ્ધ હશે.\n"

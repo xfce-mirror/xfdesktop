@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-28 19:48-0700\n"
+"POT-Creation-Date: 2004-10-01 07:31+0200\n"
 "PO-Revision-Date: 2004-09-20 14:43+0530\n"
 "Last-Translator: Amanpreet Singh Alam <aalam@redhat.com>\n"
 "Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
@@ -15,151 +15,153 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3.1\n"
-"Plural-Forms: Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n\n"
+"Plural-Forms: Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"\n"
 
 #: menueditor/about_dialog.c:36
 msgid "A menu editor for Xfce4"
 msgstr "Xfce4 ਲਈ ਇੱਕ ਮੇਨੂ ਸੰਪਾਦਕ"
 
-#: menueditor/about_dialog.c:45
+#. Credits
+#: menueditor/about_dialog.c:41
 msgid "Core developer"
 msgstr "ਮੂਲ ਵਿਕਾਸਕਰਤਾ"
 
-#: menueditor/about_dialog.c:49 menueditor/about_dialog.c:53
-#: menueditor/about_dialog.c:57
+#: menueditor/about_dialog.c:42 menueditor/about_dialog.c:43
+#: menueditor/about_dialog.c:44
 msgid "Contributor"
 msgstr "ਯੋਗਦਾਨੀ"
 
-#: menueditor/about_dialog.c:61
+#: menueditor/about_dialog.c:45
 msgid "Icon designer"
 msgstr "ਆਈਕਾਨ ਨਿਰਮਾਤਾ"
 
-#: menueditor/add_dialog.c:131 menueditor/add_dialog.c:146
+#: menueditor/add_dialog.c:132 menueditor/add_dialog.c:147
 msgid "Add menu entry"
 msgstr "ਮੇਨੂੰ ਇੰਦਾਰਾਜ਼ ਸ਼ਾਮਿਲ"
 
 #. Type
-#: menueditor/add_dialog.c:152 menueditor/add_menu_dialog.c:96
+#: menueditor/add_dialog.c:153 menueditor/add_menu_dialog.c:98
 #: menueditor/edit_dialog.c:148
 msgid "Type:"
 msgstr "ਕਿਸਮ:"
 
-#: menueditor/add_dialog.c:155
+#: menueditor/add_dialog.c:156
 msgid "Launcher"
 msgstr "ਸ਼ੁਰੂਆਤੀ"
 
-#: menueditor/add_dialog.c:160
+#: menueditor/add_dialog.c:161
 msgid "Submenu"
 msgstr "ਸਬ-ਮੇਨੂ"
 
-#: menueditor/add_dialog.c:165
+#: menueditor/add_dialog.c:166
 msgid "Separator"
 msgstr "ਵੱਖਰੇਵਾਂ"
 
-#: menueditor/add_dialog.c:170
+#: menueditor/add_dialog.c:171
 msgid "Title"
 msgstr "ਸਿਰਲੇਖ"
 
-#: menueditor/add_dialog.c:175
+#: menueditor/add_dialog.c:176
 msgid "Quit"
 msgstr "ਬਾਹਰ"
 
 #. Name
-#: menueditor/add_dialog.c:190 menueditor/edit_dialog.c:260
+#: menueditor/add_dialog.c:191 menueditor/edit_dialog.c:260
 #: menueditor/edit_dialog.c:310 menueditor/edit_dialog.c:348
 msgid "Name:"
 msgstr "ਨਾਂ:"
 
-#: menueditor/add_dialog.c:200 menueditor/edit_dialog.c:261
+#: menueditor/add_dialog.c:201 menueditor/edit_dialog.c:261
 msgid "Command:"
 msgstr "ਕਮਾਂਡ:"
 
-#: menueditor/add_dialog.c:216 menueditor/edit_dialog.c:252
+#: menueditor/add_dialog.c:217 menueditor/edit_dialog.c:252
 #: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
 #: menueditor/edit_dialog.c:390
 msgid "Icon:"
 msgstr "ਆਈਕਾਨ:"
 
 #. Start Notify check button
-#: menueditor/add_dialog.c:232 menueditor/edit_dialog.c:272
+#: menueditor/add_dialog.c:233 menueditor/edit_dialog.c:272
 msgid "Use startup _notification"
 msgstr "ਸ਼ੁਰੂਆਤੀ _ਸੂਚਨਾ ਵਰਤੋਂ"
 
 #. Run in terminal check button
-#: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:273
+#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:273
 msgid "Run in _terminal"
 msgstr "_ਟਰਮੀਨਲ ਵਿੱਚ ਚਲਾਓ"
 
-#: menueditor/add_dialog.c:281 menueditor/edit_dialog.c:459
+#: menueditor/add_dialog.c:282 menueditor/edit_dialog.c:459
 msgid "The command doesn't exist !"
 msgstr "ਕਮਾਂਡ ਮੌਜੂਦ ਨਹੀਂ ਹੈ !"
 
-#: menueditor/add_dialog.c:287
+#: menueditor/add_dialog.c:288
 msgid "All fields must be filled to add an item."
 msgstr "ਇੱਕ ਇਕਾਈ ਨੂੰ ਸ਼ਾਮਿਲ ਕਰਨ ਲਈ ਸਭ ਖੇਤਰ ਭਰਨੇ ਲਾਜ਼ਮੀ ਹਨ।"
 
-#: menueditor/add_dialog.c:295
+#: menueditor/add_dialog.c:296
 msgid "The 'Name' field is required."
 msgstr "'ਨਾਂ' ਖੇਤਰ ਲੋੜੀਦਾ ਹੈ"
 
-#: menueditor/add_dialog.c:349 menueditor/dnd.c:150
-#: menueditor/menueditor.c:339 menueditor/move.c:90 menueditor/move.c:246
+#: menueditor/add_dialog.c:350 menueditor/dnd.c:152
+#: menueditor/menueditor.c:346 menueditor/move.c:90 menueditor/move.c:248
 msgid "--- separator ---"
 msgstr "--- ਵੱਖਰੇਵਾਂ ---"
 
-#: menueditor/add_dialog.c:374 menueditor/edit_dialog.c:496
+#: menueditor/add_dialog.c:375 menueditor/edit_dialog.c:494
 msgid "quit"
 msgstr "ਬਾਹਰ"
 
-#: menueditor/add_menu_dialog.c:76 menueditor/add_menu_dialog.c:87
-#: menueditor/menueditor.c:770
+#: menueditor/add_menu_dialog.c:78 menueditor/add_menu_dialog.c:89
+#: menueditor/menueditor.c:805
 msgid "Add an external menu"
 msgstr "ਇੱਕ ਬਾਹਰੀ ਮੇਨੂ ਸ਼ਾਮਿਲ"
 
-#: menueditor/add_menu_dialog.c:101 menueditor/edit_dialog.c:151
+#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:151
 msgid "File"
 msgstr "ਫਾਇਲ"
 
-#: menueditor/add_menu_dialog.c:106 menueditor/edit_dialog.c:156
+#: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:156
 msgid "System"
 msgstr "ਸਿਸਟਮ"
 
-#: menueditor/add_menu_dialog.c:121 menueditor/edit_dialog.c:171
+#: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:171
 msgid "Source:"
 msgstr "ਸਰੋਤ:"
 
 #. Style
-#: menueditor/add_menu_dialog.c:134 menueditor/edit_dialog.c:184
+#: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:184
 msgid "Style:"
 msgstr "ਸ਼ੈਲੀ:"
 
-#: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:187
+#: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:187
 msgid "Simple"
 msgstr "ਸਧਾਰਨ"
 
-#: menueditor/add_menu_dialog.c:140 menueditor/edit_dialog.c:190
+#: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:190
 msgid "Multilevel"
 msgstr "ਬਹੁ-ਪੱਧਰੀ"
 
 #. Unique
-#: menueditor/add_menu_dialog.c:153 menueditor/edit_dialog.c:203
+#: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:203
 msgid "_Unique entries only"
 msgstr "_ਨਿਵੇਕਲੇ ਇੰਦਰਾਜ਼ ਹੀ"
 
-#: menueditor/add_menu_dialog.c:206
+#: menueditor/add_menu_dialog.c:208
 msgid "The 'Source' field is required."
 msgstr "'ਸਰੋਤ' ਖੇਤਰ ਲੋੜੀਦਾ ਹੈ"
 
-#: menueditor/add_menu_dialog.c:216 menueditor/add_menu_dialog.c:233
-#: menueditor/dnd.c:152 menueditor/edit_dialog.c:510
-#: menueditor/edit_dialog.c:523 menueditor/menueditor.c:387
-#: menueditor/move.c:120 menueditor/move.c:276
+#: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:235
+#: menueditor/dnd.c:154 menueditor/edit_dialog.c:508
+#: menueditor/edit_dialog.c:521 menueditor/menueditor.c:394
+#: menueditor/move.c:120 menueditor/move.c:278
 msgid "--- include ---"
 msgstr "--- ਸ਼ਾਮਿਲ ---"
 
-#: menueditor/add_menu_dialog.c:234 menueditor/dnd.c:157
-#: menueditor/edit_dialog.c:524 menueditor/menueditor.c:390
-#: menueditor/move.c:123 menueditor/move.c:279
+#: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:159
+#: menueditor/edit_dialog.c:522 menueditor/menueditor.c:397
+#: menueditor/move.c:123 menueditor/move.c:281
 msgid "system"
 msgstr "ਸਿਸਟਮ"
 
@@ -173,68 +175,64 @@ msgid "Separators cannot be edited"
 msgstr "ਵੱਖਰੇਵੇਂ ਵਿੱਚ ਸੋਧ ਸੰਭਵ ਨਹੀਂ ਹੈ"
 
 #. Name
-#: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:102
+#: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:104
 msgid "Title:"
 msgstr "ਸਿਰਲੇਖ:"
 
-#: menueditor/menueditor.c:156
+#: menueditor/menueditor.c:148
 msgid "Select command"
 msgstr "ਕਮਾਂਡ ਚੁਣੋ"
 
-#: menueditor/menueditor.c:213
+#: menueditor/menueditor.c:209
 msgid "Select icon"
 msgstr "ਆਈਕਾਨ ਚੁਣੋ"
 
-#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:372
-#: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
-#: settings/backdrop_settings.c:467
+#: menueditor/menueditor.c:215 panel-plugin/desktop-menu-plugin.c:373
+#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "ਸਾਰੀਆਂ ਫਾਇਲਾਂ"
 
-#: menueditor/menueditor.c:223 panel-plugin/desktop-menu-plugin.c:378
-#: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:471
+#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:379
+#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "ਚਿੱਤਰ ਫਾਇਲਾਂ"
 
-#: menueditor/menueditor.c:266
-msgid "Not yet implemented!"
-msgstr "ਹਾਲੇ ਸਥਾਪਿਤ ਨਹੀਂ ਹੈ!"
-
-#: menueditor/menueditor.c:277 menueditor/menueditor.c:659
+#: menueditor/menueditor.c:272 menueditor/menueditor.c:679
 msgid "Do you want to save before closing the menu ?"
 msgstr "ਕੀ ਤੁਸੀਂ ਮੇਨੂ ਬੰਦ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਸੰਭਾਲਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: menueditor/menueditor.c:278
+#: menueditor/menueditor.c:273
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "ਤੁਸੀਂ ਮੇਨੂ ਵਿੱਚ ਤਬਦੀਲੀ ਕੀਤੀ ਹੈ ਕੀ ਤੁਸੀਂ ਬੰਦ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਸੰਭਾਲਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: menueditor/menueditor.c:279
+#: menueditor/menueditor.c:274
 msgid "Forget modifications"
 msgstr "ਤਬਦੀਲੀਆਂ ਰੱਦ"
 
-#: menueditor/menueditor.c:463 menueditor/menueditor.c:518
-#: menueditor/menueditor.c:657
+#: menueditor/menueditor.c:473 menueditor/menueditor.c:531
+#: menueditor/menueditor.c:677
 msgid "Question"
 msgstr "ਸਵਾਲ"
 
-#: menueditor/menueditor.c:465
+#: menueditor/menueditor.c:475
 msgid "Do you want to save before opening the default menu ?"
 msgstr "ਕੀ ਤੁਸੀਂ ਮੂਲ ਮੇਨੂ ਖੋਲਣ ਤੋਂ ਪਹਿਲਾਂ ਤਬਦੀਲੀਆਂ ਸੰਭਾਲੀਆਂ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: menueditor/menueditor.c:467 menueditor/menueditor.c:522
-#: menueditor/menueditor.c:661
+#: menueditor/menueditor.c:477 menueditor/menueditor.c:535
+#: menueditor/menueditor.c:681
 msgid "Ignore modifications"
 msgstr "ਤਬਦੀਲੀਆਂ ਅਣਡਿੱਠੀਆਂ"
 
-#: menueditor/menueditor.c:520
+#: menueditor/menueditor.c:533
 msgid "Do you want to save before opening an other menu ?"
 msgstr "ਕੀ ਤੁਸੀਂ ਹੋਰ ਮੇਨੂ ਨੂੰ ਖੋਲਣ ਤੋਂ ਪਹਿਲਾਂ ਸੰਭਾਲਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: menueditor/menueditor.c:533
+#: menueditor/menueditor.c:546
 msgid "Open menu file"
 msgstr "ਮੇਨੂ ਫਾਇਲ ਖੋਲੋ"
 
-#: menueditor/menueditor.c:571 menueditor/menueditor.c:582
+#: menueditor/menueditor.c:580 menueditor/menueditor.c:591
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -243,106 +241,106 @@ msgstr ""
 "%s ਵਿੱਚ ਲਿਖਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ:\n"
 "%s"
 
-#: menueditor/menueditor.c:606
+#: menueditor/menueditor.c:622
 msgid "Save as..."
 msgstr "ਇਸਤਰਾਂ ਸੰਭਾਲੋ..."
 
-#: menueditor/menueditor.c:764
+#: menueditor/menueditor.c:799
 msgid "Edit"
 msgstr "ਸੋਧ"
 
 #. File menu
-#: menueditor/menueditor.c:951
+#: menueditor/menueditor.c:1005
 msgid "_File"
 msgstr "_ਫਾਇਲ"
 
-#: menueditor/menueditor.c:960
+#: menueditor/menueditor.c:1014
 msgid "Open default menu"
 msgstr "ਮੂਲ ਮੇਨੂ ਖੋਲੋ"
 
 #. Edit menu
-#: menueditor/menueditor.c:974
+#: menueditor/menueditor.c:1028
 msgid "_Edit"
 msgstr "_ਸੋਧ"
 
-#: menueditor/menueditor.c:980
+#: menueditor/menueditor.c:1034
 msgid "Add an external menu..."
 msgstr "ਇੱਕ ਬਾਹਰੀ ਮੇਨੂੰ ਸ਼ਾਮਿਲ..."
 
 #. Help menu
-#: menueditor/menueditor.c:992
+#: menueditor/menueditor.c:1046
 msgid "_Help"
 msgstr "_ਸਹਾਇਤਾ"
 
-#: menueditor/menueditor.c:997
+#: menueditor/menueditor.c:1051
 msgid "_About..."
 msgstr "_ਇਸ ਬਾਰੇ..."
 
-#: menueditor/menueditor.c:1011
+#: menueditor/menueditor.c:1061
 msgid "Create a new Xfce4 menu file"
 msgstr "ਇੱਕ ਨਵੀਂ Xfce4 ਮੇਨੂ ਫਾਇਲ ਬਣਾਉ"
 
-#: menueditor/menueditor.c:1018
+#: menueditor/menueditor.c:1065
 msgid "Open an Xfce4 menu file"
 msgstr "ਇੱਕ Xfce4 ਮੇਨੂ ਫਾਇਲ ਖੋਲੋ"
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1069
 msgid "Save current menu"
 msgstr "ਮੌਜੂਦਾ ਮੇਨੂ ਸੰਭਾਲੋ"
 
-#: menueditor/menueditor.c:1032
+#: menueditor/menueditor.c:1073
 msgid "Close current menu"
 msgstr "ਮੌਜੂਦਾ ਮੇਨੂ ਸੰਭਾਲੋ"
 
-#: menueditor/menueditor.c:1040
+#: menueditor/menueditor.c:1078
 msgid "Add an entry to the menu"
 msgstr "ਇੱਕ ਨਵਾਂ ਮੇਨੂ ਇੰਦਰਾਜ਼ ਸ਼ਾਮਿਲ"
 
-#: menueditor/menueditor.c:1047
+#: menueditor/menueditor.c:1082
 msgid "Delete the current entry"
 msgstr "ਮੌਜੂਦਾ ਇੰਦਰਾਜ਼ ਹਟਾਓ"
 
-#: menueditor/menueditor.c:1054
+#: menueditor/menueditor.c:1086
 msgid "Move the current entry up"
 msgstr "ਮੌਜੂਦਾ ਇੰਦਰਾਜ਼ ਉੱਪਰ ਲੈ ਕੇ ਜਾਓ"
 
-#: menueditor/menueditor.c:1061
+#: menueditor/menueditor.c:1090
 msgid "Move the current entry down"
 msgstr "ਮੌਜੂਦਾ ਇੰਦਰਾਜ਼ ਹੇਠਾਂ ਲੈ ਕੇ ਜਾਓ"
 
-#: menueditor/menueditor.c:1069
+#: menueditor/menueditor.c:1095
 msgid "Collapse the tree"
 msgstr "ਲੜੀ ਸਮੇਟੋ"
 
-#: menueditor/menueditor.c:1076
+#: menueditor/menueditor.c:1099
 msgid "Expand the tree"
 msgstr "ਲੜੀ ਫੈਲਾਓ"
 
-#: menueditor/menueditor.c:1110
+#: menueditor/menueditor.c:1130
 msgid "Name"
 msgstr "ਨਾਂ"
 
-#: menueditor/menueditor.c:1112
+#: menueditor/menueditor.c:1132
 msgid "Command"
 msgstr "ਕਮਾਂਡ"
 
-#: menueditor/menueditor.c:1114
+#: menueditor/menueditor.c:1134
 msgid "Hidden"
 msgstr "ਲੁਕਵਾਂ"
 
-#: menueditor/menueditor.c:1116
+#: menueditor/menueditor.c:1136
 msgid "Pointer"
 msgstr "ਸੰਕੇਤਕ"
 
-#: menueditor/menueditor.c:1248
+#: menueditor/menueditor.c:1260
 msgid "Corrupted file or incorrect file format !"
 msgstr "ਨਿਕਾਰਾ ਫਾਇਲ ਜਾਂ ਗਲਤ ਫਾਇਲ ਫਾਰਮਿਟ!"
 
-#: menueditor/menueditor.c:1261
+#: menueditor/menueditor.c:1273
 msgid "No root element in file !"
 msgstr "ਫਾਇਲ ਵਿੱਚ ਕੋਈ ਮੂਲ ਇਕਾਈ ਨਹੀਂ ਹੈ!"
 
-#: menueditor/menueditor.c:1272
+#: menueditor/menueditor.c:1284
 msgid "Bad datafile format !"
 msgstr "ਗਲਤ ਡਾਟਾਫਾਇਲ ਫਾਰਮਿਟ!"
 
@@ -351,99 +349,70 @@ msgstr "ਗਲਤ ਡਾਟਾਫਾਇਲ ਫਾਰਮਿਟ!"
 msgid "File %s doesn't exist !"
 msgstr "ਫਾਇਲ %s ਮੌਜੂਦ ਨਹੀਂ ਹੈ!"
 
-#: menueditor/move.c:401
+#: menueditor/move.c:408
 msgid "Do you want to move the item into the parent menu?"
 msgstr "ਕੀ ਤੁਸੀਂ ਮੂਲ ਮੇਨੂ ਵਿਚੋ ਇਕਾਈ ਨੂੰ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: menueditor/move.c:500
+#: menueditor/move.c:512
 msgid "Do you want to move the item into the submenu?"
 msgstr "ਕੀ ਤੁਸੀਂ ਸਬ-ਮੇਨੂ ਵਿੱਚੋਂ ਇਕਾਈ ਹਟਾਉਣੀ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: menueditor/new_dialog.c:58
+#: menueditor/new_dialog.c:60
 msgid "Are you sure you want to close the current menu?"
 msgstr "ਕੀ ਤੁਸੀਂ ਮੌਜੂਦ ਮੇਨੂ ਨੂੰ ਬੰਦ ਕਰਨ ਲਈ ਸਹਿਮਤ ਹੋ?"
 
-#: menueditor/new_dialog.c:74
+#: menueditor/new_dialog.c:76
 msgid "Do you want to save before closing the file?"
 msgstr "ਕੀ ਤੁਸੀਂ ਫਾਇਲ ਨੂੰ ਬੰਦ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਸੰਭਾਲਣੀ ਚਾਹੁੰਦੇ ਹੋ?"
 
 #. get the filename and name for the new menu
-#: menueditor/new_dialog.c:84 menueditor/new_dialog.c:96
+#: menueditor/new_dialog.c:86 menueditor/new_dialog.c:98
 msgid "New menu"
 msgstr "ਨਵਾਂ ਮੇਨੂ"
 
 #. Filename
-#: menueditor/new_dialog.c:109
+#: menueditor/new_dialog.c:111
 msgid "Filename:"
 msgstr "ਫਾਇਲ ਨਾਂ:"
 
-#: menueditor/new_dialog.c:142
+#: menueditor/new_dialog.c:144
 msgid "All fields are required."
 msgstr "ਸਾਰੇ ਖੇਤਰ ਲੋੜੀਦੇ ਹਨ।"
-
-#: modules/menu/desktop-menu-dentry.c:536
-msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-msgstr "XfceDesktopMenu: xfce-registered-categories.xml ਲੱਭਣ ਵਿੱਚ ਅਸਫਲ"
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
 msgstr "/ਹੋਰ"
 
-#: modules/menu/desktop-menuspec.c:361
-#, c-format
-msgid "%s: missing or unknown attribute for 'related' element\n"
-msgstr "%s: 'ਸੰਬੰਧਿਤ' ਇਕਾਈ ਲਈ ਗੁਣ ਗੁੰਮ ਹੈ ਜਾਂ ਅਣਜਾਣਾ ਹੈ\n"
-
-#: modules/menu/desktop-menuspec.c:366
-#, c-format
-msgid "%s: unknown xml element %s\n"
-msgstr "%s: ਅਣਜਾਣ xml ਇਕਾਈ %s\n"
-
-#: panel-plugin/desktop-menu-plugin.c:192
-#: panel-plugin/desktop-menu-plugin.c:515
+#: panel-plugin/desktop-menu-plugin.c:191
+#: panel-plugin/desktop-menu-plugin.c:516
 msgid "Xfce Menu"
 msgstr "Xfce ਮੇਨੂ"
 
-#: panel-plugin/desktop-menu-plugin.c:355
+#: panel-plugin/desktop-menu-plugin.c:356
 msgid "Select Icon"
 msgstr "ਆਈਕਾਨ ਚੁਣੋ"
 
-#: panel-plugin/desktop-menu-plugin.c:357
+#: panel-plugin/desktop-menu-plugin.c:358
 msgid "Select Menu File"
 msgstr "ਮੇਨੂ ਫਾਇਲ ਚੁਣੋ"
 
-#: panel-plugin/desktop-menu-plugin.c:386
+#: panel-plugin/desktop-menu-plugin.c:387
 msgid "Menu Files"
 msgstr "ਮੇਨੂ ਫਾਇਲਾਂ"
 
-#: panel-plugin/desktop-menu-plugin.c:445
+#: panel-plugin/desktop-menu-plugin.c:446
 msgid "_Menu file:"
 msgstr "_ਮੇਨੂ ਇਕਾਈ:"
 
-#: panel-plugin/desktop-menu-plugin.c:479
+#: panel-plugin/desktop-menu-plugin.c:480
 msgid "_Button icon:"
 msgstr "_ਬਟਨ ਆਈਕਾਨ:"
 
-#: panel-plugin/desktop-menu-plugin.c:504
+#: panel-plugin/desktop-menu-plugin.c:505
 msgid "Show _icons in menu"
 msgstr "ਮੇਨੂ ਵਿੱਚ _ਆਈਕਾਨ ਵੇਖਾਓ"
 
-#: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
-#: settings/backdrop-mgr.c:553
-msgid "Backdrop"
-msgstr "ਬੈਕਡਰੋਪ"
-
-#: settings/backdrop-mgr.c:100
-#, c-format
-msgid "Adding files from directory %s..."
-msgstr "ਡਾਇਰੈਕਟਰੀ %s ਤੋਂ ਫਾਇਲਾਂ ਸ਼ਾਮਿਲ ਕੀਤੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ..."
-
-#: settings/backdrop-mgr.c:160
-#, c-format
-msgid "Adding files from list %s..."
-msgstr "ਸੂਚੀ %s ਤੋਂ ਫਾਇਲਾਂ ਸ਼ਾਮਿਲ ਕੀਤੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ..."
-
-#: settings/backdrop-mgr.c:215
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:115
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -453,176 +422,172 @@ msgid ""
 msgstr ""
 "%s ਫਾਇਲ ਸੰਭਾਲੀ ਨਹੀਂ ਜਾ ਸਕੀ ਹੈ:%s\n"
 "\n"
-"ਕਿਰਪਾ ਕਰਕੇ ਹੋਰ ਸਥਿਤੀ ਚੁਣੋ ਜਾਂ ਆਪਣੀਆਂ ਤਬਦੀਲੀਆਂ ਨੂੰ ਰੱਦ ਕਰਨ ਲ਼ਈ ਤਖਤੀ ਦੇ ਰੱਦ "
-"ਕਰੋ ਬਟਨ ਨੂੰ ਚੁਣੋ"
+"ਕਿਰਪਾ ਕਰਕੇ ਹੋਰ ਸਥਿਤੀ ਚੁਣੋ ਜਾਂ ਆਪਣੀਆਂ ਤਬਦੀਲੀਆਂ ਨੂੰ ਰੱਦ ਕਰਨ ਲ਼ਈ ਤਖਤੀ ਦੇ ਰੱਦ ਕਰੋ ਬਟਨ ਨੂੰ ਚੁਣੋ"
 
-#: settings/backdrop-mgr.c:502
+#: settings/backdrop-mgr.c:409
 msgid "Select backdrop image file"
 msgstr "ਬੈਕਡਰੋਪ ਚਿੱਤਰ ਫਾਇਲ ਚੁਣੋ"
 
-#: settings/backdrop-mgr.c:559
-msgid "Adding multiple files..."
-msgstr "ਬਹੁ-ਫਾਇਲ਼ਾਂ ਸ਼ਾਮਿਲ ਕੀਤੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ..."
-
-#: settings/backdrop-mgr.c:637
+#: settings/backdrop-mgr.c:510
 msgid "Choose backdrop list filename"
 msgstr "ਬੈਕਡਰੋਪ ਸੂਚੀ ਫਾਇਲ ਨਾਂ ਚੁਣੋ"
 
-#: settings/backdrop-mgr.c:646
+#: settings/backdrop-mgr.c:519
 msgid "List Files"
 msgstr "ਸੂਚੀ ਫਾਇਲਾਂ"
 
-#: settings/backdrop-mgr.c:709
+#: settings/backdrop-mgr.c:582
 msgid "Backdrop List"
 msgstr "ਬੈਕਡਰੋਪ ਸੂਚੀ"
 
-#: settings/backdrop-mgr.c:726
+#: settings/backdrop-mgr.c:599
 msgid "Image files"
 msgstr "ਚਿੱਤਰ ਫਾਇਲਾਂ"
 
-#: settings/backdrop-mgr.c:736
+#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: settings/backdrop-mgr.c:742
+#: settings/backdrop-mgr.c:618
 msgid "List file"
 msgstr "ਸੂਚੀ ਫਾਇਲ"
 
-#: settings/backdrop-mgr.c:762
+#: settings/backdrop-mgr.c:638
 msgid "Create backdrop list"
 msgstr "ਬੈਕਡਰੋਪ ਸੂਚੀ ਬਣਾਉ"
 
-#: settings/backdrop-mgr.c:793
+#: settings/backdrop-mgr.c:669
 msgid "Edit backdrop list"
 msgstr "ਬੈਕਡਰੋਪ ਸੂਚੀ ਸੋਧ"
 
 #. the dialog
-#: settings/backdrop_settings.c:86 settings/backdrop_settings.c:765
-#: src/xfce-desktop.c:597
+#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
+#: src/xfce-desktop.c:691
 msgid "Desktop"
 msgstr "ਵਿਹੜਾ"
 
-#: settings/backdrop_settings.c:462
+#: settings/backdrop_settings.c:528
 msgid "Select backdrop image or list file"
 msgstr "ਬੈਕਡਰੋਪ ਚਿੱਤਰ ਜਾਂ ਸੂਚੀ ਫਾਇਲ ਚੁਣੋ"
 
-#: settings/backdrop_settings.c:480
+#: settings/backdrop_settings.c:546
 msgid "List Files (*.list)"
 msgstr "ਸੂਚੀ ਫਾਇਲਾਂ (*.list)"
 
-#: settings/backdrop_settings.c:565
+#: settings/backdrop_settings.c:636
 msgid "_Edit list..."
 msgstr "_ਸੂਚੀ ਸੋਧ..."
 
-#: settings/backdrop_settings.c:573
+#: settings/backdrop_settings.c:644
 msgid "_New list..."
 msgstr "_ਨਵੀਂ ਸੂਚੀ..."
 
-#: settings/backdrop_settings.c:609
+#: settings/backdrop_settings.c:680
 msgid "S_tyle:"
 msgstr "ਸ਼ੈ_ਲੀ:"
 
-#: settings/backdrop_settings.c:617
+#: settings/backdrop_settings.c:688
 msgid "Tiled"
 msgstr "ਪਰਦੇ ਤੇ"
 
-#: settings/backdrop_settings.c:624
+#: settings/backdrop_settings.c:695
 msgid "Centered"
 msgstr "ਕੇਂਦਰੀ"
 
-#: settings/backdrop_settings.c:631
+#: settings/backdrop_settings.c:702
 msgid "Scaled"
 msgstr "ਸਹੀ ਆਕਾਰ"
 
-#: settings/backdrop_settings.c:638
+#: settings/backdrop_settings.c:709
 msgid "Stretched"
 msgstr "ਤਣਿਆ"
 
-#: settings/backdrop_settings.c:645
+#: settings/backdrop_settings.c:716
 msgid "Auto"
 msgstr "ਸਵੈ"
 
-#: settings/backdrop_settings.c:711
+#: settings/backdrop_settings.c:782
 msgid "Adjust _Brightness:"
 msgstr "_ਚਮਕੀਲਾਪਨ ਅਨੁਕੂਲਣ:"
 
 #. header
-#: settings/backdrop_settings.c:780
+#: settings/backdrop_settings.c:851
 msgid "Desktop Settings"
 msgstr "ਵਿਹੜਾ ਵਿਵਸਥਾ"
 
-#: settings/backdrop_settings.c:808
+#: settings/backdrop_settings.c:880
 msgid "_Backdrops"
 msgstr "_ਬੈਕਡਰੋਪ"
 
 #. color settings frame
-#: settings/backdrop_settings.c:834
+#: settings/backdrop_settings.c:906
 msgid "Color"
 msgstr "ਰੰਗ"
 
-#: settings/backdrop_settings.c:848
+#: settings/backdrop_settings.c:920
 msgid "_Color Style:"
 msgstr "_ਰੰਗ ਸ਼ੈਲੀ:"
 
-#: settings/backdrop_settings.c:857
+#: settings/backdrop_settings.c:929
 msgid "Solid Color"
 msgstr "ਇੱਕ ਰੰਗ"
 
-#: settings/backdrop_settings.c:864
+#: settings/backdrop_settings.c:936
 msgid "Horizontal Gradient"
 msgstr "ਖਿਤਿਜੀ ਢਲਵਾਂ"
 
-#: settings/backdrop_settings.c:871
+#: settings/backdrop_settings.c:943
 msgid "Vertical Gradient"
 msgstr "ਲੰਬਕਾਰੀ ਢਲਵਾਂ"
 
-#: settings/backdrop_settings.c:892
+#: settings/backdrop_settings.c:964
 msgid "Fi_rst Color:"
 msgstr "_ਪਹਿਲਾਂ ਰੰਗ:"
 
-#: settings/backdrop_settings.c:913
+#: settings/backdrop_settings.c:985
 msgid "_Second Color:"
 msgstr "_ਦੂਜਾ ਰੰਗ:"
 
 #. set color only checkbox
-#: settings/backdrop_settings.c:934
+#: settings/backdrop_settings.c:1006
 msgid "Set color _only"
 msgstr "_ਸਿਰਫ ਰੰਗ ਨਿਰਧਾਰਿਤ ਕਰੋ"
 
-#: settings/backdrop_settings.c:949
+#: settings/backdrop_settings.c:1021
 msgid "Image"
 msgstr "ਚਿੱਤਰ"
 
-#: settings/backdrop_settings.c:957
+#: settings/backdrop_settings.c:1029
 msgid "Show _Image"
 msgstr "_ਚਿੱਤਰ ਵੇਖਾਓ"
 
-#: settings/backdrop_settings.c:979
+#: settings/backdrop_settings.c:1051
 msgid "_File:"
 msgstr "_ਫਾਇਲ:"
 
 #. don't set backdrop checkbox
-#: settings/backdrop_settings.c:1016
+#: settings/backdrop_settings.c:1088
 msgid "_Don't set backdrop"
 msgstr "ਬੈਕਡਰੋਪ ਨਿਰਧਾਰਿਤ _ਨਾ ਕਰੋ"
 
 #. add the single backdrop settings page to the main notebook
-#: settings/backdrop_settings.c:1039
+#: settings/backdrop_settings.c:1111
 msgid "_Backdrop"
 msgstr "_ਬੈਕਡਰੋਪ"
 
-#: settings/backdrop_settings.c:1047 settings/backdrop_settings.c:1049
+#: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
 #, c-format
 msgid "Screen %d"
 msgstr "ਪਰਦਾ %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: settings/backdrop_settings.c:1054
+#: settings/backdrop_settings.c:1126
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "ਪਰਦਾ %d, ਮਾਨੀਟਰ %d"
 
-#: settings/backdrop_settings.c:1068
+#: settings/backdrop_settings.c:1140
 msgid "_Menu"
 msgstr "_ਮੇਨੂ"
 
@@ -659,31 +624,27 @@ msgstr "_ਕਾਰਜ ਆਈਕਾਨ ਵੇਖਾਓ"
 msgid "_Edit desktop menu"
 msgstr "ਵਿਹੜਾ ਮੇਨੂ _ਸੋਧ"
 
-#: src/main.c:262
+#: src/main.c:300
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: ਅਣਜਾਣ ਚੋਣ: %s\n"
 
-#: src/main.c:263
+#: src/main.c:301
 msgid "Options are:\n"
 msgstr "ਚੋਣਾਂ ਹਨ:\n"
 
-#: src/main.c:264
+#: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      ਸਭ ਵਿਵਸਥਾ ਮੁੜ-ਲੋਡ, ਚਿੱਤਰ ਸੂਚੀ ਤਾਜ਼ਾ ਕਰੋ\n"
 
-#: src/main.c:265
+#: src/main.c:303
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        ਮੇਨੂ ਖੁੱਲੇਗਾ (ਮਾਊਸ ਦੇ ਮੌਜੂਦਾ ਸਥਿਤੀ ਤੇ ਖੁੱਲੇਗਾ)\n"
 
-#: src/main.c:266
-msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+#: src/main.c:304
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  ਝਰੋਖਾ ਸੂਚੀ ਖੁੱਲੇਗੀ (ਮਾਊਸ ਦੀ ਮੌਜੂਦਾ ਸਥਿਤੀ ਤੇ ਖੁੱਲੇਗੀ)\n"
-
-#: src/menu.c:73
-#, c-format
-msgid "%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
-msgstr "%s: ਮੇਨੂ ਮੇਡੀਊਲ ਸ਼ੁਰੂ ਕਰਨ ਵਿੱਚ ਅਸਫਲ। ਸੱਜੇ ਬਟਨ ਨਾਲ ਮੇਨੂ ਉਪਲੱਬਧ ਨਹੀਂ ਹੋ ਸਕਣਗੇ।\n"
 
 #: src/windowlist.c:183
 #, c-format
@@ -709,3 +670,31 @@ msgstr "ਅਖਾੜਾ %d _ਹਟਾਓ"
 msgid "_Remove Workspace '%s'"
 msgstr "ਅਖਾੜਾ '%s' _ਹਟਾਓ"
 
+#~ msgid "Not yet implemented!"
+#~ msgstr "ਹਾਲੇ ਸਥਾਪਿਤ ਨਹੀਂ ਹੈ!"
+
+#~ msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
+#~ msgstr "XfceDesktopMenu: xfce-registered-categories.xml ਲੱਭਣ ਵਿੱਚ ਅਸਫਲ"
+
+#~ msgid "%s: missing or unknown attribute for 'related' element\n"
+#~ msgstr "%s: 'ਸੰਬੰਧਿਤ' ਇਕਾਈ ਲਈ ਗੁਣ ਗੁੰਮ ਹੈ ਜਾਂ ਅਣਜਾਣਾ ਹੈ\n"
+
+#~ msgid "%s: unknown xml element %s\n"
+#~ msgstr "%s: ਅਣਜਾਣ xml ਇਕਾਈ %s\n"
+
+#~ msgid "Backdrop"
+#~ msgstr "ਬੈਕਡਰੋਪ"
+
+#~ msgid "Adding files from directory %s..."
+#~ msgstr "ਡਾਇਰੈਕਟਰੀ %s ਤੋਂ ਫਾਇਲਾਂ ਸ਼ਾਮਿਲ ਕੀਤੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ..."
+
+#~ msgid "Adding files from list %s..."
+#~ msgstr "ਸੂਚੀ %s ਤੋਂ ਫਾਇਲਾਂ ਸ਼ਾਮਿਲ ਕੀਤੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ..."
+
+#~ msgid "Adding multiple files..."
+#~ msgstr "ਬਹੁ-ਫਾਇਲ਼ਾਂ ਸ਼ਾਮਿਲ ਕੀਤੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ..."
+
+#~ msgid ""
+#~ "%s: Unable to initialise menu module. Right-click menu will be "
+#~ "unavailable.\n"
+#~ msgstr "%s: ਮੇਨੂ ਮੇਡੀਊਲ ਸ਼ੁਰੂ ਕਰਨ ਵਿੱਚ ਅਸਫਲ। ਸੱਜੇ ਬਟਨ ਨਾਲ ਮੇਨੂ ਉਪਲੱਬਧ ਨਹੀਂ ਹੋ ਸਕਣਗੇ।\n"
