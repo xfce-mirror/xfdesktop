@@ -44,6 +44,8 @@
 #include <signal.h>
 #endif
 
+#include <errno.h>
+
 #include <X11/X.h>
 #include <X11/Xlib.h>
 
@@ -164,7 +166,8 @@ do_exec (gpointer callback_data, guint callback_action, GtkWidget * widget)
 			setsid();
 #endif
 			if(execlp((char *)callback_data, (char *)callback_data))
-				g_error("%s: unable to spawn %s\n", PACKAGE, (char *)callback_data);
+				g_error("%s: unable to spawn %s: %s\n", PACKAGE, (char *)callback_data, strerror(errno));
+			_exit(0);
 			break;
 		default:
 			break;
@@ -187,7 +190,8 @@ do_term_exec (gpointer callback_data, guint callback_action,
 			setsid();
 #endif
 			if(execlp("xfterm4", "xfterm4", "-e", (char *)callback_data, NULL))
-				g_error("%s: unable to spawn %s\n", PACKAGE, (char *)callback_data);
+				g_error("%s: unable to spawn %s: %s\n", PACKAGE, (char *)callback_data, strerror(errno));
+			_exit(0);
 			break;
 		default:
 			break;
