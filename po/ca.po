@@ -1,13 +1,13 @@
-# xfce-desktop for XFce desktop environment.
+# xfdesktop for XFce desktop environment.
 # Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER.
+# This file is distributed under the same license as the xfdesktop package.
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2003.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2003-06-01 18:52+0200\n"
-"PO-Revision-Date: 2003-05-11 13:02+0200\n"
+"PO-Revision-Date: 2003-07-05 17:33+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,24 +19,22 @@ msgstr ""
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
+"Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
 "No s'ha pogut grabar el fitxer %s: %s\n"
 "\n"
-"Escolliu una altra ubicació o polseu cancel·la en la finestra de diàleg per "
-"descartar els canvis"
+"Escolliu una altra ubicació o polseu cancel·la en la finestra de diàleg per descartar els canvis"
 
 #: settings/backdrop-mgr.c:402
 msgid "Select image file"
 msgstr "Seleccioneu el fitxer d'imatge"
 
 #: settings/backdrop-mgr.c:508
-#, fuzzy
 msgid "Choose backdrop list filename"
 msgstr "Escolliu el rerefons del llistat de fitxers"
 
-#: settings/backdrop-mgr.c:535 settings/backdrop_settings.c:586
+#: settings/backdrop-mgr.c:535
+#: settings/backdrop_settings.c:586
 msgid "File:"
 msgstr "Fitxer:"
 
@@ -45,7 +43,6 @@ msgid "New.list"
 msgstr "Nova.llista"
 
 #: settings/backdrop-mgr.c:578
-#, fuzzy
 msgid "Backdrop List"
 msgstr "Llista de rerefons"
 
@@ -58,17 +55,14 @@ msgid "List file"
 msgstr "Llista fitxers"
 
 #: settings/backdrop-mgr.c:646
-#, fuzzy
 msgid "Create backdrop list"
 msgstr "Crea una llista de rerefons"
 
 #: settings/backdrop-mgr.c:653
-#, fuzzy
 msgid "Edit backdrop list"
 msgstr "Edita la llista de rerefons"
 
 #: settings/backdrop_settings.c:143
-#, fuzzy
 msgid "Desktop: backdrop"
 msgstr "Escriptori: rerefons"
 
@@ -166,7 +160,8 @@ msgid "Number of workspaces:"
 msgstr "Número d'àrees de treball:"
 
 #. Number of workspaces
-#: settings/workspaces_settings.c:522 settings/workspaces_settings.c:553
+#: settings/workspaces_settings.c:522
+#: settings/workspaces_settings.c:553
 msgid "Workspaces"
 msgstr "Àrees de treball"
 
@@ -180,7 +175,7 @@ msgid "Workspace names"
 msgstr "Noms de les àrees de treball"
 
 #: src/backdrop.c:423
-#, fuzzy, c-format
+#, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
 msgstr "xfdesktop error: carregant imatge de rerefons: %s\n"
 
@@ -197,9 +192,6 @@ msgid "Delete workspace"
 msgstr "Borrar àrea de treball"
 
 #: src/settings.c:186
-msgid ""
-"xfdesktop: could not connect to settings manager!Please check your "
-"installation."
-msgstr ""
-"xfdesktop: no puc conectar amb el gestor d'ajustaments! Comproveu la vostra "
-"insta·lació."
+msgid "xfdesktop: could not connect to settings manager!Please check your installation."
+msgstr "xfdesktop: no puc conectar amb el gestor d'ajustaments! Comproveu la vostra insta·lació."
+
