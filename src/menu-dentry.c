@@ -446,6 +446,7 @@ menu_dentry_parse_files(const gchar *basepath, MenuPathType pathtype,
 	}
 	
 	dentry_mtimes = g_new0(time_t, totdirs);
+	menu_dentry_need_update();  /* re-init the array */
 
 	menuspec_free();
 
@@ -566,6 +567,7 @@ menu_dentry_legacy_add_all(GList *menu_data, const gchar *basepath,
 	}
 	
 	dentry_legacy_mtimes = g_new0(time_t, totdirs);
+	menu_dentry_legacy_need_update();  /* re-init the array */
 	
 	return menu_data;
 }
