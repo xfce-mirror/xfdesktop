@@ -216,7 +216,7 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
     prop_icon = xmlGetProp(menu, "icon");
 
     /* Visible */
-    if(prop_visible && !xmlStrcmp(prop_visible,(xmlChar*)"false"))
+    if(prop_visible && !xmlStrcmp(prop_visible,(xmlChar*)"false") || !xmlStrcmp(prop_visible,(xmlChar*)"no"))
       hidden=TRUE;
 
     /* Load the icon */
