@@ -1,0 +1,201 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop\n"
+"POT-Creation-Date: 2003-11-14 19:03+0100\n"
+"PO-Revision-Date: 2004-01-18 12:33-0200\n"
+"Last-Translator: Felix da Silva Costa <felix@online.eti.br>\n"
+"Language-Team: pt_BR <felix@online.eti.br>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: settings/backdrop-mgr.c:175
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"Arquivo não pode ser salvo %s : %s\n"
+"\n"
+"Por favor escolha outro local ou pressione cancelar para descartar suas\n"
+"alterações"
+
+#: settings/backdrop-mgr.c:510
+msgid "Select image file"
+msgstr "Selecione arquivo de imagens"
+
+#: settings/backdrop-mgr.c:622
+msgid "Choose backdrop list filename"
+msgstr ""
+
+#: settings/backdrop-mgr.c:694
+msgid "New.list"
+msgstr ""
+
+#: settings/backdrop-mgr.c:698
+msgid "Backdrop List"
+msgstr ""
+
+#: settings/backdrop-mgr.c:734
+msgid "Image files"
+msgstr "Arquivo de imagens"
+
+#: settings/backdrop-mgr.c:749
+msgid "List file"
+msgstr "Lista de arquivos"
+
+#: settings/backdrop-mgr.c:767
+msgid "Create backdrop list"
+msgstr ""
+
+#: settings/backdrop-mgr.c:774
+msgid "Edit backdrop list"
+msgstr ""
+
+#: settings/backdrop_settings.c:149
+msgid "Desktop background"
+msgstr "Tela de fundo"
+
+#: settings/backdrop_settings.c:363
+msgid "Select background color"
+msgstr "Selecionar cor do fundo"
+
+#: settings/backdrop_settings.c:413
+msgid "Background color:"
+msgstr "Cor de fundo:"
+
+#: settings/backdrop_settings.c:443
+msgid "Use color only:"
+msgstr "Use somente cor:"
+
+#: settings/backdrop_settings.c:569
+msgid "File:"
+msgstr "Arquivo:"
+
+#: settings/backdrop_settings.c:630
+msgid "Select background image or list file"
+msgstr "Selecionar imagem de fundo ou lista de arquivos"
+
+#: settings/backdrop_settings.c:707
+msgid "_Browse..."
+msgstr "_Procurar..."
+
+#: settings/backdrop_settings.c:711
+msgid "New list"
+msgstr "Nova Lista"
+
+#: settings/backdrop_settings.c:715
+msgid "Edit list"
+msgstr "Editar lista"
+
+#: settings/backdrop_settings.c:753
+msgid "Style:"
+msgstr "Estilo:"
+
+#: settings/backdrop_settings.c:761
+msgid "_Tiled"
+msgstr ""
+
+#: settings/backdrop_settings.c:767
+msgid "_Scaled"
+msgstr ""
+
+#: settings/backdrop_settings.c:774
+msgid "_Centered"
+msgstr "_Centralizado"
+
+#: settings/backdrop_settings.c:781
+msgid "_Auto"
+msgstr "_Auto"
+
+#. the dialog
+#: settings/backdrop_settings.c:820
+msgid "Background"
+msgstr "Imagem de fundo"
+
+#. header
+#: settings/backdrop_settings.c:838
+msgid "Background Settings"
+msgstr "Configurações de Plano de fundo"
+
+#. color
+#: settings/backdrop_settings.c:844
+msgid "Color"
+msgstr "Cor"
+
+#. image vbox
+#: settings/backdrop_settings.c:856
+msgid "Image"
+msgstr "Imagem"
+
+#: settings/backdrop_settings.c:882
+msgid "Don't set background"
+msgstr "Não configurar plano de fundo"
+
+#: settings/workspaces_settings.c:85
+msgid "Desktop: workspaces"
+msgstr "Desktop: área de trabalho"
+
+#: settings/workspaces_settings.c:329
+msgid "Change name"
+msgstr "Mudar nome"
+
+#: settings/workspaces_settings.c:340
+#, c-format
+msgid "Workspace %d"
+msgstr "Área de trabalho %d"
+
+#: settings/workspaces_settings.c:350
+msgid "Name:"
+msgstr "Nome:"
+
+#: settings/workspaces_settings.c:461
+msgid "Click on a workspace name to edit it"
+msgstr "Clique no nome de uma área de trabalho para editá-la"
+
+#: settings/workspaces_settings.c:492
+msgid "Number of workspaces:"
+msgstr "Número de área de trabalho:"
+
+#. Number of workspaces
+#: settings/workspaces_settings.c:528 settings/workspaces_settings.c:558
+msgid "Workspaces"
+msgstr "Área de trabalho"
+
+#: settings/workspaces_settings.c:551
+msgid "Workspace Settings"
+msgstr "Configurações de área de trabalho"
+
+#. Workspace names
+#: settings/workspaces_settings.c:570
+msgid "Workspace names"
+msgstr "Nomes das áreas de trabalho"
+
+#: src/backdrop.c:508
+#, c-format
+msgid "xfdesktop error: loading backdrop image: %s\n"
+msgstr "erro xfdeskto: carregando imagem de fundo: %s\n"
+
+#: src/menu.c:735
+msgid "Add workspace"
+msgstr "Adicionar área de trabalho"
+
+#: src/menu.c:742
+msgid "Delete workspace"
+msgstr "Apagar área de trabalho"
+
+#: src/settings.c:182
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr ""
+"xfdesktop: não foi possível conectar ao gerenciador de configurações!\n"
+"Por favor verifique sua instalação."
