@@ -76,7 +76,9 @@ struct _XfceDesktopPriv
 {
 	GdkScreen *gscreen;
 	NetkScreen *netk_screen;
-	GtkStyle *style;
+	
+	GdkGC *gc;
+	GdkPixmap *bg_pixmap;
 	
 	guint nbackdrops;
 	XfceBackdrop **backdrops;
@@ -248,7 +250,6 @@ static void
 backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 {
 	GtkWidget *desktop = user_data;
-	GtkStyle *style = XFCE_DESKTOP(desktop)->priv->style;
 	GdkPixbuf *pix;
 	GdkPixmap *pmap = NULL;
 	GdkColormap *cmap;
@@ -300,7 +301,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 		swidth = gdk_screen_get_width(gscreen);
 		sheight = gdk_screen_get_height(gscreen);
 		
-		cur_pmap = style->bg_pixmap[GTK_STATE_NORMAL];
+		cur_pmap = XFCE_DESKTOP(desktop)->priv->bg_pixmap;
 		if(cur_pmap) {
 			gint pw, ph;
 			gdk_drawable_get_size(GDK_DRAWABLE(cur_pmap), &pw, &ph);
@@ -350,12 +351,12 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 	gdk_error_trap_pop();
 	
 	/* clear the old pixmap, if any */
-	if(style->bg_pixmap[GTK_STATE_NORMAL])
-		g_object_unref(G_OBJECT(style->bg_pixmap[GTK_STATE_NORMAL]));
+	if(XFCE_DESKTOP(desktop)->priv->bg_pixmap)
+		g_object_unref(G_OBJECT(XFCE_DESKTOP(desktop)->priv->bg_pixmap));
 	
 	/* set the new pixmap and tell gtk to redraw it */
-	style->bg_pixmap[GTK_STATE_NORMAL] = pmap;
-	gtk_style_set_background(style, desktop->window, GTK_STATE_NORMAL);
+	XFCE_DESKTOP(desktop)->priv->bg_pixmap = pmap;
+	gdk_window_set_back_pixmap(desktop->window, pmap, FALSE);
 	gtk_widget_queue_draw_area(desktop, rect.x, rect.y, rect.width, rect.height);
 }
 
@@ -577,7 +578,6 @@ static void
 xfce_desktop_init(XfceDesktop *desktop)
 {
 	desktop->priv = g_new0(XfceDesktopPriv, 1);
-	desktop->priv->style = gtk_style_new();
 	GTK_WINDOW(desktop)->type = GTK_WINDOW_TOPLEVEL;
 }
 
@@ -607,17 +607,31 @@ xfce_desktop_finalize(GObject *object)
 		desktop->priv->backdrops = NULL;
 	}
 	
-	if(desktop->priv->style->bg_pixmap[GTK_STATE_NORMAL]) {
-		g_object_unref(G_OBJECT(desktop->priv->style->bg_pixmap[GTK_STATE_NORMAL]));
-		desktop->priv->style->bg_pixmap[GTK_STATE_NORMAL] = NULL;
-	}
+	if(desktop->priv->bg_pixmap)
+		g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
 	
-	g_object_unref(G_OBJECT(desktop->priv->style));
+	g_object_unref(G_OBJECT(desktop->priv->gc));
 	
 	g_free(desktop->priv);
 	desktop->priv = NULL;
 	
 	G_OBJECT_CLASS(parent_class)->finalize(object);
+}
+
+static gboolean
+desktop_expose_cb(GtkWidget *w, GdkEventExpose *evt, gpointer user_data)
+{
+	XfceDesktop *desktop = XFCE_DESKTOP(w);
+	
+	if(!desktop->priv->bg_pixmap || evt->count)
+		return FALSE;
+	
+	gdk_draw_drawable(GDK_DRAWABLE(w->window), desktop->priv->gc,
+			desktop->priv->bg_pixmap,
+			evt->area.x, evt->area.y, evt->area.x, evt->area.y,
+			evt->area.width, evt->area.height);
+	
+	return TRUE;
 }
 
 
@@ -657,6 +671,8 @@ xfce_desktop_new(GdkScreen *gscreen, McsClient *mcs_client)
 	gtk_window_move(GTK_WINDOW(desktop), 0, 0);
 	
 	gtk_widget_realize(GTK_WIDGET(desktop));
+	
+	desktop->priv->gc = gdk_gc_new(GDK_DRAWABLE(GTK_WIDGET(desktop)->window));
 	
 	gtk_window_set_title(GTK_WINDOW(desktop), _("Desktop"));
 	if(GTK_WIDGET_DOUBLE_BUFFERED(GTK_WIDGET(desktop)))
@@ -705,6 +721,10 @@ xfce_desktop_new(GdkScreen *gscreen, McsClient *mcs_client)
 	
 	g_signal_connect(G_OBJECT(gscreen), "size-changed",
 			G_CALLBACK(screen_size_changed_cb), desktop);
+	
+	gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSE);
+	g_signal_connect(G_OBJECT(desktop), "expose-event",
+			G_CALLBACK(desktop_expose_cb), NULL);
 	
 	return GTK_WIDGET(desktop);
 }
