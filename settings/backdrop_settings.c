@@ -1,6 +1,7 @@
 /*  xfce4
  *  
  *  Copyright (C) 2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
+ *  Copyright (C) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -72,6 +73,11 @@
 #endif
 
 #define DEFAULT_BACKDROP (DATADIR "/xfce4/backdrops/xfce4logo.png")
+
+/*
+ * XXX - No help button for now. Wait for the others to ACK on this.
+ */
+#define NO_HELP_BUTTON	1
 
 /* important stuff to keep track of */
 typedef struct
@@ -289,30 +295,6 @@ static void update_path(BackdropDialog *bd)
     mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
 }
 
-static void update_style(BackdropDialog *bd)
-{
-    mcs_manager_set_int(bd->plugin->manager, "style", BACKDROP_CHANNEL, 
-                        backdrop_style);
-
-    mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
-}
-
-static void update_color(BackdropDialog *bd)
-{
-    mcs_manager_set_color(bd->plugin->manager, "color", BACKDROP_CHANNEL, 
-                          &backdrop_color);
-
-    mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
-}
-
-static void update_showimage(BackdropDialog *bd)
-{
-    mcs_manager_set_int(bd->plugin->manager, "showimage", BACKDROP_CHANNEL, 
-                        showimage);
-
-    mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
-}
-
 /* dialog responses */
 static void dialog_delete(BackdropDialog * bd)
 {
@@ -324,10 +306,18 @@ static void dialog_delete(BackdropDialog * bd)
     g_free(bd);
 }
 
-static void dialog_response(GtkWidget * dialog, int response,
-                            BackdropDialog * bd)
+static void
+dialog_response(GtkWidget *dialog, int response, BackdropDialog * bd)
 {
-    dialog_delete(bd);
+	switch (response) {
+#ifndef NO_HELP_BUTTON
+	case GTK_RESPONSE_HELP:
+		exec_command("xfhelp4 xfdesktop.html");
+		break;
+#endif
+	default:
+		dialog_delete(bd);
+	}
 }
 
 /* color button */
@@ -353,7 +343,9 @@ static void set_color(GtkWidget *b, BackdropDialog *bd)
     backdrop_color.blue = color.blue;
     bd->color = color;
     
-    update_color(bd);
+    mcs_manager_set_color(bd->plugin->manager, "color", BACKDROP_CHANNEL, 
+		    &backdrop_color);
+    mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
     
     pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(bd->color_box));
     rgba = (((color.red & 0xff00) << 8) | ((color.green & 0xff00)) | ((color.blue & 0xff00) >> 8)) << 8;
@@ -397,7 +389,9 @@ static void showimage_toggle(GtkWidget *b, BackdropDialog *bd)
 
     gtk_widget_set_sensitive(bd->image_frame, showimage);
 
-    update_showimage(bd);
+    mcs_manager_set_int(bd->plugin->manager, "showimage", BACKDROP_CHANNEL, 
+		    showimage);
+    mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
 }
 
 static void add_color_button(GtkWidget *vbox, BackdropDialog *bd)
@@ -733,32 +727,18 @@ static void add_button_box(GtkWidget *vbox, GtkSizeGroup *sg,
 }
 
 /* style options */
-static void set_tiled(BackdropDialog *bd)
+static void
+set_style(GtkWidget *item, BackdropDialog *bd)
 {
-    backdrop_style = TILED;
-    update_style(bd);
+	backdrop_style = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(item),
+				"user-data"));
+	mcs_manager_set_int(bd->plugin->manager, "style", BACKDROP_CHANNEL, 
+			backdrop_style);
+	mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
 }
 
-static void set_scaled(BackdropDialog *bd)
-{
-    backdrop_style = SCALED;
-    update_style(bd);
-}
-
-static void set_centered(BackdropDialog *bd)
-{
-    backdrop_style = CENTERED;
-    update_style(bd);
-}
-
-static void set_auto(BackdropDialog *bd)
-{
-    backdrop_style = AUTO;
-    update_style(bd);
-}
-
-static void add_style_options(GtkWidget *vbox, GtkSizeGroup *sg, 
-                              BackdropDialog *bd)
+static void
+add_style_options(GtkWidget *vbox, GtkSizeGroup *sg, BackdropDialog *bd)
 {
     GtkWidget *hbox, *label, *rb_tiled, *rb_scaled, *rb_centered, *rb_auto;
     GtkWidget *menu, *omenu;
@@ -776,28 +756,30 @@ static void add_style_options(GtkWidget *vbox, GtkSizeGroup *sg,
     menu = gtk_menu_new();
 
     rb_tiled = gtk_menu_item_new_with_mnemonic(_("_Tiled"));
+    g_object_set_data(G_OBJECT(rb_tiled), "user-data", GUINT_TO_POINTER(TILED));
     gtk_widget_show(rb_tiled);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), rb_tiled);
-    g_signal_connect_swapped(rb_tiled, "activate", 
-		    G_CALLBACK(set_tiled), bd);
+    g_signal_connect(rb_tiled, "activate", G_CALLBACK(set_style), bd);
 	    
     rb_scaled = gtk_menu_item_new_with_mnemonic(_("_Scaled"));
+    g_object_set_data(G_OBJECT(rb_scaled), "user-data",
+		    GUINT_TO_POINTER(SCALED));
     gtk_widget_show(rb_scaled);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), rb_scaled);
-    g_signal_connect_swapped(rb_scaled, "activate", 
-		    G_CALLBACK(set_scaled), bd);
+    g_signal_connect(rb_scaled, "activate", G_CALLBACK(set_style), bd);
 	    
     rb_centered = gtk_menu_item_new_with_mnemonic(_("_Centered"));
+    g_object_set_data(G_OBJECT(rb_centered), "user-data",
+		    GUINT_TO_POINTER(CENTERED));
     gtk_widget_show(rb_centered);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), rb_centered);
-    g_signal_connect_swapped(rb_centered, "activate", 
-		    G_CALLBACK(set_centered), bd);
+    g_signal_connect(rb_centered, "activate", G_CALLBACK(set_style), bd);
 	    
     rb_auto = gtk_menu_item_new_with_mnemonic(_("_Auto"));
+    g_object_set_data(G_OBJECT(rb_auto), "user-data", GUINT_TO_POINTER(AUTO));
     gtk_widget_show(rb_auto);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), rb_auto);
-    g_signal_connect_swapped(rb_auto, "activate", 
-		    G_CALLBACK(set_auto), bd);
+    g_signal_connect(rb_auto, "activate", G_CALLBACK(set_style), bd);
 	    
     omenu = gtk_option_menu_new();
     gtk_option_menu_set_menu(GTK_OPTION_MENU(omenu), menu);
@@ -823,6 +805,10 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
                                              GTK_DIALOG_NO_SEPARATOR, 
                                              GTK_STOCK_CLOSE,
                                              GTK_RESPONSE_OK,
+#ifndef NO_HELP_BUTTON
+					     GTK_STOCK_HELP,
+					     GTK_RESPONSE_HELP,
+#endif
                                              NULL);
 
     gtk_dialog_set_default_response(GTK_DIALOG(bd->dialog), GTK_RESPONSE_OK);
