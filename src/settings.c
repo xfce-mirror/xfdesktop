@@ -81,10 +81,9 @@ notify_cb(const char *name, const char *channel_name, McsAction action,
 	g_return_if_fail(!strcmp(channel_name, BACKDROP_CHANNEL));
 	
 	for(l = callbacks; l; l = l->next) {
-		cb = ((SettingsCBData *)l->data)->cb;
-		user_data = ((SettingsCBData *)l->data)->user_data;
+		SettingsCBData *cbd = l->data;
 		
-		if((*cb)(mcs_client, action, setting, user_data))
+		if((*cbd->cb)(mcs_client, action, setting, cbd->user_data))
 			break;
 	}
 }
@@ -95,7 +94,7 @@ settings_init()
 	Display *xdpy;
 	gint xscreen;
 	
-	g_return_val_if_fail(mcs_client == NULL, NULL);
+	g_return_val_if_fail(mcs_client == NULL, mcs_client);
 	
 	xdpy = GDK_DISPLAY();
 	xscreen = gdk_screen_get_number(gdk_display_get_default_screen(gdk_display_get_default()));
