@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-16 19:42-0500\n"
+"POT-Creation-Date: 2004-02-20 15:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -141,7 +141,7 @@ msgstr ""
 msgid "Don't set background"
 msgstr ""
 
-#: src/backdrop.c:247
+#: src/backdrop.c:214
 #, c-format
 msgid ""
 "%s: There was an error loading image:\n"
@@ -178,97 +178,77 @@ msgstr ""
 msgid "%s: unknown xml element %s\n"
 msgstr ""
 
-#: menueditor/about_dialog.c:34
-msgid "About XFCE4-MenuEditor"
-msgstr ""
-
-#. Header
-#: menueditor/about_dialog.c:43
-msgid "About XFce4-MenuEditor"
-msgstr ""
-
-#. Label
-#. why cedilla doesn't work ??? UTF8 error !
-#: menueditor/about_dialog.c:55
-#, c-format
-msgid ""
-"This is XFce4-MenuEditor (version %s)\n"
-"Licensed under GNU-GPL\n"
-"(c) 2004 by Jean-Francois Wauthy"
-msgstr ""
-
-#: menueditor/about_dialog.c:78
+#: menueditor/about_dialog.c:35
 msgid "An menueditor for XFce4"
 msgstr ""
 
-#: menueditor/about_dialog.c:85
+#: menueditor/about_dialog.c:42
 msgid "Core developer"
 msgstr ""
 
-#: menueditor/add_dialog.c:108 menueditor/add_dialog.c:121
-#: menueditor/add_dialog.c:127
+#: menueditor/add_dialog.c:108 menueditor/add_dialog.c:120
 msgid "Add menu entry"
 msgstr ""
 
 #. Type
-#: menueditor/add_dialog.c:134 menueditor/add_menu_dialog.c:74
-#: menueditor/edit_dialog.c:107
+#: menueditor/add_dialog.c:126 menueditor/add_menu_dialog.c:74
+#: menueditor/edit_dialog.c:99
 msgid "Type :"
 msgstr ""
 
-#: menueditor/add_dialog.c:137
+#: menueditor/add_dialog.c:129
 msgid "Launcher"
 msgstr ""
 
-#: menueditor/add_dialog.c:142
+#: menueditor/add_dialog.c:134
 msgid "Submenu"
 msgstr ""
 
-#: menueditor/add_dialog.c:147
+#: menueditor/add_dialog.c:139
 msgid "Separator"
 msgstr ""
 
-#: menueditor/add_dialog.c:152
+#: menueditor/add_dialog.c:144
 msgid "Title"
 msgstr ""
 
-#: menueditor/add_dialog.c:157
+#: menueditor/add_dialog.c:149
 msgid "Quit"
 msgstr ""
 
 #. Name
-#: menueditor/add_dialog.c:172 menueditor/edit_dialog.c:182
-#: menueditor/edit_dialog.c:217 menueditor/edit_dialog.c:238
+#: menueditor/add_dialog.c:164 menueditor/edit_dialog.c:174
+#: menueditor/edit_dialog.c:209 menueditor/edit_dialog.c:230
 msgid "Name :"
 msgstr ""
 
-#: menueditor/add_dialog.c:182 menueditor/edit_dialog.c:183
+#: menueditor/add_dialog.c:174 menueditor/edit_dialog.c:175
 msgid "Command :"
 msgstr ""
 
-#: menueditor/add_dialog.c:198 menueditor/edit_dialog.c:174
+#: menueditor/add_dialog.c:190 menueditor/edit_dialog.c:166
 msgid "Icon :"
 msgstr ""
 
-#: menueditor/add_dialog.c:258
+#: menueditor/add_dialog.c:250
 msgid ""
 "All the field are not filled !!!\n"
 "Adding nothing"
 msgstr ""
 
-#: menueditor/add_dialog.c:336 menueditor/add_dialog.c:442
-#: menueditor/add_dialog.c:502
+#: menueditor/add_dialog.c:328 menueditor/add_dialog.c:434
+#: menueditor/add_dialog.c:494
 msgid ""
 "Name field is not filled !!!\n"
 "Adding nothing"
 msgstr ""
 
-#: menueditor/add_dialog.c:426 menueditor/dnd.c:171
-#: menueditor/menueditor.c:199
+#: menueditor/add_dialog.c:418 menueditor/dnd.c:169
+#: menueditor/menueditor.c:211
 msgid "--- separator ---"
 msgstr ""
 
-#: menueditor/add_dialog.c:551
+#: menueditor/add_dialog.c:543
 msgid "quit"
 msgstr ""
 
@@ -276,15 +256,15 @@ msgstr ""
 msgid "Add an external menu"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:79 menueditor/edit_dialog.c:110
+#: menueditor/add_menu_dialog.c:79 menueditor/edit_dialog.c:102
 msgid "File"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:84 menueditor/edit_dialog.c:115
+#: menueditor/add_menu_dialog.c:84 menueditor/edit_dialog.c:107
 msgid "System"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:99 menueditor/edit_dialog.c:130
+#: menueditor/add_menu_dialog.c:99 menueditor/edit_dialog.c:122
 msgid "Source :"
 msgstr ""
 
@@ -295,148 +275,147 @@ msgid ""
 msgstr ""
 
 #: menueditor/add_menu_dialog.c:199 menueditor/add_menu_dialog.c:249
-#: menueditor/dnd.c:184 menueditor/edit_dialog.c:363
-#: menueditor/edit_dialog.c:379 menueditor/menueditor.c:270
+#: menueditor/dnd.c:182 menueditor/edit_dialog.c:355
+#: menueditor/edit_dialog.c:371 menueditor/menueditor.c:282
 msgid "--- include ---"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:250 menueditor/dnd.c:189
-#: menueditor/edit_dialog.c:381 menueditor/menueditor.c:273
+#: menueditor/add_menu_dialog.c:250 menueditor/dnd.c:187
+#: menueditor/edit_dialog.c:373 menueditor/menueditor.c:285
 msgid "system"
 msgstr ""
 
 #. Create dialog for editing
-#: menueditor/edit_dialog.c:65 menueditor/edit_dialog.c:77
-#: menueditor/edit_dialog.c:83
+#: menueditor/edit_dialog.c:65 menueditor/edit_dialog.c:76
 msgid "Edit menu entry"
 msgstr ""
 
 #. Name
-#: menueditor/edit_dialog.c:259 menueditor/new.c:98
+#: menueditor/edit_dialog.c:251 menueditor/new.c:90
 msgid "Title :"
 msgstr ""
 
-#: menueditor/menueditor.c:129
+#: menueditor/menueditor.c:128
 msgid "Select command"
 msgstr ""
 
-#: menueditor/menueditor.c:149
+#: menueditor/menueditor.c:141
+msgid "Select icon"
+msgstr ""
+
+#: menueditor/menueditor.c:161
 msgid "Not yet implemented !!!"
 msgstr ""
 
-#: menueditor/menueditor.c:165 menueditor/menueditor.c:373
-#: menueditor/menueditor.c:408 menueditor/menueditor.c:486 menueditor/new.c:62
+#: menueditor/menueditor.c:177 menueditor/menueditor.c:385
+#: menueditor/menueditor.c:420 menueditor/menueditor.c:498 menueditor/new.c:62
 msgid "Do you want to save before closing the file ?"
 msgstr ""
 
-#: menueditor/menueditor.c:419 menueditor/menueditor.c:464
+#: menueditor/menueditor.c:431 menueditor/menueditor.c:476
 msgid "Menu file selection"
 msgstr ""
 
 #. File menu
-#: menueditor/menueditor.c:687
+#: menueditor/menueditor.c:699
 msgid "_File"
 msgstr ""
 
-#: menueditor/menueditor.c:698
+#: menueditor/menueditor.c:710
 msgid "Open default menu"
 msgstr ""
 
 #. Edit menu
-#: menueditor/menueditor.c:712
+#: menueditor/menueditor.c:724
 msgid "_Edit"
 msgstr ""
 
-#: menueditor/menueditor.c:725
+#: menueditor/menueditor.c:732
 msgid "Add an external menu..."
 msgstr ""
 
 #. Help menu
-#: menueditor/menueditor.c:737
+#: menueditor/menueditor.c:744
 msgid "_Help"
 msgstr ""
 
-#: menueditor/menueditor.c:744
+#: menueditor/menueditor.c:751
 msgid "About ..."
 msgstr ""
 
-#: menueditor/menueditor.c:758
+#: menueditor/menueditor.c:765
 msgid "Create a new XFCE4 menu file"
 msgstr ""
 
-#: menueditor/menueditor.c:765
+#: menueditor/menueditor.c:772
 msgid "Open XFCE4 menu file"
 msgstr ""
 
-#: menueditor/menueditor.c:772
+#: menueditor/menueditor.c:779
 msgid "Save current menu"
 msgstr ""
 
-#: menueditor/menueditor.c:779
+#: menueditor/menueditor.c:786
 msgid "Close current menu"
 msgstr ""
 
-#: menueditor/menueditor.c:787
-msgid "Undo the last action"
-msgstr ""
-
-#: menueditor/menueditor.c:795
+#: menueditor/menueditor.c:794
 msgid "Add an entry to the menu"
 msgstr ""
 
-#: menueditor/menueditor.c:802
+#: menueditor/menueditor.c:801
 msgid "Delete the current entry"
 msgstr ""
 
-#: menueditor/menueditor.c:809
+#: menueditor/menueditor.c:808
 msgid "Move up the current entry"
 msgstr ""
 
-#: menueditor/menueditor.c:816
+#: menueditor/menueditor.c:815
 msgid "Move down the current entry"
 msgstr ""
 
-#: menueditor/menueditor.c:850
+#: menueditor/menueditor.c:849
 msgid "Name"
 msgstr ""
 
-#: menueditor/menueditor.c:852
+#: menueditor/menueditor.c:851
 msgid "Command"
 msgstr ""
 
-#: menueditor/menueditor.c:854
+#: menueditor/menueditor.c:853
 msgid "Hidden"
 msgstr ""
 
-#: menueditor/menueditor.c:856
+#: menueditor/menueditor.c:855
 msgid "Pointer"
 msgstr ""
 
-#: menueditor/menueditor.c:1010
+#: menueditor/menueditor.c:1006
 msgid "Corrupted file or incorrect file format !"
 msgstr ""
 
-#: menueditor/menueditor.c:1012
+#: menueditor/menueditor.c:1008
 msgid "Corrupted file or incorrect file format !\n"
 msgstr ""
 
-#: menueditor/menueditor.c:1030
+#: menueditor/menueditor.c:1026
 msgid "No root element in file !"
 msgstr ""
 
-#: menueditor/menueditor.c:1032
+#: menueditor/menueditor.c:1028
 msgid "No root element in file !\n"
 msgstr ""
 
-#: menueditor/menueditor.c:1048
+#: menueditor/menueditor.c:1044
 msgid "Bad datafile format !"
 msgstr ""
 
-#: menueditor/menueditor.c:1050
+#: menueditor/menueditor.c:1046
 msgid "Bad datafile format !\n"
 msgstr ""
 
-#: menueditor/menueditor.c:1143
+#: menueditor/menueditor.c:1138
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr ""
@@ -454,15 +433,15 @@ msgid "Are you sure to close the current menu ?"
 msgstr ""
 
 #. get the filename and name for the new menu
-#: menueditor/new.c:72 menueditor/new.c:85 menueditor/new.c:91
+#: menueditor/new.c:72 menueditor/new.c:84
 msgid "New menu"
 msgstr ""
 
 #. Filename
-#: menueditor/new.c:105
+#: menueditor/new.c:97
 msgid "Filename :"
 msgstr ""
 
-#: menueditor/new.c:138
+#: menueditor/new.c:130
 msgid "All the field are not filled !!!"
 msgstr ""

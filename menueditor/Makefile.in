@@ -60,8 +60,7 @@ am_xfce4_menueditor_OBJECTS = xfce4_menueditor-about_dialog.$(OBJEXT) \
 	xfce4_menueditor-dnd.$(OBJEXT) \
 	xfce4_menueditor-edit_dialog.$(OBJEXT) \
 	xfce4_menueditor-menueditor.$(OBJEXT) \
-	xfce4_menueditor-move.$(OBJEXT) xfce4_menueditor-new.$(OBJEXT) \
-	xfce4_menueditor-undo.$(OBJEXT)
+	xfce4_menueditor-move.$(OBJEXT) xfce4_menueditor-new.$(OBJEXT)
 xfce4_menueditor_OBJECTS = $(am_xfce4_menueditor_OBJECTS)
 xfce4_menueditor_DEPENDENCIES =  \
 	$(top_builddir)/common/libxfdesktop.la
@@ -75,8 +74,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/xfce4_menueditor-edit_dialog.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfce4_menueditor-menueditor.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfce4_menueditor-move.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/xfce4_menueditor-new.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/xfce4_menueditor-undo.Po
+@AMDEP_TRUE@	./$(DEPDIR)/xfce4_menueditor-new.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) \
@@ -246,9 +244,7 @@ xfce4_menueditor_SOURCES = \
 	move.c									\
 	move.h									\
 	new.c									\
-	new.h									\
-	undo.c									\
-	undo.h
+	new.h							
 
 xfce4_menueditor_CFLAGS = \
 	-I$(top_srcdir)							\
@@ -352,7 +348,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_menueditor-menueditor.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_menueditor-move.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_menueditor-new.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_menueditor-undo.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
@@ -569,30 +564,6 @@ xfce4_menueditor-new.lo: new.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_menueditor-new.Plo' tmpdepfile='$(DEPDIR)/xfce4_menueditor-new.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -c -o xfce4_menueditor-new.lo `test -f 'new.c' || echo '$(srcdir)/'`new.c
-
-xfce4_menueditor-undo.o: undo.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -MT xfce4_menueditor-undo.o -MD -MP -MF "$(DEPDIR)/xfce4_menueditor-undo.Tpo" -c -o xfce4_menueditor-undo.o `test -f 'undo.c' || echo '$(srcdir)/'`undo.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_menueditor-undo.Tpo" "$(DEPDIR)/xfce4_menueditor-undo.Po"; else rm -f "$(DEPDIR)/xfce4_menueditor-undo.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='undo.c' object='xfce4_menueditor-undo.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_menueditor-undo.Po' tmpdepfile='$(DEPDIR)/xfce4_menueditor-undo.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -c -o xfce4_menueditor-undo.o `test -f 'undo.c' || echo '$(srcdir)/'`undo.c
-
-xfce4_menueditor-undo.obj: undo.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -MT xfce4_menueditor-undo.obj -MD -MP -MF "$(DEPDIR)/xfce4_menueditor-undo.Tpo" -c -o xfce4_menueditor-undo.obj `if test -f 'undo.c'; then $(CYGPATH_W) 'undo.c'; else $(CYGPATH_W) '$(srcdir)/undo.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_menueditor-undo.Tpo" "$(DEPDIR)/xfce4_menueditor-undo.Po"; else rm -f "$(DEPDIR)/xfce4_menueditor-undo.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='undo.c' object='xfce4_menueditor-undo.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_menueditor-undo.Po' tmpdepfile='$(DEPDIR)/xfce4_menueditor-undo.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -c -o xfce4_menueditor-undo.obj `if test -f 'undo.c'; then $(CYGPATH_W) 'undo.c'; else $(CYGPATH_W) '$(srcdir)/undo.c'; fi`
-
-xfce4_menueditor-undo.lo: undo.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -MT xfce4_menueditor-undo.lo -MD -MP -MF "$(DEPDIR)/xfce4_menueditor-undo.Tpo" -c -o xfce4_menueditor-undo.lo `test -f 'undo.c' || echo '$(srcdir)/'`undo.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_menueditor-undo.Tpo" "$(DEPDIR)/xfce4_menueditor-undo.Plo"; else rm -f "$(DEPDIR)/xfce4_menueditor-undo.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='undo.c' object='xfce4_menueditor-undo.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfce4_menueditor-undo.Plo' tmpdepfile='$(DEPDIR)/xfce4_menueditor-undo.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -c -o xfce4_menueditor-undo.lo `test -f 'undo.c' || echo '$(srcdir)/'`undo.c
 
 mostlyclean-libtool:
 	-rm -f *.lo

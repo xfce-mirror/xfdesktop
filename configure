@@ -20489,6 +20489,24 @@ echo "$as_me: error: unable to update list of available tagged configurations." 
 fi
 
 
+  if test ! -f "${ofile}"; then
+    { echo "$as_me:$LINENO: WARNING: output file \`$ofile' does not exist" >&5
+echo "$as_me: WARNING: output file \`$ofile' does not exist" >&2;}
+  fi
+  if test -z `grep -e 'shared_ext.*shrext' $ofile`; then
+    # Make sure $shared_ext gets set to $shrext
+    if sed -e 's/shared_ext/shrext/g' "$ofile" > "${ofile}T"; then
+      mv "${ofile}T" "$ofile"
+      chmod +x "$ofile"
+    else
+      rm -f "${ofile}T"
+      { { echo "$as_me:$LINENO: error: unable to update shared_ext." >&5
+echo "$as_me: error: unable to update shared_ext." >&2;}
+   { (exit 1); exit 1; }; }
+    fi
+  fi
+
+
 
 # This can be used to rebuild libtool when needed
 LIBTOOL_DEPS="$ac_aux_dir/ltmain.sh"
