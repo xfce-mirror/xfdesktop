@@ -5,7 +5,7 @@ dnl
 
 AC_INIT(common/backdrop.c)
 
-AM_INIT_AUTOMAKE(xfdesktop, 0.1)
+AM_INIT_AUTOMAKE(xfdesktop, 3.90)
 
 AM_CONFIG_HEADER(config.h)
 
@@ -46,9 +46,8 @@ AC_OUTPUT([
 backdrops/Makefile
 common/Makefile
 doc/Makefile
-doc/images/Makefile
-doc/html/Makefile
-doc/xml/Makefile
+doc/C/Makefile
+doc/C/images/Makefile
 Makefile
 po/Makefile.in
 settings/Makefile

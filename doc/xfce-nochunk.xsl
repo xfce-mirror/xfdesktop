@@ -4,10 +4,19 @@
                 xmlns="http://www.w3.org/TR/xhtml1/transitional"
                 exclude-result-prefixes="#default">
 
-<!-- Load chunks.xsl stylesheet 
+<!-- Load onechunk.xsl stylesheet 
      TODO: how can I put a location independent link here?
 -->
-<xsl:import href="/usr/share/docbook-xsl/html/chunk.xsl"/>
+<xsl:import href="/usr/share/docbook-xsl/html/onechunk.xsl"/>
+
+<xsl:param name="suppress.navigation">1</xsl:param>
+
+<!-- Use stylesheet -->
+<xsl:param name="html.stylesheet" select="'../xfce.css'"/>
+
+<!-- labels and numbering -->
+<xsl:param name="autotoc.label.separator" select="'. '"/>
+<xsl:param name="chapter.autolabel" select="1"/>
 
 <!-- Don't force the use of index.html as root filename -->
 <xsl:param name="root.filename" select="''"/>
@@ -33,7 +42,6 @@
 <xsl:variable name="admon.graphics.extension">.gif</xsl:variable>
 
 <xsl:param name="table.border.thickness" select="'0.2pt'"/>
-<xsl:param name="chapter.autolabel" select="0"/>
 
 <xsl:param name="graphic.default.extension" select="png"/>
 

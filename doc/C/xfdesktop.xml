@@ -1,10 +1,9 @@
 <?xml version='1.0'?> 
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY manrevision "0.1"> 
-  <!ENTITY date "February 2003"> 
+  <!ENTITY date "May 2003"> 
   <!ENTITY app "<application>xfdesktop</application>"> 
-  <!ENTITY appversion "4.0"> 
+  <!ENTITY appversion "3.90"> 
 ]>
 
 <article id="xfdesktop" lang="en">
@@ -12,7 +11,7 @@
 <!-- Header --> 
 <articleinfo>
 
-  <title>XFDesktop Manual V&manrevision;</title>
+  <title>XFce 4 Desktop Manager</title>
   
   <copyright>
     <year>2003</year> <holder>MAIN AUTHOR</holder>
@@ -61,13 +60,13 @@ maintainers, etc. Commented out by default.
 
   <revhistory>
     <revision>
-      <revnumber>0.1</revnumber> 
-      <date>February 2003</date>
+      <revnumber>0.2</revnumber> 
+      <date>May 2003</date>
       <authorinitials>MA</authorinitials>
     </revision>
   </revhistory>
 
-  <releaseinfo>This manual describes the &app; version &appversion;.
+  <releaseinfo>This manual describes &app; version &appversion;.
   </releaseinfo>
 
 </articleinfo>
@@ -79,9 +78,9 @@ maintainers, etc. Commented out by default.
     background image and/or color and it pops up a menu when you click on it
     with your mouse. Along with the apllication two settings dialogs are
     installed that can be used with the 
-    <emphasis>XFce settings manager</emphasis>. These dialogs allow you to
-    change the background image and color and set number of workspaces and 
-    their names.    
+    <emphasis>XFce 4 Settings Manager</emphasis>. These dialogs allow you to
+    change the background image and color and manage the number of workspaces 
+    or virtual desktops.    
   </para>
 
 </sect1>
@@ -94,7 +93,7 @@ maintainers, etc. Commented out by default.
     <screenshot>
       <mediaobject>
 	<imageobject>
-	  <imagedata fileref="../images/xfdesktop-background.png" format="PNG"/>
+	  <imagedata fileref="images/xfdesktop-background.png" format="PNG"/>
 	</imageobject> 
 	<textobject>
 	  <phrase>Shows background settings dialog.
@@ -109,7 +108,7 @@ maintainers, etc. Commented out by default.
     <screenshot>
       <mediaobject>
 	<imageobject>
-	  <imagedata fileref="../images/xfdesktop-list.png" format="PNG"/>
+	  <imagedata fileref="images/xfdesktop-list.png" format="PNG"/>
 	</imageobject> 
 	<textobject>
 	  <phrase>Shows backdrop list manager.
@@ -129,7 +128,7 @@ maintainers, etc. Commented out by default.
     <screenshot>
       <mediaobject>
 	<imageobject>
-	  <imagedata fileref="../images/xfdesktop-workspace.png" format="PNG"/>
+	  <imagedata fileref="images/xfdesktop-workspace.png" format="PNG"/>
 	</imageobject> 
 	<textobject>
 	  <phrase>Shows workspace settings dialog.
@@ -153,14 +152,15 @@ maintainers, etc. Commented out by default.
   </para>
 
   <para>To report a bug or make a suggestion regarding this application or
-    this manual, use the bug tracking system at the 
-    <ulink url="http://sourceforge.net/projects/xfce" type="http">XFce 
-      sourceforge project site</ulink>. </para>
+    this manual send an e-mail to the xfce4-dev mailing list or use the bug 
+    tracking system at the <ulink url="http://sourceforge.net/projects/xfce" 
+      type="http">XFce SourceForge project site</ulink>. 
+  </para>
     
   <para> This program is distributed under the terms of the
-    <ulink url="GPL.html" type="html">GNU General Public License</ulink>
-    as published by the Free Software Foundation; either version 2 of the 
-    License, or (at your option) any later version.</para>
+    GNU General Public License as published by the Free Software Foundation; 
+    either version 2 of the License, or (at your option) any later version.
+  </para>
 
   <para>You should have received a copy of the GNU General Public License 
     along with this program; if not, write to the Free Software 
