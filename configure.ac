@@ -11,7 +11,7 @@ m4_define([xfdesktop_version], [xfdesktop_version_major.xfdesktop_version_minor.
 
 dnl init autoconf
 AC_COPYRIGHT([Copyright (c) 2002-2004 The Xfce development team. All rights reserved.])
-AC_INIT([configure.ac], [xfdesktop_version], [xfce4-dev@xfce.org])
+AC_INIT([xfdesktop], [xfdesktop_version], [xfce4-dev@xfce.org])
 AC_PREREQ([2.50])
 
 dnl init automake

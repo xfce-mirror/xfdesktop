@@ -384,7 +384,7 @@ main (int argc, char **argv)
     Window xid;
 	
 	if(argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V"))) {
-		printf("Xfce4 xfdesktop %s, linked against libxfce4util %s\n",
+		printf("Xfce4 %s %s, linked against libxfce4util %s\n", PACKAGE,
 				XFDESKTOP_VERSION, xfce_version_string());
 		exit(0);
 	}
