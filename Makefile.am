@@ -30,7 +30,7 @@ if BUILD_MENUEDITOR
 SUBDIRS += menueditor
 endif
 
-confdir = $(sysconfdir)/xfce4
+confdir = $(sysconfdir)/xdg/xfce4/desktop
 
 conf_DATA = 								\
 	menu.xml 							\

@@ -505,39 +505,88 @@ dentry_recurse_dir(GDir *dir, const gchar *path, XfceDesktopMenu *desktop_menu,
 	return ndirs;
 }
 
+static gchar *
+desktop_menu_dentry_get_catfile()
+{
+	XfceKiosk *kiosk;
+	gboolean user_menu;
+	gchar filename[PATH_MAX], searchpath[PATH_MAX*3+2], **all_dirs;
+	gint i;
+
+	kiosk = xfce_kiosk_new("xfdesktop");
+	user_menu = xfce_kiosk_query(kiosk, "UserMenu");
+	xfce_kiosk_free(kiosk);
+	
+	if(!user_menu) {
+		const gchar *userhome = xfce_get_homedir();
+		all_dirs = xfce_resource_lookup_all(XFCE_RESOURCE_CONFIG,
+				"xfce4/desktop/");
+		
+		for(i = 0; all_dirs[i]; i++) {
+			if(strstr(all_dirs[i], userhome) != all_dirs[i]) {
+				g_snprintf(searchpath, PATH_MAX*3+2,
+						"%s%%F.%%L:%s%%F.%%l:%s%%F",
+						all_dirs[i], all_dirs[i], all_dirs[i]);
+				if(xfce_get_path_localized(filename, PATH_MAX, searchpath,
+						"xfce-registered-categories.xml", G_FILE_TEST_IS_REGULAR))
+				{
+					g_strfreev(all_dirs);
+					return g_strdup(filename);
+				}
+			}			
+		}
+		g_strfreev(all_dirs);
+	} else {
+		gchar *cat_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
+				"xfce4/desktop/xfce-registered-categories.xml", FALSE);
+		if(cat_file && g_file_test(cat_file, G_FILE_TEST_IS_REGULAR))
+			return cat_file;
+		else if(cat_file)
+			g_free(cat_file);
+		
+		all_dirs = xfce_resource_lookup_all(XFCE_RESOURCE_CONFIG,
+				"xfce4/desktop/");
+		for(i = 0; all_dirs[i]; i++) {
+			g_snprintf(searchpath, PATH_MAX*3+2,
+					"%s%%F.%%L:%s%%F.%%l:%s%%F",
+					all_dirs[i], all_dirs[i], all_dirs[i]);
+			if(xfce_get_path_localized(filename, PATH_MAX, searchpath,
+					"xfce-registered-categories.xml", G_FILE_TEST_IS_REGULAR))
+			{
+				g_strfreev(all_dirs);
+				return g_strdup(filename);
+			}		
+		}
+		g_strfreev(all_dirs);
+	}
+
+    g_critical("%s: Could not locate a registered categories file", PACKAGE);
+
+    return NULL;
+}
+
 void
 desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu, 
 		MenuPathType pathtype, gboolean do_legacy)
 {
 	gint i, totdirs = 0;
-	gchar **dentry_paths;
+	gchar **dentry_paths, *catfile;
 	gchar const *pathd;
 	GDir *d;
 	const gchar *kdedir = g_getenv("KDEDIR");
 	gchar kde_dentry_path[PATH_MAX];
-	gchar *catfile_user = NULL, *catfile = NULL;
 	struct stat st;
-	XfceKiosk *kiosk;
-	gboolean user_menu = TRUE;
 	
 	g_return_if_fail(desktop_menu != NULL);
 
 	TRACE("base: %s", desktop_menu->dentry_basepath);
 	
-	kiosk = xfce_kiosk_new("xfdesktop");
-	user_menu = xfce_kiosk_query(kiosk, "UserMenu");
-	xfce_kiosk_free(kiosk);
-	
-	catfile_user = xfce_get_userfile(CATEGORIES_FILE, NULL);
-	if(!user_menu || !g_file_test(catfile_user, G_FILE_TEST_EXISTS)
-			|| !desktop_menuspec_parse_categories(catfile_user))
-	{
-		catfile = g_build_filename(SYSCONFDIR, "xfce4", CATEGORIES_FILE, NULL);
-		if(!g_file_test(catfile, G_FILE_TEST_EXISTS)) {
-			g_warning(_("XfceDesktopMenu: Unable to find xfce-registered-categories.xml"));
-			goto cleanup;
-		} else if(!desktop_menuspec_parse_categories(catfile))
-			goto cleanup;
+	catfile = desktop_menu_dentry_get_catfile();
+	if(!catfile)
+		return;
+	if(!desktop_menuspec_parse_categories(catfile)) {
+		g_critical(_("XfceDesktopMenu: Unable to find xfce-registered-categories.xml"));
+		return;
 	}
 	
 	if(!blacklist) {
@@ -552,9 +601,9 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 			g_str_equal, (GDestroyNotify)g_free, NULL);
 	
 	/* lookup applications/ directories */
-	xfce_resource_push_path (XFCE_RESOURCE_DATA, DATADIR);
-	dentry_paths = xfce_resource_lookup_all (XFCE_RESOURCE_DATA, "applications/");
-	xfce_resource_pop_path (XFCE_RESOURCE_DATA);
+	xfce_resource_push_path(XFCE_RESOURCE_DATA, DATADIR);
+	dentry_paths = xfce_resource_lookup_all(XFCE_RESOURCE_DATA, "applications/");
+	xfce_resource_pop_path(XFCE_RESOURCE_DATA);
 
 	for(i = 0; dentry_paths[i]; i++) {
 		pathd = dentry_paths[i];
@@ -592,13 +641,6 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 	}
 	
 	desktop_menuspec_free();
-	
-	cleanup:
-	
-	if(catfile_user)
-		g_free(catfile_user);
-	if(catfile)
-		g_free(catfile);
 }
 
 static void

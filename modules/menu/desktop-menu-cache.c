@@ -49,8 +49,8 @@
 
 #include "desktop-menu-cache.h"
 
-#define CACHE_CONF_FILE_FMT "xfdesktop/menu-cache-%s.rc"
-#define MENU_CACHE_FILE_FMT "xfdesktop/menu-cache-%s.xml"
+#define CACHE_CONF_FILE_FMT "xfce4/desktop/menu-cache-%s.rc"
+#define MENU_CACHE_FILE_FMT "xfce4/desktop/menu-cache-%s.xml"
 
 typedef struct
 {

@@ -30,7 +30,7 @@ libxfce4_desktop_menu_la_LIBADD = \
 	@GMODULE_LIBS@ \
 	@LIBXFCEGUI4_LIBS@
 
-xfceconfdir = $(sysconfdir)/xfce4
+xfceconfdir = $(sysconfdir)/xdg/xfce4/desktop
 xfceconf_DATA = xfce-registered-categories.xml
 
 EXTRA_DIST = xfce-registered-categories.xml

@@ -24,6 +24,8 @@
 #include <config.h>
 #endif
 
+#include <stdio.h>
+
 #ifdef HAVE_SYS_STAT_H
 #include <sys/stat.h>
 #endif
@@ -31,7 +33,7 @@
 #ifdef HAVE_MEMORY_H
 #include <memory.h>
 #endif
-#include <stdio.h>
+
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
@@ -44,10 +46,13 @@
 #include <signal.h>
 #endif
 
-#include <errno.h>
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
 
-#include <X11/X.h>
-#include <X11/Xlib.h>
+#ifndef PATH_MAX
+#define PATH_MAX 4096
+#endif
 
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
@@ -64,21 +69,12 @@
 #include "desktop-menu-dentry.h"
 #include "dummy_icon.h"
 
-#ifndef PATH_MAX
-#define PATH_MAX 4096
-#endif
-
-#define DEFAULT_ICON_THEME "Curve"
-
-#define EVENTMASK (ButtonPressMask|SubstructureNotifyMask|PropertyChangeMask)
-
 /*< private >*/
 GdkPixbuf *dummy_icon = NULL;
 gint _xfce_desktop_menu_icon_size = 24;
 XfceIconTheme *_deskmenu_icon_theme = NULL;
 static GList *timeout_handles = NULL;
 static time_t last_settings_change = 0;
-static gchar *cur_icon_theme = NULL;
 
 static void
 itheme_changed_cb(XfceIconTheme *itheme, gpointer user_data)
@@ -351,10 +347,58 @@ xfce_desktop_menu_destroy_impl(XfceDesktopMenu *desktop_menu)
 	g_free(desktop_menu);
 }
 
+static void
+xdg_migrate_config(const gchar *filename)
+{
+	gchar *old_file, *new_file, new_loc[PATH_MAX];
+	
+	g_snprintf(new_loc, PATH_MAX, "xfce4/desktop/%s", filename);
+	
+	new_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, new_loc, FALSE);
+	/* if the new file _does_ exist, assume we've already migrated */
+	if(!g_file_test(new_file, G_FILE_TEST_IS_REGULAR)) {
+		old_file = xfce_get_userfile(filename, NULL);
+		if(g_file_test(old_file, G_FILE_TEST_IS_REGULAR)) {
+			/* we have to run it again to make sure the directory exists */
+			g_free(new_file);
+			new_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
+					new_loc, TRUE);
+			
+			/* try atomic move first, if not, resort to read->write->delete */
+			if(!link(old_file, new_file))
+				unlink(old_file);
+			else {
+				gchar *contents = NULL;
+				gsize len = 0;
+				if(g_file_get_contents(old_file, &contents, &len, NULL)) {
+					FILE *fp = fopen(new_file, "w");
+					if(fp) {
+						if(fwrite(contents, len, 1, fp) == len) {
+							fclose(fp);
+							unlink(old_file);
+						} else {
+							fclose(fp);
+							g_critical("XfceDesktopMenu: Unable to migrate %s to new location (error writing to file)", filename);
+						}
+					} else
+						g_critical("XfceDesktopMenu: Unable to migrate %s to new location (error opening target file for writing)", filename);
+				} else
+					g_critical("XfceDesktopMenu: Unable to migrate %s to new location (error reading old file)", filename);
+			}
+		}
+		g_free(old_file);
+	}
+	g_free(new_file);	
+}
+
 G_MODULE_EXPORT gchar *
 g_module_check_init(GModule *module)
 {
 	gint w, h;
+	
+	/* move menu.xml and xfce-registered-categories.xml to new XDG location */
+	xdg_migrate_config("menu.xml");
+	xdg_migrate_config("xfce-registered-categories.xml");		
 	
 	gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
 	_xfce_desktop_menu_icon_size = w;
