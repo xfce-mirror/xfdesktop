@@ -89,8 +89,14 @@ mcs_plugin_init(McsPlugin *mcs_plugin)
 
     create_workspaces_channel(mcs_plugin->manager);
     
-    watch_workspaces_hint(mcs_plugin->manager);
-
+    /* XXX I don't think this should be called at all.
+       Problem is when the module is unloaded, the callback
+       remains and crashes the MCS manager on workspace count
+       change.
+       Safer to remove it for now.
+       
+       watch_workspaces_hint(mcs_plugin->manager); 
+     */
     return MCS_PLUGIN_INIT_OK;
 }
 
@@ -148,7 +154,7 @@ static void update_names(McsManager *manager, int n)
 }
 
 /* create the channel and initialize settings */
-static void set_ws_count_hint(int count)
+static void set_ws_count_hint(long count)
 {
     gdk_error_trap_push();
     gdk_property_change(gdk_get_default_root_window(), 
@@ -177,7 +183,7 @@ static void create_workspaces_channel(McsManager *manager)
 	ws_count = setting->data.v_int;
 
 	/* only the first time when wm isn't running yet */
-	set_ws_count_hint(ws_count);
+	set_ws_count_hint((long) ws_count);
     }
 
     /* ws names */

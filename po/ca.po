@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-08-13 19:16+0200\n"
-"PO-Revision-Date: 2003-07-15 22:40+0100\n"
-"Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
+"POT-Creation-Date: 2003-11-14 19:03+0100\n"
+"PO-Revision-Date: 2003-11-29 12:13+0100\n"
+"Last-Translator: Carles Mu-oz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -19,13 +19,11 @@ msgstr ""
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
+"Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
 "No s'ha pogut gravar el fitxer %s: %s\n"
 "\n"
-"Escolliu una altra ubicació o polseu cancel·la en la finestra de diàleg per "
-"descartar els canvis"
+"Escolliu una altra ubicació o polseu cancel·la en la finestra de diàleg per descartar els canvis"
 
 #: settings/backdrop-mgr.c:510
 msgid "Select image file"
@@ -59,81 +57,85 @@ msgstr "Crea una llista de rerefons"
 msgid "Edit backdrop list"
 msgstr "Edita la llista de rerefons"
 
-#: settings/backdrop_settings.c:156
-msgid "Desktop: backdrop"
-msgstr "Escriptori: rerefons"
+#: settings/backdrop_settings.c:149
+msgid "Desktop background"
+msgstr "Fons de l'escriptori"
 
-#: settings/backdrop_settings.c:358
+#: settings/backdrop_settings.c:363
 msgid "Select background color"
 msgstr "Seleccioneu el color de fons"
 
-#: settings/backdrop_settings.c:408
+#: settings/backdrop_settings.c:413
 msgid "Background color:"
 msgstr "Color de fons:"
 
-#: settings/backdrop_settings.c:438
+#: settings/backdrop_settings.c:443
 msgid "Use color only:"
 msgstr "Fes servir tan sols el color:"
 
-#: settings/backdrop_settings.c:564
+#: settings/backdrop_settings.c:569
 msgid "File:"
 msgstr "Fitxer:"
 
-#: settings/backdrop_settings.c:625
+#: settings/backdrop_settings.c:630
 msgid "Select background image or list file"
 msgstr "Seleccioneu la imatge de fons o la llista de fitxers"
 
-#: settings/backdrop_settings.c:702
+#: settings/backdrop_settings.c:707
 msgid "_Browse..."
 msgstr "_Navega..."
 
-#: settings/backdrop_settings.c:706
+#: settings/backdrop_settings.c:711
 msgid "New list"
 msgstr "Nova llista"
 
-#: settings/backdrop_settings.c:710
+#: settings/backdrop_settings.c:715
 msgid "Edit list"
 msgstr "Edita la llista"
 
-#: settings/backdrop_settings.c:748
+#: settings/backdrop_settings.c:753
 msgid "Style:"
 msgstr "Estil:"
 
-#: settings/backdrop_settings.c:756
+#: settings/backdrop_settings.c:761
 msgid "_Tiled"
 msgstr "_Títol"
 
-#: settings/backdrop_settings.c:762
+#: settings/backdrop_settings.c:767
 msgid "_Scaled"
 msgstr "_Escalat"
 
-#: settings/backdrop_settings.c:769
+#: settings/backdrop_settings.c:774
 msgid "_Centered"
 msgstr "_Centrat"
 
-#: settings/backdrop_settings.c:776
+#: settings/backdrop_settings.c:781
 msgid "_Auto"
 msgstr "_Automàtic"
 
 #. the dialog
-#: settings/backdrop_settings.c:802
+#: settings/backdrop_settings.c:820
 msgid "Background"
 msgstr "Fons"
 
 #. header
-#: settings/backdrop_settings.c:820
+#: settings/backdrop_settings.c:838
 msgid "Background Settings"
 msgstr "Ajustaments del fons"
 
 #. color
-#: settings/backdrop_settings.c:826
+#: settings/backdrop_settings.c:844
 msgid "Color"
 msgstr "Color"
 
 #. image vbox
-#: settings/backdrop_settings.c:838
+#: settings/backdrop_settings.c:856
 msgid "Image"
 msgstr "Imatge"
+
+#: settings/backdrop_settings.c:882
+msgid "Don't set background"
+msgstr "No fixar el fons"
 
 #: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
@@ -161,7 +163,8 @@ msgid "Number of workspaces:"
 msgstr "Número d'àrees de treball:"
 
 #. Number of workspaces
-#: settings/workspaces_settings.c:528 settings/workspaces_settings.c:558
+#: settings/workspaces_settings.c:528
+#: settings/workspaces_settings.c:558
 msgid "Workspaces"
 msgstr "Àrees de treball"
 
@@ -174,27 +177,20 @@ msgstr "Ajustament de les àrees de treball"
 msgid "Workspace names"
 msgstr "Noms de les àrees de treball"
 
-#: src/backdrop.c:487
+#: src/backdrop.c:508
 #, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
 msgstr "xfdesktop error: carregant imatge de rerefons: %s\n"
 
-#: src/main.c:249
-msgid "Desktop"
-msgstr "Escriptori"
-
-#: src/menu.c:736
+#: src/menu.c:735
 msgid "Add workspace"
 msgstr "Afegir àrea de treball"
 
-#: src/menu.c:743
+#: src/menu.c:742
 msgid "Delete workspace"
 msgstr "Esborrar àrea de treball"
 
-#: src/settings.c:186
-msgid ""
-"xfdesktop: could not connect to settings manager!Please check your "
-"installation."
-msgstr ""
-"xfdesktop: no puc connectar amb el gestor d'ajustaments! Comproveu la vostra "
-"insta·lació."
+#: src/settings.c:182
+msgid "xfdesktop: could not connect to settings manager!Please check your installation."
+msgstr "xfdesktop: no puc connectar amb el gestor d'ajustaments! Comproveu la vostra insta·lació."
+

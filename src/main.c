@@ -233,9 +233,10 @@ die (gpointer client_data)
 static GtkWidget *
 create_fullscreen_window (void)
 {
-    GdkAtom desktop_type;
+    GdkAtom desktop_type, atom;
     GtkWidget *win;
     GtkStyle *style;
+    Window xid;
 
     TRACE ("create fullscreen window");
     win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -273,7 +274,25 @@ create_fullscreen_window (void)
 			   GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
 			   GDK_SCROLL_MASK);
 
-    return (win);
+    /* desktop window id -- should be a freedesktop standard IMO */
+    atom = gdk_atom_intern ("XFCE_DESKTOP_WINDOW", FALSE);
+    xid = GDK_WINDOW_XID (win->window);
+
+    gdk_property_change (gdk_get_default_root_window (),
+			 atom,
+			 gdk_atom_intern ("WINDOW", FALSE), 32,
+			 GDK_PROP_MODE_REPLACE, (guchar *) & xid, 1);
+
+    /* make some other programs happy (xpenguins) */
+    atom = gdk_atom_intern ("NAUTILUS_DESKTOP_WINDOW_ID", FALSE);
+    xid = GDK_WINDOW_XID (win->window);
+
+    gdk_property_change (gdk_get_default_root_window (),
+			 atom,
+			 gdk_atom_intern ("WINDOW", FALSE), 32,
+			 GDK_PROP_MODE_REPLACE, (guchar *) & xid, 1);
+
+    return win;
 }
 
 static void
