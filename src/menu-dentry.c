@@ -66,6 +66,18 @@ static char *dentry_paths[] = {
 	"/usr/share/gnome/apps/",
 };
 
+/* these .desktop files _should_ have an OnlyShowIn key, but don't.  i'm going
+ * to match by the Exec field. */
+static char *blacklist[] = {
+	"gnome-control-center",
+	"kmenuedit",
+	"kcmshell",
+	"kcontrol",
+	"kpersonalizer",
+	"kappfinder",
+	NULL
+};
+	
 /* this is to work around some abuses of the Exec= parameter, e.g.:
  * Exec=kmix -caption "%c" %i %m
  * *cough*KDE*cough*
@@ -159,11 +171,21 @@ parse_dentry_attr (MenuItemType type, XfceDesktopEntry *de,
 	gchar *cmd = NULL;
 	gchar *ifile = NULL;
 	int term;
+	gint i;
 	
 	mi = g_new0 (MenuItem, 1);
 	mi->type = type;
 	mi->icon = NULL;
 
+	cmd = NULL;
+	xfce_desktop_entry_get_string (de, "Exec", TRUE, &cmd);
+	for(i=0; blacklist[i]; i++) {
+		if(strstr(cmd, blacklist[i]) == cmd) {
+			g_free(mi);
+			return NULL;
+		}
+	}
+	
 	if (!xfce_desktop_entry_get_string (de, "Name", TRUE, &name)) {
 		/* siigh.. */
 		gchar *tmp, *tmp1;
@@ -182,9 +204,6 @@ parse_dentry_attr (MenuItemType type, XfceDesktopEntry *de,
 	xfce_desktop_entry_get_int (de, "Terminal", &term);
 	
 	xfce_desktop_entry_get_string (de, "Icon", TRUE, &ifile);
-
-	cmd = NULL;
-	xfce_desktop_entry_get_string (de, "Exec", TRUE, &cmd);
 	
 	if(basepath) {
 		gboolean free_bp = FALSE;
