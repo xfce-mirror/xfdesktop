@@ -395,6 +395,9 @@ static void fs_ok_cb (GtkWidget *b, BackdropDialog *bd)
     GtkFileSelection * fs;
     const char *path;
 
+    if (!is_running)
+	return;
+
     fs = GTK_FILE_SELECTION(gtk_widget_get_toplevel(b));
 
     path = gtk_file_selection_get_filename(fs);
@@ -453,6 +456,9 @@ browse_cb (GtkWidget * b, BackdropDialog * bd)
 
 static void set_path_cb(const char *path, BackdropDialog *bd)
 {
+    if (!is_running)
+	return;
+
     g_free(backdrop_path);
 
     /* if the path stays the same, the setting will not update */
