@@ -1,3 +1,31 @@
+2004-07-09  pollux  <pollux@xfce.org>
+
+	* Makefile.in: more italian doc translation from Sascha Ales
+
+2004-06-22  pollux  <pollux@xfce.org>
+
+	* menueditor.c: correct use of xfce_file_chooser_get_filename
+
+2004-06-20  pollux  <pollux@xfce.org>
+
+	* dnd.c: Fix DND insertion in the XML tree
+
+	* dnd.c: Fix DND to support xfce4-appfinder
+
+2004-06-19  pollux  <pollux@xfce.org>
+
+	* menueditor.c: use XfceFileChooser instead of GtkFileSelection
+
+	* ChangeLog: Update ChangeLog
+
+2004-06-17  kelnos  <kelnos@xfce.org>
+
+	* Makefile.in, add_dialog.c, dnd.c, edit_dialog.c, menueditor.c, menueditor.h, move.c:
+	merging in the new xfdesktop, version is 4.1.5 *crosses fingers*
+	this will fix the app crashing problem, and has full multihead support, among
+	a bunch of other improvements i won't list here.
+	also fixing some warnings in menueditor (for --enable-debug=full)
+
 2004-06-17  kelnos  <kelnos@xfce.org>
 
 	* Makefile.in, add_dialog.c, dnd.c, edit_dialog.c, menueditor.c, menueditor.h, move.c:

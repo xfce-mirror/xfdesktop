@@ -27,7 +27,7 @@ extern void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p);
 
 /******************************************/
 /* Workaround for gtk_tree_store_swap bug */
-/* i hope it will be fixed in  2.4.2      */
+/* i hope it will be fixed in  2.4.5      */
 /******************************************/
 void my_tree_store_swap_down(GtkTreeStore *tree_store,
 			     GtkTreeIter *a,

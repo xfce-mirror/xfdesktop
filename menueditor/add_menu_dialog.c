@@ -16,7 +16,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-*/
+ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -28,6 +28,8 @@
 #include "menueditor.h"
 
 #include "add_menu_dialog.h"
+
+#include "../modules/menu/dummy_icon.h"
 
 /*************************************/
 /* Support for adding an include tag */
@@ -67,6 +69,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
   GtkWidget *entry_source;
   GtkWidget *button_browse;
 
+  int response;
 
   gchar *header_text;
 
@@ -92,7 +95,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
   /* Type */
   label_type = gtk_label_new(_("Type:"));
 
-  controls.menu_type=MENUFILE;
+  controls.menu_type = MENUFILE;
   
   menu = gtk_menu_new();
   mitem = gtk_menu_item_new_with_mnemonic(_("File"));
@@ -166,52 +169,70 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 
   gtk_widget_show_all(dialog);
 
-  if(gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK){
-    xmlNodePtr node = NULL, root_node = NULL, selection_node = NULL;
-    GtkTreeIter iter, selection_iter, parent;
-    GtkTreeModel *tree_model=GTK_TREE_MODEL(menueditor_app.treestore);
-    GValue val = { 0, };
-    gboolean ret_selection, is_menu=FALSE;
-    gchar *name=NULL;
-    gchar *source=NULL;
+  while(response = gtk_dialog_run (GTK_DIALOG (dialog))){
+    if(response == GTK_RESPONSE_OK){
+      GdkPixbuf *icon = NULL;
+      xmlNodePtr node = NULL, root_node = NULL, selection_node = NULL;
+      GtkTreeIter iter, selection_iter, parent;
+      GtkTreeModel *tree_model=GTK_TREE_MODEL(menueditor_app.treestore);
+      GValue val = { 0, };
+      gboolean ret_selection, is_menu = FALSE;
+      gchar *name = NULL;
+      gchar *source = NULL;
 
-    /* Retrieve the root node of the xml tree */
-    root_node = xmlDocGetRootElement(menueditor_app.xml_menu_file);
+      /* use the dummy icon for same height as the others entries */
+      icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
-    /* Retrieve the selected item */
-    ret_selection = gtk_tree_selection_get_selected (gtk_tree_view_get_selection(GTK_TREE_VIEW(menueditor_app.treeview)),
-						     &tree_model,
-						     &selection_iter);
-    /* Check if the entry is a submenu */
-    if(ret_selection){
-      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &selection_iter, POINTER_COLUMN, &val);
-      selection_node = g_value_get_pointer(&val);
-      if(!xmlStrcmp(selection_node->name,(xmlChar*)"menu")){
-	parent = selection_iter;
-	is_menu = TRUE;
-      }
-    }
+      /* Retrieve the root node of the xml tree */
+      root_node = xmlDocGetRootElement(menueditor_app.xml_menu_file);
 
-    switch(controls.menu_type){
-    case MENUFILE:
-      /* Test if all field are filled */
-      if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_source)))==0){
-	GtkWidget *dialog_warning = gtk_message_dialog_new (GTK_WINDOW(menueditor_app.main_window),
-							    GTK_DIALOG_DESTROY_WITH_PARENT,
-							    GTK_MESSAGE_WARNING,
-							    GTK_BUTTONS_OK,
-							    _("The 'Source' field is required."));
-	gtk_dialog_run (GTK_DIALOG (dialog_warning));
-	gtk_widget_destroy (dialog_warning);
-	gtk_widget_destroy (dialog);
-	return;
+      /* Retrieve the selected item */
+      ret_selection = gtk_tree_selection_get_selected (gtk_tree_view_get_selection(GTK_TREE_VIEW(menueditor_app.treeview)),
+						       &tree_model,
+						       &selection_iter);
+      /* Check if the entry is a submenu */
+      if(ret_selection){
+	gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &selection_iter, POINTER_COLUMN, &val);
+	selection_node = g_value_get_pointer(&val);
+	if(!xmlStrcmp(selection_node->name,(xmlChar*)"menu")){
+	  parent = selection_iter;
+	  is_menu = TRUE;
+	}
       }
 
-      /* Create node */
-      node = xmlNewNode(NULL, "include");
+      if(controls.menu_type == MENUFILE){
+	/* Test if all field are filled */
+	if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_source)))==0){
+	  xfce_warn(_("The 'Source' field is required."));
+	  continue;
+	}
 
-      xmlSetProp(node,"type","file");
-      xmlSetProp(node,"src",gtk_entry_get_text(GTK_ENTRY(entry_source)));
+	/* Create node */
+	node = xmlNewNode(NULL, "include");
+
+	xmlSetProp(node,"type","file");
+	xmlSetProp(node,"src", gtk_entry_get_text(GTK_ENTRY(entry_source)));
+
+	name = g_strdup_printf(INCLUDE_FORMAT, _("--- include ---"));
+	source = g_strdup_printf(INCLUDE_PATH_FORMAT,
+				 gtk_entry_get_text(GTK_ENTRY(entry_source)));
+      }
+
+      if(controls.menu_type == SYSTEM){
+	/* Create node */
+	node = xmlNewNode(NULL, "include");
+
+	xmlSetProp(node,"type","system");
+
+	if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(controls.checkbutton_unique)))
+	  xmlSetProp(node,"unique","true");
+
+	if(gtk_option_menu_get_history(GTK_OPTION_MENU(controls.optionmenu_style))!=0)
+	  xmlSetProp(node,"style","multilevel");
+
+	name = g_strdup_printf(INCLUDE_FORMAT, _("--- include ---"));
+	source = g_strdup_printf(INCLUDE_PATH_FORMAT, _("system"));
+      }
 
       /* Append entry in the tree */
       if(!ret_selection){
@@ -219,7 +240,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 	if(xmlAddChild(root_node, node) == NULL){
 	  perror("xmlAddChild");
 	  xmlFreeNode(node);
-	  break;
+	  continue;
 	}
 	gtk_tree_store_append (menueditor_app.treestore, &iter, NULL);
       }else{
@@ -227,7 +248,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 	  if(xmlAddChild(selection_node, node) == NULL){
 	    perror("xmlAddChild");
 	    xmlFreeNode(node);
-	    break;
+	    continue;
 	  }
 	  gtk_tree_store_append (menueditor_app.treestore,
 				 &iter, &parent);
@@ -237,86 +258,32 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 	  if(xmlAddNextSibling(selection_node, node) == NULL){
 	    perror("xmlAddNextSibling");
 	    xmlFreeNode(node);
-	    break;
+	    continue;
 	  }
 	  gtk_tree_store_insert_after (menueditor_app.treestore,
 				       &iter, NULL, &selection_iter);
 	}
       }
 
-      name = g_strdup_printf(INCLUDE_FORMAT,_("--- include ---"));
-      source = g_strdup_printf(INCLUDE_PATH_FORMAT,
-			       gtk_entry_get_text(GTK_ENTRY(entry_source)));
-
       gtk_tree_store_set (menueditor_app.treestore, &iter, 
-			  ICON_COLUMN, NULL, 
+			  ICON_COLUMN, icon, 
 			  NAME_COLUMN, name, 
 			  COMMAND_COLUMN, source,
 			  POINTER_COLUMN, node, -1);
 
+      menueditor_app.menu_modified=TRUE;
+      gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
+      gtk_widget_set_sensitive(menueditor_app.file_menu.saveas,TRUE);
+      gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
+
       g_free(name);
       g_free(source);
+
       break;
-    case SYSTEM:
-      /* Create node */
-      node = xmlNewNode(NULL, "include");
-
-      xmlSetProp(node,"type","system");
-
-      if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(controls.checkbutton_unique)))
-	xmlSetProp(node,"unique","true");
-
-      if(gtk_option_menu_get_history(GTK_OPTION_MENU(controls.optionmenu_style))!=0)
-	xmlSetProp(node,"style","multilevel");
-      
-      /* Append entry in the tree */
-      if(!ret_selection){
-	/* Add the node to the tree */
-	if(xmlAddChild(root_node, node) == NULL){
-	  perror("xmlAddChild");
-	  xmlFreeNode(node);
-	  break;
-	}
-	gtk_tree_store_append (menueditor_app.treestore, &iter, NULL);
-      }else{
-	if(is_menu){
-	  if(xmlAddChild(selection_node, node) == NULL){
-	    perror("xmlAddChild");
-	    xmlFreeNode(node);
-	    break;
-	  }
-	  gtk_tree_store_append (menueditor_app.treestore,
-				 &iter, &parent);
-	  gtk_tree_view_expand_all (GTK_TREE_VIEW(menueditor_app.treeview));
-	}else{
-
-	  if(xmlAddNextSibling(selection_node, node) == NULL){
-	    perror("xmlAddNextSibling");
-	    xmlFreeNode(node);
-	    break;
-	  }
-	  gtk_tree_store_insert_after (menueditor_app.treestore,
-				       &iter, NULL, &selection_iter);
-	}
-      }
-
-      name = g_strdup_printf(INCLUDE_FORMAT,_("--- include ---"));
-      source = g_strdup_printf(INCLUDE_PATH_FORMAT,_("system"));
-
-      gtk_tree_store_set (menueditor_app.treestore, &iter, 
-			  ICON_COLUMN, NULL, 
-			  NAME_COLUMN, name, 
-			  COMMAND_COLUMN, source,
-			  POINTER_COLUMN, node, -1);
-
-      g_free(name);
-      g_free(source);
+    }else{
       break;
     }
-    menueditor_app.menu_modified=TRUE;
-    gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
-    gtk_widget_set_sensitive(menueditor_app.file_menu.saveas,TRUE);
-    gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
   }
-  gtk_widget_destroy (dialog);
+  
+  gtk_widget_hide (dialog);
 }

@@ -16,7 +16,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-*/
+ */
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -73,6 +73,8 @@ void edit_selection(GtkTreeSelection *selection)
   GtkWidget *checkbutton_snotify = NULL;
   GtkWidget *checkbutton_term = NULL;
 
+  int response;
+
   xmlChar *prop_name = NULL;
   xmlChar *prop_cmd = NULL;
   xmlChar *prop_icon = NULL;
@@ -89,8 +91,10 @@ void edit_selection(GtkTreeSelection *selection)
   gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, POINTER_COLUMN, &val);
   node = g_value_get_pointer(&val);
 
-  if(!node)
+  if(!node){
+    g_warning("node doesn't exist");
     return;
+  }
 
   /* Create dialog for editing */
   dialog = gtk_dialog_new_with_buttons(_("Edit menu entry"),
@@ -111,6 +115,7 @@ void edit_selection(GtkTreeSelection *selection)
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);
   g_free (header_text);
 
+  /* Get the props */
   prop_name = xmlGetProp(node, "name");
   prop_cmd = xmlGetProp(node, "cmd");
   prop_icon = xmlGetProp(node, "icon");
@@ -123,6 +128,7 @@ void edit_selection(GtkTreeSelection *selection)
 
   /* Choose the edition dialog */
   if(!xmlStrcmp(node->name,(xmlChar*)"separator") ){
+    xfce_info(_("Separators cannot be edited"));
     gtk_widget_destroy (dialog);
     return;
   }else if(!xmlStrcmp(node->name,(xmlChar*)"include")){
@@ -206,7 +212,8 @@ void edit_selection(GtkTreeSelection *selection)
 
     /* Initialize states */
     if(!xmlStrcmp(prop_type, (xmlChar*)"file")){
-      controls.menu_type=MENUFILE;
+      controls.menu_type = MENUFILE;
+      gtk_entry_set_text(GTK_ENTRY(entry_source), prop_src);
       gtk_widget_set_sensitive(controls.hbox_source,TRUE);
       gtk_widget_set_sensitive(controls.label_source,TRUE);
       gtk_widget_set_sensitive(controls.label_style,FALSE);
@@ -214,7 +221,7 @@ void edit_selection(GtkTreeSelection *selection)
       gtk_widget_set_sensitive(controls.checkbutton_unique,FALSE);
     }else{
       gtk_option_menu_set_history(GTK_OPTION_MENU(optionmenu_type),1);
-      controls.menu_type=SYSTEM;
+      controls.menu_type = SYSTEM;
       gtk_widget_set_sensitive(controls.hbox_source,FALSE);
       gtk_widget_set_sensitive(controls.label_source,FALSE);
       gtk_widget_set_sensitive(controls.label_style,TRUE);
@@ -412,178 +419,13 @@ void edit_selection(GtkTreeSelection *selection)
   gtk_widget_show_all(dialog);
 
   /* Commit change if needed */
-  if(gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK){
-    if(!xmlStrcmp(node->name,(xmlChar*)"app")){
-      GdkPixbuf *icon = NULL;
-      gchar *name=NULL;
-      gchar *command=NULL;
+  while(response = gtk_dialog_run (GTK_DIALOG (dialog))){
+    if(response == GTK_RESPONSE_OK){
       GValue val_icon = {0,};
-
-      /* Test if the command exists */
-      if(!command_exists(gtk_entry_get_text(GTK_ENTRY(command_entry)))){
-	GtkWidget *dialog_warning = gtk_message_dialog_new (GTK_WINDOW(menueditor_app.main_window),
-							    GTK_DIALOG_DESTROY_WITH_PARENT,
-							    GTK_MESSAGE_WARNING,
-							    GTK_BUTTONS_OK,
-							    _("The command doesn't exist !"));
-	gtk_dialog_run (GTK_DIALOG (dialog_warning));
-	gtk_widget_destroy (dialog_warning);
-	gtk_widget_destroy (dialog);
-	return;
-      }
-
-      xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
-      xmlSetProp(node,"cmd",gtk_entry_get_text(GTK_ENTRY(command_entry)));
-
-      /* unref the icon */
-      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, ICON_COLUMN, &val_icon);
-      icon = g_value_get_object(&val_icon);
-
-      if(icon){
-	g_object_unref(icon);
-	icon = NULL;
-      }
-
-      if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
-	xmlAttrPtr icon_prop;
-	
-	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
-
-	/* Remove the property in the xml tree */
-	icon_prop = xmlHasProp(node, "icon");
-	xmlRemoveProp(icon_prop);
-      }else{
-	icon = xfce_themed_icon_load((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
-	if(!icon)
-	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
-
-	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
-      }
-
-
-      if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbutton_snotify)))
-	xmlSetProp(node, "snotify", "true");
-      else{
-	xmlAttrPtr snotify_prop;
-
-	/* Remove the property in the xml tree */
-	snotify_prop = xmlHasProp(node, "snotify");
-	xmlRemoveProp(snotify_prop);
-      }
-      if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbutton_term)))
-	xmlSetProp(node, "term", "yes");
-      else{
-	xmlAttrPtr term_prop;
-
-	/* Remove the property in the xml tree */
-	term_prop = xmlHasProp(node, "term");
-	xmlRemoveProp(term_prop);
-      }
-
-      name = g_strdup_printf(NAME_FORMAT,
-			     gtk_entry_get_text(GTK_ENTRY(name_entry)));
-      command = g_strdup_printf(COMMAND_FORMAT,
-				gtk_entry_get_text(GTK_ENTRY(command_entry)));
-				      
-      gtk_tree_store_set (menueditor_app.treestore, &iter, 
-			  ICON_COLUMN, icon,
-			  NAME_COLUMN, name,
-			  COMMAND_COLUMN, command, -1);
-
-      g_free(name);
-      g_free(command);
-    }else if(!xmlStrcmp(node->name,(xmlChar*)"menu")){
-      gchar *name = NULL;
       GdkPixbuf *icon = NULL;
-      GValue val_icon = {0,};
-
-      name = g_strdup_printf(MENU_FORMAT,
-			     gtk_entry_get_text(GTK_ENTRY(name_entry)));
-
-      xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
-
-      /* unref the icon */
-      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, ICON_COLUMN, &val_icon);
-      icon = g_value_get_object(&val_icon);
-
-      if(icon){
-	g_object_unref(icon);
-	icon = NULL;
-      }
-
-      if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
-	xmlAttrPtr icon_prop;
-
-	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
-	
-	/* Remove the property in the xml tree */
-	icon_prop = xmlHasProp(node, "icon");
-	xmlRemoveProp(icon_prop);
-      }else{
-	icon = xfce_themed_icon_load((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
-	if(!icon)
-	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
-
-	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
-      }
-      gtk_tree_store_set (menueditor_app.treestore, &iter,
-			  ICON_COLUMN, icon, 
-			  NAME_COLUMN, name, -1);
-	    
-      g_free(name);
-    }else if(!xmlStrcmp(node->name,(xmlChar*)"builtin")){
-      GdkPixbuf *icon = NULL;
-      gchar *name=NULL;
-      GValue val_icon = {0,};
-
-      name = g_strdup_printf(BUILTIN_FORMAT,
-			     gtk_entry_get_text(GTK_ENTRY(name_entry)));
-
-      xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
-
-      /* unref the icon */
-      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, ICON_COLUMN, &val_icon);
-      icon = g_value_get_object(&val_icon);
-
-      if(icon){
-	g_object_unref(icon);
-	icon = NULL;
-      }
-
-      if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
-	xmlAttrPtr icon_prop;
-	
-	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
-
-	/* Remove the property in the xml tree */
-	icon_prop = xmlHasProp(node, "icon");
-	xmlRemoveProp(icon_prop);
-      }else{
-	icon = xfce_themed_icon_load((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
-	if(!icon)
-	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
-
-	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
-      }
-
-      gtk_tree_store_set (menueditor_app.treestore, &iter,
-			  ICON_COLUMN, icon, 
-			  NAME_COLUMN, name, -1);
-	    
-
-      g_free(name);
-    }else if(!xmlStrcmp(node->name,(xmlChar*)"title")){
-      GdkPixbuf *icon = NULL;
-      gchar *name = NULL;
-      GValue val_icon = {0,};
-
-      name = g_strdup_printf(TITLE_FORMAT,
-			     gtk_entry_get_text(GTK_ENTRY(name_entry)));
-
-      xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
       
       /* unref the icon */
-            gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, ICON_COLUMN, &val_icon);
+      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, ICON_COLUMN, &val_icon);
       icon = g_value_get_object(&val_icon);
 
       if(icon){
@@ -591,15 +433,16 @@ void edit_selection(GtkTreeSelection *selection)
 	icon = NULL;
       }
 
-      if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
+      /* set the new icon if there is one otherwise use the dummy one */
+      if((icon_entry && strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0) || !icon_entry){
 	xmlAttrPtr icon_prop;
-
+	
 	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
 	/* Remove the property in the xml tree */
 	icon_prop = xmlHasProp(node, "icon");
 	xmlRemoveProp(icon_prop);
-      }else{
+      }else if(icon_entry){
 	icon = xfce_themed_icon_load((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
 	if(!icon)
 	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
@@ -607,72 +450,156 @@ void edit_selection(GtkTreeSelection *selection)
 	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
       }
 
-      gtk_tree_store_set (menueditor_app.treestore, &iter,
-			  ICON_COLUMN, icon, 
-			  NAME_COLUMN, name, -1);
+      if(!xmlStrcmp(node->name,(xmlChar*)"app")){
+	gchar *name=NULL;
+	gchar *command=NULL;
 
+	/* Test if the command exists */
+	if(!command_exists(gtk_entry_get_text(GTK_ENTRY(command_entry)))){
+	  xfce_warn(_("The command doesn't exist !"));
+	  continue;
+	}
 
-      g_free(name);
-    }else if(!xmlStrcmp(node->name,(xmlChar*)"include")){
-      gchar *name=NULL;
-      gchar *source=NULL;
-      xmlAttrPtr unique_prop;
-      xmlAttrPtr style_prop;
+	xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
+	xmlSetProp(node,"cmd",gtk_entry_get_text(GTK_ENTRY(command_entry)));
 
-      switch(controls.menu_type){
-      case MENUFILE:
-	name = g_strdup_printf(INCLUDE_FORMAT,
-			       _("--- include ---"));
-	source = g_strdup_printf(INCLUDE_PATH_FORMAT,
-				 gtk_entry_get_text(GTK_ENTRY(entry_source)));
+	if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbutton_snotify)))
+	  xmlSetProp(node, "snotify", "true");
+	else{
+	  xmlAttrPtr snotify_prop;
 
-	gtk_tree_store_set (menueditor_app.treestore, &iter, 0, NULL, 
+	  /* Remove the property in the xml tree */
+	  snotify_prop = xmlHasProp(node, "snotify");
+	  xmlRemoveProp(snotify_prop);
+	}
+	if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbutton_term)))
+	  xmlSetProp(node, "term", "yes");
+	else{
+	  xmlAttrPtr term_prop;
+
+	  /* Remove the property in the xml tree */
+	  term_prop = xmlHasProp(node, "term");
+	  xmlRemoveProp(term_prop);
+	}
+
+	name = g_strdup_printf(NAME_FORMAT,
+			       gtk_entry_get_text(GTK_ENTRY(name_entry)));
+	command = g_strdup_printf(COMMAND_FORMAT,
+				  gtk_entry_get_text(GTK_ENTRY(command_entry)));
+				      
+	gtk_tree_store_set (menueditor_app.treestore, &iter, 
+			    ICON_COLUMN, icon,
 			    NAME_COLUMN, name,
-			    COMMAND_COLUMN, source,-1);
+			    COMMAND_COLUMN, command, -1);
 
-	xmlSetProp(node,"type", "file");
-	xmlSetProp(node,"src",gtk_entry_get_text(GTK_ENTRY(entry_source)));
-	
-	/* remove unique and style props if needed */
-	unique_prop = xmlHasProp(node, "unique");
-	xmlRemoveProp(unique_prop);
-	style_prop = xmlHasProp(node, "style");
-	xmlRemoveProp(style_prop);
-
-	g_free(source);
 	g_free(name);
-	break;
-      case SYSTEM:
-	name = g_strdup_printf(INCLUDE_FORMAT,
-			       _("--- include ---"));
-	source = g_strdup_printf(INCLUDE_PATH_FORMAT,
-				 _("system"));
+	g_free(command);
+      }else if(!xmlStrcmp(node->name,(xmlChar*)"menu")){
+	gchar *name = NULL;
 
-	gtk_tree_store_set (menueditor_app.treestore, &iter, 0, NULL, 
-			    NAME_COLUMN, name,
-			    COMMAND_COLUMN, source,-1);
+	name = g_strdup_printf(MENU_FORMAT,
+			       gtk_entry_get_text(GTK_ENTRY(name_entry)));
 
-	xmlSetProp(node,"type", "system");
+	xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
+
+
+	gtk_tree_store_set (menueditor_app.treestore, &iter,
+			    ICON_COLUMN, icon, 
+			    NAME_COLUMN, name, -1);
+	    
+	g_free(name);
+      }else if(!xmlStrcmp(node->name,(xmlChar*)"builtin")){
+	gchar *name=NULL;
+
+	name = g_strdup_printf(BUILTIN_FORMAT,
+			       gtk_entry_get_text(GTK_ENTRY(name_entry)));
+
+	xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
+
+	gtk_tree_store_set (menueditor_app.treestore, &iter,
+			    ICON_COLUMN, icon, 
+			    NAME_COLUMN, name, -1);
+
+	g_free(name);
+      }else if(!xmlStrcmp(node->name,(xmlChar*)"title")){
+	gchar *name = NULL;
+
+	name = g_strdup_printf(TITLE_FORMAT,
+			       gtk_entry_get_text(GTK_ENTRY(name_entry)));
+
+	xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
+      
+	gtk_tree_store_set (menueditor_app.treestore, &iter,
+			    ICON_COLUMN, icon, 
+			    NAME_COLUMN, name, -1);
+
+	g_free(name);
+      }else if(!xmlStrcmp(node->name,(xmlChar*)"include")){
+	gchar *name=NULL;
+	gchar *source=NULL;
+	xmlAttrPtr unique_prop;
+	xmlAttrPtr style_prop;
+
+	switch(controls.menu_type){
+	case MENUFILE:
+	  name = g_strdup_printf(INCLUDE_FORMAT,
+				 _("--- include ---"));
+	  source = g_strdup_printf(INCLUDE_PATH_FORMAT,
+				   gtk_entry_get_text(GTK_ENTRY(entry_source)));
+
+	  gtk_tree_store_set (menueditor_app.treestore, &iter, 
+			      ICON_COLUMN, icon,
+			      NAME_COLUMN, name,
+			      COMMAND_COLUMN, source,-1);
+
+	  xmlSetProp(node,"type", "file");
+	  xmlSetProp(node,"src",gtk_entry_get_text(GTK_ENTRY(entry_source)));
 	
-	if(!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(controls.checkbutton_unique))){
+	  /* remove unique and style props if needed */
 	  unique_prop = xmlHasProp(node, "unique");
 	  xmlRemoveProp(unique_prop);
-	}
-	else
-	  xmlSetProp(node,"unique","true");
-
-	if(gtk_option_menu_get_history(GTK_OPTION_MENU(controls.optionmenu_style)) == 0){
-	  /* remove src prop if needed */
 	  style_prop = xmlHasProp(node, "style");
 	  xmlRemoveProp(style_prop);
-	}else
-	  xmlSetProp(node,"style","multilevel");
-      }
+
+	  g_free(source);
+	  g_free(name);
+	  break;
+	case SYSTEM:
+	  name = g_strdup_printf(INCLUDE_FORMAT,
+				 _("--- include ---"));
+	  source = g_strdup_printf(INCLUDE_PATH_FORMAT,
+				   _("system"));
+
+	  gtk_tree_store_set (menueditor_app.treestore, &iter,
+			      ICON_COLUMN, icon, 
+			      NAME_COLUMN, name,
+			      COMMAND_COLUMN, source,-1);
+
+	  xmlSetProp(node,"type", "system");
+	
+	  if(!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(controls.checkbutton_unique))){
+	    unique_prop = xmlHasProp(node, "unique");
+	    xmlRemoveProp(unique_prop);
+	  }
+	  else
+	    xmlSetProp(node,"unique","true");
+
+	  if(gtk_option_menu_get_history(GTK_OPTION_MENU(controls.optionmenu_style)) == 0){
+	    /* remove src prop if needed */
+	    style_prop = xmlHasProp(node, "style");
+	    xmlRemoveProp(style_prop);
+	  }else
+	    xmlSetProp(node,"style","multilevel");
+	}
     
+      }
+      menueditor_app.menu_modified=TRUE;
+      gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
+      gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
+      break;
+    }else{
+      break;
     }
-    menueditor_app.menu_modified=TRUE;
-    gtk_widget_set_sensitive(menueditor_app.file_menu.save,TRUE);
-    gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,TRUE);
   }
   xmlFree(prop_name);
   xmlFree(prop_cmd);
@@ -684,7 +611,7 @@ void edit_selection(GtkTreeSelection *selection)
   xmlFree(prop_style);
   xmlFree(prop_unique);
 
-  gtk_widget_destroy (dialog);  
+  gtk_widget_hide (dialog);  
 }
 
 /* Edition */
