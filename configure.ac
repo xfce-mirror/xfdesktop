@@ -4,7 +4,7 @@ dnl xfdesktop - xfce4's desktop manager
 dnl
 
 dml version info
-m4_define([xfdesktop_version], [4.2.0])
+m4_define([xfdesktop_version], [4.3.0])
 
 dnl init autoconf
 AC_INIT([xfdesktop], [xfdesktop_version], [bjt23@cornell.edu])
@@ -33,23 +33,23 @@ AC_CHECK_HEADERS(fcntl.h math.h signal.h stddef.h string.h sys/stat.h sys/types.
 AC_CHECK_FUNCS(mmap sigaction srandom)
 
 dnl Check for i18n support
-BM_I18N([xfdesktop], [ar az be bg ca cs de en_GB es es_MX et eu fa fi fr gu
-		      he hi hu it ja pl ko lt ms nb_NO nl pa pt_BR pt_PT ro
+XDT_I18N([ar az be bg ca cs de en_GB es es_MX et eu fa fi fr gu \
+		      he hi hu it ja pl ko lt ms nb_NO nl pa pt_BR pt_PT ro \
 		      ru sk sv ta tr uk vi zh_CN zh_TW])
 
 dnl Check for X11 installed
-BM_LIBX11_REQUIRE
-BM_LIBSM
+XDT_CHECK_LIBX11_REQUIRE
+XDT_CHECK_LIBSM
 
 dnl required
-BM_DEPEND([GMODULE], [gmodule-2.0], [2.2.0])
-BM_DEPEND([GOBJECT], [gobject-2.0], [2.2.0])
-BM_DEPEND([GTK], [gtk+-2.0], [2.2.0])
-BM_DEPEND([LIBXFCE4UTIL], libxfce4util-1.0, 4.2.0)
-BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.2.0)
-BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [4.2.0])
-XFCE_PANEL_PLUGIN([XFCE4_PANEL], [4.2.0])
-XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.2.0])
+XDT_CHECK_PACKAGE([GMODULE], [gmodule-2.0], [2.2.0])
+XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [2.2.0])
+XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.2.0])
+XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.2.0])
+XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.2.0])
+XDT_CHECK_PACKAGE([LIBXFCE4MCS_CLIENT],  [libxfce4mcs-client-1.0], [4.2.0])
+XDT_XFCE_PANEL_PLUGIN([XFCE4_PANEL], [4.2.0])
+XDT_XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.2.0])
 
 dnl Build options
 AC_ARG_ENABLE([menu-editor],
