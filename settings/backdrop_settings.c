@@ -1158,6 +1158,8 @@ run_dialog (McsPlugin * mcs_plugin)
 	
 	is_running = TRUE;
 	
+    xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+
 	bd = create_backdrop_dialog(mcs_plugin);
 	win_icon = xfce_themed_icon_load("xfce4-backdrop", 48);
 	if(win_icon) {
