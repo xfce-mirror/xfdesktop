@@ -253,7 +253,7 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
 	return submenu;
 }
 
-static void
+static gboolean
 menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		MenuPathType pathtype, gboolean is_legacy, const gchar *extra_cat)
 {
@@ -265,6 +265,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 	GPtrArray *newpaths = NULL;
 	const gchar *name;
 	gchar tmppath[2048];
+	gboolean ret = FALSE;
 
 	xfce_desktop_entry_get_string (de, "OnlyShowIn", FALSE, &onlyshowin);
 	/* each element needs to be ';'-terminated.  i'm not working around
@@ -349,6 +350,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 				xfce_app_menu_item_get_needs_term(XFCE_APP_MENU_ITEM(mi)),
 				xfce_app_menu_item_get_startup_notification(XFCE_APP_MENU_ITEM(mi)),
 				menu, menu_pos, NULL);
+		ret = TRUE;
 	} else if(pathtype == MPATH_MULTI_UNIQUE) {
 		/* grab most specific */
 		path = _build_path(desktop_menu->dentry_basepath,
@@ -383,6 +385,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 				xfce_app_menu_item_get_needs_term(XFCE_APP_MENU_ITEM(mi)),
 				xfce_app_menu_item_get_startup_notification(XFCE_APP_MENU_ITEM(mi)),
 				menu, menu_pos, NULL);
+		ret = TRUE;
 	} else {
 		if(pathtype == MPATH_MULTI)
 			_prune_generic_paths(newpaths);
@@ -421,6 +424,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 					xfce_app_menu_item_get_needs_term(XFCE_APP_MENU_ITEM(mi)),
 					xfce_app_menu_item_get_startup_notification(XFCE_APP_MENU_ITEM(mi)),
 					menu, menu_pos, NULL);
+			ret = TRUE;
 			g_free(path);
 		}
 		path = NULL;
@@ -442,9 +446,11 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		g_free(exec);
 	if(path)
 		g_free(path);
+
+	return ret;
 }
 
-static void
+static gboolean
 menu_dentry_parse_dentry_file(XfceDesktopMenu *desktop_menu,
 		const gchar *filename, MenuPathType pathtype) 
 {
@@ -455,9 +461,13 @@ menu_dentry_parse_dentry_file(XfceDesktopMenu *desktop_menu,
 	dentry = xfce_desktop_entry_new(filename, dentry_keywords,
 			G_N_ELEMENTS(dentry_keywords));
 	if(dentry) {
-		menu_dentry_parse_dentry(desktop_menu, dentry, pathtype, FALSE, NULL);
+		gboolean ret = menu_dentry_parse_dentry(desktop_menu, dentry,
+				pathtype, FALSE, NULL);
 		g_object_unref(G_OBJECT(dentry));
+		return ret;
 	}
+	
+	return FALSE;
 }
 
 static gint
@@ -465,18 +475,26 @@ dentry_recurse_dir(GDir *dir, const gchar *path, XfceDesktopMenu *desktop_menu,
 		MenuPathType pathtype)
 {
 	const gchar *file;
-	gchar *fullpath;
+	gchar fullpath[PATH_MAX];
 	GDir *d1;
 	gint ndirs = 1;
 	struct stat st;
 	
 	while((file=g_dir_read_name(dir))) {
 		if(g_str_has_suffix(file, ".desktop")) {
-			fullpath = g_build_filename(path, file, NULL);
-			menu_dentry_parse_dentry_file(desktop_menu, fullpath, pathtype);
-			g_free(fullpath);
+			if(!g_hash_table_lookup(desktop_menu->menu_entry_hash, file)) {
+				g_snprintf(fullpath, PATH_MAX, "%s" G_DIR_SEPARATOR_S "%s",
+						path, file);
+				if(menu_dentry_parse_dentry_file(desktop_menu, fullpath,
+						pathtype))
+				{
+					g_hash_table_insert(desktop_menu->menu_entry_hash,
+							g_strdup(file), GINT_TO_POINTER(1));
+				}
+			}
 		} else {
-			fullpath = g_build_path(G_DIR_SEPARATOR_S, path, file, NULL);
+			g_snprintf(fullpath, PATH_MAX, "%s" G_DIR_SEPARATOR_S "%s",
+					path, file);
 			if((d1=g_dir_open(fullpath, 0, NULL))) {
 				if(!stat(fullpath, &st)) {
 					g_hash_table_insert(desktop_menu->dentrydir_mtimes,
@@ -485,7 +503,6 @@ dentry_recurse_dir(GDir *dir, const gchar *path, XfceDesktopMenu *desktop_menu,
 				ndirs += dentry_recurse_dir(d1, fullpath, desktop_menu, pathtype);
 				g_dir_close(d1);
 			}
-			g_free(fullpath);
 		}
 	}
 	
@@ -666,7 +683,7 @@ desktop_menu_dentry_need_update(XfceDesktopMenu *desktop_menu)
  * legacy dir support.  bleh.
  ******************************************************************************/
 
-static void
+static gboolean
 menu_dentry_legacy_parse_dentry_file(XfceDesktopMenu *desktop_menu,
 		const gchar *filename, const gchar *catdir, MenuPathType pathtype)
 {
@@ -688,9 +705,13 @@ menu_dentry_legacy_parse_dentry_file(XfceDesktopMenu *desktop_menu,
 	dentry = xfce_desktop_entry_new(filename, dentry_keywords,
 			G_N_ELEMENTS(dentry_keywords));
 	if(dentry) {
-		menu_dentry_parse_dentry(desktop_menu, dentry, pathtype, TRUE, category);
+		gboolean ret = menu_dentry_parse_dentry(desktop_menu, dentry,
+				pathtype, TRUE, category);
 		g_object_unref(G_OBJECT(dentry));
+		return ret;
 	}
+
+	return FALSE;
 }
 
 static void
@@ -720,8 +741,14 @@ menu_dentry_legacy_process_dir(XfceDesktopMenu *desktop_menu,
 					(catdir ? catdir : file), pathtype);
 		} else if(catdir && g_str_has_suffix(file, ".desktop")) {
 			/* we're also going to ignore category-less .desktop files. */
-			menu_dentry_legacy_parse_dentry_file(desktop_menu, fullpath,
-					catdir, pathtype);
+			if(!g_hash_table_lookup(desktop_menu->menu_entry_hash, file)) {
+				if(menu_dentry_legacy_parse_dentry_file(desktop_menu,
+						fullpath, catdir, pathtype))
+				{
+					g_hash_table_insert(desktop_menu->menu_entry_hash,
+							g_strdup(file), GINT_TO_POINTER(1));
+				}
+			}
 		}
 	}
 	
