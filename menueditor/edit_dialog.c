@@ -491,23 +491,23 @@ edit_selection (GtkTreeSelection * selection, gpointer data)
           xmlRemoveProp (term_prop);
         }
 
-        name = g_strdup_printf (NAME_FORMAT, gtk_entry_get_text (GTK_ENTRY (name_entry)));
-        command = g_strdup_printf (COMMAND_FORMAT, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
+        name = g_markup_printf_escaped (NAME_FORMAT, gtk_entry_get_text (GTK_ENTRY (name_entry)));
+        command = g_markup_printf_escaped (COMMAND_FORMAT, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
       }
       else if (!xmlStrcmp (node->name, (xmlChar *) "menu")) {
-        name = g_strdup_printf (MENU_FORMAT, gtk_entry_get_text (GTK_ENTRY (name_entry)));
+        name = g_markup_printf_escaped (MENU_FORMAT, gtk_entry_get_text (GTK_ENTRY (name_entry)));
         command = g_strdup ("");
 
         xmlSetProp (node, "name", gtk_entry_get_text (GTK_ENTRY (name_entry)));
       }
       else if (!xmlStrcmp (node->name, (xmlChar *) "builtin")) {
-        name = g_strdup_printf (BUILTIN_FORMAT, gtk_entry_get_text (GTK_ENTRY (name_entry)));
-        command = g_strdup_printf (COMMAND_FORMAT, _("quit"));
+        name = g_markup_printf_escaped (BUILTIN_FORMAT, gtk_entry_get_text (GTK_ENTRY (name_entry)));
+        command = g_markup_printf_escaped (COMMAND_FORMAT, _("quit"));
 
         xmlSetProp (node, "name", gtk_entry_get_text (GTK_ENTRY (name_entry)));
       }
       else if (!xmlStrcmp (node->name, (xmlChar *) "title")) {
-        name = g_strdup_printf (TITLE_FORMAT, gtk_entry_get_text (GTK_ENTRY (name_entry)));
+        name = g_markup_printf_escaped (TITLE_FORMAT, gtk_entry_get_text (GTK_ENTRY (name_entry)));
         command = g_strdup ("");
 
         xmlSetProp (node, "name", gtk_entry_get_text (GTK_ENTRY (name_entry)));
@@ -518,8 +518,8 @@ edit_selection (GtkTreeSelection * selection, gpointer data)
 
         switch (controls.menu_type) {
         case MENUFILE:
-          name = g_strdup_printf (INCLUDE_FORMAT, _("--- include ---"));
-          command = g_strdup_printf (INCLUDE_PATH_FORMAT, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
+          name = g_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
+          command = g_markup_printf_escaped (INCLUDE_PATH_FORMAT, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
 
           xmlSetProp (node, "type", "file");
           xmlSetProp (node, "src", gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
@@ -531,8 +531,8 @@ edit_selection (GtkTreeSelection * selection, gpointer data)
           xmlRemoveProp (style_prop);
           break;
         case SYSTEM:
-          name = g_strdup_printf (INCLUDE_FORMAT, _("--- include ---"));
-          command = g_strdup_printf (INCLUDE_PATH_FORMAT, _("system"));
+          name = g_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
+          command = g_markup_printf_escaped (INCLUDE_PATH_FORMAT, _("system"));
 
           xmlSetProp (node, "type", "system");
 
@@ -558,6 +558,7 @@ edit_selection (GtkTreeSelection * selection, gpointer data)
 
       g_free (name);
       g_free (command);
+
 
       me->menu_modified = TRUE;
       gtk_widget_set_sensitive (me->file_menu_save, TRUE);

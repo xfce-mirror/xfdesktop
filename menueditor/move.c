@@ -74,8 +74,8 @@ my_tree_store_swap_down (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTreeIter
     prop_name = xmlGetProp (node, "name");
     prop_cmd = xmlGetProp (node, "cmd");
 
-    name = g_strdup_printf (NAME_FORMAT, prop_name);
-    cmd = g_strdup_printf (COMMAND_FORMAT, prop_cmd);
+    name = g_markup_printf_escaped (NAME_FORMAT, prop_name);
+    cmd = g_markup_printf_escaped (COMMAND_FORMAT, prop_cmd);
 
     gtk_tree_store_insert_after (tree_store, &iter_new, NULL, b);
     gtk_tree_store_set (tree_store, &iter_new,
@@ -84,7 +84,7 @@ my_tree_store_swap_down (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTreeIter
   }
   /* separator */
   else if (!xmlStrcmp (node->name, (xmlChar *) "separator")) {
-    name = g_strdup_printf (SEPARATOR_FORMAT, _("--- separator ---"));
+    name = g_markup_printf_escaped (SEPARATOR_FORMAT, _("--- separator ---"));
 
     gtk_tree_store_insert_after (tree_store, &iter_new, NULL, b);
     gtk_tree_store_set (tree_store, &iter_new,
@@ -95,7 +95,7 @@ my_tree_store_swap_down (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTreeIter
   else if (!xmlStrcmp (node->name, (xmlChar *) "menu")) {
     prop_name = xmlGetProp (node, "name");
 
-    name = g_strdup_printf (MENU_FORMAT, prop_name);
+    name = g_markup_printf_escaped (MENU_FORMAT, prop_name);
 
     gtk_tree_store_insert_after (tree_store, &iter_new, NULL, b);
     gtk_tree_store_set (tree_store, &iter_new,
@@ -108,12 +108,12 @@ my_tree_store_swap_down (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTreeIter
     prop_type = xmlGetProp (node, "type");
     prop_src = xmlGetProp (node, "src");
 
-    name = g_strdup_printf (INCLUDE_FORMAT, _("--- include ---"));
+    name = g_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
 
     if (!xmlStrcmp (prop_type, (xmlChar *) "system"))
-      src = g_strdup_printf (INCLUDE_PATH_FORMAT, _("system"));
+      src = g_markup_printf_escaped (INCLUDE_PATH_FORMAT, _("system"));
     else
-      src = g_strdup_printf (INCLUDE_PATH_FORMAT, prop_src);
+      src = g_markup_printf_escaped (INCLUDE_PATH_FORMAT, prop_src);
 
     gtk_tree_store_insert_after (tree_store, &iter_new, NULL, b);
     gtk_tree_store_set (tree_store, &iter_new,
@@ -125,8 +125,8 @@ my_tree_store_swap_down (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTreeIter
     prop_name = xmlGetProp (node, "name");
     prop_cmd = xmlGetProp (node, "cmd");
 
-    name = g_strdup_printf (NAME_FORMAT, prop_name);
-    cmd = g_strdup_printf (COMMAND_FORMAT, prop_cmd);
+    name = g_markup_printf_escaped (NAME_FORMAT, prop_name);
+    cmd = g_markup_printf_escaped (COMMAND_FORMAT, prop_cmd);
 
     gtk_tree_store_insert_after (tree_store, &iter_new, NULL, b);
     gtk_tree_store_set (tree_store, &iter_new,
@@ -137,7 +137,7 @@ my_tree_store_swap_down (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTreeIter
   else if (!xmlStrcmp (node->name, (xmlChar *) "title")) {
     prop_name = xmlGetProp (node, "name");
 
-    title = g_strdup_printf (TITLE_FORMAT, prop_name);
+    title = g_markup_printf_escaped (TITLE_FORMAT, prop_name);
 
     gtk_tree_store_insert_after (tree_store, &iter_new, NULL, b);
     gtk_tree_store_set (tree_store, &iter_new,
@@ -212,8 +212,8 @@ my_tree_store_swap_up (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTreeIter *
     prop_name = xmlGetProp (node, "name");
     prop_cmd = xmlGetProp (node, "cmd");
 
-    name = g_strdup_printf (NAME_FORMAT, prop_name);
-    cmd = g_strdup_printf (COMMAND_FORMAT, prop_cmd);
+    name = g_markup_printf_escaped (NAME_FORMAT, prop_name);
+    cmd = g_markup_printf_escaped (COMMAND_FORMAT, prop_cmd);
 
     gtk_tree_store_insert_before (tree_store, &iter_new, NULL, b);
     gtk_tree_store_set (tree_store, &iter_new,
@@ -222,7 +222,7 @@ my_tree_store_swap_up (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTreeIter *
   }
   /* separator */
   else if (!xmlStrcmp (node->name, (xmlChar *) "separator")) {
-    name = g_strdup_printf (SEPARATOR_FORMAT, _("--- separator ---"));
+    name = g_markup_printf_escaped (SEPARATOR_FORMAT, _("--- separator ---"));
 
     gtk_tree_store_insert_before (tree_store, &iter_new, NULL, b);
     gtk_tree_store_set (tree_store, &iter_new,
@@ -233,7 +233,7 @@ my_tree_store_swap_up (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTreeIter *
   else if (!xmlStrcmp (node->name, (xmlChar *) "menu")) {
     prop_name = xmlGetProp (node, "name");
 
-    name = g_strdup_printf (MENU_FORMAT, prop_name);
+    name = g_markup_printf_escaped (MENU_FORMAT, prop_name);
 
     gtk_tree_store_insert_before (tree_store, &iter_new, NULL, b);
     gtk_tree_store_set (tree_store, &iter_new,
@@ -246,12 +246,12 @@ my_tree_store_swap_up (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTreeIter *
     prop_type = xmlGetProp (node, "type");
     prop_src = xmlGetProp (node, "src");
 
-    name = g_strdup_printf (INCLUDE_FORMAT, _("--- include ---"));
+    name = g_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
 
     if (!xmlStrcmp (prop_type, (xmlChar *) "system"))
-      src = g_strdup_printf (INCLUDE_PATH_FORMAT, _("system"));
+      src = g_markup_printf_escaped (INCLUDE_PATH_FORMAT, _("system"));
     else
-      src = g_strdup_printf (INCLUDE_PATH_FORMAT, prop_src);
+      src = g_markup_printf_escaped (INCLUDE_PATH_FORMAT, prop_src);
 
     gtk_tree_store_insert_before (tree_store, &iter_new, NULL, b);
     gtk_tree_store_set (tree_store, &iter_new,
@@ -263,8 +263,8 @@ my_tree_store_swap_up (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTreeIter *
     prop_name = xmlGetProp (node, "name");
     prop_cmd = xmlGetProp (node, "cmd");
 
-    name = g_strdup_printf (NAME_FORMAT, prop_name);
-    cmd = g_strdup_printf (COMMAND_FORMAT, prop_cmd);
+    name = g_markup_printf_escaped (NAME_FORMAT, prop_name);
+    cmd = g_markup_printf_escaped (COMMAND_FORMAT, prop_cmd);
 
     gtk_tree_store_insert_before (tree_store, &iter_new, NULL, b);
     gtk_tree_store_set (tree_store, &iter_new,
@@ -275,7 +275,7 @@ my_tree_store_swap_up (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTreeIter *
   else if (!xmlStrcmp (node->name, (xmlChar *) "title")) {
     prop_name = xmlGetProp (node, "name");
 
-    title = g_strdup_printf (TITLE_FORMAT, prop_name);
+    title = g_markup_printf_escaped (TITLE_FORMAT, prop_name);
 
     gtk_tree_store_insert_before (tree_store, &iter_new, NULL, b);
     gtk_tree_store_set (tree_store, &iter_new,

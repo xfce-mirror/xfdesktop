@@ -335,8 +335,8 @@ add_entry_cb (GtkWidget * widget, gpointer data)
         xmlSetProp (node, "name", gtk_entry_get_text (GTK_ENTRY (entry_name)));
         xmlSetProp (node, "cmd", gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
 
-        name = g_strdup_printf (NAME_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_name)));
-        command = g_strdup_printf (COMMAND_FORMAT, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
+        name = g_markup_printf_escaped (NAME_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_name)));
+        command = g_markup_printf_escaped (COMMAND_FORMAT, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
         break;
       case SUBMENU:
         /* Set node name */
@@ -346,14 +346,14 @@ add_entry_cb (GtkWidget * widget, gpointer data)
         xmlSetProp (node, "visible", "yes");
 
 
-        name = g_strdup_printf (MENU_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_name)));
+        name = g_markup_printf_escaped (MENU_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_name)));
         command = g_strdup ("");
         break;
       case SEPARATOR:
         /* Set node name */
         xmlNodeSetName (node, "separator");
 
-        name = g_strdup_printf (SEPARATOR_FORMAT, _("--- separator ---"));
+        name = g_markup_printf_escaped (SEPARATOR_FORMAT, _("--- separator ---"));
         command = g_strdup ("");
         break;
       case TITLE:
@@ -364,7 +364,7 @@ add_entry_cb (GtkWidget * widget, gpointer data)
         xmlSetProp (node, "visible", "yes");
 
 
-        name = g_strdup_printf (TITLE_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_name)));
+        name = g_markup_printf_escaped (TITLE_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_name)));
         command = g_strdup ("");
         break;
       case INCLUDE:
@@ -377,8 +377,8 @@ add_entry_cb (GtkWidget * widget, gpointer data)
         xmlSetProp (node, "visible", "yes");
         xmlSetProp (node, "cmd", "quit");
 
-        name = g_strdup_printf (BUILTIN_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_name)));
-        command = g_strdup_printf (COMMAND_FORMAT, _("quit"));
+        name = g_markup_printf_escaped (BUILTIN_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_name)));
+        command = g_markup_printf_escaped (COMMAND_FORMAT, _("quit"));
       }
 
       /* Append entry in the tree */
