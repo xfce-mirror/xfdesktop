@@ -629,12 +629,11 @@ static GtkWidget *create_windowlist_menu(void)
 
         if (realname)
         {
-            ws_name = g_strdup_printf("%s: <i>%s</i>", _("Workspace"), 
-                                      realname);
+            ws_name = g_strdup_printf("<i>%s</i>", realname);
         }
         else
         {
-            ws_name = g_strdup_printf("%s: <i>%d</i>", _("Workspace"), i+1);
+            ws_name = g_strdup_printf("<i>%d</i>", i+1);
         }
         
         mi = gtk_menu_item_new_with_label(ws_name);
@@ -642,6 +641,7 @@ static GtkWidget *create_windowlist_menu(void)
         
         label = gtk_bin_get_child(GTK_BIN(mi));
         gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
+	gtk_misc_set_alignment(GTK_MISC(label), 0.5, 0.5);
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
 
