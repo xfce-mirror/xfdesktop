@@ -309,9 +309,12 @@ popup_menu (int button, guint32 time, XfceDesktop *xfdesktop)
 #ifdef USE_DESKTOP_MENU
 	GtkWidget *menu_widget;
 	
+    	DBG ("popup menu");
 	if(!module_desktop_menu)
 		return;
 	
+    	DBG ("desktop menu module found");
+
 	if(!desktop_menu)
 		desktop_menu = xfce_desktop_menu_new(NULL, FALSE);
 	else if(xfce_desktop_menu_need_update(desktop_menu))
@@ -450,6 +453,7 @@ menu_init_global(McsClient *client)
 {
 	McsSetting *setting;
 	
+	DBG ("menu_init_global");
 #ifdef HAVE_SIGNAL_H
 	signal(SIGCHLD, SIG_IGN);
 #endif
@@ -457,6 +461,7 @@ menu_init_global(McsClient *client)
 	if(MCS_SUCCESS == mcs_client_get_setting(client, "showwl",
 			BACKDROP_CHANNEL, &setting))
 	{
+		DBG ("window list");
 		show_windowlist = setting->data.v_int == 0 ? FALSE : TRUE;
 		mcs_setting_free(setting);
 	}
@@ -464,6 +469,7 @@ menu_init_global(McsClient *client)
 	if(MCS_SUCCESS == mcs_client_get_setting(client, "showwli",
 			BACKDROP_CHANNEL, &setting))
 	{
+		DBG ("window list icons");
 		show_windowlist_icons = setting->data.v_int == 0 ? FALSE : TRUE;
 		mcs_setting_free(setting);
 	}
@@ -472,6 +478,7 @@ menu_init_global(McsClient *client)
 	if(MCS_SUCCESS == mcs_client_get_setting(client, "showdm",
 			BACKDROP_CHANNEL, &setting))
 	{
+		DBG ("desktop menu");
 		if(setting->data.v_int != 0 && !module_desktop_menu) {
 			if((module_desktop_menu=xfce_desktop_menu_stub_init())) {
 				desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
@@ -493,6 +500,7 @@ menu_init_global(McsClient *client)
 	if(MCS_SUCCESS == mcs_client_get_setting(client, "showdmi",
 			BACKDROP_CHANNEL, &setting))
 	{
+	    	DBG ("desktop menu icons");
 		if(desktop_menu) {
 			xfce_desktop_menu_set_show_icons(desktop_menu,
 					setting->data.v_int == 0 ? FALSE : TRUE);
