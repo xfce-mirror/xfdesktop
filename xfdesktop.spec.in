@@ -37,8 +37,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/*
 %{_bindir}/*
 %{_datadir}/applications/
-%{_datadir}/icons/hicolor/32x32/apps/
-%{_datadir}/icons/hicolor/48x48/apps/
+%{_datadir}/icons/
 %{_datadir}/locale/
 %{_datadir}/pixmaps/
 %{_datadir}/xfce4/
