@@ -28,6 +28,7 @@
 typedef struct {
     Window root;
 	int xscreen;
+	GdkScreen *gscreen;
     Atom atom;
     Atom e_atom;
 

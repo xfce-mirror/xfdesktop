@@ -224,7 +224,6 @@ create_pixmap (XfceBackdrop *backdrop, GdkPixbuf * image)
 {
     GdkPixmap *pixmap = NULL;
     GdkPixbuf *pixbuf = NULL;
-	GdkScreen *gscreen;
 	GdkColormap *cmap;
     int width, height;
     gboolean has_composite;
@@ -232,8 +231,6 @@ create_pixmap (XfceBackdrop *backdrop, GdkPixbuf * image)
 
     TRACE ("dummy");
 
-	gscreen = gdk_display_get_screen(gdk_display_get_default(), backdrop->xscreen);
-	
     if (!image)
     {
 	pixbuf = create_solid (&(backdrop->color1), 1, 1);
@@ -249,8 +246,8 @@ create_pixmap (XfceBackdrop *backdrop, GdkPixbuf * image)
 	    /* if height and width are both less than 1/2 the screen
 	     * -> tiled, else -> scaled */
 
-	    if (height <= gdk_screen_get_height(gscreen) / 2 &&
-		width <= gdk_screen_get_width(gscreen) / 2)
+	    if (height <= gdk_screen_get_height(backdrop->gscreen) / 2 &&
+		width <= gdk_screen_get_width(backdrop->gscreen) / 2)
 	    {
 		style = TILED;
 	    }
@@ -282,22 +279,22 @@ create_pixmap (XfceBackdrop *backdrop, GdkPixbuf * image)
 
 	    case CENTERED:
 		{
-		    int x = MAX ((gdk_screen_get_width(gscreen) - width) / 2, 0);
-		    int y = MAX ((gdk_screen_get_height(gscreen) - height) / 2, 0);
-		    int x_offset = MIN ((gdk_screen_get_width(gscreen) - width) / 2, x);
+		    int x = MAX ((gdk_screen_get_width(backdrop->gscreen) - width) / 2, 0);
+		    int y = MAX ((gdk_screen_get_height(backdrop->gscreen) - height) / 2, 0);
+		    int x_offset = MIN ((gdk_screen_get_width(backdrop->gscreen) - width) / 2, x);
 		    int y_offset =
-			MIN ((gdk_screen_get_height(gscreen) - height) / 2, y);
+			MIN ((gdk_screen_get_height(backdrop->gscreen) - height) / 2, y);
 
 		    pixbuf = create_solid (&(backdrop->color1),
-					   gdk_screen_get_width(gscreen),
-					   gdk_screen_get_height(gscreen));
+					   gdk_screen_get_width(backdrop->gscreen),
+					   gdk_screen_get_height(backdrop->gscreen));
 
 		    if (has_composite)
 		    {
 			gdk_pixbuf_composite (image, pixbuf, x, y,
-					      MIN (gdk_screen_get_width(gscreen),
+					      MIN (gdk_screen_get_width(backdrop->gscreen),
 						   width),
-					      MIN (gdk_screen_get_height(gscreen),
+					      MIN (gdk_screen_get_height(backdrop->gscreen),
 						   height),
 					      x_offset, y_offset, 1.0, 1.0,
 					      GDK_INTERP_NEAREST, 255);
@@ -307,9 +304,9 @@ create_pixmap (XfceBackdrop *backdrop, GdkPixbuf * image)
 			gdk_pixbuf_copy_area (image,
 					      MAX (-x_offset, 0),
 					      MAX (-y_offset, 0),
-					      MIN (gdk_screen_get_width(gscreen),
+					      MIN (gdk_screen_get_width(backdrop->gscreen),
 						   width),
-					      MIN (gdk_screen_get_height(gscreen),
+					      MIN (gdk_screen_get_height(backdrop->gscreen),
 						   height), pixbuf, x, y);
 		    }
 		}
@@ -322,24 +319,24 @@ create_pixmap (XfceBackdrop *backdrop, GdkPixbuf * image)
 		    double wratio, hratio;
 		    GdkPixbuf *scaled;
 
-		    wratio = (double) width / (double) gdk_screen_get_width(gscreen);
-		    hratio = (double) height / (double) gdk_screen_get_height(gscreen);
+		    wratio = (double) width / (double) gdk_screen_get_width(backdrop->gscreen);
+		    hratio = (double) height / (double) gdk_screen_get_height(backdrop->gscreen);
 
 		    if (hratio > wratio)
 		    {
-			h = gdk_screen_get_height(gscreen);
+			h = gdk_screen_get_height(backdrop->gscreen);
 			w = rint (width / hratio);
 
 			y = 0;
-			x = (gdk_screen_get_width(gscreen) - w) / 2;
+			x = (gdk_screen_get_width(backdrop->gscreen) - w) / 2;
 		    }
 		    else
 		    {
-			w = gdk_screen_get_width(gscreen);
+			w = gdk_screen_get_width(backdrop->gscreen);
 			h = rint (height / wratio);
 
 			x = 0;
-			y = (gdk_screen_get_height(gscreen) - h) / 2;
+			y = (gdk_screen_get_height(backdrop->gscreen) - h) / 2;
 		    }
 
 		    DBG ("scaling: %d,%d+%dx%d\n", x, y, w, h);
@@ -348,8 +345,8 @@ create_pixmap (XfceBackdrop *backdrop, GdkPixbuf * image)
 						      GDK_INTERP_BILINEAR);
 
 		    pixbuf = create_solid (&(backdrop->color1),
-					   gdk_screen_get_width(gscreen),
-					   gdk_screen_get_height(gscreen));
+					   gdk_screen_get_width(backdrop->gscreen),
+					   gdk_screen_get_height(backdrop->gscreen));
 
 		    if (has_composite)
 		    {
@@ -371,20 +368,20 @@ create_pixmap (XfceBackdrop *backdrop, GdkPixbuf * image)
 	    case STRETCHED:
 		{
 		    pixbuf =
-			gdk_pixbuf_scale_simple (image, gdk_screen_get_width(gscreen),
-						 gdk_screen_get_height(gscreen),
+			gdk_pixbuf_scale_simple (image, gdk_screen_get_width(backdrop->gscreen),
+						 gdk_screen_get_height(backdrop->gscreen),
 						 GDK_INTERP_BILINEAR);
 		    if (has_composite)
 		    {
 			GdkPixbuf *scaled = pixbuf;
 
 			pixbuf = create_solid (&(backdrop->color1),
-					       gdk_screen_get_width(gscreen),
-					       gdk_screen_get_height(gscreen));
+					       gdk_screen_get_width(backdrop->gscreen),
+					       gdk_screen_get_height(backdrop->gscreen));
 
 			gdk_pixbuf_composite (scaled, pixbuf, 0, 0,
-					      gdk_screen_get_width(gscreen),
-					      gdk_screen_get_height(gscreen),
+					      gdk_screen_get_width(backdrop->gscreen),
+					      gdk_screen_get_height(backdrop->gscreen),
 					      0, 0, 1.0, 1.0,
 					      GDK_INTERP_NEAREST, 255);
 			g_object_unref (scaled);
@@ -398,7 +395,7 @@ create_pixmap (XfceBackdrop *backdrop, GdkPixbuf * image)
 	}
     }
 
-	cmap = gdk_screen_get_system_colormap(gscreen);
+	cmap = gdk_screen_get_system_colormap(backdrop->gscreen);
     gdk_pixbuf_render_pixmap_and_mask_for_colormap (pixbuf, cmap, &pixmap, NULL, 0);
     g_object_unref (pixbuf);
 
@@ -453,7 +450,6 @@ set_backdrop(XfceBackdrop *backdrop)
 {
 	GdkPixmap *pixmap;
 	GdkPixbuf *pixbuf;
-	GdkScreen *gscreen;
 	GdkWindow *root;
 	
 	if(!backdrop->set_backdrop)
@@ -467,8 +463,7 @@ set_backdrop(XfceBackdrop *backdrop)
 	pixmap = create_pixmap(backdrop, pixbuf);
 	
 	update_window_style(backdrop->win, pixmap);
-	gscreen = gdk_display_get_screen(gdk_display_get_default(), backdrop->xscreen);
-	root = gdk_screen_get_root_window(gscreen);
+	root = gdk_screen_get_root_window(backdrop->gscreen);
 	update_root_window(root, backdrop->win, pixmap);
 	
 	if(pixbuf)
@@ -652,7 +647,6 @@ remove_old_pixmap(XfceBackdrop *backdrop)
 XfceBackdrop *
 backdrop_new(gint screen, GtkWidget *fullscreen, McsClient *client)
 {
-	GdkScreen *gscreen;
     GdkWindow *root;
 	XfceBackdrop *backdrop;
 	GdkRectangle rect;
@@ -667,9 +661,9 @@ backdrop_new(gint screen, GtkWidget *fullscreen, McsClient *client)
 	backdrop->client = client;
 	
 	backdrop->xscreen = screen;
-	gscreen = gdk_display_get_screen(gdk_display_get_default(), screen);
+	backdrop->gscreen = gdk_display_get_screen(gdk_display_get_default(), screen);
 	
-	root = gdk_screen_get_root_window(gscreen);
+	root = gdk_screen_get_root_window(backdrop->gscreen);
     backdrop->root = GDK_WINDOW_XID(root);
 
     backdrop->atom = XInternAtom(GDK_DISPLAY(), "_XROOTPMAP_ID", False);
@@ -684,7 +678,7 @@ backdrop_new(gint screen, GtkWidget *fullscreen, McsClient *client)
     set_backdrop(backdrop);
 	
     /* color the root window black */
-	cmap = gdk_screen_get_system_colormap(gscreen);
+	cmap = gdk_screen_get_system_colormap(backdrop->gscreen);
 	black.red = black.green = black.blue = 0;
 	if(gdk_colormap_alloc_color(cmap, &black, FALSE, TRUE)) {
 		root_gc = gdk_gc_new(GDK_DRAWABLE(root));
@@ -692,11 +686,12 @@ backdrop_new(gint screen, GtkWidget *fullscreen, McsClient *client)
 		gdk_colormap_free_colors(cmap, &black, 1);
 		
 		rect.x = rect.y = 0;
-		rect.width = gdk_screen_get_width(gscreen);
-		rect.height = gdk_screen_get_height(gscreen);
+		rect.width = gdk_screen_get_width(backdrop->gscreen);
+		rect.height = gdk_screen_get_height(backdrop->gscreen);
 		gdk_window_begin_paint_rect(root, &rect);
 		gdk_draw_rectangle(GDK_DRAWABLE(root), root_gc, TRUE, 0, 0,
-				gdk_screen_get_width(gscreen), gdk_screen_get_height(gscreen));
+				gdk_screen_get_width(backdrop->gscreen),
+				gdk_screen_get_height(backdrop->gscreen));
 		gdk_window_end_paint(root);
 		g_object_unref(G_OBJECT(root_gc));
 	}
@@ -797,10 +792,7 @@ backdrop_load_settings(XfceBackdrop *backdrop)
 void
 backdrop_cleanup(XfceBackdrop *backdrop)
 {
-	GdkScreen *gscreen = gdk_display_get_screen(gdk_display_get_default(),
-			backdrop->xscreen);
-
-	gdk_window_remove_filter(gdk_screen_get_root_window(gscreen),
+	gdk_window_remove_filter(gdk_screen_get_root_window(backdrop->gscreen),
 			(GdkFilterFunc)monitor_backdrop, backdrop);
 	g_free(backdrop);
 }

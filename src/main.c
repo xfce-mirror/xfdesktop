@@ -306,17 +306,16 @@ xfdesktop_size_changed(GdkScreen *screen, gpointer user_data)
 static void
 xfdesktop_init(XfceDesktop *xfdesktop, gint screen)
 {
-	GdkScreen *gscreen;
 	TRACE ("initialization");
 	
 	xfdesktop->xscreen = screen;
-	gscreen = gdk_display_get_screen(gdk_display_get_default(), screen);
-	xfdesktop->root = GDK_WINDOW_XID(gdk_screen_get_root_window(gscreen));
+	xfdesktop->gscreen = gdk_display_get_screen(gdk_display_get_default(), screen);
+	xfdesktop->root = GDK_WINDOW_XID(gdk_screen_get_root_window(xfdesktop->gscreen));
 	
 	xfdesktop->netk_screen = netk_screen_get(screen);
 	netk_screen_force_update(xfdesktop->netk_screen);
 	
-	xfdesktop->fullscreen = create_fullscreen_window(gscreen);
+	xfdesktop->fullscreen = create_fullscreen_window(xfdesktop->gscreen);
 	
 	xfdesktop_set_selection(xfdesktop);
 	
@@ -324,8 +323,8 @@ xfdesktop_init(XfceDesktop *xfdesktop, gint screen)
 	xfdesktop->backdrop = backdrop_new(screen, xfdesktop->fullscreen, xfdesktop->client);
 	menu_init(xfdesktop);
 	
-	g_signal_connect(G_OBJECT(gdk_display_get_screen(gdk_display_get_default(), screen)),
-			"size-changed", G_CALLBACK(xfdesktop_size_changed), xfdesktop);
+	g_signal_connect(G_OBJECT(xfdesktop->gscreen), "size-changed",
+			G_CALLBACK(xfdesktop_size_changed), xfdesktop);
 
 	gtk_widget_show(xfdesktop->fullscreen);
 	gdk_window_lower(xfdesktop->fullscreen->window);
