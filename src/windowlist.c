@@ -48,6 +48,39 @@ static gboolean show_windowlist = TRUE;
 static gboolean show_windowlist_icons = TRUE;
 
 static void
+set_num_workspaces(GtkWidget *w, gpointer num)
+{
+	static Atom xa_NET_NUMBER_OF_DESKTOPS = 0;
+	XClientMessageEvent sev;
+	gint n;
+	GdkScreen *gscreen = gtk_widget_get_screen(w);
+	GdkWindow *groot = gdk_screen_get_root_window(gscreen);
+
+	if(!xa_NET_NUMBER_OF_DESKTOPS) {
+		xa_NET_NUMBER_OF_DESKTOPS = XInternAtom(GDK_DISPLAY(),
+				"_NET_NUMBER_OF_DESKTOPS", False);
+	}
+
+	n = GPOINTER_TO_INT(num);
+
+	sev.type = ClientMessage;
+	sev.display = GDK_DISPLAY();
+	sev.format = 32;
+	sev.window = GDK_WINDOW_XID(groot);
+	sev.message_type = xa_NET_NUMBER_OF_DESKTOPS;
+	sev.data.l[0] = n;
+
+	gdk_error_trap_push();
+
+	XSendEvent(GDK_DISPLAY(), GDK_WINDOW_XID(groot), False,
+			SubstructureNotifyMask | SubstructureRedirectMask,
+			(XEvent *)&sev);
+
+	gdk_flush();
+	gdk_error_trap_pop();
+}
+
+static void
 activate_window(GtkWidget *w, gpointer user_data)
 {
 	NetkWindow *netk_window = user_data;
@@ -201,14 +234,46 @@ windowlist_create(GdkScreen *gscreen)
 					G_CALLBACK(activate_window), netk_window);
 		}
 		
-		if(i != nworkspaces-1) {
-			mi = gtk_separator_menu_item_new();
-			gtk_widget_show(mi);
-			gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-		}
+		mi = gtk_separator_menu_item_new();
+		gtk_widget_show(mi);
+		gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 	}
 	
 	pango_font_description_free(italic_font_desc);
+	
+	/* 'add workspace' item */
+	if(show_windowlist_icons) {
+		img = gtk_image_new_from_stock(GTK_STOCK_ADD, GTK_ICON_SIZE_MENU);
+		mi = gtk_image_menu_item_new_with_mnemonic(_("_Add Workspace"));
+		gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+	} else
+		mi = gtk_menu_item_new_with_mnemonic(_("_Add Workspace"));
+	gtk_widget_show(mi);
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+	g_signal_connect(G_OBJECT(mi), "activate",
+			G_CALLBACK(set_num_workspaces), GINT_TO_POINTER(nworkspaces+1));
+	
+	/* 'remove workspace' item */
+	if(!ws_name || atoi(ws_name) == nworkspaces)
+		rm_label = g_strdup_printf(_("_Remove Workspace %d"), nworkspaces);
+	else {
+		gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
+		rm_label = g_strdup_printf(_("_Remove Workspace '%s'"), ws_name_esc);
+		g_free(ws_name_esc);
+	}
+	if(show_windowlist_icons) {
+		img = gtk_image_new_from_stock(GTK_STOCK_REMOVE, GTK_ICON_SIZE_MENU);
+		mi = gtk_image_menu_item_new_with_mnemonic(rm_label);
+		gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+	} else
+		mi = gtk_menu_item_new_with_mnemonic(rm_label);
+	g_free(rm_label);
+	if(nworkspaces == 1)
+		gtk_widget_set_sensitive(mi, FALSE);
+	gtk_widget_show(mi);
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+	g_signal_connect(G_OBJECT(mi), "activate",
+			G_CALLBACK(set_num_workspaces), GINT_TO_POINTER(nworkspaces-1));
 	
 	return menu;
 }
