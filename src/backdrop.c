@@ -439,6 +439,7 @@ set_background_from_root_property(XfceBackground *background)
     TRACE ("dummy");
     XGrabServer (dpy);
 
+#if 0
     /* first try _ESETROOT_PMAP_ID */
     XGetWindowProperty (dpy, w, background->e_atom, 0L, 1L, False, 
 	    		AnyPropertyType, &type, &format, &length, &after, 
@@ -456,8 +457,10 @@ set_background_from_root_property(XfceBackground *background)
 	    goto UNGRAB;
 	}
     }
-
+#endif
     /* _XROOTPMAP_ID */
+    DBG ("Update background from _XROOTPMAP_ID property");
+	
     XGetWindowProperty (dpy, w, background->atom, 0L, 1L, False, 
 	    		AnyPropertyType, &type, &format, &length, &after, 
 			&data);
@@ -466,16 +469,17 @@ set_background_from_root_property(XfceBackground *background)
     {
 	GdkPixmap *pixmap = gdk_pixmap_foreign_new (*((Pixmap *) data));
 
-	DBG ("Update background from _XROOTPMAP_ID property");
-	
 	if (pixmap)
+	{
 	    update_window_style (background->win, pixmap);
+	}
 	else
+	{
 	    DBG ("Unable to obtain pixmap from _XROOTPMAP_ID property");
-
+	}
     }
     
-UNGRAB:
+/*UNGRAB:*/
     XUngrabServer (dpy);
 }
 
