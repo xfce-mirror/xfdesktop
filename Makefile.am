@@ -38,6 +38,7 @@ conf_DATA = 								\
 	menu.xml.ca 							\
 	menu.xml.de 							\
 	menu.xml.es							\
+	menu.xml.et							\
 	menu.xml.eu							\
 	menu.xml.fa_IR 							\
 	menu.xml.fr 							\
