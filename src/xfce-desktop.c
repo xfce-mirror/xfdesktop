@@ -48,6 +48,21 @@
 #include <time.h>
 #endif
 
+#ifdef HAVE_XCOMPOSITE
+#include <X11/X.h>
+#include <X11/Xlib.h>
+#include <X11/extensions/Xcomposite.h>
+#include <X11/extensions/Xdamage.h>
+#include <X11/extensions/Xrender.h>
+
+#if COMPOSITE_MAJOR > 0 || COMPOSITE_MINOR >= 2
+#ifndef HAVE_NAME_WINDOW_PIXMAP
+#define HAVE_NAME_WINDOW_PIXMAP 1
+#endif /* HAVE_NAME_WINDOW_PIXMAP */
+#endif /* COMPOSITE_MAJOR > 0 || COMPOSITE_MINOR >= 2 */
+
+#endif /* HAVE_XCOMPOSITE */
+
 #include <glib.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtkwindow.h>
@@ -60,10 +75,17 @@
 #include "xfdesktop-common.h"
 #include "main.h"
 
+#ifdef HAVE_XCOMPOSITE
+#undef HAVE_XCOMPOSITE
+#endif
+
 static void xfce_desktop_class_init(XfceDesktopClass *klass);
 static void xfce_desktop_init(XfceDesktop *desktop);
 static void xfce_desktop_finalize(GObject *object);
 static void xfce_desktop_destroy(GtkObject *object);
+#ifdef HAVE_XCOMPOSITE
+static void xfce_desktop_realize(GtkWidget *widget);
+#endif
 
 struct _XfceDesktopPriv
 {
@@ -74,11 +96,61 @@ struct _XfceDesktopPriv
 	XfceBackdrop **backdrops;
 	
 	gboolean destroyed;
+	
+#ifdef HAVE_XCOMPOSITE
+	Damage damage_root;
+	Damage damage_virtroot;
+	XID damage_region_root;
+	XID damage_region_virtroot;
+#endif
 };
 
 GtkWindowClass *parent_class = NULL;
 
 /* private functions */
+
+#ifdef HAVE_XCOMPOSITE
+static GdkFilterReturn
+handle_xevents_cb(GdkXEvent *gxevt, GdkEvent *evt, gpointer user_data)
+{
+	XfceDesktopPriv *priv = ((XfceDesktop *)user_data)->priv;
+	XEvent *xevt = gxevt;
+	Window root = GDK_WINDOW_XWINDOW(gdk_screen_get_root_window(priv->gscreen));
+	
+	//g_print("got event on root window (%d)\n", xevt->type);
+	if(xevt->type == (x_ext_info.xd_event_base + XDamageNotify)
+			&& ((XDamageNotifyEvent *)xevt)->drawable == root)
+	{
+		XDamageNotifyEvent *xdevt = (XDamageNotifyEvent *)xevt;
+		XserverRegion region;
+		GdkDisplay *gdpy = gdk_screen_get_display(priv->gscreen);
+		
+		//g_print("  got XDamageNotify event for the root window\n");
+		//g_print("  area: %dx%d+%d+%d, geom: %dx%d+%d+%d\n",
+		//		xdevt->area.width, xdevt->area.height, xdevt->area.x, xdevt->area.y ,
+		//		xdevt->geometry.width, xdevt->geometry.height, xdevt->geometry.x,
+		//		xdevt->geometry.y);
+		
+		region = XFixesCreateRegion(GDK_DISPLAY_XDISPLAY(gdpy), NULL, 0);
+		
+		gdk_error_trap_push();
+		XDamageSubtract(GDK_DISPLAY_XDISPLAY(gdpy), xdevt->damage, None, region);
+		gdk_error_trap_pop();
+		
+		if(region != None)
+			XFixesDestroyRegion(GDK_DISPLAY_XDISPLAY(gdpy), region);
+		
+		return GDK_FILTER_REMOVE;
+	} else if(xevt->type == Expose) {// && ((XExposeEvent *)xevt)->window == root) {
+		XExposeEvent *xeevt = (XExposeEvent *)xevt;
+		
+		g_print("  got XExposeEvent: %dx%d+%d+%d\n", xeevt->width, xeevt->height,
+				xeevt->x, xeevt->y);
+	}
+	
+	return GDK_FILTER_CONTINUE;
+}
+#endif
 
 static void
 set_imgfile_root_property(XfceDesktop *desktop, const gchar *filename,
@@ -271,6 +343,8 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 	
 	gdk_error_trap_pop();
 	
+#if 1
+	
 	/* clear the old pixmap, if any */
 	style = gtk_widget_get_style(desktop);
 	if(style->bg_pixmap[GTK_STATE_NORMAL]) {
@@ -302,6 +376,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 	evt.count = 0;
 	gtk_widget_send_expose(desktop, (GdkEvent *)&evt);
 	gdk_region_destroy(evt.region);
+#endif
 }
 
 static void
@@ -511,11 +586,17 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
 {
 	GObjectClass *gobject_class;
 	GtkObjectClass *gtkobject_class;
+	GtkWidgetClass *widget_class;
 	
 	gobject_class = (GObjectClass *)klass;
 	gtkobject_class = (GtkObjectClass *)klass;
+	widget_class = (GtkWidgetClass *)klass;
 	
 	parent_class = g_type_class_peek_parent(klass);
+	
+#ifdef HAVE_XCOMPOSITE
+	widget_class->realize = xfce_desktop_realize;
+#endif
 	
 	gobject_class->finalize = xfce_desktop_finalize;
 	
@@ -528,6 +609,94 @@ xfce_desktop_init(XfceDesktop *desktop)
 	desktop->priv = g_new0(XfceDesktopPriv, 1);
 	GTK_WINDOW(desktop)->type = GTK_WINDOW_TOPLEVEL;
 }
+
+#ifdef HAVE_XCOMPOSITE
+static void
+xfce_desktop_realize(GtkWidget *widget)
+{
+	GtkWindow *window = GTK_WINDOW(widget);
+	GdkWindowAttr wattr;
+	gint wattr_mask = 0;
+	GdkVisual *vis32;
+	GdkColormap *cmap;
+	
+	/* chain to GtkWindow's implementation */
+	GTK_WIDGET_CLASS(parent_class)->realize(widget);
+	
+	vis32 = gdk_visual_get_best_with_depth(32);
+	if(!vis32)
+		return;
+	cmap = gdk_colormap_new(vis32, TRUE);
+	
+	/* ditch the widget's window */
+	g_object_unref(G_OBJECT(widget->window));
+	
+	/* create a new window, with a nicer visual, if possible */
+	/* stolen from gtk/gtkwindow.c */
+	
+	wattr.visual = vis32;
+	wattr.colormap = cmap;
+	
+	wattr.window_type = GDK_WINDOW_TOPLEVEL;
+	wattr.title = window->title;
+	wattr.wmclass_name = window->wmclass_name;
+	wattr.wmclass_class = window->wmclass_class;
+	wattr.wclass = GDK_INPUT_OUTPUT;
+	
+	wattr.width = widget->allocation.width;
+	wattr.height = widget->allocation.height;
+	wattr.event_mask = gtk_widget_get_events(widget);
+	wattr.event_mask |=
+			GDK_EXPOSURE_MASK |
+			GDK_KEY_PRESS_MASK |
+			GDK_KEY_RELEASE_MASK |
+			GDK_ENTER_NOTIFY_MASK |
+			GDK_LEAVE_NOTIFY_MASK |
+			GDK_FOCUS_CHANGE_MASK |
+			GDK_STRUCTURE_MASK;
+	
+	
+	wattr_mask |= GDK_WA_VISUAL | GDK_WA_COLORMAP;
+	wattr_mask |= window->title ? GDK_WA_TITLE : 0;
+	wattr_mask |= window->wmclass_name ? GDK_WA_WMCLASS : 0;
+	
+	widget->window = gdk_window_new(gtk_widget_get_root_window(widget),
+			&wattr, wattr_mask);
+	
+	gdk_window_set_user_data(widget->window, window);
+	
+	widget->style = gtk_style_attach(widget->style, widget->window);
+	gtk_style_set_background(widget->style, widget->window, GTK_STATE_NORMAL);
+	
+	/* This is a bad hack to set the window background. */
+	gtk_paint_flat_box(widget->style, widget->window, GTK_STATE_NORMAL,
+			GTK_SHADOW_NONE, NULL, widget, "base", 0, 0, -1, -1);
+	
+	if(window->wm_role)
+		gdk_window_set_role(widget->window, window->wm_role);
+	
+	if(!window->decorated)
+		gdk_window_set_decorations (widget->window, 0);
+	
+	gdk_window_set_type_hint(widget->window, window->type_hint);
+	
+	if(gtk_window_get_skip_pager_hint(window))
+		gdk_window_set_skip_pager_hint(widget->window, TRUE);
+
+	if(gtk_window_get_skip_taskbar_hint(window))
+		gdk_window_set_skip_taskbar_hint (widget->window, TRUE);
+
+	if(gtk_window_get_accept_focus(window))
+		gdk_window_set_accept_focus(widget->window, TRUE);
+	else
+		gdk_window_set_accept_focus(widget->window, FALSE);
+	
+	if(window->modal)
+		gdk_window_set_modal_hint(widget->window, TRUE);
+	else
+		gdk_window_set_modal_hint(widget->window, FALSE);
+}
+#endif
 
 static void
 xfce_desktop_destroy(GtkObject *object)
@@ -542,6 +711,13 @@ xfce_desktop_destroy(GtkObject *object)
 	if(desktop->priv->destroyed)
 		return;
 	desktop->priv->destroyed = TRUE;
+	
+#ifdef HAVE_XCOMPOSITE
+	gdk_window_remove_filter(gdk_screen_get_root_window(desktop->priv->gscreen),
+			(GdkFilterFunc)handle_xevents_cb, desktop);
+	//gdk_window_remove_filter(GTK_WIDGET(desktop)->window,
+	//		(GdkFilterFunc)handle_xevents_cb, desktop);
+#endif
 	
 	groot = gdk_screen_get_root_window(desktop->priv->gscreen);
 	gdk_property_delete(groot, gdk_atom_intern("XFCE_DESKTOP_WINDOW", FALSE));
@@ -627,6 +803,55 @@ xfce_desktop_new(GdkScreen *gscreen, McsClient *mcs_client)
 	gdpy = gdk_screen_get_display(gscreen);
 	xid = GDK_WINDOW_XID(GTK_WIDGET(desktop)->window);
 	groot = gdk_screen_get_root_window(gscreen);
+	
+#ifdef HAVE_XCOMPOSITE
+	//XCompositeRedirectWindow(GDK_DISPLAY_XDISPLAY(gdpy),
+	//		xid, CompositeRedirectManual);
+	//XCompositeRedirectWindow(GDK_DISPLAY_XDISPLAY(gdpy),
+	//		GDK_WINDOW_XWINDOW(groot), CompositeRedirectManual);
+	
+	desktop->priv->damage_root = XDamageCreate(GDK_DISPLAY_XDISPLAY(gdpy),
+			GDK_WINDOW_XWINDOW(groot), XDamageReportNonEmpty);
+	//desktop->priv->damage_virtroot = XDamageCreate(GDK_DISPLAY_XDISPLAY(gdpy),
+	//		xid, XDamageReportNonEmpty);
+	
+	gdk_window_add_filter(groot,
+			(GdkFilterFunc)handle_xevents_cb, desktop);
+	//gdk_window_add_filter(GTK_WIDGET(desktop)->window,
+	//		(GdkFilterFunc)handle_xevents_cb, desktop);
+	
+	{
+		XserverRegion region;
+		
+		region = XFixesCreateRegionFromWindow(GDK_DISPLAY_XDISPLAY(gdpy),
+				GDK_WINDOW_XWINDOW(groot), WindowRegionBounding);
+		XFixesDestroyRegion(GDK_DISPLAY_XDISPLAY(gdpy), region);
+	}
+	
+	{
+		GdkVisual *vis32;
+		GdkColormap *cmap;
+		guint32 rgba;
+		GdkPixbuf *pix;
+		GdkPixmap *pmap;
+		
+		vis32 = gdk_visual_get_best_with_depth(32);
+		if(vis32) {
+			g_print("got 32bit visual!\n");
+			
+			cmap = gdk_colormap_new(vis32, TRUE);
+			gdk_screen_set_default_colormap(gscreen, cmap);
+			pix = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8,
+					gdk_screen_get_width(gscreen), gdk_screen_get_height(gscreen));
+			rgba = 0x00000000;
+			gdk_pixbuf_fill(pix, rgba);
+			gdk_pixbuf_render_pixmap_and_mask_for_colormap(pix, cmap, &pmap, NULL, 0);
+			gdk_window_set_back_pixmap(GTK_WIDGET(desktop)->window, pmap, FALSE);
+		}
+	}
+	
+		
+#endif
 	
 	gdk_property_change(groot,
 			gdk_atom_intern("XFCE_DESKTOP_WINDOW", FALSE),
