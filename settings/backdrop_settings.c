@@ -72,7 +72,7 @@
 #define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream
 #endif
 
-#define DEFAULT_BACKDROP (DATADIR "/xfce4/backdrops/xfce4logo.png")
+#define DEFAULT_BACKDROP (DATADIR "/xfce4/backdrops/xfce-stripes.png")
 
 /*
  * XXX - No help button for now. Wait for the others to ACK on this.
@@ -102,7 +102,7 @@ BackdropDialog;
 static gboolean is_running = FALSE;
 
 static char *backdrop_path = NULL;
-static int backdrop_style = CENTERED;
+static int backdrop_style = SCALED;
 static int showimage = 1;
 static McsColor backdrop_color;
 
@@ -217,12 +217,12 @@ static void backdrop_create_channel(McsPlugin * mcs_plugin)
     else
     {
         /* 
-           Just a color by default #404060
+           Just a color by default #8686AA
            Kinda smooth purple.
          */
-        backdrop_color.red   = (guint16) 0x4000;
-        backdrop_color.green = (guint16) 0x4000;
-        backdrop_color.blue  = (guint16) 0x6000;
+        backdrop_color.red   = (guint16) 0x8600;
+        backdrop_color.green = (guint16) 0x8600;
+        backdrop_color.blue  = (guint16) 0xAA00;
         backdrop_color.alpha = (guint16) 0;
         mcs_manager_set_color(mcs_plugin->manager, "color", BACKDROP_CHANNEL, 
                               &backdrop_color);
