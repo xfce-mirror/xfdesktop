@@ -1,16 +1,16 @@
 # Lithuania translation of xfdesktop
 # Copyright (C) 2003 Free Software Foundation, Inc.
 # This file is distributed under the same license as the xfdesktop package.
-# Mantas <zaz@xxx.lt>, 2003.
-# Mantas <zaz@xxx.lt>, 2005.
+# Mantas <zaz@xxx.lt>, 2003 - 2005,
+# Rimas Kudelis <rq@akl.lt>, 2005.
 # 
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 3.99.2\n"
+"Project-Id-Version: xfdesktop 4.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-10-17 23:16+0200\n"
-"PO-Revision-Date: 2005-01-09 13:05+0200\n"
+"PO-Revision-Date: 2005-01-23 02:04+0200\n"
 "Last-Translator: Rimas Kudelis <rq@akl.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
@@ -19,12 +19,12 @@ msgstr ""
 
 #: menueditor/about_dialog.c:36
 msgid "A menu editor for Xfce4"
-msgstr "Xfce4 meniu redaktorius"
+msgstr "Xfce4 skirtas meniu redaktorius"
 
 #. Credits
 #: menueditor/about_dialog.c:41
 msgid "Core developer"
-msgstr "Pagrindinis kūrėjas"
+msgstr "Pagrindinis autorius"
 
 #: menueditor/about_dialog.c:42 menueditor/about_dialog.c:43
 #: menueditor/about_dialog.c:44
@@ -33,7 +33,7 @@ msgstr "Bendradarbis"
 
 #: menueditor/about_dialog.c:45
 msgid "Icon designer"
-msgstr "Ikonų dizaineris"
+msgstr "Ikonų autorius"
 
 #: menueditor/add_dialog.c:132 menueditor/add_dialog.c:147
 msgid "Add menu entry"
@@ -101,7 +101,7 @@ msgstr "Norint pridėti elementą, būtina užpildyti visus laukus."
 
 #: menueditor/add_dialog.c:296
 msgid "The 'Name' field is required."
-msgstr "Laukas „Pavadinimas“ yra privalomas"
+msgstr "„Pavadinimo“ lauką būtina užpildyti."
 
 #: menueditor/add_dialog.c:350 menueditor/dnd.c:152
 #: menueditor/menueditor.c:346 menueditor/move.c:90 menueditor/move.c:248
@@ -171,7 +171,7 @@ msgstr "Redaguoti meniu elementą"
 
 #: menueditor/edit_dialog.c:131
 msgid "Separators cannot be edited"
-msgstr "Skirtukai negali būti redaguojami"
+msgstr "Skirtukų redaguoti negalima"
 
 #. Name
 #: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:104
@@ -237,7 +237,7 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
-"Neįmanoma įrašyti į %s : \n"
+"Neįmanoma įrašyti į „%s“:\n"
 "%s"
 
 #: menueditor/menueditor.c:622
@@ -301,11 +301,11 @@ msgstr "Pašalinti šį elementą"
 
 #: menueditor/menueditor.c:1086
 msgid "Move the current entry up"
-msgstr "Perkelti šį elementą aukštyn"
+msgstr "Perkelti šį elementą aukščiau"
 
 #: menueditor/menueditor.c:1090
 msgid "Move the current entry down"
-msgstr "Perkelti šį elementą žemyn"
+msgstr "Perkelti šį elementą žemiau"
 
 #: menueditor/menueditor.c:1095
 msgid "Collapse the tree"
@@ -346,7 +346,7 @@ msgstr "Netinkamas duomenų bylos formatas!"
 #: menueditor/menueditor.c:1388
 #, c-format
 msgid "File %s doesn't exist !"
-msgstr "Byla %s neegzistuoja!"
+msgstr "Byla „%s“ neegzistuoja!"
 
 #: menueditor/move.c:408
 msgid "Do you want to move the item into the parent menu?"
@@ -372,7 +372,7 @@ msgstr "Naujas meniu"
 #. Filename
 #: menueditor/new_dialog.c:111
 msgid "Filename:"
-msgstr "Bylos vardas:"
+msgstr "Bylos pavadinimas:"
 
 #: menueditor/new_dialog.c:144
 msgid "All fields are required."
@@ -401,15 +401,15 @@ msgstr "Meniu bylos"
 
 #: panel-plugin/desktop-menu-plugin.c:462
 msgid "_Menu file:"
-msgstr "_Meniu byla:"
+msgstr "Meniu _byla:"
 
 #: panel-plugin/desktop-menu-plugin.c:496
 msgid "_Button icon:"
-msgstr "_Mygtuko ikona:"
+msgstr "Mygtuko _ikona:"
 
 #: panel-plugin/desktop-menu-plugin.c:521
 msgid "Show _icons in menu"
-msgstr "Rodyti ikonas meniu"
+msgstr "_Rodyti ikonas meniu"
 
 #: settings/backdrop-mgr.c:139 src/xfce-desktop.c:112
 #, c-format
@@ -419,9 +419,10 @@ msgid ""
 "Please choose another location or press cancel in the dialog to discard your "
 "changes"
 msgstr ""
-"Bylos %s išsaugoti nepavyko: %s\n"
+"Bylos „%s“ išsaugoti nepavyko: %s\n"
 "\n"
-"Pasirinkite kitą vietą arba paspauskite „Atšaukti“ dialogo lange, norėdami pašalinti pakeitimus"
+"Parinkite kitą vietą arba paspauskite „Atšaukti“ dialogo lange, norėdami "
+"pašalinti pakeitimus"
 
 #: settings/backdrop-mgr.c:409
 msgid "Select backdrop image file"
@@ -429,7 +430,7 @@ msgstr "Parinkite fono paveikslėlį"
 
 #: settings/backdrop-mgr.c:510
 msgid "Choose backdrop list filename"
-msgstr "Parinkite fonų sąrašą"
+msgstr "Parinkite fonų sąrašo bylą"
 
 #: settings/backdrop-mgr.c:519
 msgid "List Files"
@@ -508,7 +509,7 @@ msgstr "Automatinis"
 
 #: settings/backdrop_settings.c:782
 msgid "Adjust _Brightness:"
-msgstr "Derinti _ryškumą:"
+msgstr "_Derinti šviesumą:"
 
 #. header
 #: settings/backdrop_settings.c:851
@@ -526,11 +527,11 @@ msgstr "Spalva"
 
 #: settings/backdrop_settings.c:920
 msgid "_Color Style:"
-msgstr "_Spalvų stilius:"
+msgstr "_Nudažymo būdas:"
 
 #: settings/backdrop_settings.c:929
 msgid "Solid Color"
-msgstr "Vienspalvis"
+msgstr "Viena spalva"
 
 #: settings/backdrop_settings.c:936
 msgid "Horizontal Gradient"
@@ -626,11 +627,11 @@ msgstr "_Keisti darbastalio meniu"
 #: src/main.c:300
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr "%s: Nežinomas nustatymas: %s\n"
+msgstr "%s: Nežinomas parametras: %s\n"
 
 #: src/main.c:301
 msgid "Options are:\n"
-msgstr "Nustatymai yra:\n"
+msgstr "Parametrai yra:\n"
 
 #: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
