@@ -236,14 +236,14 @@
 	<category name="Applet" replace="Applets" />
 	<category name="Archiving" replace="Archiveren"/>
 	<category name="Electronics" replace="Electro"/>
-	<category name="Emulator" toplevel="true" replace="System" builtin-icon="SYSTEM" />
+	<category name="Emulator" toplevel="true" replace="Systeem" builtin-icon="SYSTEM" />
 	<category name="Engineering" replace="Techniek"/>
 	<category name="FileManager" replace="Bestandsbeheer" />
 	<category name="Shell" replace="Shells" />
 	<category name="Screensaver" />
 	<category name="TerminalEmulator" replace="Terminals" />
 	<category name="TrayIcon" replace="System Tray Pictogrammen" />
-	<category name="System" toplevel="true" builtin-icon="SYSTEM">
+	<category name="System" replace="Systeem" toplevel="true" builtin-icon="SYSTEM">
 		<subcategory name="FileSystem" />
 		<subcategory name="Monitor" />
 		<subcategory name="Security" />
