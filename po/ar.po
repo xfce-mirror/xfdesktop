@@ -2,11 +2,11 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # saleh alhathal <hathalsal@hotmail.com>, 2004.
-
 msgid ""
 msgstr ""
 "Project-Id-Version: ar\n"
-"POT-Creation-Date: 2004-02-20 15:32+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-19 01:40-0400\n"
 "PO-Revision-Date: 2004-3-8 8:25+0300\n"
 "Last-Translator: saleh alhathal <hathalsal@hotmail.com>\n"
 "Language-Team: arabic\n"
@@ -14,7 +14,421 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings/backdrop-mgr.c:163
+#: menueditor/about_dialog.c:39
+#, fuzzy
+msgid "A menu editor for Xfce4"
+msgstr "محرر لقائمة XFce4"
+
+#: menueditor/about_dialog.c:48
+msgid "Core developer"
+msgstr ""
+
+#: menueditor/about_dialog.c:52 menueditor/about_dialog.c:56
+#: menueditor/about_dialog.c:60
+msgid "Contributor"
+msgstr ""
+
+#: menueditor/about_dialog.c:64
+msgid "Icon designer"
+msgstr ""
+
+#: menueditor/add_dialog.c:129 menueditor/add_dialog.c:144
+msgid "Add menu entry"
+msgstr "أضف مدخل للقائمة"
+
+#. Type
+#: menueditor/add_dialog.c:150 menueditor/add_menu_dialog.c:93
+#: menueditor/edit_dialog.c:142
+#, fuzzy
+msgid "Type:"
+msgstr "نوع :"
+
+#: menueditor/add_dialog.c:153
+msgid "Launcher"
+msgstr ""
+
+#: menueditor/add_dialog.c:158
+msgid "Submenu"
+msgstr "قائمة فرعية"
+
+#: menueditor/add_dialog.c:163
+msgid "Separator"
+msgstr "فاصل"
+
+#: menueditor/add_dialog.c:168
+msgid "Title"
+msgstr "عنوان"
+
+#: menueditor/add_dialog.c:173
+msgid "Quit"
+msgstr "خروج"
+
+#. Name
+#: menueditor/add_dialog.c:188 menueditor/edit_dialog.c:253
+#: menueditor/edit_dialog.c:303 menueditor/edit_dialog.c:341
+#, fuzzy
+msgid "Name:"
+msgstr "أسم :"
+
+#: menueditor/add_dialog.c:198 menueditor/edit_dialog.c:254
+#, fuzzy
+msgid "Command:"
+msgstr "أمر :"
+
+#: menueditor/add_dialog.c:214 menueditor/edit_dialog.c:245
+#: menueditor/edit_dialog.c:308 menueditor/edit_dialog.c:346
+#: menueditor/edit_dialog.c:383
+#, fuzzy
+msgid "Icon:"
+msgstr "أيقونة :"
+
+#. Start Notify check button
+#: menueditor/add_dialog.c:230 menueditor/edit_dialog.c:265
+msgid "Use startup _notification"
+msgstr ""
+
+#. Run in terminal check button
+#: menueditor/add_dialog.c:234 menueditor/edit_dialog.c:266
+msgid "Run in _terminal"
+msgstr ""
+
+#: menueditor/add_dialog.c:282 menueditor/edit_dialog.c:428
+#, fuzzy
+msgid "The command doesn't exist !"
+msgstr "ملف %s غير موجود !"
+
+#: menueditor/add_dialog.c:296
+msgid "All fields must be filled to add an item."
+msgstr ""
+
+#: menueditor/add_dialog.c:375 menueditor/add_dialog.c:491
+#: menueditor/add_dialog.c:564
+msgid "The 'Name' field is required."
+msgstr ""
+
+#: menueditor/add_dialog.c:475 menueditor/dnd.c:150
+#: menueditor/menueditor.c:264 menueditor/move.c:90 menueditor/move.c:246
+msgid "--- separator ---"
+msgstr "--- فاصل ---"
+
+#: menueditor/add_dialog.c:622
+msgid "quit"
+msgstr "خروج"
+
+#: menueditor/add_menu_dialog.c:73 menueditor/add_menu_dialog.c:84
+#: menueditor/menueditor.c:688
+msgid "Add an external menu"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:98 menueditor/edit_dialog.c:145
+msgid "File"
+msgstr "ملف"
+
+#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:150
+msgid "System"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:118 menueditor/edit_dialog.c:165
+#, fuzzy
+msgid "Source:"
+msgstr "مصدر :"
+
+#. Style
+#: menueditor/add_menu_dialog.c:131 menueditor/edit_dialog.c:178
+msgid "Style:"
+msgstr "شكل:"
+
+#: menueditor/add_menu_dialog.c:134 menueditor/edit_dialog.c:181
+#, fuzzy
+msgid "Simple"
+msgstr "ملف"
+
+#: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:184
+msgid "Multilevel"
+msgstr ""
+
+#. Unique
+#: menueditor/add_menu_dialog.c:150 menueditor/edit_dialog.c:197
+msgid "_Unique entries only"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:203
+msgid "The 'Source' field is required."
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:247 menueditor/add_menu_dialog.c:303
+#: menueditor/dnd.c:152 menueditor/edit_dialog.c:625
+#: menueditor/edit_dialog.c:647 menueditor/menueditor.c:312
+#: menueditor/move.c:120 menueditor/move.c:276
+msgid "--- include ---"
+msgstr "--- تضمن ---"
+
+#: menueditor/add_menu_dialog.c:304 menueditor/dnd.c:157
+#: menueditor/edit_dialog.c:649 menueditor/menueditor.c:315
+#: menueditor/move.c:123 menueditor/move.c:279
+msgid "system"
+msgstr "النظام"
+
+#. Create dialog for editing
+#: menueditor/edit_dialog.c:96 menueditor/edit_dialog.c:109
+msgid "Edit menu entry"
+msgstr "حرر مدخل القائمة"
+
+#. Name
+#: menueditor/edit_dialog.c:390 menueditor/new_dialog.c:102
+#, fuzzy
+msgid "Title:"
+msgstr "عنوان :"
+
+#: menueditor/menueditor.c:159
+msgid "Select command"
+msgstr "إختر أمر"
+
+#: menueditor/menueditor.c:172
+msgid "Select icon"
+msgstr "إختر أيقونة"
+
+#: menueditor/menueditor.c:192
+#, fuzzy
+msgid "Not yet implemented!"
+msgstr "لم يتم تطبيقها !!!"
+
+#: menueditor/menueditor.c:208 menueditor/menueditor.c:409
+#: menueditor/menueditor.c:462 menueditor/menueditor.c:589
+#: menueditor/new_dialog.c:74
+#, fuzzy
+msgid "Do you want to save before closing the file?"
+msgstr "هل تريد الحفظ قبل إغلاق الملف ؟"
+
+#: menueditor/menueditor.c:473
+msgid "Menu file selection"
+msgstr ""
+
+#: menueditor/menueditor.c:501 menueditor/menueditor.c:512
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr ""
+
+#: menueditor/menueditor.c:567
+msgid "Save as..."
+msgstr ""
+
+#: menueditor/menueditor.c:682
+#, fuzzy
+msgid "Edit"
+msgstr "_تحرير"
+
+#. File menu
+#: menueditor/menueditor.c:869
+msgid "_File"
+msgstr "_ملف"
+
+#: menueditor/menueditor.c:878
+msgid "Open default menu"
+msgstr "فتح القائمة اﻷفتراضية"
+
+#. Edit menu
+#: menueditor/menueditor.c:892
+msgid "_Edit"
+msgstr "_تحرير"
+
+#: menueditor/menueditor.c:898
+msgid "Add an external menu..."
+msgstr "أضف قائمة أضافية..."
+
+#. Help menu
+#: menueditor/menueditor.c:910
+msgid "_Help"
+msgstr "_مساعدة"
+
+#: menueditor/menueditor.c:915
+#, fuzzy
+msgid "_About..."
+msgstr "حول ..."
+
+#: menueditor/menueditor.c:929
+#, fuzzy
+msgid "Create a new Xfce4 menu file"
+msgstr "تكوين ملف قائمة جديد لي XFCE4"
+
+#: menueditor/menueditor.c:936
+#, fuzzy
+msgid "Open an Xfce4 menu file"
+msgstr "فتح ملف قائمة XFCE4"
+
+#: menueditor/menueditor.c:943
+msgid "Save current menu"
+msgstr "حفظ القائمة الحالية"
+
+#: menueditor/menueditor.c:950
+msgid "Close current menu"
+msgstr "إغلاق القائمة الحالية"
+
+#: menueditor/menueditor.c:958
+msgid "Collapse the tree"
+msgstr ""
+
+#: menueditor/menueditor.c:965
+msgid "Expand the tree"
+msgstr ""
+
+#: menueditor/menueditor.c:973
+msgid "Add an entry to the menu"
+msgstr "أضف مدخل للقائمة"
+
+#: menueditor/menueditor.c:980
+msgid "Delete the current entry"
+msgstr "حذف المدخل من القائمة"
+
+#: menueditor/menueditor.c:987
+#, fuzzy
+msgid "Move the current entry up"
+msgstr "نقل المدخل للأعلى"
+
+#: menueditor/menueditor.c:994
+#, fuzzy
+msgid "Move the current entry down"
+msgstr "نقل المدخل للأعلى"
+
+#: menueditor/menueditor.c:1027
+msgid "Name"
+msgstr "أسم"
+
+#: menueditor/menueditor.c:1029
+msgid "Command"
+msgstr "أمر"
+
+#: menueditor/menueditor.c:1031
+msgid "Hidden"
+msgstr "مخفي"
+
+#: menueditor/menueditor.c:1033
+msgid "Pointer"
+msgstr "طابعة"
+
+#: menueditor/menueditor.c:1172
+msgid "Corrupted file or incorrect file format !"
+msgstr "ملف فاسد او صيغة غير صحيحة !"
+
+#: menueditor/menueditor.c:1174
+msgid "Corrupted file or incorrect file format !\n"
+msgstr "ملف فاسد او صيغة غير صحيحة !\n"
+
+#: menueditor/menueditor.c:1192
+msgid "No root element in file !"
+msgstr ""
+
+#: menueditor/menueditor.c:1194
+msgid "No root element in file !\n"
+msgstr ""
+
+#: menueditor/menueditor.c:1210
+msgid "Bad datafile format !"
+msgstr "صيغة الملف غير صالحة !"
+
+#: menueditor/menueditor.c:1212
+msgid "Bad datafile format !\n"
+msgstr "صيغة الملف غير صالحة !\n"
+
+#: menueditor/menueditor.c:1333
+#, c-format
+msgid "File %s doesn't exist !"
+msgstr "ملف %s غير موجود !"
+
+#: menueditor/move.c:401
+#, fuzzy
+msgid "Do you want to move the item into the parent menu?"
+msgstr "هل أنت متأكد لنقل للقائمة الفرعية ؟"
+
+#: menueditor/move.c:500
+#, fuzzy
+msgid "Do you want to move the item into the submenu?"
+msgstr "هل أنت متأكد لنقل للقائمة الفرعية ؟"
+
+#: menueditor/new_dialog.c:58
+#, fuzzy
+msgid "Are you sure you want to close the current menu?"
+msgstr "هل أنت متأكد لإغلاق القائمة الحالية ؟"
+
+#. get the filename and name for the new menu
+#: menueditor/new_dialog.c:84 menueditor/new_dialog.c:96
+msgid "New menu"
+msgstr "قائمة جديدة"
+
+#. Filename
+#: menueditor/new_dialog.c:109
+#, fuzzy
+msgid "Filename:"
+msgstr "أسم الملف :"
+
+#: menueditor/new_dialog.c:142
+#, fuzzy
+msgid "All fields are required."
+msgstr "لم يتم ملء كل الحقول !!!"
+
+#: modules/menu/desktop-menuspec.c:61
+msgid "/Other"
+msgstr "/أخرى"
+
+#: modules/menu/desktop-menuspec.c:279
+#, c-format
+msgid "%s: missing or unknown attribute for 'related' element\n"
+msgstr ""
+
+#: modules/menu/desktop-menuspec.c:284
+#, c-format
+msgid "%s: unknown xml element %s\n"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:134
+#: panel-plugin/desktop-menu-plugin.c:367
+msgid "Xfce Menu"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:264
+#, fuzzy
+msgid "Select Icon"
+msgstr "إختر أيقونة"
+
+#: panel-plugin/desktop-menu-plugin.c:274 settings/backdrop-mgr.c:545
+#: settings/backdrop-mgr.c:701 settings/backdrop_settings.c:578
+#, fuzzy
+msgid "All Files"
+msgstr "ملف"
+
+#: panel-plugin/desktop-menu-plugin.c:279 settings/backdrop-mgr.c:549
+#: settings/backdrop_settings.c:582
+#, fuzzy
+msgid "Image Files"
+msgstr "ملفات صور"
+
+#: panel-plugin/desktop-menu-plugin.c:332
+msgid "_Button icon:"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:356
+msgid "Show _icons in menu"
+msgstr ""
+
+#: settings/backdrop-mgr.c:133 settings/backdrop-mgr.c:192
+#: settings/backdrop-mgr.c:593
+#, fuzzy
+msgid "Backdrop"
+msgstr "خلفية"
+
+#: settings/backdrop-mgr.c:139
+#, c-format
+msgid "Adding files from directory %s..."
+msgstr ""
+
+#: settings/backdrop-mgr.c:198
+#, c-format
+msgid "Adding files from list %s..."
+msgstr ""
+
+#: settings/backdrop-mgr.c:240
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -23,423 +437,287 @@ msgid ""
 "changes"
 msgstr ""
 
-#: settings/backdrop-mgr.c:510
-msgid "Select image file"
+#: settings/backdrop-mgr.c:540
+#, fuzzy
+msgid "Select backdrop image file"
 msgstr "إختر ملف صورة"
 
-#: settings/backdrop-mgr.c:626
+#: settings/backdrop-mgr.c:599
+msgid "Adding multiple files..."
+msgstr ""
+
+#: settings/backdrop-mgr.c:696
 msgid "Choose backdrop list filename"
 msgstr ""
 
-#: settings/backdrop-mgr.c:701
-msgid "New.list"
-msgstr "قائمة جديدة"
-
 #: settings/backdrop-mgr.c:705
+msgid "List Files"
+msgstr ""
+
+#: settings/backdrop-mgr.c:770
 msgid "Backdrop List"
 msgstr ""
 
-#: settings/backdrop-mgr.c:741
+#: settings/backdrop-mgr.c:787
 msgid "Image files"
 msgstr "ملفات صور"
 
-#: settings/backdrop-mgr.c:756
+#: settings/backdrop-mgr.c:797
+msgid "backdrops.list"
+msgstr ""
+
+#: settings/backdrop-mgr.c:803
 msgid "List file"
 msgstr ""
 
-#: settings/backdrop-mgr.c:775
+#: settings/backdrop-mgr.c:823
 msgid "Create backdrop list"
 msgstr ""
 
-#: settings/backdrop-mgr.c:782
+#: settings/backdrop-mgr.c:854
 msgid "Edit backdrop list"
 msgstr ""
 
-#: settings/backdrop_settings.c:144
-msgid "Desktop background"
-msgstr "خلفية سطح المكتب"
-
-#: settings/backdrop_settings.c:370
-msgid "Select background color"
-msgstr "إختر لون الخلفية"
-
-#: settings/backdrop_settings.c:423
-msgid "Background color:"
-msgstr "لون الخلفية :"
-
-#: settings/backdrop_settings.c:457
-msgid "Use color only:"
-msgstr "إستخدم لون فقط :"
-
-#: settings/backdrop_settings.c:586
-msgid "File:"
-msgstr "ملف :"
-
-#: settings/backdrop_settings.c:648
-msgid "Select background image or list file"
-msgstr ""
-
-#: settings/backdrop_settings.c:730
-msgid "_Browse..."
-msgstr "_تصفح..."
-
-#: settings/backdrop_settings.c:734
-msgid "New list"
-msgstr "قائمة جديدة"
-
-#: settings/backdrop_settings.c:738
-msgid "Edit list"
-msgstr "تحرير القائمة"
-
-#: settings/backdrop_settings.c:778
-msgid "Style:"
-msgstr "شكل:"
-
-#: settings/backdrop_settings.c:786
-msgid "_Tiled"
-msgstr "_كرر"
-
-#: settings/backdrop_settings.c:793
-msgid "_Centered"
-msgstr "_توسيط"
-
-#: settings/backdrop_settings.c:800
-msgid "_Scaled"
-msgstr "_تكبير"
-
-#: settings/backdrop_settings.c:807
-msgid "_Stretched"
-msgstr "_تمدد"
-
-#: settings/backdrop_settings.c:814
-msgid "_Auto"
-msgstr "_ذاتي"
-
 #. the dialog
-#: settings/backdrop_settings.c:855
-msgid "Background"
-msgstr "خلفية"
-
-#. header
-#: settings/backdrop_settings.c:875
-msgid "Background Settings"
-msgstr "إعدادات الخلفية"
-
-#. color
-#: settings/backdrop_settings.c:881
-msgid "Color"
-msgstr "الوان"
-
-#. image vbox
-#: settings/backdrop_settings.c:893
-msgid "Image"
-msgstr "صورة"
-
-#: settings/backdrop_settings.c:919
-msgid "Don't set background"
-msgstr ""
-
-#: src/backdrop.c:214
-#, c-format
-msgid ""
-"%s: There was an error loading image:\n"
-"%s\n"
-msgstr ""
-
-#: src/main.c:264
+#: settings/backdrop_settings.c:134 settings/backdrop_settings.c:872
+#: src/xfce-desktop.c:577
 msgid "Desktop"
 msgstr "سطح المكتب"
 
-#: src/menu-file.c:93
-msgid "No Name"
-msgstr "بلا إسم"
+#: settings/backdrop_settings.c:360
+#, fuzzy
+msgid "Select backdrop color"
+msgstr "إختر لون الخلفية"
 
-#: src/menu.c:712
-msgid "Add workspace"
-msgstr "أضف مساحة عمل"
+#: settings/backdrop_settings.c:573
+#, fuzzy
+msgid "Select backdrop image or list file"
+msgstr "إختر ملف صورة"
 
-#: src/menu.c:719
-msgid "Delete workspace"
-msgstr "حذف مساحة عمل"
-
-#: src/menuspec.c:54
-msgid "/Other"
-msgstr "/أخرى"
-
-#: src/menuspec.c:263
-#, c-format
-msgid "%s: missing or unknown attribute for 'related' element\n"
+#: settings/backdrop_settings.c:591
+msgid "List Files (*.list)"
 msgstr ""
 
-#: src/menuspec.c:268
-#, c-format
-msgid "%s: unknown xml element %s\n"
-msgstr ""
+#: settings/backdrop_settings.c:677
+#, fuzzy
+msgid "_Edit list..."
+msgstr "تحرير القائمة"
 
-#: menueditor/about_dialog.c:35
-msgid "An menueditor for XFce4"
-msgstr "محرر لقائمة XFce4"
-
-#: menueditor/about_dialog.c:42
-msgid "Core developer"
-msgstr ""
-
-#: menueditor/add_dialog.c:108 menueditor/add_dialog.c:120
-msgid "Add menu entry"
-msgstr "أضف مدخل للقائمة"
-
-#. Type
-#: menueditor/add_dialog.c:126 menueditor/add_menu_dialog.c:74
-#: menueditor/edit_dialog.c:99
-msgid "Type :"
-msgstr "نوع :"
-
-#: menueditor/add_dialog.c:129
-msgid "Launcher"
-msgstr ""
-
-#: menueditor/add_dialog.c:134
-msgid "Submenu"
-msgstr "قائمة فرعية"
-
-#: menueditor/add_dialog.c:139
-msgid "Separator"
-msgstr "فاصل"
-
-#: menueditor/add_dialog.c:144
-msgid "Title"
-msgstr "عنوان"
-
-#: menueditor/add_dialog.c:149
-msgid "Quit"
-msgstr "خروج"
-
-#. Name
-#: menueditor/add_dialog.c:164 menueditor/edit_dialog.c:174
-#: menueditor/edit_dialog.c:209 menueditor/edit_dialog.c:230
-msgid "Name :"
-msgstr "أسم :"
-
-#: menueditor/add_dialog.c:174 menueditor/edit_dialog.c:175
-msgid "Command :"
-msgstr "أمر :"
-
-#: menueditor/add_dialog.c:190 menueditor/edit_dialog.c:166
-msgid "Icon :"
-msgstr "أيقونة :"
-
-#: menueditor/add_dialog.c:250
-msgid ""
-"All the field are not filled !!!\n"
-"Adding nothing"
-msgstr ""
-
-#: menueditor/add_dialog.c:328 menueditor/add_dialog.c:434
-#: menueditor/add_dialog.c:494
-msgid ""
-"Name field is not filled !!!\n"
-"Adding nothing"
-msgstr ""
-
-#: menueditor/add_dialog.c:418 menueditor/dnd.c:169
-#: menueditor/menueditor.c:211
-msgid "--- separator ---"
-msgstr "--- فاصل ---"
-
-#: menueditor/add_dialog.c:543
-msgid "quit"
-msgstr "خروج"
-
-#: menueditor/add_menu_dialog.c:57 menueditor/add_menu_dialog.c:65
-msgid "Add an external menu"
-msgstr ""
-
-#: menueditor/add_menu_dialog.c:79 menueditor/edit_dialog.c:102
-msgid "File"
-msgstr "ملف"
-
-#: menueditor/add_menu_dialog.c:84 menueditor/edit_dialog.c:107
-msgid "System"
-msgstr ""
-
-#: menueditor/add_menu_dialog.c:99 menueditor/edit_dialog.c:122
-msgid "Source :"
-msgstr "مصدر :"
-
-#: menueditor/add_menu_dialog.c:155
-msgid ""
-"Source field is not filled !!!\n"
-"Adding nothing"
-msgstr ""
-
-#: menueditor/add_menu_dialog.c:199 menueditor/add_menu_dialog.c:249
-#: menueditor/dnd.c:182 menueditor/edit_dialog.c:355
-#: menueditor/edit_dialog.c:371 menueditor/menueditor.c:282
-msgid "--- include ---"
-msgstr "--- تضمن ---"
-
-#: menueditor/add_menu_dialog.c:250 menueditor/dnd.c:187
-#: menueditor/edit_dialog.c:373 menueditor/menueditor.c:285
-msgid "system"
-msgstr "النظام"
-
-#. Create dialog for editing
-#: menueditor/edit_dialog.c:65 menueditor/edit_dialog.c:76
-msgid "Edit menu entry"
-msgstr "حرر مدخل القائمة"
-
-#. Name
-#: menueditor/edit_dialog.c:251 menueditor/new.c:90
-msgid "Title :"
-msgstr "عنوان :"
-
-#: menueditor/menueditor.c:128
-msgid "Select command"
-msgstr "إختر أمر"
-
-#: menueditor/menueditor.c:141
-msgid "Select icon"
-msgstr "إختر أيقونة"
-
-#: menueditor/menueditor.c:161
-msgid "Not yet implemented !!!"
-msgstr "لم يتم تطبيقها !!!"
-
-#: menueditor/menueditor.c:177 menueditor/menueditor.c:385
-#: menueditor/menueditor.c:420 menueditor/menueditor.c:498 menueditor/new.c:62
-msgid "Do you want to save before closing the file ?"
-msgstr "هل تريد الحفظ قبل إغلاق الملف ؟"
-
-#: menueditor/menueditor.c:431 menueditor/menueditor.c:476
-msgid "Menu file selection"
-msgstr ""
-
-#. File menu
-#: menueditor/menueditor.c:699
-msgid "_File"
-msgstr "_ملف"
-
-#: menueditor/menueditor.c:710
-msgid "Open default menu"
-msgstr "فتح القائمة اﻷفتراضية"
-
-#. Edit menu
-#: menueditor/menueditor.c:724
-msgid "_Edit"
-msgstr "_تحرير"
-
-#: menueditor/menueditor.c:732
-msgid "Add an external menu..."
-msgstr "أضف قائمة أضافية..."
-
-#. Help menu
-#: menueditor/menueditor.c:744
-msgid "_Help"
-msgstr "_مساعدة"
-
-#: menueditor/menueditor.c:751
-msgid "About ..."
-msgstr "حول ..."
-
-#: menueditor/menueditor.c:765
-msgid "Create a new XFCE4 menu file"
-msgstr "تكوين ملف قائمة جديد لي XFCE4"
-
-#: menueditor/menueditor.c:772
-msgid "Open XFCE4 menu file"
-msgstr "فتح ملف قائمة XFCE4"
-
-#: menueditor/menueditor.c:779
-msgid "Save current menu"
-msgstr "حفظ القائمة الحالية"
-
-#: menueditor/menueditor.c:786
-msgid "Close current menu"
-msgstr "إغلاق القائمة الحالية"
-
-#: menueditor/menueditor.c:794
-msgid "Add an entry to the menu"
-msgstr "أضف مدخل للقائمة"
-
-#: menueditor/menueditor.c:801
-msgid "Delete the current entry"
-msgstr "حذف المدخل من القائمة"
-
-#: menueditor/menueditor.c:808
-msgid "Move up the current entry"
-msgstr "نقل المدخل للأعلى"
-
-#: menueditor/menueditor.c:815
-msgid "Move down the current entry"
-msgstr "نقل المدخل للأسفل"
-
-#: menueditor/menueditor.c:849
-msgid "Name"
-msgstr "أسم"
-
-#: menueditor/menueditor.c:851
-msgid "Command"
-msgstr "أمر"
-
-#: menueditor/menueditor.c:853
-msgid "Hidden"
-msgstr "مخفي"
-
-#: menueditor/menueditor.c:855
-msgid "Pointer"
-msgstr "طابعة"
-
-#: menueditor/menueditor.c:1006
-msgid "Corrupted file or incorrect file format !"
-msgstr "ملف فاسد او صيغة غير صحيحة !"
-
-#: menueditor/menueditor.c:1008
-msgid "Corrupted file or incorrect file format !\n"
-msgstr "ملف فاسد او صيغة غير صحيحة !\n"
-
-#: menueditor/menueditor.c:1026
-msgid "No root element in file !"
-msgstr ""
-
-#: menueditor/menueditor.c:1028
-msgid "No root element in file !\n"
-msgstr ""
-
-#: menueditor/menueditor.c:1044
-msgid "Bad datafile format !"
-msgstr "صيغة الملف غير صالحة !"
-
-#: menueditor/menueditor.c:1046
-msgid "Bad datafile format !\n"
-msgstr "صيغة الملف غير صالحة !\n"
-
-#: menueditor/menueditor.c:1138
-#, c-format
-msgid "File %s doesn't exist !"
-msgstr "ملف %s غير موجود !"
-
-#: menueditor/move.c:186
-msgid "Do you want to move the item into the parent menu ?"
-msgstr ""
-
-#: menueditor/move.c:279
-msgid "Do you want to move the item into the submenu ?"
-msgstr "هل أنت متأكد لنقل للقائمة الفرعية ؟"
-
-#: menueditor/new.c:46
-msgid "Are you sure to close the current menu ?"
-msgstr "هل أنت متأكد لإغلاق القائمة الحالية ؟"
-
-#. get the filename and name for the new menu
-#: menueditor/new.c:72 menueditor/new.c:84
-msgid "New menu"
+#: settings/backdrop_settings.c:685
+#, fuzzy
+msgid "_New list..."
 msgstr "قائمة جديدة"
 
-#. Filename
-#: menueditor/new.c:97
-msgid "Filename :"
-msgstr "أسم الملف :"
+#: settings/backdrop_settings.c:721
+#, fuzzy
+msgid "S_tyle:"
+msgstr "شكل:"
 
-#: menueditor/new.c:130
-msgid "All the field are not filled !!!"
-msgstr "لم يتم ملء كل الحقول !!!"
+#: settings/backdrop_settings.c:729
+#, fuzzy
+msgid "Tiled"
+msgstr "_كرر"
+
+#: settings/backdrop_settings.c:736
+#, fuzzy
+msgid "Centered"
+msgstr "_توسيط"
+
+#: settings/backdrop_settings.c:743
+#, fuzzy
+msgid "Scaled"
+msgstr "_تكبير"
+
+#: settings/backdrop_settings.c:750
+#, fuzzy
+msgid "Stretched"
+msgstr "_تمدد"
+
+#: settings/backdrop_settings.c:757
+#, fuzzy
+msgid "Auto"
+msgstr "_ذاتي"
+
+#: settings/backdrop_settings.c:821
+msgid "_Brightness:"
+msgstr ""
+
+#. header
+#: settings/backdrop_settings.c:887
+#, fuzzy
+msgid "Desktop Settings"
+msgstr "إعدادات الخلفية"
+
+#: settings/backdrop_settings.c:911
+#, fuzzy
+msgid "_Backdrops"
+msgstr "خلفية"
+
+#. color settings frame
+#: settings/backdrop_settings.c:937
+msgid "Color"
+msgstr "الوان"
+
+#: settings/backdrop_settings.c:951
+#, fuzzy
+msgid "_Color Style:"
+msgstr "شكل:"
+
+#: settings/backdrop_settings.c:960
+#, fuzzy
+msgid "Solid Color"
+msgstr "الوان"
+
+#: settings/backdrop_settings.c:967
+msgid "Horizontal Gradient"
+msgstr ""
+
+#: settings/backdrop_settings.c:974
+msgid "Vertical Gradient"
+msgstr ""
+
+#: settings/backdrop_settings.c:995
+msgid "Fi_rst Color:"
+msgstr ""
+
+#: settings/backdrop_settings.c:1014
+#, fuzzy
+msgid "_Second Color:"
+msgstr "لون الخلفية :"
+
+#. set color only checkbox
+#: settings/backdrop_settings.c:1033
+#, fuzzy
+msgid "Set color _only"
+msgstr "إستخدم لون فقط :"
+
+#: settings/backdrop_settings.c:1048
+msgid "Image"
+msgstr "صورة"
+
+#: settings/backdrop_settings.c:1056
+#, fuzzy
+msgid "Show _Image"
+msgstr "صورة"
+
+#: settings/backdrop_settings.c:1078
+#, fuzzy
+msgid "_File:"
+msgstr "_ملف"
+
+#. don't set backdrop checkbox
+#: settings/backdrop_settings.c:1115
+msgid "_Don't set backdrop"
+msgstr ""
+
+#. add the single backdrop settings page to the main notebook
+#: settings/backdrop_settings.c:1135
+#, fuzzy
+msgid "_Backdrop"
+msgstr "خلفية"
+
+#: settings/backdrop_settings.c:1143 settings/backdrop_settings.c:1145
+#, c-format
+msgid "Screen %d"
+msgstr ""
+
+#. and if we have multiple screens, each with multiple monitors
+#: settings/backdrop_settings.c:1150
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr ""
+
+#: settings/backdrop_settings.c:1164
+msgid "_Menu"
+msgstr ""
+
+#: settings/menu_settings.c:149
+msgid "Show window _list"
+msgstr ""
+
+#: settings/menu_settings.c:164
+msgid "Show _window icons"
+msgstr ""
+
+#: settings/menu_settings.c:182
+msgid "Show desktop _menu"
+msgstr ""
+
+#: settings/menu_settings.c:197
+msgid "Show _application icons"
+msgstr ""
+
+#: settings/menu_settings.c:208
+msgid "_Edit desktop menu"
+msgstr ""
+
+#: src/main.c:253
+#, c-format
+msgid "%s: Unknown option: %s\n"
+msgstr ""
+
+#: src/main.c:254
+msgid "Options are:\n"
+msgstr ""
+
+#: src/main.c:255
+msgid "    -reload      Reload all settings, refresh image list\n"
+msgstr ""
+
+#: src/main.c:256
+msgid "    -menu        Pop up the menu (at the current mouse position)\n"
+msgstr ""
+
+#: src/main.c:257
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+
+#: src/menu.c:73
+#, c-format
+msgid ""
+"%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
+msgstr ""
+
+#: src/windowlist.c:183
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr ""
+
+#: src/windowlist.c:188
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr ""
+
+#: src/windowlist.c:244 src/windowlist.c:247
+#, fuzzy
+msgid "_Add Workspace"
+msgstr "أضف مساحة عمل"
+
+#: src/windowlist.c:254
+#, fuzzy, c-format
+msgid "_Remove Workspace %d"
+msgstr "حذف مساحة عمل"
+
+#: src/windowlist.c:256
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr ""
+
+#~ msgid "New.list"
+#~ msgstr "قائمة جديدة"
+
+#~ msgid "Desktop background"
+#~ msgstr "خلفية سطح المكتب"
+
+#~ msgid "File:"
+#~ msgstr "ملف :"
+
+#~ msgid "_Browse..."
+#~ msgstr "_تصفح..."
+
+#~ msgid "No Name"
+#~ msgstr "بلا إسم"
+
+#~ msgid "Move down the current entry"
+#~ msgstr "نقل المدخل للأسفل"

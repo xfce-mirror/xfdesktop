@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: XFce 4\n"
-"POT-Creation-Date: 2003-11-14 19:03+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-19 01:40-0400\n"
 "PO-Revision-Date: 2004-03-29 22:59+0100\n"
 "Last-Translator: Carles Munoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <ca@li.org>\n"
@@ -14,183 +15,727 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings/backdrop-mgr.c:175
+#: menueditor/about_dialog.c:39
+msgid "A menu editor for Xfce4"
+msgstr ""
+
+#: menueditor/about_dialog.c:48
+msgid "Core developer"
+msgstr ""
+
+#: menueditor/about_dialog.c:52 menueditor/about_dialog.c:56
+#: menueditor/about_dialog.c:60
+msgid "Contributor"
+msgstr ""
+
+#: menueditor/about_dialog.c:64
+msgid "Icon designer"
+msgstr ""
+
+#: menueditor/add_dialog.c:129 menueditor/add_dialog.c:144
+msgid "Add menu entry"
+msgstr ""
+
+#. Type
+#: menueditor/add_dialog.c:150 menueditor/add_menu_dialog.c:93
+#: menueditor/edit_dialog.c:142
+msgid "Type:"
+msgstr ""
+
+#: menueditor/add_dialog.c:153
+msgid "Launcher"
+msgstr ""
+
+#: menueditor/add_dialog.c:158
+msgid "Submenu"
+msgstr ""
+
+#: menueditor/add_dialog.c:163
+msgid "Separator"
+msgstr ""
+
+#: menueditor/add_dialog.c:168
+#, fuzzy
+msgid "Title"
+msgstr "_Títol"
+
+#: menueditor/add_dialog.c:173
+msgid "Quit"
+msgstr ""
+
+#. Name
+#: menueditor/add_dialog.c:188 menueditor/edit_dialog.c:253
+#: menueditor/edit_dialog.c:303 menueditor/edit_dialog.c:341
+msgid "Name:"
+msgstr "Nom:"
+
+#: menueditor/add_dialog.c:198 menueditor/edit_dialog.c:254
+msgid "Command:"
+msgstr ""
+
+#: menueditor/add_dialog.c:214 menueditor/edit_dialog.c:245
+#: menueditor/edit_dialog.c:308 menueditor/edit_dialog.c:346
+#: menueditor/edit_dialog.c:383
+msgid "Icon:"
+msgstr ""
+
+#. Start Notify check button
+#: menueditor/add_dialog.c:230 menueditor/edit_dialog.c:265
+msgid "Use startup _notification"
+msgstr ""
+
+#. Run in terminal check button
+#: menueditor/add_dialog.c:234 menueditor/edit_dialog.c:266
+msgid "Run in _terminal"
+msgstr ""
+
+#: menueditor/add_dialog.c:282 menueditor/edit_dialog.c:428
+msgid "The command doesn't exist !"
+msgstr ""
+
+#: menueditor/add_dialog.c:296
+msgid "All fields must be filled to add an item."
+msgstr ""
+
+#: menueditor/add_dialog.c:375 menueditor/add_dialog.c:491
+#: menueditor/add_dialog.c:564
+msgid "The 'Name' field is required."
+msgstr ""
+
+#: menueditor/add_dialog.c:475 menueditor/dnd.c:150
+#: menueditor/menueditor.c:264 menueditor/move.c:90 menueditor/move.c:246
+msgid "--- separator ---"
+msgstr ""
+
+#: menueditor/add_dialog.c:622
+msgid "quit"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:73 menueditor/add_menu_dialog.c:84
+#: menueditor/menueditor.c:688
+msgid "Add an external menu"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:98 menueditor/edit_dialog.c:145
+#, fuzzy
+msgid "File"
+msgstr "Fitxer:"
+
+#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:150
+msgid "System"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:118 menueditor/edit_dialog.c:165
+msgid "Source:"
+msgstr ""
+
+#. Style
+#: menueditor/add_menu_dialog.c:131 menueditor/edit_dialog.c:178
+msgid "Style:"
+msgstr "Estil:"
+
+#: menueditor/add_menu_dialog.c:134 menueditor/edit_dialog.c:181
+msgid "Simple"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:184
+msgid "Multilevel"
+msgstr ""
+
+#. Unique
+#: menueditor/add_menu_dialog.c:150 menueditor/edit_dialog.c:197
+msgid "_Unique entries only"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:203
+msgid "The 'Source' field is required."
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:247 menueditor/add_menu_dialog.c:303
+#: menueditor/dnd.c:152 menueditor/edit_dialog.c:625
+#: menueditor/edit_dialog.c:647 menueditor/menueditor.c:312
+#: menueditor/move.c:120 menueditor/move.c:276
+msgid "--- include ---"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:304 menueditor/dnd.c:157
+#: menueditor/edit_dialog.c:649 menueditor/menueditor.c:315
+#: menueditor/move.c:123 menueditor/move.c:279
+msgid "system"
+msgstr ""
+
+#. Create dialog for editing
+#: menueditor/edit_dialog.c:96 menueditor/edit_dialog.c:109
+msgid "Edit menu entry"
+msgstr ""
+
+#. Name
+#: menueditor/edit_dialog.c:390 menueditor/new_dialog.c:102
+#, fuzzy
+msgid "Title:"
+msgstr "Fitxer:"
+
+#: menueditor/menueditor.c:159
+msgid "Select command"
+msgstr ""
+
+#: menueditor/menueditor.c:172
+msgid "Select icon"
+msgstr ""
+
+#: menueditor/menueditor.c:192
+msgid "Not yet implemented!"
+msgstr ""
+
+#: menueditor/menueditor.c:208 menueditor/menueditor.c:409
+#: menueditor/menueditor.c:462 menueditor/menueditor.c:589
+#: menueditor/new_dialog.c:74
+msgid "Do you want to save before closing the file?"
+msgstr ""
+
+#: menueditor/menueditor.c:473
+msgid "Menu file selection"
+msgstr ""
+
+#: menueditor/menueditor.c:501 menueditor/menueditor.c:512
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr ""
+
+#: menueditor/menueditor.c:567
+msgid "Save as..."
+msgstr ""
+
+#: menueditor/menueditor.c:682
+#, fuzzy
+msgid "Edit"
+msgstr "Edita la llista"
+
+#. File menu
+#: menueditor/menueditor.c:869
+#, fuzzy
+msgid "_File"
+msgstr "Fitxer:"
+
+#: menueditor/menueditor.c:878
+msgid "Open default menu"
+msgstr ""
+
+#. Edit menu
+#: menueditor/menueditor.c:892
+msgid "_Edit"
+msgstr ""
+
+#: menueditor/menueditor.c:898
+msgid "Add an external menu..."
+msgstr ""
+
+#. Help menu
+#: menueditor/menueditor.c:910
+msgid "_Help"
+msgstr ""
+
+#: menueditor/menueditor.c:915
+msgid "_About..."
+msgstr ""
+
+#: menueditor/menueditor.c:929
+msgid "Create a new Xfce4 menu file"
+msgstr ""
+
+#: menueditor/menueditor.c:936
+msgid "Open an Xfce4 menu file"
+msgstr ""
+
+#: menueditor/menueditor.c:943
+msgid "Save current menu"
+msgstr ""
+
+#: menueditor/menueditor.c:950
+msgid "Close current menu"
+msgstr ""
+
+#: menueditor/menueditor.c:958
+msgid "Collapse the tree"
+msgstr ""
+
+#: menueditor/menueditor.c:965
+msgid "Expand the tree"
+msgstr ""
+
+#: menueditor/menueditor.c:973
+msgid "Add an entry to the menu"
+msgstr ""
+
+#: menueditor/menueditor.c:980
+msgid "Delete the current entry"
+msgstr ""
+
+#: menueditor/menueditor.c:987
+msgid "Move the current entry up"
+msgstr ""
+
+#: menueditor/menueditor.c:994
+msgid "Move the current entry down"
+msgstr ""
+
+#: menueditor/menueditor.c:1027
+#, fuzzy
+msgid "Name"
+msgstr "Nom:"
+
+#: menueditor/menueditor.c:1029
+msgid "Command"
+msgstr ""
+
+#: menueditor/menueditor.c:1031
+msgid "Hidden"
+msgstr ""
+
+#: menueditor/menueditor.c:1033
+msgid "Pointer"
+msgstr ""
+
+#: menueditor/menueditor.c:1172
+msgid "Corrupted file or incorrect file format !"
+msgstr ""
+
+#: menueditor/menueditor.c:1174
+msgid "Corrupted file or incorrect file format !\n"
+msgstr ""
+
+#: menueditor/menueditor.c:1192
+msgid "No root element in file !"
+msgstr ""
+
+#: menueditor/menueditor.c:1194
+msgid "No root element in file !\n"
+msgstr ""
+
+#: menueditor/menueditor.c:1210
+msgid "Bad datafile format !"
+msgstr ""
+
+#: menueditor/menueditor.c:1212
+msgid "Bad datafile format !\n"
+msgstr ""
+
+#: menueditor/menueditor.c:1333
+#, c-format
+msgid "File %s doesn't exist !"
+msgstr ""
+
+#: menueditor/move.c:401
+msgid "Do you want to move the item into the parent menu?"
+msgstr ""
+
+#: menueditor/move.c:500
+msgid "Do you want to move the item into the submenu?"
+msgstr ""
+
+#: menueditor/new_dialog.c:58
+msgid "Are you sure you want to close the current menu?"
+msgstr ""
+
+#. get the filename and name for the new menu
+#: menueditor/new_dialog.c:84 menueditor/new_dialog.c:96
+msgid "New menu"
+msgstr ""
+
+#. Filename
+#: menueditor/new_dialog.c:109
+#, fuzzy
+msgid "Filename:"
+msgstr "Fitxer:"
+
+#: menueditor/new_dialog.c:142
+msgid "All fields are required."
+msgstr ""
+
+#: modules/menu/desktop-menuspec.c:61
+msgid "/Other"
+msgstr ""
+
+#: modules/menu/desktop-menuspec.c:279
+#, c-format
+msgid "%s: missing or unknown attribute for 'related' element\n"
+msgstr ""
+
+#: modules/menu/desktop-menuspec.c:284
+#, c-format
+msgid "%s: unknown xml element %s\n"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:134
+#: panel-plugin/desktop-menu-plugin.c:367
+msgid "Xfce Menu"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:264
+msgid "Select Icon"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:274 settings/backdrop-mgr.c:545
+#: settings/backdrop-mgr.c:701 settings/backdrop_settings.c:578
+msgid "All Files"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:279 settings/backdrop-mgr.c:549
+#: settings/backdrop_settings.c:582
+#, fuzzy
+msgid "Image Files"
+msgstr "Fitxers d'imatge"
+
+#: panel-plugin/desktop-menu-plugin.c:332
+msgid "_Button icon:"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:356
+msgid "Show _icons in menu"
+msgstr ""
+
+#: settings/backdrop-mgr.c:133 settings/backdrop-mgr.c:192
+#: settings/backdrop-mgr.c:593
+#, fuzzy
+msgid "Backdrop"
+msgstr "Llista de rerefons"
+
+#: settings/backdrop-mgr.c:139
+#, c-format
+msgid "Adding files from directory %s..."
+msgstr ""
+
+#: settings/backdrop-mgr.c:198
+#, c-format
+msgid "Adding files from list %s..."
+msgstr ""
+
+#: settings/backdrop-mgr.c:240
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your changes"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
 msgstr ""
 "No s'ha pogut gravar el fitxer %s: %s\n"
 "\n"
-"Escolliu una altra ubicació o polseu cancel·la en la finestra de diàleg per descartar els canvis"
+"Escolliu una altra ubicació o polseu cancel·la en la finestra de diàleg per "
+"descartar els canvis"
 
-#: settings/backdrop-mgr.c:510
-msgid "Select image file"
+#: settings/backdrop-mgr.c:540
+#, fuzzy
+msgid "Select backdrop image file"
 msgstr "Seleccioneu el fitxer d'imatge"
 
-#: settings/backdrop-mgr.c:622
+#: settings/backdrop-mgr.c:599
+msgid "Adding multiple files..."
+msgstr ""
+
+#: settings/backdrop-mgr.c:696
 msgid "Choose backdrop list filename"
 msgstr "Escolliu el rerefons del llistat de fitxers"
 
-#: settings/backdrop-mgr.c:694
-msgid "New.list"
-msgstr "Nova.llista"
+#: settings/backdrop-mgr.c:705
+#, fuzzy
+msgid "List Files"
+msgstr "Llista fitxers"
 
-#: settings/backdrop-mgr.c:698
+#: settings/backdrop-mgr.c:770
 msgid "Backdrop List"
 msgstr "Llista de rerefons"
 
-#: settings/backdrop-mgr.c:734
+#: settings/backdrop-mgr.c:787
 msgid "Image files"
 msgstr "Fitxers d'imatge"
 
-#: settings/backdrop-mgr.c:749
+#: settings/backdrop-mgr.c:797
+#, fuzzy
+msgid "backdrops.list"
+msgstr "Edita la llista de rerefons"
+
+#: settings/backdrop-mgr.c:803
 msgid "List file"
 msgstr "Llista fitxers"
 
-#: settings/backdrop-mgr.c:767
+#: settings/backdrop-mgr.c:823
 msgid "Create backdrop list"
 msgstr "Crea una llista de rerefons"
 
-#: settings/backdrop-mgr.c:774
+#: settings/backdrop-mgr.c:854
 msgid "Edit backdrop list"
 msgstr "Edita la llista de rerefons"
 
-#: settings/backdrop_settings.c:149
-msgid "Desktop background"
-msgstr "Fons de l'escriptori"
+#. the dialog
+#: settings/backdrop_settings.c:134 settings/backdrop_settings.c:872
+#: src/xfce-desktop.c:577
+msgid "Desktop"
+msgstr ""
 
-#: settings/backdrop_settings.c:363
-msgid "Select background color"
+#: settings/backdrop_settings.c:360
+#, fuzzy
+msgid "Select backdrop color"
 msgstr "Seleccioneu el color de fons"
 
-#: settings/backdrop_settings.c:413
-msgid "Background color:"
-msgstr "Color de fons:"
-
-#: settings/backdrop_settings.c:443
-msgid "Use color only:"
-msgstr "Fes servir tan sols el color:"
-
-#: settings/backdrop_settings.c:569
-msgid "File:"
-msgstr "Fitxer:"
-
-#: settings/backdrop_settings.c:630
-msgid "Select background image or list file"
+#: settings/backdrop_settings.c:573
+#, fuzzy
+msgid "Select backdrop image or list file"
 msgstr "Seleccioneu la imatge de fons o la llista de fitxers"
 
-#: settings/backdrop_settings.c:707
-msgid "_Browse..."
-msgstr "_Navega..."
+#: settings/backdrop_settings.c:591
+msgid "List Files (*.list)"
+msgstr ""
 
-#: settings/backdrop_settings.c:711
-msgid "New list"
-msgstr "Nova llista"
-
-#: settings/backdrop_settings.c:715
-msgid "Edit list"
+#: settings/backdrop_settings.c:677
+#, fuzzy
+msgid "_Edit list..."
 msgstr "Edita la llista"
 
-#: settings/backdrop_settings.c:753
-msgid "Style:"
+#: settings/backdrop_settings.c:685
+#, fuzzy
+msgid "_New list..."
+msgstr "Nova llista"
+
+#: settings/backdrop_settings.c:721
+#, fuzzy
+msgid "S_tyle:"
 msgstr "Estil:"
 
-#: settings/backdrop_settings.c:761
-msgid "_Tiled"
+#: settings/backdrop_settings.c:729
+#, fuzzy
+msgid "Tiled"
 msgstr "_Títol"
 
-#: settings/backdrop_settings.c:767
-msgid "_Scaled"
-msgstr "_Escalat"
-
-#: settings/backdrop_settings.c:774
-msgid "_Centered"
+#: settings/backdrop_settings.c:736
+#, fuzzy
+msgid "Centered"
 msgstr "_Centrat"
 
-#: settings/backdrop_settings.c:781
-msgid "_Auto"
+#: settings/backdrop_settings.c:743
+#, fuzzy
+msgid "Scaled"
+msgstr "_Escalat"
+
+#: settings/backdrop_settings.c:750
+msgid "Stretched"
+msgstr ""
+
+#: settings/backdrop_settings.c:757
+#, fuzzy
+msgid "Auto"
 msgstr "_Automàtic"
 
-#. the dialog
-#: settings/backdrop_settings.c:820
-msgid "Background"
-msgstr "Fons"
+#: settings/backdrop_settings.c:821
+msgid "_Brightness:"
+msgstr ""
 
 #. header
-#: settings/backdrop_settings.c:838
-msgid "Background Settings"
-msgstr "Ajustaments del fons"
+#: settings/backdrop_settings.c:887
+#, fuzzy
+msgid "Desktop Settings"
+msgstr "Ajustament dels espais de treball"
 
-#. color
-#: settings/backdrop_settings.c:844
+#: settings/backdrop_settings.c:911
+#, fuzzy
+msgid "_Backdrops"
+msgstr "Llista de rerefons"
+
+#. color settings frame
+#: settings/backdrop_settings.c:937
 msgid "Color"
 msgstr "Color"
 
-#. image vbox
-#: settings/backdrop_settings.c:856
+#: settings/backdrop_settings.c:951
+#, fuzzy
+msgid "_Color Style:"
+msgstr "Estil:"
+
+#: settings/backdrop_settings.c:960
+#, fuzzy
+msgid "Solid Color"
+msgstr "Color"
+
+#: settings/backdrop_settings.c:967
+msgid "Horizontal Gradient"
+msgstr ""
+
+#: settings/backdrop_settings.c:974
+msgid "Vertical Gradient"
+msgstr ""
+
+#: settings/backdrop_settings.c:995
+msgid "Fi_rst Color:"
+msgstr ""
+
+#: settings/backdrop_settings.c:1014
+#, fuzzy
+msgid "_Second Color:"
+msgstr "Color de fons:"
+
+#. set color only checkbox
+#: settings/backdrop_settings.c:1033
+#, fuzzy
+msgid "Set color _only"
+msgstr "Fes servir tan sols el color:"
+
+#: settings/backdrop_settings.c:1048
 msgid "Image"
 msgstr "Imatge"
 
-#: settings/backdrop_settings.c:882
-msgid "Don't set background"
+#: settings/backdrop_settings.c:1056
+#, fuzzy
+msgid "Show _Image"
+msgstr "Imatge"
+
+#: settings/backdrop_settings.c:1078
+#, fuzzy
+msgid "_File:"
+msgstr "Fitxer:"
+
+#. don't set backdrop checkbox
+#: settings/backdrop_settings.c:1115
+#, fuzzy
+msgid "_Don't set backdrop"
 msgstr "No fixar el fons"
 
-#: settings/workspaces_settings.c:85
-msgid "Desktop: workspaces"
-msgstr "Escriptori: Espais de treball"
+#. add the single backdrop settings page to the main notebook
+#: settings/backdrop_settings.c:1135
+#, fuzzy
+msgid "_Backdrop"
+msgstr "Llista de rerefons"
 
-#: settings/workspaces_settings.c:329
-msgid "Change name"
-msgstr "Canvieu el nom"
-
-#: settings/workspaces_settings.c:340
+#: settings/backdrop_settings.c:1143 settings/backdrop_settings.c:1145
 #, c-format
-msgid "Workspace %d"
+msgid "Screen %d"
+msgstr ""
+
+#. and if we have multiple screens, each with multiple monitors
+#: settings/backdrop_settings.c:1150
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr ""
+
+#: settings/backdrop_settings.c:1164
+msgid "_Menu"
+msgstr ""
+
+#: settings/menu_settings.c:149
+msgid "Show window _list"
+msgstr ""
+
+#: settings/menu_settings.c:164
+msgid "Show _window icons"
+msgstr ""
+
+#: settings/menu_settings.c:182
+msgid "Show desktop _menu"
+msgstr ""
+
+#: settings/menu_settings.c:197
+msgid "Show _application icons"
+msgstr ""
+
+#: settings/menu_settings.c:208
+msgid "_Edit desktop menu"
+msgstr ""
+
+#: src/main.c:253
+#, c-format
+msgid "%s: Unknown option: %s\n"
+msgstr ""
+
+#: src/main.c:254
+msgid "Options are:\n"
+msgstr ""
+
+#: src/main.c:255
+msgid "    -reload      Reload all settings, refresh image list\n"
+msgstr ""
+
+#: src/main.c:256
+msgid "    -menu        Pop up the menu (at the current mouse position)\n"
+msgstr ""
+
+#: src/main.c:257
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+
+#: src/menu.c:73
+#, c-format
+msgid ""
+"%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
+msgstr ""
+
+#: src/windowlist.c:183
+#, fuzzy, c-format
+msgid "<b>Workspace %d</b>"
 msgstr "Espai de treball %d"
 
-#: settings/workspaces_settings.c:350
-msgid "Name:"
-msgstr "Nom:"
+#: src/windowlist.c:188
+#, fuzzy, c-format
+msgid "<i>Workspace %d</i>"
+msgstr "Espai de treball %d"
 
-#: settings/workspaces_settings.c:461
-msgid "Click on a workspace name to edit it"
-msgstr "Cliqueu al nom de l'espai de treball per editar-lo"
-
-#: settings/workspaces_settings.c:492
-msgid "Number of workspaces:"
-msgstr "Nombre d'espais de treball:"
-
-#. Number of workspaces
-#: settings/workspaces_settings.c:528
-#: settings/workspaces_settings.c:558
-msgid "Workspaces"
-msgstr "Espais de treball"
-
-#: settings/workspaces_settings.c:551
-msgid "Workspace Settings"
-msgstr "Ajustament dels espais de treball"
-
-#. Workspace names
-#: settings/workspaces_settings.c:570
-msgid "Workspace names"
-msgstr "Noms dels espais de treball"
-
-#: src/backdrop.c:508
-#, c-format
-msgid "xfdesktop error: loading backdrop image: %s\n"
-msgstr "xfdesktop error: carregant imatge de rerefons: %s\n"
-
-#: src/menu.c:735
-msgid "Add workspace"
+#: src/windowlist.c:244 src/windowlist.c:247
+#, fuzzy
+msgid "_Add Workspace"
 msgstr "Afegir espai de treball"
 
-#: src/menu.c:742
-msgid "Delete workspace"
-msgstr "Esborrar espai de treball"
+#: src/windowlist.c:254
+#, fuzzy, c-format
+msgid "_Remove Workspace %d"
+msgstr "Espai de treball %d"
 
-#: src/settings.c:182
-msgid "xfdesktop: could not connect to settings manager!Please check your installation."
-msgstr "xfdesktop: no puc connectar amb el gestor d'ajustaments! Comproveu la vostra insta·lació."
+#: src/windowlist.c:256
+#, fuzzy, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "Espai de treball %d"
 
+#~ msgid "New.list"
+#~ msgstr "Nova.llista"
+
+#~ msgid "Desktop background"
+#~ msgstr "Fons de l'escriptori"
+
+#~ msgid "_Browse..."
+#~ msgstr "_Navega..."
+
+#~ msgid "Background"
+#~ msgstr "Fons"
+
+#~ msgid "Background Settings"
+#~ msgstr "Ajustaments del fons"
+
+#~ msgid "Desktop: workspaces"
+#~ msgstr "Escriptori: Espais de treball"
+
+#~ msgid "Change name"
+#~ msgstr "Canvieu el nom"
+
+#~ msgid "Click on a workspace name to edit it"
+#~ msgstr "Cliqueu al nom de l'espai de treball per editar-lo"
+
+#~ msgid "Number of workspaces:"
+#~ msgstr "Nombre d'espais de treball:"
+
+#~ msgid "Workspaces"
+#~ msgstr "Espais de treball"
+
+#~ msgid "Workspace names"
+#~ msgstr "Noms dels espais de treball"
+
+#~ msgid "xfdesktop error: loading backdrop image: %s\n"
+#~ msgstr "xfdesktop error: carregant imatge de rerefons: %s\n"
+
+#~ msgid "Delete workspace"
+#~ msgstr "Esborrar espai de treball"
+
+#~ msgid ""
+#~ "xfdesktop: could not connect to settings manager!Please check your "
+#~ "installation."
+#~ msgstr ""
+#~ "xfdesktop: no puc connectar amb el gestor d'ajustaments! Comproveu la "
+#~ "vostra insta·lació."

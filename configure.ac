@@ -1,6 +1,6 @@
 dnl configure.ac
 dnl
-dnl xfdesktop-ng - xfce4's new desktop manager
+dnl xfdesktop - xfce4's desktop manager
 dnl
 
 dml version info
@@ -32,7 +32,8 @@ AC_CHECK_HEADERS(fcntl.h math.h signal.h stddef.h string.h sys/stat.h sys/types.
 AC_CHECK_FUNCS(mmap sigaction srandom)
 
 dnl Check for i18n support
-BM_I18N([xfdesktop], [])
+BM_I18N([xfdesktop], [ar az bg ca cs de es es_MX eu fa_IR fi fr hi hu it ja pl
+	ko lt ms nl pt_BR pt_PT ru sv ta tr uk vi zh_CN zh_TW])
 
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE

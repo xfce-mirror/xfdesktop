@@ -34,6 +34,8 @@
 #include <gmodule.h>
 #include <gtk/gtk.h>
 
+#include <libxfce4util/i18n.h>
+
 #include "menu.h"
 #ifdef USE_DESKTOP_MENU
 #include "desktop-menu-stub.h"
@@ -68,7 +70,7 @@ _start_menu_module()
 		xfce_desktop_menu_start_autoregen(desktop_menu, 10);
 		return TRUE;
 	} else if(!module_desktop_menu) {
-		g_warning("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n", PACKAGE);
+		g_warning(_("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"), PACKAGE);
 		return FALSE;
 	} else
 		return TRUE;

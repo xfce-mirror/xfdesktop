@@ -41,6 +41,7 @@
 #include <X11/Xlib.h>
 #include <gtk/gtk.h>
 
+#include <libxfce4util/i18n.h>
 #include <libxfce4mcs/mcs-client.h>
 #include <libxfcegui4/libxfcegui4.h>
 
@@ -248,8 +249,15 @@ main(int argc, char **argv)
 			send_client_message(xid, MENU_MESSAGE);
 		else if(strcmp("-windowlist", argv[1]) == 0)
 			send_client_message(xid, WINDOWLIST_MESSAGE);
-		else
-			g_printerr("%s: unknown option: %s\n", PACKAGE, argv[1]);
+		else {
+			g_printerr(_("%s: Unknown option: %s\n"), PACKAGE, argv[1]);
+			g_printerr(_("Options are:\n"));
+			g_printerr(_("    -reload      Reload all settings, refresh image list\n"));
+			g_printerr(_("    -menu        Pop up the menu (at the current mouse position)\n"));
+			g_printerr(_("    -windowlist  Pop up the window list (at the current mouse position)\n"));
+			
+			return 1;
+		}
 		
 		return 0;
 	}
