@@ -1,9 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Brazilian Portugues translation of xfdesktop
+# Copyright (C) 2004 THE xfdesktop's COPYRIGHT HOLDER
+# This file is distributed under the same license as the xfdesktop package.
+# Antonio S. de A. Terceiro <asaterceiro@inf.ufrgs.br>, 2004.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
@@ -57,7 +56,6 @@ msgid "Separator"
 msgstr "Separador"
 
 #: menueditor/add_dialog.c:171
-#, fuzzy
 msgid "Title"
 msgstr "Título"
 
@@ -118,9 +116,8 @@ msgid "Add an external menu"
 msgstr "Adicionar um menu externo"
 
 #: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:151
-#, fuzzy
 msgid "File"
-msgstr "Arquivo:"
+msgstr "Arquivo"
 
 #: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:156
 msgid "System"
@@ -176,7 +173,6 @@ msgstr "Separadores não podem ser editados"
 
 #. Name
 #: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:104
-#, fuzzy
 msgid "Title:"
 msgstr "Título:"
 
@@ -196,7 +192,6 @@ msgstr "Todos os arquivos"
 
 #: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:395
 #: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
-#, fuzzy
 msgid "Image Files"
 msgstr "Arquivo de imagens"
 
@@ -274,7 +269,7 @@ msgstr "Adicionar um menu externo..."
 #. Help menu
 #: menueditor/menueditor.c:1046
 msgid "_Help"
-msgstr ""
+msgstr "Ajuda"
 
 #: menueditor/menueditor.c:1051
 msgid "_About..."
@@ -335,15 +330,15 @@ msgstr "Escondido"
 
 #: menueditor/menueditor.c:1136
 msgid "Pointer"
-msgstr "Pointeiro"
+msgstr "Ponteiro"
 
 #: menueditor/menueditor.c:1260
 msgid "Corrupted file or incorrect file format !"
-msgstr ""
+msgstr "Arquivo corrompido ou formato de arquivo incorreto!"
 
 #: menueditor/menueditor.c:1273
 msgid "No root element in file !"
-msgstr "Eemento raiz não encontrado no arquivo!"
+msgstr "Elemento raiz não encontrado no arquivo!"
 
 #: menueditor/menueditor.c:1284
 msgid "Bad datafile format !"
@@ -364,11 +359,11 @@ msgstr "Você deseja mover o item para o submenu?"
 
 #: menueditor/new_dialog.c:60
 msgid "Are you sure you want to close the current menu?"
-msgstr ""
+msgstr "Você tem certeza que deseja fechar o menu atual?"
 
 #: menueditor/new_dialog.c:76
 msgid "Do you want to save before closing the file?"
-msgstr ""
+msgstr "Você quer salvar antes de fechar o arquivo?"
 
 #. get the filename and name for the new menu
 #: menueditor/new_dialog.c:86 menueditor/new_dialog.c:98
@@ -433,16 +428,14 @@ msgstr ""
 "alterações"
 
 #: settings/backdrop-mgr.c:409
-#, fuzzy
 msgid "Select backdrop image file"
-msgstr "Selecione arquivo de imagem para fundo"
+msgstr "Selecione arquivo de imagem de fundo"
 
 #: settings/backdrop-mgr.c:510
 msgid "Choose backdrop list filename"
-msgstr "Escolha a lista de arquivos de fundo "
+msgstr "Escolha a lista de arquivos de fundo"
 
 #: settings/backdrop-mgr.c:519
-#, fuzzy
 msgid "List Files"
 msgstr "Listar arquivos"
 
@@ -478,38 +471,32 @@ msgid "Desktop"
 msgstr "Área de trabalho"
 
 #: settings/backdrop_settings.c:528
-#, fuzzy
 msgid "Select backdrop image or list file"
-msgstr "Selecionar imagem de fundo ou lista de arquivos"
+msgstr "Selecionar imagem de fundo ou arquivo de lista"
 
 #: settings/backdrop_settings.c:546
 msgid "List Files (*.list)"
-msgstr "Listar arquivos (*.list)"
+msgstr "Arquivos de Lista (*.list)"
 
 #: settings/backdrop_settings.c:636
-#, fuzzy
 msgid "_Edit list..."
-msgstr "Editar lista"
+msgstr "Editar lista..."
 
 #: settings/backdrop_settings.c:644
-#, fuzzy
 msgid "_New list..."
-msgstr "Nova Lista"
+msgstr "Nova Lista..."
 
 #: settings/backdrop_settings.c:680
-#, fuzzy
 msgid "S_tyle:"
-msgstr "Estilo:"
+msgstr "Es_tilo:"
 
 #: settings/backdrop_settings.c:688
-#, fuzzy
 msgid "Tiled"
-msgstr "Em ladrilho:"
+msgstr "Em ladrilho"
 
 #: settings/backdrop_settings.c:695
-#, fuzzy
 msgid "Centered"
-msgstr "_Centralizado"
+msgstr "Centralizado"
 
 #: settings/backdrop_settings.c:702
 msgid "Scaled"
@@ -520,24 +507,21 @@ msgid "Stretched"
 msgstr "Esticado"
 
 #: settings/backdrop_settings.c:716
-#, fuzzy
 msgid "Auto"
-msgstr "_Auto"
+msgstr "Automático"
 
 #: settings/backdrop_settings.c:782
 msgid "Adjust _Brightness:"
-msgstr "Ajustar Brilho:"
+msgstr "Ajustar _Brilho:"
 
 #. header
 #: settings/backdrop_settings.c:851
-#, fuzzy
 msgid "Desktop Settings"
-msgstr "Configurações de área de trabalho"
+msgstr "Configurações da área de trabalho"
 
 #: settings/backdrop_settings.c:880
-#, fuzzy
 msgid "_Backdrops"
-msgstr "Imagem de fundo"
+msgstr "Imagens de fundo"
 
 #. color settings frame
 #: settings/backdrop_settings.c:906
@@ -545,14 +529,12 @@ msgid "Color"
 msgstr "Cor"
 
 #: settings/backdrop_settings.c:920
-#, fuzzy
 msgid "_Color Style:"
-msgstr "Estilo:"
+msgstr "Estilo de _cor:"
 
 #: settings/backdrop_settings.c:929
-#, fuzzy
 msgid "Solid Color"
-msgstr "Cor"
+msgstr "Cor sólida"
 
 #: settings/backdrop_settings.c:936
 msgid "Horizontal Gradient"
@@ -564,42 +546,37 @@ msgstr "Degradê vertical"
 
 #: settings/backdrop_settings.c:964
 msgid "Fi_rst Color:"
-msgstr "Primeira cor:"
+msgstr "Primei_ra Cor:"
 
 #: settings/backdrop_settings.c:985
-#, fuzzy
 msgid "_Second Color:"
-msgstr "Cor de fundo:"
+msgstr "_Segunda Cor:"
 
 #. set color only checkbox
 #: settings/backdrop_settings.c:1006
 #, fuzzy
 msgid "Set color _only"
-msgstr "Use somente cor:"
+msgstr "Usar s_omente cor"
 
 #: settings/backdrop_settings.c:1021
 msgid "Image"
 msgstr "Imagem"
 
 #: settings/backdrop_settings.c:1029
-#, fuzzy
 msgid "Show _Image"
-msgstr "Mostrar Imagem"
+msgstr "Mostrar _Imagem"
 
 #: settings/backdrop_settings.c:1051
-#, fuzzy
 msgid "_File:"
 msgstr "Arquivo:"
 
 #. don't set backdrop checkbox
 #: settings/backdrop_settings.c:1088
-#, fuzzy
 msgid "_Don't set backdrop"
 msgstr "Não configurar plano de fundo"
 
 #. add the single backdrop settings page to the main notebook
 #: settings/backdrop_settings.c:1111
-#, fuzzy
 msgid "_Backdrop"
 msgstr "Imagem de fundo"
 
@@ -616,12 +593,12 @@ msgstr "Tela %d, monitor %d"
 
 #: settings/backdrop_settings.c:1140
 msgid "_Menu"
-msgstr ""
+msgstr "_Menu"
 
 #: settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "Impossível lançar xfce4-menueditor:"
+msgstr "Impossível iniciar xfce4-menueditor: %s"
 
 #: settings/menu_settings.c:153
 msgid "Window List"
@@ -636,21 +613,20 @@ msgid "Show _window icons"
 msgstr "Mostrar ícones das janelas"
 
 #: settings/menu_settings.c:189
-#, fuzzy
 msgid "Desktop Menu"
 msgstr "Menu da érea de trabalho"
 
 #: settings/menu_settings.c:197
 msgid "Show desktop _menu"
-msgstr "Mostrar menu da área de trabalho"
+msgstr "Mostrar _menu da área de trabalho"
 
 #: settings/menu_settings.c:212
 msgid "Show _application icons"
-msgstr "Mostar ícones de aplicações"
+msgstr "Mostar ícones de _aplicações"
 
 #: settings/menu_settings.c:223
 msgid "_Edit desktop menu"
-msgstr "Editar menu da área de trabalho"
+msgstr "_Editar menu da área de trabalho"
 
 #: src/main.c:300
 #, c-format
@@ -672,32 +648,28 @@ msgstr "    -menu        Abrir o menu (na posição atual do mouse)\n"
 #: src/main.c:304
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "   -windowlist  abrir a lista de janelas (na posição atual do mouse)\n"
+msgstr ""
+"   -windowlist  abrir a lista de janelas (na posição atual do mouse)\n"
 
 #: src/windowlist.c:183
-#, fuzzy, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Área de trabalho %d</b>"
 
 #: src/windowlist.c:188
-#, fuzzy, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Área de trabalho %d</i>"
 
 #: src/windowlist.c:244 src/windowlist.c:247
-#, fuzzy
 msgid "_Add Workspace"
 msgstr "Adicionar área de trabalho"
 
 #: src/windowlist.c:254
-#, fuzzy, c-format
 msgid "_Remove Workspace %d"
-msgstr "Área de trabalho %d"
+msgstr "Remover Área de trabalho %d"
 
 #: src/windowlist.c:256
-#, fuzzy, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Área de trabalho %d"
+msgstr "Remover Área de trabalho '%s'"
 
 #, fuzzy
 #~ msgid "Backdrop"
