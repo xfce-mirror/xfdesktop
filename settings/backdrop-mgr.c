@@ -630,7 +630,7 @@ static void filename_browse_cb (GtkWidget * b, ListDialog * ld)
 
 static void add_file_entry(GtkWidget *vbox, ListDialog *ld)
 {
-    GtkWidget *hbox, *label, *button;
+    GtkWidget *hbox, *label, *button, *image;
 
     hbox = gtk_hbox_new(FALSE, BORDER);
     gtk_widget_show(hbox);
@@ -646,10 +646,14 @@ static void add_file_entry(GtkWidget *vbox, ListDialog *ld)
     gtk_widget_set_size_request(ld->file_entry, 300, -1);
     gtk_box_pack_start(GTK_BOX(hbox), ld->file_entry, TRUE, TRUE, 0);
     
-    button = gtk_button_new_with_label("...");
+    button = gtk_button_new ();
     gtk_widget_show(button);
     gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
 
+    image = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_BUTTON);
+    gtk_widget_show(image);
+    gtk_container_add(GTK_CONTAINER(button), image);
+    
     g_signal_connect(button, "clicked", G_CALLBACK(filename_browse_cb), ld);
 }
 
