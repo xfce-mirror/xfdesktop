@@ -13,6 +13,7 @@ conf_DATA = 								\
 	menu.xml.ca 							\
 	menu.xml.hu 							\
 	menu.xml.ta 							\
+	menu.xml.tr 							\
 	menu.xml.vi 							\
 	menu.xml.zh_CN							\
 	menu.xml.zh_TW
