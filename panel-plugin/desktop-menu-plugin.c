@@ -113,6 +113,9 @@ dmp_popup(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
 	GtkWidget *menu;
 	DMPlugin *dmp = user_data;
 	
+	if(evt->button != 1)
+		return FALSE;
+	
 	if(!menu_gmod)
 		return;
 	
@@ -123,8 +126,8 @@ dmp_popup(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
 
 	menu = xfce_desktop_menu_get_widget(dmp->desktop_menu);
 	if(menu) {
-		gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0,
-				gtk_get_current_event_time());
+		gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, evt->button,
+				evt->time);
 	}
 	
 	return TRUE;
