@@ -301,6 +301,7 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
 	
 	g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 	
+#if 0
 	w = gdk_screen_get_width(gscreen);
 	h = gdk_screen_get_height(gscreen);
 	gtk_widget_set_size_request(GTK_WIDGET(desktop), w, h);
@@ -313,6 +314,20 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
 		xfce_backdrop_set_size(desktop->priv->backdrops[i], rect.width, rect.height);
 		backdrop_changed_cb(desktop->priv->backdrops[i], desktop);
 	}
+#else
+	gtk_widget_set_style(GTK_WIDGET(desktop), NULL);
+	for(i = 0; i < desktop->priv->nbackdrops; i++) {
+    GdkRectangle geometry;
+
+    gdk_screen_get_monitor_geometry (gscreen, i, &geometry);
+
+    w = geometry.width;
+    h = geometry.height;
+
+		xfce_backdrop_set_size(desktop->priv->backdrops[i], w, h);
+		backdrop_changed_cb(desktop->priv->backdrops[i], desktop);
+	}
+#endif
 }
 static void
 load_initial_settings(XfceDesktop *desktop, McsClient *mcs_client)
