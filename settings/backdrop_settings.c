@@ -66,8 +66,8 @@
 #include "settings_common.h"
 #include "menu_settings.h"
 
-#define OLD_RCFILE  "backdrop.xml"
-#define RCFILE      "desktop.xml"
+#define OLD_RCFILE  "settings/backdrop.xml"
+#define RCFILE      "xfce4/mcs_settings/desktop.xml"
 #define PLUGIN_NAME "backdrop"
 
 /* there can be only one */
@@ -81,19 +81,17 @@ static void run_dialog (McsPlugin * mcs_plugin);
 static void
 xdg_migrate_config(const gchar *old_filename, const gchar *new_filename)
 {
-	gchar *old_file, *new_file, new_loc[PATH_MAX];
+	gchar *old_file, *new_file;
 	
-	g_snprintf(new_loc, PATH_MAX, "xfce4/mcs_settings/%s", new_filename);
-	
-	new_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, new_loc, FALSE);
+	new_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, new_filename, FALSE);
 	/* if the new file _does_ exist, assume we've already migrated */
 	if(!g_file_test(new_file, G_FILE_TEST_IS_REGULAR)) {
-		old_file = xfce_get_userfile("settings", old_filename, NULL);
+		old_file = xfce_get_userfile(old_filename, NULL);
 		if(g_file_test(old_file, G_FILE_TEST_IS_REGULAR)) {
 			/* we have to run it again to make sure the directory exists */
 			g_free(new_file);
 			new_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
-					new_loc, TRUE);
+					new_filename, TRUE);
 			
 			/* try atomic move first, if not, resort to read->write->delete */
 			if(!link(old_file, new_file))
@@ -126,6 +124,7 @@ McsPluginInitResult
 mcs_plugin_init (McsPlugin * mcs_plugin)
 {
 	xdg_migrate_config(OLD_RCFILE, RCFILE);
+	xdg_migrate_config("backdrops.list", "xfce4/desktop/backdrops.list");
 	
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
@@ -148,8 +147,7 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 	gint i, j, nscreens, nmonitors;
 	gchar setting_name[128];
 
-	rcfile = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
-			"xfce4/mcs_settings/" RCFILE, FALSE);
+	rcfile = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, RCFILE, FALSE);
     mcs_manager_add_channel_from_file (mcs_plugin->manager, BACKDROP_CHANNEL,
 				       rcfile);
     g_free (rcfile);
@@ -183,9 +181,28 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 			g_snprintf(setting_name, 128, "imagepath_%d_%d", i, j);
 			setting = mcs_manager_setting_lookup(mcs_plugin->manager, setting_name,
 					BACKDROP_CHANNEL);
-			if(setting)
-				bp->image_path = g_strdup(setting->data.v_string);
-			else {
+			if(setting) {
+				/* note: remove file migration for 4.4 */
+				gint val;
+				gchar *old_loc = xfce_get_homefile(".xfce4",
+						_("backdrops.list"), NULL);
+				
+				if(g_utf8_validate(old_loc, -1, NULL))
+					val = g_utf8_collate(old_loc, setting->data.v_string);
+				else
+					val = strcmp(old_loc, setting->data.v_string);
+				if(!val) {
+					gchar new_loc[PATH_MAX];
+					g_snprintf(new_loc, PATH_MAX, "xfce4/desktop/%s",
+							_("backdrops.list"));
+					bp->image_path = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
+							new_loc, TRUE);
+					mcs_manager_set_string(mcs_plugin->manager, setting_name,
+							BACKDROP_CHANNEL, bp->image_path);
+				} else
+					bp->image_path = g_strdup(setting->data.v_string);
+				g_free(old_loc);
+			} else {
 				bp->image_path = g_strdup(DEFAULT_BACKDROP);
 				mcs_manager_set_string(mcs_plugin->manager, setting_name,
 						BACKDROP_CHANNEL, bp->image_path);
@@ -291,8 +308,7 @@ backdrop_write_options (McsPlugin * mcs_plugin)
     gchar *rcfile;
     gboolean result;
 	
-	rcfile = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
-			"xfce4/mcs_settings/" RCFILE, TRUE);
+	rcfile = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, RCFILE, TRUE);
     result = mcs_manager_save_channel_to_file (mcs_plugin->manager,
 					       BACKDROP_CHANNEL, rcfile);
     g_free (rcfile);
@@ -507,6 +523,7 @@ browse_cb(GtkWidget *b, BackdropPanel *bp)
 {
 	GtkWidget *chooser, *preview;
 	XfceFileFilter *filter;
+	gchar *confdir;
 	
 	chooser = xfce_file_chooser_new(_("Select backdrop image or list file"),
 			GTK_WINDOW(bp->bd->dialog), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
@@ -532,8 +549,13 @@ browse_cb(GtkWidget *b, BackdropPanel *bp)
 	
 	xfce_file_chooser_add_shortcut_folder(XFCE_FILE_CHOOSER(chooser),
 			DATADIR "/xfce4/backdrops", NULL);
-	xfce_file_chooser_add_shortcut_folder(XFCE_FILE_CHOOSER(chooser),
-			xfce_get_userdir(), NULL);
+	confdir = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
+			"xfce4/desktop/", TRUE);
+	if(confdir) {
+		xfce_file_chooser_add_shortcut_folder(XFCE_FILE_CHOOSER(chooser),
+				confdir, NULL);
+		g_free(confdir);
+	}
 	
 	if(bp->image_path) {
 		gchar *tmppath = g_strdup(bp->image_path);

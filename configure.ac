@@ -4,7 +4,7 @@ dnl xfdesktop - xfce4's desktop manager
 dnl
 
 dml version info
-m4_define([xfdesktop_version], [4.1.6])
+m4_define([xfdesktop_version], [4.1.90])
 
 dnl init autoconf
 AC_INIT([xfdesktop], [xfdesktop_version], [bjt23@cornell.edu])
@@ -117,7 +117,7 @@ xfdesktop.spec
 
 echo
 echo "Build Configuration:"
-echo "  Build menu editor (requires libxml2):      $build_menueditor"
-echo "  Build desktop menu module:                 $build_desktop_menu"
-echo "  Build desktop menu panel plugin:           $build_panel_plugin"
+echo "  Build menu editor (requires libxml2):         $build_menueditor"
+echo "  Build desktop menu module:                    $build_desktop_menu"
+echo "  Build desktop menu panel plugin:              $build_panel_plugin"
 echo

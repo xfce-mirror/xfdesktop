@@ -732,8 +732,11 @@ list_mgr_dialog_new(const gchar *title, GtkWidget *parent, const gchar *path,
     xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
 
     *tv = add_tree_view(vbox, path, *dialog);
-	if(!path)
-		 path = xfce_get_userfile(_("backdrops.list"), NULL);
+	if(!path) {
+		gchar loc[PATH_MAX];
+		g_snprintf(loc, PATH_MAX, "xfce4/desktop/%s", _("backdrops.list"));
+		path = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, loc, TRUE);
+	}
 
     add_list_buttons(vbox, *tv);
 
