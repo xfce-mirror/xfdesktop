@@ -202,19 +202,45 @@ static GList *
 parse_dentry (XfceDesktopEntry *de, GList *menu_data, const char *basepath,
 		MenuPathType pathtype)
 {
-	gchar *categories = NULL, *hidden = NULL;
+	gchar *categories, *hidden;
 	gchar **catv;
 	MenuItem *mi;
 	gint i;
-	GPtrArray *newpaths = NULL;
+	GPtrArray *newpaths;
 	gchar *name;
+
+	gchar *onlyshowin;
+	gchar *tmp;
+
+	categories = NULL;
+	hidden = NULL;
+	newpaths = NULL;
+	onlyshowin = NULL;
+	xfce_desktop_entry_get_string (de, "OnlyShowIn", FALSE, &onlyshowin);
+	if (onlyshowin) {
+		tmp = g_strdup_printf (";%s;", onlyshowin);
+		g_free (onlyshowin);
+		onlyshowin = tmp;
+		tmp = NULL;
+	}
+	
+	if (onlyshowin && !g_strrstr (onlyshowin, ";XFCE;")) {
+		g_free (onlyshowin);
+		return menu_data;
+	}
+
+	if (onlyshowin) {
+		g_free (onlyshowin);
+		onlyshowin = NULL;
+	}
 	
 	xfce_desktop_entry_get_string(de, "Hidden", FALSE, &hidden);
 	if(hidden && !g_strcasecmp(hidden, "true")) {
 		g_free(hidden);
 		return menu_data;
 	}
-	g_free(hidden);
+	if (hidden)
+		g_free(hidden);
 
 	xfce_desktop_entry_get_string (de, "Categories", TRUE, &categories);
 	
