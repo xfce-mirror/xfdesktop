@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFDesktop 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-20 23:37+0200\n"
+"POT-Creation-Date: 2004-09-22 00:21-0700\n"
 "PO-Revision-Date: 2003-09-24 17:36-0500\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -382,22 +382,8 @@ msgstr "கோப்பு:"
 msgid "All fields are required."
 msgstr ""
 
-#: modules/menu/desktop-menu-dentry.c:571
-msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-msgstr ""
-
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
-msgstr ""
-
-#: modules/menu/desktop-menuspec.c:361
-#, c-format
-msgid "%s: missing or unknown attribute for 'related' element\n"
-msgstr ""
-
-#: modules/menu/desktop-menuspec.c:366
-#, c-format
-msgid "%s: unknown xml element %s\n"
 msgstr ""
 
 #: panel-plugin/desktop-menu-plugin.c:189
@@ -503,7 +489,7 @@ msgstr "பின்னணி-ஓவியம் பட்டியல் தொ
 
 #. the dialog
 #: settings/backdrop_settings.c:133 settings/backdrop_settings.c:814
-#: src/xfce-desktop.c:616
+#: src/xfce-desktop.c:792
 msgid "Desktop"
 msgstr "கனிமேசை"
 
@@ -683,24 +669,24 @@ msgstr ""
 msgid "_Edit desktop menu"
 msgstr ""
 
-#: src/main.c:265
+#: src/main.c:309
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr ""
 
-#: src/main.c:266
+#: src/main.c:310
 msgid "Options are:\n"
 msgstr ""
 
-#: src/main.c:267
+#: src/main.c:311
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 
-#: src/main.c:268
+#: src/main.c:312
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
 
-#: src/main.c:269
+#: src/main.c:313
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""

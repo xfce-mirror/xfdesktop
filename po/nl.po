@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-20 23:37+0200\n"
+"POT-Creation-Date: 2004-09-22 00:21-0700\n"
 "PO-Revision-Date: 2004-08-25 09:20+0200\n"
 "Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -376,23 +376,9 @@ msgstr "Bestand:"
 msgid "All fields are required."
 msgstr "Alle velden zijn verplicht."
 
-#: modules/menu/desktop-menu-dentry.c:571
-msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-msgstr "XfceDesktopMenu: Kon xfce-registered-categories.xml niet vinden"
-
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
 msgstr "/Overig"
-
-#: modules/menu/desktop-menuspec.c:361
-#, c-format
-msgid "%s: missing or unknown attribute for 'related' element\n"
-msgstr "%s: ontbrekend of onbekend attribuut voor 'related' element\n"
-
-#: modules/menu/desktop-menuspec.c:366
-#, c-format
-msgid "%s: unknown xml element %s\n"
-msgstr "%s: onbekend xml element %s\n"
 
 #: panel-plugin/desktop-menu-plugin.c:189
 #: panel-plugin/desktop-menu-plugin.c:514
@@ -492,7 +478,7 @@ msgstr "Lijst van achtergronden aanpassen"
 
 #. the dialog
 #: settings/backdrop_settings.c:133 settings/backdrop_settings.c:814
-#: src/xfce-desktop.c:616
+#: src/xfce-desktop.c:792
 msgid "Desktop"
 msgstr "Bureaublad"
 
@@ -653,24 +639,24 @@ msgstr "P_rogrammapictogrammen tonen"
 msgid "_Edit desktop menu"
 msgstr "Bureaubladmenu be_werken"
 
-#: src/main.c:265
+#: src/main.c:309
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Onbekende optie: %s\n"
 
-#: src/main.c:266
+#: src/main.c:310
 msgid "Options are:\n"
 msgstr "Mogelijk opties:\n"
 
-#: src/main.c:267
+#: src/main.c:311
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload\tInstellingen opnieuw laden, bestandenlijst verversen\n"
 
-#: src/main.c:268
+#: src/main.c:312
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu\tBuereaubladmenu tonen (op huidige muispositie)\n"
 
-#: src/main.c:269
+#: src/main.c:313
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist\tVensterlijst tonen (op huidige muispositie)\n"
@@ -698,6 +684,15 @@ msgstr "Bureaublad %d _verwijderen"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Bureaublad '%s' _verwijderen"
+
+#~ msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
+#~ msgstr "XfceDesktopMenu: Kon xfce-registered-categories.xml niet vinden"
+
+#~ msgid "%s: missing or unknown attribute for 'related' element\n"
+#~ msgstr "%s: ontbrekend of onbekend attribuut voor 'related' element\n"
+
+#~ msgid "%s: unknown xml element %s\n"
+#~ msgstr "%s: onbekend xml element %s\n"
 
 #~ msgid "Not yet implemented!"
 #~ msgstr "Nog niet geïmplementeerd!"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-20 23:37+0200\n"
+"POT-Creation-Date: 2004-09-22 00:21-0700\n"
 "PO-Revision-Date: 2004-02-03 10:04+0200\n"
 "Last-Translator: Peeter Vois <Peeter.Vois@mail.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -376,23 +376,9 @@ msgstr "Failinimi:"
 msgid "All fields are required."
 msgstr "Kõik väljad on nõutud."
 
-#: modules/menu/desktop-menu-dentry.c:571
-msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-msgstr "XfceDesktopMenu: Ei leia xfce-registered-categories.xml-i"
-
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
 msgstr "/Muu"
-
-#: modules/menu/desktop-menuspec.c:361
-#, c-format
-msgid "%s: missing or unknown attribute for 'related' element\n"
-msgstr "%s: puuduolev või tundmatu omadus 'seotud' elemendile\n"
-
-#: modules/menu/desktop-menuspec.c:366
-#, c-format
-msgid "%s: unknown xml element %s\n"
-msgstr "%s: tundmatu xml-i element %s\n"
 
 #: panel-plugin/desktop-menu-plugin.c:189
 #: panel-plugin/desktop-menu-plugin.c:514
@@ -493,7 +479,7 @@ msgstr "Muuda tausta nimistut"
 
 #. the dialog
 #: settings/backdrop_settings.c:133 settings/backdrop_settings.c:814
-#: src/xfce-desktop.c:616
+#: src/xfce-desktop.c:792
 msgid "Desktop"
 msgstr "Tööruum"
 
@@ -654,24 +640,24 @@ msgstr "Näita _programmi ikoone"
 msgid "_Edit desktop menu"
 msgstr "_Muuda tööruumi menüüd"
 
-#: src/main.c:265
+#: src/main.c:309
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: tundmatu valik: %s\n"
 
-#: src/main.c:266
+#: src/main.c:310
 msgid "Options are:\n"
 msgstr "Valikud on:\n"
 
-#: src/main.c:267
+#: src/main.c:311
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      Lae kõik seaded uuesti, uuenda piltide nimekirja\n"
 
-#: src/main.c:268
+#: src/main.c:312
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Näita menüüd (hiire jooksvas asukohas)\n"
 
-#: src/main.c:269
+#: src/main.c:313
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Näita akende nimekirja (hiire jooksvas asukohas)\n"
@@ -699,6 +685,15 @@ msgstr "_Eemalda Tööruum %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Eemalda Tööruum %s"
+
+#~ msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
+#~ msgstr "XfceDesktopMenu: Ei leia xfce-registered-categories.xml-i"
+
+#~ msgid "%s: missing or unknown attribute for 'related' element\n"
+#~ msgstr "%s: puuduolev või tundmatu omadus 'seotud' elemendile\n"
+
+#~ msgid "%s: unknown xml element %s\n"
+#~ msgstr "%s: tundmatu xml-i element %s\n"
 
 #~ msgid "Not yet implemented!"
 #~ msgstr "Pole veel tehtud!"

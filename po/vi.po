@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-20 23:37+0200\n"
+"POT-Creation-Date: 2004-09-22 00:21-0700\n"
 "PO-Revision-Date: 2004-09-08 15:40+9\n"
 "Last-Translator: Lâm Vĩnh Niên <nienvl@yahoo.ca>\n"
 "Language-Team: none <LL@li.org>\n"
@@ -376,23 +376,9 @@ msgstr "Tên tập tin:"
 msgid "All fields are required."
 msgstr "Mọi khoản đều cần thiết."
 
-#: modules/menu/desktop-menu-dentry.c:571
-msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-msgstr "XfceDesktopMenu: Không tìm thấy xfce-registered-categories.xml"
-
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
 msgstr "/Khác"
-
-#: modules/menu/desktop-menuspec.c:361
-#, c-format
-msgid "%s: missing or unknown attribute for 'related' element\n"
-msgstr "%s: thiếu hoặc không rõ đặc tính cho yếu tố 'có liên hệ'\n"
-
-#: modules/menu/desktop-menuspec.c:366
-#, c-format
-msgid "%s: unknown xml element %s\n"
-msgstr "%s: yếu tố xml không rõ %s\n"
 
 #: panel-plugin/desktop-menu-plugin.c:189
 #: panel-plugin/desktop-menu-plugin.c:514
@@ -492,7 +478,7 @@ msgstr "Biên tập danh sách phông nền"
 
 #. the dialog
 #: settings/backdrop_settings.c:133 settings/backdrop_settings.c:814
-#: src/xfce-desktop.c:616
+#: src/xfce-desktop.c:792
 msgid "Desktop"
 msgstr "Desktop"
 
@@ -653,24 +639,24 @@ msgstr "Hiển thị biểu tượng ứng _dụng"
 msgid "_Edit desktop menu"
 msgstr "_Biên tập thực đơn desktop"
 
-#: src/main.c:265
+#: src/main.c:309
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Tuỳ chọn không rõ: %s\n"
 
-#: src/main.c:266
+#: src/main.c:310
 msgid "Options are:\n"
 msgstr "Tuỳ chọn là:\n"
 
-#: src/main.c:267
+#: src/main.c:311
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload     Nạp lại mọi thiết lập, làm tươi danh sách hình ảnh\n"
 
-#: src/main.c:268
+#: src/main.c:312
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Bập thực đơn (ở vị trí con chuột hiện tại)\n"
 
-#: src/main.c:269
+#: src/main.c:313
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Bật danh sách cửa sổ (ở vị trí con chuột hiện tại)\n"
@@ -698,6 +684,15 @@ msgstr "Gỡ _bỏ vùng làm việc %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Gỡ _bỏ vùng làm việc '%s'"
+
+#~ msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
+#~ msgstr "XfceDesktopMenu: Không tìm thấy xfce-registered-categories.xml"
+
+#~ msgid "%s: missing or unknown attribute for 'related' element\n"
+#~ msgstr "%s: thiếu hoặc không rõ đặc tính cho yếu tố 'có liên hệ'\n"
+
+#~ msgid "%s: unknown xml element %s\n"
+#~ msgstr "%s: yếu tố xml không rõ %s\n"
 
 #~ msgid "Not yet implemented!"
 #~ msgstr "Chưa được đưa vào"
