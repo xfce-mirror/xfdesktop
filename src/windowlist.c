@@ -207,17 +207,16 @@ windowlist_create(GdkScreen *gscreen)
 		for(l = windows; l; l = l->next) {
 			netk_window = l->data;
 			
-			if(netk_window_get_workspace(netk_window) != netk_workspace
-					|| (netk_window_is_sticky(netk_window)
-						&& netk_workspace != active_workspace)
+			if((netk_window_get_workspace(netk_window) != netk_workspace
+						&& !netk_window_is_sticky(netk_window))
 					|| netk_window_is_skip_pager(netk_window)
 					|| netk_window_is_skip_tasklist(netk_window))
 			{
-				/* the window isn't on the current WS,
+				/* the window isn't on the current WS AND isn't sticky,
 				 * OR,
-				 * the window is sticky and is not on the active workspace,
+				 * the window is set to skip the pager,
 				 * OR,
-				 * the window is set to skip the pager or tasklist
+				 * the window is set to skip the tasklist
 				 */
 				continue;
 			}
