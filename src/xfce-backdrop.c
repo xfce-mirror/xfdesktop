@@ -53,6 +53,8 @@ struct _XfceBackdropPriv
 	gboolean show_image;
 	XfceBackdropImageStyle image_style;
 	gchar *image_path;
+	
+	gint brightness;
 };
 
 enum {
@@ -409,6 +411,25 @@ xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
 }
 
 /**
+ * xfce_backdrop_set_brightness:
+ * @backdrop: An #XfceBackdrop.
+ * @brightness: A brightness percentage.
+ *
+ * Sets the brightness of the backdrop to a percent value between 0 and 100.
+ * This value is applied to the entire image, after compositing.
+ **/
+void
+xfce_backdrop_set_brightness(XfceBackdrop *backdrop, gint brightness)
+{
+	g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+	
+	if(brightness != backdrop->priv->brightness) {
+		backdrop->priv->brightness = brightness;
+		g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
+	}
+}
+
+/**
  * xfce_backdrop_get_pixbuf:
  * @backdrop: An #XfceBackdrop.
  *
@@ -456,8 +477,17 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
 			final_image = create_solid(&backdrop->priv->color1, w, h);
 	}
 	
-	if(!image || !backdrop->priv->show_image)
+	if(!image || !backdrop->priv->show_image) {
+		if(backdrop->priv->brightness != 100) {
+			gdouble brightness = (gdouble)backdrop->priv->brightness / 100;
+			GdkPixbuf *tmp = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, w, h);
+			gdk_pixbuf_saturate_and_pixelate(final_image, tmp, brightness, FALSE);
+			g_object_unref(G_OBJECT(final_image));
+			final_image = tmp;
+		}
+		
 		return final_image;
+	}
 	
 	if(backdrop->priv->image_style == XFCE_BACKDROP_IMAGE_AUTO) {
 		if(ih <= h / 2 && iw <= w / 2)
@@ -533,6 +563,14 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
 	
 	if(image)
 		g_object_unref(G_OBJECT(image));
+	
+	if(backdrop->priv->brightness != 100) {
+		gdouble brightness = (gdouble)backdrop->priv->brightness / 100;
+		GdkPixbuf *tmp = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, w, h);
+		gdk_pixbuf_saturate_and_pixelate(final_image, tmp, brightness, FALSE);
+		g_object_unref(G_OBJECT(final_image));
+		final_image = tmp;
+	}
 	
 	return final_image;
 }

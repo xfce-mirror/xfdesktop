@@ -204,6 +204,18 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 						BACKDROP_CHANNEL, bp->style);
 			}
 			
+			/* brightness */
+			g_snprintf(setting_name, 128, "brightness_%d_%d", i, j);
+			setting = mcs_manager_setting_lookup(mcs_plugin->manager, setting_name,
+					BACKDROP_CHANNEL);
+			if(setting)
+				bp->brightness = setting->data.v_int;
+			else {
+				bp->brightness = 100;
+				mcs_manager_set_int(mcs_plugin->manager, setting_name,
+						BACKDROP_CHANNEL, bp->brightness);
+			}
+			
 			/* color 1 */
 			g_snprintf(setting_name, 128, "color1_%d_%d", i, j);
 			setting = mcs_manager_setting_lookup(mcs_plugin->manager, setting_name,
@@ -774,9 +786,55 @@ set_color_style(GtkWidget *item, BackdropPanel *bp)
 		gtk_widget_set_sensitive(bp->color2_hbox, TRUE);
 	
 	g_snprintf(setting_name, 128, "colorstyle_%d_%d", bp->xscreen, bp->monitor);
-    mcs_manager_set_int (bp->bd->plugin->manager, setting_name, BACKDROP_CHANNEL,
-			 bp->color_style);
-    mcs_manager_notify (bp->bd->plugin->manager, BACKDROP_CHANNEL);
+    mcs_manager_set_int(bp->bd->plugin->manager, setting_name, BACKDROP_CHANNEL,
+			bp->color_style);
+    mcs_manager_notify(bp->bd->plugin->manager, BACKDROP_CHANNEL);
+}
+
+static void
+update_brightness(GtkRange *w, BackdropPanel *bp)
+{
+	gchar setting_name[128];
+	
+	bp->brightness = gtk_range_get_value(w);
+	g_snprintf(setting_name, 128, "brightness_%d_%d", bp->xscreen, bp->monitor);
+    mcs_manager_set_int(bp->bd->plugin->manager, setting_name, BACKDROP_CHANNEL,
+			bp->brightness);
+    mcs_manager_notify(bp->bd->plugin->manager, BACKDROP_CHANNEL);
+}
+
+static gchar *
+hscale_format(GtkScale *w, gdouble val, gpointer user_data)
+{
+	return g_strdup_printf("%d %%", (gint)val);
+}
+
+static void
+add_brightness_slider(GtkWidget *vbox, BackdropPanel *bp)
+{
+	GtkWidget *label, *hbox, *hscale;
+	
+	hbox = gtk_hbox_new(FALSE, BORDER);
+	gtk_widget_show(hbox);
+	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	
+	label = gtk_label_new_with_mnemonic(_("_Brightness:"));
+	gtk_widget_show(label);
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 4);
+	
+	hscale = gtk_hscale_new_with_range(0, 100, 1);
+	gtk_label_set_mnemonic_widget(GTK_LABEL(label), hscale);
+	gtk_scale_set_draw_value(GTK_SCALE(hscale), TRUE);
+	gtk_scale_set_value_pos(GTK_SCALE(hscale), GTK_POS_RIGHT);
+	gtk_range_set_increments(GTK_RANGE(hscale), 1, 5);
+	gtk_range_set_value(GTK_RANGE(hscale), bp->brightness);
+	gtk_range_set_update_policy(GTK_RANGE(hscale), GTK_UPDATE_DISCONTINUOUS);
+	gtk_widget_show(hscale);
+	gtk_box_pack_start(GTK_BOX(hbox), hscale, TRUE, TRUE, 4);
+	g_signal_connect(G_OBJECT(hscale), "value-changed",
+			G_CALLBACK(update_brightness), bp);
+	g_signal_connect(G_OBJECT(hscale), "format-value",
+			G_CALLBACK(hscale_format), NULL);
 }
 
 #if 0
@@ -1066,6 +1124,9 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 			
 			/* set sensitive state of image settings based on 'Show Image' */
 			showimage_toggle(bp->show_image_chk, bp);
+			
+			/* image brightness */
+			add_brightness_slider(page, bp);
 			
 			add_spacer(GTK_BOX(page));
 			

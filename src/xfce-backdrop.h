@@ -87,6 +87,9 @@ void xfce_backdrop_set_image_style       (XfceBackdrop *backdrop,
 void xfce_backdrop_set_image_filename    (XfceBackdrop *backdrop,
                                           const gchar *filename);
 
+void xfce_backdrop_set_brightness        (XfceBackdrop *backdrop,
+                                          gint brightness);
+
 GdkPixbuf *xfce_backdrop_get_pixbuf      (XfceBackdrop *backdrop);
 
 G_END_DECLS

@@ -387,6 +387,16 @@ load_initial_settings(XfceDesktop *desktop, McsClient *mcs_client)
 			setting = NULL;
 		} else
 			xfce_backdrop_set_color_style(backdrop, XFCE_BACKDROP_COLOR_HORIZ_GRADIENT);
+		
+		g_snprintf(setting_name, 64, "brightness_%d_%d", screen, i);
+		if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
+				BACKDROP_CHANNEL, &setting))
+		{
+			xfce_backdrop_set_brightness(backdrop, setting->data.v_int);
+			mcs_setting_free(setting);
+			setting = NULL;
+		} else
+			xfce_backdrop_set_brightness(backdrop, 100);
 	}
 }
 
@@ -707,6 +717,9 @@ xfce_desktop_settings_changed(McsClient *client, McsAction action,
 				handled = TRUE;
 			} else if(strstr(setting->name, "colorstyle") == setting->name) {
 				xfce_backdrop_set_color_style(backdrop, setting->data.v_int);
+				handled = TRUE;
+			} else if(strstr(setting->name, "brightness") == setting->name) {
+				xfce_backdrop_set_brightness(backdrop, setting->data.v_int);
 				handled = TRUE;
 			}
 			

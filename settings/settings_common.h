@@ -59,6 +59,7 @@ typedef struct {
 	gboolean show_image;
 	gchar *image_path;
 	XfceBackdropImageStyle style;
+	gint brightness;
 	
 	/* the panel's GUI controls */
 	GtkWidget *color_frame;
