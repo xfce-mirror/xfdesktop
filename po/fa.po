@@ -1,72 +1,73 @@
+# translation of xfdesktop-fa.po to Persian
+# translation of fa_IR.po to Persian
 # translation of xfdesktop.po to Persian
 # Persian translation of xfdesktop.
 # Copyright (C) 2003 THE xfdesktop'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the xfdesktop package.
 # abbas <(null)>, 2003.
 # abbas <(null)>, 2003.
-# Abbas Izad <abbasizad@hotmail.com>, 2003.
+# Abbas Izad <abbasizad@hotmail.com>, 2003, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
+"Project-Id-Version: xfdesktop-fa\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-09-23 22:43-0700\n"
-"PO-Revision-Date: 2003-12-24 16:26+0330\n"
+"PO-Revision-Date: 2004-09-29 17:27+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
-"Language-Team: Persian <fa@li.org>\n"
+"Language-Team: Persian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Generator: KBabel 1.3\n"
 
 #: menueditor/about_dialog.c:36
 msgid "A menu editor for Xfce4"
-msgstr ""
+msgstr "ویرایشگر منو برای Xfce4"
 
 #. Credits
 #: menueditor/about_dialog.c:41
 msgid "Core developer"
-msgstr ""
+msgstr "توسعه دهنده‌ی اصلی"
 
 #: menueditor/about_dialog.c:42 menueditor/about_dialog.c:43
 #: menueditor/about_dialog.c:44
 msgid "Contributor"
-msgstr ""
+msgstr "اهداگر"
 
 #: menueditor/about_dialog.c:45
 msgid "Icon designer"
-msgstr ""
+msgstr "طراح شمایل"
 
 #: menueditor/add_dialog.c:132 menueditor/add_dialog.c:147
 msgid "Add menu entry"
-msgstr ""
+msgstr "افزودن ورودی منو"
 
 #. Type
 #: menueditor/add_dialog.c:153 menueditor/add_menu_dialog.c:98
 #: menueditor/edit_dialog.c:148
 msgid "Type:"
-msgstr ""
+msgstr "نوع:"
 
 #: menueditor/add_dialog.c:156
 msgid "Launcher"
-msgstr ""
+msgstr "پرتابگر"
 
 #: menueditor/add_dialog.c:161
 msgid "Submenu"
-msgstr ""
+msgstr "زیرمنو"
 
 #: menueditor/add_dialog.c:166
 msgid "Separator"
-msgstr ""
+msgstr "جداساز"
 
 #: menueditor/add_dialog.c:171
-#, fuzzy
 msgid "Title"
-msgstr "_چیده شده"
+msgstr "عنوان"
 
 #: menueditor/add_dialog.c:176
 msgid "Quit"
-msgstr ""
+msgstr "ترک"
 
 #. Name
 #: menueditor/add_dialog.c:191 menueditor/edit_dialog.c:260
@@ -76,62 +77,61 @@ msgstr "نام:"
 
 #: menueditor/add_dialog.c:201 menueditor/edit_dialog.c:261
 msgid "Command:"
-msgstr ""
+msgstr "فرمان:"
 
 #: menueditor/add_dialog.c:217 menueditor/edit_dialog.c:252
 #: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
 #: menueditor/edit_dialog.c:390
 msgid "Icon:"
-msgstr ""
+msgstr "شمایل:"
 
 #. Start Notify check button
 #: menueditor/add_dialog.c:233 menueditor/edit_dialog.c:272
 msgid "Use startup _notification"
-msgstr ""
+msgstr "استفاده از _یادآوری شروعی"
 
 #. Run in terminal check button
 #: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:273
 msgid "Run in _terminal"
-msgstr ""
+msgstr "اجرا در _پایانه"
 
 #: menueditor/add_dialog.c:282 menueditor/edit_dialog.c:459
 msgid "The command doesn't exist !"
-msgstr ""
+msgstr "فرمان وجود ندارد!"
 
 #: menueditor/add_dialog.c:288
 msgid "All fields must be filled to add an item."
-msgstr ""
+msgstr "برای افزودن یک آیتم همه محوطه‌ها باید پر شوند."
 
 #: menueditor/add_dialog.c:296
 msgid "The 'Name' field is required."
-msgstr ""
+msgstr "'نام' محوطه لازم است."
 
 #: menueditor/add_dialog.c:350 menueditor/dnd.c:154
 #: menueditor/menueditor.c:349 menueditor/move.c:92 menueditor/move.c:250
 msgid "--- separator ---"
-msgstr ""
+msgstr "--- جداساز ---"
 
 #: menueditor/add_dialog.c:375 menueditor/edit_dialog.c:494
 msgid "quit"
-msgstr ""
+msgstr "ترک"
 
 #: menueditor/add_menu_dialog.c:78 menueditor/add_menu_dialog.c:89
 #: menueditor/menueditor.c:808
 msgid "Add an external menu"
-msgstr ""
+msgstr "افزودن یک منوی بیرونی"
 
 #: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:151
-#, fuzzy
 msgid "File"
-msgstr "پرونده:"
+msgstr "پرونده"
 
 #: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:156
 msgid "System"
-msgstr ""
+msgstr "سیستم"
 
 #: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:171
 msgid "Source:"
-msgstr ""
+msgstr "کد منبع:"
 
 #. Style
 #: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:184
@@ -140,102 +140,100 @@ msgstr "سبک:"
 
 #: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:187
 msgid "Simple"
-msgstr ""
+msgstr "ساده"
 
 #: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:190
 msgid "Multilevel"
-msgstr ""
+msgstr "چندطبقه"
 
 #. Unique
 #: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:203
 msgid "_Unique entries only"
-msgstr ""
+msgstr "فقط ورودی‌های _یگانه"
 
 #: menueditor/add_menu_dialog.c:208
 msgid "The 'Source' field is required."
-msgstr ""
+msgstr "محوطه 'کدمنبع' لازم است."
 
 #: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:235
 #: menueditor/dnd.c:156 menueditor/edit_dialog.c:508
 #: menueditor/edit_dialog.c:521 menueditor/menueditor.c:397
 #: menueditor/move.c:122 menueditor/move.c:280
 msgid "--- include ---"
-msgstr ""
+msgstr "--- ضمیمه ---"
 
 #: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:161
 #: menueditor/edit_dialog.c:522 menueditor/menueditor.c:400
 #: menueditor/move.c:125 menueditor/move.c:283
 msgid "system"
-msgstr ""
+msgstr "سیستم"
 
 #. Create dialog for editing
 #: menueditor/edit_dialog.c:100 menueditor/edit_dialog.c:113
 msgid "Edit menu entry"
-msgstr ""
+msgstr "ویرایش ورودی منو"
 
 #: menueditor/edit_dialog.c:131
 msgid "Separators cannot be edited"
-msgstr ""
+msgstr "جداسازها نمیتوانند ویرایش شوند"
 
 #. Name
 #: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:104
-#, fuzzy
 msgid "Title:"
-msgstr "پرونده:"
+msgstr "عنوان:"
 
 #: menueditor/menueditor.c:151
 msgid "Select command"
-msgstr ""
+msgstr "انتخاب فرمان"
 
 #: menueditor/menueditor.c:212
 msgid "Select icon"
-msgstr ""
+msgstr "انتخاب شمایل"
 
 #: menueditor/menueditor.c:218 panel-plugin/desktop-menu-plugin.c:371
 #: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
 #: settings/backdrop_settings.c:533
 msgid "All Files"
-msgstr ""
+msgstr "همه پرونده‌ها"
 
 #: menueditor/menueditor.c:222 panel-plugin/desktop-menu-plugin.c:377
 #: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:537
-#, fuzzy
 msgid "Image Files"
 msgstr "پرونده‌های تصویر"
 
 #: menueditor/menueditor.c:275 menueditor/menueditor.c:682
 msgid "Do you want to save before closing the menu ?"
-msgstr ""
+msgstr "آیا میخواهید پیش از بستن منو ذخیره کنید؟"
 
 #: menueditor/menueditor.c:276
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr ""
+msgstr "شما منو را تغییر داده‌اید، آیا میخواهید آن را پیش از ترک ذخیره کنید؟"
 
 #: menueditor/menueditor.c:277
 msgid "Forget modifications"
-msgstr ""
+msgstr "تغییرات فراموش شوند"
 
 #: menueditor/menueditor.c:476 menueditor/menueditor.c:534
 #: menueditor/menueditor.c:680
 msgid "Question"
-msgstr ""
+msgstr "پرسش"
 
 #: menueditor/menueditor.c:478
 msgid "Do you want to save before opening the default menu ?"
-msgstr ""
+msgstr "آیا میخواهید پیش از باز کردن منوی پیش‌فرض ذخیره کنید؟"
 
 #: menueditor/menueditor.c:480 menueditor/menueditor.c:538
 #: menueditor/menueditor.c:684
 msgid "Ignore modifications"
-msgstr ""
+msgstr "نادیده گیری تغییرات"
 
 #: menueditor/menueditor.c:536
 msgid "Do you want to save before opening an other menu ?"
-msgstr ""
+msgstr "آیا میخواهید پیش از باز کردن منوی دیگری ذخیره کنید؟"
 
 #: menueditor/menueditor.c:549
 msgid "Open menu file"
-msgstr ""
+msgstr "باز کردن پرونده منو"
 
 #: menueditor/menueditor.c:583 menueditor/menueditor.c:594
 #, c-format
@@ -243,198 +241,194 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
+"نمیتوان در %s نوشت : \n"
+"%s"
 
 #: menueditor/menueditor.c:625
 msgid "Save as..."
-msgstr ""
+msgstr "ذخیره با نام..."
 
 #: menueditor/menueditor.c:802
-#, fuzzy
 msgid "Edit"
-msgstr "ویرایش کردن لیست"
+msgstr "ویرایش"
 
 #. File menu
 #: menueditor/menueditor.c:1008
-#, fuzzy
 msgid "_File"
-msgstr "پرونده:"
+msgstr "_پرونده"
 
 #: menueditor/menueditor.c:1017
 msgid "Open default menu"
-msgstr ""
+msgstr "باز کردن منوی پیش‌فرض"
 
 #. Edit menu
 #: menueditor/menueditor.c:1031
 msgid "_Edit"
-msgstr ""
+msgstr "_ویرایش"
 
 #: menueditor/menueditor.c:1037
 msgid "Add an external menu..."
-msgstr ""
+msgstr "افزودن یک منوی بیرونی..."
 
 #. Help menu
 #: menueditor/menueditor.c:1049
 msgid "_Help"
-msgstr ""
+msgstr "_راهنما"
 
 #: menueditor/menueditor.c:1054
 msgid "_About..."
-msgstr ""
+msgstr "_درباره..."
 
 #: menueditor/menueditor.c:1064
 msgid "Create a new Xfce4 menu file"
-msgstr ""
+msgstr "ایجاد پرونده‌ی منوی Xfce4 جدید"
 
 #: menueditor/menueditor.c:1068
 msgid "Open an Xfce4 menu file"
-msgstr ""
+msgstr "باز کردن پرونده‌ی منوی Xfce4"
 
 #: menueditor/menueditor.c:1072
 msgid "Save current menu"
-msgstr ""
+msgstr "ذخیره منوی کنونی"
 
 #: menueditor/menueditor.c:1076
 msgid "Close current menu"
-msgstr ""
+msgstr "بستن منوی کنونی"
 
 #: menueditor/menueditor.c:1081
 msgid "Add an entry to the menu"
-msgstr ""
+msgstr "افزودن ورودی به منو"
 
 #: menueditor/menueditor.c:1085
 msgid "Delete the current entry"
-msgstr ""
+msgstr "حذف ورودی کنونی"
 
 #: menueditor/menueditor.c:1089
 msgid "Move the current entry up"
-msgstr ""
+msgstr "انتقال ورودی کنونی به بالا"
 
 #: menueditor/menueditor.c:1093
 msgid "Move the current entry down"
-msgstr ""
+msgstr "انتقال ورودی کنونی به پایین"
 
 #: menueditor/menueditor.c:1098
 msgid "Collapse the tree"
-msgstr ""
+msgstr "فرو ریزی درخت"
 
 #: menueditor/menueditor.c:1102
 msgid "Expand the tree"
-msgstr ""
+msgstr "گستردن درخت"
 
 #: menueditor/menueditor.c:1133
-#, fuzzy
 msgid "Name"
-msgstr "نام:"
+msgstr "نام"
 
 #: menueditor/menueditor.c:1135
 msgid "Command"
-msgstr ""
+msgstr "فرمان"
 
 #: menueditor/menueditor.c:1137
 msgid "Hidden"
-msgstr ""
+msgstr "پنهان"
 
 #: menueditor/menueditor.c:1139
 msgid "Pointer"
-msgstr ""
+msgstr "اشاره‌گر"
 
 #: menueditor/menueditor.c:1263
 msgid "Corrupted file or incorrect file format !"
-msgstr ""
+msgstr "پرونده خراب یا قالب پرونده نادرست !"
 
 #: menueditor/menueditor.c:1276
 msgid "No root element in file !"
-msgstr ""
+msgstr "هیچ عنصر ریشه در پرونده !"
 
 #: menueditor/menueditor.c:1287
 msgid "Bad datafile format !"
-msgstr ""
+msgstr "قالب بد پرونده داده !"
 
 #: menueditor/menueditor.c:1391
 #, c-format
 msgid "File %s doesn't exist !"
-msgstr ""
+msgstr "پرونده %s وجود ندارد !"
 
 #: menueditor/move.c:410
 msgid "Do you want to move the item into the parent menu?"
-msgstr ""
+msgstr "آیا میخواهید آیتم را به درون منوی مادر انتقال دهید؟"
 
 #: menueditor/move.c:514
 msgid "Do you want to move the item into the submenu?"
-msgstr ""
+msgstr "آیا میخواهید آیتم را بدرون زیرمنو انتقال دهید؟"
 
 #: menueditor/new_dialog.c:60
 msgid "Are you sure you want to close the current menu?"
-msgstr ""
+msgstr "آیا مطمئن هستید که میخواهید منوی کنونی را ببندید؟"
 
 #: menueditor/new_dialog.c:76
 msgid "Do you want to save before closing the file?"
-msgstr ""
+msgstr "آیا میخواهید پیش از بستن پرونده ذخیره کنید؟"
 
 #. get the filename and name for the new menu
 #: menueditor/new_dialog.c:86 menueditor/new_dialog.c:98
 msgid "New menu"
-msgstr ""
+msgstr "منوی جدید"
 
 #. Filename
 #: menueditor/new_dialog.c:111
-#, fuzzy
 msgid "Filename:"
-msgstr "پرونده:"
+msgstr "نام‌پرونده:"
 
 #: menueditor/new_dialog.c:144
 msgid "All fields are required."
-msgstr ""
+msgstr "همه محوطه‌ها لازم هستند."
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
-msgstr ""
+msgstr "/دیگر"
 
 #: panel-plugin/desktop-menu-plugin.c:189
 #: panel-plugin/desktop-menu-plugin.c:514
 msgid "Xfce Menu"
-msgstr ""
+msgstr "منوی Xfce"
 
 #: panel-plugin/desktop-menu-plugin.c:354
 msgid "Select Icon"
-msgstr ""
+msgstr "انتخاب شمایل"
 
 #: panel-plugin/desktop-menu-plugin.c:356
 msgid "Select Menu File"
-msgstr ""
+msgstr "انتخاب پرونده منو"
 
 #: panel-plugin/desktop-menu-plugin.c:385
-#, fuzzy
 msgid "Menu Files"
-msgstr "پرونده‌های تصویر"
+msgstr "پرونده‌های منو"
 
 #: panel-plugin/desktop-menu-plugin.c:444
 msgid "_Menu file:"
-msgstr ""
+msgstr "پرونده _منو:"
 
 #: panel-plugin/desktop-menu-plugin.c:478
 msgid "_Button icon:"
-msgstr ""
+msgstr "شمایل _دکمه:"
 
 #: panel-plugin/desktop-menu-plugin.c:503
 msgid "Show _icons in menu"
-msgstr ""
+msgstr "نشان دادن _شمایل‌ها در منو"
 
 #: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
 #: settings/backdrop-mgr.c:553
-#, fuzzy
 msgid "Backdrop"
-msgstr "لیست زمینه"
+msgstr "زمینه"
 
 #: settings/backdrop-mgr.c:100
 #, c-format
 msgid "Adding files from directory %s..."
-msgstr ""
+msgstr "افزودن پرونده‌ها از شاخه‌ی %s..."
 
 #: settings/backdrop-mgr.c:160
 #, c-format
 msgid "Adding files from list %s..."
-msgstr ""
+msgstr "افزودن پرونده‌ها از لیست %s..."
 
 #: settings/backdrop-mgr.c:215
 #, c-format
@@ -450,22 +444,20 @@ msgstr ""
 "رادر پنجره‌ی گفتگو فشار دهید"
 
 #: settings/backdrop-mgr.c:502
-#, fuzzy
 msgid "Select backdrop image file"
-msgstr "انتخاب کردن پرونده‌ی تصویر"
+msgstr "انتخاب کردن پرونده‌ی تصویر زمینه"
 
 #: settings/backdrop-mgr.c:559
 msgid "Adding multiple files..."
-msgstr ""
+msgstr "افزودن چندین پرونده..."
 
 #: settings/backdrop-mgr.c:637
 msgid "Choose backdrop list filename"
 msgstr "انتخاب کردن نام پرونده‌ی لیست زمینه "
 
 #: settings/backdrop-mgr.c:646
-#, fuzzy
 msgid "List Files"
-msgstr "پرونده‌ی لیست"
+msgstr "پرونده‌های لیست"
 
 #: settings/backdrop-mgr.c:709
 msgid "Backdrop List"
@@ -477,9 +469,8 @@ msgstr "پرونده‌های تصویر"
 
 #: settings/backdrop-mgr.c:737 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
-#, fuzzy
 msgid "backdrops.list"
-msgstr "ویرایش کردن لیست زمینه"
+msgstr "لیست.زمینه‌ها"
 
 #: settings/backdrop-mgr.c:745
 msgid "List file"
@@ -497,70 +488,60 @@ msgstr "ویرایش کردن لیست زمینه"
 #: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
 #: src/xfce-desktop.c:616
 msgid "Desktop"
-msgstr ""
+msgstr "رومیزی"
 
 #: settings/backdrop_settings.c:528
-#, fuzzy
 msgid "Select backdrop image or list file"
-msgstr "انتخاب کردن تصویر پس‌زمینه یا پرونده‌ی لیست"
+msgstr "انتخاب کردن تصویرزمینه یا پرونده‌ی لیست"
 
 #: settings/backdrop_settings.c:546
 msgid "List Files (*.list)"
-msgstr ""
+msgstr "پرونده‌های لیست (*.list)"
 
 #: settings/backdrop_settings.c:636
-#, fuzzy
 msgid "_Edit list..."
-msgstr "ویرایش کردن لیست"
+msgstr "_ویرایش لیست..."
 
 #: settings/backdrop_settings.c:644
-#, fuzzy
 msgid "_New list..."
-msgstr "لیست جدید"
+msgstr "لیست _جدید..."
 
 #: settings/backdrop_settings.c:680
-#, fuzzy
 msgid "S_tyle:"
-msgstr "سبک:"
+msgstr "_سبک:"
 
 #: settings/backdrop_settings.c:688
-#, fuzzy
 msgid "Tiled"
-msgstr "_چیده شده"
+msgstr "چیده شده"
 
 #: settings/backdrop_settings.c:695
-#, fuzzy
 msgid "Centered"
-msgstr "_مرکزی شده"
+msgstr "مرکزی شده"
 
 #: settings/backdrop_settings.c:702
-#, fuzzy
 msgid "Scaled"
-msgstr "م_قیاس شده"
+msgstr "مقیاس شده"
 
 #: settings/backdrop_settings.c:709
 msgid "Stretched"
-msgstr ""
+msgstr "کشیده شده"
 
 #: settings/backdrop_settings.c:716
-#, fuzzy
 msgid "Auto"
-msgstr "_خودکار"
+msgstr "خودکار"
 
 #: settings/backdrop_settings.c:782
 msgid "Adjust _Brightness:"
-msgstr ""
+msgstr "متناسب کردن رو_شنایی:"
 
 #. header
 #: settings/backdrop_settings.c:851
-#, fuzzy
 msgid "Desktop Settings"
-msgstr "تنظیمات فضای کار"
+msgstr "تنظیمات رومیزی"
 
 #: settings/backdrop_settings.c:880
-#, fuzzy
 msgid "_Backdrops"
-msgstr "لیست زمینه"
+msgstr "_زمینه‌ها"
 
 #. color settings frame
 #: settings/backdrop_settings.c:906
@@ -568,205 +549,146 @@ msgid "Color"
 msgstr "رنگ"
 
 #: settings/backdrop_settings.c:920
-#, fuzzy
 msgid "_Color Style:"
-msgstr "سبک:"
+msgstr "سبک _رنگ:"
 
 #: settings/backdrop_settings.c:929
-#, fuzzy
 msgid "Solid Color"
-msgstr "رنگ"
+msgstr "رنگ یکدست"
 
 #: settings/backdrop_settings.c:936
 msgid "Horizontal Gradient"
-msgstr ""
+msgstr "افت افقی"
 
 #: settings/backdrop_settings.c:943
 msgid "Vertical Gradient"
-msgstr ""
+msgstr "افت عمودی"
 
 #: settings/backdrop_settings.c:964
 msgid "Fi_rst Color:"
-msgstr ""
+msgstr "رنگ او_ل:"
 
 #: settings/backdrop_settings.c:985
-#, fuzzy
 msgid "_Second Color:"
-msgstr "رنگ پس‌زمینه:"
+msgstr "رنگ _دوم:"
 
 #. set color only checkbox
 #: settings/backdrop_settings.c:1006
-#, fuzzy
 msgid "Set color _only"
-msgstr "استفاده از رنگ فقط:"
+msgstr "گذاردن رنگ _فقط"
 
 #: settings/backdrop_settings.c:1021
 msgid "Image"
 msgstr "تصویر"
 
 #: settings/backdrop_settings.c:1029
-#, fuzzy
 msgid "Show _Image"
-msgstr "تصویر"
+msgstr "نشان دادن _تصویر"
 
 #: settings/backdrop_settings.c:1051
-#, fuzzy
 msgid "_File:"
-msgstr "پرونده:"
+msgstr "_پرونده:"
 
 #. don't set backdrop checkbox
 #: settings/backdrop_settings.c:1088
-#, fuzzy
 msgid "_Don't set backdrop"
-msgstr "پس‌زمینه تعیین نشود"
+msgstr "زمینه _گذارده نشود"
 
 #. add the single backdrop settings page to the main notebook
 #: settings/backdrop_settings.c:1111
-#, fuzzy
 msgid "_Backdrop"
-msgstr "لیست زمینه"
+msgstr "_زمینه"
 
 #: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
 #, c-format
 msgid "Screen %d"
-msgstr ""
+msgstr "صفحه %d"
 
 #. and if we have multiple screens, each with multiple monitors
 #: settings/backdrop_settings.c:1126
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr ""
+msgstr "صفحه %d، نمایشگر %d"
 
 #: settings/backdrop_settings.c:1140
 msgid "_Menu"
-msgstr ""
+msgstr "_منو"
 
 #: settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr ""
+msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت: %s"
 
 #: settings/menu_settings.c:153
 msgid "Window List"
-msgstr ""
+msgstr "لیست پنجره"
 
 #: settings/menu_settings.c:161
 msgid "Show window _list"
-msgstr ""
+msgstr "نشان دادن _لیست پنجره"
 
 #: settings/menu_settings.c:176
 msgid "Show _window icons"
-msgstr ""
+msgstr "نشان دادن شمایل‌های _پنجره"
 
 #: settings/menu_settings.c:189
-#, fuzzy
 msgid "Desktop Menu"
-msgstr "تنظیمات فضای کار"
+msgstr "منوی رومیزی"
 
 #: settings/menu_settings.c:197
 msgid "Show desktop _menu"
-msgstr ""
+msgstr "نشان دادن _منوی رومیزی"
 
 #: settings/menu_settings.c:212
 msgid "Show _application icons"
-msgstr ""
+msgstr "نشان دادن شمایل‌های برنامه‌های _کاربردی"
 
 #: settings/menu_settings.c:223
 msgid "_Edit desktop menu"
-msgstr ""
+msgstr "_ویرایش منوی رومیزی"
 
 #: src/main.c:265
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr ""
+msgstr "%s: گزینه ناشناخته: %s\n"
 
 #: src/main.c:266
 msgid "Options are:\n"
-msgstr ""
+msgstr "گزینه‌ها عبارتند از:\n"
 
 #: src/main.c:267
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr ""
+msgstr "    -reload     همه تنظیمات را بارگذاری مجدد کرده و لیست تصویر نوسازی میشود\n"
 
 #: src/main.c:268
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr ""
+msgstr "    -menu        ,باز کردن منو (در جای موشی کنونی)\n"
 
 #: src/main.c:269
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -windowlist  باز کردن لیست پنجره (در جای موشی کنونی )\n"
 
 #: src/windowlist.c:183
-#, fuzzy, c-format
+#, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "فضای کار %d"
+msgstr "<b>فضای کار %d</b>"
 
 #: src/windowlist.c:188
-#, fuzzy, c-format
+#, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "فضای کار %d"
+msgstr "<i>فضای کاری %d</i>"
 
 #: src/windowlist.c:244 src/windowlist.c:247
-#, fuzzy
 msgid "_Add Workspace"
-msgstr "افزودن فضای کار"
+msgstr "_افزودن فضای کار"
 
 #: src/windowlist.c:254
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace %d"
-msgstr "فضای کار %d"
+msgstr "بردا_شتن فضای کار %d"
 
 #: src/windowlist.c:256
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "فضای کار %d"
+msgstr "بردا_شتن فضای کار '%s'"
 
-#, fuzzy
-#~ msgid "Select backdrop color"
-#~ msgstr "انتخاب کردن رنگ پس‌زمینه"
-
-#~ msgid "New.list"
-#~ msgstr "لیست جدید"
-
-#~ msgid "Desktop background"
-#~ msgstr "پس‌زمینه‌ی رومیزی"
-
-#~ msgid "_Browse..."
-#~ msgstr "_مرور کردن..."
-
-#~ msgid "Background"
-#~ msgstr "پس‌زمینه"
-
-#~ msgid "Background Settings"
-#~ msgstr "تنظیمات پس‌زمینه"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr "رومیزی: فضاهای کار"
-
-#~ msgid "Change name"
-#~ msgstr "تغییر دادن نام"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "برای ویرایش کردن فضای کاری بر نام آن کلیک کنید"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "تعداد فضاهای کار:"
-
-#~ msgid "Workspaces"
-#~ msgstr "فضاهای کار"
-
-#~ msgid "Workspace names"
-#~ msgstr "نام‌های فضای کار"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "خطای xfdesktop: بار کردن تصویر زمینه: %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "حذف فضای کار"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr ""
-#~ "xfdesktop: نمی‌توان با مدیر تنظیمات تماس گرفت! لطفا نصب خود را بررسی کنید."
