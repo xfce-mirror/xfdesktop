@@ -7,7 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-11-14 19:03+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-02-16 19:42-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings/backdrop-mgr.c:175
+#: settings/backdrop-mgr.c:163
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -28,168 +29,440 @@ msgstr ""
 msgid "Select image file"
 msgstr ""
 
-#: settings/backdrop-mgr.c:622
+#: settings/backdrop-mgr.c:626
 msgid "Choose backdrop list filename"
 msgstr ""
 
-#: settings/backdrop-mgr.c:694
+#: settings/backdrop-mgr.c:701
 msgid "New.list"
 msgstr ""
 
-#: settings/backdrop-mgr.c:698
+#: settings/backdrop-mgr.c:705
 msgid "Backdrop List"
 msgstr ""
 
-#: settings/backdrop-mgr.c:734
+#: settings/backdrop-mgr.c:741
 msgid "Image files"
 msgstr ""
 
-#: settings/backdrop-mgr.c:749
+#: settings/backdrop-mgr.c:756
 msgid "List file"
 msgstr ""
 
-#: settings/backdrop-mgr.c:767
+#: settings/backdrop-mgr.c:775
 msgid "Create backdrop list"
 msgstr ""
 
-#: settings/backdrop-mgr.c:774
+#: settings/backdrop-mgr.c:782
 msgid "Edit backdrop list"
 msgstr ""
 
-#: settings/backdrop_settings.c:149
+#: settings/backdrop_settings.c:144
 msgid "Desktop background"
 msgstr ""
 
-#: settings/backdrop_settings.c:363
+#: settings/backdrop_settings.c:370
 msgid "Select background color"
 msgstr ""
 
-#: settings/backdrop_settings.c:413
+#: settings/backdrop_settings.c:423
 msgid "Background color:"
 msgstr ""
 
-#: settings/backdrop_settings.c:443
+#: settings/backdrop_settings.c:457
 msgid "Use color only:"
 msgstr ""
 
-#: settings/backdrop_settings.c:569
+#: settings/backdrop_settings.c:586
 msgid "File:"
 msgstr ""
 
-#: settings/backdrop_settings.c:630
+#: settings/backdrop_settings.c:648
 msgid "Select background image or list file"
 msgstr ""
 
-#: settings/backdrop_settings.c:707
+#: settings/backdrop_settings.c:730
 msgid "_Browse..."
 msgstr ""
 
-#: settings/backdrop_settings.c:711
+#: settings/backdrop_settings.c:734
 msgid "New list"
 msgstr ""
 
-#: settings/backdrop_settings.c:715
+#: settings/backdrop_settings.c:738
 msgid "Edit list"
 msgstr ""
 
-#: settings/backdrop_settings.c:753
+#: settings/backdrop_settings.c:778
 msgid "Style:"
 msgstr ""
 
-#: settings/backdrop_settings.c:761
+#: settings/backdrop_settings.c:786
 msgid "_Tiled"
 msgstr ""
 
-#: settings/backdrop_settings.c:767
-msgid "_Scaled"
-msgstr ""
-
-#: settings/backdrop_settings.c:774
+#: settings/backdrop_settings.c:793
 msgid "_Centered"
 msgstr ""
 
-#: settings/backdrop_settings.c:781
+#: settings/backdrop_settings.c:800
+msgid "_Scaled"
+msgstr ""
+
+#: settings/backdrop_settings.c:807
+msgid "_Stretched"
+msgstr ""
+
+#: settings/backdrop_settings.c:814
 msgid "_Auto"
 msgstr ""
 
 #. the dialog
-#: settings/backdrop_settings.c:820
+#: settings/backdrop_settings.c:855
 msgid "Background"
 msgstr ""
 
 #. header
-#: settings/backdrop_settings.c:838
+#: settings/backdrop_settings.c:875
 msgid "Background Settings"
 msgstr ""
 
 #. color
-#: settings/backdrop_settings.c:844
+#: settings/backdrop_settings.c:881
 msgid "Color"
 msgstr ""
 
 #. image vbox
-#: settings/backdrop_settings.c:856
+#: settings/backdrop_settings.c:893
 msgid "Image"
 msgstr ""
 
-#: settings/backdrop_settings.c:882
+#: settings/backdrop_settings.c:919
 msgid "Don't set background"
 msgstr ""
 
-#: settings/workspaces_settings.c:85
-msgid "Desktop: workspaces"
-msgstr ""
-
-#: settings/workspaces_settings.c:329
-msgid "Change name"
-msgstr ""
-
-#: settings/workspaces_settings.c:340
+#: src/backdrop.c:247
 #, c-format
-msgid "Workspace %d"
+msgid ""
+"%s: There was an error loading image:\n"
+"%s\n"
 msgstr ""
 
-#: settings/workspaces_settings.c:350
-msgid "Name:"
+#: src/main.c:264
+msgid "Desktop"
 msgstr ""
 
-#: settings/workspaces_settings.c:461
-msgid "Click on a workspace name to edit it"
+#: src/menu-file.c:93
+msgid "No Name"
 msgstr ""
 
-#: settings/workspaces_settings.c:492
-msgid "Number of workspaces:"
-msgstr ""
-
-#. Number of workspaces
-#: settings/workspaces_settings.c:528 settings/workspaces_settings.c:558
-msgid "Workspaces"
-msgstr ""
-
-#: settings/workspaces_settings.c:551
-msgid "Workspace Settings"
-msgstr ""
-
-#. Workspace names
-#: settings/workspaces_settings.c:570
-msgid "Workspace names"
-msgstr ""
-
-#: src/backdrop.c:508
-#, c-format
-msgid "xfdesktop error: loading backdrop image: %s\n"
-msgstr ""
-
-#: src/menu.c:735
+#: src/menu.c:712
 msgid "Add workspace"
 msgstr ""
 
-#: src/menu.c:742
+#: src/menu.c:719
 msgid "Delete workspace"
 msgstr ""
 
-#: src/settings.c:182
+#: src/menuspec.c:54
+msgid "/Other"
+msgstr ""
+
+#: src/menuspec.c:263
+#, c-format
+msgid "%s: missing or unknown attribute for 'related' element\n"
+msgstr ""
+
+#: src/menuspec.c:268
+#, c-format
+msgid "%s: unknown xml element %s\n"
+msgstr ""
+
+#: menueditor/about_dialog.c:34
+msgid "About XFCE4-MenuEditor"
+msgstr ""
+
+#. Header
+#: menueditor/about_dialog.c:43
+msgid "About XFce4-MenuEditor"
+msgstr ""
+
+#. Label
+#. why cedilla doesn't work ??? UTF8 error !
+#: menueditor/about_dialog.c:55
+#, c-format
 msgid ""
-"xfdesktop: could not connect to settings manager!Please check your "
-"installation."
+"This is XFce4-MenuEditor (version %s)\n"
+"Licensed under GNU-GPL\n"
+"(c) 2004 by Jean-Francois Wauthy"
+msgstr ""
+
+#: menueditor/about_dialog.c:78
+msgid "An menueditor for XFce4"
+msgstr ""
+
+#: menueditor/about_dialog.c:85
+msgid "Core developer"
+msgstr ""
+
+#: menueditor/add_dialog.c:108 menueditor/add_dialog.c:121
+#: menueditor/add_dialog.c:127
+msgid "Add menu entry"
+msgstr ""
+
+#. Type
+#: menueditor/add_dialog.c:134 menueditor/add_menu_dialog.c:74
+#: menueditor/edit_dialog.c:107
+msgid "Type :"
+msgstr ""
+
+#: menueditor/add_dialog.c:137
+msgid "Launcher"
+msgstr ""
+
+#: menueditor/add_dialog.c:142
+msgid "Submenu"
+msgstr ""
+
+#: menueditor/add_dialog.c:147
+msgid "Separator"
+msgstr ""
+
+#: menueditor/add_dialog.c:152
+msgid "Title"
+msgstr ""
+
+#: menueditor/add_dialog.c:157
+msgid "Quit"
+msgstr ""
+
+#. Name
+#: menueditor/add_dialog.c:172 menueditor/edit_dialog.c:182
+#: menueditor/edit_dialog.c:217 menueditor/edit_dialog.c:238
+msgid "Name :"
+msgstr ""
+
+#: menueditor/add_dialog.c:182 menueditor/edit_dialog.c:183
+msgid "Command :"
+msgstr ""
+
+#: menueditor/add_dialog.c:198 menueditor/edit_dialog.c:174
+msgid "Icon :"
+msgstr ""
+
+#: menueditor/add_dialog.c:258
+msgid ""
+"All the field are not filled !!!\n"
+"Adding nothing"
+msgstr ""
+
+#: menueditor/add_dialog.c:336 menueditor/add_dialog.c:442
+#: menueditor/add_dialog.c:502
+msgid ""
+"Name field is not filled !!!\n"
+"Adding nothing"
+msgstr ""
+
+#: menueditor/add_dialog.c:426 menueditor/dnd.c:171
+#: menueditor/menueditor.c:199
+msgid "--- separator ---"
+msgstr ""
+
+#: menueditor/add_dialog.c:551
+msgid "quit"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:57 menueditor/add_menu_dialog.c:65
+msgid "Add an external menu"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:79 menueditor/edit_dialog.c:110
+msgid "File"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:84 menueditor/edit_dialog.c:115
+msgid "System"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:99 menueditor/edit_dialog.c:130
+msgid "Source :"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:155
+msgid ""
+"Source field is not filled !!!\n"
+"Adding nothing"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:199 menueditor/add_menu_dialog.c:249
+#: menueditor/dnd.c:184 menueditor/edit_dialog.c:363
+#: menueditor/edit_dialog.c:379 menueditor/menueditor.c:270
+msgid "--- include ---"
+msgstr ""
+
+#: menueditor/add_menu_dialog.c:250 menueditor/dnd.c:189
+#: menueditor/edit_dialog.c:381 menueditor/menueditor.c:273
+msgid "system"
+msgstr ""
+
+#. Create dialog for editing
+#: menueditor/edit_dialog.c:65 menueditor/edit_dialog.c:77
+#: menueditor/edit_dialog.c:83
+msgid "Edit menu entry"
+msgstr ""
+
+#. Name
+#: menueditor/edit_dialog.c:259 menueditor/new.c:98
+msgid "Title :"
+msgstr ""
+
+#: menueditor/menueditor.c:129
+msgid "Select command"
+msgstr ""
+
+#: menueditor/menueditor.c:149
+msgid "Not yet implemented !!!"
+msgstr ""
+
+#: menueditor/menueditor.c:165 menueditor/menueditor.c:373
+#: menueditor/menueditor.c:408 menueditor/menueditor.c:486 menueditor/new.c:62
+msgid "Do you want to save before closing the file ?"
+msgstr ""
+
+#: menueditor/menueditor.c:419 menueditor/menueditor.c:464
+msgid "Menu file selection"
+msgstr ""
+
+#. File menu
+#: menueditor/menueditor.c:687
+msgid "_File"
+msgstr ""
+
+#: menueditor/menueditor.c:698
+msgid "Open default menu"
+msgstr ""
+
+#. Edit menu
+#: menueditor/menueditor.c:712
+msgid "_Edit"
+msgstr ""
+
+#: menueditor/menueditor.c:725
+msgid "Add an external menu..."
+msgstr ""
+
+#. Help menu
+#: menueditor/menueditor.c:737
+msgid "_Help"
+msgstr ""
+
+#: menueditor/menueditor.c:744
+msgid "About ..."
+msgstr ""
+
+#: menueditor/menueditor.c:758
+msgid "Create a new XFCE4 menu file"
+msgstr ""
+
+#: menueditor/menueditor.c:765
+msgid "Open XFCE4 menu file"
+msgstr ""
+
+#: menueditor/menueditor.c:772
+msgid "Save current menu"
+msgstr ""
+
+#: menueditor/menueditor.c:779
+msgid "Close current menu"
+msgstr ""
+
+#: menueditor/menueditor.c:787
+msgid "Undo the last action"
+msgstr ""
+
+#: menueditor/menueditor.c:795
+msgid "Add an entry to the menu"
+msgstr ""
+
+#: menueditor/menueditor.c:802
+msgid "Delete the current entry"
+msgstr ""
+
+#: menueditor/menueditor.c:809
+msgid "Move up the current entry"
+msgstr ""
+
+#: menueditor/menueditor.c:816
+msgid "Move down the current entry"
+msgstr ""
+
+#: menueditor/menueditor.c:850
+msgid "Name"
+msgstr ""
+
+#: menueditor/menueditor.c:852
+msgid "Command"
+msgstr ""
+
+#: menueditor/menueditor.c:854
+msgid "Hidden"
+msgstr ""
+
+#: menueditor/menueditor.c:856
+msgid "Pointer"
+msgstr ""
+
+#: menueditor/menueditor.c:1010
+msgid "Corrupted file or incorrect file format !"
+msgstr ""
+
+#: menueditor/menueditor.c:1012
+msgid "Corrupted file or incorrect file format !\n"
+msgstr ""
+
+#: menueditor/menueditor.c:1030
+msgid "No root element in file !"
+msgstr ""
+
+#: menueditor/menueditor.c:1032
+msgid "No root element in file !\n"
+msgstr ""
+
+#: menueditor/menueditor.c:1048
+msgid "Bad datafile format !"
+msgstr ""
+
+#: menueditor/menueditor.c:1050
+msgid "Bad datafile format !\n"
+msgstr ""
+
+#: menueditor/menueditor.c:1143
+#, c-format
+msgid "File %s doesn't exist !"
+msgstr ""
+
+#: menueditor/move.c:186
+msgid "Do you want to move the item into the parent menu ?"
+msgstr ""
+
+#: menueditor/move.c:279
+msgid "Do you want to move the item into the submenu ?"
+msgstr ""
+
+#: menueditor/new.c:46
+msgid "Are you sure to close the current menu ?"
+msgstr ""
+
+#. get the filename and name for the new menu
+#: menueditor/new.c:72 menueditor/new.c:85 menueditor/new.c:91
+msgid "New menu"
+msgstr ""
+
+#. Filename
+#: menueditor/new.c:105
+msgid "Filename :"
+msgstr ""
+
+#: menueditor/new.c:138
+msgid "All the field are not filled !!!"
 msgstr ""

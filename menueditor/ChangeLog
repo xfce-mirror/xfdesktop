@@ -1,0 +1,47 @@
+
+*** merged into xfdesktop CVS, 16 Feb 2004 ***
+
+Version 1.?:
+	- text in column header are centered
+	- support include tag
+	
+Version 1.05:
+	- filesel dialog for launcher command in edit and add dialog
+	- filesel dialog for new menu filename
+	- check if all field are filled when adding and creating a new menu
+	- no more gint response (might cause prbl at compiling under NetBSD)
+	- icon support added
+	- text in tree formatted
+
+Version 1.0:
+	- my_treestore_swap_up and my_tree_store_swap down bug corrected
+	- menueditor.c splitted into more files
+
+Version 1.0rc3:
+	- my_treestore_swap_up and my_treestore_swap_down written : generic root element no more needed
+	- "Title" is no more needed when creating a menu
+	- xfce4-menueditor can take a menu file in argument
+	
+Version 1.0rc2:
+	- "Title" is needed when creating a new menu (part of the workaround of the gtk_tree_store_swap bug)
+	- add "Title" type in the add dialog
+	- title tag no more needed to open a file
+	- add --disable-cvs option to the ./configure script
+	- title and menu entries on the same level and add a generic root element (to avoid gtk_tree_store_swap ?bug?)
+	- remove quit application confirmation dialog
+	- french translation updated
+
+Version 1.0rc1:
+	- french translation updated
+	- dnd support for menu (to test deeply !)
+	
+Version 1.0pre1:
+	- add check for title tag (idea cames from GammaRay's errors)
+	- change Name into Title in the new menu dialog (thx to FuzzBox for the idea)
+	- now cancelling open won't close the previous menu (thx FuzzBox for the idea)
+	- visible property now works correctly !
+	- title and builtins can be edited
+	- confirm_quit_cb now returns a gboolean (bug reported by Jasper Huijsmans)
+	- dnd support for launcher, builtin and separator
+	- open_menu_file() created
+	- add File->Open default menu

@@ -1,6 +1,6 @@
 @SET_MAKE@
 
-SUBDIRS = backdrops common doc po settings src
+SUBDIRS = backdrops common doc po settings src menueditor
 
 confdir = $(sysconfdir)/xfce4
 
