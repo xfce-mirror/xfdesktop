@@ -85,8 +85,16 @@ static GList *timeout_handles = NULL;
 static time_t last_settings_change = 0;
 static gchar *cur_icon_theme = NULL;
 
+enum {
+	TARGET_STRING = 0,
+	TARGET_TEXT_PLAIN,
+	TARGET_DESKTOP_ENTRY
+};
+
 const GtkTargetEntry menu_dnd_targets[] = {
-	{ "text/x-desktop-entry", 0, 0 }
+	{ "STRING", 0, TARGET_STRING },
+	{ "text/plain", 0, TARGET_TEXT_PLAIN },
+	{ "text/x-desktop-entry", 0, TARGET_DESKTOP_ENTRY }
 };
 gint n_menu_dnd_targets = sizeof(menu_dnd_targets) / sizeof(GtkTargetEntry);
 
@@ -241,49 +249,6 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 	desktop_menu->legacydir_mtimes = NULL;
 }
 
-#if 0
-static gint
-_calc_icon_size()
-{
-	static guchar icon_sizes[] = { 128, 96, 72, 64, 48, 36, 32, 24, 22, 16, 12, 0 };
-	gint i, icon_size = 128;
-	GtkWidget *w;
-	GtkStyle *style;
-	gint width, height;
-	PangoContext *pctx;
-	PangoLayout *playout;
-	PangoFontDescription *pfdesc;
-	
-	/* determine widget height */
-	w = gtk_label_new("foo");
-	gtk_widget_set_name(w, "xfdesktopmenu");
-	gtk_widget_show(w);
-	style = gtk_rc_get_style(w);
-	pfdesc = style->font_desc;
-	
-	pctx = gtk_widget_get_pango_context(w);
-	pango_context_set_font_description(pctx, pfdesc);
-	playout = pango_layout_new(pctx);
-	pango_layout_get_pixel_size(playout, &width, &height);
-	g_object_unref(G_OBJECT(pctx));
-	g_object_unref(G_OBJECT(playout));
-	gtk_widget_destroy(w);
-	
-	/* warning: lame hack alert */
-	height += 3;
-
-	/* figure out an ideal icon size */
-	for(i=0; icon_sizes[i]; i++) {
-		if(icon_sizes[i] >= height)
-			icon_size = icon_sizes[i];
-		else
-			break;
-	}
-	
-	return icon_size;
-}
-#endif
-
 static gboolean
 _generate_menu_initial(gpointer data) {
 	g_return_val_if_fail(data != NULL, FALSE);
@@ -319,7 +284,18 @@ menu_drag_data_get_cb(GtkWidget *widget, GdkDragContext *drag_context,
 	ami = XFCE_APP_MENU_ITEM(widget);
 	
 	switch(info) {
-		case 0:
+		case TARGET_STRING:
+		case TARGET_TEXT_PLAIN:
+			name = xfce_app_menu_item_get_name(ami);
+			if(!name)
+				break;
+			
+			gtk_selection_data_set(data, GDK_SELECTION_TYPE_STRING, 8,
+					name, strlen(name));
+			
+			break;
+		
+		case TARGET_DESKTOP_ENTRY:
 			name = xfce_app_menu_item_get_name(ami);
 			if(!name)
 				break;

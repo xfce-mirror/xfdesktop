@@ -223,7 +223,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 				GINT_TO_POINTER(1));
 		
 		gtk_drag_source_set(mi, GDK_MODIFIER_MASK, menu_dnd_targets,
-			n_menu_dnd_targets, GDK_ACTION_DEFAULT);
+			n_menu_dnd_targets, GDK_ACTION_COPY);
 		g_signal_connect(G_OBJECT(mi), "drag-begin",
 				G_CALLBACK(menu_drag_begin_cb), NULL);
 		g_signal_connect(G_OBJECT(mi), "drag-data-get",
