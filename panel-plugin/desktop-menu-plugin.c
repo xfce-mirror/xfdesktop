@@ -72,7 +72,6 @@ dmp_set_size(Control *c, int size)
 				g_object_unref(G_OBJECT(tmp));
 			} else
 				dmp->icon = tmp;
-			DBG("adding image: %p", dmp->icon);
 			img = gtk_image_new_from_pixbuf(dmp->icon);
 			gtk_widget_show(img);
 			gtk_container_add(GTK_CONTAINER(dmp->button), img);
@@ -108,8 +107,8 @@ dmp_free(Control *c)
 	g_free(dmp);
 }
 
-static void
-dmp_popup(GtkWidget *w, gpointer user_data)
+static gboolean
+dmp_popup(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
 {
 	GtkWidget *menu;
 	DMPlugin *dmp = user_data;
@@ -127,6 +126,8 @@ dmp_popup(GtkWidget *w, gpointer user_data)
 		gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0,
 				gtk_get_current_event_time());
 	}
+	
+	return TRUE;
 }
 
 static DMPlugin *
@@ -145,7 +146,7 @@ dmp_new()
 	
 	dmp->desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
 	xfce_desktop_menu_start_autoregen(dmp->desktop_menu, 10);
-	g_signal_connect(G_OBJECT(dmp->button), "clicked",
+	g_signal_connect(G_OBJECT(dmp->button), "button-press-event",
 			G_CALLBACK(dmp_popup), dmp);
 	
 	return dmp;
