@@ -1,3 +1,62 @@
+2004-11-13 16:19  olivier
+
+	* ltmain.sh: Auto-tools check-up.
+
+2004-11-13 12:13  pollux
+
+	* menueditor/about_dialog.c: i want my cedilla ! :)
+
+2004-11-11 21:31  jasper
+
+	* doc/C/xfdesktop.html: tweak
+
+2004-11-11 21:21  jasper
+
+	* doc/: C/xfdesktop.xml, C/images/Makefile.am,
+	  C/images/Makefile.in, C/images/root_menu.png,
+	  C/images/root_menu2.png, C/images/select_bg_color.png,
+	  C/images/xfdesktop-background.png, C/images/xfdesktop-editor.png,
+	  C/images/xfdesktop-list.png, C/images/xfdesktop-menu-tab.png,
+	  fr/xfdesktop.html, it/xfdesktop.html: Big screenshot update for
+	  the docs
+
+2004-11-11 19:09  pollux
+
+	* menu.xml.pt_BR: add missing file
+
+2004-11-11 11:24  pollux
+
+	* menueditor/xfce-menueditor.desktop,
+	  settings/xfce-backdrop-settings.desktop: fix typo
+
+2004-11-11 11:22  pollux
+
+	* Makefile.am, Makefile.in, ltmain.sh,
+	  menueditor/xfce-menueditor.desktop, po/pt_BR.gmo, po/pt_BR.po,
+	  settings/xfce-backdrop-settings.desktop: update pt_BR
+	  translations
+
+2004-11-07 02:04  kelnos
+
+	* panel-plugin/desktop-menu-plugin.c: possibly fix 471 (menu button
+	  sometimes remains in active state after menu disappears, often
+	  when no menu pops up in the first place)
+
+2004-11-06 17:24  olivier
+
+	* ChangeLog, Makefile.in, aclocal.m4, compile, config.guess,
+	  config.sub, configure, configure.ac, depcomp, install-sh,
+	  missing, backdrops/Makefile.in, common/Makefile.in,
+	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  doc/fr/Makefile.in, doc/fr/images/Makefile.in,
+	  doc/it/Makefile.in, doc/it/images/Makefile.in,
+	  menueditor/Makefile.in, modules/Makefile.in,
+	  modules/menu/Makefile.in, panel-plugin/Makefile.in,
+	  pixmaps/Makefile.in, settings/Makefile.in, src/Makefile.in:
+	  Update automake/autoconf/libtool/gettext versions to generate the
+	  configure scripts and Makefiles, Update versions of all packages
+	  to 4.1.99.1 (ie 4.2 RC1), Update ChangeLogs.
+
 2004-11-06 06:42  kelnos
 
 	* menu.xml, menu.xml.et, menu.xml.he, menu.xml.nl, menu.xml.vi,
