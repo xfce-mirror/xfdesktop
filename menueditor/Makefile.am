@@ -15,8 +15,8 @@ xfce4_menueditor_SOURCES =					\
 	menueditor.h							\
 	move.c									\
 	move.h									\
-	new.c									\
-	new.h							
+	new_dialog.c									\
+	new_dialog.h							
 	
 
 xfce4_menueditor_CFLAGS = 						\

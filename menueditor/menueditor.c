@@ -36,8 +36,8 @@
 #include "add_menu_dialog.h"
 #include "about_dialog.h"
 #include "edit_dialog.h"
+#include "new_dialog.h"
 #include "move.h"
-#include "new.h"
 #include "dnd.h"
 
 /* Pixmaps */

@@ -78,6 +78,9 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 				       GTK_STOCK_OK,
 				       GTK_RESPONSE_OK,NULL);
 
+  /* set ok button as default */
+  gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
+
   header_text = g_strdup_printf("%s", _("Add an external menu"));
   header = xfce_create_header (NULL, header_text);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);

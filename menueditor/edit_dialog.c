@@ -99,6 +99,8 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 				       GTK_STOCK_OK,
 				       GTK_RESPONSE_OK,NULL);
 
+  /* set ok button as default */
+  gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
 
   /* Header */
   header_image = gtk_image_new_from_stock("gtk-justify-fill", GTK_ICON_SIZE_LARGE_TOOLBAR);
