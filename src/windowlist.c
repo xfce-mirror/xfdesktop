@@ -44,7 +44,6 @@
 
 #define WLIST_MAXLEN 30
 
-static GtkWidget *windowlist = NULL;
 static gboolean show_windowlist = TRUE;
 static gboolean show_windowlist_icons = TRUE;
 
@@ -157,6 +156,7 @@ windowlist_create(GdkScreen *gscreen)
 	GList *windows, *l;
 	NetkWindow *netk_window;
 	gint w, h;
+	PangoFontDescription *italic_font_desc = pango_font_description_from_string("italic");
 	
 	gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
 	
@@ -219,12 +219,9 @@ windowlist_create(GdkScreen *gscreen)
 				continue;
 			if(netk_workspace != active_workspace) {
 				GtkWidget *lbl = gtk_bin_get_child(GTK_BIN(mi));
-				PangoFontDescription *pfd = pango_font_description_from_string("italic");
-				
 				gtk_widget_modify_fg(lbl, GTK_STATE_NORMAL,
 						&(style->fg[GTK_STATE_INSENSITIVE]));
-				gtk_widget_modify_font(lbl, pfd);
-				pango_font_description_free(pfd);
+				gtk_widget_modify_font(lbl, italic_font_desc);
 			}
 			gtk_widget_show(mi);
 			gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -266,22 +263,29 @@ windowlist_create(GdkScreen *gscreen)
 	g_signal_connect(G_OBJECT(mi), "activate",
 			G_CALLBACK(set_num_workspaces), GINT_TO_POINTER(nworkspaces-1));
 	
+	pango_font_description_free(italic_font_desc);
+	
 	return menu;
+}
+
+static void
+windowlist_deactivate_cb(GtkMenuShell *ms, gpointer user_data)
+{
+	gtk_widget_destroy(GTK_WIDGET(ms));
 }
 
 void
 popup_windowlist(GdkScreen *gscreen, gint button, guint32 time)
 {
-	if(windowlist) {
-		gtk_widget_destroy(windowlist);
-		windowlist = NULL;
-	}
+	GtkWidget *windowlist;
 	
 	if(!show_windowlist)
 		return;
 	
 	windowlist = windowlist_create(gscreen);
 	gtk_menu_set_screen(GTK_MENU(windowlist), gscreen);
+	g_signal_connect(G_OBJECT(windowlist), "deactivate",
+			G_CALLBACK(windowlist_deactivate_cb), NULL);
 	gtk_menu_popup(GTK_MENU(windowlist), NULL, NULL, NULL, NULL, button, time);
 }
 
@@ -335,8 +339,5 @@ windowlist_settings_changed(McsClient *client, McsAction action,
 void
 windowlist_cleanup()
 {
-	if(windowlist) {
-		gtk_widget_destroy(windowlist);
-		windowlist = NULL;
-	}
+	/* notused */
 }
