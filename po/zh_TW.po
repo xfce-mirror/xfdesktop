@@ -18,7 +18,8 @@ msgstr ""
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your changes"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
 msgstr ""
 "無法儲存檔案 %s: %s\n"
 "\n"
@@ -158,8 +159,7 @@ msgid "Number of workspaces:"
 msgstr "工作區數目："
 
 #. Number of workspaces
-#: settings/workspaces_settings.c:528
-#: settings/workspaces_settings.c:558
+#: settings/workspaces_settings.c:528 settings/workspaces_settings.c:558
 msgid "Workspaces"
 msgstr "工作區"
 
@@ -190,6 +190,7 @@ msgid "Delete workspace"
 msgstr "刪除工作區"
 
 #: src/settings.c:186
-msgid "xfdesktop: could not connect to settings manager!Please check your installation."
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
 msgstr "xfdesktop: 無法連接到設定管理程式！請檢查您的安裝是否正確。"
-
