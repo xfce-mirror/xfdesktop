@@ -25,6 +25,7 @@
 #include <signal.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <libxfcegui4/libxfcegui4.h>
 
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
@@ -187,6 +188,7 @@ static GtkWidget *create_fullscreen_window(void)
     
     win = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
+    netk_gtk_window_avoid_input(GTK_WINDOW(win));
     gtk_widget_set_size_request(win, gdk_screen_width(), gdk_screen_height());
     gtk_widget_realize(win);
     gtk_window_move(GTK_WINDOW(win), 0, 0);
