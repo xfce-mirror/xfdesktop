@@ -1,0 +1,201 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2003-04-06 13:07+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Jasper Huijsmans <huysmans@users.sourceforge.net\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: UTF-8\n"
+
+#: settings/backdrop-mgr.c:174
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"无法保存文件 %s: %s\n"
+"\n"
+"请选择其它位置或者在对话框中点击取消以放弃所作修改"
+
+#: settings/backdrop-mgr.c:392
+msgid "Select image file"
+msgstr "选择图形文件"
+
+#: settings/backdrop-mgr.c:498
+msgid "Choose backdrop list filename"
+msgstr "选择背景列表文件名"
+
+#: settings/backdrop-mgr.c:525 settings/backdrop_settings.c:558
+msgid "File:"
+msgstr "文件:"
+
+#: settings/backdrop-mgr.c:564
+msgid "New.list"
+msgstr "新列表"
+
+#: settings/backdrop-mgr.c:568
+msgid "Backdrop List"
+msgstr "背景列表"
+
+#: settings/backdrop-mgr.c:602
+msgid "Image files"
+msgstr "图像文件"
+
+#: settings/backdrop-mgr.c:616
+msgid "List file"
+msgstr "列出文件"
+
+#: settings/backdrop-mgr.c:636
+msgid "Create backdrop list"
+msgstr "创建背景列表"
+
+#: settings/backdrop-mgr.c:643
+msgid "Edit backdrop list"
+msgstr "编辑背景列表"
+
+#: settings/backdrop_settings.c:143
+msgid "Desktop: backdrop"
+msgstr "桌面: 背景"
+
+#: settings/backdrop_settings.c:356
+msgid "Select background color"
+msgstr "选择背景颜色"
+
+#: settings/backdrop_settings.c:402
+msgid "Background color:"
+msgstr "背景颜色:"
+
+#: settings/backdrop_settings.c:432
+msgid "Use color only:"
+msgstr "仅使用颜色:"
+
+#: settings/backdrop_settings.c:615
+msgid "Select background image or list file"
+msgstr "选择背景图像或者列出文件"
+
+#: settings/backdrop_settings.c:690
+msgid "_Browse..."
+msgstr "浏览(_B)..."
+
+#: settings/backdrop_settings.c:694
+msgid "New list"
+msgstr "新列表"
+
+#: settings/backdrop_settings.c:698
+msgid "Edit list"
+msgstr "部件列表"
+
+#: settings/backdrop_settings.c:750
+msgid "Style:"
+msgstr "风格:"
+
+#: settings/backdrop_settings.c:756
+msgid "_Tiled"
+msgstr "平铺(_T)"
+
+#: settings/backdrop_settings.c:763
+msgid "_Scaled"
+msgstr "拉伸(_S)"
+
+#: settings/backdrop_settings.c:768
+msgid "_Centered"
+msgstr "居中(_C)"
+
+#: settings/backdrop_settings.c:773
+msgid "_Automatic"
+msgstr "自动(_A)"
+
+#. the dialog
+#: settings/backdrop_settings.c:815
+msgid "Background"
+msgstr "背景"
+
+#. header
+#: settings/backdrop_settings.c:832
+msgid "Background Settings"
+msgstr "背景设置"
+
+#. color
+#: settings/backdrop_settings.c:838
+msgid "Color"
+msgstr "颜色"
+
+#. image vbox
+#: settings/backdrop_settings.c:851
+msgid "Image"
+msgstr "图像"
+
+#: settings/workspaces_settings.c:79
+msgid "Desktop: workspaces"
+msgstr "桌面: 工作区"
+
+#: settings/workspaces_settings.c:323
+msgid "Change name"
+msgstr "改变名称"
+
+#: settings/workspaces_settings.c:334
+#, c-format
+msgid "Workspace %d"
+msgstr "工作区 %d"
+
+#: settings/workspaces_settings.c:344
+msgid "Name:"
+msgstr "名称:"
+
+#: settings/workspaces_settings.c:455
+msgid "Click on a workspace name to edit it"
+msgstr "点击任一个工作区名称来编辑其名称"
+
+#: settings/workspaces_settings.c:486
+msgid "Number of workspaces:"
+msgstr "工作区数目:"
+
+#. Number of workspaces
+#: settings/workspaces_settings.c:522 settings/workspaces_settings.c:553
+msgid "Workspaces"
+msgstr "工作区"
+
+#: settings/workspaces_settings.c:546
+msgid "Workspace Settings"
+msgstr "工作区设置"
+
+#. Workspace names
+#: settings/workspaces_settings.c:566
+msgid "Workspace names"
+msgstr "工作区名称"
+
+#: src/backdrop.c:423
+#, c-format
+msgid "xfdesktop error: loading backdrop image: %s\n"
+msgstr "xfdesktop错误: 加载背景图像: %s\n"
+
+#: src/main.c:227
+msgid "Desktop"
+msgstr "桌面"
+
+#: src/menu.c:632 src/menu.c:637
+msgid "Workspace"
+msgstr "工作区"
+
+#: src/menu.c:688
+msgid "Add workspace"
+msgstr "添加工作区"
+
+#: src/menu.c:695
+msgid "Delete workspace"
+msgstr "删除工作区"
+
+#: src/settings.c:186
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr "xfdesktop: 无法连接到配置管理器！请检查您的安装是否正确。"
