@@ -39,7 +39,7 @@ void (*xfce_desktop_menu_set_show_icons)(XfceDesktopMenu *desktop_menu, gboolean
 void (*xfce_desktop_menu_destroy)(XfceDesktopMenu *desktop_menu) = NULL;
 
 static gboolean
-_setup_funtions(GModule *menu_gmod)
+_setup_functions(GModule *menu_gmod)
 {
 	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_new_impl",
 			(gpointer)&xfce_desktop_menu_new))
@@ -93,7 +93,7 @@ xfce_desktop_menu_stub_init()
 	if(!menu_gmod) {
 		g_warning("%s: failed to load xfce4_desktop_menu module (%s)\n",
 				PACKAGE, menu_module);
-	} else if(!_setup_funtions(menu_gmod)) {
+	} else if(!_setup_functions(menu_gmod)) {
 		g_module_close(menu_gmod);
 		menu_gmod = NULL;
 	}
