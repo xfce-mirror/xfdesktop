@@ -311,7 +311,7 @@ dialog_response (GtkWidget * dialog, int response, BackdropDialog * bd)
     switch (response)
     {
 	case GTK_RESPONSE_HELP:
-	    exec_command ("xfhelp4 xfdesktop.html");
+	    xfce_exec("xfhelp4 xfdesktop.html", FALSE, FALSE, NULL);
 	    break;
 	default:
 	    dialog_delete (bd);
