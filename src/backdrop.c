@@ -178,6 +178,12 @@ void backdrop_load_settings(McsClient *client)
 	mcs_setting_free(setting);
     }
 
+    if (MCS_SUCCESS == mcs_client_get_setting(client, "showimage", BACKDROP_CHANNEL, &setting))
+    {
+	showimage = setting->data.v_int;
+	mcs_setting_free(setting);
+    }
+    
     set_backdrop(backdrop_path, backdrop_style, showimage, &backdrop_color);
 }
 
@@ -265,109 +271,122 @@ static char *get_path_from_listfile(const char *listfile)
 static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style, GdkColor *color)
 {
     GdkPixmap *pixmap = NULL;
-    GdkPixbuf *old = pixbuf;
+    GdkPixbuf *solid;
     int width, height;
     guint32 rgba;
+    gboolean has_composite;
 
     if (!GDK_IS_COLORMAP(cmap))
 	return NULL;
 	
-    width = gdk_pixbuf_get_width(pixbuf);
-    height = gdk_pixbuf_get_height(pixbuf);
-
-    if (style == AUTO)
-    {
-	/* if height and width are both less than half the screen
-	 * -> tiled, else -> scaled */
-
-	if (height <= screen_height / 2 && width <= screen_width)
-	{
-	    style = TILED;
-	}
-	else
-	{
-	    style = SCALED;
-	}
-    }
-    
-    if(style == SCALED)
-    {
-        pixbuf = gdk_pixbuf_scale_simple(old, screen_width, screen_height, GDK_INTERP_BILINEAR);
-    }
-
-    pixbuf = gdk_pixbuf_new(gdk_pixbuf_get_colorspace(old), 0, 8, screen_width, screen_height);
+    /* First, fill the pixbuf with solid color */
+    solid = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, screen_width, screen_height);
     gdk_rgb_find_color(cmap, color);
-
     /* pixel is in rgb, we need rgba */
     rgba = color->pixel * 256;
-    gdk_pixbuf_fill(pixbuf, rgba);
+    gdk_pixbuf_fill(solid, rgba);
 
-    if (style == CENTERED)
+    if (pixbuf)
     {
-	gint x = MAX((screen_width - width) / 2, 0);
-	gint y = MAX((screen_height - height) / 2, 0);
-
-	gdk_pixbuf_composite(old, pixbuf,
-                             x, y,
-                             MIN(screen_width, width),
-                             MIN(screen_height, height),
-                             x, y, 1, 1, GDK_INTERP_NEAREST, 255);
-    }
-    else if (style == SCALED)
-    {
-        GdkPixbuf *new = pixbuf;
-        new = gdk_pixbuf_scale_simple(old, screen_width, screen_height, GDK_INTERP_BILINEAR);
-	gdk_pixbuf_composite(new, pixbuf,
-                             0, 0,
-                             screen_width,
-                             screen_height,
-                             0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
-        g_object_unref(new);
-    }
-    else if (style == TILED)
-    {
-	gdouble cx, cy;
-	gint pw = gdk_pixbuf_get_width (old);
-	gint ph = gdk_pixbuf_get_height (old);
-
-	for (cy = 0; cy < screen_height; cy += ph) 
+	width = gdk_pixbuf_get_width(pixbuf);
+	height = gdk_pixbuf_get_height(pixbuf);
+        has_composite = gdk_pixbuf_get_has_alpha (pixbuf);
+	
+	if (style == AUTO)
 	{
-            for (cx = 0; cx < screen_width; cx += pw) 
+	    /* if height and width are both less than half the screen
+	     * -> tiled, else -> scaled */
+
+	    if (height <= screen_height / 2 && width <= screen_width)
 	    {
-		gdk_pixbuf_composite (old, pixbuf,
-				      cx, cy,
-				      MIN (pw, screen_width - cx), 
-				      MIN (ph, screen_height - cy),
-				      cx, cy,
-				      1.0, 1.0,
-				      GDK_INTERP_TILES,
-				      255);
+		style = TILED;
+	    }
+	    else
+	    {
+		style = SCALED;
 	    }
 	}
-    }
-    
-    g_object_unref(old);
 
-    gdk_pixbuf_render_pixmap_and_mask_for_colormap(pixbuf, cmap, &pixmap, NULL, 0);
-    g_object_unref(pixbuf);
+	switch (style)
+	{
+	    case CENTERED:
+	        {
+		    gint x = MAX((screen_width - width) / 2, 0);
+		    gint y = MAX((screen_height - height) / 2, 0);
+                    if (has_composite)
+		    {
+		        gdk_pixbuf_composite(pixbuf, solid, x, y, MIN(screen_width, width), MIN(screen_height, height), x, y, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
+	            }
+		    else
+		    {
+		        gdk_pixbuf_copy_area (pixbuf, 0, 0, MIN(screen_width, width), MIN(screen_height, height), solid, x, y);
+		    }
+		}
+                break;
+	    case SCALED:
+	        {
+        	    GdkPixbuf *new = pixbuf;
+        	    new = gdk_pixbuf_scale_simple(pixbuf, screen_width, screen_height, GDK_INTERP_BILINEAR);
+                    if (has_composite)
+		    {
+		        gdk_pixbuf_composite(new, solid, 0, 0, screen_width, screen_height, 0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
+        	    }
+		    else
+		    {
+		        gdk_pixbuf_copy_area (new, 0, 0, screen_width, screen_height, solid, 0, 0);
+		    }
+		    g_object_unref(new);
+		}
+	        break;
+	    default:
+	    case TILED:
+		{
+		    gdouble cx, cy;
+
+		    for (cy = 0; cy < screen_height; cy += height) 
+		    {
+        		for (cx = 0; cx < screen_width; cx += width) 
+			{
+                	    if (has_composite)
+			    {
+			        gdk_pixbuf_composite (pixbuf, solid, cx, cy, MIN (width, screen_width - cx), MIN (height, screen_height - cy), cx, cy, 1.0, 1.0, GDK_INTERP_TILES, 255);
+			    }
+			    else
+			    {
+		                gdk_pixbuf_copy_area (pixbuf, 0, 0, MIN (width, screen_width - cx), MIN (height, screen_height - cy), solid, cx, cy);
+			    }
+			}
+		    }
+		}
+                break;
+	}
+        gdk_pixbuf_render_pixmap_and_mask_for_colormap(solid, cmap, &pixmap, NULL, 0);
+    }
+    else
+    {
+        gdk_pixbuf_render_pixmap_and_mask_for_colormap(solid, cmap, &pixmap, NULL, 0);
+    }
+    g_object_unref(solid);
 
     return pixmap;
 }
 
 /* The code below is almost literally copied from ROX Filer
- * (c) by Thomas Leonard. See http://rox.sf.net. */
+ * (c) by Thomas Leonard. See http://rox.sf.net.
+ * Well, not anymore, let's say it's been inspired :) 
+ */
 static void set_backdrop(const char *path, int style, int show, GdkColor *color)
 {
     GtkStyle *gstyle;
     GdkPixmap *pixmap = NULL;
     GdkPixbuf *pixbuf = NULL;
-    GError *error = NULL;
 
     gtk_widget_set_style(fullscreen_window, NULL);
     gstyle = gtk_style_copy(gtk_widget_get_style(fullscreen_window));
     
     if (show && path && *path)
     {
+        GError *error = NULL;
 	if (is_backdrop_list(path))
 	{
 	    char *realpath = get_path_from_listfile(path);
@@ -375,33 +394,34 @@ static void set_backdrop(const char *path, int style, int show, GdkColor *color)
 	    set_backdrop(realpath, AUTO, show, color);
 	    return;
 	}
-
 	pixbuf = gdk_pixbuf_new_from_file(path, &error);
-    
 	if(error)
 	{
-	    g_warning("xfdesktop: error loading backdrop image:\n%s\n",
-		      error->message);
+	    g_warning("xfdesktop: error loading backdrop image:\n%s\n", error->message);
 	    g_error_free(error);
-	    set_backdrop(NULL, 0, 0, color);
-	    return;
 	}
-
-	pixmap = create_background_pixmap(pixbuf, style, color);
-        gstyle->bg_pixmap[GTK_STATE_NORMAL] = pixmap;
-        gdk_window_set_back_pixmap (GDK_ROOT_PARENT (), pixmap, 0);
-        gdk_window_clear (GDK_ROOT_PARENT ());
-        gdk_flush ();
     }
     else
     {
-	gstyle->bg_pixmap[GTK_STATE_NORMAL] = NULL;
+        pixbuf = NULL;
     }
+    
+    pixmap = create_background_pixmap(pixbuf, style, color);
 
-    /* Also update root window property (for transparent xterms, etc) */
+    /* Now we can safely free the pixbuf */
+    if (pixbuf)
+    {
+        g_object_unref(pixbuf);
+    }
+    
     if(pixmap)
     {
         XID id = GDK_DRAWABLE_XID(pixmap);
+	
+	gstyle->bg_pixmap[GTK_STATE_NORMAL] = pixmap;
+	gdk_window_set_back_pixmap (GDK_ROOT_PARENT (), pixmap, 0);
+	gdk_window_clear (GDK_ROOT_PARENT ());
+
         gdk_property_change(gdk_get_default_root_window(),
                             gdk_atom_intern("_XROOTPMAP_ID", FALSE),
                             gdk_atom_intern("PIXMAP", FALSE),
@@ -409,22 +429,15 @@ static void set_backdrop(const char *path, int style, int show, GdkColor *color)
     }
     else
     {
-        gdk_property_delete(gdk_get_default_root_window(),
-                            gdk_atom_intern("_XROOTPMAP_ID", FALSE));
+        gstyle->bg_pixmap[GTK_STATE_NORMAL] = NULL;
+	gdk_property_delete(gdk_get_default_root_window(), gdk_atom_intern("_XROOTPMAP_ID", FALSE));
+	gdk_window_clear (GDK_ROOT_PARENT ());
     }
 
+    gdk_flush ();
     /* (un)set background */
     gtk_widget_set_style(fullscreen_window, gstyle);
     g_object_unref(gstyle);
 
     gtk_widget_queue_draw(fullscreen_window);
-
-    if (!show)
-    {
-	/* somehow we have to clear the style again */
-	gtk_widget_set_style(fullscreen_window, NULL);
-	
-	gtk_widget_modify_bg(fullscreen_window, GTK_STATE_NORMAL, color);
-	gtk_widget_modify_base(fullscreen_window, GTK_STATE_NORMAL, color);
-    }
 }

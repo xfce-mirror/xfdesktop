@@ -237,9 +237,11 @@ static void update_path(BackdropDialog *bd)
     else
 	gtk_widget_set_sensitive(bd->edit_list_button, FALSE);
 
-    mcs_manager_set_string(bd->plugin->manager, "path", BACKDROP_CHANNEL, 
-	    		   backdrop_path);
-
+    if (backdrop_path)
+    {
+        mcs_manager_set_string(bd->plugin->manager, "path", BACKDROP_CHANNEL, backdrop_path);
+    }
+    
     mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
 }
 
@@ -509,10 +511,10 @@ static gboolean file_entry_lost_focus(GtkWidget *entry, GdkEventFocus *ev,
 
     file = gtk_entry_get_text(GTK_ENTRY(entry));
 
-    if (!backdrop_path || strcmp(file, backdrop_path) != 0)
+    if (backdrop_path && strcmp(file, backdrop_path) != 0)
     {
 	g_free(backdrop_path);
-	backdrop_path = (file && strlen(file)) ? g_strdup(file) : NULL;
+	backdrop_path = (file ? g_strdup(file) : NULL);
 
 	update_path(bd);
     }
