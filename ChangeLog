@@ -1,79 +1,201 @@
-2003-02-23 21:00  huysmans
+2003-03-01  xfce
+
+	* Makefile.in, aclocal.m4, config.guess, config.h.in, config.sub,
+	configure, ltcf-c.sh, ltconfig, ltmain.sh, backdrops/Makefile.in,
+	doc/Makefile.in, doc/html/Makefile.in, doc/images/Makefile.in,
+	doc/xml/Makefile.in, settings/Makefile.in, src/Makefile.in: [no log
+	message]
+
+2003-02-28  bmeurer
+
+	* menu.xml: Fixed type "xfhelp" -> "xfhelp4"
+
+2003-02-28  xfce
+
+	* Makefile.in, aclocal.m4, config.guess, configure, ltmain.sh,
+	backdrops/Makefile.in, doc/Makefile.in, doc/html/Makefile.in,
+	doc/images/Makefile.in, doc/xml/Makefile.in, settings/Makefile.in,
+	src/Makefile.in: Fix xfce-mcs-manager API/ABI versionning Update
+	configure/libtool to use libtool 1.4.3
+
+2003-02-28  bmeurer
+
+	* config.guess, configure, Makefile.in, aclocal.m4, configure.ac,
+	ltcf-c.sh, ltconfig, ltmain.sh, backdrops/Makefile.in,
+	doc/Makefile.in, doc/html/Makefile.in, doc/images/Makefile.in,
+	doc/xml/Makefile.in, settings/Makefile.in, src/Makefile.in: Fixes
+	xfce-mcs-manager issue.
+
+2003-02-27  xfce
+
+	* src/: main.c, menu.c: Add desktop switching with mouse wheel
+
+2003-02-26  huysmans
+
+	* src/main.c: POSIX signal handling
+
+2003-02-26  xfce
+
+	* Makefile.in, aclocal.m4, configure, backdrops/Makefile.in,
+	doc/Makefile.in, doc/html/Makefile.in, doc/images/Makefile.in,
+	doc/xml/Makefile.in, settings/Makefile.in,
+	settings/backdrop_settings.c, settings/settings_common.c,
+	src/Makefile.in: Apply Benedikt Meurer
+	<Benedikt.Meurer@unix-ag.uni-siegen.de> patch Replace all 
+	occurences of g_getenv("HOME") with g_get_home_dir() Regenerate all
+	Makefiles.on and configure scripts
+
+2003-02-25  huysmans
+
+	* Makefile.in, aclocal.m4, configure, backdrops/Makefile.in,
+	doc/Makefile.in, doc/html/Makefile.in,
+	doc/html/xfdesktop-background.html,
+	doc/html/xfdesktop-copyright.html,
+	doc/html/xfdesktop-workspace.html, doc/html/xfdesktop.html,
+	doc/images/Makefile.am, doc/images/Makefile.in,
+	doc/images/xfdesktop-background.png, doc/images/xfdesktop-list.png,
+	doc/images/xfdesktop-workspace.png, doc/xml/Makefile.in,
+	doc/xml/xfdesktop.xml, settings/backdrop-mgr.c,
+	settings/backdrop_settings.c, settings/settings_common.h,
+	settings/workspaces_settings.c, src/Makefile.in: Update screenshots
+	for new dialog style
+
+2003-02-24  huysmans
+
+	* settings/: Makefile.in, backdrop-mgr.c, backdrop_settings.c,
+	workspaces_settings.c: Make dialogs use frames
+
+2003-02-24  jensl
+
+	* doc/images/: xfdesktop-background.png, xfdesktop-workspace.png:
+	screenshots with default theme
+
+2003-02-24  jensl
+
+	* doc/html/xfdesktop.html: added copyright notice/author
+
+2003-02-24  jensl
+
+	* doc/images/Makefile.am: fixed installation path
+
+2003-02-24  jensl
+
+	* doc/images/Makefile.am: fixed typo
+
+2003-02-24  jensl
+
+	* doc/html/Makefile.am: added screenshots
+
+2003-02-24  jensl
+
+	* doc/html/: xfdesktop-background.html, xfdesktop-copyright.html,
+	xfdesktop-workspace.html, xfdesktop.html: added screenshots
+
+2003-02-24  jensl
+
+	* doc/xml/xfdesktop.xml: added screenshots
+
+2003-02-24  jensl
+
+	* doc/images/Makefile.am: added screenshots
+
+2003-02-24  jensl
+
+	* doc/images/: xfdesktop-background.png, xfdesktop-workspace.png:
+	screenshots
+
+2003-02-24  huysmans
+
+	* ChangeLog, Makefile.am, Makefile.in, aclocal.m4, config.guess,
+	config.sub, configure, configure.ac, ltmain.sh,
+	backdrops/Makefile.in, doc/Makefile.am, doc/Makefile.in,
+	doc/html/Makefile.am, doc/html/Makefile.in,
+	doc/html/xfdesktop-copyright.html, doc/html/xfdesktop-using.html,
+	doc/html/xfdesktop.html, doc/images/Makefile.am,
+	doc/images/Makefile.in, doc/xml/Makefile.am, doc/xml/Makefile.in,
+	doc/xml/xfce.xsl, doc/xml/xfdesktop.xml, settings/Makefile.am,
+	settings/Makefile.in, settings/margins-icon.h,
+	settings/margins.png, settings/margins_settings.c,
+	settings/margins_settings.h, src/Makefile.am, src/Makefile.in,
+	src/margins.c, src/margins.h, src/settings.c: Add mostly empty docs
+	and remove margins settings.
+
+2003-02-23  huysmans
 
 	* src/menu.c: Use workspace names in window list. Thanks to Joakim
 	Andreasson.
 
-2003-02-15 12:31  huysmans
+2003-02-15  huysmans
 
 	* menu.xml: Add invisible quite option to the menu
 
-2003-02-15 12:06  huysmans
+2003-02-15  huysmans
 
 	* src/menu.c: Add quit builtin menu item, for people who don't want
 	to run the panel.
 
-2003-02-13 05:10  botsie
+2003-02-13  botsie
 
 	* src/debug.h: Made 'debug.h' more portable, mostly to fix compile
 	errors on BSD
 
-2003-02-12 20:05  huysmans
+2003-02-12  huysmans
 
 	* src/debug.h: Fix debug.h, breaks for gcc < 2.6 and possibly for
 	non-gcc compilers. Just don't enable debug if you have one of
 	those.
 
-2003-02-11 17:43  jensl
+2003-02-11  jensl
 
 	* src/backdrop.c: added error message dialogs using libxfcegui4's
 	show_error()
 
-2003-02-10 21:47  xfce
+2003-02-10  xfce
 
 	* src/: backdrop.c, main.c, main.h, margins.c, menu.c, settings.c,
 	workspaces.c: Remove g_error (that causes and abort() and thus a
 	core dump) where not necessary.
 
-2003-02-07 14:12  xfce
+2003-02-07  xfce
 
 	* settings/backdrop_settings.c, src/backdrop.c, src/main.c: Put
 	back gtk_widget_set_style(fullscreen_window, NULL); to free
 	previously allocated pixmap
 
-2003-02-07 13:43  botsie
+2003-02-07  botsie
 
 	* src/debug.h: Added a 'TRACE' macro to debug.h
 
-2003-02-07 10:56  xfce
+2003-02-07  xfce
 
 	* settings/backdrop_settings.c, src/backdrop.c: Fix problem with
 	textured theme : 1) in backdrop window, by using our own theme not
 	derived from the widget theme 2) in color oicker button by using
 	GtkImage/GdkPixbuf
 
-2003-02-04 22:31  huysmans
+2003-02-04  huysmans
 
 	* src/menu.c: Update menu if file changed
 
-2003-02-04 17:35  botsie
+2003-02-04  botsie
 
 	* menu.xml: Fixed error in menu.xml. Thanks to Jasper Huijsmans.
 
-2003-02-04 17:35  huysmans
+2003-02-04  huysmans
 
 	* src/menu.c: Reorder file for better readability
 
-2003-02-04 15:31  botsie
+2003-02-04  botsie
 
 	* ChangeLog, Makefile.in, aclocal.m4, config.guess, config.sub,
 	configure, ltmain.sh: Making up for some dropped commits.
 
-2003-02-04 15:17  botsie
+2003-02-04  botsie
 
 	* Makefile.am, configure.ac: Fixed a couple of bugs related to
 	adding dependency to libxml2 and adding a new data file: menu.xml
 
-2003-02-04 14:27  botsie
+2003-02-04  botsie
 
 	* backdrops/Makefile.in, settings/Makefile.in, src/Makefile.in:
 	Oops ... forgot to add dependency to libxml2. Required by
@@ -81,93 +203,93 @@
 	
 	Updated AUTHORS.
 
-2003-02-04 14:02  botsie
+2003-02-04  botsie
 
 	* ChangeLog: Updated ChangeLog
 
-2003-02-04 13:53  botsie
+2003-02-04  botsie
 
 	* src/menu.c: XML based configurable menu.
 
-2003-02-04 13:50  botsie
+2003-02-04  botsie
 
 	* Makefile.am, menu.xml: Added Data file for configurable menus.
 
-2003-02-04 12:06  xfce
+2003-02-04  xfce
 
 	* src/backdrop.c: paranoid check.
 
-2003-02-01 14:59  xfce
+2003-02-01  xfce
 
 	* backdrops/Makefile.am, backdrops/Makefile.in,
 	backdrops/xfce4gradientcurve.png, src/Makefile.in: Add a new
 	transparent background
 
-2003-02-01 12:00  xfce
+2003-02-01  xfce
 
 	* backdrops/xfce4logo.png: Redesign xfce4logo.png using alpha. This
 	allow changing the background color along with xfce4logo.png :)
 
-2003-02-01 11:46  huysmans
+2003-02-01  huysmans
 
 	* src/menu.c: Small cleanups
 
-2003-02-01 08:59  botsie
+2003-02-01  botsie
 
 	* src/: Makefile.in, debug.h, menu.c: First stage of changes needed
 	for configurable menu.
 
-2003-01-31 07:37  xfce
+2003-01-31  xfce
 
 	* settings/backdrop_settings.c: [no log message]
 
-2003-01-30 23:46  xfce
+2003-01-30  xfce
 
 	* configure, configure.ac: Add dependency on libxfce4mcs .4
 
-2003-01-30 21:54  xfce
+2003-01-30  xfce
 
 	* src/backdrop.c: Get rid of cmap
 
-2003-01-29 22:40  xfce
+2003-01-29  xfce
 
 	* src/menu.c: Remove the "Exit" menu entry, it's confusing.
 
-2003-01-29 11:59  xfce
+2003-01-29  xfce
 
 	* settings/backdrop_settings.c, src/backdrop.c: A bunch of bug
 	fixes + speed improvements by using composite only when necessary !
 
-2003-01-29 10:00  xfce
+2003-01-29  xfce
 
 	* src/: backdrop.c, margins.c, settings.c, settings.h,
 	workspaces.c: Decrease initial startup time by 2 or 3 times.
 
-2003-01-28 22:53  xfce
+2003-01-28  xfce
 
 	* src/backdrop.c: Add support for alpha in backdrops for all modes
 	(centered, tiled and scaled))
 
-2003-01-28 10:35  xfce
+2003-01-28  xfce
 
 	* src/backdrop.c: Set root pixmap so that aterm "fast" transparency
 	works.
 
-2003-01-27 21:42  xfce
+2003-01-27  xfce
 
 	* src/backdrop.c: Simplify
 
-2003-01-27 20:43  huysmans
+2003-01-27  huysmans
 
 	* ChangeLog, src/backdrop.c: Delete ESETROOT_PMAP_ID and detroy
 	pixmap
 
-2003-01-26 22:24  xfce
+2003-01-26  xfce
 
 	* configure, configure.ac, src/main.c: Use libxfcegui4 .15 to avoid
 	input on xfdesktop root window
 
-2003-01-25 16:55  xfce
+2003-01-25  xfce
 
 	* Makefile.am, Makefile.in, configure, configure.ac,
 	xfdesktop.spec.in, backdrops/Makefile.am, backdrops/Makefile.in,
@@ -177,43 +299,43 @@
 	
 	http://www.xfce.org/archive/xfce4default.png
 
-2003-01-25 15:35  xfce
+2003-01-25  xfce
 
 	* settings/backdrop_settings.c: Fix missing separator in default
 	backdrop path and change defaults to use another image by default,
 	center and color.
 
-2003-01-23 17:54  xfce
+2003-01-23  xfce
 
 	* settings/backdrop_settings.c: Fix a double free that I presumably
 	introduced when fixing another bug.
 
-2003-01-23 12:52  jensl
+2003-01-23  jensl
 
 	* src/menu.c: 
 	shorten window-titles in window-list
 
-2003-01-21 23:23  xfce
+2003-01-21  xfce
 
 	* settings/backdrop_settings.c: Fix an obvious bug in
 	settings/backdrop_settings.c
 
-2003-01-21 19:35  huysmans
+2003-01-21  huysmans
 
 	* settings/backdrop_settings.c, settings/backdrop_settings.h,
 	src/backdrop.c, src/settings.c: Add color chooser and option to use
 	only color
 
-2003-01-20 22:30  huysmans
+2003-01-20  huysmans
 
 	* src/: workspaces.c, workspaces.h: Add missing files
 
-2003-01-20 22:19  huysmans
+2003-01-20  huysmans
 
 	* ChangeLog, settings/workspaces_settings.c: Fix workspace count
 	bug
 
-2003-01-20 21:28  huysmans
+2003-01-20  huysmans
 
 	* Makefile.in, aclocal.m4, configure, settings/Makefile.am,
 	settings/Makefile.in, settings/workspaces_settings.c,
@@ -221,31 +343,31 @@
 	src/backdrop.c, src/main.c, src/settings.c: Don't use gtk 2.2
 	functions and let xfdesktop set workspaces hints
 
-2003-01-20 14:50  xfce
+2003-01-20  xfce
 
 	* settings/workspaces_settings.c: Fix workspace_settings to
 	properly set the number of desktops at startup...
 
-2003-01-19 19:23  huysmans
+2003-01-19  huysmans
 
 	* settings/: Makefile.am, Makefile.in, debug.h: Add debug.h. It's
 	silly to depend on version insalled by xfce4-panel.
 
-2003-01-19 16:32  huysmans
+2003-01-19  huysmans
 
 	* settings/workspaces_settings.c: Pick up changes in the number of
 	desktops made by other programs
 
-2003-01-19 14:49  huysmans
+2003-01-19  huysmans
 
 	* settings/backdrop_settings.c: Fix initial backdrop location.
 	Thanks to James Tapin for reporting it.
 
-2003-01-18 14:54  xfce
+2003-01-18  xfce
 
 	* ChangeLog: Update ChangeLog
 
-2003-01-18 14:51  xfce
+2003-01-18  xfce
 
 	* src/: backdrop.c, main.c: * Remove double buffering in desktop
 	window otherwise gtk allocates twice the size of the screen in
@@ -255,40 +377,40 @@
 	BILINEAR instead of HYPER because it takes too long even on a PIV
 	1.7GHz scalling from 1024x768 to 1280x768
 
-2003-01-16 21:51  xfce
+2003-01-16  xfce
 
 	* Makefile.in, aclocal.m4, autogen.sh, config.guess, config.sub,
 	configure, settings/Makefile.in, src/Makefile.in: Try to fix
 	libtool error
 
-2003-01-16 21:03  huysmans
+2003-01-16  huysmans
 
 	* ChangeLog, settings/Makefile.am, settings/Makefile.in: Make sure
 	icons are included in dist tarball
 
-2003-01-15 23:11  huysmans
+2003-01-15  huysmans
 
 	* src/backdrop.c: Small compile fix
 
-2003-01-15 23:08  huysmans
+2003-01-15  huysmans
 
 	* settings/backdrop-mgr.c: Fix a couple of bugs again and again
 
-2003-01-15 23:03  huysmans
+2003-01-15  huysmans
 
 	* settings/: backdrop-mgr.c, backdrop_settings.c: Fix a couple of
 	bugs
 
-2003-01-15 22:45  huysmans
+2003-01-15  huysmans
 
 	* ChangeLog, src/Makefile.am, src/Makefile.in, src/backdrop.c,
 	src/margins.c: Fix a compile error (?)
 
-2003-01-15 20:30  huysmans
+2003-01-15  huysmans
 
 	* settings/backdrop_settings.c: Fix crash in backdrop dialogs
 
-2003-01-15 20:09  huysmans
+2003-01-15  huysmans
 
 	* AUTHORS, COPYING, ChangeLog, INSTALL, Makefile.am, Makefile.in,
 	NEWS, README, TODO, aclocal.m4, autogen.sh, compile, config.guess,
