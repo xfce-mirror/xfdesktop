@@ -50,6 +50,10 @@
 #include "main.h"
 #include "menu.h"
 
+#ifndef PATH_MAX
+#define PATH_MAX 1024
+#endif
+
 /* max length window list menu items */
 #define WLIST_MAXLEN 20
 
