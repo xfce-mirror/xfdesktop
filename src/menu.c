@@ -95,7 +95,6 @@ static GList *MainMenuData;	/* TODO: Free this at some point */
 static time_t last_menu_gen = 0;
 
 static McsClient *client = NULL;
-static GtkIconTheme *itheme = NULL;
 static time_t last_theme_change = 0;
 
 GHashTable *menu_entry_hash = NULL;
@@ -140,53 +139,6 @@ calc_icon_size()
 	}
 	
 	return icon_size;
-}
-
-GdkPixbuf *
-menu_icon_find(const gchar *filename, gint size)
-{	
-	GdkPixbuf *pix, *tmp;
-	gint w, h;
-	gchar *p;
-	
-	if(!dummy_icon) {
-		GdkPixbuf *tmpicon = gdk_pixbuf_new_from_inline(-1, my_pixbuf, FALSE,
-				NULL);
-		dummy_icon = gdk_pixbuf_scale_simple(tmpicon, size,	size,
-				GDK_INTERP_BILINEAR);
-		g_object_unref(G_OBJECT(tmpicon));
-	}
-	
-	g_return_val_if_fail(filename && *filename, dummy_icon);
-	
-	
-	
-	if(*filename == '/')
-		pix = gdk_pixbuf_new_from_file(filename, NULL);
-	else if(g_strrstr(filename, "/")) {
-		/* GtkIconTheme doesn't like relative pathnames */
-		gchar *tmp = g_strconcat("/usr/share/pixmaps/", filename, NULL);
-		pix = gdk_pixbuf_new_from_file(tmp, NULL);
-		g_free(tmp);
-	} else {
-		/* GtkIconTheme doesn't like icon names with extensions */
-		if((p=g_strrstr(filename, ".")))
-			*p = 0;
-		
-		pix = gtk_icon_theme_load_icon(itheme, filename, 24, 0, NULL);
-	}
-
-	if(pix) {
-		w = gdk_pixbuf_get_width(pix);
-		h = gdk_pixbuf_get_height(pix);
-		if(w != size || h != size) {
-			tmp = gdk_pixbuf_scale_simple(pix, size, size, GDK_INTERP_BILINEAR);
-			g_object_unref(G_OBJECT(pix));
-			pix = tmp;
-		}
-	}
-	
-	return (pix ? pix : dummy_icon);
 }
 
 static gboolean
@@ -535,12 +487,12 @@ create_desktop_menu (void)
 			if (use_menu_icons && item->icon) {
 				imgitem = GTK_IMAGE_MENU_ITEM(mi);
 				if(imgitem) {
-					pix = menu_icon_find(item->icon, icon_size);
-					if(pix) {
-						img = gtk_image_new_from_pixbuf (pix);
-						gtk_widget_show (img);
-						gtk_image_menu_item_set_image (imgitem, img);
-					}
+					pix = load_themed_icon(item->icon, icon_size);
+					if(!pix)
+						pix = dummy_icon;
+					img = gtk_image_new_from_pixbuf (pix);
+					gtk_widget_show (img);
+					gtk_image_menu_item_set_image (imgitem, img);
 					if(pix != dummy_icon)
 						item->pix_free = pix;
 				}
@@ -888,8 +840,7 @@ button_scroll (GtkWidget * w, GdkEventScroll * sevent)
 void
 menu_init (XfceDesktop * xfdesktop)
 {
-    const gchar *kdedir = g_getenv("KDEDIR");
-	gchar *kde_icon_dir = NULL;
+	gint size;
 	
     TRACE ("dummy");
     netk_screen = xfdesktop->netk_screen;
@@ -900,13 +851,11 @@ menu_init (XfceDesktop * xfdesktop)
 	signal(SIGCHLD, SIG_IGN);
 #endif
 	
-	itheme = gtk_icon_theme_get_default();
-	
-	gtk_icon_theme_prepend_search_path(itheme, XFCEDATADIR "/themes");
-	if(kdedir) {
-		kde_icon_dir = g_strconcat(kdedir, "/share/icons", NULL);
-		gtk_icon_theme_append_search_path(itheme, kde_icon_dir);
-		g_free(kde_icon_dir);
+	if(!dummy_icon) {
+		size = calc_icon_size();
+		if(size < 0)
+			size = 24;
+		dummy_icon = inline_icon_at_size(my_pixbuf, size, size);
 	}
 	
 	/* track icon theme changes (from the panel) */
