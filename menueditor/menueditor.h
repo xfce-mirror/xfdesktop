@@ -26,7 +26,9 @@
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
 
+#include <libxfce4mcs/mcs-client.h>
 #include <libxfcegui4/libxfcegui4.h>
+#include <libxfcegui4/xgtkicontheme.h>
 #include <libxfce4util/util.h>
 
 #include <libintl.h>
@@ -96,8 +98,11 @@ static GdkPixbuf * find_icon (gchar const *ifile);
 #define PATH_MAX 4096
 #endif
 
+#define CHANNEL "xfce"
+#define DEFAULT_ICON_THEME "Curve"
+
 static guchar icon_size = 24;
-static gchar icon_theme[]="Curve"; /* Set Curve as theme (it really needs to be in a library) */
+static gchar *icon_theme=NULL; /* Set Curve as theme (it really needs to be in a library) */
 static gchar const *pix_ext[] = {
   ".svgz",
   ".svg",
@@ -157,6 +162,7 @@ struct _menueditor_app{
   gchar menu_file_name[255];
   xmlDocPtr xml_menu_file;
   GtkWidget *main_window;
+  GtkIconTheme *icon_theme;
   /* Tree */
   GtkWidget *treeview;
   GtkTreeStore *treestore;

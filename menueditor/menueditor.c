@@ -32,6 +32,52 @@
 /* find_icon code copy of Brian J. Tarricone's xfdesktop patch */
 /* i hope it will be included in a xfce4 lib                   */
 /***************************************************************/
+static time_t last_theme_change = 0;
+static McsClient *client = NULL;
+
+static GdkFilterReturn
+client_event_filter1(GdkXEvent * xevent, GdkEvent * event, gpointer data)
+{
+	if(mcs_client_process_event (client, (XEvent *)xevent))
+		return GDK_FILTER_REMOVE;
+	else
+		return GDK_FILTER_CONTINUE;
+}
+
+static void
+mcs_watch_cb(Window window, Bool is_start, long mask, void *cb_data)
+{
+	GdkWindow *gdkwin;
+
+	gdkwin = gdk_window_lookup (window);
+
+	if(is_start)
+		gdk_window_add_filter (gdkwin, client_event_filter1, NULL);
+	else
+		gdk_window_remove_filter (gdkwin, client_event_filter1, NULL);
+}
+
+static void
+mcs_notify_cb(const gchar *name, const gchar *channel_name, McsAction action,
+              McsSetting *setting, void *cb_data)
+{
+  if(strcasecmp(channel_name, CHANNEL) || !setting)
+    return;
+  
+  if((action==MCS_ACTION_NEW || action==MCS_ACTION_CHANGED) &&
+     !strcmp(setting->name, "theme") && setting->type==MCS_TYPE_STRING)
+    {
+      gchar *origin = g_strdup_printf("%s:%d", __FILE__, __LINE__);
+      gtk_settings_set_string_property(gtk_settings_get_default(),
+				       "gtk-icon-theme-name", setting->data.v_string, origin);
+      /* for use with find_icon */
+      /* to remove when gtk_theme_icon_load_icon will work */
+      icon_theme = g_strdup(setting->data.v_string);
+
+      g_free(origin);
+      last_theme_change = time(NULL);
+    }
+}
 
 static GdkPixbuf * find_icon (gchar const *ifile)
 {
@@ -318,7 +364,8 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
       if(!xmlStrcmp(xmlGetProp(menu,"cmd"),(xmlChar*)"quit")){
 	GdkPixbuf *icon;
 
-	icon = find_icon("minipower.png");
+	icon = find_icon("minipower");
+	//icon = gtk_icon_theme_load_icon (menueditor_app.icon_theme, "minipower", 12, 0, NULL);
 	gtk_tree_store_set (menueditor_app.treestore, &c,
 			    ICON_COLUMN, icon, -1);
       }
@@ -1127,7 +1174,23 @@ int main (int argc, char *argv[])
   gtk_init(&argc, &argv);
   
   create_main_window();
-  
+
+  /* track icon theme changes (from the panel) */
+  if(!client) {
+    Display *dpy = GDK_DISPLAY();
+    int screen = XDefaultScreen(dpy);
+    
+    if(!mcs_client_check_manager(dpy, screen, "xfce-mcs-manager"))
+      g_warning("%s: mcs manager not running\n", PACKAGE);
+    client = mcs_client_new(dpy, screen, mcs_notify_cb, mcs_watch_cb, NULL);
+    if(client)
+      mcs_client_add_channel(client, CHANNEL);
+  }
+
+  /* Initialize icon theme */
+  /* menueditor_app.icon_theme = gtk_icon_theme_get_default(); */
+/*   gtk_icon_theme_prepend_search_path(menueditor_app.icon_theme, "/usr/share/xfce4/themes"); */
+
   if(argc>1){
     if (g_file_test (argv[1], G_FILE_TEST_EXISTS))
       open_menu_file(argv[1]);
@@ -1151,5 +1214,6 @@ int main (int argc, char *argv[])
 
   gtk_main();
 
+  g_free(icon_theme);
   return 0;
 }
