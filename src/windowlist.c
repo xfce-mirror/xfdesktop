@@ -268,12 +268,6 @@ windowlist_create(GdkScreen *gscreen)
 	return menu;
 }
 
-static void
-windowlist_deactivate_cb(GtkMenuShell *ms, gpointer user_data)
-{
-	gtk_widget_destroy(GTK_WIDGET(ms));
-}
-
 void
 popup_windowlist(GdkScreen *gscreen, gint button, guint32 time)
 {
@@ -285,7 +279,7 @@ popup_windowlist(GdkScreen *gscreen, gint button, guint32 time)
 	windowlist = windowlist_create(gscreen);
 	gtk_menu_set_screen(GTK_MENU(windowlist), gscreen);
 	g_signal_connect(G_OBJECT(windowlist), "deactivate",
-			G_CALLBACK(windowlist_deactivate_cb), NULL);
+			G_CALLBACK(gtk_widget_destroy), NULL);
 	gtk_menu_popup(GTK_MENU(windowlist), NULL, NULL, NULL, NULL, button, time);
 }
 
