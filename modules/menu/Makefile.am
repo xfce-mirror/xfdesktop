@@ -40,6 +40,7 @@ xfce4_desktop_menu_la_LIBADD = \
 xfceconfdir = $(sysconfdir)/xdg/xfce4/desktop
 xfceconf_DATA = \
 	xfce-registered-categories.xml \
-	xfce-registered-categories.xml.nl
+	xfce-registered-categories.xml.nl \
+	xfce-registered-categories.xml.zh_TW
 
 EXTRA_DIST = $(xfceconf_DATA)
