@@ -86,7 +86,7 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
     mcs_plugin->caption = g_strdup (_("Desktop"));
     mcs_plugin->run_dialog = run_dialog;
 
-    mcs_plugin->icon = xfce_themed_icon_load("xfce4-backdrop", 32);
+    mcs_plugin->icon = xfce_themed_icon_load("xfce4-backdrop", 48);
 
     backdrop_create_channel (mcs_plugin);
 
