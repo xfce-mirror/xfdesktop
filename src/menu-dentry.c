@@ -94,7 +94,8 @@ static const gchar *legacy_dirs[] = {
 	NULL
 };
 
-static time_t dentry_mtime = 0;
+static time_t *dentry_mtimes = NULL;
+static time_t *dentry_legacy_mtimes = NULL;
 static GHashTable *dir_to_cat = NULL;
 
 
@@ -386,7 +387,7 @@ menu_dentry_parse_files(const gchar *basepath, MenuPathType pathtype,
 		gboolean do_legacy)
 {
 	GList *menu_data = NULL;
-	gint i;
+	gint i, totdirs = 0;
 	gchar const *pathd;
 	GDir *d;
 	gchar const *n;
@@ -396,11 +397,15 @@ menu_dentry_parse_files(const gchar *basepath, MenuPathType pathtype,
 	const gchar *kdedir = g_getenv("KDEDIR");
 	gchar kde_dentry_path[PATH_MAX];
 	
+	if(dentry_mtimes)
+		g_free(dentry_mtimes);
+	
 	menuspec_parse_categories(catfile);
 	g_free(catfile);
 
 	for(i = 0; dentry_paths[i]; i++) {
 		pathd = dentry_paths[i];
+		totdirs++;
 
 		d = g_dir_open (pathd, 0, NULL);
 		if (d) {
@@ -420,6 +425,7 @@ menu_dentry_parse_files(const gchar *basepath, MenuPathType pathtype,
 	if(kdedir && strcmp(kdedir, "/usr")) {
 		g_snprintf(kde_dentry_path, PATH_MAX, "%s/share/applications/kde",
 				kdedir);
+		totdirs++;
 		d = g_dir_open(kde_dentry_path, 0, NULL);
 		if(d) {
 			while((n=g_dir_read_name(d))) {
@@ -438,6 +444,8 @@ menu_dentry_parse_files(const gchar *basepath, MenuPathType pathtype,
 		menu_dentry_legacy_init();
 		menu_data = menu_dentry_legacy_add_all(menu_data, basepath, pathtype);
 	}
+	
+	dentry_mtimes = g_new0(time_t, totdirs);
 
 	menuspec_free();
 
@@ -453,8 +461,8 @@ menu_dentry_need_update()
 	
 	for(i=0; dentry_paths[i]; i++) {
 		if(!stat(dentry_paths[i], &st)) {
-			if(st.st_mtime > dentry_mtime) {
-				dentry_mtime = st.st_mtime;
+			if(st.st_mtime > dentry_mtimes[i]) {
+				dentry_mtimes[i] = st.st_mtime;
 				modified = TRUE;
 			}
 		}
@@ -537,19 +545,27 @@ static GList *
 menu_dentry_legacy_add_all(GList *menu_data, const gchar *basepath,
 		MenuPathType pathtype)
 {
-	gint i;
+	gint i, totdirs = 0;
 	const gchar *kdedir = g_getenv("KDEDIR");
 	gchar extradir[PATH_MAX];
 	
-	for(i=0; legacy_dirs[i]; i++)
+	if(dentry_legacy_mtimes)
+		g_free(dentry_legacy_mtimes);
+	
+	for(i=0; legacy_dirs[i]; i++) {
+		totdirs++;
 		menu_data = menu_dentry_legacy_process_dir(menu_data, legacy_dirs[i],
 				NULL, basepath, pathtype);
+	}
 	
 	if(kdedir && strcmp(kdedir, "/usr")) {
 		g_snprintf(extradir, PATH_MAX, "%s/share/applnk", kdedir);
+		totdirs++;
 		menu_data = menu_dentry_legacy_process_dir(menu_data, extradir, NULL,
 				basepath, pathtype);
 	}
+	
+	dentry_legacy_mtimes = g_new0(time_t, totdirs);
 	
 	return menu_data;
 }
@@ -585,8 +601,8 @@ menu_dentry_legacy_need_update()
 	
 	for(i=0; legacy_dirs[i]; i++) {
 		if(!stat(legacy_dirs[i], &st)) {
-			if(st.st_mtime > dentry_mtime) {
-				dentry_mtime = st.st_mtime;
+			if(st.st_mtime > dentry_legacy_mtimes[i]) {
+				dentry_legacy_mtimes[i] = st.st_mtime;
 				modified = TRUE;
 			}
 		}
