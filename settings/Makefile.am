@@ -9,7 +9,7 @@ EXTRA_DIST = backdrop.png margins.png workspaces.png
 backdrop_LTLIBRARIES = backdrop_settings.la
 backdrop_settings_la_LDFLAGS =  -module -avoid-version
 
-backdrop_settings_la_SOURCES = backdrop-icon.h \
+backdrop_settings_la_SOURCES = backdrop-icon.h debug.h \
 backdrop_settings.c backdrop_settings.h \
 backdrop-mgr.c backdrop-mgr.h \
 settings_common.c settings_common.h
@@ -21,7 +21,7 @@ backdrop_settings_la_LIBADD = @LIBS@ @X_LIBS@  @BASE_DEPENDENCIES_LIBS@ @MCS_MAN
 #menu_LTLIBRARIES = menu_settings.la
 #menu_settings_la_LDFLAGS =  -module -avoid-version
 
-#menu_settings_la_SOURCES = \
+#menu_settings_la_SOURCES =  debug.h \
 #menu-icon.h menu_settings.c menu_settings.h \
 #settings_common.c settings_common.h
 
@@ -32,7 +32,7 @@ backdrop_settings_la_LIBADD = @LIBS@ @X_LIBS@  @BASE_DEPENDENCIES_LIBS@ @MCS_MAN
 workspaces_LTLIBRARIES = workspaces_settings.la
 workspaces_settings_la_LDFLAGS =  -module -avoid-version
 
-workspaces_settings_la_SOURCES = \
+workspaces_settings_la_SOURCES =  debug.h \
 workspaces-icon.h workspaces_settings.c \
 settings_common.c settings_common.h
 
@@ -43,7 +43,7 @@ workspaces_settings_la_LIBADD = @LIBS@ @X_LIBS@  @BASE_DEPENDENCIES_LIBS@ @MCS_M
 margins_LTLIBRARIES = margins_settings.la
 margins_settings_la_LDFLAGS =  -module -avoid-version
 
-margins_settings_la_SOURCES = \
+margins_settings_la_SOURCES =  debug.h \
 margins-icon.h margins_settings.c margins_settings.h \
 settings_common.c settings_common.h
 
