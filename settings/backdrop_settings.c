@@ -87,7 +87,10 @@ typedef struct
     /* options dialog */
     GtkWidget *dialog;
 
+    GtkWidget *dontset_checkbox;
+    
     GdkColor color;
+    GtkWidget *color_frame;
     GtkWidget *color_box;
     GtkWidget *color_only_checkbox;
     GtkWidget *image_frame;
@@ -101,6 +104,7 @@ BackdropDialog;
 /* there can be only one */
 static gboolean is_running = FALSE;
 
+static int set_background = 1;
 static char *backdrop_path = NULL;
 static int backdrop_style = SCALED;
 static int showimage = 1;
@@ -139,21 +143,10 @@ static GdkPixbuf *backdrop_icon_at_size(int width, int height)
 
 McsPluginInitResult mcs_plugin_init(McsPlugin * mcs_plugin)
 {
-#if 0
-#ifdef ENABLE_NLS
-    /* This is required for UTF-8 at least - Please don't remove it */
-    bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-#ifdef HAVE_BIND_TEXTDOMAIN_CODESET
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-#endif
-    textdomain (GETTEXT_PACKAGE);
-#endif
-#else
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
-#endif
 
     mcs_plugin->plugin_name = g_strdup(PLUGIN_NAME);
-    mcs_plugin->caption = g_strdup(_("Desktop: backdrop"));
+    mcs_plugin->caption = g_strdup(_("Desktop background"));
     mcs_plugin->run_dialog = run_dialog;
     mcs_plugin->icon = backdrop_icon_at_size(DEFAULT_ICON_SIZE,
                                              DEFAULT_ICON_SIZE);
@@ -172,6 +165,19 @@ static void backdrop_create_channel(McsPlugin * mcs_plugin)
     mcs_manager_add_channel_from_file(mcs_plugin->manager, BACKDROP_CHANNEL, 
                                       rcfile);
     g_free(rcfile);
+
+    setting = mcs_manager_setting_lookup(mcs_plugin->manager, "setbackground", 
+                                         BACKDROP_CHANNEL);
+    if(setting)
+    {
+        set_background = setting->data.v_int;
+    }
+    else
+    {
+	DBG("no setbackdrop settings");
+        mcs_manager_set_int(mcs_plugin->manager, "setbackground", 
+			    BACKDROP_CHANNEL, set_background);
+    }
 
     setting = mcs_manager_setting_lookup(mcs_plugin->manager, "path", 
                                          BACKDROP_CHANNEL);
@@ -787,6 +793,19 @@ add_style_options(GtkWidget *vbox, GtkSizeGroup *sg, BackdropDialog *bd)
     gtk_box_pack_start(GTK_BOX(hbox), omenu, FALSE, FALSE, 0);
 }
 
+void
+toggle_set_background(GtkToggleButton *tb, BackdropDialog *bd)
+{
+    set_background = gtk_toggle_button_get_active(tb) ? 0 : 1;
+
+    gtk_widget_set_sensitive(bd->image_frame, set_background!=0);
+    gtk_widget_set_sensitive(bd->color_frame, set_background!=0);
+
+    mcs_manager_set_int(bd->plugin->manager, "setbackground", BACKDROP_CHANNEL, 
+		    	set_background);
+    mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
+}
+
 /* the dialog */
 static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
 {
@@ -822,7 +841,7 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
     add_spacer(GTK_BOX(mainvbox));
 
     /* color */
-    frame = xfce_framebox_new (_("Color"), TRUE);
+    bd->color_frame = frame = xfce_framebox_new (_("Color"), TRUE);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
     
@@ -834,11 +853,11 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
     add_color_button(vbox, bd);
 
     /* image vbox */
-    bd->image_frame = xfce_framebox_new (_("Image"), TRUE);
-    gtk_container_set_border_width(GTK_CONTAINER(bd->image_frame), BORDER);
-    gtk_widget_set_sensitive(bd->image_frame, showimage);
-    gtk_widget_show(bd->image_frame);
-    gtk_box_pack_start(GTK_BOX(mainvbox), bd->image_frame, TRUE, TRUE, 0);
+    bd->image_frame = frame = xfce_framebox_new (_("Image"), TRUE);
+    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
+    gtk_widget_set_sensitive(frame, showimage);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
     
     vbox = gtk_vbox_new(FALSE, 2 * BORDER);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
@@ -851,6 +870,25 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
     add_file_entry(vbox, sg, bd);
     add_button_box(vbox, sg, bd);
     add_style_options(vbox, sg, bd);
+
+    /* to set or not to set the background ... */
+    frame = gtk_frame_new (NULL);
+    gtk_frame_set_shadow_type (GTK_FRAME(frame), GTK_SHADOW_NONE);
+    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(mainvbox), frame, FALSE, FALSE, 0);
+    
+    bd->dontset_checkbox = 
+	gtk_check_button_new_with_label (_("Don't set background"));
+    gtk_widget_show (bd->dontset_checkbox);
+    gtk_container_add(GTK_CONTAINER(frame), bd->dontset_checkbox);
+
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(bd->dontset_checkbox),
+	    			 !set_background);
+    toggle_set_background (GTK_TOGGLE_BUTTON(bd->dontset_checkbox), bd);
+    
+    g_signal_connect (bd->dontset_checkbox, "toggled",
+	    		G_CALLBACK(toggle_set_background), bd);
 
     add_spacer(GTK_BOX(mainvbox));
 
@@ -869,10 +907,11 @@ static void run_dialog(McsPlugin * mcs_plugin)
         return;
     }
 
-    dialog = create_backdrop_dialog(mcs_plugin);
     is_running = TRUE;
 
-    gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);
+    dialog = create_backdrop_dialog(mcs_plugin);
+
+/*    gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);*/
     gtk_widget_show(dialog);
 }
 

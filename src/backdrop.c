@@ -70,6 +70,7 @@
 
 static GtkWidget *fullscreen_window = NULL;
 
+static int set_background = 1;
 static char *backdrop_path = NULL;
 static int backdrop_style = TILED;
 static int showimage = 1;
@@ -143,6 +144,8 @@ update_backdrop_channel (const char *name, McsAction action,
 			 McsSetting * setting)
 {
     TRACE ("dummy");
+    DBG("processing change in \"%s\"", name);
+
     switch (action)
     {
 	case MCS_ACTION_NEW:
@@ -152,7 +155,12 @@ update_backdrop_channel (const char *name, McsAction action,
 		return;
 	    }
 	case MCS_ACTION_CHANGED:
-	    if (strcmp (name, "style") == 0)
+	    if (strcmp (name, "setbackground") == 0)
+	    {
+		set_background = setting->data.v_int;
+		DBG("set_background = %d", set_background);
+	    }
+	    else if (strcmp (name, "style") == 0)
 	    {
 		backdrop_style = setting->data.v_int;
 	    }
@@ -173,8 +181,12 @@ update_backdrop_channel (const char *name, McsAction action,
 		showimage = setting->data.v_int;
 	    }
 
-	    set_backdrop (backdrop_path, backdrop_style, showimage,
-			  &backdrop_color);
+	    if (set_background)
+	    {
+		set_backdrop (backdrop_path, backdrop_style, showimage,
+			      &backdrop_color);
+	    }
+
 	    break;
 	case MCS_ACTION_DELETED:
 	    /* We don't use this now. Perhaps revert to default? */
@@ -195,6 +207,13 @@ backdrop_load_settings (McsClient * client)
     McsSetting *setting;
 
     TRACE ("dummy");
+    if (MCS_SUCCESS == mcs_client_get_setting (client, "setbackground",
+					       BACKDROP_CHANNEL, &setting))
+    {
+	set_background = setting->data.v_int;
+	mcs_setting_free (setting);
+    }
+
     if (MCS_SUCCESS == mcs_client_get_setting (client, "style",
 					       BACKDROP_CHANNEL, &setting))
     {
@@ -232,7 +251,12 @@ backdrop_load_settings (McsClient * client)
 	mcs_setting_free (setting);
     }
 
-    set_backdrop (backdrop_path, backdrop_style, showimage, &backdrop_color);
+    if (set_background)
+    {
+	DBG("load settings && set_background = %d", set_background);
+	set_backdrop (backdrop_path, backdrop_style, showimage, 
+		      &backdrop_color);
+    }
 }
 
 static int
@@ -336,12 +360,9 @@ create_background_pixmap (GdkPixbuf * pixbuf, int style, GdkColor * color)
     solid =
 	gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, gdk_screen_width(),
 			gdk_screen_height());
-    rgba =
-	(((color->red & 0xff00) << 8) | ((color->green & 0xff00)) | ((color->
-								      blue &
-								      0xff00)
-								     >> 8)) <<
-	8;
+    rgba = (((color->red & 0xff00) << 8) | 
+	    ((color->green & 0xff00)) | 
+	    ((color->blue & 0xff00) >> 8)) << 8;
     gdk_pixbuf_fill (solid, rgba);
 
     if (pixbuf)
@@ -464,11 +485,11 @@ set_backdrop (const char *path, int style, int show, GdkColor * color)
 {
     GdkPixmap *pixmap;
     GdkPixbuf *pixbuf;
-    GtkStyle *gstyle;
+/*    GtkStyle *gstyle;*/
 
-    /* This call is used to free any previous allocated pixmap */
+    /* This call is used to free any previous allocated pixmap 
     gtk_widget_set_style (fullscreen_window, NULL);
-    gstyle = gtk_style_new ();
+    gstyle = gtk_style_new ();*/
 
     if (show && path && *path)
     {
@@ -504,7 +525,7 @@ set_backdrop (const char *path, int style, int show, GdkColor * color)
     {
 	XID id = GDK_DRAWABLE_XID (pixmap);
 
-	gstyle->bg_pixmap[GTK_STATE_NORMAL] = pixmap;
+/*	gstyle->bg_pixmap[GTK_STATE_NORMAL] = pixmap;*/
 	gdk_window_set_back_pixmap (gdk_get_default_root_window (), pixmap,
 				    0);
 	gdk_window_clear (gdk_get_default_root_window ());
@@ -516,16 +537,16 @@ set_backdrop (const char *path, int style, int show, GdkColor * color)
     }
     else
     {
-	gstyle->bg_pixmap[GTK_STATE_NORMAL] = NULL;
+/*	gstyle->bg_pixmap[GTK_STATE_NORMAL] = NULL;*/
 	gdk_property_delete (gdk_get_default_root_window (),
 			     gdk_atom_intern ("_XROOTPMAP_ID", FALSE));
 	gdk_window_clear (gdk_get_default_root_window ());
     }
 
     gdk_flush ();
-    /* (un)set background */
+    /* (un)set background 
     gtk_widget_set_style (fullscreen_window, gstyle);
     g_object_unref (gstyle);
 
-    gtk_widget_queue_draw (fullscreen_window);
+    gtk_widget_queue_draw (fullscreen_window);*/
 }

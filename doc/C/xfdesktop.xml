@@ -1,8 +1,8 @@
 <?xml version='1.0'?> 
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "Sep 2003"> 
-  <!ENTITY appversion "4.0"> 
+  <!ENTITY date "Nov 2003"> 
+  <!ENTITY appversion "4.1"> 
   <!ENTITY app "<application>xfdesktop</application>"> 
 ]>
 
@@ -97,7 +97,9 @@ maintainers, etc. Commented out by default.
     with your right or middle mouse button. Along with the application, a 
     settings dialog is installed for use with the 
     <emphasis>XFce 4 Settings Manager</emphasis>. This dialog allows you to 
-    change the background image and color.
+    change the background image and color. You can also request xfdesktop to
+    not set the background, in order to allow another program to perform that
+    task.
   </para>
 
 </sect1>
@@ -106,7 +108,7 @@ maintainers, etc. Commented out by default.
   <title>Background</title>
 
   <para>You can start the background properties dialog by clicking on the
-    "Desktop: backdrop" button in the 
+    "Desktop background" button in the 
     <ulink url="xfce-mcs-manager.html#manager-dialog" 
       type="http">settings manager dialog</ulink>.
   </para>
@@ -234,6 +236,18 @@ maintainers, etc. Commented out by default.
       </listitem>
 
     </varlistentry>
+    
+    <varlistentry>
+      <term>Don't set background</term>
+
+      <listitem>
+	<para>There are many programs that can set the background image. If
+	  you prefer to use one of those programs, you can check this option
+	  and xfdesktop will refrain from setting the background.
+	</para>
+      </listitem>
+    </varlistentry>
+
   </variablelist>
 	
 </sect1>

@@ -244,32 +244,36 @@ die (gpointer client_data)
 static GtkWidget *
 create_fullscreen_window (void)
 {
-    GdkAtom desktop_type;
+/*    GdkAtom desktop_type;*/
     GtkWidget *win;
-    GtkStyle *style;
+/*    GtkStyle *style;*/
 
     TRACE ("create fullscreen window");
-    win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+    win = gtk_invisible_new ();
 
-    netk_gtk_window_avoid_input (GTK_WINDOW (win));
+/*    netk_gtk_window_avoid_input (GTK_WINDOW (win));
     gtk_widget_set_size_request (win, gdk_screen_width (),
-				 gdk_screen_height ());
+				 gdk_screen_height ());*/
     gtk_widget_realize (win);
-    gtk_window_move (GTK_WINDOW (win), 0, 0);
-
+    
+    gdk_window_move_resize (win->window, 0, 0, 
+	    		    gdk_screen_width(), gdk_screen_height());
+    gtk_widget_add_events (win,
+			   GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
+			   GDK_SCROLL_MASK);
+/*    
     gtk_window_set_title (GTK_WINDOW (win), _("Desktop"));
-
     style = gtk_widget_get_style (win);
 
     gtk_widget_modify_bg (win, GTK_STATE_NORMAL, &(style->black));
     gtk_widget_modify_base (win, GTK_STATE_NORMAL, &(style->black));
     
-    /* Remove double buffering in desktop window otherwise
+    * Remove double buffering in desktop window otherwise
        gtk allocates twice the size of the screen in video memory
        which can show to be unusable even on a GeForce II MX with 
        32Mb using 3D because the video RAM alloted to pixmaps
        cannot handle the total amount of pixmaps.
-     */
+     *
     if (GTK_WIDGET_DOUBLE_BUFFERED (win))
 	gtk_widget_set_double_buffered (win, FALSE);
 
@@ -279,11 +283,7 @@ create_fullscreen_window (void)
 			 gdk_atom_intern ("_NET_WM_WINDOW_TYPE", FALSE),
 			 gdk_atom_intern ("ATOM", FALSE), 32,
 			 GDK_PROP_MODE_REPLACE, (guchar *) & desktop_type, 1);
-
-    gtk_widget_add_events (win,
-			   GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
-			   GDK_SCROLL_MASK);
-
+*/
     return (win);
 }
 
