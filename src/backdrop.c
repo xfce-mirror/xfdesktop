@@ -34,9 +34,10 @@ static int screen_height = 0;
 static GdkColormap *cmap;
 static char *backdrop_path = NULL;
 static int backdrop_style = TILED;
-static GdkColor backdrop_color = { 0, 0, 0, 0 };
+static int showimage = 1;
+static GdkColor backdrop_color = {0, 0, 0, 0};
 
-static void set_backdrop(const char *path, int style, GdkColor *color);
+static void set_backdrop(const char *path, int style, int show, GdkColor *color);
 
 static gboolean is_backdrop_list(const char *path)
 {
@@ -65,7 +66,7 @@ void backdrop_init(GtkWidget * window)
     screen_width = gdk_screen_width();
     screen_height = gdk_screen_height();
 
-    cmap = gdk_colormap_get_system();
+    cmap = gtk_widget_get_colormap(fullscreen_window);
 }
 
 /* settings client */
@@ -93,8 +94,12 @@ static void update_backdrop_channel(const char *name, McsAction action,
 		backdrop_color.green = setting->data.v_color.green;
 		backdrop_color.blue = setting->data.v_color.blue;
 	    }
+	    else if (strcmp(name, "showimage") == 0)
+	    {
+		showimage = setting->data.v_int;
+	    }
 
-	    set_backdrop(backdrop_path, backdrop_style, &backdrop_color);
+	    set_backdrop(backdrop_path, backdrop_style, showimage, &backdrop_color);
 	    break;
         case MCS_ACTION_DELETED:
 	    /* We don't use this now. Perhaps revert to default? */
@@ -140,7 +145,7 @@ void backdrop_load_settings(McsClient *client)
 	mcs_setting_free(setting);
     }
 
-    set_backdrop(backdrop_path, backdrop_style, &backdrop_color);
+    set_backdrop(backdrop_path, backdrop_style, showimage, &backdrop_color);
 }
 
 /* setting the background */
@@ -229,6 +234,9 @@ static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style,
 {
     GdkPixmap *pixmap = NULL;
 
+    if (!GDK_IS_COLORMAP(cmap))
+	return NULL;
+	
     if (style == AUTO)
     {
 	int height, width;
@@ -256,6 +264,7 @@ static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style,
     {
         GdkPixbuf *old = pixbuf;
         int x, y, width, height;
+	guint32 rgba;
 
         width = gdk_pixbuf_get_width(pixbuf);
         height = gdk_pixbuf_get_height(pixbuf);
@@ -263,7 +272,11 @@ static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style,
         pixbuf = gdk_pixbuf_new(gdk_pixbuf_get_colorspace(old), 0, 8, 
 				screen_width, screen_height);
 
-        gdk_pixbuf_fill(pixbuf, 0);
+	gdk_rgb_find_color(cmap, color);
+
+	/* pixel is in rgb, we need rgba */
+	rgba = color->pixel * 256;
+        gdk_pixbuf_fill(pixbuf, rgba);
 
         x = (screen_width - width) / 2;
         y = (screen_height - height) / 2;
@@ -278,7 +291,8 @@ static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style,
         g_object_unref(old);
     }
 
-    gdk_pixbuf_render_pixmap_and_mask(pixbuf, &pixmap, NULL, 0);
+    gdk_pixbuf_render_pixmap_and_mask_for_colormap(pixbuf, cmap, 
+	    					   &pixmap, NULL, 0);
     g_object_unref(pixbuf);
 
     return pixmap;
@@ -286,22 +300,23 @@ static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style,
 
 /* The code below is almost literally copied from ROX Filer
  * (c) by Thomas Leonard. See http://rox.sf.net. */
-static void set_backdrop(const char *path, int style, GdkColor *color)
+static void set_backdrop(const char *path, int style, int show, GdkColor *color)
 {
     GtkStyle *gstyle;
     GdkPixmap *pixmap;
     GdkPixbuf *pixbuf = NULL;
     GError *error = NULL;
 
+    gtk_widget_set_style(fullscreen_window, NULL);
     gstyle = gtk_style_copy(gtk_widget_get_style(fullscreen_window));
     
-    if (path && *path)
+    if (show && path && *path)
     {
 	if (is_backdrop_list(path))
 	{
 	    char *realpath = get_path_from_listfile(path);
 
-	    set_backdrop(realpath, AUTO, color);
+	    set_backdrop(realpath, AUTO, show, color);
 	    return;
 	}
 
@@ -312,7 +327,7 @@ static void set_backdrop(const char *path, int style, GdkColor *color)
 	    g_warning("xfdesktop: error loading backdrop image:\n%s\n",
 		      error->message);
 	    g_error_free(error);
-	    set_backdrop(NULL, 0, color);
+	    set_backdrop(NULL, 0, 0, color);
 	    return;
 	}
 
@@ -323,20 +338,6 @@ static void set_backdrop(const char *path, int style, GdkColor *color)
     {
 	gstyle->bg_pixmap[GTK_STATE_NORMAL] = NULL;
     }
-
-    gstyle->base[GTK_STATE_NORMAL].red = color->red;
-    gstyle->base[GTK_STATE_NORMAL].green = color->green;
-    gstyle->base[GTK_STATE_NORMAL].blue = color->blue;
-
-    gstyle->bg[GTK_STATE_SELECTED].red = color->red;
-    gstyle->bg[GTK_STATE_SELECTED].green = color->green;
-    gstyle->bg[GTK_STATE_SELECTED].blue = color->blue;
-
-    /* (un)set background */
-    gtk_widget_set_style(fullscreen_window, gstyle);
-    g_object_unref(gstyle);
-
-    gtk_widget_queue_draw(fullscreen_window);
 
     /* Also update root window property (for transparent xterms, etc) */
     if(gstyle->bg_pixmap[GTK_STATE_NORMAL])
@@ -351,5 +352,20 @@ static void set_backdrop(const char *path, int style, GdkColor *color)
     {
         gdk_property_delete(gdk_get_default_root_window(),
                             gdk_atom_intern("_XROOTPMAP_ID", FALSE));
+    }
+
+    /* (un)set background */
+    gtk_widget_set_style(fullscreen_window, gstyle);
+    g_object_unref(gstyle);
+
+    gtk_widget_queue_draw(fullscreen_window);
+
+    if (!show)
+    {
+	/* somehow we have to clear the style again */
+	gtk_widget_set_style(fullscreen_window, NULL);
+	
+	gtk_widget_modify_bg(fullscreen_window, GTK_STATE_NORMAL, color);
+	gtk_widget_modify_base(fullscreen_window, GTK_STATE_NORMAL, color);
     }
 }

@@ -34,6 +34,7 @@
 #include "backdrop.h"
 #include "menu.h"
 #include "margins.h"
+#include "workspaces.h"
 #include "settings.h"
 
 static McsClient *client = NULL;
@@ -167,7 +168,7 @@ void watch_settings(GtkWidget *window, NetkScreen *screen)
  
     g_hash_table_foreach(settings_hash, (GHFunc)add_channel, client);
 
-    load_settings();
+/*    load_settings();*/
 }
 
 void stop_watch(void)

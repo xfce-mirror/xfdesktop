@@ -59,7 +59,9 @@
 #define DEFAULT_BACKDROP (DATADIR "xfce4/backdrops/Xfcelogo.xpm")
 
 static char *backdrop_path = NULL;
-static int backdrop_style = TILED;
+static int backdrop_style = AUTO;
+static int showimage = 1;
+static McsColor backdrop_color = {0, 0, 0, 0};
 
 static void backdrop_create_channel(McsPlugin * mcs_plugin);
 static gboolean backdrop_write_options(McsPlugin * mcs_plugin);
@@ -148,6 +150,33 @@ static void backdrop_create_channel(McsPlugin * mcs_plugin)
 		    	    backdrop_style);
     }
 
+    setting = mcs_manager_setting_lookup(mcs_plugin->manager, "color", 
+	    				 BACKDROP_CHANNEL);
+    if(setting)
+    {
+	backdrop_color.red = setting->data.v_color.red;
+        backdrop_color.green = setting->data.v_color.green;
+        backdrop_color.blue = setting->data.v_color.blue;
+        backdrop_color.alpha = setting->data.v_color.alpha;
+    }
+    else
+    {
+	mcs_manager_set_color(mcs_plugin->manager, "color", BACKDROP_CHANNEL, 
+		    	      &backdrop_color);
+    }
+
+    setting = mcs_manager_setting_lookup(mcs_plugin->manager, "showimage", 
+	    				 BACKDROP_CHANNEL);
+    if(setting)
+    {
+        showimage = setting->data.v_int;
+    }
+    else
+    {
+	mcs_manager_set_int(mcs_plugin->manager, "showimage", BACKDROP_CHANNEL, 
+		    	    showimage);
+    }
+
     mcs_manager_notify(mcs_plugin->manager, BACKDROP_CHANNEL);
 }
 
@@ -169,17 +198,12 @@ typedef struct
 {
     McsPlugin *plugin;
 
-    /* backup */
-    char *bu_path;
-    int bu_style;
-
     /* options dialog */
     GtkWidget *dialog;
 
-    /* buttons 
-    GtkWidget *revert;
-    GtkWidget *done;*/
-
+    GtkWidget *color_box;
+    GtkWidget *color_only_checkbox;
+    
     GtkWidget *file_entry;
     GtkWidget *edit_list_button;
     GSList *style_rb_group;
@@ -188,6 +212,22 @@ BackdropDialog;
 
 /* there can be only one */
 static gboolean is_running = FALSE;
+
+/* sub header */
+static void add_sub_header(GtkWidget *vbox, const char *name)
+{
+    char *markup;
+    GtkWidget *label;
+
+    markup = g_strconcat("<b>", name, "</b>", NULL);
+    label = gtk_label_new(NULL);
+    gtk_label_set_markup(GTK_LABEL(label), markup);
+    g_free(markup);
+    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    gtk_misc_set_padding(GTK_MISC(label), 0, 4);
+    gtk_widget_show(label);
+    gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
+}
 
 /* something changed */
 static void update_path(BackdropDialog *bd)
@@ -211,12 +251,27 @@ static void update_style(BackdropDialog *bd)
     mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
 }
 
+static void update_color(BackdropDialog *bd)
+{
+    mcs_manager_set_color(bd->plugin->manager, "color", BACKDROP_CHANNEL, 
+	    		  &backdrop_color);
+
+    mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
+}
+
+static void update_showimage(BackdropDialog *bd)
+{
+    mcs_manager_set_int(bd->plugin->manager, "showimage", BACKDROP_CHANNEL, 
+	    		showimage);
+
+    mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
+}
+
 /* dialog responses */
 static void dialog_delete(BackdropDialog * bd)
 {
     is_running = FALSE;
 
-    g_free(bd->bu_path);
     backdrop_write_options(bd->plugin);
 
     g_free(bd);
@@ -226,34 +281,145 @@ static void dialog_delete(BackdropDialog * bd)
 static void dialog_response(GtkWidget * dialog, int response,
                             BackdropDialog * bd)
 {
-    if(response == GTK_RESPONSE_CANCEL)
-    {
-	GtkWidget *rb;
-	
-        g_free(backdrop_path);
-        backdrop_path = bd->bu_path ? g_strdup(bd->bu_path) : NULL;
-
-        backdrop_style = bd->bu_style;
-
-        update_path(bd);
-	update_style(bd);
-	gdk_flush();
-
-        gtk_entry_set_text(GTK_ENTRY(bd->file_entry),
-                           backdrop_path ? backdrop_path : "");
-
-	rb = g_slist_nth(bd->style_rb_group, backdrop_style)->data;
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(rb), TRUE);
-
-	if (is_backdrop_list(backdrop_path))
-	    gtk_widget_set_sensitive(bd->edit_list_button, TRUE);
-	else
-	    gtk_widget_set_sensitive(bd->edit_list_button, FALSE);
-
-/*        gtk_widget_set_sensitive(bd->revert, FALSE);*/
-    }
-    else
         dialog_delete(bd);
+}
+
+/* color button */
+static void set_color(GtkWidget *b, BackdropDialog *bd)
+{
+    GdkColor color;
+    GtkColorSelectionDialog *dialog;
+    GtkColorSelection *sel;
+
+    if (!is_running)
+	return;
+    
+    dialog = GTK_COLOR_SELECTION_DIALOG(gtk_widget_get_toplevel(b));
+
+    sel = GTK_COLOR_SELECTION(dialog->colorsel);
+
+    gtk_color_selection_get_current_color(sel, &color);
+
+    backdrop_color.red = color.red;
+    backdrop_color.green = color.green;
+    backdrop_color.blue = color.blue;
+
+    update_color(bd);
+
+/*    gdk_colormap_alloc_color(gtk_widget_get_colormap(bd->color_box), 
+	    		     &color, FALSE, TRUE);*/
+    gtk_widget_modify_bg(bd->color_box, GTK_STATE_NORMAL, &color);
+    gtk_widget_modify_bg(bd->color_box, GTK_STATE_PRELIGHT, &color);
+    gtk_widget_modify_bg(bd->color_box, GTK_STATE_ACTIVE, &color);
+}
+
+static void color_picker(GtkWidget *b, BackdropDialog *bd)
+{
+    static GtkWidget *dialog = NULL;
+    GtkWidget *button, *sel;
+    GtkStyle *style;
+
+    if (dialog)
+    {
+	gtk_window_present(GTK_WINDOW(dialog));
+	return;
+    }
+    
+    dialog = gtk_color_selection_dialog_new(_("Select background color"));
+    g_object_add_weak_pointer(G_OBJECT(dialog), (gpointer)&dialog);
+
+    gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_MOUSE);
+
+    button = GTK_COLOR_SELECTION_DIALOG(dialog)->ok_button;
+    g_signal_connect(button, "clicked", G_CALLBACK(set_color), bd);
+    g_signal_connect_swapped(button, "clicked", 
+	    		     G_CALLBACK(gtk_widget_destroy), dialog);
+
+    button = GTK_COLOR_SELECTION_DIALOG(dialog)->cancel_button;
+    g_signal_connect_swapped(button, "clicked", 
+	    		     G_CALLBACK(gtk_widget_destroy), dialog);
+
+    sel = GTK_COLOR_SELECTION_DIALOG(dialog)->colorsel;
+    
+    style = gtk_widget_get_style(bd->color_box);
+    gtk_color_selection_set_current_color(GTK_COLOR_SELECTION(sel),
+	    				  &(style->bg[GTK_STATE_NORMAL]));
+    gtk_widget_show(dialog);
+}
+
+static void showimage_toggle(GtkWidget *b, BackdropDialog *bd)
+{
+    showimage = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(b)) ? 0 : 1;
+
+    update_showimage(bd);
+}
+
+static void add_color_button(GtkWidget *vbox, BackdropDialog *bd)
+{
+    GtkWidget *hbox, *label, *frame, *button;
+    GtkSizeGroup *sg;
+    GdkColor color = {0x0000, 0x0000, 0x0000, 0x0000};
+
+    sg = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
+    
+    hbox = gtk_hbox_new(FALSE, BORDER);
+    gtk_widget_show(hbox);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, TRUE, 0);
+
+    label = gtk_label_new(_("Background color:"));
+    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    gtk_size_group_add_widget(sg, label);
+    gtk_widget_show(label);
+    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, TRUE, 0);
+
+    button = gtk_button_new();
+    gtk_widget_show(button);
+    gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, TRUE, 0);
+    
+    frame = gtk_frame_new(NULL);
+    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
+    gtk_container_set_border_width(GTK_CONTAINER(frame), 2);
+    gtk_widget_show(frame);
+    gtk_container_add(GTK_CONTAINER(button), frame);
+
+    bd->color_box = gtk_event_box_new();
+    gtk_widget_set_size_request(bd->color_box, 40, 16);
+    gtk_widget_show(bd->color_box);
+    gtk_container_add(GTK_CONTAINER(frame), bd->color_box);
+
+    color.red = backdrop_color.red;
+    color.green = backdrop_color.green;
+    color.blue = backdrop_color.blue;
+
+/*    gdk_colormap_alloc_color(gtk_widget_get_colormap(bd->color_box), 
+	    		     &color, FALSE, TRUE);*/
+    gtk_widget_modify_bg(bd->color_box, GTK_STATE_NORMAL, &color);
+    gtk_widget_modify_bg(bd->color_box, GTK_STATE_PRELIGHT, &color);
+    gtk_widget_modify_bg(bd->color_box, GTK_STATE_ACTIVE, &color);
+
+    g_signal_connect(button, "clicked", G_CALLBACK(color_picker), bd);
+    
+    hbox = gtk_hbox_new(FALSE, BORDER);
+    gtk_widget_show(hbox);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, TRUE, 0);
+
+    label = gtk_label_new(_("Use color only:"));
+    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+    gtk_size_group_add_widget(sg, label);
+    gtk_widget_show(label);
+    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, TRUE, 0);
+
+    bd->color_only_checkbox = gtk_check_button_new();
+    gtk_widget_show(bd->color_only_checkbox);
+    gtk_box_pack_start(GTK_BOX(hbox), bd->color_only_checkbox, FALSE, TRUE, 0);
+
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(bd->color_only_checkbox), 
+	    			 showimage == 0);
+    
+    g_signal_connect(bd->color_only_checkbox, "toggled", 
+	    	     G_CALLBACK(showimage_toggle), bd);
+    
+    g_object_unref(sg);
 }
 
 /* dnd box */
@@ -292,6 +458,7 @@ on_drag_data_received(GtkWidget * w, GdkDragContext * context,
         backdrop_path = g_strdup(file);
 
 	gtk_entry_set_text(GTK_ENTRY(bd->file_entry), backdrop_path);
+	gtk_editable_set_position(GTK_EDITABLE(bd->file_entry), -1);
 
 	update_path(bd);
     }
@@ -314,29 +481,22 @@ static GtkTargetEntry target_table[] = {
     {"text/uri-list", 0, TARGET_URL},
 };
 
-static void add_dnd_box(GtkWidget * vbox, BackdropDialog * bd)
+static void set_dnd_dest(BackdropDialog * bd)
 {
-    GtkWidget *frame, *label;
-    char *markup;
-
-    frame = gtk_frame_new(NULL);
-    gtk_widget_set_size_request(frame, -1, 100);
-    gtk_widget_show(frame);
-    gtk_box_pack_start(GTK_BOX(vbox), frame, TRUE, TRUE, 0);
-
-    markup = g_strconcat("<i>", _("Drag image here\nto set background"),
-                         "</i>", NULL);
-    label = gtk_label_new(markup);
-    g_free(markup);
-    gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
-    gtk_widget_show(label);
-    gtk_container_add(GTK_CONTAINER(frame), label);
-
-    gtk_drag_dest_set(frame, GTK_DEST_DEFAULT_ALL,
+    /* file entry */
+    gtk_drag_dest_set(bd->file_entry, GTK_DEST_DEFAULT_ALL,
                       target_table, G_N_ELEMENTS(target_table),
                       GDK_ACTION_COPY | GDK_ACTION_MOVE);
 
-    g_signal_connect(frame, "drag_data_received",
+    g_signal_connect(bd->file_entry, "drag_data_received",
+                     G_CALLBACK(on_drag_data_received), bd);
+
+    /* dialog window */
+    gtk_drag_dest_set(bd->dialog, GTK_DEST_DEFAULT_ALL,
+                      target_table, G_N_ELEMENTS(target_table),
+                      GDK_ACTION_COPY | GDK_ACTION_MOVE);
+
+    g_signal_connect(bd->dialog, "drag_data_received",
                      G_CALLBACK(on_drag_data_received), bd);
 }
 
@@ -349,13 +509,10 @@ static gboolean file_entry_lost_focus(GtkWidget *entry, GdkEventFocus *ev,
 
     file = gtk_entry_get_text(GTK_ENTRY(entry));
 
-    if (!file || !strlen(file))
-	return FALSE;
-
     if (!backdrop_path || strcmp(file, backdrop_path) != 0)
     {
 	g_free(backdrop_path);
-	backdrop_path = g_strdup(file);
+	backdrop_path = (file && strlen(file)) ? g_strdup(file) : NULL;
 
 	update_path(bd);
     }
@@ -380,7 +537,11 @@ static void add_file_entry(GtkWidget *vbox, GtkSizeGroup *sg,
 
     bd->file_entry = gtk_entry_new();
     if(backdrop_path)
+    {
         gtk_entry_set_text(GTK_ENTRY(bd->file_entry), backdrop_path);
+	gtk_editable_set_position(GTK_EDITABLE(bd->file_entry), -1);
+    }
+    
     gtk_widget_show(bd->file_entry);
     gtk_box_pack_start(GTK_BOX(hbox), bd->file_entry, TRUE, TRUE, 0);
 
@@ -410,6 +571,7 @@ static void fs_ok_cb (GtkWidget *b, BackdropDialog *bd)
 	update_path(bd);
 	
 	gtk_entry_set_text(GTK_ENTRY(bd->file_entry), path);
+	gtk_editable_set_position(GTK_EDITABLE(bd->file_entry), -1);
     }
 
     gtk_widget_destroy(GTK_WIDGET(fs));
@@ -471,6 +633,7 @@ static void set_path_cb(const char *path, BackdropDialog *bd)
     update_path(bd);
     
     gtk_entry_set_text(GTK_ENTRY(bd->file_entry), path);
+    gtk_editable_set_position(GTK_EDITABLE(bd->file_entry), -1);
 }
 
 static void edit_list_cb(GtkWidget *w, BackdropDialog *bd)
@@ -613,17 +776,12 @@ static void add_style_options(GtkWidget *vbox, GtkSizeGroup *sg,
 /* the dialog */
 static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
 {
-    GtkWidget *mainvbox, *vbox, *label, *header;
+    GtkWidget *mainvbox, *vbox, *header;
     GtkSizeGroup *sg;
     BackdropDialog *bd;
 
     bd = g_new0(BackdropDialog, 1);
     bd->plugin = mcs_plugin;
-
-    if(backdrop_path)
-        bd->bu_path = g_strdup(backdrop_path);
-
-    bd->bu_style = backdrop_style;
 
     /* the dialog */
     bd->dialog = gtk_dialog_new_with_buttons(_("Backdrop preferences"), NULL,
@@ -644,21 +802,26 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
     header = create_header(bd->plugin->icon, _("Background settings"));
     gtk_box_pack_start(GTK_BOX(mainvbox), header, FALSE, TRUE, 0);
 
-    label = gtk_label_new(_("Choose an image or a special image list file\n"
-                            "to change the desktop background."));
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
-    gtk_misc_set_padding(GTK_MISC(label), BORDER, 4);
-    gtk_widget_show(label);
-    gtk_box_pack_start(GTK_BOX(mainvbox), label, TRUE, TRUE, 0);
-
+    /* color vbox */
     vbox = gtk_vbox_new(FALSE, BORDER);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
     gtk_box_pack_start(GTK_BOX(mainvbox), vbox, TRUE, TRUE, 0);
     gtk_widget_show(vbox);
 
-    /* dnd box */
-    add_dnd_box(vbox, bd);
+    add_sub_header(vbox, _("Color"));
+    
+    add_color_button(vbox, bd);
 
+    add_spacer(GTK_BOX(mainvbox));
+
+    /* image vbox */
+    vbox = gtk_vbox_new(FALSE, BORDER);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
+    gtk_box_pack_start(GTK_BOX(mainvbox), vbox, TRUE, TRUE, 0);
+    gtk_widget_show(vbox);
+
+    add_sub_header(vbox, _("Image"));
+    
     /* file entry and style radio buttons */
     sg = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
 
@@ -666,7 +829,9 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
     add_button_box(vbox, sg, bd);
     add_style_options(vbox, sg, bd);
 
-    add_spacer(GTK_BOX(vbox));
+    add_spacer(GTK_BOX(mainvbox));
+
+    set_dnd_dest(bd);
 
     return bd->dialog;
 }

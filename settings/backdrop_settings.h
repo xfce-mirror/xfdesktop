@@ -25,7 +25,7 @@
 #define LIST_TEXT "# xfce backdrop list"
 
 /* styles */
-enum { TILED, SCALED, CENTERED, AUTO };
+enum { TILED, SCALED, CENTERED, AUTO, NONE };
 
 #endif /* XFDESKTOP_BACKDROP_SETTINGS_H */
 
