@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-20 14:58-0800\n"
+"POT-Creation-Date: 2005-03-03 23:57-0800\n"
 "PO-Revision-Date: 2004-12-31 16:54+0200\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew Team <xfce2004@yahoo.com>\n"
@@ -186,13 +186,13 @@ msgstr "בחירת פקודה"
 msgid "Select icon"
 msgstr "בחירת סמל"
 
-#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:390
+#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
 #: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "כל הקבצים"
 
-#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:396
+#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
 #: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "קבצי תמונה"
@@ -343,7 +343,7 @@ msgstr "אין שורש בקובץ."
 msgid "Bad datafile format !"
 msgstr "תבנית קובץ לא טובה."
 
-#: menueditor/menueditor.c:1599
+#: menueditor/menueditor.c:1626
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "קובץ %s לא קיים."
@@ -382,32 +382,64 @@ msgstr "כל השדות נחוצים."
 msgid "/Other"
 msgstr "/אחר"
 
-#: panel-plugin/desktop-menu-plugin.c:205
-#: panel-plugin/desktop-menu-plugin.c:533
+#: panel-plugin/desktop-menu-plugin.c:279
+#: panel-plugin/desktop-menu-plugin.c:805
 msgid "Xfce Menu"
 msgstr "תפריט Xfce"
 
-#: panel-plugin/desktop-menu-plugin.c:373
+#: panel-plugin/desktop-menu-plugin.c:493
 msgid "Select Icon"
 msgstr "בחר סמל"
 
-#: panel-plugin/desktop-menu-plugin.c:375
+#: panel-plugin/desktop-menu-plugin.c:495
 msgid "Select Menu File"
 msgstr "בחר קובץ תפריט"
 
-#: panel-plugin/desktop-menu-plugin.c:404
+#: panel-plugin/desktop-menu-plugin.c:524
 msgid "Menu Files"
 msgstr "קבצי תפריט"
 
-#: panel-plugin/desktop-menu-plugin.c:463
-msgid "_Menu file:"
-msgstr "קבצי _תפריט:"
+#: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "אין אפשרות להפעיל את עורך התפריטים של Xfce4: %s"
 
-#: panel-plugin/desktop-menu-plugin.c:497
+#: panel-plugin/desktop-menu-plugin.c:663
+#, fuzzy
+msgid "Button _title:"
+msgstr "סמל ה_לחצן:"
+
+#: panel-plugin/desktop-menu-plugin.c:676
+#, fuzzy
+msgid "Menu File"
+msgstr "קבצי תפריט"
+
+#: panel-plugin/desktop-menu-plugin.c:688
+#, fuzzy
+msgid "Use default _desktop menu file"
+msgstr "_ערוך תפריט שולחן עבודה"
+
+#: panel-plugin/desktop-menu-plugin.c:697
+#, fuzzy
+msgid "Use _custom menu file:"
+msgstr "פתח קובץ תפריט"
+
+#: panel-plugin/desktop-menu-plugin.c:749
+#: panel-plugin/desktop-menu-plugin.c:751
+#, fuzzy
+msgid "_Edit Menu"
+msgstr "_תפריט"
+
+#: panel-plugin/desktop-menu-plugin.c:758
+#, fuzzy
+msgid "Icons"
+msgstr "סמל:"
+
+#: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
 msgstr "סמל ה_לחצן:"
 
-#: panel-plugin/desktop-menu-plugin.c:522
+#: panel-plugin/desktop-menu-plugin.c:794
 msgid "Show _icons in menu"
 msgstr "הראה _סמלים בתפריט"
 
@@ -590,11 +622,6 @@ msgstr "מסך %d, צג %d"
 msgid "_Menu"
 msgstr "_תפריט"
 
-#: settings/menu_settings.c:132
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "אין אפשרות להפעיל את עורך התפריטים של Xfce4: %s"
-
 #: settings/menu_settings.c:153
 msgid "Window List"
 msgstr "רשימת חלונות"
@@ -641,30 +668,33 @@ msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -תפריט        מקפיץ תפריט (במיקום הסמן הנוכחי)\n"
 
 #: src/main.c:304
-msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -רשימת חלונות  מקפיץ את רשימת החלונות (במיקום הסמן הנוכחי)\n"
 
-#: src/windowlist.c:176
+#: src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>סיבבת עבודה %d</b>"
 
-#: src/windowlist.c:184
+#: src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<b>סביבת עבודה %d</b>"
 
-#: src/windowlist.c:247 src/windowlist.c:250
+#: src/windowlist.c:268 src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "_הוסף סביבת עבודה"
 
-#: src/windowlist.c:258
+#: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_הסר סביבת עבודה %d"
 
-#: src/windowlist.c:261
+#: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_הסר סביבת עבודה %s"
 
+#~ msgid "_Menu file:"
+#~ msgstr "קבצי _תפריט:"

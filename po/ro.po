@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the xfwm4 package.
 # Mişu Moldovan <dumol@go.ro>, 2004.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.2 rc3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-10 07:57+0100\n"
+"POT-Creation-Date: 2005-03-03 23:57-0800\n"
 "PO-Revision-Date: 2005-01-08 23:57+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@go.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
@@ -104,7 +103,7 @@ msgid "The 'Name' field is required."
 msgstr "Câmpul „Nume” nu este necesar."
 
 #: menueditor/add_dialog.c:356 menueditor/dnd.c:153
-#: menueditor/menueditor.c:361 menueditor/move.c:87 menueditor/move.c:225
+#: menueditor/menueditor.c:579 menueditor/move.c:87 menueditor/move.c:225
 msgid "--- separator ---"
 msgstr "--- separator ---"
 
@@ -113,7 +112,7 @@ msgid "quit"
 msgstr "ieşire"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:813
+#: menueditor/menueditor.c:1031
 msgid "Add an external menu"
 msgstr "Adăugare meniu extern"
 
@@ -153,13 +152,13 @@ msgstr "Câmpul „Sursă” nu este necesar."
 
 #: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:234
 #: menueditor/dnd.c:156 menueditor/edit_dialog.c:521
-#: menueditor/edit_dialog.c:534 menueditor/menueditor.c:400
+#: menueditor/edit_dialog.c:534 menueditor/menueditor.c:618
 #: menueditor/move.c:111 menueditor/move.c:249
 msgid "--- include ---"
 msgstr "--- include ---"
 
 #: menueditor/add_menu_dialog.c:235 menueditor/dnd.c:161
-#: menueditor/edit_dialog.c:535 menueditor/menueditor.c:403
+#: menueditor/edit_dialog.c:535 menueditor/menueditor.c:621
 #: menueditor/move.c:114 menueditor/move.c:252
 msgid "system"
 msgstr "sistem"
@@ -178,60 +177,60 @@ msgstr "Separatorii nu pot fi editaţi"
 msgid "Title:"
 msgstr "Titlu:"
 
-#: menueditor/menueditor.c:153
+#: menueditor/menueditor.c:371
 msgid "Select command"
 msgstr "Selectare comandă"
 
-#: menueditor/menueditor.c:217
+#: menueditor/menueditor.c:435
 msgid "Select icon"
 msgstr "Selectare iconiţă"
 
-#: menueditor/menueditor.c:222 panel-plugin/desktop-menu-plugin.c:389
+#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
 #: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Toate fişierele"
 
-#: menueditor/menueditor.c:226 panel-plugin/desktop-menu-plugin.c:395
+#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
 #: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Fişiere tip imagine"
 
-#: menueditor/menueditor.c:282 menueditor/menueditor.c:685
+#: menueditor/menueditor.c:500 menueditor/menueditor.c:903
 msgid "Do you want to save before closing the menu ?"
 msgstr "Doriţi să salvaţi înainte de a închide meniul?"
 
-#: menueditor/menueditor.c:284
+#: menueditor/menueditor.c:502
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "Aţi modificat meniul, doriţi să-l salvaţi înainte de a-l închide?"
 
-#: menueditor/menueditor.c:286
+#: menueditor/menueditor.c:504
 msgid "Forget modifications"
 msgstr "Uită modificările"
 
-#: menueditor/menueditor.c:472 menueditor/menueditor.c:531
-#: menueditor/menueditor.c:683
+#: menueditor/menueditor.c:690 menueditor/menueditor.c:749
+#: menueditor/menueditor.c:901
 msgid "Question"
 msgstr "Întrebare"
 
-#: menueditor/menueditor.c:474
+#: menueditor/menueditor.c:692
 msgid "Do you want to save before opening the default menu ?"
 msgstr "Doriţi să salvaţi înainte de a deschide meniul implicit?"
 
-#: menueditor/menueditor.c:476 menueditor/menueditor.c:535
-#: menueditor/menueditor.c:687
+#: menueditor/menueditor.c:694 menueditor/menueditor.c:753
+#: menueditor/menueditor.c:905
 msgid "Ignore modifications"
 msgstr "Ignoră modificările"
 
-#: menueditor/menueditor.c:533
+#: menueditor/menueditor.c:751
 msgid "Do you want to save before opening an other menu ?"
 msgstr "Doriţi să salvaţi înainte de a deschide un alt meniu?"
 
-#: menueditor/menueditor.c:546
+#: menueditor/menueditor.c:764
 msgid "Open menu file"
 msgstr "Deschide fişierul meniu"
 
-#: menueditor/menueditor.c:581 menueditor/menueditor.c:592
+#: menueditor/menueditor.c:799 menueditor/menueditor.c:810
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -240,110 +239,110 @@ msgstr ""
 "Nu am reuşit să scriu în %s: \n"
 "%s"
 
-#: menueditor/menueditor.c:626
+#: menueditor/menueditor.c:844
 msgid "Save as..."
 msgstr "Salvează ca..."
 
-#: menueditor/menueditor.c:807
+#: menueditor/menueditor.c:1025
 msgid "Edit"
 msgstr "Editare"
 
 #. File menu
-#: menueditor/menueditor.c:1006
+#: menueditor/menueditor.c:1225
 msgid "_File"
 msgstr "_Fişier"
 
-#: menueditor/menueditor.c:1015
+#: menueditor/menueditor.c:1234
 msgid "Open default menu"
 msgstr "Deschide meniul implicit"
 
 #. Edit menu
-#: menueditor/menueditor.c:1029
+#: menueditor/menueditor.c:1248
 msgid "_Edit"
 msgstr "_Editare"
 
-#: menueditor/menueditor.c:1035
+#: menueditor/menueditor.c:1254
 msgid "Add an external menu..."
 msgstr "Adaugă un meniu extern..."
 
 #. Help menu
-#: menueditor/menueditor.c:1047
+#: menueditor/menueditor.c:1266
 msgid "_Help"
 msgstr "_Ajutor"
 
-#: menueditor/menueditor.c:1052
+#: menueditor/menueditor.c:1271
 msgid "_About..."
 msgstr "_Despre..."
 
-#: menueditor/menueditor.c:1064
+#: menueditor/menueditor.c:1283
 msgid "Create a new Xfce4 menu file"
 msgstr "Creează un nou fişier meniu Xfce4"
 
-#: menueditor/menueditor.c:1070
+#: menueditor/menueditor.c:1289
 msgid "Open an Xfce4 menu file"
 msgstr "Deschide un fişier meniu Xfce4"
 
-#: menueditor/menueditor.c:1076
+#: menueditor/menueditor.c:1295
 msgid "Save current menu"
 msgstr "Salvează meniul curent"
 
-#: menueditor/menueditor.c:1081
+#: menueditor/menueditor.c:1300
 msgid "Close current menu"
 msgstr "Închide meniul curent"
 
-#: menueditor/menueditor.c:1087
+#: menueditor/menueditor.c:1306
 msgid "Add an entry to the menu"
 msgstr "Adaugă o intrare în meniu"
 
-#: menueditor/menueditor.c:1093
+#: menueditor/menueditor.c:1312
 msgid "Delete the current entry"
 msgstr "Şterge intrarea curentă"
 
-#: menueditor/menueditor.c:1099
+#: menueditor/menueditor.c:1318
 msgid "Move the current entry up"
 msgstr "Mută intrarea curentă în sus"
 
-#: menueditor/menueditor.c:1105
+#: menueditor/menueditor.c:1324
 msgid "Move the current entry down"
 msgstr "Mută intrarea curentă în jos"
 
-#: menueditor/menueditor.c:1112
+#: menueditor/menueditor.c:1331
 msgid "Collapse the tree"
 msgstr "Strânge arborele"
 
-#: menueditor/menueditor.c:1117
+#: menueditor/menueditor.c:1336
 msgid "Expand the tree"
 msgstr "Desfă arborele"
 
-#: menueditor/menueditor.c:1146
+#: menueditor/menueditor.c:1365
 msgid "Name"
 msgstr "Nume"
 
-#: menueditor/menueditor.c:1149
+#: menueditor/menueditor.c:1368
 msgid "Command"
 msgstr "Comandă"
 
-#: menueditor/menueditor.c:1150
+#: menueditor/menueditor.c:1369
 msgid "Hidden"
 msgstr "Ascuns"
 
-#: menueditor/menueditor.c:1151
+#: menueditor/menueditor.c:1370
 msgid "Pointer"
 msgstr "Cursor"
 
-#: menueditor/menueditor.c:1253
+#: menueditor/menueditor.c:1472
 msgid "Corrupted file or incorrect file format !"
 msgstr "Fişier corupt sau format de fişier incorect!"
 
-#: menueditor/menueditor.c:1266
+#: menueditor/menueditor.c:1485
 msgid "No root element in file !"
 msgstr "Nici un element-rădăcină în fişier!"
 
-#: menueditor/menueditor.c:1277
+#: menueditor/menueditor.c:1496
 msgid "Bad datafile format !"
 msgstr "Format greşit de fişier de date!"
 
-#: menueditor/menueditor.c:1380
+#: menueditor/menueditor.c:1626
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "Fişierul %s nu există!"
@@ -382,36 +381,68 @@ msgstr "Toate câmpurile sunt obligatorii."
 msgid "/Other"
 msgstr "/Altele"
 
-#: panel-plugin/desktop-menu-plugin.c:204
-#: panel-plugin/desktop-menu-plugin.c:532
+#: panel-plugin/desktop-menu-plugin.c:279
+#: panel-plugin/desktop-menu-plugin.c:805
 msgid "Xfce Menu"
 msgstr "Meniu Xfce"
 
-#: panel-plugin/desktop-menu-plugin.c:372
+#: panel-plugin/desktop-menu-plugin.c:493
 msgid "Select Icon"
 msgstr "Selectare iconiţă"
 
-#: panel-plugin/desktop-menu-plugin.c:374
+#: panel-plugin/desktop-menu-plugin.c:495
 msgid "Select Menu File"
 msgstr "Selectare meniu fişier"
 
-#: panel-plugin/desktop-menu-plugin.c:403
+#: panel-plugin/desktop-menu-plugin.c:524
 msgid "Menu Files"
 msgstr "Fişiere meniu"
 
-#: panel-plugin/desktop-menu-plugin.c:462
-msgid "_Menu file:"
-msgstr "Fişier _meniu:"
+#: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "Nu pot lansa xfce4-menueditor: %s"
 
-#: panel-plugin/desktop-menu-plugin.c:496
+#: panel-plugin/desktop-menu-plugin.c:663
+#, fuzzy
+msgid "Button _title:"
+msgstr "Iconiţă _buton:"
+
+#: panel-plugin/desktop-menu-plugin.c:676
+#, fuzzy
+msgid "Menu File"
+msgstr "Fişiere meniu"
+
+#: panel-plugin/desktop-menu-plugin.c:688
+#, fuzzy
+msgid "Use default _desktop menu file"
+msgstr "_Editare meniu desktop"
+
+#: panel-plugin/desktop-menu-plugin.c:697
+#, fuzzy
+msgid "Use _custom menu file:"
+msgstr "Deschide fişierul meniu"
+
+#: panel-plugin/desktop-menu-plugin.c:749
+#: panel-plugin/desktop-menu-plugin.c:751
+#, fuzzy
+msgid "_Edit Menu"
+msgstr "_Meniu"
+
+#: panel-plugin/desktop-menu-plugin.c:758
+#, fuzzy
+msgid "Icons"
+msgstr "Iconiţă:"
+
+#: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
 msgstr "Iconiţă _buton:"
 
-#: panel-plugin/desktop-menu-plugin.c:521
+#: panel-plugin/desktop-menu-plugin.c:794
 msgid "Show _icons in menu"
 msgstr "Arată _iconiţele în meniu"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:112
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -462,7 +493,7 @@ msgstr "Editare listă fundaluri"
 
 #. the dialog
 #: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
-#: src/xfce-desktop.c:670
+#: src/xfce-desktop.c:676
 msgid "Desktop"
 msgstr "Desktop"
 
@@ -590,11 +621,6 @@ msgstr "Ecran %d, monitor %d"
 msgid "_Menu"
 msgstr "_Meniu"
 
-#: settings/menu_settings.c:132
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "Nu pot lansa xfce4-menueditor: %s"
-
 #: settings/menu_settings.c:153
 msgid "Window List"
 msgstr "Listă ferestre"
@@ -646,30 +672,32 @@ msgstr ""
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
-"    -windowlist  Deschide lista ferestrelor (la poziţia curentă a cursorului)"
-"\n"
+"    -windowlist  Deschide lista ferestrelor (la poziţia curentă a "
+"cursorului)\n"
 
-#: src/windowlist.c:183
+#: src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Spaţiu de lucru %d</b>"
 
-#: src/windowlist.c:188
+#: src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Spaţiu de lucru %d</i>"
 
-#: src/windowlist.c:244 src/windowlist.c:247
+#: src/windowlist.c:268 src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "_Adaugă spaţiu de lucru"
 
-#: src/windowlist.c:254
+#: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "Şter_ge spaţiul de lucru %d"
 
-#: src/windowlist.c:256
+#: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Şt_erge spaţiul de lucru „%s”"
 
+#~ msgid "_Menu file:"
+#~ msgstr "Fişier _meniu:"

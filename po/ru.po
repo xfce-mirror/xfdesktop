@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-02 11:07+0100\n"
+"POT-Creation-Date: 2005-03-03 23:57-0800\n"
 "PO-Revision-Date: 2005-01-08 15:50+0500\n"
 "Last-Translator: Anthony Ivanoff <a-i@bk.ru>\n"
 "Language-Team: Russian\n"
@@ -189,13 +189,13 @@ msgstr "Выберите команду"
 msgid "Select icon"
 msgstr "Выберите значок"
 
-#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:390
+#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
 #: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Все файлы"
 
-#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:396
+#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
 #: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Файлы изображений"
@@ -346,7 +346,7 @@ msgstr "В файле отсутствует корневой элемент."
 msgid "Bad datafile format !"
 msgstr "Неверный формат файла данных."
 
-#: menueditor/menueditor.c:1599
+#: menueditor/menueditor.c:1626
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "Файл %s не существует."
@@ -385,32 +385,64 @@ msgstr "Нужно заполнить все поля."
 msgid "/Other"
 msgstr "/Другое"
 
-#: panel-plugin/desktop-menu-plugin.c:205
-#: panel-plugin/desktop-menu-plugin.c:535
+#: panel-plugin/desktop-menu-plugin.c:279
+#: panel-plugin/desktop-menu-plugin.c:805
 msgid "Xfce Menu"
 msgstr "Меню Xfce"
 
-#: panel-plugin/desktop-menu-plugin.c:373
+#: panel-plugin/desktop-menu-plugin.c:493
 msgid "Select Icon"
 msgstr "Выбор значка"
 
-#: panel-plugin/desktop-menu-plugin.c:375
+#: panel-plugin/desktop-menu-plugin.c:495
 msgid "Select Menu File"
 msgstr "Выбор файла меню"
 
-#: panel-plugin/desktop-menu-plugin.c:404
+#: panel-plugin/desktop-menu-plugin.c:524
 msgid "Menu Files"
 msgstr "Файлы меню"
 
-#: panel-plugin/desktop-menu-plugin.c:465
-msgid "_Menu file:"
-msgstr "Файл меню:"
+#: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "Невомзожно запустить редактор меню xfce4-menueditor: %s"
 
-#: panel-plugin/desktop-menu-plugin.c:499
+#: panel-plugin/desktop-menu-plugin.c:663
+#, fuzzy
+msgid "Button _title:"
+msgstr "Значок:"
+
+#: panel-plugin/desktop-menu-plugin.c:676
+#, fuzzy
+msgid "Menu File"
+msgstr "Файлы меню"
+
+#: panel-plugin/desktop-menu-plugin.c:688
+#, fuzzy
+msgid "Use default _desktop menu file"
+msgstr "Изменить меню рабочего стола"
+
+#: panel-plugin/desktop-menu-plugin.c:697
+#, fuzzy
+msgid "Use _custom menu file:"
+msgstr "Открыть файл меню"
+
+#: panel-plugin/desktop-menu-plugin.c:749
+#: panel-plugin/desktop-menu-plugin.c:751
+#, fuzzy
+msgid "_Edit Menu"
+msgstr "Меню"
+
+#: panel-plugin/desktop-menu-plugin.c:758
+#, fuzzy
+msgid "Icons"
+msgstr "Значок:"
+
+#: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
 msgstr "Значок:"
 
-#: panel-plugin/desktop-menu-plugin.c:524
+#: panel-plugin/desktop-menu-plugin.c:794
 msgid "Show _icons in menu"
 msgstr "Показывать значки в меню"
 
@@ -593,11 +625,6 @@ msgstr "Экран %d, монитор %d"
 msgid "_Menu"
 msgstr "Меню"
 
-#: settings/menu_settings.c:132
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "Невомзожно запустить редактор меню xfce4-menueditor: %s"
-
 #: settings/menu_settings.c:153
 msgid "Window List"
 msgstr "Список окон"
@@ -637,37 +664,42 @@ msgstr "Параметры:\n"
 
 #: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "    -reload      Перезагрузить все настройки, обновить список изображений\n"
+msgstr ""
+"    -reload      Перезагрузить все настройки, обновить список изображений\n"
 
 #: src/main.c:303
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Показать меню (в месте, где находится курсор мыши)\n"
 
 #: src/main.c:304
-msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  Показать список окон (в месте, где находится курсор мыши)\n"
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+"    -windowlist  Показать список окон (в месте, где находится курсор мыши)\n"
 
-#: src/windowlist.c:176
+#: src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Рабочее место %d</b>"
 
-#: src/windowlist.c:184
+#: src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Рабочее место %d</i>"
 
-#: src/windowlist.c:247 src/windowlist.c:250
+#: src/windowlist.c:268 src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "Добавить рабочее место"
 
-#: src/windowlist.c:258
+#: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "Удалить рабочее место %d"
 
-#: src/windowlist.c:261
+#: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Удалить рабочее место '%s'"
 
+#~ msgid "_Menu file:"
+#~ msgstr "Файл меню:"
