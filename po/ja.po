@@ -1,0 +1,202 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop\n"
+"POT-Creation-Date: 2003-05-05 08:08+0200\n"
+"PO-Revision-Date: 2003-05-27 13:00+0900\n"
+"Last-Translator: Zhao Ji <zhao-ji@awz.ne.jp>\n"
+"Language-Team: NONE <none@none>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: settings/backdrop-mgr.c:174
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"ファイルを保存できません %s: %s\n"
+"\n"
+"別の場所か、変更をキャンセルするかダイアログから選択してください"
+""
+
+#: settings/backdrop-mgr.c:392
+msgid "Select image file"
+msgstr "イメージファイル選択"
+
+#: settings/backdrop-mgr.c:498
+msgid "Choose backdrop list filename"
+msgstr "背景リスト ファイル名選択"
+
+#: settings/backdrop-mgr.c:525 settings/backdrop_settings.c:558
+msgid "File:"
+msgstr "ファイル:"
+
+#: settings/backdrop-mgr.c:564
+msgid "New.list"
+msgstr "新規リスト"
+
+#: settings/backdrop-mgr.c:568
+msgid "Backdrop List"
+msgstr "背景リスト"
+
+#: settings/backdrop-mgr.c:602
+msgid "Image files"
+msgstr "イメージ・ファイル"
+
+#: settings/backdrop-mgr.c:616
+msgid "List file"
+msgstr "リスト・ファイル"
+
+#: settings/backdrop-mgr.c:636
+msgid "Create backdrop list"
+msgstr "背景リスト作成"
+
+#: settings/backdrop-mgr.c:643
+msgid "Edit backdrop list"
+msgstr "背景リスト編集"
+
+#: settings/backdrop_settings.c:143
+msgid "Desktop: backdrop"
+msgstr "デスクトップ: 背景"
+
+#: settings/backdrop_settings.c:356
+msgid "Select background color"
+msgstr "背景色の選択"
+
+#: settings/backdrop_settings.c:402
+msgid "Background color:"
+msgstr "背景色:"
+
+#: settings/backdrop_settings.c:432
+msgid "Use color only:"
+msgstr "使用色数:"
+
+#: settings/backdrop_settings.c:615
+msgid "Select background image or list file"
+msgstr "背景画像かリスト・ファイルを選択"
+
+#: settings/backdrop_settings.c:690
+msgid "_Browse..."
+msgstr "閲覧...(_B)"
+
+#: settings/backdrop_settings.c:694
+msgid "New list"
+msgstr "新規リスト"
+
+#: settings/backdrop_settings.c:698
+msgid "Edit list"
+msgstr "リスト編集"
+
+#: settings/backdrop_settings.c:750
+msgid "Style:"
+msgstr "スタイル:"
+
+#: settings/backdrop_settings.c:756
+msgid "_Tiled"
+msgstr "タイル(_T)"
+
+#: settings/backdrop_settings.c:763
+msgid "_Scaled"
+msgstr "伸縮(_S)"
+
+#: settings/backdrop_settings.c:768
+msgid "_Centered"
+msgstr "中央(_C)"
+
+#: settings/backdrop_settings.c:773
+msgid "_Automatic"
+msgstr "自動(_A)"
+
+#. the dialog
+#: settings/backdrop_settings.c:815
+msgid "Background"
+msgstr "背景"
+
+#. header
+#: settings/backdrop_settings.c:832
+msgid "Background Settings"
+msgstr "背景設定"
+
+#. color
+#: settings/backdrop_settings.c:838
+msgid "Color"
+msgstr "カラー"
+
+#. image vbox
+#: settings/backdrop_settings.c:851
+msgid "Image"
+msgstr "イメージ"
+
+#: settings/workspaces_settings.c:79
+msgid "Desktop: workspaces"
+msgstr "デスクトップ: ワークスペース"
+
+#: settings/workspaces_settings.c:323
+msgid "Change name"
+msgstr "名前変更"
+
+#: settings/workspaces_settings.c:334
+#, c-format
+msgid "Workspace %d"
+msgstr "ワークスペース %d"
+
+#: settings/workspaces_settings.c:344
+msgid "Name:"
+msgstr "名前:"
+
+#: settings/workspaces_settings.c:455
+msgid "Click on a workspace name to edit it"
+msgstr "編集するには、ワークスペース名の上でクリック"
+
+#: settings/workspaces_settings.c:486
+msgid "Number of workspaces:"
+msgstr "ワークスペース番号:"
+
+#. Number of workspaces
+#: settings/workspaces_settings.c:522 settings/workspaces_settings.c:553
+msgid "Workspaces"
+msgstr "ワークスペース"
+
+#: settings/workspaces_settings.c:546
+msgid "Workspace Settings"
+msgstr "ワークスペース設定"
+
+#. Workspace names
+#: settings/workspaces_settings.c:566
+msgid "Workspace names"
+msgstr "ワークスペース名"
+
+#: src/backdrop.c:423
+#, c-format
+msgid "xfdesktop error: loading backdrop image: %s\n"
+msgstr "xfdesktop エラー: 背景イメージ読み込み: %s\n"
+
+#: src/main.c:227
+msgid "Desktop"
+msgstr "デスクトップ"
+
+#: src/menu.c:688
+msgid "Add workspace"
+msgstr "ワークスペース追加"
+
+#: src/menu.c:695
+msgid "Delete workspace"
+msgstr "ワークスペース削除"
+
+#: src/settings.c:186
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr ""
+"xfdesktop: 設定マネージャーと接続できません！"
+"インストールを確認してください"
+
+#~ msgid "Workspace"
+#~ msgstr "ワークスペース"
