@@ -182,7 +182,8 @@ dmp_read_config(Control *control, xmlNodePtr node)
 		if(dmp->menu_file)
 			g_free(dmp->menu_file);
 		dmp->menu_file = g_strdup(value);
-	}		
+	} else
+		dmp->menu_file = g_strdup(xfce_desktop_menu_get_menu_file(dmp->desktop_menu));
 	
 	value = xmlGetProp(node, (const xmlChar *)"icon_file");
 	if(value) {
@@ -380,7 +381,7 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 	GtkSizeGroup *sg;
 	const gchar *menu_filename;
 	
-	vbox = gtk_vbox_new(FALSE, BORDER);
+	vbox = gtk_vbox_new(FALSE, BORDER/2);
 	gtk_widget_show(vbox);
 	gtk_container_add(con, vbox);
 	
@@ -391,13 +392,20 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 	sg = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
 	
 	label = gtk_label_new_with_mnemonic(_("_Menu file:"));
+	gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
 	gtk_widget_show(label);
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_size_group_add_widget(sg, label);
 	
 	dmp->file_entry = gtk_entry_new();
-	menu_filename = xfce_desktop_menu_get_menu_file(dmp->desktop_menu);
-	gtk_entry_set_text(GTK_ENTRY(dmp->file_entry), menu_filename);
+	if(dmp->menu_file)
+		gtk_entry_set_text(GTK_ENTRY(dmp->file_entry), dmp->menu_file);
+	else if(dmp->desktop_menu) {
+		dmp->menu_file = g_strdup(xfce_desktop_menu_get_menu_file(dmp->desktop_menu));
+		gtk_entry_set_text(GTK_ENTRY(dmp->file_entry), dmp->menu_file);
+	}
+	gtk_label_set_mnemonic_widget(GTK_LABEL(label), dmp->file_entry);
+	gtk_widget_set_size_request(dmp->file_entry, 325, -1);  /* FIXME */
 	gtk_widget_show(dmp->file_entry);
 	gtk_box_pack_start(GTK_BOX(hbox), dmp->file_entry, TRUE, TRUE, 3);
 	g_signal_connect(G_OBJECT(dmp->file_entry), "focus-out-event",
@@ -418,6 +426,7 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	
 	label = gtk_label_new_with_mnemonic(_("_Button icon:"));
+	gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
 	gtk_widget_show(label);
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_size_group_add_widget(sg, label);
@@ -425,7 +434,6 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 	dmp->icon_entry = gtk_entry_new();
 	if(dmp->icon_file)
 		gtk_entry_set_text(GTK_ENTRY(dmp->icon_entry), dmp->icon_file);
-	gtk_widget_set_size_request(dmp->icon_entry, 250, -1);  /* FIXME */
 	gtk_label_set_mnemonic_widget(GTK_LABEL(label), dmp->icon_entry);
 	gtk_widget_show(dmp->icon_entry);
 	gtk_box_pack_start(GTK_BOX(hbox), dmp->icon_entry, TRUE, TRUE, 3);
@@ -445,7 +453,7 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 	dmp->icons_chk = chk = gtk_check_button_new_with_mnemonic(_("Show _icons in menu"));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), dmp->show_menu_icons);
 	gtk_widget_show(chk);
-	gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, BORDER/2);
 	g_signal_connect(G_OBJECT(chk), "toggled", G_CALLBACK(icon_chk_cb), dmp);
 }
 
