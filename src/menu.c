@@ -565,6 +565,7 @@ static GtkWidget *create_desktop_menu(void)
 static void activate_window(GtkWidget * item, NetkWindow * win)
 {
     TRACE("dummy");
+    netk_workspace_activate(netk_window_get_workspace(win));
     netk_window_activate(win);
 }
 
