@@ -5717,7 +5717,7 @@ cat >>confdefs.h <<\_ACEOF
 _ACEOF
 
 
-  ALL_LINGUAS="de fi fr"
+  ALL_LINGUAS="de fi fr pl"
 
 
 
@@ -9000,7 +9000,7 @@ cat >>confdefs.h <<\_ACEOF
 #define DEBUG 1
 _ACEOF
 
-    if test x"$ac_cv_debug" = x"full"; then
+    if test x"$enable_debug" = x"full"; then
 
 cat >>confdefs.h <<\_ACEOF
 #define DEBUG_TRACE 1
