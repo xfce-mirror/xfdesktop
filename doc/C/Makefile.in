@@ -494,6 +494,8 @@ dvi: dvi-recursive
 
 dvi-am:
 
+html: html-recursive
+
 info: info-recursive
 
 info-am:
@@ -543,7 +545,7 @@ uninstall-info: uninstall-info-recursive
 	uninstall-info-am
 
 
-html: $(srcdir)/xfdesktop.xml
+xfdesktop.html: $(srcdir)/xfdesktop.xml
 	xsltproc $(top_srcdir)/doc/xfce-nochunk.xsl $(srcdir)/xfdesktop.xml
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

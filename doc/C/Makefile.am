@@ -11,5 +11,5 @@ doc_DATA= \
 
 EXTRA_DIST = $(noinst_DATA) $(doc_DATA)
 
-html: $(srcdir)/xfdesktop.xml
+xfdesktop.html: $(srcdir)/xfdesktop.xml
 	xsltproc $(top_srcdir)/doc/xfce-nochunk.xsl $(srcdir)/xfdesktop.xml

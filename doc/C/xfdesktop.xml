@@ -1,8 +1,8 @@
 <?xml version='1.0'?> 
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "Apr 2004"> 
-  <!ENTITY appversion "4.1"> 
+  <!ENTITY date "Aug 2004"> 
+  <!ENTITY appversion "4.1.x"> 
   <!ENTITY app "<application>xfdesktop</application>"> 
 ]>
 
@@ -15,12 +15,12 @@
   
 
 <copyright>
-   <year>2003</year> <holder>Jasper Huijsmans</holder>
+   <year>2004</year> <holder>Jasper Huijsmans</holder>
 </copyright>
 
 
 <copyright>
-   <year>2003</year> <holder>François Le Clainche</holder>
+   <year>2004</year> <holder>François Le Clainche</holder>
 </copyright>
 
 
@@ -106,9 +106,12 @@ maintainers, etc. Commented out by default.
   <title>Introduction</title>
 
   <para>The &app; application manages the desktop backdrop. It sets a
-    backdrop image and/or color and it can optionall pop up an applications
-	menu when you click on it with the right mouse button.  It also displays a
-	window list of all running applications after a middle button clic.
+    backdrop image and/or color and it can optionally pop up an applications
+	menu (when you click on it with the right mouse button) and a
+	window list of all running applications (after a middle button clic).
+	</para>
+	
+	<para>
     Along with the application, a  settings dialog is installed for use with the 
     <emphasis>Xfce 4 Settings Manager</emphasis>. This dialog allows you to 
     change the backdrop image and color. You can also request xfdesktop to
@@ -119,14 +122,14 @@ maintainers, etc. Commented out by default.
 </sect1>
 
 <sect1 id="xfdesktop-background">
-  <title>Backdrop</title>
+  <title>Backdrops</title>
 
-  <para>You can start the backdrop properties dialog by clicking on the
-    "Backdrop" button in the 
+  <para>You can start the Desktop settings dialog by clicking on the
+    "Desktop" button in the 
     <ulink url="xfce-mcs-manager.html#manager-dialog" 
       type="http">settings manager dialog</ulink>.
   </para>
-
+  
   <figure id="xfdesktop-background-fig">
     <title>Backdrop Settings</title> 
     <screenshot>
@@ -146,9 +149,9 @@ maintainers, etc. Commented out by default.
     <varlistentry>
       <term>Color</term>
       <listitem>
-	<para>Click the "Backdrop color" button, and a new dialog will
-	  appear :</para>
 	 
+	<para>This dialog allows you to select a color style for your desktop backdrop: solid color, horizontal gradient or vertical gradient. Depending on your choice, you will be able to choose one or two colors, using "First color" and "Second color" buttons. These buttons start a color chooser:</para>
+
 	<figure id="select_bg_color-fig">
 	  <title>Select backdrop color</title>
 	  <screenshot>
@@ -162,12 +165,8 @@ maintainers, etc. Commented out by default.
 	    </mediaobject>
 	  </screenshot>
 	</figure>
-
-	<para>This dialog allows you to choose a color for the desktop
-	  backdrop. This color will fill the entire root window, and will
-	  remain visible through a transparent backdrop image. There are
-	  several ways to do that:
-	</para>
+	
+	<para>&nbsp;</para>
 
 	<itemizedlist>
 	  <listitem>you can use the colored ring with a triangle inside:
@@ -185,10 +184,9 @@ maintainers, etc. Commented out by default.
 	  </listitem>
 	</itemizedlist>
 
-	<para>Select the "Use color only" option if you want &app; to ignore
-	  the backdrop image and only use the choosen color.
-	</para>
-	  
+	<para>The selected colors will fill the entire root window, and will remain 
+	visible through a transparent backdrop image.</para>
+
       </listitem>
     </varlistentry>
 
@@ -196,17 +194,14 @@ maintainers, etc. Commented out by default.
       <term>Image</term>
 
       <listitem>
+      
+      <para>Unselect the "Show image" option if you want &app; to ignore the backdrop image and only use the previously selected colors.</para>
+      
 	<para>The "File" entry shows the path to the currently selected
 	  backdrop image. If you want to change it, just drop and image 
-	  on the dialog from a file manager, or edit the path, or click the 
-	  "Browse" button, and a classic file-browsing dialog will appear.
+	  on the path field, or edit the path, or click the 
+	  "open" button, and a classic file-browsing dialog will appear.
 	  </para>
-
-	<para>Three Style options (Tiled, Scaled, and Centered) can be used to
-	  specify the fitting of the backdrop image on the screen, depending
-	  on its size. You can also select the "Automatic" item if you want to
-	  let &app; take care of this setting.
-	</para>
 
 	<para>You can create a list of backdrop images that will be randomly
 	  used at startup. Click the "New list" button to open the list 
@@ -247,21 +242,20 @@ maintainers, etc. Commented out by default.
 	  dialog, or &app; <arg>-reload</arg>.
 	</para>
 
+	<para>Four Style options (Tiled, Scaled, Centered and Stretched) can be used to
+	  specify the fitting of the backdrop image on the screen, depending
+	  on its size. You can also select the "Auto" item if you want to
+	  let &app; take care of this setting.
+	</para>
+
+	<para>The slider at the bottom of the dialog allows you to adjust the brightness of the backdrop image and/or color.</para>
+	
+	<para>xfdesktop supports xinerama and multiscreen modes. In multiscreen mode, the "Backdrops" dialog shows one tab per screen.</para>
+
       </listitem>
 
     </varlistentry>
     
-    <varlistentry>
-      <term>Don't set backdrop</term>
-
-      <listitem>
-	<para>There are many programs that can set the backdrop image. If
-	  you prefer to use one of those programs, you can check this option
-	  and xfdesktop will refrain from setting the backdrop.
-	</para>
-      </listitem>
-    </varlistentry>
-
   </variablelist>
 	
 </sect1>
@@ -272,6 +266,24 @@ maintainers, etc. Commented out by default.
   <para>&app; provides a mouse menu that appears when you click on the 
     desktop backdrop with your right or middle mouse button.
   </para>
+  
+  <para>The Menu tab of the Desktop settings dialog allows you to configure the &app; root menu behaviour.</para>
+  
+  	<figure id="xfdesktop-menu-tab-fig">
+	  <title>Menu tab</title> 
+	  <screenshot>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="images/xfdesktop-menu-tab.png" format="PNG"/>
+	      </imageobject>
+	      <textobject>
+		<phrase>Shows the menu tab of the Desktop settings dialog.</phrase>
+	      </textobject>
+	    </mediaobject>
+	  </screenshot>
+	</figure>
+
+	<para>If you want to use the root menu and/or the window list, the corresponding options have to be selected in the settings dialog.</para>
 
   <para>A right-click on the desktop backdrop opens a menu that allows you to
     start some applications. Its configuration file, menu.xml, can be found
@@ -279,12 +291,27 @@ maintainers, etc. Commented out by default.
     packages $sysconfdir is often <filename>/etc</filename> and for source
     compiles it defaults to <filename>/usr/local/etc</filename>.
   </para>
-
+  
   <para>While it is possible to edit the file manually, the recommended method
     for editing the menu.xml file is via the Xfce 4 Menu Editor, which can be
-	found by running <application>xfce4-menueditor</application>.  The menu
-	editor also supports drag'n'drop from the file manager.
-  </para>
+	started by running <application>xfce4-menueditor</application>, or using the "Edit desktop menu" button available from the Menu tab of the Desktop settings dialog. The menu editor also supports drag'n'drop from a file manager.</para>
+	
+	  <figure id="xfdesktop-editor-fig">
+    <title>&app; menu editor</title>
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/xfdesktop-editor.png" format="PNG"/>
+	</imageobject> 
+	<textobject>
+	  <phrase>Shows &app; menu editor.
+	  </phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+	
+	<para>In order to lower the hardware requirements to run xfdesktop, you can disable the usage of icons in the root menu from the settings dialog.</para>
 
   <para>NOTE: If you choose to edit the file manually, menu.xml has to be in
     UTF-8 encoding for the toolkit to be able to display accented or other
@@ -327,6 +354,8 @@ maintainers, etc. Commented out by default.
     </screenshot>
   </figure>
 
+<para>In order to lower the hardware requirements to run xfdesktop, you can disable the usage of icons in the window list from the settings dialog.</para>
+
   <para>You can open the menu or window list from the commandline as well.
     This can be useful for keyboard shortcuts. To open the menu run the
     command &app; <application>-menu</application>, and for the windowlist use
@@ -339,10 +368,9 @@ maintainers, etc. Commented out by default.
   <title>About xfdesktop</title>
 
   <para>&app; was written by Jasper Huijsmans
-    (<email>huysmans@users.sourceforge.net</email>), Olivier Fourdan 
-    (<email>fourdan@xfce.org</email>), Biju Chacko
-    (<email>botsie@myrealbox.com</email>), and Brian Tarricone
-	(<email>kelnos@xfce.org</email>).
+    (<email>huysmans@users.sourceforge.net</email>), Brian Tarricone
+	(<email>kelnos@xfce.org</email>) and Benedikt Meurer
+  (<email>benny@xfce.org</email>).
     For more information, please visit the 
     <ulink url="http://www.xfce.org" type="http">Xfce web site</ulink>. 
   </para>
