@@ -42,8 +42,8 @@ BM_DEPEND([GTHREAD], gthread-2.0, 2.0.6)
 
 dnl check for libxml2 for menueditor
 BM_DEPEND_CHECK([LIBXML], libxml-2.0, 2.4.0, [libxml2], [libxml2 (for xfce4-menueditor)], [yes])
-if test "x$succeeded" = "xyes"; then
-	ENUEDITOR_DIR="menueditor"
+if test "x$LIBXML_FOUND" = "xyes"; then
+	MENUEDITOR_DIR="menueditor"
 	build_menueditor="yes"
 else
 	MENUEDITOR_DIR=""

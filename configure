@@ -24587,6 +24587,8 @@ else
   ac_cv_LIBXML_check=yes
 fi;
 
+  LIBXML_FOUND="no"
+
   if test x"$ac_cv_LIBXML_check" = x"yes"; then
     echo "$as_me:$LINENO: checking for libxml-2.0 >= 2.4.0" >&5
 echo $ECHO_N "checking for libxml-2.0 >= 2.4.0... $ECHO_C" >&6
@@ -24700,14 +24702,15 @@ cat >>confdefs.h <<\_ACEOF
 #define HAVE_LIBXML 1
 _ACEOF
 
+      LIBXML_FOUND="yes"
     else
       echo "$as_me:$LINENO: result: no" >&5
 echo "${ECHO_T}no" >&6
     fi
   fi
 
-if test "x$succeeded" = "xyes"; then
-	ENUEDITOR_DIR="menueditor"
+if test "x$LIBXML_FOUND" = "xyes"; then
+	MENUEDITOR_DIR="menueditor"
 	build_menueditor="yes"
 else
 	MENUEDITOR_DIR=""
