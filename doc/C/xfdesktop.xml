@@ -228,7 +228,7 @@ maintainers, etc. Commented out by default.
 
 	<para>To refresh the background with a new random image from the list
 	  just run the &app; command again, e.g. from a terminal or the run 
-	  dialog.
+	  dialog, or &app; <arg>-reload</arg>.
 	</para>
 
       </listitem>
@@ -301,6 +301,12 @@ maintainers, etc. Commented out by default.
       </mediaobject>
     </screenshot>
   </figure>
+
+  <para>You can open the menu or window list from the commandline as well.
+    This can be useful for keyboard shortcuts. To open the menu run the
+    command &app; <arg>-menu</arg> and for the windowlist use &app;
+    <arg>-windowlist</arg>.
+  </para>
 
 </sect1>
 

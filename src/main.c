@@ -63,6 +63,7 @@
 
 #include "main.h"
 #include "settings.h"
+#include "menu.h"
 
 #define XFDESKTOP_SELECTION_FMT "XFDESKTOP_SELECTION_%d"
 
@@ -85,11 +86,13 @@ quit (void)
 	gtk_main_quit ();
 }
 
-/* client message */
+/* client messages */
 #define RELOAD_MESSAGE "reload"
+#define MENU_MESSAGE "menu"
+#define WINDOWLIST_MESSAGE "windowlist"
 
 static void
-send_client_message (Window xid)
+send_client_message (Window xid, const char *msg)
 {
     GdkEventClient gev;
     GtkWidget *win;
@@ -102,7 +105,7 @@ send_client_message (Window xid)
     gev.send_event = TRUE;
     gev.message_type = gdk_atom_intern ("STRING", FALSE);
     gev.data_format = 8;
-    strcpy (gev.data.b, RELOAD_MESSAGE);
+    strcpy (gev.data.b, msg);
 
     gdk_event_send_client_message ((GdkEvent *) & gev, (GdkNativeWindow) xid);
     gdk_flush ();
@@ -116,14 +119,26 @@ client_message_received (GtkWidget * widget, GdkEventClient * event,
 {
     TRACE ("client message received");
 
-    if (event->data_format == 8
-	&& strcmp (RELOAD_MESSAGE, event->data.b) == 0)
+    if (event->data_format == 8)
     {
-	load_settings ();
-	return (TRUE);
+	if (strcmp (RELOAD_MESSAGE, event->data.b) == 0)
+	{
+	    load_settings ();
+	    return TRUE;
+	}
+	else if (strcmp (MENU_MESSAGE, event->data.b) == 0)
+	{
+	    popup_menu ();
+	    return TRUE;
+	}
+	else if (strcmp (WINDOWLIST_MESSAGE, event->data.b) == 0)
+	{
+	    popup_windowlist ();
+	    return TRUE;
+	}
     }
 
-    return (FALSE);
+    return FALSE;
 }
 
 /* selection to ensure uniqueness 
@@ -292,6 +307,8 @@ xfdesktop_init (void)
     TRACE ("initialization");
     fullscreen_window = create_fullscreen_window ();
 
+    xfdesktop_set_selection ();
+
     netk_screen = netk_screen_get_default ();
     netk_screen_force_update (netk_screen);
 
@@ -347,7 +364,25 @@ main (int argc, char **argv)
 
     if (check_is_running (&xid))
     {
-	send_client_message (xid);
+	DBG("xfdesktop is running");
+
+	if (argc <= 1 || strcmp ("-reload", argv[1]) == 0)
+	{
+	    send_client_message (xid, RELOAD_MESSAGE);
+	}
+	else if (strcmp ("-menu", argv[1]) == 0)
+	{
+	    send_client_message (xid, MENU_MESSAGE);
+	}
+	else if (strcmp ("-windowlist", argv[1]) == 0)
+	{
+	    send_client_message (xid, WINDOWLIST_MESSAGE);
+	}
+	else
+	{
+	    g_message ("%s: unknown option: %s", PACKAGE, argv[1]);
+	}
+	
 	return 0;
     }
 
@@ -377,8 +412,6 @@ main (int argc, char **argv)
 	g_message ("xfdesktop: running without session manager");
 
     xfdesktop_init ();
-
-    xfdesktop_set_selection ();
 
     gtk_main ();
 

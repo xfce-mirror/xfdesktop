@@ -792,38 +792,59 @@ static gboolean button_scroll_event (GtkWidget *widget, GdkEventScroll *event)
     return TRUE;
 }
 
+/* Popup menu / windowlist
+ * -----------------------
+*/
+void
+popup_menu (void)
+{
+    static GtkWidget *menu = NULL;
+    
+    menu = create_desktop_menu();
+
+    if (menu)
+    {
+	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0, 
+		       GDK_CURRENT_TIME);
+    }
+}
+
+void
+popup_windowlist (void)
+{
+    static GtkWidget *menu = NULL;
+
+    if(menu)
+    {
+	gtk_widget_destroy(menu);
+    }
+
+    menu = create_windowlist_menu();
+
+    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0, 
+	    	   GDK_CURRENT_TIME);
+}
+
 /*  Initialization and event handling
  *  ---------------------------------
 */
 static gboolean button_press_event(GtkWidget * win, GdkEventButton * ev,
                                    gpointer data)
 {
-    static GtkWidget *menu1 = NULL;
-    static GtkWidget *menu3 = NULL;
-
     TRACE("dummy");
-    if(ev->button == 2 || (ev->button == 1 && ev->state & GDK_SHIFT_MASK))
+    if(ev->button == 2 || 
+       (ev->button == 1 && ev->state & GDK_SHIFT_MASK & GDK_CONTROL_MASK ))
     {
-        if(menu3)
-        {
-            gtk_widget_destroy(menu3);
-        }
-
-        menu3 = create_windowlist_menu();
-
-        gtk_menu_popup(GTK_MENU(menu3), NULL, NULL, NULL, NULL, 0, ev->time);
+	popup_windowlist ();
 
         return TRUE;
     }
-    else if(ev->button == 3)
+    else if(ev->button == 3 || 
+       (ev->button == 1 && ev->state & GDK_SHIFT_MASK))
     {
-        menu1 = create_desktop_menu();
+	popup_menu();
 
-        if (menu1)
-        {
-            gtk_menu_popup(GTK_MENU(menu1), NULL, NULL, NULL, NULL, 0, ev->time);
-            return TRUE;
-        }
+	return TRUE;
     }
 
     return FALSE;
