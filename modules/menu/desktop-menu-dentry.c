@@ -395,6 +395,7 @@ menu_dentry_parse_dentry_file(XfceDesktopMenu *desktop_menu,
 {
 	XfceDesktopEntry *dentry;
 	TRACE("dummy");
+
 	dentry = xfce_desktop_entry_new(filename, dentry_keywords,
 			G_N_ELEMENTS(dentry_keywords));
 	if(dentry) {
@@ -537,7 +538,7 @@ menu_dentry_legacy_parse_dentry_file(XfceDesktopMenu *desktop_menu,
 	category = (gchar *)desktop_menuspec_cat_to_displayname(precat);
 	if(!category)
 		category = precat;
-	
+
 	dentry = xfce_desktop_entry_new(filename, dentry_keywords,
 			G_N_ELEMENTS(dentry_keywords));
 	if(dentry) {

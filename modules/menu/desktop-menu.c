@@ -58,8 +58,13 @@
 #include <libxfce4util/i18n.h>
 #include <libxfce4util/util.h>
 #include <libxfcegui4/libxfcegui4.h>
-#include <libxfcegui4/xgtkicontheme.h>
 #include <libxfcegui4/xfce-appmenuitem.h>
+
+#if GTK_CHECK_VERSION(2, 4, 0)
+#include <gtk/gtkicontheme.h>
+#else
+#include <libxfce4mcs/mcs-client.h>
+#endif
 
 #include "desktop-menu-private.h"
 #include "desktop-menu.h"
@@ -76,15 +81,66 @@
 /*< private >*/
 gint _xfce_desktop_menu_icon_size = 24;
 static GList *timeout_handles = NULL;
-static GtkIconTheme *notify_itheme = NULL;
 static time_t last_theme_change = 0;
 static gchar *cur_icon_theme = NULL;
+
+#if GTK_CHECK_VERSION(2, 4, 0)
+static GtkIconTheme *notify_itheme = NULL;
 
 static void
 itheme_changed_cb(GtkIconTheme *itheme, gpointer user_data)
 {
 	last_theme_change = time(NULL);
 }
+
+#else
+
+static McsClient *notify_client = NULL;
+
+static void
+mcs_notify_cb(const char *name, const char *channel_name, McsAction action,
+		McsSetting *setting, void *data)
+{
+	if(g_ascii_strcasecmp(channel_name, "xfce"))
+		return;
+
+	switch(action) {
+		case MCS_ACTION_NEW:
+		case MCS_ACTION_CHANGED:
+			if(!g_ascii_strcasecmp(setting->name, "theme")) {
+				xfce_set_icon_theme(setting->data.v_string);
+				last_theme_change = time(NULL);
+			}
+			break;
+		case MCS_ACTION_DELETED:
+			/* We don't use this now. Perhaps revert to default? */
+			break;
+	}
+}
+
+static GdkFilterReturn
+mcs_client_event_filter(GdkXEvent *xevent, GdkEvent *event, gpointer data)
+{
+	if(mcs_client_process_event(notify_client, (XEvent *)xevent))
+		return GDK_FILTER_REMOVE;
+	else
+		return GDK_FILTER_CONTINUE;
+}
+
+static void
+mcs_watch_cb(Window window, Bool is_start, long mask, void *cb_data)
+{
+	GdkWindow *gdkwin;
+
+	gdkwin = gdk_window_lookup(window);
+
+	if(is_start)
+		gdk_window_add_filter(gdkwin, mcs_client_event_filter, NULL);
+	else
+		gdk_window_remove_filter(gdkwin, mcs_client_event_filter, NULL);
+}
+
+#endif
 
 static gboolean
 _generate_menu(XfceDesktopMenu *desktop_menu)
@@ -252,21 +308,6 @@ xfce_desktop_menu_need_update_impl(XfceDesktopMenu *desktop_menu)
 	
 	TRACE("desktop_menu: %p", desktop_menu);
 	
-	if(gtk_major_version == 2 && gtk_minor_version < 4) {
-		GtkSettings *settings;
-		gchar *theme = NULL;
-		settings = gtk_settings_get_default();
-		g_object_get(G_OBJECT(settings), "gtk-icon-theme-name", &theme, NULL);
-		if(theme && *theme && !cur_icon_theme) {
-			cur_icon_theme = theme;
-			last_theme_change = time(NULL);
-		} else if(theme && *theme && strcmp(theme, cur_icon_theme)) {
-			g_free(cur_icon_theme);
-			cur_icon_theme = theme;
-			last_theme_change = time(NULL);
-		}
-	}
-	
 	if(desktop_menu_file_need_update(desktop_menu) ||
 			last_theme_change > desktop_menu->last_menu_gen ||
 			!desktop_menu->menu)
@@ -332,13 +373,26 @@ g_module_check_init(GModule *module)
 	_xfce_desktop_menu_icon_size = _calc_icon_size();
 	xfce_app_menu_item_set_icon_size(_xfce_desktop_menu_icon_size);
 	
-	if(gtk_major_version >= 2
-			|| (gtk_major_version == 2 && gtk_minor_version >= 4))
-	{
-		notify_itheme = gtk_icon_theme_get_default();
-		g_signal_connect(G_OBJECT(notify_itheme), "changed",
-				G_CALLBACK(itheme_changed_cb), NULL);
+#if GTK_CHECK_VERSION(2, 4, 0)
+	notify_itheme = gtk_icon_theme_get_default();
+	g_signal_connect(G_OBJECT(notify_itheme), "changed",
+			G_CALLBACK(itheme_changed_cb), NULL);
+#else
+	notify_client = mcs_client_new(GDK_DISPLAY(), DefaultScreen(GDK_DISPLAY()),
+			mcs_notify_cb, mcs_watch_cb, NULL);
+	if(notify_client) {
+		if(MCS_SUCCESS == mcs_client_add_channel(notify_client, "xfce")) {
+			McsSetting *setting;
+			if(MCS_SUCCESS == mcs_client_get_setting(notify_client, "theme",
+					"xfce", &setting))
+			{
+				xfce_set_icon_theme(setting->data.v_string);
+				last_theme_change = time(NULL);
+				mcs_setting_free(setting);
+			}
+		}
 	}
+#endif
 	
 	return NULL;
 }
@@ -348,15 +402,17 @@ g_module_unload(GModule *module)
 {
 	GList *l;
 	
-	if(notify_itheme && (gtk_major_version >= 2
-			|| (gtk_major_version == 2 && gtk_minor_version >= 4)))
-	{
-		g_signal_handlers_disconnect_by_func(G_OBJECT(notify_itheme),
-				itheme_changed_cb, NULL);
-		if(cur_icon_theme)
-			g_free(cur_icon_theme);
-		cur_icon_theme = NULL;
-	}
+#if GTK_CHECK_VERSION(2, 4, 0)
+	g_signal_handlers_disconnect_by_func(G_OBJECT(notify_itheme),
+			itheme_changed_cb, NULL);
+	if(cur_icon_theme)
+		g_free(cur_icon_theme);
+	cur_icon_theme = NULL;
+#else
+	if(notify_client)
+		mcs_client_destroy(notify_client);
+	notify_client = NULL;
+#endif
 	
 	if(timeout_handles) {
 		for(l=timeout_handles; l; l=l->next)

@@ -22,10 +22,6 @@
 #include <config.h>
 #endif
 
-//#ifdef GDK_MULTIHEAD_SAFE
-//#undef GDK_MULTIHEAD_SAFE
-//#endif
-
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
 #endif
@@ -297,10 +293,6 @@ create_fullscreen_window(GdkScreen *gscreen)
     return (win);
 }
 
-#if GTK_CHECK_VERSION(2,2,0)
-/*
- * This is Gtk+ >= 2.2 only for now, should be no problem after all.
- */
 static void
 xfdesktop_size_changed(GdkScreen *screen, gpointer user_data)
 {
@@ -310,7 +302,6 @@ xfdesktop_size_changed(GdkScreen *screen, gpointer user_data)
 			gdk_screen_width(), gdk_screen_height());
 	load_settings(xfdesktop);
 }
-#endif
 
 static void
 xfdesktop_init(XfceDesktop *xfdesktop, gint screen)
@@ -333,11 +324,8 @@ xfdesktop_init(XfceDesktop *xfdesktop, gint screen)
 	xfdesktop->backdrop = backdrop_new(screen, xfdesktop->fullscreen, xfdesktop->client);
 	menu_init(xfdesktop);
 	
-
-#if GTK_CHECK_VERSION(2,2,0)
 	g_signal_connect(G_OBJECT(gdk_display_get_screen(gdk_display_get_default(), screen)),
 			"size-changed", G_CALLBACK(xfdesktop_size_changed), xfdesktop);
-#endif
 
 	gtk_widget_show(xfdesktop->fullscreen);
 	gdk_window_lower(xfdesktop->fullscreen->window);
