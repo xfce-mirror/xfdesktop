@@ -316,10 +316,8 @@ desktop_menuspec_parse_categories(const gchar *filename)
 	gboolean ret = FALSE;
 	GError *err = NULL;
 #ifdef HAVE_MMAP
-	void *maddr;
+	void *maddr = NULL;
 #endif
-
-	maddr = NULL;
 	
 	if(stat(filename, &st) < 0)
 		return FALSE;
