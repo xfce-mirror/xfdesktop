@@ -30,6 +30,7 @@ typedef struct _XfceDesktopMenu XfceDesktopMenu;
 	
 XfceDesktopMenu *xfce_desktop_menu_new_impl(const gchar *menu_file, gboolean deferred);
 GtkWidget *xfce_desktop_menu_get_widget_impl(XfceDesktopMenu *desktop_menu);
+G_CONST_RETURN gchar *xfce_desktop_menu_get_menu_file(XfceDesktopMenu *desktop_menu);
 gboolean xfce_desktop_menu_need_update_impl(XfceDesktopMenu *desktop_menu);
 void xfce_desktop_menu_start_autoregen_impl(XfceDesktopMenu *desktop_menu, guint delay);
 void xfce_desktop_menu_stop_autoregen_impl(XfceDesktopMenu *desktop_menu);

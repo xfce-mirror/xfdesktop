@@ -30,26 +30,17 @@ extern "C" {
 GModule *xfce_desktop_menu_stub_init();
 void xfce_desktop_menu_stub_cleanup(GModule *menu_gmod);
 
-/* convenience defines */
-#define xfce_desktop_menu_new(menu_file, deferred) (*xfce_desktop_menu_new_p)(menu_file, deferred)
-#define xfce_desktop_menu_get_widget(desktop_menu) (*xfce_desktop_menu_get_widget_p)(desktop_menu)
-#define xfce_desktop_menu_need_update(desktop_menu) (*xfce_desktop_menu_need_update_p)(desktop_menu)
-#define xfce_desktop_menu_start_autoregen(desktop_menu, delay) (*xfce_desktop_menu_start_autoregen_p)(desktop_menu, delay)
-#define xfce_desktop_menu_stop_autoregen(desktop_menu) (*xfce_desktop_menu_stop_autoregen_p)(desktop_menu)
-#define xfce_desktop_menu_force_regen(desktop_menu) (*xfce_desktop_menu_force_regen_p)(desktop_menu)
-#define xfce_desktop_menu_set_show_icons(desktop_menu, show_icons) (*xfce_desktop_menu_set_show_icons_p)(desktop_menu, show_icons)
-#define xfce_desktop_menu_destroy(desktop_menu) (*xfce_desktop_menu_destroy_p)(desktop_menu)
-
 typedef struct _XfceDesktopMenu XfceDesktopMenu;
 
-extern XfceDesktopMenu *(*xfce_desktop_menu_new_p)(const gchar *menu_file, gboolean deferred);
-extern GtkWidget *(*xfce_desktop_menu_get_widget_p)(XfceDesktopMenu *desktop_menu);
-extern gboolean (*xfce_desktop_menu_need_update_p)(XfceDesktopMenu *desktop_menu);
-extern void (*xfce_desktop_menu_start_autoregen_p)(XfceDesktopMenu *desktop_menu, guint delay);
-extern void (*xfce_desktop_menu_stop_autoregen_p)(XfceDesktopMenu *desktop_menu);
-extern void (*xfce_desktop_menu_force_regen_p)(XfceDesktopMenu *desktop_menu);
-extern void (*xfce_desktop_menu_set_show_icons_p)(XfceDesktopMenu *desktop_menu, gboolean show_icons);
-extern void (*xfce_desktop_menu_destroy_p)(XfceDesktopMenu *desktop_menu);
+extern XfceDesktopMenu *(*xfce_desktop_menu_new)(const gchar *menu_file, gboolean deferred);
+extern GtkWidget *(*xfce_desktop_menu_get_widget)(XfceDesktopMenu *desktop_menu);
+extern G_CONST_RETURN gchar *(*xfce_desktop_menu_get_menu_file)(XfceDesktopMenu *desktop_menu);
+extern gboolean (*xfce_desktop_menu_need_update)(XfceDesktopMenu *desktop_menu);
+extern void (*xfce_desktop_menu_start_autoregen)(XfceDesktopMenu *desktop_menu, guint delay);
+extern void (*xfce_desktop_menu_stop_autoregen)(XfceDesktopMenu *desktop_menu);
+extern void (*xfce_desktop_menu_force_regen)(XfceDesktopMenu *desktop_menu);
+extern void (*xfce_desktop_menu_set_show_icons)(XfceDesktopMenu *desktop_menu, gboolean show_icons);
+extern void (*xfce_desktop_menu_destroy)(XfceDesktopMenu *desktop_menu);
 
 #ifdef __cplusplus
 }

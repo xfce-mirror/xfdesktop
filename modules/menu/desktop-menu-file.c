@@ -553,10 +553,8 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 		GtkWidget *menu, const gchar *cur_path, gboolean is_root,
 		gboolean from_cache)
 {
-	gchar *other_filename = NULL;
 	gchar *file_contents = NULL;
 	GMarkupParseContext *gpcontext = NULL;
-	int fd = -1;
 	struct stat st;
 	GMarkupParser gmparser = { 
 		menu_file_xml_start,
@@ -569,63 +567,37 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 	gboolean ret = FALSE;
 	GError *err = NULL;
 #ifdef HAVE_MMAP
+	gint fd;
 	void *maddr = NULL;
 #endif
 	
-	//TRACE("dummy");
+	g_return_val_if_fail(desktop_menu != NULL && menu != NULL
+			&& filename != NULL, FALSE);
 
-	g_return_val_if_fail(desktop_menu != NULL && menu != NULL, FALSE);
-
-	if(!filename) {
-		filename = other_filename = desktop_menu_file_get_menufile();
-		if(!filename)
-			return FALSE;
-	}
-	
 	if(stat(filename, &st) < 0) {
 		g_warning("XfceDesktopMenu: unable to find a usable menu file\n");
 		goto cleanup;
 	}
 	
+#ifdef HAVE_MMAP
 	fd = open(filename, O_RDONLY, 0);
 	if(fd < 0)
 		goto cleanup;
 	
-#ifdef HAVE_MMAP
 	maddr = mmap(NULL, st.st_size, PROT_READ, MAP_FILE|MAP_SHARED, fd, 0);
 	if(maddr)
 		file_contents = maddr;
-	else {
 #endif
-		file_contents = malloc(st.st_size);
-		if(!file_contents)
-			goto cleanup;
-		
-		if(read(fd, file_contents, st.st_size) != st.st_size)
-			goto cleanup;
-#ifdef HAVE_MMAP
-	}
-#endif
-	
-	if(is_root && !from_cache) {
-		if(desktop_menu->menufile_mtimes) {
-			g_hash_table_destroy(desktop_menu->menufile_mtimes);
-			desktop_menu->menufile_mtimes = NULL;
+
+	if(!file_contents && !g_file_get_contents(filename, &file_contents, NULL, &err)) {
+		if(err) {
+			g_warning("XfceDesktopMenu: Unable to read menu file '%s' (%d): %s\n",
+					err->code, err->message);
+			g_error_free(err);
 		}
-		desktop_menu->menufile_mtimes = g_hash_table_new_full(g_str_hash,
-				g_str_equal, (GDestroyNotify)g_free, NULL);
-		if(desktop_menu->dentrydir_mtimes) {
-			g_hash_table_destroy(desktop_menu->dentrydir_mtimes);
-			desktop_menu->dentrydir_mtimes = NULL;
-		}
-		desktop_menu->using_system_menu = FALSE;
+		goto cleanup;
 	}
 	
-	if(!desktop_menu->filename || other_filename) {
-		if(desktop_menu->filename)
-			g_free(desktop_menu->filename);
-		desktop_menu->filename = g_strdup(filename);
-	}
 	state.started = FALSE;
 	state.branches = g_queue_new();
 	g_queue_push_tail(state.branches, menu);
@@ -639,8 +611,8 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 	gpcontext = g_markup_parse_context_new(&gmparser, 0, &state, NULL);
 
     if(!g_markup_parse_context_parse(gpcontext, file_contents, st.st_size, &err)) {
-		g_warning("%s: error parsing xfdesktop menu file (%d): %s\n",
-				PACKAGE, err->code, err->message);
+		g_warning("XfceDesktopMenu: Error parsing xfdesktop menu file (%d): %s\n",
+				err->code, err->message);
 		g_error_free(err);
         goto cleanup;
 	}
@@ -659,16 +631,15 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 	if(gpcontext)
 		g_markup_parse_context_free(gpcontext);
 #ifdef HAVE_MMAP
-	if(maddr)
+	if(maddr) {
 		munmap(maddr, st.st_size);
-	else
+		file_contents = NULL;
+	}
+	if(fd > -1)
+		close(fd);
 #endif
 	if(file_contents)
 		free(file_contents);
-	if(other_filename)
-		g_free(other_filename);
-	if(fd > -1)
-		close(fd);
 	if(state.branches)
 		g_queue_free(state.branches);
 	if(state.paths) {

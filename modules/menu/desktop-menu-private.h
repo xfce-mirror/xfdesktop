@@ -28,6 +28,8 @@
 
 struct _XfceDesktopMenu {
 	gchar *filename;  /* file the menu is currently using */
+	gboolean using_default_menu;
+	gchar *cache_file_suffix;
 	GtkWidget *menu;  /* the menu widget itself */
 	gboolean use_menu_icons;  /* show menu icons? */
 	gboolean using_system_menu;   /* is there an autogenned menu in this DM? */

@@ -38,15 +38,16 @@ typedef enum {
 
 void desktop_menu_cache_init(GtkWidget *root_menu);
 /* returns menu cache file if valid */
-gchar *desktop_menu_cache_is_valid(GHashTable **menufile_mtimes,
-		GHashTable **dentrydir_mtimes, gboolean *using_system_menu);
+gchar *desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
+		GHashTable **menufile_mtimes, GHashTable **dentrydir_mtimes,
+		gboolean *using_system_menu);
 void desktop_menu_cache_add_entry(DesktopMenuCacheType type, const gchar *name,
 		const gchar *cmd, const gchar *icon, gboolean needs_term,
 		gboolean snotify, GtkWidget *parent_menu, gint position,
 		GtkWidget *menu_widget);
 void desktop_menu_cache_add_menufile(const gchar *menu_file);
 void desktop_menu_cache_add_dentrydir(const gchar *dentry_dir);
-void desktop_menu_cache_flush();
+void desktop_menu_cache_flush(const gchar *cache_file_suffix);
 void desktop_menu_cache_cleanup();
 
 G_END_DECLS

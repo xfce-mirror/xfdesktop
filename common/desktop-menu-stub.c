@@ -28,41 +28,45 @@
 static GModule *menu_gmod = NULL;
 static gint refcnt = 0;
 
-XfceDesktopMenu *(*xfce_desktop_menu_new_p)(const gchar *menu_file, gboolean deferred) = NULL;
-GtkWidget *(*xfce_desktop_menu_get_widget_p)(XfceDesktopMenu *desktop_menu) = NULL;
-gboolean (*xfce_desktop_menu_need_update_p)(XfceDesktopMenu *desktop_menu) = NULL;
-void (*xfce_desktop_menu_start_autoregen_p)(XfceDesktopMenu *desktop_menu, guint delay) = NULL;
-void (*xfce_desktop_menu_stop_autoregen_p)(XfceDesktopMenu *desktop_menu) = NULL;
-void (*xfce_desktop_menu_force_regen_p)(XfceDesktopMenu *desktop_menu) = NULL;
-void (*xfce_desktop_menu_set_show_icons_p)(XfceDesktopMenu *desktop_menu, gboolean show_icons) = NULL;
-void (*xfce_desktop_menu_destroy_p)(XfceDesktopMenu *desktop_menu) = NULL;
+XfceDesktopMenu *(*xfce_desktop_menu_new)(const gchar *menu_file, gboolean deferred) = NULL;
+GtkWidget *(*xfce_desktop_menu_get_widget)(XfceDesktopMenu *desktop_menu) = NULL;
+G_CONST_RETURN gchar *(*xfce_desktop_menu_get_menu_file)(XfceDesktopMenu *desktop_menu) = NULL;
+gboolean (*xfce_desktop_menu_need_update)(XfceDesktopMenu *desktop_menu) = NULL;
+void (*xfce_desktop_menu_start_autoregen)(XfceDesktopMenu *desktop_menu, guint delay) = NULL;
+void (*xfce_desktop_menu_stop_autoregen)(XfceDesktopMenu *desktop_menu) = NULL;
+void (*xfce_desktop_menu_force_regen)(XfceDesktopMenu *desktop_menu) = NULL;
+void (*xfce_desktop_menu_set_show_icons)(XfceDesktopMenu *desktop_menu, gboolean show_icons) = NULL;
+void (*xfce_desktop_menu_destroy)(XfceDesktopMenu *desktop_menu) = NULL;
 
 static gboolean
 _setup_funtions(GModule *menu_gmod)
 {
 	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_new_impl",
-			(gpointer)&xfce_desktop_menu_new_p))
+			(gpointer)&xfce_desktop_menu_new))
 		return FALSE;
 	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_get_widget_impl",
-			(gpointer)&xfce_desktop_menu_get_widget_p))
+			(gpointer)&xfce_desktop_menu_get_widget))
+		return FALSE;
+	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_get_menu_file",
+			(gpointer)&xfce_desktop_menu_get_menu_file))
 		return FALSE;
 	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_need_update_impl",
-			(gpointer)&xfce_desktop_menu_need_update_p))
+			(gpointer)&xfce_desktop_menu_need_update))
 		return FALSE;
 	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_start_autoregen_impl",
-			(gpointer)&xfce_desktop_menu_start_autoregen_p))
+			(gpointer)&xfce_desktop_menu_start_autoregen))
 		return FALSE;
 	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_stop_autoregen_impl",
-			(gpointer)&xfce_desktop_menu_stop_autoregen_p))
+			(gpointer)&xfce_desktop_menu_stop_autoregen))
 		return FALSE;
 	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_force_regen_impl",
-			(gpointer)&xfce_desktop_menu_force_regen_p))
+			(gpointer)&xfce_desktop_menu_force_regen))
 		return FALSE;
 	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_set_show_icons_impl",
-			(gpointer)&xfce_desktop_menu_set_show_icons_p))
+			(gpointer)&xfce_desktop_menu_set_show_icons))
 		return FALSE;
 	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_destroy_impl",
-			(gpointer)&xfce_desktop_menu_destroy_p))
+			(gpointer)&xfce_desktop_menu_destroy))
 		return FALSE;
 	
 	return TRUE;

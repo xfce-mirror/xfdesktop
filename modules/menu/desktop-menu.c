@@ -173,9 +173,14 @@ _generate_menu(XfceDesktopMenu *desktop_menu, gboolean force)
 	g_hash_table_insert(desktop_menu->menu_branches, g_strdup("/"),
 			desktop_menu->menu);
 	
+	desktop_menu->menufile_mtimes = g_hash_table_new_full(g_str_hash,
+			g_str_equal, (GDestroyNotify)g_free, NULL);
+	desktop_menu->using_system_menu = FALSE;
+	
 	if(!force) {
-		menu_cache_file = desktop_menu_cache_is_valid(&desktop_menu->menufile_mtimes,
-				&desktop_menu->dentrydir_mtimes, &desktop_menu->using_system_menu);
+		menu_cache_file = desktop_menu_cache_is_valid(desktop_menu->cache_file_suffix,
+				&desktop_menu->menufile_mtimes, &desktop_menu->dentrydir_mtimes,
+				&desktop_menu->using_system_menu);
 	}
 	if(menu_cache_file) {
 		if(!desktop_menu_file_parse(desktop_menu, menu_cache_file,
@@ -188,10 +193,6 @@ _generate_menu(XfceDesktopMenu *desktop_menu, gboolean force)
 	} else {
 		desktop_menu_cache_init(desktop_menu->menu);
 		
-		if(desktop_menu->filename) {
-			g_free(desktop_menu->filename);
-			desktop_menu->filename = NULL;
-		}
 		if(!desktop_menu_file_parse(desktop_menu, desktop_menu->filename,
 				desktop_menu->menu, "/", TRUE, FALSE))
 		{
@@ -199,7 +200,7 @@ _generate_menu(XfceDesktopMenu *desktop_menu, gboolean force)
 			ret = FALSE;
 		}
 		
-		desktop_menu_cache_flush();
+		desktop_menu_cache_flush(desktop_menu->cache_file_suffix);
 		desktop_menu_cache_cleanup();
 	}
 	
@@ -231,13 +232,15 @@ _menu_check_update(gpointer data)
 	
 	modified = xfce_desktop_menu_need_update_impl(desktop_menu);
 	
-	newfilename = desktop_menu_file_get_menufile();
-	if(!g_hash_table_lookup(desktop_menu->menufile_mtimes, newfilename)) {
-		g_free(desktop_menu->filename);
-		desktop_menu->filename = newfilename;
-		modified = TRUE;
-	} else
-		g_free(newfilename);
+	if(desktop_menu->using_default_menu) {
+		newfilename = desktop_menu_file_get_menufile();
+		if(!g_hash_table_lookup(desktop_menu->menufile_mtimes, newfilename)) {
+			g_free(desktop_menu->filename);
+			desktop_menu->filename = newfilename;
+			modified = TRUE;
+		} else
+			g_free(newfilename);
+	}
 	
 	if(modified)
 		_generate_menu(desktop_menu, TRUE);
@@ -343,11 +346,24 @@ G_MODULE_EXPORT XfceDesktopMenu *
 xfce_desktop_menu_new_impl(const gchar *menu_file, gboolean deferred)
 {
 	XfceDesktopMenu *desktop_menu = g_new0(XfceDesktopMenu, 1);
+	gchar *p;
 	
 	desktop_menu->use_menu_icons = TRUE;
 	
 	if(menu_file)
 		desktop_menu->filename = g_strdup(menu_file);
+	else {
+		desktop_menu->filename = desktop_menu_file_get_menufile();
+		desktop_menu->using_default_menu = TRUE;
+	}
+	
+	desktop_menu->cache_file_suffix = g_strdup(desktop_menu->filename);
+	p = desktop_menu->cache_file_suffix;
+	while(*p) {
+		if(*p == G_DIR_SEPARATOR)
+			*p = '-';
+		p++;
+	}
 	
 	if(deferred)
 		g_idle_add(_generate_menu_initial, desktop_menu);
@@ -367,6 +383,14 @@ xfce_desktop_menu_get_widget_impl(XfceDesktopMenu *desktop_menu)
 	g_return_val_if_fail(desktop_menu != NULL, NULL);
 	
 	return desktop_menu->menu;
+}
+
+G_CONST_RETURN gchar *
+xfce_desktop_menu_get_menu_file(XfceDesktopMenu *desktop_menu)
+{
+	g_return_val_if_fail(desktop_menu != NULL, NULL);
+	
+	return desktop_menu->filename;
 }
 
 G_MODULE_EXPORT gboolean
@@ -444,9 +468,14 @@ xfce_desktop_menu_destroy_impl(XfceDesktopMenu *desktop_menu)
 	xfce_desktop_menu_stop_autoregen_impl(desktop_menu);
 	
 	_xfce_desktop_menu_free_menudata(desktop_menu);
-	if(desktop_menu->filename)
+	if(desktop_menu->filename) {
 		g_free(desktop_menu->filename);
-	desktop_menu->filename = NULL;
+		desktop_menu->filename = NULL;
+	}
+	if(desktop_menu->cache_file_suffix) {
+		g_free(desktop_menu->cache_file_suffix);
+		desktop_menu->cache_file_suffix = NULL;
+	}
 	
 	g_free(desktop_menu);
 }
@@ -456,7 +485,6 @@ g_module_check_init(GModule *module)
 {
 	gint w, h;
 	
-	//_xfce_desktop_menu_icon_size = _calc_icon_size();
 	gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
 	_xfce_desktop_menu_icon_size = w;
 	xfce_app_menu_item_set_icon_size(_xfce_desktop_menu_icon_size);

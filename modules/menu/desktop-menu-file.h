@@ -24,13 +24,18 @@
 #ifndef __MENU_FILE_H__
 #define __MENU_FILE_H__
 
-#include "desktop-menu.h"
 #include <gtk/gtkwidget.h>
+
+#include "desktop-menu.h"
+
+G_BEGIN_DECLS
 
 gchar *desktop_menu_file_get_menufile();
 gboolean desktop_menu_file_need_update(XfceDesktopMenu *desktop_menu);
 gboolean desktop_menu_file_parse(XfceDesktopMenu *desktop_menu,
 		const gchar *filename, GtkWidget *menu, const gchar *path,
 		gboolean is_root, gboolean from_cache);
+
+G_END_DECLS
 
 #endif

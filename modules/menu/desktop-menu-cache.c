@@ -39,14 +39,18 @@
 #include <unistd.h>
 #endif
 
+#ifndef PATH_MAX
+#define PATH_MAX 4096
+#endif
+
 #include <gtk/gtk.h>
 
 #include <libxfce4util/libxfce4util.h>
 
 #include "desktop-menu-cache.h"
 
-#define CACHE_CONF_FILE "xfdesktop/menu-cache.rc"
-#define MENU_CACHE_FILE "xfdesktop/menu-cache.xml"
+#define CACHE_CONF_FILE_FMT "xfdesktop/menu-cache-%s.rc"
+#define MENU_CACHE_FILE_FMT "xfdesktop/menu-cache-%s.xml"
 
 typedef struct
 {
@@ -108,7 +112,7 @@ cache_node_children(GNode *node, gpointer data)
 	
 	switch(entry->type) {
 		case DM_TYPE_ROOT:
-			g_critical("%s: cache_node_children() run ON the root node!", PACKAGE);
+			g_critical("XfceDesktopMenu: cache_node_children() run ON the root node!");
 			return;
 		
 		case DM_TYPE_MENU:
@@ -150,7 +154,7 @@ cache_node_children(GNode *node, gpointer data)
 			break;
 		
 		default:
-			g_warning("%s: Got unknown cache entry type (%d)", PACKAGE, entry->type);
+			g_warning("XfceDesktopMenu: Got unknown cache entry type (%d)", entry->type);
 			break;
 	}
 }
@@ -174,10 +178,11 @@ desktop_menu_cache_init(GtkWidget *root_menu)
 }
 
 gchar *
-desktop_menu_cache_is_valid(GHashTable **menufile_mtimes,
-		GHashTable **dentrydir_mtimes, gboolean *using_system_menu)
+desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
+		GHashTable **menufile_mtimes, GHashTable **dentrydir_mtimes,
+		gboolean *using_system_menu)
 {
-	gchar *cache_file = NULL, buf[128];
+	gchar *cache_file = NULL, buf[128], filebuf[PATH_MAX];
 	XfceRc *rcfile;
 	gint i, mtime;
 	const gchar *location;
@@ -186,8 +191,8 @@ desktop_menu_cache_is_valid(GHashTable **menufile_mtimes,
 	g_return_val_if_fail(menufile_mtimes != NULL && dentrydir_mtimes != NULL
 			&& using_system_menu != NULL, NULL);
 	
-	cache_file = xfce_resource_save_location(XFCE_RESOURCE_CACHE,
-			MENU_CACHE_FILE, FALSE);
+	g_snprintf(filebuf, PATH_MAX, MENU_CACHE_FILE_FMT, cache_file_suffix);
+	cache_file = xfce_resource_save_location(XFCE_RESOURCE_CACHE, filebuf, FALSE);
 	if(!cache_file)
 		return NULL;
 	if(!g_file_test(cache_file, G_FILE_TEST_EXISTS)) {
@@ -195,7 +200,8 @@ desktop_menu_cache_is_valid(GHashTable **menufile_mtimes,
 		return NULL;
 	}
 	
-	rcfile = xfce_rc_config_open(XFCE_RESOURCE_CACHE, CACHE_CONF_FILE, TRUE);
+	g_snprintf(filebuf, PATH_MAX, CACHE_CONF_FILE_FMT, cache_file_suffix);
+	rcfile = xfce_rc_config_open(XFCE_RESOURCE_CACHE, filebuf, TRUE);
 	if(!rcfile)
 		return NULL;
 	
@@ -288,7 +294,7 @@ desktop_menu_cache_add_entry(DesktopMenuCacheType type, const gchar *name,
 	
 	parent_node = g_hash_table_lookup(menu_hash, parent_menu);
 	if(!parent_node) {
-		g_critical("%s: Attempt to add new cache entry without first adding the parent.", PACKAGE);
+		g_critical("XfceDesktopMenu: Attempt to add new cache entry without first adding the parent.");
 		return;
 	}
 	
@@ -334,9 +340,9 @@ desktop_menu_cache_add_dentrydir(const gchar *dentry_dir)
 }
 
 void
-desktop_menu_cache_flush()
+desktop_menu_cache_flush(const gchar *cache_file_suffix)
 {
-	gchar *cache_file = NULL, buf[128];
+	gchar *cache_file = NULL, buf[128], filebuf[PATH_MAX];
 	XfceRc *rcfile;
 	GList *l;
 	gint i;
@@ -349,10 +355,11 @@ desktop_menu_cache_flush()
 	
 	TRACE("entering");
 	
-	rcfile = xfce_rc_config_open(XFCE_RESOURCE_CACHE, CACHE_CONF_FILE, FALSE);
+	g_snprintf(filebuf, PATH_MAX, CACHE_CONF_FILE_FMT, cache_file_suffix);
+	rcfile = xfce_rc_config_open(XFCE_RESOURCE_CACHE, filebuf, FALSE);
 	if(!rcfile) {
-		g_critical("%s: Unable to write to '%s'.  Desktop menu wil not be cached",
-				PACKAGE, CACHE_CONF_FILE);
+		g_critical("XfceDesktopMenu: Unable to write to '%s'.  Desktop menu wil not be cached",
+				filebuf);
 		return;
 	}
 	
@@ -383,8 +390,8 @@ desktop_menu_cache_flush()
 	xfce_rc_flush(rcfile);
 	xfce_rc_close(rcfile);
 	
-	cache_file = xfce_resource_save_location(XFCE_RESOURCE_CACHE,
-			MENU_CACHE_FILE, TRUE);
+	g_snprintf(filebuf, PATH_MAX, MENU_CACHE_FILE_FMT, cache_file_suffix);
+	cache_file = xfce_resource_save_location(XFCE_RESOURCE_CACHE, filebuf, TRUE);
 	fp = fopen(cache_file, "w");
 	if(!fp) {
 		g_critical("%s: Unable to write to '%s'.  Desktop menu wil not be cached",
