@@ -49,14 +49,14 @@
 #define DEFAULT_ICON_SIZE 48
 
 #ifndef DATADIR
-#define DATADIR "/usr/local/share/xfce4"
+#define DATADIR "/usr/local/share/"
 #endif
 
 #ifdef HAVE_GDK_PIXBUF_NEW_FROM_STREAM
 #define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream
 #endif
 
-#define DEFAULT_BACKDROP (DATADIR "/backdrops/Xfcelogo.xpm")
+#define DEFAULT_BACKDROP (DATADIR "xfce4/backdrops/Xfcelogo.xpm")
 
 static char *backdrop_path = NULL;
 static int backdrop_style = TILED;
@@ -435,7 +435,7 @@ browse_cb (GtkWidget * b, BackdropDialog * bd)
     }
     else
     {
-	char *dir = g_build_filename(DATADIR, "backdrops/", NULL);
+	char *dir = g_build_filename(DATADIR, "xfce4", "backdrops/", NULL);
 	gtk_file_selection_set_filename(fs, dir);
 	g_free(dir);
     }
