@@ -67,6 +67,7 @@ static void menu_dentry_legacy_add_all(XfceDesktopMenu *desktop_menu,
 static const char *dentry_keywords [] = {
    "Name", "Comment", "Icon", "Hidden", "StartupNotify",
    "Categories", "OnlyShowIn", "Exec", "Terminal",
+   "NoDisplay",
 };
 
 #if 0
@@ -283,6 +284,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		MenuPathType pathtype, gboolean is_legacy, const gchar *extra_cat)
 {
 	gchar *categories = NULL, *hidden = NULL, *onlyshowin = NULL;
+	gchar *nodisplay = NULL;
 	gchar *path = NULL, *exec = NULL, *p;
 	GtkWidget *mi = NULL, *menu;
 	gint i, menu_pos;
@@ -300,6 +302,10 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 
 	xfce_desktop_entry_get_string(de, "Hidden", FALSE, &hidden);
 	if(hidden && !g_ascii_strcasecmp(hidden, "true"))
+		goto cleanup;
+	
+	xfce_desktop_entry_get_string(de, "NoDisplay", FALSE, &nodisplay);
+	if(nodisplay && !g_ascii_strcasecmp(nodisplay, "true"))
 		goto cleanup;
 	
 	/* check for blacklisted item */
@@ -445,6 +451,8 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		desktop_menuspec_path_free(newpaths);
 	if(onlyshowin)
 		g_free(onlyshowin);
+	if(nodisplay)
+		g_free(nodisplay);
 	if(hidden)
 		g_free(hidden);
 	if(categories)
