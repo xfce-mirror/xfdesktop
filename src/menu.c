@@ -515,11 +515,12 @@ set_num_screens (gpointer num)
 }
 
 static GtkWidget *
-create_window_list_item (NetkWindow * win)
+create_window_list_item (NetkWindow * win, GList **pix_unref_needed)
 {
     const char *name = NULL;
     GString *label;
     GtkWidget *mi;
+	GdkPixbuf *icon = NULL, *tmp;
 
     TRACE ("dummy");
     if (netk_window_is_skip_pager (win) || netk_window_is_skip_tasklist (win))
@@ -541,8 +542,28 @@ create_window_list_item (NetkWindow * win)
 	g_string_prepend (label, "[");
 	g_string_append (label, "]");
     }
+	
+	tmp = netk_window_get_icon(win);
+	if(tmp) {
+		gint w, h;
+		w = gdk_pixbuf_get_width(tmp);
+		h = gdk_pixbuf_get_height(tmp);
+		if(w != 22 || h != 22) {
+			icon = gdk_pixbuf_scale_simple(tmp, 24, 24, GDK_INTERP_BILINEAR);
+			/* the GdkPixbuf returned by netk_window_get_icon() should never be
+			 * freed, but if we scale the image, we need to free it */
+			*pix_unref_needed = g_list_prepend(*pix_unref_needed, icon);
+		} else
+			icon = tmp;
+	}
 
-    mi = gtk_menu_item_new_with_label (label->str);
+	if(icon) {
+		GtkWidget *img = gtk_image_new_from_pixbuf(icon);
+		gtk_widget_show(img);
+		mi = gtk_image_menu_item_new_with_label(label->str);
+		gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+	} else
+		mi = gtk_menu_item_new_with_label (label->str);
 
     g_string_free (label, TRUE);
 
@@ -550,7 +571,7 @@ create_window_list_item (NetkWindow * win)
 }
 
 static GtkWidget *
-create_windowlist_menu (void)
+create_windowlist_menu (GList **pix_unref_needed)
 {
     int i, n;
     GList *windows, *li;
@@ -627,7 +648,7 @@ create_windowlist_menu (void)
 		continue;
 	    }
 
-	    mi = create_window_list_item (win);
+	    mi = create_window_list_item (win, pix_unref_needed);
 
 	    if (!mi)
 		continue;
@@ -688,13 +709,21 @@ void
 popup_windowlist (int button, guint32 time)
 {
     static GtkWidget *menu = NULL;
+	static GList *pix_unref_needed = NULL, *l;
 
     if (menu)
     {
 	gtk_widget_destroy (menu);
     }
+	
+	if(pix_unref_needed) {
+		for(l=pix_unref_needed; l; l=l->next)
+			g_object_unref(G_OBJECT(l->data));
+		g_list_free(pix_unref_needed);
+		pix_unref_needed = NULL;
+	}
 
-    windowlist = menu = create_windowlist_menu ();
+    windowlist = menu = create_windowlist_menu (&pix_unref_needed);
 
     gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, button, time);
 }
