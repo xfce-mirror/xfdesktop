@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xfdesktop-menu [
+	<!ENTITY menu2 SYSTEM "menu2.xml">
+]>
+
+<!-- 
+     XFce 4 menu fitxategiaren argibideak:
+     =====================================
+     Hemen mnu fitxategiaren formatua argitzen saiatuko gara. Begiratu uneko
+     menua berago adibide erralentzat.
+.
+-->
+
+<!-- Argi geratzen denez hau iruzkin bat da.;-) -->
+
+<!-- 
+
+  + Dena <xfdesktop-menu></xfdesktop-menu> marka pare
+    baten artean ipini behar da.
+
+  + Aplikazioak:
+    <app name="Menuko izena" cmd="Abirazteko komandoa" term="no" visible="yes" />
+    'term'-ek programak terminal bat behar duen ezartzen du.
+    'name'eta 'cmd'dira beharrezkoak
+
+  + Bereizleak:
+    <separator/>
+
+  + Azpimenuak:
+    <menu name="Menuko izena" visible="yes"></menu>
+    'name' bakarrik da beharrezkoa.
+    menu marken artean zuk bai aplikazio, bai bereizle eta bai menuak
+    ezarri ditzazkezu.
+
+  + Tituluak
+    <title name="Menuko izena" />
+    Creates an insensitive menu title
+    
+  + Including other files:
+    Beste fitxategi batzu ere gehitu daitezke xml erabiliaz. Hau apur bat 
+    zailagoa da.
+    Fitxategi buruan entity bat ezarri behar duzu lehenik. Ikusi beherago
+    guk 'menu2' ezarri dugula menu.xml fitxategira loturik.
+    Gero zuk '&entityname;' menu fitxategiaren edozein lekutan erabil dezakezu 
+    eta honek lotuta duen fitxategiko ezarpenak erabiliko ditu.
+
+    
+-->
+<xfdesktop-menu>
+    <title name="Idazmahai Menua" visible="yes" />
+    <separator/>
+    <app name="Progrema Abiarazi..." cmd="xfrun4"/>
+    <separator/>
+    <app name="Terminala" cmd="xfterm4" />
+    <app name="Fitxategi kudeatzailea (xffm)" cmd="xffm"/>
+    <app name="Web kudeatzeailea" cmd="mozilla"/>
+    <separator/>
+    <menu name="Ezarpenak" visible="yes">
+        <app name="Ezarpen guztiak..." cmd="xfce-setting-show"/>
+        <app name="Backdrop..." cmd="xfce-setting-show backdrop"/>
+<!-- 
+        <app name="Atzekaldea" cmd="xfce-setting-show backdrop"/>
+	<app name="Idazmahaiak" cmd="xfce-setting-show workspaces"/>
+	<app name="Fitxategi kudeatzailea (xffm)" cmd="xfce-setting-show xffm"/>
+	<app name="Erabiltzaile interfazea (gtk+)" cmd="xfce-setting-show ui"/>
+	<app name="Ikono kutxa" cmd="xfce-setting-show xfibx"/>
+        <app name="Sagua" cmd="xfce-setting-show mouse"/>
+        <app name="Eginbehar barra" cmd="xfce-setting-show taskbar"/>
+	<app name="Teklatua" cmd="xfce-setting-show keyboard"/>
+	<app name="Leiho kudeatzailea" cmd="xfce-setting-show xfwm4"/>
+	<app name="Marjinak" cmd="xfce-setting-show xfwm_margins"/>
+	<app name="Panela" cmd="xfce-setting-show xfce"/>
+-->
+    </menu>
+    <separator/>
+    <app name="Laguntza" cmd="xfhelp4"/>
+    <!-- <separator/> -->
+    <!-- Set visible to yes to use this item.
+      This will exit the desktop manager. If you also put 
+      'exec xfdesktop' at the end of your ~/.xinitrc, this menu item can be
+      used to exit the X session.
+    -->
+    <builtin name="Quit" cmd="quit" visible="no"/>
+    <!-- Fitxaegi bat nola gehitu adibidea
+      1) DOCTYPE markakn (gorago ikusi) ENTITY bat ezarri.
+      2) gehitu entity fitxategian: 
+    -->
+    <!--
+    &menu2;
+    -->
+</xfdesktop-menu>
+

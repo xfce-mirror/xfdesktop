@@ -1,0 +1,204 @@
+# translation of xfdesktop.po to Euskara
+# translation of xfdesktop.po to euskera
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) 2004 THE PACKAGE'S COPYRIGHT HOLDER.
+# Jon Latorre Martinez <patataman@airtel.net>, 2003.
+# Piarres Beobide Egaña <pi@beobide.net>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-11-11 16:21+0100\n"
+"PO-Revision-Date: 1996-01-30 03:52+0100\n"
+"Last-Translator: Piarres Beobide Egaña <pi@beobide.net>\n"
+"Language-Team: Euskara <eu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#: settings/backdrop-mgr.c:175
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"Ezin da %s fitxategia gorde: %s\n"
+"\n"
+"Mesedez, beste kokapen bat aukeratu edo sakatu \"cancelar\" aldaketak "
+"ez gordetzeko"
+
+#: settings/backdrop-mgr.c:510
+msgid "Select image file"
+msgstr "Aukeratu irudi fitxategi bat"
+
+#: settings/backdrop-mgr.c:622
+msgid "Choose backdrop list filename"
+msgstr "Aukeratu atzekalde zerrenda bat duen fitxategia"
+
+#: settings/backdrop-mgr.c:694
+msgid "New.list"
+msgstr "Lista berria"
+
+#: settings/backdrop-mgr.c:698
+msgid "Backdrop List"
+msgstr "Atzekaldeen zerrenda"
+
+#: settings/backdrop-mgr.c:734
+msgid "Image files"
+msgstr "Irudi Fitxategia"
+
+#: settings/backdrop-mgr.c:749
+msgid "List file"
+msgstr "Lista fitxategia"
+
+#: settings/backdrop-mgr.c:767
+msgid "Create backdrop list"
+msgstr "Atzekalde zerrenda egin"
+
+#: settings/backdrop-mgr.c:774
+msgid "Edit backdrop list"
+msgstr "Editatu atzekalde zerrenda"
+
+#: settings/backdrop_settings.c:156
+msgid "Desktop: backdrop"
+msgstr "Idazmahia: atzekaldeak"
+
+#: settings/backdrop_settings.c:357
+msgid "Select background color"
+msgstr "Aukeratu atzekaldeko kolorea"
+
+#: settings/backdrop_settings.c:407
+msgid "Background color:"
+msgstr "Atzekaldeko kolorea:"
+
+#: settings/backdrop_settings.c:437
+msgid "Use color only:"
+msgstr "Bakarrik erabili kolorea:"
+
+#: settings/backdrop_settings.c:563
+msgid "File:"
+msgstr "Fitxategia:"
+
+#: settings/backdrop_settings.c:624
+msgid "Select background image or list file"
+msgstr "Aukeratu mahaigaineko argazkia edo fitxategien zerrenda"
+
+#: settings/backdrop_settings.c:701
+msgid "_Browse..."
+msgstr "_Arakatu..."
+
+#: settings/backdrop_settings.c:705
+msgid "New list"
+msgstr "Zerrenda berria"
+
+#: settings/backdrop_settings.c:709
+msgid "Edit list"
+msgstr "Editatu atzekaldeen zerrenda"
+
+#: settings/backdrop_settings.c:747
+msgid "Style:"
+msgstr "Estiloa"
+
+#: settings/backdrop_settings.c:755
+msgid "_Tiled"
+msgstr "_Karratuduna"
+
+#: settings/backdrop_settings.c:761
+msgid "_Scaled"
+msgstr "E_skalara"
+
+#: settings/backdrop_settings.c:768
+msgid "_Centered"
+msgstr "_Zentratua"
+
+#: settings/backdrop_settings.c:775
+msgid "_Auto"
+msgstr "_Automatikoa"
+
+#. the dialog
+#: settings/backdrop_settings.c:801
+msgid "Background"
+msgstr "Idazmahi atzekaldea"
+
+#. header
+#: settings/backdrop_settings.c:819
+msgid "Background Settings"
+msgstr "Idazmahi Atzekaldearen Konfigurazioa"
+
+#. color
+#: settings/backdrop_settings.c:825
+msgid "Color"
+msgstr "Kolorea"
+
+#. image vbox
+#: settings/backdrop_settings.c:837
+msgid "Image"
+msgstr "Irudia"
+
+#: settings/workspaces_settings.c:85
+msgid "Desktop: workspaces"
+msgstr "Idazmaia: idazmai birtualak"
+
+#: settings/workspaces_settings.c:329
+msgid "Change name"
+msgstr "Izena aldatu"
+
+#: settings/workspaces_settings.c:340
+#, c-format
+msgid "Workspace %d"
+msgstr "Idazmahi Birtuala %d"
+
+#: settings/workspaces_settings.c:350
+msgid "Name:"
+msgstr "Izena:"
+
+#: settings/workspaces_settings.c:461
+msgid "Click on a workspace name to edit it"
+msgstr "Sakatu mahaigainaren izena aldatzeko"
+
+#: settings/workspaces_settings.c:492
+msgid "Number of workspaces:"
+msgstr "Mahaigain birtualen zenbakia:"
+
+#. Number of workspaces
+#: settings/workspaces_settings.c:528 settings/workspaces_settings.c:558
+msgid "Workspaces"
+msgstr "Idazmahai birtualak"
+
+#: settings/workspaces_settings.c:551
+msgid "Workspace Settings"
+msgstr "Mahaigain birtualen ezarpenak"
+
+#. Workspace names
+#: settings/workspaces_settings.c:570
+msgid "Workspace names"
+msgstr "Mahaigain birtualen izena"
+
+#: src/backdrop.c:487
+#, c-format
+msgid "xfdesktop error: loading backdrop image: %s\n"
+msgstr "xfdesktop-en akatsa: azpiko fitxategia kargatzen %s\n"
+
+#: src/main.c:249
+msgid "Desktop"
+msgstr "Idazmahia"
+
+#: src/menu.c:736
+msgid "Add workspace"
+msgstr "Idazmahi birtuala gehitu"
+
+#: src/menu.c:743
+msgid "Delete workspace"
+msgstr "Idazmahi birtuala kendu"
+
+#: src/settings.c:186
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr ""
+"xfdesktop:Ezin izan da aukeren administratzailearekin konektatu! Mesedez, egiaztatu"
+"zure instalazioa."
+
