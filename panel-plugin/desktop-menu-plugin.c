@@ -178,16 +178,17 @@ dmp_popup(GtkWidget *w, gpointer user_data)
 
 	menu = xfce_desktop_menu_get_widget(dmp->desktop_menu);
 	if(menu) {
-        int id;
+        guint id;
         
 		panel_register_open_menu(menu);
         id = g_signal_connect(menu, "deactivate", 
                 G_CALLBACK(menu_deactivated), dmp);
-        g_object_set_data(G_OBJECT(menu), "sig_id", GINT_TO_POINTER(id));
+        g_object_set_data(G_OBJECT(menu), "sig_id", GUINT_TO_POINTER(id));
 		gtk_menu_popup(GTK_MENU(menu), NULL, NULL, 
 				(GtkMenuPositionFunc)dmp_position_menu, dmp->button->parent, 
 				1, gtk_get_current_event_time());
-	}
+	} else
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), FALSE);
 }
 
 static DMPlugin *
