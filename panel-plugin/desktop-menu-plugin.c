@@ -113,6 +113,7 @@ dmp_popup(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
 
 	menu = xfce_desktop_menu_get_widget(dmp->desktop_menu);
 	if(menu) {
+		panel_register_open_menu(menu);
 		gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, evt->button,
 				evt->time);
 	}
