@@ -259,10 +259,32 @@ static void add_sub_header(GtkWidget *vbox, const char *name)
 /* something changed */
 static void update_path(BackdropDialog *bd)
 {
+    GSList *li;
+    
     if (is_backdrop_list(backdrop_path))
+    {
+	GtkToggleButton *tb;
+	
 	gtk_widget_set_sensitive(bd->edit_list_button, TRUE);
+	
+	/* set style to AUTOMATIC and set insensitive */
+        tb = GTK_TOGGLE_BUTTON(bd->style_rb_group->data);
+	gtk_toggle_button_set_active(tb, TRUE);
+	
+	for (li = bd->style_rb_group; li; li = li->next)
+	{
+	    gtk_widget_set_sensitive(GTK_WIDGET(li->data), FALSE);
+	}
+    }
     else
+    {
 	gtk_widget_set_sensitive(bd->edit_list_button, FALSE);
+
+	for (li = bd->style_rb_group; li; li = li->next)
+	{
+	    gtk_widget_set_sensitive(GTK_WIDGET(li->data), TRUE);
+	}
+    }
 
     if (backdrop_path)
     {
@@ -799,6 +821,15 @@ static void add_style_options(GtkWidget *vbox, GtkSizeGroup *sg,
 	    break;
 	default:
 	    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(rb_auto), TRUE);
+    }
+
+    if (is_backdrop_list(backdrop_path))
+    {
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(rb_auto), TRUE);
+	gtk_widget_set_sensitive(rb_auto, FALSE);
+	gtk_widget_set_sensitive(rb_tiled, FALSE);
+	gtk_widget_set_sensitive(rb_scaled, FALSE);
+	gtk_widget_set_sensitive(rb_centered, FALSE);
     }
 }
 
