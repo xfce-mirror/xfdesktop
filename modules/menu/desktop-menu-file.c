@@ -193,7 +193,8 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			return;
 		
 		g_snprintf(tmppath, 2048, "%s/%s", state->cur_path, attribute_values[i]);
-		if(g_hash_table_lookup(state->desktop_menu->menu_entry_hash, tmppath))
+		if(state->desktop_menu->menu_entry_hash && 
+                   g_hash_table_lookup(state->desktop_menu->menu_entry_hash, tmppath))
 			return;
 		
 		j = _find_attribute(attribute_names, "cmd");

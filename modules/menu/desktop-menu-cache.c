@@ -292,8 +292,11 @@ desktop_menu_cache_add_entry(DesktopMenuCacheType type, const gchar *name,
 	
 	g_return_if_fail(parent_menu);
 	
-	parent_node = g_hash_table_lookup(menu_hash, parent_menu);
-	if(!parent_node) {
+	if (menu_hash)
+                parent_node = g_hash_table_lookup(menu_hash, parent_menu);
+	else
+                parent_node = NULL;
+        if(!parent_node) {
 		g_critical("XfceDesktopMenu: Attempt to add new cache entry without first adding the parent.");
 		return;
 	}

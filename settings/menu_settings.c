@@ -148,7 +148,7 @@ create_menu_page(BackdropDialog *bd)
 	
 	page = gtk_vbox_new(FALSE, 6);
 	
-	frame = xfce_framebox_new("Window List", TRUE);
+	frame = xfce_framebox_new(_("Window List"), TRUE);
 	gtk_widget_show(frame);
 	gtk_box_pack_start(GTK_BOX(page), frame, FALSE, FALSE, 0);
 	
@@ -184,7 +184,7 @@ create_menu_page(BackdropDialog *bd)
 		gtk_widget_set_sensitive(wl_vbox, FALSE);
 	
 #ifdef USE_DESKTOP_MENU
-	frame = xfce_framebox_new("Desktop Menu", TRUE);
+	frame = xfce_framebox_new(_("Desktop Menu"), TRUE);
 	gtk_widget_show(frame);
 	gtk_box_pack_start(GTK_BOX(page), frame, FALSE, FALSE, 0);
 	

@@ -216,7 +216,8 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
 	
 	BD("%s", path);
 	
-	if((submenu=g_hash_table_lookup(desktop_menu->menu_branches, path)))
+	if(desktop_menu->menu_branches && 
+           (submenu = g_hash_table_lookup(desktop_menu->menu_branches, path)))
 		return submenu;
 	else {
 		tmppath = g_strdup(path);
@@ -306,7 +307,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		goto cleanup;
 	if((p = strchr(exec, ' ')))
 		*p = 0;
-	if(g_hash_table_lookup(blacklist, exec))
+	if(blacklist && g_hash_table_lookup(blacklist, exec))
 		goto cleanup;
 	p = g_find_program_in_path(exec);
 	if(!p)
@@ -343,7 +344,8 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 				desktop_menu->use_menu_icons);
 		name = xfce_app_menu_item_get_name(XFCE_APP_MENU_ITEM(mi));
 		g_snprintf(tmppath, 2048, "%s/%s", path, name);
-		if(g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath)) {
+		if(desktop_menu->menu_entry_hash && 
+                   g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath)) {
 			gtk_widget_destroy(mi);
 			goto cleanup;
 		}
@@ -374,7 +376,8 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 				desktop_menu->use_menu_icons);
 		name = xfce_app_menu_item_get_name(XFCE_APP_MENU_ITEM(mi));
 		g_snprintf(tmppath, 2048, "%s/%s", path, name);
-		if(g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath)) {
+		if(desktop_menu->menu_entry_hash && 
+                   g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath)) {
 			gtk_widget_destroy(mi);
 			goto cleanup;
 		}
@@ -406,7 +409,8 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 					desktop_menu->use_menu_icons);
 			name = xfce_app_menu_item_get_name(XFCE_APP_MENU_ITEM(mi));
 			g_snprintf(tmppath, 2048, "%s/%s", path, name);
-			if(g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath)) {
+			if(desktop_menu->menu_entry_hash && 
+                           g_hash_table_lookup(desktop_menu->menu_entry_hash, tmppath)) {
 				gtk_widget_destroy(mi);
 				g_free(path);
 				path = NULL;
@@ -642,8 +646,11 @@ menu_dentry_legacy_parse_dentry_file(XfceDesktopMenu *desktop_menu,
 	gchar *category, *precat;
 
 	/* check for a conversion into a freedeskop-compliant category */
-	precat = g_hash_table_lookup(dir_to_cat, catdir);
-	if(!precat)
+	if (dir_to_cat)
+                precat = g_hash_table_lookup(dir_to_cat, catdir);
+	else
+                precat = NULL;
+        if(!precat)
 		precat = (gchar *)catdir;
 	/* check for a conversion into a user-defined display name */
 	category = (gchar *)desktop_menuspec_cat_to_displayname(precat);

@@ -106,8 +106,11 @@ get_paths_simple_single(GNode *node, gpointer data)
 			}
 			if(!n)
 				n = node;
-			foundcat = g_hash_table_lookup(cat_to_displayname, n->data);
-			if(!foundcat)
+                        if (cat_to_displayname)
+			        foundcat = g_hash_table_lookup(cat_to_displayname, n->data);
+			else
+                                foundcat = NULL;
+                        if(!foundcat)
 				foundcat = n->data;
 			g_ptr_array_add(mtfpi->paths, g_strconcat("/", foundcat, NULL));
 			return TRUE;
@@ -131,8 +134,11 @@ get_paths_multilevel(GNode *node, gpointer data)
 			totlen = 0;
 			revpath = g_ptr_array_new();
 			for(n=node; ((char *)n->data)[0] != '/'; n=n->parent) {
-				foundcat = g_hash_table_lookup(cat_to_displayname, n->data);
-				if(!foundcat) {
+                                if (cat_to_displayname)
+				        foundcat = g_hash_table_lookup(cat_to_displayname, n->data);
+				else
+                                        foundcat = NULL;
+                                if(!foundcat) {
 					g_ptr_array_free(revpath, FALSE);
 					revpath = NULL;
 					break;
@@ -257,13 +263,13 @@ menuspec_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		if(!state->started)
 			return;
 		
-		if(g_hash_table_lookup(cats_ignore, state->cur_category))
+		if(cats_ignore && g_hash_table_lookup(cats_ignore, state->cur_category))
 			return;
 		
 		if(attribute_names[0] && *attribute_names[0] &&
 				!strcmp(attribute_names[0], "name"))
 		{
-			if(!g_hash_table_lookup(cats_ignore, attribute_values[0])) {
+			if(!cats_ignore || !g_hash_table_lookup(cats_ignore, attribute_values[0])) {
 				mtsi.category = (char *)attribute_values[0];
 				mtsi.foundnode = NULL;
 				g_node_traverse(menu_tree, G_IN_ORDER, G_TRAVERSE_ALL, -1,
@@ -414,7 +420,10 @@ desktop_menuspec_get_path_simple(const gchar *categories)
 	for(i=0; cats[i]; i++) {
 		for(n=menu_tree->children; n; n=n->next) {
 			if(!strcmp(cats[i], (char *)n->data)) {
-				foundcat = g_hash_table_lookup(cat_to_displayname, n->data);
+				if (cat_to_displayname)
+                                        foundcat = g_hash_table_lookup(cat_to_displayname, n->data);
+                                else
+                                        foundcat = NULL;
 				if(!foundcat)
 					foundcat = n->data;
 				g_ptr_array_add(paths, g_build_path("/", foundcat, NULL));
@@ -476,13 +485,17 @@ desktop_menuspec_get_path_multilevel(const gchar *categories)
 G_CONST_RETURN gchar *
 desktop_menuspec_cat_to_displayname(const gchar *category)
 {
-	return g_hash_table_lookup(cat_to_displayname, category);
+        if (cat_to_displayname)
+        	return g_hash_table_lookup(cat_to_displayname, category);
+        return NULL;
 }
 
 G_CONST_RETURN gchar *
 desktop_menuspec_displayname_to_icon(const gchar *displayname)
 {
-	return g_hash_table_lookup(displayname_to_icon, displayname);
+        if (displayname_to_icon)
+	        return g_hash_table_lookup(displayname_to_icon, displayname);
+        return NULL;
 }
 
 void
