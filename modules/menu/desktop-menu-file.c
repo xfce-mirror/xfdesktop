@@ -98,6 +98,7 @@ struct MenuFileParserState {
 	GQueue *paths;  /* gchar * path names */
 	gchar cur_path[2048];  /* current full path */
 	XfceDesktopMenu *desktop_menu;
+	gint hidelevel;
 };
 
 static gint
@@ -161,7 +162,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 	gchar tmppath[2048];
 	struct MenuFileParserState *state = user_data;
 	
-	BD("cur_path: %s", state->cur_path);	
+	BD("cur_path: %s, hidelevel=%d", state->cur_path, state->hidelevel);
 	
 	if(!state->started && !strcmp(element_name, "xfdesktop-menu")) {
 		state->desktop_menu->use_menu_icons = TRUE;  /* default */
@@ -173,6 +174,9 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		return;
 	
 	if(!strcmp(element_name, "app")) {
+		if(state->hidelevel)
+			return;
+		
 		if((i=_find_attribute(attribute_names, "visible")) != -1 &&
 				(!strcmp(attribute_values[i], "false") ||
 				!strcmp(attribute_values[i], "no")))
@@ -220,6 +224,12 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 				(!strcmp(attribute_values[i], "false") ||
 				!strcmp(attribute_values[i], "no")))
 		{
+			state->hidelevel++;
+			return;
+		}
+		
+		if(state->hidelevel) {
+			state->hidelevel++;
 			return;
 		}
 		
@@ -277,6 +287,9 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		gtk_widget_show(mi);
 		gtk_menu_shell_append(GTK_MENU_SHELL(state->cur_branch), mi);
 	} else if(!strcmp(element_name, "builtin")) {
+		if(state->hidelevel)
+			return;
+		
 		if((i=_find_attribute(attribute_names, "visible")) != -1 &&
 				(!strcmp(attribute_values[i], "false") ||
 				!strcmp(attribute_values[i], "no")))
@@ -313,6 +326,9 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		gtk_widget_show(mi);
 		gtk_menu_shell_append(GTK_MENU_SHELL(state->cur_branch), mi);
 	} else if(!strcmp(element_name, "title")) {
+		if(state->hidelevel)
+			return;
+		
 		if((i=_find_attribute(attribute_names, "visible")) != -1 &&
 				(!strcmp(attribute_values[i], "false") ||
 				!strcmp(attribute_values[i], "no")))
@@ -328,6 +344,9 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			gtk_menu_shell_append(GTK_MENU_SHELL(state->cur_branch), mi);
 		}
 	} else if(!strcmp(element_name, "include")) {
+		if(state->hidelevel)
+			return;
+		
 		if((i=_find_attribute(attribute_names, "visible")) != -1 &&
 				(!strcmp(attribute_values[i], "false") ||
 				!strcmp(attribute_values[i], "no")))
@@ -400,16 +419,20 @@ menu_file_xml_end(GMarkupParseContext *context, const gchar *element_name,
 	TRACE("dummy");
 	
 	if(!strcmp(element_name, "menu")) {
-		g_queue_pop_tail(state->branches);
-		state->cur_branch = g_queue_peek_tail(state->branches);
-		p = g_queue_pop_tail(state->paths);
-		if(p)
-			g_free(p);
-		p = g_strrstr(state->cur_path, "/");
-		if(p && p != state->cur_path)
-			*p = 0;
-		else if(p)
-			*(p+1) = 0;
+		if(state->hidelevel)
+			state->hidelevel--;
+		else {
+			g_queue_pop_tail(state->branches);
+			state->cur_branch = g_queue_peek_tail(state->branches);
+			p = g_queue_pop_tail(state->paths);
+			if(p)
+				g_free(p);
+			p = g_strrstr(state->cur_path, "/");
+			if(p && p != state->cur_path)
+				*p = 0;
+			else if(p)
+				*(p+1) = 0;
+		}
 	} else if(!strcmp(element_name, "xfdesktop-menu"))
 		state->started = FALSE;
 }
@@ -506,6 +529,7 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 	g_queue_push_tail(state.paths, g_strdup(cur_path));
 	g_strlcpy(state.cur_path, cur_path, 2048);
 	state.desktop_menu = desktop_menu;
+	state.hidelevel = 0;
 	
 	gpcontext = g_markup_parse_context_new(&gmparser, 0, &state, NULL);
 
