@@ -53,14 +53,12 @@ BM_DEPEND([GMODULE], gmodule-2.0, 2.0.6)
 
 dnl check for libxml2 for menueditor
 BM_DEPEND_CHECK([LIBXML], libxml-2.0, 2.4.0, [libxml2], [libxml2 (for xfce4-menueditor)], [yes])
+AM_CONDITIONAL([BUILD_MENUEDITOR], [test "x$LIBXML_FOUND" = "xyes"])
 if test "x$LIBXML_FOUND" = "xyes"; then
-	MENUEDITOR_DIR="menueditor"
 	build_menueditor="yes"
 else
-	MENUEDITOR_DIR=""
 	build_menueditor="no"
 fi
-AC_SUBST(MENUEDITOR_DIR)
 
 dnl Configure the MCS plugins
 XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.0.0])
@@ -73,16 +71,14 @@ AC_ARG_ENABLE([desktop-menu],
 	[ac_cv_enable_desktop_menu=$enableval],
 	[ac_cv_enable_desktop_menu=yes])
 if test "x$ac_cv_enable_desktop_menu" = "xno"; then
-	DESKTOP_MENU_DIR=""
 	build_desktop_menu="no"
 else
-	DESKTOP_MENU_DIR="menu"
 	build_desktop_menu="yes"
-	AC_DEFINE([USE_DESKTOP_MENU], [1], [Define if we should build the desktop menu module])
+	AC_DEFINE([USE_DESKTOP_MENU], [1],
+		[Define if we should build the desktop menu module])
 fi
 AC_SUBST(DESKTOP_MENU_DIR)
-AM_CONDITIONAL([BUILD_DESKTOP_MENU_STUB],
-	[test "x$build_desktop_menu" = "xyes" ])
+AM_CONDITIONAL([BUILD_DESKTOP_MENU], [test "x$build_desktop_menu" = "xyes"])
 
 AC_ARG_ENABLE([panel-plugin],
 	[AC_HELP_STRING([--disable-panel-plugin],
@@ -90,13 +86,11 @@ AC_ARG_ENABLE([panel-plugin],
 	[ac_cv_enable_panel_plugin=$enableval],
 	[ac_cv_enable_panel_plugin=yes])
 if test "x$ac_cv_enable_panel_plugin" = "xno" -o "x$build_desktop_menu" = "xno"; then
-	PANEL_PLUGIN_DIR=""
 	build_panel_plugin="no"
 else
-	PANEL_PLUGIN_DIR="panel-plugin"
 	build_panel_plugin="yes"
 fi
-AC_SUBST(PANEL_PLUGIN_DIR)
+AM_CONDITIONAL([BUILD_PANEL_PLUGIN], [test "x$build_panel_plugin" = "xyes"])
 
 dnl Check for debugging support
 BM_DEBUG_SUPPORT

@@ -7,7 +7,7 @@ libxfdesktop_la_SOURCES =						\
 	backdrop-common.c						\
 	backdrop-common.h
 
-if BUILD_DESKTOP_MENU_STUB
+if BUILD_DESKTOP_MENU
 libxfdesktop_la_SOURCES += desktop-menu-stub.c desktop-menu-stub.h
 endif
 	

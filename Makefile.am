@@ -8,11 +8,15 @@ SUBDIRS = \
 	settings \
 	src \
 	modules \
-	pixmaps \
-	$(PANEL_PLUGIN_DIR) \
-	$(MENUEDITOR_DIR)
+	pixmaps
 
-DIST_SUBDIRS = $(SUBDIRS) panel-plugin menueditor
+if BUILD_PANEL_PLUGIN
+SUBDIRS += panel-plugin
+endif
+
+if BUILD_MENUEDITOR
+SUBDIRS += menueditor
+endif
 
 confdir = $(sysconfdir)/xfce4
 
