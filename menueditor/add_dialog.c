@@ -21,6 +21,9 @@
 #include "menueditor.h"
 
 #include "add_dialog.h"
+#ifdef HAVE_STRING_H
+#include <string.h>
+#endif
 
 /*************************/
 /* Manage activated item */
@@ -479,6 +482,9 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 
       g_free(name);
 
+      break;
+    case INCLUDE:
+      /* dannym messed here, to make gcc shut up */
       break;
     case QUIT:
       /* Test if all field are filled */
