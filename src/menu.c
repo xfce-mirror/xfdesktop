@@ -154,8 +154,9 @@ free_menu_data (GList * menu_data)
 static void
 do_exec (gpointer callback_data, guint callback_action, GtkWidget * widget)
 {
+#if 0 /* until i figure out why this doesn't work (brian) */
     TRACE ("dummy");
-	
+
 	switch(fork()) {
 		case -1:
 			g_warning("%s: unable to fork()\n", PACKAGE);
@@ -172,12 +173,18 @@ do_exec (gpointer callback_data, guint callback_action, GtkWidget * widget)
 		default:
 			break;
 	}
+#else
+	if(callback_data)
+		g_spawn_command_line_async((char *)callback_data, NULL);
+#endif
 }
 
 static void
 do_term_exec (gpointer callback_data, guint callback_action,
 	      GtkWidget * widget)
 {
+
+#if 0 /* until i figure out why this doesn't work (brian) */
     TRACE ("dummy");
 
 	switch(fork()) {
@@ -196,6 +203,14 @@ do_term_exec (gpointer callback_data, guint callback_action,
 		default:
 			break;
 	}
+#else
+	char *cmd;
+	if(callback_data) {
+		cmd = g_strconcat("xfterm4 -e ", (char *)callback_data, NULL);
+		g_spawn_command_line_async(cmd, NULL);
+		g_free(cmd);
+	}
+#endif
 }
 
 static void
