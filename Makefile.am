@@ -10,6 +10,7 @@ conf_DATA = 								\
 	menu.xml.fr 							\
 	menu.xml.nl  							\
 	menu.xml.ca 							\
+	menu.xml.hu 							\
 	menu.xml.zh_CN
 
 EXTRA_DIST = $(conf_DATA) xfdesktop.spec TODO
