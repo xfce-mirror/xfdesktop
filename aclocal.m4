@@ -1840,6 +1840,22 @@ AC_DEFUN([BM_DEPEND],
   AC_SUBST($1_REQUIRED_VERSION)
 ])
 
+dnl
+dnl BM_DEPEND_CHECK(var, pkg, version)
+dnl
+AC_DEFUN([BM_DEPEND_CHECK],
+[
+  AC_MSG_CHECKING([for $2 >= $3])
+  if $PKG_CONFIG --atleast-version=$3 $2 2> /dev/null; then
+    AC_MSG_RESULT([yes])
+    BM_DEPEND([$1], [$2], [$3])
+    AC_DEFINE([HAVE_$1], [1], [Define if you have $2 >= $3])
+  else
+    AC_MSG_RESULT([no])
+  fi
+])
+
+
 
 dnl PKG_CHECK_MODULES(GSTUFF, gtk+-2.0 >= 1.3 glib = 1.3.4, action-if, action-not)
 dnl defines GSTUFF_LIBS, GSTUFF_CFLAGS, see pkg-config man page
