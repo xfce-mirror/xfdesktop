@@ -364,9 +364,14 @@ static void add_color_button(GtkWidget *vbox, BackdropDialog *bd)
     GtkWidget *hbox, *label, *frame, *button;
     GtkSizeGroup *sg;
     GdkPixbuf *pixbuf;
-    GdkColor color = {0x0000, 0x0000, 0x0000, 0x0000};
+    GdkColor color;
     guint32 rgba;
 
+    color.red = backdrop_color.red;
+    color.green = backdrop_color.green;
+    color.blue = backdrop_color.blue;
+    bd->color = color;
+    
     sg = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
     
     hbox = gtk_hbox_new(FALSE, BORDER);
@@ -385,16 +390,10 @@ static void add_color_button(GtkWidget *vbox, BackdropDialog *bd)
     
     frame = gtk_frame_new(NULL);
     gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
-    gtk_container_set_border_width(GTK_CONTAINER(frame), 2);
+    gtk_container_set_border_width(GTK_CONTAINER(frame), 0);
     gtk_widget_show(frame);
     gtk_container_add(GTK_CONTAINER(button), frame);
 
-
-    color.red = backdrop_color.red;
-    color.green = backdrop_color.green;
-    color.blue = backdrop_color.blue;
-    bd->color = color;
-    
     pixbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, 40, 16);
     rgba = (((color.red & 0xff00) << 8) | ((color.green & 0xff00)) | ((color.blue & 0xff00) >> 8)) << 8;
     gdk_pixbuf_fill(pixbuf, rgba);

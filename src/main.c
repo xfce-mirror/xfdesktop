@@ -48,10 +48,11 @@ void quit(void)
     if (session_managed)
     {
 	logout_session(client_session);
-	return;
     }
     else
+    {
 	gtk_main_quit();
+    }
 }
 
 /* client message */
