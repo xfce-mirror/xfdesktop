@@ -508,11 +508,18 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 							attribute_values[j], state->cur_branch,
 							state->cur_path, FALSE, FALSE);
 				} else {
-					gchar *menuincfile = xfce_get_userfile(attribute_values[j],
-							NULL);
-					desktop_menu_file_parse(state->desktop_menu, menuincfile,
-							state->cur_branch, state->cur_path, FALSE, FALSE);
-					g_free(menuincfile);
+					gchar tmp[PATH_MAX];
+					gchar *menuincfile;
+					
+					g_snprintf(tmp, PATH_MAX, "xfce4/desktop/%s",
+							attribute_values[j]);
+					menuincfile = xfce_resource_lookup(XFCE_RESOURCE_CONFIG, tmp);
+					if(menuincfile) {
+						desktop_menu_file_parse(state->desktop_menu,
+								menuincfile, state->cur_branch,
+								state->cur_path, FALSE, FALSE);
+						g_free(menuincfile);
+					}
 				}
 			}
 		} else if(!strcmp(attribute_values[i], "system")) {
