@@ -260,6 +260,11 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 	gdk_error_trap_pop();
 	
 	/* clear the old pixmap, if any */
+	style = gtk_widget_get_style(desktop);
+	if(style->bg_pixmap[GTK_STATE_NORMAL]) {
+		g_object_unref(G_OBJECT(style->bg_pixmap[GTK_STATE_NORMAL]));
+		style->bg_pixmap[GTK_STATE_NORMAL] = NULL;
+	}
 	gtk_widget_set_style(desktop, NULL);
 	
 	/* create a new style, attach it to the window, and add the new pixmap */
