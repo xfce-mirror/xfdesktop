@@ -1,6 +1,6 @@
 /*  xfce4
  *  
- *  Copyright (C) 2002 Jasper Huijsmans (huysmans@users.sourceforge.net)
+ *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -46,69 +46,52 @@
 #include <libxfce4util/i18n.h>
 #include <libxfcegui4/libnetk.h>
 
-#include "main.h"
-#include "backdrop.h"
-#include "menu.h"
 #include "settings.h"
 
-static McsClient *client = NULL;
+/* hash table: channel_name -> channel_callback */
 static GHashTable *settings_hash = NULL;
 
-static Display *dpy;
-static int xscreen;
+void
+register_channel_callback (const char *name, ChannelCallback callback)
+{
+    g_hash_table_insert (settings_hash, (gpointer)name, (gpointer)callback);
+}
 
-/* init_settings is a flag that dramatically speeds up startup 
-   by avoiding the computation of the backdrop image every time 
-   a settings is added at startup
- */
-gboolean init_settings = TRUE;
-
-/*  mcs client 
- *  ----------
-*/
-/* hash table: channel_name -> channel_callback */
 static void init_settings_hash(void)
 {
     TRACE("dummy");
     settings_hash = g_hash_table_new(g_str_hash, g_str_equal);
-    
-    add_backdrop_callback(settings_hash);
-    add_menu_callback(settings_hash);
 }
 
-/* load settings */
-void load_settings(void)
+static void 
+notify_cb(const char *name, const char *channel_name, McsAction action, 
+	  McsSetting * setting, XfceDesktop *xfdesktop)
 {
-    TRACE("dummy");
-    backdrop_load_settings(client);
-    menu_load_settings(client);
-}
-
-/* settings */
-static void notify_cb(const char *name, const char *channel_name, McsAction action, McsSetting * setting, void *data)
-{
-    void (*update_channel)(const char *name, McsAction action, 
-	    		   McsSetting * setting);
+    ChannelCallback update_channel;
 
     TRACE("dummy");
     update_channel = g_hash_table_lookup(settings_hash, channel_name);
 
     if (update_channel)
-	update_channel(name, action, setting);
+	update_channel(name, action, setting, xfdesktop);
     else
-	g_printerr("Unknown channel: %s\n", channel_name);
+	g_printerr("%s: Unknown settings channel: %s\n", PACKAGE, 
+		   channel_name);
 }
 
-GdkFilterReturn client_event_filter(GdkXEvent * xevent, GdkEvent * event, gpointer data)
+GdkFilterReturn 
+client_event_filter(GdkXEvent * xevent, GdkEvent * event, 
+	            XfceDesktop *xfdesktop)
 {
     TRACE("dummy");
-    if(mcs_client_process_event(client, (XEvent *) xevent))
+    if(mcs_client_process_event(xfdesktop->client, (XEvent *) xevent))
         return GDK_FILTER_REMOVE;
     else
         return GDK_FILTER_CONTINUE;
 }
 
-static void watch_cb(Window window, Bool is_start, long mask, void *cb_data)
+static void 
+watch_cb(Window window, Bool is_start, long mask, void *cb_data)
 {
     GdkWindow *gdkwin;
 
@@ -116,92 +99,74 @@ static void watch_cb(Window window, Bool is_start, long mask, void *cb_data)
     gdkwin = gdk_window_lookup(window);
 
     if(is_start)
-        gdk_window_add_filter(gdkwin, client_event_filter, NULL);
+        gdk_window_add_filter(gdkwin, (GdkFilterFunc) client_event_filter, 
+			      cb_data);
     else
-        gdk_window_remove_filter(gdkwin, client_event_filter, NULL);
+        gdk_window_remove_filter(gdkwin, (GdkFilterFunc) client_event_filter, 
+				 cb_data);
 }
 
-/* connecting and disconnecting */
-static gboolean manager_is_running(Display *dpy, int screen)
+static gboolean 
+manager_is_running(Display *dpy, int screen)
 {
     int result;
     
     TRACE("dummy");
+    
     /* we need a multi channel settings manager */
     result = mcs_manager_check_running(dpy, screen);
 
     return (MCS_MANAGER_STD < result);
 }
 
-static void start_mcs_manager(void)
+static void 
+start_mcs_manager(void)
 {
     GError *error = NULL;
     
     TRACE("dummy");
-    g_message("xfdesktop: starting the settings manager\n");
+    
+    g_message("%s: starting the settings manager\n", PACKAGE);
 
     if (!g_spawn_command_line_sync("xfce-mcs-manager", 
 				   NULL, NULL, NULL, &error))
     {
-	g_critical("xfdesktop: could not start settings manager: %s\n",
-		   error->message);
-    }
-    else
-    {
-        g_message("xfdesktop: settings manager successfully started\n");
+	g_critical("%s: could not start settings manager:\n%s\n",
+		   PACKAGE, error->message);
+	g_error_free (error);
     }
 }
 
-static void add_channel(char *channel, gpointer value, McsClient *client)
+void 
+settings_init(XfceDesktop *xfdesktop)
 {
     TRACE("dummy");
-    mcs_client_add_channel(client, channel);
-}
-
-void watch_settings(GtkWidget *window, NetkScreen *screen)
-{
-    TRACE("dummy");
-    backdrop_init(window);
-    menu_init(window, screen);
-
-    if (!settings_hash)
-    {
-	init_settings_hash();
-
-	dpy = GDK_DISPLAY();
-	xscreen = DefaultScreen(dpy);
-    }
     
-    if (!manager_is_running(dpy, xscreen))
+    if (!settings_hash)
+	init_settings_hash();
+    
+    if (!manager_is_running(xfdesktop->dpy, xfdesktop->xscreen))
 	start_mcs_manager();
     
-    client = mcs_client_new(dpy, xscreen, notify_cb, watch_cb, NULL);
+    xfdesktop->client = mcs_client_new(xfdesktop->dpy, xfdesktop->xscreen, 
+	    			       (McsNotifyFunc) notify_cb, 
+				       (McsWatchFunc) watch_cb, 
+				       (gpointer) xfdesktop);
        
-    if(!client || !manager_is_running(dpy, xscreen))
+    if(!xfdesktop->client || 
+       !manager_is_running(xfdesktop->dpy, xfdesktop->xscreen))
     {
-        g_critical(_("xfdesktop: could not connect to settings manager!" 
-		     "Please check your installation."));
-
-/*	report_error(_("XFDesktop could not connect to the settings \n"
-		       "manager.\n"
-		       "Please make sure it is installed on your system."));
-*/
-	return;
+        g_critical("%s: could not connect to settings manager!", PACKAGE);
     }
-    
-    init_settings = TRUE;
-    g_hash_table_foreach(settings_hash, (GHFunc)add_channel, client);
-    init_settings = FALSE;
-
-    load_settings();
 }
 
-void stop_watch(void)
+void settings_cleanup(XfceDesktop *xfdesktop)
 {
     TRACE("dummy");
-    if (client)
-	mcs_client_destroy(client);
+    
+    if (xfdesktop->client)
+	mcs_client_destroy(xfdesktop->client);
 
-    client = NULL;
+    xfdesktop->client = NULL;
 }
 

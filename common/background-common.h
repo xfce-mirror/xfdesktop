@@ -27,14 +27,18 @@
 #define LIST_TEXT           "# xfce backdrop list"
 
 /* styles */
-enum {
+typedef enum {
     TILED,
-    SCALED,
     CENTERED,
+    SCALED,
+    STRETCHED,
     AUTO,
     NONE
-};
+}
+XfceBackgroundStyle;
 
 extern gchar **get_list_from_file(const gchar *);
+
+extern gboolean is_backdrop_list (const char *path);
 
 #endif  /* !__XFDESKTOP_BACKDROP_H__ */

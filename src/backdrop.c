@@ -63,202 +63,32 @@
 #include <libxfcegui4/dialogs.h>
 #include <libxfcegui4/netk-screen.h>
 
-#include <backdrop.h>
+#include <common/background-common.h>
 
 #include "main.h"
 #include "settings.h"
+#include "backdrop.h"
 
-static GtkWidget *fullscreen_window = NULL;
-
-static int set_background = 1;
-static char *backdrop_path = NULL;
-static int backdrop_style = TILED;
-static int showimage = 1;
-static GdkColor backdrop_color = { 0, 0, 0, 0 };
-
-static void set_backdrop (const char *path, int style, int show,
-			  GdkColor * color);
-
-static gboolean
-is_backdrop_list (const char *path)
+typedef struct
 {
-    FILE *fp;
-    char buf[512];
-    int size;
-    gboolean is_list = FALSE;
+    GtkWidget *win;
+    
+    guint set_background:1;
+    guint show_image:1;
 
-    TRACE ("dummy");
-    size = sizeof (LIST_TEXT);
-
-    if ((fp = fopen (path, "r")) == NULL)
-	return FALSE;
-
-    if (fgets (buf, size, fp) && strncmp (LIST_TEXT, buf, size - 1) == 0)
-	is_list = TRUE;
-
-    fclose (fp);
-    return is_list;
+    GdkColor color;
+    char *path;
+    XfceBackgroundStyle style;
 }
+XfceBackground;
 
-static void
-remove_old_pixmap (void)
-{
-    Display *dpy = GDK_DISPLAY ();
-    Window w = GDK_ROOT_WINDOW ();
-    Atom type;
-    int format;
-    unsigned long length, after;
-    unsigned char *data;
-    Atom e_prop = XInternAtom (dpy, "ESETROOT_PMAP_ID", False);
+static gboolean init_settings = TRUE;
 
-    TRACE ("dummy");
-    XGrabServer (dpy);
+static XfceBackground *background = NULL;
 
-    XGetWindowProperty (dpy, w, e_prop, 0L, 1L, False, AnyPropertyType,
-			&type, &format, &length, &after, &data);
+static void set_background (XfceBackground * background);
 
-    if ((type == XA_PIXMAP) && (format == 32) && (length == 1))
-    {
-	gdk_error_trap_push ();
-	XKillClient (dpy, *((Pixmap *) data));
-	gdk_flush ();
-	gdk_error_trap_pop ();
-	XDeleteProperty (dpy, w, e_prop);
-    }
-
-    XUngrabServer (dpy);
-}
-
-void
-backdrop_init (GtkWidget * window)
-{
-    TRACE ("dummy");
-    fullscreen_window = window;
-
-    remove_old_pixmap ();
-}
-
-/* settings client */
-static void
-update_backdrop_channel (const char *name, McsAction action,
-			 McsSetting * setting)
-{
-    TRACE ("dummy");
-    DBG("processing change in \"%s\"", name);
-
-    switch (action)
-    {
-	case MCS_ACTION_NEW:
-	    /* fall through unless we are in init state */
-	    if (init_settings)
-	    {
-		return;
-	    }
-	case MCS_ACTION_CHANGED:
-	    if (strcmp (name, "setbackground") == 0)
-	    {
-		set_background = setting->data.v_int;
-		DBG("set_background = %d", set_background);
-	    }
-	    else if (strcmp (name, "style") == 0)
-	    {
-		backdrop_style = setting->data.v_int;
-	    }
-	    else if (strcmp (name, "path") == 0)
-	    {
-		g_free (backdrop_path);
-		backdrop_path = (setting->data.v_string) ?
-		    g_strdup (setting->data.v_string) : NULL;
-	    }
-	    else if (strcmp (name, "color") == 0)
-	    {
-		backdrop_color.red = setting->data.v_color.red;
-		backdrop_color.green = setting->data.v_color.green;
-		backdrop_color.blue = setting->data.v_color.blue;
-	    }
-	    else if (strcmp (name, "showimage") == 0)
-	    {
-		showimage = setting->data.v_int;
-	    }
-
-	    if (set_background)
-	    {
-		set_backdrop (backdrop_path, backdrop_style, showimage,
-			      &backdrop_color);
-	    }
-
-	    break;
-	case MCS_ACTION_DELETED:
-	    /* We don't use this now. Perhaps revert to default? */
-	    break;
-    }
-}
-
-void
-add_backdrop_callback (GHashTable * ht)
-{
-    TRACE ("dummy");
-    g_hash_table_insert (ht, BACKDROP_CHANNEL, update_backdrop_channel);
-}
-
-void
-backdrop_load_settings (McsClient * client)
-{
-    McsSetting *setting;
-
-    TRACE ("dummy");
-    if (MCS_SUCCESS == mcs_client_get_setting (client, "setbackground",
-					       BACKDROP_CHANNEL, &setting))
-    {
-	set_background = setting->data.v_int;
-	mcs_setting_free (setting);
-    }
-
-    if (MCS_SUCCESS == mcs_client_get_setting (client, "style",
-					       BACKDROP_CHANNEL, &setting))
-    {
-	backdrop_style = setting->data.v_int;
-	mcs_setting_free (setting);
-    }
-
-    if (MCS_SUCCESS == mcs_client_get_setting (client, "path",
-					       BACKDROP_CHANNEL, &setting))
-    {
-	if (setting->data.v_string)
-	{
-	    g_free (backdrop_path);
-	    backdrop_path = g_strdup (setting->data.v_string);
-	}
-
-	mcs_setting_free (setting);
-    }
-
-    if (MCS_SUCCESS == mcs_client_get_setting (client, "color",
-					       BACKDROP_CHANNEL, &setting))
-    {
-	backdrop_color.red = setting->data.v_color.red;
-	backdrop_color.green = setting->data.v_color.green;
-	backdrop_color.blue = setting->data.v_color.blue;
-
-	mcs_setting_free (setting);
-    }
-
-    if (MCS_SUCCESS ==
-	mcs_client_get_setting (client, "showimage", BACKDROP_CHANNEL,
-				&setting))
-    {
-	showimage = setting->data.v_int;
-	mcs_setting_free (setting);
-    }
-
-    if (set_background)
-    {
-	DBG("load settings && set_background = %d", set_background);
-	set_backdrop (backdrop_path, backdrop_style, showimage, 
-		      &backdrop_color);
-    }
-}
-
+/* list files */
 static int
 count_elements (char **list)
 {
@@ -271,14 +101,14 @@ count_elements (char **list)
     return (c - list);
 }
 
-static char *
+static const char *
 get_path_from_listfile (const gchar * listfile)
 {
     static gboolean __initialized = FALSE;
     static gchar *prevfile = NULL;
     static gchar **files = NULL;
     static gint previndex = -1;
-    static time_t ctime = 0;
+    static time_t mtime = 0;
     struct stat st;
     int i, n;
 
@@ -295,11 +125,11 @@ get_path_from_listfile (const gchar * listfile)
     {
 	g_free (prevfile);
 	prevfile = NULL;
-	ctime = 0;
+	mtime = 0;
 	return NULL;
     }
 
-    if (!prevfile || strcmp (listfile, prevfile) != 0 || ctime < st.st_ctime)
+    if (!prevfile || strcmp (listfile, prevfile) != 0 || mtime < st.st_mtime)
     {
 	g_strfreev (files);
 	g_free (prevfile);
@@ -307,7 +137,7 @@ get_path_from_listfile (const gchar * listfile)
 	files = get_list_from_file (listfile);
 	prevfile = g_strdup (listfile);
 	previndex = -1;
-	ctime = st.st_ctime;
+	mtime = st.st_mtime;
     }
 
     n = count_elements (files);
@@ -318,7 +148,7 @@ get_path_from_listfile (const gchar * listfile)
 	    return NULL;
 
 	case 1:
-	    return *files;
+	    return (const char *) files[0];
     }
 
     /* NOTE: 4.3BSD random()/srandom() are a) stronger and b) faster than
@@ -343,41 +173,90 @@ get_path_from_listfile (const gchar * listfile)
     }
     while (i == previndex);
 
-    return files[(previndex = i)];
+    return (const char *) files[(previndex = i)];
 }
 
-static GdkPixmap *
-create_background_pixmap (GdkPixbuf * pixbuf, int style, GdkColor * color)
+/* load image from file */
+static GdkPixbuf *
+create_image (XfceBackground * background)
 {
-    GdkPixmap *pixmap = NULL;
+    GError *error = NULL;
+    const char *path = NULL;
+    GdkPixbuf *pixbuf;
+
+    if (!background->path || !strlen (background->path))
+	return NULL;
+
+    if (is_backdrop_list (background->path))
+	path = get_path_from_listfile (path);
+    else
+	path = (const char *) background->path;
+
+    pixbuf = gdk_pixbuf_new_from_file (path, &error);
+
+    if (error)
+    {
+	xfce_err (_("%s: There was an error loading image:\n%s\n"),
+		  PACKAGE, error->message);
+
+	g_error_free (error);
+
+	return NULL;
+    }
+
+    return pixbuf;
+}
+
+/* pixbuf for background color */
+static GdkPixbuf *
+create_solid (GdkColor * color, int width, int height)
+{
     GdkPixbuf *solid;
-    int width, height;
     guint32 rgba;
-    gboolean has_composite;
 
     TRACE ("dummy");
-    /* First, fill the pixbuf with solid color */
-    solid =
-	gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, gdk_screen_width(),
-			gdk_screen_height());
-    rgba = (((color->red & 0xff00) << 8) | 
-	    ((color->green & 0xff00)) | 
-	    ((color->blue & 0xff00) >> 8)) << 8;
+
+    solid = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, width, height);
+
+    rgba = (((color->red & 0xff00) << 8) |
+	    ((color->green & 0xff00)) | ((color->blue & 0xff00) >> 8)) << 8;
+
     gdk_pixbuf_fill (solid, rgba);
 
-    if (pixbuf)
-    {
-	width = gdk_pixbuf_get_width (pixbuf);
+    return solid;
+}
 
-	height = gdk_pixbuf_get_height (pixbuf);
-	has_composite = gdk_pixbuf_get_has_alpha (pixbuf);
+/* This function does all of the work for compositing and scaling the image
+ * onto a solid color background
+ */
+static GdkPixmap *
+create_pixmap (XfceBackground * background, GdkPixbuf * image)
+{
+    GdkPixmap *pixmap = NULL;
+    GdkPixbuf *pixbuf = NULL;
+    int width, height;
+    gboolean has_composite;
+    XfceBackgroundStyle style = background->style;
+
+    TRACE ("dummy");
+
+    if (!image)
+    {
+	pixbuf = create_solid (&(background->color), 1, 1);
+    }
+    else
+    {
+	width = gdk_pixbuf_get_width (image);
+	height = gdk_pixbuf_get_height (image);
+	has_composite = gdk_pixbuf_get_has_alpha (image);
 
 	if (style == AUTO)
 	{
-	    /* if height and width are both less than half the screen
+	    /* if height and width are both less than 1/3 the screen
 	     * -> tiled, else -> scaled */
 
-	    if (height <= gdk_screen_height()/ 2 && width <= gdk_screen_width())
+	    if (height <= gdk_screen_height () / 3 &&
+		width <= gdk_screen_width () / 3)
 	    {
 		style = TILED;
 	    }
@@ -389,164 +268,315 @@ create_background_pixmap (GdkPixbuf * pixbuf, int style, GdkColor * color)
 
 	switch (style)
 	{
+	    case TILED:
+		if (has_composite)
+		{
+		    pixbuf = create_solid (&(background->color),
+					   width, height);
+		    gdk_pixbuf_composite (image, pixbuf,
+					  0, 0, width, height,
+					  0, 0, 1.0, 1.0,
+					  GDK_INTERP_NEAREST, 255);
+		}
+		else
+		{
+		    pixbuf = image;
+		    g_object_ref (pixbuf);
+		}
+		
+		break;
+
 	    case CENTERED:
 		{
-		    gint x = MAX ((gdk_screen_width() - width) / 2, 0);
-		    gint y = MAX ((gdk_screen_height() - height) / 2, 0);
+		    gint x = MAX ((gdk_screen_width () - width) / 2, 0);
+		    gint y = MAX ((gdk_screen_height () - height) / 2, 0);
+
+		    pixbuf = create_solid (&(background->color),
+					   gdk_screen_width (),
+					   gdk_screen_height ());
+
 		    if (has_composite)
 		    {
-			gdk_pixbuf_composite (pixbuf, solid, x, y,
-					      MIN (gdk_screen_width(), width),
-					      MIN (gdk_screen_height(), height),
-					      x,y, 1.0, 1.0, GDK_INTERP_NEAREST,
-					      255);
-		    }
-		    else
-		    {
-			gdk_pixbuf_copy_area (pixbuf, 0, 0,
-					      MIN (gdk_screen_width(), width),
-					      MIN (gdk_screen_height(), height),
-					      solid, x, y);
-		    }
-		}
-		break;
-	    case SCALED:
-		{
-		    GdkPixbuf *new = pixbuf;
-		    new =
-			gdk_pixbuf_scale_simple (pixbuf, gdk_screen_width(),
-						 gdk_screen_height(),
-						 GDK_INTERP_BILINEAR);
-		    if (has_composite)
-		    {
-			gdk_pixbuf_composite (new, solid, 0, 0,
-					      gdk_screen_width(),
-					      gdk_screen_height(),
-					      0, 0, 1.0, 1.0,
+			gdk_pixbuf_composite (image, pixbuf, x, y,
+					      MIN (gdk_screen_width (),
+						   width),
+					      MIN (gdk_screen_height (),
+						   height), x, y, 1.0, 1.0,
 					      GDK_INTERP_NEAREST, 255);
 		    }
 		    else
 		    {
-			gdk_pixbuf_copy_area (new, 0, 0, gdk_screen_width(),
-					      gdk_screen_height(), solid, 0, 0);
+			gdk_pixbuf_copy_area (image, 0, 0,
+					      MIN (gdk_screen_width (),
+						   width),
+					      MIN (gdk_screen_height (),
+						   height), pixbuf, x, y);
 		    }
-		    g_object_unref (new);
 		}
+		
 		break;
-	    default:
-	    case TILED:
-		{
-		    gdouble cx, cy;
 
-		    for (cy = 0; cy < gdk_screen_height(); cy += height)
+	    case SCALED:
+		/* FIXME: do scaling with aspect ratio here */
+
+	    case STRETCHED:
+		{
+		    pixbuf =
+			gdk_pixbuf_scale_simple (image, gdk_screen_width (),
+						 gdk_screen_height (),
+						 GDK_INTERP_BILINEAR);
+		    if (has_composite)
 		    {
-			for (cx = 0; cx < gdk_screen_width(); cx += width)
-			{
-			    if (has_composite)
-			    {
-				gdk_pixbuf_composite (pixbuf, solid, cx, cy,
-						      MIN (width,
-							   gdk_screen_width() -
-							   cx),
-						      MIN (height,
-							   gdk_screen_height() -
-							   cy), cx, cy, 1.0,
-						      1.0, GDK_INTERP_TILES,
-						      255);
-			    }
-			    else
-			    {
-				gdk_pixbuf_copy_area (pixbuf, 0, 0,
-						      MIN (width,
-							   gdk_screen_width() -
-							   cx),
-						      MIN (height,
-							   gdk_screen_height() -
-							   cy), solid, cx,
-						      cy);
-			    }
-			}
+			GdkPixbuf *scaled = pixbuf;
+
+			pixbuf = create_solid (&(background->color),
+					       gdk_screen_width (),
+					       gdk_screen_height ());
+
+			gdk_pixbuf_composite (scaled, pixbuf, 0, 0,
+					      gdk_screen_width (),
+					      gdk_screen_height (),
+					      0, 0, 1.0, 1.0,
+					      GDK_INTERP_NEAREST, 255);
+			g_object_unref (scaled);
 		    }
 		}
+		
 		break;
+		
+	    default:
+		g_assert_not_reached ();
 	}
     }
-    gdk_pixbuf_render_pixmap_and_mask (solid, &pixmap, NULL, 0);
-    g_object_unref (solid);
+
+    gdk_pixbuf_render_pixmap_and_mask (pixbuf, &pixmap, NULL, 0);
+    g_object_unref (pixbuf);
 
     return pixmap;
 }
 
-/* The code below is initially based on ROX Filer
- * (c) by Thomas Leonard. See http://rox.sf.net.
- */
 static void
-set_backdrop (const char *path, int style, int show, GdkColor * color)
+update_root_window (GtkWidget *win, GdkPixmap * pixmap)
 {
-    GdkPixmap *pixmap;
-    GdkPixbuf *pixbuf;
-/*    GtkStyle *gstyle;*/
+    GtkStyle *style;
 
-    /* This call is used to free any previous allocated pixmap 
-    gtk_widget_set_style (fullscreen_window, NULL);
-    gstyle = gtk_style_new ();*/
-
-    if (show && path && *path)
-    {
-	GError *error = NULL;
-
-	if (is_backdrop_list (path))
-	{
-	    path = get_path_from_listfile (path);
-	    /*style = AUTO; */
-	}
-
-	pixbuf = gdk_pixbuf_new_from_file (path, &error);
-
-	if (error)
-	{
-	    xfce_err (_("xfdesktop error: loading backdrop image: %s\n"),
-		      error->message);
-
-	    g_error_free (error);
-	    pixbuf = NULL;
-	}
-    }
-    else
-	pixbuf = NULL;
-
-    pixmap = create_background_pixmap (pixbuf, style, color);
-
-    /* Now we can safely free the pixbuf */
-    if (pixbuf)
-	g_object_unref (pixbuf);
-
+    /* This call is used to free any previous allocated pixmap  */
+    gtk_widget_set_style (win, NULL);
+    
+    style = gtk_style_new ();
+    style->bg_pixmap[GTK_STATE_NORMAL] = pixmap;
+    gtk_widget_set_style (win, style);
+    g_object_unref (style);
+    gtk_widget_queue_draw (win);
+    
     if (pixmap)
     {
 	XID id = GDK_DRAWABLE_XID (pixmap);
-
-/*	gstyle->bg_pixmap[GTK_STATE_NORMAL] = pixmap;*/
-	gdk_window_set_back_pixmap (gdk_get_default_root_window (), pixmap,
-				    0);
-	gdk_window_clear (gdk_get_default_root_window ());
-
+	XID *idptr = &id;
+	
 	gdk_property_change (gdk_get_default_root_window (),
 			     gdk_atom_intern ("_XROOTPMAP_ID", FALSE),
 			     gdk_atom_intern ("PIXMAP", FALSE),
-			     32, GDK_PROP_MODE_REPLACE, (guchar *) & id, 1);
+			     32, GDK_PROP_MODE_REPLACE, (guchar *) idptr, 1);
     }
     else
     {
-/*	gstyle->bg_pixmap[GTK_STATE_NORMAL] = NULL;*/
 	gdk_property_delete (gdk_get_default_root_window (),
 			     gdk_atom_intern ("_XROOTPMAP_ID", FALSE));
-	gdk_window_clear (gdk_get_default_root_window ());
     }
 
     gdk_flush ();
-    /* (un)set background 
-    gtk_widget_set_style (fullscreen_window, gstyle);
-    g_object_unref (gstyle);
-
-    gtk_widget_queue_draw (fullscreen_window);*/
 }
+
+static void
+set_background (XfceBackground * background)
+{
+    GdkPixmap *pixmap;
+    GdkPixbuf *pixbuf;
+
+    if (!background->set_background)
+	return;
+
+    if (background->show_image)
+	pixbuf = create_image (background);
+    else
+	pixbuf = NULL;
+
+    pixmap = create_pixmap (background, pixbuf);
+
+    update_root_window (background->win, pixmap);
+
+    if (pixbuf)
+	g_object_unref (pixbuf);
+}
+
+/* settings */
+static void
+update_backdrop_channel (const char *name, McsAction action,
+			 McsSetting * setting, XfceDesktop *xfdesktop)
+{
+    TRACE ("dummy");
+    DBG ("processing change in \"%s\"", name);
+
+    switch (action)
+    {
+	case MCS_ACTION_NEW:
+	    /* fall through unless we are in init state */
+	    if (init_settings)
+	    {
+		return;
+	    }
+	case MCS_ACTION_CHANGED:
+	    if (strcmp (name, "setbackground") == 0)
+	    {
+		background->set_background = setting->data.v_int;
+		DBG ("set_background = %d", background->set_background);
+	    }
+	    else if (strcmp (name, "style") == 0)
+	    {
+		background->style = setting->data.v_int;
+	    }
+	    else if (strcmp (name, "path") == 0)
+	    {
+		g_free (background->path);
+		background->path = (setting->data.v_string) ?
+		    g_strdup (setting->data.v_string) : NULL;
+	    }
+	    else if (strcmp (name, "color") == 0)
+	    {
+		background->color.red = setting->data.v_color.red;
+		background->color.green = setting->data.v_color.green;
+		background->color.blue = setting->data.v_color.blue;
+	    }
+	    else if (strcmp (name, "showimage") == 0)
+	    {
+		background->show_image = setting->data.v_int;
+	    }
+
+	    if (background->set_background)
+		set_background (background);
+
+	    break;
+	case MCS_ACTION_DELETED:
+	    /* We don't use this now. Perhaps revert to default? */
+	    break;
+    }
+}
+
+/* removes _ESETROOT_PMAP_ID */
+static void
+remove_old_pixmap (XfceDesktop *xfdesktop)
+{
+    Display *dpy = xfdesktop->dpy;
+    Window w = xfdesktop->root;
+    Atom e_prop = XInternAtom (dpy, "ESETROOT_PMAP_ID", False);
+    Atom type;
+    int format;
+    unsigned long length, after;
+    unsigned char *data;
+
+    TRACE ("dummy");
+    XGrabServer (dpy);
+
+    XGetWindowProperty (dpy, w, e_prop, 0L, 1L, False, AnyPropertyType,
+			&type, &format, &length, &after, &data);
+
+    if ((type == XA_PIXMAP) && (format == 32) && (length == 1))
+    {
+	gdk_error_trap_push ();
+	XKillClient (dpy, *((Pixmap *) data));
+	gdk_flush ();
+	gdk_error_trap_pop ();
+	XDeleteProperty (dpy, w, e_prop);
+    }
+
+    XUngrabServer (dpy);
+}
+
+void
+background_init (XfceDesktop *xfdesktop)
+{
+    TRACE ("dummy");
+
+    background = g_new0 (XfceBackground, 1);
+
+    background->win = xfdesktop->fullscreen;
+    background->set_background = TRUE;
+    background->show_image = TRUE;
+    background->style = TILED;
+
+    /* we don't use _ESETROOT_PMAP_ID */
+    remove_old_pixmap (xfdesktop);
+
+    /* connect callback for settings changes */
+    register_channel_callback (BACKDROP_CHANNEL, 
+	    		       (ChannelCallback) update_backdrop_channel);
+
+    init_settings = TRUE;
+    mcs_client_add_channel (xfdesktop->client, BACKDROP_CHANNEL);
+    init_settings = FALSE;
+}
+
+void
+background_load_settings (XfceDesktop *xfdesktop)
+{
+    McsClient *client = xfdesktop->client;
+    McsSetting *setting;
+
+    TRACE ("dummy");
+    if (MCS_SUCCESS == mcs_client_get_setting (client, "setbackground",
+					       BACKDROP_CHANNEL, &setting))
+    {
+	background->set_background = setting->data.v_int;
+	mcs_setting_free (setting);
+    }
+
+    if (MCS_SUCCESS == mcs_client_get_setting (client, "style",
+					       BACKDROP_CHANNEL, &setting))
+    {
+	background->style = setting->data.v_int;
+	mcs_setting_free (setting);
+    }
+
+    if (MCS_SUCCESS == mcs_client_get_setting (client, "path",
+					       BACKDROP_CHANNEL, &setting))
+    {
+	if (setting->data.v_string)
+	{
+	    g_free (background->path);
+	    background->path = g_strdup (setting->data.v_string);
+	}
+
+	mcs_setting_free (setting);
+    }
+
+    if (MCS_SUCCESS == mcs_client_get_setting (client, "color",
+					       BACKDROP_CHANNEL, &setting))
+    {
+	background->color.red = setting->data.v_color.red;
+	background->color.green = setting->data.v_color.green;
+	background->color.blue = setting->data.v_color.blue;
+
+	mcs_setting_free (setting);
+    }
+
+    if (MCS_SUCCESS ==
+	mcs_client_get_setting (client, "showimage", BACKDROP_CHANNEL,
+				&setting))
+    {
+	background->show_image = setting->data.v_int;
+	mcs_setting_free (setting);
+    }
+
+    if (background->set_background)
+	set_background (background);
+}
+
+void
+background_cleanup (XfceDesktop *xfdesktop)
+{
+    GdkWindow *root = gdk_get_default_root_window ();
+    gdk_property_delete (root, gdk_atom_intern ("_XROOTPMAP_ID", FALSE));
+    gdk_window_clear (gdk_get_default_root_window ());
+}
+

@@ -177,8 +177,8 @@ target_alias = @target_alias@
 noinst_LTLIBRARIES = libxfdesktop.la
 
 libxfdesktop_la_SOURCES = \
-	backdrop.c							\
-	backdrop.h
+	background-common.c						\
+	background-common.h
 
 
 libxfdesktop_la_CFLAGS = \
@@ -196,13 +196,14 @@ CONFIG_CLEAN_FILES =
 LTLIBRARIES = $(noinst_LTLIBRARIES)
 
 libxfdesktop_la_LIBADD =
-am_libxfdesktop_la_OBJECTS = libxfdesktop_la-backdrop.lo
+am_libxfdesktop_la_OBJECTS = libxfdesktop_la-background-common.lo
 libxfdesktop_la_OBJECTS = $(am_libxfdesktop_la_OBJECTS)
 
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
-@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/libxfdesktop_la-backdrop.Plo
+@AMDEP_TRUE@DEP_FILES = \
+@AMDEP_TRUE@	./$(DEPDIR)/libxfdesktop_la-background-common.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
@@ -241,7 +242,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfdesktop_la-backdrop.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfdesktop_la-background-common.Plo@am__quote@
 
 distclean-depend:
 	-rm -rf ./$(DEPDIR)
@@ -279,38 +280,38 @@ distclean-depend:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ `test -f '$<' || echo '$(srcdir)/'`$<
 
-libxfdesktop_la-backdrop.o: backdrop.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -MT libxfdesktop_la-backdrop.o -MD -MP -MF "$(DEPDIR)/libxfdesktop_la-backdrop.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o libxfdesktop_la-backdrop.o `test -f 'backdrop.c' || echo '$(srcdir)/'`backdrop.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfdesktop_la-backdrop.Tpo" "$(DEPDIR)/libxfdesktop_la-backdrop.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfdesktop_la-backdrop.Tpo"; exit 1; \
+libxfdesktop_la-background-common.o: background-common.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -MT libxfdesktop_la-background-common.o -MD -MP -MF "$(DEPDIR)/libxfdesktop_la-background-common.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libxfdesktop_la-background-common.o `test -f 'background-common.c' || echo '$(srcdir)/'`background-common.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfdesktop_la-background-common.Tpo" "$(DEPDIR)/libxfdesktop_la-background-common.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfdesktop_la-background-common.Tpo"; exit 1; \
 @am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='backdrop.c' object='libxfdesktop_la-backdrop.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfdesktop_la-backdrop.Po' tmpdepfile='$(DEPDIR)/libxfdesktop_la-backdrop.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='background-common.c' object='libxfdesktop_la-background-common.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfdesktop_la-background-common.Po' tmpdepfile='$(DEPDIR)/libxfdesktop_la-background-common.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -c -o libxfdesktop_la-backdrop.o `test -f 'backdrop.c' || echo '$(srcdir)/'`backdrop.c
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -c -o libxfdesktop_la-background-common.o `test -f 'background-common.c' || echo '$(srcdir)/'`background-common.c
 
-libxfdesktop_la-backdrop.obj: backdrop.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -MT libxfdesktop_la-backdrop.obj -MD -MP -MF "$(DEPDIR)/libxfdesktop_la-backdrop.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o libxfdesktop_la-backdrop.obj `if test -f 'backdrop.c'; then $(CYGPATH_W) 'backdrop.c'; else $(CYGPATH_W) '$(srcdir)/backdrop.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfdesktop_la-backdrop.Tpo" "$(DEPDIR)/libxfdesktop_la-backdrop.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfdesktop_la-backdrop.Tpo"; exit 1; \
+libxfdesktop_la-background-common.obj: background-common.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -MT libxfdesktop_la-background-common.obj -MD -MP -MF "$(DEPDIR)/libxfdesktop_la-background-common.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libxfdesktop_la-background-common.obj `if test -f 'background-common.c'; then $(CYGPATH_W) 'background-common.c'; else $(CYGPATH_W) '$(srcdir)/background-common.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfdesktop_la-background-common.Tpo" "$(DEPDIR)/libxfdesktop_la-background-common.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfdesktop_la-background-common.Tpo"; exit 1; \
 @am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='backdrop.c' object='libxfdesktop_la-backdrop.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfdesktop_la-backdrop.Po' tmpdepfile='$(DEPDIR)/libxfdesktop_la-backdrop.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='background-common.c' object='libxfdesktop_la-background-common.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfdesktop_la-background-common.Po' tmpdepfile='$(DEPDIR)/libxfdesktop_la-background-common.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -c -o libxfdesktop_la-backdrop.obj `if test -f 'backdrop.c'; then $(CYGPATH_W) 'backdrop.c'; else $(CYGPATH_W) '$(srcdir)/backdrop.c'; fi`
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -c -o libxfdesktop_la-background-common.obj `if test -f 'background-common.c'; then $(CYGPATH_W) 'background-common.c'; else $(CYGPATH_W) '$(srcdir)/background-common.c'; fi`
 
-libxfdesktop_la-backdrop.lo: backdrop.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -MT libxfdesktop_la-backdrop.lo -MD -MP -MF "$(DEPDIR)/libxfdesktop_la-backdrop.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o libxfdesktop_la-backdrop.lo `test -f 'backdrop.c' || echo '$(srcdir)/'`backdrop.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfdesktop_la-backdrop.Tpo" "$(DEPDIR)/libxfdesktop_la-backdrop.Plo"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfdesktop_la-backdrop.Tpo"; exit 1; \
+libxfdesktop_la-background-common.lo: background-common.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -MT libxfdesktop_la-background-common.lo -MD -MP -MF "$(DEPDIR)/libxfdesktop_la-background-common.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libxfdesktop_la-background-common.lo `test -f 'background-common.c' || echo '$(srcdir)/'`background-common.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfdesktop_la-background-common.Tpo" "$(DEPDIR)/libxfdesktop_la-background-common.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfdesktop_la-background-common.Tpo"; exit 1; \
 @am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='backdrop.c' object='libxfdesktop_la-backdrop.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfdesktop_la-backdrop.Plo' tmpdepfile='$(DEPDIR)/libxfdesktop_la-backdrop.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='background-common.c' object='libxfdesktop_la-background-common.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfdesktop_la-background-common.Plo' tmpdepfile='$(DEPDIR)/libxfdesktop_la-background-common.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -c -o libxfdesktop_la-backdrop.lo `test -f 'backdrop.c' || echo '$(srcdir)/'`backdrop.c
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -c -o libxfdesktop_la-background-common.lo `test -f 'background-common.c' || echo '$(srcdir)/'`background-common.c
 
 mostlyclean-libtool:
 	-rm -f *.lo

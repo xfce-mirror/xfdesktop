@@ -58,7 +58,7 @@
 #include <libxfcegui4/libxfcegui4.h>
 #include <xfce-mcs-manager/manager-plugin.h>
 
-#include "backdrop.h"
+#include "background-common.h"
 #include "backdrop-icon.h"
 #include "backdrop-mgr.h"
 #include "settings_common.h"
@@ -66,7 +66,7 @@
 #define RCFILE "backdrop.xml"
 #define PLUGIN_NAME "backdrop"
 
-#define DEFAULT_ICON_SIZE 48
+#define DEFAULT_ICON_SIZE 32
 
 #ifdef HAVE_GDK_PIXBUF_NEW_FROM_STREAM
 #define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream
@@ -129,12 +129,10 @@ static GdkPixbuf *backdrop_icon_at_size(int width, int height)
     else
     {
         GdkPixbuf *scaled;
-        int w, h;
+	
+        scaled = gdk_pixbuf_scale_simple(base, width, height, 
+				         GDK_INTERP_BILINEAR);
 
-        w = width > 0 ? width : gdk_pixbuf_get_width(base);
-        h = height > 0 ? height : gdk_pixbuf_get_height(base);
-
-        scaled = gdk_pixbuf_scale_simple(base, w, h, GDK_INTERP_HYPER);
         g_object_unref(G_OBJECT(base));
 
         return scaled;
@@ -148,6 +146,7 @@ McsPluginInitResult mcs_plugin_init(McsPlugin * mcs_plugin)
     mcs_plugin->plugin_name = g_strdup(PLUGIN_NAME);
     mcs_plugin->caption = g_strdup(_("Desktop background"));
     mcs_plugin->run_dialog = run_dialog;
+
     mcs_plugin->icon = backdrop_icon_at_size(DEFAULT_ICON_SIZE,
                                              DEFAULT_ICON_SIZE);
 

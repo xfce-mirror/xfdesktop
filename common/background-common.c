@@ -25,11 +25,34 @@
 #include <string.h>
 #endif
 
+#include <stdio.h>
+
 #include <glib.h>
+#include <libxfce4util/debug.h>
 #include <libxfcegui4/dialogs.h>
 
-#include "backdrop.h"
+#include "background-common.h"
 
+gboolean
+is_backdrop_list (const char *path)
+{
+    FILE *fp;
+    char buf[512];
+    int size;
+    gboolean is_list = FALSE;
+
+    TRACE ("dummy");
+    size = sizeof (LIST_TEXT);
+
+    if ((fp = fopen (path, "r")) == NULL)
+	return FALSE;
+
+    if (fgets (buf, size, fp) && strncmp (LIST_TEXT, buf, size - 1) == 0)
+	is_list = TRUE;
+
+    fclose (fp);
+    return is_list;
+}
 
 gchar **
 get_list_from_file(const gchar *filename)

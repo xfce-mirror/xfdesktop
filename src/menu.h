@@ -20,10 +20,14 @@
 #ifndef __XFDESKTOP_MENU_H__
 #define __XFDESKTOP_MENU_H__
 
-void menu_init(GtkWidget *, NetkScreen *);
-void menu_load_settings(McsClient *);
-void add_menu_callback(GHashTable *);
+#include "main.h"
+
+void menu_init(XfceDesktop *xfdesktop);
+
+void menu_load_settings(XfceDesktop *xfdesktop);
+
 void popup_menu(int button, guint32 time);
+
 void popup_windowlist(int button, guint32 time);
 
 #endif	/* !__XFDESKTOP_MENU_H__ */

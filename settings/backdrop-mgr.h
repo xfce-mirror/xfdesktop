@@ -22,8 +22,6 @@
 
 typedef void (*ListMgrCb)(char *, gpointer);
 
-extern gboolean is_backdrop_list(const char *);
-    
 extern void create_list_file(GtkWidget *, ListMgrCb, gpointer);
 
 extern void edit_list_file(const char *, GtkWidget *, ListMgrCb, gpointer);

@@ -53,29 +53,8 @@
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "settings_common.h"
-#include "backdrop.h"
+#include "background-common.h"
 #include "backdrop-mgr.h"
-
-/* exported interface */
-gboolean is_backdrop_list(const char *path)
-{
-    FILE *fp;
-    char buf[512];
-    int size;
-    gboolean is_list = FALSE;
-
-    size = sizeof(LIST_TEXT) - 1;
-    fp = fopen(path, "r");
-
-    if(!fp)
-        return FALSE;
-
-    if(fgets(buf, size + 1, fp) && strncmp(LIST_TEXT, buf, size) == 0)
-        is_list = TRUE;
-
-    fclose(fp);
-    return is_list;
-}
 
 /* things to keep track of */
 typedef struct

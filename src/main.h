@@ -1,6 +1,6 @@
 /*  xfce4
  *  
- *  Copyright (C) 2002 Jasper Huijsmans (huysmans@users.sourceforge.net)
+ *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -20,11 +20,26 @@
 #ifndef __XFDESKTOP_MAIN_H__
 #define __XFDESKTOP_MAIN_H__
 
-extern void quit(void);
+#include <X11/Xlib.h>
+#include <gtk/gtkwidget.h>
+#include <libxfcegui4/netk-screen.h>
+#include <libxfce4mcs/mcs-common.h>
+#include <libxfce4mcs/mcs-client.h>
 
-extern void backdrop_init(GtkWidget *);
-extern void backdrop_load_settings(McsClient *);
-extern void add_backdrop_callback(GHashTable *);
+typedef struct
+{
+    Display *dpy;
+    int xscreen;
+    Window root;
+    
+    NetkScreen *netk_screen;
+    GtkWidget *fullscreen;
+    
+    McsClient *client;
+}
+XfceDesktop;
+
+extern void quit(void);
 
 #endif /* __XFDESKTOP_MAIN_H__ */
 

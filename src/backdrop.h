@@ -1,6 +1,6 @@
 /*  xfce4
  *  
- *  Copyright (C) 2002 Jasper Huijsmans (huysmans@users.sourceforge.net)
+ *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,20 +17,17 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#ifndef __XFDESKTOP_SETTING__
-#define __XFDESKTOP_SETTING__
+#ifndef __XFDESKTOP_BACKDROP_H__
+#define __XFDESKTOP_BACKDROP_H__
 
 #include "main.h"
 
-typedef void (*ChannelCallback) (const char *name, McsAction action, 
-    			         McsSetting *setting, XfceDesktop *xfdesktop);
+void background_init (XfceDesktop *xfdesktop);
 
-void settings_init (XfceDesktop *xfdesktop);
+void background_load_settings (XfceDesktop *xfdesktop);
 
-void settings_cleanup (XfceDesktop *xfdesktop);
+void background_cleanup (XfceDesktop *xfdesktop);
 
-void register_channel_callback (const char *name, 
-    				ChannelCallback callback);
+#endif /* __XFDESKTOP_BACKDROP_H__ */
 
-#endif	/* !__XFDESKTOP_SETTING__ */
 

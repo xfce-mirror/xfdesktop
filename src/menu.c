@@ -34,6 +34,7 @@
 #include <string.h>
 #endif
 
+#include <X11/X.h>
 #include <X11/Xlib.h>
 
 #include <gdk/gdkx.h>
@@ -58,8 +59,12 @@
                          SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%l:"\
                          SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F")
 
+#define EVENTMASK (ButtonPressMask|SubstructureNotifyMask|PropertyChangeMask)
+
 /* a bit hackish, but works well enough */
 static gboolean is_using_system_rc = TRUE;
+
+static GtkWidget *desktop_menu = NULL, *windowlist = NULL;
 
 static NetkScreen *netk_screen = NULL;
 static GList *MainMenuData;     /* TODO: Free this at some point */
@@ -749,49 +754,6 @@ static GtkWidget *create_windowlist_menu(void)
     return menu3;
 }
 
-static gboolean button_scroll_event (GtkWidget *widget, GdkEventScroll *event)
-{
-    gint n, active;
-    NetkWorkspace *ws = NULL;
-
-    g_return_val_if_fail (event != NULL, FALSE);  
-
-    n = netk_screen_get_workspace_count(netk_screen);
-    active = netk_workspace_get_number(netk_screen_get_active_workspace(netk_screen));
-
-    switch(event->direction)
-    {
-        case GDK_SCROLL_UP:
-        case GDK_SCROLL_LEFT:
-            if (active > 0)
-            {
-                ws = netk_screen_get_workspace(netk_screen, active - 1);
-            }
-            else
-            {
-                ws = netk_screen_get_workspace(netk_screen, n - 1);
-            }
-            netk_workspace_activate(ws);
-            break;
-        case GDK_SCROLL_DOWN:
-        case GDK_SCROLL_RIGHT:
-            if (active < n - 1)
-            {
-                ws = netk_screen_get_workspace(netk_screen, active + 1);
-            }
-            else
-            {
-                ws = netk_screen_get_workspace(netk_screen, 0);
-            }
-            netk_workspace_activate(ws);
-            break;
-        default:
-            break;
-    }
-
-    return TRUE;
-}
-
 /* Popup menu / windowlist
  * -----------------------
 */
@@ -800,7 +762,7 @@ popup_menu (int button, guint32 time)
 {
     static GtkWidget *menu = NULL;
     
-    menu = create_desktop_menu();
+    desktop_menu = menu = create_desktop_menu();
 
     if (menu)
     {
@@ -819,54 +781,89 @@ popup_windowlist (int button, guint32 time)
 	gtk_widget_destroy(menu);
     }
 
-    menu = create_windowlist_menu();
+    windowlist = menu = create_windowlist_menu();
 
     gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 
 		   button, time);
 }
 
-/*  Initialization and event handling
- *  ---------------------------------
+static gboolean
+button_press (GtkWidget *w, GdkEventButton *bevent)
+{
+    int button = bevent->button;
+    int state =  bevent->state;
+    gboolean handled = FALSE;
+    
+    DBG ("button press");
+    
+    if (button == 2 || (button == 1 && state & GDK_SHIFT_MASK && 
+			state & GDK_CONTROL_MASK))
+    {
+	popup_windowlist (button, bevent->time);
+	handled = TRUE;
+    }
+    else if (button == 3 || (button == 1 && state & GDK_SHIFT_MASK))
+    {
+	popup_menu (button, bevent->time);
+	handled = TRUE;
+    }
+
+    return handled;
+}
+
+static gboolean
+button_scroll (GtkWidget *w, GdkEventScroll *sevent)
+{
+    GdkScrollDirection direction = sevent->direction;
+    NetkWorkspace *ws = NULL;
+    gint n, active;
+
+    DBG ("scroll");
+    
+    n = netk_screen_get_workspace_count(netk_screen);
+
+    if (n <= 1)
+	return FALSE;
+    
+    ws = netk_screen_get_active_workspace(netk_screen);
+    active = netk_workspace_get_number(ws);
+
+    if (direction == GDK_SCROLL_UP || direction == GDK_SCROLL_LEFT)
+    {
+	ws = (active > 0) ? 
+	    netk_screen_get_workspace(netk_screen, active - 1) :
+	    netk_screen_get_workspace(netk_screen, n - 1);
+    }
+    else
+    {
+	ws = (active < n - 1) ?
+	    netk_screen_get_workspace(netk_screen, active + 1) :
+	    netk_screen_get_workspace(netk_screen, 0);
+    }
+
+    netk_workspace_activate(ws);
+    return TRUE;
+}
+
+/*  Initialization 
+ *  --------------
 */
-static gboolean button_press_event(GtkWidget * win, GdkEventButton * ev,
-                                   gpointer data)
+void menu_init(XfceDesktop *xfdesktop)
 {
     TRACE("dummy");
-    if(ev->button == 2 || 
-       (ev->button == 1 && ev->state & GDK_SHIFT_MASK & GDK_CONTROL_MASK ))
-    {
-	popup_windowlist (ev->button, ev->time);
-
-        return TRUE;
-    }
-    else if(ev->button == 3 || 
-       (ev->button == 1 && ev->state & GDK_SHIFT_MASK))
-    {
-	popup_menu(ev->button, ev->time);
-
-	return TRUE;
-    }
-
-    return FALSE;
+    netk_screen = xfdesktop->netk_screen;
+    
+    DBG ("connecting callbacks");
+    
+    g_signal_connect (xfdesktop->fullscreen, "button-press-event",
+	    	      G_CALLBACK (button_press), NULL);
+    
+    g_signal_connect (xfdesktop->fullscreen, "scroll-event",
+	    	      G_CALLBACK (button_scroll), NULL);
 }
 
-void menu_init(GtkWidget * window, NetkScreen * screen)
-{
-    TRACE("dummy");
-    netk_screen = screen;
-
-    g_signal_connect(window, "button-press-event",
-                     G_CALLBACK(button_press_event), NULL);
-    g_signal_connect(window, "scroll-event",
-                     G_CALLBACK(button_scroll_event), NULL);
-}
-
-void menu_load_settings(McsClient * client)
+void menu_load_settings(XfceDesktop *xfdesktop)
 {
     TRACE("dummy");
 }
 
-void add_menu_callback(GHashTable * ht)
-{
-    TRACE("dummy");
-}
