@@ -39,9 +39,9 @@ typedef struct _DMPlugin {
 	/* panel widget */
 	GtkWidget *evtbox;
 	GtkWidget *button;
+	GdkPixbuf *icon;
 	GtkWidget *image;
 	GtkWidget *label;
-	GdkPixbuf *icon;
 	XfceDesktopMenu *desktop_menu;
 
 	/* prefs pane */
@@ -57,48 +57,27 @@ dmp_set_size(Control *c, int size)
 	DMPlugin *dmp = c->data;
 	gint w;
 	GdkPixbuf *tmp;
-	GtkWidget *hbox;
 
 	/* if we have one, see if the size is ok */
 	if(dmp->icon) {
 		w = gdk_pixbuf_get_width(dmp->icon);
-		if(w != icon_size[settings.size]) {
-			gtk_container_remove(GTK_CONTAINER(dmp->button),
-					gtk_bin_get_child(GTK_BIN(dmp->button)));
-			g_object_unref(G_OBJECT(dmp->icon));
-			dmp->icon = NULL;
-		}
-		if(dmp->show_text)
-		  gtk_widget_show(dmp->label);
+		if(w == settings.size)
+			return;
 	}
 	
-	if(!dmp->icon) {
-		/* either the size wasn't ok, or we didn't have an icon */
-		tmp = gdk_pixbuf_new_from_file(DATADIR "/pixmaps/xfce4_xicon.png", NULL);
-		if(tmp) {
-			w = gdk_pixbuf_get_width(tmp);
-			if(w != icon_size[settings.size]) {
-				dmp->icon = gdk_pixbuf_scale_simple(tmp,
-						icon_size[settings.size], icon_size[settings.size],
-						GDK_INTERP_BILINEAR);
-				g_object_unref(G_OBJECT(tmp));
-			} else
-			  dmp->icon = tmp;
-
-			gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), dmp->icon);
-			if(dmp->show_icon)
-			  gtk_widget_show(dmp->image);
-
-			if(dmp->show_text)
-			  gtk_widget_show(dmp->label);
-			
-			hbox = gtk_hbox_new(FALSE, 0);
-			gtk_box_pack_start (GTK_BOX (hbox), dmp->image, FALSE, FALSE, 0);
-			gtk_box_pack_start (GTK_BOX (hbox), dmp->label, FALSE, FALSE, 0);
-			gtk_widget_show(hbox);
-
-			gtk_container_add(GTK_CONTAINER(dmp->button), hbox);
-		}
+	/* either the size wasn't ok, or we didn't have an icon */
+	tmp = gdk_pixbuf_new_from_file(DATADIR "/pixmaps/xfce4_xicon.png", NULL);
+	if(tmp) {
+		w = gdk_pixbuf_get_width(tmp);
+		if(w != icon_size[settings.size]) {
+			dmp->icon = gdk_pixbuf_scale_simple(tmp,
+					icon_size[settings.size], icon_size[settings.size],
+					GDK_INTERP_BILINEAR);
+			g_object_unref(G_OBJECT(tmp));
+		} else
+			dmp->icon = tmp;
+		gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), dmp->icon);
+		g_object_unref(G_OBJECT(dmp->icon));
 	}
 	
 	if(!dmp->icon) {
@@ -163,6 +142,7 @@ dmp_popup(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
 static DMPlugin *
 dmp_new()
 {
+	GtkWidget *hbox;
 	DMPlugin *dmp = g_new0(DMPlugin, 1);
 
 	dmp->evtbox = gtk_event_box_new();
@@ -174,13 +154,20 @@ dmp_new()
 	gtk_widget_show(dmp->button);
 	gtk_container_add(GTK_CONTAINER(dmp->evtbox), dmp->button);
 	
+	hbox = gtk_hbox_new(FALSE, 3);
+	gtk_widget_show(hbox);
+	gtk_container_add(GTK_CONTAINER(dmp->button), hbox);
+	
+	dmp->image = gtk_image_new();
+	gtk_box_pack_start(GTK_BOX(hbox), dmp->image, TRUE, TRUE, 0);
+	
+	dmp->label = gtk_label_new("Xfce4");
+	gtk_box_pack_start(GTK_BOX(hbox), dmp->label, TRUE, TRUE, 0);
+	
 	dmp->desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
 	xfce_desktop_menu_start_autoregen(dmp->desktop_menu, 10);
 	g_signal_connect(G_OBJECT(dmp->button), "button-press-event",
 			G_CALLBACK(dmp_popup), dmp);
-
-	dmp->label = gtk_label_new("Xfce4");
-	dmp->image = gtk_image_new();
 
 	return dmp;
 }
