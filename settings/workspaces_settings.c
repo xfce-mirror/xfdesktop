@@ -65,6 +65,7 @@ static void watch_workspaces_hint(McsManager *manager);
 McsPluginInitResult
 mcs_plugin_init(McsPlugin *mcs_plugin)
 {
+#if 0
 #ifdef ENABLE_NLS
     /* This is required for UTF-8 at least - Please don't remove it */
     bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
@@ -72,6 +73,9 @@ mcs_plugin_init(McsPlugin *mcs_plugin)
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 #endif
     textdomain (GETTEXT_PACKAGE);
+#endif
+#else
+    xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 #endif
 
     netk_screen = netk_screen_get_default();

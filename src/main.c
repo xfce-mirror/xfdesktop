@@ -300,7 +300,9 @@ main(int argc, char **argv)
 #endif
     Window xid;
 
-    TRACE("dummy");
+    /* bind gettext textdomain */
+    xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+
     gtk_init(&argc, &argv);
     
     if (check_is_running(&xid)) {
