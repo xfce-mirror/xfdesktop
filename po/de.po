@@ -241,7 +241,7 @@ msgstr ""
 
 #: menueditor/menueditor.c:606
 msgid "Save as..."
-msgstr ""
+msgstr "Speichern als..."
 
 #: menueditor/menueditor.c:764
 msgid "Edit"
@@ -310,11 +310,11 @@ msgstr "Eintrag nach oben"
 
 #: menueditor/menueditor.c:1069
 msgid "Collapse the tree"
-msgstr ""
+msgstr "Baum einklappen"
 
 #: menueditor/menueditor.c:1076
 msgid "Expand the tree"
-msgstr ""
+msgstr "Baum ausklappen"
 
 #: menueditor/menueditor.c:1110
 msgid "Name"
@@ -350,22 +350,18 @@ msgid "File %s doesn't exist !"
 msgstr "Datei %s existiert nicht!"
 
 #: menueditor/move.c:401
-#, fuzzy
 msgid "Do you want to move the item into the parent menu?"
 msgstr "Wollen Sie den Eintrag in das vorherige Menü verschieben?"
 
 #: menueditor/move.c:500
-#, fuzzy
 msgid "Do you want to move the item into the submenu?"
 msgstr "Wollen Sie den Eintrag in das Untermenü verschieben?"
 
 #: menueditor/new_dialog.c:58
-#, fuzzy
 msgid "Are you sure you want to close the current menu?"
 msgstr "Wollen Sie dieses Menü wirklich schließen?"
 
 #: menueditor/new_dialog.c:74
-#, fuzzy
 msgid "Do you want to save before closing the file?"
 msgstr "Wollen Sie vor dem Schließen speichern?"
 
@@ -376,18 +372,16 @@ msgstr "Neues Menü"
 
 #. Filename
 #: menueditor/new_dialog.c:109
-#, fuzzy
 msgid "Filename:"
-msgstr "Datei:"
+msgstr "Dateiname:"
 
 #: menueditor/new_dialog.c:142
-#, fuzzy
 msgid "All fields are required."
-msgstr "Nicht alle Felder wurden ausgefüllt!"
+msgstr "Alle Felder müssen ausgefüllt sein."
 
 #: modules/menu/desktop-menu-dentry.c:536
 msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-msgstr ""
+msgstr "XfceDesktopMenü: Konnte xfce-registered-categories.xml nicht finden"
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
@@ -406,35 +400,32 @@ msgstr "%s: Unbekanntes XML-Element %s\n"
 #: panel-plugin/desktop-menu-plugin.c:192
 #: panel-plugin/desktop-menu-plugin.c:515
 msgid "Xfce Menu"
-msgstr ""
+msgstr "Xfce Menü"
 
 #: panel-plugin/desktop-menu-plugin.c:355
-#, fuzzy
 msgid "Select Icon"
-msgstr "Symbol auswählen"
+msgstr "Icon auswählen"
 
 #: panel-plugin/desktop-menu-plugin.c:357
-#, fuzzy
 msgid "Select Menu File"
-msgstr "Bilddatei auswählen"
+msgstr "Menüdatei auswählen"
 
 #: panel-plugin/desktop-menu-plugin.c:386
 #, fuzzy
 msgid "Menu Files"
-msgstr "Bilddateien"
+msgstr "Menüdateien"
 
 #: panel-plugin/desktop-menu-plugin.c:445
-#, fuzzy
 msgid "_Menu file:"
-msgstr "Xfce4-Menüdatei öffnen"
+msgstr "_Menüdatei:"
 
 #: panel-plugin/desktop-menu-plugin.c:479
 msgid "_Button icon:"
-msgstr ""
+msgstr "Buttonicon:"
 
 #: panel-plugin/desktop-menu-plugin.c:504
 msgid "Show _icons in menu"
-msgstr ""
+msgstr "Icons im Menü anzeigen"
 
 #: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
 #: settings/backdrop-mgr.c:553
@@ -444,12 +435,12 @@ msgstr "Hintergrund"
 #: settings/backdrop-mgr.c:100
 #, c-format
 msgid "Adding files from directory %s..."
-msgstr ""
+msgstr "Füge Dateien aus Verzeichnis %s hinzu..."
 
 #: settings/backdrop-mgr.c:160
 #, c-format
 msgid "Adding files from list %s..."
-msgstr ""
+msgstr "Füge Dateien von Liste %s hinzu..."
 
 #: settings/backdrop-mgr.c:215
 #, c-format
@@ -465,13 +456,12 @@ msgstr ""
 "verwerfen"
 
 #: settings/backdrop-mgr.c:502
-#, fuzzy
 msgid "Select backdrop image file"
-msgstr "Hintergrundbild oder Liste wählen"
+msgstr "Hintergrundbild auswählen"
 
 #: settings/backdrop-mgr.c:559
 msgid "Adding multiple files..."
-msgstr ""
+msgstr "Mehrere Dateien hinzufügen..."
 
 #: settings/backdrop-mgr.c:637
 msgid "Choose backdrop list filename"
@@ -480,7 +470,7 @@ msgstr "Namen für Liste mit Hintergrundbildern auswählen"
 #: settings/backdrop-mgr.c:646
 #, fuzzy
 msgid "List Files"
-msgstr "Listendatei"
+msgstr "Dateien auflisten"
 
 #: settings/backdrop-mgr.c:709
 msgid "Backdrop List"
@@ -493,7 +483,7 @@ msgstr "Bilddateien"
 #: settings/backdrop-mgr.c:736
 #, fuzzy
 msgid "backdrops.list"
-msgstr "Liste mit Hintergrundbildern bearbeiten"
+msgstr "hintergrundbilder.list"
 
 #: settings/backdrop-mgr.c:742
 msgid "List file"
@@ -519,62 +509,52 @@ msgstr "Hintergrundbild oder Liste wählen"
 
 #: settings/backdrop_settings.c:480
 msgid "List Files (*.list)"
-msgstr ""
+msgstr "Listendateien (*.list)"
 
 #: settings/backdrop_settings.c:565
-#, fuzzy
 msgid "_Edit list..."
-msgstr "Liste bearbeiten"
+msgstr "_Liste bearbeiten..."
 
 #: settings/backdrop_settings.c:573
-#, fuzzy
 msgid "_New list..."
-msgstr "Neue Liste"
+msgstr "_Neue Liste..."
 
 #: settings/backdrop_settings.c:609
-#, fuzzy
 msgid "S_tyle:"
-msgstr "Anzeige:"
+msgstr "_Anzeige:"
 
 #: settings/backdrop_settings.c:617
-#, fuzzy
 msgid "Tiled"
-msgstr "_Gekachelt"
+msgstr "Gekachelt"
 
 #: settings/backdrop_settings.c:624
-#, fuzzy
 msgid "Centered"
-msgstr "_Zentriert"
+msgstr "Zentriert"
 
 #: settings/backdrop_settings.c:631
-#, fuzzy
 msgid "Scaled"
-msgstr "_Skaliert"
+msgstr "Skaliert"
 
 #: settings/backdrop_settings.c:638
-#, fuzzy
 msgid "Stretched"
-msgstr "_Ausgebreitet"
+msgstr "Ausgebreitet"
 
 #: settings/backdrop_settings.c:645
-#, fuzzy
 msgid "Auto"
-msgstr "_Automatisch"
+msgstr "Automatisch"
 
 #: settings/backdrop_settings.c:711
 msgid "Adjust _Brightness:"
-msgstr ""
+msgstr "Helligkeit _einstellen:"
 
 #. header
 #: settings/backdrop_settings.c:780
-#, fuzzy
 msgid "Desktop Settings"
-msgstr "Hintergrund"
+msgstr "Hintergrundeinstellungen"
 
 #: settings/backdrop_settings.c:808
-#, fuzzy
 msgid "_Backdrops"
-msgstr "Hintergrund"
+msgstr "_Hintergründe"
 
 #. color settings frame
 #: settings/backdrop_settings.c:834
@@ -582,161 +562,154 @@ msgid "Color"
 msgstr "Farbe"
 
 #: settings/backdrop_settings.c:848
-#, fuzzy
 msgid "_Color Style:"
-msgstr "Anzeige:"
+msgstr "Farbenstil:"
 
 #: settings/backdrop_settings.c:857
-#, fuzzy
 msgid "Solid Color"
-msgstr "Farbe"
+msgstr "Eine Farbe"
 
 #: settings/backdrop_settings.c:864
 msgid "Horizontal Gradient"
-msgstr ""
+msgstr "Horizontaler Verlauf"
 
 #: settings/backdrop_settings.c:871
 msgid "Vertical Gradient"
-msgstr ""
+msgstr "Vertikaler Verlauf"
 
 #: settings/backdrop_settings.c:892
 msgid "Fi_rst Color:"
-msgstr ""
+msgstr "Erste _Farbe"
 
 #: settings/backdrop_settings.c:913
 msgid "_Second Color:"
-msgstr ""
+msgstr "_Zweite Farbe"
 
 #. set color only checkbox
 #: settings/backdrop_settings.c:934
-#, fuzzy
 msgid "Set color _only"
-msgstr "Nur Farbe verwenden:"
+msgstr "Nur Farbe _verwenden:"
 
 #: settings/backdrop_settings.c:949
 msgid "Image"
 msgstr "Bild"
 
 #: settings/backdrop_settings.c:957
-#, fuzzy
 msgid "Show _Image"
-msgstr "Bild"
+msgstr "Zeige _Bild"
 
 #: settings/backdrop_settings.c:979
-#, fuzzy
 msgid "_File:"
-msgstr "_Datei"
+msgstr "_Datei:"
 
 #. don't set backdrop checkbox
 #: settings/backdrop_settings.c:1016
-#, fuzzy
 msgid "_Don't set backdrop"
-msgstr "Kein Hintergrundbild"
+msgstr "_Kein Hintergrundbild setzen"
 
 #. add the single backdrop settings page to the main notebook
 #: settings/backdrop_settings.c:1039
-#, fuzzy
 msgid "_Backdrop"
 msgstr "Hintergrund"
 
 #: settings/backdrop_settings.c:1047 settings/backdrop_settings.c:1049
 #, c-format
 msgid "Screen %d"
-msgstr ""
+msgstr "Bildschirm %d"
 
 #. and if we have multiple screens, each with multiple monitors
 #: settings/backdrop_settings.c:1054
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr ""
+msgstr "Bildschirm %d, Monitor %d"
 
 #: settings/backdrop_settings.c:1068
 msgid "_Menu"
-msgstr ""
+msgstr "_Menü"
 
 #: settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr ""
+msgstr "Konnte xfce4-menueditor nicht starten: %s"
 
 #: settings/menu_settings.c:153
 msgid "Window List"
-msgstr ""
+msgstr "Fensterliste"
 
 #: settings/menu_settings.c:161
 msgid "Show window _list"
-msgstr ""
+msgstr "Zeige Fensterliste_"
 
 #: settings/menu_settings.c:176
 msgid "Show _window icons"
-msgstr ""
+msgstr "Zeige Icons der Fenster"
 
 #: settings/menu_settings.c:189
-#, fuzzy
 msgid "Desktop Menu"
-msgstr "Desktop"
+msgstr "Desktopmenü"
 
 #: settings/menu_settings.c:197
 msgid "Show desktop _menu"
-msgstr ""
+msgstr "Zeige _Desktopmenü"
 
 #: settings/menu_settings.c:212
 msgid "Show _application icons"
-msgstr ""
+msgstr "_Zeige Programmicons"
 
 #: settings/menu_settings.c:223
 msgid "_Edit desktop menu"
-msgstr ""
+msgstr "_Desktopmenü bearbeiten"
 
 #: src/main.c:262
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr "%s: Unbekanntes XML-Element %s\n"
+msgstr "%s: Unbekannte Option %s\n"
 
 #: src/main.c:263
 msgid "Options are:\n"
-msgstr ""
+msgstr "Optionen sind:\n"
 
 #: src/main.c:264
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr ""
+msgstr "   -reload	Einstellungen neu laden, Liste auffrischen\n"
 
 #: src/main.c:265
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr ""
+msgstr "   -menu		Das Menü (an der Zeigerposition) aufpoppen lassen\n"
 
 #: src/main.c:266
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
+"    -windowlist  Fensterliste (an der Zeigerposition) aufpoppen lassen\n"
 
 #: src/menu.c:73
 #, c-format
 msgid ""
 "%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
 msgstr ""
+"%s: Konnte Menü nicht initialisieren. Menü wird nicht zur Verfügung stehen.\n"
 
 #: src/windowlist.c:183
 #, c-format
 msgid "<b>Workspace %d</b>"
-msgstr ""
+msgstr "<b>Arbeitsfläche %d</b>"
 
 #: src/windowlist.c:188
 #, c-format
 msgid "<i>Workspace %d</i>"
-msgstr ""
+msgstr "<i>Arbeitsfläche %d</i>"
 
 #: src/windowlist.c:244 src/windowlist.c:247
-#, fuzzy
 msgid "_Add Workspace"
-msgstr "Virtuellen Desktop hinzufügen"
+msgstr "Arbeitsfläche hinzufügen"
 
 #: src/windowlist.c:254
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace %d"
-msgstr "Virtuellen Desktop entfernen"
+msgstr "_Arbeitsfläche %d entfernen"
 
 #: src/windowlist.c:256
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr ""
+msgstr "_Arbeitsfläche '%s' entfernen"
