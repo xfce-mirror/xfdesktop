@@ -1,6 +1,6 @@
 /*  xfce4
  *  
- *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
+ *  Copyright (C) 2002-2003 Jasper Huijsmans (jasper@xfce.org)
  *                     2003 Biju Chacko (botsie@users.sourceforge.net)
  *                     2004 Danny Milosavljevic <danny.milo@gmx.net>
  *                     2004 Brian Tarricone <bjt23@cornell.edu>
@@ -192,7 +192,8 @@ _menu_check_update(gpointer data)
 	modified = xfce_desktop_menu_need_update_impl(desktop_menu);
 	
 	newfilename = desktop_menu_file_get_menufile();
-	if(strcmp(desktop_menu->filename, newfilename)) {
+	if(!desktop_menu->filename || 
+	   strcmp(desktop_menu->filename, newfilename)) {
 		g_free(desktop_menu->filename);
 		desktop_menu->filename = newfilename;
 		modified = TRUE;
