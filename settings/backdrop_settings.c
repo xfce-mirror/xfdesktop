@@ -835,6 +835,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 	bd->top_notebook = gtk_notebook_new();
 	gtk_widget_show(bd->top_notebook);
 	gtk_box_pack_start(GTK_BOX(mainvbox), bd->top_notebook, TRUE, TRUE, 0);
+    gtk_container_set_border_width (GTK_CONTAINER (bd->top_notebook), 6);
 	
 	nscreens = gdk_display_get_n_screens(gdk_display_get_default());
 	if(nscreens == 1)
