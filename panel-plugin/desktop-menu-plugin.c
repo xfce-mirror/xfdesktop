@@ -55,6 +55,25 @@ typedef struct _DMPlugin {
     GtkTooltips *tooltip;  /* needed? */
 } DMPlugin;
 
+static gchar *
+dmp_get_real_path(const gchar *raw_path)
+{
+    gchar *path;
+    
+    if(strstr(raw_path, "$XDG_CONFIG_DIRS/") == raw_path)
+        return xfce_resource_lookup(XFCE_RESOURCE_CONFIG, raw_path+17);
+    else if(strstr(raw_path, "$XDG_CONFIG_HOME/") == raw_path)
+        return xfce_resource_save_location(XFCE_RESOURCE_CONFIG, raw_path+17, FALSE);
+    else if(strstr(raw_path, "$XDG_DATA_DIRS/") == raw_path)
+        return xfce_resource_lookup(XFCE_RESOURCE_DATA, raw_path+15);
+    else if(strstr(raw_path, "$XDG_DATA_HOME/") == raw_path)
+        return xfce_resource_save_location(XFCE_RESOURCE_DATA, raw_path+15, FALSE);
+    else if(strstr(raw_path, "$XDG_CACHE_HOME/") == raw_path)
+        return xfce_resource_save_location(XFCE_RESOURCE_CACHE, raw_path+16, FALSE);
+    
+    return xfce_expand_variables(raw_path, NULL);
+}
+
 static void
 dmp_set_size(Control *c, int size)
 {
@@ -242,11 +261,16 @@ dmp_read_config(Control *control, xmlNodePtr node)
     
     value = xmlGetProp(node, (const xmlChar *)"menu_file");
     if(value) {
+        gchar *path;
+        
         if(dmp->desktop_menu)
             xfce_desktop_menu_destroy(dmp->desktop_menu);
         if(dmp->menu_file)
             g_free(dmp->menu_file);
-        dmp->desktop_menu = xfce_desktop_menu_new(value, TRUE);
+        
+        path = dmp_get_real_path(value);
+        dmp->desktop_menu = xfce_desktop_menu_new(path, TRUE);
+        g_free(path);
         dmp->menu_file = g_strdup(value);
     } else {
         if(dmp->desktop_menu)
@@ -324,8 +348,11 @@ entry_focus_out_cb(GtkWidget *w, GdkEventFocus *evt, gpointer user_data)
         if(dmp->desktop_menu) {
             cur_file = xfce_desktop_menu_get_menu_file(dmp->desktop_menu);
             if(strcmp(dmp->menu_file, cur_file)) {
+                gchar *path;
                 xfce_desktop_menu_destroy(dmp->desktop_menu);
-                dmp->desktop_menu = xfce_desktop_menu_new(dmp->menu_file, TRUE);
+                path = dmp_get_real_path(dmp->menu_file);
+                dmp->desktop_menu = xfce_desktop_menu_new(path, TRUE);
+                g_free(path);
                 if(!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(dmp->icons_chk)))
                     xfce_desktop_menu_set_show_icons(dmp->desktop_menu, FALSE);
             }
