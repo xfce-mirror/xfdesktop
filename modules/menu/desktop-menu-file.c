@@ -264,7 +264,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			}
 			if(!pix) {
 				image = gtk_image_new_from_pixbuf(dummy_icon);
-				xfce_app_menu_item_set_image(XFCE_APP_MENU_ITEM(mi), image);
+				gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
 			}
 		}
 		gtk_widget_set_name(mi, "xfdesktopmenu");
@@ -339,7 +339,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			}
 			if(!pix) {
 				image = gtk_image_new_from_pixbuf(dummy_icon);
-				xfce_app_menu_item_set_image(XFCE_APP_MENU_ITEM(mi), image);
+				gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
 			}
 				
 		}
@@ -384,7 +384,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			}
 			if(!pix) {
 				image = gtk_image_new_from_pixbuf(dummy_icon);
-				xfce_app_menu_item_set_image(XFCE_APP_MENU_ITEM(mi), image);
+				gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
 			}
 		}
 		gtk_widget_set_sensitive(mi, FALSE);
