@@ -3054,14 +3054,9 @@ else
        grep sub/conftest.${OBJEXT-o} sub/conftest.Po > /dev/null 2>&1 &&
        ${MAKE-make} -s -f confmf > /dev/null 2>&1; then
       # icc doesn't choke on unknown options, it will just issue warnings
-      # or remarks (even with -Werror).  So we grep stderr for any message
-      # that says an option was ignored or not supported.
-      # When given -MP, icc 7.0 and 7.1 complain thusly:
-      #   icc: Command line warning: ignoring option '-M'; no argument required
-      # The diagnosis changed in icc 8.0:
-      #   icc: Command line remark: option '-MP' not supported
-      if (grep 'ignoring option' conftest.err ||
-          grep 'not supported' conftest.err) >/dev/null 2>&1; then :; else
+      # (even with -Werror).  So we grep stderr for any message
+      # that says an option was ignored.
+      if grep 'ignoring option' conftest.err >/dev/null 2>&1; then :; else
         am_cv_CC_dependencies_compiler_type=$depmode
         break
       fi
@@ -4699,14 +4694,9 @@ else
        grep sub/conftest.${OBJEXT-o} sub/conftest.Po > /dev/null 2>&1 &&
        ${MAKE-make} -s -f confmf > /dev/null 2>&1; then
       # icc doesn't choke on unknown options, it will just issue warnings
-      # or remarks (even with -Werror).  So we grep stderr for any message
-      # that says an option was ignored or not supported.
-      # When given -MP, icc 7.0 and 7.1 complain thusly:
-      #   icc: Command line warning: ignoring option '-M'; no argument required
-      # The diagnosis changed in icc 8.0:
-      #   icc: Command line remark: option '-MP' not supported
-      if (grep 'ignoring option' conftest.err ||
-          grep 'not supported' conftest.err) >/dev/null 2>&1; then :; else
+      # (even with -Werror).  So we grep stderr for any message
+      # that says an option was ignored.
+      if grep 'ignoring option' conftest.err >/dev/null 2>&1; then :; else
         am_cv_CC_dependencies_compiler_type=$depmode
         break
       fi
@@ -5214,14 +5204,14 @@ bsdi4*)
   ;;
 
 cygwin*)
-  # win32_libid is a shell function defined in ltmain.sh
+  # func_win32_libid is a shell function defined in ltmain.sh
   lt_cv_deplibs_check_method='file_magic ^x86 archive import|^x86 DLL'
-  lt_cv_file_magic_cmd='win32_libid'
+  lt_cv_file_magic_cmd='func_win32_libid'
   ;;
 
 mingw* | pw32*)
   # Base MSYS/MinGW do not provide the 'file' command needed by
-  # win32_libid shell function, so use a weaker test based on 'objdump'.
+  # func_win32_libid shell function, so use a weaker test based on 'objdump'.
   lt_cv_deplibs_check_method='file_magic file format pei*-i386(.*architecture: i386)?'
   lt_cv_file_magic_cmd='$OBJDUMP -f'
   ;;
@@ -5408,7 +5398,7 @@ ia64-*-hpux*)
   ;;
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5411 "configure"' > conftest.$ac_ext
+  echo '#line 5401 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -5483,24 +5473,6 @@ x86_64-*linux*|ppc*-*linux*|powerpc*-*linux*|s390*-*linux*|sparc*-*linux*)
           LD="${LD-ld} -m elf64_sparc"
           ;;
       esac
-      ;;
-    esac
-  fi
-  rm -rf conftest*
-  ;;
-
-*-*-linux*)
-  # Test if the compiler is 64bit
-  echo 'int i;' > conftest.$ac_ext
-  lt_cv_cc_64bit_output=no
-  if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
-  (eval $ac_compile) 2>&5
-  ac_status=$?
-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }; then
-    case `/usr/bin/file conftest.$ac_objext` in
-    *"ELF 64"*)
-      lt_cv_cc_64bit_output=yes
       ;;
     esac
   fi
@@ -6164,14 +6136,9 @@ else
        grep sub/conftest.${OBJEXT-o} sub/conftest.Po > /dev/null 2>&1 &&
        ${MAKE-make} -s -f confmf > /dev/null 2>&1; then
       # icc doesn't choke on unknown options, it will just issue warnings
-      # or remarks (even with -Werror).  So we grep stderr for any message
-      # that says an option was ignored or not supported.
-      # When given -MP, icc 7.0 and 7.1 complain thusly:
-      #   icc: Command line warning: ignoring option '-M'; no argument required
-      # The diagnosis changed in icc 8.0:
-      #   icc: Command line remark: option '-MP' not supported
-      if (grep 'ignoring option' conftest.err ||
-          grep 'not supported' conftest.err) >/dev/null 2>&1; then :; else
+      # (even with -Werror).  So we grep stderr for any message
+      # that says an option was ignored.
+      if grep 'ignoring option' conftest.err >/dev/null 2>&1; then :; else
         am_cv_CXX_dependencies_compiler_type=$depmode
         break
       fi
@@ -6525,7 +6492,7 @@ fi
 
 
 # Provide some information about the compiler.
-echo "$as_me:6528:" \
+echo "$as_me:6495:" \
      "checking for Fortran 77 compiler version" >&5
 ac_compiler=`set X $ac_compile; echo $2`
 { (eval echo "$as_me:$LINENO: \"$ac_compiler --version </dev/null >&5\"") >&5
@@ -6680,7 +6647,7 @@ if test "${lt_cv_sys_max_cmd_len+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
     i=0
-  testring="ABCD"
+  teststring="ABCD"
 
   case $build_os in
   msdosdjgpp*)
@@ -6719,16 +6686,16 @@ else
     # If test is not a shell built-in, we'll probably end up computing a
     # maximum length that is only half of the actual maximum length, but
     # we can't tell.
-    while (test "X"`$CONFIG_SHELL $0 --fallback-echo "X$testring" 2>/dev/null` \
-	       = "XX$testring") >/dev/null 2>&1 &&
-	    new_result=`expr "X$testring" : ".*" 2>&1` &&
+    while (test "X"`$CONFIG_SHELL $0 --fallback-echo "X$teststring" 2>/dev/null` \
+	       = "XX$teststring") >/dev/null 2>&1 &&
+	    new_result=`expr "X$teststring" : ".*" 2>&1` &&
 	    lt_cv_sys_max_cmd_len=$new_result &&
 	    test $i != 17 # 1/2 MB should be enough
     do
       i=`expr $i + 1`
-      testring=$testring$testring
+      teststring=$teststring$teststring
     done
-    testring=
+    teststring=
     # Add a significant safety factor because C++ compilers can tack on massive
     # amounts of additional arguments before passing them to the linker.
     # It appears as though 1/2 is a usable value.
@@ -7559,11 +7526,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7562: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7529: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7566: \$? = $ac_status" >&5
+   echo "$as_me:7533: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -7792,11 +7759,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7795: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7762: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7799: \$? = $ac_status" >&5
+   echo "$as_me:7766: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -7852,11 +7819,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7855: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7822: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:7859: \$? = $ac_status" >&5
+   echo "$as_me:7826: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -8068,7 +8035,7 @@ EOF
       ;;
 
   linux*)
-    if $LD --help 2>&1 | egrep ': supported targets:.* elf' > /dev/null; then
+    if $LD --help 2>&1 | grep ': supported targets:.* elf' > /dev/null; then
         tmp_archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
 	archive_cmds="$tmp_archive_cmds"
       supports_anon_versioning=no
@@ -8370,7 +8337,7 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:/lib"; fi
       # Tell ltmain to make .lib files, not .a files.
       libext=lib
       # Tell ltmain to make .dll files, not .so files.
-      shrext=".dll"
+      shrext_cmds=".dll"
       # FIXME: Setting linknames here is a bad hack.
       archive_cmds='$CC -o $lib $libobjs $compiler_flags `echo "$deplibs" | $SED -e '\''s/ -lc$//'\''` -link -dll~linknames='
       # The linker will automatically build a .lib file if we build a DLL.
@@ -8826,7 +8793,7 @@ echo $ECHO_N "checking dynamic linker characteristics... $ECHO_C" >&6
 library_names_spec=
 libname_spec='lib$name'
 soname_spec=
-shrext=".so"
+shrext_cmds=".so"
 postinstall_cmds=
 postuninstall_cmds=
 finish_cmds=
@@ -8939,7 +8906,7 @@ bsdi4*)
 
 cygwin* | mingw* | pw32*)
   version_type=windows
-  shrext=".dll"
+  shrext_cmds=".dll"
   need_version=no
   need_lib_prefix=no
 
@@ -8986,30 +8953,6 @@ cygwin* | mingw* | pw32*)
     esac
     ;;
 
-  linux*)
-    if $LD --help 2>&1 | egrep ': supported targets:.* elf' > /dev/null; then
-      archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
-      supports_anon_versioning=no
-      case `$LD -v 2>/dev/null` in
-        *\ 01.* | *\ 2.[0-9].* | *\ 2.10.*) ;; # catch versions < 2.11
-        *\ 2.11.93.0.2\ *) supports_anon_versioning=yes ;; # RH7.3 ...
-        *\ 2.11.92.0.12\ *) supports_anon_versioning=yes ;; # Mandrake 8.2 ...
-        *\ 2.11.*) ;; # other 2.11 versions
-        *) supports_anon_versioning=yes ;;
-      esac
-      if test $supports_anon_versioning = yes; then
-        archive_expsym_cmds='$echo "{ global:" > $output_objdir/$libname.ver~
-cat $export_symbols | sed -e "s/\(.*\)/\1;/" >> $output_objdir/$libname.ver~
-$echo "local: *; };" >> $output_objdir/$libname.ver~
-        $CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
-      else
-        $archive_expsym_cmds="$archive_cmds"
-      fi
-    else
-      ld_shlibs=no
-    fi
-    ;;
-
   *)
     library_names_spec='${libname}`echo ${release} | $SED -e 's/[.]/-/g'`${versuffix}${shared_ext} $libname.lib'
     ;;
@@ -9028,7 +8971,7 @@ darwin* | rhapsody*)
   soname_spec='${libname}${release}${major}$shared_ext'
   shlibpath_overrides_runpath=yes
   shlibpath_var=DYLD_LIBRARY_PATH
-  shrext='$(test .$module = .yes && echo .so || echo .dylib)'
+  shrext_cmds='$(test .$module = .yes && echo .so || echo .dylib)'
   # Apple's gcc prints 'gcc -print-search-dirs' doesn't operate the same.
   if test "$GCC" = yes; then
     sys_lib_search_path_spec=`$CC -print-search-dirs | tr "\n" "$PATH_SEPARATOR" | sed -e 's/libraries:/@libraries:/' | tr "@" "\n" | grep "^libraries:" | sed -e "s/^libraries://" -e "s,=/,/,g" -e "s,$PATH_SEPARATOR, ,g" -e "s,.*,& /lib /usr/lib /usr/local/lib,g"`
@@ -9111,7 +9054,7 @@ hpux9* | hpux10* | hpux11*)
   need_version=no
   case "$host_cpu" in
   ia64*)
-    shrext='.so'
+    shrext_cmds='.so'
     hardcode_into_libs=yes
     dynamic_linker="$host_os dld.so"
     shlibpath_var=LD_LIBRARY_PATH
@@ -9126,7 +9069,7 @@ hpux9* | hpux10* | hpux11*)
     sys_lib_dlsearch_path_spec=$sys_lib_search_path_spec
     ;;
    hppa*64*)
-     shrext='.sl'
+     shrext_cmds='.sl'
      hardcode_into_libs=yes
      dynamic_linker="$host_os dld.sl"
      shlibpath_var=LD_LIBRARY_PATH # How should we handle SHLIB_PATH
@@ -9137,7 +9080,7 @@ hpux9* | hpux10* | hpux11*)
      sys_lib_dlsearch_path_spec=$sys_lib_search_path_spec
      ;;
    *)
-    shrext='.sl'
+    shrext_cmds='.sl'
     dynamic_linker="$host_os dld.sl"
     shlibpath_var=SHLIB_PATH
     shlibpath_overrides_runpath=no # +s is required to enable SHLIB_PATH
@@ -9206,32 +9149,11 @@ linux*)
   # before this can be enabled.
   hardcode_into_libs=yes
 
-  # Append ld.so.conf contents to the search path
-  if test -f /etc/ld.so.conf; then
-    ld_extra=`$SED -e 's/:,\t/ /g;s/=^=*$//;s/=^= * / /g' /etc/ld.so.conf`
-    sys_lib_dlsearch_path_spec="/lib /usr/lib $ld_extra"
-  fi
-
-  case $host_cpu:$lt_cv_cc_64bit_output in
-  powerpc64:yes | s390x:yes | sparc64:yes | x86_64:yes)
-    sys_lib_dlsearch_path_spec="/lib64 /usr/lib64 /usr/X11R6/lib64"
-    sys_lib_search_path_spec="/lib64 /usr/lib64 /usr/local/lib64 /usr/X11R6/lib64"
-    ;;
-  esac
-
-  # We used to test for /lib/ld.so.1 and disable shared libraries on
-  # powerpc, because MkLinux only supported shared libraries with the
-  # GNU dynamic linker.  Since this was broken with cross compilers,
-  # most powerpc-linux boxes support dynamic linking these days and
-  # people can always --disable-shared, the test was removed, and we
-  # assume the GNU/Linux dynamic linker is in use.
-  dynamic_linker='GNU/Linux ld.so'
-
-  # Find out which ABI we are using (multilib Linux x86_64 hack).
+  # find out which ABI we are using
   libsuff=
   case "$host_cpu" in
-  x86_64*)
-    echo '#line 9234 "configure"' > conftest.$ac_ext
+  x86_64*|s390x*|powerpc64*)
+    echo '#line 9156 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -9240,16 +9162,27 @@ linux*)
       case `/usr/bin/file conftest.$ac_objext` in
       *64-bit*)
         libsuff=64
+        sys_lib_search_path_spec="/lib${libsuff} /usr/lib${libsuff} /usr/local/lib${libsuff}"
         ;;
       esac
     fi
     rm -rf conftest*
     ;;
-  *)
-    ;;
   esac
-  sys_lib_dlsearch_path_spec="/lib${libsuff} /usr/lib${libsuff}"
-  sys_lib_search_path_spec="/lib${libsuff} /usr/lib${libsuff} /usr/local/lib${libsuff}"
+
+  # Append ld.so.conf contents to the search path
+  if test -f /etc/ld.so.conf; then
+    lt_ld_extra=`$SED -e 's/:,\t/ /g;s/=^=*$//;s/=^= * / /g' /etc/ld.so.conf | tr '\n' ' '`
+    sys_lib_dlsearch_path_spec="/lib${libsuff} /usr/lib${libsuff} $lt_ld_extra"
+  fi
+
+  # We used to test for /lib/ld.so.1 and disable shared libraries on
+  # powerpc, because MkLinux only supported shared libraries with the
+  # GNU dynamic linker.  Since this was broken with cross compilers,
+  # most powerpc-linux boxes support dynamic linking these days and
+  # people can always --disable-shared, the test was removed, and we
+  # assume the GNU/Linux dynamic linker is in use.
+  dynamic_linker='GNU/Linux ld.so'
   ;;
 
 knetbsd*-gnu)
@@ -9322,7 +9255,7 @@ openbsd*)
 
 os2*)
   libname_spec='$name'
-  shrext=".dll"
+  shrext_cmds=".dll"
   need_lib_prefix=no
   library_names_spec='$libname${shared_ext} $libname.a'
   dynamic_linker='OS/2 ld.exe'
@@ -10091,7 +10024,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10094 "configure"
+#line 10027 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -10189,7 +10122,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10192 "configure"
+#line 10125 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -10314,7 +10247,7 @@ aix3*)
   fi
   ;;
 
-aix4*)
+aix4* | aix5*)
   if test "$host_cpu" != ia64 && test "$aix_use_runtimelinking" = no ; then
     test "$enable_shared" = yes && enable_static=no
   fi
@@ -10590,7 +10523,7 @@ objext="$ac_objext"
 libext="$libext"
 
 # Shared library suffix (normally ".so").
-shrext='$shrext'
+shrext_cmds='$shrext_cmds'
 
 # Executable file suffix (normally "").
 exeext="$exeext"
@@ -11505,7 +11438,7 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:/lib"; fi
       # explicitly linking system object files so we need to strip them
       # from the output so that they don't get included in the library
       # dependencies.
-      output_verbose_link_cmd='templist=`($CC -b $CFLAGS -v conftest.$objext 2>&1) | egrep "\-L"`; list=""; for z in $templist; do case $z in conftest.$objext) list="$list $z";; *.$objext);; *) list="$list $z";;esac; done; echo $list'
+      output_verbose_link_cmd='templist=`($CC -b $CFLAGS -v conftest.$objext 2>&1) | grep "-L"`; list=""; for z in $templist; do case $z in conftest.$objext) list="$list $z";; *.$objext);; *) list="$list $z";;esac; done; echo $list'
       ;;
     *)
       if test "$GXX" = yes; then
@@ -12368,11 +12301,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:12371: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:12304: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:12375: \$? = $ac_status" >&5
+   echo "$as_me:12308: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -12428,11 +12361,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:12431: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:12364: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:12435: \$? = $ac_status" >&5
+   echo "$as_me:12368: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -12579,7 +12512,7 @@ echo $ECHO_N "checking dynamic linker characteristics... $ECHO_C" >&6
 library_names_spec=
 libname_spec='lib$name'
 soname_spec=
-shrext=".so"
+shrext_cmds=".so"
 postinstall_cmds=
 postuninstall_cmds=
 finish_cmds=
@@ -12692,7 +12625,7 @@ bsdi4*)
 
 cygwin* | mingw* | pw32*)
   version_type=windows
-  shrext=".dll"
+  shrext_cmds=".dll"
   need_version=no
   need_lib_prefix=no
 
@@ -12739,30 +12672,6 @@ cygwin* | mingw* | pw32*)
     esac
     ;;
 
-  linux*)
-    if $LD --help 2>&1 | egrep ': supported targets:.* elf' > /dev/null; then
-      archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
-      supports_anon_versioning=no
-      case `$LD -v 2>/dev/null` in
-        *\ 01.* | *\ 2.[0-9].* | *\ 2.10.*) ;; # catch versions < 2.11
-        *\ 2.11.93.0.2\ *) supports_anon_versioning=yes ;; # RH7.3 ...
-        *\ 2.11.92.0.12\ *) supports_anon_versioning=yes ;; # Mandrake 8.2 ...
-        *\ 2.11.*) ;; # other 2.11 versions
-        *) supports_anon_versioning=yes ;;
-      esac
-      if test $supports_anon_versioning = yes; then
-        archive_expsym_cmds='$echo "{ global:" > $output_objdir/$libname.ver~
-cat $export_symbols | sed -e "s/\(.*\)/\1;/" >> $output_objdir/$libname.ver~
-$echo "local: *; };" >> $output_objdir/$libname.ver~
-        $CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
-      else
-        $archive_expsym_cmds="$archive_cmds"
-      fi
-    else
-      ld_shlibs=no
-    fi
-    ;;
-
   *)
     library_names_spec='${libname}`echo ${release} | $SED -e 's/[.]/-/g'`${versuffix}${shared_ext} $libname.lib'
     ;;
@@ -12781,7 +12690,7 @@ darwin* | rhapsody*)
   soname_spec='${libname}${release}${major}$shared_ext'
   shlibpath_overrides_runpath=yes
   shlibpath_var=DYLD_LIBRARY_PATH
-  shrext='$(test .$module = .yes && echo .so || echo .dylib)'
+  shrext_cmds='$(test .$module = .yes && echo .so || echo .dylib)'
   # Apple's gcc prints 'gcc -print-search-dirs' doesn't operate the same.
   if test "$GCC" = yes; then
     sys_lib_search_path_spec=`$CC -print-search-dirs | tr "\n" "$PATH_SEPARATOR" | sed -e 's/libraries:/@libraries:/' | tr "@" "\n" | grep "^libraries:" | sed -e "s/^libraries://" -e "s,=/,/,g" -e "s,$PATH_SEPARATOR, ,g" -e "s,.*,& /lib /usr/lib /usr/local/lib,g"`
@@ -12864,7 +12773,7 @@ hpux9* | hpux10* | hpux11*)
   need_version=no
   case "$host_cpu" in
   ia64*)
-    shrext='.so'
+    shrext_cmds='.so'
     hardcode_into_libs=yes
     dynamic_linker="$host_os dld.so"
     shlibpath_var=LD_LIBRARY_PATH
@@ -12879,7 +12788,7 @@ hpux9* | hpux10* | hpux11*)
     sys_lib_dlsearch_path_spec=$sys_lib_search_path_spec
     ;;
    hppa*64*)
-     shrext='.sl'
+     shrext_cmds='.sl'
      hardcode_into_libs=yes
      dynamic_linker="$host_os dld.sl"
      shlibpath_var=LD_LIBRARY_PATH # How should we handle SHLIB_PATH
@@ -12890,7 +12799,7 @@ hpux9* | hpux10* | hpux11*)
      sys_lib_dlsearch_path_spec=$sys_lib_search_path_spec
      ;;
    *)
-    shrext='.sl'
+    shrext_cmds='.sl'
     dynamic_linker="$host_os dld.sl"
     shlibpath_var=SHLIB_PATH
     shlibpath_overrides_runpath=no # +s is required to enable SHLIB_PATH
@@ -12959,32 +12868,11 @@ linux*)
   # before this can be enabled.
   hardcode_into_libs=yes
 
-  # Append ld.so.conf contents to the search path
-  if test -f /etc/ld.so.conf; then
-    ld_extra=`$SED -e 's/:,\t/ /g;s/=^=*$//;s/=^= * / /g' /etc/ld.so.conf`
-    sys_lib_dlsearch_path_spec="/lib /usr/lib $ld_extra"
-  fi
-
-  case $host_cpu:$lt_cv_cc_64bit_output in
-  powerpc64:yes | s390x:yes | sparc64:yes | x86_64:yes)
-    sys_lib_dlsearch_path_spec="/lib64 /usr/lib64 /usr/X11R6/lib64"
-    sys_lib_search_path_spec="/lib64 /usr/lib64 /usr/local/lib64 /usr/X11R6/lib64"
-    ;;
-  esac
-
-  # We used to test for /lib/ld.so.1 and disable shared libraries on
-  # powerpc, because MkLinux only supported shared libraries with the
-  # GNU dynamic linker.  Since this was broken with cross compilers,
-  # most powerpc-linux boxes support dynamic linking these days and
-  # people can always --disable-shared, the test was removed, and we
-  # assume the GNU/Linux dynamic linker is in use.
-  dynamic_linker='GNU/Linux ld.so'
-
-  # Find out which ABI we are using (multilib Linux x86_64 hack).
+  # find out which ABI we are using
   libsuff=
   case "$host_cpu" in
-  x86_64*)
-    echo '#line 12987 "configure"' > conftest.$ac_ext
+  x86_64*|s390x*|powerpc64*)
+    echo '#line 12875 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -12993,16 +12881,27 @@ linux*)
       case `/usr/bin/file conftest.$ac_objext` in
       *64-bit*)
         libsuff=64
+        sys_lib_search_path_spec="/lib${libsuff} /usr/lib${libsuff} /usr/local/lib${libsuff}"
         ;;
       esac
     fi
     rm -rf conftest*
     ;;
-  *)
-    ;;
   esac
-  sys_lib_dlsearch_path_spec="/lib${libsuff} /usr/lib${libsuff}"
-  sys_lib_search_path_spec="/lib${libsuff} /usr/lib${libsuff} /usr/local/lib${libsuff}"
+
+  # Append ld.so.conf contents to the search path
+  if test -f /etc/ld.so.conf; then
+    lt_ld_extra=`$SED -e 's/:,\t/ /g;s/=^=*$//;s/=^= * / /g' /etc/ld.so.conf | tr '\n' ' '`
+    sys_lib_dlsearch_path_spec="/lib${libsuff} /usr/lib${libsuff} $lt_ld_extra"
+  fi
+
+  # We used to test for /lib/ld.so.1 and disable shared libraries on
+  # powerpc, because MkLinux only supported shared libraries with the
+  # GNU dynamic linker.  Since this was broken with cross compilers,
+  # most powerpc-linux boxes support dynamic linking these days and
+  # people can always --disable-shared, the test was removed, and we
+  # assume the GNU/Linux dynamic linker is in use.
+  dynamic_linker='GNU/Linux ld.so'
   ;;
 
 knetbsd*-gnu)
@@ -13075,7 +12974,7 @@ openbsd*)
 
 os2*)
   libname_spec='$name'
-  shrext=".dll"
+  shrext_cmds=".dll"
   need_lib_prefix=no
   library_names_spec='$libname${shared_ext} $libname.a'
   dynamic_linker='OS/2 ld.exe'
@@ -13844,7 +13743,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 13847 "configure"
+#line 13746 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -13942,7 +13841,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 13945 "configure"
+#line 13844 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -14221,7 +14120,7 @@ objext="$ac_objext"
 libext="$libext"
 
 # Shared library suffix (normally ".so").
-shrext='$shrext'
+shrext_cmds='$shrext_cmds'
 
 # Executable file suffix (normally "").
 exeext="$exeext"
@@ -14543,7 +14442,7 @@ aix3*)
     postinstall_cmds='$RANLIB $lib'
   fi
   ;;
-aix4*)
+aix4* | aix5*)
   test "$enable_shared" = yes && enable_static=no
   ;;
 esac
@@ -14769,11 +14668,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14772: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14671: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:14776: \$? = $ac_status" >&5
+   echo "$as_me:14675: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -14829,11 +14728,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14832: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14731: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:14836: \$? = $ac_status" >&5
+   echo "$as_me:14735: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -15045,7 +14944,7 @@ EOF
       ;;
 
   linux*)
-    if $LD --help 2>&1 | egrep ': supported targets:.* elf' > /dev/null; then
+    if $LD --help 2>&1 | grep ': supported targets:.* elf' > /dev/null; then
         tmp_archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
 	archive_cmds_F77="$tmp_archive_cmds"
       supports_anon_versioning=no
@@ -15327,7 +15226,7 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:/lib"; fi
       # Tell ltmain to make .lib files, not .a files.
       libext=lib
       # Tell ltmain to make .dll files, not .so files.
-      shrext=".dll"
+      shrext_cmds=".dll"
       # FIXME: Setting linknames here is a bad hack.
       archive_cmds_F77='$CC -o $lib $libobjs $compiler_flags `echo "$deplibs" | $SED -e '\''s/ -lc$//'\''` -link -dll~linknames='
       # The linker will automatically build a .lib file if we build a DLL.
@@ -15783,7 +15682,7 @@ echo $ECHO_N "checking dynamic linker characteristics... $ECHO_C" >&6
 library_names_spec=
 libname_spec='lib$name'
 soname_spec=
-shrext=".so"
+shrext_cmds=".so"
 postinstall_cmds=
 postuninstall_cmds=
 finish_cmds=
@@ -15896,7 +15795,7 @@ bsdi4*)
 
 cygwin* | mingw* | pw32*)
   version_type=windows
-  shrext=".dll"
+  shrext_cmds=".dll"
   need_version=no
   need_lib_prefix=no
 
@@ -15943,30 +15842,6 @@ cygwin* | mingw* | pw32*)
     esac
     ;;
 
-  linux*)
-    if $LD --help 2>&1 | egrep ': supported targets:.* elf' > /dev/null; then
-      archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
-      supports_anon_versioning=no
-      case `$LD -v 2>/dev/null` in
-        *\ 01.* | *\ 2.[0-9].* | *\ 2.10.*) ;; # catch versions < 2.11
-        *\ 2.11.93.0.2\ *) supports_anon_versioning=yes ;; # RH7.3 ...
-        *\ 2.11.92.0.12\ *) supports_anon_versioning=yes ;; # Mandrake 8.2 ...
-        *\ 2.11.*) ;; # other 2.11 versions
-        *) supports_anon_versioning=yes ;;
-      esac
-      if test $supports_anon_versioning = yes; then
-        archive_expsym_cmds='$echo "{ global:" > $output_objdir/$libname.ver~
-cat $export_symbols | sed -e "s/\(.*\)/\1;/" >> $output_objdir/$libname.ver~
-$echo "local: *; };" >> $output_objdir/$libname.ver~
-        $CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
-      else
-        $archive_expsym_cmds="$archive_cmds"
-      fi
-    else
-      ld_shlibs=no
-    fi
-    ;;
-
   *)
     library_names_spec='${libname}`echo ${release} | $SED -e 's/[.]/-/g'`${versuffix}${shared_ext} $libname.lib'
     ;;
@@ -15985,7 +15860,7 @@ darwin* | rhapsody*)
   soname_spec='${libname}${release}${major}$shared_ext'
   shlibpath_overrides_runpath=yes
   shlibpath_var=DYLD_LIBRARY_PATH
-  shrext='$(test .$module = .yes && echo .so || echo .dylib)'
+  shrext_cmds='$(test .$module = .yes && echo .so || echo .dylib)'
   # Apple's gcc prints 'gcc -print-search-dirs' doesn't operate the same.
   if test "$GCC" = yes; then
     sys_lib_search_path_spec=`$CC -print-search-dirs | tr "\n" "$PATH_SEPARATOR" | sed -e 's/libraries:/@libraries:/' | tr "@" "\n" | grep "^libraries:" | sed -e "s/^libraries://" -e "s,=/,/,g" -e "s,$PATH_SEPARATOR, ,g" -e "s,.*,& /lib /usr/lib /usr/local/lib,g"`
@@ -16068,7 +15943,7 @@ hpux9* | hpux10* | hpux11*)
   need_version=no
   case "$host_cpu" in
   ia64*)
-    shrext='.so'
+    shrext_cmds='.so'
     hardcode_into_libs=yes
     dynamic_linker="$host_os dld.so"
     shlibpath_var=LD_LIBRARY_PATH
@@ -16083,7 +15958,7 @@ hpux9* | hpux10* | hpux11*)
     sys_lib_dlsearch_path_spec=$sys_lib_search_path_spec
     ;;
    hppa*64*)
-     shrext='.sl'
+     shrext_cmds='.sl'
      hardcode_into_libs=yes
      dynamic_linker="$host_os dld.sl"
      shlibpath_var=LD_LIBRARY_PATH # How should we handle SHLIB_PATH
@@ -16094,7 +15969,7 @@ hpux9* | hpux10* | hpux11*)
      sys_lib_dlsearch_path_spec=$sys_lib_search_path_spec
      ;;
    *)
-    shrext='.sl'
+    shrext_cmds='.sl'
     dynamic_linker="$host_os dld.sl"
     shlibpath_var=SHLIB_PATH
     shlibpath_overrides_runpath=no # +s is required to enable SHLIB_PATH
@@ -16163,32 +16038,11 @@ linux*)
   # before this can be enabled.
   hardcode_into_libs=yes
 
-  # Append ld.so.conf contents to the search path
-  if test -f /etc/ld.so.conf; then
-    ld_extra=`$SED -e 's/:,\t/ /g;s/=^=*$//;s/=^= * / /g' /etc/ld.so.conf`
-    sys_lib_dlsearch_path_spec="/lib /usr/lib $ld_extra"
-  fi
-
-  case $host_cpu:$lt_cv_cc_64bit_output in
-  powerpc64:yes | s390x:yes | sparc64:yes | x86_64:yes)
-    sys_lib_dlsearch_path_spec="/lib64 /usr/lib64 /usr/X11R6/lib64"
-    sys_lib_search_path_spec="/lib64 /usr/lib64 /usr/local/lib64 /usr/X11R6/lib64"
-    ;;
-  esac
-
-  # We used to test for /lib/ld.so.1 and disable shared libraries on
-  # powerpc, because MkLinux only supported shared libraries with the
-  # GNU dynamic linker.  Since this was broken with cross compilers,
-  # most powerpc-linux boxes support dynamic linking these days and
-  # people can always --disable-shared, the test was removed, and we
-  # assume the GNU/Linux dynamic linker is in use.
-  dynamic_linker='GNU/Linux ld.so'
-
-  # Find out which ABI we are using (multilib Linux x86_64 hack).
+  # find out which ABI we are using
   libsuff=
   case "$host_cpu" in
-  x86_64*)
-    echo '#line 16191 "configure"' > conftest.$ac_ext
+  x86_64*|s390x*|powerpc64*)
+    echo '#line 16045 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -16197,16 +16051,27 @@ linux*)
       case `/usr/bin/file conftest.$ac_objext` in
       *64-bit*)
         libsuff=64
+        sys_lib_search_path_spec="/lib${libsuff} /usr/lib${libsuff} /usr/local/lib${libsuff}"
         ;;
       esac
     fi
     rm -rf conftest*
     ;;
-  *)
-    ;;
   esac
-  sys_lib_dlsearch_path_spec="/lib${libsuff} /usr/lib${libsuff}"
-  sys_lib_search_path_spec="/lib${libsuff} /usr/lib${libsuff} /usr/local/lib${libsuff}"
+
+  # Append ld.so.conf contents to the search path
+  if test -f /etc/ld.so.conf; then
+    lt_ld_extra=`$SED -e 's/:,\t/ /g;s/=^=*$//;s/=^= * / /g' /etc/ld.so.conf | tr '\n' ' '`
+    sys_lib_dlsearch_path_spec="/lib${libsuff} /usr/lib${libsuff} $lt_ld_extra"
+  fi
+
+  # We used to test for /lib/ld.so.1 and disable shared libraries on
+  # powerpc, because MkLinux only supported shared libraries with the
+  # GNU dynamic linker.  Since this was broken with cross compilers,
+  # most powerpc-linux boxes support dynamic linking these days and
+  # people can always --disable-shared, the test was removed, and we
+  # assume the GNU/Linux dynamic linker is in use.
+  dynamic_linker='GNU/Linux ld.so'
   ;;
 
 knetbsd*-gnu)
@@ -16279,7 +16144,7 @@ openbsd*)
 
 os2*)
   libname_spec='$name'
-  shrext=".dll"
+  shrext_cmds=".dll"
   need_lib_prefix=no
   library_names_spec='$libname${shared_ext} $libname.a'
   dynamic_linker='OS/2 ld.exe'
@@ -16620,7 +16485,7 @@ objext="$ac_objext"
 libext="$libext"
 
 # Shared library suffix (normally ".so").
-shrext='$shrext'
+shrext_cmds='$shrext_cmds'
 
 # Executable file suffix (normally "").
 exeext="$exeext"
@@ -16918,11 +16783,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:16921: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:16786: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:16925: \$? = $ac_status" >&5
+   echo "$as_me:16790: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -17151,11 +17016,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17154: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17019: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:17158: \$? = $ac_status" >&5
+   echo "$as_me:17023: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -17211,11 +17076,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17214: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17079: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:17218: \$? = $ac_status" >&5
+   echo "$as_me:17083: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -17427,7 +17292,7 @@ EOF
       ;;
 
   linux*)
-    if $LD --help 2>&1 | egrep ': supported targets:.* elf' > /dev/null; then
+    if $LD --help 2>&1 | grep ': supported targets:.* elf' > /dev/null; then
         tmp_archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
 	archive_cmds_GCJ="$tmp_archive_cmds"
       supports_anon_versioning=no
@@ -17729,7 +17594,7 @@ if test -z "$aix_libpath"; then aix_libpath="/usr/lib:/lib"; fi
       # Tell ltmain to make .lib files, not .a files.
       libext=lib
       # Tell ltmain to make .dll files, not .so files.
-      shrext=".dll"
+      shrext_cmds=".dll"
       # FIXME: Setting linknames here is a bad hack.
       archive_cmds_GCJ='$CC -o $lib $libobjs $compiler_flags `echo "$deplibs" | $SED -e '\''s/ -lc$//'\''` -link -dll~linknames='
       # The linker will automatically build a .lib file if we build a DLL.
@@ -18185,7 +18050,7 @@ echo $ECHO_N "checking dynamic linker characteristics... $ECHO_C" >&6
 library_names_spec=
 libname_spec='lib$name'
 soname_spec=
-shrext=".so"
+shrext_cmds=".so"
 postinstall_cmds=
 postuninstall_cmds=
 finish_cmds=
@@ -18298,7 +18163,7 @@ bsdi4*)
 
 cygwin* | mingw* | pw32*)
   version_type=windows
-  shrext=".dll"
+  shrext_cmds=".dll"
   need_version=no
   need_lib_prefix=no
 
@@ -18345,30 +18210,6 @@ cygwin* | mingw* | pw32*)
     esac
     ;;
 
-  linux*)
-    if $LD --help 2>&1 | egrep ': supported targets:.* elf' > /dev/null; then
-      archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
-      supports_anon_versioning=no
-      case `$LD -v 2>/dev/null` in
-        *\ 01.* | *\ 2.[0-9].* | *\ 2.10.*) ;; # catch versions < 2.11
-        *\ 2.11.93.0.2\ *) supports_anon_versioning=yes ;; # RH7.3 ...
-        *\ 2.11.92.0.12\ *) supports_anon_versioning=yes ;; # Mandrake 8.2 ...
-        *\ 2.11.*) ;; # other 2.11 versions
-        *) supports_anon_versioning=yes ;;
-      esac
-      if test $supports_anon_versioning = yes; then
-        archive_expsym_cmds='$echo "{ global:" > $output_objdir/$libname.ver~
-cat $export_symbols | sed -e "s/\(.*\)/\1;/" >> $output_objdir/$libname.ver~
-$echo "local: *; };" >> $output_objdir/$libname.ver~
-        $CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname ${wl}-version-script ${wl}$output_objdir/$libname.ver -o $lib'
-      else
-        $archive_expsym_cmds="$archive_cmds"
-      fi
-    else
-      ld_shlibs=no
-    fi
-    ;;
-
   *)
     library_names_spec='${libname}`echo ${release} | $SED -e 's/[.]/-/g'`${versuffix}${shared_ext} $libname.lib'
     ;;
@@ -18387,7 +18228,7 @@ darwin* | rhapsody*)
   soname_spec='${libname}${release}${major}$shared_ext'
   shlibpath_overrides_runpath=yes
   shlibpath_var=DYLD_LIBRARY_PATH
-  shrext='$(test .$module = .yes && echo .so || echo .dylib)'
+  shrext_cmds='$(test .$module = .yes && echo .so || echo .dylib)'
   # Apple's gcc prints 'gcc -print-search-dirs' doesn't operate the same.
   if test "$GCC" = yes; then
     sys_lib_search_path_spec=`$CC -print-search-dirs | tr "\n" "$PATH_SEPARATOR" | sed -e 's/libraries:/@libraries:/' | tr "@" "\n" | grep "^libraries:" | sed -e "s/^libraries://" -e "s,=/,/,g" -e "s,$PATH_SEPARATOR, ,g" -e "s,.*,& /lib /usr/lib /usr/local/lib,g"`
@@ -18470,7 +18311,7 @@ hpux9* | hpux10* | hpux11*)
   need_version=no
   case "$host_cpu" in
   ia64*)
-    shrext='.so'
+    shrext_cmds='.so'
     hardcode_into_libs=yes
     dynamic_linker="$host_os dld.so"
     shlibpath_var=LD_LIBRARY_PATH
@@ -18485,7 +18326,7 @@ hpux9* | hpux10* | hpux11*)
     sys_lib_dlsearch_path_spec=$sys_lib_search_path_spec
     ;;
    hppa*64*)
-     shrext='.sl'
+     shrext_cmds='.sl'
      hardcode_into_libs=yes
      dynamic_linker="$host_os dld.sl"
      shlibpath_var=LD_LIBRARY_PATH # How should we handle SHLIB_PATH
@@ -18496,7 +18337,7 @@ hpux9* | hpux10* | hpux11*)
      sys_lib_dlsearch_path_spec=$sys_lib_search_path_spec
      ;;
    *)
-    shrext='.sl'
+    shrext_cmds='.sl'
     dynamic_linker="$host_os dld.sl"
     shlibpath_var=SHLIB_PATH
     shlibpath_overrides_runpath=no # +s is required to enable SHLIB_PATH
@@ -18565,32 +18406,11 @@ linux*)
   # before this can be enabled.
   hardcode_into_libs=yes
 
-  # Append ld.so.conf contents to the search path
-  if test -f /etc/ld.so.conf; then
-    ld_extra=`$SED -e 's/:,\t/ /g;s/=^=*$//;s/=^= * / /g' /etc/ld.so.conf`
-    sys_lib_dlsearch_path_spec="/lib /usr/lib $ld_extra"
-  fi
-
-  case $host_cpu:$lt_cv_cc_64bit_output in
-  powerpc64:yes | s390x:yes | sparc64:yes | x86_64:yes)
-    sys_lib_dlsearch_path_spec="/lib64 /usr/lib64 /usr/X11R6/lib64"
-    sys_lib_search_path_spec="/lib64 /usr/lib64 /usr/local/lib64 /usr/X11R6/lib64"
-    ;;
-  esac
-
-  # We used to test for /lib/ld.so.1 and disable shared libraries on
-  # powerpc, because MkLinux only supported shared libraries with the
-  # GNU dynamic linker.  Since this was broken with cross compilers,
-  # most powerpc-linux boxes support dynamic linking these days and
-  # people can always --disable-shared, the test was removed, and we
-  # assume the GNU/Linux dynamic linker is in use.
-  dynamic_linker='GNU/Linux ld.so'
-
-  # Find out which ABI we are using (multilib Linux x86_64 hack).
+  # find out which ABI we are using
   libsuff=
   case "$host_cpu" in
-  x86_64*)
-    echo '#line 18593 "configure"' > conftest.$ac_ext
+  x86_64*|s390x*|powerpc64*)
+    echo '#line 18413 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -18599,16 +18419,27 @@ linux*)
       case `/usr/bin/file conftest.$ac_objext` in
       *64-bit*)
         libsuff=64
+        sys_lib_search_path_spec="/lib${libsuff} /usr/lib${libsuff} /usr/local/lib${libsuff}"
         ;;
       esac
     fi
     rm -rf conftest*
     ;;
-  *)
-    ;;
   esac
-  sys_lib_dlsearch_path_spec="/lib${libsuff} /usr/lib${libsuff}"
-  sys_lib_search_path_spec="/lib${libsuff} /usr/lib${libsuff} /usr/local/lib${libsuff}"
+
+  # Append ld.so.conf contents to the search path
+  if test -f /etc/ld.so.conf; then
+    lt_ld_extra=`$SED -e 's/:,\t/ /g;s/=^=*$//;s/=^= * / /g' /etc/ld.so.conf | tr '\n' ' '`
+    sys_lib_dlsearch_path_spec="/lib${libsuff} /usr/lib${libsuff} $lt_ld_extra"
+  fi
+
+  # We used to test for /lib/ld.so.1 and disable shared libraries on
+  # powerpc, because MkLinux only supported shared libraries with the
+  # GNU dynamic linker.  Since this was broken with cross compilers,
+  # most powerpc-linux boxes support dynamic linking these days and
+  # people can always --disable-shared, the test was removed, and we
+  # assume the GNU/Linux dynamic linker is in use.
+  dynamic_linker='GNU/Linux ld.so'
   ;;
 
 knetbsd*-gnu)
@@ -18681,7 +18512,7 @@ openbsd*)
 
 os2*)
   libname_spec='$name'
-  shrext=".dll"
+  shrext_cmds=".dll"
   need_lib_prefix=no
   library_names_spec='$libname${shared_ext} $libname.a'
   dynamic_linker='OS/2 ld.exe'
@@ -19450,7 +19281,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 19453 "configure"
+#line 19284 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -19548,7 +19379,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 19551 "configure"
+#line 19382 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -19827,7 +19658,7 @@ objext="$ac_objext"
 libext="$libext"
 
 # Shared library suffix (normally ".so").
-shrext='$shrext'
+shrext_cmds='$shrext_cmds'
 
 # Executable file suffix (normally "").
 exeext="$exeext"
@@ -20272,7 +20103,7 @@ objext="$ac_objext"
 libext="$libext"
 
 # Shared library suffix (normally ".so").
-shrext='$shrext'
+shrext_cmds='$shrext_cmds'
 
 # Executable file suffix (normally "").
 exeext="$exeext"
@@ -20532,24 +20363,6 @@ echo "$as_me: error: unable to update list of available tagged configurations." 
    { (exit 1); exit 1; }; }
   fi
 fi
-
-
-  if test ! -f "${ofile}"; then
-    { echo "$as_me:$LINENO: WARNING: output file \`$ofile' does not exist" >&5
-echo "$as_me: WARNING: output file \`$ofile' does not exist" >&2;}
-  fi
-  if test -z `grep -e 'shared_ext.*shrext' $ofile`; then
-    # Make sure $shared_ext gets set to $shrext
-    if sed -e 's/shared_ext/shrext/g' "$ofile" > "${ofile}T"; then
-      mv "${ofile}T" "$ofile"
-      chmod +x "$ofile"
-    else
-      rm -f "${ofile}T"
-      { { echo "$as_me:$LINENO: error: unable to update shared_ext." >&5
-echo "$as_me: error: unable to update shared_ext." >&2;}
-   { (exit 1); exit 1; }; }
-    fi
-  fi
 
 
 
@@ -25210,7 +25023,7 @@ echo "${ECHO_T}yes" >&6
   fi
 
 
-                                                                                                                                                                          ac_config_files="$ac_config_files Makefile backdrops/Makefile common/Makefile doc/Makefile doc/C/Makefile doc/C/images/Makefile doc/fr/Makefile doc/fr/images/Makefile menueditor/Makefile modules/Makefile modules/menu/Makefile panel-plugin/Makefile pixmaps/Makefile po/Makefile.in settings/Makefile src/Makefile xfdesktop.spec"
+                                                                                                                                                                                              ac_config_files="$ac_config_files Makefile backdrops/Makefile common/Makefile doc/Makefile doc/C/Makefile doc/C/images/Makefile doc/fr/Makefile doc/fr/images/Makefile doc/it/Makefile doc/it/images/Makefile menueditor/Makefile modules/Makefile modules/menu/Makefile panel-plugin/Makefile pixmaps/Makefile po/Makefile.in settings/Makefile src/Makefile xfdesktop.spec"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -25811,6 +25624,8 @@ do
   "doc/C/images/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/C/images/Makefile" ;;
   "doc/fr/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/fr/Makefile" ;;
   "doc/fr/images/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/fr/images/Makefile" ;;
+  "doc/it/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/it/Makefile" ;;
+  "doc/it/images/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/it/images/Makefile" ;;
   "menueditor/Makefile" ) CONFIG_FILES="$CONFIG_FILES menueditor/Makefile" ;;
   "modules/Makefile" ) CONFIG_FILES="$CONFIG_FILES modules/Makefile" ;;
   "modules/menu/Makefile" ) CONFIG_FILES="$CONFIG_FILES modules/menu/Makefile" ;;
