@@ -47,6 +47,7 @@ typedef struct _DMPlugin {
 	gchar *menu_file;
 	gchar *icon_file;
 	gboolean show_menu_icons;
+	gchar *button_title;
 	
 	GtkWidget *file_entry;
 	GtkWidget *file_fb;
@@ -114,6 +115,13 @@ dmp_free(Control *c)
 		xfce_desktop_menu_destroy(dmp->desktop_menu);
 	if(dmp->tooltip)
 		gtk_object_sink(GTK_OBJECT(dmp->tooltip));
+	
+	if(dmp->menu_file)
+		g_free(dmp->menu_file);
+	if(dmp->icon_file)
+		g_free(dmp->icon_file);
+	if(dmp->button_title)
+		g_free(dmp->button_title);
 	
 	g_free(dmp);
 }
@@ -226,7 +234,9 @@ dmp_new()
 	dmp->button = gtk_toggle_button_new();
 	gtk_button_set_relief(GTK_BUTTON(dmp->button), GTK_RELIEF_NONE);
 	gtk_widget_show(dmp->button);
-	gtk_tooltips_set_tip(dmp->tooltip, dmp->button, _("Xfce Menu"), NULL);
+	if(!dmp->button_title)
+		dmp->button_title = g_strdup(_("Xfce Menu"));
+	gtk_tooltips_set_tip(dmp->tooltip, dmp->button, dmp->button_title, NULL);
 	
 	dmp->image = xfce_scaled_image_new();
 	gtk_widget_show(dmp->image);
@@ -340,6 +350,15 @@ dmp_read_config(Control *control, xmlNodePtr node)
 			xfce_desktop_menu_set_show_icons(dmp->desktop_menu, dmp->show_menu_icons);
 		xmlFree(value);
 	}
+	
+	value = xmlGetProp(node, (const xmlChar *)"button_title");
+	if(value) {
+		if(dmp->button_title)
+			g_free(dmp->button_title);
+		dmp->button_title = value;
+		if(dmp->tooltip && dmp->button)
+			gtk_tooltips_set_tip(dmp->tooltip, dmp->button, dmp->button_title, NULL);
+	}
 }
 
 static void
@@ -351,6 +370,7 @@ dmp_write_config(Control *control, xmlNodePtr node)
 	xmlSetProp(node, (const xmlChar *)"menu_file", dmp->menu_file ? dmp->menu_file : "");
 	xmlSetProp(node, (const xmlChar *)"icon_file", dmp->icon_file ? dmp->icon_file : "");
 	xmlSetProp(node, (const xmlChar *)"show_menu_icons", dmp->show_menu_icons ? "1" : "0");
+	xmlSetProp(node, (const xmlChar *)"button_title", dmp->button_title ? dmp->button_title : "");
 }
 
 static gboolean
@@ -541,18 +561,51 @@ dmp_use_custom_menu_toggled_cb(GtkToggleButton *tb, gpointer user_data)
 	}
 }
 
+static gboolean
+dmp_button_title_focus_out_cb(GtkWidget *w, GdkEventFocus *evt,
+		gpointer user_data)
+{
+	DMPlugin *dmp = user_data;
+	
+	if(dmp->button_title)
+		g_free(dmp->button_title);
+	dmp->button_title = gtk_editable_get_chars(GTK_EDITABLE(w), 0, -1);
+	
+	gtk_tooltips_set_tip(dmp->tooltip, dmp->button, dmp->button_title, NULL);
+	
+	return FALSE;
+}
+
 static void
 dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 {
 	DMPlugin *dmp = ctrl->data;
 	GtkWidget *topvbox, *vbox, *hbox;
-	GtkWidget *label, *image, *filebutton, *chk, *radio, *frame, *spacer;
+	GtkWidget *label, *image, *filebutton, *chk, *radio, *frame, *spacer, *entry;
 	
 	xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
 	topvbox = gtk_vbox_new(FALSE, BORDER/2);
 	gtk_widget_show(topvbox);
 	gtk_container_add(con, topvbox);
+	
+	hbox = gtk_hbox_new(FALSE, BORDER/2);
+	gtk_container_set_border_width(GTK_CONTAINER(hbox), BORDER/2);
+	gtk_widget_show(hbox);
+	gtk_box_pack_start(GTK_BOX(topvbox), hbox, FALSE, FALSE, 0);
+	
+	label = gtk_label_new_with_mnemonic(_("Button _title:"));
+	gtk_widget_show(label);
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	
+	entry = gtk_entry_new();
+	if(dmp->button_title)
+		gtk_entry_set_text(GTK_ENTRY(entry), dmp->button_title);
+	gtk_label_set_mnemonic_widget(GTK_LABEL(label), entry);
+	gtk_widget_show(entry);
+	gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 0);
+	g_signal_connect(G_OBJECT(entry), "focus-out-event",
+			G_CALLBACK(dmp_button_title_focus_out_cb), dmp);	
 	
 	frame = xfce_framebox_new(_("Menu File"), TRUE);
 	gtk_widget_show(frame);
