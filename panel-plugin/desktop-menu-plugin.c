@@ -57,15 +57,17 @@ dmp_set_size(Control *c, int size)
 {
 	DMPlugin *dmp = c->data;
 	GdkPixbuf *pix;
+	int s = icon_size[size] + border_width;
 
 	if(dmp->icon_file) {
-		pix = xfce_themed_icon_load(dmp->icon_file,
-				icon_size[settings.size] - 2*border_width);
+		pix = xfce_themed_icon_load(dmp->icon_file, s - border_width);
 		if(pix) {
 			xfce_iconbutton_set_pixbuf(XFCE_ICONBUTTON(dmp->button), pix);
 			g_object_unref(G_OBJECT(pix));
 		}
 	}
+	
+	gtk_widget_set_size_request (c->base, s, s);
 }
 
 static void
