@@ -58,7 +58,7 @@
     <app name="Web Browser" cmd="mozilla"/>
     <separator/>
     <menu name="Instellingen" visible="yes">
-	<app name="Alle istellingen..." cmd="xfce-setting-show"/>
+	<app name="Alle instellingen..." cmd="xfce-setting-show"/>
         <app name="Achtergrond..." cmd="xfce-setting-show backdrop"/>
 <!-- 
         <app name="Background" cmd="xfce-setting-show backdrop"/>

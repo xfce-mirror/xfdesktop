@@ -204,15 +204,16 @@ get_menu_file(void)
     }
 
     is_using_system_rc = TRUE;
-    
-    path = xfce_get_path_localized(buffer, sizeof(buffer), SEARCHPATH,
-                    "menu.xml", G_FILE_TEST_IS_REGULAR);
 
-    if(path)
-    {
-        filename = g_strdup (path);
-        return filename;
-    }
+    /* xfce_get_path_localized(buffer, sizeof(buffer), SEARCHPATH,
+       "menu.xml", G_FILE_TEST_IS_REGULAR);*/
+    
+    path = g_build_filename (SYSCONFDIR, "xfce4", "menu.xml", NULL);
+    filename = xfce_get_file_localized(path);
+    g_free(path);
+
+    if (filename)
+	return filename;
 
     g_warning("%s: Could not locate a menu definition file", PACKAGE);
 
