@@ -47,27 +47,27 @@
     
 -->
 <xfdesktop-menu>
-    <title name="Munkaasztal menå" visible="yes" />
+    <title name="Munkaasztal menü" visible="yes" />
     <separator/>
-    <app name="Program futtat÷sa..." cmd="xfrun4"/>
+    <app name="Program futtatása..." cmd="xfrun4"/>
     <separator/>
-    <app name="Termin÷l" cmd="xfterm4" />
-    <app name="F÷jlkezel� (xffm)" cmd="xffm"/>
-    <app name="B�ng�sz�" cmd="mozilla"/>
+    <app name="Terminál" cmd="xfterm4" />
+    <app name="Fájlkezelő (xffm)" cmd="xffm"/>
+    <app name="Böngésző" cmd="mozilla"/>
     <separator/>
-    <menu name="Be÷llít÷sok" visible="yes">
-        <app name="Be÷llít÷skezel�..." cmd="xfce-setting-show"/>
-        <app name="H÷tt�r..." cmd="xfce-setting-show backdrop"/>
+    <menu name="Beállítások" visible="yes">
+        <app name="Beállításkezelő..." cmd="xfce-setting-show"/>
+        <app name="Háttér..." cmd="xfce-setting-show backdrop"/>
 <!-- 
-        <app name="H÷tt�r" cmd="xfce-setting-show backdrop"/>
-	<app name="Munkateråletek" cmd="xfce-setting-show workspaces"/>
-	<app name="F÷jlkezel� (xffm)" cmd="xfce-setting-show xffm"/>
-	<app name="Felhaszn÷lói felålet (gtk+)" cmd="xfce-setting-show ui"/>
+        <app name="Háttér" cmd="xfce-setting-show backdrop"/>
+	<app name="Munkaterületek" cmd="xfce-setting-show workspaces"/>
+	<app name="Fájlkezelő (xffm)" cmd="xfce-setting-show xffm"/>
+	<app name="Felhasználói felület (gtk+)" cmd="xfce-setting-show ui"/>
 	<app name="Icon box" cmd="xfce-setting-show xfibx"/>
-        <app name="Eg�r" cmd="xfce-setting-show mouse"/>
+        <app name="Egér" cmd="xfce-setting-show mouse"/>
         <app name="Ablaklista" cmd="xfce-setting-show taskbar"/>
-	<app name="Billenty�zet" cmd="xfce-setting-show keyboard"/>
-	<app name="Ablakkezel�" cmd="xfce-setting-show xfwm4"/>
+	<app name="Billentyűzet" cmd="xfce-setting-show keyboard"/>
+	<app name="Ablakkezelő" cmd="xfce-setting-show xfwm4"/>
 	<app name="Margók" cmd="xfce-setting-show xfwm_margins"/>
 	<app name="Panel" cmd="xfce-setting-show xfce"/>
 -->
@@ -80,7 +80,7 @@
       'exec xfdesktop' at the end of your ~/.xinitrc, this menu item can be
       used to exit the X session.
     -->
-    <builtin name="Kil�p�s" cmd="quit" visible="no"/>
+    <builtin name="Kilépés" cmd="quit" visible="no"/>
     <!-- Example on how to include a file:
       1) declare an ENTITY in the DOCTYPE tag (see above)
       2) include entity in file: 
