@@ -273,6 +273,19 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 
     switch(controls.entry_type){
     case LAUNCHER:
+      /* Test if the command exists */
+      if(!command_exists(gtk_entry_get_text(GTK_ENTRY(entry_command)))){
+	GtkWidget *dialog_warning = gtk_message_dialog_new (GTK_WINDOW(menueditor_app.main_window),
+							    GTK_DIALOG_DESTROY_WITH_PARENT,
+							    GTK_MESSAGE_WARNING,
+							    GTK_BUTTONS_OK,
+							    _("The command doesn't exist !"));
+	gtk_dialog_run (GTK_DIALOG (dialog_warning));
+	gtk_widget_destroy (dialog_warning);
+	gtk_widget_destroy (dialog);
+	return;
+      }
+
       /* Test if all field are filled */
       if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_name)))==0 ||
 	 strlen(gtk_entry_get_text(GTK_ENTRY(entry_command)))==0){
@@ -286,7 +299,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 	gtk_widget_destroy (dialog);
 	return;
       }
-
+      
       /* Create node */
       node = xmlNewNode(NULL, "app");
 

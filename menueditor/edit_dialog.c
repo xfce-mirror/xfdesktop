@@ -423,6 +423,19 @@ void edit_selection(GtkTreeSelection *selection)
       gchar *command=NULL;
       GValue val_icon = {0,};
 
+      /* Test if the command exists */
+      if(!command_exists(gtk_entry_get_text(GTK_ENTRY(command_entry)))){
+	GtkWidget *dialog_warning = gtk_message_dialog_new (GTK_WINDOW(menueditor_app.main_window),
+							    GTK_DIALOG_DESTROY_WITH_PARENT,
+							    GTK_MESSAGE_WARNING,
+							    GTK_BUTTONS_OK,
+							    _("The command doesn't exist !"));
+	gtk_dialog_run (GTK_DIALOG (dialog_warning));
+	gtk_widget_destroy (dialog_warning);
+	gtk_widget_destroy (dialog);
+	return;
+      }
+
       xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
       xmlSetProp(node,"cmd",gtk_entry_get_text(GTK_ENTRY(command_entry)));
 

@@ -63,6 +63,7 @@
 
 void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command);
 void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon);
+gboolean command_exists(const gchar *command);
 
 enum {ICON_COLUMN, NAME_COLUMN, COMMAND_COLUMN, HIDDEN_COLUMN, POINTER_COLUMN};
 

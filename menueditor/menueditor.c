@@ -130,6 +130,25 @@ mcs_notify_cb(const gchar *name, const gchar *channel_name, McsAction action,
     }
 }
 
+/*******************************/
+/* Check if the command exists */
+/*******************************/
+gboolean command_exists(const gchar *command)
+{
+  gchar *cmd_buf = NULL;
+  gchar *cmd_tok = NULL;
+  gboolean result = FALSE;
+
+  cmd_buf = g_strdup(command);
+  cmd_tok = strtok(cmd_buf, " ");
+
+  result =  g_file_test(cmd_tok, G_FILE_TEST_IS_EXECUTABLE);
+  
+  g_free(cmd_buf);
+
+  return result;
+}
+
 /****************************************************/
 /* browse for a command and set it in entry_command */
 /****************************************************/
