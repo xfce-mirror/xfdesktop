@@ -27,9 +27,9 @@
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "settings_common.h"
+#include "workspaces_settings.h"
 #include "workspaces-icon.h"
 
-#define WORKSPACES_CHANNEL "workspace"
 #define PLUGIN_NAME "workspaces"
 #define RCFILE "workspaces.xml"
 #define ICON_SIZE 48
@@ -74,29 +74,6 @@ static int array_size(char **array)
 	len++;
 
     return len;
-}
-
-static void debug_array(char **array)
-{
-#if defined(DEBUG) && DEBUG
-    int len, i;
-
-    if (!array)
-    {
-	g_printerr("Array is NULL\n");
-	return;
-    }
-
-    len = array_size(array);
-    
-    g_printerr("Array length is %d\n", len);
-    g_printerr("Array:\n", len);
-
-    for (i = 0; i < len; i++)
-    {
-	g_printerr("\t%s\n", array[i]);
-    }
-#endif
 }
 
 static void update_names(McsManager *manager, int n)
@@ -156,16 +133,14 @@ static void create_workspaces_channel(McsManager *manager)
     if (setting)
     {
 	ws_count = setting->data.v_int;
-	g_message ("setting found, value %i", ws_count);
     }
-    set_workspace_count(manager, ws_count);
-    
+
     /* ws names */
     setting = mcs_manager_setting_lookup(manager, "names", WORKSPACES_CHANNEL);
 
     if (setting)
     {
-	ws_names = g_strsplit(setting->data.v_string, ":", -1);
+	ws_names = g_strsplit(setting->data.v_string, SEP_S, -1);
     }
 
     len = (ws_names) ? array_size(ws_names) : 0;
@@ -185,68 +160,30 @@ static void save_workspaces_channel(McsManager *manager)
 /* changing settings */
 static void set_workspace_count(McsManager *manager, int count)
 {
-    static Atom xa_NET_NUMBER_OF_DESKTOPS = 0;
-    XClientMessageEvent sev;
+    int len;
 
-    if(!xa_NET_NUMBER_OF_DESKTOPS)
-    {
-	xa_NET_NUMBER_OF_DESKTOPS = 
-	    XInternAtom(GDK_DISPLAY(), "_NET_NUMBER_OF_DESKTOPS", False);
-    }
+    mcs_manager_set_int(manager, "count", WORKSPACES_CHANNEL, ws_count);
+    
+    mcs_manager_notify(manager, WORKSPACES_CHANNEL);
+    save_workspaces_channel(manager);
+    
+    len = array_size(ws_names);
 
-    sev.type = ClientMessage;
-    sev.display = GDK_DISPLAY();
-    sev.format = 32;
-    sev.window = GDK_ROOT_WINDOW();
-    sev.message_type = xa_NET_NUMBER_OF_DESKTOPS;
-    sev.data.l[0] = count;
-    g_message ("setting nbr of desktops to %i", count);
-
-    gdk_error_trap_push();
-    XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(), xa_NET_NUMBER_OF_DESKTOPS, XA_CARDINAL, 32, PropModeReplace, (unsigned char *)&count, 1);
-    XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False,
-               SubstructureNotifyMask | SubstructureRedirectMask,
-               (XEvent *) & sev);
-    gdk_flush();
-    gdk_error_trap_pop();
+    if (len < ws_count)
+	update_names(manager, ws_count);
 }
 
 static void set_workspace_names(McsManager *manager, char **names)
 {
-    static Atom xa_NET_DESKTOP_NAMES = 0;
-    int len;
-    char *data;
-
-    DBG("Test array:\n");
-    debug_array(ws_names);
+    char *string;
     
-    if (!xa_NET_DESKTOP_NAMES)
-    {
-	xa_NET_DESKTOP_NAMES = XInternAtom(GDK_DISPLAY(), 
-					   "_NET_DESKTOP_NAMES", False);
-    }
-
-    /* NOTE: I was afraid to join them using '\0' 
-     * and this way we can just use strlen !! */
-    data = g_strjoinv(":", names);
-    len = strlen(data);
-
-    DBG("data: %s\n", data);
+    string = g_strjoinv(SEP_S, names);
     
-    data = g_strdelimit(data, ":", '\0');
+    mcs_manager_set_string(manager, "names", WORKSPACES_CHANNEL, string);
+    g_free(string);
     
-    gdk_error_trap_push();
-    gdk_property_change(gdk_get_default_root_window(), 
-	    		gdk_x11_xatom_to_atom(xa_NET_DESKTOP_NAMES),
-			gdk_atom_intern("UTF8_STRING", FALSE),
-			8, /* FIXME: is this correct ? */
-			GDK_PROP_MODE_REPLACE,
-			data,
-			len ? len : 0);
-    gdk_flush();
-    gdk_error_trap_pop();
-
-    g_free(data);
+    mcs_manager_notify(manager, WORKSPACES_CHANNEL);
+    save_workspaces_channel(manager);
 }
 
 /* the dialog */
@@ -279,9 +216,11 @@ static void treeview_set_rows(McsManager *manager, int n)
     {
 	GtkTreePath *path;
 	GtkTreeIter iter;
+	char num[4];
 
 	/* we have a list so the path string is only the node index */
-	path = gtk_tree_path_new_from_indices(n, -1);
+	snprintf(num, 3, "%d", n);
+	path = gtk_tree_path_new_from_string(num);
 	
 	if (!gtk_tree_model_get_iter(model, &iter, path))
 	{
@@ -307,12 +246,8 @@ static void treeview_set_rows(McsManager *manager, int n)
     }
     else
     {
-	int len = array_size(ws_names);
 	GtkTreeIter iter;
 
-	if (len < n)
-	    update_names(manager, n);
-	
 	for (i = treerows; i < n; i++)
 	{
 	    char *name;
@@ -387,10 +322,17 @@ static void edit_name_dialog(GtkTreeModel *model, GtkTreeIter *iter,
     if (response == GTK_RESPONSE_OK && tmp && strlen(tmp))
     {
 	int n = number - 1;
+	char *s;
 
 	g_free(ws_names[n]);
 	ws_names[n] = g_strdup(tmp);
 
+	for (s = strchr(ws_names[n], SEP); s; s = strchr(s+1, SEP))
+	{
+	    /* just don't use our separator character! */
+	    *s = ' ';
+	}
+	
 	gtk_list_store_set(GTK_LIST_STORE(model), iter, 
 			   NAME_COLUMN, ws_names[n], -1);
 
@@ -519,33 +461,11 @@ static void add_count_spinbox(GtkWidget *vbox, McsManager *manager)
  * programs should use the desktop hints, not this channel */
 static void dialog_closed(McsManager *manager)
 {
-    char **names;
-    char *string;
-    int i;
     GtkTreeModel *store;
-
+    
     /* clean up list store */
     store = gtk_tree_view_get_model(GTK_TREE_VIEW(treeview));
     gtk_list_store_clear(GTK_LIST_STORE(store));
-    
-    /* ws count */
-    mcs_manager_set_int(manager, "count", WORKSPACES_CHANNEL, ws_count);
-    
-    /* ws names; only save current ws names */
-    names = g_new(char*, ws_count+1);
-    names[ws_count] = NULL;
-
-    for (i = 0; i < ws_count; i++)
-	names[i] = g_strdup(ws_names[i]);
-    
-    string = g_strjoinv(":", names);
-    g_strfreev(names);
-    
-    mcs_manager_set_string(manager, "names", WORKSPACES_CHANNEL, string);
-    g_free(string);
-    
-    mcs_manager_notify(manager, WORKSPACES_CHANNEL);
-    save_workspaces_channel(manager);
 }
 
 /* run dialog */
@@ -616,35 +536,9 @@ static void run_dialog(McsPlugin *plugin )
 static void update_channel(NetkScreen *screen, NetkWorkspace *ws, 
 			   McsManager *manager)
 {
-    char **names;
-    char *string;
-    int i, len;
-
     ws_count = netk_screen_get_workspace_count(screen);
 
-    /* ws count */
-    mcs_manager_set_int(manager, "count", WORKSPACES_CHANNEL, ws_count);
-    
-    /* ws names; only save current ws names */
-    names = g_new(char*, ws_count+1);
-    names[ws_count] = NULL;
-
-    len = array_size(ws_names);
-
-    if (len < ws_count)
-	update_names(manager, ws_count);
-    
-    for (i = 0; i < ws_count; i++)
-	names[i] = g_strdup(ws_names[i]);
-    
-    string = g_strjoinv(":", names);
-    g_strfreev(names);
-    
-    mcs_manager_set_string(manager, "names", WORKSPACES_CHANNEL, string);
-    g_free(string);
-    
-    mcs_manager_notify(manager, WORKSPACES_CHANNEL);
-    save_workspaces_channel(manager);
+    set_workspace_count(manager, ws_count);
 }
 
 static void watch_workspaces_hint(McsManager *manager)

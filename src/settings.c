@@ -53,6 +53,7 @@ static void init_settings_hash(void)
     add_backdrop_callback(settings_hash);
     add_menu_callback(settings_hash);
     add_margins_callback(settings_hash);
+    add_workspaces_callback(settings_hash);
 }
 
 /* load settings */
@@ -61,6 +62,7 @@ void load_settings(void)
     backdrop_load_settings(client);
     menu_load_settings(client);
     margins_load_settings(client);
+    workspaces_load_settings(client);
 }
 
 /* settings */
@@ -136,6 +138,7 @@ void watch_settings(GtkWidget *window, NetkScreen *screen)
     backdrop_init(window);
     menu_init(window, screen);
     margins_init(window);
+    /* no workspaces init needed */
 
     if (!settings_hash)
     {

@@ -191,6 +191,8 @@ static GtkWidget *create_fullscreen_window(void)
     gtk_widget_realize(win);
     gtk_window_move(GTK_WINDOW(win), 0, 0);
 
+    gtk_window_set_title(GTK_WINDOW(win), _("Desktop"));
+    
     style = gtk_widget_get_style(win);
 
     gtk_widget_modify_bg(win, GTK_STATE_NORMAL, &(style->black));

@@ -33,7 +33,7 @@ workspaces_LTLIBRARIES = workspaces_settings.la
 workspaces_settings_la_LDFLAGS =  -module -avoid-version
 
 workspaces_settings_la_SOURCES =  debug.h \
-workspaces-icon.h workspaces_settings.c \
+workspaces-icon.h workspaces_settings.c workspaces_settings.h \
 settings_common.c settings_common.h
 
 workspaces_settings_la_CFLAGS = -Wall @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ @MCS_MANAGER_CFLAGS@ -DG_DISABLE_DEPRECATED -DSYSCONFDIR=\"$(sysconfdir)\" -DDATADIR=\"$(datadir)\" 

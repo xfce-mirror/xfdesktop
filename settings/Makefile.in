@@ -172,7 +172,7 @@ workspaces_LTLIBRARIES = workspaces_settings.la
 workspaces_settings_la_LDFLAGS = -module -avoid-version
 
 workspaces_settings_la_SOURCES = debug.h \
-workspaces-icon.h workspaces_settings.c \
+workspaces-icon.h workspaces_settings.c workspaces_settings.h \
 settings_common.c settings_common.h
 
 
