@@ -1,6 +1,7 @@
 /*  xfce4
  *  
  *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
+ *  Copyright (C)      2004 Brian Tarricone <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

@@ -212,11 +212,13 @@ create_image (XfceBackdrop *backdrop)
     GError *error = NULL;
     const char *path = NULL;
     GdkPixbuf *pixbuf;
+	gboolean is_from_list = FALSE;
 
     if (!backdrop->path || !strlen (backdrop->path))
 	return NULL;
 
-    if (is_backdrop_list (backdrop->path))
+	is_from_list = is_backdrop_list(backdrop->path);
+	if(is_from_list)
 	path = get_path_from_listfile (backdrop->path);
     else
 	path = (const char *) backdrop->path;
@@ -232,6 +234,16 @@ create_image (XfceBackdrop *backdrop)
 
 	return NULL;
     }
+	
+	if(is_from_list) {
+		gchar propname[256];
+		
+		g_snprintf(propname, 256, "XFDESKTOP_IMAGE_FILE_%d", backdrop->xscreen);
+		gdk_property_change(gdk_get_default_root_window(),
+				gdk_atom_intern(propname, FALSE),
+				gdk_x11_xatom_to_atom(XA_STRING), 8, GDK_PROP_MODE_REPLACE,
+				(guchar *)path, strlen(path)+1);
+	}
 
     return pixbuf;
 }
@@ -631,15 +643,21 @@ update_backdrop_channel(const char *channel_name, McsClient *client,
 			/* fall through if not in init state */
 		case MCS_ACTION_CHANGED:
 			p = g_strrstr(setting->name, "_");
-			if(!p)
-				return;
+			if(!p) {
+				menu_settings_changed(channel_name, client, action, setting);
+				break;
+			}
 			screen_num = atoi(p+1);
-			if(screen_num < 0)
-				return;
+			if(screen_num < 0) {
+				menu_settings_changed(channel_name, client, action, setting);
+				break;
+			}
 			
 			xfdesktop = g_list_nth_data(desktops, screen_num);
-			if(!xfdesktop)
-				return;
+			if(!xfdesktop) {
+				menu_settings_changed(channel_name, client, action, setting);
+				break;
+			}
 			backdrop = xfdesktop->backdrop;
 			
 			if(strstr(setting->name, "setbackdrop_") == setting->name) {
@@ -667,6 +685,11 @@ update_backdrop_channel(const char *channel_name, McsClient *client,
 				backdrop->color_only = setting->data.v_int;
 			else if(strstr(setting->name, "colorstyle_") == setting->name)
 				backdrop->color_style = setting->data.v_int;
+			else {
+				/* check menu settings */
+				menu_settings_changed(channel_name, client, action, setting);
+				break; /* don't set the backdrop again for menu settings */
+			}
 
 			if(backdrop->set_backdrop)
 				g_idle_add((GSourceFunc)set_backdrop, backdrop);

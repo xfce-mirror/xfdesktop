@@ -34,6 +34,7 @@ gboolean xfce_desktop_menu_need_update_impl(XfceDesktopMenu *desktop_menu);
 void xfce_desktop_menu_start_autoregen_impl(XfceDesktopMenu *desktop_menu, guint delay);
 void xfce_desktop_menu_stop_autoregen_impl(XfceDesktopMenu *desktop_menu);
 void xfce_desktop_menu_force_regen_impl(XfceDesktopMenu *desktop_menu);
+void xfce_desktop_menu_set_show_icons_impl(XfceDesktopMenu *desktop_menu, gboolean show_icons);
 void xfce_desktop_menu_destroy_impl(XfceDesktopMenu *desktop_menu);
 
 extern GdkPixbuf *dummy_icon;

@@ -63,6 +63,7 @@
 #include "backdrop-icon.h"
 #include "backdrop-mgr.h"
 #include "settings_common.h"
+#include "menu_settings.h"
 
 #define RCFILE "backdrop.xml"
 #define PLUGIN_NAME "backdrop"
@@ -72,38 +73,6 @@
 #ifdef HAVE_GDK_PIXBUF_NEW_FROM_STREAM
 #define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream
 #endif
-
-typedef struct {
-	/* which screen this panel is for */
-	gint xscreen;
-	
-	/* the settings themselves */
-	gboolean set_backdrop;
-	gchar *image_path;
-	XfceBackdropStyle style;
-	gboolean color_only;
-	McsColor color1;
-	McsColor color2;
-	XfceColorStyle color_style;
-	
-	/* the panel's GUI controls */
-	GtkWidget *color_frame;
-	GtkWidget *color_style_combo;
-	GtkWidget *color1_box;
-	GtkWidget *color2_hbox;
-	GtkWidget *color2_box;
-	GtkWidget *color_only_chk;
-	
-	GtkWidget *image_frame;
-	GtkWidget *file_entry;
-	GtkWidget *edit_list_button;
-	GtkWidget *style_combo;
-	
-	GtkWidget *set_backdrop_chk;
-	
-	/* backreference */
-	BackdropDialog *bd;
-} BackdropPanel;
 
 /* there can be only one */
 static gboolean is_running = FALSE;
@@ -288,6 +257,8 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 		
 		screens = g_list_append(screens, bp);
 	}
+	
+	init_menu_settings(mcs_plugin);
 
 	mcs_manager_notify(mcs_plugin->manager, BACKDROP_CHANNEL);
 }
@@ -1074,9 +1045,8 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 	
 	/* menu page */
 	
-	vbox = gtk_vbox_new(FALSE, BORDER);
+	vbox = create_menu_page(bd);
 	gtk_widget_show(vbox);
-	//create_menu_notebook(vbox);
 	
 	label = gtk_label_new(_("Menu"));
 	gtk_widget_show(label);

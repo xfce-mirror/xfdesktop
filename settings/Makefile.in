@@ -60,7 +60,8 @@ backdrop_settings_la_DEPENDENCIES =  \
 am_backdrop_settings_la_OBJECTS =  \
 	backdrop_settings_la-backdrop_settings.lo \
 	backdrop_settings_la-backdrop-mgr.lo \
-	backdrop_settings_la-settings_common.lo
+	backdrop_settings_la-settings_common.lo \
+	backdrop_settings_la-menu_settings.lo
 backdrop_settings_la_OBJECTS = $(am_backdrop_settings_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -68,6 +69,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES =  \
 @AMDEP_TRUE@	./$(DEPDIR)/backdrop_settings_la-backdrop-mgr.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/backdrop_settings_la-backdrop_settings.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/backdrop_settings_la-menu_settings.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/backdrop_settings_la-settings_common.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -237,11 +239,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-EXTRA_DIST = \
-	menu_settings.c							\
-	menu_settings.h							\
-	xfce-backdrop-settings.desktop
-
+EXTRA_DIST = xfce-backdrop-settings.desktop
 
 #
 # backdrop settings
@@ -258,7 +256,9 @@ backdrop_settings_la_SOURCES = \
 	backdrop-mgr.c							\
 	backdrop-mgr.h							\
 	settings_common.c						\
-	settings_common.h
+	settings_common.h						\
+	menu_settings.c							\
+	menu_settings.h
 
 backdrop_settings_la_CFLAGS = \
 	-I$(top_srcdir)							\
@@ -346,6 +346,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/backdrop_settings_la-backdrop-mgr.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/backdrop_settings_la-backdrop_settings.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/backdrop_settings_la-menu_settings.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/backdrop_settings_la-settings_common.Plo@am__quote@
 
 .c.o:
@@ -443,6 +444,30 @@ backdrop_settings_la-settings_common.lo: settings_common.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/backdrop_settings_la-settings_common.Plo' tmpdepfile='$(DEPDIR)/backdrop_settings_la-settings_common.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(backdrop_settings_la_CFLAGS) $(CFLAGS) -c -o backdrop_settings_la-settings_common.lo `test -f 'settings_common.c' || echo '$(srcdir)/'`settings_common.c
+
+backdrop_settings_la-menu_settings.o: menu_settings.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(backdrop_settings_la_CFLAGS) $(CFLAGS) -MT backdrop_settings_la-menu_settings.o -MD -MP -MF "$(DEPDIR)/backdrop_settings_la-menu_settings.Tpo" -c -o backdrop_settings_la-menu_settings.o `test -f 'menu_settings.c' || echo '$(srcdir)/'`menu_settings.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/backdrop_settings_la-menu_settings.Tpo" "$(DEPDIR)/backdrop_settings_la-menu_settings.Po"; else rm -f "$(DEPDIR)/backdrop_settings_la-menu_settings.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='menu_settings.c' object='backdrop_settings_la-menu_settings.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/backdrop_settings_la-menu_settings.Po' tmpdepfile='$(DEPDIR)/backdrop_settings_la-menu_settings.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(backdrop_settings_la_CFLAGS) $(CFLAGS) -c -o backdrop_settings_la-menu_settings.o `test -f 'menu_settings.c' || echo '$(srcdir)/'`menu_settings.c
+
+backdrop_settings_la-menu_settings.obj: menu_settings.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(backdrop_settings_la_CFLAGS) $(CFLAGS) -MT backdrop_settings_la-menu_settings.obj -MD -MP -MF "$(DEPDIR)/backdrop_settings_la-menu_settings.Tpo" -c -o backdrop_settings_la-menu_settings.obj `if test -f 'menu_settings.c'; then $(CYGPATH_W) 'menu_settings.c'; else $(CYGPATH_W) '$(srcdir)/menu_settings.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/backdrop_settings_la-menu_settings.Tpo" "$(DEPDIR)/backdrop_settings_la-menu_settings.Po"; else rm -f "$(DEPDIR)/backdrop_settings_la-menu_settings.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='menu_settings.c' object='backdrop_settings_la-menu_settings.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/backdrop_settings_la-menu_settings.Po' tmpdepfile='$(DEPDIR)/backdrop_settings_la-menu_settings.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(backdrop_settings_la_CFLAGS) $(CFLAGS) -c -o backdrop_settings_la-menu_settings.obj `if test -f 'menu_settings.c'; then $(CYGPATH_W) 'menu_settings.c'; else $(CYGPATH_W) '$(srcdir)/menu_settings.c'; fi`
+
+backdrop_settings_la-menu_settings.lo: menu_settings.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(backdrop_settings_la_CFLAGS) $(CFLAGS) -MT backdrop_settings_la-menu_settings.lo -MD -MP -MF "$(DEPDIR)/backdrop_settings_la-menu_settings.Tpo" -c -o backdrop_settings_la-menu_settings.lo `test -f 'menu_settings.c' || echo '$(srcdir)/'`menu_settings.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/backdrop_settings_la-menu_settings.Tpo" "$(DEPDIR)/backdrop_settings_la-menu_settings.Plo"; else rm -f "$(DEPDIR)/backdrop_settings_la-menu_settings.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='menu_settings.c' object='backdrop_settings_la-menu_settings.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/backdrop_settings_la-menu_settings.Plo' tmpdepfile='$(DEPDIR)/backdrop_settings_la-menu_settings.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(backdrop_settings_la_CFLAGS) $(CFLAGS) -c -o backdrop_settings_la-menu_settings.lo `test -f 'menu_settings.c' || echo '$(srcdir)/'`menu_settings.c
 
 mostlyclean-libtool:
 	-rm -f *.lo

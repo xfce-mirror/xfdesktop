@@ -164,13 +164,9 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 	
 	BD("cur_path: %s, hidelevel=%d", state->cur_path, state->hidelevel);
 	
-	if(!state->started && !strcmp(element_name, "xfdesktop-menu")) {
-		state->desktop_menu->use_menu_icons = TRUE;  /* default */
-		i = _find_attribute(attribute_names, "showicons");
-		if(i != -1 && !strcmp(attribute_values[i], "false"))
-			state->desktop_menu->use_menu_icons = FALSE;
+	if(!state->started && !strcmp(element_name, "xfdesktop-menu"))
 		state->started = TRUE;
-	} else if(!state->started)
+	else if(!state->started)
 		return;
 	
 	if(!strcmp(element_name, "app")) {

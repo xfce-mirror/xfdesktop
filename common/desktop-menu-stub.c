@@ -25,6 +25,7 @@
 
 #include "desktop-menu-stub.h"
 
+static GModule *menu_gmod = NULL;
 static gint refcnt = 0;
 
 XfceDesktopMenu *(*xfce_desktop_menu_new_p)(const gchar *menu_file, gboolean deferred) = NULL;
@@ -33,6 +34,7 @@ gboolean (*xfce_desktop_menu_need_update_p)(XfceDesktopMenu *desktop_menu) = NUL
 void (*xfce_desktop_menu_start_autoregen_p)(XfceDesktopMenu *desktop_menu, guint delay) = NULL;
 void (*xfce_desktop_menu_stop_autoregen_p)(XfceDesktopMenu *desktop_menu) = NULL;
 void (*xfce_desktop_menu_force_regen_p)(XfceDesktopMenu *desktop_menu) = NULL;
+void (*xfce_desktop_menu_set_show_icons_p)(XfceDesktopMenu *desktop_menu, gboolean show_icons) = NULL;
 void (*xfce_desktop_menu_destroy_p)(XfceDesktopMenu *desktop_menu) = NULL;
 
 static gboolean
@@ -56,6 +58,9 @@ _setup_funtions(GModule *menu_gmod)
 	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_force_regen_impl",
 			(gpointer)&xfce_desktop_menu_force_regen_p))
 		return FALSE;
+	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_set_show_icons_impl",
+			(gpointer)&xfce_desktop_menu_set_show_icons_p))
+		return FALSE;
 	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_destroy_impl",
 			(gpointer)&xfce_desktop_menu_destroy_p))
 		return FALSE;
@@ -66,11 +71,12 @@ _setup_funtions(GModule *menu_gmod)
 GModule *
 xfce_desktop_menu_stub_init()
 {
-	static GModule *menu_gmod = NULL;
 	gchar *menu_module = NULL;
 	
-	if(menu_gmod)
+	if(menu_gmod && refcnt > 0) {
+		refcnt++;
 		return menu_gmod;
+	}
 
 	if(!g_module_supported()) {
 		g_warning("%s: no GModule support, menu is disabled\n", PACKAGE);
@@ -92,7 +98,7 @@ xfce_desktop_menu_stub_init()
 		g_free(menu_module);
 	
 	if(menu_gmod)
-		refcnt++;
+		refcnt = 1;
 	
 	return menu_gmod;
 }
@@ -104,6 +110,11 @@ xfce_desktop_menu_stub_cleanup(GModule *menu_gmod)
 	
 	if(g_module_close(menu_gmod))
 		refcnt--;
+	if(refcnt <= 0) {
+		menu_gmod = NULL;
+		refcnt = 0;
+	}
+		
 }
 
 void
@@ -113,4 +124,5 @@ xfce_desktop_menu_stub_cleanup_all(GModule *menu_gmod)
 	
 	while(refcnt--)
 		g_module_close(menu_gmod);
+	menu_gmod = NULL;
 }

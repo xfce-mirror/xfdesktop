@@ -26,7 +26,7 @@
 typedef void (*ChannelCallback)(const char *channel_name, McsClient *client,
 		McsAction action, McsSetting *setting);
 
-void settings_init_global();
+McsClient *settings_init_global();
 void settings_cleanup_global();
 
 void settings_init(XfceDesktop *xfdesktop);

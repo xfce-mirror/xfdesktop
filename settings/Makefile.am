@@ -1,10 +1,7 @@
 # settings/Makefile.am
 #
 
-EXTRA_DIST =								\
-	menu_settings.c							\
-	menu_settings.h							\
-	xfce-backdrop-settings.desktop
+EXTRA_DIST = xfce-backdrop-settings.desktop
 
 #
 # backdrop settings
@@ -23,7 +20,9 @@ backdrop_settings_la_SOURCES =						\
 	backdrop-mgr.c							\
 	backdrop-mgr.h							\
 	settings_common.c						\
-	settings_common.h
+	settings_common.h						\
+	menu_settings.c							\
+	menu_settings.h
 
 backdrop_settings_la_CFLAGS =						\
 	-I$(top_srcdir)							\

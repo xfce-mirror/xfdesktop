@@ -83,7 +83,7 @@
 GdkPixbuf *dummy_icon = NULL;
 gint _xfce_desktop_menu_icon_size = 24;
 static GList *timeout_handles = NULL;
-static time_t last_theme_change = 0;
+static time_t last_settings_change = 0;
 static gchar *cur_icon_theme = NULL;
 
 #if GTK_CHECK_VERSION(2, 4, 0)
@@ -92,7 +92,7 @@ static GtkIconTheme *notify_itheme = NULL;
 static void
 itheme_changed_cb(GtkIconTheme *itheme, gpointer user_data)
 {
-	last_theme_change = time(NULL);
+	last_settings_change = time(NULL);
 }
 
 #else
@@ -111,7 +111,7 @@ mcs_notify_cb(const char *name, const char *channel_name, McsAction action,
 		case MCS_ACTION_CHANGED:
 			if(!g_ascii_strcasecmp(setting->name, "theme")) {
 				xfce_set_icon_theme(setting->data.v_string);
-				last_theme_change = time(NULL);
+				last_settings_change = time(NULL);
 			}
 			break;
 		case MCS_ACTION_DELETED:
@@ -277,7 +277,9 @@ G_MODULE_EXPORT XfceDesktopMenu *
 xfce_desktop_menu_new_impl(const gchar *menu_file, gboolean deferred)
 {
 	XfceDesktopMenu *desktop_menu = g_new0(XfceDesktopMenu, 1);
-	TRACE("dummy");
+	
+	desktop_menu->use_menu_icons = TRUE;
+	
 	if(menu_file)
 		desktop_menu->filename = g_strdup(menu_file);
 	
@@ -311,7 +313,7 @@ xfce_desktop_menu_need_update_impl(XfceDesktopMenu *desktop_menu)
 	TRACE("desktop_menu: %p", desktop_menu);
 	
 	if(desktop_menu_file_need_update(desktop_menu) ||
-			last_theme_change > desktop_menu->last_menu_gen ||
+			last_settings_change > desktop_menu->last_menu_gen ||
 			!desktop_menu->menu)
 	{
 		modified = TRUE;
@@ -352,6 +354,18 @@ xfce_desktop_menu_force_regen_impl(XfceDesktopMenu *desktop_menu)
 	g_return_if_fail(desktop_menu != NULL);
 	
 	_generate_menu(desktop_menu);
+}
+
+G_MODULE_EXPORT void
+xfce_desktop_menu_set_show_icons_impl(XfceDesktopMenu *desktop_menu,
+		gboolean show_icons)
+{
+	g_return_if_fail(desktop_menu != NULL);
+	
+	if(desktop_menu->use_menu_icons != show_icons) {
+		desktop_menu->use_menu_icons = show_icons;
+		_generate_menu(desktop_menu);
+	}
 }
 
 G_MODULE_EXPORT void

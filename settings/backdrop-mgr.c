@@ -60,6 +60,7 @@
 #include "settings_common.h"
 #include "backdrop-common.h"
 #include "backdrop-mgr.h"
+#include "settings_common.h"
 
 static gchar *_listdlg_last_dir;
 
@@ -93,9 +94,8 @@ check_image (const char *path)
 		g_warning ("Could not create image from file %s: %s\n", path,
 				error->message);
 		ret = FALSE;
-	}
-	
-	g_object_unref(G_OBJECT(tmp));
+	} else
+		g_object_unref(G_OBJECT(tmp));
 	
 	return ret;
 }
@@ -183,16 +183,47 @@ remove_file(GtkTreeView *treeview)
 
 /* reading and writing files */
 static void
-read_file(const gchar *filename, GtkListStore *ls)
+read_file(const gchar *filename, GtkListStore *ls, GtkWidget *parent)
 {
 	gchar **files;
 	gchar **file;
+	GtkWidget *pdlg, *lbl, *pbar;
+	gchar *pathlbl;
+	gint nfiles = 0, curfile = 0;
+	
+	pdlg = gtk_dialog_new();
+	gtk_window_set_title(GTK_WINDOW(pdlg), _("Backdrop"));
+	gtk_dialog_set_has_separator(GTK_DIALOG(pdlg), FALSE);
+	gtk_window_set_transient_for(GTK_WINDOW(pdlg), GTK_WINDOW(parent));
+	gtk_window_set_destroy_with_parent(GTK_WINDOW(pdlg), TRUE);
+	gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 6);
+	
+	pathlbl = g_strdup_printf(_("Adding files from list %s..."), filename, NULL);
+	lbl = gtk_label_new(pathlbl);
+	gtk_widget_show(lbl);
+	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), lbl, FALSE, FALSE, 0);
+	
+	pbar = gtk_progress_bar_new();
+	gtk_progress_bar_set_pulse_step(GTK_PROGRESS_BAR(pbar), 0.1);
+	gtk_widget_show(pbar);
+	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), pbar, FALSE, FALSE, 0);
+	
+	gtk_widget_show(pdlg);
+	while(gtk_events_pending())
+		gtk_main_iteration();
 
 	if((files = get_list_from_file (filename)) != NULL) {
-		for(file = files; *file != NULL; file++)
+		for(file = files; *file != NULL; file++) {
 			add_file(*file, ls);
+			gtk_progress_bar_pulse(GTK_PROGRESS_BAR(pbar));
+			while(gtk_events_pending())
+				gtk_main_iteration();
+		}
 		g_strfreev (files);
 	}
+	
+	gtk_widget_destroy(pdlg);
+	g_free(pathlbl);
 }
 
 static gboolean
@@ -228,13 +259,29 @@ save_list_file(const gchar *filename, GtkListStore *ls)
 		return TRUE;
 	} else {
 		gtk_tree_model_get(GTK_TREE_MODEL(ls), &iter, 0, &file, -1);
-		fprintf(fp, "%s", file);
+		if(strlen(file) > 4 && g_str_has_prefix(file, "* ")
+				&& g_str_has_suffix(file, " *"))
+		{
+			gchar *p = g_strrstr(file, " *");
+			if(p)
+				*p = 0;
+			fprintf(fp, "%s", file+2);
+		} else
+			fprintf(fp, "%s", file);
 		g_free(file);
 	}
 
 	while(gtk_tree_model_iter_next(GTK_TREE_MODEL(ls), &iter)) {
 		gtk_tree_model_get(GTK_TREE_MODEL(ls), &iter, 0, &file, -1);
-		fprintf(fp, "\n%s", file);
+		if(strlen(file) > 4 && g_str_has_prefix(file, "* ")
+				&& g_str_has_suffix(file, " *"))
+		{
+			gchar *p = g_strrstr(file, " *");
+			if(p)
+				*p = 0;
+			fprintf(fp, "\n%s", file+2);
+		} else
+			fprintf(fp, "\n%s", file);
 		g_free(file);
 	}
 
@@ -425,7 +472,7 @@ add_tree_view(GtkWidget *vbox, const gchar *path)
     gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(treeview), FALSE);
 
 	if(path)
-		read_file(path, store);
+		read_file(path, store, gtk_widget_get_toplevel(vbox));
 
     g_object_unref (G_OBJECT (store));
 
@@ -712,13 +759,12 @@ add_file_entry (GtkWidget *vbox, const gchar *filename)
 /* the dialog */
 static void
 list_mgr_dialog_new(const gchar *title, GtkWidget *parent, const gchar *path,
-	GtkWidget **dialog, GtkWidget **entry, GtkListStore **ls)
+	GtkWidget **dialog, GtkWidget **entry, GtkTreeView **tv)
 {
     GtkWidget *mainvbox, *frame, *vbox, *header, *button;
-	GtkTreeView *treeview;
 	const gchar *filename;
 
-	g_return_if_fail(dialog != NULL && entry != NULL && ls != NULL);
+	g_return_if_fail(dialog != NULL && entry != NULL && tv != NULL);
 	
 	if(!_listdlg_last_dir)
 		_listdlg_last_dir = g_build_path(G_DIR_SEPARATOR_S, DATADIR, "xfce4",
@@ -749,12 +795,11 @@ list_mgr_dialog_new(const gchar *title, GtkWidget *parent, const gchar *path,
     gtk_widget_show(vbox);
     xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
 
-    treeview = add_tree_view(vbox, path);
-	*ls = GTK_LIST_STORE(gtk_tree_view_get_model(treeview));
+    *tv = add_tree_view(vbox, path);
 	if(!path)
 		 path = xfce_get_homefile(_("New.list"), NULL);
 
-    add_list_buttons(vbox, treeview);
+    add_list_buttons(vbox, *tv);
 
     add_spacer(GTK_BOX(mainvbox));
 
@@ -776,14 +821,14 @@ void
 create_list_file(GtkWidget *parent, ListMgrCb callback, gpointer data)
 {
 	GtkWidget *dialog = NULL, *entry = NULL;
-	GtkListStore *ls = NULL;
+	GtkTreeView *tv = NULL;
 	
     list_mgr_dialog_new(_("Create backdrop list"), parent, NULL, &dialog,
-			&entry, &ls);
+			&entry, &tv);
 	if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
 		gchar *filename;
 		filename = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
-		save_list_file(filename, ls);
+		save_list_file(filename, GTK_LIST_STORE(gtk_tree_view_get_model(tv)));
 		(*callback)(filename, data);
 		g_free(filename);
 	}
@@ -795,10 +840,62 @@ edit_list_file(const gchar *path, GtkWidget *parent, ListMgrCb callback,
 		gpointer data)
 {
 	GtkWidget *dialog = NULL, *entry = NULL;
-	GtkListStore *ls = NULL;
-    
+	GtkTreeView *tv = NULL;
+	GtkListStore *ls;
+	Display *dpy = GDK_DISPLAY();
+	Window xroot = GDK_WINDOW_XID(gdk_get_default_root_window());
+	gchar propname[256];
+	Atom prop, type;
+	int fmt;
+	unsigned long len, after;
+	unsigned char *curimg = NULL;
+	GtkTreeIter itr;
+	gboolean set_sel = FALSE;
+	
 	list_mgr_dialog_new(_("Edit backdrop list"), parent, path, &dialog,
-			&entry, &ls);
+			&entry, &tv);
+	ls = GTK_LIST_STORE(gtk_tree_view_get_model(tv));
+	
+	g_snprintf(propname, 256, "XFDESKTOP_IMAGE_FILE_%d",
+			((BackdropPanel *)data)->xscreen);
+	prop = gdk_x11_atom_to_xatom(gdk_atom_intern(propname, FALSE));
+	XGrabServer(dpy);
+	if(XGetWindowProperty(dpy, xroot, prop, 0L, (long)PATH_MAX, False,
+			AnyPropertyType, &type, &fmt, &len, &after, &curimg) == Success
+			&& type == XA_STRING && fmt == 8)
+	{
+		gchar *file;
+		
+		XUngrabServer(dpy);
+		
+		if(gtk_tree_model_get_iter_first(GTK_TREE_MODEL(ls), &itr)) {
+			do {
+				file = NULL;
+				gtk_tree_model_get(GTK_TREE_MODEL(ls), &itr, 0, &file, -1);
+				if(!strcmp(curimg, file)) {
+					GtkTreePath *path;
+					
+					file = g_strconcat("* ", file, " *", NULL);
+					gtk_list_store_set(ls, &itr, 0, file, -1);
+					g_free(file);
+					
+					set_sel = TRUE; /* GtkTreeView needs to be realized first */
+					path = gtk_tree_model_get_path(GTK_TREE_MODEL(ls), &itr);
+					gtk_tree_view_scroll_to_cell(tv, path, NULL, TRUE, 0.5, 0); 
+					gtk_tree_path_free(path);
+					
+					break;
+				}
+			} while(gtk_tree_model_iter_next(GTK_TREE_MODEL(ls), &itr));
+		}
+		
+		XFree(curimg);
+	} else
+		XUngrabServer(dpy);
+	
+	gtk_widget_show_all(dialog);
+	if(set_sel && gtk_list_store_iter_is_valid(ls, &itr))
+		gtk_tree_selection_select_iter(gtk_tree_view_get_selection(tv), &itr);
 	if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
 		gchar *filename;
 		filename = g_strdup(gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1));

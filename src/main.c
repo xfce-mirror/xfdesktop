@@ -2,6 +2,7 @@
  *  
  *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
  *  Copyright (C) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
+ *  Copyright (C) 2004 Brian Tarricone <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -90,7 +91,6 @@ load_settings(XfceDesktop *xfdesktop)
 {
 	DBG("load settings");
 	backdrop_load_settings(xfdesktop->backdrop);
-	menu_load_settings(xfdesktop);
 }
 
 /* client messages */
@@ -383,6 +383,7 @@ main (int argc, char **argv)
     Window xid;
 	XfceDesktop *xfdesktop;
 	gint i, nscreens;
+	McsClient *client;
 	
 	if(argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V"))) {
 		g_print("\tThis is %s version %s for Xfce %s\n", PACKAGE, VERSION,
@@ -445,8 +446,7 @@ main (int argc, char **argv)
     client_session->die = die;
     session_managed = session_init (client_session);
 	
-	settings_init_global();
-	menu_init_global();
+	client = settings_init_global();
 	
 	nscreens = gdk_display_get_n_screens(gdk_display_get_default());
 	for(i=0; i<nscreens; i++) {
@@ -456,6 +456,7 @@ main (int argc, char **argv)
 	}
 	
 	backdrop_settings_init();
+	menu_init_global(client);
 	
 	/* now that we have the settings inited, load them, and show the window */
 	for(i=0; i<nscreens; i++) {
@@ -464,6 +465,8 @@ main (int argc, char **argv)
 		gtk_widget_show(xfdesktop->fullscreen);
 		gdk_window_lower(xfdesktop->fullscreen->window);
 	}
+	
+	//menu_load_settings_all();
 
     gtk_main();
 

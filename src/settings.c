@@ -140,7 +140,7 @@ settings_init(XfceDesktop *xfdesktop)
 	xfdesktop->client = mcs_client;
 }
 
-void
+McsClient *
 settings_init_global()
 {
 	int xscreen = DefaultScreen(GDK_DISPLAY());
@@ -156,6 +156,8 @@ settings_init_global()
 	
 	if(!settings_hash)
 		settings_hash = g_hash_table_new(g_str_hash, g_str_equal);
+	
+	return mcs_client;
 }
 
 void

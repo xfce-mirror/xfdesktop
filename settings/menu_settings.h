@@ -1,6 +1,6 @@
 /*  xfce4
  *  
- *  Copyright (C) 2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
+ *  Copyright (C) 2004 Brian Tarricone <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,3 +16,14 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
+
+#ifndef _MENU_SETTINGS_H_
+#define _MENU_SETTINGS_H_
+
+#include <xfce-mcs-manager/manager-plugin.h>
+#include "settings_common.h"
+
+GtkWidget *create_menu_page(BackdropDialog *bd);
+void init_menu_settings(McsPlugin *plugin);
+
+#endif

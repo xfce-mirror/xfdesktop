@@ -67,6 +67,8 @@
 #define WLIST_MAXLEN 20
 
 static GtkWidget *windowlist = NULL;
+static gboolean show_windowlist = TRUE;
+static gboolean show_windowlist_icons = TRUE;
 #ifdef USE_DESKTOP_MENU
 static XfceDesktopMenu *desktop_menu = NULL;
 static GModule *module_desktop_menu = NULL;
@@ -119,12 +121,13 @@ set_num_screens (gpointer num)
 }
 
 static GtkWidget *
-create_window_list_item (NetkWindow * win, GList **pix_unref_needed)
+create_window_list_item (NetkWindow * win)
 {
     const char *name = NULL;
     GString *label;
     GtkWidget *mi;
 	GdkPixbuf *icon = NULL, *tmp;
+	gboolean free_icon = FALSE;
 
     TRACE ("dummy");
     if (netk_window_is_skip_pager (win) || netk_window_is_skip_tasklist (win))
@@ -147,18 +150,20 @@ create_window_list_item (NetkWindow * win, GList **pix_unref_needed)
 	g_string_append (label, "]");
     }
 	
-	tmp = netk_window_get_icon(win);
-	if(tmp) {
-		gint w, h;
-		w = gdk_pixbuf_get_width(tmp);
-		h = gdk_pixbuf_get_height(tmp);
-		if(w != 22 || h != 22) {
-			icon = gdk_pixbuf_scale_simple(tmp, 24, 24, GDK_INTERP_BILINEAR);
-			/* the GdkPixbuf returned by netk_window_get_icon() should never be
-			 * freed, but if we scale the image, we need to free it */
-			*pix_unref_needed = g_list_prepend(*pix_unref_needed, icon);
-		} else
-			icon = tmp;
+	if(show_windowlist_icons) {
+		tmp = netk_window_get_icon(win);
+		if(tmp) {
+			gint w, h;
+			w = gdk_pixbuf_get_width(tmp);
+			h = gdk_pixbuf_get_height(tmp);
+			if(w != 22 || h != 22) {
+				icon = gdk_pixbuf_scale_simple(tmp, 24, 24, GDK_INTERP_BILINEAR);
+				/* the GdkPixbuf returned by netk_window_get_icon() should never
+				 * be freed, but if we scale the image, we need to free it */
+				free_icon = TRUE;
+			} else
+				icon = tmp;
+		}
 	}
 
 	if(icon) {
@@ -166,6 +171,8 @@ create_window_list_item (NetkWindow * win, GList **pix_unref_needed)
 		gtk_widget_show(img);
 		mi = gtk_image_menu_item_new_with_label(label->str);
 		gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+		if(free_icon)
+			g_object_unref(G_OBJECT(icon));
 	} else
 		mi = gtk_menu_item_new_with_label (label->str);
 
@@ -175,7 +182,7 @@ create_window_list_item (NetkWindow * win, GList **pix_unref_needed)
 }
 
 static GtkWidget *
-create_windowlist_menu (GList **pix_unref_needed, XfceDesktop *xfdesktop)
+create_windowlist_menu (XfceDesktop *xfdesktop)
 {
     int i, n;
     GList *windows, *li;
@@ -252,7 +259,7 @@ create_windowlist_menu (GList **pix_unref_needed, XfceDesktop *xfdesktop)
 		continue;
 	    }
 
-	    mi = create_window_list_item (win, pix_unref_needed);
+	    mi = create_window_list_item (win);
 
 	    if (!mi)
 		continue;
@@ -323,21 +330,16 @@ void
 popup_windowlist (int button, guint32 time, XfceDesktop *xfdesktop)
 {
     static GtkWidget *menu = NULL;
-	static GList *pix_unref_needed = NULL, *l;
 
-    if (menu)
-    {
-	gtk_widget_destroy (menu);
-    }
-	
-	if(pix_unref_needed) {
-		for(l=pix_unref_needed; l; l=l->next)
-			g_object_unref(G_OBJECT(l->data));
-		g_list_free(pix_unref_needed);
-		pix_unref_needed = NULL;
+	if(menu) {
+		gtk_widget_destroy (menu);
+		menu = NULL;
 	}
+	
+	if(!show_windowlist)
+		return;
 
-    windowlist = menu = create_windowlist_menu (&pix_unref_needed, xfdesktop);
+    windowlist = menu = create_windowlist_menu (xfdesktop);
 
 	gtk_menu_set_screen(GTK_MENU(menu), xfdesktop->gscreen);
     gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, button, time);
@@ -435,10 +437,11 @@ menu_init (XfceDesktop * xfdesktop)
 }
 
 void
-menu_load_settings (XfceDesktop * xfdesktop)
+menu_load_settings(XfceDesktop *xfdesktop)
 {
     TRACE ("dummy");
 	/* yeah, this will do something "soon" */
+	
 }
 
 void
@@ -451,18 +454,59 @@ menu_cleanup(XfceDesktop *xfdesktop)
 }
 
 void
-menu_init_global()
+menu_init_global(McsClient *client)
 {
+	McsSetting *setting;
+	
 #ifdef HAVE_SIGNAL_H
 	signal(SIGCHLD, SIG_IGN);
 #endif
 	
-#if USE_DESKTOP_MENU
-	if((module_desktop_menu=xfce_desktop_menu_stub_init())) {
-		desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
-		xfce_desktop_menu_start_autoregen(desktop_menu, 10);
-	} else
-		g_warning("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n", PACKAGE);
+	if(MCS_SUCCESS == mcs_client_get_setting(client, "showwl",
+			BACKDROP_CHANNEL, &setting))
+	{
+		show_windowlist = setting->data.v_int == 0 ? FALSE : TRUE;
+		mcs_setting_free(setting);
+	}
+	
+	if(MCS_SUCCESS == mcs_client_get_setting(client, "showwli",
+			BACKDROP_CHANNEL, &setting))
+	{
+		show_windowlist_icons = setting->data.v_int == 0 ? FALSE : TRUE;
+		mcs_setting_free(setting);
+	}
+	
+#ifdef USE_DESKTOP_MENU
+	if(MCS_SUCCESS == mcs_client_get_setting(client, "showdm",
+			BACKDROP_CHANNEL, &setting))
+	{
+		if(setting->data.v_int != 0 && !module_desktop_menu) {
+			if((module_desktop_menu=xfce_desktop_menu_stub_init())) {
+				desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
+				xfce_desktop_menu_start_autoregen(desktop_menu, 10);
+			} else
+				g_warning("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n", PACKAGE);
+		} else if(setting->data.v_int == 0 && module_desktop_menu) {
+			if(desktop_menu) {
+				xfce_desktop_menu_stop_autoregen(desktop_menu);
+				xfce_desktop_menu_destroy(desktop_menu);
+			}
+			desktop_menu = NULL;
+			xfce_desktop_menu_stub_cleanup(module_desktop_menu);
+			module_desktop_menu = NULL;
+		}
+		mcs_setting_free(setting);
+	}
+	
+	if(MCS_SUCCESS == mcs_client_get_setting(client, "showdmi",
+			BACKDROP_CHANNEL, &setting))
+	{
+		if(desktop_menu) {
+			xfce_desktop_menu_set_show_icons(desktop_menu,
+					setting->data.v_int == 0 ? FALSE : TRUE);
+		}
+		mcs_setting_free(setting);
+	}
 #endif
 }
 
@@ -480,8 +524,60 @@ menu_cleanup_global()
 			xfce_desktop_menu_destroy(desktop_menu);
 		}
 		desktop_menu = NULL;
-		xfce_desktop_menu_stub_cleanup_all(module_desktop_menu);
+		xfce_desktop_menu_stub_cleanup(module_desktop_menu);
 		module_desktop_menu = NULL;
+	}
+#endif
+}
+
+static gboolean
+_create_dm_idled(gpointer user_data)
+{
+	McsClient *client = (McsClient *)user_data;
+	McsSetting *setting;
+	
+	desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
+	xfce_desktop_menu_start_autoregen(desktop_menu, 10);
+	if(MCS_SUCCESS == mcs_client_get_setting(client, "showdmi",
+			BACKDROP_CHANNEL, &setting))
+	{
+		xfce_desktop_menu_set_show_icons(desktop_menu,
+				setting->data.v_int == 0 ? FALSE : TRUE);
+		mcs_setting_free(setting);
+	}
+	
+	return FALSE;
+}
+
+void
+menu_settings_changed(const char *channel_name, McsClient *client,
+		McsAction action, McsSetting *setting)
+{
+	if(!strcmp(setting->name, "showwl")) 
+		show_windowlist = setting->data.v_int == 0 ? FALSE : TRUE;
+	else if(!strcmp(setting->name, "showwli"))
+		show_windowlist_icons = setting->data.v_int == 0 ? FALSE : TRUE;
+#ifdef USE_DESKTOP_MENU
+	else if(!strcmp(setting->name, "showdm")) {
+		if(setting->data.v_int != 0 && !module_desktop_menu) {
+			if((module_desktop_menu=xfce_desktop_menu_stub_init()))
+				g_idle_add((GSourceFunc)_create_dm_idled, client);
+			else
+				g_warning("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n", PACKAGE);
+		} else if(setting->data.v_int == 0 && module_desktop_menu) {
+			if(desktop_menu) {
+				xfce_desktop_menu_stop_autoregen(desktop_menu);
+				xfce_desktop_menu_destroy(desktop_menu);
+			}
+			desktop_menu = NULL;
+			xfce_desktop_menu_stub_cleanup(module_desktop_menu);
+			module_desktop_menu = NULL;
+		}
+	} else if(!strcmp(setting->name, "showdmi")) {
+		if(desktop_menu) {
+			xfce_desktop_menu_set_show_icons(desktop_menu,
+					setting->data.v_int == 0 ? FALSE : TRUE);
+		}
 	}
 #endif
 }
