@@ -489,7 +489,6 @@ void menu_save_cb(GtkWidget *widget, gpointer data)
     g_free(tmp_filename);
     return;
   }
-  printf("ok\n");
   g_free(tmp_filename);
 }
 
