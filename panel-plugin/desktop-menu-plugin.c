@@ -575,6 +575,7 @@ dmp_button_title_focus_out_cb(GtkWidget *w, GdkEventFocus *evt,
     
     return FALSE;
 }
+
 static void
 dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 {
