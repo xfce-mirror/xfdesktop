@@ -31,6 +31,10 @@
 #include <sys/stat.h>
 #endif
 
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+
 #ifdef HAVE_FCNTL_H
 #include <fcntl.h>
 #endif
@@ -186,11 +190,11 @@ menuspec_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			else if(!strcmp(attribute_names[i], "replace"))
 				cur_displayname = g_strdup(attribute_values[i]);
 			else if(!strcmp(attribute_names[i], "hide"))
-				hide = !g_strcasecmp(attribute_values[i], "true") ? TRUE : FALSE;
+				hide = !g_ascii_strcasecmp(attribute_values[i], "true") ? TRUE : FALSE;
 			else if(!strcmp(attribute_names[i], "ignore"))
-				ignore = !g_strcasecmp(attribute_values[i], "true") ? TRUE : FALSE;
+				ignore = !g_ascii_strcasecmp(attribute_values[i], "true") ? TRUE : FALSE;
 			else if(!strcmp(attribute_names[i], "toplevel"))
-				toplevel = !g_strcasecmp(attribute_values[i], "true") ? TRUE : FALSE;
+				toplevel = !g_ascii_strcasecmp(attribute_values[i], "true") ? TRUE : FALSE;
 		}
 		
 		cat_dupe = g_strdup(state->cur_category);
