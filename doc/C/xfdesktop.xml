@@ -108,7 +108,7 @@ maintainers, etc. Commented out by default.
   <para>The &app; application manages the desktop backdrop. It sets a
     backdrop image and/or color and it can pop up an applications
     menu and a list of all running applications when you click on the desktop
-    with the right or middle mouse button resepctively.
+    with the right or middle mouse button respectively.
   </para>
 	
   <para>
@@ -126,7 +126,7 @@ maintainers, etc. Commented out by default.
   <para>You can start the Desktop settings dialog by clicking on the
     "Desktop" button in the 
     <ulink url="xfce-mcs-manager.html#manager-dialog" 
-      type="http">settings manager dialog</ulink>.
+      type="http">Xfce Settings Manager</ulink>.
   </para>
   
   <figure id="xfdesktop-background-fig">
@@ -152,7 +152,7 @@ maintainers, etc. Commented out by default.
 	<para>This dialog allows you to select a color style for your desktop 
 	  backdrop: solid color, horizontal gradient or vertical gradient. 
 	  Depending on your choice, you will be able to choose one or two 
-	  colors, using "First color" and "Second color" buttons. These 
+	  colors, using "First Color" and "Second Color" buttons. These 
 	  buttons open a color chooser dialog:</para>
 
 	<figure id="select_bg_color-fig">
@@ -172,18 +172,18 @@ maintainers, etc. Commented out by default.
 	<para>&nbsp;</para>
 
 	<itemizedlist>
-	  <listitem>you can use the colored ring with a triangle inside:
+	  <listitem>You can use the colored ring with a triangle inside:
 	    select the color you want from the outer ring, then select the
 	    darkness or lightness of that color using the inner triangle.
 	    Corresponding values of brightness, deepness, and amount of red,
 	    green and blue light in the color appear through the entries on
 	    the right side of the window.
 	  </listitem>
-	  <listitem>you can click the eyedropper, then click anywhere on your
+	  <listitem>You can click the eyedropper, then click anywhere on your
 	    screen to select the color.
 	  </listitem>
-	  <listitem>you can enter an HTML-style hexadecimal color value, or
-	    simply a color name, in the "Color Name" entry
+	  <listitem>You can enter an HTML-style hexadecimal color value, or
+	    simply a color name, in the "Color Name" entry.
 	  </listitem>
 	</itemizedlist>
 
@@ -198,13 +198,13 @@ maintainers, etc. Commented out by default.
 
       <listitem>
       
-	<para>Unselect the "Show image" option if you want &app; to ignore 
+	<para>Unselect the "Show Image" option if you want &app; to ignore 
 	  the backdrop image and only use the previously selected colors.
 	</para>
       
 	<para>The "File" entry shows the path to the currently selected
 	  backdrop image. If you want to change it, just drop and image 
-	  on the path field, or edit the path, or click the "open" button, 
+	  on the path field, or edit the path, or click the browse button, 
 	  and a classic file-browsing dialog will appear.
 	</para>
 
@@ -299,18 +299,29 @@ maintainers, etc. Commented out by default.
   </para>
 
   <para>A right-click on the desktop backdrop opens a menu that allows you to
-    start some applications. Its configuration file, menu.xml, can be found
-    under the path <filename>$sysconfdir/xfce4/menu.xml</filename>. For binary 
-    packages $sysconfdir is often <filename>/etc</filename> and for source
-    compiles it defaults to <filename>/usr/local/etc</filename>.
+    start some applications. Its configuration file,
+    <filename>menu.xml</filename>, can be found under the path
+    <filename>$sysconfdir/xdg/xfce4/menu.xml</filename>.  For binary packages,
+    $sysconfdir is often <filename>/etc</filename> and for source compiles, it
+    defaults to <filename>/usr/local/etc</filename>.
   </para>
   
   <para>While it is possible to edit the file manually, the recommended method
-    for editing the menu.xml file is via the Xfce 4 Menu Editor, which can be
-    started by running <application>xfce4-menueditor</application>, or using 
+    for editing the <filename>menu.xml</filename> file is via the Xfce 4 Menu
+    Editor, which can be started by running
+    <application>xfce4-menueditor</application>, or using 
     the "Edit desktop menu" button available from the Menu tab of the Desktop 
     settings dialog. The menu editor also supports drag'n'drop from a file 
     manager.
+  </para>
+  
+  <para>If you've edited the menu via
+    <application>xfce4-menueditor</application>, the user-customized menu file
+    will be saved to
+    <filename>$XDG_CONFIG_HOME/xfce4/desktop/menu.xml</filename>.
+	$XDG_CONFIG_HOME usually defaults to <filename>~/.config</filename>.  If
+    editing the file manually, copying it to this location first is the
+    preferred method.
   </para>
 	
   <figure id="xfdesktop-editor-fig">
@@ -328,10 +339,10 @@ maintainers, etc. Commented out by default.
     </screenshot>
   </figure>
 	
-  <para>NOTE: If you choose to edit the file manually, menu.xml has to be in
-    UTF-8 encoding for the toolkit to be able to display accented or other
-    non-ASCII characters. Therefore, you need an editor that supports UTF-8,
-    like <application>gedit</application>.
+  <para>NOTE: If you choose to edit the file manually,
+    <filename>menu.xml</filename> has to be in UTF-8 encoding for the toolkit to
+	be able to display accented or other non-ASCII characters. Therefore, you
+    need an editor that supports UTF-8, like <application>gedit</application>.
   </para>
 
   <figure id="root-menu-fig">
@@ -390,7 +401,7 @@ maintainers, etc. Commented out by default.
     Brian Tarricone (<email>kelnos@xfce.org</email>) and 
     Benedikt Meurer (<email>benny@xfce.org</email>).
     For more information, please visit the 
-    <ulink url="http://www.xfce.org" type="http">Xfce web site</ulink>. 
+    <ulink url="http://www.xfce.org" type="http">Xfce website</ulink>. 
   </para>
 
   <para>To report a bug or make a suggestion regarding this application or
