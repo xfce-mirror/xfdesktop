@@ -82,20 +82,6 @@ static void backdrop_create_channel (McsPlugin * mcs_plugin);
 static gboolean backdrop_write_options (McsPlugin * mcs_plugin);
 static void run_dialog (McsPlugin * mcs_plugin);
 
-static void
-dlg_response_accept(GtkWidget *w, gpointer user_data)
-{
-	GtkDialog *dialog = GTK_DIALOG(user_data);
-	gtk_dialog_response(dialog, GTK_RESPONSE_ACCEPT);
-}
-
-static void
-dlg_response_cancel(GtkWidget *w, gpointer user_data)
-{
-	GtkDialog *dialog = GTK_DIALOG(user_data);
-	gtk_dialog_response(dialog, GTK_RESPONSE_CANCEL);
-}
-
 McsPluginInitResult
 mcs_plugin_init (McsPlugin * mcs_plugin)
 {
@@ -310,7 +296,6 @@ static void
 color_set_cb(GtkWidget *b, BackdropPanel *bp)
 {
 	GdkColor color;
-	gint whichcolor;
 	gchar setting_name[128];
 	
 	xfce_color_button_get_color(XFCE_COLOR_BUTTON(b), &color);
@@ -348,33 +333,6 @@ showimage_toggle(GtkWidget *b, BackdropPanel *bp)
     mcs_manager_set_int (bp->bd->plugin->manager, setting_name, BACKDROP_CHANNEL,
 			 bp->show_image ? 1 : 0);
     mcs_manager_notify (bp->bd->plugin->manager, BACKDROP_CHANNEL);
-}
-
-static GtkWidget *
-color_button_new(McsColor *color, GtkWidget **color_box)
-{
-    GtkWidget *button, *frame;
-    GdkPixbuf *pixbuf;
-    guint32 rgba;
-
-    button = gtk_button_new();
-
-    frame = gtk_frame_new (NULL);
-    gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-    gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
-    gtk_widget_show (frame);
-    gtk_container_add (GTK_CONTAINER (button), frame);
-
-    pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 40, 16);
-    rgba = (((color->red & 0xff00) << 8) | ((color->green & 0xff00))
-			| ((color->blue & 0xff00) >> 8)) << 8;
-    gdk_pixbuf_fill (pixbuf, rgba);
-
-    *color_box = gtk_image_new_from_pixbuf (pixbuf);
-    gtk_widget_show (*color_box);
-    gtk_container_add (GTK_CONTAINER (frame), *color_box);
-
-	return button;
 }
 
 /* dnd box */

@@ -75,8 +75,6 @@ notify_cb(const char *name, const char *channel_name, McsAction action,
 		McsSetting *setting, void *data)
 {
 	GList *l;
-	SettingsCallback cb;
-	gpointer user_data;
 	
 	g_return_if_fail(!strcmp(channel_name, BACKDROP_CHANNEL));
 	

@@ -275,7 +275,7 @@ menu_drag_data_get_cb(GtkWidget *widget, GdkDragContext *drag_context,
 {
 	const gchar *name = NULL, *exec = NULL, *icon = NULL;
 	gboolean needs_term = FALSE, snotify = FALSE;
-	gchar *desktop_data = NULL, *atom_str;
+	gchar *desktop_data = NULL;
 	XfceAppMenuItem *ami;
 	
 	if(!XFCE_IS_APP_MENU_ITEM(widget))

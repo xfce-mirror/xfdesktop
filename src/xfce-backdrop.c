@@ -74,7 +74,6 @@ adjust_brightness(GdkPixbuf *src, gint amount)
 	GdkPixdata pdata;
 	gboolean has_alpha = FALSE;
 	gint i, len;
-	gdouble scaled_val;
 	GError *err = NULL;
 	
 	g_return_val_if_fail(src != NULL, NULL);

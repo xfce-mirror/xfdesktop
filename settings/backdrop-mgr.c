@@ -705,8 +705,6 @@ filename_browse_cb(GtkWidget *b, GtkWidget *file_entry)
 	xfce_file_filter_add_pattern(filter, "*.list");
 	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
 	
-	xfce_file_chooser_set_local_only(XFCE_FILE_CHOOSER(chooser), TRUE);
-	
 	if(_listdlg_last_dir)
 		xfce_file_chooser_set_current_folder(XFCE_FILE_CHOOSER(chooser),
 				_listdlg_last_dir);
