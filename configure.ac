@@ -3,11 +3,11 @@ dnl
 dnl xfdesktop - desktop manager for the XFce Desktop environment
 dnl
 
-AC_INIT(common/backdrop.c)
+AC_INIT([common/backdrop.c])
 
-AM_INIT_AUTOMAKE(xfdesktop, 3.90)
+AM_INIT_AUTOMAKE([xfdesktop], [3.90.0])
 
-AM_CONFIG_HEADER(config.h)
+AM_CONFIG_HEADER([config.h])
 
 AM_MAINTAINER_MODE
 
