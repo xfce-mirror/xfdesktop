@@ -148,6 +148,8 @@ create_menu_page(BackdropDialog *bd)
 	
 	page = gtk_vbox_new(FALSE, 6);
 	
+	add_spacer(GTK_BOX(page));
+	
 	frame = xfce_framebox_new(_("Window List"), TRUE);
 	gtk_widget_show(frame);
 	gtk_box_pack_start(GTK_BOX(page), frame, FALSE, FALSE, 0);
