@@ -63,14 +63,18 @@
 
 #include "main.h"
 #include "menu.h"
+#ifdef USE_DESKTOP_MENU
 #include "desktop-menu-stub.h"
+#endif
 
 #define WLIST_MAXLEN 20
 
 static NetkScreen *netk_screen = NULL;
+static GtkWidget *windowlist = NULL;
+#ifdef USE_DESKTOP_MENU
 static XfceDesktopMenu *desktop_menu = NULL;
 static GModule *module_desktop_menu = NULL;
-static GtkWidget *windowlist = NULL;
+#endif
 
 /*******************************************************************************  
  *  Window list menu
@@ -299,6 +303,7 @@ create_windowlist_menu (GList **pix_unref_needed)
 void
 popup_menu (int button, guint32 time)
 {
+#ifdef BUILD_DESKTOP_MENU
 	GtkWidget *menu_widget;
 	
 	if(!module_desktop_menu)
@@ -314,6 +319,7 @@ popup_menu (int button, guint32 time)
 		gtk_menu_popup (GTK_MENU (menu_widget), NULL, NULL, NULL, NULL,
 				button, time);
 	}
+#endif
 }
 
 void
@@ -354,11 +360,13 @@ button_press (GtkWidget * w, GdkEventButton * bevent)
 	popup_windowlist (button, bevent->time);
 	handled = TRUE;
     }
+#ifdef BUILD_DESKTOP_MENU
     else if (button == 3 || (button == 1 && state & GDK_SHIFT_MASK))
     {
 	popup_menu (button, bevent->time);
 	handled = TRUE;
     }
+#endif
 
     return handled;
 }
@@ -400,13 +408,15 @@ button_scroll (GtkWidget * w, GdkEventScroll * sevent)
 void
 menu_force_regen()
 {
+#ifdef USE_DESKTOP_MENU	
 	if(!module_desktop_menu)
 		return;
-	
+
 	if(!desktop_menu)
 		desktop_menu = xfce_desktop_menu_new(NULL, FALSE);
 	else
 		xfce_desktop_menu_force_regen(desktop_menu);
+#endif
 }
 
 /*  Initialization 
@@ -429,12 +439,13 @@ menu_init (XfceDesktop * xfdesktop)
 
     g_signal_connect (xfdesktop->fullscreen, "scroll-event",
 		      G_CALLBACK (button_scroll), NULL);
-	
+#if USE_DESKTOP_MENU
 	if((module_desktop_menu=xfce_desktop_menu_stub_init())) {
 		desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
 		xfce_desktop_menu_start_autoregen(desktop_menu, 10);
 	} else
 		g_warning("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n", PACKAGE);
+#endif
 }
 
 void
@@ -446,6 +457,7 @@ menu_load_settings (XfceDesktop * xfdesktop)
 void
 menu_cleanup(XfceDesktop *xfdesktop)
 {
+#ifdef USE_DESKTOP_MENU
 	if(module_desktop_menu) {
 		if(desktop_menu) {
 			xfce_desktop_menu_stop_autoregen(desktop_menu);
@@ -453,5 +465,5 @@ menu_cleanup(XfceDesktop *xfdesktop)
 		}
 		xfce_desktop_menu_stub_cleanup_all(module_desktop_menu);
 	}
-		
+#endif
 }

@@ -40,6 +40,7 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 host_triplet = @host@
+@BUILD_DESKTOP_MENU_STUB_TRUE@am__append_1 = desktop-menu-stub.c desktop-menu-stub.h
 subdir = common
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -53,8 +54,11 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 LTLIBRARIES = $(noinst_LTLIBRARIES)
 libxfdesktop_la_LIBADD =
+am__libxfdesktop_la_SOURCES_DIST = background-common.c \
+	background-common.h desktop-menu-stub.c desktop-menu-stub.h
+@BUILD_DESKTOP_MENU_STUB_TRUE@am__objects_1 = libxfdesktop_la-desktop-menu-stub.lo
 am_libxfdesktop_la_OBJECTS = libxfdesktop_la-background-common.lo \
-	libxfdesktop_la-desktop-menu-stub.lo
+	$(am__objects_1)
 libxfdesktop_la_OBJECTS = $(am_libxfdesktop_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -71,7 +75,7 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 SOURCES = $(libxfdesktop_la_SOURCES)
-DIST_SOURCES = $(libxfdesktop_la_SOURCES)
+DIST_SOURCES = $(am__libxfdesktop_la_SOURCES_DIST)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -84,6 +88,8 @@ AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
+BUILD_DESKTOP_MENU_STUB_FALSE = @BUILD_DESKTOP_MENU_STUB_FALSE@
+BUILD_DESKTOP_MENU_STUB_TRUE = @BUILD_DESKTOP_MENU_STUB_TRUE@
 CATALOGS = @CATALOGS@
 CATOBJEXT = @CATOBJEXT@
 CC = @CC@
@@ -229,10 +235,8 @@ target_alias = @target_alias@
 noinst_LTLIBRARIES = libxfdesktop.la
 libxfdesktop_la_SOURCES = \
 	background-common.c						\
-	background-common.h						\
-	desktop-menu-stub.c						\
-	desktop-menu-stub.h
-
+	background-common.h\
+$(am__append_1)
 libxfdesktop_la_CFLAGS = \
 	@LIBXFCEGUI4_CFLAGS@						\
 	@GMODULE_CFLAGS@						\

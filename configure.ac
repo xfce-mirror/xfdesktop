@@ -54,9 +54,6 @@ AC_SUBST(MENUEDITOR_DIR)
 dnl Configure the MCS plugins
 XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.0.0])
 
-dnl Check for debuggin support
-BM_DEBUG_SUPPORT
-
 dnl Build options
 
 AC_ARG_ENABLE([desktop-menu],
@@ -70,8 +67,11 @@ if test "x$ac_cv_enable_desktop_menu" = "xno"; then
 else
 	DESKTOP_MENU_DIR="menu"
 	build_desktop_menu="yes"
+	AC_DEFINE([USE_DESKTOP_MENU], [1], [Define if we should build the desktop menu module])
 fi
 AC_SUBST(DESKTOP_MENU_DIR)
+AM_CONDITIONAL([BUILD_DESKTOP_MENU_STUB],
+	[test "x$build_desktop_menu" = "xyes" ])
 
 AC_ARG_ENABLE([panel-plugin],
 	[AC_HELP_STRING([--disable-panel-plugin],
@@ -86,6 +86,9 @@ else
 	build_panel_plugin="yes"
 fi
 AC_SUBST(PANEL_PLUGIN_DIR)
+
+dnl Check for debugging support
+BM_DEBUG_SUPPORT
 
 AC_OUTPUT([
 backdrops/Makefile
