@@ -5,10 +5,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
-"POT-Creation-Date: 2003-11-11 16:21+0100\n"
-"PO-Revision-Date: 2003-04-27 18:44--200\n"
+"POT-Creation-Date: 2003-11-14 19:03+0100\n"
+"PO-Revision-Date: 2003-12-27 14:22+0100\n"
 "Last-Translator: Paweł Pastuła <pastulap@poczta.onet.pl>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: POLISH <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,13 +22,14 @@ msgid ""
 "Please choose another location or press cancel in the dialog to discard your "
 "changes"
 msgstr ""
-"Nie mogę zapisać pliku: %s\n"
+"Nie mogę zapisać pliku %s: %s\n"
 "\n"
-"Proszę wybierz inną lokację lub naciśnij Anuluj aby porzucić zmiany"
+"Proszę wybierz inną lokalizację lub naciśnij Anuluj aby porzucić swoje"
+"zmiany"
 
 #: settings/backdrop-mgr.c:510
 msgid "Select image file"
-msgstr "Wybierz plik z tłem"
+msgstr "Wybierz plik z obrazkiem"
 
 #: settings/backdrop-mgr.c:622
 msgid "Choose backdrop list filename"
@@ -58,86 +59,92 @@ msgstr "Utwórz listę z tłami"
 msgid "Edit backdrop list"
 msgstr "Edytuj listę z tłami"
 
-#: settings/backdrop_settings.c:156
-msgid "Desktop: backdrop"
-msgstr "Pulpit: tło"
+#: settings/backdrop_settings.c:149
+#, fuzzy
+msgid "Desktop background"
+msgstr "Tło pulpitu"
 
-#: settings/backdrop_settings.c:357
+#: settings/backdrop_settings.c:363
 msgid "Select background color"
 msgstr "Wybierz kolor tła"
 
-#: settings/backdrop_settings.c:407
+#: settings/backdrop_settings.c:413
 msgid "Background color:"
 msgstr "Kolor tła:"
 
-#: settings/backdrop_settings.c:437
+#: settings/backdrop_settings.c:443
 msgid "Use color only:"
-msgstr "Urzyj tylko koloru"
+msgstr "Użyj tylko koloru"
 
-#: settings/backdrop_settings.c:563
+#: settings/backdrop_settings.c:569
 msgid "File:"
 msgstr "Plik:"
 
-#: settings/backdrop_settings.c:624
+#: settings/backdrop_settings.c:630
 msgid "Select background image or list file"
-msgstr "Wybierz obrazek tła lub plik z listą"
+msgstr "Wybierz obrazek z tłem lub plik z listą"
 
-#: settings/backdrop_settings.c:701
+#: settings/backdrop_settings.c:707
 msgid "_Browse..."
 msgstr "_Przeglądaj..."
 
-#: settings/backdrop_settings.c:705
+#: settings/backdrop_settings.c:711
 msgid "New list"
 msgstr "Nowa lista"
 
-#: settings/backdrop_settings.c:709
+#: settings/backdrop_settings.c:715
 msgid "Edit list"
 msgstr "Edytuj listę"
 
-#: settings/backdrop_settings.c:747
+#: settings/backdrop_settings.c:753
 msgid "Style:"
 msgstr "Styl:"
 
-#: settings/backdrop_settings.c:755
+#: settings/backdrop_settings.c:761
 msgid "_Tiled"
 msgstr "_Kafelki"
 
-#: settings/backdrop_settings.c:761
+#: settings/backdrop_settings.c:767
 msgid "_Scaled"
 msgstr "_Skaluj"
 
-#: settings/backdrop_settings.c:768
+#: settings/backdrop_settings.c:774
 msgid "_Centered"
 msgstr "_Wycentruj"
 
-#: settings/backdrop_settings.c:775
+#: settings/backdrop_settings.c:781
 #, fuzzy
 msgid "_Auto"
 msgstr "_Automatyczny"
 
 #. the dialog
-#: settings/backdrop_settings.c:801
+#: settings/backdrop_settings.c:820
 msgid "Background"
 msgstr "Tło"
 
 #. header
-#: settings/backdrop_settings.c:819
+#: settings/backdrop_settings.c:838
 msgid "Background Settings"
 msgstr "Ustawienia tła"
 
 #. color
-#: settings/backdrop_settings.c:825
+#: settings/backdrop_settings.c:844
 msgid "Color"
 msgstr "Kolor"
 
 #. image vbox
-#: settings/backdrop_settings.c:837
+#: settings/backdrop_settings.c:856
 msgid "Image"
 msgstr "Obrazek"
 
+#: settings/backdrop_settings.c:882
+#, fuzzy
+msgid "Don't set background"
+msgstr "Nie ustawiaj tła"
+
 #: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
-msgstr "Pulpit: obszar roboczy"
+msgstr "Pulpit: obszary robocze"
 
 #: settings/workspaces_settings.c:329
 msgid "Change name"
@@ -154,7 +161,7 @@ msgstr "Nazwa:"
 
 #: settings/workspaces_settings.c:461
 msgid "Click on a workspace name to edit it"
-msgstr "Kliknij na obszarze roboczym aby edytować"
+msgstr "Kliknij na obszarze roboczym aby zmienić jego nazwę"
 
 #: settings/workspaces_settings.c:492
 msgid "Number of workspaces:"
@@ -174,30 +181,29 @@ msgstr "Ustawienia obszaru roboczego"
 msgid "Workspace names"
 msgstr "Nazwy obszarów roboczych"
 
-#: src/backdrop.c:487
+#: src/backdrop.c:508
 #, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
 msgstr "xfdesktop error: wczytywanie obrazka z tłem: %s\n"
 
-#: src/main.c:249
-msgid "Desktop"
-msgstr "Pulpit"
-
-#: src/menu.c:736
+#: src/menu.c:735
 msgid "Add workspace"
 msgstr "Dodaj obszar roboczy"
 
-#: src/menu.c:743
+#: src/menu.c:742
 msgid "Delete workspace"
 msgstr "Usuń obszar roboczy"
 
-#: src/settings.c:186
+#: src/settings.c:182
 msgid ""
 "xfdesktop: could not connect to settings manager!Please check your "
 "installation."
 msgstr ""
 "xfdesktop: nie mogę się połączyć z menadżerem ustawień! Proszę sprawdź czy "
 "instalacja jest poprawna."
+
+#~ msgid "Desktop"
+#~ msgstr "Pulpit"
 
 #~ msgid "Workspace"
 #~ msgstr "Obszar roboczy"
