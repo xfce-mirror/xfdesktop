@@ -5,7 +5,7 @@ dnl
 
 AC_INIT([configure.ac])
 
-AM_INIT_AUTOMAKE([xfdesktop], [3.99.4])
+AM_INIT_AUTOMAKE([xfdesktop], [4.0.0])
 
 AM_CONFIG_HEADER([config.h])
 
@@ -32,12 +32,12 @@ BM_I18N([xfdesktop], [ca de es es_MX fi fr hu ja pl ko lt ms nl pt_PT ru ta tr z
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE
 
-BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 3.99.4)
+BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.0.0)
 BM_DEPEND([LIBXML], libxml-2.0, 2.4.0)
-BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [3.99.4])
+BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [4.0.0])
 
 dnl Configure the MCS plugins
-XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [3.99.4])
+XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.0.0])
 
 dnl Check for debuggin support
 BM_DEBUG_SUPPORT
