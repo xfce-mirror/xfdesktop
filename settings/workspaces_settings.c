@@ -118,6 +118,18 @@ static void update_names(McsManager *manager, int n)
 }
 
 /* create the channel and initialize settings */
+static void set_ws_count_hint(int count)
+{
+    gdk_error_trap_push();
+    gdk_property_change(gdk_get_default_root_window(), 
+	    		gdk_atom_intern("_NET_NUMBER_OF_DESKTOPS", FALSE),
+			gdk_x11_xatom_to_atom(XA_CARDINAL),
+			32, GDK_PROP_MODE_REPLACE, 
+			(unsigned char *)&count, 1);
+    gdk_flush();
+    gdk_error_trap_pop();
+}
+
 static void create_workspaces_channel(McsManager *manager)
 {
     McsSetting *setting;
@@ -133,6 +145,9 @@ static void create_workspaces_channel(McsManager *manager)
     if (setting)
     {
 	ws_count = setting->data.v_int;
+
+	/* only the first time when wm isn't running yet */
+	set_ws_count_hint(ws_count);
     }
 
     /* ws names */
