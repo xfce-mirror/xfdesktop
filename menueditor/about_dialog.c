@@ -21,9 +21,6 @@
 #include "menueditor.h"
 #include "about_dialog.h"
 
-/* Pixmap */
-#include "me-icon48.xpm"
-
 /*************/
 /* About box */
 /*************/
@@ -63,7 +60,7 @@ void about_cb(GtkWidget *widget, gpointer data)
 			     "fleclainche@wanadoo.fr",
 			     _("Icon designer"));
 
-  icon = gdk_pixbuf_new_from_xpm_data(icon48_xpm);
+  icon = xfce_themed_icon_load ("xfce4-menueditor" , 48);
 
   dialog = xfce_about_dialog_new(GTK_WINDOW(menueditor_app.main_window), 
 				 info, icon);

@@ -41,11 +41,6 @@
 #include "move.h"
 #include "dnd.h"
 
-/* Pixmaps */
-#include "me-icon16.xpm"
-#include "me-icon32.xpm"
-#include "me-icon48.xpm"
-
 #include "../modules/menu/dummy_icon.h"
 
 /* Search path for menu.xml file */
@@ -860,13 +855,13 @@ void create_main_window()
   gtk_window_set_default_size(GTK_WINDOW(menueditor_app.main_window),600,450);
 
   /* Set default icon */
-  icon = gdk_pixbuf_new_from_xpm_data(icon16_xpm);
+  icon = xfce_themed_icon_load ("xfce4-menueditor", 16);
   if (icon)
     icons = g_list_append(icons,icon);
-  icon = gdk_pixbuf_new_from_xpm_data(icon32_xpm);
+  icon = xfce_themed_icon_load ("xfce4-menueditor", 32);
   if (icon)
     icons = g_list_append(icons,icon);
-  icon = gdk_pixbuf_new_from_xpm_data(icon48_xpm);
+  icon = xfce_themed_icon_load ("xfce4-menueditor", 48);
   if (icon)
     icons = g_list_append(icons,icon);
 
