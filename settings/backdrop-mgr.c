@@ -851,6 +851,7 @@ edit_list_file(const gchar *path, GtkWidget *parent, ListMgrCb callback,
 	unsigned long len, after;
 	unsigned char *curimg = NULL;
 	GtkTreeIter itr;
+	gchar *file;
 	gboolean set_sel = FALSE;
 	
 	list_mgr_dialog_new(_("Edit backdrop list"), parent, path, &dialog,
@@ -865,8 +866,6 @@ edit_list_file(const gchar *path, GtkWidget *parent, ListMgrCb callback,
 			AnyPropertyType, &type, &fmt, &len, &after, &curimg) == Success
 			&& type == XA_STRING && fmt == 8)
 	{
-		gchar *file;
-		
 		XUngrabServer(dpy);
 		
 		if(gtk_tree_model_get_iter_first(GTK_TREE_MODEL(ls), &itr)) {
@@ -876,11 +875,7 @@ edit_list_file(const gchar *path, GtkWidget *parent, ListMgrCb callback,
 				if(!strcmp(curimg, file)) {
 					GtkTreePath *path;
 					
-					/*file = g_strconcat("* ", file, " *", NULL);
-					gtk_list_store_set(ls, &itr, 0, file, -1);
-					*/
 					gtk_list_store_set(ls, &itr, 1, PANGO_WEIGHT_BOLD, -1);
-					/*g_free(file);*/
 					
 					set_sel = TRUE; /* GtkTreeView needs to be realized first */
 					path = gtk_tree_model_get_path(GTK_TREE_MODEL(ls), &itr);
