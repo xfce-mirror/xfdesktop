@@ -71,6 +71,10 @@
 
 typedef struct
 {
+    Display *dpy;
+    Window root;
+    Atom atom;
+
     GtkWidget *win;
     
     guint set_background:1;
@@ -87,6 +91,9 @@ static gboolean init_settings = TRUE;
 static XfceBackground *background = NULL;
 
 static void set_background (XfceBackground * background);
+
+static GdkFilterReturn monitor_background (GdkXEvent *ev, GdkEvent *gev, 
+					   XfceBackground *background);
 
 /* list files */
 static int
@@ -356,7 +363,7 @@ create_pixmap (XfceBackground * background, GdkPixbuf * image)
 }
 
 static void
-update_root_window (GtkWidget *win, GdkPixmap * pixmap)
+update_window_style (GtkWidget *win, GdkPixmap * pixmap)
 {
     GtkStyle *style;
 
@@ -368,7 +375,11 @@ update_root_window (GtkWidget *win, GdkPixmap * pixmap)
     gtk_widget_set_style (win, style);
     g_object_unref (style);
     gtk_widget_queue_draw (win);
-    
+}
+
+static void
+update_root_window (GtkWidget *win, GdkPixmap * pixmap)
+{
     if (pixmap)
     {
 	XID id = GDK_DRAWABLE_XID (pixmap);
@@ -404,10 +415,57 @@ set_background (XfceBackground * background)
 
     pixmap = create_pixmap (background, pixbuf);
 
+    update_window_style (background->win, pixmap);
     update_root_window (background->win, pixmap);
 
     if (pixbuf)
 	g_object_unref (pixbuf);
+}
+
+/* monitor _XROOT_PMAP_ID property */
+static void
+set_background_from_root_property(XfceBackground *background)
+{
+    Display *dpy = background->dpy;
+    Window w = background->root;
+    Atom type;
+    int format;
+    unsigned long length, after;
+    unsigned char *data;
+
+    TRACE ("dummy");
+    XGrabServer (dpy);
+
+    XGetWindowProperty (dpy, w, background->atom, 0L, 1L, False, 
+	    		AnyPropertyType, &type, &format, &length, &after, 
+			&data);
+
+    if ((type == XA_PIXMAP) && (format == 32) && (length == 1))
+    {
+	GdkPixmap *pixmap = gdk_pixmap_foreign_new (*((Pixmap *) data));
+	update_window_style (background->win, pixmap);
+    }
+
+    XUngrabServer (dpy);
+}
+
+static GdkFilterReturn 
+monitor_background (GdkXEvent *ev, GdkEvent *gev, XfceBackground *background)
+{
+    XEvent *xevent = (XEvent *)ev;
+
+    if (background->set_background)
+	return GDK_FILTER_CONTINUE;
+    
+    if (xevent->type == PropertyNotify &&
+	xevent->xproperty.atom == background->atom &&
+	xevent->xproperty.window == background->root)
+    {
+	set_background_from_root_property(background);
+	return GDK_FILTER_REMOVE;
+    }
+    
+    return GDK_FILTER_CONTINUE;
 }
 
 /* settings */
@@ -465,10 +523,8 @@ update_backdrop_channel (const char *name, McsAction action,
 
 /* removes _ESETROOT_PMAP_ID */
 static void
-remove_old_pixmap (XfceDesktop *xfdesktop)
+remove_old_pixmap (Display *dpy, Window w)
 {
-    Display *dpy = xfdesktop->dpy;
-    Window w = xfdesktop->root;
     Atom e_prop = XInternAtom (dpy, "ESETROOT_PMAP_ID", False);
     Atom type;
     int format;
@@ -496,17 +552,22 @@ remove_old_pixmap (XfceDesktop *xfdesktop)
 void
 background_init (XfceDesktop *xfdesktop)
 {
+    GdkWindow *root;
+    
     TRACE ("dummy");
 
     background = g_new0 (XfceBackground, 1);
 
+    background->dpy = xfdesktop->dpy;
+    background->root = xfdesktop->root;
+    background->atom = XInternAtom (xfdesktop->dpy, "_XROOTPMAP_ID", False);
     background->win = xfdesktop->fullscreen;
     background->set_background = TRUE;
     background->show_image = TRUE;
     background->style = TILED;
 
     /* we don't use _ESETROOT_PMAP_ID */
-    remove_old_pixmap (xfdesktop);
+    remove_old_pixmap (xfdesktop->dpy, xfdesktop->root);
 
     /* connect callback for settings changes */
     register_channel_callback (BACKDROP_CHANNEL, 
@@ -515,6 +576,16 @@ background_init (XfceDesktop *xfdesktop)
     init_settings = TRUE;
     mcs_client_add_channel (xfdesktop->client, BACKDROP_CHANNEL);
     init_settings = FALSE;
+    
+    /* watch _XROOTPMAP_ID root property */
+    root = gdk_get_default_root_window ();
+    
+    gdk_window_add_filter (root, (GdkFilterFunc)monitor_background, 
+	    		   background);
+    
+    gdk_window_set_events (root,
+	    		   gdk_window_get_events (root) | 
+			   GDK_PROPERTY_CHANGE_MASK);
 }
 
 void
@@ -570,13 +641,16 @@ background_load_settings (XfceDesktop *xfdesktop)
 
     if (background->set_background)
 	set_background (background);
+    else
+	set_background_from_root_property(background);
+
 }
 
 void
 background_cleanup (XfceDesktop *xfdesktop)
 {
-    GdkWindow *root = gdk_get_default_root_window ();
-    gdk_property_delete (root, gdk_atom_intern ("_XROOTPMAP_ID", FALSE));
-    gdk_window_clear (gdk_get_default_root_window ());
+    gdk_window_remove_filter (gdk_get_default_root_window (), 
+	    		      (GdkFilterFunc)monitor_background, background);
+    g_free (background);
 }
 
