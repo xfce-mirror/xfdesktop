@@ -360,7 +360,7 @@ static gboolean file_entry_lost_focus(GtkWidget *entry, GdkEventFocus *ev,
 	update_path(bd);
     }
 
-    return TRUE;
+    return FALSE;
 }
 
 static void add_file_entry(GtkWidget *vbox, GtkSizeGroup *sg, 
