@@ -53,7 +53,7 @@
 
 <xfdesktop-menu>
 
-	<title name="Xfce Menu" icon="backdrop"/>
+	<title name="Xfce Menu" icon="xfce4-backdrop"/>
 
 	<separator/>
 
