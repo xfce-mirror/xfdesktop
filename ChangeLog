@@ -1,3 +1,25 @@
+2003-08-03 20:37  bmeurer
+
+	* m4/X11.m4: grep -q does not work with Solaris grep, fixed it.
+
+2003-08-03 18:53  xfce
+
+	* Makefile.am, menu.xml.fr, src/menu.c: Add localizable default
+	desktop menu Add some testing to returned values
+
+2003-07-31 08:00  huysmans
+
+	* settings/: backdrop-mgr.c, backdrop_settings.c: Fix compiler
+	warnings
+
+2003-07-30 21:11  huysmans
+
+	* settings/: backdrop-mgr.c, backdrop_settings.c: Fix some warnings
+
+2003-07-30 13:31  huysmans
+
+	* ChangeLog: Update changlogs
+
 2003-07-30 10:05  huysmans
 
 	* configure, configure.ac, po/ca.gmo, po/ca.po, po/de.gmo,
