@@ -670,9 +670,9 @@ browse_cb (GtkWidget * b, BackdropDialog * bd)
 	gtk_file_selection_hide_fileop_buttons(GTK_FILE_SELECTION(fs));
 	gtk_window_set_transient_for(GTK_WINDOW(fs), GTK_WINDOW(bd->dialog));
 	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fs)->ok_button), "clicked",
-			G_CALLBACK(filesel_response_accept), fs);
+			G_CALLBACK(dlg_response_accept), fs);
 	g_signal_connect(G_OBJECT(GTK_FILE_SELECTION(fs)->cancel_button), "clicked",
-			G_CALLBACK(filesel_response_cancel), fs);
+			G_CALLBACK(dlg_response_cancel), fs);
 
 	gtk_widget_show(fs);
 	if(gtk_dialog_run(GTK_DIALOG(fs)) == GTK_RESPONSE_ACCEPT) {
