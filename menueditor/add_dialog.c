@@ -260,7 +260,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
       node = xmlNewNode(NULL, "app");
 
       if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_icon)))!=0){
-	icon = load_icon_from_theme((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)));
+	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
 	if(icon)
 	  xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(entry_icon)));
       }

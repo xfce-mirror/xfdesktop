@@ -31,6 +31,7 @@
 
 /* includes for xfce4 */
 #include <libxfce4mcs/mcs-client.h>
+#include <libxfcegui4/icons.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfcegui4/xgtkicontheme.h>
 #include <libxfce4util/util.h>
@@ -61,6 +62,8 @@
 #endif
 #define CHANNEL "xfce"
 
+#define ICON_SIZE 24
+
 /***********/
 /* Globals */
 /***********/
@@ -68,9 +71,6 @@ static guchar icon_size = 24;
 
 void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command);
 void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon);
-
-/* Load an icon from the theme */
-GdkPixbuf* load_icon_from_theme(gchar* icon_name);
 
 enum {ICON_COLUMN, NAME_COLUMN, COMMAND_COLUMN, HIDDEN_COLUMN, POINTER_COLUMN};
 

@@ -116,19 +116,6 @@ mcs_notify_cb(const gchar *name, const gchar *channel_name, McsAction action,
     }
 }
 
-/* Load an icon from the theme and resize it */
-GdkPixbuf* load_icon_from_theme(gchar* icon_name)
-{
-  GdkPixbuf *tmpicon;
-  GdkPixbuf *icon;
-
-  tmpicon = gtk_icon_theme_load_icon (menueditor_app.icon_theme, icon_name, 24, 0, NULL);
-  icon = gdk_pixbuf_scale_simple(tmpicon, 24, 24, GDK_INTERP_BILINEAR);
-  g_object_unref(G_OBJECT(tmpicon));
-
-  return icon;
-}
-
 /****************************************************/
 /* browse for a command and set it in entry_command */
 /****************************************************/
@@ -251,7 +238,7 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			  POINTER_COLUMN, menu, -1);
       if(xmlGetProp(menu,"icon"))
 	/* Load the icon */
-	icon = load_icon_from_theme(xmlGetProp(menu,"icon"));
+	icon = xfce_load_themed_icon(xmlGetProp(menu,"icon"), ICON_SIZE);
 
       gtk_tree_store_set (menueditor_app.treestore, &c,
 			  ICON_COLUMN, icon, -1);
@@ -328,7 +315,7 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
       if(!xmlStrcmp(xmlGetProp(menu,"cmd"),(xmlChar*)"quit")){
 	GdkPixbuf *icon;
 
-	icon = load_icon_from_theme ("minipower");
+	icon = xfce_load_themed_icon ("minipower", ICON_SIZE);
 	gtk_tree_store_set (menueditor_app.treestore, &c,
 			    ICON_COLUMN, icon, -1);
       }

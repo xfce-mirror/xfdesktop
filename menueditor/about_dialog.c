@@ -42,7 +42,7 @@ void about_cb(GtkWidget *widget, gpointer data)
   xfce_about_info_set_homepage(info, "http://www.xfce.org/");
   xfce_about_info_add_credit(info,
       "Jean-Francois Wauthy",
-      "pollux@castor.be",
+      "pollux@xfce.org",
       _("Core developer"));
 
   icon = gdk_pixbuf_new_from_xpm_data(icon48_xpm);

@@ -293,7 +293,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 	icon_prop = xmlHasProp(node, "icon");
 	xmlRemoveProp(icon_prop);
       }else{
-	icon = load_icon_from_theme((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)));
+	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
 	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
       }
 
