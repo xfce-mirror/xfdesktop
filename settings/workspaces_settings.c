@@ -530,7 +530,6 @@ static void run_dialog(McsPlugin *plugin )
 					 GTK_STOCK_CLOSE, GTK_RESPONSE_OK,
 					 NULL);
 
-    gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);
     gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
 
     /* save channel ... */
@@ -581,6 +580,7 @@ static void run_dialog(McsPlugin *plugin )
 
     gtk_widget_set_size_request(dialog, -1, 350);
 
+    gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);
     gtk_widget_show(dialog);
 }
 
