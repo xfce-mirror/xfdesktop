@@ -481,36 +481,24 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 	GDir *d;
 	const gchar *kdedir = g_getenv("KDEDIR");
 	gchar kde_dentry_path[PATH_MAX];
-	gchar *catfile_user = xfce_get_userfile(CATEGORIES_FILE, NULL);
-	gchar *catfile = g_build_filename(SYSCONFDIR, "xfce4", CATEGORIES_FILE, NULL);
+	gchar *catfile_user = NULL, *catfile = NULL;
 	struct stat st;
 
 	g_return_if_fail(desktop_menu != NULL);
 
 	TRACE("base: %s", desktop_menu->dentry_basepath);
 	
-	if(g_file_test(catfile_user, G_FILE_TEST_EXISTS)) {
-		if(!desktop_menuspec_parse_categories(catfile_user)) {
-			if(!desktop_menuspec_parse_categories(catfile)) {
-				g_free(catfile);
-				g_free(catfile_user);
-				return;
-			}
-		}
-	} else {
+	catfile_user = xfce_get_userfile(CATEGORIES_FILE, NULL);
+	if(!g_file_test(catfile_user, G_FILE_TEST_EXISTS)
+			|| !desktop_menuspec_parse_categories(catfile_user))
+	{
+		catfile = g_build_filename(SYSCONFDIR, "xfce4", CATEGORIES_FILE, NULL);
 		if(!g_file_test(catfile, G_FILE_TEST_EXISTS)) {
-			g_free(catfile);
-			g_free(catfile_user);
 			g_warning(_("XfceDesktopMenu: Unable to find xfce-registered-categories.xml"));
-			return;
-		} else if(!desktop_menuspec_parse_categories(catfile)) {
-			g_free(catfile);
-			g_free(catfile_user);
-			return;
-		}
+			goto cleanup;
+		} else if(!desktop_menuspec_parse_categories(catfile))
+			goto cleanup;
 	}
-	g_free(catfile);
-	g_free(catfile_user);
 	
 	if(!blacklist) {
 		blacklist = g_hash_table_new(g_str_hash, g_str_equal);
@@ -563,6 +551,13 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 	}
 	
 	desktop_menuspec_free();
+	
+	cleanup:
+	
+	if(catfile_user)
+		g_free(catfile_user);
+	if(catfile)
+		g_free(catfile);
 }
 
 static void
