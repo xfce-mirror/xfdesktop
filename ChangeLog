@@ -1,3 +1,86 @@
+2004-10-12 08:18  kelnos
+
+	* panel-plugin/desktop-menu-plugin.c: fix warnings.  silly jasper
+	  ^_^
+
+2004-10-11 20:13  jasper
+
+	* panel-plugin/desktop-menu-plugin.c: Make menu button a toggle
+	  button
+
+2004-10-11 18:30  benny
+
+	* po/: ar.po, az.po, be.po, bg.po, ca.po, cs.po, de.po, es.po,
+	  es_MX.po, et.po, eu.po, fi.po, fr.po, gu.po, he.po, hi.po, hu.po,
+	  it.po, ja.po, ko.po, lt.po, ms.po, nl.po, pa.po, pl.po, pt_BR.po,
+	  pt_PT.po, ru.po, sk.po, sv.po, ta.po, tr.po, uk.po, vi.po,
+	  zh_CN.po, zh_TW.po: update-po for Moe.
+
+2004-10-10 13:52  pollux
+
+	* po/: pt_PT.gmo, pt_PT.po: update pt_PT translations
+
+2004-10-09 16:20  pollux
+
+	* configure, configure.ac, po/fa.gmo, po/fa.po, po/fa_IR.gmo,
+	  po/fa_IR.po: update FA translations
+
+2004-10-09 15:48  pollux
+
+	* po/: es.gmo, es_MX.gmo: Punjabi translations update from
+	  jaswinderlinux@netscape.net
+
+2004-10-08 17:28  edscott
+
+	* po/: es.po, es_MX.po: update translations. Note to Brian: there
+	  are way too many similar or nearly identical translations
+	  strings.
+
+2004-10-07 22:35  benny
+
+	* Makefile.in, aclocal.m4, configure, backdrops/Makefile.in,
+	  common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
+	  doc/C/images/Makefile.in, doc/fr/Makefile.in,
+	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
+	  doc/it/images/Makefile.in, m4/debug.m4, m4/glib-gettext.m4,
+	  m4/pkg.m4, menueditor/Makefile.in, modules/Makefile.in,
+	  modules/menu/Makefile.in, panel-plugin/Makefile.in,
+	  pixmaps/Makefile.in, settings/Makefile.in, src/Makefile.in: Added
+	  --enable-final (-O1 for GNU ld) as per Jaspers request. Added
+	  missing m4 files.
+
+2004-10-03 18:14  pollux
+
+	* configure, configure.ac, ltmain.sh, po/pa.gmo, po/pa.po: Punjabi
+	  translations (PA) from jaswinderlinux@netscape.net
+
+2004-10-03 17:43  pollux
+
+	* menueditor/xfce-menueditor.desktop,
+	  settings/xfce-backdrop-settings.desktop: zh_TW translations of
+	  desktop files from Ambrose Li <acli@ada.dhs.org>
+
+2004-10-03 09:46  olivier
+
+	* xfdesktop.spec.in: Files missing from spec file
+
+2004-10-03 00:49  olivier
+
+	* xfdesktop.spec.in: Wrong path is spec file
+
+2004-10-02 18:01  olivier
+
+	* xfdesktop.spec.in: Actually Red Hat calls the package "gtk2"
+
+2004-10-02 17:44  olivier
+
+	* xfdesktop.spec.in: Wrong package name
+
+2004-10-02 15:28  olivier
+
+	* ChangeLog, ltmain.sh, po/xfdesktop.pot: Update all files for 4.2
+	  beta 1
+
 2004-09-30 10:17  pollux
 
 	* po/: it.gmo, it.po: Updated Italian translations from Luca
