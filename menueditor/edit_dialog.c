@@ -285,6 +285,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
       xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
       xmlSetProp(node,"cmd",gtk_entry_get_text(GTK_ENTRY(command_entry)));
 
+      /* TODO unref the icon */
       if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
 	xmlAttrPtr icon_prop;
 
@@ -292,7 +293,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 	icon_prop = xmlHasProp(node, "icon");
 	xmlRemoveProp(icon_prop);
       }else{
-	icon = find_icon(gtk_entry_get_text(GTK_ENTRY(icon_entry)));
+	icon = load_icon_from_theme((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)));
 	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
       }
 

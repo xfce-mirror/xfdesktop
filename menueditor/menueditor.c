@@ -39,50 +39,6 @@
                     SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%l:"\
                     SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F")
 
-/* Search paths for find_icon */
-#ifdef HAVE_GETENV
-static gchar *kdefmts[] = {
-  "%s/share/icons/default.kde/scalable/apps/%s",
-  "%s/share/icons/default.kde/48x48/apps/%s",
-  "%s/share/icons/default.kde/32x32/apps/%s",
-  "%s/share/icons/hicolor/scalable/apps/%s",
-  "%s/share/icons/hicolor/48x48/apps/%s",
-  "%s/share/icons/hicolor/32x32/apps/%s",
-  NULL
-};
-#endif
-static gchar const *pix_paths[] = {
-  "/usr/share/xfce4/themes/%s/",  /* for xfce4 theme-specific path */
-  "/usr/share/xfce4/themes/%s/apps/",
-  "/usr/share/icons/%s/scalable/apps/",  /* ditto */
-  "/usr/share/icons/%s/48x48/apps/",  /* ditto */
-  "/usr/share/icons/%s/32x32/apps/",  /* ditto */
-  "/usr/share/pixmaps/",
-  "/usr/share/icons/hicolor/scalable/apps/",
-  "/usr/share/icons/hicolor/48x48/apps/",
-  "/usr/share/icons/hicolor/32x32/apps/",
-  "/usr/share/icons/gnome/scalable/apps/",  /* gnome's default */
-  "/usr/share/icons/gnome/48x48/apps/",  /* ditto */
-  "/usr/share/icons/gnome/32x32/apps/",  /* ditto */
-  "/usr/share/icons/default.kde/scalable/apps/",  /* kde's default */
-  "/usr/share/icons/default.kde/48x48/apps/",  /* ditto */
-  "/usr/share/icons/default.kde/32x32/apps/",  /* ditto */
-  "/usr/share/icons/locolor/scalable/apps/",  /* fallbacks */
-  "/usr/share/icons/locolor/48x48/apps/",
-  "/usr/share/icons/locolor/32x32/apps/",
-  NULL
-};
-
-/* Still for find_icon */
-static gchar *icon_theme=NULL;
-static gchar const *pix_ext[] = {
-  ".svgz",
-  ".svg",
-  ".png",
-  ".xpm",
-  NULL
-};
-
 /**************/
 /* Prototypes */
 /**************/
@@ -154,104 +110,23 @@ mcs_notify_cb(const gchar *name, const gchar *channel_name, McsAction action,
       gchar *origin = g_strdup_printf("%s:%d", __FILE__, __LINE__);
       gtk_settings_set_string_property(gtk_settings_get_default(),
 				       "gtk-icon-theme-name", setting->data.v_string, origin);
-      /* for use with find_icon */
-      /* to remove when gtk_theme_icon_load_icon will work */
-      g_free(icon_theme);
-      icon_theme = g_strdup(setting->data.v_string);
 
       g_free(origin);
       last_theme_change = time(NULL);
     }
 }
 
-/***************************************************************/
-/* find_icon code copy of Brian J. Tarricone's xfdesktop patch */
-/* i hope it will be included in a xfce4 lib                   */
-/***************************************************************/
-GdkPixbuf * find_icon (gchar const *ifile)
+/* Load an icon from the theme and resize it */
+GdkPixbuf* load_icon_from_theme(gchar* icon_name)
 {
-  gboolean found;
-  GdkPixbuf *miicon;
-  gint i, j;
-  gint w, h;
-  char const *ofn;
-  GdkPixbuf *pb;
-  gchar icon_path[PATH_MAX];
-#ifdef HAVE_GETENV
-  const char *kdedir = getenv("KDEDIR");
-#endif
+  GdkPixbuf *tmpicon;
+  GdkPixbuf *icon;
 
-  miicon = NULL;
-  if (ifile) {
-    found = FALSE;
-    ofn = (gchar const *)ifile;
+  tmpicon = gtk_icon_theme_load_icon (menueditor_app.icon_theme, icon_name, 24, 0, NULL);
+  icon = gdk_pixbuf_scale_simple(tmpicon, 24, 24, GDK_INTERP_BILINEAR);
+  g_object_unref(G_OBJECT(tmpicon));
 
-    if(*ofn=='/') {
-      g_strlcpy(icon_path, ofn, PATH_MAX);
-      if(g_file_test(icon_path, G_FILE_TEST_EXISTS))
-	found = TRUE;
-    } else {
-      for(i = 0 ; pix_paths[i] && !found; i++) {
-	if(strstr(pix_paths[i], "%s")) {
-	  if(!icon_theme[0])
-	    continue;
-	  g_snprintf(icon_path, PATH_MAX, pix_paths[i], icon_theme);
-	} else
-	  g_strlcpy(icon_path, pix_paths[i], PATH_MAX);
-	g_strlcat(icon_path, ofn, PATH_MAX);
-	if(g_strrstr(icon_path, ".") <= g_strrstr(icon_path, "/")) {
-	  int len = strlen(icon_path);
-	  for(j=0; pix_ext[j] && !found; j++) {
-	    icon_path[len] = 0;
-	    g_strlcat(icon_path, pix_ext[j], PATH_MAX);
-	    if(g_file_test(icon_path, G_FILE_TEST_EXISTS))
-	      found = TRUE;
-	  }
-	} else {
-	  if(g_file_test(icon_path, G_FILE_TEST_EXISTS))
-	    found = TRUE;
-	}
-      }
-#ifdef HAVE_GETENV
-      if(!found && kdedir && *kdedir=='/' && strcmp(kdedir, "/usr")) {
-	for(i=0; kdefmts[i] && !found; i++) {
-	  g_snprintf(icon_path, PATH_MAX, kdefmts[i], kdedir, ofn);
-	  if(g_strrstr(icon_path, ".") <= g_strrstr(icon_path, "/")) {
-	    int len = strlen(icon_path);
-	    for(j=0; pix_ext[j] && !found; j++) {
-	      icon_path[len] = 0;
-	      g_strlcat(icon_path, pix_ext[j], PATH_MAX);
-	      if(g_file_test(icon_path, G_FILE_TEST_EXISTS))
-		found = TRUE;
-	    }
-	  } else {
-	    if(g_file_test(icon_path, G_FILE_TEST_EXISTS))
-	      found = TRUE;
-	  }
-	}
-      }
-#endif
-    }
-    if (found) {
-      miicon = gdk_pixbuf_new_from_file (icon_path, NULL);
-      if (miicon) {
-	w = gdk_pixbuf_get_width (miicon);
-	h = gdk_pixbuf_get_height (miicon);
-	if (w != icon_size || h != icon_size)
-	  pb = gdk_pixbuf_scale_simple (miicon, icon_size, icon_size,
-					GDK_INTERP_BILINEAR);
-	else 
-	  pb = NULL;
-                
-	if (pb) {
-	  g_object_unref (G_OBJECT (miicon));
-	  miicon = pb;
-	}
-      }
-    }
-  }
-    
-  return miicon;
+  return icon;
 }
 
 /****************************************************/
@@ -376,7 +251,7 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			  POINTER_COLUMN, menu, -1);
       if(xmlGetProp(menu,"icon"))
 	/* Load the icon */
-	icon = find_icon(xmlGetProp(menu,"icon"));
+	icon = load_icon_from_theme(xmlGetProp(menu,"icon"));
 
       gtk_tree_store_set (menueditor_app.treestore, &c,
 			  ICON_COLUMN, icon, -1);
@@ -453,8 +328,7 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
       if(!xmlStrcmp(xmlGetProp(menu,"cmd"),(xmlChar*)"quit")){
 	GdkPixbuf *icon;
 
-	icon = find_icon("minipower");
-	//icon = gtk_icon_theme_load_icon (menueditor_app.icon_theme, "minipower", 12, 0, NULL);
+	icon = load_icon_from_theme ("minipower");
 	gtk_tree_store_set (menueditor_app.treestore, &c,
 			    ICON_COLUMN, icon, -1);
       }
@@ -1279,8 +1153,8 @@ int main (int argc, char *argv[])
   }
 
   /* Initialize icon theme */
-  /* menueditor_app.icon_theme = gtk_icon_theme_get_default(); */
-/*   gtk_icon_theme_prepend_search_path(menueditor_app.icon_theme, "/usr/share/xfce4/themes"); */
+  menueditor_app.icon_theme = gtk_icon_theme_get_default();
+  gtk_icon_theme_prepend_search_path(menueditor_app.icon_theme, "/usr/share/xfce4/themes");
 
   if(argc>1){
     if (g_file_test (argv[1], G_FILE_TEST_EXISTS))
@@ -1305,6 +1179,5 @@ int main (int argc, char *argv[])
 
   gtk_main();
 
-  g_free(icon_theme);
   return 0;
 }

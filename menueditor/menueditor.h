@@ -55,7 +55,7 @@
 #define INCLUDE_FORMAT "<span style='italic' color='dark green'>%s</span>"
 #define INCLUDE_PATH_FORMAT "<span style='italic' color='dark green'>%s</span>"
 
-/* definitions for find_icon and mcsclient */
+/* definitions for mcsclient */
 #ifndef PATH_MAX
 #define PATH_MAX 4096
 #endif
@@ -69,8 +69,8 @@ static guchar icon_size = 24;
 void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command);
 void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon);
 
-/* Find the icon */
-GdkPixbuf * find_icon (gchar const *ifile);
+/* Load an icon from the theme */
+GdkPixbuf* load_icon_from_theme(gchar* icon_name);
 
 enum {ICON_COLUMN, NAME_COLUMN, COMMAND_COLUMN, HIDDEN_COLUMN, POINTER_COLUMN};
 
