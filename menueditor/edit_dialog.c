@@ -490,8 +490,6 @@ void edit_selection(GtkTreeSelection *selection)
 	command = g_strdup ("");
 
 	xmlSetProp(node, "name", gtk_entry_get_text(GTK_ENTRY(name_entry)));
-	    
-	g_free(name);
       }else if(!xmlStrcmp(node->name,(xmlChar*)"builtin")){
 	name = g_strdup_printf(BUILTIN_FORMAT, gtk_entry_get_text(GTK_ENTRY(name_entry)));
 	command = g_strdup_printf(COMMAND_FORMAT, _("quit"));
