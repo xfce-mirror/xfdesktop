@@ -25,8 +25,6 @@
 #include <config.h>
 #endif
 
-#include <time.h>
-
 #include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <gmodule.h>
