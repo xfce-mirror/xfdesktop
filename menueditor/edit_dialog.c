@@ -417,11 +417,20 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
       GdkPixbuf *icon = NULL;
       gchar *name=NULL;
       gchar *command=NULL;
+      GValue val_icon = {0,};
 
       xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
       xmlSetProp(node,"cmd",gtk_entry_get_text(GTK_ENTRY(command_entry)));
 
-      /* TODO unref the icon */
+      /* unref the icon */
+      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, ICON_COLUMN, &val_icon);
+      icon = g_value_get_object(&val_icon);
+
+      if(icon){
+	g_object_unref(icon);
+	icon = NULL;
+      }
+
       if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
 	xmlAttrPtr icon_prop;
 
@@ -468,13 +477,22 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     }else if(!xmlStrcmp(node->name,(xmlChar*)"menu")){
       gchar *name = NULL;
       GdkPixbuf *icon = NULL;
+      GValue val_icon = {0,};
 
       name = g_strdup_printf(MENU_FORMAT,
 			     gtk_entry_get_text(GTK_ENTRY(name_entry)));
 
       xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
 
-      /* TODO unref the icon */
+      /* unref the icon */
+      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, ICON_COLUMN, &val_icon);
+      icon = g_value_get_object(&val_icon);
+
+      if(icon){
+	g_object_unref(icon);
+	icon = NULL;
+      }
+
       if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
 	xmlAttrPtr icon_prop;
 
@@ -493,13 +511,22 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     }else if(!xmlStrcmp(node->name,(xmlChar*)"builtin")){
       GdkPixbuf *icon = NULL;
       gchar *name=NULL;
-      
+      GValue val_icon = {0,};
+
       name = g_strdup_printf(BUILTIN_FORMAT,
 			     gtk_entry_get_text(GTK_ENTRY(name_entry)));
 
       xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
 
-      /* TODO unref the icon */
+      /* unref the icon */
+      gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, ICON_COLUMN, &val_icon);
+      icon = g_value_get_object(&val_icon);
+
+      if(icon){
+	g_object_unref(icon);
+	icon = NULL;
+      }
+
       if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
 	xmlAttrPtr icon_prop;
 
@@ -520,13 +547,22 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     }else if(!xmlStrcmp(node->name,(xmlChar*)"title")){
       GdkPixbuf *icon = NULL;
       gchar *name = NULL;
-      
+      GValue val_icon = {0,};
+
       name = g_strdup_printf(TITLE_FORMAT,
 			     gtk_entry_get_text(GTK_ENTRY(name_entry)));
 
       xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
       
-      /* TODO unref the icon */
+      /* unref the icon */
+            gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, ICON_COLUMN, &val_icon);
+      icon = g_value_get_object(&val_icon);
+
+      if(icon){
+	g_object_unref(icon);
+	icon = NULL;
+      }
+
       if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
 	xmlAttrPtr icon_prop;
 
