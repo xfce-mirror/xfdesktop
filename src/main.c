@@ -158,13 +158,20 @@ send_client_message(Window xid, const gchar *msg)
 	gtk_widget_destroy(win);
 }
 
+static gboolean 
+reload_idle_cb(gpointer data)
+{
+	settings_reload_all();
+	menu_reload();
+	return FALSE;
+}
+
 gboolean
 client_message_received(GtkWidget *w, GdkEventClient *evt, gpointer user_data)
 {
 	if(evt->data_format == 8) {
 		if(!strcmp(RELOAD_MESSAGE, evt->data.b)) {
-			settings_reload_all();
-			menu_reload();
+			g_idle_add ((GSourceFunc)reload_idle_cb, NULL);
 			return TRUE;
 		} else if(!strcmp(MENU_MESSAGE, evt->data.b)) {
 			popup_desktop_menu(gtk_widget_get_screen(w), 0, GDK_CURRENT_TIME);
@@ -203,13 +210,13 @@ check_is_running(Window *xid)
 	return FALSE;
 }
 
-void
+
+static void
 sighandler_cb(int sig)
 {
 	switch(sig) {
 		case SIGUSR1:
-			settings_reload_all();
-			menu_reload();
+			g_idle_add ((GSourceFunc)reload_idle_cb, NULL);
 			break;
 		
 		default:
