@@ -298,10 +298,11 @@ create_windowlist_menu (GList **pix_unref_needed, XfceDesktop *xfdesktop)
  * -----------------------
 */
 void
-popup_menu (int button, guint32 time)
+popup_menu (int button, guint32 time, XfceDesktop *xfdesktop)
 {
 #ifdef USE_DESKTOP_MENU
 	GtkWidget *menu_widget;
+	GdkScreen *gscreen;
 	
 	if(!module_desktop_menu)
 		return;
@@ -312,7 +313,10 @@ popup_menu (int button, guint32 time)
 		xfce_desktop_menu_force_regen(desktop_menu);
 
 	if(desktop_menu) {
+		gscreen = gdk_display_get_screen(gdk_display_get_default(),
+				xfdesktop->xscreen);
 		menu_widget = xfce_desktop_menu_get_widget(desktop_menu);
+		gtk_menu_set_screen(GTK_MENU(menu_widget), gscreen);
 		gtk_menu_popup (GTK_MENU (menu_widget), NULL, NULL, NULL, NULL,
 				button, time);
 	}
@@ -324,6 +328,7 @@ popup_windowlist (int button, guint32 time, XfceDesktop *xfdesktop)
 {
     static GtkWidget *menu = NULL;
 	static GList *pix_unref_needed = NULL, *l;
+	GdkScreen *gscreen;
 
     if (menu)
     {
@@ -339,6 +344,8 @@ popup_windowlist (int button, guint32 time, XfceDesktop *xfdesktop)
 
     windowlist = menu = create_windowlist_menu (&pix_unref_needed, xfdesktop);
 
+	gscreen = gdk_display_get_screen(gdk_display_get_default(), xfdesktop->xscreen);
+	gtk_menu_set_screen(GTK_MENU(menu), gscreen);
     gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, button, time);
 }
 
@@ -361,7 +368,7 @@ button_press (GtkWidget * w, GdkEventButton * bevent, gpointer user_data)
 #ifdef USE_DESKTOP_MENU
     else if (button == 3 || (button == 1 && state & GDK_SHIFT_MASK))
     {
-	popup_menu (button, bevent->time);
+	popup_menu (button, bevent->time, xfdesktop);
 	handled = TRUE;
     }
 #endif

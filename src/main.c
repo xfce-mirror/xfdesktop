@@ -139,7 +139,7 @@ client_message_received(GtkWidget * widget, GdkEventClient * event,
 	}
 	else if (strcmp (MENU_MESSAGE, event->data.b) == 0)
 	{
-	    popup_menu (0, GDK_CURRENT_TIME);
+	    popup_menu (0, GDK_CURRENT_TIME, xfdesktop);
 	    return TRUE;
 	}
 	else if (strcmp (WINDOWLIST_MESSAGE, event->data.b) == 0)
