@@ -522,6 +522,7 @@ menu_cleanup_global()
 #endif
 }
 
+#ifdef USE_DESKTOP_MENU
 static gboolean
 _create_dm_idled(gpointer user_data)
 {
@@ -540,6 +541,7 @@ _create_dm_idled(gpointer user_data)
 	
 	return FALSE;
 }
+#endif
 
 void
 menu_settings_changed(const char *channel_name, McsClient *client,
