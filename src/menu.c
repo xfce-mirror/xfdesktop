@@ -719,22 +719,24 @@ static gboolean button_scroll_event (GtkWidget *widget, GdkEventScroll *event)
             if (active > 0)
             {
                 ws = netk_screen_get_workspace(netk_screen, active - 1);
-                if (ws)
-                {
-                    netk_workspace_activate(ws);
-                }
             }
+            else
+            {
+                ws = netk_screen_get_workspace(netk_screen, n - 1);
+            }
+            netk_workspace_activate(ws);
             break;
         case GDK_SCROLL_DOWN:
         case GDK_SCROLL_RIGHT:
             if (active < n - 1)
             {
                 ws = netk_screen_get_workspace(netk_screen, active + 1);
-                if (ws)
-                {
-                    netk_workspace_activate(ws);
-                }
             }
+            else
+            {
+                ws = netk_screen_get_workspace(netk_screen, 0);
+            }
+            netk_workspace_activate(ws);
             break;
         default:
             break;
