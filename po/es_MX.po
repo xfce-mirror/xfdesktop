@@ -1,0 +1,200 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-06-01 18:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Jaime Buffery <nestu@onlylinux.homelinux.net>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: settings/backdrop-mgr.c:174
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"Por favor, escoja otra localizacin o presione cancelar en el dilogo para "
+"descartar sus cambios"
+
+#: settings/backdrop-mgr.c:402
+msgid "Select image file"
+msgstr "Seleccione archivo de imagen"
+
+#: settings/backdrop-mgr.c:508
+msgid "Choose backdrop list filename"
+msgstr "Seleccione archivo con lista de fondos"
+
+#: settings/backdrop-mgr.c:535 settings/backdrop_settings.c:586
+msgid "File:"
+msgstr "Archivo:"
+
+#: settings/backdrop-mgr.c:574
+msgid "New.list"
+msgstr "Nuevo.list"
+
+#: settings/backdrop-mgr.c:578
+msgid "Backdrop List"
+msgstr "Lista de Fondos"
+
+#: settings/backdrop-mgr.c:612
+msgid "Image files"
+msgstr "Archivos de Imagen"
+
+#: settings/backdrop-mgr.c:626
+msgid "List file"
+msgstr "Archivo de Lista"
+
+#: settings/backdrop-mgr.c:646
+msgid "Create backdrop list"
+msgstr "Crear lista de fondos"
+
+#: settings/backdrop-mgr.c:653
+msgid "Edit backdrop list"
+msgstr "Editar lista de fondos"
+
+#: settings/backdrop_settings.c:143
+msgid "Desktop: backdrop"
+msgstr "Escritorio: fondos"
+
+#: settings/backdrop_settings.c:384
+msgid "Select background color"
+msgstr "Seleccione color de fondo"
+
+#: settings/backdrop_settings.c:430
+msgid "Background color:"
+msgstr "Color de fondo:"
+
+#: settings/backdrop_settings.c:460
+msgid "Use color only:"
+msgstr "Slo usar color:"
+
+#: settings/backdrop_settings.c:643
+msgid "Select background image or list file"
+msgstr "Seleccione imagen de fondo de escritorio o archivo de lista de fondos"
+
+#: settings/backdrop_settings.c:718
+msgid "_Browse..."
+msgstr "_Navegar..."
+
+#: settings/backdrop_settings.c:722
+msgid "New list"
+msgstr "Nueva Lista"
+
+#: settings/backdrop_settings.c:726
+msgid "Edit list"
+msgstr "Editar lista de fondos"
+
+#: settings/backdrop_settings.c:778
+msgid "Style:"
+msgstr "Estilo"
+
+#: settings/backdrop_settings.c:784
+msgid "_Tiled"
+msgstr "Cua_driculado"
+
+#: settings/backdrop_settings.c:791
+msgid "_Scaled"
+msgstr "E_scalado"
+
+#: settings/backdrop_settings.c:796
+msgid "_Centered"
+msgstr "_Centrado"
+
+#: settings/backdrop_settings.c:801
+msgid "_Automatic"
+msgstr "_Automático"
+
+#. the dialog
+#: settings/backdrop_settings.c:852
+msgid "Background"
+msgstr "Fondo de Escritorio"
+
+#. header
+#: settings/backdrop_settings.c:869
+msgid "Background Settings"
+msgstr "Configuracin del Fondo de Escritorio"
+
+#. color
+#: settings/backdrop_settings.c:875
+msgid "Color"
+msgstr "Color"
+
+#. image vbox
+#: settings/backdrop_settings.c:888
+msgid "Image"
+msgstr "Imagen"
+
+#: settings/workspaces_settings.c:79
+msgid "Desktop: workspaces"
+msgstr "Escritorio: escritorios virtuales"
+
+#: settings/workspaces_settings.c:323
+msgid "Change name"
+msgstr "Cambiar nombre"
+
+#: settings/workspaces_settings.c:334
+#, c-format
+msgid "Workspace %d"
+msgstr "Escritorio Virtual %d"
+
+#: settings/workspaces_settings.c:344
+msgid "Name:"
+msgstr "Nombre:"
+
+#: settings/workspaces_settings.c:455
+msgid "Click on a workspace name to edit it"
+msgstr "Pinche en el nombre de escritorio virtual para editarlo"
+
+#: settings/workspaces_settings.c:486
+msgid "Number of workspaces:"
+msgstr "Número de escritorios virtuales:"
+
+#. Number of workspaces
+#: settings/workspaces_settings.c:522 settings/workspaces_settings.c:553
+msgid "Workspaces"
+msgstr "Escritorios Virtuales"
+
+#: settings/workspaces_settings.c:546
+msgid "Workspace Settings"
+msgstr "Configuración de los Escritorios Virtuales"
+
+#. Workspace names
+#: settings/workspaces_settings.c:566
+msgid "Workspace names"
+msgstr "Nombres de los Escritorios Virtuales"
+
+#: src/backdrop.c:423
+#, c-format
+msgid "xfdesktop error: loading backdrop image: %s\n"
+msgstr "error en xfdesktop: cargando archivo de fondo: %s\n"
+
+#: src/main.c:227
+msgid "Desktop"
+msgstr "Escritorio"
+
+#: src/menu.c:696
+msgid "Add workspace"
+msgstr "Añadir escritorio virtual"
+
+#: src/menu.c:703
+msgid "Delete workspace"
+msgstr "Quitar escritorio virtual"
+
+#: src/settings.c:186
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr ""
+"xfdesktop: no se pudo conectar con el administrador de sesiones! Por favor, "
+"compruebe su instalación"
