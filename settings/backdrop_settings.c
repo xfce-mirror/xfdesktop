@@ -259,8 +259,6 @@ static gboolean backdrop_write_options(McsPlugin * mcs_plugin)
 /* something changed */
 static void update_path(BackdropDialog *bd)
 {
-    GSList *li;
-    
     if (is_backdrop_list(backdrop_path))
     {
         gtk_widget_set_sensitive(bd->edit_list_button, TRUE);
@@ -616,6 +614,7 @@ browse_cb (GtkWidget * b, BackdropDialog * bd)
 {
     static GtkFileSelection *fs = NULL;
     char *title;
+    gpointer p;
     
     if (fs)
         gtk_window_present(GTK_WINDOW(fs));
@@ -645,7 +644,9 @@ browse_cb (GtkWidget * b, BackdropDialog * bd)
 
     g_signal_connect(fs, "delete-event", G_CALLBACK (gtk_widget_destroy), fs);
 
-    g_object_add_weak_pointer(G_OBJECT(fs), (gpointer *)&fs);
+    p = (gpointer)fs;
+    
+    g_object_add_weak_pointer(G_OBJECT(fs), &p);
 
     gtk_widget_show(GTK_WIDGET(fs));
 }

@@ -499,6 +499,7 @@ static void list_add_cb(GtkWidget *b, ListDialog *ld)
 {
     static GtkFileSelection *fs = NULL;
     char *title;
+    gpointer p;
     
     if (fs)
 	gtk_window_present(GTK_WINDOW(fs));
@@ -519,7 +520,8 @@ static void list_add_cb(GtkWidget *b, ListDialog *ld)
 
     g_signal_connect(fs, "delete-event", G_CALLBACK (gtk_widget_destroy), fs);
 
-    g_object_add_weak_pointer(G_OBJECT(fs), (gpointer *)&fs);
+    p = (gpointer)fs;
+    g_object_add_weak_pointer(G_OBJECT(fs), &p);
 
     gtk_widget_show(GTK_WIDGET(fs));
 }
@@ -605,6 +607,7 @@ static void filename_browse_cb (GtkWidget * b, ListDialog * ld)
 {
     static GtkFileSelection *fs = NULL;
     char *title;
+    gpointer p;
     
     if (fs)
 	gtk_window_present(GTK_WINDOW(fs));
@@ -623,14 +626,15 @@ static void filename_browse_cb (GtkWidget * b, ListDialog * ld)
 
     g_signal_connect(fs, "delete-event", G_CALLBACK (gtk_widget_destroy), fs);
 
-    g_object_add_weak_pointer(G_OBJECT(fs), (gpointer *)&fs);
+    p = (gpointer)fs;
+    g_object_add_weak_pointer(G_OBJECT(fs), &p);
 
     gtk_widget_show(GTK_WIDGET(fs));
 }
 
 static void add_file_entry(GtkWidget *vbox, ListDialog *ld)
 {
-    GtkWidget *hbox, *label, *button, *image;
+    GtkWidget *hbox, *button, *image;
 
     hbox = gtk_hbox_new(FALSE, BORDER);
     gtk_widget_show(hbox);
