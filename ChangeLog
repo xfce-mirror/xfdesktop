@@ -1,5 +1,22 @@
 2003-02-04  botsie
 
+	* Makefile.am, configure.ac: Fixed a couple of bugs related to
+	adding dependency to libxml2 and adding a new data file: menu.xml
+
+2003-02-04  botsie
+
+	* backdrops/Makefile.in, settings/Makefile.in, src/Makefile.in:
+	Oops ... forgot to add dependency to libxml2. Required by
+	configurable menu. ;-)
+	
+	Updated AUTHORS.
+
+2003-02-04  botsie
+
+	* ChangeLog: Updated ChangeLog
+
+2003-02-04  botsie
+
 	* src/menu.c: XML based configurable menu.
 
 2003-02-04  botsie
@@ -83,11 +100,10 @@
 2003-01-25  xfce
 
 	* Makefile.am, Makefile.in, configure, configure.ac,
-	xfdesktop.spec.in, settings/backdrop_settings.c,
-	backdrops/Makefile.am, backdrops/Makefile.in,
-	backdrops/xfce-in-the-moon.png, backdrops/xfce4logo.png: Modify
-	default settings and add two background images so that defaults
-	look like this :
+	xfdesktop.spec.in, backdrops/Makefile.am, backdrops/Makefile.in,
+	backdrops/xfce-in-the-moon.png, backdrops/xfce4logo.png,
+	settings/backdrop_settings.c: Modify default settings and add two
+	background images so that defaults look like this :
 	
 	http://www.xfce.org/archive/xfce4default.png
 
