@@ -66,7 +66,8 @@
 #include "settings_common.h"
 #include "menu_settings.h"
 
-#define RCFILE "backdrop.xml"
+#define OLD_RCFILE  "backdrop.xml"
+#define RCFILE      "desktop.xml"
 #define PLUGIN_NAME "backdrop"
 
 /* there can be only one */
@@ -77,9 +78,55 @@ static void backdrop_create_channel (McsPlugin * mcs_plugin);
 static gboolean backdrop_write_options (McsPlugin * mcs_plugin);
 static void run_dialog (McsPlugin * mcs_plugin);
 
+static void
+xdg_migrate_config(const gchar *old_filename, const gchar *new_filename)
+{
+	gchar *old_file, *new_file, new_loc[PATH_MAX];
+	
+	g_snprintf(new_loc, PATH_MAX, "xfce4/mcs_settings/%s", new_filename);
+	
+	new_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, new_loc, FALSE);
+	/* if the new file _does_ exist, assume we've already migrated */
+	if(!g_file_test(new_file, G_FILE_TEST_IS_REGULAR)) {
+		old_file = xfce_get_userfile("settings", old_filename, NULL);
+		if(g_file_test(old_file, G_FILE_TEST_IS_REGULAR)) {
+			/* we have to run it again to make sure the directory exists */
+			g_free(new_file);
+			new_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
+					new_loc, TRUE);
+			
+			/* try atomic move first, if not, resort to read->write->delete */
+			if(!link(old_file, new_file))
+				unlink(old_file);
+			else {
+				gchar *contents = NULL;
+				gsize len = 0;
+				if(g_file_get_contents(old_file, &contents, &len, NULL)) {
+					FILE *fp = fopen(new_file, "w");
+					if(fp) {
+						if(fwrite(contents, len, 1, fp) == len) {
+							fclose(fp);
+							unlink(old_file);
+						} else {
+							fclose(fp);
+							g_critical("backdrop_settings.c: Unable to migrate %s to new location (error writing to file)", old_filename);
+						}
+					} else
+						g_critical("backdrop_settings.c: Unable to migrate %s to new location (error opening target file for writing)", old_filename);
+				} else
+					g_critical("backdrop_settings.c: Unable to migrate %s to new location (error reading old file)", old_filename);
+			}
+		}
+		g_free(old_file);
+	}
+	g_free(new_file);	
+}
+
 McsPluginInitResult
 mcs_plugin_init (McsPlugin * mcs_plugin)
 {
+	xdg_migrate_config(OLD_RCFILE, RCFILE);
+	
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
     mcs_plugin->plugin_name = g_strdup (PLUGIN_NAME);
@@ -101,7 +148,8 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 	gint i, j, nscreens, nmonitors;
 	gchar setting_name[128];
 
-    rcfile = xfce_get_userfile ("settings", RCFILE, NULL);
+	rcfile = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
+			"xfce4/mcs_settings/" RCFILE, FALSE);
     mcs_manager_add_channel_from_file (mcs_plugin->manager, BACKDROP_CHANNEL,
 				       rcfile);
     g_free (rcfile);
@@ -242,8 +290,9 @@ backdrop_write_options (McsPlugin * mcs_plugin)
 {
     gchar *rcfile;
     gboolean result;
-
-    rcfile = xfce_get_userfile ("settings", RCFILE, NULL);
+	
+	rcfile = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
+			"xfce4/mcs_settings/" RCFILE, TRUE);
     result = mcs_manager_save_channel_to_file (mcs_plugin->manager,
 					       BACKDROP_CHANNEL, rcfile);
     g_free (rcfile);
