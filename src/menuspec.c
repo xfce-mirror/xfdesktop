@@ -310,6 +310,8 @@ menuspec_parse_categories(const gchar *filename)
 	void *maddr;
 #endif
 
+	maddr = NULL;
+	
 	if(stat(filename, &st) < 0)
 		return FALSE;
 	
