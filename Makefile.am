@@ -59,25 +59,37 @@ conf_DATA = 								\
 	menu.xml.zh_CN							\
 	menu.xml.zh_TW
 
-EXTRA_DIST = $(conf_DATA) xfdesktop.spec TODO xfdesktop.1
-
 manpagedir = $(mandir)/man1
 manpage_DATA = xfdesktop.1
 
+EXTRA_DIST = \
+	TODO \
+	xfdesktop.spec \
+	intltool-extract.in \
+	intltool-merge.in \
+	intltool-update.in \
+	$(conf_DATA) \
+	$(manpage_DATA)
+
+DISTCLEANFILES = \
+	intltool-extract \
+	intltool-merge \
+	intltool-update
+
 distclean-local:
-	-rm -rf xfdesktop.spec *.cache *~
+	-rm -rf *.cache *~
 
 rpm: dist
 	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
 	@rm -f $(PACKAGE)-$(VERSION).tar.gz
 
 html: Makefile
-	make -C doc html
-
-ACLOCAL_AMFLAGS = -I m4
+	(cd docs && $(MAKE) $(AM_MAKEFLAGS) html)
 
 dist-bz2: dist
-	zcat $(PACKAGE)-$(VERSION).tar.gz | bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
+	zcat $(PACKAGE)-$(VERSION).tar.gz | \
+	    bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
 
 distcheck-bz2: distcheck
-	zcat $(PACKAGE)-$(VERSION).tar.gz | bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
+	zcat $(PACKAGE)-$(VERSION).tar.gz | \
+	    bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2

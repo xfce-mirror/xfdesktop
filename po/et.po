@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
+"POT-Creation-Date: 2005-01-28 22:00-0800\n"
 "PO-Revision-Date: 2004-12-09 01:41+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: \n"
@@ -23,8 +23,7 @@ msgstr "Xfce4 Menüü redaktor"
 msgid "Core developer"
 msgstr "Tuumarendaja"
 
-#: menueditor/about_dialog.c:44
-#: menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
 #: menueditor/about_dialog.c:46
 msgid "Contributor"
 msgstr "Toetaja"
@@ -33,395 +32,291 @@ msgstr "Toetaja"
 msgid "Icon designer"
 msgstr "Ikoonide disainer"
 
-#: menueditor/add_dialog.c:138
-#: menueditor/add_dialog.c:150
+#: menueditor/add_dialog.c:159 menueditor/add_dialog.c:169
 msgid "Add menu entry"
 msgstr "Lisa menüü sissekanne"
 
 #. Type
-#: menueditor/add_dialog.c:156
-#: menueditor/add_menu_dialog.c:98
-#: menueditor/edit_dialog.c:149
+#: menueditor/add_dialog.c:173 menueditor/add_menu_dialog.c:110
 msgid "Type:"
 msgstr "Tüüp:"
 
-#: menueditor/add_dialog.c:159
+#: menueditor/add_dialog.c:176
 msgid "Launcher"
 msgstr "Käivitaja"
 
-#: menueditor/add_dialog.c:164
+#: menueditor/add_dialog.c:180
 msgid "Submenu"
 msgstr "Alamenüü"
 
-#: menueditor/add_dialog.c:169
+#: menueditor/add_dialog.c:184
 msgid "Separator"
 msgstr "Eraldaja"
 
-#: menueditor/add_dialog.c:174
+#: menueditor/add_dialog.c:188
 msgid "Title"
 msgstr "Pealkiri"
 
-#: menueditor/add_dialog.c:179
+#: menueditor/add_dialog.c:192
 msgid "Quit"
 msgstr "Välja"
 
 #. Name
-#: menueditor/add_dialog.c:194
-#: menueditor/edit_dialog.c:263
-#: menueditor/edit_dialog.c:314
-#: menueditor/edit_dialog.c:353
+#: menueditor/add_dialog.c:206 menueditor/edit_dialog.c:158
+#: menueditor/edit_dialog.c:218
 msgid "Name:"
 msgstr "Nimi:"
 
-#: menueditor/add_dialog.c:204
-#: menueditor/edit_dialog.c:264
+#: menueditor/add_dialog.c:214 menueditor/edit_dialog.c:163
 msgid "Command:"
 msgstr "Käsklus:"
 
-#: menueditor/add_dialog.c:220
-#: menueditor/edit_dialog.c:255
-#: menueditor/edit_dialog.c:319
-#: menueditor/edit_dialog.c:358
-#: menueditor/edit_dialog.c:396
+#: menueditor/add_dialog.c:226 menueditor/edit_dialog.c:150
+#: menueditor/edit_dialog.c:210
 msgid "Icon:"
 msgstr "Ikoon:"
 
 #. Start Notify check button
-#: menueditor/add_dialog.c:236
-#: menueditor/edit_dialog.c:275
+#. Startup notification
+#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:171
 msgid "Use startup _notification"
 msgstr "Kasuta stardi _teavitust"
 
 #. Run in terminal check button
-#: menueditor/add_dialog.c:240
-#: menueditor/edit_dialog.c:276
+#. Run in terminal
+#: menueditor/add_dialog.c:241 menueditor/edit_dialog.c:174
 msgid "Run in _terminal"
 msgstr "Käivita t_erminalis"
 
-#: menueditor/add_dialog.c:285
-#: menueditor/edit_dialog.c:468
+#: menueditor/add_dialog.c:272
 msgid "The command doesn't exist !"
 msgstr "Käsku ei ole olemas !"
 
-#: menueditor/add_dialog.c:291
+#: menueditor/add_dialog.c:278
 msgid "All fields must be filled to add an item."
 msgstr "Kõik väljad peavad olema täidetud."
 
-#: menueditor/add_dialog.c:300
+#: menueditor/add_dialog.c:287
 msgid "The 'Name' field is required."
 msgstr "Nõutud on nime välja täitmine."
 
-#: menueditor/add_dialog.c:356
-#: menueditor/dnd.c:153
-#: menueditor/menueditor.c:361
-#: menueditor/move.c:87
-#: menueditor/move.c:225
+#: menueditor/add_dialog.c:331
 msgid "--- separator ---"
 msgstr "--- eraldaja ---"
 
-#: menueditor/add_dialog.c:381
-#: menueditor/edit_dialog.c:505
+#: menueditor/add_dialog.c:357
 msgid "quit"
 msgstr "välja"
 
-#: menueditor/add_menu_dialog.c:81
-#: menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:813
+#: menueditor/add_menu_dialog.c:97 menueditor/add_menu_dialog.c:103
+#: menueditor/menueditor.c:831
 msgid "Add an external menu"
 msgstr "Lisa väline menüü"
 
-#: menueditor/add_menu_dialog.c:103
-#: menueditor/edit_dialog.c:152
+#: menueditor/add_menu_dialog.c:115
 msgid "File"
 msgstr "Fail"
 
-#: menueditor/add_menu_dialog.c:108
-#: menueditor/edit_dialog.c:157
+#: menueditor/add_menu_dialog.c:119
 msgid "System"
 msgstr "Süsteem"
 
-#: menueditor/add_menu_dialog.c:123
-#: menueditor/edit_dialog.c:172
+#: menueditor/add_menu_dialog.c:133
 msgid "Source:"
 msgstr "Asukoht:"
 
 #. Style
-#: menueditor/add_menu_dialog.c:136
-#: menueditor/edit_dialog.c:185
+#: menueditor/add_menu_dialog.c:145
 msgid "Style:"
 msgstr "Stiil:"
 
-#: menueditor/add_menu_dialog.c:139
-#: menueditor/edit_dialog.c:188
+#: menueditor/add_menu_dialog.c:148
 msgid "Simple"
 msgstr "Lihtne"
 
-#: menueditor/add_menu_dialog.c:142
-#: menueditor/edit_dialog.c:191
+#: menueditor/add_menu_dialog.c:150
 msgid "Multilevel"
 msgstr "Mitmetasandiline"
 
 #. Unique
-#: menueditor/add_menu_dialog.c:155
-#: menueditor/edit_dialog.c:204
+#: menueditor/add_menu_dialog.c:162
 msgid "_Unique entries only"
 msgstr "_Ainult ainulaadsed sissekanded"
 
-#: menueditor/add_menu_dialog.c:208
+#: menueditor/add_menu_dialog.c:198
 msgid "The 'Source' field is required."
 msgstr "Nõutud on lähtekoha välja täitmine."
 
-#: menueditor/add_menu_dialog.c:218
-#: menueditor/add_menu_dialog.c:234
-#: menueditor/dnd.c:156
-#: menueditor/edit_dialog.c:521
-#: menueditor/edit_dialog.c:534
-#: menueditor/menueditor.c:400
-#: menueditor/move.c:111
-#: menueditor/move.c:249
+#: menueditor/add_menu_dialog.c:202 menueditor/add_menu_dialog.c:212
 msgid "--- include ---"
 msgstr "--- lisa ---"
 
-#: menueditor/add_menu_dialog.c:235
-#: menueditor/dnd.c:161
-#: menueditor/edit_dialog.c:535
-#: menueditor/menueditor.c:403
-#: menueditor/move.c:114
-#: menueditor/move.c:252
+#: menueditor/add_menu_dialog.c:213
 msgid "system"
 msgstr "süsteem"
 
 #. Create dialog for editing
-#: menueditor/edit_dialog.c:103
-#: menueditor/edit_dialog.c:113
+#: menueditor/edit_dialog.c:127 menueditor/edit_dialog.c:134
 msgid "Edit menu entry"
 msgstr "Muuda menüü sissekanned"
 
-#: menueditor/edit_dialog.c:131
+#: menueditor/edit_dialog.c:139
 msgid "Separators cannot be edited"
 msgstr "Eraldajaid ei saa muuta."
 
-#. Name
-#: menueditor/edit_dialog.c:403
-#: menueditor/new_dialog.c:100
-msgid "Title:"
-msgstr "Pealkiri:"
-
-#: menueditor/menueditor.c:153
-msgid "Select command"
-msgstr "Vali käsklus"
-
-#: menueditor/menueditor.c:217
-msgid "Select icon"
-msgstr "Vali ikoon"
-
-#: menueditor/menueditor.c:222
-#: panel-plugin/desktop-menu-plugin.c:390
-#: settings/backdrop-mgr.c:414
-#: settings/backdrop-mgr.c:515
-#: settings/backdrop_settings.c:533
-msgid "All Files"
-msgstr "Kõik failid"
-
-#: menueditor/menueditor.c:226
-#: panel-plugin/desktop-menu-plugin.c:396
-#: settings/backdrop-mgr.c:418
-#: settings/backdrop_settings.c:537
-msgid "Image Files"
-msgstr "Pildi failid"
-
-#: menueditor/menueditor.c:282
-#: menueditor/menueditor.c:685
-msgid "Do you want to save before closing the menu ?"
-msgstr "Kas sa soovid salvestada enne menüü sulgemist ?"
-
-#: menueditor/menueditor.c:284
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Sa oled menüüd muutnud, kas sa soovid muudatused enne väljumist salvestada ?"
-
-#: menueditor/menueditor.c:286
-msgid "Forget modifications"
-msgstr "Unusta muudatused"
-
-#: menueditor/menueditor.c:472
-#: menueditor/menueditor.c:531
-#: menueditor/menueditor.c:683
-msgid "Question"
-msgstr "Küsimus"
-
-#: menueditor/menueditor.c:474
-msgid "Do you want to save before opening the default menu ?"
-msgstr "Kas sa soovid salvestada enne vaikemenüü avamist ?"
-
-#: menueditor/menueditor.c:476
-#: menueditor/menueditor.c:535
-#: menueditor/menueditor.c:687
-msgid "Ignore modifications"
-msgstr "Ignoreeri muudatusi"
-
-#: menueditor/menueditor.c:533
-msgid "Do you want to save before opening an other menu ?"
-msgstr "Kas sa soovid salvestada enne teise menüü avamist ?"
-
-#: menueditor/menueditor.c:546
-msgid "Open menu file"
-msgstr "Ava menüü fail"
-
-#: menueditor/menueditor.c:581
-#: menueditor/menueditor.c:592
-#, c-format
-msgid ""
-"Cannot write in %s : \n"
-"%s"
-msgstr ""
-"Ei suuda kirjutada %s-i:\n"
-"%s"
-
-#: menueditor/menueditor.c:626
-msgid "Save as..."
-msgstr "Salvesta kui ..."
-
-#: menueditor/menueditor.c:807
-msgid "Edit"
-msgstr "Muuda"
-
-#. File menu
-#: menueditor/menueditor.c:1006
-msgid "_File"
-msgstr "_Fail"
-
-#: menueditor/menueditor.c:1015
-msgid "Open default menu"
-msgstr "Ava vaikimisi menüü"
-
-#. Edit menu
-#: menueditor/menueditor.c:1029
-msgid "_Edit"
-msgstr "_Muuda"
-
-#: menueditor/menueditor.c:1035
-msgid "Add an external menu..."
-msgstr "Lisa väline menüü ..."
-
-#. Help menu
-#: menueditor/menueditor.c:1047
-msgid "_Help"
-msgstr "_Abi"
-
-#: menueditor/menueditor.c:1052
-msgid "_About..."
-msgstr "_Sellest ..."
-
-#: menueditor/menueditor.c:1064
-msgid "Create a new Xfce4 menu file"
-msgstr "Tekita uus Xfce4 menüü fail"
-
-#: menueditor/menueditor.c:1070
-msgid "Open an Xfce4 menu file"
-msgstr "Ava Xfce4 menüü fail"
-
-#: menueditor/menueditor.c:1076
-msgid "Save current menu"
-msgstr "Salvesta avatud menüü"
-
-#: menueditor/menueditor.c:1081
-msgid "Close current menu"
-msgstr "Sulge avatud menüü"
-
-#: menueditor/menueditor.c:1087
-msgid "Add an entry to the menu"
-msgstr "Lisa menüüsse sissekanne"
-
-#: menueditor/menueditor.c:1093
-msgid "Delete the current entry"
-msgstr "Kustuta valitud sissekanne"
-
-#: menueditor/menueditor.c:1099
-msgid "Move the current entry up"
-msgstr "Liiguta valitud sissekanne ülesse"
-
-#: menueditor/menueditor.c:1105
-msgid "Move the current entry down"
-msgstr "Liiguta valitud sissekanne alla"
-
-#: menueditor/menueditor.c:1112
-msgid "Collapse the tree"
-msgstr "Sulge puu"
-
-#: menueditor/menueditor.c:1117
-msgid "Expand the tree"
-msgstr "Laienda puu"
-
-#: menueditor/menueditor.c:1146
-msgid "Name"
-msgstr "Nimi"
-
-#: menueditor/menueditor.c:1149
-msgid "Command"
-msgstr "Käsklus"
-
-#: menueditor/menueditor.c:1150
-msgid "Hidden"
-msgstr "Varjatud"
-
-#: menueditor/menueditor.c:1151
-msgid "Pointer"
-msgstr "Viit"
-
-#: menueditor/menueditor.c:1253
-msgid "Corrupted file or incorrect file format !"
-msgstr "Fail on rikutud või vale formaadiga!"
-
-#: menueditor/menueditor.c:1266
-msgid "No root element in file !"
-msgstr "Juurelement on failis puudu !"
-
-#: menueditor/menueditor.c:1277
-msgid "Bad datafile format !"
-msgstr "Vigane andmefaili formaat !"
-
-#: menueditor/menueditor.c:1380
+#: menueditor/menueditor.c:81
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "Faili %s ei leidu !"
 
-#: menueditor/move.c:370
-msgid "Do you want to move the item into the parent menu?"
-msgstr "Kas sa soovid seda asja nihutada vanem-menüüsse?"
+#: menueditor/menueditor.c:121 menueditor/menueditor.c:532
+msgid "Do you want to save before closing the menu ?"
+msgstr "Kas sa soovid salvestada enne menüü sulgemist ?"
 
-#: menueditor/move.c:469
-msgid "Do you want to move the item into the submenu?"
-msgstr "Kas sa soovid seda asja alam-menüüsse?"
+#: menueditor/menueditor.c:123
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr ""
+"Sa oled menüüd muutnud, kas sa soovid muudatused enne väljumist salvestada ?"
 
-#: menueditor/new_dialog.c:60
+#: menueditor/menueditor.c:125
+msgid "Forget modifications"
+msgstr "Unusta muudatused"
+
+#: menueditor/menueditor.c:310
 msgid "Are you sure you want to close the current menu?"
 msgstr "Oled sa kindel, et soovid selle menüü sulgeda?"
 
-#: menueditor/new_dialog.c:75
+#: menueditor/menueditor.c:325
 msgid "Do you want to save before closing the file?"
 msgstr "Kas sa soovid salvestada enne faili sulgemist?"
 
-#. get the filename and name for the new menu
-#: menueditor/new_dialog.c:85
-#: menueditor/new_dialog.c:94
-msgid "New menu"
-msgstr "Uus menüü"
+#: menueditor/menueditor.c:334
+msgid "Select command"
+msgstr "Vali käsklus"
 
-#. Filename
-#: menueditor/new_dialog.c:107
-msgid "Filename:"
-msgstr "Failinimi:"
+#: menueditor/menueditor.c:366 menueditor/menueditor.c:423
+#: menueditor/menueditor.c:530
+msgid "Question"
+msgstr "Küsimus"
 
-#: menueditor/new_dialog.c:141
-msgid "All fields are required."
-msgstr "Kõik väljad on nõutud."
+#: menueditor/menueditor.c:368
+msgid "Do you want to save before opening an other menu ?"
+msgstr "Kas sa soovid salvestada enne teise menüü avamist ?"
+
+#: menueditor/menueditor.c:370 menueditor/menueditor.c:427
+#: menueditor/menueditor.c:534
+msgid "Ignore modifications"
+msgstr "Ignoreeri muudatusi"
+
+#: menueditor/menueditor.c:381
+msgid "Open menu file"
+msgstr "Ava menüü fail"
+
+#: menueditor/menueditor.c:425
+msgid "Do you want to save before opening the default menu ?"
+msgstr "Kas sa soovid salvestada enne vaikemenüü avamist ?"
+
+#: menueditor/menueditor.c:483
+msgid "Save as..."
+msgstr "Salvesta kui ..."
+
+#: menueditor/menueditor.c:638
+msgid "Do you want to move the item into the parent menu?"
+msgstr "Kas sa soovid seda asja nihutada vanem-menüüsse?"
+
+#: menueditor/menueditor.c:684
+msgid "Do you want to move the item into the submenu?"
+msgstr "Kas sa soovid seda asja alam-menüüsse?"
+
+#: menueditor/menueditor.c:825
+msgid "Edit"
+msgstr "Muuda"
+
+#. File menu
+#: menueditor/menueditor.c:849
+msgid "_File"
+msgstr "_Fail"
+
+#: menueditor/menueditor.c:858
+msgid "Open default menu"
+msgstr "Ava vaikimisi menüü"
+
+#. Edit menu
+#: menueditor/menueditor.c:872
+msgid "_Edit"
+msgstr "_Muuda"
+
+#: menueditor/menueditor.c:878
+msgid "Add an external menu..."
+msgstr "Lisa väline menüü ..."
+
+#. Help menu
+#: menueditor/menueditor.c:890
+msgid "_Help"
+msgstr "_Abi"
+
+#: menueditor/menueditor.c:894
+msgid "_About..."
+msgstr "_Sellest ..."
+
+#: menueditor/menueditor.c:906
+msgid "Create a new Xfce4 menu file"
+msgstr "Tekita uus Xfce4 menüü fail"
+
+#: menueditor/menueditor.c:911
+msgid "Open an Xfce4 menu file"
+msgstr "Ava Xfce4 menüü fail"
+
+#: menueditor/menueditor.c:916
+msgid "Save current menu"
+msgstr "Salvesta avatud menüü"
+
+#: menueditor/menueditor.c:921
+msgid "Close current menu"
+msgstr "Sulge avatud menüü"
+
+#: menueditor/menueditor.c:927
+msgid "Add an entry to the menu"
+msgstr "Lisa menüüsse sissekanne"
+
+#: menueditor/menueditor.c:931
+msgid "Delete the current entry"
+msgstr "Kustuta valitud sissekanne"
+
+#: menueditor/menueditor.c:937
+msgid "Move the current entry up"
+msgstr "Liiguta valitud sissekanne ülesse"
+
+#: menueditor/menueditor.c:942
+msgid "Move the current entry down"
+msgstr "Liiguta valitud sissekanne alla"
+
+#: menueditor/menueditor.c:948
+msgid "Collapse the tree"
+msgstr "Sulge puu"
+
+#: menueditor/menueditor.c:953
+msgid "Expand the tree"
+msgstr "Laienda puu"
+
+#: menueditor/menueditor.c:981
+msgid "Name"
+msgstr "Nimi"
+
+#: menueditor/menueditor.c:984
+msgid "Command"
+msgstr "Käsklus"
+
+#: menueditor/menueditor.c:985
+msgid "Hidden"
+msgstr "Varjatud"
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
 msgstr "/Muu"
 
 #: panel-plugin/desktop-menu-plugin.c:205
-#: panel-plugin/desktop-menu-plugin.c:533
+#: panel-plugin/desktop-menu-plugin.c:535
 msgid "Xfce Menu"
 msgstr "Xfce menüü"
 
@@ -433,33 +328,44 @@ msgstr "Vali ikoon"
 msgid "Select Menu File"
 msgstr "Vali menüüfail"
 
+#: panel-plugin/desktop-menu-plugin.c:390 settings/backdrop-mgr.c:414
+#: settings/backdrop-mgr.c:515 settings/backdrop_settings.c:533
+msgid "All Files"
+msgstr "Kõik failid"
+
+#: panel-plugin/desktop-menu-plugin.c:396 settings/backdrop-mgr.c:418
+#: settings/backdrop_settings.c:537
+msgid "Image Files"
+msgstr "Pildi failid"
+
 #: panel-plugin/desktop-menu-plugin.c:404
 msgid "Menu Files"
 msgstr "Menüüfailid"
 
-#: panel-plugin/desktop-menu-plugin.c:463
+#: panel-plugin/desktop-menu-plugin.c:465
 msgid "_Menu file:"
 msgstr "_Menüüfail"
 
-#: panel-plugin/desktop-menu-plugin.c:497
+#: panel-plugin/desktop-menu-plugin.c:499
 msgid "_Button icon:"
 msgstr "_Nupu ikoon:"
 
-#: panel-plugin/desktop-menu-plugin.c:522
+#: panel-plugin/desktop-menu-plugin.c:524
 msgid "Show _icons in menu"
 msgstr "Näita menüüs ikoone"
 
-#: settings/backdrop-mgr.c:139
-#: src/xfce-desktop.c:112
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your changes"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
 msgstr ""
 "Ei suutnud salvestada faili %s: %s\n"
 "\n"
-"Palun vali teine asukoht või vajuta dialoogis nupule [loobu], misjärel muudatused kaovad"
+"Palun vali teine asukoht või vajuta dialoogis nupule [loobu], misjärel "
+"muudatused kaovad"
 
 #: settings/backdrop-mgr.c:409
 msgid "Select backdrop image file"
@@ -481,8 +387,7 @@ msgstr "Taustade nimistu"
 msgid "Image files"
 msgstr "Pildifailid"
 
-#: settings/backdrop-mgr.c:610
-#: settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "taustad.list"
@@ -500,9 +405,8 @@ msgid "Edit backdrop list"
 msgstr "Muuda tausta nimistut"
 
 #. the dialog
-#: settings/backdrop_settings.c:132
-#: settings/backdrop_settings.c:836
-#: src/xfce-desktop.c:670
+#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
+#: src/xfce-desktop.c:676
 msgid "Desktop"
 msgstr "Töölaud"
 
@@ -552,6 +456,7 @@ msgstr "Kohenda _heledust:"
 
 #. header
 #: settings/backdrop_settings.c:851
+#: settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "Töölaua seaded"
 
@@ -615,8 +520,7 @@ msgstr "Ära sea tausta"
 msgid "_Backdrop"
 msgstr "_Taust"
 
-#: settings/backdrop_settings.c:1119
-#: settings/backdrop_settings.c:1121
+#: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
 #, c-format
 msgid "Screen %d"
 msgstr "Ekraan %d"
@@ -682,31 +586,84 @@ msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Näita menüüd (hiire jooksvas asukohas)\n"
 
 #: src/main.c:304
-msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Näita akende nimekirja (hiire jooksvas asukohas)\n"
 
-#: src/windowlist.c:183
+#: src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Tööruum %d</b>"
 
-#: src/windowlist.c:188
+#: src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Tööruum %d</i>"
 
-#: src/windowlist.c:243
-#: src/windowlist.c:246
+#: src/windowlist.c:268 src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "_Lisa tööruum"
 
-#: src/windowlist.c:253
+#: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Eemalda Tööruum %d"
 
-#: src/windowlist.c:255
+#: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Eemalda Tööruum %s"
 
+#: menueditor/xfce-menueditor.desktop.in.h:1
+msgid "Graphical tool for editing the Xfce 4 menu"
+msgstr "Graafiline tööriist Xfce 4 menüüde redigeerimiseks"
+
+#: menueditor/xfce-menueditor.desktop.in.h:2
+msgid "Menu Editor"
+msgstr "Menüüredaktor"
+
+#: menueditor/xfce-menueditor.desktop.in.h:3
+msgid "Xfce 4 Menu Editor"
+msgstr "Xfce 4 menüüredaktor"
+
+#: settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Settings for the Xfce 4 Desktop Manager"
+msgstr "Xfce 4 töölaua tausta seaded"
+
+#: settings/xfce-backdrop-settings.desktop.in.h:3
+msgid "Xfce 4 Desktop Settings"
+msgstr "Xfce 4 töölaua tausta seaded"
+
+#~ msgid "Title:"
+#~ msgstr "Pealkiri:"
+
+#~ msgid "Select icon"
+#~ msgstr "Vali ikoon"
+
+#~ msgid ""
+#~ "Cannot write in %s : \n"
+#~ "%s"
+#~ msgstr ""
+#~ "Ei suuda kirjutada %s-i:\n"
+#~ "%s"
+
+#~ msgid "Pointer"
+#~ msgstr "Viit"
+
+#~ msgid "Corrupted file or incorrect file format !"
+#~ msgstr "Fail on rikutud või vale formaadiga!"
+
+#~ msgid "No root element in file !"
+#~ msgstr "Juurelement on failis puudu !"
+
+#~ msgid "Bad datafile format !"
+#~ msgstr "Vigane andmefaili formaat !"
+
+#~ msgid "New menu"
+#~ msgstr "Uus menüü"
+
+#~ msgid "Filename:"
+#~ msgstr "Failinimi:"
+
+#~ msgid "All fields are required."
+#~ msgstr "Kõik väljad on nõutud."

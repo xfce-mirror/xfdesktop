@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-02 11:07+0100\n"
+"POT-Creation-Date: 2005-01-28 22:00-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,345 +34,282 @@ msgstr ""
 msgid "Icon designer"
 msgstr ""
 
-#: menueditor/add_dialog.c:138 menueditor/add_dialog.c:150
+#: menueditor/add_dialog.c:159 menueditor/add_dialog.c:169
 msgid "Add menu entry"
 msgstr ""
 
 #. Type
-#: menueditor/add_dialog.c:156 menueditor/add_menu_dialog.c:98
-#: menueditor/edit_dialog.c:149
+#: menueditor/add_dialog.c:173 menueditor/add_menu_dialog.c:110
 msgid "Type:"
 msgstr ""
 
-#: menueditor/add_dialog.c:159
+#: menueditor/add_dialog.c:176
 msgid "Launcher"
 msgstr ""
 
-#: menueditor/add_dialog.c:164
+#: menueditor/add_dialog.c:180
 msgid "Submenu"
 msgstr ""
 
-#: menueditor/add_dialog.c:169
+#: menueditor/add_dialog.c:184
 msgid "Separator"
 msgstr ""
 
-#: menueditor/add_dialog.c:174
+#: menueditor/add_dialog.c:188
 msgid "Title"
 msgstr ""
 
-#: menueditor/add_dialog.c:179
+#: menueditor/add_dialog.c:192
 msgid "Quit"
 msgstr ""
 
 #. Name
-#: menueditor/add_dialog.c:194 menueditor/edit_dialog.c:263
-#: menueditor/edit_dialog.c:314 menueditor/edit_dialog.c:353
+#: menueditor/add_dialog.c:206 menueditor/edit_dialog.c:158
+#: menueditor/edit_dialog.c:218
 msgid "Name:"
 msgstr ""
 
-#: menueditor/add_dialog.c:204 menueditor/edit_dialog.c:264
+#: menueditor/add_dialog.c:214 menueditor/edit_dialog.c:163
 msgid "Command:"
 msgstr ""
 
-#: menueditor/add_dialog.c:220 menueditor/edit_dialog.c:255
-#: menueditor/edit_dialog.c:319 menueditor/edit_dialog.c:358
-#: menueditor/edit_dialog.c:396
+#: menueditor/add_dialog.c:226 menueditor/edit_dialog.c:150
+#: menueditor/edit_dialog.c:210
 msgid "Icon:"
 msgstr ""
 
 #. Start Notify check button
-#: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:275
+#. Startup notification
+#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:171
 msgid "Use startup _notification"
 msgstr ""
 
 #. Run in terminal check button
-#: menueditor/add_dialog.c:240 menueditor/edit_dialog.c:276
+#. Run in terminal
+#: menueditor/add_dialog.c:241 menueditor/edit_dialog.c:174
 msgid "Run in _terminal"
 msgstr ""
 
-#: menueditor/add_dialog.c:285 menueditor/edit_dialog.c:468
+#: menueditor/add_dialog.c:272
 msgid "The command doesn't exist !"
 msgstr ""
 
-#: menueditor/add_dialog.c:291
+#: menueditor/add_dialog.c:278
 msgid "All fields must be filled to add an item."
 msgstr ""
 
-#: menueditor/add_dialog.c:300
+#: menueditor/add_dialog.c:287
 msgid "The 'Name' field is required."
 msgstr ""
 
-#: menueditor/add_dialog.c:356 menueditor/dnd.c:153
-#: menueditor/menueditor.c:579 menueditor/move.c:87 menueditor/move.c:225
+#: menueditor/add_dialog.c:331
 msgid "--- separator ---"
 msgstr ""
 
-#: menueditor/add_dialog.c:381 menueditor/edit_dialog.c:505
+#: menueditor/add_dialog.c:357
 msgid "quit"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/add_menu_dialog.c:97 menueditor/add_menu_dialog.c:103
+#: menueditor/menueditor.c:831
 msgid "Add an external menu"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:152
+#: menueditor/add_menu_dialog.c:115
 msgid "File"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:157
+#: menueditor/add_menu_dialog.c:119
 msgid "System"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:172
+#: menueditor/add_menu_dialog.c:133
 msgid "Source:"
 msgstr ""
 
 #. Style
-#: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:185
+#: menueditor/add_menu_dialog.c:145
 msgid "Style:"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:188
+#: menueditor/add_menu_dialog.c:148
 msgid "Simple"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:191
+#: menueditor/add_menu_dialog.c:150
 msgid "Multilevel"
 msgstr ""
 
 #. Unique
-#: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:204
+#: menueditor/add_menu_dialog.c:162
 msgid "_Unique entries only"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:208
+#: menueditor/add_menu_dialog.c:198
 msgid "The 'Source' field is required."
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:234
-#: menueditor/dnd.c:156 menueditor/edit_dialog.c:521
-#: menueditor/edit_dialog.c:534 menueditor/menueditor.c:618
-#: menueditor/move.c:111 menueditor/move.c:249
+#: menueditor/add_menu_dialog.c:202 menueditor/add_menu_dialog.c:212
 msgid "--- include ---"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:235 menueditor/dnd.c:161
-#: menueditor/edit_dialog.c:535 menueditor/menueditor.c:621
-#: menueditor/move.c:114 menueditor/move.c:252
+#: menueditor/add_menu_dialog.c:213
 msgid "system"
 msgstr ""
 
 #. Create dialog for editing
-#: menueditor/edit_dialog.c:103 menueditor/edit_dialog.c:113
+#: menueditor/edit_dialog.c:127 menueditor/edit_dialog.c:134
 msgid "Edit menu entry"
 msgstr ""
 
-#: menueditor/edit_dialog.c:131
+#: menueditor/edit_dialog.c:139
 msgid "Separators cannot be edited"
 msgstr ""
 
-#. Name
-#: menueditor/edit_dialog.c:403 menueditor/new_dialog.c:100
-msgid "Title:"
-msgstr ""
-
-#: menueditor/menueditor.c:371
-msgid "Select command"
-msgstr ""
-
-#: menueditor/menueditor.c:435
-msgid "Select icon"
-msgstr ""
-
-#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:390
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
-#: settings/backdrop_settings.c:533
-msgid "All Files"
-msgstr ""
-
-#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:396
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
-msgid "Image Files"
-msgstr ""
-
-#: menueditor/menueditor.c:500 menueditor/menueditor.c:903
-msgid "Do you want to save before closing the menu ?"
-msgstr ""
-
-#: menueditor/menueditor.c:502
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr ""
-
-#: menueditor/menueditor.c:504
-msgid "Forget modifications"
-msgstr ""
-
-#: menueditor/menueditor.c:690 menueditor/menueditor.c:749
-#: menueditor/menueditor.c:901
-msgid "Question"
-msgstr ""
-
-#: menueditor/menueditor.c:692
-msgid "Do you want to save before opening the default menu ?"
-msgstr ""
-
-#: menueditor/menueditor.c:694 menueditor/menueditor.c:753
-#: menueditor/menueditor.c:905
-msgid "Ignore modifications"
-msgstr ""
-
-#: menueditor/menueditor.c:751
-msgid "Do you want to save before opening an other menu ?"
-msgstr ""
-
-#: menueditor/menueditor.c:764
-msgid "Open menu file"
-msgstr ""
-
-#: menueditor/menueditor.c:799 menueditor/menueditor.c:810
-#, c-format
-msgid ""
-"Cannot write in %s : \n"
-"%s"
-msgstr ""
-
-#: menueditor/menueditor.c:844
-msgid "Save as..."
-msgstr ""
-
-#: menueditor/menueditor.c:1025
-msgid "Edit"
-msgstr ""
-
-#. File menu
-#: menueditor/menueditor.c:1225
-msgid "_File"
-msgstr ""
-
-#: menueditor/menueditor.c:1234
-msgid "Open default menu"
-msgstr ""
-
-#. Edit menu
-#: menueditor/menueditor.c:1248
-msgid "_Edit"
-msgstr ""
-
-#: menueditor/menueditor.c:1254
-msgid "Add an external menu..."
-msgstr ""
-
-#. Help menu
-#: menueditor/menueditor.c:1266
-msgid "_Help"
-msgstr ""
-
-#: menueditor/menueditor.c:1271
-msgid "_About..."
-msgstr ""
-
-#: menueditor/menueditor.c:1283
-msgid "Create a new Xfce4 menu file"
-msgstr ""
-
-#: menueditor/menueditor.c:1289
-msgid "Open an Xfce4 menu file"
-msgstr ""
-
-#: menueditor/menueditor.c:1295
-msgid "Save current menu"
-msgstr ""
-
-#: menueditor/menueditor.c:1300
-msgid "Close current menu"
-msgstr ""
-
-#: menueditor/menueditor.c:1306
-msgid "Add an entry to the menu"
-msgstr ""
-
-#: menueditor/menueditor.c:1312
-msgid "Delete the current entry"
-msgstr ""
-
-#: menueditor/menueditor.c:1318
-msgid "Move the current entry up"
-msgstr ""
-
-#: menueditor/menueditor.c:1324
-msgid "Move the current entry down"
-msgstr ""
-
-#: menueditor/menueditor.c:1331
-msgid "Collapse the tree"
-msgstr ""
-
-#: menueditor/menueditor.c:1336
-msgid "Expand the tree"
-msgstr ""
-
-#: menueditor/menueditor.c:1365
-msgid "Name"
-msgstr ""
-
-#: menueditor/menueditor.c:1368
-msgid "Command"
-msgstr ""
-
-#: menueditor/menueditor.c:1369
-msgid "Hidden"
-msgstr ""
-
-#: menueditor/menueditor.c:1370
-msgid "Pointer"
-msgstr ""
-
-#: menueditor/menueditor.c:1472
-msgid "Corrupted file or incorrect file format !"
-msgstr ""
-
-#: menueditor/menueditor.c:1485
-msgid "No root element in file !"
-msgstr ""
-
-#: menueditor/menueditor.c:1496
-msgid "Bad datafile format !"
-msgstr ""
-
-#: menueditor/menueditor.c:1599
+#: menueditor/menueditor.c:81
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr ""
 
-#: menueditor/move.c:370
-msgid "Do you want to move the item into the parent menu?"
+#: menueditor/menueditor.c:121 menueditor/menueditor.c:532
+msgid "Do you want to save before closing the menu ?"
 msgstr ""
 
-#: menueditor/move.c:469
-msgid "Do you want to move the item into the submenu?"
+#: menueditor/menueditor.c:123
+msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr ""
 
-#: menueditor/new_dialog.c:60
+#: menueditor/menueditor.c:125
+msgid "Forget modifications"
+msgstr ""
+
+#: menueditor/menueditor.c:310
 msgid "Are you sure you want to close the current menu?"
 msgstr ""
 
-#: menueditor/new_dialog.c:75
+#: menueditor/menueditor.c:325
 msgid "Do you want to save before closing the file?"
 msgstr ""
 
-#. get the filename and name for the new menu
-#: menueditor/new_dialog.c:85 menueditor/new_dialog.c:94
-msgid "New menu"
+#: menueditor/menueditor.c:334
+msgid "Select command"
 msgstr ""
 
-#. Filename
-#: menueditor/new_dialog.c:107
-msgid "Filename:"
+#: menueditor/menueditor.c:366 menueditor/menueditor.c:423
+#: menueditor/menueditor.c:530
+msgid "Question"
 msgstr ""
 
-#: menueditor/new_dialog.c:141
-msgid "All fields are required."
+#: menueditor/menueditor.c:368
+msgid "Do you want to save before opening an other menu ?"
+msgstr ""
+
+#: menueditor/menueditor.c:370 menueditor/menueditor.c:427
+#: menueditor/menueditor.c:534
+msgid "Ignore modifications"
+msgstr ""
+
+#: menueditor/menueditor.c:381
+msgid "Open menu file"
+msgstr ""
+
+#: menueditor/menueditor.c:425
+msgid "Do you want to save before opening the default menu ?"
+msgstr ""
+
+#: menueditor/menueditor.c:483
+msgid "Save as..."
+msgstr ""
+
+#: menueditor/menueditor.c:638
+msgid "Do you want to move the item into the parent menu?"
+msgstr ""
+
+#: menueditor/menueditor.c:684
+msgid "Do you want to move the item into the submenu?"
+msgstr ""
+
+#: menueditor/menueditor.c:825
+msgid "Edit"
+msgstr ""
+
+#. File menu
+#: menueditor/menueditor.c:849
+msgid "_File"
+msgstr ""
+
+#: menueditor/menueditor.c:858
+msgid "Open default menu"
+msgstr ""
+
+#. Edit menu
+#: menueditor/menueditor.c:872
+msgid "_Edit"
+msgstr ""
+
+#: menueditor/menueditor.c:878
+msgid "Add an external menu..."
+msgstr ""
+
+#. Help menu
+#: menueditor/menueditor.c:890
+msgid "_Help"
+msgstr ""
+
+#: menueditor/menueditor.c:894
+msgid "_About..."
+msgstr ""
+
+#: menueditor/menueditor.c:906
+msgid "Create a new Xfce4 menu file"
+msgstr ""
+
+#: menueditor/menueditor.c:911
+msgid "Open an Xfce4 menu file"
+msgstr ""
+
+#: menueditor/menueditor.c:916
+msgid "Save current menu"
+msgstr ""
+
+#: menueditor/menueditor.c:921
+msgid "Close current menu"
+msgstr ""
+
+#: menueditor/menueditor.c:927
+msgid "Add an entry to the menu"
+msgstr ""
+
+#: menueditor/menueditor.c:931
+msgid "Delete the current entry"
+msgstr ""
+
+#: menueditor/menueditor.c:937
+msgid "Move the current entry up"
+msgstr ""
+
+#: menueditor/menueditor.c:942
+msgid "Move the current entry down"
+msgstr ""
+
+#: menueditor/menueditor.c:948
+msgid "Collapse the tree"
+msgstr ""
+
+#: menueditor/menueditor.c:953
+msgid "Expand the tree"
+msgstr ""
+
+#: menueditor/menueditor.c:981
+msgid "Name"
+msgstr ""
+
+#: menueditor/menueditor.c:984
+msgid "Command"
+msgstr ""
+
+#: menueditor/menueditor.c:985
+msgid "Hidden"
 msgstr ""
 
 #: modules/menu/desktop-menuspec.c:62
@@ -390,6 +327,16 @@ msgstr ""
 
 #: panel-plugin/desktop-menu-plugin.c:375
 msgid "Select Menu File"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:390 settings/backdrop-mgr.c:414
+#: settings/backdrop-mgr.c:515 settings/backdrop_settings.c:533
+msgid "All Files"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:396 settings/backdrop-mgr.c:418
+#: settings/backdrop_settings.c:537
+msgid "Image Files"
 msgstr ""
 
 #: panel-plugin/desktop-menu-plugin.c:404
@@ -506,6 +453,7 @@ msgstr ""
 
 #. header
 #: settings/backdrop_settings.c:851
+#: settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr ""
 
@@ -639,26 +587,46 @@ msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 
-#: src/windowlist.c:176
+#: src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr ""
 
-#: src/windowlist.c:184
+#: src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr ""
 
-#: src/windowlist.c:247 src/windowlist.c:250
+#: src/windowlist.c:268 src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr ""
 
-#: src/windowlist.c:258
+#: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr ""
 
-#: src/windowlist.c:261
+#: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
+msgstr ""
+
+#: menueditor/xfce-menueditor.desktop.in.h:1
+msgid "Graphical tool for editing the Xfce 4 menu"
+msgstr ""
+
+#: menueditor/xfce-menueditor.desktop.in.h:2
+msgid "Menu Editor"
+msgstr ""
+
+#: menueditor/xfce-menueditor.desktop.in.h:3
+msgid "Xfce 4 Menu Editor"
+msgstr ""
+
+#: settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Settings for the Xfce 4 Desktop Manager"
+msgstr ""
+
+#: settings/xfce-backdrop-settings.desktop.in.h:3
+msgid "Xfce 4 Desktop Settings"
 msgstr ""

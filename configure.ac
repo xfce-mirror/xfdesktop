@@ -26,6 +26,7 @@ dnl check for basic programs
 AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_LIBTOOL
+AC_PROG_INTLTOOL
 
 dnl check for standard header files
 AC_HEADER_STDC

@@ -37,6 +37,8 @@ xfce4_menueditor_LDADD =						\
 	@LIBXFCEGUI4_LIBS@						
 
 appsdir = $(datadir)/applications
-apps_DATA = xfce-menueditor.desktop
+apps_in_files = xfce-menueditor.desktop.in
+apps_DATA = $(apps_in_files:.desktop.in=.desktop)
+@INTLTOOL_DESKTOP_RULE@
 
-EXTRA_DIST = xfce-menueditor.desktop
+EXTRA_DIST = xfce-menueditor.desktop.in

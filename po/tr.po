@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-23 22:43-0700\n"
+"POT-Creation-Date: 2005-01-28 22:00-0800\n"
 "PO-Revision-Date: 2004-10-18 21:16+0300\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -15,416 +15,347 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: menueditor/about_dialog.c:36
+#: menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
 msgstr "Xfce4 için menü düzenleyicisi"
 
 #. Credits
-#: menueditor/about_dialog.c:41
+#: menueditor/about_dialog.c:43
 msgid "Core developer"
 msgstr "Çekirdek Geliştirici"
 
-#: menueditor/about_dialog.c:42 menueditor/about_dialog.c:43
-#: menueditor/about_dialog.c:44
+#: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:46
 msgid "Contributor"
 msgstr "Katkıcı"
 
-#: menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:47
 msgid "Icon designer"
 msgstr "Simge tasarımcısı"
 
-#: menueditor/add_dialog.c:132 menueditor/add_dialog.c:147
+#: menueditor/add_dialog.c:159 menueditor/add_dialog.c:169
 msgid "Add menu entry"
 msgstr "Menu girdisi ekle"
 
 #. Type
-#: menueditor/add_dialog.c:153 menueditor/add_menu_dialog.c:98
-#: menueditor/edit_dialog.c:148
+#: menueditor/add_dialog.c:173 menueditor/add_menu_dialog.c:110
 msgid "Type:"
 msgstr "Tip:"
 
-#: menueditor/add_dialog.c:156
+#: menueditor/add_dialog.c:176
 msgid "Launcher"
 msgstr "Başlatıcı"
 
-#: menueditor/add_dialog.c:161
+#: menueditor/add_dialog.c:180
 msgid "Submenu"
 msgstr "Altı menü"
 
-#: menueditor/add_dialog.c:166
+#: menueditor/add_dialog.c:184
 msgid "Separator"
 msgstr "Ayırıcı"
 
-#: menueditor/add_dialog.c:171
+#: menueditor/add_dialog.c:188
 msgid "Title"
 msgstr "Başlık"
 
-#: menueditor/add_dialog.c:176
+#: menueditor/add_dialog.c:192
 msgid "Quit"
 msgstr "Çık"
 
 #. Name
-#: menueditor/add_dialog.c:191 menueditor/edit_dialog.c:260
-#: menueditor/edit_dialog.c:310 menueditor/edit_dialog.c:348
+#: menueditor/add_dialog.c:206 menueditor/edit_dialog.c:158
+#: menueditor/edit_dialog.c:218
 msgid "Name:"
 msgstr "İsim:"
 
-#: menueditor/add_dialog.c:201 menueditor/edit_dialog.c:261
+#: menueditor/add_dialog.c:214 menueditor/edit_dialog.c:163
 msgid "Command:"
 msgstr "Komut:"
 
-#: menueditor/add_dialog.c:217 menueditor/edit_dialog.c:252
-#: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
-#: menueditor/edit_dialog.c:390
+#: menueditor/add_dialog.c:226 menueditor/edit_dialog.c:150
+#: menueditor/edit_dialog.c:210
 msgid "Icon:"
 msgstr "Simge:"
 
 #. Start Notify check button
-#: menueditor/add_dialog.c:233 menueditor/edit_dialog.c:272
+#. Startup notification
+#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:171
 msgid "Use startup _notification"
 msgstr "Başlangıç _uyarısı kullan"
 
 #. Run in terminal check button
-#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:273
+#. Run in terminal
+#: menueditor/add_dialog.c:241 menueditor/edit_dialog.c:174
 msgid "Run in _terminal"
 msgstr "_Terminal içinde başlat"
 
-#: menueditor/add_dialog.c:282 menueditor/edit_dialog.c:459
+#: menueditor/add_dialog.c:272
 msgid "The command doesn't exist !"
 msgstr "Komut mevcut değil!"
 
-#: menueditor/add_dialog.c:288
+#: menueditor/add_dialog.c:278
 msgid "All fields must be filled to add an item."
 msgstr "Ekleme yapabilmek için tüm alanları doldurmalısınız."
 
-#: menueditor/add_dialog.c:296
+#: menueditor/add_dialog.c:287
 msgid "The 'Name' field is required."
 msgstr "'İsim' alanı dolu olmalı."
 
-#: menueditor/add_dialog.c:350 menueditor/dnd.c:154
-#: menueditor/menueditor.c:349 menueditor/move.c:92 menueditor/move.c:250
+#: menueditor/add_dialog.c:331
 msgid "--- separator ---"
 msgstr "--- ayırıcı ---"
 
-#: menueditor/add_dialog.c:375 menueditor/edit_dialog.c:494
+#: menueditor/add_dialog.c:357
 msgid "quit"
 msgstr "çık"
 
-#: menueditor/add_menu_dialog.c:78 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:808
+#: menueditor/add_menu_dialog.c:97 menueditor/add_menu_dialog.c:103
+#: menueditor/menueditor.c:831
 msgid "Add an external menu"
 msgstr "Hârici bir menü ekle"
 
-#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:151
+#: menueditor/add_menu_dialog.c:115
 msgid "File"
 msgstr "Dosya"
 
-#: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:156
+#: menueditor/add_menu_dialog.c:119
 msgid "System"
 msgstr "Sistem"
 
-#: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:171
+#: menueditor/add_menu_dialog.c:133
 msgid "Source:"
 msgstr "Kaynak:"
 
 #. Style
-#: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:184
+#: menueditor/add_menu_dialog.c:145
 msgid "Style:"
 msgstr "Stil:"
 
-#: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:187
+#: menueditor/add_menu_dialog.c:148
 msgid "Simple"
 msgstr "Basit"
 
-#: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:190
+#: menueditor/add_menu_dialog.c:150
 msgid "Multilevel"
 msgstr "Çok Katmanlı"
 
 #. Unique
-#: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:203
+#: menueditor/add_menu_dialog.c:162
 msgid "_Unique entries only"
 msgstr "Sadece _farklı girdiler"
 
-#: menueditor/add_menu_dialog.c:208
+#: menueditor/add_menu_dialog.c:198
 msgid "The 'Source' field is required."
 msgstr "'Kaynak' bölümü gerekli."
 
-#: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:235
-#: menueditor/dnd.c:156 menueditor/edit_dialog.c:508
-#: menueditor/edit_dialog.c:521 menueditor/menueditor.c:397
-#: menueditor/move.c:122 menueditor/move.c:280
+#: menueditor/add_menu_dialog.c:202 menueditor/add_menu_dialog.c:212
 msgid "--- include ---"
 msgstr "--- içer ---"
 
-#: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:161
-#: menueditor/edit_dialog.c:522 menueditor/menueditor.c:400
-#: menueditor/move.c:125 menueditor/move.c:283
+#: menueditor/add_menu_dialog.c:213
 msgid "system"
 msgstr "sistem"
 
 #. Create dialog for editing
-#: menueditor/edit_dialog.c:100 menueditor/edit_dialog.c:113
+#: menueditor/edit_dialog.c:127 menueditor/edit_dialog.c:134
 msgid "Edit menu entry"
 msgstr "Menü girdisini düzenle"
 
-#: menueditor/edit_dialog.c:131
+#: menueditor/edit_dialog.c:139
 msgid "Separators cannot be edited"
 msgstr "Ayırıcılar düzenlenemez"
 
-#. Name
-#: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:104
-msgid "Title:"
-msgstr "Başlık:"
-
-#: menueditor/menueditor.c:151
-msgid "Select command"
-msgstr "Komut seç"
-
-#: menueditor/menueditor.c:212
-msgid "Select icon"
-msgstr "Simge seç"
-
-#: menueditor/menueditor.c:218 panel-plugin/desktop-menu-plugin.c:371
-#: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
-#: settings/backdrop_settings.c:533
-msgid "All Files"
-msgstr "Tüm Dosyalar"
-
-#: menueditor/menueditor.c:222 panel-plugin/desktop-menu-plugin.c:377
-#: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:537
-msgid "Image Files"
-msgstr "Resim Dosyaları"
-
-#: menueditor/menueditor.c:275 menueditor/menueditor.c:682
-msgid "Do you want to save before closing the menu ?"
-msgstr "Menüyü kapatmadan önce kaydetmek ister misiniz?"
-
-#: menueditor/menueditor.c:276
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Menüyü değiştirdiniz, çıkmadan önce değişiklikleri kaydetmek ister misiniz?"
-
-#: menueditor/menueditor.c:277
-msgid "Forget modifications"
-msgstr "Değişiklikleri unut"
-
-#: menueditor/menueditor.c:476 menueditor/menueditor.c:534
-#: menueditor/menueditor.c:680
-msgid "Question"
-msgstr "Soru"
-
-#: menueditor/menueditor.c:478
-msgid "Do you want to save before opening the default menu ?"
-msgstr "Öntanımlı menüyü açmadan önce kaydetmek ister misiniz?"
-
-#: menueditor/menueditor.c:480 menueditor/menueditor.c:538
-#: menueditor/menueditor.c:684
-msgid "Ignore modifications"
-msgstr "Değişiklikleri göz ardı et"
-
-#: menueditor/menueditor.c:536
-msgid "Do you want to save before opening an other menu ?"
-msgstr "Başka bir menü açmadan önce kayıt etmek ister misiniz?"
-
-#: menueditor/menueditor.c:549
-msgid "Open menu file"
-msgstr "Menü dosyası aç"
-
-#: menueditor/menueditor.c:583 menueditor/menueditor.c:594
-#, c-format
-msgid ""
-"Cannot write in %s : \n"
-"%s"
-msgstr ""
-"%s'e kaydedilemiyor : \n"
-"%s"
-
-#: menueditor/menueditor.c:625
-msgid "Save as..."
-msgstr "Farklı Kaydet..."
-
-#: menueditor/menueditor.c:802
-msgid "Edit"
-msgstr "Düzenle"
-
-#. File menu
-#: menueditor/menueditor.c:1008
-msgid "_File"
-msgstr "_Dosya"
-
-#: menueditor/menueditor.c:1017
-msgid "Open default menu"
-msgstr "Öntanımlı menüyü aç"
-
-#. Edit menu
-#: menueditor/menueditor.c:1031
-msgid "_Edit"
-msgstr "_Düzenle"
-
-#: menueditor/menueditor.c:1037
-msgid "Add an external menu..."
-msgstr "Hârici bir menü ekle..."
-
-#. Help menu
-#: menueditor/menueditor.c:1049
-msgid "_Help"
-msgstr "_Yardım"
-
-#: menueditor/menueditor.c:1054
-msgid "_About..."
-msgstr "_Hakkında.."
-
-#: menueditor/menueditor.c:1064
-msgid "Create a new Xfce4 menu file"
-msgstr "Yeni bir Xfce4 menü dosyası oluştur"
-
-#: menueditor/menueditor.c:1068
-msgid "Open an Xfce4 menu file"
-msgstr "Bir Xfce4 menü dosyası aç"
-
-#: menueditor/menueditor.c:1072
-msgid "Save current menu"
-msgstr "Mevcut menüyü kaydet"
-
-#: menueditor/menueditor.c:1076
-msgid "Close current menu"
-msgstr "Mevcut menüyü kapat"
-
-#: menueditor/menueditor.c:1081
-msgid "Add an entry to the menu"
-msgstr "Menüye ekleme yap"
-
-#: menueditor/menueditor.c:1085
-msgid "Delete the current entry"
-msgstr "Mevcut girdiyi sil"
-
-#: menueditor/menueditor.c:1089
-msgid "Move the current entry up"
-msgstr "Mevcut girdiyi yukarı çıkar"
-
-#: menueditor/menueditor.c:1093
-msgid "Move the current entry down"
-msgstr "Mevcut girdiyi aşağı kardır"
-
-#: menueditor/menueditor.c:1098
-msgid "Collapse the tree"
-msgstr "Ağacı topla"
-
-#: menueditor/menueditor.c:1102
-msgid "Expand the tree"
-msgstr "Ağacı genişlet"
-
-#: menueditor/menueditor.c:1133
-msgid "Name"
-msgstr "İsim"
-
-#: menueditor/menueditor.c:1135
-msgid "Command"
-msgstr "Komut"
-
-#: menueditor/menueditor.c:1137
-msgid "Hidden"
-msgstr "Gizli"
-
-#: menueditor/menueditor.c:1139
-msgid "Pointer"
-msgstr "İşaretçi"
-
-#: menueditor/menueditor.c:1263
-msgid "Corrupted file or incorrect file format !"
-msgstr "Bozuk dosya ya da yanlış dosya biçemi!"
-
-#: menueditor/menueditor.c:1276
-msgid "No root element in file !"
-msgstr "Dosyada root bileşeni bulunmuyor!"
-
-#: menueditor/menueditor.c:1287
-msgid "Bad datafile format !"
-msgstr "Kötü veri dosyası biçemi!"
-
-#: menueditor/menueditor.c:1391
+#: menueditor/menueditor.c:81
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "%s dosyası mevcut değil!"
 
-#: menueditor/move.c:410
-msgid "Do you want to move the item into the parent menu?"
-msgstr "Bileşeni ana menüye taşımak ister misiniz?"
+#: menueditor/menueditor.c:121 menueditor/menueditor.c:532
+msgid "Do you want to save before closing the menu ?"
+msgstr "Menüyü kapatmadan önce kaydetmek ister misiniz?"
 
-#: menueditor/move.c:514
-msgid "Do you want to move the item into the submenu?"
-msgstr "Bileşeni alt mebüye taşımak ister misiniz?"
+#: menueditor/menueditor.c:123
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr ""
+"Menüyü değiştirdiniz, çıkmadan önce değişiklikleri kaydetmek ister misiniz?"
 
-#: menueditor/new_dialog.c:60
+#: menueditor/menueditor.c:125
+msgid "Forget modifications"
+msgstr "Değişiklikleri unut"
+
+#: menueditor/menueditor.c:310
 msgid "Are you sure you want to close the current menu?"
 msgstr "Şu an ki menüyü kapatmak istediğinizden emin misiniz?"
 
-#: menueditor/new_dialog.c:76
+#: menueditor/menueditor.c:325
 msgid "Do you want to save before closing the file?"
 msgstr "Dosyayı kapatmadan önce kaydetmek ister misiniz?"
 
-#. get the filename and name for the new menu
-#: menueditor/new_dialog.c:86 menueditor/new_dialog.c:98
-msgid "New menu"
-msgstr "Yeni menü"
+#: menueditor/menueditor.c:334
+msgid "Select command"
+msgstr "Komut seç"
 
-#. Filename
-#: menueditor/new_dialog.c:111
-msgid "Filename:"
-msgstr "Dosya Adı:"
+#: menueditor/menueditor.c:366 menueditor/menueditor.c:423
+#: menueditor/menueditor.c:530
+msgid "Question"
+msgstr "Soru"
 
-#: menueditor/new_dialog.c:144
-msgid "All fields are required."
-msgstr "Tüm alanlar gerekli."
+#: menueditor/menueditor.c:368
+msgid "Do you want to save before opening an other menu ?"
+msgstr "Başka bir menü açmadan önce kayıt etmek ister misiniz?"
+
+#: menueditor/menueditor.c:370 menueditor/menueditor.c:427
+#: menueditor/menueditor.c:534
+msgid "Ignore modifications"
+msgstr "Değişiklikleri göz ardı et"
+
+#: menueditor/menueditor.c:381
+msgid "Open menu file"
+msgstr "Menü dosyası aç"
+
+#: menueditor/menueditor.c:425
+msgid "Do you want to save before opening the default menu ?"
+msgstr "Öntanımlı menüyü açmadan önce kaydetmek ister misiniz?"
+
+#: menueditor/menueditor.c:483
+msgid "Save as..."
+msgstr "Farklı Kaydet..."
+
+#: menueditor/menueditor.c:638
+msgid "Do you want to move the item into the parent menu?"
+msgstr "Bileşeni ana menüye taşımak ister misiniz?"
+
+#: menueditor/menueditor.c:684
+msgid "Do you want to move the item into the submenu?"
+msgstr "Bileşeni alt mebüye taşımak ister misiniz?"
+
+#: menueditor/menueditor.c:825
+msgid "Edit"
+msgstr "Düzenle"
+
+#. File menu
+#: menueditor/menueditor.c:849
+msgid "_File"
+msgstr "_Dosya"
+
+#: menueditor/menueditor.c:858
+msgid "Open default menu"
+msgstr "Öntanımlı menüyü aç"
+
+#. Edit menu
+#: menueditor/menueditor.c:872
+msgid "_Edit"
+msgstr "_Düzenle"
+
+#: menueditor/menueditor.c:878
+msgid "Add an external menu..."
+msgstr "Hârici bir menü ekle..."
+
+#. Help menu
+#: menueditor/menueditor.c:890
+msgid "_Help"
+msgstr "_Yardım"
+
+#: menueditor/menueditor.c:894
+msgid "_About..."
+msgstr "_Hakkında.."
+
+#: menueditor/menueditor.c:906
+msgid "Create a new Xfce4 menu file"
+msgstr "Yeni bir Xfce4 menü dosyası oluştur"
+
+#: menueditor/menueditor.c:911
+msgid "Open an Xfce4 menu file"
+msgstr "Bir Xfce4 menü dosyası aç"
+
+#: menueditor/menueditor.c:916
+msgid "Save current menu"
+msgstr "Mevcut menüyü kaydet"
+
+#: menueditor/menueditor.c:921
+msgid "Close current menu"
+msgstr "Mevcut menüyü kapat"
+
+#: menueditor/menueditor.c:927
+msgid "Add an entry to the menu"
+msgstr "Menüye ekleme yap"
+
+#: menueditor/menueditor.c:931
+msgid "Delete the current entry"
+msgstr "Mevcut girdiyi sil"
+
+#: menueditor/menueditor.c:937
+msgid "Move the current entry up"
+msgstr "Mevcut girdiyi yukarı çıkar"
+
+#: menueditor/menueditor.c:942
+msgid "Move the current entry down"
+msgstr "Mevcut girdiyi aşağı kardır"
+
+#: menueditor/menueditor.c:948
+msgid "Collapse the tree"
+msgstr "Ağacı topla"
+
+#: menueditor/menueditor.c:953
+msgid "Expand the tree"
+msgstr "Ağacı genişlet"
+
+#: menueditor/menueditor.c:981
+msgid "Name"
+msgstr "İsim"
+
+#: menueditor/menueditor.c:984
+msgid "Command"
+msgstr "Komut"
+
+#: menueditor/menueditor.c:985
+msgid "Hidden"
+msgstr "Gizli"
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
 msgstr "/Diğer"
 
-#: panel-plugin/desktop-menu-plugin.c:189
-#: panel-plugin/desktop-menu-plugin.c:514
+#: panel-plugin/desktop-menu-plugin.c:205
+#: panel-plugin/desktop-menu-plugin.c:535
 msgid "Xfce Menu"
 msgstr "Xfce Menüsü"
 
-#: panel-plugin/desktop-menu-plugin.c:354
+#: panel-plugin/desktop-menu-plugin.c:373
 msgid "Select Icon"
 msgstr "Simge Seç"
 
-#: panel-plugin/desktop-menu-plugin.c:356
+#: panel-plugin/desktop-menu-plugin.c:375
 msgid "Select Menu File"
 msgstr "Menü Dosyası Seç"
 
-#: panel-plugin/desktop-menu-plugin.c:385
+#: panel-plugin/desktop-menu-plugin.c:390 settings/backdrop-mgr.c:414
+#: settings/backdrop-mgr.c:515 settings/backdrop_settings.c:533
+msgid "All Files"
+msgstr "Tüm Dosyalar"
+
+#: panel-plugin/desktop-menu-plugin.c:396 settings/backdrop-mgr.c:418
+#: settings/backdrop_settings.c:537
+msgid "Image Files"
+msgstr "Resim Dosyaları"
+
+#: panel-plugin/desktop-menu-plugin.c:404
 msgid "Menu Files"
 msgstr "Menü Dosyaları"
 
-#: panel-plugin/desktop-menu-plugin.c:444
+#: panel-plugin/desktop-menu-plugin.c:465
 msgid "_Menu file:"
 msgstr "_Menü dosyası:"
 
-#: panel-plugin/desktop-menu-plugin.c:478
+#: panel-plugin/desktop-menu-plugin.c:499
 msgid "_Button icon:"
 msgstr "_Düğme simgesi:"
 
-#: panel-plugin/desktop-menu-plugin.c:503
+#: panel-plugin/desktop-menu-plugin.c:524
 msgid "Show _icons in menu"
 msgstr "Menüde _simge göster"
 
-#: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
-#: settings/backdrop-mgr.c:553
-msgid "Backdrop"
-msgstr "Arka Plan"
-
-#: settings/backdrop-mgr.c:100
-#, c-format
-msgid "Adding files from directory %s..."
-msgstr "%s dizininden simgeler ekleniyor..."
-
-#: settings/backdrop-mgr.c:160
-#, c-format
-msgid "Adding files from list %s..."
-msgstr "%s listesinden dosyalar ekleniyor..."
-
-#: settings/backdrop-mgr.c:215
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -437,50 +368,46 @@ msgstr ""
 "Lütfen kaydetmek için başka bir yer seçin yada diyalogda iptale basarak "
 "değişiklikleri gözardı edin"
 
-#: settings/backdrop-mgr.c:502
+#: settings/backdrop-mgr.c:409
 msgid "Select backdrop image file"
 msgstr "Arka plan için resim dosyası seç"
 
-#: settings/backdrop-mgr.c:559
-msgid "Adding multiple files..."
-msgstr "Çoklu dosya ekleniyor..."
-
-#: settings/backdrop-mgr.c:637
+#: settings/backdrop-mgr.c:510
 msgid "Choose backdrop list filename"
 msgstr "Arka plan için liste dosyası seçin"
 
-#: settings/backdrop-mgr.c:646
+#: settings/backdrop-mgr.c:519
 msgid "List Files"
 msgstr "Liste Dosyaları"
 
-#: settings/backdrop-mgr.c:709
+#: settings/backdrop-mgr.c:582
 msgid "Backdrop List"
 msgstr "Arka Plan Listesi"
 
-#: settings/backdrop-mgr.c:726
+#: settings/backdrop-mgr.c:599
 msgid "Image files"
 msgstr "Görüntü dosyaları"
 
-#: settings/backdrop-mgr.c:737 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "arkaplan.list"
 
-#: settings/backdrop-mgr.c:745
+#: settings/backdrop-mgr.c:618
 msgid "List file"
 msgstr "Liste dosyası"
 
-#: settings/backdrop-mgr.c:765
+#: settings/backdrop-mgr.c:638
 msgid "Create backdrop list"
 msgstr "Arka plan listesi oluştur"
 
-#: settings/backdrop-mgr.c:796
+#: settings/backdrop-mgr.c:669
 msgid "Edit backdrop list"
 msgstr "Arka plan listesi düzenle"
 
 #. the dialog
 #: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
-#: src/xfce-desktop.c:616
+#: src/xfce-desktop.c:676
 msgid "Desktop"
 msgstr "Masaüstü"
 
@@ -530,6 +457,7 @@ msgstr "_Parlaklığı Değiştir:"
 
 #. header
 #: settings/backdrop_settings.c:851
+#: settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "Masaüstü Ayarları"
 
@@ -641,52 +569,119 @@ msgstr "_Uygulama simgelerini göster"
 msgid "_Edit desktop menu"
 msgstr "Masaüstü menüsünü düzenle"
 
-#: src/main.c:265
+#: src/main.c:300
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Bilinmeyen seçenek: %s\n"
 
-#: src/main.c:266
+#: src/main.c:301
 msgid "Options are:\n"
 msgstr "Seçenekler:\n"
 
-#: src/main.c:267
+#: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "     -reload     Tüm seçenkleri ve resim listelerini yeniden yükle\n"
 
-#: src/main.c:268
+#: src/main.c:303
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Seçenek menüsünü aç (fare imleci konumunda)\n"
 
-#: src/main.c:269
+#: src/main.c:304
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    -windowlist  Pencere listesi menüsünü aç (fare imleci konumunda)\n"
+msgstr "    -windowlist  Pencere listesi menüsünü aç (fare imleci konumunda)\n"
 
-#: src/windowlist.c:183
+#: src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Çalışma alanı %d</b>"
 
-#: src/windowlist.c:188
+#: src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Çalışma alanı %d</i>"
 
-#: src/windowlist.c:244 src/windowlist.c:247
+#: src/windowlist.c:268 src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "Çalışma Alanı _Ekle"
 
-#: src/windowlist.c:254
+#: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "Çalışma alanı %d'yi _Kaldır"
 
-#: src/windowlist.c:256
+#: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Çalışma alanı '%s'i _Kaldır"
+
+#: menueditor/xfce-menueditor.desktop.in.h:1
+msgid "Graphical tool for editing the Xfce 4 menu"
+msgstr ""
+
+#: menueditor/xfce-menueditor.desktop.in.h:2
+msgid "Menu Editor"
+msgstr ""
+
+#: menueditor/xfce-menueditor.desktop.in.h:3
+#, fuzzy
+msgid "Xfce 4 Menu Editor"
+msgstr "Xfce Menüsü"
+
+#: settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Settings for the Xfce 4 Desktop Manager"
+msgstr ""
+
+#: settings/xfce-backdrop-settings.desktop.in.h:3
+#, fuzzy
+msgid "Xfce 4 Desktop Settings"
+msgstr "Masaüstü Ayarları"
+
+#~ msgid "Title:"
+#~ msgstr "Başlık:"
+
+#~ msgid "Select icon"
+#~ msgstr "Simge seç"
+
+#~ msgid ""
+#~ "Cannot write in %s : \n"
+#~ "%s"
+#~ msgstr ""
+#~ "%s'e kaydedilemiyor : \n"
+#~ "%s"
+
+#~ msgid "Pointer"
+#~ msgstr "İşaretçi"
+
+#~ msgid "Corrupted file or incorrect file format !"
+#~ msgstr "Bozuk dosya ya da yanlış dosya biçemi!"
+
+#~ msgid "No root element in file !"
+#~ msgstr "Dosyada root bileşeni bulunmuyor!"
+
+#~ msgid "Bad datafile format !"
+#~ msgstr "Kötü veri dosyası biçemi!"
+
+#~ msgid "New menu"
+#~ msgstr "Yeni menü"
+
+#~ msgid "Filename:"
+#~ msgstr "Dosya Adı:"
+
+#~ msgid "All fields are required."
+#~ msgstr "Tüm alanlar gerekli."
+
+#~ msgid "Backdrop"
+#~ msgstr "Arka Plan"
+
+#~ msgid "Adding files from directory %s..."
+#~ msgstr "%s dizininden simgeler ekleniyor..."
+
+#~ msgid "Adding files from list %s..."
+#~ msgstr "%s listesinden dosyalar ekleniyor..."
+
+#~ msgid "Adding multiple files..."
+#~ msgstr "Çoklu dosya ekleniyor..."
 
 #, fuzzy
 #~ msgid "Select backdrop color"

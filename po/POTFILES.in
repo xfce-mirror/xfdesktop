@@ -5,8 +5,6 @@ menueditor/add_menu_dialog.c
 menueditor/dnd.c
 menueditor/edit_dialog.c
 menueditor/menueditor.c
-menueditor/move.c
-menueditor/new_dialog.c
 modules/menu/desktop-menu-dentry.c
 modules/menu/desktop-menuspec.c
 panel-plugin/desktop-menu-plugin.c
@@ -17,3 +15,6 @@ src/main.c
 src/menu.c
 src/windowlist.c
 src/xfce-desktop.c
+# files added by intltool-prepare
+menueditor/xfce-menueditor.desktop.in
+settings/xfce-backdrop-settings.desktop.in

@@ -1,8 +1,6 @@
 # settings/Makefile.am
 #
 
-EXTRA_DIST = xfce-backdrop-settings.desktop
-
 #
 # backdrop settings
 #
@@ -46,5 +44,11 @@ if HAVE_CYGWIN
 	@LIBX11_LIBS@
 endif
 
-appsdir = $(datadir)/applications
-apps_DATA = xfce-backdrop-settings.desktop
+desktopdir = $(datadir)/applications
+desktop_in_files = xfce-backdrop-settings.desktop.in
+desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+@INTLTOOL_DESKTOP_RULE@
+
+EXTRA_DIST = $(desktop_in_files)
+
+DISTCLEANFILES = $(desktop_DATA)

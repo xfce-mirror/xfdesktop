@@ -7,409 +7,354 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 3.99.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-17 23:16+0200\n"
+"POT-Creation-Date: 2005-01-28 22:00-0800\n"
 "PO-Revision-Date: 2004-10-30 01:36+0300\n"
 "Last-Translator: Mantas <zaz@xxx.lt>\n"
 "Language-Team: Lithuania <zaz@xxx.lt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-13\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
-#: menueditor/about_dialog.c:36
+#: menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
 msgstr "Xfce4 Meniu redaktorius"
 
 #. Credits
-#: menueditor/about_dialog.c:41
+#: menueditor/about_dialog.c:43
 msgid "Core developer"
 msgstr "Pagrindinis kûrëjas"
 
-#: menueditor/about_dialog.c:42 menueditor/about_dialog.c:43
-#: menueditor/about_dialog.c:44
+#: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:46
 msgid "Contributor"
 msgstr "Bendradarbis"
 
-#: menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:47
 msgid "Icon designer"
 msgstr "Ikonø dizaineris"
 
-#: menueditor/add_dialog.c:132 menueditor/add_dialog.c:147
+#: menueditor/add_dialog.c:159 menueditor/add_dialog.c:169
 msgid "Add menu entry"
 msgstr "Pridëti meniu áraðà"
 
 #. Type
-#: menueditor/add_dialog.c:153 menueditor/add_menu_dialog.c:98
-#: menueditor/edit_dialog.c:148
+#: menueditor/add_dialog.c:173 menueditor/add_menu_dialog.c:110
 msgid "Type:"
 msgstr "Tipas:"
 
-#: menueditor/add_dialog.c:156
+#: menueditor/add_dialog.c:176
 msgid "Launcher"
 msgstr "Leistukas"
 
-#: menueditor/add_dialog.c:161
+#: menueditor/add_dialog.c:180
 msgid "Submenu"
 msgstr "Vidinis meniu"
 
-#: menueditor/add_dialog.c:166
+#: menueditor/add_dialog.c:184
 msgid "Separator"
 msgstr "Skyriklis"
 
-#: menueditor/add_dialog.c:171
+#: menueditor/add_dialog.c:188
 msgid "Title"
 msgstr "Antraðtë"
 
-#: menueditor/add_dialog.c:176
+#: menueditor/add_dialog.c:192
 msgid "Quit"
 msgstr "Iðeiti"
 
 #. Name
-#: menueditor/add_dialog.c:191 menueditor/edit_dialog.c:260
-#: menueditor/edit_dialog.c:310 menueditor/edit_dialog.c:348
+#: menueditor/add_dialog.c:206 menueditor/edit_dialog.c:158
+#: menueditor/edit_dialog.c:218
 msgid "Name:"
 msgstr "Vardas:"
 
-#: menueditor/add_dialog.c:201 menueditor/edit_dialog.c:261
+#: menueditor/add_dialog.c:214 menueditor/edit_dialog.c:163
 msgid "Command:"
 msgstr "Komanda:"
 
-#: menueditor/add_dialog.c:217 menueditor/edit_dialog.c:252
-#: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
-#: menueditor/edit_dialog.c:390
+#: menueditor/add_dialog.c:226 menueditor/edit_dialog.c:150
+#: menueditor/edit_dialog.c:210
 msgid "Icon:"
 msgstr "Ikona:"
 
 #. Start Notify check button
-#: menueditor/add_dialog.c:233 menueditor/edit_dialog.c:272
+#. Startup notification
+#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:171
 msgid "Use startup _notification"
 msgstr "Naudoti paleisties per_spëjimà"
 
 #. Run in terminal check button
-#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:273
+#. Run in terminal
+#: menueditor/add_dialog.c:241 menueditor/edit_dialog.c:174
 msgid "Run in _terminal"
 msgstr "Paleisti _terminale"
 
-#: menueditor/add_dialog.c:282 menueditor/edit_dialog.c:459
+#: menueditor/add_dialog.c:272
 msgid "The command doesn't exist !"
 msgstr "Komanda neegzistuoja !"
 
-#: menueditor/add_dialog.c:288
+#: menueditor/add_dialog.c:278
 msgid "All fields must be filled to add an item."
 msgstr "Visi laukai turi bûti uþpildyti norint pridëti elementà."
 
-#: menueditor/add_dialog.c:296
+#: menueditor/add_dialog.c:287
 msgid "The 'Name' field is required."
 msgstr "Laukas 'Vardas' yra privalomas"
 
-#: menueditor/add_dialog.c:350 menueditor/dnd.c:152
-#: menueditor/menueditor.c:346 menueditor/move.c:90 menueditor/move.c:248
+#: menueditor/add_dialog.c:331
 msgid "--- separator ---"
 msgstr "--- skyriklis ---"
 
-#: menueditor/add_dialog.c:375 menueditor/edit_dialog.c:494
+#: menueditor/add_dialog.c:357
 msgid "quit"
 msgstr "iðeiti"
 
-#: menueditor/add_menu_dialog.c:78 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:805
+#: menueditor/add_menu_dialog.c:97 menueditor/add_menu_dialog.c:103
+#: menueditor/menueditor.c:831
 msgid "Add an external menu"
 msgstr "Pridëti iðoriná meniu"
 
-#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:151
+#: menueditor/add_menu_dialog.c:115
 msgid "File"
 msgstr "Failas"
 
-#: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:156
+#: menueditor/add_menu_dialog.c:119
 msgid "System"
 msgstr "Sistemos"
 
-#: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:171
+#: menueditor/add_menu_dialog.c:133
 msgid "Source:"
 msgstr "Ðaltinis:"
 
 #. Style
-#: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:184
+#: menueditor/add_menu_dialog.c:145
 msgid "Style:"
 msgstr "Stilius:"
 
-#: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:187
+#: menueditor/add_menu_dialog.c:148
 msgid "Simple"
 msgstr "Paprastas"
 
-#: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:190
+#: menueditor/add_menu_dialog.c:150
 msgid "Multilevel"
 msgstr "Daug lygiø"
 
 #. Unique
-#: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:203
+#: menueditor/add_menu_dialog.c:162
 msgid "_Unique entries only"
 msgstr "Tiktai _unikalûs áraðai"
 
-#: menueditor/add_menu_dialog.c:208
+#: menueditor/add_menu_dialog.c:198
 msgid "The 'Source' field is required."
 msgstr "Laukas 'Ðaltinis' yra privalomas."
 
-#: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:235
-#: menueditor/dnd.c:154 menueditor/edit_dialog.c:508
-#: menueditor/edit_dialog.c:521 menueditor/menueditor.c:394
-#: menueditor/move.c:120 menueditor/move.c:278
+#: menueditor/add_menu_dialog.c:202 menueditor/add_menu_dialog.c:212
 msgid "--- include ---"
 msgstr "--- áterpti ---"
 
-#: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:159
-#: menueditor/edit_dialog.c:522 menueditor/menueditor.c:397
-#: menueditor/move.c:123 menueditor/move.c:281
+#: menueditor/add_menu_dialog.c:213
 msgid "system"
 msgstr "sistema"
 
 #. Create dialog for editing
-#: menueditor/edit_dialog.c:100 menueditor/edit_dialog.c:113
+#: menueditor/edit_dialog.c:127 menueditor/edit_dialog.c:134
 msgid "Edit menu entry"
 msgstr "Redaguoti meniu áraðà"
 
-#: menueditor/edit_dialog.c:131
+#: menueditor/edit_dialog.c:139
 msgid "Separators cannot be edited"
 msgstr "Skyrikliai negali bûti redaguojami"
 
-#. Name
-#: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:104
-msgid "Title:"
-msgstr "Antraðtë:"
-
-#: menueditor/menueditor.c:148
-msgid "Select command"
-msgstr "Pasirinkite komandà"
-
-#: menueditor/menueditor.c:209
-msgid "Select icon"
-msgstr "Pasirinkite ikonà"
-
-#: menueditor/menueditor.c:215 panel-plugin/desktop-menu-plugin.c:389
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
-#: settings/backdrop_settings.c:533
-msgid "All Files"
-msgstr "Visi Failai"
-
-#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:395
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
-msgid "Image Files"
-msgstr "Paveikslø Failai"
-
-#: menueditor/menueditor.c:272 menueditor/menueditor.c:679
-msgid "Do you want to save before closing the menu ?"
-msgstr "Ar norite iðsaugoti prieð udarydami meniu ?"
-
-#: menueditor/menueditor.c:273
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Jûs pakeitëte meniu. Ar norëtumëte iðsaugoti prieð iðeidami ?"
-
-#: menueditor/menueditor.c:274
-msgid "Forget modifications"
-msgstr "Pamirðti modifikacijas"
-
-#: menueditor/menueditor.c:473 menueditor/menueditor.c:531
-#: menueditor/menueditor.c:677
-msgid "Question"
-msgstr "Klausimas"
-
-#: menueditor/menueditor.c:475
-msgid "Do you want to save before opening the default menu ?"
-msgstr "Ar norite iðsaugoti prieð atidarydami pagrindiná meniu ?"
-
-#: menueditor/menueditor.c:477 menueditor/menueditor.c:535
-#: menueditor/menueditor.c:681
-msgid "Ignore modifications"
-msgstr "Atmesti modifikacijas"
-
-#: menueditor/menueditor.c:533
-msgid "Do you want to save before opening an other menu ?"
-msgstr "Ar norite iðsaugoti prieð atidarydami kità meniu?"
-
-#: menueditor/menueditor.c:546
-msgid "Open menu file"
-msgstr "Atidaryti meniu failà"
-
-#: menueditor/menueditor.c:580 menueditor/menueditor.c:591
-#, c-format
-msgid ""
-"Cannot write in %s : \n"
-"%s"
-msgstr ""
-"Neámanoma áraðyti á %s : \n"
-"%s"
-
-#: menueditor/menueditor.c:622
-msgid "Save as..."
-msgstr "Saugoti kaip..."
-
-#: menueditor/menueditor.c:799
-msgid "Edit"
-msgstr "Redaguoti"
-
-#. File menu
-#: menueditor/menueditor.c:1005
-msgid "_File"
-msgstr "_Failas"
-
-#: menueditor/menueditor.c:1014
-msgid "Open default menu"
-msgstr "Atidaryti pagrindiná meniu"
-
-#. Edit menu
-#: menueditor/menueditor.c:1028
-msgid "_Edit"
-msgstr "_Redaguoti"
-
-#: menueditor/menueditor.c:1034
-msgid "Add an external menu..."
-msgstr "Pridëti iðoriná meniu..."
-
-#. Help menu
-#: menueditor/menueditor.c:1046
-msgid "_Help"
-msgstr "_Pagalba"
-
-#: menueditor/menueditor.c:1051
-msgid "_About..."
-msgstr "_Apie..."
-
-#: menueditor/menueditor.c:1061
-msgid "Create a new Xfce4 menu file"
-msgstr "Sukurti naujà Xfce4 meniu failà"
-
-#: menueditor/menueditor.c:1065
-msgid "Open an Xfce4 menu file"
-msgstr "Atidaryti Xfce4 meniu failà"
-
-#: menueditor/menueditor.c:1069
-msgid "Save current menu"
-msgstr "Saugoti dabartiná meniu"
-
-#: menueditor/menueditor.c:1073
-msgid "Close current menu"
-msgstr "Uþdaryti dabartiná meniu"
-
-#: menueditor/menueditor.c:1078
-msgid "Add an entry to the menu"
-msgstr "Pridëti áraðà á meniu"
-
-#: menueditor/menueditor.c:1082
-msgid "Delete the current entry"
-msgstr "Iðtrinti ðá áraðà"
-
-#: menueditor/menueditor.c:1086
-msgid "Move the current entry up"
-msgstr "Perkelti ðá áraðà aukðtyn"
-
-#: menueditor/menueditor.c:1090
-msgid "Move the current entry down"
-msgstr "Perkelti ðá áraðà þemyn"
-
-#: menueditor/menueditor.c:1095
-msgid "Collapse the tree"
-msgstr "Sutraukti medá"
-
-#: menueditor/menueditor.c:1099
-msgid "Expand the tree"
-msgstr "Iðskleisti medá"
-
-#: menueditor/menueditor.c:1130
-msgid "Name"
-msgstr "Vardas"
-
-#: menueditor/menueditor.c:1132
-msgid "Command"
-msgstr "Komanda"
-
-#: menueditor/menueditor.c:1134
-msgid "Hidden"
-msgstr "Paslëptas"
-
-#: menueditor/menueditor.c:1136
-msgid "Pointer"
-msgstr "Rodyklë"
-
-#: menueditor/menueditor.c:1260
-msgid "Corrupted file or incorrect file format !"
-msgstr "Sugadintas failas arba neteisingas failo formatas !"
-
-#: menueditor/menueditor.c:1273
-msgid "No root element in file !"
-msgstr "Nëra ðakninio elemento faile !"
-
-#: menueditor/menueditor.c:1284
-msgid "Bad datafile format !"
-msgstr "Blogas duomenø failo formatas !"
-
-#: menueditor/menueditor.c:1388
+#: menueditor/menueditor.c:81
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "Failas %s neegzistuoja !"
 
-#: menueditor/move.c:408
-msgid "Do you want to move the item into the parent menu?"
-msgstr "Ar norite perkelti elementà á pagrindiná meniu?"
+#: menueditor/menueditor.c:121 menueditor/menueditor.c:532
+msgid "Do you want to save before closing the menu ?"
+msgstr "Ar norite iðsaugoti prieð udarydami meniu ?"
 
-#: menueditor/move.c:512
-msgid "Do you want to move the item into the submenu?"
-msgstr "Ar norite perkelti elementà á vidiná meniu?"
+#: menueditor/menueditor.c:123
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr "Jûs pakeitëte meniu. Ar norëtumëte iðsaugoti prieð iðeidami ?"
 
-#: menueditor/new_dialog.c:60
+#: menueditor/menueditor.c:125
+msgid "Forget modifications"
+msgstr "Pamirðti modifikacijas"
+
+#: menueditor/menueditor.c:310
 msgid "Are you sure you want to close the current menu?"
 msgstr "Ar tikrai norite uþdaryti ðá meniu?"
 
-#: menueditor/new_dialog.c:76
+#: menueditor/menueditor.c:325
 msgid "Do you want to save before closing the file?"
 msgstr "Norëtumëte iðsaugoti pries uþdarydami failà?"
 
-#. get the filename and name for the new menu
-#: menueditor/new_dialog.c:86 menueditor/new_dialog.c:98
-msgid "New menu"
-msgstr "Naujas meniu"
+#: menueditor/menueditor.c:334
+msgid "Select command"
+msgstr "Pasirinkite komandà"
 
-#. Filename
-#: menueditor/new_dialog.c:111
-msgid "Filename:"
-msgstr "Failo vardas:"
+#: menueditor/menueditor.c:366 menueditor/menueditor.c:423
+#: menueditor/menueditor.c:530
+msgid "Question"
+msgstr "Klausimas"
 
-#: menueditor/new_dialog.c:144
-msgid "All fields are required."
-msgstr "Visi laukai privalomi."
+#: menueditor/menueditor.c:368
+msgid "Do you want to save before opening an other menu ?"
+msgstr "Ar norite iðsaugoti prieð atidarydami kità meniu?"
+
+#: menueditor/menueditor.c:370 menueditor/menueditor.c:427
+#: menueditor/menueditor.c:534
+msgid "Ignore modifications"
+msgstr "Atmesti modifikacijas"
+
+#: menueditor/menueditor.c:381
+msgid "Open menu file"
+msgstr "Atidaryti meniu failà"
+
+#: menueditor/menueditor.c:425
+msgid "Do you want to save before opening the default menu ?"
+msgstr "Ar norite iðsaugoti prieð atidarydami pagrindiná meniu ?"
+
+#: menueditor/menueditor.c:483
+msgid "Save as..."
+msgstr "Saugoti kaip..."
+
+#: menueditor/menueditor.c:638
+msgid "Do you want to move the item into the parent menu?"
+msgstr "Ar norite perkelti elementà á pagrindiná meniu?"
+
+#: menueditor/menueditor.c:684
+msgid "Do you want to move the item into the submenu?"
+msgstr "Ar norite perkelti elementà á vidiná meniu?"
+
+#: menueditor/menueditor.c:825
+msgid "Edit"
+msgstr "Redaguoti"
+
+#. File menu
+#: menueditor/menueditor.c:849
+msgid "_File"
+msgstr "_Failas"
+
+#: menueditor/menueditor.c:858
+msgid "Open default menu"
+msgstr "Atidaryti pagrindiná meniu"
+
+#. Edit menu
+#: menueditor/menueditor.c:872
+msgid "_Edit"
+msgstr "_Redaguoti"
+
+#: menueditor/menueditor.c:878
+msgid "Add an external menu..."
+msgstr "Pridëti iðoriná meniu..."
+
+#. Help menu
+#: menueditor/menueditor.c:890
+msgid "_Help"
+msgstr "_Pagalba"
+
+#: menueditor/menueditor.c:894
+msgid "_About..."
+msgstr "_Apie..."
+
+#: menueditor/menueditor.c:906
+msgid "Create a new Xfce4 menu file"
+msgstr "Sukurti naujà Xfce4 meniu failà"
+
+#: menueditor/menueditor.c:911
+msgid "Open an Xfce4 menu file"
+msgstr "Atidaryti Xfce4 meniu failà"
+
+#: menueditor/menueditor.c:916
+msgid "Save current menu"
+msgstr "Saugoti dabartiná meniu"
+
+#: menueditor/menueditor.c:921
+msgid "Close current menu"
+msgstr "Uþdaryti dabartiná meniu"
+
+#: menueditor/menueditor.c:927
+msgid "Add an entry to the menu"
+msgstr "Pridëti áraðà á meniu"
+
+#: menueditor/menueditor.c:931
+msgid "Delete the current entry"
+msgstr "Iðtrinti ðá áraðà"
+
+#: menueditor/menueditor.c:937
+msgid "Move the current entry up"
+msgstr "Perkelti ðá áraðà aukðtyn"
+
+#: menueditor/menueditor.c:942
+msgid "Move the current entry down"
+msgstr "Perkelti ðá áraðà þemyn"
+
+#: menueditor/menueditor.c:948
+msgid "Collapse the tree"
+msgstr "Sutraukti medá"
+
+#: menueditor/menueditor.c:953
+msgid "Expand the tree"
+msgstr "Iðskleisti medá"
+
+#: menueditor/menueditor.c:981
+msgid "Name"
+msgstr "Vardas"
+
+#: menueditor/menueditor.c:984
+msgid "Command"
+msgstr "Komanda"
+
+#: menueditor/menueditor.c:985
+msgid "Hidden"
+msgstr "Paslëptas"
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
 msgstr "/Kitas"
 
-#: panel-plugin/desktop-menu-plugin.c:204
-#: panel-plugin/desktop-menu-plugin.c:532
+#: panel-plugin/desktop-menu-plugin.c:205
+#: panel-plugin/desktop-menu-plugin.c:535
 msgid "Xfce Menu"
 msgstr "Xfce Meniu"
 
-#: panel-plugin/desktop-menu-plugin.c:372
+#: panel-plugin/desktop-menu-plugin.c:373
 msgid "Select Icon"
 msgstr "Pasirinkti Ikonà"
 
-#: panel-plugin/desktop-menu-plugin.c:374
+#: panel-plugin/desktop-menu-plugin.c:375
 msgid "Select Menu File"
 msgstr "Pasirinkti Meniu Failà"
 
-#: panel-plugin/desktop-menu-plugin.c:403
+#: panel-plugin/desktop-menu-plugin.c:390 settings/backdrop-mgr.c:414
+#: settings/backdrop-mgr.c:515 settings/backdrop_settings.c:533
+msgid "All Files"
+msgstr "Visi Failai"
+
+#: panel-plugin/desktop-menu-plugin.c:396 settings/backdrop-mgr.c:418
+#: settings/backdrop_settings.c:537
+msgid "Image Files"
+msgstr "Paveikslø Failai"
+
+#: panel-plugin/desktop-menu-plugin.c:404
 msgid "Menu Files"
 msgstr "Meniu failai"
 
-#: panel-plugin/desktop-menu-plugin.c:462
+#: panel-plugin/desktop-menu-plugin.c:465
 msgid "_Menu file:"
 msgstr "_Meniu failas:"
 
-#: panel-plugin/desktop-menu-plugin.c:496
+#: panel-plugin/desktop-menu-plugin.c:499
 msgid "_Button icon:"
 msgstr "_Mygtuko ikona:"
 
-#: panel-plugin/desktop-menu-plugin.c:521
+#: panel-plugin/desktop-menu-plugin.c:524
 msgid "Show _icons in menu"
 msgstr "Rodyti ikonas meniu"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:112
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -419,7 +364,8 @@ msgid ""
 msgstr ""
 "Negalima iðsaugoti failo %s: %s\n"
 "\n"
-"Pasirinkite kità vietà arba paspauskite atðaukti dialogo lange norëdami paðalinti pakeitimus"
+"Pasirinkite kità vietà arba paspauskite atðaukti dialogo lange norëdami "
+"paðalinti pakeitimus"
 
 #: settings/backdrop-mgr.c:409
 msgid "Select backdrop image file"
@@ -460,7 +406,7 @@ msgstr "Redaguoti fonø sàraðà"
 
 #. the dialog
 #: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
-#: src/xfce-desktop.c:670
+#: src/xfce-desktop.c:676
 msgid "Desktop"
 msgstr "Darbastalis"
 
@@ -510,6 +456,7 @@ msgstr "Priderinti _Ryðkumà:"
 
 #. header
 #: settings/backdrop_settings.c:851
+#: settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "Darbastalio nuostatos"
 
@@ -632,7 +579,8 @@ msgstr "Parinktys yra:\n"
 
 #: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "    -reload      Perkrauti visus nustaytmus, atnaujinti paveikslø sàraðà\n"
+msgstr ""
+"    -reload      Perkrauti visus nustaytmus, atnaujinti paveikslø sàraðà\n"
 
 #: src/main.c:303
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
@@ -641,31 +589,88 @@ msgstr "    -menu        Iðskleidþiamas meniu (esamoje pelës pozicijoje)\n"
 #: src/main.c:304
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  Iðskleidþiamas langø sàraðas (esamoje pelës pozicijoje)\n"
+msgstr ""
+"    -windowlist  Iðskleidþiamas langø sàraðas (esamoje pelës pozicijoje)\n"
 
-#: src/windowlist.c:183
+#: src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Darbo laukas %d</b>"
 
-#: src/windowlist.c:188
+#: src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Darbo vieta %d</i>"
 
-#: src/windowlist.c:244 src/windowlist.c:247
+#: src/windowlist.c:268 src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "_Pridëti darbo vietà"
 
-#: src/windowlist.c:254
+#: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Paðalinti Darbo vietà %d"
 
-#: src/windowlist.c:256
+#: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Paðalinti Darbo vieta '%s'"
+
+#: menueditor/xfce-menueditor.desktop.in.h:1
+msgid "Graphical tool for editing the Xfce 4 menu"
+msgstr ""
+
+#: menueditor/xfce-menueditor.desktop.in.h:2
+msgid "Menu Editor"
+msgstr ""
+
+#: menueditor/xfce-menueditor.desktop.in.h:3
+#, fuzzy
+msgid "Xfce 4 Menu Editor"
+msgstr "Xfce Meniu"
+
+#: settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Settings for the Xfce 4 Desktop Manager"
+msgstr ""
+
+#: settings/xfce-backdrop-settings.desktop.in.h:3
+#, fuzzy
+msgid "Xfce 4 Desktop Settings"
+msgstr "Darbastalio nuostatos"
+
+#~ msgid "Title:"
+#~ msgstr "Antraðtë:"
+
+#~ msgid "Select icon"
+#~ msgstr "Pasirinkite ikonà"
+
+#~ msgid ""
+#~ "Cannot write in %s : \n"
+#~ "%s"
+#~ msgstr ""
+#~ "Neámanoma áraðyti á %s : \n"
+#~ "%s"
+
+#~ msgid "Pointer"
+#~ msgstr "Rodyklë"
+
+#~ msgid "Corrupted file or incorrect file format !"
+#~ msgstr "Sugadintas failas arba neteisingas failo formatas !"
+
+#~ msgid "No root element in file !"
+#~ msgstr "Nëra ðakninio elemento faile !"
+
+#~ msgid "Bad datafile format !"
+#~ msgstr "Blogas duomenø failo formatas !"
+
+#~ msgid "New menu"
+#~ msgstr "Naujas meniu"
+
+#~ msgid "Filename:"
+#~ msgstr "Failo vardas:"
+
+#~ msgid "All fields are required."
+#~ msgstr "Visi laukai privalomi."
 
 #, fuzzy
 #~ msgid "Backdrop"
@@ -717,4 +722,6 @@ msgstr "_Paðalinti Darbo vieta '%s'"
 #~ msgid ""
 #~ "xfdesktop: could not connect to settings manager!Please check your "
 #~ "installation."
-#~ msgstr "xfdesktop: neÄ¯manoma susijungti su nuostatÅ³ tvarkykle! Patikrinkite savo instaliacijÄ…."
+#~ msgstr ""
+#~ "xfdesktop: neÄ¯manoma susijungti su nuostatÅ³ tvarkykle! Patikrinkite "
+#~ "savo instaliacijÄ…."
