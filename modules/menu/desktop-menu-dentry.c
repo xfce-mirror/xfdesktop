@@ -512,13 +512,19 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 	gchar kde_dentry_path[PATH_MAX];
 	gchar *catfile_user = NULL, *catfile = NULL;
 	struct stat st;
-
+	XfceKiosk *kiosk;
+	gboolean user_menu = TRUE;
+	
 	g_return_if_fail(desktop_menu != NULL);
 
 	TRACE("base: %s", desktop_menu->dentry_basepath);
 	
+	kiosk = xfce_kiosk_new("xfdesktop");
+	user_menu = xfce_kiosk_query(kiosk, "UserMenu");
+	xfce_kiosk_free(kiosk);
+	
 	catfile_user = xfce_get_userfile(CATEGORIES_FILE, NULL);
-	if(!g_file_test(catfile_user, G_FILE_TEST_EXISTS)
+	if(!user_menu || !g_file_test(catfile_user, G_FILE_TEST_EXISTS)
 			|| !desktop_menuspec_parse_categories(catfile_user))
 	{
 		catfile = g_build_filename(SYSCONFDIR, "xfce4", CATEGORIES_FILE, NULL);

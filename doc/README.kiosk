@@ -1,0 +1,46 @@
+Xfdesktop supports a 'kiosk mode' in which you can restrict the actions users
+are allowed to take.  You can do this by creating a file called
+'xfdesktop.kioskrc' in $sysconfdir/xfce4/ (usually /etc/xfce4/).  A sample
+file might look like this:
+
+--- begin xfdesktop.kioskrc ---
+UserMenu=%wheel
+CustomizeBackdrop=ALL
+CustomizeDesktopMenu=%wheel
+CustomizeWindowlist=NONE
+---  end xfdesktop.kioskrc  ---
+
+Additionally, the above can be added to $sysconfdir/xfce4/kioskrc if you put it
+in a section called '[xfdesktop]', like so:
+
+--- begin kioskrc ---
+[xfdesktop]
+UserMenu=%wheel
+CustomizeBackdrop=ALL
+CustomizeDesktopMenu=%wheel
+CustomizeWindowlist=NONE
+---  end kioskrc  ---
+
+Entries in $sysconfdir/xfce4/kioskrc will override any entries in
+$sysconfdir/xfce4/xfdesktop.kioskrc.
+
+Each entry can have a user name, a group name (prefixed with '%'), or one of
+the two special values 'ALL' or 'NONE'.  lists of names should be
+comma-separated.
+
+Here's an explanation of the keys:
+
+UserMenu:  Whether or not to allow user modifications to the desktop menu.  If
+           not, xfdesktop will ignore the menu in ~/.xfce4/ and use the system
+           menu in $sysconfdir/xfce4/menu.xml.
+
+CustomizeBackdrop: Whether or not to allow user modifications to the desktop
+           backdrop.  If not, the Backdrop settings panel will be greyed out.
+
+CustomizeDesktopMenu: Whether or not to allow user modifications to the desktop
+           menu.  This includes showing or hiding application icons, as well
+           as showing or hiding the menu itself.
+
+CustomizeWindowlist: Whether or not to allow user modifications to the window
+           list.  This includes showing or hiding window icons, as well as
+           showing or hiding the menu itself.

@@ -138,10 +138,13 @@ _edit_menu_cb(GtkWidget *w, gpointer user_data)
 GtkWidget *
 create_menu_page(BackdropDialog *bd)
 {
-	GtkWidget *page, *vbox, *frame, *frame1, *chk;
+	GtkWidget *page, *vbox, *frame, *frame1, *chk, *wl_vbox, *dm_vbox;
 #ifdef USE_DESKTOP_MENU
 	GtkWidget *hbox, *btn;
 #endif
+	XfceKiosk *kiosk;
+	
+	kiosk = xfce_kiosk_new("xfdesktop");
 	
 	page = gtk_vbox_new(FALSE, 6);
 	
@@ -149,7 +152,7 @@ create_menu_page(BackdropDialog *bd)
 	gtk_widget_show(frame);
 	gtk_box_pack_start(GTK_BOX(page), frame, FALSE, FALSE, 0);
 	
-	vbox = gtk_vbox_new(FALSE, 0);
+	wl_vbox = vbox = gtk_vbox_new(FALSE, 0);
 	gtk_widget_show(vbox);
 	xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
 	
@@ -177,12 +180,15 @@ create_menu_page(BackdropDialog *bd)
 	
 	gtk_widget_set_sensitive(frame1, show_windowlist);
 	
+	if(!xfce_kiosk_query(kiosk, "CustomizeWindowlist"))
+		gtk_widget_set_sensitive(wl_vbox, FALSE);
+	
 #ifdef USE_DESKTOP_MENU
 	frame = xfce_framebox_new("Desktop Menu", TRUE);
 	gtk_widget_show(frame);
 	gtk_box_pack_start(GTK_BOX(page), frame, FALSE, FALSE, 0);
 	
-	vbox = gtk_vbox_new(FALSE, 0);
+	dm_vbox = vbox = gtk_vbox_new(FALSE, 0);
 	gtk_widget_show(vbox);
 	xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
 	
@@ -218,7 +224,12 @@ create_menu_page(BackdropDialog *bd)
 	g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(_edit_menu_cb), NULL);
 	
 	gtk_widget_set_sensitive(frame1, show_desktopmenu);
+	
+	if(!xfce_kiosk_query(kiosk, "CustomizeDesktopMenu"))
+		gtk_widget_set_sensitive(dm_vbox, FALSE);
 #endif
+	
+	xfce_kiosk_free(kiosk);
 	
 	return page;
 }

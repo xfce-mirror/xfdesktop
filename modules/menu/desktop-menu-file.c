@@ -128,19 +128,26 @@ _do_builtin(GtkMenuItem *mi, gpointer user_data)
 	}
 }
 
+/* FIXME: support env var for backward compat, remove it later */
 gchar *
 desktop_menu_file_get_menufile()
 {
 	gchar filename[PATH_MAX];
 	const gchar *env = g_getenv("XFCE_DISABLE_USER_CONFIG");
-
-	if(!env || !strcmp(env, "0")) {
+	XfceKiosk *kiosk;
+	gboolean user_menu = TRUE;
+	
+	kiosk = xfce_kiosk_new("xfdesktop");
+	user_menu = xfce_kiosk_query(kiosk, "UserMenu");
+	xfce_kiosk_free(kiosk);
+	
+	if(user_menu && (!env || !strcmp(env, "0"))) {
 		gchar *usermenu = xfce_get_userfile("menu.xml", NULL);
 		if(g_file_test(usermenu, G_FILE_TEST_IS_REGULAR))
 			return usermenu;
 		g_free(usermenu);
 	}
-
+	
 	if(xfce_get_path_localized(filename, PATH_MAX, SEARCHPATH,
 			"menu.xml", G_FILE_TEST_IS_REGULAR))
 	{

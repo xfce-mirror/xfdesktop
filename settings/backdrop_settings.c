@@ -761,6 +761,8 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 	GdkColor color;
     BackdropDialog *bd;
 	gint i, j, nscreens, nmonitors = 0;
+	XfceKiosk *kiosk;
+	gboolean allow_custom_backdrop = TRUE;
 
     bd = g_new0(BackdropDialog, 1);
     bd->plugin = mcs_plugin;
@@ -794,6 +796,10 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 	nscreens = gdk_display_get_n_screens(gdk_display_get_default());
 	if(nscreens == 1)
 		nmonitors = gdk_screen_get_n_monitors(gdk_display_get_default_screen(gdk_display_get_default()));
+	
+	kiosk = xfce_kiosk_new("xfdesktop");
+	allow_custom_backdrop = xfce_kiosk_query(kiosk, "CustomizeBackdrop");
+	xfce_kiosk_free(kiosk);
 	
 	if(nscreens > 1 || nmonitors > 1) {
 		/* only use a noteboook if we have more than one screen */
