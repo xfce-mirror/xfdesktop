@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-10-17 23:16+0200\n"
-"PO-Revision-Date: 2004-11-24 17:50+ZONE\n"
+"PO-Revision-Date: 2004-11-27 22:40+ZONE\n"
 "Last-Translator: ByungHyun Choi<byunghyunchoi@rtlinux.or.kr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "형태:"
 
 #: menueditor/add_dialog.c:156
 msgid "Launcher"
-msgstr "구동기"
+msgstr "실행기"
 
 #: menueditor/add_dialog.c:161
 msgid "Submenu"
@@ -241,7 +241,7 @@ msgstr ""
 
 #: menueditor/menueditor.c:622
 msgid "Save as..."
-msgstr "다른 이름으로 저장"
+msgstr "다른 이름으로..."
 
 #: menueditor/menueditor.c:799
 msgid "Edit"
@@ -249,7 +249,6 @@ msgstr "목록 수정"
 
 #. File menu
 #: menueditor/menueditor.c:1005
-#, fuzzy
 msgid "_File"
 msgstr "화일(_F)"
 
@@ -333,7 +332,7 @@ msgstr ""
 
 #: menueditor/menueditor.c:1260
 msgid "Corrupted file or incorrect file format !"
-msgstr "화일이 손상되었거나 형식이 틀립니다."
+msgstr "화일이 손상되었거나 형식이 틀립니다!"
 
 #: menueditor/menueditor.c:1273
 msgid "No root element in file !"
@@ -362,7 +361,7 @@ msgstr "현재 메뉴를 닫으시렵니까?"
 
 #: menueditor/new_dialog.c:76
 msgid "Do you want to save before closing the file?"
-msgstr "화일을 닫기 전에 저장하시렵니가?"
+msgstr "화일을 닫기 전에 저장하시렵니까?"
 
 #. get the filename and name for the new menu
 #: menueditor/new_dialog.c:86 menueditor/new_dialog.c:98
@@ -380,7 +379,7 @@ msgstr "모든 항목을 입력해야합니다."
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
-msgstr ""
+msgstr "기타"
 
 #: panel-plugin/desktop-menu-plugin.c:204
 #: panel-plugin/desktop-menu-plugin.c:532
@@ -593,7 +592,7 @@ msgstr "메뉴(_M)"
 #: settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "xfce4 메뉴 편집기 기동 실패: %s"
+msgstr "Xfce4 메뉴 편집기 기동 실패: %s"
 
 #: settings/menu_settings.c:153
 msgid "Window List"
@@ -649,7 +648,7 @@ msgstr ""
 #: src/windowlist.c:183
 #, fuzzy, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "작업공간 %d"
+msgstr "<b>작업공간 %d</b>"
 
 #: src/windowlist.c:188
 #, fuzzy, c-format
