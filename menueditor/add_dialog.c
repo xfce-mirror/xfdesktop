@@ -27,6 +27,8 @@
 
 #include "menueditor.h"
 
+#include "../modules/menu/dummy_icon.h"
+
 #include "add_dialog.h"
 
 /*************************/
@@ -290,6 +292,8 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 
       if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_icon)))!=0){
 	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
+	if(!icon)
+	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(entry_icon)));
       }
 
@@ -377,8 +381,11 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 
       if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_icon)))!=0){
 	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
+
 	if(icon)
 	  xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(entry_icon)));
+	else
+	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
       }
 
       /* Append entry in the tree */
@@ -491,6 +498,9 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
 	if(icon)
 	  xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(entry_icon)));
+	else
+	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
+
       }
 
       /* Append entry in the tree */
@@ -562,6 +572,8 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
 	if(icon)
 	  xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(entry_icon)));
+	else
+	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
       }
       
       /* Append entry in the tree */

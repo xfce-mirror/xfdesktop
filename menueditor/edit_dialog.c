@@ -28,6 +28,8 @@
 
 #include "menueditor.h"
 
+#include "../modules/menu/dummy_icon.h"
+
 #include "add_menu_dialog.h"
 #include "edit_dialog.h"
 
@@ -435,6 +437,8 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
       if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
 	xmlAttrPtr icon_prop;
+	
+	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
 	/* Remove the property in the xml tree */
 	icon_prop = xmlHasProp(node, "icon");
@@ -498,6 +502,8 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
       if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
 	xmlAttrPtr icon_prop;
 
+	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
+	
 	/* Remove the property in the xml tree */
 	icon_prop = xmlHasProp(node, "icon");
 	xmlRemoveProp(icon_prop);
@@ -531,6 +537,8 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
       if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
 	xmlAttrPtr icon_prop;
+	
+	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
 	/* Remove the property in the xml tree */
 	icon_prop = xmlHasProp(node, "icon");
@@ -567,6 +575,8 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
       if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
 	xmlAttrPtr icon_prop;
+
+	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
 	/* Remove the property in the xml tree */
 	icon_prop = xmlHasProp(node, "icon");

@@ -46,6 +46,8 @@
 #include "me-icon32.xpm"
 #include "me-icon48.xpm"
 
+#include "../modules/menu/dummy_icon.h"
+
 /* Search path for menu.xml file */
 #define SEARCHPATH (SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%L:"\
                     SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%l:"\
@@ -221,7 +223,9 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 
     /* Load the icon */
     if(prop_icon)
-	icon = xfce_load_themed_icon(prop_icon, ICON_SIZE);
+      icon = xfce_load_themed_icon(prop_icon, ICON_SIZE);
+    else
+      icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
     /* separator */
     if(!xmlStrcmp(menu->name,(xmlChar*)"separator")){
@@ -397,8 +401,10 @@ void filesel_ok(GtkWidget *widget, GtkFileSelection *filesel_dialog)
 /*****************************/
 void menu_open_default_cb(GtkWidget *widget, gpointer data)
 {
+
   gchar *filename = get_default_menu_file();
-  
+  gchar *window_title;
+
   /* Check if there is no other file opened */
   if(menueditor_app.xml_menu_file != NULL){
     if(menueditor_app.menu_modified==TRUE){
@@ -424,6 +430,11 @@ void menu_open_default_cb(GtkWidget *widget, gpointer data)
 
   open_menu_file(filename);
 
+  /* Set window's title */
+  window_title = g_strdup_printf("Xfce4-MenuEditor - %s", menueditor_app.menu_file_name);
+  gtk_window_set_title(GTK_WINDOW(menueditor_app.main_window), window_title);
+
+  g_free(window_title);
   g_free(filename);
 }
 
