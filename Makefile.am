@@ -45,6 +45,7 @@ conf_DATA = 								\
 	menu.xml.ms  							\
 	menu.xml.nl  							\
 	menu.xml.ro							\
+	menu.xml.ru							\
 	menu.xml.ta 							\
 	menu.xml.tr 							\
 	menu.xml.vi 							\

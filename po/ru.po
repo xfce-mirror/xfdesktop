@@ -1,68 +1,70 @@
+# translation of xfdesktop.po to Russian
 # translation of ru.po to Russian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Poul Ionkin <wizzard@nmg.lv>, 2003.
+# Anthony Ivanoff <a-i@bk.ru>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: ru\n"
+"Project-Id-Version: xfdesktop\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-08-06 23:16+0200\n"
-"PO-Revision-Date: 2003-07-18 00:22+0000\n"
-"Last-Translator: Poul Ionkin <wizzard@nmg.lv>\n"
-"Language-Team: Russian <none>\n"
+"PO-Revision-Date: 2004-08-24 13:38+0600\n"
+"Last-Translator: Anthony Ivanoff <a-i@bk.ru>\n"
+"Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
-"X-Generator: KBabel 1.2beta2\n"
+"X-Generator: KBabel 1.3.1\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: menueditor/about_dialog.c:36
 msgid "A menu editor for Xfce4"
-msgstr ""
+msgstr "Редактор меню для Xfce4"
 
 #: menueditor/about_dialog.c:45
 msgid "Core developer"
-msgstr ""
+msgstr "Главный разработчик"
 
 #: menueditor/about_dialog.c:49 menueditor/about_dialog.c:53
 #: menueditor/about_dialog.c:57
 msgid "Contributor"
-msgstr ""
+msgstr "Помощник"
 
 #: menueditor/about_dialog.c:61
 msgid "Icon designer"
-msgstr ""
+msgstr "Дизайнер значков"
 
 #: menueditor/add_dialog.c:131 menueditor/add_dialog.c:146
 msgid "Add menu entry"
-msgstr ""
+msgstr "Добавить пункт меню"
 
 #. Type
 #: menueditor/add_dialog.c:152 menueditor/add_menu_dialog.c:96
 #: menueditor/edit_dialog.c:148
 msgid "Type:"
-msgstr ""
+msgstr "Тип:"
 
 #: menueditor/add_dialog.c:155
 msgid "Launcher"
-msgstr ""
+msgstr "Запуск"
 
 #: menueditor/add_dialog.c:160
 msgid "Submenu"
-msgstr ""
+msgstr "Подменю"
 
 #: menueditor/add_dialog.c:165
 msgid "Separator"
-msgstr ""
+msgstr "Разделитель"
 
 #: menueditor/add_dialog.c:170
-#, fuzzy
 msgid "Title"
-msgstr "Черепица"
+msgstr "Заголовок"
 
 #: menueditor/add_dialog.c:175
 msgid "Quit"
-msgstr ""
+msgstr "Выйти"
 
 #. Name
 #: menueditor/add_dialog.c:190 menueditor/edit_dialog.c:260
@@ -72,62 +74,61 @@ msgstr "Название:"
 
 #: menueditor/add_dialog.c:200 menueditor/edit_dialog.c:261
 msgid "Command:"
-msgstr ""
+msgstr "Команда:"
 
 #: menueditor/add_dialog.c:216 menueditor/edit_dialog.c:252
 #: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
 #: menueditor/edit_dialog.c:390
 msgid "Icon:"
-msgstr ""
+msgstr "Значок:"
 
 #. Start Notify check button
 #: menueditor/add_dialog.c:232 menueditor/edit_dialog.c:272
 msgid "Use startup _notification"
-msgstr ""
+msgstr "Использовать уведомление о запуске"
 
 #. Run in terminal check button
 #: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:273
 msgid "Run in _terminal"
-msgstr ""
+msgstr "Запускать в терминале"
 
 #: menueditor/add_dialog.c:281 menueditor/edit_dialog.c:459
 msgid "The command doesn't exist !"
-msgstr ""
+msgstr "Команда не существует!"
 
 #: menueditor/add_dialog.c:287
 msgid "All fields must be filled to add an item."
-msgstr ""
+msgstr "Чтобы добавить пункт меню, нужно заполнить все поля."
 
 #: menueditor/add_dialog.c:295
 msgid "The 'Name' field is required."
-msgstr ""
+msgstr "Поле \"Название\" необходимо заполнить."
 
 #: menueditor/add_dialog.c:349 menueditor/dnd.c:150
 #: menueditor/menueditor.c:274 menueditor/move.c:90 menueditor/move.c:246
 msgid "--- separator ---"
-msgstr ""
+msgstr "--- разделитель ---"
 
 #: menueditor/add_dialog.c:374 menueditor/edit_dialog.c:496
 msgid "quit"
-msgstr ""
+msgstr "выйти"
 
 #: menueditor/add_menu_dialog.c:76 menueditor/add_menu_dialog.c:87
 #: menueditor/menueditor.c:705
 msgid "Add an external menu"
-msgstr ""
+msgstr "Добавить внешнее меню"
 
 #: menueditor/add_menu_dialog.c:101 menueditor/edit_dialog.c:151
-#, fuzzy
 msgid "File"
-msgstr "Файл:"
+msgstr "Файл"
 
 #: menueditor/add_menu_dialog.c:106 menueditor/edit_dialog.c:156
 msgid "System"
-msgstr ""
+msgstr "Система"
 
 #: menueditor/add_menu_dialog.c:121 menueditor/edit_dialog.c:171
 msgid "Source:"
-msgstr ""
+msgstr "Источник:"
 
 #. Style
 #: menueditor/add_menu_dialog.c:134 menueditor/edit_dialog.c:184
@@ -136,94 +137,93 @@ msgstr "Стиль:"
 
 #: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:187
 msgid "Simple"
-msgstr ""
+msgstr "Простое"
 
 #: menueditor/add_menu_dialog.c:140 menueditor/edit_dialog.c:190
 msgid "Multilevel"
-msgstr ""
+msgstr "Многоуровневое"
 
 #. Unique
 #: menueditor/add_menu_dialog.c:153 menueditor/edit_dialog.c:203
 msgid "_Unique entries only"
-msgstr ""
+msgstr "Только неповторяющиеся пункты"
 
 #: menueditor/add_menu_dialog.c:206
 msgid "The 'Source' field is required."
-msgstr ""
+msgstr "Поле \"Источник\" необходимо заполнить."
 
 #: menueditor/add_menu_dialog.c:216 menueditor/add_menu_dialog.c:233
 #: menueditor/dnd.c:152 menueditor/edit_dialog.c:510
 #: menueditor/edit_dialog.c:523 menueditor/menueditor.c:322
 #: menueditor/move.c:120 menueditor/move.c:276
 msgid "--- include ---"
-msgstr ""
+msgstr "--- вставлено ---"
 
 #: menueditor/add_menu_dialog.c:234 menueditor/dnd.c:157
 #: menueditor/edit_dialog.c:524 menueditor/menueditor.c:325
 #: menueditor/move.c:123 menueditor/move.c:279
 msgid "system"
-msgstr ""
+msgstr "система"
 
 #. Create dialog for editing
 #: menueditor/edit_dialog.c:100 menueditor/edit_dialog.c:113
 msgid "Edit menu entry"
-msgstr ""
+msgstr "Изменить пункт меню"
 
 #: menueditor/edit_dialog.c:131
 msgid "Separators cannot be edited"
-msgstr ""
+msgstr "Разделители нельзя изменять"
 
 #. Name
 #: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:102
-#, fuzzy
 msgid "Title:"
-msgstr "Файл:"
+msgstr "Заголовок:"
 
 #: menueditor/menueditor.c:152
 msgid "Select command"
-msgstr ""
+msgstr "Выберите команду"
 
 #: menueditor/menueditor.c:177
 msgid "Select icon"
-msgstr ""
+msgstr "Выберите значок"
 
 #: menueditor/menueditor.c:201
 msgid "Not yet implemented!"
-msgstr ""
+msgstr "Еще не реализовано!"
 
 #: menueditor/menueditor.c:212 menueditor/menueditor.c:594
 msgid "Do you want to save before closing the menu ?"
-msgstr ""
+msgstr "Хотите сохранить меню, перед тем как закрыть его?"
 
 #: menueditor/menueditor.c:213
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr ""
+msgstr "Вы изменили меню, хотите сохранить его, перед тем как выйти?"
 
 #: menueditor/menueditor.c:214
 msgid "Forget modifications"
-msgstr ""
+msgstr "Отменить сделанные изменения"
 
 #: menueditor/menueditor.c:398 menueditor/menueditor.c:453
 #: menueditor/menueditor.c:592
 msgid "Question"
-msgstr ""
+msgstr "Вопрос"
 
 #: menueditor/menueditor.c:400
 msgid "Do you want to save before opening the default menu ?"
-msgstr ""
+msgstr "Хотите сохранить файл перед тем как открыть меню по умолчанию?"
 
 #: menueditor/menueditor.c:402 menueditor/menueditor.c:457
 #: menueditor/menueditor.c:596
 msgid "Ignore modifications"
-msgstr ""
+msgstr "Игнорировать изменения"
 
 #: menueditor/menueditor.c:455
 msgid "Do you want to save before opening an other menu ?"
-msgstr ""
+msgstr "Хотите сохранить файл перед тем как открыть другое меню?"
 
 #: menueditor/menueditor.c:468
 msgid "Open menu file"
-msgstr ""
+msgstr "Открыть файл меню"
 
 #: menueditor/menueditor.c:506 menueditor/menueditor.c:517
 #, c-format
@@ -231,223 +231,218 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
+"Ошибка записи в %s:\n"
+"%s"
 
 #: menueditor/menueditor.c:541
 msgid "Save as..."
-msgstr ""
+msgstr "Сохранить как..."
 
 #: menueditor/menueditor.c:699
-#, fuzzy
 msgid "Edit"
-msgstr "Изменить список"
+msgstr "Изменить"
 
 #. File menu
 #: menueditor/menueditor.c:886
-#, fuzzy
 msgid "_File"
-msgstr "Файл:"
+msgstr "Файл"
 
 #: menueditor/menueditor.c:895
 msgid "Open default menu"
-msgstr ""
+msgstr "Открыть меню по умолчанию"
 
 #. Edit menu
 #: menueditor/menueditor.c:909
 msgid "_Edit"
-msgstr ""
+msgstr "Правка"
 
 #: menueditor/menueditor.c:915
 msgid "Add an external menu..."
-msgstr ""
+msgstr "Добавить внешнее меню..."
 
 #. Help menu
 #: menueditor/menueditor.c:927
 msgid "_Help"
-msgstr ""
+msgstr "Помощь"
 
 #: menueditor/menueditor.c:932
 msgid "_About..."
-msgstr ""
+msgstr "О программе..."
 
 #: menueditor/menueditor.c:946
 msgid "Create a new Xfce4 menu file"
-msgstr ""
+msgstr "Создать новый файл меню для Xfce4"
 
 #: menueditor/menueditor.c:953
 msgid "Open an Xfce4 menu file"
-msgstr ""
+msgstr "Открыть файл меню для Xfce4"
 
 #: menueditor/menueditor.c:960
 msgid "Save current menu"
-msgstr ""
+msgstr "Сохранить текущее меню"
 
 #: menueditor/menueditor.c:967
 msgid "Close current menu"
-msgstr ""
+msgstr "Закрыть текущее меню"
 
 #: menueditor/menueditor.c:975
 msgid "Add an entry to the menu"
-msgstr ""
+msgstr "Добавить пункт меню"
 
 #: menueditor/menueditor.c:982
 msgid "Delete the current entry"
-msgstr ""
+msgstr "Удалить пункт меню"
 
 #: menueditor/menueditor.c:989
 msgid "Move the current entry up"
-msgstr ""
+msgstr "Переместить вверх"
 
 #: menueditor/menueditor.c:996
 msgid "Move the current entry down"
-msgstr ""
+msgstr "Переместить вниз"
 
 #: menueditor/menueditor.c:1004
 msgid "Collapse the tree"
-msgstr ""
+msgstr "Свернуть"
 
 #: menueditor/menueditor.c:1011
 msgid "Expand the tree"
-msgstr ""
+msgstr "Развернуть"
 
 #: menueditor/menueditor.c:1045
-#, fuzzy
 msgid "Name"
-msgstr "Название:"
+msgstr "Название"
 
 #: menueditor/menueditor.c:1047
 msgid "Command"
-msgstr ""
+msgstr "Команда"
 
 #: menueditor/menueditor.c:1049
 msgid "Hidden"
-msgstr ""
+msgstr "Скрыть"
 
 #: menueditor/menueditor.c:1051
 msgid "Pointer"
-msgstr ""
+msgstr "Указатель"
 
 #: menueditor/menueditor.c:1183
 msgid "Corrupted file or incorrect file format !"
-msgstr ""
+msgstr "Файл поврежден либо его формат неверен."
 
 #: menueditor/menueditor.c:1196
 msgid "No root element in file !"
-msgstr ""
+msgstr "В файле отсутствует корневой элемент."
 
 #: menueditor/menueditor.c:1207
 msgid "Bad datafile format !"
-msgstr ""
+msgstr "Неверный формат файла данных."
 
 #: menueditor/menueditor.c:1323
 #, c-format
 msgid "File %s doesn't exist !"
-msgstr ""
+msgstr "Файл %s не существует."
 
 #: menueditor/move.c:401
 msgid "Do you want to move the item into the parent menu?"
-msgstr ""
+msgstr "Хотите переместить элемент в родительское меню?"
 
 #: menueditor/move.c:500
 msgid "Do you want to move the item into the submenu?"
-msgstr ""
+msgstr "Хотите переместить элемент в подменю?"
 
 #: menueditor/new_dialog.c:58
 msgid "Are you sure you want to close the current menu?"
-msgstr ""
+msgstr "Вы уверены, что хотите закрыть текущее меню?"
 
 #: menueditor/new_dialog.c:74
 msgid "Do you want to save before closing the file?"
-msgstr ""
+msgstr "Хотите сохранить файл перед тем как закрыть его?"
 
 #. get the filename and name for the new menu
 #: menueditor/new_dialog.c:84 menueditor/new_dialog.c:96
 msgid "New menu"
-msgstr ""
+msgstr "Новое меню"
 
 #. Filename
 #: menueditor/new_dialog.c:109
-#, fuzzy
 msgid "Filename:"
-msgstr "Файл:"
+msgstr "Имя файла:"
 
 #: menueditor/new_dialog.c:142
 msgid "All fields are required."
-msgstr ""
+msgstr "Нужно заполнить все поля."
 
 #: modules/menu/desktop-menu-dentry.c:532
 msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-msgstr ""
+msgstr "XfceDesktopMenu: невозможно найти xfce-registered-categories.xml"
 
 #: modules/menu/desktop-menuspec.c:61
 msgid "/Other"
-msgstr ""
+msgstr "/Другое"
 
 #: modules/menu/desktop-menuspec.c:279
 #, c-format
 msgid "%s: missing or unknown attribute for 'related' element\n"
-msgstr ""
+msgstr "%s: атрибут элемента неизвестен или отсутствует\n"
 
 #: modules/menu/desktop-menuspec.c:284
 #, c-format
 msgid "%s: unknown xml element %s\n"
-msgstr ""
+msgstr "%s: неизвестный элемент xml %s\n"
 
 #: panel-plugin/desktop-menu-plugin.c:192
 #: panel-plugin/desktop-menu-plugin.c:515
 msgid "Xfce Menu"
-msgstr ""
+msgstr "Меню Xfce"
 
 #: panel-plugin/desktop-menu-plugin.c:355
 msgid "Select Icon"
-msgstr ""
+msgstr "Выбор значка"
 
 #: panel-plugin/desktop-menu-plugin.c:357
 msgid "Select Menu File"
-msgstr ""
+msgstr "Выбор файла меню"
 
 #: panel-plugin/desktop-menu-plugin.c:372 settings/backdrop-mgr.c:545
 #: settings/backdrop-mgr.c:700 settings/backdrop_settings.c:467
 msgid "All Files"
-msgstr ""
+msgstr "Все файлы"
 
 #: panel-plugin/desktop-menu-plugin.c:378 settings/backdrop-mgr.c:549
 #: settings/backdrop_settings.c:471
-#, fuzzy
 msgid "Image Files"
 msgstr "Файлы изображений"
 
 #: panel-plugin/desktop-menu-plugin.c:386
-#, fuzzy
 msgid "Menu Files"
-msgstr "Файлы изображений"
+msgstr "Файлы меню"
 
 #: panel-plugin/desktop-menu-plugin.c:445
 msgid "_Menu file:"
-msgstr ""
+msgstr "Файл меню:"
 
 #: panel-plugin/desktop-menu-plugin.c:479
 msgid "_Button icon:"
-msgstr ""
+msgstr "Значок:"
 
 #: panel-plugin/desktop-menu-plugin.c:504
 msgid "Show _icons in menu"
-msgstr ""
+msgstr "Показывать значки в меню"
 
 #: settings/backdrop-mgr.c:133 settings/backdrop-mgr.c:192
 #: settings/backdrop-mgr.c:592
-#, fuzzy
 msgid "Backdrop"
-msgstr "Список фоновых изображений"
+msgstr "Фоновая картинка"
 
 #: settings/backdrop-mgr.c:139
 #, c-format
 msgid "Adding files from directory %s..."
-msgstr ""
+msgstr "Добавление файлов из каталога %s..."
 
 #: settings/backdrop-mgr.c:198
 #, c-format
 msgid "Adding files from list %s..."
-msgstr ""
+msgstr "Добавление файлов из списка %s..."
 
 #: settings/backdrop-mgr.c:240
 #, c-format
@@ -459,25 +454,23 @@ msgid ""
 msgstr ""
 "Ошибка при сохранении файла %s: %s\n"
 "\n"
-"Выберете другое расположение или нажмите Отменить"
+"Выберите другой каталог или нажмите \"Отмена\""
 
 #: settings/backdrop-mgr.c:540
-#, fuzzy
 msgid "Select backdrop image file"
-msgstr "Выберете файл изображения"
+msgstr "Выберите фоновую картинку"
 
 #: settings/backdrop-mgr.c:598
 msgid "Adding multiple files..."
-msgstr ""
+msgstr "Добавление нескольких файлов..."
 
 #: settings/backdrop-mgr.c:695
 msgid "Choose backdrop list filename"
-msgstr "Укажите название списка с картинками фона"
+msgstr "Выберите файл со списком фоновых картинок"
 
 #: settings/backdrop-mgr.c:704
-#, fuzzy
 msgid "List Files"
-msgstr "Файл со списком"
+msgstr "Файлы списков"
 
 #: settings/backdrop-mgr.c:767
 msgid "Backdrop List"
@@ -488,13 +481,12 @@ msgid "Image files"
 msgstr "Файлы изображений"
 
 #: settings/backdrop-mgr.c:794
-#, fuzzy
 msgid "backdrops.list"
-msgstr "Редактировать список"
+msgstr "backdrops.list"
 
 #: settings/backdrop-mgr.c:800
 msgid "List file"
-msgstr "Файл со списком"
+msgstr "Файл списка"
 
 #: settings/backdrop-mgr.c:820
 msgid "Create backdrop list"
@@ -502,7 +494,7 @@ msgstr "Создать список фоновых изображений"
 
 #: settings/backdrop-mgr.c:851
 msgid "Edit backdrop list"
-msgstr "Редактировать список"
+msgstr "Изменить список фоновых изображений"
 
 #. the dialog
 #: settings/backdrop_settings.c:86 settings/backdrop_settings.c:765
@@ -511,67 +503,57 @@ msgid "Desktop"
 msgstr "Рабочий стол"
 
 #: settings/backdrop_settings.c:462
-#, fuzzy
 msgid "Select backdrop image or list file"
-msgstr "Выберете файл с изображением или список фоновых изображений"
+msgstr "Выберите картинку или список картинок"
 
 #: settings/backdrop_settings.c:480
 msgid "List Files (*.list)"
-msgstr ""
+msgstr "Файлы списка (*.list)"
 
 #: settings/backdrop_settings.c:565
-#, fuzzy
 msgid "_Edit list..."
-msgstr "Изменить список"
+msgstr "Изменить список..."
 
 #: settings/backdrop_settings.c:573
-#, fuzzy
 msgid "_New list..."
-msgstr "Новый список"
+msgstr "Создать список..."
 
 #: settings/backdrop_settings.c:609
-#, fuzzy
 msgid "S_tyle:"
 msgstr "Стиль:"
 
 #: settings/backdrop_settings.c:617
-#, fuzzy
 msgid "Tiled"
-msgstr "Черепица"
+msgstr "Черепицей"
 
 #: settings/backdrop_settings.c:624
-#, fuzzy
 msgid "Centered"
 msgstr "По центру"
 
 #: settings/backdrop_settings.c:631
-#, fuzzy
 msgid "Scaled"
-msgstr "Растянуто"
+msgstr "Масштабировать"
 
 #: settings/backdrop_settings.c:638
 msgid "Stretched"
-msgstr ""
+msgstr "Растянуть"
 
 #: settings/backdrop_settings.c:645
-#, fuzzy
 msgid "Auto"
 msgstr "Автоматически"
 
 #: settings/backdrop_settings.c:711
 msgid "Adjust _Brightness:"
-msgstr ""
+msgstr "Яркость:"
 
 #. header
 #: settings/backdrop_settings.c:780
-#, fuzzy
 msgid "Desktop Settings"
-msgstr "Настройка рабочих областей"
+msgstr "Настройки рабочего стола"
 
 #: settings/backdrop_settings.c:808
-#, fuzzy
 msgid "_Backdrops"
-msgstr "Список фоновых изображений"
+msgstr "Фоновые изображения"
 
 #. color settings frame
 #: settings/backdrop_settings.c:834
@@ -579,213 +561,151 @@ msgid "Color"
 msgstr "Цвет"
 
 #: settings/backdrop_settings.c:848
-#, fuzzy
 msgid "_Color Style:"
-msgstr "Стиль:"
+msgstr "Стиль заполнения цветом:"
 
 #: settings/backdrop_settings.c:857
-#, fuzzy
 msgid "Solid Color"
-msgstr "Цвет"
+msgstr "Однотонный"
 
 #: settings/backdrop_settings.c:864
 msgid "Horizontal Gradient"
-msgstr ""
+msgstr "Горизонтальный градиент"
 
 #: settings/backdrop_settings.c:871
 msgid "Vertical Gradient"
-msgstr ""
+msgstr "Вертикальный градиент"
 
 #: settings/backdrop_settings.c:892
 msgid "Fi_rst Color:"
-msgstr ""
+msgstr "Первый цвет:"
 
 #: settings/backdrop_settings.c:913
-#, fuzzy
 msgid "_Second Color:"
-msgstr "Цвет фона:"
+msgstr "Второй цвет:"
 
 #. set color only checkbox
 #: settings/backdrop_settings.c:934
-#, fuzzy
 msgid "Set color _only"
-msgstr "Использовать только цвет:"
+msgstr "Использовать только цвет"
 
 #: settings/backdrop_settings.c:949
 msgid "Image"
 msgstr "Изображение"
 
 #: settings/backdrop_settings.c:957
-#, fuzzy
 msgid "Show _Image"
-msgstr "Изображение"
+msgstr "Показывать изображение"
 
 #: settings/backdrop_settings.c:979
-#, fuzzy
 msgid "_File:"
 msgstr "Файл:"
 
 #. don't set backdrop checkbox
 #: settings/backdrop_settings.c:1016
-#, fuzzy
 msgid "_Don't set backdrop"
-msgstr "Выберете цвет фона рабочего стола"
+msgstr "Не изменять фон рабочего стола"
 
 #. add the single backdrop settings page to the main notebook
 #: settings/backdrop_settings.c:1039
-#, fuzzy
 msgid "_Backdrop"
-msgstr "Список фоновых изображений"
+msgstr "Фоновая картинка"
 
 #: settings/backdrop_settings.c:1047 settings/backdrop_settings.c:1049
 #, c-format
 msgid "Screen %d"
-msgstr ""
+msgstr "Экран %d"
 
 #. and if we have multiple screens, each with multiple monitors
 #: settings/backdrop_settings.c:1054
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr ""
+msgstr "Экран %d, монитор %d"
 
 #: settings/backdrop_settings.c:1068
 msgid "_Menu"
-msgstr ""
+msgstr "Меню"
 
 #: settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr ""
+msgstr "Невомзожно запустить редактор меню xfce4-menueditor: %s"
 
 #: settings/menu_settings.c:151
 msgid "Window List"
-msgstr ""
+msgstr "Список окон"
 
 #: settings/menu_settings.c:159
 msgid "Show window _list"
-msgstr ""
+msgstr "Показывать список окон"
 
 #: settings/menu_settings.c:174
 msgid "Show _window icons"
-msgstr ""
+msgstr "Показывать значки окна"
 
 #: settings/menu_settings.c:187
-#, fuzzy
 msgid "Desktop Menu"
-msgstr "Рабочий стол"
+msgstr "Меню рабочего стола"
 
 #: settings/menu_settings.c:195
 msgid "Show desktop _menu"
-msgstr ""
+msgstr "Показать меню рабочего стола"
 
 #: settings/menu_settings.c:210
 msgid "Show _application icons"
-msgstr ""
+msgstr "Показать значки приложений"
 
 #: settings/menu_settings.c:221
 msgid "_Edit desktop menu"
-msgstr ""
+msgstr "Изменить меню рабочего стола"
 
 #: src/main.c:255
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr ""
+msgstr "%s: неизвестный параметр: %s\n"
 
 #: src/main.c:256
 msgid "Options are:\n"
-msgstr ""
+msgstr "Параметры:\n"
 
 #: src/main.c:257
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr ""
+msgstr "    -reload      Перезагрузить все настройки, обновить список изображений\n"
 
 #: src/main.c:258
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr ""
+msgstr "    -menu        Показать меню (в месте, где находится курсор мыши)\n"
 
 #: src/main.c:259
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -windowlist  Показать список окон (в месте, где находится курсор мыши)\n"
 
 #: src/menu.c:73
 #, c-format
-msgid ""
-"%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
-msgstr ""
+msgid "%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
+msgstr "%s: Ошибка инициализации модуля меню. Меню правой кнопки мыши будет недоступно.\n"
 
 #: src/windowlist.c:183
-#, fuzzy, c-format
+#, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "Рабочая область %d"
+msgstr "<b>Рабочее место %d</b>"
 
 #: src/windowlist.c:188
-#, fuzzy, c-format
+#, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "Рабочая область %d"
+msgstr "<i>Рабочее место %d</i>"
 
 #: src/windowlist.c:244 src/windowlist.c:247
-#, fuzzy
 msgid "_Add Workspace"
-msgstr "Добавить рабочую область"
+msgstr "Добавить рабочее место"
 
 #: src/windowlist.c:254
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace %d"
-msgstr "Рабочая область %d"
+msgstr "Удалить рабочее место %d"
 
 #: src/windowlist.c:256
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Рабочая область %d"
+msgstr "Удалить рабочее место '%s'"
 
-#, fuzzy
-#~ msgid "Select backdrop color"
-#~ msgstr "Выберете цвет фона рабочего стола"
-
-#~ msgid "New.list"
-#~ msgstr "Добавить список"
-
-#, fuzzy
-#~ msgid "Desktop background"
-#~ msgstr "Фон рабочего стола"
-
-#~ msgid "_Browse..."
-#~ msgstr "Просмотреть..."
-
-#~ msgid "Background"
-#~ msgstr "Фон"
-
-#~ msgid "Background Settings"
-#~ msgstr "Настройки фона рабочего стола"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr "Рабочие области"
-
-#~ msgid "Change name"
-#~ msgstr "Изменить название"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Щелкните на имя рабочей области для изменения"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "Количество рабочих областей:"
-
-#~ msgid "Workspaces"
-#~ msgstr "Рабочие области"
-
-#~ msgid "Workspace names"
-#~ msgstr "Названия рабочих областей"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "xfdesktop: ошибка загрузки фонового изображения: %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "Удалить рабочую область"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr ""
-#~ "xfdesktop: ошибка подключения к менеджеру настроек! Проверьте "
-#~ "корректность инсталляции. "
