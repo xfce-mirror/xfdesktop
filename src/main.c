@@ -39,8 +39,10 @@
 #endif
 
 #include <X11/Xlib.h>
-#include <gtk/gtk.h>
+
 #include <gmodule.h>
+#include <gdk/gdkx.h>
+#include <gtk/gtk.h>
 
 #include <libxfce4util/i18n.h>
 #include <libxfce4mcs/mcs-client.h>
@@ -272,9 +274,10 @@ main(int argc, char **argv)
 		return 0;
 	}
 	
+	gdpy = gdk_display_get_default();
+	
 	mcs_client = settings_init();
 	
-	gdpy = gdk_display_get_default();
 	nscreens = gdk_display_get_n_screens(gdpy);
 	desktops = g_new(GtkWidget *, nscreens);
 	for(i = 0; i < nscreens; i++) {
@@ -313,6 +316,10 @@ main(int argc, char **argv)
 	
 	menu_cleanup();
 	windowlist_cleanup();
+	
+	for(i = 0; i < nscreens; i++)
+		gtk_widget_destroy(desktops[i]);
+	
 	settings_cleanup();
 	
 	return 0;
