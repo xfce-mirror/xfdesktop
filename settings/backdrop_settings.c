@@ -194,7 +194,7 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
     else
     {
 	/* 
-	   Just a color by default #336699 - That number looks cool :)
+	   Just a color by default #6985b7 - That number looks cool :)
 	 */
 	backdrop_color.red = (guint16) 0x6900;
 	backdrop_color.green = (guint16) 0x8500;
