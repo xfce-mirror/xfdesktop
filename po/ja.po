@@ -1,66 +1,67 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
+# Japanese translation for xfdesktop.
+# Copyright (C) 2003-2005 Free Software Foundation, Inc.
+# This file is distributed under the same license as the xfdesktop package.
+# Zhao Ji <zhao-ji@awz.ne.jp>, 2003-2004.
+# Daichi Kawahata <daichik@users.sourceforge.net>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-28 22:00-0800\n"
-"PO-Revision-Date: 2003-12-10 01:00+0900\n"
-"Last-Translator: Zhao Ji <zhao-ji@awz.ne.jp>\n"
-"Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
+"Project-Id-Version: xfdesktop 4.3.0\n"
+"Report-Msgid-Bugs-To: xfce-i18n@xfce.org\n"
+"POT-Creation-Date: 2005-02-16 10:35+0900\n"
+"PO-Revision-Date: 2005-02-17 21:36+0900\n"
+"Last-Translator: Daichi Kawahata <daichik@users.sourceforge.net>\n"
+"Language-Team: Japanese <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
-msgstr ""
+msgstr "Xfce4 メニューエディタ"
 
 #. Credits
 #: menueditor/about_dialog.c:43
 msgid "Core developer"
-msgstr ""
+msgstr "中心開発者"
 
 #: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
 #: menueditor/about_dialog.c:46
 msgid "Contributor"
-msgstr ""
+msgstr "貢献者"
 
 #: menueditor/about_dialog.c:47
 msgid "Icon designer"
-msgstr ""
+msgstr "アイコン設計者"
 
 #: menueditor/add_dialog.c:159 menueditor/add_dialog.c:169
 msgid "Add menu entry"
-msgstr ""
+msgstr "メニュー項目追加"
 
 #. Type
 #: menueditor/add_dialog.c:173 menueditor/add_menu_dialog.c:110
 msgid "Type:"
-msgstr ""
+msgstr "種類:"
 
 #: menueditor/add_dialog.c:176
 msgid "Launcher"
-msgstr ""
+msgstr "ランチャ"
 
 #: menueditor/add_dialog.c:180
 msgid "Submenu"
-msgstr ""
+msgstr "サブメニュー"
 
 #: menueditor/add_dialog.c:184
 msgid "Separator"
-msgstr ""
+msgstr "セパレータ"
 
 #: menueditor/add_dialog.c:188
-#, fuzzy
 msgid "Title"
-msgstr "タイル(_T)"
+msgstr "タイトル"
 
 #: menueditor/add_dialog.c:192
 msgid "Quit"
-msgstr ""
+msgstr "終了"
 
 #. Name
 #: menueditor/add_dialog.c:206 menueditor/edit_dialog.c:158
@@ -70,62 +71,61 @@ msgstr "名前:"
 
 #: menueditor/add_dialog.c:214 menueditor/edit_dialog.c:163
 msgid "Command:"
-msgstr ""
+msgstr "コマンド:"
 
 #: menueditor/add_dialog.c:226 menueditor/edit_dialog.c:150
 #: menueditor/edit_dialog.c:210
 msgid "Icon:"
-msgstr ""
+msgstr "アイコン:"
 
 #. Start Notify check button
 #. Startup notification
 #: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:171
 msgid "Use startup _notification"
-msgstr ""
+msgstr "起動通知を使用する(_N)"
 
 #. Run in terminal check button
 #. Run in terminal
 #: menueditor/add_dialog.c:241 menueditor/edit_dialog.c:174
 msgid "Run in _terminal"
-msgstr ""
+msgstr "ターミナルで実行する(_T)"
 
 #: menueditor/add_dialog.c:272
 msgid "The command doesn't exist !"
-msgstr ""
+msgstr "コマンドは存在しません!"
 
 #: menueditor/add_dialog.c:278
 msgid "All fields must be filled to add an item."
-msgstr ""
+msgstr "アイテムを追加するには全ての項目に記入して下さい。"
 
 #: menueditor/add_dialog.c:287
 msgid "The 'Name' field is required."
-msgstr ""
+msgstr "'名前' の項目は必須です。"
 
 #: menueditor/add_dialog.c:331
 msgid "--- separator ---"
-msgstr ""
+msgstr "--- セパレータ ---"
 
 #: menueditor/add_dialog.c:357
 msgid "quit"
-msgstr ""
+msgstr "終了"
 
 #: menueditor/add_menu_dialog.c:97 menueditor/add_menu_dialog.c:103
 #: menueditor/menueditor.c:831
 msgid "Add an external menu"
-msgstr ""
+msgstr "外部メニューを追加"
 
 #: menueditor/add_menu_dialog.c:115
-#, fuzzy
 msgid "File"
-msgstr "ファイル:"
+msgstr "ファイル"
 
 #: menueditor/add_menu_dialog.c:119
 msgid "System"
-msgstr ""
+msgstr "システム"
 
 #: menueditor/add_menu_dialog.c:133
 msgid "Source:"
-msgstr ""
+msgstr "ソース:"
 
 #. Style
 #: menueditor/add_menu_dialog.c:145
@@ -134,231 +134,226 @@ msgstr "スタイル:"
 
 #: menueditor/add_menu_dialog.c:148
 msgid "Simple"
-msgstr ""
+msgstr "シンプル"
 
 #: menueditor/add_menu_dialog.c:150
 msgid "Multilevel"
-msgstr ""
+msgstr "マルチレベル"
 
 #. Unique
 #: menueditor/add_menu_dialog.c:162
 msgid "_Unique entries only"
-msgstr ""
+msgstr "ユニークな項目のみ(_U)"
 
 #: menueditor/add_menu_dialog.c:198
 msgid "The 'Source' field is required."
-msgstr ""
+msgstr "'ソース' 項目は必須です。"
 
 #: menueditor/add_menu_dialog.c:202 menueditor/add_menu_dialog.c:212
 msgid "--- include ---"
-msgstr ""
+msgstr "--- 組込み ---"
 
 #: menueditor/add_menu_dialog.c:213
 msgid "system"
-msgstr ""
+msgstr "システム"
 
 #. Create dialog for editing
 #: menueditor/edit_dialog.c:127 menueditor/edit_dialog.c:134
 msgid "Edit menu entry"
-msgstr ""
+msgstr "メニュー項目編集"
 
 #: menueditor/edit_dialog.c:139
 msgid "Separators cannot be edited"
-msgstr ""
+msgstr "セパレータは編集できません"
 
 #: menueditor/menueditor.c:81
 #, c-format
 msgid "File %s doesn't exist !"
-msgstr ""
+msgstr "ファイル %s は存在しません!"
 
 #: menueditor/menueditor.c:121 menueditor/menueditor.c:532
 msgid "Do you want to save before closing the menu ?"
-msgstr ""
+msgstr "メニューをを閉じる前に保存しますか?"
 
 #: menueditor/menueditor.c:123
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr ""
+msgstr "メニューが編集されました、終了する前に保存しますか?"
 
 #: menueditor/menueditor.c:125
 msgid "Forget modifications"
-msgstr ""
+msgstr "編集を忘れる"
 
 #: menueditor/menueditor.c:310
 msgid "Are you sure you want to close the current menu?"
-msgstr ""
+msgstr "現在のメニューを閉じても構いませんか?"
 
 #: menueditor/menueditor.c:325
 msgid "Do you want to save before closing the file?"
-msgstr ""
+msgstr "ファイルを閉じる前に保存しますか?"
 
 #: menueditor/menueditor.c:334
 msgid "Select command"
-msgstr ""
+msgstr "コマンド選択"
 
 #: menueditor/menueditor.c:366 menueditor/menueditor.c:423
 #: menueditor/menueditor.c:530
 msgid "Question"
-msgstr ""
+msgstr "質問"
 
 #: menueditor/menueditor.c:368
 msgid "Do you want to save before opening an other menu ?"
-msgstr ""
+msgstr "他のメニューを開く前に保存しますか?"
 
 #: menueditor/menueditor.c:370 menueditor/menueditor.c:427
 #: menueditor/menueditor.c:534
 msgid "Ignore modifications"
-msgstr ""
+msgstr "編集を無視する"
 
 #: menueditor/menueditor.c:381
 msgid "Open menu file"
-msgstr ""
+msgstr "メニューファイルを開く"
 
 #: menueditor/menueditor.c:425
 msgid "Do you want to save before opening the default menu ?"
-msgstr ""
+msgstr "デフォルトメニューを開く前に保存しますか?"
 
 #: menueditor/menueditor.c:483
 msgid "Save as..."
-msgstr ""
+msgstr "名前を付けて保存..."
 
 #: menueditor/menueditor.c:638
 msgid "Do you want to move the item into the parent menu?"
-msgstr ""
+msgstr "項目をパネルメニューに移動しますか?"
 
 #: menueditor/menueditor.c:684
 msgid "Do you want to move the item into the submenu?"
-msgstr ""
+msgstr "項目をサブメニューに移動しますか?"
 
 #: menueditor/menueditor.c:825
-#, fuzzy
 msgid "Edit"
-msgstr "リスト編集"
+msgstr "編集"
 
 #. File menu
 #: menueditor/menueditor.c:849
-#, fuzzy
 msgid "_File"
-msgstr "ファイル:"
+msgstr "ファイル(_F)"
 
 #: menueditor/menueditor.c:858
 msgid "Open default menu"
-msgstr ""
+msgstr "デフォルトのメニューを開く"
 
 #. Edit menu
 #: menueditor/menueditor.c:872
 msgid "_Edit"
-msgstr ""
+msgstr "編集(_E)"
 
 #: menueditor/menueditor.c:878
 msgid "Add an external menu..."
-msgstr ""
+msgstr "外部メニューを追加..."
 
 #. Help menu
 #: menueditor/menueditor.c:890
 msgid "_Help"
-msgstr ""
+msgstr "ヘルプ(_H)"
 
 #: menueditor/menueditor.c:894
 msgid "_About..."
-msgstr ""
+msgstr "このプログラムについて(_A)..."
 
 #: menueditor/menueditor.c:906
 msgid "Create a new Xfce4 menu file"
-msgstr ""
+msgstr "新規 Xfce4 メニューファイル作成"
 
 #: menueditor/menueditor.c:911
 msgid "Open an Xfce4 menu file"
-msgstr ""
+msgstr "Xfce4 メニューファイルを開く"
 
 #: menueditor/menueditor.c:916
 msgid "Save current menu"
-msgstr ""
+msgstr "現在のメニューを保存"
 
 #: menueditor/menueditor.c:921
 msgid "Close current menu"
-msgstr ""
+msgstr "現在のメニューを閉じる"
 
 #: menueditor/menueditor.c:927
 msgid "Add an entry to the menu"
-msgstr ""
+msgstr "メニューに項目を追加"
 
 #: menueditor/menueditor.c:931
 msgid "Delete the current entry"
-msgstr ""
+msgstr "現在の項目を削除"
 
 #: menueditor/menueditor.c:937
 msgid "Move the current entry up"
-msgstr ""
+msgstr "現在の項目を上に移動"
 
 #: menueditor/menueditor.c:942
 msgid "Move the current entry down"
-msgstr ""
+msgstr "現在の項目を下に移動"
 
 #: menueditor/menueditor.c:948
 msgid "Collapse the tree"
-msgstr ""
+msgstr "このツリーを折畳む"
 
 #: menueditor/menueditor.c:953
 msgid "Expand the tree"
-msgstr ""
+msgstr "このツリーを拡げる"
 
 #: menueditor/menueditor.c:981
-#, fuzzy
 msgid "Name"
-msgstr "名前:"
+msgstr "名前"
 
 #: menueditor/menueditor.c:984
 msgid "Command"
-msgstr ""
+msgstr "コマンド"
 
 #: menueditor/menueditor.c:985
 msgid "Hidden"
-msgstr ""
+msgstr "隠す"
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
-msgstr ""
+msgstr "/その他"
 
 #: panel-plugin/desktop-menu-plugin.c:205
 #: panel-plugin/desktop-menu-plugin.c:535
 msgid "Xfce Menu"
-msgstr ""
+msgstr "Xfce メニュー"
 
 #: panel-plugin/desktop-menu-plugin.c:373
 msgid "Select Icon"
-msgstr ""
+msgstr "アイコン選択"
 
 #: panel-plugin/desktop-menu-plugin.c:375
 msgid "Select Menu File"
-msgstr ""
+msgstr "メニューファイルを選択"
 
 #: panel-plugin/desktop-menu-plugin.c:390 settings/backdrop-mgr.c:414
 #: settings/backdrop-mgr.c:515 settings/backdrop_settings.c:533
 msgid "All Files"
-msgstr ""
+msgstr "全てのファイル"
 
 #: panel-plugin/desktop-menu-plugin.c:396 settings/backdrop-mgr.c:418
 #: settings/backdrop_settings.c:537
-#, fuzzy
 msgid "Image Files"
-msgstr "イメージ・ファイル"
+msgstr "画像ファイル"
 
 #: panel-plugin/desktop-menu-plugin.c:404
-#, fuzzy
 msgid "Menu Files"
-msgstr "イメージ・ファイル"
+msgstr "メニューファイル"
 
 #: panel-plugin/desktop-menu-plugin.c:465
 msgid "_Menu file:"
-msgstr ""
+msgstr "メニューファイル(_M):"
 
 #: panel-plugin/desktop-menu-plugin.c:499
 msgid "_Button icon:"
-msgstr ""
+msgstr "ボタンアイコン(_B):"
 
 #: panel-plugin/desktop-menu-plugin.c:524
 msgid "Show _icons in menu"
-msgstr ""
+msgstr "メニューでアイコンを表示(_I):"
 
 #: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
 #, c-format
@@ -368,23 +363,22 @@ msgid ""
 "Please choose another location or press cancel in the dialog to discard your "
 "changes"
 msgstr ""
-"ファイルを保存できません %s: %s\n"
+"ファイル %s を保存できませんでした: %s\n"
 "\n"
-"別の場所か、変更をキャンセルするかダイアログから選択してください"
+"他の場所を選択するか、変更を破棄するためにダイアログ中の取消ボタンを押して下"
+"さい"
 
 #: settings/backdrop-mgr.c:409
-#, fuzzy
 msgid "Select backdrop image file"
-msgstr "イメージファイル選択"
+msgstr "背景画像の選択"
 
 #: settings/backdrop-mgr.c:510
 msgid "Choose backdrop list filename"
-msgstr "背景リスト ファイル名選択"
+msgstr "背景一覧のファイル名選択"
 
 #: settings/backdrop-mgr.c:519
-#, fuzzy
 msgid "List Files"
-msgstr "リスト・ファイル"
+msgstr "ファイル一覧"
 
 #: settings/backdrop-mgr.c:582
 msgid "Backdrop List"
@@ -392,17 +386,16 @@ msgstr "背景リスト"
 
 #: settings/backdrop-mgr.c:599
 msgid "Image files"
-msgstr "イメージ・ファイル"
+msgstr "画像ファイル"
 
 #: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
-#, fuzzy
 msgid "backdrops.list"
-msgstr "背景リスト編集"
+msgstr "背景リスト"
 
 #: settings/backdrop-mgr.c:618
 msgid "List file"
-msgstr "リスト・ファイル"
+msgstr "一覧ファイル"
 
 #: settings/backdrop-mgr.c:638
 msgid "Create backdrop list"
@@ -419,68 +412,58 @@ msgid "Desktop"
 msgstr "デスクトップ"
 
 #: settings/backdrop_settings.c:528
-#, fuzzy
 msgid "Select backdrop image or list file"
-msgstr "背景画像かリスト・ファイルを選択"
+msgstr "背景画像か一覧ファイルを選択"
 
 #: settings/backdrop_settings.c:546
 msgid "List Files (*.list)"
-msgstr ""
+msgstr "リストファイル (*.list)"
 
 #: settings/backdrop_settings.c:636
-#, fuzzy
 msgid "_Edit list..."
-msgstr "リスト編集"
+msgstr "リスト編集(_E)..."
 
 #: settings/backdrop_settings.c:644
-#, fuzzy
 msgid "_New list..."
-msgstr "新規リスト"
+msgstr "新規リスト(_N)..."
 
 #: settings/backdrop_settings.c:680
-#, fuzzy
 msgid "S_tyle:"
-msgstr "スタイル:"
+msgstr "スタイル(_T):"
 
 #: settings/backdrop_settings.c:688
-#, fuzzy
 msgid "Tiled"
-msgstr "タイル(_T)"
+msgstr "タイル状"
 
 #: settings/backdrop_settings.c:695
-#, fuzzy
 msgid "Centered"
-msgstr "中央(_C)"
+msgstr "中央揃え"
 
 #: settings/backdrop_settings.c:702
-#, fuzzy
 msgid "Scaled"
-msgstr "伸縮(_S)"
+msgstr "拡大縮小"
 
 #: settings/backdrop_settings.c:709
 msgid "Stretched"
-msgstr ""
+msgstr "伸縮あり"
 
 #: settings/backdrop_settings.c:716
-#, fuzzy
 msgid "Auto"
-msgstr "自動(_A)"
+msgstr "自動"
 
 #: settings/backdrop_settings.c:782
 msgid "Adjust _Brightness:"
-msgstr ""
+msgstr "明度を調節する(_B):"
 
 #. header
 #: settings/backdrop_settings.c:851
 #: settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop Settings"
-msgstr "ワークスペース設定"
+msgstr "デスクトップ設定"
 
 #: settings/backdrop_settings.c:880
-#, fuzzy
 msgid "_Backdrops"
-msgstr "背景リスト"
+msgstr "背景(_B)"
 
 #. color settings frame
 #: settings/backdrop_settings.c:906
@@ -488,243 +471,166 @@ msgid "Color"
 msgstr "カラー"
 
 #: settings/backdrop_settings.c:920
-#, fuzzy
 msgid "_Color Style:"
-msgstr "スタイル:"
+msgstr "色スタイル(_C):"
 
 #: settings/backdrop_settings.c:929
-#, fuzzy
 msgid "Solid Color"
-msgstr "カラー"
+msgstr "単色"
 
 #: settings/backdrop_settings.c:936
 msgid "Horizontal Gradient"
-msgstr ""
+msgstr "水平勾配"
 
 #: settings/backdrop_settings.c:943
 msgid "Vertical Gradient"
-msgstr ""
+msgstr "垂直勾配"
 
 #: settings/backdrop_settings.c:964
 msgid "Fi_rst Color:"
-msgstr ""
+msgstr "最初の色(_R):"
 
 #: settings/backdrop_settings.c:985
-#, fuzzy
 msgid "_Second Color:"
-msgstr "背景色:"
+msgstr "次の色(_S):"
 
 #. set color only checkbox
 #: settings/backdrop_settings.c:1006
-#, fuzzy
 msgid "Set color _only"
-msgstr "使用色数:"
+msgstr "単色のみを使用(_O)"
 
 #: settings/backdrop_settings.c:1021
 msgid "Image"
-msgstr "イメージ"
+msgstr "画像"
 
 #: settings/backdrop_settings.c:1029
-#, fuzzy
 msgid "Show _Image"
-msgstr "イメージ"
+msgstr "画像を表示する(_I)"
 
 #: settings/backdrop_settings.c:1051
-#, fuzzy
 msgid "_File:"
-msgstr "ファイル:"
+msgstr "ファイル(_F):"
 
 #. don't set backdrop checkbox
 #: settings/backdrop_settings.c:1088
-#, fuzzy
 msgid "_Don't set backdrop"
-msgstr "背景色の選択"
+msgstr "背景を設定しない(_D)"
 
 #. add the single backdrop settings page to the main notebook
 #: settings/backdrop_settings.c:1111
-#, fuzzy
 msgid "_Backdrop"
-msgstr "背景リスト"
+msgstr "背景(_B)"
 
 #: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
 #, c-format
 msgid "Screen %d"
-msgstr ""
+msgstr "画面 %d"
 
 #. and if we have multiple screens, each with multiple monitors
 #: settings/backdrop_settings.c:1126
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr ""
+msgstr "画面 %d, モニタ %d"
 
 #: settings/backdrop_settings.c:1140
 msgid "_Menu"
-msgstr ""
+msgstr "メニュー(_M)"
 
 #: settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr ""
+msgstr "xfce4-menueditor を実行できません: %s"
 
 #: settings/menu_settings.c:153
 msgid "Window List"
-msgstr ""
+msgstr "ウィンドウリスト"
 
 #: settings/menu_settings.c:161
 msgid "Show window _list"
-msgstr ""
+msgstr "ウィンドウリストを表示(_L)"
 
 #: settings/menu_settings.c:176
 msgid "Show _window icons"
-msgstr ""
+msgstr "ウィンドウアイコンを表示(_W)"
 
 #: settings/menu_settings.c:189
-#, fuzzy
 msgid "Desktop Menu"
-msgstr "デスクトップ"
+msgstr "デスクトップメニュー"
 
 #: settings/menu_settings.c:197
 msgid "Show desktop _menu"
-msgstr ""
+msgstr "デスクトップメニューを表示(_M)"
 
 #: settings/menu_settings.c:212
 msgid "Show _application icons"
-msgstr ""
+msgstr "アプリケーションアイコンを表示(_A)"
 
 #: settings/menu_settings.c:223
 msgid "_Edit desktop menu"
-msgstr ""
+msgstr "デスクトップメニューを編集(_E)"
 
 #: src/main.c:300
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr ""
+msgstr "%s: 不明なオプション: %s\n"
 
 #: src/main.c:301
 msgid "Options are:\n"
-msgstr ""
+msgstr "オプションは:\n"
 
 #: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr ""
+msgstr "    -reload      全ての設定を再読込みして、画像リストを更新\n"
 
 #: src/main.c:303
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr ""
+msgstr "    -menu        メニューをポップアップ (現在のマウス位置で)\n"
 
 #: src/main.c:304
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
+msgstr "    -windowlist  ウィンドウリストをポップアップ (現在のマウス位置で)\n"
 
 #: src/windowlist.c:193
-#, fuzzy, c-format
+#, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "ワークスペース %d"
+msgstr "<b>ワークスペース %d</b>"
 
 #: src/windowlist.c:201
-#, fuzzy, c-format
+#, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "ワークスペース %d"
+msgstr "<i>ワークスペース %d</i>"
 
 #: src/windowlist.c:268 src/windowlist.c:271
-#, fuzzy
 msgid "_Add Workspace"
-msgstr "ワークスペース追加"
+msgstr "ワークスペースを追加する(_A)"
 
 #: src/windowlist.c:279
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace %d"
-msgstr "ワークスペース %d"
+msgstr "ワークスペース %d を削除する(_R)"
 
 #: src/windowlist.c:282
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "ワークスペース %d"
+msgstr "ワークスペース '%s' を削除する(_R)"
 
 #: menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr ""
+msgstr "Xfce 4 メニューを編集するグラフィカルツール"
 
 #: menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
-msgstr ""
+msgstr "メニューエディタ"
 
 #: menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
-msgstr ""
+msgstr "Xfce 4 メニューエディタ"
 
 #: settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr ""
+msgstr "Xfce 4 デスクトップマネージャの設定"
 
 #: settings/xfce-backdrop-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Desktop Settings"
-msgstr "ワークスペース設定"
-
-#, fuzzy
-#~ msgid "Title:"
-#~ msgstr "ファイル:"
-
-#, fuzzy
-#~ msgid "Filename:"
-#~ msgstr "ファイル:"
-
-#, fuzzy
-#~ msgid "Backdrop"
-#~ msgstr "背景リスト"
-
-#, fuzzy
-#~ msgid "Select backdrop color"
-#~ msgstr "背景色の選択"
-
-#~ msgid "New.list"
-#~ msgstr "新規リスト"
-
-#, fuzzy
-#~ msgid "Desktop background"
-#~ msgstr "デスクトップ: 背景"
-
-#~ msgid "_Browse..."
-#~ msgstr "閲覧...(_B)"
-
-#~ msgid "Background"
-#~ msgstr "背景"
-
-#~ msgid "Background Settings"
-#~ msgstr "背景設定"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr "デスクトップ: ワークスペース"
-
-#~ msgid "Change name"
-#~ msgstr "名前変更"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "編集するには、ワークスペース名の上でクリック"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "ワークスペース番号:"
-
-#~ msgid "Workspaces"
-#~ msgstr "ワークスペース"
-
-#~ msgid "Workspace names"
-#~ msgstr "ワークスペース名"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "xfdesktop エラー: 背景イメージ読み込み: %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "ワークスペース削除"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr ""
-#~ "xfdesktop: 設定マネージャーと接続できません！インストールを確認してくださ"
-#~ "い"
-
-#~ msgid "Workspace"
-#~ msgstr "ワークスペース"
+msgstr "Xfce 4 デスクトップ設定"
