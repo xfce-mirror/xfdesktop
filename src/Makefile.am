@@ -20,12 +20,13 @@ xfdesktop_CFLAGS = 							\
 	@LIBXFCE4UTIL_CFLAGS@						\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXML_CFLAGS@							\
+	@PANGO_CFLAGS@							\
 	-DDATADIR=\"$(pkgdatadir)\"					\
 	-DSYSCONFDIR=\"$(sysconfdir)\"					\
 	-DVERSION=\"@VERSION@\"
 
 xfdesktop_LDADD =							\
-	$(top_srcdir)/common/libxfdesktop.la				\
+	$(top_builddir)/common/libxfdesktop.la				\
 	@LIBS@								\
 	@GTK_LIBS@							\
 	@LIBX11_LDFLAGS@						\
@@ -33,4 +34,5 @@ xfdesktop_LDADD =							\
 	@LIBXFCE4MCS_CLIENT_LIBS@					\
 	@LIBXFCE4UTIL_LIBS@						\
 	@LIBXFCEGUI4_LIBS@						\
-	@LIBXML_LIBS@
+	@LIBXML_LIBS@							\
+	@PANGO_LIBS@

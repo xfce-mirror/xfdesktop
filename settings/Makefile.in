@@ -62,8 +62,10 @@ EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 GLIB_CFLAGS = @GLIB_CFLAGS@
 GLIB_LIBS = @GLIB_LIBS@
+GLIB_REQUIRED_VERSION = @GLIB_REQUIRED_VERSION@
 GTK_CFLAGS = @GTK_CFLAGS@
 GTK_LIBS = @GTK_LIBS@
+GTK_REQUIRED_VERSION = @GTK_REQUIRED_VERSION@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -77,14 +79,19 @@ LIBX11_LDFLAGS = @LIBX11_LDFLAGS@
 LIBX11_LIBS = @LIBX11_LIBS@
 LIBXFCE4MCS_CLIENT_CFLAGS = @LIBXFCE4MCS_CLIENT_CFLAGS@
 LIBXFCE4MCS_CLIENT_LIBS = @LIBXFCE4MCS_CLIENT_LIBS@
+LIBXFCE4MCS_CLIENT_REQUIRED_VERSION = @LIBXFCE4MCS_CLIENT_REQUIRED_VERSION@
 LIBXFCE4MCS_MANAGER_CFLAGS = @LIBXFCE4MCS_MANAGER_CFLAGS@
 LIBXFCE4MCS_MANAGER_LIBS = @LIBXFCE4MCS_MANAGER_LIBS@
+LIBXFCE4MCS_MANAGER_REQUIRED_VERSION = @LIBXFCE4MCS_MANAGER_REQUIRED_VERSION@
 LIBXFCE4UTIL_CFLAGS = @LIBXFCE4UTIL_CFLAGS@
 LIBXFCE4UTIL_LIBS = @LIBXFCE4UTIL_LIBS@
+LIBXFCE4UTIL_REQUIRED_VERSION = @LIBXFCE4UTIL_REQUIRED_VERSION@
 LIBXFCEGUI4_CFLAGS = @LIBXFCEGUI4_CFLAGS@
 LIBXFCEGUI4_LIBS = @LIBXFCEGUI4_LIBS@
+LIBXFCEGUI4_REQUIRED_VERSION = @LIBXFCEGUI4_REQUIRED_VERSION@
 LIBXML_CFLAGS = @LIBXML_CFLAGS@
 LIBXML_LIBS = @LIBXML_LIBS@
+LIBXML_REQUIRED_VERSION = @LIBXML_REQUIRED_VERSION@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAINT = @MAINT@
@@ -98,6 +105,9 @@ PACKAGE_NAME = @PACKAGE_NAME@
 PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_VERSION = @PACKAGE_VERSION@
+PANGO_CFLAGS = @PANGO_CFLAGS@
+PANGO_LIBS = @PANGO_LIBS@
+PANGO_REQUIRED_VERSION = @PANGO_REQUIRED_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PKG_CONFIG = @PKG_CONFIG@
 RANLIB = @RANLIB@
@@ -174,11 +184,12 @@ backdrop_settings_la_CFLAGS = \
 	@GTK_CFLAGS@							\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
+	@PANGO_CFLAGS@							\
 	-DDATADIR=\"$(datadir)\" 
 
 
 backdrop_settings_la_LIBADD = \
-	$(top_srcdir)/common/libxfdesktop.la
+	$(top_builddir)/common/libxfdesktop.la
 
 
 #
@@ -209,11 +220,12 @@ workspaces_settings_la_CFLAGS = \
 	@GTK_CFLAGS@							\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
+	@PANGO_CFLAGS@							\
 	-DDATADIR=\"$(datadir)\"
 
 
 workspaces_settings_la_LIBADD = \
-	$(top_srcdir)/common/libxfdesktop.la
+	$(top_builddir)/common/libxfdesktop.la
 
 
 # icons (left out: menu-icon.h)
@@ -224,14 +236,15 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 LTLIBRARIES = $(backdrop_LTLIBRARIES) $(workspaces_LTLIBRARIES)
 
-backdrop_settings_la_DEPENDENCIES = $(top_srcdir)/common/libxfdesktop.la
+backdrop_settings_la_DEPENDENCIES = \
+	$(top_builddir)/common/libxfdesktop.la
 am_backdrop_settings_la_OBJECTS = \
 	backdrop_settings_la-backdrop_settings.lo \
 	backdrop_settings_la-backdrop-mgr.lo \
 	backdrop_settings_la-settings_common.lo
 backdrop_settings_la_OBJECTS = $(am_backdrop_settings_la_OBJECTS)
 workspaces_settings_la_DEPENDENCIES = \
-	$(top_srcdir)/common/libxfdesktop.la
+	$(top_builddir)/common/libxfdesktop.la
 am_workspaces_settings_la_OBJECTS = \
 	workspaces_settings_la-workspaces_settings.lo \
 	workspaces_settings_la-settings_common.lo

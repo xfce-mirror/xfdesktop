@@ -1799,6 +1799,17 @@ AC_HELP_STRING([--disable-rpath], [Do not use -rpath (use with care!!)]),
   fi
 ])
 
+dnl From Benedikt Meurer (benedikt.meurer@unix-ag.uni-siegen.de)
+dnl
+dnl
+
+AC_DEFUN([BM_DEPEND],
+[
+  PKG_CHECK_MODULES([$1], [$2 >= $3])
+  $1_REQUIRED_VERSION=$3
+  AC_SUBST($1_REQUIRED_VERSION)
+])
+
 
 dnl PKG_CHECK_MODULES(GSTUFF, gtk+-2.0 >= 1.3 glib = 1.3.4, action-if, action-not)
 dnl defines GSTUFF_LIBS, GSTUFF_CFLAGS, see pkg-config man page

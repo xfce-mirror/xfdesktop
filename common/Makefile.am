@@ -10,7 +10,8 @@ libxfdesktop_la_SOURCES =						\
 libxfdesktop_la_CFLAGS =						\
 	@CFLAGS@							\
 	@GLIB_CFLAGS@							\
-	@LIBXFCEGUI4_CFLAGS@
+	@LIBXFCEGUI4_CFLAGS@						\
+	@PANGO_CFLAGS@
 
 libxfdesktop_la_LDFLAGS =						\
 	-export-dynamic

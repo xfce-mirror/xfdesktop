@@ -21,13 +21,14 @@ AC_CHECK_FUNCS(srandom)
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE
 
-PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.0.0)
-PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.0.0)
-PKG_CHECK_MODULES(LIBXFCEGUI4, libxfcegui4-1.0 >= 0.0.17)
-PKG_CHECK_MODULES(LIBXFCE4UTIL, libxfce4util-1.0 >= 0.0)
-PKG_CHECK_MODULES(LIBXML, libxml-2.0 >= 2.4.0)
-PKG_CHECK_MODULES(LIBXFCE4MCS_CLIENT,  libxfce4mcs-client-1.0 >= 0.0.4)
-PKG_CHECK_MODULES(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0 >= 0.0.4)
+BM_DEPEND(GLIB, glib-2.0, 2.0.0)
+BM_DEPEND(PANGO, pango, 1.0.0)
+BM_DEPEND(GTK, gtk+-2.0, 2.0.0)
+BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 0.0.17)
+BM_DEPEND(LIBXFCE4UTIL, libxfce4util-1.0, 0.0)
+BM_DEPEND(LIBXML, libxml-2.0, 2.4.0)
+BM_DEPEND(LIBXFCE4MCS_CLIENT,  libxfce4mcs-client-1.0, 0.0.4)
+BM_DEPEND(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, 0.0.4)
 
 dnl Check for debuggin support
 BM_DEBUG_SUPPORT

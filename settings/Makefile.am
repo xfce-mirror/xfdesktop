@@ -29,10 +29,11 @@ backdrop_settings_la_CFLAGS =						\
 	@GTK_CFLAGS@							\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
+	@PANGO_CFLAGS@							\
 	-DDATADIR=\"$(datadir)\" 
 
 backdrop_settings_la_LIBADD =						\
-	$(top_srcdir)/common/libxfdesktop.la
+	$(top_builddir)/common/libxfdesktop.la
 
 backdrop-icon.h: $(srcdir)/backdrop.png
 	gdk-pixbuf-csource --raw --build-list				\
@@ -64,10 +65,11 @@ workspaces_settings_la_CFLAGS =						\
 	@GTK_CFLAGS@							\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
+	@PANGO_CFLAGS@							\
 	-DDATADIR=\"$(datadir)\"
 
 workspaces_settings_la_LIBADD =						\
-	$(top_srcdir)/common/libxfdesktop.la
+	$(top_builddir)/common/libxfdesktop.la
 
 # icons (left out: menu-icon.h)
 noinst_DATA = backdrop-icon.h workspaces-icon.h 

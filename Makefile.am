@@ -1,11 +1,14 @@
 @SET_MAKE@
 
-confdir=$(sysconfdir)/xfce4
-
-EXTRA_DIST = xfdesktop.spec xfdesktop.spec.in TODO
-conf_DATA = menu.xml
-
 SUBDIRS = common doc src settings backdrops
+
+EXTRA_DIST = xfdesktop.spec.in TODO
+
+#
+# config files
+#
+confdir = $(sysconfdir)/xfce4
+conf_DATA = menu.xml
 
 distclean-local:
 	-rm -rf xfdesktop.spec *.cache *~
