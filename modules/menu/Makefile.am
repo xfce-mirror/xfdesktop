@@ -45,6 +45,7 @@ xfceconf_DATA = \
 	xfce-registered-categories.xml.nl \
 	xfce-registered-categories.xml.pt_BR \
 	xfce-registered-categories.xml.ru \
+	xfce-registered-categories.xml.zh_CN \
 	xfce-registered-categories.xml.zh_TW
 
 EXTRA_DIST = $(xfceconf_DATA)

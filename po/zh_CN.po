@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-28 22:00-0800\n"
+"POT-Creation-Date: 2004-10-17 23:16+0200\n"
 "PO-Revision-Date: 2004-09-28 01:05-0700\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,346 +16,401 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: menueditor/about_dialog.c:39
+#: menueditor/about_dialog.c:36
 msgid "A menu editor for Xfce4"
 msgstr "一个 Xfce 菜单编辑器"
 
 #. Credits
-#: menueditor/about_dialog.c:43
+#: menueditor/about_dialog.c:41
 msgid "Core developer"
 msgstr "核心开发者"
 
-#: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
-#: menueditor/about_dialog.c:46
+#: menueditor/about_dialog.c:42 menueditor/about_dialog.c:43
+#: menueditor/about_dialog.c:44
 msgid "Contributor"
 msgstr "其他作出贡献人员"
 
-#: menueditor/about_dialog.c:47
+#: menueditor/about_dialog.c:45
 msgid "Icon designer"
 msgstr "图标设计者"
 
-#: menueditor/add_dialog.c:159 menueditor/add_dialog.c:169
+#: menueditor/add_dialog.c:132 menueditor/add_dialog.c:147
 msgid "Add menu entry"
 msgstr "添加菜单条目"
 
 #. Type
-#: menueditor/add_dialog.c:173 menueditor/add_menu_dialog.c:110
+#: menueditor/add_dialog.c:153 menueditor/add_menu_dialog.c:98
+#: menueditor/edit_dialog.c:148
 msgid "Type:"
 msgstr "类型："
 
-#: menueditor/add_dialog.c:176
+#: menueditor/add_dialog.c:156
 msgid "Launcher"
 msgstr "启动器"
 
-#: menueditor/add_dialog.c:180
+#: menueditor/add_dialog.c:161
 msgid "Submenu"
 msgstr "子菜单"
 
-#: menueditor/add_dialog.c:184
+#: menueditor/add_dialog.c:166
 msgid "Separator"
 msgstr "隔离符"
 
-#: menueditor/add_dialog.c:188
+#: menueditor/add_dialog.c:171
 msgid "Title"
 msgstr "标题"
 
-#: menueditor/add_dialog.c:192
+#: menueditor/add_dialog.c:176
 msgid "Quit"
 msgstr "退出"
 
 #. Name
-#: menueditor/add_dialog.c:206 menueditor/edit_dialog.c:158
-#: menueditor/edit_dialog.c:218
+#: menueditor/add_dialog.c:191 menueditor/edit_dialog.c:260
+#: menueditor/edit_dialog.c:310 menueditor/edit_dialog.c:348
 msgid "Name:"
 msgstr "名称："
 
-#: menueditor/add_dialog.c:214 menueditor/edit_dialog.c:163
+#: menueditor/add_dialog.c:201 menueditor/edit_dialog.c:261
 msgid "Command:"
 msgstr "命令："
 
-#: menueditor/add_dialog.c:226 menueditor/edit_dialog.c:150
-#: menueditor/edit_dialog.c:210
+#: menueditor/add_dialog.c:217 menueditor/edit_dialog.c:252
+#: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
+#: menueditor/edit_dialog.c:390
 msgid "Icon:"
 msgstr "图标："
 
 #. Start Notify check button
-#. Startup notification
-#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:171
+#: menueditor/add_dialog.c:233 menueditor/edit_dialog.c:272
 msgid "Use startup _notification"
 msgstr "使用启动提示(_n)"
 
 #. Run in terminal check button
-#. Run in terminal
-#: menueditor/add_dialog.c:241 menueditor/edit_dialog.c:174
+#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:273
 msgid "Run in _terminal"
 msgstr "在终端中运行(_t)"
 
-#: menueditor/add_dialog.c:272
+#: menueditor/add_dialog.c:282 menueditor/edit_dialog.c:459
 msgid "The command doesn't exist !"
 msgstr "该命令不存在！"
 
-#: menueditor/add_dialog.c:278
+#: menueditor/add_dialog.c:288
 msgid "All fields must be filled to add an item."
 msgstr "必须填写所有字段才能添加条目。"
 
-#: menueditor/add_dialog.c:287
+#: menueditor/add_dialog.c:296
 msgid "The 'Name' field is required."
 msgstr "需要“名称”字段。"
 
-#: menueditor/add_dialog.c:331
+#: menueditor/add_dialog.c:350 menueditor/dnd.c:152
+#: menueditor/menueditor.c:346 menueditor/move.c:90 menueditor/move.c:248
 msgid "--- separator ---"
 msgstr "--- 隔离符 ---"
 
-#: menueditor/add_dialog.c:357
+#: menueditor/add_dialog.c:375 menueditor/edit_dialog.c:494
 msgid "quit"
 msgstr "退出"
 
-#: menueditor/add_menu_dialog.c:97 menueditor/add_menu_dialog.c:103
-#: menueditor/menueditor.c:831
+#: menueditor/add_menu_dialog.c:78 menueditor/add_menu_dialog.c:89
+#: menueditor/menueditor.c:805
 msgid "Add an external menu"
 msgstr "添加一个外部菜单"
 
-#: menueditor/add_menu_dialog.c:115
+#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:151
 msgid "File"
 msgstr "文件"
 
-#: menueditor/add_menu_dialog.c:119
+#: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:156
 msgid "System"
 msgstr "系统"
 
-#: menueditor/add_menu_dialog.c:133
+#: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:171
 msgid "Source:"
 msgstr "源："
 
 #. Style
-#: menueditor/add_menu_dialog.c:145
+#: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:184
 msgid "Style:"
 msgstr "风格:"
 
-#: menueditor/add_menu_dialog.c:148
+#: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:187
 msgid "Simple"
 msgstr "简单"
 
-#: menueditor/add_menu_dialog.c:150
+#: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:190
 msgid "Multilevel"
 msgstr "多层次"
 
 #. Unique
-#: menueditor/add_menu_dialog.c:162
+#: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:203
 msgid "_Unique entries only"
 msgstr "只要唯一的条目"
 
-#: menueditor/add_menu_dialog.c:198
+#: menueditor/add_menu_dialog.c:208
 msgid "The 'Source' field is required."
 msgstr "字段“源”是必须的。"
 
-#: menueditor/add_menu_dialog.c:202 menueditor/add_menu_dialog.c:212
+#: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:235
+#: menueditor/dnd.c:154 menueditor/edit_dialog.c:508
+#: menueditor/edit_dialog.c:521 menueditor/menueditor.c:394
+#: menueditor/move.c:120 menueditor/move.c:278
 msgid "--- include ---"
 msgstr "--- 包含 ---"
 
-#: menueditor/add_menu_dialog.c:213
+#: menueditor/add_menu_dialog.c:236 menueditor/dnd.c:159
+#: menueditor/edit_dialog.c:522 menueditor/menueditor.c:397
+#: menueditor/move.c:123 menueditor/move.c:281
 msgid "system"
 msgstr "系统"
 
 #. Create dialog for editing
-#: menueditor/edit_dialog.c:127 menueditor/edit_dialog.c:134
+#: menueditor/edit_dialog.c:100 menueditor/edit_dialog.c:113
 msgid "Edit menu entry"
 msgstr "编辑菜单条目"
 
-#: menueditor/edit_dialog.c:139
+#: menueditor/edit_dialog.c:131
 msgid "Separators cannot be edited"
 msgstr "不能编辑隔离符"
 
-#: menueditor/menueditor.c:81
-#, c-format
-msgid "File %s doesn't exist !"
-msgstr "文件 %s 不存在！"
+#. Name
+#: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:104
+msgid "Title:"
+msgstr "标题:"
 
-#: menueditor/menueditor.c:121 menueditor/menueditor.c:532
-msgid "Do you want to save before closing the menu ?"
-msgstr "您希望在关闭菜单前保存吗？"
-
-#: menueditor/menueditor.c:123
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "您修改了菜单，您要在退出前保存吗？"
-
-#: menueditor/menueditor.c:125
-msgid "Forget modifications"
-msgstr "放弃修改"
-
-#: menueditor/menueditor.c:310
-msgid "Are you sure you want to close the current menu?"
-msgstr "您确定要关闭当前菜单吗？"
-
-#: menueditor/menueditor.c:325
-msgid "Do you want to save before closing the file?"
-msgstr "您希望在关闭文件之前保存吗？"
-
-#: menueditor/menueditor.c:334
+#: menueditor/menueditor.c:148
 msgid "Select command"
 msgstr "选择命令"
 
-#: menueditor/menueditor.c:366 menueditor/menueditor.c:423
-#: menueditor/menueditor.c:530
+#: menueditor/menueditor.c:209
+msgid "Select icon"
+msgstr "选择图标"
+
+#: menueditor/menueditor.c:215 panel-plugin/desktop-menu-plugin.c:389
+#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop_settings.c:533
+msgid "All Files"
+msgstr "全部文件"
+
+#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:395
+#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+msgid "Image Files"
+msgstr "图像文件"
+
+#: menueditor/menueditor.c:272 menueditor/menueditor.c:679
+msgid "Do you want to save before closing the menu ?"
+msgstr "您希望在关闭菜单前保存吗？"
+
+#: menueditor/menueditor.c:273
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr "您修改了菜单，您要在退出前保存吗？"
+
+#: menueditor/menueditor.c:274
+msgid "Forget modifications"
+msgstr "放弃修改"
+
+#: menueditor/menueditor.c:473 menueditor/menueditor.c:531
+#: menueditor/menueditor.c:677
 msgid "Question"
 msgstr "问题"
 
-#: menueditor/menueditor.c:368
-msgid "Do you want to save before opening an other menu ?"
-msgstr "您希望在打开另一个菜单前保存吗？"
-
-#: menueditor/menueditor.c:370 menueditor/menueditor.c:427
-#: menueditor/menueditor.c:534
-msgid "Ignore modifications"
-msgstr "忽略修改"
-
-#: menueditor/menueditor.c:381
-msgid "Open menu file"
-msgstr "打开菜单文件"
-
-#: menueditor/menueditor.c:425
+#: menueditor/menueditor.c:475
 msgid "Do you want to save before opening the default menu ?"
 msgstr "您希望在打开默认菜单前保存吗？"
 
-#: menueditor/menueditor.c:483
+#: menueditor/menueditor.c:477 menueditor/menueditor.c:535
+#: menueditor/menueditor.c:681
+msgid "Ignore modifications"
+msgstr "忽略修改"
+
+#: menueditor/menueditor.c:533
+msgid "Do you want to save before opening an other menu ?"
+msgstr "您希望在打开另一个菜单前保存吗？"
+
+#: menueditor/menueditor.c:546
+msgid "Open menu file"
+msgstr "打开菜单文件"
+
+#: menueditor/menueditor.c:580 menueditor/menueditor.c:591
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr ""
+"无法写入文件 %s：\n"
+"%s"
+
+#: menueditor/menueditor.c:622
 msgid "Save as..."
 msgstr "另存为..."
 
-#: menueditor/menueditor.c:638
-msgid "Do you want to move the item into the parent menu?"
-msgstr "您希望把该条目移到母菜单中吗？"
-
-#: menueditor/menueditor.c:684
-msgid "Do you want to move the item into the submenu?"
-msgstr "您希望把该条目移到子菜单中吗？"
-
-#: menueditor/menueditor.c:825
+#: menueditor/menueditor.c:799
 msgid "Edit"
 msgstr "编辑"
 
 #. File menu
-#: menueditor/menueditor.c:849
+#: menueditor/menueditor.c:1005
 msgid "_File"
 msgstr "文件(_F)"
 
-#: menueditor/menueditor.c:858
+#: menueditor/menueditor.c:1014
 msgid "Open default menu"
 msgstr "打开默认菜单"
 
 #. Edit menu
-#: menueditor/menueditor.c:872
+#: menueditor/menueditor.c:1028
 msgid "_Edit"
 msgstr "编辑(_E)"
 
-#: menueditor/menueditor.c:878
+#: menueditor/menueditor.c:1034
 msgid "Add an external menu..."
 msgstr "添加外部菜单..."
 
 #. Help menu
-#: menueditor/menueditor.c:890
+#: menueditor/menueditor.c:1046
 msgid "_Help"
 msgstr "帮助(_H)"
 
-#: menueditor/menueditor.c:894
+#: menueditor/menueditor.c:1051
 msgid "_About..."
 msgstr "关于(_A)..."
 
-#: menueditor/menueditor.c:906
+#: menueditor/menueditor.c:1061
 msgid "Create a new Xfce4 menu file"
 msgstr "创建一个新的 Xfce 菜单文件"
 
-#: menueditor/menueditor.c:911
+#: menueditor/menueditor.c:1065
 msgid "Open an Xfce4 menu file"
 msgstr "打开一个 Xfce4 菜单文件"
 
-#: menueditor/menueditor.c:916
+#: menueditor/menueditor.c:1069
 msgid "Save current menu"
 msgstr "保存当前菜单"
 
-#: menueditor/menueditor.c:921
+#: menueditor/menueditor.c:1073
 msgid "Close current menu"
 msgstr "关闭当前菜单"
 
-#: menueditor/menueditor.c:927
+#: menueditor/menueditor.c:1078
 msgid "Add an entry to the menu"
 msgstr "向菜单中增加一个条目"
 
-#: menueditor/menueditor.c:931
+#: menueditor/menueditor.c:1082
 msgid "Delete the current entry"
 msgstr "删除当前条目"
 
-#: menueditor/menueditor.c:937
+#: menueditor/menueditor.c:1086
 msgid "Move the current entry up"
 msgstr "上移当前条目"
 
-#: menueditor/menueditor.c:942
+#: menueditor/menueditor.c:1090
 msgid "Move the current entry down"
 msgstr "下移当前条目"
 
-#: menueditor/menueditor.c:948
+#: menueditor/menueditor.c:1095
 msgid "Collapse the tree"
 msgstr "折叠文件树"
 
-#: menueditor/menueditor.c:953
+#: menueditor/menueditor.c:1099
 msgid "Expand the tree"
 msgstr "展开文件树"
 
-#: menueditor/menueditor.c:981
+#: menueditor/menueditor.c:1130
 msgid "Name"
 msgstr "名称"
 
-#: menueditor/menueditor.c:984
+#: menueditor/menueditor.c:1132
 msgid "Command"
 msgstr "命令"
 
-#: menueditor/menueditor.c:985
+#: menueditor/menueditor.c:1134
 msgid "Hidden"
 msgstr "隐藏"
+
+#: menueditor/menueditor.c:1136
+msgid "Pointer"
+msgstr "指针"
+
+#: menueditor/menueditor.c:1260
+msgid "Corrupted file or incorrect file format !"
+msgstr "文件被损坏或者文件格式不正确！"
+
+#: menueditor/menueditor.c:1273
+msgid "No root element in file !"
+msgstr "文件中没有 root 成员！"
+
+#: menueditor/menueditor.c:1284
+msgid "Bad datafile format !"
+msgstr "非法数据文件格式！"
+
+#: menueditor/menueditor.c:1388
+#, c-format
+msgid "File %s doesn't exist !"
+msgstr "文件 %s 不存在！"
+
+#: menueditor/move.c:408
+msgid "Do you want to move the item into the parent menu?"
+msgstr "您希望把该条目移到母菜单中吗？"
+
+#: menueditor/move.c:512
+msgid "Do you want to move the item into the submenu?"
+msgstr "您希望把该条目移到子菜单中吗？"
+
+#: menueditor/new_dialog.c:60
+msgid "Are you sure you want to close the current menu?"
+msgstr "您确定要关闭当前菜单吗？"
+
+#: menueditor/new_dialog.c:76
+msgid "Do you want to save before closing the file?"
+msgstr "您希望在关闭文件之前保存吗？"
+
+#. get the filename and name for the new menu
+#: menueditor/new_dialog.c:86 menueditor/new_dialog.c:98
+msgid "New menu"
+msgstr "新菜单"
+
+#. Filename
+#: menueditor/new_dialog.c:111
+msgid "Filename:"
+msgstr "文件名:"
+
+#: menueditor/new_dialog.c:144
+msgid "All fields are required."
+msgstr "所有字段都是必须的。"
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
 msgstr "其它(/O)"
 
-#: panel-plugin/desktop-menu-plugin.c:205
-#: panel-plugin/desktop-menu-plugin.c:535
+#: panel-plugin/desktop-menu-plugin.c:204
+#: panel-plugin/desktop-menu-plugin.c:532
 msgid "Xfce Menu"
 msgstr "Xfce 菜单"
 
-#: panel-plugin/desktop-menu-plugin.c:373
+#: panel-plugin/desktop-menu-plugin.c:372
 msgid "Select Icon"
 msgstr "选择图标"
 
-#: panel-plugin/desktop-menu-plugin.c:375
+#: panel-plugin/desktop-menu-plugin.c:374
 msgid "Select Menu File"
 msgstr "选择菜单文件"
 
-#: panel-plugin/desktop-menu-plugin.c:390 settings/backdrop-mgr.c:414
-#: settings/backdrop-mgr.c:515 settings/backdrop_settings.c:533
-msgid "All Files"
-msgstr "全部文件"
-
-#: panel-plugin/desktop-menu-plugin.c:396 settings/backdrop-mgr.c:418
-#: settings/backdrop_settings.c:537
-msgid "Image Files"
-msgstr "图像文件"
-
-#: panel-plugin/desktop-menu-plugin.c:404
+#: panel-plugin/desktop-menu-plugin.c:403
 msgid "Menu Files"
 msgstr "图像文件"
 
-#: panel-plugin/desktop-menu-plugin.c:465
+#: panel-plugin/desktop-menu-plugin.c:462
 msgid "_Menu file:"
 msgstr "菜单文件(_M)"
 
-#: panel-plugin/desktop-menu-plugin.c:499
+#: panel-plugin/desktop-menu-plugin.c:496
 msgid "_Button icon:"
 msgstr "按钮图标(_B)："
 
-#: panel-plugin/desktop-menu-plugin.c:524
+#: panel-plugin/desktop-menu-plugin.c:521
 msgid "Show _icons in menu"
 msgstr "在菜单中显示图标(_i)"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:112
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -406,7 +461,7 @@ msgstr "编辑背景列表"
 
 #. the dialog
 #: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
-#: src/xfce-desktop.c:676
+#: src/xfce-desktop.c:670
 msgid "Desktop"
 msgstr "桌面"
 
@@ -456,7 +511,6 @@ msgstr "调整亮度(_B)："
 
 #. header
 #: settings/backdrop_settings.c:851
-#: settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "工作区设置"
 
@@ -590,85 +644,29 @@ msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "  -windowlist    弹出窗口列表 (在鼠标当前位置)\n"
 
-#: src/windowlist.c:193
+#: src/windowlist.c:183
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>工作区 %d</b>"
 
-#: src/windowlist.c:201
+#: src/windowlist.c:188
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>工作区 %d</i>"
 
-#: src/windowlist.c:268 src/windowlist.c:271
+#: src/windowlist.c:244 src/windowlist.c:247
 msgid "_Add Workspace"
 msgstr "添加工作区(_A)"
 
-#: src/windowlist.c:279
+#: src/windowlist.c:254
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "删除工作区(_R) %d"
 
-#: src/windowlist.c:282
+#: src/windowlist.c:256
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "删除工作区(_R) “%s”"
-
-#: menueditor/xfce-menueditor.desktop.in.h:1
-msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr ""
-
-#: menueditor/xfce-menueditor.desktop.in.h:2
-msgid "Menu Editor"
-msgstr ""
-
-#: menueditor/xfce-menueditor.desktop.in.h:3
-#, fuzzy
-msgid "Xfce 4 Menu Editor"
-msgstr "Xfce 菜单"
-
-#: settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr ""
-
-#: settings/xfce-backdrop-settings.desktop.in.h:3
-#, fuzzy
-msgid "Xfce 4 Desktop Settings"
-msgstr "工作区设置"
-
-#~ msgid "Title:"
-#~ msgstr "标题:"
-
-#~ msgid "Select icon"
-#~ msgstr "选择图标"
-
-#~ msgid ""
-#~ "Cannot write in %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "无法写入文件 %s：\n"
-#~ "%s"
-
-#~ msgid "Pointer"
-#~ msgstr "指针"
-
-#~ msgid "Corrupted file or incorrect file format !"
-#~ msgstr "文件被损坏或者文件格式不正确！"
-
-#~ msgid "No root element in file !"
-#~ msgstr "文件中没有 root 成员！"
-
-#~ msgid "Bad datafile format !"
-#~ msgstr "非法数据文件格式！"
-
-#~ msgid "New menu"
-#~ msgstr "新菜单"
-
-#~ msgid "Filename:"
-#~ msgstr "文件名:"
-
-#~ msgid "All fields are required."
-#~ msgstr "所有字段都是必须的。"
 
 #~ msgid "Backdrop"
 #~ msgstr "背景"
