@@ -1,18 +1,18 @@
-Summary: 	Desktop manager for the Xfce Desktop Environment
-Name: 		xfdesktop
-Version: 	@VERSION@
-Release: 	1
+Summary:	Desktop manager for the Xfce Desktop Environment
+Name:		xfdesktop
+Version:	@VERSION@
+Release:	1
 License:	GPL
 URL: 		http://www.xfce.org/
-Source0: 	%{name}-%{version}.tar.gz
+Source0:	%{name}-%{version}.tar.gz
 Group: 		User Interface/Desktops
-BuildRoot: 	%{_tmppath}/%{name}-root
-Requires:   gtk >= @GTK_REQUIRED_VERSION@
+BuildRoot:	%{_tmppath}/%{name}-root
+Requires:	gtk2 >= @GTK_REQUIRED_VERSION@
 Requires:	libxfce4mcs >= @LIBXFCE4MCS_CLIENT_REQUIRED_VERSION@
 Requires:	libxfcegui4 >= @LIBXFCEGUI4_REQUIRED_VERSION@
-BuildRequires:  gtk+ >= @GTK_REQUIRED_VERSION@
+BuildRequires:	gtk+ >= @GTK_REQUIRED_VERSION@
 BuildRequires:	libxfce4mcs-devel >= @LIBXFCE4MCS_CLIENT_REQUIRED_VERSION@
-BuildRequires: 	libxfcegui4-devel >= @LIBXFCEGUI4_REQUIRED_VERSION@
+BuildRequires:	libxfcegui4-devel >= @LIBXFCEGUI4_REQUIRED_VERSION@
 
 %description
 xfdesktop is a desktop manager for the Xfce Desktop Environment
