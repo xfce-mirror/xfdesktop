@@ -62,6 +62,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   struct _controls_menu controls;
   GtkWidget *entry_source = NULL;
   GtkWidget *checkbutton_snotify = NULL;
+  GtkWidget *checkbutton_term = NULL;
 
   xmlChar *prop_name = NULL;
   xmlChar *prop_cmd = NULL;
@@ -69,6 +70,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   xmlChar *prop_type = NULL;
   xmlChar *prop_src = NULL;
   xmlChar *prop_snotify = NULL;
+  xmlChar *prop_term = NULL;
 
   /* Retrieve the xmlNodePtr of the menu entry */
   gtk_tree_model_get_iter(GTK_TREE_MODEL(menueditor_app.treestore), &iter, path);
@@ -102,6 +104,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   prop_type = xmlGetProp(node, "type");
   prop_src = xmlGetProp(node, "src");
   prop_snotify = xmlGetProp(node , "snotify");
+  prop_term = xmlGetProp(node, "term");
 
   /* Choose the edition dialog */
   if(!xmlStrcmp(node->name,(xmlChar*)"separator") ){
@@ -209,6 +212,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), command_entry);
 
     checkbutton_snotify = gtk_check_button_new_with_label(_("Start notify"));
+    checkbutton_term = gtk_check_button_new_with_label(_("Run in terminal"));
 
     gtk_table_set_row_spacings(GTK_TABLE(table), 5);
     gtk_table_set_col_spacings(GTK_TABLE(table), 5);
@@ -220,6 +224,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     gtk_table_attach(GTK_TABLE(table), hbox_command, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
     gtk_table_attach(GTK_TABLE(table), icon_label, 0, 1, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
     gtk_table_attach(GTK_TABLE(table), hbox_icon, 1, 2, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach(GTK_TABLE(table), checkbutton_term, 0, 1, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
     gtk_table_attach(GTK_TABLE(table), checkbutton_snotify, 1, 2, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
 
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), table, FALSE, FALSE, 0);
@@ -233,6 +238,8 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
     if(prop_snotify && !xmlStrcmp(prop_snotify, (xmlChar*)"true"))
       gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbutton_snotify), TRUE);
+    if(prop_term && !xmlStrcmp(prop_term, (xmlChar*)"yes"))
+      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbutton_term), TRUE);
 
     gtk_window_set_default_size(GTK_WINDOW(dialog),300,150);
   }else if(!xmlStrcmp(node->name,(xmlChar*)"menu")){
@@ -358,6 +365,15 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 	snotify_prop = xmlHasProp(node, "snotify");
 	xmlRemoveProp(snotify_prop);
       }
+      if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbutton_term)))
+	xmlSetProp(node, "term", "yes");
+      else{
+	xmlAttrPtr term_prop;
+
+	/* Remove the property in the xml tree */
+	term_prop = xmlHasProp(node, "term");
+	xmlRemoveProp(term_prop);
+      }
 
       name = g_strdup_printf(NAME_FORMAT,
 			     gtk_entry_get_text(GTK_ENTRY(name_entry)));
@@ -466,6 +482,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   xmlFree(prop_type);
   xmlFree(prop_src);
   xmlFree(prop_snotify);
+  xmlFree(prop_term);
 
   gtk_widget_destroy (dialog);
 }

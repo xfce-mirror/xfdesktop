@@ -33,6 +33,7 @@ struct _controls_add{
   GtkWidget *entry_icon;
   GtkWidget *browse_button2;
   GtkWidget *snotify_checkbutton;
+  GtkWidget *term_checkbutton;
 };
 
 /* Prototype */

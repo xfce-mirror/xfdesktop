@@ -42,6 +42,7 @@ void addentry_option_launcher_cb(GtkWidget *widget, struct _controls_add *contro
   gtk_widget_set_sensitive(controls->label_icon,TRUE);
   gtk_widget_set_sensitive(controls->entry_icon,TRUE);
   gtk_widget_set_sensitive(controls->snotify_checkbutton,TRUE);
+  gtk_widget_set_sensitive(controls->term_checkbutton,TRUE);
 }
 
 void addentry_option_submenu_cb(GtkWidget *widget, struct _controls_add *controls)
@@ -54,6 +55,7 @@ void addentry_option_submenu_cb(GtkWidget *widget, struct _controls_add *control
   gtk_widget_set_sensitive(controls->label_icon,FALSE);
   gtk_widget_set_sensitive(controls->entry_icon,FALSE);
   gtk_widget_set_sensitive(controls->snotify_checkbutton,FALSE);
+  gtk_widget_set_sensitive(controls->term_checkbutton,FALSE);
 }
 
 void addentry_option_separator_cb(GtkWidget *widget, struct _controls_add *controls)
@@ -66,6 +68,7 @@ void addentry_option_separator_cb(GtkWidget *widget, struct _controls_add *contr
   gtk_widget_set_sensitive(controls->label_icon,FALSE);
   gtk_widget_set_sensitive(controls->entry_icon,FALSE);
   gtk_widget_set_sensitive(controls->snotify_checkbutton,FALSE);
+  gtk_widget_set_sensitive(controls->term_checkbutton,FALSE);
 }
 
 void addentry_option_title_cb(GtkWidget *widget, struct _controls_add *controls)
@@ -78,6 +81,7 @@ void addentry_option_title_cb(GtkWidget *widget, struct _controls_add *controls)
   gtk_widget_set_sensitive(controls->label_icon,FALSE);
   gtk_widget_set_sensitive(controls->entry_icon,FALSE);
   gtk_widget_set_sensitive(controls->snotify_checkbutton,FALSE);
+  gtk_widget_set_sensitive(controls->term_checkbutton,FALSE);
 }
 
 void addentry_option_quit_cb(GtkWidget *widget, struct _controls_add *controls)
@@ -90,6 +94,7 @@ void addentry_option_quit_cb(GtkWidget *widget, struct _controls_add *controls)
   gtk_widget_set_sensitive(controls->label_icon,TRUE );
   gtk_widget_set_sensitive(controls->entry_icon,TRUE );
   gtk_widget_set_sensitive(controls->snotify_checkbutton,FALSE);
+  gtk_widget_set_sensitive(controls->term_checkbutton,FALSE);
 }
 
 /*******************/
@@ -220,6 +225,10 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
   controls.snotify_checkbutton = gtk_check_button_new_with_label(_("Start notify"));
   gtk_table_attach(GTK_TABLE(table), controls.snotify_checkbutton, 1, 2, 4, 5, GTK_FILL, GTK_SHRINK, 0, 0);
 
+  /* Run in terminal check button */
+  controls.term_checkbutton = gtk_check_button_new_with_label(_("Run in terminal"));
+  gtk_table_attach(GTK_TABLE(table), controls.term_checkbutton, 0, 1, 4, 5, GTK_FILL, GTK_SHRINK, 0, 0);
+
   gtk_table_set_row_spacings(GTK_TABLE(table), 5);
   gtk_table_set_col_spacings(GTK_TABLE(table), 5);
   gtk_container_set_border_width(GTK_CONTAINER(table),10);
@@ -284,6 +293,9 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 
       if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(controls.snotify_checkbutton)))
 	xmlSetProp(node,"snotify","true");
+
+      if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(controls.term_checkbutton)))
+	xmlSetProp(node,"term","yes");
 
       xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(entry_name)));
       xmlSetProp(node,"cmd",gtk_entry_get_text(GTK_ENTRY(entry_command)));
