@@ -354,41 +354,32 @@ menu_file_parse(const char *filename, const char *basepath)
 gchar *
 menu_file_get()
 {
-    char *filename = NULL;
-    char *path = NULL;
-    const char *env;
+	gchar filename[PATH_MAX];
+	gchar paths[PATH_MAX*3+2];
+	const gchar *env;
 
-    env = g_getenv ("XFCE_DISABLE_USER_CONFIG");
+	env = g_getenv("XFCE_DISABLE_USER_CONFIG");
 
-    if (!env || strcmp (env, "0"))
-    {
-
-	filename = xfce_get_userfile ("menu.xml", NULL);
-	if (g_file_test (filename, G_FILE_TEST_EXISTS))
-	{
-	    is_using_system_rc = FALSE;
-
-	    return filename;
+	if(!env || !strcmp(env, "0")) {
+		const gchar *userdir = xfce_get_userdir();
+		g_snprintf(paths, PATH_MAX, "%s/%%F.%%L:%s/%%F.%%l:%s/%%F", userdir,
+				userdir, userdir);
+		if(xfce_get_path_localized(filename, PATH_MAX, paths, "menu.xml",
+				G_FILE_TEST_IS_REGULAR))
+		{
+			is_using_system_rc = FALSE;
+			return g_strdup(filename);
+		}
 	}
-	else
+
+	if(xfce_get_path_localized(filename, PATH_MAX, SEARCHPATH,
+			"menu.xml", G_FILE_TEST_IS_REGULAR))
 	{
-	    g_free (filename);
+		is_using_system_rc = TRUE;
+		return g_strdup(filename);
 	}
-    }
 
-    is_using_system_rc = TRUE;
-
-    /* xfce_get_path_localized(buffer, sizeof(buffer), SEARCHPATH,
-       "menu.xml", G_FILE_TEST_IS_REGULAR); */
-
-    path = g_build_filename (SYSCONFDIR, "xfce4", "menu.xml", NULL);
-    filename = xfce_get_file_localized (path);
-    g_free (path);
-
-    if (filename)
-	return filename;
-
-    g_warning ("%s: Could not locate a menu definition file", PACKAGE);
+    g_warning("%s: Could not locate a menu definition file", PACKAGE);
 
     return NULL;
 }
