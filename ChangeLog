@@ -1,3 +1,98 @@
+2004-07-08 21:53  olivier
+
+	* ltmain.sh: Update tree for 4.0.6 release
+
+2004-07-06 17:58  pollux
+
+	* configure, configure.ac, po/eu.gmo, po/eu.po: add basque
+	  translation from ^pi^ <pi@beobide.net>
+
+2004-06-29 21:12  pollux
+
+	* po/: ru.gmo, ru.po: Add missing translations from Anthony Ivanoff
+
+2004-06-20 19:20  benny
+
+	* src/menu.c: PATH_MAX fixes to get it to compile on GNU/Hurd.
+
+2004-06-11 13:03  pollux
+
+	* configure, configure.ac, ltmain.sh, po/et.gmo, po/et.po: Estonian
+	  translations from Peeter Vois <peeter.vois@proekspert.ee> added
+
+2004-05-04 00:16  olivier
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  install-sh, ltmain.sh, mkinstalldirs, backdrops/Makefile.in,
+	  common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
+	  doc/C/images/Makefile.in, doc/fr/Makefile.in,
+	  doc/fr/images/Makefile.in, po/xfdesktop.pot,
+	  settings/Makefile.in, src/Makefile.in: Update zh_TW translations
+	  by umm <umm@pchome.com.tw>
+
+2004-03-21 22:44  olivier
+
+	* settings/workspaces_settings.c: The workspace plugin failed to
+	  set a value for the number of workspaces if it can't load its
+	  config file (ie first run on a fresh install)
+
+2004-03-21 18:50  olivier
+
+	* Makefile.am, Makefile.in, menu.xml.it: Add Alex Dupre's Italian
+	  version of the root menu "menu.xml.it"
+
+2004-03-15 00:25  olivier
+
+	* aclocal.m4, configure, configure.ac, po/ar.gmo, po/ar.po,
+	  po/bg.gmo, po/bg.po, po/it.gmo, po/it.po, po/xfdesktop.pot:
+	  Add/update i18n for: Bulgarian from Miroslav Yordanov
+	  <miordanov@i-space.org> and Peter Slavov <peshka@i-space.org>
+	  Italian from Alex Dupre <ale@FreeBSD.org> Arabic from Saleh
+	  Hathal <hathalsal@hotmail.com>
+
+2004-03-07 12:27  olivier
+
+	* src/menu.c: Switch to window's worskpace before activating
+
+2004-03-02 22:16  olivier
+
+	* po/xfdesktop.pot: Dummy
+
+2004-02-28 18:24  olivier
+
+	* ltmain.sh: sync for 4.0.4 release
+
+2004-02-24 20:03  kelnos
+
+	* src/menu.c: fix for bug #124, thanks tkoskine (xfce_4_0 branch)
+
+2004-02-01 01:51  kelnos
+
+	* src/backdrop.c: applying fix for bug #94 to 4.0 branch (crash in
+	  x event handler when an invalid desktop image is specified)
+
+2004-01-30 08:07  jasper
+
+	* configure, configure.ac, ltmain.sh, menu.xml.fa_IR, po/es.gmo,
+	  po/es.po, po/fa_IR.gmo, po/fa_IR.po, po/pt_BR.gmo, po/pt_BR.po,
+	  po/zh_CN.gmo, po/zh_CN.po: Update translations for spanish,
+	  persian, brasilian and chinese
+
+2004-01-25 01:10  olivier
+
+	* Makefile.in, aclocal.m4, compile, config.guess, config.sub,
+	  configure, configure.ac, depcomp, install-sh, ltmain.sh, missing,
+	  mkinstalldirs, backdrops/Makefile.in, common/Makefile.in,
+	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  doc/fr/Makefile.in, doc/fr/images/Makefile.in, po/fa_IR.gmo,
+	  po/fa_IR.po, settings/Makefile.in, src/Makefile.in: Update
+	  libtool and other automake, autoconf and gettext.
+
+2004-01-07 21:38  olivier
+
+	* ChangeLog, po/ChangeLog: Huge update before 4.0.3 release,
+	  mainly: ChangeLog update, Version number updates.
+
 2004-01-06 19:48  olivier
 
 	* po/xfdesktop.pot: update theme
