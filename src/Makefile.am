@@ -26,6 +26,9 @@ xfdesktop_CFLAGS = \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\"
 
+xfdesktop_LDFLAGS = \
+	-export-dynamic
+
 # cygwin link order requires this split
 xfdesktop_LDADD = $(top_builddir)/common/libxfdesktop.la
 if BUILD_DESKTOP_MENU
