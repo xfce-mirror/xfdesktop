@@ -5,16 +5,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-01 18:52+0200\n"
+"POT-Creation-Date: 2003-07-10 10:22+0200\n"
 "PO-Revision-Date: 2003-06-04 14:39--100\n"
 "Last-Translator: Moritz Heiber <mistermoe@hackerboard.de>\n"
 "Language-Team: NONE <none@none>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
-#: settings/backdrop-mgr.c:174
+#: settings/backdrop-mgr.c:175
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -27,150 +27,151 @@ msgstr ""
 "Bitte anderen Speicherplatz wählen oder Abbrechen um die Änderungen zu "
 "verwerfen"
 
-#: settings/backdrop-mgr.c:402
+#: settings/backdrop-mgr.c:506
 msgid "Select image file"
 msgstr "Bilddatei auswählen"
 
-#: settings/backdrop-mgr.c:508
+#: settings/backdrop-mgr.c:612
 msgid "Choose backdrop list filename"
 msgstr "Namen für Liste mit Hintergrundbildern auswählen"
 
-#: settings/backdrop-mgr.c:535 settings/backdrop_settings.c:586
-msgid "File:"
-msgstr "Datei:"
-
-#: settings/backdrop-mgr.c:574
+#: settings/backdrop-mgr.c:682
 msgid "New.list"
 msgstr "Neue.liste"
 
-#: settings/backdrop-mgr.c:578
+#: settings/backdrop-mgr.c:686
 msgid "Backdrop List"
 msgstr "Liste der Hintergrundbilder"
 
-#: settings/backdrop-mgr.c:612
+#: settings/backdrop-mgr.c:722
 msgid "Image files"
 msgstr "Bilddateien"
 
-#: settings/backdrop-mgr.c:626
+#: settings/backdrop-mgr.c:737
 msgid "List file"
 msgstr "Listendatei"
 
-#: settings/backdrop-mgr.c:646
+#: settings/backdrop-mgr.c:755
 msgid "Create backdrop list"
 msgstr "Liste mit Hintergrundbilder erstellen"
 
-#: settings/backdrop-mgr.c:653
+#: settings/backdrop-mgr.c:762
 msgid "Edit backdrop list"
 msgstr "Liste mit Hintergrundbildern bearbeiten"
 
-#: settings/backdrop_settings.c:143
+#: settings/backdrop_settings.c:156
 msgid "Desktop: backdrop"
 msgstr "Arbeitsplatz: Hintergrund"
 
-#: settings/backdrop_settings.c:384
+#: settings/backdrop_settings.c:360
 msgid "Select background color"
 msgstr "Hintergrundfarbe wählen"
 
-#: settings/backdrop_settings.c:430
+#: settings/backdrop_settings.c:410
 msgid "Background color:"
 msgstr "Hintergrundfarbe:"
 
-#: settings/backdrop_settings.c:460
+#: settings/backdrop_settings.c:440
 msgid "Use color only:"
 msgstr "Nur Farbe für Hintergrund nutzen"
 
-#: settings/backdrop_settings.c:643
+#: settings/backdrop_settings.c:566
+msgid "File:"
+msgstr "Datei:"
+
+#: settings/backdrop_settings.c:623
 msgid "Select background image or list file"
 msgstr "Hintergrundbild oder Liste mit Hintergrundbildern auswählen"
 
-#: settings/backdrop_settings.c:718
+#: settings/backdrop_settings.c:698
 msgid "_Browse..."
 msgstr "_Auswählen..."
 
-#: settings/backdrop_settings.c:722
+#: settings/backdrop_settings.c:702
 msgid "New list"
 msgstr "Neue Liste"
 
-#: settings/backdrop_settings.c:726
+#: settings/backdrop_settings.c:706
 msgid "Edit list"
 msgstr "Liste bearbeiten"
 
-#: settings/backdrop_settings.c:778
+#: settings/backdrop_settings.c:744
 msgid "Style:"
 msgstr "Anzeige:"
 
-#: settings/backdrop_settings.c:784
+#: settings/backdrop_settings.c:752
 msgid "_Tiled"
 msgstr "_Verteilt"
 
-#: settings/backdrop_settings.c:791
+#: settings/backdrop_settings.c:758
 msgid "_Scaled"
 msgstr "_Skaliert"
 
-#: settings/backdrop_settings.c:796
+#: settings/backdrop_settings.c:765
 msgid "_Centered"
 msgstr "_Zentriert"
 
-#: settings/backdrop_settings.c:801
-msgid "_Automatic"
+#: settings/backdrop_settings.c:772
+#, fuzzy
+msgid "_Auto"
 msgstr "_Automatisch"
 
 #. the dialog
-#: settings/backdrop_settings.c:852
+#: settings/backdrop_settings.c:798
 msgid "Background"
 msgstr "Hintergrund"
 
 #. header
-#: settings/backdrop_settings.c:869
+#: settings/backdrop_settings.c:816
 msgid "Background Settings"
 msgstr "Hintergrund Einstellungen"
 
 #. color
-#: settings/backdrop_settings.c:875
+#: settings/backdrop_settings.c:822
 msgid "Color"
 msgstr "Farbe"
 
 #. image vbox
-#: settings/backdrop_settings.c:888
+#: settings/backdrop_settings.c:834
 msgid "Image"
 msgstr "Bild"
 
-#: settings/workspaces_settings.c:79
+#: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
 msgstr "Arbeitsplatz: Workspaces"
 
-#: settings/workspaces_settings.c:323
+#: settings/workspaces_settings.c:329
 msgid "Change name"
 msgstr "Namen ändern"
 
-#: settings/workspaces_settings.c:334
+#: settings/workspaces_settings.c:340
 #, c-format
 msgid "Workspace %d"
 msgstr "Workspace %d"
 
-#: settings/workspaces_settings.c:344
+#: settings/workspaces_settings.c:350
 msgid "Name:"
 msgstr "Name:"
 
-#: settings/workspaces_settings.c:455
+#: settings/workspaces_settings.c:461
 msgid "Click on a workspace name to edit it"
 msgstr "Klicken Sie auf einen Workspace um dessen Namen zu ändern"
 
-#: settings/workspaces_settings.c:486
+#: settings/workspaces_settings.c:492
 msgid "Number of workspaces:"
 msgstr "Anzahl der Workspaces:"
 
 #. Number of workspaces
-#: settings/workspaces_settings.c:522 settings/workspaces_settings.c:553
+#: settings/workspaces_settings.c:528 settings/workspaces_settings.c:558
 msgid "Workspaces"
 msgstr "Workspaces"
 
-#: settings/workspaces_settings.c:546
+#: settings/workspaces_settings.c:551
 msgid "Workspace Settings"
 msgstr "Workspace Einstellungen"
 
 #. Workspace names
-#: settings/workspaces_settings.c:566
+#: settings/workspaces_settings.c:570
 msgid "Workspace names"
 msgstr "Workspace Namen"
 
@@ -183,11 +184,11 @@ msgstr "xfdesktop Fehler: lade Hintergrundbild: %s\n"
 msgid "Desktop"
 msgstr "Arbeitsplatz"
 
-#: src/menu.c:696
+#: src/menu.c:711
 msgid "Add workspace"
 msgstr "Workspace hinzufügen"
 
-#: src/menu.c:703
+#: src/menu.c:718
 msgid "Delete workspace"
 msgstr "Workspace entfernen"
 

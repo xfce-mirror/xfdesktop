@@ -6,16 +6,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-01 18:52+0200\n"
+"POT-Creation-Date: 2003-07-10 10:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jasper Huijsmans <huysmans@users.sourceforge.net\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
+"Report-Msgid-Bugs-To: \n"
 
-#: settings/backdrop-mgr.c:174
+#: settings/backdrop-mgr.c:175
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -27,150 +27,151 @@ msgstr ""
 "\n"
 "请选择其它位置或者在对话框中点击取消以放弃所作修改"
 
-#: settings/backdrop-mgr.c:402
+#: settings/backdrop-mgr.c:506
 msgid "Select image file"
 msgstr "选择图形文件"
 
-#: settings/backdrop-mgr.c:508
+#: settings/backdrop-mgr.c:612
 msgid "Choose backdrop list filename"
 msgstr "选择背景列表文件名"
 
-#: settings/backdrop-mgr.c:535 settings/backdrop_settings.c:586
-msgid "File:"
-msgstr "文件:"
-
-#: settings/backdrop-mgr.c:574
+#: settings/backdrop-mgr.c:682
 msgid "New.list"
 msgstr "新列表"
 
-#: settings/backdrop-mgr.c:578
+#: settings/backdrop-mgr.c:686
 msgid "Backdrop List"
 msgstr "背景列表"
 
-#: settings/backdrop-mgr.c:612
+#: settings/backdrop-mgr.c:722
 msgid "Image files"
 msgstr "图像文件"
 
-#: settings/backdrop-mgr.c:626
+#: settings/backdrop-mgr.c:737
 msgid "List file"
 msgstr "列出文件"
 
-#: settings/backdrop-mgr.c:646
+#: settings/backdrop-mgr.c:755
 msgid "Create backdrop list"
 msgstr "创建背景列表"
 
-#: settings/backdrop-mgr.c:653
+#: settings/backdrop-mgr.c:762
 msgid "Edit backdrop list"
 msgstr "编辑背景列表"
 
-#: settings/backdrop_settings.c:143
+#: settings/backdrop_settings.c:156
 msgid "Desktop: backdrop"
 msgstr "桌面: 背景"
 
-#: settings/backdrop_settings.c:384
+#: settings/backdrop_settings.c:360
 msgid "Select background color"
 msgstr "选择背景颜色"
 
-#: settings/backdrop_settings.c:430
+#: settings/backdrop_settings.c:410
 msgid "Background color:"
 msgstr "背景颜色:"
 
-#: settings/backdrop_settings.c:460
+#: settings/backdrop_settings.c:440
 msgid "Use color only:"
 msgstr "仅使用颜色:"
 
-#: settings/backdrop_settings.c:643
+#: settings/backdrop_settings.c:566
+msgid "File:"
+msgstr "文件:"
+
+#: settings/backdrop_settings.c:623
 msgid "Select background image or list file"
 msgstr "选择背景图像或者列出文件"
 
-#: settings/backdrop_settings.c:718
+#: settings/backdrop_settings.c:698
 msgid "_Browse..."
 msgstr "浏览(_B)..."
 
-#: settings/backdrop_settings.c:722
+#: settings/backdrop_settings.c:702
 msgid "New list"
 msgstr "新列表"
 
-#: settings/backdrop_settings.c:726
+#: settings/backdrop_settings.c:706
 msgid "Edit list"
 msgstr "部件列表"
 
-#: settings/backdrop_settings.c:778
+#: settings/backdrop_settings.c:744
 msgid "Style:"
 msgstr "风格:"
 
-#: settings/backdrop_settings.c:784
+#: settings/backdrop_settings.c:752
 msgid "_Tiled"
 msgstr "平铺(_T)"
 
-#: settings/backdrop_settings.c:791
+#: settings/backdrop_settings.c:758
 msgid "_Scaled"
 msgstr "拉伸(_S)"
 
-#: settings/backdrop_settings.c:796
+#: settings/backdrop_settings.c:765
 msgid "_Centered"
 msgstr "居中(_C)"
 
-#: settings/backdrop_settings.c:801
-msgid "_Automatic"
+#: settings/backdrop_settings.c:772
+#, fuzzy
+msgid "_Auto"
 msgstr "自动(_A)"
 
 #. the dialog
-#: settings/backdrop_settings.c:852
+#: settings/backdrop_settings.c:798
 msgid "Background"
 msgstr "背景"
 
 #. header
-#: settings/backdrop_settings.c:869
+#: settings/backdrop_settings.c:816
 msgid "Background Settings"
 msgstr "背景设置"
 
 #. color
-#: settings/backdrop_settings.c:875
+#: settings/backdrop_settings.c:822
 msgid "Color"
 msgstr "颜色"
 
 #. image vbox
-#: settings/backdrop_settings.c:888
+#: settings/backdrop_settings.c:834
 msgid "Image"
 msgstr "图像"
 
-#: settings/workspaces_settings.c:79
+#: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
 msgstr "桌面: 工作区"
 
-#: settings/workspaces_settings.c:323
+#: settings/workspaces_settings.c:329
 msgid "Change name"
 msgstr "改变名称"
 
-#: settings/workspaces_settings.c:334
+#: settings/workspaces_settings.c:340
 #, c-format
 msgid "Workspace %d"
 msgstr "工作区 %d"
 
-#: settings/workspaces_settings.c:344
+#: settings/workspaces_settings.c:350
 msgid "Name:"
 msgstr "名称:"
 
-#: settings/workspaces_settings.c:455
+#: settings/workspaces_settings.c:461
 msgid "Click on a workspace name to edit it"
 msgstr "点击任一个工作区名称来编辑其名称"
 
-#: settings/workspaces_settings.c:486
+#: settings/workspaces_settings.c:492
 msgid "Number of workspaces:"
 msgstr "工作区数目:"
 
 #. Number of workspaces
-#: settings/workspaces_settings.c:522 settings/workspaces_settings.c:553
+#: settings/workspaces_settings.c:528 settings/workspaces_settings.c:558
 msgid "Workspaces"
 msgstr "工作区"
 
-#: settings/workspaces_settings.c:546
+#: settings/workspaces_settings.c:551
 msgid "Workspace Settings"
 msgstr "工作区设置"
 
 #. Workspace names
-#: settings/workspaces_settings.c:566
+#: settings/workspaces_settings.c:570
 msgid "Workspace names"
 msgstr "工作区名称"
 
@@ -183,11 +184,11 @@ msgstr "xfdesktop错误: 加载背景图像: %s\n"
 msgid "Desktop"
 msgstr "桌面"
 
-#: src/menu.c:696
+#: src/menu.c:711
 msgid "Add workspace"
 msgstr "添加工作区"
 
-#: src/menu.c:703
+#: src/menu.c:718
 msgid "Delete workspace"
 msgstr "删除工作区"
 

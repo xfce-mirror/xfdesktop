@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
-"POT-Creation-Date: 2003-06-01 18:52+0200\n"
+"POT-Creation-Date: 2003-07-10 10:22+0200\n"
 "PO-Revision-Date: 2003-06-08 16:58+0300\n"
 "Last-Translator: Dan Korostelev <digger_temp@netman.ru>\n"
 "Language-Team: Russian <digger_temp@netman.ru>\n"
@@ -14,163 +14,163 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings/backdrop-mgr.c:174
+#: settings/backdrop-mgr.c:175
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your changes"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
 msgstr ""
 "Невозможно сохранить файл %s: %s\n"
 "\n"
 "Выберете другое расположение или нажмите Отменить, чтобы отменить изменения"
 
-#: settings/backdrop-mgr.c:402
+#: settings/backdrop-mgr.c:506
 msgid "Select image file"
 msgstr "Выберете файл изображения"
 
-#: settings/backdrop-mgr.c:508
+#: settings/backdrop-mgr.c:612
 msgid "Choose backdrop list filename"
 msgstr "Выберете имя списка фоновых изображений"
 
-#: settings/backdrop-mgr.c:535
-#: settings/backdrop_settings.c:586
-msgid "File:"
-msgstr "Файл изображения:"
-
-#: settings/backdrop-mgr.c:574
+#: settings/backdrop-mgr.c:682
 msgid "New.list"
 msgstr "New.list"
 
-#: settings/backdrop-mgr.c:578
+#: settings/backdrop-mgr.c:686
 msgid "Backdrop List"
 msgstr "Список фоновых изображений"
 
-#: settings/backdrop-mgr.c:612
+#: settings/backdrop-mgr.c:722
 msgid "Image files"
 msgstr "Файлы изображений"
 
-#: settings/backdrop-mgr.c:626
+#: settings/backdrop-mgr.c:737
 msgid "List file"
 msgstr "Файл списка"
 
-#: settings/backdrop-mgr.c:646
+#: settings/backdrop-mgr.c:755
 msgid "Create backdrop list"
 msgstr "Создать список фоновых изображений"
 
-#: settings/backdrop-mgr.c:653
+#: settings/backdrop-mgr.c:762
 msgid "Edit backdrop list"
 msgstr "Редакт"
 
-#: settings/backdrop_settings.c:143
+#: settings/backdrop_settings.c:156
 msgid "Desktop: backdrop"
 msgstr "Фон рабочего стола"
 
-#: settings/backdrop_settings.c:384
+#: settings/backdrop_settings.c:360
 msgid "Select background color"
 msgstr "Выберете цвет фона рабочего стола"
 
-#: settings/backdrop_settings.c:430
+#: settings/backdrop_settings.c:410
 msgid "Background color:"
 msgstr "Цвет фона:"
 
-#: settings/backdrop_settings.c:460
+#: settings/backdrop_settings.c:440
 msgid "Use color only:"
 msgstr "Не использовать изображение"
 
-#: settings/backdrop_settings.c:643
+#: settings/backdrop_settings.c:566
+msgid "File:"
+msgstr "Файл изображения:"
+
+#: settings/backdrop_settings.c:623
 msgid "Select background image or list file"
 msgstr "Выберете файл изображения или списка фоновых изображений"
 
-#: settings/backdrop_settings.c:718
+#: settings/backdrop_settings.c:698
 msgid "_Browse..."
 msgstr "_Найти..."
 
-#: settings/backdrop_settings.c:722
+#: settings/backdrop_settings.c:702
 msgid "New list"
 msgstr "Новый список"
 
-#: settings/backdrop_settings.c:726
+#: settings/backdrop_settings.c:706
 msgid "Edit list"
 msgstr "Изменить список"
 
-#: settings/backdrop_settings.c:778
+#: settings/backdrop_settings.c:744
 msgid "Style:"
 msgstr "Стиль:"
 
-#: settings/backdrop_settings.c:784
+#: settings/backdrop_settings.c:752
 msgid "_Tiled"
 msgstr "Вместе"
 
-#: settings/backdrop_settings.c:791
+#: settings/backdrop_settings.c:758
 msgid "_Scaled"
 msgstr "Растянуто"
 
-#: settings/backdrop_settings.c:796
+#: settings/backdrop_settings.c:765
 msgid "_Centered"
 msgstr "По центру"
 
-#: settings/backdrop_settings.c:801
-msgid "_Automatic"
+#: settings/backdrop_settings.c:772
+#, fuzzy
+msgid "_Auto"
 msgstr "Автоматически"
 
 #. the dialog
-#: settings/backdrop_settings.c:852
+#: settings/backdrop_settings.c:798
 msgid "Background"
 msgstr "Фон"
 
 #. header
-#: settings/backdrop_settings.c:869
+#: settings/backdrop_settings.c:816
 msgid "Background Settings"
 msgstr "Настройка фона рабочего стола"
 
 #. color
-#: settings/backdrop_settings.c:875
+#: settings/backdrop_settings.c:822
 msgid "Color"
 msgstr "Цвет"
 
 #. image vbox
-#: settings/backdrop_settings.c:888
+#: settings/backdrop_settings.c:834
 msgid "Image"
 msgstr "Изображение"
 
-#: settings/workspaces_settings.c:79
+#: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
 msgstr "Рабочие столы"
 
-#: settings/workspaces_settings.c:323
+#: settings/workspaces_settings.c:329
 msgid "Change name"
 msgstr "Изменить название"
 
-#: settings/workspaces_settings.c:334
+#: settings/workspaces_settings.c:340
 #, c-format
 msgid "Workspace %d"
 msgstr "Рабочий стол %d"
 
-#: settings/workspaces_settings.c:344
+#: settings/workspaces_settings.c:350
 msgid "Name:"
 msgstr "Название:"
 
-#: settings/workspaces_settings.c:455
+#: settings/workspaces_settings.c:461
 msgid "Click on a workspace name to edit it"
 msgstr "Щелкните на имя рабочего стола для его изменения"
 
-#: settings/workspaces_settings.c:486
+#: settings/workspaces_settings.c:492
 msgid "Number of workspaces:"
 msgstr "Количество рабочих столов:"
 
 #. Number of workspaces
-#: settings/workspaces_settings.c:522
-#: settings/workspaces_settings.c:553
+#: settings/workspaces_settings.c:528 settings/workspaces_settings.c:558
 msgid "Workspaces"
 msgstr "Рабочие столы"
 
-#: settings/workspaces_settings.c:546
+#: settings/workspaces_settings.c:551
 msgid "Workspace Settings"
 msgstr "Настройка рабочего стола"
 
 #. Workspace names
-#: settings/workspaces_settings.c:566
+#: settings/workspaces_settings.c:570
 msgid "Workspace names"
 msgstr "Названия рабочих столов"
 
@@ -183,15 +183,17 @@ msgstr "xfdesktop: ошибка загрузки фонового изображ
 msgid "Desktop"
 msgstr "Рабочий стол"
 
-#: src/menu.c:696
+#: src/menu.c:711
 msgid "Add workspace"
 msgstr "Добавить рабочий стол"
 
-#: src/menu.c:703
+#: src/menu.c:718
 msgid "Delete workspace"
 msgstr "Удалить рабочий стол"
 
 #: src/settings.c:186
-msgid "xfdesktop: could not connect to settings manager!Please check your installation."
-msgstr "xfdesktop: невозможно подключиться к менеджеру настроек. Проверьте установку."
-
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr ""
+"xfdesktop: невозможно подключиться к менеджеру настроек. Проверьте установку."

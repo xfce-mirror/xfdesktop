@@ -6,16 +6,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFDesktop 4.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-01 18:52+0200\n"
+"POT-Creation-Date: 2003-07-10 10:22+0200\n"
 "PO-Revision-Date: 2003-05-13 21:54+0600\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
-#: settings/backdrop-mgr.c:174
+#: settings/backdrop-mgr.c:175
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -27,154 +27,155 @@ msgstr ""
 "\n"
 "§Å§Ã¡÷ þ¼õ §¾Ã¢×¦ºöÂ×õ «øÄÐ ¯¨ÃÂ¡¼Ä¢ø '¿£ìÌ' «Óò¾×õ"
 
-#: settings/backdrop-mgr.c:402
+#: settings/backdrop-mgr.c:506
 msgid "Select image file"
 msgstr "µÅ¢Âõ §¸¡ôÒ ¦¾Ã¢× ¦ºöÂ×õ"
 
-#: settings/backdrop-mgr.c:508
+#: settings/backdrop-mgr.c:612
 msgid "Choose backdrop list filename"
 msgstr "À¢ýÉ½¢-µÅ¢Âõ ÀðÊÂø §¸¡ôÒô ¦ÀÂ÷ ¦¾Ã¢×¦ºö¸"
 
-#: settings/backdrop-mgr.c:535 settings/backdrop_settings.c:586
-msgid "File:"
-msgstr "§¸¡ôÒ:"
-
-#: settings/backdrop-mgr.c:574
+#: settings/backdrop-mgr.c:682
 msgid "New.list"
 msgstr "Ò¾¢Â.ÀðÊÂø"
 
-#: settings/backdrop-mgr.c:578
+#: settings/backdrop-mgr.c:686
 msgid "Backdrop List"
 msgstr "À¢ýÉ½¢-µÅ¢Âõ ÀðÊÂø"
 
-#: settings/backdrop-mgr.c:612
+#: settings/backdrop-mgr.c:722
 msgid "Image files"
 msgstr "µÅ¢Âì §¸¡ôÒ¸û"
 
-#: settings/backdrop-mgr.c:626
+#: settings/backdrop-mgr.c:737
 msgid "List file"
 msgstr "ÀðÊÂø §¸¡ôÒ"
 
-#: settings/backdrop-mgr.c:646
+#: settings/backdrop-mgr.c:755
 msgid "Create backdrop list"
 msgstr "À¢ýÉ½¢-µÅ¢Âõ ÀðÊÂø À¨¼ì¸×õ"
 
-#: settings/backdrop-mgr.c:653
+#: settings/backdrop-mgr.c:762
 msgid "Edit backdrop list"
 msgstr "À¢ýÉ½¢-µÅ¢Âõ ÀðÊÂø ¦¾¡Ì"
 
-#: settings/backdrop_settings.c:143
+#: settings/backdrop_settings.c:156
 msgid "Desktop: backdrop"
 msgstr ""
 "¸½¢§Á¨º: \n"
 "À¢ýÉ½¢-µÅ¢Âõ"
 
-#: settings/backdrop_settings.c:384
+#: settings/backdrop_settings.c:360
 msgid "Select background color"
 msgstr "À¢ýÉ½¢ Åñ½ò¨¾ ¦¾Ã¢×¦ºöÂ×õ"
 
-#: settings/backdrop_settings.c:430
+#: settings/backdrop_settings.c:410
 msgid "Background color:"
 msgstr "À¢ýÉ½¢ Åñ½õ: "
 
-#: settings/backdrop_settings.c:460
+#: settings/backdrop_settings.c:440
 msgid "Use color only:"
 msgstr "Åñ½õ ÁðÎõ ÀÂýÀÎò¾×õ:"
 
-#: settings/backdrop_settings.c:643
+#: settings/backdrop_settings.c:566
+msgid "File:"
+msgstr "§¸¡ôÒ:"
+
+#: settings/backdrop_settings.c:623
 msgid "Select background image or list file"
 msgstr "À¢ýÉ½¢-µÅ¢Âõ «øÄÐ ÀðÊÂø §¸¡ôÒ ¦¾Ã¢×¦ºöÂ×õ"
 
-#: settings/backdrop_settings.c:718
+#: settings/backdrop_settings.c:698
 msgid "_Browse..."
 msgstr "_§Á§Ä¡Î..."
 
-#: settings/backdrop_settings.c:722
+#: settings/backdrop_settings.c:702
 msgid "New list"
 msgstr "Ò¾¢Â ÀðÊÂø"
 
-#: settings/backdrop_settings.c:726
+#: settings/backdrop_settings.c:706
 msgid "Edit list"
 msgstr "ÀðÊÂ¨Ä ¾¢ÕòÐ¸"
 
-#: settings/backdrop_settings.c:778
+#: settings/backdrop_settings.c:744
 msgid "Style:"
 msgstr "À¡½¢:"
 
-#: settings/backdrop_settings.c:784
+#: settings/backdrop_settings.c:752
 msgid "_Tiled"
 msgstr "¿¸ø ÀÎòÐ¸"
 
-#: settings/backdrop_settings.c:791
+#: settings/backdrop_settings.c:758
 msgid "_Scaled"
 msgstr "_ÓØò ¾¢¨ÃÂ¢Öõ"
 
-#: settings/backdrop_settings.c:796
+#: settings/backdrop_settings.c:765
 msgid "_Centered"
 msgstr "_¿ÎÅ¢ø"
 
-#: settings/backdrop_settings.c:801
-msgid "_Automatic"
+#: settings/backdrop_settings.c:772
+#, fuzzy
+msgid "_Auto"
 msgstr "_¾¡É¡¸§Å"
 
 #. the dialog
-#: settings/backdrop_settings.c:852
+#: settings/backdrop_settings.c:798
 msgid "Background"
 msgstr "À¢ýÉ½¢"
 
 #. header
-#: settings/backdrop_settings.c:869
+#: settings/backdrop_settings.c:816
 msgid "Background Settings"
 msgstr "À¢ýÉ½¢ «¨ÁôÒ¸û"
 
 #. color
-#: settings/backdrop_settings.c:875
+#: settings/backdrop_settings.c:822
 msgid "Color"
 msgstr "Åñ½õ"
 
 #. image vbox
-#: settings/backdrop_settings.c:888
+#: settings/backdrop_settings.c:834
 msgid "Image"
 msgstr "µÅ¢Âõ"
 
-#: settings/workspaces_settings.c:79
+#: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
 msgstr ""
 "¸½¢§Á¨º: \n"
 "§Å¨Ä þ¼í¸û"
 
-#: settings/workspaces_settings.c:323
+#: settings/workspaces_settings.c:329
 msgid "Change name"
 msgstr "¦ÀÂ÷ Á¡üÈ×õ"
 
-#: settings/workspaces_settings.c:334
+#: settings/workspaces_settings.c:340
 #, c-format
 msgid "Workspace %d"
 msgstr "§Å¨Ä þ¼õ %d"
 
-#: settings/workspaces_settings.c:344
+#: settings/workspaces_settings.c:350
 msgid "Name:"
 msgstr "¦ÀÂ÷:"
 
-#: settings/workspaces_settings.c:455
+#: settings/workspaces_settings.c:461
 msgid "Click on a workspace name to edit it"
 msgstr "§Å¨Ä þ¼õ ¦ÀÂ÷ Á¡üÈ «¾¨É ¦¾Ã¢×¦ºö¸"
 
-#: settings/workspaces_settings.c:486
+#: settings/workspaces_settings.c:492
 msgid "Number of workspaces:"
 msgstr "±ò¾¨É §Å¨Ä ­¼í¸û:"
 
 #. Number of workspaces
-#: settings/workspaces_settings.c:522 settings/workspaces_settings.c:553
+#: settings/workspaces_settings.c:528 settings/workspaces_settings.c:558
 msgid "Workspaces"
 msgstr "§Å¨Ä þ¼í¸û"
 
-#: settings/workspaces_settings.c:546
+#: settings/workspaces_settings.c:551
 msgid "Workspace Settings"
 msgstr "§Å¨Ä þ¼í¸û «¨ÁôÒ¸û"
 
 #. Workspace names
-#: settings/workspaces_settings.c:566
+#: settings/workspaces_settings.c:570
 msgid "Workspace names"
 msgstr "§Å¨Ä þ¼í¸Ç¢ý ¦ÀÂ÷¸û"
 
@@ -187,11 +188,11 @@ msgstr "xfdesktop À¢¨Æ: À¢ýÉ½¢ µÅ¢Âõ ²üÈôÀÎ¸¢ýÈÐ: %s\n
 msgid "Desktop"
 msgstr "¸É¢§Á¨º"
 
-#: src/menu.c:696
+#: src/menu.c:711
 msgid "Add workspace"
 msgstr "§Å¨Ä þ¼õ §º÷ì¸×õ"
 
-#: src/menu.c:703
+#: src/menu.c:718
 msgid "Delete workspace"
 msgstr "§Å¨Ä þ¼õ «Æ¢ì¸×õ"
 

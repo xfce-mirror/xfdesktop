@@ -5,7 +5,7 @@ dnl
 
 AC_INIT([configure.ac])
 
-AM_INIT_AUTOMAKE([xfdesktop], [3.91.0])
+AM_INIT_AUTOMAKE([xfdesktop], [3.99.1])
 
 AM_CONFIG_HEADER([config.h])
 
