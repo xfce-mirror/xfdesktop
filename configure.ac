@@ -6,7 +6,7 @@ dnl
 dnl version information
 m4_define([xfdesktop_version_major], [4])
 m4_define([xfdesktop_version_minor], [1])
-m4_define([xfdesktop_version_micro], [1])
+m4_define([xfdesktop_version_micro], [2])
 m4_define([xfdesktop_version], [xfdesktop_version_major.xfdesktop_version_minor.xfdesktop_version_micro])
 
 dnl init autoconf
@@ -45,11 +45,11 @@ dnl Check for X11 installed
 BM_LIBX11_REQUIRE
 
 XFCE_PANEL_PLUGIN([XFCE4_PANEL], [4.0.0])
-BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.1.13)
+BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.1.14)
 BM_DEPEND([LIBXFCE4UTIL], libxfce4util-1.0, 4.1.3)
 BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [4.0.0])
+BM_DEPEND([GTK], gtk+-2.0, 2.2.0)
 BM_DEPEND([GMODULE], gmodule-2.0, 2.0.6)
-BM_DEPEND([GTHREAD], gthread-2.0, 2.0.6)
 
 dnl check for libxml2 for menueditor
 BM_DEPEND_CHECK([LIBXML], libxml-2.0, 2.4.0, [libxml2], [libxml2 (for xfce4-menueditor)], [yes])
