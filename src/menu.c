@@ -139,7 +139,7 @@ calc_icon_size()
 	
 	return icon_size;
 }
-#include <stdio.h>
+
 GdkPixbuf *
 menu_icon_find(const gchar *filename, gint size)
 {	
@@ -902,7 +902,7 @@ menu_init (XfceDesktop * xfdesktop)
 	
 	gtk_icon_theme_prepend_search_path(itheme, XFCEDATADIR "/themes");
 	if(kdedir) {
-		kde_icon_dir = g_strdup_printf("%s/share/icons", kdedir);
+		kde_icon_dir = g_strconcat(kdedir, "/share/icons", NULL);
 		gtk_icon_theme_append_search_path(itheme, kde_icon_dir);
 		g_free(kde_icon_dir);
 	}
