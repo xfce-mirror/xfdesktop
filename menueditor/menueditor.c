@@ -1054,10 +1054,8 @@ void create_main_window()
 
   gtk_tree_view_column_set_max_width (command_column,200);
   gtk_tree_view_column_set_max_width (hidden_column,50);
-  
-#ifndef DEBUG  
+
   gtk_tree_view_column_set_visible(GTK_TREE_VIEW_COLUMN(pointer_column), FALSE);
-#endif
 
   /* Status bar */
   statusbar = gtk_statusbar_new ();
@@ -1305,56 +1303,47 @@ int main (int argc, char *argv[])
     exit(0);
   }
 
-  bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-  bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-  textdomain (GETTEXT_PACKAGE);
+  xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
   menueditor_app.xml_menu_file=NULL;
 
-  gtk_init(&argc, &argv);
+  gtk_init (&argc, &argv);
   
-  create_main_window();
+  create_main_window ();
 
-  /* track icon theme changes (from the panel) */
+  /* track icon theme changes */
   if(!client) {
-    Display *dpy = GDK_DISPLAY();
-    int screen = XDefaultScreen(dpy);
+    Display *dpy = GDK_DISPLAY ();
+    int screen = XDefaultScreen (dpy);
     
-    if(!mcs_client_check_manager(dpy, screen, "xfce-mcs-manager"))
-      g_warning("%s: mcs manager not running\n", PACKAGE);
-    client = mcs_client_new(dpy, screen, mcs_notify_cb, mcs_watch_cb, NULL);
+    if(!mcs_client_check_manager (dpy, screen, "xfce-mcs-manager"))
+      g_warning ("%s: mcs manager not running\n", PACKAGE);
+    client = mcs_client_new (dpy, screen, mcs_notify_cb, mcs_watch_cb, NULL);
     if(client)
-      mcs_client_add_channel(client, CHANNEL);
+      mcs_client_add_channel (client, CHANNEL);
   }
 
 #if GTK_CHECK_VERSION(2, 4, 0)
   /* Initialize icon theme */
-  menueditor_app.icon_theme = gtk_icon_theme_get_default();
-  gtk_icon_theme_prepend_search_path(menueditor_app.icon_theme, "/usr/share/xfce4/themes");
+  menueditor_app.icon_theme = gtk_icon_theme_get_default ();
 #endif
 
   if(argc>1){
-    if (g_file_test (argv[1], G_FILE_TEST_EXISTS))
-      open_menu_file(argv[1]);
+    if(g_file_test (argv[1], G_FILE_TEST_EXISTS))
+      open_menu_file (argv[1]);
     else{
-      GtkWidget *dialog;
       gchar *error_message;
 
-      error_message= g_strdup_printf(_("File %s doesn't exist !"),argv[1]);
+      error_message = g_strdup_printf (_("File %s doesn't exist !"), argv[1]);
       
-      dialog = gtk_message_dialog_new (GTK_WINDOW(menueditor_app.main_window),
-				       GTK_DIALOG_DESTROY_WITH_PARENT,
-				       GTK_MESSAGE_ERROR,
-				       GTK_BUTTONS_OK,
-				       error_message);
-      gtk_dialog_run (GTK_DIALOG (dialog));
-      gtk_widget_destroy (dialog);
-      g_free(error_message);
+      xfce_err (error_message);
+ 
+      g_free (error_message);
     }
   }else
-    menu_open_default_cb(NULL, NULL);
+    menu_open_default_cb (NULL, NULL);
 
-  gtk_main();
+  gtk_main ();
 
   return 0;
 }
