@@ -307,66 +307,32 @@ update_path (BackdropPanel *bp)
 }
 
 static void
-color_picker(GtkWidget *b, BackdropPanel *bp)
+color_set_cb(GtkWidget *b, BackdropPanel *bp)
 {
-	GtkWidget *dialog;
-	GtkWidget *button, *sel;
-	GdkPixbuf *pixbuf;
 	GdkColor color;
-	McsColor *thecolor;
-	GtkWidget *thecolorbox;
-	guint32 rgba;
 	gint whichcolor;
 	gchar setting_name[128];
 	
-	whichcolor = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(b), "xfce-colornum"));
-	if(whichcolor == 1) {
-		thecolor = &bp->color1;
-		thecolorbox = bp->color1_box;
-	} else {
-		thecolor = &bp->color2;
-		thecolorbox = bp->color2_box;
-	}
+	xfce_color_button_get_color(XFCE_COLOR_BUTTON(b), &color);
 	
-	dialog = gtk_color_selection_dialog_new(_("Select backdrop color"));
+	if(b == bp->color1_box) {
+		bp->color1.red = color.red;
+		bp->color1.green = color.green;
+		bp->color1.blue = color.blue;
+		g_snprintf(setting_name, 128, "color1_%d_%d", bp->xscreen, bp->monitor);
+		mcs_manager_set_color(bp->bd->plugin->manager, setting_name,
+				BACKDROP_CHANNEL, &bp->color1);
+	} else if(b == bp->color2_box) {
+		bp->color2.red = color.red;
+		bp->color2.green = color.green;
+		bp->color2.blue = color.blue;
+		g_snprintf(setting_name, 128, "color2_%d_%d", bp->xscreen, bp->monitor);
+		mcs_manager_set_color(bp->bd->plugin->manager, setting_name,
+				BACKDROP_CHANNEL, &bp->color2);
+	} else
+		g_critical("backdrop_settings.c: color_set_cb() called with invalid button widget!");
 	
-	gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_MOUSE);
-	
-	button = GTK_COLOR_SELECTION_DIALOG(dialog)->ok_button;
-	g_signal_connect(button, "clicked", G_CALLBACK(dlg_response_accept), dialog);
-	
-	button = GTK_COLOR_SELECTION_DIALOG (dialog)->cancel_button;
-	g_signal_connect(button, "clicked", G_CALLBACK (dlg_response_cancel), dialog);
-	
-	sel = GTK_COLOR_SELECTION_DIALOG(dialog)->colorsel;
-	color.red = thecolor->red;
-	color.green = thecolor->green;
-	color.blue = thecolor->blue;
-	gtk_color_selection_set_current_color(GTK_COLOR_SELECTION(sel), &color);
-	
-	gtk_widget_show(dialog);
-	if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
-		gtk_color_selection_get_current_color(GTK_COLOR_SELECTION(sel), &color);
-
-		thecolor->red = color.red;
-		thecolor->green = color.green;
-		thecolor->blue = color.blue;
-	
-		g_snprintf(setting_name, 128, "color%d_%d_%d", whichcolor, bp->xscreen,
-				bp->monitor);
-		mcs_manager_set_color(bp->bd->plugin->manager, setting_name, BACKDROP_CHANNEL,
-				   thecolor);
-		mcs_manager_notify(bp->bd->plugin->manager, BACKDROP_CHANNEL);
-	
-		pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(thecolorbox));
-		rgba =
-		(((color.red & 0xff00) << 8) | ((color.green & 0xff00)) | ((color.
-										blue &
-										0xff00) >>
-									   8)) << 8;
-		gdk_pixbuf_fill(pixbuf, rgba);
-	}
-	gtk_widget_destroy(dialog);
+	mcs_manager_notify(bp->bd->plugin->manager, BACKDROP_CHANNEL);
 }
 
 static void
@@ -834,6 +800,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
     GtkWidget *mainvbox, *frame, *vbox, *hbox, *header, *label, *mi,
 			*menu, *button, *image;
     GtkSizeGroup *sg;
+	GdkColor color;
     BackdropDialog *bd;
 	gint i, j, nscreens, nmonitors = 0;
 
@@ -970,11 +937,13 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 			gtk_widget_show(label);
 			gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 			
-			button = color_button_new(&bp->color1, &bp->color1_box);
-			g_object_set_data(G_OBJECT(button), "xfce-colornum", GINT_TO_POINTER(1));
+			color.red = bp->color1.red;
+			color.green = bp->color1.green;
+			color.blue = bp->color1.blue;
+			bp->color1_box = button = xfce_color_button_new_with_color(&color);
 			gtk_widget_show(button);
 			gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
-			g_signal_connect(button, "clicked", G_CALLBACK(color_picker), bp);
+			g_signal_connect(button, "color-set", G_CALLBACK(color_set_cb), bp);
 			
 			gtk_label_set_mnemonic_widget(GTK_LABEL(label), button);
 			
@@ -989,11 +958,13 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 			gtk_widget_show(label);
 			gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 			
-			button = color_button_new(&bp->color2, &bp->color2_box);
-			g_object_set_data(G_OBJECT(button), "xfce-colornum", GINT_TO_POINTER(2));
+			color.red = bp->color2.red;
+			color.green = bp->color2.green;
+			color.blue = bp->color2.blue;
+			bp->color2_box = button = xfce_color_button_new_with_color(&color);
 			gtk_widget_show(button);
 			gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
-			g_signal_connect(button, "clicked", G_CALLBACK(color_picker), bp);
+			g_signal_connect(button, "color-set", G_CALLBACK(color_set_cb), bp);
 			
 			gtk_label_set_mnemonic_widget(GTK_LABEL(label), button);
 			
