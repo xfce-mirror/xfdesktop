@@ -1,0 +1,198 @@
+# translation of xfdesktop.po to Turkish
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Erçin EKER <erc.caldera@gmx.net>, 2003
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop\n"
+"POT-Creation-Date: 2003-05-05 08:08+0200\n"
+"PO-Revision-Date: 2003-05-21 21:19+0300\n"
+"Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
+"Language-Team: Turkish <>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: settings/backdrop-mgr.c:174
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"Dosya kaydedilemiyor %s: %s\n"
+"\n"
+"Lütfen kaydetmek için başka bir yer seçin yada diyalog da iptale basarak "
+"değişiklikleri gözardı edin"
+
+#: settings/backdrop-mgr.c:392
+msgid "Select image file"
+msgstr "Görüntü dosyası seçin"
+
+#: settings/backdrop-mgr.c:498
+msgid "Choose backdrop list filename"
+msgstr "Arka plan için liste dosyası seçin"
+
+#: settings/backdrop-mgr.c:525 settings/backdrop_settings.c:558
+msgid "File:"
+msgstr "Dosya:"
+
+#: settings/backdrop-mgr.c:564
+msgid "New.list"
+msgstr "Yeni.dosya"
+
+#: settings/backdrop-mgr.c:568
+msgid "Backdrop List"
+msgstr "Arka Plan Listesi"
+
+#: settings/backdrop-mgr.c:602
+msgid "Image files"
+msgstr "Görüntü dosyaları"
+
+#: settings/backdrop-mgr.c:616
+msgid "List file"
+msgstr "Liste dosyası"
+
+#: settings/backdrop-mgr.c:636
+msgid "Create backdrop list"
+msgstr "Arka plan listesi oluştur"
+
+#: settings/backdrop-mgr.c:643
+msgid "Edit backdrop list"
+msgstr "Arka plan listesi düzenle"
+
+#: settings/backdrop_settings.c:143
+msgid "Desktop: backdrop"
+msgstr "Masaüstü: arka plan"
+
+#: settings/backdrop_settings.c:356
+msgid "Select background color"
+msgstr "Arka plan rengi seç"
+
+#: settings/backdrop_settings.c:402
+msgid "Background color:"
+msgstr "Arkaplan rengi:"
+
+#: settings/backdrop_settings.c:432
+msgid "Use color only:"
+msgstr "Sadece renk kullan:"
+
+#: settings/backdrop_settings.c:615
+msgid "Select background image or list file"
+msgstr "Arka plan görüntüsü yada liste dosyası seç"
+
+#: settings/backdrop_settings.c:690
+msgid "_Browse..."
+msgstr "_Gözat..."
+
+#: settings/backdrop_settings.c:694
+msgid "New list"
+msgstr "Yeni liste"
+
+#: settings/backdrop_settings.c:698
+msgid "Edit list"
+msgstr "Liste düzenle"
+
+#: settings/backdrop_settings.c:750
+msgid "Style:"
+msgstr "Stil:"
+
+#: settings/backdrop_settings.c:756
+msgid "_Tiled"
+msgstr "_Döşe"
+
+#: settings/backdrop_settings.c:763
+msgid "_Scaled"
+msgstr "_Ölçekle"
+
+#: settings/backdrop_settings.c:768
+msgid "_Centered"
+msgstr "_Ortala"
+
+#: settings/backdrop_settings.c:773
+msgid "_Automatic"
+msgstr "O_tomatik"
+
+#. the dialog
+#: settings/backdrop_settings.c:815
+msgid "Background"
+msgstr "Artalan"
+
+#. header
+#: settings/backdrop_settings.c:832
+msgid "Background Settings"
+msgstr "Artalan Ayarları"
+
+#. color
+#: settings/backdrop_settings.c:838
+msgid "Color"
+msgstr "Renk"
+
+#. image vbox
+#: settings/backdrop_settings.c:851
+msgid "Image"
+msgstr "Görüntü"
+
+#: settings/workspaces_settings.c:79
+msgid "Desktop: workspaces"
+msgstr "Masaüstü: çalışma alanları"
+
+#: settings/workspaces_settings.c:323
+msgid "Change name"
+msgstr "İsim değiştir"
+
+#: settings/workspaces_settings.c:334
+msgid "Workspace %d"
+msgstr "Çalışma alanı %d"
+
+#: settings/workspaces_settings.c:344
+msgid "Name:"
+msgstr "İsim:"
+
+#: settings/workspaces_settings.c:455
+msgid "Click on a workspace name to edit it"
+msgstr "Düzenlemek için bir çalışma alanı ismine tıklayın"
+
+#: settings/workspaces_settings.c:486
+msgid "Number of workspaces:"
+msgstr "Çalışma alanlarının sayısı:"
+
+#. Number of workspaces
+#: settings/workspaces_settings.c:522 settings/workspaces_settings.c:553
+msgid "Workspaces"
+msgstr "Çalışma alanları"
+
+#: settings/workspaces_settings.c:546
+msgid "Workspace Settings"
+msgstr "Çalışma Alanı Ayarları"
+
+#. Workspace names
+#: settings/workspaces_settings.c:566
+msgid "Workspace names"
+msgstr "Çalışma alanı isimleri"
+
+#: src/backdrop.c:423
+msgid "xfdesktop error: loading backdrop image: %s\n"
+msgstr "xfdesktop hatası: arka plan görüntüsü yükleme: %s\n"
+
+#: src/main.c:227
+msgid "Desktop"
+msgstr "Masaüstü"
+
+#: src/menu.c:688
+msgid "Add workspace"
+msgstr "Çalışma alanı ekle"
+
+#: src/menu.c:695
+msgid "Delete workspace"
+msgstr "Çalışma alanı sil"
+
+#: src/settings.c:186
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr ""
+"xfdesktop: ayar yöneticisine bağlanamıyor! Lütfen kurulumunuzu gözden "
+"geçirin."
+
