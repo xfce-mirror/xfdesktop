@@ -59,13 +59,13 @@
 #include <xfce-mcs-manager/manager-plugin.h>
 
 #include "background-common.h"
+#include "backdrop-icon.h"
 #include "backdrop-mgr.h"
 #include "settings_common.h"
 
 #define RCFILE "backdrop.xml"
 #define PLUGIN_NAME "backdrop"
 
-#define BACKDROP_ICON_NAME "xfce4-backdrop"
 #define DEFAULT_ICON_SIZE 32
 
 #ifdef HAVE_GDK_PIXBUF_NEW_FROM_STREAM
@@ -109,16 +109,43 @@ static void backdrop_create_channel (McsPlugin * mcs_plugin);
 static gboolean backdrop_write_options (McsPlugin * mcs_plugin);
 static void run_dialog (McsPlugin * mcs_plugin);
 
+static GdkPixbuf *
+backdrop_icon_at_size (int width, int height)
+{
+    GdkPixbuf *base;
+
+    base = gdk_pixbuf_new_from_inline (-1, backdrop_icon_data, FALSE, NULL);
+
+    g_assert (base);
+
+    if ((width <= 0 || height <= 0))
+    {
+	return base;
+    }
+    else
+    {
+	GdkPixbuf *scaled;
+
+	scaled = gdk_pixbuf_scale_simple (base, width, height,
+					  GDK_INTERP_BILINEAR);
+
+	g_object_unref (G_OBJECT (base));
+
+	return scaled;
+    }
+}
+
 McsPluginInitResult
 mcs_plugin_init (McsPlugin * mcs_plugin)
 {
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
     mcs_plugin->plugin_name = g_strdup (PLUGIN_NAME);
-    mcs_plugin->caption = g_strdup (_("Backdrop"));
+    mcs_plugin->caption = g_strdup (_("Desktop Backdrop"));
     mcs_plugin->run_dialog = run_dialog;
 
-    mcs_plugin->icon = xfce_load_themed_icon(BACKDROP_ICON_NAME, 32);
+    mcs_plugin->icon = backdrop_icon_at_size (DEFAULT_ICON_SIZE,
+					      DEFAULT_ICON_SIZE);
 
     backdrop_create_channel (mcs_plugin);
 
@@ -194,11 +221,11 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
     else
     {
 	/* 
-	   Just a color by default #6985b7 - That number looks cool :)
+	   Just a color by default #336699 - That number looks cool :)
 	 */
-	backdrop_color.red = (guint16) 0x6900;
-	backdrop_color.green = (guint16) 0x8500;
-	backdrop_color.blue = (guint16) 0xB700;
+	backdrop_color.red = (guint16) 0x3300;
+	backdrop_color.green = (guint16) 0x6600;
+	backdrop_color.blue = (guint16) 0x9900;
 	backdrop_color.alpha = (guint16) 0;
 	mcs_manager_set_color (mcs_plugin->manager, "color", BACKDROP_CHANNEL,
 			       &backdrop_color);
@@ -340,7 +367,7 @@ color_picker (GtkWidget * b, BackdropDialog * bd)
 	return;
     }
 
-    dialog = gtk_color_selection_dialog_new (_("Select background color"));
+    dialog = gtk_color_selection_dialog_new (_("Select backdrop color"));
     g_object_add_weak_pointer (G_OBJECT (dialog), (gpointer) & dialog);
 
     gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_MOUSE);
@@ -393,7 +420,7 @@ add_color_button (GtkWidget * vbox, BackdropDialog * bd)
     gtk_widget_show (hbox);
     gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 0);
 
-    label = gtk_label_new (_("Background color:"));
+    label = gtk_label_new (_("Backdrop color:"));
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
     gtk_size_group_add_widget (sg, label);
     gtk_widget_show (label);
@@ -618,7 +645,7 @@ browse_cb (GtkWidget * b, BackdropDialog * bd)
 	return;
     }
 
-    title = _("Select background image or list file");
+    title = _("Select backdrop image or list file");
     fs = GTK_FILE_SELECTION (preview_file_selection_new (title, TRUE));
 
     gtk_file_selection_hide_fileop_buttons (fs);
@@ -825,7 +852,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
     bd->plugin = mcs_plugin;
 
     /* the dialog */
-    bd->dialog = gtk_dialog_new_with_buttons (_("Background"), NULL,
+    bd->dialog = gtk_dialog_new_with_buttons (_("Backdrop"), NULL,
 					      GTK_DIALOG_NO_SEPARATOR,
 					      GTK_STOCK_CLOSE,
 					      GTK_RESPONSE_OK,
@@ -889,7 +916,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
     gtk_box_pack_start (GTK_BOX (mainvbox), frame, FALSE, FALSE, 0);
 
     bd->dontset_checkbox =
-	gtk_check_button_new_with_label (_("Don't set background"));
+	gtk_check_button_new_with_label (_("Don't set backdrop"));
     gtk_widget_show (bd->dontset_checkbox);
     gtk_container_add (GTK_CONTAINER (frame), bd->dontset_checkbox);
 
