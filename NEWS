@@ -1,3 +1,22 @@
+4.2.0:
+------
+
+    -  Gradient support for background color.
+    - Brightness adjustment for the backdrop.
+    - Real multiscreen and Xinerama support.
+    - Support for icons in window list and applications menu.
+    - Ability to disable/enable icons in each menu, or the menus entirely.
+    - Graphical menu editor with DnD support from xfce4-appfinder and .desktop
+      files from Rox, Konqueror, Nautilus, Xffm, etc.
+    - Add "-menu", "-windowlist" and "-reload" options for "xfdesktop", to be
+      use in keybindings.
+    - Support for 'system' menu, which lists all apps that install *.desktop
+      files according to the Freedesktop.org Menu Spec.
+    - Panel plugin to show the menu (yes, it's a Start button).
+    - Use a menu cache to improve performance after it has been generated once.
+    - Kiosk mode support.
+
+
 20041220 (Xfce 4.2rc3):
 -----------------------
 

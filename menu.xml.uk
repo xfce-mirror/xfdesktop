@@ -53,22 +53,22 @@
 
 <xfdesktop-menu>
 
-	<title name="Meniu desktop" icon="xfce4-backdrop"/>
+	<title name="Меню робочої стільниці" icon="xfce4-backdrop"/>
 
 	<separator/>
 
-	<app name="Pornire programe..." cmd="xfrun4" icon="gnome-fs-executable"/>
+	<app name="Виконати..." cmd="xfrun4" icon="gnome-fs-executable"/>
 
 	<separator/>
 
-	<app name="Terminal" cmd="xfterm4" icon="gnome-terminal"/>
-	<app name="Administrator fişiere (xffm)" cmd="xffm" icon="file-manager"/>
-	<app name="Navigator Internet" cmd="mozilla" icon="gnome-globe"/>
+	<app name="Термінал" cmd="xfterm4" icon="gnome-terminal"/>
+	<app name="Менеджер файлів (xffm)" cmd="xffm" icon="file-manager"/>
+	<app name="Веб-переглядач" cmd="mozilla" icon="gnome-globe"/>
 
 	<separator/>
 
-	<menu name="Setări" icon="gnome-settings">
-		<app name="Administrator setări" cmd="xfce-setting-show" icon="gnome-settings"/>
+	<menu name="Параметри" icon="gnome-settings">
+		<app name="Менеджер параметрів Xfce" cmd="xfce-setting-show" icon="gnome-settings"/>
 	</menu>
 
 	<separator/>
@@ -87,12 +87,12 @@
 
     <separator/>
 
-    <app name="Ajutor" cmd="xfhelp4" icon="gnome-help"/>
-    <app name="Despre Xfce" cmd="xfce4-about" icon="gnome-info"/>
+    <app name="Довідка" cmd="xfhelp4" icon="gnome-help"/>
+    <app name="Про Xfce" cmd="xfce4-about" icon="gnome-info"/>
     <!--
       This will cause xfce4-session to quit, after first displaying a log-out
       dialog box.  If xfce4-session isn't running, it will quit xfdesktop.
     -->
-    <builtin name="Quit" cmd="quit" icon="gnome-logout"/>
+    <builtin name="Вийти" cmd="quit" icon="gnome-logout"/>
 
 </xfdesktop-menu>

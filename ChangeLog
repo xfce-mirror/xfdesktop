@@ -1,3 +1,108 @@
+2005-01-10 13:56  pollux
+
+	* po/: hu.gmo, hu.po: update HU translations
+
+2005-01-10 13:23  pollux
+
+	* menueditor/xfce-menueditor.desktop,
+	  settings/xfce-backdrop-settings.desktop: update LT translations
+
+2005-01-10 12:55  pollux
+
+	* po/: lt.gmo, lt.po: update LT translations
+
+2005-01-10 11:05  benny
+
+	* settings/backdrop_settings.c: xfce-smoke requires darker colors!
+
+2005-01-10 07:46  olivier
+
+	* settings/backdrop_settings.c: Reverting colors for Brian
+
+2005-01-10 07:08  olivier
+
+	* ChangeLog: Update ChangeLog
+
+2005-01-10 07:05  olivier
+
+	* backdrops/: xfce-smoke.png: Actually add the image to CVS
+
+2005-01-09 22:18  olivier
+
+	* ltmain.sh, backdrops/Makefile.am, backdrops/Makefile.in,
+	  common/xfdesktop-common.h, settings/backdrop_settings.c: Change
+	  default background/colors for 4.2
+
+2005-01-09 21:39  pollux
+
+	* po/: pt_BR.gmo, pt_BR.po: add Last-Translator tag
+
+2005-01-09 14:42  pollux
+
+	* menueditor/xfce-menueditor.desktop,
+	  settings/xfce-backdrop-settings.desktop: update RO translations
+
+2005-01-09 13:52  benny
+
+	* configure, configure.ac, doc/Makefile.am, doc/Makefile.in,
+	  doc/C/xfdesktop.html, doc/C/xfdesktop.xml: Remove outdated
+	  translations of the documentation. Update version in
+	  documentation.
+
+2005-01-09 13:03  pollux
+
+	* Makefile.in, menu.xml.ro, modules/menu/Makefile.am,
+	  modules/menu/Makefile.in,
+	  modules/menu/xfce-registered-categories.xml.ro, po/ro.gmo,
+	  po/ro.po: update RO translations
+
+2005-01-08 16:49  pollux
+
+	* menu.xml.ru, menueditor/xfce-menueditor.desktop,
+	  modules/menu/Makefile.am,
+	  modules/menu/xfce-registered-categories.xml.ru, po/ru.gmo,
+	  po/ru.po, settings/xfce-backdrop-settings.desktop: update RU
+	  translations
+
+2005-01-06 21:33  pollux
+
+	* Makefile.am, menu.xml.uk, po/uk.gmo, po/uk.po: update UK
+	  translations, i hope i didn't forget any file this time
+
+2005-01-06 21:07  pollux
+
+	* menu.xml.uk: add missing file
+
+2005-01-06 20:24  pollux
+
+	* Makefile.am, Makefile.in, ltmain.sh, po/uk.gmo, po/uk.po: update
+	  UK translations
+
+2005-01-05 23:57  benny
+
+	* ChangeLog, configure, configure.ac, ltmain.sh: Final updates
+
+2005-01-05 17:14  pollux
+
+	* po/: he.gmo, he.po: update HE translations
+
+2005-01-05 17:01  pollux
+
+	* po/: he.gmo, he.po: update HE translations
+
+2005-01-02 17:01  kelnos
+
+	* ChangeLog: update changelog again
+
+2005-01-02 16:57  kelnos
+
+	* README: actually, xfdesktop doesn't do this...
+
+2005-01-02 13:51  olivier
+
+	* ChangeLog, configure, configure.ac, ltmain.sh, po/xfdesktop.pot:
+	  Update version and changelog
+
 2005-01-01 14:41  jasper
 
 	* doc/C/: xfdesktop.html, xfdesktop.xml: Fix some references to
@@ -24,15 +129,8 @@
 
 2004-12-24 00:33  olivier
 
-	* doc/: C/images/select_bg_color.png,
-	  C/images/xfdesktop-background.png, C/images/xfdesktop-editor.png,
-	  C/images/xfdesktop-list.png, C/images/xfdesktop-menu-tab.png,
-	  fr/images/root_menu.png, fr/images/root_menu2.png,
-	  fr/images/select_bg_color.png,
-	  fr/images/xfdesktop-background.png, fr/images/xfdesktop-list.png,
-	  it/images/root_menu.png, it/images/root_menu2.png,
-	  it/images/select_bg_color.png,
-	  it/images/xfdesktop-background.png, it/images/xfdesktop-list.png:
+	* doc/C/images/: select_bg_color.png, xfdesktop-background.png,
+	  xfdesktop-editor.png, xfdesktop-list.png, xfdesktop-menu-tab.png:
 	  Themes and screenshots
 
 2004-12-23 22:24  pollux
@@ -180,32 +278,23 @@
 	* Makefile.am, Makefile.in, aclocal.m4, compile, config.guess,
 	  config.sub, configure, install-sh, ltmain.sh, menu.xml.ko,
 	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  doc/C/Makefile.in, doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
-	  doc/it/images/Makefile.in, menueditor/Makefile.in,
-	  modules/Makefile.in, modules/menu/Makefile.in,
-	  panel-plugin/Makefile.in, pixmaps/Makefile.in, po/ko.gmo,
-	  po/ko.po, settings/Makefile.in, src/Makefile.in: update KO
-	  translations and add screenshots in xfprint doc
+	  doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  menueditor/Makefile.in, modules/Makefile.in,
+	  modules/menu/Makefile.in, panel-plugin/Makefile.in,
+	  pixmaps/Makefile.in, po/ko.gmo, po/ko.po, settings/Makefile.in,
+	  src/Makefile.in: update KO translations and add screenshots in
+	  xfprint doc
 
 2004-12-05 12:35  kelnos
 
 	* Makefile.in, aclocal.m4, compile, config.guess, config.sub,
 	  configure, install-sh, ltmain.sh, backdrops/Makefile.in,
 	  common/Makefile.in, doc/Makefile.in, doc/C/Makefile.am,
-	  doc/C/Makefile.in, doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/xfdesktop.html, doc/fr/images/Makefile.in,
-	  doc/it/Makefile.in, doc/it/xfdesktop.html,
-	  doc/it/images/Makefile.in, menueditor/Makefile.in,
-	  modules/Makefile.in, modules/menu/Makefile.in,
-	  panel-plugin/Makefile.in, pixmaps/Makefile.in,
-	  settings/Makefile.in, src/Makefile.in: fix broken target in
-	  doc/C/Makefile.am (thanks JF)
-
-2004-12-05 12:31  kelnos
-
-	* doc/it/: .cvsignore, images/.cvsignore: add .cvsignore because
-	  i'm easily annoyed
+	  doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  menueditor/Makefile.in, modules/Makefile.in,
+	  modules/menu/Makefile.in, panel-plugin/Makefile.in,
+	  pixmaps/Makefile.in, settings/Makefile.in, src/Makefile.in: fix
+	  broken target in doc/C/Makefile.am (thanks JF)
 
 2004-12-05 12:17  kelnos
 
@@ -345,13 +434,11 @@
 
 2004-11-11 21:21  jasper
 
-	* doc/: C/xfdesktop.xml, C/images/Makefile.am,
-	  C/images/Makefile.in, C/images/root_menu.png,
-	  C/images/root_menu2.png, C/images/select_bg_color.png,
-	  C/images/xfdesktop-background.png, C/images/xfdesktop-editor.png,
-	  C/images/xfdesktop-list.png, C/images/xfdesktop-menu-tab.png,
-	  fr/xfdesktop.html, it/xfdesktop.html: Big screenshot update for
-	  the docs
+	* doc/C/: xfdesktop.xml, images/Makefile.am, images/Makefile.in,
+	  images/root_menu.png, images/root_menu2.png,
+	  images/select_bg_color.png, images/xfdesktop-background.png,
+	  images/xfdesktop-editor.png, images/xfdesktop-list.png,
+	  images/xfdesktop-menu-tab.png: Big screenshot update for the docs
 
 2004-11-11 19:09  pollux
 
@@ -381,8 +468,6 @@
 	  config.sub, configure, configure.ac, depcomp, install-sh,
 	  missing, backdrops/Makefile.in, common/Makefile.in,
 	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
-	  doc/fr/Makefile.in, doc/fr/images/Makefile.in,
-	  doc/it/Makefile.in, doc/it/images/Makefile.in,
 	  menueditor/Makefile.in, modules/Makefile.in,
 	  modules/menu/Makefile.in, panel-plugin/Makefile.in,
 	  pixmaps/Makefile.in, settings/Makefile.in, src/Makefile.in:
@@ -412,9 +497,7 @@
 	* ChangeLog, Makefile.in, aclocal.m4, config.guess, config.sub,
 	  configure, depcomp, install-sh, ltmain.sh, backdrops/Makefile.in,
 	  common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
-	  doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
-	  doc/it/images/Makefile.in, menueditor/Makefile.in,
+	  doc/C/images/Makefile.in, menueditor/Makefile.in,
 	  modules/Makefile.in, modules/menu/Makefile.in,
 	  panel-plugin/Makefile.in, pixmaps/Makefile.in, po/xfdesktop.pot,
 	  settings/Makefile.in, src/Makefile.in: Global update for 4.1.91
@@ -433,14 +516,12 @@
 	* ChangeLog, NEWS, aclocal.m4, config.guess, config.sub, configure,
 	  configure.ac, depcomp, install-sh, ltmain.sh,
 	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  doc/C/Makefile.in, doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
-	  doc/it/images/Makefile.in, menueditor/Makefile.in,
-	  modules/Makefile.in, modules/menu/Makefile.in,
-	  panel-plugin/Makefile.in, pixmaps/Makefile.in,
-	  settings/Makefile.in, src/Makefile.in: * update ChangeLog and
-	  NEWS * bump version dependencies to 4.1.91 * regen and commit all
-	  autotools-related files
+	  doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  menueditor/Makefile.in, modules/Makefile.in,
+	  modules/menu/Makefile.in, panel-plugin/Makefile.in,
+	  pixmaps/Makefile.in, settings/Makefile.in, src/Makefile.in: *
+	  update ChangeLog and NEWS * bump version dependencies to 4.1.91 *
+	  regen and commit all autotools-related files
 
 2004-10-28 13:55  pollux
 
@@ -571,9 +652,7 @@
 
 	* Makefile.in, aclocal.m4, configure, backdrops/Makefile.in,
 	  common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
-	  doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
-	  doc/it/images/Makefile.in, m4/debug.m4, m4/glib-gettext.m4,
+	  doc/C/images/Makefile.in, m4/debug.m4, m4/glib-gettext.m4,
 	  m4/pkg.m4, menueditor/Makefile.in, modules/Makefile.in,
 	  modules/menu/Makefile.in, panel-plugin/Makefile.in,
 	  pixmaps/Makefile.in, settings/Makefile.in, src/Makefile.in: Added
@@ -648,10 +727,8 @@
 
 2004-09-26 11:56  jasper
 
-	* doc/: Makefile.in, C/Makefile.in, C/images/Makefile.in,
-	  fr/Makefile.in, fr/xfdesktop.html, fr/images/Makefile.in,
-	  it/Makefile.in, it/xfdesktop.html, it/images/Makefile.in: Fix
-	  html target for docs. Not build by default.
+	* doc/: Makefile.in, C/Makefile.in, C/images/Makefile.in: Fix html
+	  target for docs. Not build by default.
 
 2004-09-26 00:23  kelnos
 
@@ -665,27 +742,25 @@
 	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
 	  configure.ac, depcomp, install-sh, ltmain.sh,
 	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  doc/C/Makefile.in, doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
-	  doc/it/images/Makefile.in, menueditor/Makefile.in,
-	  modules/Makefile.in, modules/menu/Makefile.in,
-	  panel-plugin/Makefile.in, pixmaps/Makefile.in, po/ar.gmo,
-	  po/ar.po, po/az.gmo, po/az.po, po/be.gmo, po/be.po, po/bg.gmo,
-	  po/bg.po, po/ca.gmo, po/ca.po, po/cs.gmo, po/cs.po, po/de.gmo,
-	  po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po,
-	  po/et.gmo, po/et.po, po/eu.gmo, po/eu.po, po/fa_IR.gmo,
-	  po/fa_IR.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/he.gmo,
-	  po/he.po, po/hi.gmo, po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo,
-	  po/it.po, po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo,
-	  po/lt.po, po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po, po/pl.gmo,
-	  po/pl.po, po/pt_BR.gmo, po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po,
-	  po/ru.gmo, po/ru.po, po/sk.gmo, po/sk.po, po/sv.gmo, po/sv.po,
-	  po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po,
-	  po/vi.gmo, po/vi.po, po/xfdesktop.pot, po/zh_CN.gmo, po/zh_CN.po,
-	  po/zh_TW.gmo, po/zh_TW.po, settings/Makefile.in,
-	  settings/backdrop-mgr.c, settings/backdrop_settings.c,
-	  src/Makefile.in: migrate ~/.xfce4/backdrops.list bump version to
-	  4.1.90
+	  doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  menueditor/Makefile.in, modules/Makefile.in,
+	  modules/menu/Makefile.in, panel-plugin/Makefile.in,
+	  pixmaps/Makefile.in, po/ar.gmo, po/ar.po, po/az.gmo, po/az.po,
+	  po/be.gmo, po/be.po, po/bg.gmo, po/bg.po, po/ca.gmo, po/ca.po,
+	  po/cs.gmo, po/cs.po, po/de.gmo, po/de.po, po/es.gmo, po/es.po,
+	  po/es_MX.gmo, po/es_MX.po, po/et.gmo, po/et.po, po/eu.gmo,
+	  po/eu.po, po/fa_IR.gmo, po/fa_IR.po, po/fi.gmo, po/fi.po,
+	  po/fr.gmo, po/fr.po, po/he.gmo, po/he.po, po/hi.gmo, po/hi.po,
+	  po/hu.gmo, po/hu.po, po/it.gmo, po/it.po, po/ja.gmo, po/ja.po,
+	  po/ko.gmo, po/ko.po, po/lt.gmo, po/lt.po, po/ms.gmo, po/ms.po,
+	  po/nl.gmo, po/nl.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo,
+	  po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po, po/ru.gmo, po/ru.po,
+	  po/sk.gmo, po/sk.po, po/sv.gmo, po/sv.po, po/ta.gmo, po/ta.po,
+	  po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po, po/vi.gmo, po/vi.po,
+	  po/xfdesktop.pot, po/zh_CN.gmo, po/zh_CN.po, po/zh_TW.gmo,
+	  po/zh_TW.po, settings/Makefile.in, settings/backdrop-mgr.c,
+	  settings/backdrop_settings.c, src/Makefile.in: migrate
+	  ~/.xfce4/backdrops.list bump version to 4.1.90
 
 2004-09-23 23:41  pollux
 
@@ -864,14 +939,12 @@
 	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
 	  configure.ac, depcomp, install-sh, ltmain.sh,
 	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  doc/C/Makefile.in, doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
-	  doc/it/images/Makefile.in, menueditor/Makefile.in,
-	  menueditor/menueditor.c, modules/Makefile.in,
-	  modules/menu/Makefile.in, panel-plugin/Makefile.in,
-	  pixmaps/Makefile.in, po/be.gmo, po/be.po, settings/Makefile.in,
-	  src/Makefile.in: add BE translations from Ales Nyakhaychyk
-	  <nab@mail.by>
+	  doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  menueditor/Makefile.in, menueditor/menueditor.c,
+	  modules/Makefile.in, modules/menu/Makefile.in,
+	  panel-plugin/Makefile.in, pixmaps/Makefile.in, po/be.gmo,
+	  po/be.po, settings/Makefile.in, src/Makefile.in: add BE
+	  translations from Ales Nyakhaychyk <nab@mail.by>
 
 2004-09-16 20:19  kelnos
 
@@ -888,15 +961,14 @@
 
 	* Makefile.in, configure, configure.ac, backdrops/Makefile.in,
 	  common/Makefile.am, common/Makefile.in, doc/Makefile.in,
-	  doc/C/Makefile.in, doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
-	  doc/it/images/Makefile.in, menueditor/Makefile.in,
-	  modules/Makefile.in, modules/menu/Makefile.am,
-	  modules/menu/Makefile.in, modules/menu/desktop-menu-file.c,
-	  panel-plugin/Makefile.am, panel-plugin/Makefile.in,
-	  pixmaps/Makefile.in, settings/Makefile.am, settings/Makefile.in,
-	  src/Makefile.in, src/main.c, src/main.h, src/xfdesktop.def:
-	  cygwin fixes from maarten boekhold
+	  doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  menueditor/Makefile.in, modules/Makefile.in,
+	  modules/menu/Makefile.am, modules/menu/Makefile.in,
+	  modules/menu/desktop-menu-file.c, panel-plugin/Makefile.am,
+	  panel-plugin/Makefile.in, pixmaps/Makefile.in,
+	  settings/Makefile.am, settings/Makefile.in, src/Makefile.in,
+	  src/main.c, src/main.h, src/xfdesktop.def: cygwin fixes from
+	  maarten boekhold
 
 2004-09-13 10:35  kelnos
 
@@ -959,9 +1031,7 @@
 	* Makefile.am, Makefile.in, aclocal.m4, config.guess, config.sub,
 	  configure, depcomp, install-sh, ltmain.sh, backdrops/Makefile.in,
 	  common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
-	  doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
-	  doc/it/images/Makefile.in, menueditor/Makefile.in,
+	  doc/C/images/Makefile.in, menueditor/Makefile.in,
 	  modules/Makefile.in, modules/menu/Makefile.am,
 	  modules/menu/Makefile.in, modules/menu/desktop-menu-cache.c,
 	  modules/menu/desktop-menu-dentry.c,
@@ -970,6 +1040,11 @@
 	  settings/Makefile.in, src/Makefile.in: XDG basedir stuff for
 	  menu.xml and xfce-registered-categories.xml NOTE: i haven't
 	  migrated the mcs plugin's file yet
+
+2004-09-10 23:45  pollux
+
+	* configure, configure.ac, po/he.gmo, po/he.po: add HE translations
+	  from Yuval Tanny <tanai@int.gov.il>
 
 2004-09-10 22:49  pollux
 
@@ -1009,12 +1084,11 @@
 	* Makefile.am, Makefile.in, aclocal.m4, config.guess, config.sub,
 	  configure, depcomp, install-sh, ltmain.sh, menu.xml.sk,
 	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  doc/C/Makefile.in, doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
-	  doc/it/images/Makefile.in, menueditor/Makefile.in,
-	  modules/Makefile.in, modules/menu/Makefile.in,
-	  panel-plugin/Makefile.in, pixmaps/Makefile.in,
-	  settings/Makefile.in, src/Makefile.in: add menu.xml.sk
+	  doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  menueditor/Makefile.in, modules/Makefile.in,
+	  modules/menu/Makefile.in, panel-plugin/Makefile.in,
+	  pixmaps/Makefile.in, settings/Makefile.in, src/Makefile.in: add
+	  menu.xml.sk
 
 2004-08-30 09:06  dannym
 
@@ -1035,9 +1109,7 @@
 	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
 	  depcomp, install-sh, ltmain.sh, backdrops/Makefile.in,
 	  common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
-	  doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
-	  doc/it/images/Makefile.in, menueditor/Makefile.in,
+	  doc/C/images/Makefile.in, menueditor/Makefile.in,
 	  modules/Makefile.in, modules/menu/Makefile.in,
 	  panel-plugin/Makefile.in, pixmaps/Makefile.in,
 	  settings/Makefile.am, settings/Makefile.in, src/Makefile.in: stop
@@ -1145,6 +1217,11 @@
 	* menueditor/menueditor.c: adds preview widget in icon filechooser
 	  dialog, improves icon and command filechoosers dialogs
 
+2004-08-13 11:49  pollux
+
+	* Makefile.am, Makefile.in, ltmain.sh, menu.xml.ro: adds menu.xml
+	  Romanian translation from Razvan T. Coloja
+
 2004-08-13 11:45  pollux
 
 	* Makefile.am, Makefile.in, aclocal.m4, menu.xml.ro,
@@ -1216,9 +1293,7 @@
 	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
 	  depcomp, install-sh, ltmain.sh, backdrops/Makefile.in,
 	  common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
-	  doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
-	  doc/it/images/Makefile.in, menueditor/Makefile.in,
+	  doc/C/images/Makefile.in, menueditor/Makefile.in,
 	  modules/Makefile.in, modules/menu/Makefile.in,
 	  panel-plugin/Makefile.in, pixmaps/Makefile.am,
 	  pixmaps/Makefile.in, pixmaps/32x32/xfce4-backdrop.png,
@@ -1245,8 +1320,6 @@
 	  configure.ac, depcomp, install-sh, ltmain.sh,
 	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
 	  doc/README.kiosk, doc/C/Makefile.in, doc/C/images/Makefile.in,
-	  doc/fr/Makefile.in, doc/fr/images/Makefile.in,
-	  doc/it/Makefile.in, doc/it/images/Makefile.in,
 	  menueditor/Makefile.in, modules/Makefile.in,
 	  modules/menu/Makefile.in, modules/menu/desktop-menu-dentry.c,
 	  modules/menu/desktop-menu-file.c, modules/menu/desktop-menu.c,
@@ -1304,13 +1377,12 @@
 	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
 	  configure.ac, depcomp, install-sh, ltmain.sh,
 	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  doc/C/Makefile.in, doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
-	  doc/it/images/Makefile.in, menueditor/Makefile.in,
-	  menueditor/menueditor.c, modules/Makefile.in,
-	  modules/menu/Makefile.in, panel-plugin/Makefile.in,
-	  pixmaps/Makefile.in, settings/Makefile.in, src/Makefile.in:
-	  menueditor requires libxfcegui4 4.1.25
+	  doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  menueditor/Makefile.in, menueditor/menueditor.c,
+	  modules/Makefile.in, modules/menu/Makefile.in,
+	  panel-plugin/Makefile.in, pixmaps/Makefile.in,
+	  settings/Makefile.in, src/Makefile.in: menueditor requires
+	  libxfcegui4 4.1.25
 
 2004-07-21 16:21  kelnos
 
@@ -1455,14 +1527,13 @@
 	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
 	  configure.ac, depcomp, install-sh, ltmain.sh,
 	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  doc/C/Makefile.in, doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, doc/it/Makefile.in,
-	  doc/it/images/Makefile.in, menueditor/Makefile.in,
-	  modules/Makefile.in, modules/menu/Makefile.in,
-	  panel-plugin/Makefile.in, pixmaps/Makefile.in,
-	  settings/Makefile.in, settings/backdrop_settings.c,
-	  src/Makefile.in: use XfceColorButton in the settings panel, bump
-	  libxfcegui4 version requirement
+	  doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  menueditor/Makefile.in, modules/Makefile.in,
+	  modules/menu/Makefile.in, panel-plugin/Makefile.in,
+	  pixmaps/Makefile.in, settings/Makefile.in,
+	  settings/backdrop_settings.c, src/Makefile.in: use
+	  XfceColorButton in the settings panel, bump libxfcegui4 version
+	  requirement
 
 2004-07-16 16:12  pollux
 
@@ -1478,10 +1549,10 @@
 	* menueditor/: ChangeLog, add_menu_dialog.c, edit_dialog.c, move.c:
 	  - some code cleaning - update ChangeLog
 
-2004-07-14 22:56  jasper
+2004-07-15 07:59  jasper
 
-	* doc/: fr/xfdesktop.html, fr/xfdesktop.xml, it/xfdesktop.html: get
-	  rid of moongroup references
+	* doc/C/: xfdesktop.html, xfdesktop.xml: get rid of moongroup
+	  references
 
 2004-07-13 19:48  kelnos
 
@@ -1494,17 +1565,26 @@
 	  configure.ac, depcomp, install-sh, ltmain.sh,
 	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.am,
 	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
-	  doc/fr/Makefile.in, doc/fr/images/Makefile.in,
-	  doc/it/Makefile.am, doc/it/Makefile.in, doc/it/xfdesktop.html,
-	  doc/it/xfdesktop.xml, doc/it/images/Makefile.am,
-	  doc/it/images/Makefile.in, doc/it/images/root_menu.png,
-	  doc/it/images/root_menu2.png, doc/it/images/select_bg_color.png,
-	  doc/it/images/xfdesktop-background.png,
-	  doc/it/images/xfdesktop-list.png, menueditor/Makefile.in,
-	  modules/Makefile.in, modules/menu/Makefile.in,
-	  panel-plugin/Makefile.in, pixmaps/Makefile.in,
-	  settings/Makefile.in, src/Makefile.in: more italian doc
-	  translation from Sascha Ales
+	  menueditor/Makefile.in, modules/Makefile.in,
+	  modules/menu/Makefile.in, panel-plugin/Makefile.in,
+	  pixmaps/Makefile.in, settings/Makefile.in, src/Makefile.in: more
+	  italian doc translation from Sascha Ales
+
+2004-07-09 11:32  olivier
+
+	* ChangeLog: Update ChangeLog
+
+2004-07-09 11:00  olivier
+
+	* configure, configure.ac, po/xfdesktop.pot: Update versions.
+
+2004-07-09 09:53  olivier
+
+	* ChangeLog: Update ChangeLogs for 4.0.6
+
+2004-07-08 21:53  olivier
+
+	* ltmain.sh: Update tree for 4.0.6 release
 
 2004-07-07 17:44  kelnos
 
@@ -1514,6 +1594,15 @@
 	  should log out from the session manager if it's active * also
 	  remove the gtk_widget_set_name() stuff in prep for a possible fix
 	  for that theming bug
+
+2004-07-06 17:58  pollux
+
+	* configure, configure.ac, po/eu.gmo, po/eu.po: add basque
+	  translation from ^pi^ <pi@beobide.net>
+
+2004-06-29 21:12  pollux
+
+	* po/: ru.gmo, ru.po: Add missing translations from Anthony Ivanoff
 
 2004-06-29 02:32  kelnos
 
@@ -1584,6 +1673,10 @@
 	* src/xfce-desktop.c: might as well set the XFDESKTOP_IMAGE_FILE_#
 	  property all the time, not just when we're setting it from an
 	  image list
+
+2004-06-20 19:20  benny
+
+	* src/menu.c: PATH_MAX fixes to get it to compile on GNU/Hurd.
 
 2004-06-20 18:24  pollux
 
@@ -1690,8 +1783,7 @@
 	  backdrops/Makefile.in, common/Makefile.am, common/Makefile.in,
 	  common/backdrop-common.c, common/backdrop-common.h,
 	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
-	  doc/fr/Makefile.in, doc/fr/images/Makefile.in, m4/debug.m4,
-	  menueditor/Makefile.in, menueditor/add_dialog.c,
+	  m4/debug.m4, menueditor/Makefile.in, menueditor/add_dialog.c,
 	  menueditor/dnd.c, menueditor/edit_dialog.c,
 	  menueditor/menueditor.c, menueditor/menueditor.h,
 	  menueditor/move.c, modules/Makefile.in, modules/menu/Makefile.am,
@@ -1723,6 +1815,11 @@
 2004-06-13 11:40  pollux
 
 	* po/de.gmo: .gmo files updated
+
+2004-06-11 13:03  pollux
+
+	* configure, configure.ac, ltmain.sh, po/et.gmo, po/et.po: Estonian
+	  translations from Peeter Vois <peeter.vois@proekspert.ee> added
 
 2004-06-04 21:20  pollux
 
@@ -1930,7 +2027,6 @@
 	* Makefile.am, Makefile.in, configure, configure.ac,
 	  backdrops/Makefile.in, common/Makefile.am, common/Makefile.in,
 	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
-	  doc/fr/Makefile.in, doc/fr/images/Makefile.in,
 	  menueditor/Makefile.in, modules/Makefile.am, modules/Makefile.in,
 	  modules/menu/Makefile.in, panel-plugin/Makefile.in,
 	  pixmaps/Makefile.in, settings/Makefile.in, src/Makefile.in: new
@@ -1951,12 +2047,20 @@
 	  autogenerated submenus if an icon isn't found (i.e., add dummy
 	  trans icon to _ensure_path())
 
+2004-05-04 00:16  olivier
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  install-sh, ltmain.sh, mkinstalldirs, backdrops/Makefile.in,
+	  common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
+	  doc/C/images/Makefile.in, po/xfdesktop.pot, settings/Makefile.in,
+	  src/Makefile.in: Update zh_TW translations by umm
+	  <umm@pchome.com.tw>
+
 2004-05-03 23:44  olivier
 
 	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
 	  install-sh, ltmain.sh, mkinstalldirs, backdrops/Makefile.in,
 	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
-	  doc/fr/Makefile.in, doc/fr/images/Makefile.in,
 	  modules/Makefile.in, pixmaps/Makefile.in: Update zh_TW
 	  translations from umm <umm@pchome.com.tw>
 
@@ -2347,9 +2451,9 @@
 
 	* AUTHORS, Makefile.am, Makefile.in, config.h.in,
 	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  doc/C/Makefile.in, doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, menueditor/Makefile.am,
-	  menueditor/Makefile.in, modules/Makefile.am, modules/Makefile.in,
+	  doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  menueditor/Makefile.am, menueditor/Makefile.in,
+	  modules/Makefile.am, modules/Makefile.in,
 	  modules/menu/Makefile.am, modules/menu/Makefile.in,
 	  panel-plugin/Makefile.in, pixmaps/Makefile.in, po/POTFILES.in,
 	  po/xfdesktop.pot, settings/Makefile.am, settings/Makefile.in,
@@ -2469,7 +2573,6 @@
 
 	* .cvsignore, backdrops/.cvsignore, common/.cvsignore,
 	  doc/.cvsignore, doc/C/.cvsignore, doc/C/images/.cvsignore,
-	  doc/fr/.cvsignore, doc/fr/images/.cvsignore,
 	  menueditor/.cvsignore, modules/.cvsignore,
 	  modules/menu/.cvsignore, panel-plugin/.cvsignore,
 	  pixmaps/.cvsignore, pixmaps/32x32/.cvsignore,
@@ -2489,7 +2592,6 @@
 
 	* .cvsignore, backdrops/.cvsignore, common/.cvsignore,
 	  doc/.cvsignore, doc/C/.cvsignore, doc/C/images/.cvsignore,
-	  doc/fr/.cvsignore, doc/fr/images/.cvsignore,
 	  menueditor/.cvsignore, modules/.cvsignore,
 	  modules/menu/.cvsignore, panel-plugin/.cvsignore,
 	  pixmaps/.cvsignore, pixmaps/32x32/.cvsignore,
@@ -2543,6 +2645,12 @@
 	  panel-plugin/desktop-menu-plugin.c: add XfceDesktopMenu gmodule
 	  and panel applet
 
+2004-03-21 22:44  olivier
+
+	* settings/workspaces_settings.c: The workspace plugin failed to
+	  set a value for the number of workspaces if it can't load its
+	  config file (ie first run on a fresh install)
+
 2004-03-21 20:58  pollux
 
 	* po/: fr.gmo, fr.po, xfdesktop.pot: french translations updated
@@ -2551,6 +2659,11 @@
 
 	* menueditor/: TODO, edit_dialog.c: fix memory leak : when editing
 	  previous icon wasn't unref
+
+2004-03-21 18:50  olivier
+
+	* Makefile.am, Makefile.in, menu.xml.it: Add Alex Dupre's Italian
+	  version of the root menu "menu.xml.it"
 
 2004-03-18 09:50  pollux
 
@@ -2578,6 +2691,15 @@
 	* aclocal.m4, configure, configure.ac, ltmain.sh, po/ar.gmo,
 	  po/ar.po, po/bg.gmo, po/bg.po, po/it.gmo, po/it.po: Add/update
 	  i18n for: Bulgarian from Miroslav Yordanov
+	  <miordanov@i-space.org> and Peter Slavov <peshka@i-space.org>
+	  Italian from Alex Dupre <ale@FreeBSD.org> Arabic from Saleh
+	  Hathal <hathalsal@hotmail.com>
+
+2004-03-15 00:25  olivier
+
+	* aclocal.m4, configure, configure.ac, po/ar.gmo, po/ar.po,
+	  po/bg.gmo, po/bg.po, po/it.gmo, po/it.po, po/xfdesktop.pot:
+	  Add/update i18n for: Bulgarian from Miroslav Yordanov
 	  <miordanov@i-space.org> and Peter Slavov <peshka@i-space.org>
 	  Italian from Alex Dupre <ale@FreeBSD.org> Arabic from Saleh
 	  Hathal <hathalsal@hotmail.com>
@@ -2617,6 +2739,10 @@
 	  filename is showed in the titlebar
 
 2004-03-07 12:30  olivier
+
+	* src/menu.c: Switch to window's worskpace before activating
+
+2004-03-07 12:27  olivier
 
 	* src/menu.c: Switch to window's worskpace before activating
 
@@ -2770,6 +2896,10 @@
 	  each pass they were getting inited to zero, and thus would appear
 	  to need a regen every 10 seconds
 
+2004-03-02 22:16  olivier
+
+	* po/xfdesktop.pot: Dummy
+
 2004-03-02 05:55  kelnos
 
 	* src/menu-dentry.c: breaking things is bad, mmkay?  let's actually
@@ -2820,6 +2950,10 @@
 	  revert mcs settings panel icon handling changes - no need to go
 	  thru	 the trouble of converting the rest until DBUS.  *
 	  s/background/backdrop/i <-- let's be consistent
+
+2004-02-28 18:24  olivier
+
+	* ltmain.sh: sync for 4.0.4 release
 
 2004-02-28 13:27  benny
 
@@ -2946,6 +3080,10 @@
 	  the menueditor now uses the themed icons (need to be restarted to
 	  apply changes)
 
+2004-02-24 20:03  kelnos
+
+	* src/menu.c: fix for bug #124, thanks tkoskine (xfce_4_0 branch)
+
 2004-02-24 19:59  kelnos
 
 	* src/menu.c: fix for bug #124, thanks tkoskine
@@ -2963,8 +3101,7 @@
 
 	* aclocal.m4, configure, ltmain.sh, backdrops/Makefile.in,
 	  common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
-	  doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, menueditor/ChangeLog,
+	  doc/C/images/Makefile.in, menueditor/ChangeLog,
 	  menueditor/Makefile.am, menueditor/Makefile.in,
 	  menueditor/undo.c, menueditor/undo.h, po/fr.gmo, po/fr.po,
 	  po/xfdesktop.pot, settings/Makefile.in, src/Makefile.in: - French
@@ -3134,15 +3271,36 @@
 
 	* settings/backdrop_settings.c: Change default background color
 
+2004-02-01 01:51  kelnos
+
+	* src/backdrop.c: applying fix for bug #94 to 4.0 branch (crash in
+	  x event handler when an invalid desktop image is specified)
+
 2004-02-01 01:08  kelnos
 
 	* src/backdrop.c: fix for bug #94.  thanks to dannym for figuring
 	  this out.  moral of the story: don't call functions that can put
 	  up dialog boxes from inside an X event handler.
 
+2004-01-30 08:07  jasper
+
+	* configure, configure.ac, ltmain.sh, menu.xml.fa_IR, po/es.gmo,
+	  po/es.po, po/fa_IR.gmo, po/fa_IR.po, po/pt_BR.gmo, po/pt_BR.po,
+	  po/zh_CN.gmo, po/zh_CN.po: Update translations for spanish,
+	  persian, brasilian and chinese
+
 2004-01-29 16:51  jasper
 
 	* po/: fa_IR.gmo, fa_IR.po: Update Persian translations
+
+2004-01-25 01:10  olivier
+
+	* Makefile.in, aclocal.m4, compile, config.guess, config.sub,
+	  configure, configure.ac, depcomp, install-sh, ltmain.sh, missing,
+	  mkinstalldirs, backdrops/Makefile.in, common/Makefile.in,
+	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
+	  po/fa_IR.gmo, po/fa_IR.po, settings/Makefile.in, src/Makefile.in:
+	  Update libtool and other automake, autoconf and gettext.
 
 2004-01-25 01:07  olivier
 
@@ -3150,7 +3308,6 @@
 	  configure, depcomp, install-sh, ltmain.sh, missing,
 	  mkinstalldirs, backdrops/Makefile.in, common/Makefile.in,
 	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
-	  doc/fr/Makefile.in, doc/fr/images/Makefile.in,
 	  settings/Makefile.in, src/Makefile.in: Update libtool and other
 	  automake, autoconf and gettext packages
 
@@ -3165,6 +3322,15 @@
 	  po/zh_CN.gmo, po/zh_CN.po: Translations added/updated for
 	  spanish, persian, japanese, korean, brasilian and chinese
 
+2004-01-07 21:38  olivier
+
+	* ChangeLog, po/ChangeLog: Huge update before 4.0.3 release,
+	  mainly: ChangeLog update, Version number updates.
+
+2004-01-06 19:48  olivier
+
+	* po/xfdesktop.pot: update theme
+
 2004-01-02 17:15  jasper
 
 	* Makefile.am, Makefile.in, menu.xml.tr: Add Turkish menu
@@ -3172,11 +3338,30 @@
 
 2003-12-30 09:10  jasper
 
-	* src/main.c: Set NAUTILUS_DESKTOP_WINDOW_ID property
+	* src/: main.c: Set NAUTILUS_DESKTOP_WINDOW_ID property
+
+2003-12-29 16:20  olivier
+
+	* ChangeLog, configure, configure.ac, po/no.gmo, po/no.po: Update
+	  version number, Update ChangeLog Fix missing CHARSET in potfiles
+
+2003-12-29 13:16  jasper
+
+	* configure, configure.ac, po/no.gmo, po/no.po, po/tr.gmo,
+	  po/tr.po: Update Norwegian and Turkish translations
 
 2003-12-29 11:56  jasper
 
 	* po/: tr.gmo, tr.po: Update Norwegian and Turkish translations
+
+2003-12-28 21:28  olivier
+
+	* po/xfdesktop.pot: Fix removal of properties on unframed windows
+
+2003-12-27 22:52  jasper
+
+	* configure, configure.ac, po/pl.gmo, po/pl.po: Update Polish
+	  translations
 
 2003-12-27 20:46  jasper
 
@@ -3198,6 +3383,10 @@
 
 	* src/backdrop.c: Add error trapping when updating root property
 
+2003-12-18 00:00  olivier
+
+	* ChangeLog: Update ChangeLog(s)
+
 2003-12-16 10:23  jasper
 
 	* settings/backdrop_settings.c: Put back dialog centering
@@ -3207,10 +3396,30 @@
 	* Makefile.am, Makefile.in, menu.xml.az: Add Azerbaijani
 	  translations
 
+2003-12-16 09:21  jasper
+
+	* Makefile.am, Makefile.in, menu.xml.az: Add Azerbaijani
+	  translations
+
+2003-12-15 23:25  olivier
+
+	* po/xfdesktop.pot, settings/workspaces_settings.c: Fix a
+	  (potential) crash in workspace plugins
+
+2003-12-15 22:35  jasper
+
+	* configure, configure.ac, po/az.gmo, po/az.po: Add Azerbaijani
+	  translations
+
 2003-12-15 21:56  jasper
 
 	* configure, configure.ac, po/az.gmo, po/az.po: Add Azerbaijani
 	  translations
+
+2003-12-13 23:31  olivier
+
+	* configure, configure.ac, settings/workspaces_settings.c: Use long
+	  as passed value for desktop count
 
 2003-12-05 08:59  jasper
 
@@ -3241,9 +3450,14 @@
 	* Makefile.am, Makefile.in, menu.xml.vi, po/ca.gmo: Update
 	  vietnamese translations
 
+2003-12-01 12:49  jasper
+
+	* Makefile.am, Makefile.in, menu.xml.vi, po/ca.gmo: Update
+	  vietnamese translations
+
 2003-12-01 12:03  jasper
 
-	* po/ca.po: Update catalan translations
+	* po/: ca.po: Update catalan translations
 
 2003-11-29 09:14  jasper
 
@@ -3287,7 +3501,7 @@
 
 2003-11-16 09:44  jasper
 
-	* po/cs.po: Update Czech translations
+	* po/: cs.gmo, cs.po: Update Czech translations
 
 2003-11-14 19:28  jasper
 
@@ -3307,21 +3521,39 @@
 	  full screen widget and replace with input-only widget to catch
 	  mouse clicks
 
+2003-11-12 08:02  jasper
+
+	* po/: ca.gmo, cs.gmo, de.gmo, es.gmo, es_MX.gmo, fi.gmo, fr.gmo,
+	  hi.gmo, hu.gmo, ja.gmo, ko.gmo, lt.gmo, ms.gmo, nl.gmo, pl.gmo,
+	  pt_PT.gmo, ru.gmo, sv.gmo, ta.gmo, tr.gmo, uk.gmo, vi.gmo,
+	  zh_CN.gmo, zh_TW.gmo: Forgot gmo files update
+
+2003-11-11 19:35  jasper
+
+	* po/: ca.po, cs.po, de.po, es.po, es_MX.po, fi.po, fr.po, hi.po,
+	  hu.po, ja.po, ko.po, lt.po, ms.po, nl.po, pl.po, pt_PT.po, ru.po,
+	  sv.po, ta.po, tr.po, uk.po, vi.po, xfdesktop.pot, zh_CN.po,
+	  zh_TW.po: Update po files, just in case something changed ...
+
 2003-11-09 20:22  jasper
 
 	* configure, configure.ac, po/cs.gmo, po/cs.po: Add Check
 	  translations
 
+2003-11-09 20:09  jasper
+
+	* configure, configure.ac, po/cs.gmo, po/cs.po: Add Check
+	  translations
+
+2003-11-07 22:09  jasper
+
+	* configure, configure.ac, doc/Makefile.am, doc/Makefile.in,
+	  doc/C/xfdesktop.html: Add French documentation
+
 2003-11-07 13:49  jasper
 
 	* configure, configure.ac, backdrops/Makefile.in, doc/Makefile.am,
-	  doc/Makefile.in, doc/C/xfdesktop.html, doc/fr/Makefile.am,
-	  doc/fr/Makefile.in, doc/fr/xfdesktop.html, doc/fr/xfdesktop.xml,
-	  doc/fr/images/Makefile.am, doc/fr/images/Makefile.in,
-	  doc/fr/images/root_menu.png, doc/fr/images/root_menu2.png,
-	  doc/fr/images/select_bg_color.png,
-	  doc/fr/images/xfdesktop-background.png,
-	  doc/fr/images/xfdesktop-list.png: Add French documentation.
+	  doc/Makefile.in, doc/C/xfdesktop.html: Add French documentation.
 	  Rather large commit.
 
 2003-11-04 10:17  jasper
@@ -3338,6 +3570,16 @@
 
 	* configure, configure.ac, po/hi.gmo, po/hi.po: Add hi.po
 
+2003-11-02 00:28  olivier
+
+	* configure, configure.ac, po/hi.gmo, po/hi.po: Add Hindi
+	  translation
+
+2003-10-25 00:31  jasper
+
+	* configure, configure.ac, po/vi.gmo, po/vi.po:
+	  Add vietnamese translations by Lam Vinh Nien <nienvl@yahoo.ca>.
+
 2003-10-25 00:20  jasper
 
 	* configure, configure.ac, po/vi.gmo, po/vi.po:
@@ -3345,7 +3587,8 @@
 
 2003-10-24 13:29  jasper
 
-	* src/menu.c: Use mtime instead of ctime to check if menu changed.
+	* src/: menu.c: Use mtime instead of ctime to check if menu
+	  changed.
 
 2003-10-21 08:06  jasper
 
@@ -3357,6 +3600,11 @@
 	* NEWS, doc/C/xfdesktop.html, doc/C/xfdesktop.xml, src/main.c,
 	  src/menu.c, src/menu.h: Add -menu and -windowlist options to
 	  popup the menu or window list from the command line
+
+2003-10-17 18:32  jasper
+
+	* configure, configure.ac, po/sv.gmo, po/sv.po: Add/update swedish
+	  translations
 
 2003-10-17 17:37  jasper
 
@@ -3370,6 +3618,11 @@
 	  required for this to work at present)
 
 2003-10-13 20:51  jasper
+
+	* ChangeLog: Update ChangeLog's after syncing with SF. Everything
+	  should now be up-to-date.
+
+2003-10-13 20:30  jasper
 
 	* ChangeLog: Update ChangeLog's after syncing with SF. Everything
 	  should now be up-to-date.
@@ -3791,6 +4044,11 @@
 	* Makefile.am, Makefile.in, po/ta.gmo, po/ta.po: Update tamil
 	  translation
 
+2003-09-27 13:20  huysmans
+
+	* Makefile.am, Makefile.in, menu.xml.ta, po/ta.gmo, po/ta.po:
+	  Update tamil translations
+
 2003-09-22 22:52  huysmans
 
 	* ChangeLog: Update ChangeLogs
@@ -4165,9 +4423,17 @@
 	* settings/: Makefile.am, Makefile.in: Added menu_settings.* to
 	  EXTRA_DIST, so it doesn't break if POTFILES.in is wrong.
 
+2003-06-21 23:02  bmeurer
+
+	* po/POTFILES.in: Fixed broken POTFILES.in
+
 2003-06-21 23:00  bmeurer
 
 	* po/: POTFILES.in, xfdesktop.pot: Fixes.
+
+2003-06-21 20:11  bmeurer
+
+	* aclocal.m4, configure, configure.ac, po/xfdesktop.pot: Fixes.
 
 2003-06-21 20:06  bmeurer
 

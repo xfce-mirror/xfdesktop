@@ -53,6 +53,7 @@ conf_DATA = 								\
 	menu.xml.sk							\
 	menu.xml.ta 							\
 	menu.xml.tr 							\
+	menu.xml.uk							\
 	menu.xml.vi 							\
 	menu.xml.zh_CN							\
 	menu.xml.zh_TW
