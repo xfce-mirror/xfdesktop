@@ -138,7 +138,7 @@ dmp_new()
 	return dmp;
 }
 
-gboolean
+static gboolean
 dmp_create(Control *c)
 {
 	DMPlugin *dmp;
@@ -216,14 +216,11 @@ entry_focus_out_cb(GtkWidget *w, GdkEventFocus *evt, gpointer user_data)
 		g_free(dmp->icon_file);
 	
 	dmp->icon_file = gtk_editable_get_chars(GTK_EDITABLE(w), 0, -1);
-	pix = gdk_pixbuf_new_from_file(dmp->icon_file, NULL);
+	pix = xfce_load_themed_icon(dmp->icon_file,
+			icon_size[settings.size] - 2*border_width);
 	if(pix) {
-		GdkPixbuf *tmp;
-		tmp = gdk_pixbuf_scale_simple(pix, icon_size[settings.size] - 2*border_width,
-				icon_size[settings.size] - 2*border_width, GDK_INTERP_BILINEAR);
-		xfce_iconbutton_set_pixbuf(XFCE_ICONBUTTON(dmp->button), tmp);
+		xfce_iconbutton_set_pixbuf(XFCE_ICONBUTTON(dmp->button), pix);
 		g_object_unref(G_OBJECT(pix));
-		g_object_unref(G_OBJECT(tmp));
 	} else
 		xfce_iconbutton_set_pixbuf(XFCE_ICONBUTTON(dmp->button), NULL);
 	
