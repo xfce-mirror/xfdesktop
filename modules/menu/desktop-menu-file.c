@@ -273,8 +273,8 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			
 			j = _find_attribute(attribute_names, "icon");
 			if(j != -1 && *attribute_values[j]) {
-				pix = xfce_themed_icon_load(attribute_values[j], 
-						_xfce_desktop_menu_icon_size);
+				pix = xfce_icon_theme_load(_deskmenu_icon_theme,
+						attribute_values[j], _xfce_desktop_menu_icon_size);
 				if(pix) {
 					image = gtk_image_new_from_pixbuf(pix);
 					gtk_widget_show(image);
@@ -367,8 +367,8 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			
 			k = _find_attribute(attribute_names, "icon");
 			if(k != -1 && *attribute_values[k]) {
-				pix = xfce_themed_icon_load(attribute_values[k],
-						_xfce_desktop_menu_icon_size);
+				pix = xfce_icon_theme_load(_deskmenu_icon_theme,
+						attribute_values[k], _xfce_desktop_menu_icon_size);
 				if(pix) {
 					image = gtk_image_new_from_pixbuf(pix);
 					gtk_widget_show(image);
@@ -424,8 +424,8 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			
 			j = _find_attribute(attribute_names, "icon");
 			if(j != -1 && *attribute_values[j]) {
-				pix = xfce_themed_icon_load(attribute_values[j],
-						_xfce_desktop_menu_icon_size);
+				pix = xfce_icon_theme_load(_deskmenu_icon_theme,
+						attribute_values[j], _xfce_desktop_menu_icon_size);
 				if(pix) {
 					image = gtk_image_new_from_pixbuf(pix);
 					gtk_widget_show(image);

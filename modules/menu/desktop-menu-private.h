@@ -26,6 +26,8 @@
 #include <gtk/gtkwidget.h>
 #include <gtk/gtkdnd.h>
 
+#include <libxfcegui4/xfce-icontheme.h>
+
 struct _XfceDesktopMenu {
 	gchar *filename;  /* file the menu is currently using */
 	gboolean using_default_menu;
@@ -52,5 +54,6 @@ struct _XfceDesktopMenu {
 /*< private >*/
 void _xfce_desktop_menu_free_menudata(struct _XfceDesktopMenu *desktop_menu);
 extern gint _xfce_desktop_menu_icon_size;
+extern XfceIconTheme *_deskmenu_icon_theme;
 
 #endif  /* !def __DESKTOP_MENU_PRIVATE_H__ */

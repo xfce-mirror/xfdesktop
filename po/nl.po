@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2004-08-06 23:16+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-08-28 19:48-0700\n"
 "PO-Revision-Date: 2004-08-25 09:20+0200\n"
 "Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: menueditor/about_dialog.c:36
 msgid "A menu editor for Xfce4"
@@ -101,7 +101,7 @@ msgid "The 'Name' field is required."
 msgstr "Het 'Naam' veld is verplicht."
 
 #: menueditor/add_dialog.c:349 menueditor/dnd.c:150
-#: menueditor/menueditor.c:274 menueditor/move.c:90 menueditor/move.c:246
+#: menueditor/menueditor.c:339 menueditor/move.c:90 menueditor/move.c:246
 msgid "--- separator ---"
 msgstr "--- scheidingslijn ---"
 
@@ -110,7 +110,7 @@ msgid "quit"
 msgstr "afsluiten"
 
 #: menueditor/add_menu_dialog.c:76 menueditor/add_menu_dialog.c:87
-#: menueditor/menueditor.c:705
+#: menueditor/menueditor.c:770
 msgid "Add an external menu"
 msgstr "Een extern menu toevoegen"
 
@@ -150,13 +150,13 @@ msgstr "Het 'Bron' veld is verplicht."
 
 #: menueditor/add_menu_dialog.c:216 menueditor/add_menu_dialog.c:233
 #: menueditor/dnd.c:152 menueditor/edit_dialog.c:510
-#: menueditor/edit_dialog.c:523 menueditor/menueditor.c:322
+#: menueditor/edit_dialog.c:523 menueditor/menueditor.c:387
 #: menueditor/move.c:120 menueditor/move.c:276
 msgid "--- include ---"
 msgstr "--- extern menu ---"
 
 #: menueditor/add_menu_dialog.c:234 menueditor/dnd.c:157
-#: menueditor/edit_dialog.c:524 menueditor/menueditor.c:325
+#: menueditor/edit_dialog.c:524 menueditor/menueditor.c:390
 #: menueditor/move.c:123 menueditor/move.c:279
 msgid "system"
 msgstr "systeem"
@@ -175,164 +175,176 @@ msgstr "Scheidingslijnen kunnen niet bewerkt worden"
 msgid "Title:"
 msgstr "Titel:"
 
-#: menueditor/menueditor.c:152
+#: menueditor/menueditor.c:156
 msgid "Select command"
 msgstr "Commando selecteren"
 
-#: menueditor/menueditor.c:177
+#: menueditor/menueditor.c:213
 msgid "Select icon"
 msgstr "Pictogram selectern"
 
-#: menueditor/menueditor.c:201
+#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:372
+#: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
+#: settings/backdrop_settings.c:467
+msgid "All Files"
+msgstr "Alle Bestanden"
+
+#: menueditor/menueditor.c:223 panel-plugin/desktop-menu-plugin.c:378
+#: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:471
+msgid "Image Files"
+msgstr "Plaatjes"
+
+#: menueditor/menueditor.c:266
 msgid "Not yet implemented!"
 msgstr "Nog niet geïmplementeerd!"
 
-#: menueditor/menueditor.c:212 menueditor/menueditor.c:594
+#: menueditor/menueditor.c:277 menueditor/menueditor.c:659
 msgid "Do you want to save before closing the menu ?"
 msgstr "Wilt u de wijzigingen opslaan?"
 
-#: menueditor/menueditor.c:213
+#: menueditor/menueditor.c:278
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "Wilt u de wijzigingen opslaan?"
 
-#: menueditor/menueditor.c:214
+#: menueditor/menueditor.c:279
 msgid "Forget modifications"
 msgstr "Wijzigingen negeren"
 
-#: menueditor/menueditor.c:398 menueditor/menueditor.c:453
-#: menueditor/menueditor.c:592
+#: menueditor/menueditor.c:463 menueditor/menueditor.c:518
+#: menueditor/menueditor.c:657
 msgid "Question"
 msgstr "Vraag"
 
-#: menueditor/menueditor.c:400
+#: menueditor/menueditor.c:465
 msgid "Do you want to save before opening the default menu ?"
 msgstr "Wilt u de wijzigingen opslaan voor het openen van het standaard menu?"
 
-#: menueditor/menueditor.c:402 menueditor/menueditor.c:457
-#: menueditor/menueditor.c:596
+#: menueditor/menueditor.c:467 menueditor/menueditor.c:522
+#: menueditor/menueditor.c:661
 msgid "Ignore modifications"
 msgstr "Wijzigingen negeren"
 
-#: menueditor/menueditor.c:455
+#: menueditor/menueditor.c:520
 msgid "Do you want to save before opening an other menu ?"
 msgstr "Wilt u de wijzigingen opslaan?"
 
-#: menueditor/menueditor.c:468
+#: menueditor/menueditor.c:533
 msgid "Open menu file"
 msgstr "Open menubestand"
 
-#: menueditor/menueditor.c:506 menueditor/menueditor.c:517
+#: menueditor/menueditor.c:571 menueditor/menueditor.c:582
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
 "%s"
-msgstr "Kan niet schrijven naar %s:\n"
+msgstr ""
+"Kan niet schrijven naar %s:\n"
 "%s"
 
-#: menueditor/menueditor.c:541
+#: menueditor/menueditor.c:606
 msgid "Save as..."
 msgstr "Opslaan als..."
 
-#: menueditor/menueditor.c:699
+#: menueditor/menueditor.c:764
 msgid "Edit"
 msgstr "Bewerken"
 
 #. File menu
-#: menueditor/menueditor.c:886
+#: menueditor/menueditor.c:951
 msgid "_File"
 msgstr "_Bestand"
 
-#: menueditor/menueditor.c:895
+#: menueditor/menueditor.c:960
 msgid "Open default menu"
 msgstr "Standaard menu openen"
 
 #. Edit menu
-#: menueditor/menueditor.c:909
+#: menueditor/menueditor.c:974
 msgid "_Edit"
 msgstr "Be_werken"
 
-#: menueditor/menueditor.c:915
+#: menueditor/menueditor.c:980
 msgid "Add an external menu..."
 msgstr "Extern menu toevoegen..."
 
 #. Help menu
-#: menueditor/menueditor.c:927
+#: menueditor/menueditor.c:992
 msgid "_Help"
 msgstr "_Help"
 
-#: menueditor/menueditor.c:932
+#: menueditor/menueditor.c:997
 msgid "_About..."
 msgstr "_Info..."
 
-#: menueditor/menueditor.c:946
+#: menueditor/menueditor.c:1011
 msgid "Create a new Xfce4 menu file"
 msgstr "Nieuw Xfce4 menu"
 
-#: menueditor/menueditor.c:953
+#: menueditor/menueditor.c:1018
 msgid "Open an Xfce4 menu file"
 msgstr "Open een Xfce4 menubestand"
 
-#: menueditor/menueditor.c:960
+#: menueditor/menueditor.c:1025
 msgid "Save current menu"
 msgstr "Huidig menu opslaan"
 
-#: menueditor/menueditor.c:967
+#: menueditor/menueditor.c:1032
 msgid "Close current menu"
 msgstr "Huidig menu sluiten"
 
-#: menueditor/menueditor.c:975
+#: menueditor/menueditor.c:1040
 msgid "Add an entry to the menu"
 msgstr "Menu-optie toevoegen"
 
-#: menueditor/menueditor.c:982
+#: menueditor/menueditor.c:1047
 msgid "Delete the current entry"
 msgstr "Huidige menu-optie verwijderen"
 
-#: menueditor/menueditor.c:989
+#: menueditor/menueditor.c:1054
 msgid "Move the current entry up"
 msgstr "Huidige menu-optie omhoog verplaatsen"
 
-#: menueditor/menueditor.c:996
+#: menueditor/menueditor.c:1061
 msgid "Move the current entry down"
 msgstr "Huidige menu-optie omlaag verplaatsen"
 
-#: menueditor/menueditor.c:1004
+#: menueditor/menueditor.c:1069
 msgid "Collapse the tree"
 msgstr "Boomstructuur inklappen"
 
-#: menueditor/menueditor.c:1011
+#: menueditor/menueditor.c:1076
 msgid "Expand the tree"
 msgstr "Boomstructuur uitklappen"
 
-#: menueditor/menueditor.c:1045
+#: menueditor/menueditor.c:1110
 msgid "Name"
 msgstr "Naam"
 
-#: menueditor/menueditor.c:1047
+#: menueditor/menueditor.c:1112
 msgid "Command"
 msgstr "Commando"
 
-#: menueditor/menueditor.c:1049
+#: menueditor/menueditor.c:1114
 msgid "Hidden"
 msgstr "Verborgen"
 
-#: menueditor/menueditor.c:1051
+#: menueditor/menueditor.c:1116
 msgid "Pointer"
 msgstr ""
 
-#: menueditor/menueditor.c:1183
+#: menueditor/menueditor.c:1248
 msgid "Corrupted file or incorrect file format !"
 msgstr "Beschadigd bestand of incorrect bestandsformaat!"
 
-#: menueditor/menueditor.c:1196
+#: menueditor/menueditor.c:1261
 msgid "No root element in file !"
 msgstr "Geen root-element gevonden!"
 
-#: menueditor/menueditor.c:1207
+#: menueditor/menueditor.c:1272
 msgid "Bad datafile format !"
 msgstr "Incorrect bestandsformaat!"
 
-#: menueditor/menueditor.c:1323
+#: menueditor/menueditor.c:1388
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "Bestand %s bestaat niet!"
@@ -367,20 +379,20 @@ msgstr "Bestand:"
 msgid "All fields are required."
 msgstr "Alle velden zijn verplicht."
 
-#: modules/menu/desktop-menu-dentry.c:532
+#: modules/menu/desktop-menu-dentry.c:536
 msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
 msgstr "XfceDesktopMenu: Kon xfce-registered-categories.xml niet vinden"
 
-#: modules/menu/desktop-menuspec.c:61
+#: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
 msgstr "/Overig"
 
-#: modules/menu/desktop-menuspec.c:279
+#: modules/menu/desktop-menuspec.c:361
 #, c-format
 msgid "%s: missing or unknown attribute for 'related' element\n"
 msgstr "%s: ontbrekend of onbekend attribuut voor 'related' element\n"
 
-#: modules/menu/desktop-menuspec.c:284
+#: modules/menu/desktop-menuspec.c:366
 #, c-format
 msgid "%s: unknown xml element %s\n"
 msgstr "%s: onbekend xml element %s\n"
@@ -398,16 +410,6 @@ msgstr "Pictogram Selecteren"
 msgid "Select Menu File"
 msgstr "Menubestand Selecteren"
 
-#: panel-plugin/desktop-menu-plugin.c:372 settings/backdrop-mgr.c:545
-#: settings/backdrop-mgr.c:700 settings/backdrop_settings.c:467
-msgid "All Files"
-msgstr "Alle Bestanden"
-
-#: panel-plugin/desktop-menu-plugin.c:378 settings/backdrop-mgr.c:549
-#: settings/backdrop_settings.c:471
-msgid "Image Files"
-msgstr "Plaatjes"
-
 #: panel-plugin/desktop-menu-plugin.c:386
 msgid "Menu Files"
 msgstr "Menubestanden"
@@ -424,22 +426,22 @@ msgstr "_Pictogram:"
 msgid "Show _icons in menu"
 msgstr "Toon pictogrammen in menu"
 
-#: settings/backdrop-mgr.c:133 settings/backdrop-mgr.c:192
-#: settings/backdrop-mgr.c:592
+#: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
+#: settings/backdrop-mgr.c:553
 msgid "Backdrop"
 msgstr "Achtergrond"
 
-#: settings/backdrop-mgr.c:139
+#: settings/backdrop-mgr.c:100
 #, c-format
 msgid "Adding files from directory %s..."
 msgstr "Bestanden uit map %s toevoegen..."
 
-#: settings/backdrop-mgr.c:198
+#: settings/backdrop-mgr.c:160
 #, c-format
 msgid "Adding files from list %s..."
 msgstr "Bestanden van lijst %s toevoegen..."
 
-#: settings/backdrop-mgr.c:240
+#: settings/backdrop-mgr.c:215
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -451,43 +453,43 @@ msgstr ""
 "\n"
 "Kies een andere locatie of druk op annuleren in het dialoogvenster"
 
-#: settings/backdrop-mgr.c:540
+#: settings/backdrop-mgr.c:502
 msgid "Select backdrop image file"
 msgstr "Plaatje selecteren voor achtergrond"
 
-#: settings/backdrop-mgr.c:598
+#: settings/backdrop-mgr.c:559
 msgid "Adding multiple files..."
 msgstr "Meerderen bestanden toevoegen..."
 
-#: settings/backdrop-mgr.c:695
+#: settings/backdrop-mgr.c:637
 msgid "Choose backdrop list filename"
 msgstr "Kies bestandsnaam voor achtergrondenlijst"
 
-#: settings/backdrop-mgr.c:704
+#: settings/backdrop-mgr.c:646
 msgid "List Files"
 msgstr "Lijst-bestanden"
 
-#: settings/backdrop-mgr.c:767
+#: settings/backdrop-mgr.c:709
 msgid "Backdrop List"
 msgstr "Achtergrondenlijst"
 
-#: settings/backdrop-mgr.c:784
+#: settings/backdrop-mgr.c:726
 msgid "Image files"
 msgstr "Plaatjes"
 
-#: settings/backdrop-mgr.c:794
+#: settings/backdrop-mgr.c:736
 msgid "backdrops.list"
 msgstr "achtergronden.list"
 
-#: settings/backdrop-mgr.c:800
+#: settings/backdrop-mgr.c:742
 msgid "List file"
 msgstr "Bestand"
 
-#: settings/backdrop-mgr.c:820
+#: settings/backdrop-mgr.c:762
 msgid "Create backdrop list"
 msgstr "Lijst van achtergronden maken"
 
-#: settings/backdrop-mgr.c:851
+#: settings/backdrop-mgr.c:793
 msgid "Edit backdrop list"
 msgstr "Lijst van achtergronden aanpassen"
 
@@ -626,55 +628,55 @@ msgstr "_menu"
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Kon xfce4-menueditor niet starten: %s"
 
-#: settings/menu_settings.c:151
+#: settings/menu_settings.c:153
 msgid "Window List"
 msgstr "Vensterlijst"
 
-#: settings/menu_settings.c:159
+#: settings/menu_settings.c:161
 msgid "Show window _list"
 msgstr "Vensterlijst _tonen"
 
-#: settings/menu_settings.c:174
+#: settings/menu_settings.c:176
 msgid "Show _window icons"
 msgstr "Venster_pictogrammen tonen"
 
-#: settings/menu_settings.c:187
+#: settings/menu_settings.c:189
 msgid "Desktop Menu"
 msgstr "Bureaubladmenu"
 
-#: settings/menu_settings.c:195
+#: settings/menu_settings.c:197
 msgid "Show desktop _menu"
 msgstr "Bureaubladmenu tonen"
 
-#: settings/menu_settings.c:210
+#: settings/menu_settings.c:212
 msgid "Show _application icons"
 msgstr "P_rogrammapictogrammen tonen"
 
-#: settings/menu_settings.c:221
+#: settings/menu_settings.c:223
 msgid "_Edit desktop menu"
 msgstr "Bureaubladmenu be_werken"
 
-#: src/main.c:255
+#: src/main.c:262
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Onbekende optie: %s\n"
 
-#: src/main.c:256
+#: src/main.c:263
 msgid "Options are:\n"
 msgstr "Mogelijk opties:\n"
 
-#: src/main.c:257
+#: src/main.c:264
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "    -reload	Instellingen opnieuw laden, bestandenlijst verversen\n"
+msgstr "    -reload\tInstellingen opnieuw laden, bestandenlijst verversen\n"
 
-#: src/main.c:258
+#: src/main.c:265
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    -menu	Buereaubladmenu tonen (op huidige muispositie)\n"
+msgstr "    -menu\tBuereaubladmenu tonen (op huidige muispositie)\n"
 
-#: src/main.c:259
+#: src/main.c:266
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist	Vensterlijst tonen (op huidige muispositie)\n"
+msgstr "    -windowlist\tVensterlijst tonen (op huidige muispositie)\n"
 
 #: src/menu.c:73
 #, c-format
@@ -707,4 +709,3 @@ msgstr "Bureaublad %d _verwijderen"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Bureaublad '%s' _verwijderen"
-

@@ -57,6 +57,7 @@
 #include <libxfce4util/i18n.h>
 
 #include "desktop-menuspec.h"
+#include "desktop-menu-private.h"
 
 #define FALLBACK_PATH _("/Other")
 
@@ -83,6 +84,64 @@ static GHashTable *cat_to_displayname = NULL;
 static GHashTable *displayname_to_icon = NULL;
 static GHashTable *cats_orphans = NULL;
 static GNode *menu_tree = NULL;
+
+static gchar *
+menuspec_builtin_icon_to_filename(const gchar *name)
+{
+	if(!strcmp(name, "UNKNOWN"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_UNKNOWN, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "EDITOR"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_EDITOR, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "FILEMAN"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_FILEMAN, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "UTILITY"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_UTILITY, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "GAME"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_GAME, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "HELP"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_HELP, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "MULTIMEDIA"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_MULTIMEDIA, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "NETWORK"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_NETWORK, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "GRAPHICS"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_GRAPHICS, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "PRINTER"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_PRINTER, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "PRODUCTIVITY"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_PRODUCTIVITY, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "SOUND"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_SOUND, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "TERMINAL"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_TERMINAL, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "DEVELOPMENT"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_DEVELOPMENT, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "SETTINGS"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_SETTINGS, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "SYSTEM"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_SYSTEM, _xfce_desktop_menu_icon_size);
+	else if(!strcmp(name, "WINE"))
+		return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
+				XFCE_ICON_CATEGORY_WINE, _xfce_desktop_menu_icon_size);
+	
+	return NULL;
+}
 
 static void
 tree_add_orphans(gpointer key, gpointer data, gpointer user_data)
@@ -187,6 +246,7 @@ menuspec_xml_start(GMarkupParseContext *context, const gchar *element_name,
 	
 	if(!strcmp(element_name, "category")) {
 		gchar *cur_displayname = NULL, *cat_dupe = NULL, *icon = NULL;
+		gchar *builtin_icon = NULL, *icon_filename = NULL;
 		gboolean hide = FALSE, ignore = FALSE, toplevel = FALSE;
 		GNode *newnode;
 		struct MenuTreeSearchInfo mtsi;
@@ -201,6 +261,8 @@ menuspec_xml_start(GMarkupParseContext *context, const gchar *element_name,
 				cur_displayname = g_strdup(attribute_values[i]);
 			else if(!strcmp(attribute_names[i], "icon"))
 				icon = g_strdup(attribute_values[i]);
+			else if(!strcmp(attribute_names[i], "builtin-icon"))
+				builtin_icon = g_strdup(attribute_values[i]);
 			else if(!strcmp(attribute_names[i], "hide"))
 				hide = !g_ascii_strcasecmp(attribute_values[i], "true") ? TRUE : FALSE;
 			else if(!strcmp(attribute_names[i], "ignore"))
@@ -244,11 +306,25 @@ menuspec_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		else
 			g_hash_table_insert(cat_to_displayname, cat_dupe, strdup(cat_dupe));
 		
-		if(icon) {
-			if(cur_displayname)
-				g_hash_table_insert(displayname_to_icon, cur_displayname, icon);
-			else
-				g_hash_table_insert(displayname_to_icon, cat_dupe, icon);
+		if(icon || builtin_icon) {
+			if(builtin_icon)
+				icon_filename = menuspec_builtin_icon_to_filename(builtin_icon);
+			if(!icon_filename && icon) {
+				icon_filename = xfce_icon_theme_lookup(_deskmenu_icon_theme,
+						icon, _xfce_desktop_menu_icon_size);
+			}
+			
+			if(icon_filename) {
+				if(cur_displayname)
+					g_hash_table_insert(displayname_to_icon, cur_displayname, icon_filename);
+				else
+					g_hash_table_insert(displayname_to_icon, cat_dupe, icon_filename);
+			}
+			
+			if(icon)
+				g_free(icon);
+			if(builtin_icon)
+				g_free(builtin_icon);
 		}
 		
 		if(hide)
@@ -485,7 +561,7 @@ desktop_menuspec_get_path_multilevel(const gchar *categories)
 G_CONST_RETURN gchar *
 desktop_menuspec_cat_to_displayname(const gchar *category)
 {
-        if (cat_to_displayname)
+        if(cat_to_displayname)
         	return g_hash_table_lookup(cat_to_displayname, category);
         return NULL;
 }
@@ -493,28 +569,33 @@ desktop_menuspec_cat_to_displayname(const gchar *category)
 G_CONST_RETURN gchar *
 desktop_menuspec_displayname_to_icon(const gchar *displayname)
 {
-        if (displayname_to_icon)
+        if(displayname_to_icon)
 	        return g_hash_table_lookup(displayname_to_icon, displayname);
         return NULL;
 }
 
 void
 desktop_menuspec_free() {
-	if(cats_hide)
+	if(cats_hide) {
 		g_hash_table_destroy(cats_hide);
-	cats_hide = NULL;
-	if(cats_ignore)
+		cats_hide = NULL;
+	}
+	if(cats_ignore) {
 		g_hash_table_destroy(cats_ignore);
-	cats_ignore = NULL;
-	if(cat_to_displayname)
+		cats_ignore = NULL;
+	}
+	if(cat_to_displayname) {
 		g_hash_table_destroy(cat_to_displayname);
-	cat_to_displayname = NULL;
-	if(displayname_to_icon)
+		cat_to_displayname = NULL;
+	}
+	if(displayname_to_icon) {
 		g_hash_table_destroy(displayname_to_icon);
-	displayname_to_icon = NULL;
-	if(menu_tree)
+		displayname_to_icon = NULL;
+	}
+	if(menu_tree) {
 		g_node_destroy(menu_tree);
-	menu_tree = NULL;
+		menu_tree = NULL;
+	}
 }
 
 void
