@@ -127,8 +127,8 @@ _do_builtin(GtkMenuItem *mi, gpointer user_data)
 	}
 }
 
-static gchar *
-_menu_file_get()
+gchar *
+desktop_menu_file_get_menufile()
 {
 	gchar filename[PATH_MAX];
 	const gchar *env = g_getenv("XFCE_DISABLE_USER_CONFIG");
@@ -508,7 +508,7 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 	g_return_val_if_fail(desktop_menu != NULL && menu != NULL, FALSE);
 
 	if(!filename) {
-		filename = other_filename = _menu_file_get();
+		filename = other_filename = desktop_menu_file_get_menufile();
 		if(!filename)
 			return FALSE;
 	}

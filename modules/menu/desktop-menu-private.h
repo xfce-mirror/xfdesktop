@@ -24,20 +24,22 @@
 #include <time.h>
 
 struct _XfceDesktopMenu {
-	gchar *filename;
+	gchar *filename;  /* file the menu is currently using */
 	GtkWidget *menu;  /* the menu widget itself */
 	gboolean use_menu_icons;  /* show menu icons? */
 	gboolean using_system_menu;   /* is there an autogenned menu in this DM? */
-	gint tim;
+	gint tim; /* timeout id for regeneration */
 	time_t last_menu_gen;  /* last time this menu was generated */
 	GHashTable *menu_entry_hash;  /* list of entries in the menu */
-	GHashTable *menu_branches;
+	GHashTable *menu_branches;  /* hash of GtkMenu children */
 	
-	GList *menufiles_watch;  /* a list of files to watch */
+	/* stuff related to checking if we need to regenerate the menu */
+	GList *menufiles_watch;
 	time_t *menufile_mtimes;
 	time_t *dentrydir_mtimes;
 	time_t *legacydir_mtimes;
 	
+	/* tells the system menu generator about its root menu */
 	gchar *dentry_basepath;
 	GtkWidget *dentry_basemenu;
 };

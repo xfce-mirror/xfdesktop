@@ -145,6 +145,7 @@ mcs_watch_cb(Window window, Bool is_start, long mask, void *cb_data)
 static gboolean
 _generate_menu(XfceDesktopMenu *desktop_menu)
 {
+	gboolean ret = TRUE;
 	TRACE("dummy");
 
 	_xfce_desktop_menu_free_menudata(desktop_menu);
@@ -159,6 +160,7 @@ _generate_menu(XfceDesktopMenu *desktop_menu)
 			desktop_menu->menu, "/", TRUE))
 	{
 		_xfce_desktop_menu_free_menudata(desktop_menu);
+		ret = FALSE;
 	}
 	
 	desktop_menu->last_menu_gen = time(NULL);
@@ -172,7 +174,7 @@ _generate_menu(XfceDesktopMenu *desktop_menu)
 		desktop_menu->menu_branches = NULL;
 	}
 	
-    return TRUE;
+	return ret;
 }
 
 /* gtk_timeout handler */
@@ -180,13 +182,24 @@ static gboolean
 _menu_check_update(gpointer data)
 {
 	XfceDesktopMenu *desktop_menu = data;
+	gboolean modified = FALSE;
+	gchar *newfilename = NULL;
 	
 	TRACE("desktop_menu: %p", desktop_menu);
 	
 	g_return_val_if_fail(desktop_menu != NULL, FALSE);
 	
-	if(xfce_desktop_menu_need_update_impl(desktop_menu))
-		return _generate_menu(desktop_menu);
+	modified = xfce_desktop_menu_need_update_impl(desktop_menu);
+	
+	newfilename = desktop_menu_file_get_menufile();
+	if(strcmp(desktop_menu->filename, newfilename)) {
+		g_free(desktop_menu->filename);
+		desktop_menu->filename = newfilename;
+		modified = TRUE;
+	}
+	
+	if(modified)
+		_generate_menu(desktop_menu);
 	
 	return TRUE;
 }
