@@ -35,7 +35,9 @@ BM_LIBX11_REQUIRE
 BM_DEPEND(LIBXFCEGUI4, libxfcegui4-1.0, 0.0.17)
 BM_DEPEND(LIBXML, libxml-2.0, 2.4.0)
 BM_DEPEND(LIBXFCE4MCS_CLIENT,  libxfce4mcs-client-1.0, 0.0.4)
-BM_DEPEND(LIBXFCE4MCS_MANAGER, libxfce4mcs-manager-1.0, 0.0.4)
+
+dnl Configure the MCS plugins
+XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [0.2.0])
 
 dnl Check for debuggin support
 BM_DEBUG_SUPPORT

@@ -8,7 +8,7 @@ EXTRA_DIST =								\
 #
 # backdrop settings
 #
-backdropdir = $(libdir)/xfce-mcs-manager/plugins/
+backdropdir = @XFCE_MCS_MANAGER_PLUGINSDIR@
 
 backdrop_LTLIBRARIES = backdrop_settings.la
 
@@ -26,8 +26,7 @@ backdrop_settings_la_SOURCES =						\
 
 backdrop_settings_la_CFLAGS =						\
 	-I$(top_srcdir)/common						\
-	@LIBXFCEGUI4_CFLAGS@						\
-	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
+	@XFCE_MCS_MANAGER_CFLAGS@					\
 	-DLOCALEDIR=\"$(localedir)\"					\
 	-DDATADIR=\"$(datadir)\"
 
@@ -41,7 +40,7 @@ backdrop-icon.h: $(srcdir)/backdrop.png
 #
 # workspaces settings
 #
-workspacesdir = $(libdir)/xfce-mcs-manager/plugins/
+workspacesdir = @XFCE_MCS_MANAGER_PLUGINSDIR@
 
 workspaces_LTLIBRARIES = workspaces_settings.la
 
@@ -58,8 +57,7 @@ workspaces_settings_la_SOURCES =					\
 
 workspaces_settings_la_CFLAGS =						\
 	-I$(top_srcdir)/common						\
-	@LIBXFCEGUI4_CFLAGS@						\
-	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
+	@XFCE_MCS_MANAGER_CFLAGS@					\
 	-DLOCALEDIR=\"$(localedir)\"					\
 	-DDATADIR=\"$(datadir)\"
 
