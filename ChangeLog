@@ -1,419 +1,432 @@
+2003-10-13 20:51  jasper
+
+	* ChangeLog: Update ChangeLog's after syncing with SF. Everything
+	should now be up-to-date.
+
+2003-10-13 20:30  jasper
+
+	* ChangeLog: Update ChangeLog's after syncing with SF. Everything
+	should now be up-to-date.
+
 2003-10-13 18:21  jasper
 
 	* doc/C/xfdesktop.html, doc/C/xfdesktop.xml,
-	  doc/C/images/Makefile.am, doc/C/images/Makefile.in,
-	  doc/C/images/xfdesktop-workspace.png, settings/Makefile.am,
-	  settings/Makefile.in, settings/backdrop-icon.h, src/Makefile.am,
-	  src/Makefile.in, src/menu.c, src/settings.c:
-
-	  Huge commit to bring new repository in sync with SF. We are
-	  losing some CVS history here, but for completeness sake I'm
-	  including the ChangeLog entries here:
-
-	  +++
-
-	  2003-10-11 00:08  edscott
-
-		  * xffm/src/: add_folder.c, add_node_contents.c,
-	  callbacks.c,
-		  keybindings.c, main.c, treeview.c: do second letter
-	  search if first
-		  letter is / -- DONE autohide diagnostics on click or
-	  keypress--DONE
-		  compare dates between mime file and dbh file before
-	  updating
-		  applications -- DONE scroll by keyboard debugged and
-	  enhanced
-		  --DONE g_strchug() crash on openwith by menu... --FIXED
-	  on go_up do
-		  not place in history, nor back nor forward --DONE
-
-	  2003-10-11 00:05  edscott
-
-		  * xffm/: libs/apps.c, libs/bookmarks.c, libs/constants.h,
-		  libs/cpy.c, libs/dnd.c, libs/dummies.c, libs/duplicate.c,
-		  libs/entry.c, libs/goto.c, libs/goto.h, libs/icons.c,
-	  libs/menu.c,
-		  libs/menu_callbacks.c, libs/misc.c, libs/misc.h,
-	  libs/monitor.c,
-		  libs/new_win.c, libs/pasteboard.c, libs/print.c,
-	  libs/refresh.c,
-		  libs/reg.c, libs/remove.c, libs/rename.c, libs/run.c,
-	  libs/run.h,
-		  libs/scramble.c, libs/symlink.c, libs/terminal.c,
-	  libs/touch.c,
-		  libs/trash.c, libs/xfdiff.c, smb/smb_download.c,
-	  smb/smb_list.c: do
-		  second letter search if first letter is / -- DONE
-	  autohide
-		  diagnostics on click or keypress--DONE compare dates
-	  between mime
-		  file and dbh file before updating applications -- DONE
-	  scroll by
-		  keyboard debugged and enhanced --DONE g_strchug() crash
-	  on openwith
-		  by menu... --FIXED on go_up do not place in history, nor
-	  back nor
-		  forward --DONE
-
-	  2003-10-10 23:19  xfce
-
-		  * xfce-utils/scripts/xinitrc: Don't use cpp in xrdb so
-	  that DPI
-		  settings load even on workstations w/out cpp
-
-	  2003-10-10 22:17  xfce
-
-		  * libxfcegui4/libxfcegui4/netk-pager.c, xfwm4/configure,
-		  xfwm4/configure.ac, xfwm4/themes/Makefile.am,
-		  xfwm4/themes/Makefile.in,
-	  xfwm4/themes/default/bottom-active.xpm,
-		  xfwm4/themes/default/bottom-inactive.xpm,
-		  xfwm4/themes/default/bottom-left-active.xpm,
-		  xfwm4/themes/default/bottom-left-inactive.xpm,
-		  xfwm4/themes/default/bottom-right-active.xpm,
-		  xfwm4/themes/default/bottom-right-inactive.xpm,
-		  xfwm4/themes/default/close-active.xpm,
-		  xfwm4/themes/default/close-inactive.xpm,
-		  xfwm4/themes/default/close-pressed.xpm,
-		  xfwm4/themes/default/hide-active.xpm,
-		  xfwm4/themes/default/hide-inactive.xpm,
-		  xfwm4/themes/default/hide-pressed.xpm,
-		  xfwm4/themes/default/left-active.xpm,
-		  xfwm4/themes/default/left-inactive.xpm,
-		  xfwm4/themes/default/maximize-active.xpm,
-		  xfwm4/themes/default/maximize-inactive.xpm,
-		  xfwm4/themes/default/maximize-pressed.xpm,
-		  xfwm4/themes/default/maximize-toggled-active.xpm,
-		  xfwm4/themes/default/maximize-toggled-inactive.xpm,
-		  xfwm4/themes/default/maximize-toggled-pressed.xpm,
-		  xfwm4/themes/default/menu-active.xpm,
-		  xfwm4/themes/default/menu-inactive.xpm,
-		  xfwm4/themes/default/menu-pressed.xpm,
-		  xfwm4/themes/default/right-active.xpm,
-		  xfwm4/themes/default/right-inactive.xpm,
-		  xfwm4/themes/default/shade-active.xpm,
-		  xfwm4/themes/default/shade-inactive.xpm,
-		  xfwm4/themes/default/shade-pressed.xpm,
-		  xfwm4/themes/default/shade-toggled-active.xpm,
-		  xfwm4/themes/default/shade-toggled-inactive.xpm,
-		  xfwm4/themes/default/shade-toggled-pressed.xpm,
-		  xfwm4/themes/default/stick-active.xpm,
-		  xfwm4/themes/default/stick-inactive.xpm,
-		  xfwm4/themes/default/stick-pressed.xpm,
-		  xfwm4/themes/default/stick-toggled-active.xpm,
-		  xfwm4/themes/default/stick-toggled-inactive.xpm,
-		  xfwm4/themes/default/stick-toggled-pressed.xpm,
-		  xfwm4/themes/default/themerc,
-		  xfwm4/themes/default/title-1-active.xpm,
-		  xfwm4/themes/default/title-1-inactive.xpm,
-		  xfwm4/themes/default/title-2-active.xpm,
-		  xfwm4/themes/default/title-2-inactive.xpm,
-		  xfwm4/themes/default/title-3-active.xpm,
-		  xfwm4/themes/default/title-3-inactive.xpm,
-		  xfwm4/themes/default/title-4-active.xpm,
-		  xfwm4/themes/default/title-4-inactive.xpm,
-		  xfwm4/themes/default/title-5-active.xpm,
-		  xfwm4/themes/default/title-5-inactive.xpm,
-		  xfwm4/themes/default/top-left-active.xpm,
-		  xfwm4/themes/default/top-left-inactive.xpm,
-		  xfwm4/themes/default/top-right-active.xpm,
-		  xfwm4/themes/default/top-right-inactive.xpm: Revert xfwm4
-	  default
-		  theme to the one found in pre-release as it looked better
-	  Fix a
-		  very small thing in netk-pager
-
-	  2003-10-10 19:21  huysmans
-
-		  * xfce4/plugins/pager/pager.c: Fix resizing bug
-
-	  2003-10-09 23:41  huysmans
-
-		  * xfwm4/: mcs-plugin/workspaces.c, src/settings.c: Move
-	  workspace
-		  names settings into settings plugin. Rename count to
-		  Xfwm/WorkspaceCount for consistency.
-
-	  2003-10-09 23:03  xfce
-
-		  * libxfcegui4/: configure, configure.ac: Increase version
-	  number
-
-	  2003-10-09 22:13  xfce
-
-		  * xfwm4/themes/default/: close-active.xpm,
-	  close-inactive.xpm,
-		  close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
-		  hide-pressed.xpm, maximize-active.xpm,
-	  maximize-inactive.xpm,
-		  maximize-pressed.xpm, maximize-toggled-active.xpm,
-		  maximize-toggled-inactive.xpm,
-	  maximize-toggled-pressed.xpm,
-		  menu-active.xpm, menu-inactive.xpm, menu-pressed.xpm,
-		  shade-active.xpm, shade-inactive.xpm, shade-pressed.xpm,
-		  shade-toggled-active.xpm, shade-toggled-inactive.xpm,
-		  shade-toggled-pressed.xpm, stick-active.xpm,
-	  stick-inactive.xpm,
-		  stick-pressed.xpm, stick-toggled-active.xpm,
-		  stick-toggled-inactive.xpm, stick-toggled-pressed.xpm,
-	  themerc,
-		  title-2-active.xpm, title-2-inactive.xpm,
-	  title-3-active.xpm,
-		  title-3-inactive.xpm, title-4-active.xpm,
-	  title-4-inactive.xpm:
-		  Change default theme for 4.2
-
-	  2003-10-09 15:19  edscott
-
-		  * xffm/: glade_intl, src/glade_callbacks.h,
-	  src/glade_gui.c.bak,
-		  src/glade_gui.h: remove obsolete files
-
-	  2003-10-09 07:04  edscott
-
-		  * xffm/src/: Makefile.am, Makefile.in, callbacks.c,
-	  keybindings.c,
-		  keybindings.h, treeview.c, treeview.h: scroll by keyboard
-	  is now
-		  case insensitive, if shift is pressed, scroll search w
-	  ill proceed
-		  backwards. Backward scroll-search will not wrap. Forward
-		  scroll-sear ch will wrap (as before).
-
-	  2003-10-09 04:14  edscott
-
-		  * xffm/: glade/xffm_main.glade, libs/apps.c,
-	  libs/bookmarks.c,
-		  libs/combo.c, libs/cpy.c, libs/dummies.c,
-	  libs/duplicate.c,
-		  libs/entry.c, libs/filter.c, libs/find.h, libs/goto.c,
-	  libs/goto.h,
-		  libs/icons.c, libs/input.c, libs/menu.c,
-	  libs/menu_callbacks.c,
-		  libs/misc.c, libs/monitor.c, libs/options.c,
-	  libs/options.h,
-		  libs/print.h, libs/refresh.c, libs/reg.c, libs/reg.h,
-		  libs/remove.c, libs/remove.h, libs/rename.c, libs/run.c,
-		  libs/run.h, libs/symlink.c, libs/touch.c, libs/trash.c,
-		  smb/smb_download.c, smb/smb_list.c, src/glade_main_gui.c,
-		  src/main.c, src/treeview.c, src/widgets.c: eliminate all
-	  warnings
-		  when compiling with --enable-debug
-
-	  2003-10-09 01:46  edscott
-
-		  * xffm/: xffm.glade, xffm.gladep, glade/xffm_find.glade,
-		  glade/xffm_find.gladep, glade/xffm_main.glade,
-		  glade/xffm_main.gladep, glade/xffm_remove.glade,
-		  glade/xffm_remove.gladep, libs/Makefile.am,
-	  libs/Makefile.in,
-		  libs/apps.c, libs/bookmarks.c, libs/combo.c,
-	  libs/combo.h,
-		  libs/cpy.c, libs/dnd.c, libs/duplicate.c, libs/entry.c,
-		  libs/filter.c, libs/filter.h, libs/find.c, libs/fstab.c,
-		  libs/goto.c, libs/help.c, libs/input.c, libs/input.h,
-		  libs/menu_callbacks.c, libs/menu_callbacks.h,
-	  libs/misc.c,
-		  libs/monitor.c, libs/new.c, libs/options.c,
-	  libs/pasteboard.c,
-		  libs/print.c, libs/refresh.c, libs/reg.c, libs/remove.c,
-		  libs/rename.c, libs/run.c, libs/scramble.c,
-	  libs/settings.c,
-		  libs/symlink.c, libs/terminal.c, libs/touch.c,
-	  libs/trash.c,
-		  libs/tubo.c, libs/xfdiff.c, libs/zoom.c, smb/smb_list.c,
-		  src/Makefile.am, src/Makefile.in, src/add_file.c,
-	  src/add_folder.c,
-		  src/add_node_contents.c, src/aux.c, src/callbacks.c,
-		  src/glade_callbacks.c, src/glade_find_callbacks.c,
-		  src/glade_find_callbacks.h, src/glade_find_gui.c,
-		  src/glade_find_gui.h, src/glade_gui.c,
-	  src/glade_main_callbacks.c,
-		  src/glade_main_callbacks.h, src/glade_main_gui.c,
-		  src/glade_main_gui.h, src/glade_remove_callbacks.c,
-		  src/glade_remove_callbacks.h, src/glade_remove_gui.c,
-		  src/glade_remove_gui.h, src/main.c, src/mcs-manager.c,
-		  src/treeview.c, src/widgets.c: broke glade files into
-	  three parts
-
-	  2003-10-08 23:43  xfce
-
-		  * xfwm4/src/: client.c, events.c, settings.c: [no log
-	  message]
-
-	  2003-10-08 22:29  xfce
-
-		  * xfwm4/themes/default.keys/keythemerc: Change
-	  raise/lower key
-
-	  2003-10-08 22:24  xfce
-
-		  * xfwm4/: src/settings.c, themes/default.keys/keythemerc:
-	  Fix
-		  raise/lower key shortcut patch
-
-	  2003-10-08 22:12  xfce
-
-		  * xfwm4/: configure, configure.ac, themes/Makefile.am,
-		  themes/Makefile.in, themes/default/title-2-active.xpm,
-		  themes/default/title-2-inactive.xpm,
-		  themes/default/title-4-active.xpm,
-		  themes/default/title-4-inactive.xpm,
-		  themes/default/top-right-active.xpm,
-		  themes/default/top-right-inactive.xpm: Add missing files
-
-	  2003-10-08 10:20  huysmans
-
-		  * xfdesktop/doc/C/xfdesktop.html,
-	  xfdesktop/doc/C/xfdesktop.xml,
-		  xfdesktop/doc/C/images/Makefile.am,
-		  xfdesktop/doc/C/images/Makefile.in,
-		  xfdesktop/doc/C/images/xfdesktop-workspace.png,
-		  xfdesktop/settings/Makefile.am,
-	  xfdesktop/settings/Makefile.in,
-		  xfdesktop/settings/backdrop-icon.h,
-	  xfdesktop/src/Makefile.am,
-		  xfdesktop/src/Makefile.in, xfdesktop/src/menu.c,
-		  xfdesktop/src/settings.c, xfwm4/configure,
-	  xfwm4/configure.ac,
-		  xfwm4/doc/C/xfwm4.html, xfwm4/doc/C/xfwm4.xml,
-		  xfwm4/doc/C/images/Makefile.am,
-	  xfwm4/doc/C/images/Makefile.in,
-		  xfwm4/doc/C/images/xfwm_workspaces.png,
-		  xfwm4/mcs-plugin/Makefile.am,
-	  xfwm4/mcs-plugin/Makefile.in,
-		  xfwm4/mcs-plugin/margins.c, xfwm4/mcs-plugin/margins.h,
-		  xfwm4/mcs-plugin/margins_plugin.c,
-	  xfwm4/mcs-plugin/plugin.c,
-		  xfwm4/mcs-plugin/plugin.h,
-	  xfwm4/mcs-plugin/workspaces-icon.h,
-		  xfwm4/mcs-plugin/workspaces.c,
-	  xfwm4/mcs-plugin/workspaces.h,
-		  xfwm4/mcs-plugin/workspaces.png, xfwm4/src/settings.c,
-		  xfwm4/themes/Makefile.am, xfwm4/themes/Makefile.in:
-	  Largish update:
-		  merge workspaces dialog from xfdesktop with workspace
-	  margins
-		  dialog from xfwm4. The new dialog is part of xfwm4.
-
-	  2003-10-07 22:44  xfce
-
-		  * libxfcegui4/libxfcegui4/: Makefile.am, Makefile.in,
-		  netk-class-group.c, netk-class-group.h, netk-private.h,
-		  netk-screen.c, netk-screen.h, netk-tasklist.c,
-	  netk-window.c,
-		  netk-window.h, netk-xutils.c, netk-xutils.h: Backport
-	  changes from
-		  libwnck HEAD cvs
-
-	  2003-10-07 22:40  xfce
-
-		  * xffm/libs/: input.c, run.c: Include Edscott patches
-
-	  2003-10-07 22:31  xfce
-
-		  * xfwm4/: configure, configure.ac, src/client.c,
-	  src/events.c,
-		  themes/Makefile.am, themes/Makefile.in,
-		  themes/default/bottom-active.xpm,
-		  themes/default/bottom-inactive.xpm,
-		  themes/default/bottom-left-active.xpm,
-		  themes/default/bottom-left-inactive.xpm,
-		  themes/default/bottom-right-active.xpm,
-		  themes/default/bottom-right-inactive.xpm,
-		  themes/default/left-active.xpm,
-	  themes/default/left-inactive.xpm,
-		  themes/default/right-active.xpm,
-	  themes/default/right-inactive.xpm,
-		  themes/default/themerc,
-	  themes/default/title-1-active.xpm,
-		  themes/default/title-1-inactive.xpm,
-		  themes/default/title-2-active.xpm,
-		  themes/default/title-2-inactive.xpm,
-		  themes/default/title-3-active.xpm,
-		  themes/default/title-3-inactive.xpm,
-		  themes/default/title-4-active.xpm,
-		  themes/default/title-4-inactive.xpm,
-		  themes/default/title-5-active.xpm,
-		  themes/default/title-5-inactive.xpm,
-		  themes/default/top-left-active.xpm,
-		  themes/default/top-left-inactive.xpm,
-		  themes/default/top-right-active.xpm,
-		  themes/default/top-right-inactive.xpm,
-		  themes/tgc-large/Makefile.am,
-	  themes/tgc-large/Makefile.in,
-		  themes/tgc-large/README,
-	  themes/tgc-large/bottom-active.xpm,
-		  themes/tgc-large/bottom-inactive.xpm,
-		  themes/tgc-large/bottom-left-active.xpm,
-		  themes/tgc-large/bottom-left-inactive.xpm,
-		  themes/tgc-large/bottom-right-active.xpm,
-		  themes/tgc-large/bottom-right-inactive.xpm,
-		  themes/tgc-large/close-active.xpm,
-		  themes/tgc-large/close-inactive.xpm,
-		  themes/tgc-large/close-pressed.xpm,
-		  themes/tgc-large/hide-active.xpm,
-		  themes/tgc-large/hide-inactive.xpm,
-		  themes/tgc-large/hide-pressed.xpm,
-		  themes/tgc-large/left-active.xpm,
-		  themes/tgc-large/left-inactive.xpm,
-		  themes/tgc-large/maximize-active.xpm,
-		  themes/tgc-large/maximize-inactive.xpm,
-		  themes/tgc-large/maximize-pressed.xpm,
-		  themes/tgc-large/maximize-toggled-active.xpm,
-		  themes/tgc-large/maximize-toggled-inactive.xpm,
-		  themes/tgc-large/maximize-toggled-pressed.xpm,
-		  themes/tgc-large/menu-active.xpm,
-		  themes/tgc-large/menu-inactive.xpm,
-		  themes/tgc-large/menu-pressed.xpm,
-		  themes/tgc-large/right-active.xpm,
-		  themes/tgc-large/right-inactive.xpm,
-		  themes/tgc-large/shade-active.xpm,
-		  themes/tgc-large/shade-inactive.xpm,
-		  themes/tgc-large/shade-pressed.xpm,
-		  themes/tgc-large/shade-toggled-active.xpm,
-		  themes/tgc-large/shade-toggled-inactive.xpm,
-		  themes/tgc-large/shade-toggled-pressed.xpm,
-		  themes/tgc-large/stick-active.xpm,
-		  themes/tgc-large/stick-inactive.xpm,
-		  themes/tgc-large/stick-pressed.xpm,
-		  themes/tgc-large/stick-toggled-active.xpm,
-		  themes/tgc-large/stick-toggled-inactive.xpm,
-		  themes/tgc-large/stick-toggled-pressed.xpm,
-		  themes/tgc-large/themerc,
-	  themes/tgc-large/title-1-active.xpm,
-		  themes/tgc-large/title-1-inactive.xpm,
-		  themes/tgc-large/title-2-active.xpm,
-		  themes/tgc-large/title-2-inactive.xpm,
-		  themes/tgc-large/title-3-active.xpm,
-		  themes/tgc-large/title-3-inactive.xpm,
-		  themes/tgc-large/title-4-active.xpm,
-		  themes/tgc-large/title-4-inactive.xpm,
-		  themes/tgc-large/title-5-active.xpm,
-		  themes/tgc-large/title-5-inactive.xpm,
-		  themes/tgc-large/top-left-active.xpm,
-		  themes/tgc-large/top-left-inactive.xpm,
-		  themes/tgc-large/top-right-active.xpm,
-		  themes/tgc-large/top-right-inactive.xpm: Change default
-	  theme, keep
-		  old 4.0 theme as default-4.0 and add tgc-large theme
-	  Include
-		  improvements for fullscreen mode for gst from Arwed von
-	  Merkatz
-		  <v.merkatz@gmx.net>
-
-	  +++
+	doc/C/images/Makefile.am, doc/C/images/Makefile.in,
+	doc/C/images/xfdesktop-workspace.png, settings/Makefile.am,
+	settings/Makefile.in, settings/backdrop-icon.h, src/Makefile.am,
+	src/Makefile.in, src/menu.c, src/settings.c: 
+	
+	Huge commit to bring new repository in sync with SF. We are losing
+	some CVS history here, but for completeness sake I'm including the
+	ChangeLog entries here:
+	
+	+++
+	
+	2003-10-11 00:08  edscott
+	
+		* xffm/src/: add_folder.c, add_node_contents.c,
+	callbacks.c,
+		keybindings.c, main.c, treeview.c: do second letter search
+	if first
+		letter is / -- DONE autohide diagnostics on click or
+	keypress--DONE
+		compare dates between mime file and dbh file before
+	updating
+		applications -- DONE scroll by keyboard debugged and
+	enhanced
+		--DONE g_strchug() crash on openwith by menu... --FIXED on
+	go_up do
+		not place in history, nor back nor forward --DONE
+	
+	2003-10-11 00:05  edscott
+	
+		* xffm/: libs/apps.c, libs/bookmarks.c, libs/constants.h,
+		libs/cpy.c, libs/dnd.c, libs/dummies.c, libs/duplicate.c,
+		libs/entry.c, libs/goto.c, libs/goto.h, libs/icons.c,
+	libs/menu.c,
+		libs/menu_callbacks.c, libs/misc.c, libs/misc.h,
+	libs/monitor.c,
+		libs/new_win.c, libs/pasteboard.c, libs/print.c,
+	libs/refresh.c,
+		libs/reg.c, libs/remove.c, libs/rename.c, libs/run.c,
+	libs/run.h,
+		libs/scramble.c, libs/symlink.c, libs/terminal.c,
+	libs/touch.c,
+		libs/trash.c, libs/xfdiff.c, smb/smb_download.c,
+	smb/smb_list.c: do
+		second letter search if first letter is / -- DONE autohide
+		diagnostics on click or keypress--DONE compare dates
+	between mime
+		file and dbh file before updating applications -- DONE
+	scroll by
+		keyboard debugged and enhanced --DONE g_strchug() crash on
+	openwith
+		by menu... --FIXED on go_up do not place in history, nor
+	back nor
+		forward --DONE
+	
+	2003-10-10 23:19  xfce
+	
+		* xfce-utils/scripts/xinitrc: Don't use cpp in xrdb so that
+	DPI
+		settings load even on workstations w/out cpp
+	
+	2003-10-10 22:17  xfce
+	
+		* libxfcegui4/libxfcegui4/netk-pager.c, xfwm4/configure,
+		xfwm4/configure.ac, xfwm4/themes/Makefile.am,
+		xfwm4/themes/Makefile.in,
+	xfwm4/themes/default/bottom-active.xpm,
+		xfwm4/themes/default/bottom-inactive.xpm,
+		xfwm4/themes/default/bottom-left-active.xpm,
+		xfwm4/themes/default/bottom-left-inactive.xpm,
+		xfwm4/themes/default/bottom-right-active.xpm,
+		xfwm4/themes/default/bottom-right-inactive.xpm,
+		xfwm4/themes/default/close-active.xpm,
+		xfwm4/themes/default/close-inactive.xpm,
+		xfwm4/themes/default/close-pressed.xpm,
+		xfwm4/themes/default/hide-active.xpm,
+		xfwm4/themes/default/hide-inactive.xpm,
+		xfwm4/themes/default/hide-pressed.xpm,
+		xfwm4/themes/default/left-active.xpm,
+		xfwm4/themes/default/left-inactive.xpm,
+		xfwm4/themes/default/maximize-active.xpm,
+		xfwm4/themes/default/maximize-inactive.xpm,
+		xfwm4/themes/default/maximize-pressed.xpm,
+		xfwm4/themes/default/maximize-toggled-active.xpm,
+		xfwm4/themes/default/maximize-toggled-inactive.xpm,
+		xfwm4/themes/default/maximize-toggled-pressed.xpm,
+		xfwm4/themes/default/menu-active.xpm,
+		xfwm4/themes/default/menu-inactive.xpm,
+		xfwm4/themes/default/menu-pressed.xpm,
+		xfwm4/themes/default/right-active.xpm,
+		xfwm4/themes/default/right-inactive.xpm,
+		xfwm4/themes/default/shade-active.xpm,
+		xfwm4/themes/default/shade-inactive.xpm,
+		xfwm4/themes/default/shade-pressed.xpm,
+		xfwm4/themes/default/shade-toggled-active.xpm,
+		xfwm4/themes/default/shade-toggled-inactive.xpm,
+		xfwm4/themes/default/shade-toggled-pressed.xpm,
+		xfwm4/themes/default/stick-active.xpm,
+		xfwm4/themes/default/stick-inactive.xpm,
+		xfwm4/themes/default/stick-pressed.xpm,
+		xfwm4/themes/default/stick-toggled-active.xpm,
+		xfwm4/themes/default/stick-toggled-inactive.xpm,
+		xfwm4/themes/default/stick-toggled-pressed.xpm,
+		xfwm4/themes/default/themerc,
+		xfwm4/themes/default/title-1-active.xpm,
+		xfwm4/themes/default/title-1-inactive.xpm,
+		xfwm4/themes/default/title-2-active.xpm,
+		xfwm4/themes/default/title-2-inactive.xpm,
+		xfwm4/themes/default/title-3-active.xpm,
+		xfwm4/themes/default/title-3-inactive.xpm,
+		xfwm4/themes/default/title-4-active.xpm,
+		xfwm4/themes/default/title-4-inactive.xpm,
+		xfwm4/themes/default/title-5-active.xpm,
+		xfwm4/themes/default/title-5-inactive.xpm,
+		xfwm4/themes/default/top-left-active.xpm,
+		xfwm4/themes/default/top-left-inactive.xpm,
+		xfwm4/themes/default/top-right-active.xpm,
+		xfwm4/themes/default/top-right-inactive.xpm: Revert xfwm4
+	default
+		theme to the one found in pre-release as it looked better
+	Fix a
+		very small thing in netk-pager
+	
+	2003-10-10 19:21  huysmans
+	
+		* xfce4/plugins/pager/pager.c: Fix resizing bug
+	
+	2003-10-09 23:41  huysmans
+	
+		* xfwm4/: mcs-plugin/workspaces.c, src/settings.c: Move
+	workspace
+		names settings into settings plugin. Rename count to
+		Xfwm/WorkspaceCount for consistency.
+	
+	2003-10-09 23:03  xfce
+	
+		* libxfcegui4/: configure, configure.ac: Increase version
+	number
+	
+	2003-10-09 22:13  xfce
+	
+		* xfwm4/themes/default/: close-active.xpm,
+	close-inactive.xpm,
+		close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
+		hide-pressed.xpm, maximize-active.xpm,
+	maximize-inactive.xpm,
+		maximize-pressed.xpm, maximize-toggled-active.xpm,
+		maximize-toggled-inactive.xpm,
+	maximize-toggled-pressed.xpm,
+		menu-active.xpm, menu-inactive.xpm, menu-pressed.xpm,
+		shade-active.xpm, shade-inactive.xpm, shade-pressed.xpm,
+		shade-toggled-active.xpm, shade-toggled-inactive.xpm,
+		shade-toggled-pressed.xpm, stick-active.xpm,
+	stick-inactive.xpm,
+		stick-pressed.xpm, stick-toggled-active.xpm,
+		stick-toggled-inactive.xpm, stick-toggled-pressed.xpm,
+	themerc,
+		title-2-active.xpm, title-2-inactive.xpm,
+	title-3-active.xpm,
+		title-3-inactive.xpm, title-4-active.xpm,
+	title-4-inactive.xpm:
+		Change default theme for 4.2
+	
+	2003-10-09 15:19  edscott
+	
+		* xffm/: glade_intl, src/glade_callbacks.h,
+	src/glade_gui.c.bak,
+		src/glade_gui.h: remove obsolete files
+	
+	2003-10-09 07:04  edscott
+	
+		* xffm/src/: Makefile.am, Makefile.in, callbacks.c,
+	keybindings.c,
+		keybindings.h, treeview.c, treeview.h: scroll by keyboard
+	is now
+		case insensitive, if shift is pressed, scroll search w ill
+	proceed
+		backwards. Backward scroll-search will not wrap. Forward
+		scroll-sear ch will wrap (as before).
+	
+	2003-10-09 04:14  edscott
+	
+		* xffm/: glade/xffm_main.glade, libs/apps.c,
+	libs/bookmarks.c,
+		libs/combo.c, libs/cpy.c, libs/dummies.c, libs/duplicate.c,
+		libs/entry.c, libs/filter.c, libs/find.h, libs/goto.c,
+	libs/goto.h,
+		libs/icons.c, libs/input.c, libs/menu.c,
+	libs/menu_callbacks.c,
+		libs/misc.c, libs/monitor.c, libs/options.c,
+	libs/options.h,
+		libs/print.h, libs/refresh.c, libs/reg.c, libs/reg.h,
+		libs/remove.c, libs/remove.h, libs/rename.c, libs/run.c,
+		libs/run.h, libs/symlink.c, libs/touch.c, libs/trash.c,
+		smb/smb_download.c, smb/smb_list.c, src/glade_main_gui.c,
+		src/main.c, src/treeview.c, src/widgets.c: eliminate all
+	warnings
+		when compiling with --enable-debug
+	
+	2003-10-09 01:46  edscott
+	
+		* xffm/: xffm.glade, xffm.gladep, glade/xffm_find.glade,
+		glade/xffm_find.gladep, glade/xffm_main.glade,
+		glade/xffm_main.gladep, glade/xffm_remove.glade,
+		glade/xffm_remove.gladep, libs/Makefile.am,
+	libs/Makefile.in,
+		libs/apps.c, libs/bookmarks.c, libs/combo.c, libs/combo.h,
+		libs/cpy.c, libs/dnd.c, libs/duplicate.c, libs/entry.c,
+		libs/filter.c, libs/filter.h, libs/find.c, libs/fstab.c,
+		libs/goto.c, libs/help.c, libs/input.c, libs/input.h,
+		libs/menu_callbacks.c, libs/menu_callbacks.h, libs/misc.c,
+		libs/monitor.c, libs/new.c, libs/options.c,
+	libs/pasteboard.c,
+		libs/print.c, libs/refresh.c, libs/reg.c, libs/remove.c,
+		libs/rename.c, libs/run.c, libs/scramble.c,
+	libs/settings.c,
+		libs/symlink.c, libs/terminal.c, libs/touch.c,
+	libs/trash.c,
+		libs/tubo.c, libs/xfdiff.c, libs/zoom.c, smb/smb_list.c,
+		src/Makefile.am, src/Makefile.in, src/add_file.c,
+	src/add_folder.c,
+		src/add_node_contents.c, src/aux.c, src/callbacks.c,
+		src/glade_callbacks.c, src/glade_find_callbacks.c,
+		src/glade_find_callbacks.h, src/glade_find_gui.c,
+		src/glade_find_gui.h, src/glade_gui.c,
+	src/glade_main_callbacks.c,
+		src/glade_main_callbacks.h, src/glade_main_gui.c,
+		src/glade_main_gui.h, src/glade_remove_callbacks.c,
+		src/glade_remove_callbacks.h, src/glade_remove_gui.c,
+		src/glade_remove_gui.h, src/main.c, src/mcs-manager.c,
+		src/treeview.c, src/widgets.c: broke glade files into three
+	parts
+	
+	2003-10-08 23:43  xfce
+	
+		* xfwm4/src/: client.c, events.c, settings.c: [no log
+	message]
+	
+	2003-10-08 22:29  xfce
+	
+		* xfwm4/themes/default.keys/keythemerc: Change raise/lower
+	key
+	
+	2003-10-08 22:24  xfce
+	
+		* xfwm4/: src/settings.c, themes/default.keys/keythemerc:
+	Fix
+		raise/lower key shortcut patch
+	
+	2003-10-08 22:12  xfce
+	
+		* xfwm4/: configure, configure.ac, themes/Makefile.am,
+		themes/Makefile.in, themes/default/title-2-active.xpm,
+		themes/default/title-2-inactive.xpm,
+		themes/default/title-4-active.xpm,
+		themes/default/title-4-inactive.xpm,
+		themes/default/top-right-active.xpm,
+		themes/default/top-right-inactive.xpm: Add missing files
+	
+	2003-10-08 10:20  huysmans
+	
+		* xfdesktop/doc/C/xfdesktop.html,
+	xfdesktop/doc/C/xfdesktop.xml,
+		xfdesktop/doc/C/images/Makefile.am,
+		xfdesktop/doc/C/images/Makefile.in,
+		xfdesktop/doc/C/images/xfdesktop-workspace.png,
+		xfdesktop/settings/Makefile.am,
+	xfdesktop/settings/Makefile.in,
+		xfdesktop/settings/backdrop-icon.h,
+	xfdesktop/src/Makefile.am,
+		xfdesktop/src/Makefile.in, xfdesktop/src/menu.c,
+		xfdesktop/src/settings.c, xfwm4/configure,
+	xfwm4/configure.ac,
+		xfwm4/doc/C/xfwm4.html, xfwm4/doc/C/xfwm4.xml,
+		xfwm4/doc/C/images/Makefile.am,
+	xfwm4/doc/C/images/Makefile.in,
+		xfwm4/doc/C/images/xfwm_workspaces.png,
+		xfwm4/mcs-plugin/Makefile.am, xfwm4/mcs-plugin/Makefile.in,
+		xfwm4/mcs-plugin/margins.c, xfwm4/mcs-plugin/margins.h,
+		xfwm4/mcs-plugin/margins_plugin.c,
+	xfwm4/mcs-plugin/plugin.c,
+		xfwm4/mcs-plugin/plugin.h,
+	xfwm4/mcs-plugin/workspaces-icon.h,
+		xfwm4/mcs-plugin/workspaces.c,
+	xfwm4/mcs-plugin/workspaces.h,
+		xfwm4/mcs-plugin/workspaces.png, xfwm4/src/settings.c,
+		xfwm4/themes/Makefile.am, xfwm4/themes/Makefile.in: Largish
+	update:
+		merge workspaces dialog from xfdesktop with workspace
+	margins
+		dialog from xfwm4. The new dialog is part of xfwm4.
+	
+	2003-10-07 22:44  xfce
+	
+		* libxfcegui4/libxfcegui4/: Makefile.am, Makefile.in,
+		netk-class-group.c, netk-class-group.h, netk-private.h,
+		netk-screen.c, netk-screen.h, netk-tasklist.c,
+	netk-window.c,
+		netk-window.h, netk-xutils.c, netk-xutils.h: Backport
+	changes from
+		libwnck HEAD cvs
+	
+	2003-10-07 22:40  xfce
+	
+		* xffm/libs/: input.c, run.c: Include Edscott patches
+	
+	2003-10-07 22:31  xfce
+	
+		* xfwm4/: configure, configure.ac, src/client.c,
+	src/events.c,
+		themes/Makefile.am, themes/Makefile.in,
+		themes/default/bottom-active.xpm,
+		themes/default/bottom-inactive.xpm,
+		themes/default/bottom-left-active.xpm,
+		themes/default/bottom-left-inactive.xpm,
+		themes/default/bottom-right-active.xpm,
+		themes/default/bottom-right-inactive.xpm,
+		themes/default/left-active.xpm,
+	themes/default/left-inactive.xpm,
+		themes/default/right-active.xpm,
+	themes/default/right-inactive.xpm,
+		themes/default/themerc, themes/default/title-1-active.xpm,
+		themes/default/title-1-inactive.xpm,
+		themes/default/title-2-active.xpm,
+		themes/default/title-2-inactive.xpm,
+		themes/default/title-3-active.xpm,
+		themes/default/title-3-inactive.xpm,
+		themes/default/title-4-active.xpm,
+		themes/default/title-4-inactive.xpm,
+		themes/default/title-5-active.xpm,
+		themes/default/title-5-inactive.xpm,
+		themes/default/top-left-active.xpm,
+		themes/default/top-left-inactive.xpm,
+		themes/default/top-right-active.xpm,
+		themes/default/top-right-inactive.xpm,
+		themes/tgc-large/Makefile.am, themes/tgc-large/Makefile.in,
+		themes/tgc-large/README,
+	themes/tgc-large/bottom-active.xpm,
+		themes/tgc-large/bottom-inactive.xpm,
+		themes/tgc-large/bottom-left-active.xpm,
+		themes/tgc-large/bottom-left-inactive.xpm,
+		themes/tgc-large/bottom-right-active.xpm,
+		themes/tgc-large/bottom-right-inactive.xpm,
+		themes/tgc-large/close-active.xpm,
+		themes/tgc-large/close-inactive.xpm,
+		themes/tgc-large/close-pressed.xpm,
+		themes/tgc-large/hide-active.xpm,
+		themes/tgc-large/hide-inactive.xpm,
+		themes/tgc-large/hide-pressed.xpm,
+		themes/tgc-large/left-active.xpm,
+		themes/tgc-large/left-inactive.xpm,
+		themes/tgc-large/maximize-active.xpm,
+		themes/tgc-large/maximize-inactive.xpm,
+		themes/tgc-large/maximize-pressed.xpm,
+		themes/tgc-large/maximize-toggled-active.xpm,
+		themes/tgc-large/maximize-toggled-inactive.xpm,
+		themes/tgc-large/maximize-toggled-pressed.xpm,
+		themes/tgc-large/menu-active.xpm,
+		themes/tgc-large/menu-inactive.xpm,
+		themes/tgc-large/menu-pressed.xpm,
+		themes/tgc-large/right-active.xpm,
+		themes/tgc-large/right-inactive.xpm,
+		themes/tgc-large/shade-active.xpm,
+		themes/tgc-large/shade-inactive.xpm,
+		themes/tgc-large/shade-pressed.xpm,
+		themes/tgc-large/shade-toggled-active.xpm,
+		themes/tgc-large/shade-toggled-inactive.xpm,
+		themes/tgc-large/shade-toggled-pressed.xpm,
+		themes/tgc-large/stick-active.xpm,
+		themes/tgc-large/stick-inactive.xpm,
+		themes/tgc-large/stick-pressed.xpm,
+		themes/tgc-large/stick-toggled-active.xpm,
+		themes/tgc-large/stick-toggled-inactive.xpm,
+		themes/tgc-large/stick-toggled-pressed.xpm,
+		themes/tgc-large/themerc,
+	themes/tgc-large/title-1-active.xpm,
+		themes/tgc-large/title-1-inactive.xpm,
+		themes/tgc-large/title-2-active.xpm,
+		themes/tgc-large/title-2-inactive.xpm,
+		themes/tgc-large/title-3-active.xpm,
+		themes/tgc-large/title-3-inactive.xpm,
+		themes/tgc-large/title-4-active.xpm,
+		themes/tgc-large/title-4-inactive.xpm,
+		themes/tgc-large/title-5-active.xpm,
+		themes/tgc-large/title-5-inactive.xpm,
+		themes/tgc-large/top-left-active.xpm,
+		themes/tgc-large/top-left-inactive.xpm,
+		themes/tgc-large/top-right-active.xpm,
+		themes/tgc-large/top-right-inactive.xpm: Change default
+	theme, keep
+		old 4.0 theme as default-4.0 and add tgc-large theme
+	Include
+		improvements for fullscreen mode for gst from Arwed von
+	Merkatz
+		<v.merkatz@gmx.net>
+	
+	+++
 
 2003-09-30 16:10  huysmans
 
 	* menu.xml.ta: Add menu.xml.ta. Got left out previously. Oh, the
-	  joy of branches ;-)
+	joy of branches ;-)
 
 2003-09-27 14:37  huysmans
 
 	* Makefile.am, Makefile.in, po/ta.gmo, po/ta.po: Update tamil
-	  translation
+	translation
+
+2003-09-27 13:20  huysmans
+
+	* menu.xml.ta: file menu.xml.ta was initially added on branch
+	xfce_4_0.
+
+2003-09-27 13:20  huysmans
+
+	* Makefile.am, Makefile.in, menu.xml.ta, po/ta.gmo, po/ta.po:
+	Update tamil translations
 
 2003-09-22 22:52  huysmans
 
@@ -422,33 +435,31 @@
 2003-09-22 22:33  huysmans
 
 	* po/: ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
-	  es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo, hu.po, ja.gmo,
-	  ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo,
-	  nl.po, pl.gmo, pl.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, ta.gmo,
-	  ta.po, tr.gmo, tr.po, xfdesktop.pot, zh_CN.gmo, zh_CN.po,
-	  zh_TW.gmo, zh_TW.po: Update version numbers and po files for
-	  release
+	es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo, hu.po, ja.gmo,
+	ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	pl.gmo, pl.po, pt_PT.gmo, pt_PT.po, ru.gmo, ru.po, ta.gmo, ta.po,
+	tr.gmo, tr.po, xfdesktop.pot, zh_CN.gmo, zh_CN.po, zh_TW.gmo,
+	zh_TW.po: Update version numbers and po files for release
 
 2003-09-22 00:19  xfce
 
 	* configure, configure.ac: Update version number to 4.0.0 Improve
-	  focus change for modal dialogs in xfwm4
+	focus change for modal dialogs in xfwm4
 
 2003-09-19 23:10  xfce
 
 	* doc/C/images/root_menu.png, doc/C/images/root_menu2.png,
-	  doc/C/images/select_bg_color.png,
-	  doc/C/images/xfdesktop-background.png,
-	  doc/C/images/xfdesktop-list.png,
-	  doc/C/images/xfdesktop-workspace.png,
-	  settings/backdrop_settings.c: Change default background color to
-	  #336699 and update screen captures for doc (default WM
-	  decorations are rounded)
+	doc/C/images/select_bg_color.png,
+	doc/C/images/xfdesktop-background.png,
+	doc/C/images/xfdesktop-list.png,
+	doc/C/images/xfdesktop-workspace.png, settings/backdrop_settings.c:
+	Change default background color to #336699 and update screen
+	captures for doc (default WM decorations are rounded)
 
 2003-09-15 22:55  huysmans
 
 	* configure, configure.ac, po/pt_PT.gmo, po/pt_PT.po: Big portugese
-	  translation update
+	translation update
 
 2003-09-15 00:07  xfce
 
@@ -477,7 +488,7 @@
 2003-09-10 09:39  huysmans
 
 	* configure, configure.ac, po/zh_TW.po: Update version numbers and
-	  po files for release
+	po files for release
 
 2003-09-02 08:48  huysmans
 
@@ -486,18 +497,18 @@
 2003-09-02 07:50  huysmans
 
 	* Makefile.am, Makefile.in, menu.xml.zh_TW: Add zh_TW menu
-	  translation
+	translation
 
 2003-08-30 14:49  huysmans
 
 	* Makefile.am, Makefile.in, aclocal.m4, configure, configure.ac,
-	  po/zh_TW.Big5.gmo, po/zh_TW.Big5.po, po/zh_TW.gmo, po/zh_TW.po:
-	  Rename zh_TW.Big5 -> zh_TW
+	po/zh_TW.Big5.gmo, po/zh_TW.Big5.po, po/zh_TW.gmo, po/zh_TW.po:
+	Rename zh_TW.Big5 -> zh_TW
 
 2003-08-30 10:58  huysmans
 
 	* po/: zh_TW.Big5.gmo, zh_TW.Big5.po: Add traditional chinese
-	  translations
+	translations
 
 2003-08-30 09:16  huysmans
 
@@ -510,16 +521,16 @@
 2003-08-26 09:12  huysmans
 
 	* po/: ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
-	  es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo, hu.po, ja.gmo,
-	  ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo,
-	  nl.po, pl.gmo, pl.po, ru.gmo, ru.po, ta.gmo, ta.po, tr.gmo,
-	  tr.po, zh_CN.gmo, zh_CN.po: Update version numbers and po files
-	  for release
+	es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo, hu.po, ja.gmo,
+	ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	pl.gmo, pl.po, ru.gmo, ru.po, ta.gmo, ta.po, tr.gmo, tr.po,
+	zh_CN.gmo, zh_CN.po: Update version numbers and po files for
+	release
 
 2003-08-17 13:36  huysmans
 
 	* configure, configure.ac, po/lt.gmo, po/lt.po: Add lithuanian
-	  translations
+	translations
 
 2003-08-14 21:09  xfce
 
@@ -528,13 +539,13 @@
 2003-08-13 01:06  xfce
 
 	* src/menu.c: Fix improper use of button param in gtk_menu_popup()
-	  that was causing trouble when using right mouse button to select
-	  entries in xfdesktop menu.
+	that was causing trouble when using right mouse button to select
+	entries in xfdesktop menu.
 
 2003-08-10 21:54  huysmans
 
 	* Makefile.am, Makefile.in, menu.xml.zh_CN, po/zh_CN.gmo,
-	  po/zh_CN.po: Update chinese translations
+	po/zh_CN.po: Update chinese translations
 
 2003-08-08 16:17  edscott
 
@@ -555,17 +566,17 @@
 2003-08-05 16:53  huysmans
 
 	* Makefile.am, Makefile.in, aclocal.m4, configure, menu.xml.nl: Add
-	  dutch translation for the menu
+	dutch translation for the menu
 
 2003-08-04 23:46  xfce
 
 	* Makefile.am, Makefile.in, configure, menu.xml.de,
-	  po/xfdesktop.pot: Add menu.xml.de
+	po/xfdesktop.pot: Add menu.xml.de
 
 2003-08-04 19:47  huysmans
 
 	* configure, configure.ac, po/ko.gmo, po/ko.po: Add korean
-	  translations
+	translations
 
 2003-08-03 20:45  bmeurer
 
@@ -578,12 +589,12 @@
 2003-08-03 18:53  xfce
 
 	* Makefile.am, menu.xml.fr, src/menu.c: Add localizable default
-	  desktop menu Add some testing to returned values
+	desktop menu Add some testing to returned values
 
 2003-07-31 08:00  huysmans
 
 	* settings/: backdrop-mgr.c, backdrop_settings.c: Fix compiler
-	  warnings
+	warnings
 
 2003-07-30 21:11  huysmans
 
@@ -596,24 +607,23 @@
 2003-07-30 10:05  huysmans
 
 	* configure, configure.ac, po/ca.gmo, po/ca.po, po/de.gmo,
-	  po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po,
-	  po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/hu.gmo, po/hu.po,
-	  po/ja.gmo, po/ja.po, po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po,
-	  po/pl.gmo, po/pl.po, po/ru.gmo, po/ru.po, po/ta.gmo, po/ta.po,
-	  po/tr.gmo, po/tr.po, po/xfdesktop.pot, po/zh_CN.gmo, po/zh_CN.po:
-	  Update version numbers and po files for release
+	po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po,
+	po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/hu.gmo, po/hu.po,
+	po/ja.gmo, po/ja.po, po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po,
+	po/pl.gmo, po/pl.po, po/ru.gmo, po/ru.po, po/ta.gmo, po/ta.po,
+	po/tr.gmo, po/tr.po, po/xfdesktop.pot, po/zh_CN.gmo, po/zh_CN.po:
+	Update version numbers and po files for release
 
 2003-07-29 17:04  huysmans
 
 	* doc/C/: xfdesktop.html, xfdesktop.xml: Update documentation to
-	  latest versions
+	latest versions
 
 2003-07-29 14:24  huysmans
 
 	* doc/C/images/: root_menu.png, root_menu2.png,
-	  select_bg_color.png, xfdesktop-background.png,
-	  xfdesktop-list.png, xfdesktop-workspace.png: Update all images to
-	  new defaults
+	select_bg_color.png, xfdesktop-background.png, xfdesktop-list.png,
+	xfdesktop-workspace.png: Update all images to new defaults
 
 2003-07-29 08:28  huysmans
 
@@ -622,7 +632,7 @@
 2003-07-25 23:29  huysmans
 
 	* settings/backdrop_settings.c, src/backdrop.c: Reread list file
-	  when it has been updated
+	when it has been updated
 
 2003-07-22 22:07  xfce
 
@@ -635,12 +645,12 @@
 2003-07-19 10:59  huysmans
 
 	* configure, configure.ac, po/ca.gmo, po/ca.po, po/de.gmo,
-	  po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po,
-	  po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/hu.gmo, po/hu.po,
-	  po/ja.gmo, po/ja.po, po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po,
-	  po/pl.gmo, po/pl.po, po/ru.gmo, po/ru.po, po/ta.gmo, po/ta.po,
-	  po/tr.gmo, po/tr.po, po/xfdesktop.pot, po/zh_CN.gmo, po/zh_CN.po:
-	  Update version numbers and po files for release
+	po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po,
+	po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/hu.gmo, po/hu.po,
+	po/ja.gmo, po/ja.po, po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po,
+	po/pl.gmo, po/pl.po, po/ru.gmo, po/ru.po, po/ta.gmo, po/ta.po,
+	po/tr.gmo, po/tr.po, po/xfdesktop.pot, po/zh_CN.gmo, po/zh_CN.po:
+	Update version numbers and po files for release
 
 2003-07-18 21:57  xfce
 
@@ -657,13 +667,13 @@
 2003-07-18 01:13  xfce
 
 	* backdrops/Makefile.am, backdrops/Makefile.in,
-	  backdrops/xfce-stripes.png, settings/backdrop_settings.c: Add new
-	  bg xfce-stripes.png, change defaults
+	backdrops/xfce-stripes.png, settings/backdrop_settings.c: Add new
+	bg xfce-stripes.png, change defaults
 
 2003-07-17 09:35  huysmans
 
 	* configure, configure.ac, po/xfdesktop.pot, src/main.c: Make
-	  xfdesktop work on multiple screens
+	xfdesktop work on multiple screens
 
 2003-07-16 20:01  huysmans
 
@@ -672,7 +682,7 @@
 2003-07-16 11:57  huysmans
 
 	* configure, configure.ac, po/ca.po, po/hu.gmo, po/hu.po,
-	  po/zh_CN.gmo, po/zh_CN.po: Add hungarian translations
+	po/zh_CN.gmo, po/zh_CN.po: Add hungarian translations
 
 2003-07-16 10:22  huysmans
 
@@ -697,17 +707,17 @@
 2003-07-10 11:24  huysmans
 
 	* configure, configure.ac, po/ca.gmo, po/ca.po, po/de.gmo,
-	  po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po,
-	  po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/ja.gmo, po/ja.po,
-	  po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po, po/pl.gmo, po/pl.po,
-	  po/ru.gmo, po/ru.po, po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po,
-	  po/xfdesktop.pot, po/zh_CN.gmo, po/zh_CN.po: Bump version numbers
-	  for release and update po files
+	po/de.po, po/es.gmo, po/es.po, po/es_MX.gmo, po/es_MX.po,
+	po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po, po/ja.gmo, po/ja.po,
+	po/ms.gmo, po/ms.po, po/nl.gmo, po/nl.po, po/pl.gmo, po/pl.po,
+	po/ru.gmo, po/ru.po, po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po,
+	po/xfdesktop.pot, po/zh_CN.gmo, po/zh_CN.po: Bump version numbers
+	for release and update po files
 
 2003-07-08 10:35  huysmans
 
 	* settings/backdrop-mgr.c: Update dialogs to use open stock icon on
-	  buttons instead of ...
+	buttons instead of ...
 
 2003-07-07 23:18  huysmans
 
@@ -732,15 +742,15 @@
 2003-07-05 10:59  xfce
 
 	* backdrops/: Makefile.am, Makefile.in, xfce-stellar-tile.png: Add
-	  backdrop
+	backdrop
 
 2003-07-05 01:37  xfce
 
 	* Makefile.in, configure, configure.ac, ltcf-c.sh,
-	  backdrops/Makefile.in, common/Makefile.am, common/Makefile.in,
-	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
-	  po/es_MX.gmo, settings/Makefile.in, src/Makefile.in: libttol
-	  update and all
+	backdrops/Makefile.in, common/Makefile.am, common/Makefile.in,
+	doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
+	po/es_MX.gmo, settings/Makefile.in, src/Makefile.in: libttol update
+	and all
 
 2003-07-04 22:31  edscott
 
@@ -749,10 +759,10 @@
 2003-07-04 21:46  xfce
 
 	* Makefile.in, aclocal.m4, config.h.in, configure, configure.ac,
-	  ltmain.sh, backdrops/Makefile.in, common/Makefile.am,
-	  common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
-	  doc/C/images/Makefile.in, settings/Makefile.in, src/Makefile.in:
-	  Revert es_MX as actual potfiel is missing
+	ltmain.sh, backdrops/Makefile.in, common/Makefile.am,
+	common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
+	doc/C/images/Makefile.in, settings/Makefile.in, src/Makefile.in:
+	Revert es_MX as actual potfiel is missing
 
 2003-07-04 20:02  bmeurer
 
@@ -761,11 +771,11 @@
 2003-07-03 20:16  edscott
 
 	* Makefile.in, aclocal.m4, config.h.in, configure, configure.ac,
-	  ltcf-c.sh, ltconfig, ltmain.sh, backdrops/Makefile.in,
-	  common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
-	  doc/C/images/Makefile.in, po/es.gmo, po/es.po,
-	  settings/Makefile.in, src/Makefile.in: spanish tranlation updates
-	  for 4.0 release.
+	ltcf-c.sh, ltconfig, ltmain.sh, backdrops/Makefile.in,
+	common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
+	doc/C/images/Makefile.in, po/es.gmo, po/es.po,
+	settings/Makefile.in, src/Makefile.in: spanish tranlation updates
+	for 4.0 release.
 
 2003-07-02 11:55  huysmans
 
@@ -774,24 +784,32 @@
 2003-07-01 10:27  huysmans
 
 	* settings/backdrop_settings.c: Fix crash when choosing backdrop
-	  list
+	list
 
 2003-06-28 11:46  xfce
 
 	* Makefile.in, aclocal.m4, config.h.in, configure, ltmain.sh,
-	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  doc/C/Makefile.in, doc/C/images/Makefile.in,
-	  settings/Makefile.in, src/Makefile.in: Update to libtool-1.5 Use
-	  proper complete CURRENT:REVISION:AGE scheme for lib versionning
+	backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
+	doc/C/Makefile.in, doc/C/images/Makefile.in, settings/Makefile.in,
+	src/Makefile.in: Update to libtool-1.5 Use proper complete
+	CURRENT:REVISION:AGE scheme for lib versionning
 
 2003-06-21 23:10  bmeurer
 
 	* settings/: Makefile.am, Makefile.in: Added menu_settings.* to
-	  EXTRA_DIST, so it doesn't break if POTFILES.in is wrong.
+	EXTRA_DIST, so it doesn't break if POTFILES.in is wrong.
+
+2003-06-21 23:02  bmeurer
+
+	* po/POTFILES.in: Fixed broken POTFILES.in
 
 2003-06-21 23:00  bmeurer
 
 	* po/: POTFILES.in, xfdesktop.pot: Fixes.
+
+2003-06-21 20:11  bmeurer
+
+	* aclocal.m4, configure, configure.ac, po/xfdesktop.pot: Fixes.
 
 2003-06-21 20:06  bmeurer
 
@@ -800,35 +818,35 @@
 2003-06-19 00:23  bmeurer
 
 	* doc/C/images/: select_bg_color.png, xfdesktop-background.png,
-	  xfdesktop-list.png, xfdesktop-workspace.png: Updated images,
-	  thank to Francois.
+	xfdesktop-list.png, xfdesktop-workspace.png: Updated images, thank
+	to Francois.
 
 2003-06-18 22:36  xfce
 
 	* settings/: backdrop_settings.c, workspaces_settings.c: Call
-	  gtk_window_set_position () as late at possible as it seems there
-	  is a race cond in gtk+
+	gtk_window_set_position () as late at possible as it seems there is
+	a race cond in gtk+
 
 2003-06-14 23:53  bmeurer
 
 	* settings/backdrop_settings.c, settings/workspaces_settings.c,
-	  src/main.c: Introduced xfce_textdomain()
+	src/main.c: Introduced xfce_textdomain()
 
 2003-06-14 18:03  xfce
 
 	* settings/: backdrop_settings.c, workspaces_settings.c: Revert the
-	  GTK_POS_WINDOW_CENTER
+	GTK_POS_WINDOW_CENTER
 
 2003-06-14 01:57  xfce
 
 	* settings/: backdrop_settings.c, workspaces_settings.c: Use
-	  GTK_WIN_POS_CENTER_ALWAYS instead of GTK_WIN_POS_CENTER when
-	  centering dialogs
+	GTK_WIN_POS_CENTER_ALWAYS instead of GTK_WIN_POS_CENTER when
+	centering dialogs
 
 2003-06-14 00:33  bmeurer
 
 	* m4/i18n.m4, aclocal.m4, configure: Fixed
-	  bind_textdomain_codeset() problem on linux.
+	bind_textdomain_codeset() problem on linux.
 
 2003-06-13 23:27  bmeurer
 
@@ -837,45 +855,45 @@
 2003-06-12 22:20  bmeurer
 
 	* settings/: backdrop_settings.c, workspaces_settings.c: Fixes
-	  bind_textdomain_codeset() problem.
+	bind_textdomain_codeset() problem.
 
 2003-06-10 22:41  bmeurer
 
 	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
-	  install-sh, ltcf-c.sh, ltconfig, ltmain.sh,
-	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  doc/C/Makefile.in, doc/C/images/Makefile.in,
-	  settings/Makefile.in, settings/backdrop-mgr.c, src/Makefile.in,
-	  src/backdrop.c, src/main.c, src/menu.c, src/settings.c,
-	  src/workspaces.c: Make --enable-debug=full work.
+	install-sh, ltcf-c.sh, ltconfig, ltmain.sh, backdrops/Makefile.in,
+	common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
+	doc/C/images/Makefile.in, settings/Makefile.in,
+	settings/backdrop-mgr.c, src/Makefile.in, src/backdrop.c,
+	src/main.c, src/menu.c, src/settings.c, src/workspaces.c: Make
+	--enable-debug=full work.
 
 2003-06-10 01:39  xfce
 
 	* settings/: backdrop_settings.c, workspaces_settings.c: Add new
-	  widget xfce_framebox to unify look across UI Migrate all plugins
-	  to this new widget
+	widget xfce_framebox to unify look across UI Migrate all plugins to
+	this new widget
 
 2003-06-09 19:18  xfce
 
 	* Makefile.in, configure, configure.ac,
-	  settings/backdrop_settings.c, settings/workspaces_settings.c:
-	  Redesign UI
+	settings/backdrop_settings.c, settings/workspaces_settings.c:
+	Redesign UI
 
 2003-06-08 16:29  huysmans
 
 	* Makefile.in, aclocal.m4, config.h.in, configure, configure.ac,
-	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  doc/C/Makefile.in, doc/C/images/Makefile.in, po/ru.gmo, po/ru.po,
-	  settings/Makefile.in, src/Makefile.in, src/menu.c: Add russian
-	  translation and fix xfdesktop not reading a new local menu
+	backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
+	doc/C/Makefile.in, doc/C/images/Makefile.in, po/ru.gmo, po/ru.po,
+	settings/Makefile.in, src/Makefile.in, src/menu.c: Add russian
+	translation and fix xfdesktop not reading a new local menu
 
 2003-06-06 23:37  xfce
 
 	* Makefile.in, aclocal.m4, config.h.in, configure, configure.ac,
-	  ltcf-c.sh, ltconfig, ltmain.sh, backdrops/Makefile.in,
-	  common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
-	  doc/C/images/Makefile.in, po/xfdesktop.pot, settings/Makefile.in,
-	  src/Makefile.in: Versionning scheme
+	ltcf-c.sh, ltconfig, ltmain.sh, backdrops/Makefile.in,
+	common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
+	doc/C/images/Makefile.in, po/xfdesktop.pot, settings/Makefile.in,
+	src/Makefile.in: Versionning scheme
 
 2003-06-05 23:49  huysmans
 
@@ -884,27 +902,27 @@
 2003-06-05 11:08  huysmans
 
 	* doc/C/images/: root_menu.png, xfdesktop-background.png: Updated
-	  images
+	images
 
 2003-06-05 09:28  huysmans
 
 	* po/de.gmo, po/de.po, po/tr.gmo, po/tr.po,
-	  settings/backdrop-mgr.c: Updated translations and multiple file
-	  drop on backdrop list manager
+	settings/backdrop-mgr.c: Updated translations and multiple file
+	drop on backdrop list manager
 
 2003-06-04 23:54  xfce
 
 	* menu.xml: Simply menu.xml, remove editor, remove separator in
-	  setting submenu, put back backdrop
+	setting submenu, put back backdrop
 
 2003-06-04 23:09  bmeurer
 
 	* aclocal.m4, configure, ltcf-c.sh, ltconfig, ltmain.sh,
-	  settings/backdrop_settings.c: Changed UI of the "Backdrop
-	  settings" dialog as noted in
-	  20030604100902.GB36220@vmax.unix-ag.uni-siegen.de. No strings are
-	  affected by this change, therefore no translations have to be
-	  updated.
+	settings/backdrop_settings.c: Changed UI of the "Backdrop settings"
+	dialog as noted in
+	20030604100902.GB36220@vmax.unix-ag.uni-siegen.de. No strings are
+	affected by this change, therefore no translations have to be
+	updated.
 
 2003-06-04 11:40  huysmans
 
@@ -913,22 +931,20 @@
 2003-06-03 21:59  xfce
 
 	* settings/backdrop_settings.c: Follow JAsper's advice and use the
-	  logo as default image Change default color to #404080 (kinda
-	  smooth purple)
+	logo as default image Change default color to #404080 (kinda smooth
+	purple)
 
 2003-06-03 14:27  huysmans
 
 	* doc/C/images/: root_menu.png, root_menu2.png,
-	  select_bg_color.png, xfdesktop-background.png,
-	  xfdesktop-list.png, xfdesktop-workspace.png: Use properly
-	  compressed images
+	select_bg_color.png, xfdesktop-background.png, xfdesktop-list.png,
+	xfdesktop-workspace.png: Use properly compressed images
 
 2003-06-02 22:55  huysmans
 
 	* doc/C/images/: root_menu.png, root_menu2.png,
-	  select_bg_color.png, xfdesktop-background.png,
-	  xfdesktop-list.png, xfdesktop-workspace.png: Update images by
-	  Francois
+	select_bg_color.png, xfdesktop-background.png, xfdesktop-list.png,
+	xfdesktop-workspace.png: Update images by Francois
 
 2003-06-02 22:20  huysmans
 
@@ -949,9 +965,9 @@
 2003-06-01 19:24  huysmans
 
 	* po/: Makefile.in.in, ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po,
-	  fi.gmo, fi.po, fr.gmo, fr.po, ja.gmo, ja.po, ms.gmo, ms.po,
-	  nl.gmo, nl.po, pl.gmo, pl.po, ta.gmo, ta.po, tr.gmo, tr.po,
-	  xfdesktop.pot, zh_CN.gmo, zh_CN.po: po file tweaks
+	fi.gmo, fi.po, fr.gmo, fr.po, ja.gmo, ja.po, ms.gmo, ms.po, nl.gmo,
+	nl.po, pl.gmo, pl.po, ta.gmo, ta.po, tr.gmo, tr.po, xfdesktop.pot,
+	zh_CN.gmo, zh_CN.po: po file tweaks
 
 2003-06-01 14:23  huysmans
 
@@ -960,8 +976,8 @@
 2003-05-31 14:19  huysmans
 
 	* doc/C/: xfdesktop.html, xfdesktop.xml, images/Makefile.am,
-	  images/Makefile.in, images/root_menu.png, images/root_menu2.png,
-	  images/select_bg_color.png: Doc updates by Francois
+	images/Makefile.in, images/root_menu.png, images/root_menu2.png,
+	images/select_bg_color.png: Doc updates by Francois
 
 2003-05-31 13:10  huysmans
 
@@ -974,12 +990,11 @@
 2003-05-30 22:36  huysmans
 
 	* Makefile.in, aclocal.m4, config.guess, config.h.in, config.sub,
-	  configure, configure.ac, depcomp, install-sh, mkinstalldirs,
-	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  doc/C/Makefile.in, doc/C/images/Makefile.am,
-	  doc/C/images/Makefile.in, po/es.gmo, po/es.po, po/ms.gmo,
-	  po/ms.po, settings/Makefile.in, src/Makefile.in: Add malayan
-	  translations
+	configure, configure.ac, depcomp, install-sh, mkinstalldirs,
+	backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
+	doc/C/Makefile.in, doc/C/images/Makefile.am,
+	doc/C/images/Makefile.in, po/es.gmo, po/es.po, po/ms.gmo, po/ms.po,
+	settings/Makefile.in, src/Makefile.in: Add malayan translations
 
 2003-05-29 20:20  huysmans
 
@@ -1000,22 +1015,22 @@
 2003-05-27 23:29  xfce
 
 	* Makefile.in, aclocal.m4, config.guess, config.h.in, config.sub,
-	  configure, configure.ac, depcomp, install-sh, mkinstalldirs,
-	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  doc/C/Makefile.in, doc/C/images/Makefile.in, po/ja.gmo, po/ja.po,
-	  settings/Makefile.in, src/Makefile.in: Add Japanese translation
-	  by Zhao-Ji <zhao-ji at awz dot ne dot jp>
+	configure, configure.ac, depcomp, install-sh, mkinstalldirs,
+	backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
+	doc/C/Makefile.in, doc/C/images/Makefile.in, po/ja.gmo, po/ja.po,
+	settings/Makefile.in, src/Makefile.in: Add Japanese translation by
+	Zhao-Ji <zhao-ji at awz dot ne dot jp>
 
 2003-05-21 23:43  huysmans
 
 	* configure, configure.ac, po/tr.gmo, po/tr.po: Add Turkish
-	  translations
+	translations
 
 2003-05-21 22:30  xfce
 
 	* settings/backdrop_settings.c: Use no backdrop by default Unselect
-	  "color only" checkbox when the user choose an image, assuming
-	  that (s)he want to see the selected image
+	"color only" checkbox when the user choose an image, assuming that
+	(s)he want to see the selected image
 
 2003-05-20 23:30  huysmans
 
@@ -1024,17 +1039,17 @@
 2003-05-16 20:25  huysmans
 
 	* Makefile.in, configure, configure.ac, po/ta.gmo, po/ta.po: Add
-	  tamil translations
+	tamil translations
 
 2003-05-16 00:30  xfce
 
 	* settings/backdrop_settings.c: Forgot to change default mode to
-	  "scaled" for the new wallpaper
+	"scaled" for the new wallpaper
 
 2003-05-15 23:50  xfce
 
 	* settings/backdrop_settings.c: Change default background color to
-	  #205080
+	#205080
 
 2003-05-15 13:03  huysmans
 
@@ -1051,35 +1066,35 @@
 2003-05-13 21:43  xfce
 
 	* Makefile.in, aclocal.m4, config.guess, config.sub,
-	  backdrops/Makefile.am, backdrops/Makefile.in,
-	  backdrops/xfce-turbulence.png, common/Makefile.in,
-	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
-	  settings/Makefile.in, settings/backdrop_settings.c,
-	  src/Makefile.in: Add new backdrop, change default color
+	backdrops/Makefile.am, backdrops/Makefile.in,
+	backdrops/xfce-turbulence.png, common/Makefile.in, doc/Makefile.in,
+	doc/C/Makefile.in, doc/C/images/Makefile.in, settings/Makefile.in,
+	settings/backdrop_settings.c, src/Makefile.in: Add new backdrop,
+	change default color
 
 2003-05-13 20:08  huysmans
 
 	* configure, configure.ac, po/ca.gmo, po/ca.po: Add catalan
-	  translations
+	translations
 
 2003-05-13 14:13  huysmans
 
 	* Makefile.am, Makefile.in, aclocal.m4, configure, configure.ac,
-	  doc/Makefile.am, doc/Makefile.in, doc/xfce-nochunk.xsl,
-	  doc/C/Makefile.am, doc/C/Makefile.in, doc/C/xfdesktop.html,
-	  doc/C/xfdesktop.xml, doc/C/images/Makefile.am,
-	  doc/C/images/Makefile.in, doc/C/images/xfdesktop-background.png,
-	  doc/C/images/xfdesktop-list.png,
-	  doc/C/images/xfdesktop-workspace.png: Move docs to new location
+	doc/Makefile.am, doc/Makefile.in, doc/xfce-nochunk.xsl,
+	doc/C/Makefile.am, doc/C/Makefile.in, doc/C/xfdesktop.html,
+	doc/C/xfdesktop.xml, doc/C/images/Makefile.am,
+	doc/C/images/Makefile.in, doc/C/images/xfdesktop-background.png,
+	doc/C/images/xfdesktop-list.png,
+	doc/C/images/xfdesktop-workspace.png: Move docs to new location
 
 2003-05-05 08:23  huysmans
 
 	* Makefile.am, Makefile.in, xfdesktop.spec.in, po/ChangeLog,
-	  po/de.gmo, po/de.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po,
-	  po/nl.gmo, po/nl.po, po/pl.gmo, po/pl.po, po/xfdesktop.pot,
-	  po/zh_CN.gmo, po/zh_CN.po, settings/Makefile.am,
-	  settings/Makefile.in, src/Makefile.am, src/Makefile.in: Fixes for
-	  rpm and distcheck targets
+	po/de.gmo, po/de.po, po/fi.gmo, po/fi.po, po/fr.gmo, po/fr.po,
+	po/nl.gmo, po/nl.po, po/pl.gmo, po/pl.po, po/xfdesktop.pot,
+	po/zh_CN.gmo, po/zh_CN.po, settings/Makefile.am,
+	settings/Makefile.in, src/Makefile.am, src/Makefile.in: Fixes for
+	rpm and distcheck targets
 
 2003-05-03 13:34  huysmans
 
@@ -1088,27 +1103,27 @@
 2003-05-03 12:27  huysmans
 
 	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
-	  configure.ac, ltcf-c.sh, ltconfig, ltmain.sh,
-	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  po/zh_CN.gmo, po/zh_CN.po, settings/Makefile.in, src/Makefile.in:
-	  Add Chinese translations
+	configure.ac, ltcf-c.sh, ltconfig, ltmain.sh,
+	backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
+	po/zh_CN.gmo, po/zh_CN.po, settings/Makefile.in, src/Makefile.in:
+	Add Chinese translations
 
 2003-05-02 19:12  bmeurer
 
 	* Makefile.in, aclocal.m4, configure, configure.ac,
-	  backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
-	  m4/depends.m4, settings/Makefile.am, settings/Makefile.in,
-	  src/Makefile.in: Several changes. See
-	  http://www.home.unix-ag.org/bmeurer/xfce/index.html#20030502 for
-	  details.
+	backdrops/Makefile.in, common/Makefile.in, doc/Makefile.in,
+	m4/depends.m4, settings/Makefile.am, settings/Makefile.in,
+	src/Makefile.in: Several changes. See
+	http://www.home.unix-ag.org/bmeurer/xfce/index.html#20030502 for
+	details.
 
 2003-05-01 12:42  bmeurer
 
 	* Makefile.in, aclocal.m4, configure, configure.ac, ltcf-c.sh,
-	  ltconfig, ltmain.sh, backdrops/Makefile.in, common/Makefile.am,
-	  common/Makefile.in, doc/Makefile.in, settings/Makefile.am,
-	  settings/Makefile.in, src/Makefile.am, src/Makefile.in: Added
-	  i18n functions to libxfce4util.
+	ltconfig, ltmain.sh, backdrops/Makefile.in, common/Makefile.am,
+	common/Makefile.in, doc/Makefile.in, settings/Makefile.am,
+	settings/Makefile.in, src/Makefile.am, src/Makefile.in: Added i18n
+	functions to libxfce4util.
 
 2003-05-01 07:55  huysmans
 
@@ -1117,23 +1132,23 @@
 2003-04-29 22:21  huysmans
 
 	* Makefile.in, configure, configure.ac, po/de.gmo, po/fi.gmo,
-	  po/nl.gmo, po/nl.po: Add Dutch translations
+	po/nl.gmo, po/nl.po: Add Dutch translations
 
 2003-04-28 21:53  xfce
 
 	* Makefile.in, aclocal.m4, configure, ltcf-c.sh, ltconfig,
-	  ltmain.sh, backdrops/Makefile.am, backdrops/Makefile.in,
-	  backdrops/flower.png: Add flower.png from xfce 3.x backdrops
+	ltmain.sh, backdrops/Makefile.am, backdrops/Makefile.in,
+	backdrops/flower.png: Add flower.png from xfce 3.x backdrops
 
 2003-04-27 23:15  xfce
 
 	* src/menu.c: Wrap workspaces when reaching the first or last
-	  workspace when using the wheel mouse
+	workspace when using the wheel mouse
 
 2003-04-27 22:16  bmeurer
 
 	* aclocal.m4, configure, configure.ac, po/pl.po: added polish
-	  translations.
+	translations.
 
 2003-04-26 23:16  bmeurer
 
@@ -1146,14 +1161,14 @@
 2003-04-25 19:25  bmeurer
 
 	* Makefile.in, aclocal.m4, configure, configure.ac, ltcf-c.sh,
-	  ltconfig, ltmain.sh, common/backdrop.c, po/fi.po: Added finish
-	  translations.
+	ltconfig, ltmain.sh, common/backdrop.c, po/fi.po: Added finish
+	translations.
 
 2003-04-25 11:53  bmeurer
 
 	* m4/depends.m4: Updated depends.m4 and added macro for use with
-	  panel plugins. Updated libxfce4util to install the common m4
-	  files into $(datadir)/xfce4/m4.
+	panel plugins. Updated libxfce4util to install the common m4 files
+	into $(datadir)/xfce4/m4.
 
 2003-04-25 11:22  bmeurer
 
@@ -1166,41 +1181,41 @@
 2003-04-21 14:59  xfce
 
 	* Makefile.in, aclocal.m4, configure, configure.ac, ltcf-c.sh,
-	  ltconfig, ltmain.sh, po/fr.gmo, po/fr.po: Add french locale
+	ltconfig, ltmain.sh, po/fr.gmo, po/fr.po: Add french locale
 
 2003-04-09 22:41  bmeurer
 
 	* aclocal.m4, configure, m4/debug.m4, src/main.c: Improved
-	  debug.m4:
-
-		  1) --disable-debug no longer disables assert()'s
-		  2) --enable-profiling now enables profiling code
-		  3) --disable-asserts allows disabling of assert()'s
+	debug.m4:
+	
+		1) --disable-debug no longer disables assert()'s
+		2) --enable-profiling now enables profiling code
+		3) --disable-asserts allows disabling of assert()'s
 
 2003-04-06 22:33  bmeurer
 
 	* Makefile.am, Makefile.in, TODO, aclocal.m4, config.guess,
-	  config.h.in, config.sub, configure, configure.ac, depcomp,
-	  ltconfig, menu.xml, backdrops/Makefile.in, common/Makefile.in,
-	  doc/Makefile.in, m4/i18n.m4, po/Makefile.in.in, po/POTFILES.in,
-	  po/de.po, po/xfdesktop.pot, settings/Makefile.am,
-	  settings/Makefile.in, settings/backdrop_settings.c,
-	  settings/workspaces_settings.c, src/Makefile.am, src/Makefile.in:
-	  Added po/*, awaiting more translations.
+	config.h.in, config.sub, configure, configure.ac, depcomp,
+	ltconfig, menu.xml, backdrops/Makefile.in, common/Makefile.in,
+	doc/Makefile.in, m4/i18n.m4, po/Makefile.in.in, po/POTFILES.in,
+	po/de.po, po/xfdesktop.pot, settings/Makefile.am,
+	settings/Makefile.in, settings/backdrop_settings.c,
+	settings/workspaces_settings.c, src/Makefile.am, src/Makefile.in:
+	Added po/*, awaiting more translations.
 
 2003-04-05 02:10  xfce
 
 	* src/: backdrop.c, main.c, menu.c, settings.c, workspaces.c:
-	  Revert last change in debug.h, use "??" instead of ((__const char
-	  *)0) Replace DBG() statements with TRACE() in libxfcegui4 and
-	  xfwm4 because it was generating far too much logs in simple debug
-	  mode (use --enable-debug=full to get full traces) Add params to
-	  TRACE() (just like in DBG()) Remove trailing CR in log messages
+	Revert last change in debug.h, use "??" instead of ((__const char
+	*)0) Replace DBG() statements with TRACE() in libxfcegui4 and xfwm4
+	because it was generating far too much logs in simple debug mode
+	(use --enable-debug=full to get full traces) Add params to TRACE()
+	(just like in DBG()) Remove trailing CR in log messages
 
 2003-04-04 00:08  bmeurer
 
 	* m4/depends.m4: Updated BM_DEPEND_CHECK to make it possible to
-	  disable the test
+	disable the test
 
 2003-04-03 23:36  bmeurer
 
@@ -1213,38 +1228,38 @@
 2003-04-02 22:32  bmeurer
 
 	* Makefile.am, Makefile.in, aclocal.m4, config.h.in, configure,
-	  configure.ac, ltcf-c.sh, ltconfig, ltmain.sh,
-	  backdrops/Makefile.am, backdrops/Makefile.in, common/Makefile.am,
-	  common/Makefile.in, doc/Makefile.am, doc/Makefile.in,
-	  m4/debug.m4, settings/Makefile.am, settings/Makefile.in,
-	  settings/backdrop-mgr.c, settings/backdrop-mgr.h,
-	  settings/backdrop_settings.c, settings/debug.h,
-	  settings/settings_common.c, settings/settings_common.h,
-	  settings/workspaces_settings.c, settings/workspaces_settings.h,
-	  src/Makefile.am, src/Makefile.in, src/backdrop.c, src/debug.h,
-	  src/main.c, src/main.h, src/menu.c, src/menu.h, src/settings.c,
-	  src/settings.h, src/workspaces.c, src/workspaces.h: Debugging
-	  stuff now provided by libxfce4util. As a result of this change
-	  libxfcegui4 now depends on libxfce4util.  Some other updates.
-	  added a hint to the libxfcegui4 README for Xinerama problems with
-	  XFree86.
+	configure.ac, ltcf-c.sh, ltconfig, ltmain.sh,
+	backdrops/Makefile.am, backdrops/Makefile.in, common/Makefile.am,
+	common/Makefile.in, doc/Makefile.am, doc/Makefile.in, m4/debug.m4,
+	settings/Makefile.am, settings/Makefile.in,
+	settings/backdrop-mgr.c, settings/backdrop-mgr.h,
+	settings/backdrop_settings.c, settings/debug.h,
+	settings/settings_common.c, settings/settings_common.h,
+	settings/workspaces_settings.c, settings/workspaces_settings.h,
+	src/Makefile.am, src/Makefile.in, src/backdrop.c, src/debug.h,
+	src/main.c, src/main.h, src/menu.c, src/menu.h, src/settings.c,
+	src/settings.h, src/workspaces.c, src/workspaces.h: Debugging stuff
+	now provided by libxfce4util. As a result of this change
+	libxfcegui4 now depends on libxfce4util.  Some other updates. 
+	added a hint to the libxfcegui4 README for Xinerama problems with
+	XFree86.
 
 2003-04-02 18:02  bmeurer
 
 	* m4/X11.m4: Updated i18n stuff (libxfce4util now provides a
-	  i18n.h).  updated X11.m4 updated xfwm4 to compile well with
-	  -Werror -Wall updated xfce-mcs-plugins and added a hint to the
-	  README for XFree86 users
+	i18n.h).  updated X11.m4 updated xfwm4 to compile well with -Werror
+	-Wall updated xfce-mcs-plugins and added a hint to the README for
+	XFree86 users
 
 2003-04-01 23:33  xfce
 
 	* settings/: backdrop_settings.c, workspaces_settings.c: Initialize
-	  early i18n in mcs plugins Add Etria theme
+	early i18n in mcs plugins Add Etria theme
 
 2003-03-27 22:37  xfce
 
 	* src/: backdrop.c, main.c: Prefer gdk_screen[width|height] instead
-	  of XDisplay[Width|Height]
+	of XDisplay[Width|Height]
 
 2003-03-27 21:32  xfce
 
@@ -1253,8 +1268,8 @@
 2003-03-24 21:42  xfce
 
 	* common/Makefile.am, common/Makefile.in, settings/Makefile.am,
-	  settings/Makefile.in, src/Makefile.am, src/Makefile.in,
-	  src/backdrop.c: Remove deprecated calls
+	settings/Makefile.in, src/Makefile.am, src/Makefile.in,
+	src/backdrop.c: Remove deprecated calls
 
 2003-03-23 22:17  xfce
 
@@ -1263,7 +1278,7 @@
 2003-03-23 17:32  huysmans
 
 	* menu.xml, src/menu.c: Add support for included menu files.
-	  Updated default menu file
+	Updated default menu file
 
 2003-03-19 08:12  huysmans
 
@@ -1272,16 +1287,16 @@
 2003-03-18 23:34  xfce
 
 	* ChangeLog, Makefile.in, ltcf-c.sh, ltconfig, ltmain.sh: Update
-	  ChangeLog Update build scripts (ie rerun autogen.sh) Update
-	  xfwm4's microdeck theme Remove 1 pix border arround xffm menu bar
+	ChangeLog Update build scripts (ie rerun autogen.sh) Update xfwm4's
+	microdeck theme Remove 1 pix border arround xffm menu bar
 
 2003-03-15 12:14  bmeurer
 
 	* Makefile.am, Makefile.in, aclocal.m4, configure, configure.ac,
-	  xfdesktop.spec.in, backdrops/Makefile.in, common/Makefile.am,
-	  common/Makefile.in, doc/Makefile.in, m4/depends.m4,
-	  settings/Makefile.am, settings/Makefile.in, src/Makefile.am,
-	  src/Makefile.in: autotools update.
+	xfdesktop.spec.in, backdrops/Makefile.in, common/Makefile.am,
+	common/Makefile.in, doc/Makefile.in, m4/depends.m4,
+	settings/Makefile.am, settings/Makefile.in, src/Makefile.am,
+	src/Makefile.in: autotools update.
 
 2003-03-15 10:24  bmeurer
 
@@ -1294,20 +1309,20 @@
 2003-03-14 17:45  bmeurer
 
 	* Makefile.am, Makefile.in, TODO, aclocal.m4, autogen.sh,
-	  config.h.in, configure, configure.ac, backdrops/Makefile.in,
-	  common/Makefile.am, common/Makefile.in, common/backdrop.c,
-	  common/backdrop.h, doc/Makefile.in, m4/X11.m4, m4/rpath.m4,
-	  settings/Makefile.am, settings/Makefile.in,
-	  settings/backdrop-mgr.c, settings/backdrop_settings.c,
-	  settings/backdrop_settings.h, src/Makefile.am, src/Makefile.in,
-	  src/backdrop.c, src/backdrop.h, src/main.c, src/main.h: Autotools
-	  update 2nd stage. Started putting common code into common/.
-	  Reverted removal of g_file_get_contents().
+	config.h.in, configure, configure.ac, backdrops/Makefile.in,
+	common/Makefile.am, common/Makefile.in, common/backdrop.c,
+	common/backdrop.h, doc/Makefile.in, m4/X11.m4, m4/rpath.m4,
+	settings/Makefile.am, settings/Makefile.in,
+	settings/backdrop-mgr.c, settings/backdrop_settings.c,
+	settings/backdrop_settings.h, src/Makefile.am, src/Makefile.in,
+	src/backdrop.c, src/backdrop.h, src/main.c, src/main.h: Autotools
+	update 2nd stage. Started putting common code into common/. 
+	Reverted removal of g_file_get_contents().
 
 2003-03-14 11:18  bmeurer
 
 	* settings/backdrop-mgr.c, src/backdrop.c: Implemented the
-	  "previndex-Feature" as mentioned by Jasper.
+	"previndex-Feature" as mentioned by Jasper.
 
 2003-03-14 01:23  bmeurer
 
@@ -1316,16 +1331,16 @@
 2003-03-14 01:21  bmeurer
 
 	* AUTHORS, Makefile.am, Makefile.in, README, TODO, aclocal.m4,
-	  autogen.sh, config.guess, config.h.in, config.sub, configure,
-	  configure.ac, ltcf-c.sh, ltconfig, ltmain.sh,
-	  backdrops/Makefile.in, doc/Makefile.in, settings/Makefile.in,
-	  settings/backdrop-mgr.c, settings/backdrop_settings.c,
-	  settings/settings_common.c, src/Makefile.in, src/backdrop.c,
-	  src/main.c, src/main.h, src/menu.c: Autotools update. Bugfixes in
-	  backdrop code (some of the memory leaks are fixed now, the others
-	  are to come soon, hopefully). Use xfce_*() instead of show_*(),
-	  also changed and added some message, so translations need to be
-	  updated.
+	autogen.sh, config.guess, config.h.in, config.sub, configure,
+	configure.ac, ltcf-c.sh, ltconfig, ltmain.sh,
+	backdrops/Makefile.in, doc/Makefile.in, settings/Makefile.in,
+	settings/backdrop-mgr.c, settings/backdrop_settings.c,
+	settings/settings_common.c, src/Makefile.in, src/backdrop.c,
+	src/main.c, src/main.h, src/menu.c: Autotools update. Bugfixes in
+	backdrop code (some of the memory leaks are fixed now, the others
+	are to come soon, hopefully). Use xfce_*() instead of show_*(),
+	also changed and added some message, so translations need to be
+	updated.
 
 2003-03-13 21:39  xfce
 
@@ -1334,9 +1349,9 @@
 2003-03-01 00:38  xfce
 
 	* Makefile.in, aclocal.m4, config.guess, config.h.in, config.sub,
-	  configure, ltcf-c.sh, ltconfig, ltmain.sh, backdrops/Makefile.in,
-	  doc/Makefile.in, settings/Makefile.in, src/Makefile.in: [no log
-	  message]
+	configure, ltcf-c.sh, ltconfig, ltmain.sh, backdrops/Makefile.in,
+	doc/Makefile.in, settings/Makefile.in, src/Makefile.in: [no log
+	message]
 
 2003-02-28 20:09  bmeurer
 
@@ -1345,16 +1360,16 @@
 2003-02-28 19:43  xfce
 
 	* Makefile.in, aclocal.m4, config.guess, configure, ltmain.sh,
-	  backdrops/Makefile.in, doc/Makefile.in, settings/Makefile.in,
-	  src/Makefile.in: Fix xfce-mcs-manager API/ABI versionning Update
-	  configure/libtool to use libtool 1.4.3
+	backdrops/Makefile.in, doc/Makefile.in, settings/Makefile.in,
+	src/Makefile.in: Fix xfce-mcs-manager API/ABI versionning Update
+	configure/libtool to use libtool 1.4.3
 
 2003-02-28 11:55  bmeurer
 
 	* config.guess, configure, Makefile.in, aclocal.m4, configure.ac,
-	  ltcf-c.sh, ltconfig, ltmain.sh, backdrops/Makefile.in,
-	  doc/Makefile.in, settings/Makefile.in, src/Makefile.in: Fixes
-	  xfce-mcs-manager issue.
+	ltcf-c.sh, ltconfig, ltmain.sh, backdrops/Makefile.in,
+	doc/Makefile.in, settings/Makefile.in, src/Makefile.in: Fixes
+	xfce-mcs-manager issue.
 
 2003-02-27 21:08  xfce
 
@@ -1367,42 +1382,41 @@
 2003-02-26 08:17  xfce
 
 	* Makefile.in, aclocal.m4, configure, backdrops/Makefile.in,
-	  doc/Makefile.in, settings/Makefile.in,
-	  settings/backdrop_settings.c, settings/settings_common.c,
-	  src/Makefile.in: Apply Benedikt Meurer
-	  <Benedikt.Meurer@unix-ag.uni-siegen.de> patch Replace all
-	  occurences of g_getenv("HOME") with g_get_home_dir() Regenerate
-	  all Makefiles.on and configure scripts
+	doc/Makefile.in, settings/Makefile.in,
+	settings/backdrop_settings.c, settings/settings_common.c,
+	src/Makefile.in: Apply Benedikt Meurer
+	<Benedikt.Meurer@unix-ag.uni-siegen.de> patch Replace all 
+	occurences of g_getenv("HOME") with g_get_home_dir() Regenerate all
+	Makefiles.on and configure scripts
 
 2003-02-25 11:54  huysmans
 
 	* Makefile.in, aclocal.m4, configure, backdrops/Makefile.in,
-	  doc/Makefile.in, settings/backdrop-mgr.c,
-	  settings/backdrop_settings.c, settings/settings_common.h,
-	  settings/workspaces_settings.c, src/Makefile.in: Update
-	  screenshots for new dialog style
+	doc/Makefile.in, settings/backdrop-mgr.c,
+	settings/backdrop_settings.c, settings/settings_common.h,
+	settings/workspaces_settings.c, src/Makefile.in: Update screenshots
+	for new dialog style
 
 2003-02-24 23:57  huysmans
 
 	* settings/: Makefile.in, backdrop-mgr.c, backdrop_settings.c,
-	  workspaces_settings.c: Make dialogs use frames
+	workspaces_settings.c: Make dialogs use frames
 
 2003-02-24 09:40  huysmans
 
 	* ChangeLog, Makefile.am, Makefile.in, aclocal.m4, config.guess,
-	  config.sub, configure, configure.ac, ltmain.sh,
-	  backdrops/Makefile.in, doc/Makefile.am, doc/Makefile.in,
-	  settings/Makefile.am, settings/Makefile.in,
-	  settings/margins-icon.h, settings/margins.png,
-	  settings/margins_settings.c, settings/margins_settings.h,
-	  src/Makefile.am, src/Makefile.in, src/margins.c, src/margins.h,
-	  src/settings.c: Add mostly empty docs and remove margins
-	  settings.
+	config.sub, configure, configure.ac, ltmain.sh,
+	backdrops/Makefile.in, doc/Makefile.am, doc/Makefile.in,
+	settings/Makefile.am, settings/Makefile.in,
+	settings/margins-icon.h, settings/margins.png,
+	settings/margins_settings.c, settings/margins_settings.h,
+	src/Makefile.am, src/Makefile.in, src/margins.c, src/margins.h,
+	src/settings.c: Add mostly empty docs and remove margins settings.
 
 2003-02-23 21:00  huysmans
 
 	* src/menu.c: Use workspace names in window list. Thanks to Joakim
-	  Andreasson.
+	Andreasson.
 
 2003-02-15 12:31  huysmans
 
@@ -1411,35 +1425,35 @@
 2003-02-15 12:06  huysmans
 
 	* src/menu.c: Add quit builtin menu item, for people who don't want
-	  to run the panel.
+	to run the panel.
 
 2003-02-13 05:10  botsie
 
 	* src/debug.h: Made 'debug.h' more portable, mostly to fix compile
-	  errors on BSD
+	errors on BSD
 
 2003-02-12 20:05  huysmans
 
 	* src/debug.h: Fix debug.h, breaks for gcc < 2.6 and possibly for
-	  non-gcc compilers. Just don't enable debug if you have one of
-	  those.
+	non-gcc compilers. Just don't enable debug if you have one of
+	those.
 
 2003-02-11 17:43  jensl
 
 	* src/backdrop.c: added error message dialogs using libxfcegui4's
-	  show_error()
+	show_error()
 
 2003-02-10 21:47  xfce
 
 	* src/: backdrop.c, main.c, main.h, margins.c, menu.c, settings.c,
-	  workspaces.c: Remove g_error (that causes and abort() and thus a
-	  core dump) where not necessary.
+	workspaces.c: Remove g_error (that causes and abort() and thus a
+	core dump) where not necessary.
 
 2003-02-07 14:12  xfce
 
 	* settings/backdrop_settings.c, src/backdrop.c, src/main.c: Put
-	  back gtk_widget_set_style(fullscreen_window, NULL); to free
-	  previously allocated pixmap
+	back gtk_widget_set_style(fullscreen_window, NULL); to free
+	previously allocated pixmap
 
 2003-02-07 13:43  botsie
 
@@ -1448,9 +1462,9 @@
 2003-02-07 10:56  xfce
 
 	* settings/backdrop_settings.c, src/backdrop.c: Fix problem with
-	  textured theme : 1) in backdrop window, by using our own theme
-	  not derived from the widget theme 2) in color oicker button by
-	  using GtkImage/GdkPixbuf
+	textured theme : 1) in backdrop window, by using our own theme not
+	derived from the widget theme 2) in color oicker button by using
+	GtkImage/GdkPixbuf
 
 2003-02-04 22:31  huysmans
 
@@ -1467,20 +1481,20 @@
 2003-02-04 15:31  botsie
 
 	* ChangeLog, Makefile.in, aclocal.m4, config.guess, config.sub,
-	  configure, ltmain.sh: Making up for some dropped commits.
+	configure, ltmain.sh: Making up for some dropped commits.
 
 2003-02-04 15:17  botsie
 
 	* Makefile.am, configure.ac: Fixed a couple of bugs related to
-	  adding dependency to libxml2 and adding a new data file: menu.xml
+	adding dependency to libxml2 and adding a new data file: menu.xml
 
 2003-02-04 14:27  botsie
 
 	* backdrops/Makefile.in, settings/Makefile.in, src/Makefile.in:
-	  Oops ... forgot to add dependency to libxml2. Required by
-	  configurable menu. ;-)
-
-	  Updated AUTHORS.
+	Oops ... forgot to add dependency to libxml2. Required by
+	configurable menu. ;-)
+	
+	Updated AUTHORS.
 
 2003-02-04 14:02  botsie
 
@@ -1501,13 +1515,13 @@
 2003-02-01 14:59  xfce
 
 	* backdrops/Makefile.am, backdrops/Makefile.in,
-	  backdrops/xfce4gradientcurve.png, src/Makefile.in: Add a new
-	  transparent background
+	backdrops/xfce4gradientcurve.png, src/Makefile.in: Add a new
+	transparent background
 
 2003-02-01 12:00  xfce
 
 	* backdrops/xfce4logo.png: Redesign xfce4logo.png using alpha. This
-	  allow changing the background color along with xfce4logo.png :)
+	allow changing the background color along with xfce4logo.png :)
 
 2003-02-01 11:46  huysmans
 
@@ -1516,7 +1530,7 @@
 2003-02-01 08:59  botsie
 
 	* src/: Makefile.in, debug.h, menu.c: First stage of changes needed
-	  for configurable menu.
+	for configurable menu.
 
 2003-01-31 07:37  xfce
 
@@ -1537,23 +1551,22 @@
 2003-01-29 11:59  xfce
 
 	* settings/backdrop_settings.c, src/backdrop.c: A bunch of bug
-	  fixes + speed improvements by using composite only when necessary
-	  !
+	fixes + speed improvements by using composite only when necessary !
 
 2003-01-29 10:00  xfce
 
 	* src/: backdrop.c, margins.c, settings.c, settings.h,
-	  workspaces.c: Decrease initial startup time by 2 or 3 times.
+	workspaces.c: Decrease initial startup time by 2 or 3 times.
 
 2003-01-28 22:53  xfce
 
 	* src/backdrop.c: Add support for alpha in backdrops for all modes
-	  (centered, tiled and scaled))
+	(centered, tiled and scaled))
 
 2003-01-28 10:35  xfce
 
 	* src/backdrop.c: Set root pixmap so that aterm "fast" transparency
-	  works.
+	works.
 
 2003-01-27 21:42  xfce
 
@@ -1562,49 +1575,49 @@
 2003-01-27 20:43  huysmans
 
 	* ChangeLog, src/backdrop.c: Delete ESETROOT_PMAP_ID and detroy
-	  pixmap
+	pixmap
 
 2003-01-26 22:24  xfce
 
 	* configure, configure.ac, src/main.c: Use libxfcegui4 .15 to avoid
-	  input on xfdesktop root window
+	input on xfdesktop root window
 
 2003-01-25 16:55  xfce
 
 	* Makefile.am, Makefile.in, configure, configure.ac,
-	  xfdesktop.spec.in, backdrops/Makefile.am, backdrops/Makefile.in,
-	  backdrops/xfce-in-the-moon.png, backdrops/xfce4logo.png,
-	  settings/backdrop_settings.c: Modify default settings and add two
-	  background images so that defaults look like this :
-
-	  http://www.xfce.org/archive/xfce4default.png
+	xfdesktop.spec.in, backdrops/Makefile.am, backdrops/Makefile.in,
+	backdrops/xfce-in-the-moon.png, backdrops/xfce4logo.png,
+	settings/backdrop_settings.c: Modify default settings and add two
+	background images so that defaults look like this :
+	
+	http://www.xfce.org/archive/xfce4default.png
 
 2003-01-25 15:35  xfce
 
 	* settings/backdrop_settings.c: Fix missing separator in default
-	  backdrop path and change defaults to use another image by
-	  default, center and color.
+	backdrop path and change defaults to use another image by default,
+	center and color.
 
 2003-01-23 17:54  xfce
 
 	* settings/backdrop_settings.c: Fix a double free that I presumably
-	  introduced when fixing another bug.
+	introduced when fixing another bug.
 
 2003-01-23 12:52  jensl
 
-	* src/menu.c:
-	  shorten window-titles in window-list
+	* src/menu.c: 
+	shorten window-titles in window-list
 
 2003-01-21 23:23  xfce
 
 	* settings/backdrop_settings.c: Fix an obvious bug in
-	  settings/backdrop_settings.c
+	settings/backdrop_settings.c
 
 2003-01-21 19:35  huysmans
 
 	* settings/backdrop_settings.c, settings/backdrop_settings.h,
-	  src/backdrop.c, src/settings.c: Add color chooser and option to
-	  use only color
+	src/backdrop.c, src/settings.c: Add color chooser and option to use
+	only color
 
 2003-01-20 22:30  huysmans
 
@@ -1613,35 +1626,35 @@
 2003-01-20 22:19  huysmans
 
 	* ChangeLog, settings/workspaces_settings.c: Fix workspace count
-	  bug
+	bug
 
 2003-01-20 21:28  huysmans
 
 	* Makefile.in, aclocal.m4, configure, settings/Makefile.am,
-	  settings/Makefile.in, settings/workspaces_settings.c,
-	  settings/workspaces_settings.h, src/Makefile.am, src/Makefile.in,
-	  src/backdrop.c, src/main.c, src/settings.c: Don't use gtk 2.2
-	  functions and let xfdesktop set workspaces hints
+	settings/Makefile.in, settings/workspaces_settings.c,
+	settings/workspaces_settings.h, src/Makefile.am, src/Makefile.in,
+	src/backdrop.c, src/main.c, src/settings.c: Don't use gtk 2.2
+	functions and let xfdesktop set workspaces hints
 
 2003-01-20 14:50  xfce
 
 	* settings/workspaces_settings.c: Fix workspace_settings to
-	  properly set the number of desktops at startup...
+	properly set the number of desktops at startup...
 
 2003-01-19 19:23  huysmans
 
 	* settings/: Makefile.am, Makefile.in, debug.h: Add debug.h. It's
-	  silly to depend on version insalled by xfce4-panel.
+	silly to depend on version insalled by xfce4-panel.
 
 2003-01-19 16:32  huysmans
 
 	* settings/workspaces_settings.c: Pick up changes in the number of
-	  desktops made by other programs
+	desktops made by other programs
 
 2003-01-19 14:49  huysmans
 
 	* settings/backdrop_settings.c: Fix initial backdrop location.
-	  Thanks to James Tapin for reporting it.
+	Thanks to James Tapin for reporting it.
 
 2003-01-18 14:54  xfce
 
@@ -1650,23 +1663,23 @@
 2003-01-18 14:51  xfce
 
 	* src/: backdrop.c, main.c: * Remove double buffering in desktop
-	  window otherwise gtk allocates twice the size of the screen in
-	  video memory which can show to be unusable even on a GeForce II
-	  MX with 32Mb using 3D because the video RAM alloted to pixmaps
-	  cannot handle the total amount of pixmaps.  * Reduce scale
-	  quality to BILINEAR instead of HYPER because it takes too long
-	  even on a PIV 1.7GHz scalling from 1024x768 to 1280x768
+	window otherwise gtk allocates twice the size of the screen in
+	video memory which can show to be unusable even on a GeForce II MX
+	with 32Mb using 3D because the video RAM alloted to pixmaps cannot
+	handle the total amount of pixmaps.  * Reduce scale quality to
+	BILINEAR instead of HYPER because it takes too long even on a PIV
+	1.7GHz scalling from 1024x768 to 1280x768
 
 2003-01-16 21:51  xfce
 
 	* Makefile.in, aclocal.m4, autogen.sh, config.guess, config.sub,
-	  configure, settings/Makefile.in, src/Makefile.in: Try to fix
-	  libtool error
+	configure, settings/Makefile.in, src/Makefile.in: Try to fix
+	libtool error
 
 2003-01-16 21:03  huysmans
 
 	* ChangeLog, settings/Makefile.am, settings/Makefile.in: Make sure
-	  icons are included in dist tarball
+	icons are included in dist tarball
 
 2003-01-15 23:11  huysmans
 
@@ -1679,12 +1692,12 @@
 2003-01-15 23:03  huysmans
 
 	* settings/: backdrop-mgr.c, backdrop_settings.c: Fix a couple of
-	  bugs
+	bugs
 
 2003-01-15 22:45  huysmans
 
 	* ChangeLog, src/Makefile.am, src/Makefile.in, src/backdrop.c,
-	  src/margins.c: Fix a compile error (?)
+	src/margins.c: Fix a compile error (?)
 
 2003-01-15 20:30  huysmans
 
@@ -1693,21 +1706,21 @@
 2003-01-15 20:09  huysmans
 
 	* AUTHORS, COPYING, ChangeLog, INSTALL, Makefile.am, Makefile.in,
-	  NEWS, README, TODO, aclocal.m4, autogen.sh, compile,
-	  config.guess, config.h.in, config.sub, configure, configure.ac,
-	  depcomp, install-sh, ltmain.sh, missing, mkinstalldirs,
-	  xfdesktop.spec.in, settings/Makefile.am, settings/Makefile.in,
-	  settings/backdrop-icon.h, settings/backdrop-mgr.c,
-	  settings/backdrop-mgr.h, settings/backdrop.png,
-	  settings/backdrop_settings.c, settings/backdrop_settings.h,
-	  settings/margins-icon.h, settings/margins.png,
-	  settings/margins_settings.c, settings/margins_settings.h,
-	  settings/menu-icon.h, settings/menu.png,
-	  settings/menu_settings.c, settings/menu_settings.h,
-	  settings/settings_common.c, settings/settings_common.h,
-	  settings/workspaces-icon.h, settings/workspaces.png,
-	  settings/workspaces_settings.c, src/Makefile.am, src/Makefile.in,
-	  src/backdrop.c, src/backdrop.h, src/main.c, src/main.h,
-	  src/margins.c, src/margins.h, src/menu.c, src/menu.h,
-	  src/settings.c, src/settings.h: Initial import of xfdesktop
+	NEWS, README, TODO, aclocal.m4, autogen.sh, compile, config.guess,
+	config.h.in, config.sub, configure, configure.ac, depcomp,
+	install-sh, ltmain.sh, missing, mkinstalldirs, xfdesktop.spec.in,
+	settings/Makefile.am, settings/Makefile.in,
+	settings/backdrop-icon.h, settings/backdrop-mgr.c,
+	settings/backdrop-mgr.h, settings/backdrop.png,
+	settings/backdrop_settings.c, settings/backdrop_settings.h,
+	settings/margins-icon.h, settings/margins.png,
+	settings/margins_settings.c, settings/margins_settings.h,
+	settings/menu-icon.h, settings/menu.png, settings/menu_settings.c,
+	settings/menu_settings.h, settings/settings_common.c,
+	settings/settings_common.h, settings/workspaces-icon.h,
+	settings/workspaces.png, settings/workspaces_settings.c,
+	src/Makefile.am, src/Makefile.in, src/backdrop.c, src/backdrop.h,
+	src/main.c, src/main.h, src/margins.c, src/margins.h, src/menu.c,
+	src/menu.h, src/settings.c, src/settings.h: Initial import of
+	xfdesktop
 

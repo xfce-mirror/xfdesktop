@@ -1,6 +1,7 @@
 /*  xfce4
  *  
  *  Copyright (C) 2002 Jasper Huijsmans (huysmans@users.sourceforge.net)
+ *  Copyright (C) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -116,7 +117,7 @@ client_message_received (GtkWidget * widget, GdkEventClient * event,
     TRACE ("client message received");
 
     if (event->data_format == 8
-	&& strcmp (event->data.b, RELOAD_MESSAGE) == 0)
+	&& strcmp (RELOAD_MESSAGE, event->data.b) == 0)
     {
 	load_settings ();
 	return (TRUE);
@@ -178,11 +179,6 @@ xfdesktop_set_selection (void)
 
     selection_window = GDK_WINDOW_XWINDOW (invisible->window);
 
-/*	XCreateSimpleWindow (display, GDK_ROOT_WINDOW(),
-				       	    0, 0, 10, 10, 0, 
-					    WhitePixel (display, screen), 
-					    WhitePixel (display, screen));
-*/
     XSelectInput (display, selection_window, PropertyChangeMask);
     XSetSelectionOwner (display, selection_atom,
 			selection_window, GDK_CURRENT_TIME);
@@ -276,6 +272,20 @@ create_fullscreen_window (void)
     return (win);
 }
 
+#if GTK_CHECK_VERSION(2,2,0)
+/*
+ * This is Gtk+ >= 2.2 only for now, should be no problem after all.
+ */
+static void
+xfdesktop_size_changed(GdkScreen *screen)
+{
+    gtk_window_resize(GTK_WINDOW(fullscreen_window),
+            gdk_screen_get_width(screen),
+		    gdk_screen_get_height(screen));
+    load_settings();
+}
+#endif
+
 static void
 xfdesktop_init (void)
 {
@@ -289,6 +299,11 @@ xfdesktop_init (void)
 
     gtk_widget_show (fullscreen_window);
     gdk_window_lower (fullscreen_window->window);
+
+#if GTK_CHECK_VERSION(2,2,0)
+    g_signal_connect(G_OBJECT(gdk_screen_get_default()), "size-changed",
+            G_CALLBACK(xfdesktop_size_changed), NULL);
+#endif
 }
 
 static void

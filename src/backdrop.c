@@ -1,6 +1,7 @@
 /*  xfce4
  *  
  *  Copyright (C) 2002 Jasper Huijsmans (huysmans@users.sourceforge.net)
+ *  Copyright (c) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -68,8 +69,6 @@
 #include "settings.h"
 
 static GtkWidget *fullscreen_window = NULL;
-static int screen_width = 0;
-static int screen_height = 0;
 
 static char *backdrop_path = NULL;
 static int backdrop_style = TILED;
@@ -134,9 +133,6 @@ backdrop_init (GtkWidget * window)
 {
     TRACE ("dummy");
     fullscreen_window = window;
-
-    screen_width = gdk_screen_width ();
-    screen_height = gdk_screen_height ();
 
     remove_old_pixmap ();
 }
@@ -338,8 +334,8 @@ create_background_pixmap (GdkPixbuf * pixbuf, int style, GdkColor * color)
     TRACE ("dummy");
     /* First, fill the pixbuf with solid color */
     solid =
-	gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, screen_width,
-			screen_height);
+	gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, gdk_screen_width(),
+			gdk_screen_height());
     rgba =
 	(((color->red & 0xff00) << 8) | ((color->green & 0xff00)) | ((color->
 								      blue &
@@ -360,7 +356,7 @@ create_background_pixmap (GdkPixbuf * pixbuf, int style, GdkColor * color)
 	    /* if height and width are both less than half the screen
 	     * -> tiled, else -> scaled */
 
-	    if (height <= screen_height / 2 && width <= screen_width)
+	    if (height <= gdk_screen_height()/ 2 && width <= gdk_screen_width())
 	    {
 		style = TILED;
 	    }
@@ -374,21 +370,21 @@ create_background_pixmap (GdkPixbuf * pixbuf, int style, GdkColor * color)
 	{
 	    case CENTERED:
 		{
-		    gint x = MAX ((screen_width - width) / 2, 0);
-		    gint y = MAX ((screen_height - height) / 2, 0);
+		    gint x = MAX ((gdk_screen_width() - width) / 2, 0);
+		    gint y = MAX ((gdk_screen_height() - height) / 2, 0);
 		    if (has_composite)
 		    {
 			gdk_pixbuf_composite (pixbuf, solid, x, y,
-					      MIN (screen_width, width),
-					      MIN (screen_height, height), x,
-					      y, 1.0, 1.0, GDK_INTERP_NEAREST,
+					      MIN (gdk_screen_width(), width),
+					      MIN (gdk_screen_height(), height),
+					      x,y, 1.0, 1.0, GDK_INTERP_NEAREST,
 					      255);
 		    }
 		    else
 		    {
 			gdk_pixbuf_copy_area (pixbuf, 0, 0,
-					      MIN (screen_width, width),
-					      MIN (screen_height, height),
+					      MIN (gdk_screen_width(), width),
+					      MIN (gdk_screen_height(), height),
 					      solid, x, y);
 		    }
 		}
@@ -397,19 +393,21 @@ create_background_pixmap (GdkPixbuf * pixbuf, int style, GdkColor * color)
 		{
 		    GdkPixbuf *new = pixbuf;
 		    new =
-			gdk_pixbuf_scale_simple (pixbuf, screen_width,
-						 screen_height,
+			gdk_pixbuf_scale_simple (pixbuf, gdk_screen_width(),
+						 gdk_screen_height(),
 						 GDK_INTERP_BILINEAR);
 		    if (has_composite)
 		    {
-			gdk_pixbuf_composite (new, solid, 0, 0, screen_width,
-					      screen_height, 0, 0, 1.0, 1.0,
+			gdk_pixbuf_composite (new, solid, 0, 0,
+					      gdk_screen_width(),
+					      gdk_screen_height(),
+					      0, 0, 1.0, 1.0,
 					      GDK_INTERP_NEAREST, 255);
 		    }
 		    else
 		    {
-			gdk_pixbuf_copy_area (new, 0, 0, screen_width,
-					      screen_height, solid, 0, 0);
+			gdk_pixbuf_copy_area (new, 0, 0, gdk_screen_width(),
+					      gdk_screen_height(), solid, 0, 0);
 		    }
 		    g_object_unref (new);
 		}
@@ -419,17 +417,18 @@ create_background_pixmap (GdkPixbuf * pixbuf, int style, GdkColor * color)
 		{
 		    gdouble cx, cy;
 
-		    for (cy = 0; cy < screen_height; cy += height)
+		    for (cy = 0; cy < gdk_screen_height(); cy += height)
 		    {
-			for (cx = 0; cx < screen_width; cx += width)
+			for (cx = 0; cx < gdk_screen_width(); cx += width)
 			{
 			    if (has_composite)
 			    {
 				gdk_pixbuf_composite (pixbuf, solid, cx, cy,
 						      MIN (width,
-							   screen_width - cx),
+							   gdk_screen_width() -
+							   cx),
 						      MIN (height,
-							   screen_height -
+							   gdk_screen_height() -
 							   cy), cx, cy, 1.0,
 						      1.0, GDK_INTERP_TILES,
 						      255);
@@ -438,9 +437,10 @@ create_background_pixmap (GdkPixbuf * pixbuf, int style, GdkColor * color)
 			    {
 				gdk_pixbuf_copy_area (pixbuf, 0, 0,
 						      MIN (width,
-							   screen_width - cx),
+							   gdk_screen_width() -
+							   cx),
 						      MIN (height,
-							   screen_height -
+							   gdk_screen_height() -
 							   cy), solid, cx,
 						      cy);
 			    }
