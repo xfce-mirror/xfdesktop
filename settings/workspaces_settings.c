@@ -48,6 +48,13 @@ static void watch_workspaces_hint(McsManager *manager);
 
 McsPluginInitResult mcs_plugin_init(McsPlugin *mcs_plugin)
 {
+#ifdef ENABLE_NLS
+    /* This is required for UTF-8 at least - Please don't remove it */
+    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+    textdomain (GETTEXT_PACKAGE);
+#endif
+
     netk_screen = netk_screen_get_default();
     netk_screen_force_update(netk_screen);
     

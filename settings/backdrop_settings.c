@@ -118,6 +118,13 @@ static GdkPixbuf *backdrop_icon_at_size(int width, int height)
 
 McsPluginInitResult mcs_plugin_init(McsPlugin * mcs_plugin)
 {
+#ifdef ENABLE_NLS
+    /* This is required for UTF-8 at least - Please don't remove it */
+    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+    textdomain (GETTEXT_PACKAGE);
+#endif
+
     mcs_plugin->plugin_name = g_strdup(PLUGIN_NAME);
     mcs_plugin->caption = g_strdup(_("Desktop: backdrop"));
     mcs_plugin->run_dialog = run_dialog;
