@@ -596,40 +596,36 @@ static GtkWidget *create_windowlist_menu(void)
 
     for(i = 0; i < n; i++)
     {
-        char ws_name[100];
+        char *ws_name;
+	const char *realname;
         gboolean active;
-
+	
         ws = netk_screen_get_workspace(netk_screen, i);
-
+	realname = netk_workspace_get_name(ws);
+	
         active = (ws == aws);
 
-        if(active)
-        {
-            sprintf(ws_name, "<i>%s %d</i>", _("Workspace"), i + 1);
-        }
-        else
-        {
-            sprintf(ws_name, "%s <i>%s %d</i>",
-                    _("Go to"), _("Workspace"), i + 1);
-        }
-
+	if (realname)
+	{
+	    ws_name = g_strdup_printf("%s: <i>%s</i>", _("Workspace"), 
+		    		      realname);
+	}
+	else
+	{
+	    ws_name = g_strdup_printf("%s: <i>%d</i>", _("Workspace"), i+1);
+	}
+	
         mi = gtk_menu_item_new_with_label(ws_name);
+	g_free(ws_name);
+	
         label = gtk_bin_get_child(GTK_BIN(mi));
         gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
 
         if(active)
-        {
             gtk_widget_set_sensitive(mi, FALSE);
-        }
-/*	    else
-	{
-	    gtk_widget_modify_fg(gtk_bin_get_child(GTK_BIN(mi)), 
-				 GTK_STATE_NORMAL,
-				 &(style->fg[GTK_STATE_INSENSITIVE]));
-	}
-*/
+
         g_signal_connect_swapped(mi, "activate",
                                  G_CALLBACK(netk_workspace_activate), ws);
 
