@@ -96,7 +96,7 @@ static gboolean is_running = FALSE;
 
 static char *backdrop_path = NULL;
 static int backdrop_style = SCALED;
-static int showimage = 1;
+static int showimage = 0;
 static McsColor backdrop_color;
 
 static void backdrop_create_channel(McsPlugin * mcs_plugin);
@@ -289,6 +289,11 @@ static void update_path(BackdropDialog *bd)
     if (backdrop_path)
     {
         mcs_manager_set_string(bd->plugin->manager, "path", BACKDROP_CHANNEL, backdrop_path);
+        /* Assume that if the user has changed the image path (s)he actually
+           wants to see it on screen, so unselect the color only checkbox
+         */
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(bd->color_only_checkbox),
+                                     FALSE);
     }
     
     mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
