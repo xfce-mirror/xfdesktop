@@ -166,7 +166,8 @@ dmp_read_config(Control *control, xmlNodePtr node)
 	
 	value = xmlGetProp(node, (const xmlChar *)"icon_file");
 	if(value) {
-		pix = xfce_load_themed_icon(value, icon_size[settings.size]);
+		pix = xfce_load_themed_icon(value,
+				icon_size[settings.size] - 2*border_width);
 		if(pix) {
 			if(dmp->icon_file)
 				g_free(dmp->icon_file);
@@ -176,7 +177,8 @@ dmp_read_config(Control *control, xmlNodePtr node)
 			xmlFree(value);
 	} else {
 		dmp->icon_file = g_strdup(DATADIR "/pixmaps/xfce4_xicon.png");
-		pix = xfce_load_themed_icon(dmp->icon_file, icon_size[settings.size]);
+		pix = xfce_load_themed_icon(dmp->icon_file,
+				icon_size[settings.size] - 2*border_width);
 		if(pix)
 			xfce_iconbutton_set_pixbuf(XFCE_ICONBUTTON(dmp->button), pix);
 	}
@@ -237,7 +239,7 @@ filebutton_click_cb(GtkWidget *w, gpointer user_data)
 	DMPlugin *dmp = user_data;
 	GtkWidget *chooser, *image;
 	gchar *filename;
-	GtkFileFilter *filter;
+	XfceFileFilter *filter;
 	
 	chooser = xfce_file_chooser_dialog_new(_("Select Icon"),
 			GTK_WINDOW(gtk_widget_get_toplevel(w)),
@@ -248,19 +250,19 @@ filebutton_click_cb(GtkWidget *w, gpointer user_data)
 	xfce_file_chooser_set_local_only(XFCE_FILE_CHOOSER(chooser), TRUE);
 	gtk_dialog_set_default_response(GTK_DIALOG(chooser), GTK_RESPONSE_ACCEPT);
 	
-	filter = gtk_file_filter_new();
-	gtk_file_filter_set_name(filter, _("All Files"));
-	gtk_file_filter_add_pattern(filter, "*");
+	filter = xfce_file_filter_new();
+	xfce_file_filter_set_name(filter, _("All Files"));
+	xfce_file_filter_add_pattern(filter, "*");
 	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
 	xfce_file_chooser_set_filter(XFCE_FILE_CHOOSER(chooser), filter);
-	filter = gtk_file_filter_new();
-	gtk_file_filter_set_name(filter, _("Image Files"));
-	gtk_file_filter_add_pattern(filter, "*.png");
-	gtk_file_filter_add_pattern(filter, "*.jpg");
-	gtk_file_filter_add_pattern(filter, "*.bmp");
-	gtk_file_filter_add_pattern(filter, "*.svg");
-	gtk_file_filter_add_pattern(filter, "*.xpm");
-	gtk_file_filter_add_pattern(filter, "*.gif");
+	filter = xfce_file_filter_new();
+	xfce_file_filter_set_name(filter, _("Image Files"));
+	xfce_file_filter_add_pattern(filter, "*.png");
+	xfce_file_filter_add_pattern(filter, "*.jpg");
+	xfce_file_filter_add_pattern(filter, "*.bmp");
+	xfce_file_filter_add_pattern(filter, "*.svg");
+	xfce_file_filter_add_pattern(filter, "*.xpm");
+	xfce_file_filter_add_pattern(filter, "*.gif");
 	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
 	
 	image = gtk_image_new();
