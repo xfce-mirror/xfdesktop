@@ -85,6 +85,11 @@ static GList *timeout_handles = NULL;
 static time_t last_settings_change = 0;
 static gchar *cur_icon_theme = NULL;
 
+const GtkTargetEntry menu_dnd_targets[] = {
+	{ "text/x-desktop-entry", 0, 0 }
+};
+gint n_menu_dnd_targets = sizeof(menu_dnd_targets) / sizeof(GtkTargetEntry);
+
 #if GTK_CHECK_VERSION(2, 4, 0)
 static GtkIconTheme *notify_itheme = NULL;
 
@@ -286,6 +291,61 @@ _generate_menu_initial(gpointer data) {
 	_generate_menu((XfceDesktopMenu *)data);
 	
 	return FALSE;
+}
+
+void
+menu_drag_begin_cb(GtkWidget *widget, GdkDragContext *drag_context,
+		gpointer user_data)
+{
+	if(!GTK_IS_IMAGE_MENU_ITEM(widget) || !GTK_IMAGE_MENU_ITEM(widget)->image)
+		return;
+	
+	gtk_drag_source_set_icon_pixbuf(widget,
+			gtk_image_get_pixbuf(GTK_IMAGE(GTK_IMAGE_MENU_ITEM(widget)->image)));
+}
+
+void
+menu_drag_data_get_cb(GtkWidget *widget, GdkDragContext *drag_context,
+		GtkSelectionData *data, guint info, guint time, gpointer user_data)
+{
+	const gchar *name = NULL, *exec = NULL, *icon = NULL;
+	gboolean needs_term = FALSE, snotify = FALSE;
+	gchar *desktop_data = NULL, *atom_str;
+	XfceAppMenuItem *ami;
+	
+	if(!XFCE_IS_APP_MENU_ITEM(widget))
+		return;
+	
+	ami = XFCE_APP_MENU_ITEM(widget);
+	
+	switch(info) {
+		case 0:
+			name = xfce_app_menu_item_get_name(ami);
+			if(!name)
+				break;
+			exec = xfce_app_menu_item_get_command(ami);
+			if(!exec)
+				break;
+			icon = xfce_app_menu_item_get_icon_name(ami);
+			needs_term = xfce_app_menu_item_get_needs_term(ami);
+			snotify = xfce_app_menu_item_get_startup_notification(ami);
+			
+			desktop_data = g_strdup_printf("Name=%s\nExec=%s\nIcon=%s\nTerminal=%s\nStartupNotify=%s\n",
+					name, exec, icon ? icon : "", needs_term ? "true" : "false",
+					snotify ? "true" : "false");
+			
+			gtk_selection_data_set(data,
+					gdk_atom_intern("text/x-desktop-entry", FALSE), 8,
+					(const guchar *)desktop_data, strlen(desktop_data));
+			
+			g_free(desktop_data);
+		
+			break;
+		
+		default:
+			g_warning("Unknown drag data type (%d) received", info);
+			break;
+	}
 }
 
 G_MODULE_EXPORT XfceDesktopMenu *

@@ -191,6 +191,14 @@ _menu_shell_insert_sorted(GtkMenuShell *menu_shell, GtkWidget *mi,
 			break;
 	}
 	
+	/* this should be somewhere else, but here's as good a place as any */
+	gtk_drag_source_set(mi, GDK_MODIFIER_MASK, menu_dnd_targets,
+			n_menu_dnd_targets, GDK_ACTION_DEFAULT);
+	g_signal_connect(G_OBJECT(mi), "drag-begin",
+			G_CALLBACK(menu_drag_begin_cb), NULL);
+	g_signal_connect(G_OBJECT(mi), "drag-data-get",
+			G_CALLBACK(menu_drag_data_get_cb), NULL);
+	
 	gtk_menu_shell_insert(menu_shell, mi, i);
 }
 
@@ -427,8 +435,7 @@ menu_dentry_parse_dentry_file(XfceDesktopMenu *desktop_menu,
 	dentry = xfce_desktop_entry_new(filename, dentry_keywords,
 			G_N_ELEMENTS(dentry_keywords));
 	if(dentry) {
-		//if(xfce_desktop_entry_parse(dentry))
-			menu_dentry_parse_dentry(desktop_menu, dentry, pathtype, FALSE, NULL);
+		menu_dentry_parse_dentry(desktop_menu, dentry, pathtype, FALSE, NULL);
 		g_object_unref(G_OBJECT(dentry));
 	}
 }
@@ -491,7 +498,12 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 			}
 		}
 	} else {
-		if(!desktop_menuspec_parse_categories(catfile)) {
+		if(!g_file_test(catfile, G_FILE_TEST_EXISTS)) {
+			g_free(catfile);
+			g_free(catfile_user);
+			g_warning(_("XfceDesktopMenu: Unable to find xfce-registered-categories.xml"));
+			return;
+		} else if(!desktop_menuspec_parse_categories(catfile)) {
 			g_free(catfile);
 			g_free(catfile_user);
 			return;
@@ -609,8 +621,7 @@ menu_dentry_legacy_parse_dentry_file(XfceDesktopMenu *desktop_menu,
 	dentry = xfce_desktop_entry_new(filename, dentry_keywords,
 			G_N_ELEMENTS(dentry_keywords));
 	if(dentry) {
-		//if(xfce_desktop_entry_parse(dentry))
-			menu_dentry_parse_dentry(desktop_menu, dentry, pathtype, TRUE, category);
+		menu_dentry_parse_dentry(desktop_menu, dentry, pathtype, TRUE, category);
 		g_object_unref(G_OBJECT(dentry));
 	}
 }

@@ -71,7 +71,6 @@
 #include <libxfcegui4/xfce-appmenuitem.h>
 #include <libxfcegui4/icons.h>
 
-//#define BDEBUG
 #include "desktop-menu-private.h"
 #include "desktop-menu.h"
 #include "desktop-menu-file.h"
@@ -86,7 +85,9 @@
                          SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%l:"\
                          SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F")
 
-#define MI_BUILTIN_QUIT 1
+enum {
+	MI_BUILTIN_QUIT = 1
+};
 
 extern void quit();
 
@@ -220,6 +221,13 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		g_hash_table_insert(state->desktop_menu->menu_entry_hash,
 				g_build_path("/", state->cur_path, attribute_values[i], NULL),
 				GINT_TO_POINTER(1));
+		
+		gtk_drag_source_set(mi, GDK_MODIFIER_MASK, menu_dnd_targets,
+			n_menu_dnd_targets, GDK_ACTION_DEFAULT);
+		g_signal_connect(G_OBJECT(mi), "drag-begin",
+				G_CALLBACK(menu_drag_begin_cb), NULL);
+		g_signal_connect(G_OBJECT(mi), "drag-data-get",
+				G_CALLBACK(menu_drag_data_get_cb), NULL);
 	} else if(!strcmp(element_name, "menu")) {		
 		if((i=_find_attribute(attribute_names, "visible")) != -1 &&
 				(!strcmp(attribute_values[i], "false") ||
