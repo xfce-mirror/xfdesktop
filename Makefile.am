@@ -1,5 +1,17 @@
 @SET_MAKE@
 
+DIST_SUBDIRS = \
+	backdrops \
+	common \
+	doc \
+	po \
+	settings \
+	src \
+	modules \
+	pixmaps \
+	panel-plugin \
+	menueditor
+
 SUBDIRS = \
 	backdrops \
 	common \
