@@ -321,6 +321,7 @@ xfdesktop_init(XfceDesktop *xfdesktop, gint screen)
 	
 	settings_init(xfdesktop);
 	xfdesktop->backdrop = backdrop_new(screen, xfdesktop->fullscreen, xfdesktop->client);
+	menu_init(xfdesktop); /* dannym messed */
 	
 	g_signal_connect(G_OBJECT(xfdesktop->gscreen), "size-changed",
 			G_CALLBACK(xfdesktop_size_changed), xfdesktop);
