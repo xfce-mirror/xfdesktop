@@ -1280,7 +1280,7 @@ static gchar* get_default_menu_file ()
 int main (int argc, char *argv[]) 
 {
   if(argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V"))) {
-    g_print("\tThis is Xfce4-MenuEditor (part of %s) version %s for Xfce %s\n", PACKAGE, VERSION,
+    g_print("\tThis is xfce4-menueditor version %s for Xfce %s\n", VERSION,
 	    xfce_version_string());
     g_print("\tbuilt with GTK+-%d.%d.%d and LIBXML2 v%s,\n", GTK_MAJOR_VERSION,
 	    GTK_MINOR_VERSION, GTK_MICRO_VERSION, LIBXML_DOTTED_VERSION);

@@ -35,7 +35,7 @@ void about_cb(GtkWidget *widget, gpointer data)
       VERSION,
       _("A menu editor for Xfce4"),
       XFCE_COPYRIGHT_TEXT("2004", "Jean-Francois Wauthy"),
-      XFCE_LICENSE_LGPL);
+      XFCE_LICENSE_GPL);
   xfce_about_info_set_homepage(info, "http://www.xfce.org/");
 
   /* Credits */
