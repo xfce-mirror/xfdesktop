@@ -22,6 +22,9 @@
 #endif
 
 #include <stdio.h>
+#ifdef HAVE_STDLIB_H
+#include <stdlib.h> /* free() */
+#endif
 
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
