@@ -231,6 +231,57 @@
 	
 </sect1>
 
+<sect1 id="xfdesktop-workspace">
+  <title>Espaces de travail</title>
+
+  <para>Vous pouvez lancer le gestionnaire de paramètres de l'espace 
+    de travail en cliquant sur "Bureau : espaces virtuels" dans 
+	le <ulink url="xfce-mcs-manager.html#manager-dialog" type="http">
+	gestionnaire global</ulink>.
+  </para>
+
+  <figure id="xfdesktop-workspace-fig">
+    <title>Paramètres d'espaces virtuels</title> 
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/xfdesktop-workspace.png" format="PNG"/>
+	</imageobject> 
+	<textobject>
+	  <phrase>Montre le paramétrage des espaces virtuels.
+	  </phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+  <variablelist>
+
+    <varlistentry>
+      <term>Espaces virtuels</term>
+      <listitem>
+	<para>Cette option vous permet de choisir le nombre d'espaces 
+	  virtuels que vous souhaitez utiliser (entre 1 et 32).
+	</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Nom des espaces virtuels</term>
+      <listitem>
+	<para>Ce champ contient la liste des espaces disponibles. Si vous 
+	  modifier le nom de l'un d'eux, cliquez sur son numéro et remplissez 
+	  la zone de saisie qui s'ouvre. Ensuite, cliquez sur le bouton 
+	  "Appliquer" ou simplement sur la touche Entrée, pour revenir à 
+	  la liste.
+	</para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+</sect1>
+
 <sect1 id="xfdesktop-menu">
   <title>&app; menus du bureau</title>
 
@@ -252,7 +303,7 @@
 	4 possèdera un éditeur graphique. Pour l'instant, vous devez copier 
 	le fichier <filename>menu.xml</filename> vers <filename>~/.xfce4/menu.xml
 	</filename> et l'éditer. Ce n'est pas difficile. Jetez un coup d'oeil 
-	sur le fichier et les exemples commentés. Etre un peu habitué au format 
+	sur le fichier et les exemples commentés. Être un peu habitué au format 
 	xml ou html peut aider. Le champ icône n'a aucun effet, son traitement 
 	n'étant pas encore implanté.
   </para>

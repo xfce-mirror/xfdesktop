@@ -49,6 +49,8 @@ common/Makefile
 doc/Makefile
 doc/C/Makefile
 doc/C/images/Makefile
+doc/fr/Makefile
+doc/fr/images/Makefile
 Makefile
 po/Makefile.in
 settings/Makefile
