@@ -265,11 +265,6 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 	GPtrArray *newpaths = NULL;
 	const gchar *name;
 	gchar tmppath[2048];
-	
-	//TRACE("dummy");
-	
-	while(gtk_events_pending())
-		gtk_main_iteration();
 
 	xfce_desktop_entry_get_string (de, "OnlyShowIn", FALSE, &onlyshowin);
 	/* each element needs to be ';'-terminated.  i'm not working around

@@ -550,11 +550,6 @@ menu_file_xml_end(GMarkupParseContext *context, const gchar *element_name,
 	struct MenuFileParserState *state = user_data;
 	gchar *p;
 	
-	//TRACE("dummy");
-	
-	while(gtk_events_pending())
-		gtk_main_iteration();
-	
 	if(!strcmp(element_name, "menu")) {
 		if(state->hidelevel)
 			state->hidelevel--;
