@@ -34,7 +34,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %doc README TODO ChangeLog NEWS INSTALL COPYING AUTHORS
-%{_sysconfdir}/xfce4/
+%{_sysconfdir}/*
 %{_bindir}/*
 %{_datadir}/applications/
 %{_datadir}/icons/hicolor/32x32/apps/
