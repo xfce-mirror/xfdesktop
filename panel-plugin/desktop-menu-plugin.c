@@ -115,6 +115,8 @@ static DMPlugin *
 dmp_new()
 {
 	DMPlugin *dmp = g_new0(DMPlugin, 1);
+	
+	dmp->show_menu_icons = TRUE;  /* default */
 
 	dmp->evtbox = gtk_event_box_new();
 	gtk_container_set_border_width(GTK_CONTAINER(dmp->evtbox), 0);
@@ -154,7 +156,6 @@ dmp_create(Control *c)
 	return TRUE;
 }
 
-/* settings */
 static void
 dmp_read_config(Control *control, xmlNodePtr node)
 {
