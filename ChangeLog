@@ -1,3 +1,24 @@
+2003-04-02  bmeurer
+
+	* m4/X11.m4: Updated i18n stuff (libxfce4util now provides a
+	i18n.h).  updated X11.m4 updated xfwm4 to compile well with -Werror
+	-Wall updated xfce-mcs-plugins and added a hint to the README for
+	XFree86 users
+
+2003-04-01  xfce
+
+	* settings/: backdrop_settings.c, workspaces_settings.c: Initialize
+	early i18n in mcs plugins Add Etria theme
+
+2003-03-27  xfce
+
+	* src/: backdrop.c, main.c: Prefer gdk_screen[width|height] instead
+	of XDisplay[Width|Height]
+
+2003-03-27  xfce
+
+	* ChangeLog: Update ChangeLog
+
 2003-03-24  xfce
 
 	* common/Makefile.am, common/Makefile.in, settings/Makefile.am,
