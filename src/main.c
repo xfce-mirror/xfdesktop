@@ -290,6 +290,15 @@ create_fullscreen_window (void)
 			 gdk_atom_intern ("WINDOW", FALSE), 32,
 			 GDK_PROP_MODE_REPLACE, (guchar *) & xid, 1);
 
+    /* make some other programs happy (xpenguins) */
+    atom = gdk_atom_intern ("NAUTILUS_DESKTOP_WINDOW_ID", FALSE);
+    xid = GDK_WINDOW_XID (win->window);
+
+    gdk_property_change (gdk_get_default_root_window (),
+			 atom,
+			 gdk_atom_intern ("WINDOW", FALSE), 32,
+			 GDK_PROP_MODE_REPLACE, (guchar *) & xid, 1);
+
     return (win);
 }
 
