@@ -265,7 +265,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 			gdk_atom_intern("PIXMAP", FALSE), 32,
 			GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
 	/* and set the root window's BG pixmap, because aterm is somewhat lame. */
-	XSetWindowBackgroundPixmap(GDK_DISPLAY(), GDK_WINDOW_XID(groot), xid);
+	gdk_window_set_back_pixmap(groot, pmap, FALSE);
 	/* there really should be a standard for this crap... */
 	
 	gdk_error_trap_pop();
