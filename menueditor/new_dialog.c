@@ -55,7 +55,7 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
 				    GTK_DIALOG_DESTROY_WITH_PARENT,
 				    GTK_MESSAGE_QUESTION,
 				    GTK_BUTTONS_YES_NO,
-				    _("Are you sure to close the current menu?"));
+				    _("Are you sure you want to close the current menu?"));
 
     if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_NO){
       gtk_widget_destroy(dialog);
