@@ -7,8 +7,16 @@ xfdesktop_SOURCES =							\
 	main.h								\
 	menu.c								\
 	menu.h								\
+	menu-icon.c							\
+	menu-icon.h							\
+	menu-file.c							\
+	menu-file.h							\
+	menu-dentry.c						\
+	menu-dentry.h						\
 	settings.c							\
-	settings.h							
+	settings.h							\
+	menuspec.c							\
+	menuspec.h
 
 xfdesktop_CFLAGS = 							\
 	-I$(top_srcdir)							\
@@ -19,7 +27,8 @@ xfdesktop_CFLAGS = 							\
 	@LIBXML_CFLAGS@							\
 	-DLOCALEDIR=\"$(localedir)\"					\
 	-DDATADIR=\"$(pkgdatadir)\"					\
-	-DSYSCONFDIR=\"$(sysconfdir)\"
+	-DSYSCONFDIR=\"$(sysconfdir)\"			\
+	-DXFCEDATADIR=\"$(datadir)/xfce4\"
 	
 
 xfdesktop_LDADD =							\
@@ -29,3 +38,6 @@ xfdesktop_LDADD =							\
 	@LIBXFCE4MCS_CLIENT_LIBS@					\
 	@LIBXFCEGUI4_LIBS@						\
 	@LIBXML_LIBS@
+
+xfcedir = $(datadir)/xfce4
+xfce_DATA = xfce-registered-categories.xml

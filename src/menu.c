@@ -1,7 +1,9 @@
 /*  xfce4
  *  
  *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
- *                    2003 Biju Chacko (botsie@users.sourceforge.net)
+ *                     2003 Biju Chacko (botsie@users.sourceforge.net)
+ *                     2004 Danny Milosavljevic <danny.milo@gmx.net>
+ *                     2004 Brian Tarricone <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -34,6 +36,14 @@
 #include <string.h>
 #endif
 
+#ifdef HAVE_TIME_H
+#include <time.h>
+#endif
+
+#ifdef HAVE_SIGNAL_H
+#include <signal.h>
+#endif
+
 #include <X11/X.h>
 #include <X11/Xlib.h>
 
@@ -50,367 +60,209 @@
 
 #include "main.h"
 #include "menu.h"
+#include "menu-file.h"
+#include "menu-dentry.h"
+#include "menu-icon.h"
+#include "dummy.h"
+
+#ifndef PATH_MAX
+#define PATH_MAX 4096
+#endif
+
+/* where to find the current panel icon theme (if any) */
+#define CHANNEL "xfce"
+#define DEFAULT_ICON_THEME "Curve"
 
 /* max length window list menu items */
 #define WLIST_MAXLEN 20
 
-/* Search path for menu.xml file */
-#define SEARCHPATH	(SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%L:"\
-                         SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%l:"\
-                         SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F")
-
 #define EVENTMASK (ButtonPressMask|SubstructureNotifyMask|PropertyChangeMask)
 
+static GtkWidget *create_desktop_menu();
+
+/* ugly */
+extern GdkPixbuf *dummy_icon;
+
 /* a bit hackish, but works well enough */
-static gboolean is_using_system_rc = TRUE;
+gboolean is_using_system_rc = TRUE;
+gboolean use_menu_icons = TRUE;
 
 static GtkWidget *desktop_menu = NULL, *windowlist = NULL;
+static GList *MainMenuData;	/* TODO: Free this at some point */
+
+static time_t last_menu_gen = 0;
+
+static McsClient *client = NULL;
+gchar icon_theme[128];  /* so menu-icon.c can see this */
+static time_t last_theme_change = 0;
+
+GHashTable *menu_entry_hash = NULL;
 
 static NetkScreen *netk_screen = NULL;
-static GList *MainMenuData;	/* TODO: Free this at some point */
+
 static gboolean EditMode = FALSE;
-static GtkItemFactory *ifactory = NULL;	/* TODO: Is this really necessary? */
 
-/*  User menu
- *  ---------
-*/
-typedef enum __MenuItemTypeEnum
-{
-    MI_APP,
-    MI_SEPARATOR,
-    MI_SUBMENU,
-    MI_TITLE,
-    MI_BUILTIN
-}
-MenuItemType;
+/*******************************************************************************
+ *  User menu
+ *******************************************************************************
+ */
 
-typedef struct __MenuItemStruct
+static gboolean menu_check_update(gpointer data)
 {
-    MenuItemType type;		/* Type of Menu Item    */
-    char *path;			/* itemfactory path to item */
-    char *cmd;			/* shell cmd to execute */
-    gboolean term;		/* execute in terminal  */
-    GdkPixbuf *icon;		/* icon to display      */
-}
-MenuItem;
-
-void
-remove_factory_item (MenuItem * mi, GtkItemFactory * ifact)
-{
-    TRACE ("dummy");
-    gtk_item_factory_delete_item (ifact, mi->path);
+	if(menu_file_need_update() || last_theme_change > last_menu_gen || !desktop_menu)
+		desktop_menu = create_desktop_menu();
+	
+	return TRUE;
 }
 
-void
+static void
 free_menu_data (GList * menu_data)
 {
     MenuItem *mi;
     GList *li;
 
     TRACE ("dummy");
-    for (li = menu_data; li; li = li->next)
+    for (li = menu_data; li; li = li->next) 
     {
-	mi = li->data;
+        mi = li->data;
 
-	if (mi)
-	{
-	    if (mi->path)
-	    {
-		g_free (mi->path);
-	    }
-	    if (mi->cmd)
-	    {
-		g_free (mi->cmd);
-	    }
-	    g_free (mi);
-	}
+        if(mi)
+        {
+            if(mi->path)
+            {
+                g_free(mi->path);
+            }
+            if(mi->cmd)
+            {
+                g_free(mi->cmd);
+            }
+            if (mi->pix_free)
+            {
+                g_object_unref(mi->pix_free);
+            }
+			if(mi->icon)
+				xmlFree(mi->icon);
+            g_free(mi);
+        }
     }
     g_list_free (menu_data);
     menu_data = NULL;
 }
 
-void
+static void
 do_exec (gpointer callback_data, guint callback_action, GtkWidget * widget)
 {
     TRACE ("dummy");
-    g_spawn_command_line_async ((char *) callback_data, NULL);
+	
+	switch(fork()) {
+		case -1:
+			g_error("%s: unable to fork()\n", PACKAGE);
+			break;
+		
+		case 0:
+#ifdef HAVE_SETSID
+			setsid();
+#endif
+			if(execlp((char *)callback_data, (char *)callback_data))
+				g_error("%s: unable to spawn %s\n", PACKAGE, (char *)callback_data);
+			break;
+		default:
+			break;
+	}
 }
 
-void
+static void
 do_term_exec (gpointer callback_data, guint callback_action,
 	      GtkWidget * widget)
 {
-    char *cmd;
-
     TRACE ("dummy");
 
-    cmd = g_strconcat ("xfterm4 -e ", (char *) callback_data, NULL);
-
-    g_spawn_command_line_async (cmd, NULL);
-
-    g_free (cmd);
-
-    return;
+	switch(fork()) {
+		case -1:
+			g_error("%s: unable to fork()\n", PACKAGE);
+			break;
+		
+		case 0:
+#ifdef HAVE_SETSID
+			setsid();
+#endif
+			if(execlp("xfterm4", "xfterm4", "-e", (char *)callback_data, NULL))
+				g_error("%s: unable to spawn %s\n", PACKAGE, (char *)callback_data);
+			break;
+		default:
+			break;
+	}
 }
 
-void
+static void
 do_builtin (gpointer callback_data, guint callback_action, GtkWidget * widget)
 {
-    char *builtin = (char *) callback_data;
+	char *builtin = (char *) callback_data;
 
-    TRACE ("dummy");
-    if (!strcmp (builtin, "edit"))
-    {
-	EditMode = (EditMode ? FALSE : TRUE);
+	TRACE ("dummy");
+	if(!strcmp (builtin, "edit")) {
+		EditMode = (EditMode ? FALSE : TRUE);
 
-	/* Need to rebuild menu, so destroy the current one */
-	g_list_foreach (MainMenuData, (GFunc) remove_factory_item, ifactory);
-	free_menu_data (MainMenuData);
-	ifactory = NULL;
-	MainMenuData = NULL;
-    }
-    else if (!strcmp (builtin, "quit"))
-    {
-	quit ();
-    }
+		/* Need to rebuild menu, so destroy the current one */
+		if(MainMenuData)
+			free_menu_data (MainMenuData);
+		MainMenuData = NULL;
+		
+		create_desktop_menu();
+	} else if (!strcmp (builtin, "quit"))
+		quit ();
 }
 
-void
+static void
 do_edit (gpointer callback_data, guint callback_action, GtkWidget * widget)
 {
     TRACE ("dummy");
     EditMode = FALSE;
 
     /* Need to rebuild menu, so destroy the current one */
-    g_list_foreach (MainMenuData, (GFunc) remove_factory_item, ifactory);
-    free_menu_data (MainMenuData);
-    ifactory = NULL;
+	if(MainMenuData)
+		free_menu_data (MainMenuData);
     MainMenuData = NULL;
+	
+	create_desktop_menu();
 }
 
-static gchar *
-get_menu_file (void)
+static GdkFilterReturn
+client_event_filter1(GdkXEvent * xevent, GdkEvent * event, gpointer data)
 {
-    char *filename = NULL;
-    char *path = NULL;
-    const char *env;
-
-    TRACE ("dummy");
-    env = g_getenv ("XFCE_DISABLE_USER_CONFIG");
-
-    if (!env || strcmp (env, "0"))
-    {
-
-	filename = xfce_get_userfile ("menu.xml", NULL);
-	if (g_file_test (filename, G_FILE_TEST_EXISTS))
-	{
-	    is_using_system_rc = FALSE;
-
-	    return filename;
-	}
+	if(mcs_client_process_event (client, (XEvent *)xevent))
+		return GDK_FILTER_REMOVE;
 	else
-	{
-	    g_free (filename);
-	}
-    }
-
-    is_using_system_rc = TRUE;
-
-    /* xfce_get_path_localized(buffer, sizeof(buffer), SEARCHPATH,
-       "menu.xml", G_FILE_TEST_IS_REGULAR); */
-
-    path = g_build_filename (SYSCONFDIR, "xfce4", "menu.xml", NULL);
-    filename = xfce_get_file_localized (path);
-    g_free (path);
-
-    if (filename)
-	return filename;
-
-    g_warning ("%s: Could not locate a menu definition file", PACKAGE);
-
-    return NULL;
+		return GDK_FILTER_CONTINUE;
 }
 
-MenuItem *
-parse_node_attr (MenuItemType type, xmlDocPtr doc, xmlNodePtr cur, char *path)
+static void
+mcs_watch_cb(Window window, Bool is_start, long mask, void *cb_data)
 {
-    MenuItem *mi = NULL;
-    xmlChar *name = NULL;
-    xmlChar *cmd = NULL;
-    xmlChar *term = NULL;
-    xmlChar *visible = NULL;
+	GdkWindow *gdkwin;
 
-    TRACE ("dummy");
+	gdkwin = gdk_window_lookup (window);
 
-    visible = xmlGetProp (cur, "visible");
-    if (visible && !xmlStrcmp (visible, (xmlChar *) "no"))
-    {
-	xmlFree (visible);
-	return NULL;
-    }
-
-    mi = g_new (MenuItem, 1);
-
-    name = xmlGetProp (cur, "name");
-    if (name == NULL)
-    {
-	mi->path = g_build_path ("/", path, "No Name", NULL);
-    }
-    else
-    {
-	mi->path = g_build_path ("/", path, name, NULL);
-    }
-
-    cmd = xmlGetProp (cur, "cmd");
-    if (cmd)
-    {
-	/* I'm doing this so that I can do a g_free on it later */
-	mi->cmd = g_strdup (cmd);
-    }
-    else
-    {
-	mi->cmd = NULL;
-    }
-
-    term = xmlGetProp (cur, "term");
-    if (term && !xmlStrcmp (term, (xmlChar *) "yes"))
-    {
-	mi->term = TRUE;
-    }
-    else
-    {
-	mi->term = FALSE;
-    }
-
-    mi->type = type;
-    mi->icon = NULL;		/* TODO: Load a pixbuf from icon filename */
-
-    /* clean up */
-    if (visible)
-	xmlFree (visible);
-
-    if (name)
-	xmlFree (name);
-
-    if (cmd)
-	xmlFree (cmd);
-
-    if (term)
-	xmlFree (term);
-
-    return mi;
+	if(is_start)
+		gdk_window_add_filter (gdkwin, client_event_filter1, NULL);
+	else
+		gdk_window_remove_filter (gdkwin, client_event_filter1, NULL);
 }
 
-GList *
-parse_menu_node (xmlDocPtr doc, xmlNodePtr parent, char *path,
-		 GList * menu_data)
+
+static void
+mcs_notify_cb(const gchar *name, const gchar *channel_name, McsAction action,
+              McsSetting *setting, void *cb_data)
 {
-    MenuItem *mi;
-    xmlNodePtr cur;
-
-    TRACE ("dummy");
-
-    for (cur = parent->xmlChildrenNode; cur != NULL; cur = cur->next)
-    {
-	if ((!xmlStrcmp (cur->name, (const xmlChar *) "menu")))
+	if(strcasecmp(channel_name, CHANNEL) || !setting)
+		return;
+			
+	if((action==MCS_ACTION_NEW || action==MCS_ACTION_CHANGED) &&
+			!strcmp(setting->name, "theme") && setting->type==MCS_TYPE_STRING)
 	{
-	    mi = parse_node_attr (MI_SUBMENU, doc, cur, path);
-	    if (mi)
-	    {
-		menu_data = g_list_append (menu_data, mi);
-
-		/* recurse */
-		menu_data = parse_menu_node (doc, cur, mi->path, menu_data);
-	    }
+		g_strlcpy(icon_theme, setting->data.v_string, 128);
+		last_theme_change = time(NULL);
 	}
-	if ((!xmlStrcmp (cur->name, (const xmlChar *) "app")))
-	{
-	    mi = parse_node_attr (MI_APP, doc, cur, path);
-	    if (mi)
-	    {
-		menu_data = g_list_append (menu_data, mi);
-	    }
-	}
-	if ((!xmlStrcmp (cur->name, (const xmlChar *) "separator")))
-	{
-	    mi = parse_node_attr (MI_SEPARATOR, doc, cur, path);
-	    if (mi)
-	    {
-		menu_data = g_list_append (menu_data, mi);
-	    }
-	}
-	if ((!xmlStrcmp (cur->name, (const xmlChar *) "title")))
-	{
-	    mi = parse_node_attr (MI_TITLE, doc, cur, path);
-	    if (mi)
-	    {
-		menu_data = g_list_append (menu_data, mi);
-	    }
-	}
-	if ((!xmlStrcmp (cur->name, (const xmlChar *) "builtin")))
-	{
-	    mi = parse_node_attr (MI_BUILTIN, doc, cur, path);
-	    if (mi)
-	    {
-		menu_data = g_list_append (menu_data, mi);
-	    }
-	}
-    }
-
-    g_assert (menu_data);
-
-    return (menu_data);
-}
-
-GList *
-parse_menu_file (const char *filename)
-{
-    xmlDocPtr doc;
-    xmlNodePtr cur;
-    GList *menu_data = NULL;
-    int prevdefault;
-
-    TRACE ("dummy");
-
-    prevdefault = xmlSubstituteEntitiesDefault (1);
-
-    /* Open xml menu definition File */
-    doc = xmlParseFile (filename);
-
-    xmlSubstituteEntitiesDefault (prevdefault);
-
-    if (doc == NULL)
-    {
-	g_warning ("%s: Could not parse %s.\n", PACKAGE, filename);
-	return NULL;
-    }
-
-    /* verify that it is not an empty file */
-    cur = xmlDocGetRootElement (doc);
-    if (cur == NULL)
-    {
-	g_warning ("%s: empty document: %s\n", PACKAGE, filename);
-	xmlFreeDoc (doc);
-	return NULL;
-    }
-
-    DBG ("Root Element: %s\n", cur->name);
-
-    /* Verify that this file is actually related to xfdesktop */
-    if (xmlStrcmp (cur->name, (const xmlChar *) "xfdesktop-menu"))
-    {
-	g_warning
-	    ("%s: document '%s' of the wrong type, root node != xfdesktop-menu",
-	     PACKAGE, filename);
-	xmlFreeDoc (doc);
-	return NULL;
-    }
-    menu_data = parse_menu_node (doc, cur, "/", menu_data);
-
-    /* clean up */
-    xmlFreeDoc (doc);
-
-    return menu_data;
 }
 
 GtkItemFactoryEntry
@@ -422,38 +274,49 @@ parse_item (MenuItem * item)
 
     t.path = item->path;
     t.accelerator = NULL;
-    t.callback_action = 1;	/* non-zero ! */
-
-    /* disable for now
-       t.extra_data = item->icon; */
+    t.callback_action = 1;      /* non-zero ! */
+      
+	/* if we don't give any pixdata, GtkItemFactory will demote the item from a
+	 * GtkImageMenuItem back down to a GtkMenuItem */
+	if(use_menu_icons)
+		t.extra_data = (gpointer) my_pixbuf;
 
     if (!EditMode)
     {
-	switch (item->type)
-	{
-	    case MI_APP:
-		t.callback = (item->term ? do_term_exec : do_exec);
-		t.item_type = "<Item>";
-		break;
-	    case MI_SEPARATOR:
-		t.callback = NULL;
-		t.item_type = "<Separator>";
-		break;
-	    case MI_SUBMENU:
-		t.callback = NULL;
-		t.item_type = "<Branch>";
-		break;
-	    case MI_TITLE:
-		t.callback = NULL;
-		t.item_type = "<Title>";
-		break;
-	    case MI_BUILTIN:
-		t.callback = do_builtin;
-		t.item_type = "<Item>";
-		break;
-	    default:
-		break;
-	}
+        switch (item->type)
+        {
+            case MI_APP:
+                t.callback = (item->term ? do_term_exec : do_exec);
+				if(use_menu_icons)
+					t.item_type = "<ImageItem>";
+				else
+					t.item_type = "<Item>";
+                break;
+            case MI_SEPARATOR:
+                t.callback = NULL;
+			    item->icon = NULL;
+                t.item_type = "<Separator>";
+                break;
+            case MI_SUBMENU:
+                t.callback = NULL;
+			    item->icon = NULL;
+				t.item_type = "<Branch>";
+                break;
+            case MI_TITLE:
+                t.callback = NULL;
+			    item->icon = NULL;
+                t.item_type = "<Title>";
+                break;
+            case MI_BUILTIN:
+                t.callback = do_builtin;
+                if(use_menu_icons)
+					t.item_type = "<ImageItem>";
+				else
+					t.item_type = "<Item>";
+                break;
+            default:
+                break;
+        }
     }
     else
     {
@@ -470,7 +333,7 @@ parse_item (MenuItem * item)
 
 	    parent_menu = g_path_get_dirname (item->path);
 	    g_free (item->path);
-	    item->path = g_strconcat (parent_menu, "--- seperator ---", NULL);
+	    item->path = g_strconcat (parent_menu, "--- separator ---", NULL);
 	    t.path = item->path;
 
 	    g_free (parent_menu);
@@ -484,9 +347,16 @@ parse_item (MenuItem * item)
 static GtkWidget *
 create_desktop_menu (void)
 {
+	static GtkItemFactory *ifactory = NULL;
     struct stat st;
     static char *filename = NULL;
-    static time_t mtime = 0;
+    GtkWidget *img;
+    GtkImageMenuItem *imgitem;
+	GtkItemFactoryEntry entry;
+	GdkPixbuf *pix;
+	MenuItem *item = NULL;
+	GList *li, *menu_data = NULL;
+	gint i;
 
     TRACE ("dummy");
     if (!filename || is_using_system_rc)
@@ -494,7 +364,7 @@ create_desktop_menu (void)
 	if (filename)
 	    g_free (filename);
 
-	filename = get_menu_file ();
+	filename = menu_file_get();
     }
 
     /* may have been removed */
@@ -504,8 +374,7 @@ create_desktop_menu (void)
 	{
 	    g_free (filename);
 	}
-	filename = get_menu_file ();
-	mtime = 0;
+	filename = menu_file_get ();
     }
 
     /* Still no luck? Something got broken! */
@@ -517,66 +386,75 @@ create_desktop_menu (void)
 	}
 	return NULL;
     }
-
-    if (!ifactory || !MainMenuData || mtime < st.st_mtime)
-    {
-	GtkItemFactoryEntry entry;
-	MenuItem *item = NULL;
-	GList *li, *menu_data = NULL;
-
-	if (!ifactory)
-	    ifactory = gtk_item_factory_new (GTK_TYPE_MENU, "<popup>", NULL);
-
+	
+ 	if(ifactory)
+		g_object_unref(G_OBJECT(ifactory));
+	ifactory = gtk_item_factory_new (GTK_TYPE_MENU, "<popup>", NULL);
+    
 	if (MainMenuData)
-	{
-	    g_list_foreach (MainMenuData, (GFunc) remove_factory_item,
-			    ifactory);
-	    free_menu_data (MainMenuData);
+		free_menu_data (MainMenuData);
+	MainMenuData = NULL;
+
+	if(menu_entry_hash)
+		g_hash_table_destroy(menu_entry_hash);
+	menu_entry_hash = g_hash_table_new_full(g_str_hash, g_str_equal,
+			(GDestroyNotify)g_free, NULL);
+	
+	/* main source of menu data: the menu file */
+	menu_data = menu_file_parse (filename, NULL);
+	if(!menu_data) {
+		g_error("%s: Error parsing menu file %s\n", PACKAGE, filename);
+		return NULL;
 	}
+        
+	g_hash_table_destroy(menu_entry_hash);
+	menu_entry_hash = NULL;
+		
+	for (li = menu_data; li; li = li->next) {
+		/* parse current item */
+		item = (MenuItem *) li->data;
+		
+		if(!item) {
+			g_warning("%s: found a NULL MenuItem\n", PACKAGE);
+			continue;
+		}
 
-	/*
-	 * TODO: Replace the following line with code  to call multiple
-	 * menu parsers and merge their content
-	 */
-	menu_data = parse_menu_file (filename);
-	if (menu_data == NULL)
-	{
-	    g_warning ("%s: Error parsing menu file %s\n", PACKAGE, filename);
+		entry = parse_item (item);
+    
+		if(!EditMode) {
+			gtk_item_factory_create_item (ifactory, &entry, item->cmd, 1);
+			if (use_menu_icons && item->icon) {
+				pix = menu_icon_find(item->icon);
+				if(pix) {
+					imgitem = GTK_IMAGE_MENU_ITEM (gtk_item_factory_get_item (ifactory, item->path));
+					if (imgitem) {
+						img = gtk_image_new_from_pixbuf (pix);
+						gtk_widget_show (img);
+						gtk_image_menu_item_set_image (imgitem, img);
+					}
+					if(pix != dummy_icon)
+						item->pix_free = pix;
+				}
+			}
+		} else {
+			gtk_item_factory_create_item (ifactory, &entry, item, 1);
+		}
 	}
-
-	for (li = menu_data; li; li = li->next)
-	{
-	    /* parse current item */
-	    item = (MenuItem *) li->data;
-
-	    g_assert (item != NULL);
-
-	    entry = parse_item (item);
-
-	    if (!EditMode)
-	    {
-		gtk_item_factory_create_item (ifactory, &entry, item->cmd, 1);
-	    }
-	    else
-	    {
-		gtk_item_factory_create_item (ifactory, &entry, item, 1);
-	    }
-	}
-
-	/* clean up */
-	/* free_menu_data(menu_data); */
-	/* Hmmm ... if you do this the menus don't work */
-	/* Lets save it in a global var and worry about it later */
+    
+	/* save menu data for later */
 	MainMenuData = menu_data;
-	mtime = st.st_mtime;
-    }
-
+	/* mark off when we did all this */
+	last_menu_gen = time(NULL);
+	
     return gtk_item_factory_get_widget (ifactory, "<popup>");
 }
 
-/*  Window list menu
- *  ----------------
-*/
+
+/*******************************************************************************  
+ *  Window list menu
+ *******************************************************************************
+ */
+
 static void
 activate_window (GtkWidget * item, NetkWindow * win)
 {
@@ -777,13 +655,12 @@ create_windowlist_menu (void)
 void
 popup_menu (int button, guint32 time)
 {
-    static GtkWidget *menu = NULL;
+	if(menu_file_need_update() || last_theme_change > last_menu_gen || !desktop_menu)
+		desktop_menu = create_desktop_menu();
 
-    desktop_menu = menu = create_desktop_menu ();
-
-    if (menu)
+    if (desktop_menu)
     {
-	gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL,
+	gtk_menu_popup (GTK_MENU (desktop_menu), NULL, NULL, NULL, NULL,
 			button, time);
     }
 }
@@ -872,6 +749,31 @@ menu_init (XfceDesktop * xfdesktop)
 
     DBG ("connecting callbacks");
 
+#ifdef HAVE_SIGNAL_H
+	signal(SIGCHLD, SIG_IGN);
+#endif
+	
+	/* track icon theme changes (from the panel) */
+    if(!client) {
+        Display *dpy = GDK_DISPLAY();
+        int screen = XDefaultScreen(dpy);
+        
+        if(!mcs_client_check_manager(dpy, screen, "xfce-mcs-manager"))
+            g_warning("%s: mcs manager not running\n", PACKAGE);
+        client = mcs_client_new(dpy, screen, mcs_notify_cb, mcs_watch_cb, NULL);
+        if(client)
+            mcs_client_add_channel(client, CHANNEL);
+        else
+            g_strlcpy(icon_theme, DEFAULT_ICON_THEME, 128);
+    }
+	
+	/* create the menu */
+	desktop_menu = create_desktop_menu();
+
+	/* initialise menu file modification time check */
+	menu_file_need_update();
+	gtk_timeout_add(10000, menu_check_update, NULL);
+	
     g_signal_connect (xfdesktop->fullscreen, "button-press-event",
 		      G_CALLBACK (button_press), NULL);
 

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xfce-registered-categories>
+
+<!--
+	Here is how this file works:
+	
+	<xfce-registered-categories> - root element, required.
+	
+	<category>
+		name:  Required.  Corresponds to an official category from the
+		  freedesktop.org menu spec.
+		replace: Optional.  Name that is displayed as the menu name for items
+		  in the category (useful, e.g., for translations).
+		toplevel: Optional.  Marks categories as being "allowed" to be toplevel
+		  menus.  Note: if a category is unrooted, it will be promoted to
+		  toplevel regardless of the value of this attribute. (default: false)
+		ignore: Optional.  This category will be ignored when organising menu
+		  items. (default: false)
+		hide: Optional.  Items referencing this category will not appear in any
+			menu. (default: false)
+			
+	<subcategory> - sub-element of <category>, specifies a subcategory relation
+		name: Required.  Corresponds to an official category from the
+		  freedesktop.org menu spec.
+	  Example:
+	  <category name="Graphics">
+		  <subcategory name="RasterGraphics">
+	  </category>
+	  Note that even if subcategories are definied, it is possible to collapse
+	  all subcategories into a flat one-level menu by specifying style="simple"
+	  in the <include> tag in your menu.xml file.
+-->
+
+<xfce-registered-categories>
+	<category name="Legacy" toplevel="true" replace="Accessories" />
+	<category name="Core" toplevel="true" replace="Accessories" />
+	<category name="Development" toplevel="true">
+		<subcategory name="Building" />
+		<subcategory name="Debugger" />
+		<subcategory name="IDE" />
+		<subcategory name="GUIDesigner" />
+		<subcategory name="Profiling" />
+		<subcategory name="RevisionControl" />
+		<subcategory name="Translation" />
+		<subcategory name="Database" />
+		<subcategory name="ProjectManagement" />
+		<subcategory name="WebDevelopment" />
+	</category>
+	<category name="Building" />
+	<category name="Debugger" replace="Debugging" />
+	<category name="IDE" replace="Environments" />
+	<category name="GUIDesigner" replace="GUI Designers" />
+	<category name="Profiling" />
+	<category name="RevisionControl" replace="Revision Control" />
+	<category name="Translation" />
+	<category name="Office" toplevel="true">
+		<subcategory name="Calendar" />
+		<subcategory name="ContactManagement" />
+		<subcategory name="Database" />
+		<subcategory name="Dictionary" />
+		<subcategory name="Chart" />
+		<subcategory name="Email" />
+		<subcategory name="Finance" />
+		<subcategory name="FlowChart" />
+		<subcategory name="PDA" />
+		<subcategory name="Project Management" />
+		<subcategory name="Presentation" />
+		<subcategory name="Spreadsheet" />
+		<subcategory name="WordProcessor" />
+		<subcategory name="Photograph" />
+		<subcategory name="Viewer" />
+	</category>
+	<category name="Calendar" />
+	<category name="ContactManagement" replace="Contact Management" />
+	<category name="Database" />
+	<category name="Dictionary" />
+	<category name="Chart" />
+	<category name="Email" />
+	<category name="Finance" />
+	<category name="FlowChart" replace="Flow Chart" />
+	<category name="PDA" />
+	<category name="ProjectManagement" replace="Project Management" />
+	<category name="Presentation" />
+	<category name="Spreadsheet" />
+	<category name="WordProcessor" replace="Word Processing" />
+	<category name="Graphics" toplevel="true">
+		<subcategory name="2DGraphics" />
+		<subcategory name="3DGraphics" />
+		<subcategory name="Scanning" />
+		<subcategory name="Photograph" />
+		<subcategory name="Viewer" />
+	</category>
+	<category name="2DGraphics" replace="2-D Graphics">
+		<subcategory name="VectorGraphics" />
+		<subcategory name="RasterGraphics" />
+	</category>
+	<category name="VectorGraphics" replace="Vector Graphics" />
+	<category name="RasterGraphics" replace="Raster Graphics" />
+	<category name="3DGraphics" replace="3-D Graphics" />
+	<category name="Scanning">
+		<subcategory name="OCR" />
+	</category>
+	<category name="OCR" />
+	<category name="Photograph" replace="Photography" />
+	<category name="Viewer" replace="Viewers" />
+	<category name="Settings" toplevel="true">
+		<subcategory name="DesktopSettings" />
+		<subcategory name="HardwareSettings" />
+		<subcategory name="PackageSettings" />
+		<subcategory name="Security" />
+		<subcategory name="Accessibility" />
+		<subcategory name="Screensaver" />
+	</category>
+	<category name="DesktopSettings" replace="Desktop Settings" />
+	<category name="HardwareSettings" replace="Hardware Settings" />
+	<category name="PackageSettings" replace="Package Settings" />
+	<category name="Network" toplevel="true">
+		<subcategory name="Email" />
+		<subcategory name="Dialup" />
+		<subcategory name="InstantMessaging" />
+		<subcategory name="IRCClient" />
+		<subcategory name="FileTransfer" />
+		<subcategory name="HamRadio" />
+		<subcategory name="News" />
+		<subcategory name="P2P" />
+		<subcategory name="RemoteAccess" />
+		<subcategory name="Telephony" />
+		<subcategory name="WebBrowser" />
+		<subcategory name="WebDevelopment" />
+	</category>
+	<category name="Dialup" />
+	<category name="InstantMessaging" replace="Instant Messaging" />
+	<category name="IRCClient" replace="IRC Clients" />
+	<category name="FileTransfer" replace="File Transfer" />
+	<category name="HamRadio" replace="Ham Radio" />
+	<category name="News" />
+	<category name="P2P" replace="Peer-to-Peer" />
+	<category name="RemoteAccess" replace="Remote Access" />
+	<category name="Telephony" />
+	<category name="WebBrowser" replace="Web Browsing" />
+	<category name="WebDevelopment" replace="Web Development" />
+	<category name="AudioVideo" replace="Multimedia" toplevel="true">
+		<subcategory name="Database" />
+		<subcategory name="HamRadio" />
+		<subcategory name="Audio" />
+		<subcategory name="Video" />
+		<subcategory name="AudioVideoEditing" />
+		<subcategory name="Player" />
+		<subcategory name="Recorder" />
+		<subcategory name="DiscBurning" />
+	</category>
+	<category name="Audio">
+		<subcategory name="Midi" />
+		<subcategory name="Mixer" />
+		<subcategory name="Sequencer" />
+		<subcategory name="Tuner" />
+		<subcategory name="AudioVideoEditing" />
+		<subcategory name="Player" />
+		<subcategory name="Recorder" />
+	</category>
+	<category name="Midi" />
+	<category name="Mixer" replace="Sound Mixers" />
+	<category name="Sequencer" replace="Sequencers" />
+	<category name="Tuner" replace="Tuners" />
+	<category name="Video">
+		<subcategory name="TV" />
+		<subcategory name="AudioVideoEditing" />
+		<subcategory name="Player" />
+		<subcategory name="Recorder" />
+		<subcategory name="Music" />
+	</category>
+	<category name="TV" />
+	<category name="AudioVideoEditing" replace="Editing" />
+	<category name="Player" replace="Media Players" />
+	<category name="Recorder" replace="Recording" />
+	<category name="DiscBurning" replace="CD and DVD Burning" />
+	<category name="Game" toplevel="true" replace="Games">
+		<subcategory name="ActionGame" />
+		<subcategory name="AdventureGame" />
+		<subcategory name="ArcadeGame" />
+		<subcategory name="BoardGame" />
+		<subcategory name="BlocksGame" />
+		<subcategory name="CardGame" />
+		<subcategory name="KidsGame" />
+		<subcategory name="LogicGame" />
+		<subcategory name="RolePlaying" />
+		<subcategory name="Simulation" />
+		<subcategory name="SportsGame" />
+		<subcategory name="StrategyGame" />
+	</category>
+	<category name="ActionGame" replace="Action Games" />
+	<category name="AdventureGame" replace="Adventure Games" />
+	<category name="ArcadeGame" replace="Arcade Games" />
+	<category name="BoardGame" replace="Board Games" />
+	<category name="BlocksGame" replace="Puzzle Games" />
+	<category name="CardGame" replace="Card Games" />
+	<category name="KidsGame" replace="Kids' Games" />
+	<category name="LogicGame" replace="Logic Games" />
+	<category name="RolePlaying" replace="Role Playing Games" />
+	<category name="Simulation" />
+	<category name="SportsGame" replace="Sports Games" />
+	<category name="StrategyGame" replace="Strategy Games" />
+	<category name="Education" toplevel="true">
+		<subcategory name="Art" />
+		<subcategory name="Construction" />
+		<subcategory name="Music" />
+		<subcategory name="Languages" />
+		<subcategory name="Teaching" />
+	</category>
+	<category name="Art" />
+	<category name="Construction" />
+	<category name="Music" />
+	<category name="Languages" />
+	<category name="Science" toplevel="true">
+		<subcategory name="Astronomy" />
+		<subcategory name="Biology" />
+		<subcategory name="Chemistry" />
+		<subcategory name="Geology" />
+		<subcategory name="Math" />
+		<subcategory name="MedicalSoftware" />
+		<subcategory name="Physics" />
+	</category>
+	<category name="Astronomy" />
+	<category name="Biology" />
+	<category name="Chemistry" />
+	<category name="Geology" />
+	<category name="Math" />
+	<category name="MedicalSoftware" replace="Medical" />
+	<category name="Physics" />
+	<category name="Teaching" />
+	<category name="Amusement" replace="Games" />
+	<category name="Applet" replace="Applets" />
+	<category name="Archiving" />
+	<category name="Electronics" />
+	<category name="Emulator" toplevel="true" replace="Emulation" />
+	<category name="Engineering" />
+	<category name="FileManager" replace="File Management" />
+	<category name="Shell" replace="Shells" />
+	<category name="Screensaver" />
+	<category name="TerminalEmulator" replace="Terminal Emulators" />
+	<category name="TrayIcon" replace="System Tray Icons" />
+	<category name="System" toplevel="true">
+		<subcategory name="FileSystem" />
+		<subcategory name="Monitor" />
+		<subcategory name="Security" />
+		<subcategory name="Accessibility" />
+		<subcategory name="TerminalEmulator" />
+		<subcategory name="Shell" />
+	</category>
+	<category name="Filesystem" />
+	<category name="Monitor" />
+	<category name="Security" />
+	<category name="Utility" toplevel="true" replace="Accessories">
+		<subcategory name="Accessibility" />
+		<subcategory name="Calculator" />
+		<subcategory name="Clock" />
+		<subcategory name="TextEditor" />
+		<subcategory name="Archiving" />
+		<subcategory name="TerminalEmulator" />
+		<subcategory name="FileManager" />
+		<subcategory name="Shell" />
+	</category>
+	<category name="Accessibility" />
+	<category name="Calculator" replace="Calculators" />
+	<category name="Clock" replace="Clocks" />
+	<category name="TextEditor" replace="Text Editing" />
+	<category name="KDE" toplevel="true" ignore="true">
+		<subcategory name="Development" />
+		<subcategory name="Office" />
+		<subcategory name="Graphics" />
+		<subcategory name="Settings" />
+		<subcategory name="Network" />
+		<subcategory name="AudioVideo" />
+		<subcategory name="Game" />
+		<subcategory name="Education" />
+		<subcategory name="Science" />
+		<subcategory name="System" />
+		<subcategory name="Utility" />
+	</category>
+	<category name="GNOME" toplevel="true" ignore="true">
+		<subcategory name="Development" />
+		<subcategory name="Office" />
+		<subcategory name="Graphics" />
+		<subcategory name="Settings" />
+		<subcategory name="Network" />
+		<subcategory name="AudioVideo" />
+		<subcategory name="Game" />
+		<subcategory name="Education" />
+		<subcategory name="Science" />
+		<subcategory name="System" />
+		<subcategory name="Utility" />
+	</category>
+	<category name="GTK" toplevel="true" ignore="true">
+		<subcategory name="GNOME" />
+	</category>
+	<category name="Qt" toplevel="true" ignore="true">
+		<subcategory name="KDE" />
+	</category>
+	<category name="Motif" toplevel="true" ignore="true">
+		<subcategory name="Development" />
+		<subcategory name="Office" />
+		<subcategory name="Graphics" />
+		<subcategory name="Settings" />
+		<subcategory name="Network" />
+		<subcategory name="AudioVideo" />
+		<subcategory name="Game" />
+		<subcategory name="Education" />
+		<subcategory name="Science" />
+		<subcategory name="System" />
+		<subcategory name="Utility" />
+	</category>
+	<category name="Java" toplevel="true" ignore="true">
+		<subcategory name="Applet" />
+	</category>
+	<category name="ConsoleOnly" toplevel="true" replace="Console" ignore="true">
+		<subcategory name="Development" />
+		<subcategory name="Office" />
+		<subcategory name="Graphics" />
+		<subcategory name="Settings" />
+		<subcategory name="Network" />
+		<subcategory name="AudioVideo" />
+		<subcategory name="Game" />
+		<subcategory name="Education" />
+		<subcategory name="Science" />
+		<subcategory name="System" />
+		<subcategory name="Utility" />
+	</category>
+</xfce-registered-categories>

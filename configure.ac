@@ -23,8 +23,8 @@ AC_PROG_LIBTOOL
 
 dnl check for standard header files
 AC_HEADER_STDC
-AC_CHECK_HEADERS(fcntl.h signal.h stddef.h sys/wait.h time.h)
-AC_CHECK_FUNCS(sigaction srandom)
+AC_CHECK_HEADERS(fcntl.h signal.h stddef.h string.h sys/stat.h sys/types.h sys/wait.h time.h)
+AC_CHECK_FUNCS(getenv mmap sigaction srandom)
 
 dnl Check for i18n support
 BM_I18N([xfdesktop], [az ca cs de es es_MX fa_IR fi fr hi hu it ja pl ko lt ms
