@@ -6,13 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 3.99.2\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2003-11-14 19:03+0100\n"
-"PO-Revision-Date: 2003-08-03 01:25+0300\n"
+"PO-Revision-Date: 2004-06-11 22:12+0300\n"
 "Last-Translator: Mantas <zaz@xxx.lt>\n"
 "Language-Team: Lithuania <zaz@xxx.lt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-13\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bit"
 
 #: settings/backdrop-mgr.c:175
 #, c-format
@@ -32,18 +33,16 @@ msgid "Select image file"
 msgstr "Pasirinkite paveikslo failà"
 
 #: settings/backdrop-mgr.c:622
-#, fuzzy
 msgid "Choose backdrop list filename"
-msgstr "Pasirinkite backdrop sàraðo failo vardà"
+msgstr "Pasirinkite fonø sàraðo failo vardà"
 
 #: settings/backdrop-mgr.c:694
 msgid "New.list"
 msgstr "Naujas .list"
 
 #: settings/backdrop-mgr.c:698
-#, fuzzy
 msgid "Backdrop List"
-msgstr "Backdrop sàraðas"
+msgstr "Fonø sàraðas"
 
 #: settings/backdrop-mgr.c:734
 msgid "Image files"
@@ -54,19 +53,16 @@ msgid "List file"
 msgstr "Failø sàraðas"
 
 #: settings/backdrop-mgr.c:767
-#, fuzzy
 msgid "Create backdrop list"
-msgstr "Sukurti backdrop sàraðà"
+msgstr "Sukurti fonø sàraðà"
 
 #: settings/backdrop-mgr.c:774
-#, fuzzy
 msgid "Edit backdrop list"
-msgstr "Redaguoti backdrop sàraðà"
+msgstr "Redaguoti fonø sàraðà"
 
 #: settings/backdrop_settings.c:149
-#, fuzzy
 msgid "Desktop background"
-msgstr "Darbalaukis: backdrop"
+msgstr "Darbalaukio fonas"
 
 #: settings/backdrop_settings.c:363
 msgid "Select background color"
@@ -141,9 +137,8 @@ msgid "Image"
 msgstr "Paveiksliukas"
 
 #: settings/backdrop_settings.c:882
-#, fuzzy
 msgid "Don't set background"
-msgstr "Pasirinkite fono spalvà"
+msgstr "Nenustatyta fono spalvà"
 
 #: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
@@ -185,9 +180,9 @@ msgid "Workspace names"
 msgstr "Darbo vietø vardas"
 
 #: src/backdrop.c:508
-#, fuzzy, c-format
+#, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
-msgstr "xfdesktop klaida: ákraunant backdrop paveiksliukà: %s\n"
+msgstr "xfdesktop klaida: ákraunant fono paveiksliukà: %s\n"
 
 #: src/menu.c:735
 msgid "Add workspace"
@@ -205,5 +200,3 @@ msgstr ""
 "xfdesktop: neámanoma susijungti su nuostatø tvarkykle! Patikrinkite savo "
 "instaliacijà."
 
-#~ msgid "Desktop"
-#~ msgstr "Darbalaukis"
