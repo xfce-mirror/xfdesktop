@@ -296,9 +296,9 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 
     xfce_desktop_entry_get_string (de, "Categories", TRUE, &categories);
     
-    if(categories) {
+    if(categories || !is_legacy) {
         /* hack: leave out items that look like they are KDE control panels */
-        if(strstr(categories, ";X-KDE-"))
+        if(categories && strstr(categories, ";X-KDE-"))
             goto cleanup;
         
         if(pathtype==MPATH_SIMPLE || pathtype==MPATH_SIMPLE_UNIQUE)
@@ -311,8 +311,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
     } else if(is_legacy) {
         newpaths = g_ptr_array_new();
         g_ptr_array_add(newpaths, g_strdup(extra_cat));
-    } else
-        goto cleanup;
+    }
     
     if(pathtype == MPATH_SIMPLE_UNIQUE) {
         /* grab first of the most general */
