@@ -21,6 +21,10 @@
 #include <config.h>
 #endif
 
+#ifdef GDK_MULTIHEAD_SAFE
+#undef GDK_MULTIHEAD_SAFE
+#endif
+
 #include <sys/stat.h>
 #include <sys/types.h>
 
