@@ -109,7 +109,7 @@ add_file(const gchar *path, GtkListStore *ls)
 		return;
 
 	gtk_list_store_append(ls, &iter);
-	gtk_list_store_set(ls, &iter, 0, path, -1);
+	gtk_list_store_set(ls, &iter, 0, path, 1, PANGO_WEIGHT_NORMAL, -1);
 }
 
 static void
@@ -463,7 +463,7 @@ add_tree_view(GtkWidget *vbox, const gchar *path)
 					 (treeview_scroll), GTK_SHADOW_IN);
     gtk_box_pack_start (GTK_BOX (vbox), treeview_scroll, TRUE, TRUE, 0);
 
-    store = gtk_list_store_new (1, G_TYPE_STRING);
+    store = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_INT);
 
     treeview = gtk_tree_view_new_with_model(GTK_TREE_MODEL(store));
     gtk_widget_show(treeview);
@@ -478,7 +478,8 @@ add_tree_view(GtkWidget *vbox, const gchar *path)
 
     renderer = gtk_cell_renderer_text_new ();
     column = gtk_tree_view_column_new_with_attributes ("File", renderer,
-						       "text", 0, NULL);
+						       "text", 0, 
+						       "weight", 1, NULL);
 
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), column);
 
@@ -875,9 +876,11 @@ edit_list_file(const gchar *path, GtkWidget *parent, ListMgrCb callback,
 				if(!strcmp(curimg, file)) {
 					GtkTreePath *path;
 					
-					file = g_strconcat("* ", file, " *", NULL);
+					/*file = g_strconcat("* ", file, " *", NULL);
 					gtk_list_store_set(ls, &itr, 0, file, -1);
-					g_free(file);
+					*/
+					gtk_list_store_set(ls, &itr, 1, PANGO_WEIGHT_BOLD, -1);
+					/*g_free(file);*/
 					
 					set_sel = TRUE; /* GtkTreeView needs to be realized first */
 					path = gtk_tree_model_get_path(GTK_TREE_MODEL(ls), &itr);
