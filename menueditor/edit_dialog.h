@@ -1,6 +1,6 @@
-/*   edit.h */
+/*   edit_dialog.h */
 
-/*  Copyright (C)  Jean-François Wauthy under GNU GPL
+/*  Copyright (C) 2005 Jean-FranÃ§ois Wauthy under GNU GPL
  *
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -18,11 +18,8 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#ifndef __HAVE_EDIT_HEADER
-#define __HAVE_EDIT_HEADER
+#ifndef __HAVE_EDIT_DIALOG_HEADER
+#define __HAVE_EDIT_DIALOG_HEADER
 
-/* Prototype */
-void treeview_activate_cb (GtkWidget * widget, GtkTreePath * path, GtkTreeViewColumn * col, gpointer data);
-void popup_edit_cb (GtkWidget * widget, gpointer data);
-
+void edit_selection (MenuEditor *me);
 #endif

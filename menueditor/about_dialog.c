@@ -1,6 +1,6 @@
 /*   about_dialog.c */
 
-/*  Copyright (C)  Jean-François Wauthy under GNU GPL
+/*  Copyright (C) 2005 Jean-François Wauthy under GNU GPL
  *
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -36,7 +36,7 @@ about_cb (GtkWidget * widget, gpointer data)
 
   info =
     xfce_about_info_new ("xfce4-menueditor", VERSION,
-                         _("A menu editor for Xfce4"), XFCE_COPYRIGHT_TEXT ("2004", "Xfce Dev Team"), XFCE_LICENSE_GPL);
+                         _("A menu editor for Xfce4"), XFCE_COPYRIGHT_TEXT ("2004", "Xfce4 Team"), XFCE_LICENSE_GPL);
   xfce_about_info_set_homepage (info, "http://www.xfce.org/");
 
   /* Credits */
@@ -48,7 +48,7 @@ about_cb (GtkWidget * widget, gpointer data)
 
   icon = xfce_icon_theme_load (me->icon_theme, "xfce4-menueditor", 48);
 
-  dialog = xfce_about_dialog_new (GTK_WINDOW (me->main_window), info, icon);
+  dialog = xfce_about_dialog_new (GTK_WINDOW (me->window), info, icon);
 
   gtk_window_set_default_size (GTK_WINDOW (dialog), 500, 400);
   xfce_about_info_free (info);

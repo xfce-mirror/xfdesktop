@@ -1,6 +1,6 @@
-/* add_menu_dialog.c */
+/*   add_menu_dialog.c */
 
-/*  Copyright (C)  Jean-François Wauthy under GNU GPL
+/*  Copyright (C) 2005 Jean-FranÃ§ois Wauthy under GNU GPL
  *
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -16,80 +16,92 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
- */
-
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-#ifdef HAVE_STRING_H
-#include <string.h>
-#endif
+*/
 
 #include "menueditor.h"
+#include "utils.h"
 
 #include "add_menu_dialog.h"
 
-#include "../modules/menu/dummy_icon.h"
-
-/*************************************/
-/* Support for adding an include tag */
-/*************************************/
-void
-addmenu_option_file_cb (GtkWidget * widget, struct _controls_menu *controls)
+/* Definitions */
+struct _AddMenuDialog
 {
-  controls->menu_type = MENUFILE;
-  gtk_widget_set_sensitive (controls->hbox_source, TRUE);
-  gtk_widget_set_sensitive (controls->label_source, TRUE);
-  gtk_widget_set_sensitive (controls->label_style, FALSE);
-  gtk_widget_set_sensitive (controls->optionmenu_style, FALSE);
-  gtk_widget_set_sensitive (controls->checkbutton_unique, FALSE);
+  GtkWidget *dialog;
+  ENTRY_TYPE type;
+
+  GtkWidget *label_source;
+  GtkWidget *hbox_source;
+  GtkWidget *entry_source;
+  GtkWidget *label_style;
+  GtkWidget *option_menu_style;
+  GtkWidget *check_button_unique;
+};
+
+typedef struct _AddMenuDialog AddMenuDialog;
+
+/*************/
+/* Callbacks */
+/*************/
+static void
+addmenu_option_file_cb (GtkWidget * widget, AddMenuDialog * add_menu_dialog)
+{
+  add_menu_dialog->type = INCLUDE_FILE;
+  gtk_widget_set_sensitive (add_menu_dialog->hbox_source, TRUE);
+  gtk_widget_set_sensitive (add_menu_dialog->label_source, TRUE);
+  gtk_widget_set_sensitive (add_menu_dialog->label_style, FALSE);
+  gtk_widget_set_sensitive (add_menu_dialog->option_menu_style, FALSE);
+  gtk_widget_set_sensitive (add_menu_dialog->check_button_unique, FALSE);
 }
 
-void
-addmenu_option_system_cb (GtkWidget * widget, struct _controls_menu *controls)
+static void
+addmenu_option_system_cb (GtkWidget * widget, AddMenuDialog * add_menu_dialog)
 {
-  controls->menu_type = SYSTEM;
-  gtk_widget_set_sensitive (controls->hbox_source, FALSE);
-  gtk_widget_set_sensitive (controls->label_source, FALSE);
-  gtk_widget_set_sensitive (controls->label_style, TRUE);
-  gtk_widget_set_sensitive (controls->optionmenu_style, TRUE);
-  gtk_widget_set_sensitive (controls->checkbutton_unique, TRUE);
+  add_menu_dialog->type = INCLUDE_SYSTEM;
+  gtk_widget_set_sensitive (add_menu_dialog->hbox_source, FALSE);
+  gtk_widget_set_sensitive (add_menu_dialog->label_source, FALSE);
+  gtk_widget_set_sensitive (add_menu_dialog->label_style, TRUE);
+  gtk_widget_set_sensitive (add_menu_dialog->option_menu_style, TRUE);
+  gtk_widget_set_sensitive (add_menu_dialog->check_button_unique, TRUE);
 }
 
+static void
+browse_file_clicked_cb (GtkWidget * widget, AddMenuDialog * add_menu_dialog)
+{
+  browse_file (GTK_ENTRY (add_menu_dialog->entry_source), GTK_WINDOW (add_menu_dialog->dialog));
+}
+
+/*******************/
+/* Show the dialog */
+/*******************/
 void
 add_menu_cb (GtkWidget * widget, gpointer data)
 {
   MenuEditor *me;
-  GtkWidget *dialog;
-  GtkWidget *header;
-  GtkWidget *mitem;
+  AddMenuDialog *add_menu_dialog;
 
+  GtkWidget *header;
   GtkWidget *table;
   GtkWidget *label_type;
   GtkWidget *menu;
-  GtkWidget *optionmenu_type;
-
-  struct _controls_menu controls;
-  GtkWidget *button_browse;
+  GtkWidget *menu_item;
+  GtkWidget *option_menu_type;
+  GtkWidget *button;
 
   gint response;
 
-  gchar *header_text;
-
   me = (MenuEditor *) data;
 
-  dialog = gtk_dialog_new_with_buttons (_("Add an external menu"),
-                                        GTK_WINDOW (me->main_window),
-                                        GTK_DIALOG_DESTROY_WITH_PARENT,
-                                        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
+  add_menu_dialog = g_new0 (AddMenuDialog, 1);
 
-  /* set ok button as default */
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 
-  header_text = g_strdup_printf ("%s", _("Add an external menu"));
-  header = xfce_create_header (NULL, header_text);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), header, FALSE, FALSE, 0);
-  g_free (header_text);
+  add_menu_dialog->dialog = gtk_dialog_new_with_buttons (_("Add an external menu"),
+                                                         GTK_WINDOW (me->window),
+                                                         GTK_DIALOG_DESTROY_WITH_PARENT,
+                                                         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OK,
+                                                         GTK_RESPONSE_OK, NULL);
+
+  header = xfce_create_header (NULL, _("Add an external menu"));
+  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (add_menu_dialog->dialog)->vbox), header, FALSE, FALSE, 0);
 
   /* Table */
   table = gtk_table_new (4, 2, TRUE);
@@ -97,192 +109,166 @@ add_menu_cb (GtkWidget * widget, gpointer data)
   /* Type */
   label_type = gtk_label_new (_("Type:"));
 
-  controls.menu_type = MENUFILE;
+  add_menu_dialog->type = INCLUDE_FILE;
 
   menu = gtk_menu_new ();
-  mitem = gtk_menu_item_new_with_mnemonic (_("File"));
-  g_signal_connect ((gpointer) mitem, "activate", G_CALLBACK (addmenu_option_file_cb), &controls);
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), mitem);
-  gtk_widget_show (mitem);
+  menu_item = gtk_menu_item_new_with_mnemonic (_("File"));
+  g_signal_connect (G_OBJECT (menu_item), "activate", G_CALLBACK (addmenu_option_file_cb), add_menu_dialog);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
 
-  mitem = gtk_menu_item_new_with_mnemonic (_("System"));
-  g_signal_connect ((gpointer) mitem, "activate", G_CALLBACK (addmenu_option_system_cb), &controls);
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), mitem);
-  gtk_widget_show (mitem);
+  menu_item = gtk_menu_item_new_with_mnemonic (_("System"));
+  g_signal_connect (G_OBJECT (menu_item), "activate", G_CALLBACK (addmenu_option_system_cb), add_menu_dialog);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
 
-  optionmenu_type = gtk_option_menu_new ();
+  option_menu_type = gtk_option_menu_new ();
 
-  gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu_type), menu);
-  gtk_option_menu_set_history (GTK_OPTION_MENU (optionmenu_type), 0);
+  gtk_option_menu_set_menu (GTK_OPTION_MENU (option_menu_type), menu);
+  gtk_option_menu_set_history (GTK_OPTION_MENU (option_menu_type), 0);
 
   gtk_table_attach (GTK_TABLE (table), label_type, 0, 1, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
-  gtk_table_attach (GTK_TABLE (table), optionmenu_type, 1, 2, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), option_menu_type, 1, 2, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
 
   /* Source */
-  controls.hbox_source = gtk_hbox_new (FALSE, 0);
-  controls.label_source = gtk_label_new (_("Source:"));
-  me->entry_command = gtk_entry_new ();
-  button_browse = gtk_button_new_with_label ("...");
+  add_menu_dialog->hbox_source = gtk_hbox_new (FALSE, 0);
+  add_menu_dialog->label_source = gtk_label_new (_("Source:"));
+  add_menu_dialog->entry_source = gtk_entry_new ();
+  button = gtk_button_new_with_label ("...");
+  g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (browse_file_clicked_cb), add_menu_dialog);
 
-  g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), me);
+  gtk_box_pack_start (GTK_BOX (add_menu_dialog->hbox_source), add_menu_dialog->entry_source, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (add_menu_dialog->hbox_source), button, FALSE, FALSE, 0);
 
-  gtk_box_pack_start (GTK_BOX (controls.hbox_source), me->entry_command, FALSE, FALSE, 0);
-  gtk_box_pack_start (GTK_BOX (controls.hbox_source), button_browse, FALSE, FALSE, 0);
-
-  gtk_table_attach (GTK_TABLE (table), controls.label_source, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
-  gtk_table_attach (GTK_TABLE (table), controls.hbox_source, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), add_menu_dialog->label_source, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), add_menu_dialog->hbox_source, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
 
   /* Style */
-  controls.label_style = gtk_label_new (_("Style:"));
+  add_menu_dialog->label_style = gtk_label_new (_("Style:"));
 
   menu = gtk_menu_new ();
-  mitem = gtk_menu_item_new_with_mnemonic (_("Simple"));
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), mitem);
-  gtk_widget_show (mitem);
-  mitem = gtk_menu_item_new_with_mnemonic (_("Multilevel"));
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), mitem);
-  gtk_widget_show (mitem);
+  menu_item = gtk_menu_item_new_with_mnemonic (_("Simple"));
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
+  menu_item = gtk_menu_item_new_with_mnemonic (_("Multilevel"));
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
 
-  controls.optionmenu_style = gtk_option_menu_new ();
+  add_menu_dialog->option_menu_style = gtk_option_menu_new ();
 
-  gtk_option_menu_set_menu (GTK_OPTION_MENU (controls.optionmenu_style), menu);
-  gtk_option_menu_set_history (GTK_OPTION_MENU (controls.optionmenu_style), 0);
+  gtk_option_menu_set_menu (GTK_OPTION_MENU (add_menu_dialog->option_menu_style), menu);
+  gtk_option_menu_set_history (GTK_OPTION_MENU (add_menu_dialog->option_menu_style), 0);
 
-  gtk_table_attach (GTK_TABLE (table), controls.label_style, 0, 1, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
-  gtk_table_attach (GTK_TABLE (table), controls.optionmenu_style, 1, 2, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), add_menu_dialog->label_style, 0, 1, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), add_menu_dialog->option_menu_style, 1, 2, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
 
   /* Unique */
-  controls.checkbutton_unique = gtk_check_button_new_with_mnemonic (_("_Unique entries only"));
+  add_menu_dialog->check_button_unique = gtk_check_button_new_with_mnemonic (_("_Unique entries only"));
 
-  gtk_table_attach (GTK_TABLE (table), controls.checkbutton_unique, 1, 2, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), add_menu_dialog->check_button_unique, 1, 2, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
 
   /* Table properties */
   gtk_table_set_row_spacings (GTK_TABLE (table), 5);
   gtk_table_set_col_spacings (GTK_TABLE (table), 5);
   gtk_container_set_border_width (GTK_CONTAINER (table), 10);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), table, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (add_menu_dialog->dialog)->vbox), table, FALSE, FALSE, 0);
 
   /* Show dialog */
-  gtk_widget_set_sensitive (controls.label_style, FALSE);
-  gtk_widget_set_sensitive (controls.optionmenu_style, FALSE);
-  gtk_widget_set_sensitive (controls.checkbutton_unique, FALSE);
+  gtk_widget_set_sensitive (add_menu_dialog->label_style, FALSE);
+  gtk_widget_set_sensitive (add_menu_dialog->option_menu_style, FALSE);
+  gtk_widget_set_sensitive (add_menu_dialog->check_button_unique, FALSE);
+  gtk_window_set_default_size (GTK_WINDOW (add_menu_dialog->dialog), 350, 100);
+  gtk_widget_show_all (add_menu_dialog->dialog);
 
-  gtk_window_set_default_size (GTK_WINDOW (dialog), 350, 100);
-
-  gtk_widget_show_all (dialog);
-
-  while ((response = gtk_dialog_run (GTK_DIALOG (dialog)))) {
+  while ((response = gtk_dialog_run (GTK_DIALOG (add_menu_dialog->dialog)))) {
     if (response == GTK_RESPONSE_OK) {
-      GdkPixbuf *icon = NULL;
-      xmlNodePtr node = NULL, root_node = NULL, selection_node = NULL;
-      GtkTreeIter iter, selection_iter, parent;
-      GtkTreeModel *tree_model = GTK_TREE_MODEL (me->treestore);
-      GValue val = { 0, };
-      gboolean ret_selection, is_menu = FALSE;
       gchar *name = NULL;
-      gchar *source = NULL;
+      gchar *command = NULL;
+      ENTRY_TYPE type = INCLUDE_SYSTEM;
+      gchar *option_1 = NULL;
+      gchar *option_2 = NULL;
+      gchar *option_3 = NULL;
 
-      /* use the dummy icon for same height as the others entries */
-      icon = xfce_inline_icon_at_size (dummy_icon_data, ICON_SIZE, ICON_SIZE);
+      GtkTreeSelection *selection;
+      GtkTreeModel *model;
+      GtkTreeIter iter_new, iter_selected;
+      GtkTreePath *path = NULL;
 
-      /* Retrieve the root node of the xml tree */
-      root_node = xmlDocGetRootElement (me->xml_menu_file);
 
-      /* Retrieve the selected item */
-      ret_selection =
-        gtk_tree_selection_get_selected (gtk_tree_view_get_selection
-                                         (GTK_TREE_VIEW (me->treeview)), &tree_model, &selection_iter);
-      /* Check if the entry is a submenu */
-      if (ret_selection) {
-        gtk_tree_model_get_value (GTK_TREE_MODEL (me->treestore), &selection_iter, POINTER_COLUMN, &val);
-        selection_node = g_value_get_pointer (&val);
-        if (!xmlStrcmp (selection_node->name, (xmlChar *) "menu")) {
-          parent = selection_iter;
-          is_menu = TRUE;
-        }
-      }
-
-      if (controls.menu_type == MENUFILE) {
+      switch (add_menu_dialog->type) {
+      case INCLUDE_FILE:
         /* Test if all field are filled */
-        if (strlen (gtk_entry_get_text (GTK_ENTRY (me->entry_command))) == 0) {
+        if (strlen (gtk_entry_get_text (GTK_ENTRY (add_menu_dialog->entry_source))) == 0) {
           xfce_warn (_("The 'Source' field is required."));
           continue;
         }
 
-        /* Create node */
-        node = xmlNewNode (NULL, "include");
+        name = g_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
+        command =
+          g_markup_printf_escaped (INCLUDE_PATH_FORMAT, gtk_entry_get_text (GTK_ENTRY (add_menu_dialog->entry_source)));
+        type = INCLUDE_FILE;
+        option_1 = g_strdup ("");
+        option_2 = g_strdup ("");
+        option_3 = g_strdup ("");
 
-        xmlSetProp (node, "type", "file");
-        xmlSetProp (node, "src", gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
+        break;
+      case INCLUDE_SYSTEM:
+        name = g_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
+        command = g_markup_printf_escaped (INCLUDE_PATH_FORMAT, _("system"));
+        if (gtk_option_menu_get_history (GTK_OPTION_MENU (add_menu_dialog->option_menu_style)) == 0)
+          option_1 = g_strdup ("simple");
+        else
+          option_1 = g_strdup ("multilevel");
+        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (add_menu_dialog->check_button_unique)))
+          option_2 = g_strdup ("true");
+        option_3 = g_strdup ("false");
 
-        name = menueditor_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
-        source = menueditor_markup_printf_escaped (INCLUDE_PATH_FORMAT, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
+        break;
+      default:
+        break;
       }
 
-      if (controls.menu_type == SYSTEM) {
-        /* Create node */
-        node = xmlNewNode (NULL, "include");
+      selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (me->treeview));
+      if (gtk_tree_selection_get_selected (selection, &model, &iter_selected)) {
+        ENTRY_TYPE type_selected = SEPARATOR;
 
-        xmlSetProp (node, "type", "system");
+        gtk_tree_model_get (model, &iter_selected, COLUMN_TYPE, &type_selected, -1);
 
-        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (controls.checkbutton_unique)))
-          xmlSetProp (node, "unique", "true");
+        if (type_selected == MENU)
+          /* Insert in the submenu */
+          gtk_tree_store_prepend (GTK_TREE_STORE (model), &iter_new, &iter_selected);
+        else
+          /* Insert after the selected entry */
+          gtk_tree_store_insert_after (GTK_TREE_STORE (model), &iter_new, NULL, &iter_selected);
 
-        if (gtk_option_menu_get_history (GTK_OPTION_MENU (controls.optionmenu_style)) != 0)
-          xmlSetProp (node, "style", "multilevel");
-
-        name = menueditor_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
-        source = menueditor_markup_printf_escaped (INCLUDE_PATH_FORMAT, _("system"));
       }
+      else
+        /* Insert at the beginning of the tree */
+        gtk_tree_store_prepend (GTK_TREE_STORE (model), &iter_new, NULL);
 
-      /* Append entry in the tree */
-      if (!ret_selection) {
-        /* Add the node to the tree */
-        if (xmlAddChild (root_node, node) == NULL) {
-          perror ("xmlAddChild");
-          xmlFreeNode (node);
-          continue;
-        }
-        gtk_tree_store_append (me->treestore, &iter, NULL);
-      }
-      else {
-        if (is_menu) {
-          if (xmlAddChild (selection_node, node) == NULL) {
-            perror ("xmlAddChild");
-            xmlFreeNode (node);
-            continue;
-          }
-          gtk_tree_store_append (me->treestore, &iter, &parent);
-          gtk_tree_view_expand_all (GTK_TREE_VIEW (me->treeview));
-        }
-        else {
 
-          if (xmlAddNextSibling (selection_node, node) == NULL) {
-            perror ("xmlAddNextSibling");
-            xmlFreeNode (node);
-            continue;
-          }
-          gtk_tree_store_insert_after (me->treestore, &iter, NULL, &selection_iter);
-        }
-      }
+      gtk_tree_store_set (GTK_TREE_STORE (model), &iter_new,
+                          COLUMN_ICON, dummy_icon,
+                          COLUMN_NAME, name,
+                          COLUMN_COMMAND, command,
+                          COLUMN_HIDDEN, FALSE,
+                          COLUMN_TYPE, add_menu_dialog->type,
+                          COLUMN_OPTION_1, option_1, COLUMN_OPTION_2, option_2, COLUMN_OPTION_3, option_3, -1);
 
-      gtk_tree_store_set (me->treestore, &iter,
-                          ICON_COLUMN, icon, NAME_COLUMN, name, COMMAND_COLUMN, source, POINTER_COLUMN, node, -1);
+      path = gtk_tree_model_get_path (model, &iter_new);
+      gtk_tree_view_set_cursor (GTK_TREE_VIEW (me->treeview), path, NULL, FALSE);
 
-      me->menu_modified = TRUE;
-      gtk_widget_set_sensitive (me->file_menu_save, TRUE);
-      gtk_widget_set_sensitive (me->file_menu_saveas, TRUE);
-      gtk_widget_set_sensitive (me->toolbar_save, TRUE);
+      menueditor_menu_modified (me);
 
       g_free (name);
-      g_free (source);
+      g_free (command);
+      g_free (option_1);
+      g_free (option_2);
+      g_free (option_3);
+      gtk_tree_path_free (path);
 
       break;
     }
-    else {
+    else
       break;
-    }
   }
 
-  gtk_widget_hide (dialog);
+  gtk_widget_destroy (add_menu_dialog->dialog);
+  g_free (add_menu_dialog);
 }

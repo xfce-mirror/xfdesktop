@@ -1,6 +1,6 @@
-/*   edit.c */
+/*   edit_dialog.c */
 
-/*  Copyright (C)  Jean-François Wauthy under GNU GPL
+/*  Copyright (C) 2005 Jean-FranÃ§ois Wauthy under GNU GPL
  *
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -16,587 +16,248 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
- */
-
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
-#ifdef HAVE_STRING_H
-#include <string.h>
-#endif
+*/
 
 #include "menueditor.h"
+#include "utils.h"
 
-#include "../modules/menu/dummy_icon.h"
-
-#include "add_menu_dialog.h"
 #include "edit_dialog.h"
 
-void
-editmenu_option_file_cb (GtkWidget * widget, struct _controls_menu *controls)
-{
-  controls->menu_type = MENUFILE;
-  gtk_widget_set_sensitive (controls->hbox_source, TRUE);
-  gtk_widget_set_sensitive (controls->label_source, TRUE);
-  gtk_widget_set_sensitive (controls->label_style, FALSE);
-  gtk_widget_set_sensitive (controls->optionmenu_style, FALSE);
-  gtk_widget_set_sensitive (controls->checkbutton_unique, FALSE);
-}
-
-void
-editmenu_option_system_cb (GtkWidget * widget, struct _controls_menu *controls)
-{
-  controls->menu_type = SYSTEM;
-  gtk_widget_set_sensitive (controls->hbox_source, FALSE);
-  gtk_widget_set_sensitive (controls->label_source, FALSE);
-  gtk_widget_set_sensitive (controls->label_style, TRUE);
-  gtk_widget_set_sensitive (controls->optionmenu_style, TRUE);
-  gtk_widget_set_sensitive (controls->checkbutton_unique, TRUE);
-}
-
-void
-edit_selection (GtkTreeSelection * selection, gpointer data)
-{
-  MenuEditor *me;
-  xmlNodePtr node;
-  GtkTreeModel *model;
-  GtkTreeIter iter;
-  GValue val = { 0, };
-
+struct _EditDialog {
+  XfceIconTheme *icon_theme;
   GtkWidget *dialog;
-  GtkWidget *header;
-  GtkWidget *header_image;
-  gchar *header_text;
+  ENTRY_TYPE type;
 
-  GtkWidget *name_entry = NULL;
-  struct _controls_menu controls;
-  GtkWidget *checkbutton_snotify = NULL;
-  GtkWidget *checkbutton_term = NULL;
+  GtkWidget *entry_icon;
+  GtkWidget *entry_command;
+};
+
+typedef struct _EditDialog EditDialog;
+
+/*************/
+/* Callbacks */
+/*************/
+static void
+browse_command_clicked_cb (GtkWidget * widget, EditDialog * edit_dialog)
+{
+  browse_file (GTK_ENTRY (edit_dialog->entry_command), GTK_WINDOW (edit_dialog->dialog));
+}
+
+static void
+browse_icon_clicked_cb (GtkWidget * widget, EditDialog * edit_dialog)
+{
+  browse_icon (GTK_ENTRY (edit_dialog->entry_icon), GTK_WINDOW (edit_dialog->dialog), edit_dialog->icon_theme);
+}
+
+/***************/
+/* Show dialog */
+/***************/
+
+void
+edit_selection (MenuEditor *me)
+{  
+  EditDialog *edit_dialog;
+
+  GtkTreeSelection *selection;
+  GtkTreeModel *model;
+  GtkTreeIter iter_selected;
+
+  GdkPixbuf *icon = NULL;
+  gchar *name = NULL;
+  gchar *command = NULL;
+  gboolean hidden = FALSE;
+  ENTRY_TYPE type = SEPARATOR;
+  gchar *option_1 = NULL;
+  gchar *option_2 = NULL;
+  gchar *option_3 = NULL;
+  gchar *temp = NULL;
+  
+  GtkWidget *header_image;
+  GtkWidget *header;
+
+  GtkWidget *table;
+  GtkWidget *label_name;
+  GtkWidget *entry_name;
+  GtkWidget *label_command;
+  GtkWidget *hbox_command;
+  GtkWidget *hbox_icon;
+  GtkWidget *label_icon;
+  GtkWidget *button_browse;
+  GtkWidget *check_button_snotify;
+  GtkWidget *check_button_interm;
 
   gint response;
 
-  xmlChar *prop_name = NULL;
-  xmlChar *prop_cmd = NULL;
-  xmlChar *prop_icon = NULL;
-  xmlChar *prop_type = NULL;
-  xmlChar *prop_src = NULL;
-  xmlChar *prop_snotify = NULL;
-  xmlChar *prop_term = NULL;
-  xmlChar *prop_style = NULL;
-  xmlChar *prop_unique = NULL;
+  edit_dialog = g_new0 (EditDialog, 1);
+  edit_dialog->icon_theme = me->icon_theme;
 
-  me = (MenuEditor *) data;
+  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (me->treeview));
 
-  /* Retrieve the xmlNodePtr of the menu entry */
-  gtk_tree_selection_get_selected (selection, &model, &iter);
-
-  gtk_tree_model_get_value (GTK_TREE_MODEL (me->treestore), &iter, POINTER_COLUMN, &val);
-  node = g_value_get_pointer (&val);
-
-  if (!node) {
-    g_warning ("node doesn't exist");
+  if (!gtk_tree_selection_get_selected (selection, &model, &iter_selected)) {
+    g_warning ("no entry selected !");
     return;
   }
 
-  /* Create dialog for editing */
-  dialog = gtk_dialog_new_with_buttons (_("Edit menu entry"),
-                                        GTK_WINDOW (me->main_window),
-                                        GTK_DIALOG_DESTROY_WITH_PARENT,
-                                        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
+  gtk_tree_model_get (model, &iter_selected, COLUMN_ICON, &icon,
+		      COLUMN_NAME, &name,
+		      COLUMN_COMMAND, &command,
+		      COLUMN_HIDDEN, &hidden,
+		      COLUMN_TYPE, &type,
+		      COLUMN_OPTION_1, &option_1,
+		      COLUMN_OPTION_2, &option_2,
+		      COLUMN_OPTION_3, &option_3, -1);
 
-  /* set ok button as default */
-  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+  temp = extract_text_from_markup (name);
+  g_free (name);
+  name = temp;
+  temp = extract_text_from_markup (command);
+  g_free (command);
+  command = temp;
+  temp = extract_text_from_markup (option_1);
+  g_free (option_1);
+  option_1 = temp;
+  temp = extract_text_from_markup (option_2);
+  g_free (option_2);
+  option_2 = temp;
+  temp = extract_text_from_markup (option_3);
+  g_free (option_3);
+  option_3 = temp;
+
+  /* Create dialog for editing */
+  edit_dialog->dialog = gtk_dialog_new_with_buttons (_("Edit menu entry"),
+						     GTK_WINDOW (me->window),
+						     GTK_DIALOG_DESTROY_WITH_PARENT,
+						     GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
 
   /* Header */
   header_image = gtk_image_new_from_stock (GTK_STOCK_JUSTIFY_FILL, GTK_ICON_SIZE_LARGE_TOOLBAR);
-  header_text = g_strdup_printf ("%s", _("Edit menu entry"));
-  header = xfce_create_header_with_image (header_image, header_text);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), header, FALSE, FALSE, 0);
-  g_free (header_text);
+  header = xfce_create_header_with_image (header_image, _("Edit menu entry"));
+  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (edit_dialog->dialog)->vbox), header, FALSE, FALSE, 0);
 
-  /* Get the props */
-  prop_name = xmlGetProp (node, "name");
-  prop_cmd = xmlGetProp (node, "cmd");
-  prop_icon = xmlGetProp (node, "icon");
-  prop_type = xmlGetProp (node, "type");
-  prop_src = xmlGetProp (node, "src");
-  prop_snotify = xmlGetProp (node, "snotify");
-  prop_term = xmlGetProp (node, "term");
-  prop_unique = xmlGetProp (node, "unique");
-  prop_style = xmlGetProp (node, "style");
-
-  /* Choose the edition dialog */
-  if (!xmlStrcmp (node->name, (xmlChar *) "separator")) {
+  switch (type) {
+  case SEPARATOR:
     xfce_info (_("Separators cannot be edited"));
-    gtk_widget_destroy (dialog);
+    gtk_widget_destroy (edit_dialog->dialog);
     return;
-  }
-  else if (!xmlStrcmp (node->name, (xmlChar *) "include")) {
-    GtkWidget *mitem;
-
-    GtkWidget *table;
-    GtkWidget *label_type;
-    GtkWidget *menu;
-    GtkWidget *optionmenu_type;
-
-    GtkWidget *button_browse;
-
-    /* Table */
-    table = gtk_table_new (2, 2, TRUE);
-
-    /* Type */
-    label_type = gtk_label_new (_("Type:"));
-
-    menu = gtk_menu_new ();
-    mitem = gtk_menu_item_new_with_mnemonic (_("File"));
-    g_signal_connect ((gpointer) mitem, "activate", G_CALLBACK (editmenu_option_file_cb), &controls);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mitem);
-    gtk_widget_show (mitem);
-
-    mitem = gtk_menu_item_new_with_mnemonic (_("System"));
-    g_signal_connect ((gpointer) mitem, "activate", G_CALLBACK (editmenu_option_system_cb), &controls);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mitem);
-    gtk_widget_show (mitem);
-
-    optionmenu_type = gtk_option_menu_new ();
-
-    gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu_type), menu);
-    gtk_option_menu_set_history (GTK_OPTION_MENU (optionmenu_type), 0);
-
-    gtk_table_attach (GTK_TABLE (table), label_type, 0, 1, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), optionmenu_type, 1, 2, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
-
-    /* Source */
-    controls.hbox_source = gtk_hbox_new (FALSE, 0);
-    controls.label_source = gtk_label_new (_("Source:"));
-    me->entry_command = gtk_entry_new ();
-    button_browse = gtk_button_new_with_label ("...");
-
-    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), me);
-
-    gtk_box_pack_start (GTK_BOX (controls.hbox_source), me->entry_command, FALSE, FALSE, 0);
-    gtk_box_pack_start (GTK_BOX (controls.hbox_source), button_browse, FALSE, FALSE, 0);
-
-    gtk_table_attach (GTK_TABLE (table), controls.label_source, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), controls.hbox_source, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
-
-    /* Style */
-    controls.label_style = gtk_label_new (_("Style:"));
-
-    menu = gtk_menu_new ();
-    mitem = gtk_menu_item_new_with_mnemonic (_("Simple"));
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mitem);
-    gtk_widget_show (mitem);
-    mitem = gtk_menu_item_new_with_mnemonic (_("Multilevel"));
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), mitem);
-    gtk_widget_show (mitem);
-
-    controls.optionmenu_style = gtk_option_menu_new ();
-
-    gtk_option_menu_set_menu (GTK_OPTION_MENU (controls.optionmenu_style), menu);
-    gtk_option_menu_set_history (GTK_OPTION_MENU (controls.optionmenu_style), 0);
-
-    gtk_table_attach (GTK_TABLE (table), controls.label_style, 0, 1, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), controls.optionmenu_style, 1, 2, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
-
-    /* Unique */
-    controls.checkbutton_unique = gtk_check_button_new_with_mnemonic (_("_Unique entries only"));
-
-    gtk_table_attach (GTK_TABLE (table), controls.checkbutton_unique, 1, 2, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
-
-    /* Table properties */
-    gtk_table_set_row_spacings (GTK_TABLE (table), 5);
-    gtk_table_set_col_spacings (GTK_TABLE (table), 5);
-    gtk_container_set_border_width (GTK_CONTAINER (table), 10);
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), table, FALSE, FALSE, 0);
-
-    /* Initialize states */
-    if (!xmlStrcmp (prop_type, (xmlChar *) "file")) {
-      controls.menu_type = MENUFILE;
-      gtk_entry_set_text (GTK_ENTRY (me->entry_command), prop_src);
-      gtk_widget_set_sensitive (controls.hbox_source, TRUE);
-      gtk_widget_set_sensitive (controls.label_source, TRUE);
-      gtk_widget_set_sensitive (controls.label_style, FALSE);
-      gtk_widget_set_sensitive (controls.optionmenu_style, FALSE);
-      gtk_widget_set_sensitive (controls.checkbutton_unique, FALSE);
-    }
-    else {
-      gtk_option_menu_set_history (GTK_OPTION_MENU (optionmenu_type), 1);
-      controls.menu_type = SYSTEM;
-      gtk_widget_set_sensitive (controls.hbox_source, FALSE);
-      gtk_widget_set_sensitive (controls.label_source, FALSE);
-      gtk_widget_set_sensitive (controls.label_style, TRUE);
-      gtk_widget_set_sensitive (controls.optionmenu_style, TRUE);
-      gtk_widget_set_sensitive (controls.checkbutton_unique, TRUE);
-    }
-
-    if (!xmlStrcmp (prop_unique, (xmlChar *) "true"))
-      gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (controls.checkbutton_unique), TRUE);
-    if (!xmlStrcmp (prop_style, (xmlChar *) "multilevel"))
-      gtk_option_menu_set_history (GTK_OPTION_MENU (controls.optionmenu_style), 1);
-
-    gtk_window_set_default_size (GTK_WINDOW (dialog), 300, 100);
-  }
-  else if (!xmlStrcmp (node->name, (xmlChar *) "app")) {
-    GtkWidget *name_label;
-    GtkWidget *command_label;
-    GtkWidget *table;
-    GtkWidget *button_browse;
-    GtkWidget *hbox_command;
-    GtkWidget *icon_label;
-    GtkWidget *button_browse2;
-    GtkWidget *hbox_icon;
-
+  case INCLUDE_FILE:
+  case INCLUDE_SYSTEM:
+    break;
+  case APP:
     table = gtk_table_new (4, 2, FALSE);
 
     /* Icon */
     hbox_icon = gtk_hbox_new (FALSE, 0);
-    icon_label = gtk_label_new (_("Icon:"));
-    me->entry_icon = gtk_entry_new ();
-    button_browse2 = gtk_button_new_with_label ("...");
-    gtk_box_pack_start (GTK_BOX (hbox_icon), me->entry_icon, FALSE, FALSE, 0);
-    gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse2, FALSE, FALSE, 0);
-    g_signal_connect ((gpointer) button_browse2, "clicked", G_CALLBACK (browse_icon_cb), me);
+    label_icon = gtk_label_new (_("Icon:"));
+    edit_dialog->entry_icon = gtk_entry_new ();
+    button_browse = gtk_button_new_with_label ("...");
+    gtk_box_pack_start (GTK_BOX (hbox_icon), edit_dialog->entry_icon, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse, FALSE, FALSE, 0);
+    g_signal_connect (G_OBJECT (button_browse), "clicked", G_CALLBACK (browse_icon_clicked_cb), edit_dialog);
 
+    /* Name */
+    label_name = gtk_label_new (_("Name:"));
+    entry_name = gtk_entry_new ();
+
+    /* Command */
     hbox_command = gtk_hbox_new (FALSE, 0);
-    name_label = gtk_label_new (_("Name:"));
-    command_label = gtk_label_new (_("Command:"));
-
-    name_entry = gtk_entry_new ();
-    me->entry_command = gtk_entry_new ();
-
+    label_command = gtk_label_new (_("Command:"));
+    edit_dialog->entry_command = gtk_entry_new ();
     button_browse = gtk_button_new_with_label ("...");
-
-    gtk_box_pack_start (GTK_BOX (hbox_command), me->entry_command, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox_command), edit_dialog->entry_command, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox_command), button_browse, FALSE, FALSE, 0);
-    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), me);
+    g_signal_connect (G_OBJECT (button_browse), "clicked", G_CALLBACK (browse_command_clicked_cb), edit_dialog);
 
-    checkbutton_snotify = gtk_check_button_new_with_mnemonic (_("Use startup _notification"));
-    checkbutton_term = gtk_check_button_new_with_mnemonic (_("Run in _terminal"));
+    /* Startup notification */
+    check_button_snotify = gtk_check_button_new_with_mnemonic (_("Use startup _notification"));
+
+    /* Run in terminal */
+    check_button_interm = gtk_check_button_new_with_mnemonic (_("Run in _terminal"));
 
     gtk_table_set_row_spacings (GTK_TABLE (table), 5);
     gtk_table_set_col_spacings (GTK_TABLE (table), 5);
     gtk_container_set_border_width (GTK_CONTAINER (table), 10);
 
-    gtk_table_attach (GTK_TABLE (table), name_label, 0, 1, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), name_entry, 1, 2, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), command_label, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach (GTK_TABLE (table), label_name, 0, 1, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach (GTK_TABLE (table), entry_name, 1, 2, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach (GTK_TABLE (table), label_command, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
     gtk_table_attach (GTK_TABLE (table), hbox_command, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), icon_label, 0, 1, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach (GTK_TABLE (table), label_icon, 0, 1, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
     gtk_table_attach (GTK_TABLE (table), hbox_icon, 1, 2, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), checkbutton_term, 0, 1, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), checkbutton_snotify, 1, 2, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach (GTK_TABLE (table), check_button_interm, 0, 1, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach (GTK_TABLE (table), check_button_snotify, 1, 2, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
 
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), table, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (edit_dialog->dialog)->vbox), table, FALSE, FALSE, 0);
 
-    if (prop_name)
-      gtk_entry_set_text (GTK_ENTRY (name_entry), prop_name);
-    if (prop_cmd)
-      gtk_entry_set_text (GTK_ENTRY (me->entry_command), prop_cmd);
-    if (prop_icon)
-      gtk_entry_set_text (GTK_ENTRY (me->entry_icon), prop_icon);
-
-    if (prop_snotify && !xmlStrcmp (prop_snotify, (xmlChar *) "true"))
-      gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton_snotify), TRUE);
-    if (prop_term && !xmlStrcmp (prop_term, (xmlChar *) "yes"))
-      gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton_term), TRUE);
-
-    gtk_window_set_default_size (GTK_WINDOW (dialog), 300, 150);
-  }
-  else if (!xmlStrcmp (node->name, (xmlChar *) "menu")) {
-    GtkWidget *name_label;
-    GtkWidget *table;
-    GtkWidget *icon_label;
-    GtkWidget *button_browse;
-    GtkWidget *hbox_icon;
-
-    name_label = gtk_label_new (_("Name:"));
-    name_entry = gtk_entry_new ();
-
-    /* Icon */
-    hbox_icon = gtk_hbox_new (FALSE, 0);
-    icon_label = gtk_label_new (_("Icon:"));
-    me->entry_icon = gtk_entry_new ();
-    button_browse = gtk_button_new_with_label ("...");
-    gtk_box_pack_start (GTK_BOX (hbox_icon), me->entry_icon, FALSE, FALSE, 0);
-    gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse, FALSE, FALSE, 0);
-    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_icon_cb), me);
-
-    table = gtk_table_new (3, 2, FALSE);
-
-    gtk_table_set_row_spacings (GTK_TABLE (table), 5);
-    gtk_table_set_col_spacings (GTK_TABLE (table), 5);
-    gtk_container_set_border_width (GTK_CONTAINER (table), 10);
-
-    gtk_table_attach (GTK_TABLE (table), name_label, 0, 1, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), name_entry, 1, 2, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), icon_label, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), hbox_icon, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
-
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), table, FALSE, FALSE, 0);
-
-    if (prop_name)
-      gtk_entry_set_text (GTK_ENTRY (name_entry), prop_name);
-    if (prop_icon)
-      gtk_entry_set_text (GTK_ENTRY (me->entry_icon), prop_icon);
-
-    gtk_window_set_default_size (GTK_WINDOW (dialog), 200, 100);
-  }
-  else if (!xmlStrcmp (node->name, (xmlChar *) "builtin")) {
-    GtkWidget *name_label;
-    GtkWidget *table;
-    GtkWidget *icon_label;
-    GtkWidget *button_browse;
-    GtkWidget *hbox_icon;
-
-    name_label = gtk_label_new (_("Name:"));
-    name_entry = gtk_entry_new ();
-
-    /* Icon */
-    hbox_icon = gtk_hbox_new (FALSE, 0);
-    icon_label = gtk_label_new (_("Icon:"));
-    me->entry_icon = gtk_entry_new ();
-    button_browse = gtk_button_new_with_label ("...");
-    gtk_box_pack_start (GTK_BOX (hbox_icon), me->entry_icon, FALSE, FALSE, 0);
-    gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse, FALSE, FALSE, 0);
-    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_icon_cb), me);
-
-    table = gtk_table_new (2, 2, FALSE);
-
-    gtk_table_set_row_spacings (GTK_TABLE (table), 5);
-    gtk_table_set_col_spacings (GTK_TABLE (table), 5);
-    gtk_container_set_border_width (GTK_CONTAINER (table), 10);
-
-    gtk_table_attach (GTK_TABLE (table), name_label, 0, 1, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), name_entry, 1, 2, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), icon_label, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), hbox_icon, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
-
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), table, FALSE, FALSE, 0);
-
-    if (prop_name)
-      gtk_entry_set_text (GTK_ENTRY (name_entry), prop_name);
-    if (prop_icon)
-      gtk_entry_set_text (GTK_ENTRY (me->entry_icon), prop_icon);
-
-    gtk_window_set_default_size (GTK_WINDOW (dialog), 200, 100);
-  }
-  else if (!xmlStrcmp (node->name, (xmlChar *) "title")) {
-    GtkWidget *name_label;
-    GtkWidget *table;
-    GtkWidget *icon_label;
-    GtkWidget *button_browse;
-    GtkWidget *hbox_icon;
-
+    /* Get the current values */
+    if (name)
+      gtk_entry_set_text (GTK_ENTRY (entry_name), name);
+    if (command)
+      gtk_entry_set_text (GTK_ENTRY (edit_dialog->entry_command), command);
+    if (option_1)
+      gtk_entry_set_text (GTK_ENTRY (edit_dialog->entry_icon), option_1);
+    if (option_2 && strcmp (option_2, "true") == 0)
+      gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check_button_interm), TRUE);
+    if (option_3 && strcmp (option_3, "true") == 0)
+      gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check_button_snotify), TRUE);
+    break;
+  case TITLE:
+  case MENU:
+  case BUILTIN:
     table = gtk_table_new (3, 2, FALSE);
 
     /* Icon */
     hbox_icon = gtk_hbox_new (FALSE, 0);
-    icon_label = gtk_label_new (_("Icon:"));
-    me->entry_icon = gtk_entry_new ();
+    label_icon = gtk_label_new (_("Icon:"));
+    edit_dialog->entry_icon = gtk_entry_new ();
     button_browse = gtk_button_new_with_label ("...");
-    gtk_box_pack_start (GTK_BOX (hbox_icon), me->entry_icon, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox_icon), edit_dialog->entry_icon, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse, FALSE, FALSE, 0);
-    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_icon_cb), me);
+    g_signal_connect (G_OBJECT (button_browse), "clicked", G_CALLBACK (browse_icon_clicked_cb), edit_dialog);
 
-    name_label = gtk_label_new (_("Title:"));
-    name_entry = gtk_entry_new ();
+    /* Name */
+    label_name = gtk_label_new (_("Name:"));
+    entry_name = gtk_entry_new ();
 
     gtk_table_set_row_spacings (GTK_TABLE (table), 5);
     gtk_table_set_col_spacings (GTK_TABLE (table), 5);
     gtk_container_set_border_width (GTK_CONTAINER (table), 10);
 
-    gtk_table_attach (GTK_TABLE (table), name_label, 0, 1, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), name_entry, 1, 2, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
-    gtk_table_attach (GTK_TABLE (table), icon_label, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach (GTK_TABLE (table), label_name, 0, 1, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach (GTK_TABLE (table), entry_name, 1, 2, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach (GTK_TABLE (table), label_icon, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
     gtk_table_attach (GTK_TABLE (table), hbox_icon, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
 
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), table, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (GTK_DIALOG (edit_dialog->dialog)->vbox), table, FALSE, FALSE, 0);
 
-    if (prop_name)
-      gtk_entry_set_text (GTK_ENTRY (name_entry), prop_name);
-    if (prop_icon)
-      gtk_entry_set_text (GTK_ENTRY (me->entry_icon), prop_icon);
+    /* Get the current values */
+    if (name)
+      gtk_entry_set_text (GTK_ENTRY (entry_name), name);
+    if (option_1)
+      gtk_entry_set_text (GTK_ENTRY (edit_dialog->entry_icon), option_1);
 
-    gtk_window_set_default_size (GTK_WINDOW (dialog), 200, 100);
+    gtk_window_set_default_size (GTK_WINDOW (edit_dialog->dialog), 200, 100);
+    break;
   }
 
-  gtk_widget_show_all (dialog);
+  gtk_widget_show_all (edit_dialog->dialog);
 
-  /* Commit change if needed */
-  while ((response = gtk_dialog_run (GTK_DIALOG (dialog)))) {
+  /* Commit changes */
+  while ((response = gtk_dialog_run (GTK_DIALOG (edit_dialog->dialog)))) {
     if (response == GTK_RESPONSE_OK) {
-      gchar *name = NULL;
-      gchar *command = NULL;
-
-      GValue val_icon = { 0, };
-      GdkPixbuf *icon = NULL;
-
-      /* unref the icon */
-      gtk_tree_model_get_value (GTK_TREE_MODEL (me->treestore), &iter, ICON_COLUMN, &val_icon);
-      icon = g_value_get_object (&val_icon);
-
-      if (icon) {
-        g_object_unref (icon);
-        icon = NULL;
-      }
-
-      /* set the new icon if there is one otherwise use the dummy one */
-      if ((me->entry_icon && strlen (gtk_entry_get_text (GTK_ENTRY (me->entry_icon)))
-           != 0)) {
-        icon = xfce_icon_theme_load (me->icon_theme, (gchar *)
-                                     gtk_entry_get_text (GTK_ENTRY (me->entry_icon)), ICON_SIZE);
-        if (!icon)
-          icon = xfce_inline_icon_at_size (dummy_icon_data, ICON_SIZE, ICON_SIZE);
-
-        xmlSetProp (node, "icon", gtk_entry_get_text (GTK_ENTRY (me->entry_icon)));
-      }
-      else {
-        xmlAttrPtr icon_prop;
-
-        icon = xfce_inline_icon_at_size (dummy_icon_data, ICON_SIZE, ICON_SIZE);
-
-        /* Remove the property in the xml tree */
-        icon_prop = xmlHasProp (node, "icon");
-        xmlRemoveProp (icon_prop);
-      }
-
-      if (!xmlStrcmp (node->name, (xmlChar *) "app")) {
-        /* Test if the command exists */
-        if (!command_exists (gtk_entry_get_text (GTK_ENTRY (me->entry_command)))) {
-          xfce_warn (_("The command doesn't exist !"));
-          continue;
-        }
-
-        xmlSetProp (node, "name", gtk_entry_get_text (GTK_ENTRY (name_entry)));
-        xmlSetProp (node, "cmd", gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
-
-        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (checkbutton_snotify)))
-          xmlSetProp (node, "snotify", "true");
-        else {
-          xmlAttrPtr snotify_prop;
-
-          /* Remove the property in the xml tree */
-          snotify_prop = xmlHasProp (node, "snotify");
-          xmlRemoveProp (snotify_prop);
-        }
-        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (checkbutton_term)))
-          xmlSetProp (node, "term", "yes");
-        else {
-          xmlAttrPtr term_prop;
-
-          /* Remove the property in the xml tree */
-          term_prop = xmlHasProp (node, "term");
-          xmlRemoveProp (term_prop);
-        }
-
-        name = menueditor_markup_printf_escaped (NAME_FORMAT, gtk_entry_get_text (GTK_ENTRY (name_entry)));
-        command = menueditor_markup_printf_escaped (COMMAND_FORMAT, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
-      }
-      else if (!xmlStrcmp (node->name, (xmlChar *) "menu")) {
-        name = menueditor_markup_printf_escaped (MENU_FORMAT, gtk_entry_get_text (GTK_ENTRY (name_entry)));
-        command = g_strdup ("");
-
-        xmlSetProp (node, "name", gtk_entry_get_text (GTK_ENTRY (name_entry)));
-      }
-      else if (!xmlStrcmp (node->name, (xmlChar *) "builtin")) {
-        name = menueditor_markup_printf_escaped (BUILTIN_FORMAT, gtk_entry_get_text (GTK_ENTRY (name_entry)));
-        command = menueditor_markup_printf_escaped (COMMAND_FORMAT, _("quit"));
-
-        xmlSetProp (node, "name", gtk_entry_get_text (GTK_ENTRY (name_entry)));
-      }
-      else if (!xmlStrcmp (node->name, (xmlChar *) "title")) {
-        name = menueditor_markup_printf_escaped (TITLE_FORMAT, gtk_entry_get_text (GTK_ENTRY (name_entry)));
-        command = g_strdup ("");
-
-        xmlSetProp (node, "name", gtk_entry_get_text (GTK_ENTRY (name_entry)));
-      }
-      else if (!xmlStrcmp (node->name, (xmlChar *) "include")) {
-        xmlAttrPtr unique_prop;
-        xmlAttrPtr style_prop;
-
-        switch (controls.menu_type) {
-        case MENUFILE:
-          name = menueditor_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
-          command = menueditor_markup_printf_escaped (INCLUDE_PATH_FORMAT, gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
-
-          xmlSetProp (node, "type", "file");
-          xmlSetProp (node, "src", gtk_entry_get_text (GTK_ENTRY (me->entry_command)));
-
-          /* remove unique and style props if needed */
-          unique_prop = xmlHasProp (node, "unique");
-          xmlRemoveProp (unique_prop);
-          style_prop = xmlHasProp (node, "style");
-          xmlRemoveProp (style_prop);
-          break;
-        case SYSTEM:
-          name = menueditor_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
-          command = menueditor_markup_printf_escaped (INCLUDE_PATH_FORMAT, _("system"));
-
-          xmlSetProp (node, "type", "system");
-
-          if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (controls.checkbutton_unique))) {
-            unique_prop = xmlHasProp (node, "unique");
-            xmlRemoveProp (unique_prop);
-          }
-          else
-            xmlSetProp (node, "unique", "true");
-
-          if (gtk_option_menu_get_history (GTK_OPTION_MENU (controls.optionmenu_style)) == 0) {
-            /* remove src prop if needed */
-            style_prop = xmlHasProp (node, "style");
-            xmlRemoveProp (style_prop);
-          }
-          else
-            xmlSetProp (node, "style", "multilevel");
-        }
-
-      }
-
-      gtk_tree_store_set (me->treestore, &iter, ICON_COLUMN, icon, NAME_COLUMN, name, COMMAND_COLUMN, command, -1);
-
-      g_free (name);
-      g_free (command);
-
-
-      me->menu_modified = TRUE;
-      gtk_widget_set_sensitive (me->file_menu_save, TRUE);
-      gtk_widget_set_sensitive (me->toolbar_save, TRUE);
+    } else
       break;
-    }
-    else {
-      break;
-    }
   }
-  xmlFree (prop_name);
-  xmlFree (prop_cmd);
-  xmlFree (prop_icon);
-  xmlFree (prop_type);
-  xmlFree (prop_src);
-  xmlFree (prop_snotify);
-  xmlFree (prop_term);
-  xmlFree (prop_style);
-  xmlFree (prop_unique);
 
-  gtk_widget_hide (dialog);
+  gtk_widget_destroy (edit_dialog->dialog);
+
+  if (G_IS_OBJECT (icon))
+    g_object_unref (icon);
+  g_free (name);
+  g_free (command);
+  g_free (option_1);
+  g_free (option_2);
+  g_free (option_3);
+
+  g_free (edit_dialog);
 }
 
-/* Edition */
-void
-popup_edit_cb (GtkWidget * widget, gpointer data)
-{
-  MenuEditor *me;
-
-  me = (MenuEditor *) data;
-  edit_selection (gtk_tree_view_get_selection (GTK_TREE_VIEW (me->treeview)), data);
-}
-
-void
-treeview_activate_cb (GtkWidget * widget, GtkTreePath * path, GtkTreeViewColumn * col, gpointer data)
-{
-  MenuEditor *me;
-
-  me = (MenuEditor *) data;
-  edit_selection (gtk_tree_view_get_selection (GTK_TREE_VIEW (me->treeview)), data);
-}

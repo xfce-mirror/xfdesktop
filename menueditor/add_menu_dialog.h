@@ -1,6 +1,6 @@
 /*   add_menu_dialog.h */
 
-/*  Copyright (C)  Jean-François Wauthy under GNU GPL
+/*  Copyright (C) 2005 Jean-FranÃ§ois Wauthy under GNU GPL
  *
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -18,22 +18,9 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#ifndef __HAVE_ADDMENU_HEADER
-#define __HAVE_ADDMENU_HEADER
+#ifndef __HAVE_ADD_MENU_DIALOG_HEADER
+#define __HAVE_ADD_MENU_DIALOG_HEADER
 
-/* Structure */
-struct _controls_menu
-{
-  enum
-  { MENUFILE, SYSTEM } menu_type;
-  GtkWidget *hbox_source;
-  GtkWidget *label_source;
-  GtkWidget *checkbutton_unique;
-  GtkWidget *label_style;
-  GtkWidget *optionmenu_style;
-};
-
-/* Prototype */
 void add_menu_cb (GtkWidget * widget, gpointer data);
 
 #endif

@@ -62,8 +62,7 @@ am_xfce4_menueditor_OBJECTS = xfce4_menueditor-about_dialog.$(OBJEXT) \
 	xfce4_menueditor-dnd.$(OBJEXT) \
 	xfce4_menueditor-edit_dialog.$(OBJEXT) \
 	xfce4_menueditor-menueditor.$(OBJEXT) \
-	xfce4_menueditor-move.$(OBJEXT) \
-	xfce4_menueditor-new_dialog.$(OBJEXT)
+	xfce4_menueditor-utils.$(OBJEXT)
 xfce4_menueditor_OBJECTS = $(am_xfce4_menueditor_OBJECTS)
 xfce4_menueditor_DEPENDENCIES =  \
 	$(top_builddir)/common/libxfdesktop.la
@@ -169,9 +168,6 @@ LIBXFCE4UTIL_REQUIRED_VERSION = @LIBXFCE4UTIL_REQUIRED_VERSION@
 LIBXFCEGUI4_CFLAGS = @LIBXFCEGUI4_CFLAGS@
 LIBXFCEGUI4_LIBS = @LIBXFCEGUI4_LIBS@
 LIBXFCEGUI4_REQUIRED_VERSION = @LIBXFCEGUI4_REQUIRED_VERSION@
-LIBXML_CFLAGS = @LIBXML_CFLAGS@
-LIBXML_LIBS = @LIBXML_LIBS@
-LIBXML_REQUIRED_VERSION = @LIBXML_REQUIRED_VERSION@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAINT = @MAINT@
@@ -269,10 +265,8 @@ xfce4_menueditor_SOURCES = \
 	edit_dialog.h							\
 	menueditor.c							\
 	menueditor.h							\
-	move.c								\
-	move.h								\
-	new_dialog.c							\
-	new_dialog.h							
+	utils.c								\
+	utils.h								
 
 xfce4_menueditor_CFLAGS = \
 	-I$(top_srcdir)							\
@@ -280,10 +274,9 @@ xfce4_menueditor_CFLAGS = \
 	-I$(top_srcdir)/pixmaps						\
 	@LIBX11_CFLAGS@							\
 	@LIBXFCEGUI4_CFLAGS@						\
-	@LIBXML_CFLAGS@							\
 	-DLOCALEDIR=\"$(localedir)\"					\
 	-DDATADIR=\"$(pkgdatadir)\"					\
-	-DSYSCONFDIR=\"$(sysconfdir)\"			\
+	-DSYSCONFDIR=\"$(sysconfdir)\"					\
 	-DXFCEDATADIR=\"$(datadir)/xfce4\"
 
 xfce4_menueditor_LDADD = \
@@ -291,8 +284,7 @@ xfce4_menueditor_LDADD = \
 	@LIBX11_LDFLAGS@						\
 	@LIBX11_LIBS@							\
 	@LIBXFCE4MCS_CLIENT_LIBS@					\
-	@LIBXFCEGUI4_LIBS@						\
-	@LIBXML_LIBS@
+	@LIBXFCEGUI4_LIBS@						
 
 appsdir = $(datadir)/applications
 apps_DATA = xfce-menueditor.desktop
@@ -374,8 +366,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_menueditor-dnd.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_menueditor-edit_dialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_menueditor-menueditor.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_menueditor-move.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_menueditor-new_dialog.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfce4_menueditor-utils.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
@@ -482,33 +473,19 @@ xfce4_menueditor-menueditor.obj: menueditor.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -c -o xfce4_menueditor-menueditor.obj `if test -f 'menueditor.c'; then $(CYGPATH_W) 'menueditor.c'; else $(CYGPATH_W) '$(srcdir)/menueditor.c'; fi`
 
-xfce4_menueditor-move.o: move.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -MT xfce4_menueditor-move.o -MD -MP -MF "$(DEPDIR)/xfce4_menueditor-move.Tpo" -c -o xfce4_menueditor-move.o `test -f 'move.c' || echo '$(srcdir)/'`move.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_menueditor-move.Tpo" "$(DEPDIR)/xfce4_menueditor-move.Po"; else rm -f "$(DEPDIR)/xfce4_menueditor-move.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='move.c' object='xfce4_menueditor-move.o' libtool=no @AMDEPBACKSLASH@
+xfce4_menueditor-utils.o: utils.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -MT xfce4_menueditor-utils.o -MD -MP -MF "$(DEPDIR)/xfce4_menueditor-utils.Tpo" -c -o xfce4_menueditor-utils.o `test -f 'utils.c' || echo '$(srcdir)/'`utils.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_menueditor-utils.Tpo" "$(DEPDIR)/xfce4_menueditor-utils.Po"; else rm -f "$(DEPDIR)/xfce4_menueditor-utils.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='utils.c' object='xfce4_menueditor-utils.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -c -o xfce4_menueditor-move.o `test -f 'move.c' || echo '$(srcdir)/'`move.c
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -c -o xfce4_menueditor-utils.o `test -f 'utils.c' || echo '$(srcdir)/'`utils.c
 
-xfce4_menueditor-move.obj: move.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -MT xfce4_menueditor-move.obj -MD -MP -MF "$(DEPDIR)/xfce4_menueditor-move.Tpo" -c -o xfce4_menueditor-move.obj `if test -f 'move.c'; then $(CYGPATH_W) 'move.c'; else $(CYGPATH_W) '$(srcdir)/move.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_menueditor-move.Tpo" "$(DEPDIR)/xfce4_menueditor-move.Po"; else rm -f "$(DEPDIR)/xfce4_menueditor-move.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='move.c' object='xfce4_menueditor-move.obj' libtool=no @AMDEPBACKSLASH@
+xfce4_menueditor-utils.obj: utils.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -MT xfce4_menueditor-utils.obj -MD -MP -MF "$(DEPDIR)/xfce4_menueditor-utils.Tpo" -c -o xfce4_menueditor-utils.obj `if test -f 'utils.c'; then $(CYGPATH_W) 'utils.c'; else $(CYGPATH_W) '$(srcdir)/utils.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_menueditor-utils.Tpo" "$(DEPDIR)/xfce4_menueditor-utils.Po"; else rm -f "$(DEPDIR)/xfce4_menueditor-utils.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='utils.c' object='xfce4_menueditor-utils.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -c -o xfce4_menueditor-move.obj `if test -f 'move.c'; then $(CYGPATH_W) 'move.c'; else $(CYGPATH_W) '$(srcdir)/move.c'; fi`
-
-xfce4_menueditor-new_dialog.o: new_dialog.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -MT xfce4_menueditor-new_dialog.o -MD -MP -MF "$(DEPDIR)/xfce4_menueditor-new_dialog.Tpo" -c -o xfce4_menueditor-new_dialog.o `test -f 'new_dialog.c' || echo '$(srcdir)/'`new_dialog.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_menueditor-new_dialog.Tpo" "$(DEPDIR)/xfce4_menueditor-new_dialog.Po"; else rm -f "$(DEPDIR)/xfce4_menueditor-new_dialog.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='new_dialog.c' object='xfce4_menueditor-new_dialog.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -c -o xfce4_menueditor-new_dialog.o `test -f 'new_dialog.c' || echo '$(srcdir)/'`new_dialog.c
-
-xfce4_menueditor-new_dialog.obj: new_dialog.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -MT xfce4_menueditor-new_dialog.obj -MD -MP -MF "$(DEPDIR)/xfce4_menueditor-new_dialog.Tpo" -c -o xfce4_menueditor-new_dialog.obj `if test -f 'new_dialog.c'; then $(CYGPATH_W) 'new_dialog.c'; else $(CYGPATH_W) '$(srcdir)/new_dialog.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfce4_menueditor-new_dialog.Tpo" "$(DEPDIR)/xfce4_menueditor-new_dialog.Po"; else rm -f "$(DEPDIR)/xfce4_menueditor-new_dialog.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='new_dialog.c' object='xfce4_menueditor-new_dialog.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -c -o xfce4_menueditor-new_dialog.obj `if test -f 'new_dialog.c'; then $(CYGPATH_W) 'new_dialog.c'; else $(CYGPATH_W) '$(srcdir)/new_dialog.c'; fi`
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfce4_menueditor_CFLAGS) $(CFLAGS) -c -o xfce4_menueditor-utils.obj `if test -f 'utils.c'; then $(CYGPATH_W) 'utils.c'; else $(CYGPATH_W) '$(srcdir)/utils.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

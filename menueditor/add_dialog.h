@@ -1,6 +1,6 @@
 /*   add_dialog.h */
 
-/*  Copyright (C)  Jean-François Wauthy under GNU GPL
+/*  Copyright (C) 2005 Jean-FranÃ§ois Wauthy under GNU GPL
  *
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -18,25 +18,8 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#ifndef __HAVE_ADDDIALOG_HEADER
-#define __HAVE_ADDDIALOG_HEADER
-
-/* Structure */
-struct _controls_add
-{
-  enum
-  { LAUNCHER, SUBMENU, SEPARATOR, TITLE, INCLUDE, QUIT } entry_type;
-  GtkWidget *label_name;
-  GtkWidget *entry_name;
-  GtkWidget *label_command;
-  GtkWidget *entry_command;
-  GtkWidget *browse_button;
-  GtkWidget *label_icon;
-  GtkWidget *entry_icon;
-  GtkWidget *browse_button2;
-  GtkWidget *snotify_checkbutton;
-  GtkWidget *term_checkbutton;
-};
+#ifndef __HAVE_ADD_DIALOG_HEADER
+#define __HAVE_ADD_DIALOG_HEADER
 
 /* Prototype */
 void add_entry_cb (GtkWidget * widget, gpointer data);

@@ -1,6 +1,6 @@
 /*   about_dialog.c */
 
-/*  Copyright (C)  Jean-François Wauthy under GNU GPL
+/*  Copyright (C) 2005 Jean-François Wauthy under GNU GPL
  *
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -18,8 +18,8 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#ifndef __HAVE_ABOUTDIALOG_HEADER
-#define __HAVE_ABOUTDIALOG_HEADER
+#ifndef __HAVE_ABOUT_DIALOG_HEADER
+#define __HAVE_ABOUT_DIALOG_HEADER
 
 /* Prototype */
 void about_cb (GtkWidget * widget, gpointer data);

@@ -1,6 +1,6 @@
 /*   menueditor.h */
 
-/*  Copyright (C)  Jean-François Wauthy under GNU GPL
+/*  Copyright (C) 2005 Jean-François Wauthy under GNU GPL
  *
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -23,18 +23,13 @@
 
 #include "config.h"
 
-#ifdef GTK_DISABLE_DEPRECATED
-#undef GTK_DISABLE_DEPRECATED
-#endif
 #include <gtk/gtk.h>
-
-/* includes for the libxml */
-#include <libxml/xmlmemory.h>
-#include <libxml/parser.h>
 
 /* includes for xfce4 */
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfce4util/libxfce4util.h>
+
+#include "../modules/menu/dummy_icon.h"
 
 /* definitions of fonts in the tree */
 #define TITLE_FORMAT "<span weight='bold' color='dim grey' style='italic'>%s</span>"
@@ -51,57 +46,64 @@
 /***********/
 /* Globals */
 /***********/
-char *menueditor_markup_printf_escaped (const char *format, ...);
+enum
+{
+  COLUMN_ICON, COLUMN_NAME, COLUMN_COMMAND, COLUMN_HIDDEN, COLUMN_TYPE,
+  COLUMN_OPTION_1, COLUMN_OPTION_2, COLUMN_OPTION_3, COLUMNS
+};
 
-void browse_command_cb (GtkWidget * widget, gpointer data);
-void browse_icon_cb (GtkWidget * widget, gpointer data);
-gboolean command_exists (const gchar * command);
-void menu_save_cb (GtkWidget * widget, gpointer data);
-/* Load the menu in the tree */
-void load_menu_in_tree (xmlNodePtr menu, GtkTreeIter * p, gpointer data);
+enum _ENTRY_TYPE
+{
+  TITLE, MENU, APP, SEPARATOR, BUILTIN, INCLUDE_FILE, INCLUDE_SYSTEM
+};
 
 enum
-{ ICON_COLUMN, NAME_COLUMN, COMMAND_COLUMN, HIDDEN_COLUMN,
-  POINTER_COLUMN, NUM_COLUMNS
+{
+  DND_TARGET_MENUEDITOR, DND_TARGET_TEXT_PLAIN, DND_TARGET_APP_DESKTOP, TARGETS
 };
 
 typedef struct _menueditor_app MenuEditor;
+typedef enum _ENTRY_TYPE ENTRY_TYPE;
 
 struct _menueditor_app
 {
   gboolean menu_modified;
-  gchar menu_file_name[255];
-  xmlDocPtr xml_menu_file;
+  gchar *menu_file_name;
 
   XfceIconTheme *icon_theme;
-  GtkWidget *main_window;
-
-  /* AccelGroup */
-  GtkAccelGroup *accel_group;
+  GtkWidget *window;
 
   /* Tree */
   GtkWidget *treeview;
-  GtkTreeStore *treestore;
 
   /* Menus */
-  GtkWidget *file_menu_item;
-  GtkWidget *file_menu_new;
-  GtkWidget *file_menu_open;
-  GtkWidget *file_menu_default;
-  GtkWidget *file_menu_save;
-  GtkWidget *file_menu_saveas;
-  GtkWidget *file_menu_close;
-  GtkWidget *file_menu_exit;
+  GtkWidget *menu_item_file;
+  GtkWidget *menu_item_file_new;
+  GtkWidget *menu_item_file_open;
+  GtkWidget *menu_item_file_default;
+  GtkWidget *menu_item_file_save;
+  GtkWidget *menu_item_file_saveas;
+  GtkWidget *menu_item_file_close;
+  GtkWidget *menu_item_file_exit;
 
-  GtkWidget *edit_menu_item;
-  GtkWidget *edit_menu_add;
-  GtkWidget *edit_menu_add_menu;
-  GtkWidget *edit_menu_del;
-  GtkWidget *edit_menu_up;
-  GtkWidget *edit_menu_down;
+  GtkWidget *menu_item_edit;
+  GtkWidget *menu_item_edit_add;
+  GtkWidget *menu_item_edit_add_menu;
+  GtkWidget *menu_item_edit_del;
+  GtkWidget *menu_item_edit_up;
+  GtkWidget *menu_item_edit_down;
 
-  GtkWidget *help_menu_item;
-  GtkWidget *help_menu_about;
+  GtkWidget *menu_item_help;
+  GtkWidget *menu_item_help_about;
+
+  /* Popup menu */
+  GtkWidget *menu_popup;
+  GtkWidget *menu_item_popup_edit;
+  GtkWidget *menu_item_popup_add;
+  GtkWidget *menu_item_popup_addmenu;
+  GtkWidget *menu_item_popup_del;
+  GtkWidget *menu_item_popup_up;
+  GtkWidget *menu_item_popup_down;
 
   /* Toolbar */
   GtkWidget *toolbar_new;
@@ -114,10 +116,7 @@ struct _menueditor_app
   GtkWidget *toolbar_del;
   GtkWidget *toolbar_up;
   GtkWidget *toolbar_down;
-
-  GtkWidget *entry_command;
-  GtkWidget *entry_icon;
 };
 
-
+extern GdkPixbuf *dummy_icon;
 #endif

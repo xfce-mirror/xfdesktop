@@ -51,17 +51,18 @@ BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [4.2.0])
 XFCE_PANEL_PLUGIN([XFCE4_PANEL], [4.2.0])
 XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.2.0])
 
-dnl check for libxml2 for menueditor
-BM_DEPEND_CHECK([LIBXML], libxml-2.0, 2.4.0, [libxml2],
-	[libxml2 (for xfce4-menueditor)], [yes])
-AM_CONDITIONAL([BUILD_MENUEDITOR], [test "x$LIBXML_FOUND" = "xyes"])
-if test "x$LIBXML_FOUND" = "xyes"; then
-	build_menueditor="yes"
-else
-	build_menueditor="no"
-fi
-
 dnl Build options
+AC_ARG_ENABLE([menu-editor],
+        AC_HELP_STRING([--disable-menueditor],
+                [Do not build the menueditor (default=enabled)]),
+        [ac_cv_enable_menueditor=$enableval],
+        [ac_cv_enable_menueditor=yes])
+if test "x$ac_cv_enable_menueditor" = "xno"; then
+        build_menueditor="no"
+else
+        build_menueditor="yes"
+fi
+AM_CONDITIONAL([BUILD_MENUEDITOR], [test "x$build_menueditor" = "xyes"])
 
 AC_ARG_ENABLE([desktop-menu],
         AC_HELP_STRING([--disable-desktop-menu],
@@ -117,7 +118,7 @@ xfdesktop.spec
 
 echo
 echo "Build Configuration:"
-echo "  Build menu editor (requires libxml2):         $build_menueditor"
+echo "  Build menu editor:                            $build_menueditor"
 echo "  Build desktop menu module:                    $build_desktop_menu"
 echo "  Build desktop menu panel plugin:              $build_panel_plugin"
 echo
