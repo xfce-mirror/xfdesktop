@@ -94,7 +94,7 @@ typedef struct
     
     GtkWidget *file_entry;
     GtkWidget *edit_list_button;
-    GSList *style_rb_group;
+    GtkWidget *style_om;
 }
 BackdropDialog;
 
@@ -263,27 +263,17 @@ static void update_path(BackdropDialog *bd)
     
     if (is_backdrop_list(backdrop_path))
     {
-        GtkToggleButton *tb;
-        
         gtk_widget_set_sensitive(bd->edit_list_button, TRUE);
         
         /* set style to AUTOMATIC and set insensitive */
-        tb = GTK_TOGGLE_BUTTON(bd->style_rb_group->data);
-        gtk_toggle_button_set_active(tb, TRUE);
-        
-        for (li = bd->style_rb_group; li; li = li->next)
-        {
-            gtk_widget_set_sensitive(GTK_WIDGET(li->data), FALSE);
-        }
+	gtk_option_menu_set_history(GTK_OPTION_MENU(bd->style_om), AUTO);
+        gtk_widget_set_sensitive(bd->style_om, FALSE);
     }
     else
     {
         gtk_widget_set_sensitive(bd->edit_list_button, FALSE);
 
-        for (li = bd->style_rb_group; li; li = li->next)
-        {
-            gtk_widget_set_sensitive(GTK_WIDGET(li->data), TRUE);
-        }
+        gtk_widget_set_sensitive(bd->style_om, TRUE);
     }
 
     if (backdrop_path)
@@ -785,7 +775,7 @@ add_style_options(GtkWidget *vbox, GtkSizeGroup *sg, BackdropDialog *bd)
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), rb_auto);
     g_signal_connect(rb_auto, "activate", G_CALLBACK(set_style), bd);
 	    
-    omenu = gtk_option_menu_new();
+    bd->style_om = omenu = gtk_option_menu_new();
     gtk_option_menu_set_menu(GTK_OPTION_MENU(omenu), menu);
     gtk_option_menu_set_history(GTK_OPTION_MENU(omenu), backdrop_style);
 
