@@ -499,10 +499,13 @@ static void list_add_cb(GtkWidget *b, ListDialog *ld)
 {
     static GtkFileSelection *fs = NULL;
     char *title;
-    gpointer p;
+    GtkFileSelection **fs_ptr;
     
     if (fs)
-	gtk_window_present(GTK_WINDOW(fs));
+    {
+        gtk_window_present(GTK_WINDOW(fs));
+	return;
+    }
     
     title = _("Select image file");
     fs = GTK_FILE_SELECTION(preview_file_selection_new (title, TRUE));
@@ -520,8 +523,9 @@ static void list_add_cb(GtkWidget *b, ListDialog *ld)
 
     g_signal_connect(fs, "delete-event", G_CALLBACK (gtk_widget_destroy), fs);
 
-    p = (gpointer)fs;
-    g_object_add_weak_pointer(G_OBJECT(fs), &p);
+    /* gcc doesn't like (gpointer*)&fs */
+    fs_ptr = &fs;
+    g_object_add_weak_pointer(G_OBJECT(fs), (gpointer*)fs_ptr);
 
     gtk_widget_show(GTK_WIDGET(fs));
 }
@@ -606,11 +610,14 @@ static void fs_ok_cb (GtkWidget *b, ListDialog *ld)
 static void filename_browse_cb (GtkWidget * b, ListDialog * ld)
 {
     static GtkFileSelection *fs = NULL;
+    GtkFileSelection **fs_ptr;
     char *title;
-    gpointer p;
     
     if (fs)
-	gtk_window_present(GTK_WINDOW(fs));
+    {
+        gtk_window_present(GTK_WINDOW(fs));
+	return;
+    }
     
     title = _("Choose backdrop list filename");
     fs = GTK_FILE_SELECTION(preview_file_selection_new (title, TRUE));
@@ -626,8 +633,9 @@ static void filename_browse_cb (GtkWidget * b, ListDialog * ld)
 
     g_signal_connect(fs, "delete-event", G_CALLBACK (gtk_widget_destroy), fs);
 
-    p = (gpointer)fs;
-    g_object_add_weak_pointer(G_OBJECT(fs), &p);
+    /* gcc doesn't like (gpointer*)&fs */
+    fs_ptr = &fs;
+    g_object_add_weak_pointer(G_OBJECT(fs), (gpointer*)fs_ptr);
 
     gtk_widget_show(GTK_WIDGET(fs));
 }
