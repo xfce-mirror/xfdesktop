@@ -48,10 +48,11 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 SOURCES =
 DIST_SOURCES =
-am__installdirs = $(DESTDIR)$(icons32dir) $(DESTDIR)$(icons48dir)
+am__installdirs = $(DESTDIR)$(icons32dir) $(DESTDIR)$(icons48dir) $(DESTDIR)$(pixmapsdir)
 icons32DATA_INSTALL = $(INSTALL_DATA)
 icons48DATA_INSTALL = $(INSTALL_DATA)
-DATA = $(icons32_DATA) $(icons48_DATA)
+pixmapsDATA_INSTALL = $(INSTALL_DATA)
+DATA = $(icons32_DATA) $(icons48_DATA) $(pixmaps_DATA)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 AMDEP_FALSE = @AMDEP_FALSE@
@@ -86,8 +87,14 @@ EXEEXT = @EXEEXT@
 F77 = @F77@
 FFLAGS = @FFLAGS@
 GETTEXT_PACKAGE = @GETTEXT_PACKAGE@
+GMODULE_CFLAGS = @GMODULE_CFLAGS@
+GMODULE_LIBS = @GMODULE_LIBS@
+GMODULE_REQUIRED_VERSION = @GMODULE_REQUIRED_VERSION@
 GMOFILES = @GMOFILES@
 GMSGFMT = @GMSGFMT@
+GTHREAD_CFLAGS = @GTHREAD_CFLAGS@
+GTHREAD_LIBS = @GTHREAD_LIBS@
+GTHREAD_REQUIRED_VERSION = @GTHREAD_REQUIRED_VERSION@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -140,6 +147,10 @@ SHELL = @SHELL@
 STRIP = @STRIP@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
+XFCE4_PANEL_CFLAGS = @XFCE4_PANEL_CFLAGS@
+XFCE4_PANEL_LIBS = @XFCE4_PANEL_LIBS@
+XFCE4_PANEL_PLUGINSDIR = @XFCE4_PANEL_PLUGINSDIR@
+XFCE4_PANEL_REQUIRED_VERSION = @XFCE4_PANEL_REQUIRED_VERSION@
 XFCE_MCS_MANAGER_CFLAGS = @XFCE_MCS_MANAGER_CFLAGS@
 XFCE_MCS_MANAGER_LIBS = @XFCE_MCS_MANAGER_LIBS@
 XFCE_MCS_MANAGER_PLUGINSDIR = @XFCE_MCS_MANAGER_PLUGINSDIR@
@@ -201,7 +212,9 @@ icons48_DATA = \
 	48x48/xfce4-backdrop.png		\
 	48x48/xfce4-menueditor.png
 
-EXTRA_DIST = $(icons32_DATA) $(icons48_DATA)
+pixmapsdir = $(datadir)/pixmaps
+pixmaps_DATA = xfce4_xicon.png
+EXTRA_DIST = $(icons32_DATA) $(icons48_DATA) $(pixmaps_DATA)
 all: all-am
 
 .SUFFIXES:
@@ -278,6 +291,23 @@ uninstall-icons48DATA:
 	  echo " rm -f $(DESTDIR)$(icons48dir)/$$f"; \
 	  rm -f $(DESTDIR)$(icons48dir)/$$f; \
 	done
+install-pixmapsDATA: $(pixmaps_DATA)
+	@$(NORMAL_INSTALL)
+	$(mkdir_p) $(DESTDIR)$(pixmapsdir)
+	@list='$(pixmaps_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " $(pixmapsDATA_INSTALL) $$d$$p $(DESTDIR)$(pixmapsdir)/$$f"; \
+	  $(pixmapsDATA_INSTALL) $$d$$p $(DESTDIR)$(pixmapsdir)/$$f; \
+	done
+
+uninstall-pixmapsDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(pixmaps_DATA)'; for p in $$list; do \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " rm -f $(DESTDIR)$(pixmapsdir)/$$f"; \
+	  rm -f $(DESTDIR)$(pixmapsdir)/$$f; \
+	done
 tags: TAGS
 TAGS:
 
@@ -317,7 +347,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(DATA)
 installdirs:
-	$(mkdir_p) $(DESTDIR)$(icons32dir) $(DESTDIR)$(icons48dir)
+	$(mkdir_p) $(DESTDIR)$(icons32dir) $(DESTDIR)$(icons48dir) $(DESTDIR)$(pixmapsdir)
 install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
@@ -360,7 +390,8 @@ info: info-am
 
 info-am:
 
-install-data-am: install-icons32DATA install-icons48DATA
+install-data-am: install-icons32DATA install-icons48DATA \
+	install-pixmapsDATA
 
 install-exec-am:
 
@@ -387,18 +418,19 @@ ps: ps-am
 ps-am:
 
 uninstall-am: uninstall-icons32DATA uninstall-icons48DATA \
-	uninstall-info-am
+	uninstall-info-am uninstall-pixmapsDATA
 
 .PHONY: all all-am check check-am clean clean-generic clean-libtool \
 	distclean distclean-generic distclean-libtool distdir dvi \
 	dvi-am html html-am info info-am install install-am \
 	install-data install-data-am install-exec install-exec-am \
 	install-icons32DATA install-icons48DATA install-info \
-	install-info-am install-man install-strip installcheck \
-	installcheck-am installdirs maintainer-clean \
+	install-info-am install-man install-pixmapsDATA install-strip \
+	installcheck installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-generic \
 	mostlyclean-libtool pdf pdf-am ps ps-am uninstall uninstall-am \
-	uninstall-icons32DATA uninstall-icons48DATA uninstall-info-am
+	uninstall-icons32DATA uninstall-icons48DATA uninstall-info-am \
+	uninstall-pixmapsDATA
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
