@@ -112,7 +112,7 @@ static void
 read_file(const gchar *filename, GtkListStore *ls, GtkWidget *parent)
 {
 	gchar **files;
-	gint i;;
+	gint i;
 
 	if((files = get_list_from_file (filename)) != NULL) {
 		for(i = 0; files[i]; i++) {
