@@ -18,11 +18,21 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#ifdef HAVE_STRING_H
+#include <string.h>
+#endif
+
 #include <libxfce4util/xfce-desktopentry.h>
 
 #include "menueditor.h"
 
 #include "dnd.h"
+
+extern void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p);
 
 inline void show_str(char *str)
 {
@@ -206,12 +216,12 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
     if(g_str_has_prefix(sd->data,"file://")){
       gchar *source=&((sd->data)[7]);
 
-      filename = g_strndup(&((sd->data)[7]),strlen(sd->data)-8);
+      filename = g_strndup(source, strlen(sd->data)-8);
       filename[strlen(filename)-1]='\0';
     }else if(g_str_has_prefix(sd->data,"file:")){
       gchar *source=&((sd->data)[5]);
 
-      filename = g_strndup(&((sd->data)[5]),strlen(sd->data)-6);
+      filename = g_strndup(source, strlen(sd->data)-6);
       filename[strlen(filename)-1]='\0';
     }
 

@@ -18,9 +18,19 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#ifdef HAVE_STRING_H
+#include <string.h>
+#endif
+
 #include "menueditor.h"
 
 #include "new.h"
+
+void menu_save_cb(GtkWidget *widget, gpointer data);
 
 /************/
 /* New menu */
@@ -84,7 +94,7 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
   /* Header */
   header_image = gtk_image_new_from_stock("gtk-justify-fill", GTK_ICON_SIZE_LARGE_TOOLBAR);
   header_text = g_strdup_printf("%s", _("New menu"));
-  header = create_header_with_image (header_image, header_text);
+  header = xfce_create_header_with_image (header_image, header_text);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);
   g_free (header_text);
 
@@ -120,7 +130,7 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
       const gchar empty_xml[]="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE xfdesktop-menu>\n<xfdesktop-menu>\n</xfdesktop-menu>";
       FILE *xml_empty_file;
       xmlNodePtr root_node, title_node;
-      GtkTreeIter p, iter_root;
+      GtkTreeIter p;
 
       /* Test if all field are filled */
       if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_filename)))==0 ||

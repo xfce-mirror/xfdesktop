@@ -221,7 +221,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
   gtk_widget_show_all(dialog);
 
   if(gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK){
-    xmlNodePtr node, root_node, selection_node;
+    xmlNodePtr node = NULL, root_node = NULL, selection_node = NULL;
     GtkTreeIter iter, selection_iter, parent;
     GtkTreeModel *tree_model=GTK_TREE_MODEL(menueditor_app.treestore);
     GValue val = { 0, };

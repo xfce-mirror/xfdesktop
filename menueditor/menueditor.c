@@ -18,6 +18,18 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#ifdef HAVE_STRING_H
+#include <string.h>
+#endif
+
+#include <time.h>
+
+#include <libxfce4util/i18n.h>
+
 #include "menueditor.h"
 
 #include "add_dialog.h"
@@ -31,7 +43,7 @@
 /* Pixmaps */
 #include "me-icon16.xpm"
 #include "me-icon32.xpm"
-#include "me-icon24.xpm"
+//#include "me-icon24.xpm"
 #include "me-icon48.xpm"
 
 /* Search path for menu.xml file */
@@ -701,15 +713,12 @@ void create_main_window()
 {
   GtkWidget *main_vbox;
   GtkAccelGroup *accel_group;
-  GtkWidget* image_file_menu;
 
   GtkWidget* tmp_toolbar_icon;
-  GtkWidget* main_toolbar_save_button;
   /* Treeview */
   GtkWidget* scrolledwindow;
   GtkCellRenderer *name_cell, *command_cell, *hidden_cell, *pointer_cell, *icon_cell;
   GtkTreeViewColumn *name_column, *command_column, *hidden_column, *pointer_column;
-  GtkTreeIter p, p2, c;
 
   GtkWidget *menu_separator;
 
@@ -730,8 +739,8 @@ void create_main_window()
   menueditor_app.main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title(GTK_WINDOW(menueditor_app.main_window),
 		       "XFCE4 - MenuEditor");
-  gtk_signal_connect(GTK_OBJECT(menueditor_app.main_window), "delete_event",
-		     GTK_SIGNAL_FUNC(confirm_quit_cb), NULL);
+  g_signal_connect(G_OBJECT(menueditor_app.main_window), "delete_event",
+		     G_CALLBACK(confirm_quit_cb), NULL);
   gtk_window_set_default_size(GTK_WINDOW(menueditor_app.main_window),600,450);
 
   /* Set default icon */
@@ -1038,7 +1047,6 @@ void create_main_window()
 /********************/
 void open_menu_file(gchar *menu_file)
 {
-  GtkTreeIter p;
   xmlNodePtr root;
   xmlNodePtr menu_entry;
 
@@ -1140,31 +1148,28 @@ void open_menu_file(gchar *menu_file)
 /***********************************************************/
 /* Get the menu file in use (inspired from xfdesktop code) */
 /***********************************************************/
+/* FIXME: move to common/ */
 static gchar* get_default_menu_file ()
 {
-  gchar *filename = NULL;
-  gchar *path = NULL;
-  const char *env;
+	gchar filename[PATH_MAX];
+	const gchar *env = g_getenv("XFCE_DISABLE_USER_CONFIG");
 
-  env = g_getenv ("XFCE_DISABLE_USER_CONFIG");
-  
-  if (!env || strcmp (env, "0")){
-    filename = xfce_get_userfile ("menu.xml", NULL);
-    if (g_file_test (filename, G_FILE_TEST_EXISTS))
-      return filename;
-  }
+	if(!env || !strcmp(env, "0")) {
+		gchar *usermenu = xfce_get_userfile("menu.xml", NULL);
+		if(g_file_test(usermenu, G_FILE_TEST_IS_REGULAR))
+			return usermenu;
+		g_free(usermenu);
+	}
 
-  path = g_build_filename (SYSCONFDIR, "xfce4", "menu.xml", NULL);
-  filename = (gchar*)xfce_get_file_localized (path);
-  g_free (path);
-  
-  if(filename)
-    return filename;
+	if(xfce_get_path_localized(filename, PATH_MAX, SEARCHPATH,
+			"menu.xml", G_FILE_TEST_IS_REGULAR))
+	{
+		return g_strdup(filename);
+	}
 
-  g_warning ("%s: Could not locate a menu definition file", PACKAGE);
-  
-  return NULL;
+    g_warning("%s: Could not locate a menu definition file", PACKAGE);
 
+    return NULL;
 }
 
 /***************/

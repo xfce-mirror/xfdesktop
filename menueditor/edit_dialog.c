@@ -18,6 +18,14 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#ifdef HAVE_STRING_H
+#include <string.h>
+#endif
+
 #include "menueditor.h"
 
 #include "edit_dialog.h"
@@ -48,11 +56,11 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   GtkWidget *header_image;
   gchar *header_text;
 
-  GtkWidget* name_entry;
-  GtkWidget* command_entry;
-  GtkWidget *icon_entry;
+  GtkWidget* name_entry = NULL;
+  GtkWidget* command_entry = NULL;
+  GtkWidget *icon_entry = NULL;
   struct _controls_menu controls;
-  GtkWidget *entry_source;
+  GtkWidget *entry_source = NULL;
 
   xmlChar *prop_name = NULL;
   xmlChar *prop_cmd = NULL;
@@ -82,7 +90,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   /* Header */
   header_image = gtk_image_new_from_stock("gtk-justify-fill", GTK_ICON_SIZE_LARGE_TOOLBAR);
   header_text = g_strdup_printf("%s", _("Edit menu entry"));
-  header = create_header_with_image (header_image, header_text);
+  header = xfce_create_header_with_image (header_image, header_text);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);
   g_free (header_text);
 
