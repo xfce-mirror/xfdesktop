@@ -712,9 +712,12 @@ xfce_desktop_settings_changed(McsClient *client, McsAction action,
 					const gchar *imgfile = get_path_from_listfile(setting->data.v_string);
 					xfce_backdrop_set_image_filename(backdrop, imgfile);
 					set_imgfile_root_property(desktop, imgfile, monitor);
-				} else
+				} else {
 					xfce_backdrop_set_image_filename(backdrop,
 							setting->data.v_string);
+					set_imgfile_root_property(desktop, setting->data.v_string,
+							monitor);
+				}
 				handled = TRUE;
 			} else if(strstr(setting->name, "imagestyle") == setting->name) {
 				xfce_backdrop_set_image_style(backdrop, setting->data.v_int);
