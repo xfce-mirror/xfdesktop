@@ -555,7 +555,6 @@ list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 	xfce_file_filter_add_pattern(filter, "*.gif");
 	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
 	
-	xfce_file_chooser_set_local_only(XFCE_FILE_CHOOSER(chooser), TRUE);
 	xfce_file_chooser_add_shortcut_folder(XFCE_FILE_CHOOSER(chooser),
 			DATADIR "/xfce4/backdrops", NULL);
 	xfce_file_chooser_set_select_multiple(XFCE_FILE_CHOOSER(chooser), TRUE);
