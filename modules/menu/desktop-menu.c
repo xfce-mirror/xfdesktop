@@ -202,9 +202,12 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 
 static gboolean
 _generate_menu_initial(gpointer data) {
+	XfceDesktopMenu *desktop_menu = data;
+	
 	g_return_val_if_fail(data != NULL, FALSE);
 	
-	_generate_menu((XfceDesktopMenu *)data, FALSE);
+	_generate_menu(desktop_menu, FALSE);
+	desktop_menu->idle_id = 0;
 	
 	return FALSE;
 }
@@ -233,7 +236,7 @@ xfce_desktop_menu_new_impl(const gchar *menu_file, gboolean deferred)
 	}
 	
 	if(deferred)
-		g_idle_add(_generate_menu_initial, desktop_menu);
+		desktop_menu->idle_id = g_idle_add(_generate_menu_initial, desktop_menu);
 	else {
 		if(!_generate_menu(desktop_menu, FALSE)) {
 			g_free(desktop_menu);
@@ -332,19 +335,30 @@ xfce_desktop_menu_destroy_impl(XfceDesktopMenu *desktop_menu)
 {
 	g_return_if_fail(desktop_menu != NULL);
 	TRACE("dummy");
+	
+	if(desktop_menu->idle_id) {
+		g_source_remove(desktop_menu->idle_id);
+		desktop_menu->idle_id = 0;
+	}
+	
 	xfce_desktop_menu_stop_autoregen_impl(desktop_menu);
 	
+	TRACE("autogen stupped, freeing menu data");
+	
 	_xfce_desktop_menu_free_menudata(desktop_menu);
+	TRACE("menudata freed, freeing filename (maybe)");
 	if(desktop_menu->filename) {
 		g_free(desktop_menu->filename);
 		desktop_menu->filename = NULL;
 	}
+	TRACE("filename freed, freeing cache file suffix (maybe)");
 	if(desktop_menu->cache_file_suffix) {
 		g_free(desktop_menu->cache_file_suffix);
 		desktop_menu->cache_file_suffix = NULL;
 	}
-	
+	TRACE("about to free desktop menu struct");
 	g_free(desktop_menu);
+	TRACE("exiting");
 }
 
 static void

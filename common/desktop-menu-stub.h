@@ -20,19 +20,13 @@
 #ifndef __DESKTOP_MENU_STUB_H__
 #define __DESKTOP_MENU_STUB_H__
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <gtk/gtkwidget.h>
-#include <gmodule.h>
 
-GModule *xfce_desktop_menu_stub_init();
-void xfce_desktop_menu_stub_cleanup(GModule *menu_gmod);
+G_BEGIN_DECLS
 
 typedef struct _XfceDesktopMenu XfceDesktopMenu;
 
-extern XfceDesktopMenu *(*xfce_desktop_menu_new)(const gchar *menu_file, gboolean deferred);
+XfceDesktopMenu *xfce_desktop_menu_new(const gchar *menu_file, gboolean deferred);
 extern GtkWidget *(*xfce_desktop_menu_get_widget)(XfceDesktopMenu *desktop_menu);
 extern G_CONST_RETURN gchar *(*xfce_desktop_menu_get_menu_file)(XfceDesktopMenu *desktop_menu);
 extern gboolean (*xfce_desktop_menu_need_update)(XfceDesktopMenu *desktop_menu);
@@ -40,10 +34,8 @@ extern void (*xfce_desktop_menu_start_autoregen)(XfceDesktopMenu *desktop_menu, 
 extern void (*xfce_desktop_menu_stop_autoregen)(XfceDesktopMenu *desktop_menu);
 extern void (*xfce_desktop_menu_force_regen)(XfceDesktopMenu *desktop_menu);
 extern void (*xfce_desktop_menu_set_show_icons)(XfceDesktopMenu *desktop_menu, gboolean show_icons);
-extern void (*xfce_desktop_menu_destroy)(XfceDesktopMenu *desktop_menu);
+void xfce_desktop_menu_destroy(XfceDesktopMenu *desktop_menu);
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
 
-#endif /* !def __DESKTOP_MENU_H__ */
+#endif /* !def __DESKTOP_MENU_STUB_H__ */

@@ -27,7 +27,6 @@
 
 #include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
-#include <gmodule.h>
 
 #include <panel/plugins.h>
 #include <panel/xfce.h>
@@ -52,8 +51,6 @@ typedef struct _DMPlugin {
 	GtkWidget *icons_chk;
 	GtkTooltips *tooltip;  /* needed? */
 } DMPlugin;
-
-static GModule *menu_gmod = NULL;
 
 static void
 dmp_set_size(Control *c, int size)
@@ -86,8 +83,10 @@ dmp_free(Control *c)
 {
 	DMPlugin *dmp = c->data;
 	
-	if(dmp->desktop_menu)
+	if(dmp->desktop_menu) {
+		TRACE("calling menu_destroy()");
 		xfce_desktop_menu_destroy(dmp->desktop_menu);
+	}
 	if(dmp->tooltip)
 		gtk_object_sink(GTK_OBJECT(dmp->tooltip));
 	
@@ -153,10 +152,10 @@ dmp_popup(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
 	if(evt->button != 1)
 		return FALSE;
 	
-	if(!menu_gmod)
+	if(!dmp->desktop_menu) {
+		g_critical("dmp->desktop_menu is NULL - module load failed?");
 		return FALSE;
-	
-	g_return_val_if_fail(dmp != NULL && dmp->desktop_menu != NULL, FALSE);
+	}
 	
 	if(xfce_desktop_menu_need_update(dmp->desktop_menu))
 		xfce_desktop_menu_force_regen(dmp->desktop_menu);
@@ -192,7 +191,8 @@ dmp_new()
 	gtk_tooltips_set_tip(dmp->tooltip, dmp->button, _("Xfce Menu"), NULL);
 	
 	dmp->desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
-	xfce_desktop_menu_start_autoregen(dmp->desktop_menu, 10);
+	if(dmp->desktop_menu)
+		xfce_desktop_menu_start_autoregen(dmp->desktop_menu, 10);
 	g_signal_connect(G_OBJECT(dmp->button), "button-press-event",
 			G_CALLBACK(dmp_popup), dmp);
 	
@@ -205,9 +205,6 @@ static gboolean
 dmp_create(Control *c)
 {
 	DMPlugin *dmp;
-	
-	if(!menu_gmod)
-		return FALSE;
 
 	dmp = dmp_new();
 	gtk_container_add(GTK_CONTAINER(c->base), dmp->evtbox);
@@ -228,15 +225,23 @@ dmp_read_config(Control *control, xmlNodePtr node)
 	
 	value = xmlGetProp(node, (const xmlChar *)"menu_file");
 	if(value) {
-		if(dmp->desktop_menu)
+		if(dmp->desktop_menu) {
+			TRACE("calling menu_destroy()");
 			xfce_desktop_menu_destroy(dmp->desktop_menu);
-		dmp->desktop_menu = xfce_desktop_menu_new(value, TRUE);
+			TRACE("called menu_destroy()");
+		}
 		if(dmp->menu_file)
 			g_free(dmp->menu_file);
+		TRACE("creating new menu");
+		dmp->desktop_menu = xfce_desktop_menu_new(value, TRUE);
+		TRACE("created new menu");
 		dmp->menu_file = g_strdup(value);
-	} else
-		dmp->menu_file = g_strdup(xfce_desktop_menu_get_menu_file(dmp->desktop_menu));
+	} else {
+		if(dmp->desktop_menu)
+			dmp->menu_file = g_strdup(xfce_desktop_menu_get_menu_file(dmp->desktop_menu));
+	}
 	
+	TRACE("getting icon file");
 	value = xmlGetProp(node, (const xmlChar *)"icon_file");
 	if(value) {
 		pix = xfce_themed_icon_load(value,
@@ -259,6 +264,7 @@ dmp_read_config(Control *control, xmlNodePtr node)
 		}
 	}
 	
+	TRACE("getting show menu icons");
 	value = xmlGetProp(node, (const xmlChar *)"show_menu_icons");
 	if(value) {
 		if(*value == '0')
@@ -269,6 +275,8 @@ dmp_read_config(Control *control, xmlNodePtr node)
 			xfce_desktop_menu_set_show_icons(dmp->desktop_menu, dmp->show_menu_icons);
 		xmlFree(value);
 	}
+	
+	TRACE("exiting");
 }
 
 static void
@@ -305,12 +313,15 @@ entry_focus_out_cb(GtkWidget *w, GdkEventFocus *evt, gpointer user_data)
 			g_free(dmp->menu_file);
 		
 		dmp->menu_file = gtk_editable_get_chars(GTK_EDITABLE(w), 0, -1);
-		cur_file = xfce_desktop_menu_get_menu_file(dmp->desktop_menu);
-		if(strcmp(dmp->menu_file, cur_file)) {
-			xfce_desktop_menu_destroy(dmp->desktop_menu);
-			dmp->desktop_menu = xfce_desktop_menu_new(dmp->menu_file, TRUE);
-			if(!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(dmp->icons_chk)))
-				xfce_desktop_menu_set_show_icons(dmp->desktop_menu, FALSE);
+		if(dmp->desktop_menu) {
+			cur_file = xfce_desktop_menu_get_menu_file(dmp->desktop_menu);
+			if(strcmp(dmp->menu_file, cur_file)) {
+				TRACE("calling menu_destroy()");
+				xfce_desktop_menu_destroy(dmp->desktop_menu);
+				dmp->desktop_menu = xfce_desktop_menu_new(dmp->menu_file, TRUE);
+				if(!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(dmp->icons_chk)))
+					xfce_desktop_menu_set_show_icons(dmp->desktop_menu, FALSE);
+			}
 		}
 	}
 	
@@ -522,14 +533,6 @@ xfce_control_class_init(ControlClass *cc)
 	cc->attach_callback = dmp_attach_callback;
 	cc->set_size = dmp_set_size;
 	cc->set_orientation = NULL;
-	
-	menu_gmod = xfce_desktop_menu_stub_init();
-}
-
-G_MODULE_EXPORT void
-g_module_unload(GModule *module)
-{
-	xfce_desktop_menu_stub_cleanup(menu_gmod);
 }
 
 XFCE_PLUGIN_CHECK_INIT

@@ -43,37 +43,30 @@
 #endif
 
 #ifdef USE_DESKTOP_MENU
-GModule *module_desktop_menu = NULL;
 XfceDesktopMenu *desktop_menu = NULL;
 #endif
 
 #ifdef USE_DESKTOP_MENU
 static void
 _stop_menu_module() {
-	if(module_desktop_menu && desktop_menu) {
+	if(desktop_menu) {
 		xfce_desktop_menu_stop_autoregen(desktop_menu);
 		xfce_desktop_menu_destroy(desktop_menu);
+		desktop_menu = NULL;
 	}
-	desktop_menu = NULL;
-	if(module_desktop_menu)
-		xfce_desktop_menu_stub_cleanup(module_desktop_menu);
-	module_desktop_menu = NULL;
 }
 
 static gboolean
 _start_menu_module()
 {
-	if(!module_desktop_menu)
-		module_desktop_menu = xfce_desktop_menu_stub_init();
-	if(module_desktop_menu && !desktop_menu) {
-		desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
+	desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
+	if(desktop_menu) {
 		xfce_desktop_menu_start_autoregen(desktop_menu, 10);
 		return TRUE;
-	} else if(!module_desktop_menu) {
-		g_warning(_("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"), PACKAGE);
+	} else {
+		g_warning("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n", PACKAGE);
 		return FALSE;
-	} else
-		return TRUE;
+	}
 }
 #endif
 
@@ -83,20 +76,16 @@ popup_desktop_menu(GdkScreen *gscreen, gint button, guint32 time)
 #if USE_DESKTOP_MENU
 	GtkWidget *menu_widget;
 	
-	if(!module_desktop_menu)
+	if(!desktop_menu)
 		return;
 	
-	if(!desktop_menu)
-		desktop_menu = xfce_desktop_menu_new(NULL, FALSE);
-	else if(xfce_desktop_menu_need_update(desktop_menu))
+	if(xfce_desktop_menu_need_update(desktop_menu))
 		xfce_desktop_menu_force_regen(desktop_menu);
 	
-	if(desktop_menu) {
-		menu_widget = xfce_desktop_menu_get_widget(desktop_menu);
-		gtk_menu_set_screen(GTK_MENU(menu_widget), gscreen);
-		gtk_menu_popup(GTK_MENU(menu_widget), NULL, NULL, NULL, NULL,
-				button, time);
-	}
+	menu_widget = xfce_desktop_menu_get_widget(desktop_menu);
+	gtk_menu_set_screen(GTK_MENU(menu_widget), gscreen);
+	gtk_menu_popup(GTK_MENU(menu_widget), NULL, NULL, NULL, NULL,
+			button, time);
 #endif
 }
 
@@ -121,7 +110,7 @@ menu_init(McsClient *mcs_client)
 		} else
 			_start_menu_module();
 		
-		if(module_desktop_menu && desktop_menu) {
+		if(desktop_menu) {
 			if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "showdmi",
 					BACKDROP_CHANNEL, &setting))
 			{
@@ -146,7 +135,7 @@ menu_settings_changed(McsClient *client, McsAction action, McsSetting *setting,
 		case MCS_ACTION_NEW:
 		case MCS_ACTION_CHANGED:
 			if(!strcmp(setting->name, "showdm")) {
-				if(setting->data.v_int && !module_desktop_menu) {
+				if(setting->data.v_int && !desktop_menu) {
 					_start_menu_module();
 					if(desktop_menu
 							&& MCS_SUCCESS == mcs_client_get_setting(client,
@@ -157,7 +146,7 @@ menu_settings_changed(McsClient *client, McsAction action, McsSetting *setting,
 						mcs_setting_free(setting1);
 						setting1 = NULL;
 					}
-				} else if(!setting->data.v_int && module_desktop_menu)
+				} else if(!setting->data.v_int && desktop_menu)
 					_stop_menu_module();
 				return TRUE;
 			} else if(!strcmp(setting->name, "showdmi")) {

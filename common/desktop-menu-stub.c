@@ -25,10 +25,10 @@
 
 #include "desktop-menu-stub.h"
 
-static GModule *menu_gmod = NULL;
-static gint refcnt = 0;
+static GModule *_menu_module = NULL;
+static gint _menu_module_refcnt = 0;
 
-XfceDesktopMenu *(*xfce_desktop_menu_new)(const gchar *menu_file, gboolean deferred) = NULL;
+static XfceDesktopMenu *(*xfce_desktop_menu_new_p)(const gchar *menu_file, gboolean deferred) = NULL;
 GtkWidget *(*xfce_desktop_menu_get_widget)(XfceDesktopMenu *desktop_menu) = NULL;
 G_CONST_RETURN gchar *(*xfce_desktop_menu_get_menu_file)(XfceDesktopMenu *desktop_menu) = NULL;
 gboolean (*xfce_desktop_menu_need_update)(XfceDesktopMenu *desktop_menu) = NULL;
@@ -36,86 +36,123 @@ void (*xfce_desktop_menu_start_autoregen)(XfceDesktopMenu *desktop_menu, guint d
 void (*xfce_desktop_menu_stop_autoregen)(XfceDesktopMenu *desktop_menu) = NULL;
 void (*xfce_desktop_menu_force_regen)(XfceDesktopMenu *desktop_menu) = NULL;
 void (*xfce_desktop_menu_set_show_icons)(XfceDesktopMenu *desktop_menu, gboolean show_icons) = NULL;
-void (*xfce_desktop_menu_destroy)(XfceDesktopMenu *desktop_menu) = NULL;
+static void (*xfce_desktop_menu_destroy_p)(XfceDesktopMenu *desktop_menu) = NULL;
+
+static GQuark
+desktop_menu_error_quark()
+{
+	static GQuark q = 0;
+	
+	if(!q)
+		q = g_quark_from_static_string("xfce-desktop-menu-error-quark");
+	
+	return q;
+}
 
 static gboolean
-_setup_functions(GModule *menu_gmod)
+_setup_functions(GModule *module)
 {
-	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_new_impl",
-			(gpointer)&xfce_desktop_menu_new))
+	if(!g_module_symbol(module, "xfce_desktop_menu_new_impl",
+			(gpointer)&xfce_desktop_menu_new_p))
 		return FALSE;
-	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_get_widget_impl",
+	if(!g_module_symbol(module, "xfce_desktop_menu_get_widget_impl",
 			(gpointer)&xfce_desktop_menu_get_widget))
 		return FALSE;
-	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_get_menu_file_impl",
+	if(!g_module_symbol(module, "xfce_desktop_menu_get_menu_file_impl",
 			(gpointer)&xfce_desktop_menu_get_menu_file))
 		return FALSE;
-	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_need_update_impl",
+	if(!g_module_symbol(module, "xfce_desktop_menu_need_update_impl",
 			(gpointer)&xfce_desktop_menu_need_update))
 		return FALSE;
-	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_start_autoregen_impl",
+	if(!g_module_symbol(module, "xfce_desktop_menu_start_autoregen_impl",
 			(gpointer)&xfce_desktop_menu_start_autoregen))
 		return FALSE;
-	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_stop_autoregen_impl",
+	if(!g_module_symbol(module, "xfce_desktop_menu_stop_autoregen_impl",
 			(gpointer)&xfce_desktop_menu_stop_autoregen))
 		return FALSE;
-	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_force_regen_impl",
+	if(!g_module_symbol(module, "xfce_desktop_menu_force_regen_impl",
 			(gpointer)&xfce_desktop_menu_force_regen))
 		return FALSE;
-	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_set_show_icons_impl",
+	if(!g_module_symbol(module, "xfce_desktop_menu_set_show_icons_impl",
 			(gpointer)&xfce_desktop_menu_set_show_icons))
 		return FALSE;
-	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_destroy_impl",
-			(gpointer)&xfce_desktop_menu_destroy))
+	if(!g_module_symbol(module, "xfce_desktop_menu_destroy_impl",
+			(gpointer)&xfce_desktop_menu_destroy_p))
 		return FALSE;
 	
 	return TRUE;
 }
 
-GModule *
-xfce_desktop_menu_stub_init()
+static GModule *
+desktop_menu_stub_init(GError **err)
 {
-	gchar *menu_module = NULL;
-	
-	if(menu_gmod && refcnt > 0) {
-		refcnt++;
-		return menu_gmod;
-	}
+	GModule *module;
+	gchar *filename;
 
 	if(!g_module_supported()) {
-		g_warning("%s: no GModule support, menu is disabled\n", PACKAGE);
+		if(err)
+			g_set_error(err, desktop_menu_error_quark(), 0,
+					"Glib was not compiled with GModule support.");
 		return NULL;
-	} else {
-		menu_module = g_module_build_path(XFCEMODDIR, "xfce4_desktop_menu");
-		menu_gmod = g_module_open(menu_module, 0);
 	}
 	
-	if(!menu_gmod) {
-		g_warning("%s: failed to load xfce4_desktop_menu module (%s)\n",
-				PACKAGE, menu_module);
-	} else if(!_setup_functions(menu_gmod)) {
-		g_module_close(menu_gmod);
-		menu_gmod = NULL;
+	filename = g_module_build_path(XFCEMODDIR, "xfce4_desktop_menu");
+	module = g_module_open(filename, 0);
+	g_free(filename);
+	
+	if(!module) {
+		if(err) {
+			g_set_error(err, desktop_menu_error_quark(), 0,
+					"The XfceDesktopMenu module could not be loaded: %s",
+					g_module_error());
+		}
+		return NULL;
 	}
 	
-	if(menu_module)
-		g_free(menu_module);
+	if(!_setup_functions(module)) {
+		if(err) {
+			g_set_error(err, desktop_menu_error_quark(), 0,
+					"The XfceDesktopMenu module is not valid: %s",
+					g_module_error());
+		}
+		g_module_close(module);
+		return NULL;
+	}
 	
-	if(menu_gmod)
-		refcnt = 1;
+	return module;
+}
+
+static void
+desktop_menu_stub_cleanup(GModule *module)
+{
+	g_module_close(module);
+}
+
+XfceDesktopMenu *
+xfce_desktop_menu_new(const gchar *menu_file, gboolean deferred)
+{
+	GError *err = NULL;
 	
-	return menu_gmod;
+	if(_menu_module_refcnt == 0)
+		_menu_module = desktop_menu_stub_init(&err);
+	if(!_menu_module) {
+		g_critical("XfceDesktopMenu init failed (%s)",
+				err ? err->message : "Unknown error");
+		return NULL;
+	}
+	
+	_menu_module_refcnt++;
+	
+	return xfce_desktop_menu_new_p(menu_file, deferred);
 }
 
 void
-xfce_desktop_menu_stub_cleanup(GModule *menu_gmod)
+xfce_desktop_menu_destroy(XfceDesktopMenu *desktop_menu)
 {
-	g_return_if_fail(menu_gmod != NULL && refcnt > 0);
+	xfce_desktop_menu_destroy_p(desktop_menu);
 	
-	if(--refcnt <= 0) {
-		g_module_close(menu_gmod);
-		menu_gmod = NULL;
-		refcnt = 0;
+	if(--_menu_module_refcnt == 0) {
+		desktop_menu_stub_cleanup(_menu_module);
+		_menu_module = NULL;
 	}
-		
 }
