@@ -314,7 +314,7 @@ xfce_desktop_menu_get_widget_impl(XfceDesktopMenu *desktop_menu)
 }
 
 G_CONST_RETURN gchar *
-xfce_desktop_menu_get_menu_file(XfceDesktopMenu *desktop_menu)
+xfce_desktop_menu_get_menu_file_impl(XfceDesktopMenu *desktop_menu)
 {
 	g_return_val_if_fail(desktop_menu != NULL, NULL);
 	

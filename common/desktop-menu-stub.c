@@ -47,7 +47,7 @@ _setup_functions(GModule *menu_gmod)
 	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_get_widget_impl",
 			(gpointer)&xfce_desktop_menu_get_widget))
 		return FALSE;
-	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_get_menu_file",
+	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_get_menu_file_impl",
 			(gpointer)&xfce_desktop_menu_get_menu_file))
 		return FALSE;
 	if(!g_module_symbol(menu_gmod, "xfce_desktop_menu_need_update_impl",
