@@ -242,10 +242,10 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 				bp->color1.blue = setting->data.v_color.blue;
 				bp->color1.alpha = setting->data.v_color.alpha;
 			} else {
-				/* Just a color by default #6985b7 - That number looks cool :) */
-				bp->color1.red = (guint16)0x6900;
-				bp->color1.green = (guint16)0x8500;
-				bp->color1.blue = (guint16)0xB700;
+				/* Just a color by default #1F3F6F - That number looks cool :) */
+				bp->color1.red = (guint16)0x1f00;
+				bp->color1.green = (guint16)0x3f00;
+				bp->color1.blue = (guint16)0x6f00;
 				bp->color1.alpha = (guint16)0xffff;
 				mcs_manager_set_color(mcs_plugin->manager, setting_name,
 						BACKDROP_CHANNEL, &bp->color1);
@@ -261,10 +261,10 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 				bp->color2.blue = setting->data.v_color.blue;
 				bp->color2.alpha = setting->data.v_color.alpha;
 			} else {
-				/* Just a color by default #dbe8ff - That number looks cool :) */
-				bp->color2.red = (guint16)0xdb00;
-				bp->color2.green = (guint16)0xe800;
-				bp->color2.blue = (guint16)0xff00;
+				/* Just a color by default #8FBFDF - That number looks cool :) */
+				bp->color2.red = (guint16)0x8f00;
+				bp->color2.green = (guint16)0xbf00;
+				bp->color2.blue = (guint16)0xdf00;
 				bp->color2.alpha = (guint16)0xffff;
 				mcs_manager_set_color(mcs_plugin->manager, setting_name,
 						BACKDROP_CHANNEL, &bp->color2);
