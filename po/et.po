@@ -1,0 +1,201 @@
+# Estonian translation of xfdesktop.
+# Copyright (C) 2004 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the xfdesktop package.
+# peeter <Peeter.Vois@mail.ee>, 2004.
+
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-01-06 23:44+0100\n"
+"PO-Revision-Date: 2004-02-03 10:04+0200\n"
+"Last-Translator: Peeter Vois <Peeter.Vois@mail.ee>\n"
+"Language-Team: Estonian <et@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#: settings/backdrop-mgr.c:175
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"Ei suutnud salvestada faili %s: %s\n"
+"\n"
+"Palun vali teine asukoht või vajuta dialoogis nupule [loobu], misjärel "
+"muudatused kaovad"
+
+#: settings/backdrop-mgr.c:510
+msgid "Select image file"
+msgstr "Vali pildi fail"
+
+#: settings/backdrop-mgr.c:622
+msgid "Choose backdrop list filename"
+msgstr "Vali tausta nimistu failinimi"
+
+#: settings/backdrop-mgr.c:694
+msgid "New.list"
+msgstr "Uus nimistu"
+
+#: settings/backdrop-mgr.c:698
+msgid "Backdrop List"
+msgstr "Tausta nimistu"
+
+#: settings/backdrop-mgr.c:734
+msgid "Image files"
+msgstr "Pildi failid"
+
+#: settings/backdrop-mgr.c:749
+msgid "List file"
+msgstr "Nimistu fail"
+
+#: settings/backdrop-mgr.c:767
+msgid "Create backdrop list"
+msgstr "Tekita tausta nimistu"
+
+#: settings/backdrop-mgr.c:774
+msgid "Edit backdrop list"
+msgstr "Muuda tausta nimistut"
+
+#: settings/backdrop_settings.c:156
+msgid "Desktop: backdrop"
+msgstr "Töölaud: taust"
+
+#: settings/backdrop_settings.c:357
+msgid "Select background color"
+msgstr "Vali tausta värv"
+
+#: settings/backdrop_settings.c:407
+msgid "Background color:"
+msgstr "Tausta värv:"
+
+#: settings/backdrop_settings.c:437
+msgid "Use color only:"
+msgstr "Kasuta ainult värvi:"
+
+#: settings/backdrop_settings.c:563
+msgid "File:"
+msgstr "Fail:"
+
+#: settings/backdrop_settings.c:624
+msgid "Select background image or list file"
+msgstr "Vali tausta pilt või nimistu fail"
+
+#: settings/backdrop_settings.c:701
+msgid "_Browse..."
+msgstr "_Sirvi..."
+
+#: settings/backdrop_settings.c:705
+msgid "New list"
+msgstr "Uus nimistu"
+
+#: settings/backdrop_settings.c:709
+msgid "Edit list"
+msgstr "Muuda nimistut"
+
+#: settings/backdrop_settings.c:747
+msgid "Style:"
+msgstr "Stiil:"
+
+#: settings/backdrop_settings.c:755
+msgid "_Tiled"
+msgstr "_Jaotatud"
+
+#: settings/backdrop_settings.c:761
+msgid "_Scaled"
+msgstr "_Skaleeritud"
+
+#: settings/backdrop_settings.c:768
+msgid "_Centered"
+msgstr "_Tsentreeritud"
+
+#: settings/backdrop_settings.c:775
+msgid "_Auto"
+msgstr "_Automaatne"
+
+#. the dialog
+#: settings/backdrop_settings.c:801
+msgid "Background"
+msgstr "Taust"
+
+#. header
+#: settings/backdrop_settings.c:819
+msgid "Background Settings"
+msgstr "Tausta seaded"
+
+#. color
+#: settings/backdrop_settings.c:825
+msgid "Color"
+msgstr "Värv"
+
+#. image vbox
+#: settings/backdrop_settings.c:837
+msgid "Image"
+msgstr "Pilt"
+
+#: settings/workspaces_settings.c:85
+msgid "Desktop: workspaces"
+msgstr "Ekraan: tööruumid"
+
+#: settings/workspaces_settings.c:335
+msgid "Change name"
+msgstr "Muuda nimi"
+
+#: settings/workspaces_settings.c:346
+#, c-format
+msgid "Workspace %d"
+msgstr "Tööruum %d"
+
+#: settings/workspaces_settings.c:356
+msgid "Name:"
+msgstr "Nimi:"
+
+#: settings/workspaces_settings.c:467
+msgid "Click on a workspace name to edit it"
+msgstr "Klõpsa tööruumi nimel, et seda muuta"
+
+#: settings/workspaces_settings.c:498
+msgid "Number of workspaces:"
+msgstr "Tööruume:"
+
+#. Number of workspaces
+#: settings/workspaces_settings.c:534 settings/workspaces_settings.c:564
+msgid "Workspaces"
+msgstr "Tööruumid"
+
+#: settings/workspaces_settings.c:557
+msgid "Workspace Settings"
+msgstr "Tööruumi seaded"
+
+#. Workspace names
+#: settings/workspaces_settings.c:576
+msgid "Workspace names"
+msgstr "Tööruumi nimed"
+
+#: src/backdrop.c:487
+#, c-format
+msgid "xfdesktop error: loading backdrop image: %s\n"
+msgstr "xfdesktop viga: taustapildi %s laadimisel\n"
+
+#: src/main.c:250
+msgid "Desktop"
+msgstr "Tööruum"
+
+#: src/menu.c:736
+msgid "Add workspace"
+msgstr "Lisa tööruum"
+
+#: src/menu.c:743
+msgid "Delete workspace"
+msgstr "Kaota tööruum"
+
+#: src/settings.c:186
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr ""
+"xfdesktop: ei suutnud ühendada seadistuste halduriga! Palun kontrolli "
+"installeeritust."
