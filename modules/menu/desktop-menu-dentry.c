@@ -609,6 +609,9 @@ menu_dentry_legacy_need_update(XfceDesktopMenu *desktop_menu)
 	
 	g_return_val_if_fail(desktop_menu != NULL, FALSE);
 	
+	if(!desktop_menu->legacydir_mtimes)
+		return FALSE;
+	
 	for(i=0; legacy_dirs[i]; i++) {
 		if(!stat(legacy_dirs[i], &st)) {
 			if(st.st_mtime > desktop_menu->legacydir_mtimes[i]) {
