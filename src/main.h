@@ -29,6 +29,9 @@
 typedef struct {
     int xscreen;
     Window root;
+	
+	Atom selection_atom;
+	Atom manager_atom;
 
     NetkScreen *netk_screen;
     GtkWidget *fullscreen;

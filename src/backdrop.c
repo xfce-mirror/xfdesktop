@@ -74,7 +74,6 @@
 //static gboolean init_settings = TRUE;
 
 static void remove_old_pixmap (XfceBackdrop *backdrop);
-static gboolean set_background (XfceBackdrop *backdrop);
 static GdkFilterReturn monitor_backdrop(GdkXEvent *ev, GdkEvent *gev,
 		XfceBackdrop *backdrop);
 
@@ -412,13 +411,22 @@ update_window_style (GtkWidget * win, GdkPixmap * pixmap)
     GtkStyle *style;
 
     /* This call is used to free any previous allocated pixmap  */
-    gtk_widget_set_style (win, NULL);
+	//g_print("about to set prev style to NULL\n");
+    //gtk_widget_set_style (win, NULL);
+	//g_print("set prev style to NULL\n");
+	gtk_widget_show(win);
+	style = gtk_widget_get_style(win);
+	if(style->bg_pixmap[GTK_STATE_NORMAL])
+		g_object_unref(style->bg_pixmap[GTK_STATE_NORMAL]);
+	g_print("ditched old pixmap\n");
 
-    style = gtk_style_new ();
+    //style = gtk_style_new ();
     style->bg_pixmap[GTK_STATE_NORMAL] = pixmap;
     gtk_widget_set_style (win, style);
-    g_object_unref (style);
+	g_print("set bg_pixmap style\n");
+    //g_object_unref (style);
     gtk_widget_queue_draw (win);
+	g_print("queued drawing operation\n");
 }
 
 static void
@@ -434,15 +442,19 @@ update_root_window (GdkWindow *root, GtkWidget * win, GdkPixmap * pixmap)
 			     gdk_atom_intern ("_XROOTPMAP_ID", FALSE),
 			     gdk_atom_intern ("PIXMAP", FALSE),
 			     32, GDK_PROP_MODE_REPLACE, (guchar *) idptr, 1);
+		g_print("did gdk_property_change\n");
     }
     else
     {
 	gdk_property_delete (root,
 			     gdk_atom_intern ("_XROOTPMAP_ID", FALSE));
+		g_print("did gdk_property_delete\n");
     }
 
     gdk_error_trap_pop ();
+	g_print("did gdk_error_trap_pop\n");
     gdk_flush ();
+	g_print("did gdk_flush\n");
 }
 
 /* note: always return FALSE here, as this is also used as a GSourceFunc via
@@ -452,6 +464,8 @@ set_backdrop(XfceBackdrop *backdrop)
 {
 	GdkPixmap *pixmap;
 	GdkPixbuf *pixbuf;
+	GdkScreen *gscreen;
+	GdkWindow *root;
 	
 	if(!backdrop->set_backdrop)
 		return FALSE;
@@ -462,13 +476,19 @@ set_backdrop(XfceBackdrop *backdrop)
 		pixbuf = NULL;
 	
 	pixmap = create_pixmap(backdrop, pixbuf);
+	g_print("created pixmap for screen %d\n", backdrop->xscreen);
 	
 	update_window_style(backdrop->win, pixmap);
-	update_root_window(gdk_screen_get_root_window(gdk_display_get_screen(gdk_display_get_default(), backdrop->xscreen)),
-			backdrop->win, pixmap);
+	g_print("updated window style for screen %d\n", backdrop->xscreen);
+	gscreen = gdk_display_get_screen(gdk_display_get_default(), backdrop->xscreen);
+	root = gdk_screen_get_root_window(gscreen);
+	update_root_window(root, backdrop->win, pixmap);
+	g_print("updated root window for screen %d\n", backdrop->xscreen);
 	
 	if(pixbuf)
 		g_object_unref(pixbuf);
+	
+	g_print("ditched extra ref on pixbuf (%d)\n", backdrop->xscreen);
 	
 	return FALSE;
 }
@@ -564,6 +584,8 @@ update_backdrop_channel(const char *channel_name, McsClient *client,
 	
 	if(strcmp(channel_name, BACKDROP_CHANNEL))
 		return;
+	
+	g_print("in update_backdrop_channel for setting %s\n", setting->name);
 	
 	switch (action) {
 		case MCS_ACTION_NEW:
@@ -672,6 +694,8 @@ backdrop_new(gint screen, GtkWidget *fullscreen, McsClient *client)
 
     backdrop->atom = XInternAtom(GDK_DISPLAY(), "_XROOTPMAP_ID", False);
     backdrop->e_atom = XInternAtom(GDK_DISPLAY(), "ESETROOT_PMAP_ID", False);
+	
+	g_print("got atoms on screen %d\n", screen);
 
     backdrop->win = fullscreen;
 
@@ -680,6 +704,8 @@ backdrop_new(gint screen, GtkWidget *fullscreen, McsClient *client)
     backdrop->style = TILED;
 
     set_backdrop(backdrop);
+	
+	g_print("set backdrop on screen %d\n", screen);
 
     /* color the root window black
      * we will not do anything more with it */
@@ -709,6 +735,8 @@ backdrop_new(gint screen, GtkWidget *fullscreen, McsClient *client)
     gdk_window_set_events (root,
 			   gdk_window_get_events (root) |
 			   GDK_PROPERTY_CHANGE_MASK);
+	
+	g_print("constructed new backdrop for screen %d\n", screen);
 	
 	return backdrop;
 }

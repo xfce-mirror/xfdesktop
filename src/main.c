@@ -22,9 +22,9 @@
 #include <config.h>
 #endif
 
-#ifdef GDK_MULTIHEAD_SAFE
-#undef GDK_MULTIHEAD_SAFE
-#endif
+//#ifdef GDK_MULTIHEAD_SAFE
+//#undef GDK_MULTIHEAD_SAFE
+//#endif
 
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
@@ -77,10 +77,6 @@ GList *desktops;
 
 static SessionClient *client_session = NULL;
 static gboolean session_managed = FALSE;
-
-static Atom selection_atom = 0;
-static Atom manager_atom = 0;
-
 
 void
 quit (void)
@@ -161,6 +157,8 @@ client_message_received(GtkWidget * widget, GdkEventClient * event,
 static gboolean
 check_is_running (Window * xid)
 {
+	static Atom selection_atom = 0;
+	
     TRACE ("check for running instance on screen %d", DefaultScreen(GDK_DISPLAY()));
 
     if (!selection_atom)
@@ -186,20 +184,22 @@ xfdesktop_set_selection(XfceDesktop *xfdesktop)
 	
 	TRACE ("claiming xfdesktop manager selection for screen %d", scr);
 	
-	if(!selection_atom) {
+	g_print("in xfdesktop_set_selection (%d)\n", scr);
+	
+	if(!xfdesktop->selection_atom) {
 		char selection_name[100];
 
 		sprintf(selection_name, XFDESKTOP_SELECTION_FMT, scr);
-		selection_atom = XInternAtom(GDK_DISPLAY(), selection_name, False);
+		xfdesktop->selection_atom = XInternAtom(GDK_DISPLAY(), selection_name, False);
 	}
 
-	if(!manager_atom)
-		manager_atom = XInternAtom(GDK_DISPLAY(), "MANAGER", False);
+	if(!xfdesktop->manager_atom)
+		xfdesktop->manager_atom = XInternAtom(GDK_DISPLAY(), "MANAGER", False);
 
 	win = GDK_WINDOW_XID(gtkwin->window);
 
 	XSelectInput (GDK_DISPLAY(), win, PropertyChangeMask | ButtonPressMask);
-	XSetSelectionOwner (GDK_DISPLAY(), selection_atom, win, GDK_CURRENT_TIME);
+	XSetSelectionOwner (GDK_DISPLAY(), xfdesktop->selection_atom, win, GDK_CURRENT_TIME);
 
 	/* listen for client messages */
 	g_signal_connect(gtkwin, "client-event",
@@ -208,16 +208,16 @@ xfdesktop_set_selection(XfceDesktop *xfdesktop)
 	/* Check to see if we managed to claim the selection. If not,
 	* we treat it as if we got it then immediately lost it
 	*/
-	if (XGetSelectionOwner (GDK_DISPLAY(), selection_atom) == win) {
+	if (XGetSelectionOwner (GDK_DISPLAY(), xfdesktop->selection_atom) == win) {
 		XClientMessageEvent xev;
 		Window root = xfdesktop->root;
 
 		xev.type = ClientMessage;
 		xev.window = root;
-		xev.message_type = manager_atom;
+		xev.message_type = xfdesktop->manager_atom;
 		xev.format = 32;
 		xev.data.l[0] = GDK_CURRENT_TIME;
-		xev.data.l[1] = selection_atom;
+		xev.data.l[1] = xfdesktop->selection_atom;
 		xev.data.l[2] = win;
 		xev.data.l[3] = 0;	/* manager specific data */
 		xev.data.l[4] = 0;	/* manager specific data */
@@ -227,6 +227,8 @@ xfdesktop_set_selection(XfceDesktop *xfdesktop)
 		g_error ("%s: could not set selection ownership", PACKAGE);
 		exit (1);
 	}
+	
+	g_print("done with xfdesktop_set_selection (%d)\n", scr);
 }
 
 /* desktop window */
@@ -234,7 +236,7 @@ xfdesktop_set_selection(XfceDesktop *xfdesktop)
 /* initially copied from ROX Filer pinboard feature 
  * (c) Thomas Leonard. See http://rox.sf.net. */
 static GtkWidget *
-create_fullscreen_window (void)
+create_fullscreen_window(GdkScreen *gscreen)
 {
     GdkAtom atom;
     GtkWidget *win;
@@ -242,6 +244,8 @@ create_fullscreen_window (void)
 
     TRACE ("create fullscreen window");
     win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+	
+	gtk_window_set_screen(GTK_WINDOW(win), gscreen);
 
     gtk_widget_add_events (win,
 			   GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
@@ -249,8 +253,8 @@ create_fullscreen_window (void)
 
     netk_gtk_window_avoid_input (GTK_WINDOW (win));
 
-    gtk_widget_set_size_request (win, gdk_screen_width (),
-				 gdk_screen_height ());
+    gtk_widget_set_size_request (win, gdk_screen_get_width (gscreen),
+				 gdk_screen_get_height (gscreen));
 
     gtk_window_move (GTK_WINDOW (win), 0, 0);
 
@@ -280,7 +284,7 @@ create_fullscreen_window (void)
     atom = gdk_atom_intern ("XFCE_DESKTOP_WINDOW", FALSE);
     xid = GDK_WINDOW_XID (win->window);
 
-    gdk_property_change (gdk_get_default_root_window (),
+    gdk_property_change (gdk_screen_get_root_window(gscreen),
 			 atom,
 			 gdk_atom_intern ("WINDOW", FALSE), 32,
 			 GDK_PROP_MODE_REPLACE, (guchar *) & xid, 1);
@@ -289,7 +293,7 @@ create_fullscreen_window (void)
     atom = gdk_atom_intern ("NAUTILUS_DESKTOP_WINDOW_ID", FALSE);
     xid = GDK_WINDOW_XID (win->window);
 
-    gdk_property_change (gdk_get_default_root_window (),
+    gdk_property_change (gdk_screen_get_root_window(gscreen),
 			 atom,
 			 gdk_atom_intern ("WINDOW", FALSE), 32,
 			 GDK_PROP_MODE_REPLACE, (guchar *) & xid, 1);
@@ -315,21 +319,27 @@ xfdesktop_size_changed(GdkScreen *screen, gpointer user_data)
 static void
 xfdesktop_init(XfceDesktop *xfdesktop, gint screen)
 {
+	GdkScreen *gscreen;
 	TRACE ("initialization");
 	
 	xfdesktop->xscreen = screen;
-	xfdesktop->root = GDK_ROOT_WINDOW();
+	gscreen = gdk_display_get_screen(gdk_display_get_default(), screen);
+	xfdesktop->root = GDK_WINDOW_XID(gdk_screen_get_root_window(gscreen));
 	
 	xfdesktop->netk_screen = netk_screen_get(screen);
 	netk_screen_force_update(xfdesktop->netk_screen);
 	
-	xfdesktop->fullscreen = create_fullscreen_window();
+	xfdesktop->fullscreen = create_fullscreen_window(gscreen);
 	
 	xfdesktop_set_selection(xfdesktop);
 	
 	settings_init(xfdesktop);
+	g_print("finished settings_init for screen %d\n", xfdesktop->xscreen);
 	xfdesktop->backdrop = backdrop_new(screen, xfdesktop->fullscreen, xfdesktop->client);
+	g_print("finished backdrop_new for screen %d\n", xfdesktop->xscreen);
 	menu_init(xfdesktop);
+	
+	g_print("finished menu_init for screen %d\n", xfdesktop->xscreen);
 
 #if GTK_CHECK_VERSION(2,2,0)
 	g_signal_connect(G_OBJECT(gdk_display_get_screen(gdk_display_get_default(), screen)),
@@ -337,9 +347,11 @@ xfdesktop_init(XfceDesktop *xfdesktop, gint screen)
 #endif
 
 	load_settings(xfdesktop);
+	g_print("finished first load_settings for screen %d\n", xfdesktop->xscreen);
 	gtk_widget_show(xfdesktop->fullscreen);
 	gdk_window_lower(xfdesktop->fullscreen->window);
 	load_settings(xfdesktop);
+	g_print("finished second load_settings for screen %d, xfdesktop_init done\n", xfdesktop->xscreen);
 }
 
 static void
@@ -472,6 +484,7 @@ main (int argc, char **argv)
 	}
 	
 	backdrop_settings_init();
+	g_print("finished backdrop_settings_init\n");
 
     gtk_main();
 	
