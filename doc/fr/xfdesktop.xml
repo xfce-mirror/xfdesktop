@@ -1,0 +1,349 @@
+<?xml version='1.0'?> 
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY date "Sep 2003"> 
+  <!ENTITY appversion "4.0"> 
+  <!ENTITY app "<application>xfdesktop</application>"> 
+]>
+
+<article id="xfdesktop" lang="fr">
+
+<!-- Header --> 
+<articleinfo>
+
+  <title>Gestionnaire de bureau de XFce 4</title>
+  
+
+<copyright>
+   <year>2003</year> <holder>Jasper Huijsmans</holder>
+</copyright>
+
+
+<copyright>
+   <year>2003</year> <holder>François Le Clainche</holder>
+</copyright>
+
+  <copyright>
+   <year>2003</year> <holder>M.C. Collilieux (French
+   translation)</holder>
+  </copyright>
+
+<!-- I don;t know about this
+  <legalnotice id="legalnotice">
+    <para>
+      This document is provided under the terms of the GNU GPL, version
+      2 or (at your option) any later version.
+    </para>
+  </legalnotice>
+-->
+  
+  <authorgroup>
+
+    <author>
+      <firstname>Jasper</firstname> <surname>Huijsmans</surname>
+      <affiliation>
+       <address><email>huysmans@users.sourceforge.net</email></address>
+       </affiliation>
+    </author>
+
+
+    <author>
+      <firstname>François</firstname> <surname>Le Clainche</surname>
+      <affiliation>
+       <address><email>fleclainche@wanadoo.fr</email></address>
+       </affiliation>
+    </author>
+				  
+    <othercredit role="translator">
+      <firstname>Marie-Claude</firstname> <surname>Collilieux</surname>
+      <affiliation>
+	<orgname>French Translation Team</orgname>
+	<address><email>m.collilieux@free.fr</email> </address>
+      </affiliation> <contrib>French translation</contrib>
+    </othercredit>
+
+  </authorgroup>
+
+  <!--
+  <revhistory>
+    <revision>
+      <revnumber>0.2</revnumber> 
+      <date>May 2003</date>
+      <authorinitials>MA</authorinitials>
+    </revision>
+  </revhistory>
+  -->
+
+  <releaseinfo>Ce manuel décrit &app; version &appversion;.
+  </releaseinfo>
+
+</articleinfo>
+
+<sect1 id="xfdesktop-intro">
+  <title>Introduction</title>
+
+  <para>Cette application &app; gère le fond du bureau. Elle installe une image 
+    et/ou une couleur de fond et fournit un menu popup quand vous faites 
+	un clic droit ou milieu avec la souris. À côté de l'application, une fenêtre 
+	de dialogue est installée pour être utilisée dans le <emphasis>gestionnaire 
+	de paramètres Xfce 4</emphasis> : cette fenêtre vous permet de changer 
+	l'image du fond et la couleur du bureau.
+  </para>
+
+</sect1>
+
+<sect1 id="xfdesktop-background">
+  <title>Fond d'écran</title>
+
+  <para>Vous pouvez modifier le fond d'écran en cliquant sur le 
+    bouton "Bureau : fond d'écran" dans le <ulink url="xfce-mcs-manager.html#manager-dialog" 
+      type="http">gestionnaire de paramètres</ulink>.
+  </para>
+
+  <figure id="xfdesktop-background-fig">
+    <title>Paramètres du fond d'écran</title>
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/xfdesktop-background.png" format="PNG"/>
+	</imageobject> 
+	<textobject>
+	  <phrase>Montre les paramètres du fond d'écran.</phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+  <variablelist>
+    <varlistentry>
+      <term>Couleur</term>
+      <listitem>
+	<para>Cliquer sur le bouton "Bureau : fond d'écran" et une nouvelle fenêtre de nouveau 
+	  dialogue apparaît :</para>
+	 
+	<figure id="select_bg_color-fig">
+	  <title>Sélection de la couleur de fond</title>
+	  <screenshot>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="images/select_bg_color.png" format="PNG"/>
+	      </imageobject>
+	      <textobject>
+		<phrase>Montre la sélection de la couleur de fond.</phrase>
+	      </textobject>
+	    </mediaobject>
+	  </screenshot>
+	</figure>
+
+	<para>Ce dialogue vous permet de choisir une couleur pour le fond 
+	  d'écran. Cette couleur remplit tout l'écran et demeure visible 
+	  à travers une image transparente. Il y a plusieurs manières 
+	  de faire cela :
+	</para>
+
+	<itemizedlist>
+	  <listitem>Vous pouvez utiliser l'anneau des couleurs pour choisir 
+	    la couleur souhaitée, puis le triangle interne pour ajuster 
+		la luminosité de cette couleur. Les valeurs correspondantes de 
+		luminosité, saturation et les valeurs de rouge, vert, bleu 
+		s'affichent dans les zones de droite.
+	  </listitem>
+	  <listitem>Vous pouvez utiliser la pipette et, en cliquant dessus, 
+	    copier une couleur de votre écran.
+	  </listitem>
+	  <listitem>Vous pouvez saisir directement les valeurs, type HTML, 
+	  en héxadécimal ou en tapant le nom de la couleur dans la zone 
+	  "Nom de la couleur".
+	  </listitem>
+	</itemizedlist>
+
+	<para>Choisissez "Utiliser uniquement la couleur" si vous voulez 
+	  que &app; ignore l'image de fond et n'utilise que la couleur 
+	  choisie.
+	</para>
+	  
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Image</term>
+
+      <listitem>
+	<para>L'entrée "fichier" montre le chemin de l'image actuellement 
+	  sélectionnée. Si vous souhaitez la changer, déposez simplement 
+	  une image du gestionnaire de fichier vers la zone de dialogue, 
+	  modifiez le chemin ou cliquez sur le bouton "Parcourir", et 
+	  naviguez dans le système de fichiers.
+	  </para>
+
+	<para>Trois options d'affichage (mosaïque, étiré et centré) peuvent 
+	  être utilisées pour couvir le fond d'écran avec l'image selon sa taille. 
+	  Vous pouvez aussi choisir "automatique" si vous préférez laisser 
+	  &app; s'occuper de cela.
+	</para>
+
+	<para>Vous pouvez créer une liste d'images de fond qui seront 
+	  utilisées au hasard au démarrage. Cliquez sur "Nouvelle 
+	  liste" pour créer cette liste : 
+	</para>
+
+	<figure id="xfdesktop-list-fig">
+	  <title>Liste de fonds d'écran</title> 
+	  <screenshot>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="images/xfdesktop-list.png" format="PNG"/>
+	      </imageobject>
+	      <textobject>
+		<phrase>Montre la liste de fonds d'écrans.</phrase>
+	      </textobject>
+	    </mediaobject>
+	  </screenshot>
+	</figure>
+
+	<para>Vous pouvez désirer modifier le nom et chemin par 
+	  défaut de votre liste de fonds dans la zone "Fichier liste".
+	</para>
+  
+  	<para>Vous pouvez facilement ajouter une image en cliquant 
+	  sur le bouton "plus". Cette action ouvre une fenêtre pour 
+	  naviguer dans votre système. Vous pouvez retirer un fichier 
+	  en le sélectionnant dans la liste et en cliquant sur le 
+	  bouton "moins". Quand votre liste est complète, cliquez 
+	  sur le bouton "sauver". Si vous souhaitez la modifier 
+	  par la suite, utilisez le bouton "Edition de la liste" du 
+	  gestionnaire de fond d'écran.
+	</para>
+	
+	<para>Vous pouver récupérer une ancienne liste en déposant son 
+	  nom, à partir d'un gestionnaire de fichier, dans la fenêtre 
+	  du gestionnaire de fonds d'écran.</para>
+
+	<para>Pour actualiser le fond d'écran avec une nouvelle image, prise 
+	  au hasard dans la liste, relancer &app;, à partir d'un terminal ou 
+	   à partir de la fenêtre exécuter, ou &app; <arg>-reload</arg>.
+	</para>
+
+      </listitem>
+
+    </varlistentry>
+  </variablelist>
+	
+</sect1>
+
+<sect1 id="xfdesktop-menu">
+  <title>&app; menus du bureau</title>
+
+  <para>&app; fournit un menu qui apparaît lorsque vous cliquez 
+    sur le fond du bureau avec, soit le bouton droit, soit le 
+	bouton du milieu de la souris.
+  </para>
+
+  <para>Un clic droit sur le fond du bureau ouvre un menu qui vous permet 
+    de lancer des applications. Son fichier de configuration, menu.xml, 
+	est placé dans <filename>$sysconfdir/xfce4/menu.xml</filename>. 
+	$sysconfdir est souvent <filename>/etc</filename> pour 
+	les paquetages compilés et <filename>/usr/local/etc</filename> 
+	pour les sources.
+  </para>
+
+  <para>Actuellement, le seul moyen de modifier ce menu est de le faire 
+    manuellement. On peut espérer qu'une future version version de XFce 
+	4 possèdera un éditeur graphique. Pour l'instant, vous devez copier 
+	le fichier <filename>menu.xml</filename> vers <filename>~/.xfce4/menu.xml
+	</filename> et l'éditer. Ce n'est pas difficile. Jetez un coup d'oeil 
+	sur le fichier et les exemples commentés. Etre un peu habitué au format 
+	xml ou html peut aider. Le champ icône n'a aucun effet, son traitement 
+	n'étant pas encore implanté.
+  </para>
+
+  <para>NOTE : le fichier menu.xml doit être codé en utf-8 pour pouvoir 
+    afficher les caractères accentués ou autres caractères non-ASCII. 
+	Donc vous avez besoin d'un éditeur qui permet l'utf-8, tel (NdT : entre 
+	autres) <application>gedit</application>.
+  </para>
+
+  <figure id="root-menu-fig">
+    <title>&app; menu clic droit</title>
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/root_menu.png" format="PNG"/>
+	</imageobject> 
+	<textobject>
+	  <phrase>Montre &app; menu clic droit.
+	  </phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+  <para>Cliquer avec le bouton du milieu affiche la liste des 
+    applications ouvertes, classées par ordre des espaces de 
+	travail. Cela vous permet aussi d'ajouter ou de supprimer 
+	un espace virtuel.
+  </para>
+
+  <figure id="root-menu2-fig">
+    <title>&app; menu clic du milieu</title> 
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/root_menu2.png" format="PNG"/>
+	</imageobject> 
+	<textobject>
+	  <phrase>Montre &app; menu clic du milieu.
+	  </phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
+
+  <para>Vous pouvez aussi ouvrir le menu ou la liste des fenêtres 
+  depuis une ligne de commande. Cela peut être utile pour créer un 
+  raccourci clavier. Pour ouvrir le menu, lancez la commande &app; 
+  <arg>-menu</arg> et pour la liste des fenêtres utilisez &app; 
+  <arg>-windowlist</arg>.
+  </para>
+
+</sect1>
+
+<sect1 id="xfdesktop-copyright">
+  <title>A propos de  xfdesktop</title>
+
+  <para>&app; est écrit par  Jasper Huijsmans
+    (<email>huysmans@users.sourceforge.net</email>), Olivier Fourdan 
+    (<email>fourdan@xfce.org</email>) and Biju Chacko
+    (<email>botsie@myrealbox.com</email>).
+	Vous trouverez des informations supplémentaires sur le <ulink 
+	url="http://www.xfce.org" type="http">site XFce</ulink>. 
+  </para>
+
+  <para>Pour soumettre un bug ou faire une suggestion sur l'application 
+    ou sur le manuel, envoyez un e-mail à la liste de diffusion 
+	 <ulink url="http://www.moongroup.com/mailman/listinfo/xfce4-dev/"
+	type="http">xfce4-dev</ulink>  &mdash; méthode recommandée 
+     &mdash; ou utilisez le système de gestion des bugs sur 
+	 <ulink url="http://sourceforge.net/projects/xfce" 
+	type="http">XFce SourceForge project site</ulink>.
+	Si vous avez des questions sur l'utilisation ou l'installation de ce 
+	paquetage, vous pouvez les poser sur la liste de diffusion 
+	<ulink url="http://www.moongroup.com/mailman/listinfo/xfce/"
+	type="http">xfce</ulink>.
+  </para>
+    
+  <para>Ce programme est distribué selon les termes de la licence publique 
+     générale GNU, publiée par la Free Software Foundation, soit la version 2 
+	 de cette licence, soit (selon votre choix) toute version ultérieure.
+  </para>
+
+  <para>Vous devez avoir reçu une copie de la licence publique 
+     générale GNU avec ce programme. Sinon, écrivez à la Free Software 
+    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
+    USA.
+  </para>
+
+</sect1>
+
+</article>
+
