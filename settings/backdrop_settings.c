@@ -282,7 +282,6 @@ static void dialog_response(GtkWidget * dialog, int response,
                             BackdropDialog * bd)
 {
     dialog_delete(bd);
-    g_free(bd);
 }
 
 /* color button */
