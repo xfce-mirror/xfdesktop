@@ -74,6 +74,7 @@ maintainers, etc. Commented out by default.
 
   </authorgroup>
 
+  <!--
   <revhistory>
     <revision>
       <revnumber>0.2</revnumber> 
@@ -81,6 +82,7 @@ maintainers, etc. Commented out by default.
       <authorinitials>MA</authorinitials>
     </revision>
   </revhistory>
+  -->
 
   <releaseinfo>This manual describes &app; version &appversion;.
   </releaseinfo>
@@ -104,7 +106,11 @@ maintainers, etc. Commented out by default.
 <sect1 id="xfdesktop-background">
   <title>Background</title>
 
-<para>You can start the Background Settings manager by clicking on the "Desktop: backdrop" button in the <ulink url="xfce-mcs-manager.html#manager-dialog" type="http">XFce 4 Settings manager</ulink></para>.
+  <para>You can start the Background Settings manager by clicking on the
+    "Desktop: backdrop" button in the <ulink
+      url="xfce-mcs-manager.html#manager-dialog" type="http">XFce 4 Settings
+      manager</ulink>.
+  </para>
 
   <figure id="xfdesktop-background-fig">
     <title>Background Settings</title> 
@@ -244,7 +250,22 @@ maintainers, etc. Commented out by default.
 
 <para>&app; provides a mouse menu that appears when you click the desktop background.</para>
 
-<para>A left-click on the desktop background opens a menu that allows you to start some applications. Its configuration file, menu.xml, can be found under the path $prefix/etc/xfce4/menu.xml.</para>
+<para>A left-click on the desktop background opens a menu that allows you to
+  start some applications. Its configuration file, menu.xml, can be found
+  under the path <filename>$sysconfdir/xfce4/menu.xml</filename>. For binary 
+  packages $sysconfdir is often <filename>/etc</filename> and for source
+  compiles it defaults to <filename>/usr/local/etc</filename>.
+</para>
+
+<para>Currently the only way to change the menu is to edit the menu file
+  manually. Hopefully, future versions of XFce 4 will provide a graphical menu
+  editor. For now, you should copy the <filename>menu.xml</filename> file to
+  <filename>~/.xfce4/menu.xml</filename> and edit that. It is not difficult;
+  just have a good look at the file and the commented out examples. Being a
+  little bit familiar with reading xml or html files will make it easier. 
+  Icons are currently not supported in the menu, so the icon field won't have 
+  any effect.
+</para>
 
 <figure id="root-menu-fig">
     <title>&app; left-click mouse menu</title> 
@@ -261,7 +282,9 @@ maintainers, etc. Commented out by default.
     </screenshot>
   </figure>
 
-<para>A right-click on the desktop background shows a list of all opened windows classified by workspace. Moreover, it allows you to add or remove a workspace from the mouse.</para>
+  <para>A right-click on the desktop background shows a list of all opened
+    windows classified by workspace. Moreover, it allows you to add or remove
+    a workspace from the mouse.</para>
 
 <figure id="root-menu2-fig">
     <title>&app; right-click mouse menu</title> 
