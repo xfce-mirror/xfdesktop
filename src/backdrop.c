@@ -25,7 +25,7 @@
 #include "backdrop.h"
 
 /* common stuff is defined here */
-#include "../settings/backdrop_settings.h"
+#include "settings/backdrop_settings.h"
 
 static GtkWidget *fullscreen_window = NULL;
 static int screen_width = 0;

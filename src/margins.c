@@ -23,7 +23,7 @@
 
 #include "main.h"
 #include "margins.h"
-#include "../settings/margins_settings.h"
+#include "settings/margins_settings.h"
 
 static Window xwin;
 static DesktopMargins margins;
