@@ -1,8 +1,8 @@
 <?xml version='1.0'?> 
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "Aug 2004"> 
-  <!ENTITY appversion "4.1.x"> 
+  <!ENTITY date "November 2004"> 
+  <!ENTITY appversion "4.2"> 
   <!ENTITY app "<application>xfdesktop</application>"> 
 ]>
 
@@ -106,17 +106,16 @@ maintainers, etc. Commented out by default.
   <title>Introduction</title>
 
   <para>The &app; application manages the desktop backdrop. It sets a
-    backdrop image and/or color and it can optionally pop up an applications
-	menu (when you click on it with the right mouse button) and a
-	window list of all running applications (after a middle button clic).
-	</para>
+    backdrop image and/or color and it can pop up an applications
+    menu and a list of all running applications when you click on the desktop
+    with the right or middle mouse button resepctively.
+  </para>
 	
-	<para>
-    Along with the application, a  settings dialog is installed for use with the 
-    <emphasis>Xfce 4 Settings Manager</emphasis>. This dialog allows you to 
-    change the backdrop image and color. You can also request xfdesktop to
-    not set the backdrop, in order to allow another program to perform that
-    task.
+  <para>
+    The &app; package installs a settings dialog for use with 
+    the <emphasis>Xfce 4 Settings Manager</emphasis>. From this dialog you 
+    can change the backdrop image and color and change settings for the menu
+    and the window list.
   </para>
 
 </sect1>
@@ -150,7 +149,11 @@ maintainers, etc. Commented out by default.
       <term>Color</term>
       <listitem>
 	 
-	<para>This dialog allows you to select a color style for your desktop backdrop: solid color, horizontal gradient or vertical gradient. Depending on your choice, you will be able to choose one or two colors, using "First color" and "Second color" buttons. These buttons start a color chooser:</para>
+	<para>This dialog allows you to select a color style for your desktop 
+	  backdrop: solid color, horizontal gradient or vertical gradient. 
+	  Depending on your choice, you will be able to choose one or two 
+	  colors, using "First color" and "Second color" buttons. These 
+	  buttons open a color chooser dialog:</para>
 
 	<figure id="select_bg_color-fig">
 	  <title>Select backdrop color</title>
@@ -184,8 +187,8 @@ maintainers, etc. Commented out by default.
 	  </listitem>
 	</itemizedlist>
 
-	<para>The selected colors will fill the entire root window, and will remain 
-	visible through a transparent backdrop image.</para>
+	<para>The selected colors will fill the entire root window, and will 
+	  remain visible through a transparent backdrop image.</para>
 
       </listitem>
     </varlistentry>
@@ -195,13 +198,15 @@ maintainers, etc. Commented out by default.
 
       <listitem>
       
-      <para>Unselect the "Show image" option if you want &app; to ignore the backdrop image and only use the previously selected colors.</para>
+	<para>Unselect the "Show image" option if you want &app; to ignore 
+	  the backdrop image and only use the previously selected colors.
+	</para>
       
 	<para>The "File" entry shows the path to the currently selected
 	  backdrop image. If you want to change it, just drop and image 
-	  on the path field, or edit the path, or click the 
-	  "open" button, and a classic file-browsing dialog will appear.
-	  </para>
+	  on the path field, or edit the path, or click the "open" button, 
+	  and a classic file-browsing dialog will appear.
+	</para>
 
 	<para>You can create a list of backdrop images that will be randomly
 	  used at startup. Click the "New list" button to open the list 
@@ -242,15 +247,19 @@ maintainers, etc. Commented out by default.
 	  dialog, or &app; <arg>-reload</arg>.
 	</para>
 
-	<para>Four Style options (Tiled, Scaled, Centered and Stretched) can be used to
-	  specify the fitting of the backdrop image on the screen, depending
-	  on its size. You can also select the "Auto" item if you want to
-	  let &app; take care of this setting.
+	<para>Four Style options (Tiled, Scaled, Centered and Stretched) are
+	  available to specify the fitting of the backdrop image on the 
+	  screen, depending on its size. You can also select the "Auto" item 
+	  if you want to let &app; take care of this setting.
 	</para>
 
-	<para>The slider at the bottom of the dialog allows you to adjust the brightness of the backdrop image and/or color.</para>
+	<para>The slider at the bottom of the dialog allows you to adjust the 
+	  brightness of the backdrop image and/or color.
+	</para>
 	
-	<para>xfdesktop supports xinerama and multiscreen modes. In multiscreen mode, the "Backdrops" dialog shows one tab per screen.</para>
+	<para>xfdesktop supports xinerama and multiscreen modes. In 
+	  multiscreen mode, the "Backdrops" dialog shows one tab per screen.
+	</para>
 
       </listitem>
 
@@ -263,27 +272,31 @@ maintainers, etc. Commented out by default.
 <sect1 id="xfdesktop-menu">
   <title>&app; root menu</title>
 
-  <para>&app; provides a mouse menu that appears when you click on the 
-    desktop backdrop with your right or middle mouse button.
+  <para>&app; provides an applications menu and a windowlist menu that appear
+    when you click on the desktop with your right or middle mouse button.
   </para>
   
-  <para>The Menu tab of the Desktop settings dialog allows you to configure the &app; root menu behaviour.</para>
+  <para>The Menu tab of the Desktop settings dialog allows you to configure 
+    the menu behaviour.
+  </para>
   
-  	<figure id="xfdesktop-menu-tab-fig">
-	  <title>Menu tab</title> 
-	  <screenshot>
-	    <mediaobject>
-	      <imageobject>
-		<imagedata fileref="images/xfdesktop-menu-tab.png" format="PNG"/>
-	      </imageobject>
-	      <textobject>
-		<phrase>Shows the menu tab of the Desktop settings dialog.</phrase>
-	      </textobject>
-	    </mediaobject>
-	  </screenshot>
-	</figure>
+  <figure id="xfdesktop-menu-tab-fig">
+    <title>Menu tab</title> 
+    <screenshot>
+      <mediaobject>
+	<imageobject>
+	  <imagedata fileref="images/xfdesktop-menu-tab.png" format="PNG"/>
+	</imageobject>
+	<textobject>
+	  <phrase>Shows the menu tab of the Desktop settings dialog.</phrase>
+	</textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
 
-	<para>If you want to use the root menu and/or the window list, the corresponding options have to be selected in the settings dialog.</para>
+  <para>If you want to use the root menu and/or the window list, the 
+    corresponding options have to be selected in the settings dialog.
+  </para>
 
   <para>A right-click on the desktop backdrop opens a menu that allows you to
     start some applications. Its configuration file, menu.xml, can be found
@@ -294,9 +307,13 @@ maintainers, etc. Commented out by default.
   
   <para>While it is possible to edit the file manually, the recommended method
     for editing the menu.xml file is via the Xfce 4 Menu Editor, which can be
-	started by running <application>xfce4-menueditor</application>, or using the "Edit desktop menu" button available from the Menu tab of the Desktop settings dialog. The menu editor also supports drag'n'drop from a file manager.</para>
+    started by running <application>xfce4-menueditor</application>, or using 
+    the "Edit desktop menu" button available from the Menu tab of the Desktop 
+    settings dialog. The menu editor also supports drag'n'drop from a file 
+    manager.
+  </para>
 	
-	  <figure id="xfdesktop-editor-fig">
+  <figure id="xfdesktop-editor-fig">
     <title>&app; menu editor</title>
     <screenshot>
       <mediaobject>
@@ -311,12 +328,10 @@ maintainers, etc. Commented out by default.
     </screenshot>
   </figure>
 	
-	<para>In order to lower the hardware requirements to run xfdesktop, you can disable the usage of icons in the root menu from the settings dialog.</para>
-
   <para>NOTE: If you choose to edit the file manually, menu.xml has to be in
     UTF-8 encoding for the toolkit to be able to display accented or other
-	non-ASCII characters. Therefore, you need an editor that supports UTF-8,
-	like <application>gedit</application>.
+    non-ASCII characters. Therefore, you need an editor that supports UTF-8,
+    like <application>gedit</application>.
   </para>
 
   <figure id="root-menu-fig">
@@ -354,12 +369,15 @@ maintainers, etc. Commented out by default.
     </screenshot>
   </figure>
 
-<para>In order to lower the hardware requirements to run xfdesktop, you can disable the usage of icons in the window list from the settings dialog.</para>
+  <para>In order to lower the hardware requirements to run xfdesktop, you can 
+    disable the usage of icons in the desktop menu and the window list menu 
+    from the settings dialog.
+  </para>
 
   <para>You can open the menu or window list from the commandline as well.
     This can be useful for keyboard shortcuts. To open the menu run the
-    command &app; <application>-menu</application>, and for the windowlist use
-	&app; <application>-windowlist</application>.
+    command &app; <application>-menu</application>, and for the windowlist 
+    use &app; <application>-windowlist</application>.
   </para>
 
 </sect1>
@@ -367,24 +385,24 @@ maintainers, etc. Commented out by default.
 <sect1 id="xfdesktop-copyright">
   <title>About xfdesktop</title>
 
-  <para>&app; was written by Jasper Huijsmans
-    (<email>jasper@xfce.org</email>), Brian Tarricone
-	(<email>kelnos@xfce.org</email>) and Benedikt Meurer
-  (<email>benny@xfce.org</email>).
+  <para>&app; was written by 
+    Jasper Huijsmans (<email>jasper@xfce.org</email>), 
+    Brian Tarricone (<email>kelnos@xfce.org</email>) and 
+    Benedikt Meurer (<email>benny@xfce.org</email>).
     For more information, please visit the 
     <ulink url="http://www.xfce.org" type="http">Xfce web site</ulink>. 
   </para>
 
   <para>To report a bug or make a suggestion regarding this application or
-    this manual, send an email to the 
-    <ulink url="http://www.lunar-linux.org/mailman/listinfo/xfce4-dev/"
-      type="http">xfce4-dev</ulink> mailing list &mdash; this is the preferred
-    method &mdash; or use the Xfce's <ulink url="http://bugs.xfce.org/">bug
-	tracking system</ulink>.
+    this manual, please use the <ulink url="http://bugzilla.xfce.org/" 
+      type="http">bug tracking system</ulink>.
     If you have questions about the use or installation of this package,
     please ask on the 
     <ulink url="http://www.lunar-linux.org/mailman/listinfo/xfce/"
-      type="http">xfce</ulink> mailing list. 
+      type="http">xfce</ulink> mailing list. Development discussion takes
+    place on the <ulink
+      url="http://www.lunar-linux.org/mailman/listinfo/xfce-dev/"
+      type="http">xfce4-dev</ulink> mailing list.
   </para>
     
   <para> This program is distributed under the terms of the
