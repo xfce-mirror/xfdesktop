@@ -84,6 +84,7 @@ typedef struct
     GdkColor color;
     GtkWidget *color_box;
     GtkWidget *color_only_checkbox;
+    GtkWidget *image_frame;
     
     GtkWidget *file_entry;
     GtkWidget *edit_list_button;
@@ -243,22 +244,6 @@ static gboolean backdrop_write_options(McsPlugin * mcs_plugin)
     return result;
 }
 
-/* sub header
-static void add_sub_header(GtkWidget *vbox, const char *name)
-{
-    char *markup;
-    GtkWidget *label;
-
-    markup = g_strconcat("<b>", name, "</b>", NULL);
-    label = gtk_label_new(NULL);
-    gtk_label_set_markup(GTK_LABEL(label), markup);
-    g_free(markup);
-    gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
-    gtk_misc_set_padding(GTK_MISC(label), 0, 4);
-    gtk_widget_show(label);
-    gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
-}
- */
 /* something changed */
 static void update_path(BackdropDialog *bd)
 {
@@ -407,6 +392,8 @@ static void color_picker(GtkWidget *b, BackdropDialog *bd)
 static void showimage_toggle(GtkWidget *b, BackdropDialog *bd)
 {
     showimage = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(b)) ? 0 : 1;
+
+    gtk_widget_set_sensitive(bd->image_frame, showimage);
 
     update_showimage(bd);
 }
@@ -772,7 +759,7 @@ static void add_style_options(GtkWidget *vbox, GtkSizeGroup *sg,
                               BackdropDialog *bd)
 {
     GtkWidget *hbox, *label, *rb_tiled, *rb_scaled, *rb_centered, *rb_auto;
-    GtkRadioButton *rb;
+    GtkWidget *menu, *omenu;
     
     hbox = gtk_hbox_new(FALSE, BORDER);
     gtk_widget_show(hbox);
@@ -784,61 +771,39 @@ static void add_style_options(GtkWidget *vbox, GtkSizeGroup *sg,
     gtk_widget_show(label);
     gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 
-    rb_tiled = gtk_radio_button_new_with_mnemonic (NULL, _("_Tiled"));
+    menu = gtk_menu_new();
+
+    rb_tiled = gtk_menu_item_new_with_mnemonic(_("_Tiled"));
     gtk_widget_show(rb_tiled);
-    gtk_box_pack_start (GTK_BOX (hbox), rb_tiled, FALSE, FALSE, 0);
-    
-    rb = GTK_RADIO_BUTTON(rb_tiled);
-    
-    rb_scaled = gtk_radio_button_new_with_mnemonic_from_widget(rb,
-                    _("_Scaled"));
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), rb_tiled);
+    g_signal_connect_swapped(rb_tiled, "activate", 
+		    G_CALLBACK(set_tiled), bd);
+	    
+    rb_scaled = gtk_menu_item_new_with_mnemonic(_("_Scaled"));
     gtk_widget_show(rb_scaled);
-    gtk_box_pack_start (GTK_BOX (hbox), rb_scaled, FALSE, FALSE, 0);
-
-    rb_centered = 
-        gtk_radio_button_new_with_mnemonic_from_widget(rb, _("_Centered"));
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), rb_scaled);
+    g_signal_connect_swapped(rb_scaled, "activate", 
+		    G_CALLBACK(set_scaled), bd);
+	    
+    rb_centered = gtk_menu_item_new_with_mnemonic(_("_Centered"));
     gtk_widget_show(rb_centered);
-    gtk_box_pack_start (GTK_BOX (hbox), rb_centered, FALSE, FALSE, 0);
-
-    rb_auto = gtk_radio_button_new_with_mnemonic_from_widget(rb,
-                    _("_Automatic"));
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), rb_centered);
+    g_signal_connect_swapped(rb_centered, "activate", 
+		    G_CALLBACK(set_centered), bd);
+	    
+    rb_auto = gtk_menu_item_new_with_mnemonic(_("_Auto"));
     gtk_widget_show(rb_auto);
-    gtk_box_pack_start (GTK_BOX (hbox), rb_auto, FALSE, FALSE, 0);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), rb_auto);
+    g_signal_connect_swapped(rb_auto, "activate", 
+		    G_CALLBACK(set_auto), bd);
+	    
+    omenu = gtk_option_menu_new();
+    gtk_option_menu_set_menu(GTK_OPTION_MENU(omenu), menu);
+    gtk_option_menu_set_history(GTK_OPTION_MENU(omenu), backdrop_style);
 
-    bd->style_rb_group = gtk_radio_button_get_group(GTK_RADIO_BUTTON(rb_tiled));
-    
-    g_signal_connect_swapped(rb_tiled, "toggled", 
-                             G_CALLBACK(set_tiled), bd);
-    g_signal_connect_swapped(rb_scaled, "toggled", 
-                             G_CALLBACK(set_scaled), bd);
-    g_signal_connect_swapped(rb_centered, "toggled", 
-                             G_CALLBACK(set_centered), bd);
-    g_signal_connect_swapped(rb_auto, "toggled", 
-                             G_CALLBACK(set_auto), bd);
-    
-    switch (backdrop_style)
-    {
-        case TILED:
-            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(rb_tiled), TRUE);
-            break;
-        case SCALED:
-            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(rb_scaled), TRUE);
-            break;
-        case CENTERED:
-            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(rb_centered), TRUE);
-            break;
-        default:
-            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(rb_auto), TRUE);
-    }
-
-    if (is_backdrop_list(backdrop_path))
-    {
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(rb_auto), TRUE);
-        gtk_widget_set_sensitive(rb_auto, FALSE);
-        gtk_widget_set_sensitive(rb_tiled, FALSE);
-        gtk_widget_set_sensitive(rb_scaled, FALSE);
-        gtk_widget_set_sensitive(rb_centered, FALSE);
-    }
+    gtk_widget_show(menu);
+    gtk_widget_show(omenu);
+    gtk_box_pack_start(GTK_BOX(hbox), omenu, FALSE, FALSE, 0);
 }
 
 /* the dialog */
@@ -888,15 +853,16 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
     add_color_button(vbox, bd);
 
     /* image vbox */
-    frame = gtk_frame_new(_("Image"));
-    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
-    gtk_widget_show(frame);
-    gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
+    bd->image_frame = gtk_frame_new(_("Image"));
+    gtk_container_set_border_width(GTK_CONTAINER(bd->image_frame), BORDER);
+    gtk_widget_set_sensitive(bd->image_frame, showimage);
+    gtk_widget_show(bd->image_frame);
+    gtk_box_pack_start(GTK_BOX(mainvbox), bd->image_frame, TRUE, TRUE, 0);
     
-    vbox = gtk_vbox_new(FALSE, BORDER);
+    vbox = gtk_vbox_new(FALSE, 2 * BORDER);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
     gtk_widget_show(vbox);
-    gtk_container_add(GTK_CONTAINER(frame), vbox);
+    gtk_container_add(GTK_CONTAINER(bd->image_frame), vbox);
     
     /* file entry and style radio buttons */
     sg = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
