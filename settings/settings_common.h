@@ -22,6 +22,18 @@
 
 #define BORDER 5
 
+#include <gtk/gtkbox.h>
+#include <xfce-mcs-manager/manager-plugin.h>
+
+typedef struct {
+    McsPlugin *plugin;
+
+    /* options dialog */
+    GtkWidget *dialog;
+	GtkWidget *top_notebook;
+	GtkWidget *screens_notebook;
+} BackdropDialog;
+
 extern void create_channel (McsManager *, const char *, const char *);
 extern gboolean save_channel (McsManager *, const char *, const char *);
 extern void add_spacer (GtkBox *);

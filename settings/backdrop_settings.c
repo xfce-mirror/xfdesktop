@@ -73,16 +73,6 @@
 #define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream
 #endif
 
-/* important stuff to keep track of */
-typedef struct {
-    McsPlugin *plugin;
-
-    /* options dialog */
-    GtkWidget *dialog;
-	GtkWidget *top_notebook;
-	GtkWidget *screens_notebook;
-} BackdropDialog;
-
 typedef struct {
 	/* which screen this panel is for */
 	gint xscreen;
@@ -866,7 +856,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 		/* only use a noteboook if we have more than one screen */
 		vbox = gtk_vbox_new(FALSE, 0);
 		gtk_widget_show(vbox);
-		add_spacer(GTK_BOX(vbox));
+		gtk_container_set_border_width(GTK_CONTAINER(vbox), 8);
 		
 		bd->screens_notebook = gtk_notebook_new();
 		gtk_widget_show(bd->screens_notebook);
