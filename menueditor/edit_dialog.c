@@ -53,17 +53,10 @@ void editmenu_option_system_cb (GtkWidget *widget, struct _controls_menu *contro
   gtk_widget_set_sensitive(controls->checkbutton_unique,TRUE);
 }
 
-void popup_edit_cb(GtkWidget *widget, gpointer data)
-{
-  printf("%s\n",_("Not yet implemented !"));
-}
-
-
-
-/* Edition */
-void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColumn *col, gpointer data)
+void edit_selection(GtkTreeSelection *selection)
 {
   xmlNodePtr node;
+  GtkTreeModel *model;
   GtkTreeIter iter;
   GValue val = { 0, };
 
@@ -91,7 +84,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   xmlChar *prop_unique = NULL;
 
   /* Retrieve the xmlNodePtr of the menu entry */
-  gtk_tree_model_get_iter(GTK_TREE_MODEL(menueditor_app.treestore), &iter, path);
+  gtk_tree_selection_get_selected (selection, &model, &iter);
 	
   gtk_tree_model_get_value (GTK_TREE_MODEL(menueditor_app.treestore), &iter, POINTER_COLUMN, &val);
   node = g_value_get_pointer(&val);
@@ -681,3 +674,15 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
   gtk_widget_destroy (dialog);
 }
+
+/* Edition */
+void popup_edit_cb(GtkWidget *widget, gpointer data)
+{
+  edit_selection(gtk_tree_view_get_selection (GTK_TREE_VIEW (menueditor_app.treeview)));
+}
+
+void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColumn *col, gpointer data)
+{
+  edit_selection(gtk_tree_view_get_selection (GTK_TREE_VIEW (menueditor_app.treeview)));
+}
+
