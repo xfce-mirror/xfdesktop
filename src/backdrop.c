@@ -79,6 +79,17 @@ static GdkColor backdrop_color = { 0, 0, 0, 0 };
 static void set_backdrop (const char *path, int style, int show,
 			  GdkColor * color);
 
+/* this is a quick hack to fix a crashing issue when setting an invalid
+ * backdrop from the X event handler.  the function needs to be run in a g_idle
+ * context otherwise Bad Things happen.  this is fixed properly post-4.0.x */
+static gboolean
+set_backdrop_idled(gpointer data)
+{
+	set_backdrop(backdrop_path, backdrop_style, showimage, &backdrop_color);
+	
+	return FALSE;
+}
+
 static gboolean
 is_backdrop_list (const char *path)
 {
@@ -177,8 +188,7 @@ update_backdrop_channel (const char *name, McsAction action,
 		showimage = setting->data.v_int;
 	    }
 
-	    set_backdrop (backdrop_path, backdrop_style, showimage,
-			  &backdrop_color);
+	    g_idle_add(set_backdrop_idled, NULL);
 	    break;
 	case MCS_ACTION_DELETED:
 	    /* We don't use this now. Perhaps revert to default? */
