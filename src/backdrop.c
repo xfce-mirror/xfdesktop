@@ -164,6 +164,47 @@ get_path_from_listfile (const gchar * listfile)
     return (const char *) files[(previndex = i)];
 }
 
+static GdkPixbuf *
+create_gradient(XfceBackdrop *backdrop)
+{
+	GdkPixmap *pmap;
+	GdkPixbuf *pix;
+	GdkGC *gc;
+	gint w, h, i, dim;
+	GdkColor c;
+	
+	w = gdk_screen_get_width(backdrop->gscreen);
+	h = gdk_screen_get_height(backdrop->gscreen);
+	
+	pmap = gdk_pixmap_new(GDK_DRAWABLE(backdrop->win->window), w, h, -1);
+	gc = gdk_gc_new(GDK_DRAWABLE(pmap));
+	
+	if(backdrop->color_style == VERT_GRADIENT)
+		dim = h;
+	else
+		dim = w;
+	
+	for(i=0; i<dim; i++) {
+		c.red = backdrop->color1.red + (i * (backdrop->color2.red - backdrop->color1.red) / dim);
+		c.green = backdrop->color1.green + (i * (backdrop->color2.green - backdrop->color1.green) / dim);
+		c.blue = backdrop->color1.blue + (i * (backdrop->color2.blue - backdrop->color1.blue) / dim);
+		gdk_gc_set_rgb_fg_color(gc, &c);
+		if(backdrop->color_style == VERT_GRADIENT)
+			gdk_draw_rectangle(GDK_DRAWABLE(pmap), gc, TRUE, 0, i, w, 1);
+		else
+			gdk_draw_rectangle(GDK_DRAWABLE(pmap), gc, TRUE, i, 0, 1, h);
+	}
+	
+	pix = gdk_pixbuf_get_from_drawable(NULL, GDK_DRAWABLE(pmap), NULL, 0, 0,
+			0, 0, w, h);
+	g_object_unref(G_OBJECT(pmap));
+	
+	if(!pix)
+		g_warning("Unable to create color gradient!");
+	
+	return pix;
+}
+
 /* load image from file */
 static GdkPixbuf *
 create_image (XfceBackdrop *backdrop)
@@ -229,10 +270,12 @@ create_pixmap (XfceBackdrop *backdrop, GdkPixbuf * image)
 
     TRACE ("dummy");
 
-    if (!image)
-    {
-	pixbuf = create_solid (&(backdrop->color1), 1, 1);
-    }
+	if(!image) {
+		if(backdrop->color_style == SOLID_COLOR)
+			pixbuf = create_solid(&(backdrop->color1), 1, 1);
+		else
+			pixbuf = create_gradient(backdrop);
+	}
     else
     {
 	width = gdk_pixbuf_get_width (image);
@@ -260,8 +303,12 @@ create_pixmap (XfceBackdrop *backdrop, GdkPixbuf * image)
 	    case TILED:
 		if (has_composite)
 		{
-		    pixbuf = create_solid (&(backdrop->color1),
-					   width, height);
+			if(backdrop->color_style == SOLID_COLOR)
+				pixbuf = create_solid (&(backdrop->color1),
+						   width, height);
+			else
+				pixbuf = create_gradient(backdrop);
+			
 		    gdk_pixbuf_composite (image, pixbuf,
 					  0, 0, width, height,
 					  0, 0, 1.0, 1.0,
@@ -282,10 +329,13 @@ create_pixmap (XfceBackdrop *backdrop, GdkPixbuf * image)
 		    int x_offset = MIN ((gdk_screen_get_width(backdrop->gscreen) - width) / 2, x);
 		    int y_offset =
 			MIN ((gdk_screen_get_height(backdrop->gscreen) - height) / 2, y);
-
-		    pixbuf = create_solid (&(backdrop->color1),
+			
+			if(backdrop->color_style == SOLID_COLOR)
+				pixbuf = create_solid (&(backdrop->color1),
 					   gdk_screen_get_width(backdrop->gscreen),
 					   gdk_screen_get_height(backdrop->gscreen));
+			else
+				pixbuf = create_gradient(backdrop);
 
 		    if (has_composite)
 		    {
@@ -342,9 +392,12 @@ create_pixmap (XfceBackdrop *backdrop, GdkPixbuf * image)
 		    scaled = gdk_pixbuf_scale_simple (image, w, h,
 						      GDK_INTERP_BILINEAR);
 
-		    pixbuf = create_solid (&(backdrop->color1),
+		    if(backdrop->color_style == SOLID_COLOR)
+				pixbuf = create_solid (&(backdrop->color1),
 					   gdk_screen_get_width(backdrop->gscreen),
 					   gdk_screen_get_height(backdrop->gscreen));
+			else
+				pixbuf = create_gradient(backdrop);
 
 		    if (has_composite)
 		    {
@@ -373,9 +426,12 @@ create_pixmap (XfceBackdrop *backdrop, GdkPixbuf * image)
 		    {
 			GdkPixbuf *scaled = pixbuf;
 
-			pixbuf = create_solid (&(backdrop->color1),
-					       gdk_screen_get_width(backdrop->gscreen),
-					       gdk_screen_get_height(backdrop->gscreen));
+			if(backdrop->color_style == SOLID_COLOR)
+				pixbuf = create_solid (&(backdrop->color1),
+					   gdk_screen_get_width(backdrop->gscreen),
+					   gdk_screen_get_height(backdrop->gscreen));
+			else
+				pixbuf = create_gradient(backdrop);
 
 			gdk_pixbuf_composite (scaled, pixbuf, 0, 0,
 					      gdk_screen_get_width(backdrop->gscreen),
@@ -609,6 +665,8 @@ update_backdrop_channel(const char *channel_name, McsClient *client,
 				backdrop->color2.blue = setting->data.v_color.blue;
 			} else if(strstr(setting->name, "coloronly_") == setting->name)
 				backdrop->color_only = setting->data.v_int;
+			else if(strstr(setting->name, "colorstyle_") == setting->name)
+				backdrop->color_style = setting->data.v_int;
 
 			if(backdrop->set_backdrop)
 				g_idle_add((GSourceFunc)set_backdrop, backdrop);
@@ -757,9 +815,8 @@ backdrop_load_settings(XfceBackdrop *backdrop)
 			backdrop->path = g_strdup(setting->data.v_string);
 		}
 		mcs_setting_free(setting);
-	} else
-		;//backdrop->path = g_strdup(DEFAULT_BACKDROP);
-
+	}
+	
 	g_snprintf(setting_name, 128, "color1_%d", backdrop->xscreen);
 	if(MCS_SUCCESS == mcs_client_get_setting(client, setting_name,
 			BACKDROP_CHANNEL, &setting))
@@ -789,6 +846,15 @@ backdrop_load_settings(XfceBackdrop *backdrop)
 		mcs_setting_free(setting);
 	} else
 		backdrop->color_only = FALSE;
+	
+	g_snprintf(setting_name, 128, "colorstyle_%d", backdrop->xscreen);
+	if(MCS_SUCCESS == mcs_client_get_setting(client, setting_name,
+			BACKDROP_CHANNEL, &setting))
+	{
+		backdrop->color_style = setting->data.v_int;
+		mcs_setting_free(setting);
+	} else
+		backdrop->color_style = SOLID_COLOR;
 
 	DBG("set backdrop %s", backdrop->set_backdrop ? "from settings" : "from root property");
 	if(backdrop->set_backdrop) {
