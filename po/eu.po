@@ -10,60 +10,61 @@ msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-08-28 19:48-0700\n"
-"PO-Revision-Date: 1996-01-30 03:52+0100\n"
+"PO-Revision-Date: 2004-09-13 21:56+0200\n"
 "Last-Translator: Piarres Beobide Egaña <pi@beobide.net>\n"
-"Language-Team: Euskara <eu@li.org>\n"
+"Language-Team: Euskara <librezale@librezale.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: menueditor/about_dialog.c:36
 msgid "A menu editor for Xfce4"
-msgstr ""
+msgstr "Xfce4 menu editorea"
 
 #: menueditor/about_dialog.c:45
 msgid "Core developer"
-msgstr ""
+msgstr "Muin garatzailea"
 
 #: menueditor/about_dialog.c:49 menueditor/about_dialog.c:53
 #: menueditor/about_dialog.c:57
 msgid "Contributor"
-msgstr ""
+msgstr "Laguntzailea"
 
 #: menueditor/about_dialog.c:61
 msgid "Icon designer"
-msgstr ""
+msgstr "Ikono diseinua"
 
 #: menueditor/add_dialog.c:131 menueditor/add_dialog.c:146
 msgid "Add menu entry"
-msgstr ""
+msgstr "Menu sarrera gehitu"
 
 #. Type
 #: menueditor/add_dialog.c:152 menueditor/add_menu_dialog.c:96
 #: menueditor/edit_dialog.c:148
 msgid "Type:"
-msgstr ""
+msgstr "Mota:"
 
 #: menueditor/add_dialog.c:155
 msgid "Launcher"
-msgstr ""
+msgstr "Abiarazlea"
 
 #: menueditor/add_dialog.c:160
 msgid "Submenu"
-msgstr ""
+msgstr "Azpi-menua"
 
 #: menueditor/add_dialog.c:165
 msgid "Separator"
-msgstr ""
+msgstr "Bereizlea"
 
 #: menueditor/add_dialog.c:170
-#, fuzzy
 msgid "Title"
-msgstr "_Karratuduna"
+msgstr "Izenburua"
 
 #: menueditor/add_dialog.c:175
 msgid "Quit"
-msgstr ""
+msgstr "Irten"
 
 #. Name
 #: menueditor/add_dialog.c:190 menueditor/edit_dialog.c:260
@@ -73,62 +74,61 @@ msgstr "Izena:"
 
 #: menueditor/add_dialog.c:200 menueditor/edit_dialog.c:261
 msgid "Command:"
-msgstr ""
+msgstr "Komandoa:"
 
 #: menueditor/add_dialog.c:216 menueditor/edit_dialog.c:252
 #: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
 #: menueditor/edit_dialog.c:390
 msgid "Icon:"
-msgstr ""
+msgstr "Ikonoa:"
 
 #. Start Notify check button
 #: menueditor/add_dialog.c:232 menueditor/edit_dialog.c:272
 msgid "Use startup _notification"
-msgstr ""
+msgstr "Erabili hasiera _oharra"
 
 #. Run in terminal check button
 #: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:273
 msgid "Run in _terminal"
-msgstr ""
+msgstr "Exekutatu _terminalean"
 
 #: menueditor/add_dialog.c:281 menueditor/edit_dialog.c:459
 msgid "The command doesn't exist !"
-msgstr ""
+msgstr "Komadoa ez dago!"
 
 #: menueditor/add_dialog.c:287
 msgid "All fields must be filled to add an item."
-msgstr ""
+msgstr "Eremu guztiak bete behar dira sarrera gehitzeko"
 
 #: menueditor/add_dialog.c:295
 msgid "The 'Name' field is required."
-msgstr ""
+msgstr "'Izena' eremua beharrezkoa da."
 
 #: menueditor/add_dialog.c:349 menueditor/dnd.c:150
 #: menueditor/menueditor.c:339 menueditor/move.c:90 menueditor/move.c:246
 msgid "--- separator ---"
-msgstr ""
+msgstr "--- bereizlea ---"
 
 #: menueditor/add_dialog.c:374 menueditor/edit_dialog.c:496
 msgid "quit"
-msgstr ""
+msgstr "irten"
 
 #: menueditor/add_menu_dialog.c:76 menueditor/add_menu_dialog.c:87
 #: menueditor/menueditor.c:770
 msgid "Add an external menu"
-msgstr ""
+msgstr "Kanpo menu bat gehitu"
 
 #: menueditor/add_menu_dialog.c:101 menueditor/edit_dialog.c:151
-#, fuzzy
 msgid "File"
 msgstr "Fitxategia:"
 
 #: menueditor/add_menu_dialog.c:106 menueditor/edit_dialog.c:156
 msgid "System"
-msgstr ""
+msgstr "Sistema"
 
 #: menueditor/add_menu_dialog.c:121 menueditor/edit_dialog.c:171
 msgid "Source:"
-msgstr ""
+msgstr "Iturburua:"
 
 #. Style
 #: menueditor/add_menu_dialog.c:134 menueditor/edit_dialog.c:184
@@ -137,106 +137,104 @@ msgstr "Estiloa"
 
 #: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:187
 msgid "Simple"
-msgstr ""
+msgstr "Soila"
 
 #: menueditor/add_menu_dialog.c:140 menueditor/edit_dialog.c:190
 msgid "Multilevel"
-msgstr ""
+msgstr "Maila anitzekoa"
 
 #. Unique
 #: menueditor/add_menu_dialog.c:153 menueditor/edit_dialog.c:203
 msgid "_Unique entries only"
-msgstr ""
+msgstr "_Sarrera bakanak bakarrik"
 
 #: menueditor/add_menu_dialog.c:206
 msgid "The 'Source' field is required."
-msgstr ""
+msgstr "'Iturburu' eremua beharrezkoa da."
 
 #: menueditor/add_menu_dialog.c:216 menueditor/add_menu_dialog.c:233
 #: menueditor/dnd.c:152 menueditor/edit_dialog.c:510
 #: menueditor/edit_dialog.c:523 menueditor/menueditor.c:387
 #: menueditor/move.c:120 menueditor/move.c:276
 msgid "--- include ---"
-msgstr ""
+msgstr "--- sartu ---"
 
 #: menueditor/add_menu_dialog.c:234 menueditor/dnd.c:157
 #: menueditor/edit_dialog.c:524 menueditor/menueditor.c:390
 #: menueditor/move.c:123 menueditor/move.c:279
 msgid "system"
-msgstr ""
+msgstr "sistema"
 
 #. Create dialog for editing
 #: menueditor/edit_dialog.c:100 menueditor/edit_dialog.c:113
 msgid "Edit menu entry"
-msgstr ""
+msgstr "Menu sarrera editatu"
 
 #: menueditor/edit_dialog.c:131
 msgid "Separators cannot be edited"
-msgstr ""
+msgstr "Berezileak ezin dira editatu"
 
 #. Name
 #: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:102
-#, fuzzy
 msgid "Title:"
-msgstr "Fitxategia:"
+msgstr "Izenburua:"
 
 #: menueditor/menueditor.c:156
 msgid "Select command"
-msgstr ""
+msgstr "Komandoa aukeratu"
 
 #: menueditor/menueditor.c:213
 msgid "Select icon"
-msgstr ""
+msgstr "Ikonoa aukeratu"
 
 #: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:372
 #: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
 #: settings/backdrop_settings.c:467
 msgid "All Files"
-msgstr ""
+msgstr "Fitxategi Guztiak"
 
 #: menueditor/menueditor.c:223 panel-plugin/desktop-menu-plugin.c:378
 #: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:471
-#, fuzzy
 msgid "Image Files"
-msgstr "Irudi Fitxategia"
+msgstr "Irudi Fitxategiak"
 
 #: menueditor/menueditor.c:266
 msgid "Not yet implemented!"
-msgstr ""
+msgstr "Ez da erabilgarri oraindik!"
 
 #: menueditor/menueditor.c:277 menueditor/menueditor.c:659
 msgid "Do you want to save before closing the menu ?"
-msgstr ""
+msgstr "Menua itxi aurretik gorde nahi al duzu?"
 
 #: menueditor/menueditor.c:278
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr ""
+msgstr "Menua aldatu duzu, atera aurretik gorde nahi al duzu?"
 
 #: menueditor/menueditor.c:279
 msgid "Forget modifications"
-msgstr ""
+msgstr "Ahaztu aldaketak"
 
 #: menueditor/menueditor.c:463 menueditor/menueditor.c:518
 #: menueditor/menueditor.c:657
 msgid "Question"
-msgstr ""
+msgstr "Galdera"
 
 #: menueditor/menueditor.c:465
 msgid "Do you want to save before opening the default menu ?"
-msgstr ""
+msgstr "Lehenetsitako menua ireki aurretik gorde nahi al duzu?"
 
 #: menueditor/menueditor.c:467 menueditor/menueditor.c:522
 #: menueditor/menueditor.c:661
 msgid "Ignore modifications"
-msgstr ""
+msgstr "Aldaketak alda batetara utzi"
 
 #: menueditor/menueditor.c:520
 msgid "Do you want to save before opening an other menu ?"
-msgstr ""
+msgstr "Beste menu bat iraki aurretik gorde nahi al duzu?"
 
 #: menueditor/menueditor.c:533
 msgid "Open menu file"
-msgstr ""
+msgstr "Menu fitxategia ireki"
 
 #: menueditor/menueditor.c:571 menueditor/menueditor.c:582
 #, c-format
@@ -244,212 +242,208 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
+"Ezin da %s-n idatzi : \n"
+"%s"
 
 #: menueditor/menueditor.c:606
 msgid "Save as..."
-msgstr ""
+msgstr "Gorde honela..."
 
 #: menueditor/menueditor.c:764
-#, fuzzy
 msgid "Edit"
-msgstr "Editatu atzekaldeen zerrenda"
+msgstr "Editatu"
 
 #. File menu
 #: menueditor/menueditor.c:951
-#, fuzzy
 msgid "_File"
-msgstr "Fitxategia:"
+msgstr "_Fitxategia"
 
 #: menueditor/menueditor.c:960
 msgid "Open default menu"
-msgstr ""
+msgstr "Lehenetsitako menua ireki"
 
 #. Edit menu
 #: menueditor/menueditor.c:974
 msgid "_Edit"
-msgstr ""
+msgstr "_Editatu"
 
 #: menueditor/menueditor.c:980
 msgid "Add an external menu..."
-msgstr ""
+msgstr "Kanpo menu bat gehitu..."
 
 #. Help menu
 #: menueditor/menueditor.c:992
 msgid "_Help"
-msgstr ""
+msgstr "_Laguntza"
 
 #: menueditor/menueditor.c:997
 msgid "_About..."
-msgstr ""
+msgstr "H_oni buruz..."
 
 #: menueditor/menueditor.c:1011
 msgid "Create a new Xfce4 menu file"
-msgstr ""
+msgstr "Xfce4 menu fitxategi berri bat sortu"
 
 #: menueditor/menueditor.c:1018
 msgid "Open an Xfce4 menu file"
-msgstr ""
+msgstr "Xfce4 menu fitxategia ireki"
 
 #: menueditor/menueditor.c:1025
 msgid "Save current menu"
-msgstr ""
+msgstr "Gorde uneko menua"
 
 #: menueditor/menueditor.c:1032
 msgid "Close current menu"
-msgstr ""
+msgstr "Itxi uneko menua"
 
 #: menueditor/menueditor.c:1040
 msgid "Add an entry to the menu"
-msgstr ""
+msgstr "Menura sarrera bat gehitu"
 
 #: menueditor/menueditor.c:1047
 msgid "Delete the current entry"
-msgstr ""
+msgstr "Uneko sarrera ezabatu"
 
 #: menueditor/menueditor.c:1054
 msgid "Move the current entry up"
-msgstr ""
+msgstr "Uneko sarrera gora mugitu"
 
 #: menueditor/menueditor.c:1061
 msgid "Move the current entry down"
-msgstr ""
+msgstr "Uneko sarrera behera mugitu"
 
 #: menueditor/menueditor.c:1069
 msgid "Collapse the tree"
-msgstr ""
+msgstr "Zuhaitza itxi"
 
 #: menueditor/menueditor.c:1076
 msgid "Expand the tree"
-msgstr ""
+msgstr "Zuhaitza ireki"
 
 #: menueditor/menueditor.c:1110
-#, fuzzy
 msgid "Name"
-msgstr "Izena:"
+msgstr "Izena"
 
 #: menueditor/menueditor.c:1112
 msgid "Command"
-msgstr ""
+msgstr "Komandoa"
 
 #: menueditor/menueditor.c:1114
 msgid "Hidden"
-msgstr ""
+msgstr "Ezkutatu"
 
 #: menueditor/menueditor.c:1116
 msgid "Pointer"
-msgstr ""
+msgstr "Erakuslea"
 
 #: menueditor/menueditor.c:1248
 msgid "Corrupted file or incorrect file format !"
-msgstr ""
+msgstr "Fitxategia hondaturik edo formatu baliogabea !"
 
 #: menueditor/menueditor.c:1261
 msgid "No root element in file !"
-msgstr ""
+msgstr "Ez dago root elementua fitxategian !"
 
 #: menueditor/menueditor.c:1272
 msgid "Bad datafile format !"
-msgstr ""
+msgstr "Okerreko datu fitxategi formatua !"
 
 #: menueditor/menueditor.c:1388
 #, c-format
 msgid "File %s doesn't exist !"
-msgstr ""
+msgstr "%s fitxategia ez dago !"
 
 #: menueditor/move.c:401
 msgid "Do you want to move the item into the parent menu?"
-msgstr ""
+msgstr "Osagai hau goiko menura mugitu nahi al duzu?"
 
 #: menueditor/move.c:500
 msgid "Do you want to move the item into the submenu?"
-msgstr ""
+msgstr "Osagai hau azpimenura mugitu nahi al duzu?"
 
 #: menueditor/new_dialog.c:58
 msgid "Are you sure you want to close the current menu?"
-msgstr ""
+msgstr "Ziur al zaude menu hau itxi nahi duzula?"
 
 #: menueditor/new_dialog.c:74
 msgid "Do you want to save before closing the file?"
-msgstr ""
+msgstr "Fitxatgia itxi aurretik grabatu nahi al duzu?"
 
 #. get the filename and name for the new menu
 #: menueditor/new_dialog.c:84 menueditor/new_dialog.c:96
 msgid "New menu"
-msgstr ""
+msgstr "Menu berria"
 
 #. Filename
 #: menueditor/new_dialog.c:109
-#, fuzzy
 msgid "Filename:"
 msgstr "Fitxategia:"
 
 #: menueditor/new_dialog.c:142
 msgid "All fields are required."
-msgstr ""
+msgstr "Eremu guztiak beharrezkoak dira."
 
 #: modules/menu/desktop-menu-dentry.c:536
 msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-msgstr ""
+msgstr "XfceDesktopMenu: Ezin da xfce-registered-categories.xml aurkitu"
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
-msgstr ""
+msgstr "/Besteak"
 
 #: modules/menu/desktop-menuspec.c:361
 #, c-format
 msgid "%s: missing or unknown attribute for 'related' element\n"
-msgstr ""
+msgstr "%s: ez da aurkitzen edo atributu ezezaguna 'related' osagaiarentzat\n"
 
 #: modules/menu/desktop-menuspec.c:366
 #, c-format
 msgid "%s: unknown xml element %s\n"
-msgstr ""
+msgstr "%s: %s xml elmentu ezezaguna\n"
 
 #: panel-plugin/desktop-menu-plugin.c:192
 #: panel-plugin/desktop-menu-plugin.c:515
 msgid "Xfce Menu"
-msgstr ""
+msgstr "Xfce Menua"
 
 #: panel-plugin/desktop-menu-plugin.c:355
 msgid "Select Icon"
-msgstr ""
+msgstr "Ikonoa aukeratu"
 
 #: panel-plugin/desktop-menu-plugin.c:357
 msgid "Select Menu File"
-msgstr ""
+msgstr "Menu Fitxategia Aukeratu"
 
 #: panel-plugin/desktop-menu-plugin.c:386
-#, fuzzy
 msgid "Menu Files"
 msgstr "Irudi Fitxategia"
 
 #: panel-plugin/desktop-menu-plugin.c:445
 msgid "_Menu file:"
-msgstr ""
+msgstr "_Menu fitxategia:"
 
 #: panel-plugin/desktop-menu-plugin.c:479
 msgid "_Button icon:"
-msgstr ""
+msgstr "_Botoi ikonoa:"
 
 #: panel-plugin/desktop-menu-plugin.c:504
 msgid "Show _icons in menu"
-msgstr ""
+msgstr "Erakutsi _ikonoak menuan"
 
 #: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
 #: settings/backdrop-mgr.c:553
-#, fuzzy
 msgid "Backdrop"
 msgstr "Atzekaldeen zerrenda"
 
 #: settings/backdrop-mgr.c:100
 #, c-format
 msgid "Adding files from directory %s..."
-msgstr ""
+msgstr "Fitxategiak %s karpetatik gehitzen..."
 
 #: settings/backdrop-mgr.c:160
 #, c-format
 msgid "Adding files from list %s..."
-msgstr ""
+msgstr "Fitxategiak %s zerrendatik gehitzen..."
 
 #: settings/backdrop-mgr.c:215
 #, c-format
@@ -465,22 +459,20 @@ msgstr ""
 "gordetzeko"
 
 #: settings/backdrop-mgr.c:502
-#, fuzzy
 msgid "Select backdrop image file"
 msgstr "Aukeratu irudi fitxategi bat"
 
 #: settings/backdrop-mgr.c:559
 msgid "Adding multiple files..."
-msgstr ""
+msgstr "Fitxategi anitz gehitzen..."
 
 #: settings/backdrop-mgr.c:637
 msgid "Choose backdrop list filename"
 msgstr "Aukeratu atzekalde zerrenda bat duen fitxategia"
 
 #: settings/backdrop-mgr.c:646
-#, fuzzy
 msgid "List Files"
-msgstr "Lista fitxategia"
+msgstr "Zerrenda fitxategia"
 
 #: settings/backdrop-mgr.c:709
 msgid "Backdrop List"
@@ -491,13 +483,12 @@ msgid "Image files"
 msgstr "Irudi Fitxategia"
 
 #: settings/backdrop-mgr.c:736
-#, fuzzy
 msgid "backdrops.list"
-msgstr "Editatu atzekalde zerrenda"
+msgstr "backdrops.list"
 
 #: settings/backdrop-mgr.c:742
 msgid "List file"
-msgstr "Lista fitxategia"
+msgstr "Zerrenda fitxategia"
 
 #: settings/backdrop-mgr.c:762
 msgid "Create backdrop list"
@@ -514,67 +505,57 @@ msgid "Desktop"
 msgstr "Idazmahia"
 
 #: settings/backdrop_settings.c:462
-#, fuzzy
 msgid "Select backdrop image or list file"
-msgstr "Aukeratu mahaigaineko argazkia edo fitxategien zerrenda"
+msgstr "Aukeratu mahaigaineko argazkia edo zerrenda fitxategia"
 
 #: settings/backdrop_settings.c:480
 msgid "List Files (*.list)"
-msgstr ""
+msgstr "Zerrenda Fitxategiak (*.list)"
 
 #: settings/backdrop_settings.c:565
-#, fuzzy
 msgid "_Edit list..."
-msgstr "Editatu atzekaldeen zerrenda"
+msgstr "_Editatu zerrenda..."
 
 #: settings/backdrop_settings.c:573
-#, fuzzy
 msgid "_New list..."
-msgstr "Zerrenda berria"
+msgstr "_Zerrenda berria"
 
 #: settings/backdrop_settings.c:609
-#, fuzzy
 msgid "S_tyle:"
-msgstr "Estiloa"
+msgstr "Es_tiloa:"
 
 #: settings/backdrop_settings.c:617
-#, fuzzy
 msgid "Tiled"
-msgstr "_Karratuduna"
+msgstr "Karratuduna"
 
 #: settings/backdrop_settings.c:624
-#, fuzzy
 msgid "Centered"
-msgstr "_Zentratua"
+msgstr "Erdiratua"
 
 #: settings/backdrop_settings.c:631
-#, fuzzy
 msgid "Scaled"
-msgstr "E_skalara"
+msgstr "Eskalara"
 
 #: settings/backdrop_settings.c:638
 msgid "Stretched"
-msgstr ""
+msgstr "Luzatua"
 
 #: settings/backdrop_settings.c:645
-#, fuzzy
 msgid "Auto"
-msgstr "_Automatikoa"
+msgstr "Automatikoa"
 
 #: settings/backdrop_settings.c:711
 msgid "Adjust _Brightness:"
-msgstr ""
+msgstr "_Distira Doitu:"
 
 #. header
 #: settings/backdrop_settings.c:780
-#, fuzzy
 msgid "Desktop Settings"
 msgstr "Mahaigain birtualen ezarpenak"
 
 #: settings/backdrop_settings.c:808
-#, fuzzy
 msgid "_Backdrops"
-msgstr "Atzekaldeen zerrenda"
+msgstr "_Atzekaldeen zerrenda"
 
 #. color settings frame
 #: settings/backdrop_settings.c:834
@@ -582,165 +563,155 @@ msgid "Color"
 msgstr "Kolorea"
 
 #: settings/backdrop_settings.c:848
-#, fuzzy
 msgid "_Color Style:"
-msgstr "Estiloa"
+msgstr "_Kolore Estiloa:"
 
 #: settings/backdrop_settings.c:857
-#, fuzzy
 msgid "Solid Color"
-msgstr "Kolorea"
+msgstr "Kolore betea"
 
 #: settings/backdrop_settings.c:864
 msgid "Horizontal Gradient"
-msgstr ""
+msgstr "Gradiente Horizontala"
 
 #: settings/backdrop_settings.c:871
 msgid "Vertical Gradient"
-msgstr ""
+msgstr "Gradiente Bertikala"
 
 #: settings/backdrop_settings.c:892
 msgid "Fi_rst Color:"
-msgstr ""
+msgstr "Lehen Kolo_rea:"
 
 #: settings/backdrop_settings.c:913
-#, fuzzy
 msgid "_Second Color:"
-msgstr "Atzekaldeko kolorea:"
+msgstr "_Atzekaldeko kolorea:"
 
 #. set color only checkbox
 #: settings/backdrop_settings.c:934
-#, fuzzy
 msgid "Set color _only"
-msgstr "Bakarrik erabili kolorea:"
+msgstr "kolorea _bakarrik erabili :"
 
 #: settings/backdrop_settings.c:949
 msgid "Image"
 msgstr "Irudia"
 
 #: settings/backdrop_settings.c:957
-#, fuzzy
 msgid "Show _Image"
-msgstr "Irudia"
+msgstr "_Irudia Bistarazi"
 
 #: settings/backdrop_settings.c:979
-#, fuzzy
 msgid "_File:"
-msgstr "Fitxategia:"
+msgstr "_Fitxategia:"
 
 #. don't set backdrop checkbox
 #: settings/backdrop_settings.c:1016
-#, fuzzy
 msgid "_Don't set backdrop"
-msgstr "Idazmahia: atzekaldeak"
+msgstr "_Ez ezarri atzekaldea"
 
 #. add the single backdrop settings page to the main notebook
 #: settings/backdrop_settings.c:1039
-#, fuzzy
 msgid "_Backdrop"
-msgstr "Atzekaldeen zerrenda"
+msgstr "_Atzekaldea"
 
 #: settings/backdrop_settings.c:1047 settings/backdrop_settings.c:1049
 #, c-format
 msgid "Screen %d"
-msgstr ""
+msgstr "%d Pantaila"
 
 #. and if we have multiple screens, each with multiple monitors
 #: settings/backdrop_settings.c:1054
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr ""
+msgstr "%d Pantaila, %d Monitorea"
 
 #: settings/backdrop_settings.c:1068
 msgid "_Menu"
-msgstr ""
+msgstr "_Menua"
 
 #: settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr ""
+msgstr "Ezin da xfce4-menueditor abiarazi: %s"
 
 #: settings/menu_settings.c:153
 msgid "Window List"
-msgstr ""
+msgstr "Leiho-zerrenda"
 
 #: settings/menu_settings.c:161
 msgid "Show window _list"
-msgstr ""
+msgstr "Bistarazi leiho _zerrenda"
 
 #: settings/menu_settings.c:176
 msgid "Show _window icons"
-msgstr ""
+msgstr "Bistarazi _leiho ikonoak"
 
 #: settings/menu_settings.c:189
-#, fuzzy
 msgid "Desktop Menu"
-msgstr "Idazmahia"
+msgstr "Idazmahai Menua"
 
 #: settings/menu_settings.c:197
 msgid "Show desktop _menu"
-msgstr ""
+msgstr "Bistarazi idazmahai _menua"
 
 #: settings/menu_settings.c:212
 msgid "Show _application icons"
-msgstr ""
+msgstr "Bistarazi _aplikazio ikonoak"
 
 #: settings/menu_settings.c:223
 msgid "_Edit desktop menu"
-msgstr ""
+msgstr "_Editatu idazmahai menua"
 
 #: src/main.c:262
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr ""
+msgstr "%s: aukera ezezaguna: %s\n"
 
 #: src/main.c:263
 msgid "Options are:\n"
-msgstr ""
+msgstr "Aukerak:\n"
 
 #: src/main.c:264
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr ""
+msgstr "    -reload      Ezarpen guztiak birkargatu, irudi zerrenda freskatu\n"
 
 #: src/main.c:265
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr ""
+msgstr "    -menu        Menua bistarazi (saguaren kokalekuan)\n"
 
 #: src/main.c:266
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -windowlist  Leiho zerrenda bistarazi (saguaren kokalekuan)\n"
 
 #: src/menu.c:73
 #, c-format
-msgid ""
-"%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
+msgid "%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
 msgstr ""
+"%s: Ezin da menu modulua abiarazi. Eskuina klikatuz "
+"menua ez da erabilgarri egongo.\n"
 
 #: src/windowlist.c:183
-#, fuzzy, c-format
+#, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "Idazmahi Birtuala %d"
+msgstr "<b>Idazmahi Birtuala %d</b>"
 
 #: src/windowlist.c:188
-#, fuzzy, c-format
+#, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "Idazmahi Birtuala %d"
+msgstr "<i>Idazmahi Birtuala %d</i>"
 
 #: src/windowlist.c:244 src/windowlist.c:247
-#, fuzzy
 msgid "_Add Workspace"
-msgstr "Idazmahi birtuala gehitu"
+msgstr "Idazmahi birtuala _gehitu"
 
 #: src/windowlist.c:254
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace %d"
-msgstr "Idazmahi Birtuala %d"
+msgstr "_Ezabatu %d Idazmahi Birtuala"
 
 #: src/windowlist.c:256
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Idazmahi Birtuala %d"
+msgstr "_Ezabatu '%s' Idazmahi Birtuala"
 
 #, fuzzy
 #~ msgid "Select backdrop color"
@@ -788,3 +759,4 @@ msgstr "Idazmahi Birtuala %d"
 #~ msgstr ""
 #~ "xfdesktop:Ezin izan da aukeren administratzailearekin konektatu! Mesedez, "
 #~ "egiaztatuzure instalazioa."
+
