@@ -3,7 +3,7 @@ dnl
 dnl xfdesktop - desktop manager for the XFce Desktop environment
 dnl
 
-AC_INIT([common/backdrop.c])
+AC_INIT([configure.ac])
 
 AM_INIT_AUTOMAKE([xfdesktop], [3.91.0])
 
@@ -27,11 +27,12 @@ AC_CHECK_HEADERS(fcntl.h signal.h stddef.h sys/wait.h time.h)
 AC_CHECK_FUNCS(sigaction srandom)
 
 dnl Check for i18n support
-BM_I18N([xfdesktop], [ca de es es_MX fi fr ja pl ms nl ru ta tr zh_CN])
+BM_I18N([xfdesktop], [ca de es fi fr ja pl ms nl ru ta tr zh_CN])
 
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE
 
+BM_DEPEND([GTK], [gtk+-2.0], [2.0.6])
 BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 3.91.0)
 BM_DEPEND([LIBXML], libxml-2.0, 2.4.0)
 BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [3.91.0])

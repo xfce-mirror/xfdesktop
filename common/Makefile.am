@@ -8,8 +8,11 @@ libxfdesktop_la_SOURCES =						\
 	backdrop.h
 
 libxfdesktop_la_CFLAGS =						\
-	@LIBXFCEGUI4_CFLAGS@
+	@LIBXFCEGUI4_CFLAGS@						\
+	@GTK_CFLAGS@
 
 libxfdesktop_la_LDFLAGS =						\
 	-export-dynamic
 
+libxfdesktop_la_LIBADD =						\
+	@GTK_LIBS@
