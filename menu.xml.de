@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xfdesktop-menu [
+	<!ENTITY menu2 SYSTEM "menu2.xml">
+]>
+
+<!-- 
+     Erläuterung der XFce 4 Menüdatei:
+     =================================
+	 Hier wird das Format der Menüdatei erläutert. Schauen Sie sich das
+	 derzeitige Menü unten als Beispiel an.
+
+	 Wichtig: Die Menüdatei muss, sofern Umlaute und andere Sonderzeichen
+	 enthalten sind, als UTF-8 abgespeichert werden. Wenn Ihr Editor UTF-8
+	 nicht unterstützt führen Sie nach dem Editiren den Befehl
+	 "recode latin1..utf-8 <dateiname>" in einer Shell aus.
+-->
+
+<!-- Offensichtlich ist dies ein Beispiel für einen Kommentar. ;-) -->
+
+<!-- 
+
+  + Das ganze Menü ist zwischen genau einem Paar von
+    <xfdesktop-menu></xfdesktop-menu> Tags.
+
+  + Anwendungen:
+    <app name="Name im Menü" cmd="Auszuführender Befehl" term="no" visible="yes" />
+    'term' entscheidet ob das Programm ein Terminal benötigt, um zu laufen
+    Nur 'name' und 'cmd' werden benötigt.
+
+  + Trennlinien:
+    <separator/>
+
+  + Untermenüs:
+    <menu name="Name im Menü" visible="yes"></menu>
+    Nur 'name' wird benötigt.
+    Zwischen den menu-Tags können weitere Anwendungen, Trennlinien und Menüs definiert
+	werden.
+
+  + Titel
+    <title name="Name im Menü" />
+	Erstellt einen Menütitel.
+    
+  + Einfügen anderer Dateien:
+    Andere Dateien können mittels eines xml-Tricks inkludiert werden. Dies ist
+	etwas kompliziert.
+	Als erstes muss eine sogenannte Entität im Dateikopf definiert werden.
+	Schauen Sie oben wo eine 'menu2'-Entität definiert werden umd auf die 
+	Datei "menu2.xml" zu zeigen. Dann können Sie '&entitätsname;' irgendwo
+	in der Menüdatei verwenden, was dann mit dem Inhalt der jeweiligen Datei
+	ersetzt wird.
+	Das Ganze kann nützlich sein wenn Sie beispielsweise ein Skript erstellen,
+	das das GNOME- oder KDE-Menü als extra Datei erstellt.
+    
+-->
+<xfdesktop-menu>
+    <title name="Desktop-Menü" visible="yes" />
+    <separator/>
+    <app name="Programm ausführen ..." cmd="xfrun4"/>
+    <separator/>
+    <app name="Terminal" cmd="xfterm4" />
+    <app name="Dateimanager (xffm)" cmd="xffm"/>
+    <app name="Mozilla (Web-Browser)" cmd="mozilla"/>
+    <separator/>
+    <menu name="Einstellungen" visible="yes">
+        <app name="Alle Einstellungen ..." cmd="xfce-setting-show"/>
+        <app name="Hintergrund ..." cmd="xfce-setting-show backdrop"/>
+<!-- 
+        <app name="Hintergrund" cmd="xfce-setting-show backdrop"/>
+	<app name="Workspaces" cmd="xfce-setting-show workspaces"/>
+	<app name="Dateimanager (xffm)" cmd="xfce-setting-show xffm"/>
+	<app name="Benutzerschnittstelle (Gtk+)" cmd="xfce-setting-show ui"/>
+	<app name="Iconbox" cmd="xfce-setting-show xfibx"/>
+        <app name="Maus" cmd="xfce-setting-show mouse"/>
+        <app name="Taskleiste" cmd="xfce-setting-show taskbar"/>
+	<app name="Tastatur" cmd="xfce-setting-show keyboard"/>
+	<app name="Fenstermanager" cmd="xfce-setting-show xfwm4"/>
+	<app name="Desktopränder" cmd="xfce-setting-show xfwm_margins"/>
+	<app name="Panel" cmd="xfce-setting-show xfce"/>
+-->
+    </menu>
+    <separator/>
+    <app name="Hilfe" cmd="xfhelp4"/>
+    <!-- <separator/> -->
+    <!-- Setzen Sie 'visible' auf 'yes', um diesen Eintrag zu verwenden.
+      Dies beendet den Desktopmanager. Wenn Sie außerdem 'exec xfdesktop' 
+	  an das Ende Ihrer ~/.xinitrc Datei schreiben kann dieser Menüeintrag
+	  zum Beenden Ihrer X11-Sitzung verwendet werden.
+    -->
+    <builtin name="Beenden" cmd="quit" visible="no"/>
+    <!-- Beispiel, wie Dateien eingefügt werden können:
+      1) Deklarieren Sie eine ENTITY (Entität) im DOCTYPE tag (siehe oben)
+      2) Fügen Sie die Entität in die Datei ein:
+    -->
+    <!--
+    &menu2;
+    -->
+</xfdesktop-menu>
+
