@@ -2,6 +2,7 @@
  *  
  *  Copyright (C) 2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
  *  Copyright (C) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
+ *  Copyright (c) 2004 Brian Tarricone <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -585,28 +586,28 @@ static void
 browse_cb(GtkWidget *b, BackdropPanel *bp)
 {
 	GtkWidget *chooser, *preview;
-	GtkFileFilter *filter;
+	XfceFileFilter *filter;
 	
 	chooser = xfce_file_chooser_dialog_new(_("Select backdrop image or list file"),
 			GTK_WINDOW(bp->bd->dialog), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
 			GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 	
-	filter = gtk_file_filter_new();
-	gtk_file_filter_set_name(filter, _("All Files"));
-	gtk_file_filter_add_pattern(filter, "*");
+	filter = xfce_file_filter_new();
+	xfce_file_filter_set_name(filter, _("All Files"));
+	xfce_file_filter_add_pattern(filter, "*");
 	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
-	filter = gtk_file_filter_new();
-	gtk_file_filter_set_name(filter, _("Image Files"));
-	gtk_file_filter_add_pattern(filter, "*.png");
-	gtk_file_filter_add_pattern(filter, "*.jpg");
-	gtk_file_filter_add_pattern(filter, "*.bmp");
-	gtk_file_filter_add_pattern(filter, "*.svg");
-	gtk_file_filter_add_pattern(filter, "*.xpm");
-	gtk_file_filter_add_pattern(filter, "*.gif");
+	filter = xfce_file_filter_new();
+	xfce_file_filter_set_name(filter, _("Image Files"));
+	xfce_file_filter_add_pattern(filter, "*.png");
+	xfce_file_filter_add_pattern(filter, "*.jpg");
+	xfce_file_filter_add_pattern(filter, "*.bmp");
+	xfce_file_filter_add_pattern(filter, "*.svg");
+	xfce_file_filter_add_pattern(filter, "*.xpm");
+	xfce_file_filter_add_pattern(filter, "*.gif");
 	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
-	filter = gtk_file_filter_new();
-	gtk_file_filter_set_name(filter, _("List Files (*.list)"));
-	gtk_file_filter_add_pattern(filter, "*.list");
+	filter = xfce_file_filter_new();
+	xfce_file_filter_set_name(filter, _("List Files (*.list)"));
+	xfce_file_filter_add_pattern(filter, "*.list");
 	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
 	
 	xfce_file_chooser_set_local_only(XFCE_FILE_CHOOSER(chooser), TRUE);
@@ -689,7 +690,7 @@ add_button_box (GtkWidget *vbox, BackdropPanel *bp)
     gtk_widget_show (hbox);
     gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
 
-	bp->edit_list_button = gtk_button_new_with_mnemonic(_("_Edit list"));
+	bp->edit_list_button = gtk_button_new_with_mnemonic(_("_Edit list..."));
     gtk_widget_show (bp->edit_list_button);
     gtk_box_pack_end (GTK_BOX (hbox), bp->edit_list_button, FALSE, FALSE,
 			0);
@@ -697,7 +698,7 @@ add_button_box (GtkWidget *vbox, BackdropPanel *bp)
     g_signal_connect (G_OBJECT (bp->edit_list_button), "clicked",
 		      G_CALLBACK (edit_list_cb), bp);
 	
-    new_list_button = gtk_button_new_with_mnemonic(_("_New list"));
+    new_list_button = gtk_button_new_with_mnemonic(_("_New list..."));
     gtk_widget_show (new_list_button);
     gtk_box_pack_end (GTK_BOX (hbox), new_list_button, FALSE, FALSE, 0);
 	
@@ -861,20 +862,23 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 	gtk_widget_show(bd->top_notebook);
 	gtk_box_pack_start(GTK_BOX(mainvbox), bd->top_notebook, TRUE, TRUE, 0);
 	
-	/* screens notebook */
-	vbox = gtk_vbox_new(FALSE, 0);
-	gtk_widget_show(vbox);
-	add_spacer(GTK_BOX(vbox));
-	
-	bd->screens_notebook = gtk_notebook_new();
-	gtk_widget_show(bd->screens_notebook);
-	gtk_box_pack_start(GTK_BOX(vbox), bd->screens_notebook, FALSE, FALSE, 0);
-	
-	label = gtk_label_new(_("Backdrops"));
-	gtk_widget_show(label);
-	gtk_notebook_append_page(GTK_NOTEBOOK(bd->top_notebook), vbox, label);
-	
 	nscreens = gdk_display_get_n_screens(gdk_display_get_default());
+	
+	if(nscreens > 1) {
+		/* only use a noteboook if we have more than one screen */
+		vbox = gtk_vbox_new(FALSE, 0);
+		gtk_widget_show(vbox);
+		add_spacer(GTK_BOX(vbox));
+		
+		bd->screens_notebook = gtk_notebook_new();
+		gtk_widget_show(bd->screens_notebook);
+		gtk_box_pack_start(GTK_BOX(vbox), bd->screens_notebook, FALSE, FALSE, 0);
+		
+		label = gtk_label_new(_("Backdrops"));
+		gtk_widget_show(label);
+		gtk_notebook_append_page(GTK_NOTEBOOK(bd->top_notebook), vbox, label);
+	}
+	
 	for(i = 0; i < nscreens; i++) {
 		GtkWidget *page;
 		gchar screen_label[256];
@@ -1021,6 +1025,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 		
 		/* file entry */
 		bp->file_entry = gtk_entry_new();
+		gtk_widget_set_size_request(bp->file_entry, 350, -1);
 		gtk_widget_show(bp->file_entry);
 		if(bp->image_path)
 			gtk_entry_set_text(GTK_ENTRY(bp->file_entry), bp->image_path);
@@ -1059,9 +1064,17 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
 		
 		add_spacer(GTK_BOX(page));
 		
-		g_snprintf(screen_label, 256, _("Screen %d"), i);
-		label = gtk_label_new(screen_label);
-		gtk_notebook_append_page(GTK_NOTEBOOK(bd->screens_notebook), page, label);
+		if(nscreens == 1) {
+			/* add the single backdrop settings page to the main notebook */
+			label = gtk_label_new(_("Backdrop"));
+			gtk_widget_show(label);
+			gtk_notebook_append_page(GTK_NOTEBOOK(bd->top_notebook), page, label);
+		} else {
+			/* but if we have more than one, add them as pages to another */
+			g_snprintf(screen_label, 256, _("Screen %d"), i);
+			label = gtk_label_new(screen_label);
+			gtk_notebook_append_page(GTK_NOTEBOOK(bd->screens_notebook), page, label);
+		}
 		
 		set_dnd_dest(bp);
 	}

@@ -428,7 +428,7 @@ static void
 list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 {
 	GtkWidget *chooser, *preview, *dialog;
-	GtkFileFilter *filter;
+	XfceFileFilter *filter;
 	
 	dialog = gtk_widget_get_toplevel(GTK_WIDGET(treeview));
 	
@@ -436,18 +436,18 @@ list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 			GTK_WINDOW(dialog), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
 			GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 	
-	filter = gtk_file_filter_new();
-	gtk_file_filter_set_name(filter, _("All Files"));
-	gtk_file_filter_add_pattern(filter, "*");
+	filter = xfce_file_filter_new();
+	xfce_file_filter_set_name(filter, _("All Files"));
+	xfce_file_filter_add_pattern(filter, "*");
 	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
-	filter = gtk_file_filter_new();
-	gtk_file_filter_set_name(filter, _("Image Files"));
-	gtk_file_filter_add_pattern(filter, "*.png");
-	gtk_file_filter_add_pattern(filter, "*.jpg");
-	gtk_file_filter_add_pattern(filter, "*.bmp");
-	gtk_file_filter_add_pattern(filter, "*.svg");
-	gtk_file_filter_add_pattern(filter, "*.xpm");
-	gtk_file_filter_add_pattern(filter, "*.gif");
+	filter = xfce_file_filter_new();
+	xfce_file_filter_set_name(filter, _("Image Files"));
+	xfce_file_filter_add_pattern(filter, "*.png");
+	xfce_file_filter_add_pattern(filter, "*.jpg");
+	xfce_file_filter_add_pattern(filter, "*.bmp");
+	xfce_file_filter_add_pattern(filter, "*.svg");
+	xfce_file_filter_add_pattern(filter, "*.xpm");
+	xfce_file_filter_add_pattern(filter, "*.gif");
 	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
 	
 	xfce_file_chooser_set_local_only(XFCE_FILE_CHOOSER(chooser), TRUE);
@@ -542,7 +542,7 @@ static void
 filename_browse_cb(GtkWidget *b, GtkWidget *file_entry)
 {
 	GtkWidget *chooser, *preview, *dialog;
-	GtkFileFilter *filter;
+	XfceFileFilter *filter;
 	
 	dialog = gtk_widget_get_toplevel(b);
 	
@@ -551,13 +551,13 @@ filename_browse_cb(GtkWidget *b, GtkWidget *file_entry)
 			GTK_WINDOW(dialog), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
 			GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 	
-	filter = gtk_file_filter_new();
-	gtk_file_filter_set_name(filter, _("All Files"));
-	gtk_file_filter_add_pattern(filter, "*");
+	filter = xfce_file_filter_new();
+	xfce_file_filter_set_name(filter, _("All Files"));
+	xfce_file_filter_add_pattern(filter, "*");
 	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
-	filter = gtk_file_filter_new();
-	gtk_file_filter_set_name(filter, _("List Files"));
-	gtk_file_filter_add_pattern(filter, "*.list");
+	filter = xfce_file_filter_new();
+	xfce_file_filter_set_name(filter, _("List Files"));
+	xfce_file_filter_add_pattern(filter, "*.list");
 	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
 	
 	xfce_file_chooser_set_local_only(XFCE_FILE_CHOOSER(chooser), TRUE);
