@@ -1,3 +1,49 @@
+2004-10-22 21:33  olivier
+
+	* po/xfdesktop.pot: Theme fixes update locale [fr] for desktop
+	  files
+
+2004-10-21 00:06  pollux
+
+	* Makefile.am, Makefile.in, ltmain.sh, menu.xml.et, po/et.gmo,
+	  po/et.po: update ET translations
+
+2004-10-17 22:29  pollux
+
+	* po/: es.gmo, es_MX.gmo, fi.gmo, fi.po, pt_PT.gmo: update FI
+	  translations
+
+2004-10-17 11:21  kelnos
+
+	* modules/menu/desktop-menu-dentry.c: check to make sure
+	  xfce_app_menu_item_new_from_desktop_entry() returns a valid
+	  pointer
+
+2004-10-17 11:04  kelnos
+
+	* modules/menu/: desktop-menu-dentry.c, desktop-menu-file.c: fix
+	  warnings.  damn, gcc 3.4 is picky... (though correct)
+
+2004-10-15 04:44  kelnos
+
+	* src/xfce-desktop.c: don't need that flag anymore...
+
+2004-10-15 04:42  kelnos
+
+	* src/: windowlist.c, xfce-backdrop.c, xfce-desktop.c: * fix some
+	  warnings * hopefully fix crash on exit (bug #344)
+
+2004-10-14 08:31  olivier
+
+	* ChangeLog, configure, configure.ac, ltmain.sh, po/ar.gmo,
+	  po/az.gmo, po/be.gmo, po/bg.gmo, po/ca.gmo, po/cs.gmo, po/de.gmo,
+	  po/et.gmo, po/eu.gmo, po/fi.gmo, po/fr.gmo, po/gu.gmo, po/he.gmo,
+	  po/hi.gmo, po/hu.gmo, po/it.gmo, po/ja.gmo, po/ko.gmo, po/lt.gmo,
+	  po/ms.gmo, po/nl.gmo, po/pa.gmo, po/pl.gmo, po/pt_BR.gmo,
+	  po/ru.gmo, po/sk.gmo, po/sv.gmo, po/ta.gmo, po/tr.gmo, po/uk.gmo,
+	  po/vi.gmo, po/xfdesktop.pot, po/zh_CN.gmo, po/zh_TW.gmo: Update
+	  version number to see if #344 was fixed since beta1
+
 2004-10-12 08:18  kelnos
 
 	* panel-plugin/desktop-menu-plugin.c: fix warnings.  silly jasper
