@@ -8,6 +8,7 @@ backdrops_DATA =							\
 	xfce4gradientcurve.png						\
 	xfce4logo.png							\
 	xfce-in-the-moon.png						\
-	xfce-turbulence.png
+	xfce-turbulence.png						\
+	xfce-stellar-tile.png
         
 EXTRA_DIST = $(backdrops_DATA)
