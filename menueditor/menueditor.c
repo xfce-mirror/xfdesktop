@@ -64,7 +64,6 @@ void open_menu_file(gchar *menu_file);
 void quit_cb(GtkWidget *widget, gpointer data);
 void not_yet_cb(GtkWidget *widget, gpointer data);
 gboolean confirm_quit_cb(GtkWidget *widget, gpointer data);
-void filesel_ok(GtkWidget *widget, GtkFileSelection *filesel_dialog);
 void menu_open_cb(GtkWidget *widget, gpointer data);
 void menu_open_default_cb(GtkWidget *widget, gpointer data);
 void menu_save_cb(GtkWidget *widget, gpointer data);
@@ -74,7 +73,6 @@ void treeview_cursor_changed_cb(GtkTreeView *treeview,gpointer user_data);
 void visible_column_toggled_cb(GtkCellRendererToggle *toggle,
 			       gchar *str_path,
 			       gpointer data);
-void filesel_saveas_ok(GtkWidget *widget, GtkFileSelection *filesel_dialog);
 void delete_entry_cb(GtkWidget *widget, gpointer data);
 
 /* Main window */
@@ -155,28 +153,44 @@ gboolean command_exists(const gchar *command)
 /****************************************************/
 void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command){
   GtkWidget *filesel_dialog;
+  gchar *filename = NULL;
 
-  filesel_dialog = gtk_file_selection_new(_("Select command"));
+  filesel_dialog = xfce_file_chooser_dialog_new (_("Select command"), GTK_WINDOW (menueditor_app.main_window),
+						 XFCE_FILE_CHOOSER_ACTION_OPEN,
+						 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+						 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 
-  if(gtk_dialog_run(GTK_DIALOG(filesel_dialog)) == GTK_RESPONSE_OK){
-    gtk_entry_set_text (entry_command,
-			gtk_file_selection_get_filename (GTK_FILE_SELECTION(filesel_dialog)));
+  filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
+
+  if(gtk_dialog_run(GTK_DIALOG(filesel_dialog)) == GTK_RESPONSE_ACCEPT){
+    gtk_entry_set_text (entry_command, filename);
   }
 
-  gtk_widget_destroy(GTK_WIDGET(filesel_dialog));
+  g_free(filename);
+  gtk_widget_hide(GTK_WIDGET(filesel_dialog));
 }
 
+/**********************************************/
+/* browse for a icon and set it in entry_icon */
+/**********************************************/
 void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon){
+  //TODO add preview and filter for icon
   GtkWidget *filesel_dialog;
+  gchar *filename = NULL;
 
-  filesel_dialog = preview_file_selection_new(_("Select icon"), TRUE);
+  filesel_dialog = xfce_file_chooser_dialog_new (_("Select icon"), GTK_WINDOW (menueditor_app.main_window),
+						 XFCE_FILE_CHOOSER_ACTION_OPEN,
+						 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+						 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 
-  if(gtk_dialog_run(GTK_DIALOG(filesel_dialog)) == GTK_RESPONSE_OK){
-    gtk_entry_set_text (entry_icon,
-			gtk_file_selection_get_filename (GTK_FILE_SELECTION(filesel_dialog)));
+  filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
+
+  if(gtk_dialog_run(GTK_DIALOG(filesel_dialog)) == GTK_RESPONSE_ACCEPT){
+    gtk_entry_set_text (entry_icon, filename);
   }
 
-  gtk_widget_destroy(GTK_WIDGET(filesel_dialog));
+  g_free(filename);
+  gtk_widget_hide(GTK_WIDGET(filesel_dialog));
 }
 
 
@@ -373,24 +387,6 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 
 }
 
-/* File Selection ok button callback */
-void filesel_ok(GtkWidget *widget, GtkFileSelection *filesel_dialog)
-{
-  gtk_widget_hide(GTK_WIDGET(filesel_dialog));
-
-  if(menueditor_app.xml_menu_file != NULL){
-    gtk_tree_store_clear(GTK_TREE_STORE(menueditor_app.treestore));
-    xmlFreeDoc(menueditor_app.xml_menu_file);
-    menueditor_app.xml_menu_file=NULL;
-  }
-
-#ifdef DEBUG
-  g_print("%s\n",gtk_file_selection_get_filename (filesel_dialog));
-#endif
-
-  open_menu_file((gchar*)gtk_file_selection_get_filename (filesel_dialog));
-}
-
 /*****************************/
 /* Open the menu file in use */
 /*****************************/
@@ -445,9 +441,9 @@ void menu_open_default_cb(GtkWidget *widget, gpointer data)
   g_free(window_title);
 }
 
-/********************************************/
-/* Browse for menu file to open and open it */
-/********************************************/
+/************************************/
+/* Browse for menu file and open it */
+/************************************/
 void menu_open_cb(GtkWidget *widget, gpointer data)
 {
   GtkWidget *filesel_dialog;
@@ -462,26 +458,35 @@ void menu_open_cb(GtkWidget *widget, gpointer data)
 				      _("Do you want to save before closing the file?"));
       
       if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES)
-	menu_save_cb(widget,NULL);
+	menu_save_cb(widget, NULL);
 
       gtk_widget_destroy(dialog);
     }
 
   }
 
+  filesel_dialog = xfce_file_chooser_dialog_new (_("Open menu file"), GTK_WINDOW (menueditor_app.main_window),
+						 XFCE_FILE_CHOOSER_ACTION_OPEN,
+						 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+						 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 
-  filesel_dialog = gtk_file_selection_new(_("Menu file selection"));
-  gtk_file_selection_set_filename (GTK_FILE_SELECTION(filesel_dialog), 
-				   "menu.xml");
+  if( gtk_dialog_run (GTK_DIALOG (filesel_dialog)) == GTK_RESPONSE_ACCEPT){
+    gchar *filename = NULL;
 
-  g_signal_connect (G_OBJECT (GTK_FILE_SELECTION (filesel_dialog)->ok_button),
-		    "clicked", G_CALLBACK (filesel_ok), (gpointer) filesel_dialog);
-  
-  g_signal_connect_swapped (G_OBJECT (GTK_FILE_SELECTION (filesel_dialog)->cancel_button),
-			    "clicked", G_CALLBACK (gtk_widget_destroy),
-			    G_OBJECT (filesel_dialog));
+    filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
 
-  gtk_widget_show (filesel_dialog);
+    if(menueditor_app.xml_menu_file != NULL){
+      gtk_tree_store_clear (GTK_TREE_STORE (menueditor_app.treestore));
+      xmlFreeDoc (menueditor_app.xml_menu_file);
+      menueditor_app.xml_menu_file = NULL;
+    }
+
+    open_menu_file (filename);
+    
+    g_free(filename);
+  }
+    
+  gtk_widget_hide (filesel_dialog);
 }
 
 void quit_cb(GtkWidget *widget, gpointer data)
@@ -528,54 +533,54 @@ void menu_save_cb(GtkWidget *widget, gpointer data)
   }
 }
 
-/* File Selection ok button callback */
-void filesel_saveas_ok(GtkWidget *widget, GtkFileSelection *filesel_dialog)
-{
-  if(strcmp(gtk_file_selection_get_filename(filesel_dialog), menueditor_app.menu_file_name) == 0){
-    g_stpcpy(menueditor_app.menu_file_name, gtk_file_selection_get_filename(filesel_dialog)); 
-
-    if(menufile_save()){
-      menueditor_app.menu_modified=FALSE;
-      gtk_widget_set_sensitive(menueditor_app.file_menu.save,FALSE);
-      gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,FALSE);
-    }
-  }else{
-    gchar *window_title;
-
-    xmlSaveFormatFile(gtk_file_selection_get_filename(filesel_dialog), menueditor_app.xml_menu_file, 1);
-
-    g_stpcpy(menueditor_app.menu_file_name, gtk_file_selection_get_filename(filesel_dialog)); 
-
-    menueditor_app.menu_modified=FALSE;
-    gtk_widget_set_sensitive(menueditor_app.file_menu.save,FALSE);
-    gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,FALSE);
-
-    /* Set window's title */
-    window_title = g_strdup_printf("Xfce4-MenuEditor - %s", menueditor_app.menu_file_name);
-    gtk_window_set_title(GTK_WINDOW(menueditor_app.main_window), window_title);
-    g_free(window_title);
-  }
-
-  gtk_widget_hide(GTK_WIDGET(filesel_dialog));
-}
-
 /* Ask the filename and save the menu into */
 void menu_saveas_cb(GtkWidget *widget, gpointer data)
 {
   GtkWidget *filesel_dialog;
 
-  filesel_dialog = gtk_file_selection_new(_("Save as..."));
-  gtk_file_selection_set_filename (GTK_FILE_SELECTION(filesel_dialog), 
-				   "menu.xml");
+  filesel_dialog = xfce_file_chooser_dialog_new (_("Save as..."), GTK_WINDOW (menueditor_app.main_window),
+						 XFCE_FILE_CHOOSER_ACTION_SAVE,
+						 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+						 GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT, NULL);
 
-  g_signal_connect (G_OBJECT (GTK_FILE_SELECTION (filesel_dialog)->ok_button),
-		    "clicked", G_CALLBACK (filesel_saveas_ok), (gpointer) filesel_dialog);
-  
-  g_signal_connect_swapped (G_OBJECT (GTK_FILE_SELECTION (filesel_dialog)->cancel_button),
-			    "clicked", G_CALLBACK (gtk_widget_destroy),
-			    G_OBJECT (filesel_dialog));
+  xfce_file_chooser_set_current_name (XFCE_FILE_CHOOSER (filesel_dialog), "menu.xml");
 
-  gtk_widget_show (filesel_dialog);
+  if( gtk_dialog_run (GTK_DIALOG (filesel_dialog)) == GTK_RESPONSE_ACCEPT){
+    gchar *filename = NULL;
+
+    filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
+
+    if(strcmp (filename, menueditor_app.menu_file_name) == 0){
+      g_stpcpy (menueditor_app.menu_file_name, filename); 
+
+      if(menufile_save()){
+	menueditor_app.menu_modified=FALSE;
+	gtk_widget_set_sensitive(menueditor_app.file_menu.save,FALSE);
+	gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,FALSE);
+      }
+    }else{
+      gchar *window_title;
+
+      xmlSaveFormatFile(filename, menueditor_app.xml_menu_file, 1);
+
+      g_stpcpy(menueditor_app.menu_file_name, filename); 
+
+      menueditor_app.menu_modified=FALSE;
+      gtk_widget_set_sensitive(menueditor_app.file_menu.save,FALSE);
+      gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,FALSE);
+
+      /* Set window's title */
+      window_title = g_strdup_printf("Xfce4-MenuEditor - %s", menueditor_app.menu_file_name);
+      gtk_window_set_title(GTK_WINDOW(menueditor_app.main_window), window_title);
+
+      g_free(window_title);
+    }
+    
+    g_free(filename);
+
+  }
+
+  gtk_widget_hide(filesel_dialog);
 }
 
 /* Close the menu file and prompt to save if it was modified */
@@ -950,21 +955,6 @@ void create_main_window()
 							 _("Close current menu"), NULL,
 							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(close_menu_cb), NULL);
   gtk_toolbar_append_space (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar));
-  tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_ZOOM_OUT,GTK_ICON_SIZE_LARGE_TOOLBAR);
-  menueditor_app.main_toolbar.collapse = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
-							 GTK_TOOLBAR_CHILD_BUTTON,
-							 NULL,
-							 "",
-							 _("Collapse the tree"), NULL,
-							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(collapse_tree_cb), NULL);
-  tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_ZOOM_IN,GTK_ICON_SIZE_LARGE_TOOLBAR);
-  menueditor_app.main_toolbar.expand = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
-							 GTK_TOOLBAR_CHILD_BUTTON,
-							 NULL,
-							 "",
-							 _("Expand the tree"), NULL,
-							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(expand_tree_cb), NULL);
-  gtk_toolbar_append_space (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar));
   tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_ADD,GTK_ICON_SIZE_LARGE_TOOLBAR);
   menueditor_app.main_toolbar.add = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
 							 GTK_TOOLBAR_CHILD_BUTTON,
@@ -993,6 +983,22 @@ void create_main_window()
 							 "",
 							 _("Move the current entry down"), NULL,
 							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(entry_down_cb), NULL);
+  gtk_toolbar_append_space (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar));
+  tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_ZOOM_OUT,GTK_ICON_SIZE_LARGE_TOOLBAR);
+  menueditor_app.main_toolbar.collapse = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
+							 GTK_TOOLBAR_CHILD_BUTTON,
+							 NULL,
+							 "",
+							 _("Collapse the tree"), NULL,
+							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(collapse_tree_cb), NULL);
+  tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_ZOOM_IN,GTK_ICON_SIZE_LARGE_TOOLBAR);
+  menueditor_app.main_toolbar.expand = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
+							 GTK_TOOLBAR_CHILD_BUTTON,
+							 NULL,
+							 "",
+							 _("Expand the tree"), NULL,
+							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(expand_tree_cb), NULL);
+
 
   /* Tree View inspirated from Gaim */
   menueditor_app.treestore = gtk_tree_store_new (5, GDK_TYPE_PIXBUF, G_TYPE_STRING,
