@@ -3,9 +3,9 @@ settings/backdrop-mgr.c
 settings/backdrop_settings.c
 src/backdrop.c
 src/main.c
-src/menu-file.c
-src/menu.c
-src/menuspec.c
+modules/menu/desktop-menu-file.c
+modules/menu/desktop-menu.c
+modules/menu/desktop-menuspec.c
 menueditor/about_dialog.c
 menueditor/add_dialog.c
 menueditor/add_menu_dialog.c
@@ -13,4 +13,5 @@ menueditor/dnd.c
 menueditor/edit_dialog.c
 menueditor/menueditor.c
 menueditor/move.c
-menueditor/new.c
+menueditor/new_dialog.c
+panel-plugin/desktop-menu-plugin.c

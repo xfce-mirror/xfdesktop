@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-21 20:56+0100\n"
+"POT-Creation-Date: 2004-03-31 14:42-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings/backdrop-mgr.c:163
+#: settings/backdrop-mgr.c:155
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -25,119 +25,136 @@ msgid ""
 "changes"
 msgstr ""
 
-#: settings/backdrop-mgr.c:510
-msgid "Select image file"
+#: settings/backdrop-mgr.c:439 settings/backdrop-mgr.c:487
+msgid "Select backdrop image file"
 msgstr ""
 
-#: settings/backdrop-mgr.c:626
+#: settings/backdrop-mgr.c:444 settings/backdrop-mgr.c:587
+#: settings/backdrop_settings.c:608
+msgid "All Files"
+msgstr ""
+
+#: settings/backdrop-mgr.c:448 settings/backdrop_settings.c:612
+msgid "Image Files"
+msgstr ""
+
+#: settings/backdrop-mgr.c:582 settings/backdrop-mgr.c:616
 msgid "Choose backdrop list filename"
 msgstr ""
 
-#: settings/backdrop-mgr.c:701
-msgid "New.list"
+#: settings/backdrop-mgr.c:591
+msgid "List Files"
 msgstr ""
 
-#: settings/backdrop-mgr.c:705
+#: settings/backdrop-mgr.c:678
 msgid "Backdrop List"
 msgstr ""
 
-#: settings/backdrop-mgr.c:741
+#: settings/backdrop-mgr.c:695
 msgid "Image files"
 msgstr ""
 
-#: settings/backdrop-mgr.c:756
+#: settings/backdrop-mgr.c:706
+msgid "New.list"
+msgstr ""
+
+#: settings/backdrop-mgr.c:712
 msgid "List file"
 msgstr ""
 
-#: settings/backdrop-mgr.c:775
+#: settings/backdrop-mgr.c:732
 msgid "Create backdrop list"
 msgstr ""
 
-#: settings/backdrop-mgr.c:782
+#: settings/backdrop-mgr.c:751
 msgid "Edit backdrop list"
 msgstr ""
 
-#: settings/backdrop_settings.c:144
+#: settings/backdrop_settings.c:159
 msgid "Desktop Backdrop"
 msgstr ""
 
-#: settings/backdrop_settings.c:370
+#: settings/backdrop_settings.c:320
 msgid "Select backdrop color"
 msgstr ""
 
-#: settings/backdrop_settings.c:423
+#: settings/backdrop_settings.c:389
 msgid "Backdrop color:"
 msgstr ""
 
-#: settings/backdrop_settings.c:457
+#: settings/backdrop_settings.c:423
 msgid "Use color only:"
 msgstr ""
 
-#: settings/backdrop_settings.c:586
+#: settings/backdrop_settings.c:552
 msgid "File:"
 msgstr ""
 
-#: settings/backdrop_settings.c:648
+#: settings/backdrop_settings.c:603 settings/backdrop_settings.c:660
 msgid "Select backdrop image or list file"
 msgstr ""
 
-#: settings/backdrop_settings.c:730
+#: settings/backdrop_settings.c:621
+msgid "List Files (*.list)"
+msgstr ""
+
+#: settings/backdrop_settings.c:742
 msgid "_Browse..."
 msgstr ""
 
-#: settings/backdrop_settings.c:734
+#: settings/backdrop_settings.c:746
 msgid "New list"
 msgstr ""
 
-#: settings/backdrop_settings.c:738
+#: settings/backdrop_settings.c:750
 msgid "Edit list"
 msgstr ""
 
-#: settings/backdrop_settings.c:778
+#: settings/backdrop_settings.c:790
 msgid "Style:"
 msgstr ""
 
-#: settings/backdrop_settings.c:786
+#: settings/backdrop_settings.c:798
 msgid "_Tiled"
 msgstr ""
 
-#: settings/backdrop_settings.c:793
+#: settings/backdrop_settings.c:805
 msgid "_Centered"
 msgstr ""
 
-#: settings/backdrop_settings.c:800
+#: settings/backdrop_settings.c:812
 msgid "_Scaled"
 msgstr ""
 
-#: settings/backdrop_settings.c:807
+#: settings/backdrop_settings.c:819
 msgid "_Stretched"
 msgstr ""
 
-#: settings/backdrop_settings.c:814
+#: settings/backdrop_settings.c:826
 msgid "_Auto"
 msgstr ""
 
 #. the dialog
-#: settings/backdrop_settings.c:855
+#: settings/backdrop_settings.c:867
 msgid "Backdrop"
 msgstr ""
 
 #. header
-#: settings/backdrop_settings.c:875
+#: settings/backdrop_settings.c:882
 msgid "Backdrop Settings"
 msgstr ""
 
 #. color
-#: settings/backdrop_settings.c:881
+#: settings/backdrop_settings.c:888
 msgid "Color"
 msgstr ""
 
 #. image vbox
-#: settings/backdrop_settings.c:893
+#: settings/backdrop_settings.c:900
 msgid "Image"
 msgstr ""
 
-#: settings/backdrop_settings.c:919
+#: settings/backdrop_settings.c:926
 msgid "Don't set backdrop"
 msgstr ""
 
@@ -148,32 +165,20 @@ msgid ""
 "%s\n"
 msgstr ""
 
-#: src/main.c:265
+#: src/main.c:261
 msgid "Desktop"
 msgstr ""
 
-#: src/menu-file.c:95
-msgid "No Name"
-msgstr ""
-
-#: src/menu.c:673
-msgid "Add workspace"
-msgstr ""
-
-#: src/menu.c:680
-msgid "Delete workspace"
-msgstr ""
-
-#: src/menuspec.c:61
+#: modules/menu/desktop-menuspec.c:61
 msgid "/Other"
 msgstr ""
 
-#: src/menuspec.c:270
+#: modules/menu/desktop-menuspec.c:279
 #, c-format
 msgid "%s: missing or unknown attribute for 'related' element\n"
 msgstr ""
 
-#: src/menuspec.c:275
+#: modules/menu/desktop-menuspec.c:284
 #, c-format
 msgid "%s: unknown xml element %s\n"
 msgstr ""
@@ -191,142 +196,142 @@ msgstr ""
 msgid "Contributor"
 msgstr ""
 
-#: menueditor/add_dialog.c:127 menueditor/add_dialog.c:139
+#: menueditor/add_dialog.c:127 menueditor/add_dialog.c:142
 msgid "Add menu entry"
 msgstr ""
 
 #. Type
-#: menueditor/add_dialog.c:145 menueditor/add_menu_dialog.c:90
-#: menueditor/edit_dialog.c:138
+#: menueditor/add_dialog.c:148 menueditor/add_menu_dialog.c:93
+#: menueditor/edit_dialog.c:140
 msgid "Type :"
 msgstr ""
 
-#: menueditor/add_dialog.c:148
+#: menueditor/add_dialog.c:151
 msgid "Launcher"
 msgstr ""
 
-#: menueditor/add_dialog.c:153
+#: menueditor/add_dialog.c:156
 msgid "Submenu"
 msgstr ""
 
-#: menueditor/add_dialog.c:158
+#: menueditor/add_dialog.c:161
 msgid "Separator"
 msgstr ""
 
-#: menueditor/add_dialog.c:163
+#: menueditor/add_dialog.c:166
 msgid "Title"
 msgstr ""
 
-#: menueditor/add_dialog.c:168
+#: menueditor/add_dialog.c:171
 msgid "Quit"
 msgstr ""
 
 #. Name
-#: menueditor/add_dialog.c:183 menueditor/edit_dialog.c:249
-#: menueditor/edit_dialog.c:299 menueditor/edit_dialog.c:337
+#: menueditor/add_dialog.c:186 menueditor/edit_dialog.c:251
+#: menueditor/edit_dialog.c:301 menueditor/edit_dialog.c:339
 msgid "Name :"
 msgstr ""
 
-#: menueditor/add_dialog.c:193 menueditor/edit_dialog.c:250
+#: menueditor/add_dialog.c:196 menueditor/edit_dialog.c:252
 msgid "Command :"
 msgstr ""
 
-#: menueditor/add_dialog.c:209 menueditor/edit_dialog.c:241
-#: menueditor/edit_dialog.c:304 menueditor/edit_dialog.c:342
-#: menueditor/edit_dialog.c:379
+#: menueditor/add_dialog.c:212 menueditor/edit_dialog.c:243
+#: menueditor/edit_dialog.c:306 menueditor/edit_dialog.c:344
+#: menueditor/edit_dialog.c:381
 msgid "Icon :"
 msgstr ""
 
 #. Start Notify check button
-#: menueditor/add_dialog.c:225 menueditor/edit_dialog.c:261
+#: menueditor/add_dialog.c:228 menueditor/edit_dialog.c:263
 msgid "Start notify"
 msgstr ""
 
 #. Run in terminal check button
-#: menueditor/add_dialog.c:229 menueditor/edit_dialog.c:262
+#: menueditor/add_dialog.c:232 menueditor/edit_dialog.c:264
 msgid "Run in terminal"
 msgstr ""
 
-#: menueditor/add_dialog.c:278
+#: menueditor/add_dialog.c:281
 msgid ""
 "All the field are not filled !!!\n"
 "Adding nothing"
 msgstr ""
 
-#: menueditor/add_dialog.c:356 menueditor/add_dialog.c:469
-#: menueditor/add_dialog.c:539
+#: menueditor/add_dialog.c:359 menueditor/add_dialog.c:472
+#: menueditor/add_dialog.c:542
 msgid ""
 "Name field is not filled !!!\n"
 "Adding nothing"
 msgstr ""
 
-#: menueditor/add_dialog.c:453 menueditor/dnd.c:149
+#: menueditor/add_dialog.c:456 menueditor/dnd.c:149
 #: menueditor/menueditor.c:231
 msgid "--- separator ---"
 msgstr ""
 
-#: menueditor/add_dialog.c:595
+#: menueditor/add_dialog.c:598
 msgid "quit"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:73 menueditor/add_menu_dialog.c:81
+#: menueditor/add_menu_dialog.c:73 menueditor/add_menu_dialog.c:84
 msgid "Add an external menu"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:95 menueditor/edit_dialog.c:141
+#: menueditor/add_menu_dialog.c:98 menueditor/edit_dialog.c:143
 msgid "File"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:100 menueditor/edit_dialog.c:146
+#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:148
 msgid "System"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:115 menueditor/edit_dialog.c:161
+#: menueditor/add_menu_dialog.c:118 menueditor/edit_dialog.c:163
 msgid "Source :"
 msgstr ""
 
 #. Style
-#: menueditor/add_menu_dialog.c:128 menueditor/edit_dialog.c:174
+#: menueditor/add_menu_dialog.c:131 menueditor/edit_dialog.c:176
 msgid "Style :"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:131 menueditor/edit_dialog.c:177
+#: menueditor/add_menu_dialog.c:134 menueditor/edit_dialog.c:179
 msgid "Simple"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:134 menueditor/edit_dialog.c:180
+#: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:182
 msgid "Multilevel"
 msgstr ""
 
 #. Unique
-#: menueditor/add_menu_dialog.c:147 menueditor/edit_dialog.c:193
+#: menueditor/add_menu_dialog.c:150 menueditor/edit_dialog.c:195
 msgid "Unique"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:200
+#: menueditor/add_menu_dialog.c:203
 msgid ""
 "Source field is not filled !!!\n"
 "Adding nothing"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:244 menueditor/add_menu_dialog.c:300
-#: menueditor/dnd.c:151 menueditor/edit_dialog.c:593
-#: menueditor/edit_dialog.c:615 menueditor/menueditor.c:302
+#: menueditor/add_menu_dialog.c:247 menueditor/add_menu_dialog.c:303
+#: menueditor/dnd.c:151 menueditor/edit_dialog.c:595
+#: menueditor/edit_dialog.c:617 menueditor/menueditor.c:302
 msgid "--- include ---"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:301 menueditor/dnd.c:156
-#: menueditor/edit_dialog.c:617 menueditor/menueditor.c:305
+#: menueditor/add_menu_dialog.c:304 menueditor/dnd.c:156
+#: menueditor/edit_dialog.c:619 menueditor/menueditor.c:305
 msgid "system"
 msgstr ""
 
 #. Create dialog for editing
-#: menueditor/edit_dialog.c:94 menueditor/edit_dialog.c:105
+#: menueditor/edit_dialog.c:94 menueditor/edit_dialog.c:107
 msgid "Edit menu entry"
 msgstr ""
 
 #. Name
-#: menueditor/edit_dialog.c:386 menueditor/new.c:102
+#: menueditor/edit_dialog.c:388 menueditor/new_dialog.c:102
 msgid "Title :"
 msgstr ""
 
@@ -343,7 +348,8 @@ msgid "Not yet implemented !!!"
 msgstr ""
 
 #: menueditor/menueditor.c:186 menueditor/menueditor.c:409
-#: menueditor/menueditor.c:444 menueditor/menueditor.c:567 menueditor/new.c:74
+#: menueditor/menueditor.c:444 menueditor/menueditor.c:567
+#: menueditor/new_dialog.c:74
 msgid "Do you want to save before closing the file ?"
 msgstr ""
 
@@ -463,20 +469,32 @@ msgstr ""
 msgid "Do you want to move the item into the submenu ?"
 msgstr ""
 
-#: menueditor/new.c:58
+#: menueditor/new_dialog.c:58
 msgid "Are you sure to close the current menu ?"
 msgstr ""
 
 #. get the filename and name for the new menu
-#: menueditor/new.c:84 menueditor/new.c:96
+#: menueditor/new_dialog.c:84 menueditor/new_dialog.c:96
 msgid "New menu"
 msgstr ""
 
 #. Filename
-#: menueditor/new.c:109
+#: menueditor/new_dialog.c:109
 msgid "Filename :"
 msgstr ""
 
-#: menueditor/new.c:142
+#: menueditor/new_dialog.c:142
 msgid "All the field are not filled !!!"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:297
+msgid "Show _icon"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:298
+msgid "Show _text"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:337
+msgid "Desktop Menu"
 msgstr ""

@@ -12,6 +12,8 @@ SUBDIRS = \
 	$(PANEL_PLUGIN_DIR) \
 	$(MENUEDITOR_DIR)
 
+DIST_SUBDIRS = $(SUBDIRS) panel-plugin menueditor
+
 confdir = $(sysconfdir)/xfce4
 
 conf_DATA = 								\

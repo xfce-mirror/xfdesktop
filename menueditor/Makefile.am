@@ -43,3 +43,5 @@ xfce4_menueditor_LDADD =							\
 
 appsdir = $(datadir)/applications
 apps_DATA = xfce-menueditor.desktop
+
+EXTRA_DIST = xfce-menueditor.desktop

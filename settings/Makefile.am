@@ -3,7 +3,8 @@
 
 EXTRA_DIST =								\
 	menu_settings.c							\
-	menu_settings.h
+	menu_settings.h							\
+	xfce-backdrop-settings.desktop
 
 #
 # backdrop settings

@@ -106,6 +106,7 @@ CYGPATH_W = @CYGPATH_W@
 DATADIRNAME = @DATADIRNAME@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DESKTOP_MENU_DIR = @DESKTOP_MENU_DIR@
 ECHO = @ECHO@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
@@ -154,6 +155,7 @@ MAINT = @MAINT@
 MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
 MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
 MAKEINFO = @MAKEINFO@
+MENUEDITOR_DIR = @MENUEDITOR_DIR@
 MKINSTALLDIRS = @MKINSTALLDIRS@
 MSGFMT = @MSGFMT@
 OBJEXT = @OBJEXT@
@@ -163,6 +165,7 @@ PACKAGE_NAME = @PACKAGE_NAME@
 PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_VERSION = @PACKAGE_VERSION@
+PANEL_PLUGIN_DIR = @PANEL_PLUGIN_DIR@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PKG_CONFIG = @PKG_CONFIG@
 POFILES = @POFILES@
@@ -234,9 +237,14 @@ plugindir = $(libdir)/xfce4/modules
 plugin_LTLIBRARIES = libxfce4_desktop_menu.la
 libxfce4_desktop_menu_la_SOURCES = \
 	desktop-menu.c \
+	desktop-menu.h \
 	desktop-menu-file.c \
+	desktop-menu-file.h \
 	desktop-menu-dentry.c \
-	desktop-menuspec.c
+	desktop-menu-dentry.h \
+	desktop-menuspec.c \
+	desktop-menuspec.h \
+	desktop-menu-private.h
 
 libxfce4_desktop_menu_la_CFLAGS = \
 	@GMODULE_CFLAGS@ \
@@ -254,6 +262,7 @@ libxfce4_desktop_menu_la_LIBADD = \
 
 xfceconfdir = $(sysconfdir)/xfce4
 xfceconf_DATA = xfce-registered-categories.xml
+EXTRA_DIST = xfce-registered-categories.xml
 all: all-am
 
 .SUFFIXES:

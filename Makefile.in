@@ -65,7 +65,6 @@ confDATA_INSTALL = $(INSTALL_DATA)
 DATA = $(conf_DATA)
 ETAGS = etags
 CTAGS = ctags
-DIST_SUBDIRS = $(SUBDIRS)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -240,6 +239,7 @@ SUBDIRS = \
 	$(PANEL_PLUGIN_DIR) \
 	$(MENUEDITOR_DIR)
 
+DIST_SUBDIRS = $(SUBDIRS) panel-plugin menueditor
 confdir = $(sysconfdir)/xfce4
 conf_DATA = \
 	menu.xml 							\
@@ -489,7 +489,7 @@ distdir: $(DISTFILES)
 	    || exit 1; \
 	  fi; \
 	done
-	list='$(SUBDIRS)'; for subdir in $$list; do \
+	list='$(DIST_SUBDIRS)'; for subdir in $$list; do \
 	  if test "$$subdir" = .; then :; else \
 	    test -d "$(distdir)/$$subdir" \
 	    || mkdir "$(distdir)/$$subdir" \
