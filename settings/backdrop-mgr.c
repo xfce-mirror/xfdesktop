@@ -257,42 +257,145 @@ static void list_dialog_response(GtkWidget *w, int response, ListDialog *ld)
 }
 
 /* treeview */
+/* DND */
+
+/*** the next three routines are taken straight from gnome-libs ***/
+/**
+ * gnome_uri_list_free_strings:
+ * @list: A GList returned by gnome_uri_list_extract_uris() or gnome_uri_list_extract_filenames()
+ *
+ * Releases all of the resources allocated by @list.
+ */
+void
+gnome_uri_list_free_strings (GList * list)
+{
+    g_list_foreach (list, (GFunc) g_free, NULL);
+    g_list_free (list);
+}
+
+
+/**
+ * gnome_uri_list_extract_uris:
+ * @uri_list: an uri-list in the standard format.
+ *
+ * Returns a GList containing strings allocated with g_malloc
+ * that have been splitted from @uri-list.
+ */
+GList *
+gnome_uri_list_extract_uris (const gchar * uri_list)
+{
+    const gchar *p, *q;
+    gchar *retval;
+    GList *result = NULL;
+
+    g_return_val_if_fail (uri_list != NULL, NULL);
+
+    p = uri_list;
+
+    /* We don't actually try to validate the URI according to RFC
+     * 2396, or even check for allowed characters - we just ignore
+     * comments and trim whitespace off the ends.  We also
+     * allow LF delimination as well as the specified CRLF.
+     */
+    while (p)
+    {
+	if (*p != '#')
+	{
+	    while (isspace ((int) (*p)))
+		p++;
+
+	    q = p;
+	    while (*q && (*q != '\n') && (*q != '\r'))
+		q++;
+
+	    if (q > p)
+	    {
+		q--;
+		while (q > p && isspace ((int) (*q)))
+		    q--;
+
+		retval = (char *) g_malloc (q - p + 2);
+		strncpy (retval, p, q - p + 1);
+		retval[q - p + 1] = '\0';
+
+		result = g_list_prepend (result, retval);
+	    }
+	}
+	p = strchr (p, '\n');
+	if (p)
+	    p++;
+    }
+
+    return g_list_reverse (result);
+}
+
+
+/**
+ * gnome_uri_list_extract_filenames:
+ * @uri_list: an uri-list in the standard format
+ *
+ * Returns a GList containing strings allocated with g_malloc
+ * that contain the filenames in the uri-list.
+ *
+ * Note that unlike gnome_uri_list_extract_uris() function, this
+ * will discard any non-file uri from the result value.
+ */
+GList *
+gnome_uri_list_extract_filenames (const gchar * uri_list)
+{
+    GList *tmp_list, *node, *result;
+
+    g_return_val_if_fail (uri_list != NULL, NULL);
+
+    result = gnome_uri_list_extract_uris (uri_list);
+
+    tmp_list = result;
+    while (tmp_list)
+    {
+	gchar *s = (char *) tmp_list->data;
+
+	node = tmp_list;
+	tmp_list = tmp_list->next;
+
+	if (!strncmp (s, "file:", 5))
+	{
+	    /* added by Jasper Huijsmans
+	       remove leading multiple slashes */
+	    if (!strncmp (s + 5, "///", 3))
+		node->data = g_strdup (s + 7);
+	    else
+		node->data = g_strdup (s + 5);
+	}
+	else
+	{
+	    node->data = g_strdup (s);
+	}
+	g_free (s);
+    }
+    return result;
+}
+
+/* data dropped */
 static void
 on_drag_data_received(GtkWidget * w, GdkDragContext * context,
                       int x, int y, GtkSelectionData * data,
                       guint info, guint time, ListDialog * ld)
 {
-    char buf[1024];
-    char *file = NULL;
-    char *end;
+    GList *flist, *li;
+    char *file;
 
-    /* copy data to buffer */
-    strncpy(buf, (char *)data->data, 1023);
-    buf[1023] = '\0';
+    flist = gnome_uri_list_extract_filenames ((char *) data->data);
 
-    if((end = strchr(buf, '\n')))
-        *end = '\0';
-
-    if((end = strchr(buf, '\r')))
-        *end = '\0';
-    
-    if(buf[0])
+    for (li = flist; li; li = li->next)
     {
-        file = buf;
-
-        if(strncmp("file:", file, 5) == 0)
-        {
-            file += 5;
-
-            if(strncmp("///", file, 3) == 0)
-                file += 2;
-        }
-
+	file = li->data;
 	add_file(file, ld);
     }
 
-    gtk_drag_finish(context, (file != NULL),
+    gtk_drag_finish(context, FALSE,
                     (context->action == GDK_ACTION_MOVE), time);
+    
+    gnome_uri_list_free_strings (flist);
 }
 
 /* Don't use 'text/plain' as target.
@@ -300,13 +403,13 @@ on_drag_data_received(GtkWidget * w, GdkDragContext * context,
  */
 enum
 {
+  TARGET_URL,
   TARGET_STRING,
-  TARGET_URL
 };
 
 static GtkTargetEntry target_table[] = {
-    {"STRING", 0, TARGET_STRING},
     {"text/uri-list", 0, TARGET_URL},
+    {"STRING", 0, TARGET_STRING},
 };
 
 static void add_tree_view(GtkWidget *vbox, const char *path, ListDialog *ld)
