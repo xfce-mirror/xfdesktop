@@ -321,6 +321,9 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
     if(prop_icon){
       XfceIconTheme *icontheme = xfce_icon_theme_get_for_screen (NULL);
       icon = xfce_icon_theme_load (icontheme, prop_icon, ICON_SIZE);
+
+      if (!icon)
+	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
     } else
       icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
