@@ -146,23 +146,25 @@ dmp_new()
 	DMPlugin *dmp = g_new0(DMPlugin, 1);
 
 	dmp->evtbox = gtk_event_box_new();
-	gtk_container_set_border_width(GTK_CONTAINER(dmp->evtbox), 3);
+	gtk_container_set_border_width(GTK_CONTAINER(dmp->evtbox), 0);
 	gtk_widget_show(dmp->evtbox);
 	
 	dmp->button = gtk_button_new();
 	gtk_button_set_relief(GTK_BUTTON(dmp->button), GTK_RELIEF_NONE);
+	gtk_container_set_border_width(GTK_CONTAINER(dmp->button), 0);
 	gtk_widget_show(dmp->button);
 	gtk_container_add(GTK_CONTAINER(dmp->evtbox), dmp->button);
 	
-	hbox = gtk_hbox_new(FALSE, 3);
+	hbox = gtk_hbox_new(FALSE, 0);
+	gtk_container_set_border_width(GTK_CONTAINER(hbox), 0);
 	gtk_widget_show(hbox);
 	gtk_container_add(GTK_CONTAINER(dmp->button), hbox);
 	
 	dmp->image = gtk_image_new();
-	gtk_box_pack_start(GTK_BOX(hbox), dmp->image, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(hbox), dmp->image, FALSE, FALSE, 0);
 	
 	dmp->label = gtk_label_new("Xfce4");
-	gtk_box_pack_start(GTK_BOX(hbox), dmp->label, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(hbox), dmp->label, FALSE, FALSE, 0);
 	
 	dmp->desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
 	xfce_desktop_menu_start_autoregen(dmp->desktop_menu, 10);
