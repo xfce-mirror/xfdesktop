@@ -37,10 +37,8 @@ struct _XfceDesktopMenu {
 	GHashTable *menu_branches;  /* hash of GtkMenu children */
 	
 	/* stuff related to checking if we need to regenerate the menu */
-	GList *menufiles_watch;
-	time_t *menufile_mtimes;
+	GHashTable *menufile_mtimes;
 	GHashTable *dentrydir_mtimes;
-	time_t *legacydir_mtimes;
 	
 	/* tells the system menu generator about its root menu */
 	gchar *dentry_basepath;

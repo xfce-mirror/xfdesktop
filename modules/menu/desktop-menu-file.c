@@ -470,20 +470,14 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			j = _find_attribute(attribute_names, "src");
 			if(j != -1) {
 				if(*attribute_values[j] == '/') {
-					if(desktop_menu_file_parse(state->desktop_menu,
+					desktop_menu_file_parse(state->desktop_menu,
 							attribute_values[j], state->cur_branch,
-							state->cur_path, FALSE))
-					{
-						desktop_menu_cache_add_menufile(attribute_values[j]);
-					}
+							state->cur_path, FALSE, FALSE);
 				} else {
 					gchar *menuincfile = xfce_get_userfile(attribute_values[j],
 							NULL);
-					if(desktop_menu_file_parse(state->desktop_menu, menuincfile,
-							state->cur_branch, state->cur_path, FALSE))
-					{
-						desktop_menu_cache_add_menufile(menuincfile);
-					}
+					desktop_menu_file_parse(state->desktop_menu, menuincfile,
+							state->cur_branch, state->cur_path, FALSE, FALSE);
 					g_free(menuincfile);
 				}
 			}
@@ -556,7 +550,8 @@ menu_file_xml_end(GMarkupParseContext *context, const gchar *element_name,
 
 gboolean
 desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
-		GtkWidget *menu, const gchar *cur_path, gboolean is_root)
+		GtkWidget *menu, const gchar *cur_path, gboolean is_root,
+		gboolean from_cache)
 {
 	gchar *other_filename = NULL;
 	gchar *file_contents = NULL;
@@ -591,7 +586,7 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 		g_warning("XfceDesktopMenu: unable to find a usable menu file\n");
 		goto cleanup;
 	}
-
+	
 	fd = open(filename, O_RDONLY, 0);
 	if(fd < 0)
 		goto cleanup;
@@ -612,22 +607,16 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 	}
 #endif
 	
-	if(is_root) {
-		if(desktop_menu->menufiles_watch) {
-			g_list_free(desktop_menu->menufiles_watch);
-			desktop_menu->menufiles_watch = NULL;
-		}
+	if(is_root && !from_cache) {
 		if(desktop_menu->menufile_mtimes) {
-			g_free(desktop_menu->menufile_mtimes);
+			g_hash_table_destroy(desktop_menu->menufile_mtimes);
 			desktop_menu->menufile_mtimes = NULL;
 		}
+		desktop_menu->menufile_mtimes = g_hash_table_new_full(g_str_hash,
+				g_str_equal, (GDestroyNotify)g_free, NULL);
 		if(desktop_menu->dentrydir_mtimes) {
-			g_free(desktop_menu->dentrydir_mtimes);
+			g_hash_table_destroy(desktop_menu->dentrydir_mtimes);
 			desktop_menu->dentrydir_mtimes = NULL;
-		}
-		if(desktop_menu->legacydir_mtimes) {
-			g_free(desktop_menu->legacydir_mtimes);
-			desktop_menu->legacydir_mtimes = NULL;
 		}
 		desktop_menu->using_system_menu = FALSE;
 	}
@@ -659,16 +648,10 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
     if(g_markup_parse_context_end_parse(gpcontext, NULL))
 		ret = TRUE;
 	
-	if(ret) {
-		desktop_menu->menufiles_watch = g_list_prepend(desktop_menu->menufiles_watch,
-				g_strdup(filename));
-		if(is_root) {
-			if(desktop_menu->menufile_mtimes)
-				g_free(desktop_menu->menufile_mtimes);
-			desktop_menu->menufile_mtimes = g_new0(time_t,
-					g_list_length(desktop_menu->menufiles_watch));
-			desktop_menu_file_need_update(desktop_menu);
-		}
+	if(ret && !from_cache && !stat(filename, &st)) {
+		g_hash_table_insert(desktop_menu->menufile_mtimes,
+				g_strdup(filename), GINT_TO_POINTER(st.st_mtime));
+		desktop_menu_cache_add_menufile(filename);
 	}
 	
 	cleanup:
@@ -702,30 +685,36 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 	return ret;
 }
 
+static void
+file_need_update_check_ht(gpointer key, gpointer value, gpointer user_data)
+{
+	XfceDesktopMenu *desktop_menu = user_data;
+	struct stat st;
+	
+	if(!stat((const char *)key, &st)) {
+		if(st.st_mtime > GPOINTER_TO_UINT(value)) {
+			g_hash_table_replace(desktop_menu->menufile_mtimes,
+					g_strdup((gchar *)key), GUINT_TO_POINTER(st.st_mtime));
+			desktop_menu->modified = TRUE;
+		}
+	}
+}
+
 gboolean
 desktop_menu_file_need_update(XfceDesktopMenu *desktop_menu)
 {
-	GList *l;
-	struct stat st;
-	char *filename;
-	gboolean modified = FALSE;
-	gint i;
-	
 	TRACE("dummy");
 	
 	g_return_val_if_fail(desktop_menu != NULL, FALSE);
 	
 	if(!desktop_menu->menu)
 		return TRUE;
-
-	for(i=0,l=desktop_menu->menufiles_watch; l; l=l->next,i++) {
-		filename = (char *)l->data;
-		
-		if(!stat(filename, &st) && st.st_mtime > desktop_menu->menufile_mtimes[i]) {
-			desktop_menu->menufile_mtimes[i] = st.st_mtime;
-			modified = TRUE;
-		}
-	}
 	
-	return modified;
+	desktop_menu->modified = FALSE;
+	g_hash_table_foreach(desktop_menu->menufile_mtimes,
+			file_need_update_check_ht, desktop_menu);
+	
+	TRACE("modified=%s", desktop_menu->modified?"TRUE":"FALSE");
+	
+	return desktop_menu->modified;
 }

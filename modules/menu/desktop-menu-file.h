@@ -31,6 +31,6 @@ gchar *desktop_menu_file_get_menufile();
 gboolean desktop_menu_file_need_update(XfceDesktopMenu *desktop_menu);
 gboolean desktop_menu_file_parse(XfceDesktopMenu *desktop_menu,
 		const gchar *filename, GtkWidget *menu, const gchar *path,
-		gboolean is_root);
+		gboolean is_root, gboolean from_cache);
 
 #endif

@@ -45,7 +45,7 @@
 
 #include "desktop-menu-cache.h"
 
-#define LOC_CACHE_FILE  "xfdesktop/menu-cache-locations.rc"
+#define CACHE_CONF_FILE "xfdesktop/menu-cache.rc"
 #define MENU_CACHE_FILE "xfdesktop/menu-cache.xml"
 
 typedef struct
@@ -69,6 +69,7 @@ static GNode *menu_tree = NULL;
 static GHashTable *menu_hash = NULL;
 static GList *menu_files = NULL;
 static GList *dentry_dirs = NULL;
+gboolean using_system_menu = TRUE;
 
 static void
 desktop_menu_cache_entry_destroy(DesktopMenuCacheEntry *entry)
@@ -173,13 +174,17 @@ desktop_menu_cache_init(GtkWidget *root_menu)
 }
 
 gchar *
-desktop_menu_cache_is_valid()
+desktop_menu_cache_is_valid(GHashTable **menufile_mtimes,
+		GHashTable **dentrydir_mtimes, gboolean *using_system_menu)
 {
 	gchar *cache_file = NULL, buf[128];
 	XfceRc *rcfile;
 	gint i, mtime;
 	const gchar *location;
 	struct stat st;
+	
+	g_return_val_if_fail(menufile_mtimes != NULL && dentrydir_mtimes != NULL
+			&& using_system_menu != NULL, NULL);
 	
 	cache_file = xfce_resource_save_location(XFCE_RESOURCE_CACHE,
 			MENU_CACHE_FILE, FALSE);
@@ -190,12 +195,20 @@ desktop_menu_cache_is_valid()
 		return NULL;
 	}
 	
-	rcfile = xfce_rc_config_open(XFCE_RESOURCE_CACHE, LOC_CACHE_FILE, TRUE);
+	rcfile = xfce_rc_config_open(XFCE_RESOURCE_CACHE, CACHE_CONF_FILE, TRUE);
 	if(!rcfile)
 		return NULL;
 	
-	if(xfce_rc_has_group(rcfile, "locations")) {
-		xfce_rc_set_group(rcfile, "locations");
+	if(xfce_rc_has_group(rcfile, "settings")) {
+		xfce_rc_set_group(rcfile, "settings");
+		
+		*using_system_menu = xfce_rc_read_bool_entry(rcfile, "using_system_menu", FALSE);
+	}
+	
+	*menufile_mtimes = g_hash_table_new_full(g_str_hash, g_str_equal,
+				(GDestroyNotify)g_free, NULL);
+	if(xfce_rc_has_group(rcfile, "files")) {
+		xfce_rc_set_group(rcfile, "files");
 		
 		for(i = 0; TRUE; i++) {
 			g_snprintf(buf, 128, "location%d", i);
@@ -210,13 +223,52 @@ desktop_menu_cache_is_valid()
 			if(!stat(location, &st)) {
 				if(st.st_mtime > mtime) {
 					xfce_rc_close(rcfile);
+					g_hash_table_destroy(*menufile_mtimes);
+					*menufile_mtimes = NULL;
+					TRACE("exiting - failed");
 					return NULL;
+				} else {
+					g_hash_table_insert(*menufile_mtimes, g_strdup(location),
+							GINT_TO_POINTER(st.st_mtime));
 				}
 			}
 		}
 	}
-	xfce_rc_close(rcfile);
+	
+	*dentrydir_mtimes = g_hash_table_new_full(g_str_hash, g_str_equal,
+				(GDestroyNotify)g_free, NULL);
+	if(xfce_rc_has_group(rcfile, "directories")) {
+		xfce_rc_set_group(rcfile, "directories");
+		
+		for(i = 0; TRUE; i++) {
+			g_snprintf(buf, 128, "location%d", i);
+			location = xfce_rc_read_entry(rcfile, buf, NULL);
+			if(!location)
+				break;
+			g_snprintf(buf, 128, "mtime%d", i);
+			mtime = xfce_rc_read_int_entry(rcfile, buf, -1);
+			if(mtime == -1)
+				break;
 			
+			if(!stat(location, &st)) {
+				if(st.st_mtime > mtime) {
+					xfce_rc_close(rcfile);
+					g_hash_table_destroy(*dentrydir_mtimes);
+					*dentrydir_mtimes = NULL;
+					g_hash_table_destroy(*menufile_mtimes);
+					*menufile_mtimes = NULL;
+					TRACE("exiting - failed");
+					return NULL;
+				} else {
+					g_hash_table_insert(*dentrydir_mtimes, g_strdup(location),
+							GINT_TO_POINTER(st.st_mtime));
+				}
+			}
+		}
+	}
+	
+	xfce_rc_close(rcfile);
+	
 	return cache_file;
 }
 
@@ -278,6 +330,7 @@ desktop_menu_cache_add_dentrydir(const gchar *dentry_dir)
 	g_return_if_fail(dentry_dir);
 	
 	dentry_dirs = g_list_append(dentry_dirs, g_strdup(dentry_dir));
+	using_system_menu = TRUE;
 }
 
 void
@@ -296,14 +349,17 @@ desktop_menu_cache_flush()
 	
 	TRACE("entering");
 	
-	rcfile = xfce_rc_config_open(XFCE_RESOURCE_CACHE, LOC_CACHE_FILE, FALSE);
+	rcfile = xfce_rc_config_open(XFCE_RESOURCE_CACHE, CACHE_CONF_FILE, FALSE);
 	if(!rcfile) {
 		g_critical("%s: Unable to write to '%s'.  Desktop menu wil not be cached",
-				PACKAGE, LOC_CACHE_FILE);
+				PACKAGE, CACHE_CONF_FILE);
 		return;
 	}
 	
-	xfce_rc_set_group(rcfile, "locations");
+	xfce_rc_set_group(rcfile, "settings");
+	xfce_rc_write_bool_entry(rcfile, "using_system_menu", using_system_menu);
+	
+	xfce_rc_set_group(rcfile, "files");
 	for(i = 0, l = menu_files; l; l = l->next, i++) {
 		gchar *file = l->data;
 		if(!stat(file, &st)) {
@@ -313,7 +369,8 @@ desktop_menu_cache_flush()
 			xfce_rc_write_int_entry(rcfile, buf, st.st_mtime);
 		}
 	}
-	for(l = dentry_dirs; l; l = l->next, i++) {
+	xfce_rc_set_group(rcfile, "directories");
+	for(i = 0, l = dentry_dirs; l; l = l->next, i++) {
 		gchar *dir = l->data;
 		if(!stat(dir, &st)) {
 			g_snprintf(buf, 128, "location%d", i);

@@ -173,11 +173,13 @@ _generate_menu(XfceDesktopMenu *desktop_menu, gboolean force)
 	g_hash_table_insert(desktop_menu->menu_branches, g_strdup("/"),
 			desktop_menu->menu);
 	
-	if(!force)
-		menu_cache_file = desktop_menu_cache_is_valid();
+	if(!force) {
+		menu_cache_file = desktop_menu_cache_is_valid(&desktop_menu->menufile_mtimes,
+				&desktop_menu->dentrydir_mtimes, &desktop_menu->using_system_menu);
+	}
 	if(menu_cache_file) {
 		if(!desktop_menu_file_parse(desktop_menu, menu_cache_file,
-			desktop_menu->menu, "/", TRUE))
+			desktop_menu->menu, "/", TRUE, TRUE))
 		{
 			_xfce_desktop_menu_free_menudata(desktop_menu);
 			ret = FALSE;
@@ -185,9 +187,13 @@ _generate_menu(XfceDesktopMenu *desktop_menu, gboolean force)
 		g_free(menu_cache_file);
 	} else {
 		desktop_menu_cache_init(desktop_menu->menu);
-			
+		
+		if(desktop_menu->filename) {
+			g_free(desktop_menu->filename);
+			desktop_menu->filename = NULL;
+		}
 		if(!desktop_menu_file_parse(desktop_menu, desktop_menu->filename,
-				desktop_menu->menu, "/", TRUE))
+				desktop_menu->menu, "/", TRUE, FALSE))
 		{
 			_xfce_desktop_menu_free_menudata(desktop_menu);
 			ret = FALSE;
@@ -226,7 +232,7 @@ _menu_check_update(gpointer data)
 	modified = xfce_desktop_menu_need_update_impl(desktop_menu);
 	
 	newfilename = desktop_menu_file_get_menufile();
-	if(strcmp(desktop_menu->filename, newfilename)) {
+	if(!g_hash_table_lookup(desktop_menu->menufile_mtimes, newfilename)) {
 		g_free(desktop_menu->filename);
 		desktop_menu->filename = newfilename;
 		modified = TRUE;
@@ -243,30 +249,19 @@ _menu_check_update(gpointer data)
 void
 _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 {
-	GList *l;
-	TRACE("dummy");
 	if(desktop_menu->menu)
 		gtk_widget_destroy(desktop_menu->menu);
 	if(desktop_menu->menu_entry_hash)
 		g_hash_table_destroy(desktop_menu->menu_entry_hash);
-	if(desktop_menu->menufiles_watch) {
-		for(l=desktop_menu->menufiles_watch; l; l=l->next)
-			g_free(l->data);
-		g_list_free(desktop_menu->menufiles_watch);
-	}
 	if(desktop_menu->menufile_mtimes)
-		g_free(desktop_menu->menufile_mtimes);
+		g_hash_table_destroy(desktop_menu->menufile_mtimes);
 	if(desktop_menu->dentrydir_mtimes)
 		g_hash_table_destroy(desktop_menu->dentrydir_mtimes);
-	if(desktop_menu->legacydir_mtimes)
-		g_free(desktop_menu->legacydir_mtimes);
 	
 	desktop_menu->menu = NULL;
 	desktop_menu->menu_entry_hash = NULL;
-	desktop_menu->menufiles_watch = NULL;
 	desktop_menu->menufile_mtimes = NULL;
 	desktop_menu->dentrydir_mtimes = NULL;
-	desktop_menu->legacydir_mtimes = NULL;
 }
 
 static gboolean
@@ -387,6 +382,8 @@ xfce_desktop_menu_need_update_impl(XfceDesktopMenu *desktop_menu)
 			|| last_settings_change > desktop_menu->last_menu_gen
 			|| !desktop_menu->menu)
 	{
+		TRACE("\n\nreturning TRUE, last_settings_change=%d, last_menu_gen=%d, desktop_menu->menu=%p",
+				(gint)last_settings_change, (gint)desktop_menu->last_menu_gen, desktop_menu->menu);
 		return TRUE;
 	}
 	

@@ -95,6 +95,7 @@ static char *blacklist_arr[] = {
 };
 static GHashTable *blacklist = NULL;
 
+#if 0
 static const gchar *legacy_dirs[] = {
 	"/usr/share/gnome/apps",
 	"/usr/local/share/gnome/apps",
@@ -103,6 +104,9 @@ static const gchar *legacy_dirs[] = {
 	"/usr/local/share/applnk",
 	NULL
 };
+#else
+static gchar **legacy_dirs = NULL;
+#endif
 
 static GHashTable *dir_to_cat = NULL;
 
@@ -312,6 +316,10 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 		*p = 0;
 	if(g_hash_table_lookup(blacklist, exec))
 		goto cleanup;
+	p = g_find_program_in_path(exec);
+	if(!p)
+		goto cleanup;
+	g_free(p);
 
 	xfce_desktop_entry_get_string (de, "Categories", TRUE, &categories);
 	
@@ -475,14 +483,12 @@ dentry_recurse_dir(GDir *dir, const gchar *path, XfceDesktopMenu *desktop_menu,
 	GDir *d1;
 	gint ndirs = 1;
 	struct stat st;
-	gboolean added = FALSE;
 	
 	while((file=g_dir_read_name(dir))) {
 		if(g_str_has_suffix(file, ".desktop")) {
 			fullpath = g_build_filename(path, file, NULL);
 			menu_dentry_parse_dentry_file(desktop_menu, fullpath, pathtype);
 			g_free(fullpath);
-			added = TRUE;
 		} else {
 			fullpath = g_build_path(G_DIR_SEPARATOR_S, path, file, NULL);
 			if((d1=g_dir_open(fullpath, 0, NULL))) {
@@ -497,8 +503,7 @@ dentry_recurse_dir(GDir *dir, const gchar *path, XfceDesktopMenu *desktop_menu,
 		}
 	}
 	
-	if(added)
-		desktop_menu_cache_add_dentrydir(path);
+	desktop_menu_cache_add_dentrydir(path);
 	
 	return ndirs;
 }
@@ -543,17 +548,12 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 	desktop_menu->dentrydir_mtimes = g_hash_table_new_full(g_str_hash,
 			g_str_equal, (GDestroyNotify)g_free, NULL);
 	
-	if(!strcmp(DATADIR, "/usr") || !strcmp(DATADIR, "/usr/local"))
-		i = 1;
-	else
-		i = 0;
-
 	/* lookup applications/ directories */
 	xfce_resource_push_path (XFCE_RESOURCE_DATA, DATADIR);
 	dentry_paths = xfce_resource_lookup_all (XFCE_RESOURCE_DATA, "applications/");
 	xfce_resource_pop_path (XFCE_RESOURCE_DATA);
-	
-	for(; dentry_paths[i]; i++) {
+
+	for(i = 0; dentry_paths[i]; i++) {
 		pathd = dentry_paths[i];
 		totdirs++;
 
@@ -618,15 +618,16 @@ desktop_menu_dentry_need_update(XfceDesktopMenu *desktop_menu)
 {
 	g_return_val_if_fail(desktop_menu != NULL, FALSE);
 	
+	TRACE("dummy");
+	
 	if(!desktop_menu->dentrydir_mtimes)
 		return TRUE;
 	
 	desktop_menu->modified = FALSE;
 	g_hash_table_foreach(desktop_menu->dentrydir_mtimes,
 			dentry_need_update_check_ht, desktop_menu);
-		
-	desktop_menu->modified = (menu_dentry_legacy_need_update(desktop_menu)
-	                          || desktop_menu->modified);
+	
+	TRACE("modified=%s", desktop_menu->modified?"TRUE":"FALSE");
 	
 	return desktop_menu->modified;
 }
@@ -666,7 +667,7 @@ menu_dentry_legacy_process_dir(XfceDesktopMenu *desktop_menu,
 	GDir *dir = NULL;
 	gchar const *file;
 	gchar newbasedir[PATH_MAX], fullpath[PATH_MAX];
-	gboolean added = FALSE;
+	struct stat st;
 	
 	if(!(dir = g_dir_open(basedir, 0, NULL)))
 		return;
@@ -688,12 +689,14 @@ menu_dentry_legacy_process_dir(XfceDesktopMenu *desktop_menu,
 			/* we're also going to ignore category-less .desktop files. */
 			menu_dentry_legacy_parse_dentry_file(desktop_menu, fullpath,
 					catdir, pathtype);
-			added = TRUE;
 		}
 	}
 	
-	if(added)
-		desktop_menu_cache_add_dentrydir(basedir);
+	desktop_menu_cache_add_dentrydir(basedir);
+	if(!stat(basedir, &st)) {
+		g_hash_table_insert(desktop_menu->dentrydir_mtimes, g_strdup(basedir),
+				GINT_TO_POINTER(st.st_mtime));
+	}
 	
 	g_dir_close(dir);
 }
@@ -704,9 +707,6 @@ menu_dentry_legacy_add_all(XfceDesktopMenu *desktop_menu, MenuPathType pathtype)
 	gint i, totdirs = 0;
 	const gchar *kdedir = g_getenv("KDEDIR");
 	gchar extradir[PATH_MAX];
-	
-	if(desktop_menu->legacydir_mtimes)
-		g_free(desktop_menu->legacydir_mtimes);
 	
 	for(i=0; legacy_dirs[i]; i++) {
 		totdirs++;
@@ -719,42 +719,39 @@ menu_dentry_legacy_add_all(XfceDesktopMenu *desktop_menu, MenuPathType pathtype)
 		totdirs++;
 		menu_dentry_legacy_process_dir(desktop_menu, extradir, NULL, pathtype);
 	}
-	
-	desktop_menu->legacydir_mtimes = g_new0(time_t, totdirs);
-	menu_dentry_legacy_need_update(desktop_menu);  /* re-init the array */
-}
-
-gboolean
-menu_dentry_legacy_need_update(XfceDesktopMenu *desktop_menu)
-{
-	gint i;
-	gboolean modified = FALSE;
-	struct stat st;
-	
-	g_return_val_if_fail(desktop_menu != NULL, FALSE);
-	
-	if(!desktop_menu->legacydir_mtimes)
-		return FALSE;
-	
-	for(i=0; legacy_dirs[i]; i++) {
-		if(!stat(legacy_dirs[i], &st)) {
-			if(st.st_mtime > desktop_menu->legacydir_mtimes[i]) {
-				desktop_menu->legacydir_mtimes[i] = st.st_mtime;
-				modified = TRUE;
-			}
-		}
-	}
-	
-	return modified;
 }
 
 static void
 menu_dentry_legacy_init()
 {
 	static gboolean is_inited = FALSE;
+	gchar **apps, **applnk;
+	gint napps, napplnk;
+	gint i, n;
 	
 	if(is_inited)
 		return;
+
+	apps = xfce_resource_lookup_all(XFCE_RESOURCE_DATA, "apps/");
+	for(napps = 0; apps[napps] != NULL; ++napps);
+
+	applnk = xfce_resource_lookup_all(XFCE_RESOURCE_DATA, "applnk/");
+	for(napplnk = 0; applnk[napplnk] != NULL; ++napplnk);
+
+	legacy_dirs = g_new0(gchar *, napps + napplnk + 3);
+
+	i = 0;
+
+	legacy_dirs[i++] = xfce_get_homefile(".kde", "share", "apps", NULL);
+	legacy_dirs[i++] = xfce_get_homefile(".kde", "share", "applnk", NULL);
+
+	for(n = 0; n < napps; ++n, ++i)
+		legacy_dirs[i] = apps[n];
+	for(n = 0; n < napplnk; ++n, ++i)
+		legacy_dirs[i] = applnk[n];
+
+	g_free(applnk);
+	g_free(apps);
 	
 	dir_to_cat = g_hash_table_new(g_str_hash, g_str_equal);
 	g_hash_table_insert(dir_to_cat, "Internet", "Network");
@@ -764,8 +761,8 @@ menu_dentry_legacy_init()
 	g_hash_table_insert(dir_to_cat, "Multimedia", "AudioVideo");
 	g_hash_table_insert(dir_to_cat, "Applications", "Core");
 	
-	/* we'll keep this hashtable around for the lifetime of xfdesktop.  it'll
-	 * give us a slight performance boost during regenerations, and the memory
+	/* we'll keep this stuff around for the lifetime of xfdesktop.  it'll
+	 * give us a nice performance boost during regenerations, and the memory
 	 * requirements should be of minimal impact. */
 	is_inited = TRUE;
 }
