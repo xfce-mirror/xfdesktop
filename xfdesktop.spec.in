@@ -10,7 +10,7 @@ BuildRoot:	%{_tmppath}/%{name}-root
 Requires:	gtk2 >= @GTK_REQUIRED_VERSION@
 Requires:	libxfce4mcs >= @LIBXFCE4MCS_CLIENT_REQUIRED_VERSION@
 Requires:	libxfcegui4 >= @LIBXFCEGUI4_REQUIRED_VERSION@
-BuildRequires:	gtk+ >= @GTK_REQUIRED_VERSION@
+BuildRequires:	gtk2 >= @GTK_REQUIRED_VERSION@
 BuildRequires:	libxfce4mcs-devel >= @LIBXFCE4MCS_CLIENT_REQUIRED_VERSION@
 BuildRequires:	libxfcegui4-devel >= @LIBXFCEGUI4_REQUIRED_VERSION@
 
