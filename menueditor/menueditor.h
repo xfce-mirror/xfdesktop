@@ -27,9 +27,6 @@
 #undef GTK_DISABLE_DEPRECATED
 #endif
 #include <gtk/gtk.h>
-#if GTK_CHECK_VERSION(2, 4, 0)
-#include <gtk/gtkicontheme.h>
-#endif
 
 /* includes for the libxml */
 #include <libxml/xmlmemory.h>
@@ -75,9 +72,6 @@ struct _menueditor_app{
   gchar menu_file_name[255];
   xmlDocPtr xml_menu_file;
   GtkWidget *main_window;
-#if GTK_CHECK_VERSION(2, 4, 0)
-  GtkIconTheme *icon_theme;
-#endif
   /* AccelGroup */
   GtkAccelGroup *accel_group;
   /* Tree */

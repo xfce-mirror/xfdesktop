@@ -62,9 +62,10 @@ void my_tree_store_swap_down(GtkTreeStore *tree_store,
     hidden=TRUE;
 
   /* Load the icon */
-  if(prop_icon)
-    icon = xfce_themed_icon_load(prop_icon, ICON_SIZE);
-  else
+  if(prop_icon){
+    XfceIconTheme *icontheme = xfce_icon_theme_get_for_screen (NULL);
+    icon = xfce_icon_theme_load(icontheme, prop_icon, ICON_SIZE);
+  } else
     icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
 
@@ -218,9 +219,10 @@ void my_tree_store_swap_up(GtkTreeStore *tree_store,
     hidden=TRUE;
 
   /* Load the icon */
-  if(prop_icon)
-    icon = xfce_themed_icon_load(prop_icon, ICON_SIZE);
-  else
+  if(prop_icon){
+    XfceIconTheme *icontheme = xfce_icon_theme_get_for_screen (NULL);
+    icon = xfce_icon_theme_load(icontheme, prop_icon, ICON_SIZE);
+  } else
     icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
 

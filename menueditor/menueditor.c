@@ -76,51 +76,40 @@ void create_main_window();
 /* Load the menu in the tree */
 void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p);
 
-/**********************************************/
-/* mcs client code copy of Brian J. Tarricone */
-/**********************************************/
-static time_t last_theme_change = 0;
-static McsClient *client = NULL;
-
-static GdkFilterReturn
-client_event_filter1(GdkXEvent * xevent, GdkEvent * event, gpointer data)
+/*****************************/
+/* Manage icon theme changes */
+/*****************************/
+static gboolean icon_theme_update_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
 {
-	if(mcs_client_process_event (client, (XEvent *)xevent))
-		return GDK_FILTER_REMOVE;
-	else
-		return GDK_FILTER_CONTINUE;
+  GdkPixbuf *icon;
+  xmlNodePtr node;
+  xmlChar *prop_icon = NULL;
+
+  gtk_tree_model_get (model, iter, ICON_COLUMN, &icon, POINTER_COLUMN, &node, -1);
+  prop_icon = xmlGetProp (node, "icon");
+
+  if (prop_icon) {
+    if (icon)
+      g_object_unref (icon);
+    
+    icon = xfce_icon_theme_load (XFCE_ICON_THEME (data), prop_icon, ICON_SIZE);
+    gtk_tree_store_set (menueditor_app.treestore, iter, ICON_COLUMN, icon, -1);
+  }
+
+  xmlFree (prop_icon);
+
+  return FALSE;
 }
 
-static void
-mcs_watch_cb(Window window, Bool is_start, long mask, void *cb_data)
+static void icon_theme_changed_cb (XfceIconTheme *icon_theme, gpointer user_data)
 {
-	GdkWindow *gdkwin;
+  GtkTreeModel *model;
+  XfceIconTheme *icontheme = xfce_icon_theme_get_for_screen (NULL);
 
-	gdkwin = gdk_window_lookup (window);
+  model = gtk_tree_view_get_model (GTK_TREE_VIEW (menueditor_app.treeview));
 
-	if(is_start)
-		gdk_window_add_filter (gdkwin, client_event_filter1, NULL);
-	else
-		gdk_window_remove_filter (gdkwin, client_event_filter1, NULL);
-}
-
-static void
-mcs_notify_cb(const gchar *name, const gchar *channel_name, McsAction action,
-              McsSetting *setting, void *cb_data)
-{
-  if(strcasecmp(channel_name, CHANNEL) || !setting)
-    return;
-  
-  if((action==MCS_ACTION_NEW || action==MCS_ACTION_CHANGED) &&
-     !strcmp(setting->name, "theme") && setting->type==MCS_TYPE_STRING)
-    {
-      gchar *origin = g_strdup_printf("%s:%d", __FILE__, __LINE__);
-      gtk_settings_set_string_property(gtk_settings_get_default(),
-				       "gtk-icon-theme-name", setting->data.v_string, origin);
-
-      g_free(origin);
-      last_theme_change = time(NULL);
-    }
+  if (model)
+    gtk_tree_model_foreach (model, &icon_theme_update_foreach_func, icontheme);
 }
 
 /*******************************/
@@ -238,9 +227,10 @@ void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon){
 					  (PreviewUpdateFunc)browse_icon_update_preview_cb, preview);
 
   if (strlen (gtk_entry_get_text (entry_icon)) != 0){
+    XfceIconTheme *icontheme = xfce_icon_theme_get_for_screen (NULL);
     gchar *iconpath = NULL;
 
-    iconpath = xfce_themed_icon_lookup (gtk_entry_get_text (entry_icon), ICON_SIZE);
+    iconpath = xfce_icon_theme_lookup (icontheme, gtk_entry_get_text (entry_icon), ICON_SIZE);
     xfce_file_chooser_set_filename (XFCE_FILE_CHOOSER (filesel_dialog), iconpath);
 
     g_free (iconpath);
@@ -328,9 +318,10 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
       hidden=TRUE;
 
     /* Load the icon */
-    if(prop_icon)
-      icon = xfce_themed_icon_load(prop_icon, ICON_SIZE);
-    else
+    if(prop_icon){
+      XfceIconTheme *icontheme = xfce_icon_theme_get_for_screen (NULL);
+      icon = xfce_icon_theme_load (icontheme, prop_icon, ICON_SIZE);
+    } else
       icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
     /* separator */
@@ -907,6 +898,7 @@ void create_main_window()
   GtkWidget* statusbar;
 
   /* Icons */
+  XfceIconTheme *icontheme = xfce_icon_theme_get_for_screen (NULL);
   GList *icons = NULL;
   GdkPixbuf *icon = NULL;
 
@@ -926,13 +918,15 @@ void create_main_window()
   gtk_window_set_default_size(GTK_WINDOW(menueditor_app.main_window),600,450);
 
   /* Set default icon */
-  icon = xfce_themed_icon_load ("xfce4-menueditor", 16);
+  g_signal_connect(G_OBJECT(icontheme), "changed",
+		   G_CALLBACK(icon_theme_changed_cb), NULL);
+  icon = xfce_icon_theme_load (icontheme, "xfce4-menueditor", 16);
   if (icon)
     icons = g_list_append(icons,icon);
-  icon = xfce_themed_icon_load ("xfce4-menueditor", 32);
+  icon = xfce_icon_theme_load (icontheme, "xfce4-menueditor", 32);
   if (icon)
     icons = g_list_append(icons,icon);
-  icon = xfce_themed_icon_load ("xfce4-menueditor", 48);
+  icon = xfce_icon_theme_load (icontheme, "xfce4-menueditor", 48);
   if (icon)
     icons = g_list_append(icons,icon);
 
@@ -1361,23 +1355,6 @@ int main (int argc, char *argv[])
   gtk_init (&argc, &argv);
   
   create_main_window ();
-
-  /* track icon theme changes */
-  if(!client) {
-    Display *dpy = GDK_DISPLAY ();
-    int screen = XDefaultScreen (dpy);
-    
-    if(!mcs_client_check_manager (dpy, screen, "xfce-mcs-manager"))
-      g_warning ("%s: mcs manager not running\n", PACKAGE);
-    client = mcs_client_new (dpy, screen, mcs_notify_cb, mcs_watch_cb, NULL);
-    if(client)
-      mcs_client_add_channel (client, CHANNEL);
-  }
-
-#if GTK_CHECK_VERSION(2, 4, 0)
-  /* Initialize icon theme */
-  menueditor_app.icon_theme = gtk_icon_theme_get_default ();
-#endif
 
   if(argc>1){
     if(g_file_test (argv[1], G_FILE_TEST_EXISTS))

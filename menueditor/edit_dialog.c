@@ -421,6 +421,7 @@ void edit_selection(GtkTreeSelection *selection)
   /* Commit change if needed */
   while((response = gtk_dialog_run (GTK_DIALOG (dialog)))){
     if(response == GTK_RESPONSE_OK){
+      XfceIconTheme *icontheme = xfce_icon_theme_get_for_screen (NULL);
       gchar *name = NULL;
       gchar *command = NULL;
 
@@ -438,7 +439,7 @@ void edit_selection(GtkTreeSelection *selection)
 
       /* set the new icon if there is one otherwise use the dummy one */
       if( (icon_entry && strlen (gtk_entry_get_text (GTK_ENTRY (icon_entry))) != 0) ){
-	icon = xfce_themed_icon_load ( (gchar*) gtk_entry_get_text (GTK_ENTRY (icon_entry)), ICON_SIZE);
+	icon = xfce_icon_theme_load (icontheme, (gchar*) gtk_entry_get_text (GTK_ENTRY (icon_entry)), ICON_SIZE);
 	if(!icon)
 	  icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 

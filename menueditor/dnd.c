@@ -77,6 +77,8 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
 			       guint x, guint y, GtkSelectionData *sd,
 			       guint info, guint t)
 {
+  XfceIconTheme *icontheme = xfce_icon_theme_get_for_screen (NULL);
+
   if (sd->target == gdk_atom_intern("XFCE_MENU_ENTRY", FALSE) && sd->data) {
     GtkTreeIter *iter_to_insert = NULL;
     GtkTreePath *path = NULL;
@@ -279,7 +281,7 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       xmlSetProp(node, "cmd", value_command);
       if(icon_found){
 	xmlSetProp(node, "icon", value_icon);
-	icon = xfce_themed_icon_load(value_icon, ICON_SIZE);
+	icon = xfce_icon_theme_load(icontheme, value_icon, ICON_SIZE);
       }else
 	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 
@@ -365,7 +367,7 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
       xmlSetProp(node, "cmd", value_command);
       if(icon_found){
 	xmlSetProp(node, "icon", value_icon);
-	icon = xfce_themed_icon_load(value_icon, ICON_SIZE);
+	icon = xfce_icon_theme_load(icontheme, value_icon, ICON_SIZE);
       }else
 	icon = xfce_inline_icon_at_size(dummy_icon_data, ICON_SIZE, ICON_SIZE);
 

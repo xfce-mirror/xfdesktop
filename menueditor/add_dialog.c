@@ -255,6 +255,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
       gboolean ret_selection, is_menu=FALSE;
       gchar *name=NULL;
       gchar *command=NULL;
+      XfceIconTheme *icontheme = xfce_icon_theme_get_for_screen (NULL);
       GdkPixbuf *icon=NULL;
 
       /* Retrieve the root node of the xml tree */
@@ -306,7 +307,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 
       /* Set icon if needed */
       if( (entry_icon && strlen (gtk_entry_get_text (GTK_ENTRY (entry_icon))) != 0) ){
-	icon = xfce_themed_icon_load ( (gchar*) gtk_entry_get_text (GTK_ENTRY (entry_icon)), ICON_SIZE);
+	icon = xfce_icon_theme_load ( icontheme, (gchar*) gtk_entry_get_text (GTK_ENTRY (entry_icon)), ICON_SIZE);
 	if(!icon)
 	  icon = xfce_inline_icon_at_size (dummy_icon_data, ICON_SIZE, ICON_SIZE);
 	xmlSetProp (node,"icon", gtk_entry_get_text (GTK_ENTRY (entry_icon)));

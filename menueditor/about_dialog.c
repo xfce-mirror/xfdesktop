@@ -26,6 +26,7 @@
 /*************/
 void about_cb(GtkWidget *widget, gpointer data)
 {
+  XfceIconTheme *icontheme = xfce_icon_theme_get_for_screen (NULL);
   XfceAboutInfo *info;
   GtkWidget *dialog;
   GdkPixbuf *icon;
@@ -60,7 +61,7 @@ void about_cb(GtkWidget *widget, gpointer data)
 			     "fleclainche@wanadoo.fr",
 			     _("Icon designer"));
 
-  icon = xfce_themed_icon_load ("xfce4-menueditor" , 48);
+  icon = xfce_icon_theme_load (icontheme, "xfce4-menueditor" , 48);
 
   dialog = xfce_about_dialog_new(GTK_WINDOW(menueditor_app.main_window), 
 				 info, icon);
