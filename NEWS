@@ -1,3 +1,27 @@
+20041205 (Xfce 4.2rc2):
+-----------------------
+
+	Not much has happened with xfdesktop in the last month, mainly some
+	minorish bugfixes:
+	  - Fix problem with panel plugin where the button can sometimes
+	    stay "pressed in" if the menu isn't available.
+	  - Documentation updates (Jasper, mostly)
+	  - Tweak menu directory searching.
+	  - Filter desktop files based on desktop-id to avoid duplicate
+	    menu entries.
+	  - Fix bug where sticky windows weren't shown in the window list
+	    at all.
+	  - Fix menu module not loading at all on some systems when the
+	    quit() symbol can't be resolved.
+	  - Fix problem where window titles with GMarkup in them weren't
+	    being escaped properly.
+	  - Remove an occurrence of xfce_get_userfile() (replace with
+	    xfce_resource_lookup()).
+	  - Remove workspace add/remove, as that doesn't work properly
+	    anymore, and it probably shouldn't be there anyway.
+
+(Brian)
+
 20041029:
 ---------
 
@@ -18,6 +42,8 @@
 	    - A panel plugin that can display the menu from xfce4-panel.
 	    - An enhanced and partially redesigned settings window, with
 	      some global menu settings added.
+
+(Brian)
 
 20031019:
 ---------
