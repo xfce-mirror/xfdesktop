@@ -1261,9 +1261,11 @@ int main (int argc, char *argv[])
       mcs_client_add_channel(client, CHANNEL);
   }
 
+#if GTK_CHECK_VERSION(2, 4, 0)
   /* Initialize icon theme */
   menueditor_app.icon_theme = gtk_icon_theme_get_default();
   gtk_icon_theme_prepend_search_path(menueditor_app.icon_theme, "/usr/share/xfce4/themes");
+#endif
 
   if(argc>1){
     if (g_file_test (argv[1], G_FILE_TEST_EXISTS))

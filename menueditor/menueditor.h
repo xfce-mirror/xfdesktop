@@ -24,6 +24,9 @@
 #include "config.h"
 
 #include <gtk/gtk.h>
+#if GTK_CHECK_VERSION(2, 4, 0)
+#include <gtk/gtkicontheme.h>
+#endif
 
 /* includes for the libxml */
 #include <libxml/xmlmemory.h>
@@ -33,7 +36,6 @@
 #include <libxfce4mcs/mcs-client.h>
 #include <libxfcegui4/icons.h>
 #include <libxfcegui4/libxfcegui4.h>
-#include <libxfcegui4/xgtkicontheme.h>
 #include <libxfce4util/libxfce4util.h>
 
 /* definitions of fonts in the tree */
@@ -69,7 +71,9 @@ struct _menueditor_app{
   gchar menu_file_name[255];
   xmlDocPtr xml_menu_file;
   GtkWidget *main_window;
+#if GTK_CHECK_VERSION(2, 4, 0)
   GtkIconTheme *icon_theme;
+#endif
   /* AccelGroup */
   GtkAccelGroup *accel_group;
   /* Tree */
