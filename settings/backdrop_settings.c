@@ -59,13 +59,13 @@
 #include <xfce-mcs-manager/manager-plugin.h>
 
 #include "background-common.h"
-#include "backdrop-icon.h"
 #include "backdrop-mgr.h"
 #include "settings_common.h"
 
 #define RCFILE "backdrop.xml"
 #define PLUGIN_NAME "backdrop"
 
+#define BACKDROP_ICON_NAME "xfce4-backdrop"
 #define DEFAULT_ICON_SIZE 32
 
 #ifdef HAVE_GDK_PIXBUF_NEW_FROM_STREAM
@@ -109,43 +109,16 @@ static void backdrop_create_channel (McsPlugin * mcs_plugin);
 static gboolean backdrop_write_options (McsPlugin * mcs_plugin);
 static void run_dialog (McsPlugin * mcs_plugin);
 
-static GdkPixbuf *
-backdrop_icon_at_size (int width, int height)
-{
-    GdkPixbuf *base;
-
-    base = gdk_pixbuf_new_from_inline (-1, backdrop_icon_data, FALSE, NULL);
-
-    g_assert (base);
-
-    if ((width <= 0 || height <= 0))
-    {
-	return base;
-    }
-    else
-    {
-	GdkPixbuf *scaled;
-
-	scaled = gdk_pixbuf_scale_simple (base, width, height,
-					  GDK_INTERP_BILINEAR);
-
-	g_object_unref (G_OBJECT (base));
-
-	return scaled;
-    }
-}
-
 McsPluginInitResult
 mcs_plugin_init (McsPlugin * mcs_plugin)
 {
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
     mcs_plugin->plugin_name = g_strdup (PLUGIN_NAME);
-    mcs_plugin->caption = g_strdup (_("Desktop background"));
+    mcs_plugin->caption = g_strdup (_("Backdrop"));
     mcs_plugin->run_dialog = run_dialog;
 
-    mcs_plugin->icon = backdrop_icon_at_size (DEFAULT_ICON_SIZE,
-					      DEFAULT_ICON_SIZE);
+    mcs_plugin->icon = xfce_load_themed_icon(BACKDROP_ICON_NAME, 32);
 
     backdrop_create_channel (mcs_plugin);
 
@@ -872,7 +845,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
     mainvbox = GTK_DIALOG (bd->dialog)->vbox;
 
     /* header */
-    header = create_header (bd->plugin->icon, _("Background Settings"));
+    header = create_header (bd->plugin->icon, _("Backdrop Settings"));
     gtk_box_pack_start (GTK_BOX (mainvbox), header, FALSE, TRUE, 0);
 
     add_spacer (GTK_BOX (mainvbox));

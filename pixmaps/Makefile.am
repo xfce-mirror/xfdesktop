@@ -1,6 +1,13 @@
-pixmapsdir = $(datadir)/pixmaps
-pixmaps_DATA = \
-	xfce4-backdrop.png		\
-	xfce4-menueditor.png
+icons32dir = $(datadir)/icons/hicolor/32x32/apps
 
-EXTRA_DIST = $(pixmaps_DATA)
+icons32_DATA = \
+	32x32/xfce4-backdrop.png		\
+	32x32/xfce4-menueditor.png
+
+icons48dir = $(datadir)/icons/hicolor/48x48/apps
+
+icons48_DATA = \
+	48x48/xfce4-backdrop.png		\
+	48x48/xfce4-menueditor.png
+
+EXTRA_DIST = $(icons32_DATA) $(icons48_DATA)

@@ -48,9 +48,10 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 SOURCES =
 DIST_SOURCES =
-am__installdirs = $(DESTDIR)$(pixmapsdir)
-pixmapsDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(pixmaps_DATA)
+am__installdirs = $(DESTDIR)$(icons32dir) $(DESTDIR)$(icons48dir)
+icons32DATA_INSTALL = $(INSTALL_DATA)
+icons48DATA_INSTALL = $(INSTALL_DATA)
+DATA = $(icons32_DATA) $(icons48_DATA)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 AMDEP_FALSE = @AMDEP_FALSE@
@@ -190,12 +191,17 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-pixmapsdir = $(datadir)/pixmaps
-pixmaps_DATA = \
-	xfce4-backdrop.png		\
-	xfce4-menueditor.png
+icons32dir = $(datadir)/icons/hicolor/32x32/apps
+icons32_DATA = \
+	32x32/xfce4-backdrop.png		\
+	32x32/xfce4-menueditor.png
 
-EXTRA_DIST = $(pixmaps_DATA)
+icons48dir = $(datadir)/icons/hicolor/48x48/apps
+icons48_DATA = \
+	48x48/xfce4-backdrop.png		\
+	48x48/xfce4-menueditor.png
+
+EXTRA_DIST = $(icons32_DATA) $(icons48_DATA)
 all: all-am
 
 .SUFFIXES:
@@ -238,22 +244,39 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
-install-pixmapsDATA: $(pixmaps_DATA)
+install-icons32DATA: $(icons32_DATA)
 	@$(NORMAL_INSTALL)
-	$(mkdir_p) $(DESTDIR)$(pixmapsdir)
-	@list='$(pixmaps_DATA)'; for p in $$list; do \
+	$(mkdir_p) $(DESTDIR)$(icons32dir)
+	@list='$(icons32_DATA)'; for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(pixmapsDATA_INSTALL) $$d$$p $(DESTDIR)$(pixmapsdir)/$$f"; \
-	  $(pixmapsDATA_INSTALL) $$d$$p $(DESTDIR)$(pixmapsdir)/$$f; \
+	  echo " $(icons32DATA_INSTALL) $$d$$p $(DESTDIR)$(icons32dir)/$$f"; \
+	  $(icons32DATA_INSTALL) $$d$$p $(DESTDIR)$(icons32dir)/$$f; \
 	done
 
-uninstall-pixmapsDATA:
+uninstall-icons32DATA:
 	@$(NORMAL_UNINSTALL)
-	@list='$(pixmaps_DATA)'; for p in $$list; do \
+	@list='$(icons32_DATA)'; for p in $$list; do \
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " rm -f $(DESTDIR)$(pixmapsdir)/$$f"; \
-	  rm -f $(DESTDIR)$(pixmapsdir)/$$f; \
+	  echo " rm -f $(DESTDIR)$(icons32dir)/$$f"; \
+	  rm -f $(DESTDIR)$(icons32dir)/$$f; \
+	done
+install-icons48DATA: $(icons48_DATA)
+	@$(NORMAL_INSTALL)
+	$(mkdir_p) $(DESTDIR)$(icons48dir)
+	@list='$(icons48_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " $(icons48DATA_INSTALL) $$d$$p $(DESTDIR)$(icons48dir)/$$f"; \
+	  $(icons48DATA_INSTALL) $$d$$p $(DESTDIR)$(icons48dir)/$$f; \
+	done
+
+uninstall-icons48DATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(icons48_DATA)'; for p in $$list; do \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " rm -f $(DESTDIR)$(icons48dir)/$$f"; \
+	  rm -f $(DESTDIR)$(icons48dir)/$$f; \
 	done
 tags: TAGS
 TAGS:
@@ -263,6 +286,7 @@ CTAGS:
 
 
 distdir: $(DISTFILES)
+	$(mkdir_p) $(distdir)/32x32 $(distdir)/48x48
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \
@@ -293,7 +317,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(DATA)
 installdirs:
-	$(mkdir_p) $(DESTDIR)$(pixmapsdir)
+	$(mkdir_p) $(DESTDIR)$(icons32dir) $(DESTDIR)$(icons48dir)
 install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
@@ -336,7 +360,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-pixmapsDATA
+install-data-am: install-icons32DATA install-icons48DATA
 
 install-exec-am:
 
@@ -362,17 +386,19 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-info-am uninstall-pixmapsDATA
+uninstall-am: uninstall-icons32DATA uninstall-icons48DATA \
+	uninstall-info-am
 
 .PHONY: all all-am check check-am clean clean-generic clean-libtool \
 	distclean distclean-generic distclean-libtool distdir dvi \
 	dvi-am html html-am info info-am install install-am \
 	install-data install-data-am install-exec install-exec-am \
-	install-info install-info-am install-man install-pixmapsDATA \
-	install-strip installcheck installcheck-am installdirs \
-	maintainer-clean maintainer-clean-generic mostlyclean \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	uninstall uninstall-am uninstall-info-am uninstall-pixmapsDATA
+	install-icons32DATA install-icons48DATA install-info \
+	install-info-am install-man install-strip installcheck \
+	installcheck-am installdirs maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-generic \
+	mostlyclean-libtool pdf pdf-am ps ps-am uninstall uninstall-am \
+	uninstall-icons32DATA uninstall-icons48DATA uninstall-info-am
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
