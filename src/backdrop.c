@@ -85,7 +85,7 @@ static gboolean is_backdrop_list(const char *path)
     int size;
     gboolean is_list = FALSE;
 
-    TRACE("");
+    TRACE("dummy");
     size = sizeof(LIST_TEXT);
 
     if ((fp = fopen(path, "r")) == NULL)
@@ -108,7 +108,7 @@ static void remove_old_pixmap(void)
     unsigned char *data;
     Atom e_prop = XInternAtom (dpy, "ESETROOT_PMAP_ID", False);
 
-    TRACE("");
+    TRACE("dummy");
     XGrabServer(dpy);
 
     XGetWindowProperty(dpy, w, e_prop, 0L, 1L, False, AnyPropertyType,
@@ -128,7 +128,7 @@ static void remove_old_pixmap(void)
 
 void backdrop_init(GtkWidget * window)
 {
-    TRACE("");
+    TRACE("dummy");
     fullscreen_window = window;
 
     screen_width = gdk_screen_width();
@@ -140,7 +140,7 @@ void backdrop_init(GtkWidget * window)
 /* settings client */
 static void update_backdrop_channel(const char *name, McsAction action, McsSetting *setting)
 {
-    TRACE("");
+    TRACE("dummy");
     switch (action)
     {
         case MCS_ACTION_NEW:
@@ -181,7 +181,7 @@ static void update_backdrop_channel(const char *name, McsAction action, McsSetti
 
 void add_backdrop_callback(GHashTable *ht)
 {
-    TRACE("");
+    TRACE("dummy");
     g_hash_table_insert(ht, BACKDROP_CHANNEL, update_backdrop_channel);
 }
 
@@ -189,7 +189,7 @@ void backdrop_load_settings(McsClient *client)
 {
     McsSetting *setting;
 
-    TRACE("");
+    TRACE("dummy");
     if (MCS_SUCCESS == mcs_client_get_setting(client, "style",  
 					      BACKDROP_CHANNEL, &setting))
     {
@@ -233,7 +233,7 @@ count_elements(char **list)
 {
     char **c;
 
-    TRACE("");
+    TRACE("dummy");
     for (c = list; *c; c++)
         ;
 
@@ -249,7 +249,7 @@ get_path_from_listfile(const gchar *listfile)
     static gint previndex = -1;
     int i, n;
 
-    TRACE("");
+    TRACE("dummy");
 
     if (!listfile) {
 	    g_free(prevfile);
@@ -306,7 +306,7 @@ static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style, GdkColo
     guint32 rgba;
     gboolean has_composite;
 
-    TRACE("");
+    TRACE("dummy");
     /* First, fill the pixbuf with solid color */
     solid = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, screen_width, screen_height);
     rgba = (((color->red & 0xff00) << 8) | ((color->green & 0xff00)) | ((color->blue & 0xff00) >> 8)) << 8;

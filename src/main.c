@@ -76,7 +76,7 @@ static Window selection_window;
 void
 quit(void)
 {
-    TRACE("");
+    TRACE("dummy");
 
     if (session_managed)
 	    logout_session(client_session);
@@ -111,7 +111,7 @@ static gboolean
 client_message_received(GtkWidget *widget, GdkEventClient *event,
         gpointer user_data)
 {
-    TRACE("");
+    TRACE("dummy");
 
     if (event->data_format == 8 && strcmp(event->data.b, RELOAD_MESSAGE) == 0) {
 	    load_settings();
@@ -129,7 +129,7 @@ static Atom manager_atom = 0;
 gboolean
 check_is_running(Window *xid)
 {
-    TRACE("");
+    TRACE("dummy");
 
     if (!selection_atom)
 	    selection_atom = XInternAtom(gdk_display, XFDESKTOP_SELECTION, False);
@@ -147,7 +147,7 @@ xfdesktop_set_selection(void)
     int screen = DefaultScreen(display);
     GtkWidget *invisible;
     
-    TRACE("");
+    TRACE("dummy");
     invisible = gtk_invisible_new();
     gtk_widget_realize(invisible);
     
@@ -201,7 +201,7 @@ xfdesktop_set_selection(void)
 static void
 die(gpointer client_data)
 {
-    TRACE("");
+    TRACE("dummy");
     gtk_main_quit();
 }
 
@@ -216,7 +216,7 @@ create_fullscreen_window(void)
     GtkWidget *win;
     GtkStyle *style;
     
-    TRACE("");
+    TRACE("dummy");
     win = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
     netk_gtk_window_avoid_input(GTK_WINDOW(win));
@@ -255,7 +255,7 @@ create_fullscreen_window(void)
 static void
 xfdesktop_init(void)
 {
-    TRACE("");
+    TRACE("dummy");
     fullscreen_window = create_fullscreen_window();
 
     netk_screen = netk_screen_get_default();
@@ -270,7 +270,7 @@ xfdesktop_init(void)
 static void
 xfdesktop_cleanup(void)
 {
-    TRACE("");
+    TRACE("dummy");
     stop_watch();
     
     gtk_widget_destroy(fullscreen_window);
@@ -279,7 +279,7 @@ xfdesktop_cleanup(void)
 static void
 sighandler(int sig)
 {
-    TRACE("");
+    TRACE("dummy");
 
     switch(sig) {
 	case SIGUSR1:
@@ -300,7 +300,7 @@ main(int argc, char **argv)
 #endif
     Window xid;
 
-    TRACE("");
+    TRACE("dummy");
     gtk_init(&argc, &argv);
     
     if (check_is_running(&xid)) {

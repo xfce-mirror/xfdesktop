@@ -28,6 +28,7 @@
 #include <sys/types.h>
 #endif
 
+#include <ctype.h>
 #include <errno.h>
 #ifdef HAVE_FCNTL_H
 #include <fcntl.h>
