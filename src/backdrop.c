@@ -32,7 +32,6 @@ static GtkWidget *fullscreen_window = NULL;
 static int screen_width = 0;
 static int screen_height = 0;
 
-static GdkColormap *cmap;
 static char *backdrop_path = NULL;
 static int backdrop_style = TILED;
 static int showimage = 1;
@@ -95,8 +94,6 @@ void backdrop_init(GtkWidget * window)
     screen_height = gdk_screen_height();
 
     remove_old_pixmap();
-    
-    cmap = gtk_widget_get_colormap(fullscreen_window);
 }
 
 /* settings client */
@@ -174,7 +171,7 @@ void backdrop_load_settings(McsClient *client)
 	backdrop_color.red = setting->data.v_color.red;
 	backdrop_color.green = setting->data.v_color.green;
 	backdrop_color.blue = setting->data.v_color.blue;
-	
+
 	mcs_setting_free(setting);
     }
 
@@ -276,19 +273,15 @@ static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style, GdkColo
     guint32 rgba;
     gboolean has_composite;
 
-    if (!GDK_IS_COLORMAP(cmap))
-	return NULL;
-	
     /* First, fill the pixbuf with solid color */
     solid = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, screen_width, screen_height);
-    gdk_rgb_find_color(cmap, color);
-    /* pixel is in rgb, we need rgba */
-    rgba = color->pixel * 256;
+    rgba = (((color->red & 0xff00) << 8) | ((color->green & 0xff00)) | ((color->blue & 0xff00) >> 8)) << 8;
     gdk_pixbuf_fill(solid, rgba);
 
     if (pixbuf)
     {
 	width = gdk_pixbuf_get_width(pixbuf);
+
 	height = gdk_pixbuf_get_height(pixbuf);
         has_composite = gdk_pixbuf_get_has_alpha (pixbuf);
 	
@@ -360,20 +353,15 @@ static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style, GdkColo
 		}
                 break;
 	}
-        gdk_pixbuf_render_pixmap_and_mask_for_colormap(solid, cmap, &pixmap, NULL, 0);
     }
-    else
-    {
-        gdk_pixbuf_render_pixmap_and_mask_for_colormap(solid, cmap, &pixmap, NULL, 0);
-    }
+    gdk_pixbuf_render_pixmap_and_mask(solid, &pixmap, NULL, 0);
     g_object_unref(solid);
 
     return pixmap;
 }
 
-/* The code below is almost literally copied from ROX Filer
+/* The code below is initially based on ROX Filer
  * (c) by Thomas Leonard. See http://rox.sf.net.
- * Well, not anymore, let's say it's been inspired :) 
  */
 static void set_backdrop(const char *path, int style, int show, GdkColor *color)
 {
