@@ -54,7 +54,8 @@ dmp_set_size(Control *c, int size)
 	GdkPixbuf *pix;
 
 	if(dmp->icon_file) {
-		pix = xfce_load_themed_icon(dmp->icon_file, icon_size[settings.size]);
+		pix = xfce_load_themed_icon(dmp->icon_file,
+				icon_size[settings.size] - 2*border_width);
 		if(pix) {
 			xfce_iconbutton_set_pixbuf(XFCE_ICONBUTTON(dmp->button), pix);
 			g_object_unref(G_OBJECT(pix));
