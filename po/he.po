@@ -1,454 +1,24 @@
-# translation of xfdesktop_he.po to Yuval Tanny
-# translation of xfdesktop_he.po to Hebrew
-# translation of xfdesktop.po to Hebrew
+# translation of he.po to Hebrew
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# Dotan Kamber <kamberd@yahoo.com>, 2004.
-# Yuval Tanny <yuvaltanny@walla.co.il>, 2004.
+# Dotan Kamber <kamberd@yahoo.com>, 2004
+# Jonatan44 <Jonatan443@walla.co.il>, 2004.
+# Yuval Tanny <yuvaltanny@spymac.com>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop_he\n"
+"Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-28 19:48-0700\n"
-"PO-Revision-Date: 2004-08-14 15:55+0200\n"
-"Last-Translator: Yuval Tanny <yuvaltanny@walla.co.il>\n"
-"Language-Team: Yuval Tanny <en@li.org>\n"
+"POT-Creation-Date: 2004-07-09 09:58+0200\n"
+"PO-Revision-Date: 2004-08-17 19:00+0300\n"
+"Last-Translator: Yuval Tanny <yuvaltanny@spymac.com>\n"
+"Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3.1\n"
 
-#: menueditor/about_dialog.c:36
-msgid "A menu editor for Xfce4"
-msgstr "עורך תפריטים עבור Xfce4"
-
-#: menueditor/about_dialog.c:45
-msgid "Core developer"
-msgstr "מפתחים מרכזיים"
-
-#: menueditor/about_dialog.c:49 menueditor/about_dialog.c:53
-#: menueditor/about_dialog.c:57
-msgid "Contributor"
-msgstr "תורמים"
-
-#: menueditor/about_dialog.c:61
-msgid "Icon designer"
-msgstr "מעצבי צלמיות"
-
-#: menueditor/add_dialog.c:131 menueditor/add_dialog.c:146
-msgid "Add menu entry"
-msgstr "הוסף רשומת תפריט"
-
-#. Type
-#: menueditor/add_dialog.c:152 menueditor/add_menu_dialog.c:96
-#: menueditor/edit_dialog.c:148
-msgid "Type:"
-msgstr "סוג:"
-
-#: menueditor/add_dialog.c:155
-msgid "Launcher"
-msgstr "משגר"
-
-#: menueditor/add_dialog.c:160
-msgid "Submenu"
-msgstr "תפריט משנה"
-
-#: menueditor/add_dialog.c:165
-msgid "Separator"
-msgstr "מפריד"
-
-#: menueditor/add_dialog.c:170
-msgid "Title"
-msgstr "כותרת"
-
-#: menueditor/add_dialog.c:175
-msgid "Quit"
-msgstr "יציאה"
-
-#. Name
-#: menueditor/add_dialog.c:190 menueditor/edit_dialog.c:260
-#: menueditor/edit_dialog.c:310 menueditor/edit_dialog.c:348
-msgid "Name:"
-msgstr "שם:"
-
-#: menueditor/add_dialog.c:200 menueditor/edit_dialog.c:261
-msgid "Command:"
-msgstr "פקודה:"
-
-#: menueditor/add_dialog.c:216 menueditor/edit_dialog.c:252
-#: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
-#: menueditor/edit_dialog.c:390
-msgid "Icon:"
-msgstr "סמל:"
-
-#. Start Notify check button
-#: menueditor/add_dialog.c:232 menueditor/edit_dialog.c:272
-msgid "Use startup _notification"
-msgstr "השתמש בהתרעת _פתיחה"
-
-#. Run in terminal check button
-#: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:273
-msgid "Run in _terminal"
-msgstr "הפעל ב_מסוף"
-
-#: menueditor/add_dialog.c:281 menueditor/edit_dialog.c:459
-msgid "The command doesn't exist !"
-msgstr "הפקודה לא קיימת."
-
-#: menueditor/add_dialog.c:287
-msgid "All fields must be filled to add an item."
-msgstr "כל השדות צריכים להיות מלאים כדי להוסיף פריט."
-
-#: menueditor/add_dialog.c:295
-msgid "The 'Name' field is required."
-msgstr "השדה 'שם' נחוץ."
-
-#: menueditor/add_dialog.c:349 menueditor/dnd.c:150
-#: menueditor/menueditor.c:339 menueditor/move.c:90 menueditor/move.c:246
-msgid "--- separator ---"
-msgstr "- קו מפריד -"
-
-#: menueditor/add_dialog.c:374 menueditor/edit_dialog.c:496
-msgid "quit"
-msgstr "יציאה"
-
-#: menueditor/add_menu_dialog.c:76 menueditor/add_menu_dialog.c:87
-#: menueditor/menueditor.c:770
-msgid "Add an external menu"
-msgstr "הוסף תפריט חיצוני"
-
-#: menueditor/add_menu_dialog.c:101 menueditor/edit_dialog.c:151
-msgid "File"
-msgstr "קובץ"
-
-#: menueditor/add_menu_dialog.c:106 menueditor/edit_dialog.c:156
-msgid "System"
-msgstr "מערכת"
-
-#: menueditor/add_menu_dialog.c:121 menueditor/edit_dialog.c:171
-msgid "Source:"
-msgstr "מקור:"
-
-#. Style
-#: menueditor/add_menu_dialog.c:134 menueditor/edit_dialog.c:184
-msgid "Style:"
-msgstr "סגנון:"
-
-#: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:187
-msgid "Simple"
-msgstr "פשוט"
-
-#: menueditor/add_menu_dialog.c:140 menueditor/edit_dialog.c:190
-msgid "Multilevel"
-msgstr "רב-שכבתי"
-
-#. Unique
-#: menueditor/add_menu_dialog.c:153 menueditor/edit_dialog.c:203
-msgid "_Unique entries only"
-msgstr "_רשומות ייחודיות בלבד"
-
-#: menueditor/add_menu_dialog.c:206
-msgid "The 'Source' field is required."
-msgstr "השדה 'מקור' נחוץ."
-
-#: menueditor/add_menu_dialog.c:216 menueditor/add_menu_dialog.c:233
-#: menueditor/dnd.c:152 menueditor/edit_dialog.c:510
-#: menueditor/edit_dialog.c:523 menueditor/menueditor.c:387
-#: menueditor/move.c:120 menueditor/move.c:276
-msgid "--- include ---"
-msgstr "- כלול -"
-
-#: menueditor/add_menu_dialog.c:234 menueditor/dnd.c:157
-#: menueditor/edit_dialog.c:524 menueditor/menueditor.c:390
-#: menueditor/move.c:123 menueditor/move.c:279
-msgid "system"
-msgstr "מערכת"
-
-#. Create dialog for editing
-#: menueditor/edit_dialog.c:100 menueditor/edit_dialog.c:113
-msgid "Edit menu entry"
-msgstr "ערוך רשומת תפריט"
-
-#: menueditor/edit_dialog.c:131
-msgid "Separators cannot be edited"
-msgstr "אין אפשרות לערוך קווים מפרידים"
-
-#. Name
-#: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:102
-msgid "Title:"
-msgstr "כותרת:"
-
-#: menueditor/menueditor.c:156
-msgid "Select command"
-msgstr "בחירת פקודה"
-
-#: menueditor/menueditor.c:213
-msgid "Select icon"
-msgstr "בחירת סמל"
-
-#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:372
-#: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
-#: settings/backdrop_settings.c:467
-msgid "All Files"
-msgstr "כל הקבצים"
-
-#: menueditor/menueditor.c:223 panel-plugin/desktop-menu-plugin.c:378
-#: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:471
-msgid "Image Files"
-msgstr "קבצי תמונה"
-
-#: menueditor/menueditor.c:266
-msgid "Not yet implemented!"
-msgstr "טרם יושם!"
-
-#: menueditor/menueditor.c:277 menueditor/menueditor.c:659
-#, fuzzy
-msgid "Do you want to save before closing the menu ?"
-msgstr "האם ברצונך לשמור לפני סגירת הקובץ?"
-
-#: menueditor/menueditor.c:278
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr ""
-
-#: menueditor/menueditor.c:279
-msgid "Forget modifications"
-msgstr ""
-
-#: menueditor/menueditor.c:463 menueditor/menueditor.c:518
-#: menueditor/menueditor.c:657
-msgid "Question"
-msgstr ""
-
-#: menueditor/menueditor.c:465
-#, fuzzy
-msgid "Do you want to save before opening the default menu ?"
-msgstr "האם ברצונך לשמור לפני סגירת הקובץ?"
-
-#: menueditor/menueditor.c:467 menueditor/menueditor.c:522
-#: menueditor/menueditor.c:661
-msgid "Ignore modifications"
-msgstr ""
-
-#: menueditor/menueditor.c:520
-#, fuzzy
-msgid "Do you want to save before opening an other menu ?"
-msgstr "האם ברצונך לשמור לפני סגירת הקובץ?"
-
-#: menueditor/menueditor.c:533
-msgid "Open menu file"
-msgstr "פתח קובץ תפריט"
-
-#: menueditor/menueditor.c:571 menueditor/menueditor.c:582
-#, c-format
-msgid ""
-"Cannot write in %s : \n"
-"%s"
-msgstr ""
-"אין אפשרות לכתוב ב%s: \n"
-"%s"
-
-#: menueditor/menueditor.c:606
-msgid "Save as..."
-msgstr "שמירה בשם..."
-
-#: menueditor/menueditor.c:764
-msgid "Edit"
-msgstr "עריכה"
-
-#. File menu
-#: menueditor/menueditor.c:951
-msgid "_File"
-msgstr "_קובץ"
-
-#: menueditor/menueditor.c:960
-msgid "Open default menu"
-msgstr "פתח תפריט ברירת מחדל"
-
-#. Edit menu
-#: menueditor/menueditor.c:974
-msgid "_Edit"
-msgstr "_עריכה"
-
-#: menueditor/menueditor.c:980
-msgid "Add an external menu..."
-msgstr "הוסף תפריט חיצוני..."
-
-#. Help menu
-#: menueditor/menueditor.c:992
-msgid "_Help"
-msgstr "ע_זרה"
-
-#: menueditor/menueditor.c:997
-msgid "_About..."
-msgstr "_אודות..."
-
-#: menueditor/menueditor.c:1011
-msgid "Create a new Xfce4 menu file"
-msgstr "צור קובץ תפריט Xfce4 חדש"
-
-#: menueditor/menueditor.c:1018
-msgid "Open an Xfce4 menu file"
-msgstr "פתח קובץ תפריט Xfce4"
-
-#: menueditor/menueditor.c:1025
-msgid "Save current menu"
-msgstr "שמור תפריט נוכחי"
-
-#: menueditor/menueditor.c:1032
-msgid "Close current menu"
-msgstr "סגור תפריט נוכחי"
-
-#: menueditor/menueditor.c:1040
-msgid "Add an entry to the menu"
-msgstr "הוסף רשומה לתפריט"
-
-#: menueditor/menueditor.c:1047
-msgid "Delete the current entry"
-msgstr "מחק רשומה נוכחית"
-
-#: menueditor/menueditor.c:1054
-msgid "Move the current entry up"
-msgstr "הזז את הרשומה הנוכחית למעלה"
-
-#: menueditor/menueditor.c:1061
-msgid "Move the current entry down"
-msgstr "הזז את הרשומה הנוכחית למטה"
-
-#: menueditor/menueditor.c:1069
-msgid "Collapse the tree"
-msgstr "צמצם את העץ"
-
-#: menueditor/menueditor.c:1076
-msgid "Expand the tree"
-msgstr "הרחב את העץ"
-
-#: menueditor/menueditor.c:1110
-msgid "Name"
-msgstr "שם"
-
-#: menueditor/menueditor.c:1112
-msgid "Command"
-msgstr "פקודה"
-
-#: menueditor/menueditor.c:1114
-msgid "Hidden"
-msgstr "מוסתר"
-
-#: menueditor/menueditor.c:1116
-msgid "Pointer"
-msgstr "מצביע"
-
-#: menueditor/menueditor.c:1248
-msgid "Corrupted file or incorrect file format !"
-msgstr "קובץ  פגום או תבנית לא נכונה."
-
-#: menueditor/menueditor.c:1261
-msgid "No root element in file !"
-msgstr "אין שורש בקובץ."
-
-#: menueditor/menueditor.c:1272
-msgid "Bad datafile format !"
-msgstr "תבנית קובץ לא טובה."
-
-#: menueditor/menueditor.c:1388
-#, c-format
-msgid "File %s doesn't exist !"
-msgstr "קובץ %s לא קיים."
-
-#: menueditor/move.c:401
-msgid "Do you want to move the item into the parent menu?"
-msgstr "האם ברצונך להזיז את הפריט לתפריט האב?"
-
-#: menueditor/move.c:500
-msgid "Do you want to move the item into the submenu?"
-msgstr "האם ברצונך להזיז את הפריט לתפריט המשנה?"
-
-#: menueditor/new_dialog.c:58
-msgid "Are you sure you want to close the current menu?"
-msgstr "האם אתה בטוח שברצונך לסגור את התפריט הנוכחי?"
-
-#: menueditor/new_dialog.c:74
-msgid "Do you want to save before closing the file?"
-msgstr "האם ברצונך לשמור לפני סגירת הקובץ?"
-
-#. get the filename and name for the new menu
-#: menueditor/new_dialog.c:84 menueditor/new_dialog.c:96
-msgid "New menu"
-msgstr "תפריט חדש"
-
-#. Filename
-#: menueditor/new_dialog.c:109
-msgid "Filename:"
-msgstr "שם קובץ:"
-
-#: menueditor/new_dialog.c:142
-msgid "All fields are required."
-msgstr "כל השדות נחוצים."
-
-#: modules/menu/desktop-menu-dentry.c:536
-msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-msgstr "XfceDesktopMenu: אין אפשרות למצוא את categories.xml"
-
-#: modules/menu/desktop-menuspec.c:62
-msgid "/Other"
-msgstr "/אחר"
-
-#: modules/menu/desktop-menuspec.c:361
-#, c-format
-msgid "%s: missing or unknown attribute for 'related' element\n"
-msgstr "%s: חסר או לא ידוע מאפיין של פרט קשור \n"
-
-#: modules/menu/desktop-menuspec.c:366
-#, c-format
-msgid "%s: unknown xml element %s\n"
-msgstr "%s לא ידוע פרט XML %s\n"
-
-#: panel-plugin/desktop-menu-plugin.c:192
-#: panel-plugin/desktop-menu-plugin.c:515
-msgid "Xfce Menu"
-msgstr "תפריט Xfce"
-
-#: panel-plugin/desktop-menu-plugin.c:355
-msgid "Select Icon"
-msgstr "בחר סמל"
-
-#: panel-plugin/desktop-menu-plugin.c:357
-msgid "Select Menu File"
-msgstr "בחר קובץ תפריט"
-
-#: panel-plugin/desktop-menu-plugin.c:386
-msgid "Menu Files"
-msgstr "קבצי תפריט"
-
-#: panel-plugin/desktop-menu-plugin.c:445
-msgid "_Menu file:"
-msgstr "קבצי _תפריט:"
-
-#: panel-plugin/desktop-menu-plugin.c:479
-msgid "_Button icon:"
-msgstr "סמל ה_לחצן:"
-
-#: panel-plugin/desktop-menu-plugin.c:504
-msgid "Show _icons in menu"
-msgstr "הראה _סמלים בתפריט"
-
-#: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
-#: settings/backdrop-mgr.c:553
-msgid "Backdrop"
-msgstr "רקע"
-
-#: settings/backdrop-mgr.c:100
-#, c-format
-msgid "Adding files from directory %s..."
-msgstr "מוסיף קבצים מתיקייה %s..."
-
-#: settings/backdrop-mgr.c:160
-#, c-format
-msgid "Adding files from list %s..."
-msgstr "מוסיף קבצים מרשימה %s..."
-
-#: settings/backdrop-mgr.c:215
+#: settings/backdrop-mgr.c:175
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -460,268 +30,174 @@ msgstr ""
 "\n"
 "יש לבחור מיקום אחר או ללחוץ על ביטול בתיבת הדו-שיח בשביל לא לשמור את השינויים"
 
-#: settings/backdrop-mgr.c:502
-msgid "Select backdrop image file"
-msgstr "בחר בקובץ של תמונת הטפט"
+#: settings/backdrop-mgr.c:510
+msgid "Select image file"
+msgstr "בחר בקובץ תמונה"
 
-#: settings/backdrop-mgr.c:559
-msgid "Adding multiple files..."
-msgstr "מוסיף מספר קבצים..."
-
-#: settings/backdrop-mgr.c:637
+#: settings/backdrop-mgr.c:622
 msgid "Choose backdrop list filename"
 msgstr "בחר בקובץ רשימת הטפטים"
 
-#: settings/backdrop-mgr.c:646
-msgid "List Files"
-msgstr "רשימת קבצים"
+#: settings/backdrop-mgr.c:694
+msgid "New.list"
+msgstr "רשימה.חדשה"
 
-#: settings/backdrop-mgr.c:709
+#: settings/backdrop-mgr.c:698
 msgid "Backdrop List"
 msgstr "רשימת טפטים"
 
-#: settings/backdrop-mgr.c:726
+#: settings/backdrop-mgr.c:734
 msgid "Image files"
 msgstr "קבצי תמונה"
 
-#: settings/backdrop-mgr.c:736
-msgid "backdrops.list"
-msgstr ""
-
-#: settings/backdrop-mgr.c:742
+#: settings/backdrop-mgr.c:749
 msgid "List file"
 msgstr "רשימת קבצים"
 
-#: settings/backdrop-mgr.c:762
+#: settings/backdrop-mgr.c:767
 msgid "Create backdrop list"
 msgstr "צור רשימת טפטים"
 
-#: settings/backdrop-mgr.c:793
+#: settings/backdrop-mgr.c:774
 msgid "Edit backdrop list"
 msgstr "ערוך רשימת טפטים"
 
-#. the dialog
-#: settings/backdrop_settings.c:86 settings/backdrop_settings.c:765
-#: src/xfce-desktop.c:597
-msgid "Desktop"
-msgstr "שולחן עבודה"
+#: settings/backdrop_settings.c:156
+msgid "Desktop: backdrop"
+msgstr "שולחן עבודה: רקע"
 
-#: settings/backdrop_settings.c:462
-msgid "Select backdrop image or list file"
-msgstr "בחר בטפט או בקובץ רשימה"
+#: settings/backdrop_settings.c:357
+msgid "Select background color"
+msgstr "בחר בצבע רקע"
 
-#: settings/backdrop_settings.c:480
-msgid "List Files (*.list)"
-msgstr "קבצי רשימה (*.list("
+#: settings/backdrop_settings.c:407
+msgid "Background color:"
+msgstr "צבע רקע:"
 
-#: settings/backdrop_settings.c:565
-msgid "_Edit list..."
-msgstr "_ערוך רשימה..."
+#: settings/backdrop_settings.c:437
+msgid "Use color only:"
+msgstr "הגדר צבע בלבד:"
 
-#: settings/backdrop_settings.c:573
-msgid "_New list..."
-msgstr "_רשימה חדשה..."
-
-#: settings/backdrop_settings.c:609
-msgid "S_tyle:"
-msgstr "_סגנון:"
-
-#: settings/backdrop_settings.c:617
-msgid "Tiled"
-msgstr "פרושה"
+#: settings/backdrop_settings.c:563
+msgid "File:"
+msgstr "קובץ:"
 
 #: settings/backdrop_settings.c:624
-msgid "Centered"
-msgstr "ממורכזת"
+msgid "Select background image or list file"
+msgstr "בחר בתמונת רקע או בקובץ רשימה"
 
-#: settings/backdrop_settings.c:631
-msgid "Scaled"
-msgstr "מותאמת"
+#: settings/backdrop_settings.c:701
+msgid "_Browse..."
+msgstr "_סייר..."
 
-#: settings/backdrop_settings.c:638
-msgid "Stretched"
-msgstr "מתוחה"
+#: settings/backdrop_settings.c:705
+msgid "New list"
+msgstr "רשימה חדשה"
 
-#: settings/backdrop_settings.c:645
-msgid "Auto"
-msgstr "אוטומטי"
+#: settings/backdrop_settings.c:709
+msgid "Edit list"
+msgstr "ערוך רשימה"
 
-#: settings/backdrop_settings.c:711
-msgid "Adjust _Brightness:"
-msgstr "התאם _בהירות:"
+#: settings/backdrop_settings.c:747
+msgid "Style:"
+msgstr "סגנון:"
+
+#: settings/backdrop_settings.c:755
+msgid "_Tiled"
+msgstr "_פרושה"
+
+#: settings/backdrop_settings.c:761
+msgid "_Scaled"
+msgstr "_מותאמת"
+
+#: settings/backdrop_settings.c:768
+msgid "_Centered"
+msgstr "_ממורכזת"
+
+#: settings/backdrop_settings.c:775
+msgid "_Auto"
+msgstr "_אוטומטי"
+
+#. the dialog
+#: settings/backdrop_settings.c:801
+
+msgid "Background"
+msgstr "רקע"
 
 #. header
-#: settings/backdrop_settings.c:780
-msgid "Desktop Settings"
-msgstr "הגדרות שולחן עבודה"
+#: settings/backdrop_settings.c:819
+msgid "Background Settings"
+msgstr "הגדרות רקע"
 
-#: settings/backdrop_settings.c:808
-msgid "_Backdrops"
-msgstr "_טפטים"
-
-#. color settings frame
-#: settings/backdrop_settings.c:834
+#. color
+#: settings/backdrop_settings.c:825
 msgid "Color"
 msgstr "צבע"
 
-#: settings/backdrop_settings.c:848
-msgid "_Color Style:"
-msgstr "סגנון _צבע:"
-
-#: settings/backdrop_settings.c:857
-msgid "Solid Color"
-msgstr "צבע אחיד"
-
-#: settings/backdrop_settings.c:864
-msgid "Horizontal Gradient"
-msgstr "הדרגתי אופקי"
-
-#: settings/backdrop_settings.c:871
-msgid "Vertical Gradient"
-msgstr "הדרגתי אנכי"
-
-#: settings/backdrop_settings.c:892
-msgid "Fi_rst Color:"
-msgstr "צבע _ראשון:"
-
-#: settings/backdrop_settings.c:913
-msgid "_Second Color:"
-msgstr "צבע _שני:"
-
-#. set color only checkbox
-#: settings/backdrop_settings.c:934
-msgid "Set color _only"
-msgstr "הגדר צבע _בלבד"
-
-#: settings/backdrop_settings.c:949
+#. image vbox
+#: settings/backdrop_settings.c:837
 msgid "Image"
 msgstr "תמונה"
 
-#: settings/backdrop_settings.c:957
-msgid "Show _Image"
-msgstr "הראה _תמונה"
+#: settings/workspaces_settings.c:86
+msgid "Desktop: workspaces"
+msgstr "שולחן עבודה: סביבות עבודה"
 
-#: settings/backdrop_settings.c:979
-msgid "_File:"
-msgstr "_קובץ:"
+#: settings/workspaces_settings.c:340
+msgid "Change name"
+msgstr "שנה שם"
 
-#. don't set backdrop checkbox
-#: settings/backdrop_settings.c:1016
-msgid "_Don't set backdrop"
-msgstr "_לא להגדיר רקע"
-
-#. add the single backdrop settings page to the main notebook
-#: settings/backdrop_settings.c:1039
-msgid "_Backdrop"
-msgstr "_רקע"
-
-#: settings/backdrop_settings.c:1047 settings/backdrop_settings.c:1049
+#: settings/workspaces_settings.c:351
 #, c-format
-msgid "Screen %d"
-msgstr "מסך %d"
+msgid "Workspace %d"
+msgstr "סביבת עבודה %d"
 
-#. and if we have multiple screens, each with multiple monitors
-#: settings/backdrop_settings.c:1054
+#: settings/workspaces_settings.c:361
+msgid "Name:"
+msgstr "שם:"
+
+#: settings/workspaces_settings.c:472
+msgid "Click on a workspace name to edit it"
+msgstr "לחץ על שם סביבת העבודה כדי לערוך אותה"
+
+#: settings/workspaces_settings.c:503
+msgid "Number of workspaces:"
+msgstr "מספר סביבות עבודה:"
+
+#. Number of workspaces
+#: settings/workspaces_settings.c:539 settings/workspaces_settings.c:569
+msgid "Workspaces"
+msgstr "סביבות עבודה"
+
+#: settings/workspaces_settings.c:562
+msgid "Workspace Settings"
+msgstr "הגדרות סביבת עבודה"
+
+#. Workspace names
+#: settings/workspaces_settings.c:581
+msgid "Workspace names"
+msgstr "שמות סביבות העבודה"
+
+#: src/backdrop.c:497
 #, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "מסך %d, צג %d"
+msgid "xfdesktop error: loading backdrop image: %s\n"
+msgstr "שגיאה בxfdesktop: טעינת תמונת רקע: %s\n"
 
-#: settings/backdrop_settings.c:1068
-msgid "_Menu"
-msgstr "_תפריט"
-
-#: settings/menu_settings.c:132
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "אין אפשרות להפעיל את עורך התפריטים של Xfce4: %s"
-
-#: settings/menu_settings.c:153
-#, fuzzy
-msgid "Window List"
-msgstr "הצג רשימת _חלונות"
-
-#: settings/menu_settings.c:161
-msgid "Show window _list"
-msgstr "הצג רשימת _חלונות"
-
-#: settings/menu_settings.c:176
-msgid "Show _window icons"
-msgstr "הצג _סמלי חלונות"
-
-#: settings/menu_settings.c:189
-#, fuzzy
-msgid "Desktop Menu"
+#: src/main.c:250
+msgid "Desktop"
 msgstr "שולחן עבודה"
 
-#: settings/menu_settings.c:197
-msgid "Show desktop _menu"
-msgstr "הצג _תפריט שולחן עבודה"
+#: src/menu.c:742
+msgid "Add workspace"
+msgstr "הוסף סביבת עבודה"
 
-#: settings/menu_settings.c:212
-msgid "Show _application icons"
-msgstr "הצג סמלי _יישומים"
+#: src/menu.c:749
+msgid "Delete workspace"
+msgstr "הסר סביבת עבודה"
 
-#: settings/menu_settings.c:223
-msgid "_Edit desktop menu"
-msgstr "_ערוך תפריט שולחן עבודה"
-
-#: src/main.c:262
-#, c-format
-msgid "%s: Unknown option: %s\n"
-msgstr "%s אפשרות לא ידועה: %s\n"
-
-#: src/main.c:263
-msgid "Options are:\n"
-msgstr "האפשרויות הם:\n"
-
-#: src/main.c:264
-msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "    -טוען      טוען את כל ההגדרות, מרענן את רשימת החלונות\n"
-
-#: src/main.c:265
-msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    -תפריט        מקפיץ תפריט (במיקום הסמן הנוכחי)\n"
-
-#: src/main.c:266
+#: src/settings.c:186
 msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -רשימת חלונות  מקפיץ את רשימת החלונות (במיקום הסמן הנוכחי)\n"
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr "xfdesktop: אין אפשרות להתחבר למנהל ההגדות. בדוק בבקשה את ההתקנה שלך."
 
-#: src/menu.c:73
-#, c-format
-msgid ""
-"%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
-msgstr "%s: אין אפשרות לאתחל את התפריט. לחיצה ימנית לא תהייה זמינה.\n"
-
-#: src/windowlist.c:183
-#, c-format
-msgid "<b>Workspace %d</b>"
-msgstr "<b>סיבבת עבודה %d</b>"
-
-#: src/windowlist.c:188
-#, c-format
-msgid "<i>Workspace %d</i>"
-msgstr "<b>סביבת עבודה %d</b>"
-
-#: src/windowlist.c:244 src/windowlist.c:247
-msgid "_Add Workspace"
-msgstr "_הוסף סביבת עבודה"
-
-#: src/windowlist.c:254
-#, c-format
-msgid "_Remove Workspace %d"
-msgstr "_הסר סביבת עבודה %d"
-
-#: src/windowlist.c:256
-#, c-format
-msgid "_Remove Workspace '%s'"
-msgstr "_הסר סביבת עבודה %s"
-
-#~ msgid "Corrupted file or incorrect file format !\n"
-#~ msgstr "קובץ  פגום או תבנית לא נכונה.\n"
-
-#~ msgid "No root element in file !\n"
-#~ msgstr "אין שורש בקובץ.\n"
-
-#~ msgid "Bad datafile format !\n"
-#~ msgstr "תבנית קובץ לא טובה.\n"
