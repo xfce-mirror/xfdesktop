@@ -636,10 +636,10 @@ static void add_file_entry(GtkWidget *vbox, ListDialog *ld)
     gtk_widget_show(hbox);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 
-    label = gtk_label_new(_("File:"));
+/*    label = gtk_label_new(_("File:"));
     gtk_widget_show(label);
     gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
-
+*/
     ld->file_entry = gtk_entry_new();
     gtk_widget_show(ld->file_entry);
     gtk_entry_set_text(GTK_ENTRY(ld->file_entry), ld->filename);
@@ -713,29 +713,30 @@ static void list_mgr_dialog(const char *title, GtkWidget *parent,
     gtk_box_pack_start(GTK_BOX(mainvbox), header, FALSE, TRUE, 0);
     gtk_widget_set_size_request(header, -1, 50);
 
-    frame = gtk_frame_new(_("Image files"));
-    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
+    add_spacer(GTK_BOX(mainvbox));
+
+    frame = xfce_framebox_new(_("Image files"), FALSE);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
     
     vbox = gtk_vbox_new(FALSE, BORDER);
-    gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
+/*    gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER); */
     gtk_widget_show(vbox);
-    gtk_container_add(GTK_CONTAINER(frame), vbox);
+    xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
 
     add_tree_view(vbox, path, ld);
     
     add_list_buttons(vbox, ld);
 
-    frame = gtk_frame_new(_("List file"));
-    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
+    add_spacer(GTK_BOX(mainvbox));
+
+    frame = xfce_framebox_new(_("List file"), FALSE);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, FALSE, FALSE, 0);
     
     vbox = gtk_vbox_new(FALSE, BORDER);
-    gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
     gtk_widget_show(vbox);
-    gtk_container_add(GTK_CONTAINER(frame), vbox);
+    xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
 
     add_file_entry(vbox, ld);
 
