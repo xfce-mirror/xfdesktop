@@ -64,12 +64,6 @@ void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon);
 
 enum {ICON_COLUMN, NAME_COLUMN, COMMAND_COLUMN, HIDDEN_COLUMN, POINTER_COLUMN};
 
-struct _controls_menu{
-  enum {MENUFILE, SYSTEM} menu_type;
-  GtkWidget *hbox_source;
-  GtkWidget *label_source;
-};
-
 struct _menueditor_app{
   gboolean menu_modified;
   gchar menu_file_name[255];

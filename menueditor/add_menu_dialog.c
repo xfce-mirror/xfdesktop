@@ -37,6 +37,9 @@ void addmenu_option_file_cb (GtkWidget *widget, struct _controls_menu *controls)
   controls->menu_type = MENUFILE;
   gtk_widget_set_sensitive(controls->hbox_source,TRUE);
   gtk_widget_set_sensitive(controls->label_source,TRUE);
+  gtk_widget_set_sensitive(controls->label_style,FALSE);
+  gtk_widget_set_sensitive(controls->optionmenu_style,FALSE);
+  gtk_widget_set_sensitive(controls->checkbutton_unique,FALSE);
 }
 
 void addmenu_option_system_cb (GtkWidget *widget, struct _controls_menu *controls)
@@ -44,6 +47,9 @@ void addmenu_option_system_cb (GtkWidget *widget, struct _controls_menu *control
   controls->menu_type = SYSTEM;
   gtk_widget_set_sensitive(controls->hbox_source,FALSE);
   gtk_widget_set_sensitive(controls->label_source,FALSE);
+  gtk_widget_set_sensitive(controls->label_style,TRUE);
+  gtk_widget_set_sensitive(controls->optionmenu_style,TRUE);
+  gtk_widget_set_sensitive(controls->checkbutton_unique,TRUE);
 }
 
 void add_menu_cb (GtkWidget *widget, gpointer data)
@@ -61,6 +67,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
   GtkWidget *entry_source;
   GtkWidget *button_browse;
 
+
   gchar *header_text;
 
   dialog = gtk_dialog_new_with_buttons(_("Add an external menu"),
@@ -77,7 +84,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
   g_free (header_text);
 
   /* Table */
-  table = gtk_table_new(2, 2, TRUE);
+  table = gtk_table_new(4, 2, TRUE);
 
   /* Type */
   label_type = gtk_label_new(_("Type :"));
@@ -117,12 +124,41 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
   gtk_table_attach(GTK_TABLE(table), controls.label_source, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
   gtk_table_attach(GTK_TABLE(table), controls.hbox_source, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
 
+  /* Style */
+  controls.label_style = gtk_label_new(_("Style :"));
+  
+  menu = gtk_menu_new();
+  mitem = gtk_menu_item_new_with_mnemonic(_("Simple"));
+  gtk_menu_shell_append(GTK_MENU_SHELL(menu), mitem);
+  gtk_widget_show(mitem);
+  mitem = gtk_menu_item_new_with_mnemonic(_("Multilevel"));
+  gtk_menu_shell_append(GTK_MENU_SHELL(menu), mitem);
+  gtk_widget_show(mitem);
+
+  controls.optionmenu_style = gtk_option_menu_new();
+
+  gtk_option_menu_set_menu(GTK_OPTION_MENU(controls.optionmenu_style), menu);
+  gtk_option_menu_set_history(GTK_OPTION_MENU(controls.optionmenu_style), 0);
+
+  gtk_table_attach(GTK_TABLE(table), controls.label_style, 0, 1, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
+  gtk_table_attach(GTK_TABLE(table), controls.optionmenu_style, 1, 2, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
+
+  /* Unique */
+  controls.checkbutton_unique = gtk_check_button_new_with_label(_("Unique"));
+
+  gtk_table_attach(GTK_TABLE(table), controls.checkbutton_unique, 1, 2, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
+
+  /* Table properties */
   gtk_table_set_row_spacings(GTK_TABLE(table), 5);
   gtk_table_set_col_spacings(GTK_TABLE(table), 5);
   gtk_container_set_border_width(GTK_CONTAINER(table),10);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), table, FALSE, FALSE, 0);
 
   /* Show dialog */
+  gtk_widget_set_sensitive(controls.label_style,FALSE);
+  gtk_widget_set_sensitive(controls.optionmenu_style,FALSE);
+  gtk_widget_set_sensitive(controls.checkbutton_unique,FALSE);
+  
   gtk_window_set_default_size(GTK_WINDOW(dialog),350,100);
 
   gtk_widget_show_all(dialog);
@@ -224,6 +260,12 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 
       xmlSetProp(node,"type","system");
 
+      if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(controls.checkbutton_unique)))
+	xmlSetProp(node,"unique","true");
+
+      if(gtk_option_menu_get_history(GTK_OPTION_MENU(controls.optionmenu_style))!=0)
+	xmlSetProp(node,"style","multilevel");
+      
       /* Append entry in the tree */
       if(!ret_selection){
 	/* Add the node to the tree */

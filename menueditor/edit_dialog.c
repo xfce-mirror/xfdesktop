@@ -28,6 +28,7 @@
 
 #include "menueditor.h"
 
+#include "add_menu_dialog.h"
 #include "edit_dialog.h"
 
 void editmenu_option_file_cb (GtkWidget *widget, struct _controls_menu *controls)
@@ -35,6 +36,9 @@ void editmenu_option_file_cb (GtkWidget *widget, struct _controls_menu *controls
   controls->menu_type = MENUFILE;
   gtk_widget_set_sensitive(controls->hbox_source,TRUE);
   gtk_widget_set_sensitive(controls->label_source,TRUE);
+  gtk_widget_set_sensitive(controls->label_style,FALSE);
+  gtk_widget_set_sensitive(controls->optionmenu_style,FALSE);
+  gtk_widget_set_sensitive(controls->checkbutton_unique,FALSE);
 }
 
 void editmenu_option_system_cb (GtkWidget *widget, struct _controls_menu *controls)
@@ -42,6 +46,9 @@ void editmenu_option_system_cb (GtkWidget *widget, struct _controls_menu *contro
   controls->menu_type = SYSTEM;
   gtk_widget_set_sensitive(controls->hbox_source,FALSE);
   gtk_widget_set_sensitive(controls->label_source,FALSE);
+  gtk_widget_set_sensitive(controls->label_style,TRUE);
+  gtk_widget_set_sensitive(controls->optionmenu_style,TRUE);
+  gtk_widget_set_sensitive(controls->checkbutton_unique,TRUE);
 }
 
 /* Edition */
@@ -71,6 +78,8 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   xmlChar *prop_src = NULL;
   xmlChar *prop_snotify = NULL;
   xmlChar *prop_term = NULL;
+  xmlChar *prop_style = NULL;
+  xmlChar *prop_unique = NULL;
 
   /* Retrieve the xmlNodePtr of the menu entry */
   gtk_tree_model_get_iter(GTK_TREE_MODEL(menueditor_app.treestore), &iter, path);
@@ -105,6 +114,8 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   prop_src = xmlGetProp(node, "src");
   prop_snotify = xmlGetProp(node , "snotify");
   prop_term = xmlGetProp(node, "term");
+  prop_unique = xmlGetProp(node, "unique");
+  prop_style = xmlGetProp(node, "style");
 
   /* Choose the edition dialog */
   if(!xmlStrcmp(node->name,(xmlChar*)"separator") ){
@@ -159,6 +170,31 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     gtk_table_attach(GTK_TABLE(table), controls.label_source, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
     gtk_table_attach(GTK_TABLE(table), controls.hbox_source, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
 
+    /* Style */
+    controls.label_style = gtk_label_new(_("Style :"));
+  
+    menu = gtk_menu_new();
+    mitem = gtk_menu_item_new_with_mnemonic(_("Simple"));
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mitem);
+    gtk_widget_show(mitem);
+    mitem = gtk_menu_item_new_with_mnemonic(_("Multilevel"));
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mitem);
+    gtk_widget_show(mitem);
+
+    controls.optionmenu_style = gtk_option_menu_new();
+
+    gtk_option_menu_set_menu(GTK_OPTION_MENU(controls.optionmenu_style), menu);
+    gtk_option_menu_set_history(GTK_OPTION_MENU(controls.optionmenu_style), 0);
+  
+    gtk_table_attach(GTK_TABLE(table), controls.label_style, 0, 1, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach(GTK_TABLE(table), controls.optionmenu_style, 1, 2, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
+
+    /* Unique */
+    controls.checkbutton_unique = gtk_check_button_new_with_label(_("Unique"));
+
+    gtk_table_attach(GTK_TABLE(table), controls.checkbutton_unique, 1, 2, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
+
+    /* Table properties */
     gtk_table_set_row_spacings(GTK_TABLE(table), 5);
     gtk_table_set_col_spacings(GTK_TABLE(table), 5);
     gtk_container_set_border_width(GTK_CONTAINER(table),10);
@@ -169,12 +205,23 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
       controls.menu_type=MENUFILE;
       gtk_widget_set_sensitive(controls.hbox_source,TRUE);
       gtk_widget_set_sensitive(controls.label_source,TRUE);
+      gtk_widget_set_sensitive(controls.label_style,FALSE);
+      gtk_widget_set_sensitive(controls.optionmenu_style,FALSE);
+      gtk_widget_set_sensitive(controls.checkbutton_unique,FALSE);
     }else{
       gtk_option_menu_set_history(GTK_OPTION_MENU(optionmenu_type),1);
       controls.menu_type=SYSTEM;
       gtk_widget_set_sensitive(controls.hbox_source,FALSE);
       gtk_widget_set_sensitive(controls.label_source,FALSE);
+      gtk_widget_set_sensitive(controls.label_style,TRUE);
+      gtk_widget_set_sensitive(controls.optionmenu_style,TRUE);
+      gtk_widget_set_sensitive(controls.checkbutton_unique,TRUE);
     }
+
+    if(!xmlStrcmp(prop_unique, (xmlChar*)"true"))
+      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(controls.checkbutton_unique), TRUE);
+    if(!xmlStrcmp(prop_style, (xmlChar*)"multilevel"))
+      gtk_option_menu_set_history(GTK_OPTION_MENU(controls.optionmenu_style),1);
 
     gtk_window_set_default_size(GTK_WINDOW(dialog),300,100);
   }else if(!xmlStrcmp(node->name,(xmlChar*)"app")){
@@ -438,7 +485,6 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
 	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
       }
-
       gtk_tree_store_set (menueditor_app.treestore, &iter,
 			  ICON_COLUMN, icon, 
 			  NAME_COLUMN, name, -1);
@@ -502,6 +548,8 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
       gchar *name=NULL;
       gchar *source=NULL;
       xmlAttrPtr src_prop;
+      xmlAttrPtr unique_prop;
+      xmlAttrPtr style_prop;
 
       switch(controls.menu_type){
       case MENUFILE:
@@ -517,6 +565,12 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 	xmlSetProp(node,"type", "file");
 	xmlSetProp(node,"src",gtk_entry_get_text(GTK_ENTRY(entry_source)));
 	
+	/* remove unique and style props if needed */
+	unique_prop = xmlHasProp(node, "unique");
+	xmlRemoveProp(unique_prop);
+	style_prop = xmlHasProp(node, "style");
+	xmlRemoveProp(style_prop);
+
 	g_free(source);
 	g_free(name);
 	break;
@@ -531,9 +585,20 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 			    COMMAND_COLUMN, source,-1);
 
 	xmlSetProp(node,"type", "system");
-	/* remove src prop if needed */
-	src_prop = xmlHasProp(node, "src");
-	xmlRemoveProp(src_prop);
+	
+	if(!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(controls.checkbutton_unique))){
+	  unique_prop = xmlHasProp(node, "unique");
+	  xmlRemoveProp(unique_prop);
+	}
+	else
+	  xmlSetProp(node,"unique","true");
+
+	if(gtk_option_menu_get_history(GTK_OPTION_MENU(controls.optionmenu_style)) == 0){
+	  /* remove src prop if needed */
+	  style_prop = xmlHasProp(node, "style");
+	  xmlRemoveProp(style_prop);
+	}else
+	  xmlSetProp(node,"style","multilevel");
       }
     
     }
@@ -545,6 +610,8 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   xmlFree(prop_src);
   xmlFree(prop_snotify);
   xmlFree(prop_term);
+  xmlFree(prop_style);
+  xmlFree(prop_unique);
 
   gtk_widget_destroy (dialog);
 }
