@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2003-07-10 10:22+0200\n"
-"PO-Revision-Date: 2003-07-05 17:33+0100\n"
+"PO-Revision-Date: 2003-07-15 22:40+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: ca <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,13 +19,11 @@ msgstr ""
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
+"Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
-"No s'ha pogut grabar el fitxer %s: %s\n"
+"No s'ha pogut gravar el fitxer %s: %s\n"
 "\n"
-"Escolliu una altra ubicació o polseu cancel·la en la finestra de diàleg per "
-"descartar els canvis"
+"Escolliu una altra ubicació o polseu cancel·la en la finestra de diàleg per descartar els canvis"
 
 #: settings/backdrop-mgr.c:506
 msgid "Select image file"
@@ -112,7 +110,6 @@ msgid "_Centered"
 msgstr "_Centrat"
 
 #: settings/backdrop_settings.c:772
-#, fuzzy
 msgid "_Auto"
 msgstr "_Automàtic"
 
@@ -162,7 +159,8 @@ msgid "Number of workspaces:"
 msgstr "Número d'àrees de treball:"
 
 #. Number of workspaces
-#: settings/workspaces_settings.c:528 settings/workspaces_settings.c:558
+#: settings/workspaces_settings.c:528
+#: settings/workspaces_settings.c:558
 msgid "Workspaces"
 msgstr "Àrees de treball"
 
@@ -190,12 +188,9 @@ msgstr "Afegir àrea de treball"
 
 #: src/menu.c:718
 msgid "Delete workspace"
-msgstr "Borrar àrea de treball"
+msgstr "Esborrar àrea de treball"
 
 #: src/settings.c:186
-msgid ""
-"xfdesktop: could not connect to settings manager!Please check your "
-"installation."
-msgstr ""
-"xfdesktop: no puc conectar amb el gestor d'ajustaments! Comproveu la vostra "
-"insta·lació."
+msgid "xfdesktop: could not connect to settings manager!Please check your installation."
+msgstr "xfdesktop: no puc connectar amb el gestor d'ajustaments! Comproveu la vostra insta·lació."
+
