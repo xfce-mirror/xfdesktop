@@ -22,12 +22,10 @@
 
 #include "main.h"
 
-void background_init (XfceDesktop *xfdesktop);
+void background_init (XfceDesktop * xfdesktop);
 
-void background_load_settings (XfceDesktop *xfdesktop);
+void background_load_settings (XfceDesktop * xfdesktop);
 
-void background_cleanup (XfceDesktop *xfdesktop);
+void background_cleanup (XfceDesktop * xfdesktop);
 
 #endif /* __XFDESKTOP_BACKDROP_H__ */
-
-

@@ -102,7 +102,7 @@ load_settings ()
     DBG ("load settings");
     background_load_settings (&xfdesktop);
     menu_load_settings (&xfdesktop);
-}    
+}
 
 /* client messages */
 
@@ -165,13 +165,13 @@ check_is_running (Window * xid)
 
     if (!selection_atom)
     {
-	char selection_name [100];
-	
+	char selection_name[100];
+
 	sprintf (selection_name, XFDESKTOP_SELECTION_FMT, xfdesktop.xscreen);
-	selection_atom = XInternAtom (GDK_DISPLAY(), selection_name, False);
+	selection_atom = XInternAtom (GDK_DISPLAY (), selection_name, False);
     }
 
-    if ((*xid = XGetSelectionOwner (GDK_DISPLAY(), selection_atom)))
+    if ((*xid = XGetSelectionOwner (GDK_DISPLAY (), selection_atom)))
 	return TRUE;
 
     return FALSE;
@@ -189,7 +189,8 @@ xfdesktop_set_selection (void)
 
     if (!selection_atom)
     {
-	char selection_name [100];
+	char selection_name[100];
+
 	sprintf (selection_name, XFDESKTOP_SELECTION_FMT, scr);
 	selection_atom = XInternAtom (dpy, selection_name, False);
     }
@@ -199,7 +200,7 @@ xfdesktop_set_selection (void)
 
     win = GDK_WINDOW_XID (gtkwin->window);
 
-    XSelectInput (dpy, win, PropertyChangeMask|ButtonPressMask);
+    XSelectInput (dpy, win, PropertyChangeMask | ButtonPressMask);
     XSetSelectionOwner (dpy, selection_atom, win, GDK_CURRENT_TIME);
 
     /* listen for client messages */
@@ -250,18 +251,18 @@ create_fullscreen_window (void)
     gtk_widget_add_events (win,
 			   GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
 			   GDK_SCROLL_MASK);
-    
+
     netk_gtk_window_avoid_input (GTK_WINDOW (win));
-    
+
     gtk_widget_set_size_request (win, gdk_screen_width (),
 				 gdk_screen_height ());
 
-    gtk_window_move (GTK_WINDOW(win), 0, 0);
-    
+    gtk_window_move (GTK_WINDOW (win), 0, 0);
+
     gtk_widget_realize (win);
 
     gtk_window_set_title (GTK_WINDOW (win), _("Desktop"));
-    
+
     /* Remove double buffering in desktop window otherwise
        gtk allocates twice the size of the screen in video memory
        which can show to be unusable even on a GeForce II MX with 
@@ -271,7 +272,7 @@ create_fullscreen_window (void)
     if (GTK_WIDGET_DOUBLE_BUFFERED (win))
 	gtk_widget_set_double_buffered (win, FALSE);
 
-    gtk_window_set_type_hint (GTK_WINDOW(win), GDK_WINDOW_TYPE_HINT_DESKTOP);
+    gtk_window_set_type_hint (GTK_WINDOW (win), GDK_WINDOW_TYPE_HINT_DESKTOP);
 
     atom = gdk_atom_intern ("_NET_WM_WINDOW_TYPE_DESKTOP", FALSE);
 
@@ -284,7 +285,7 @@ create_fullscreen_window (void)
     atom = gdk_atom_intern ("XFCE_DESKTOP_WINDOW", FALSE);
     xid = GDK_WINDOW_XID (win->window);
 
-    gdk_property_change (gdk_get_default_root_window(),
+    gdk_property_change (gdk_get_default_root_window (),
 			 atom,
 			 gdk_atom_intern ("WINDOW", FALSE), 32,
 			 GDK_PROP_MODE_REPLACE, (guchar *) & xid, 1);
@@ -297,11 +298,11 @@ create_fullscreen_window (void)
  * This is Gtk+ >= 2.2 only for now, should be no problem after all.
  */
 static void
-xfdesktop_size_changed(GdkScreen *screen)
+xfdesktop_size_changed (GdkScreen * screen)
 {
     gdk_window_move_resize (xfdesktop.fullscreen->window, 0, 0,
-	    		    gdk_screen_width (), gdk_screen_height());
-    load_settings();
+			    gdk_screen_width (), gdk_screen_height ());
+    load_settings ();
 }
 #endif
 
@@ -310,10 +311,10 @@ xfdesktop_init (void)
 {
     TRACE ("initialization");
 
-    xfdesktop.dpy = GDK_DISPLAY();
-    xfdesktop.xscreen = DefaultScreen(xfdesktop.dpy);
-    xfdesktop.root = GDK_ROOT_WINDOW();
-    
+    xfdesktop.dpy = GDK_DISPLAY ();
+    xfdesktop.xscreen = DefaultScreen (xfdesktop.dpy);
+    xfdesktop.root = GDK_ROOT_WINDOW ();
+
     xfdesktop.netk_screen = netk_screen_get_default ();
     netk_screen_force_update (xfdesktop.netk_screen);
 
@@ -322,25 +323,25 @@ xfdesktop_init (void)
     xfdesktop_set_selection ();
 
     settings_init (&xfdesktop);
-    background_init(&xfdesktop);
+    background_init (&xfdesktop);
     menu_init (&xfdesktop);
 
 #if GTK_CHECK_VERSION(2,2,0)
-    g_signal_connect(G_OBJECT(gdk_screen_get_default()), "size-changed",
-            G_CALLBACK(xfdesktop_size_changed), NULL);
+    g_signal_connect (G_OBJECT (gdk_screen_get_default ()), "size-changed",
+		      G_CALLBACK (xfdesktop_size_changed), NULL);
 #endif
 
-    load_settings();
+    load_settings ();
     gtk_widget_show (xfdesktop.fullscreen);
     gdk_window_lower (xfdesktop.fullscreen->window);
-    load_settings();
+    load_settings ();
 }
 
 static void
 xfdesktop_cleanup (void)
 {
     TRACE ("cleaning up");
-    settings_cleanup(&xfdesktop);
+    settings_cleanup (&xfdesktop);
     background_cleanup (&xfdesktop);
 }
 
@@ -383,7 +384,7 @@ main (int argc, char **argv)
 
     if (check_is_running (&xid))
     {
-	DBG("xfdesktop is running");
+	DBG ("xfdesktop is running");
 
 	if (argc <= 1 || strcmp ("-reload", argv[1]) == 0)
 	{
@@ -401,7 +402,7 @@ main (int argc, char **argv)
 	{
 	    g_message ("%s: unknown option: %s", PACKAGE, argv[1]);
 	}
-	
+
 	return 0;
     }
 

@@ -20,11 +20,10 @@
 #ifndef __XFDESKTOP_BACKDROP_MGR_H__
 #define __XFDESKTOP_BACKDROP_MGR_H__
 
-typedef void (*ListMgrCb)(char *, gpointer);
+typedef void (*ListMgrCb) (char *, gpointer);
 
-extern void create_list_file(GtkWidget *, ListMgrCb, gpointer);
+extern void create_list_file (GtkWidget *, ListMgrCb, gpointer);
 
-extern void edit_list_file(const char *, GtkWidget *, ListMgrCb, gpointer);
+extern void edit_list_file (const char *, GtkWidget *, ListMgrCb, gpointer);
 
-#endif	/* !__XFDESKTOP_BACKDROP_MGR_H__ */
-
+#endif /* !__XFDESKTOP_BACKDROP_MGR_H__ */

@@ -67,9 +67,9 @@ static gboolean is_using_system_rc = TRUE;
 static GtkWidget *desktop_menu = NULL, *windowlist = NULL;
 
 static NetkScreen *netk_screen = NULL;
-static GList *MainMenuData;     /* TODO: Free this at some point */
+static GList *MainMenuData;	/* TODO: Free this at some point */
 static gboolean EditMode = FALSE;
-static GtkItemFactory *ifactory = NULL; /* TODO: Is this really necessary? */
+static GtkItemFactory *ifactory = NULL;	/* TODO: Is this really necessary? */
 
 /*  User menu
  *  ---------
@@ -86,146 +86,153 @@ MenuItemType;
 
 typedef struct __MenuItemStruct
 {
-    MenuItemType type;          /* Type of Menu Item    */
-    char *path;                 /* itemfactory path to item */
-    char *cmd;                  /* shell cmd to execute */
-    gboolean term;              /* execute in terminal  */
-    GdkPixbuf *icon;            /* icon to display      */
+    MenuItemType type;		/* Type of Menu Item    */
+    char *path;			/* itemfactory path to item */
+    char *cmd;			/* shell cmd to execute */
+    gboolean term;		/* execute in terminal  */
+    GdkPixbuf *icon;		/* icon to display      */
 }
 MenuItem;
 
-void remove_factory_item(MenuItem *mi, GtkItemFactory *ifact)
+void
+remove_factory_item (MenuItem * mi, GtkItemFactory * ifact)
 {
-    TRACE("dummy");
-    gtk_item_factory_delete_item(ifact, mi->path);
+    TRACE ("dummy");
+    gtk_item_factory_delete_item (ifact, mi->path);
 }
 
-void free_menu_data(GList * menu_data)
+void
+free_menu_data (GList * menu_data)
 {
     MenuItem *mi;
     GList *li;
 
-    TRACE("dummy");
-    for(li = menu_data; li; li = li->next)
+    TRACE ("dummy");
+    for (li = menu_data; li; li = li->next)
     {
-        mi = li->data;
+	mi = li->data;
 
-        if(mi)
-        {
-            if(mi->path)
-            {
-                g_free(mi->path);
-            }
-            if(mi->cmd)
-            {
-                g_free(mi->cmd);
-            }
-            g_free(mi);
-        }
+	if (mi)
+	{
+	    if (mi->path)
+	    {
+		g_free (mi->path);
+	    }
+	    if (mi->cmd)
+	    {
+		g_free (mi->cmd);
+	    }
+	    g_free (mi);
+	}
     }
-    g_list_free(menu_data);
+    g_list_free (menu_data);
     menu_data = NULL;
 }
 
-void do_exec(gpointer callback_data, guint callback_action, GtkWidget * widget)
+void
+do_exec (gpointer callback_data, guint callback_action, GtkWidget * widget)
 {
-    TRACE("dummy");
-    g_spawn_command_line_async((char *)callback_data, NULL);
+    TRACE ("dummy");
+    g_spawn_command_line_async ((char *) callback_data, NULL);
 }
 
-void do_term_exec(gpointer callback_data, guint callback_action,
-                  GtkWidget * widget)
+void
+do_term_exec (gpointer callback_data, guint callback_action,
+	      GtkWidget * widget)
 {
     char *cmd;
 
-    TRACE("dummy");
+    TRACE ("dummy");
 
-    cmd = g_strconcat("xfterm4 -e ", (char *)callback_data, NULL);
+    cmd = g_strconcat ("xfterm4 -e ", (char *) callback_data, NULL);
 
-    g_spawn_command_line_async(cmd, NULL);
+    g_spawn_command_line_async (cmd, NULL);
 
-    g_free(cmd);
+    g_free (cmd);
 
     return;
 }
 
-void do_builtin(gpointer callback_data, guint callback_action, GtkWidget * widget)
+void
+do_builtin (gpointer callback_data, guint callback_action, GtkWidget * widget)
 {
-    char *builtin = (char *)callback_data;
+    char *builtin = (char *) callback_data;
 
-    TRACE("dummy");
-    if (!strcmp(builtin,"edit")) 
+    TRACE ("dummy");
+    if (!strcmp (builtin, "edit"))
     {
-        EditMode = (EditMode ? FALSE : TRUE);
+	EditMode = (EditMode ? FALSE : TRUE);
 
-        /* Need to rebuild menu, so destroy the current one */
-        g_list_foreach(MainMenuData, (GFunc)remove_factory_item, ifactory);
-        free_menu_data(MainMenuData);
-        ifactory = NULL;
-        MainMenuData = NULL;
+	/* Need to rebuild menu, so destroy the current one */
+	g_list_foreach (MainMenuData, (GFunc) remove_factory_item, ifactory);
+	free_menu_data (MainMenuData);
+	ifactory = NULL;
+	MainMenuData = NULL;
     }
-    else if (!strcmp(builtin, "quit"))
+    else if (!strcmp (builtin, "quit"))
     {
-        quit();
+	quit ();
     }
 }
 
-void do_edit(gpointer callback_data, guint callback_action, GtkWidget * widget)
+void
+do_edit (gpointer callback_data, guint callback_action, GtkWidget * widget)
 {
-    TRACE("dummy");
+    TRACE ("dummy");
     EditMode = FALSE;
 
     /* Need to rebuild menu, so destroy the current one */
-    g_list_foreach(MainMenuData, (GFunc)remove_factory_item, ifactory);
-    free_menu_data(MainMenuData);
+    g_list_foreach (MainMenuData, (GFunc) remove_factory_item, ifactory);
+    free_menu_data (MainMenuData);
     ifactory = NULL;
     MainMenuData = NULL;
 }
 
 static gchar *
-get_menu_file(void)
+get_menu_file (void)
 {
     char *filename = NULL;
     char *path = NULL;
     const char *env;
 
-    TRACE("dummy");
-    env = g_getenv("XFCE_DISABLE_USER_CONFIG");
+    TRACE ("dummy");
+    env = g_getenv ("XFCE_DISABLE_USER_CONFIG");
 
-    if(!env || strcmp(env, "0")) {
-    
-        filename = xfce_get_userfile("menu.xml", NULL);
-        if(g_file_test(filename, G_FILE_TEST_EXISTS))
+    if (!env || strcmp (env, "0"))
+    {
+
+	filename = xfce_get_userfile ("menu.xml", NULL);
+	if (g_file_test (filename, G_FILE_TEST_EXISTS))
 	{
 	    is_using_system_rc = FALSE;
-	    
-            return filename;
+
+	    return filename;
 	}
-        else
+	else
 	{
-            g_free(filename);
+	    g_free (filename);
 	}
     }
 
     is_using_system_rc = TRUE;
 
     /* xfce_get_path_localized(buffer, sizeof(buffer), SEARCHPATH,
-       "menu.xml", G_FILE_TEST_IS_REGULAR);*/
-    
+       "menu.xml", G_FILE_TEST_IS_REGULAR); */
+
     path = g_build_filename (SYSCONFDIR, "xfce4", "menu.xml", NULL);
-    filename = xfce_get_file_localized(path);
-    g_free(path);
+    filename = xfce_get_file_localized (path);
+    g_free (path);
 
     if (filename)
 	return filename;
 
-    g_warning("%s: Could not locate a menu definition file", PACKAGE);
+    g_warning ("%s: Could not locate a menu definition file", PACKAGE);
 
     return NULL;
 }
 
-MenuItem *parse_node_attr(MenuItemType type, xmlDocPtr doc, xmlNodePtr cur,
-                          char *path)
+MenuItem *
+parse_node_attr (MenuItemType type, xmlDocPtr doc, xmlNodePtr cur, char *path)
 {
     MenuItem *mi = NULL;
     xmlChar *name = NULL;
@@ -233,411 +240,420 @@ MenuItem *parse_node_attr(MenuItemType type, xmlDocPtr doc, xmlNodePtr cur,
     xmlChar *term = NULL;
     xmlChar *visible = NULL;
 
-    TRACE("dummy");
+    TRACE ("dummy");
 
-    visible = xmlGetProp(cur, "visible");
-    if(visible && !xmlStrcmp(visible, (xmlChar *) "no"))
+    visible = xmlGetProp (cur, "visible");
+    if (visible && !xmlStrcmp (visible, (xmlChar *) "no"))
     {
-        xmlFree(visible);
-        return NULL;
+	xmlFree (visible);
+	return NULL;
     }
 
-    mi = g_new(MenuItem, 1);
+    mi = g_new (MenuItem, 1);
 
-    name = xmlGetProp(cur, "name");
-    if(name == NULL)
+    name = xmlGetProp (cur, "name");
+    if (name == NULL)
     {
-        mi->path = g_build_path("/", path, "No Name", NULL);
+	mi->path = g_build_path ("/", path, "No Name", NULL);
     }
     else
     {
-        mi->path = g_build_path("/", path, name, NULL);
+	mi->path = g_build_path ("/", path, name, NULL);
     }
 
-    cmd = xmlGetProp(cur, "cmd");
-    if(cmd)
+    cmd = xmlGetProp (cur, "cmd");
+    if (cmd)
     {
-        /* I'm doing this so that I can do a g_free on it later */
-        mi->cmd = g_strdup(cmd);
+	/* I'm doing this so that I can do a g_free on it later */
+	mi->cmd = g_strdup (cmd);
     }
     else
     {
-        mi->cmd = NULL;
+	mi->cmd = NULL;
     }
 
-    term = xmlGetProp(cur, "term");
-    if(term && !xmlStrcmp(term, (xmlChar *) "yes"))
+    term = xmlGetProp (cur, "term");
+    if (term && !xmlStrcmp (term, (xmlChar *) "yes"))
     {
-        mi->term = TRUE;
+	mi->term = TRUE;
     }
     else
     {
-        mi->term = FALSE;
+	mi->term = FALSE;
     }
 
     mi->type = type;
-    mi->icon = NULL;            /* TODO: Load a pixbuf from icon filename */
+    mi->icon = NULL;		/* TODO: Load a pixbuf from icon filename */
 
     /* clean up */
-    if(visible)
-        xmlFree(visible);
+    if (visible)
+	xmlFree (visible);
 
-    if(name)
-        xmlFree(name);
+    if (name)
+	xmlFree (name);
 
-    if(cmd)
-        xmlFree(cmd);
+    if (cmd)
+	xmlFree (cmd);
 
-    if(term)
-        xmlFree(term);
+    if (term)
+	xmlFree (term);
 
     return mi;
 }
 
-GList *parse_menu_node(xmlDocPtr doc, xmlNodePtr parent, char *path,
-                       GList * menu_data)
+GList *
+parse_menu_node (xmlDocPtr doc, xmlNodePtr parent, char *path,
+		 GList * menu_data)
 {
     MenuItem *mi;
     xmlNodePtr cur;
 
-    TRACE("dummy");
+    TRACE ("dummy");
 
-    for(cur = parent->xmlChildrenNode; cur != NULL; cur = cur->next)
+    for (cur = parent->xmlChildrenNode; cur != NULL; cur = cur->next)
     {
-        if((!xmlStrcmp(cur->name, (const xmlChar *)"menu")))
-        {
-            mi = parse_node_attr(MI_SUBMENU, doc, cur, path);
-            if(mi)
-            {
-                menu_data = g_list_append(menu_data, mi);
+	if ((!xmlStrcmp (cur->name, (const xmlChar *) "menu")))
+	{
+	    mi = parse_node_attr (MI_SUBMENU, doc, cur, path);
+	    if (mi)
+	    {
+		menu_data = g_list_append (menu_data, mi);
 
-                /* recurse */
-                menu_data = parse_menu_node(doc, cur, mi->path, menu_data);
-            }
-        }
-        if((!xmlStrcmp(cur->name, (const xmlChar *)"app")))
-        {
-            mi = parse_node_attr(MI_APP, doc, cur, path);
-            if(mi)
-            {
-                menu_data = g_list_append(menu_data, mi);
-            }
-        }
-        if((!xmlStrcmp(cur->name, (const xmlChar *)"separator")))
-        {
-            mi = parse_node_attr(MI_SEPARATOR, doc, cur, path);
-            if(mi)
-            {
-                menu_data = g_list_append(menu_data, mi);
-            }
-        }
-        if((!xmlStrcmp(cur->name, (const xmlChar *)"title")))
-        {
-            mi = parse_node_attr(MI_TITLE, doc, cur, path);
-            if(mi)
-            {
-                menu_data = g_list_append(menu_data, mi);
-            }
-        }
-        if((!xmlStrcmp(cur->name, (const xmlChar *)"builtin")))
-        {
-            mi = parse_node_attr(MI_BUILTIN, doc, cur, path);
-            if(mi)
-            {
-                menu_data = g_list_append(menu_data, mi);
-            }
-        }
+		/* recurse */
+		menu_data = parse_menu_node (doc, cur, mi->path, menu_data);
+	    }
+	}
+	if ((!xmlStrcmp (cur->name, (const xmlChar *) "app")))
+	{
+	    mi = parse_node_attr (MI_APP, doc, cur, path);
+	    if (mi)
+	    {
+		menu_data = g_list_append (menu_data, mi);
+	    }
+	}
+	if ((!xmlStrcmp (cur->name, (const xmlChar *) "separator")))
+	{
+	    mi = parse_node_attr (MI_SEPARATOR, doc, cur, path);
+	    if (mi)
+	    {
+		menu_data = g_list_append (menu_data, mi);
+	    }
+	}
+	if ((!xmlStrcmp (cur->name, (const xmlChar *) "title")))
+	{
+	    mi = parse_node_attr (MI_TITLE, doc, cur, path);
+	    if (mi)
+	    {
+		menu_data = g_list_append (menu_data, mi);
+	    }
+	}
+	if ((!xmlStrcmp (cur->name, (const xmlChar *) "builtin")))
+	{
+	    mi = parse_node_attr (MI_BUILTIN, doc, cur, path);
+	    if (mi)
+	    {
+		menu_data = g_list_append (menu_data, mi);
+	    }
+	}
     }
 
-    g_assert(menu_data);
+    g_assert (menu_data);
 
-    return(menu_data);
+    return (menu_data);
 }
 
-GList *parse_menu_file(const char *filename)
+GList *
+parse_menu_file (const char *filename)
 {
     xmlDocPtr doc;
     xmlNodePtr cur;
     GList *menu_data = NULL;
     int prevdefault;
-    
-    TRACE("dummy");
 
-    prevdefault = xmlSubstituteEntitiesDefault(1);
-    
+    TRACE ("dummy");
+
+    prevdefault = xmlSubstituteEntitiesDefault (1);
+
     /* Open xml menu definition File */
-    doc = xmlParseFile(filename);
-    
-    xmlSubstituteEntitiesDefault(prevdefault);
-    
-    if(doc == NULL)
+    doc = xmlParseFile (filename);
+
+    xmlSubstituteEntitiesDefault (prevdefault);
+
+    if (doc == NULL)
     {
-        g_warning("%s: Could not parse %s.\n", PACKAGE, filename);
-        return NULL;
+	g_warning ("%s: Could not parse %s.\n", PACKAGE, filename);
+	return NULL;
     }
 
     /* verify that it is not an empty file */
-    cur = xmlDocGetRootElement(doc);
-    if(cur == NULL)
+    cur = xmlDocGetRootElement (doc);
+    if (cur == NULL)
     {
-        g_warning("%s: empty document: %s\n", PACKAGE, filename);
-        xmlFreeDoc(doc);
-        return NULL;
+	g_warning ("%s: empty document: %s\n", PACKAGE, filename);
+	xmlFreeDoc (doc);
+	return NULL;
     }
 
-    DBG("Root Element: %s\n", cur->name);
+    DBG ("Root Element: %s\n", cur->name);
 
     /* Verify that this file is actually related to xfdesktop */
-    if(xmlStrcmp(cur->name, (const xmlChar *)"xfdesktop-menu"))
+    if (xmlStrcmp (cur->name, (const xmlChar *) "xfdesktop-menu"))
     {
-        g_warning("%s: document '%s' of the wrong type, root node != xfdesktop-menu",
-                PACKAGE, filename);
-        xmlFreeDoc(doc);
-        return NULL;
+	g_warning
+	    ("%s: document '%s' of the wrong type, root node != xfdesktop-menu",
+	     PACKAGE, filename);
+	xmlFreeDoc (doc);
+	return NULL;
     }
-    menu_data = parse_menu_node(doc, cur, "/", menu_data);
+    menu_data = parse_menu_node (doc, cur, "/", menu_data);
 
     /* clean up */
-    xmlFreeDoc(doc);
+    xmlFreeDoc (doc);
 
     return menu_data;
 }
 
-GtkItemFactoryEntry parse_item(MenuItem * item)
+GtkItemFactoryEntry
+parse_item (MenuItem * item)
 {
     GtkItemFactoryEntry t;
 
-    DBG("%s (type=%d) (term=%d)\n", item->path, item->type, item->term);
+    DBG ("%s (type=%d) (term=%d)\n", item->path, item->type, item->term);
 
     t.path = item->path;
     t.accelerator = NULL;
-    t.callback_action = 1;      /* non-zero ! */
+    t.callback_action = 1;	/* non-zero ! */
 
     /* disable for now
        t.extra_data = item->icon; */
 
     if (!EditMode)
     {
-        switch (item->type)
-        {
-            case MI_APP:
-                t.callback = (item->term ? do_term_exec : do_exec);
-                t.item_type = "<Item>";
-                break;
-            case MI_SEPARATOR:
-                t.callback = NULL;
-                t.item_type = "<Separator>";
-                break;
-            case MI_SUBMENU:
-                t.callback = NULL;
-                t.item_type = "<Branch>";
-                break;
-            case MI_TITLE:
-                t.callback = NULL;
-                t.item_type = "<Title>";
-                break;
-            case MI_BUILTIN:
-                t.callback = do_builtin;
-                t.item_type = "<Item>";
-                break;
-            default:
-                break;
-        }
+	switch (item->type)
+	{
+	    case MI_APP:
+		t.callback = (item->term ? do_term_exec : do_exec);
+		t.item_type = "<Item>";
+		break;
+	    case MI_SEPARATOR:
+		t.callback = NULL;
+		t.item_type = "<Separator>";
+		break;
+	    case MI_SUBMENU:
+		t.callback = NULL;
+		t.item_type = "<Branch>";
+		break;
+	    case MI_TITLE:
+		t.callback = NULL;
+		t.item_type = "<Title>";
+		break;
+	    case MI_BUILTIN:
+		t.callback = do_builtin;
+		t.item_type = "<Item>";
+		break;
+	    default:
+		break;
+	}
     }
     else
     {
-        t.callback = do_edit;
-        
-        if (item->type == MI_SUBMENU)
-            t.item_type = "<Branch>";
-        else
-            t.item_type = "<Item>";
-        
-        if (item->type == MI_SEPARATOR)
-        {
-            gchar *parent_menu;
+	t.callback = do_edit;
 
-            parent_menu = g_path_get_dirname(item->path);
-            g_free(item->path);
-            item->path = g_strconcat(parent_menu, "--- seperator ---", NULL);
-            t.path = item->path;
-            
-            g_free(parent_menu);
-        }
+	if (item->type == MI_SUBMENU)
+	    t.item_type = "<Branch>";
+	else
+	    t.item_type = "<Item>";
+
+	if (item->type == MI_SEPARATOR)
+	{
+	    gchar *parent_menu;
+
+	    parent_menu = g_path_get_dirname (item->path);
+	    g_free (item->path);
+	    item->path = g_strconcat (parent_menu, "--- seperator ---", NULL);
+	    t.path = item->path;
+
+	    g_free (parent_menu);
+	}
     }
 
     return t;
 }
 
 /* returns the menu widget */
-static GtkWidget *create_desktop_menu(void)
+static GtkWidget *
+create_desktop_menu (void)
 {
     struct stat st;
     static char *filename = NULL;
     static time_t mtime = 0;
 
-    TRACE("dummy");
+    TRACE ("dummy");
     if (!filename || is_using_system_rc)
     {
 	if (filename)
-	    g_free(filename);
+	    g_free (filename);
 
-        filename = get_menu_file();
+	filename = get_menu_file ();
     }
-    
+
     /* may have been removed */
-    if (stat(filename, &st) < 0) 
+    if (stat (filename, &st) < 0)
     {
-        if (filename)
-        {
-            g_free(filename);
-        }
-        filename = get_menu_file();
-        mtime = 0;
+	if (filename)
+	{
+	    g_free (filename);
+	}
+	filename = get_menu_file ();
+	mtime = 0;
     }
 
     /* Still no luck? Something got broken! */
-    if (stat(filename, &st) < 0) 
+    if (stat (filename, &st) < 0)
     {
-        if (filename)
-        {
-            g_free(filename);
-        }
-        return NULL;
+	if (filename)
+	{
+	    g_free (filename);
+	}
+	return NULL;
     }
-    
+
     if (!ifactory || !MainMenuData || mtime < st.st_mtime)
     {
-        GtkItemFactoryEntry entry;
-        MenuItem *item = NULL;
-        GList *li, *menu_data = NULL;
-        
-        if (!ifactory)
-            ifactory = gtk_item_factory_new(GTK_TYPE_MENU, "<popup>", NULL);
+	GtkItemFactoryEntry entry;
+	MenuItem *item = NULL;
+	GList *li, *menu_data = NULL;
 
-        if (MainMenuData)
-        {
-            g_list_foreach(MainMenuData, (GFunc)remove_factory_item, ifactory);
-            free_menu_data(MainMenuData);
-        }
-        
-        /*
-         * TODO: Replace the following line with code  to call multiple
-         * menu parsers and merge their content
-         */
-        menu_data = parse_menu_file(filename);
-        if(menu_data == NULL)
-        {
-            g_warning("%s: Error parsing menu file %s\n", 
-                      PACKAGE, filename);
-        }
+	if (!ifactory)
+	    ifactory = gtk_item_factory_new (GTK_TYPE_MENU, "<popup>", NULL);
 
-        for(li = menu_data; li; li = li->next)
-        {
-            /* parse current item */
-            item = (MenuItem *) li->data;
+	if (MainMenuData)
+	{
+	    g_list_foreach (MainMenuData, (GFunc) remove_factory_item,
+			    ifactory);
+	    free_menu_data (MainMenuData);
+	}
 
-            g_assert(item != NULL);
+	/*
+	 * TODO: Replace the following line with code  to call multiple
+	 * menu parsers and merge their content
+	 */
+	menu_data = parse_menu_file (filename);
+	if (menu_data == NULL)
+	{
+	    g_warning ("%s: Error parsing menu file %s\n", PACKAGE, filename);
+	}
 
-            entry = parse_item(item);
+	for (li = menu_data; li; li = li->next)
+	{
+	    /* parse current item */
+	    item = (MenuItem *) li->data;
 
-            if (!EditMode) 
-            {
-                gtk_item_factory_create_item(ifactory, &entry, item->cmd, 1);
-            }
-            else
-            {
-                gtk_item_factory_create_item(ifactory, &entry, item, 1);
-            }
-        }
+	    g_assert (item != NULL);
 
-        /* clean up */
-        /* free_menu_data(menu_data); */
-        /* Hmmm ... if you do this the menus don't work */
-        /* Lets save it in a global var and worry about it later */
-        MainMenuData = menu_data;
-        mtime = st.st_mtime;
+	    entry = parse_item (item);
+
+	    if (!EditMode)
+	    {
+		gtk_item_factory_create_item (ifactory, &entry, item->cmd, 1);
+	    }
+	    else
+	    {
+		gtk_item_factory_create_item (ifactory, &entry, item, 1);
+	    }
+	}
+
+	/* clean up */
+	/* free_menu_data(menu_data); */
+	/* Hmmm ... if you do this the menus don't work */
+	/* Lets save it in a global var and worry about it later */
+	MainMenuData = menu_data;
+	mtime = st.st_mtime;
     }
 
-    return gtk_item_factory_get_widget(ifactory, "<popup>");
+    return gtk_item_factory_get_widget (ifactory, "<popup>");
 }
 
 /*  Window list menu
  *  ----------------
 */
-static void activate_window(GtkWidget * item, NetkWindow * win)
+static void
+activate_window (GtkWidget * item, NetkWindow * win)
 {
-    TRACE("dummy");
-    netk_window_activate(win);
+    TRACE ("dummy");
+    netk_window_activate (win);
 }
 
-static void set_num_screens(gpointer num)
+static void
+set_num_screens (gpointer num)
 {
     static Atom xa_NET_NUMBER_OF_DESKTOPS = 0;
     XClientMessageEvent sev;
     int n;
 
-    TRACE("dummy");
-    if(!xa_NET_NUMBER_OF_DESKTOPS)
+    TRACE ("dummy");
+    if (!xa_NET_NUMBER_OF_DESKTOPS)
     {
-        xa_NET_NUMBER_OF_DESKTOPS =
-            XInternAtom(GDK_DISPLAY(), "_NET_NUMBER_OF_DESKTOPS", False);
+	xa_NET_NUMBER_OF_DESKTOPS =
+	    XInternAtom (GDK_DISPLAY (), "_NET_NUMBER_OF_DESKTOPS", False);
     }
 
-    n = GPOINTER_TO_INT(num);
+    n = GPOINTER_TO_INT (num);
 
     sev.type = ClientMessage;
-    sev.display = GDK_DISPLAY();
+    sev.display = GDK_DISPLAY ();
     sev.format = 32;
-    sev.window = GDK_ROOT_WINDOW();
+    sev.window = GDK_ROOT_WINDOW ();
     sev.message_type = xa_NET_NUMBER_OF_DESKTOPS;
     sev.data.l[0] = n;
 
-    gdk_error_trap_push();
+    gdk_error_trap_push ();
 
-    XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False,
-               SubstructureNotifyMask | SubstructureRedirectMask,
-               (XEvent *) & sev);
+    XSendEvent (GDK_DISPLAY (), GDK_ROOT_WINDOW (), False,
+		SubstructureNotifyMask | SubstructureRedirectMask,
+		(XEvent *) & sev);
 
-    gdk_flush();
-    gdk_error_trap_pop();
+    gdk_flush ();
+    gdk_error_trap_pop ();
 }
 
-static GtkWidget *create_window_list_item(NetkWindow * win)
+static GtkWidget *
+create_window_list_item (NetkWindow * win)
 {
     const char *name = NULL;
     GString *label;
     GtkWidget *mi;
 
-    TRACE("dummy");
-    if(netk_window_is_skip_pager(win) || netk_window_is_skip_tasklist(win))
-        return NULL;
+    TRACE ("dummy");
+    if (netk_window_is_skip_pager (win) || netk_window_is_skip_tasklist (win))
+	return NULL;
 
-    if(!name)
-        name = netk_window_get_name(win);
+    if (!name)
+	name = netk_window_get_name (win);
 
-    label = g_string_new(name);
+    label = g_string_new (name);
 
-    if(label->len >= WLIST_MAXLEN)
+    if (label->len >= WLIST_MAXLEN)
     {
-        g_string_truncate(label, WLIST_MAXLEN);
-        g_string_append(label, " ...");
+	g_string_truncate (label, WLIST_MAXLEN);
+	g_string_append (label, " ...");
     }
 
-    if(netk_window_is_minimized(win))
+    if (netk_window_is_minimized (win))
     {
-        g_string_prepend(label, "[");
-        g_string_append(label, "]");
+	g_string_prepend (label, "[");
+	g_string_append (label, "]");
     }
 
-    mi = gtk_menu_item_new_with_label(label->str);
+    mi = gtk_menu_item_new_with_label (label->str);
 
-    g_string_free(label, TRUE);
+    g_string_free (label, TRUE);
 
     return mi;
 }
 
-static GtkWidget *create_windowlist_menu(void)
+static GtkWidget *
+create_windowlist_menu (void)
 {
     int i, n;
     GList *windows, *li;
@@ -646,9 +662,9 @@ static GtkWidget *create_windowlist_menu(void)
     NetkWorkspace *ws, *aws;
     GtkStyle *style;
 
-    TRACE("dummy");
-    menu3 = gtk_menu_new();
-    style = gtk_widget_get_style(menu3);
+    TRACE ("dummy");
+    menu3 = gtk_menu_new ();
+    style = gtk_widget_get_style (menu3);
 
 /*      mi = gtk_menu_item_new_with_label(_("Window list"));
     gtk_widget_set_sensitive(mi, FALSE);
@@ -659,97 +675,98 @@ static GtkWidget *create_windowlist_menu(void)
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
 */
-    windows = netk_screen_get_windows_stacked(netk_screen);
-    n = netk_screen_get_workspace_count(netk_screen);
-    aws = netk_screen_get_active_workspace(netk_screen);
+    windows = netk_screen_get_windows_stacked (netk_screen);
+    n = netk_screen_get_workspace_count (netk_screen);
+    aws = netk_screen_get_active_workspace (netk_screen);
 
-    for(i = 0; i < n; i++)
+    for (i = 0; i < n; i++)
     {
-        char *ws_name;
-        const char *realname;
-        gboolean active;
-        
-        ws = netk_screen_get_workspace(netk_screen, i);
-        realname = netk_workspace_get_name(ws);
-        
-        active = (ws == aws);
+	char *ws_name;
+	const char *realname;
+	gboolean active;
 
-        if (realname)
-        {
-            ws_name = g_strdup_printf("<i>%s</i>", realname);
-        }
-        else
-        {
-            ws_name = g_strdup_printf("<i>%d</i>", i+1);
-        }
-        
-        mi = gtk_menu_item_new_with_label(ws_name);
-        g_free(ws_name);
-        
-        label = gtk_bin_get_child(GTK_BIN(mi));
-        gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
-	gtk_misc_set_alignment(GTK_MISC(label), 0.5, 0.5);
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
+	ws = netk_screen_get_workspace (netk_screen, i);
+	realname = netk_workspace_get_name (ws);
 
-        if(active)
-            gtk_widget_set_sensitive(mi, FALSE);
+	active = (ws == aws);
 
-        g_signal_connect_swapped(mi, "activate",
-                                 G_CALLBACK(netk_workspace_activate), ws);
+	if (realname)
+	{
+	    ws_name = g_strdup_printf ("<i>%s</i>", realname);
+	}
+	else
+	{
+	    ws_name = g_strdup_printf ("<i>%d</i>", i + 1);
+	}
 
-        mi = gtk_separator_menu_item_new();
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
+	mi = gtk_menu_item_new_with_label (ws_name);
+	g_free (ws_name);
 
-        for(li = windows; li; li = li->next)
-        {
-            win = li->data;
+	label = gtk_bin_get_child (GTK_BIN (mi));
+	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.5, 0.5);
+	gtk_widget_show (mi);
+	gtk_menu_shell_append (GTK_MENU_SHELL (menu3), mi);
+
+	if (active)
+	    gtk_widget_set_sensitive (mi, FALSE);
+
+	g_signal_connect_swapped (mi, "activate",
+				  G_CALLBACK (netk_workspace_activate), ws);
+
+	mi = gtk_separator_menu_item_new ();
+	gtk_widget_show (mi);
+	gtk_menu_shell_append (GTK_MENU_SHELL (menu3), mi);
+
+	for (li = windows; li; li = li->next)
+	{
+	    win = li->data;
 
 	    /* sticky windows don;t match the workspace
 	     * only show them on the active workspace */
-            if(netk_window_get_workspace(win) != ws &&
-	       !(active && netk_window_is_sticky(win)))
+	    if (netk_window_get_workspace (win) != ws &&
+		!(active && netk_window_is_sticky (win)))
 	    {
-                continue;
+		continue;
 	    }
 
-            mi = create_window_list_item(win);
+	    mi = create_window_list_item (win);
 
-            if(!mi)
-                continue;
+	    if (!mi)
+		continue;
 
-            gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
+	    gtk_widget_show (mi);
+	    gtk_menu_shell_append (GTK_MENU_SHELL (menu3), mi);
 
-            if(!active)
-            {
-                gtk_widget_modify_fg(gtk_bin_get_child(GTK_BIN(mi)),
-                                     GTK_STATE_NORMAL,
-                                     &(style->fg[GTK_STATE_INSENSITIVE]));
-            }
+	    if (!active)
+	    {
+		gtk_widget_modify_fg (gtk_bin_get_child (GTK_BIN (mi)),
+				      GTK_STATE_NORMAL,
+				      &(style->fg[GTK_STATE_INSENSITIVE]));
+	    }
 
-            g_signal_connect(mi, "activate", G_CALLBACK(activate_window), win);
-        }
+	    g_signal_connect (mi, "activate", G_CALLBACK (activate_window),
+			      win);
+	}
 
-        mi = gtk_separator_menu_item_new();
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
+	mi = gtk_separator_menu_item_new ();
+	gtk_widget_show (mi);
+	gtk_menu_shell_append (GTK_MENU_SHELL (menu3), mi);
     }
 
-    mi = gtk_menu_item_new_with_label(_("Add workspace"));
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
-    g_signal_connect_swapped(mi, "activate",
-                             G_CALLBACK(set_num_screens),
-                             GINT_TO_POINTER(n + 1));
+    mi = gtk_menu_item_new_with_label (_("Add workspace"));
+    gtk_widget_show (mi);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu3), mi);
+    g_signal_connect_swapped (mi, "activate",
+			      G_CALLBACK (set_num_screens),
+			      GINT_TO_POINTER (n + 1));
 
-    mi = gtk_menu_item_new_with_label(_("Delete workspace"));
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
-    g_signal_connect_swapped(mi, "activate",
-                             G_CALLBACK(set_num_screens),
-                             GINT_TO_POINTER(n - 1));
+    mi = gtk_menu_item_new_with_label (_("Delete workspace"));
+    gtk_widget_show (mi);
+    gtk_menu_shell_append (GTK_MENU_SHELL (menu3), mi);
+    g_signal_connect_swapped (mi, "activate",
+			      G_CALLBACK (set_num_screens),
+			      GINT_TO_POINTER (n - 1));
 
     return menu3;
 }
@@ -761,13 +778,13 @@ void
 popup_menu (int button, guint32 time)
 {
     static GtkWidget *menu = NULL;
-    
-    desktop_menu = menu = create_desktop_menu();
+
+    desktop_menu = menu = create_desktop_menu ();
 
     if (menu)
     {
-	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 
-		       button, time);
+	gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL,
+			button, time);
     }
 }
 
@@ -776,27 +793,26 @@ popup_windowlist (int button, guint32 time)
 {
     static GtkWidget *menu = NULL;
 
-    if(menu)
+    if (menu)
     {
-	gtk_widget_destroy(menu);
+	gtk_widget_destroy (menu);
     }
 
-    windowlist = menu = create_windowlist_menu();
+    windowlist = menu = create_windowlist_menu ();
 
-    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 
-		   button, time);
+    gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, button, time);
 }
 
 static gboolean
-button_press (GtkWidget *w, GdkEventButton *bevent)
+button_press (GtkWidget * w, GdkEventButton * bevent)
 {
     int button = bevent->button;
-    int state =  bevent->state;
+    int state = bevent->state;
     gboolean handled = FALSE;
-    
+
     DBG ("button press");
-    
-    if (button == 2 || (button == 1 && state & GDK_SHIFT_MASK && 
+
+    if (button == 2 || (button == 1 && state & GDK_SHIFT_MASK &&
 			state & GDK_CONTROL_MASK))
     {
 	popup_windowlist (button, bevent->time);
@@ -812,58 +828,59 @@ button_press (GtkWidget *w, GdkEventButton *bevent)
 }
 
 static gboolean
-button_scroll (GtkWidget *w, GdkEventScroll *sevent)
+button_scroll (GtkWidget * w, GdkEventScroll * sevent)
 {
     GdkScrollDirection direction = sevent->direction;
     NetkWorkspace *ws = NULL;
     gint n, active;
 
     DBG ("scroll");
-    
-    n = netk_screen_get_workspace_count(netk_screen);
+
+    n = netk_screen_get_workspace_count (netk_screen);
 
     if (n <= 1)
 	return FALSE;
-    
-    ws = netk_screen_get_active_workspace(netk_screen);
-    active = netk_workspace_get_number(ws);
+
+    ws = netk_screen_get_active_workspace (netk_screen);
+    active = netk_workspace_get_number (ws);
 
     if (direction == GDK_SCROLL_UP || direction == GDK_SCROLL_LEFT)
     {
-	ws = (active > 0) ? 
-	    netk_screen_get_workspace(netk_screen, active - 1) :
-	    netk_screen_get_workspace(netk_screen, n - 1);
+	ws = (active > 0) ?
+	    netk_screen_get_workspace (netk_screen, active - 1) :
+	    netk_screen_get_workspace (netk_screen, n - 1);
     }
     else
     {
 	ws = (active < n - 1) ?
-	    netk_screen_get_workspace(netk_screen, active + 1) :
-	    netk_screen_get_workspace(netk_screen, 0);
+	    netk_screen_get_workspace (netk_screen, active + 1) :
+	    netk_screen_get_workspace (netk_screen, 0);
     }
 
-    netk_workspace_activate(ws);
+    netk_workspace_activate (ws);
     return TRUE;
 }
 
 /*  Initialization 
  *  --------------
 */
-void menu_init(XfceDesktop *xfdesktop)
+void
+menu_init (XfceDesktop * xfdesktop)
 {
-    TRACE("dummy");
+    TRACE ("dummy");
     netk_screen = xfdesktop->netk_screen;
-    
+
     DBG ("connecting callbacks");
-    
+
     g_signal_connect (xfdesktop->fullscreen, "button-press-event",
-	    	      G_CALLBACK (button_press), NULL);
-    
+		      G_CALLBACK (button_press), NULL);
+
     g_signal_connect (xfdesktop->fullscreen, "scroll-event",
-	    	      G_CALLBACK (button_scroll), NULL);
+		      G_CALLBACK (button_scroll), NULL);
 }
 
-void menu_load_settings(XfceDesktop *xfdesktop)
+void
+menu_load_settings (XfceDesktop * xfdesktop)
 {
-    TRACE("dummy");
+    TRACE ("dummy");
 }
-

@@ -31,15 +31,14 @@ typedef struct
     Display *dpy;
     int xscreen;
     Window root;
-    
+
     NetkScreen *netk_screen;
     GtkWidget *fullscreen;
-    
+
     McsClient *client;
 }
 XfceDesktop;
 
-extern void quit(void);
+extern void quit (void);
 
 #endif /* __XFDESKTOP_MAIN_H__ */
-

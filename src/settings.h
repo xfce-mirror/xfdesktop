@@ -22,15 +22,14 @@
 
 #include "main.h"
 
-typedef void (*ChannelCallback) (const char *name, McsAction action, 
-    			         McsSetting *setting, XfceDesktop *xfdesktop);
+typedef void (*ChannelCallback) (const char *name, McsAction action,
+				 McsSetting * setting,
+				 XfceDesktop * xfdesktop);
 
-void settings_init (XfceDesktop *xfdesktop);
+void settings_init (XfceDesktop * xfdesktop);
 
-void settings_cleanup (XfceDesktop *xfdesktop);
+void settings_cleanup (XfceDesktop * xfdesktop);
 
-void register_channel_callback (const char *name, 
-    				ChannelCallback callback);
+void register_channel_callback (const char *name, ChannelCallback callback);
 
-#endif	/* !__XFDESKTOP_SETTING__ */
-
+#endif /* !__XFDESKTOP_SETTING__ */

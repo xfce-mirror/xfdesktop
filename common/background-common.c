@@ -55,7 +55,7 @@ is_backdrop_list (const char *path)
 }
 
 gchar **
-get_list_from_file(const gchar *filename)
+get_list_from_file (const gchar * filename)
 {
     gchar *contents;
     GError *error;
@@ -64,23 +64,24 @@ get_list_from_file(const gchar *filename)
 
     files = NULL;
 
-    if (!g_file_get_contents(filename, &contents, &length, &error)) {
-        xfce_err("Unable to get backdrop image list from file %s: %s",
-                filename, error->message);
-        g_error_free(error);
-        return(NULL);
+    if (!g_file_get_contents (filename, &contents, &length, &error))
+    {
+	xfce_err ("Unable to get backdrop image list from file %s: %s",
+		  filename, error->message);
+	g_error_free (error);
+	return (NULL);
     }
 
-    if (strncmp(LIST_TEXT, contents, sizeof(LIST_TEXT) - 1) != 0) {
-        xfce_err("Not a backdrop image list file: %s", filename);
-        goto finished;
+    if (strncmp (LIST_TEXT, contents, sizeof (LIST_TEXT) - 1) != 0)
+    {
+	xfce_err ("Not a backdrop image list file: %s", filename);
+	goto finished;
     }
 
-    files = g_strsplit(contents + sizeof(LIST_TEXT), "\n", -1);
+    files = g_strsplit (contents + sizeof (LIST_TEXT), "\n", -1);
 
-finished:
-    g_free(contents);
+  finished:
+    g_free (contents);
 
-    return(files);
+    return (files);
 }
-

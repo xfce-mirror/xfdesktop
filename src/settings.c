@@ -54,119 +54,120 @@ static GHashTable *settings_hash = NULL;
 void
 register_channel_callback (const char *name, ChannelCallback callback)
 {
-    g_hash_table_insert (settings_hash, (gpointer)name, (gpointer)callback);
+    g_hash_table_insert (settings_hash, (gpointer) name, (gpointer) callback);
 }
 
-static void init_settings_hash(void)
+static void
+init_settings_hash (void)
 {
-    TRACE("dummy");
-    settings_hash = g_hash_table_new(g_str_hash, g_str_equal);
+    TRACE ("dummy");
+    settings_hash = g_hash_table_new (g_str_hash, g_str_equal);
 }
 
-static void 
-notify_cb(const char *name, const char *channel_name, McsAction action, 
-	  McsSetting * setting, XfceDesktop *xfdesktop)
+static void
+notify_cb (const char *name, const char *channel_name, McsAction action,
+	   McsSetting * setting, XfceDesktop * xfdesktop)
 {
     ChannelCallback update_channel;
 
-    TRACE("dummy");
-    update_channel = g_hash_table_lookup(settings_hash, channel_name);
+    TRACE ("dummy");
+    update_channel = g_hash_table_lookup (settings_hash, channel_name);
 
     if (update_channel)
-	update_channel(name, action, setting, xfdesktop);
+	update_channel (name, action, setting, xfdesktop);
     else
-	g_printerr("%s: Unknown settings channel: %s\n", PACKAGE, 
-		   channel_name);
+	g_printerr ("%s: Unknown settings channel: %s\n", PACKAGE,
+		    channel_name);
 }
 
-GdkFilterReturn 
-client_event_filter(GdkXEvent * xevent, GdkEvent * event, 
-	            XfceDesktop *xfdesktop)
+GdkFilterReturn
+client_event_filter (GdkXEvent * xevent, GdkEvent * event,
+		     XfceDesktop * xfdesktop)
 {
-    TRACE("dummy");
-    if(mcs_client_process_event(xfdesktop->client, (XEvent *) xevent))
-        return GDK_FILTER_REMOVE;
+    TRACE ("dummy");
+    if (mcs_client_process_event (xfdesktop->client, (XEvent *) xevent))
+	return GDK_FILTER_REMOVE;
     else
-        return GDK_FILTER_CONTINUE;
+	return GDK_FILTER_CONTINUE;
 }
 
-static void 
-watch_cb(Window window, Bool is_start, long mask, void *cb_data)
+static void
+watch_cb (Window window, Bool is_start, long mask, void *cb_data)
 {
     GdkWindow *gdkwin;
 
-    TRACE("dummy");
-    gdkwin = gdk_window_lookup(window);
+    TRACE ("dummy");
+    gdkwin = gdk_window_lookup (window);
 
-    if(is_start)
-        gdk_window_add_filter(gdkwin, (GdkFilterFunc) client_event_filter, 
-			      cb_data);
+    if (is_start)
+	gdk_window_add_filter (gdkwin, (GdkFilterFunc) client_event_filter,
+			       cb_data);
     else
-        gdk_window_remove_filter(gdkwin, (GdkFilterFunc) client_event_filter, 
-				 cb_data);
+	gdk_window_remove_filter (gdkwin, (GdkFilterFunc) client_event_filter,
+				  cb_data);
 }
 
-static gboolean 
-manager_is_running(Display *dpy, int screen)
+static gboolean
+manager_is_running (Display * dpy, int screen)
 {
     int result;
-    
-    TRACE("dummy");
-    
+
+    TRACE ("dummy");
+
     /* we need a multi channel settings manager */
-    result = mcs_manager_check_running(dpy, screen);
+    result = mcs_manager_check_running (dpy, screen);
 
     return (MCS_MANAGER_STD < result);
 }
 
-static void 
-start_mcs_manager(void)
+static void
+start_mcs_manager (void)
 {
     GError *error = NULL;
-    
-    TRACE("dummy");
-    
-    g_message("%s: starting the settings manager\n", PACKAGE);
 
-    if (!g_spawn_command_line_sync("xfce-mcs-manager", 
-				   NULL, NULL, NULL, &error))
+    TRACE ("dummy");
+
+    g_message ("%s: starting the settings manager\n", PACKAGE);
+
+    if (!g_spawn_command_line_sync ("xfce-mcs-manager",
+				    NULL, NULL, NULL, &error))
     {
-	g_critical("%s: could not start settings manager:\n%s\n",
-		   PACKAGE, error->message);
+	g_critical ("%s: could not start settings manager:\n%s\n",
+		    PACKAGE, error->message);
 	g_error_free (error);
     }
 }
 
-void 
-settings_init(XfceDesktop *xfdesktop)
+void
+settings_init (XfceDesktop * xfdesktop)
 {
-    TRACE("dummy");
-    
+    TRACE ("dummy");
+
     if (!settings_hash)
-	init_settings_hash();
-    
-    if (!manager_is_running(xfdesktop->dpy, xfdesktop->xscreen))
-	start_mcs_manager();
-    
-    xfdesktop->client = mcs_client_new(xfdesktop->dpy, xfdesktop->xscreen, 
-	    			       (McsNotifyFunc) notify_cb, 
-				       (McsWatchFunc) watch_cb, 
-				       (gpointer) xfdesktop);
-       
-    if(!xfdesktop->client || 
-       !manager_is_running(xfdesktop->dpy, xfdesktop->xscreen))
+	init_settings_hash ();
+
+    if (!manager_is_running (xfdesktop->dpy, xfdesktop->xscreen))
+	start_mcs_manager ();
+
+    xfdesktop->client = mcs_client_new (xfdesktop->dpy, xfdesktop->xscreen,
+					(McsNotifyFunc) notify_cb,
+					(McsWatchFunc) watch_cb,
+					(gpointer) xfdesktop);
+
+    if (!xfdesktop->client ||
+	!manager_is_running (xfdesktop->dpy, xfdesktop->xscreen))
     {
-        g_critical("%s: could not connect to settings manager!", PACKAGE);
+	g_critical ("%s: could not connect to settings manager!", PACKAGE);
     }
 }
 
-void settings_cleanup(XfceDesktop *xfdesktop)
+void
+settings_cleanup (XfceDesktop * xfdesktop)
 {
-    TRACE("dummy");
-    
+    TRACE ("dummy");
+
     if (xfdesktop->client)
-	mcs_client_destroy(xfdesktop->client);
+	mcs_client_destroy (xfdesktop->client);
 
     xfdesktop->client = NULL;
 }
-

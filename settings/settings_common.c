@@ -33,49 +33,49 @@
 #include "settings_common.h"
 
 void
-create_channel(McsManager *manager, const gchar *channel, const gchar *rcfile)
+create_channel (McsManager * manager, const gchar * channel,
+		const gchar * rcfile)
 {
     gchar *homefile;
     gchar *sysfile;
 
-    homefile = xfce_get_userfile("settings", rcfile, NULL);
-    sysfile = g_build_filename(DATADIR, "xfce4", "settings", rcfile, NULL);
-    
-    if (g_file_test(homefile, G_FILE_TEST_EXISTS))
-	    mcs_manager_add_channel_from_file(manager, channel, homefile);
-    else if (g_file_test(sysfile, G_FILE_TEST_EXISTS))
-        mcs_manager_add_channel_from_file(manager, channel, sysfile);
+    homefile = xfce_get_userfile ("settings", rcfile, NULL);
+    sysfile = g_build_filename (DATADIR, "xfce4", "settings", rcfile, NULL);
+
+    if (g_file_test (homefile, G_FILE_TEST_EXISTS))
+	mcs_manager_add_channel_from_file (manager, channel, homefile);
+    else if (g_file_test (sysfile, G_FILE_TEST_EXISTS))
+	mcs_manager_add_channel_from_file (manager, channel, sysfile);
     else
-	    mcs_manager_add_channel(manager, channel);
-    
-    g_free(homefile);
-    g_free(sysfile);
+	mcs_manager_add_channel (manager, channel);
+
+    g_free (homefile);
+    g_free (sysfile);
 }
 
 gboolean
-save_channel(McsManager *manager, const gchar *channel, const gchar *rcfile)
+save_channel (McsManager * manager, const gchar * channel,
+	      const gchar * rcfile)
 {
     gboolean result;
     gchar *homefile;
 
-    homefile = xfce_get_userfile("settings", rcfile, NULL);
-    result = mcs_manager_save_channel_to_file(manager, channel, homefile);
-    g_free(homefile);
+    homefile = xfce_get_userfile ("settings", rcfile, NULL);
+    result = mcs_manager_save_channel_to_file (manager, channel, homefile);
+    g_free (homefile);
 
-    return(result);
+    return (result);
 }
 
 /* useful widget */
 #define SKIP BORDER
 
 void
-add_spacer(GtkBox *box)
+add_spacer (GtkBox * box)
 {
-    GtkWidget *align = gtk_alignment_new(0, 0, 0, 0);
+    GtkWidget *align = gtk_alignment_new (0, 0, 0, 0);
 
-    gtk_widget_set_size_request(align, SKIP, SKIP);
-    gtk_widget_show(align);
-    gtk_box_pack_start(box, align, FALSE, TRUE, 0);
+    gtk_widget_set_size_request (align, SKIP, SKIP);
+    gtk_widget_show (align);
+    gtk_box_pack_start (box, align, FALSE, TRUE, 0);
 }
-
-

@@ -22,9 +22,8 @@
 
 #define BORDER 5
 
-extern void create_channel(McsManager *, const char *, const char *);
-extern gboolean save_channel(McsManager *, const char *, const char *);
-extern void add_spacer(GtkBox *);
+extern void create_channel (McsManager *, const char *, const char *);
+extern gboolean save_channel (McsManager *, const char *, const char *);
+extern void add_spacer (GtkBox *);
 
-#endif	/* !__XFDESKTOP_SETTINGS_COMMON_H__ */
-
+#endif /* !__XFDESKTOP_SETTINGS_COMMON_H__ */
