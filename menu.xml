@@ -14,8 +14,7 @@
 <!-- 
 
   + Everything is between exactly one pair of 
-    <xfdesktop-menu useicons="true"></xfdesktop-menu> tags.
-    You can disable icons in the menu by setting 'useicons' to false.
+    <xfdesktop-menu></xfdesktop-menu> tags.
 
   + Applications:
     <app name="Name in menu" cmd="Command to run" term="false"
@@ -52,7 +51,7 @@
     appears in multiple categories.
 -->
 
-<xfdesktop-menu showicons="true">
+<xfdesktop-menu>
 
 	<title name="Desktop Menu"/>
 
