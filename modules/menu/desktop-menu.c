@@ -252,7 +252,7 @@ xfce_desktop_menu_get_widget_impl(XfceDesktopMenu *desktop_menu)
 	return desktop_menu->menu;
 }
 
-G_CONST_RETURN gchar *
+G_MODULE_EXPORT G_CONST_RETURN gchar *
 xfce_desktop_menu_get_menu_file_impl(XfceDesktopMenu *desktop_menu)
 {
 	g_return_val_if_fail(desktop_menu != NULL, NULL);
