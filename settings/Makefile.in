@@ -141,6 +141,8 @@ backdropdir = $(libdir)/xfce-mcs-manager/plugins/
 workspacesdir = $(libdir)/xfce-mcs-manager/plugins/
 marginsdir = $(libdir)/xfce-mcs-manager/plugins/
 
+EXTRA_DIST = backdrop.png margins.png workspaces.png
+
 # backdrop
 backdrop_LTLIBRARIES = backdrop_settings.la
 backdrop_settings_la_LDFLAGS = -module -avoid-version
@@ -189,15 +191,18 @@ settings_common.c settings_common.h
 margins_settings_la_CFLAGS = @CFLAGS@ @X_CFLAGS@ @BASE_DEPENDENCIES_CFLAGS@ @MCS_MANAGER_CFLAGS@ -DG_DISABLE_DEPRECATED -DSYSCONFDIR=\"$(sysconfdir)\" -DDATADIR=\"$(datadir)\" 
 margins_settings_la_LIBADD = @LIBS@ @X_LIBS@  @BASE_DEPENDENCIES_LIBS@ @MCS_MANAGER_LIBS@
 
-# icons
-noinst_DATA = backdrop-icon.h menu-icon.h workspaces-icon.h margins-icon.h
+# icons (left out: menu-icon.h)
+noinst_DATA = backdrop-icon.h workspaces-icon.h margins-icon.h
 
 BACKDROP_IMAGE = backdrop.png
 BACKDROP_ARG = backdrop_icon_data $(srcdir)/$(BACKDROP_IMAGE)
 
-MENU_IMAGE = menu.png
-MENU_ARG = menu_icon_data $(srcdir)/$(MENU_IMAGE)
 
+#MENU_IMAGE=menu.png
+#MENU_ARG=menu_icon_data $(srcdir)/$(MENU_IMAGE)
+
+#menu-icon.h: $(MENU_IMAGE)
+#	$(GDK_PIXBUF_CSOURCE) --raw --build-list $(MENU_ARG) > $(srcdir)/menu-icon.h
 WORKSPACES_IMAGE = workspaces.png
 WORKSPACES_ARG = workspaces_icon_data $(srcdir)/$(WORKSPACES_IMAGE)
 
@@ -828,9 +833,6 @@ uninstall-am: uninstall-backdropLTLIBRARIES uninstall-info-am \
 
 backdrop-icon.h: $(BACKDROP_IMAGE)
 	$(GDK_PIXBUF_CSOURCE) --raw --build-list $(BACKDROP_ARG) > $(srcdir)/backdrop-icon.h
-
-menu-icon.h: $(MENU_IMAGE)
-	$(GDK_PIXBUF_CSOURCE) --raw --build-list $(MENU_ARG) > $(srcdir)/menu-icon.h
 
 workspaces-icon.h: $(WORKSPACES_IMAGE)
 	$(GDK_PIXBUF_CSOURCE) --raw --build-list $(WORKSPACES_ARG) > $(srcdir)/workspaces-icon.h
