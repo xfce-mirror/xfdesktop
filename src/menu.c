@@ -53,6 +53,8 @@
 /* max length window list menu items */
 #define WLIST_MAXLEN 20
 
+/* a bit hackish, but works well enough */
+static gboolean is_using_system_rc = TRUE;
 
 static NetkScreen *netk_screen = NULL;
 static GList *MainMenuData;     /* TODO: Free this at some point */
@@ -183,11 +185,19 @@ get_menu_file(void)
         filename = xfce_get_userfile("menu.xml", NULL);
 
         if(g_file_test(filename, G_FILE_TEST_EXISTS))
+	{
+	    is_using_system_rc = FALSE;
+	    
             return filename;
+	}
         else
+	{
             g_free(filename);
+	}
     }
 
+    is_using_system_rc = TRUE;
+    
     filename = g_build_filename(SYSCONFDIR, "xfce4", "menu.xml", NULL);
     if(g_file_test(filename, G_FILE_TEST_EXISTS))
         return filename;
@@ -452,8 +462,13 @@ static GtkWidget *create_desktop_menu(void)
     static time_t ctime = 0;
 
     TRACE("");
-    if (!filename)
+    if (!filename || is_using_system_rc)
+    {
+	if (filename)
+	    g_free(filename);
+
         filename = get_menu_file();
+    }
     
     /* may have been removed */
     if (stat(filename, &st) < 0) {
