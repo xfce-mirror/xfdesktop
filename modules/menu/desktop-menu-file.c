@@ -505,14 +505,12 @@ desktop_menu_file_parse(XfceDesktopMenu *desktop_menu, const gchar *filename,
 	gboolean ret = FALSE;
 	GError *err = NULL;
 #ifdef HAVE_MMAP
-	void *maddr;
+	void *maddr = NULL;
 #endif
 	
 	TRACE("dummy");
 
 	g_return_val_if_fail(desktop_menu != NULL && menu != NULL, FALSE);
-	
-	maddr = NULL;
 
 	if(!filename) {
 		filename = other_filename = _menu_file_get();
