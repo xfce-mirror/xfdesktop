@@ -1,6 +1,6 @@
 @SET_MAKE@
 
-SUBDIRS = common doc src settings backdrops
+SUBDIRS = backdrops common doc po settings src
 
 EXTRA_DIST = xfdesktop.spec.in TODO
 

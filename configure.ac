@@ -26,6 +26,9 @@ AC_HEADER_STDC
 AC_CHECK_HEADERS(fcntl.h signal.h stddef.h sys/wait.h time.h)
 AC_CHECK_FUNCS(sigaction srandom)
 
+dnl Check for i18n support
+BM_I18N([xfdesktop], [de])
+
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE
 
@@ -42,15 +45,16 @@ dnl Check for debuggin support
 BM_DEBUG_SUPPORT
 
 AC_OUTPUT([
-xfdesktop.spec
-Makefile
+backdrops/Makefile
 common/Makefile
 doc/Makefile
 doc/images/Makefile
 doc/html/Makefile
 doc/xml/Makefile
-src/Makefile
+Makefile
+po/Makefile.in
 settings/Makefile
-backdrops/Makefile
+src/Makefile
+xfdesktop.spec
 ])
 

@@ -31,6 +31,7 @@ backdrop_settings_la_CFLAGS =						\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
 	@PANGO_CFLAGS@							\
+	-DLOCALEDIR=\"$(localedir)\"					\
 	-DDATADIR=\"$(datadir)\"
 
 backdrop_settings_la_LIBADD =						\
@@ -65,6 +66,7 @@ workspaces_settings_la_CFLAGS =						\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
 	@PANGO_CFLAGS@							\
+	-DLOCALEDIR=\"$(localedir)\"					\
 	-DDATADIR=\"$(datadir)\"
 
 workspaces_settings_la_LIBADD =						\

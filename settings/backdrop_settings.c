@@ -134,7 +134,7 @@ McsPluginInitResult mcs_plugin_init(McsPlugin * mcs_plugin)
 {
 #ifdef ENABLE_NLS
     /* This is required for UTF-8 at least - Please don't remove it */
-    bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+    bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
     textdomain (GETTEXT_PACKAGE);
 #endif
@@ -687,7 +687,7 @@ static void add_button_box(GtkWidget *vbox, GtkSizeGroup *sg,
     gtk_widget_show(align);
     gtk_box_pack_start(GTK_BOX(hbox), align, FALSE, FALSE, 0);
 
-    browse_button = gtk_button_new_with_mnemonic("_Browse...");
+    browse_button = gtk_button_new_with_mnemonic(_("_Browse..."));
     gtk_widget_show(browse_button);
     gtk_box_pack_start(GTK_BOX(hbox), browse_button, FALSE, FALSE, 0);
     
@@ -747,28 +747,30 @@ static void add_style_options(GtkWidget *vbox, GtkSizeGroup *sg,
     gtk_widget_show(hbox);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 
-    label = gtk_label_new ("Style:");
+    label = gtk_label_new (_("Style:"));
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
     gtk_size_group_add_widget(sg, label);
     gtk_widget_show(label);
     gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 
-    rb_tiled = gtk_radio_button_new_with_mnemonic (NULL, "_Tiled");
+    rb_tiled = gtk_radio_button_new_with_mnemonic (NULL, _("_Tiled"));
     gtk_widget_show(rb_tiled);
     gtk_box_pack_start (GTK_BOX (hbox), rb_tiled, FALSE, FALSE, 0);
     
     rb = GTK_RADIO_BUTTON(rb_tiled);
     
-    rb_scaled = gtk_radio_button_new_with_mnemonic_from_widget(rb, "_Scaled");
+    rb_scaled = gtk_radio_button_new_with_mnemonic_from_widget(rb,
+		    _("_Scaled"));
     gtk_widget_show(rb_scaled);
     gtk_box_pack_start (GTK_BOX (hbox), rb_scaled, FALSE, FALSE, 0);
 
     rb_centered = 
-	gtk_radio_button_new_with_mnemonic_from_widget(rb, "_Centered");
+	gtk_radio_button_new_with_mnemonic_from_widget(rb, _("_Centered"));
     gtk_widget_show(rb_centered);
     gtk_box_pack_start (GTK_BOX (hbox), rb_centered, FALSE, FALSE, 0);
 
-    rb_auto = gtk_radio_button_new_with_mnemonic_from_widget(rb, "_Automatic");
+    rb_auto = gtk_radio_button_new_with_mnemonic_from_widget(rb,
+		    _("_Automatic"));
     gtk_widget_show(rb_auto);
     gtk_box_pack_start (GTK_BOX (hbox), rb_auto, FALSE, FALSE, 0);
 

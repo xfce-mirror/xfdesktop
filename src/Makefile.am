@@ -20,6 +20,7 @@ xfdesktop_CFLAGS = 							\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXML_CFLAGS@							\
 	@PANGO_CFLAGS@							\
+	-DLOCALEDIR=\"$(localedir)\"					\
 	-DDATADIR=\"$(pkgdatadir)\"					\
 	-DSYSCONFDIR=\"$(sysconfdir)\"
 	
