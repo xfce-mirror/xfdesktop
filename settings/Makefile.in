@@ -52,7 +52,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
-am__installdirs = $(DESTDIR)$(backdropdir)
+am__installdirs = $(DESTDIR)$(backdropdir) $(DESTDIR)$(appsdir)
 backdropLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(backdrop_LTLIBRARIES)
 backdrop_settings_la_DEPENDENCIES =  \
@@ -79,7 +79,8 @@ LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 SOURCES = $(backdrop_settings_la_SOURCES)
 DIST_SOURCES = $(backdrop_settings_la_SOURCES)
-DATA = $(noinst_DATA)
+appsDATA_INSTALL = $(INSTALL_DATA)
+DATA = $(apps_DATA) $(noinst_DATA)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -222,7 +223,6 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 EXTRA_DIST = \
-	backdrop.png							\
 	menu_settings.c							\
 	menu_settings.h
 
@@ -257,6 +257,8 @@ backdrop_settings_la_LIBADD = \
 
 # icons (left out: menu-icon.h)
 noinst_DATA = backdrop-icon.h 
+appsdir = $(datadir)/applications
+apps_DATA = xfce-backdrop-settings.desktop
 all: all-am
 
 .SUFFIXES:
@@ -435,6 +437,23 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
+install-appsDATA: $(apps_DATA)
+	@$(NORMAL_INSTALL)
+	$(mkdir_p) $(DESTDIR)$(appsdir)
+	@list='$(apps_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " $(appsDATA_INSTALL) $$d$$p $(DESTDIR)$(appsdir)/$$f"; \
+	  $(appsDATA_INSTALL) $$d$$p $(DESTDIR)$(appsdir)/$$f; \
+	done
+
+uninstall-appsDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(apps_DATA)'; for p in $$list; do \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " rm -f $(DESTDIR)$(appsdir)/$$f"; \
+	  rm -f $(DESTDIR)$(appsdir)/$$f; \
+	done
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -513,7 +532,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(LTLIBRARIES) $(DATA)
 installdirs:
-	$(mkdir_p) $(DESTDIR)$(backdropdir)
+	$(mkdir_p) $(DESTDIR)$(backdropdir) $(DESTDIR)$(appsdir)
 install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
@@ -559,7 +578,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-backdropLTLIBRARIES
+install-data-am: install-appsDATA install-backdropLTLIBRARIES
 
 install-exec-am:
 
@@ -587,25 +606,27 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-backdropLTLIBRARIES uninstall-info-am
+uninstall-am: uninstall-appsDATA uninstall-backdropLTLIBRARIES \
+	uninstall-info-am
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean \
 	clean-backdropLTLIBRARIES clean-generic clean-libtool ctags \
 	distclean distclean-compile distclean-generic \
 	distclean-libtool distclean-tags distdir dvi dvi-am html \
-	html-am info info-am install install-am \
+	html-am info info-am install install-am install-appsDATA \
 	install-backdropLTLIBRARIES install-data install-data-am \
 	install-exec install-exec-am install-info install-info-am \
 	install-man install-strip installcheck installcheck-am \
 	installdirs maintainer-clean maintainer-clean-generic \
 	mostlyclean mostlyclean-compile mostlyclean-generic \
 	mostlyclean-libtool pdf pdf-am ps ps-am tags uninstall \
-	uninstall-am uninstall-backdropLTLIBRARIES uninstall-info-am
+	uninstall-am uninstall-appsDATA uninstall-backdropLTLIBRARIES \
+	uninstall-info-am
 
 
-backdrop-icon.h: $(srcdir)/backdrop.png
-	gdk-pixbuf-csource --raw --build-list				\
-	backdrop_icon_data $(srcdir)/backdrop.png > backdrop-icon.h
+backdrop-icon.h: $(top_srcdir)/pixmaps/xfce4-backdrop.png
+	gdk-pixbuf-csource --raw --build-list backdrop_icon_data \
+		$(top_srcdir)/pixmaps/xfce4-backdrop.png > backdrop-icon.h
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
