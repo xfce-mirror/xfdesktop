@@ -1,92 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xfdesktop-menu [
-	<!ENTITY menu2 SYSTEM "menu2.xml">
-]>
+<!DOCTYPE xfdesktop-menu>
 
 <!-- 
-     Explanantion of XFce 4 menu file: 
+     Giải thích về tập tin thực đơn Xfce 4: 
      =================================
-     Here we will try to explain the format of the menu file. Look at the
-     actual menu below for the real examples.
+     Tại đây chúng tôi sẽ cố gắng giải thích định dạng của tập tin thực đơn.  Hãy nhìn 
+     thực đơn thực tế bên dưới để làm thí dụ.  Thực sự bạn không nên hiệu chỉnh tập
+     tin này trực tiếp, thay vào đó hãy dùng xfce4-menueditor.
 -->
 
-<!-- Obviously, this is how you make a comment ;-) -->
+<!-- Đây hiển nhiên là cách viết lời bình ;-) -->
 
 <!-- 
 
-  + Everything is between exactly one pair of 
-    <xfdesktop-menu></xfdesktop-menu> tags.
+  + Mọi thứ đều ở ngay giữa một cặp thẻ
+    <xfdesktop-menu></xfdesktop-menu>.
 
-  + Applications:
-    <app name="Name in menu" cmd="Command to run" term="no" visible="yes" />
-    'term' determines if the program needs a terminal to run
-    Only 'name' and 'cmd' are required.
+  + Trình ứng dụng:
+    <app name="Tên trên thực đơn" cmd="Lệnh thực hiện" term="false"
+         icon="tập tin cho biểu tượng"  snotify="false" visible="true" />
+    Thuộc tính 'term' quyết định chương trình cần trạm cuối để thực hiện hay không,
+    và 'snotify' thiết lập chương trình có hỗ trợ lời thông báo lúc khởi động hay không.
+    Bạn có thể đặt biểu tượng hiển thị kế bên đề mục với thuộc tính 'icon'.
+    Chỉ có 'name' và 'cmd' là bắt buộc phải có.
 
-  + Separators:
-    <separator/>
+  + Dấu cách:
+    <separator visible="true" />
+    Tạo dấu cách ngang. Thuộc tính 'visible' là tuỳ chọn.
 
-  + Submenus:
-    <menu name="Name in menu" visible="yes"></menu>
-    Only 'name' is required.
-    Between the menu tags you can define more applications, separators and 
-    menus.
+  + Thực đơn phụ:
+    <menu name="Tên trên thực đơn" icon="tập tin cho biểu tượng" visible="true"></menu>
+    Chỉ có 'name' là bắt buộc,nhưng bạn cũng có thể đặt một biểu tượng dùng thuộc tính
+    'icon'.  Bạn cũng có thể quy định các ứng dụng, dấu cách và thực đơn khác giữa
+     các thẻ thực đơn.
 
-  + Titles
-    <title name="Name in menu" />
-    Creates an insensitive menu title
+  + Tiêu đề
+    <title name="Tên trên thực đơn" icon="tập tin cho biểu tượng" visible="true" />
+    Tạo tiêu đề thực đơn.  Bạn cũng có thể thêm biểu tượng vào tiêu đề nếu thích.
     
-  + Including other files:
-    Other files can be included by using an xml trick. This is a little bit
-    complicated.
-    First you have to define a so called entity in the file header. See above,
-    where we define a 'menu2' entity to point to a "menu2.xml" file.
-    Then you can use '&entityname;' anywhere in the menu file and it will be
-    replaced with the contents of the file the entity points to.
-    This can be useful for example if you make a script that generates a gnome
-    menu and put it in a separate file.
+  + Gồm các tập tin khác:
+    <include type="file" src="menu2.xml" visible="true" />
+    Gồm tập tin menu2.xml.  Đường dẫn tương đối được giả định là có gốc ở
+    ~/.xfce4/.  Đường dẫn tuyệt đối được đối xử như chính nó.
     
+  + Gồm thực đơn hệ thống tự phát sinh:
+    <include type="system" style="simple" unique="true" visible="true" />
+    Gồm thực đơn hệ thống.  style có thể là "simple" hay "multilevel".  Nếu unique
+    được quy định là "false", đa đề mục thực đon sẽ được phát sinh nếu ứng dụng
+    xuất hiện trong nhiều phân loại.
 -->
+
 <xfdesktop-menu>
-    <title name="Trình đơn desktop" visible="yes" />
-    <separator/>
-    <app name="Chạy chương trình..." cmd="xfrun4"/>
-    <separator/>
-    <app name="Trạm cuối" cmd="xfterm4" />
-    <app name="Trình quản lí tập tin (xffm)" cmd="xffm"/>
-    <app name="Trình duyệt web" cmd="mozilla"/>
-    <separator/>
-    <menu name="Thiết lập" visible="yes">
-        <app name="Mọi thiết lập..." cmd="xfce-setting-show"/>
-        <app name="Phông nền..." cmd="xfce-setting-show backdrop"/>
-<!-- 
-        <app name="Background" cmd="xfce-setting-show backdrop"/>
-	<app name="Workspaces" cmd="xfce-setting-show workspaces"/>
-	<app name="File manager (xffm)" cmd="xfce-setting-show xffm"/>
-	<app name="User interface (gtk+)" cmd="xfce-setting-show ui"/>
-	<app name="Icon box" cmd="xfce-setting-show xfibx"/>
-        <app name="Mouse" cmd="xfce-setting-show mouse"/>
-        <app name="Taskbar" cmd="xfce-setting-show taskbar"/>
-	<app name="Keyboard" cmd="xfce-setting-show keyboard"/>
-	<app name="Window manager" cmd="xfce-setting-show xfwm4"/>
-	<app name="Margins" cmd="xfce-setting-show xfwm_margins"/>
-	<app name="Panel" cmd="xfce-setting-show xfce"/>
--->
-    </menu>
-    <separator/>
-    <app name="Trợ giúp" cmd="xfhelp4"/>
-    <!-- <separator/> -->
-    <!-- Set visible to yes to use this item.
-      This will exit the desktop manager. If you also put 
-      'exec xfdesktop' at the end of your ~/.xinitrc, this menu item can be
-      used to exit the X session.
-    -->
-    <builtin name="Thoát" cmd="quit" visible="yes"/>
-    <!-- Example on how to include a file:
-      1) declare an ENTITY in the DOCTYPE tag (see above)
-      2) include entity in file: 
-    -->
-    <!--
-    &menu2;
-    -->
-</xfdesktop-menu>
 
+	<title name="Thực dơn desktop" icon="backdrop"/>
+
+	<separator/>
+
+	<app name="Thực thi chương trình..." cmd="xfrun4" icon="gnome-fs-executable"/>
+
+	<separator/>
+
+	<app name="Trạm cuối" cmd="xfterm4" icon="gnome-terminal"/>
+	<app name="Trình quản lí tập tin (xffm)" cmd="xffm" icon="file-manager"/>
+	<app name="Trình duyệt web" cmd="mozilla" icon="gnome-globe"/>
+
+	<separator/>
+
+	<menu name="Các thiết lập" icon="gnome-settings">
+		<app name="Trình quản lí các thiết lập Xfce 4" cmd="xfce-setting-show" icon="gnome-settings"/>
+	</menu>
+
+	<separator/>
+
+	<!--
+	  Dòng kế tiếp bao gồm thực đơn tự động phát sinh cấp mức hiện tại.  Nếu
+	  bạn muốn, bạn có thể đặt nó vào thực đơn phụ của chính nó.
+	-->
+	<include type="system" style="simple" unique="true"/>
+
+	<!--
+	  Gỡ bỏ dấu bình dòng bên dưới (và đặt dấu bình dòng bên trên) nếu bạn muốn
+	  gồm một tập tinh thực đơn riêng thay vì dùng thực đơn tự phát sinh.
+	-->
+	<!-- <include type="file" src="menu2.xml"/> -->
+
+    <separator/>
+
+    <app name="Giúp đỡ" cmd="xfhelp4" icon="gnome-help"/>
+    <app name="Giới thiệu Xfce" cmd="xfce4-about" icon="gnome-info"/>
+    <!--
+      Lệnh này sẽ khiếnt xfce4-session thoát, sau khi xuất hiện hộp thoại 
+      đăng xuất.  Nếu xfce4-session không đang chạy, nó sẽ thoát xfdesktop.
+    -->
+    <builtin name="Thoát" cmd="quit" icon="gnome-logout"/>
+
+</xfdesktop-menu>
