@@ -484,6 +484,7 @@ create_desktop_menu (void)
 	if (filename)
 	{
 	    g_free (filename);
+	    filename = NULL;
 	}
 	return NULL;
     }
