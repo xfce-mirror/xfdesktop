@@ -401,9 +401,8 @@ void filesel_ok(GtkWidget *widget, GtkFileSelection *filesel_dialog)
 /*****************************/
 void menu_open_default_cb(GtkWidget *widget, gpointer data)
 {
-
-  gchar *filename = get_default_menu_file();
   gchar *window_title;
+  gchar *home_menu;
 
   /* Check if there is no other file opened */
   if(menueditor_app.xml_menu_file != NULL){
@@ -428,14 +427,27 @@ void menu_open_default_cb(GtkWidget *widget, gpointer data)
     menueditor_app.xml_menu_file=NULL;
   }
 
-  open_menu_file(filename);
+  home_menu = g_build_filename(xfce_get_homedir(), G_DIR_SEPARATOR_S, ".xfce4/menu.xml", NULL);
+
+  if(g_file_test(home_menu, G_FILE_TEST_EXISTS))
+    open_menu_file(home_menu);
+  else{
+    gchar *filename = get_default_menu_file();
+
+    open_menu_file(filename);
+    g_stpcpy(menueditor_app.menu_file_name,home_menu);
+
+    xmlSaveFormatFile(home_menu, menueditor_app.xml_menu_file, 1);
+
+    g_free(filename);
+  }
 
   /* Set window's title */
   window_title = g_strdup_printf("Xfce4-MenuEditor - %s", menueditor_app.menu_file_name);
   gtk_window_set_title(GTK_WINDOW(menueditor_app.main_window), window_title);
 
+  g_free(home_menu);
   g_free(window_title);
-  g_free(filename);
 }
 
 /********************************************/
