@@ -109,6 +109,7 @@ static void backdrop_create_channel (McsPlugin * mcs_plugin);
 static gboolean backdrop_write_options (McsPlugin * mcs_plugin);
 static void run_dialog (McsPlugin * mcs_plugin);
 
+#if !GTK_CHECK_VERSION(2, 4, 0)
 static void
 filesel_response_accept(GtkWidget *w, gpointer user_data)
 {
@@ -122,6 +123,7 @@ filesel_response_cancel(GtkWidget *w, gpointer user_data)
 	GtkDialog *dialog = GTK_DIALOG(user_data);
 	gtk_dialog_response(dialog, GTK_RESPONSE_CANCEL);
 }
+#endif
 
 static GdkPixbuf *
 backdrop_icon_at_size (int width, int height)
