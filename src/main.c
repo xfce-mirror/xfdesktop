@@ -20,6 +20,8 @@
  *  Random portions taken from or inspired by the original xfdesktop for xfce4:
  *     Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
  *     Copyright (C) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
+ *  X event forwarding code:
+ *     Copyright (c) 2004 Nils Rennebarth
  */
 
 #ifdef HAVE_CONFIG_H
@@ -78,45 +80,77 @@ session_die(gpointer user_data)
 	gtk_main_quit();
 }
 
+static void
+event_forward_to_rootwin(GdkScreen *gscreen, GdkEvent *event)
+{
+	XButtonEvent xev, xev2;
+    Display *dpy = GDK_DISPLAY_XDISPLAY(gdk_screen_get_display(gscreen));
+    
+	if(event->type == GDK_BUTTON_PRESS || event->type == GDK_BUTTON_RELEASE) {
+		if(event->type == GDK_BUTTON_PRESS) {
+			xev.type = ButtonPress;
+			/*
+			 * rox has an option to disable the next
+			 * instruction. it is called "blackbox_hack". Does
+			 * anyone know why exactly it is needed?
+			 */
+			XUngrabPointer(dpy, event->button.time);
+		} else
+			xev.type = ButtonRelease;
+        
+		xev.button = event->button.button;
+		xev.x = event->button.x;	/* Needed for icewm */
+		xev.y = event->button.y;
+		xev.x_root = event->button.x_root;
+		xev.y_root = event->button.y_root;
+		xev.state = event->button.state;
+
+		xev2.type = 0;
+	} else if(event->type == GDK_SCROLL) {
+		xev.type = ButtonPress;
+		xev.button = event->scroll.direction + 4;
+		xev.x = event->scroll.x;	/* Needed for icewm */
+		xev.y = event->scroll.y;
+		xev.x_root = event->scroll.x_root;
+		xev.y_root = event->scroll.y_root;
+		xev.state = event->scroll.state;
+		
+		xev2.type = ButtonRelease;
+		xev2.button = xev.button;
+	} else
+        return;
+    xev.window = GDK_WINDOW_XWINDOW(gdk_screen_get_root_window(gscreen));
+	xev.root =  xev.window;
+	xev.subwindow = None;
+	xev.time = event->button.time;
+	xev.same_screen = True;
+
+	XSendEvent(dpy, xev.window, False, ButtonPressMask | ButtonReleaseMask,
+            (XEvent *)&xev);
+	if(xev2.type == 0)
+        return;
+
+	/* send button release for scroll event */
+	xev2.window = xev.window;
+	xev2.root = xev.root;
+	xev2.subwindow = xev.subwindow;
+	xev2.time = xev.time;
+	xev2.x = xev.x;
+	xev2.y = xev.y;
+	xev2.x_root = xev.x_root;
+	xev2.y_root = xev.y_root;
+	xev2.state = xev.state;
+	xev2.same_screen = xev.same_screen;
+
+	XSendEvent(dpy, xev2.window, False, ButtonPressMask | ButtonReleaseMask,
+            (XEvent *)&xev2);
+}
+
 static gboolean
 scroll_cb(GtkWidget *w, GdkEventScroll *evt, gpointer user_data)
 {
-	GdkScrollDirection dir = evt->direction;
-	GdkScreen *gscreen;
-	NetkScreen *netk_screen;
-	NetkWorkspace *ws = NULL;
-	gint n, active;
-	
-	gscreen = gtk_widget_get_screen(w);
-	netk_screen = netk_screen_get(gdk_screen_get_number(gscreen));
-	n = netk_screen_get_workspace_count(netk_screen);
-	if(n <= 1)
-		return FALSE;
-	
-	ws = netk_screen_get_active_workspace(netk_screen);
-	active = netk_workspace_get_number(ws);
-	
-	switch(dir) {
-		case GDK_SCROLL_UP:
-		case GDK_SCROLL_LEFT:
-			if(active == 0)
-				active = n - 1;
-			else
-				active--;
-			break;
-		
-		case GDK_SCROLL_DOWN:
-		case GDK_SCROLL_RIGHT:
-			if(active == n - 1)
-				active = 0;
-			else
-				active++;
-	}
-	
-	ws = netk_screen_get_workspace(netk_screen, active);
-	netk_workspace_activate(ws);
-	
-	return FALSE;
+	event_forward_to_rootwin(gtk_widget_get_screen(w), (GdkEvent*)evt);
+	return TRUE;
 }
 
 static gboolean
@@ -130,13 +164,14 @@ button_cb(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
 			&& (state & GDK_CONTROL_MASK)))
 	{
 		popup_windowlist(gscreen, button, evt->time);
-		return TRUE;
-	} else if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK))) {
+	} else if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK)))
 		popup_desktop_menu(gscreen, button, evt->time);
-		return TRUE;
-	}
-	
-	return FALSE;
+    else {
+        /* forward unused events to the root window, i.e. the window manager */
+        event_forward_to_rootwin(gtk_widget_get_screen(w), (GdkEvent*)evt);
+    }
+    
+	return TRUE;
 }
 
 static void
@@ -287,6 +322,8 @@ main(int argc, char **argv)
 		g_signal_connect(G_OBJECT(desktops[i]), "scroll-event",
 				G_CALLBACK(scroll_cb), NULL);
 		g_signal_connect(G_OBJECT(desktops[i]), "button-press-event",
+			G_CALLBACK(button_cb), NULL);
+		g_signal_connect(G_OBJECT(desktops[i]), "button-release-event",
 			G_CALLBACK(button_cb), NULL);
 		if(mcs_client)
 			settings_register_callback(xfce_desktop_settings_changed, desktops[i]);
