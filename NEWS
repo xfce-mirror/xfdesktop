@@ -1,3 +1,24 @@
+20041220 (Xfce 4.2rc3):
+-----------------------
+
+	Xfdesktop is shaping up quite well for the 4.2.0 release, but there
+	were a few necessary bugfixes:
+	  - Redo the backdrop setting method to fix redraw problems with
+	    Gtk 2.6, and to make it a bit nicer to maintain.
+	  - Fix a backdrop drawing problem that crops up if you're using
+	    multihead and a gtk2 theme with a background pixmap.
+	  - The desktop menu cache now tracks changes to the XDG_DATA_DIRS
+	    environment variable and invalidates the cache if it changes.
+	  - Jean-Francois did some stuff with menueditor, but I think it
+	    was just some code reorg and optimisation.
+	  - Added back the add/remove workspace items to the windowlist
+	    menu because Francois asked oh-so-nicely.
+
+	Hopefully this should be it, and xfdesktop won't need any more changes
+	for 2.4.0-final.  Of course, now that I said it, it's ruined.
+
+(Brian)
+
 20041205 (Xfce 4.2rc2):
 -----------------------
 
@@ -22,7 +43,7 @@
 
 (Brian)
 
-20041029:
+20041029 (Xfce 4.2beta2):
 ---------
 
 	* Wow, it's been a while since anyone's put anything in here.  We're
