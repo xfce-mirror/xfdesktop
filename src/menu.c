@@ -1,6 +1,7 @@
 /*  xfce4
  *  
- *  Copyright (C) 2002 Jasper Huijsmans (huysmans@users.sourceforge.net)
+ *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
+ *  		  2003 Biju Chako (botsie@myrealbox.com)
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -26,11 +27,14 @@
 
 #include "main.h"
 #include "menu.h"
-/* #define DEBUG 1 */
 #include "debug.h"
 
+static NetkScreen *netk_screen = NULL;
 static GList *MainMenuData; /* TODO: Free this at some point */
 
+/*  User menu
+ *  ---------
+*/
 typedef enum __MenuItemTypeEnum {
     MI_APP,
     MI_SEPARATOR,
@@ -47,245 +51,37 @@ typedef struct __MenuItemStruct {
     GdkPixbuf   *icon;          /* icon to display      */
 } MenuItem;
 
-static NetkScreen *netk_screen = NULL;
-
 void do_exec(gpointer callback_data, guint callback_action, GtkWidget *widget)
 {
     g_spawn_command_line_async((char *)callback_data, NULL);
 }
 
-
 void do_term_exec(gpointer callback_data, guint callback_action, GtkWidget *widget)
 {
     char *cmd;
-    const char *term_cmd;
+    static const char *term_cmd = NULL;
 
-    term_cmd = g_getenv("TERMCMD");
-    if (term_cmd) {
-        cmd = g_strconcat(term_cmd, " -e ", (char *) callback_data, NULL);
-    } else {
-        cmd = g_strconcat("xterm -e ", (char *) callback_data, NULL);
+    if (!term_cmd)
+    {
+	term_cmd = g_getenv("TERMCMD");
+
+	if (!term_cmd)
+	    term_cmd = "xterm";
     }
+    
+    cmd = g_strconcat(term_cmd, " -e ", (char *) callback_data, NULL);
 
     g_spawn_command_line_async(cmd, NULL);
     
     g_free(cmd);
-    if (term_cmd) { g_free(term_cmd); }
-
+    
     return;
-}
-
-static gboolean popup_menu(GdkEventButton *ev);
-
-static gboolean button_press_event(GtkWidget *win, GdkEventButton *ev, 
-				gpointer data)
-{
-    return popup_menu(ev);
-}
-
-void menu_init(GtkWidget *window, NetkScreen *screen)
-{
-    netk_screen = screen;
-
-    g_signal_connect(window, "button-press-event",
-		     G_CALLBACK(button_press_event), NULL);
-}
-
-void menu_load_settings(McsClient *client)
-{
-}
-
-void add_menu_callback(GHashTable *ht)
-{
-}
-
-static void activate_window(GtkWidget *item, NetkWindow *win)
-{
-    netk_window_activate(win);
-}
-
-static void set_num_screens(gpointer num)
-{
-    static Atom xa_NET_NUMBER_OF_DESKTOPS = 0;
-    XClientMessageEvent sev;
-    int n;
-
-    if(!xa_NET_NUMBER_OF_DESKTOPS)
-    {
-	xa_NET_NUMBER_OF_DESKTOPS = 
-	    XInternAtom(GDK_DISPLAY(), "_NET_NUMBER_OF_DESKTOPS", False);
-    }
-
-    n = GPOINTER_TO_INT(num);
-    
-    sev.type = ClientMessage;
-    sev.display = GDK_DISPLAY();
-    sev.format = 32;
-    sev.window = GDK_ROOT_WINDOW();
-    sev.message_type = xa_NET_NUMBER_OF_DESKTOPS;
-    sev.data.l[0] = n;
-
-    gdk_error_trap_push();
-
-    XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False,
-               SubstructureNotifyMask | SubstructureRedirectMask,
-               (XEvent *) & sev);
-
-    gdk_flush();
-    gdk_error_trap_pop();
-}
-
-static GtkWidget *create_window_list_item(NetkWindow *win)
-{
-    const char *name = NULL;
-    GString *label;
-    GtkWidget *mi;
-
-    if (netk_window_is_skip_pager(win) || netk_window_is_skip_tasklist(win))
-	return NULL;
-    
-    if (!name)
-	name = netk_window_get_name(win);
-   
-    label = g_string_new(name);
-
-    if (label->len >= 15) {
-    	g_string_truncate(label, 15);
-	g_string_append(label, " ...");
-    }
-
-    if (netk_window_is_minimized(win)) {
-	g_string_prepend(label, "[");
-	g_string_append(label, "]");
-    }
-	
-    mi = gtk_menu_item_new_with_label(label->str);
-    
-    g_string_free(label,TRUE);
-    
-    return mi;
-}
-
-static  GtkWidget *create_windowlist_menu(void)
-{
-    int i, n;
-    GList *windows, *li;
-    GtkWidget *menu3, *mi, *label;
-    NetkWindow *win;
-    NetkWorkspace *ws, *aws;
-    GtkStyle *style;
-    
-    menu3 = gtk_menu_new();
-    style = gtk_widget_get_style(menu3);
-    
-/*	mi = gtk_menu_item_new_with_label(_("Window list"));
-    gtk_widget_set_sensitive(mi, FALSE);
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
-
-    mi = gtk_separator_menu_item_new();
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
-*/	
-    windows = netk_screen_get_windows_stacked(netk_screen);
-    n = netk_screen_get_workspace_count(netk_screen);
-    aws = netk_screen_get_active_workspace(netk_screen);
-
-    for (i = 0; i < n; i++)
-    {
-	char ws_name[100];
-	gboolean active;
-	
-	ws = netk_screen_get_workspace(netk_screen, i);
-	
-	active = (ws == aws);
-	
-	if (active)
-	{
-	    sprintf(ws_name, "<i>%s %d</i>", _("Workspace"), i+1);
-	}
-	else
-	{
-	    sprintf(ws_name, "%s <i>%s %d</i>", 
-		    _("Go to"), _("Workspace"), i+1);
-	}
-	
-	mi = gtk_menu_item_new_with_label(ws_name);
-	label = gtk_bin_get_child(GTK_BIN(mi));
-	gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
-	gtk_widget_show(mi);
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
-	
-	if (active)
-	{
-	    gtk_widget_set_sensitive(mi, FALSE);
-	}
-/*	    else
-	{
-	    gtk_widget_modify_fg(gtk_bin_get_child(GTK_BIN(mi)), 
-				 GTK_STATE_NORMAL,
-				 &(style->fg[GTK_STATE_INSENSITIVE]));
-	}
-*/	    
-	g_signal_connect_swapped(mi, "activate", 
-				 G_CALLBACK(netk_workspace_activate), ws);
-
-	mi = gtk_separator_menu_item_new();
-	gtk_widget_show(mi);
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
-	
-	for (li = windows; li; li = li->next)
-	{
-	    win = li->data;
-
-	    if (netk_window_get_workspace(win) != ws)
-		continue;
-	    
-	    mi = create_window_list_item(win);
-
-	    if (!mi)
-		continue;
-
-	    gtk_widget_show(mi);
-	    gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
-
-	    if (!active)
-	    {
-		gtk_widget_modify_fg(gtk_bin_get_child(GTK_BIN(mi)), 
-				     GTK_STATE_NORMAL,
-				     &(style->fg[GTK_STATE_INSENSITIVE]));
-	    }
-	    
-	    g_signal_connect(mi, "activate", 
-			     G_CALLBACK(activate_window), win);
-	}
-
-	mi = gtk_separator_menu_item_new();
-	gtk_widget_show(mi);
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
-    }
-
-    mi = gtk_menu_item_new_with_label(_("Add workspace"));
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
-    g_signal_connect_swapped(mi, "activate", 
-			     G_CALLBACK(set_num_screens), 
-			     GINT_TO_POINTER(n+1));
-
-    mi = gtk_menu_item_new_with_label(_("Delete workspace"));
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
-    g_signal_connect_swapped(mi, "activate", 
-			     G_CALLBACK(set_num_screens), 
-			     GINT_TO_POINTER(n-1));
-
-    return menu3;
 }
 
 char *get_menu_file(void)
 {
-    gchar *filename = NULL;
-    gchar *env = NULL;
+    char *filename = NULL;
+    const char *env = NULL;
 
     env = g_getenv("XFCE_DISABLE_USER_CONFIG");
 
@@ -512,8 +308,6 @@ void free_menu_data(GList *menu_data)
     g_list_free(menu_data);
 }
 
-    
-
 void create_menu_items(GtkItemFactory *ifactory)
 {
 
@@ -549,6 +343,7 @@ void create_menu_items(GtkItemFactory *ifactory)
     return;
 }
 
+/* return the menu widget */
 static GtkWidget *create_desktop_menu(void)
 {
     GtkItemFactory *ifactory;
@@ -560,7 +355,197 @@ static GtkWidget *create_desktop_menu(void)
     return gtk_item_factory_get_widget(ifactory, "<popup>");
 }
 
-gboolean popup_menu(GdkEventButton *ev)
+/*  Window list menu
+ *  ----------------
+*/
+static void activate_window(GtkWidget *item, NetkWindow *win)
+{
+    netk_window_activate(win);
+}
+
+static void set_num_screens(gpointer num)
+{
+    static Atom xa_NET_NUMBER_OF_DESKTOPS = 0;
+    XClientMessageEvent sev;
+    int n;
+
+    if(!xa_NET_NUMBER_OF_DESKTOPS)
+    {
+	xa_NET_NUMBER_OF_DESKTOPS = 
+	    XInternAtom(GDK_DISPLAY(), "_NET_NUMBER_OF_DESKTOPS", False);
+    }
+
+    n = GPOINTER_TO_INT(num);
+    
+    sev.type = ClientMessage;
+    sev.display = GDK_DISPLAY();
+    sev.format = 32;
+    sev.window = GDK_ROOT_WINDOW();
+    sev.message_type = xa_NET_NUMBER_OF_DESKTOPS;
+    sev.data.l[0] = n;
+
+    gdk_error_trap_push();
+
+    XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False,
+               SubstructureNotifyMask | SubstructureRedirectMask,
+               (XEvent *) & sev);
+
+    gdk_flush();
+    gdk_error_trap_pop();
+}
+
+static GtkWidget *create_window_list_item(NetkWindow *win)
+{
+    const char *name = NULL;
+    GString *label;
+    GtkWidget *mi;
+
+    if (netk_window_is_skip_pager(win) || netk_window_is_skip_tasklist(win))
+	return NULL;
+    
+    if (!name)
+	name = netk_window_get_name(win);
+   
+    label = g_string_new(name);
+
+    if (label->len >= 15) {
+    	g_string_truncate(label, 15);
+	g_string_append(label, " ...");
+    }
+
+    if (netk_window_is_minimized(win)) {
+	g_string_prepend(label, "[");
+	g_string_append(label, "]");
+    }
+	
+    mi = gtk_menu_item_new_with_label(label->str);
+    
+    g_string_free(label,TRUE);
+    
+    return mi;
+}
+
+static  GtkWidget *create_windowlist_menu(void)
+{
+    int i, n;
+    GList *windows, *li;
+    GtkWidget *menu3, *mi, *label;
+    NetkWindow *win;
+    NetkWorkspace *ws, *aws;
+    GtkStyle *style;
+    
+    menu3 = gtk_menu_new();
+    style = gtk_widget_get_style(menu3);
+    
+/*	mi = gtk_menu_item_new_with_label(_("Window list"));
+    gtk_widget_set_sensitive(mi, FALSE);
+    gtk_widget_show(mi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
+
+    mi = gtk_separator_menu_item_new();
+    gtk_widget_show(mi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
+*/	
+    windows = netk_screen_get_windows_stacked(netk_screen);
+    n = netk_screen_get_workspace_count(netk_screen);
+    aws = netk_screen_get_active_workspace(netk_screen);
+
+    for (i = 0; i < n; i++)
+    {
+	char ws_name[100];
+	gboolean active;
+	
+	ws = netk_screen_get_workspace(netk_screen, i);
+	
+	active = (ws == aws);
+	
+	if (active)
+	{
+	    sprintf(ws_name, "<i>%s %d</i>", _("Workspace"), i+1);
+	}
+	else
+	{
+	    sprintf(ws_name, "%s <i>%s %d</i>", 
+		    _("Go to"), _("Workspace"), i+1);
+	}
+	
+	mi = gtk_menu_item_new_with_label(ws_name);
+	label = gtk_bin_get_child(GTK_BIN(mi));
+	gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
+	gtk_widget_show(mi);
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
+	
+	if (active)
+	{
+	    gtk_widget_set_sensitive(mi, FALSE);
+	}
+/*	    else
+	{
+	    gtk_widget_modify_fg(gtk_bin_get_child(GTK_BIN(mi)), 
+				 GTK_STATE_NORMAL,
+				 &(style->fg[GTK_STATE_INSENSITIVE]));
+	}
+*/	    
+	g_signal_connect_swapped(mi, "activate", 
+				 G_CALLBACK(netk_workspace_activate), ws);
+
+	mi = gtk_separator_menu_item_new();
+	gtk_widget_show(mi);
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
+	
+	for (li = windows; li; li = li->next)
+	{
+	    win = li->data;
+
+	    if (netk_window_get_workspace(win) != ws)
+		continue;
+	    
+	    mi = create_window_list_item(win);
+
+	    if (!mi)
+		continue;
+
+	    gtk_widget_show(mi);
+	    gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
+
+	    if (!active)
+	    {
+		gtk_widget_modify_fg(gtk_bin_get_child(GTK_BIN(mi)), 
+				     GTK_STATE_NORMAL,
+				     &(style->fg[GTK_STATE_INSENSITIVE]));
+	    }
+	    
+	    g_signal_connect(mi, "activate", 
+			     G_CALLBACK(activate_window), win);
+	}
+
+	mi = gtk_separator_menu_item_new();
+	gtk_widget_show(mi);
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
+    }
+
+    mi = gtk_menu_item_new_with_label(_("Add workspace"));
+    gtk_widget_show(mi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
+    g_signal_connect_swapped(mi, "activate", 
+			     G_CALLBACK(set_num_screens), 
+			     GINT_TO_POINTER(n+1));
+
+    mi = gtk_menu_item_new_with_label(_("Delete workspace"));
+    gtk_widget_show(mi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
+    g_signal_connect_swapped(mi, "activate", 
+			     G_CALLBACK(set_num_screens), 
+			     GINT_TO_POINTER(n-1));
+
+    return menu3;
+}
+
+/*  Initialization and event handling
+ *  ---------------------------------
+*/
+static gboolean button_press_event(GtkWidget *win, GdkEventButton *ev, 
+				gpointer data)
 {
     static GtkWidget *menu1 = NULL;
     static GtkWidget *menu3 = NULL;
@@ -592,6 +577,22 @@ gboolean popup_menu(GdkEventButton *ev)
     }
 
     return FALSE;
+}
+
+void menu_init(GtkWidget *window, NetkScreen *screen)
+{
+    netk_screen = screen;
+
+    g_signal_connect(window, "button-press-event",
+		     G_CALLBACK(button_press_event), NULL);
+}
+
+void menu_load_settings(McsClient *client)
+{
+}
+
+void add_menu_callback(GHashTable *ht)
+{
 }
 
 
