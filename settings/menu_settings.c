@@ -168,7 +168,7 @@ create_menu_page(BackdropDialog *bd)
 	gtk_widget_show(vbox);
 	xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
 	
-	chk = gtk_check_button_new_with_mnemonic(_("Show dekstop _menu"));
+	chk = gtk_check_button_new_with_mnemonic(_("Show desktop _menu"));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), show_desktopmenu);
 	g_object_set_data(G_OBJECT(chk), "xfce-chknum", GUINT_TO_POINTER(OPT_SHOWDM));
 	gtk_widget_show(chk);
