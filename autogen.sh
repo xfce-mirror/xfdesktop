@@ -142,7 +142,7 @@ do
   fi
 done
 
-conf_flags="--enable-debug=full --enable-maintainer-mode"
+conf_flags="--enable-maintainer-mode"
 
 if test x$NOCONFIGURE = x; then
   echo Running $srcdir/configure $conf_flags "$@" ...
