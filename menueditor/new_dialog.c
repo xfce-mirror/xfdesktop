@@ -55,7 +55,7 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
 				    GTK_DIALOG_DESTROY_WITH_PARENT,
 				    GTK_MESSAGE_QUESTION,
 				    GTK_BUTTONS_YES_NO,
-				    _("Are you sure to close the current menu ?"));
+				    _("Are you sure to close the current menu?"));
 
     if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_NO){
       gtk_widget_destroy(dialog);
@@ -71,7 +71,7 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
 				    GTK_DIALOG_DESTROY_WITH_PARENT,
 				    GTK_MESSAGE_QUESTION,
 				    GTK_BUTTONS_YES_NO,
-				    _("Do you want to save before closing the file ?"));
+				    _("Do you want to save before closing the file?"));
 
     if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES)
       menu_save_cb(widget,data);
@@ -92,21 +92,21 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
   table = gtk_table_new(2,2,TRUE);
   
   /* Header */
-  header_image = gtk_image_new_from_stock("gtk-justify-fill", GTK_ICON_SIZE_LARGE_TOOLBAR);
+  header_image = gtk_image_new_from_stock(GTK_STOCK_JUSTIFY_FILL, GTK_ICON_SIZE_LARGE_TOOLBAR);
   header_text = g_strdup_printf("%s", _("New menu"));
   header = xfce_create_header_with_image (header_image, header_text);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);
   g_free (header_text);
 
   /* Name */
-  label_title = gtk_label_new(_("Title :"));
+  label_title = gtk_label_new(_("Title:"));
   entry_title = gtk_entry_new();
 
   gtk_table_attach(GTK_TABLE(table), label_title, 0, 1, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
   gtk_table_attach(GTK_TABLE(table), entry_title, 1, 2, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
 
   /* Filename */
-  label_filename = gtk_label_new(_("Filename :"));
+  label_filename = gtk_label_new(_("Filename:"));
   entry_filename = gtk_entry_new();
   button_browse = gtk_button_new_with_label("...");
   hbox_filename = gtk_hbox_new(FALSE,0);
@@ -139,7 +139,7 @@ void new_menu_cb(GtkWidget *widget, gpointer data)
 							    GTK_DIALOG_DESTROY_WITH_PARENT,
 							    GTK_MESSAGE_WARNING,
 							    GTK_BUTTONS_OK,
-							    _("All the field are not filled !!!"));
+							    _("All fields are required."));
 	gtk_dialog_run (GTK_DIALOG (dialog_warning));
 	gtk_widget_destroy (dialog_warning);
 	gtk_widget_destroy (dialog);

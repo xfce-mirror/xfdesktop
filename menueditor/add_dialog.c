@@ -138,14 +138,14 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
   table = gtk_table_new(5,2,TRUE);
 
   /* Header */
-  header_image = gtk_image_new_from_stock("gtk-add", GTK_ICON_SIZE_LARGE_TOOLBAR);
+  header_image = gtk_image_new_from_stock(GTK_STOCK_ADD, GTK_ICON_SIZE_LARGE_TOOLBAR);
   header_text = g_strdup_printf("%s", _("Add menu entry"));
   header = xfce_create_header_with_image (header_image, header_text);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);
   g_free (header_text);
 
   /* Type */
-  label_type = gtk_label_new(_("Type :"));
+  label_type = gtk_label_new(_("Type:"));
   
   menu = gtk_menu_new();
   mitem = gtk_menu_item_new_with_mnemonic(_("Launcher"));
@@ -183,7 +183,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
   gtk_table_attach(GTK_TABLE(table), optionmenu_type, 1, 2, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
  
   /* Name */
-  label_name = gtk_label_new(_("Name :"));
+  label_name = gtk_label_new(_("Name:"));
   entry_name = gtk_entry_new();
 
   gtk_table_attach(GTK_TABLE(table), label_name, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
@@ -193,7 +193,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 
   /* Command */
   hbox_command = gtk_hbox_new(FALSE,0);
-  label_command = gtk_label_new(_("Command :"));
+  label_command = gtk_label_new(_("Command:"));
   entry_command = gtk_entry_new();
   button_browse = gtk_button_new_with_label("...");
 
@@ -209,7 +209,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 
   /* Icon */
   hbox_icon = gtk_hbox_new(FALSE,0);
-  label_icon = gtk_label_new(_("Icon :"));
+  label_icon = gtk_label_new(_("Icon:"));
   entry_icon = gtk_entry_new();
   button_browse2 = gtk_button_new_with_label("...");
 
@@ -225,11 +225,11 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
   controls.entry_icon=hbox_icon;
 
   /* Start Notify check button */
-  controls.snotify_checkbutton = gtk_check_button_new_with_label(_("Start notify"));
+  controls.snotify_checkbutton = gtk_check_button_new_with_mnemonic(_("Use startup _notification"));
   gtk_table_attach(GTK_TABLE(table), controls.snotify_checkbutton, 1, 2, 4, 5, GTK_FILL, GTK_SHRINK, 0, 0);
 
   /* Run in terminal check button */
-  controls.term_checkbutton = gtk_check_button_new_with_label(_("Run in terminal"));
+  controls.term_checkbutton = gtk_check_button_new_with_mnemonic(_("Run in _terminal"));
   gtk_table_attach(GTK_TABLE(table), controls.term_checkbutton, 0, 1, 4, 5, GTK_FILL, GTK_SHRINK, 0, 0);
 
   gtk_table_set_row_spacings(GTK_TABLE(table), 5);
@@ -278,7 +278,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 							    GTK_DIALOG_DESTROY_WITH_PARENT,
 							    GTK_MESSAGE_WARNING,
 							    GTK_BUTTONS_OK,
-							    _("All the field are not filled !!!\nAdding nothing"));
+							    _("All fields must be filled to add an item."));
 	gtk_dialog_run (GTK_DIALOG (dialog_warning));
 	gtk_widget_destroy (dialog_warning);
 	gtk_widget_destroy (dialog);
@@ -356,7 +356,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 							    GTK_DIALOG_DESTROY_WITH_PARENT,
 							    GTK_MESSAGE_WARNING,
 							    GTK_BUTTONS_OK,
-							    _("Name field is not filled !!!\nAdding nothing"));
+							    _("The 'Name' field is required."));
 	gtk_dialog_run (GTK_DIALOG (dialog_warning));
 	gtk_widget_destroy (dialog_warning);
 	gtk_widget_destroy (dialog);
@@ -469,7 +469,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 							    GTK_DIALOG_DESTROY_WITH_PARENT,
 							    GTK_MESSAGE_WARNING,
 							    GTK_BUTTONS_OK,
-							    _("Name field is not filled !!!\nAdding nothing"));
+							    _("The 'Name' field is required."));
 	gtk_dialog_run (GTK_DIALOG (dialog_warning));
 	gtk_widget_destroy (dialog_warning);
 	gtk_widget_destroy (dialog);
@@ -539,7 +539,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 							       GTK_DIALOG_DESTROY_WITH_PARENT,
 							       GTK_MESSAGE_WARNING,
 							       GTK_BUTTONS_OK,
-							       _("Name field is not filled !!!\nAdding nothing"));
+							       _("The 'Name' field is required."));
 	   gtk_dialog_run (GTK_DIALOG (dialog_warning));
 	   gtk_widget_destroy (dialog_warning);
 	   gtk_widget_destroy (dialog);

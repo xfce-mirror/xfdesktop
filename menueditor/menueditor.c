@@ -167,7 +167,7 @@ void not_yet_cb(GtkWidget *widget, gpointer data)
 					      GTK_DIALOG_DESTROY_WITH_PARENT,
 					      GTK_MESSAGE_WARNING,
 					      GTK_BUTTONS_OK,
-					      _("Not yet implemented !!!"));
+					      _("Not yet implemented!"));
   gtk_dialog_run (GTK_DIALOG (dialog));
   gtk_widget_destroy (dialog);
   
@@ -183,7 +183,7 @@ gboolean confirm_quit_cb(GtkWidget *widget,gpointer data)
 				    GTK_DIALOG_DESTROY_WITH_PARENT,
 				    GTK_MESSAGE_QUESTION,
 				    GTK_BUTTONS_YES_NO,
-				    _("Do you want to save before closing the file ?"));
+				    _("Do you want to save before closing the file?"));
     
    
     if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES)
@@ -406,7 +406,7 @@ void menu_open_default_cb(GtkWidget *widget, gpointer data)
 				      GTK_DIALOG_DESTROY_WITH_PARENT,
 				      GTK_MESSAGE_QUESTION,
 				      GTK_BUTTONS_YES_NO,
-				      _("Do you want to save before closing the file ?"));
+				      _("Do you want to save before closing the file?"));
       
       if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES)
 	menu_save_cb(widget,NULL);
@@ -441,7 +441,7 @@ void menu_open_cb(GtkWidget *widget, gpointer data)
 				      GTK_DIALOG_DESTROY_WITH_PARENT,
 				      GTK_MESSAGE_QUESTION,
 				      GTK_BUTTONS_YES_NO,
-				      _("Do you want to save before closing the file ?"));
+				      _("Do you want to save before closing the file?"));
       
       if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES)
 	menu_save_cb(widget,NULL);
@@ -564,7 +564,7 @@ void close_menu_cb(GtkWidget *widget, gpointer data)
 					     GTK_DIALOG_DESTROY_WITH_PARENT,
 					     GTK_MESSAGE_QUESTION,
 					     GTK_BUTTONS_YES_NO,
-					     _("Do you want to save before closing the file ?"));
+					     _("Do you want to save before closing the file?"));
 
     if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES)
       menu_save_cb(widget,data);
@@ -769,21 +769,21 @@ void create_main_window()
   menueditor_app.file_menu.menu = gtk_menu_new ();
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (menueditor_app.file_menu.menu_item), menueditor_app.file_menu.menu);
 
-  menueditor_app.file_menu.new = gtk_image_menu_item_new_from_stock("gtk-new", accel_group);
+  menueditor_app.file_menu.new = gtk_image_menu_item_new_from_stock(GTK_STOCK_NEW, accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menueditor_app.file_menu.new);
-  menueditor_app.file_menu.open = gtk_image_menu_item_new_from_stock("gtk-open", accel_group);
+  menueditor_app.file_menu.open = gtk_image_menu_item_new_from_stock(GTK_STOCK_OPEN, accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menueditor_app.file_menu.open);
   menueditor_app.file_menu.open_default = gtk_image_menu_item_new_with_mnemonic(_("Open default menu"));
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menueditor_app.file_menu.open_default);
-  menueditor_app.file_menu.save = gtk_image_menu_item_new_from_stock("gtk-save", accel_group);
+  menueditor_app.file_menu.save = gtk_image_menu_item_new_from_stock(GTK_STOCK_SAVE, accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menueditor_app.file_menu.save);
-  menueditor_app.file_menu.saveas = gtk_image_menu_item_new_from_stock("gtk-save-as", accel_group);
+  menueditor_app.file_menu.saveas = gtk_image_menu_item_new_from_stock(GTK_STOCK_SAVE_AS, accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menueditor_app.file_menu.saveas);
-  menueditor_app.file_menu.close = gtk_image_menu_item_new_from_stock("gtk-close", accel_group);
+  menueditor_app.file_menu.close = gtk_image_menu_item_new_from_stock(GTK_STOCK_CLOSE, accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menueditor_app.file_menu.close);
   menu_separator = gtk_separator_menu_item_new();
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menu_separator);
-  menueditor_app.file_menu.exit = gtk_image_menu_item_new_from_stock ("gtk-quit", accel_group);
+  menueditor_app.file_menu.exit = gtk_image_menu_item_new_from_stock (GTK_STOCK_QUIT, accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.file_menu.menu),menueditor_app.file_menu.exit);
 
   /* Edit menu */
@@ -791,17 +791,17 @@ void create_main_window()
   gtk_container_add (GTK_CONTAINER (menueditor_app.main_menubar), menueditor_app.edit_menu.menu_item);
   menueditor_app.edit_menu.menu = gtk_menu_new ();
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (menueditor_app.edit_menu.menu_item), menueditor_app.edit_menu.menu);
-  menueditor_app.edit_menu.add = gtk_image_menu_item_new_from_stock ("gtk-add", accel_group);
+  menueditor_app.edit_menu.add = gtk_image_menu_item_new_from_stock (GTK_STOCK_ADD, accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menueditor_app.edit_menu.add);
   menueditor_app.edit_menu.add_menu = gtk_image_menu_item_new_with_mnemonic (_("Add an external menu..."));
   gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menueditor_app.edit_menu.add_menu);
-  menueditor_app.edit_menu.del = gtk_image_menu_item_new_from_stock ("gtk-remove", accel_group);
+  menueditor_app.edit_menu.del = gtk_image_menu_item_new_from_stock (GTK_STOCK_REMOVE, accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menueditor_app.edit_menu.del);
   menu_separator = gtk_separator_menu_item_new();
   gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menu_separator);
-  menueditor_app.edit_menu.up = gtk_image_menu_item_new_from_stock ("gtk-go-up", accel_group);
+  menueditor_app.edit_menu.up = gtk_image_menu_item_new_from_stock (GTK_STOCK_GO_UP, accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menueditor_app.edit_menu.up);
-  menueditor_app.edit_menu.down = gtk_image_menu_item_new_from_stock ("gtk-go-down", accel_group);
+  menueditor_app.edit_menu.down = gtk_image_menu_item_new_from_stock (GTK_STOCK_GO_DOWN, accel_group);
   gtk_container_add (GTK_CONTAINER (menueditor_app.edit_menu.menu),menueditor_app.edit_menu.down);
 
   /* Help menu */
@@ -810,7 +810,7 @@ void create_main_window()
   menueditor_app.help_menu.menu = gtk_menu_new ();
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (menueditor_app.help_menu.menu_item), menueditor_app.help_menu.menu);
   
-  menueditor_app.help_menu.about = gtk_menu_item_new_with_mnemonic(_("About ..."));
+  menueditor_app.help_menu.about = gtk_menu_item_new_with_mnemonic(_("_About..."));
   gtk_container_add (GTK_CONTAINER (menueditor_app.help_menu.menu),menueditor_app.help_menu.about);
 
   /* Toolbar */
@@ -819,28 +819,28 @@ void create_main_window()
   gtk_box_pack_start (GTK_BOX (main_vbox), menueditor_app.main_toolbar.toolbar, FALSE, FALSE, 0);
   gtk_toolbar_set_style (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar), GTK_TOOLBAR_ICONS);
 
-  tmp_toolbar_icon = gtk_image_new_from_stock("gtk-new",GTK_ICON_SIZE_LARGE_TOOLBAR);
+  tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_NEW,GTK_ICON_SIZE_LARGE_TOOLBAR);
   menueditor_app.main_toolbar.new = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
 							 GTK_TOOLBAR_CHILD_BUTTON,
 							 NULL,
 							 "",
-							 _("Create a new XFCE4 menu file"), NULL,
+							 _("Create a new Xfce4 menu file"), NULL,
 							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(new_menu_cb), NULL);
-  tmp_toolbar_icon = gtk_image_new_from_stock("gtk-open",GTK_ICON_SIZE_LARGE_TOOLBAR);
+  tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_OPEN,GTK_ICON_SIZE_LARGE_TOOLBAR);
   menueditor_app.main_toolbar.open = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
 							 GTK_TOOLBAR_CHILD_BUTTON,
 							 NULL,
 							 "",
-							 _("Open XFCE4 menu file"), NULL,
+							 _("Open an Xfce4 menu file"), NULL,
 							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(menu_open_cb), NULL);
-  tmp_toolbar_icon = gtk_image_new_from_stock("gtk-save",GTK_ICON_SIZE_LARGE_TOOLBAR);
+  tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_SAVE,GTK_ICON_SIZE_LARGE_TOOLBAR);
   menueditor_app.main_toolbar.save = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
 							 GTK_TOOLBAR_CHILD_BUTTON,
 							 NULL,
 							 "",
 							 _("Save current menu"), NULL,
 							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(menu_save_cb), NULL);
-  tmp_toolbar_icon = gtk_image_new_from_stock("gtk-close",GTK_ICON_SIZE_LARGE_TOOLBAR);
+  tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_CLOSE,GTK_ICON_SIZE_LARGE_TOOLBAR);
   menueditor_app.main_toolbar.close = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
 							 GTK_TOOLBAR_CHILD_BUTTON,
 							 NULL,
@@ -848,33 +848,33 @@ void create_main_window()
 							 _("Close current menu"), NULL,
 							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(close_menu_cb), NULL);
   gtk_toolbar_append_space (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar));
-  tmp_toolbar_icon = gtk_image_new_from_stock("gtk-add",GTK_ICON_SIZE_LARGE_TOOLBAR);
+  tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_ADD,GTK_ICON_SIZE_LARGE_TOOLBAR);
   menueditor_app.main_toolbar.add = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
 							 GTK_TOOLBAR_CHILD_BUTTON,
 							 NULL,
 							 "",
 							 _("Add an entry to the menu"), NULL,
 							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(add_entry_cb), NULL);
-  tmp_toolbar_icon = gtk_image_new_from_stock("gtk-remove",GTK_ICON_SIZE_LARGE_TOOLBAR);
+  tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_REMOVE,GTK_ICON_SIZE_LARGE_TOOLBAR);
   menueditor_app.main_toolbar.del = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
 							 GTK_TOOLBAR_CHILD_BUTTON,
 							 NULL,
 							 "",
 							 _("Delete the current entry"), NULL,
 							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(delete_entry_cb), NULL);
-  tmp_toolbar_icon = gtk_image_new_from_stock("gtk-go-up",GTK_ICON_SIZE_LARGE_TOOLBAR);
+  tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_GO_UP,GTK_ICON_SIZE_LARGE_TOOLBAR);
   menueditor_app.main_toolbar.up = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
 							 GTK_TOOLBAR_CHILD_BUTTON,
 							 NULL,
 							 "",
-							 _("Move up the current entry"), NULL,
+							 _("Move the current entry up"), NULL,
 							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(entry_up_cb), NULL);
-  tmp_toolbar_icon = gtk_image_new_from_stock("gtk-go-down",GTK_ICON_SIZE_LARGE_TOOLBAR);
+  tmp_toolbar_icon = gtk_image_new_from_stock(GTK_STOCK_GO_DOWN,GTK_ICON_SIZE_LARGE_TOOLBAR);
   menueditor_app.main_toolbar.down = gtk_toolbar_append_element (GTK_TOOLBAR (menueditor_app.main_toolbar.toolbar),
 							 GTK_TOOLBAR_CHILD_BUTTON,
 							 NULL,
 							 "",
-							 _("Move down the current entry"), NULL,
+							 _("Move the current entry down"), NULL,
 							 tmp_toolbar_icon, GTK_SIGNAL_FUNC(entry_down_cb), NULL);
 
   /* Tree View inspirated from Gaim */

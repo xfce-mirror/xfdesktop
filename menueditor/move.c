@@ -185,7 +185,7 @@ void entry_up_cb(GtkWidget *widget, gpointer data)
 				      GTK_DIALOG_DESTROY_WITH_PARENT,
 				      GTK_MESSAGE_QUESTION,
 				      GTK_BUTTONS_YES_NO,
-				      _("Do you want to move the item into the parent menu ?"));
+				      _("Do you want to move the item into the parent menu?"));
       if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES){
 	/* Move into the parent menu */
 	GtkTreeIter iter_new;
@@ -278,7 +278,7 @@ void entry_down_cb(GtkWidget *widget, gpointer data)
 				      GTK_DIALOG_DESTROY_WITH_PARENT,
 				      GTK_MESSAGE_QUESTION,
 				      GTK_BUTTONS_YES_NO,
-				      _("Do you want to move the item into the submenu ?"));
+				      _("Do you want to move the item into the submenu?"));
       if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_YES){
 	/* Insert in the submenu ! */
 	GtkTreeIter iter_new, iter_child;

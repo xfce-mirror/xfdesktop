@@ -103,7 +103,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_OK);
 
   /* Header */
-  header_image = gtk_image_new_from_stock("gtk-justify-fill", GTK_ICON_SIZE_LARGE_TOOLBAR);
+  header_image = gtk_image_new_from_stock(GTK_STOCK_JUSTIFY_FILL, GTK_ICON_SIZE_LARGE_TOOLBAR);
   header_text = g_strdup_printf("%s", _("Edit menu entry"));
   header = xfce_create_header_with_image (header_image, header_text);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);
@@ -137,7 +137,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     table = gtk_table_new(2, 2, TRUE);
 
     /* Type */
-    label_type = gtk_label_new(_("Type :"));
+    label_type = gtk_label_new(_("Type:"));
 
     menu = gtk_menu_new();
     mitem = gtk_menu_item_new_with_mnemonic(_("File"));
@@ -160,7 +160,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
     /* Source */
     controls.hbox_source = gtk_hbox_new(FALSE, 0);
-    controls.label_source = gtk_label_new(_("Source :"));
+    controls.label_source = gtk_label_new(_("Source:"));
     entry_source = gtk_entry_new();
     button_browse = gtk_button_new_with_label("...");
 
@@ -173,7 +173,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     gtk_table_attach(GTK_TABLE(table), controls.hbox_source, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
 
     /* Style */
-    controls.label_style = gtk_label_new(_("Style :"));
+    controls.label_style = gtk_label_new(_("Style:"));
   
     menu = gtk_menu_new();
     mitem = gtk_menu_item_new_with_mnemonic(_("Simple"));
@@ -192,7 +192,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     gtk_table_attach(GTK_TABLE(table), controls.optionmenu_style, 1, 2, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
 
     /* Unique */
-    controls.checkbutton_unique = gtk_check_button_new_with_label(_("Unique"));
+    controls.checkbutton_unique = gtk_check_button_new_with_mnemonic(_("_Unique entries only"));
 
     gtk_table_attach(GTK_TABLE(table), controls.checkbutton_unique, 1, 2, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
 
@@ -240,7 +240,7 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
     /* Icon */
     hbox_icon = gtk_hbox_new(FALSE, 0);
-    icon_label = gtk_label_new(_("Icon :"));
+    icon_label = gtk_label_new(_("Icon:"));
     icon_entry = gtk_entry_new();
     button_browse2 = gtk_button_new_with_label("...");
     gtk_box_pack_start (GTK_BOX (hbox_icon), icon_entry, FALSE, FALSE, 0);
@@ -248,8 +248,8 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     g_signal_connect ((gpointer) button_browse2, "clicked", G_CALLBACK (browse_icon_cb), icon_entry);
 
     hbox_command = gtk_hbox_new(FALSE,0);
-    name_label = gtk_label_new(_("Name :"));
-    command_label = gtk_label_new(_("Command :"));
+    name_label = gtk_label_new(_("Name:"));
+    command_label = gtk_label_new(_("Command:"));
 
     name_entry = gtk_entry_new();
     command_entry = gtk_entry_new();
@@ -260,8 +260,8 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     gtk_box_pack_start (GTK_BOX (hbox_command), button_browse, FALSE, FALSE, 0);
     g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_command_cb), command_entry);
 
-    checkbutton_snotify = gtk_check_button_new_with_label(_("Start notify"));
-    checkbutton_term = gtk_check_button_new_with_label(_("Run in terminal"));
+    checkbutton_snotify = gtk_check_button_new_with_mnemonic(_("Use startup _notification"));
+    checkbutton_term = gtk_check_button_new_with_mnemonic(_("Run in _terminal"));
 
     gtk_table_set_row_spacings(GTK_TABLE(table), 5);
     gtk_table_set_col_spacings(GTK_TABLE(table), 5);
@@ -298,12 +298,12 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     GtkWidget *button_browse;
     GtkWidget* hbox_icon;
 
-    name_label = gtk_label_new(_("Name :"));
+    name_label = gtk_label_new(_("Name:"));
     name_entry = gtk_entry_new();
 
     /* Icon */
     hbox_icon = gtk_hbox_new(FALSE, 0);
-    icon_label = gtk_label_new(_("Icon :"));
+    icon_label = gtk_label_new(_("Icon:"));
     icon_entry = gtk_entry_new();
     button_browse = gtk_button_new_with_label("...");
     gtk_box_pack_start (GTK_BOX (hbox_icon), icon_entry, FALSE, FALSE, 0);
@@ -336,12 +336,12 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
     GtkWidget *button_browse;
     GtkWidget *hbox_icon;
 
-    name_label = gtk_label_new(_("Name :"));
+    name_label = gtk_label_new(_("Name:"));
     name_entry = gtk_entry_new();
 
     /* Icon */
     hbox_icon = gtk_hbox_new(FALSE, 0);
-    icon_label = gtk_label_new(_("Icon :"));
+    icon_label = gtk_label_new(_("Icon:"));
     icon_entry = gtk_entry_new();
     button_browse = gtk_button_new_with_label("...");
     gtk_box_pack_start (GTK_BOX (hbox_icon), icon_entry, FALSE, FALSE, 0);
@@ -378,14 +378,14 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
     /* Icon */
     hbox_icon = gtk_hbox_new(FALSE, 0);
-    icon_label = gtk_label_new(_("Icon :"));
+    icon_label = gtk_label_new(_("Icon:"));
     icon_entry = gtk_entry_new();
     button_browse = gtk_button_new_with_label("...");
     gtk_box_pack_start (GTK_BOX (hbox_icon), icon_entry, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse, FALSE, FALSE, 0);
     g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_icon_cb), icon_entry);
 
-    name_label = gtk_label_new(_("Title :"));
+    name_label = gtk_label_new(_("Title:"));
     name_entry = gtk_entry_new();
 
     gtk_table_set_row_spacings(GTK_TABLE(table), 5);

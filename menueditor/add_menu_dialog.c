@@ -90,7 +90,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
   table = gtk_table_new(4, 2, TRUE);
 
   /* Type */
-  label_type = gtk_label_new(_("Type :"));
+  label_type = gtk_label_new(_("Type:"));
 
   controls.menu_type=MENUFILE;
   
@@ -115,7 +115,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 
   /* Source */
   controls.hbox_source = gtk_hbox_new(FALSE, 0);
-  controls.label_source = gtk_label_new(_("Source :"));
+  controls.label_source = gtk_label_new(_("Source:"));
   entry_source = gtk_entry_new();
   button_browse = gtk_button_new_with_label("...");
 
@@ -128,7 +128,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
   gtk_table_attach(GTK_TABLE(table), controls.hbox_source, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
 
   /* Style */
-  controls.label_style = gtk_label_new(_("Style :"));
+  controls.label_style = gtk_label_new(_("Style:"));
   
   menu = gtk_menu_new();
   mitem = gtk_menu_item_new_with_mnemonic(_("Simple"));
@@ -147,7 +147,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
   gtk_table_attach(GTK_TABLE(table), controls.optionmenu_style, 1, 2, 2, 3, GTK_FILL, GTK_SHRINK, 0, 0);
 
   /* Unique */
-  controls.checkbutton_unique = gtk_check_button_new_with_label(_("Unique"));
+  controls.checkbutton_unique = gtk_check_button_new_with_mnemonic(_("_Unique entries only"));
 
   gtk_table_attach(GTK_TABLE(table), controls.checkbutton_unique, 1, 2, 3, 4, GTK_FILL, GTK_SHRINK, 0, 0);
 
@@ -200,7 +200,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 							    GTK_DIALOG_DESTROY_WITH_PARENT,
 							    GTK_MESSAGE_WARNING,
 							    GTK_BUTTONS_OK,
-							    _("Source field is not filled !!!\nAdding nothing"));
+							    _("The 'Source' field is required."));
 	gtk_dialog_run (GTK_DIALOG (dialog_warning));
 	gtk_widget_destroy (dialog_warning);
 	gtk_widget_destroy (dialog);
