@@ -54,6 +54,9 @@
 void browse_command_cb (GtkWidget *widget, gpointer data);
 void browse_icon_cb (GtkWidget *widget, gpointer data);
 gboolean command_exists (const gchar *command);
+void menu_save_cb (GtkWidget *widget, gpointer data);
+/* Load the menu in the tree */
+void load_menu_in_tree (xmlNodePtr menu, GtkTreeIter *p, gpointer data);
 
 enum {ICON_COLUMN, NAME_COLUMN, COMMAND_COLUMN, HIDDEN_COLUMN,
       POINTER_COLUMN, NUM_COLUMNS};

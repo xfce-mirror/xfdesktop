@@ -33,8 +33,6 @@
 #include "dnd.h"
 #include "../modules/menu/dummy_icon.h"
 
-extern void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p);
-
 inline void show_str(char *str)
 {
   int i=0;
@@ -190,7 +188,7 @@ void treeview_drag_data_rcv_cb(GtkWidget *widget, GdkDragContext *dc,
 			  POINTER_COLUMN, node_to_insert, -1);
 
       if(!xmlStrcmp(node_to_insert->name,"menu")){
-	load_menu_in_tree(node_to_insert->xmlChildrenNode, &iter_new);
+	load_menu_in_tree (node_to_insert->xmlChildrenNode, &iter_new, me);
 	gtk_tree_view_expand_all (GTK_TREE_VIEW (me->treeview));      
       }
 

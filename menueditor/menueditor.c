@@ -60,7 +60,6 @@ static void confirm_quit_cb (GtkWidget *widget, gpointer data);
 static gboolean delete_main_window_cb (GtkWidget *widget, GdkEvent *event, gpointer data);
 static void menu_open_cb (GtkWidget *widget, gpointer data);
 static void menu_open_default_cb (GtkWidget *widget, gpointer data);
-void menu_save_cb (GtkWidget *widget, gpointer data);
 static void menu_saveas_cb (GtkWidget *widget, gpointer data);
 static void close_menu_cb (GtkWidget *widget, gpointer data);
 static void treeview_cursor_changed_cb (GtkTreeView *treeview,gpointer user_data);
@@ -70,8 +69,6 @@ static void delete_entry_cb (GtkWidget *widget, gpointer data);
 /* Main window */
 static void create_main_window(MenuEditor *me);
 
-/* Load the menu in the tree */
-void load_menu_in_tree (xmlNodePtr menu, GtkTreeIter *p, gpointer data);
 
 /*****************************/
 /* Manage icon theme changes */
