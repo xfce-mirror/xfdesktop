@@ -16,6 +16,9 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ *
+ *  Contributors:
+ *    Jean-Francois Wauthy (option panel for choice between icon/text)
  */
 
 #ifdef HAVE_CONFIG_H
@@ -33,10 +36,17 @@
 #include "desktop-menu-stub.h"
 
 typedef struct _DMPlugin {
+	/* panel widget */
 	GtkWidget *evtbox;
 	GtkWidget *button;
+	GtkWidget *image;
+	GtkWidget *label;
 	GdkPixbuf *icon;
 	XfceDesktopMenu *desktop_menu;
+
+	/* prefs pane */
+	gboolean show_icon;
+	gboolean show_text;
 } DMPlugin;
 
 static GModule *menu_gmod = NULL;
@@ -47,8 +57,8 @@ dmp_set_size(Control *c, int size)
 	DMPlugin *dmp = c->data;
 	gint w;
 	GdkPixbuf *tmp;
-	GtkWidget *img;
-	
+	GtkWidget *hbox;
+
 	/* if we have one, see if the size is ok */
 	if(dmp->icon) {
 		w = gdk_pixbuf_get_width(dmp->icon);
@@ -58,6 +68,8 @@ dmp_set_size(Control *c, int size)
 			g_object_unref(G_OBJECT(dmp->icon));
 			dmp->icon = NULL;
 		}
+		if(dmp->show_text)
+		  gtk_widget_show(dmp->label);
 	}
 	
 	if(!dmp->icon) {
@@ -71,16 +83,30 @@ dmp_set_size(Control *c, int size)
 						GDK_INTERP_BILINEAR);
 				g_object_unref(G_OBJECT(tmp));
 			} else
-				dmp->icon = tmp;
-			img = gtk_image_new_from_pixbuf(dmp->icon);
-			gtk_widget_show(img);
-			gtk_container_add(GTK_CONTAINER(dmp->button), img);
+			  dmp->icon = tmp;
+
+			gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), dmp->icon);
+			if(dmp->show_icon)
+			  gtk_widget_show(dmp->image);
+
+			if(dmp->show_text)
+			  gtk_widget_show(dmp->label);
+			
+			hbox = gtk_hbox_new(FALSE, 0);
+			gtk_box_pack_start (GTK_BOX (hbox), dmp->image, FALSE, FALSE, 0);
+			gtk_box_pack_start (GTK_BOX (hbox), dmp->label, FALSE, FALSE, 0);
+			gtk_widget_show(hbox);
+
+			gtk_container_add(GTK_CONTAINER(dmp->button), hbox);
 		}
 	}
 	
 	if(!dmp->icon) {
-		/* if we still don't have one, just set some text */
-		gtk_button_set_label(GTK_BUTTON(dmp->button), "Xfce4");
+		/* if we still don't have one, do the text thing */
+		dmp->show_icon = FALSE;
+		dmp->show_text = TRUE;
+		gtk_widget_hide(dmp->image);
+		gtk_widget_show(dmp->label);
 	}
 	
 	gtk_widget_set_size_request(dmp->button, -1, -1);
@@ -94,6 +120,7 @@ dmp_attach_callback(Control *c, const char *signal, GCallback callback,
 	
 	g_signal_connect(G_OBJECT(dmp->evtbox), signal, callback, data);
 	g_signal_connect(G_OBJECT(dmp->button), signal, callback, data);
+	g_signal_connect(G_OBJECT(dmp->label), signal, callback, data);
 }
 
 static void
@@ -151,7 +178,10 @@ dmp_new()
 	xfce_desktop_menu_start_autoregen(dmp->desktop_menu, 10);
 	g_signal_connect(G_OBJECT(dmp->button), "button-press-event",
 			G_CALLBACK(dmp_popup), dmp);
-	
+
+	dmp->label = gtk_label_new("Xfce4");
+	dmp->image = gtk_image_new();
+
 	return dmp;
 }
 
@@ -176,6 +206,130 @@ dmp_create(Control *c)
 	return TRUE;
 }
 
+/* settings */
+static void
+read_config(Control *control, xmlNodePtr node)
+{
+	xmlChar *value;
+	DMPlugin *dmp = control->data;
+	
+	value = xmlGetProp(node, (const xmlChar *)"show_icon");
+	
+	if(value) {
+		if(!xmlStrcmp(value, (xmlChar*)"true")){
+			dmp->show_icon = TRUE;
+			gtk_widget_show(dmp->image);
+		} else {
+			dmp->show_icon = FALSE;
+			gtk_widget_hide(dmp->image);
+		}
+		xmlFree(value);
+	}
+	
+	value = xmlGetProp(node, (const xmlChar *)"show_text");
+	
+	if(value) {
+		if(!xmlStrcmp(value, (xmlChar*)"true")){
+			dmp->show_text = TRUE;
+			gtk_widget_show(dmp->label);
+		} else { 
+			dmp->show_text = FALSE;
+			gtk_widget_hide(dmp->label);
+		}
+		xmlFree(value);
+	}
+	
+	if(!dmp->show_text && !dmp->show_icon) {
+		/* default to icon, unless we don't have one */
+		if(dmp->icon) {
+			dmp->show_icon = TRUE;
+			gtk_widget_show(dmp->image);
+		} else {
+			dmp->show_text = TRUE;
+			gtk_widget_show(dmp->label);
+		}
+	}
+}
+
+static void
+write_config(Control *control, xmlNodePtr node)
+{
+	DMPlugin *dmp = control->data;
+	
+	xmlSetProp(node, (const xmlChar *)"show_icon", dmp->show_icon ? "true" : "false");
+	xmlSetProp(node, (const xmlChar *)"show_text", dmp->show_text ? "true" : "false");
+}
+
+/* options dialog */
+static void
+checkbutton_icon_changed(GtkWidget *w, DMPlugin *dmp)
+{
+	if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w))) {
+		dmp->show_icon = TRUE;
+		gtk_widget_show(dmp->image);
+	} else {
+		dmp->show_icon = FALSE;
+		gtk_widget_hide(dmp->image);
+	}
+}
+
+static void
+checkbutton_text_changed(GtkWidget *w, DMPlugin *dmp)
+{
+	if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w))) {
+		dmp->show_text = TRUE;
+		gtk_widget_show(dmp->label);
+	} else {
+		dmp->show_text = FALSE;
+		gtk_widget_hide(dmp->label);
+	}
+}
+
+static void
+create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
+{
+	DMPlugin *dmp = ctrl->data;
+	GtkWidget *vbox;
+	GtkWidget *checkbutton_icon, *checkbutton_text;
+	
+	vbox  = gtk_vbox_new(FALSE, 8);
+	
+	checkbutton_icon = gtk_check_button_new_with_mnemonic(_("Show _icon"));
+	checkbutton_text = gtk_check_button_new_with_mnemonic(_("Show _text"));
+	
+	gtk_box_pack_start(GTK_BOX(vbox), checkbutton_icon, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox), checkbutton_text, FALSE, FALSE, 0);
+	
+	/* Connect signals */
+	g_signal_connect(checkbutton_icon, "toggled",
+			G_CALLBACK(checkbutton_icon_changed), dmp);
+	g_signal_connect(checkbutton_text, "toggled",
+			G_CALLBACK(checkbutton_text_changed), dmp);
+	
+	/* Show in container */
+	gtk_widget_show_all(vbox);
+	gtk_container_add(con, vbox);
+	
+	/* Set active or not */
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbutton_icon),
+			dmp->show_icon);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbutton_text),
+			dmp->show_text);
+
+	if(!dmp->show_icon && !dmp->show_text) {
+		/* default to icon, unless we don't have one */
+		if(dmp->icon) {
+			dmp->show_icon = TRUE;
+			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbutton_icon), TRUE);
+			gtk_widget_show(dmp->image);
+		} else {
+			dmp->show_text = TRUE;
+			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbutton_text), TRUE);
+			gtk_widget_show(dmp->label);
+		}
+	}
+}
+
 G_MODULE_EXPORT void
 xfce_control_class_init(ControlClass *cc)
 {
@@ -183,6 +337,9 @@ xfce_control_class_init(ControlClass *cc)
 	cc->caption = _("Desktop Menu");
 	
 	cc->create_control = (CreateControlFunc)dmp_create;
+	cc->read_config = read_config;
+	cc->write_config = write_config;
+	cc->create_options = create_options;
 	cc->free = dmp_free;
 	cc->attach_callback = dmp_attach_callback;
 	cc->set_size = dmp_set_size;
