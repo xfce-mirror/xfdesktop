@@ -81,7 +81,7 @@ MenuItem;
 
 void remove_factory_item(MenuItem *mi, GtkItemFactory *ifact)
 {
-    TRACE();
+    TRACE("");
     gtk_item_factory_delete_item(ifact, mi->path);
 }
 
@@ -90,7 +90,7 @@ void free_menu_data(GList * menu_data)
     MenuItem *mi;
     GList *li;
 
-    TRACE();
+    TRACE("");
     for(li = menu_data; li; li = li->next)
     {
         mi = li->data;
@@ -114,7 +114,7 @@ void free_menu_data(GList * menu_data)
 
 void do_exec(gpointer callback_data, guint callback_action, GtkWidget * widget)
 {
-    TRACE();
+    TRACE("");
     g_spawn_command_line_async((char *)callback_data, NULL);
 }
 
@@ -123,7 +123,7 @@ void do_term_exec(gpointer callback_data, guint callback_action,
 {
     char *cmd;
 
-    TRACE();
+    TRACE("");
 
     cmd = g_strconcat("xfterm4 -e ", (char *)callback_data, NULL);
 
@@ -138,7 +138,7 @@ void do_builtin(gpointer callback_data, guint callback_action, GtkWidget * widge
 {
     char *builtin = (char *)callback_data;
 
-    TRACE();
+    TRACE("");
     if (!strcmp(builtin,"edit")) 
     {
         EditMode = (EditMode ? FALSE : TRUE);
@@ -157,7 +157,7 @@ void do_builtin(gpointer callback_data, guint callback_action, GtkWidget * widge
 
 void do_edit(gpointer callback_data, guint callback_action, GtkWidget * widget)
 {
-    TRACE();
+    TRACE("");
     EditMode = FALSE;
 
     /* Need to rebuild menu, so destroy the current one */
@@ -173,7 +173,7 @@ get_menu_file(void)
     char *filename = NULL;
     const char *env;
 
-    TRACE();
+    TRACE("");
     env = g_getenv("XFCE_DISABLE_USER_CONFIG");
 
     if(!env || strcmp(env, "0")) {
@@ -205,7 +205,7 @@ MenuItem *parse_node_attr(MenuItemType type, xmlDocPtr doc, xmlNodePtr cur,
     xmlChar *term = NULL;
     xmlChar *visible = NULL;
 
-    TRACE();
+    TRACE("");
 
     visible = xmlGetProp(cur, "visible");
     if(visible && !xmlStrcmp(visible, (xmlChar *) "no"))
@@ -272,7 +272,7 @@ GList *parse_menu_node(xmlDocPtr doc, xmlNodePtr parent, char *path,
     MenuItem *mi;
     xmlNodePtr cur;
 
-    TRACE();
+    TRACE("");
 
     for(cur = parent->xmlChildrenNode; cur != NULL; cur = cur->next)
     {
@@ -333,7 +333,7 @@ GList *parse_menu_file(const char *filename)
     GList *menu_data = NULL;
     int prevdefault;
     
-    TRACE();
+    TRACE("");
 
     prevdefault = xmlSubstituteEntitiesDefault(1);
     
@@ -448,7 +448,7 @@ static GtkWidget *create_desktop_menu(void)
     static char *filename = NULL;
     static time_t ctime = 0;
 
-    TRACE();
+    TRACE("");
     if (!filename)
         filename = get_menu_file();
     
@@ -520,7 +520,7 @@ static GtkWidget *create_desktop_menu(void)
 */
 static void activate_window(GtkWidget * item, NetkWindow * win)
 {
-    TRACE();
+    TRACE("");
     netk_window_activate(win);
 }
 
@@ -530,7 +530,7 @@ static void set_num_screens(gpointer num)
     XClientMessageEvent sev;
     int n;
 
-    TRACE();
+    TRACE("");
     if(!xa_NET_NUMBER_OF_DESKTOPS)
     {
         xa_NET_NUMBER_OF_DESKTOPS =
@@ -562,7 +562,7 @@ static GtkWidget *create_window_list_item(NetkWindow * win)
     GString *label;
     GtkWidget *mi;
 
-    TRACE();
+    TRACE("");
     if(netk_window_is_skip_pager(win) || netk_window_is_skip_tasklist(win))
         return NULL;
 
@@ -599,7 +599,7 @@ static GtkWidget *create_windowlist_menu(void)
     NetkWorkspace *ws, *aws;
     GtkStyle *style;
 
-    TRACE();
+    TRACE("");
     menu3 = gtk_menu_new();
     style = gtk_widget_get_style(menu3);
 
@@ -752,7 +752,7 @@ static gboolean button_press_event(GtkWidget * win, GdkEventButton * ev,
     static GtkWidget *menu1 = NULL;
     static GtkWidget *menu3 = NULL;
 
-    TRACE();
+    TRACE("");
     if(ev->button == 3 || (ev->button == 1 && ev->state & GDK_SHIFT_MASK))
     {
         if(menu3)
@@ -780,7 +780,7 @@ static gboolean button_press_event(GtkWidget * win, GdkEventButton * ev,
 
 void menu_init(GtkWidget * window, NetkScreen * screen)
 {
-    TRACE();
+    TRACE("");
     netk_screen = screen;
 
     g_signal_connect(window, "button-press-event",
@@ -791,10 +791,10 @@ void menu_init(GtkWidget * window, NetkScreen * screen)
 
 void menu_load_settings(McsClient * client)
 {
-    TRACE();
+    TRACE("");
 }
 
 void add_menu_callback(GHashTable * ht)
 {
-    TRACE();
+    TRACE("");
 }
