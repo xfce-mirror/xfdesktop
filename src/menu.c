@@ -52,8 +52,7 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <glib.h>
-
-#include <libxml/parser.h>
+#include <gmodule.h>
 
 #include <libxfce4mcs/mcs-client.h>
 #include <libxfce4util/debug.h>
@@ -64,407 +63,14 @@
 
 #include "main.h"
 #include "menu.h"
-#include "menu-file.h"
-#include "menu-dentry.h"
-#include "dummy.h"
+#include "desktop-menu-stub.h"
 
-#ifndef PATH_MAX
-#define PATH_MAX 4096
-#endif
-
-/* where to find the current panel icon theme (if any) */
-#define CHANNEL "xfce"
-#define DEFAULT_ICON_THEME "Curve"
-
-/* max length window list menu items */
 #define WLIST_MAXLEN 20
 
-#define EVENTMASK (ButtonPressMask|SubstructureNotifyMask|PropertyChangeMask)
-
-static GtkWidget *create_desktop_menu();
-
-/* ugly */
-GdkPixbuf *dummy_icon;
-
-/* a bit hackish, but works well enough */
-gboolean is_using_system_rc = TRUE;
-gboolean use_menu_icons = TRUE;
-
-static GtkWidget *desktop_menu = NULL, *windowlist = NULL;
-static GList *MainMenuData;	/* TODO: Free this at some point */
-
-static time_t last_menu_gen = 0;
-
-static McsClient *client = NULL;
-static time_t last_theme_change = 0;
-
-GHashTable *menu_entry_hash = NULL;
-
 static NetkScreen *netk_screen = NULL;
-
-static gboolean EditMode = FALSE;
-
-/*******************************************************************************
- *  User menu
- *******************************************************************************
- */
-
-static gint
-calc_icon_size()
-{
-	static guchar icon_sizes[] = {
-			12, 16, 22, 24, 32, 36, 48, 64, 72, 96, 128, 192, 0
-	};
-	gint i, icon_size = -1;
-	GtkWidget *tmp;
-	GtkStyle *style;
-	PangoFontDescription *pfdesc;
-	gint totheight;
-	
-	/* determine widget height */
-	tmp = gtk_label_new("foo");
-	gtk_widget_set_name(tmp, "xfdesktopmenu");
-	gtk_widget_show(tmp);
-	style = gtk_rc_get_style(tmp);
-	pfdesc = style->font_desc;
-	totheight = PANGO_PIXELS(pango_font_description_get_size(pfdesc));
-	totheight += 12;  /* FIXME: fudge factor */
-	gtk_widget_destroy(tmp);
-
-	/* figure out an ideal icon size */
-	for(i=0; icon_sizes[i]; i++) {
-		if(icon_sizes[i] < totheight)
-			icon_size = icon_sizes[i];
-		else
-			break;
-	}
-	
-	return icon_size;
-}
-
-static gboolean
-menu_check_update(gpointer data)
-{
-	if(menu_file_need_update() || last_theme_change > last_menu_gen || !desktop_menu)
-		desktop_menu = create_desktop_menu();
-	
-	return TRUE;
-}
-
-static void
-free_menu_data (GList * menu_data)
-{
-    MenuItem *mi;
-    GList *li;
-
-    TRACE ("dummy");
-    for (li = menu_data; li; li = li->next) 
-    {
-        mi = li->data;
-
-        if(mi)
-        {
-            if(mi->path)
-            {
-                g_free(mi->path);
-            }
-            if(mi->cmd)
-            {
-                g_free(mi->cmd);
-            }
-            if (mi->pix_free)
-            {
-                g_object_unref(mi->pix_free);
-            }
-			if(mi->icon)
-				xmlFree(mi->icon);
-            g_free(mi);
-        }
-    }
-    g_list_free (menu_data);
-    menu_data = NULL;
-}
-
-static void
-do_exec(gpointer callback_data, guint callback_action, GtkWidget * widget)
-{
-	MenuItem *mi = callback_data;
-	g_return_if_fail(mi != NULL);
-	
-	if(!xfce_exec(mi->cmd, mi->term, mi->snotify, NULL))
-		g_warning("%s: unable to spawn '%s'\n", PACKAGE, mi->cmd);
-}
-
-static void
-do_builtin (gpointer callback_data, guint callback_action, GtkWidget * widget)
-{
-	char *builtin = (char *) callback_data;
-
-	TRACE ("dummy");
-	if(!strcmp (builtin, "edit")) {
-		EditMode = (EditMode ? FALSE : TRUE);
-
-		/* Need to rebuild menu, so destroy the current one */
-		if(MainMenuData)
-			free_menu_data (MainMenuData);
-		MainMenuData = NULL;
-		
-		create_desktop_menu();
-	} else if (strcmp (builtin, "quit"))
-		quit ();
-}
-
-static void
-do_edit (gpointer callback_data, guint callback_action, GtkWidget * widget)
-{
-    TRACE ("dummy");
-    EditMode = FALSE;
-
-    /* Need to rebuild menu, so destroy the current one */
-	if(MainMenuData)
-		free_menu_data (MainMenuData);
-    MainMenuData = NULL;
-	
-	create_desktop_menu();
-}
-
-static GdkFilterReturn
-client_event_filter1(GdkXEvent * xevent, GdkEvent * event, gpointer data)
-{
-	if(mcs_client_process_event (client, (XEvent *)xevent))
-		return GDK_FILTER_REMOVE;
-	else
-		return GDK_FILTER_CONTINUE;
-}
-
-static void
-mcs_watch_cb(Window window, Bool is_start, long mask, void *cb_data)
-{
-	GdkWindow *gdkwin;
-
-	gdkwin = gdk_window_lookup (window);
-
-	if(is_start)
-		gdk_window_add_filter (gdkwin, client_event_filter1, NULL);
-	else
-		gdk_window_remove_filter (gdkwin, client_event_filter1, NULL);
-}
-
-
-static void
-mcs_notify_cb(const gchar *name, const gchar *channel_name, McsAction action,
-              McsSetting *setting, void *cb_data)
-{
-	if(strcasecmp(channel_name, CHANNEL) || !setting)
-		return;
-			
-	if((action==MCS_ACTION_NEW || action==MCS_ACTION_CHANGED) &&
-			!strcmp(setting->name, "theme") && setting->type==MCS_TYPE_STRING)
-	{
-		gchar *origin = g_strdup_printf("%s:%d", __FILE__, __LINE__);
-		gtk_settings_set_string_property(gtk_settings_get_default(),
-				"gtk-icon-theme-name", setting->data.v_string, origin);
-		g_free(origin);
-		last_theme_change = time(NULL);
-	}
-}
-
-GtkItemFactoryEntry
-parse_item (MenuItem * item)
-{
-    GtkItemFactoryEntry t;
-
-    DBG ("%s (type=%d) (term=%d)\n", item->path, item->type, item->term);
-
-    t.path = item->path;
-    t.accelerator = NULL;
-    t.callback_action = 1;      /* non-zero ! */
-      
-	/* if we don't give any pixdata, GtkItemFactory will demote the item from a
-	 * GtkImageMenuItem back down to a GtkMenuItem */
-	if(use_menu_icons)
-		t.extra_data = (gpointer) my_pixbuf;
-
-    if (!EditMode)
-    {
-        switch (item->type)
-        {
-            case MI_APP:
-                t.callback = do_exec;
-				if(use_menu_icons)
-					t.item_type = "<ImageItem>";
-				else
-					t.item_type = "<Item>";
-                break;
-            case MI_SEPARATOR:
-                t.callback = NULL;
-			    item->icon = NULL;
-                t.item_type = "<Separator>";
-                break;
-            case MI_SUBMENU:
-                t.callback = NULL;
-			    item->icon = NULL;
-				t.item_type = "<Branch>";
-                break;
-            case MI_TITLE:
-                t.callback = NULL;
-			    item->icon = NULL;
-                t.item_type = "<Title>";
-                break;
-            case MI_BUILTIN:
-                t.callback = do_builtin;
-                if(use_menu_icons)
-					t.item_type = "<ImageItem>";
-				else
-					t.item_type = "<Item>";
-                break;
-            default:
-                break;
-        }
-    }
-    else
-    {
-	t.callback = do_edit;
-
-	if (item->type == MI_SUBMENU)
-	    t.item_type = "<Branch>";
-	else
-	    t.item_type = "<Item>";
-
-	if (item->type == MI_SEPARATOR)
-	{
-	    gchar *parent_menu;
-
-	    parent_menu = g_path_get_dirname (item->path);
-	    g_free (item->path);
-	    item->path = g_strconcat (parent_menu, "--- separator ---", NULL);
-	    t.path = item->path;
-
-	    g_free (parent_menu);
-	}
-    }
-
-    return t;
-}
-
-/* returns the menu widget */
-static GtkWidget *
-create_desktop_menu (void)
-{
-	static GtkItemFactory *ifactory = NULL;
-    struct stat st;
-    static char *filename = NULL;
-    GtkWidget *img, *mi;
-    GtkImageMenuItem *imgitem;
-	GtkItemFactoryEntry entry;
-	GdkPixbuf *pix;
-	MenuItem *item = NULL;
-	GList *li, *menu_data = NULL;
-	gint icon_size;
-
-    TRACE ("dummy");
-    if (!filename || is_using_system_rc)
-    {
-	if (filename)
-	    g_free (filename);
-
-	filename = menu_file_get();
-    }
-
-    /* may have been removed */
-    if (stat (filename, &st) < 0)
-    {
-	if (filename)
-	{
-	    g_free (filename);
-	}
-	filename = menu_file_get ();
-    }
-
-    /* Still no luck? Something got broken! */
-    if (stat (filename, &st) < 0)
-    {
-	if (filename)
-	{
-	    g_free (filename);
-	    filename = NULL;
-	}
-	return NULL;
-    }
-	
- 	if(ifactory)
-		g_object_unref(G_OBJECT(ifactory));
-	ifactory = gtk_item_factory_new (GTK_TYPE_MENU, "<popup>", NULL);
-    
-	if (MainMenuData)
-		free_menu_data (MainMenuData);
-	MainMenuData = NULL;
-
-	if(menu_entry_hash)
-		g_hash_table_destroy(menu_entry_hash);
-	menu_entry_hash = g_hash_table_new_full(g_str_hash, g_str_equal, NULL, NULL);
-	
-	/* main source of menu data: the menu file */
-	menu_data = menu_file_parse (filename, NULL);
-	if(!menu_data) {
-		g_warning("%s: Error parsing menu file %s\n", PACKAGE, filename);
-		return NULL;
-	}
-        
-	g_hash_table_destroy(menu_entry_hash);
-	menu_entry_hash = NULL;
-	
-	icon_size = calc_icon_size();
-	if(icon_size < 0)
-		icon_size = 24;
-	
-	for (li = menu_data; li; li = li->next) {
-		/* parse current item */
-		item = (MenuItem *) li->data;
-		
-		if(!item) {
-			g_warning("%s: found a NULL MenuItem\n", PACKAGE);
-			continue;
-		}
-
-		entry = parse_item (item);
-		
-		if(!EditMode) {
-			gtk_item_factory_create_item (ifactory, &entry, item, 1);
-			mi = gtk_item_factory_get_item (ifactory, item->path);
-			gtk_widget_set_name(mi, "xfdesktopmenu");
-			if (use_menu_icons && item->icon) {
-				imgitem = GTK_IMAGE_MENU_ITEM(mi);
-				if(imgitem) {
-					pix = xfce_load_themed_icon(item->icon, icon_size);
-					if(!pix)
-						pix = dummy_icon;
-					img = gtk_image_new_from_pixbuf (pix);
-					gtk_widget_show (img);
-					gtk_image_menu_item_set_image (imgitem, img);
-					if(pix != dummy_icon)
-						item->pix_free = pix;
-				}
-			}
-		} else {
-			gtk_item_factory_create_item (ifactory, &entry, item, 1);
-		}
-	}
-    
-	/* save menu data for later */
-	MainMenuData = menu_data;
-	/* mark off when we did all this */
-	last_menu_gen = time(NULL);
-	
-    return gtk_item_factory_get_widget (ifactory, "<popup>");
-}
-
-void
-menu_force_regen()
-{
-	desktop_menu = create_desktop_menu();
-}
-
+static XfceDesktopMenu *desktop_menu = NULL;
+static GModule *module_desktop_menu = NULL;
+static GtkWidget *windowlist = NULL;
 
 /*******************************************************************************  
  *  Window list menu
@@ -582,7 +188,7 @@ create_windowlist_menu (GList **pix_unref_needed)
     menu3 = gtk_menu_new ();
     style = gtk_widget_get_style (menu3);
 
-/*      mi = gtk_menu_item_new_with_label(_("Window list"));
+    mi = gtk_menu_item_new_with_label(_("Window list"));
     gtk_widget_set_sensitive(mi, FALSE);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
@@ -590,7 +196,7 @@ create_windowlist_menu (GList **pix_unref_needed)
     mi = gtk_separator_menu_item_new();
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
-*/
+
     windows = netk_screen_get_windows_stacked (netk_screen);
     n = netk_screen_get_workspace_count (netk_screen);
     aws = netk_screen_get_active_workspace (netk_screen);
@@ -693,14 +299,21 @@ create_windowlist_menu (GList **pix_unref_needed)
 void
 popup_menu (int button, guint32 time)
 {
-	if(menu_file_need_update() || last_theme_change > last_menu_gen || !desktop_menu)
-		desktop_menu = create_desktop_menu();
+	GtkWidget *menu_widget;
+	
+	if(!module_desktop_menu)
+		return;
+	
+	if(!desktop_menu)
+		desktop_menu = xfce_desktop_menu_new(NULL, FALSE);
+	else if(xfce_desktop_menu_need_update(desktop_menu))
+		xfce_desktop_menu_force_regen(desktop_menu);
 
-    if (desktop_menu)
-    {
-	gtk_menu_popup (GTK_MENU (desktop_menu), NULL, NULL, NULL, NULL,
-			button, time);
-    }
+	if(desktop_menu) {
+		menu_widget = xfce_desktop_menu_get_widget(desktop_menu);
+		gtk_menu_popup (GTK_MENU (menu_widget), NULL, NULL, NULL, NULL,
+				button, time);
+	}
 }
 
 void
@@ -733,7 +346,7 @@ button_press (GtkWidget * w, GdkEventButton * bevent)
     int state = bevent->state;
     gboolean handled = FALSE;
 
-    DBG ("button press");
+    DBG ("button press (0x%x)", button);
 
     if (button == 2 || (button == 1 && state & GDK_SHIFT_MASK &&
 			state & GDK_CONTROL_MASK))
@@ -784,14 +397,24 @@ button_scroll (GtkWidget * w, GdkEventScroll * sevent)
     return TRUE;
 }
 
+void
+menu_force_regen()
+{
+	if(!module_desktop_menu)
+		return;
+	
+	if(!desktop_menu)
+		desktop_menu = xfce_desktop_menu_new(NULL, FALSE);
+	else
+		xfce_desktop_menu_force_regen(desktop_menu);
+}
+
 /*  Initialization 
  *  --------------
 */
 void
 menu_init (XfceDesktop * xfdesktop)
-{
-	gint size;
-	
+{	
     TRACE ("dummy");
     netk_screen = xfdesktop->netk_screen;
 
@@ -801,41 +424,34 @@ menu_init (XfceDesktop * xfdesktop)
 	signal(SIGCHLD, SIG_IGN);
 #endif
 	
-	if(!dummy_icon) {
-		size = calc_icon_size();
-		if(size < 0)
-			size = 24;
-		dummy_icon = xfce_inline_icon_at_size(my_pixbuf, size, size);
-	}
-	
-	/* track icon theme changes (from the panel) */
-    if(!client) {
-        Display *dpy = GDK_DISPLAY();
-        int screen = XDefaultScreen(dpy);
-        
-        if(!mcs_client_check_manager(dpy, screen, "xfce-mcs-manager"))
-            g_warning("%s: mcs manager not running\n", PACKAGE);
-        client = mcs_client_new(dpy, screen, mcs_notify_cb, mcs_watch_cb, NULL);
-        if(client)
-            mcs_client_add_channel(client, CHANNEL);
-    }
-	
-	/* create the menu */
-	desktop_menu = create_desktop_menu();
-
-	/* initialise menu file modification time check */
-	menu_file_need_update();
-	gtk_timeout_add(10000, menu_check_update, NULL);
-	
     g_signal_connect (xfdesktop->fullscreen, "button-press-event",
 		      G_CALLBACK (button_press), NULL);
 
     g_signal_connect (xfdesktop->fullscreen, "scroll-event",
 		      G_CALLBACK (button_scroll), NULL);
+	
+	if((module_desktop_menu=xfce_desktop_menu_stub_init())) {
+		desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
+		xfce_desktop_menu_start_autoregen(desktop_menu, 10);
+	} else
+		g_warning("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n", PACKAGE);
 }
 
 void
 menu_load_settings (XfceDesktop * xfdesktop)
 {
     TRACE ("dummy");
+}
+
+void
+menu_cleanup(XfceDesktop *xfdesktop)
+{
+	if(module_desktop_menu) {
+		if(desktop_menu) {
+			xfce_desktop_menu_stop_autoregen(desktop_menu);
+			xfce_desktop_menu_destroy(desktop_menu);
+		}
+		xfce_desktop_menu_stub_cleanup_all(module_desktop_menu);
+	}
+		
 }

@@ -53,13 +53,15 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 LTLIBRARIES = $(noinst_LTLIBRARIES)
 libxfdesktop_la_LIBADD =
-am_libxfdesktop_la_OBJECTS = libxfdesktop_la-background-common.lo
+am_libxfdesktop_la_OBJECTS = libxfdesktop_la-background-common.lo \
+	libxfdesktop_la-desktop-menu-stub.lo
 libxfdesktop_la_OBJECTS = $(am_libxfdesktop_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES =  \
-@AMDEP_TRUE@	./$(DEPDIR)/libxfdesktop_la-background-common.Plo
+@AMDEP_TRUE@	./$(DEPDIR)/libxfdesktop_la-background-common.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) \
@@ -106,8 +108,14 @@ EXEEXT = @EXEEXT@
 F77 = @F77@
 FFLAGS = @FFLAGS@
 GETTEXT_PACKAGE = @GETTEXT_PACKAGE@
+GMODULE_CFLAGS = @GMODULE_CFLAGS@
+GMODULE_LIBS = @GMODULE_LIBS@
+GMODULE_REQUIRED_VERSION = @GMODULE_REQUIRED_VERSION@
 GMOFILES = @GMOFILES@
 GMSGFMT = @GMSGFMT@
+GTHREAD_CFLAGS = @GTHREAD_CFLAGS@
+GTHREAD_LIBS = @GTHREAD_LIBS@
+GTHREAD_REQUIRED_VERSION = @GTHREAD_REQUIRED_VERSION@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -160,6 +168,10 @@ SHELL = @SHELL@
 STRIP = @STRIP@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
+XFCE4_PANEL_CFLAGS = @XFCE4_PANEL_CFLAGS@
+XFCE4_PANEL_LIBS = @XFCE4_PANEL_LIBS@
+XFCE4_PANEL_PLUGINSDIR = @XFCE4_PANEL_PLUGINSDIR@
+XFCE4_PANEL_REQUIRED_VERSION = @XFCE4_PANEL_REQUIRED_VERSION@
 XFCE_MCS_MANAGER_CFLAGS = @XFCE_MCS_MANAGER_CFLAGS@
 XFCE_MCS_MANAGER_LIBS = @XFCE_MCS_MANAGER_LIBS@
 XFCE_MCS_MANAGER_PLUGINSDIR = @XFCE_MCS_MANAGER_PLUGINSDIR@
@@ -214,10 +226,14 @@ target_alias = @target_alias@
 noinst_LTLIBRARIES = libxfdesktop.la
 libxfdesktop_la_SOURCES = \
 	background-common.c						\
-	background-common.h
+	background-common.h						\
+	desktop-menu-stub.c						\
+	desktop-menu-stub.h
 
 libxfdesktop_la_CFLAGS = \
-	@LIBXFCEGUI4_CFLAGS@
+	@LIBXFCEGUI4_CFLAGS@						\
+	@GMODULE_CFLAGS@						\
+	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\"
 
 all: all-am
 
@@ -271,6 +287,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfdesktop_la-background-common.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
@@ -319,6 +336,30 @@ libxfdesktop_la-background-common.lo: background-common.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfdesktop_la-background-common.Plo' tmpdepfile='$(DEPDIR)/libxfdesktop_la-background-common.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -c -o libxfdesktop_la-background-common.lo `test -f 'background-common.c' || echo '$(srcdir)/'`background-common.c
+
+libxfdesktop_la-desktop-menu-stub.o: desktop-menu-stub.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -MT libxfdesktop_la-desktop-menu-stub.o -MD -MP -MF "$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Tpo" -c -o libxfdesktop_la-desktop-menu-stub.o `test -f 'desktop-menu-stub.c' || echo '$(srcdir)/'`desktop-menu-stub.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Tpo" "$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Po"; else rm -f "$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-stub.c' object='libxfdesktop_la-desktop-menu-stub.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Po' tmpdepfile='$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -c -o libxfdesktop_la-desktop-menu-stub.o `test -f 'desktop-menu-stub.c' || echo '$(srcdir)/'`desktop-menu-stub.c
+
+libxfdesktop_la-desktop-menu-stub.obj: desktop-menu-stub.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -MT libxfdesktop_la-desktop-menu-stub.obj -MD -MP -MF "$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Tpo" -c -o libxfdesktop_la-desktop-menu-stub.obj `if test -f 'desktop-menu-stub.c'; then $(CYGPATH_W) 'desktop-menu-stub.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu-stub.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Tpo" "$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Po"; else rm -f "$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-stub.c' object='libxfdesktop_la-desktop-menu-stub.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Po' tmpdepfile='$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -c -o libxfdesktop_la-desktop-menu-stub.obj `if test -f 'desktop-menu-stub.c'; then $(CYGPATH_W) 'desktop-menu-stub.c'; else $(CYGPATH_W) '$(srcdir)/desktop-menu-stub.c'; fi`
+
+libxfdesktop_la-desktop-menu-stub.lo: desktop-menu-stub.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -MT libxfdesktop_la-desktop-menu-stub.lo -MD -MP -MF "$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Tpo" -c -o libxfdesktop_la-desktop-menu-stub.lo `test -f 'desktop-menu-stub.c' || echo '$(srcdir)/'`desktop-menu-stub.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Tpo" "$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Plo"; else rm -f "$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='desktop-menu-stub.c' object='libxfdesktop_la-desktop-menu-stub.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.Plo' tmpdepfile='$(DEPDIR)/libxfdesktop_la-desktop-menu-stub.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfdesktop_la_CFLAGS) $(CFLAGS) -c -o libxfdesktop_la-desktop-menu-stub.lo `test -f 'desktop-menu-stub.c' || echo '$(srcdir)/'`desktop-menu-stub.c
 
 mostlyclean-libtool:
 	-rm -f *.lo

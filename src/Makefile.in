@@ -14,7 +14,6 @@
 
 @SET_MAKE@
 
-
 SOURCES = $(xfdesktop_SOURCES)
 
 srcdir = @srcdir@
@@ -50,13 +49,12 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
-am__installdirs = $(DESTDIR)$(bindir) $(DESTDIR)$(xfcedir)
+am__installdirs = $(DESTDIR)$(bindir)
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_xfdesktop_OBJECTS = xfdesktop-backdrop.$(OBJEXT) \
 	xfdesktop-main.$(OBJEXT) xfdesktop-menu.$(OBJEXT) \
-	xfdesktop-menu-file.$(OBJEXT) xfdesktop-menu-dentry.$(OBJEXT) \
-	xfdesktop-settings.$(OBJEXT) xfdesktop-menuspec.$(OBJEXT)
+	xfdesktop-settings.$(OBJEXT)
 xfdesktop_OBJECTS = $(am_xfdesktop_OBJECTS)
 xfdesktop_DEPENDENCIES = $(top_builddir)/common/libxfdesktop.la
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -64,10 +62,7 @@ depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/xfdesktop-backdrop.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfdesktop-main.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/xfdesktop-menu-dentry.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/xfdesktop-menu-file.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfdesktop-menu.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/xfdesktop-menuspec.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/xfdesktop-settings.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -79,8 +74,6 @@ LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 SOURCES = $(xfdesktop_SOURCES)
 DIST_SOURCES = $(xfdesktop_SOURCES)
-xfceDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(xfce_DATA)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -117,8 +110,14 @@ EXEEXT = @EXEEXT@
 F77 = @F77@
 FFLAGS = @FFLAGS@
 GETTEXT_PACKAGE = @GETTEXT_PACKAGE@
+GMODULE_CFLAGS = @GMODULE_CFLAGS@
+GMODULE_LIBS = @GMODULE_LIBS@
+GMODULE_REQUIRED_VERSION = @GMODULE_REQUIRED_VERSION@
 GMOFILES = @GMOFILES@
 GMSGFMT = @GMSGFMT@
+GTHREAD_CFLAGS = @GTHREAD_CFLAGS@
+GTHREAD_LIBS = @GTHREAD_LIBS@
+GTHREAD_REQUIRED_VERSION = @GTHREAD_REQUIRED_VERSION@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
@@ -171,6 +170,10 @@ SHELL = @SHELL@
 STRIP = @STRIP@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
+XFCE4_PANEL_CFLAGS = @XFCE4_PANEL_CFLAGS@
+XFCE4_PANEL_LIBS = @XFCE4_PANEL_LIBS@
+XFCE4_PANEL_PLUGINSDIR = @XFCE4_PANEL_PLUGINSDIR@
+XFCE4_PANEL_REQUIRED_VERSION = @XFCE4_PANEL_REQUIRED_VERSION@
 XFCE_MCS_MANAGER_CFLAGS = @XFCE_MCS_MANAGER_CFLAGS@
 XFCE_MCS_MANAGER_LIBS = @XFCE_MCS_MANAGER_LIBS@
 XFCE_MCS_MANAGER_PLUGINSDIR = @XFCE_MCS_MANAGER_PLUGINSDIR@
@@ -229,14 +232,8 @@ xfdesktop_SOURCES = \
 	main.h								\
 	menu.c								\
 	menu.h								\
-	menu-file.c							\
-	menu-file.h							\
-	menu-dentry.c						\
-	menu-dentry.h						\
 	settings.c							\
-	settings.h							\
-	menuspec.c							\
-	menuspec.h
+	settings.h
 
 xfdesktop_CFLAGS = \
 	-I$(top_srcdir)							\
@@ -244,11 +241,12 @@ xfdesktop_CFLAGS = \
 	@LIBX11_CFLAGS@							\
 	@LIBXFCE4MCS_CLIENT_CFLAGS@					\
 	@LIBXFCEGUI4_CFLAGS@						\
-	@LIBXML_CFLAGS@							\
+	@GMODULE_CFLAGS@							\
 	-DLOCALEDIR=\"$(localedir)\"					\
 	-DDATADIR=\"$(pkgdatadir)\"					\
 	-DSYSCONFDIR=\"$(sysconfdir)\"			\
-	-DXFCEDATADIR=\"$(datadir)/xfce4\"
+	-DXFCEDATADIR=\"$(datadir)/xfce4\"		\
+	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\"
 
 xfdesktop_LDADD = \
 	$(top_builddir)/common/libxfdesktop.la				\
@@ -256,10 +254,8 @@ xfdesktop_LDADD = \
 	@LIBX11_LIBS@							\
 	@LIBXFCE4MCS_CLIENT_LIBS@					\
 	@LIBXFCEGUI4_LIBS@						\
-	@LIBXML_LIBS@
+	@GMODULE_LIBS@
 
-xfcedir = $(datadir)/xfce4
-xfce_DATA = xfce-registered-categories.xml
 all: all-am
 
 .SUFFIXES:
@@ -333,10 +329,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfdesktop-backdrop.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfdesktop-main.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfdesktop-menu-dentry.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfdesktop-menu-file.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfdesktop-menu.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfdesktop-menuspec.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xfdesktop-settings.Po@am__quote@
 
 .c.o:
@@ -435,54 +428,6 @@ xfdesktop-menu.lo: menu.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-menu.lo `test -f 'menu.c' || echo '$(srcdir)/'`menu.c
 
-xfdesktop-menu-file.o: menu-file.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -MT xfdesktop-menu-file.o -MD -MP -MF "$(DEPDIR)/xfdesktop-menu-file.Tpo" -c -o xfdesktop-menu-file.o `test -f 'menu-file.c' || echo '$(srcdir)/'`menu-file.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfdesktop-menu-file.Tpo" "$(DEPDIR)/xfdesktop-menu-file.Po"; else rm -f "$(DEPDIR)/xfdesktop-menu-file.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='menu-file.c' object='xfdesktop-menu-file.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfdesktop-menu-file.Po' tmpdepfile='$(DEPDIR)/xfdesktop-menu-file.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-menu-file.o `test -f 'menu-file.c' || echo '$(srcdir)/'`menu-file.c
-
-xfdesktop-menu-file.obj: menu-file.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -MT xfdesktop-menu-file.obj -MD -MP -MF "$(DEPDIR)/xfdesktop-menu-file.Tpo" -c -o xfdesktop-menu-file.obj `if test -f 'menu-file.c'; then $(CYGPATH_W) 'menu-file.c'; else $(CYGPATH_W) '$(srcdir)/menu-file.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfdesktop-menu-file.Tpo" "$(DEPDIR)/xfdesktop-menu-file.Po"; else rm -f "$(DEPDIR)/xfdesktop-menu-file.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='menu-file.c' object='xfdesktop-menu-file.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfdesktop-menu-file.Po' tmpdepfile='$(DEPDIR)/xfdesktop-menu-file.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-menu-file.obj `if test -f 'menu-file.c'; then $(CYGPATH_W) 'menu-file.c'; else $(CYGPATH_W) '$(srcdir)/menu-file.c'; fi`
-
-xfdesktop-menu-file.lo: menu-file.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -MT xfdesktop-menu-file.lo -MD -MP -MF "$(DEPDIR)/xfdesktop-menu-file.Tpo" -c -o xfdesktop-menu-file.lo `test -f 'menu-file.c' || echo '$(srcdir)/'`menu-file.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfdesktop-menu-file.Tpo" "$(DEPDIR)/xfdesktop-menu-file.Plo"; else rm -f "$(DEPDIR)/xfdesktop-menu-file.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='menu-file.c' object='xfdesktop-menu-file.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfdesktop-menu-file.Plo' tmpdepfile='$(DEPDIR)/xfdesktop-menu-file.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-menu-file.lo `test -f 'menu-file.c' || echo '$(srcdir)/'`menu-file.c
-
-xfdesktop-menu-dentry.o: menu-dentry.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -MT xfdesktop-menu-dentry.o -MD -MP -MF "$(DEPDIR)/xfdesktop-menu-dentry.Tpo" -c -o xfdesktop-menu-dentry.o `test -f 'menu-dentry.c' || echo '$(srcdir)/'`menu-dentry.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfdesktop-menu-dentry.Tpo" "$(DEPDIR)/xfdesktop-menu-dentry.Po"; else rm -f "$(DEPDIR)/xfdesktop-menu-dentry.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='menu-dentry.c' object='xfdesktop-menu-dentry.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfdesktop-menu-dentry.Po' tmpdepfile='$(DEPDIR)/xfdesktop-menu-dentry.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-menu-dentry.o `test -f 'menu-dentry.c' || echo '$(srcdir)/'`menu-dentry.c
-
-xfdesktop-menu-dentry.obj: menu-dentry.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -MT xfdesktop-menu-dentry.obj -MD -MP -MF "$(DEPDIR)/xfdesktop-menu-dentry.Tpo" -c -o xfdesktop-menu-dentry.obj `if test -f 'menu-dentry.c'; then $(CYGPATH_W) 'menu-dentry.c'; else $(CYGPATH_W) '$(srcdir)/menu-dentry.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfdesktop-menu-dentry.Tpo" "$(DEPDIR)/xfdesktop-menu-dentry.Po"; else rm -f "$(DEPDIR)/xfdesktop-menu-dentry.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='menu-dentry.c' object='xfdesktop-menu-dentry.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfdesktop-menu-dentry.Po' tmpdepfile='$(DEPDIR)/xfdesktop-menu-dentry.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-menu-dentry.obj `if test -f 'menu-dentry.c'; then $(CYGPATH_W) 'menu-dentry.c'; else $(CYGPATH_W) '$(srcdir)/menu-dentry.c'; fi`
-
-xfdesktop-menu-dentry.lo: menu-dentry.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -MT xfdesktop-menu-dentry.lo -MD -MP -MF "$(DEPDIR)/xfdesktop-menu-dentry.Tpo" -c -o xfdesktop-menu-dentry.lo `test -f 'menu-dentry.c' || echo '$(srcdir)/'`menu-dentry.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfdesktop-menu-dentry.Tpo" "$(DEPDIR)/xfdesktop-menu-dentry.Plo"; else rm -f "$(DEPDIR)/xfdesktop-menu-dentry.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='menu-dentry.c' object='xfdesktop-menu-dentry.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfdesktop-menu-dentry.Plo' tmpdepfile='$(DEPDIR)/xfdesktop-menu-dentry.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-menu-dentry.lo `test -f 'menu-dentry.c' || echo '$(srcdir)/'`menu-dentry.c
-
 xfdesktop-settings.o: settings.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -MT xfdesktop-settings.o -MD -MP -MF "$(DEPDIR)/xfdesktop-settings.Tpo" -c -o xfdesktop-settings.o `test -f 'settings.c' || echo '$(srcdir)/'`settings.c; \
 @am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfdesktop-settings.Tpo" "$(DEPDIR)/xfdesktop-settings.Po"; else rm -f "$(DEPDIR)/xfdesktop-settings.Tpo"; exit 1; fi
@@ -507,30 +452,6 @@ xfdesktop-settings.lo: settings.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-settings.lo `test -f 'settings.c' || echo '$(srcdir)/'`settings.c
 
-xfdesktop-menuspec.o: menuspec.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -MT xfdesktop-menuspec.o -MD -MP -MF "$(DEPDIR)/xfdesktop-menuspec.Tpo" -c -o xfdesktop-menuspec.o `test -f 'menuspec.c' || echo '$(srcdir)/'`menuspec.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfdesktop-menuspec.Tpo" "$(DEPDIR)/xfdesktop-menuspec.Po"; else rm -f "$(DEPDIR)/xfdesktop-menuspec.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='menuspec.c' object='xfdesktop-menuspec.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfdesktop-menuspec.Po' tmpdepfile='$(DEPDIR)/xfdesktop-menuspec.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-menuspec.o `test -f 'menuspec.c' || echo '$(srcdir)/'`menuspec.c
-
-xfdesktop-menuspec.obj: menuspec.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -MT xfdesktop-menuspec.obj -MD -MP -MF "$(DEPDIR)/xfdesktop-menuspec.Tpo" -c -o xfdesktop-menuspec.obj `if test -f 'menuspec.c'; then $(CYGPATH_W) 'menuspec.c'; else $(CYGPATH_W) '$(srcdir)/menuspec.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfdesktop-menuspec.Tpo" "$(DEPDIR)/xfdesktop-menuspec.Po"; else rm -f "$(DEPDIR)/xfdesktop-menuspec.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='menuspec.c' object='xfdesktop-menuspec.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfdesktop-menuspec.Po' tmpdepfile='$(DEPDIR)/xfdesktop-menuspec.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-menuspec.obj `if test -f 'menuspec.c'; then $(CYGPATH_W) 'menuspec.c'; else $(CYGPATH_W) '$(srcdir)/menuspec.c'; fi`
-
-xfdesktop-menuspec.lo: menuspec.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -MT xfdesktop-menuspec.lo -MD -MP -MF "$(DEPDIR)/xfdesktop-menuspec.Tpo" -c -o xfdesktop-menuspec.lo `test -f 'menuspec.c' || echo '$(srcdir)/'`menuspec.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/xfdesktop-menuspec.Tpo" "$(DEPDIR)/xfdesktop-menuspec.Plo"; else rm -f "$(DEPDIR)/xfdesktop-menuspec.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='menuspec.c' object='xfdesktop-menuspec.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/xfdesktop-menuspec.Plo' tmpdepfile='$(DEPDIR)/xfdesktop-menuspec.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xfdesktop_CFLAGS) $(CFLAGS) -c -o xfdesktop-menuspec.lo `test -f 'menuspec.c' || echo '$(srcdir)/'`menuspec.c
-
 mostlyclean-libtool:
 	-rm -f *.lo
 
@@ -540,23 +461,6 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
-install-xfceDATA: $(xfce_DATA)
-	@$(NORMAL_INSTALL)
-	$(mkdir_p) $(DESTDIR)$(xfcedir)
-	@list='$(xfce_DATA)'; for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(xfceDATA_INSTALL) $$d$$p $(DESTDIR)$(xfcedir)/$$f"; \
-	  $(xfceDATA_INSTALL) $$d$$p $(DESTDIR)$(xfcedir)/$$f; \
-	done
-
-uninstall-xfceDATA:
-	@$(NORMAL_UNINSTALL)
-	@list='$(xfce_DATA)'; for p in $$list; do \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " rm -f $(DESTDIR)$(xfcedir)/$$f"; \
-	  rm -f $(DESTDIR)$(xfcedir)/$$f; \
-	done
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -633,9 +537,9 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(PROGRAMS) $(DATA)
+all-am: Makefile $(PROGRAMS)
 installdirs:
-	$(mkdir_p) $(DESTDIR)$(bindir) $(DESTDIR)$(xfcedir)
+	$(mkdir_p) $(DESTDIR)$(bindir)
 install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
@@ -680,7 +584,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-xfceDATA
+install-data-am:
 
 install-exec-am: install-binPROGRAMS
 
@@ -708,8 +612,7 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-binPROGRAMS uninstall-info-am \
-	uninstall-xfceDATA
+uninstall-am: uninstall-binPROGRAMS uninstall-info-am
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-binPROGRAMS \
 	clean-generic clean-libtool ctags distclean distclean-compile \
@@ -717,12 +620,11 @@ uninstall-am: uninstall-binPROGRAMS uninstall-info-am \
 	dvi-am html html-am info info-am install install-am \
 	install-binPROGRAMS install-data install-data-am install-exec \
 	install-exec-am install-info install-info-am install-man \
-	install-strip install-xfceDATA installcheck installcheck-am \
-	installdirs maintainer-clean maintainer-clean-generic \
-	mostlyclean mostlyclean-compile mostlyclean-generic \
-	mostlyclean-libtool pdf pdf-am ps ps-am tags uninstall \
-	uninstall-am uninstall-binPROGRAMS uninstall-info-am \
-	uninstall-xfceDATA
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
+	pdf pdf-am ps ps-am tags uninstall uninstall-am \
+	uninstall-binPROGRAMS uninstall-info-am
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

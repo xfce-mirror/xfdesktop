@@ -33,10 +33,13 @@ BM_I18N([xfdesktop], [ar az bg ca cs de es es_MX eu fa_IR fi fr hi hu it ja pl k
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE
 
+XFCE_PANEL_PLUGIN([XFCE4_PANEL], [4.0.0])
 BM_DEPEND([LIBXFCEGUI4], libxfcegui4-1.0, 4.1.8)
 BM_DEPEND([LIBXFCE4UTIL], libxfce4util-1.0, 4.1.3)
 BM_DEPEND([LIBXML], libxml-2.0, 2.4.0)
 BM_DEPEND([LIBXFCE4MCS_CLIENT],  libxfce4mcs-client-1.0, [4.0.0])
+BM_DEPEND([GMODULE], gmodule-2.0, 2.0.6)
+BM_DEPEND([GTHREAD], gthread-2.0, 2.0.6)
 
 dnl Configure the MCS plugins
 XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.0.0])
@@ -54,10 +57,12 @@ doc/fr/Makefile
 doc/fr/images/Makefile
 Makefile
 menueditor/Makefile
+modules/Makefile
+modules/menu/Makefile
+panel-plugin/Makefile
 pixmaps/Makefile
 po/Makefile.in
 settings/Makefile
 src/Makefile
 xfdesktop.spec
 ])
-

@@ -22,38 +22,11 @@
 
 #include "main.h"
 
-/* where to find the current panel icon theme (if any) */
-#define CHANNEL "xfce"
-#define DEFAULT_ICON_THEME "Curve"
-
-typedef enum __MenuItemTypeEnum
-{
-    MI_APP,
-    MI_SEPARATOR,
-    MI_SUBMENU,
-    MI_TITLE,
-    MI_BUILTIN
-} MenuItemType;
-
-typedef struct __MenuItemStruct
-{
-    MenuItemType type;		/* Type of Menu Item    */
-    char *path;				/* itemfactory path to item */
-	char *cmd;				/* shell cmd to execute */
-    gboolean term;			/* execute in terminal  */
-    char *icon;				/* icon to display      */
-	GdkPixbuf *pix_free;	/* pointer to pixbuf to free */
-	gboolean snotify;		/* startup notification? */
-} MenuItem;
-
-extern GHashTable *menu_entry_hash;
-extern gboolean is_using_system_rc;
-extern gboolean use_menu_icons;
-
 void menu_init (XfceDesktop * xfdesktop);
+void menu_cleanup(XfceDesktop *xfdesktop);
 void menu_load_settings (XfceDesktop * xfdesktop);
+void menu_force_regen (void);
 void popup_menu (int button, guint32 time);
 void popup_windowlist (int button, guint32 time);
-void menu_force_regen();
 
 #endif /* !__XFDESKTOP_MENU_H__ */

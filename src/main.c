@@ -181,58 +181,54 @@ check_is_running (Window * xid)
 static void
 xfdesktop_set_selection (void)
 {
-    Display *dpy = xfdesktop.dpy;
-    int scr = xfdesktop.xscreen;
-    GtkWidget *gtkwin = xfdesktop.fullscreen;
-    Window win;
+	Display *dpy = xfdesktop.dpy;
+	int scr = xfdesktop.xscreen;
+	GtkWidget *gtkwin = xfdesktop.fullscreen;
+	Window win;
+	
+	TRACE ("claiming xfdesktop manager selection for screen %d", scr);
+	
+	if(!selection_atom) {
+		char selection_name[100];
 
-    TRACE ("claiming xfdesktop manager selection for screen %d", scr);
+		sprintf(selection_name, XFDESKTOP_SELECTION_FMT, scr);
+		selection_atom = XInternAtom(dpy, selection_name, False);
+	}
 
-    if (!selection_atom)
-    {
-	char selection_name[100];
+	if(!manager_atom)
+		manager_atom = XInternAtom(gdk_display, "MANAGER", False);
 
-	sprintf (selection_name, XFDESKTOP_SELECTION_FMT, scr);
-	selection_atom = XInternAtom (dpy, selection_name, False);
-    }
+	win = GDK_WINDOW_XID(gtkwin->window);
 
-    if (!manager_atom)
-	manager_atom = XInternAtom (gdk_display, "MANAGER", False);
+	XSelectInput (dpy, win, PropertyChangeMask | ButtonPressMask);
+	XSetSelectionOwner (dpy, selection_atom, win, GDK_CURRENT_TIME);
 
-    win = GDK_WINDOW_XID (gtkwin->window);
+	/* listen for client messages */
+	g_signal_connect (gtkwin, "client-event",
+	G_CALLBACK (client_message_received), NULL);
 
-    XSelectInput (dpy, win, PropertyChangeMask | ButtonPressMask);
-    XSetSelectionOwner (dpy, selection_atom, win, GDK_CURRENT_TIME);
+	/* Check to see if we managed to claim the selection. If not,
+	* we treat it as if we got it then immediately lost it
+	*/
+	if (XGetSelectionOwner (dpy, selection_atom) == win) {
+		XClientMessageEvent xev;
+		Window root = xfdesktop.root;
 
-    /* listen for client messages */
-    g_signal_connect (gtkwin, "client-event",
-		      G_CALLBACK (client_message_received), NULL);
+		xev.type = ClientMessage;
+		xev.window = root;
+		xev.message_type = manager_atom;
+		xev.format = 32;
+		xev.data.l[0] = GDK_CURRENT_TIME;
+		xev.data.l[1] = selection_atom;
+		xev.data.l[2] = win;
+		xev.data.l[3] = 0;	/* manager specific data */
+		xev.data.l[4] = 0;	/* manager specific data */
 
-    /* Check to see if we managed to claim the selection. If not,
-     * we treat it as if we got it then immediately lost it
-     */
-    if (XGetSelectionOwner (dpy, selection_atom) == win)
-    {
-	XClientMessageEvent xev;
-	Window root = xfdesktop.root;
-
-	xev.type = ClientMessage;
-	xev.window = root;
-	xev.message_type = manager_atom;
-	xev.format = 32;
-	xev.data.l[0] = GDK_CURRENT_TIME;
-	xev.data.l[1] = selection_atom;
-	xev.data.l[2] = win;
-	xev.data.l[3] = 0;	/* manager specific data */
-	xev.data.l[4] = 0;	/* manager specific data */
-
-	XSendEvent (dpy, root, False, StructureNotifyMask, (XEvent *) & xev);
-    }
-    else
-    {
-	g_error ("%s: could not set selection ownership", PACKAGE);
-	exit (1);
-    }
+		XSendEvent (dpy, root, False, StructureNotifyMask, (XEvent *) & xev);
+	} else {
+		g_error ("%s: could not set selection ownership", PACKAGE);
+		exit (1);
+	}
 }
 
 /* desktop window */
@@ -353,6 +349,7 @@ xfdesktop_cleanup (void)
     TRACE ("cleaning up");
     settings_cleanup (&xfdesktop);
     background_cleanup (&xfdesktop);
+	menu_cleanup(&xfdesktop);
 }
 
 static void
@@ -371,6 +368,7 @@ sighandler (int sig)
     {
 	case SIGUSR1:
 	    load_settings ();
+		menu_force_regen();
 	    break;
 
 	default:
@@ -389,7 +387,7 @@ main (int argc, char **argv)
 
     /* bind gettext textdomain */
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
-
+	
     gtk_init (&argc, &argv);
 
     if (check_is_running (&xid))
