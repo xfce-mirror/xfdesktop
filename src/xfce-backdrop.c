@@ -30,19 +30,12 @@
 #include <string.h>
 #endif
 
-#include <math.h>
-
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gdk-pixbuf/gdk-pixdata.h>
 
 #include "xfce-backdrop.h"
-
-#ifdef round
-#undef round
-#endif
-#define round(x) ( (gdouble)(x)-(gint)(x) >= 0.5 ? ((gint)(x))+1 : (gint)(x) )
 
 static void xfce_backdrop_class_init(XfceBackdropClass *klass);
 static void xfce_backdrop_init(XfceBackdrop *backdrop);
