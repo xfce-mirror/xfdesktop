@@ -184,8 +184,6 @@ xfdesktop_set_selection(XfceDesktop *xfdesktop)
 	
 	TRACE ("claiming xfdesktop manager selection for screen %d", scr);
 	
-	g_print("in xfdesktop_set_selection (%d)\n", scr);
-	
 	if(!xfdesktop->selection_atom) {
 		char selection_name[100];
 
@@ -227,8 +225,6 @@ xfdesktop_set_selection(XfceDesktop *xfdesktop)
 		g_error ("%s: could not set selection ownership", PACKAGE);
 		exit (1);
 	}
-	
-	g_print("done with xfdesktop_set_selection (%d)\n", scr);
 }
 
 /* desktop window */
@@ -334,24 +330,18 @@ xfdesktop_init(XfceDesktop *xfdesktop, gint screen)
 	xfdesktop_set_selection(xfdesktop);
 	
 	settings_init(xfdesktop);
-	g_print("finished settings_init for screen %d\n", xfdesktop->xscreen);
 	xfdesktop->backdrop = backdrop_new(screen, xfdesktop->fullscreen, xfdesktop->client);
-	g_print("finished backdrop_new for screen %d\n", xfdesktop->xscreen);
 	menu_init(xfdesktop);
 	
-	g_print("finished menu_init for screen %d\n", xfdesktop->xscreen);
 
 #if GTK_CHECK_VERSION(2,2,0)
 	g_signal_connect(G_OBJECT(gdk_display_get_screen(gdk_display_get_default(), screen)),
 			"size-changed", G_CALLBACK(xfdesktop_size_changed), xfdesktop);
 #endif
 
-	load_settings(xfdesktop);
-	g_print("finished first load_settings for screen %d\n", xfdesktop->xscreen);
 	gtk_widget_show(xfdesktop->fullscreen);
 	gdk_window_lower(xfdesktop->fullscreen->window);
 	load_settings(xfdesktop);
-	g_print("finished second load_settings for screen %d, xfdesktop_init done\n", xfdesktop->xscreen);
 }
 
 static void
@@ -483,10 +473,9 @@ main (int argc, char **argv)
 	}
 	
 	backdrop_settings_init();
-	g_print("finished backdrop_settings_init\n");
 
     gtk_main();
-	
+
 	menu_cleanup_global();
 	xfdesktop_cleanup_all();
 	settings_cleanup_global();
