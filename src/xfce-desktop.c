@@ -297,16 +297,20 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
 {
 	XfceDesktop *desktop = user_data;
 	gint w, h, i;
+	GdkRectangle rect;
 	
 	g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 	
 	w = gdk_screen_get_width(gscreen);
 	h = gdk_screen_get_height(gscreen);
 	gtk_widget_set_size_request(GTK_WIDGET(desktop), w, h);
+	gtk_window_resize(GTK_WINDOW(desktop), w, h);
 	
+	/* clear out the old pixmap so we don't use its size anymore */
 	gtk_widget_set_style(GTK_WIDGET(desktop), NULL);
 	for(i = 0; i < desktop->priv->nbackdrops; i++) {
-		xfce_backdrop_set_size(desktop->priv->backdrops[i], w, h);
+		gdk_screen_get_monitor_geometry(gscreen, i, &rect);
+		xfce_backdrop_set_size(desktop->priv->backdrops[i], rect.width, rect.height);
 		backdrop_changed_cb(desktop->priv->backdrops[i], desktop);
 	}
 }
