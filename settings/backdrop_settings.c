@@ -196,9 +196,9 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 	/* 
 	   Just a color by default #336699 - That number looks cool :)
 	 */
-	backdrop_color.red = (guint16) 0x3300;
-	backdrop_color.green = (guint16) 0x6600;
-	backdrop_color.blue = (guint16) 0x9900;
+	backdrop_color.red = (guint16) 0x6900;
+	backdrop_color.green = (guint16) 0x8500;
+	backdrop_color.blue = (guint16) 0xB700;
 	backdrop_color.alpha = (guint16) 0;
 	mcs_manager_set_color (mcs_plugin->manager, "color", BACKDROP_CHANNEL,
 			       &backdrop_color);
