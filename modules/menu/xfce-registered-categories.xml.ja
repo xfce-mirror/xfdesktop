@@ -40,15 +40,15 @@
 	<category name="Core" toplevel="true" replace="アクセサリー" builtin-icon="UTILITY" />
 	<category name="Development" toplevel="true" replace="開発" builtin-icon="DEVELOPMENT">
 		<subcategory name="Building" />
-		<subcategory name="Debugger" />
+		<subcategory name="Debugger" replace="デバッガ" />
 		<subcategory name="IDE" />
-		<subcategory name="GUIDesigner" />
+		<subcategory name="GUIDesigner" replace="GUI 設計" />
 		<subcategory name="Profiling" />
-		<subcategory name="RevisionControl" />
-		<subcategory name="Translation" />
-		<subcategory name="Database" />
-		<subcategory name="ProjectManagement" />
-		<subcategory name="WebDevelopment" />
+		<subcategory name="RevisionControl" replace="リビジョン管理" />
+		<subcategory name="Translation" replace="翻訳" />
+		<subcategory name="Database" replace="データベース" />
+		<subcategory name="ProjectManagement" replace="プロジェクト管理" />
+		<subcategory name="WebDevelopment" replace="ウェブ開発" />
 	</category>
 	<category name="Building" builtin-icon="DEVELOPMENT" />
 	<category name="Debugger" replace="Debugging" builtin-icon="DEVELOPMENT" />
@@ -58,21 +58,21 @@
 	<category name="RevisionControl" replace="リビジョン管理" builtin-icon="DEVELOPMENT" />
 	<category name="Translation" replace="翻訳" builtin-icon="DEVELOPMENT" />
 	<category name="Office" toplevel="true" replace="事務" builtin-icon="PRODUCTIVITY">
-		<subcategory name="Calendar" />
+		<subcategory name="Calendar" replace="カレンダー" />
 		<subcategory name="ContactManagement" />
-		<subcategory name="Database" />
-		<subcategory name="Dictionary" />
-		<subcategory name="Chart" />
-		<subcategory name="Email" />
-		<subcategory name="Finance" />
-		<subcategory name="FlowChart" />
+		<subcategory name="Database" replace="データベース" />
+		<subcategory name="Dictionary" replace="電子辞書" />
+		<subcategory name="Chart" replace="チャート" />
+		<subcategory name="Email" replace="電子メール" />
+		<subcategory name="Finance" replace="会計" />
+		<subcategory name="FlowChart" replace="フローチャート" />
 		<subcategory name="PDA" />
-		<subcategory name="Project Management" />
-		<subcategory name="Presentation" />
+		<subcategory name="Project Management" replace="プロジェクト管理" />
+		<subcategory name="Presentation" replace="プレゼンテーション" />
 		<subcategory name="Spreadsheet" />
-		<subcategory name="WordProcessor" />
-		<subcategory name="Photograph" />
-		<subcategory name="Viewer" />
+		<subcategory name="WordProcessor" replace="ワープロ" />
+		<subcategory name="Photograph" replace="写真" />
+		<subcategory name="Viewer" replace="ビューア" />
 	</category>
 	<category name="Calendar" replace="カレンダー" builtin-icon="PRODUCTIVITY" />
 	<category name="ContactManagement" replace="Contact Management" builtin-icon="PRODUCTIVITY" />
@@ -80,23 +80,23 @@
 	<category name="Dictionary" replace="電子辞書" builtin-icon="PRODUCTIVITY" />
 	<category name="Chart" replace="チャート" builtin-icon="PRODUCTIVITY" />
 	<category name="Email" replace="電子メール" builtin-icon="PRODUCTIVITY" />
-	<category name="Finance" replace="財務" builtin-icon="PRODUCTIVITY" />
+	<category name="Finance" replace="会計" builtin-icon="PRODUCTIVITY" />
 	<category name="FlowChart" replace="フローチャート" builtin-icon="PRODUCTIVITY" />
 	<category name="PDA" builtin-icon="PRODUCTIVITY" />
 	<category name="ProjectManagement" replace="プロジェクト管理" builtin-icon="PRODUCTIVITY" />
 	<category name="Presentation" replace="プレゼンテーション" builtin-icon="PRODUCTIVITY" />
 	<category name="Spreadsheet" replace="スプレッドシート" builtin-icon="PRODUCTIVITY" />
-	<category name="WordProcessor" replace="Word Processing" builtin-icon="PRODUCTIVITY" />
+	<category name="WordProcessor" replace="ワープロ" builtin-icon="PRODUCTIVITY" />
 	<category name="Graphics" toplevel="true" replace="グラフィックス" builtin-icon="GRAPHICS">
 		<subcategory name="2DGraphics" replace="2D グラフィックス" />
 		<subcategory name="3DGraphics" replace="3D グラフィックス" />
 		<subcategory name="Scanning" replace="スキャン" />
 		<subcategory name="Photograph" replace="写真" />
-		<subcategory name="Viewer" replace="ビューワ" />
+		<subcategory name="Viewer" replace="ビューア" />
 	</category>
 	<category name="2DGraphics" replace="2D グラフィックス" builtin-icon="GRAPHICS">
-		<subcategory name="VectorGraphics" />
-		<subcategory name="RasterGraphics" />
+		<subcategory name="VectorGraphics" replace="ベクトルグラフィックス" />
+		<subcategory name="RasterGraphics" replace="ラスターグラフィックス" />
 	</category>
 	<category name="VectorGraphics" replace="ベクトルグラフィックス" builtin-icon="GRAPHICS" />
 	<category name="RasterGraphics" replace="ラスターグラフィックス" builtin-icon="GRAPHICS" />
@@ -105,8 +105,8 @@
 		<subcategory name="OCR" />
 	</category>
 	<category name="OCR" builtin-icon="GRAPHICS" />
-	<category name="Photograph" replace="Photography" builtin-icon="GRAPHICS" />
-	<category name="Viewer" replace="Viewers" builtin-icon="GRAPHICS" />
+	<category name="Photograph" replace="写真" builtin-icon="GRAPHICS" />
+	<category name="Viewer" replace="ビューア" builtin-icon="GRAPHICS" />
 	<category name="Settings" toplevel="true" replace="設定" builtin-icon="SETTINGS">
 		<subcategory name="DesktopSettings" replace="デスクトップ設定" />
 		<subcategory name="HardwareSettings" replace="ハードウェア設定" />
@@ -144,22 +144,22 @@
 	<category name="WebBrowser" replace="ウェブブラウズ" builtin-icon="NETWORK" />
 	<category name="WebDevelopment" replace="ウェブ開発" builtin-icon="NETWORK" />
 	<category name="AudioVideo" toplevel="true" replace="マルチメディア" builtin-icon="MULTIMEDIA">
-		<subcategory name="Database" />
-		<subcategory name="HamRadio" />
-		<subcategory name="Audio" />
-		<subcategory name="Video" />
+		<subcategory name="Database" replace="データベース" />
+		<subcategory name="HamRadio" replace="ハムラジオ" />
+		<subcategory name="Audio" replace="オーディオ" />
+		<subcategory name="Video" replace="ビデオ" />
 		<subcategory name="AudioVideoEditing" />
-		<subcategory name="Player" />
+		<subcategory name="Player" replace="プレイヤー" />
 		<subcategory name="Recorder" />
 		<subcategory name="DiscBurning" />
 	</category>
 	<category name="Audio" replace="オーディオ" builtin-icon="MULTIMEDIA">
-		<subcategory name="Midi" />
-		<subcategory name="Mixer" />
-		<subcategory name="Sequencer" />
-		<subcategory name="Tuner" />
+		<subcategory name="Midi" replace="MIDI" />
+		<subcategory name="Mixer" replace="ミキサー" />
+		<subcategory name="Sequencer" replace="シーケンサー" />
+		<subcategory name="Tuner" replace="チューナー" />
 		<subcategory name="AudioVideoEditing" />
-		<subcategory name="Player" />
+		<subcategory name="Player" replace="プレイヤー" />
 		<subcategory name="Recorder" />
 	</category>
 	<category name="Midi"  replace="MIDI" builtin-icon="MULTIMEDIA" />
@@ -169,7 +169,7 @@
 	<category name="Video" replace="ビデオ" builtin-icon="MULTIMEDIA">
 		<subcategory name="TV" replace="テレビ" />
 		<subcategory name="AudioVideoEditing" />
-		<subcategory name="Player" />
+		<subcategory name="Player" repace="プレイヤー" />
 		<subcategory name="Recorder" />
 		<subcategory name="Music" />
 	</category>
@@ -179,18 +179,18 @@
 	<category name="Recorder" replace="録音・録画" builtin-icon="MULTIMEDIA" />
 	<category name="DiscBurning" replace="CD and DVD Burning" builtin-icon="MULTIMEDIA" />
 	<category name="Game" toplevel="true" replace="ゲーム" builtin-icon="GAME">
-		<subcategory name="ActionGame" />
-		<subcategory name="AdventureGame" />
-		<subcategory name="ArcadeGame" />
-		<subcategory name="BoardGame" />
-		<subcategory name="BlocksGame" />
-		<subcategory name="CardGame" />
-		<subcategory name="KidsGame" />
-		<subcategory name="LogicGame" />
-		<subcategory name="RolePlaying" />
-		<subcategory name="Simulation" />
-		<subcategory name="SportsGame" />
-		<subcategory name="StrategyGame" />
+		<subcategory name="ActionGame" replace="アクションゲーム" />
+		<subcategory name="AdventureGame" replace="アドベンチャーゲーム" />
+		<subcategory name="ArcadeGame" replace="アーケードゲーム" />
+		<subcategory name="BoardGame" replace="ボードゲーム" />
+		<subcategory name="BlocksGame" replace="ブロックゲーム" />
+		<subcategory name="CardGame" replace="カードゲーム" />
+		<subcategory name="KidsGame" replace="子供向けゲーム" />
+		<subcategory name="LogicGame" replace="ロジックゲーム" />
+		<subcategory name="RolePlaying" replace="ロールプレイング" />
+		<subcategory name="Simulation" replace="シミュレーション" />
+		<subcategory name="SportsGame" replace="スポーツゲーム" />
+		<subcategory name="StrategyGame" replace="戦略ゲーム" />
 	</category>
 	<category name="ActionGame" replace="アクションゲーム" builtin-icon="GAME" />
 	<category name="AdventureGame" replace="アドベンチャーゲーム" builtin-icon="GAME" />
@@ -199,8 +199,8 @@
 	<category name="BlocksGame" replace="パズルゲーム" builtin-icon="GAME" />
 	<category name="CardGame" replace="カードゲーム" builtin-icon="GAME" />
 	<category name="KidsGame" replace="子供向けゲーム" builtin-icon="GAME" />
-	<category name="LogicGame" replace="Logic Games" builtin-icon="GAME" />
-	<category name="RolePlaying" replace="Role Playing Games" builtin-icon="GAME" />
+	<category name="LogicGame" replace="ロジックゲーム" builtin-icon="GAME" />
+	<category name="RolePlaying" replace="ロールプレイング" builtin-icon="GAME" />
 	<category name="Simulation" replace="シミュレーション" builtin-icon="GAME" />
 	<category name="SportsGame" replace="スポーツゲーム" builtin-icon="GAME" />
 	<category name="StrategyGame" replace="戦略ゲーム" builtin-icon="GAME" />
@@ -254,7 +254,7 @@
 	<category name="Filesystem" replace="ファイルシステム" builtin-icon="SYSTEM" />
 	<category name="Monitor" replace="モニタ" builtin-icon="SYSTEM" />
 	<category name="Security" replace="セキュリティ" builtin-icon="SYSTEM" />
-	<category name="Utility" toplevel="true" replace="アクセサリー" builtin-icon="UTILITY">
+	<category name="Utility"  toplevel="true" replace="アクセサリー" builtin-icon="UTILITY">
 		<subcategory name="Accessibility" />
 		<subcategory name="Calculator" replace="電卓" />
 		<subcategory name="Clock" replace="時計" />
