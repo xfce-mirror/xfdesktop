@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-11-14 19:03+0100\n"
+"POT-Creation-Date: 2003-09-22 21:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Lukas Konarovsky <daeltar@daeltar.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,8 @@ msgid ""
 msgstr ""
 "Nemohu uložit soubor %s: %s\n"
 "\n"
-"Prosím vyberte jiné umístění nebo použijte cancel pro ztracení změn změn"
+"Prosím vyberte jiné umístění nebo použijte cancel pro ztracení změn "
+"změn"
 
 #: settings/backdrop-mgr.c:510
 msgid "Select image file"
@@ -59,87 +60,81 @@ msgstr "Vytvořit seznam obrázků"
 msgid "Edit backdrop list"
 msgstr "Upravit seznam obrázků"
 
-#: settings/backdrop_settings.c:149
-#, fuzzy
-msgid "Desktop background"
+#: settings/backdrop_settings.c:156
+msgid "Desktop: backdrop"
 msgstr "Plocha: Pozadí"
 
-#: settings/backdrop_settings.c:363
+#: settings/backdrop_settings.c:357
 msgid "Select background color"
 msgstr "Vybrat barvu pozadí"
 
-#: settings/backdrop_settings.c:413
+#: settings/backdrop_settings.c:407
 msgid "Background color:"
 msgstr "Barva pozadí:"
 
-#: settings/backdrop_settings.c:443
+#: settings/backdrop_settings.c:437
 msgid "Use color only:"
 msgstr "Použít pouze barvu:"
 
-#: settings/backdrop_settings.c:569
+#: settings/backdrop_settings.c:563
 msgid "File:"
 msgstr "Soubor:"
 
-#: settings/backdrop_settings.c:630
+#: settings/backdrop_settings.c:624
 msgid "Select background image or list file"
 msgstr "Vybrat obrázek na pozadí nebo seznam obrázků"
 
-#: settings/backdrop_settings.c:707
+#: settings/backdrop_settings.c:701
 msgid "_Browse..."
 msgstr "_Procházet..."
 
-#: settings/backdrop_settings.c:711
+#: settings/backdrop_settings.c:705
 msgid "New list"
 msgstr "Nový seznam"
 
-#: settings/backdrop_settings.c:715
+#: settings/backdrop_settings.c:709
 msgid "Edit list"
 msgstr "Upravit seznam"
 
-#: settings/backdrop_settings.c:753
+#: settings/backdrop_settings.c:747
 msgid "Style:"
 msgstr "Styl:"
 
-#: settings/backdrop_settings.c:761
+#: settings/backdrop_settings.c:755
 msgid "_Tiled"
 msgstr "_Dláždit"
 
-#: settings/backdrop_settings.c:767
+#: settings/backdrop_settings.c:761
 msgid "_Scaled"
 msgstr "_Zvětšit"
 
-#: settings/backdrop_settings.c:774
+#: settings/backdrop_settings.c:768
 msgid "_Centered"
 msgstr "_Centrovat"
 
-#: settings/backdrop_settings.c:781
+#: settings/backdrop_settings.c:775
 msgid "_Auto"
 msgstr "_Automaticky"
 
 #. the dialog
-#: settings/backdrop_settings.c:820
+#: settings/backdrop_settings.c:801
 msgid "Background"
 msgstr "Pozadí"
 
 #. header
-#: settings/backdrop_settings.c:838
+#: settings/backdrop_settings.c:819
 msgid "Background Settings"
 msgstr "Nastavení Pozadí"
 
 #. color
-#: settings/backdrop_settings.c:844
+#: settings/backdrop_settings.c:825
 msgid "Color"
 msgstr "Barva"
 
 #. image vbox
-#: settings/backdrop_settings.c:856
+#: settings/backdrop_settings.c:837
 msgid "Image"
 msgstr "Obrázek"
-
-#: settings/backdrop_settings.c:882
-#, fuzzy
-msgid "Don't set background"
-msgstr "Vybrat barvu pozadí"
 
 #: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
@@ -180,26 +175,27 @@ msgstr "Nastavení Pracovních Ploch"
 msgid "Workspace names"
 msgstr "Jména ploch"
 
-#: src/backdrop.c:508
+#: src/backdrop.c:487
 #, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
 msgstr "xfdesktop chyba: nemohu načíst obrázek: %s\n"
 
-#: src/menu.c:735
+#: src/main.c:249
+msgid "Desktop"
+msgstr "Plocha"
+
+#: src/menu.c:736
 msgid "Add workspace"
 msgstr "Přidat plochu"
 
-#: src/menu.c:742
+#: src/menu.c:743
 msgid "Delete workspace"
 msgstr "Odstranit plochu"
 
-#: src/settings.c:182
+#: src/settings.c:186
 msgid ""
 "xfdesktop: could not connect to settings manager!Please check your "
 "installation."
 msgstr ""
 "xfdesktop: nemohu se připojit k správci nastavení (settings manager)! "
 "Prosím, zkontrolujte svojí instalaci."
-
-#~ msgid "Desktop"
-#~ msgstr "Plocha"
