@@ -21,18 +21,8 @@
 #ifndef __HAVE_MOVE_HEADER
 #define __HAVE_MOVE_HEADER
 
-#include "menueditor.h"
-
-
+/* Prototypes */
 void entry_down_cb(GtkWidget *widget, gpointer data);
 void entry_up_cb(GtkWidget *widget, gpointer data);
-
-/* Workaround for gtk_tree_store_swap bug */
-inline void my_tree_store_swap_down(GtkTreeStore *tree_store,
-				    GtkTreeIter *a,
-				    GtkTreeIter *b);
-inline void my_tree_store_swap_up(GtkTreeStore *tree_store,
-				  GtkTreeIter *a,
-				  GtkTreeIter *b);
 
 #endif

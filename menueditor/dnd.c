@@ -20,6 +20,8 @@
 
 #include <libxfce4util/xfce-desktopentry.h>
 
+#include "menueditor.h"
+
 #include "dnd.h"
 
 inline void show_str(char *str)

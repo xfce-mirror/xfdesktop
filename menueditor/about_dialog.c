@@ -18,7 +18,11 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+#include "menueditor.h"
 #include "about_dialog.h"
+
+/* Pixmap */
+#include "me-icon48.xpm"
 
 /*************/
 /* About box */
@@ -35,7 +39,7 @@ void about_cb(GtkWidget *widget, gpointer data)
       _("An menueditor for XFce4"),
       XFCE_COPYRIGHT_TEXT("2004", "Jean-Francois Wauthy"),
       XFCE_LICENSE_LGPL);
-  xfce_about_info_set_homepage(info, "http://users.skynet.be/p0llux/");
+  xfce_about_info_set_homepage(info, "http://www.xfce.org/");
   xfce_about_info_add_credit(info,
       "Jean-Francois Wauthy",
       "pollux@castor.be",

@@ -21,8 +21,7 @@
 #ifndef __HAVE_EDIT_HEADER
 #define __HAVE_EDIT_HEADER
 
-#include "menueditor.h"
-
+/* Prototype */
 void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColumn *col, gpointer data);
 
 #endif

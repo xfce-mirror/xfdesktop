@@ -21,16 +21,21 @@
 #ifndef __HAVE_MENUEDITOR_H
 #define __HAVE_MENUEDITOR_H
 
+#include "config.h"
+
 #include <gtk/gtk.h>
 
+/* includes for the libxml */
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
 
+/* includes for xfce4 */
 #include <libxfce4mcs/mcs-client.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfcegui4/xgtkicontheme.h>
 #include <libxfce4util/util.h>
 
+/* include and definitions for intl */
 #include <libintl.h>
 #undef _
 #define _(String) dgettext (PACKAGE, String)
@@ -39,20 +44,8 @@
 #else
  #define N_(String) (String)
 #endif
-
-#include "config.h"
-
-#include "me-icon16.xpm"
-#include "me-icon32.xpm"
-#include "me-icon24.xpm"
-#include "me-icon48.xpm"
-
-/* Search path for menu.xml file */
-#define SEARCHPATH (SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%L:"\
-                    SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%l:"\
-                    SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F")
-
-
+ 
+/* definitions of fonts in the tree */
 #define TITLE_FORMAT "<span weight='bold' color='dim grey' style='italic'>%s</span>"
 #define MENU_FORMAT "<span weight='bold'>%s</span>"
 #define SEPARATOR_FORMAT "<span color='grey'>%s</span>"
@@ -62,92 +55,19 @@
 #define INCLUDE_FORMAT "<span style='italic' color='dark green'>%s</span>"
 #define INCLUDE_PATH_FORMAT "<span style='italic' color='dark green'>%s</span>"
 
-/**************/
-/* Prototypes */
-/**************/
-
-static gchar* get_default_menu_file ();
-void open_menu_file(gchar *menu_file);
-
-/* Callbacks */
-void quit_cb(GtkWidget *widget, gpointer data);
-void not_yet_cb(GtkWidget *widget, gpointer data);
-gboolean confirm_quit_cb(GtkWidget *widget, gpointer data);
-void filesel_ok(GtkWidget *widget, GtkFileSelection *filesel_dialog);
-void menu_open_cb(GtkWidget *widget, gpointer data);
-void menu_open_default_cb(GtkWidget *widget, gpointer data);
-void menu_save_cb(GtkWidget *widget, gpointer data);
-void menu_saveas_cb(GtkWidget *widget, gpointer data);
-void close_menu_cb(GtkWidget *widget, gpointer data);
-void treeview_cursor_changed_cb(GtkTreeView *treeview,gpointer user_data);
-void visible_column_toggled_cb(GtkCellRendererToggle *toggle,
-			       gchar *str_path,
-			       gpointer data);
-void filesel_saveas_ok(GtkWidget *widget, GtkFileSelection *filesel_dialog);
-void delete_entry_cb(GtkWidget *widget, gpointer data);
-void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command);
-void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_command);
-
-/* Main window */
-void create_main_window();
-
-void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p);
-static GdkPixbuf * find_icon (gchar const *ifile);
-
+/* definitions for find_icon and mcsclient */
 #ifndef PATH_MAX
 #define PATH_MAX 4096
 #endif
-
 #define CHANNEL "xfce"
-#define DEFAULT_ICON_THEME "Curve"
-
-static guchar icon_size = 24;
-static gchar *icon_theme=NULL; /* Set Curve as theme (it really needs to be in a library) */
-static gchar const *pix_ext[] = {
-  ".svgz",
-  ".svg",
-  ".png",
-  ".xpm",
-  NULL
-};
-
-#ifdef HAVE_GETENV
-static gchar *kdefmts[] = {
-  "%s/share/icons/default.kde/scalable/apps/%s",
-  "%s/share/icons/default.kde/48x48/apps/%s",
-  "%s/share/icons/default.kde/32x32/apps/%s",
-  "%s/share/icons/hicolor/scalable/apps/%s",
-  "%s/share/icons/hicolor/48x48/apps/%s",
-  "%s/share/icons/hicolor/32x32/apps/%s",
-  NULL
-};
-#endif
-
-static gchar const *pix_paths[] = {
-  "/usr/share/xfce4/themes/%s/",  /* for xfce4 theme-specific path */
-  "/usr/share/icons/%s/scalable/apps/",  /* ditto */
-  "/usr/share/icons/%s/48x48/apps/",  /* ditto */
-  "/usr/share/icons/%s/32x32/apps/",  /* ditto */
-  "/usr/share/pixmaps/",
-  "/usr/share/icons/hicolor/scalable/apps/",
-  "/usr/share/icons/hicolor/48x48/apps/",
-  "/usr/share/icons/hicolor/32x32/apps/",
-  "/usr/share/icons/gnome/scalable/apps/",  /* gnome's default */
-  "/usr/share/icons/gnome/48x48/apps/",  /* ditto */
-  "/usr/share/icons/gnome/32x32/apps/",  /* ditto */
-  "/usr/share/icons/default.kde/scalable/apps/",  /* kde's default */
-  "/usr/share/icons/default.kde/48x48/apps/",  /* ditto */
-  "/usr/share/icons/default.kde/32x32/apps/",  /* ditto */
-  "/usr/share/icons/locolor/scalable/apps/",  /* fallbacks */
-  "/usr/share/icons/locolor/48x48/apps/",
-  "/usr/share/icons/locolor/32x32/apps/",
-  NULL
-};
-
 
 /***********/
 /* Globals */
 /***********/
+static guchar icon_size = 24;
+
+void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command);
+void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon);
 
 enum {ICON_COLUMN, NAME_COLUMN, COMMAND_COLUMN, HIDDEN_COLUMN, POINTER_COLUMN};
 

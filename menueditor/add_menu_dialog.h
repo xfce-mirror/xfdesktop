@@ -21,8 +21,7 @@
 #ifndef __HAVE_ADDMENU_HEADER
 #define __HAVE_ADDMENU_HEADER
 
-#include "menueditor.h"
-
+/* Prototype */
 void add_menu_cb (GtkWidget *widget, gpointer data);
 
 #endif

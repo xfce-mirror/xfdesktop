@@ -21,9 +21,7 @@
 #ifndef __HAVE_ABOUTDIALOG_HEADER
 #define __HAVE_ABOUTDIALOG_HEADER
 
-#include "menueditor.h"
-
-
+/* Prototype */
 void about_cb(GtkWidget *widget, gpointer data);
 
 #endif

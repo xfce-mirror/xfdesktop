@@ -21,9 +21,7 @@
 #ifndef __HAVE_DND_H
 #define __HAVE_DND_H
 
-#include "menueditor.h"
-
-
+/* Prototypes */
 void treeview_drag_data_get_cb(GtkWidget *widget, GdkDragContext *dc, 
 			       GtkSelectionData *data, guint info,
 			       guint time, gpointer *null);

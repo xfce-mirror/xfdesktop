@@ -28,10 +28,96 @@
 #include "new.h"
 #include "dnd.h"
 
-/***************************************************************/
-/* find_icon code copy of Brian J. Tarricone's xfdesktop patch */
-/* i hope it will be included in a xfce4 lib                   */
-/***************************************************************/
+/* Pixmaps */
+#include "me-icon16.xpm"
+#include "me-icon32.xpm"
+#include "me-icon24.xpm"
+#include "me-icon48.xpm"
+
+/* Search path for menu.xml file */
+#define SEARCHPATH (SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%L:"\
+                    SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%l:"\
+                    SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F")
+
+/* Search paths for find_icon */
+#ifdef HAVE_GETENV
+static gchar *kdefmts[] = {
+  "%s/share/icons/default.kde/scalable/apps/%s",
+  "%s/share/icons/default.kde/48x48/apps/%s",
+  "%s/share/icons/default.kde/32x32/apps/%s",
+  "%s/share/icons/hicolor/scalable/apps/%s",
+  "%s/share/icons/hicolor/48x48/apps/%s",
+  "%s/share/icons/hicolor/32x32/apps/%s",
+  NULL
+};
+#endif
+static gchar const *pix_paths[] = {
+  "/usr/share/xfce4/themes/%s/",  /* for xfce4 theme-specific path */
+  "/usr/share/icons/%s/scalable/apps/",  /* ditto */
+  "/usr/share/icons/%s/48x48/apps/",  /* ditto */
+  "/usr/share/icons/%s/32x32/apps/",  /* ditto */
+  "/usr/share/pixmaps/",
+  "/usr/share/icons/hicolor/scalable/apps/",
+  "/usr/share/icons/hicolor/48x48/apps/",
+  "/usr/share/icons/hicolor/32x32/apps/",
+  "/usr/share/icons/gnome/scalable/apps/",  /* gnome's default */
+  "/usr/share/icons/gnome/48x48/apps/",  /* ditto */
+  "/usr/share/icons/gnome/32x32/apps/",  /* ditto */
+  "/usr/share/icons/default.kde/scalable/apps/",  /* kde's default */
+  "/usr/share/icons/default.kde/48x48/apps/",  /* ditto */
+  "/usr/share/icons/default.kde/32x32/apps/",  /* ditto */
+  "/usr/share/icons/locolor/scalable/apps/",  /* fallbacks */
+  "/usr/share/icons/locolor/48x48/apps/",
+  "/usr/share/icons/locolor/32x32/apps/",
+  NULL
+};
+
+/* Still for find_icon */
+static gchar *icon_theme=NULL;
+static gchar const *pix_ext[] = {
+  ".svgz",
+  ".svg",
+  ".png",
+  ".xpm",
+  NULL
+};
+
+/**************/
+/* Prototypes */
+/**************/
+
+static gchar* get_default_menu_file ();
+void open_menu_file(gchar *menu_file);
+
+/* Callbacks */
+void quit_cb(GtkWidget *widget, gpointer data);
+void not_yet_cb(GtkWidget *widget, gpointer data);
+gboolean confirm_quit_cb(GtkWidget *widget, gpointer data);
+void filesel_ok(GtkWidget *widget, GtkFileSelection *filesel_dialog);
+void menu_open_cb(GtkWidget *widget, gpointer data);
+void menu_open_default_cb(GtkWidget *widget, gpointer data);
+void menu_save_cb(GtkWidget *widget, gpointer data);
+void menu_saveas_cb(GtkWidget *widget, gpointer data);
+void close_menu_cb(GtkWidget *widget, gpointer data);
+void treeview_cursor_changed_cb(GtkTreeView *treeview,gpointer user_data);
+void visible_column_toggled_cb(GtkCellRendererToggle *toggle,
+			       gchar *str_path,
+			       gpointer data);
+void filesel_saveas_ok(GtkWidget *widget, GtkFileSelection *filesel_dialog);
+void delete_entry_cb(GtkWidget *widget, gpointer data);
+
+/* Main window */
+void create_main_window();
+
+/* Load the menu in the tree */
+void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p);
+
+/* Find the icon */
+static GdkPixbuf * find_icon (gchar const *ifile);
+
+/**********************************************/
+/* mcs client code copy of Brian J. Tarricone */
+/**********************************************/
 static time_t last_theme_change = 0;
 static McsClient *client = NULL;
 
@@ -72,6 +158,7 @@ mcs_notify_cb(const gchar *name, const gchar *channel_name, McsAction action,
 				       "gtk-icon-theme-name", setting->data.v_string, origin);
       /* for use with find_icon */
       /* to remove when gtk_theme_icon_load_icon will work */
+      g_free(icon_theme);
       icon_theme = g_strdup(setting->data.v_string);
 
       g_free(origin);
@@ -79,6 +166,10 @@ mcs_notify_cb(const gchar *name, const gchar *channel_name, McsAction action,
     }
 }
 
+/***************************************************************/
+/* find_icon code copy of Brian J. Tarricone's xfdesktop patch */
+/* i hope it will be included in a xfce4 lib                   */
+/***************************************************************/
 static GdkPixbuf * find_icon (gchar const *ifile)
 {
   gboolean found;
@@ -181,13 +272,13 @@ void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command){
   gtk_widget_destroy(GTK_WIDGET(filesel_dialog));
 }
 
-void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_command){
+void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon){
   GtkWidget *filesel_dialog;
 
   filesel_dialog = preview_file_selection_new(_("Select icon"), TRUE);
 
   if(gtk_dialog_run(GTK_DIALOG(filesel_dialog)) == GTK_RESPONSE_OK){
-    gtk_entry_set_text (entry_command,
+    gtk_entry_set_text (entry_icon,
 			gtk_file_selection_get_filename (GTK_FILE_SELECTION(filesel_dialog)));
   }
 

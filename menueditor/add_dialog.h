@@ -21,8 +21,7 @@
 #ifndef __HAVE_ADDDIALOG_HEADER
 #define __HAVE_ADDDIALOG_HEADER
 
-#include "menueditor.h"
-
+/* Structure */
 struct _controls_add{
   enum {LAUNCHER, SUBMENU, SEPARATOR, TITLE, INCLUDE, QUIT} entry_type;
   GtkWidget *label_name;
@@ -35,7 +34,7 @@ struct _controls_add{
   GtkWidget *browse_button2;
 };
 
-
+/* Prototype */
 void add_entry_cb(GtkWidget *widget, gpointer data);
 
 #endif

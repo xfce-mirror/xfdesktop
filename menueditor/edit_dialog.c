@@ -18,6 +18,8 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+#include "menueditor.h"
+
 #include "edit_dialog.h"
 
 void editmenu_option_file_cb (GtkWidget *widget, struct _controls_menu *controls)
