@@ -693,7 +693,7 @@ background_init (XfceDesktop * xfdesktop)
 				create_pixmap (background, NULL), FALSE);
 
     /* connect callback for settings changes */
-    register_channel_callback (BACKDROP_CHANNEL,
+    register_channel_callback (xfdesktop, BACKDROP_CHANNEL,
 			       (ChannelCallback) update_backdrop_channel);
 
     init_settings = TRUE;
