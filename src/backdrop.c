@@ -332,7 +332,7 @@ static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style,
 static void set_backdrop(const char *path, int style, int show, GdkColor *color)
 {
     GtkStyle *gstyle;
-    GdkPixmap *pixmap;
+    GdkPixmap *pixmap = NULL;
     GdkPixbuf *pixbuf = NULL;
     GError *error = NULL;
 
@@ -369,13 +369,13 @@ static void set_backdrop(const char *path, int style, int show, GdkColor *color)
     }
 
     /* Also update root window property (for transparent xterms, etc) */
-    if(gstyle->bg_pixmap[GTK_STATE_NORMAL])
+    if(pixmap)
     {
-        XID id = GDK_DRAWABLE_XID(gstyle->bg_pixmap[GTK_STATE_NORMAL]);
+        XID id = GDK_DRAWABLE_XID(pixmap);
         gdk_property_change(gdk_get_default_root_window(),
                             gdk_atom_intern("_XROOTPMAP_ID", FALSE),
                             gdk_atom_intern("PIXMAP", FALSE),
-                            32, GDK_PROP_MODE_REPLACE, (guchar *) & id, 1);
+                            32, GDK_PROP_MODE_REPLACE, (guchar *) &id, 1);
     }
     else
     {
