@@ -35,7 +35,7 @@
 #define _(x) x
 #define N_(x) x
 
-#define BORDER 6
+#define BORDER 5
 
 void create_channel(McsManager *manager, const char *channel, 
 		    const char *rcfile);

@@ -495,7 +495,7 @@ static void run_dialog(McsPlugin *plugin )
 	return;
     }
 
-    dialog = gtk_dialog_new_with_buttons(_("Workspace settings"),NULL,
+    dialog = gtk_dialog_new_with_buttons(_("Workspaces"),NULL,
 	    				 GTK_DIALOG_NO_SEPARATOR,
 					 GTK_STOCK_CLOSE, GTK_RESPONSE_OK,
 					 NULL);
@@ -527,7 +527,7 @@ static void run_dialog(McsPlugin *plugin )
 
     /* Number of workspaces */
     frame = gtk_frame_new(_("Workspaces"));
-    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER-1);
+    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, FALSE, FALSE, 0);
     
@@ -540,7 +540,7 @@ static void run_dialog(McsPlugin *plugin )
 
     /* Workspace names */
     frame = gtk_frame_new(_("Workspace names"));
-    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER-1);
+    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
     

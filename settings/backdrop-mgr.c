@@ -130,25 +130,22 @@ static void read_file(const char *filename, ListDialog *ld)
 
     if (!g_file_get_contents(filename, &contents, NULL, &error))
     {
-	char msg[1024];
-
-	sprintf(msg, _("Could not read file %s:\n\n%s"),
-		filename, error->message);
-
-	show_error(msg);
+	show_error(error->message);
+	g_error_free(error);
 	
 	return;
     }
 
     if (strncmp(LIST_TEXT, contents, strlen(LIST_TEXT)) != 0)
     {
-	char msg[1024];
+	char *msg;
 
 	g_free(contents);
 
-	sprintf(msg,_("Not a backdrop list file: %s\n"), filename);
+	msg = g_strdup_printf(_("Not a backdrop list file: %s\n"), filename);
 	
 	show_error(msg);
+	g_free(msg);
 	
 	return;
     }
@@ -174,15 +171,15 @@ static gboolean save_list_file(ListDialog *ld)
     
     if (!fp)
     {
-	char message[1024];
+	char *message;
 
-	sprintf(message, 
-		_("Could not save file %s.\n\n"
-		  "Please choose another location or press "
-		  "cancel in the dialog to discard your changes"), 
-		ld->filename);
+	message = g_strdup_printf(_("Could not save file %s.\n\n"
+		  	"Please choose another location or press "
+		  	"cancel in the dialog to discard your changes"), 
+			ld->filename);
 	
 	show_error(message);
+	g_free(message);
 
 	return FALSE;
     }
@@ -575,7 +572,7 @@ static void list_mgr_dialog(const char *title, GtkWidget *parent,
     
     ld->last_dir = g_build_filename(DATADIR, "xfce4", "backdrops/", NULL);
     
-    dialog = gtk_dialog_new_with_buttons(_("Backdrop list manager"), 
+    dialog = gtk_dialog_new_with_buttons(_("Backdrop List"), 
 	    				 GTK_WINDOW(parent),
 	    				 GTK_DIALOG_NO_SEPARATOR, 
 					 NULL);
@@ -610,7 +607,7 @@ static void list_mgr_dialog(const char *title, GtkWidget *parent,
     gtk_widget_set_size_request(header, -1, 50);
 
     frame = gtk_frame_new(_("Image files"));
-    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER-1);
+    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
     
@@ -624,7 +621,7 @@ static void list_mgr_dialog(const char *title, GtkWidget *parent,
     add_list_buttons(vbox, ld);
 
     frame = gtk_frame_new(_("List file"));
-    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER-1);
+    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, FALSE, FALSE, 0);
     

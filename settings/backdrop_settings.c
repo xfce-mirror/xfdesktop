@@ -591,7 +591,7 @@ browse_cb (GtkWidget * b, BackdropDialog * bd)
     if (fs)
 	gtk_window_present(GTK_WINDOW(fs));
     
-    title = _("Select backdrop image or list file");
+    title = _("Select background image or list file");
     fs = GTK_FILE_SELECTION(preview_file_selection_new (title, TRUE));
     
     gtk_file_selection_hide_fileop_buttons(fs);
@@ -789,11 +789,13 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
     bd->plugin = mcs_plugin;
 
     /* the dialog */
-    bd->dialog = gtk_dialog_new_with_buttons(_("Backdrop preferences"), NULL,
+    bd->dialog = gtk_dialog_new_with_buttons(_("Background"), NULL,
                                              GTK_DIALOG_NO_SEPARATOR, 
 					     GTK_STOCK_CLOSE,
 					     GTK_RESPONSE_OK,
 					     NULL);
+
+    gtk_dialog_set_default_response(GTK_DIALOG(bd->dialog), GTK_RESPONSE_OK);
 
     gtk_window_set_position(GTK_WINDOW(bd->dialog), GTK_WIN_POS_CENTER);
 
@@ -804,14 +806,14 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
     mainvbox = GTK_DIALOG(bd->dialog)->vbox;
     
     /* header */
-    header = create_header(bd->plugin->icon, _("Background settings"));
+    header = create_header(bd->plugin->icon, _("Background Settings"));
     gtk_box_pack_start(GTK_BOX(mainvbox), header, FALSE, TRUE, 0);
 
     add_spacer(GTK_BOX(mainvbox));
 
     /* color */
     frame = gtk_frame_new(_("Color"));
-    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER-1);
+    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
     
@@ -824,7 +826,7 @@ static GtkWidget *create_backdrop_dialog(McsPlugin * mcs_plugin)
 
     /* image vbox */
     frame = gtk_frame_new(_("Image"));
-    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER-1);
+    gtk_container_set_border_width(GTK_CONTAINER(frame), BORDER);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(mainvbox), frame, TRUE, TRUE, 0);
     
