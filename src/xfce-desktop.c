@@ -181,7 +181,8 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 	GdkScreen *gscreen;
 	GdkRectangle rect;
 	GdkEventExpose evt;
-	XID xid;
+	Pixmap xid;
+	GdkWindow *groot;
 	
 	TRACE("dummy");
 	
@@ -249,14 +250,24 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 			return;
 	}
 	
-	/* set root property */
 	xid = GDK_DRAWABLE_XID(pmap);
+	groot = gdk_screen_get_root_window(XFCE_DESKTOP(desktop)->priv->gscreen);
 	gdk_error_trap_push();
-	gdk_property_change(
-			gdk_screen_get_root_window(XFCE_DESKTOP(desktop)->priv->gscreen),
+	
+	/* set root property for transparent Eterms */
+	gdk_property_change(groot,
 			gdk_atom_intern("_XROOTPMAP_ID", FALSE),
 			gdk_atom_intern("PIXMAP", FALSE), 32,
 			GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
+	/* set this other property because someone might need it sometime. */
+	gdk_property_change(groot,
+			gdk_atom_intern("ESETROOT_PMAP_ID", FALSE),
+			gdk_atom_intern("PIXMAP", FALSE), 32,
+			GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
+	/* and set the root window's BG pixmap, because aterm is somewhat lame. */
+	XSetWindowBackgroundPixmap(GDK_DISPLAY(), GDK_WINDOW_XID(groot), xid);
+	/* there really should be a standard for this crap... */
+	
 	gdk_error_trap_pop();
 	
 	/* clear the old pixmap, if any */
