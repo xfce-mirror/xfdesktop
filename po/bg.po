@@ -1,0 +1,202 @@
+# Bulgarian translation of PACKAGE.
+# Copyright (C) 2004 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Miroslav Yordanov <miordanov@i-space.org>, 2004.
+# , fuzzy
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-01-04 23:11+0100\n"
+"PO-Revision-Date: 2004-03-09 19:00+0200\n"
+"Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
+"Language-Team: Bulgarian <bg@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#: settings/backdrop-mgr.c:175
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"Не мога да запазя файл·%s:·%s\n"
+"\n"
+"Моля изберете друго място или отказ в диалога за да откажете вашите промени"
+
+#: settings/backdrop-mgr.c:510
+msgid "Select image file"
+msgstr "Изберте файл с картинка"
+
+#: settings/backdrop-mgr.c:622
+msgid "Choose backdrop list filename"
+msgstr "Избира име на файл с фонове"
+
+#: settings/backdrop-mgr.c:694
+msgid "New.list"
+msgstr "Нов списък"
+
+#: settings/backdrop-mgr.c:698
+msgid "Backdrop List"
+msgstr "Списък с фонове"
+
+#: settings/backdrop-mgr.c:734
+msgid "Image files"
+msgstr "Файлове с картинки"
+
+#: settings/backdrop-mgr.c:749
+msgid "List file"
+msgstr "Списък"
+
+#: settings/backdrop-mgr.c:767
+msgid "Create backdrop list"
+msgstr "Създава списък с фонове"
+
+#: settings/backdrop-mgr.c:774
+msgid "Edit backdrop list"
+msgstr "Редактира списъка с фонове"
+
+#: settings/backdrop_settings.c:156
+msgid "Desktop: backdrop"
+msgstr "Десктоп: фон"
+
+#: settings/backdrop_settings.c:357
+msgid "Select background color"
+msgstr "Избор на цвят на фона"
+
+#: settings/backdrop_settings.c:407
+msgid "Background color:"
+msgstr "Цвят на фона:"
+
+#: settings/backdrop_settings.c:437
+msgid "Use color only:"
+msgstr "Използва само цвят: "
+
+#: settings/backdrop_settings.c:563
+msgid "File:"
+msgstr "Файл:"
+
+#: settings/backdrop_settings.c:624
+msgid "Select background image or list file"
+msgstr "Избор на изображение или списък"
+
+#: settings/backdrop_settings.c:701
+msgid "_Browse..."
+msgstr "Разглежда..."
+
+#: settings/backdrop_settings.c:705
+msgid "New list"
+msgstr "Нов списък"
+
+#: settings/backdrop_settings.c:709
+msgid "Edit list"
+msgstr "Редактира списък"
+
+#: settings/backdrop_settings.c:747
+msgid "Style:"
+msgstr "Стил:"
+
+#: settings/backdrop_settings.c:755
+msgid "_Tiled"
+msgstr "Керемиден"
+
+#: settings/backdrop_settings.c:761
+msgid "_Scaled"
+msgstr "Пропорционален"
+
+#: settings/backdrop_settings.c:768
+msgid "_Centered"
+msgstr "Центриран"
+
+#: settings/backdrop_settings.c:775
+msgid "_Auto"
+msgstr "Автоматичен"
+
+#. the dialog
+#: settings/backdrop_settings.c:801
+msgid "Background"
+msgstr "Фон"
+
+#. header
+#: settings/backdrop_settings.c:819
+msgid "Background Settings"
+msgstr "Настройки за фона"
+
+#. color
+#: settings/backdrop_settings.c:825
+msgid "Color"
+msgstr "Цвят"
+
+#. image vbox
+#: settings/backdrop_settings.c:837
+msgid "Image"
+msgstr "Изображение"
+
+#: settings/workspaces_settings.c:85
+msgid "Desktop: workspaces"
+msgstr "Десктоп: работни места"
+
+#: settings/workspaces_settings.c:335
+msgid "Change name"
+msgstr "Промяна на името"
+
+#: settings/workspaces_settings.c:346
+#, c-format
+msgid "Workspace %d"
+msgstr "Работно място %d"
+
+#: settings/workspaces_settings.c:356
+msgid "Name:"
+msgstr "Име:"
+
+#: settings/workspaces_settings.c:467
+msgid "Click on a workspace name to edit it"
+msgstr "Натиснете върху името за да го редактирате"
+
+#: settings/workspaces_settings.c:498
+msgid "Number of workspaces:"
+msgstr "Брой работни места:"
+
+#. Number of workspaces
+#: settings/workspaces_settings.c:534 settings/workspaces_settings.c:564
+msgid "Workspaces"
+msgstr "Работни места"
+
+#: settings/workspaces_settings.c:557
+msgid "Workspace Settings"
+msgstr "Настройки на работните места"
+
+#. Workspace names
+#: settings/workspaces_settings.c:576
+msgid "Workspace names"
+msgstr "Имена на работните места"
+
+#: src/backdrop.c:487
+#, c-format
+msgid "xfdesktop error: loading backdrop image: %s\n"
+msgstr "xfdesktop·грешка:·зареждане на фоново изображение:·%s\n"
+
+#: src/main.c:250
+msgid "Desktop"
+msgstr "Работно Място"
+
+#: src/menu.c:736
+msgid "Add workspace"
+msgstr "Добавяне на работно място"
+
+#: src/menu.c:743
+msgid "Delete workspace"
+msgstr "Изтрива работно място"
+
+#: src/settings.c:186
+msgid ""
+"xfdesktop: could not connect to settings manager!Please check your "
+"installation."
+msgstr ""
+"xfdesktop:·не мога да се свържа с мениджъра за настройки! Моля проверете вашата инсталация."
+
