@@ -281,7 +281,6 @@ menueditor_markup_printf_escaped (const char *format, ...)
   char *result;
   va_list args;
 
-  DBG ("using the embedded version of menueditor_markup_printf_escaped ()");
   va_start (args, format);
   result = menueditor_markup_vprintf_escaped (format, args);
   va_end (args);
