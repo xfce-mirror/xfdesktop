@@ -668,7 +668,7 @@ background_init (XfceDesktop * xfdesktop)
     background->root = xfdesktop->root;
 
     background->atom = XInternAtom (xfdesktop->dpy, "_XROOTPMAP_ID", False);
-    background->atom =
+    background->e_atom =
 	XInternAtom (xfdesktop->dpy, "ESETROOT_PMAP_ID", False);
 
     background->win = xfdesktop->fullscreen;
