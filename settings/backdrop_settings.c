@@ -37,6 +37,7 @@
 #include <gdk/gdkx.h>
 #include <X11/Xlib.h>
 
+#include <libxfce4util/util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "backdrop_settings.h"
@@ -131,10 +132,9 @@ McsPluginInitResult mcs_plugin_init(McsPlugin * mcs_plugin)
 static void backdrop_create_channel(McsPlugin * mcs_plugin)
 {
     McsSetting *setting;
-    const gchar *home = g_get_home_dir();
-    gchar *rcfile = g_build_filename(home, ".xfce4", "settings",
-                                     RCFILE, NULL);
+    gchar *rcfile;
 
+    rcfile = xfce_get_userfile("settings", RCFILE, NULL);
     mcs_manager_add_channel_from_file(mcs_plugin->manager, BACKDROP_CHANNEL, 
 	    			      rcfile);
     g_free(rcfile);
@@ -207,10 +207,10 @@ static void backdrop_create_channel(McsPlugin * mcs_plugin)
 
 static gboolean backdrop_write_options(McsPlugin * mcs_plugin)
 {
-    const gchar *home = g_get_home_dir();
-    gchar *rcfile = g_build_filename(home, ".xfce4", "settings", RCFILE, NULL);
+    gchar *rcfile;
     gboolean result;
 
+    rcfile = xfce_get_userfile("settings", RCFILE, NULL);
     result = mcs_manager_save_channel_to_file(mcs_plugin->manager,
                                               BACKDROP_CHANNEL, rcfile);
     g_free(rcfile);

@@ -13,3 +13,5 @@ distclean-local:
 rpm: dist
 	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
 	@rm -f $(PACKAGE)-$(VERSION).tar.gz
+
+ACLOCAL_AMFLAGS = -I m4

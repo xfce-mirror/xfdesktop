@@ -15,7 +15,17 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-*/
+ */
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <sys/stat.h>
+#include <sys/types.h>
+
+#include <errno.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -47,13 +57,12 @@ static gboolean is_backdrop_list(const char *path)
     gboolean is_list = FALSE;
 
     TRACE();
-    size = strlen (LIST_TEXT);
-    fp = fopen (path, "r");
+    size = sizeof(LIST_TEXT);
 
-    if (!fp)
-	return FALSE;
+    if ((fp = fopen(path, "r")) == NULL)
+	    return FALSE;
 
-    if (fgets (buf, size + 1, fp) && strncmp(LIST_TEXT, buf, size) == 0)
+    if (fgets (buf, size, fp) && strncmp(LIST_TEXT, buf, size - 1) == 0)
       is_list = TRUE;
     
     fclose (fp);
@@ -191,89 +200,120 @@ void backdrop_load_settings(McsClient *client)
 }
 
 /* setting the background */
-static char **get_list_from_file(const char *listfile)
+static char **
+get_list_from_file(const char *filename)
 {
-    char *contents, *s1;
-    GError *error = NULL;
-    char **files = NULL;
-    gchar *message = NULL;
+    gchar *contents;
+    struct stat sb;
+    gchar **files;
+    int fd;
 
-    TRACE();
-    if (!g_file_get_contents(listfile, &contents, NULL, &error))
-    {
-	message = g_strconcat("xfdesktop error: reading backdrop list file:\n", error->message, NULL);
-	show_error(message);	  
-	
-	return NULL;
+    files = NULL;
+
+#ifdef O_SHLOCK
+    if ((fd = open(filename, O_RDONLY | O_SHLOCK, 0)) < 0) {
+#else
+    if ((fd = open(filename, O_RDONLY, 0)) < 0) {
+#endif
+        xfce_err(_("Unable to open file %s: %s"), filename, g_strerror(errno));
+        return(NULL);
     }
 
-    if (strncmp(LIST_TEXT, contents, strlen(LIST_TEXT)) != 0)
-    {
-	g_free(contents);
-	message = g_strconcat("xfdesktop error: not a backdrop list file:\n", listfile, NULL);
-	show_error(message);	  
-	
-	return NULL;
+    if (fstat(fd, &sb) < 0) {
+        xfce_err(_("Unable to stat %s: %s"), filename, g_strerror(errno));
+        goto finished;
     }
 
-    s1 = contents + strlen(LIST_TEXT) + 1;
-        
-    files = g_strsplit(s1, "\n", -1);
-    g_free(contents);
-    g_free(message);    
+    if ((contents = malloc((size_t)sb.st_size + 1)) == NULL) {
+        xfce_err(_("Unable to allocate %u bytes of memory: %s"),
+                (unsigned)sb.st_size, g_strerror(errno));
+        goto finished;
+    }
 
-    return files;
+    if (read(fd, contents, sb.st_size) < sb.st_size) {
+        xfce_err(_("Unable to read contents of %s into buffer: %s"),
+                filename, g_strerror(errno));
+        goto finished2;
+    }
+
+    if (strncmp(LIST_TEXT, contents, sizeof(LIST_TEXT) - 1) != 0) {
+        xfce_err(_("Not a backdrop list file: %s"), filename);
+        goto finished2;
+    }
+
+    contents[sb.st_size] = '\0';
+
+    files = g_strsplit(contents + sizeof(LIST_TEXT), "\n", -1);
+
+finished2:
+    free(contents);
+
+finished:
+    (void)close(fd);
+
+    return(files);
 }
 
-static int count_elements(char **list)
+static int
+count_elements(char **list)
 {
     char **c;
-    int n = 0;
 
     TRACE();
     for (c = list; *c; c++)
-	n++;
+        ;
 
-    return n;
+    return(c - list);
 }
 
-static char *get_path_from_listfile(const char *listfile)
+static char *
+get_path_from_listfile(const char *listfile)
 {
+    static gboolean __initialized = FALSE;
     static char *prevfile = NULL;
-    static int prevnumber = -1;
     static char **files = NULL;
-    int i, n;
+    int n;
 
     TRACE();
-    if (!listfile)
-    {
-	g_free(prevfile);
-	prevfile = NULL;
-	return NULL;
+
+    if (!listfile) {
+	    g_free(prevfile);
+	    prevfile = NULL;
+	    return(NULL);
     }
 
-    if (!prevfile || strcmp(listfile, prevfile) != 0)
-    {
-	g_strfreev(files);
-	g_free(prevfile);
-	prevnumber = -1;
+    if (!prevfile || strcmp(listfile, prevfile) != 0) {
+	    g_strfreev(files);
+	    g_free(prevfile);
 	
-	prevfile = g_strdup(listfile);
-	files = get_list_from_file(listfile);
+	    prevfile = g_strdup(listfile);
+	    files = get_list_from_file(listfile);
     }
     
     n = count_elements(files);
 
-    if (n == 0)
-	return NULL;
+    switch (n) {
+    case 0:
+	    return(NULL);
 
-    if (n == 1)
-	return files[0];
-    
-    srand (time (0));
-    i = rand () % n;
+    case 1:
+        return(*files);
+    }
 
-    return files[i];
+    /* NOTE: 4.3BSD random()/srandom() are a) stronger and b) faster than
+     * ANSI-C rand()/srand(). So we use random() if available
+     */
+#ifdef HAVE_SRANDOM
+    if (!__initialized)
+        srandom(time(NULL));
+    n = random() % n;
+#else
+    if (!__initialized)
+        srand (time (NULL));
+    n = rand () % n;
+#endif
+
+    return(files[n]);
 }
 
 static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style, GdkColor *color)
@@ -375,12 +415,12 @@ static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style, GdkColo
 /* The code below is initially based on ROX Filer
  * (c) by Thomas Leonard. See http://rox.sf.net.
  */
-static void set_backdrop(const char *path, int style, int show, GdkColor *color)
+static void
+set_backdrop(const char *path, int style, int show, GdkColor *color)
 {
+    GdkPixmap *pixmap;
+    GdkPixbuf *pixbuf;
     GtkStyle *gstyle;
-    GdkPixmap *pixmap = NULL;
-    GdkPixbuf *pixbuf = NULL;
-    gchar *message = NULL;
 
     /* This call is used to free any previous allocated pixmap */
     gtk_widget_set_style(fullscreen_window, NULL);
@@ -389,36 +429,30 @@ static void set_backdrop(const char *path, int style, int show, GdkColor *color)
     if (show && path && *path)
     {
         GError *error = NULL;
-	if (is_backdrop_list(path))
-	{
-	    char *realpath = get_path_from_listfile(path);
+	    
+        if (is_backdrop_list(path))	{
+	        path = get_path_from_listfile(path);
+            style = AUTO;
+	    }
 
-	    set_backdrop(realpath, AUTO, show, color);
-	    return;
-	}
-	pixbuf = gdk_pixbuf_new_from_file(path, &error);
-	if(error)
-	{
-	    message = g_strconcat("xfdesktop error: loading backdrop image:\n", error->message, NULL);
-	    show_error(message);	  
+        pixbuf = gdk_pixbuf_new_from_file(path, &error);
 
-	    g_free(message); 
-	    g_error_free(error);
-	    pixbuf = NULL;
-	}
+        if(error) {
+	        xfce_err(_("xfdesktop error: loading backdrop image: %s\n"),
+                    error->message);
+
+    	    g_error_free(error);
+	        pixbuf = NULL;
+    	}
     }
     else
-    {
         pixbuf = NULL;
-    }
     
     pixmap = create_background_pixmap(pixbuf, style, color);
 
     /* Now we can safely free the pixbuf */
     if (pixbuf)
-    {
         g_object_unref(pixbuf);
-    }
     
     if(pixmap)
     {

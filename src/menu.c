@@ -18,13 +18,16 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#include <stdio.h>
-#include <string.h>
 #include <sys/stat.h>
 
-#include <X11/Xlib.h>
 #include <assert.h>
+#include <stdio.h>
+#include <string.h>
+
+#include <X11/Xlib.h>
 #include <libxml/parser.h>
+
+#include <libxfce4util/util.h>
 
 #include "main.h"
 #include "menu.h"
@@ -146,38 +149,29 @@ void do_edit(gpointer callback_data, guint callback_action, GtkWidget * widget)
     MainMenuData = NULL;
 }
 
-char *get_menu_file(void)
+static gchar *
+get_menu_file(void)
 {
     char *filename = NULL;
-    const char *env = NULL;
+    const char *env;
 
     TRACE();
     env = g_getenv("XFCE_DISABLE_USER_CONFIG");
 
-    if(!env || strcmp(env, "0"))
-    {
-        filename =
-            g_build_filename(g_get_home_dir(), ".xfce4", "menu.xml", NULL);
-        if(g_file_test(filename, G_FILE_TEST_EXISTS))
-        {
-            return filename;
+    if(!env || strcmp(env, "0")) {
+        filename = xfce_get_userfile("menu.xml", NULL);
 
-        }
+        if(g_file_test(filename, G_FILE_TEST_EXISTS))
+            return filename;
         else
-        {
             g_free(filename);
-        }
     }
 
     filename = g_build_filename(SYSCONFDIR, "xfce4", "menu.xml", NULL);
     if(g_file_test(filename, G_FILE_TEST_EXISTS))
-    {
         return filename;
-    }
     else
-    {
         g_free(filename);
-    }
 
     g_warning("%s: Could not locate a menu definition file", PACKAGE);
 
@@ -432,8 +426,7 @@ static GtkWidget *create_desktop_menu(void)
         filename = get_menu_file();
     
     /* may have been removed */
-    if (!stat(filename, &st))
-    {
+    if (stat(filename, &st) < 0) {
         g_free(filename);
         filename = get_menu_file();
         ctime = 0;

@@ -21,57 +21,40 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <libxfce4util/util.h>
+
 #include "settings_common.h"
 
-void create_channel(McsManager *manager, const char *channel, 
-		    const char *rcfile)
+void
+create_channel(McsManager *manager, const char *channel, const char *rcfile)
 {
-    const gchar *home = g_get_home_dir();
     char *homefile, *sysfile;
 
-    homefile = g_build_filename(home, ".xfce4", "settings", rcfile, NULL);
+    homefile = xfce_get_userfile("settings", rcfile, NULL);
     sysfile = g_build_filename(DATADIR, "xfce4", "settings", rcfile, NULL);
     
     if (g_file_test(homefile, G_FILE_TEST_EXISTS))
-    {
-	mcs_manager_add_channel_from_file(manager, channel, homefile);
-    }
+	    mcs_manager_add_channel_from_file(manager, channel, homefile);
     else if (g_file_test(sysfile, G_FILE_TEST_EXISTS))
-    {
-	mcs_manager_add_channel_from_file(manager, channel, sysfile);
-    }
+        mcs_manager_add_channel_from_file(manager, channel, sysfile);
     else
-    {
-	mcs_manager_add_channel(manager, channel);
-    }
+	    mcs_manager_add_channel(manager, channel);
     
     g_free(homefile);
     g_free(sysfile);
 }
 
-gboolean save_channel(McsManager *manager, const char *channel, 
-		       const char *rcfile)
+gboolean
+save_channel(McsManager *manager, const char *channel, const char *rcfile)
 {
-    const char *home = g_get_home_dir();
-    char *homefile, *dir;
     gboolean result;
+    char *homefile;
 
-    dir = g_build_filename(home, ".xfce4", "settings", NULL);
-    homefile = g_build_filename(dir, rcfile, NULL);
+    homefile = xfce_get_userfile("settings", rcfile, NULL);
     
-    if (!g_file_test(dir, G_FILE_TEST_EXISTS))
-    {
-	char cmd[512];
-
-	sprintf(cmd, "mkdir -p %s", dir);
-	
-	system(cmd);
-    }
-		
     result = mcs_manager_save_channel_to_file(manager, channel, homefile);
     
     g_free(homefile);
-    g_free(dir);
 
     return result;
 }

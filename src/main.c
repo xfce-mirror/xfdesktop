@@ -84,10 +84,9 @@ static gboolean client_message_received(GtkWidget *widget,
 					gpointer user_data)
 {
     TRACE();
-    if (event->data_format == 8 && strcmp(event->data.b, RELOAD_MESSAGE) == 0)
-    {
-	load_settings();
-	return TRUE;
+    if (event->data_format == 8 && strcmp(event->data.b, RELOAD_MESSAGE) == 0) {
+	    load_settings();
+	    return TRUE;
     }
     
     return FALSE;
@@ -281,11 +280,10 @@ int main(int argc, char **argv)
     TRACE();
     gtk_init(&argc, &argv);
     
-    if (check_is_running(&xid))
-    {
-	send_client_message(xid);
+    if (check_is_running(&xid)) {
+	    send_client_message(xid);
 /*	g_message("xfdesktop: already running\n");*/
-	return 0;
+	    return 0;
     }
 
     /* use POSIX signal handling */

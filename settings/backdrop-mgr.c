@@ -15,12 +15,21 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-*/
+ */
 
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <sys/stat.h>
+#include <sys/types.h>
+
+#include <errno.h>
+#include <fcntl.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
 #include "settings_common.h"
 #include "backdrop_settings.h"
@@ -36,7 +45,7 @@ gboolean is_backdrop_list(const char *path)
     int size;
     gboolean is_list = FALSE;
 
-    size = strlen(LIST_TEXT);
+    size = sizeof(LIST_TEXT) - 1;
     fp = fopen(path, "r");
 
     if(!fp)
@@ -75,19 +84,14 @@ static gboolean check_image(const char *path)
 
     tmp = gdk_pixbuf_new_from_file(path, &error);
 
-    if (error)
-    {
-	char msg[512];
+    if (error) {
+	    g_warning("Could not create image from file %s: %s\n", path,
+                error->message);
 
-	sprintf(msg, "Could not create image from file %s:\n%s",
-		path, error->message);
-
-	return FALSE;
+	    return FALSE;
     }
     else
-    {
-	return TRUE;
-    }
+	    return TRUE;
 }
 
 static void add_file(const char *path, ListDialog *ld)
@@ -96,7 +100,7 @@ static void add_file(const char *path, ListDialog *ld)
     GtkTreeIter iter;
 
     if (!check_image(path))
-	return;
+        return;
     
     ld->changed = TRUE;
     
@@ -115,105 +119,119 @@ static void remove_file(ListDialog *ld)
     gtk_widget_grab_focus(ld->treeview);
     
     select = gtk_tree_view_get_selection (GTK_TREE_VIEW (ld->treeview));
+
     if (gtk_tree_selection_get_selected (select, &model, &iter))
-    {
-	gtk_list_store_remove(GTK_LIST_STORE(model), &iter);
-    }
+	    gtk_list_store_remove(GTK_LIST_STORE(model), &iter);
 }
 
 /* reading and writing files */
-static void read_file(const char *filename, ListDialog *ld)
+static void
+read_file(const char *filename, ListDialog *ld)
 {
-    char *contents, *s1;
-    GError *error = NULL;
-    char **f, **files;
+    gchar *contents;
+    struct stat sb;
+    gchar **files;
+    gchar **file;
+    int fd;
 
-    if (!g_file_get_contents(filename, &contents, NULL, &error))
-    {
-	show_error(error->message);
-	g_error_free(error);
-	
-	return;
+#ifdef O_SHLOCK
+    if ((fd = open(filename, O_RDONLY | O_SHLOCK, 0)) < 0) {
+#else
+    if ((fd = open(filename, O_RDONLY, 0)) < 0) {
+#endif
+        xfce_err(_("Unable to open file %s: %s"), filename, g_strerror(errno));
+        return;
     }
 
-    if (strncmp(LIST_TEXT, contents, strlen(LIST_TEXT)) != 0)
-    {
-	char *msg;
-
-	g_free(contents);
-
-	msg = g_strdup_printf(_("Not a backdrop list file: %s\n"), filename);
-	
-	show_error(msg);
-	g_free(msg);
-	
-	return;
+    if (fstat(fd, &sb) < 0) {
+        xfce_err(_("Unable to stat %s: %s"), filename, g_strerror(errno));
+        goto finished;
     }
 
-    s1 = contents + strlen(LIST_TEXT) + 1;
-        
-    files = g_strsplit(s1, "\n", -1);
-
-    for (f = files; *f; f++)
-    {
-	add_file(*f, ld);
+    if ((contents = malloc((size_t)sb.st_size + 1)) == NULL) {
+        xfce_err(_("Unable to allocate %u bytes of memory: %s"),
+                (unsigned)sb.st_size, g_strerror(errno));
+        goto finished;
     }
+
+    if (read(fd, contents, sb.st_size) < sb.st_size) {
+        xfce_err(_("Unable to read contents of %s into buffer: %s"),
+                filename, g_strerror(errno));
+        goto finished2;
+    }
+
+    contents[sb.st_size] = '\0';
+
+    if (strncmp(LIST_TEXT, contents, sizeof(LIST_TEXT) - 1) != 0) {
+        xfce_err(_("Not a backdrop list file: %s\n"), filename);
+        goto finished2;
+    }
+
+    files = g_strsplit(contents + sizeof(LIST_TEXT), "\n", -1);
+
+    for (file = files; *file != NULL; file++)
+	    add_file(*file, ld);
 
     g_strfreev(files);
+
+finished2:
+    free(contents);
+
+finished:
+    (void)close(fd);
 }
 
-static gboolean save_list_file(ListDialog *ld)
+static gboolean
+save_list_file(ListDialog *ld)
 {
-    FILE *fp;
+    GtkTreeModel *model;
+    GtkTreeIter iter;
     char *file;
+    FILE *fp;
+    int fd;
 
-    fp = fopen(ld->filename, "w");
-    
-    if (!fp)
-    {
-	char *message;
-
-	message = g_strdup_printf(_("Could not save file %s.\n\n"
-		  	"Please choose another location or press "
-		  	"cancel in the dialog to discard your changes"), 
-			ld->filename);
-	
-	show_error(message);
-	g_free(message);
-
-	return FALSE;
+#ifdef O_EXLOCK
+    if ((fd = open(ld->filename,O_CREAT|O_EXLOCK|O_TRUNC|O_WRONLY,S_IRWXU))<0) {
+#else
+    if ((fd = open(ld->filename, O_CREAT | O_TRUNC | O_WRONLY, S_IRWXU)) < 0) {
+#endif
+	    xfce_err(_("Could not save file %s: %s\n\n"
+		      	   "Please choose another location or press "
+		  	       "cancel in the dialog to discard your changes"), 
+    			   ld->filename, g_strerror(errno));
+	    return(FALSE);
     }
-    else
-    {
-	GtkTreeIter iter;
-	GtkTreeModel *model = 
-	    gtk_tree_view_get_model(GTK_TREE_VIEW(ld->treeview));
 
-	fprintf(fp, "%s\n", LIST_TEXT);
-
-	if (!gtk_tree_model_get_iter_first(model, &iter))
-	{
-	    fclose(fp);
-	    return TRUE;
-	}
-	else
-	{
-	    gtk_tree_model_get(model, &iter, 0, &file, -1);
-	    fprintf(fp, "%s", file);
-	    g_free(file);
-	}
-	
-	while (gtk_tree_model_iter_next(model, &iter))
-	{
-	    gtk_tree_model_get(model, &iter, 0, &file, -1);
-	    fprintf(fp, "\n%s", file);
-	    g_free(file);
-	}
-
-	fclose(fp);
-	
-	return TRUE;
+    if ((fp = fdopen(fd, "w")) == NULL) {
+        g_warning("Unable to fdopen(%s). This should not happen!\n",
+                ld->filename);
+        (void)close(fd);
+        return(FALSE);
     }
+
+    model = gtk_tree_view_get_model(GTK_TREE_VIEW(ld->treeview));
+
+    fprintf(fp, "%s\n", LIST_TEXT);
+
+    if (!gtk_tree_model_get_iter_first(model, &iter)) {
+        fclose(fp);
+        return TRUE;
+    }
+    else {
+        gtk_tree_model_get(model, &iter, 0, &file, -1);
+        fprintf(fp, "%s", file);
+        g_free(file);
+    }
+	
+    while (gtk_tree_model_iter_next(model, &iter)) {
+        gtk_tree_model_get(model, &iter, 0, &file, -1);
+        fprintf(fp, "\n%s", file);
+        g_free(file);
+    }
+
+    (void)fclose(fp);
+	
+    return TRUE;
 }
 
 /* dialog response */
