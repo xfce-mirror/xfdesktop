@@ -12,6 +12,7 @@ conf_DATA = 								\
 	menu.xml.nl  							\
 	menu.xml.ca 							\
 	menu.xml.hu 							\
+	menu.xml.it 							\
 	menu.xml.ta 							\
 	menu.xml.tr 							\
 	menu.xml.vi 							\
