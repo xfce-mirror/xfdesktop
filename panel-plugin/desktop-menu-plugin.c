@@ -41,6 +41,7 @@ typedef struct _DMPlugin {
 	GtkWidget *button;
 	XfceDesktopMenu *desktop_menu;
 	gchar *icon_file;
+	gboolean show_menu_icons;
 	
 	GtkWidget *entry;  /* FIXME */
 } DMPlugin;
@@ -140,11 +141,8 @@ dmp_create(Control *c)
 {
 	DMPlugin *dmp;
 	
-	if(!menu_gmod) {
-		menu_gmod = xfce_desktop_menu_stub_init();
-		if(!menu_gmod)
-			return FALSE;
-	}
+	if(!menu_gmod)
+		return FALSE;
 
 	dmp = dmp_new();
 	gtk_container_add(GTK_CONTAINER(c->base), dmp->evtbox);
@@ -182,6 +180,17 @@ dmp_read_config(Control *control, xmlNodePtr node)
 		if(pix)
 			xfce_iconbutton_set_pixbuf(XFCE_ICONBUTTON(dmp->button), pix);
 	}
+	
+	value = xmlGetProp(node, (const xmlChar *)"show_menu_icons");
+	if(value) {
+		if(*value == '0')
+			dmp->show_menu_icons = FALSE;
+		else
+			dmp->show_menu_icons = TRUE;
+		if(dmp->desktop_menu)
+			xfce_desktop_menu_set_show_icons(dmp->desktop_menu, dmp->show_menu_icons);
+		xmlFree(value);
+	}
 }
 
 static void
@@ -190,6 +199,7 @@ dmp_write_config(Control *control, xmlNodePtr node)
 	DMPlugin *dmp = control->data;
 	
 	xmlSetProp(node, (const xmlChar *)"icon_file", dmp->icon_file ? dmp->icon_file : "");
+	xmlSetProp(node, (const xmlChar *)"show_menu_icons", dmp->show_menu_icons ? "1" : "0");
 }
 
 static gboolean
@@ -285,17 +295,31 @@ filebutton_click_cb(GtkWidget *w, gpointer user_data)
 }
 
 static void
+icon_chk_cb(GtkToggleButton *w, gpointer user_data)
+{
+	DMPlugin *dmp = user_data;
+	
+	dmp->show_menu_icons = gtk_toggle_button_get_active(w);
+	if(dmp->desktop_menu)
+		xfce_desktop_menu_set_show_icons(dmp->desktop_menu, dmp->show_menu_icons);
+}
+
+static void
 dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 {
 	DMPlugin *dmp = ctrl->data;
-	GtkWidget *hbox;
-	GtkWidget *label, *entry, *image, *filebutton;
+	GtkWidget *vbox, *hbox;
+	GtkWidget *label, *entry, *image, *filebutton, *chk;
+	
+	vbox = gtk_vbox_new(FALSE, 6);
+	gtk_widget_show(vbox);
+	gtk_container_add(con, vbox);
 	
 	hbox = gtk_hbox_new(FALSE, 6);
 	gtk_widget_show(hbox);
-	gtk_container_add(con, hbox);
+	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	
-	label = gtk_label_new_with_mnemonic(_("Icon _filename:"));
+	label = gtk_label_new_with_mnemonic(_("_Button icon:"));
 	gtk_widget_show(label);
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	
@@ -303,6 +327,7 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 	if(dmp->icon_file)
 		gtk_entry_set_text(GTK_ENTRY(dmp->entry), dmp->icon_file);
 	gtk_widget_set_size_request(dmp->entry, 250, -1);  /* FIXME */
+	gtk_label_set_mnemonic_widget(GTK_LABEL(label), dmp->entry);
 	gtk_widget_show(dmp->entry);
 	gtk_box_pack_start(GTK_BOX(hbox), dmp->entry, TRUE, TRUE, 3);
 	g_signal_connect(G_OBJECT(dmp->entry), "focus-out-event",
@@ -317,6 +342,12 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 	gtk_box_pack_end(GTK_BOX(hbox), filebutton, FALSE, FALSE, 0);
 	g_signal_connect(G_OBJECT(filebutton), "clicked",
 			G_CALLBACK(filebutton_click_cb), dmp);
+	
+	chk = gtk_check_button_new_with_mnemonic(_("Show _icons in menu"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), dmp->show_menu_icons);
+	gtk_widget_show(chk);
+	gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, 0);
+	g_signal_connect(G_OBJECT(chk), "toggled", G_CALLBACK(icon_chk_cb), dmp);
 }
 
 G_MODULE_EXPORT void
@@ -333,12 +364,14 @@ xfce_control_class_init(ControlClass *cc)
 	cc->attach_callback = dmp_attach_callback;
 	cc->set_size = dmp_set_size;
 	cc->set_orientation = NULL;
+	
+	menu_gmod = xfce_desktop_menu_stub_init();
 }
 
 G_MODULE_EXPORT void
 g_module_unload(GModule *module)
 {
-	xfce_desktop_menu_stub_cleanup_all(menu_gmod);
+	xfce_desktop_menu_stub_cleanup(menu_gmod);
 }
 
 XFCE_PLUGIN_CHECK_INIT

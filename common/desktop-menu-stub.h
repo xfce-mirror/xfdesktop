@@ -29,7 +29,6 @@ extern "C" {
 
 GModule *xfce_desktop_menu_stub_init();
 void xfce_desktop_menu_stub_cleanup(GModule *menu_gmod);
-void xfce_desktop_menu_stub_cleanup_all(GModule *menu_gmod);
 
 /* convenience defines */
 #define xfce_desktop_menu_new(menu_file, deferred) (*xfce_desktop_menu_new_p)(menu_file, deferred)

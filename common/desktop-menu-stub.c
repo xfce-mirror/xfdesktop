@@ -106,23 +106,12 @@ xfce_desktop_menu_stub_init()
 void
 xfce_desktop_menu_stub_cleanup(GModule *menu_gmod)
 {
-	g_return_if_fail(menu_gmod != NULL);
+	g_return_if_fail(menu_gmod != NULL && refcnt > 0);
 	
-	if(g_module_close(menu_gmod))
-		refcnt--;
-	if(refcnt <= 0) {
+	if(--refcnt <= 0) {
+		g_module_close(menu_gmod);
 		menu_gmod = NULL;
 		refcnt = 0;
 	}
 		
-}
-
-void
-xfce_desktop_menu_stub_cleanup_all(GModule *menu_gmod)
-{
-	g_return_if_fail(menu_gmod != NULL);
-	
-	while(refcnt--)
-		g_module_close(menu_gmod);
-	menu_gmod = NULL;
 }
