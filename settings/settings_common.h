@@ -37,46 +37,46 @@ typedef struct {
 
     /* options dialog */
     GtkWidget *dialog;
-	GtkWidget *top_notebook;
-	GtkWidget *screens_notebook;
-	
-	/* menu options */
-	GtkWidget *frame_wl1;
+    GtkWidget *top_notebook;
+    GtkWidget *screens_notebook;
+    
+    /* menu options */
+    GtkWidget *frame_wl1;
 #ifdef USE_DESKTOP_MENU
-	GtkWidget *frame_dm1;
+    GtkWidget *frame_dm1;
 #endif
 } BackdropDialog;
 
 typedef struct {
-	/* which screen this panel is for */
-	gint xscreen;
-	gint monitor;
-	
-	/* the settings themselves */
-	McsColor color1;
-	McsColor color2;
-	XfceBackdropColorStyle color_style;
-	gboolean show_image;
-	gchar *image_path;
-	XfceBackdropImageStyle style;
-	gint brightness;
-	
-	/* the panel's GUI controls */
-	GtkWidget *color_frame;
-	GtkWidget *color_style_combo;
-	GtkWidget *color1_box;
-	GtkWidget *color2_hbox;
-	GtkWidget *color2_box;
-	
-	GtkWidget *image_frame;
-	GtkWidget *show_image_chk;
-	GtkWidget *image_frame_inner;
-	GtkWidget *file_entry;
-	GtkWidget *edit_list_button;
-	GtkWidget *style_combo;
-	
-	/* backreference */
-	BackdropDialog *bd;
+    /* which screen this panel is for */
+    gint xscreen;
+    gint monitor;
+    
+    /* the settings themselves */
+    McsColor color1;
+    McsColor color2;
+    XfceBackdropColorStyle color_style;
+    gboolean show_image;
+    gchar *image_path;
+    XfceBackdropImageStyle style;
+    gint brightness;
+    
+    /* the panel's GUI controls */
+    GtkWidget *color_frame;
+    GtkWidget *color_style_combo;
+    GtkWidget *color1_box;
+    GtkWidget *color2_hbox;
+    GtkWidget *color2_box;
+    
+    GtkWidget *image_frame;
+    GtkWidget *show_image_chk;
+    GtkWidget *image_frame_inner;
+    GtkWidget *file_entry;
+    GtkWidget *edit_list_button;
+    GtkWidget *style_combo;
+    
+    /* backreference */
+    BackdropDialog *bd;
 } BackdropPanel;
 
 extern void add_spacer (GtkBox *);

@@ -27,7 +27,7 @@ extern "C" {
 #endif
 
 typedef struct _XfceDesktopMenu XfceDesktopMenu;
-	
+    
 XfceDesktopMenu *xfce_desktop_menu_new_impl(const gchar *menu_file, gboolean deferred);
 GtkWidget *xfce_desktop_menu_get_widget_impl(XfceDesktopMenu *desktop_menu);
 G_CONST_RETURN gchar *xfce_desktop_menu_get_menu_file_impl(XfceDesktopMenu *desktop_menu);
@@ -42,11 +42,11 @@ extern GdkPixbuf *dummy_icon;
 
 #ifdef BDEBUG
 #define BD(fmt, args...) \
-	do { \
-		fprintf(stderr, "[%s():%d] ", __FUNCTION__, __LINE__); \
-		fprintf(stderr, fmt, ## args); \
-		fprintf(stderr, "\n"); \
-	} while(0)
+    do { \
+        fprintf(stderr, "[%s():%d] ", __FUNCTION__, __LINE__); \
+        fprintf(stderr, fmt, ## args); \
+        fprintf(stderr, "\n"); \
+    } while(0)
 #else
 #define BD(fmt, args...)
 #endif

@@ -66,107 +66,107 @@ static gchar *_listdlg_last_dir;
 static void
 add_file(const gchar *path, GtkListStore *ls)
 {
-	GtkTreeIter iter;
+    GtkTreeIter iter;
 
-	gtk_list_store_append(ls, &iter);
-	gtk_list_store_set(ls, &iter, 0, path, 1, PANGO_WEIGHT_NORMAL, -1);
+    gtk_list_store_append(ls, &iter);
+    gtk_list_store_set(ls, &iter, 0, path, 1, PANGO_WEIGHT_NORMAL, -1);
 }
 
 static void
 add_dir(const gchar *path, GtkListStore *ls, GtkWidget *parent)
 {
-	GDir *dir;
-	const gchar *file;
-	gchar fullpath[PATH_MAX];
-	
-	dir = g_dir_open(path, 0, NULL);
-	if(!dir)
-		return;
-	
-	while((file = g_dir_read_name(dir))) {
-		g_snprintf(fullpath, PATH_MAX, "%s%s%s", path, G_DIR_SEPARATOR_S, file);
-		if(!g_file_test(fullpath, G_FILE_TEST_IS_DIR))
-			add_file(fullpath, ls);
-	}
-	g_dir_close(dir);
-}	
+    GDir *dir;
+    const gchar *file;
+    gchar fullpath[PATH_MAX];
+    
+    dir = g_dir_open(path, 0, NULL);
+    if(!dir)
+        return;
+    
+    while((file = g_dir_read_name(dir))) {
+        g_snprintf(fullpath, PATH_MAX, "%s%s%s", path, G_DIR_SEPARATOR_S, file);
+        if(!g_file_test(fullpath, G_FILE_TEST_IS_DIR))
+            add_file(fullpath, ls);
+    }
+    g_dir_close(dir);
+}    
 
 /* remove from list */
 static void
 remove_file(GtkTreeView *treeview)
 {
-	GtkTreeSelection *select;
-	GtkTreeIter iter;
-	GtkTreeModel *model;
-	
-	gtk_widget_grab_focus(GTK_WIDGET(treeview));
-	
-	select = gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview));
-	
-	if(gtk_tree_selection_get_selected(select, &model, &iter))
-		gtk_list_store_remove (GTK_LIST_STORE(model), &iter);
+    GtkTreeSelection *select;
+    GtkTreeIter iter;
+    GtkTreeModel *model;
+    
+    gtk_widget_grab_focus(GTK_WIDGET(treeview));
+    
+    select = gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview));
+    
+    if(gtk_tree_selection_get_selected(select, &model, &iter))
+        gtk_list_store_remove (GTK_LIST_STORE(model), &iter);
 }
 
 /* reading and writing files */
 static void
 read_file(const gchar *filename, GtkListStore *ls, GtkWidget *parent)
 {
-	gchar **files;
-	gint i;
+    gchar **files;
+    gint i;
 
-	if((files = get_list_from_file (filename)) != NULL) {
-		for(i = 0; files[i]; i++) {
-			if(*files[i] && *files[i] != '\n')
-				add_file(files[i], ls);
-		}
-		g_strfreev (files);
-	}
+    if((files = get_list_from_file (filename)) != NULL) {
+        for(i = 0; files[i]; i++) {
+            if(*files[i] && *files[i] != '\n')
+                add_file(files[i], ls);
+        }
+        g_strfreev (files);
+    }
 }
 
 static gboolean
 save_list_file(const gchar *filename, GtkListStore *ls)
 {
-	GtkTreeIter iter;
-	char *file;
-	FILE *fp;
-	int fd;
+    GtkTreeIter iter;
+    char *file;
+    FILE *fp;
+    int fd;
 
 #ifdef O_EXLOCK
-	if((fd = open (filename, O_CREAT|O_EXLOCK|O_TRUNC|O_WRONLY, 0640)) < 0) {
+    if((fd = open (filename, O_CREAT|O_EXLOCK|O_TRUNC|O_WRONLY, 0640)) < 0) {
 #else
-	if((fd = open (filename, O_CREAT| O_TRUNC|O_WRONLY, 0640)) < 0) {
+    if((fd = open (filename, O_CREAT| O_TRUNC|O_WRONLY, 0640)) < 0) {
 #endif
-		xfce_err (_("Could not save file %s: %s\n\n"
-				"Please choose another location or press "
-				"cancel in the dialog to discard your changes"),
-				filename, g_strerror(errno));
-		return (FALSE);
-	}
+        xfce_err (_("Could not save file %s: %s\n\n"
+                "Please choose another location or press "
+                "cancel in the dialog to discard your changes"),
+                filename, g_strerror(errno));
+        return (FALSE);
+    }
 
     if((fp = fdopen (fd, "w")) == NULL) {
-		g_warning ("Unable to fdopen(%s). This should not happen!\n", filename);
-		close(fd);
-		return FALSE;
-	}
+        g_warning ("Unable to fdopen(%s). This should not happen!\n", filename);
+        close(fd);
+        return FALSE;
+    }
 
     fprintf (fp, "%s\n", LIST_TEXT);
-	if(!gtk_tree_model_get_iter_first(GTK_TREE_MODEL(ls), &iter)) {
-		fclose (fp);
-		return TRUE;
-	}
-	
-	do {
-		file = NULL;
-		gtk_tree_model_get(GTK_TREE_MODEL(ls), &iter, 0, &file, -1);
-		if(file && *file && *file != '\n')
-			fprintf(fp, "%s\n", file);
-		if(file)
-			g_free(file);
-	} while(gtk_tree_model_iter_next(GTK_TREE_MODEL(ls), &iter));
+    if(!gtk_tree_model_get_iter_first(GTK_TREE_MODEL(ls), &iter)) {
+        fclose (fp);
+        return TRUE;
+    }
+    
+    do {
+        file = NULL;
+        gtk_tree_model_get(GTK_TREE_MODEL(ls), &iter, 0, &file, -1);
+        if(file && *file && *file != '\n')
+            fprintf(fp, "%s\n", file);
+        if(file)
+            g_free(file);
+    } while(gtk_tree_model_iter_next(GTK_TREE_MODEL(ls), &iter));
 
-	fclose(fp);
+    fclose(fp);
 
-	return TRUE;
+    return TRUE;
 }
 
 /* treeview */
@@ -212,31 +212,31 @@ gnome_uri_list_extract_uris (const gchar * uri_list)
      */
     while (p)
     {
-	if (*p != '#')
-	{
-	    while (isspace ((int) (*p)))
-		p++;
+    if (*p != '#')
+    {
+        while (isspace ((int) (*p)))
+        p++;
 
-	    q = p;
-	    while (*q && (*q != '\n') && (*q != '\r'))
-		q++;
+        q = p;
+        while (*q && (*q != '\n') && (*q != '\r'))
+        q++;
 
-	    if (q > p)
-	    {
-		q--;
-		while (q > p && isspace ((int) (*q)))
-		    q--;
+        if (q > p)
+        {
+        q--;
+        while (q > p && isspace ((int) (*q)))
+            q--;
 
-		retval = (char *) g_malloc (q - p + 2);
-		strncpy (retval, p, q - p + 1);
-		retval[q - p + 1] = '\0';
+        retval = (char *) g_malloc (q - p + 2);
+        strncpy (retval, p, q - p + 1);
+        retval[q - p + 1] = '\0';
 
-		result = g_list_prepend (result, retval);
-	    }
-	}
-	p = strchr (p, '\n');
-	if (p)
-	    p++;
+        result = g_list_prepend (result, retval);
+        }
+    }
+    p = strchr (p, '\n');
+    if (p)
+        p++;
     }
 
     return g_list_reverse (result);
@@ -265,25 +265,25 @@ gnome_uri_list_extract_filenames (const gchar * uri_list)
     tmp_list = result;
     while (tmp_list)
     {
-	gchar *s = (char *) tmp_list->data;
+    gchar *s = (char *) tmp_list->data;
 
-	node = tmp_list;
-	tmp_list = tmp_list->next;
+    node = tmp_list;
+    tmp_list = tmp_list->next;
 
-	if (!strncmp (s, "file:", 5))
-	{
-	    /* added by Jasper Huijsmans
-	       remove leading multiple slashes */
-	    if (!strncmp (s + 5, "///", 3))
-		node->data = g_strdup (s + 7);
-	    else
-		node->data = g_strdup (s + 5);
-	}
-	else
-	{
-	    node->data = g_strdup (s);
-	}
-	g_free (s);
+    if (!strncmp (s, "file:", 5))
+    {
+        /* added by Jasper Huijsmans
+           remove leading multiple slashes */
+        if (!strncmp (s + 5, "///", 3))
+        node->data = g_strdup (s + 7);
+        else
+        node->data = g_strdup (s + 5);
+    }
+    else
+    {
+        node->data = g_strdup (s);
+    }
+    g_free (s);
     }
     return result;
 }
@@ -291,23 +291,23 @@ gnome_uri_list_extract_filenames (const gchar * uri_list)
 /* data dropped */
 static void
 on_drag_data_received (GtkWidget * w, GdkDragContext * context,
-		       int x, int y, GtkSelectionData * data,
-		       guint info, guint time, gpointer user_data)
+               int x, int y, GtkSelectionData * data,
+               guint info, guint time, gpointer user_data)
 {
-	GList *flist, *li;
-	gchar *file;
+    GList *flist, *li;
+    gchar *file;
 
-	flist = gnome_uri_list_extract_filenames((gchar *)data->data);
+    flist = gnome_uri_list_extract_filenames((gchar *)data->data);
 
-	for(li = flist; li; li = li->next) {
-		file = li->data;
-		if(g_file_test(file, G_FILE_TEST_IS_DIR))
-			add_dir(file, (GtkListStore *)user_data, gtk_widget_get_toplevel(w));
-		else
-			add_file(file, (GtkListStore *)user_data);
-	}
+    for(li = flist; li; li = li->next) {
+        file = li->data;
+        if(g_file_test(file, G_FILE_TEST_IS_DIR))
+            add_dir(file, (GtkListStore *)user_data, gtk_widget_get_toplevel(w));
+        else
+            add_file(file, (GtkListStore *)user_data);
+    }
 
-	gtk_drag_finish(context, FALSE, (context->action == GDK_ACTION_MOVE), time);
+    gtk_drag_finish(context, FALSE, (context->action == GDK_ACTION_MOVE), time);
 
     gnome_uri_list_free_strings(flist);
 }
@@ -337,9 +337,9 @@ add_tree_view(GtkWidget *vbox, const gchar *path, GtkWidget *parent)
     treeview_scroll = gtk_scrolled_window_new (NULL, NULL);
     gtk_widget_show (treeview_scroll);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (treeview_scroll),
-				    GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
+                    GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW
-					 (treeview_scroll), GTK_SHADOW_IN);
+                     (treeview_scroll), GTK_SHADOW_IN);
     gtk_box_pack_start (GTK_BOX (vbox), treeview_scroll, TRUE, TRUE, 0);
 
     store = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_INT);
@@ -350,117 +350,117 @@ add_tree_view(GtkWidget *vbox, const gchar *path, GtkWidget *parent)
 
     gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(treeview), FALSE);
 
-	if(path)
-		read_file(path, store, parent);
+    if(path)
+        read_file(path, store, parent);
 
     g_object_unref (G_OBJECT (store));
 
     renderer = gtk_cell_renderer_text_new ();
     column = gtk_tree_view_column_new_with_attributes ("File", renderer,
-						       "text", 0, 
-						       "weight", 1, NULL);
+                               "text", 0, 
+                               "weight", 1, NULL);
 
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), column);
 
-	gtk_drag_dest_set(GTK_WIDGET(treeview), GTK_DEST_DEFAULT_ALL, target_table,
-			G_N_ELEMENTS(target_table), GDK_ACTION_COPY|GDK_ACTION_MOVE);
+    gtk_drag_dest_set(GTK_WIDGET(treeview), GTK_DEST_DEFAULT_ALL, target_table,
+            G_N_ELEMENTS(target_table), GDK_ACTION_COPY|GDK_ACTION_MOVE);
 
     g_signal_connect(treeview, "drag_data_received",
-		      G_CALLBACK(on_drag_data_received), store);
-	
-	return GTK_TREE_VIEW(treeview);
+              G_CALLBACK(on_drag_data_received), store);
+    
+    return GTK_TREE_VIEW(treeview);
 }
 
 static void
 list_remove_cb(GtkWidget * b, GtkTreeView *treeview)
 {
-	remove_file(treeview);
+    remove_file(treeview);
 }
 
 static void
 update_preview_cb(XfceFileChooser *chooser, gpointer data)
 {
-	GtkImage *preview;
-	char *filename;
-	GdkPixbuf *pix = NULL;
-	
-	preview = GTK_IMAGE(data);
-	filename = xfce_file_chooser_get_filename(chooser);
-	
-	if(g_file_test(filename, G_FILE_TEST_IS_REGULAR))
-		pix = xfce_pixbuf_new_from_file_at_size(filename, 250, 250, NULL);
-	g_free(filename);
-	
-	if(pix) {
-		gtk_image_set_from_pixbuf(preview, pix);
-		g_object_unref(G_OBJECT(pix));
-	}
-	xfce_file_chooser_set_preview_widget_active(chooser, (pix != NULL));
+    GtkImage *preview;
+    char *filename;
+    GdkPixbuf *pix = NULL;
+    
+    preview = GTK_IMAGE(data);
+    filename = xfce_file_chooser_get_filename(chooser);
+    
+    if(g_file_test(filename, G_FILE_TEST_IS_REGULAR))
+        pix = xfce_pixbuf_new_from_file_at_size(filename, 250, 250, NULL);
+    g_free(filename);
+    
+    if(pix) {
+        gtk_image_set_from_pixbuf(preview, pix);
+        g_object_unref(G_OBJECT(pix));
+    }
+    xfce_file_chooser_set_preview_widget_active(chooser, (pix != NULL));
 }
 
 static void
 list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 {
-	GtkWidget *chooser, *preview, *parent;
-	XfceFileFilter *filter;
-	
-	parent = gtk_widget_get_toplevel(GTK_WIDGET(treeview));
-	
-	chooser = xfce_file_chooser_new(_("Select backdrop image file"),
-			GTK_WINDOW(parent), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
-			GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
-	
-	filter = xfce_file_filter_new();
-	xfce_file_filter_set_name(filter, _("All Files"));
-	xfce_file_filter_add_pattern(filter, "*");
-	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
-	filter = xfce_file_filter_new();
-	xfce_file_filter_set_name(filter, _("Image Files"));
-	xfce_file_filter_add_pattern(filter, "*.png");
-	xfce_file_filter_add_pattern(filter, "*.jpg");
-	xfce_file_filter_add_pattern(filter, "*.bmp");
-	xfce_file_filter_add_pattern(filter, "*.svg");
-	xfce_file_filter_add_pattern(filter, "*.xpm");
-	xfce_file_filter_add_pattern(filter, "*.gif");
-	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
-	
-	xfce_file_chooser_add_shortcut_folder(XFCE_FILE_CHOOSER(chooser),
-			DATADIR "/xfce4/backdrops", NULL);
-	xfce_file_chooser_set_select_multiple(XFCE_FILE_CHOOSER(chooser), TRUE);
-	
-	if(_listdlg_last_dir)
-		xfce_file_chooser_set_current_folder(XFCE_FILE_CHOOSER(chooser),
-				_listdlg_last_dir);
-	
-	preview = gtk_image_new();
-	gtk_widget_show(preview);
-	xfce_file_chooser_set_preview_widget(XFCE_FILE_CHOOSER(chooser), preview);
-	xfce_file_chooser_set_preview_widget_active(XFCE_FILE_CHOOSER(chooser), FALSE);
-	xfce_file_chooser_set_preview_callback(XFCE_FILE_CHOOSER(chooser),
-			(PreviewUpdateFunc)update_preview_cb, preview);
-	
-	gtk_widget_show(chooser);
-	if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
-		GSList *filenames, *l;
-		
-		gtk_widget_hide(chooser);
-		while(gtk_events_pending())
-			gtk_main_iteration();
-		
-		filenames = xfce_file_chooser_get_filenames(XFCE_FILE_CHOOSER(chooser));
-		if(filenames) {
-			if(_listdlg_last_dir)
-				g_free(_listdlg_last_dir);
-			_listdlg_last_dir = g_path_get_dirname(filenames->data);
-			
-			for(l=filenames; l; l=l->next) {
-				add_file(l->data, GTK_LIST_STORE(gtk_tree_view_get_model(treeview)));
-				g_free(l->data);
-			}
-			g_slist_free(filenames);
-		}
-	}
-	gtk_widget_destroy(chooser);
+    GtkWidget *chooser, *preview, *parent;
+    XfceFileFilter *filter;
+    
+    parent = gtk_widget_get_toplevel(GTK_WIDGET(treeview));
+    
+    chooser = xfce_file_chooser_new(_("Select backdrop image file"),
+            GTK_WINDOW(parent), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
+            GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
+    
+    filter = xfce_file_filter_new();
+    xfce_file_filter_set_name(filter, _("All Files"));
+    xfce_file_filter_add_pattern(filter, "*");
+    xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
+    filter = xfce_file_filter_new();
+    xfce_file_filter_set_name(filter, _("Image Files"));
+    xfce_file_filter_add_pattern(filter, "*.png");
+    xfce_file_filter_add_pattern(filter, "*.jpg");
+    xfce_file_filter_add_pattern(filter, "*.bmp");
+    xfce_file_filter_add_pattern(filter, "*.svg");
+    xfce_file_filter_add_pattern(filter, "*.xpm");
+    xfce_file_filter_add_pattern(filter, "*.gif");
+    xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
+    
+    xfce_file_chooser_add_shortcut_folder(XFCE_FILE_CHOOSER(chooser),
+            DATADIR "/xfce4/backdrops", NULL);
+    xfce_file_chooser_set_select_multiple(XFCE_FILE_CHOOSER(chooser), TRUE);
+    
+    if(_listdlg_last_dir)
+        xfce_file_chooser_set_current_folder(XFCE_FILE_CHOOSER(chooser),
+                _listdlg_last_dir);
+    
+    preview = gtk_image_new();
+    gtk_widget_show(preview);
+    xfce_file_chooser_set_preview_widget(XFCE_FILE_CHOOSER(chooser), preview);
+    xfce_file_chooser_set_preview_widget_active(XFCE_FILE_CHOOSER(chooser), FALSE);
+    xfce_file_chooser_set_preview_callback(XFCE_FILE_CHOOSER(chooser),
+            (PreviewUpdateFunc)update_preview_cb, preview);
+    
+    gtk_widget_show(chooser);
+    if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
+        GSList *filenames, *l;
+        
+        gtk_widget_hide(chooser);
+        while(gtk_events_pending())
+            gtk_main_iteration();
+        
+        filenames = xfce_file_chooser_get_filenames(XFCE_FILE_CHOOSER(chooser));
+        if(filenames) {
+            if(_listdlg_last_dir)
+                g_free(_listdlg_last_dir);
+            _listdlg_last_dir = g_path_get_dirname(filenames->data);
+            
+            for(l=filenames; l; l=l->next) {
+                add_file(l->data, GTK_LIST_STORE(gtk_tree_view_get_model(treeview)));
+                g_free(l->data);
+            }
+            g_slist_free(filenames);
+        }
+    }
+    gtk_widget_destroy(chooser);
 }
 
 static void
@@ -483,7 +483,7 @@ add_list_buttons(GtkWidget *vbox, GtkTreeView *treeview)
     gtk_container_add (GTK_CONTAINER (button), image);
 
     g_signal_connect(G_OBJECT(button), "clicked",
-			G_CALLBACK(list_remove_cb), treeview);
+            G_CALLBACK(list_remove_cb), treeview);
 
     /* add */
     button = gtk_button_new ();
@@ -495,46 +495,46 @@ add_list_buttons(GtkWidget *vbox, GtkTreeView *treeview)
     gtk_container_add (GTK_CONTAINER (button), image);
 
     g_signal_connect(G_OBJECT(button), "clicked",
-			G_CALLBACK(list_add_cb), treeview);
+            G_CALLBACK(list_add_cb), treeview);
 }
 
 static void
 filename_browse_cb(GtkWidget *b, GtkWidget *file_entry)
 {
-	GtkWidget *chooser, *preview, *dialog;
-	XfceFileFilter *filter;
-	
-	dialog = gtk_widget_get_toplevel(b);
-	
-	preview = gtk_image_new();
-	chooser = xfce_file_chooser_new(_("Choose backdrop list filename"),
-			GTK_WINDOW(dialog), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
-			GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
-	
-	filter = xfce_file_filter_new();
-	xfce_file_filter_set_name(filter, _("All Files"));
-	xfce_file_filter_add_pattern(filter, "*");
-	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
-	filter = xfce_file_filter_new();
-	xfce_file_filter_set_name(filter, _("List Files"));
-	xfce_file_filter_add_pattern(filter, "*.list");
-	xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
-	
-	if(_listdlg_last_dir)
-		xfce_file_chooser_set_current_folder(XFCE_FILE_CHOOSER(chooser),
-				_listdlg_last_dir);
-	
-	gtk_widget_show(chooser);
-	if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
-		gchar *path;
-		
-		path = xfce_file_chooser_get_filename(XFCE_FILE_CHOOSER(chooser));
-		if(path) {
-			gtk_entry_set_text(GTK_ENTRY(file_entry), path);
-			g_free(path);
-		}
-	}
-	gtk_widget_destroy(chooser);
+    GtkWidget *chooser, *preview, *dialog;
+    XfceFileFilter *filter;
+    
+    dialog = gtk_widget_get_toplevel(b);
+    
+    preview = gtk_image_new();
+    chooser = xfce_file_chooser_new(_("Choose backdrop list filename"),
+            GTK_WINDOW(dialog), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
+            GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
+    
+    filter = xfce_file_filter_new();
+    xfce_file_filter_set_name(filter, _("All Files"));
+    xfce_file_filter_add_pattern(filter, "*");
+    xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
+    filter = xfce_file_filter_new();
+    xfce_file_filter_set_name(filter, _("List Files"));
+    xfce_file_filter_add_pattern(filter, "*.list");
+    xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
+    
+    if(_listdlg_last_dir)
+        xfce_file_chooser_set_current_folder(XFCE_FILE_CHOOSER(chooser),
+                _listdlg_last_dir);
+    
+    gtk_widget_show(chooser);
+    if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
+        gchar *path;
+        
+        path = xfce_file_chooser_get_filename(XFCE_FILE_CHOOSER(chooser));
+        if(path) {
+            gtk_entry_set_text(GTK_ENTRY(file_entry), path);
+            g_free(path);
+        }
+    }
+    gtk_widget_destroy(chooser);
 }
 
 static GtkWidget *
@@ -561,27 +561,27 @@ add_file_entry (GtkWidget *vbox, const gchar *filename)
     gtk_container_add(GTK_CONTAINER(button), image);
 
     g_signal_connect(G_OBJECT(button), "clicked",
-			G_CALLBACK(filename_browse_cb), file_entry);
-	
-	return file_entry;
+            G_CALLBACK(filename_browse_cb), file_entry);
+    
+    return file_entry;
 }
 
 /* the dialog */
 static void
 list_mgr_dialog_new(const gchar *title, GtkWidget *parent, const gchar *path,
-	GtkWidget **dialog, GtkWidget **entry, GtkTreeView **tv)
+    GtkWidget **dialog, GtkWidget **entry, GtkTreeView **tv)
 {
     GtkWidget *mainvbox, *frame, *vbox, *header;
 
-	g_return_if_fail(dialog != NULL && entry != NULL && tv != NULL);
-	
-	if(!_listdlg_last_dir)
-		_listdlg_last_dir = g_build_path(G_DIR_SEPARATOR_S, DATADIR, "xfce4",
-				"backdrops", NULL);
+    g_return_if_fail(dialog != NULL && entry != NULL && tv != NULL);
+    
+    if(!_listdlg_last_dir)
+        _listdlg_last_dir = g_build_path(G_DIR_SEPARATOR_S, DATADIR, "xfce4",
+                "backdrops", NULL);
 
-	*dialog = gtk_dialog_new_with_buttons(_("Backdrop List"), GTK_WINDOW(parent),
-			GTK_DIALOG_NO_SEPARATOR, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-			GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT, NULL);
+    *dialog = gtk_dialog_new_with_buttons(_("Backdrop List"), GTK_WINDOW(parent),
+            GTK_DIALOG_NO_SEPARATOR, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+            GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT, NULL);
 
     gtk_window_set_position(GTK_WINDOW(*dialog), GTK_WIN_POS_MOUSE);
     gtk_window_set_resizable(GTK_WINDOW(*dialog), FALSE);
@@ -605,11 +605,11 @@ list_mgr_dialog_new(const gchar *title, GtkWidget *parent, const gchar *path,
     xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
 
     *tv = add_tree_view(vbox, path, *dialog);
-	if(!path) {
-		gchar loc[PATH_MAX];
-		g_snprintf(loc, PATH_MAX, "xfce4/desktop/%s", _("backdrops.list"));
-		path = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, loc, TRUE);
-	}
+    if(!path) {
+        gchar loc[PATH_MAX];
+        g_snprintf(loc, PATH_MAX, "xfce4/desktop/%s", _("backdrops.list"));
+        path = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, loc, TRUE);
+    }
 
     add_list_buttons(vbox, *tv);
 
@@ -632,87 +632,87 @@ list_mgr_dialog_new(const gchar *title, GtkWidget *parent, const gchar *path,
 void
 create_list_file(GtkWidget *parent, ListMgrCb callback, gpointer data)
 {
-	GtkWidget *dialog = NULL, *entry = NULL;
-	GtkTreeView *tv = NULL;
-	
+    GtkWidget *dialog = NULL, *entry = NULL;
+    GtkTreeView *tv = NULL;
+    
     list_mgr_dialog_new(_("Create backdrop list"), parent, NULL, &dialog,
-			&entry, &tv);
-	if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
-		gchar *filename;
-		filename = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
-		save_list_file(filename, GTK_LIST_STORE(gtk_tree_view_get_model(tv)));
-		(*callback)(filename, data);
-		g_free(filename);
-	}
-	gtk_widget_destroy(dialog);
+            &entry, &tv);
+    if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
+        gchar *filename;
+        filename = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
+        save_list_file(filename, GTK_LIST_STORE(gtk_tree_view_get_model(tv)));
+        (*callback)(filename, data);
+        g_free(filename);
+    }
+    gtk_widget_destroy(dialog);
 }
 
 void
 edit_list_file(const gchar *path, GtkWidget *parent, ListMgrCb callback,
-		gpointer data)
+        gpointer data)
 {
-	GtkWidget *dialog = NULL, *entry = NULL;
-	GtkTreeView *tv = NULL;
-	GtkListStore *ls;
-	BackdropPanel *bp = data;
-	Display *dpy = GDK_DISPLAY();
-	Window xroot;
-	gchar propname[256];
-	Atom prop, type;
-	int fmt;
-	unsigned long len, after;
-	unsigned char *curimg = NULL;
-	GtkTreeIter itr;
-	gchar *file;
-	gboolean set_sel = FALSE;
-	
-	list_mgr_dialog_new(_("Edit backdrop list"), parent, path, &dialog,
-			&entry, &tv);
-	ls = GTK_LIST_STORE(gtk_tree_view_get_model(tv));
-	
-	g_snprintf(propname, 256, "XFDESKTOP_IMAGE_FILE_%d", bp->monitor);
-	prop = gdk_x11_atom_to_xatom(gdk_atom_intern(propname, FALSE));
-	xroot = GDK_WINDOW_XID(gdk_screen_get_root_window(
-			gdk_display_get_screen(gdk_display_get_default(), bp->xscreen)));
-	XGrabServer(dpy);
-	if(XGetWindowProperty(dpy, xroot, prop, 0L, (long)PATH_MAX, False,
-			AnyPropertyType, &type, &fmt, &len, &after, &curimg) == Success
-			&& type == XA_STRING && fmt == 8)
-	{
-		XUngrabServer(dpy);
-		
-		if(gtk_tree_model_get_iter_first(GTK_TREE_MODEL(ls), &itr)) {
-			do {
-				file = NULL;
-				gtk_tree_model_get(GTK_TREE_MODEL(ls), &itr, 0, &file, -1);
-				if(!strcmp(curimg, file)) {
-					GtkTreePath *path;
-					
-					gtk_list_store_set(ls, &itr, 1, PANGO_WEIGHT_BOLD, -1);
-					
-					set_sel = TRUE; /* GtkTreeView needs to be realized first */
-					path = gtk_tree_model_get_path(GTK_TREE_MODEL(ls), &itr);
-					gtk_tree_view_scroll_to_cell(tv, path, NULL, TRUE, 0.5, 0); 
-					gtk_tree_path_free(path);
-					
-					break;
-				}
-			} while(gtk_tree_model_iter_next(GTK_TREE_MODEL(ls), &itr));
-		}
-		
-		XFree(curimg);
-	} else
-		XUngrabServer(dpy);
-	
-	gtk_widget_show_all(dialog);
-	if(set_sel && gtk_list_store_iter_is_valid(ls, &itr))
-		gtk_tree_selection_select_iter(gtk_tree_view_get_selection(tv), &itr);
-	if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
-		gchar *filename;
-		filename = g_strdup(gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1));
-		save_list_file(filename, ls);
-		(*callback)(filename, data);
-		g_free(filename);
-	}
-	gtk_widget_destroy(dialog);
+    GtkWidget *dialog = NULL, *entry = NULL;
+    GtkTreeView *tv = NULL;
+    GtkListStore *ls;
+    BackdropPanel *bp = data;
+    Display *dpy = GDK_DISPLAY();
+    Window xroot;
+    gchar propname[256];
+    Atom prop, type;
+    int fmt;
+    unsigned long len, after;
+    unsigned char *curimg = NULL;
+    GtkTreeIter itr;
+    gchar *file;
+    gboolean set_sel = FALSE;
+    
+    list_mgr_dialog_new(_("Edit backdrop list"), parent, path, &dialog,
+            &entry, &tv);
+    ls = GTK_LIST_STORE(gtk_tree_view_get_model(tv));
+    
+    g_snprintf(propname, 256, "XFDESKTOP_IMAGE_FILE_%d", bp->monitor);
+    prop = gdk_x11_atom_to_xatom(gdk_atom_intern(propname, FALSE));
+    xroot = GDK_WINDOW_XID(gdk_screen_get_root_window(
+            gdk_display_get_screen(gdk_display_get_default(), bp->xscreen)));
+    XGrabServer(dpy);
+    if(XGetWindowProperty(dpy, xroot, prop, 0L, (long)PATH_MAX, False,
+            AnyPropertyType, &type, &fmt, &len, &after, &curimg) == Success
+            && type == XA_STRING && fmt == 8)
+    {
+        XUngrabServer(dpy);
+        
+        if(gtk_tree_model_get_iter_first(GTK_TREE_MODEL(ls), &itr)) {
+            do {
+                file = NULL;
+                gtk_tree_model_get(GTK_TREE_MODEL(ls), &itr, 0, &file, -1);
+                if(!strcmp(curimg, file)) {
+                    GtkTreePath *path;
+                    
+                    gtk_list_store_set(ls, &itr, 1, PANGO_WEIGHT_BOLD, -1);
+                    
+                    set_sel = TRUE; /* GtkTreeView needs to be realized first */
+                    path = gtk_tree_model_get_path(GTK_TREE_MODEL(ls), &itr);
+                    gtk_tree_view_scroll_to_cell(tv, path, NULL, TRUE, 0.5, 0); 
+                    gtk_tree_path_free(path);
+                    
+                    break;
+                }
+            } while(gtk_tree_model_iter_next(GTK_TREE_MODEL(ls), &itr));
+        }
+        
+        XFree(curimg);
+    } else
+        XUngrabServer(dpy);
+    
+    gtk_widget_show_all(dialog);
+    if(set_sel && gtk_list_store_iter_is_valid(ls, &itr))
+        gtk_tree_selection_select_iter(gtk_tree_view_get_selection(tv), &itr);
+    if(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
+        gchar *filename;
+        filename = g_strdup(gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1));
+        save_list_file(filename, ls);
+        (*callback)(filename, data);
+        g_free(filename);
+    }
+    gtk_widget_destroy(dialog);
 }

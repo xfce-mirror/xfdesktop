@@ -49,24 +49,24 @@ XfceDesktopMenu *desktop_menu = NULL;
 #ifdef USE_DESKTOP_MENU
 static void
 _stop_menu_module() {
-	if(desktop_menu) {
-		xfce_desktop_menu_stop_autoregen(desktop_menu);
-		xfce_desktop_menu_destroy(desktop_menu);
-		desktop_menu = NULL;
-	}
+    if(desktop_menu) {
+        xfce_desktop_menu_stop_autoregen(desktop_menu);
+        xfce_desktop_menu_destroy(desktop_menu);
+        desktop_menu = NULL;
+    }
 }
 
 static gboolean
 _start_menu_module()
 {
-	desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
-	if(desktop_menu) {
-		xfce_desktop_menu_start_autoregen(desktop_menu, 10);
-		return TRUE;
-	} else {
-		g_warning("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n", PACKAGE);
-		return FALSE;
-	}
+    desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
+    if(desktop_menu) {
+        xfce_desktop_menu_start_autoregen(desktop_menu, 10);
+        return TRUE;
+    } else {
+        g_warning("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n", PACKAGE);
+        return FALSE;
+    }
 }
 #endif
 
@@ -74,102 +74,102 @@ void
 popup_desktop_menu(GdkScreen *gscreen, gint button, guint32 time)
 {
 #if USE_DESKTOP_MENU
-	GtkWidget *menu_widget;
-	
-	if(!desktop_menu)
-		return;
-	
-	if(xfce_desktop_menu_need_update(desktop_menu))
-		xfce_desktop_menu_force_regen(desktop_menu);
-	
-	menu_widget = xfce_desktop_menu_get_widget(desktop_menu);
-	gtk_menu_set_screen(GTK_MENU(menu_widget), gscreen);
-	gtk_menu_popup(GTK_MENU(menu_widget), NULL, NULL, NULL, NULL,
-			button, time);
+    GtkWidget *menu_widget;
+    
+    if(!desktop_menu)
+        return;
+    
+    if(xfce_desktop_menu_need_update(desktop_menu))
+        xfce_desktop_menu_force_regen(desktop_menu);
+    
+    menu_widget = xfce_desktop_menu_get_widget(desktop_menu);
+    gtk_menu_set_screen(GTK_MENU(menu_widget), gscreen);
+    gtk_menu_popup(GTK_MENU(menu_widget), NULL, NULL, NULL, NULL,
+            button, time);
 #endif
 }
 
 void
 menu_init(McsClient *mcs_client)
-{	
+{    
 #ifdef USE_DESKTOP_MENU
-	McsSetting *setting = NULL;
-	
-	if(!mcs_client)
-		_start_menu_module();
-	else {
-		if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "showdm",
-				BACKDROP_CHANNEL, &setting))
-		{
-			if(setting->data.v_int)
-				_start_menu_module();
-			else
-				_stop_menu_module();
-			mcs_setting_free(setting);
-			setting = NULL;
-		} else
-			_start_menu_module();
-		
-		if(desktop_menu) {
-			if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "showdmi",
-					BACKDROP_CHANNEL, &setting))
-			{
-				if(!setting->data.v_int)
-					xfce_desktop_menu_set_show_icons(desktop_menu, FALSE);
-				mcs_setting_free(setting);
-				setting = NULL;
-			}
-		}
-	}
+    McsSetting *setting = NULL;
+    
+    if(!mcs_client)
+        _start_menu_module();
+    else {
+        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "showdm",
+                BACKDROP_CHANNEL, &setting))
+        {
+            if(setting->data.v_int)
+                _start_menu_module();
+            else
+                _stop_menu_module();
+            mcs_setting_free(setting);
+            setting = NULL;
+        } else
+            _start_menu_module();
+        
+        if(desktop_menu) {
+            if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "showdmi",
+                    BACKDROP_CHANNEL, &setting))
+            {
+                if(!setting->data.v_int)
+                    xfce_desktop_menu_set_show_icons(desktop_menu, FALSE);
+                mcs_setting_free(setting);
+                setting = NULL;
+            }
+        }
+    }
 #endif
 }
 
 gboolean
 menu_settings_changed(McsClient *client, McsAction action, McsSetting *setting,
-		gpointer user_data)
+        gpointer user_data)
 {
 #ifdef USE_DESKTOP_MENU
-	McsSetting *setting1 = NULL;
-	
-	switch(action) {
-		case MCS_ACTION_NEW:
-		case MCS_ACTION_CHANGED:
-			if(!strcmp(setting->name, "showdm")) {
-				if(setting->data.v_int && !desktop_menu) {
-					_start_menu_module();
-					if(desktop_menu
-							&& MCS_SUCCESS == mcs_client_get_setting(client,
-								"showdmi", BACKDROP_CHANNEL, &setting1))
-					{
-						if(!setting1->data.v_int)
-							xfce_desktop_menu_set_show_icons(desktop_menu, FALSE);
-						mcs_setting_free(setting1);
-						setting1 = NULL;
-					}
-				} else if(!setting->data.v_int && desktop_menu)
-					_stop_menu_module();
-				return TRUE;
-			} else if(!strcmp(setting->name, "showdmi")) {
-				if(desktop_menu)
-					xfce_desktop_menu_set_show_icons(desktop_menu, setting->data.v_int);
-				return TRUE;
-			}
-			break;
-		
-		case MCS_ACTION_DELETED:
-			break;
-	}
+    McsSetting *setting1 = NULL;
+    
+    switch(action) {
+        case MCS_ACTION_NEW:
+        case MCS_ACTION_CHANGED:
+            if(!strcmp(setting->name, "showdm")) {
+                if(setting->data.v_int && !desktop_menu) {
+                    _start_menu_module();
+                    if(desktop_menu
+                            && MCS_SUCCESS == mcs_client_get_setting(client,
+                                "showdmi", BACKDROP_CHANNEL, &setting1))
+                    {
+                        if(!setting1->data.v_int)
+                            xfce_desktop_menu_set_show_icons(desktop_menu, FALSE);
+                        mcs_setting_free(setting1);
+                        setting1 = NULL;
+                    }
+                } else if(!setting->data.v_int && desktop_menu)
+                    _stop_menu_module();
+                return TRUE;
+            } else if(!strcmp(setting->name, "showdmi")) {
+                if(desktop_menu)
+                    xfce_desktop_menu_set_show_icons(desktop_menu, setting->data.v_int);
+                return TRUE;
+            }
+            break;
+        
+        case MCS_ACTION_DELETED:
+            break;
+    }
 #endif
-	
-	return FALSE;	
+    
+    return FALSE;    
 }
 
 void
 menu_reload()
 {
 #ifdef USE_DESKTOP_MENU
-	if(desktop_menu)
-		xfce_desktop_menu_force_regen(desktop_menu);
+    if(desktop_menu)
+        xfce_desktop_menu_force_regen(desktop_menu);
 #endif
 }
 
@@ -177,6 +177,6 @@ void
 menu_cleanup()
 {
 #ifdef USE_DESKTOP_MENU
-	_stop_menu_module();
+    _stop_menu_module();
 #endif
 }

@@ -27,14 +27,14 @@
 #include "desktop-menu-private.h"
 
 typedef enum {
-	MPATH_SIMPLE = 0,
-	MPATH_SIMPLE_UNIQUE,
-	MPATH_MULTI,
-	MPATH_MULTI_UNIQUE
+    MPATH_SIMPLE = 0,
+    MPATH_SIMPLE_UNIQUE,
+    MPATH_MULTI,
+    MPATH_MULTI_UNIQUE
 } MenuPathType;
 
 void desktop_menu_dentry_parse_files(struct _XfceDesktopMenu *desktop_menu, 
-		MenuPathType pathtype, gboolean do_legacy);
+        MenuPathType pathtype, gboolean do_legacy);
 gboolean desktop_menu_dentry_need_update(struct _XfceDesktopMenu *desktop_menu);
 
 #endif

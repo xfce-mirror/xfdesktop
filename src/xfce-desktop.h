@@ -44,15 +44,15 @@ typedef struct _XfceDesktopPriv XfceDesktopPriv;
 
 struct _XfceDesktop
 {
-	GtkWindow window;
-	
-	/*< private >*/
-	XfceDesktopPriv *priv;
+    GtkWindow window;
+    
+    /*< private >*/
+    XfceDesktopPriv *priv;
 };
 
 struct _XfceDesktopClass
 {
-	GtkWindowClass parent_class;
+    GtkWindowClass parent_class;
 };
 
 GType xfce_desktop_get_type                     () G_GNUC_CONST;

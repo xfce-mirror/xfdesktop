@@ -27,24 +27,24 @@
 G_BEGIN_DECLS
 
 typedef enum {
-	DM_TYPE_ROOT = 0,
-	DM_TYPE_MENU,
-	DM_TYPE_APP,
-	DM_TYPE_TITLE,
-	DM_TYPE_BUILTIN,
-	DM_TYPE_SEPARATOR,
-	DM_N_TYPES
+    DM_TYPE_ROOT = 0,
+    DM_TYPE_MENU,
+    DM_TYPE_APP,
+    DM_TYPE_TITLE,
+    DM_TYPE_BUILTIN,
+    DM_TYPE_SEPARATOR,
+    DM_N_TYPES
 } DesktopMenuCacheType;
 
 void desktop_menu_cache_init(GtkWidget *root_menu);
 /* returns menu cache file if valid */
 gchar *desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
-		GHashTable **menufile_mtimes, GHashTable **dentrydir_mtimes,
-		gboolean *using_system_menu);
+        GHashTable **menufile_mtimes, GHashTable **dentrydir_mtimes,
+        gboolean *using_system_menu);
 void desktop_menu_cache_add_entry(DesktopMenuCacheType type, const gchar *name,
-		const gchar *cmd, const gchar *icon, gboolean needs_term,
-		gboolean snotify, GtkWidget *parent_menu, gint position,
-		GtkWidget *menu_widget);
+        const gchar *cmd, const gchar *icon, gboolean needs_term,
+        gboolean snotify, GtkWidget *parent_menu, gint position,
+        GtkWidget *menu_widget);
 void desktop_menu_cache_add_menufile(const gchar *menu_file);
 void desktop_menu_cache_add_dentrydir(const gchar *dentry_dir);
 void desktop_menu_cache_flush(const gchar *cache_file_suffix);

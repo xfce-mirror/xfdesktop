@@ -44,18 +44,18 @@ typedef struct _XfceBackdropPriv XfceBackdropPriv;
 
 struct _XfceBackdrop
 {
-	GObject gobject;
-	
-	/*< private >*/
-	XfceBackdropPriv *priv;
+    GObject gobject;
+    
+    /*< private >*/
+    XfceBackdropPriv *priv;
 };
 
 struct _XfceBackdropClass
 {
-	GObjectClass parent_class;
-	
-	/*< signals >*/
-	void (*changed)(XfceBackdrop *backdrop);
+    GObjectClass parent_class;
+    
+    /*< signals >*/
+    void (*changed)(XfceBackdrop *backdrop);
 };
 
 GType xfce_backdrop_get_type             () G_GNUC_CONST;
