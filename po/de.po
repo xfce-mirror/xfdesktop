@@ -1,16 +1,16 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "POT-Creation-Date: 2003-04-06 13:07+0200\n"
 "PO-Revision-Date: 2003-04-06 13:09--100\n"
-"Last-Translator: Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>\n"
-"Language-Team: Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>\n"
+"Last-Translator: Moritz Heiber <mistermoe@hackerboard.de>\n"
+"Language-Team: NONE <none@none>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: settings/backdrop-mgr.c:174
@@ -20,14 +20,17 @@ msgid ""
 "\n"
 "Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
+"Konnte Datei %s: %s nicht abspeichern\n"
+"\n"
+"Bitte anderen Speicherplatz w√§hlen oder Abbrechen um die √Ñnderungen zu verwerfen"
 
 #: settings/backdrop-mgr.c:392
 msgid "Select image file"
-msgstr "W‰hlen Sie eine Bilddatei aus"
+msgstr "Bilddatei ausw√§hlen"
 
 #: settings/backdrop-mgr.c:498
 msgid "Choose backdrop list filename"
-msgstr "W‰hlen Sie einen Namen f¸r die Liste mit Hintergrundbildern"
+msgstr "Namen f√ºr Liste mit Hintergrundbildern ausw√§hlen"
 
 #: settings/backdrop-mgr.c:525
 #: settings/backdrop_settings.c:558
@@ -36,7 +39,7 @@ msgstr "Datei:"
 
 #: settings/backdrop-mgr.c:564
 msgid "New.list"
-msgstr "Neue.list"
+msgstr "Neue.liste"
 
 #: settings/backdrop-mgr.c:568
 msgid "Backdrop List"
@@ -64,7 +67,7 @@ msgstr "Arbeitsplatz: Hintergrund"
 
 #: settings/backdrop_settings.c:356
 msgid "Select background color"
-msgstr "Hintergrundfarbe w‰hlen"
+msgstr "Hintergrundfarbe w√§hlen"
 
 #: settings/backdrop_settings.c:402
 msgid "Background color:"
@@ -72,15 +75,15 @@ msgstr "Hintergrundfarbe:"
 
 #: settings/backdrop_settings.c:432
 msgid "Use color only:"
-msgstr "Kein Hintergrundbild benutzen"
+msgstr "Nur Farbe f√ºr Hintergrund nutzen"
 
 #: settings/backdrop_settings.c:615
 msgid "Select background image or list file"
-msgstr "W‰hlen Sie ein Hintergrundbild oder eine Liste mit Hintergrundbildern"
+msgstr "Hintergrundbild oder Liste mit Hintergrundbildern ausw√§hlen"
 
 #: settings/backdrop_settings.c:690
 msgid "_Browse..."
-msgstr "_Ausw‰hlen"
+msgstr "_Ausw√§hlen..."
 
 #: settings/backdrop_settings.c:694
 msgid "New list"
@@ -136,7 +139,7 @@ msgstr "Arbeitsplatz: Workspaces"
 
 #: settings/workspaces_settings.c:323
 msgid "Change name"
-msgstr "Namen ‰ndern"
+msgstr "Namen √§ndern"
 
 #: settings/workspaces_settings.c:334
 #, c-format
@@ -149,7 +152,7 @@ msgstr "Name:"
 
 #: settings/workspaces_settings.c:455
 msgid "Click on a workspace name to edit it"
-msgstr "Klicken Sie auf einen Workspace um dessen Namen zu ‰ndern"
+msgstr "Klicken Sie auf einen Workspace um dessen Namen zu √§ndern"
 
 #: settings/workspaces_settings.c:486
 msgid "Number of workspaces:"
@@ -173,7 +176,7 @@ msgstr "Workspace Namen"
 #: src/backdrop.c:423
 #, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
-msgstr ""
+msgstr "XFdesktop Fehler: lade Hintergrundbild: %s\n"
 
 #: src/main.c:227
 msgid "Desktop"
@@ -186,7 +189,7 @@ msgstr "Workspace"
 
 #: src/menu.c:688
 msgid "Add workspace"
-msgstr "Workspace hinzuf¸gen"
+msgstr "Workspace hinzuf√ºgen"
 
 #: src/menu.c:695
 msgid "Delete workspace"
@@ -194,5 +197,5 @@ msgstr "Workspace entfernen"
 
 #: src/settings.c:186
 msgid "xfdesktop: could not connect to settings manager!Please check your installation."
-msgstr "xfdesktop: Konnte keine Verbindung zum Einstellungsmanager herstellen! Pr¸fen Sie Ihre Installation."
+msgstr "XFdesktop: Konnte keine Verbindung zum Einstellungsmanager herstellen! Pr√ºfen Sie Ihre Installation."
 
