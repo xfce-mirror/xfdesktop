@@ -246,7 +246,7 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 				bp->color1.red = (guint16)0x6900;
 				bp->color1.green = (guint16)0x8500;
 				bp->color1.blue = (guint16)0xB700;
-				bp->color1.alpha = (guint16)0;
+				bp->color1.alpha = (guint16)0xffff;
 				mcs_manager_set_color(mcs_plugin->manager, setting_name,
 						BACKDROP_CHANNEL, &bp->color1);
 			}
@@ -265,7 +265,7 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 				bp->color2.red = (guint16)0xdb00;
 				bp->color2.green = (guint16)0xe800;
 				bp->color2.blue = (guint16)0xff00;
-				bp->color2.alpha = (guint16)0;
+				bp->color2.alpha = (guint16)0xffff;
 				mcs_manager_set_color(mcs_plugin->manager, setting_name,
 						BACKDROP_CHANNEL, &bp->color2);
 			}
