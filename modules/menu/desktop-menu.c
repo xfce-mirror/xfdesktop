@@ -81,7 +81,7 @@ static time_t last_settings_change = 0;
 static gchar *cur_icon_theme = NULL;
 
 static void
-itheme_changed_cb(GtkIconTheme *itheme, gpointer user_data)
+itheme_changed_cb(XfceIconTheme *itheme, gpointer user_data)
 {
 	last_settings_change = time(NULL);
 }
