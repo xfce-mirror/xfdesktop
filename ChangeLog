@@ -1,3 +1,67 @@
+2003-08-26 09:12  huysmans
+
+	* po/: ca.gmo, ca.po, de.gmo, de.po, es.gmo, es.po, es_MX.gmo,
+	es_MX.po, fi.gmo, fi.po, fr.gmo, fr.po, hu.gmo, hu.po, ja.gmo,
+	ja.po, ko.gmo, ko.po, lt.gmo, lt.po, ms.gmo, ms.po, nl.gmo, nl.po,
+	pl.gmo, pl.po, ru.gmo, ru.po, ta.gmo, ta.po, tr.gmo, tr.po,
+	zh_CN.gmo, zh_CN.po: Update version numbers and po files for
+	release
+
+2003-08-17 13:36  huysmans
+
+	* configure, configure.ac, po/lt.gmo, po/lt.po: Add lithuanian
+	translations
+
+2003-08-14 21:09  xfce
+
+	* po/xfdesktop.pot: Resync with cvs
+
+2003-08-13 01:06  xfce
+
+	* src/menu.c: Fix improper use of button param in gtk_menu_popup()
+	that was causing trouble when using right mouse button to select
+	entries in xfdesktop menu.
+
+2003-08-10 21:54  huysmans
+
+	* Makefile.am, Makefile.in, menu.xml.zh_CN, po/zh_CN.gmo,
+	po/zh_CN.po: Update chinese translations
+
+2003-08-08 16:17  edscott
+
+	* menu.xml.es: spanish tranlation
+
+2003-08-08 07:42  huysmans
+
+	* menu.xml.ca: Oops, forgot this one
+
+2003-08-08 00:09  huysmans
+
+	* Makefile.am, Makefile.in: Update catalan translations
+
+2003-08-07 21:05  huysmans
+
+	* menu.xml.nl, src/menu.c: Make i18n work
+
+2003-08-05 16:53  huysmans
+
+	* Makefile.am, Makefile.in, aclocal.m4, configure, menu.xml.nl: Add
+	dutch translation for the menu
+
+2003-08-04 23:46  xfce
+
+	* Makefile.am, Makefile.in, configure, menu.xml.de,
+	po/xfdesktop.pot: Add menu.xml.de
+
+2003-08-04 19:47  huysmans
+
+	* configure, configure.ac, po/ko.gmo, po/ko.po: Add korean
+	translations
+
+2003-08-03 20:45  bmeurer
+
+	* ChangeLog: Updated ChangeLogs
+
 2003-08-03 20:37  bmeurer
 
 	* m4/X11.m4: grep -q does not work with Solaris grep, fixed it.
