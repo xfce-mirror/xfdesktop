@@ -66,6 +66,36 @@ AC_DEFUN([BM_LIBSM],
   AC_SUBST(LIBSM_LIBS)
 ])
 
+AC_DEFUN([BM_LIBXPM],
+[
+  AC_REQUIRE([BM_LIBX11])
+  LIBXPM_CFLAGS= LIBXPM_LDFLAGS= LIBXPM_LIBS=
+  if test "$no_x" != "yes"; then
+    AC_CHECK_LIB(Xpm, main,
+    [
+      AC_DEFINE([HAVE_LIBXPM], [1], [Define if libXpm is available])
+      LIBXPM_CFLAGS="$LIBX11_CFLAGS"
+      LIBXPM_LDFLAGS="$LIBX11_LDFLAGS"
+      LIBXPM_LIBS="$LIBX11_LIBS"
+      if ! echo $LIBXPM_LIBS | grep -q -- '-lXpm'; then
+        LIBXPM_LIBS="$LIBXPM_LIBS -lXpm"
+      fi
+    ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS -lXpm])
+  fi
+  AC_SUBST([LIBXPM_CFLAGS])
+  AC_SUBST([LIBXPM_LDFLAGS])
+  AC_SUBST([LIBXPM_LIBS])
+])
+
+AC_DEFUN([BM_LIBXPM_REQUIRE],
+[
+  AC_REQUIRE([BM_LIBX11_REQUIRE])
+  AC_REQUIRE([BM_LIBXPM])
+  if test -z "$LIBXPM_LIBS"; then
+    AC_MSG_ERROR([The Xpm library was not found on you system])
+  fi
+])
+
 AC_DEFUN([BM_LIBXINERAMA],
 [
   AC_ARG_ENABLE(xinerama,
