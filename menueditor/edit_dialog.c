@@ -245,11 +245,23 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   }else if(!xmlStrcmp(node->name,(xmlChar*)"menu")){
     GtkWidget* name_label;
     GtkWidget* table;
+    GtkWidget *icon_label;
+    GtkWidget *button_browse;
+    GtkWidget* hbox_icon;
 
     name_label = gtk_label_new(_("Name :"));
     name_entry = gtk_entry_new();
 
-    table = gtk_table_new(2,2,FALSE);
+    /* Icon */
+    hbox_icon = gtk_hbox_new(FALSE, 0);
+    icon_label = gtk_label_new(_("Icon :"));
+    icon_entry = gtk_entry_new();
+    button_browse = gtk_button_new_with_label("...");
+    gtk_box_pack_start (GTK_BOX (hbox_icon), icon_entry, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse, FALSE, FALSE, 0);
+    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_icon_cb), icon_entry);
+
+    table = gtk_table_new(3,2,FALSE);
 
     gtk_table_set_row_spacings(GTK_TABLE(table), 5);
     gtk_table_set_col_spacings(GTK_TABLE(table), 5);
@@ -257,11 +269,15 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
     gtk_table_attach(GTK_TABLE(table), name_label, 0, 1, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
     gtk_table_attach(GTK_TABLE(table), name_entry, 1, 2, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach(GTK_TABLE(table), icon_label, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach(GTK_TABLE(table), hbox_icon, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
 
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), table, FALSE, FALSE, 0);
 
     if(prop_name)
       gtk_entry_set_text(GTK_ENTRY(name_entry), prop_name);
+    if(prop_icon)
+      gtk_entry_set_text(GTK_ENTRY(icon_entry), prop_icon);
 
     gtk_window_set_default_size(GTK_WINDOW(dialog),200,100);
   }else if(!xmlStrcmp(node->name,(xmlChar*)"builtin")){
@@ -298,7 +314,6 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
     if(prop_name)
       gtk_entry_set_text(GTK_ENTRY(name_entry), prop_name);
-
     if(prop_icon)
       gtk_entry_set_text(GTK_ENTRY(icon_entry), prop_icon);
 
@@ -306,11 +321,23 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
   }else if(!xmlStrcmp(node->name,(xmlChar*)"title")){
     GtkWidget* name_label;
     GtkWidget* table;
+    GtkWidget *icon_label;
+    GtkWidget *button_browse;
+    GtkWidget *hbox_icon;
+
+    table = gtk_table_new(3,2,FALSE);
+
+    /* Icon */
+    hbox_icon = gtk_hbox_new(FALSE, 0);
+    icon_label = gtk_label_new(_("Icon :"));
+    icon_entry = gtk_entry_new();
+    button_browse = gtk_button_new_with_label("...");
+    gtk_box_pack_start (GTK_BOX (hbox_icon), icon_entry, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox_icon), button_browse, FALSE, FALSE, 0);
+    g_signal_connect ((gpointer) button_browse, "clicked", G_CALLBACK (browse_icon_cb), icon_entry);
 
     name_label = gtk_label_new(_("Title :"));
     name_entry = gtk_entry_new();
-
-    table = gtk_table_new(2,2,FALSE);
 
     gtk_table_set_row_spacings(GTK_TABLE(table), 5);
     gtk_table_set_col_spacings(GTK_TABLE(table), 5);
@@ -318,11 +345,15 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
     gtk_table_attach(GTK_TABLE(table), name_label, 0, 1, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
     gtk_table_attach(GTK_TABLE(table), name_entry, 1, 2, 0, 1, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach(GTK_TABLE(table), icon_label, 0, 1, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
+    gtk_table_attach(GTK_TABLE(table), hbox_icon, 1, 2, 1, 2, GTK_FILL, GTK_SHRINK, 0, 0);
 
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), table, FALSE, FALSE, 0);
 
     if(prop_name)
       gtk_entry_set_text(GTK_ENTRY(name_entry), prop_name);
+    if(prop_icon)
+      gtk_entry_set_text(GTK_ENTRY(icon_entry), prop_icon);
 
     gtk_window_set_default_size(GTK_WINDOW(dialog),200,100);
   }
@@ -388,15 +419,30 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
       g_free(name);
       g_free(command);
     }else if(!xmlStrcmp(node->name,(xmlChar*)"menu")){
-      gchar *name=NULL;
-      
+      gchar *name = NULL;
+      GdkPixbuf *icon = NULL;
+
       name = g_strdup_printf(MENU_FORMAT,
 			     gtk_entry_get_text(GTK_ENTRY(name_entry)));
 
-      gtk_tree_store_set (menueditor_app.treestore, &iter, 0, NULL, 
-			  NAME_COLUMN, name, -1);
       xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
 
+      /* TODO unref the icon */
+      if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
+	xmlAttrPtr icon_prop;
+
+	/* Remove the property in the xml tree */
+	icon_prop = xmlHasProp(node, "icon");
+	xmlRemoveProp(icon_prop);
+      }else{
+	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
+	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
+      }
+
+      gtk_tree_store_set (menueditor_app.treestore, &iter,
+			  ICON_COLUMN, icon, 
+			  NAME_COLUMN, name, -1);
+	    
       g_free(name);
     }else if(!xmlStrcmp(node->name,(xmlChar*)"builtin")){
       GdkPixbuf *icon = NULL;
@@ -426,15 +472,31 @@ void treeview_activate_cb(GtkWidget *widget, GtkTreePath *path, GtkTreeViewColum
 
       g_free(name);
     }else if(!xmlStrcmp(node->name,(xmlChar*)"title")){
-      gchar *name=NULL;
+      GdkPixbuf *icon = NULL;
+      gchar *name = NULL;
       
       name = g_strdup_printf(TITLE_FORMAT,
 			     gtk_entry_get_text(GTK_ENTRY(name_entry)));
 
-      gtk_tree_store_set (menueditor_app.treestore, &iter, 0, NULL, 
-			  NAME_COLUMN, name, -1);
       xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(name_entry)));
       
+      /* TODO unref the icon */
+      if(strlen(gtk_entry_get_text(GTK_ENTRY(icon_entry)))==0){
+	xmlAttrPtr icon_prop;
+
+	/* Remove the property in the xml tree */
+	icon_prop = xmlHasProp(node, "icon");
+	xmlRemoveProp(icon_prop);
+      }else{
+	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(icon_entry)), ICON_SIZE);
+	xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(icon_entry)));
+      }
+
+      gtk_tree_store_set (menueditor_app.treestore, &iter,
+			  ICON_COLUMN, icon, 
+			  NAME_COLUMN, name, -1);
+
+
       g_free(name);
     }else if(!xmlStrcmp(node->name,(xmlChar*)"include")){
       gchar *name=NULL;

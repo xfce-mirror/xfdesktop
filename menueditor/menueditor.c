@@ -207,13 +207,21 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
   GtkTreeIter c;
 
   while(menu != NULL){
-    gboolean hidden=FALSE;
-    xmlChar *prop_visible=NULL;
+    gboolean hidden = FALSE;
+    GdkPixbuf *icon = NULL;
+    xmlChar *prop_visible = NULL;
+    xmlChar *prop_icon = NULL;
 
     prop_visible = xmlGetProp(menu, "visible");
+    prop_icon = xmlGetProp(menu, "icon");
 
+    /* Visible */
     if(prop_visible && !xmlStrcmp(prop_visible,(xmlChar*)"no"))
       hidden=TRUE;
+
+    /* Load the icon */
+    if(prop_icon)
+	icon = xfce_load_themed_icon(prop_icon, ICON_SIZE);
 
     /* separator */
     if(!xmlStrcmp(menu->name,(xmlChar*)"separator")){
@@ -223,7 +231,8 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 			     _("--- separator ---"));
 
       gtk_tree_store_append (menueditor_app.treestore, &c, p);
-      gtk_tree_store_set (menueditor_app.treestore, &c, 0, NULL,
+      gtk_tree_store_set (menueditor_app.treestore, &c,
+			  ICON_COLUMN, icon,
 			  NAME_COLUMN, name, 
 			  COMMAND_COLUMN, "",
 			  HIDDEN_COLUMN, hidden,
@@ -233,36 +242,27 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
     }
     /* launcher */
     if(!xmlStrcmp(menu->name,(xmlChar*)"app")){
-      GdkPixbuf *icon = NULL;
       gchar *name = NULL;
       gchar *command = NULL;
       xmlChar* prop_name = NULL;
       xmlChar* prop_cmd = NULL;
-      xmlChar *prop_icon = NULL;
 
       prop_name = xmlGetProp(menu, "name");
       prop_cmd = xmlGetProp(menu, "cmd");
-      prop_icon = xmlGetProp(menu, "icon");
 
       name = g_strdup_printf(NAME_FORMAT, prop_name);
       command = g_strdup_printf(COMMAND_FORMAT, prop_cmd);
 
       gtk_tree_store_append (menueditor_app.treestore, &c, p);
       gtk_tree_store_set (menueditor_app.treestore, &c, 
+			  ICON_COLUMN, icon,
 			  NAME_COLUMN, name,
 			  COMMAND_COLUMN, command,
 			  HIDDEN_COLUMN, hidden,
 			  POINTER_COLUMN, menu, -1);
-      if(prop_icon)
-	/* Load the icon */
-	icon = xfce_load_themed_icon(prop_icon, ICON_SIZE);
-
-      gtk_tree_store_set (menueditor_app.treestore, &c,
-			  ICON_COLUMN, icon, -1);
-
+      
       xmlFree(prop_name);
       xmlFree(prop_cmd);
-      xmlFree(prop_icon);
       g_free(command);
       g_free(name);
     }
@@ -277,7 +277,8 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
       name = g_strdup_printf(MENU_FORMAT, prop_name);
       
       gtk_tree_store_append (menueditor_app.treestore, &c, p);
-      gtk_tree_store_set (menueditor_app.treestore, &c, 0, NULL,
+      gtk_tree_store_set (menueditor_app.treestore, &c, 
+			  ICON_COLUMN, icon,
 			  NAME_COLUMN, name,
 			  COMMAND_COLUMN, "",
 			  HIDDEN_COLUMN, hidden,
@@ -306,7 +307,8 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
 	src = g_strdup_printf(INCLUDE_PATH_FORMAT, prop_src);
       
       gtk_tree_store_append (menueditor_app.treestore, &c, p);
-      gtk_tree_store_set (menueditor_app.treestore, &c, 0, NULL,
+      gtk_tree_store_set (menueditor_app.treestore, &c, 
+			  ICON_COLUMN, icon,
 			  NAME_COLUMN, name,
 			  COMMAND_COLUMN, src,
 			  HIDDEN_COLUMN, hidden,
@@ -324,33 +326,23 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
       gchar *cmd = NULL;
       xmlChar *prop_name = NULL;
       xmlChar *prop_cmd = NULL;
-      xmlChar *prop_icon = NULL;
 
       prop_name = xmlGetProp(menu, "name");
       prop_cmd = xmlGetProp(menu , "cmd");
-      prop_icon = xmlGetProp(menu, "icon");
 
       name = g_strdup_printf(NAME_FORMAT, prop_name);
       cmd = g_strdup_printf(COMMAND_FORMAT, prop_cmd);
 
       gtk_tree_store_append (menueditor_app.treestore, &c, p);
-      gtk_tree_store_set (menueditor_app.treestore, &c, 0, NULL,
+      gtk_tree_store_set (menueditor_app.treestore, &c, 
+			  ICON_COLUMN, icon,
 			  NAME_COLUMN, name,
 			  COMMAND_COLUMN, cmd,
 			  HIDDEN_COLUMN, hidden,
 			  POINTER_COLUMN, menu, -1);
 
-      if(prop_icon){
-	GdkPixbuf *icon;
-
-	icon = xfce_load_themed_icon (prop_icon, ICON_SIZE);
-	gtk_tree_store_set (menueditor_app.treestore, &c,
-			    ICON_COLUMN, icon, -1);
-      }
-
       xmlFree(prop_name);
       xmlFree(prop_cmd);
-      xmlFree(prop_icon);
       g_free(name);
       g_free(cmd);
     }
@@ -364,7 +356,8 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
       title = g_strdup_printf(TITLE_FORMAT, prop_name);
 
       gtk_tree_store_append (menueditor_app.treestore, &c, p);
-      gtk_tree_store_set (menueditor_app.treestore, &c, 0, NULL, 
+      gtk_tree_store_set (menueditor_app.treestore, &c, 
+			  ICON_COLUMN, icon, 
 			  NAME_COLUMN, title,
 			  COMMAND_COLUMN, "", 
 			  HIDDEN_COLUMN, hidden, 
@@ -373,7 +366,9 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
       xmlFree(prop_name);
       g_free(title);
     }
+
     xmlFree(prop_visible);
+    xmlFree(prop_icon);
     menu = menu->next;
   }
 

@@ -52,8 +52,8 @@ void addentry_option_submenu_cb(GtkWidget *widget, struct _controls_add *control
   gtk_widget_set_sensitive(controls->entry_name,TRUE);
   gtk_widget_set_sensitive(controls->label_command,FALSE);
   gtk_widget_set_sensitive(controls->entry_command,FALSE);
-  gtk_widget_set_sensitive(controls->label_icon,FALSE);
-  gtk_widget_set_sensitive(controls->entry_icon,FALSE);
+  gtk_widget_set_sensitive(controls->label_icon,TRUE);
+  gtk_widget_set_sensitive(controls->entry_icon,TRUE);
   gtk_widget_set_sensitive(controls->snotify_checkbutton,FALSE);
   gtk_widget_set_sensitive(controls->term_checkbutton,FALSE);
 }
@@ -78,8 +78,8 @@ void addentry_option_title_cb(GtkWidget *widget, struct _controls_add *controls)
   gtk_widget_set_sensitive(controls->entry_name,TRUE);
   gtk_widget_set_sensitive(controls->label_command,FALSE);
   gtk_widget_set_sensitive(controls->entry_command,FALSE);
-  gtk_widget_set_sensitive(controls->label_icon,FALSE);
-  gtk_widget_set_sensitive(controls->entry_icon,FALSE);
+  gtk_widget_set_sensitive(controls->label_icon,TRUE);
+  gtk_widget_set_sensitive(controls->entry_icon,TRUE);
   gtk_widget_set_sensitive(controls->snotify_checkbutton,FALSE);
   gtk_widget_set_sensitive(controls->term_checkbutton,FALSE);
 }
@@ -91,8 +91,8 @@ void addentry_option_quit_cb(GtkWidget *widget, struct _controls_add *controls)
   gtk_widget_set_sensitive(controls->entry_name,TRUE);
   gtk_widget_set_sensitive(controls->label_command,FALSE);
   gtk_widget_set_sensitive(controls->entry_command,FALSE);
-  gtk_widget_set_sensitive(controls->label_icon,TRUE );
-  gtk_widget_set_sensitive(controls->entry_icon,TRUE );
+  gtk_widget_set_sensitive(controls->label_icon,TRUE);
+  gtk_widget_set_sensitive(controls->entry_icon,TRUE);
   gtk_widget_set_sensitive(controls->snotify_checkbutton,FALSE);
   gtk_widget_set_sensitive(controls->term_checkbutton,FALSE);
 }
@@ -373,6 +373,12 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
       xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(entry_name)));
       xmlSetProp(node,"visible","yes");
 
+      if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_icon)))!=0){
+	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
+	if(icon)
+	  xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(entry_icon)));
+      }
+
       /* Append entry in the tree */
       if(!ret_selection)
 	gtk_tree_store_append (menueditor_app.treestore, &iter, NULL);
@@ -400,7 +406,8 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
       name = g_strdup_printf(MENU_FORMAT,
 			     gtk_entry_get_text(GTK_ENTRY(entry_name)));
 
-      gtk_tree_store_set (menueditor_app.treestore, &iter, 0, NULL, 
+      gtk_tree_store_set (menueditor_app.treestore, &iter,
+			  ICON_COLUMN, icon, 
 			  NAME_COLUMN, name,
 			  COMMAND_COLUMN, "", POINTER_COLUMN, node, -1);
 
@@ -474,9 +481,15 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 	xmlFreeNode(node);
 	break;
       }
-      
+  
       xmlSetProp(node,"name",gtk_entry_get_text(GTK_ENTRY(entry_name)));
       xmlSetProp(node,"visible","yes");
+
+      if(strlen(gtk_entry_get_text(GTK_ENTRY(entry_icon)))!=0){
+	icon = xfce_load_themed_icon((gchar*) gtk_entry_get_text(GTK_ENTRY(entry_icon)), ICON_SIZE);
+	if(icon)
+	  xmlSetProp(node,"icon",gtk_entry_get_text(GTK_ENTRY(entry_icon)));
+      }
 
       /* Append entry in the tree */
       if(!ret_selection)
@@ -505,7 +518,8 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
       name = g_strdup_printf(TITLE_FORMAT,
 			     gtk_entry_get_text(GTK_ENTRY(entry_name)));
 
-      gtk_tree_store_set (menueditor_app.treestore, &iter, 0, NULL, 
+      gtk_tree_store_set (menueditor_app.treestore, &iter,
+			  ICON_COLUMN, icon, 
 			  NAME_COLUMN, name,
 			  COMMAND_COLUMN, "", POINTER_COLUMN, node, -1);
 
