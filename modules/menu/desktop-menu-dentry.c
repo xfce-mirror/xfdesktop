@@ -229,23 +229,26 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
 		q = (gchar *)path;
 	
 	if(desktop_menu->use_menu_icons) {
+		mi = gtk_image_menu_item_new_with_label(q);
+		
 		icon = desktop_menuspec_displayname_to_icon(q);
 		if(icon) {
 			pix = xfce_load_themed_icon(icon, _xfce_desktop_menu_icon_size);
 			if(pix) {
-				mi = gtk_image_menu_item_new_with_label(q);
-				gtk_widget_set_name(mi, "xfdesktopmenu");
 				img = gtk_image_new_from_pixbuf(pix);
 				gtk_widget_show(img);
 				gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
 				g_object_unref(G_OBJECT(pix));
 			}
 		}
-	}
-	if(!mi) {
+		if(!pix) {
+			img = gtk_image_new_from_pixbuf(dummy_icon);
+			gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+		}
+	} else
 		mi = gtk_menu_item_new_with_label(q);
-		gtk_widget_set_name(mi, "xfdesktopmenu");
-	}
+	
+	gtk_widget_set_name(mi, "xfdesktopmenu");
 	g_object_set_data_full(G_OBJECT(mi), "item-name", g_strdup(q),
 			(GDestroyNotify)g_free);
 	
