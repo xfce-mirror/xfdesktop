@@ -176,6 +176,15 @@ menu_settings_changed(McsClient *client, McsAction action, McsSetting *setting,
 }
 
 void
+menu_reload()
+{
+#ifdef USE_DESKTOP_MENU
+	if(desktop_menu)
+		xfce_desktop_menu_force_regen(desktop_menu);
+#endif
+}
+
+void
 menu_cleanup()
 {
 #ifdef USE_DESKTOP_MENU

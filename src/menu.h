@@ -35,6 +35,7 @@ G_BEGIN_DECLS
 void menu_init(McsClient *mcs_client);
 gboolean menu_settings_changed(McsClient *client, McsAction action, McsSetting *setting, gpointer user_data);
 void popup_desktop_menu(GdkScreen *gscreen, gint button, guint32 time);
+void menu_reload();
 void menu_cleanup();
 
 G_END_DECLS

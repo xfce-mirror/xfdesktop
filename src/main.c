@@ -164,6 +164,7 @@ client_message_received(GtkWidget *w, GdkEventClient *evt, gpointer user_data)
 	if(evt->data_format == 8) {
 		if(!strcmp(RELOAD_MESSAGE, evt->data.b)) {
 			settings_reload_all();
+			menu_reload();
 			return TRUE;
 		} else if(!strcmp(MENU_MESSAGE, evt->data.b)) {
 			popup_desktop_menu(gtk_widget_get_screen(w), 0, GDK_CURRENT_TIME);
@@ -208,6 +209,7 @@ sighandler_cb(int sig)
 	switch(sig) {
 		case SIGUSR1:
 			settings_reload_all();
+			menu_reload();
 			break;
 		
 		default:
