@@ -530,7 +530,7 @@ update_preview_cb(XfceFileChooser *chooser, gpointer data)
 	filename = xfce_file_chooser_get_filename(chooser);
 	
 	if(g_file_test(filename, G_FILE_TEST_IS_REGULAR))
-		pix = gdk_pixbuf_new_from_file_at_size(filename, 250, 250, NULL);
+		pix = xfce_pixbuf_new_from_file_at_size(filename, 250, 250, NULL);
 	g_free(filename);
 	
 	if(pix) {
