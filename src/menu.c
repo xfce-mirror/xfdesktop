@@ -51,7 +51,7 @@ MenuItemType;
 typedef struct __MenuItemStruct
 {
     MenuItemType type;          /* Type of Menu Item    */
-    char *path;                 /* path to item         */
+    char *path;                 /* itemfactory path to item */
     char *cmd;                  /* shell cmd to execute */
     gboolean term;              /* execute in terminal  */
     GdkPixbuf *icon;            /* icon to display      */
@@ -101,18 +101,10 @@ void do_term_exec(gpointer callback_data, guint callback_action,
                   GtkWidget * widget)
 {
     char *cmd;
-    static const char *term_cmd = NULL;
 
     TRACE();
-    if(!term_cmd)
-    {
-        term_cmd = g_getenv("TERMCMD");
 
-        if(!term_cmd)
-            term_cmd = "xterm";
-    }
-
-    cmd = g_strconcat(term_cmd, " -e ", (char *)callback_data, NULL);
+    cmd = g_strconcat("xfterm4 -e ", (char *)callback_data, NULL);
 
     g_spawn_command_line_async(cmd, NULL);
 
@@ -135,6 +127,10 @@ void do_builtin(gpointer callback_data, guint callback_action, GtkWidget * widge
         free_menu_data(MainMenuData);
         ifactory = NULL;
         MainMenuData = NULL;
+    }
+    else if (!strcmp(builtin, "quit"))
+    {
+	quit();
     }
 }
 
