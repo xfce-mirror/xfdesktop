@@ -54,12 +54,10 @@
     <app name="Terminal" cmd="xfterm4" />
     <app name="File Manager (xffm)" cmd="xffm"/>
     <app name="Web Browser" cmd="mozilla"/>
-    <app name="Editor (gvim)" cmd="gvim"/>
-    <app name="Editor (emacs)" cmd="emacs"/>
     <separator/>
     <menu name="Settings" visible="yes">
-        <app name="All Settings" cmd="xfce-setting-show"/>
-	<separator/>
+        <app name="All Settings..." cmd="xfce-setting-show"/>
+        <app name="Backdrop..." cmd="xfce-setting-show backdrop"/>
 <!-- 
         <app name="Background" cmd="xfce-setting-show backdrop"/>
 	<app name="Workspaces" cmd="xfce-setting-show workspaces"/>
