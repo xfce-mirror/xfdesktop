@@ -1,6 +1,6 @@
 /*   menueditor.c */
 
-/*  Copyright (C)  Jean-François Wauthy under GNU GPL
+/*  Copyright (C)  Jean-FranÃ§ois Wauthy under GNU GPL
  *
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -154,7 +154,7 @@ gboolean command_exists(const gchar *command)
 void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command){
   GtkWidget *filesel_dialog;
 
-  filesel_dialog = xfce_file_chooser_dialog_new (_("Select command"), GTK_WINDOW (menueditor_app.main_window),
+  filesel_dialog = xfce_file_chooser_new (_("Select command"), GTK_WINDOW (menueditor_app.main_window),
 						 XFCE_FILE_CHOOSER_ACTION_OPEN,
 						 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 						 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
@@ -179,7 +179,7 @@ void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon){
   //TODO add preview and filter for icon
   GtkWidget *filesel_dialog;
 
-  filesel_dialog = xfce_file_chooser_dialog_new (_("Select icon"), GTK_WINDOW (menueditor_app.main_window),
+  filesel_dialog = xfce_file_chooser_new (_("Select icon"), GTK_WINDOW (menueditor_app.main_window),
 						 XFCE_FILE_CHOOSER_ACTION_OPEN,
 						 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 						 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
@@ -469,7 +469,7 @@ void menu_open_cb(GtkWidget *widget, gpointer data)
 
   }
 
-  filesel_dialog = xfce_file_chooser_dialog_new (_("Open menu file"), GTK_WINDOW (menueditor_app.main_window),
+  filesel_dialog = xfce_file_chooser_new (_("Open menu file"), GTK_WINDOW (menueditor_app.main_window),
 						 XFCE_FILE_CHOOSER_ACTION_OPEN,
 						 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 						 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
@@ -542,7 +542,7 @@ void menu_saveas_cb(GtkWidget *widget, gpointer data)
 {
   GtkWidget *filesel_dialog;
 
-  filesel_dialog = xfce_file_chooser_dialog_new (_("Save as..."), GTK_WINDOW (menueditor_app.main_window),
+  filesel_dialog = xfce_file_chooser_new (_("Save as..."), GTK_WINDOW (menueditor_app.main_window),
 						 XFCE_FILE_CHOOSER_ACTION_SAVE,
 						 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 						 GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT, NULL);

@@ -419,7 +419,7 @@ void edit_selection(GtkTreeSelection *selection)
   gtk_widget_show_all(dialog);
 
   /* Commit change if needed */
-  while(response = gtk_dialog_run (GTK_DIALOG (dialog))){
+  while((response = gtk_dialog_run (GTK_DIALOG (dialog)))){
     if(response == GTK_RESPONSE_OK){
       GValue val_icon = {0,};
       GdkPixbuf *icon = NULL;

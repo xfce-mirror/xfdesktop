@@ -267,7 +267,6 @@ filebutton_click_cb(GtkWidget *w, gpointer user_data)
 			GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 	xfce_file_chooser_add_shortcut_folder(XFCE_FILE_CHOOSER(chooser),
 			DATADIR "/pixmaps", NULL);
-	xfce_file_chooser_set_local_only(XFCE_FILE_CHOOSER(chooser), TRUE);
 	gtk_dialog_set_default_response(GTK_DIALOG(chooser), GTK_RESPONSE_ACCEPT);
 	
 	filter = xfce_file_filter_new();

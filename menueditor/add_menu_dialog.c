@@ -169,7 +169,7 @@ void add_menu_cb (GtkWidget *widget, gpointer data)
 
   gtk_widget_show_all(dialog);
 
-  while(response = gtk_dialog_run (GTK_DIALOG (dialog))){
+  while((response = gtk_dialog_run (GTK_DIALOG (dialog)))){
     if(response == GTK_RESPONSE_OK){
       GdkPixbuf *icon = NULL;
       xmlNodePtr node = NULL, root_node = NULL, selection_node = NULL;
