@@ -1,3 +1,62 @@
+2003-03-15  bmeurer
+
+	* Makefile.am, Makefile.in, aclocal.m4, configure, configure.ac,
+	xfdesktop.spec.in, backdrops/Makefile.in, common/Makefile.am,
+	common/Makefile.in, doc/Makefile.in, doc/html/Makefile.in,
+	doc/images/Makefile.in, doc/xml/Makefile.in, m4/depends.m4,
+	settings/Makefile.am, settings/Makefile.in, src/Makefile.am,
+	src/Makefile.in: autotools update.
+
+2003-03-15  bmeurer
+
+	* autogen.sh: Removed --enable-debug=full
+
+2003-03-15  bmeurer
+
+	* configure, configure.ac: Update
+
+2003-03-14  bmeurer
+
+	* Makefile.am, Makefile.in, TODO, aclocal.m4, autogen.sh,
+	config.h.in, configure, configure.ac, backdrops/Makefile.in,
+	common/Makefile.am, common/Makefile.in, common/backdrop.c,
+	common/backdrop.h, doc/Makefile.in, doc/html/Makefile.in,
+	doc/images/Makefile.in, doc/xml/Makefile.in, m4/X11.m4,
+	m4/rpath.m4, settings/Makefile.am, settings/Makefile.in,
+	settings/backdrop-mgr.c, settings/backdrop_settings.c,
+	settings/backdrop_settings.h, src/Makefile.am, src/Makefile.in,
+	src/backdrop.c, src/backdrop.h, src/main.c, src/main.h: Autotools
+	update 2nd stage. Started putting common code into common/. 
+	Reverted removal of g_file_get_contents().
+
+2003-03-14  bmeurer
+
+	* settings/backdrop-mgr.c, src/backdrop.c: Implemented the
+	"previndex-Feature" as mentioned by Jasper.
+
+2003-03-14  bmeurer
+
+	* m4/debug.m4: Leftover from the last commit.
+
+2003-03-14  bmeurer
+
+	* AUTHORS, Makefile.am, Makefile.in, README, TODO, aclocal.m4,
+	autogen.sh, config.guess, config.h.in, config.sub, configure,
+	configure.ac, ltcf-c.sh, ltconfig, ltmain.sh,
+	backdrops/Makefile.in, doc/Makefile.in, doc/html/Makefile.in,
+	doc/images/Makefile.in, doc/xml/Makefile.in, settings/Makefile.in,
+	settings/backdrop-mgr.c, settings/backdrop_settings.c,
+	settings/settings_common.c, src/Makefile.in, src/backdrop.c,
+	src/main.c, src/main.h, src/menu.c: Autotools update. Bugfixes in
+	backdrop code (some of the memory leaks are fixed now, the others
+	are to come soon, hopefully). Use xfce_*() instead of show_*(),
+	also changed and added some message, so translations need to be
+	updated.
+
+2003-03-13  xfce
+
+	* ChangeLog: Update Changelogs
+
 2003-03-01  xfce
 
 	* Makefile.in, aclocal.m4, config.guess, config.h.in, config.sub,
