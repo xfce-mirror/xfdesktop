@@ -409,8 +409,8 @@ set_backdrop(const char *path, int style, int show, GdkColor *color)
         XID id = GDK_DRAWABLE_XID(pixmap);
 	
 	gstyle->bg_pixmap[GTK_STATE_NORMAL] = pixmap;
-	gdk_window_set_back_pixmap (GDK_ROOT_PARENT (), pixmap, 0);
-	gdk_window_clear (GDK_ROOT_PARENT ());
+	gdk_window_set_back_pixmap (gdk_get_default_root_window (), pixmap, 0);
+	gdk_window_clear (gdk_get_default_root_window ());
 
         gdk_property_change(gdk_get_default_root_window(),
                             gdk_atom_intern("_XROOTPMAP_ID", FALSE),
@@ -421,7 +421,7 @@ set_backdrop(const char *path, int style, int show, GdkColor *color)
     {
 	gstyle->bg_pixmap[GTK_STATE_NORMAL] = NULL;
 	gdk_property_delete(gdk_get_default_root_window(), gdk_atom_intern("_XROOTPMAP_ID", FALSE));
-	gdk_window_clear (GDK_ROOT_PARENT ());
+	gdk_window_clear (gdk_get_default_root_window ());
     }
 
     gdk_flush ();

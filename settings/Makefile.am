@@ -30,7 +30,11 @@ backdrop_settings_la_CFLAGS =						\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
 	@PANGO_CFLAGS@							\
-	-DDATADIR=\"$(datadir)\" 
+	-DDATADIR=\"$(datadir)\" 					\
+	-DG_DISABLE_DEPRECATED						\
+	-DGTK_DISABLE_DEPRECATED					\
+	-DGDK_DISABLE_DEPRECATED					\
+	-DGDK_PIXBUF_DISABLE_DEPRECATED
 
 backdrop_settings_la_LIBADD =						\
 	$(top_builddir)/common/libxfdesktop.la

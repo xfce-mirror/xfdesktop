@@ -23,7 +23,12 @@ xfdesktop_CFLAGS = 							\
 	@PANGO_CFLAGS@							\
 	-DDATADIR=\"$(pkgdatadir)\"					\
 	-DSYSCONFDIR=\"$(sysconfdir)\"					\
-	-DVERSION=\"@VERSION@\"
+	-DVERSION=\"@VERSION@\" 					\
+	-DG_DISABLE_DEPRECATED						\
+	-DGTK_DISABLE_DEPRECATED					\
+	-DGDK_DISABLE_DEPRECATED					\
+	-DGDK_PIXBUF_DISABLE_DEPRECATED
+	
 
 xfdesktop_LDADD =							\
 	$(top_builddir)/common/libxfdesktop.la				\
