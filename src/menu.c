@@ -897,7 +897,7 @@ menu_init (XfceDesktop * xfdesktop)
 	gtk_icon_theme_prepend_search_path(itheme, XFCEDATADIR "/themes");
 	if(kdedir) {
 		kde_icon_dir = g_strdup_printf("%s/share/icons", kdedir);
-		gtk_icon_theme_append_search_path(itheme, extradir);
+		gtk_icon_theme_append_search_path(itheme, kde_icon_dir);
 		g_free(kde_icon_dir);
 	}
 	
