@@ -64,9 +64,6 @@
 #define PATH_MAX 4096
 #endif
 
-#include <X11/X.h>
-#include <X11/Xlib.h>
-
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <glib.h>
@@ -79,15 +76,6 @@
 #include "desktop-menu-file.h"
 #include "desktop-menu-dentry.h"
 #include "desktop-menu-cache.h"
-
-#ifndef PATH_MAX
-#define PATH_MAX 4096
-#endif
-
-/* Search path for menu.xml file */
-#define SEARCHPATH	(SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%L:"\
-                         SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%l:"\
-                         SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F")
 
 enum {
 	MI_BUILTIN_QUIT = 1
@@ -562,6 +550,9 @@ menu_file_xml_end(GMarkupParseContext *context, const gchar *element_name,
 	gchar *p;
 	
 	//TRACE("dummy");
+	
+	while(gtk_events_pending())
+		gtk_main_iteration();
 	
 	if(!strcmp(element_name, "menu")) {
 		if(state->hidelevel)
