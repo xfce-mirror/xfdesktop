@@ -26,6 +26,8 @@
 #include <config.h>
 #endif
 
+#include <stdio.h>
+
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
 #endif
@@ -44,6 +46,13 @@
 #include <unistd.h>
 #endif
 
+#ifdef HAVE_FCNTL_H
+#include <fcntl.h>
+#endif
+
+#include <ctype.h>
+#include <errno.h>
+
 #ifdef HAVE_TIME_H
 #include <time.h>
 #endif
@@ -53,8 +62,7 @@
 #include <gtk/gtkwindow.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/netk-screen.h>
-#include <libxfcegui4/netk-util.h>
+#include <libxfcegui4/libxfcegui4.h>
 
 #include "xfce-desktop.h"
 #include "xfdesktop-common.h"
@@ -93,26 +101,60 @@ set_imgfile_root_property(XfceDesktop *desktop, const gchar *filename,
 				(guchar *)filename, strlen(filename)+1);
 }
 
-G_INLINE_FUNC gint
-count_elements(gchar **list)
+static void
+save_list_file_minus_one(const gchar *filename, const gchar **files, gint badi)
 {
-	gchar **c;
+	FILE *fp;
+	gint fd, i;
+
+#ifdef O_EXLOCK
+	if((fd = open (filename, O_CREAT|O_EXLOCK|O_TRUNC|O_WRONLY, 0640)) < 0) {
+#else
+	if((fd = open (filename, O_CREAT| O_TRUNC|O_WRONLY, 0640)) < 0) {
+#endif
+		xfce_err (_("Could not save file %s: %s\n\n"
+				"Please choose another location or press "
+				"cancel in the dialog to discard your changes"),
+				filename, g_strerror(errno));
+		return;
+	}
+
+    if((fp = fdopen (fd, "w")) == NULL) {
+		g_warning ("Unable to fdopen(%s). This should not happen!\n", filename);
+		close(fd);
+		return;
+	}
+
+    fprintf (fp, "%s\n", LIST_TEXT);
 	
-	for(c = list; *c; c++);
+	for(i = 0; files[i] && *files[i] && *files[i] != '\n'; i++) {
+		if(i != badi)
+			fprintf(fp, "%s\n", files[i]);
+	}
 	
-	return (c - list);
+	fclose(fp);
 }
 
-static const gchar *
-get_path_from_listfile(const gchar *listfile)
+G_INLINE_FUNC gint
+count_elements(const gchar **list)
 {
-	static gboolean __initialized = FALSE;
+	gint i, c = 0;
+	
+	for(i = 0; list[i]; i++) {
+		if(*list[i] && *list[i] != '\n')
+			c++;
+	}
+	
+	return c;
+}
+
+static const gchar **
+get_listfile_contents(const gchar *listfile)
+{
 	static gchar *prevfile = NULL;
 	static gchar **files = NULL;
-	static gint previndex = -1;
 	static time_t mtime = 0;
 	struct stat st;
-	gint i, n;
 	
 	if(!listfile) {
 		if(prevfile) {
@@ -139,34 +181,67 @@ get_path_from_listfile(const gchar *listfile)
 	
 		files = get_list_from_file(listfile);
 		prevfile = g_strdup(listfile);
-		previndex = -1;
 		mtime = st.st_mtime;
 	}
 	
-	n = count_elements(files);
-	if(!n)
-		return NULL;
-	else if(n == 1)
-		return (const gchar *)files[0];
+	return (const gchar **)files;
+}
+
+static const gchar *
+get_path_from_listfile(const gchar *listfile)
+{
+	static gboolean __initialized = FALSE;
+	static gint previndex = -1;
+	gint i, n;
+	const gchar **files;
 	
 	/* NOTE: 4.3BSD random()/srandom() are a) stronger and b) faster than
 	* ANSI-C rand()/srand(). So we use random() if available
 	*/
 	if (!__initialized)	{
+		guint seed = time(NULL) ^ (getpid() + (getpid() << 15));
 #ifdef HAVE_SRANDOM
-		srandom(time(NULL));
+		srandom(seed);
 #else
-		srand(time(NULL));
+		srand(seed);
 #endif
+		__initialized = TRUE;
 	}
 	
 	do {
+		/* get the contents of the list file */
+		files = get_listfile_contents(listfile);
+		
+		/* if zero or one item, return immediately */
+		n = count_elements(files);
+		if(!n)
+			return NULL;
+		else if(n == 1)
+			return (const gchar *)files[0];
+		
+		/* pick a random item */
+		do {
 #ifdef HAVE_SRANDOM
-		i = random() % n;
+			i = random() % n;
 #else
-		i = rand() % n;
+			i = rand() % n;
 #endif
-	} while(i == previndex);
+			if(i != previndex) /* same as last time? */
+				break;
+		} while(1);
+		
+		g_print("picked i=%d, %s\n", i, files[i]);
+		/* validate the image; if it's good, return it */
+		if(xfdesktop_check_image_file(files[i]))
+			break;
+		
+		g_print("file not valid, ditching\n");
+		
+		/* bad image: remove it from the list and write it out */
+		save_list_file_minus_one(listfile, files, i);
+		previndex = -1;
+		/* loop and try again */
+	} while(1);
 	
 	return (const gchar *)files[(previndex = i)];
 }

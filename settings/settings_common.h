@@ -80,6 +80,5 @@ typedef struct {
 } BackdropPanel;
 
 extern void add_spacer (GtkBox *);
-gboolean xfdesktop_check_image_file(const gchar *filename);
 
 #endif /* !__XFDESKTOP_SETTINGS_COMMON_H__ */

@@ -68,9 +68,6 @@ add_file(const gchar *path, GtkListStore *ls)
 {
 	GtkTreeIter iter;
 
-	if(!xfdesktop_check_image_file(path))
-		return;
-
 	gtk_list_store_append(ls, &iter);
 	gtk_list_store_set(ls, &iter, 0, path, 1, PANGO_WEIGHT_NORMAL, -1);
 }
@@ -81,49 +78,17 @@ add_dir(const gchar *path, GtkListStore *ls, GtkWidget *parent)
 	GDir *dir;
 	const gchar *file;
 	gchar fullpath[PATH_MAX];
-	GtkWidget *pdlg, *lbl, *pbar;
-	gchar *pathlbl;
-	gint nfiles = 0, curfile = 0;
 	
 	dir = g_dir_open(path, 0, NULL);
 	if(!dir)
 		return;
-	/* get file count - lame */
-	while(g_dir_read_name(dir))
-		nfiles++;
-	g_dir_rewind(dir);
-	
-	pdlg = gtk_dialog_new_with_buttons(_("Backdrop"), GTK_WINDOW(parent),
-			GTK_DIALOG_NO_SEPARATOR|GTK_DIALOG_DESTROY_WITH_PARENT|GTK_DIALOG_MODAL, NULL);
-	gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 12);
-	
-	pathlbl = g_strdup_printf(_("Adding files from directory %s..."), path);
-	lbl = gtk_label_new(pathlbl);
-	gtk_widget_show(lbl);
-	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), lbl, FALSE, FALSE, 0);
-	
-	add_spacer(GTK_BOX(GTK_DIALOG(pdlg)->vbox));
-	
-	pbar = gtk_progress_bar_new();
-	gtk_widget_show(pbar);
-	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), pbar, FALSE, FALSE, 0);
-	
-	gtk_widget_show(pdlg);
-	while(gtk_events_pending())
-		gtk_main_iteration();
 	
 	while((file = g_dir_read_name(dir))) {
 		g_snprintf(fullpath, PATH_MAX, "%s%s%s", path, G_DIR_SEPARATOR_S, file);
 		if(!g_file_test(fullpath, G_FILE_TEST_IS_DIR))
 			add_file(fullpath, ls);
-		gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(pbar), (gdouble)++curfile / nfiles);
-		while(gtk_events_pending())
-			gtk_main_iteration();
 	}
 	g_dir_close(dir);
-	
-	gtk_widget_destroy(pdlg);
-	g_free(pathlbl);
 }	
 
 /* remove from list */
@@ -147,61 +112,20 @@ static void
 read_file(const gchar *filename, GtkListStore *ls, GtkWidget *parent)
 {
 	gchar **files;
-	gchar **file;
-	GtkWidget *pdlg, *lbl, *pbar;
-	gchar *pathlbl;
-	struct stat st;
-	gint size_tot = -1, size_read = 0;
-	
-	pdlg = gtk_dialog_new_with_buttons(_("Backdrop"), GTK_WINDOW(parent),
-			GTK_DIALOG_NO_SEPARATOR|GTK_DIALOG_DESTROY_WITH_PARENT|GTK_DIALOG_MODAL, NULL);
-	gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 12);
-	
-	pathlbl = g_strdup_printf(_("Adding files from list %s..."), filename);
-	lbl = gtk_label_new(pathlbl);
-	gtk_misc_set_alignment(GTK_MISC(lbl), 0.5, 0.5);
-	gtk_widget_show(lbl);
-	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), lbl, FALSE, FALSE, 0);
-	
-	add_spacer(GTK_BOX(GTK_DIALOG(pdlg)->vbox));
-	
-	pbar = gtk_progress_bar_new();
-	gtk_widget_show(pbar);
-	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), pbar, FALSE, FALSE, 0);
-	
-	gtk_widget_show(pdlg);
-	while(gtk_events_pending())
-		gtk_main_iteration();
+	gint i;;
 
 	if((files = get_list_from_file (filename)) != NULL) {
-		if(!stat(filename, &st))
-			size_tot = st.st_size;
-		else
-			gtk_progress_bar_set_pulse_step(GTK_PROGRESS_BAR(pbar), 0.1);
-		
-		for(file = files; *file != NULL; file++) {
-			add_file(*file, ls);
-			
-			if(size_tot == -1)
-				gtk_progress_bar_pulse(GTK_PROGRESS_BAR(pbar));
-			else {
-				size_read += strlen(*file)+1;
-				gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(pbar), (gdouble)size_read/size_tot);
-			}
-			while(gtk_events_pending())
-				gtk_main_iteration();
+		for(i = 0; files[i]; i++) {
+			if(*files[i] && *files[i] != '\n')
+				add_file(files[i], ls);
 		}
 		g_strfreev (files);
 	}
-	
-	gtk_widget_destroy(pdlg);
-	g_free(pathlbl);
 }
 
 static gboolean
 save_list_file(const gchar *filename, GtkListStore *ls)
 {
-	//GtkTreeModel *model;
 	GtkTreeIter iter;
 	char *file;
 	FILE *fp;
@@ -229,33 +153,16 @@ save_list_file(const gchar *filename, GtkListStore *ls)
 	if(!gtk_tree_model_get_iter_first(GTK_TREE_MODEL(ls), &iter)) {
 		fclose (fp);
 		return TRUE;
-	} else {
-		gtk_tree_model_get(GTK_TREE_MODEL(ls), &iter, 0, &file, -1);
-		if(strlen(file) > 4 && g_str_has_prefix(file, "* ")
-				&& g_str_has_suffix(file, " *"))
-		{
-			gchar *p = g_strrstr(file, " *");
-			if(p)
-				*p = 0;
-			fprintf(fp, "%s", file+2);
-		} else
-			fprintf(fp, "%s", file);
-		g_free(file);
 	}
-
-	while(gtk_tree_model_iter_next(GTK_TREE_MODEL(ls), &iter)) {
+	
+	do {
+		file = NULL;
 		gtk_tree_model_get(GTK_TREE_MODEL(ls), &iter, 0, &file, -1);
-		if(strlen(file) > 4 && g_str_has_prefix(file, "* ")
-				&& g_str_has_suffix(file, " *"))
-		{
-			gchar *p = g_strrstr(file, " *");
-			if(p)
-				*p = 0;
-			fprintf(fp, "\n%s", file+2);
-		} else
-			fprintf(fp, "\n%s", file);
-		g_free(file);
-	}
+		if(file && *file && *file != '\n')
+			fprintf(fp, "%s\n", file);
+		if(file)
+			g_free(file);
+	} while(gtk_tree_model_iter_next(GTK_TREE_MODEL(ls), &iter));
 
 	fclose(fp);
 
@@ -535,8 +442,6 @@ list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 	gtk_widget_show(chooser);
 	if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
 		GSList *filenames, *l;
-		gint nfiles = 0, curfile = 0;
-		GtkWidget *pdlg=NULL, *lbl, *pbar=NULL;
 		
 		gtk_widget_hide(chooser);
 		while(gtk_events_pending())
@@ -548,43 +453,11 @@ list_add_cb(GtkWidget *b, GtkTreeView *treeview)
 				g_free(_listdlg_last_dir);
 			_listdlg_last_dir = g_path_get_dirname(filenames->data);
 			
-			nfiles = g_slist_length(filenames);
-			if(nfiles > 4) {
-				pdlg = gtk_dialog_new_with_buttons(_("Backdrop"),
-						GTK_WINDOW(parent),
-						GTK_DIALOG_NO_SEPARATOR|GTK_DIALOG_DESTROY_WITH_PARENT|GTK_DIALOG_MODAL,
-						NULL);
-				gtk_container_set_border_width(GTK_CONTAINER(GTK_WINDOW(pdlg)), 12);
-				
-				lbl = gtk_label_new(_("Adding multiple files..."));
-				gtk_misc_set_alignment(GTK_MISC(lbl), 0.5, 0.5);
-				gtk_widget_show(lbl);
-				gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), lbl, FALSE, FALSE, 0);
-				
-				add_spacer(GTK_BOX(GTK_DIALOG(pdlg)->vbox));
-				
-				pbar = gtk_progress_bar_new();
-				gtk_widget_show(pbar);
-				gtk_box_pack_start(GTK_BOX(GTK_DIALOG(pdlg)->vbox), pbar, FALSE, FALSE, 0);
-				
-				gtk_widget_show(pdlg);
-				while(gtk_events_pending())
-					gtk_main_iteration();
-			}
-			
 			for(l=filenames; l; l=l->next) {
 				add_file(l->data, GTK_LIST_STORE(gtk_tree_view_get_model(treeview)));
 				g_free(l->data);
-				if(nfiles > 4) {
-					gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(pbar), (gdouble)++curfile / nfiles);
-					while(gtk_events_pending())
-						gtk_main_iteration();
-				}
 			}
 			g_slist_free(filenames);
-			
-			if(nfiles > 4)
-				gtk_widget_destroy(pdlg);
 		}
 	}
 	gtk_widget_destroy(chooser);
