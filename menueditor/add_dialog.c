@@ -120,7 +120,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
   /* Header */
   header_image = gtk_image_new_from_stock("gtk-add", GTK_ICON_SIZE_LARGE_TOOLBAR);
   header_text = g_strdup_printf("%s", _("Add menu entry"));
-  header = create_header_with_image (header_image, header_text);
+  header = xfce_create_header_with_image (header_image, header_text);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->vbox), header, FALSE, FALSE, 0);
   g_free (header_text);
 
@@ -215,7 +215,7 @@ void add_entry_cb(GtkWidget *widget, gpointer data)
 
   if(gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK){
     xmlNodePtr node, root_node, selection_node;
-    GtkTreeIter iter, root_iter, selection_iter, parent;
+    GtkTreeIter iter, selection_iter, parent;
     GtkTreeModel *tree_model=GTK_TREE_MODEL(menueditor_app.treestore);
     GValue val = { 0, };
     gboolean ret_selection, is_menu=FALSE;

@@ -57,7 +57,7 @@
 /***********/
 /* Globals */
 /***********/
-static guchar icon_size = 24;
+/*static guchar icon_size = 24; uuugh... this is a h file */
 
 void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command);
 void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon);
