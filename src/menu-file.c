@@ -166,11 +166,20 @@ cmp_menu_paths(gconstpointer a, gconstpointer b)
 static GList *
 parse_node_incl(xmlNodePtr cur, const char *path)
 {
-	GList *incl_data = NULL;
-	xmlChar *type, *file = NULL, *style = NULL, *unique = NULL;
-	xmlChar *vis = NULL, *legacy = NULL;
-	gchar *fullfile = NULL;
-	gboolean do_legacy = TRUE;
+	GList *incl_data;
+	xmlChar *type, *file, *style, *unique;
+	xmlChar *vis, *legacy;
+	gchar *fullfile;
+	gboolean do_legacy;
+	incl_data = NULL;
+	do_legacy = TRUE;
+	fullfile = NULL;
+	vis = NULL;
+	legacy = NULL;
+	type = NULL;
+	file = NULL;
+	style = NULL;
+	unique = NULL;
 	
 	vis = xmlGetProp(cur, "visible");
 	if(vis && !xmlStrcmp(vis, (const xmlChar *)"false"))
