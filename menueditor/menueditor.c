@@ -216,7 +216,7 @@ void load_menu_in_tree(xmlNodePtr menu, GtkTreeIter *p)
     prop_icon = xmlGetProp(menu, "icon");
 
     /* Visible */
-    if(prop_visible && !xmlStrcmp(prop_visible,(xmlChar*)"no"))
+    if(prop_visible && !xmlStrcmp(prop_visible,(xmlChar*)"false"))
       hidden=TRUE;
 
     /* Load the icon */
@@ -689,10 +689,10 @@ void visible_column_toggled_cb(GtkCellRendererToggle *toggle,
   /* Change state */
   if(hidden){
     gtk_tree_store_set (menueditor_app.treestore, &iter, HIDDEN_COLUMN, FALSE, -1);
-    xmlSetProp(node,"visible","yes");
+    xmlSetProp(node,"visible","true");
   }else{
     gtk_tree_store_set (menueditor_app.treestore, &iter, HIDDEN_COLUMN, TRUE, -1);
-    xmlSetProp(node,"visible","no");
+    xmlSetProp(node,"visible","false");
   }
 
   /* Modified ! */
