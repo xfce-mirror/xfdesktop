@@ -1,3 +1,18 @@
+2003-03-23  huysmans
+
+	* menu.xml, src/menu.c: Add support for included menu files.
+	Updated default menu file
+
+2003-03-19  huysmans
+
+	* autogen.sh: Only add extra autogen parameters when none are given
+
+2003-03-18  xfce
+
+	* ChangeLog, Makefile.in, ltcf-c.sh, ltconfig, ltmain.sh: Update
+	ChangeLog Update build scripts (ie rerun autogen.sh) Update xfwm4's
+	microdeck theme Remove 1 pix border arround xffm menu bar
+
 2003-03-15  bmeurer
 
 	* Makefile.am, Makefile.in, aclocal.m4, configure, configure.ac,
