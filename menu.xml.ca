@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xfdesktop-menu [
+	<!ENTITY menu2 SYSTEM "menu2.xml">
+]>
+
+<!-- 
+     Explicació sobre el fitxer de menú de XFce 4
+     ============================================
+     Ara intentaré explicar el format del fitxer de menú. Fixat que el menú
+     actual està a sota dels exemples.
+-->
+
+<!-- Per descomptat, això ho tens per afegir comentaris ;-) -->
+
+<!-- 
+
+  + Qualsevol cosa ho trobaràs entre les marques 
+    <xfdesktop-menu></xfdesktop-menu>.
+
+  + Aplicacions:
+    <app name="Nom al menú" cmd="Comanda a executar" term="no" visible="yes" />
+    'term' indica si al programa li cal un terminal per executar-se.
+    Tant sols són imprescindibles 'name' i 'cmd'.
+   
+  + Separadors:
+    <separator/>
+
+  + Submenús:
+    <menu name="Nom al menú" visible="yes"></menu>
+    Tant sols és imprescindible 'name'.
+    Entre les marques de menú es poden definir més aplicacions, separadors i
+    menús.
+
+  + Títols:
+    <title name="Non al menu" />
+    Crea un títol de menú no pitjable.
+    
+  + Incloure altres fitxers:
+    Es poden incloure altres fitxers fent servir una habilitat de xml. Encara
+    que és una mica complicada.
+    Primer cal definir una entitat en la capçalera del fitxer. Mira més amunt,
+    on s'ha definit la entitat 'menu2' que apunta al fitxer 'menu2.xml'.
+    Aleshores pots fer servir '&entityname;' a qualsevol lloc del fitxer del
+    menú i aquest serà reemplaçat pel contingut de la entitat a la que apunta.
+    Això pot ser útil si, per exemple, fas un script que generi un menú de 
+    gnome i el posa en un fitxer separat.
+    
+-->
+<xfdesktop-menu>
+    <title name="Menú de l'escriptori" visible="yes" />
+    <separator/>
+    <app name="Executar el programa..." cmd="xfrun4"/>
+    <separator/>
+    <app name="Terminal" cmd="xfterm4" />
+    <app name="Gestor de fitxers (xffm)" cmd="xffm"/>
+    <app name="Navegador" cmd="mozilla"/>
+    <separator/>
+    <menu name="Ajustaments" visible="yes">
+        <app name="Tots el ajustaments..." cmd="xfce-setting-show"/>
+        <app name="Fons..." cmd="xfce-setting-show backdrop"/>
+<!-- 
+        <app name="Fons" cmd="xfce-setting-show backdrop"/>
+	<app name="Àrees de treball" cmd="xfce-setting-show workspaces"/>
+	<app name="Gestor de fitxers (xffm)" cmd="xfce-setting-show xffm"/>
+	<app name="Interfície d'usuari (gtk+)" cmd="xfce-setting-show ui"/>
+	<app name="Icones" cmd="xfce-setting-show xfibx"/>
+        <app name="Ratolí" cmd="xfce-setting-show mouse"/>
+        <app name="Barra de tasques" cmd="xfce-setting-show taskbar"/>
+	<app name="Teclat" cmd="xfce-setting-show keyboard"/>
+	<app name="Gestor de finestres" cmd="xfce-setting-show xfwm4"/>
+	<app name="Marges" cmd="xfce-setting-show xfwm_margins"/>
+	<app name="Plafó" cmd="xfce-setting-show xfce"/>
+-->
+    </menu>
+    <separator/>
+    <app name="Ajuda" cmd="xfhelp4"/>
+    <!-- <separator/> -->
+    <!-- Posa aquest marcador com a visible="yes"
+      Això farà que surtis del gestor de l'escriptori. Si poses 
+      'exec xfdesktop' en el teu ~/.xinitrc. Aquesta entrada de menú es
+      podrà fer servir per sortir de la sessió de les X.      
+    -->
+    <builtin name="Surt" cmd="quit" visible="no"/>
+    <!-- Exemple de com inclure un fitxer:
+      1) declara una ENTITAT (entity) en el marcador DOCTYPE (mira més
+         amunt).
+      2) Inclu la entitat en el fitxer:
+    -->
+    <!--
+    &menu2;
+    -->
+</xfdesktop-menu>
+
