@@ -8,232 +8,229 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-28 19:48-0700\n"
+"POT-Creation-Date: 2004-09-20 23:37+0200\n"
 "PO-Revision-Date: 2004-09-12 13:49+0300\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: menueditor/about_dialog.c:36
 msgid "A menu editor for Xfce4"
 msgstr "Рэдактар мэню Xfce4"
 
-#: menueditor/about_dialog.c:45
+#. Credits
+#: menueditor/about_dialog.c:41
 msgid "Core developer"
 msgstr "Асноўны распрацоўнік"
 
-#: menueditor/about_dialog.c:49 menueditor/about_dialog.c:53
-#: menueditor/about_dialog.c:57
+#: menueditor/about_dialog.c:42 menueditor/about_dialog.c:43
+#: menueditor/about_dialog.c:44
 msgid "Contributor"
 msgstr "Укладальнік"
 
-#: menueditor/about_dialog.c:61
+#: menueditor/about_dialog.c:45
 msgid "Icon designer"
 msgstr "Распрацоўка значак"
 
-#: menueditor/add_dialog.c:131 menueditor/add_dialog.c:146
+#: menueditor/add_dialog.c:134 menueditor/add_dialog.c:149
 msgid "Add menu entry"
 msgstr "Дадаць элемэнт мэню"
 
 #. Type
-#: menueditor/add_dialog.c:152 menueditor/add_menu_dialog.c:96
-#: menueditor/edit_dialog.c:148
+#: menueditor/add_dialog.c:155 menueditor/add_menu_dialog.c:99
+#: menueditor/edit_dialog.c:151
 msgid "Type:"
 msgstr "Тып:"
 
-#: menueditor/add_dialog.c:155
+#: menueditor/add_dialog.c:158
 msgid "Launcher"
 msgstr "Запускальнік"
 
-#: menueditor/add_dialog.c:160
+#: menueditor/add_dialog.c:163
 msgid "Submenu"
 msgstr "Падмэню"
 
-#: menueditor/add_dialog.c:165
+#: menueditor/add_dialog.c:168
 msgid "Separator"
 msgstr "Падзяляльнік"
 
-#: menueditor/add_dialog.c:170
+#: menueditor/add_dialog.c:173
 msgid "Title"
 msgstr "Загаловак"
 
-#: menueditor/add_dialog.c:175
+#: menueditor/add_dialog.c:178
 msgid "Quit"
 msgstr "Выйсьці"
 
 #. Name
-#: menueditor/add_dialog.c:190 menueditor/edit_dialog.c:260
-#: menueditor/edit_dialog.c:310 menueditor/edit_dialog.c:348
+#: menueditor/add_dialog.c:193 menueditor/edit_dialog.c:263
+#: menueditor/edit_dialog.c:313 menueditor/edit_dialog.c:351
 msgid "Name:"
 msgstr "Назва:"
 
-#: menueditor/add_dialog.c:200 menueditor/edit_dialog.c:261
+#: menueditor/add_dialog.c:203 menueditor/edit_dialog.c:264
 msgid "Command:"
 msgstr "Загад:"
 
-#: menueditor/add_dialog.c:216 menueditor/edit_dialog.c:252
-#: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
-#: menueditor/edit_dialog.c:390
+#: menueditor/add_dialog.c:219 menueditor/edit_dialog.c:255
+#: menueditor/edit_dialog.c:318 menueditor/edit_dialog.c:356
+#: menueditor/edit_dialog.c:393
 msgid "Icon:"
 msgstr "Значка:"
 
 #. Start Notify check button
-#: menueditor/add_dialog.c:232 menueditor/edit_dialog.c:272
+#: menueditor/add_dialog.c:235 menueditor/edit_dialog.c:275
 msgid "Use startup _notification"
 msgstr "Нагадваньне аб _запуску"
 
 #. Run in terminal check button
-#: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:273
+#: menueditor/add_dialog.c:239 menueditor/edit_dialog.c:276
 msgid "Run in _terminal"
 msgstr "Выконваць у _тэрмінале"
 
-#: menueditor/add_dialog.c:281 menueditor/edit_dialog.c:459
+#: menueditor/add_dialog.c:284 menueditor/edit_dialog.c:462
 msgid "The command doesn't exist !"
 msgstr "Загад не йснуе!"
 
-#: menueditor/add_dialog.c:287
+#: menueditor/add_dialog.c:290
 msgid "All fields must be filled to add an item."
 msgstr "Каб дадаць элемэн, павінны быць запоўнены ўсе палі."
 
-#: menueditor/add_dialog.c:295
+#: menueditor/add_dialog.c:298
 msgid "The 'Name' field is required."
 msgstr "Поле \"Назва\" зьяўляецца абавязковым."
 
-#: menueditor/add_dialog.c:349 menueditor/dnd.c:150
-#: menueditor/menueditor.c:339 menueditor/move.c:90 menueditor/move.c:246
+#: menueditor/add_dialog.c:352 menueditor/dnd.c:154
+#: menueditor/menueditor.c:349 menueditor/move.c:92 menueditor/move.c:250
 msgid "--- separator ---"
 msgstr "--- падзяляльнік ---"
 
-#: menueditor/add_dialog.c:374 menueditor/edit_dialog.c:496
+#: menueditor/add_dialog.c:377 menueditor/edit_dialog.c:497
 msgid "quit"
 msgstr "выйсьці"
 
-#: menueditor/add_menu_dialog.c:76 menueditor/add_menu_dialog.c:87
-#: menueditor/menueditor.c:770
+#: menueditor/add_menu_dialog.c:79 menueditor/add_menu_dialog.c:90
+#: menueditor/menueditor.c:808
 msgid "Add an external menu"
 msgstr "Дадаць вонкавае мэню"
 
-#: menueditor/add_menu_dialog.c:101 menueditor/edit_dialog.c:151
+#: menueditor/add_menu_dialog.c:104 menueditor/edit_dialog.c:154
 msgid "File"
 msgstr "Файл"
 
-#: menueditor/add_menu_dialog.c:106 menueditor/edit_dialog.c:156
+#: menueditor/add_menu_dialog.c:109 menueditor/edit_dialog.c:159
 msgid "System"
 msgstr "Сыстэма"
 
-#: menueditor/add_menu_dialog.c:121 menueditor/edit_dialog.c:171
+#: menueditor/add_menu_dialog.c:124 menueditor/edit_dialog.c:174
 msgid "Source:"
 msgstr "Крыніца:"
 
 #. Style
-#: menueditor/add_menu_dialog.c:134 menueditor/edit_dialog.c:184
+#: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:187
 msgid "Style:"
 msgstr "Стыль:"
 
-#: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:187
+#: menueditor/add_menu_dialog.c:140 menueditor/edit_dialog.c:190
 msgid "Simple"
 msgstr "Простае"
 
-#: menueditor/add_menu_dialog.c:140 menueditor/edit_dialog.c:190
+#: menueditor/add_menu_dialog.c:143 menueditor/edit_dialog.c:193
 msgid "Multilevel"
 msgstr "Шматузроўневае"
 
 #. Unique
-#: menueditor/add_menu_dialog.c:153 menueditor/edit_dialog.c:203
+#: menueditor/add_menu_dialog.c:156 menueditor/edit_dialog.c:206
 msgid "_Unique entries only"
 msgstr "Толькі не_паўторныя запісы"
 
-#: menueditor/add_menu_dialog.c:206
+#: menueditor/add_menu_dialog.c:209
 msgid "The 'Source' field is required."
 msgstr "Поле \"Крыніца\" зьяўляецца абавязковым."
 
-#: menueditor/add_menu_dialog.c:216 menueditor/add_menu_dialog.c:233
-#: menueditor/dnd.c:152 menueditor/edit_dialog.c:510
-#: menueditor/edit_dialog.c:523 menueditor/menueditor.c:387
-#: menueditor/move.c:120 menueditor/move.c:276
+#: menueditor/add_menu_dialog.c:219 menueditor/add_menu_dialog.c:236
+#: menueditor/dnd.c:156 menueditor/edit_dialog.c:511
+#: menueditor/edit_dialog.c:524 menueditor/menueditor.c:397
+#: menueditor/move.c:122 menueditor/move.c:280
 msgid "--- include ---"
 msgstr "--- падстаноўка ---"
 
-#: menueditor/add_menu_dialog.c:234 menueditor/dnd.c:157
-#: menueditor/edit_dialog.c:524 menueditor/menueditor.c:390
-#: menueditor/move.c:123 menueditor/move.c:279
+#: menueditor/add_menu_dialog.c:237 menueditor/dnd.c:161
+#: menueditor/edit_dialog.c:525 menueditor/menueditor.c:400
+#: menueditor/move.c:125 menueditor/move.c:283
 msgid "system"
 msgstr "сыстэма"
 
 #. Create dialog for editing
-#: menueditor/edit_dialog.c:100 menueditor/edit_dialog.c:113
+#: menueditor/edit_dialog.c:103 menueditor/edit_dialog.c:116
 msgid "Edit menu entry"
 msgstr "Рэдагаваць элемэнт мэню"
 
-#: menueditor/edit_dialog.c:131
+#: menueditor/edit_dialog.c:134
 msgid "Separators cannot be edited"
 msgstr "Падзяляльнікі немагчыма рэдагаваць"
 
 #. Name
-#: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:102
+#: menueditor/edit_dialog.c:400 menueditor/new_dialog.c:105
 msgid "Title:"
 msgstr "Назва:"
 
-#: menueditor/menueditor.c:156
+#: menueditor/menueditor.c:151
 msgid "Select command"
 msgstr "Вылучыце загад"
 
-#: menueditor/menueditor.c:213
+#: menueditor/menueditor.c:212
 msgid "Select icon"
 msgstr "Вылучыце значку"
 
-#: menueditor/menueditor.c:219 panel-plugin/desktop-menu-plugin.c:372
+#: menueditor/menueditor.c:218 panel-plugin/desktop-menu-plugin.c:371
 #: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
-#: settings/backdrop_settings.c:467
+#: settings/backdrop_settings.c:516
 msgid "All Files"
 msgstr "Усе файлы"
 
-#: menueditor/menueditor.c:223 panel-plugin/desktop-menu-plugin.c:378
-#: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:471
+#: menueditor/menueditor.c:222 panel-plugin/desktop-menu-plugin.c:377
+#: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:520
 msgid "Image Files"
 msgstr "Файлы з відарысамі"
 
-#: menueditor/menueditor.c:266
-msgid "Not yet implemented!"
-msgstr "Яшчэ не рэалізавана!"
-
-#: menueditor/menueditor.c:277 menueditor/menueditor.c:659
+#: menueditor/menueditor.c:275 menueditor/menueditor.c:682
 msgid "Do you want to save before closing the menu ?"
 msgstr "Мо жадаеце захаваць перш чымся зачыніць мэню?"
 
-#: menueditor/menueditor.c:278
+#: menueditor/menueditor.c:276
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "Вы зьмянілі мэню; можа жадаеце захаваць зьмены перад выхадам?"
 
-#: menueditor/menueditor.c:279
+#: menueditor/menueditor.c:277
 msgid "Forget modifications"
 msgstr "Забыць зьмены"
 
-#: menueditor/menueditor.c:463 menueditor/menueditor.c:518
-#: menueditor/menueditor.c:657
+#: menueditor/menueditor.c:476 menueditor/menueditor.c:534
+#: menueditor/menueditor.c:680
 msgid "Question"
 msgstr "Пытаньне"
 
-#: menueditor/menueditor.c:465
+#: menueditor/menueditor.c:478
 msgid "Do you want to save before opening the default menu ?"
 msgstr "Мо жадаеце захаваць зьмены перш чым адчыняць дапомнае мэню?"
 
-#: menueditor/menueditor.c:467 menueditor/menueditor.c:522
-#: menueditor/menueditor.c:661
+#: menueditor/menueditor.c:480 menueditor/menueditor.c:538
+#: menueditor/menueditor.c:684
 msgid "Ignore modifications"
 msgstr "Ігнараваць зьмены"
 
-#: menueditor/menueditor.c:520
+#: menueditor/menueditor.c:536
 msgid "Do you want to save before opening an other menu ?"
 msgstr "Мо жадаеце захаваць зьмены перш чым адчыняць іншае мэню?"
 
-#: menueditor/menueditor.c:533
+#: menueditor/menueditor.c:549
 msgid "Open menu file"
 msgstr "Адчыніць файл мэню"
 
-#: menueditor/menueditor.c:571 menueditor/menueditor.c:582
+#: menueditor/menueditor.c:583 menueditor/menueditor.c:594
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -242,145 +239,145 @@ msgstr ""
 "Немагыма запісаць у файл %s : \n"
 "%s"
 
-#: menueditor/menueditor.c:606
+#: menueditor/menueditor.c:625
 msgid "Save as..."
 msgstr "Захаваць як..."
 
-#: menueditor/menueditor.c:764
+#: menueditor/menueditor.c:802
 msgid "Edit"
 msgstr "Рэдагаваць"
 
 #. File menu
-#: menueditor/menueditor.c:951
+#: menueditor/menueditor.c:1008
 msgid "_File"
 msgstr "_Файл"
 
-#: menueditor/menueditor.c:960
+#: menueditor/menueditor.c:1017
 msgid "Open default menu"
 msgstr "Адчыніць дапомнае мэню"
 
 #. Edit menu
-#: menueditor/menueditor.c:974
+#: menueditor/menueditor.c:1031
 msgid "_Edit"
 msgstr "_Рэдагаваць"
 
-#: menueditor/menueditor.c:980
+#: menueditor/menueditor.c:1037
 msgid "Add an external menu..."
 msgstr "Дадаць вонкавае мэню..."
 
 #. Help menu
-#: menueditor/menueditor.c:992
+#: menueditor/menueditor.c:1049
 msgid "_Help"
 msgstr "_Даведка"
 
-#: menueditor/menueditor.c:997
+#: menueditor/menueditor.c:1054
 msgid "_About..."
 msgstr "_Аб..."
 
-#: menueditor/menueditor.c:1011
+#: menueditor/menueditor.c:1064
 msgid "Create a new Xfce4 menu file"
 msgstr "Стварыць новы файл з мэню Xfce4"
 
-#: menueditor/menueditor.c:1018
+#: menueditor/menueditor.c:1068
 msgid "Open an Xfce4 menu file"
 msgstr "Адчыніць файл з мэню Xfce4"
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1072
 msgid "Save current menu"
 msgstr "Захаваць бягучае мэню"
 
-#: menueditor/menueditor.c:1032
+#: menueditor/menueditor.c:1076
 msgid "Close current menu"
 msgstr "Зачыніць бягучае мэню"
 
-#: menueditor/menueditor.c:1040
+#: menueditor/menueditor.c:1081
 msgid "Add an entry to the menu"
 msgstr "Дадаць новы элемэнт мэню"
 
-#: menueditor/menueditor.c:1047
+#: menueditor/menueditor.c:1085
 msgid "Delete the current entry"
 msgstr "Выдаліць бягучы элемэнт мэню"
 
-#: menueditor/menueditor.c:1054
+#: menueditor/menueditor.c:1089
 msgid "Move the current entry up"
 msgstr "Узьняць вышэй бягучы элемэнт мэню"
 
-#: menueditor/menueditor.c:1061
+#: menueditor/menueditor.c:1093
 msgid "Move the current entry down"
 msgstr "Апусьціць ніжэй бягучы элемэнт мэню"
 
-#: menueditor/menueditor.c:1069
+#: menueditor/menueditor.c:1098
 msgid "Collapse the tree"
 msgstr "Згарнуць дрэва"
 
-#: menueditor/menueditor.c:1076
+#: menueditor/menueditor.c:1102
 msgid "Expand the tree"
 msgstr "Разгарнуць дрэва"
 
-#: menueditor/menueditor.c:1110
+#: menueditor/menueditor.c:1133
 msgid "Name"
 msgstr "Назва"
 
-#: menueditor/menueditor.c:1112
+#: menueditor/menueditor.c:1135
 msgid "Command"
 msgstr "Загад"
 
-#: menueditor/menueditor.c:1114
+#: menueditor/menueditor.c:1137
 msgid "Hidden"
 msgstr "Схаваны"
 
-#: menueditor/menueditor.c:1116
+#: menueditor/menueditor.c:1139
 msgid "Pointer"
 msgstr "Спасылка"
 
-#: menueditor/menueditor.c:1248
+#: menueditor/menueditor.c:1263
 msgid "Corrupted file or incorrect file format !"
 msgstr "Пашкоджаны файл альбо няверны фармат!"
 
-#: menueditor/menueditor.c:1261
+#: menueditor/menueditor.c:1276
 msgid "No root element in file !"
 msgstr "Адсутнічае каранёвы элемэнт у файле!"
 
-#: menueditor/menueditor.c:1272
+#: menueditor/menueditor.c:1287
 msgid "Bad datafile format !"
 msgstr "Дрэнны фарматы даньняў!"
 
-#: menueditor/menueditor.c:1388
+#: menueditor/menueditor.c:1391
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "Файл %s не йснуе!"
 
-#: menueditor/move.c:401
+#: menueditor/move.c:410
 msgid "Do you want to move the item into the parent menu?"
 msgstr "Жадаеце перамясьціць элемэнт у бацькоўскае мэню?"
 
-#: menueditor/move.c:500
+#: menueditor/move.c:514
 msgid "Do you want to move the item into the submenu?"
 msgstr "Жадаеце перамясьціць элемэнт у падмэню?"
 
-#: menueditor/new_dialog.c:58
+#: menueditor/new_dialog.c:61
 msgid "Are you sure you want to close the current menu?"
 msgstr "Вы насамрэч жадаеце зачыніць бягучае мэню?"
 
-#: menueditor/new_dialog.c:74
+#: menueditor/new_dialog.c:77
 msgid "Do you want to save before closing the file?"
 msgstr "Мо жадаеце захаваць зьмены перш чым зачыніць файл?"
 
 #. get the filename and name for the new menu
-#: menueditor/new_dialog.c:84 menueditor/new_dialog.c:96
+#: menueditor/new_dialog.c:87 menueditor/new_dialog.c:99
 msgid "New menu"
 msgstr "Новае мэню"
 
 #. Filename
-#: menueditor/new_dialog.c:109
+#: menueditor/new_dialog.c:112
 msgid "Filename:"
 msgstr "Назва файла:"
 
-#: menueditor/new_dialog.c:142
+#: menueditor/new_dialog.c:145
 msgid "All fields are required."
 msgstr "Усе палі зьяўляюцца абавязковымі."
 
-#: modules/menu/desktop-menu-dentry.c:536
+#: modules/menu/desktop-menu-dentry.c:571
 msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
 msgstr "XfceDesktopMenu: немагчыма адшукаць xfce-registered-categories.xml"
 
@@ -398,32 +395,32 @@ msgstr "%s: прапушчан ці невядомы атрыбут для эл�
 msgid "%s: unknown xml element %s\n"
 msgstr "%s: невядомы xml элемэнт %s\n"
 
-#: panel-plugin/desktop-menu-plugin.c:192
-#: panel-plugin/desktop-menu-plugin.c:515
+#: panel-plugin/desktop-menu-plugin.c:189
+#: panel-plugin/desktop-menu-plugin.c:514
 msgid "Xfce Menu"
 msgstr "Мэню Xfce"
 
-#: panel-plugin/desktop-menu-plugin.c:355
+#: panel-plugin/desktop-menu-plugin.c:354
 msgid "Select Icon"
 msgstr "Вылучыце значку"
 
-#: panel-plugin/desktop-menu-plugin.c:357
+#: panel-plugin/desktop-menu-plugin.c:356
 msgid "Select Menu File"
 msgstr "Вылучыце файл мэню"
 
-#: panel-plugin/desktop-menu-plugin.c:386
+#: panel-plugin/desktop-menu-plugin.c:385
 msgid "Menu Files"
 msgstr "Файлы мэню"
 
-#: panel-plugin/desktop-menu-plugin.c:445
+#: panel-plugin/desktop-menu-plugin.c:444
 msgid "_Menu file:"
 msgstr "Файл _мэню:"
 
-#: panel-plugin/desktop-menu-plugin.c:479
+#: panel-plugin/desktop-menu-plugin.c:478
 msgid "_Button icon:"
 msgstr "Значка _кнопкі:"
 
-#: panel-plugin/desktop-menu-plugin.c:504
+#: panel-plugin/desktop-menu-plugin.c:503
 msgid "Show _icons in menu"
 msgstr "Паказваць _значкі ў мэню"
 
@@ -496,132 +493,132 @@ msgid "Edit backdrop list"
 msgstr "Рэдагаваць сьпіс тла"
 
 #. the dialog
-#: settings/backdrop_settings.c:86 settings/backdrop_settings.c:765
-#: src/xfce-desktop.c:597
+#: settings/backdrop_settings.c:133 settings/backdrop_settings.c:814
+#: src/xfce-desktop.c:616
 msgid "Desktop"
 msgstr "Сталец"
 
-#: settings/backdrop_settings.c:462
+#: settings/backdrop_settings.c:511
 msgid "Select backdrop image or list file"
 msgstr "Вылучыце відарыс тла альбо файл са сьпісам"
 
-#: settings/backdrop_settings.c:480
+#: settings/backdrop_settings.c:529
 msgid "List Files (*.list)"
 msgstr "Сьпіс файлаў (*.list)"
 
-#: settings/backdrop_settings.c:565
+#: settings/backdrop_settings.c:614
 msgid "_Edit list..."
 msgstr "Р_эдагаваць сьпіс..."
 
-#: settings/backdrop_settings.c:573
+#: settings/backdrop_settings.c:622
 msgid "_New list..."
 msgstr "_Стварыць сьпіс..."
 
-#: settings/backdrop_settings.c:609
+#: settings/backdrop_settings.c:658
 msgid "S_tyle:"
 msgstr "Ст_ыль:"
 
-#: settings/backdrop_settings.c:617
+#: settings/backdrop_settings.c:666
 msgid "Tiled"
 msgstr "Пліткамі"
 
-#: settings/backdrop_settings.c:624
+#: settings/backdrop_settings.c:673
 msgid "Centered"
 msgstr "Цэнтраваны"
 
-#: settings/backdrop_settings.c:631
+#: settings/backdrop_settings.c:680
 msgid "Scaled"
 msgstr "Маштабаваны"
 
-#: settings/backdrop_settings.c:638
+#: settings/backdrop_settings.c:687
 msgid "Stretched"
 msgstr "Расьцягнуты"
 
-#: settings/backdrop_settings.c:645
+#: settings/backdrop_settings.c:694
 msgid "Auto"
 msgstr "Аўтаматычна"
 
-#: settings/backdrop_settings.c:711
+#: settings/backdrop_settings.c:760
 msgid "Adjust _Brightness:"
 msgstr "Наладка _зыркасьці:"
 
 #. header
-#: settings/backdrop_settings.c:780
+#: settings/backdrop_settings.c:829
 msgid "Desktop Settings"
 msgstr "Наладкі стальца"
 
-#: settings/backdrop_settings.c:808
+#: settings/backdrop_settings.c:858
 msgid "_Backdrops"
 msgstr "Відарысы _тла"
 
 #. color settings frame
-#: settings/backdrop_settings.c:834
+#: settings/backdrop_settings.c:884
 msgid "Color"
 msgstr "Колер"
 
-#: settings/backdrop_settings.c:848
+#: settings/backdrop_settings.c:898
 msgid "_Color Style:"
 msgstr "Стыль _колераў:"
 
-#: settings/backdrop_settings.c:857
+#: settings/backdrop_settings.c:907
 msgid "Solid Color"
 msgstr "Суцэльны колер"
 
-#: settings/backdrop_settings.c:864
+#: settings/backdrop_settings.c:914
 msgid "Horizontal Gradient"
 msgstr "Гарызантальны градыент"
 
-#: settings/backdrop_settings.c:871
+#: settings/backdrop_settings.c:921
 msgid "Vertical Gradient"
 msgstr "Вэртыкальны градыент"
 
-#: settings/backdrop_settings.c:892
+#: settings/backdrop_settings.c:942
 msgid "Fi_rst Color:"
 msgstr "П_ершы колер:"
 
-#: settings/backdrop_settings.c:913
+#: settings/backdrop_settings.c:963
 msgid "_Second Color:"
 msgstr "Др_угі колер:"
 
 #. set color only checkbox
-#: settings/backdrop_settings.c:934
+#: settings/backdrop_settings.c:984
 msgid "Set color _only"
 msgstr "Выкрыстоўваць т_олькі колер"
 
-#: settings/backdrop_settings.c:949
+#: settings/backdrop_settings.c:999
 msgid "Image"
 msgstr "Вірадыс"
 
-#: settings/backdrop_settings.c:957
+#: settings/backdrop_settings.c:1007
 msgid "Show _Image"
 msgstr "Паказаць _вірадыс"
 
-#: settings/backdrop_settings.c:979
+#: settings/backdrop_settings.c:1029
 msgid "_File:"
 msgstr "_Файл:"
 
 #. don't set backdrop checkbox
-#: settings/backdrop_settings.c:1016
+#: settings/backdrop_settings.c:1066
 msgid "_Don't set backdrop"
 msgstr "Не _выстаўляць тло"
 
 #. add the single backdrop settings page to the main notebook
-#: settings/backdrop_settings.c:1039
+#: settings/backdrop_settings.c:1089
 msgid "_Backdrop"
 msgstr "_Тло"
 
-#: settings/backdrop_settings.c:1047 settings/backdrop_settings.c:1049
+#: settings/backdrop_settings.c:1097 settings/backdrop_settings.c:1099
 #, c-format
 msgid "Screen %d"
 msgstr "Экран %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: settings/backdrop_settings.c:1054
+#: settings/backdrop_settings.c:1104
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Экран %d, манітор %d"
 
-#: settings/backdrop_settings.c:1068
+#: settings/backdrop_settings.c:1118
 msgid "_Menu"
 msgstr "_Мэню"
 
@@ -658,35 +655,27 @@ msgstr "Паказваць значкі д_астасаваньняў"
 msgid "_Edit desktop menu"
 msgstr "_Рэдагаваць мэню стальца"
 
-#: src/main.c:262
+#: src/main.c:265
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: невядомы выбар: %s\n"
 
-#: src/main.c:263
+#: src/main.c:266
 msgid "Options are:\n"
 msgstr "Выбары:\n"
 
-#: src/main.c:264
+#: src/main.c:267
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      Перачытаць усе наладкі, абнавіць сьпіс відарысаў\n"
 
-#: src/main.c:265
+#: src/main.c:268
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Паказаць мэню (побач з мышой)\n"
 
-#: src/main.c:266
+#: src/main.c:269
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    -windowlist  Паказаць сьпіс вокнаў (побач з мышой)\n"
-
-#: src/menu.c:73
-#, c-format
-msgid ""
-"%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
-msgstr ""
-"%s: немагчыма ініцыялізаваць модуль мэню. Мэню правае кнопкі мышы будзе недаступным.\n"
+msgstr "    -windowlist  Паказаць сьпіс вокнаў (побач з мышой)\n"
 
 #: src/windowlist.c:183
 #, c-format
@@ -711,6 +700,16 @@ msgstr "Вы_даліць працоўную прастору %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Вы_даліць працоўную прастору \"%s\""
+
+#~ msgid "Not yet implemented!"
+#~ msgstr "Яшчэ не рэалізавана!"
+
+#~ msgid ""
+#~ "%s: Unable to initialise menu module. Right-click menu will be "
+#~ "unavailable.\n"
+#~ msgstr ""
+#~ "%s: немагчыма ініцыялізаваць модуль мэню. Мэню правае кнопкі мышы будзе "
+#~ "недаступным.\n"
 
 #~ msgid "New.list"
 #~ msgstr "Новы.сьпіс"

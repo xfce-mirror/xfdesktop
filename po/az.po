@@ -7,223 +7,231 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
-"POT-Creation-Date: 2004-08-06 23:16+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-09-20 23:37+0200\n"
 "PO-Revision-Date: 2004-08-25 22:52+0300\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azerbaijani <translation-team-az@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 1.3.1\n"
 
 #: menueditor/about_dialog.c:36
 msgid "A menu editor for Xfce4"
 msgstr "Xfce4 üçün menyu editoru"
 
-#: menueditor/about_dialog.c:45
+#. Credits
+#: menueditor/about_dialog.c:41
 msgid "Core developer"
 msgstr "Əsas inkişafçı"
 
-#: menueditor/about_dialog.c:49 menueditor/about_dialog.c:53
-#: menueditor/about_dialog.c:57
+#: menueditor/about_dialog.c:42 menueditor/about_dialog.c:43
+#: menueditor/about_dialog.c:44
 msgid "Contributor"
 msgstr "Dəstəkləyən"
 
-#: menueditor/about_dialog.c:61
+#: menueditor/about_dialog.c:45
 msgid "Icon designer"
 msgstr "Timsal dizayneri"
 
-#: menueditor/add_dialog.c:131 menueditor/add_dialog.c:146
+#: menueditor/add_dialog.c:134 menueditor/add_dialog.c:149
 msgid "Add menu entry"
 msgstr "Menyu girişi əlavə et"
 
 #. Type
-#: menueditor/add_dialog.c:152 menueditor/add_menu_dialog.c:96
-#: menueditor/edit_dialog.c:148
+#: menueditor/add_dialog.c:155 menueditor/add_menu_dialog.c:99
+#: menueditor/edit_dialog.c:151
 msgid "Type:"
 msgstr "Növ:"
 
-#: menueditor/add_dialog.c:155
+#: menueditor/add_dialog.c:158
 msgid "Launcher"
 msgstr "Başladıcı"
 
-#: menueditor/add_dialog.c:160
+#: menueditor/add_dialog.c:163
 msgid "Submenu"
 msgstr "Alt menyu"
 
-#: menueditor/add_dialog.c:165
+#: menueditor/add_dialog.c:168
 msgid "Separator"
 msgstr "Ayırıcı"
 
-#: menueditor/add_dialog.c:170
+#: menueditor/add_dialog.c:173
 msgid "Title"
 msgstr "Etiket"
 
-#: menueditor/add_dialog.c:175
+#: menueditor/add_dialog.c:178
 msgid "Quit"
 msgstr "Çıxış"
 
 #. Name
-#: menueditor/add_dialog.c:190 menueditor/edit_dialog.c:260
-#: menueditor/edit_dialog.c:310 menueditor/edit_dialog.c:348
+#: menueditor/add_dialog.c:193 menueditor/edit_dialog.c:263
+#: menueditor/edit_dialog.c:313 menueditor/edit_dialog.c:351
 msgid "Name:"
 msgstr "Ad:"
 
-#: menueditor/add_dialog.c:200 menueditor/edit_dialog.c:261
+#: menueditor/add_dialog.c:203 menueditor/edit_dialog.c:264
 msgid "Command:"
 msgstr "Əmr:"
 
-#: menueditor/add_dialog.c:216 menueditor/edit_dialog.c:252
-#: menueditor/edit_dialog.c:315 menueditor/edit_dialog.c:353
-#: menueditor/edit_dialog.c:390
+#: menueditor/add_dialog.c:219 menueditor/edit_dialog.c:255
+#: menueditor/edit_dialog.c:318 menueditor/edit_dialog.c:356
+#: menueditor/edit_dialog.c:393
 msgid "Icon:"
 msgstr "Timsal:"
 
 #. Start Notify check button
-#: menueditor/add_dialog.c:232 menueditor/edit_dialog.c:272
+#: menueditor/add_dialog.c:235 menueditor/edit_dialog.c:275
 msgid "Use startup _notification"
 msgstr "_Başlanğıc bildirişini işlət"
 
 #. Run in terminal check button
-#: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:273
+#: menueditor/add_dialog.c:239 menueditor/edit_dialog.c:276
 msgid "Run in _terminal"
 msgstr "_Terminalda icra et"
 
-#: menueditor/add_dialog.c:281 menueditor/edit_dialog.c:459
+#: menueditor/add_dialog.c:284 menueditor/edit_dialog.c:462
 msgid "The command doesn't exist !"
 msgstr "Əmr mövcud deyil !"
 
-#: menueditor/add_dialog.c:287
+#: menueditor/add_dialog.c:290
 msgid "All fields must be filled to add an item."
 msgstr "Üzvü əlavə edə bilmək üçün bütün sahələr doldurulmalıdır."
 
-#: menueditor/add_dialog.c:295
+#: menueditor/add_dialog.c:298
 msgid "The 'Name' field is required."
 msgstr "'Ad' sahəsi məcburidir."
 
-#: menueditor/add_dialog.c:349 menueditor/dnd.c:150
-#: menueditor/menueditor.c:274 menueditor/move.c:90 menueditor/move.c:246
+#: menueditor/add_dialog.c:352 menueditor/dnd.c:154
+#: menueditor/menueditor.c:349 menueditor/move.c:92 menueditor/move.c:250
 msgid "--- separator ---"
 msgstr "--- ayırıcı ---"
 
-#: menueditor/add_dialog.c:374 menueditor/edit_dialog.c:496
+#: menueditor/add_dialog.c:377 menueditor/edit_dialog.c:497
 msgid "quit"
 msgstr "çıxış"
 
-#: menueditor/add_menu_dialog.c:76 menueditor/add_menu_dialog.c:87
-#: menueditor/menueditor.c:705
+#: menueditor/add_menu_dialog.c:79 menueditor/add_menu_dialog.c:90
+#: menueditor/menueditor.c:808
 msgid "Add an external menu"
 msgstr "Xarici menyu əlavə et"
 
-#: menueditor/add_menu_dialog.c:101 menueditor/edit_dialog.c:151
+#: menueditor/add_menu_dialog.c:104 menueditor/edit_dialog.c:154
 msgid "File"
 msgstr "Fayl"
 
-#: menueditor/add_menu_dialog.c:106 menueditor/edit_dialog.c:156
+#: menueditor/add_menu_dialog.c:109 menueditor/edit_dialog.c:159
 msgid "System"
 msgstr "Sistem"
 
-#: menueditor/add_menu_dialog.c:121 menueditor/edit_dialog.c:171
+#: menueditor/add_menu_dialog.c:124 menueditor/edit_dialog.c:174
 msgid "Source:"
 msgstr "Mənbə:"
 
 #. Style
-#: menueditor/add_menu_dialog.c:134 menueditor/edit_dialog.c:184
+#: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:187
 msgid "Style:"
 msgstr "Tərz:"
 
-#: menueditor/add_menu_dialog.c:137 menueditor/edit_dialog.c:187
+#: menueditor/add_menu_dialog.c:140 menueditor/edit_dialog.c:190
 msgid "Simple"
 msgstr "Sadə"
 
-#: menueditor/add_menu_dialog.c:140 menueditor/edit_dialog.c:190
+#: menueditor/add_menu_dialog.c:143 menueditor/edit_dialog.c:193
 msgid "Multilevel"
 msgstr "Çox səviyyəli"
 
 #. Unique
-#: menueditor/add_menu_dialog.c:153 menueditor/edit_dialog.c:203
+#: menueditor/add_menu_dialog.c:156 menueditor/edit_dialog.c:206
 msgid "_Unique entries only"
 msgstr "_Təkcə xüsusi girişlər"
 
-#: menueditor/add_menu_dialog.c:206
+#: menueditor/add_menu_dialog.c:209
 msgid "The 'Source' field is required."
 msgstr "'Mənbə' sahəsi məcburidir."
 
-#: menueditor/add_menu_dialog.c:216 menueditor/add_menu_dialog.c:233
-#: menueditor/dnd.c:152 menueditor/edit_dialog.c:510
-#: menueditor/edit_dialog.c:523 menueditor/menueditor.c:322
-#: menueditor/move.c:120 menueditor/move.c:276
+#: menueditor/add_menu_dialog.c:219 menueditor/add_menu_dialog.c:236
+#: menueditor/dnd.c:156 menueditor/edit_dialog.c:511
+#: menueditor/edit_dialog.c:524 menueditor/menueditor.c:397
+#: menueditor/move.c:122 menueditor/move.c:280
 msgid "--- include ---"
 msgstr "--- daxil et ---"
 
-#: menueditor/add_menu_dialog.c:234 menueditor/dnd.c:157
-#: menueditor/edit_dialog.c:524 menueditor/menueditor.c:325
-#: menueditor/move.c:123 menueditor/move.c:279
+#: menueditor/add_menu_dialog.c:237 menueditor/dnd.c:161
+#: menueditor/edit_dialog.c:525 menueditor/menueditor.c:400
+#: menueditor/move.c:125 menueditor/move.c:283
 msgid "system"
 msgstr "sistem"
 
 #. Create dialog for editing
-#: menueditor/edit_dialog.c:100 menueditor/edit_dialog.c:113
+#: menueditor/edit_dialog.c:103 menueditor/edit_dialog.c:116
 msgid "Edit menu entry"
 msgstr "Menyu girişini dəyişdir"
 
-#: menueditor/edit_dialog.c:131
+#: menueditor/edit_dialog.c:134
 msgid "Separators cannot be edited"
 msgstr "Ayırıcılar dəyişdirilə bilməz"
 
 #. Name
-#: menueditor/edit_dialog.c:397 menueditor/new_dialog.c:102
+#: menueditor/edit_dialog.c:400 menueditor/new_dialog.c:105
 msgid "Title:"
 msgstr "Etiket:"
 
-#: menueditor/menueditor.c:152
+#: menueditor/menueditor.c:151
 msgid "Select command"
 msgstr "Əmri seç"
 
-#: menueditor/menueditor.c:177
+#: menueditor/menueditor.c:212
 msgid "Select icon"
 msgstr "Timsalı seç"
 
-#: menueditor/menueditor.c:201
-msgid "Not yet implemented!"
-msgstr "Hələlik dəstəklənmir!"
+#: menueditor/menueditor.c:218 panel-plugin/desktop-menu-plugin.c:371
+#: settings/backdrop-mgr.c:507 settings/backdrop-mgr.c:642
+#: settings/backdrop_settings.c:516
+msgid "All Files"
+msgstr "Bütün Fayllar"
 
-#: menueditor/menueditor.c:212 menueditor/menueditor.c:594
+#: menueditor/menueditor.c:222 panel-plugin/desktop-menu-plugin.c:377
+#: settings/backdrop-mgr.c:511 settings/backdrop_settings.c:520
+msgid "Image Files"
+msgstr "Rəsm Faylları"
+
+#: menueditor/menueditor.c:275 menueditor/menueditor.c:682
 msgid "Do you want to save before closing the menu ?"
 msgstr "Menyu bağlanmadan qeyd edilsinmi ?"
 
-#: menueditor/menueditor.c:213
+#: menueditor/menueditor.c:276
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "Menyunu dəyişdirdiniz, bağlamadan onu qeyd etmək istəyirsinizmi ?"
 
-#: menueditor/menueditor.c:214
+#: menueditor/menueditor.c:277
 msgid "Forget modifications"
 msgstr "Təkmilləşdirmələri nəzərə alma"
 
-#: menueditor/menueditor.c:398 menueditor/menueditor.c:453
-#: menueditor/menueditor.c:592
+#: menueditor/menueditor.c:476 menueditor/menueditor.c:534
+#: menueditor/menueditor.c:680
 msgid "Question"
 msgstr "Sual"
 
-#: menueditor/menueditor.c:400
+#: menueditor/menueditor.c:478
 msgid "Do you want to save before opening the default menu ?"
 msgstr "Ön qurğulu menyunu açmadan əvvəl qeyd etmək istəyirsinizmi ?"
 
-#: menueditor/menueditor.c:402 menueditor/menueditor.c:457
-#: menueditor/menueditor.c:596
+#: menueditor/menueditor.c:480 menueditor/menueditor.c:538
+#: menueditor/menueditor.c:684
 msgid "Ignore modifications"
 msgstr "Təkmilləşdirmələri nəzərə alma"
 
-#: menueditor/menueditor.c:455
+#: menueditor/menueditor.c:536
 msgid "Do you want to save before opening an other menu ?"
 msgstr "Digər menyunu açmadan əvvəl qeyd etmək istəyirsinizmi ?"
 
-#: menueditor/menueditor.c:468
+#: menueditor/menueditor.c:549
 msgid "Open menu file"
 msgstr "Menyu faylını aç"
 
-#: menueditor/menueditor.c:506 menueditor/menueditor.c:517
+#: menueditor/menueditor.c:583 menueditor/menueditor.c:594
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -232,217 +240,207 @@ msgstr ""
 "%s faylına yazıla bilmir : \n"
 "%s"
 
-#: menueditor/menueditor.c:541
+#: menueditor/menueditor.c:625
 msgid "Save as..."
 msgstr "Fərqli qeyd et..."
 
-#: menueditor/menueditor.c:699
+#: menueditor/menueditor.c:802
 msgid "Edit"
 msgstr "Düzəlt"
 
 #. File menu
-#: menueditor/menueditor.c:886
+#: menueditor/menueditor.c:1008
 msgid "_File"
 msgstr "_Fayl"
 
-#: menueditor/menueditor.c:895
+#: menueditor/menueditor.c:1017
 msgid "Open default menu"
 msgstr "Ön qurğulu menyunu aç"
 
 #. Edit menu
-#: menueditor/menueditor.c:909
+#: menueditor/menueditor.c:1031
 msgid "_Edit"
 msgstr "_Düzəlt"
 
-#: menueditor/menueditor.c:915
+#: menueditor/menueditor.c:1037
 msgid "Add an external menu..."
 msgstr "Xarici menyu əlavə et..."
 
 #. Help menu
-#: menueditor/menueditor.c:927
+#: menueditor/menueditor.c:1049
 msgid "_Help"
 msgstr "_Yardım"
 
-#: menueditor/menueditor.c:932
+#: menueditor/menueditor.c:1054
 msgid "_About..."
 msgstr "_Haqqında..."
 
-#: menueditor/menueditor.c:946
+#: menueditor/menueditor.c:1064
 msgid "Create a new Xfce4 menu file"
 msgstr "Yeni Xfce4 menyu faylı yarat"
 
-#: menueditor/menueditor.c:953
+#: menueditor/menueditor.c:1068
 msgid "Open an Xfce4 menu file"
 msgstr "Xfce4 menyu faylını aç"
 
-#: menueditor/menueditor.c:960
+#: menueditor/menueditor.c:1072
 msgid "Save current menu"
 msgstr "Hazırkı menyunu qeyd et"
 
-#: menueditor/menueditor.c:967
+#: menueditor/menueditor.c:1076
 msgid "Close current menu"
 msgstr "Hazırkı menyunu bağla"
 
-#: menueditor/menueditor.c:975
+#: menueditor/menueditor.c:1081
 msgid "Add an entry to the menu"
 msgstr "Menyuya giriş əlavə et"
 
-#: menueditor/menueditor.c:982
+#: menueditor/menueditor.c:1085
 msgid "Delete the current entry"
 msgstr "Hazırkı girişi sil"
 
-#: menueditor/menueditor.c:989
+#: menueditor/menueditor.c:1089
 msgid "Move the current entry up"
 msgstr "Hazırkı girişi yuxarı daşı"
 
-#: menueditor/menueditor.c:996
+#: menueditor/menueditor.c:1093
 msgid "Move the current entry down"
 msgstr "Hazırkı girişi aşağı daşı"
 
-#: menueditor/menueditor.c:1004
+#: menueditor/menueditor.c:1098
 msgid "Collapse the tree"
 msgstr "Ağacı yığ"
 
-#: menueditor/menueditor.c:1011
+#: menueditor/menueditor.c:1102
 msgid "Expand the tree"
 msgstr "Ağacı aç"
 
-#: menueditor/menueditor.c:1045
+#: menueditor/menueditor.c:1133
 msgid "Name"
 msgstr "Ad"
 
-#: menueditor/menueditor.c:1047
+#: menueditor/menueditor.c:1135
 msgid "Command"
 msgstr "Əmr"
 
-#: menueditor/menueditor.c:1049
+#: menueditor/menueditor.c:1137
 msgid "Hidden"
 msgstr "Gizli"
 
-#: menueditor/menueditor.c:1051
+#: menueditor/menueditor.c:1139
 msgid "Pointer"
 msgstr "Ox"
 
-#: menueditor/menueditor.c:1183
+#: menueditor/menueditor.c:1263
 msgid "Corrupted file or incorrect file format !"
 msgstr "Xəsərli fayl ya da səhv fayl formatı !"
 
-#: menueditor/menueditor.c:1196
+#: menueditor/menueditor.c:1276
 msgid "No root element in file !"
 msgstr "Fayl içində root elementi yoxdur !"
 
-#: menueditor/menueditor.c:1207
+#: menueditor/menueditor.c:1287
 msgid "Bad datafile format !"
 msgstr "Xəsərli datafayl formatı !"
 
-#: menueditor/menueditor.c:1323
+#: menueditor/menueditor.c:1391
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "%s faylı mövcud deyil !"
 
-#: menueditor/move.c:401
+#: menueditor/move.c:410
 msgid "Do you want to move the item into the parent menu?"
 msgstr "Üzvü qonşu menyuya daşımaq istəyirsinizmi?"
 
-#: menueditor/move.c:500
+#: menueditor/move.c:514
 msgid "Do you want to move the item into the submenu?"
 msgstr "Üzvü alt menyuya daşımaq istəyirsinizmi?"
 
-#: menueditor/new_dialog.c:58
+#: menueditor/new_dialog.c:61
 msgid "Are you sure you want to close the current menu?"
 msgstr "Hazırkı menyunu bağlamaq istəyirsinizmi?"
 
-#: menueditor/new_dialog.c:74
+#: menueditor/new_dialog.c:77
 msgid "Do you want to save before closing the file?"
 msgstr "Faylı bağlamadan əvvəl onu qeyd etmək istəyirsinizmi?"
 
 #. get the filename and name for the new menu
-#: menueditor/new_dialog.c:84 menueditor/new_dialog.c:96
+#: menueditor/new_dialog.c:87 menueditor/new_dialog.c:99
 msgid "New menu"
 msgstr "Yeni menyu"
 
 #. Filename
-#: menueditor/new_dialog.c:109
+#: menueditor/new_dialog.c:112
 msgid "Filename:"
 msgstr "Fayl adı:"
 
-#: menueditor/new_dialog.c:142
+#: menueditor/new_dialog.c:145
 msgid "All fields are required."
 msgstr "Bütün sahələr doldurulmalıdır."
 
-#: modules/menu/desktop-menu-dentry.c:532
+#: modules/menu/desktop-menu-dentry.c:571
 msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
 msgstr "XfceDesktopMenu: xfce-registered-categories.xml tapıla bilmədi"
 
-#: modules/menu/desktop-menuspec.c:61
+#: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
 msgstr "/Digər"
 
-#: modules/menu/desktop-menuspec.c:279
+#: modules/menu/desktop-menuspec.c:361
 #, c-format
 msgid "%s: missing or unknown attribute for 'related' element\n"
 msgstr "%s: 'related' elementi üçün əksik ya da naməlum atribut\n"
 
-#: modules/menu/desktop-menuspec.c:284
+#: modules/menu/desktop-menuspec.c:366
 #, c-format
 msgid "%s: unknown xml element %s\n"
 msgstr "%s: naməlum xml element %s\n"
 
-#: panel-plugin/desktop-menu-plugin.c:192
-#: panel-plugin/desktop-menu-plugin.c:515
+#: panel-plugin/desktop-menu-plugin.c:189
+#: panel-plugin/desktop-menu-plugin.c:514
 msgid "Xfce Menu"
 msgstr "Xfce Menyusu"
 
-#: panel-plugin/desktop-menu-plugin.c:355
+#: panel-plugin/desktop-menu-plugin.c:354
 msgid "Select Icon"
 msgstr "Timsalı Seç"
 
-#: panel-plugin/desktop-menu-plugin.c:357
+#: panel-plugin/desktop-menu-plugin.c:356
 msgid "Select Menu File"
 msgstr "Menyu Faylını Seç"
 
-#: panel-plugin/desktop-menu-plugin.c:372 settings/backdrop-mgr.c:545
-#: settings/backdrop-mgr.c:700 settings/backdrop_settings.c:467
-msgid "All Files"
-msgstr "Bütün Fayllar"
-
-#: panel-plugin/desktop-menu-plugin.c:378 settings/backdrop-mgr.c:549
-#: settings/backdrop_settings.c:471
-msgid "Image Files"
-msgstr "Rəsm Faylları"
-
-#: panel-plugin/desktop-menu-plugin.c:386
+#: panel-plugin/desktop-menu-plugin.c:385
 msgid "Menu Files"
 msgstr "Menyu Faylları"
 
-#: panel-plugin/desktop-menu-plugin.c:445
+#: panel-plugin/desktop-menu-plugin.c:444
 msgid "_Menu file:"
 msgstr "_Menyu faylı:"
 
-#: panel-plugin/desktop-menu-plugin.c:479
+#: panel-plugin/desktop-menu-plugin.c:478
 msgid "_Button icon:"
 msgstr "_Düymə timsalı:"
 
-#: panel-plugin/desktop-menu-plugin.c:504
+#: panel-plugin/desktop-menu-plugin.c:503
 msgid "Show _icons in menu"
 msgstr "Menyuda _timsalları göstər"
 
-#: settings/backdrop-mgr.c:133 settings/backdrop-mgr.c:192
-#: settings/backdrop-mgr.c:592
+#: settings/backdrop-mgr.c:96 settings/backdrop-mgr.c:156
+#: settings/backdrop-mgr.c:553
 msgid "Backdrop"
 msgstr "Arxa Plan"
 
-#: settings/backdrop-mgr.c:139
+#: settings/backdrop-mgr.c:100
 #, c-format
 msgid "Adding files from directory %s..."
 msgstr "%s cərgəsindən fayllar əlavə edilir..."
 
-#: settings/backdrop-mgr.c:198
+#: settings/backdrop-mgr.c:160
 #, c-format
 msgid "Adding files from list %s..."
 msgstr "%s siyahısından fayllar əlavə edilir..."
 
-#: settings/backdrop-mgr.c:240
+#: settings/backdrop-mgr.c:215
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -455,173 +453,173 @@ msgstr ""
 "Xahiş edirik başqa bir mövqe siçin ya da dəyişiklikləri ləğv etmək üçün "
 "dialoqdaləğv et düyməsini basın"
 
-#: settings/backdrop-mgr.c:540
+#: settings/backdrop-mgr.c:502
 msgid "Select backdrop image file"
 msgstr "Arxa plan rəsm faylını seç"
 
-#: settings/backdrop-mgr.c:598
+#: settings/backdrop-mgr.c:559
 msgid "Adding multiple files..."
 msgstr "Fayllar əlavə edilir..."
 
-#: settings/backdrop-mgr.c:695
+#: settings/backdrop-mgr.c:637
 msgid "Choose backdrop list filename"
 msgstr "Arxa plan siyahısı üçün fayl adı seç"
 
-#: settings/backdrop-mgr.c:704
+#: settings/backdrop-mgr.c:646
 msgid "List Files"
 msgstr "Siyahı Faylları"
 
-#: settings/backdrop-mgr.c:767
+#: settings/backdrop-mgr.c:709
 msgid "Backdrop List"
 msgstr "Arxa Plan Siyahısı"
 
-#: settings/backdrop-mgr.c:784
+#: settings/backdrop-mgr.c:726
 msgid "Image files"
 msgstr "Rəsm faylları"
 
-#: settings/backdrop-mgr.c:794
+#: settings/backdrop-mgr.c:736
 msgid "backdrops.list"
 msgstr "arxaplanlar.list"
 
-#: settings/backdrop-mgr.c:800
+#: settings/backdrop-mgr.c:742
 msgid "List file"
 msgstr "Siyahı faylı"
 
-#: settings/backdrop-mgr.c:820
+#: settings/backdrop-mgr.c:762
 msgid "Create backdrop list"
 msgstr "Arxa plan siyahısı yarat"
 
-#: settings/backdrop-mgr.c:851
+#: settings/backdrop-mgr.c:793
 msgid "Edit backdrop list"
 msgstr "Arxa plan siyahısını dəyişdir"
 
 #. the dialog
-#: settings/backdrop_settings.c:86 settings/backdrop_settings.c:765
-#: src/xfce-desktop.c:597
+#: settings/backdrop_settings.c:133 settings/backdrop_settings.c:814
+#: src/xfce-desktop.c:616
 msgid "Desktop"
 msgstr "Masa Üstü"
 
-#: settings/backdrop_settings.c:462
+#: settings/backdrop_settings.c:511
 msgid "Select backdrop image or list file"
 msgstr "Arxa plan rəsmini ya da siyahı faylını seç"
 
-#: settings/backdrop_settings.c:480
+#: settings/backdrop_settings.c:529
 msgid "List Files (*.list)"
 msgstr "Siyahı Faylları (*.list)"
 
-#: settings/backdrop_settings.c:565
+#: settings/backdrop_settings.c:614
 msgid "_Edit list..."
 msgstr "_Siyahını dəyişdir..."
 
-#: settings/backdrop_settings.c:573
+#: settings/backdrop_settings.c:622
 msgid "_New list..."
 msgstr "_Yeni siyahı..."
 
-#: settings/backdrop_settings.c:609
+#: settings/backdrop_settings.c:658
 msgid "S_tyle:"
 msgstr "Tər_z:"
 
-#: settings/backdrop_settings.c:617
+#: settings/backdrop_settings.c:666
 msgid "Tiled"
 msgstr "Döşənmiş"
 
-#: settings/backdrop_settings.c:624
+#: settings/backdrop_settings.c:673
 msgid "Centered"
 msgstr "Ortalanmış"
 
-#: settings/backdrop_settings.c:631
+#: settings/backdrop_settings.c:680
 msgid "Scaled"
 msgstr "Miqyaslandırılmış"
 
-#: settings/backdrop_settings.c:638
+#: settings/backdrop_settings.c:687
 msgid "Stretched"
 msgstr "Uzadılmış"
 
-#: settings/backdrop_settings.c:645
+#: settings/backdrop_settings.c:694
 msgid "Auto"
 msgstr "Avtomatik"
 
-#: settings/backdrop_settings.c:711
+#: settings/backdrop_settings.c:760
 msgid "Adjust _Brightness:"
 msgstr "_Parlaqlığı Sazla:"
 
 #. header
-#: settings/backdrop_settings.c:780
+#: settings/backdrop_settings.c:829
 msgid "Desktop Settings"
 msgstr "Masa Üstü Qurğuları"
 
-#: settings/backdrop_settings.c:808
+#: settings/backdrop_settings.c:858
 msgid "_Backdrops"
 msgstr "_Arxa Planlar"
 
 #. color settings frame
-#: settings/backdrop_settings.c:834
+#: settings/backdrop_settings.c:884
 msgid "Color"
 msgstr "Rəng"
 
-#: settings/backdrop_settings.c:848
+#: settings/backdrop_settings.c:898
 msgid "_Color Style:"
 msgstr "_Rəng Tərzi:"
 
-#: settings/backdrop_settings.c:857
+#: settings/backdrop_settings.c:907
 msgid "Solid Color"
 msgstr "Tək Rəng"
 
-#: settings/backdrop_settings.c:864
+#: settings/backdrop_settings.c:914
 msgid "Horizontal Gradient"
 msgstr "Üfüqi Qradient"
 
-#: settings/backdrop_settings.c:871
+#: settings/backdrop_settings.c:921
 msgid "Vertical Gradient"
 msgstr "Şaquli Qradient"
 
-#: settings/backdrop_settings.c:892
+#: settings/backdrop_settings.c:942
 msgid "Fi_rst Color:"
 msgstr "_İlk Rəng:"
 
-#: settings/backdrop_settings.c:913
+#: settings/backdrop_settings.c:963
 msgid "_Second Color:"
 msgstr "İ_kinci Rəng:"
 
 #. set color only checkbox
-#: settings/backdrop_settings.c:934
+#: settings/backdrop_settings.c:984
 msgid "Set color _only"
 msgstr "_Təkcə rəng işlət"
 
-#: settings/backdrop_settings.c:949
+#: settings/backdrop_settings.c:999
 msgid "Image"
 msgstr "Rəsm"
 
-#: settings/backdrop_settings.c:957
+#: settings/backdrop_settings.c:1007
 msgid "Show _Image"
 msgstr "_Rəsm Göstər"
 
-#: settings/backdrop_settings.c:979
+#: settings/backdrop_settings.c:1029
 msgid "_File:"
 msgstr "_Fayl:"
 
 #. don't set backdrop checkbox
-#: settings/backdrop_settings.c:1016
+#: settings/backdrop_settings.c:1066
 msgid "_Don't set backdrop"
 msgstr "Arxa plan _olmasın"
 
 #. add the single backdrop settings page to the main notebook
-#: settings/backdrop_settings.c:1039
+#: settings/backdrop_settings.c:1089
 msgid "_Backdrop"
 msgstr "_Arxa Plan"
 
-#: settings/backdrop_settings.c:1047 settings/backdrop_settings.c:1049
+#: settings/backdrop_settings.c:1097 settings/backdrop_settings.c:1099
 #, c-format
 msgid "Screen %d"
 msgstr "Ekran %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: settings/backdrop_settings.c:1054
+#: settings/backdrop_settings.c:1104
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Ekran %d, Monitor %d"
 
-#: settings/backdrop_settings.c:1068
+#: settings/backdrop_settings.c:1118
 msgid "_Menu"
 msgstr "_Menyu"
 
@@ -630,59 +628,57 @@ msgstr "_Menyu"
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor başladıla bilmədi: %s"
 
-#: settings/menu_settings.c:151
+#: settings/menu_settings.c:153
 msgid "Window List"
 msgstr "Pəncərə Siyahısı"
 
-#: settings/menu_settings.c:159
+#: settings/menu_settings.c:161
 msgid "Show window _list"
 msgstr "Pəncərə _siyahısını göstər"
 
-#: settings/menu_settings.c:174
+#: settings/menu_settings.c:176
 msgid "Show _window icons"
 msgstr "Pəncərə _timsallarını göstər"
 
-#: settings/menu_settings.c:187
+#: settings/menu_settings.c:189
 msgid "Desktop Menu"
 msgstr "Masa Üstü Menyusu"
 
-#: settings/menu_settings.c:195
+#: settings/menu_settings.c:197
 msgid "Show desktop _menu"
 msgstr "Masa üstü _menyusunu göstər"
 
-#: settings/menu_settings.c:210
+#: settings/menu_settings.c:212
 msgid "Show _application icons"
 msgstr "_Proqram timsallarını göstər"
 
-#: settings/menu_settings.c:221
+#: settings/menu_settings.c:223
 msgid "_Edit desktop menu"
 msgstr "Masa üstü menyusunu _düzəlt"
 
-#: src/main.c:255
+#: src/main.c:265
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Naməlum seçim: %s\n"
 
-#: src/main.c:256
+#: src/main.c:266
 msgid "Options are:\n"
 msgstr "Seçimlər:\n"
 
-#: src/main.c:257
+#: src/main.c:267
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "    -reload      Bütün qurğuları yenidən yüklə, rəsm siyahısını yenilə\n"
+msgstr ""
+"    -reload      Bütün qurğuları yenidən yüklə, rəsm siyahısını yenilə\n"
 
-#: src/main.c:258
+#: src/main.c:268
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Menyunu göstər (siçanın hazırkı mövqeyində)\n"
 
-#: src/main.c:259
-msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  Pəncərə siyahısını göstər (siçanın hazırkı mövqeyində)\n"
-
-#: src/menu.c:73
-#, c-format
-msgid "%s: Unable to initialise menu module. Right-click menu will be unavailable.\n"
-msgstr "%s: Menyu modulu başladıla bilmədi. Sağ tıqlama menyusu mövcud olmayacaqdır.\n"
+#: src/main.c:269
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+"    -windowlist  Pəncərə siyahısını göstər (siçanın hazırkı mövqeyində)\n"
 
 #: src/windowlist.c:183
 #, c-format
@@ -708,3 +704,12 @@ msgstr "%d İş Sahəsini _Sil"
 msgid "_Remove Workspace '%s'"
 msgstr "'%s' İş Sahəsini _Sil"
 
+#~ msgid "Not yet implemented!"
+#~ msgstr "Hələlik dəstəklənmir!"
+
+#~ msgid ""
+#~ "%s: Unable to initialise menu module. Right-click menu will be "
+#~ "unavailable.\n"
+#~ msgstr ""
+#~ "%s: Menyu modulu başladıla bilmədi. Sağ tıqlama menyusu mövcud "
+#~ "olmayacaqdır.\n"
