@@ -33,5 +33,9 @@
 
 void quit(void);
 
+#define DEBUG_TRACE 0
+#define DEBUG 0
+#include "debug.h"
+
 #endif /* __XFDESKTOP_MAIN_H */
 

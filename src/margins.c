@@ -32,6 +32,7 @@ static DesktopMargins margins;
 
 void margins_init(GtkWidget *window)
 {
+    TRACE();
     xwin = GDK_WINDOW_XWINDOW(window->window);
 
     margins.left = 0;
@@ -44,6 +45,7 @@ void margins_load_settings(McsClient *client)
 {
     McsSetting *setting;
 
+    TRACE();
     if (MCS_SUCCESS == mcs_client_get_setting(client, "left", MARGINS_CHANNEL, &setting))
     {
 	margins.left = setting->data.v_int;
@@ -89,6 +91,7 @@ static void update_margins_channel(const char *name, McsAction action,
 {
     int margin;
     
+    TRACE();
     switch (action)
     {
         case MCS_ACTION_NEW:
@@ -119,6 +122,7 @@ static void update_margins_channel(const char *name, McsAction action,
 
 void add_margins_callback(GHashTable *ht)
 {
+    TRACE();
     g_hash_table_insert(ht, MARGINS_CHANNEL, update_margins_channel);
 }
 

@@ -32,6 +32,7 @@ static void set_workspace_count(int n)
     static Atom xa_NET_NUMBER_OF_DESKTOPS = 0;
     XClientMessageEvent sev;
 
+    TRACE();
     if(!xa_NET_NUMBER_OF_DESKTOPS)
     {
 	xa_NET_NUMBER_OF_DESKTOPS = 
@@ -61,6 +62,7 @@ static void set_workspace_names(const char *names)
     static Atom xa_NET_DESKTOP_NAMES = 0;
     int len;
 
+    TRACE();
     if (!xa_NET_DESKTOP_NAMES)
     {
 	xa_NET_DESKTOP_NAMES = XInternAtom(GDK_DISPLAY(), 
@@ -89,6 +91,7 @@ void workspaces_load_settings(McsClient *client)
 {
     McsSetting *setting;
 
+    TRACE();
     if (MCS_SUCCESS == mcs_client_get_setting(client, "count", WORKSPACES_CHANNEL, &setting))
     {
 	set_workspace_count(setting->data.v_int);
@@ -106,6 +109,7 @@ void workspaces_load_settings(McsClient *client)
 static void update_workspaces_channel(const char *name, McsAction action,
 				      McsSetting *setting)
 {
+    TRACE();
     switch (action)
     {
         case MCS_ACTION_NEW:
@@ -128,6 +132,7 @@ static void update_workspaces_channel(const char *name, McsAction action,
 
 void add_workspaces_callback(GHashTable *ht)
 {
+    TRACE();
     g_hash_table_insert(ht, WORKSPACES_CHANNEL, update_workspaces_channel);
 }
 

@@ -55,6 +55,7 @@ gboolean init_settings = TRUE;
 /* hash table: channel_name -> channel_callback */
 static void init_settings_hash(void)
 {
+    TRACE();
     settings_hash = g_hash_table_new(g_str_hash, g_str_equal);
     
     add_backdrop_callback(settings_hash);
@@ -66,6 +67,7 @@ static void init_settings_hash(void)
 /* load settings */
 void load_settings(void)
 {
+    TRACE();
     backdrop_load_settings(client);
     menu_load_settings(client);
     margins_load_settings(client);
@@ -78,6 +80,7 @@ static void notify_cb(const char *name, const char *channel_name, McsAction acti
     void (*update_channel)(const char *name, McsAction action, 
 	    		   McsSetting * setting);
 
+    TRACE();
     update_channel = g_hash_table_lookup(settings_hash, channel_name);
 
     if (update_channel)
@@ -88,6 +91,7 @@ static void notify_cb(const char *name, const char *channel_name, McsAction acti
 
 GdkFilterReturn client_event_filter(GdkXEvent * xevent, GdkEvent * event, gpointer data)
 {
+    TRACE();
     if(mcs_client_process_event(client, (XEvent *) xevent))
         return GDK_FILTER_REMOVE;
     else
@@ -98,6 +102,7 @@ static void watch_cb(Window window, Bool is_start, long mask, void *cb_data)
 {
     GdkWindow *gdkwin;
 
+    TRACE();
     gdkwin = gdk_window_lookup(window);
 
     if(is_start)
@@ -111,6 +116,7 @@ static gboolean manager_is_running(Display *dpy, int screen)
 {
     int result;
     
+    TRACE();
     /* we need a multi channel settings manager */
     result = mcs_manager_check_running(dpy, screen);
 
@@ -121,6 +127,7 @@ static void start_mcs_manager(void)
 {
     GError *error = NULL;
     
+    TRACE();
     g_message("xfdesktop: starting the settings manager\n");
 
     if (!g_spawn_command_line_sync("xfce-mcs-manager", 
@@ -137,11 +144,13 @@ static void start_mcs_manager(void)
 
 static void add_channel(char *channel, gpointer value, McsClient *client)
 {
+    TRACE();
     mcs_client_add_channel(client, channel);
 }
 
 void watch_settings(GtkWidget *window, NetkScreen *screen)
 {
+    TRACE();
     backdrop_init(window);
     menu_init(window, screen);
     margins_init(window);
@@ -181,6 +190,7 @@ void watch_settings(GtkWidget *window, NetkScreen *screen)
 
 void stop_watch(void)
 {
+    TRACE();
     if (client)
 	mcs_client_destroy(client);
 

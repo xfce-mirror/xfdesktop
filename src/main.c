@@ -45,6 +45,7 @@ static Window selection_window;
 
 void quit(void)
 {
+    TRACE();
     if (session_managed)
     {
 	logout_session(client_session);
@@ -63,6 +64,7 @@ static void send_client_message(Window xid)
     GdkEventClient gev;
     GtkWidget *win;
 
+    TRACE();
     win = gtk_invisible_new();
     gtk_widget_realize(win);
     
@@ -81,6 +83,7 @@ static gboolean client_message_received(GtkWidget *widget,
 					GdkEventClient *event,
 					gpointer user_data)
 {
+    TRACE();
     if (event->data_format == 8 && strcmp(event->data.b, RELOAD_MESSAGE) == 0)
     {
 	load_settings();
@@ -97,6 +100,7 @@ static Atom manager_atom = 0;
 
 gboolean check_is_running (Window *xid)
 {
+    TRACE();
     if (!selection_atom)
     {
 	selection_atom = 
@@ -116,6 +120,7 @@ static void xfdesktop_set_selection(void)
     int screen = DefaultScreen(display);
     GtkWidget *invisible;
     
+    TRACE();
     invisible = gtk_invisible_new();
     gtk_widget_realize(invisible);
     
@@ -168,13 +173,15 @@ static void xfdesktop_set_selection(void)
     }
     else
     {
-       g_error("xfdesktop could not set selection ownership");
+       g_warning("xfdesktop could not set selection ownership");
+       exit (1);
     }
 }
 
 /* session management */
 static void die (gpointer client_data)
 {
+    TRACE();
     gtk_main_quit();
 }
 
@@ -187,6 +194,7 @@ static GtkWidget *create_fullscreen_window(void)
     GtkWidget *win;
     GtkStyle *style;
     
+    TRACE();
     win = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
     netk_gtk_window_avoid_input(GTK_WINDOW(win));
@@ -230,6 +238,7 @@ static GtkWidget *create_fullscreen_window(void)
 
 static void xfdesktop_init(void)
 {
+    TRACE();
     fullscreen_window = create_fullscreen_window();
 
     netk_screen = netk_screen_get_default();
@@ -243,6 +252,7 @@ static void xfdesktop_init(void)
 
 static void xfdesktop_cleanup(void)
 {
+    TRACE();
     stop_watch();
     
     gtk_widget_destroy(fullscreen_window);
@@ -251,6 +261,7 @@ static void xfdesktop_cleanup(void)
 /* main program */
 static void sighandler(int sig)
 {
+    TRACE();
     switch (sig)
     {
 	case SIGHUP:
@@ -266,6 +277,7 @@ int main(int argc, char **argv)
 {
     Window xid;
 
+    TRACE();
     gtk_init(&argc, &argv);
     
     if (check_is_running(&xid))

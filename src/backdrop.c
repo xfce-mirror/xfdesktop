@@ -46,6 +46,7 @@ static gboolean is_backdrop_list(const char *path)
     int size;
     gboolean is_list = FALSE;
 
+    TRACE();
     size = strlen (LIST_TEXT);
     fp = fopen (path, "r");
 
@@ -69,6 +70,7 @@ static void remove_old_pixmap(void)
     unsigned char *data;
     Atom e_prop = XInternAtom (dpy, "ESETROOT_PMAP_ID", False);
 
+    TRACE();
     XGrabServer(dpy);
 
     XGetWindowProperty(dpy, w, e_prop, 0L, 1L, False, AnyPropertyType,
@@ -88,6 +90,7 @@ static void remove_old_pixmap(void)
 
 void backdrop_init(GtkWidget * window)
 {
+    TRACE();
     fullscreen_window = window;
 
     screen_width = gdk_screen_width();
@@ -99,6 +102,7 @@ void backdrop_init(GtkWidget * window)
 /* settings client */
 static void update_backdrop_channel(const char *name, McsAction action, McsSetting *setting)
 {
+    TRACE();
     switch (action)
     {
         case MCS_ACTION_NEW:
@@ -139,6 +143,7 @@ static void update_backdrop_channel(const char *name, McsAction action, McsSetti
 
 void add_backdrop_callback(GHashTable *ht)
 {
+    TRACE();
     g_hash_table_insert(ht, BACKDROP_CHANNEL, update_backdrop_channel);
 }
 
@@ -146,6 +151,7 @@ void backdrop_load_settings(McsClient *client)
 {
     McsSetting *setting;
 
+    TRACE();
     if (MCS_SUCCESS == mcs_client_get_setting(client, "style",  
 					      BACKDROP_CHANNEL, &setting))
     {
@@ -191,6 +197,7 @@ static char **get_list_from_file(const char *listfile)
     GError *error = NULL;
     char **files = NULL;
 
+    TRACE();
     if (!g_file_get_contents(listfile, &contents, NULL, &error))
     {
 	g_warning("xfdesktop: error reading backdrop list file: %s\n",
@@ -221,6 +228,7 @@ static int count_elements(char **list)
     char **c;
     int n = 0;
 
+    TRACE();
     for (c = list; *c; c++)
 	n++;
 
@@ -234,6 +242,7 @@ static char *get_path_from_listfile(const char *listfile)
     static char **files = NULL;
     int i, n;
 
+    TRACE();
     if (!listfile)
     {
 	g_free(prevfile);
@@ -273,6 +282,7 @@ static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style, GdkColo
     guint32 rgba;
     gboolean has_composite;
 
+    TRACE();
     /* First, fill the pixbuf with solid color */
     solid = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, screen_width, screen_height);
     rgba = (((color->red & 0xff00) << 8) | ((color->green & 0xff00)) | ((color->blue & 0xff00) >> 8)) << 8;

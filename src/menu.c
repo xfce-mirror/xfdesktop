@@ -1,7 +1,7 @@
 /*  xfce4
  *  
  *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
- *  		  2003 Biju Chako (botsie@myrealbox.com)
+ *  		      2003 Biju Chacko (botsie@users.sourceforge.net)
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -28,10 +28,12 @@
 
 #include "main.h"
 #include "menu.h"
-#include "debug.h"
+
 
 static NetkScreen *netk_screen = NULL;
 static GList *MainMenuData;     /* TODO: Free this at some point */
+static gboolean EditMode = FALSE;
+static GtkItemFactory *ifactory = NULL; /* TODO: Is this really necessary? */
 
 /*  User menu
  *  ---------
@@ -56,8 +58,42 @@ typedef struct __MenuItemStruct
 }
 MenuItem;
 
+void remove_factory_item(MenuItem *mi, GtkItemFactory *ifact)
+{
+    TRACE();
+    gtk_item_factory_delete_item(ifact, mi->path);
+}
+
+void free_menu_data(GList * menu_data)
+{
+    MenuItem *mi;
+    GList *li;
+
+    TRACE();
+    for(li = menu_data; li; li = li->next)
+    {
+        mi = li->data;
+
+        if(mi)
+        {
+            if(mi->path)
+            {
+                g_free(mi->path);
+            }
+            if(mi->cmd)
+            {
+                g_free(mi->cmd);
+            }
+            g_free(mi);
+        }
+    }
+    g_list_free(menu_data);
+    menu_data = NULL;
+}
+
 void do_exec(gpointer callback_data, guint callback_action, GtkWidget * widget)
 {
+    TRACE();
     g_spawn_command_line_async((char *)callback_data, NULL);
 }
 
@@ -67,6 +103,7 @@ void do_term_exec(gpointer callback_data, guint callback_action,
     char *cmd;
     static const char *term_cmd = NULL;
 
+    TRACE();
     if(!term_cmd)
     {
         term_cmd = g_getenv("TERMCMD");
@@ -84,11 +121,41 @@ void do_term_exec(gpointer callback_data, guint callback_action,
     return;
 }
 
+void do_builtin(gpointer callback_data, guint callback_action, GtkWidget * widget)
+{
+    char *builtin = (char *)callback_data;
+
+    TRACE();
+    if (!strcmp(builtin,"edit")) 
+    {
+        EditMode = (EditMode ? FALSE : TRUE);
+
+        /* Need to rebuild menu, so destroy the current one */
+        g_list_foreach(MainMenuData, (GFunc)remove_factory_item, ifactory);
+        free_menu_data(MainMenuData);
+        ifactory = NULL;
+        MainMenuData = NULL;
+    }
+}
+
+void do_edit(gpointer callback_data, guint callback_action, GtkWidget * widget)
+{
+    TRACE();
+    EditMode = FALSE;
+
+    /* Need to rebuild menu, so destroy the current one */
+    g_list_foreach(MainMenuData, (GFunc)remove_factory_item, ifactory);
+    free_menu_data(MainMenuData);
+    ifactory = NULL;
+    MainMenuData = NULL;
+}
+
 char *get_menu_file(void)
 {
     char *filename = NULL;
     const char *env = NULL;
 
+    TRACE();
     env = g_getenv("XFCE_DISABLE_USER_CONFIG");
 
     if(!env || strcmp(env, "0"))
@@ -130,7 +197,7 @@ MenuItem *parse_node_attr(MenuItemType type, xmlDocPtr doc, xmlNodePtr cur,
     xmlChar *term = NULL;
     xmlChar *visible = NULL;
 
-    DBG("\n");
+    TRACE();
 
     visible = xmlGetProp(cur, "visible");
     if(visible && !xmlStrcmp(visible, (xmlChar *) "no"))
@@ -197,7 +264,7 @@ GList *parse_menu_node(xmlDocPtr doc, xmlNodePtr parent, char *path,
     MenuItem *mi;
     xmlNodePtr cur;
 
-    DBG("\n");
+    TRACE();
 
     for(cur = parent->xmlChildrenNode; cur != NULL; cur = cur->next)
     {
@@ -255,6 +322,7 @@ GList *parse_menu_file(const char *filename)
     xmlNodePtr cur;
     GList *menu_data = NULL;
     
+    TRACE();
     /* Open xml menu definition File */
     doc = xmlParseFile(filename);
     if(doc == NULL)
@@ -303,59 +371,57 @@ GtkItemFactoryEntry parse_item(MenuItem * item)
     /* disable for now
        t.extra_data = item->icon; */
 
-    switch (item->type)
+    if (!EditMode)
     {
-        case MI_APP:
-            t.callback = (item->term ? do_term_exec : do_exec);
-            t.item_type = "<Item>";
-            break;
-        case MI_SEPARATOR:
-            t.callback = NULL;
-            t.item_type = "<Separator>";
-            break;
-        case MI_SUBMENU:
-            t.callback = NULL;
+        switch (item->type)
+        {
+            case MI_APP:
+                t.callback = (item->term ? do_term_exec : do_exec);
+                t.item_type = "<Item>";
+                break;
+            case MI_SEPARATOR:
+                t.callback = NULL;
+                t.item_type = "<Separator>";
+                break;
+            case MI_SUBMENU:
+                t.callback = NULL;
+                t.item_type = "<Branch>";
+                break;
+            case MI_TITLE:
+                t.callback = NULL;
+                t.item_type = "<Title>";
+                break;
+            case MI_BUILTIN:
+                t.callback = do_builtin;
+                t.item_type = "<Item>";
+                break;
+            default:
+                break;
+        }
+    }
+    else
+    {
+        t.callback = do_edit;
+        
+        if (item->type == MI_SUBMENU)
             t.item_type = "<Branch>";
-            break;
-        case MI_TITLE:
-            t.callback = NULL;
-            t.item_type = "<Title>";
-            break;
-        default:
-            break;
+        else
+            t.item_type = "<Item>";
+        
+        if (item->type == MI_SEPARATOR)
+        {
+            gchar *parent_menu;
+
+            parent_menu = g_path_get_dirname(item->path);
+            g_free(item->path);
+            item->path = g_strconcat(parent_menu, "--- seperator ---", NULL);
+            t.path = item->path;
+            
+            g_free(parent_menu);
+        }
     }
 
     return t;
-}
-
-void remove_factory_item(MenuItem *mi, GtkItemFactory *ifactory)
-{
-    gtk_item_factory_delete_item(ifactory, mi->path);
-}
-
-void free_menu_data(GList * menu_data)
-{
-    MenuItem *mi;
-    GList *li;
-
-    for(li = menu_data; li; li = li->next)
-    {
-        mi = li->data;
-
-        if(mi)
-        {
-            if(mi->path)
-            {
-                g_free(mi->path);
-            }
-            if(mi->cmd)
-            {
-                g_free(mi->cmd);
-            }
-            g_free(mi);
-        }
-    }
-    g_list_free(menu_data);
 }
 
 /* returns the menu widget */
@@ -364,8 +430,8 @@ static GtkWidget *create_desktop_menu(void)
     struct stat st;
     static char *filename = NULL;
     static time_t ctime = 0;
-    static GtkItemFactory *ifactory = NULL;
 
+    TRACE();
     if (!filename)
 	filename = get_menu_file();
     
@@ -409,7 +475,15 @@ static GtkWidget *create_desktop_menu(void)
 	    item = (MenuItem *) li->data;
 	    assert(item != NULL);
 	    entry = parse_item(item);
-	    gtk_item_factory_create_item(ifactory, &entry, item->cmd, 1);
+
+            if (!EditMode) 
+            {
+	        gtk_item_factory_create_item(ifactory, &entry, item->cmd, 1);
+            }
+            else
+            {
+	        gtk_item_factory_create_item(ifactory, &entry, item, 1);
+            }
 	}
 
 	/* clean up */
@@ -428,6 +502,7 @@ static GtkWidget *create_desktop_menu(void)
 */
 static void activate_window(GtkWidget * item, NetkWindow * win)
 {
+    TRACE();
     netk_window_activate(win);
 }
 
@@ -437,6 +512,7 @@ static void set_num_screens(gpointer num)
     XClientMessageEvent sev;
     int n;
 
+    TRACE();
     if(!xa_NET_NUMBER_OF_DESKTOPS)
     {
         xa_NET_NUMBER_OF_DESKTOPS =
@@ -468,6 +544,7 @@ static GtkWidget *create_window_list_item(NetkWindow * win)
     GString *label;
     GtkWidget *mi;
 
+    TRACE();
     if(netk_window_is_skip_pager(win) || netk_window_is_skip_tasklist(win))
         return NULL;
 
@@ -504,6 +581,7 @@ static GtkWidget *create_windowlist_menu(void)
     NetkWorkspace *ws, *aws;
     GtkStyle *style;
 
+    TRACE();
     menu3 = gtk_menu_new();
     style = gtk_widget_get_style(menu3);
 
@@ -619,6 +697,7 @@ static gboolean button_press_event(GtkWidget * win, GdkEventButton * ev,
     static GtkWidget *menu1 = NULL;
     static GtkWidget *menu3 = NULL;
 
+    TRACE();
     if(ev->button == 3 || (ev->button == 1 && ev->state & GDK_SHIFT_MASK))
     {
         if(menu3)
@@ -646,6 +725,7 @@ static gboolean button_press_event(GtkWidget * win, GdkEventButton * ev,
 
 void menu_init(GtkWidget * window, NetkScreen * screen)
 {
+    TRACE();
     netk_screen = screen;
 
     g_signal_connect(window, "button-press-event",
@@ -654,8 +734,10 @@ void menu_init(GtkWidget * window, NetkScreen * screen)
 
 void menu_load_settings(McsClient * client)
 {
+    TRACE();
 }
 
 void add_menu_callback(GHashTable * ht)
 {
+    TRACE();
 }
