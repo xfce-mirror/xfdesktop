@@ -949,7 +949,7 @@ run_dialog (McsPlugin * mcs_plugin)
 
     dialog = create_backdrop_dialog (mcs_plugin);
 
-/*    gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);*/
+    gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);
     gtk_widget_show (dialog);
 }
 
