@@ -258,70 +258,93 @@ static char *get_path_from_listfile(const char *listfile)
     return files[i];
 }
 
-static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style, 
-					   GdkColor *color)
+static GdkPixmap *create_background_pixmap(GdkPixbuf *pixbuf, int style, GdkColor *color)
 {
     GdkPixmap *pixmap = NULL;
+    GdkPixbuf *old = pixbuf;
+    int width, height;
+    guint32 rgba;
 
     if (!GDK_IS_COLORMAP(cmap))
 	return NULL;
 	
+    width = gdk_pixbuf_get_width(pixbuf);
+    height = gdk_pixbuf_get_height(pixbuf);
+
     if (style == AUTO)
     {
-	int height, width;
 	/* if height and width are both less than half the screen
 	 * -> tiled, else -> scaled */
-	
-        width = gdk_pixbuf_get_width(pixbuf);
-        height = gdk_pixbuf_get_height(pixbuf);
 
 	if (height <= screen_height / 2 && width <= screen_width)
+	{
 	    style = TILED;
+	}
 	else
+	{
 	    style = SCALED;
+	}
     }
     
     if(style == SCALED)
     {
-        GdkPixbuf *old = pixbuf;
-
         pixbuf = gdk_pixbuf_scale_simple(old, screen_width, screen_height, GDK_INTERP_BILINEAR);
-
-        g_object_unref(old);
     }
-    else if(style == CENTERED)
+
+    pixbuf = gdk_pixbuf_new(gdk_pixbuf_get_colorspace(old), 0, 8, screen_width, screen_height);
+    gdk_rgb_find_color(cmap, color);
+
+    /* pixel is in rgb, we need rgba */
+    rgba = color->pixel * 256;
+    gdk_pixbuf_fill(pixbuf, rgba);
+
+    if (style == CENTERED)
     {
-        GdkPixbuf *old = pixbuf;
-        int x, y, width, height;
-	guint32 rgba;
+	gint x = MAX((screen_width - width) / 2, 0);
+	gint y = MAX((screen_height - height) / 2, 0);
 
-        width = gdk_pixbuf_get_width(pixbuf);
-        height = gdk_pixbuf_get_height(pixbuf);
-
-        pixbuf = gdk_pixbuf_new(gdk_pixbuf_get_colorspace(old), 0, 8, 
-				screen_width, screen_height);
-
-	gdk_rgb_find_color(cmap, color);
-
-	/* pixel is in rgb, we need rgba */
-	rgba = color->pixel * 256;
-        gdk_pixbuf_fill(pixbuf, rgba);
-
-        x = (screen_width - width) / 2;
-        y = (screen_height - height) / 2;
-        x = MAX(x, 0);
-        y = MAX(y, 0);
-
-        gdk_pixbuf_composite(old, pixbuf,
+	gdk_pixbuf_composite(old, pixbuf,
                              x, y,
                              MIN(screen_width, width),
                              MIN(screen_height, height),
                              x, y, 1, 1, GDK_INTERP_NEAREST, 255);
-        g_object_unref(old);
     }
+    else if (style == SCALED)
+    {
+        GdkPixbuf *new = pixbuf;
+        new = gdk_pixbuf_scale_simple(old, screen_width, screen_height, GDK_INTERP_BILINEAR);
+	gdk_pixbuf_composite(new, pixbuf,
+                             0, 0,
+                             screen_width,
+                             screen_height,
+                             0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
+        g_object_unref(new);
+    }
+    else if (style == TILED)
+    {
+	gdouble cx, cy;
+	gint pw = gdk_pixbuf_get_width (old);
+	gint ph = gdk_pixbuf_get_height (old);
 
-    gdk_pixbuf_render_pixmap_and_mask_for_colormap(pixbuf, cmap, 
-	    					   &pixmap, NULL, 0);
+	for (cy = 0; cy < screen_height; cy += ph) 
+	{
+            for (cx = 0; cx < screen_width; cx += pw) 
+	    {
+		gdk_pixbuf_composite (old, pixbuf,
+				      cx, cy,
+				      MIN (pw, screen_width - cx), 
+				      MIN (ph, screen_height - cy),
+				      cx, cy,
+				      1.0, 1.0,
+				      GDK_INTERP_TILES,
+				      255);
+	    }
+	}
+    }
+    
+    g_object_unref(old);
+
+    gdk_pixbuf_render_pixmap_and_mask_for_colormap(pixbuf, cmap, &pixmap, NULL, 0);
     g_object_unref(pixbuf);
 
     return pixmap;
