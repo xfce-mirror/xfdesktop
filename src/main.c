@@ -61,7 +61,7 @@ SessionClient *client_session = NULL;
 gboolean is_session_managed = FALSE;
 
 void
-quit()
+quit(gboolean force)
 {
 	if(is_session_managed)
 		logout_session(client_session);

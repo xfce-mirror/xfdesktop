@@ -30,7 +30,7 @@
 G_BEGIN_DECLS
 
 gboolean client_message_received(GtkWidget *w, GdkEventClient *evt, gpointer user_data);
-void quit();
+void quit(gboolean force);
 
 G_END_DECLS
 

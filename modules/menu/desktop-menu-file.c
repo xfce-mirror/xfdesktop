@@ -68,8 +68,7 @@
 #include <glib.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/xfce-appmenuitem.h>
-#include <libxfcegui4/icons.h>
+#include <libxfcegui4/libxfcegui4.h>
 
 #include "desktop-menu-private.h"
 #include "desktop-menu.h"
@@ -89,7 +88,7 @@ enum {
 	MI_BUILTIN_QUIT = 1
 };
 
-extern void quit();
+extern void quit(gboolean force);
 
 struct MenuFileParserState {
 	gboolean started;
@@ -121,7 +120,7 @@ _do_builtin(GtkMenuItem *mi, gpointer user_data)
 	
 	switch(type) {
 		case MI_BUILTIN_QUIT:
-			quit();
+			quit(FALSE);
 			break;
 		default:
 			g_warning("XfceDesktopMenu: unknown builtin type (%d)\n", type);
@@ -215,7 +214,6 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			}
 		}
 		
-		gtk_widget_set_name(mi, "xfdesktopmenu");
 		gtk_widget_show(mi);
 		gtk_menu_shell_append(GTK_MENU_SHELL(state->cur_branch), mi);
 		g_hash_table_insert(state->desktop_menu->menu_entry_hash,
@@ -270,7 +268,6 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 				gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
 			}
 		}
-		gtk_widget_set_name(mi, "xfdesktopmenu");
 		gtk_widget_show(mi);
 		gtk_menu_shell_append(GTK_MENU_SHELL(state->cur_branch), mi);
 		
@@ -300,7 +297,6 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 		}
 		
 		mi = gtk_separator_menu_item_new();
-		gtk_widget_set_name(mi, "xfdesktopmenu");
 		gtk_widget_show(mi);
 		gtk_menu_shell_append(GTK_MENU_SHELL(state->cur_branch), mi);
 	} else if(!strcmp(element_name, "builtin")) {
@@ -346,7 +342,6 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			}
 				
 		}
-		gtk_widget_set_name(mi, "xfdesktopmenu");
 		g_signal_connect(G_OBJECT(mi), "activate", G_CALLBACK(_do_builtin),
 				GINT_TO_POINTER(MI_BUILTIN_QUIT));
 		gtk_widget_show(mi);
@@ -391,7 +386,6 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 			}
 		}
 		gtk_widget_set_sensitive(mi, FALSE);
-		gtk_widget_set_name(mi, "xfdesktopmenu");
 		gtk_widget_show(mi);
 		gtk_menu_shell_append(GTK_MENU_SHELL(state->cur_branch), mi);
 	} else if(!strcmp(element_name, "include")) {

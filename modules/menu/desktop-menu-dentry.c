@@ -254,7 +254,6 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
 	} else
 		mi = gtk_menu_item_new_with_label(q);
 	
-	gtk_widget_set_name(mi, "xfdesktopmenu");
 	g_object_set_data_full(G_OBJECT(mi), "item-name", g_strdup(q),
 			(GDestroyNotify)g_free);
 	
@@ -342,7 +341,6 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 			GtkWidget *image = gtk_image_new_from_pixbuf(dummy_icon);
 			xfce_app_menu_item_set_image(XFCE_APP_MENU_ITEM(mi), image);
 		}
-		gtk_widget_set_name(mi, "xfdesktopmenu");
 		g_object_set_data(G_OBJECT(mi), "item-name", (gpointer)name);
 		gtk_widget_show(mi);
 		_menu_shell_insert_sorted(GTK_MENU_SHELL(menu), mi, name);
@@ -368,7 +366,6 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 			GtkWidget *image = gtk_image_new_from_pixbuf(dummy_icon);
 			xfce_app_menu_item_set_image(XFCE_APP_MENU_ITEM(mi), image);
 		}
-		gtk_widget_set_name(mi, "xfdesktopmenu");
 		g_object_set_data(G_OBJECT(mi), "item-name", (gpointer)name);
 		gtk_widget_show(mi);
 		_menu_shell_insert_sorted(GTK_MENU_SHELL(menu), mi, name);
@@ -397,7 +394,6 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
 				GtkWidget *image = gtk_image_new_from_pixbuf(dummy_icon);
 				xfce_app_menu_item_set_image(XFCE_APP_MENU_ITEM(mi), image);
 			}
-			gtk_widget_set_name(mi, "xfdesktopmenu");
 			g_object_set_data(G_OBJECT(mi), "item-name", (gpointer)name);
 			gtk_widget_show(mi);
 			_menu_shell_insert_sorted(GTK_MENU_SHELL(menu), mi, name);
