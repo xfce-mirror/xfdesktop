@@ -42,3 +42,6 @@ xfce4_menueditor_LDADD =							\
 	@LIBXFCE4MCS_CLIENT_LIBS@					\
 	@LIBXFCEGUI4_LIBS@						\
 	@LIBXML_LIBS@
+
+appsdir = $(datadir)/applications
+apps_DATA = xfce-menueditor.desktop

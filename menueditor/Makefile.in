@@ -14,6 +14,7 @@
 
 @SET_MAKE@
 
+
 SOURCES = $(xfce4_menueditor_SOURCES)
 
 srcdir = @srcdir@
@@ -50,7 +51,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
-am__installdirs = $(DESTDIR)$(bindir)
+am__installdirs = $(DESTDIR)$(bindir) $(DESTDIR)$(appsdir)
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_xfce4_menueditor_OBJECTS = xfce4_menueditor-about_dialog.$(OBJEXT) \
@@ -86,6 +87,8 @@ LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 SOURCES = $(xfce4_menueditor_SOURCES)
 DIST_SOURCES = $(xfce4_menueditor_SOURCES)
+appsDATA_INSTALL = $(INSTALL_DATA)
+DATA = $(apps_DATA)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -268,6 +271,8 @@ xfce4_menueditor_LDADD = \
 	@LIBXFCEGUI4_LIBS@						\
 	@LIBXML_LIBS@
 
+appsdir = $(datadir)/applications
+apps_DATA = xfce-menueditor.desktop
 all: all-am
 
 .SUFFIXES:
@@ -598,6 +603,23 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
+install-appsDATA: $(apps_DATA)
+	@$(NORMAL_INSTALL)
+	$(mkdir_p) $(DESTDIR)$(appsdir)
+	@list='$(apps_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " $(appsDATA_INSTALL) $$d$$p $(DESTDIR)$(appsdir)/$$f"; \
+	  $(appsDATA_INSTALL) $$d$$p $(DESTDIR)$(appsdir)/$$f; \
+	done
+
+uninstall-appsDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(apps_DATA)'; for p in $$list; do \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " rm -f $(DESTDIR)$(appsdir)/$$f"; \
+	  rm -f $(DESTDIR)$(appsdir)/$$f; \
+	done
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -674,9 +696,9 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(PROGRAMS)
+all-am: Makefile $(PROGRAMS) $(DATA)
 installdirs:
-	$(mkdir_p) $(DESTDIR)$(bindir)
+	$(mkdir_p) $(DESTDIR)$(bindir) $(DESTDIR)$(appsdir)
 install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
@@ -721,7 +743,7 @@ info: info-am
 
 info-am:
 
-install-data-am:
+install-data-am: install-appsDATA
 
 install-exec-am: install-binPROGRAMS
 
@@ -749,18 +771,20 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-binPROGRAMS uninstall-info-am
+uninstall-am: uninstall-appsDATA uninstall-binPROGRAMS \
+	uninstall-info-am
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-binPROGRAMS \
 	clean-generic clean-libtool ctags distclean distclean-compile \
 	distclean-generic distclean-libtool distclean-tags distdir dvi \
 	dvi-am html html-am info info-am install install-am \
-	install-binPROGRAMS install-data install-data-am install-exec \
-	install-exec-am install-info install-info-am install-man \
-	install-strip installcheck installcheck-am installdirs \
-	maintainer-clean maintainer-clean-generic mostlyclean \
-	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
-	pdf pdf-am ps ps-am tags uninstall uninstall-am \
+	install-appsDATA install-binPROGRAMS install-data \
+	install-data-am install-exec install-exec-am install-info \
+	install-info-am install-man install-strip installcheck \
+	installcheck-am installdirs maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-compile \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	tags uninstall uninstall-am uninstall-appsDATA \
 	uninstall-binPROGRAMS uninstall-info-am
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
