@@ -313,7 +313,7 @@ menu_dentry_parse_dentry (XfceDesktopEntry *de, GList *menu_data,
 		goto cleanup;
 
 	xfce_desktop_entry_get_string(de, "Hidden", FALSE, &hidden);
-	if(hidden && !g_strcasecmp(hidden, "true"))
+	if(hidden && !g_ascii_strcasecmp(hidden, "true"))
 		goto cleanup;	
 
 	xfce_desktop_entry_get_string (de, "Categories", TRUE, &categories);
