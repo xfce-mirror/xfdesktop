@@ -682,6 +682,10 @@ browse_cb (GtkWidget * b, BackdropDialog * bd)
 	gtk_file_filter_add_pattern(filter, "*.xpm");
 	gtk_file_filter_add_pattern(filter, "*.gif");
 	gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+	filter = gtk_file_filter_new();
+	gtk_file_filter_set_name(filter, _("List Files (*.list)"));
+	gtk_file_filter_add_pattern(filter, "*.list");
+	gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
 	
 	gtk_file_chooser_set_local_only(GTK_FILE_CHOOSER(chooser), TRUE);
 	gtk_file_chooser_add_shortcut_folder(GTK_FILE_CHOOSER(chooser),
