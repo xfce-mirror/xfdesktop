@@ -1,19 +1,19 @@
-# translation of xfdesktop.po to Turkish
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER
-# Erçin EKER <erc.caldera@gmx.net>, 2003
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2003-11-14 19:03+0100\n"
-"PO-Revision-Date: 2003-12-13 21:31+0200\n"
-"Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
-"Language-Team: Turkish <tr@li.org>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: settings/backdrop-mgr.c:175
 #, c-format
@@ -23,78 +23,78 @@ msgid ""
 "Please choose another location or press cancel in the dialog to discard your "
 "changes"
 msgstr ""
-"Dosya kaydedilemiyor %s: %s\n"
+"Ikke i stand til å lagre filen %s: %s\n"
 "\n"
-"Lütfen kaydetmek için başka bir yer seçin yada diyalogda iptale basarak "
-"değişiklikleri gözardı edin"
+"Vennligst velg et annet sted eller trykk cancel i dialogen for å forkaste dine "
+"endringer"
 
 #: settings/backdrop-mgr.c:510
 msgid "Select image file"
-msgstr "Görüntü dosyası seçin"
+msgstr "Velg bilde fil"
 
 #: settings/backdrop-mgr.c:622
 msgid "Choose backdrop list filename"
-msgstr "Arka plan için liste dosyası seçin"
+msgstr "Velg bakteppe list filnavn"
 
 #: settings/backdrop-mgr.c:694
 msgid "New.list"
-msgstr "Yeni.liste"
+msgstr "Ny liste"
 
 #: settings/backdrop-mgr.c:698
 msgid "Backdrop List"
-msgstr "Arka Plan Listesi"
+msgstr "Bakteppe liste"
 
 #: settings/backdrop-mgr.c:734
 msgid "Image files"
-msgstr "Görüntü dosyaları"
+msgstr "Bilde filer"
 
 #: settings/backdrop-mgr.c:749
 msgid "List file"
-msgstr "Liste dosyası"
+msgstr "List fil"
 
 #: settings/backdrop-mgr.c:767
 msgid "Create backdrop list"
-msgstr "Arka plan listesi oluştur"
+msgstr "Lag bakteppe liste"
 
 #: settings/backdrop-mgr.c:774
 msgid "Edit backdrop list"
-msgstr "Arka plan listesi düzenle"
+msgstr "Rediger bakteppe liste"
 
 #: settings/backdrop_settings.c:149
 msgid "Desktop background"
-msgstr "Masaüstü arka plan"
+msgstr "Skrivebords bakgrunn"
 
 #: settings/backdrop_settings.c:363
 msgid "Select background color"
-msgstr "Arka plan rengi seç"
+msgstr "Velg bakgrunnsfarge"
 
 #: settings/backdrop_settings.c:413
 msgid "Background color:"
-msgstr "Arkaplan rengi:"
+msgstr "Bakgrunnsfarge:"
 
 #: settings/backdrop_settings.c:443
 msgid "Use color only:"
-msgstr "Sadece renk kullan:"
+msgstr "Bruk bare farge:"
 
 #: settings/backdrop_settings.c:569
 msgid "File:"
-msgstr "Dosya:"
+msgstr "Fil:"
 
 #: settings/backdrop_settings.c:630
 msgid "Select background image or list file"
-msgstr "Arka plan görüntüsü yada liste dosyası seç"
+msgstr "Velg bakgrunn bilde eller liste fil"
 
 #: settings/backdrop_settings.c:707
 msgid "_Browse..."
-msgstr "_Gözat..."
+msgstr "_Bla gjennom..."
 
 #: settings/backdrop_settings.c:711
 msgid "New list"
-msgstr "Yeni liste"
+msgstr "Ny liste"
 
 #: settings/backdrop_settings.c:715
 msgid "Edit list"
-msgstr "Liste düzenle"
+msgstr "Rediger liste"
 
 #: settings/backdrop_settings.c:753
 msgid "Style:"
@@ -102,103 +102,100 @@ msgstr "Stil:"
 
 #: settings/backdrop_settings.c:761
 msgid "_Tiled"
-msgstr "_Döşe"
+msgstr "_Gjentatt"
 
 #: settings/backdrop_settings.c:767
 msgid "_Scaled"
-msgstr "_Ölçekle"
+msgstr "_Skalert"
 
 #: settings/backdrop_settings.c:774
 msgid "_Centered"
-msgstr "_Ortala"
+msgstr "_Sentrert"
 
 #: settings/backdrop_settings.c:781
 msgid "_Auto"
-msgstr "_Otomatik"
+msgstr "_Auto"
 
 #. the dialog
 #: settings/backdrop_settings.c:820
 msgid "Background"
-msgstr "Arka Plan"
+msgstr "Bakgrunn"
 
 #. header
 #: settings/backdrop_settings.c:838
 msgid "Background Settings"
-msgstr "Arka Plan Ayarları"
+msgstr "Bakgrunn instillinger"
 
 #. color
 #: settings/backdrop_settings.c:844
 msgid "Color"
-msgstr "Renk"
+msgstr "Farge"
 
 #. image vbox
 #: settings/backdrop_settings.c:856
 msgid "Image"
-msgstr "Görüntü"
+msgstr "Bilde"
 
 #: settings/backdrop_settings.c:882
 msgid "Don't set background"
-msgstr "Arka planı ayarlama"
+msgstr "Ikke sett bakgrunn"
 
 #: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
-msgstr "Masaüstü: çalışma alanları"
+msgstr "Skrivebord: arbeidsområder"
 
 #: settings/workspaces_settings.c:329
 msgid "Change name"
-msgstr "İsim değiştir"
+msgstr "Forandre navn"
 
 #: settings/workspaces_settings.c:340
 #, c-format
 msgid "Workspace %d"
-msgstr "Çalışma alanı %d"
+msgstr "Arbeidsområde %d"
 
 #: settings/workspaces_settings.c:350
 msgid "Name:"
-msgstr "İsim:"
+msgstr "Navn:"
 
 #: settings/workspaces_settings.c:461
 msgid "Click on a workspace name to edit it"
-msgstr "Düzenlemek için bir çalışma alanı ismine tıklayın"
+msgstr "Klikk på arbeidsområdet navn for å redigere det"
 
 #: settings/workspaces_settings.c:492
 msgid "Number of workspaces:"
-msgstr "Çalışma alanlarının sayısı:"
+msgstr "Antall arbeidsområder:"
 
 #. Number of workspaces
 #: settings/workspaces_settings.c:528 settings/workspaces_settings.c:558
 msgid "Workspaces"
-msgstr "Çalışma alanları"
+msgstr "Arbeidsområder"
 
 #: settings/workspaces_settings.c:551
 msgid "Workspace Settings"
-msgstr "Çalışma Alanı Ayarları"
+msgstr "Arbeidsområde instillinger"
 
 #. Workspace names
 #: settings/workspaces_settings.c:570
 msgid "Workspace names"
-msgstr "Çalışma alanı isimleri"
+msgstr "Abreidsområde navn"
 
 #: src/backdrop.c:508
 #, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
-msgstr "xfdesktop hatası: arka plan görüntüsü yükleme: %s\n"
+msgstr "xfdesktop feil: lade bakteppe bilde: %s\n"
 
 #: src/menu.c:735
 msgid "Add workspace"
-msgstr "Çalışma alanı ekle"
+msgstr "Legg til arbeidsområde"
 
 #: src/menu.c:742
 msgid "Delete workspace"
-msgstr "Çalışma alanı sil"
+msgstr "Slett arbeidsområde"
 
 #: src/settings.c:182
 msgid ""
 "xfdesktop: could not connect to settings manager!Please check your "
 "installation."
 msgstr ""
-"xfdesktop: ayar yöneticisine bağlanamıyor! Lütfen kurulumunuzu gözden "
-"geçirin."
-
-#~ msgid "Desktop"
-#~ msgstr "Masaüstü"
+"xfdesktop: ikke i stand til å koble til instillings håndterer! Vennligst sjekk din"
+"installasjon."
