@@ -17,7 +17,6 @@ backdrop_settings_la_LDFLAGS =						\
 	-module
 
 backdrop_settings_la_SOURCES =						\
-	backdrop-icon.h 						\
 	backdrop_settings.c						\
 	backdrop-mgr.c							\
 	backdrop-mgr.h							\
@@ -33,13 +32,6 @@ backdrop_settings_la_CFLAGS =						\
 
 backdrop_settings_la_LIBADD =						\
 	$(top_builddir)/common/libxfdesktop.la
-
-backdrop-icon.h: $(top_srcdir)/pixmaps/xfce4-backdrop.png
-	gdk-pixbuf-csource --raw --build-list backdrop_icon_data \
-		$(top_srcdir)/pixmaps/xfce4-backdrop.png > backdrop-icon.h
-
-# icons (left out: menu-icon.h)
-noinst_DATA = backdrop-icon.h 
 
 appsdir = $(datadir)/applications
 apps_DATA = xfce-backdrop-settings.desktop

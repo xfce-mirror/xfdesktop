@@ -80,7 +80,7 @@ LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 SOURCES = $(backdrop_settings_la_SOURCES)
 DIST_SOURCES = $(backdrop_settings_la_SOURCES)
 appsDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(apps_DATA) $(noinst_DATA)
+DATA = $(apps_DATA)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -237,7 +237,6 @@ backdrop_settings_la_LDFLAGS = \
 	-module
 
 backdrop_settings_la_SOURCES = \
-	backdrop-icon.h 						\
 	backdrop_settings.c						\
 	backdrop-mgr.c							\
 	backdrop-mgr.h							\
@@ -254,9 +253,6 @@ backdrop_settings_la_CFLAGS = \
 backdrop_settings_la_LIBADD = \
 	$(top_builddir)/common/libxfdesktop.la
 
-
-# icons (left out: menu-icon.h)
-noinst_DATA = backdrop-icon.h 
 appsdir = $(datadir)/applications
 apps_DATA = xfce-backdrop-settings.desktop
 all: all-am
@@ -623,10 +619,6 @@ uninstall-am: uninstall-appsDATA uninstall-backdropLTLIBRARIES \
 	uninstall-am uninstall-appsDATA uninstall-backdropLTLIBRARIES \
 	uninstall-info-am
 
-
-backdrop-icon.h: $(top_srcdir)/pixmaps/xfce4-backdrop.png
-	gdk-pixbuf-csource --raw --build-list backdrop_icon_data \
-		$(top_srcdir)/pixmaps/xfce4-backdrop.png > backdrop-icon.h
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
