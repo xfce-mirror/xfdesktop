@@ -1,6 +1,7 @@
 @SET_MAKE@
 
 EXTRA_DIST = xfdesktop.spec xfdesktop.spec.in TODO
+conf_DATA = menu.xml
 
 SUBDIRS = src settings backdrops
 

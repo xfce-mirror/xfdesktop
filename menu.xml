@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xfdesktop-menu>
+    <title name="Desktop Menu" visible="yes" />
+    <separator/>
+    <app name="Terminal" cmd="xterm" in-term="no" icon="xterm.png"/>
+    <app name="Run Program..." cmd="xfrun4"/> <!-- The rest have defaults -->
+    <menu name="Settings" visible="yes">
+        <app name="All Settings" cmd="xfce-setting-show"/>
+        <app name="Backdrop" cmd="xfce-setting-show backdrop"/>
+    </menu>
+    <app name="Midnight Commander" cmd="mc" term="yes"/>
+    <separator/>
+    <app name="Help" cmd="xfhelp"/>
+</xfdesktop-menu>
+
