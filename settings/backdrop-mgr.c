@@ -33,9 +33,10 @@ gboolean is_backdrop_list(const char *path)
 {
     FILE *fp;
     char buf[512];
-    int size = strlen(LIST_TEXT);
+    int size;
     gboolean is_list = FALSE;
 
+    size = strlen(LIST_TEXT);
     fp = fopen(path, "r");
 
     if(!fp)
