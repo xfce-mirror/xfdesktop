@@ -513,15 +513,32 @@ void menu_save_cb(GtkWidget *widget, gpointer data)
 /* File Selection ok button callback */
 void filesel_saveas_ok(GtkWidget *widget, GtkFileSelection *filesel_dialog)
 {
-  gtk_widget_hide(GTK_WIDGET(filesel_dialog));
+  if(strcmp(gtk_file_selection_get_filename(filesel_dialog), menueditor_app.menu_file_name) == 0){
+    g_stpcpy(menueditor_app.menu_file_name, gtk_file_selection_get_filename(filesel_dialog)); 
 
-  g_stpcpy(menueditor_app.menu_file_name,gtk_file_selection_get_filename(filesel_dialog)); 
-
-  if(menufile_save()){
+    if(menufile_save()){
       menueditor_app.menu_modified=FALSE;
       gtk_widget_set_sensitive(menueditor_app.file_menu.save,FALSE);
       gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,FALSE);
+    }
+  }else{
+    gchar *window_title;
+
+    xmlSaveFormatFile(gtk_file_selection_get_filename(filesel_dialog), menueditor_app.xml_menu_file, 1);
+
+    g_stpcpy(menueditor_app.menu_file_name, gtk_file_selection_get_filename(filesel_dialog)); 
+
+    menueditor_app.menu_modified=FALSE;
+    gtk_widget_set_sensitive(menueditor_app.file_menu.save,FALSE);
+    gtk_widget_set_sensitive(menueditor_app.main_toolbar.save,FALSE);
+
+    /* Set window's title */
+    window_title = g_strdup_printf("Xfce4-MenuEditor - %s", menueditor_app.menu_file_name);
+    gtk_window_set_title(GTK_WINDOW(menueditor_app.main_window), window_title);
+    g_free(window_title);
   }
+
+  gtk_widget_hide(GTK_WIDGET(filesel_dialog));
 }
 
 /* Ask the filename and save the menu into */
