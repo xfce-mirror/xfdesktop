@@ -130,15 +130,19 @@ gboolean command_exists(const gchar *command)
 {
   gchar *cmd_buf = NULL;
   gchar *cmd_tok = NULL;
+  gchar *program = NULL;
   gboolean result = FALSE;
 
-  cmd_buf = g_strdup(command);
-  cmd_tok = strtok(cmd_buf, " ");
+  cmd_buf = g_strdup (command);
+  cmd_tok = strtok (cmd_buf, " ");
 
-  if(g_find_program_in_path(cmd_buf) != NULL)
+  program = g_find_program_in_path (cmd_buf);
+
+  if (program)
     result = TRUE;
 
-  g_free(cmd_buf);
+  g_free (program);
+  g_free (cmd_buf);
 
   return result;
 }
@@ -150,46 +154,107 @@ void browse_command_cb(GtkWidget *widget, GtkEntry *entry_command){
   GtkWidget *filesel_dialog;
 
   filesel_dialog = xfce_file_chooser_new (_("Select command"), GTK_WINDOW (menueditor_app.main_window),
-						 XFCE_FILE_CHOOSER_ACTION_OPEN,
-						 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-						 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
+					  XFCE_FILE_CHOOSER_ACTION_OPEN,
+					  GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+					  GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 
-  xfce_file_chooser_set_filename (XFCE_FILE_CHOOSER (filesel_dialog), gtk_entry_get_text (entry_command));
+  if (strlen (gtk_entry_get_text (entry_command)) != 0) {
+    gchar *cmd_buf = NULL;
+    gchar *cmd_tok = NULL;
+    gchar *programpath = NULL;
 
-  if(gtk_dialog_run(GTK_DIALOG(filesel_dialog)) == GTK_RESPONSE_ACCEPT){
+    cmd_buf = g_strdup (gtk_entry_get_text (entry_command));
+    cmd_tok = strtok (cmd_buf, " ");
+    programpath = g_find_program_in_path (cmd_buf);
+    xfce_file_chooser_set_filename (XFCE_FILE_CHOOSER (filesel_dialog), programpath);
+
+    g_free (cmd_buf);
+    g_free (programpath);
+  }
+
+  if(gtk_dialog_run (GTK_DIALOG (filesel_dialog)) == GTK_RESPONSE_ACCEPT){
     gchar *filename = NULL;
 
     filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
     gtk_entry_set_text (entry_command, filename);
-    g_free(filename);
+    g_free (filename);
   }
 
-  gtk_widget_hide(GTK_WIDGET(filesel_dialog));
+  gtk_widget_hide (GTK_WIDGET (filesel_dialog));
 }
 
 /**********************************************/
 /* browse for a icon and set it in entry_icon */
 /**********************************************/
+static void browse_icon_update_preview_cb (XfceFileChooser *chooser, gpointer data)
+{
+  GtkImage *preview;
+  char *filename;
+  GdkPixbuf *pix = NULL;
+  
+  preview = GTK_IMAGE (data);
+  filename = xfce_file_chooser_get_filename (chooser);
+  
+  if (g_file_test (filename, G_FILE_TEST_IS_REGULAR))
+    pix = xfce_pixbuf_new_from_file_at_size (filename, 250, 250, NULL);
+  g_free (filename);
+  
+  if(pix) {
+    gtk_image_set_from_pixbuf (preview, pix);
+    g_object_unref (G_OBJECT (pix));
+  }
+  xfce_file_chooser_set_preview_widget_active (chooser, (pix != NULL));
+}
+
 void browse_icon_cb(GtkWidget *widget, GtkEntry *entry_icon){
-  //TODO add preview and filter for icon
-  GtkWidget *filesel_dialog;
+  GtkWidget *filesel_dialog, *preview;
+  XfceFileFilter *filter;
 
   filesel_dialog = xfce_file_chooser_new (_("Select icon"), GTK_WINDOW (menueditor_app.main_window),
-						 XFCE_FILE_CHOOSER_ACTION_OPEN,
-						 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-						 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
+					  XFCE_FILE_CHOOSER_ACTION_OPEN,
+					  GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+					  GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
+  
+  filter = xfce_file_filter_new ();
+  xfce_file_filter_set_name (filter, _("All Files"));
+  xfce_file_filter_add_pattern (filter, "*");
+  xfce_file_chooser_add_filter (XFCE_FILE_CHOOSER (filesel_dialog), filter);
+  filter = xfce_file_filter_new ();
+  xfce_file_filter_set_name (filter, _("Image Files"));
+  xfce_file_filter_add_pattern (filter, "*.png");
+  xfce_file_filter_add_pattern (filter, "*.jpg");
+  xfce_file_filter_add_pattern (filter, "*.bmp");
+  xfce_file_filter_add_pattern (filter, "*.svg");
+  xfce_file_filter_add_pattern (filter, "*.xpm");
+  xfce_file_filter_add_pattern (filter, "*.gif");
+  xfce_file_chooser_add_filter (XFCE_FILE_CHOOSER (filesel_dialog), filter);
+  xfce_file_chooser_set_filter (XFCE_FILE_CHOOSER (filesel_dialog), filter);
 
-  xfce_file_chooser_set_filename (XFCE_FILE_CHOOSER (filesel_dialog), gtk_entry_get_text (entry_icon));
+  preview = gtk_image_new ();
+  gtk_widget_show (preview);
+  xfce_file_chooser_set_preview_widget (XFCE_FILE_CHOOSER (filesel_dialog), preview);
+  xfce_file_chooser_set_preview_widget_active (XFCE_FILE_CHOOSER (filesel_dialog), FALSE);
+  xfce_file_chooser_set_preview_callback (XFCE_FILE_CHOOSER (filesel_dialog),
+					  (PreviewUpdateFunc)browse_icon_update_preview_cb, preview);
 
-  if(gtk_dialog_run(GTK_DIALOG(filesel_dialog)) == GTK_RESPONSE_ACCEPT){
+  if (strlen (gtk_entry_get_text (entry_icon)) != 0){
+    gchar *iconpath = NULL;
+
+    iconpath = xfce_themed_icon_lookup (gtk_entry_get_text (entry_icon), ICON_SIZE);
+    xfce_file_chooser_set_filename (XFCE_FILE_CHOOSER (filesel_dialog), iconpath);
+
+    g_free (iconpath);
+  }
+
+  if(gtk_dialog_run (GTK_DIALOG (filesel_dialog)) == GTK_RESPONSE_ACCEPT){
     gchar *filename = NULL;
 
     filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));  
     gtk_entry_set_text (entry_icon, filename);
-    g_free(filename);
+    g_free (filename);
   }
 
-  gtk_widget_hide(GTK_WIDGET(filesel_dialog));
+  gtk_widget_hide (GTK_WIDGET (filesel_dialog));
 }
 
 
