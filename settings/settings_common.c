@@ -17,18 +17,26 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
+#ifdef HAVE_STDLIB_H
+#include <stdlib.h>
+#endif
+
+#include <gtk/gtk.h>
+
+#include <libxfce4mcs/mcs-manager.h>
 #include <libxfce4util/util.h>
 
 #include "settings_common.h"
 
 void
-create_channel(McsManager *manager, const char *channel, const char *rcfile)
+create_channel(McsManager *manager, const gchar *channel, const gchar *rcfile)
 {
-    char *homefile, *sysfile;
+    gchar *homefile;
+    gchar *sysfile;
 
     homefile = xfce_get_userfile("settings", rcfile, NULL);
     sysfile = g_build_filename(DATADIR, "xfce4", "settings", rcfile, NULL);
@@ -45,24 +53,23 @@ create_channel(McsManager *manager, const char *channel, const char *rcfile)
 }
 
 gboolean
-save_channel(McsManager *manager, const char *channel, const char *rcfile)
+save_channel(McsManager *manager, const gchar *channel, const gchar *rcfile)
 {
     gboolean result;
-    char *homefile;
+    gchar *homefile;
 
     homefile = xfce_get_userfile("settings", rcfile, NULL);
-    
     result = mcs_manager_save_channel_to_file(manager, channel, homefile);
-    
     g_free(homefile);
 
-    return result;
+    return(result);
 }
 
 /* useful widget */
 #define SKIP BORDER
 
-void add_spacer(GtkBox * box)
+void
+add_spacer(GtkBox *box)
 {
     GtkWidget *align = gtk_alignment_new(0, 0, 0, 0);
 

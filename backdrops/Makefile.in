@@ -14,6 +14,9 @@
 
 @SET_MAKE@
 
+# backdrops/Makefile.am
+#
+
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
 VPATH = @srcdir@
@@ -150,11 +153,14 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
+
 backdropsdir = $(datadir)/xfce4/backdrops
+
 backdrops_DATA = \
-	xfce4gradientcurve.png \
-	xfce4logo.png \
+	xfce4gradientcurve.png						\
+	xfce4logo.png							\
 	xfce-in-the-moon.png
+
 
 EXTRA_DIST = $(backdrops_DATA)
 subdir = backdrops

@@ -1,1 +1,1 @@
-SUBDIRS=images html xml
+SUBDIRS = html images xml

@@ -17,14 +17,12 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#ifndef __XFDESKTOP_MENU_H
-#define __XFDESKTOP_MENU_H
+#ifndef __XFDESKTOP_MENU_H__
+#define __XFDESKTOP_MENU_H__
 
-void menu_init(GtkWidget *window, NetkScreen *screen);
+extern void menu_init(GtkWidget *, NetkScreen *);
+extern void menu_load_settings(McsClient *);
+extern void add_menu_callback(GHashTable *);
 
-void menu_load_settings(McsClient *client);
-
-void add_menu_callback(GHashTable *ht);
-
-#endif /* __XFDESKTOP_MENU_H */
+#endif	/* !__XFDESKTOP_MENU_H__ */
 

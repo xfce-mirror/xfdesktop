@@ -21,22 +21,39 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_SYS_STAT_H
 #include <sys/stat.h>
+#endif
+#ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
+#endif
 
 #include <errno.h>
+#ifdef HAVE_FCNTL_H
 #include <fcntl.h>
+#endif
+#ifdef HAVE_MEMORY_H
+#include <memory.h>
+#endif
 #include <stdio.h>
+#ifdef HAVE_STDLIB_H
 #include <stdlib.h>
+#endif
+#ifdef HAVE_STRING_H
 #include <string.h>
+#endif
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
+
+#include <libxfce4mcs/mcs-manager.h>
+#include <libxfce4util/i18n.h>
+#include <libxfce4util/util.h>
+#include <libxfcegui4/libxfcegui4.h>
 
 #include "settings_common.h"
 #include "backdrop.h"
 #include "backdrop-mgr.h"
-
-#include <libxfce4util/util.h>
-#include <libxfcegui4/libxfcegui4.h>
 
 /* exported interface */
 gboolean is_backdrop_list(const char *path)

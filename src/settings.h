@@ -17,8 +17,8 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#ifndef __XFDESKTOP_SETTING
-#define __XFDESKTOP_SETTING
+#ifndef __XFDESKTOP_SETTING__
+#define __XFDESKTOP_SETTING__
 
 /* init_settings is a flag that dramatically speeds up startup 
    by avoiding the computation of the backdrop image every time 
@@ -26,13 +26,10 @@
  */
 extern gboolean init_settings;
 
-void run_settings_dialog(void);
+extern void run_settings_dialog(void);
+extern void watch_settings(GtkWidget *, NetkScreen *);
+extern void load_settings(void);
+extern void stop_watch(void);
 
-void watch_settings(GtkWidget *window, NetkScreen *screen);
-
-void load_settings(void);
-
-void stop_watch(void);
-
-#endif /* __XFDESKTOP_SETTING */
+#endif	/* !__XFDESKTOP_SETTING__ */
 

@@ -1,12 +1,15 @@
 # settings/Makefile.am
 #
 
-EXTRA_DIST = backdrop.png workspaces.png
+EXTRA_DIST =								\
+	backdrop.png							\
+	workspaces.png
 
 #
 # backdrop settings
 #
 backdropdir = $(libdir)/xfce-mcs-manager/plugins/
+
 backdrop_LTLIBRARIES = backdrop_settings.la
 
 backdrop_settings_la_LDFLAGS =						\
@@ -15,7 +18,6 @@ backdrop_settings_la_LDFLAGS =						\
 
 backdrop_settings_la_SOURCES =						\
 	backdrop-icon.h 						\
-	debug.h								\
 	backdrop_settings.c						\
 	backdrop-mgr.c							\
 	backdrop-mgr.h							\
@@ -24,17 +26,12 @@ backdrop_settings_la_SOURCES =						\
 
 backdrop_settings_la_CFLAGS =						\
 	-I$(top_srcdir)/common						\
-	@CFLAGS@							\
 	@GLIB_CFLAGS@							\
 	@GTK_CFLAGS@							\
 	@LIBXFCEGUI4_CFLAGS@						\
 	@LIBXFCE4MCS_MANAGER_CFLAGS@					\
 	@PANGO_CFLAGS@							\
-	-DDATADIR=\"$(datadir)\" 					\
-	-DG_DISABLE_DEPRECATED						\
-	-DGTK_DISABLE_DEPRECATED					\
-	-DGDK_DISABLE_DEPRECATED					\
-	-DGDK_PIXBUF_DISABLE_DEPRECATED
+	-DDATADIR=\"$(datadir)\"
 
 backdrop_settings_la_LIBADD =						\
 	$(top_builddir)/common/libxfdesktop.la
@@ -55,7 +52,6 @@ workspaces_settings_la_LDFLAGS =					\
 	-module
 
 workspaces_settings_la_SOURCES =					\
-	debug.h								\
 	workspaces-icon.h						\
 	workspaces_settings.c						\
 	workspaces_settings.h						\
@@ -64,7 +60,6 @@ workspaces_settings_la_SOURCES =					\
 
 workspaces_settings_la_CFLAGS =						\
 	-I$(top_srcdir)/common						\
-	@CFLAGS@							\
 	@GLIB_CFLAGS@							\
 	@GTK_CFLAGS@							\
 	@LIBXFCEGUI4_CFLAGS@						\

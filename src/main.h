@@ -17,28 +17,14 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#ifndef __XFDESKTOP_MAIN_H
-#define __XFDESKTOP_MAIN_H
+#ifndef __XFDESKTOP_MAIN_H__
+#define __XFDESKTOP_MAIN_H__
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
-#include <gtk/gtk.h>
-#include <libxfcegui4/libxfcegui4.h>
-#include <libxfce4mcs/mcs-client.h>
-
-#define _(x) x
-#define N_(x) x
-
-void quit(void);
-
-#define DEBUG_TRACE 0
-#include "debug.h"
+extern void quit(void);
 
 extern void backdrop_init(GtkWidget *);
 extern void backdrop_load_settings(McsClient *);
 extern void add_backdrop_callback(GHashTable *);
 
-#endif /* __XFDESKTOP_MAIN_H */
+#endif /* __XFDESKTOP_MAIN_H__ */
 

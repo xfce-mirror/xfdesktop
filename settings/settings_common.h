@@ -17,33 +17,14 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#ifndef __XFDESKTOP_SETTINGS_COMMON_H
-#define __XFDESKTOP_SETTINGS_COMMON_H
-
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
-#include <gtk/gtk.h>
-#include <libxfce4mcs/mcs-common.h>
-#include <libxfce4mcs/mcs-manager.h>
-#include <xfce-mcs-manager/manager-plugin.h>
-
-/* from xfce4-panel */
-#include <debug.h>
-
-#define _(x) x
-#define N_(x) x
+#ifndef __XFDESKTOP_SETTINGS_COMMON_H__
+#define __XFDESKTOP_SETTINGS_COMMON_H__
 
 #define BORDER 5
 
-void create_channel(McsManager *manager, const char *channel, 
-		    const char *rcfile);
+extern void create_channel(McsManager *, const char *, const char *);
+extern gboolean save_channel(McsManager *, const char *, const char *);
+extern void add_spacer(GtkBox *);
 
-gboolean save_channel(McsManager *manager, const char *channel, 
-		      const char *rcfile);
-
-void add_spacer(GtkBox * box);
-
-#endif
+#endif	/* !__XFDESKTOP_SETTINGS_COMMON_H__ */
 

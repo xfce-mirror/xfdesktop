@@ -21,37 +21,51 @@
  *  copyright (c) Jonathan Blandford <jrb@gnome.org>
 */
 
-#include "settings_common.h"
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
-#include <string.h>
-#include <sys/types.h>
+#ifdef HAVE_SYS_STAT_H
 #include <sys/stat.h>
-#include <dirent.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#endif
+#ifdef HAVE_SYS_TYPES_H
+#include <sys/types.h>
+#endif
 
-#include <gtk/gtk.h>
-#include <gdk/gdk.h>
-#include <gdk/gdkx.h>
+#ifdef HAVE_MEMORY_H
+#include <memory.h>
+#endif
+#include <stdio.h>
+#ifdef HAVE_STDLIB_H
+#include <stdlib.h>
+#endif
+#ifdef HAVE_STRING_H
+#include <string.h>
+#endif
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+
 #include <X11/Xlib.h>
 
+#include <gdk/gdk.h>
+#include <gdk/gdkx.h>
+#include <gtk/gtk.h>
+
+#include <libxfce4util/i18n.h>
 #include <libxfce4util/util.h>
 #include <libxfcegui4/libxfcegui4.h>
+#include <xfce-mcs-manager/manager-plugin.h>
 
 #include "backdrop.h"
 #include "backdrop-icon.h"
 #include "backdrop-mgr.h"
+#include "settings_common.h"
 
 #define RCFILE "backdrop.xml"
 #define PLUGIN_NAME "backdrop"
 
 #define DEFAULT_ICON_SIZE 48
-
-#ifndef DATADIR
-#define DATADIR "/usr/local/share/"
-#endif
 
 #ifdef HAVE_GDK_PIXBUF_NEW_FROM_STREAM
 #define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream

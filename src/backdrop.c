@@ -25,18 +25,46 @@
 #undef GDK_MULTIHEAD_SAFE
 #endif
 
+#ifdef HAVE_SYS_STAT_H
 #include <sys/stat.h>
+#endif
+#ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
+#endif
 
 #include <errno.h>
+#ifdef HAVE_FCNTL_H
 #include <fcntl.h>
+#endif
+#ifdef HAVE_MEMORY_H
+#include <memory.h>
+#endif
 #include <stdio.h>
+#ifdef HAVE_STDLIB_H
 #include <stdlib.h>
+#endif
+#ifdef HAVE_STRING_H
 #include <string.h>
+#endif
+#ifdef HAVE_TIME_H
 #include <time.h>
+#endif
+
+#include <X11/Xatom.h>
+#include <X11/Xlib.h>
+
+#include <gdk/gdkx.h>
+#include <gtk/gtk.h>
+
+#include <libxfce4mcs/mcs-client.h>
+#include <libxfce4util/debug.h>
+#include <libxfce4util/i18n.h>
+#include <libxfcegui4/dialogs.h>
+#include <libxfcegui4/netk-screen.h>
+
+#include <backdrop.h>
 
 #include "main.h"
-#include "backdrop.h"
 #include "settings.h"
 
 static GtkWidget *fullscreen_window = NULL;

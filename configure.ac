@@ -11,12 +11,20 @@ AM_CONFIG_HEADER(config.h)
 
 AM_MAINTAINER_MODE
 
+dnl check for UNIX variants
+AC_AIX
+AC_ISC_POSIX
+AC_MINIX
+
+dnl check for basic programs
 AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_LIBTOOL
 
+dnl check for standard header files
 AC_HEADER_STDC
-AC_CHECK_FUNCS(srandom)
+AC_CHECK_HEADERS(fcntl.h signal.h stddef.h sys/wait.h time.h)
+AC_CHECK_FUNCS(sigaction srandom)
 
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE

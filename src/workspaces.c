@@ -15,11 +15,28 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-*/
+ */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#ifdef HAVE_MEMORY_H
+#include <memory.h>
+#endif
 #include <stdio.h>
+#ifdef HAVE_STRING_H
 #include <string.h>
+#endif
+
 #include <X11/Xlib.h>
+
+#include <gdk/gdkx.h>
+#include <gtk/gtk.h>
+
+#include <libxfce4mcs/mcs-client.h>
+#include <libxfce4util/debug.h>
+#include <libxfcegui4/netk-screen.h>
 
 #include "main.h"
 #include "workspaces.h"

@@ -17,16 +17,16 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#ifndef XFDESKTOP_BACKDROP_MGR_H
-#define XFDESKTOP_BACKDROP_MGR_H
+#ifndef __XFDESKTOP_BACKDROP_MGR_H__
+#define __XFDESKTOP_BACKDROP_MGR_H__
 
-typedef void (*ListMgrCb)(char *path, gpointer data);
+typedef void (*ListMgrCb)(char *, gpointer);
 
-gboolean is_backdrop_list(const char *path);
+extern gboolean is_backdrop_list(const char *);
     
-void create_list_file(GtkWidget *parent, ListMgrCb callback, gpointer data);
+extern void create_list_file(GtkWidget *, ListMgrCb, gpointer);
 
-void edit_list_file(const char *path, GtkWidget *parent, ListMgrCb callback, gpointer data);
+extern void edit_list_file(const char *, GtkWidget *, ListMgrCb, gpointer);
 
-#endif /* XFDESKTOP_BACKDROP_MGR_H */
+#endif	/* !__XFDESKTOP_BACKDROP_MGR_H__ */
 

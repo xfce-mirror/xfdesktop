@@ -4,10 +4,8 @@ SUBDIRS = common doc src settings backdrops
 
 EXTRA_DIST = xfdesktop.spec.in TODO
 
-#
-# config files
-#
 confdir = $(sysconfdir)/xfce4
+
 conf_DATA = menu.xml
 
 distclean-local:

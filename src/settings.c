@@ -17,17 +17,33 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include <string.h>
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
-#include <X11/Xlib.h>
+#include <ctype.h>
+#ifdef HAVE_MEMORY_H
+#include <memory.h>
+#endif
+#ifdef HAVE_STDDEF_H
+#include <stddef.h>
+#endif
+#include <stdio.h>
+#ifdef HAVE_STDLIB_H
+#include <stdlib.h>
+#endif
+#ifdef HAVE_STRING_H
+#include <string.h>
+#endif
+
 #include <X11/Xatom.h>
+#include <X11/Xlib.h>
+
 #include <gtk/gtk.h>
 
 #include <libxfce4mcs/mcs-client.h>
+#include <libxfce4util/debug.h>
+#include <libxfce4util/i18n.h>
 #include <libxfcegui4/libnetk.h>
 
 #include "main.h"

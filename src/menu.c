@@ -18,16 +18,34 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#include <sys/stat.h>
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
-#include <assert.h>
+#ifdef HAVE_SYS_STAT_H
+#include <sys/stat.h>
+#endif
+
+#ifdef HAVE_MEMORY_H
+#include <memory.h>
+#endif
 #include <stdio.h>
+#ifdef HAVE_STRING_H
 #include <string.h>
+#endif
 
 #include <X11/Xlib.h>
+
+#include <gdk/gdkx.h>
+#include <gtk/gtk.h>
+
 #include <libxml/parser.h>
 
+#include <libxfce4mcs/mcs-client.h>
+#include <libxfce4util/debug.h>
+#include <libxfce4util/i18n.h>
 #include <libxfce4util/util.h>
+#include <libxfcegui4/libxfcegui4.h>
 
 #include "main.h"
 #include "menu.h"
@@ -302,8 +320,10 @@ GList *parse_menu_node(xmlDocPtr doc, xmlNodePtr parent, char *path,
             }
         }
     }
-    assert(menu_data);
-    return menu_data;
+
+    g_assert(menu_data);
+
+    return(menu_data);
 }
 
 GList *parse_menu_file(const char *filename)
@@ -469,7 +489,9 @@ static GtkWidget *create_desktop_menu(void)
         {
             /* parse current item */
             item = (MenuItem *) li->data;
-            assert(item != NULL);
+
+            g_assert(item != NULL);
+
             entry = parse_item(item);
 
             if (!EditMode) 

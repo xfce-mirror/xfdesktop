@@ -17,14 +17,30 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#include <stdlib.h>
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#ifdef HAVE_MEMORY_H
+#include <memory.h>
+#endif
 #include <stdio.h>
+#ifdef HAVE_STDLIB_H
+#include <stdlib.h>
+#endif
+#ifdef HAVE_STRING_H
 #include <string.h>
+#endif
 
 #include <X11/Xlib.h>
+
 #include <gdk/gdkx.h>
 
+#include <libxfce4mcs/mcs-manager.h>
+#include <libxfce4util/debug.h>
+#include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
+#include <xfce-mcs-manager/manager-plugin.h>
 
 #include "settings_common.h"
 #include "workspaces_settings.h"
@@ -46,7 +62,8 @@ static void set_workspace_count(McsManager *manager, int count);
 static void set_workspace_names(McsManager *manager, char **names);
 static void watch_workspaces_hint(McsManager *manager);
 
-McsPluginInitResult mcs_plugin_init(McsPlugin *mcs_plugin)
+McsPluginInitResult
+mcs_plugin_init(McsPlugin *mcs_plugin)
 {
 #ifdef ENABLE_NLS
     /* This is required for UTF-8 at least - Please don't remove it */

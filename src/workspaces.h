@@ -17,14 +17,11 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#ifndef __XFDESKTOP_WORKSPACES_H
-#define __XFDESKTOP_WORKSPACES_H
+#ifndef __XFDESKTOP_WORKSPACES_H__
+#define __XFDESKTOP_WORKSPACES_H__
 
-#include "main.h"
+extern void workspaces_load_settings(McsClient *);
+extern void add_workspaces_callback(GHashTable *);
 
-void workspaces_load_settings(McsClient *client);
-
-void add_workspaces_callback(GHashTable *ht);
-
-#endif /* __XFDESKTOP_WORKSPACES_H */
+#endif	/* !__XFDESKTOP_WORKSPACES_H__ */
 
