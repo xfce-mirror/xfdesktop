@@ -6,26 +6,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "POT-Creation-Date: 2003-11-14 19:03+0100\n"
-"PO-Revision-Date: 2003-11-14 16:39+0100\n"
-"Last-Translator: Moritz Heiber <moe@lunar-linux.org>\n"
+"PO-Revision-Date: 2003-11-23 05:46-0000\n"
+"Last-Translator: Artjom Simon <hoek@linuxartist.org>\n"
 "Language-Team: NONE <none@none>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: settings/backdrop-mgr.c:175
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
+"Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
 "Konnte Datei %s: %s nicht abspeichern\n"
 "\n"
-"Bitte anderen Speicherplatz wählen oder Abbrechen um die Änderungen zu "
-"verwerfen"
+"Bitte anderen Speicherplatz wählen oder Abbrechen um die Änderungen zu verwerfen"
 
 #: settings/backdrop-mgr.c:510
 msgid "Select image file"
@@ -53,7 +50,7 @@ msgstr "Listendatei"
 
 #: settings/backdrop-mgr.c:767
 msgid "Create backdrop list"
-msgstr "Liste mit Hintergrundbilder erstellen"
+msgstr "Liste mit Hintergrundbildern erstellen"
 
 #: settings/backdrop-mgr.c:774
 msgid "Edit backdrop list"
@@ -74,7 +71,7 @@ msgstr "Hintergrundfarbe:"
 
 #: settings/backdrop_settings.c:443
 msgid "Use color only:"
-msgstr "Nur Farbe für Hintergrund nutzen"
+msgstr "Hintergrund einfarbig:"
 
 #: settings/backdrop_settings.c:569
 msgid "File:"
@@ -102,7 +99,7 @@ msgstr "Anzeige:"
 
 #: settings/backdrop_settings.c:761
 msgid "_Tiled"
-msgstr "_Verteilt"
+msgstr "_Gekachelt"
 
 #: settings/backdrop_settings.c:767
 msgid "_Scaled"
@@ -137,9 +134,8 @@ msgid "Image"
 msgstr "Bild"
 
 #: settings/backdrop_settings.c:882
-#, fuzzy
 msgid "Don't set background"
-msgstr "Hintergrundfarbe wählen"
+msgstr "Kein Hintergrundbild"
 
 #: settings/workspaces_settings.c:85
 msgid "Desktop: workspaces"
@@ -167,7 +163,8 @@ msgid "Number of workspaces:"
 msgstr "Anzahl der Workspaces:"
 
 #. Number of workspaces
-#: settings/workspaces_settings.c:528 settings/workspaces_settings.c:558
+#: settings/workspaces_settings.c:528
+#: settings/workspaces_settings.c:558
 msgid "Workspaces"
 msgstr "Workspaces"
 
@@ -183,7 +180,7 @@ msgstr "Workspace Namen"
 #: src/backdrop.c:508
 #, c-format
 msgid "xfdesktop error: loading backdrop image: %s\n"
-msgstr "xfdesktop Fehler: lade Hintergrundbild: %s\n"
+msgstr "xfdesktop Fehler beim Laden von Hintergrundbild %s\n"
 
 #: src/menu.c:735
 msgid "Add workspace"
@@ -194,12 +191,5 @@ msgid "Delete workspace"
 msgstr "Workspace entfernen"
 
 #: src/settings.c:182
-msgid ""
-"xfdesktop: could not connect to settings manager!Please check your "
-"installation."
-msgstr ""
-"Xfdesktop konnte keine Verbindung zum Einstellungsmanager herstellen! Prüfen "
-"Sie Ihre Installation."
-
-#~ msgid "Desktop"
-#~ msgstr "Arbeitsplatz"
+msgid "xfdesktop: could not connect to settings manager!Please check your installation."
+msgstr "Xfdesktop konnte keine Verbindung zum Einstellungsmanager herstellen! Prüfen Sie Ihre Installation."
