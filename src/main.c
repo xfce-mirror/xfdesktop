@@ -256,8 +256,10 @@ create_fullscreen_window (void)
     gtk_widget_set_size_request (win, gdk_screen_width (),
 				 gdk_screen_height ());
 
-    gtk_widget_realize (win);
+    gtk_window_move (win, 0, 0);
     
+    gtk_widget_realize (win);
+
     gtk_window_set_title (GTK_WINDOW (win), _("Desktop"));
     style = gtk_widget_get_style (win);
 
@@ -274,8 +276,6 @@ create_fullscreen_window (void)
 	gtk_widget_set_double_buffered (win, FALSE);
 
     gtk_window_set_type_hint (GTK_WINDOW(win), GDK_WINDOW_TYPE_HINT_DESKTOP);
-    gtk_window_set_decorated (GTK_WINDOW(win), FALSE);
-    gtk_window_set_resizable (GTK_WINDOW(win), FALSE);
 
     atom = gdk_atom_intern ("_NET_WM_WINDOW_TYPE_DESKTOP", FALSE);
 
@@ -284,24 +284,9 @@ create_fullscreen_window (void)
 			 gdk_atom_intern ("ATOM", FALSE), 32,
 			 GDK_PROP_MODE_REPLACE, (guchar *) & atom, 1);
 
-    /* xplanet uses this */
-    atom = gdk_atom_intern ("__SWM_VROOT", FALSE);
-
-    gdk_property_change (win->window, atom,
-			 gdk_atom_intern ("WINDOW", FALSE), 32,
-			 GDK_PROP_MODE_REPLACE, (guchar *) & xid, 1);
-
     /* desktop window id -- should be a freedesktop standard IMO */
     atom = gdk_atom_intern ("XFCE_DESKTOP_WINDOW", FALSE);
     xid = GDK_WINDOW_XID (win->window);
-
-    gdk_property_change (gdk_get_default_root_window(),
-			 atom,
-			 gdk_atom_intern ("WINDOW", FALSE), 32,
-			 GDK_PROP_MODE_REPLACE, (guchar *) & xid, 1);
-
-    /* xplanet uses this */
-    atom = gdk_atom_intern ("__SWM_VROOT", FALSE);
 
     gdk_property_change (gdk_get_default_root_window(),
 			 atom,
@@ -338,7 +323,7 @@ xfdesktop_init (void)
 
     xfdesktop.fullscreen = create_fullscreen_window ();
 
-    /* color the rootwindow black
+    /* color the root window black
      * we will not do anything more with it */
     gdk_window_set_background (gdk_get_default_root_window(), 
 	    		       &(xfdesktop.fullscreen->style->black));
