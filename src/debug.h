@@ -21,7 +21,7 @@
    which contains the name of the function currently being defined.
    This is broken in G++ before version 2.6.
    C9x has a similar variable called __func__, but prefer the GCC one since
-   it demangles C++ function names.  */
+   it demangles C++ function names.  
 # if defined __cplusplus ? __GNUC_PREREQ (2, 6) : __GNUC_PREREQ (2, 4)
 #   define __DBG_FUNCTION	__PRETTY_FUNCTION__
 # else
@@ -31,9 +31,14 @@
 #   define __DBG_FUNCTION	((__const char *) 0)
 #  endif
 # endif
-
+*/
 #if defined(DEBUG) && DEBUG
 #include <stdio.h>
+
+/* this will break for gcc < 2.6; does anyone really that anymore? 
+ * May also break non-gcc compilers <-- don't compile with debug then! */
+#define __DBG_FUNCTION	__PRETTY_FUNCTION__
+
 /*#define DBG(fmt, args...) ({fprintf(stderr, __FILE__ ", line %d: ", __LINE__); fprintf(stderr , fmt , ## args );})*/
 #define DBG(fmt, args...) 																\
 		({																				\
