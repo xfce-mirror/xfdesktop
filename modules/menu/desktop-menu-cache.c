@@ -69,7 +69,7 @@ static GNode *menu_tree = NULL;
 static GHashTable *menu_hash = NULL;
 static GList *menu_files = NULL;
 static GList *dentry_dirs = NULL;
-gboolean using_system_menu = FALSE;
+static gboolean using_system_menu = FALSE;
 
 static void
 desktop_menu_cache_entry_destroy(DesktopMenuCacheEntry *entry)
