@@ -53,6 +53,11 @@
 /* max length window list menu items */
 #define WLIST_MAXLEN 20
 
+/* Search path for menu.xml file */
+#define SEARCHPATH	(SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%L:"\
+                         SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F.%l:"\
+                         SYSCONFDIR G_DIR_SEPARATOR_S "xfce4" G_DIR_SEPARATOR_S "%F")
+
 /* a bit hackish, but works well enough */
 static gboolean is_using_system_rc = TRUE;
 
@@ -175,15 +180,17 @@ void do_edit(gpointer callback_data, guint callback_action, GtkWidget * widget)
 static gchar *
 get_menu_file(void)
 {
+    gchar buffer[PATH_MAX + 1];
     char *filename = NULL;
+    char *path = NULL;
     const char *env;
 
     TRACE("dummy");
     env = g_getenv("XFCE_DISABLE_USER_CONFIG");
 
     if(!env || strcmp(env, "0")) {
+    
         filename = xfce_get_userfile("menu.xml", NULL);
-
         if(g_file_test(filename, G_FILE_TEST_EXISTS))
 	{
 	    is_using_system_rc = FALSE;
@@ -198,11 +205,14 @@ get_menu_file(void)
 
     is_using_system_rc = TRUE;
     
-    filename = g_build_filename(SYSCONFDIR, "xfce4", "menu.xml", NULL);
-    if(g_file_test(filename, G_FILE_TEST_EXISTS))
+    path = xfce_get_path_localized(buffer, sizeof(buffer), SEARCHPATH,
+                    "menu.xml", G_FILE_TEST_IS_REGULAR);
+
+    if(path)
+    {
+        filename = g_strdup (path);
         return filename;
-    else
-        g_free(filename);
+    }
 
     g_warning("%s: Could not locate a menu definition file", PACKAGE);
 
@@ -471,12 +481,26 @@ static GtkWidget *create_desktop_menu(void)
     }
     
     /* may have been removed */
-    if (stat(filename, &st) < 0) {
-        g_free(filename);
+    if (stat(filename, &st) < 0) 
+    {
+        if (filename)
+        {
+            g_free(filename);
+        }
         filename = get_menu_file();
         ctime = 0;
     }
 
+    /* Still no luck? Something got broken! */
+    if (stat(filename, &st) < 0) 
+    {
+        if (filename)
+        {
+            g_free(filename);
+        }
+        return NULL;
+    }
+    
     if (!ifactory || !MainMenuData || ctime < st.st_ctime)
     {
         GtkItemFactoryEntry entry;
@@ -795,9 +819,11 @@ static gboolean button_press_event(GtkWidget * win, GdkEventButton * ev,
     {
         menu1 = create_desktop_menu();
 
-        gtk_menu_popup(GTK_MENU(menu1), NULL, NULL, NULL, NULL, 1, ev->time);
-
-        return TRUE;
+        if (menu1)
+        {
+            gtk_menu_popup(GTK_MENU(menu1), NULL, NULL, NULL, NULL, 1, ev->time);
+            return TRUE;
+        }
     }
 
     return FALSE;
