@@ -36,7 +36,12 @@ rm -rf $RPM_BUILD_ROOT
 %doc README TODO ChangeLog NEWS INSTALL COPYING AUTHORS
 %{_sysconfdir}/xfce4/
 %{_bindir}/*
+%{_datadir}/applications/
+%{_datadir}/icons/hicolor/32x32/apps/
+%{_datadir}/icons/hicolor/48x48/apps/
 %{_datadir}/locale/
+%{_datadir}/pixmaps/
 %{_datadir}/xfce4/
 %{_libdir}/xfce4/mcs-plugins/
 %{_libdir}/xfce4/modules/
+%{_libdir}/xfce4/panel-plugins/

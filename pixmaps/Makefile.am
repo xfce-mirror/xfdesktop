@@ -18,5 +18,12 @@ pixmaps_DATA = \
 	xfce4_xicon2.png \
 	xfce4_xicon3.png \
 	xfce4_xicon4.png
-	
-EXTRA_DIST = $(icons32_DATA) $(icons48_DATA) $(pixmaps_DATA)
+
+EXTRA_DIST = \
+	$(icons32_DATA) \
+	$(icons48_DATA) \
+	$(pixmaps_DATA) \
+	me-icon16.xpm \
+	me-icon24.xpm \
+	me-icon32.xpm \
+	me-icon48.xpm
