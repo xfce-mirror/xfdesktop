@@ -334,7 +334,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 					image = gtk_image_new_from_pixbuf(pix);
 					gtk_widget_show(image);
 					gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
-					g_object_unref(pix);
+					g_object_unref(G_OBJECT(pix));
 				}
 			}
 			if(!pix) {
@@ -379,7 +379,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
 					image = gtk_image_new_from_pixbuf(pix);
 					gtk_widget_show(image);
 					gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
-					g_object_unref(pix);
+					g_object_unref(G_OBJECT(pix));
 				}
 			}
 			if(!pix) {
