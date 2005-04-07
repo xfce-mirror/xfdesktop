@@ -269,6 +269,7 @@ SUBDIRS = backdrops common doc po settings src modules pixmaps \
 confdir = $(sysconfdir)/xdg/xfce4/desktop
 conf_DATA = \
 	menu.xml 							\
+	menu.xml.cs							\
 	menu.xml.da							\
 	menu.xml.de 							\
 	menu.xml.es							\

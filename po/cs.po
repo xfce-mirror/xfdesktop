@@ -1,26 +1,27 @@
+# translation of cs.po to czech
 # translation of cs.po to Czech
 # Czech translation for xfdesktop
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Lukáš Konarovský <daeltar@daeltar.org>, 2003.
-# Alois Nespor <Alois.Nespor@seznam.cz>, 2004.
+# Alois Nespor <Alois.Nespor@seznam.cz>, 2004, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-12 12:22+0100\n"
-"PO-Revision-Date: 2004-10-29 18:12+0000\n"
+"PO-Revision-Date: 2005-04-06 07:57+0200\n"
 "Last-Translator: Alois Nespor <Alois.Nespor@seznam.cz>\n"
-"Language-Team: Czech <cs@li.org>\n"
+"Language-Team: czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
-msgstr "Editor menu pro Xdce4"
+msgstr "Editor menu pro Xfce4"
 
 #. Credits
 #: menueditor/about_dialog.c:43
@@ -30,7 +31,7 @@ msgstr "Hlavní vývojář (patří mu ten největší dík)"
 #: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
 #: menueditor/about_dialog.c:46
 msgid "Contributor"
-msgstr "Přispěvovatel (taky díky)"
+msgstr "Přispěvovatel"
 
 #: menueditor/about_dialog.c:47
 msgid "Icon designer"
@@ -90,7 +91,7 @@ msgstr "Použít startovací _oznámení"
 #. Run in terminal check button
 #: menueditor/add_dialog.c:240 menueditor/edit_dialog.c:276
 msgid "Run in _terminal"
-msgstr "Pustit v _terminálu"
+msgstr "Spustit v _terminálu"
 
 #: menueditor/add_dialog.c:285 menueditor/edit_dialog.c:468
 msgid "The command doesn't exist !"
@@ -102,7 +103,7 @@ msgstr "Pro přidání položky musí být všechny pole vyplněné."
 
 #: menueditor/add_dialog.c:300
 msgid "The 'Name' field is required."
-msgstr "Pole Název musí být vyplněné."
+msgstr "Pole 'Název' musí být vyplněné."
 
 #: menueditor/add_dialog.c:356 menueditor/dnd.c:153
 #: menueditor/menueditor.c:579 menueditor/move.c:87 menueditor/move.c:225
@@ -150,7 +151,7 @@ msgstr "Pouze _unikátní položky"
 
 #: menueditor/add_menu_dialog.c:208
 msgid "The 'Source' field is required."
-msgstr "Pole Zdroj musí být vyplněné."
+msgstr "Pole 'Zdroj' musí být vyplněné."
 
 #: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:234
 #: menueditor/dnd.c:156 menueditor/edit_dialog.c:521
@@ -278,7 +279,7 @@ msgstr "_O..."
 
 #: menueditor/menueditor.c:1283
 msgid "Create a new Xfce4 menu file"
-msgstr "Vytvořit souborové menu Xfce4 "
+msgstr "Vytvořit nové souborové menu Xfce4 "
 
 #: menueditor/menueditor.c:1289
 msgid "Open an Xfce4 menu file"
@@ -326,7 +327,7 @@ msgstr "Příkaz"
 
 #: menueditor/menueditor.c:1369
 msgid "Hidden"
-msgstr "Skryto"
+msgstr "Skryté"
 
 #: menueditor/menueditor.c:1370
 msgid "Pointer"
@@ -359,11 +360,11 @@ msgstr "Chcete přesunout položku do podmenu ?"
 
 #: menueditor/new_dialog.c:60
 msgid "Are you sure you want to close the current menu?"
-msgstr "Jste si jistý, že chcete zavčít aktuální menu ?"
+msgstr "Skutečně zavřít aktuální menu ?"
 
 #: menueditor/new_dialog.c:75
 msgid "Do you want to save before closing the file?"
-msgstr "Chcete uložit před uzavřením souboru?"
+msgstr "Uložit před uzavřením souboru?"
 
 #. get the filename and name for the new menu
 #: menueditor/new_dialog.c:85 menueditor/new_dialog.c:94
@@ -403,42 +404,36 @@ msgstr "Souborové menu"
 #: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "Nelze spustit Xfce4 menu editor : %s"
+msgstr "Nejde spustit Xfce4 menu editor : %s"
 
 #: panel-plugin/desktop-menu-plugin.c:663
-#, fuzzy
 msgid "Button _title:"
-msgstr "_Tlačítko ikony:"
+msgstr "_Popis tlačítka:"
 
 #: panel-plugin/desktop-menu-plugin.c:676
-#, fuzzy
 msgid "Menu File"
-msgstr "Souborové menu"
+msgstr "Menu Souboru"
 
 #: panel-plugin/desktop-menu-plugin.c:688
-#, fuzzy
 msgid "Use default _desktop menu file"
-msgstr "_Upravit menu plochy"
+msgstr "Použít přednastavené souborové menu _plochy"
 
 #: panel-plugin/desktop-menu-plugin.c:697
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "Otevřít souborové menu"
+msgstr "Použít _vlastní souborové menu:"
 
 #: panel-plugin/desktop-menu-plugin.c:749
 #: panel-plugin/desktop-menu-plugin.c:751
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "_Menu"
+msgstr "_Upravit menu"
 
 #: panel-plugin/desktop-menu-plugin.c:758
-#, fuzzy
 msgid "Icons"
-msgstr "Ikona:"
+msgstr "Ikony"
 
 #: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
-msgstr "_Tlačítko ikony:"
+msgstr "Ikona _tlačítka:"
 
 #: panel-plugin/desktop-menu-plugin.c:794
 msgid "Show _icons in menu"
@@ -452,17 +447,17 @@ msgid ""
 "Please choose another location or press cancel in the dialog to discard your "
 "changes"
 msgstr ""
-"Nemohu uložit soubor %s: %s\n"
+"Nelze uložit soubor %s: %s\n"
 "\n"
-"Prosím vyberte jiné umístění nebo použijte zrušit pro zrušení změn "
+"Prosím vyberte jiné umístění nebo použijte tlačítko 'zrušit' v dialogovém okně pro zrušení změn "
 
 #: settings/backdrop-mgr.c:409
 msgid "Select backdrop image file"
-msgstr "Vyberte soubor s obrázkem pro pozadí"
+msgstr "Vybrat soubor s obrázkem pro pozadí"
 
 #: settings/backdrop-mgr.c:510
 msgid "Choose backdrop list filename"
-msgstr "Vyberte soubor se seznamem obrázků"
+msgstr "Vybrat název souboru se seznamem pozadí"
 
 #: settings/backdrop-mgr.c:519
 msgid "List Files"
@@ -470,16 +465,16 @@ msgstr "Seznam souborů"
 
 #: settings/backdrop-mgr.c:582
 msgid "Backdrop List"
-msgstr "Zeznam pozadí"
+msgstr "Seznam pozadí"
 
 #: settings/backdrop-mgr.c:599
 msgid "Image files"
-msgstr "Soubory s obrázky"
+msgstr "Obrázkové soubory"
 
 #: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
-msgstr "seznam pozadí"
+msgstr "backdrops.list"
 
 #: settings/backdrop-mgr.c:618
 msgid "List file"
@@ -517,11 +512,11 @@ msgstr "_Nový seznam..."
 
 #: settings/backdrop_settings.c:680
 msgid "S_tyle:"
-msgstr "_Styl:"
+msgstr "S_tyl:"
 
 #: settings/backdrop_settings.c:688
 msgid "Tiled"
-msgstr "Dláždit"
+msgstr "Dlaždice"
 
 #: settings/backdrop_settings.c:695
 msgid "Centered"
@@ -559,11 +554,11 @@ msgstr "Barva"
 
 #: settings/backdrop_settings.c:920
 msgid "_Color Style:"
-msgstr "Barevný styl:"
+msgstr "Styl barvy:"
 
 #: settings/backdrop_settings.c:929
 msgid "Solid Color"
-msgstr "Plná (solidní) barva"
+msgstr "Plná barva"
 
 #: settings/backdrop_settings.c:936
 msgid "Horizontal Gradient"
@@ -575,7 +570,7 @@ msgstr "Vertikálně stupňovat"
 
 #: settings/backdrop_settings.c:964
 msgid "Fi_rst Color:"
-msgstr "_První barva:"
+msgstr "Pr_vní barva:"
 
 #: settings/backdrop_settings.c:985
 msgid "_Second Color:"
@@ -601,7 +596,7 @@ msgstr "_Soubor:"
 #. don't set backdrop checkbox
 #: settings/backdrop_settings.c:1088
 msgid "_Don't set backdrop"
-msgstr "_Nenastavovat pozadí"
+msgstr "_Nenastavit pozadí"
 
 #. add the single backdrop settings page to the main notebook
 #: settings/backdrop_settings.c:1111
@@ -611,13 +606,13 @@ msgstr "_Pozadí"
 #: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
 #, c-format
 msgid "Screen %d"
-msgstr "Obraz %d"
+msgstr "Obrazovka %d"
 
 #. and if we have multiple screens, each with multiple monitors
 #: settings/backdrop_settings.c:1126
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr "Obraz %d, Monitor %d"
+msgstr "Obrazovka %d, Monitor %d"
 
 #: settings/backdrop_settings.c:1140
 msgid "_Menu"
@@ -629,7 +624,7 @@ msgstr "Seznam oken"
 
 #: settings/menu_settings.c:161
 msgid "Show window _list"
-msgstr "Ukázat _seznam oken"
+msgstr "Zobrazit _seznam oken"
 
 #: settings/menu_settings.c:176
 msgid "Show _window icons"
@@ -645,7 +640,7 @@ msgstr "Zobrazit _menu plochy"
 
 #: settings/menu_settings.c:212
 msgid "Show _application icons"
-msgstr "Zobrazit  ikony _aplikace"
+msgstr "Zobrazit ikony _aplikace"
 
 #: settings/menu_settings.c:223
 msgid "_Edit desktop menu"
@@ -662,18 +657,15 @@ msgstr "Možnosti jsou:\n"
 
 #: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr ""
-"   - reload      Nahrát znovu všechny nastavení, obnovit seznam obrázků\n"
+msgstr "   - reload      Nahrát znovu všechny nastavení, obnovit seznam obrázků\n"
 
 #: src/main.c:303
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    menu        Otevřít menu (na aktuální pozici kurzoru myši)\n"
 
 #: src/main.c:304
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    -windowlist  Otevřít seznam oken (na aktuální pozici kurzoru myši)\n"
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -windowlist  Otevřít seznam oken (na aktuální pozici kurzoru myši)\n"
 
 #: src/windowlist.c:193
 #, c-format
@@ -692,24 +684,10 @@ msgstr "_Přidat pracovní plochu"
 #: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "_Odebrat pracovní plochu %d"
+msgstr "_Odstranit pracovní plochu %d"
 
 #: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "_Odebrat pracovní plochu %s"
+msgstr "_Odstranit pracovní plochu %s"
 
-#~ msgid "_Menu file:"
-#~ msgstr "Souborové _menu:"
-
-#~ msgid "Backdrop"
-#~ msgstr "Pozadí"
-
-#~ msgid "Adding files from directory %s..."
-#~ msgstr "Přidat soubory z adresáře %s..."
-
-#~ msgid "Adding files from list %s..."
-#~ msgstr "Přidat soubory ze seznamu %s..."
-
-#~ msgid "Adding multiple files..."
-#~ msgstr "Přidat vícero souborů ..."
