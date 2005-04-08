@@ -1,0 +1,763 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-03-12 12:22+0100\n"
+"PO-Revision-Date: 2005-04-06 21:26+0200\n"
+"Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: menueditor/about_dialog.c:39
+#, fuzzy
+msgid "A menu editor for Xfce4"
+msgstr "Συμβουλή οθόνης για το αντικείμενο μενού"
+
+#. Credits
+#: menueditor/about_dialog.c:43
+msgid "Core developer"
+msgstr "Βασικός προγραμματιστής"
+
+#: menueditor/about_dialog.c:44
+#: menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:46
+msgid "Contributor"
+msgstr "Συντελεστής"
+
+#: menueditor/about_dialog.c:47
+msgid "Icon designer"
+msgstr "Σχεδιαστής εικονιδίων"
+
+#: menueditor/add_dialog.c:138
+#: menueditor/add_dialog.c:150
+msgid "Add menu entry"
+msgstr "Προσθήκη νέας καταχώρησης μενού"
+
+#. Type
+#: menueditor/add_dialog.c:156
+#: menueditor/add_menu_dialog.c:98
+#: menueditor/edit_dialog.c:149
+msgid "Type:"
+msgstr "Τύπος:"
+
+#: menueditor/add_dialog.c:159
+msgid "Launcher"
+msgstr "Εκκινητής"
+
+#: menueditor/add_dialog.c:164
+msgid "Submenu"
+msgstr "Υπομενού"
+
+#: menueditor/add_dialog.c:169
+msgid "Separator"
+msgstr "Διαχωριστικό"
+
+#: menueditor/add_dialog.c:174
+msgid "Title"
+msgstr "Τίτλος"
+
+#: menueditor/add_dialog.c:179
+msgid "Quit"
+msgstr "Έξοδος"
+
+#. Name
+#: menueditor/add_dialog.c:194
+#: menueditor/edit_dialog.c:263
+#: menueditor/edit_dialog.c:314
+#: menueditor/edit_dialog.c:353
+msgid "Name:"
+msgstr "Όνομα:"
+
+#: menueditor/add_dialog.c:204
+#: menueditor/edit_dialog.c:264
+msgid "Command:"
+msgstr "Εντολή:"
+
+#: menueditor/add_dialog.c:220
+#: menueditor/edit_dialog.c:255
+#: menueditor/edit_dialog.c:319
+#: menueditor/edit_dialog.c:358
+#: menueditor/edit_dialog.c:396
+msgid "Icon:"
+msgstr "Εικονίδιο:"
+
+#. Start Notify check button
+#: menueditor/add_dialog.c:236
+#: menueditor/edit_dialog.c:275
+msgid "Use startup _notification"
+msgstr "Χρήση ειδοποίησης _εκκίνησης"
+
+#. Run in terminal check button
+#: menueditor/add_dialog.c:240
+#: menueditor/edit_dialog.c:276
+msgid "Run in _terminal"
+msgstr "Εκτέλεση σε τερματι_κό"
+
+#: menueditor/add_dialog.c:285
+#: menueditor/edit_dialog.c:468
+msgid "The command doesn't exist !"
+msgstr "Η εντολή δεν υπάρχει !"
+
+#: menueditor/add_dialog.c:291
+msgid "All fields must be filled to add an item."
+msgstr "Πρέπει να είναι συμπληρωμένα όλα τα πεδία για να προστεθεί το αντικείμενο."
+
+#: menueditor/add_dialog.c:300
+msgid "The 'Name' field is required."
+msgstr "Το πεδίο 'Όνομα' είναι υποχρεωτικό."
+
+#: menueditor/add_dialog.c:356
+#: menueditor/dnd.c:153
+#: menueditor/menueditor.c:579
+#: menueditor/move.c:87
+#: menueditor/move.c:225
+msgid "--- separator ---"
+msgstr "--- διαχωριστικό ---"
+
+#: menueditor/add_dialog.c:381
+#: menueditor/edit_dialog.c:505
+msgid "quit"
+msgstr "έξοδος"
+
+#: menueditor/add_menu_dialog.c:81
+#: menueditor/add_menu_dialog.c:89
+#: menueditor/menueditor.c:1031
+#, fuzzy
+msgid "Add an external menu"
+msgstr "προσθήκη καταχώρισης μενού"
+
+#: menueditor/add_menu_dialog.c:103
+#: menueditor/edit_dialog.c:152
+msgid "File"
+msgstr "Αρχείο"
+
+#: menueditor/add_menu_dialog.c:108
+#: menueditor/edit_dialog.c:157
+msgid "System"
+msgstr "Σύστημα"
+
+#: menueditor/add_menu_dialog.c:123
+#: menueditor/edit_dialog.c:172
+msgid "Source:"
+msgstr "Πηγή:"
+
+#. Style
+#: menueditor/add_menu_dialog.c:136
+#: menueditor/edit_dialog.c:185
+msgid "Style:"
+msgstr "Στυλ:"
+
+#: menueditor/add_menu_dialog.c:139
+#: menueditor/edit_dialog.c:188
+msgid "Simple"
+msgstr "Απλό"
+
+#: menueditor/add_menu_dialog.c:142
+#: menueditor/edit_dialog.c:191
+msgid "Multilevel"
+msgstr "Πολυεπίπεδο"
+
+#. Unique
+#: menueditor/add_menu_dialog.c:155
+#: menueditor/edit_dialog.c:204
+#, fuzzy
+msgid "_Unique entries only"
+msgstr "Κρυπτογραφημένες συνδέσεις μόνο"
+
+#: menueditor/add_menu_dialog.c:208
+msgid "The 'Source' field is required."
+msgstr "Το πεδίο 'Πηγή' απαιτείται."
+
+#: menueditor/add_menu_dialog.c:218
+#: menueditor/add_menu_dialog.c:234
+#: menueditor/dnd.c:156
+#: menueditor/edit_dialog.c:521
+#: menueditor/edit_dialog.c:534
+#: menueditor/menueditor.c:618
+#: menueditor/move.c:111
+#: menueditor/move.c:249
+msgid "--- include ---"
+msgstr "--- περίληψη ---"
+
+#: menueditor/add_menu_dialog.c:235
+#: menueditor/dnd.c:161
+#: menueditor/edit_dialog.c:535
+#: menueditor/menueditor.c:621
+#: menueditor/move.c:114
+#: menueditor/move.c:252
+msgid "system"
+msgstr "σύστημα"
+
+#. Create dialog for editing
+#: menueditor/edit_dialog.c:103
+#: menueditor/edit_dialog.c:113
+msgid "Edit menu entry"
+msgstr "Επεξεργασία καταχώρησης μενού"
+
+#: menueditor/edit_dialog.c:131
+#, fuzzy
+msgid "Separators cannot be edited"
+msgstr "Το Spool `%s' δεν μπορεί να ανοιχθεί: %s"
+
+#. Name
+#: menueditor/edit_dialog.c:403
+#: menueditor/new_dialog.c:100
+msgid "Title:"
+msgstr "Τίτλος:"
+
+#: menueditor/menueditor.c:371
+msgid "Select command"
+msgstr "Επιλογή εντολής"
+
+#: menueditor/menueditor.c:435
+msgid "Select icon"
+msgstr "Επιλογή εικονιδίου"
+
+#: menueditor/menueditor.c:440
+#: panel-plugin/desktop-menu-plugin.c:510
+#: settings/backdrop-mgr.c:414
+#: settings/backdrop-mgr.c:515
+#: settings/backdrop_settings.c:533
+msgid "All Files"
+msgstr "Όλα τα Αρχεία"
+
+#: menueditor/menueditor.c:444
+#: panel-plugin/desktop-menu-plugin.c:516
+#: settings/backdrop-mgr.c:418
+#: settings/backdrop_settings.c:537
+msgid "Image Files"
+msgstr "Αρχεία Εικόνων"
+
+#: menueditor/menueditor.c:500
+#: menueditor/menueditor.c:903
+msgid "Do you want to save before closing the menu ?"
+msgstr "Θέλετε να αποθηκεύσετε πριν κλείσετε το μενού;"
+
+#: menueditor/menueditor.c:502
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr "Έχετε μεταβάλλει το μενού, θέλετε να το αποθηκεύσετε πριν την έξοδο;"
+
+#: menueditor/menueditor.c:504
+msgid "Forget modifications"
+msgstr "Ξέχασε τις τροποποιήσεις"
+
+#: menueditor/menueditor.c:690
+#: menueditor/menueditor.c:749
+#: menueditor/menueditor.c:901
+msgid "Question"
+msgstr "Ερώτηση"
+
+#: menueditor/menueditor.c:692
+msgid "Do you want to save before opening the default menu ?"
+msgstr "Θέλετε να αποθηκεύσετε πριν ανοίξετε το προκαθορισμένου μενού;"
+
+#: menueditor/menueditor.c:694
+#: menueditor/menueditor.c:753
+#: menueditor/menueditor.c:905
+msgid "Ignore modifications"
+msgstr "Αγνόηση τροποποιήσεων"
+
+#: menueditor/menueditor.c:751
+msgid "Do you want to save before opening an other menu ?"
+msgstr "Θέλετε να αποθηκεύσετε πριν ανοίξετε ένα άλλο μενού;"
+
+#: menueditor/menueditor.c:764
+msgid "Open menu file"
+msgstr "Άνοιγμα αρχείου μενού"
+
+#: menueditor/menueditor.c:799
+#: menueditor/menueditor.c:810
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr ""
+"Αδύνατη η εγγραφή στο %s : \n"
+"%s"
+
+#: menueditor/menueditor.c:844
+msgid "Save as..."
+msgstr "Αποθήκευση ως..."
+
+#: menueditor/menueditor.c:1025
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#. File menu
+#: menueditor/menueditor.c:1225
+msgid "_File"
+msgstr "_Αρχείο"
+
+#: menueditor/menueditor.c:1234
+msgid "Open default menu"
+msgstr "Άνοιγμα προκαθορισμένου μενού"
+
+#. Edit menu
+#: menueditor/menueditor.c:1248
+msgid "_Edit"
+msgstr "_Επεξεργασία"
+
+#: menueditor/menueditor.c:1254
+#, fuzzy
+msgid "Add an external menu..."
+msgstr "προσθήκη καταχώρισης μενού"
+
+#. Help menu
+#: menueditor/menueditor.c:1266
+msgid "_Help"
+msgstr "_Βοήθεια"
+
+#: menueditor/menueditor.c:1271
+msgid "_About..."
+msgstr "_Περί..."
+
+#: menueditor/menueditor.c:1283
+msgid "Create a new Xfce4 menu file"
+msgstr "Δημιουργία ενός νέου αρχείου μενού του Xfce4"
+
+#: menueditor/menueditor.c:1289
+msgid "Open an Xfce4 menu file"
+msgstr "Άνοιγμα ενός νέου αρχείου μενού του Xfce4"
+
+#: menueditor/menueditor.c:1295
+msgid "Save current menu"
+msgstr "Αποθήκευση του τρέχοντος μενού"
+
+#: menueditor/menueditor.c:1300
+msgid "Close current menu"
+msgstr "Κλείσιμο του τρέχοντος μενού"
+
+#: menueditor/menueditor.c:1306
+#, fuzzy
+msgid "Add an entry to the menu"
+msgstr "Προσθήκη του παρόντος ως μενού στο ταμπλώ"
+
+#: menueditor/menueditor.c:1312
+#, fuzzy
+msgid "Delete the current entry"
+msgstr "Διαγραφή τρέχουσας τοποθεσίας"
+
+#: menueditor/menueditor.c:1318
+#, fuzzy
+msgid "Move the current entry up"
+msgstr "Μετακίνηση Παραθύρου στο χώρο εργασίας Πά_νω"
+
+#: menueditor/menueditor.c:1324
+#, fuzzy
+msgid "Move the current entry down"
+msgstr "Μετακίνηση στο χώρο εργασίας _κάτω"
+
+#: menueditor/menueditor.c:1331
+#, fuzzy
+msgid "Collapse the tree"
+msgstr "δένδρο πίνακα"
+
+#: menueditor/menueditor.c:1336
+#, fuzzy
+msgid "Expand the tree"
+msgstr "δένδρο πίνακα"
+
+#: menueditor/menueditor.c:1365
+msgid "Name"
+msgstr "Όνομα"
+
+#: menueditor/menueditor.c:1368
+msgid "Command"
+msgstr "Εντολή"
+
+#: menueditor/menueditor.c:1369
+msgid "Hidden"
+msgstr "Κρυμμένο"
+
+#: menueditor/menueditor.c:1370
+msgid "Pointer"
+msgstr "Δείκτης"
+
+#: menueditor/menueditor.c:1472
+#, fuzzy
+msgid "Corrupted file or incorrect file format !"
+msgstr "Μη υποστηριζόμενη εικόνα ή κατεστραμμένο αρχείο"
+
+#: menueditor/menueditor.c:1485
+#, fuzzy
+msgid "No root element in file !"
+msgstr "(δεν υπάρχει αρχείο `control' στην αρχειοθήκη ελέγχου)\n"
+
+#: menueditor/menueditor.c:1496
+#, fuzzy
+msgid "Bad datafile format !"
+msgstr "Λανθασμένη μορφή αρχείου."
+
+#: menueditor/menueditor.c:1626
+#, c-format
+msgid "File %s doesn't exist !"
+msgstr "Το αρχείο %s δεν υπάρχει !"
+
+#: menueditor/move.c:370
+msgid "Do you want to move the item into the parent menu?"
+msgstr "Θέλετε να μετακινείσετε το αντικείμενο στο γονεϊκό μενού;"
+
+#: menueditor/move.c:469
+msgid "Do you want to move the item into the submenu?"
+msgstr "Θέλετε να μετακινείσετε το αντικείμενο στο υπομενού;"
+
+#: menueditor/new_dialog.c:60
+#, fuzzy
+msgid "Are you sure you want to close the current menu?"
+msgstr "Είστε σίγουρος/η ότι θέλετε να διαγράψετε αυτήν την καταχώριση μενού;"
+
+#: menueditor/new_dialog.c:75
+msgid "Do you want to save before closing the file?"
+msgstr "Θέλετε να αποθηκεύσετε πριν κλείσετε το αρχείο;"
+
+#. get the filename and name for the new menu
+#: menueditor/new_dialog.c:85
+#: menueditor/new_dialog.c:94
+msgid "New menu"
+msgstr "Νέο μενού"
+
+#. Filename
+#: menueditor/new_dialog.c:107
+msgid "Filename:"
+msgstr "Όνομα Αρχείου:"
+
+#: menueditor/new_dialog.c:141
+#, fuzzy
+msgid "All fields are required."
+msgstr "Παρακαλώ συμπληρώστε όλα τα υποχρεωτικά πεδία"
+
+#: modules/menu/desktop-menuspec.c:62
+msgid "/Other"
+msgstr "/Άλλο"
+
+#: panel-plugin/desktop-menu-plugin.c:279
+#: panel-plugin/desktop-menu-plugin.c:805
+#, fuzzy
+msgid "Xfce Menu"
+msgstr "εργαλειοθήκη μενού"
+
+#: panel-plugin/desktop-menu-plugin.c:493
+msgid "Select Icon"
+msgstr "Επιλογή Εικονιδίου"
+
+#: panel-plugin/desktop-menu-plugin.c:495
+msgid "Select Menu File"
+msgstr "Επιλογή Αρχείου Μενού"
+
+#: panel-plugin/desktop-menu-plugin.c:524
+msgid "Menu Files"
+msgstr "Αρχεία Μενού"
+
+#: panel-plugin/desktop-menu-plugin.c:640
+#: settings/menu_settings.c:132
+#, fuzzy, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "Αδυναμία εκκίνησης της εφαρμογής εγγραφής CD"
+
+#: panel-plugin/desktop-menu-plugin.c:663
+#, fuzzy
+msgid "Button _title:"
+msgstr "Τίτλος _σελίδας"
+
+#: panel-plugin/desktop-menu-plugin.c:676
+#, fuzzy
+msgid "Menu File"
+msgstr "επιλογέας αρχείου"
+
+#: panel-plugin/desktop-menu-plugin.c:688
+msgid "Use default _desktop menu file"
+msgstr "Χρήση προκαθορισμένου αρχείου μενού"
+
+#: panel-plugin/desktop-menu-plugin.c:697
+#, fuzzy
+msgid "Use _custom menu file:"
+msgstr "Χρήση προσαρμοσμένης διαδρομής για τα περιεχόμενα του μενού"
+
+#: panel-plugin/desktop-menu-plugin.c:749
+#: panel-plugin/desktop-menu-plugin.c:751
+#, fuzzy
+msgid "_Edit Menu"
+msgstr "επεξεργασία καταχώρισης μενού"
+
+#: panel-plugin/desktop-menu-plugin.c:758
+msgid "Icons"
+msgstr "Εικονίδια"
+
+#: panel-plugin/desktop-menu-plugin.c:770
+#, fuzzy
+msgid "_Button icon:"
+msgstr "εικονίδιο επιφάνειας"
+
+#: panel-plugin/desktop-menu-plugin.c:794
+#, fuzzy
+msgid "Show _icons in menu"
+msgstr "Εμφάνιση στο μενού φίλτρου"
+
+#: settings/backdrop-mgr.c:139
+#: src/xfce-desktop.c:114
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your changes"
+msgstr ""
+
+#: settings/backdrop-mgr.c:409
+#, fuzzy
+msgid "Select backdrop image file"
+msgstr "Επιλέξτε ένα αρχείο εικόνας για το νέο έμβλημα:"
+
+#: settings/backdrop-mgr.c:510
+#, fuzzy
+msgid "Choose backdrop list filename"
+msgstr "Επιλέξτε ένα όνομα αρχείου για την εικόνα CD-ROM"
+
+#: settings/backdrop-mgr.c:519
+msgid "List Files"
+msgstr "Αρχεία Λίστας"
+
+#: settings/backdrop-mgr.c:582
+msgid "Backdrop List"
+msgstr "Λίστα παρασκηνίων"
+
+#: settings/backdrop-mgr.c:599
+msgid "Image files"
+msgstr "Αρχεία εικόνας"
+
+#: settings/backdrop-mgr.c:610
+#: settings/backdrop_settings.c:188
+#: settings/backdrop_settings.c:197
+msgid "backdrops.list"
+msgstr "backdrops.list"
+
+#: settings/backdrop-mgr.c:618
+msgid "List file"
+msgstr "Αρχείο λίστας"
+
+#: settings/backdrop-mgr.c:638
+msgid "Create backdrop list"
+msgstr "Δημιουργία λίστας παρασκηνίων"
+
+#: settings/backdrop-mgr.c:669
+msgid "Edit backdrop list"
+msgstr "Επεξεργασία λίστας παρασκηνίων"
+
+#. the dialog
+#: settings/backdrop_settings.c:132
+#: settings/backdrop_settings.c:836
+#: src/xfce-desktop.c:676
+msgid "Desktop"
+msgstr "Επιφάνεια Εργασίας"
+
+#: settings/backdrop_settings.c:528
+msgid "Select backdrop image or list file"
+msgstr "Επιλέξτε εικόνα παρασκηνίου ή αρχείο λίστας εικόνων παρασκηνίου"
+
+#: settings/backdrop_settings.c:546
+msgid "List Files (*.list)"
+msgstr "Αρχεία Λίστας (*.list)"
+
+#: settings/backdrop_settings.c:636
+msgid "_Edit list..."
+msgstr "_Επεξεργασία λίστας..."
+
+#: settings/backdrop_settings.c:644
+msgid "_New list..."
+msgstr "_Νέα λίστα..."
+
+#: settings/backdrop_settings.c:680
+msgid "S_tyle:"
+msgstr "Σ_τυλ:"
+
+#: settings/backdrop_settings.c:688
+#, fuzzy
+msgid "Tiled"
+msgstr "Πλακίδιο"
+
+#: settings/backdrop_settings.c:695
+msgid "Centered"
+msgstr "Κεντραρισμένη"
+
+#: settings/backdrop_settings.c:702
+msgid "Scaled"
+msgstr "Σε κλίμακα"
+
+#: settings/backdrop_settings.c:709
+msgid "Stretched"
+msgstr "τεντωμένο"
+
+#: settings/backdrop_settings.c:716
+msgid "Auto"
+msgstr "Αυτόματο"
+
+#: settings/backdrop_settings.c:782
+msgid "Adjust _Brightness:"
+msgstr "Ρύθμιση φωτεινότητας"
+
+#. header
+#: settings/backdrop_settings.c:851
+msgid "Desktop Settings"
+msgstr "Ρυθμίσεις επιφάνειας εργασίας"
+
+#: settings/backdrop_settings.c:880
+msgid "_Backdrops"
+msgstr "Εικόνες παρασκηνίου"
+
+#. color settings frame
+#: settings/backdrop_settings.c:906
+msgid "Color"
+msgstr "Χρώμα"
+
+#: settings/backdrop_settings.c:920
+msgid "_Color Style:"
+msgstr "Στυλ _Χρώματος"
+
+#: settings/backdrop_settings.c:929
+msgid "Solid Color"
+msgstr "Συμπαγές Χρώμα"
+
+#: settings/backdrop_settings.c:936
+msgid "Horizontal Gradient"
+msgstr "Οριζόντια Διαβάθμιση"
+
+#: settings/backdrop_settings.c:943
+msgid "Vertical Gradient"
+msgstr "Κάθετη Διαβάθμιση"
+
+#: settings/backdrop_settings.c:964
+msgid "Fi_rst Color:"
+msgstr "_Πρώτο Χρώμα:"
+
+#: settings/backdrop_settings.c:985
+msgid "_Second Color:"
+msgstr "Δεύτερο Χρώμα:"
+
+#. set color only checkbox
+#: settings/backdrop_settings.c:1006
+msgid "Set color _only"
+msgstr "Ορισμός χρώματος μόνο"
+
+#: settings/backdrop_settings.c:1021
+msgid "Image"
+msgstr "Εικόνα"
+
+#: settings/backdrop_settings.c:1029
+msgid "Show _Image"
+msgstr "Εμφάνιση ει_κόνας"
+
+#: settings/backdrop_settings.c:1051
+msgid "_File:"
+msgstr "_Αρχείο:"
+
+#. don't set backdrop checkbox
+#: settings/backdrop_settings.c:1088
+msgid "_Don't set backdrop"
+msgstr "Μην ορίσεις παρασκήνιο"
+
+#. add the single backdrop settings page to the main notebook
+#: settings/backdrop_settings.c:1111
+msgid "_Backdrop"
+msgstr "Εικόνα παρασκηνίου"
+
+#: settings/backdrop_settings.c:1119
+#: settings/backdrop_settings.c:1121
+#, c-format
+msgid "Screen %d"
+msgstr "Οθόνη %d"
+
+#. and if we have multiple screens, each with multiple monitors
+#: settings/backdrop_settings.c:1126
+#, fuzzy, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Οθόνη %d, Monitor %d"
+
+#: settings/backdrop_settings.c:1140
+msgid "_Menu"
+msgstr "_Μενού"
+
+#: settings/menu_settings.c:153
+msgid "Window List"
+msgstr "Λίστα Παραθύρων"
+
+#: settings/menu_settings.c:161
+msgid "Show window _list"
+msgstr "Εμφάνιση _λίστας παραθύρων"
+
+#: settings/menu_settings.c:176
+msgid "Show _window icons"
+msgstr "Εμφάνιση εικονιδίων _παραθύρων"
+
+#: settings/menu_settings.c:189
+msgid "Desktop Menu"
+msgstr "Μενού Επιφάνειας Εργασίας"
+
+#: settings/menu_settings.c:197
+msgid "Show desktop _menu"
+msgstr "Εμφάνιση _μενού επιφάνειας εργασίας"
+
+#: settings/menu_settings.c:212
+#, fuzzy
+msgid "Show _application icons"
+msgstr "Προβολή μόνο των εικονιδίων"
+
+#: settings/menu_settings.c:223
+#, fuzzy
+msgid "_Edit desktop menu"
+msgstr "επεξεργασία καταχώρισης μενού"
+
+#: src/main.c:300
+#, fuzzy, c-format
+msgid "%s: Unknown option: %s\n"
+msgstr "Άγνωστη επιλογή %s"
+
+#: src/main.c:301
+#, fuzzy
+msgid "Options are:\n"
+msgstr "Δεν έχουν οριστεί επιλογές"
+
+#: src/main.c:302
+msgid "    -reload      Reload all settings, refresh image list\n"
+msgstr "    -επαναφόρτωση reload all settings, refresh image list\n"
+
+#: src/main.c:303
+#, fuzzy
+msgid "    -menu        Pop up the menu (at the current mouse position)\n"
+msgstr "    -menu        Pop up the menu (at the current mouse position)\n"
+
+#: src/main.c:304
+#, fuzzy
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -windowlist  Pop up the window list (at the current mouse position)\n"
+
+#: src/windowlist.c:193
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>Χώρος Εργασίας %d</b>"
+
+#: src/windowlist.c:201
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr "<i>Χώρος Εργασίας %d</i>"
+
+#: src/windowlist.c:268
+#: src/windowlist.c:271
+msgid "_Add Workspace"
+msgstr "Προσθήκη χώρου εργασίας"
+
+#: src/windowlist.c:279
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "_Αφαίρεση Χώρου Εργασίας %d"
+
+#: src/windowlist.c:282
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "_Αφαίρεση Χώρου Εργασίας '%s'"
+

@@ -2,13 +2,14 @@
 # Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the xfwm4 package.
 # Lâm Vĩnh Niên <nienvl@yahoo.ca>, 2004.
+# Phan Vĩnh Thịnh <teppi@vnlinux.org>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-12 12:22+0100\n"
-"PO-Revision-Date: 2004-09-08 15:40+9\n"
+"PO-Revision-Date: 2005-04-05 04:09+0300\n"
 "Last-Translator: Lâm Vĩnh Niên <nienvl@yahoo.ca>\n"
 "Language-Team: none <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -403,35 +404,29 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Không thể gọi xfce4-menueditor: %s"
 
 #: panel-plugin/desktop-menu-plugin.c:663
-#, fuzzy
 msgid "Button _title:"
-msgstr "Biểu tượng _nút:"
+msgstr "Tên của _nút:"
 
 #: panel-plugin/desktop-menu-plugin.c:676
-#, fuzzy
 msgid "Menu File"
 msgstr "Tập tin thực đơn"
 
 #: panel-plugin/desktop-menu-plugin.c:688
-#, fuzzy
 msgid "Use default _desktop menu file"
-msgstr "_Biên tập thực đơn desktop"
+msgstr "_Sử dụng tập tin thực đơn desktop mặc định"
 
 #: panel-plugin/desktop-menu-plugin.c:697
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "Mở tập tin thực đơn"
+msgstr "Sử dụng tập tin thực đơn _cá nhân"
 
 #: panel-plugin/desktop-menu-plugin.c:749
 #: panel-plugin/desktop-menu-plugin.c:751
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "Thự_c đơn"
+msgstr "Soạn thảo _Thực đơn"
 
 #: panel-plugin/desktop-menu-plugin.c:758
-#, fuzzy
 msgid "Icons"
-msgstr "Biểu tượng:"
+msgstr "Biểu tượng"
 
 #: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
@@ -659,16 +654,16 @@ msgstr "Tuỳ chọn là:\n"
 
 #: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "    -reload     Nạp lại mọi thiết lập, làm tươi danh sách hình ảnh\n"
+msgstr "    -reload      Nạp lại mọi thiết lập, cập nhật danh sách hình ảnh\n"
 
 #: src/main.c:303
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    -menu        Bập thực đơn (ở vị trí con chuột hiện tại)\n"
+msgstr "    -menu        Bật thực đơn (ở vị trí hiện tại của trỏ chuột)\n"
 
 #: src/main.c:304
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  Bật danh sách cửa sổ (ở vị trí con chuột hiện tại)\n"
+msgstr "    -windowlist  Bật danh sách cửa sổ (ở vị trí hiện tại của trỏ chuột)\n"
 
 #: src/windowlist.c:193
 #, c-format
