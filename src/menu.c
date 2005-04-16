@@ -34,7 +34,7 @@
 #include <gmodule.h>
 #include <gtk/gtk.h>
 
-#include <libxfce4util/i18n.h>
+#include <libxfce4util/libxfce4util.h>
 
 #include "menu.h"
 #ifdef USE_DESKTOP_MENU
@@ -70,11 +70,62 @@ _start_menu_module()
 }
 #endif
 
+#if USE_DESKTOP_MENU
+/* Code taken from xfwm4/src/menu.c:grab_available().  This should fix the case
+ * where binding 'xfdesktop -menu' to a keyboard shortcut sometimes works and
+ * sometimes doesn't.  Credit for this one goes to Olivier.
+ */
+static gboolean
+menu_grab_available (GdkWindow *win, guint32 timestamp)
+{
+    GdkEventMask mask =
+        GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
+        GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK |
+        GDK_POINTER_MOTION_MASK;
+    GdkGrabStatus g1;
+    GdkGrabStatus g2;
+    gboolean grab_failed = FALSE;
+    gint i = 0;
+
+    TRACE ("entering grab_available");
+
+    g1 = gdk_pointer_grab (win, TRUE, mask, NULL, NULL, timestamp);
+    g2 = gdk_keyboard_grab (win, TRUE, timestamp);
+
+    while ((i++ < 100) && (grab_failed = ((g1 != GDK_GRAB_SUCCESS)
+                || (g2 != GDK_GRAB_SUCCESS))))
+    {
+        TRACE ("grab not available yet, waiting... (%i)", i);
+        g_usleep (100);
+        if (g1 != GDK_GRAB_SUCCESS)
+        {
+            g1 = gdk_pointer_grab (win, TRUE, mask, NULL, NULL, timestamp);
+        }
+        if (g2 != GDK_GRAB_SUCCESS)
+        {
+            g2 = gdk_keyboard_grab (win, TRUE, timestamp);
+        }
+    }
+
+    if (g1 == GDK_GRAB_SUCCESS)
+    {
+        gdk_pointer_ungrab (timestamp);
+    }
+    if (g2 == GDK_GRAB_SUCCESS)
+    {
+        gdk_keyboard_ungrab (timestamp);
+    }
+
+    return (!grab_failed);
+}
+#endif
+
 void
 popup_desktop_menu(GdkScreen *gscreen, gint button, guint32 time)
 {
 #if USE_DESKTOP_MENU
 	GtkWidget *menu_widget;
+	GdkWindow *root;
 	
 	if(!desktop_menu)
 		return;
@@ -84,8 +135,14 @@ popup_desktop_menu(GdkScreen *gscreen, gint button, guint32 time)
 	
 	menu_widget = xfce_desktop_menu_get_widget(desktop_menu);
 	gtk_menu_set_screen(GTK_MENU(menu_widget), gscreen);
-	gtk_menu_popup(GTK_MENU(menu_widget), NULL, NULL, NULL, NULL,
-			button, time);
+	
+	root = gdk_screen_get_root_window(gscreen);
+	if(!menu_grab_available(root, time))
+		g_critical("Unable to get keyboard/mouse grab.  Unable to popup desktop menu");
+	else {
+		gtk_menu_popup(GTK_MENU(menu_widget), NULL, NULL, NULL, NULL,
+				button, time);
+	}
 #endif
 }
 
