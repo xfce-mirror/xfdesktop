@@ -49,13 +49,16 @@
 
 typedef struct _DMPlugin {
     GtkWidget *button;
+    GtkWidget *box;
     GtkWidget *image;
+    GtkWidget *label;
     XfceDesktopMenu *desktop_menu;
     gboolean use_default_menu;
     gchar *menu_file;
     gchar *icon_file;
     gboolean show_menu_icons;
     gchar *button_title;
+    gboolean show_button_title;
     
     GtkWidget *file_entry;
     GtkWidget *file_fb;
@@ -135,7 +138,59 @@ dmp_set_size(Control *c, int size)
         }
     }
     
-    gtk_widget_set_size_request (c->base, s, s);
+    if(settings.orientation == HORIZONTAL)
+        gtk_widget_set_size_request (c->base, -1, s);
+    else {
+        GtkRequisition req;
+        gint larger_width;
+        
+        gtk_widget_size_request(dmp->button, &req);
+        larger_width = req.width;
+        gtk_widget_size_request(dmp->label, &req);
+        larger_width = larger_width > req.width ? larger_width : req.width;
+        gtk_widget_set_size_request (c->base, larger_width, -1);
+    }
+}
+
+static void
+dmp_set_orientation(Control *c, gint orientation)
+{
+    DMPlugin *dmp = c->data;
+    gint s = icon_size[settings.size] + border_width;
+    
+    if(!dmp->show_button_title)
+        return;
+    
+    gtk_container_remove(GTK_CONTAINER(dmp->button),
+            gtk_bin_get_child(GTK_BIN(dmp->button)));
+    
+    if(orientation == HORIZONTAL)
+        dmp->box = gtk_hbox_new(FALSE, BORDER/2);
+    else
+        dmp->box = gtk_vbox_new(FALSE, BORDER/2);
+    gtk_widget_show(dmp->box);
+    gtk_container_add(GTK_CONTAINER(dmp->button), dmp->box);
+    
+    gtk_widget_show(dmp->image);
+    gtk_box_pack_start(GTK_BOX(dmp->box), dmp->image, FALSE, FALSE, 0);
+    gtk_widget_show(dmp->label);
+    gtk_box_pack_start(GTK_BOX(dmp->box), dmp->label, FALSE, FALSE, 0);
+    
+    dmp_set_size(c, settings.size);
+}
+
+static void
+show_title_toggled_cb(GtkToggleButton *tb, gpointer user_data)
+{
+    Control *c = user_data;
+    DMPlugin *dmp = c->data;
+    
+    dmp->show_button_title = gtk_toggle_button_get_active(tb);
+    
+    if(dmp->show_button_title)
+        dmp_set_orientation(c, settings.orientation);
+    else
+        gtk_widget_hide(dmp->label);
 }
 
 static void
@@ -271,7 +326,7 @@ dmp_new()
     
     dmp->show_menu_icons = TRUE;  /* default */
     dmp->tooltip = gtk_tooltips_new();
-
+    
     dmp->button = gtk_toggle_button_new();
     gtk_button_set_relief(GTK_BUTTON(dmp->button), GTK_RELIEF_NONE);
     gtk_widget_show(dmp->button);
@@ -279,9 +334,22 @@ dmp_new()
         dmp->button_title = g_strdup(_("Xfce Menu"));
     gtk_tooltips_set_tip(dmp->tooltip, dmp->button, dmp->button_title, NULL);
     
+    if(settings.orientation == HORIZONTAL)
+        dmp->box = gtk_hbox_new(FALSE, BORDER/2);
+    else
+        dmp->box = gtk_vbox_new(FALSE, BORDER/2);
+    gtk_widget_show(dmp->box);
+    gtk_container_add(GTK_CONTAINER(dmp->button), dmp->box);
+    
     dmp->image = xfce_scaled_image_new();
+    g_object_ref(G_OBJECT(dmp->image));
     gtk_widget_show(dmp->image);
-    gtk_container_add(GTK_CONTAINER(dmp->button), dmp->image);
+    gtk_box_pack_start(GTK_BOX(dmp->box), dmp->image, FALSE, FALSE, 0);
+    
+    dmp->label = gtk_label_new(dmp->button_title);
+    g_object_ref(G_OBJECT(dmp->label));
+    gtk_widget_show(dmp->label);
+    gtk_box_pack_start(GTK_BOX(dmp->box), dmp->label, FALSE, FALSE, 0);
     
     dmp->desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
     if(dmp->desktop_menu)
@@ -400,6 +468,17 @@ dmp_read_config(Control *control, xmlNodePtr node)
         if(dmp->tooltip && dmp->button)
             gtk_tooltips_set_tip(dmp->tooltip, dmp->button, dmp->button_title, NULL);
     }
+    
+    value = xmlGetProp(node, (const xmlChar *)"show_button_title");
+    if(value) {
+        if(*value == '0')
+            dmp->show_button_title = FALSE;
+        else
+            dmp->show_button_title = TRUE;
+        xmlFree(value);
+    } else
+        dmp->show_button_title = TRUE;
+    dmp_set_size(control, settings.size);
 }
 
 static void
@@ -412,6 +491,7 @@ dmp_write_config(Control *control, xmlNodePtr node)
     xmlSetProp(node, (const xmlChar *)"icon_file", dmp->icon_file ? dmp->icon_file : "");
     xmlSetProp(node, (const xmlChar *)"show_menu_icons", dmp->show_menu_icons ? "1" : "0");
     xmlSetProp(node, (const xmlChar *)"button_title", dmp->button_title ? dmp->button_title : "");
+    xmlSetProp(node, (const xmlChar *)"show_button_title", dmp->show_button_title ? "1" : "0");
 }
 
 static gboolean
@@ -655,10 +735,18 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
     gtk_widget_show(topvbox);
     gtk_container_add(con, topvbox);
     
+    frame = xfce_framebox_new(_("Button"), TRUE);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(topvbox), frame, FALSE, FALSE, 0);
+    
+    vbox = gtk_vbox_new(FALSE, BORDER/2);
+    gtk_widget_show(vbox);
+    xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
+    
     hbox = gtk_hbox_new(FALSE, BORDER/2);
     gtk_container_set_border_width(GTK_CONTAINER(hbox), BORDER/2);
     gtk_widget_show(hbox);
-    gtk_box_pack_start(GTK_BOX(topvbox), hbox, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
     
     label = gtk_label_new_with_mnemonic(_("Button _title:"));
     gtk_widget_show(label);
@@ -671,7 +759,14 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
     gtk_widget_show(entry);
     gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 0);
     g_signal_connect(G_OBJECT(entry), "focus-out-event",
-            G_CALLBACK(dmp_button_title_focus_out_cb), dmp);    
+            G_CALLBACK(dmp_button_title_focus_out_cb), dmp);
+    
+    chk = gtk_check_button_new_with_mnemonic(_("_Show title in button"));
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), dmp->show_button_title);
+    gtk_widget_show(chk);
+    gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, 0);
+    g_signal_connect(G_OBJECT(chk), "toggled",
+            G_CALLBACK(show_title_toggled_cb), ctrl);
     
     frame = xfce_framebox_new(_("Menu File"), TRUE);
     gtk_widget_show(frame);
@@ -811,7 +906,7 @@ xfce_control_class_init(ControlClass *cc)
     cc->free = dmp_free;
     cc->attach_callback = dmp_attach_callback;
     cc->set_size = dmp_set_size;
-    cc->set_orientation = NULL;
+    cc->set_orientation = dmp_set_orientation;
 }
 
 XFCE_PLUGIN_CHECK_INIT
