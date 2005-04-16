@@ -471,14 +471,15 @@ dmp_read_config(Control *control, xmlNodePtr node)
     
     value = xmlGetProp(node, (const xmlChar *)"show_button_title");
     if(value) {
-        if(*value == '0')
+        if(*value == '0') {
             dmp->show_button_title = FALSE;
-        else
+            gtk_widget_hide(dmp->label);
+        } else
             dmp->show_button_title = TRUE;
         xmlFree(value);
     } else
         dmp->show_button_title = TRUE;
-    dmp_set_size(control, settings.size);
+    dmp_set_orientation(control, settings.orientation);
 }
 
 static void
