@@ -323,6 +323,7 @@ dmp_new()
 {
     DMPlugin *dmp = g_new0(DMPlugin, 1);
     dmp->use_default_menu = TRUE;
+    dmp->show_button_title = TRUE;
     
     dmp->show_menu_icons = TRUE;  /* default */
     dmp->tooltip = gtk_tooltips_new();
