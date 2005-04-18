@@ -899,6 +899,8 @@ G_MODULE_EXPORT void
 xfce_control_class_init(ControlClass *cc)
 {
     cc->name = "xfce-menu";
+    
+    xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     cc->caption = _("Xfce Menu");
     
     cc->create_control = (CreateControlFunc)dmp_create;
