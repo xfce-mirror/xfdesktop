@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-12 12:22+0100\n"
-"PO-Revision-Date: 2005-04-06 21:26+0200\n"
+"PO-Revision-Date: 2005-04-16 19:19+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: menueditor/about_dialog.c:39
-#, fuzzy
 msgid "A menu editor for Xfce4"
-msgstr "Συμβουλή οθόνης για το αντικείμενο μενού"
+msgstr "Ένας επεξεργαστής μενού για το Xfce4"
 
 #. Credits
 #: menueditor/about_dialog.c:43
@@ -129,9 +128,8 @@ msgstr "έξοδος"
 #: menueditor/add_menu_dialog.c:81
 #: menueditor/add_menu_dialog.c:89
 #: menueditor/menueditor.c:1031
-#, fuzzy
 msgid "Add an external menu"
-msgstr "προσθήκη καταχώρισης μενού"
+msgstr "Προσθήκη ενός εξωτερικού μενού"
 
 #: menueditor/add_menu_dialog.c:103
 #: menueditor/edit_dialog.c:152
@@ -167,9 +165,8 @@ msgstr "Πολυεπίπεδο"
 #. Unique
 #: menueditor/add_menu_dialog.c:155
 #: menueditor/edit_dialog.c:204
-#, fuzzy
 msgid "_Unique entries only"
-msgstr "Κρυπτογραφημένες συνδέσεις μόνο"
+msgstr "_Μοναδικές καταχωρήσεις μόνο"
 
 #: menueditor/add_menu_dialog.c:208
 msgid "The 'Source' field is required."
@@ -202,9 +199,8 @@ msgid "Edit menu entry"
 msgstr "Επεξεργασία καταχώρησης μενού"
 
 #: menueditor/edit_dialog.c:131
-#, fuzzy
 msgid "Separators cannot be edited"
-msgstr "Το Spool `%s' δεν μπορεί να ανοιχθεί: %s"
+msgstr "Τα διαχωριστικά δεν είναι δυνατό να επεξεργαστούν"
 
 #. Name
 #: menueditor/edit_dialog.c:403
@@ -305,9 +301,8 @@ msgid "_Edit"
 msgstr "_Επεξεργασία"
 
 #: menueditor/menueditor.c:1254
-#, fuzzy
 msgid "Add an external menu..."
-msgstr "προσθήκη καταχώρισης μενού"
+msgstr "Προσθήκη ενός εξωτερικού μενού..."
 
 #. Help menu
 #: menueditor/menueditor.c:1266
@@ -335,34 +330,28 @@ msgid "Close current menu"
 msgstr "Κλείσιμο του τρέχοντος μενού"
 
 #: menueditor/menueditor.c:1306
-#, fuzzy
 msgid "Add an entry to the menu"
-msgstr "Προσθήκη του παρόντος ως μενού στο ταμπλώ"
+msgstr "Προσθήκη μιας καταχώρησης "
 
 #: menueditor/menueditor.c:1312
-#, fuzzy
 msgid "Delete the current entry"
-msgstr "Διαγραφή τρέχουσας τοποθεσίας"
+msgstr "Διαγραφή τρέχουσας καταχώρησης"
 
 #: menueditor/menueditor.c:1318
-#, fuzzy
 msgid "Move the current entry up"
-msgstr "Μετακίνηση Παραθύρου στο χώρο εργασίας Πά_νω"
+msgstr "Μετακίνηση της τρέχουσας καταχώρησης επάνω"
 
 #: menueditor/menueditor.c:1324
-#, fuzzy
 msgid "Move the current entry down"
-msgstr "Μετακίνηση στο χώρο εργασίας _κάτω"
+msgstr "Μετακίνηση της τρέχουσας καταχώρησης κάτω"
 
 #: menueditor/menueditor.c:1331
-#, fuzzy
 msgid "Collapse the tree"
-msgstr "δένδρο πίνακα"
+msgstr "Σύμπτυξη του δέντρου"
 
 #: menueditor/menueditor.c:1336
-#, fuzzy
 msgid "Expand the tree"
-msgstr "δένδρο πίνακα"
+msgstr "Ανάπτυξη του δέντρου"
 
 #: menueditor/menueditor.c:1365
 msgid "Name"
@@ -381,19 +370,16 @@ msgid "Pointer"
 msgstr "Δείκτης"
 
 #: menueditor/menueditor.c:1472
-#, fuzzy
 msgid "Corrupted file or incorrect file format !"
-msgstr "Μη υποστηριζόμενη εικόνα ή κατεστραμμένο αρχείο"
+msgstr "Κατεστραμμένο αρχείο ή λανθασμένη μορφή αρχείου !"
 
 #: menueditor/menueditor.c:1485
-#, fuzzy
 msgid "No root element in file !"
-msgstr "(δεν υπάρχει αρχείο `control' στην αρχειοθήκη ελέγχου)\n"
+msgstr "Δεν υπάρχει ριζικό στοιχείο  στο αρχείο !"
 
 #: menueditor/menueditor.c:1496
-#, fuzzy
 msgid "Bad datafile format !"
-msgstr "Λανθασμένη μορφή αρχείου."
+msgstr "Λανθασμένη μορφή αρχείου !"
 
 #: menueditor/menueditor.c:1626
 #, c-format
@@ -409,9 +395,8 @@ msgid "Do you want to move the item into the submenu?"
 msgstr "Θέλετε να μετακινείσετε το αντικείμενο στο υπομενού;"
 
 #: menueditor/new_dialog.c:60
-#, fuzzy
 msgid "Are you sure you want to close the current menu?"
-msgstr "Είστε σίγουρος/η ότι θέλετε να διαγράψετε αυτήν την καταχώριση μενού;"
+msgstr "Είστε σίγουρος/η ότι θέλετε να κλείσετε αυτό το μενού;"
 
 #: menueditor/new_dialog.c:75
 msgid "Do you want to save before closing the file?"
@@ -429,9 +414,8 @@ msgid "Filename:"
 msgstr "Όνομα Αρχείου:"
 
 #: menueditor/new_dialog.c:141
-#, fuzzy
 msgid "All fields are required."
-msgstr "Παρακαλώ συμπληρώστε όλα τα υποχρεωτικά πεδία"
+msgstr "Παρακαλώ συμπληρώστε όλα τα πεδία"
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
@@ -439,9 +423,8 @@ msgstr "/Άλλο"
 
 #: panel-plugin/desktop-menu-plugin.c:279
 #: panel-plugin/desktop-menu-plugin.c:805
-#, fuzzy
 msgid "Xfce Menu"
-msgstr "εργαλειοθήκη μενού"
+msgstr "Μενού του Xfce"
 
 #: panel-plugin/desktop-menu-plugin.c:493
 msgid "Select Icon"
@@ -457,48 +440,42 @@ msgstr "Αρχεία Μενού"
 
 #: panel-plugin/desktop-menu-plugin.c:640
 #: settings/menu_settings.c:132
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "Αδυναμία εκκίνησης της εφαρμογής εγγραφής CD"
+msgstr "Αδυναμία εκκίνησης του επεξεργαστή μενού του Xfce: %s"
 
 #: panel-plugin/desktop-menu-plugin.c:663
-#, fuzzy
 msgid "Button _title:"
-msgstr "Τίτλος _σελίδας"
+msgstr "Τίτλος _κουμπιού:"
 
 #: panel-plugin/desktop-menu-plugin.c:676
-#, fuzzy
 msgid "Menu File"
-msgstr "επιλογέας αρχείου"
+msgstr "Αρχείο Μενού"
 
 #: panel-plugin/desktop-menu-plugin.c:688
 msgid "Use default _desktop menu file"
 msgstr "Χρήση προκαθορισμένου αρχείου μενού"
 
 #: panel-plugin/desktop-menu-plugin.c:697
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "Χρήση προσαρμοσμένης διαδρομής για τα περιεχόμενα του μενού"
+msgstr "Χρήση προσαρμοσμένου αρχείου μενού"
 
 #: panel-plugin/desktop-menu-plugin.c:749
 #: panel-plugin/desktop-menu-plugin.c:751
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "επεξεργασία καταχώρισης μενού"
+msgstr "_Επεξεργασία του Μενού"
 
 #: panel-plugin/desktop-menu-plugin.c:758
 msgid "Icons"
 msgstr "Εικονίδια"
 
 #: panel-plugin/desktop-menu-plugin.c:770
-#, fuzzy
 msgid "_Button icon:"
-msgstr "εικονίδιο επιφάνειας"
+msgstr "Εικονίδιο _Κουμπιού"
 
 #: panel-plugin/desktop-menu-plugin.c:794
-#, fuzzy
 msgid "Show _icons in menu"
-msgstr "Εμφάνιση στο μενού φίλτρου"
+msgstr "Εμφάνιση εικονιδίων στο μενού"
 
 #: settings/backdrop-mgr.c:139
 #: src/xfce-desktop.c:114
@@ -508,16 +485,17 @@ msgid ""
 "\n"
 "Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
+"Η αποθήκευση του αρχείου %s δεν ήταν δυνατή: %s\n"
+"\n"
+"Παρακαλώ επιλέξτε μια άλλη τοποθεσία ή επιλέξτε άκυρο στο πλαίσο διαλόγου για να απαλείψετε τις αλλαγές σας"
 
 #: settings/backdrop-mgr.c:409
-#, fuzzy
 msgid "Select backdrop image file"
-msgstr "Επιλέξτε ένα αρχείο εικόνας για το νέο έμβλημα:"
+msgstr "Επιλέξτε ένα αρχείο εικόνας για το παρασκήνιο"
 
 #: settings/backdrop-mgr.c:510
-#, fuzzy
 msgid "Choose backdrop list filename"
-msgstr "Επιλέξτε ένα όνομα αρχείου για την εικόνα CD-ROM"
+msgstr "Επιλέξτε ένα όνομα αρχείου για την λίστα εικόνων παρασκηνίου"
 
 #: settings/backdrop-mgr.c:519
 msgid "List Files"
@@ -577,9 +555,8 @@ msgid "S_tyle:"
 msgstr "Σ_τυλ:"
 
 #: settings/backdrop_settings.c:688
-#, fuzzy
 msgid "Tiled"
-msgstr "Πλακίδιο"
+msgstr "Σε παράθεση"
 
 #: settings/backdrop_settings.c:695
 msgid "Centered"
@@ -703,38 +680,33 @@ msgid "Show desktop _menu"
 msgstr "Εμφάνιση _μενού επιφάνειας εργασίας"
 
 #: settings/menu_settings.c:212
-#, fuzzy
 msgid "Show _application icons"
-msgstr "Προβολή μόνο των εικονιδίων"
+msgstr "Προβολή των εικονιδίων των εφαρμογών"
 
 #: settings/menu_settings.c:223
-#, fuzzy
 msgid "_Edit desktop menu"
-msgstr "επεξεργασία καταχώρισης μενού"
+msgstr "Επεξεργασία μενού επιφάνειας εργασίας"
 
 #: src/main.c:300
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr "Άγνωστη επιλογή %s"
+msgstr "%s: Άγνωστη επιλογή: %s\n"
 
 #: src/main.c:301
-#, fuzzy
 msgid "Options are:\n"
-msgstr "Δεν έχουν οριστεί επιλογές"
+msgstr "Οι επιλογές είναι:\n"
 
 #: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "    -επαναφόρτωση reload all settings, refresh image list\n"
+msgstr "    -επαναφόρτωση     επαναφόρτωση όλων των ρυθμίσεων, ανανέωση της λίστας εικόνων \n"
 
 #: src/main.c:303
-#, fuzzy
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    -menu        Pop up the menu (at the current mouse position)\n"
+msgstr "    -μενού            Εμφάνιση του μενού (στην τρέχουσα θέση του κέρσορα)\n"
 
 #: src/main.c:304
-#, fuzzy
 msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -λίστα παραθύρων  Εμφάνιση της λίστας παραθύρων (στην τρέχουσα θέση του κέρσορα)\n"
 
 #: src/windowlist.c:193
 #, c-format
