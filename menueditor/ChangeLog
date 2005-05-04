@@ -1,344 +1,1695 @@
-2004-07-09  pollux  <pollux@xfce.org>
+2005-05-03 21:09  dannym
+
+	* xfdesktop/trunk/menueditor/about_dialog.c: use
+	  xfce_about_dialog_new_with_values (recent libxfcegui4 change)
+
+2005-04-06 07:33  perldude
+
+	* xfdesktop/trunk/.cvsignore, xfdesktop/trunk/backdrops/.cvsignore,
+	  xfdesktop/trunk/common/.cvsignore, xfdesktop/trunk/doc/.cvsignore,
+	  xfdesktop/trunk/doc/C/.cvsignore,
+	  xfdesktop/trunk/doc/C/images/.cvsignore,
+	  xfdesktop/trunk/doc/fr/.cvsignore,
+	  xfdesktop/trunk/doc/fr/images/.cvsignore,
+	  xfdesktop/trunk/doc/it/.cvsignore,
+	  xfdesktop/trunk/doc/it/images/.cvsignore,
+	  xfdesktop/trunk/menueditor/.cvsignore,
+	  xfdesktop/trunk/modules/.cvsignore,
+	  xfdesktop/trunk/modules/menu/.cvsignore,
+	  xfdesktop/trunk/panel-plugin/.cvsignore,
+	  xfdesktop/trunk/pixmaps/.cvsignore,
+	  xfdesktop/trunk/pixmaps/32x32/.cvsignore,
+	  xfdesktop/trunk/pixmaps/48x48/.cvsignore,
+	  xfdesktop/trunk/po/.cvsignore,
+	  xfdesktop/trunk/settings/.cvsignore,
+	  xfdesktop/trunk/src/.cvsignore: remove .cvsignore cruft
+
+2005-01-29 06:26  kelnos
+
+	* xfdesktop/trunk/menueditor/Makefile.am: add .desktop file to
+	  DISTCLEANFILES
+
+2005-01-29 06:13  kelnos
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/menueditor, xfdesktop/trunk/menueditor/.cvsignore,
+	  xfdesktop/trunk/menueditor/Makefile.am,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop.in,
+	  xfdesktop/trunk/po/POTFILES.in, xfdesktop/trunk/po/ar.po,
+	  xfdesktop/trunk/po/az.po, xfdesktop/trunk/po/be.po,
+	  xfdesktop/trunk/po/bg.po, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/cs.po, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/en_GB.po, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.po, xfdesktop/trunk/po/et.po,
+	  xfdesktop/trunk/po/eu.po, xfdesktop/trunk/po/fa.po,
+	  xfdesktop/trunk/po/fi.po, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/gu.po, xfdesktop/trunk/po/he.po,
+	  xfdesktop/trunk/po/hi.po, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/it.po, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.po, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.po, xfdesktop/trunk/po/nb_NO.po,
+	  xfdesktop/trunk/po/nl.po, xfdesktop/trunk/po/pa.po,
+	  xfdesktop/trunk/po/pl.po, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/po/pt_PT.po, xfdesktop/trunk/po/ro.po,
+	  xfdesktop/trunk/po/ru.po, xfdesktop/trunk/po/sk.po,
+	  xfdesktop/trunk/po/sv.po, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.po, xfdesktop/trunk/po/uk.po,
+	  xfdesktop/trunk/po/vi.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.po,
+	  xfdesktop/trunk/settings, xfdesktop/trunk/settings/.cvsignore,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop.in: merge
+	  .desktop translations into the .po files via intltool, makefile
+	  cleanups
+
+2005-01-27 08:19  kelnos
+
+	* xfdesktop/trunk, xfdesktop/trunk/.cvsignore,
+	  xfdesktop/trunk/backdrops, xfdesktop/trunk/backdrops/.cvsignore,
+	  xfdesktop/trunk/common, xfdesktop/trunk/common/.cvsignore,
+	  xfdesktop/trunk/doc, xfdesktop/trunk/doc/.cvsignore,
+	  xfdesktop/trunk/doc/C, xfdesktop/trunk/doc/C/.cvsignore,
+	  xfdesktop/trunk/doc/C/images,
+	  xfdesktop/trunk/doc/C/images/.cvsignore, xfdesktop/trunk/doc/fr,
+	  xfdesktop/trunk/doc/fr/.cvsignore, xfdesktop/trunk/doc/fr/images,
+	  xfdesktop/trunk/doc/fr/images/.cvsignore, xfdesktop/trunk/doc/it,
+	  xfdesktop/trunk/doc/it/.cvsignore, xfdesktop/trunk/doc/it/images,
+	  xfdesktop/trunk/doc/it/images/.cvsignore,
+	  xfdesktop/trunk/menueditor, xfdesktop/trunk/menueditor/.cvsignore,
+	  xfdesktop/trunk/modules, xfdesktop/trunk/modules/.cvsignore,
+	  xfdesktop/trunk/modules/menu,
+	  xfdesktop/trunk/modules/menu/.cvsignore,
+	  xfdesktop/trunk/panel-plugin,
+	  xfdesktop/trunk/panel-plugin/.cvsignore, xfdesktop/trunk/pixmaps,
+	  xfdesktop/trunk/pixmaps/.cvsignore, xfdesktop/trunk/pixmaps/32x32,
+	  xfdesktop/trunk/pixmaps/32x32/.cvsignore,
+	  xfdesktop/trunk/pixmaps/48x48,
+	  xfdesktop/trunk/pixmaps/48x48/.cvsignore, xfdesktop/trunk/po,
+	  xfdesktop/trunk/po/.cvsignore, xfdesktop/trunk/settings,
+	  xfdesktop/trunk/settings/.cvsignore, xfdesktop/trunk/src,
+	  xfdesktop/trunk/src/.cvsignore: update all .cvsignore files to
+	  ignore all newly-removed files
+
+2005-01-27 07:52  kelnos
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/autogen.sh, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/compile,
+	  xfdesktop/trunk/config.guess, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/depcomp,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/m4, xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/missing, xfdesktop/trunk/mkinstalldirs,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.am,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/po/Makefile.in.in, xfdesktop/trunk/po/ar.gmo,
+	  xfdesktop/trunk/po/az.gmo, xfdesktop/trunk/po/be.gmo,
+	  xfdesktop/trunk/po/bg.gmo, xfdesktop/trunk/po/ca.gmo,
+	  xfdesktop/trunk/po/cs.gmo, xfdesktop/trunk/po/de.gmo,
+	  xfdesktop/trunk/po/en_GB.gmo, xfdesktop/trunk/po/es.gmo,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/et.gmo,
+	  xfdesktop/trunk/po/eu.gmo, xfdesktop/trunk/po/fa.gmo,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/po/gu.gmo, xfdesktop/trunk/po/he.gmo,
+	  xfdesktop/trunk/po/hi.gmo, xfdesktop/trunk/po/hu.gmo,
+	  xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/ja.gmo,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/lt.gmo,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/nb_NO.gmo,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/pa.gmo,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pt_BR.gmo,
+	  xfdesktop/trunk/po/pt_PT.gmo, xfdesktop/trunk/po/ro.gmo,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/sk.gmo,
+	  xfdesktop/trunk/po/sv.gmo, xfdesktop/trunk/po/ta.gmo,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/uk.gmo,
+	  xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: * bump version to 4.3.0 * remove
+	  all autogenerated files * migrate to the new XDT_ m4 macro names,
+	  and use xfce4-dev-tools * fix usage of @XFCE4_PANEL_PLUGINSDIR@
+	  and @XFCE_MCS_MANAGER_PLUGINSDIR@ * remove obsolete m4/ directory
+
+2005-01-22 12:22  pollux
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/menu.xml.fi,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.fi,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: update FI
+	  translations
+
+2005-01-21 15:51  pollux
+
+	* xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/menueditor/BUGS,
+	  xfdesktop/trunk/menueditor/Makefile.am,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/menueditor/TODO,
+	  xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/about_dialog.h,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_dialog.h,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.h,
+	  xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/dnd.h,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.h,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h,
+	  xfdesktop/trunk/menueditor/move.c,
+	  xfdesktop/trunk/menueditor/move.h,
+	  xfdesktop/trunk/menueditor/new_dialog.c,
+	  xfdesktop/trunk/menueditor/new_dialog.h,
+	  xfdesktop/trunk/menueditor/utils.c,
+	  xfdesktop/trunk/menueditor/utils.h,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: add new menueditor based on Glib
+	  XML parser instead of libxml2
+
+2005-01-08 15:04  pollux
+
+	* xfdesktop/trunk/menu.xml.ru,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.ru,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: update RU
+	  translations
+
+2004-12-23 21:24  pollux
+
+	* xfdesktop/trunk/menu.xml.et,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/po/et.gmo, xfdesktop/trunk/po/et.po,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: update ET
+	  translations
+
+2004-12-19 19:25  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: remove unused DBG()
+
+2004-12-19 19:19  pollux
+
+	* xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h,
+	  xfdesktop/trunk/menueditor/move.c: avoid potential conflicts with
+	  GLib 2.4
+
+2004-12-16 19:04  pollux
+
+	* xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h,
+	  xfdesktop/trunk/menueditor/move.c: fix #598 using a glib 2.4 func,
+	  i added a copy in the menueditor code conditionnaly compiled but
+	  it needs testing
+
+2004-12-05 20:50  pollux
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/compile,
+	  xfdesktop/trunk/config.guess, xfdesktop/trunk/config.sub,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menu.xml.ko,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in, xfdesktop/trunk/po/ko.gmo,
+	  xfdesktop/trunk/po/ko.po, xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: update KO translations and add
+	  screenshots in xfprint doc
+
+2004-12-05 11:35  kelnos
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/compile,
+	  xfdesktop/trunk/config.guess, xfdesktop/trunk/config.sub,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/doc/C/Makefile.am,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/fr/xfdesktop.html,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/xfdesktop.html, xfdesktop/trunk/install-sh,
+	  xfdesktop/trunk/ltmain.sh, xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: fix broken target in
+	  doc/C/Makefile.am (thanks JF)
+
+2004-12-04 08:35  olivier
+
+	* xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: Fix
+	  invalid UTF8 string used in pt_BR translation thanks to Adriano
+	  Winter Bess <adrianob@linhalivre.net>
+
+2004-11-13 11:13  pollux
+
+	* xfdesktop/trunk/menueditor/about_dialog.c: i want my cedilla ! :)
+
+2004-11-11 10:24  pollux
+
+	* xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: fix typo
+
+2004-11-11 10:22  pollux
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/po/pt_BR.gmo, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: update
+	  pt_BR translations
+
+2004-11-06 16:24  olivier
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/compile,
+	  xfdesktop/trunk/config.guess, xfdesktop/trunk/config.sub,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh,
+	  xfdesktop/trunk/menueditor/Makefile.in, xfdesktop/trunk/missing,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Update
+	  automake/autoconf/libtool/gettext versions to generate the
+	  configure scripts and Makefiles, Update versions of all packages
+	  to 4.1.99.1 (ie 4.2 RC1), Update ChangeLogs.
+
+2004-10-30 19:03  olivier
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Global update for 4.1.91 (Xfce
+	  4.2 beta 2)
+
+2004-10-29 08:34  kelnos
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/NEWS,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/depcomp,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: * update ChangeLog and NEWS *
+	  bump version dependencies to 4.1.91 * regen and commit all
+	  autotools-related files
+
+2004-10-28 11:55  pollux
+
+	* xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/po/ar.gmo, xfdesktop/trunk/po/az.gmo,
+	  xfdesktop/trunk/po/be.gmo, xfdesktop/trunk/po/bg.gmo,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/cs.gmo,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/es.gmo,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/et.gmo,
+	  xfdesktop/trunk/po/eu.gmo, xfdesktop/trunk/po/fi.gmo,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/gu.gmo,
+	  xfdesktop/trunk/po/he.gmo, xfdesktop/trunk/po/he.po,
+	  xfdesktop/trunk/po/hi.gmo, xfdesktop/trunk/po/hu.gmo,
+	  xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/ja.gmo,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/lt.gmo,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/nl.gmo,
+	  xfdesktop/trunk/po/pa.gmo, xfdesktop/trunk/po/pl.gmo,
+	  xfdesktop/trunk/po/pt_BR.gmo, xfdesktop/trunk/po/pt_PT.gmo,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/sk.gmo,
+	  xfdesktop/trunk/po/sv.gmo, xfdesktop/trunk/po/ta.gmo,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/uk.gmo,
+	  xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: update HE
+	  translations
+
+2004-10-23 10:32  pollux
+
+	* xfdesktop/trunk/menueditor/.indent.pro,
+	  xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/about_dialog.h,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_dialog.h,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.h,
+	  xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/dnd.h,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.h,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h,
+	  xfdesktop/trunk/menueditor/move.c,
+	  xfdesktop/trunk/menueditor/move.h,
+	  xfdesktop/trunk/menueditor/new_dialog.c,
+	  xfdesktop/trunk/menueditor/new_dialog.h: fix indentation (indent
+	  is really a great tool)
+
+2004-10-07 20:36  benny
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/m4/debug.m4, xfdesktop/trunk/m4/glib-gettext.m4,
+	  xfdesktop/trunk/m4/pkg.m4, xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Added --enable-final (-O1 for GNU
+	  ld) as per Jaspers request. Added missing m4 files.
+
+2004-10-03 15:43  pollux
+
+	* xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: zh_TW
+	  translations of desktop files from Ambrose Li <acli@ada.dhs.org>
+
+2004-09-29 08:22  pollux
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/install-sh,
+	  xfdesktop/trunk/ltmain.sh, xfdesktop/trunk/menu.xml.zh_TW,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.zh_TW,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in, xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/po/zh_TW.po, xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: updated zh_TW translations from
+	  Ambrose Li <acli@ada.dhs.org>
+
+2004-09-24 06:05  kelnos
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/depcomp,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in, xfdesktop/trunk/po/ar.gmo,
+	  xfdesktop/trunk/po/ar.po, xfdesktop/trunk/po/az.gmo,
+	  xfdesktop/trunk/po/az.po, xfdesktop/trunk/po/be.gmo,
+	  xfdesktop/trunk/po/be.po, xfdesktop/trunk/po/bg.gmo,
+	  xfdesktop/trunk/po/bg.po, xfdesktop/trunk/po/ca.gmo,
+	  xfdesktop/trunk/po/ca.po, xfdesktop/trunk/po/cs.gmo,
+	  xfdesktop/trunk/po/cs.po, xfdesktop/trunk/po/de.gmo,
+	  xfdesktop/trunk/po/de.po, xfdesktop/trunk/po/es.gmo,
+	  xfdesktop/trunk/po/es.po, xfdesktop/trunk/po/es_MX.gmo,
+	  xfdesktop/trunk/po/es_MX.po, xfdesktop/trunk/po/et.gmo,
+	  xfdesktop/trunk/po/et.po, xfdesktop/trunk/po/eu.gmo,
+	  xfdesktop/trunk/po/eu.po, xfdesktop/trunk/po/fa_IR.gmo,
+	  xfdesktop/trunk/po/fa_IR.po, xfdesktop/trunk/po/fi.gmo,
+	  xfdesktop/trunk/po/fi.po, xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/he.gmo,
+	  xfdesktop/trunk/po/he.po, xfdesktop/trunk/po/hi.gmo,
+	  xfdesktop/trunk/po/hi.po, xfdesktop/trunk/po/hu.gmo,
+	  xfdesktop/trunk/po/hu.po, xfdesktop/trunk/po/it.gmo,
+	  xfdesktop/trunk/po/it.po, xfdesktop/trunk/po/ja.gmo,
+	  xfdesktop/trunk/po/ja.po, xfdesktop/trunk/po/ko.gmo,
+	  xfdesktop/trunk/po/ko.po, xfdesktop/trunk/po/lt.gmo,
+	  xfdesktop/trunk/po/lt.po, xfdesktop/trunk/po/ms.gmo,
+	  xfdesktop/trunk/po/ms.po, xfdesktop/trunk/po/nl.gmo,
+	  xfdesktop/trunk/po/nl.po, xfdesktop/trunk/po/pl.gmo,
+	  xfdesktop/trunk/po/pl.po, xfdesktop/trunk/po/pt_BR.gmo,
+	  xfdesktop/trunk/po/pt_BR.po, xfdesktop/trunk/po/pt_PT.gmo,
+	  xfdesktop/trunk/po/pt_PT.po, xfdesktop/trunk/po/ru.gmo,
+	  xfdesktop/trunk/po/ru.po, xfdesktop/trunk/po/sk.gmo,
+	  xfdesktop/trunk/po/sk.po, xfdesktop/trunk/po/sv.gmo,
+	  xfdesktop/trunk/po/sv.po, xfdesktop/trunk/po/ta.gmo,
+	  xfdesktop/trunk/po/ta.po, xfdesktop/trunk/po/tr.gmo,
+	  xfdesktop/trunk/po/tr.po, xfdesktop/trunk/po/uk.gmo,
+	  xfdesktop/trunk/po/uk.po, xfdesktop/trunk/po/vi.gmo,
+	  xfdesktop/trunk/po/vi.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po,
+	  xfdesktop/trunk/po/zh_TW.gmo, xfdesktop/trunk/po/zh_TW.po,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/src/Makefile.in: migrate ~/.xfce4/backdrops.list
+	  bump version to 4.1.90
+
+2004-09-23 21:41  pollux
+
+	* xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h,
+	  xfdesktop/trunk/menueditor/move.c: fix #322 (Mantis)
+
+2004-09-23 19:20  jasper
+
+	* xfdesktop/trunk/menueditor/menueditor.c: Fix crash when icon theme
+	  changes
+
+2004-09-23 08:22  jasper
+
+	* xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: Add nl
+	  translations
+
+2004-09-22 16:16  pollux
+
+	* xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h,
+	  xfdesktop/trunk/menueditor/new_dialog.c: fix #324
+
+2004-09-22 03:18  kelnos
+
+	* xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: add
+	  GenericName tags to settings .desktop files
+
+2004-09-20 11:46  pollux
+
+	* xfdesktop/trunk/menueditor/Makefile.am,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/menueditor/TODO,
+	  xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/dnd.h,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h,
+	  xfdesktop/trunk/menueditor/move.c,
+	  xfdesktop/trunk/menueditor/new_dialog.c: big code cleaning in
+	  menueditor, it doesn't use a global menueditor_app to store
+	  pointer anymore
+
+2004-09-17 15:50  pollux
+
+	* xfdesktop/trunk/menueditor/edit_dialog.c: fix segfault when
+	  editing a submenu entry
+
+2004-09-16 22:10  pollux
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/depcomp,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in, xfdesktop/trunk/po/be.gmo,
+	  xfdesktop/trunk/po/be.po, xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: add BE translations from Ales
+	  Nyakhaychyk <nab@mail.by>
+
+2004-09-15 07:41  kelnos
+
+	* xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.am,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
+	  xfdesktop/trunk/panel-plugin/Makefile.am,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in, xfdesktop/trunk/src/main.c,
+	  xfdesktop/trunk/src/main.h, xfdesktop/trunk/src/xfdesktop.def:
+	  cygwin fixes from maarten boekhold
+
+2004-09-11 10:49  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: XDG basedir stuff support
+	  in menueditor
+
+2004-09-11 09:38  kelnos
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/modules/menu/desktop-menu-cache.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-dentry.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: XDG basedir stuff for menu.xml
+	  and xfce-registered-categories.xml NOTE: i haven't migrated the
+	  mcs plugin's file yet
+
+2004-09-10 18:46  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: use dummy icon if
+	  xfce_icon_theme_load returns NULL
+
+2004-09-10 18:39  pollux
+
+	* xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h,
+	  xfdesktop/trunk/menueditor/move.c: menueditor now uses
+	  XfceIconTheme and dynamicly changes the icons
+
+2004-08-30 09:59  pollux
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menu.xml.sk,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: add menu.xml.sk
+
+2004-08-29 03:23  kelnos
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: stop creating
+	  settings/backdrop-icon.h
+
+2004-08-15 19:39  olivier
+
+	* xfdesktop/trunk/menu.xml, xfdesktop/trunk/menu.xml.fr,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/modules/menu/desktop-menu-cache.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-dentry.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/modules/menu/desktop-menuspec.c,
+	  xfdesktop/trunk/po/ar.gmo, xfdesktop/trunk/po/ar.po,
+	  xfdesktop/trunk/po/az.gmo, xfdesktop/trunk/po/az.po,
+	  xfdesktop/trunk/po/bg.gmo, xfdesktop/trunk/po/bg.po,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/cs.gmo, xfdesktop/trunk/po/cs.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/eu.gmo, xfdesktop/trunk/po/eu.po,
+	  xfdesktop/trunk/po/fa_IR.gmo, xfdesktop/trunk/po/fa_IR.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/hi.gmo, xfdesktop/trunk/po/hi.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/it.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/pt_BR.gmo, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/po/pt_PT.gmo, xfdesktop/trunk/po/pt_PT.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/sv.gmo, xfdesktop/trunk/po/sv.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/uk.gmo, xfdesktop/trunk/po/uk.po,
+	  xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/vi.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/po/zh_TW.po,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/menu_settings.c,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: Resync
+	  with repository, most notably: - libxfcegui4 fixes with gtk 2.2 -
+	  xfwm4 updates - Present panel plugins in alphabetical order - Fix
+	  add plugin dialog being placed over the panel when using SM -
+	  French po updates - Other various small bug fixes
+
+2004-08-13 12:54  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: adds preview widget in
+	  icon filechooser dialog, improves icon and command filechoosers
+	  dialogs
+
+2004-08-13 09:45  pollux
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/menu.xml.ro,
+	  xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c: adds menu.xml Romanian
+	  translation from Razvan T. Coloja some little fixes in menueditor
+
+2004-07-28 19:15  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: fix bug causing drag and
+	  drog when clicking in the tree while popup menu is shown
+
+2004-07-27 19:36  pollux
+
+	* xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c: use xfce_themed_icon_load
+	  instead of hardcoded icons
+
+2004-07-27 19:27  benny
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/32x32/xfce4-backdrop.png,
+	  xfdesktop/trunk/pixmaps/32x32/xfce4-menueditor.png,
+	  xfdesktop/trunk/pixmaps/48x48/xfce4-backdrop.png,
+	  xfdesktop/trunk/pixmaps/48x48/xfce4-menueditor.png,
+	  xfdesktop/trunk/pixmaps/Makefile.am,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/pixmaps/scalable,
+	  xfdesktop/trunk/pixmaps/scalable/xfce4-backdrop.svg,
+	  xfdesktop/trunk/pixmaps/scalable/xfce4-menueditor.svg,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop-icon.h,
+	  xfdesktop/trunk/src/Makefile.in,
+	  xfdesktop/trunk/src/xfce-desktop.c: Added icons from Francois.
+
+2004-07-26 19:36  kelnos
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/depcomp,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/doc/README.kiosk,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/modules/menu/desktop-menu-dentry.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/menu_settings.c,
+	  xfdesktop/trunk/src/Makefile.in: add kiosk support to xfdesktop
+	  using benny's new XfceKiosk architecture. see
+	  xfdesktop/docs/README.kiosk for details.
+
+2004-07-25 13:03  pollux
+
+	* xfdesktop/trunk/menueditor/TODO,
+	  xfdesktop/trunk/menueditor/menueditor.c: create popup menu only if
+	  needed
+
+2004-07-23 19:18  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: xfce_confirm replaced by
+	  xfce_message_dialog and non-internationalized output used in
+	  g_warning
+
+2004-07-21 21:29  pollux
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/depcomp,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: menueditor requires libxfcegui4
+	  4.1.25
+
+2004-07-18 12:54  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: use of xfce_* for dialogs
+
+2004-07-18 10:10  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: little code cleaning, fix
+	  "GLib-GObject-WARNING **: unable to set property `text' of type
+	  `gchararray' from value of type `gpointer'" with enable-debug=full
+
+2004-07-17 12:52  pollux
+
+	* xfdesktop/trunk/menueditor/TODO,
+	  xfdesktop/trunk/menueditor/edit_dialog.c: code cleaning, TODO
+	  update
+
+2004-07-17 12:12  pollux
+
+	* xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c: code cleaning
+
+2004-07-16 19:33  kelnos
+
+	* xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c: fix compile
+	  warnings for --enable-debug=full
+
+2004-07-16 15:20  kelnos
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/depcomp,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/src/Makefile.in: use XfceColorButton in the
+	  settings panel, bump libxfcegui4 version requirement
+
+2004-07-16 14:12  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: - fix #256 - change some
+	  hardcoded .xfce4 to xfce_get_userdir
+
+2004-07-15 08:49  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: fix #219 in menueditor
+
+2004-07-15 08:43  pollux
+
+	* xfdesktop/trunk/menueditor/ChangeLog,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/move.c: - some code cleaning - update
+	  ChangeLog
+
+2004-07-09 20:50  pollux
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/depcomp,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.am, xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in, xfdesktop/trunk/doc/it,
+	  xfdesktop/trunk/doc/it/Makefile.am,
+	  xfdesktop/trunk/doc/it/Makefile.in, xfdesktop/trunk/doc/it/images,
+	  xfdesktop/trunk/doc/it/images/Makefile.am,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/root_menu.png,
+	  xfdesktop/trunk/doc/it/images/root_menu2.png,
+	  xfdesktop/trunk/doc/it/images/select_bg_color.png,
+	  xfdesktop/trunk/doc/it/images/xfdesktop-background.png,
+	  xfdesktop/trunk/doc/it/images/xfdesktop-list.png,
+	  xfdesktop/trunk/doc/it/xfdesktop.html,
+	  xfdesktop/trunk/doc/it/xfdesktop.xml, xfdesktop/trunk/install-sh,
+	  xfdesktop/trunk/ltmain.sh, xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: more italian doc translation from
+	  Sascha Ales
+
+2004-06-22 06:30  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: correct use of
+	  xfce_file_chooser_get_filename
+
+2004-06-20 16:24  pollux
+
+	* xfdesktop/trunk/menueditor/dnd.c: Fix DND insertion in the XML
+	  tree
+
+2004-06-20 12:05  pollux
+
+	* xfdesktop/trunk/menueditor/dnd.c: Fix DND to support
+	  xfce4-appfinder
+
+2004-06-19 19:29  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: use XfceFileChooser
+	  instead of GtkFileSelection
+
+2004-06-19 09:33  pollux
+
+	* xfdesktop/trunk/menueditor/ChangeLog: Update ChangeLog
+
+2004-06-17 16:41  kelnos
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.am,
+	  xfdesktop/trunk/common/Makefile.in,
+	  xfdesktop/trunk/common/backdrop-common.c,
+	  xfdesktop/trunk/common/backdrop-common.h,
+	  xfdesktop/trunk/config.guess, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/depcomp,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/m4/debug.m4,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h,
+	  xfdesktop/trunk/menueditor/move.c,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/modules/menu/desktop-menu-dentry.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/panel-plugin/Makefile.am,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c,
+	  xfdesktop/trunk/pixmaps/Makefile.am,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/menu_settings.c,
+	  xfdesktop/trunk/settings/settings_common.h,
+	  xfdesktop/trunk/src/Makefile.am, xfdesktop/trunk/src/Makefile.in,
+	  xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/backdrop.h,
+	  xfdesktop/trunk/src/main.c, xfdesktop/trunk/src/main.h,
+	  xfdesktop/trunk/src/menu.c, xfdesktop/trunk/src/menu.h,
+	  xfdesktop/trunk/src/settings.c, xfdesktop/trunk/src/settings.h,
+	  xfdesktop/trunk/src/windowlist.c,
+	  xfdesktop/trunk/src/windowlist.h,
+	  xfdesktop/trunk/src/xfce-backdrop.c,
+	  xfdesktop/trunk/src/xfce-backdrop.h,
+	  xfdesktop/trunk/src/xfce-desktop.c,
+	  xfdesktop/trunk/src/xfce-desktop.h,
+	  xfdesktop/trunk/xfdesktop.spec.in: merging in the new xfdesktop,
+	  version is 4.1.5 *crosses fingers* this will fix the app crashing
+	  problem, and has full multihead support, among a bunch of other
+	  improvements i won't list here. also fixing some warnings in
+	  menueditor (for --enable-debug=full)
+
+2004-05-27 12:28  pollux
+
+	* xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/menueditor.c: DND from Rox, Nautilus,
+	  Xffm and Konqueror supported
+
+2004-05-26 21:07  pollux
+
+	* xfdesktop/trunk/menueditor/dnd.c: DND of a .desktop from Rox
+	  supported
+
+2004-05-25 18:46  pollux
+
+	* xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/menueditor.c: Finaly DND works with
+	  xffm (i haven't tested lastest code) and framework for
+	  application/x-desktop support
+
+2004-05-25 18:13  pollux
+
+	* xfdesktop/trunk/menueditor/dnd.c: DND from a .desktop now supports
+	  Icon tag... doesn't work anymore with xffm (i don't know since
+	  when)...
+
+2004-05-25 17:26  pollux
+
+	* xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c: search for executable in
+	  PATH
+
+2004-05-25 16:22  pollux
+
+	* xfdesktop/trunk/menueditor/TODO,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h: Check if the command
+	  exists
+
+2004-05-25 15:36  pollux
+
+	* xfdesktop/trunk/menueditor/about_dialog.c: Make about dialog
+	  taller by default
+
+2004-05-23 18:58  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h: collapse tree and expand
+	  tree added
+
+2004-05-23 18:34  pollux
+
+	* xfdesktop/trunk/menueditor/edit_dialog.c: popup->Edit now
+	  supported
+
+2004-05-23 18:20  pollux
+
+	* xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.h,
+	  xfdesktop/trunk/menueditor/move.c: begin of popup->Edit
+
+2004-05-23 18:17  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: code cleaning
+
+2004-05-22 21:13  pollux
+
+	* xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/move.c: despite time running out before
+	  the exams, found time... - my_gtk_tree_store_swap_up/down fully
+	  rewrited (fix bug reported by Jasper in which menu content wasn't
+	  moved), but moving with the up and down arrow still need a little
+	  work - Fran&#65533;ois added in the credits :-)
+
+2004-05-11 07:22  jasper
+
+	* xfdesktop/trunk/common/backdrop-common.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-dentry.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c,
+	  xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/settings/backdrop-icon.h,
+	  xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/settings_common.c,
+	  xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/menu.h: Fix
+	  warnings to allow compiling with --enable-debug=full.
+
+2004-05-07 16:15  pollux
+
+	* xfdesktop/trunk/menueditor/TODO,
+	  xfdesktop/trunk/menueditor/menueditor.c: if ~/.xfce4/menu.xml
+	  doesn't exist, it's been created from the default menu (need to be
+	  tested with a rm -rf .xfce4)
+
+2004-05-07 14:37  pollux
+
+	* xfdesktop/trunk/menueditor/edit_dialog.c: really uses the dummy
+	  icon when icon is not found (in edition)
+
+2004-05-07 14:34  pollux
+
+	* xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c: use the dummy icon when
+	  icon is not set or not found
+
+2004-05-06 09:06  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: saveas problem fixed
+
+2004-05-05 14:35  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: tell the user when cannot
+	  save and why
+
+2004-05-04 21:45  kelnos
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.am,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.am,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: new directory inclusion/exclusion
+	  strategy to fix 'make distclean'
+
+2004-04-23 19:20  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: remove no more needed C++
+	  style comments
+
+2004-04-22 20:45  kelnos
+
+	* xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h: compiled fixes for gtk
+	  2.2 users
+
+2004-04-18 17:14  pollux
+
+	* xfdesktop/trunk/menueditor/move.c: when moving an entry in a
+	  submenu or a parent menu, the icon now moves with (bug reported by
+	  Jasper Huijsmans)
+
+2004-04-16 07:28  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: add --version support
+
+2004-04-15 19:58  pollux
+
+	* xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c: change all remainning
+	  occurences of XFce into Xfce
+
+2004-04-10 15:50  pollux
+
+	* xfdesktop/trunk/menueditor/xfce-menueditor.desktop: added french
+	  translations in the .desktop
+
+2004-04-09 17:51  pollux
+
+	* xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h: - in add dialog : if icon
+	  isn't exist however stores the path - add popup menu in the
+	  treeview
+
+2004-04-08 19:17  kelnos
+
+	* xfdesktop/trunk/menueditor/new_dialog.c,
+	  xfdesktop/trunk/po/xfdesktop.pot: whoops, missed a string
+
+2004-04-08 19:09  kelnos
+
+	* xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/move.c,
+	  xfdesktop/trunk/menueditor/new_dialog.c,
+	  xfdesktop/trunk/po/xfdesktop.pot: bunch of string fixes, aesthetic
+	  mods mainly don't use "gtk-new", "gtk-open", etc., but
+	  GTK_STOCK_NEW, GTK_STOCK_OPEN
+
+2004-03-31 20:10  kelnos
+
+	* xfdesktop/trunk/AUTHORS, xfdesktop/trunk/Makefile.am,
+	  xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/menueditor/Makefile.am,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.am,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/po/POTFILES.in, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: fixing POTFILES.in and 'make
+	  dist' also changing benny's email address at his request
+
+2004-03-24 23:22  pollux
+
+	* xfdesktop/trunk/menueditor/new.c,
+	  xfdesktop/trunk/menueditor/new.h,
+	  xfdesktop/trunk/menueditor/new_dialog.c,
+	  xfdesktop/trunk/menueditor/new_dialog.h: fix renaming file problem
+
+2004-03-24 21:37  kelnos
+
+	* xfdesktop/trunk, xfdesktop/trunk/.cvsignore,
+	  xfdesktop/trunk/backdrops, xfdesktop/trunk/backdrops/.cvsignore,
+	  xfdesktop/trunk/common, xfdesktop/trunk/common/.cvsignore,
+	  xfdesktop/trunk/doc, xfdesktop/trunk/doc/.cvsignore,
+	  xfdesktop/trunk/doc/C, xfdesktop/trunk/doc/C/.cvsignore,
+	  xfdesktop/trunk/doc/C/images,
+	  xfdesktop/trunk/doc/C/images/.cvsignore, xfdesktop/trunk/doc/fr,
+	  xfdesktop/trunk/doc/fr/.cvsignore, xfdesktop/trunk/doc/fr/images,
+	  xfdesktop/trunk/doc/fr/images/.cvsignore,
+	  xfdesktop/trunk/menueditor, xfdesktop/trunk/menueditor/.cvsignore,
+	  xfdesktop/trunk/modules, xfdesktop/trunk/modules/.cvsignore,
+	  xfdesktop/trunk/modules/menu,
+	  xfdesktop/trunk/modules/menu/.cvsignore,
+	  xfdesktop/trunk/panel-plugin,
+	  xfdesktop/trunk/panel-plugin/.cvsignore, xfdesktop/trunk/pixmaps,
+	  xfdesktop/trunk/pixmaps/.cvsignore, xfdesktop/trunk/pixmaps/32x32,
+	  xfdesktop/trunk/pixmaps/32x32/.cvsignore,
+	  xfdesktop/trunk/pixmaps/48x48,
+	  xfdesktop/trunk/pixmaps/48x48/.cvsignore, xfdesktop/trunk/po,
+	  xfdesktop/trunk/po/.cvsignore, xfdesktop/trunk/settings,
+	  xfdesktop/trunk/settings/.cvsignore, xfdesktop/trunk/src,
+	  xfdesktop/trunk/src/.cvsignore: remove *.in from .cvsignore
+	  files... sorry for the spam again
+
+2004-03-24 16:07  kelnos
+
+	* xfdesktop/trunk, xfdesktop/trunk/.cvsignore,
+	  xfdesktop/trunk/backdrops, xfdesktop/trunk/backdrops/.cvsignore,
+	  xfdesktop/trunk/common, xfdesktop/trunk/common/.cvsignore,
+	  xfdesktop/trunk/doc, xfdesktop/trunk/doc/.cvsignore,
+	  xfdesktop/trunk/doc/C, xfdesktop/trunk/doc/C/.cvsignore,
+	  xfdesktop/trunk/doc/C/images,
+	  xfdesktop/trunk/doc/C/images/.cvsignore, xfdesktop/trunk/doc/fr,
+	  xfdesktop/trunk/doc/fr/.cvsignore, xfdesktop/trunk/doc/fr/images,
+	  xfdesktop/trunk/doc/fr/images/.cvsignore,
+	  xfdesktop/trunk/menueditor, xfdesktop/trunk/menueditor/.cvsignore,
+	  xfdesktop/trunk/modules, xfdesktop/trunk/modules/.cvsignore,
+	  xfdesktop/trunk/modules/menu,
+	  xfdesktop/trunk/modules/menu/.cvsignore,
+	  xfdesktop/trunk/panel-plugin,
+	  xfdesktop/trunk/panel-plugin/.cvsignore, xfdesktop/trunk/pixmaps,
+	  xfdesktop/trunk/pixmaps/.cvsignore, xfdesktop/trunk/pixmaps/32x32,
+	  xfdesktop/trunk/pixmaps/32x32/.cvsignore,
+	  xfdesktop/trunk/pixmaps/48x48,
+	  xfdesktop/trunk/pixmaps/48x48/.cvsignore, xfdesktop/trunk/po,
+	  xfdesktop/trunk/po/.cvsignore, xfdesktop/trunk/settings,
+	  xfdesktop/trunk/settings/.cvsignore, xfdesktop/trunk/src,
+	  xfdesktop/trunk/src/.cvsignore: so tired of all the noise in 'cvs
+	  update' output (sorry for the commits spam!)
+
+2004-03-24 10:05  pollux
+
+	* xfdesktop/trunk/menueditor/Makefile.am,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c: - new.c/h renamed into
+	  new_dialog.c/h - add default response in dialogs
+
+2004-03-21 19:53  pollux
+
+	* xfdesktop/trunk/menueditor/TODO,
+	  xfdesktop/trunk/menueditor/edit_dialog.c: fix memory leak : when
+	  editing previous icon wasn't unref
+
+2004-03-18 08:50  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: (re)add support for "no"
+	  value in visible attribute for backward compatibility
+
+2004-03-18 08:40  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: change visible attribute
+	  set of values from yes/no to true/false
+
+2004-03-17 20:40  pollux
+
+	* xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.h,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.h: added support for style
+	  and unique attribute for the include entry in the menu
+
+2004-03-15 10:35  pollux
+
+	* xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c: support for icon in title
+	  and menu tag as brian asked
+
+2004-03-13 12:21  pollux
+
+	* xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_dialog.h,
+	  xfdesktop/trunk/menueditor/edit_dialog.c: added support for term
+	  attribute of a launcher
+
+2004-03-12 10:37  pollux
+
+	* xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c: user can now set an icon
+	  to the builtin quit entry
+
+2004-03-07 11:42  pollux
+
+	* xfdesktop/trunk/menueditor/edit_dialog.c: i forgot a xmlFree
+
+2004-03-07 11:40  pollux
+
+	* xfdesktop/trunk/menueditor/TODO,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_dialog.h,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c: - added snotify tag
+	  support - now the edited filename is showed in the titlebar
+
+2004-03-07 10:45  pollux
+
+	* xfdesktop/trunk/menueditor/TODO,
+	  xfdesktop/trunk/menueditor/about_dialog.c: - updated TODO - added
+	  some contributors in the about dialog
+
+2004-03-07 05:49  kelnos
+
+	* xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/new.c: fix (hopefully) all warnings.
+	  --enable-debug=full _should_ work now. /me looks pointedly at
+	  dannym
+
+2004-03-06 22:02  dannym
+
+	* xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c: config.h
+
+2004-03-06 21:58  dannym
+
+	* xfdesktop/trunk/menueditor/add_menu_dialog.c: add_menu_dialog.c:
+	  In function `add_menu_cb': add_menu_dialog.c:68: Warnung: implicit
+	  declaration of function `create_header' add_menu_dialog.c:68:
+	  Warnung: assignment makes pointer from integer without a cast
+	  add_menu_dialog.c:152: Warnung: implicit declaration of function
+	  `strlen' add_menu_dialog.c:125: Warnung: unused variable
+	  `root_iter'
+
+2004-03-06 21:29  dannym
+
+	* xfdesktop/trunk/menueditor/add_dialog.c: using xfce_* prefixed
+	  functions now, add enumeration "INCLUDE" to switch (empty); pollux
+	  please check if correct
+
+2004-03-06 21:26  dannym
+
+	* xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.h: warnings, warnings, let
+	  me compile with debugging info so I can debug, will you...
+
+2004-03-01 22:37  benny
+
+	* xfdesktop/trunk/menueditor/menueditor.h: libxfce4util provides the
+	  i18n macros, no need to redefine here :-)
+
+2004-02-29 13:22  pollux
+
+	* xfdesktop/trunk/menueditor/TODO, xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/menueditor.c: - more accurate dnd (if
+	  anybody has an idea to make it well tell me)
+
+2004-02-28 21:21  perldude
+
+	* xfdesktop/trunk/menueditor/menueditor.c: Removed menubar-icons.
+
+2004-02-27 14:03  pollux
+
+	* xfdesktop/trunk/menueditor/menueditor.c: - savings are now atomic
+	  (thx Benny)
+
+2004-02-27 11:31  pollux
+
+	* xfdesktop/trunk/menueditor/TODO, xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c: - data acquired by
+	  xmlGetProp are now freed (remark from Brian)
+
+2004-02-27 10:31  pollux
+
+	* xfdesktop/trunk/menueditor/TODO,
+	  xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h: - menueditor now uses
+	  xfce_load_themed_icon instead of home made load_icon_from_theme -
+	  little changes in the about box
+
+2004-02-27 05:19  kelnos
+
+	* xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/pixmaps/32x32,
+	  xfdesktop/trunk/pixmaps/32x32/xfce4-backdrop.png,
+	  xfdesktop/trunk/pixmaps/32x32/xfce4-menueditor.png,
+	  xfdesktop/trunk/pixmaps/48x48,
+	  xfdesktop/trunk/pixmaps/48x48/xfce4-backdrop.png,
+	  xfdesktop/trunk/pixmaps/48x48/xfce4-menueditor.png,
+	  xfdesktop/trunk/pixmaps/Makefile.am,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/pixmaps/xfce4-backdrop.png,
+	  xfdesktop/trunk/pixmaps/xfce4-menueditor.png,
+	  xfdesktop/trunk/settings/backdrop-icon.h,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: * make
+	  sized icons for the backdrop settings panel and the menu editor,
+	  and install them to the hicolor icon theme. * make the settings
+	  panel icon use xfce_load_themed_icon() * change names to 'Xfce 4'
+	  from 'Xfce4' and remove extension from icon in .desktop files
+
+2004-02-26 09:40  pollux
+
+	* xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h: - the menueditor now uses
+	  gtk_icon_theme_load_icon instead of find_icon
+
+2004-02-25 13:14  pollux
+
+	* xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h: - add_dialog and
+	  edit_dialog now use find_icon - when deleting an entry the
+	  GdkPixbuf of the icon is now freed
+
+2004-02-25 12:53  pollux
+
+	* xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/about_dialog.h,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_dialog.h,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.h,
+	  xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/dnd.h,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.h,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h,
+	  xfdesktop/trunk/menueditor/move.c,
+	  xfdesktop/trunk/menueditor/move.h,
+	  xfdesktop/trunk/menueditor/new.c,
+	  xfdesktop/trunk/menueditor/new.h: - menueditor.h is no more
+	  included in all .h but in the .c - website in the about dialog
+	  changed in http://www.xfce.org - some (little) code corrections
+
+2004-02-24 20:08  pollux
+
+	* xfdesktop/trunk/menueditor/ChangeLog,
+	  xfdesktop/trunk/menueditor/TODO,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h: the menueditor now uses
+	  the themed icons (need to be restarted to apply changes)
+
+2004-02-20 15:12  pollux
+
+	* xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/ltmain.sh, xfdesktop/trunk/menueditor/ChangeLog,
+	  xfdesktop/trunk/menueditor/Makefile.am,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/menueditor/undo.c,
+	  xfdesktop/trunk/menueditor/undo.h, xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: - French translations updated -
+	  undo.c and undo.h removed
+
+2004-02-19 16:06  kelnos
+
+	* xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h,
+	  xfdesktop/trunk/menueditor/move.c,
+	  xfdesktop/trunk/menueditor/new.c: patch from jean-francois to
+	  remove the non-CVS libxfce* compatibility
+
+2004-02-18 22:21  kelnos
+
+	* xfdesktop/trunk/menueditor/about_dialog.c: actually destroy the
+	  about dialog when 'close' is clicked...
+
+2004-02-18 15:37  kelnos
+
+	* xfdesktop/trunk/menueditor/Makefile.am,
+	  xfdesktop/trunk/menueditor/Makefile.in: add .desktop file and icon
+	  for xfce4-menueditor
+
+2004-02-18 15:09  kelnos
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/pixmaps/Makefile.am,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/pixmaps/xfce4-menueditor.png: add .desktop file
+	  and icon for xfce4-menueditor
+
+2004-02-17 00:51  kelnos
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/menueditor, xfdesktop/trunk/menueditor/BUGS,
+	  xfdesktop/trunk/menueditor/ChangeLog,
+	  xfdesktop/trunk/menueditor/Makefile.am,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/menueditor/TODO,
+	  xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/about_dialog.h,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_dialog.h,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.h,
+	  xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/dnd.h,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.h,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h,
+	  xfdesktop/trunk/menueditor/move.c,
+	  xfdesktop/trunk/menueditor/move.h,
+	  xfdesktop/trunk/menueditor/new.c,
+	  xfdesktop/trunk/menueditor/new.h,
+	  xfdesktop/trunk/menueditor/undo.c,
+	  xfdesktop/trunk/menueditor/undo.h,
+	  xfdesktop/trunk/po/xfdesktop.pot: added xfce4-menueditor from
+	  jean-francois wauthy
 
-	* Makefile.in: more italian doc translation from Sascha Ales
-
-2004-06-22  pollux  <pollux@xfce.org>
-
-	* menueditor.c: correct use of xfce_file_chooser_get_filename
-
-2004-06-20  pollux  <pollux@xfce.org>
-
-	* dnd.c: Fix DND insertion in the XML tree
-
-	* dnd.c: Fix DND to support xfce4-appfinder
-
-2004-06-19  pollux  <pollux@xfce.org>
-
-	* menueditor.c: use XfceFileChooser instead of GtkFileSelection
-
-	* ChangeLog: Update ChangeLog
-
-2004-06-17  kelnos  <kelnos@xfce.org>
-
-	* Makefile.in, add_dialog.c, dnd.c, edit_dialog.c, menueditor.c, menueditor.h, move.c:
-	merging in the new xfdesktop, version is 4.1.5 *crosses fingers*
-	this will fix the app crashing problem, and has full multihead support, among
-	a bunch of other improvements i won't list here.
-	also fixing some warnings in menueditor (for --enable-debug=full)
-
-2004-06-17  kelnos  <kelnos@xfce.org>
-
-	* Makefile.in, add_dialog.c, dnd.c, edit_dialog.c, menueditor.c, menueditor.h, move.c:
-	merging in the new xfdesktop, version is 4.1.5 *crosses fingers*
-	this will fix the app crashing problem, and has full multihead support, among
-	a bunch of other improvements i won't list here.
-	also fixing some warnings in menueditor (for --enable-debug=full)
-
-2004-05-27  pollux  <pollux@xfce.org>
-
-	* dnd.c, menueditor.c:
-	DND from Rox, Nautilus, Xffm and Konqueror supported
-
-2004-05-26  pollux  <pollux@xfce.org>
-
-	* dnd.c: DND of a .desktop from Rox supported
-
-2004-05-25  pollux  <pollux@xfce.org>
-
-	* dnd.c, menueditor.c:
-	Finaly DND works with xffm (i haven't tested lastest code) and framework for application/x-desktop support
-
-	* dnd.c:
-	DND from a .desktop now supports Icon tag... doesn't work anymore with xffm (i don't know since when)...
-
-	* edit_dialog.c, menueditor.c: search for executable in PATH
-
-	* TODO, add_dialog.c, edit_dialog.c, menueditor.c, menueditor.h:
-	Check if the command exists
-
-	* about_dialog.c: Make about dialog taller by default
-
-2004-05-23  pollux  <pollux@xfce.org>
-
-	* menueditor.c, menueditor.h: collapse tree and expand tree added
-
-	* edit_dialog.c: popup->Edit now supported
-
-	* edit_dialog.c, edit_dialog.h, move.c: begin of popup->Edit
-
-	* menueditor.c: code cleaning
-
-2004-05-22  pollux  <pollux@xfce.org>
-
-	* about_dialog.c, move.c:
-	despite time running out before the exams, found time...
-	- my_gtk_tree_store_swap_up/down fully rewrited (fix bug reported by Jasper in which menu content wasn't moved), but moving with the up and down arrow still need a little work
-	- François added in the credits :-)
-
-2004-05-11  jasper  <jasper@xfce.org>
-
-	* edit_dialog.c, menueditor.c:
-	Fix warnings to allow compiling with --enable-debug=full.
-
-2004-05-07  pollux  <pollux@xfce.org>
-
-	* TODO, menueditor.c:
-	if ~/.xfce4/menu.xml doesn't exist, it's been created from the default menu (need to be tested with a rm -rf .xfce4)
-
-	* edit_dialog.c:
-	really uses the dummy icon when icon is not found (in edition)
-
-	* add_dialog.c, edit_dialog.c, menueditor.c:
-	use the dummy icon when icon is not set or not found
-
-2004-05-06  pollux  <pollux@xfce.org>
-
-	* menueditor.c: saveas problem fixed
-
-2004-05-05  pollux  <pollux@xfce.org>
-
-	* menueditor.c: tell the user when cannot save and why
-
-2004-05-04  kelnos  <kelnos@xfce.org>
-
-	* Makefile.in:
-	new directory inclusion/exclusion strategy to fix 'make distclean'
-
-2004-04-23  pollux  <pollux@xfce.org>
-
-	* menueditor.c: remove no more needed C++ style comments
-
-2004-04-22  kelnos  <kelnos@xfce.org>
-
-	* menueditor.c, menueditor.h, Makefile.in:
-	compiled fixes for gtk 2.2 users
-
-2004-04-18  pollux  <pollux@xfce.org>
-
-	* move.c:
-	when moving an entry in a submenu or a parent menu, the icon now moves with (bug reported by Jasper Huijsmans)
-
-2004-04-16  pollux  <pollux@xfce.org>
-
-	* menueditor.c: add --version support
-
-2004-04-15  pollux  <pollux@xfce.org>
-
-	* about_dialog.c, menueditor.c:
-	change all remainning occurences of XFce into Xfce
-
-2004-04-10  pollux  <pollux@xfce.org>
-
-	* xfce-menueditor.desktop: added french translations in the .desktop
-
-2004-04-09  pollux  <pollux@xfce.org>
-
-	* add_dialog.c, menueditor.c, menueditor.h:
-	- in add dialog : if icon isn't exist however stores the path
-	- add popup menu in the treeview
-
-2004-04-08  kelnos  <kelnos@xfce.org>
-
-	* new_dialog.c: whoops, missed a string
-
-	* Makefile.in, about_dialog.c, add_dialog.c, add_menu_dialog.c, edit_dialog.c, menueditor.c, move.c, new_dialog.c:
-	bunch of string fixes, aesthetic mods mainly
-	don't use "gtk-new", "gtk-open", etc., but GTK_STOCK_NEW, GTK_STOCK_OPEN
-
-2004-03-31  kelnos  <kelnos@xfce.org>
-
-	* Makefile.am, Makefile.in: fixing POTFILES.in and 'make dist'
-	also changing benny's email address at his request
-
-2004-03-24  pollux  <pollux@xfce.org>
-
-	* new.c, new.h, new_dialog.c, new_dialog.h: fix renaming file problem
-
-2004-03-24  kelnos  <kelnos@xfce.org>
-
-	* .cvsignore:
-	remove *.in from .cvsignore files... sorry for the spam again
-
-	* .cvsignore:
-	so tired of all the noise in 'cvs update' output (sorry for the commits
-	spam!)
-
-2004-03-24  pollux  <pollux@xfce.org>
-
-	* add_menu_dialog.c, edit_dialog.c, menueditor.c, Makefile.am, Makefile.in, add_dialog.c:
-	- new.c/h renamed into new_dialog.c/h
-	- add default response in dialogs
-
-2004-03-21  pollux  <pollux@xfce.org>
-
-	* TODO, edit_dialog.c:
-	fix memory leak : when editing previous icon wasn't unref
-
-2004-03-18  pollux  <pollux@xfce.org>
-
-	* menueditor.c:
-	(re)add support for "no" value in visible attribute for backward compatibility
-
-	* menueditor.c:
-	change visible attribute set of values from yes/no to true/false
-
-2004-03-17  pollux  <pollux@xfce.org>
-
-	* add_menu_dialog.c, add_menu_dialog.h, edit_dialog.c, menueditor.h:
-	added support for style and unique attribute for the include entry in the menu
-
-2004-03-15  pollux  <pollux@xfce.org>
-
-	* add_dialog.c, edit_dialog.c, menueditor.c:
-	support for icon in title and menu tag as brian asked
-
-2004-03-13  pollux  <pollux@xfce.org>
-
-	* add_dialog.c, add_dialog.h, edit_dialog.c:
-	added support for term attribute of a launcher
-
-2004-03-12  pollux  <pollux@xfce.org>
-
-	* add_dialog.c, edit_dialog.c, menueditor.c:
-	user can now set an icon to the builtin quit entry
-
-2004-03-07  pollux  <pollux@xfce.org>
-
-	* edit_dialog.c: i forgot a xmlFree
-
-	* TODO, add_dialog.c, add_dialog.h, edit_dialog.c, menueditor.c:
-	- added snotify tag support
-	- now the edited filename is showed in the titlebar
-
-	* TODO, about_dialog.c: - updated TODO
-	- added some contributors in the about dialog
-
-2004-03-07  kelnos  <kelnos@xfce.org>
-
-	* add_dialog.c, add_menu_dialog.c, dnd.c, edit_dialog.c, menueditor.c, new.c:
-	fix (hopefully) all warnings.  --enable-debug=full _should_ work now.
-	/me looks pointedly at dannym
-
-2004-03-06  dannym  <dannym@xfce.org>
-
-	* add_dialog.c, add_menu_dialog.c: config.h
-
-	* add_menu_dialog.c: add_menu_dialog.c: In function `add_menu_cb':
-	add_menu_dialog.c:68: Warnung: implicit declaration of function `create_header'
-	add_menu_dialog.c:68: Warnung: assignment makes pointer from integer without a cast
-	add_menu_dialog.c:152: Warnung: implicit declaration of function `strlen'
-	add_menu_dialog.c:125: Warnung: unused variable `root_iter'
-
-	* add_dialog.c:
-	using xfce_* prefixed functions now, add enumeration "INCLUDE" to switch (empty); pollux please check if correct
-
-	* add_dialog.c, menueditor.h:
-	warnings, warnings, let me compile with debugging info so I can debug, will you...
-
-2004-03-01  benny  <benny@xfce.org>
-
-	* menueditor.h:
-	libxfce4util provides the i18n macros, no need to redefine here :-)
-
-2004-02-29  pollux  <pollux@xfce.org>
-
-	* TODO, dnd.c, menueditor.c:
-	- more accurate dnd (if anybody has an idea to make it well tell me)
-
-2004-02-28  perldude  <perldude@xfce.org>
-
-	* menueditor.c: Removed menubar-icons.
-
-2004-02-27  pollux  <pollux@xfce.org>
-
-	* menueditor.c: - savings are now atomic (thx Benny)
-
-	* TODO, dnd.c, edit_dialog.c, menueditor.c:
-	- data acquired by xmlGetProp are now freed (remark from Brian)
-
-	* TODO, about_dialog.c, add_dialog.c, edit_dialog.c, menueditor.c, menueditor.h:
-	- menueditor now uses xfce_load_themed_icon instead of home made
-	load_icon_from_theme
-	- little changes in the about box
-
-2004-02-27  kelnos  <kelnos@xfce.org>
-
-	* xfce-menueditor.desktop:
-	* make sized icons for the backdrop settings panel and the menu editor,
-	  and install them to the hicolor icon theme.
-	* make the settings panel icon use xfce_load_themed_icon()
-	* change names to 'Xfce 4' from 'Xfce4' and remove extension from icon
-	  in .desktop files
-
-2004-02-26  pollux  <pollux@xfce.org>
-
-	* add_dialog.c, edit_dialog.c, menueditor.c, menueditor.h:
-	- the menueditor now uses gtk_icon_theme_load_icon instead of find_icon
-
-2004-02-25  pollux  <pollux@xfce.org>
-
-	* add_dialog.c, edit_dialog.c, menueditor.c, menueditor.h:
-	- add_dialog and edit_dialog now use find_icon
-	- when deleting an entry the GdkPixbuf of the icon is now freed
-
-	* about_dialog.c, about_dialog.h, add_dialog.c, add_dialog.h, add_menu_dialog.c, add_menu_dialog.h, dnd.c, dnd.h, edit_dialog.c, edit_dialog.h, menueditor.c, menueditor.h, move.c, move.h, new.c, new.h:
-	- menueditor.h is no more included in all .h but in the .c
-	- website in the about dialog changed in http://www.xfce.org
-	- some (little) code corrections
-
-2004-02-24  pollux  <pollux@xfce.org>
-
-	* menueditor.h, ChangeLog, TODO, menueditor.c:
-	the menueditor now uses the themed icons (need to be restarted to apply changes)
-
-2004-02-20 pollux   <pollux@xfce.org>
-	* uses xfce_about_dialog (with CVS libs)
-	* searches for icon in default directory
-	* French translations updated
-	
-*** merged into xfdesktop CVS, 16 Feb 2004 ***
-
-Version 1.?:
-	- text in column header are centered
-	- support include tag
-	
-Version 1.05:
-	- filesel dialog for launcher command in edit and add dialog
-	- filesel dialog for new menu filename
-	- check if all field are filled when adding and creating a new menu
-	- no more gint response (might cause prbl at compiling under NetBSD)
-	- icon support added
-	- text in tree formatted
-
-Version 1.0:
-	- my_treestore_swap_up and my_tree_store_swap down bug corrected
-	- menueditor.c splitted into more files
-
-Version 1.0rc3:
-	- my_treestore_swap_up and my_treestore_swap_down written : generic root element no more needed
-	- "Title" is no more needed when creating a menu
-	- xfce4-menueditor can take a menu file in argument
-	
-Version 1.0rc2:
-	- "Title" is needed when creating a new menu (part of the workaround of the gtk_tree_store_swap bug)
-	- add "Title" type in the add dialog
-	- title tag no more needed to open a file
-	- add --disable-cvs option to the ./configure script
-	- title and menu entries on the same level and add a generic root element (to avoid gtk_tree_store_swap ?bug?)
-	- remove quit application confirmation dialog
-	- french translation updated
-
-Version 1.0rc1:
-	- french translation updated
-	- dnd support for menu (to test deeply !)
-	
-Version 1.0pre1:
-	- add check for title tag (idea cames from GammaRay's errors)
-	- change Name into Title in the new menu dialog (thx to FuzzBox for the idea)
-	- now cancelling open won't close the previous menu (thx FuzzBox for the idea)
-	- visible property now works correctly !
-	- title and builtins can be edited
-	- confirm_quit_cb now returns a gboolean (bug reported by Jasper Huijsmans)
-	- dnd support for launcher, builtin and separator
-	- open_menu_file() created
-	- add File->Open default menu
