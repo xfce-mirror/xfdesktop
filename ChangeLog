@@ -1,247 +1,2276 @@
-2004-07-09 11:00  olivier
+2004-09-10 21:45  pollux
 
-	* configure, configure.ac, po/xfdesktop.pot: Update versions.
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/po/he.gmo,
+	  xfdesktop/branches/xfce_4_0/po/he.po: add HE translations from
+	  Yuval Tanny <tanai@int.gov.il>
 
-2004-07-09 09:53  olivier
+2004-08-29 02:50  
 
-	* ChangeLog: Update ChangeLogs for 4.0.6
+	* xfdesktop/branches/xfce_4_0/po/he.gmo,
+	  xfdesktop/branches/xfce_4_0/po/he.po: This commit was manufactured
+	  by cvs2svn to create branch 'xfce_4_0'.
 
-2004-07-08 21:53  olivier
+2004-08-13 09:49  pollux
 
-	* ltmain.sh: Update tree for 4.0.6 release
+	* xfdesktop/branches/xfce_4_0/Makefile.am,
+	  xfdesktop/branches/xfce_4_0/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/ltmain.sh,
+	  xfdesktop/branches/xfce_4_0/menu.xml.ro: adds menu.xml Romanian
+	  translation from Razvan T. Coloja
 
-2004-07-06 17:58  pollux
+2004-08-13 09:49  
 
-	* configure, configure.ac, po/eu.gmo, po/eu.po: add basque
-	  translation from ^pi^ <pi@beobide.net>
+	* xfdesktop/branches/xfce_4_0/menu.xml.ro: This commit was
+	  manufactured by cvs2svn to create branch 'xfce_4_0'.
 
-2004-06-29 21:12  pollux
+2004-07-15 05:59  jasper
 
-	* po/: ru.gmo, ru.po: Add missing translations from Anthony Ivanoff
+	* xfdesktop/branches/xfce_4_0/doc/C/xfdesktop.html,
+	  xfdesktop/branches/xfce_4_0/doc/C/xfdesktop.xml,
+	  xfdesktop/branches/xfce_4_0/doc/fr/xfdesktop.html,
+	  xfdesktop/branches/xfce_4_0/doc/fr/xfdesktop.xml: get rid of
+	  moongroup references
 
-2004-06-20 19:20  benny
+2004-07-09 09:32  olivier
 
-	* src/menu.c: PATH_MAX fixes to get it to compile on GNU/Hurd.
+	* xfdesktop/branches/xfce_4_0/ChangeLog: Update ChangeLog
 
-2004-06-11 13:03  pollux
+2004-07-09 09:00  olivier
 
-	* configure, configure.ac, ltmain.sh, po/et.gmo, po/et.po: Estonian
-	  translations from Peeter Vois <peeter.vois@proekspert.ee> added
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/po/xfdesktop.pot: Update versions.
 
-2004-05-04 00:16  olivier
+2004-07-09 07:53  olivier
 
-	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
-	  install-sh, ltmain.sh, mkinstalldirs, backdrops/Makefile.in,
-	  common/Makefile.in, doc/Makefile.in, doc/C/Makefile.in,
-	  doc/C/images/Makefile.in, doc/fr/Makefile.in,
-	  doc/fr/images/Makefile.in, po/xfdesktop.pot,
-	  settings/Makefile.in, src/Makefile.in: Update zh_TW translations
-	  by umm <umm@pchome.com.tw>
+	* xfdesktop/branches/xfce_4_0/ChangeLog: Update ChangeLogs for 4.0.6
 
-2004-03-21 22:44  olivier
+2004-07-08 19:53  olivier
 
-	* settings/workspaces_settings.c: The workspace plugin failed to
-	  set a value for the number of workspaces if it can't load its
-	  config file (ie first run on a fresh install)
+	* xfdesktop/branches/xfce_4_0/ltmain.sh: Update tree for 4.0.6
+	  release
 
-2004-03-21 18:50  olivier
+2004-07-06 15:58  pollux
 
-	* Makefile.am, Makefile.in, menu.xml.it: Add Alex Dupre's Italian
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/po/eu.gmo,
+	  xfdesktop/branches/xfce_4_0/po/eu.po: add basque translation from
+	  ^pi^ <pi@beobide.net>
+
+2004-07-06 15:58  
+
+	* xfdesktop/branches/xfce_4_0/po/eu.gmo,
+	  xfdesktop/branches/xfce_4_0/po/eu.po: This commit was manufactured
+	  by cvs2svn to create branch 'xfce_4_0'.
+
+2004-06-29 19:12  pollux
+
+	* xfdesktop/branches/xfce_4_0/po/ru.gmo,
+	  xfdesktop/branches/xfce_4_0/po/ru.po: Add missing translations
+	  from Anthony Ivanoff
+
+2004-06-20 17:20  benny
+
+	* xfdesktop/branches/xfce_4_0/src/menu.c: PATH_MAX fixes to get it
+	  to compile on GNU/Hurd.
+
+2004-06-11 11:04  pollux
+
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/ltmain.sh,
+	  xfdesktop/branches/xfce_4_0/po/et.gmo,
+	  xfdesktop/branches/xfce_4_0/po/et.po: Estonian translations from
+	  Peeter Vois <peeter.vois@proekspert.ee> added
+
+2004-05-03 22:16  olivier
+
+	* xfdesktop/branches/xfce_4_0/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/aclocal.m4,
+	  xfdesktop/branches/xfce_4_0/backdrops/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/common/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/config.guess,
+	  xfdesktop/branches/xfce_4_0/config.sub,
+	  xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/doc/C/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/doc/C/images/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/doc/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/doc/fr/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/doc/fr/images/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/install-sh,
+	  xfdesktop/branches/xfce_4_0/ltmain.sh,
+	  xfdesktop/branches/xfce_4_0/mkinstalldirs,
+	  xfdesktop/branches/xfce_4_0/po/xfdesktop.pot,
+	  xfdesktop/branches/xfce_4_0/settings/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/src/Makefile.in: Update zh_TW
+	  translations by umm <umm@pchome.com.tw>
+
+2004-03-21 21:44  olivier
+
+	* xfdesktop/branches/xfce_4_0/settings/workspaces_settings.c: The
+	  workspace plugin failed to set a value for the number of
+	  workspaces if it can't load its config file (ie first run on a
+	  fresh install)
+
+2004-03-21 17:50  olivier
+
+	* xfdesktop/branches/xfce_4_0/Makefile.am,
+	  xfdesktop/branches/xfce_4_0/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/menu.xml.it: Add Alex Dupre's Italian
 	  version of the root menu "menu.xml.it"
 
-2004-03-15 00:25  olivier
+2004-03-14 23:25  olivier
 
-	* aclocal.m4, configure, configure.ac, po/ar.gmo, po/ar.po,
-	  po/bg.gmo, po/bg.po, po/it.gmo, po/it.po, po/xfdesktop.pot:
-	  Add/update i18n for: Bulgarian from Miroslav Yordanov
-	  <miordanov@i-space.org> and Peter Slavov <peshka@i-space.org>
-	  Italian from Alex Dupre <ale@FreeBSD.org> Arabic from Saleh
-	  Hathal <hathalsal@hotmail.com>
+	* xfdesktop/branches/xfce_4_0/aclocal.m4,
+	  xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/po/ar.gmo,
+	  xfdesktop/branches/xfce_4_0/po/ar.po,
+	  xfdesktop/branches/xfce_4_0/po/bg.gmo,
+	  xfdesktop/branches/xfce_4_0/po/bg.po,
+	  xfdesktop/branches/xfce_4_0/po/it.gmo,
+	  xfdesktop/branches/xfce_4_0/po/it.po,
+	  xfdesktop/branches/xfce_4_0/po/xfdesktop.pot: Add/update i18n for:
+	  Bulgarian from Miroslav Yordanov <miordanov@i-space.org> and Peter
+	  Slavov <peshka@i-space.org> Italian from Alex Dupre
+	  <ale@FreeBSD.org> Arabic from Saleh Hathal <hathalsal@hotmail.com>
 
-2004-03-07 12:27  olivier
+2004-03-07 11:27  olivier
 
-	* src/menu.c: Switch to window's worskpace before activating
+	* xfdesktop/branches/xfce_4_0/src/menu.c: Switch to window's
+	  worskpace before activating
 
-2004-03-02 22:16  olivier
+2004-03-02 21:16  olivier
 
-	* po/xfdesktop.pot: Dummy
+	* xfdesktop/branches/xfce_4_0/po/xfdesktop.pot: Dummy
 
-2004-02-28 18:24  olivier
+2004-02-28 17:24  olivier
 
-	* ltmain.sh: sync for 4.0.4 release
+	* xfdesktop/branches/xfce_4_0/ltmain.sh: sync for 4.0.4 release
 
-2004-02-24 20:03  kelnos
+2004-02-24 19:03  kelnos
 
-	* src/menu.c: fix for bug #124, thanks tkoskine (xfce_4_0 branch)
+	* xfdesktop/branches/xfce_4_0/src/menu.c: fix for bug #124, thanks
+	  tkoskine (xfce_4_0 branch)
 
-2004-02-01 01:51  kelnos
+2004-02-01 00:51  kelnos
 
-	* src/backdrop.c: applying fix for bug #94 to 4.0 branch (crash in
-	  x event handler when an invalid desktop image is specified)
+	* xfdesktop/branches/xfce_4_0/src/backdrop.c: applying fix for bug
+	  #94 to 4.0 branch (crash in x event handler when an invalid
+	  desktop image is specified)
 
-2004-01-30 08:07  jasper
+2004-01-30 07:07  jasper
 
-	* configure, configure.ac, ltmain.sh, menu.xml.fa_IR, po/es.gmo,
-	  po/es.po, po/fa_IR.gmo, po/fa_IR.po, po/pt_BR.gmo, po/pt_BR.po,
-	  po/zh_CN.gmo, po/zh_CN.po: Update translations for spanish,
-	  persian, brasilian and chinese
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/ltmain.sh,
+	  xfdesktop/branches/xfce_4_0/menu.xml.fa_IR,
+	  xfdesktop/branches/xfce_4_0/po/es.gmo,
+	  xfdesktop/branches/xfce_4_0/po/es.po,
+	  xfdesktop/branches/xfce_4_0/po/fa_IR.gmo,
+	  xfdesktop/branches/xfce_4_0/po/fa_IR.po,
+	  xfdesktop/branches/xfce_4_0/po/pt_BR.gmo,
+	  xfdesktop/branches/xfce_4_0/po/pt_BR.po,
+	  xfdesktop/branches/xfce_4_0/po/zh_CN.gmo,
+	  xfdesktop/branches/xfce_4_0/po/zh_CN.po: Update translations for
+	  spanish, persian, brasilian and chinese
 
-2004-01-25 01:10  olivier
+2004-01-25 00:10  olivier
 
-	* Makefile.in, aclocal.m4, compile, config.guess, config.sub,
-	  configure, configure.ac, depcomp, install-sh, ltmain.sh, missing,
-	  mkinstalldirs, backdrops/Makefile.in, common/Makefile.in,
-	  doc/Makefile.in, doc/C/Makefile.in, doc/C/images/Makefile.in,
-	  doc/fr/Makefile.in, doc/fr/images/Makefile.in, po/fa_IR.gmo,
-	  po/fa_IR.po, settings/Makefile.in, src/Makefile.in: Update
-	  libtool and other automake, autoconf and gettext.
+	* xfdesktop/branches/xfce_4_0/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/aclocal.m4,
+	  xfdesktop/branches/xfce_4_0/backdrops/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/common/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/compile,
+	  xfdesktop/branches/xfce_4_0/config.guess,
+	  xfdesktop/branches/xfce_4_0/config.sub,
+	  xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/depcomp,
+	  xfdesktop/branches/xfce_4_0/doc/C/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/doc/C/images/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/doc/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/doc/fr/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/doc/fr/images/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/install-sh,
+	  xfdesktop/branches/xfce_4_0/ltmain.sh,
+	  xfdesktop/branches/xfce_4_0/missing,
+	  xfdesktop/branches/xfce_4_0/mkinstalldirs,
+	  xfdesktop/branches/xfce_4_0/po/fa_IR.gmo,
+	  xfdesktop/branches/xfce_4_0/po/fa_IR.po,
+	  xfdesktop/branches/xfce_4_0/settings/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/src/Makefile.in: Update libtool and
+	  other automake, autoconf and gettext.
 
-2004-01-07 21:38  olivier
+2004-01-25 00:10  
 
-	* ChangeLog, po/ChangeLog: Huge update before 4.0.3 release,
-	  mainly: ChangeLog update, Version number updates.
+	* xfdesktop/branches/xfce_4_0/menu.xml.fa_IR,
+	  xfdesktop/branches/xfce_4_0/po/fa_IR.gmo,
+	  xfdesktop/branches/xfce_4_0/po/fa_IR.po,
+	  xfdesktop/branches/xfce_4_0/po/pt_BR.gmo,
+	  xfdesktop/branches/xfce_4_0/po/pt_BR.po: This commit was
+	  manufactured by cvs2svn to create branch 'xfce_4_0'.
 
-2004-01-06 19:48  olivier
+2004-01-07 20:38  olivier
 
-	* po/xfdesktop.pot: update theme
+	* xfdesktop/branches/xfce_4_0/ChangeLog,
+	  xfdesktop/branches/xfce_4_0/po/ChangeLog: Huge update before 4.0.3
+	  release, mainly: ChangeLog update, Version number updates.
 
-2004-01-02 17:15  jasper
+2004-01-06 18:48  olivier
 
-	* Makefile.am, Makefile.in, menu.xml.tr: Add Turkish menu
+	* xfdesktop/branches/xfce_4_0/po/xfdesktop.pot: update theme
+
+2004-01-02 16:15  jasper
+
+	* xfdesktop/branches/xfce_4_0/Makefile.am,
+	  xfdesktop/branches/xfce_4_0/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/menu.xml.tr: Add Turkish menu
 	  translation
 
-2003-12-30 09:10  jasper
+2003-12-30 08:10  jasper
 
-	* src/main.c: Set NAUTILUS_DESKTOP_WINDOW_ID property
+	* xfdesktop/branches/xfce_4_0/src/main.c: Set
+	  NAUTILUS_DESKTOP_WINDOW_ID property
 
-2003-12-29 16:20  olivier
+2003-12-29 15:20  olivier
 
-	* ChangeLog, configure, configure.ac, po/no.gmo, po/no.po: Update
-	  version number, Update ChangeLog Fix missing CHARSET in potfiles
+	* xfdesktop/branches/xfce_4_0/ChangeLog,
+	  xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/po/no.gmo,
+	  xfdesktop/branches/xfce_4_0/po/no.po: Update version number,
+	  Update ChangeLog Fix missing CHARSET in potfiles
 
-2003-12-29 13:16  jasper
+2003-12-29 12:16  jasper
 
-	* configure, configure.ac, po/no.gmo, po/no.po, po/tr.gmo,
-	  po/tr.po: Update Norwegian and Turkish translations
-
-2003-12-28 21:28  olivier
-
-	* po/xfdesktop.pot: Fix removal of properties on unframed windows
-
-2003-12-27 22:52  jasper
-
-	* configure, configure.ac, po/pl.gmo, po/pl.po: Update Polish
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/po/no.gmo,
+	  xfdesktop/branches/xfce_4_0/po/no.po,
+	  xfdesktop/branches/xfce_4_0/po/tr.gmo,
+	  xfdesktop/branches/xfce_4_0/po/tr.po: Update Norwegian and Turkish
 	  translations
 
-2003-12-18 00:00  olivier
+2003-12-28 20:28  olivier
 
-	* ChangeLog: Update ChangeLog(s)
+	* xfdesktop/branches/xfce_4_0/po/xfdesktop.pot: Fix removal of
+	  properties on unframed windows
 
-2003-12-16 09:21  jasper
+2003-12-27 21:52  jasper
 
-	* Makefile.am, Makefile.in, menu.xml.az: Add Azerbaijani
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/po/pl.gmo,
+	  xfdesktop/branches/xfce_4_0/po/pl.po: Update Polish translations
+
+2003-12-17 23:00  olivier
+
+	* xfdesktop/branches/xfce_4_0/ChangeLog: Update ChangeLog(s)
+
+2003-12-16 08:21  jasper
+
+	* xfdesktop/branches/xfce_4_0/Makefile.am,
+	  xfdesktop/branches/xfce_4_0/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/menu.xml.az: Add Azerbaijani
 	  translations
 
-2003-12-15 23:25  olivier
+2003-12-15 22:25  olivier
 
-	* po/xfdesktop.pot, settings/workspaces_settings.c: Fix a
+	* xfdesktop/branches/xfce_4_0/po/xfdesktop.pot,
+	  xfdesktop/branches/xfce_4_0/settings/workspaces_settings.c: Fix a
 	  (potential) crash in workspace plugins
 
-2003-12-15 22:35  jasper
+2003-12-15 21:35  jasper
 
-	* configure, configure.ac, po/az.gmo, po/az.po: Add Azerbaijani
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/po/az.gmo,
+	  xfdesktop/branches/xfce_4_0/po/az.po: Add Azerbaijani translations
+
+2003-12-15 21:35  
+
+	* xfdesktop/branches/xfce_4_0/po/az.gmo,
+	  xfdesktop/branches/xfce_4_0/po/az.po: This commit was manufactured
+	  by cvs2svn to create branch 'xfce_4_0'.
+
+2003-12-13 22:31  olivier
+
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/settings/workspaces_settings.c: Use
+	  long as passed value for desktop count
+
+2003-12-05 07:59  jasper
+
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/po/it.gmo,
+	  xfdesktop/branches/xfce_4_0/po/it.po: Add italian translation
+
+2003-12-01 11:49  jasper
+
+	* xfdesktop/branches/xfce_4_0/Makefile.am,
+	  xfdesktop/branches/xfce_4_0/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/menu.xml.vi,
+	  xfdesktop/branches/xfce_4_0/po/ca.gmo: Update vietnamese
 	  translations
 
-2003-12-13 23:31  olivier
+2003-12-01 11:03  jasper
 
-	* configure, configure.ac, settings/workspaces_settings.c: Use long
-	  as passed value for desktop count
+	* xfdesktop/branches/xfce_4_0/po/ca.po: Update catalan translations
 
-2003-12-05 08:59  jasper
+2003-11-16 08:44  jasper
 
-	* configure, configure.ac, po/it.gmo, po/it.po: Add italian
+	* xfdesktop/branches/xfce_4_0/po/cs.gmo,
+	  xfdesktop/branches/xfce_4_0/po/cs.po: Update Czech translations
+
+2003-11-12 07:02  jasper
+
+	* xfdesktop/branches/xfce_4_0/po/ca.gmo,
+	  xfdesktop/branches/xfce_4_0/po/cs.gmo,
+	  xfdesktop/branches/xfce_4_0/po/de.gmo,
+	  xfdesktop/branches/xfce_4_0/po/es.gmo,
+	  xfdesktop/branches/xfce_4_0/po/es_MX.gmo,
+	  xfdesktop/branches/xfce_4_0/po/fi.gmo,
+	  xfdesktop/branches/xfce_4_0/po/fr.gmo,
+	  xfdesktop/branches/xfce_4_0/po/hi.gmo,
+	  xfdesktop/branches/xfce_4_0/po/hu.gmo,
+	  xfdesktop/branches/xfce_4_0/po/ja.gmo,
+	  xfdesktop/branches/xfce_4_0/po/ko.gmo,
+	  xfdesktop/branches/xfce_4_0/po/lt.gmo,
+	  xfdesktop/branches/xfce_4_0/po/ms.gmo,
+	  xfdesktop/branches/xfce_4_0/po/nl.gmo,
+	  xfdesktop/branches/xfce_4_0/po/pl.gmo,
+	  xfdesktop/branches/xfce_4_0/po/pt_PT.gmo,
+	  xfdesktop/branches/xfce_4_0/po/ru.gmo,
+	  xfdesktop/branches/xfce_4_0/po/sv.gmo,
+	  xfdesktop/branches/xfce_4_0/po/ta.gmo,
+	  xfdesktop/branches/xfce_4_0/po/tr.gmo,
+	  xfdesktop/branches/xfce_4_0/po/uk.gmo,
+	  xfdesktop/branches/xfce_4_0/po/vi.gmo,
+	  xfdesktop/branches/xfce_4_0/po/zh_CN.gmo,
+	  xfdesktop/branches/xfce_4_0/po/zh_TW.gmo: Forgot gmo files update
+
+2003-11-11 18:35  jasper
+
+	* xfdesktop/branches/xfce_4_0/po/ca.po,
+	  xfdesktop/branches/xfce_4_0/po/cs.po,
+	  xfdesktop/branches/xfce_4_0/po/de.po,
+	  xfdesktop/branches/xfce_4_0/po/es.po,
+	  xfdesktop/branches/xfce_4_0/po/es_MX.po,
+	  xfdesktop/branches/xfce_4_0/po/fi.po,
+	  xfdesktop/branches/xfce_4_0/po/fr.po,
+	  xfdesktop/branches/xfce_4_0/po/hi.po,
+	  xfdesktop/branches/xfce_4_0/po/hu.po,
+	  xfdesktop/branches/xfce_4_0/po/ja.po,
+	  xfdesktop/branches/xfce_4_0/po/ko.po,
+	  xfdesktop/branches/xfce_4_0/po/lt.po,
+	  xfdesktop/branches/xfce_4_0/po/ms.po,
+	  xfdesktop/branches/xfce_4_0/po/nl.po,
+	  xfdesktop/branches/xfce_4_0/po/pl.po,
+	  xfdesktop/branches/xfce_4_0/po/pt_PT.po,
+	  xfdesktop/branches/xfce_4_0/po/ru.po,
+	  xfdesktop/branches/xfce_4_0/po/sv.po,
+	  xfdesktop/branches/xfce_4_0/po/ta.po,
+	  xfdesktop/branches/xfce_4_0/po/tr.po,
+	  xfdesktop/branches/xfce_4_0/po/uk.po,
+	  xfdesktop/branches/xfce_4_0/po/vi.po,
+	  xfdesktop/branches/xfce_4_0/po/xfdesktop.pot,
+	  xfdesktop/branches/xfce_4_0/po/zh_CN.po,
+	  xfdesktop/branches/xfce_4_0/po/zh_TW.po: Update po files, just in
+	  case something changed ...
+
+2003-11-09 19:09  jasper
+
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/po/cs.gmo,
+	  xfdesktop/branches/xfce_4_0/po/cs.po: Add Check translations
+
+2003-11-08 10:47  jasper
+
+	* xfdesktop/branches/xfce_4_0/doc/fr/images/xfdesktop-workspace.png,
+	  xfdesktop/branches/xfce_4_0/doc/fr/images/xfdesktop-workspaces.png:
+	  fix image name
+
+2003-11-07 21:09  jasper
+
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/doc/C/xfdesktop.html,
+	  xfdesktop/branches/xfce_4_0/doc/Makefile.am,
+	  xfdesktop/branches/xfce_4_0/doc/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/doc/fr/Makefile.am,
+	  xfdesktop/branches/xfce_4_0/doc/fr/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/doc/fr/images/Makefile.am,
+	  xfdesktop/branches/xfce_4_0/doc/fr/images/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/doc/fr/images/root_menu.png,
+	  xfdesktop/branches/xfce_4_0/doc/fr/images/root_menu2.png,
+	  xfdesktop/branches/xfce_4_0/doc/fr/images/select_bg_color.png,
+	  xfdesktop/branches/xfce_4_0/doc/fr/images/xfdesktop-background.png,
+	  xfdesktop/branches/xfce_4_0/doc/fr/images/xfdesktop-list.png,
+	  xfdesktop/branches/xfce_4_0/doc/fr/images/xfdesktop-workspaces.png,
+	  xfdesktop/branches/xfce_4_0/doc/fr/xfdesktop.html,
+	  xfdesktop/branches/xfce_4_0/doc/fr/xfdesktop.xml: Add French
+	  documentation
+
+2003-11-07 21:09  
+
+	* xfdesktop/branches/xfce_4_0/doc/fr: This commit was manufactured
+	  by cvs2svn to create branch 'xfce_4_0'.
+
+2003-11-03 18:06  jasper
+
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/po/uk.gmo,
+	  xfdesktop/branches/xfce_4_0/po/uk.po: Add Ukranian translations
+
+2003-11-01 23:28  olivier
+
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/po/hi.gmo,
+	  xfdesktop/branches/xfce_4_0/po/hi.po: Add Hindi translation
+
+2003-10-24 22:31  jasper
+
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/po/vi.gmo,
+	  xfdesktop/branches/xfce_4_0/po/vi.po: Add vietnamese translations
+	  by Lam Vinh Nien <nienvl@yahoo.ca>.
+
+2003-10-24 22:31  
+
+	* xfdesktop/branches/xfce_4_0/po/vi.gmo,
+	  xfdesktop/branches/xfce_4_0/po/vi.po: This commit was manufactured
+	  by cvs2svn to create branch 'xfce_4_0'.
+
+2003-10-24 11:29  jasper
+
+	* xfdesktop/branches/xfce_4_0/src/menu.c: Use mtime instead of ctime
+	  to check if menu changed.
+
+2003-10-17 16:32  jasper
+
+	* xfdesktop/branches/xfce_4_0/configure,
+	  xfdesktop/branches/xfce_4_0/configure.ac,
+	  xfdesktop/branches/xfce_4_0/po/sv.gmo,
+	  xfdesktop/branches/xfce_4_0/po/sv.po: Add/update swedish
+	  translations
+
+2003-10-17 16:32  
+
+	* xfdesktop/branches/xfce_4_0/po/sv.gmo,
+	  xfdesktop/branches/xfce_4_0/po/sv.po: This commit was manufactured
+	  by cvs2svn to create branch 'xfce_4_0'.
+
+2003-10-13 18:30  jasper
+
+	* xfdesktop/branches/xfce_4_0/ChangeLog: Update ChangeLog's after
+	  syncing with SF. Everything should now be up-to-date.
+
+2003-09-27 11:20  huysmans
+
+	* xfdesktop/branches/xfce_4_0/Makefile.am,
+	  xfdesktop/branches/xfce_4_0/Makefile.in,
+	  xfdesktop/branches/xfce_4_0/menu.xml.ta,
+	  xfdesktop/branches/xfce_4_0/po/ta.gmo,
+	  xfdesktop/branches/xfce_4_0/po/ta.po: Update tamil translations
+
+2003-09-27 11:20  
+
+	* xfdesktop/branches/xfce_4_0: This commit was manufactured by
+	  cvs2svn to create branch 'xfce_4_0'.
+
+2003-09-22 20:52  huysmans
+
+	* xfdesktop/trunk/ChangeLog: Update ChangeLogs
+
+2003-09-22 20:33  huysmans
+
+	* xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/pt_PT.gmo, xfdesktop/trunk/po/pt_PT.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/po/zh_TW.po: Update version numbers and po files
+	  for release
+
+2003-09-21 22:19  xfce
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac: Update
+	  version number to 4.0.0 Improve focus change for modal dialogs in
+	  xfwm4
+
+2003-09-19 21:10  xfce
+
+	* xfdesktop/trunk/doc/C/images/root_menu.png,
+	  xfdesktop/trunk/doc/C/images/root_menu2.png,
+	  xfdesktop/trunk/doc/C/images/select_bg_color.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-background.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-list.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-workspace.png,
+	  xfdesktop/trunk/settings/backdrop_settings.c: Change default
+	  background color to #336699 and update screen captures for doc
+	  (default WM decorations are rounded)
+
+2003-09-15 20:55  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/pt_PT.gmo, xfdesktop/trunk/po/pt_PT.po: Big
+	  portugese translation update
+
+2003-09-14 22:07  xfce
+
+	* xfdesktop/trunk/ChangeLog: Update ChangeLog
+
+2003-09-14 12:20  huysmans
+
+	* xfdesktop/trunk/doc/C/xfdesktop.html,
+	  xfdesktop/trunk/doc/C/xfdesktop.xml: Documentation updates
+
+2003-09-13 23:13  xfce
+
+	* xfdesktop/trunk/ChangeLog: Update ChangeLog
+
+2003-09-13 13:01  huysmans
+
+	* xfdesktop/trunk/doc/C/xfdesktop.html,
+	  xfdesktop/trunk/doc/C/xfdesktop.xml: Update by francois
+
+2003-09-13 12:28  huysmans
+
+	* xfdesktop/trunk/menu.xml.hu: Fix hungarian translated config files
+
+2003-09-10 07:54  huysmans
+
+	* xfdesktop/trunk/ChangeLog: Update ChangeLogs
+
+2003-09-10 07:39  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/zh_TW.po: Update version numbers and po files
+	  for release
+
+2003-09-02 06:48  huysmans
+
+	* xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po: Update
+	  malaysian translations
+
+2003-09-02 05:50  huysmans
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/menu.xml.zh_TW: Add zh_TW menu translation
+
+2003-08-30 12:49  huysmans
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/po/zh_TW.Big5.gmo,
+	  xfdesktop/trunk/po/zh_TW.Big5.po, xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/po/zh_TW.po: Rename zh_TW.Big5 -> zh_TW
+
+2003-08-30 08:58  huysmans
+
+	* xfdesktop/trunk/po/zh_TW.Big5.gmo,
+	  xfdesktop/trunk/po/zh_TW.Big5.po: Add traditional chinese
+	  translations
+
+2003-08-30 07:16  huysmans
+
+	* xfdesktop/trunk/menu.xml.hu: Add hungarian config files
+
+2003-08-26 07:38  huysmans
+
+	* xfdesktop/trunk/ChangeLog: Update changelogs
+
+2003-08-26 07:12  huysmans
+
+	* xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po: Update
+	  version numbers and po files for release
+
+2003-08-17 11:36  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po: Add
+	  lithuanian translations
+
+2003-08-14 19:09  xfce
+
+	* xfdesktop/trunk/po/xfdesktop.pot: Resync with cvs
+
+2003-08-12 23:06  xfce
+
+	* xfdesktop/trunk/src/menu.c: Fix improper use of button param in
+	  gtk_menu_popup() that was causing trouble when using right mouse
+	  button to select entries in xfdesktop menu.
+
+2003-08-10 19:54  huysmans
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/menu.xml.zh_CN, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po: Update chinese translations
+
+2003-08-08 14:17  edscott
+
+	* xfdesktop/trunk/menu.xml.es: spanish tranlation
+
+2003-08-08 05:42  huysmans
+
+	* xfdesktop/trunk/menu.xml.ca: Oops, forgot this one
+
+2003-08-07 22:09  huysmans
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in: Update
+	  catalan translations
+
+2003-08-07 19:05  huysmans
+
+	* xfdesktop/trunk/menu.xml.nl, xfdesktop/trunk/src/menu.c: Make i18n
+	  work
+
+2003-08-05 14:53  huysmans
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/menu.xml.nl: Add dutch translation for the menu
+
+2003-08-04 21:46  xfce
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/menu.xml.de,
+	  xfdesktop/trunk/po/xfdesktop.pot: Add menu.xml.de
+
+2003-08-04 17:47  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/ko.po: Add korean
+	  translations
+
+2003-08-03 18:45  bmeurer
+
+	* xfdesktop/trunk/ChangeLog: Updated ChangeLogs
+
+2003-08-03 18:37  bmeurer
+
+	* xfdesktop/trunk/m4/X11.m4: grep -q does not work with Solaris
+	  grep, fixed it.
+
+2003-08-03 16:53  xfce
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/menu.xml.fr,
+	  xfdesktop/trunk/src/menu.c: Add localizable default desktop menu
+	  Add some testing to returned values
+
+2003-07-31 06:00  huysmans
+
+	* xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop_settings.c: Fix compiler
+	  warnings
+
+2003-07-30 19:11  huysmans
+
+	* xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop_settings.c: Fix some warnings
+
+2003-07-30 11:31  huysmans
+
+	* xfdesktop/trunk/ChangeLog: Update changlogs
+
+2003-07-30 08:05  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po: Update version numbers and po files
+	  for release
+
+2003-07-29 15:04  huysmans
+
+	* xfdesktop/trunk/doc/C/xfdesktop.html,
+	  xfdesktop/trunk/doc/C/xfdesktop.xml: Update documentation to
+	  latest versions
+
+2003-07-29 12:24  huysmans
+
+	* xfdesktop/trunk/doc/C/images/root_menu.png,
+	  xfdesktop/trunk/doc/C/images/root_menu2.png,
+	  xfdesktop/trunk/doc/C/images/select_bg_color.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-background.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-list.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-workspace.png: Update all
+	  images to new defaults
+
+2003-07-29 06:28  huysmans
+
+	* xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po: Update
+	  russian translations
+
+2003-07-25 21:30  huysmans
+
+	* xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/src/backdrop.c: Reread list file when it has been
+	  updated
+
+2003-07-22 20:07  xfce
+
+	* xfdesktop/trunk/src/menu.c: Change button bindings
+
+2003-07-19 09:30  huysmans
+
+	* xfdesktop/trunk/ChangeLog: Update ChangeLogs
+
+2003-07-19 08:59  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po: Update version numbers and po files
+	  for release
+
+2003-07-18 19:57  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c: Change Default color
+	  ro #8892A8
+
+2003-07-18 10:56  huysmans
+
+	* xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po: Update
+	  hungarian translations
+
+2003-07-18 07:46  huysmans
+
+	* xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po: Update
+	  turkish translations
+
+2003-07-17 23:13  xfce
+
+	* xfdesktop/trunk/backdrops/Makefile.am,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/backdrops/xfce-stripes.png,
+	  xfdesktop/trunk/settings/backdrop_settings.c: Add new bg
+	  xfce-stripes.png, change defaults
+
+2003-07-17 07:37  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/src/main.c: Make
+	  xfdesktop work on multiple screens
+
+2003-07-16 18:01  huysmans
+
+	* xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po: Update dutch
+	  translations
+
+2003-07-16 09:57  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/ca.po, xfdesktop/trunk/po/hu.gmo,
+	  xfdesktop/trunk/po/hu.po, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po: Add hungarian translations
+
+2003-07-16 08:22  huysmans
+
+	* xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po: Update
+	  catalan translations
+
+2003-07-13 08:43  huysmans
+
+	* xfdesktop/trunk/ChangeLog: Update ChangeLogs for release
+
+2003-07-11 07:33  huysmans
+
+	* xfdesktop/trunk/ChangeLog: Update ChangeLog's for release
+
+2003-07-11 06:55  huysmans
+
+	* xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po: Update
+	  Chinese translations
+
+2003-07-10 09:56  huysmans
+
+	* xfdesktop/trunk/ChangeLog: Update ChangeLog's for release
+
+2003-07-10 09:24  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po: Bump version numbers for release and
+	  update po files
+
+2003-07-08 08:35  huysmans
+
+	* xfdesktop/trunk/settings/backdrop-mgr.c: Update dialogs to use
+	  open stock icon on buttons instead of ...
+
+2003-07-07 21:18  huysmans
+
+	* xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po: Update
+	  catalan translations
+
+2003-07-07 20:45  xfce
+
+	* xfdesktop/trunk/ltmain.sh: Attempt with patched ltmain.sh for
+	  MacOS-X problem
+
+2003-07-07 19:44  huysmans
+
+	* xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po: Updated
+	  finnish translations
+
+2003-07-06 19:45  huysmans
+
+	* xfdesktop/trunk/ChangeLog: Updating ChangeLogs
+
+2003-07-05 12:31  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/ltconfig: Remove
+	  ltconfig script as it is generated
+
+2003-07-05 08:59  xfce
+
+	* xfdesktop/trunk/backdrops/Makefile.am,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/backdrops/xfce-stellar-tile.png: Add backdrop
+
+2003-07-04 23:37  xfce
+
+	* xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.am,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/ltcf-c.sh,
+	  xfdesktop/trunk/po/es_MX.gmo,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: libttol update and all
+
+2003-07-04 20:31  edscott
+
+	* xfdesktop/trunk/po/es_MX.po: *** empty log message ***
+
+2003-07-04 19:48  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.am,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Revert es_MX as actual potfiel is
+	  missing
+
+2003-07-04 18:02  bmeurer
+
+	* xfdesktop/trunk/src/main.c: Increase the SM priority a bit.
+
+2003-07-03 18:16  edscott
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/ltcf-c.sh,
+	  xfdesktop/trunk/ltconfig, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: spanish tranlation updates for
+	  4.0 release.
+
+2003-07-02 09:55  huysmans
+
+	* xfdesktop/trunk/settings/backdrop-mgr.c: Use framebox for list
+	  manager as well
+
+2003-07-01 08:27  huysmans
+
+	* xfdesktop/trunk/settings/backdrop_settings.c: Fix crash when
+	  choosing backdrop list
+
+2003-06-28 09:46  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Update to libtool-1.5 Use proper
+	  complete CURRENT:REVISION:AGE scheme for lib versionning
+
+2003-06-21 21:10  bmeurer
+
+	* xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in: Added menu_settings.* to
+	  EXTRA_DIST, so it doesn't break if POTFILES.in is wrong.
+
+2003-06-21 21:00  bmeurer
+
+	* xfdesktop/trunk/po/POTFILES.in, xfdesktop/trunk/po/xfdesktop.pot:
+	  Fixes.
+
+2003-06-21 18:06  bmeurer
+
+	* xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac: Fixes.
+
+2003-06-18 22:23  bmeurer
+
+	* xfdesktop/trunk/doc/C/images/select_bg_color.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-background.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-list.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-workspace.png: Updated
+	  images, thank to Francois.
+
+2003-06-18 20:36  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/workspaces_settings.c: Call
+	  gtk_window_set_position () as late at possible as it seems there
+	  is a race cond in gtk+
+
+2003-06-14 21:53  bmeurer
+
+	* xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/workspaces_settings.c,
+	  xfdesktop/trunk/src/main.c: Introduced xfce_textdomain()
+
+2003-06-14 16:03  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/workspaces_settings.c: Revert the
+	  GTK_POS_WINDOW_CENTER
+
+2003-06-13 23:57  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/workspaces_settings.c: Use
+	  GTK_WIN_POS_CENTER_ALWAYS instead of GTK_WIN_POS_CENTER when
+	  centering dialogs
+
+2003-06-13 22:33  bmeurer
+
+	* xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/m4/i18n.m4: Fixed bind_textdomain_codeset()
+	  problem on linux.
+
+2003-06-13 21:27  bmeurer
+
+	* xfdesktop/trunk/settings/backdrop_settings.c: Make use of
+	  "user-data".
+
+2003-06-12 20:20  bmeurer
+
+	* xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/workspaces_settings.c: Fixes
+	  bind_textdomain_codeset() problem.
+
+2003-06-10 20:42  bmeurer
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/install-sh,
+	  xfdesktop/trunk/ltcf-c.sh, xfdesktop/trunk/ltconfig,
+	  xfdesktop/trunk/ltmain.sh, xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/src/Makefile.in, xfdesktop/trunk/src/backdrop.c,
+	  xfdesktop/trunk/src/main.c, xfdesktop/trunk/src/menu.c,
+	  xfdesktop/trunk/src/settings.c, xfdesktop/trunk/src/workspaces.c:
+	  Make --enable-debug=full work.
+
+2003-06-09 23:39  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/workspaces_settings.c: Add new widget
+	  xfce_framebox to unify look across UI Migrate all plugins to this
+	  new widget
+
+2003-06-09 17:18  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/workspaces_settings.c: Redesign UI
+
+2003-06-08 14:29  huysmans
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/po/ru.gmo,
+	  xfdesktop/trunk/po/ru.po, xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in, xfdesktop/trunk/src/menu.c: Add
+	  russian translation and fix xfdesktop not reading a new local menu
+
+2003-06-06 21:37  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/ltcf-c.sh,
+	  xfdesktop/trunk/ltconfig, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Versionning scheme
+
+2003-06-05 21:49  huysmans
+
+	* xfdesktop/trunk/doc/C/xfdesktop.html,
+	  xfdesktop/trunk/doc/C/xfdesktop.xml: Doc fixes assorti
+
+2003-06-05 09:08  huysmans
+
+	* xfdesktop/trunk/doc/C/images/root_menu.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-background.png: Updated
+	  images
+
+2003-06-05 07:28  huysmans
+
+	* xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/settings/backdrop-mgr.c: Updated translations and
+	  multiple file drop on backdrop list manager
+
+2003-06-04 21:54  xfce
+
+	* xfdesktop/trunk/menu.xml: Simply menu.xml, remove editor, remove
+	  separator in setting submenu, put back backdrop
+
+2003-06-04 21:11  bmeurer
+
+	* xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/ltcf-c.sh, xfdesktop/trunk/ltconfig,
+	  xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/settings/backdrop_settings.c: Changed UI of the
+	  "Backdrop settings" dialog as noted in
+	  20030604100902.GB36220@vmax.unix-ag.uni-siegen.de. No strings are
+	  affected by this change, therefore no translations have to be
+	  updated.
+
+2003-06-04 09:40  huysmans
+
+	* xfdesktop/trunk/menu.xml: comment all settings except background
+
+2003-06-03 19:59  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c: Follow JAsper's
+	  advice and use the logo as default image Change default color to
+	  #404080 (kinda smooth purple)
+
+2003-06-03 12:27  huysmans
+
+	* xfdesktop/trunk/doc/C/images/root_menu.png,
+	  xfdesktop/trunk/doc/C/images/root_menu2.png,
+	  xfdesktop/trunk/doc/C/images/select_bg_color.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-background.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-list.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-workspace.png: Use properly
+	  compressed images
+
+2003-06-02 20:55  huysmans
+
+	* xfdesktop/trunk/doc/C/images/root_menu.png,
+	  xfdesktop/trunk/doc/C/images/root_menu2.png,
+	  xfdesktop/trunk/doc/C/images/select_bg_color.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-background.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-list.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-workspace.png: Update
+	  images by Francois
+
+2003-06-02 20:20  huysmans
+
+	* xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po: po file fixes
+
+2003-06-02 15:46  huysmans
+
+	* xfdesktop/trunk/menu.xml: change some defaults
+
+2003-06-01 20:53  huysmans
+
+	* xfdesktop/trunk/doc/C/xfdesktop.html,
+	  xfdesktop/trunk/doc/C/xfdesktop.xml: update note about UTF-8
+
+2003-06-01 20:47  huysmans
+
+	* xfdesktop/trunk/doc/C/xfdesktop.html,
+	  xfdesktop/trunk/doc/C/xfdesktop.xml: Add note about UTF-8
+
+2003-06-01 17:24  huysmans
+
+	* xfdesktop/trunk/po/Makefile.in.in, xfdesktop/trunk/po/ca.gmo,
+	  xfdesktop/trunk/po/ca.po, xfdesktop/trunk/po/de.gmo,
+	  xfdesktop/trunk/po/de.po, xfdesktop/trunk/po/es.gmo,
+	  xfdesktop/trunk/po/es.po, xfdesktop/trunk/po/fi.gmo,
+	  xfdesktop/trunk/po/fi.po, xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/ja.gmo,
+	  xfdesktop/trunk/po/ja.po, xfdesktop/trunk/po/ms.gmo,
+	  xfdesktop/trunk/po/ms.po, xfdesktop/trunk/po/nl.gmo,
+	  xfdesktop/trunk/po/nl.po, xfdesktop/trunk/po/pl.gmo,
+	  xfdesktop/trunk/po/pl.po, xfdesktop/trunk/po/ta.gmo,
+	  xfdesktop/trunk/po/ta.po, xfdesktop/trunk/po/tr.gmo,
+	  xfdesktop/trunk/po/tr.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po: po file
+	  tweaks
+
+2003-06-01 12:23  huysmans
+
+	* xfdesktop/trunk/doc/C/xfdesktop.html,
+	  xfdesktop/trunk/doc/C/xfdesktop.xml: Add menu editing text
+
+2003-05-31 12:19  huysmans
+
+	* xfdesktop/trunk/doc/C/images/Makefile.am,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/root_menu.png,
+	  xfdesktop/trunk/doc/C/images/root_menu2.png,
+	  xfdesktop/trunk/doc/C/images/select_bg_color.png,
+	  xfdesktop/trunk/doc/C/xfdesktop.html,
+	  xfdesktop/trunk/doc/C/xfdesktop.xml: Doc updates by Francois
+
+2003-05-31 11:10  huysmans
+
+	* xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po: Update
+	  turkish translations
+
+2003-05-30 21:41  huysmans
+
+	* xfdesktop/trunk/settings/backdrop-mgr.c: Fix list renaming issue
+
+2003-05-30 20:36  huysmans
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.h.in, xfdesktop/trunk/config.sub,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.am,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/install-sh,
+	  xfdesktop/trunk/mkinstalldirs, xfdesktop/trunk/po/es.gmo,
+	  xfdesktop/trunk/po/es.po, xfdesktop/trunk/po/ms.gmo,
+	  xfdesktop/trunk/po/ms.po, xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Add malayan translations
+
+2003-05-29 18:20  huysmans
+
+	* xfdesktop/trunk/xfdesktop.spec.in: updating spec files
+
+2003-05-29 12:53  huysmans
+
+	* xfdesktop/trunk/doc/xfce-nochunk.xsl: improve stylesheet import
+
+2003-05-29 12:35  huysmans
+
+	* xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po: Update
+	  catalan translations
+
+2003-05-29 09:59  huysmans
+
+	* xfdesktop/trunk/po/nl.po: Translations update
+
+2003-05-27 21:29  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.h.in, xfdesktop/trunk/config.sub,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/install-sh,
+	  xfdesktop/trunk/mkinstalldirs, xfdesktop/trunk/po/ja.gmo,
+	  xfdesktop/trunk/po/ja.po, xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Add Japanese translation by
+	  Zhao-Ji <zhao-ji at awz dot ne dot jp>
+
+2003-05-21 21:43  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po: Add Turkish
+	  translations
+
+2003-05-21 20:30  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c: Use no backdrop by
+	  default Unselect "color only" checkbox when the user choose an
+	  image, assuming that (s)he want to see the selected image
+
+2003-05-20 21:30  huysmans
+
+	* xfdesktop/trunk/settings/backdrop_settings.c: Force automtic mode
+	  for lists
+
+2003-05-16 18:25  huysmans
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/po/ta.gmo,
+	  xfdesktop/trunk/po/ta.po: Add tamil translations
+
+2003-05-15 22:30  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c: Forgot to change
+	  default mode to "scaled" for the new wallpaper
+
+2003-05-15 21:50  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c: Change default
+	  background color to #205080
+
+2003-05-15 11:03  huysmans
+
+	* xfdesktop/trunk/ChangeLog: Mass update of ChangeLogs
+
+2003-05-14 18:35  huysmans
+
+	* xfdesktop/trunk/src/menu.c: increase max length window list items
+
+2003-05-14 18:23  huysmans
+
+	* xfdesktop/trunk/src/menu.c: show sticky windows in window list
+
+2003-05-13 19:45  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.am,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/backdrops/xfce-turbulence.png,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/src/Makefile.in: Add new backdrop, change default
+	  color
+
+2003-05-13 18:09  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po: Add catalan
+	  translations
+
+2003-05-13 12:13  huysmans
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/doc/C,
+	  xfdesktop/trunk/doc/C/Makefile.am,
+	  xfdesktop/trunk/doc/C/Makefile.in, xfdesktop/trunk/doc/C/images,
+	  xfdesktop/trunk/doc/C/images/Makefile.am,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-background.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-list.png,
+	  xfdesktop/trunk/doc/C/images/xfdesktop-workspace.png,
+	  xfdesktop/trunk/doc/C/xfdesktop.html,
+	  xfdesktop/trunk/doc/C/xfdesktop.xml,
+	  xfdesktop/trunk/doc/Makefile.am, xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html, xfdesktop/trunk/doc/images,
+	  xfdesktop/trunk/doc/xfce-nochunk.xsl, xfdesktop/trunk/doc/xml:
+	  Move docs to new location
+
+2003-05-05 06:24  huysmans
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/de.gmo,
+	  xfdesktop/trunk/po/de.po, xfdesktop/trunk/po/fi.gmo,
+	  xfdesktop/trunk/po/fi.po, xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/nl.gmo,
+	  xfdesktop/trunk/po/nl.po, xfdesktop/trunk/po/pl.gmo,
+	  xfdesktop/trunk/po/pl.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.am, xfdesktop/trunk/src/Makefile.in,
+	  xfdesktop/trunk/xfdesktop.spec.in: Fixes for rpm and distcheck
+	  targets
+
+2003-05-03 11:34  huysmans
+
+	* xfdesktop/trunk/src/menu.c: Center workspace names in menu. Much
+	  better IMO.
+
+2003-05-03 10:27  huysmans
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/images/Makefile.in,
+	  xfdesktop/trunk/doc/xml/Makefile.in, xfdesktop/trunk/ltcf-c.sh,
+	  xfdesktop/trunk/ltconfig, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Add Chinese translations
+
+2003-05-02 17:12  bmeurer
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/images/Makefile.in,
+	  xfdesktop/trunk/doc/xml/Makefile.in,
+	  xfdesktop/trunk/m4/depends.m4,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Several changes. See
+	  http://www.home.unix-ag.org/bmeurer/xfce/index.html#20030502 for
+	  details.
+
+2003-05-01 10:42  bmeurer
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.am,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/images/Makefile.in,
+	  xfdesktop/trunk/doc/xml/Makefile.in, xfdesktop/trunk/ltcf-c.sh,
+	  xfdesktop/trunk/ltconfig, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.am, xfdesktop/trunk/src/Makefile.in:
+	  Added i18n functions to libxfce4util.
+
+2003-05-01 05:55  huysmans
+
+	* xfdesktop/trunk/po/pl.gmo: Add missing gmo files
+
+2003-04-29 20:23  huysmans
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/po/de.gmo,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/nl.gmo,
+	  xfdesktop/trunk/po/nl.po: Add Dutch translations
+
+2003-04-28 19:54  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.am,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/backdrops/flower.png, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/ltcf-c.sh, xfdesktop/trunk/ltconfig,
+	  xfdesktop/trunk/ltmain.sh: Add flower.png from xfce 3.x backdrops
+
+2003-04-27 21:15  xfce
+
+	* xfdesktop/trunk/src/menu.c: Wrap workspaces when reaching the
+	  first or last workspace when using the wheel mouse
+
+2003-04-27 20:17  bmeurer
+
+	* xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/po/pl.po: added
+	  polish translations.
+
+2003-04-26 21:16  bmeurer
+
+	* xfdesktop/trunk/m4/depends.m4: Updated BM_DEPEND_CHECK.
+
+2003-04-26 11:53  bmeurer
+
+	* xfdesktop/trunk/m4/debug.m4: Fixed a stupid typo.
+
+2003-04-25 17:26  bmeurer
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/common/backdrop.c, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/ltcf-c.sh,
+	  xfdesktop/trunk/ltconfig, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/po/fi.po: Added finish translations.
+
+2003-04-25 09:53  bmeurer
+
+	* xfdesktop/trunk/m4/depends.m4: Updated depends.m4 and added macro
+	  for use with panel plugins. Updated libxfce4util to install the
+	  common m4 files into $(datadir)/xfce4/m4.
+
+2003-04-25 09:22  bmeurer
+
+	* xfdesktop/trunk/po/de.po: Better german translation. Provided by
+	  Moritz Heiber.
+
+2003-04-21 20:11  xfce
+
+	* xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po: Update french
 	  translation
 
-2003-12-01 12:49  jasper
+2003-04-21 13:00  xfce
 
-	* Makefile.am, Makefile.in, menu.xml.vi, po/ca.gmo: Update
-	  vietnamese translations
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/ltcf-c.sh, xfdesktop/trunk/ltconfig,
+	  xfdesktop/trunk/ltmain.sh, xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/po/fr.po: Add french locale
 
-2003-12-01 12:03  jasper
+2003-04-09 20:41  bmeurer
 
-	* po/ca.po: Update catalan translations
+	* xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/m4/debug.m4, xfdesktop/trunk/src/main.c: Improved
+	  debug.m4: 1) --disable-debug no longer disables assert()'s 2)
+	  --enable-profiling now enables profiling code 3) --disable-asserts
+	  allows disabling of assert()'s
 
-2003-11-16 09:44  jasper
+2003-04-06 20:34  bmeurer
 
-	* po/: cs.gmo, cs.po: Update Czech translations
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/TODO, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.h.in, xfdesktop/trunk/config.sub,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/images/Makefile.in,
+	  xfdesktop/trunk/doc/xml/Makefile.in, xfdesktop/trunk/ltconfig,
+	  xfdesktop/trunk/m4/i18n.m4, xfdesktop/trunk/menu.xml,
+	  xfdesktop/trunk/po, xfdesktop/trunk/po/Makefile.in.in,
+	  xfdesktop/trunk/po/POTFILES.in, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/workspaces_settings.c,
+	  xfdesktop/trunk/src/Makefile.am, xfdesktop/trunk/src/Makefile.in:
+	  Added po/*, awaiting more translations.
 
-2003-11-12 08:02  jasper
+2003-04-05 00:10  xfce
 
-	* po/: ca.gmo, cs.gmo, de.gmo, es.gmo, es_MX.gmo, fi.gmo, fr.gmo,
-	  hi.gmo, hu.gmo, ja.gmo, ko.gmo, lt.gmo, ms.gmo, nl.gmo, pl.gmo,
-	  pt_PT.gmo, ru.gmo, sv.gmo, ta.gmo, tr.gmo, uk.gmo, vi.gmo,
-	  zh_CN.gmo, zh_TW.gmo: Forgot gmo files update
+	* xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/main.c,
+	  xfdesktop/trunk/src/menu.c, xfdesktop/trunk/src/settings.c,
+	  xfdesktop/trunk/src/workspaces.c: Revert last change in debug.h,
+	  use "??" instead of ((__const char *)0) Replace DBG() statements
+	  with TRACE() in libxfcegui4 and xfwm4 because it was generating
+	  far too much logs in simple debug mode (use --enable-debug=full to
+	  get full traces) Add params to TRACE() (just like in DBG()) Remove
+	  trailing CR in log messages
 
-2003-11-11 19:35  jasper
+2003-04-03 22:08  bmeurer
 
-	* po/: ca.po, cs.po, de.po, es.po, es_MX.po, fi.po, fr.po, hi.po,
-	  hu.po, ja.po, ko.po, lt.po, ms.po, nl.po, pl.po, pt_PT.po, ru.po,
-	  sv.po, ta.po, tr.po, uk.po, vi.po, xfdesktop.pot, zh_CN.po,
-	  zh_TW.po: Update po files, just in case something changed ...
+	* xfdesktop/trunk/m4/depends.m4: Updated BM_DEPEND_CHECK to make it
+	  possible to disable the test
 
-2003-11-09 20:09  jasper
+2003-04-03 21:36  bmeurer
 
-	* configure, configure.ac, po/cs.gmo, po/cs.po: Add Check
-	  translations
+	* xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/m4/depends.m4: Fixed
+	  BM_DEPEND_CHECK
 
-2003-11-08 11:47  jasper
+2003-04-02 21:18  xfce
 
-	* doc/fr/images/: xfdesktop-workspace.png,
-	  xfdesktop-workspaces.png: fix image name
+	* xfdesktop/trunk/ChangeLog: Update ChangeLog
 
-2003-11-07 22:09  jasper
+2003-04-02 20:34  bmeurer
 
-	* configure, configure.ac, doc/Makefile.am, doc/Makefile.in,
-	  doc/C/xfdesktop.html, doc/fr/Makefile.am, doc/fr/Makefile.in,
-	  doc/fr/xfdesktop.html, doc/fr/xfdesktop.xml,
-	  doc/fr/images/Makefile.am, doc/fr/images/Makefile.in,
-	  doc/fr/images/root_menu.png, doc/fr/images/root_menu2.png,
-	  doc/fr/images/select_bg_color.png,
-	  doc/fr/images/xfdesktop-background.png,
-	  doc/fr/images/xfdesktop-list.png,
-	  doc/fr/images/xfdesktop-workspaces.png: Add French documentation
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/backdrops/Makefile.am,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.am,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/doc/Makefile.am, xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/ltcf-c.sh, xfdesktop/trunk/ltconfig,
+	  xfdesktop/trunk/ltmain.sh, xfdesktop/trunk/m4/debug.m4,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop-mgr.h,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/debug.h,
+	  xfdesktop/trunk/settings/settings_common.c,
+	  xfdesktop/trunk/settings/settings_common.h,
+	  xfdesktop/trunk/settings/workspaces_settings.c,
+	  xfdesktop/trunk/settings/workspaces_settings.h,
+	  xfdesktop/trunk/src/Makefile.am, xfdesktop/trunk/src/Makefile.in,
+	  xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/debug.h,
+	  xfdesktop/trunk/src/main.c, xfdesktop/trunk/src/main.h,
+	  xfdesktop/trunk/src/menu.c, xfdesktop/trunk/src/menu.h,
+	  xfdesktop/trunk/src/settings.c, xfdesktop/trunk/src/settings.h,
+	  xfdesktop/trunk/src/workspaces.c,
+	  xfdesktop/trunk/src/workspaces.h: Debugging stuff now provided by
+	  libxfce4util. As a result of this change libxfcegui4 now depends
+	  on libxfce4util. Some other updates. added a hint to the
+	  libxfcegui4 README for Xinerama problems with XFree86.
 
-2003-11-03 19:06  jasper
+2003-04-02 16:02  bmeurer
 
-	* configure, configure.ac, po/uk.gmo, po/uk.po: Add Ukranian
-	  translations
+	* xfdesktop/trunk/m4/X11.m4: Updated i18n stuff (libxfce4util now
+	  provides a i18n.h). updated X11.m4 updated xfwm4 to compile well
+	  with -Werror -Wall updated xfce-mcs-plugins and added a hint to
+	  the README for XFree86 users
 
-2003-11-02 00:28  olivier
+2003-04-01 21:33  xfce
 
-	* configure, configure.ac, po/hi.gmo, po/hi.po: Add Hindi
-	  translation
+	* xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/workspaces_settings.c: Initialize early
+	  i18n in mcs plugins Add Etria theme
 
-2003-10-25 00:31  jasper
+2003-03-27 21:37  xfce
 
-	* configure, configure.ac, po/vi.gmo, po/vi.po:
-	  Add vietnamese translations by Lam Vinh Nien <nienvl@yahoo.ca>.
+	* xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/main.c: Prefer
+	  gdk_screen[width|height] instead of XDisplay[Width|Height]
 
-2003-10-24 13:29  jasper
+2003-03-27 20:32  xfce
 
-	* src/menu.c: Use mtime instead of ctime to check if menu changed.
+	* xfdesktop/trunk/ChangeLog: Update ChangeLog
 
-2003-10-17 18:32  jasper
+2003-03-24 20:43  xfce
 
-	* configure, configure.ac, po/sv.gmo, po/sv.po: Add/update swedish
-	  translations
+	* xfdesktop/trunk/common/Makefile.am,
+	  xfdesktop/trunk/common/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.am, xfdesktop/trunk/src/Makefile.in,
+	  xfdesktop/trunk/src/backdrop.c: Remove deprecated calls
 
-2003-10-13 20:30  jasper
+2003-03-23 21:17  xfce
 
-	* ChangeLog: Update ChangeLog's after syncing with SF. Everything
-	  should now be up-to-date.
+	* xfdesktop/trunk/ChangeLog: Update ChangeLog
 
-2003-09-27 13:20  huysmans
+2003-03-23 16:32  huysmans
 
-	* Makefile.am, Makefile.in, menu.xml.ta, po/ta.gmo, po/ta.po:
-	  Update tamil translations
+	* xfdesktop/trunk/menu.xml, xfdesktop/trunk/src/menu.c: Add support
+	  for included menu files. Updated default menu file
+
+2003-03-19 07:12  huysmans
+
+	* xfdesktop/trunk/autogen.sh: Only add extra autogen parameters when
+	  none are given
+
+2003-03-18 22:34  xfce
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/ltcf-c.sh, xfdesktop/trunk/ltconfig,
+	  xfdesktop/trunk/ltmain.sh: Update ChangeLog Update build scripts
+	  (ie rerun autogen.sh) Update xfwm4's microdeck theme Remove 1 pix
+	  border arround xffm menu bar
+
+2003-03-15 11:15  bmeurer
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.am,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/images/Makefile.in,
+	  xfdesktop/trunk/doc/xml/Makefile.in,
+	  xfdesktop/trunk/m4/depends.m4,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.am, xfdesktop/trunk/src/Makefile.in,
+	  xfdesktop/trunk/xfdesktop.spec.in: autotools update.
+
+2003-03-15 09:24  bmeurer
+
+	* xfdesktop/trunk/autogen.sh: Removed --enable-debug=full
+
+2003-03-14 23:51  bmeurer
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac: Update
+
+2003-03-14 16:46  bmeurer
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/TODO, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/autogen.sh, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common, xfdesktop/trunk/common/Makefile.am,
+	  xfdesktop/trunk/common/Makefile.in,
+	  xfdesktop/trunk/common/backdrop.c,
+	  xfdesktop/trunk/common/backdrop.h, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/images/Makefile.in,
+	  xfdesktop/trunk/doc/xml/Makefile.in, xfdesktop/trunk/m4/X11.m4,
+	  xfdesktop/trunk/m4/rpath.m4, xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/backdrop_settings.h,
+	  xfdesktop/trunk/src/Makefile.am, xfdesktop/trunk/src/Makefile.in,
+	  xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/backdrop.h,
+	  xfdesktop/trunk/src/main.c, xfdesktop/trunk/src/main.h: Autotools
+	  update 2nd stage. Started putting common code into common/.
+	  Reverted removal of g_file_get_contents().
+
+2003-03-14 10:20  bmeurer
+
+	* xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/src/backdrop.c: Implemented the
+	  "previndex-Feature" as mentioned by Jasper.
+
+2003-03-14 00:23  bmeurer
+
+	* xfdesktop/trunk/m4, xfdesktop/trunk/m4/debug.m4: Leftover from the
+	  last commit.
+
+2003-03-14 00:22  bmeurer
+
+	* xfdesktop/trunk/AUTHORS, xfdesktop/trunk/Makefile.am,
+	  xfdesktop/trunk/Makefile.in, xfdesktop/trunk/README,
+	  xfdesktop/trunk/TODO, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/autogen.sh, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/config.guess, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/images/Makefile.in,
+	  xfdesktop/trunk/doc/xml/Makefile.in, xfdesktop/trunk/ltcf-c.sh,
+	  xfdesktop/trunk/ltconfig, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/settings_common.c,
+	  xfdesktop/trunk/src/Makefile.in, xfdesktop/trunk/src/backdrop.c,
+	  xfdesktop/trunk/src/main.c, xfdesktop/trunk/src/main.h,
+	  xfdesktop/trunk/src/menu.c: Autotools update. Bugfixes in backdrop
+	  code (some of the memory leaks are fixed now, the others are to
+	  come soon, hopefully). Use xfce_*() instead of show_*(), also
+	  changed and added some message, so translations need to be
+	  updated.
+
+2003-03-13 20:39  xfce
+
+	* xfdesktop/trunk/ChangeLog: Update Changelogs
+
+2003-02-28 23:38  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/config.guess, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/images/Makefile.in,
+	  xfdesktop/trunk/doc/xml/Makefile.in, xfdesktop/trunk/ltcf-c.sh,
+	  xfdesktop/trunk/ltconfig, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: *** empty log message ***
+
+2003-02-28 19:09  bmeurer
+
+	* xfdesktop/trunk/menu.xml: Fixed type "xfhelp" -> "xfhelp4"
+
+2003-02-28 18:43  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/config.guess, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/images/Makefile.in,
+	  xfdesktop/trunk/doc/xml/Makefile.in, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Fix xfce-mcs-manager API/ABI
+	  versionning Update configure/libtool to use libtool 1.4.3
+
+2003-02-28 10:55  bmeurer
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/config.guess, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/images/Makefile.in,
+	  xfdesktop/trunk/doc/xml/Makefile.in, xfdesktop/trunk/ltcf-c.sh,
+	  xfdesktop/trunk/ltconfig, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Fixes xfce-mcs-manager issue.
+
+2003-02-27 20:08  xfce
+
+	* xfdesktop/trunk/src/main.c, xfdesktop/trunk/src/menu.c: Add
+	  desktop switching with mouse wheel
+
+2003-02-26 14:33  huysmans
+
+	* xfdesktop/trunk/src/main.c: POSIX signal handling
+
+2003-02-26 07:17  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/images/Makefile.in,
+	  xfdesktop/trunk/doc/xml/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/settings_common.c,
+	  xfdesktop/trunk/src/Makefile.in: Apply Benedikt Meurer
+	  <Benedikt.Meurer@unix-ag.uni-siegen.de> patch Replace all
+	  occurences of g_getenv("HOME") with g_get_home_dir() Regenerate
+	  all Makefiles.on and configure scripts
+
+2003-02-25 10:54  huysmans
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/html/xfdesktop-background.html,
+	  xfdesktop/trunk/doc/html/xfdesktop-copyright.html,
+	  xfdesktop/trunk/doc/html/xfdesktop-workspace.html,
+	  xfdesktop/trunk/doc/html/xfdesktop.html,
+	  xfdesktop/trunk/doc/images/Makefile.am,
+	  xfdesktop/trunk/doc/images/Makefile.in,
+	  xfdesktop/trunk/doc/images/xfdesktop-background.png,
+	  xfdesktop/trunk/doc/images/xfdesktop-list.png,
+	  xfdesktop/trunk/doc/images/xfdesktop-workspace.png,
+	  xfdesktop/trunk/doc/xml/Makefile.in,
+	  xfdesktop/trunk/doc/xml/xfdesktop.xml,
+	  xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/settings_common.h,
+	  xfdesktop/trunk/settings/workspaces_settings.c,
+	  xfdesktop/trunk/src/Makefile.in: Update screenshots for new dialog
+	  style
+
+2003-02-24 22:57  huysmans
+
+	* xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/workspaces_settings.c: Make dialogs use
+	  frames
+
+2003-02-24 21:14  jensl
+
+	* xfdesktop/trunk/doc/images/xfdesktop-background.png,
+	  xfdesktop/trunk/doc/images/xfdesktop-workspace.png: screenshots
+	  with default theme
+
+2003-02-24 20:51  jensl
+
+	* xfdesktop/trunk/doc/html/xfdesktop.html: added copyright
+	  notice/author
+
+2003-02-24 20:49  jensl
+
+	* xfdesktop/trunk/doc/images/Makefile.am: fixed installation path
+
+2003-02-24 20:35  jensl
+
+	* xfdesktop/trunk/doc/images/Makefile.am: fixed typo
+
+2003-02-24 20:15  jensl
+
+	* xfdesktop/trunk/doc/html/Makefile.am,
+	  xfdesktop/trunk/doc/html/xfdesktop-background.html,
+	  xfdesktop/trunk/doc/html/xfdesktop-copyright.html,
+	  xfdesktop/trunk/doc/html/xfdesktop-workspace.html,
+	  xfdesktop/trunk/doc/html/xfdesktop.html,
+	  xfdesktop/trunk/doc/xml/xfdesktop.xml: added screenshots
+
+2003-02-24 20:02  jensl
+
+	* xfdesktop/trunk/doc/images/Makefile.am: added screenshots
+
+2003-02-24 20:00  jensl
+
+	* xfdesktop/trunk/doc/images/xfdesktop-background.png,
+	  xfdesktop/trunk/doc/images/xfdesktop-workspace.png: screenshots
+
+2003-02-24 08:41  huysmans
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/Makefile.am,
+	  xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/config.guess, xfdesktop/trunk/config.sub,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/doc, xfdesktop/trunk/doc/Makefile.am,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/doc/html,
+	  xfdesktop/trunk/doc/html/Makefile.am,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/html/xfdesktop-copyright.html,
+	  xfdesktop/trunk/doc/html/xfdesktop-using.html,
+	  xfdesktop/trunk/doc/html/xfdesktop.html,
+	  xfdesktop/trunk/doc/images,
+	  xfdesktop/trunk/doc/images/Makefile.am,
+	  xfdesktop/trunk/doc/images/Makefile.in, xfdesktop/trunk/doc/xml,
+	  xfdesktop/trunk/doc/xml/Makefile.am,
+	  xfdesktop/trunk/doc/xml/Makefile.in,
+	  xfdesktop/trunk/doc/xml/xfce.xsl,
+	  xfdesktop/trunk/doc/xml/xfdesktop.xml, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/margins-icon.h,
+	  xfdesktop/trunk/settings/margins.png,
+	  xfdesktop/trunk/settings/margins_settings.c,
+	  xfdesktop/trunk/settings/margins_settings.h,
+	  xfdesktop/trunk/src/Makefile.am, xfdesktop/trunk/src/Makefile.in,
+	  xfdesktop/trunk/src/margins.c, xfdesktop/trunk/src/margins.h,
+	  xfdesktop/trunk/src/settings.c: Add mostly empty docs and remove
+	  margins settings.
+
+2003-02-23 20:00  huysmans
+
+	* xfdesktop/trunk/src/menu.c: Use workspace names in window list.
+	  Thanks to Joakim Andreasson.
+
+2003-02-15 11:31  huysmans
+
+	* xfdesktop/trunk/menu.xml: Add invisible quite option to the menu
+
+2003-02-15 11:06  huysmans
+
+	* xfdesktop/trunk/src/menu.c: Add quit builtin menu item, for people
+	  who don't want to run the panel.
+
+2003-02-13 04:10  botsie
+
+	* xfdesktop/trunk/src/debug.h: Made 'debug.h' more portable, mostly
+	  to fix compile errors on BSD
+
+2003-02-12 19:05  huysmans
+
+	* xfdesktop/trunk/src/debug.h: Fix debug.h, breaks for gcc < 2.6 and
+	  possibly for non-gcc compilers. Just don't enable debug if you
+	  have one of those.
+
+2003-02-11 16:43  jensl
+
+	* xfdesktop/trunk/src/backdrop.c: added error message dialogs using
+	  libxfcegui4's show_error()
+
+2003-02-10 20:47  xfce
+
+	* xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/main.c,
+	  xfdesktop/trunk/src/main.h, xfdesktop/trunk/src/margins.c,
+	  xfdesktop/trunk/src/menu.c, xfdesktop/trunk/src/settings.c,
+	  xfdesktop/trunk/src/workspaces.c: Remove g_error (that causes and
+	  abort() and thus a core dump) where not necessary.
+
+2003-02-07 13:13  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/main.c: Put
+	  back gtk_widget_set_style(fullscreen_window, NULL); to free
+	  previously allocated pixmap
+
+2003-02-07 12:43  botsie
+
+	* xfdesktop/trunk/src/debug.h: Added a 'TRACE' macro to debug.h
+
+2003-02-07 09:56  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/src/backdrop.c: Fix problem with textured theme :
+	  1) in backdrop window, by using our own theme not derived from the
+	  widget theme 2) in color oicker button by using GtkImage/GdkPixbuf
+
+2003-02-04 21:31  huysmans
+
+	* xfdesktop/trunk/src/menu.c: Update menu if file changed
+
+2003-02-04 16:35  botsie
+
+	* xfdesktop/trunk/menu.xml: Fixed error in menu.xml. Thanks to
+	  Jasper Huijsmans.
+
+2003-02-04 16:35  huysmans
+
+	* xfdesktop/trunk/src/menu.c: Reorder file for better readability
+
+2003-02-04 14:31  botsie
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/ltmain.sh: Making up for some dropped commits.
+
+2003-02-04 14:17  botsie
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/configure.ac: Fixed a
+	  couple of bugs related to adding dependency to libxml2 and adding
+	  a new data file: menu.xml
+
+2003-02-04 13:28  botsie
+
+	* xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Oops ... forgot to add dependency
+	  to libxml2. Required by configurable menu. ;-) Updated AUTHORS.
+
+2003-02-04 13:02  botsie
+
+	* xfdesktop/trunk/ChangeLog: Updated ChangeLog
+
+2003-02-04 12:53  botsie
+
+	* xfdesktop/trunk/src/menu.c: XML based configurable menu.
+
+2003-02-04 12:50  botsie
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/menu.xml: Added Data
+	  file for configurable menus.
+
+2003-02-04 11:06  xfce
+
+	* xfdesktop/trunk/src/backdrop.c: paranoid check.
+
+2003-02-01 13:59  xfce
+
+	* xfdesktop/trunk/backdrops/Makefile.am,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/backdrops/xfce4gradientcurve.png,
+	  xfdesktop/trunk/src/Makefile.in: Add a new transparent background
+
+2003-02-01 11:00  xfce
+
+	* xfdesktop/trunk/backdrops/xfce4logo.png: Redesign xfce4logo.png
+	  using alpha. This allow changing the background color along with
+	  xfce4logo.png :)
+
+2003-02-01 10:46  huysmans
+
+	* xfdesktop/trunk/src/menu.c: Small cleanups
+
+2003-02-01 07:59  botsie
+
+	* xfdesktop/trunk/src/Makefile.in, xfdesktop/trunk/src/debug.h,
+	  xfdesktop/trunk/src/menu.c: First stage of changes needed for
+	  configurable menu.
+
+2003-01-31 06:37  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c: *** empty log
+	  message ***
+
+2003-01-30 22:46  xfce
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac: Add
+	  dependency on libxfce4mcs .4
+
+2003-01-30 20:54  xfce
+
+	* xfdesktop/trunk/src/backdrop.c: Get rid of cmap
+
+2003-01-29 21:40  xfce
+
+	* xfdesktop/trunk/src/menu.c: Remove the "Exit" menu entry, it's
+	  confusing.
+
+2003-01-29 11:01  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/src/backdrop.c: A bunch of bug fixes + speed
+	  improvements by using composite only when necessary !
+
+2003-01-29 09:00  xfce
+
+	* xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/margins.c,
+	  xfdesktop/trunk/src/settings.c, xfdesktop/trunk/src/settings.h,
+	  xfdesktop/trunk/src/workspaces.c: Decrease initial startup time by
+	  2 or 3 times.
+
+2003-01-28 21:53  xfce
+
+	* xfdesktop/trunk/src/backdrop.c: Add support for alpha in backdrops
+	  for all modes (centered, tiled and scaled))
+
+2003-01-28 09:35  xfce
+
+	* xfdesktop/trunk/src/backdrop.c: Set root pixmap so that aterm
+	  "fast" transparency works.
+
+2003-01-27 20:42  xfce
+
+	* xfdesktop/trunk/src/backdrop.c: Simplify
+
+2003-01-27 19:45  huysmans
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/src/backdrop.c: Delete
+	  ESETROOT_PMAP_ID and detroy pixmap
+
+2003-01-26 21:24  xfce
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/src/main.c: Use libxfcegui4 .15 to avoid input on
+	  xfdesktop root window
+
+2003-01-25 15:56  xfce
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/backdrops, xfdesktop/trunk/backdrops/Makefile.am,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/backdrops/xfce-in-the-moon.png,
+	  xfdesktop/trunk/backdrops/xfce4logo.png,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/xfdesktop.spec.in: Modify default settings and add
+	  two background images so that defaults look like this :
+	  http://www.xfce.org/archive/xfce4default.png
+
+2003-01-25 14:35  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c: Fix missing
+	  separator in default backdrop path and change defaults to use
+	  another image by default, center and color.
+
+2003-01-23 16:54  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c: Fix a double free
+	  that I presumably introduced when fixing another bug.
+
+2003-01-23 11:52  jensl
+
+	* xfdesktop/trunk/src/menu.c: shorten window-titles in window-list
+
+2003-01-21 22:23  xfce
+
+	* xfdesktop/trunk/settings/backdrop_settings.c: Fix an obvious bug
+	  in settings/backdrop_settings.c
+
+2003-01-21 18:35  huysmans
+
+	* xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/backdrop_settings.h,
+	  xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/settings.c:
+	  Add color chooser and option to use only color
+
+2003-01-20 21:30  huysmans
+
+	* xfdesktop/trunk/src/workspaces.c,
+	  xfdesktop/trunk/src/workspaces.h: Add missing files
+
+2003-01-20 21:20  huysmans
+
+	* xfdesktop/trunk/ChangeLog,
+	  xfdesktop/trunk/settings/workspaces_settings.c: Fix workspace
+	  count bug
+
+2003-01-20 20:29  huysmans
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/workspaces_settings.c,
+	  xfdesktop/trunk/settings/workspaces_settings.h,
+	  xfdesktop/trunk/src/Makefile.am, xfdesktop/trunk/src/Makefile.in,
+	  xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/main.c,
+	  xfdesktop/trunk/src/settings.c: Don't use gtk 2.2 functions and
+	  let xfdesktop set workspaces hints
+
+2003-01-20 13:50  xfce
+
+	* xfdesktop/trunk/settings/workspaces_settings.c: Fix
+	  workspace_settings to properly set the number of desktops at
+	  startup...
+
+2003-01-19 18:23  huysmans
+
+	* xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/debug.h: Add debug.h. It's silly to
+	  depend on version insalled by xfce4-panel.
+
+2003-01-19 15:32  huysmans
+
+	* xfdesktop/trunk/settings/workspaces_settings.c: Pick up changes in
+	  the number of desktops made by other programs
+
+2003-01-19 13:49  huysmans
+
+	* xfdesktop/trunk/settings/backdrop_settings.c: Fix initial backdrop
+	  location. Thanks to James Tapin for reporting it.
+
+2003-01-18 13:54  xfce
+
+	* xfdesktop/trunk/ChangeLog: Update ChangeLog
+
+2003-01-18 13:51  xfce
+
+	* xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/main.c: *
+	  Remove double buffering in desktop window otherwise gtk allocates
+	  twice the size of the screen in video memory which can show to be
+	  unusable even on a GeForce II MX with 32Mb using 3D because the
+	  video RAM alloted to pixmaps cannot handle the total amount of
+	  pixmaps. * Reduce scale quality to BILINEAR instead of HYPER
+	  because it takes too long even on a PIV 1.7GHz scalling from
+	  1024x768 to 1280x768
+
+2003-01-16 20:51  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/autogen.sh, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Try to fix libtool error
+
+2003-01-16 20:03  huysmans
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in: Make sure icons are included
+	  in dist tarball
+
+2003-01-15 22:11  huysmans
+
+	* xfdesktop/trunk/src/backdrop.c: Small compile fix
+
+2003-01-15 22:08  huysmans
+
+	* xfdesktop/trunk/settings/backdrop-mgr.c: Fix a couple of bugs
+	  again and again
+
+2003-01-15 22:03  huysmans
+
+	* xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop_settings.c: Fix a couple of bugs
+
+2003-01-15 21:45  huysmans
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/src/Makefile.am,
+	  xfdesktop/trunk/src/Makefile.in, xfdesktop/trunk/src/backdrop.c,
+	  xfdesktop/trunk/src/margins.c: Fix a compile error (?)
+
+2003-01-15 19:30  huysmans
+
+	* xfdesktop/trunk/settings/backdrop_settings.c: Fix crash in
+	  backdrop dialogs
+
+2003-01-15 19:09  huysmans
+
+	* xfdesktop/trunk/AUTHORS, xfdesktop/trunk/COPYING,
+	  xfdesktop/trunk/ChangeLog, xfdesktop/trunk/INSTALL,
+	  xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/NEWS, xfdesktop/trunk/README,
+	  xfdesktop/trunk/TODO, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/autogen.sh, xfdesktop/trunk/compile,
+	  xfdesktop/trunk/config.guess, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/depcomp,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/missing, xfdesktop/trunk/mkinstalldirs,
+	  xfdesktop/trunk/settings, xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop-icon.h,
+	  xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop-mgr.h,
+	  xfdesktop/trunk/settings/backdrop.png,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/backdrop_settings.h,
+	  xfdesktop/trunk/settings/margins-icon.h,
+	  xfdesktop/trunk/settings/margins.png,
+	  xfdesktop/trunk/settings/margins_settings.c,
+	  xfdesktop/trunk/settings/margins_settings.h,
+	  xfdesktop/trunk/settings/menu-icon.h,
+	  xfdesktop/trunk/settings/menu.png,
+	  xfdesktop/trunk/settings/menu_settings.c,
+	  xfdesktop/trunk/settings/menu_settings.h,
+	  xfdesktop/trunk/settings/settings_common.c,
+	  xfdesktop/trunk/settings/settings_common.h,
+	  xfdesktop/trunk/settings/workspaces-icon.h,
+	  xfdesktop/trunk/settings/workspaces.png,
+	  xfdesktop/trunk/settings/workspaces_settings.c,
+	  xfdesktop/trunk/src, xfdesktop/trunk/src/Makefile.am,
+	  xfdesktop/trunk/src/Makefile.in, xfdesktop/trunk/src/backdrop.c,
+	  xfdesktop/trunk/src/backdrop.h, xfdesktop/trunk/src/main.c,
+	  xfdesktop/trunk/src/main.h, xfdesktop/trunk/src/margins.c,
+	  xfdesktop/trunk/src/margins.h, xfdesktop/trunk/src/menu.c,
+	  xfdesktop/trunk/src/menu.h, xfdesktop/trunk/src/settings.c,
+	  xfdesktop/trunk/src/settings.h, xfdesktop/trunk/xfdesktop.spec.in:
+	  Initial import of xfdesktop
+
+2003-01-15 19:09  
+
+	* xfdesktop/branches, xfdesktop/tags, xfdesktop/trunk: New
+	  repository initialized by cvs2svn.
 
