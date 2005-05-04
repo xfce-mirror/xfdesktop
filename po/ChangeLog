@@ -1,0 +1,1964 @@
+2005-04-06 07:33  perldude
+
+	* xfdesktop/trunk/.cvsignore, xfdesktop/trunk/backdrops/.cvsignore,
+	  xfdesktop/trunk/common/.cvsignore, xfdesktop/trunk/doc/.cvsignore,
+	  xfdesktop/trunk/doc/C/.cvsignore,
+	  xfdesktop/trunk/doc/C/images/.cvsignore,
+	  xfdesktop/trunk/doc/fr/.cvsignore,
+	  xfdesktop/trunk/doc/fr/images/.cvsignore,
+	  xfdesktop/trunk/doc/it/.cvsignore,
+	  xfdesktop/trunk/doc/it/images/.cvsignore,
+	  xfdesktop/trunk/menueditor/.cvsignore,
+	  xfdesktop/trunk/modules/.cvsignore,
+	  xfdesktop/trunk/modules/menu/.cvsignore,
+	  xfdesktop/trunk/panel-plugin/.cvsignore,
+	  xfdesktop/trunk/pixmaps/.cvsignore,
+	  xfdesktop/trunk/pixmaps/32x32/.cvsignore,
+	  xfdesktop/trunk/pixmaps/48x48/.cvsignore,
+	  xfdesktop/trunk/po/.cvsignore,
+	  xfdesktop/trunk/settings/.cvsignore,
+	  xfdesktop/trunk/src/.cvsignore: remove .cvsignore cruft
+
+2005-03-07 22:36  edscott
+
+	* xfdesktop/trunk/po/es.po, xfdesktop/trunk/po/es_MX.po: translation
+	  gaps
+
+2005-03-07 09:06  pollux
+
+	* xfdesktop/trunk/po/gu.po: update GU translations
+
+2005-03-06 17:27  pollux
+
+	* xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ja,
+	  xfdesktop/branches/xfce_4_2/po/ja.gmo, xfdesktop/trunk/po/ja.po:
+	  update JA translations
+
+2005-03-05 13:03  pollux
+
+	* xfdesktop/trunk/po/ja.po: update JA translations
+
+2005-02-21 08:40  pollux
+
+	* xfdesktop/trunk/po/ja.po: update JA translations
+
+2005-02-13 12:39  pollux
+
+	* xfdesktop/trunk/po/ko.po: update KO translations (with a big
+	  delay)
+
+2005-02-01 11:45  pollux
+
+	* xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.zh_CN,
+	  xfdesktop/trunk/po/zh_CN.po: update zh_CN translations
+
+2005-01-29 06:13  kelnos
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/menueditor, xfdesktop/trunk/menueditor/.cvsignore,
+	  xfdesktop/trunk/menueditor/Makefile.am,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop.in,
+	  xfdesktop/trunk/po/POTFILES.in, xfdesktop/trunk/po/ar.po,
+	  xfdesktop/trunk/po/az.po, xfdesktop/trunk/po/be.po,
+	  xfdesktop/trunk/po/bg.po, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/cs.po, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/en_GB.po, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.po, xfdesktop/trunk/po/et.po,
+	  xfdesktop/trunk/po/eu.po, xfdesktop/trunk/po/fa.po,
+	  xfdesktop/trunk/po/fi.po, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/gu.po, xfdesktop/trunk/po/he.po,
+	  xfdesktop/trunk/po/hi.po, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/it.po, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.po, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.po, xfdesktop/trunk/po/nb_NO.po,
+	  xfdesktop/trunk/po/nl.po, xfdesktop/trunk/po/pa.po,
+	  xfdesktop/trunk/po/pl.po, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/po/pt_PT.po, xfdesktop/trunk/po/ro.po,
+	  xfdesktop/trunk/po/ru.po, xfdesktop/trunk/po/sk.po,
+	  xfdesktop/trunk/po/sv.po, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.po, xfdesktop/trunk/po/uk.po,
+	  xfdesktop/trunk/po/vi.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.po,
+	  xfdesktop/trunk/settings, xfdesktop/trunk/settings/.cvsignore,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop.in: merge
+	  .desktop translations into the .po files via intltool, makefile
+	  cleanups
+
+2005-01-27 08:19  kelnos
+
+	* xfdesktop/trunk, xfdesktop/trunk/.cvsignore,
+	  xfdesktop/trunk/backdrops, xfdesktop/trunk/backdrops/.cvsignore,
+	  xfdesktop/trunk/common, xfdesktop/trunk/common/.cvsignore,
+	  xfdesktop/trunk/doc, xfdesktop/trunk/doc/.cvsignore,
+	  xfdesktop/trunk/doc/C, xfdesktop/trunk/doc/C/.cvsignore,
+	  xfdesktop/trunk/doc/C/images,
+	  xfdesktop/trunk/doc/C/images/.cvsignore, xfdesktop/trunk/doc/fr,
+	  xfdesktop/trunk/doc/fr/.cvsignore, xfdesktop/trunk/doc/fr/images,
+	  xfdesktop/trunk/doc/fr/images/.cvsignore, xfdesktop/trunk/doc/it,
+	  xfdesktop/trunk/doc/it/.cvsignore, xfdesktop/trunk/doc/it/images,
+	  xfdesktop/trunk/doc/it/images/.cvsignore,
+	  xfdesktop/trunk/menueditor, xfdesktop/trunk/menueditor/.cvsignore,
+	  xfdesktop/trunk/modules, xfdesktop/trunk/modules/.cvsignore,
+	  xfdesktop/trunk/modules/menu,
+	  xfdesktop/trunk/modules/menu/.cvsignore,
+	  xfdesktop/trunk/panel-plugin,
+	  xfdesktop/trunk/panel-plugin/.cvsignore, xfdesktop/trunk/pixmaps,
+	  xfdesktop/trunk/pixmaps/.cvsignore, xfdesktop/trunk/pixmaps/32x32,
+	  xfdesktop/trunk/pixmaps/32x32/.cvsignore,
+	  xfdesktop/trunk/pixmaps/48x48,
+	  xfdesktop/trunk/pixmaps/48x48/.cvsignore, xfdesktop/trunk/po,
+	  xfdesktop/trunk/po/.cvsignore, xfdesktop/trunk/settings,
+	  xfdesktop/trunk/settings/.cvsignore, xfdesktop/trunk/src,
+	  xfdesktop/trunk/src/.cvsignore: update all .cvsignore files to
+	  ignore all newly-removed files
+
+2005-01-27 07:52  kelnos
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/autogen.sh, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/compile,
+	  xfdesktop/trunk/config.guess, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/depcomp,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/m4, xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/missing, xfdesktop/trunk/mkinstalldirs,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.am,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/po/Makefile.in.in, xfdesktop/trunk/po/ar.gmo,
+	  xfdesktop/trunk/po/az.gmo, xfdesktop/trunk/po/be.gmo,
+	  xfdesktop/trunk/po/bg.gmo, xfdesktop/trunk/po/ca.gmo,
+	  xfdesktop/trunk/po/cs.gmo, xfdesktop/trunk/po/de.gmo,
+	  xfdesktop/trunk/po/en_GB.gmo, xfdesktop/trunk/po/es.gmo,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/et.gmo,
+	  xfdesktop/trunk/po/eu.gmo, xfdesktop/trunk/po/fa.gmo,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/po/gu.gmo, xfdesktop/trunk/po/he.gmo,
+	  xfdesktop/trunk/po/hi.gmo, xfdesktop/trunk/po/hu.gmo,
+	  xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/ja.gmo,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/lt.gmo,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/nb_NO.gmo,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/pa.gmo,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pt_BR.gmo,
+	  xfdesktop/trunk/po/pt_PT.gmo, xfdesktop/trunk/po/ro.gmo,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/sk.gmo,
+	  xfdesktop/trunk/po/sv.gmo, xfdesktop/trunk/po/ta.gmo,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/uk.gmo,
+	  xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: * bump version to 4.3.0 * remove
+	  all autogenerated files * migrate to the new XDT_ m4 macro names,
+	  and use xfce4-dev-tools * fix usage of @XFCE4_PANEL_PLUGINSDIR@
+	  and @XFCE_MCS_MANAGER_PLUGINSDIR@ * remove obsolete m4/ directory
+
+2005-01-22 12:22  pollux
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/menu.xml.fi,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.fi,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: update FI
+	  translations
+
+2005-01-08 15:04  pollux
+
+	* xfdesktop/trunk/menu.xml.ru,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.ru,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: update RU
+	  translations
+
+2005-01-06 19:24  pollux
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/ltmain.sh, xfdesktop/trunk/po/uk.gmo,
+	  xfdesktop/trunk/po/uk.po: update UK translations
+
+2005-01-05 16:01  pollux
+
+	* xfdesktop/trunk/po/he.gmo, xfdesktop/trunk/po/he.po: update HE
+	  translations
+
+2005-01-02 12:51  olivier
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/po/xfdesktop.pot: Update version and changelog
+
+2004-12-23 21:24  pollux
+
+	* xfdesktop/trunk/menu.xml.et,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/po/et.gmo, xfdesktop/trunk/po/et.po,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: update ET
+	  translations
+
+2004-12-22 21:10  benny
+
+	* xfdesktop/trunk/ChangeLog,
+	  xfdesktop/trunk/panel-plugin/Makefile.am,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/po/cs.gmo, xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in: Update ChangeLog. Fix make
+	  distcheck.
+
+2004-12-21 09:04  kelnos
+
+	* xfdesktop/trunk/po/cs.po: add/update czech translations
+
+2004-12-20 23:12  kelnos
+
+	* xfdesktop/trunk/po/xfdesktop.pot: something changed, i guess.
+
+2004-12-14 20:33  pollux
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/menu.xml.ro, xfdesktop/trunk/po/ro.gmo,
+	  xfdesktop/trunk/po/ro.po: add RO translations
+
+2004-12-14 08:15  pollux
+
+	* xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/po/zh_TW.po: update zh_TW translations
+
+2004-12-13 22:08  pollux
+
+	* xfdesktop/trunk/po/ko.po: update KO translations
+
+2004-12-11 17:51  olivier
+
+	* xfdesktop/trunk/po/xfdesktop.pot: Various changes and small fixes
+
+2004-12-05 21:38  pollux
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/nb_NO.gmo, xfdesktop/trunk/po/nb_NO.po: add
+	  nb_NO translations
+
+2004-12-05 21:20  pollux
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/en_GB.gmo, xfdesktop/trunk/po/en_GB.po: add
+	  en_GB translations
+
+2004-12-05 20:50  pollux
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/compile,
+	  xfdesktop/trunk/config.guess, xfdesktop/trunk/config.sub,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menu.xml.ko,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in, xfdesktop/trunk/po/ko.gmo,
+	  xfdesktop/trunk/po/ko.po, xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: update KO translations and add
+	  screenshots in xfprint doc
+
+2004-12-04 17:26  benny
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/po/tr.gmo: Update configure and ChangeLog.
+
+2004-12-01 12:03  pollux
+
+	* xfdesktop/trunk/po/pt_BR.gmo, xfdesktop/trunk/po/pt_BR.po: update
+	  pt_BR translations
+
+2004-11-28 18:01  pollux
+
+	* xfdesktop/trunk/po/tr.po: update TR translations
+
+2004-11-26 19:06  pollux
+
+	* xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/ko.po: update KO
+	  translations
+
+2004-11-21 22:02  olivier
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/xfdesktop.pot: Update version.
+
+2004-11-11 10:22  pollux
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/po/pt_BR.gmo, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: update
+	  pt_BR translations
+
+2004-10-30 19:03  olivier
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Global update for 4.1.91 (Xfce
+	  4.2 beta 2)
+
+2004-10-30 14:42  jasper
+
+	* xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po: Update a few
+	  nl translations
+
+2004-10-30 14:00  pollux
+
+	* xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po: update LT
+	  translations
+
+2004-10-28 11:55  pollux
+
+	* xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/po/ar.gmo, xfdesktop/trunk/po/az.gmo,
+	  xfdesktop/trunk/po/be.gmo, xfdesktop/trunk/po/bg.gmo,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/cs.gmo,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/es.gmo,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/et.gmo,
+	  xfdesktop/trunk/po/eu.gmo, xfdesktop/trunk/po/fi.gmo,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/gu.gmo,
+	  xfdesktop/trunk/po/he.gmo, xfdesktop/trunk/po/he.po,
+	  xfdesktop/trunk/po/hi.gmo, xfdesktop/trunk/po/hu.gmo,
+	  xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/ja.gmo,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/lt.gmo,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/nl.gmo,
+	  xfdesktop/trunk/po/pa.gmo, xfdesktop/trunk/po/pl.gmo,
+	  xfdesktop/trunk/po/pt_BR.gmo, xfdesktop/trunk/po/pt_PT.gmo,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/sk.gmo,
+	  xfdesktop/trunk/po/sv.gmo, xfdesktop/trunk/po/ta.gmo,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/uk.gmo,
+	  xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: update HE
+	  translations
+
+2004-10-23 17:49  benny
+
+	* xfdesktop/trunk/po/ar.po, xfdesktop/trunk/po/az.po,
+	  xfdesktop/trunk/po/be.po, xfdesktop/trunk/po/bg.po,
+	  xfdesktop/trunk/po/ca.po, xfdesktop/trunk/po/cs.po,
+	  xfdesktop/trunk/po/de.po, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.po, xfdesktop/trunk/po/et.po,
+	  xfdesktop/trunk/po/eu.po, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/gu.po,
+	  xfdesktop/trunk/po/he.po, xfdesktop/trunk/po/hi.po,
+	  xfdesktop/trunk/po/hu.po, xfdesktop/trunk/po/it.po,
+	  xfdesktop/trunk/po/ja.po, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.po, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.po, xfdesktop/trunk/po/pa.po,
+	  xfdesktop/trunk/po/pl.po, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/po/pt_PT.po, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/sk.po, xfdesktop/trunk/po/sv.po,
+	  xfdesktop/trunk/po/ta.po, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/uk.po, xfdesktop/trunk/po/vi.po,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.po:
+	  Update-po for Moe.
+
+2004-10-22 19:33  olivier
+
+	* xfdesktop/trunk/po/xfdesktop.pot: Theme fixes update locale [fr]
+	  for desktop files
+
+2004-10-20 22:06  pollux
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/ltmain.sh, xfdesktop/trunk/menu.xml.et,
+	  xfdesktop/trunk/po/et.gmo, xfdesktop/trunk/po/et.po: update ET
+	  translations
+
+2004-10-17 20:29  pollux
+
+	* xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es_MX.gmo,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/pt_PT.gmo: update FI translations
+
+2004-10-14 06:31  olivier
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/po/ar.gmo, xfdesktop/trunk/po/az.gmo,
+	  xfdesktop/trunk/po/be.gmo, xfdesktop/trunk/po/bg.gmo,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/cs.gmo,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/et.gmo,
+	  xfdesktop/trunk/po/eu.gmo, xfdesktop/trunk/po/fi.gmo,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/gu.gmo,
+	  xfdesktop/trunk/po/he.gmo, xfdesktop/trunk/po/hi.gmo,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/it.gmo,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ko.gmo,
+	  xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/ms.gmo,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/pa.gmo,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pt_BR.gmo,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/sk.gmo,
+	  xfdesktop/trunk/po/sv.gmo, xfdesktop/trunk/po/ta.gmo,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/uk.gmo,
+	  xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_TW.gmo: Update
+	  version number to see if #344 was fixed since beta1
+
+2004-10-11 16:30  benny
+
+	* xfdesktop/trunk/po/ar.po, xfdesktop/trunk/po/az.po,
+	  xfdesktop/trunk/po/be.po, xfdesktop/trunk/po/bg.po,
+	  xfdesktop/trunk/po/ca.po, xfdesktop/trunk/po/cs.po,
+	  xfdesktop/trunk/po/de.po, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.po, xfdesktop/trunk/po/et.po,
+	  xfdesktop/trunk/po/eu.po, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/gu.po,
+	  xfdesktop/trunk/po/he.po, xfdesktop/trunk/po/hi.po,
+	  xfdesktop/trunk/po/hu.po, xfdesktop/trunk/po/it.po,
+	  xfdesktop/trunk/po/ja.po, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.po, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.po, xfdesktop/trunk/po/pa.po,
+	  xfdesktop/trunk/po/pl.po, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/po/pt_PT.po, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/sk.po, xfdesktop/trunk/po/sv.po,
+	  xfdesktop/trunk/po/ta.po, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/uk.po, xfdesktop/trunk/po/vi.po,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.po:
+	  update-po for Moe.
+
+2004-10-10 11:52  pollux
+
+	* xfdesktop/trunk/po/pt_PT.gmo, xfdesktop/trunk/po/pt_PT.po: update
+	  pt_PT translations
+
+2004-10-09 14:20  pollux
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/fa.gmo, xfdesktop/trunk/po/fa.po,
+	  xfdesktop/trunk/po/fa_IR.gmo, xfdesktop/trunk/po/fa_IR.po: update
+	  FA translations
+
+2004-10-09 13:48  pollux
+
+	* xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es_MX.gmo: Punjabi
+	  translations update from jaswinderlinux@netscape.net
+
+2004-10-08 15:28  edscott
+
+	* xfdesktop/trunk/po/es.po, xfdesktop/trunk/po/es_MX.po: update
+	  translations. Note to Brian: there are way too many similar or
+	  nearly identical translations strings.
+
+2004-10-03 16:14  pollux
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/ltmain.sh, xfdesktop/trunk/po/pa.gmo,
+	  xfdesktop/trunk/po/pa.po: Punjabi translations (PA) from
+	  jaswinderlinux@netscape.net
+
+2004-10-02 13:28  olivier
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/po/xfdesktop.pot: Update all files for 4.2 beta 1
+
+2004-09-30 08:17  pollux
+
+	* xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/it.po: Updated
+	  Italian translations from Luca Marrocco <buildup@libero.it>
+
+2004-09-29 08:22  pollux
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/install-sh,
+	  xfdesktop/trunk/ltmain.sh, xfdesktop/trunk/menu.xml.zh_TW,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.zh_TW,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in, xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/po/zh_TW.po, xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: updated zh_TW translations from
+	  Ambrose Li <acli@ada.dhs.org>
+
+2004-09-29 07:59  pollux
+
+	* xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po: updated
+	  zh_CN translations from yongtao yang <yongtao.yang@gmail.com>
+
+2004-09-24 06:05  kelnos
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/depcomp,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in, xfdesktop/trunk/po/ar.gmo,
+	  xfdesktop/trunk/po/ar.po, xfdesktop/trunk/po/az.gmo,
+	  xfdesktop/trunk/po/az.po, xfdesktop/trunk/po/be.gmo,
+	  xfdesktop/trunk/po/be.po, xfdesktop/trunk/po/bg.gmo,
+	  xfdesktop/trunk/po/bg.po, xfdesktop/trunk/po/ca.gmo,
+	  xfdesktop/trunk/po/ca.po, xfdesktop/trunk/po/cs.gmo,
+	  xfdesktop/trunk/po/cs.po, xfdesktop/trunk/po/de.gmo,
+	  xfdesktop/trunk/po/de.po, xfdesktop/trunk/po/es.gmo,
+	  xfdesktop/trunk/po/es.po, xfdesktop/trunk/po/es_MX.gmo,
+	  xfdesktop/trunk/po/es_MX.po, xfdesktop/trunk/po/et.gmo,
+	  xfdesktop/trunk/po/et.po, xfdesktop/trunk/po/eu.gmo,
+	  xfdesktop/trunk/po/eu.po, xfdesktop/trunk/po/fa_IR.gmo,
+	  xfdesktop/trunk/po/fa_IR.po, xfdesktop/trunk/po/fi.gmo,
+	  xfdesktop/trunk/po/fi.po, xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/he.gmo,
+	  xfdesktop/trunk/po/he.po, xfdesktop/trunk/po/hi.gmo,
+	  xfdesktop/trunk/po/hi.po, xfdesktop/trunk/po/hu.gmo,
+	  xfdesktop/trunk/po/hu.po, xfdesktop/trunk/po/it.gmo,
+	  xfdesktop/trunk/po/it.po, xfdesktop/trunk/po/ja.gmo,
+	  xfdesktop/trunk/po/ja.po, xfdesktop/trunk/po/ko.gmo,
+	  xfdesktop/trunk/po/ko.po, xfdesktop/trunk/po/lt.gmo,
+	  xfdesktop/trunk/po/lt.po, xfdesktop/trunk/po/ms.gmo,
+	  xfdesktop/trunk/po/ms.po, xfdesktop/trunk/po/nl.gmo,
+	  xfdesktop/trunk/po/nl.po, xfdesktop/trunk/po/pl.gmo,
+	  xfdesktop/trunk/po/pl.po, xfdesktop/trunk/po/pt_BR.gmo,
+	  xfdesktop/trunk/po/pt_BR.po, xfdesktop/trunk/po/pt_PT.gmo,
+	  xfdesktop/trunk/po/pt_PT.po, xfdesktop/trunk/po/ru.gmo,
+	  xfdesktop/trunk/po/ru.po, xfdesktop/trunk/po/sk.gmo,
+	  xfdesktop/trunk/po/sk.po, xfdesktop/trunk/po/sv.gmo,
+	  xfdesktop/trunk/po/sv.po, xfdesktop/trunk/po/ta.gmo,
+	  xfdesktop/trunk/po/ta.po, xfdesktop/trunk/po/tr.gmo,
+	  xfdesktop/trunk/po/tr.po, xfdesktop/trunk/po/uk.gmo,
+	  xfdesktop/trunk/po/uk.po, xfdesktop/trunk/po/vi.gmo,
+	  xfdesktop/trunk/po/vi.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po,
+	  xfdesktop/trunk/po/zh_TW.gmo, xfdesktop/trunk/po/zh_TW.po,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/src/Makefile.in: migrate ~/.xfce4/backdrops.list
+	  bump version to 4.1.90
+
+2004-09-23 21:37  pollux
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/gu.gmo, xfdesktop/trunk/po/gu.po: add Gujarati
+	  translations (GU) from Ankit Patel <ankit@redhat.com>
+
+2004-09-23 09:09  jasper
+
+	* xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: Better
+	  translation
+
+2004-09-22 07:21  kelnos
+
+	* xfdesktop/trunk/po/ar.gmo, xfdesktop/trunk/po/ar.po,
+	  xfdesktop/trunk/po/az.gmo, xfdesktop/trunk/po/az.po,
+	  xfdesktop/trunk/po/be.gmo, xfdesktop/trunk/po/be.po,
+	  xfdesktop/trunk/po/bg.gmo, xfdesktop/trunk/po/bg.po,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/cs.gmo, xfdesktop/trunk/po/cs.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/et.gmo, xfdesktop/trunk/po/et.po,
+	  xfdesktop/trunk/po/eu.gmo, xfdesktop/trunk/po/eu.po,
+	  xfdesktop/trunk/po/fa_IR.gmo, xfdesktop/trunk/po/fa_IR.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/he.gmo, xfdesktop/trunk/po/he.po,
+	  xfdesktop/trunk/po/hi.gmo, xfdesktop/trunk/po/hi.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/it.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/pt_BR.gmo, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/po/pt_PT.gmo, xfdesktop/trunk/po/pt_PT.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/sk.gmo, xfdesktop/trunk/po/sk.po,
+	  xfdesktop/trunk/po/sv.gmo, xfdesktop/trunk/po/sv.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/uk.gmo, xfdesktop/trunk/po/uk.po,
+	  xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/vi.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/po/zh_TW.po: run "make update-po && make"
+
+2004-09-21 11:51  jasper
+
+	* xfdesktop/trunk/po/ar.gmo, xfdesktop/trunk/po/ar.po,
+	  xfdesktop/trunk/po/az.gmo, xfdesktop/trunk/po/az.po,
+	  xfdesktop/trunk/po/be.gmo, xfdesktop/trunk/po/be.po,
+	  xfdesktop/trunk/po/bg.gmo, xfdesktop/trunk/po/bg.po,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/cs.gmo, xfdesktop/trunk/po/cs.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/et.gmo, xfdesktop/trunk/po/et.po,
+	  xfdesktop/trunk/po/eu.gmo, xfdesktop/trunk/po/eu.po,
+	  xfdesktop/trunk/po/fa_IR.gmo, xfdesktop/trunk/po/fa_IR.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/he.gmo, xfdesktop/trunk/po/he.po,
+	  xfdesktop/trunk/po/hi.gmo, xfdesktop/trunk/po/hi.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/it.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/pt_BR.gmo, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/po/pt_PT.gmo, xfdesktop/trunk/po/pt_PT.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/sk.gmo, xfdesktop/trunk/po/sk.po,
+	  xfdesktop/trunk/po/sv.gmo, xfdesktop/trunk/po/sv.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/uk.gmo, xfdesktop/trunk/po/uk.po,
+	  xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/vi.po,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po,
+	  xfdesktop/trunk/po/zh_TW.gmo, xfdesktop/trunk/po/zh_TW.po: Run
+	  make update-po at Moe's request.
+
+2004-09-21 10:59  moe
+
+	* xfdesktop/trunk/po/de.po: Updating de.po. Need to run 'update-po'
+	  in all module directories
+
+2004-09-20 22:22  olivier
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/po/xfdesktop.pot:
+	  Update all ChangeLogs
+
+2004-09-19 00:25  moe
+
+	* xfdesktop/trunk/po/de.po: Updating translations. Only xfprint and
+	  xfwm4 missing. yay!
+
+2004-09-18 16:41  pollux
+
+	* xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/eu.gmo,
+	  xfdesktop/trunk/po/eu.po: update EU translations
+
+2004-09-18 10:02  moe
+
+	* xfdesktop/trunk/po/de.po: hm .. xfdesktop for now. Ain't touching
+	  xffm as usual ;-). xfwm4 yet to come. Eagerly awaiting Olivier's
+	  changes.
+
+2004-09-18 04:01  kelnos
+
+	* xfdesktop/trunk/common/desktop-menu-stub.c,
+	  xfdesktop/trunk/po/de.gmo: fix module path
+
+2004-09-18 00:02  moe
+
+	* xfdesktop/trunk/po/de.po: Updating these for alpha release. Not
+	  yet finished .. but I'm just too tired to continue. Needs
+	  extensive spell checking and approvement (Note to myself: Write
+	  mail to the list!).
+
+2004-09-16 22:10  pollux
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/depcomp,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/doc/it/Makefile.in,
+	  xfdesktop/trunk/doc/it/images/Makefile.in,
+	  xfdesktop/trunk/install-sh, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in, xfdesktop/trunk/po/be.gmo,
+	  xfdesktop/trunk/po/be.po, xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: add BE translations from Ales
+	  Nyakhaychyk <nab@mail.by>
+
+2004-09-09 19:02  pollux
+
+	* xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/vi.po: VI
+	  translations update
+
+2004-09-06 14:08  pollux
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/et.gmo, xfdesktop/trunk/po/et.po: ET
+	  translations from Peeter Vois <Peeter.Vois@proekspert.ee>
+
+2004-08-29 16:03  pollux
+
+	* xfdesktop/trunk/po/az.gmo, xfdesktop/trunk/po/az.po: AZ
+	  translations update from Metin Amiroff <metin@karegen.com>
+
+2004-08-29 02:50  kelnos
+
+	* xfdesktop/trunk/menu.xml,
+	  xfdesktop/trunk/modules/menu/desktop-menu-dentry.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-private.h,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/modules/menu/desktop-menuspec.c,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml,
+	  xfdesktop/trunk/po/ar.gmo, xfdesktop/trunk/po/ar.po,
+	  xfdesktop/trunk/po/az.gmo, xfdesktop/trunk/po/az.po,
+	  xfdesktop/trunk/po/bg.gmo, xfdesktop/trunk/po/bg.po,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/cs.gmo, xfdesktop/trunk/po/cs.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/eu.gmo, xfdesktop/trunk/po/eu.po,
+	  xfdesktop/trunk/po/fa_IR.gmo, xfdesktop/trunk/po/fa_IR.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/he.gmo, xfdesktop/trunk/po/he.po,
+	  xfdesktop/trunk/po/hi.gmo, xfdesktop/trunk/po/hi.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/it.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/pt_BR.gmo, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/po/pt_PT.gmo, xfdesktop/trunk/po/pt_PT.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/sk.gmo, xfdesktop/trunk/po/sk.po,
+	  xfdesktop/trunk/po/sv.gmo, xfdesktop/trunk/po/sv.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/uk.gmo, xfdesktop/trunk/po/uk.po,
+	  xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/vi.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/po/zh_TW.po: * make the menu use XfceIconTheme *
+	  make xfce-registered-categories use the builtin category icon
+	  lists from XfceIconTheme * update xfdesktop.pot and run 'make
+	  update-po'
+
+2004-08-28 19:21  pollux
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/sk.gmo, xfdesktop/trunk/po/sk.po: add Slovak
+	  translations from Juraj Brosz <Juraj.Brosz@pobox.sk>
+
+2004-08-26 19:54  pollux
+
+	* xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/nl.gmo: finnish translations update from Ilkka
+	  Ollakka <ilkka.j.ollakka@students.oamk.fi>
+
+2004-08-25 18:34  jasper
+
+	* xfdesktop/trunk/po/nl.po: Update dutch translations, only po files
+	  for now
+
+2004-08-24 10:04  pollux
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/menu.xml.ru, xfdesktop/trunk/po/ru.gmo,
+	  xfdesktop/trunk/po/ru.po: RU translations update from Anthony
+	  Ivanoff <a-i@bk.ru>
+
+2004-08-15 19:39  olivier
+
+	* xfdesktop/trunk/menu.xml, xfdesktop/trunk/menu.xml.fr,
+	  xfdesktop/trunk/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/trunk/modules/menu/desktop-menu-cache.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-dentry.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/modules/menu/desktop-menuspec.c,
+	  xfdesktop/trunk/po/ar.gmo, xfdesktop/trunk/po/ar.po,
+	  xfdesktop/trunk/po/az.gmo, xfdesktop/trunk/po/az.po,
+	  xfdesktop/trunk/po/bg.gmo, xfdesktop/trunk/po/bg.po,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/cs.gmo, xfdesktop/trunk/po/cs.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/eu.gmo, xfdesktop/trunk/po/eu.po,
+	  xfdesktop/trunk/po/fa_IR.gmo, xfdesktop/trunk/po/fa_IR.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/hi.gmo, xfdesktop/trunk/po/hi.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/it.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/pt_BR.gmo, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/po/pt_PT.gmo, xfdesktop/trunk/po/pt_PT.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/sv.gmo, xfdesktop/trunk/po/sv.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/uk.gmo, xfdesktop/trunk/po/uk.po,
+	  xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/vi.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/po/zh_TW.po,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/menu_settings.c,
+	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: Resync
+	  with repository, most notably: - libxfcegui4 fixes with gtk 2.2 -
+	  xfwm4 updates - Present panel plugins in alphabetical order - Fix
+	  add plugin dialog being placed over the panel when using SM -
+	  French po updates - Other various small bug fixes
+
+2004-08-14 19:45  pollux
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/he.gmo, xfdesktop/trunk/po/he.po: Hebrew
+	  translations from Yuval Tanny <tanai@int.gov.il>
+
+2004-07-20 01:22  kelnos
+
+	* xfdesktop/trunk/common/desktop-menu-stub.c,
+	  xfdesktop/trunk/common/desktop-menu-stub.h,
+	  xfdesktop/trunk/modules/menu/desktop-menu-cache.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-cache.h,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.h,
+	  xfdesktop/trunk/modules/menu/desktop-menu-private.h,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu.h,
+	  xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c,
+	  xfdesktop/trunk/po/ar.gmo, xfdesktop/trunk/po/ar.po,
+	  xfdesktop/trunk/po/az.gmo, xfdesktop/trunk/po/az.po,
+	  xfdesktop/trunk/po/bg.gmo, xfdesktop/trunk/po/bg.po,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/cs.gmo, xfdesktop/trunk/po/cs.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/eu.gmo, xfdesktop/trunk/po/eu.po,
+	  xfdesktop/trunk/po/fa_IR.gmo, xfdesktop/trunk/po/fa_IR.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/hi.gmo, xfdesktop/trunk/po/hi.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/it.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/pt_BR.gmo, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/po/pt_PT.gmo, xfdesktop/trunk/po/pt_PT.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/sv.gmo, xfdesktop/trunk/po/sv.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/uk.gmo, xfdesktop/trunk/po/uk.po,
+	  xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/vi.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/po/zh_TW.po: * allow multiple cache files for
+	  different menu files * reorg and simplify some menu code * add
+	  menu file option to panel plugin
+
+2004-06-21 19:58  kelnos
+
+	* xfdesktop/trunk/po/ar.gmo, xfdesktop/trunk/po/ar.po,
+	  xfdesktop/trunk/po/az.gmo, xfdesktop/trunk/po/az.po,
+	  xfdesktop/trunk/po/bg.gmo, xfdesktop/trunk/po/bg.po,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/cs.gmo, xfdesktop/trunk/po/cs.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/eu.gmo, xfdesktop/trunk/po/eu.po,
+	  xfdesktop/trunk/po/fa_IR.gmo, xfdesktop/trunk/po/fa_IR.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/hi.gmo, xfdesktop/trunk/po/hi.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/it.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/pt_BR.gmo, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/po/pt_PT.gmo, xfdesktop/trunk/po/pt_PT.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/sv.gmo, xfdesktop/trunk/po/sv.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/uk.gmo, xfdesktop/trunk/po/uk.po,
+	  xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/vi.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/po/zh_TW.po,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/src/xfce-backdrop.c,
+	  xfdesktop/trunk/src/xfce-desktop.c: ok, so saturation sucks.
+	  implement a _real_ brightness control.
+
+2004-06-19 07:46  kelnos
+
+	* xfdesktop/trunk/modules/menu/desktop-menu-dentry.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-private.h,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/po/POTFILES.in, xfdesktop/trunk/po/ar.gmo,
+	  xfdesktop/trunk/po/ar.po, xfdesktop/trunk/po/az.gmo,
+	  xfdesktop/trunk/po/az.po, xfdesktop/trunk/po/bg.gmo,
+	  xfdesktop/trunk/po/bg.po, xfdesktop/trunk/po/ca.gmo,
+	  xfdesktop/trunk/po/ca.po, xfdesktop/trunk/po/cs.gmo,
+	  xfdesktop/trunk/po/cs.po, xfdesktop/trunk/po/de.gmo,
+	  xfdesktop/trunk/po/de.po, xfdesktop/trunk/po/es.gmo,
+	  xfdesktop/trunk/po/es.po, xfdesktop/trunk/po/es_MX.gmo,
+	  xfdesktop/trunk/po/es_MX.po, xfdesktop/trunk/po/eu.gmo,
+	  xfdesktop/trunk/po/eu.po, xfdesktop/trunk/po/fa_IR.gmo,
+	  xfdesktop/trunk/po/fa_IR.po, xfdesktop/trunk/po/fi.gmo,
+	  xfdesktop/trunk/po/fi.po, xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/hi.gmo,
+	  xfdesktop/trunk/po/hi.po, xfdesktop/trunk/po/hu.gmo,
+	  xfdesktop/trunk/po/hu.po, xfdesktop/trunk/po/it.gmo,
+	  xfdesktop/trunk/po/it.po, xfdesktop/trunk/po/ja.gmo,
+	  xfdesktop/trunk/po/ja.po, xfdesktop/trunk/po/ko.gmo,
+	  xfdesktop/trunk/po/ko.po, xfdesktop/trunk/po/lt.gmo,
+	  xfdesktop/trunk/po/lt.po, xfdesktop/trunk/po/ms.gmo,
+	  xfdesktop/trunk/po/ms.po, xfdesktop/trunk/po/nl.gmo,
+	  xfdesktop/trunk/po/nl.po, xfdesktop/trunk/po/pl.gmo,
+	  xfdesktop/trunk/po/pl.po, xfdesktop/trunk/po/pt_BR.gmo,
+	  xfdesktop/trunk/po/pt_BR.po, xfdesktop/trunk/po/pt_PT.gmo,
+	  xfdesktop/trunk/po/pt_PT.po, xfdesktop/trunk/po/ru.gmo,
+	  xfdesktop/trunk/po/ru.po, xfdesktop/trunk/po/sv.gmo,
+	  xfdesktop/trunk/po/sv.po, xfdesktop/trunk/po/ta.gmo,
+	  xfdesktop/trunk/po/ta.po, xfdesktop/trunk/po/tr.gmo,
+	  xfdesktop/trunk/po/tr.po, xfdesktop/trunk/po/uk.gmo,
+	  xfdesktop/trunk/po/uk.po, xfdesktop/trunk/po/vi.gmo,
+	  xfdesktop/trunk/po/vi.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po,
+	  xfdesktop/trunk/po/zh_TW.gmo, xfdesktop/trunk/po/zh_TW.po: * fix
+	  translations and .po files AGAIN * add preliminary desktop menu
+	  DnD support
+
+2004-06-19 05:48  kelnos
+
+	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/po/POTFILES.in,
+	  xfdesktop/trunk/po/ar.po, xfdesktop/trunk/po/az.po,
+	  xfdesktop/trunk/po/bg.po, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/cs.po, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.po, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/eu.po, xfdesktop/trunk/po/fa_IR.po,
+	  xfdesktop/trunk/po/fi.po, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/hi.po, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/it.po, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.po, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.po, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.po, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/po/pt_PT.po, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/sv.po, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.po, xfdesktop/trunk/po/uk.po,
+	  xfdesktop/trunk/po/vi.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.po,
+	  xfdesktop/trunk/src/main.c, xfdesktop/trunk/src/menu.c,
+	  xfdesktop/trunk/xfdesktop.spec.in: re-hook the gettext stuff,
+	  update POTFILES.in, update xfdesktop.pot, ran make update-po,
+	  update ChangeLog, a few misc tweaks
+
+2004-06-13 21:18  pollux
+
+	* xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po: Updated lt
+	  translations from Mantas Zapolskas
+
+2004-06-13 09:40  pollux
+
+	* xfdesktop/trunk/po/de.gmo: .gmo files updated
+
+2004-06-01 20:06  kelnos
+
+	* xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c,
+	  xfdesktop/trunk/po/xfdesktop.pot: change plugin name to
+	  "xfce-menu" and caption to "Xfce Menu"
+
+2004-06-01 20:00  kelnos
+
+	* xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c,
+	  xfdesktop/trunk/pixmaps/Makefile.am,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/pixmaps/xfce4_xicon1.png,
+	  xfdesktop/trunk/pixmaps/xfce4_xicon2.png,
+	  xfdesktop/trunk/pixmaps/xfce4_xicon3.png,
+	  xfdesktop/trunk/pixmaps/xfce4_xicon4.png,
+	  xfdesktop/trunk/po/xfdesktop.pot: * add new icons from nikola! *
+	  change default to xfce4_xicon1.png (which is a renamed
+	  xfce4_icon.png from nikola) * also add tooltip to button
+
+2004-05-11 16:33  kelnos
+
+	* xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/menu_settings.c: add "edit desktop menu"
+	  button to the menu settings at francois' suggestion add some
+	  keyboard mnemonics to the settings panel in general
+
+2004-05-11 07:22  jasper
+
+	* xfdesktop/trunk/common/backdrop-common.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-dentry.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c,
+	  xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/settings/backdrop-icon.h,
+	  xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/settings_common.c,
+	  xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/menu.h: Fix
+	  warnings to allow compiling with --enable-debug=full.
+
+2004-05-10 20:02  kelnos
+
+	* xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/settings/menu_settings.c: fix typo in settings
+	  dialog (thanks francois)
+
+2004-05-04 17:13  kelnos
+
+	* xfdesktop/trunk/po/POTFILES.in, xfdesktop/trunk/po/xfdesktop.pot:
+	  update potfile
+
+2004-04-12 13:34  dannym
+
+	* xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po: Updated
+	  Catalan translations by Carles Mu&#65533;&#65533;oz Gorriz
+
+2004-04-10 15:48  pollux
+
+	* xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/xfdesktop.pot: -
+	  french translations update
+
+2004-04-08 19:17  kelnos
+
+	* xfdesktop/trunk/menueditor/new_dialog.c,
+	  xfdesktop/trunk/po/xfdesktop.pot: whoops, missed a string
+
+2004-04-08 19:09  kelnos
+
+	* xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/move.c,
+	  xfdesktop/trunk/menueditor/new_dialog.c,
+	  xfdesktop/trunk/po/xfdesktop.pot: bunch of string fixes, aesthetic
+	  mods mainly don't use "gtk-new", "gtk-open", etc., but
+	  GTK_STOCK_NEW, GTK_STOCK_OPEN
+
+2004-03-31 20:10  kelnos
+
+	* xfdesktop/trunk/AUTHORS, xfdesktop/trunk/Makefile.am,
+	  xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/menueditor/Makefile.am,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/modules/Makefile.am,
+	  xfdesktop/trunk/modules/Makefile.in,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/Makefile.in,
+	  xfdesktop/trunk/panel-plugin/Makefile.in,
+	  xfdesktop/trunk/pixmaps/Makefile.in,
+	  xfdesktop/trunk/po/POTFILES.in, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: fixing POTFILES.in and 'make
+	  dist' also changing benny's email address at his request
+
+2004-03-26 18:34  kelnos
+
+	* xfdesktop/trunk/po, xfdesktop/trunk/po/.cvsignore,
+	  xfdesktop/trunk/po/Makefile.in, xfdesktop/trunk/po/POTFILES: these
+	  are generated by configure
+
+2004-03-24 21:37  kelnos
+
+	* xfdesktop/trunk, xfdesktop/trunk/.cvsignore,
+	  xfdesktop/trunk/backdrops, xfdesktop/trunk/backdrops/.cvsignore,
+	  xfdesktop/trunk/common, xfdesktop/trunk/common/.cvsignore,
+	  xfdesktop/trunk/doc, xfdesktop/trunk/doc/.cvsignore,
+	  xfdesktop/trunk/doc/C, xfdesktop/trunk/doc/C/.cvsignore,
+	  xfdesktop/trunk/doc/C/images,
+	  xfdesktop/trunk/doc/C/images/.cvsignore, xfdesktop/trunk/doc/fr,
+	  xfdesktop/trunk/doc/fr/.cvsignore, xfdesktop/trunk/doc/fr/images,
+	  xfdesktop/trunk/doc/fr/images/.cvsignore,
+	  xfdesktop/trunk/menueditor, xfdesktop/trunk/menueditor/.cvsignore,
+	  xfdesktop/trunk/modules, xfdesktop/trunk/modules/.cvsignore,
+	  xfdesktop/trunk/modules/menu,
+	  xfdesktop/trunk/modules/menu/.cvsignore,
+	  xfdesktop/trunk/panel-plugin,
+	  xfdesktop/trunk/panel-plugin/.cvsignore, xfdesktop/trunk/pixmaps,
+	  xfdesktop/trunk/pixmaps/.cvsignore, xfdesktop/trunk/pixmaps/32x32,
+	  xfdesktop/trunk/pixmaps/32x32/.cvsignore,
+	  xfdesktop/trunk/pixmaps/48x48,
+	  xfdesktop/trunk/pixmaps/48x48/.cvsignore, xfdesktop/trunk/po,
+	  xfdesktop/trunk/po/.cvsignore, xfdesktop/trunk/settings,
+	  xfdesktop/trunk/settings/.cvsignore, xfdesktop/trunk/src,
+	  xfdesktop/trunk/src/.cvsignore: remove *.in from .cvsignore
+	  files... sorry for the spam again
+
+2004-03-24 21:36  kelnos
+
+	* xfdesktop/trunk/po/POTFILES: you too, get in there, grrr
+
+2004-03-24 21:35  kelnos
+
+	* xfdesktop/trunk/po/Makefile.in: hmm, how come you were missing,
+	  little makefile?
+
+2004-03-24 16:07  kelnos
+
+	* xfdesktop/trunk, xfdesktop/trunk/.cvsignore,
+	  xfdesktop/trunk/backdrops, xfdesktop/trunk/backdrops/.cvsignore,
+	  xfdesktop/trunk/common, xfdesktop/trunk/common/.cvsignore,
+	  xfdesktop/trunk/doc, xfdesktop/trunk/doc/.cvsignore,
+	  xfdesktop/trunk/doc/C, xfdesktop/trunk/doc/C/.cvsignore,
+	  xfdesktop/trunk/doc/C/images,
+	  xfdesktop/trunk/doc/C/images/.cvsignore, xfdesktop/trunk/doc/fr,
+	  xfdesktop/trunk/doc/fr/.cvsignore, xfdesktop/trunk/doc/fr/images,
+	  xfdesktop/trunk/doc/fr/images/.cvsignore,
+	  xfdesktop/trunk/menueditor, xfdesktop/trunk/menueditor/.cvsignore,
+	  xfdesktop/trunk/modules, xfdesktop/trunk/modules/.cvsignore,
+	  xfdesktop/trunk/modules/menu,
+	  xfdesktop/trunk/modules/menu/.cvsignore,
+	  xfdesktop/trunk/panel-plugin,
+	  xfdesktop/trunk/panel-plugin/.cvsignore, xfdesktop/trunk/pixmaps,
+	  xfdesktop/trunk/pixmaps/.cvsignore, xfdesktop/trunk/pixmaps/32x32,
+	  xfdesktop/trunk/pixmaps/32x32/.cvsignore,
+	  xfdesktop/trunk/pixmaps/48x48,
+	  xfdesktop/trunk/pixmaps/48x48/.cvsignore, xfdesktop/trunk/po,
+	  xfdesktop/trunk/po/.cvsignore, xfdesktop/trunk/settings,
+	  xfdesktop/trunk/settings/.cvsignore, xfdesktop/trunk/src,
+	  xfdesktop/trunk/src/.cvsignore: so tired of all the noise in 'cvs
+	  update' output (sorry for the commits spam!)
+
+2004-03-21 19:58  pollux
+
+	* xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/xfdesktop.pot: french translations updated
+
+2004-03-15 07:36  olivier
+
+	* xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/po/ar.gmo, xfdesktop/trunk/po/ar.po,
+	  xfdesktop/trunk/po/bg.gmo, xfdesktop/trunk/po/bg.po,
+	  xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/it.po: Add/update
+	  i18n for: Bulgarian from Miroslav Yordanov <miordanov@i-space.org>
+	  and Peter Slavov <peshka@i-space.org> Italian from Alex Dupre
+	  <ale@FreeBSD.org> Arabic from Saleh Hathal <hathalsal@hotmail.com>
+
+2004-03-07 00:35  moe
+
+	* xfdesktop/trunk/po/de.po: nag!
+
+2004-03-06 20:34  moe
+
+	* xfdesktop/trunk/po/de.po: What a mess
+
+2004-03-06 20:13  moe
+
+	* xfdesktop/trunk/po/de.po: Unbreak translations. Danny, please talk
+	  to me before you change it again ;)
+
+2004-03-06 19:53  dannym
+
+	* xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po: better title
+	  in settings dialog
+
+2004-03-06 19:39  dannym
+
+	* xfdesktop/trunk/po/de.gmo: and part 2
+
+2004-03-06 19:25  dannym
+
+	* xfdesktop/trunk/po/de.po: filling in missing translations
+
+2004-02-20 15:12  pollux
+
+	* xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/fr/Makefile.in,
+	  xfdesktop/trunk/doc/fr/images/Makefile.in,
+	  xfdesktop/trunk/ltmain.sh, xfdesktop/trunk/menueditor/ChangeLog,
+	  xfdesktop/trunk/menueditor/Makefile.am,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/menueditor/undo.c,
+	  xfdesktop/trunk/menueditor/undo.h, xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: - French translations updated -
+	  undo.c and undo.h removed
+
+2004-02-17 19:36  jasper
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/menu.xml.ms, xfdesktop/trunk/po/ms.gmo,
+	  xfdesktop/trunk/po/ms.po: Update Malay translations
+
+2004-02-17 01:11  kelnos
+
+	* xfdesktop/trunk/po/POTFILES.in: i always forget something...
+
+2004-02-17 00:51  kelnos
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/menueditor, xfdesktop/trunk/menueditor/BUGS,
+	  xfdesktop/trunk/menueditor/ChangeLog,
+	  xfdesktop/trunk/menueditor/Makefile.am,
+	  xfdesktop/trunk/menueditor/Makefile.in,
+	  xfdesktop/trunk/menueditor/TODO,
+	  xfdesktop/trunk/menueditor/about_dialog.c,
+	  xfdesktop/trunk/menueditor/about_dialog.h,
+	  xfdesktop/trunk/menueditor/add_dialog.c,
+	  xfdesktop/trunk/menueditor/add_dialog.h,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
+	  xfdesktop/trunk/menueditor/add_menu_dialog.h,
+	  xfdesktop/trunk/menueditor/dnd.c,
+	  xfdesktop/trunk/menueditor/dnd.h,
+	  xfdesktop/trunk/menueditor/edit_dialog.c,
+	  xfdesktop/trunk/menueditor/edit_dialog.h,
+	  xfdesktop/trunk/menueditor/menueditor.c,
+	  xfdesktop/trunk/menueditor/menueditor.h,
+	  xfdesktop/trunk/menueditor/move.c,
+	  xfdesktop/trunk/menueditor/move.h,
+	  xfdesktop/trunk/menueditor/new.c,
+	  xfdesktop/trunk/menueditor/new.h,
+	  xfdesktop/trunk/menueditor/undo.c,
+	  xfdesktop/trunk/menueditor/undo.h,
+	  xfdesktop/trunk/po/xfdesktop.pot: added xfce4-menueditor from
+	  jean-francois wauthy
+
+2004-02-11 20:44  jasper
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/menu.xml.eu,
+	  xfdesktop/trunk/po/eu.gmo, xfdesktop/trunk/po/eu.po: Add Basque
+	  (eu) translations
+
+2004-01-29 15:51  jasper
+
+	* xfdesktop/trunk/po/fa_IR.gmo, xfdesktop/trunk/po/fa_IR.po: Update
+	  Persian translations
+
+2004-01-21 13:44  jasper
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/fa_IR.gmo, xfdesktop/trunk/po/fa_IR.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/pt_BR.gmo, xfdesktop/trunk/po/pt_BR.po,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po:
+	  Translations added/updated for spanish, persian, japanese, korean,
+	  brasilian and chinese
+
+2003-12-29 10:56  jasper
+
+	* xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po: Update
+	  Norwegian and Turkish translations
+
+2003-12-27 19:46  jasper
+
+	* xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po: Update Polish
+	  translations
+
+2003-12-23 18:46  moe
+
+	* xfdesktop/trunk/po/de.po: This is a test .. changes may savely be
+	  ignored
+
+2003-12-15 20:56  jasper
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/az.gmo, xfdesktop/trunk/po/az.po: Add
+	  Azerbaijani translations
+
+2003-12-05 08:01  jasper
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/it.po: Add italian
+	  translation
+
+2003-12-01 11:53  jasper
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/menu.xml.vi, xfdesktop/trunk/po/ca.gmo: Update
+	  vietnamese translations
+
+2003-12-01 11:03  jasper
+
+	* xfdesktop/trunk/po/ca.po: Update catalan translations
+
+2003-11-28 07:21  jasper
+
+	* xfdesktop/trunk/common/Makefile.am,
+	  xfdesktop/trunk/common/Makefile.in,
+	  xfdesktop/trunk/common/backdrop.c,
+	  xfdesktop/trunk/common/backdrop.h,
+	  xfdesktop/trunk/common/background-common.c,
+	  xfdesktop/trunk/common/background-common.h,
+	  xfdesktop/trunk/po/de.gmo,
+	  xfdesktop/trunk/settings/backdrop-mgr.c,
+	  xfdesktop/trunk/settings/backdrop-mgr.h,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/src/Makefile.am, xfdesktop/trunk/src/Makefile.in,
+	  xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/backdrop.h,
+	  xfdesktop/trunk/src/main.c, xfdesktop/trunk/src/main.h,
+	  xfdesktop/trunk/src/menu.c, xfdesktop/trunk/src/menu.h,
+	  xfdesktop/trunk/src/settings.c, xfdesktop/trunk/src/settings.h:
+	  Put desktop window back in
+
+2003-11-23 13:50  moe
+
+	* xfdesktop/trunk/po/de.po: Updating german translation
+
+2003-11-16 21:49  olivier
+
+	* xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/cs.gmo,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/es.gmo,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/fi.gmo,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/hi.gmo,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/ja.gmo,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/lt.gmo,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/nl.gmo,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pt_PT.gmo,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/sv.gmo,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/tr.gmo,
+	  xfdesktop/trunk/po/uk.gmo, xfdesktop/trunk/po/vi.gmo,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_TW.gmo: Fix
+	  64bit/endianess problem
+
+2003-11-16 08:45  jasper
+
+	* xfdesktop/trunk/po/cs.po: Update Czech translations
+
+2003-11-14 18:28  jasper
+
+	* xfdesktop/trunk/po/ca.po, xfdesktop/trunk/po/cs.po,
+	  xfdesktop/trunk/po/de.po, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.po, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/hi.po,
+	  xfdesktop/trunk/po/hu.po, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.po, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.po, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.po, xfdesktop/trunk/po/pt_PT.po,
+	  xfdesktop/trunk/po/ru.po, xfdesktop/trunk/po/sv.po,
+	  xfdesktop/trunk/po/ta.po, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/uk.po, xfdesktop/trunk/po/vi.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.po,
+	  xfdesktop/trunk/po/zh_TW.po: Update po file at Moe's request
+
+2003-11-14 17:18  moe
+
+	* xfdesktop/trunk/po/de.po: Updating German translation
+
+2003-11-13 10:07  jasper
+
+	* xfdesktop/trunk/doc/C/xfdesktop.html,
+	  xfdesktop/trunk/doc/C/xfdesktop.xml,
+	  xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/main.c: Remove
+	  full screen widget and replace with input-only widget to catch
+	  mouse clicks
+
+2003-11-09 19:22  jasper
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/cs.gmo, xfdesktop/trunk/po/cs.po: Add Check
+	  translations
+
+2003-11-03 18:06  jasper
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/uk.gmo, xfdesktop/trunk/po/uk.po: Add Ukranian
+	  translations
+
+2003-11-02 08:22  olivier
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/hi.gmo, xfdesktop/trunk/po/hi.po: Add hi.po
+
+2003-10-24 22:20  jasper
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/vi.po: Add
+	  vietnamese translations by Lam Vinh Nien <nienvl@yahoo.ca>.
+
+2003-10-17 15:37  jasper
+
+	* xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/po/sv.gmo,
+	  xfdesktop/trunk/po/sv.po: Add/update swedish translations
+
+2003-09-27 12:38  huysmans
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po: Update tamil
+	  translation
+
+2003-09-22 20:33  huysmans
+
+	* xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/pt_PT.gmo, xfdesktop/trunk/po/pt_PT.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/po/zh_TW.po: Update version numbers and po files
+	  for release
+
+2003-09-15 20:55  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/pt_PT.gmo, xfdesktop/trunk/po/pt_PT.po: Big
+	  portugese translation update
+
+2003-09-10 07:39  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/zh_TW.po: Update version numbers and po files
+	  for release
+
+2003-09-02 06:48  huysmans
+
+	* xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po: Update
+	  malaysian translations
+
+2003-08-30 12:49  huysmans
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/po/zh_TW.Big5.gmo,
+	  xfdesktop/trunk/po/zh_TW.Big5.po, xfdesktop/trunk/po/zh_TW.gmo,
+	  xfdesktop/trunk/po/zh_TW.po: Rename zh_TW.Big5 -> zh_TW
+
+2003-08-30 08:58  huysmans
+
+	* xfdesktop/trunk/po/zh_TW.Big5.gmo,
+	  xfdesktop/trunk/po/zh_TW.Big5.po: Add traditional chinese
+	  translations
+
+2003-08-26 07:12  huysmans
+
+	* xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po: Update
+	  version numbers and po files for release
+
+2003-08-17 11:36  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/lt.gmo, xfdesktop/trunk/po/lt.po: Add
+	  lithuanian translations
+
+2003-08-14 19:09  xfce
+
+	* xfdesktop/trunk/po/xfdesktop.pot: Resync with cvs
+
+2003-08-10 19:54  huysmans
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/menu.xml.zh_CN, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po: Update chinese translations
+
+2003-08-04 21:46  xfce
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/menu.xml.de,
+	  xfdesktop/trunk/po/xfdesktop.pot: Add menu.xml.de
+
+2003-08-04 17:47  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/ko.gmo, xfdesktop/trunk/po/ko.po: Add korean
+	  translations
+
+2003-07-30 08:05  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po: Update version numbers and po files
+	  for release
+
+2003-07-29 06:28  huysmans
+
+	* xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po: Update
+	  russian translations
+
+2003-07-19 08:59  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po: Update version numbers and po files
+	  for release
+
+2003-07-18 10:56  huysmans
+
+	* xfdesktop/trunk/po/hu.gmo, xfdesktop/trunk/po/hu.po: Update
+	  hungarian translations
+
+2003-07-18 07:46  huysmans
+
+	* xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po: Update
+	  turkish translations
+
+2003-07-17 07:37  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/src/main.c: Make
+	  xfdesktop work on multiple screens
+
+2003-07-16 18:01  huysmans
+
+	* xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po: Update dutch
+	  translations
+
+2003-07-16 09:57  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/ca.po, xfdesktop/trunk/po/hu.gmo,
+	  xfdesktop/trunk/po/hu.po, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po: Add hungarian translations
+
+2003-07-16 08:22  huysmans
+
+	* xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po: Update
+	  catalan translations
+
+2003-07-11 06:55  huysmans
+
+	* xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po: Update
+	  Chinese translations
+
+2003-07-10 09:24  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po,
+	  xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.gmo, xfdesktop/trunk/po/es_MX.po,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po,
+	  xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/ja.gmo, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ms.gmo, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nl.gmo, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pl.gmo, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/ru.gmo, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/ta.gmo, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
+	  xfdesktop/trunk/po/zh_CN.po: Bump version numbers for release and
+	  update po files
+
+2003-07-07 21:18  huysmans
+
+	* xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po: Update
+	  catalan translations
+
+2003-07-07 19:44  huysmans
+
+	* xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/fi.po: Updated
+	  finnish translations
+
+2003-07-04 23:37  xfce
+
+	* xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.am,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/ltcf-c.sh,
+	  xfdesktop/trunk/po/es_MX.gmo,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: libttol update and all
+
+2003-07-04 20:31  edscott
+
+	* xfdesktop/trunk/po/es_MX.po: *** empty log message ***
+
+2003-07-03 18:16  edscott
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/ltcf-c.sh,
+	  xfdesktop/trunk/ltconfig, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: spanish tranlation updates for
+	  4.0 release.
+
+2003-06-21 21:00  bmeurer
+
+	* xfdesktop/trunk/po/POTFILES.in, xfdesktop/trunk/po/xfdesktop.pot:
+	  Fixes.
+
+2003-06-08 14:29  huysmans
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/po/ru.gmo,
+	  xfdesktop/trunk/po/ru.po, xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in, xfdesktop/trunk/src/menu.c: Add
+	  russian translation and fix xfdesktop not reading a new local menu
+
+2003-06-06 21:37  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.h.in,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/ltcf-c.sh,
+	  xfdesktop/trunk/ltconfig, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Versionning scheme
+
+2003-06-05 07:28  huysmans
+
+	* xfdesktop/trunk/po/de.gmo, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po,
+	  xfdesktop/trunk/settings/backdrop-mgr.c: Updated translations and
+	  multiple file drop on backdrop list manager
+
+2003-06-02 20:20  huysmans
+
+	* xfdesktop/trunk/po/es.gmo, xfdesktop/trunk/po/es.po: po file fixes
+
+2003-06-01 17:24  huysmans
+
+	* xfdesktop/trunk/po/Makefile.in.in, xfdesktop/trunk/po/ca.gmo,
+	  xfdesktop/trunk/po/ca.po, xfdesktop/trunk/po/de.gmo,
+	  xfdesktop/trunk/po/de.po, xfdesktop/trunk/po/es.gmo,
+	  xfdesktop/trunk/po/es.po, xfdesktop/trunk/po/fi.gmo,
+	  xfdesktop/trunk/po/fi.po, xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/ja.gmo,
+	  xfdesktop/trunk/po/ja.po, xfdesktop/trunk/po/ms.gmo,
+	  xfdesktop/trunk/po/ms.po, xfdesktop/trunk/po/nl.gmo,
+	  xfdesktop/trunk/po/nl.po, xfdesktop/trunk/po/pl.gmo,
+	  xfdesktop/trunk/po/pl.po, xfdesktop/trunk/po/ta.gmo,
+	  xfdesktop/trunk/po/ta.po, xfdesktop/trunk/po/tr.gmo,
+	  xfdesktop/trunk/po/tr.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po: po file
+	  tweaks
+
+2003-05-31 11:10  huysmans
+
+	* xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po: Update
+	  turkish translations
+
+2003-05-30 20:36  huysmans
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.h.in, xfdesktop/trunk/config.sub,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.am,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/install-sh,
+	  xfdesktop/trunk/mkinstalldirs, xfdesktop/trunk/po/es.gmo,
+	  xfdesktop/trunk/po/es.po, xfdesktop/trunk/po/ms.gmo,
+	  xfdesktop/trunk/po/ms.po, xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Add malayan translations
+
+2003-05-29 12:35  huysmans
+
+	* xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po: Update
+	  catalan translations
+
+2003-05-29 09:59  huysmans
+
+	* xfdesktop/trunk/po/nl.po: Translations update
+
+2003-05-27 21:29  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.h.in, xfdesktop/trunk/config.sub,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/doc/C/Makefile.in,
+	  xfdesktop/trunk/doc/C/images/Makefile.in,
+	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/install-sh,
+	  xfdesktop/trunk/mkinstalldirs, xfdesktop/trunk/po/ja.gmo,
+	  xfdesktop/trunk/po/ja.po, xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Add Japanese translation by
+	  Zhao-Ji <zhao-ji at awz dot ne dot jp>
+
+2003-05-21 21:43  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/tr.gmo, xfdesktop/trunk/po/tr.po: Add Turkish
+	  translations
+
+2003-05-16 18:25  huysmans
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/po/ta.gmo,
+	  xfdesktop/trunk/po/ta.po: Add tamil translations
+
+2003-05-13 18:09  huysmans
+
+	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po: Add catalan
+	  translations
+
+2003-05-05 06:24  huysmans
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/de.gmo,
+	  xfdesktop/trunk/po/de.po, xfdesktop/trunk/po/fi.gmo,
+	  xfdesktop/trunk/po/fi.po, xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/nl.gmo,
+	  xfdesktop/trunk/po/nl.po, xfdesktop/trunk/po/pl.gmo,
+	  xfdesktop/trunk/po/pl.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.am, xfdesktop/trunk/src/Makefile.in,
+	  xfdesktop/trunk/xfdesktop.spec.in: Fixes for rpm and distcheck
+	  targets
+
+2003-05-03 10:27  huysmans
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.sub, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/images/Makefile.in,
+	  xfdesktop/trunk/doc/xml/Makefile.in, xfdesktop/trunk/ltcf-c.sh,
+	  xfdesktop/trunk/ltconfig, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/src/Makefile.in: Add Chinese translations
+
+2003-05-01 05:55  huysmans
+
+	* xfdesktop/trunk/po/pl.gmo: Add missing gmo files
+
+2003-04-29 20:23  huysmans
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/po/de.gmo,
+	  xfdesktop/trunk/po/fi.gmo, xfdesktop/trunk/po/nl.gmo,
+	  xfdesktop/trunk/po/nl.po: Add Dutch translations
+
+2003-04-27 20:17  bmeurer
+
+	* xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/po/pl.po: added
+	  polish translations.
+
+2003-04-25 17:26  bmeurer
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/common/backdrop.c, xfdesktop/trunk/configure,
+	  xfdesktop/trunk/configure.ac, xfdesktop/trunk/ltcf-c.sh,
+	  xfdesktop/trunk/ltconfig, xfdesktop/trunk/ltmain.sh,
+	  xfdesktop/trunk/po/fi.po: Added finish translations.
+
+2003-04-25 09:22  bmeurer
+
+	* xfdesktop/trunk/po/de.po: Better german translation. Provided by
+	  Moritz Heiber.
+
+2003-04-21 20:11  xfce
+
+	* xfdesktop/trunk/po/fr.gmo, xfdesktop/trunk/po/fr.po: Update french
+	  translation
+
+2003-04-21 13:00  xfce
+
+	* xfdesktop/trunk/Makefile.in, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/ltcf-c.sh, xfdesktop/trunk/ltconfig,
+	  xfdesktop/trunk/ltmain.sh, xfdesktop/trunk/po/fr.gmo,
+	  xfdesktop/trunk/po/fr.po: Add french locale
+
+2003-04-06 20:34  bmeurer
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
+	  xfdesktop/trunk/TODO, xfdesktop/trunk/aclocal.m4,
+	  xfdesktop/trunk/backdrops/Makefile.in,
+	  xfdesktop/trunk/common/Makefile.in, xfdesktop/trunk/config.guess,
+	  xfdesktop/trunk/config.h.in, xfdesktop/trunk/config.sub,
+	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
+	  xfdesktop/trunk/depcomp, xfdesktop/trunk/doc/Makefile.in,
+	  xfdesktop/trunk/doc/html/Makefile.in,
+	  xfdesktop/trunk/doc/images/Makefile.in,
+	  xfdesktop/trunk/doc/xml/Makefile.in, xfdesktop/trunk/ltconfig,
+	  xfdesktop/trunk/m4/i18n.m4, xfdesktop/trunk/menu.xml,
+	  xfdesktop/trunk/po, xfdesktop/trunk/po/Makefile.in.in,
+	  xfdesktop/trunk/po/POTFILES.in, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/settings/Makefile.am,
+	  xfdesktop/trunk/settings/Makefile.in,
+	  xfdesktop/trunk/settings/backdrop_settings.c,
+	  xfdesktop/trunk/settings/workspaces_settings.c,
+	  xfdesktop/trunk/src/Makefile.am, xfdesktop/trunk/src/Makefile.in:
+	  Added po/*, awaiting more translations.
+
