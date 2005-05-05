@@ -48,7 +48,7 @@ about_cb (GtkWidget * widget, gpointer data)
 
   icon = xfce_icon_theme_load (me->icon_theme, "xfce4-menueditor", 48);
 
-  dialog = xfce_about_dialog_new_with_values (GTK_WINDOW (me->window), info, icon);
+  dialog = xfce_about_dialog_new (GTK_WINDOW (me->window), info, icon);
 
   gtk_window_set_default_size (GTK_WINDOW (dialog), 500, 400);
   xfce_about_info_free (info);
