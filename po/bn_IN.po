@@ -1,0 +1,635 @@
+# translation of xfdesktop.po to Bangla INDIA (bn_IN)
+# This file is distributed under the same license as the xfdesktop package.
+# Copyright (C) 2005 Free Software Foundation.
+# Runa Bhattacharjee <runab@redhat.com>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-01-28 22:00-0800\n"
+"PO-Revision-Date: 2005-04-06 19:28+0530\n"
+"Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
+"Language-Team: Bangla INDIA <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+
+#: menueditor/about_dialog.c:39
+msgid "A menu editor for Xfce4"
+msgstr "Xfce4-র মধ্যে ব্যবহারের জন্য মেনু এডিটার"
+
+#. Credits
+#: menueditor/about_dialog.c:43
+msgid "Core developer"
+msgstr "কোর ডিভেলপার"
+
+#: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:46
+msgid "Contributor"
+msgstr "অংশগ্রহণকারী"
+
+#: menueditor/about_dialog.c:47
+msgid "Icon designer"
+msgstr "আইকন নির্মাতা"
+
+#: menueditor/add_dialog.c:159 menueditor/add_dialog.c:169
+msgid "Add menu entry"
+msgstr "মেনু এন্ট্রি যোগ করুন"
+
+#. Type
+#: menueditor/add_dialog.c:173 menueditor/add_menu_dialog.c:110
+msgid "Type:"
+msgstr "ধরন:"
+
+#: menueditor/add_dialog.c:176
+msgid "Launcher"
+msgstr "লঞ্চার"
+
+#: menueditor/add_dialog.c:180
+msgid "Submenu"
+msgstr "সাব-মেনু"
+
+#: menueditor/add_dialog.c:184
+msgid "Separator"
+msgstr "বিভাজক"
+
+#: menueditor/add_dialog.c:188
+msgid "Title"
+msgstr "শিরোনাম"
+
+#: menueditor/add_dialog.c:192
+msgid "Quit"
+msgstr "প্রস্থান"
+
+#. Name
+#: menueditor/add_dialog.c:206 menueditor/edit_dialog.c:158
+#: menueditor/edit_dialog.c:218
+msgid "Name:"
+msgstr "নাম:"
+
+#: menueditor/add_dialog.c:214 menueditor/edit_dialog.c:163
+msgid "Command:"
+msgstr "কমান্ড:"
+
+#: menueditor/add_dialog.c:226 menueditor/edit_dialog.c:150
+#: menueditor/edit_dialog.c:210
+msgid "Icon:"
+msgstr "আইকন:"
+
+#. Start Notify check button
+#. Startup notification
+#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:171
+msgid "Use startup _notification"
+msgstr "প্রারম্ভিক বিজ্ঞপ্তি ব্যবহার করা হবে (_n)"
+
+#. Run in terminal check button
+#. Run in terminal
+#: menueditor/add_dialog.c:241 menueditor/edit_dialog.c:174
+msgid "Run in _terminal"
+msgstr "টার্মিনালে আরম্ভ করুন (_t)"
+
+#: menueditor/add_dialog.c:272
+msgid "The command doesn't exist !"
+msgstr "কমান্ডটি বর্তমানে উপস্থিত নেই !"
+
+#: menueditor/add_dialog.c:278
+msgid "All fields must be filled to add an item."
+msgstr "নতুন বস্তু যোগ করার জন্য সমস্ত ক্ষেত্রে মান পূর্ণ করা আবশ্যক।"
+
+#: menueditor/add_dialog.c:287
+msgid "The 'Name' field is required."
+msgstr "'নাম' ক্ষেত্রটি আবশ্যক।"
+
+#: menueditor/add_dialog.c:331
+msgid "--- separator ---"
+msgstr "--- বিভাজন রেখা ---"
+
+#: menueditor/add_dialog.c:357
+msgid "quit"
+msgstr "প্রস্থান"
+
+#: menueditor/add_menu_dialog.c:97 menueditor/add_menu_dialog.c:103
+#: menueditor/menueditor.c:831
+msgid "Add an external menu"
+msgstr "একটি বহিস্থিত মেনু যোগ করুন"
+
+#: menueditor/add_menu_dialog.c:115
+msgid "File"
+msgstr "ফাইল"
+
+#: menueditor/add_menu_dialog.c:119
+msgid "System"
+msgstr "সিস্টেম"
+
+#: menueditor/add_menu_dialog.c:133
+msgid "Source:"
+msgstr "উত্‍‌স:"
+
+#. Style
+#: menueditor/add_menu_dialog.c:145
+msgid "Style:"
+msgstr "বিন্যাশ:"
+
+#: menueditor/add_menu_dialog.c:148
+msgid "Simple"
+msgstr "সরল"
+
+#: menueditor/add_menu_dialog.c:150
+msgid "Multilevel"
+msgstr "মাল্টি-লেভেল"
+
+#. Unique
+#: menueditor/add_menu_dialog.c:162
+msgid "_Unique entries only"
+msgstr "শুধুমাত্র একক মান গ্রহণযোগ্য (_U)"
+
+#: menueditor/add_menu_dialog.c:198
+msgid "The 'Source' field is required."
+msgstr "'উত্‍‌স' ক্ষেত্রটি পূর্ণ করা আবশ্যক।"
+
+#: menueditor/add_menu_dialog.c:202 menueditor/add_menu_dialog.c:212
+msgid "--- include ---"
+msgstr "--- অন্তর্ভুক্ত করা হবে ---"
+
+#: menueditor/add_menu_dialog.c:213
+msgid "system"
+msgstr "সিস্টেম"
+
+#. Create dialog for editing
+#: menueditor/edit_dialog.c:127 menueditor/edit_dialog.c:134
+msgid "Edit menu entry"
+msgstr "মেনুর এন্ট্রি সম্পাদন করুন"
+
+#: menueditor/edit_dialog.c:139
+msgid "Separators cannot be edited"
+msgstr "বিভাজক সম্পাদনযোগ্য নয়"
+
+#: menueditor/menueditor.c:81
+#, c-format
+msgid "File %s doesn't exist !"
+msgstr "%s ফাইলটি বর্তমানে উপস্থিত নেই !"
+
+#: menueditor/menueditor.c:121 menueditor/menueditor.c:532
+msgid "Do you want to save before closing the menu ?"
+msgstr "মেনু বন্ধ করার পূর্বে কি আপনি সংরক্ষণ করতে ইচ্ছুক ?"
+
+#: menueditor/menueditor.c:123
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr "আপনি মেনুর মধ্যে কিছু পরিবর্তন করেছেন, প্রস্থান করার পূর্বে কি আপনি এই পরিবর্তনগুলি সংরক্ষণ করতে ইচ্ছুক ?"
+
+#: menueditor/menueditor.c:125
+msgid "Forget modifications"
+msgstr "পরিবর্তন বাতিল করা হবে"
+
+#: menueditor/menueditor.c:310
+msgid "Are you sure you want to close the current menu?"
+msgstr "আপনি কি নিশ্চিতরূপে বর্তমান মেনুটি বন্ধ করতে ইচ্ছুক?"
+
+#: menueditor/menueditor.c:325
+msgid "Do you want to save before closing the file?"
+msgstr "ফাইল বন্ধ করার পূর্বে কি আপনি সংরক্ষণ করতে ইচ্ছুক?"
+
+#: menueditor/menueditor.c:334
+msgid "Select command"
+msgstr "কমান্ড নির্বাচন করুন"
+
+#: menueditor/menueditor.c:366 menueditor/menueditor.c:423
+#: menueditor/menueditor.c:530
+msgid "Question"
+msgstr "প্রশ্ন"
+
+#: menueditor/menueditor.c:368
+msgid "Do you want to save before opening an other menu ?"
+msgstr "একটি পৃথক মেনু খোলার পূর্বে কি আপনি সংরক্ষণ করতে ইচ্ছুক ?"
+
+#: menueditor/menueditor.c:370 menueditor/menueditor.c:427
+#: menueditor/menueditor.c:534
+msgid "Ignore modifications"
+msgstr "পরিবর্তন অগ্রাহ্য করা হবে"
+
+#: menueditor/menueditor.c:381
+msgid "Open menu file"
+msgstr "মেনু ফাইল খুলুন"
+
+#: menueditor/menueditor.c:425
+msgid "Do you want to save before opening the default menu ?"
+msgstr "ডিফল্ট মেনু খোলার পূর্বে আপনি কি সংরক্ষণ করতে ইচ্ছুক ?"
+
+#: menueditor/menueditor.c:483
+msgid "Save as..."
+msgstr "নতুন রূপে সংরক্ষণ..."
+
+#: menueditor/menueditor.c:638
+msgid "Do you want to move the item into the parent menu?"
+msgstr "আপনি কি বস্তুটি উর্ধ্বস্থ মেনুর মধ্যে স্থানান্তর করতে ইচ্ছুক?"
+
+#: menueditor/menueditor.c:684
+msgid "Do you want to move the item into the submenu?"
+msgstr "আপনি কি বস্তুটি সাব-মেনুর মধ্যে স্থানান্তর করতে ইচ্ছুক?"
+
+#: menueditor/menueditor.c:825
+msgid "Edit"
+msgstr "সম্পাদনা"
+
+#. File menu
+#: menueditor/menueditor.c:849
+msgid "_File"
+msgstr "ফাইল (_F)"
+
+#: menueditor/menueditor.c:858
+msgid "Open default menu"
+msgstr "ডিফল্ট মেনু খুলুন"
+
+#. Edit menu
+#: menueditor/menueditor.c:872
+msgid "_Edit"
+msgstr "সম্পাদনা (_E)"
+
+#: menueditor/menueditor.c:878
+msgid "Add an external menu..."
+msgstr "একটি বহিস্থিত মেনু যোগ করুন..."
+
+#. Help menu
+#: menueditor/menueditor.c:890
+msgid "_Help"
+msgstr "সহায়িকা (_H)"
+
+#: menueditor/menueditor.c:894
+msgid "_About..."
+msgstr "পরিচিতি (_A)..."
+
+#: menueditor/menueditor.c:906
+msgid "Create a new Xfce4 menu file"
+msgstr "একটি নতুন Xfce4 মেনু ফাইল নির্মাণ করুন"
+
+#: menueditor/menueditor.c:911
+msgid "Open an Xfce4 menu file"
+msgstr "একটি Xfce4 মেনু ফাইল খুলুন"
+
+#: menueditor/menueditor.c:916
+msgid "Save current menu"
+msgstr "বর্তমান মেনু সংরক্ষণ করুন"
+
+#: menueditor/menueditor.c:921
+msgid "Close current menu"
+msgstr "বর্তমান মেনু বন্ধ করুন"
+
+#: menueditor/menueditor.c:927
+msgid "Add an entry to the menu"
+msgstr "মেনুর মধ্যে একটি এন্ট্রি যোগ করুন"
+
+#: menueditor/menueditor.c:931
+msgid "Delete the current entry"
+msgstr "বর্তমান এন্ট্রি মুছে ফেলুন"
+
+#: menueditor/menueditor.c:937
+msgid "Move the current entry up"
+msgstr "বর্তমান এন্ট্রি উপরে স্থানান্তর করুন"
+
+#: menueditor/menueditor.c:942
+msgid "Move the current entry down"
+msgstr "বর্তমান এন্ট্রি নীচে স্থানান্তর করুন"
+
+#: menueditor/menueditor.c:948
+msgid "Collapse the tree"
+msgstr "ট্রি বন্ধ করুন"
+
+#: menueditor/menueditor.c:953
+msgid "Expand the tree"
+msgstr "ট্রি প্রসারণ করুন"
+
+#: menueditor/menueditor.c:981
+msgid "Name"
+msgstr "নাম"
+
+#: menueditor/menueditor.c:984
+msgid "Command"
+msgstr "কমান্ড"
+
+#: menueditor/menueditor.c:985
+msgid "Hidden"
+msgstr "লুকোনো"
+
+#: modules/menu/desktop-menuspec.c:62
+msgid "/Other"
+msgstr "/অন্যান্য"
+
+#: panel-plugin/desktop-menu-plugin.c:205
+#: panel-plugin/desktop-menu-plugin.c:535
+msgid "Xfce Menu"
+msgstr "Xfce মেনু"
+
+#: panel-plugin/desktop-menu-plugin.c:373
+msgid "Select Icon"
+msgstr "আইকন নির্বাচন করুন"
+
+#: panel-plugin/desktop-menu-plugin.c:375
+msgid "Select Menu File"
+msgstr "মেনু ফাইল নির্বাচন করুন"
+
+#: panel-plugin/desktop-menu-plugin.c:390 settings/backdrop-mgr.c:414
+#: settings/backdrop-mgr.c:515 settings/backdrop_settings.c:533
+msgid "All Files"
+msgstr "সমস্ত ফাইল"
+
+#: panel-plugin/desktop-menu-plugin.c:396 settings/backdrop-mgr.c:418
+#: settings/backdrop_settings.c:537
+msgid "Image Files"
+msgstr "ছবির ফাইল"
+
+#: panel-plugin/desktop-menu-plugin.c:404
+msgid "Menu Files"
+msgstr "মেনু ফাইল"
+
+#: panel-plugin/desktop-menu-plugin.c:465
+msgid "_Menu file:"
+msgstr "মেনু ফাইল: (_M)"
+
+#: panel-plugin/desktop-menu-plugin.c:499
+msgid "_Button icon:"
+msgstr "বাটন আইকন:(_B)"
+
+#: panel-plugin/desktop-menu-plugin.c:524
+msgid "Show _icons in menu"
+msgstr "মেনুর মধ্যে আইকন প্রদর্শন করা হবে (_i)"
+
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"%s ফাইল সংরক্ষণ করা যায়নি: %s\n"
+"\n"
+"অনুগ্রহ করে একটি পৃথক অবস্থান নির্বাচন করুন অথবা ডায়লগের মধ্যে বাতিল টিপে আপনার করা পরিবর্তনগুলি অগ্রাহ্য করুন"
+
+#: settings/backdrop-mgr.c:409
+msgid "Select backdrop image file"
+msgstr "পটভূমির জন্য ছবির ফাইল নির্বাচন করুন"
+
+#: settings/backdrop-mgr.c:510
+msgid "Choose backdrop list filename"
+msgstr "পটভুমির তালিকায় ফাইলের নাম নির্বাচন করুন"
+
+#: settings/backdrop-mgr.c:519
+msgid "List Files"
+msgstr "ফাইল তালিকাভুক্ত করুন"
+
+#: settings/backdrop-mgr.c:582
+msgid "Backdrop List"
+msgstr "পটভূমির তালিকা"
+
+#: settings/backdrop-mgr.c:599
+msgid "Image files"
+msgstr "ছবির ফাইল"
+
+#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop_settings.c:197
+msgid "backdrops.list"
+msgstr "backdrops.list"
+
+#: settings/backdrop-mgr.c:618
+msgid "List file"
+msgstr "তালিকার ফাইল"
+
+#: settings/backdrop-mgr.c:638
+msgid "Create backdrop list"
+msgstr "পটভূমির তালিকা নির্বাচন করুন"
+
+#: settings/backdrop-mgr.c:669
+msgid "Edit backdrop list"
+msgstr "পটভূমির তালিকা সম্পাদন করুন"
+
+#. the dialog
+#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
+#: src/xfce-desktop.c:676
+msgid "Desktop"
+msgstr "ডেস্কটপ"
+
+#: settings/backdrop_settings.c:528
+msgid "Select backdrop image or list file"
+msgstr "পটভূমির ছবি অথবা তালিকার ফাইল নির্বাচন করুন"
+
+#: settings/backdrop_settings.c:546
+msgid "List Files (*.list)"
+msgstr "তালিকার ফাইল (*.list)"
+
+#: settings/backdrop_settings.c:636
+msgid "_Edit list..."
+msgstr "তালিকা সম্পাদন করুন (_E)..."
+
+#: settings/backdrop_settings.c:644
+msgid "_New list..."
+msgstr "নতুন তালিকা (_N)..."
+
+#: settings/backdrop_settings.c:680
+msgid "S_tyle:"
+msgstr "বিন্যাশ (_t):"
+
+#: settings/backdrop_settings.c:688
+msgid "Tiled"
+msgstr "টাইলযুক্ত"
+
+#: settings/backdrop_settings.c:695
+msgid "Centered"
+msgstr "কেন্দ্রস্থিত"
+
+#: settings/backdrop_settings.c:702
+msgid "Scaled"
+msgstr "মাপানুসারে"
+
+#: settings/backdrop_settings.c:709
+msgid "Stretched"
+msgstr "পর্দা জুড়ে প্রদর্শন"
+
+#: settings/backdrop_settings.c:716
+msgid "Auto"
+msgstr "অটো"
+
+#: settings/backdrop_settings.c:782
+msgid "Adjust _Brightness:"
+msgstr "উজ্জ্বলতা পরিবর্তন করুন: (_B)"
+
+#. header
+#: settings/backdrop_settings.c:851
+#: settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop Settings"
+msgstr "ডেস্কটপ সংক্রান্ত বৈশিষ্ট্য"
+
+#: settings/backdrop_settings.c:880
+msgid "_Backdrops"
+msgstr "পটভূমি (_B)"
+
+#. color settings frame
+#: settings/backdrop_settings.c:906
+msgid "Color"
+msgstr "রং"
+
+#: settings/backdrop_settings.c:920
+msgid "_Color Style:"
+msgstr "রং-র ধরন:(_C)"
+
+#: settings/backdrop_settings.c:929
+msgid "Solid Color"
+msgstr "সুষম রং"
+
+#: settings/backdrop_settings.c:936
+msgid "Horizontal Gradient"
+msgstr "অনুভুমিক ঢল"
+
+#: settings/backdrop_settings.c:943
+msgid "Vertical Gradient"
+msgstr "উলম্ব ঢল"
+
+#: settings/backdrop_settings.c:964
+msgid "Fi_rst Color:"
+msgstr "প্রথম রং: (_r)"
+
+#: settings/backdrop_settings.c:985
+msgid "_Second Color:"
+msgstr "দ্বিতীয় রং: (_S)"
+
+#. set color only checkbox
+#: settings/backdrop_settings.c:1006
+msgid "Set color _only"
+msgstr "শুধুমাত্র রং নির্বাচন করুন (_o)"
+
+#: settings/backdrop_settings.c:1021
+msgid "Image"
+msgstr "ছবি"
+
+#: settings/backdrop_settings.c:1029
+msgid "Show _Image"
+msgstr "ছবি প্রদর্শন করুন (_I)"
+
+#: settings/backdrop_settings.c:1051
+msgid "_File:"
+msgstr "ফাইল: (_F)"
+
+#. don't set backdrop checkbox
+#: settings/backdrop_settings.c:1088
+msgid "_Don't set backdrop"
+msgstr "পটভূমি নির্ধারণ করা হবে না (_D)"
+
+#. add the single backdrop settings page to the main notebook
+#: settings/backdrop_settings.c:1111
+msgid "_Backdrop"
+msgstr "পটভূমি (_B)"
+
+#: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
+#, c-format
+msgid "Screen %d"
+msgstr "পর্দা %d"
+
+#. and if we have multiple screens, each with multiple monitors
+#: settings/backdrop_settings.c:1126
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "পর্দা %d, মনিটর %d"
+
+#: settings/backdrop_settings.c:1140
+msgid "_Menu"
+msgstr "মেনু (_M)"
+
+#: settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
+
+#: settings/menu_settings.c:153
+msgid "Window List"
+msgstr "উইন্ডোর তালিকা"
+
+#: settings/menu_settings.c:161
+msgid "Show window _list"
+msgstr "উইন্ডোর তালিকা প্রদর্শন করুন (_l)"
+
+#: settings/menu_settings.c:176
+msgid "Show _window icons"
+msgstr "উইন্ডোর আইকন প্রদর্শন করুন (_w)"
+
+#: settings/menu_settings.c:189
+msgid "Desktop Menu"
+msgstr "ডেস্কটপ মেনু"
+
+#: settings/menu_settings.c:197
+msgid "Show desktop _menu"
+msgstr "ডেস্কটপ মেনু প্রদর্শন করুন (_m)"
+
+#: settings/menu_settings.c:212
+msgid "Show _application icons"
+msgstr "অ্যাপ্লিকেশনের আইকন প্রদর্শন করুন (_a)"
+
+#: settings/menu_settings.c:223
+msgid "_Edit desktop menu"
+msgstr "ডেস্কটপ মেনু সম্পাদন করুন (_E)"
+
+#: src/main.c:300
+#, c-format
+msgid "%s: Unknown option: %s\n"
+msgstr "%s: অজানা অপশন: %s\n"
+
+#: src/main.c:301
+msgid "Options are:\n"
+msgstr "অপশনগুলি হল:\n"
+
+#: src/main.c:302
+msgid "    -reload      Reload all settings, refresh image list\n"
+msgstr "    -reload      সমস্ত বৈশিষ্ট্য পুনরায় লোড করুন, ছবির তালিকা নতুন করে প্রদর্শন করুন\n"
+
+#: src/main.c:303
+msgid "    -menu        Pop up the menu (at the current mouse position)\n"
+msgstr "    -menu        মেনু পপ-আপ করবে (মাউসের বর্তমান অবস্থানে)\n"
+
+#: src/main.c:304
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -windowlist  উইন্ডোর তালিকা পপ-আপ করবে (মাউসের বর্তমান অবস্থানে)\n"
+
+#: src/windowlist.c:193
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>কর্মক্ষেত্র %d</b>"
+
+#: src/windowlist.c:201
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr "<i>কর্মক্ষেত্র %d</i>"
+
+#: src/windowlist.c:268 src/windowlist.c:271
+msgid "_Add Workspace"
+msgstr "কর্মক্ষেত্র যোগ করুন (_A)"
+
+#: src/windowlist.c:279
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "কর্মক্ষেত্র %d মুছে ফেলুন (_R)"
+
+#: src/windowlist.c:282
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "কর্মক্ষেত্র '%s' মুছে ফেলুন (_R)"
+
+#: menueditor/xfce-menueditor.desktop.in.h:1
+msgid "Graphical tool for editing the Xfce 4 menu"
+msgstr "Xfce 4 মেনু সম্পাদন করতে ব্যবহৃত গ্রাফিকাল টুল"
+
+#: menueditor/xfce-menueditor.desktop.in.h:2
+msgid "Menu Editor"
+msgstr "মেনু এডিটর"
+
+#: menueditor/xfce-menueditor.desktop.in.h:3
+msgid "Xfce 4 Menu Editor"
+msgstr "Xfce 4 মেনু এডিটর"
+
+#: settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Settings for the Xfce 4 Desktop Manager"
+msgstr "Xfce 4 ডেস্কটপ নিয়ন্ত্রক সংক্রান্ত বৈশিষ্ট্য"
+
+#: settings/xfce-backdrop-settings.desktop.in.h:3
+msgid "Xfce 4 Desktop Settings"
+msgstr "Xfce 4 ডেস্কটপের বৈশিষ্ট্য"
+
