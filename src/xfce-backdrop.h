@@ -60,9 +60,10 @@ struct _XfceBackdropClass
 
 GType xfce_backdrop_get_type             () G_GNUC_CONST;
 
-XfceBackdrop *xfce_backdrop_new          ();
+XfceBackdrop *xfce_backdrop_new          (GdkVisual *visual);
 
-XfceBackdrop *xfce_backdrop_new_with_size(gint width,
+XfceBackdrop *xfce_backdrop_new_with_size(GdkVisual *visual,
+                                          gint width,
                                           gint height);
 
 void xfce_backdrop_set_size              (XfceBackdrop *backdrop,

@@ -656,6 +656,7 @@ xfce_desktop_new(GdkScreen *gscreen, McsClient *mcs_client)
     Window xid;
     GdkDisplay *gdpy;
     GdkWindow *groot;
+    GdkVisual *visual;
     
     if(!gscreen)
         gscreen = gdk_display_get_default_screen(gdk_display_get_default());
@@ -700,18 +701,20 @@ xfce_desktop_new(GdkScreen *gscreen, McsClient *mcs_client)
     
     screen_set_selection(desktop);
     
+    visual = gtk_widget_get_visual(GTK_WIDGET(desktop));
     desktop->priv->nbackdrops = gdk_screen_get_n_monitors(gscreen);
     desktop->priv->backdrops = g_new(XfceBackdrop *, desktop->priv->nbackdrops);
     for(i = 0; i < desktop->priv->nbackdrops; i++) {
         GdkRectangle rect;
         gdk_screen_get_monitor_geometry(gscreen, i, &rect);
-        desktop->priv->backdrops[i] = xfce_backdrop_new_with_size(rect.width,
-                rect.height);
+        desktop->priv->backdrops[i] = xfce_backdrop_new_with_size(visual,
+                rect.width, rect.height);
     }
     
     if(mcs_client)
         load_initial_settings(desktop, mcs_client);
     
+    visual = gtk_widget_get_visual(GTK_WIDGET(desktop));
     for(i = 0; i < desktop->priv->nbackdrops; i++) {
         g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]), "changed",
                 G_CALLBACK(backdrop_changed_cb), desktop);

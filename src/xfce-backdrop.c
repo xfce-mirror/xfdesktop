@@ -45,6 +45,7 @@ static void xfce_backdrop_finalize(GObject *object);
 struct _XfceBackdropPriv
 {
     gint width, height;
+    gint bpp;
     
     XfceBackdropColorStyle color_style;
     GdkColor color1;
@@ -272,15 +273,22 @@ xfce_backdrop_finalize(GObject *object)
 
 /**
  * xfce_backdrop_new:
+ * @visual: The current X visual in use.
  *
- * Creates a new #XfceBackdrop.
+ * Creates a new #XfceBackdrop.  The @visual parameter is needed to decide the
+ * optimal dithering method.
  *
  * Return value: A new #XfceBackdrop.
  **/
 XfceBackdrop *
-xfce_backdrop_new()
+xfce_backdrop_new(GdkVisual *visual)
 {
-    return g_object_new(XFCE_TYPE_BACKDROP, NULL);
+    XfceBackdrop *backdrop;
+    
+    g_return_val_if_fail(GDK_IS_VISUAL(visual), NULL);
+    
+    backdrop = g_object_new(XFCE_TYPE_BACKDROP, NULL);
+    backdrop->priv->bpp = visual->depth;
 }
 
 /**
@@ -293,10 +301,15 @@ xfce_backdrop_new()
  * Return value: A new #XfceBackdrop.
  **/
 XfceBackdrop *
-xfce_backdrop_new_with_size(gint width, gint height)
+xfce_backdrop_new_with_size(GdkVisual *visual, gint width, gint height)
 {
-    XfceBackdrop *backdrop = g_object_new(XFCE_TYPE_BACKDROP, NULL);
+    XfceBackdrop *backdrop;
     
+    g_return_val_if_fail(GDK_IS_VISUAL(visual), NULL);
+    
+    backdrop = g_object_new(XFCE_TYPE_BACKDROP, NULL);
+    
+    backdrop->priv->bpp = visual->depth;
     backdrop->priv->width = width;
     backdrop->priv->height = height;
     
@@ -497,6 +510,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     XfceBackdropImageStyle istyle;
     gint dx, dy, xo, yo;
     gdouble xscale, yscale;
+    GdkInterpType interp;
     
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
     
@@ -542,6 +556,11 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     } else
         istyle = backdrop->priv->image_style;
     
+    if(backdrop->priv->bpp < 24)
+        interp = GDK_INTERP_HYPER;
+    else
+        interp = GDK_INTERP_BILINEAR;
+    
     switch(istyle) {
         case XFCE_BACKDROP_IMAGE_CENTERED:
             dx = MAX((w - iw) / 2, 0);
@@ -550,7 +569,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             yo = MIN((h - ih) / 2, dy);
             gdk_pixbuf_composite(image, final_image, dx, dy,
                     MIN(w, iw), MIN(h, ih), xo, yo, 1.0, 1.0,
-                    GDK_INTERP_BILINEAR, 255);
+                    interp, 255);
             break;
         
         case XFCE_BACKDROP_IMAGE_TILED:
@@ -571,7 +590,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             }
             
             gdk_pixbuf_composite(tmp, final_image, 0, 0, w, h,
-                    0, 0, 1.0, 1.0, GDK_INTERP_BILINEAR, 255);
+                    0, 0, 1.0, 1.0, interp, 255);
             g_object_unref(G_OBJECT(tmp));
             break;
         
@@ -579,7 +598,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             xscale = (gdouble)w / iw;
             yscale = (gdouble)h / ih;
             gdk_pixbuf_composite(image, final_image, 0, 0, w, h,
-                    0, 0, xscale, yscale, GDK_INTERP_BILINEAR, 255);
+                    0, 0, xscale, yscale, interp, 255);
             break;
         
         case XFCE_BACKDROP_IMAGE_SCALED:
@@ -599,7 +618,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             
             gdk_pixbuf_composite(image, final_image, dx, dy,
                     iw * xscale, ih * yscale, xo, yo, xscale, yscale,
-                    GDK_INTERP_BILINEAR, 255);
+                    interp, 255);
             break;
         
         default:
