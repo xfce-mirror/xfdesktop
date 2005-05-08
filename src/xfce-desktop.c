@@ -714,7 +714,6 @@ xfce_desktop_new(GdkScreen *gscreen, McsClient *mcs_client)
     if(mcs_client)
         load_initial_settings(desktop, mcs_client);
     
-    visual = gtk_widget_get_visual(GTK_WIDGET(desktop));
     for(i = 0; i < desktop->priv->nbackdrops; i++) {
         g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]), "changed",
                 G_CALLBACK(backdrop_changed_cb), desktop);
