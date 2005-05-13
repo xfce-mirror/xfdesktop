@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-12 12:22+0100\n"
+"POT-Creation-Date: 2005-05-10 22:18+0200\n"
 "PO-Revision-Date: 2005-04-06 07:57+0200\n"
 "Last-Translator: Alois Nespor <Alois.Nespor@seznam.cz>\n"
 "Language-Team: czech <cs@li.org>\n"
@@ -449,7 +449,8 @@ msgid ""
 msgstr ""
 "Nelze uložit soubor %s: %s\n"
 "\n"
-"Prosím vyberte jiné umístění nebo použijte tlačítko 'zrušit' v dialogovém okně pro zrušení změn "
+"Prosím vyberte jiné umístění nebo použijte tlačítko 'zrušit' v dialogovém "
+"okně pro zrušení změn "
 
 #: settings/backdrop-mgr.c:409
 msgid "Select backdrop image file"
@@ -657,15 +658,18 @@ msgstr "Možnosti jsou:\n"
 
 #: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "   - reload      Nahrát znovu všechny nastavení, obnovit seznam obrázků\n"
+msgstr ""
+"   - reload      Nahrát znovu všechny nastavení, obnovit seznam obrázků\n"
 
 #: src/main.c:303
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    menu        Otevřít menu (na aktuální pozici kurzoru myši)\n"
 
 #: src/main.c:304
-msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  Otevřít seznam oken (na aktuální pozici kurzoru myši)\n"
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+"    -windowlist  Otevřít seznam oken (na aktuální pozici kurzoru myši)\n"
 
 #: src/windowlist.c:193
 #, c-format
@@ -690,4 +694,3 @@ msgstr "_Odstranit pracovní plochu %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Odstranit pracovní plochu %s"
-
