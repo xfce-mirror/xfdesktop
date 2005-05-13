@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xfce-registered-categories>
 
-<!-- Huomaa: Voit kopioida tiedoston kansioon ~/.xfce4/ muokkausta varten. -->
+<!-- Huomaa: Voit kopioida tiedoston kansioon ~/.config/xfce4/desktop/ muokkausta varten. -->
 
 <!--
 	Näin tämä tiedosto toimii:
-	
+
 	<xfce-registered-categories> - juurielementti, pakollinen.
-	
+
 	<category>
 		name:  Pakollinen.  Vastaa virallista kategoriaa freedesktop.org:in
 		valikkospesifikaatiossa.
@@ -22,7 +22,7 @@
 		  järjestettäessä. (oletus: false)
 		hide: Valinnainen.  Tähän kategoriaan viittaavia kohtia ei näytetä
 		  missään valikossa. (oletus: false)
-			
+
 	<subcategory> - <category>:n alielementti, määrittää alikategoriasuhteen
 		name: Pakollinen.  Vastaa virallista kategoriaa freedesktop.org:in
 		valikkospesifikaatiossa.

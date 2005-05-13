@@ -2,6 +2,17 @@
 <!DOCTYPE xfdesktop-menu>
 
 <!--
+    翻訳者:
+
+        Daichi Kawahata <daichik@users.sourceforge.net>, 2005.
+
+    誤訳の指摘・改訳の提案等は:
+
+        xfce-users-jp <xfce-users-jp@ml.fdiary.net>
+        Xfce translations mailing list <xfce-i18n@xfce.org> (英語のみ)
+-->
+
+<!--
      Xfce 4 メニューファイルの説明:
      ==============================
      ここでメニューファイルの書式を説明しようと思います。以下の実際の
@@ -10,42 +21,54 @@
 
 -->
 
-<!-- 見て分かるように、コメントはこのように記述します ^_^ -->
+<!-- 御覧のように、コメントはこのように記述します ^_^ -->
 
 <!--
 
   + 全て一組の <xfdesktop-menu></xfdesktop-menu> タグの間に記述します。
 
   + アプリケーション:
+
     <app name="メニューでの名前" cmd="実行するコマンド" term="false"
          icon="アイコンファイル"  snotify="false" visible="true" />
+
     属性 'term' はプログラムの実行にターミナルが必要かどうかを決めます、
     'snotify' はプログラムが起動通知に対応するかどうかを設定します。
     属性 'icon' を付ける事で、アイテムの隣にアイコンを表示する事ができます。
     'name' と 'cmd' のみが必須です。
 
   + セパレータ:
+
     <separator visible="true" />
+
     水平セパレータを作成します。'visible' 属性は任意です。
 
   + サブメニュー:
+
     <menu name="メニューでの名前" icon="アイコンファイル" cisible="true"></menu>
-    'name' のみが必須ですが、属性 'icon' を付ける事で表示されるアイコンを設定
-    する事もできます。メニュータグの間では一つ以上のアプリケーション、
-    セパレータ及びメニューを指定する事ができます。
+
+    'name' のみが必須ですが、属性 'icon' を付ける事で表示されるアイコンを
+    設定できます。menu タグの間では、一つ以上のアプリケーション、セパレータ
+    及びメニューを指定する事ができます。
 
   + タイトル:
+
     <title name="メニューでの名前" icon="アイコンファイル" visible="true" />
+
     大文字・小文字の区別が無いメニュータイトルを作成します。望むなら、
-    任意のアイコンをタイトルへ追加する事さえできます。
+    任意のアイコンをタイトルへ追加する事もできます。
 
   + 他のファイルを組み込む:
+
     <include type="file" src="menu2.xml" visible="true" />
-    ファイル menu2.xml を組込みます。相対パスのルートは ~/.xfce4/ と
-    見なされます。絶対パスも、ルートが ~/.xfce4/ になってしまいます。
+
+    ファイル menu2.xml を組込みます。相対パスのルートは ~/.config/xfce4/desktop/ と
+    見なされます。絶対パスも、ルートが ~/.config/xfce4/desktop/ になってしまいます。
 
   + 自動生成されたシステムメニューを組み込む:
+
     <include type="system" style="simple" unique="true" visible="true" />
+
     システムメニューを組込みます。スタイルは "simple" 又は "multilevel" に
     なります。unique に "false" が設定されると、アプリケーションが複数に分類
     されている場合、それに応じた複数のメニューアイテムが生成されます。
@@ -62,8 +85,8 @@
 	<separator/>
 
 	<app name="ターミナル" cmd="xfterm4" icon="gnome-terminal"/>
-	<app name="ファイルマネージャ (xffm)" cmd="xffm" icon="file-manager"/>
-	<app name="ウェブブラウザ" cmd="mozilla" icon="gnome-globe"/>
+	<app name="ファイル・マネージャ (xffm)" cmd="xffm" icon="file-manager"/>
+	<app name="ウェブ・ブラウザ" cmd="mozilla" icon="gnome-globe"/>
 
 	<separator/>
 
@@ -81,7 +104,8 @@
 
 	<!--
           自動生成されたメニューを使用する代わりに別に分けたメニューファイルを
-          組み込みたいなら、以下の行のコメントを外して (上の行をコメントして) 下さい。
+          組み込みたいなら、以下の行のコメントを外して (上の行をコメントして)
+          下さい。
 	-->
 	<!-- <include type="file" src="menu2.xml"/> -->
 

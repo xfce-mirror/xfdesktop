@@ -1,38 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xfce-registered-categories>
 
-<!-- 備考: カスタマイズする方はこのファイルを ~/.xfce4/ へコピーして下さい。 -->
+<!--
+    翻訳者:
+
+        Daichi Kawahata <daichik@users.sourceforge.net>, 2005.
+
+    誤訳の指摘・改訳の提案等は:
+
+        xfce-users-jp <xfce-users-jp@ml.fdiary.net>
+        Xfce translations mailing list <xfce-i18n@xfce.org> (英語のみ)
+-->
 
 <!--
-	Here is how this file works:
+    備考: カスタマイズする方は、このファイルを ~/.config/xfce4/desktop/
+    へコピーして下さい。
+-->
+
+<!--
+    このファイルの書式は:
 
 	<xfce-registered-categories> - ルート要素、必須です。
 
 	<category>
-        name:  必須です。freedesktop.org のメニュー仕様にある公式カテゴリー
-          に対応してます。
+        name: 必須です。freedesktop.org のメニュー仕様にある公式カテゴリー
+          に対応しています。
         replace: 任意です。カテゴリーでアイテムのメニュー名として表示される
           名前です (例えば翻訳等で役立ちます)。
-        icon: このカテゴリーに表示されるアイコンです (実際にはカテゴリーの
+        icon: このカテゴリーに表示されるアイコンです (実際には、カテゴリーの
           'replace' 属性が参照するメニューです)。
-		toplevel: Optional.  Marks categories as being "allowed" to be toplevel
-		  menus.  Note: if a category is unrooted, it will be promoted to
-		  toplevel regardless of the value of this attribute. (default: false)
-		ignore: Optional.  This category will be ignored when organising menu
-		  items. (default: false)
-        hide: 任意です。このカテゴリーを参照するアイテムはどのメニューにも
+        toplevel: 任意です。カテゴリーが最上部のメニューになれるようマーク
+          します。備考: カテゴリーがルートではない場合、この属性の値に関わらず
+          最上部にされます。(標準: false)
+        ignore: 任意です。このカテゴリーはメニュー・アイテムを一つのグループに
+        まとめる時に無視されます。(標準: false)
+        hide: 任意です。このカテゴリーを参照するアイテムは、どのメニューにも
           表示されません。(デフォルト: false)
 
-	<subcategory> - sub-element of <category>, specifies a subcategory relation
-		name: Required.  Corresponds to an official category from the
-		  freedesktop.org menu spec.
+    <subcategory> - <category> のサブ要素です、サブカテゴリーに関連する名前を
+        指定します: 必須です。freedesktop.org のメニュー仕様にある公式カテゴリー
+          に対応します。
       例:
 	  <category name="Graphics">
 		  <subcategory name="RasterGraphics">
 	  </category>
-	  Note that even if subcategories are definied, it is possible to collapse
-	  all subcategories into a flat one-level menu by specifying style="simple"
-	  in the <include> tag in your menu.xml file.
+      サブ・カテゴリーが定義されている場合でも、あなたの menu.xml ファイルにある
+      <include> タグで style="simple" を指定する事により、全てのサブ・カテゴリー
+      を一つのレベルのメニューに畳むことが可能です。
 -->
 
 <xfce-registered-categories>
@@ -121,7 +135,7 @@
 	<category name="Network" toplevel="true" replace="ネットワーク" builtin-icon="NETWORK">
 		<subcategory name="Email" replace="電子メール" />
 		<subcategory name="Dialup" replace="ダイアルアップ" />
-		<subcategory name="InstantMessaging" replace="インスタントメッセージ" />
+		<subcategory name="InstantMessaging" replace="インスタント・メッセージ" />
 		<subcategory name="IRCClient" replace="IRC クライアント" />
 		<subcategory name="FileTransfer" replace="ファイル転送" />
 		<subcategory name="HamRadio" replace="ハムラジオ" />
@@ -129,11 +143,11 @@
 		<subcategory name="P2P" />
 		<subcategory name="RemoteAccess" replace="遠隔アクセス" />
 		<subcategory name="Telephony" replace="IP 電話" />
-		<subcategory name="WebBrowser" replace="ウェブブラウザ" />
+		<subcategory name="WebBrowser" replace="ウェブ・ブラウザ" />
 		<subcategory name="WebDevelopment" replace="ウェブ開発" />
 	</category>
 	<category name="Dialup" replace="ダイアルアップ" builtin-icon="NETWORK" />
-	<category name="InstantMessaging" replace="インスタントメッセージ" builtin-icon="NETWORK" />
+	<category name="InstantMessaging" replace="インスタント・メッセージ" builtin-icon="NETWORK" />
 	<category name="IRCClient" replace="IRC クライアント" builtin-icon="NETWORK" />
 	<category name="FileTransfer" replace="ファイル転送" builtin-icon="NETWORK" />
 	<category name="HamRadio" replace="ハムラジオ" builtin-icon="NETWORK" />
@@ -150,7 +164,7 @@
 		<subcategory name="Video" replace="ビデオ" />
 		<subcategory name="AudioVideoEditing" />
 		<subcategory name="Player" replace="プレイヤー" />
-		<subcategory name="Recorder" />
+		<subcategory name="Recorder" replace="レコーダー" />
 		<subcategory name="DiscBurning" />
 	</category>
 	<category name="Audio" replace="オーディオ" builtin-icon="MULTIMEDIA">
@@ -160,7 +174,7 @@
 		<subcategory name="Tuner" replace="チューナー" />
 		<subcategory name="AudioVideoEditing" />
 		<subcategory name="Player" replace="プレイヤー" />
-		<subcategory name="Recorder" />
+		<subcategory name="Recorder" replace="レコーダー" />
 	</category>
 	<category name="Midi"  replace="MIDI" builtin-icon="MULTIMEDIA" />
 	<category name="Mixer" replace="サウンドミキサー" builtin-icon="MULTIMEDIA" />
@@ -170,8 +184,8 @@
 		<subcategory name="TV" replace="テレビ" />
 		<subcategory name="AudioVideoEditing" />
 		<subcategory name="Player" repace="プレイヤー" />
-		<subcategory name="Recorder" />
-		<subcategory name="Music" />
+		<subcategory name="Recorder" replace="レコーダー" />
+		<subcategory name="Music" replace="音楽" />
 	</category>
 	<category name="TV" replace="テレビ" builtin-icon="MULTIMEDIA" />
 	<category name="AudioVideoEditing" replace="Editing" builtin-icon="MULTIMEDIA" />
@@ -241,17 +255,17 @@
 	<category name="FileManager" replace="ファイル管理" />
 	<category name="Shell" replace="シェル" />
 	<category name="Screensaver" replace="スクリーンセーバ" />
-	<category name="TerminalEmulator" replace="ターミナルエミュレータ" />
+	<category name="TerminalEmulator" replace="ターミナル・エミュレータ" />
 	<category name="TrayIcon" replace="システムトレイアイコン" />
 	<category name="System" toplevel="true" replace="システム" builtin-icon="SYSTEM">
-		<subcategory name="FileSystem" replace="ファイルシステム" />
+		<subcategory name="FileSystem" replace="ファイル・システム" />
 		<subcategory name="Monitor" replace="モニタ" />
 		<subcategory name="Security" replace="セキュリティ" />
 		<subcategory name="Accessibility" />
-		<subcategory name="TerminalEmulator" replace="ターミナルエミュレータ" />
+		<subcategory name="TerminalEmulator" replace="ターミナル・エミュレータ" />
 		<subcategory name="Shell" replace="シェル" />
 	</category>
-	<category name="Filesystem" replace="ファイルシステム" builtin-icon="SYSTEM" />
+	<category name="Filesystem" replace="ファイル・システム" builtin-icon="SYSTEM" />
 	<category name="Monitor" replace="モニタ" builtin-icon="SYSTEM" />
 	<category name="Security" replace="セキュリティ" builtin-icon="SYSTEM" />
 	<category name="Utility"  toplevel="true" replace="アクセサリー" builtin-icon="UTILITY">
@@ -260,8 +274,8 @@
 		<subcategory name="Clock" replace="時計" />
 		<subcategory name="TextEditor" replace="テキストエディタ" />
 		<subcategory name="Archiving" replace="アーカイブ作成" />
-		<subcategory name="TerminalEmulator" replace="ターミナルエミュレータ" />
-		<subcategory name="FileManager" replace="ファイルマネージャ" />
+		<subcategory name="TerminalEmulator" replace="ターミナル・エミュレータ" />
+		<subcategory name="FileManager" replace="ファイル・マネージャ" />
 		<subcategory name="Shell" replace="シェル" />
 	</category>
 	<category name="Accessibility" builtin-icon="UTILITY" />
