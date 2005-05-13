@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-03 23:57-0800\n"
-"PO-Revision-Date: 2005-03-10 10:58+0100\n"
+"PO-Revision-Date: 2005-05-13 03:10+0100\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -94,9 +94,8 @@ msgstr "Ikon:"
 #. Start Notify check button
 #: menueditor/add_dialog.c:236
 #: menueditor/edit_dialog.c:275
-#, fuzzy
 msgid "Use startup _notification"
-msgstr "I_ndítási emlékeztetés használata"
+msgstr "I_ndítási jelentés használata"
 
 #. Run in terminal check button
 #: menueditor/add_dialog.c:240
@@ -155,7 +154,7 @@ msgstr "Forrás:"
 #: menueditor/add_menu_dialog.c:136
 #: menueditor/edit_dialog.c:185
 msgid "Style:"
-msgstr "Megjelenítés:"
+msgstr "Stílus:"
 
 #: menueditor/add_menu_dialog.c:139
 #: menueditor/edit_dialog.c:188
@@ -185,9 +184,8 @@ msgstr "A 'Forrás' mező kötelező"
 #: menueditor/menueditor.c:618
 #: menueditor/move.c:111
 #: menueditor/move.c:249
-#, fuzzy
 msgid "--- include ---"
-msgstr "--- beszámítás ---"
+msgstr "--- csatolva ---"
 
 #: menueditor/add_menu_dialog.c:235
 #: menueditor/dnd.c:161
@@ -295,7 +293,7 @@ msgstr "Szerkesztés"
 #. File menu
 #: menueditor/menueditor.c:1225
 msgid "_File"
-msgstr "Fájl"
+msgstr "_Fájl"
 
 #: menueditor/menueditor.c:1234
 msgid "Open default menu"
@@ -313,7 +311,7 @@ msgstr "Külső menü hozzáadása"
 #. Help menu
 #: menueditor/menueditor.c:1266
 msgid "_Help"
-msgstr "Súgó"
+msgstr "_Súgó"
 
 #: menueditor/menueditor.c:1271
 msgid "_About..."
@@ -477,7 +475,7 @@ msgstr "Ikonok"
 
 #: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
-msgstr "Gom_b ikon:"
+msgstr "_Gomb ikon:"
 
 #: panel-plugin/desktop-menu-plugin.c:794
 msgid "Show _icons in menu"
@@ -520,7 +518,7 @@ msgstr "Képfájlok"
 #: settings/backdrop_settings.c:197
 #, fuzzy
 msgid "backdrops.list"
-msgstr "Háttérlista szerkesztése"
+msgstr "hátterek"
 
 #: settings/backdrop-mgr.c:618
 msgid "List file"
@@ -563,7 +561,7 @@ msgstr "S_tílus:"
 
 #: settings/backdrop_settings.c:688
 msgid "Tiled"
-msgstr "Mozaikszerűen"
+msgstr "Mozaik"
 
 #: settings/backdrop_settings.c:695
 msgid "Centered"
@@ -575,15 +573,15 @@ msgstr "Átméretezve"
 
 #: settings/backdrop_settings.c:709
 msgid "Stretched"
-msgstr "Nyújtott"
+msgstr "Nyújtva"
 
 #: settings/backdrop_settings.c:716
 msgid "Auto"
-msgstr "Automatikusan"
+msgstr "Automatikus"
 
 #: settings/backdrop_settings.c:782
 msgid "Adjust _Brightness:"
-msgstr "Fényerő _beállítása:"
+msgstr "Fénye_rő beállítása:"
 
 #. header
 #: settings/backdrop_settings.c:851
@@ -601,7 +599,7 @@ msgstr "Szín"
 
 #: settings/backdrop_settings.c:920
 msgid "_Color Style:"
-msgstr "Színstílus:"
+msgstr "Szí_nstílus:"
 
 #: settings/backdrop_settings.c:929
 msgid "Solid Color"
@@ -617,11 +615,11 @@ msgstr "Függőleges színátmenet"
 
 #: settings/backdrop_settings.c:964
 msgid "Fi_rst Color:"
-msgstr "Első szín:"
+msgstr "_1. szín:"
 
 #: settings/backdrop_settings.c:985
 msgid "_Second Color:"
-msgstr "Második szín:"
+msgstr "_2. szín:"
 
 #. set color only checkbox
 #: settings/backdrop_settings.c:1006
@@ -634,7 +632,7 @@ msgstr "Kép"
 
 #: settings/backdrop_settings.c:1029
 msgid "Show _Image"
-msgstr "Kép mutatása"
+msgstr "_Kép mutatása"
 
 #: settings/backdrop_settings.c:1051
 msgid "_File:"
@@ -733,10 +731,10 @@ msgstr "Munkaterület hozzá_adása"
 #: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "%d. munkaterület törlése"
+msgstr "%d. munkaterület tö_rlése"
 
 #: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "E munkaterület törlése: '%s'"
+msgstr "E munkaterület tö_rlése: '%s'"
 
