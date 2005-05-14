@@ -1,3 +1,21 @@
+2005-05-13 15:24  pollux
+
+	* xfdesktop/branches/xfce_4_2/menu.xml.hu, xfce-menueditor.desktop,
+	  xfdesktop/branches/xfce_4_2/po/hu.po,
+	  xffm/branches/xfce_4_2/src/Xfbook.desktop,
+	  xffm/branches/xfce_4_2/src/Xfdiff.desktop,
+	  xffm/branches/xfce_4_2/src/Xffstab.desktop,
+	  xffm/branches/xfce_4_2/src/Xfglob.desktop,
+	  xffm/branches/xfce_4_2/src/Xfmime_edit.desktop,
+	  xfprint/branches/xfce_4_2/mcs-plugin/xfce-xfprint-settings.desktop,
+	  xfprint/branches/xfce_4_2/xfprint-manager/xfprint-manager.desktop,
+	  xfprint/branches/xfce_4_2/xfprint/xfprint.desktop: update HU
+	  translations
+
+2005-05-04 20:45  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2005-04-12 15:01  jasper
 
 	* xfdesktop/branches/xfce_4_2/Makefile.in,
@@ -17,8 +35,7 @@
 	  xfdesktop/branches/xfce_4_2/doc/fr/Makefile.in,
 	  xfdesktop/branches/xfce_4_2/doc/fr/images/Makefile.in,
 	  xfdesktop/branches/xfce_4_2/install-sh,
-	  xfdesktop/branches/xfce_4_2/ltmain.sh,
-	  xfdesktop/branches/xfce_4_2/menueditor/Makefile.in,
+	  xfdesktop/branches/xfce_4_2/ltmain.sh, Makefile.in,
 	  xfdesktop/branches/xfce_4_2/missing,
 	  xfdesktop/branches/xfce_4_2/mkinstalldirs,
 	  xfdesktop/branches/xfce_4_2/modules/Makefile.in,
@@ -77,8 +94,7 @@
 
 	* xfdesktop/branches/xfce_4_2/Makefile.am,
 	  xfdesktop/branches/xfce_4_2/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/menu.xml.cs,
-	  xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
+	  xfdesktop/branches/xfce_4_2/menu.xml.cs, xfce-menueditor.desktop,
 	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
 	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.in,
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.cs,
@@ -137,8 +153,7 @@
 	  xfdesktop/branches/xfce_4_2/doc/C/.cvsignore,
 	  xfdesktop/branches/xfce_4_2/doc/C/images/.cvsignore,
 	  xfdesktop/branches/xfce_4_2/doc/fr/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/menueditor/.cvsignore,
+	  xfdesktop/branches/xfce_4_2/doc/fr/images/.cvsignore, .cvsignore,
 	  xfdesktop/branches/xfce_4_2/modules/.cvsignore,
 	  xfdesktop/branches/xfce_4_2/modules/menu/.cvsignore,
 	  xfdesktop/branches/xfce_4_2/panel-plugin/.cvsignore,
@@ -152,8 +167,7 @@
 
 2005-03-09 15:46  pollux
 
-	* xfdesktop/branches/xfce_4_2/menu.xml.sk,
-	  xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
+	* xfdesktop/branches/xfce_4_2/menu.xml.sk, xfce-menueditor.desktop,
 	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
 	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.in,
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.sk,
@@ -162,7 +176,7 @@
 
 2005-03-05 10:52  pollux
 
-	* xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
+	* xfce-menueditor.desktop,
 	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
 	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.in,
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.hu,
@@ -171,13 +185,13 @@
 
 2005-03-05 10:42  pollux
 
-	* xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
+	* xfce-menueditor.desktop,
 	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop:
 	  update EU translations
 
 2005-02-01 17:25  pollux
 
-	* xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
+	* xfce-menueditor.desktop,
 	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
 	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.in,
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.zh_CN,
@@ -187,30 +201,29 @@
 
 2005-01-23 16:48  pollux
 
-	* xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
+	* xfce-menueditor.desktop,
 	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop:
 	  update FI translations
 
 2005-01-18 11:36  pollux
 
-	* xfdesktop/branches/xfce_4_2/menueditor/menueditor.c: fix #706
+	* menueditor.c: fix #706
 
 2005-01-10 12:23  pollux
 
-	* xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
+	* xfce-menueditor.desktop,
 	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop:
 	  update LT translations
 
 2005-01-09 13:42  pollux
 
-	* xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
+	* xfce-menueditor.desktop,
 	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop:
 	  update RO translations
 
 2005-01-08 15:49  pollux
 
-	* xfdesktop/branches/xfce_4_2/menu.xml.ru,
-	  xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
+	* xfdesktop/branches/xfce_4_2/menu.xml.ru, xfce-menueditor.desktop,
 	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ru,
 	  xfdesktop/branches/xfce_4_2/po/ru.gmo,
