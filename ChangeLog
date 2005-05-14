@@ -1,812 +1,572 @@
+2005-05-13 15:24  pollux
+
+	* menu.xml.hu, menueditor/xfce-menueditor.desktop, po/hu.po,
+	  xffm/branches/xfce_4_2/src/Xfbook.desktop,
+	  xffm/branches/xfce_4_2/src/Xfdiff.desktop,
+	  xffm/branches/xfce_4_2/src/Xffstab.desktop,
+	  xffm/branches/xfce_4_2/src/Xfglob.desktop,
+	  xffm/branches/xfce_4_2/src/Xfmime_edit.desktop,
+	  xfprint/branches/xfce_4_2/mcs-plugin/xfce-xfprint-settings.desktop,
+	  xfprint/branches/xfce_4_2/xfprint-manager/xfprint-manager.desktop,
+	  xfprint/branches/xfce_4_2/xfprint/xfprint.desktop: update HU
+	  translations
+
+2005-05-13 15:10  pollux
+
+	* xfcalendar/branches/xfce_4_2/po/ro.po,
+	  xfce-utils/branches/xfce_4_2/xftaskbar/plugin/xfce-taskbar-settings.desktop,
+	  xfce4-appfinder/branches/xfce_4_2/src/xfce4-appfinder.desktop,
+	  xfce4-panel/branches/xfce_4_2/contents.xml.ro,
+	  xfce4-panel/branches/xfce_4_2/settings/xfce-panel-settings.desktop,
+	  xfce4-session/branches/xfce_4_2/settings/session/xfce-session-settings.desktop,
+	  xfce4-session/branches/xfce_4_2/settings/splash/xfce-splash-settings.desktop,
+	  po/ro.po,
+	  xfprint/branches/xfce_4_2/mcs-plugin/xfce-xfprint-settings.desktop,
+	  xfprint/branches/xfce_4_2/xfprint-manager/xfprint-manager.desktop,
+	  xfprint/branches/xfce_4_2/xfprint/xfprint.desktop,
+	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
+	  xfwm4/branches/xfce_4_2/po/ro.po: update RO translations
+
+2005-05-13 15:02  pollux
+
+	* libxfcegui4/branches/xfce_4_2/po/ja.po,
+	  xfcalendar/branches/xfce_4_2/po/ja.po,
+	  xfce-mcs-manager/branches/xfce_4_2/po/ja.po,
+	  xfce-mcs-plugins/branches/xfce_4_2/po/ja.po,
+	  xfce-utils/branches/xfce_4_2/po/ja.po,
+	  xfce4-appfinder/branches/xfce_4_2/po/ja.po,
+	  xfce4-mixer/branches/xfce_4_2/po/ja.po,
+	  xfce4-panel/branches/xfce_4_2/po/ja.po,
+	  xfce4-session/branches/xfce_4_2/po/ja.po,
+	  xfce4-toys/branches/xfce_4_2/po/ja.po,
+	  xfce4-trigger-launcher/branches/xfce_4_2/po/ja.po, po/ja.po,
+	  xffm/branches/xfce_4_2/po/ja.po,
+	  xfprint/branches/xfce_4_2/po/ja.po,
+	  xfwm4/branches/xfce_4_2/po/ja.po: update JA translations
+
+2005-05-13 06:04  kelnos
+
+	* menu.xml, menu.xml.ca, menu.xml.es, menu.xml.et, menu.xml.fi,
+	  menu.xml.fr, menu.xml.he, menu.xml.ja, menu.xml.ko, menu.xml.nl,
+	  menu.xml.pt_BR, menu.xml.ro, menu.xml.ru, menu.xml.sk,
+	  menu.xml.uk, menu.xml.vi, menu.xml.zh_TW,
+	  modules/menu/xfce-registered-categories.xml,
+	  modules/menu/xfce-registered-categories.xml.fi,
+	  modules/menu/xfce-registered-categories.xml.ja,
+	  modules/menu/xfce-registered-categories.xml.nl,
+	  modules/menu/xfce-registered-categories.xml.pt_BR,
+	  modules/menu/xfce-registered-categories.xml.ru,
+	  modules/menu/xfce-registered-categories.xml.zh_CN,
+	  modules/menu/xfce-registered-categories.xml.zh_TW: fix
+	  documentation comments (thanks Daichi)
+
+2005-05-12 08:10  pollux
+
+	* modules/menu/xfce-registered-categories.xml.hu: update HU
+	  translations
+
+2005-05-06 18:37  pollux
+
+	* configure.ac, po/mr.po: add MR translations
+
+2005-05-06 17:40  pollux
+
+	* po/gu.po: update GU translations
+
+2005-05-04 20:46  olivier
+
+	* ChangeLog: Update ChangeLog
+
+2005-05-04 20:45  olivier
+
+	* menueditor/ChangeLog: Update ChangeLog
+
+2005-05-04 20:45  olivier
+
+	* po/ChangeLog: Update ChangeLog
+
+2005-04-23 17:33  pollux
+
+	* po/ca.po: update CA translations
+
+2005-04-23 17:26  pollux
+
+	* po/el.po: update EL translations
+
+2005-04-18 03:04  kelnos
+
+	* panel-plugin/desktop-menu-plugin.c: call xfce_textdomain() before
+	  setting the plugin caption
+
+2005-04-16 16:18  pollux
+
+	* modules/menu/Makefile.am,
+	  modules/menu/xfce-registered-categories.xml.eu: update EU
+	  translations
+
 2005-04-16 08:37  kelnos
 
-	* xfdesktop/branches/xfce_4_2/src/menu.c: fix problem where
-	  'xfdesktop -menu' bound to a key combo sometimes works, but mostly
-	  doesn't. thanks to olivier for tracking down the cause. (bug 441)
+	* src/menu.c: fix problem where 'xfdesktop -menu' bound to a key
+	  combo sometimes works, but mostly doesn't. thanks to olivier for
+	  tracking down the cause. (bug 441)
 
 2005-04-12 15:01  jasper
 
-	* xfdesktop/branches/xfce_4_2/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/aclocal.m4,
-	  xfdesktop/branches/xfce_4_2/autogen.sh,
-	  xfdesktop/branches/xfce_4_2/backdrops/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/common/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/compile,
-	  xfdesktop/branches/xfce_4_2/config.guess,
-	  xfdesktop/branches/xfce_4_2/config.h.in,
-	  xfdesktop/branches/xfce_4_2/config.sub,
-	  xfdesktop/branches/xfce_4_2/configure,
-	  xfdesktop/branches/xfce_4_2/depcomp,
-	  xfdesktop/branches/xfce_4_2/doc/C/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/doc/C/images/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/doc/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/doc/fr/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/install-sh,
-	  xfdesktop/branches/xfce_4_2/ltmain.sh,
-	  xfdesktop/branches/xfce_4_2/menueditor/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/missing,
-	  xfdesktop/branches/xfce_4_2/mkinstalldirs,
-	  xfdesktop/branches/xfce_4_2/modules/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/panel-plugin/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/pixmaps/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/po/Makefile.in.in,
-	  xfdesktop/branches/xfce_4_2/po/ar.gmo,
-	  xfdesktop/branches/xfce_4_2/po/az.gmo,
-	  xfdesktop/branches/xfce_4_2/po/be.gmo,
-	  xfdesktop/branches/xfce_4_2/po/bg.gmo,
-	  xfdesktop/branches/xfce_4_2/po/bn_IN.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ca.gmo,
-	  xfdesktop/branches/xfce_4_2/po/cs.gmo,
-	  xfdesktop/branches/xfce_4_2/po/da.gmo,
-	  xfdesktop/branches/xfce_4_2/po/de.gmo,
-	  xfdesktop/branches/xfce_4_2/po/el.gmo,
-	  xfdesktop/branches/xfce_4_2/po/en_GB.gmo,
-	  xfdesktop/branches/xfce_4_2/po/es.gmo,
-	  xfdesktop/branches/xfce_4_2/po/es_MX.gmo,
-	  xfdesktop/branches/xfce_4_2/po/et.gmo,
-	  xfdesktop/branches/xfce_4_2/po/eu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fa.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fr.gmo,
-	  xfdesktop/branches/xfce_4_2/po/gu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/he.gmo,
-	  xfdesktop/branches/xfce_4_2/po/hi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/hu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/it.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ja.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ko.gmo,
-	  xfdesktop/branches/xfce_4_2/po/lt.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ms.gmo,
-	  xfdesktop/branches/xfce_4_2/po/nb_NO.gmo,
-	  xfdesktop/branches/xfce_4_2/po/nl.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pa.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pl.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pt_PT.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ro.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ru.gmo,
-	  xfdesktop/branches/xfce_4_2/po/sk.gmo,
-	  xfdesktop/branches/xfce_4_2/po/sv.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ta.gmo,
-	  xfdesktop/branches/xfce_4_2/po/tr.gmo,
-	  xfdesktop/branches/xfce_4_2/po/uk.gmo,
-	  xfdesktop/branches/xfce_4_2/po/vi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/zh_CN.gmo,
-	  xfdesktop/branches/xfce_4_2/po/zh_TW.gmo,
-	  xfdesktop/branches/xfce_4_2/settings/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/src/Makefile.in: Make xfce_4_2 branch
-	  use dev tools and remove generated files
+	* Makefile.in, aclocal.m4, autogen.sh, backdrops/Makefile.in,
+	  common/Makefile.in, compile, config.guess, config.h.in,
+	  config.sub, configure, depcomp, doc/C/Makefile.in,
+	  doc/C/images/Makefile.in, doc/Makefile.in, doc/fr/Makefile.in,
+	  doc/fr/images/Makefile.in, install-sh, ltmain.sh,
+	  menueditor/Makefile.in, missing, mkinstalldirs,
+	  modules/Makefile.in, modules/menu/Makefile.in,
+	  panel-plugin/Makefile.in, pixmaps/Makefile.in, po/Makefile.in.in,
+	  po/ar.gmo, po/az.gmo, po/be.gmo, po/bg.gmo, po/bn_IN.gmo,
+	  po/ca.gmo, po/cs.gmo, po/da.gmo, po/de.gmo, po/el.gmo,
+	  po/en_GB.gmo, po/es.gmo, po/es_MX.gmo, po/et.gmo, po/eu.gmo,
+	  po/fa.gmo, po/fi.gmo, po/fr.gmo, po/gu.gmo, po/he.gmo, po/hi.gmo,
+	  po/hu.gmo, po/it.gmo, po/ja.gmo, po/ko.gmo, po/lt.gmo, po/ms.gmo,
+	  po/nb_NO.gmo, po/nl.gmo, po/pa.gmo, po/pl.gmo, po/pt_BR.gmo,
+	  po/pt_PT.gmo, po/ro.gmo, po/ru.gmo, po/sk.gmo, po/sv.gmo,
+	  po/ta.gmo, po/tr.gmo, po/uk.gmo, po/vi.gmo, po/zh_CN.gmo,
+	  po/zh_TW.gmo, settings/Makefile.in, src/Makefile.in: Make xfce_4_2
+	  branch use dev tools and remove generated files
 
 2005-04-09 12:09  pollux
 
-	* xfdesktop/branches/xfce_4_2/configure,
-	  xfdesktop/branches/xfce_4_2/configure.ac,
-	  xfdesktop/branches/xfce_4_2/po/bn_IN.gmo,
-	  xfdesktop/branches/xfce_4_2/po/bn_IN.po: add bn_IN translations
+	* configure, configure.ac, po/bn_IN.gmo, po/bn_IN.po: add bn_IN
+	  translations
 
 2005-04-09 11:59  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/pl.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pl.po: update PL translations
+	* po/pl.gmo, po/pl.po: update PL translations
 
 2005-04-08 08:00  pollux
 
-	* xfdesktop/branches/xfce_4_2/configure,
-	  xfdesktop/branches/xfce_4_2/configure.ac,
-	  xfdesktop/branches/xfce_4_2/po/el.gmo,
-	  xfdesktop/branches/xfce_4_2/po/el.po,
-	  xfdesktop/branches/xfce_4_2/po/vi.po: add EL translations
+	* configure, configure.ac, po/el.gmo, po/el.po, po/vi.po: add EL
+	  translations
 
 2005-04-07 17:42  pollux
 
-	* xfdesktop/branches/xfce_4_2/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/menu.xml.cs,
-	  xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.cs,
-	  xfdesktop/branches/xfce_4_2/po/ar.gmo,
-	  xfdesktop/branches/xfce_4_2/po/az.gmo,
-	  xfdesktop/branches/xfce_4_2/po/be.gmo,
-	  xfdesktop/branches/xfce_4_2/po/bg.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ca.gmo,
-	  xfdesktop/branches/xfce_4_2/po/cs.gmo,
-	  xfdesktop/branches/xfce_4_2/po/cs.po,
-	  xfdesktop/branches/xfce_4_2/po/da.gmo,
-	  xfdesktop/branches/xfce_4_2/po/de.gmo,
-	  xfdesktop/branches/xfce_4_2/po/en_GB.gmo,
-	  xfdesktop/branches/xfce_4_2/po/es.gmo,
-	  xfdesktop/branches/xfce_4_2/po/es_MX.gmo,
-	  xfdesktop/branches/xfce_4_2/po/et.gmo,
-	  xfdesktop/branches/xfce_4_2/po/eu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fa.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fr.gmo,
-	  xfdesktop/branches/xfce_4_2/po/gu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/he.gmo,
-	  xfdesktop/branches/xfce_4_2/po/hi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/hu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/it.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ja.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ko.gmo,
-	  xfdesktop/branches/xfce_4_2/po/lt.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ms.gmo,
-	  xfdesktop/branches/xfce_4_2/po/nb_NO.gmo,
-	  xfdesktop/branches/xfce_4_2/po/nl.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pa.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pl.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pt_PT.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ro.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ru.gmo,
-	  xfdesktop/branches/xfce_4_2/po/sk.gmo,
-	  xfdesktop/branches/xfce_4_2/po/sv.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ta.gmo,
-	  xfdesktop/branches/xfce_4_2/po/tr.gmo,
-	  xfdesktop/branches/xfce_4_2/po/uk.gmo,
-	  xfdesktop/branches/xfce_4_2/po/vi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/zh_CN.gmo,
-	  xfdesktop/branches/xfce_4_2/po/zh_TW.gmo,
-	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop,
-	  xfdesktop/branches/xfce_4_2/src/Makefile.in: update CS
-	  translations
+	* Makefile.am, Makefile.in, menu.xml.cs,
+	  menueditor/xfce-menueditor.desktop, modules/menu/Makefile.am,
+	  modules/menu/Makefile.in,
+	  modules/menu/xfce-registered-categories.xml.cs, po/ar.gmo,
+	  po/az.gmo, po/be.gmo, po/bg.gmo, po/ca.gmo, po/cs.gmo, po/cs.po,
+	  po/da.gmo, po/de.gmo, po/en_GB.gmo, po/es.gmo, po/es_MX.gmo,
+	  po/et.gmo, po/eu.gmo, po/fa.gmo, po/fi.gmo, po/fr.gmo, po/gu.gmo,
+	  po/he.gmo, po/hi.gmo, po/hu.gmo, po/it.gmo, po/ja.gmo, po/ko.gmo,
+	  po/lt.gmo, po/ms.gmo, po/nb_NO.gmo, po/nl.gmo, po/pa.gmo,
+	  po/pl.gmo, po/pt_BR.gmo, po/pt_PT.gmo, po/ro.gmo, po/ru.gmo,
+	  po/sk.gmo, po/sv.gmo, po/ta.gmo, po/tr.gmo, po/uk.gmo, po/vi.gmo,
+	  po/zh_CN.gmo, po/zh_TW.gmo,
+	  settings/xfce-backdrop-settings.desktop, src/Makefile.in: update
+	  CS translations
 
 2005-04-06 11:53  jasper
 
-	* xfdesktop/branches/xfce_4_2/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/backdrops/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/common/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/doc/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/doc/C/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/doc/C/images/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/doc/fr/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/menueditor/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/modules/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/modules/menu/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/panel-plugin/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/pixmaps/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/pixmaps/32x32/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/pixmaps/48x48/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/po/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/settings/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/src/.cvsignore: Remove .cvsignor files
-	  from 4.2 branch. At least now the active branches will be cleaned.
+	* .cvsignore, backdrops/.cvsignore, common/.cvsignore,
+	  doc/.cvsignore, doc/C/.cvsignore, doc/C/images/.cvsignore,
+	  doc/fr/.cvsignore, doc/fr/images/.cvsignore,
+	  menueditor/.cvsignore, modules/.cvsignore,
+	  modules/menu/.cvsignore, panel-plugin/.cvsignore,
+	  pixmaps/.cvsignore, pixmaps/32x32/.cvsignore,
+	  pixmaps/48x48/.cvsignore, po/.cvsignore, settings/.cvsignore,
+	  src/.cvsignore: Remove .cvsignor files from 4.2 branch. At least
+	  now the active branches will be cleaned.
 
 2005-04-04 03:26  kelnos
 
-	* xfdesktop/branches/xfce_4_2/src/Makefile.am: fix unresolved symbol
-	  problem in menu module
+	* src/Makefile.am: fix unresolved symbol problem in menu module
 
 2005-03-28 10:33  jasper
 
-	* xfdesktop/branches/xfce_4_2/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/configure,
-	  xfdesktop/branches/xfce_4_2/configure.ac,
-	  xfdesktop/branches/xfce_4_2/doc/C/xfdesktop.html,
-	  xfdesktop/branches/xfce_4_2/doc/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/doc/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/doc/fr,
-	  xfdesktop/branches/xfce_4_2/doc/fr/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/doc/fr/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/doc/fr/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/root_menu.png,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/root_menu2.png,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/select_bg_color.png,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/xfdesktop-background.png,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/xfdesktop-editor.png,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/xfdesktop-list.png,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/xfdesktop-menu-tab.png,
-	  xfdesktop/branches/xfce_4_2/doc/fr/xfdesktop.html,
-	  xfdesktop/branches/xfce_4_2/doc/fr/xfdesktop.xml,
-	  xfdesktop/branches/xfce_4_2/ltmain.sh: Add French doc
+	* Makefile.in, configure, configure.ac, doc/C/xfdesktop.html,
+	  doc/Makefile.am, doc/Makefile.in, doc/fr, doc/fr/.cvsignore,
+	  doc/fr/Makefile.am, doc/fr/Makefile.in, doc/fr/images,
+	  doc/fr/images/.cvsignore, doc/fr/images/Makefile.am,
+	  doc/fr/images/Makefile.in, doc/fr/images/root_menu.png,
+	  doc/fr/images/root_menu2.png, doc/fr/images/select_bg_color.png,
+	  doc/fr/images/xfdesktop-background.png,
+	  doc/fr/images/xfdesktop-editor.png,
+	  doc/fr/images/xfdesktop-list.png,
+	  doc/fr/images/xfdesktop-menu-tab.png, doc/fr/xfdesktop.html,
+	  doc/fr/xfdesktop.xml, ltmain.sh: Add French doc
 
 2005-03-28 10:32  
 
-	* xfdesktop/branches/xfce_4_2/doc/fr,
-	  xfdesktop/branches/xfce_4_2/doc/fr/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/doc/fr/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/.cvsignore,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/root_menu.png,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/root_menu2.png,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/select_bg_color.png,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/xfdesktop-background.png,
-	  xfdesktop/branches/xfce_4_2/doc/fr/images/xfdesktop-list.png,
-	  xfdesktop/branches/xfce_4_2/doc/fr/xfdesktop.html,
-	  xfdesktop/branches/xfce_4_2/doc/fr/xfdesktop.xml: This commit was
-	  manufactured by cvs2svn to create branch 'xfce_4_2'.
+	* doc/fr, doc/fr/.cvsignore, doc/fr/Makefile.am,
+	  doc/fr/images/.cvsignore, doc/fr/images/Makefile.am,
+	  doc/fr/images/root_menu.png, doc/fr/images/root_menu2.png,
+	  doc/fr/images/select_bg_color.png,
+	  doc/fr/images/xfdesktop-background.png,
+	  doc/fr/images/xfdesktop-list.png, doc/fr/xfdesktop.html,
+	  doc/fr/xfdesktop.xml: This commit was manufactured by cvs2svn to
+	  create branch 'xfce_4_2'.
 
 2005-03-26 10:38  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/eu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/eu.po: update EU translations
+	* po/eu.gmo, po/eu.po: update EU translations
 
 2005-03-20 21:52  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/ko.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ko.po: update KO translations
+	* po/ko.gmo, po/ko.po: update KO translations
 
 2005-03-20 21:43  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/hu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/hu.po: update HU translations
+	* po/hu.gmo, po/hu.po: update HU translations
 
 2005-03-14 15:30  kelnos
 
-	* xfdesktop/branches/xfce_4_2/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/Makefile.in: remove old menu.xml.*
-	  files that still use the old 4.0.x default menu
+	* Makefile.am, Makefile.in: remove old menu.xml.* files that still
+	  use the old 4.0.x default menu
 
 2005-03-12 14:53  olivier
 
-	* xfdesktop/branches/xfce_4_2/ChangeLog: Update ChangeLog
+	* ChangeLog: Update ChangeLog
 
 2005-03-12 14:19  olivier
 
-	* xfdesktop/branches/xfce_4_2/configure,
-	  xfdesktop/branches/xfce_4_2/configure.ac,
-	  xfdesktop/branches/xfce_4_2/ltmain.sh,
-	  xfdesktop/branches/xfce_4_2/po/ar.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ar.po,
-	  xfdesktop/branches/xfce_4_2/po/az.gmo,
-	  xfdesktop/branches/xfce_4_2/po/az.po,
-	  xfdesktop/branches/xfce_4_2/po/be.gmo,
-	  xfdesktop/branches/xfce_4_2/po/be.po,
-	  xfdesktop/branches/xfce_4_2/po/bg.gmo,
-	  xfdesktop/branches/xfce_4_2/po/bg.po,
-	  xfdesktop/branches/xfce_4_2/po/ca.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ca.po,
-	  xfdesktop/branches/xfce_4_2/po/cs.gmo,
-	  xfdesktop/branches/xfce_4_2/po/cs.po,
-	  xfdesktop/branches/xfce_4_2/po/da.gmo,
-	  xfdesktop/branches/xfce_4_2/po/da.po,
-	  xfdesktop/branches/xfce_4_2/po/de.gmo,
-	  xfdesktop/branches/xfce_4_2/po/de.po,
-	  xfdesktop/branches/xfce_4_2/po/en_GB.gmo,
-	  xfdesktop/branches/xfce_4_2/po/en_GB.po,
-	  xfdesktop/branches/xfce_4_2/po/es.gmo,
-	  xfdesktop/branches/xfce_4_2/po/es.po,
-	  xfdesktop/branches/xfce_4_2/po/es_MX.gmo,
-	  xfdesktop/branches/xfce_4_2/po/es_MX.po,
-	  xfdesktop/branches/xfce_4_2/po/et.gmo,
-	  xfdesktop/branches/xfce_4_2/po/et.po,
-	  xfdesktop/branches/xfce_4_2/po/eu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/eu.po,
-	  xfdesktop/branches/xfce_4_2/po/fa.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fa.po,
-	  xfdesktop/branches/xfce_4_2/po/fi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fi.po,
-	  xfdesktop/branches/xfce_4_2/po/fr.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fr.po,
-	  xfdesktop/branches/xfce_4_2/po/gu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/gu.po,
-	  xfdesktop/branches/xfce_4_2/po/he.gmo,
-	  xfdesktop/branches/xfce_4_2/po/he.po,
-	  xfdesktop/branches/xfce_4_2/po/hi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/hi.po,
-	  xfdesktop/branches/xfce_4_2/po/hu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/hu.po,
-	  xfdesktop/branches/xfce_4_2/po/it.gmo,
-	  xfdesktop/branches/xfce_4_2/po/it.po,
-	  xfdesktop/branches/xfce_4_2/po/ja.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ja.po,
-	  xfdesktop/branches/xfce_4_2/po/ko.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ko.po,
-	  xfdesktop/branches/xfce_4_2/po/lt.gmo,
-	  xfdesktop/branches/xfce_4_2/po/lt.po,
-	  xfdesktop/branches/xfce_4_2/po/ms.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ms.po,
-	  xfdesktop/branches/xfce_4_2/po/nb_NO.gmo,
-	  xfdesktop/branches/xfce_4_2/po/nb_NO.po,
-	  xfdesktop/branches/xfce_4_2/po/nl.gmo,
-	  xfdesktop/branches/xfce_4_2/po/nl.po,
-	  xfdesktop/branches/xfce_4_2/po/pa.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pa.po,
-	  xfdesktop/branches/xfce_4_2/po/pl.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pl.po,
-	  xfdesktop/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pt_BR.po,
-	  xfdesktop/branches/xfce_4_2/po/pt_PT.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pt_PT.po,
-	  xfdesktop/branches/xfce_4_2/po/ro.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ro.po,
-	  xfdesktop/branches/xfce_4_2/po/ru.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ru.po,
-	  xfdesktop/branches/xfce_4_2/po/sk.gmo,
-	  xfdesktop/branches/xfce_4_2/po/sk.po,
-	  xfdesktop/branches/xfce_4_2/po/sv.gmo,
-	  xfdesktop/branches/xfce_4_2/po/sv.po,
-	  xfdesktop/branches/xfce_4_2/po/ta.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ta.po,
-	  xfdesktop/branches/xfce_4_2/po/tr.gmo,
-	  xfdesktop/branches/xfce_4_2/po/tr.po,
-	  xfdesktop/branches/xfce_4_2/po/uk.gmo,
-	  xfdesktop/branches/xfce_4_2/po/uk.po,
-	  xfdesktop/branches/xfce_4_2/po/vi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/vi.po,
-	  xfdesktop/branches/xfce_4_2/po/xfdesktop.pot,
-	  xfdesktop/branches/xfce_4_2/po/zh_CN.gmo,
-	  xfdesktop/branches/xfce_4_2/po/zh_CN.po,
-	  xfdesktop/branches/xfce_4_2/po/zh_TW.gmo,
-	  xfdesktop/branches/xfce_4_2/po/zh_TW.po: Mass update for 4.2.1
+	* configure, configure.ac, ltmain.sh, po/ar.gmo, po/ar.po,
+	  po/az.gmo, po/az.po, po/be.gmo, po/be.po, po/bg.gmo, po/bg.po,
+	  po/ca.gmo, po/ca.po, po/cs.gmo, po/cs.po, po/da.gmo, po/da.po,
+	  po/de.gmo, po/de.po, po/en_GB.gmo, po/en_GB.po, po/es.gmo,
+	  po/es.po, po/es_MX.gmo, po/es_MX.po, po/et.gmo, po/et.po,
+	  po/eu.gmo, po/eu.po, po/fa.gmo, po/fa.po, po/fi.gmo, po/fi.po,
+	  po/fr.gmo, po/fr.po, po/gu.gmo, po/gu.po, po/he.gmo, po/he.po,
+	  po/hi.gmo, po/hi.po, po/hu.gmo, po/hu.po, po/it.gmo, po/it.po,
+	  po/ja.gmo, po/ja.po, po/ko.gmo, po/ko.po, po/lt.gmo, po/lt.po,
+	  po/ms.gmo, po/ms.po, po/nb_NO.gmo, po/nb_NO.po, po/nl.gmo,
+	  po/nl.po, po/pa.gmo, po/pa.po, po/pl.gmo, po/pl.po, po/pt_BR.gmo,
+	  po/pt_BR.po, po/pt_PT.gmo, po/pt_PT.po, po/ro.gmo, po/ro.po,
+	  po/ru.gmo, po/ru.po, po/sk.gmo, po/sk.po, po/sv.gmo, po/sv.po,
+	  po/ta.gmo, po/ta.po, po/tr.gmo, po/tr.po, po/uk.gmo, po/uk.po,
+	  po/vi.gmo, po/vi.po, po/xfdesktop.pot, po/zh_CN.gmo, po/zh_CN.po,
+	  po/zh_TW.gmo, po/zh_TW.po: Mass update for 4.2.1
 
 2005-03-12 09:10  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/he.gmo,
-	  xfdesktop/branches/xfce_4_2/po/he.po: update HE translations
+	* po/he.gmo, po/he.po: update HE translations
 
 2005-03-10 17:58  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/lt.gmo,
-	  xfdesktop/branches/xfce_4_2/po/lt.po: update LT translations
+	* po/lt.gmo, po/lt.po: update LT translations
 
 2005-03-09 15:46  pollux
 
-	* xfdesktop/branches/xfce_4_2/menu.xml.sk,
-	  xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.sk,
-	  xfdesktop/branches/xfce_4_2/po/sk.gmo,
-	  xfdesktop/branches/xfce_4_2/po/sk.po: update SK translations
+	* menu.xml.sk, menueditor/xfce-menueditor.desktop,
+	  modules/menu/Makefile.am, modules/menu/Makefile.in,
+	  modules/menu/xfce-registered-categories.xml.sk, po/sk.gmo,
+	  po/sk.po: update SK translations
 
 2005-03-09 15:27  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/es.gmo,
-	  xfdesktop/branches/xfce_4_2/po/es_MX.gmo,
-	  xfdesktop/branches/xfce_4_2/po/eu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/eu.po,
-	  xfdesktop/branches/xfce_4_2/po/nl.gmo: update EU translations
+	* po/es.gmo, po/es_MX.gmo, po/eu.gmo, po/eu.po, po/nl.gmo: update EU
+	  translations
 
 2005-03-07 22:52  edscott
 
-	* xfdesktop/branches/xfce_4_2/po/es.po,
-	  xfdesktop/branches/xfce_4_2/po/es_MX.po: translation gaps
+	* po/es.po, po/es_MX.po: translation gaps
 
 2005-03-07 20:30  jasper
 
-	* xfdesktop/branches/xfce_4_2/po/nl.po: Update nl translations for
-	  4.2.1
+	* po/nl.po: Update nl translations for 4.2.1
 
 2005-03-07 09:17  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/fi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fi.po: update FI translations
+	* po/fi.gmo, po/fi.po: update FI translations
 
 2005-03-06 17:49  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/zh_TW.gmo,
-	  xfdesktop/branches/xfce_4_2/po/zh_TW.po: update zh_TW translations
+	* po/zh_TW.gmo, po/zh_TW.po: update zh_TW translations
 
 2005-03-06 17:44  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/fi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fi.po: update FI translations
+	* po/fi.gmo, po/fi.po: update FI translations
 
 2005-03-06 17:27  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/ja.po: update JA translations
+	* po/ja.po: update JA translations
 
 2005-03-06 17:27  pollux
 
-	* xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ja,
-	  xfdesktop/branches/xfce_4_2/po/ja.gmo, xfdesktop/trunk/po/ja.po:
-	  update JA translations
+	* modules/menu/xfce-registered-categories.xml.ja, po/ja.gmo,
+	  xfdesktop/trunk/po/ja.po: update JA translations
 
 2005-03-06 15:01  olivier
 
-	* xfdesktop/branches/xfce_4_2/po/fr.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fr.po: Update French locale
+	* po/fr.gmo, po/fr.po: Update French locale
 
 2005-03-06 08:33  jasper
 
-	* xfdesktop/branches/xfce_4_2/modules/menu/desktop-menu-dentry.c:
-	  Backport from HEAD: filter out quotes around commands. Bug #776.
+	* modules/menu/desktop-menu-dentry.c: Backport from HEAD: filter out
+	  quotes around commands. Bug #776.
 
 2005-03-05 22:55  kelnos
 
-	* xfdesktop/branches/xfce_4_2/po/ja.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ja.po: update-po again. not sure
-	  what's up. need to email xfce-i18n
+	* po/ja.gmo, po/ja.po: update-po again. not sure what's up. need to
+	  email xfce-i18n
 
 2005-03-05 11:48  pollux
 
-	* xfdesktop/branches/xfce_4_2/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/configure,
-	  xfdesktop/branches/xfce_4_2/configure.ac,
-	  xfdesktop/branches/xfce_4_2/menu.xml.da,
-	  xfdesktop/branches/xfce_4_2/po/da.gmo,
-	  xfdesktop/branches/xfce_4_2/po/da.po: update DA translations
+	* Makefile.am, Makefile.in, configure, configure.ac, menu.xml.da,
+	  po/da.gmo, po/da.po: update DA translations
 
 2005-03-05 10:52  pollux
 
-	* xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.hu,
-	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop:
-	  update HU translations
+	* menueditor/xfce-menueditor.desktop, modules/menu/Makefile.am,
+	  modules/menu/Makefile.in,
+	  modules/menu/xfce-registered-categories.xml.hu,
+	  settings/xfce-backdrop-settings.desktop: update HU translations
 
 2005-03-05 10:42  pollux
 
-	* xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
-	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop:
-	  update EU translations
+	* menueditor/xfce-menueditor.desktop,
+	  settings/xfce-backdrop-settings.desktop: update EU translations
 
 2005-03-05 09:16  moe
 
-	* xfdesktop/branches/xfce_4_2/ChangeLog: Updating ChangeLog
+	* ChangeLog: Updating ChangeLog
 
 2005-03-05 09:12  moe
 
-	* xfdesktop/branches/xfce_4_2/po/de.gmo,
-	  xfdesktop/branches/xfce_4_2/po/de.po: Fixing translations
+	* po/de.gmo, po/de.po: Fixing translations
 
 2005-03-04 17:43  pollux
 
-	* xfdesktop/branches/xfce_4_2/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/menu.xml.ja,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ja,
-	  xfdesktop/branches/xfce_4_2/panel-plugin/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/po/ar.gmo,
-	  xfdesktop/branches/xfce_4_2/po/az.gmo,
-	  xfdesktop/branches/xfce_4_2/po/be.gmo,
-	  xfdesktop/branches/xfce_4_2/po/bg.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ca.gmo,
-	  xfdesktop/branches/xfce_4_2/po/cs.gmo,
-	  xfdesktop/branches/xfce_4_2/po/de.gmo,
-	  xfdesktop/branches/xfce_4_2/po/en_GB.gmo,
-	  xfdesktop/branches/xfce_4_2/po/es.gmo,
-	  xfdesktop/branches/xfce_4_2/po/es_MX.gmo,
-	  xfdesktop/branches/xfce_4_2/po/et.gmo,
-	  xfdesktop/branches/xfce_4_2/po/eu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fa.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fr.gmo,
-	  xfdesktop/branches/xfce_4_2/po/gu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/he.gmo,
-	  xfdesktop/branches/xfce_4_2/po/hi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/hu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/it.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ja.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ja.po,
-	  xfdesktop/branches/xfce_4_2/po/ko.gmo,
-	  xfdesktop/branches/xfce_4_2/po/lt.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ms.gmo,
-	  xfdesktop/branches/xfce_4_2/po/nb_NO.gmo,
-	  xfdesktop/branches/xfce_4_2/po/nl.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pa.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pl.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pt_PT.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ro.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ru.gmo,
-	  xfdesktop/branches/xfce_4_2/po/sk.gmo,
-	  xfdesktop/branches/xfce_4_2/po/sv.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ta.gmo,
-	  xfdesktop/branches/xfce_4_2/po/tr.gmo,
-	  xfdesktop/branches/xfce_4_2/po/uk.gmo,
-	  xfdesktop/branches/xfce_4_2/po/vi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/zh_CN.gmo,
-	  xfdesktop/branches/xfce_4_2/po/zh_TW.gmo: update JA translations
+	* Makefile.am, Makefile.in, menu.xml.ja, modules/menu/Makefile.am,
+	  modules/menu/Makefile.in,
+	  modules/menu/xfce-registered-categories.xml.ja,
+	  panel-plugin/Makefile.in, po/ar.gmo, po/az.gmo, po/be.gmo,
+	  po/bg.gmo, po/ca.gmo, po/cs.gmo, po/de.gmo, po/en_GB.gmo,
+	  po/es.gmo, po/es_MX.gmo, po/et.gmo, po/eu.gmo, po/fa.gmo,
+	  po/fi.gmo, po/fr.gmo, po/gu.gmo, po/he.gmo, po/hi.gmo, po/hu.gmo,
+	  po/it.gmo, po/ja.gmo, po/ja.po, po/ko.gmo, po/lt.gmo, po/ms.gmo,
+	  po/nb_NO.gmo, po/nl.gmo, po/pa.gmo, po/pl.gmo, po/pt_BR.gmo,
+	  po/pt_PT.gmo, po/ro.gmo, po/ru.gmo, po/sk.gmo, po/sv.gmo,
+	  po/ta.gmo, po/tr.gmo, po/uk.gmo, po/vi.gmo, po/zh_CN.gmo,
+	  po/zh_TW.gmo: update JA translations
 
 2005-03-04 07:58  kelnos
 
-	* xfdesktop/branches/xfce_4_2/po/ar.po,
-	  xfdesktop/branches/xfce_4_2/po/az.po,
-	  xfdesktop/branches/xfce_4_2/po/be.po,
-	  xfdesktop/branches/xfce_4_2/po/bg.po,
-	  xfdesktop/branches/xfce_4_2/po/ca.po,
-	  xfdesktop/branches/xfce_4_2/po/cs.po,
-	  xfdesktop/branches/xfce_4_2/po/de.po,
-	  xfdesktop/branches/xfce_4_2/po/en_GB.po,
-	  xfdesktop/branches/xfce_4_2/po/es.po,
-	  xfdesktop/branches/xfce_4_2/po/es_MX.po,
-	  xfdesktop/branches/xfce_4_2/po/et.po,
-	  xfdesktop/branches/xfce_4_2/po/eu.po,
-	  xfdesktop/branches/xfce_4_2/po/fa.po,
-	  xfdesktop/branches/xfce_4_2/po/fi.po,
-	  xfdesktop/branches/xfce_4_2/po/fr.po,
-	  xfdesktop/branches/xfce_4_2/po/gu.po,
-	  xfdesktop/branches/xfce_4_2/po/he.po,
-	  xfdesktop/branches/xfce_4_2/po/hi.po,
-	  xfdesktop/branches/xfce_4_2/po/hu.po,
-	  xfdesktop/branches/xfce_4_2/po/it.po,
-	  xfdesktop/branches/xfce_4_2/po/ja.po,
-	  xfdesktop/branches/xfce_4_2/po/ko.po,
-	  xfdesktop/branches/xfce_4_2/po/lt.po,
-	  xfdesktop/branches/xfce_4_2/po/ms.po,
-	  xfdesktop/branches/xfce_4_2/po/nb_NO.po,
-	  xfdesktop/branches/xfce_4_2/po/nl.po,
-	  xfdesktop/branches/xfce_4_2/po/pa.po,
-	  xfdesktop/branches/xfce_4_2/po/pl.po,
-	  xfdesktop/branches/xfce_4_2/po/pt_BR.po,
-	  xfdesktop/branches/xfce_4_2/po/pt_PT.po,
-	  xfdesktop/branches/xfce_4_2/po/ro.po,
-	  xfdesktop/branches/xfce_4_2/po/ru.po,
-	  xfdesktop/branches/xfce_4_2/po/sk.po,
-	  xfdesktop/branches/xfce_4_2/po/sv.po,
-	  xfdesktop/branches/xfce_4_2/po/ta.po,
-	  xfdesktop/branches/xfce_4_2/po/tr.po,
-	  xfdesktop/branches/xfce_4_2/po/uk.po,
-	  xfdesktop/branches/xfce_4_2/po/vi.po,
-	  xfdesktop/branches/xfce_4_2/po/xfdesktop.pot,
-	  xfdesktop/branches/xfce_4_2/po/zh_CN.po,
-	  xfdesktop/branches/xfce_4_2/po/zh_TW.po: make sure .po files are
-	  up to date
+	* po/ar.po, po/az.po, po/be.po, po/bg.po, po/ca.po, po/cs.po,
+	  po/de.po, po/en_GB.po, po/es.po, po/es_MX.po, po/et.po, po/eu.po,
+	  po/fa.po, po/fi.po, po/fr.po, po/gu.po, po/he.po, po/hi.po,
+	  po/hu.po, po/it.po, po/ja.po, po/ko.po, po/lt.po, po/ms.po,
+	  po/nb_NO.po, po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po,
+	  po/pt_PT.po, po/ro.po, po/ru.po, po/sk.po, po/sv.po, po/ta.po,
+	  po/tr.po, po/uk.po, po/vi.po, po/xfdesktop.pot, po/zh_CN.po,
+	  po/zh_TW.po: make sure .po files are up to date
 
 2005-03-03 07:01  kelnos
 
-	* xfdesktop/branches/xfce_4_2/panel-plugin/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/panel-plugin/desktop-menu-plugin.c:
-	  add "edit menu" button to plugin prefs (bug 554)
+	* panel-plugin/Makefile.am, panel-plugin/desktop-menu-plugin.c: add
+	  "edit menu" button to plugin prefs (bug 554)
 
 2005-02-23 09:15  benny
 
-	* xfdesktop/branches/xfce_4_2/modules/menu/desktop-menu-dentry.c,
-	  xfdesktop/branches/xfce_4_2/src/xfce-desktop.c: Remove all
+	* modules/menu/desktop-menu-dentry.c, src/xfce-desktop.c: Remove all
 	  occurences of G_INLINE_FUNC, as it causes too much trouble on
 	  Solaris, which offers quite a lot of different compiler/linker
 	  combos.
 
 2005-02-21 09:12  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/eu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/eu.po: update EU translations
+	* po/eu.gmo, po/eu.po: update EU translations
 
 2005-02-21 08:58  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/ja.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ja.po: update JA translations
+	* po/ja.gmo, po/ja.po: update JA translations
 
 2005-02-20 08:51  kelnos
 
-	* xfdesktop/branches/xfce_4_2/panel-plugin/desktop-menu-plugin.c:
-	  add option to change button tooltip (bug 764)
+	* panel-plugin/desktop-menu-plugin.c: add option to change button
+	  tooltip (bug 764)
 
 2005-02-20 08:31  kelnos
 
-	* xfdesktop/branches/xfce_4_2/panel-plugin/desktop-menu-plugin.c:
-	  add option to use default desktop menu (i.e., the one used by
-	  xfdesktop), or to specify a custom menu file, which will always be
-	  honored (bug 778)
+	* panel-plugin/desktop-menu-plugin.c: add option to use default
+	  desktop menu (i.e., the one used by xfdesktop), or to specify a
+	  custom menu file, which will always be honored (bug 778)
 
 2005-02-20 07:38  kelnos
 
-	* xfdesktop/branches/xfce_4_2/panel-plugin/desktop-menu-plugin.c:
-	  interpolate the $XDG_ variables, and then environment variables,
-	  when loading the menu file for the plugin
+	* panel-plugin/desktop-menu-plugin.c: interpolate the $XDG_
+	  variables, and then environment variables, when loading the menu
+	  file for the plugin
 
 2005-02-18 18:46  kelnos
 
-	* xfdesktop/branches/xfce_4_2/modules/menu/desktop-menu-dentry.c: if
-	  a .desktop file is missing its Categories line, make sure it gets
-	  put in the "Other" category (bug 776)
+	* modules/menu/desktop-menu-dentry.c: if a .desktop file is missing
+	  its Categories line, make sure it gets put in the "Other" category
+	  (bug 776)
 
 2005-02-01 17:25  pollux
 
-	* xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.zh_CN,
-	  xfdesktop/branches/xfce_4_2/po/fi.gmo,
-	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop:
-	  update zh_CN translations
+	* menueditor/xfce-menueditor.desktop, modules/menu/Makefile.am,
+	  modules/menu/Makefile.in,
+	  modules/menu/xfce-registered-categories.xml.zh_CN, po/fi.gmo,
+	  settings/xfce-backdrop-settings.desktop: update zh_CN translations
 
 2005-02-01 17:25  
 
-	* xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.zh_CN:
-	  This commit was manufactured by cvs2svn to create branch
-	  'xfce_4_2'.
+	* modules/menu/xfce-registered-categories.xml.zh_CN: This commit was
+	  manufactured by cvs2svn to create branch 'xfce_4_2'.
 
 2005-01-30 10:06  pollux
 
-	* xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.fi:
-	  add missing file
+	* modules/menu/xfce-registered-categories.xml.fi: add missing file
 
 2005-01-30 10:06  
 
-	* xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.fi:
-	  This commit was manufactured by cvs2svn to create branch
-	  'xfce_4_2'.
+	* modules/menu/xfce-registered-categories.xml.fi: This commit was
+	  manufactured by cvs2svn to create branch 'xfce_4_2'.
 
 2005-01-30 09:39  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/fi.po: update FI translations
+	* po/fi.po: update FI translations
 
 2005-01-26 21:22  kelnos
 
-	* xfdesktop/branches/xfce_4_2/src/windowlist.c: looks like i forgot
-	  to backport this: fix case where open windowlist -> window is
-	  destroyed -> select window in windowlist -> xfdesktop crash (bug
-	  672)
+	* src/windowlist.c: looks like i forgot to backport this: fix case
+	  where open windowlist -> window is destroyed -> select window in
+	  windowlist -> xfdesktop crash (bug 672)
 
 2005-01-23 17:09  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/lt.gmo,
-	  xfdesktop/branches/xfce_4_2/po/lt.po: update LT translations
+	* po/lt.gmo, po/lt.po: update LT translations
 
 2005-01-23 16:48  pollux
 
-	* xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
-	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop:
-	  update FI translations
+	* menueditor/xfce-menueditor.desktop,
+	  settings/xfce-backdrop-settings.desktop: update FI translations
 
 2005-01-22 12:19  pollux
 
-	* xfdesktop/branches/xfce_4_2/menu.xml.fi: add missing file
+	* menu.xml.fi: add missing file
 
 2005-01-22 09:18  pollux
 
-	* xfdesktop/branches/xfce_4_2/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/po/fi.gmo,
-	  xfdesktop/branches/xfce_4_2/po/fi.po: update FI translations
+	* Makefile.am, Makefile.in, modules/menu/Makefile.am,
+	  modules/menu/Makefile.in, po/fi.gmo, po/fi.po: update FI
+	  translations
 
 2005-01-22 08:57  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/ko.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ko.po: update KO translations
+	* po/ko.gmo, po/ko.po: update KO translations
 
 2005-01-18 11:53  kelnos
 
-	* xfdesktop/branches/xfce_4_2/modules/menu/desktop-menu-file.c: no
-	  wonder this never worked... (backport)
+	* modules/menu/desktop-menu-file.c: no wonder this never worked...
+	  (backport)
 
 2005-01-18 11:36  pollux
 
-	* xfdesktop/branches/xfce_4_2/menueditor/menueditor.c: fix #706
+	* menueditor/menueditor.c: fix #706
 
 2005-01-10 18:39  benny
 
-	* xfdesktop/branches/xfce_4_2/ChangeLog,
-	  xfdesktop/branches/xfce_4_2/NEWS,
-	  xfdesktop/branches/xfce_4_2/ltmain.sh,
-	  xfdesktop/branches/xfce_4_2/po/xfdesktop.pot: Final touch before
+	* ChangeLog, NEWS, ltmain.sh, po/xfdesktop.pot: Final touch before
 	  the tag
 
 2005-01-10 12:56  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/hu.gmo,
-	  xfdesktop/branches/xfce_4_2/po/hu.po: update HU translations
+	* po/hu.gmo, po/hu.po: update HU translations
 
 2005-01-10 12:23  pollux
 
-	* xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
-	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop:
-	  update LT translations
+	* menueditor/xfce-menueditor.desktop,
+	  settings/xfce-backdrop-settings.desktop: update LT translations
 
 2005-01-10 11:55  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/lt.gmo,
-	  xfdesktop/branches/xfce_4_2/po/lt.po: update LT translations
+	* po/lt.gmo, po/lt.po: update LT translations
 
 2005-01-10 10:05  benny
 
-	* xfdesktop/branches/xfce_4_2/settings/backdrop_settings.c:
-	  xfce-smoke requires darker colors!
+	* settings/backdrop_settings.c: xfce-smoke requires darker colors!
 
 2005-01-10 06:46  olivier
 
-	* xfdesktop/branches/xfce_4_2/settings/backdrop_settings.c:
-	  Reverting colors for Brian
+	* settings/backdrop_settings.c: Reverting colors for Brian
 
 2005-01-10 06:08  olivier
 
-	* xfdesktop/branches/xfce_4_2/ChangeLog: Update ChangeLog
+	* ChangeLog: Update ChangeLog
 
 2005-01-10 06:06  olivier
 
-	* xfdesktop/branches/xfce_4_2/backdrops/xfce-smoke.png: Actually add
-	  the image to CVS
+	* backdrops/xfce-smoke.png: Actually add the image to CVS
 
 2005-01-10 06:06  
 
-	* xfdesktop/branches/xfce_4_2/backdrops/xfce-smoke.png: This commit
-	  was manufactured by cvs2svn to create branch 'xfce_4_2'.
+	* backdrops/xfce-smoke.png: This commit was manufactured by cvs2svn
+	  to create branch 'xfce_4_2'.
 
 2005-01-09 21:18  olivier
 
-	* xfdesktop/branches/xfce_4_2/backdrops/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/backdrops/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/common/xfdesktop-common.h,
-	  xfdesktop/branches/xfce_4_2/ltmain.sh,
-	  xfdesktop/branches/xfce_4_2/settings/backdrop_settings.c: Change
-	  default background/colors for 4.2
+	* backdrops/Makefile.am, backdrops/Makefile.in,
+	  common/xfdesktop-common.h, ltmain.sh,
+	  settings/backdrop_settings.c: Change default background/colors for
+	  4.2
 
 2005-01-09 20:39  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/pt_BR.gmo,
-	  xfdesktop/branches/xfce_4_2/po/pt_BR.po: add Last-Translator tag
+	* po/pt_BR.gmo, po/pt_BR.po: add Last-Translator tag
 
 2005-01-09 13:42  pollux
 
-	* xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
-	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop:
-	  update RO translations
+	* menueditor/xfce-menueditor.desktop,
+	  settings/xfce-backdrop-settings.desktop: update RO translations
 
 2005-01-09 12:52  benny
 
-	* xfdesktop/branches/xfce_4_2/configure,
-	  xfdesktop/branches/xfce_4_2/configure.ac,
-	  xfdesktop/branches/xfce_4_2/doc/C/xfdesktop.html,
-	  xfdesktop/branches/xfce_4_2/doc/C/xfdesktop.xml,
-	  xfdesktop/branches/xfce_4_2/doc/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/doc/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/doc/fr,
-	  xfdesktop/branches/xfce_4_2/doc/it: Remove outdated translations
-	  of the documentation. Update version in documentation.
+	* configure, configure.ac, doc/C/xfdesktop.html,
+	  doc/C/xfdesktop.xml, doc/Makefile.am, doc/Makefile.in, doc/fr,
+	  doc/it: Remove outdated translations of the documentation. Update
+	  version in documentation.
 
 2005-01-09 12:03  pollux
 
-	* xfdesktop/branches/xfce_4_2/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/menu.xml.ro,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.in,
-	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ro,
-	  xfdesktop/branches/xfce_4_2/po/ro.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ro.po: update RO translations
+	* Makefile.in, menu.xml.ro, modules/menu/Makefile.am,
+	  modules/menu/Makefile.in,
+	  modules/menu/xfce-registered-categories.xml.ro, po/ro.gmo,
+	  po/ro.po: update RO translations
 
 2005-01-08 15:49  pollux
 
-	* xfdesktop/branches/xfce_4_2/menu.xml.ru,
-	  xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
-	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ru,
-	  xfdesktop/branches/xfce_4_2/po/ru.gmo,
-	  xfdesktop/branches/xfce_4_2/po/ru.po,
-	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop:
-	  update RU translations
+	* menu.xml.ru, menueditor/xfce-menueditor.desktop,
+	  modules/menu/Makefile.am,
+	  modules/menu/xfce-registered-categories.xml.ru, po/ru.gmo,
+	  po/ru.po, settings/xfce-backdrop-settings.desktop: update RU
+	  translations
 
 2005-01-08 15:49  
 
-	* xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ru:
-	  This commit was manufactured by cvs2svn to create branch
-	  'xfce_4_2'.
+	* modules/menu/xfce-registered-categories.xml.ru: This commit was
+	  manufactured by cvs2svn to create branch 'xfce_4_2'.
 
 2005-01-06 20:33  pollux
 
-	* xfdesktop/branches/xfce_4_2/Makefile.am,
-	  xfdesktop/branches/xfce_4_2/menu.xml.uk,
-	  xfdesktop/branches/xfce_4_2/po/uk.gmo,
-	  xfdesktop/branches/xfce_4_2/po/uk.po: update UK translations, i
-	  hope i didn't forget any file this time
+	* Makefile.am, menu.xml.uk, po/uk.gmo, po/uk.po: update UK
+	  translations, i hope i didn't forget any file this time
 
 2005-01-06 20:33  
 
-	* xfdesktop/branches/xfce_4_2/menu.xml.uk: This commit was
-	  manufactured by cvs2svn to create branch 'xfce_4_2'.
+	* menu.xml.uk: This commit was manufactured by cvs2svn to create
+	  branch 'xfce_4_2'.
 
 2005-01-05 22:57  benny
 
-	* xfdesktop/branches/xfce_4_2/ChangeLog,
-	  xfdesktop/branches/xfce_4_2/configure,
-	  xfdesktop/branches/xfce_4_2/configure.ac,
-	  xfdesktop/branches/xfce_4_2/ltmain.sh: Final updates
+	* ChangeLog, configure, configure.ac, ltmain.sh: Final updates
 
 2005-01-05 16:14  pollux
 
-	* xfdesktop/branches/xfce_4_2/po/he.gmo,
-	  xfdesktop/branches/xfce_4_2/po/he.po: update HE translations
+	* po/he.gmo, po/he.po: update HE translations
 
 2005-01-05 16:14  
 
-	* xfdesktop/branches/xfce_4_2: This commit was manufactured by
-	  cvs2svn to create branch 'xfce_4_2'.
+	* .: This commit was manufactured by cvs2svn to create branch
+	  'xfce_4_2'.
 
 2005-01-02 16:01  kelnos
 
