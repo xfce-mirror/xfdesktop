@@ -858,7 +858,7 @@ manage_desktop_chk_toggled_cb(GtkToggleButton *tb, gpointer user_data)
         setting = mcs_manager_setting_lookup(bd->plugin->manager,
                 "managedesktop-show-warning", BACKDROP_CHANNEL);
         if(!setting || setting->data.v_int) {
-            GtkWidget *dlg, *lbl, *chk, *vbox, *hbox;
+            GtkWidget *dlg, *lbl, *chk, *vbox;
             
             dlg = gtk_dialog_new_with_buttons(_("Information"),
                     GTK_WINDOW(bd->dialog),
