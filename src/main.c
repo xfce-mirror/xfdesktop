@@ -58,10 +58,6 @@
 #include "windowlist.h"
 #include "settings.h"
 
-#define RELOAD_MESSAGE     "reload"
-#define MENU_MESSAGE       "menu"
-#define WINDOWLIST_MESSAGE "windowlist"
-
 SessionClient *client_session = NULL;
 gboolean is_session_managed = FALSE;
 
@@ -174,28 +170,6 @@ button_cb(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
     return TRUE;
 }
 
-static void
-send_client_message(Window xid, const gchar *msg)
-{
-    GdkEventClient gev;
-    GtkWidget *win;
-    
-    win = gtk_invisible_new();
-    gtk_widget_realize(win);
-    
-    gev.type = GDK_CLIENT_EVENT;
-    gev.window = win->window;
-    gev.send_event = TRUE;
-    gev.message_type = gdk_atom_intern("STRING", FALSE);
-    gev.data_format = 8;
-    strcpy(gev.data.b, msg);
-    
-    gdk_event_send_client_message((GdkEvent *)&gev, (GdkNativeWindow)xid);
-    gdk_flush();
-    
-    gtk_widget_destroy(win);
-}
-
 static gboolean 
 reload_idle_cb(gpointer data)
 {
@@ -217,37 +191,14 @@ client_message_received(GtkWidget *w, GdkEventClient *evt, gpointer user_data)
         } else if(!strcmp(WINDOWLIST_MESSAGE, evt->data.b)) {
             popup_windowlist(gtk_widget_get_screen(w), 0, GDK_CURRENT_TIME);
             return TRUE;
+        } else if(!strcmp(QUIT_MESSAGE, evt->data.b)) {
+            gtk_main_quit();
+            return TRUE;
         }
     }
 
     return FALSE;
 }
-
-static gboolean
-check_is_running(Window *xid)
-{
-    const gchar *display = g_getenv("DISPLAY");
-    gchar *p;
-    gint xscreen = -1;
-    gchar selection_name[100];
-    Atom selection_atom;
-    
-    if(display) {
-        if((p=g_strrstr(display, ".")))
-            xscreen = atoi(p);
-    }
-    if(xscreen == -1)
-        xscreen = 0;
-
-    g_snprintf(selection_name, 100, XFDESKTOP_SELECTION_FMT, xscreen);
-    selection_atom = XInternAtom(GDK_DISPLAY(), selection_name, False);
-
-    if((*xid = XGetSelectionOwner(GDK_DISPLAY(), selection_atom)))
-        return TRUE;
-
-    return FALSE;
-}
-
 
 static void
 sighandler_cb(int sig)
@@ -287,21 +238,24 @@ main(int argc, char **argv)
 
     gtk_init(&argc, &argv);
 
-    if(check_is_running(&xid)) {
+    if(xfdesktop_check_is_running(&xid)) {
         DBG("xfdesktop is running");
         
         if(argc <= 1 || strcmp("-reload", argv[1]) == 0)
-            send_client_message(xid, RELOAD_MESSAGE);
+            xfdesktop_send_client_message(xid, RELOAD_MESSAGE);
         else if(strcmp("-menu", argv[1]) == 0)
-            send_client_message(xid, MENU_MESSAGE);
+            xfdesktop_send_client_message(xid, MENU_MESSAGE);
         else if(strcmp("-windowlist", argv[1]) == 0)
-            send_client_message(xid, WINDOWLIST_MESSAGE);
+            xfdesktop_send_client_message(xid, WINDOWLIST_MESSAGE);
+        else if(strcmp("-quit", argv[1]) == 0)
+            xfdesktop_send_client_message(xid, QUIT_MESSAGE);
         else {
             g_printerr(_("%s: Unknown option: %s\n"), PACKAGE, argv[1]);
             g_printerr(_("Options are:\n"));
             g_printerr(_("    -reload      Reload all settings, refresh image list\n"));
             g_printerr(_("    -menu        Pop up the menu (at the current mouse position)\n"));
             g_printerr(_("    -windowlist  Pop up the window list (at the current mouse position)\n"));
+            g_printerr(_("    -quit        Cause xfdesktop to quit\n"));
             
             return 1;
         }
@@ -330,6 +284,8 @@ main(int argc, char **argv)
         gtk_widget_show(desktops[i]);
         gdk_window_lower(desktops[i]->window);
     }
+    
+    signal(SIGPIPE, SIG_IGN);
     
     client_session = client_session_new(argc, argv, NULL,
             SESSION_RESTART_IF_RUNNING, 35);

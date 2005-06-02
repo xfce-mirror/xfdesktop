@@ -471,6 +471,7 @@ static gboolean
 menu_dentry_parse_dentry_file(XfceDesktopMenu *desktop_menu,
         const gchar *filename, MenuPathType pathtype) 
 {
+    gboolean ret = FALSE;
     XfceDesktopEntry *dentry;
     
     //TRACE("dummy");
@@ -478,13 +479,13 @@ menu_dentry_parse_dentry_file(XfceDesktopMenu *desktop_menu,
     dentry = xfce_desktop_entry_new(filename, dentry_keywords,
             G_N_ELEMENTS(dentry_keywords));
     if(dentry) {
-        gboolean ret = menu_dentry_parse_dentry(desktop_menu, dentry,
+        ret = menu_dentry_parse_dentry(desktop_menu, dentry,
                 pathtype, FALSE, NULL);
         g_object_unref(G_OBJECT(dentry));
         return ret;
     }
     
-    return FALSE;
+    return ret;
 }
 
 static gint

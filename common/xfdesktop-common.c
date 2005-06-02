@@ -28,6 +28,7 @@
 #include <stdio.h>
 
 #include <glib.h>
+#include <gdk/gdkx.h>
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/dialogs.h>
 
@@ -184,4 +185,51 @@ xfce_desktop_get_menufile()
     g_warning("%s: Could not locate a menu definition file", PACKAGE);
 
     return NULL;
+}
+
+gboolean
+xfdesktop_check_is_running(Window *xid)
+{
+    const gchar *display = g_getenv("DISPLAY");
+    gchar *p;
+    gint xscreen = -1;
+    gchar selection_name[100];
+    Atom selection_atom;
+    
+    if(display) {
+        if((p=g_strrstr(display, ".")))
+            xscreen = atoi(p);
+    }
+    if(xscreen == -1)
+        xscreen = 0;
+
+    g_snprintf(selection_name, 100, XFDESKTOP_SELECTION_FMT, xscreen);
+    selection_atom = XInternAtom(GDK_DISPLAY(), selection_name, False);
+
+    if((*xid = XGetSelectionOwner(GDK_DISPLAY(), selection_atom)))
+        return TRUE;
+
+    return FALSE;
+}
+
+void
+xfdesktop_send_client_message(Window xid, const gchar *msg)
+{
+    GdkEventClient gev;
+    GtkWidget *win;
+    
+    win = gtk_invisible_new();
+    gtk_widget_realize(win);
+    
+    gev.type = GDK_CLIENT_EVENT;
+    gev.window = win->window;
+    gev.send_event = TRUE;
+    gev.message_type = gdk_atom_intern("STRING", FALSE);
+    gev.data_format = 8;
+    strcpy(gev.data.b, msg);
+    
+    gdk_event_send_client_message((GdkEvent *)&gev, (GdkNativeWindow)xid);
+    gdk_flush();
+    
+    gtk_widget_destroy(win);
 }

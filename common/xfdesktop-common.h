@@ -27,11 +27,18 @@
 
 #include <glib.h>
 
+#include <X11/Xlib.h>
+
 #define BACKDROP_CHANNEL         "BACKDROP"
 #define DEFAULT_BACKDROP         DATADIR "/xfce4/backdrops/xfce-stripes.png"
 #define LIST_TEXT                "# xfce backdrop list"
 #define XFDESKTOP_SELECTION_FMT  "XFDESKTOP_SELECTION_%d"
 #define XFDESKTOP_IMAGE_FILE_FMT "XFDESKTOP_IMAGE_FILE_%d"
+
+#define RELOAD_MESSAGE     "reload"
+#define MENU_MESSAGE       "menu"
+#define WINDOWLIST_MESSAGE "windowlist"
+#define QUIT_MESSAGE       "quit"
 
 G_BEGIN_DECLS
 
@@ -55,6 +62,8 @@ gchar **get_list_from_file(const gchar *);
 gboolean is_backdrop_list(const gchar *path);
 gboolean xfdesktop_check_image_file(const gchar *filename);
 gchar *xfce_desktop_get_menufile();
+gboolean xfdesktop_check_is_running(Window *xid);
+void xfdesktop_send_client_message(Window xid, const gchar *msg);
 
 G_END_DECLS
 

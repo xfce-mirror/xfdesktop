@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-28 22:00-0800\n"
+"POT-Creation-Date: 2005-06-01 19:50-0700\n"
 "PO-Revision-Date: 2005-04-20 20:40+0530\n"
 "Last-Translator: Pallavi Nikam <pallavi_edu@rediffmail.com>\n"
 "Language-Team: Marathi <LL@li.org>\n"
@@ -315,42 +315,83 @@ msgstr "लपलेले"
 msgid "/Other"
 msgstr "/बाकीचे"
 
-#: panel-plugin/desktop-menu-plugin.c:205
-#: panel-plugin/desktop-menu-plugin.c:535
+#: panel-plugin/desktop-menu-plugin.c:335
+#: panel-plugin/desktop-menu-plugin.c:904
 msgid "Xfce Menu"
 msgstr "Xfce यादी"
 
-#: panel-plugin/desktop-menu-plugin.c:373
+#: panel-plugin/desktop-menu-plugin.c:575
 msgid "Select Icon"
 msgstr "आयकॉन निवडा"
 
-#: panel-plugin/desktop-menu-plugin.c:375
+#: panel-plugin/desktop-menu-plugin.c:577
 msgid "Select Menu File"
 msgstr "यादिची फाईल निवडा"
 
-#: panel-plugin/desktop-menu-plugin.c:390 settings/backdrop-mgr.c:414
+#: panel-plugin/desktop-menu-plugin.c:592 settings/backdrop-mgr.c:414
 #: settings/backdrop-mgr.c:515 settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "सर्व फाईल्स"
 
-#: panel-plugin/desktop-menu-plugin.c:396 settings/backdrop-mgr.c:418
+#: panel-plugin/desktop-menu-plugin.c:598 settings/backdrop-mgr.c:418
 #: settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "प्रतिमा फाईल्सची "
 
-#: panel-plugin/desktop-menu-plugin.c:404
+#: panel-plugin/desktop-menu-plugin.c:606
 msgid "Menu Files"
 msgstr "यादी फाईल्स"
 
-#: panel-plugin/desktop-menu-plugin.c:465
-msgid "_Menu file:"
-msgstr "यादी फाईल (_M):"
+#: panel-plugin/desktop-menu-plugin.c:722 settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "xfce4-यादी संपादक लॉन्च करु शकत नाही: %s"
 
-#: panel-plugin/desktop-menu-plugin.c:499
+#: panel-plugin/desktop-menu-plugin.c:740
+#, fuzzy
+msgid "Button"
+msgstr "बटन आयकॉन (_B):"
+
+#: panel-plugin/desktop-menu-plugin.c:753
+#, fuzzy
+msgid "Button _title:"
+msgstr "बटन आयकॉन (_B):"
+
+#: panel-plugin/desktop-menu-plugin.c:766
+msgid "_Show title in button"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:773
+#, fuzzy
+msgid "Menu File"
+msgstr "यादी फाईल्स"
+
+#: panel-plugin/desktop-menu-plugin.c:785
+#, fuzzy
+msgid "Use default _desktop menu file"
+msgstr "डेस्कटॉप यादी संपादन (_E)"
+
+#: panel-plugin/desktop-menu-plugin.c:794
+#, fuzzy
+msgid "Use _custom menu file:"
+msgstr "यादी फाईल उघडा"
+
+#: panel-plugin/desktop-menu-plugin.c:846
+#: panel-plugin/desktop-menu-plugin.c:848
+#, fuzzy
+msgid "_Edit Menu"
+msgstr "यादी (_M)"
+
+#: panel-plugin/desktop-menu-plugin.c:855
+#, fuzzy
+msgid "Icons"
+msgstr "आयकॉन:"
+
+#: panel-plugin/desktop-menu-plugin.c:867
 msgid "_Button icon:"
 msgstr "बटन आयकॉन (_B):"
 
-#: panel-plugin/desktop-menu-plugin.c:524
+#: panel-plugin/desktop-menu-plugin.c:891
 msgid "Show _icons in menu"
 msgstr "यादीमध्ये आयकॉनस दाखवा (_i)"
 
@@ -404,8 +445,8 @@ msgid "Edit backdrop list"
 msgstr "बॅकड्रॉप सूचीचे संपादन करा"
 
 #. the dialog
-#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
-#: src/xfce-desktop.c:676
+#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:916
+#: src/xfce-desktop.c:677
 msgid "Desktop"
 msgstr "डेस्कटॉप"
 
@@ -453,91 +494,115 @@ msgstr "स्वयं"
 msgid "Adjust _Brightness:"
 msgstr "प्रकाशिझोत सुव्यवस्थीत करा (_B):"
 
+#: settings/backdrop_settings.c:838
+#, c-format
+msgid "Xfce will be unable to manage your desktop (%s)."
+msgstr ""
+
+#: settings/backdrop_settings.c:839
+msgid "Unknown Error"
+msgstr ""
+
+#: settings/backdrop_settings.c:843
+msgid "Error"
+msgstr ""
+
+#: settings/backdrop_settings.c:845
+msgid "Unable to start xfdesktop"
+msgstr ""
+
+#: settings/backdrop_settings.c:863
+#, fuzzy
+msgid "Information"
+msgstr "बदल दुर्लक्षीत करा"
+
+#: settings/backdrop_settings.c:873
+msgid ""
+"To ensure that Xfce does not manage your desktop the next time you start "
+"Xfce, please be sure to save your session when logging out.  If you are not "
+"using the Xfce Session Manager (xfce4-session), you will need to manually "
+"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
+"documentation provided on http://xfce.org/."
+msgstr ""
+
+#: settings/backdrop_settings.c:881
+msgid "_Do not show this again"
+msgstr ""
+
 #. header
-#: settings/backdrop_settings.c:851
+#: settings/backdrop_settings.c:931
 #: settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "डेस्कटॉप रचना"
 
-#: settings/backdrop_settings.c:880
+#: settings/backdrop_settings.c:936
+msgid "Allow _Xfce to manage the desktop"
+msgstr ""
+
+#: settings/backdrop_settings.c:972
 msgid "_Backdrops"
 msgstr "बॅकड्रॉपस (_B)"
 
 #. color settings frame
-#: settings/backdrop_settings.c:906
+#: settings/backdrop_settings.c:998
 msgid "Color"
 msgstr "रंग"
 
-#: settings/backdrop_settings.c:920
+#: settings/backdrop_settings.c:1012
 msgid "_Color Style:"
 msgstr "रंगांची शैली(_C):"
 
-#: settings/backdrop_settings.c:929
+#: settings/backdrop_settings.c:1021
 msgid "Solid Color"
 msgstr "भरीव रंग"
 
-#: settings/backdrop_settings.c:936
+#: settings/backdrop_settings.c:1028
 msgid "Horizontal Gradient"
 msgstr "आडवे मान"
 
-#: settings/backdrop_settings.c:943
+#: settings/backdrop_settings.c:1035
 msgid "Vertical Gradient"
 msgstr "उभे मान"
 
-#: settings/backdrop_settings.c:964
+#: settings/backdrop_settings.c:1056
 msgid "Fi_rst Color:"
 msgstr "प्रथम रंग (_r):"
 
-#: settings/backdrop_settings.c:985
+#: settings/backdrop_settings.c:1077
 msgid "_Second Color:"
 msgstr "द्वितीय(_S):"
 
-#. set color only checkbox
-#: settings/backdrop_settings.c:1006
-msgid "Set color _only"
-msgstr "फक्त रंगाची सजावट(_o)"
-
-#: settings/backdrop_settings.c:1021
+#: settings/backdrop_settings.c:1102
 msgid "Image"
 msgstr "इमेज"
 
-#: settings/backdrop_settings.c:1029
+#: settings/backdrop_settings.c:1110
 msgid "Show _Image"
 msgstr "इमेज दाखवा (_I)"
 
-#: settings/backdrop_settings.c:1051
+#: settings/backdrop_settings.c:1132
 msgid "_File:"
 msgstr "फाईल(_F):"
 
-#. don't set backdrop checkbox
-#: settings/backdrop_settings.c:1088
-msgid "_Don't set backdrop"
-msgstr "बॅकड्रॉपची (_B)"
-
 #. add the single backdrop settings page to the main notebook
-#: settings/backdrop_settings.c:1111
+#: settings/backdrop_settings.c:1180
 msgid "_Backdrop"
 msgstr "बॅकड्रॉप (_B)"
 
-#: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
+#: settings/backdrop_settings.c:1188 settings/backdrop_settings.c:1190
 #, c-format
 msgid "Screen %d"
 msgstr " पडदा %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: settings/backdrop_settings.c:1126
+#: settings/backdrop_settings.c:1195
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "%d पडदा %d मॉनिटर"
 
-#: settings/backdrop_settings.c:1140
+#: settings/backdrop_settings.c:1209
 msgid "_Menu"
 msgstr "यादी (_M)"
-
-#: settings/menu_settings.c:132
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "xfce4-यादी संपादक लॉन्च करु शकत नाही: %s"
 
 #: settings/menu_settings.c:153
 msgid "Window List"
@@ -567,27 +632,31 @@ msgstr "अॅप्लिकेशन आयकॉन दाखवा (_a)"
 msgid "_Edit desktop menu"
 msgstr "डेस्कटॉप यादी संपादन (_E)"
 
-#: src/main.c:300
+#: src/main.c:253
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: अपरिची पर्याय:%s\n"
 
-#: src/main.c:301
+#: src/main.c:254
 msgid "Options are:\n"
 msgstr "पर्याय:\n"
 
-#: src/main.c:302
+#: src/main.c:255
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "-रिलोड    सर्व रचना रिलोड करा, इमेजची सूची रिफ्रेश करा\n"
 
-#: src/main.c:303
+#: src/main.c:256
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "      -यादी        यादी दाखवा (माउस सध्या ज्या जागेवेर आहे तिथे)\n"
 
-#: src/main.c:304
+#: src/main.c:257
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr " - विण्डोसूची    विण्डो ची सूची दाखवा (माउस सध्या ज्या जागेवेर आहे तिथे)\n"
+
+#: src/main.c:258
+msgid "    -quit        Cause xfdesktop to quit\n"
+msgstr ""
 
 #: src/windowlist.c:193
 #, c-format
@@ -632,3 +701,12 @@ msgstr "Xfce 4 डेस्कटॉप व्यवस्थापकाची 
 #: settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 डेस्कटॉप रचना"
+
+#~ msgid "_Menu file:"
+#~ msgstr "यादी फाईल (_M):"
+
+#~ msgid "Set color _only"
+#~ msgstr "फक्त रंगाची सजावट(_o)"
+
+#~ msgid "_Don't set backdrop"
+#~ msgstr "बॅकड्रॉपची (_B)"

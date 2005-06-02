@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-05 16:05+0900\n"
+"POT-Creation-Date: 2005-06-01 19:50-0700\n"
 "PO-Revision-Date: 2005-03-06 20:08+0900\n"
 "Last-Translator: Daichi Kawahata <daichik@users.sourceforge.net>\n"
 "Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
@@ -102,7 +102,7 @@ msgstr "アイテムを追加するには全ての項目に記入して下さい
 msgid "The 'Name' field is required."
 msgstr "'名前' の項目は必須です。"
 
-#: menueditor/add_dialog.c:331 menueditor/utils.c:318
+#: menueditor/add_dialog.c:331
 msgid "--- separator ---"
 msgstr "--- セパレータ ---"
 
@@ -150,11 +150,10 @@ msgid "The 'Source' field is required."
 msgstr "'ソース' 項目は必須です。"
 
 #: menueditor/add_menu_dialog.c:202 menueditor/add_menu_dialog.c:212
-#: menueditor/utils.c:372
 msgid "--- include ---"
 msgstr "--- 組込み ---"
 
-#: menueditor/add_menu_dialog.c:213 menueditor/utils.c:389
+#: menueditor/add_menu_dialog.c:213
 msgid "system"
 msgstr "システム"
 
@@ -192,7 +191,7 @@ msgstr "現在のメニューを閉じても構いませんか？"
 msgid "Do you want to save before closing the file?"
 msgstr "ファイルを閉じる前に保存しますか？"
 
-#: menueditor/menueditor.c:334 menueditor/utils.c:587
+#: menueditor/menueditor.c:334
 msgid "Select command"
 msgstr "コマンドを選択して下さい"
 
@@ -313,89 +312,81 @@ msgstr "コマンド"
 msgid "Hidden"
 msgstr "隠す"
 
-#: menueditor/utils.c:649
-msgid "Select icon"
-msgstr "アイコンを選択して下さい"
-
-#: menueditor/utils.c:654 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
-#: settings/backdrop_settings.c:533
-msgid "All Files"
-msgstr "全てのファイル"
-
-#: menueditor/utils.c:658 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
-msgid "Image Files"
-msgstr "画像ファイル"
-
-#: menueditor/xfce-menueditor.desktop.in.h:1
-msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Xfce 4 メニューを編集するグラフィカルツール"
-
-#: menueditor/xfce-menueditor.desktop.in.h:2
-msgid "Menu Editor"
-msgstr "メニューエディタ"
-
-#: menueditor/xfce-menueditor.desktop.in.h:3
-msgid "Xfce 4 Menu Editor"
-msgstr "Xfce 4 メニューエディタ"
-
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
 msgstr "/その他"
 
-#: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:335
+#: panel-plugin/desktop-menu-plugin.c:904
 msgid "Xfce Menu"
 msgstr "Xfce メニュー"
 
-#: panel-plugin/desktop-menu-plugin.c:493
+#: panel-plugin/desktop-menu-plugin.c:575
 msgid "Select Icon"
 msgstr "アイコンを選択して下さい"
 
-#: panel-plugin/desktop-menu-plugin.c:495
+#: panel-plugin/desktop-menu-plugin.c:577
 msgid "Select Menu File"
 msgstr "メニューファイルを選択して下さい"
 
-#: panel-plugin/desktop-menu-plugin.c:524
+#: panel-plugin/desktop-menu-plugin.c:592 settings/backdrop-mgr.c:414
+#: settings/backdrop-mgr.c:515 settings/backdrop_settings.c:533
+msgid "All Files"
+msgstr "全てのファイル"
+
+#: panel-plugin/desktop-menu-plugin.c:598 settings/backdrop-mgr.c:418
+#: settings/backdrop_settings.c:537
+msgid "Image Files"
+msgstr "画像ファイル"
+
+#: panel-plugin/desktop-menu-plugin.c:606
 msgid "Menu Files"
 msgstr "メニューファイル"
 
-#: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
+#: panel-plugin/desktop-menu-plugin.c:722 settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor を実行できません: %s"
 
-#: panel-plugin/desktop-menu-plugin.c:663
+#: panel-plugin/desktop-menu-plugin.c:740
+#, fuzzy
+msgid "Button"
+msgstr "ボタンアイコン(_B):"
+
+#: panel-plugin/desktop-menu-plugin.c:753
 msgid "Button _title:"
 msgstr "ボタンタイトル(_T):"
 
-#: panel-plugin/desktop-menu-plugin.c:676
+#: panel-plugin/desktop-menu-plugin.c:766
+msgid "_Show title in button"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:773
 msgid "Menu File"
 msgstr "メニューファイル"
 
-#: panel-plugin/desktop-menu-plugin.c:688
+#: panel-plugin/desktop-menu-plugin.c:785
 msgid "Use default _desktop menu file"
 msgstr "既定のデスクトップメニューを使用(_D)"
 
-#: panel-plugin/desktop-menu-plugin.c:697
+#: panel-plugin/desktop-menu-plugin.c:794
 msgid "Use _custom menu file:"
 msgstr "カスタム・メニューファイルを使用(_C):"
 
-#: panel-plugin/desktop-menu-plugin.c:749
-#: panel-plugin/desktop-menu-plugin.c:751
+#: panel-plugin/desktop-menu-plugin.c:846
+#: panel-plugin/desktop-menu-plugin.c:848
 msgid "_Edit Menu"
 msgstr "メニューを編集(_E)"
 
-#: panel-plugin/desktop-menu-plugin.c:758
+#: panel-plugin/desktop-menu-plugin.c:855
 msgid "Icons"
 msgstr "アイコン"
 
-#: panel-plugin/desktop-menu-plugin.c:770
+#: panel-plugin/desktop-menu-plugin.c:867
 msgid "_Button icon:"
 msgstr "ボタンアイコン(_B):"
 
-#: panel-plugin/desktop-menu-plugin.c:794
+#: panel-plugin/desktop-menu-plugin.c:891
 msgid "Show _icons in menu"
 msgstr "メニューでアイコンを表示(_I):"
 
@@ -450,8 +441,8 @@ msgid "Edit backdrop list"
 msgstr "背景リスト編集"
 
 #. the dialog
-#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
-#: src/xfce-desktop.c:676
+#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:916
+#: src/xfce-desktop.c:677
 msgid "Desktop"
 msgstr "デスクトップ"
 
@@ -499,84 +490,113 @@ msgstr "自動"
 msgid "Adjust _Brightness:"
 msgstr "明度を調節する(_B):"
 
+#: settings/backdrop_settings.c:838
+#, c-format
+msgid "Xfce will be unable to manage your desktop (%s)."
+msgstr ""
+
+#: settings/backdrop_settings.c:839
+msgid "Unknown Error"
+msgstr ""
+
+#: settings/backdrop_settings.c:843
+msgid "Error"
+msgstr ""
+
+#: settings/backdrop_settings.c:845
+msgid "Unable to start xfdesktop"
+msgstr ""
+
+#: settings/backdrop_settings.c:863
+#, fuzzy
+msgid "Information"
+msgstr "変更を無視する"
+
+#: settings/backdrop_settings.c:873
+msgid ""
+"To ensure that Xfce does not manage your desktop the next time you start "
+"Xfce, please be sure to save your session when logging out.  If you are not "
+"using the Xfce Session Manager (xfce4-session), you will need to manually "
+"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
+"documentation provided on http://xfce.org/."
+msgstr ""
+
+#: settings/backdrop_settings.c:881
+msgid "_Do not show this again"
+msgstr ""
+
 #. header
-#: settings/backdrop_settings.c:851
+#: settings/backdrop_settings.c:931
 #: settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "デスクトップ設定"
 
-#: settings/backdrop_settings.c:880
+#: settings/backdrop_settings.c:936
+msgid "Allow _Xfce to manage the desktop"
+msgstr ""
+
+#: settings/backdrop_settings.c:972
 msgid "_Backdrops"
 msgstr "背景(_B)"
 
 #. color settings frame
-#: settings/backdrop_settings.c:906
+#: settings/backdrop_settings.c:998
 msgid "Color"
 msgstr "カラー"
 
-#: settings/backdrop_settings.c:920
+#: settings/backdrop_settings.c:1012
 msgid "_Color Style:"
 msgstr "色スタイル(_C):"
 
-#: settings/backdrop_settings.c:929
+#: settings/backdrop_settings.c:1021
 msgid "Solid Color"
 msgstr "単色"
 
-#: settings/backdrop_settings.c:936
+#: settings/backdrop_settings.c:1028
 msgid "Horizontal Gradient"
 msgstr "水平グラデーション"
 
-#: settings/backdrop_settings.c:943
+#: settings/backdrop_settings.c:1035
 msgid "Vertical Gradient"
 msgstr "垂直グラデーション"
 
-#: settings/backdrop_settings.c:964
+#: settings/backdrop_settings.c:1056
 msgid "Fi_rst Color:"
 msgstr "最初の色(_R):"
 
-#: settings/backdrop_settings.c:985
+#: settings/backdrop_settings.c:1077
 msgid "_Second Color:"
 msgstr "二番目の色(_S):"
 
-#. set color only checkbox
-#: settings/backdrop_settings.c:1006
-msgid "Set color _only"
-msgstr "単色のみを使用(_O)"
-
-#: settings/backdrop_settings.c:1021
+#: settings/backdrop_settings.c:1102
 msgid "Image"
 msgstr "画像"
 
-#: settings/backdrop_settings.c:1029
+#: settings/backdrop_settings.c:1110
 msgid "Show _Image"
 msgstr "画像を表示する(_I)"
 
-#: settings/backdrop_settings.c:1051
+#: settings/backdrop_settings.c:1132
 msgid "_File:"
 msgstr "ファイル(_F):"
 
-#. don't set backdrop checkbox
-#: settings/backdrop_settings.c:1088
-msgid "_Don't set backdrop"
-msgstr "背景を設定しない(_D)"
-
 #. add the single backdrop settings page to the main notebook
-#: settings/backdrop_settings.c:1111
+#: settings/backdrop_settings.c:1180
 msgid "_Backdrop"
 msgstr "背景(_B)"
 
-#: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
+#: settings/backdrop_settings.c:1188 settings/backdrop_settings.c:1190
 #, c-format
 msgid "Screen %d"
 msgstr "画面 %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: settings/backdrop_settings.c:1126
+#: settings/backdrop_settings.c:1195
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "画面 %d, モニタ %d"
 
-#: settings/backdrop_settings.c:1140
+#: settings/backdrop_settings.c:1209
 msgid "_Menu"
 msgstr "メニュー(_M)"
 
@@ -608,35 +628,31 @@ msgstr "アプリケーションアイコンを表示(_A)"
 msgid "_Edit desktop menu"
 msgstr "デスクトップメニューを編集(_E)"
 
-#: settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr "Xfce 4 デスクトップマネージャの設定"
-
-#: settings/xfce-backdrop-settings.desktop.in.h:3
-msgid "Xfce 4 Desktop Settings"
-msgstr "Xfce 4 デスクトップ設定"
-
-#: src/main.c:300
+#: src/main.c:253
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: 不明なオプション: %s\n"
 
-#: src/main.c:301
+#: src/main.c:254
 msgid "Options are:\n"
 msgstr "オプションは:\n"
 
-#: src/main.c:302
+#: src/main.c:255
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      全ての設定を再読込みして、画像リストを更新\n"
 
-#: src/main.c:303
+#: src/main.c:256
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        メニューをポップアップ (現在のマウス位置で)\n"
 
-#: src/main.c:304
+#: src/main.c:257
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  ウィンドウリストをポップアップ (現在のマウス位置で)\n"
+
+#: src/main.c:258
+msgid "    -quit        Cause xfdesktop to quit\n"
+msgstr ""
 
 #: src/windowlist.c:193
 #, c-format
@@ -661,3 +677,32 @@ msgstr "ワークスペース %d を削除する(_R)"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース '%s' を削除する(_R)"
+
+#: menueditor/xfce-menueditor.desktop.in.h:1
+msgid "Graphical tool for editing the Xfce 4 menu"
+msgstr "Xfce 4 メニューを編集するグラフィカルツール"
+
+#: menueditor/xfce-menueditor.desktop.in.h:2
+msgid "Menu Editor"
+msgstr "メニューエディタ"
+
+#: menueditor/xfce-menueditor.desktop.in.h:3
+msgid "Xfce 4 Menu Editor"
+msgstr "Xfce 4 メニューエディタ"
+
+#: settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Settings for the Xfce 4 Desktop Manager"
+msgstr "Xfce 4 デスクトップマネージャの設定"
+
+#: settings/xfce-backdrop-settings.desktop.in.h:3
+msgid "Xfce 4 Desktop Settings"
+msgstr "Xfce 4 デスクトップ設定"
+
+#~ msgid "Set color _only"
+#~ msgstr "単色のみを使用(_O)"
+
+#~ msgid "_Don't set backdrop"
+#~ msgstr "背景を設定しない(_D)"
+
+#~ msgid "Select icon"
+#~ msgstr "アイコンを選択して下さい"

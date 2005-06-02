@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-28 22:00-0800\n"
+"POT-Creation-Date: 2005-06-01 19:50-0700\n"
 "PO-Revision-Date: 2004-01-13 00:00+0100\n"
 "Last-Translator: edscott <edscott@xfce.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -316,42 +316,83 @@ msgstr "Oculto"
 msgid "/Other"
 msgstr "/Otro"
 
-#: panel-plugin/desktop-menu-plugin.c:205
-#: panel-plugin/desktop-menu-plugin.c:535
+#: panel-plugin/desktop-menu-plugin.c:335
+#: panel-plugin/desktop-menu-plugin.c:904
 msgid "Xfce Menu"
 msgstr "Menú Xfce"
 
-#: panel-plugin/desktop-menu-plugin.c:373
+#: panel-plugin/desktop-menu-plugin.c:575
 msgid "Select Icon"
 msgstr "Seleccionar ícono"
 
-#: panel-plugin/desktop-menu-plugin.c:375
+#: panel-plugin/desktop-menu-plugin.c:577
 msgid "Select Menu File"
 msgstr "Seleccionar archivo de menú"
 
-#: panel-plugin/desktop-menu-plugin.c:390 settings/backdrop-mgr.c:414
+#: panel-plugin/desktop-menu-plugin.c:592 settings/backdrop-mgr.c:414
 #: settings/backdrop-mgr.c:515 settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Todos los archivos"
 
-#: panel-plugin/desktop-menu-plugin.c:396 settings/backdrop-mgr.c:418
+#: panel-plugin/desktop-menu-plugin.c:598 settings/backdrop-mgr.c:418
 #: settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Archivos de imágenes"
 
-#: panel-plugin/desktop-menu-plugin.c:404
+#: panel-plugin/desktop-menu-plugin.c:606
 msgid "Menu Files"
 msgstr "Archivos de menú"
 
-#: panel-plugin/desktop-menu-plugin.c:465
-msgid "_Menu file:"
-msgstr "Archivo de menu:"
+#: panel-plugin/desktop-menu-plugin.c:722 settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "No se puede ejecutar xfce4-menueditor: %s"
 
-#: panel-plugin/desktop-menu-plugin.c:499
+#: panel-plugin/desktop-menu-plugin.c:740
+#, fuzzy
+msgid "Button"
+msgstr "Ícono del botón"
+
+#: panel-plugin/desktop-menu-plugin.c:753
+#, fuzzy
+msgid "Button _title:"
+msgstr "Ícono del botón"
+
+#: panel-plugin/desktop-menu-plugin.c:766
+msgid "_Show title in button"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:773
+#, fuzzy
+msgid "Menu File"
+msgstr "Archivos de menú"
+
+#: panel-plugin/desktop-menu-plugin.c:785
+#, fuzzy
+msgid "Use default _desktop menu file"
+msgstr "Editar menú de escritorio"
+
+#: panel-plugin/desktop-menu-plugin.c:794
+#, fuzzy
+msgid "Use _custom menu file:"
+msgstr "Abrir un archivo de menú"
+
+#: panel-plugin/desktop-menu-plugin.c:846
+#: panel-plugin/desktop-menu-plugin.c:848
+#, fuzzy
+msgid "_Edit Menu"
+msgstr "Menú"
+
+#: panel-plugin/desktop-menu-plugin.c:855
+#, fuzzy
+msgid "Icons"
+msgstr "Ícono:"
+
+#: panel-plugin/desktop-menu-plugin.c:867
 msgid "_Button icon:"
 msgstr "Ícono del botón"
 
-#: panel-plugin/desktop-menu-plugin.c:524
+#: panel-plugin/desktop-menu-plugin.c:891
 msgid "Show _icons in menu"
 msgstr "Mostrar íconos en el menú"
 
@@ -406,8 +447,8 @@ msgid "Edit backdrop list"
 msgstr "Editar lista de fondos"
 
 #. the dialog
-#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
-#: src/xfce-desktop.c:676
+#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:916
+#: src/xfce-desktop.c:677
 msgid "Desktop"
 msgstr "Escritorio"
 
@@ -455,91 +496,115 @@ msgstr "Automático"
 msgid "Adjust _Brightness:"
 msgstr "Ajustar brillantez:"
 
+#: settings/backdrop_settings.c:838
+#, c-format
+msgid "Xfce will be unable to manage your desktop (%s)."
+msgstr ""
+
+#: settings/backdrop_settings.c:839
+msgid "Unknown Error"
+msgstr ""
+
+#: settings/backdrop_settings.c:843
+msgid "Error"
+msgstr ""
+
+#: settings/backdrop_settings.c:845
+msgid "Unable to start xfdesktop"
+msgstr ""
+
+#: settings/backdrop_settings.c:863
+#, fuzzy
+msgid "Information"
+msgstr "Ignorar modificaciones"
+
+#: settings/backdrop_settings.c:873
+msgid ""
+"To ensure that Xfce does not manage your desktop the next time you start "
+"Xfce, please be sure to save your session when logging out.  If you are not "
+"using the Xfce Session Manager (xfce4-session), you will need to manually "
+"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
+"documentation provided on http://xfce.org/."
+msgstr ""
+
+#: settings/backdrop_settings.c:881
+msgid "_Do not show this again"
+msgstr ""
+
 #. header
-#: settings/backdrop_settings.c:851
+#: settings/backdrop_settings.c:931
 #: settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "Configuración del Escritorio"
 
-#: settings/backdrop_settings.c:880
+#: settings/backdrop_settings.c:936
+msgid "Allow _Xfce to manage the desktop"
+msgstr ""
+
+#: settings/backdrop_settings.c:972
 msgid "_Backdrops"
 msgstr "Fondos"
 
 #. color settings frame
-#: settings/backdrop_settings.c:906
+#: settings/backdrop_settings.c:998
 msgid "Color"
 msgstr "Color"
 
-#: settings/backdrop_settings.c:920
+#: settings/backdrop_settings.c:1012
 msgid "_Color Style:"
 msgstr "Estilo de color:"
 
-#: settings/backdrop_settings.c:929
+#: settings/backdrop_settings.c:1021
 msgid "Solid Color"
 msgstr "Color sólido"
 
-#: settings/backdrop_settings.c:936
+#: settings/backdrop_settings.c:1028
 msgid "Horizontal Gradient"
 msgstr "Gradiente horizontal"
 
-#: settings/backdrop_settings.c:943
+#: settings/backdrop_settings.c:1035
 msgid "Vertical Gradient"
 msgstr "Gradiente vertical"
 
-#: settings/backdrop_settings.c:964
+#: settings/backdrop_settings.c:1056
 msgid "Fi_rst Color:"
 msgstr "Primer color:"
 
-#: settings/backdrop_settings.c:985
+#: settings/backdrop_settings.c:1077
 msgid "_Second Color:"
 msgstr "Segundo color:"
 
-#. set color only checkbox
-#: settings/backdrop_settings.c:1006
-msgid "Set color _only"
-msgstr "Usar color:"
-
-#: settings/backdrop_settings.c:1021
+#: settings/backdrop_settings.c:1102
 msgid "Image"
 msgstr "Imagen"
 
-#: settings/backdrop_settings.c:1029
+#: settings/backdrop_settings.c:1110
 msgid "Show _Image"
 msgstr "Mostrar imagen"
 
-#: settings/backdrop_settings.c:1051
+#: settings/backdrop_settings.c:1132
 msgid "_File:"
 msgstr "Archivo:"
 
-#. don't set backdrop checkbox
-#: settings/backdrop_settings.c:1088
-msgid "_Don't set backdrop"
-msgstr "No cambiar el fondo"
-
 #. add the single backdrop settings page to the main notebook
-#: settings/backdrop_settings.c:1111
+#: settings/backdrop_settings.c:1180
 msgid "_Backdrop"
 msgstr "Fondo"
 
-#: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
+#: settings/backdrop_settings.c:1188 settings/backdrop_settings.c:1190
 #, c-format
 msgid "Screen %d"
 msgstr "Pantalla %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: settings/backdrop_settings.c:1126
+#: settings/backdrop_settings.c:1195
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Pantalla %d, Monitor %d"
 
-#: settings/backdrop_settings.c:1140
+#: settings/backdrop_settings.c:1209
 msgid "_Menu"
 msgstr "Menú"
-
-#: settings/menu_settings.c:132
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "No se puede ejecutar xfce4-menueditor: %s"
 
 #: settings/menu_settings.c:153
 msgid "Window List"
@@ -569,27 +634,31 @@ msgstr "Mostrar íconos de aplicaciones"
 msgid "_Edit desktop menu"
 msgstr "Editar menú de escritorio"
 
-#: src/main.c:300
+#: src/main.c:253
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Opción desconocida: %s\n"
 
-#: src/main.c:301
+#: src/main.c:254
 msgid "Options are:\n"
 msgstr "Las opciones:\n"
 
-#: src/main.c:302
+#: src/main.c:255
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -recargar    Recargar configuración\n"
 
-#: src/main.c:303
+#: src/main.c:256
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menú        Mostrar el menú\n"
 
-#: src/main.c:304
+#: src/main.c:257
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Mostrar lista de ventanas\n"
+
+#: src/main.c:258
+msgid "    -quit        Cause xfdesktop to quit\n"
+msgstr ""
 
 #: src/windowlist.c:193
 #, c-format
@@ -634,6 +703,15 @@ msgstr "Configuración para el escritorio Xfce4"
 #: settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Configuración para el escritorio Xfce4"
+
+#~ msgid "Set color _only"
+#~ msgstr "Usar color:"
+
+#~ msgid "_Don't set backdrop"
+#~ msgstr "No cambiar el fondo"
+
+#~ msgid "_Menu file:"
+#~ msgstr "Archivo de menu:"
 
 #~ msgid "Title:"
 #~ msgstr "Título:"

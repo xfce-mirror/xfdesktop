@@ -816,18 +816,98 @@ toggle_set_background(GtkToggleButton *tb, BackdropPanel *bp)
 }
 #endif
 
+static void
+manage_desktop_chk_toggled_cb(GtkToggleButton *tb, gpointer user_data)
+{
+    BackdropDialog *bd = user_data;
+    
+    if(gtk_toggle_button_get_active(tb)) {
+        GError *err = NULL;
+        
+        if(!xfce_exec(BINDIR "/xfdesktop", FALSE, FALSE, NULL)
+                && !xfce_exec("xfdesktop", FALSE, FALSE, &err))
+        {
+            gchar *secondary = NULL;
+            
+            g_signal_handlers_block_by_func(G_OBJECT(tb),
+                    G_CALLBACK(manage_desktop_chk_toggled_cb), user_data);
+            gtk_toggle_button_set_active(tb, FALSE);
+            g_signal_handlers_unblock_by_func(G_OBJECT(tb),
+                    G_CALLBACK(manage_desktop_chk_toggled_cb), user_data);
+            
+            secondary = g_strdup_printf(_("Xfce will be unable to manage your desktop (%s)."),
+                    err ? err->message : _("Unknown Error"));
+            if(err)
+                g_error_free(err);
+            
+            xfce_message_dialog(GTK_WINDOW(bd->dialog), _("Error"),
+                    GTK_STOCK_DIALOG_ERROR,
+                    _("Unable to start xfdesktop"), secondary,
+                    GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+            g_free(secondary);
+        } else
+            gtk_widget_set_sensitive(bd->top_notebook, TRUE);
+    } else {
+        Window xid;
+        McsSetting *setting;
+        
+        if(xfdesktop_check_is_running(&xid))
+            xfdesktop_send_client_message(xid, QUIT_MESSAGE);
+        gtk_widget_set_sensitive(bd->top_notebook, FALSE);
+        
+        setting = mcs_manager_setting_lookup(bd->plugin->manager,
+                "managedesktop-show-warning", BACKDROP_CHANNEL);
+        if(!setting || setting->data.v_int) {
+            GtkWidget *dlg, *lbl, *chk, *vbox, *hbox;
+            
+            dlg = gtk_dialog_new_with_buttons(_("Information"),
+                    GTK_WINDOW(bd->dialog),
+                    GTK_DIALOG_DESTROY_WITH_PARENT|GTK_DIALOG_NO_SEPARATOR,
+                    GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+            
+            vbox = gtk_vbox_new(FALSE, BORDER);
+            gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
+            gtk_widget_show(vbox);
+            gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), vbox, TRUE, TRUE, 0);
+            
+            lbl = gtk_label_new(_("To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."));
+            gtk_label_set_line_wrap(GTK_LABEL(lbl), TRUE);
+            gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+            gtk_widget_show(lbl);
+            gtk_box_pack_start(GTK_BOX(vbox), lbl, FALSE, FALSE, 0);
+            
+            add_spacer(GTK_BOX(vbox));
+            
+            chk = gtk_check_button_new_with_mnemonic(_("_Do not show this again"));
+            gtk_widget_show(chk);
+            gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, 0);
+            
+            gtk_dialog_run(GTK_DIALOG(dlg));
+            
+            if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chk))) {
+                mcs_manager_set_int(bd->plugin->manager,
+                        "managedesktop-show-warning", BACKDROP_CHANNEL, 0);
+                backdrop_write_options(bd->plugin);
+            }
+            
+            gtk_widget_destroy(dlg);
+        }
+    }
+}
+
 /* the dialog */
 static BackdropDialog *
 create_backdrop_dialog (McsPlugin * mcs_plugin)
 {
     GtkWidget *mainvbox, *frame, *vbox, *hbox, *header, *label, *mi,
-            *menu, *button, *image;
+            *menu, *button, *image, *chk;
     GtkSizeGroup *sg;
     GdkColor color;
     BackdropDialog *bd;
     gint i, j, nscreens, nmonitors = 0;
     XfceKiosk *kiosk;
     gboolean allow_custom_backdrop = TRUE;
+    Window xid;
 
     bd = g_new0(BackdropDialog, 1);
     bd->plugin = mcs_plugin;
@@ -851,10 +931,22 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
     header = xfce_create_header (bd->plugin->icon, _("Desktop Settings"));
     gtk_box_pack_start (GTK_BOX (mainvbox), header, FALSE, TRUE, 0);
 
-    add_spacer (GTK_BOX (mainvbox));
+    add_spacer(GTK_BOX(mainvbox));
+    
+    chk = gtk_check_button_new_with_mnemonic(_("Allow _Xfce to manage the desktop"));
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk),
+            xfdesktop_check_is_running(&xid));
+    gtk_widget_show(chk);
+    gtk_box_pack_start(GTK_BOX(mainvbox), chk, FALSE, FALSE, 0);
+    g_signal_connect(G_OBJECT(chk), "toggled",
+            G_CALLBACK(manage_desktop_chk_toggled_cb), bd);
+    
+    add_spacer(GTK_BOX(mainvbox));
     
     /* main notebook */
     bd->top_notebook = gtk_notebook_new();
+    gtk_widget_set_sensitive(bd->top_notebook,
+            gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chk)));
     gtk_widget_show(bd->top_notebook);
     gtk_box_pack_start(GTK_BOX(mainvbox), bd->top_notebook, TRUE, TRUE, 0);
     gtk_container_set_border_width (GTK_CONTAINER (bd->top_notebook), 6);
@@ -1001,17 +1093,6 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
             if(bp->color_style == XFCE_BACKDROP_COLOR_SOLID)
                 gtk_widget_set_sensitive(hbox, FALSE);
             
-#if 0
-            /* set color only checkbox */
-            bp->color_only_chk = gtk_check_button_new_with_mnemonic(_("Set color _only"));
-            gtk_widget_show(bp->color_only_chk);
-            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(bp->color_only_chk),
-                    bp->color_only);
-            gtk_box_pack_start(GTK_BOX(vbox), bp->color_only_chk, FALSE, FALSE, 0);
-            g_signal_connect(G_OBJECT(bp->color_only_chk), "toggled",
-                    G_CALLBACK(showimage_toggle), bp);
-#endif
-            
             g_object_unref(G_OBJECT(sg));
             
             /* image settings frame */
@@ -1082,18 +1163,6 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
             add_style_options(vbox, sg, bp);
             
             g_object_unref(G_OBJECT(sg));
-            
-#if 0
-            /* don't set backdrop checkbox */
-            bp->set_backdrop_chk = gtk_check_button_new_with_mnemonic(_("_Don't set backdrop"));
-            gtk_widget_show(bp->set_backdrop_chk);
-            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(bp->set_backdrop_chk),
-                    !bp->set_backdrop);
-            gtk_box_pack_start(GTK_BOX(page), bp->set_backdrop_chk, FALSE, FALSE, 0);
-            g_signal_connect(G_OBJECT(bp->set_backdrop_chk), "toggled",
-                    G_CALLBACK(toggle_set_background), bp);
-            toggle_set_background(GTK_TOGGLE_BUTTON(bp->set_backdrop_chk), bp);
-#endif
             
             /* set sensitive state of image settings based on 'Show Image' */
             showimage_toggle(bp->show_image_chk, bp);
