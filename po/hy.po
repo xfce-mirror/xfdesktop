@@ -1,0 +1,691 @@
+# translation of xfdesktop.hy.po to Armenian
+# translation of xfdesktop.po to Armenian
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Norayr Chilingaryan <norik@freenet.am>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop.hy\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"PO-Revision-Date: 2005-06-02 18:37+0500\n"
+"Last-Translator: Norayr Chilingaryan <norik@freenet.am>\n"
+"Language-Team: Armenian <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+
+#: menueditor/about_dialog.c:39
+msgid "A menu editor for Xfce4"
+msgstr "Xfce4 ցանկի խմբագրիչ"
+
+#. Credits
+#: menueditor/about_dialog.c:43
+msgid "Core developer"
+msgstr "Հիմնական մշակողը"
+
+#: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:46
+msgid "Contributor"
+msgstr "Աժակցողը"
+
+#: menueditor/about_dialog.c:47
+msgid "Icon designer"
+msgstr "Պատկերակների դիզայնը"
+
+#: menueditor/add_dialog.c:138 menueditor/add_dialog.c:150
+msgid "Add menu entry"
+msgstr "Ավելացնել ցանկի մեջ"
+
+#. Type
+#: menueditor/add_dialog.c:156 menueditor/add_menu_dialog.c:98
+#: menueditor/edit_dialog.c:149
+msgid "Type:"
+msgstr "Տեսակը՝"
+
+#: menueditor/add_dialog.c:159
+msgid "Launcher"
+msgstr "Պիտակը"
+
+#: menueditor/add_dialog.c:164
+msgid "Submenu"
+msgstr "ենթացանկ"
+
+#: menueditor/add_dialog.c:169
+msgid "Separator"
+msgstr "բաժանիչ"
+
+#: menueditor/add_dialog.c:174
+msgid "Title"
+msgstr "Վերնագիր"
+
+#: menueditor/add_dialog.c:179
+msgid "Quit"
+msgstr "Ելք"
+
+#. Name
+#: menueditor/add_dialog.c:194 menueditor/edit_dialog.c:263
+#: menueditor/edit_dialog.c:314 menueditor/edit_dialog.c:353
+msgid "Name:"
+msgstr "Անունը՝"
+
+#: menueditor/add_dialog.c:204 menueditor/edit_dialog.c:264
+msgid "Command:"
+msgstr "Հրամանը՝"
+
+#: menueditor/add_dialog.c:220 menueditor/edit_dialog.c:255
+#: menueditor/edit_dialog.c:319 menueditor/edit_dialog.c:358
+#: menueditor/edit_dialog.c:396
+msgid "Icon:"
+msgstr "Պատկերակը՝"
+
+#. Start Notify check button
+#: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:275
+msgid "Use startup _notification"
+msgstr "Կիրառել սկզբնական ծանուցումը"
+
+#. Run in terminal check button
+#: menueditor/add_dialog.c:240 menueditor/edit_dialog.c:276
+msgid "Run in _terminal"
+msgstr "Աշխատացնել տերմինալի մեջ"
+
+#: menueditor/add_dialog.c:285 menueditor/edit_dialog.c:468
+msgid "The command doesn't exist !"
+msgstr "Հրամանը գոյություն չունի"
+
+#: menueditor/add_dialog.c:291
+msgid "All fields must be filled to add an item."
+msgstr "Անհրաժեշտ է լրացնել բոլոր դաշտերը"
+
+#: menueditor/add_dialog.c:300
+msgid "The 'Name' field is required."
+msgstr "«Անուն» դաշտը անհրաժեշտ է լրացնել"
+
+#: menueditor/add_dialog.c:356 menueditor/dnd.c:153
+#: menueditor/menueditor.c:579 menueditor/move.c:87 menueditor/move.c:225
+msgid "--- separator ---"
+msgstr "––– բաժանիչ –––"
+
+#: menueditor/add_dialog.c:381 menueditor/edit_dialog.c:505
+msgid "quit"
+msgstr "ելէ"
+
+#: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
+#: menueditor/menueditor.c:1031
+msgid "Add an external menu"
+msgstr "Ավելացնելարտաքին ցանկ"
+
+#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:152
+msgid "File"
+msgstr "Ֆայլ"
+
+#: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:157
+msgid "System"
+msgstr "Համակարգ՝"
+
+#: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:172
+msgid "Source:"
+msgstr "Ակունք՝"
+
+#. Style
+#: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:185
+msgid "Style:"
+msgstr "Ոճ՝"
+
+#: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:188
+msgid "Simple"
+msgstr "Պարզ"
+
+#: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:191
+msgid "Multilevel"
+msgstr "Բազմամակարդակ"
+
+#. Unique
+#: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:204
+msgid "_Unique entries only"
+msgstr "Միայն եզակի կետերը"
+
+#: menueditor/add_menu_dialog.c:208
+msgid "The 'Source' field is required."
+msgstr "«Ակունք» դաշտը անհրաժեշտ է լրացնել"
+
+#: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:234
+#: menueditor/dnd.c:156 menueditor/edit_dialog.c:521
+#: menueditor/edit_dialog.c:534 menueditor/menueditor.c:618
+#: menueditor/move.c:111 menueditor/move.c:249
+msgid "--- include ---"
+msgstr "––– ներառել –––"
+
+#: menueditor/add_menu_dialog.c:235 menueditor/dnd.c:161
+#: menueditor/edit_dialog.c:535 menueditor/menueditor.c:621
+#: menueditor/move.c:114 menueditor/move.c:252
+msgid "system"
+msgstr "համակարգ"
+
+#. Create dialog for editing
+#: menueditor/edit_dialog.c:103 menueditor/edit_dialog.c:113
+msgid "Edit menu entry"
+msgstr "Խմբագրել ցանկի տողը"
+
+#: menueditor/edit_dialog.c:131
+msgid "Separators cannot be edited"
+msgstr "Բաժանիչները չէն խմբագրվում"
+
+#. Name
+#: menueditor/edit_dialog.c:403 menueditor/new_dialog.c:100
+msgid "Title:"
+msgstr "Վերնագիր՝"
+
+#: menueditor/menueditor.c:371
+msgid "Select command"
+msgstr "Ընտրեք հրամանը"
+
+#: menueditor/menueditor.c:435
+msgid "Select icon"
+msgstr "Ընտրեք պատկերակը"
+
+#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
+#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop_settings.c:533
+msgid "All Files"
+msgstr "Բոլոր ֆայլերը"
+
+#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
+#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+msgid "Image Files"
+msgstr "Պատկերների ֆայլերը"
+
+#: menueditor/menueditor.c:500 menueditor/menueditor.c:903
+msgid "Do you want to save before closing the menu ?"
+msgstr "Ուզու՞մ եք հիշել մինչև ցանկը փակելը"
+
+#: menueditor/menueditor.c:502
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr "Դուք փոփոխել եք ցանկը, ուզու՞մ եք հիշել այն մինչ ելքը"
+
+#: menueditor/menueditor.c:504
+msgid "Forget modifications"
+msgstr "Մոռանալ փոփոխությունները"
+
+#: menueditor/menueditor.c:690 menueditor/menueditor.c:749
+#: menueditor/menueditor.c:901
+msgid "Question"
+msgstr "Հարց"
+
+#: menueditor/menueditor.c:692
+msgid "Do you want to save before opening the default menu ?"
+msgstr "Դուք ուզու՞մ եք հիշել մինչ հիմնական ցանկի բացումը"
+
+#: menueditor/menueditor.c:694 menueditor/menueditor.c:753
+#: menueditor/menueditor.c:905
+msgid "Ignore modifications"
+msgstr "Անտեսել փոփոխությունները"
+
+#: menueditor/menueditor.c:751
+msgid "Do you want to save before opening an other menu ?"
+msgstr "ՈՒզու՞մ եք հիշել մինչ ուրիշ ցանկ բացելը"
+
+#: menueditor/menueditor.c:764
+msgid "Open menu file"
+msgstr "Բացել ցանկի ֆայլը"
+
+#: menueditor/menueditor.c:799 menueditor/menueditor.c:810
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr ""
+"Հնարավոր չէ գրել %s : \n"
+"%s"
+
+#: menueditor/menueditor.c:844
+msgid "Save as..."
+msgstr "Հիշել ինչպես..."
+
+#: menueditor/menueditor.c:1025
+msgid "Edit"
+msgstr "Խմբագրել"
+
+#. File menu
+#: menueditor/menueditor.c:1225
+msgid "_File"
+msgstr "_Ֆայլ"
+
+#: menueditor/menueditor.c:1234
+msgid "Open default menu"
+msgstr "Բացել հիմնական ցանկը"
+
+#. Edit menu
+#: menueditor/menueditor.c:1248
+msgid "_Edit"
+msgstr "_Խմբագրել"
+
+#: menueditor/menueditor.c:1254
+msgid "Add an external menu..."
+msgstr "Ավելացնել արտաքին ցանկ..."
+
+#. Help menu
+#: menueditor/menueditor.c:1266
+msgid "_Help"
+msgstr "_Ձեռնարկ"
+
+#: menueditor/menueditor.c:1271
+msgid "_About..."
+msgstr "_Ծրագրի մասին..."
+
+#: menueditor/menueditor.c:1283
+msgid "Create a new Xfce4 menu file"
+msgstr "Ստեղծել նոր Xfce4 ցանկի ֆայլ"
+
+#: menueditor/menueditor.c:1289
+msgid "Open an Xfce4 menu file"
+msgstr "Բացել նոր Xfce4 ցանկի ֆայլ"
+
+#: menueditor/menueditor.c:1295
+msgid "Save current menu"
+msgstr "Հիշել ընթացիկ ցանկը"
+
+#: menueditor/menueditor.c:1300
+msgid "Close current menu"
+msgstr "Փակել ընթացիկ ցանկը"
+
+#: menueditor/menueditor.c:1306
+msgid "Add an entry to the menu"
+msgstr "Ավելացնել կետ ցանկի մեջ"
+
+#: menueditor/menueditor.c:1312
+msgid "Delete the current entry"
+msgstr "Ջնջել ընթացիկ կետը"
+
+#: menueditor/menueditor.c:1318
+msgid "Move the current entry up"
+msgstr "Տեղաշարժել ընթացիկ կետը վերև"
+
+#: menueditor/menueditor.c:1324
+msgid "Move the current entry down"
+msgstr "Տեղաշարժել ընթացիկ կետը ներքև"
+
+#: menueditor/menueditor.c:1331
+msgid "Collapse the tree"
+msgstr "Փլուզել ծառը"
+
+#: menueditor/menueditor.c:1336
+msgid "Expand the tree"
+msgstr "Ընդարձակել ծառը"
+
+#: menueditor/menueditor.c:1365
+msgid "Name"
+msgstr "Անուն"
+
+#: menueditor/menueditor.c:1368
+msgid "Command"
+msgstr "Հրաման"
+
+#: menueditor/menueditor.c:1369
+msgid "Hidden"
+msgstr "Թաքուն"
+
+#: menueditor/menueditor.c:1370
+msgid "Pointer"
+msgstr "Ցուցիչ"
+
+#: menueditor/menueditor.c:1472
+msgid "Corrupted file or incorrect file format !"
+msgstr "փչացած ֆայլ կամ սխալ ֆայլի ֆորմատ"
+
+#: menueditor/menueditor.c:1485
+msgid "No root element in file !"
+msgstr "Բացակայում է ֆայլի արմատային էլէմենտը"
+
+#: menueditor/menueditor.c:1496
+msgid "Bad datafile format !"
+msgstr "Սխալ ֆորմատ"
+
+#: menueditor/menueditor.c:1626
+#, c-format
+msgid "File %s doesn't exist !"
+msgstr "%s ֆայլը բացակայում է"
+
+#: menueditor/move.c:370
+msgid "Do you want to move the item into the parent menu?"
+msgstr "ՈՒզու՞մ եք տեղափոխել կետը ծնողական ցանկի մեջ"
+
+#: menueditor/move.c:469
+msgid "Do you want to move the item into the submenu?"
+msgstr "Ուզու՞մ եք տեղափոխել կետը ենթացանկի մեջ"
+
+#: menueditor/new_dialog.c:60
+msgid "Are you sure you want to close the current menu?"
+msgstr "Վստա՞հեք, որ ուզում եք փակել ընթացիկ ցանկը"
+
+#: menueditor/new_dialog.c:75
+msgid "Do you want to save before closing the file?"
+msgstr "Ուզու՞մ եք հիշել մինչ ֆայլը փակելը"
+
+#. get the filename and name for the new menu
+#: menueditor/new_dialog.c:85 menueditor/new_dialog.c:94
+msgid "New menu"
+msgstr "Նոր ցանկ"
+
+#. Filename
+#: menueditor/new_dialog.c:107
+msgid "Filename:"
+msgstr "Ֆայլի անունը՝"
+
+#: menueditor/new_dialog.c:141
+msgid "All fields are required."
+msgstr "Բոլոր դաշտերը անհրաժեշտ է լրացնել"
+
+#: modules/menu/desktop-menuspec.c:62
+msgid "/Other"
+msgstr "/Այլ"
+
+#: panel-plugin/desktop-menu-plugin.c:279
+#: panel-plugin/desktop-menu-plugin.c:805
+msgid "Xfce Menu"
+msgstr "Xfce Ցանկ"
+
+#: panel-plugin/desktop-menu-plugin.c:493
+msgid "Select Icon"
+msgstr "Ընտրեք Պատկերակը"
+
+#: panel-plugin/desktop-menu-plugin.c:495
+msgid "Select Menu File"
+msgstr "Ընտրեք ցանկի ֆայլը"
+
+#: panel-plugin/desktop-menu-plugin.c:524
+msgid "Menu Files"
+msgstr "Ցանկի Ֆայլեր"
+
+#: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "Հնարավոր չէ աշխատացնել xfce4-menueditor ծրագիրը՝ %s"
+
+#: panel-plugin/desktop-menu-plugin.c:663
+msgid "Button _title:"
+msgstr "Ստեղնի _վերնագիրը՝"
+
+#: panel-plugin/desktop-menu-plugin.c:676
+msgid "Menu File"
+msgstr "Ցանկի Ֆայլ"
+
+#: panel-plugin/desktop-menu-plugin.c:688
+msgid "Use default _desktop menu file"
+msgstr "Կիրառել հիմնական _գրասեղան ցանկի ֆայլը"
+
+#: panel-plugin/desktop-menu-plugin.c:697
+msgid "Use _custom menu file:"
+msgstr "Կիրառել _փոփոխված ցանկի ֆայլը"
+
+#: panel-plugin/desktop-menu-plugin.c:749
+#: panel-plugin/desktop-menu-plugin.c:751
+msgid "_Edit Menu"
+msgstr "_Խմբագրել Ցանկը"
+
+#: panel-plugin/desktop-menu-plugin.c:758
+msgid "Icons"
+msgstr "Պատկերակներ"
+
+#: panel-plugin/desktop-menu-plugin.c:770
+msgid "_Button icon:"
+msgstr "_Ստեղն պատկերակը"
+
+#: panel-plugin/desktop-menu-plugin.c:794
+msgid "Show _icons in menu"
+msgstr "Ցույց տալ _պատկերակները ցանկի մեջ"
+
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"Չեմ կարող հիշել ֆայլը՝ %s: %s\n"
+"\n"
+"Ընտրեք խնդրեմ ուրիշ ակունք կամ սեղմեք «հրաժարվել» Ձեր փոփոխությունները չեղյալ համարելու համար"
+
+#: settings/backdrop-mgr.c:409
+msgid "Select backdrop image file"
+msgstr "Ընտրեք նախադրյալը"
+
+#: settings/backdrop-mgr.c:510
+msgid "Choose backdrop list filename"
+msgstr "Ընտրեք նախադրյալների ցուցակի ֆայլի անունը"
+
+#: settings/backdrop-mgr.c:519
+msgid "List Files"
+msgstr "Թվել Ֆայլերը"
+
+#: settings/backdrop-mgr.c:582
+msgid "Backdrop List"
+msgstr "Նախադրյալների ցուցակը"
+
+#: settings/backdrop-mgr.c:599
+msgid "Image files"
+msgstr "Պատկերների ֆայլերը"
+
+#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop_settings.c:197
+msgid "backdrops.list"
+msgstr "Նախադրալներ.ցուցակ"
+
+#: settings/backdrop-mgr.c:618
+msgid "List file"
+msgstr "Թվել ֆայլերը"
+
+#: settings/backdrop-mgr.c:638
+msgid "Create backdrop list"
+msgstr "Ստեղծել նախադրյալների ցուցակը"
+
+#: settings/backdrop-mgr.c:669
+msgid "Edit backdrop list"
+msgstr "Խմբագրել նախադրյալների ցուցակը"
+
+#. the dialog
+#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
+#: src/xfce-desktop.c:676
+msgid "Desktop"
+msgstr "Գրասեղան"
+
+#: settings/backdrop_settings.c:528
+msgid "Select backdrop image or list file"
+msgstr "Ընտրեք նախադրյալ պատկերը կամ ցուցակը"
+
+#: settings/backdrop_settings.c:546
+msgid "List Files (*.list)"
+msgstr "Թվել Ֆայլերը (*.list)"
+
+#: settings/backdrop_settings.c:636
+msgid "_Edit list..."
+msgstr "_Խմբագրել ցուցակը"
+
+#: settings/backdrop_settings.c:644
+msgid "_New list..."
+msgstr "_Նոր ցուցակ…"
+
+#: settings/backdrop_settings.c:680
+msgid "S_tyle:"
+msgstr "Ո_ճը՝"
+
+#: settings/backdrop_settings.c:688
+msgid "Tiled"
+msgstr "Հաղճասալ"
+
+#: settings/backdrop_settings.c:695
+msgid "Centered"
+msgstr "Կենտրոնացված"
+
+#: settings/backdrop_settings.c:702
+msgid "Scaled"
+msgstr "Թեփավոր"
+
+#: settings/backdrop_settings.c:709
+msgid "Stretched"
+msgstr "Պարզված"
+
+#: settings/backdrop_settings.c:716
+msgid "Auto"
+msgstr "Ավտո"
+
+#: settings/backdrop_settings.c:782
+msgid "Adjust _Brightness:"
+msgstr "Ճշտել _Պայծառությունը"
+
+#. header
+#: settings/backdrop_settings.c:851
+msgid "Desktop Settings"
+msgstr "Գրասեղանի նախընտրանքները"
+
+#: settings/backdrop_settings.c:880
+msgid "_Backdrops"
+msgstr "_Նախադրյալները"
+
+#. color settings frame
+#: settings/backdrop_settings.c:906
+msgid "Color"
+msgstr "Գույն"
+
+#: settings/backdrop_settings.c:920
+msgid "_Color Style:"
+msgstr "_Գույնի Ոճը՝"
+
+#: settings/backdrop_settings.c:929
+msgid "Solid Color"
+msgstr "Կարծր Գույն"
+
+#: settings/backdrop_settings.c:936
+msgid "Horizontal Gradient"
+msgstr "Հորիզոնական թեքվածք"
+
+#: settings/backdrop_settings.c:943
+msgid "Vertical Gradient"
+msgstr "Ուղղահայաց թեքվածք"
+
+#: settings/backdrop_settings.c:964
+msgid "Fi_rst Color:"
+msgstr "Առա_ջին Գույնը՝"
+
+#: settings/backdrop_settings.c:985
+msgid "_Second Color:"
+msgstr "_Երկրորդ Գույնը՝"
+
+#. set color only checkbox
+#: settings/backdrop_settings.c:1006
+msgid "Set color _only"
+msgstr "Նշել _միայն գույնը"
+
+#: settings/backdrop_settings.c:1021
+msgid "Image"
+msgstr "Պատկեր"
+
+#: settings/backdrop_settings.c:1029
+msgid "Show _Image"
+msgstr "Ցույց տալ պատկերը"
+
+#: settings/backdrop_settings.c:1051
+msgid "_File:"
+msgstr "_Ֆայլ"
+
+#. don't set backdrop checkbox
+#: settings/backdrop_settings.c:1088
+msgid "_Don't set backdrop"
+msgstr "_Չնշել նախադրյալը"
+
+#. add the single backdrop settings page to the main notebook
+#: settings/backdrop_settings.c:1111
+msgid "_Backdrop"
+msgstr "_Նախադրյալ"
+
+#: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
+#, c-format
+msgid "Screen %d"
+msgstr "Էկրան %d"
+
+#. and if we have multiple screens, each with multiple monitors
+#: settings/backdrop_settings.c:1126
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Էկրան %d, Մոնիտոր %d"
+
+#: settings/backdrop_settings.c:1140
+msgid "_Menu"
+msgstr "_Ցանկ"
+
+#: settings/menu_settings.c:153
+msgid "Window List"
+msgstr "Պատուհանների ցանկ"
+
+#: settings/menu_settings.c:161
+msgid "Show window _list"
+msgstr "Ցուցադրել պատուհանների ցանկը"
+
+#: settings/menu_settings.c:176
+msgid "Show _window icons"
+msgstr "Ցուցադրել _պատուհանների պատկերները"
+
+#: settings/menu_settings.c:189
+msgid "Desktop Menu"
+msgstr "Գրասեղանի Ցանկը"
+
+#: settings/menu_settings.c:197
+msgid "Show desktop _menu"
+msgstr "Ցուցադրել գրասեղանի _ցանկը"
+
+#: settings/menu_settings.c:212
+msgid "Show _application icons"
+msgstr "Ցուցադրել _ծրագրերի պատկերակները"
+
+#: settings/menu_settings.c:223
+msgid "_Edit desktop menu"
+msgstr "_Խմբագրել գրասեղանի ցանկը"
+
+#: src/main.c:300
+#, c-format
+msgid "%s: Unknown option: %s\n"
+msgstr "%s: Անհայտ ընտրություն՝ %s\n"
+
+#: src/main.c:301
+msgid "Options are:\n"
+msgstr "Ընտրությունները կարող են լինել՝ \n"
+
+#: src/main.c:302
+msgid "    -reload      Reload all settings, refresh image list\n"
+msgstr "    -վերաբեռնել      Վերաբեռնել բոլոր նախընտրանքները, նորացնել պատկերների ցուցակը\n"
+
+#: src/main.c:303
+msgid "    -menu        Pop up the menu (at the current mouse position)\n"
+msgstr "    -ցանկ        Բացել ցանկը (մկնիկի ընթացիկ վայրում)\n"
+
+#: src/main.c:304
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -պատուհանների ցանկ  Բացել պատուհանների ցանկը (մկնիկի ընթացիկ վայրում)\n"
+
+#: src/windowlist.c:193
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>Տիրույթ %d</b>"
+
+#: src/windowlist.c:201
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr "<i>Տիրույթ %d</i>"
+
+#: src/windowlist.c:268 src/windowlist.c:271
+msgid "_Add Workspace"
+msgstr "_Ավելացնել Տիրույթ"
+
+#: src/windowlist.c:279
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "_Վերացնել Տիրույթ %d"
+
+#: src/windowlist.c:282
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "_Վերացնել Տիրույթ '%s'"
+
