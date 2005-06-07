@@ -245,9 +245,13 @@ treeview_button_pressed_cb (GtkTreeView * treeview, GdkEventButton * event, gpoi
       gtk_tree_model_get_iter (model, &iter, path);
       gtk_tree_model_get (model, &iter, COLUMN_TYPE, &type, -1);
 
-      if (type != SEPARATOR)
-        gtk_menu_popup (GTK_MENU (me->menu_popup), NULL, NULL, NULL, NULL, event->button,
-                        gtk_get_current_event_time ());
+      if (type == SEPARATOR)
+	gtk_widget_set_sensitive (me->menu_item_popup_edit, FALSE);
+      else
+	gtk_widget_set_sensitive (me->menu_item_popup_edit, TRUE);
+
+      gtk_menu_popup (GTK_MENU (me->menu_popup), NULL, NULL, NULL, NULL, event->button,
+		      gtk_get_current_event_time ());
 
       return TRUE;
     }
