@@ -1016,9 +1016,6 @@ treeview_button_pressed_cb (GtkTreeView * treeview, GdkEventButton * event, gpoi
       gtk_tree_model_get_value (GTK_TREE_MODEL (me->treestore), &iter, POINTER_COLUMN, &val);
       node = g_value_get_pointer (&val);
 
-      if (!xmlStrcmp (node->name, "separator"))
-        return TRUE;
-
       /* Create the popup menu */
       popup_menu = gtk_menu_new ();
 
@@ -1045,6 +1042,9 @@ treeview_button_pressed_cb (GtkTreeView * treeview, GdkEventButton * event, gpoi
       g_signal_connect ((gpointer) del_menuitem, "activate", G_CALLBACK (delete_entry_cb), me);
       g_signal_connect ((gpointer) moveup_menuitem, "activate", G_CALLBACK (entry_up_cb), me);
       g_signal_connect ((gpointer) movedown_menuitem, "activate", G_CALLBACK (entry_down_cb), me);
+
+      if (!xmlStrcmp (node->name, "separator"))
+	gtk_widget_set_sensitive (edit_menuitem, FALSE);
 
       gtk_widget_show_all (popup_menu);
       gtk_menu_popup (GTK_MENU (popup_menu), NULL, NULL, NULL, NULL, event->button, gtk_get_current_event_time ());
