@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xfce-registered-categories>
 
-<!-- Note: You can copy this file to ~/.xfce4/ for customisation. -->
+<!-- Note: You can copy this file to ~/.config/xfce4/desktop/ for customisation. -->
 
 <!--
 	Here is how this file works:
-	
+
 	<xfce-registered-categories> - root element, required.
-	
+
 	<category>
 		name:  Required.  Corresponds to an official category from the
 		  freedesktop.org menu spec.
@@ -22,7 +22,7 @@
 		  items. (default: false)
 		hide: Optional.  Items referencing this category will not appear in any
 			menu. (default: false)
-			
+
 	<subcategory> - sub-element of <category>, specifies a subcategory relation
 		name: Required.  Corresponds to an official category from the
 		  freedesktop.org menu spec.
@@ -33,25 +33,22 @@
 	  Note that even if subcategories are definied, it is possible to collapse
 	  all subcategories into a flat one-level menu by specifying style="simple"
 	  in the <include> tag in your menu.xml file.
-
- firstranslator: SZERVÁC Attila aka  sas aka  satie
-
 -->
 
 <xfce-registered-categories>
 	<category name="Legacy" toplevel="true" replace="Kellékek" builtin-icon="UTILITY" />
 	<category name="Core" toplevel="true" replace="Kellékek" builtin-icon="UTILITY" />
-	<category name="Development" toplevel="true" builtin-icon="DEVELOPMENT">
+	<category name="Development" toplevel="true" replace="Fejlesztés" builtin-icon="DEVELOPMENT">
 		<subcategory name="Building" />
 		<subcategory name="Debugger" />
 		<subcategory name="IDE" />
 		<subcategory name="GUIDesigner" />
 		<subcategory name="Profiling" />
 		<subcategory name="RevisionControl" />
-		<subcategory name="Translation" />
-		<subcategory name="Database" />
-		<subcategory name="ProjectManagement" />
-		<subcategory name="WebDevelopment" />
+		<subcategory name="Translation" replace="Fordítás" />
+		<subcategory name="Database" replace="Adatbázis" />
+		<subcategory name="ProjectManagement" replace="Projektek" />
+		<subcategory name="WebDevelopment" replace="WebFejlesztés" />
 	</category>
 	<category name="Building" builtin-icon="DEVELOPMENT" />
 	<category name="Debugger" replace="Debugging" builtin-icon="DEVELOPMENT" />
@@ -59,127 +56,127 @@
 	<category name="GUIDesigner" replace="GUI Designers" builtin-icon="DEVELOPMENT" />
 	<category name="Profiling" builtin-icon="DEVELOPMENT" />
 	<category name="RevisionControl" replace="Revision Control" builtin-icon="DEVELOPMENT" />
-	<category name="Fordítás" builtin-icon="DEVELOPMENT" />
-	<category name="Iroda" toplevel="true" builtin-icon="PRODUCTIVITY">
-		<subcategory name="Calendar" />
-		<subcategory name="ContactManagement" />
-		<subcategory name="Database" />
-		<subcategory name="Dictionary" />
+	<category name="Translation" replace="Fordítás" builtin-icon="DEVELOPMENT" />
+	<category name="Office" toplevel="true" replace="Iroda" builtin-icon="PRODUCTIVITY">
+		<subcategory name="Calendar" replace="Naptár" />
+		<subcategory name="ContactManagement" replace="Kapcsolatok" />
+		<subcategory name="Database" replace="Adatbázis" />
+		<subcategory name="Dictionary" replace="Szótár" />
 		<subcategory name="Chart" />
 		<subcategory name="Email" />
 		<subcategory name="Finance" />
 		<subcategory name="FlowChart" />
 		<subcategory name="PDA" />
-		<subcategory name="Project Management" />
-		<subcategory name="Presentation" />
-		<subcategory name="Spreadsheet" />
-		<subcategory name="WordProcessor" />
-		<subcategory name="Photograph" />
-		<subcategory name="Viewer" />
+		<subcategory name="Project Management" replace="Projektek" />
+		<subcategory name="Presentation" replace="Bemutató" />
+		<subcategory name="Spreadsheet" replace="Tábla" />
+		<subcategory name="WordProcessor" replace="Szövegszerkesztő" />
+		<subcategory name="Photograph" replace="Fotó" />
+		<subcategory name="Viewer" replace="Nézegető" />
 	</category>
-	<category name="Naptár" builtin-icon="PRODUCTIVITY" />
-	<category name="ContactManagement" replace="Contact Management" builtin-icon="PRODUCTIVITY" />
-	<category name="Adatbázis" builtin-icon="PRODUCTIVITY" />
-	<category name="Szótár" builtin-icon="PRODUCTIVITY" />
+	<category name="Calendar" replace="Naptár" builtin-icon="PRODUCTIVITY" />
+	<category name="ContactManagement" replace="Kapcsolatok" builtin-icon="PRODUCTIVITY" />
+	<category name="Database" replace="Adatbázis" builtin-icon="PRODUCTIVITY" />
+	<category name="Dictionary" replace="Szótár" builtin-icon="PRODUCTIVITY" />
 	<category name="Chart" builtin-icon="PRODUCTIVITY" />
 	<category name="Email" builtin-icon="PRODUCTIVITY" />
 	<category name="Finance" builtin-icon="PRODUCTIVITY" />
 	<category name="FlowChart" replace="Flow Chart" builtin-icon="PRODUCTIVITY" />
 	<category name="PDA" builtin-icon="PRODUCTIVITY" />
-	<category name="ProjectManagement" replace="Project Management" builtin-icon="PRODUCTIVITY" />
-	<category name="Bemutató" builtin-icon="PRODUCTIVITY" />
-	<category name="Spreadsheet" builtin-icon="PRODUCTIVITY" />
-	<category name="WordProcessor" replace="Word Processing" builtin-icon="PRODUCTIVITY" />
-	<category name="Grafika" toplevel="true" builtin-icon="GRAPHICS">
+	<category name="ProjectManagement" replace="Projektek" builtin-icon="PRODUCTIVITY" />
+	<category name="Presentation" replace="Bemutató" builtin-icon="PRODUCTIVITY" />
+	<category name="Spreadsheet" replace="Tábla" builtin-icon="PRODUCTIVITY" />
+	<category name="WordProcessor" replace="Szövegszerkesztés" builtin-icon="PRODUCTIVITY" />
+	<category name="Graphics" toplevel="true" replace="Grafika" builtin-icon="GRAPHICS">
 		<subcategory name="2DGraphics" />
 		<subcategory name="3DGraphics" />
 		<subcategory name="Scanning" />
 		<subcategory name="Photograph" />
 		<subcategory name="Viewer" />
 	</category>
-	<category name="2DGraphics" replace="2-D Graphics" builtin-icon="GRAPHICS">
+	<category name="2DGraphics" replace="2-D Grafika" builtin-icon="GRAPHICS">
 		<subcategory name="VectorGraphics" />
 		<subcategory name="RasterGraphics" />
 	</category>
 	<category name="VectorGraphics" replace="Vector Graphics" builtin-icon="GRAPHICS" />
 	<category name="RasterGraphics" replace="Raster Graphics" builtin-icon="GRAPHICS" />
-	<category name="3DGraphics" replace="3-D Graphics" builtin-icon="GRAPHICS" />
-	<category name="Scanning" builtin-icon="GRAPHICS">
+	<category name="3DGraphics" replace="3-D Grafika" builtin-icon="GRAPHICS" />
+	<category name="Scanning" replace="Lapolvasás" builtin-icon="GRAPHICS">
 		<subcategory name="OCR" />
 	</category>
 	<category name="OCR" builtin-icon="GRAPHICS" />
 	<category name="Photograph" replace="Fotó" builtin-icon="GRAPHICS" />
 	<category name="Viewer" replace="Nézegetők" builtin-icon="GRAPHICS" />
-	<category name="Beállítások" toplevel="true" builtin-icon="SETTINGS">
+	<category name="Settings" toplevel="true" replace="Beállítások" builtin-icon="SETTINGS">
 		<subcategory name="DesktopSettings" />
 		<subcategory name="HardwareSettings" />
 		<subcategory name="PackageSettings" />
-		<subcategory name="Biztonság" />
+		<subcategory name="Security" />
 		<subcategory name="Accessibility" />
-		<subcategory name="Képernyővédő" />
+		<subcategory name="Screensaver" />
 	</category>
-	<category name="DesktopSettings" replace="Desktop Settings" builtin-icon="SETTINGS" />
+	<category name="DesktopSettings" replace="Munkaasztal beállítások" builtin-icon="SETTINGS" />
 	<category name="HardwareSettings" replace="Hardware Settings" builtin-icon="SETTINGS" />
 	<category name="PackageSettings" replace="Package Settings" builtin-icon="SETTINGS" />
-	<category name="Hálózat" toplevel="true" builtin-icon="NETWORK">
+	<category name="Network" toplevel="true" replace="Hálózat" builtin-icon="NETWORK">
 		<subcategory name="Email" />
 		<subcategory name="Dialup" />
 		<subcategory name="InstantMessaging" />
 		<subcategory name="IRCClient" />
 		<subcategory name="FileTransfer" />
 		<subcategory name="HamRadio" />
-		<subcategory name="Hírek" />
+		<subcategory name="News" />
 		<subcategory name="P2P" />
 		<subcategory name="RemoteAccess" />
-		<subcategory name="Telefon" />
-		<subcategory name="Webböngésző" />
-		<subcategory name="Webfejlesztés" />
+		<subcategory name="Telephony" />
+		<subcategory name="WebBrowser" />
+		<subcategory name="WebDevelopment" />
 	</category>
 	<category name="Dialup" builtin-icon="NETWORK" />
 	<category name="InstantMessaging" replace="Instant Messaging" builtin-icon="NETWORK" />
 	<category name="IRCClient" replace="IRC Clients" builtin-icon="NETWORK" />
 	<category name="FileTransfer" replace="File Transfer" builtin-icon="NETWORK" />
 	<category name="HamRadio" replace="Ham Radio" builtin-icon="NETWORK" />
-	<category name="Hírek" builtin-icon="NETWORK" />
+	<category name="News" builtin-icon="NETWORK" />
 	<category name="P2P" replace="Peer-to-Peer" builtin-icon="NETWORK" />
-	<category name="RemoteAccess" replace="Remote Access" builtin-icon="NETWORK" />
-	<category name="Telefon" builtin-icon="NETWORK" />
+	<category name="RemoteAccess" replace="Távoli hozzáférés" builtin-icon="NETWORK" />
+	<category name="Telephony" builtin-icon="NETWORK" />
 	<category name="WebBrowser" replace="Web böngészés" builtin-icon="NETWORK" />
 	<category name="WebDevelopment" replace="Web fejlesztés" builtin-icon="NETWORK" />
 	<category name="AudioVideo" replace="Multimédia" toplevel="true" builtin-icon="MULTIMEDIA">
-		<subcategory name="Adatbázis" />
-		<subcategory name="Amatőr rádió" />
-		<subcategory name="Hang" />
-		<subcategory name="Mozgókép" />
+		<subcategory name="Database" />
+		<subcategory name="HamRadio" />
+		<subcategory name="Audio" />
+		<subcategory name="Video" />
 		<subcategory name="AudioVideoEditing" />
-		<subcategory name="Lejátátszó" />
-		<subcategory name="Rögzítő" />
-		<subcategory name="Lemezírás" />
+		<subcategory name="Player" />
+		<subcategory name="Recorder" />
+		<subcategory name="DiscBurning" />
 	</category>
-	<category name="Hang" builtin-icon="MULTIMEDIA">
+	<category name="Audio" builtin-icon="MULTIMEDIA">
 		<subcategory name="Midi" />
 		<subcategory name="Mixer" />
 		<subcategory name="Sequencer" />
 		<subcategory name="Tuner" />
 		<subcategory name="AudioVideoEditing" />
-		<subcategory name="Lejátszó" />
-		<subcategory name="Rögzítő" />
+		<subcategory name="Player" />
+		<subcategory name="Recorder" />
 	</category>
 	<category name="Midi"  builtin-icon="MULTIMEDIA" />
-	<category name="Mixer" replace="Hangkeverők" builtin-icon="MULTIMEDIA" />
+	<category name="Mixer" replace="Sound Mixers" builtin-icon="MULTIMEDIA" />
 	<category name="Sequencer" replace="Sequencers" builtin-icon="MULTIMEDIA" />
 	<category name="Tuner" replace="Tuners" builtin-icon="MULTIMEDIA" />
-	<category name="Mozgókép" builtin-icon="MULTIMEDIA">
+	<category name="Video" builtin-icon="MULTIMEDIA">
 		<subcategory name="TV" />
 		<subcategory name="AudioVideoEditing" />
-		<subcategory name="Lejátszó" />
-		<subcategory name="Rögzítő" />
-		<subcategory name="Zene" />
+		<subcategory name="Player" />
+		<subcategory name="Recorder" />
+		<subcategory name="Music" />
 	</category>
 	<category name="TV" builtin-icon="MULTIMEDIA" />
 	<category name="AudioVideoEditing" replace="Szerkesztés" builtin-icon="MULTIMEDIA" />
 	<category name="Player" replace="Média lejátszók" builtin-icon="MULTIMEDIA" />
-	<category name="Recorder" replace="Rögzítő" builtin-icon="MULTIMEDIA" />
+	<category name="Recorder" replace="Rögzítés" builtin-icon="MULTIMEDIA" />
 	<category name="DiscBurning" replace="CD és DVD írás" builtin-icon="MULTIMEDIA" />
 	<category name="Game" toplevel="true" replace="Játékok" builtin-icon="GAME">
 		<subcategory name="ActionGame" />
@@ -204,49 +201,49 @@
 	<category name="KidsGame" replace="Gyerekjátékok" builtin-icon="GAME" />
 	<category name="LogicGame" replace="Logikai játékok" builtin-icon="GAME" />
 	<category name="RolePlaying" replace="Szerepjátékok" builtin-icon="GAME" />
-	<category name="Szimulátorok" builtin-icon="GAME" />
+	<category name="Simulation" builtin-icon="GAME" />
 	<category name="SportsGame" replace="Sportjátékok" builtin-icon="GAME" />
 	<category name="StrategyGame" replace="Stratégiai játékok" builtin-icon="GAME" />
-	<category name="Oktatás" toplevel="true">
+	<category name="Education" toplevel="true" replace="Oktatás">
 		<subcategory name="Art" />
 		<subcategory name="Construction" />
-		<subcategory name="Zene" />
-		<subcategory name="Nyelvek" />
-		<subcategory name="Tanítás" />
+		<subcategory name="Music" replace="Zene" />
+		<subcategory name="Languages" replace="Nyelvek" />
+		<subcategory name="Teaching" replace="Tanítás" />
 	</category>
 	<category name="Art" />
 	<category name="Construction" />
-	<category name="Zene" />
-	<category name="Nyelvek" />
-	<category name="Tudomány" toplevel="true">
-		<subcategory name="Csillagászat" />
-		<subcategory name="Biológia" />
-		<subcategory name="Kémia" />
-		<subcategory name="Földrajz" />
-		<subcategory name="Matematika" />
-		<subcategory name="Orvoslás" />
-		<subcategory name="Fizika" />
+	<category name="Music" replace="Zene" />
+	<category name="Languages" replace="Nyelvek" />
+	<category name="Science" replace="Tudomány" toplevel="true">
+		<subcategory name="Astronomy" />
+		<subcategory name="Biology" />
+		<subcategory name="Chemistry" />
+		<subcategory name="Geology" />
+		<subcategory name="Math" />
+		<subcategory name="MedicalSoftware" />
+		<subcategory name="Physics" />
 	</category>
-	<category name="Csilagászat" />
-	<category name="Biológia" />
-	<category name="Kémia" />
-	<category name="Földrajz" />
-	<category name="Matematika" />
+	<category name="Astronomy" replace="Csillagászat" />
+	<category name="Biology" replace="Biológia" />
+	<category name="Chemistry" replace="Kémia" />
+	<category name="Geology" replace="Földrajz" />
+	<category name="Math" replace="Matematika" />
 	<category name="MedicalSoftware" replace="Orvoslás" />
-	<category name="Fizika" />
-	<category name="Oktatás" />
+	<category name="Physics" replace="Fizika" />
+	<category name="Teaching" replace="Tanítás" />
 	<category name="Amusement" replace="Játékok" builtin-icon="GAME" />
 	<category name="Applet" replace="Kisalkalmazások" />
-	<category name="Archiválás" />
-	<category name="Elektronika" />
+	<category name="Archiving" replace="Archiválás" />
+	<category name="Electronics" replace="Elektronika" />
 	<category name="Emulator" toplevel="true" replace="Rendszer" builtin-icon="SYSTEM" />
-	<category name="Tervezés" />
-	<category name="FileManager" replace="Fájkezelők" />
-	<category name="Shell" replace="Héjak" />
-	<category name="Képernyővédő" />
+	<category name="Engineering" replace="Tervezés" />
+	<category name="FileManager" replace="Fájlkezelés" />
+	<category name="Shell" replace="Shells" replace="Héjak" />
+	<category name="Screensaver" replace="Képernyővédő" />
 	<category name="TerminalEmulator" replace="Terminál emulátorok" />
 	<category name="TrayIcon" replace="Rendszertálca ikonok" />
-	<category name="Rendszer" toplevel="true" builtin-icon="SYSTEM">
+	<category name="System" toplevel="true" replace="Rendszer" builtin-icon="SYSTEM">
 		<subcategory name="FileSystem" />
 		<subcategory name="Monitor" />
 		<subcategory name="Security" />
@@ -254,48 +251,48 @@
 		<subcategory name="TerminalEmulator" />
 		<subcategory name="Shell" />
 	</category>
-	<category name="Fájlrendszer" builtin-icon="SYSTEM" />
+	<category name="Filesystem" replace="Fájlrendszer" builtin-icon="SYSTEM" />
 	<category name="Monitor" builtin-icon="SYSTEM" />
-	<category name="Biztonság" builtin-icon="SYSTEM" />
-	<category name="Utility" toplevel="true" replace="Kellékek" builtin-icon="UTILITY">
+	<category name="Security" replace="Biztonság" builtin-icon="SYSTEM" />
+	<category name="Utility" toplevel="true" replace="Eszközök" builtin-icon="UTILITY">
 		<subcategory name="Accessibility" />
-		<subcategory name="Számológép" />
-		<subcategory name="Óra" />
-		<subcategory name="Szövegszerkesztő" />
-		<subcategory name="Archiválás" />
-		<subcategory name="Terminál" />
-		<subcategory name="Fájlkezelő" />
-		<subcategory name="Héj" />
+		<subcategory name="Calculator" />
+		<subcategory name="Clock" />
+		<subcategory name="TextEditor" />
+		<subcategory name="Archiving" />
+		<subcategory name="TerminalEmulator" />
+		<subcategory name="FileManager" />
+		<subcategory name="Shell" />
 	</category>
 	<category name="Accessibility" builtin-icon="UTILITY" />
 	<category name="Calculator" replace="Számológépek" builtin-icon="UTILITY" />
 	<category name="Clock" replace="Órák" builtin-icon="UTILITY" />
 	<category name="TextEditor" replace="Szövegszerkesztés" builtin-icon="UTILITY" />
 	<category name="KDE" toplevel="true" ignore="true">
-		<subcategory name="Fejlesztés" />
-		<subcategory name="Iroda" />
-		<subcategory name="Grafika" />
-		<subcategory name="Beállítások" />
-		<subcategory name="Hálózat" />
+		<subcategory name="Development" replace="Fejlesztés" />
+		<subcategory name="Office" replace="Iroda" />
+		<subcategory name="Graphics" replace="Grafika" />
+		<subcategory name="Settings" replace="Beállítások" />
+		<subcategory name="Network" replace="Hálózat" />
 		<subcategory name="AudioVideo" />
-		<subcategory name="Játék" />
-		<subcategory name="Oktatás" />
-		<subcategory name="Tudomány" />
-		<subcategory name="Rendszer" />
-		<subcategory name="Eszközök" />
+		<subcategory name="Game" replace="Játék" />
+		<subcategory name="Education" replace="Oktatás" />
+		<subcategory name="Science" replace="Tudomány" />
+		<subcategory name="System" replace="Rendszer" />
+		<subcategory name="Utility" replace="Eszközök" />
 	</category>
 	<category name="GNOME" toplevel="true" ignore="true">
-		<subcategory name="Fejlesztés" />
-		<subcategory name="Iroda" />
-		<subcategory name="Grafika" />
-		<subcategory name="Beállítások" />
-		<subcategory name="Hálózat" />
+		<subcategory name="Development" replace="Fejlesztés" />
+		<subcategory name="Office" replace="Iroda" />
+		<subcategory name="Graphics" replace="Grafika" />
+		<subcategory name="Settings" replace="Beállítások" />
+		<subcategory name="Network" replace="Hálózat" />
 		<subcategory name="AudioVideo" />
-		<subcategory name="Játék" />
-		<subcategory name="Oktatás" />
-		<subcategory name="Tudomány" />
-		<subcategory name="Rendszer" />
-		<subcategory name="Eszközök" />
+		<subcategory name="Game" replace="Játék" />
+		<subcategory name="Education" replace="Oktatás" />
+		<subcategory name="Science" replace="Tudomány" />
+		<subcategory name="System" replace="Rendszer" />
+		<subcategory name="Utility" replace="Eszközök" />
 	</category>
 	<category name="GTK" toplevel="true" ignore="true">
 		<subcategory name="GNOME" />
@@ -304,33 +301,33 @@
 		<subcategory name="KDE" />
 	</category>
 	<category name="Motif" toplevel="true" ignore="true">
-		<subcategory name="Fejlesztés" />
-		<subcategory name="Iroda" />
-		<subcategory name="Grafika" />
-		<subcategory name="Beállítások" />
-		<subcategory name="Hálózat" />
+		<subcategory name="Development" replace="Fejlesztés" />
+		<subcategory name="Office" replace="Iroda" />
+		<subcategory name="Graphics" replace="Grafika" />
+		<subcategory name="Settings" replace="Beállítások" />
+		<subcategory name="Network" replace="Hálózat" />
 		<subcategory name="AudioVideo" />
-		<subcategory name="Játék" />
-		<subcategory name="Oktatás" />
-		<subcategory name="Tudomány" />
-		<subcategory name="Rendszer" />
-		<subcategory name="Eszközök" />
+		<subcategory name="Game" replace="Játék" />
+		<subcategory name="Education" replace="Oktatás" />
+		<subcategory name="Science" replace="Tudomány" />
+		<subcategory name="System" replace="Rendszer" />
+		<subcategory name="Utility" replace="Eszközök" />
 	</category>
 	<category name="Java" toplevel="true" ignore="true">
 		<subcategory name="Kisalkalmazás" />
 	</category>
-	<category name="ConsoleOnly" toplevel="true" replace="Konzol" ignore="true">
-		<subcategory name="Fejlesztés" />
-		<subcategory name="Iroda" />
-		<subcategory name="Grafika" />
-		<subcategory name="Beállítások" />
-		<subcategory name="Hálózat" />
+	<category name="ConsoleOnly" toplevel="true" replace="Console" ignore="true">
+		<subcategory name="Development" replace="Fejlesztés" />
+		<subcategory name="Office" replace="Iroda" />
+		<subcategory name="Graphics" replace="Grafika" />
+		<subcategory name="Settings" replace="Beállítások" />
+		<subcategory name="Network" replace="Hálózat" />
 		<subcategory name="AudioVideo" />
-		<subcategory name="Játék" />
-		<subcategory name="Oktatás" />
-		<subcategory name="Tudomány" />
-		<subcategory name="Rendszer" />
-		<subcategory name="Eszközök" />
+		<subcategory name="Game" replace="Játék" />
+		<subcategory name="Education" replace="Oktatás" />
+		<subcategory name="Science" replace="Tudomány" />
+		<subcategory name="System" replace="Rendszer" />
+		<subcategory name="Utility" replace="Eszközök" />
 	</category>
 	<category name="Wine" toplevel="true" builtin-icon="WINE" />
 	<category name="WineX" toplevel="true" builtin-icon="WINE" />

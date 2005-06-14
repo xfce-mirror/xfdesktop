@@ -42,6 +42,7 @@ conf_DATA = 								\
 	menu.xml.fi							\
 	menu.xml.fr 							\
 	menu.xml.he							\
+	menu.xml.hu							\
 	menu.xml.ja							\
 	menu.xml.ko							\
 	menu.xml.nl  							\
