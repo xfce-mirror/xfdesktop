@@ -37,7 +37,6 @@
 
 #include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
-#include <libxfcegui4/xfce_scaled_image.h>
 
 #include <panel/plugins.h>
 #include <panel/xfce.h>
@@ -104,8 +103,6 @@ xfutil_custom_button_new(const gchar *text, const gchar *icon)
 static gchar *
 dmp_get_real_path(const gchar *raw_path)
 {
-    gchar *path;
-    
     if(!raw_path)
         return NULL;
     
@@ -128,12 +125,12 @@ dmp_set_size(Control *c, int size)
 {
     DMPlugin *dmp = c->data;
     GdkPixbuf *pix;
-    int s = icon_size[size] + border_width;
-
+    gint s = icon_size[size] + border_width;
+    
     if(dmp->icon_file) {
-        pix = xfce_themed_icon_load(dmp->icon_file, s - border_width);
+        pix = xfce_themed_icon_load(dmp->icon_file, s);
         if(pix) {
-            xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), pix);
+            gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), pix);
             g_object_unref(G_OBJECT(pix));
         }
     }
@@ -156,7 +153,6 @@ static void
 dmp_set_orientation(Control *c, gint orientation)
 {
     DMPlugin *dmp = c->data;
-    gint s = icon_size[settings.size] + border_width;
     
     if(!dmp->show_button_title)
         return;
@@ -342,7 +338,7 @@ dmp_new()
     gtk_widget_show(dmp->box);
     gtk_container_add(GTK_CONTAINER(dmp->button), dmp->box);
     
-    dmp->image = xfce_scaled_image_new();
+    dmp->image = gtk_image_new();
     g_object_ref(G_OBJECT(dmp->image));
     gtk_widget_show(dmp->image);
     gtk_box_pack_start(GTK_BOX(dmp->box), dmp->image, FALSE, FALSE, 0);
@@ -431,12 +427,12 @@ dmp_read_config(Control *control, xmlNodePtr node)
     value = xmlGetProp(node, (const xmlChar *)"icon_file");
     if(value) {
         pix = xfce_themed_icon_load(value,
-                icon_size[settings.size] - 2*border_width);
+                icon_size[settings.size] + border_width);
         if(pix) {
             if(dmp->icon_file)
                 g_free(dmp->icon_file);
             dmp->icon_file = (gchar *)value;
-            xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), pix);
+            gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), pix);
             g_object_unref(G_OBJECT(pix));
         } else
             xmlFree(value);
@@ -445,7 +441,7 @@ dmp_read_config(Control *control, xmlNodePtr node)
         pix = xfce_themed_icon_load(dmp->icon_file,
                 icon_size[settings.size] - 2*border_width);
         if(pix) {
-            xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), pix);
+            gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), pix);
             g_object_unref(G_OBJECT(pix));
         }
     }
@@ -511,10 +507,10 @@ entry_focus_out_cb(GtkWidget *w, GdkEventFocus *evt, gpointer user_data)
         pix = xfce_themed_icon_load(dmp->icon_file,
                 icon_size[settings.size] - 2*border_width);
         if(pix) {
-            xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), pix);
+            gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), pix);
             g_object_unref(G_OBJECT(pix));
         } else
-            xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), NULL);
+            gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), NULL);
     } else if(w == dmp->file_entry) {
         if(dmp->menu_file)
             g_free(dmp->menu_file);

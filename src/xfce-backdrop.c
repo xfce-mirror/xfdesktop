@@ -289,6 +289,8 @@ xfce_backdrop_new(GdkVisual *visual)
     
     backdrop = g_object_new(XFCE_TYPE_BACKDROP, NULL);
     backdrop->priv->bpp = visual->depth;
+    
+    return backdrop;
 }
 
 /**
