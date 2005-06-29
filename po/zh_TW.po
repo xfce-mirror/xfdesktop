@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-01 19:50-0700\n"
-"PO-Revision-Date: 2004-12-06 22:58+0800\n"
+"PO-Revision-Date: 2005-06-27 22:07+0800\n"
 "Last-Translator: Hydonsingore Sie <hydonsingore@mail.educities.edu.tw>\n"
 "Language-Team:  <>\n"
 "MIME-Version: 1.0\n"
@@ -356,44 +356,37 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "無法執行 xfce4-menueditor：%s"
 
 #: panel-plugin/desktop-menu-plugin.c:740
-#, fuzzy
 msgid "Button"
-msgstr "按鈕圖示(_B)："
+msgstr "按鈕"
 
 #: panel-plugin/desktop-menu-plugin.c:753
-#, fuzzy
 msgid "Button _title:"
-msgstr "按鈕圖示(_B)："
+msgstr "按鈕標題(_T)："
 
 #: panel-plugin/desktop-menu-plugin.c:766
 msgid "_Show title in button"
-msgstr ""
+msgstr "在按鈕中顯示標題(_S)"
 
 #: panel-plugin/desktop-menu-plugin.c:773
-#, fuzzy
 msgid "Menu File"
 msgstr "選單檔案"
 
 #: panel-plugin/desktop-menu-plugin.c:785
-#, fuzzy
 msgid "Use default _desktop menu file"
-msgstr "修改桌面選單(_E)"
+msgstr "使用預設桌面選單檔案(_D)"
 
 #: panel-plugin/desktop-menu-plugin.c:794
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "開啟選單檔案"
+msgstr "使用選單檔案(_C)"
 
 #: panel-plugin/desktop-menu-plugin.c:846
 #: panel-plugin/desktop-menu-plugin.c:848
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "選單(_M)"
+msgstr "編輯選單(_E)"
 
 #: panel-plugin/desktop-menu-plugin.c:855
-#, fuzzy
 msgid "Icons"
-msgstr "圖示："
+msgstr "圖示"
 
 #: panel-plugin/desktop-menu-plugin.c:867
 msgid "_Button icon:"
@@ -509,24 +502,23 @@ msgstr "調校亮度(_B)："
 #: settings/backdrop_settings.c:838
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr ""
+msgstr "Xfce將無法管理您的桌面 (%s)"
 
 #: settings/backdrop_settings.c:839
 msgid "Unknown Error"
-msgstr ""
+msgstr "未知的錯誤"
 
 #: settings/backdrop_settings.c:843
 msgid "Error"
-msgstr ""
+msgstr "錯誤"
 
 #: settings/backdrop_settings.c:845
 msgid "Unable to start xfdesktop"
-msgstr ""
+msgstr "無法啟動xfdesktop"
 
 #: settings/backdrop_settings.c:863
-#, fuzzy
 msgid "Information"
-msgstr "忽略修改"
+msgstr "資訊"
 
 #: settings/backdrop_settings.c:873
 msgid ""
@@ -536,10 +528,14 @@ msgid ""
 "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
+"要保證Xfce在下次啟動時不再管理您的桌面，請確認您於登出時妥善儲存您的工作階段。"
+"如果您現在不是使用 Xfce工作階段管理器 (xfce4-session)，您需要手動編輯您的"
+"~/.config/xfce4/xinitrc檔案。詳細的說明可在 http://xfce.org/ 所提供的文件"
+"中找到。"
 
 #: settings/backdrop_settings.c:881
 msgid "_Do not show this again"
-msgstr ""
+msgstr "下次不顯示(_D)"
 
 #. header
 #: settings/backdrop_settings.c:931
@@ -549,7 +545,7 @@ msgstr "桌面設定"
 
 #: settings/backdrop_settings.c:936
 msgid "Allow _Xfce to manage the desktop"
-msgstr ""
+msgstr "讓Xfce管理桌面(_X)"
 
 #: settings/backdrop_settings.c:972
 msgid "_Backdrops"
@@ -582,7 +578,7 @@ msgstr "第一色(_R)："
 
 #: settings/backdrop_settings.c:1077
 msgid "_Second Color:"
-msgstr "第二色(_S_："
+msgstr "第二色(_S)："
 
 #: settings/backdrop_settings.c:1102
 msgid "Image"
@@ -670,7 +666,7 @@ msgstr "    -windowlist  (在目前滑鼠游標的所在位置) 彈出視窗清�
 
 #: src/main.c:258
 msgid "    -quit        Cause xfdesktop to quit\n"
-msgstr ""
+msgstr "    -quit        結束xfdesktopi\n"
 
 #: src/windowlist.c:193
 #, c-format
@@ -702,9 +698,8 @@ msgid "Graphical tool for editing the Xfce 4 menu"
 msgstr "修改 Xfce 的選單"
 
 #: menueditor/xfce-menueditor.desktop.in.h:2
-#, fuzzy
 msgid "Menu Editor"
-msgstr "Xfce 4 選單編輯器"
+msgstr "選單編輯器"
 
 #: menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
