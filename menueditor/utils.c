@@ -64,16 +64,6 @@ save_treeview_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIte
   temp = extract_text_from_markup (command);
   g_free (command);
   command = temp;
-  temp = extract_text_from_markup (option_1);
-  g_free (option_1);
-  option_1 = temp;
-  temp = extract_text_from_markup (option_2);
-  g_free (option_2);
-  option_2 = temp;
-  temp = extract_text_from_markup (option_3);
-  g_free (option_3);
-  option_3 = temp;
-
 
   switch (type) {
   case TITLE:

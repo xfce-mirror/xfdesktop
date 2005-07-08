@@ -65,7 +65,6 @@ edit_selection (MenuEditor *me)
   GdkPixbuf *icon = NULL;
   gchar *name = NULL;
   gchar *command = NULL;
-  gboolean hidden = FALSE;
   ENTRY_TYPE type = SEPARATOR;
   gchar *option_1 = NULL;
   gchar *option_2 = NULL;
@@ -77,14 +76,14 @@ edit_selection (MenuEditor *me)
 
   GtkWidget *table;
   GtkWidget *label_name;
-  GtkWidget *entry_name;
+  GtkWidget *entry_name = NULL;
   GtkWidget *label_command;
   GtkWidget *hbox_command;
   GtkWidget *hbox_icon;
   GtkWidget *label_icon;
   GtkWidget *button_browse;
-  GtkWidget *check_button_snotify;
-  GtkWidget *check_button_interm;
+  GtkWidget *check_button_snotify = NULL;
+  GtkWidget *check_button_interm = NULL;
 
   gint response;
 
@@ -101,7 +100,6 @@ edit_selection (MenuEditor *me)
   gtk_tree_model_get (model, &iter_selected, COLUMN_ICON, &icon,
 		      COLUMN_NAME, &name,
 		      COLUMN_COMMAND, &command,
-		      COLUMN_HIDDEN, &hidden,
 		      COLUMN_TYPE, &type,
 		      COLUMN_OPTION_1, &option_1,
 		      COLUMN_OPTION_2, &option_2,
@@ -113,15 +111,6 @@ edit_selection (MenuEditor *me)
   temp = extract_text_from_markup (command);
   g_free (command);
   command = temp;
-  temp = extract_text_from_markup (option_1);
-  g_free (option_1);
-  option_1 = temp;
-  temp = extract_text_from_markup (option_2);
-  g_free (option_2);
-  option_2 = temp;
-  temp = extract_text_from_markup (option_3);
-  g_free (option_3);
-  option_3 = temp;
 
   /* Create dialog for editing */
   edit_dialog->dialog = gtk_dialog_new_with_buttons (_("Edit menu entry"),
@@ -244,8 +233,103 @@ edit_selection (MenuEditor *me)
   /* Commit changes */
   while ((response = gtk_dialog_run (GTK_DIALOG (edit_dialog->dialog)))) {
     if (response == GTK_RESPONSE_OK) {
-    } else
-      break;
+      const gchar *str_icon = NULL;
+
+      /* Check if all required fields are filled correctly */
+      switch (type) {
+      case APP:
+        if (!command_exists (gtk_entry_get_text (GTK_ENTRY (edit_dialog->entry_command)))) {
+          xfce_warn (_("The command doesn't exist !"));
+          continue;
+        }
+
+        if ((strlen (gtk_entry_get_text (GTK_ENTRY (entry_name))) == 0) ||
+            (strlen (gtk_entry_get_text (GTK_ENTRY (edit_dialog->entry_command))) == 0)) {
+          xfce_warn (_("All fields must be filled to add an item."));
+          continue;
+        }
+        break;
+      case MENU:
+      case TITLE:
+      case BUILTIN:
+        if (strlen (gtk_entry_get_text (GTK_ENTRY (entry_name)))
+            == 0) {
+          xfce_warn (_("The 'Name' field is required."));
+          continue;
+        }
+        break;
+      default:
+        break;
+      }
+
+      if (G_IS_OBJECT (icon)) {
+        g_object_unref (icon);
+        icon = NULL;
+      }
+
+      str_icon = gtk_entry_get_text (GTK_ENTRY (edit_dialog->entry_icon));
+      /* set the new icon if there is one and it exists otherwise use the dummy one */
+      if ((edit_dialog->entry_icon && strlen (str_icon) != 0)) {
+        icon = xfce_icon_theme_load (me->icon_theme, str_icon, ICON_SIZE);
+        if (!icon)
+          icon = dummy_icon;
+	g_free (option_1);
+	option_1 = g_strdup (str_icon);
+      }
+      else {
+        icon = dummy_icon;
+
+	g_free (option_1);
+	option_1 = g_strdup ("");
+      }
+
+      switch (type) {
+      case APP:
+	g_free (name);
+	name = g_markup_printf_escaped (NAME_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_name)));
+	g_free (command);
+        command = g_markup_printf_escaped (COMMAND_FORMAT, gtk_entry_get_text (GTK_ENTRY (edit_dialog->entry_command)));
+
+	g_free (option_2);
+	g_free (option_3);
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check_button_interm)))
+          option_2 = g_strdup ("true");
+        else
+          option_2 = g_strdup ("false");
+        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check_button_snotify)))
+          option_3 = g_strdup ("true");
+        else
+          option_3 = g_strdup ("false");
+	break;
+      case MENU:
+	g_free (name);
+	name = g_markup_printf_escaped (MENU_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_name)));
+	break;
+      case TITLE:
+	g_free (name);
+	name = g_markup_printf_escaped (MENU_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_name)));
+	break;
+      case BUILTIN:
+	g_free (name);
+	name = g_markup_printf_escaped (BUILTIN_FORMAT, gtk_entry_get_text (GTK_ENTRY (entry_name)));
+	g_free (command);
+        command = g_markup_printf_escaped (COMMAND_FORMAT, _("quit")); 
+	break;
+      default:
+	break;
+      }
+
+
+      gtk_tree_store_set (GTK_TREE_STORE (model), &iter_selected, COLUMN_ICON, icon,
+			  COLUMN_NAME, name,
+			  COLUMN_COMMAND, command,
+			  COLUMN_OPTION_1, option_1,
+			  COLUMN_OPTION_2, option_2,
+			  COLUMN_OPTION_3, option_3, -1);
+
+      menueditor_menu_modified (me);
+    }
+    break;
   }
 
   gtk_widget_destroy (edit_dialog->dialog);

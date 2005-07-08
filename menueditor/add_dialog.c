@@ -355,7 +355,8 @@ add_entry_cb (GtkWidget * widget, gpointer data)
 
         name = g_markup_printf_escaped (BUILTIN_FORMAT, gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_name)));
         command = g_markup_printf_escaped (COMMAND_FORMAT, _("quit"));
-        option_1 = g_strdup ("");
+        if (G_IS_OBJECT (icon))
+          option_1 = g_strdup (gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_icon)));
         option_2 = g_strdup ("");
         option_3 = g_strdup ("");
         break;
@@ -403,12 +404,8 @@ add_entry_cb (GtkWidget * widget, gpointer data)
       g_free (option_2);
       g_free (option_3);
       gtk_tree_path_free (path);
-
-      break;
     }
-    else {
-      break;
-    }
+    break;
   }
 
   gtk_widget_destroy (add_dialog->dialog);

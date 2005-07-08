@@ -574,6 +574,12 @@ close_menu_cb (GtkWidget * widget, gpointer data)
 /* ========= */
 /* Edit menu */
 /* ========= */
+static void 
+popup_menu_edit_cb (GtkWidget * widget, gpointer data)
+{
+  edit_selection (data);
+}
+
 static void
 delete_entry_cb (GtkWidget * widget, gpointer data)
 {
@@ -1030,6 +1036,14 @@ create_main_window (MenuEditor * me)
   g_signal_connect (G_OBJECT (me->menu_item_edit_down), "activate", G_CALLBACK (entry_down_cb), me);
 
   g_signal_connect (G_OBJECT (me->menu_item_help_about), "activate", G_CALLBACK (about_cb), me);
+
+  /* Popup menu */
+  g_signal_connect (G_OBJECT (me->menu_item_popup_edit), "activate", G_CALLBACK (popup_menu_edit_cb), me);
+  g_signal_connect (G_OBJECT (me->menu_item_popup_add), "activate", G_CALLBACK (add_entry_cb), me);
+  g_signal_connect (G_OBJECT (me->menu_item_popup_addmenu), "activate", G_CALLBACK (add_menu_cb), me);
+  g_signal_connect (G_OBJECT (me->menu_item_popup_del), "activate", G_CALLBACK (delete_entry_cb), me);
+  g_signal_connect (G_OBJECT (me->menu_item_popup_up), "activate", G_CALLBACK (entry_up_cb), me);
+  g_signal_connect (G_OBJECT (me->menu_item_popup_down), "activate", G_CALLBACK (entry_down_cb), me);
 
   /* Treeview */
   g_signal_connect (G_OBJECT (me->treeview), "button-press-event", G_CALLBACK (treeview_button_pressed_cb), me);
