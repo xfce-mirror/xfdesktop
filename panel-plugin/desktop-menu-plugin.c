@@ -464,6 +464,8 @@ dmp_read_config(Control *control, xmlNodePtr node)
         dmp->button_title = value;
         if(dmp->tooltip && dmp->button)
             gtk_tooltips_set_tip(dmp->tooltip, dmp->button, dmp->button_title, NULL);
+        if(dmp->label)
+            gtk_label_set_text(GTK_LABEL(dmp->label), dmp->button_title);
     }
     
     value = xmlGetProp(node, (const xmlChar *)"show_button_title");
@@ -691,6 +693,7 @@ dmp_button_title_focus_out_cb(GtkWidget *w, GdkEventFocus *evt,
     dmp->button_title = gtk_editable_get_chars(GTK_EDITABLE(w), 0, -1);
     
     gtk_tooltips_set_tip(dmp->tooltip, dmp->button, dmp->button_title, NULL);
+    gtk_label_set_text(GTK_LABEL(dmp->label), dmp->button_title);
     
     return FALSE;
 }
