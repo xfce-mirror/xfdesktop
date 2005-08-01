@@ -1,0 +1,663 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2005-08-01 01:58-0500\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: Petri Jooste <petri.jooste@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2005-01-10 19:37+0100\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"MIME-Version: 1.0\n"
+
+#: menueditor/about_dialog.c:39
+msgid "A menu editor for Xfce4"
+msgstr "'n Kieslysredigeerder vir Xfce4"
+
+#. Credits
+#: menueditor/about_dialog.c:43
+msgid "Core developer"
+msgstr "Kernontwikkelaar"
+
+#: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:46
+msgid "Contributor"
+msgstr "Bydraer"
+
+#: menueditor/about_dialog.c:47
+msgid "Icon designer"
+msgstr "Ikoonontwerper"
+
+#: menueditor/add_dialog.c:138 menueditor/add_dialog.c:150
+msgid "Add menu entry"
+msgstr "Voeg kieslys item by"
+
+#. Type
+#: menueditor/add_dialog.c:156 menueditor/add_menu_dialog.c:98
+#: menueditor/edit_dialog.c:149
+msgid "Type:"
+msgstr "Tipe:"
+
+#: menueditor/add_dialog.c:159
+msgid "Launcher"
+msgstr "Laaier"
+
+#: menueditor/add_dialog.c:164
+msgid "Submenu"
+msgstr "Subkieslys"
+
+#: menueditor/add_dialog.c:169
+msgid "Separator"
+msgstr "skeier"
+
+#: menueditor/add_dialog.c:174
+msgid "Title"
+msgstr "Titel"
+
+#: menueditor/add_dialog.c:179
+msgid "Quit"
+msgstr "Verlaat"
+
+#. Name
+#: menueditor/add_dialog.c:194 menueditor/edit_dialog.c:263
+#: menueditor/edit_dialog.c:314 menueditor/edit_dialog.c:353
+msgid "Name:"
+msgstr "Naam:"
+
+#: menueditor/add_dialog.c:204 menueditor/edit_dialog.c:264
+msgid "Command:"
+msgstr "Bevel:"
+
+#: menueditor/add_dialog.c:220 menueditor/edit_dialog.c:255
+#: menueditor/edit_dialog.c:319 menueditor/edit_dialog.c:358
+#: menueditor/edit_dialog.c:396
+msgid "Icon:"
+msgstr "Ikoon:"
+
+#. Start Notify check button
+#: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:275
+msgid "Use startup _notification"
+msgstr "Gebruik _kennisgewing van aanvang"
+
+#. Run in terminal check button
+#: menueditor/add_dialog.c:240 menueditor/edit_dialog.c:276
+msgid "Run in _terminal"
+msgstr "Loop in _terminaal"
+
+#: menueditor/add_dialog.c:285 menueditor/edit_dialog.c:468
+msgid "The command doesn't exist !"
+msgstr "Die bevel bestaan nie!"
+
+#: menueditor/add_dialog.c:291
+msgid "All fields must be filled to add an item."
+msgstr "Alle velde moet ingevul wees om 'n item by te voeg."
+
+#: menueditor/add_dialog.c:300
+msgid "The 'Name' field is required."
+msgstr "Die 'Naam'-veld word vereis"
+
+#: menueditor/add_dialog.c:356 menueditor/dnd.c:153
+#: menueditor/menueditor.c:579 menueditor/move.c:87 menueditor/move.c:225
+msgid "--- separator ---"
+msgstr "--- skeier ---"
+
+#: menueditor/add_dialog.c:381 menueditor/edit_dialog.c:505
+msgid "quit"
+msgstr "verlaat"
+
+#: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
+#: menueditor/menueditor.c:1031
+msgid "Add an external menu"
+msgstr "Voeg 'n eksterne kieslys by"
+
+#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:152
+msgid "File"
+msgstr "Lêer"
+
+#: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:157
+msgid "System"
+msgstr "Stelsel"
+
+#: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:172
+msgid "Source:"
+msgstr "Bron:"
+
+#. Style
+#: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:185
+msgid "Style:"
+msgstr "Styl:"
+
+#: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:188
+msgid "Simple"
+msgstr "Eenvoudig"
+
+#: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:191
+msgid "Multilevel"
+msgstr "Multivlak"
+
+#. Unique
+#: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:204
+msgid "_Unique entries only"
+msgstr "Slegs _unieke items"
+
+#: menueditor/add_menu_dialog.c:208
+msgid "The 'Source' field is required."
+msgstr "Die 'Bron'-veld word vereis"
+
+#: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:234
+#: menueditor/dnd.c:156 menueditor/edit_dialog.c:521
+#: menueditor/edit_dialog.c:534 menueditor/menueditor.c:618
+#: menueditor/move.c:111 menueditor/move.c:249
+msgid "--- include ---"
+msgstr "--- sluit in ---"
+
+#: menueditor/add_menu_dialog.c:235 menueditor/dnd.c:161
+#: menueditor/edit_dialog.c:535 menueditor/menueditor.c:621
+#: menueditor/move.c:114 menueditor/move.c:252
+msgid "system"
+msgstr "stelsel"
+
+#. Create dialog for editing
+#: menueditor/edit_dialog.c:103 menueditor/edit_dialog.c:113
+msgid "Edit menu entry"
+msgstr "Redigeer kieslysitem"
+
+#: menueditor/edit_dialog.c:131
+msgid "Separators cannot be edited"
+msgstr "Skeiers kan nie geredigeer word nie"
+
+#. Name
+#: menueditor/edit_dialog.c:403 menueditor/new_dialog.c:100
+msgid "Title:"
+msgstr "Titel:"
+
+#: menueditor/menueditor.c:371
+msgid "Select command"
+msgstr "Kies bevel"
+
+#: menueditor/menueditor.c:435
+msgid "Select icon"
+msgstr "Kies ikoon"
+
+#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:390
+#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop_settings.c:533
+msgid "All Files"
+msgstr "Alle lêers"
+
+#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:396
+#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+msgid "Image Files"
+msgstr "Beeldlêers"
+
+#: menueditor/menueditor.c:500 menueditor/menueditor.c:903
+msgid "Do you want to save before closing the menu ?"
+msgstr "Wil u stoor voordat u die kieslys toemaak?"
+
+#: menueditor/menueditor.c:502
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr "U het die kieslys verander, wil u dit stoor voor u dit verlaat?"
+
+#: menueditor/menueditor.c:504
+msgid "Forget modifications"
+msgstr "Vergeet die veranderinge"
+
+#: menueditor/menueditor.c:690 menueditor/menueditor.c:749
+#: menueditor/menueditor.c:901
+msgid "Question"
+msgstr "Vraag"
+
+#: menueditor/menueditor.c:692
+msgid "Do you want to save before opening the default menu ?"
+msgstr "Wil u stoor voordat u die verstek-kieslys oopmaak?"
+
+#: menueditor/menueditor.c:694 menueditor/menueditor.c:753
+#: menueditor/menueditor.c:905
+msgid "Ignore modifications"
+msgstr "Ignoreer veranderinge"
+
+#: menueditor/menueditor.c:751
+msgid "Do you want to save before opening an other menu ?"
+msgstr "Wil u stoor voordat u 'n ander kieslys oopmaak?"
+
+#: menueditor/menueditor.c:764
+msgid "Open menu file"
+msgstr "Maak kieslyslêer oop"
+
+#: menueditor/menueditor.c:799 menueditor/menueditor.c:810
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr "Kan nie in %s skryf nie: \n"
+"%s"
+
+#: menueditor/menueditor.c:844
+msgid "Save as..."
+msgstr "Stoor as..."
+
+#: menueditor/menueditor.c:1025
+msgid "Edit"
+msgstr "Redigeer"
+
+#. File menu
+#: menueditor/menueditor.c:1225
+msgid "_File"
+msgstr "_Lêer"
+
+#: menueditor/menueditor.c:1234
+msgid "Open default menu"
+msgstr "Open verstek-kieslys"
+
+#. Edit menu
+#: menueditor/menueditor.c:1248
+msgid "_Edit"
+msgstr "R_edigeer"
+
+#: menueditor/menueditor.c:1254
+msgid "Add an external menu..."
+msgstr "Voeg 'n eksterne kieslys by..."
+
+#. Help menu
+#: menueditor/menueditor.c:1266
+msgid "_Help"
+msgstr "_Hulp"
+
+#: menueditor/menueditor.c:1271
+msgid "_About..."
+msgstr "_Aangaande"
+
+#: menueditor/menueditor.c:1283
+msgid "Create a new Xfce4 menu file"
+msgstr "Maak 'n nuwe Xfce4 kieslyslêer"
+
+#: menueditor/menueditor.c:1289
+msgid "Open an Xfce4 menu file"
+msgstr "Kies 'n Xfce4 kieslyslêer"
+
+#: menueditor/menueditor.c:1295
+msgid "Save current menu"
+msgstr "Stoor huidige kieslys"
+
+#: menueditor/menueditor.c:1300
+msgid "Close current menu"
+msgstr "Maak huidige kieslys toe"
+
+#: menueditor/menueditor.c:1306
+msgid "Add an entry to the menu"
+msgstr "Voeg 'n item by die kieslys"
+
+#: menueditor/menueditor.c:1312
+msgid "Delete the current entry"
+msgstr "Skrap hierdie item"
+
+#: menueditor/menueditor.c:1318
+msgid "Move the current entry up"
+msgstr "Skuif hierdie item op"
+
+#: menueditor/menueditor.c:1324
+msgid "Move the current entry down"
+msgstr "Skuif hierdie item af"
+
+#: menueditor/menueditor.c:1331
+msgid "Collapse the tree"
+msgstr "Vou die boom toe"
+
+#: menueditor/menueditor.c:1336
+msgid "Expand the tree"
+msgstr "Vou die boom oop"
+
+#: menueditor/menueditor.c:1365
+msgid "Name"
+msgstr "Naam"
+
+#: menueditor/menueditor.c:1368
+msgid "Command"
+msgstr "Bevel"
+
+#: menueditor/menueditor.c:1369
+msgid "Hidden"
+msgstr "Versteek"
+
+#: menueditor/menueditor.c:1370
+msgid "Pointer"
+msgstr "Wyser"
+
+#: menueditor/menueditor.c:1472
+msgid "Corrupted file or incorrect file format !"
+msgstr "Korrupte lêer of verkeerde lêerformaat!"
+
+#: menueditor/menueditor.c:1485
+msgid "No root element in file !"
+msgstr "Geen wortel-element in lêer!"
+
+#: menueditor/menueditor.c:1496
+msgid "Bad datafile format !"
+msgstr "Slegte datalêerformaat!"
+
+#: menueditor/menueditor.c:1599
+#, c-format
+msgid "File %s doesn't exist !"
+msgstr "Lêer %s bestaan nie!"
+
+#: menueditor/move.c:370
+msgid "Do you want to move the item into the parent menu?"
+msgstr "Wil u die item skuif na die ouer-kieslys?"
+
+#: menueditor/move.c:469
+msgid "Do you want to move the item into the submenu?"
+msgstr "Wil u die item skuif na die subkieslys?"
+
+#: menueditor/new_dialog.c:60
+msgid "Are you sure you want to close the current menu?"
+msgstr "Is u seker dat u hierdie kieslys wil toemaak?"
+
+#: menueditor/new_dialog.c:75
+msgid "Do you want to save before closing the file?"
+msgstr "Wil u stoor voordat u die lêer toemaak?"
+
+#. get the filename and name for the new menu
+#: menueditor/new_dialog.c:85 menueditor/new_dialog.c:94
+msgid "New menu"
+msgstr "Nuwe kieslys"
+
+#. Filename
+#: menueditor/new_dialog.c:107
+msgid "Filename:"
+msgstr "Lêernaam:"
+
+#: menueditor/new_dialog.c:141
+msgid "All fields are required."
+msgstr "Alle velde word vereis."
+
+#: modules/menu/desktop-menuspec.c:62
+msgid "/Other"
+msgstr "/Ander"
+
+#: panel-plugin/desktop-menu-plugin.c:205
+#: panel-plugin/desktop-menu-plugin.c:535
+msgid "Xfce Menu"
+msgstr "Xfce kieslys"
+
+#: panel-plugin/desktop-menu-plugin.c:373
+msgid "Select Icon"
+msgstr "Selekteer ikoon"
+
+#: panel-plugin/desktop-menu-plugin.c:375
+msgid "Select Menu File"
+msgstr "Selekteer Kieslyslêer"
+
+#: panel-plugin/desktop-menu-plugin.c:404
+msgid "Menu Files"
+msgstr "Kieslyslêers"
+
+#: panel-plugin/desktop-menu-plugin.c:465
+msgid "_Menu file:"
+msgstr "_Kieslyslêer:"
+
+#: panel-plugin/desktop-menu-plugin.c:499
+msgid "_Button icon:"
+msgstr "Knoppie-_ikoon"
+
+#: panel-plugin/desktop-menu-plugin.c:524
+msgid "Show _icons in menu"
+msgstr "_Wys ikone in kieslys"
+
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr "Kon nie lêer %s stoor nie: %s\n"
+"\n"
+"Kies asb. 'n ander ligging of druk kanselleer in die dialoogkassie om u veranderinge te verloor"
+
+#: settings/backdrop-mgr.c:409
+msgid "Select backdrop image file"
+msgstr "Selekteer lêer vir agtergrondbeeld"
+
+#: settings/backdrop-mgr.c:510
+msgid "Choose backdrop list filename"
+msgstr "Kies lêernaam vir agtergrondbeeldlys"
+
+#: settings/backdrop-mgr.c:519
+msgid "List Files"
+msgstr "Lys lêers"
+
+#: settings/backdrop-mgr.c:582
+msgid "Backdrop List"
+msgstr "Agtergrondlys"
+
+#: settings/backdrop-mgr.c:599
+msgid "Image files"
+msgstr "Beeldlêers"
+
+#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop_settings.c:197
+msgid "backdrops.list"
+msgstr "agtergronde.lys"
+
+#: settings/backdrop-mgr.c:618
+msgid "List file"
+msgstr "Lys lêer"
+
+#: settings/backdrop-mgr.c:638
+msgid "Create backdrop list"
+msgstr "Skep agtergrondlys"
+
+#: settings/backdrop-mgr.c:669
+msgid "Edit backdrop list"
+msgstr "Redigeer agtergrondlys"
+
+#. the dialog
+#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
+#: src/xfce-desktop.c:676
+msgid "Desktop"
+msgstr "Werkskerm"
+
+#: settings/backdrop_settings.c:528
+msgid "Select backdrop image or list file"
+msgstr "Kies agtergrondbeeld of lyslêer"
+
+#: settings/backdrop_settings.c:546
+msgid "List Files (*.list)"
+msgstr "Lyslêers (*.list)"
+
+#: settings/backdrop_settings.c:636
+msgid "_Edit list..."
+msgstr "R_edigeer lys..."
+
+#: settings/backdrop_settings.c:644
+msgid "_New list..."
+msgstr "_Nuwe lys..."
+
+#: settings/backdrop_settings.c:680
+msgid "S_tyle:"
+msgstr "S_tyl:"
+
+#: settings/backdrop_settings.c:688
+msgid "Tiled"
+msgstr "Geteel"
+
+#: settings/backdrop_settings.c:695
+msgid "Centered"
+msgstr "Gesentreerd"
+
+#: settings/backdrop_settings.c:702
+msgid "Scaled"
+msgstr "Geskaleer"
+
+#: settings/backdrop_settings.c:709
+msgid "Stretched"
+msgstr "Gerek"
+
+#: settings/backdrop_settings.c:716
+msgid "Auto"
+msgstr "Outo"
+
+#: settings/backdrop_settings.c:782
+msgid "Adjust _Brightness:"
+msgstr "Stel _helderheid"
+
+#. header
+#: settings/backdrop_settings.c:851
+msgid "Desktop Settings"
+msgstr "Werkskerm-instellings"
+
+#: settings/backdrop_settings.c:880
+msgid "_Backdrops"
+msgstr "_Agtergronde"
+
+#. color settings frame
+#: settings/backdrop_settings.c:906
+msgid "Color"
+msgstr "Kleur"
+
+#: settings/backdrop_settings.c:920
+msgid "_Color Style:"
+msgstr "_Kleurstyl:"
+
+#: settings/backdrop_settings.c:929
+msgid "Solid Color"
+msgstr "Soliede kleur"
+
+#: settings/backdrop_settings.c:936
+msgid "Horizontal Gradient"
+msgstr "Horisontale gradiënt"
+
+#: settings/backdrop_settings.c:943
+msgid "Vertical Gradient"
+msgstr "Vertikale gradiënt"
+
+#: settings/backdrop_settings.c:964
+msgid "Fi_rst Color:"
+msgstr "Ee_rste kleur:"
+
+#: settings/backdrop_settings.c:985
+msgid "_Second Color:"
+msgstr "T_weede kleur:"
+
+#. set color only checkbox
+#: settings/backdrop_settings.c:1006
+msgid "Set color _only"
+msgstr "Stel _slegs kleur"
+
+#: settings/backdrop_settings.c:1021
+msgid "Image"
+msgstr "Beeld"
+
+#: settings/backdrop_settings.c:1029
+msgid "Show _Image"
+msgstr "Wys _beeld"
+
+#: settings/backdrop_settings.c:1051
+msgid "_File:"
+msgstr "_Lêer:"
+
+#. don't set backdrop checkbox
+#: settings/backdrop_settings.c:1088
+msgid "_Don't set backdrop"
+msgstr "_Moenie agtergrond stel nie"
+
+#. add the single backdrop settings page to the main notebook
+#: settings/backdrop_settings.c:1111
+msgid "_Backdrop"
+msgstr "_Agtergrond"
+
+#: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
+#, c-format
+msgid "Screen %d"
+msgstr "Skerm %d"
+
+#. and if we have multiple screens, each with multiple monitors
+#: settings/backdrop_settings.c:1126
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Skerm %d, Monitor %d"
+
+#: settings/backdrop_settings.c:1140
+msgid "_Menu"
+msgstr "_Kieslys"
+
+#: settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "Kon nie xfce-menueditor laat begin nie: %s"
+
+#: settings/menu_settings.c:153
+msgid "Window List"
+msgstr "Vensterlys"
+
+#: settings/menu_settings.c:161
+msgid "Show window _list"
+msgstr "Wys venster_lys"
+
+#: settings/menu_settings.c:176
+msgid "Show _window icons"
+msgstr "Wys _vensterikone"
+
+#: settings/menu_settings.c:189
+msgid "Desktop Menu"
+msgstr "Werkskermkieslys"
+
+#: settings/menu_settings.c:197
+msgid "Show desktop _menu"
+msgstr "Wys werkskerm_kieslys"
+
+#: settings/menu_settings.c:212
+msgid "Show _application icons"
+msgstr "Wys _programikone"
+
+#: settings/menu_settings.c:223
+msgid "_Edit desktop menu"
+msgstr "R_edigeer werkskermkieslys"
+
+#: src/main.c:300
+#, c-format
+msgid "%s: Unknown option: %s\n"
+msgstr "%s: Onbekende opsie: %s\n"
+
+#: src/main.c:301
+msgid "Options are:\n"
+msgstr "Opsies is:\n"
+
+#: src/main.c:302
+msgid "    -reload      Reload all settings, refresh image list\n"
+msgstr "-reload Herlaai alle instellings, verfris beeldlys\n"
+
+#: src/main.c:303
+msgid "    -menu        Pop up the menu (at the current mouse position)\n"
+msgstr "-menu Wys die kieslys (by die huidige muisposisie)\n"
+
+#: src/main.c:304
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "-windowlist Wys die vensterlys (by die huidige muisposisie)\n"
+
+#: src/windowlist.c:176
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>Werkarea %d</b>"
+
+#: src/windowlist.c:184
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr "<i>Werkarea %d</i>"
+
+#: src/windowlist.c:247 src/windowlist.c:250
+msgid "_Add Workspace"
+msgstr "_Voeg werkarea by"
+
+#: src/windowlist.c:258
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "Ver_wyder werkarea %d"
+
+#: src/windowlist.c:261
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "Ver_wyder werkarea '%s'"
+
