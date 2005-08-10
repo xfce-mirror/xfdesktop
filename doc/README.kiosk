@@ -11,8 +11,7 @@ CustomizeWindowlist=NONE
 ---  end xfdesktop.kioskrc  ---
 
 Additionally, the above can be added to $sysconfdir/xdg/xfce4/kiosk/kioskrc
-if you
-put it in a section called '[xfdesktop]', like so:
+if you put it in a section called '[xfdesktop]', like so:
 
 --- begin kioskrc ---
 [xfdesktop]
@@ -26,14 +25,15 @@ Entries in $sysconfdir/xdg/xfce4/kiosk/kioskrc will override any entries in
 $sysconfdir/xdg/xfce4/kiosk/xfdesktop.kioskrc.
 
 Each entry can have a user name, a group name (prefixed with '%'), or one of
-the two special values 'ALL' or 'NONE'.  lists of names should be
+the two special values 'ALL' or 'NONE'.  Lists of names should be
 comma-separated.
 
 Here's an explanation of the keys:
 
 UserMenu:  Whether or not to allow user modifications to the desktop menu.  If
-           not, xfdesktop will ignore the menu in ~/.xfce4/ and use the system
-           menu in $sysconfdir/xfce4/menu.xml.
+           not, xfdesktop will ignore the menu.xml file in
+           ~/.config/xfce4/desktop/ and use the system menu in
+           $sysconfdir/xdg/xfce4/desktop/menu.xml.
 
 CustomizeBackdrop: Whether or not to allow user modifications to the desktop
            backdrop.  If not, the Backdrop settings panel will be greyed out.
