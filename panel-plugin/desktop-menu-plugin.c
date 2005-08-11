@@ -45,6 +45,7 @@
 
 #define BORDER 8
 #define DEFAULT_BUTTON_ICON  DATADIR "/pixmaps/xfce4_xicon1.png"
+#define PANEL_ICON_SIZE 48
 
 typedef struct _DMPlugin {
     GtkWidget *button;
@@ -124,39 +125,43 @@ static void
 dmp_set_size(Control *c, int size)
 {
     DMPlugin *dmp = c->data;
-    GdkPixbuf *pix;
-    gint s = icon_size[size] + border_width;
+	gint width, height;
     
-    if(dmp->icon_file) {
-        pix = xfce_themed_icon_load(dmp->icon_file, s);
+    if(dmp->icon_file  && !gtk_image_get_pixbuf(GTK_IMAGE(dmp->image))) {
+        GdkPixbuf *pix = xfce_themed_icon_load(dmp->icon_file, PANEL_ICON_SIZE);
         if(pix) {
-            gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), pix);
+            xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), pix);
             g_object_unref(G_OBJECT(pix));
         }
     }
-    
-    if(settings.orientation == HORIZONTAL)
-        gtk_widget_set_size_request (c->base, -1, s);
-    else {
-        GtkRequisition req;
-        gint larger_width;
-        
-        gtk_widget_size_request(dmp->button, &req);
-        larger_width = req.width;
-        gtk_widget_size_request(dmp->label, &req);
-        larger_width = larger_width > req.width ? larger_width : req.width;
-        gtk_widget_set_size_request (c->base, larger_width, -1);
+	
+	width = height = icon_size[size] + border_width;
+	
+	if(dmp->show_button_title) {
+		GtkRequisition req;
+		
+		gtk_widget_size_request(dmp->label, &req);
+		if(settings.orientation == HORIZONTAL)
+			width += req.width + BORDER/2;
+        else if(settings.orientation == VERTICAL) {
+            width = (width > req.width ? width : req.width + border_width);
+            height += req.height + BORDER/2;
+        }
     }
+	
+	gtk_widget_set_size_request(dmp->button, width, height);
 }
 
 static void
 dmp_set_orientation(Control *c, gint orientation)
 {
     DMPlugin *dmp = c->data;
-    
+	
     if(!dmp->show_button_title)
         return;
     
+	gtk_widget_set_size_request(dmp->button, -1, -1);
+	
     gtk_container_remove(GTK_CONTAINER(dmp->button),
             gtk_bin_get_child(GTK_BIN(dmp->button)));
     
@@ -164,13 +169,14 @@ dmp_set_orientation(Control *c, gint orientation)
         dmp->box = gtk_hbox_new(FALSE, BORDER/2);
     else
         dmp->box = gtk_vbox_new(FALSE, BORDER/2);
+	gtk_container_set_border_width(GTK_CONTAINER(dmp->box), 0);
     gtk_widget_show(dmp->box);
     gtk_container_add(GTK_CONTAINER(dmp->button), dmp->box);
     
     gtk_widget_show(dmp->image);
-    gtk_box_pack_start(GTK_BOX(dmp->box), dmp->image, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(dmp->box), dmp->image, TRUE, TRUE, 0);
     gtk_widget_show(dmp->label);
-    gtk_box_pack_start(GTK_BOX(dmp->box), dmp->label, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(dmp->box), dmp->label, TRUE, TRUE, 0);
     
     dmp_set_size(c, settings.size);
 }
@@ -185,8 +191,10 @@ show_title_toggled_cb(GtkToggleButton *tb, gpointer user_data)
     
     if(dmp->show_button_title)
         dmp_set_orientation(c, settings.orientation);
-    else
+    else {
         gtk_widget_hide(dmp->label);
+		dmp_set_size(c, settings.size);
+	}
 }
 
 static void
@@ -335,18 +343,19 @@ dmp_new()
         dmp->box = gtk_hbox_new(FALSE, BORDER/2);
     else
         dmp->box = gtk_vbox_new(FALSE, BORDER/2);
+	gtk_container_set_border_width(GTK_CONTAINER(dmp->box), 0);
     gtk_widget_show(dmp->box);
     gtk_container_add(GTK_CONTAINER(dmp->button), dmp->box);
     
-    dmp->image = gtk_image_new();
+    dmp->image = xfce_scaled_image_new();
     g_object_ref(G_OBJECT(dmp->image));
     gtk_widget_show(dmp->image);
-    gtk_box_pack_start(GTK_BOX(dmp->box), dmp->image, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(dmp->box), dmp->image, TRUE, TRUE, 0);
     
     dmp->label = gtk_label_new(dmp->button_title);
     g_object_ref(G_OBJECT(dmp->label));
     gtk_widget_show(dmp->label);
-    gtk_box_pack_start(GTK_BOX(dmp->box), dmp->label, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(dmp->box), dmp->label, TRUE, TRUE, 0);
     
     dmp->desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
     if(dmp->desktop_menu)
@@ -425,26 +434,18 @@ dmp_read_config(Control *control, xmlNodePtr node)
     }
     
     value = xmlGetProp(node, (const xmlChar *)"icon_file");
-    if(value) {
-        pix = xfce_themed_icon_load(value,
-                icon_size[settings.size] + border_width);
-        if(pix) {
-            if(dmp->icon_file)
-                g_free(dmp->icon_file);
-            dmp->icon_file = (gchar *)value;
-            gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), pix);
-            g_object_unref(G_OBJECT(pix));
-        } else
-            xmlFree(value);
-    } else {
-        dmp->icon_file = g_strdup(DEFAULT_BUTTON_ICON);
-        pix = xfce_themed_icon_load(dmp->icon_file,
-                icon_size[settings.size] - 2*border_width);
-        if(pix) {
-            gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), pix);
-            g_object_unref(G_OBJECT(pix));
-        }
-    }
+	if(value) {
+		g_free(dmp->icon_file);
+		dmp->icon_file = g_strdup(value);
+		xmlFree(value);
+	} else
+		dmp->icon_file = g_strdup(DEFAULT_BUTTON_ICON);
+	
+	pix = xfce_themed_icon_load(value, PANEL_ICON_SIZE);
+	if(pix) {
+		xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), pix);
+		g_object_unref(G_OBJECT(pix));
+	}
     
     value = xmlGetProp(node, (const xmlChar *)"show_menu_icons");
     if(value) {
@@ -471,8 +472,10 @@ dmp_read_config(Control *control, xmlNodePtr node)
     value = xmlGetProp(node, (const xmlChar *)"show_button_title");
     if(value) {
         if(*value == '0') {
+			gint size = icon_size[settings.size] + border_width;
             dmp->show_button_title = FALSE;
             gtk_widget_hide(dmp->label);
+			gtk_widget_set_size_request(dmp->button, size, size);
         } else
             dmp->show_button_title = TRUE;
         xmlFree(value);
@@ -506,13 +509,12 @@ entry_focus_out_cb(GtkWidget *w, GdkEventFocus *evt, gpointer user_data)
             g_free(dmp->icon_file);
     
         dmp->icon_file = gtk_editable_get_chars(GTK_EDITABLE(w), 0, -1);
-        pix = xfce_themed_icon_load(dmp->icon_file,
-                icon_size[settings.size] - 2*border_width);
+        pix = xfce_themed_icon_load(dmp->icon_file, PANEL_ICON_SIZE);
         if(pix) {
-            gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), pix);
+            xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), pix);
             g_object_unref(G_OBJECT(pix));
         } else
-            gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), NULL);
+            xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), NULL);
     } else if(w == dmp->file_entry) {
         if(dmp->menu_file)
             g_free(dmp->menu_file);
