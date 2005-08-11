@@ -5,7 +5,7 @@ SUBDIRS = \
 noinst_DATA = \
 	xfce-nochunk.xsl
 
-EXTRA_DIST = $(noinst_DATA)
+EXTRA_DIST = $(noinst_DATA) README.kiosk
 
 html: Makefile
 	make -C C html
