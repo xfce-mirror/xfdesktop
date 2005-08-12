@@ -1,13 +1,13 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Translation of xfdesktop into Finnish.
+# This file is distributed under the same license as the xfdesktop package.
+# Copyright (C) 2003-2005 The Xfce Development Team
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-05-10 22:18+0200\n"
-"PO-Revision-Date: 2005-03-06 12:03+0200\n"
+"PO-Revision-Date: 2005-08-11 19:52+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Kuvakesuunnittelija"
 
 #: menueditor/add_dialog.c:138 menueditor/add_dialog.c:150
 msgid "Add menu entry"
-msgstr "Lisää valikkoon"
+msgstr "Lisää kohde valikkoon"
 
 #. Type
 #: menueditor/add_dialog.c:156 menueditor/add_menu_dialog.c:98
@@ -81,12 +81,12 @@ msgstr "Kuvake:"
 #. Start Notify check button
 #: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:275
 msgid "Use startup _notification"
-msgstr "Käytä käynnistyksen huomautusta"
+msgstr "Käytä käynnistyksen _huomautusta"
 
 #. Run in terminal check button
 #: menueditor/add_dialog.c:240 menueditor/edit_dialog.c:276
 msgid "Run in _terminal"
-msgstr "Aja pää_tteessä"
+msgstr "Aja _päätteessä"
 
 #: menueditor/add_dialog.c:285 menueditor/edit_dialog.c:468
 msgid "The command doesn't exist !"
@@ -98,7 +98,7 @@ msgstr "Kaikki kentät täytyy täyttää."
 
 #: menueditor/add_dialog.c:300
 msgid "The 'Name' field is required."
-msgstr "'Nimi' -kenttä vaaditaan."
+msgstr "'Nimi'-kenttä on pakollinen."
 
 #: menueditor/add_dialog.c:356 menueditor/dnd.c:153
 #: menueditor/menueditor.c:579 menueditor/move.c:87 menueditor/move.c:225
@@ -142,18 +142,18 @@ msgstr "Monitasoinen"
 #. Unique
 #: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:204
 msgid "_Unique entries only"
-msgstr "Vain yksilöllisiä kohteita"
+msgstr "Vain _yksilöllisiä kohteita"
 
 #: menueditor/add_menu_dialog.c:208
 msgid "The 'Source' field is required."
-msgstr "'Lähde' -kenttä vaaditaan."
+msgstr "'Lähde'-kenttä on pakollinen."
 
 #: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:234
 #: menueditor/dnd.c:156 menueditor/edit_dialog.c:521
 #: menueditor/edit_dialog.c:534 menueditor/menueditor.c:618
 #: menueditor/move.c:111 menueditor/move.c:249
 msgid "--- include ---"
-msgstr "--- sisällytetty ---"
+msgstr "--- sisällytys ---"
 
 #: menueditor/add_menu_dialog.c:235 menueditor/dnd.c:161
 #: menueditor/edit_dialog.c:535 menueditor/menueditor.c:621
@@ -168,7 +168,7 @@ msgstr "Muokkaa valikon kohdetta"
 
 #: menueditor/edit_dialog.c:131
 msgid "Separators cannot be edited"
-msgstr "Erotinta ei voi muokata"
+msgstr "Erottimia ei voi muokata"
 
 #. Name
 #: menueditor/edit_dialog.c:403 menueditor/new_dialog.c:100
@@ -187,7 +187,7 @@ msgstr "Valitse kuvake"
 #: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
 #: settings/backdrop_settings.c:533
 msgid "All Files"
-msgstr "Kaikki Tiedostot"
+msgstr "Kaikki tiedostot"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
 #: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
@@ -373,7 +373,7 @@ msgstr "Tiedosto:"
 
 #: menueditor/new_dialog.c:141
 msgid "All fields are required."
-msgstr "Kaikki kentät vaaditaan"
+msgstr "Kaikki kentät ovat pakollisia."
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
@@ -386,11 +386,11 @@ msgstr "Xfce-valikko"
 
 #: panel-plugin/desktop-menu-plugin.c:493
 msgid "Select Icon"
-msgstr "Valitse Kuvake"
+msgstr "Valitse kuvake"
 
 #: panel-plugin/desktop-menu-plugin.c:495
 msgid "Select Menu File"
-msgstr "Valitse Valikkotiedosto"
+msgstr "Valitse valikkotiedosto"
 
 #: panel-plugin/desktop-menu-plugin.c:524
 msgid "Menu Files"
@@ -411,7 +411,7 @@ msgstr "Valikkotiedosto"
 
 #: panel-plugin/desktop-menu-plugin.c:688
 msgid "Use default _desktop menu file"
-msgstr "Käytä o_letusvalikkotiedostoa"
+msgstr "Käytä _oletusvalikkotiedostoa"
 
 #: panel-plugin/desktop-menu-plugin.c:697
 msgid "Use _custom menu file:"
@@ -432,7 +432,7 @@ msgstr "_Painikkeen kuvake:"
 
 #: panel-plugin/desktop-menu-plugin.c:794
 msgid "Show _icons in menu"
-msgstr "Näytä kuvake val_ikossa"
+msgstr "Näytä _kuvakkeet valikossa"
 
 #: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
 #, c-format
@@ -507,7 +507,7 @@ msgstr "_Uusi lista..."
 
 #: settings/backdrop_settings.c:680
 msgid "S_tyle:"
-msgstr "T_yyli:"
+msgstr "_Tyyli:"
 
 #: settings/backdrop_settings.c:688
 msgid "Tiled"
@@ -536,11 +536,11 @@ msgstr "Säädä ki_rkkaus:"
 #. header
 #: settings/backdrop_settings.c:851
 msgid "Desktop Settings"
-msgstr "Työpöytien Asetukset"
+msgstr "Työpöytien asetukset"
 
 #: settings/backdrop_settings.c:880
 msgid "_Backdrops"
-msgstr "Taustakuva"
+msgstr "Ta_ustakuvat"
 
 #. color settings frame
 #: settings/backdrop_settings.c:906
@@ -549,7 +549,7 @@ msgstr "Väri"
 
 #: settings/backdrop_settings.c:920
 msgid "_Color Style:"
-msgstr "V_ärien Tyyli:"
+msgstr "V_ärien tyyli:"
 
 #: settings/backdrop_settings.c:929
 msgid "Solid Color"
@@ -574,7 +574,7 @@ msgstr "_Toinen väri:"
 #. set color only checkbox
 #: settings/backdrop_settings.c:1006
 msgid "Set color _only"
-msgstr "Pelkkä väri"
+msgstr "_Pelkkä väri"
 
 #: settings/backdrop_settings.c:1021
 msgid "Image"
@@ -586,17 +586,17 @@ msgstr "Näytä _kuva"
 
 #: settings/backdrop_settings.c:1051
 msgid "_File:"
-msgstr "Tiedosto:"
+msgstr "Tie_dosto:"
 
 #. don't set backdrop checkbox
 #: settings/backdrop_settings.c:1088
 msgid "_Don't set backdrop"
-msgstr "Älä aseta taustaa"
+msgstr "Älä aseta ta_ustaa"
 
 #. add the single backdrop settings page to the main notebook
 #: settings/backdrop_settings.c:1111
 msgid "_Backdrop"
-msgstr "Tausta"
+msgstr "Ta_ustakuva"
 
 #: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
 #, c-format
@@ -615,15 +615,15 @@ msgstr "_Valikko"
 
 #: settings/menu_settings.c:153
 msgid "Window List"
-msgstr "Ikkunalistaus"
+msgstr "Ikkunalista"
 
 #: settings/menu_settings.c:161
 msgid "Show window _list"
-msgstr "Näytä ikkunalista"
+msgstr "Näytä ikkuna_lista"
 
 #: settings/menu_settings.c:176
 msgid "Show _window icons"
-msgstr "Näytä ikkunoiden kuvakkeet"
+msgstr "Näytä _ikkunoiden kuvakkeet"
 
 #: settings/menu_settings.c:189
 msgid "Desktop Menu"
@@ -635,20 +635,20 @@ msgstr "Näytä työpöytävalikko"
 
 #: settings/menu_settings.c:212
 msgid "Show _application icons"
-msgstr "Näytä sovellusten kuvakkeet"
+msgstr "Näytä _sovellusten kuvakkeet"
 
 #: settings/menu_settings.c:223
 msgid "_Edit desktop menu"
-msgstr "Muokkaa työpöytävalikkoa"
+msgstr "_Muokkaa työpöytävalikkoa"
 
 #: src/main.c:300
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr "%s: Tuntematon valinta: %s\n"
+msgstr "%s: Tuntematon valitsin: %s\n"
 
 #: src/main.c:301
 msgid "Options are:\n"
-msgstr "Valinnat ovat:\n"
+msgstr "Valitsimet ovat:\n"
 
 #: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
@@ -676,17 +676,14 @@ msgstr "<i>Työpöytä %d</i>"
 
 #: src/windowlist.c:268 src/windowlist.c:271
 msgid "_Add Workspace"
-msgstr "Lisää työpöytä"
+msgstr "_Lisää työpöytä"
 
 #: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "Poista työpöytä %d"
+msgstr "_Poista työpöytä %d"
 
 #: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Poista työpöytä '%s'"
-
-#~ msgid "_Menu file:"
-#~ msgstr "_Valikkotiedosto:"
+msgstr "_Poista työpöytä '%s'"
