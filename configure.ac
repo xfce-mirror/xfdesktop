@@ -34,9 +34,9 @@ AC_CHECK_HEADERS(fcntl.h math.h signal.h stddef.h string.h sys/stat.h sys/types.
 AC_CHECK_FUNCS(mmap sigaction srandom)
 
 dnl Check for i18n support
-XDT_I18N([ar az be bg bn_IN ca cs de en_GB es es_MX et eu fa fi fr gu \
-          he hi hu hy it ja pl ko lt mr ms nb_NO nl pa pt_BR pt_PT ro \
-          ru sk sv ta tr uk vi zh_CN zh_TW])
+XDT_I18N([ar az be bg bn_IN ca cs de el en_GB es es_MX et eu fa fi fr \
+          gu he hi hu hy it ja pl ko lt mr ms nb_NO nl pa pt_BR pt_PT \
+          ro ru sk sv ta tr uk vi zh_CN zh_TW])
 
 dnl Check for X11 installed
 XDT_CHECK_LIBX11_REQUIRE
