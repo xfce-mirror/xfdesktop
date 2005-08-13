@@ -1,13 +1,13 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Translation of xfdesktop into Finnish.
+# This file is distributed under the same license as the xfdesktop package.
+# Copyright (C) 2003-2005 The Xfce Development Team
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-01 19:50-0700\n"
-"PO-Revision-Date: 2005-01-20 15:04+0200\n"
+"PO-Revision-Date: 2005-08-11 19:59+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Kuvakesuunnittelija"
 
 #: menueditor/add_dialog.c:159 menueditor/add_dialog.c:169
 msgid "Add menu entry"
-msgstr "Lisää valikkoon"
+msgstr "Lisää kohde valikkoon"
 
 #. Type
 #: menueditor/add_dialog.c:173 menueditor/add_menu_dialog.c:110
@@ -80,25 +80,25 @@ msgstr "Kuvake:"
 #. Startup notification
 #: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:171
 msgid "Use startup _notification"
-msgstr "Käytä käynnistyksen huomautusta"
+msgstr "Käytä käynnistyksen _huomautusta"
 
 #. Run in terminal check button
 #. Run in terminal
 #: menueditor/add_dialog.c:241 menueditor/edit_dialog.c:174
 msgid "Run in _terminal"
-msgstr "Aja pää_tteessä"
+msgstr "Aja _päätteessä"
 
 #: menueditor/add_dialog.c:272
 msgid "The command doesn't exist !"
-msgstr "Komentoa ei löydy !"
+msgstr "Komentoa ei löydy!"
 
 #: menueditor/add_dialog.c:278
 msgid "All fields must be filled to add an item."
-msgstr "Kaikki kentät täytyy täyttää."
+msgstr "Kaikki kentät täytyy täyttää, jotta kohteen voi lisätä."
 
 #: menueditor/add_dialog.c:287
 msgid "The 'Name' field is required."
-msgstr "'Nimi' -kenttä vaaditaan."
+msgstr "'Nimi'-kenttä on pakollinen."
 
 #: menueditor/add_dialog.c:331
 msgid "--- separator ---"
@@ -141,15 +141,15 @@ msgstr "Monitasoinen"
 #. Unique
 #: menueditor/add_menu_dialog.c:162
 msgid "_Unique entries only"
-msgstr "Vain yksilöllisiä kohteita"
+msgstr "Vain _yksilöllisiä kohteita"
 
 #: menueditor/add_menu_dialog.c:198
 msgid "The 'Source' field is required."
-msgstr "'Lähde' -kenttä vaaditaan."
+msgstr "'Lähde'-kenttä on pakollinen."
 
 #: menueditor/add_menu_dialog.c:202 menueditor/add_menu_dialog.c:212
 msgid "--- include ---"
-msgstr "--- sisällytetty ---"
+msgstr "--- sisällytys ---"
 
 #: menueditor/add_menu_dialog.c:213
 msgid "system"
@@ -162,20 +162,20 @@ msgstr "Muokkaa valikon kohdetta"
 
 #: menueditor/edit_dialog.c:139
 msgid "Separators cannot be edited"
-msgstr "Erotinta ei voi muokata"
+msgstr "Erottimia ei voi muokata"
 
 #: menueditor/menueditor.c:81
 #, c-format
 msgid "File %s doesn't exist !"
-msgstr "Tiedostoa %s ei ole olemassa !"
+msgstr "Tiedostoa %s ei ole olemassa!"
 
 #: menueditor/menueditor.c:121 menueditor/menueditor.c:532
 msgid "Do you want to save before closing the menu ?"
-msgstr "Haluatko tallentaa ennen valikon sulkemista ?"
+msgstr "Haluatko tallentaa ennen valikon sulkemista?"
 
 #: menueditor/menueditor.c:123
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Olet muokannut valikkoa, haluatko tallentaa sen ennen lopettamista ?"
+msgstr "Olet muokannut valikkoa, haluatko tallentaa sen ennen lopettamista?"
 
 #: menueditor/menueditor.c:125
 msgid "Forget modifications"
@@ -200,7 +200,7 @@ msgstr "Kysymys"
 
 #: menueditor/menueditor.c:368
 msgid "Do you want to save before opening an other menu ?"
-msgstr "Haluatko tallentaa ennen toisen valikon avaamista ?"
+msgstr "Haluatko tallentaa ennen toisen valikon avaamista?"
 
 #: menueditor/menueditor.c:370 menueditor/menueditor.c:427
 #: menueditor/menueditor.c:534
@@ -213,7 +213,7 @@ msgstr "Avaa valikkotiedosto"
 
 #: menueditor/menueditor.c:425
 msgid "Do you want to save before opening the default menu ?"
-msgstr "Haluatko tallentaa ennen oletusvalikon avaamista ?"
+msgstr "Haluatko tallentaa ennen oletusvalikon avaamista?"
 
 #: menueditor/menueditor.c:483
 msgid "Save as..."
@@ -347,44 +347,37 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-valikkoeditoria ei voitu käynnistää: %s"
 
 #: panel-plugin/desktop-menu-plugin.c:740
-#, fuzzy
 msgid "Button"
-msgstr "_Painikkeen kuvake:"
+msgstr "Painike"
 
 #: panel-plugin/desktop-menu-plugin.c:753
-#, fuzzy
 msgid "Button _title:"
-msgstr "_Painikkeen kuvake:"
+msgstr "_Painikkeen otsake:"
 
 #: panel-plugin/desktop-menu-plugin.c:766
 msgid "_Show title in button"
-msgstr ""
+msgstr "_Näytä painikkeen otsake"
 
 #: panel-plugin/desktop-menu-plugin.c:773
-#, fuzzy
 msgid "Menu File"
-msgstr "Valikkotiedostot"
+msgstr "Valikkotiedosto"
 
 #: panel-plugin/desktop-menu-plugin.c:785
-#, fuzzy
 msgid "Use default _desktop menu file"
-msgstr "Muokkaa työpöytävalikkoa"
+msgstr "Käytä _oletusvalikkotiedostoa"
 
 #: panel-plugin/desktop-menu-plugin.c:794
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "Avaa valikkotiedosto"
+msgstr "Avaa _mukautettu valikkotiedosto:"
 
 #: panel-plugin/desktop-menu-plugin.c:846
 #: panel-plugin/desktop-menu-plugin.c:848
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "_Valikko"
+msgstr "M_uokkaa valikkoa"
 
 #: panel-plugin/desktop-menu-plugin.c:855
-#, fuzzy
 msgid "Icons"
-msgstr "Kuvake:"
+msgstr "Kuvakkeet"
 
 #: panel-plugin/desktop-menu-plugin.c:867
 msgid "_Button icon:"
@@ -392,7 +385,7 @@ msgstr "_Painikkeen kuvake:"
 
 #: panel-plugin/desktop-menu-plugin.c:891
 msgid "Show _icons in menu"
-msgstr "Näytä kuvake val_ikossa"
+msgstr "Näytä k_uvake valikossa"
 
 #: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
 #, c-format
@@ -404,7 +397,7 @@ msgid ""
 msgstr ""
 "Tiedostoa %s ei voitu tallentaa: %s\n"
 "\n"
-"Valitse muu sijainti tai paina peruuta-painiketta hylätäksesti muutokset"
+"Valitse toinen sijainti tai paina peruuta-painiketta hylätäksesti muutokset"
 
 #: settings/backdrop-mgr.c:409
 msgid "Select backdrop image file"
@@ -496,24 +489,23 @@ msgstr "Säädä ki_rkkaus:"
 #: settings/backdrop_settings.c:838
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr ""
+msgstr "Xfce ei voi hallita työpöytääsi (%s)."
 
 #: settings/backdrop_settings.c:839
 msgid "Unknown Error"
-msgstr ""
+msgstr "Tuntematon virhe"
 
 #: settings/backdrop_settings.c:843
 msgid "Error"
-msgstr ""
+msgstr "Virhe"
 
 #: settings/backdrop_settings.c:845
 msgid "Unable to start xfdesktop"
-msgstr ""
+msgstr "Ei voi käynnistää xfdesktopia"
 
 #: settings/backdrop_settings.c:863
-#, fuzzy
 msgid "Information"
-msgstr "Hylkää muutokset"
+msgstr "Tiedot"
 
 #: settings/backdrop_settings.c:873
 msgid ""
@@ -523,24 +515,29 @@ msgid ""
 "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
+"Varmistaaksesi, että Xfce ei hallitse työpöytääsi seuraavan kerran kun "
+"käynnistät Xfce:n, tallennathan istuntosi kirjautuessasi ulos. Jos et käytä "
+"Xfce istunnonhallintaa (xfce4-session), sinun täytyy muokata tiedostoa "
+"~/.config/xfce4/xinitrc käsin. Lisätietoja löydät ohjeistuksesta osoitteessa "
+"http://xfce.org/."
 
 #: settings/backdrop_settings.c:881
 msgid "_Do not show this again"
-msgstr ""
+msgstr "_Älä näytä tätä uudelleen"
 
 #. header
 #: settings/backdrop_settings.c:931
 #: settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
-msgstr "Työpöytien Asetukset"
+msgstr "Työpöytien asetukset"
 
 #: settings/backdrop_settings.c:936
 msgid "Allow _Xfce to manage the desktop"
-msgstr ""
+msgstr "Anna _Xfce:n hallita työpöytää"
 
 #: settings/backdrop_settings.c:972
 msgid "_Backdrops"
-msgstr "Taustakuva"
+msgstr "Ta_ustakuvat"
 
 #. color settings frame
 #: settings/backdrop_settings.c:998
@@ -581,12 +578,12 @@ msgstr "Näytä _kuva"
 
 #: settings/backdrop_settings.c:1132
 msgid "_File:"
-msgstr "Tiedosto:"
+msgstr "Tie_dosto:"
 
 #. add the single backdrop settings page to the main notebook
 #: settings/backdrop_settings.c:1180
 msgid "_Backdrop"
-msgstr "Tausta"
+msgstr "Ta_ustakuva"
 
 #: settings/backdrop_settings.c:1188 settings/backdrop_settings.c:1190
 #, c-format
@@ -605,15 +602,15 @@ msgstr "_Valikko"
 
 #: settings/menu_settings.c:153
 msgid "Window List"
-msgstr "Ikkunalistaus"
+msgstr "Ikkunalista"
 
 #: settings/menu_settings.c:161
 msgid "Show window _list"
-msgstr "Näytä ikkunalista"
+msgstr "Näytä ikkuna_lista"
 
 #: settings/menu_settings.c:176
 msgid "Show _window icons"
-msgstr "Näytä ikkunoiden kuvakkeet"
+msgstr "Näytä _ikkunoiden kuvakkeet"
 
 #: settings/menu_settings.c:189
 msgid "Desktop Menu"
@@ -621,24 +618,24 @@ msgstr "Työpöytävalikko"
 
 #: settings/menu_settings.c:197
 msgid "Show desktop _menu"
-msgstr "Näytä työpöytävalikko"
+msgstr "Näytä _työpöytävalikko"
 
 #: settings/menu_settings.c:212
 msgid "Show _application icons"
-msgstr "Näytä sovellusten kuvakkeet"
+msgstr "Näytä s_ovellusten kuvakkeet"
 
 #: settings/menu_settings.c:223
 msgid "_Edit desktop menu"
-msgstr "Muokkaa työpöytävalikkoa"
+msgstr "_Muokkaa työpöytävalikkoa"
 
 #: src/main.c:253
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr "%s: Tuntematon valinta: %s\n"
+msgstr "%s: Tuntematon valitsin: %s\n"
 
 #: src/main.c:254
 msgid "Options are:\n"
-msgstr "Valinnat ovat:\n"
+msgstr "Valitsimet ovat:\n"
 
 #: src/main.c:255
 msgid "    -reload      Reload all settings, refresh image list\n"
@@ -656,7 +653,7 @@ msgstr "    -windowlist  Näyttää ikkunalistan (nykyisessä hiiden kohdassa)\n
 
 #: src/main.c:258
 msgid "    -quit        Cause xfdesktop to quit\n"
-msgstr ""
+msgstr "    -quit        Lopeta xfdesktop\n"
 
 #: src/windowlist.c:193
 #, c-format
@@ -670,17 +667,17 @@ msgstr "<i>Työpöytä %d</i>"
 
 #: src/windowlist.c:268 src/windowlist.c:271
 msgid "_Add Workspace"
-msgstr "Lisää työpöytä"
+msgstr "_Lisää työpöytä"
 
 #: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "Poista työpöytä %d"
+msgstr "_Poista työpöytä %d"
 
 #: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Poista työpöytä '%s'"
+msgstr "_Poista työpöytä '%s'"
 
 #: menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
@@ -696,51 +693,8 @@ msgstr "Xfce 4 valikkoeditori"
 
 #: settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr "Xfce 4 Työpöydän taustan asetukset"
+msgstr "Xfce 4 työpöydänhallinnan asetukset"
 
 #: settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
-msgstr "Xfce 4 Työpöydän asetukset"
-
-#~ msgid "Set color _only"
-#~ msgstr "Pelkkä väri:"
-
-#~ msgid "_Don't set backdrop"
-#~ msgstr "Älä aseta taustaa"
-
-#~ msgid "_Menu file:"
-#~ msgstr "_Valikkotiedosto:"
-
-#~ msgid "Title:"
-#~ msgstr "Otsikko:"
-
-#~ msgid "Select icon"
-#~ msgstr "Valitse kuvake"
-
-#~ msgid ""
-#~ "Cannot write in %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Tiedostoon %s ei voi kirjoittaa: \n"
-#~ "%s"
-
-#~ msgid "Pointer"
-#~ msgstr "Kohdistin"
-
-#~ msgid "Corrupted file or incorrect file format !"
-#~ msgstr "Turmeltunut tiedosto tai väärä tiedostomuoto !"
-
-#~ msgid "No root element in file !"
-#~ msgstr "Ei juurielementtiä tiedostossa !"
-
-#~ msgid "Bad datafile format !"
-#~ msgstr "Tiedostomuoto ei kelpaa !"
-
-#~ msgid "New menu"
-#~ msgstr "Uusi valikko"
-
-#~ msgid "Filename:"
-#~ msgstr "Tiedosto:"
-
-#~ msgid "All fields are required."
-#~ msgstr "Kaikki kentät vaaditaan"
+msgstr "Xfce 4 työpöydän asetukset"
