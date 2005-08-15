@@ -59,7 +59,6 @@ conf_DATA = 								\
 # the following have not been updated from the old 4.0.x menu
 #
 #	menu.xml.az 							
-#	menu.xml.ca 							
 #	menu.xml.eu							
 #	menu.xml.fa_IR 							
 #	menu.xml.hu 							
