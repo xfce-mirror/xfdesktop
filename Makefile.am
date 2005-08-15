@@ -38,6 +38,7 @@ conf_DATA = 								\
 	menu.xml.cs							\
 	menu.xml.da							\
 	menu.xml.de 							\
+	menu.xml.el							\
 	menu.xml.es							\
 	menu.xml.et							\
 	menu.xml.fi							\
