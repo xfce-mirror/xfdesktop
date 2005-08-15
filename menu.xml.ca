@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xfdesktop-menu>
-]>
 
 <!-- 
-     Explicació sobre el fitxer de menú de XFce 4
+     Explicació sobre el fitxer de menú d'Xfce 4
      ============================================
-     Ara intentaré explicar el format del fitxer de menú. Fixat que el menú
-     actual està a sota dels exemples.
+     Ara intentaré explicar el format del fitxer de menú. Fixat en el menú
+     actual que està a sota dels exemples reals. No cal que editis aquest 
+     fitxer directament; en lloc d'això dona un cop d'ull a xfce4-menueditor
 -->
 
 <!-- Per descomptat, això ho tens per afegir comentaris ;-) -->
@@ -14,13 +14,12 @@
 <!-- 
 
   + Qualsevol cosa ho trobaràs entre les marques 
-    <xfdesktop-menu useicons="true"></xfdesktop-menu>
-    pots desabilitar les icones fent «useicons="false"».
+    <xfdesktop-menu></xfdesktop-menu>
 
   + Aplicacions:
     <app name="Nom al menú" cmd="Comanda a executar" term="false" 
-	 icon="fixer amb la icona" snotify="false" visible="true" />
-    «term» indica si al programa li cal un terminal per executar-se, and 
+	 icon="fixer d'icona" snotify="false" visible="true" />
+    «term» indica si al programa li cal un terminal per executar-se,  
     «snotify» indica si el programa suporta o no notificació d'inicialització.
     Pots indicar si es mostrarà una icona al costat de l'element amb 
     l'atribut «icon». Tant sols són imprescindibles «name» i «cmd».
@@ -30,14 +29,13 @@
     Crea un separador horitzontal. L'atribut «visible» és opcional.
 
   + Submenús:
-    <menu name="Nom al menú" icon="fitxer amb la icona" 
-          visible="true"></menu>
+    <menu name="Nom al menú" icon="fitxer d'icona" visible="true"></menu>
     Tant sols és imprescindible «name», però pots indicar una icona per ser 
     mostrada amb l'atribut «icon». Entre les marques de menú es poden definir 
     més aplicacions, separadors i menús.
 
   + Títols:
-    <title name="Non al menu" icon="fitxer amb la icona" visible="true" />
+    <title name="Non al menu" icon="fitxer d'icona" visible="true" />
     Crea un títol de menú no pitjable. Aquí també pots afegir una icona si
     així ho dessitjes.
     
@@ -50,55 +48,54 @@
     <include type="system" style="simple" unique="true" visible="true" />
     Afegeix un menú del sistema.  «style» pot ser «simple» (simple) o 
     «multilevel» (multinivell).  Si l'atribut «unique» te el valor de «false»
-    (fals), múltiple elements de menú es generaran si l'«app» (aplicació)
+    (fals), múltiples elements de menú es generaran si l'«app» (aplicació)
     apareix a múltiples categories.
 -->
 
-<xfdesktop-menu showicons="true">
-    <title name="Menú de l'escriptori" />
-    <separator/>
-    <app name="Executa el programa..." cmd="xfrun4" icon="unknows" />
-    <separator/>
-    <app name="Terminal" cmd="xfterm4" icon="terminal" />
-    <app name="Gestor de fitxers (xffm)" cmd="xffm" icon="file1" />
-    <app name="Navegador" cmd="mozilla" icon="network" />
-    <separator/>
-    <menu name="Ajustaments" icon="gnome-settings">
-        <app name="Gestor d'ajustaments de XFce 4" cmd="xfce-setting-show" icon="minipalet" />
-        <app name="Fons..." cmd="xfce-setting-show backdrop"/>
-<!-- 
-        <app name="Fons" cmd="xfce-setting-show backdrop" />
-        <app name="Fons" cmd="xfce-setting-show backdrop" />
-	<app name="Espais de treball" cmd="xfce-setting-show workspaces"/>
-	<app name="Gestor de fitxers (xffm)" cmd="xfce-setting-show xffm"/>
-	<app name="Interfície d'usuari (gtk+)" cmd="xfce-setting-show ui"/>
-	<app name="Icones" cmd="xfce-setting-show xfibx"/>
-        <app name="Ratolí" cmd="xfce-setting-show mouse"/>
-        <app name="Barra de tasques" cmd="xfce-setting-show taskbar"/>
-	<app name="Teclat" cmd="xfce-setting-show keyboard"/>
-	<app name="Gestor de finestres" cmd="xfce-setting-show xfwm4"/>
-	<app name="Marges" cmd="xfce-setting-show xfwm_margins"/>
-	<app name="Plafó" cmd="xfce-setting-show xfce"/>
--->
-    </menu>
-    <separator/>
-	<!--
-	  Les seguents línies inclouen el menú autogenerat en el nivell actual.
-	  Si vols, ho pots posar en el seu propi menú.
-	-->
-    <include type="System" style="simple" unique="true" />
-	<!--
-	  Descomenta la seguent línia (i comenta l'anterior) si vols un menú
-	  separat, en lloc del autogenerat.
-	-->
-	<!-- <include type="file" src="menu2.xml" /> -->	
+<xfdesktop-menu>
 
-    <app name="Ajuda" cmd="xfhelp4" icon="man" />
-    <app name="Quant a XFce" cmd="xfce4-about" icon="miniinfo" />
+    <title name="Menú de l'escriptori" icon="xfce4-brackdrop" />
+
+    <separator/>
+
+    <app name="Executa el programa..." cmd="xfrun4" icon="gnome-fs-executable" />
+
+    <separator/>
+
+    <app name="Terminal" cmd="xfterm4" icon="gnome-terminal" />
+    <app name="Gestor de fitxers (xffm)" cmd="xffm" icon="file-manager" />
+    <app name="Navegador" cmd="mozilla" icon="gnome-globe" />
+
+    <separator/>
+
+    <menu name="Ajustaments" icon="gnome-settings">
+        <app name="Gestor d'ajustaments d'Xfce 4" cmd="xfce-setting-show" icon="gnome-settings" />
+    </menu>
+
+    <separator/>
+
+    <!--
+      Les seguents línies inclouen el menú autogenerat en el nivell actual.
+      Si vols, ho pots posar en el seu propi menú.
+    -->
+    <include type="System" style="simple" unique="true" />
+
+    <!--
+      Descomenta la seguent línia (i comenta l'anterior) si vols un menú
+      separat, en lloc del autogenerat.
+    -->
+    <!-- <include type="file" src="menu2.xml" /> -->	
+
+    <separator/>
+
+    <app name="Ajuda" cmd="xfhelp4" icon="gnome-help" />
+    <app name="Quant a XFce" cmd="xfce4-about" icon="gnome-info" />
     <!--
       Això farà que xfce4-session surti, després de mostrar la finestra de 
-      sortida.
+      sortida. Si xfce4-session no s'està executant farà que xfdesktop 
+      acabi.
     -->
     <builtin name="Quit" cmd="quit" icon="minipower" />
+
 </xfdesktop-menu>
 
