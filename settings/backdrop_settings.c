@@ -73,6 +73,7 @@
 /* there can be only one */
 static gboolean is_running = FALSE;
 static GList **screens;  /* array of lists of BackdropPanels */
+static gboolean xinerama_stretch = FALSE;
 
 static void backdrop_create_channel (McsPlugin * mcs_plugin);
 static gboolean backdrop_write_options (McsPlugin * mcs_plugin);
@@ -151,6 +152,11 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
     mcs_manager_add_channel_from_file (mcs_plugin->manager, BACKDROP_CHANNEL,
                        rcfile);
     g_free (rcfile);
+    
+    setting = mcs_manager_setting_lookup(mcs_plugin->manager, "xineramastretch",
+            BACKDROP_CHANNEL);
+    if(setting && setting->data.v_int)
+        xinerama_stretch = TRUE;
 
     nscreens = gdk_display_get_n_screens(gdk_display_get_default());
     screens = g_new0(GList *, nscreens);
@@ -161,21 +167,6 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
             
             bp->xscreen = i;
             bp->monitor = j;
-    
-#if 0        
-            /* whether or not to set the backdrop */
-            g_snprintf(setting_name, 128, "setbackdrop_%d", i);
-            setting = mcs_manager_setting_lookup(mcs_plugin->manager, setting_name,
-                    BACKDROP_CHANNEL);
-            if(setting)
-                bp->set_backdrop = setting->data.v_int == 0 ? FALSE : TRUE;
-            else {
-                DBG ("no setbackground settings");
-                bp->set_backdrop = TRUE;
-                mcs_manager_set_int(mcs_plugin->manager, setting_name,
-                        BACKDROP_CHANNEL, 1);
-            }
-#endif
             
             /* the path to an image file */
             g_snprintf(setting_name, 128, "imagepath_%d_%d", i, j);
@@ -895,6 +886,38 @@ manage_desktop_chk_toggled_cb(GtkToggleButton *tb, gpointer user_data)
     }
 }
 
+static void
+xinerama_stretch_toggled_cb(GtkToggleButton *tb, gpointer user_data)
+{
+    McsPlugin *mcs_plugin = user_data;
+    GList *l;
+    
+    xinerama_stretch = gtk_toggle_button_get_active(tb);
+    
+    /* this assumes a single GdkScreen for the GdkDisplay.  this should be
+     * the case for xinerama, but if the X server later supports some
+     * monitors in xinerama mode and some not, this won't work properly. */
+    if(xinerama_stretch && screens[0]) {
+        for(l = screens[0]->next; l; l = l->next) {
+            BackdropPanel *bp = l->data;
+            gtk_widget_set_sensitive(bp->page, FALSE);
+        }
+    } else if(screens[0]) {
+        for(l = screens[0]->next; l; l = l->next) {
+            BackdropPanel *bp = l->data;
+            gtk_widget_set_sensitive(bp->page, TRUE);
+            if(bp->color_style = XFCE_BACKDROP_COLOR_SOLID)
+                gtk_widget_set_sensitive(bp->color2_hbox, FALSE);
+            if(!bp->show_image)
+                gtk_widget_set_sensitive(bp->image_frame_inner, FALSE);
+        }
+    }
+    
+    mcs_manager_set_int(mcs_plugin->manager, "xineramastretch",
+            BACKDROP_CHANNEL, xinerama_stretch ? 1 : 0);
+    mcs_manager_notify(mcs_plugin->manager, BACKDROP_CHANNEL);
+}
+
 /* the dialog */
 static BackdropDialog *
 create_backdrop_dialog (McsPlugin * mcs_plugin)
@@ -965,6 +988,25 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
         gtk_widget_show(vbox);
         gtk_container_set_border_width(GTK_CONTAINER(vbox), 8);
         
+        if(nmonitors > 1) {
+            /* we have xinerama.  it would be nice to extend this
+             * to work for non-xinerama setups too, but that would
+             * probably require some xfdesktop rearchitecting. */
+            hbox = gtk_hbox_new(FALSE, BORDER);
+            gtk_container_set_border_width(GTK_CONTAINER(hbox), BORDER);
+            gtk_widget_show(hbox);
+            gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+            
+            chk = gtk_check_button_new_with_mnemonic(_("Stretch single backdrop onto _all monitors"));
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), xinerama_stretch);
+            gtk_widget_show(chk);
+            gtk_box_pack_start(GTK_BOX(hbox), chk, TRUE, TRUE, 0);
+            g_signal_connect(G_OBJECT(chk), "toggled",
+                    G_CALLBACK(xinerama_stretch_toggled_cb), mcs_plugin);
+            
+            add_spacer(GTK_BOX(vbox));
+        }
+        
         bd->screens_notebook = gtk_notebook_new();
         gtk_widget_show(bd->screens_notebook);
         gtk_box_pack_start(GTK_BOX(vbox), bd->screens_notebook, FALSE, FALSE, 0);
@@ -988,7 +1030,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
             
             bp->bd = bd;
             
-            page = gtk_vbox_new(FALSE, BORDER);
+            bp->page = page = gtk_vbox_new(FALSE, BORDER);
             gtk_widget_show(page);
             
             add_spacer(GTK_BOX(page));
@@ -1172,9 +1214,6 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
             
             add_spacer(GTK_BOX(page));
             
-            if(!allow_custom_backdrop)
-                gtk_widget_set_sensitive(page, FALSE);
-            
             if(nscreens == 1 && nmonitors == 1) {
                 /* add the single backdrop settings page to the main notebook */
                 label = gtk_label_new_with_mnemonic(_("_Backdrop"));
@@ -1183,6 +1222,9 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
             } else if((nscreens > 1 && nmonitors == 1)
                     || (nscreens == 1 && nmonitors > 1))
             {
+                if(nmonitors > 1 && j > 0 && xinerama_stretch)
+                    gtk_widget_set_sensitive(page, FALSE);
+                    
                 /* but if we have more than one, add them as pages to another */
                 if(nscreens > 1)
                     g_snprintf(screen_label, 256, _("Screen %d"), i);
@@ -1196,6 +1238,9 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
                 label = gtk_label_new(screen_label);
                 gtk_notebook_append_page(GTK_NOTEBOOK(bd->screens_notebook), page, label);
             }
+            
+            if(!allow_custom_backdrop)
+                gtk_widget_set_sensitive(page, FALSE);
             
             set_dnd_dest(bp);
         }

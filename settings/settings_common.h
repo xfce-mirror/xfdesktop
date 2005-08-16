@@ -34,7 +34,7 @@
 
 typedef struct {
     McsPlugin *plugin;
-
+    
     /* options dialog */
     GtkWidget *dialog;
     GtkWidget *top_notebook;
@@ -60,6 +60,9 @@ typedef struct {
     gchar *image_path;
     XfceBackdropImageStyle style;
     gint brightness;
+    
+    /* the notebook page */
+    GtkWidget *page;
     
     /* the panel's GUI controls */
     GtkWidget *color_frame;
