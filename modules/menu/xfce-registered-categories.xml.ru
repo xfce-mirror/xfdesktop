@@ -67,7 +67,7 @@
 		<subcategory name="Finance" />
 		<subcategory name="FlowChart" />
 		<subcategory name="PDA" />
-		<subcategory name="Project Management" />
+		<subcategory name="ProjectManagement" />
 		<subcategory name="Presentation" />
 		<subcategory name="Spreadsheet" />
 		<subcategory name="WordProcessor" />
