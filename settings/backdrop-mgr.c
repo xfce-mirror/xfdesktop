@@ -69,7 +69,7 @@ reload_xfdesktop_trigger(GtkWidget *w, gpointer user_data)
     Window xid = None;
     
     if(xfdesktop_check_is_running(&xid))
-        xfdesktop_send_clien_message(xid, RELOAD_MESSAGE);
+        xfdesktop_send_client_message(xid, RELOAD_MESSAGE);
 }
 
 static void
