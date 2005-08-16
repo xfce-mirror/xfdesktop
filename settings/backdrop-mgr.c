@@ -64,6 +64,15 @@
 static gchar *_listdlg_last_dir;
 
 static void
+reload_xfdesktop_trigger(GtkWidget *w, gpointer user_data)
+{
+    Window xid = None;
+    
+    if(xfdesktop_check_is_running(&xid))
+        xfdesktop_send_clien_message(xid, RELOAD_MESSAGE);
+}
+
+static void
 add_file(const gchar *path, GtkListStore *ls)
 {
     GtkTreeIter iter;
@@ -103,8 +112,22 @@ remove_file(GtkTreeView *treeview)
     
     select = gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview));
     
-    if(gtk_tree_selection_get_selected(select, &model, &iter))
-        gtk_list_store_remove (GTK_LIST_STORE(model), &iter);
+    if(gtk_tree_selection_get_selected(select, &model, &iter)) {
+        gint weight;
+        gboolean reload = FALSE;
+        
+        gtk_tree_model_get(model, &iter, 1, &weight, -1);
+        if(weight == PANGO_WEIGHT_BOLD) {
+            GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(treeview));
+            
+            if(toplevel) {
+                g_signal_connect_after(G_OBJECT(toplevel), "destroy",
+                        G_CALLBACK(reload_xfdesktop_trigger), NULL);
+            }
+        }
+        
+        gtk_list_store_remove(GTK_LIST_STORE(model), &iter);
+    }
 }
 
 /* reading and writing files */
