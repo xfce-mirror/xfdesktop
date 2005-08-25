@@ -2,19 +2,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Dotan Kamber <kamberd@yahoo.com>, 2004.
 # Jonatan Perry <Jonatan443@walla.co.il>, 2004.
-# Yuval Tanny <tanai@int.gov.il>, 2004.
+# Yuval Tanny <tanai@int.gov.il>, 2004, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-05-10 22:18+0200\n"
-"PO-Revision-Date: 2004-12-31 16:54+0200\n"
-"Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
-"Language-Team: Hebrew Team <xfce2004@yahoo.com>\n"
+"PO-Revision-Date: 2005-08-21 15:40+0300\n"
+"Last-Translator: Yuval Tanny\n"
+"Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10.2\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
@@ -404,35 +406,29 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "אין אפשרות להפעיל את עורך התפריטים של Xfce4: %s"
 
 #: panel-plugin/desktop-menu-plugin.c:663
-#, fuzzy
 msgid "Button _title:"
-msgstr "סמל ה_לחצן:"
+msgstr "כותרת ה_לחצן:"
 
 #: panel-plugin/desktop-menu-plugin.c:676
-#, fuzzy
 msgid "Menu File"
-msgstr "קבצי תפריט"
+msgstr "קובץ תפריט"
 
 #: panel-plugin/desktop-menu-plugin.c:688
-#, fuzzy
 msgid "Use default _desktop menu file"
-msgstr "_ערוך תפריט שולחן עבודה"
+msgstr "השתמש בקובץ תפריט _שולחן עבודה ברירת מחדל"
 
 #: panel-plugin/desktop-menu-plugin.c:697
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "פתח קובץ תפריט"
+msgstr "השתמש בקובץ תפריט _מותאם אישית:"
 
 #: panel-plugin/desktop-menu-plugin.c:749
 #: panel-plugin/desktop-menu-plugin.c:751
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "_תפריט"
+msgstr "_ערוך תפריט"
 
 #: panel-plugin/desktop-menu-plugin.c:758
-#, fuzzy
 msgid "Icons"
-msgstr "סמל:"
+msgstr "סמלים"
 
 #: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
@@ -667,8 +663,7 @@ msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -תפריט        מקפיץ תפריט (במיקום הסמן הנוכחי)\n"
 
 #: src/main.c:304
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -רשימת חלונות  מקפיץ את רשימת החלונות (במיקום הסמן הנוכחי)\n"
 
 #: src/windowlist.c:193
@@ -695,20 +690,3 @@ msgstr "_הסר סביבת עבודה %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_הסר סביבת עבודה %s"
 
-#~ msgid "_Menu file:"
-#~ msgstr "קבצי _תפריט:"
-
-#~ msgid "Graphical tool for editing the Xfce 4 menu"
-#~ msgstr "כלי גרפי בשביל לערוך את תפריט של Xfce 4"
-
-#~ msgid "Menu Editor"
-#~ msgstr "עורך תפריטים"
-
-#~ msgid "Xfce 4 Menu Editor"
-#~ msgstr "עורך תפריט Xfce4"
-
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "הגדרות שולחן העבודה של Xfce 4"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "הגדרות שולחן העבודה Xfce 4"
