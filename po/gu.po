@@ -3,20 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Ankit Patel <ankit@redhat.com>, 2004, 2005.
+# Ankit Patel <ankit644@yahoo.com>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-01 19:50-0700\n"
-"PO-Revision-Date: 2005-03-02 12:56+0530\n"
-"Last-Translator: Ankit Patel <ankit@redhat.com>\n"
-"Language-Team: Gujarati <gu@li.org>\n"
+"PO-Revision-Date: 2005-08-26 10:48+0530\n"
+"Last-Translator: Ankit Patel <ankit644@yahoo.com>\n"
+"Language-Team: Gujarati <indianoss-gujarati@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
-"Plural-Forms: Plural-Forms: Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
 "\n"
 "\n"
 
@@ -353,44 +354,37 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor લોન્ચ કરવામાં નિષ્ફળ: %s"
 
 #: panel-plugin/desktop-menu-plugin.c:740
-#, fuzzy
 msgid "Button"
-msgstr "બટન ચિહ્ન (_B):"
+msgstr "બટન"
 
 #: panel-plugin/desktop-menu-plugin.c:753
-#, fuzzy
 msgid "Button _title:"
-msgstr "બટન ચિહ્ન (_B):"
+msgstr "બટન શીર્ષક (_t):"
 
 #: panel-plugin/desktop-menu-plugin.c:766
 msgid "_Show title in button"
-msgstr ""
+msgstr "બટનમાં શીર્ષક બતાવો (_S)"
 
 #: panel-plugin/desktop-menu-plugin.c:773
-#, fuzzy
 msgid "Menu File"
-msgstr "મેનુ ફાઈલો"
+msgstr "મેનુ ફાઈલ"
 
 #: panel-plugin/desktop-menu-plugin.c:785
-#, fuzzy
 msgid "Use default _desktop menu file"
-msgstr "ડેસ્કટોપ મેનુમાં ફેરફાર કરો (_E)"
+msgstr "મૂળભુત ડેસ્કટોપ મેનુ ફાઈલ વાપરો (_d)"
 
 #: panel-plugin/desktop-menu-plugin.c:794
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "મેનુ ફાઈલ ખોલો"
+msgstr "વૈવિધ્યપૂર્ણ મેનુ ફાઈલ વાપરો (_c):"
 
 #: panel-plugin/desktop-menu-plugin.c:846
 #: panel-plugin/desktop-menu-plugin.c:848
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "મેનુ (_M)"
+msgstr "ફેરફાર મેનુ (_E)"
 
 #: panel-plugin/desktop-menu-plugin.c:855
-#, fuzzy
 msgid "Icons"
-msgstr "ચિહ્ન:"
+msgstr "ચિહ્નો"
 
 #: panel-plugin/desktop-menu-plugin.c:867
 msgid "_Button icon:"
@@ -503,24 +497,23 @@ msgstr "તેજસ્વીતા સમતોલ કરો (_B):"
 #: settings/backdrop_settings.c:838
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr ""
+msgstr "Xfce એ તમારી ડેસ્કટોપની વ્યવસ્થા કરવામાં અસમર્થ હશે (%s)."
 
 #: settings/backdrop_settings.c:839
 msgid "Unknown Error"
-msgstr ""
+msgstr "અજ્ઞાત ભૂલ"
 
 #: settings/backdrop_settings.c:843
 msgid "Error"
-msgstr ""
+msgstr "ભૂલ"
 
 #: settings/backdrop_settings.c:845
 msgid "Unable to start xfdesktop"
-msgstr ""
+msgstr "xfdesktop શરુ કરવામાં અસમર્થ"
 
 #: settings/backdrop_settings.c:863
-#, fuzzy
 msgid "Information"
-msgstr "સુધારાઓ અવગણો"
+msgstr "જાણકારી"
 
 #: settings/backdrop_settings.c:873
 msgid ""
@@ -529,11 +522,11 @@ msgid ""
 "using the Xfce Session Manager (xfce4-session), you will need to manually "
 "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
-msgstr ""
+msgstr "Xfce તમારી ડેસ્કટોપની વ્યવસ્થા કરે નહિં તેની ખાતરી કરવા માટે આગળના સમયે તમે જ્યારે Xfce શરૂ કરો, તો મહેરબાની કરીને બહાર નીકળતી વખતે તમારો સત્ર સંગ્રહાયેલ છે તેની ખાતરી કરો.  જો તમે Xfce સત્ર વ્યવસ્થાપ (xfce4-session) નહિં વાપરી રહ્યા હોય, તો તમારે તમારી ~/.config/xfce4/xinitrc ફાઈલમાં જાતે ફેરફાર કરવાની જરૂર રહેશે.  વિગતો http://xfce.org/ પર દસ્તાવેજીકરણમાં પૂરી પાડવામાં આવેલ છે."
 
 #: settings/backdrop_settings.c:881
 msgid "_Do not show this again"
-msgstr ""
+msgstr "આ ફરીથી બતાવશો નહિં (_D)"
 
 #. header
 #: settings/backdrop_settings.c:931
@@ -543,7 +536,7 @@ msgstr "ડેસ્કટોપ સુયોજનો"
 
 #: settings/backdrop_settings.c:936
 msgid "Allow _Xfce to manage the desktop"
-msgstr ""
+msgstr "_Xfce ને ડેસ્કટોપની વ્યવસ્થા કરવા માટે પરવાનગી આપો"
 
 #: settings/backdrop_settings.c:972
 msgid "_Backdrops"
@@ -656,13 +649,12 @@ msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        મેનુને પોપઅપ કરે છે (માઉસની વર્તમાન જગ્યાએ)\n"
 
 #: src/main.c:257
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -menu        વિન્ડો યાદીને પોપઅપ કરે છે (માઉસની વર્તમાન જગ્યાએ)\n"
 
 #: src/main.c:258
 msgid "    -quit        Cause xfdesktop to quit\n"
-msgstr ""
+msgstr "    -quit        xfdesktop ને બંધ કરવાનું કારણ બને છે\n"
 
 #: src/windowlist.c:193
 #, c-format
@@ -708,11 +700,3 @@ msgstr "Xfce 4 ડેસ્કટોપ વ્યવસ્થાપક માટ
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 ડેસ્કટોપ સુયોજનો"
 
-#~ msgid "Set color _only"
-#~ msgstr "માત્ર રંગ સુયોજિત કરો (_o)"
-
-#~ msgid "_Don't set backdrop"
-#~ msgstr "બેકડ્રોપ સુયોજિત કરો નહિં (_D)"
-
-#~ msgid "_Menu file:"
-#~ msgstr "મેનુ ફાઈલ (_M):"
