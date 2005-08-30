@@ -335,17 +335,17 @@ new_menu_cb (GtkWidget * widget, gpointer data)
   }
 
   filesel_dialog =
-    xfce_file_chooser_new (_("Select command"),
-                           GTK_WINDOW (me->window),
-                           XFCE_FILE_CHOOSER_ACTION_SAVE,
-                           GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
+    gtk_file_chooser_dialog_new (_("Select command"), GTK_WINDOW (me->window),
+				 GTK_FILE_CHOOSER_ACTION_SAVE,
+				 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+				 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
 
   if (gtk_dialog_run (GTK_DIALOG (filesel_dialog)) == GTK_RESPONSE_ACCEPT) {
     GtkTreeModel *model;
     gchar *filename = NULL;
 
     model = gtk_tree_view_get_model (GTK_TREE_VIEW (me->treeview));
-    filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
+    filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (filesel_dialog));
     gtk_tree_store_clear (GTK_TREE_STORE (model));
     me->menu_file_name = g_strdup (filename);
     g_free (filename);
@@ -382,17 +382,17 @@ open_menu_cb (GtkWidget * widget, gpointer data)
   }
 
   filesel_dialog =
-    xfce_file_chooser_new (_("Open menu file"),
-                           GTK_WINDOW (me->window),
-                           XFCE_FILE_CHOOSER_ACTION_OPEN,
-                           GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
+    gtk_file_chooser_dialog_new (_("Open menu file"), GTK_WINDOW (me->window),
+				 GTK_FILE_CHOOSER_ACTION_OPEN,
+				 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+				 GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
   
-  xfce_file_chooser_set_current_name (XFCE_FILE_CHOOSER (filesel_dialog), "menu.xml");
+  gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (filesel_dialog), "menu.xml");
 
   if (gtk_dialog_run (GTK_DIALOG (filesel_dialog)) == GTK_RESPONSE_ACCEPT) {
     gchar *filename = NULL;
 
-    filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
+    filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (filesel_dialog));
 
     if (me->menu_file_name) {
       GtkTreeModel *model;
@@ -484,16 +484,17 @@ saveas_menu_cb (GtkWidget * widget, gpointer data)
   me = (MenuEditor *) data;
 
   filesel_dialog =
-    xfce_file_chooser_new (_("Save as..."), GTK_WINDOW (me->window),
-                           XFCE_FILE_CHOOSER_ACTION_SAVE,
-                           GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT, NULL);
+    gtk_file_chooser_dialog_new (_("Save as..."), GTK_WINDOW (me->window),
+				 GTK_FILE_CHOOSER_ACTION_SAVE,
+				 GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+				 GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT, NULL);
 
-  xfce_file_chooser_set_current_name (XFCE_FILE_CHOOSER (filesel_dialog), "menu.xml");
+  gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (filesel_dialog), "menu.xml");
 
   if (gtk_dialog_run (GTK_DIALOG (filesel_dialog)) == GTK_RESPONSE_ACCEPT) {
     gchar *filename = NULL;
 
-    filename = xfce_file_chooser_get_filename (XFCE_FILE_CHOOSER (filesel_dialog));
+    filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (filesel_dialog));
 
     if (strcmp (filename, me->menu_file_name) == 0)
       save_treeview_in_file (me);
