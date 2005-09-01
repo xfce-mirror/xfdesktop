@@ -53,8 +53,7 @@
 #define MAP_FILE (0)
 #endif
 
-#include <glib.h>
-#include <libxfce4util/i18n.h>
+#include <libxfce4util/libxfce4util.h>
 
 #include "desktop-menuspec.h"
 #include "desktop-menu-private.h"

@@ -26,7 +26,7 @@
 #include <string.h>
 #endif
 
-#include <libxfce4util/i18n.h>
+#include <libxfce4util/libxfce4util.h>
 
 #include "../common/xfdesktop-common.h"
 #include "utils.h"
