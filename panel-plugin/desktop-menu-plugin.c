@@ -35,7 +35,6 @@
 #define PATH_MAX 4096
 #endif
 
-#include <libxfce4util/i18n.h>
 #include <libxfcegui4/libxfcegui4.h>
 
 #include <panel/plugins.h>
