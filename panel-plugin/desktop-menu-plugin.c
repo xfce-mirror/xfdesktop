@@ -537,14 +537,14 @@ entry_focus_out_cb(GtkWidget *w, GdkEventFocus *evt, gpointer user_data)
 }
 
 static void
-filebutton_update_preview_cb(XfceFileChooser *chooser, gpointer user_data)
+filebutton_update_preview_cb(GtkFileChooser *chooser, gpointer user_data)
 {
     GtkImage *preview;
     gchar *filename;
     GdkPixbuf *pix = NULL;
     
     preview = GTK_IMAGE(user_data);
-    filename = xfce_file_chooser_get_filename(chooser);
+    filename = gtk_file_chooser_get_filename(chooser);
     
     if(g_file_test(filename, G_FILE_TEST_IS_REGULAR))
         pix = xfce_pixbuf_new_from_file_at_size(filename, 250, 250, NULL);
@@ -554,7 +554,7 @@ filebutton_update_preview_cb(XfceFileChooser *chooser, gpointer user_data)
         gtk_image_set_from_pixbuf(preview, pix);
         g_object_unref(G_OBJECT(pix));
     }
-    xfce_file_chooser_set_preview_widget_active(chooser, (pix != NULL));
+    gtk_file_chooser_set_preview_widget_active(chooser, (pix != NULL));
 }
 
 static void
@@ -563,7 +563,7 @@ filebutton_click_cb(GtkWidget *w, gpointer user_data)
     DMPlugin *dmp = user_data;
     GtkWidget *chooser, *image;
     gchar *filename;
-    XfceFileFilter *filter;
+    GtkFileFilter *filter;
     const gchar *title;
     gboolean is_icon = FALSE;
     
@@ -575,50 +575,50 @@ filebutton_click_cb(GtkWidget *w, gpointer user_data)
     else
         title = _("Select Menu File");
     
-    chooser = xfce_file_chooser_new(title,
+    chooser = gtk_file_chooser_dialog_new(title,
             GTK_WINDOW(gtk_widget_get_toplevel(w)),
-            XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
+            GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
             GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
     if(is_icon)
-        xfce_file_chooser_add_shortcut_folder(XFCE_FILE_CHOOSER(chooser),
+        gtk_file_chooser_add_shortcut_folder(GTK_FILE_CHOOSER(chooser),
                 DATADIR "/pixmaps", NULL);
     else
-        xfce_file_chooser_add_shortcut_folder(XFCE_FILE_CHOOSER(chooser),
+        gtk_file_chooser_add_shortcut_folder(GTK_FILE_CHOOSER(chooser),
                 xfce_get_userdir(), NULL);
     gtk_dialog_set_default_response(GTK_DIALOG(chooser), GTK_RESPONSE_ACCEPT);
     
-    filter = xfce_file_filter_new();
-    xfce_file_filter_set_name(filter, _("All Files"));
-    xfce_file_filter_add_pattern(filter, "*");
-    xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
-    xfce_file_chooser_set_filter(XFCE_FILE_CHOOSER(chooser), filter);
-    filter = xfce_file_filter_new();
+    filter = gtk_file_filter_new();
+    gtk_file_filter_set_name(filter, _("All Files"));
+    gtk_file_filter_add_pattern(filter, "*");
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+    gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(chooser), filter);
+    filter = gtk_file_filter_new();
     if(is_icon) {
-        xfce_file_filter_set_name(filter, _("Image Files"));
-        xfce_file_filter_add_pattern(filter, "*.png");
-        xfce_file_filter_add_pattern(filter, "*.jpg");
-        xfce_file_filter_add_pattern(filter, "*.bmp");
-        xfce_file_filter_add_pattern(filter, "*.svg");
-        xfce_file_filter_add_pattern(filter, "*.xpm");
-        xfce_file_filter_add_pattern(filter, "*.gif");
+        gtk_file_filter_set_name(filter, _("Image Files"));
+        gtk_file_filter_add_pattern(filter, "*.png");
+        gtk_file_filter_add_pattern(filter, "*.jpg");
+        gtk_file_filter_add_pattern(filter, "*.bmp");
+        gtk_file_filter_add_pattern(filter, "*.svg");
+        gtk_file_filter_add_pattern(filter, "*.xpm");
+        gtk_file_filter_add_pattern(filter, "*.gif");
     } else {
-        xfce_file_filter_set_name(filter, _("Menu Files"));
-        xfce_file_filter_add_pattern(filter, "*.xml");
+        gtk_file_filter_set_name(filter, _("Menu Files"));
+        gtk_file_filter_add_pattern(filter, "*.xml");
     }
-    xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
     
     if(is_icon) {
         image = gtk_image_new();
         gtk_widget_show(image);
-        xfce_file_chooser_set_preview_widget(XFCE_FILE_CHOOSER(chooser), image);
-        xfce_file_chooser_set_preview_callback(XFCE_FILE_CHOOSER(chooser),
-                filebutton_update_preview_cb, image);
-        xfce_file_chooser_set_preview_widget_active(XFCE_FILE_CHOOSER(chooser), FALSE);
+        gtk_file_chooser_set_preview_widget(GTK_FILE_CHOOSER(chooser), image);
+        g_signal_connect(G_OBJECT(chooser), "update-preview",
+                         G_CALLBACK(filebutton_update_preview_cb), image);
+        gtk_file_chooser_set_preview_widget_active(GTK_FILE_CHOOSER(chooser), FALSE);
     }
 
     gtk_widget_show(chooser);
     if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
-        filename = xfce_file_chooser_get_filename(XFCE_FILE_CHOOSER(chooser));
+        filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(chooser));
         if(filename) {
             if(is_icon) {
                 gtk_entry_set_text(GTK_ENTRY(dmp->icon_entry), filename);
@@ -728,7 +728,7 @@ static void
 dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
 {
     DMPlugin *dmp = ctrl->data;
-    GtkWidget *topvbox, *vbox, *hbox, *frame, *spacer;
+    GtkWidget *topvbox, *vbox, *hbox, *frame, *frame_bin, *spacer;
     GtkWidget *label, *image, *filebutton, *chk, *radio, *entry, *btn;
     
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
@@ -737,13 +737,13 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
     gtk_widget_show(topvbox);
     gtk_container_add(con, topvbox);
     
-    frame = xfce_framebox_new(_("Button"), TRUE);
+    frame = xfce_create_framebox(_("Button"), &frame_bin);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(topvbox), frame, FALSE, FALSE, 0);
     
     vbox = gtk_vbox_new(FALSE, BORDER/2);
     gtk_widget_show(vbox);
-    xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
+    gtk_container_add(GTK_CONTAINER(frame_bin), vbox);
     
     hbox = gtk_hbox_new(FALSE, BORDER/2);
     gtk_container_set_border_width(GTK_CONTAINER(hbox), BORDER/2);
@@ -770,13 +770,13 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
     g_signal_connect(G_OBJECT(chk), "toggled",
             G_CALLBACK(show_title_toggled_cb), ctrl);
     
-    frame = xfce_framebox_new(_("Menu File"), TRUE);
+    frame = xfce_create_framebox(_("Menu File"), &frame_bin);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(topvbox), frame, FALSE, FALSE, 0);
     
     vbox = gtk_vbox_new(FALSE, BORDER/2);
     gtk_widget_show(vbox);
-    xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
+    gtk_container_add(GTK_CONTAINER(frame_bin), vbox);
     
     /* 2nd radio button's child hbox */
     hbox = gtk_hbox_new(FALSE, BORDER/2);
@@ -852,13 +852,13 @@ dmp_create_options(Control *ctrl, GtkContainer *con, GtkWidget *done)
     g_signal_connect(G_OBJECT(btn), "clicked",
             G_CALLBACK(dmp_edit_menu_clicked_cb), dmp);
     
-    frame = xfce_framebox_new(_("Icons"), TRUE);
+    frame = xfce_create_framebox(_("Icons"), &frame_bin);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(topvbox), frame, FALSE, FALSE, 0);
     
     vbox = gtk_vbox_new(FALSE, BORDER/2);
     gtk_widget_show(vbox);
-    xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
+    gtk_container_add(GTK_CONTAINER(frame_bin), vbox);
     
     hbox = gtk_hbox_new(FALSE, BORDER/2);
     gtk_widget_show(hbox);

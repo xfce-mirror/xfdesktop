@@ -348,7 +348,7 @@ color_set_cb(GtkWidget *b, BackdropPanel *bp)
     GdkColor color;
     gchar setting_name[128];
     
-    xfce_color_button_get_color(XFCE_COLOR_BUTTON(b), &color);
+    gtk_color_button_get_color(GTK_COLOR_BUTTON(b), &color);
     
     if(b == bp->color1_box) {
         bp->color1.red = color.red;
@@ -489,14 +489,14 @@ file_entry_lost_focus (GtkWidget * entry, GdkEventFocus * ev,
 }
 
 static void
-update_preview_cb(XfceFileChooser *chooser, gpointer data)
+update_preview_cb(GtkFileChooser *chooser, gpointer data)
 {
     GtkImage *preview;
     char *filename;
     GdkPixbuf *pix = NULL;
     
     preview = GTK_IMAGE(data);
-    filename = xfce_file_chooser_get_filename(chooser);
+    filename = gtk_file_chooser_get_filename(chooser);
     
     if(g_file_test(filename, G_FILE_TEST_IS_REGULAR))
         pix = xfce_pixbuf_new_from_file_at_size(filename, 250, 250, NULL);
@@ -506,44 +506,44 @@ update_preview_cb(XfceFileChooser *chooser, gpointer data)
         gtk_image_set_from_pixbuf(preview, pix);
         g_object_unref(G_OBJECT(pix));
     }
-    xfce_file_chooser_set_preview_widget_active(chooser, (pix != NULL));
+    gtk_file_chooser_set_preview_widget_active(chooser, (pix != NULL));
 }
 
 static void
 browse_cb(GtkWidget *b, BackdropPanel *bp)
 {
     GtkWidget *chooser, *preview;
-    XfceFileFilter *filter;
+    GtkFileFilter *filter;
     gchar *confdir;
     
-    chooser = xfce_file_chooser_new(_("Select backdrop image or list file"),
-            GTK_WINDOW(bp->bd->dialog), XFCE_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
+    chooser = gtk_file_chooser_dialog_new(_("Select backdrop image or list file"),
+            GTK_WINDOW(bp->bd->dialog), GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
             GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
     
-    filter = xfce_file_filter_new();
-    xfce_file_filter_set_name(filter, _("All Files"));
-    xfce_file_filter_add_pattern(filter, "*");
-    xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
-    filter = xfce_file_filter_new();
-    xfce_file_filter_set_name(filter, _("Image Files"));
-    xfce_file_filter_add_pattern(filter, "*.png");
-    xfce_file_filter_add_pattern(filter, "*.jpg");
-    xfce_file_filter_add_pattern(filter, "*.bmp");
-    xfce_file_filter_add_pattern(filter, "*.svg");
-    xfce_file_filter_add_pattern(filter, "*.xpm");
-    xfce_file_filter_add_pattern(filter, "*.gif");
-    xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
-    filter = xfce_file_filter_new();
-    xfce_file_filter_set_name(filter, _("List Files (*.list)"));
-    xfce_file_filter_add_pattern(filter, "*.list");
-    xfce_file_chooser_add_filter(XFCE_FILE_CHOOSER(chooser), filter);
+    filter = gtk_file_filter_new();
+    gtk_file_filter_set_name(filter, _("All Files"));
+    gtk_file_filter_add_pattern(filter, "*");
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+    filter = gtk_file_filter_new();
+    gtk_file_filter_set_name(filter, _("Image Files"));
+    gtk_file_filter_add_pattern(filter, "*.png");
+    gtk_file_filter_add_pattern(filter, "*.jpg");
+    gtk_file_filter_add_pattern(filter, "*.bmp");
+    gtk_file_filter_add_pattern(filter, "*.svg");
+    gtk_file_filter_add_pattern(filter, "*.xpm");
+    gtk_file_filter_add_pattern(filter, "*.gif");
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+    filter = gtk_file_filter_new();
+    gtk_file_filter_set_name(filter, _("List Files (*.list)"));
+    gtk_file_filter_add_pattern(filter, "*.list");
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
     
-    xfce_file_chooser_add_shortcut_folder(XFCE_FILE_CHOOSER(chooser),
+    gtk_file_chooser_add_shortcut_folder(GTK_FILE_CHOOSER(chooser),
             DATADIR "/xfce4/backdrops", NULL);
     confdir = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
             "xfce4/desktop/", TRUE);
     if(confdir) {
-        xfce_file_chooser_add_shortcut_folder(XFCE_FILE_CHOOSER(chooser),
+        gtk_file_chooser_add_shortcut_folder(GTK_FILE_CHOOSER(chooser),
                 confdir, NULL);
         g_free(confdir);
     }
@@ -553,22 +553,22 @@ browse_cb(GtkWidget *b, BackdropPanel *bp)
         gchar *p = g_strrstr(tmppath, "/");
         if(p && p != tmppath)
             *(p+1) = 0;
-        xfce_file_chooser_set_current_folder(XFCE_FILE_CHOOSER(chooser), tmppath);
+        gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(chooser), tmppath);
         g_free(tmppath);
     }
     
     preview = gtk_image_new();
     gtk_widget_show(preview);
-    xfce_file_chooser_set_preview_widget(XFCE_FILE_CHOOSER(chooser), preview);
-    xfce_file_chooser_set_preview_widget_active(XFCE_FILE_CHOOSER(chooser), FALSE);
-    xfce_file_chooser_set_preview_callback(XFCE_FILE_CHOOSER(chooser),
-            (PreviewUpdateFunc)update_preview_cb, preview);
+    gtk_file_chooser_set_preview_widget(GTK_FILE_CHOOSER(chooser), preview);
+    gtk_file_chooser_set_preview_widget_active(GTK_FILE_CHOOSER(chooser), FALSE);
+    g_signal_connect(G_OBJECT(chooser), "update-preview",
+                     G_CALLBACK(update_preview_cb), preview);
     
     gtk_widget_show(chooser);
     if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
         gchar *filename;
         
-        filename = xfce_file_chooser_get_filename(XFCE_FILE_CHOOSER(chooser));
+        filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(chooser));
         if(filename) {
             if(bp->image_path)
                 g_free(bp->image_path);
@@ -906,7 +906,7 @@ xinerama_stretch_toggled_cb(GtkToggleButton *tb, gpointer user_data)
         for(l = screens[0]->next; l; l = l->next) {
             BackdropPanel *bp = l->data;
             gtk_widget_set_sensitive(bp->page, TRUE);
-            if(bp->color_style = XFCE_BACKDROP_COLOR_SOLID)
+            if(bp->color_style == XFCE_BACKDROP_COLOR_SOLID)
                 gtk_widget_set_sensitive(bp->color2_hbox, FALSE);
             if(!bp->show_image)
                 gtk_widget_set_sensitive(bp->image_frame_inner, FALSE);
@@ -1037,13 +1037,13 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
             
             /* color settings frame */
             
-            bp->color_frame = frame = xfce_framebox_new(_("Color"), TRUE);
+            frame = xfce_create_framebox(_("Color"), &bp->color_frame);
             gtk_widget_show(frame);
             gtk_box_pack_start(GTK_BOX(page), frame, FALSE, FALSE, 0);
             
             vbox = gtk_vbox_new(FALSE, BORDER);
             gtk_widget_show(vbox);
-            xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
+            gtk_container_add(GTK_CONTAINER(bp->color_frame), vbox);
             
             sg = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
             
@@ -1104,7 +1104,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
             color.red = bp->color1.red;
             color.green = bp->color1.green;
             color.blue = bp->color1.blue;
-            bp->color1_box = button = xfce_color_button_new_with_color(&color);
+            bp->color1_box = button = gtk_color_button_new_with_color(&color);
             gtk_widget_show(button);
             gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
             g_signal_connect(button, "color-set", G_CALLBACK(color_set_cb), bp);
@@ -1125,7 +1125,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
             color.red = bp->color2.red;
             color.green = bp->color2.green;
             color.blue = bp->color2.blue;
-            bp->color2_box = button = xfce_color_button_new_with_color(&color);
+            bp->color2_box = button = gtk_color_button_new_with_color(&color);
             gtk_widget_show(button);
             gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
             g_signal_connect(button, "color-set", G_CALLBACK(color_set_cb), bp);
@@ -1141,13 +1141,13 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
             
             sg = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
             
-            bp->image_frame = frame = xfce_framebox_new(_("Image"), TRUE);
+            frame = xfce_create_framebox(_("Image"), &bp->image_frame);
             gtk_widget_show(frame);
             gtk_box_pack_start(GTK_BOX(page), frame, FALSE, FALSE, 0);
             
             vbox = gtk_vbox_new(FALSE, BORDER);
             gtk_widget_show(vbox);
-            xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
+            gtk_container_add(GTK_CONTAINER(bp->image_frame), vbox);
             
             bp->show_image_chk = gtk_check_button_new_with_mnemonic(_("Show _Image"));
             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(bp->show_image_chk),
@@ -1158,13 +1158,13 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
                     G_CALLBACK(showimage_toggle), bp);
             
             /* inner frame */
-            bp->image_frame_inner = frame = xfce_framebox_new(NULL, TRUE);
+            frame = xfce_create_framebox(NULL, &bp->image_frame_inner);
             gtk_widget_show(frame);
             gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
             
             vbox = gtk_vbox_new(FALSE, 0);
             gtk_widget_show(vbox);
-            xfce_framebox_add(XFCE_FRAMEBOX(frame), vbox);
+            gtk_container_add(GTK_CONTAINER(bp->image_frame_inner), vbox);
             
             /* filename box */
             hbox = gtk_hbox_new(FALSE, BORDER);
