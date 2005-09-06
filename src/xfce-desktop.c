@@ -818,8 +818,19 @@ xfce_desktop_unrealize(GtkWidget *widget)
         desktop->priv->bg_pixmap = NULL;
     }
     
-    /* chain up */
-    GTK_WIDGET_CLASS(parent_class)->unrealize(widget);
+    if(GTK_WIDGET_MAPPED(widget))
+        gtk_widget_unmap(widget);
+    GTK_WIDGET_UNSET_FLAGS(widget, GTK_MAPPED);
+    
+    gtk_container_forall(GTK_CONTAINER(widget),
+                         (GtkCallback)gtk_widget_unrealize,
+                         NULL);
+    
+    gtk_style_detach(widget->style);
+    g_object_unref(G_OBJECT(widget->window));
+    widget->window = NULL;
+    
+    gtk_selection_remove_all(widget);
     
     /* blank out the root window */
     gdk_window_set_back_pixmap(groot, NULL, FALSE);
@@ -830,6 +841,10 @@ xfce_desktop_unrealize(GtkWidget *widget)
     rect.x = rect.y = 0;
     gdk_drawable_get_size(GDK_DRAWABLE(groot), &rect.x, &rect.y);
     gdk_window_invalidate_rect(groot, &rect, FALSE);
+    
+    gtk_window_set_icon(GTK_WINDOW(widget), NULL);
+    
+    GTK_WIDGET_UNSET_FLAGS(widget, GTK_REALIZED);
 }
 
 /* public api */
