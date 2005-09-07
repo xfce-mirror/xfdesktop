@@ -1,7 +1,7 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright (c) 2004 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (c) 2004-2005 Brian Tarricone, <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -59,7 +59,8 @@
 
 #include <glib.h>
 #include <gdk/gdkx.h>
-#include <gtk/gtkwindow.h>
+#include <gtk/gtk.h>
+#include <pango/pango.h>
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
@@ -68,12 +69,120 @@
 #include "xfdesktop-common.h"
 #include "main.h"
 
+
+#define ICON_TEXT_SPACING   8
+#define ITEM_PADDING        8
+#define ICON_SIZE           48
+#define ITEM_ROW_HEIGHT     (ICON_SIZE*2+(2*ITEM_PADDING))
+#define ITEM_COL_WIDTH      (MAX_TEXT_WIDTH+(2*ITEM_PADDING))
+#define SCREEN_MARGIN       (ICON_SIZE/2)
+#define MAX_TEXT_WIDTH      (ICON_SIZE*3)
+
+typedef struct _XfceDesktopIcon
+{
+    gint x, y;
+    GdkPixbuf *pix;
+    gchar *label;
+    gboolean extents_good;
+    GdkRectangle extents;
+} XfceDesktopIcon;
+
+static void xfce_desktop_icon_paint(XfceDesktopIcon *icon, GtkWidget *widget);
+static void xfce_desktop_icon_free(XfceDesktopIcon *icon);
+
+static void
+xfce_desktop_icon_free(XfceDesktopIcon *icon)
+{
+    if(icon->pix)
+        g_object_unref(icon->pix);
+    if(icon->label)
+        g_free(icon->label);
+    g_free(icon);
+}
+
+static void
+xfce_desktop_icon_paint(XfceDesktopIcon *icon,
+                        GtkWidget *widget)
+{
+    gint pix_w, pix_h, pix_x, pix_y, text_x, text_y, text_w, text_h;
+    PangoContext *pctx;
+    PangoLayout *playout;
+    
+    TRACE("entering");
+    
+    pix_w = gdk_pixbuf_get_width(icon->pix);
+    pix_h = gdk_pixbuf_get_height(icon->pix);
+    
+    pctx = gtk_widget_get_pango_context(widget);
+    playout = pango_layout_new(pctx);
+    pango_layout_set_alignment(playout, PANGO_ALIGN_CENTER);
+    pango_layout_set_text(playout, icon->label, -1);
+    pango_layout_get_size(playout, &text_w, &text_h);
+    if(text_w > MAX_TEXT_WIDTH*PANGO_SCALE) {
+        pango_layout_set_width(playout, MAX_TEXT_WIDTH*PANGO_SCALE);
+#if GTK_CHECK_VERSION(2, 6, 0)  /* can't find a way to get pango version info */
+        pango_layout_set_ellipsize(playout, PANGO_ELLIPSIZE_END);
+#endif
+    }
+    pango_layout_get_pixel_size(playout, &text_w, &text_h);
+    
+    pix_x = icon->x + (ITEM_COL_WIDTH / 2) - (pix_w / 2);
+    text_x = icon->x + ITEM_PADDING + ((MAX_TEXT_WIDTH - text_w) / 2);
+    pix_y = icon->y + ITEM_PADDING;
+    text_y = icon->y + ITEM_PADDING + pix_h + ICON_TEXT_SPACING;
+    
+    DBG("drawing pixbuf at (%d,%d)", icon->x + pix_x, icon->y + pix_y);
+    
+    gdk_pixbuf_render_to_drawable(icon->pix, GDK_DRAWABLE(widget->window),
+                                  widget->style->bg_gc[GTK_STATE_NORMAL],
+                                  0, 0,
+                                  pix_x, pix_y,
+                                  pix_w, pix_h,
+                                  GDK_RGB_DITHER_NONE, 0, 0);
+    
+    DBG("painting layout: area: %dx%d+%d+%d", text_w, text_h, icon->x+text_x, icon->y+text_y);
+    
+    /* border: lame */
+    gdk_draw_rectangle(GDK_DRAWABLE(widget->window),
+                       widget->style->bg_gc[GTK_STATE_NORMAL],
+                       TRUE,
+                       text_x - 2,
+                       text_y - 2,
+                       text_w + 4, text_h + 4);
+    
+    gdk_draw_layout_with_colors(GDK_DRAWABLE(widget->window),
+                                widget->style->white_gc,
+                                text_x, text_y,
+                                playout,
+                                &widget->style->text[GTK_STATE_NORMAL],
+                                &widget->style->bg[GTK_STATE_NORMAL]);
+    
+#if 0 /* debug */
+    gdk_draw_rectangle(GDK_DRAWABLE(widget->window),
+                       widget->style->white_gc,
+                       FALSE, icon->x, icon->y,
+                       ITEM_COL_WIDTH, ITEM_ROW_HEIGHT);
+#endif
+    
+    g_object_unref(G_OBJECT(playout));
+    
+    icon->extents.x = icon->x + ITEM_PADDING;
+    icon->extents.y = icon->y + ITEM_PADDING;
+    icon->extents.width = MAX_TEXT_WIDTH + 4;
+    icon->extents.height = pix_h + ICON_TEXT_SPACING + text_h + 2;
+    icon->extents_good = TRUE;
+}
+
+
 static void xfce_desktop_class_init(XfceDesktopClass *klass);
 static void xfce_desktop_init(XfceDesktop *desktop);
 static void xfce_desktop_finalize(GObject *object);
 static void xfce_desktop_realize(GtkWidget *widget);
 static void xfce_desktop_unrealize(GtkWidget *widget);
+static gboolean xfce_desktop_expose(GtkWidget *w, GdkEventExpose *evt);
 
+static void xfce_desktop_setup_icons(XfceDesktop *desktop);
+static void xfce_desktop_paint_icons(XfceDesktop *desktop, GdkRectangle *area);
 static void load_initial_settings(XfceDesktop *desktop, McsClient *mcs_client);
 
 struct _XfceDesktopPriv
@@ -85,6 +194,9 @@ struct _XfceDesktopPriv
     
     guint nbackdrops;
     XfceBackdrop **backdrops;
+    
+    NetkScreen *netk_screen;
+    GHashTable *icons;
 };
 
 GtkWindowClass *parent_class = NULL;
@@ -138,7 +250,7 @@ save_list_file_minus_one(const gchar *filename, const gchar **files, gint badi)
     fclose(fp);
 }
 
-G_INLINE_FUNC gint
+inline gint
 count_elements(const gchar **list)
 {
     gint i, c = 0;
@@ -612,15 +724,6 @@ screen_set_selection(XfceDesktop *desktop)
     }
 }
 
-static gboolean
-desktop_expose_cb(GtkWidget *w, GdkEventExpose *evt, gpointer user_data)
-{    
-    gdk_window_clear_area(w->window, evt->area.x, evt->area.y,
-            evt->area.width, evt->area.height);
-    
-    return TRUE;
-}
-
 static void
 desktop_style_set_cb(GtkWidget *w, GtkStyle *old, gpointer user_data)
 {
@@ -634,6 +737,86 @@ desktop_style_set_cb(GtkWidget *w, GtkStyle *old, gpointer user_data)
     }
 }
 
+
+static void
+workspace_changed_cb(NetkScreen *netk_screen,
+                     gpointer user_data)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(user_data);
+    gint w, h, cur_col = 0, cur_row = 0, max_cols, max_rows;
+    NetkWorkspace *ws;
+    GList *windows, *l;
+    
+    w = gdk_screen_get_width(desktop->priv->gscreen);
+    h = gdk_screen_get_height(desktop->priv->gscreen);
+    
+    max_rows = h / ITEM_ROW_HEIGHT;
+    max_cols = w / ITEM_COL_WIDTH;
+    
+    g_hash_table_foreach_remove(desktop->priv->icons, (GHRFunc)gtk_true, NULL);
+    
+    netk_screen_force_update(desktop->priv->netk_screen);
+    ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
+    windows = netk_screen_get_windows(desktop->priv->netk_screen);
+    for(l = windows; l; l = l->next) {
+        NetkWindow *window = l->data;
+        if((ws == netk_window_get_workspace(window)
+            || netk_window_is_pinned(window))
+           && netk_window_is_minimized(window)
+           && !netk_window_is_skip_tasklist(window))
+        {
+            XfceDesktopIcon *icon;
+            
+            icon = g_new0(XfceDesktopIcon, 1);
+            icon->x = SCREEN_MARGIN + ITEM_COL_WIDTH * cur_col;
+            icon->y = SCREEN_MARGIN + ITEM_ROW_HEIGHT * cur_row;
+            icon->pix = netk_window_get_icon(window);
+            if(icon->pix) {
+                if(gdk_pixbuf_get_width(icon->pix) != ICON_SIZE) {
+                    icon->pix = gdk_pixbuf_scale_simple(icon->pix,
+                                                        ICON_SIZE,
+                                                        ICON_SIZE,
+                                                        GDK_INTERP_BILINEAR);
+                }
+                g_object_ref(G_OBJECT(icon->pix));
+            }
+            icon->label = g_strdup(netk_window_get_name(window));
+            g_hash_table_insert(desktop->priv->icons, window, icon);
+            /*xfce_desktop_icon_paint(icon, GTK_WIDGET(desktop));*/
+            
+            DBG("created icon for '%s' at (%d,%d)", icon->label, icon->x, icon->y);
+            
+            cur_row++;
+            if(cur_row >= max_rows) {
+                cur_col++;
+                if(cur_col >= max_cols)
+                    break;
+                cur_row = 0;
+            }
+        }
+    }
+    
+    gtk_widget_queue_draw(GTK_WIDGET(desktop));
+}
+
+static void
+window_state_changed_cb(NetkWindow *window,
+                        NetkWindowState changed_mask,
+                        NetkWindowState new_state,
+                        gpointer user_data)
+{
+    
+}
+
+static void
+window_destroyed_cb(gpointer data,
+                    GObject *where_the_object_was)
+{
+    XfceDesktop *desktop = data;
+    NetkWindow *window = NETK_WINDOW(where_the_object_was);
+    
+    g_hash_table_remove(desktop->priv->icons, window);
+}
 
 /* gobject-related functions */
 
@@ -684,6 +867,9 @@ xfce_desktop_init(XfceDesktop *desktop)
 {
     desktop->priv = g_new0(XfceDesktopPriv, 1);
     GTK_WINDOW(desktop)->type = GTK_WINDOW_TOPLEVEL;
+    
+    gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSURE_MASK);
+    gtk_window_set_type_hint(GTK_WINDOW(desktop), GDK_WINDOW_TYPE_HINT_DESKTOP);
 }
 
 static void
@@ -710,22 +896,17 @@ xfce_desktop_realize(GtkWidget *widget)
     GdkWindow *groot;
     GdkVisual *visual;
     
-    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-    
     /* chain up */
     GTK_WIDGET_CLASS(parent_class)->realize(widget);
-    
-    /* property avail in gtk >= 2.3 */
-    g_object_set(G_OBJECT(desktop), "accept-focus", FALSE, NULL);
-    
-    gtk_widget_set_size_request(GTK_WIDGET(desktop),
-            gdk_screen_get_width(desktop->priv->gscreen),
-            gdk_screen_get_height(desktop->priv->gscreen));
-    gtk_window_move(GTK_WINDOW(desktop), 0, 0);
     
     gtk_window_set_title(GTK_WINDOW(desktop), _("Desktop"));
     if(GTK_WIDGET_DOUBLE_BUFFERED(GTK_WIDGET(desktop)))
         gtk_widget_set_double_buffered(GTK_WIDGET(desktop), FALSE);
+    
+    gtk_widget_set_size_request(GTK_WIDGET(desktop),
+                      gdk_screen_get_width(desktop->priv->gscreen),
+                      gdk_screen_get_height(desktop->priv->gscreen));
+    gtk_window_move(GTK_WINDOW(desktop), 0, 0);
     
     atom = gdk_atom_intern("_NET_WM_WINDOW_TYPE_DESKTOP", FALSE);
     gdk_property_change(GTK_WIDGET(desktop)->window,
@@ -771,12 +952,14 @@ xfce_desktop_realize(GtkWidget *widget)
     g_signal_connect(G_OBJECT(desktop->priv->gscreen), "size-changed",
             G_CALLBACK(screen_size_changed_cb), desktop);
     
-    gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSE);
+    gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSURE_MASK);
     g_signal_connect(G_OBJECT(desktop), "expose-event",
-            G_CALLBACK(desktop_expose_cb), NULL);
+            G_CALLBACK(xfce_desktop_expose), NULL);
     
     g_signal_connect(G_OBJECT(desktop), "style-set",
             G_CALLBACK(desktop_style_set_cb), NULL);
+    
+    xfce_desktop_setup_icons(desktop);
 }
 
 static void
@@ -787,12 +970,29 @@ xfce_desktop_unrealize(GtkWidget *widget)
     GdkWindow *groot;
     gchar property_name[128];
     GdkColor c;
+    GList *windows, *l;
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
     if(GTK_WIDGET_MAPPED(widget))
         gtk_widget_unmap(widget);
     GTK_WIDGET_UNSET_FLAGS(widget, GTK_MAPPED);
+    
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
+                                         G_CALLBACK(workspace_changed_cb),
+                                         desktop);
+    
+    windows = netk_screen_get_windows(desktop->priv->netk_screen);
+    for(l = windows; l; l = l->next) {
+        g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
+                                             G_CALLBACK(window_state_changed_cb),
+                                             desktop);
+    }
+    if(windows)
+        g_list_free(windows);
+    
+    g_hash_table_destroy(desktop->priv->icons);
+    desktop->priv->icons = NULL;
     
     gtk_container_forall(GTK_CONTAINER(widget),
                          (GtkCallback)gtk_widget_unrealize,
@@ -801,7 +1001,7 @@ xfce_desktop_unrealize(GtkWidget *widget)
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
             G_CALLBACK(desktop_style_set_cb), NULL);
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
-            G_CALLBACK(desktop_expose_cb), NULL);
+            G_CALLBACK(xfce_desktop_expose), NULL);
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),
             G_CALLBACK(screen_size_changed_cb), desktop);
     
@@ -847,6 +1047,87 @@ xfce_desktop_unrealize(GtkWidget *widget)
     GTK_WIDGET_UNSET_FLAGS(widget, GTK_REALIZED);
 }
 
+static gboolean
+xfce_desktop_expose(GtkWidget *w, GdkEventExpose *evt)
+{
+    TRACE("entering");
+    
+    if(evt->count != 0)
+        return FALSE;
+    
+    gdk_window_clear_area(w->window, evt->area.x, evt->area.y,
+            evt->area.width, evt->area.height);
+    
+    xfce_desktop_paint_icons(XFCE_DESKTOP(w), &evt->area);
+    
+    return TRUE;
+}
+
+typedef struct
+{
+    XfceDesktop *desktop;
+    GdkRectangle *area;
+} IconForeachData;
+
+static void
+check_icon_needs_repaint(gpointer key,
+                         gpointer value,
+                         gpointer user_data)
+{
+    XfceDesktopIcon *icon = (XfceDesktopIcon *)value;
+    IconForeachData *ifed = (IconForeachData *)user_data;
+    GdkRectangle dummy;
+    
+    if(!icon->extents_good
+       || gdk_rectangle_intersect(ifed->area, &icon->extents, &dummy))
+    {
+        xfce_desktop_icon_paint(icon, GTK_WIDGET(ifed->desktop));
+    }
+}
+
+static void
+xfce_desktop_paint_icons(XfceDesktop *desktop, GdkRectangle *area)
+{
+    IconForeachData ifed;
+    
+    TRACE("entering");
+    
+    ifed.desktop = desktop;
+    ifed.area = area;
+    g_hash_table_foreach(desktop->priv->icons, check_icon_needs_repaint, &ifed);
+}
+
+static void
+xfce_desktop_setup_icons(XfceDesktop *desktop)
+{
+    GList *windows, *l;
+    
+    desktop->priv->icons = g_hash_table_new_full(g_direct_hash,
+                                                 g_direct_equal,
+                                                 NULL,
+                                                 (GDestroyNotify)xfce_desktop_icon_free);
+    
+    if(!desktop->priv->netk_screen) {
+        gint screen = gdk_screen_get_number(desktop->priv->gscreen);
+        desktop->priv->netk_screen = netk_screen_get(screen);
+    }
+    g_signal_connect(G_OBJECT(desktop->priv->netk_screen),
+                     "active-workspace-changed",
+                     G_CALLBACK(workspace_changed_cb), desktop);
+    
+    windows = netk_screen_get_windows(desktop->priv->netk_screen);
+    for(l = windows; l; l = l->next) {
+        NetkWindow *window = l->data;
+        
+        g_signal_connect(G_OBJECT(window), "state-changed",
+                         G_CALLBACK(window_state_changed_cb), desktop);
+        g_object_weak_ref(G_OBJECT(window), window_destroyed_cb, desktop);
+    }
+    
+    workspace_changed_cb(desktop->priv->netk_screen, desktop);
+}
+
+
 /* public api */
 
 /**
@@ -866,9 +1147,6 @@ xfce_desktop_new(GdkScreen *gscreen, McsClient *mcs_client)
     if(!gscreen)
         gscreen = gdk_display_get_default_screen(gdk_display_get_default());
     desktop->priv->gscreen = gscreen;
-    
-    gtk_window_set_screen(GTK_WINDOW(desktop), gscreen);
-    gtk_window_set_type_hint(GTK_WINDOW(desktop), GDK_WINDOW_TYPE_HINT_DESKTOP);
     
     desktop->priv->mcs_client = mcs_client;
         
