@@ -36,7 +36,7 @@ treeview_drag_data_get_cb (GtkWidget * widget, GdkDragContext * dc,
     GtkTreeRowReference *ref = g_object_get_data (G_OBJECT (dc), "gtk-tree-view-source-row");
     GtkTreePath *path_source = gtk_tree_row_reference_get_path (ref);
 
-    gtk_selection_data_set (data, gdk_atom_intern ("XFCE_MENU_ENTRY", FALSE), 8,  /* bits */
+    gtk_selection_data_set (data, gdk_atom_intern ("MENUEDITOR_ENTRY", FALSE), 8,  /* bits */
 			    (gpointer) &path_source, sizeof (path_source));
   }
 }
@@ -47,7 +47,7 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
                            guint x, guint y, GtkSelectionData * sd, guint info, guint t, gpointer user_data)
 {
   MenuEditor *me;
-  GtkTreePath *path_where_insert;
+  GtkTreePath *path_where_insert = NULL;
   GtkTreeViewDropPosition position;
   GtkTreeModel *model;
 
@@ -70,26 +70,22 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
   me = (MenuEditor *) user_data;
 
   g_return_if_fail (sd->data);
-  g_return_if_fail (gtk_tree_view_get_dest_row_at_pos (GTK_TREE_VIEW (widget), x, y, &path_where_insert, &position));
+  gtk_tree_view_get_dest_row_at_pos (GTK_TREE_VIEW (widget), x, y, &path_where_insert, &position);
 
   model = gtk_tree_view_get_model (GTK_TREE_VIEW (widget));
   if (!model) {
     g_warning ("unable to get the GtkTreeModel");
-    return;
+    goto cleanup;
   }
-
-  gtk_tree_model_get_iter (model, &iter_where_insert, path_where_insert);
   
-  if (sd->target == gdk_atom_intern ("XFCE_MENU_ENTRY", FALSE)) {
+  if (sd->target == gdk_atom_intern ("MENUEDITOR_ENTRY", FALSE)) {
     GtkTreePath *path_source;
     GtkTreeIter iter_source;
-  
     memcpy (&path_source, sd->data, sizeof (path_source));
     
     if (!path_source) {
       g_warning ("wrong path_source");
-      gtk_tree_path_free (path_source);
-      return;
+      goto cleanup;
     }
     
     gtk_tree_model_get_iter (model, &iter_source, path_source);
@@ -98,7 +94,6 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
 			COLUMN_COMMAND, &command, COLUMN_HIDDEN, &hidden,
 			COLUMN_TYPE, &type, COLUMN_OPTION_1, &option_1,
 			COLUMN_OPTION_2, &option_2, COLUMN_OPTION_3, &option_3, -1);
-
     gtk_tree_path_free (path_source);
   } else if (sd->target == gdk_atom_intern ("text/plain", FALSE)) {
     /* text/plain */
@@ -109,14 +104,13 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
     XfceDesktopEntry *de = NULL;
     const char *cat[] = { "Name", "Exec", "Icon" };
 
-
     if (g_str_has_prefix (sd->data, "file://"))
       buf = g_build_filename (&(sd->data)[7], NULL);
     else if (g_str_has_prefix (sd->data, "file:"))
       buf = g_build_filename (&(sd->data)[5], NULL);
     else
       buf = g_strdup (sd->data);
-    
+
     /* Remove \n at the end of filename (if present) */
     temp = strtok (buf, "\n");
     if (!temp)
@@ -130,13 +124,16 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
     de = xfce_desktop_entry_new (filename, cat, 3);
     g_free (filename);
 
-    g_return_if_fail (de);
+    if (!de) {
+      g_warning ("not valid desktop data");
+      goto cleanup;
+    }
 
-    g_return_if_fail (xfce_desktop_entry_get_string (de, "Name", TRUE, &temp));
+    xfce_desktop_entry_get_string (de, "Name", TRUE, &temp);
     name = g_markup_printf_escaped (NAME_FORMAT, temp);
     g_free (temp);
 
-    g_return_if_fail (xfce_desktop_entry_get_string (de, "Exec", TRUE, &temp));
+    xfce_desktop_entry_get_string (de, "Exec", TRUE, &temp);
     command = g_markup_printf_escaped (COMMAND_FORMAT, temp);
     g_free (temp);
 
@@ -158,13 +155,16 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
     gchar *temp = NULL;
 
     de = xfce_desktop_entry_new_from_data (sd->data, cat, 3);
-    g_return_if_fail (de);
+    if (!de) {
+      g_warning ("not valid desktop data");
+      goto cleanup;
+    }
 
-    g_return_if_fail (xfce_desktop_entry_get_string (de, "Name", TRUE, &temp));
+    xfce_desktop_entry_get_string (de, "Name", TRUE, &temp);
     name = g_markup_printf_escaped (NAME_FORMAT, temp);
     g_free (temp);
 
-    g_return_if_fail (xfce_desktop_entry_get_string (de, "Exec", TRUE, &temp));
+    xfce_desktop_entry_get_string (de, "Exec", TRUE, &temp);
     command = g_markup_printf_escaped (COMMAND_FORMAT, temp);
     g_free (temp);
 
@@ -179,9 +179,11 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
 
     option_2 = g_strdup ("false");
     option_3 = g_strdup ("false");
-  }
+  } else
+    goto cleanup;
 
   /* Insert in the tree */
+  gtk_tree_model_get_iter (model, &iter_where_insert, path_where_insert);
   switch (position){
   case GTK_TREE_VIEW_DROP_BEFORE:
     gtk_tree_store_insert_before (GTK_TREE_STORE (model), &iter_new, NULL, &iter_where_insert);
@@ -193,7 +195,7 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
     break;
   case GTK_TREE_VIEW_DROP_INTO_OR_BEFORE:
   case GTK_TREE_VIEW_DROP_INTO_OR_AFTER:
-    gtk_tree_model_get (model, &iter_where_insert, COLUMN_TYPE, &type_where_insert);
+    gtk_tree_model_get (model, &iter_where_insert, COLUMN_TYPE, &type_where_insert, -1);
     if (type_where_insert == MENU) {
       gtk_tree_store_prepend (GTK_TREE_STORE (model), &iter_new, &iter_where_insert);
       inserted = TRUE;
@@ -210,11 +212,10 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
 			COLUMN_OPTION_2, option_2, COLUMN_OPTION_3, option_3, -1);
 
     menueditor_menu_modified (me);
-    gtk_drag_finish (dc, TRUE, (dc->action == GDK_ACTION_MOVE), t);
-  } else 
-    gtk_drag_finish (dc, FALSE, (dc->action == GDK_ACTION_MOVE), t);
+  }
 
-
+ cleanup:
+  gtk_drag_finish (dc, inserted, (dc->action == GDK_ACTION_MOVE), t);
   if (G_IS_OBJECT (icon))
     g_object_unref (icon);
   g_free (name);
