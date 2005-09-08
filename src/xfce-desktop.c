@@ -92,6 +92,7 @@ typedef struct _XfceDesktopIcon
     GdkPixbuf *pix;
     gchar *label;
     GdkRectangle extents;
+    NetkWindow *window;
 } XfceDesktopIcon;
 
 #endif /* defined(ENABLE_WINDOW_ICONS) */
@@ -108,9 +109,11 @@ struct _XfceDesktopPriv
     
 #ifdef ENABLE_WINDOW_ICONS
     NetkScreen *netk_screen;
+    gint cur_ws_num;
     gint metric_index;
     guint16 nrows, ncols;
     GHashTable **icons;
+    XfceDesktopIcon **selected_icons;
     PangoLayout *playout;
 #endif
 };
@@ -120,6 +123,8 @@ static void xfce_desktop_icon_paint(XfceDesktop *desktop, XfceDesktopIcon *icon)
 static void xfce_desktop_icon_free(XfceDesktopIcon *icon);
 static void xfce_desktop_setup_icons(XfceDesktop *desktop);
 static void xfce_desktop_paint_icons(XfceDesktop *desktop, GdkRectangle *area);
+static gboolean xfce_desktop_button_press(GtkWidget *widget, GdkEventButton *evt, gpointer user_data);
+static gboolean xfce_desktop_button_release(GtkWidget *widget, GdkEventButton *evt, gpointer user_data);
 #endif
 
 static void xfce_desktop_class_init(XfceDesktopClass *klass);
@@ -127,7 +132,8 @@ static void xfce_desktop_init(XfceDesktop *desktop);
 static void xfce_desktop_finalize(GObject *object);
 static void xfce_desktop_realize(GtkWidget *widget);
 static void xfce_desktop_unrealize(GtkWidget *widget);
-static gboolean xfce_desktop_expose(GtkWidget *w, GdkEventExpose *evt);
+
+static gboolean xfce_desktop_expose(GtkWidget *w, GdkEventExpose *evt, gpointer user_data);
 
 static void load_initial_settings(XfceDesktop *desktop, McsClient *mcs_client);
 
@@ -155,7 +161,7 @@ xfce_desktop_icon_paint(XfceDesktop *desktop,
     gint pix_w, pix_h, pix_x, pix_y, text_x, text_y, text_w, text_h,
          cell_x, cell_y;
     PangoLayout *playout;
-    gint metric_index = desktop->priv->metric_index;
+    gint metric_index = desktop->priv->metric_index, state;
     GdkRectangle area;
     
     TRACE("entering");
@@ -209,10 +215,15 @@ xfce_desktop_icon_paint(XfceDesktop *desktop,
              icon_metrics[metric_index].spacing +
              4  /* extra border */;
     
+    if(desktop->priv->selected_icons[desktop->priv->cur_ws_num] == icon)
+        state = GTK_STATE_SELECTED;
+    else
+        state = GTK_STATE_NORMAL;
+    
     DBG("drawing pixbuf at (%d,%d)", pix_x, pix_y);
     
     gdk_pixbuf_render_to_drawable(icon->pix, GDK_DRAWABLE(widget->window),
-                                  widget->style->bg_gc[GTK_STATE_NORMAL],
+                                  widget->style->bg_gc[state],
                                   0, 0,
                                   pix_x, pix_y,
                                   pix_w, pix_h,
@@ -225,11 +236,11 @@ xfce_desktop_icon_paint(XfceDesktop *desktop,
     area.width = text_w + 8;
     area.height = text_h + 8;
     
-    gtk_paint_box(widget->style, widget->window, GTK_STATE_NORMAL,
+    gtk_paint_box(widget->style, widget->window, state,
                   GTK_SHADOW_IN, &area, widget, "background",
                   area.x, area.y, area.width, area.height);
     
-    gtk_paint_layout(widget->style, widget->window, GTK_STATE_NORMAL, FALSE,
+    gtk_paint_layout(widget->style, widget->window, state, FALSE,
                      &area, widget, "label", text_x, text_y, playout);
     
 #if 1 /* debug */
@@ -804,7 +815,7 @@ workspace_changed_cb(NetkScreen *netk_screen,
     
     /*netk_screen_force_update(desktop->priv->netk_screen);*/
     ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
-    n = netk_workspace_get_number(ws);
+    desktop->priv->cur_ws_num = n = netk_workspace_get_number(ws);
     if(!desktop->priv->icons[n]) {
         GList *windows, *l;
         
@@ -843,6 +854,7 @@ workspace_changed_cb(NetkScreen *netk_screen,
                     g_object_ref(G_OBJECT(icon->pix));
                 }
                 icon->label = g_strdup(netk_window_get_name(window));
+                icon->window = window;
                 g_hash_table_insert(desktop->priv->icons[n], window, icon);
                 /*xfce_desktop_icon_paint(icon, GTK_WIDGET(desktop));*/
                 
@@ -940,6 +952,14 @@ xfce_desktop_init(XfceDesktop *desktop)
     
     gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSURE_MASK);
     gtk_window_set_type_hint(GTK_WINDOW(desktop), GDK_WINDOW_TYPE_HINT_DESKTOP);
+    
+#ifdef ENABLE_WINDOW_ICONS
+    gtk_widget_add_events(GTK_WIDGET(desktop),
+                          GDK_BUTTON_PRESS_MASK|GDK_BUTTON_RELEASE_MASK);
+#else
+    /* if we don't have window icons, there's no reason to focus the desktop */
+    gtk_window_set_accept_focus(GTK_WINDOW(desktop), FALSE);
+#endif
 }
 
 static void
@@ -1054,6 +1074,13 @@ xfce_desktop_unrealize(GtkWidget *widget)
     GTK_WIDGET_UNSET_FLAGS(widget, GTK_MAPPED);
     
 #ifdef ENABLE_WINDOW_ICONS
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
+                                         G_CALLBACK(xfce_desktop_button_press),
+                                         NULL);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
+                                         G_CALLBACK(xfce_desktop_button_release),
+                                         NULL);
+    
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
                                          G_CALLBACK(workspace_changed_cb),
                                          desktop);
@@ -1074,6 +1101,9 @@ xfce_desktop_unrealize(GtkWidget *widget)
     }
     g_free(desktop->priv->icons);
     desktop->priv->icons = NULL;
+    
+    g_free(desktop->priv->selected_icons);
+    desktop->priv->selected_icons = NULL;
     
     g_object_unref(G_OBJECT(desktop->priv->playout));
     desktop->priv->playout = NULL;
@@ -1132,8 +1162,109 @@ xfce_desktop_unrealize(GtkWidget *widget)
     GTK_WIDGET_UNSET_FLAGS(widget, GTK_REALIZED);
 }
 
+typedef struct
+{
+    XfceDesktop *desktop;
+    gpointer data;
+} IconForeachData;
+
+static inline gboolean
+xfce_desktop_rectangle_contains_point(GdkRectangle *rect, gint x, gint y)
+{
+    if(x > rect->x + rect->width
+            || x < rect->x
+            || y > rect->y + rect->height
+            || y < rect->y)
+    {
+        return FALSE;
+    }
+    
+    return TRUE;
+}
+
+static void
+check_icon_double_clicked(gpointer key,
+                          gpointer value,
+                          gpointer user_data)
+{
+    XfceDesktopIcon *icon = (XfceDesktopIcon *)value;
+    IconForeachData *ifed = (IconForeachData *)user_data;
+    GdkEventButton *evt = ifed->data;
+    
+    DBG("checking for double click on '%s'", icon->label);
+    
+    if(xfce_desktop_rectangle_contains_point(&icon->extents, evt->x, evt->y))
+        netk_window_activate(icon->window);
+}
+
+static void
+check_icon_clicked(gpointer key,
+                   gpointer value,
+                   gpointer user_data)
+{
+    XfceDesktopIcon *icon = (XfceDesktopIcon *)value;
+    IconForeachData *ifed = (IconForeachData *)user_data;
+    XfceDesktopPriv *priv = ifed->desktop->priv;
+    GdkEventButton *evt = ifed->data;
+    
+    DBG("checking for click on '%s'", icon->label);
+    
+    if(!xfce_desktop_rectangle_contains_point(&icon->extents, evt->x, evt->y))
+        return;
+    
+    /* check old selected icon, paint it as normal */
+    if(priv->selected_icons[priv->cur_ws_num]) {
+        XfceDesktopIcon *old_sel = priv->selected_icons[priv->cur_ws_num];
+        priv->selected_icons[priv->cur_ws_num] = NULL;
+        xfce_desktop_icon_paint(ifed->desktop, old_sel);
+    }
+    
+    priv->selected_icons[priv->cur_ws_num] = icon;
+    xfce_desktop_icon_paint(ifed->desktop, icon);
+}
+
 static gboolean
-xfce_desktop_expose(GtkWidget *w, GdkEventExpose *evt)
+xfce_desktop_button_press(GtkWidget *widget,
+                          GdkEventButton *evt,
+                          gpointer user_data)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(widget);
+    IconForeachData ifed;
+    
+    TRACE("entering");
+    
+    if(evt->type == GDK_BUTTON_PRESS) {
+        g_return_val_if_fail(desktop->priv->icons[desktop->priv->cur_ws_num], FALSE);
+        
+        ifed.desktop = desktop;
+        ifed.data = evt;
+        g_hash_table_foreach(desktop->priv->icons[desktop->priv->cur_ws_num],
+                             check_icon_clicked, &ifed);
+    } else if(evt->type == GDK_2BUTTON_PRESS) {
+        g_return_val_if_fail(desktop->priv->icons[desktop->priv->cur_ws_num], FALSE);
+        
+        ifed.desktop = desktop;
+        ifed.data = evt;
+        g_hash_table_foreach(desktop->priv->icons[desktop->priv->cur_ws_num],
+                             check_icon_double_clicked, &ifed);
+    }
+    
+    return FALSE;
+}
+
+static gboolean
+xfce_desktop_button_release(GtkWidget *widget,
+                            GdkEventButton *evt,
+                            gpointer user_data)
+{
+    
+    return FALSE;
+}
+
+static gboolean
+xfce_desktop_expose(GtkWidget *w,
+                    GdkEventExpose *evt,
+                    gpointer user_data)
 {
     TRACE("entering");
     
@@ -1152,12 +1283,6 @@ xfce_desktop_expose(GtkWidget *w, GdkEventExpose *evt)
 
 #ifdef ENABLE_WINDOW_ICONS
 
-typedef struct
-{
-    XfceDesktop *desktop;
-    GdkRectangle *area;
-} IconForeachData;
-
 static void
 check_icon_needs_repaint(gpointer key,
                          gpointer value,
@@ -1165,10 +1290,10 @@ check_icon_needs_repaint(gpointer key,
 {
     XfceDesktopIcon *icon = (XfceDesktopIcon *)value;
     IconForeachData *ifed = (IconForeachData *)user_data;
-    GdkRectangle dummy;
+    GdkRectangle *area = ifed->data, dummy;
     
     if(icon->extents.width == 0 || icon->extents.height == 0
-       || gdk_rectangle_intersect(ifed->area, &icon->extents, &dummy))
+       || gdk_rectangle_intersect(area, &icon->extents, &dummy))
     {
         xfce_desktop_icon_paint(ifed->desktop, icon);
     }
@@ -1177,20 +1302,16 @@ check_icon_needs_repaint(gpointer key,
 static void
 xfce_desktop_paint_icons(XfceDesktop *desktop, GdkRectangle *area)
 {
-    NetkWorkspace *ws;
-    gint n;
     IconForeachData ifed;
     
     TRACE("entering");
     
-    ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
-    n = netk_workspace_get_number(ws);
-    
-    g_return_if_fail(desktop->priv->icons[n]);
+    g_return_if_fail(desktop->priv->icons[desktop->priv->cur_ws_num]);
     
     ifed.desktop = desktop;
-    ifed.area = area;
-    g_hash_table_foreach(desktop->priv->icons[n], check_icon_needs_repaint, &ifed);
+    ifed.data = area;
+    g_hash_table_foreach(desktop->priv->icons[desktop->priv->cur_ws_num],
+                         check_icon_needs_repaint, &ifed);
 }
 
 static void
@@ -1227,6 +1348,7 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
     
     nws = netk_screen_get_workspace_count(desktop->priv->netk_screen);
     desktop->priv->icons = g_new0(GHashTable *, nws);
+    desktop->priv->selected_icons = g_new0(XfceDesktopIcon *, nws);
     
     windows = netk_screen_get_windows(desktop->priv->netk_screen);
     for(l = windows; l; l = l->next) {
@@ -1238,6 +1360,11 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
     }
     
     workspace_changed_cb(desktop->priv->netk_screen, desktop);
+    
+    g_signal_connect(G_OBJECT(desktop), "button-press-event",
+                     G_CALLBACK(xfce_desktop_button_press), NULL);
+    g_signal_connect(G_OBJECT(desktop), "button-release-event",
+                     G_CALLBACK(xfce_desktop_button_release), NULL);
 }
 
 #endif  /* defined(ENABLE_WINDOW_ICONS) */

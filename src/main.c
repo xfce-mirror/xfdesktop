@@ -159,14 +159,13 @@ button_cb(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
             && (state & GDK_CONTROL_MASK)))
     {
         popup_windowlist(gscreen, button, evt->time);
-    } else if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK)))
+        return TRUE;
+    } else if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK))) {
         popup_desktop_menu(gscreen, button, evt->time);
-    else {
-        /* forward unused events to the root window, i.e. the window manager */
-        event_forward_to_rootwin(gtk_widget_get_screen(w), (GdkEvent*)evt);
+        return TRUE;
     }
     
-    return TRUE;
+    return FALSE;
 }
 
 static gboolean 
