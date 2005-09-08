@@ -92,6 +92,18 @@ else
 fi
 AM_CONDITIONAL([BUILD_PANEL_PLUGIN], [test "x$build_panel_plugin" = "xyes"])
 
+AC_ARG_ENABLE([window-icons],
+        [AC_HELP_STRING([--disable-window-icons],
+                [Do not display minimized icons on the desktop (default=enabled)])],
+        [ac_cv_enable_window_icons=$enableval],
+        [ac_cv_enable_window_icons=yes])
+if test "x$ac_cv_enable_window_icons" = "xno"; then
+    enable_window_icons="no"
+else
+    enable_window_icons="yes"
+    AC_DEFINE([ENABLE_WINDOW_ICONS], [1], [Set if minimized window icon support is enabled])
+fi
+
 dnl check for debugging support
 BM_DEBUG_SUPPORT
 
@@ -122,4 +134,5 @@ echo "Build Configuration:"
 echo "  Build menu editor:                            $build_menueditor"
 echo "  Build desktop menu module:                    $build_desktop_menu"
 echo "  Build desktop menu panel plugin:              $build_panel_plugin"
+echo "  Build support for minimized window icons:     $enable_window_icons"
 echo
