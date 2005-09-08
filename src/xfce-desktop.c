@@ -207,7 +207,7 @@ xfce_desktop_icon_paint(XfceDesktop *desktop,
              2 * icon_metrics[metric_index].cell_padding +
              pix_h +
              icon_metrics[metric_index].spacing +
-             2  /* extra border */;
+             4  /* extra border */;
     
     DBG("drawing pixbuf at (%d,%d)", pix_x, pix_y);
     
@@ -242,16 +242,10 @@ xfce_desktop_icon_paint(XfceDesktop *desktop,
                        icon_metrics[metric_index].cell_size);
 #endif
     
-    icon->extents.x = cell_x - 2;
-    icon->extents.y = cell_y +
-                      2 * icon_metrics[metric_index].cell_padding;
-    icon->extents.width = icon_metrics[metric_index].cell_size -
-                          2 * icon_metrics[metric_index].cell_padding +
-                          6;
-    icon->extents.height = pix_h +
-                           icon_metrics[metric_index].spacing +
-                           text_h +
-                           4;
+    icon->extents.x = (pix_w > text_w + 8 ? pix_x : text_x - 4);
+    icon->extents.y = cell_y + (2 * icon_metrics[metric_index].cell_padding);
+    icon->extents.width = (pix_w > text_w + 8 ? pix_w : text_w + 8);
+    icon->extents.height = (text_y + text_h + 4) - icon->extents.y;
 }
 
 #endif /* defined(ENABLE_WINDOW_ICONS) */
