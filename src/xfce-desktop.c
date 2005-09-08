@@ -103,6 +103,12 @@ typedef struct _XfceDesktopIconWorkspace
     guint16 lowest_free_col; 
 } XfceDesktopIconWorkspace;
 
+typedef struct
+{
+    XfceDesktop *desktop;
+    gpointer data;
+} IconForeachData;
+
 #endif /* defined(ENABLE_WINDOW_ICONS) */
 
 struct _XfceDesktopPriv
@@ -174,6 +180,18 @@ xfce_desktop_icon_paint(XfceDesktop *desktop,
     
     TRACE("entering");
     
+    /* FIXME: this is really only needed when going from selected <-> not
+     * selected.  should fix for optimisation. */
+    if(icon->extents.width > 0 && icon->extents.height > 0) {
+        gdk_window_clear_area(widget->window, icon->extents.x, icon->extents.y,
+                              icon->extents.width, icon->extents.height);
+    }
+    
+    if(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->selected_icon == icon)
+        state = GTK_STATE_SELECTED;
+    else
+        state = GTK_STATE_NORMAL;
+    
     pix_w = gdk_pixbuf_get_width(icon->pix);
     pix_h = gdk_pixbuf_get_height(icon->pix);
     
@@ -183,11 +201,19 @@ xfce_desktop_icon_paint(XfceDesktop *desktop,
     pango_layout_set_text(playout, icon->label, -1);
     pango_layout_get_size(playout, &text_w, &text_h);
     if(text_w > icon_metrics[metric_index].text_width*PANGO_SCALE) {
-        pango_layout_set_width(playout,
-                               icon_metrics[metric_index].text_width*PANGO_SCALE);
+        gint width = icon_metrics[metric_index].text_width * PANGO_SCALE;
+        if(state == GTK_STATE_NORMAL) {
+            pango_layout_set_width(playout, width);
 #if GTK_CHECK_VERSION(2, 6, 0)  /* can't find a way to get pango version info */
-        pango_layout_set_ellipsize(playout, PANGO_ELLIPSIZE_END);
+            pango_layout_set_ellipsize(playout, PANGO_ELLIPSIZE_END);
 #endif
+        } else {
+            pango_layout_set_width(playout, width);
+            pango_layout_set_wrap(playout, PANGO_WRAP_WORD_CHAR);
+#if GTK_CHECK_VERSION(2, 6, 0)  /* can't find a way to get pango version info */
+            pango_layout_set_ellipsize(playout, PANGO_ELLIPSIZE_NONE);
+#endif
+        }
     }
     pango_layout_get_pixel_size(playout, &text_w, &text_h);
     
@@ -223,11 +249,6 @@ xfce_desktop_icon_paint(XfceDesktop *desktop,
              icon_metrics[metric_index].spacing +
              4  /* extra border */;
     
-    if(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->selected_icon == icon)
-        state = GTK_STATE_SELECTED;
-    else
-        state = GTK_STATE_NORMAL;
-    
     DBG("drawing pixbuf at (%d,%d)", pix_x, pix_y);
     
     gdk_pixbuf_render_to_drawable(icon->pix, GDK_DRAWABLE(widget->window),
@@ -251,7 +272,7 @@ xfce_desktop_icon_paint(XfceDesktop *desktop,
     gtk_paint_layout(widget->style, widget->window, state, FALSE,
                      &area, widget, "label", text_x, text_y, playout);
     
-#if 1 /* debug */
+#if 0 /* debug */
     gdk_draw_rectangle(GDK_DRAWABLE(widget->window),
                        widget->style->white_gc,
                        FALSE,
@@ -888,11 +909,32 @@ workspace_changed_cb(NetkScreen *netk_screen,
 }
 
 static gboolean
+check_position_really_free(gpointer key,
+                           gpointer value,
+                           gpointer user_data)
+{
+    IconForeachData *ifed = user_data;
+    XfceDesktopPriv *priv = ifed->desktop->priv;
+    guint idx = GPOINTER_TO_UINT(ifed->data);
+    XfceDesktopIcon *icon = value;
+    
+    if(icon->row == priv->icon_workspaces[idx]->lowest_free_row
+       && icon->col == priv->icon_workspaces[idx]->lowest_free_col)
+    {
+        return FALSE;
+    }
+    
+    return TRUE;
+}
+
+static gboolean
 get_next_free_position(XfceDesktop *desktop,
                        guint idx,
                        guint16 *row,
                        guint16 *col)
 {
+    IconForeachData ifed;
+    
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop) && row && col, FALSE);
     
     if(desktop->priv->icon_workspaces[idx]->lowest_free_col >= desktop->priv->ncols
@@ -905,15 +947,29 @@ get_next_free_position(XfceDesktop *desktop,
     *row = desktop->priv->icon_workspaces[idx]->lowest_free_row;
     *col = desktop->priv->icon_workspaces[idx]->lowest_free_col;
     
-    desktop->priv->icon_workspaces[idx]->lowest_free_row++;
-    if(desktop->priv->icon_workspaces[idx]->lowest_free_row >= desktop->priv->nrows) {
-        desktop->priv->icon_workspaces[idx]->lowest_free_row = 0;
-        desktop->priv->icon_workspaces[idx]->lowest_free_col++;
+    /* FIXME: this is horribly horribly slow and inefficient.  however, the only
+     * alternatives i can come up right now with waste a lot of RAM. */
+    ifed.desktop = desktop;
+    ifed.data = GUINT_TO_POINTER(idx);
+    for(;;) {            
+        desktop->priv->icon_workspaces[idx]->lowest_free_row++;
+        if(desktop->priv->icon_workspaces[idx]->lowest_free_row >= desktop->priv->nrows) {
+            desktop->priv->icon_workspaces[idx]->lowest_free_row = 0;
+            desktop->priv->icon_workspaces[idx]->lowest_free_col++;
+            if(desktop->priv->icon_workspaces[idx]->lowest_free_col >= desktop->priv->ncols)
+                break;
+        }
+        
+        if(g_hash_table_size(desktop->priv->icon_workspaces[idx]->icons) == 0
+           || g_hash_table_find(desktop->priv->icon_workspaces[idx]->icons,
+                                check_position_really_free, &ifed))
+        {
+            break;
+        }
     }
     
     return TRUE;
 }
-
 
 static void
 window_state_changed_cb(NetkWindow *window,
@@ -981,6 +1037,7 @@ window_state_changed_cb(NetkWindow *window,
                 g_free(icon);
                 continue;
             }
+            
             icon->pix = netk_window_get_icon(window);
             if(icon->pix) {
                 if(gdk_pixbuf_get_width(icon->pix) != icon_metrics[metric_index].icon_size) {
@@ -1311,12 +1368,6 @@ xfce_desktop_unrealize(GtkWidget *widget)
     GTK_WIDGET_UNSET_FLAGS(widget, GTK_REALIZED);
 }
 
-typedef struct
-{
-    XfceDesktop *desktop;
-    gpointer data;
-} IconForeachData;
-
 static inline gboolean
 xfce_desktop_rectangle_contains_point(GdkRectangle *rect, gint x, gint y)
 {
@@ -1331,7 +1382,7 @@ xfce_desktop_rectangle_contains_point(GdkRectangle *rect, gint x, gint y)
     return TRUE;
 }
 
-static void
+static gboolean
 check_icon_double_clicked(gpointer key,
                           gpointer value,
                           gpointer user_data)
@@ -1342,11 +1393,15 @@ check_icon_double_clicked(gpointer key,
     
     DBG("checking for double click on '%s'", icon->label);
     
-    if(xfce_desktop_rectangle_contains_point(&icon->extents, evt->x, evt->y))
+    if(xfce_desktop_rectangle_contains_point(&icon->extents, evt->x, evt->y)) {
         netk_window_activate(icon->window);
+        return TRUE;
+    }
+    
+    return FALSE;
 }
 
-static void
+static gboolean
 check_icon_clicked(gpointer key,
                    gpointer value,
                    gpointer user_data)
@@ -1359,7 +1414,7 @@ check_icon_clicked(gpointer key,
     DBG("checking for click on '%s'", icon->label);
     
     if(!xfce_desktop_rectangle_contains_point(&icon->extents, evt->x, evt->y))
-        return;
+        return FALSE;
     
     /* check old selected icon, paint it as normal */
     if(priv->icon_workspaces[priv->cur_ws_num]->selected_icon) {
@@ -1370,6 +1425,8 @@ check_icon_clicked(gpointer key,
     
     priv->icon_workspaces[priv->cur_ws_num]->selected_icon = icon;
     xfce_desktop_icon_paint(ifed->desktop, icon);
+    
+    return TRUE;
 }
 
 static gboolean
@@ -1388,16 +1445,16 @@ xfce_desktop_button_press(GtkWidget *widget,
         
         ifed.desktop = desktop;
         ifed.data = evt;
-        g_hash_table_foreach(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->icons,
-                             check_icon_clicked, &ifed);
+        g_hash_table_find(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->icons,
+                          check_icon_clicked, &ifed);
     } else if(evt->type == GDK_2BUTTON_PRESS) {
         g_return_val_if_fail(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->icons,
                              FALSE);
         
         ifed.desktop = desktop;
         ifed.data = evt;
-        g_hash_table_foreach(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->icons,
-                             check_icon_double_clicked, &ifed);
+        g_hash_table_find(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->icons,
+                          check_icon_double_clicked, &ifed);
     }
     
     return FALSE;
