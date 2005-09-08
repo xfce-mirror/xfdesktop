@@ -70,6 +70,19 @@
 #include "main.h"
 
 
+/********
+ * TODO *
+ ********
+ * + handle workspace add/delete (we crash right now)
+ * + handle window creation
+ * + screen size changes
+ * + theme/font changes
+ * + DnD to move stuff around
+ * + intermittently, de-iconifying a window will cause all icons to dissapear,
+ *   though they are still there and just don't redraw for some reason
+ */
+
+
 #ifdef ENABLE_WINDOW_ICONS
 
 static const struct
@@ -598,7 +611,7 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
     
 #ifdef ENABLE_WINDOW_ICONS
     
-    
+    /* TODO: make sure icons don't fall off the edge! */
     
 #endif
 }
@@ -830,6 +843,12 @@ desktop_style_set_cb(GtkWidget *w, GtkStyle *old, gpointer user_data)
         gdk_window_set_back_pixmap(w->window, desktop->priv->bg_pixmap, FALSE);
         gtk_widget_queue_draw(w);
     }
+    
+#ifdef ENABLE_WINDOW_ICONS
+    
+    /* TODO: see if the font has changed and redraw text */
+    
+#endif
 }
 
 #ifdef ENABLE_WINDOW_ICONS
@@ -854,13 +873,9 @@ workspace_changed_cb(NetkScreen *netk_screen,
                                   NULL,
                                   (GDestroyNotify)xfce_desktop_icon_free);
         
-        DBG("creating window list for ws %d", n);
-        
         windows = netk_screen_get_windows(desktop->priv->netk_screen);
         for(l = windows; l; l = l->next) {
             NetkWindow *window = l->data;
-            
-            DBG("checking window '%s'", netk_window_get_name(window));
             
             if((ws == netk_window_get_workspace(window)
                 || netk_window_is_pinned(window))
@@ -886,9 +901,6 @@ workspace_changed_cb(NetkScreen *netk_screen,
                 icon->window = window;
                 g_hash_table_insert(desktop->priv->icon_workspaces[n]->icons,
                                     window, icon);
-                /*xfce_desktop_icon_paint(icon, GTK_WIDGET(desktop));*/
-                
-                DBG("!!! created icon for '%s' at (%d,%d)", icon->label, icon->row, icon->col);
                 
                 cur_row++;
                 if(cur_row >= desktop->priv->nrows) {
@@ -1076,6 +1088,8 @@ window_state_changed_cb(NetkWindow *window,
                 
                 g_hash_table_remove(desktop->priv->icon_workspaces[i]->icons,
                                     window);
+                DBG("clearing %dx%d+%d+%d", area.width, area.height,
+                    area.x, area.y);
                 gdk_window_clear_area(GTK_WIDGET(desktop)->window,
                                       area.x, area.y, area.width, area.height);
                 
@@ -1368,6 +1382,8 @@ xfce_desktop_unrealize(GtkWidget *widget)
     GTK_WIDGET_UNSET_FLAGS(widget, GTK_REALIZED);
 }
 
+#ifdef ENABLE_WINDOW_ICONS
+
 static inline gboolean
 xfce_desktop_rectangle_contains_point(GdkRectangle *rect, gint x, gint y)
 {
@@ -1391,8 +1407,6 @@ check_icon_double_clicked(gpointer key,
     IconForeachData *ifed = (IconForeachData *)user_data;
     GdkEventButton *evt = ifed->data;
     
-    DBG("checking for double click on '%s'", icon->label);
-    
     if(xfce_desktop_rectangle_contains_point(&icon->extents, evt->x, evt->y)) {
         netk_window_activate(icon->window);
         return TRUE;
@@ -1410,8 +1424,6 @@ check_icon_clicked(gpointer key,
     IconForeachData *ifed = (IconForeachData *)user_data;
     XfceDesktopPriv *priv = ifed->desktop->priv;
     GdkEventButton *evt = ifed->data;
-    
-    DBG("checking for click on '%s'", icon->label);
     
     if(!xfce_desktop_rectangle_contains_point(&icon->extents, evt->x, evt->y))
         return FALSE;
@@ -1468,6 +1480,8 @@ xfce_desktop_button_release(GtkWidget *widget,
     
     return FALSE;
 }
+
+#endif
 
 static gboolean
 xfce_desktop_expose(GtkWidget *w,
