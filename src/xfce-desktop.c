@@ -921,6 +921,38 @@ check_position_really_free(gpointer key,
                            gpointer value,
                            gpointer user_data)
 {
+    XfceDesktopIcon *icon = value;
+    guint32 pos = GPOINTER_TO_UINT(user_data);
+    
+    if(icon->row == ((pos >> 16) & 0xffff) && icon->col == (pos & 0xffff))
+        return TRUE;
+    else
+        return FALSE;
+}
+
+static gboolean
+grid_is_free_position(XfceDesktop *desktop,
+                      gint idx,
+                      guint16 row,
+                      guint16 col)
+{
+    /* this is somewhat evil, probably. */
+    guint32 pos = ((row << 16) & 0xffff0000) | (col & 0xffff);
+    
+    if(g_hash_table_find(desktop->priv->icon_workspaces[idx]->icons,
+                         check_position_really_free,
+                         GUINT_TO_POINTER(pos)))
+    {
+        return FALSE;
+    } else
+        return TRUE;
+}
+/*
+static gboolean
+check_lowest_position_really_free(gpointer key,
+                                  gpointer value,
+                                  gpointer user_data)
+{
     IconForeachData *ifed = user_data;
     XfceDesktopPriv *priv = ifed->desktop->priv;
     guint idx = GPOINTER_TO_UINT(ifed->data);
@@ -930,9 +962,34 @@ check_position_really_free(gpointer key,
        && icon->col == priv->icon_workspaces[idx]->lowest_free_col)
     {
         return TRUE;
+    } else
+        return FALSE;
+}
+*/
+
+static void
+determine_next_free_position(XfceDesktop *desktop,
+                             guint idx)
+{
+    /* FIXME: this is horribly horribly slow and inefficient.  however, the only
+     * alternatives i can come up right now with waste a lot of RAM. */
+    for(;;) {            
+        desktop->priv->icon_workspaces[idx]->lowest_free_row++;
+        if(desktop->priv->icon_workspaces[idx]->lowest_free_row >= desktop->priv->nrows) {
+            desktop->priv->icon_workspaces[idx]->lowest_free_row = 0;
+            desktop->priv->icon_workspaces[idx]->lowest_free_col++;
+            if(desktop->priv->icon_workspaces[idx]->lowest_free_col >= desktop->priv->ncols)
+                break;
+        }
+        
+        if(g_hash_table_size(desktop->priv->icon_workspaces[idx]->icons) == 0
+           || grid_is_free_position(desktop, idx,
+                                    desktop->priv->icon_workspaces[idx]->lowest_free_row,
+                                    desktop->priv->icon_workspaces[idx]->lowest_free_col))
+        {
+            break;
+        }
     }
-    
-    return FALSE;
 }
 
 static gboolean
@@ -941,8 +998,6 @@ get_next_free_position(XfceDesktop *desktop,
                        guint16 *row,
                        guint16 *col)
 {
-    IconForeachData ifed;
-    
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop) && row && col, FALSE);
     
     if(desktop->priv->icon_workspaces[idx]->lowest_free_col >= desktop->priv->ncols
@@ -954,27 +1009,6 @@ get_next_free_position(XfceDesktop *desktop,
     
     *row = desktop->priv->icon_workspaces[idx]->lowest_free_row;
     *col = desktop->priv->icon_workspaces[idx]->lowest_free_col;
-    
-    /* FIXME: this is horribly horribly slow and inefficient.  however, the only
-     * alternatives i can come up right now with waste a lot of RAM. */
-    ifed.desktop = desktop;
-    ifed.data = GUINT_TO_POINTER(idx);
-    for(;;) {            
-        desktop->priv->icon_workspaces[idx]->lowest_free_row++;
-        if(desktop->priv->icon_workspaces[idx]->lowest_free_row >= desktop->priv->nrows) {
-            desktop->priv->icon_workspaces[idx]->lowest_free_row = 0;
-            desktop->priv->icon_workspaces[idx]->lowest_free_col++;
-            if(desktop->priv->icon_workspaces[idx]->lowest_free_col >= desktop->priv->ncols)
-                break;
-        }
-        
-        if(g_hash_table_size(desktop->priv->icon_workspaces[idx]->icons) == 0
-           || !g_hash_table_find(desktop->priv->icon_workspaces[idx]->icons,
-                                 check_position_really_free, &ifed))
-        {
-            break;
-        }
-    }
     
     return TRUE;
 }
@@ -990,6 +1024,7 @@ window_state_changed_cb(NetkWindow *window,
     gint ws_num = -1, active_ws_num, i, max_i;
     gboolean is_add = FALSE;
     XfceDesktopIcon *icon;
+    gchar data_name[256];
     
     TRACE("entering");
     
@@ -1032,6 +1067,8 @@ window_state_changed_cb(NetkWindow *window,
     
     if(is_add) {
         gint metric_index = desktop->priv->metric_index;
+        guint16 old_row, old_col;
+        gboolean got_pos = FALSE;
         
         for(; i < max_i; i++) {
             if(!desktop->priv->icon_workspaces[i]->icons
@@ -1042,10 +1079,38 @@ window_state_changed_cb(NetkWindow *window,
             }
             
             icon = g_new0(XfceDesktopIcon, 1);
-            if(!get_next_free_position(desktop, i, &icon->row, &icon->col)) {
-                g_free(icon);
-                continue;
+            
+            /* check for availability of old position (if any) */
+            g_snprintf(data_name, 256, "xfdesktop-last-row-%d", i);
+            old_row = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
+                                                         data_name));
+            g_snprintf(data_name, 256, "xfdesktop-last-col-%d", i);
+            old_col = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
+                                                         data_name));
+            if(old_row && old_col) {
+                icon->row = old_row - 1;
+                icon->col = old_col - 1;
+            
+                if(grid_is_free_position(desktop, i, icon->row, icon->col)) {
+                    DBG("old position (%d,%d) is free", icon->row, icon->col);
+                    got_pos = TRUE;
+                }
             }
+            
+            if(!got_pos) {
+               if(!get_next_free_position(desktop, i, &icon->row, &icon->col)) {
+                   g_free(icon);
+                   continue;
+               } else {
+                   DBG("old position didn't exist or isn't free, got (%d,%d) instead", icon->row, icon->col);
+               }
+            }
+
+            determine_next_free_position(desktop, i);
+            
+            DBG("set next free position to (%d,%d)",
+                desktop->priv->icon_workspaces[i]->lowest_free_row,
+                desktop->priv->icon_workspaces[i]->lowest_free_col);
             
             icon->pix = netk_window_get_icon(window);
             if(icon->pix) {
@@ -1093,6 +1158,14 @@ window_state_changed_cb(NetkWindow *window,
                                           area.x, area.y,
                                           area.width, area.height);
                 }
+                
+                /* save the old positions for later */
+                g_snprintf(data_name, 256, "xfdesktop-last-row-%d", i);
+                g_object_set_data(G_OBJECT(window), data_name,
+                                  GUINT_TO_POINTER(row+1));
+                g_snprintf(data_name, 256, "xfdesktop-last-col-%d", i);
+                g_object_set_data(G_OBJECT(window), data_name,
+                                  GUINT_TO_POINTER(col+1));
                 
                 if((desktop->priv->icon_workspaces[i]->lowest_free_col == col
                     && row < desktop->priv->icon_workspaces[i]->lowest_free_row)
