@@ -264,12 +264,9 @@ xfce_desktop_icon_paint(XfceDesktop *desktop,
     
     DBG("drawing pixbuf at (%d,%d)", pix_x, pix_y);
     
-    gdk_pixbuf_render_to_drawable(icon->pix, GDK_DRAWABLE(widget->window),
-                                  widget->style->bg_gc[state],
-                                  0, 0,
-                                  pix_x, pix_y,
-                                  pix_w, pix_h,
-                                  GDK_RGB_DITHER_NONE, 0, 0);
+    gdk_draw_pixbuf(GDK_DRAWABLE(widget->window), widget->style->black_gc,
+                    icon->pix, 0, 0, pix_x, pix_y, pix_w, pix_h,
+                    GDK_RGB_DITHER_NORMAL, 0, 0);
     
     DBG("painting layout: area: %dx%d+%d+%d", text_w, text_h, text_x, text_y);
     
@@ -861,7 +858,6 @@ workspace_changed_cb(NetkScreen *netk_screen,
     gint cur_col = 0, cur_row = 0, metric_index = desktop->priv->metric_index, n;
     NetkWorkspace *ws;
     
-    /*netk_screen_force_update(desktop->priv->netk_screen);*/
     ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
     desktop->priv->cur_ws_num = n = netk_workspace_get_number(ws);
     if(!desktop->priv->icon_workspaces[n]->icons) {
@@ -991,9 +987,11 @@ window_state_changed_cb(NetkWindow *window,
 {
     XfceDesktop *desktop = user_data;
     NetkWorkspace *ws, *active_ws;
-    gint ws_num, active_ws_num, i, max_i;
+    gint ws_num = -1, active_ws_num, i, max_i;
     gboolean is_add = FALSE;
     XfceDesktopIcon *icon;
+    
+    TRACE("entering");
     
     if(!(changed_mask & (NETK_WINDOW_STATE_MINIMIZED |
                          NETK_WINDOW_STATE_SKIP_TASKLIST |
@@ -1002,11 +1000,9 @@ window_state_changed_cb(NetkWindow *window,
         return;
     }
     
-    /* this is lame, but netk_window_get_workspace() returns NULL otherwise */
-    netk_screen_force_update(desktop->priv->netk_screen);
-    
     ws = netk_window_get_workspace(window);
-    ws_num = netk_workspace_get_number(ws);
+    if(ws)
+        ws_num = netk_workspace_get_number(ws);
     active_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
     active_ws_num = netk_workspace_get_number(active_ws);
     
@@ -1029,6 +1025,7 @@ window_state_changed_cb(NetkWindow *window,
         i = 0;
         max_i = netk_screen_get_workspace_count(desktop->priv->netk_screen);
     } else {
+        g_return_if_fail(ws_num != -1);
         i = ws_num;
         max_i = i + 1;
     }
@@ -1088,10 +1085,14 @@ window_state_changed_cb(NetkWindow *window,
                 
                 g_hash_table_remove(desktop->priv->icon_workspaces[i]->icons,
                                     window);
-                DBG("clearing %dx%d+%d+%d", area.width, area.height,
-                    area.x, area.y);
-                gdk_window_clear_area(GTK_WIDGET(desktop)->window,
-                                      area.x, area.y, area.width, area.height);
+                
+                if(i == active_ws_num) {
+                    DBG("clearing %dx%d+%d+%d", area.width, area.height,
+                        area.x, area.y);
+                    gdk_window_clear_area(GTK_WIDGET(desktop)->window,
+                                          area.x, area.y,
+                                          area.width, area.height);
+                }
                 
                 if((desktop->priv->icon_workspaces[i]->lowest_free_col == col
                     && row < desktop->priv->icon_workspaces[i]->lowest_free_row)
@@ -1448,24 +1449,33 @@ xfce_desktop_button_press(GtkWidget *widget,
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
     IconForeachData ifed;
+    gint cur_ws_num = desktop->priv->cur_ws_num;
     
-    TRACE("entering");
+    TRACE("entering, type is %s", evt->type == GDK_BUTTON_PRESS ? "GDK_BUTTON_PRESS" : (evt->type == GDK_2BUTTON_PRESS ? "GDK_2BUTTON_PRESS" : "i dunno"));
     
     if(evt->type == GDK_BUTTON_PRESS) {
-        g_return_val_if_fail(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->icons,
+        g_return_val_if_fail(desktop->priv->icon_workspaces[cur_ws_num]->icons,
                              FALSE);
         
         ifed.desktop = desktop;
         ifed.data = evt;
-        g_hash_table_find(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->icons,
-                          check_icon_clicked, &ifed);
+        if(!g_hash_table_find(desktop->priv->icon_workspaces[cur_ws_num]->icons,
+                              check_icon_clicked, &ifed))
+        {
+            /* unselect previously selected icon if we didn't click one */
+            XfceDesktopIcon *old_sel = desktop->priv->icon_workspaces[cur_ws_num]->selected_icon;
+            if(old_sel) {
+                desktop->priv->icon_workspaces[cur_ws_num]->selected_icon = NULL;
+                xfce_desktop_icon_paint(desktop, old_sel);
+            }
+        }
     } else if(evt->type == GDK_2BUTTON_PRESS) {
-        g_return_val_if_fail(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->icons,
+        g_return_val_if_fail(desktop->priv->icon_workspaces[cur_ws_num]->icons,
                              FALSE);
         
         ifed.desktop = desktop;
         ifed.data = evt;
-        g_hash_table_find(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->icons,
+        g_hash_table_find(desktop->priv->icon_workspaces[cur_ws_num]->icons,
                           check_icon_double_clicked, &ifed);
     }
     
