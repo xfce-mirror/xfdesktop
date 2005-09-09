@@ -1,20 +1,21 @@
-# Brazilian Portugues translation of xfdesktop
+# Brazilian Portugues translation of xfdesktop package.
 # Copyright (C) 2003-2005 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Antonio S. de A. Terceiro <asaterceiro@inf.ufrgs.br>, 2004.
-# Previous translation by Felix da Silva Costa <felix@online.eti.br>
+# Felix Costa <felix@online.eti.br>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-05-10 22:18+0200\n"
-"PO-Revision-Date: 2005-08-20 16:25+0900\n"
-"Last-Translator: Antonio S. de A. Terceiro <asaterceiro@inf.ufrgs.br>\n"
-"Language-Team: Brazilian Portugues <xfce-i18n@xfce.org>\n"
+"PO-Revision-Date: 2005-09-09 19:31+0900\n"
+"Last-Translator: Felix Costa <felix@online.eti.br>\n"
+"Language-Team: Brazilian Portuguese <felix@online.eti.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
@@ -83,7 +84,7 @@ msgstr "Ícone:"
 #. Start Notify check button
 #: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:275
 msgid "Use startup _notification"
-msgstr "Use _notificação na inicialização"
+msgstr "Usar _notificação na inicialização"
 
 #. Run in terminal check button
 #: menueditor/add_dialog.c:240 menueditor/edit_dialog.c:276
@@ -244,15 +245,13 @@ msgid "Save as..."
 msgstr "Salvar como..."
 
 #: menueditor/menueditor.c:1025
-#, fuzzy
 msgid "Edit"
-msgstr "Editar"
+msgstr "Editar "
 
 #. File menu
 #: menueditor/menueditor.c:1225
-#, fuzzy
 msgid "_File"
-msgstr "_Arquivo"
+msgstr "_Arquivo "
 
 #: menueditor/menueditor.c:1234
 msgid "Open default menu"
@@ -317,9 +316,8 @@ msgid "Expand the tree"
 msgstr "Expandir a árvore"
 
 #: menueditor/menueditor.c:1365
-#, fuzzy
 msgid "Name"
-msgstr "Nome"
+msgstr "Nome "
 
 #: menueditor/menueditor.c:1368
 msgid "Command"
@@ -373,9 +371,8 @@ msgstr "Novo menu"
 
 #. Filename
 #: menueditor/new_dialog.c:107
-#, fuzzy
 msgid "Filename:"
-msgstr "Arquivo:"
+msgstr "Arquivo: "
 
 #: menueditor/new_dialog.c:141
 msgid "All fields are required."
@@ -399,9 +396,8 @@ msgid "Select Menu File"
 msgstr "Escolher arquivo de menu"
 
 #: panel-plugin/desktop-menu-plugin.c:524
-#, fuzzy
 msgid "Menu Files"
-msgstr "Arquivo de imagens"
+msgstr "Arquivo de imagens "
 
 #: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
 #, c-format
@@ -409,35 +405,29 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Impossível iniciar xfce4-menueditor: %s"
 
 #: panel-plugin/desktop-menu-plugin.c:663
-#, fuzzy
 msgid "Button _title:"
-msgstr "Ícone do botão:"
+msgstr "Ícone do botão: "
 
 #: panel-plugin/desktop-menu-plugin.c:676
-#, fuzzy
 msgid "Menu File"
-msgstr "Arquivo de imagens"
+msgstr "Arquivo de imagens "
 
 #: panel-plugin/desktop-menu-plugin.c:688
-#, fuzzy
 msgid "Use default _desktop menu file"
-msgstr "_Editar menu da área de trabalho"
+msgstr "_Usar menu arquivo padrão da área de trabalho "
 
 #: panel-plugin/desktop-menu-plugin.c:697
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "Abrir arquivo de menu"
+msgstr "Usar menu arquivo _customizado:"
 
 #: panel-plugin/desktop-menu-plugin.c:749
 #: panel-plugin/desktop-menu-plugin.c:751
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "_Menu"
+msgstr "Menu _Editar"
 
 #: panel-plugin/desktop-menu-plugin.c:758
-#, fuzzy
 msgid "Icons"
-msgstr "Ícone:"
+msgstr "Ícones"
 
 #: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
@@ -587,9 +577,8 @@ msgstr "_Segunda Cor:"
 
 #. set color only checkbox
 #: settings/backdrop_settings.c:1006
-#, fuzzy
 msgid "Set color _only"
-msgstr "Usar s_omente cor"
+msgstr "Marcar _somente cor"
 
 #: settings/backdrop_settings.c:1021
 msgid "Image"
@@ -667,16 +656,14 @@ msgstr "As opções são:\n"
 
 #: src/main.c:302
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    -reload      Relê todas as configurações, atualizar lista de imagens\n"
+msgstr "    -reload      Relê todas as configurações, atualizar lista de imagens\n"
 
 #: src/main.c:303
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Abrir o menu (na posição atual do mouse)\n"
 
 #: src/main.c:304
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "   -windowlist  abrir a lista de janelas (na posição atual do mouse)\n"
 
 #: src/windowlist.c:193
@@ -702,3 +689,5 @@ msgstr "Remover Área de trabalho %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Remover Área de trabalho '%s'"
+
+
