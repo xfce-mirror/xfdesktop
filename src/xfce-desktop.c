@@ -929,10 +929,10 @@ check_position_really_free(gpointer key,
     if(icon->row == priv->icon_workspaces[idx]->lowest_free_row
        && icon->col == priv->icon_workspaces[idx]->lowest_free_col)
     {
-        return FALSE;
+        return TRUE;
     }
     
-    return TRUE;
+    return FALSE;
 }
 
 static gboolean
@@ -969,8 +969,8 @@ get_next_free_position(XfceDesktop *desktop,
         }
         
         if(g_hash_table_size(desktop->priv->icon_workspaces[idx]->icons) == 0
-           || g_hash_table_find(desktop->priv->icon_workspaces[idx]->icons,
-                                check_position_really_free, &ifed))
+           || !g_hash_table_find(desktop->priv->icon_workspaces[idx]->icons,
+                                 check_position_really_free, &ifed))
         {
             break;
         }
