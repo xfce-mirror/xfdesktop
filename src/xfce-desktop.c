@@ -73,13 +73,9 @@
 /********
  * TODO *
  ********
- * + handle workspace add/delete (we crash right now)
- * + handle window creation
  * + screen size changes
  * + theme/font changes
  * + DnD to move stuff around
- * + intermittently, de-iconifying a window will cause all icons to dissapear,
- *   though they are still there and just don't redraw for some reason
  */
 
 
@@ -1080,7 +1076,8 @@ window_state_changed_cb(NetkWindow *window,
        || (changed_mask & NETK_WINDOW_STATE_SKIP_TASKLIST
            && !(new_state & NETK_WINDOW_STATE_SKIP_TASKLIST))
        || (changed_mask & NETK_WINDOW_STATE_STICKY
-           && new_state & NETK_WINDOW_STATE_STICKY))
+           && (new_state & (NETK_WINDOW_STATE_STICKY|NETK_WINDOW_STATE_MINIMIZED))
+                        == (NETK_WINDOW_STATE_STICKY|NETK_WINDOW_STATE_MINIMIZED)))
     {
         is_add = TRUE;
     }
@@ -1169,6 +1166,16 @@ window_state_changed_cb(NetkWindow *window,
             if(!desktop->priv->icon_workspaces[i]->icons)
                 continue;
             
+            /* ick.  if we were sticky before, but now we aren't, AND we're
+             * minimised, make sure we don't get removed from the current
+             * workspace's icons. */
+            if(i == active_ws_num
+               && changed_mask & NETK_WINDOW_STATE_STICKY
+               && !(new_state & NETK_WINDOW_STATE_STICKY))
+            {
+                continue;
+            }
+            
             icon = g_hash_table_lookup(desktop->priv->icon_workspaces[i]->icons,
                                        window);
             if(icon) {
@@ -1218,6 +1225,8 @@ window_workspace_changed_cb(NetkWindow *window,
                             gpointer user_data)
 {
     /* TODO: implement me */
+    
+    TRACE("entering");
 }
 
 static void
