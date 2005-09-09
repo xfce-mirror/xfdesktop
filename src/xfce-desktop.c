@@ -916,6 +916,67 @@ workspace_changed_cb(NetkScreen *netk_screen,
     gtk_widget_queue_draw(GTK_WIDGET(desktop));
 }
 
+static void
+window_created_cb(NetkScreen *netk_screen,
+                  NetkWindow *window,
+                  gpointer user_data)
+{
+    /* TODO: implement me */
+}
+
+static void
+workspace_created_cb(NetkScreen *netk_screen,
+                     NetkWorkspace *workspace,
+                     gpointer user_data)
+{
+    XfceDesktop *desktop = user_data;
+    gint ws_num, n_ws;
+    
+    n_ws = netk_screen_get_workspace_count(netk_screen);
+    ws_num = netk_workspace_get_number(workspace);
+    
+    desktop->priv->icon_workspaces = g_realloc(desktop->priv->icon_workspaces,
+                                               sizeof(XfceDesktopIconWorkspace *) * n_ws);
+    
+    if(ws_num != n_ws - 1) {
+        g_memmove(desktop->priv->icon_workspaces + ws_num + 1,
+                  desktop->priv->icon_workspaces + ws_num,
+                  sizeof(XfceDesktopIconWorkspace *) * (n_ws - ws_num - 1));
+    }
+    
+    
+    desktop->priv->icon_workspaces[ws_num] = g_new0(XfceDesktopIconWorkspace, 1);
+}
+
+static void
+workspace_destroyed_cb(NetkScreen *netk_screen,
+                       NetkWorkspace *workspace,
+                       gpointer user_data)
+{
+    /* TODO: check if we get workspace-destroyed before or after all the
+     * windows on that workspace were moved and we got workspace-changed
+     * for each one.  preferably that is the case. */
+    
+    XfceDesktop *desktop = user_data;
+    gint ws_num, n_ws;
+    
+    n_ws = netk_screen_get_workspace_count(netk_screen);
+    ws_num = netk_workspace_get_number(workspace);
+    
+    if(desktop->priv->icon_workspaces[ws_num]->icons)
+        g_hash_table_destroy(desktop->priv->icon_workspaces[ws_num]->icons);
+    g_free(desktop->priv->icon_workspaces[ws_num]);
+    
+    if(ws_num != n_ws) {
+        g_memmove(desktop->priv->icon_workspaces + ws_num,
+                  desktop->priv->icon_workspaces + ws_num + 1,
+                  sizeof(XfceDesktopIconWorkspace *) * (n_ws - ws_num));
+    }
+    
+    desktop->priv->icon_workspaces = g_realloc(desktop->priv->icon_workspaces,
+                                               sizeof(XfceDesktopIconWorkspace *) * n_ws);
+}
+
 static gboolean
 check_position_really_free(gpointer key,
                            gpointer value,
@@ -947,25 +1008,6 @@ grid_is_free_position(XfceDesktop *desktop,
     } else
         return TRUE;
 }
-/*
-static gboolean
-check_lowest_position_really_free(gpointer key,
-                                  gpointer value,
-                                  gpointer user_data)
-{
-    IconForeachData *ifed = user_data;
-    XfceDesktopPriv *priv = ifed->desktop->priv;
-    guint idx = GPOINTER_TO_UINT(ifed->data);
-    XfceDesktopIcon *icon = value;
-    
-    if(icon->row == priv->icon_workspaces[idx]->lowest_free_row
-       && icon->col == priv->icon_workspaces[idx]->lowest_free_col)
-    {
-        return TRUE;
-    } else
-        return FALSE;
-}
-*/
 
 static void
 determine_next_free_position(XfceDesktop *desktop,
@@ -1180,6 +1222,13 @@ window_state_changed_cb(NetkWindow *window,
 }
 
 static void
+window_workspace_changed_cb(NetkWindow *window,
+                            gpointer user_data)
+{
+    /* TODO: implement me */
+}
+
+static void
 window_destroyed_cb(gpointer data,
                     GObject *where_the_object_was)
 {
@@ -1380,11 +1429,23 @@ xfce_desktop_unrealize(GtkWidget *widget)
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
                                          G_CALLBACK(workspace_changed_cb),
                                          desktop);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
+                                         G_CALLBACK(window_created_cb),
+                                         desktop);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
+                                         G_CALLBACK(workspace_created_cb),
+                                         desktop);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
+                                         G_CALLBACK(workspace_destroyed_cb),
+                                         desktop);
     
     windows = netk_screen_get_windows(desktop->priv->netk_screen);
     for(l = windows; l; l = l->next) {
         g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
                                              G_CALLBACK(window_state_changed_cb),
+                                             desktop);
+        g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
+                                             G_CALLBACK(window_workspace_changed_cb),
                                              desktop);
     }
     if(windows)
@@ -1650,6 +1711,13 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
     g_signal_connect(G_OBJECT(desktop->priv->netk_screen),
                      "active-workspace-changed",
                      G_CALLBACK(workspace_changed_cb), desktop);
+    g_signal_connect(G_OBJECT(desktop->priv->netk_screen), "window-opened",
+                     G_CALLBACK(window_created_cb), desktop);
+    g_signal_connect(G_OBJECT(desktop->priv->netk_screen), "workspace-created",
+                     G_CALLBACK(workspace_created_cb), desktop);
+    g_signal_connect(G_OBJECT(desktop->priv->netk_screen),
+                     "workspace-destroyed",
+                     G_CALLBACK(workspace_destroyed_cb), desktop);
     
     nws = netk_screen_get_workspace_count(desktop->priv->netk_screen);
     desktop->priv->icon_workspaces = g_new(XfceDesktopIconWorkspace *, nws);
@@ -1662,6 +1730,8 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
         
         g_signal_connect(G_OBJECT(window), "state-changed",
                          G_CALLBACK(window_state_changed_cb), desktop);
+        g_signal_connect(G_OBJECT(window), "workspace-changed",
+                         G_CALLBACK(window_workspace_changed_cb), desktop);
         g_object_weak_ref(G_OBJECT(window), window_destroyed_cb, desktop);
     }
     
