@@ -143,11 +143,17 @@ struct _XfceDesktopPriv
 
 #ifdef ENABLE_WINDOW_ICONS
 static void xfce_desktop_icon_paint(XfceDesktop *desktop, XfceDesktopIcon *icon);
+static void xfce_desktop_icon_add(XfceDesktop *desktop, NetkWindow *window, guint idx);
+static void xfce_desktop_icon_remove(XfceDesktop *desktop, XfceDesktopIcon *icon, NetkWindow *window, guint idx);
 static void xfce_desktop_icon_free(XfceDesktopIcon *icon);
 static void xfce_desktop_setup_icons(XfceDesktop *desktop);
 static void xfce_desktop_paint_icons(XfceDesktop *desktop, GdkRectangle *area);
 static gboolean xfce_desktop_button_press(GtkWidget *widget, GdkEventButton *evt, gpointer user_data);
 static gboolean xfce_desktop_button_release(GtkWidget *widget, GdkEventButton *evt, gpointer user_data);
+/* utility funcs */
+static gboolean get_next_free_position(XfceDesktop *desktop, guint idx, guint16 *row, guint16 *col);
+static gboolean grid_is_free_position(XfceDesktop *desktop, gint idx, guint16 row, guint16 col);
+static void determine_next_free_position(XfceDesktop *desktop, guint idx);
 #endif
 
 static void xfce_desktop_class_init(XfceDesktopClass *klass);
@@ -174,6 +180,120 @@ xfce_desktop_icon_free(XfceDesktopIcon *icon)
     if(icon->label)
         g_free(icon->label);
     g_free(icon);
+}
+
+static void
+xfce_desktop_icon_add(XfceDesktop *desktop,
+                      NetkWindow *window,
+                      guint idx)
+{
+    XfceDesktopIcon *icon = g_new0(XfceDesktopIcon, 1);
+    gchar data_name[256];
+    guint16 old_row, old_col;
+    gboolean got_pos = FALSE;
+    gint metric_index = desktop->priv->metric_index;
+    NetkWorkspace *active_ws;
+            
+    /* check for availability of old position (if any) */
+    g_snprintf(data_name, 256, "xfdesktop-last-row-%d", idx);
+    old_row = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
+                                                 data_name));
+    g_snprintf(data_name, 256, "xfdesktop-last-col-%d", idx);
+    old_col = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
+                                                 data_name));
+    if(old_row && old_col) {
+        icon->row = old_row - 1;
+        icon->col = old_col - 1;
+    
+        if(grid_is_free_position(desktop, idx, icon->row, icon->col)) {
+            DBG("old position (%d,%d) is free", icon->row, icon->col);
+            got_pos = TRUE;
+        }
+    }
+    
+    if(!got_pos) {
+       if(!get_next_free_position(desktop, idx, &icon->row, &icon->col)) {
+           g_free(icon);
+           return;
+       } else {
+           DBG("old position didn't exist or isn't free, got (%d,%d) instead", icon->row, icon->col);
+       }
+    }
+
+    determine_next_free_position(desktop, idx);
+    
+    DBG("set next free position to (%d,%d)",
+        desktop->priv->icon_workspaces[idx]->lowest_free_row,
+        desktop->priv->icon_workspaces[idx]->lowest_free_col);
+    
+    icon->pix = netk_window_get_icon(window);
+    if(icon->pix) {
+        if(gdk_pixbuf_get_width(icon->pix) != icon_metrics[metric_index].icon_size) {
+            icon->pix = gdk_pixbuf_scale_simple(icon->pix,
+                                                icon_metrics[metric_index].icon_size,
+                                                icon_metrics[metric_index].icon_size,
+                                                GDK_INTERP_BILINEAR);
+        }
+        g_object_ref(G_OBJECT(icon->pix));
+    }
+    icon->label = g_strdup(netk_window_get_name(window));
+    icon->window = window;
+    g_hash_table_insert(desktop->priv->icon_workspaces[idx]->icons,
+                        window, icon);
+    
+    active_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
+    if(idx == netk_workspace_get_number(active_ws))
+        xfce_desktop_icon_paint(desktop, icon);
+}
+
+static void
+xfce_desktop_icon_remove(XfceDesktop *desktop,
+                         XfceDesktopIcon *icon,
+                         NetkWindow *window,
+                         guint idx)
+{
+    GdkRectangle area;
+    guint16 row, col;
+    gchar data_name[256];
+    NetkWorkspace *active_ws;
+    gint active_ws_num;
+    
+    active_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
+    active_ws_num = netk_workspace_get_number(active_ws);
+    
+    row = icon->row;
+    col = icon->col;
+    memcpy(&area, &icon->extents, sizeof(area));
+    
+    if(desktop->priv->icon_workspaces[idx]->selected_icon == icon)
+        desktop->priv->icon_workspaces[idx]->selected_icon = NULL;
+    
+    g_hash_table_remove(desktop->priv->icon_workspaces[idx]->icons,
+                        window);
+    
+    if(idx == active_ws_num) {
+        DBG("clearing %dx%d+%d+%d", area.width, area.height,
+            area.x, area.y);
+        gdk_window_clear_area(GTK_WIDGET(desktop)->window,
+                              area.x, area.y,
+                              area.width, area.height);
+    }
+    
+    /* save the old positions for later */
+    g_snprintf(data_name, 256, "xfdesktop-last-row-%d", idx);
+    g_object_set_data(G_OBJECT(window), data_name,
+                      GUINT_TO_POINTER(row+1));
+    g_snprintf(data_name, 256, "xfdesktop-last-col-%d", idx);
+    g_object_set_data(G_OBJECT(window), data_name,
+                      GUINT_TO_POINTER(col+1));
+    
+    if((desktop->priv->icon_workspaces[idx]->lowest_free_col == col
+        && row < desktop->priv->icon_workspaces[idx]->lowest_free_row)
+       || col < desktop->priv->icon_workspaces[idx]->lowest_free_col)
+    {
+        desktop->priv->icon_workspaces[idx]->lowest_free_row = row;
+        desktop->priv->icon_workspaces[idx]->lowest_free_col = col;
+    }
 }
 
 static void
@@ -1054,13 +1174,11 @@ window_state_changed_cb(NetkWindow *window,
     gint ws_num = -1, active_ws_num, i, max_i;
     gboolean is_add = FALSE;
     XfceDesktopIcon *icon;
-    gchar data_name[256];
     
     TRACE("entering");
     
     if(!(changed_mask & (NETK_WINDOW_STATE_MINIMIZED |
-                         NETK_WINDOW_STATE_SKIP_TASKLIST |
-                         NETK_WINDOW_STATE_STICKY)))
+                         NETK_WINDOW_STATE_SKIP_TASKLIST)))
     {
         return;
     }
@@ -1074,20 +1192,15 @@ window_state_changed_cb(NetkWindow *window,
     if(   (changed_mask & NETK_WINDOW_STATE_MINIMIZED
            && new_state & NETK_WINDOW_STATE_MINIMIZED)
        || (changed_mask & NETK_WINDOW_STATE_SKIP_TASKLIST
-           && !(new_state & NETK_WINDOW_STATE_SKIP_TASKLIST))
-       || (changed_mask & NETK_WINDOW_STATE_STICKY
-           && (new_state & (NETK_WINDOW_STATE_STICKY|NETK_WINDOW_STATE_MINIMIZED))
-                        == (NETK_WINDOW_STATE_STICKY|NETK_WINDOW_STATE_MINIMIZED)))
+           && !(new_state & NETK_WINDOW_STATE_SKIP_TASKLIST)))
     {
         is_add = TRUE;
     }
     
     /* this is a cute way of handling adding/removing from *all* workspaces
-     * when we're dealing with a sticky state change, and just adding/removing
+     * when we're dealing with a sticky windows, and just adding/removing
      * from a single workspace otherwise, without duplicating code */
-    if(changed_mask & NETK_WINDOW_STATE_STICKY
-       || netk_window_is_pinned(window))
-    {
+    if(netk_window_is_pinned(window)) {
         i = 0;
         max_i = netk_screen_get_workspace_count(desktop->priv->netk_screen);
     } else {
@@ -1097,10 +1210,6 @@ window_state_changed_cb(NetkWindow *window,
     }
     
     if(is_add) {
-        gint metric_index = desktop->priv->metric_index;
-        guint16 old_row, old_col;
-        gboolean got_pos = FALSE;
-        
         for(; i < max_i; i++) {
             if(!desktop->priv->icon_workspaces[i]->icons
                || g_hash_table_lookup(desktop->priv->icon_workspaces[i]->icons,
@@ -1109,57 +1218,7 @@ window_state_changed_cb(NetkWindow *window,
                 continue;
             }
             
-            icon = g_new0(XfceDesktopIcon, 1);
-            
-            /* check for availability of old position (if any) */
-            g_snprintf(data_name, 256, "xfdesktop-last-row-%d", i);
-            old_row = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
-                                                         data_name));
-            g_snprintf(data_name, 256, "xfdesktop-last-col-%d", i);
-            old_col = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
-                                                         data_name));
-            if(old_row && old_col) {
-                icon->row = old_row - 1;
-                icon->col = old_col - 1;
-            
-                if(grid_is_free_position(desktop, i, icon->row, icon->col)) {
-                    DBG("old position (%d,%d) is free", icon->row, icon->col);
-                    got_pos = TRUE;
-                }
-            }
-            
-            if(!got_pos) {
-               if(!get_next_free_position(desktop, i, &icon->row, &icon->col)) {
-                   g_free(icon);
-                   continue;
-               } else {
-                   DBG("old position didn't exist or isn't free, got (%d,%d) instead", icon->row, icon->col);
-               }
-            }
-
-            determine_next_free_position(desktop, i);
-            
-            DBG("set next free position to (%d,%d)",
-                desktop->priv->icon_workspaces[i]->lowest_free_row,
-                desktop->priv->icon_workspaces[i]->lowest_free_col);
-            
-            icon->pix = netk_window_get_icon(window);
-            if(icon->pix) {
-                if(gdk_pixbuf_get_width(icon->pix) != icon_metrics[metric_index].icon_size) {
-                    icon->pix = gdk_pixbuf_scale_simple(icon->pix,
-                                                        icon_metrics[metric_index].icon_size,
-                                                        icon_metrics[metric_index].icon_size,
-                                                        GDK_INTERP_BILINEAR);
-                }
-                g_object_ref(G_OBJECT(icon->pix));
-            }
-            icon->label = g_strdup(netk_window_get_name(window));
-            icon->window = window;
-            g_hash_table_insert(desktop->priv->icon_workspaces[i]->icons,
-                                window, icon);
-            
-            if(i == active_ws_num)
-                xfce_desktop_icon_paint(desktop, icon);
+            xfce_desktop_icon_add(desktop, window, i);
         }
     } else {
         for(; i < max_i; i++) {
@@ -1178,44 +1237,8 @@ window_state_changed_cb(NetkWindow *window,
             
             icon = g_hash_table_lookup(desktop->priv->icon_workspaces[i]->icons,
                                        window);
-            if(icon) {
-                GdkRectangle area;
-                guint16 row, col;
-                
-                row = icon->row;
-                col = icon->col;
-                memcpy(&area, &icon->extents, sizeof(area));
-                
-                if(desktop->priv->icon_workspaces[i]->selected_icon == icon)
-                    desktop->priv->icon_workspaces[i]->selected_icon = NULL;
-                
-                g_hash_table_remove(desktop->priv->icon_workspaces[i]->icons,
-                                    window);
-                
-                if(i == active_ws_num) {
-                    DBG("clearing %dx%d+%d+%d", area.width, area.height,
-                        area.x, area.y);
-                    gdk_window_clear_area(GTK_WIDGET(desktop)->window,
-                                          area.x, area.y,
-                                          area.width, area.height);
-                }
-                
-                /* save the old positions for later */
-                g_snprintf(data_name, 256, "xfdesktop-last-row-%d", i);
-                g_object_set_data(G_OBJECT(window), data_name,
-                                  GUINT_TO_POINTER(row+1));
-                g_snprintf(data_name, 256, "xfdesktop-last-col-%d", i);
-                g_object_set_data(G_OBJECT(window), data_name,
-                                  GUINT_TO_POINTER(col+1));
-                
-                if((desktop->priv->icon_workspaces[i]->lowest_free_col == col
-                    && row < desktop->priv->icon_workspaces[i]->lowest_free_row)
-                   || col < desktop->priv->icon_workspaces[i]->lowest_free_col)
-                {
-                    desktop->priv->icon_workspaces[i]->lowest_free_row = row;
-                    desktop->priv->icon_workspaces[i]->lowest_free_col = col;
-                }
-            }
+            if(icon)
+                xfce_desktop_icon_remove(desktop, icon, window, i);
         }
     }
 }
@@ -1224,9 +1247,41 @@ static void
 window_workspace_changed_cb(NetkWindow *window,
                             gpointer user_data)
 {
-    /* TODO: implement me */
+    XfceDesktop *desktop = user_data;
+    NetkWorkspace *new_ws;
+    gint i, new_ws_num = -1, n_ws;
+    XfceDesktopIcon *icon;
     
     TRACE("entering");
+    
+    if(!netk_window_is_minimized(window))
+        return;
+    
+    n_ws = netk_screen_get_workspace_count(desktop->priv->netk_screen);
+    
+    new_ws = netk_window_get_workspace(window);
+    if(new_ws)
+        new_ws_num = netk_workspace_get_number(new_ws);
+    
+    for(i = 0; i < n_ws; i++) {
+        if(!desktop->priv->icon_workspaces[i]->icons)
+            continue;
+        
+        icon = g_hash_table_lookup(desktop->priv->icon_workspaces[i]->icons,
+                                   window);
+        
+        if(new_ws) {
+            /* window is not sticky */
+            if(i != new_ws_num && icon)
+                xfce_desktop_icon_remove(desktop, icon, window, i);
+            else if(i == new_ws_num && !icon)
+                xfce_desktop_icon_add(desktop, window, i);
+        } else {
+            /* window is sticky */
+            if(!icon)
+                xfce_desktop_icon_add(desktop, window, i);
+        }
+    }
 }
 
 static void
@@ -1234,13 +1289,19 @@ window_destroyed_cb(gpointer data,
                     GObject *where_the_object_was)
 {
     XfceDesktop *desktop = data;
-    NetkWindow *window = NETK_WINDOW(where_the_object_was);
+    NetkWindow *window = (NetkWindow *)where_the_object_was;
     gint nws, i;
+    XfceDesktopIcon *icon;
     
     nws = netk_screen_get_workspace_count(desktop->priv->netk_screen);
     for(i = 0; i < nws; i++) {
-        if(desktop->priv->icon_workspaces[i]->icons)
-            g_hash_table_remove(desktop->priv->icon_workspaces[i]->icons, window);
+        if(!desktop->priv->icon_workspaces[i]->icons)
+            continue;
+        
+        icon = g_hash_table_lookup(desktop->priv->icon_workspaces[i]->icons,
+                                   window);
+        if(icon)
+            xfce_desktop_icon_remove(desktop, icon, window, i);
     }
 }
 
