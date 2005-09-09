@@ -1052,7 +1052,6 @@ workspace_created_cb(NetkScreen *netk_screen,
                   sizeof(XfceDesktopIconWorkspace *) * (n_ws - ws_num - 1));
     }
     
-    
     desktop->priv->icon_workspaces[ws_num] = g_new0(XfceDesktopIconWorkspace, 1);
 }
 
@@ -1170,8 +1169,8 @@ window_state_changed_cb(NetkWindow *window,
                         gpointer user_data)
 {
     XfceDesktop *desktop = user_data;
-    NetkWorkspace *ws, *active_ws;
-    gint ws_num = -1, active_ws_num, i, max_i;
+    NetkWorkspace *ws;
+    gint ws_num = -1, i, max_i;
     gboolean is_add = FALSE;
     XfceDesktopIcon *icon;
     
@@ -1186,8 +1185,6 @@ window_state_changed_cb(NetkWindow *window,
     ws = netk_window_get_workspace(window);
     if(ws)
         ws_num = netk_workspace_get_number(ws);
-    active_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
-    active_ws_num = netk_workspace_get_number(active_ws);
     
     if(   (changed_mask & NETK_WINDOW_STATE_MINIMIZED
            && new_state & NETK_WINDOW_STATE_MINIMIZED)
@@ -1224,16 +1221,6 @@ window_state_changed_cb(NetkWindow *window,
         for(; i < max_i; i++) {
             if(!desktop->priv->icon_workspaces[i]->icons)
                 continue;
-            
-            /* ick.  if we were sticky before, but now we aren't, AND we're
-             * minimised, make sure we don't get removed from the current
-             * workspace's icons. */
-            if(i == active_ws_num
-               && changed_mask & NETK_WINDOW_STATE_STICKY
-               && !(new_state & NETK_WINDOW_STATE_STICKY))
-            {
-                continue;
-            }
             
             icon = g_hash_table_lookup(desktop->priv->icon_workspaces[i]->icons,
                                        window);
