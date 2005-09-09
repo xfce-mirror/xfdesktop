@@ -917,14 +917,6 @@ workspace_changed_cb(NetkScreen *netk_screen,
 }
 
 static void
-window_created_cb(NetkScreen *netk_screen,
-                  NetkWindow *window,
-                  gpointer user_data)
-{
-    /* TODO: implement me */
-}
-
-static void
 workspace_created_cb(NetkScreen *netk_screen,
                      NetkWorkspace *workspace,
                      gpointer user_data)
@@ -1241,6 +1233,20 @@ window_destroyed_cb(gpointer data,
         if(desktop->priv->icon_workspaces[i]->icons)
             g_hash_table_remove(desktop->priv->icon_workspaces[i]->icons, window);
     }
+}
+
+static void
+window_created_cb(NetkScreen *netk_screen,
+                  NetkWindow *window,
+                  gpointer user_data)
+{
+    XfceDesktop *desktop = user_data;
+    
+    g_signal_connect(G_OBJECT(window), "state-changed",
+                     G_CALLBACK(window_state_changed_cb), desktop);
+    g_signal_connect(G_OBJECT(window), "workspace-changed",
+                     G_CALLBACK(window_workspace_changed_cb), desktop);
+    g_object_weak_ref(G_OBJECT(window), window_destroyed_cb, desktop);
 }
 
 #endif  /* defined(ENABLE_WINDOW_ICONS) */
