@@ -129,12 +129,10 @@ settings_register_callback(SettingsCallback cb, gpointer user_data)
 void
 settings_reload_all()
 {
-    if(mcs_client) {
-        mcs_client_destroy(mcs_client);
-        mcs_client = NULL;
-    }
+    g_return_if_fail(mcs_client);
     
-    settings_init();
+    mcs_client_delete_channel(mcs_client, BACKDROP_CHANNEL);
+    mcs_client_add_channel(mcs_client, BACKDROP_CHANNEL);
 }
 
 void
