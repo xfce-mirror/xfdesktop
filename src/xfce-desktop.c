@@ -458,6 +458,17 @@ xfce_desktop_icon_paint_delayed(NetkWindow *window,
     g_free(ifed);
 }
 
+static gboolean
+xfce_desktop_icon_paint_idled(gpointer user_data)
+{
+    IconForeachData *ifed = user_data;
+    
+    xfce_desktop_icon_paint(ifed->desktop, (XfceDesktopIcon *)ifed->data);
+    g_free(ifed);
+    
+    return FALSE;
+}
+
 #endif /* defined(ENABLE_WINDOW_ICONS) */
 
 /* private functions */
@@ -1915,7 +1926,14 @@ check_icon_needs_repaint(gpointer key,
     if(icon->extents.width == 0 || icon->extents.height == 0
        || gdk_rectangle_intersect(area, &icon->extents, &dummy))
     {
-        xfce_desktop_icon_paint(ifed->desktop, icon);
+        if(icon == ifed->desktop->priv->icon_workspaces[ifed->desktop->priv->cur_ws_num]->selected_icon) {
+            /* save it for last */
+            IconForeachData *ifed1 = g_new(IconForeachData, 1);
+            ifed1->desktop = ifed->desktop;
+            ifed1->data = icon;
+            g_idle_add(xfce_desktop_icon_paint_idled, ifed1);
+        } else
+            xfce_desktop_icon_paint(ifed->desktop, icon);
     }
 }
 
