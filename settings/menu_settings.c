@@ -28,11 +28,13 @@
 
 enum {
     OPT_SHOWWL = 1,
-    OPT_SHOWWLI
+    OPT_SHOWWLI,
 #ifdef USE_DESKTOP_MENU
-    ,
     OPT_SHOWDM,
-    OPT_SHOWDMI
+    OPT_SHOWDMI,
+#endif
+#ifdef ENABLE_WINDOW_ICONS
+    OPT_USEWINDOWICONS,
 #endif
 };
 
@@ -42,6 +44,9 @@ static gboolean show_windowlist_icons = TRUE;
 #ifdef USE_DESKTOP_MENU
 static gboolean show_desktopmenu = TRUE;
 static gboolean show_desktopmenu_icons = TRUE;
+#endif
+#ifdef ENABLE_WINDOW_ICONS
+static gboolean use_window_icons = TRUE;
 #endif
 
 static void
@@ -74,6 +79,13 @@ set_chk_option(GtkWidget *w, gpointer user_data)
             show_desktopmenu_icons = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w));
             mcs_manager_set_int(bd->plugin->manager, "showdmi", BACKDROP_CHANNEL,
                     show_desktopmenu_icons ? 1 : 0);
+            break;
+#endif
+#ifdef ENABLE_WINDOW_ICONS
+        case OPT_USEWINDOWICONS:
+            use_window_icons = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w));
+            mcs_manager_set_int(bd->plugin->manager, "usewindowicons",
+                                BACKDROP_CHANNEL, use_window_icons ? 1 : 0);
             break;
 #endif
         default:
@@ -118,6 +130,15 @@ init_menu_settings(McsPlugin *plugin)
     else
         mcs_manager_set_int(plugin->manager, "showdmi", BACKDROP_CHANNEL, 1);
 #endif
+    
+#ifdef ENABLE_WINDOW_ICONS
+    setting = mcs_manager_setting_lookup(plugin->manager, "usewindowicons",
+            BACKDROP_CHANNEL);
+    if(setting)
+        use_window_icons = setting->data.v_int == 0 ? FALSE : TRUE;
+    else
+        mcs_manager_set_int(plugin->manager, "usewindowicons", BACKDROP_CHANNEL, 1);
+#endif
 }
 
 #if USE_DESKTOP_MENU
@@ -150,7 +171,7 @@ create_menu_page(BackdropDialog *bd)
     
     add_spacer(GTK_BOX(page));
     
-    frame = xfce_create_framebox(_("Window List"), &frame_bin);
+    frame = xfce_create_framebox(_("Window List Menu"), &frame_bin);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(page), frame, FALSE, FALSE, 0);
     
@@ -229,6 +250,26 @@ create_menu_page(BackdropDialog *bd)
     
     if(!xfce_kiosk_query(kiosk, "CustomizeDesktopMenu"))
         gtk_widget_set_sensitive(dm_vbox, FALSE);
+#endif
+    
+#ifdef ENABLE_WINDOW_ICONS
+    frame = xfce_create_framebox(_("Window Icons"), &frame_bin);
+    gtk_widget_show(frame);
+    gtk_box_pack_start(GTK_BOX(page), frame, FALSE, FALSE, 0);
+    
+    vbox = gtk_vbox_new(FALSE, 0);
+    gtk_widget_show(vbox);
+    gtk_container_add(GTK_CONTAINER(frame_bin), vbox);
+    
+    chk = gtk_check_button_new_with_mnemonic(_("Show minimized window _icons on the desktop"));
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), use_window_icons);
+    g_object_set_data(G_OBJECT(chk), "xfce-chknum", GUINT_TO_POINTER(OPT_USEWINDOWICONS));
+    gtk_widget_show(chk);
+    gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, 0);
+    g_signal_connect(G_OBJECT(chk), "toggled", G_CALLBACK(set_chk_option), bd);
+    
+    if(!xfce_kiosk_query(kiosk, "CustomizeWindowIcons"))
+        gtk_widget_set_sensitive(vbox, FALSE);
 #endif
     
     xfce_kiosk_free(kiosk);

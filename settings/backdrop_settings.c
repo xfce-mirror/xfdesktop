@@ -1251,7 +1251,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
     vbox = create_menu_page(bd);
     gtk_widget_show(vbox);
     
-    label = gtk_label_new_with_mnemonic(_("_Menu"));
+    label = gtk_label_new_with_mnemonic(_("_Useless Bloat"));
     gtk_widget_show(label);
     gtk_notebook_append_page(GTK_NOTEBOOK(bd->top_notebook), vbox, label);
     

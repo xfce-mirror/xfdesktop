@@ -131,6 +131,8 @@ struct _XfceDesktopPriv
     XfceBackdrop **backdrops;
     
 #ifdef ENABLE_WINDOW_ICONS
+    gboolean use_window_icons;
+    
     NetkScreen *netk_screen;
     gint cur_ws_num;
     PangoLayout *playout;
@@ -145,6 +147,7 @@ static void xfce_desktop_icon_add(XfceDesktop *desktop, NetkWindow *window, guin
 static void xfce_desktop_icon_remove(XfceDesktop *desktop, XfceDesktopIcon *icon, NetkWindow *window, guint idx);
 static void xfce_desktop_icon_free(XfceDesktopIcon *icon);
 static void xfce_desktop_setup_icons(XfceDesktop *desktop);
+static void xfce_desktop_unsetup_icons(XfceDesktop *desktop);
 static void xfce_desktop_paint_icons(XfceDesktop *desktop, GdkRectangle *area);
 static gboolean xfce_desktop_button_press(GtkWidget *widget, GdkEventButton *evt, gpointer user_data);
 static gboolean xfce_desktop_button_release(GtkWidget *widget, GdkEventButton *evt, gpointer user_data);
@@ -857,6 +860,25 @@ load_initial_settings(XfceDesktop *desktop, McsClient *mcs_client)
         mcs_setting_free(setting);
         setting = NULL;
     }
+    
+#ifdef ENABLE_WINDOW_ICONS
+    if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "usewindowicons",
+            BACKDROP_CHANNEL, &setting))
+    {
+        if(setting->data.v_int)
+            desktop->priv->use_window_icons = TRUE;
+        else
+            desktop->priv->use_window_icons = FALSE;
+        mcs_setting_free(setting);
+        setting = NULL;
+    } else
+        desktop->priv->use_window_icons = TRUE;
+    
+    gtk_window_set_accept_focus(GTK_WINDOW(desktop),
+                                desktop->priv->use_window_icons);
+    if(desktop->priv->use_window_icons && GTK_WIDGET_REALIZED(GTK_WIDGET(desktop)))
+        xfce_desktop_setup_icons(desktop);
+#endif
     
     for(i = 0; i < desktop->priv->nbackdrops; i++) {
         backdrop = desktop->priv->backdrops[i];
@@ -1667,7 +1689,8 @@ xfce_desktop_realize(GtkWidget *widget)
             G_CALLBACK(desktop_style_set_cb), NULL);
     
 #ifdef ENABLE_WINDOW_ICONS
-    xfce_desktop_setup_icons(desktop);
+    if(desktop->priv->use_window_icons)
+        xfce_desktop_setup_icons(desktop);
 #endif
 }
 
@@ -1679,10 +1702,6 @@ xfce_desktop_unrealize(GtkWidget *widget)
     GdkWindow *groot;
     gchar property_name[128];
     GdkColor c;
-#ifdef ENABLE_WINDOW_ICONS
-    GList *windows, *l;
-    gint nws;
-#endif
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
@@ -1691,49 +1710,8 @@ xfce_desktop_unrealize(GtkWidget *widget)
     GTK_WIDGET_UNSET_FLAGS(widget, GTK_MAPPED);
     
 #ifdef ENABLE_WINDOW_ICONS
-    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
-                                         G_CALLBACK(xfce_desktop_button_press),
-                                         NULL);
-    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
-                                         G_CALLBACK(xfce_desktop_button_release),
-                                         NULL);
-    
-    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
-                                         G_CALLBACK(workspace_changed_cb),
-                                         desktop);
-    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
-                                         G_CALLBACK(window_created_cb),
-                                         desktop);
-    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
-                                         G_CALLBACK(workspace_created_cb),
-                                         desktop);
-    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
-                                         G_CALLBACK(workspace_destroyed_cb),
-                                         desktop);
-    
-    windows = netk_screen_get_windows(desktop->priv->netk_screen);
-    for(l = windows; l; l = l->next) {
-        g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
-                                             G_CALLBACK(window_state_changed_cb),
-                                             desktop);
-        g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
-                                             G_CALLBACK(window_workspace_changed_cb),
-                                             desktop);
-    }
-    if(windows)
-        g_list_free(windows);
-    
-    nws = netk_screen_get_workspace_count(desktop->priv->netk_screen);
-    for(i = 0; i < nws; i++) {
-        if(desktop->priv->icon_workspaces[i]->icons)
-            g_hash_table_destroy(desktop->priv->icon_workspaces[i]->icons);
-        g_free(desktop->priv->icon_workspaces[i]);
-    }
-    g_free(desktop->priv->icon_workspaces);
-    desktop->priv->icon_workspaces = NULL;
-    
-    g_object_unref(G_OBJECT(desktop->priv->playout));
-    desktop->priv->playout = NULL;
+    if(desktop->priv->use_window_icons)
+        xfce_desktop_unsetup_icons(desktop);
 #endif
     
     gtk_container_forall(GTK_CONTAINER(widget),
@@ -1831,6 +1809,9 @@ xfce_desktop_button_press(GtkWidget *widget,
     
     TRACE("entering, type is %s", evt->type == GDK_BUTTON_PRESS ? "GDK_BUTTON_PRESS" : (evt->type == GDK_2BUTTON_PRESS ? "GDK_2BUTTON_PRESS" : "i dunno"));
     
+    if(!desktop->priv->use_window_icons)
+        return FALSE;
+    
     if(evt->type == GDK_BUTTON_PRESS) {
         g_return_val_if_fail(desktop->priv->icon_workspaces[cur_ws_num]->icons,
                              FALSE);
@@ -1906,7 +1887,8 @@ xfce_desktop_expose(GtkWidget *w,
             evt->area.width, evt->area.height);
     
 #ifdef ENABLE_WINDOW_ICONS
-    xfce_desktop_paint_icons(XFCE_DESKTOP(w), &evt->area);
+    if(XFCE_DESKTOP(w)->priv->use_window_icons)
+        xfce_desktop_paint_icons(XFCE_DESKTOP(w), &evt->area);
 #endif
     
     return TRUE;
@@ -1959,10 +1941,14 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
     GList *windows, *l;
     gint nws, i, *xorigins, *yorigins, *widths, *heights;
     
+    if(desktop->priv->icon_workspaces)
+        return;
+    
     if(!desktop->priv->netk_screen) {
         gint screen = gdk_screen_get_number(desktop->priv->gscreen);
         desktop->priv->netk_screen = netk_screen_get(screen);
     }
+    netk_screen_force_update(desktop->priv->netk_screen);
     g_signal_connect(G_OBJECT(desktop->priv->netk_screen),
                      "active-workspace-changed",
                      G_CALLBACK(workspace_changed_cb), desktop);
@@ -2035,6 +2021,59 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
                      G_CALLBACK(xfce_desktop_button_release), NULL);
 }
 
+static void
+xfce_desktop_unsetup_icons(XfceDesktop *desktop)
+{
+    GList *windows, *l;
+    gint nws, i;
+    
+    if(!desktop->priv->icon_workspaces)
+        return;
+    
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
+                                         G_CALLBACK(xfce_desktop_button_press),
+                                         NULL);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
+                                         G_CALLBACK(xfce_desktop_button_release),
+                                         NULL);
+    
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
+                                         G_CALLBACK(workspace_changed_cb),
+                                         desktop);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
+                                         G_CALLBACK(window_created_cb),
+                                         desktop);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
+                                         G_CALLBACK(workspace_created_cb),
+                                         desktop);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
+                                         G_CALLBACK(workspace_destroyed_cb),
+                                         desktop);
+    
+    windows = netk_screen_get_windows(desktop->priv->netk_screen);
+    for(l = windows; l; l = l->next) {
+        g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
+                                             G_CALLBACK(window_state_changed_cb),
+                                             desktop);
+        g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
+                                             G_CALLBACK(window_workspace_changed_cb),
+                                             desktop);
+        g_object_weak_unref(G_OBJECT(l->data), window_destroyed_cb, desktop);
+    }
+    
+    nws = netk_screen_get_workspace_count(desktop->priv->netk_screen);
+    for(i = 0; i < nws; i++) {
+        if(desktop->priv->icon_workspaces[i]->icons)
+            g_hash_table_destroy(desktop->priv->icon_workspaces[i]->icons);
+        g_free(desktop->priv->icon_workspaces[i]);
+    }
+    g_free(desktop->priv->icon_workspaces);
+    desktop->priv->icon_workspaces = NULL;
+    
+    g_object_unref(G_OBJECT(desktop->priv->playout));
+    desktop->priv->playout = NULL;
+}
+
 #endif  /* defined(ENABLE_WINDOW_ICONS) */
 
 /* public api */
@@ -2058,7 +2097,7 @@ xfce_desktop_new(GdkScreen *gscreen, McsClient *mcs_client)
     desktop->priv->gscreen = gscreen;
     
     desktop->priv->mcs_client = mcs_client;
-        
+    
     return GTK_WIDGET(desktop);
 }
 
@@ -2118,6 +2157,25 @@ xfce_desktop_settings_changed(McsClient *client, McsAction action,
             handle_xinerama_unstretch(desktop);
         return TRUE;
     }
+    
+#ifdef ENABLE_WINDOW_ICONS
+    if(!strcmp(setting->name, "usewindowicons")) {
+        if(setting->data.v_int) {
+            desktop->priv->use_window_icons = TRUE;
+            if(GTK_WIDGET_REALIZED(GTK_WIDGET(desktop)))
+                xfce_desktop_setup_icons(desktop);
+        } else {
+            desktop->priv->use_window_icons = FALSE;
+            if(GTK_WIDGET_REALIZED(GTK_WIDGET(desktop))) {
+                xfce_desktop_unsetup_icons(desktop);
+                gtk_widget_queue_draw(GTK_WIDGET(desktop));
+            }
+        }
+        gtk_window_set_accept_focus(GTK_WINDOW(desktop),
+                                    desktop->priv->use_window_icons);
+        return TRUE;
+    }
+#endif
     
     /* get the screen and monitor number */
     sname = g_strdup(setting->name);
