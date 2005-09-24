@@ -1,3 +1,5 @@
+# $Id$
+#
 # Japanese translations for xfdesktop package.
 # Copyright (C) 2003-2005 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
@@ -8,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-08-23 18:29+0900\n"
+"POT-Creation-Date: 2005-09-05 12:35+0900\n"
 "PO-Revision-Date: 2005-08-23 17:02+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -111,7 +113,7 @@ msgid "quit"
 msgstr "終了"
 
 #: ../menueditor/add_menu_dialog.c:97 ../menueditor/add_menu_dialog.c:103
-#: ../menueditor/menueditor.c:841
+#: ../menueditor/menueditor.c:842
 msgid "Add an external menu"
 msgstr "外部メニューを追加"
 
@@ -171,7 +173,7 @@ msgstr "セパレータは編集できません"
 msgid "File %s doesn't exist !"
 msgstr "ファイル %s は存在しません！"
 
-#: ../menueditor/menueditor.c:121 ../menueditor/menueditor.c:536
+#: ../menueditor/menueditor.c:121 ../menueditor/menueditor.c:537
 msgid "Do you want to save before closing the menu ?"
 msgstr "メニューをを閉じる前に保存しますか？"
 
@@ -196,7 +198,7 @@ msgid "Select command"
 msgstr "コマンドを選択して下さい"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:534
+#: ../menueditor/menueditor.c:535
 msgid "Question"
 msgstr "質問"
 
@@ -205,7 +207,7 @@ msgid "Do you want to save before opening an other menu ?"
 msgstr "他のメニューを開く前に保存しますか？"
 
 #: ../menueditor/menueditor.c:374 ../menueditor/menueditor.c:431
-#: ../menueditor/menueditor.c:538
+#: ../menueditor/menueditor.c:539
 msgid "Ignore modifications"
 msgstr "変更を無視する"
 
@@ -221,175 +223,175 @@ msgstr "標準のメニューを開く前に保存しますか？"
 msgid "Save as..."
 msgstr "名前を付けて保存..."
 
-#: ../menueditor/menueditor.c:648
+#: ../menueditor/menueditor.c:649
 msgid "Do you want to move the item into the parent menu?"
 msgstr "項目をパネルメニューに移動しますか？"
 
-#: ../menueditor/menueditor.c:694
+#: ../menueditor/menueditor.c:695
 msgid "Do you want to move the item into the submenu?"
 msgstr "項目をサブメニューに移動しますか？"
 
-#: ../menueditor/menueditor.c:835
+#: ../menueditor/menueditor.c:836
 msgid "Edit"
 msgstr "編集"
 
 #. File menu
-#: ../menueditor/menueditor.c:859
+#: ../menueditor/menueditor.c:860
 msgid "_File"
 msgstr "ファイル(_F)"
 
-#: ../menueditor/menueditor.c:868
+#: ../menueditor/menueditor.c:869
 msgid "Open default menu"
 msgstr "標準のメニューを開く"
 
 #. Edit menu
-#: ../menueditor/menueditor.c:882
+#: ../menueditor/menueditor.c:883
 msgid "_Edit"
 msgstr "編集(_E)"
 
-#: ../menueditor/menueditor.c:888
+#: ../menueditor/menueditor.c:889
 msgid "Add an external menu..."
 msgstr "外部メニューを追加する..."
 
 #. Help menu
-#: ../menueditor/menueditor.c:900
+#: ../menueditor/menueditor.c:901
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: ../menueditor/menueditor.c:904
+#: ../menueditor/menueditor.c:905
 msgid "_About..."
 msgstr "このプログラムについて(_A)..."
 
-#: ../menueditor/menueditor.c:916
+#: ../menueditor/menueditor.c:917
 msgid "Create a new Xfce4 menu file"
 msgstr "新規 Xfce4 メニューファイルを作成"
 
-#: ../menueditor/menueditor.c:921
+#: ../menueditor/menueditor.c:922
 msgid "Open an Xfce4 menu file"
 msgstr "Xfce4 メニューファイルを開く"
 
-#: ../menueditor/menueditor.c:926
+#: ../menueditor/menueditor.c:927
 msgid "Save current menu"
 msgstr "現在のメニューを保存"
 
-#: ../menueditor/menueditor.c:931
+#: ../menueditor/menueditor.c:932
 msgid "Close current menu"
 msgstr "現在のメニューを閉じる"
 
-#: ../menueditor/menueditor.c:937
+#: ../menueditor/menueditor.c:938
 msgid "Add an entry to the menu"
 msgstr "メニューに項目を追加"
 
-#: ../menueditor/menueditor.c:941
+#: ../menueditor/menueditor.c:942
 msgid "Delete the current entry"
 msgstr "現在の項目を削除"
 
-#: ../menueditor/menueditor.c:947
+#: ../menueditor/menueditor.c:948
 msgid "Move the current entry up"
 msgstr "現在の項目を上に移動"
 
-#: ../menueditor/menueditor.c:952
+#: ../menueditor/menueditor.c:953
 msgid "Move the current entry down"
 msgstr "現在の項目を下に移動"
 
-#: ../menueditor/menueditor.c:958
+#: ../menueditor/menueditor.c:959
 msgid "Collapse the tree"
 msgstr "このツリーを折畳む"
 
-#: ../menueditor/menueditor.c:963
+#: ../menueditor/menueditor.c:964
 msgid "Expand the tree"
 msgstr "このツリーを拡げる"
 
-#: ../menueditor/menueditor.c:991
+#: ../menueditor/menueditor.c:992
 msgid "Name"
 msgstr "名前"
 
-#: ../menueditor/menueditor.c:994
+#: ../menueditor/menueditor.c:995
 msgid "Command"
 msgstr "コマンド"
 
-#: ../menueditor/menueditor.c:995
+#: ../menueditor/menueditor.c:996
 msgid "Hidden"
 msgstr "隠す"
 
-#: ../modules/menu/desktop-menuspec.c:62
+#: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
 msgstr "/その他"
 
-#: ../panel-plugin/desktop-menu-plugin.c:339
-#: ../panel-plugin/desktop-menu-plugin.c:905
+#: ../panel-plugin/desktop-menu-plugin.c:338
+#: ../panel-plugin/desktop-menu-plugin.c:904
 msgid "Xfce Menu"
 msgstr "Xfce メニュー"
 
-#: ../panel-plugin/desktop-menu-plugin.c:575
+#: ../panel-plugin/desktop-menu-plugin.c:574
 msgid "Select Icon"
 msgstr "アイコンを選択して下さい"
 
-#: ../panel-plugin/desktop-menu-plugin.c:577
+#: ../panel-plugin/desktop-menu-plugin.c:576
 msgid "Select Menu File"
 msgstr "メニューファイルを選択して下さい"
 
-#: ../panel-plugin/desktop-menu-plugin.c:592 ../settings/backdrop-mgr.c:437
-#: ../settings/backdrop-mgr.c:538 ../settings/backdrop_settings.c:524
+#: ../panel-plugin/desktop-menu-plugin.c:591 ../settings/backdrop-mgr.c:436
+#: ../settings/backdrop-mgr.c:537 ../settings/backdrop_settings.c:524
 msgid "All Files"
 msgstr "全てのファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:598 ../settings/backdrop-mgr.c:441
+#: ../panel-plugin/desktop-menu-plugin.c:597 ../settings/backdrop-mgr.c:440
 #: ../settings/backdrop_settings.c:528
 msgid "Image Files"
 msgstr "画像ファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:606
+#: ../panel-plugin/desktop-menu-plugin.c:605
 msgid "Menu Files"
 msgstr "メニューファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:723 ../settings/menu_settings.c:132
+#: ../panel-plugin/desktop-menu-plugin.c:722 ../settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor を実行できません: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:741
+#: ../panel-plugin/desktop-menu-plugin.c:740
 msgid "Button"
 msgstr "ボタン"
 
-#: ../panel-plugin/desktop-menu-plugin.c:754
+#: ../panel-plugin/desktop-menu-plugin.c:753
 msgid "Button _title:"
 msgstr "ボタンタイトル(_T):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:767
+#: ../panel-plugin/desktop-menu-plugin.c:766
 msgid "_Show title in button"
 msgstr "ボタンにタイトルを表示(_S)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:774
+#: ../panel-plugin/desktop-menu-plugin.c:773
 msgid "Menu File"
 msgstr "メニューファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:786
+#: ../panel-plugin/desktop-menu-plugin.c:785
 msgid "Use default _desktop menu file"
 msgstr "標準のデスクトップメニューを使用(_D)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:795
+#: ../panel-plugin/desktop-menu-plugin.c:794
 msgid "Use _custom menu file:"
 msgstr "カスタム・メニューファイルを使用(_C):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:847
-#: ../panel-plugin/desktop-menu-plugin.c:849
+#: ../panel-plugin/desktop-menu-plugin.c:846
+#: ../panel-plugin/desktop-menu-plugin.c:848
 msgid "_Edit Menu"
 msgstr "メニューを編集(_E)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:856
+#: ../panel-plugin/desktop-menu-plugin.c:855
 msgid "Icons"
 msgstr "アイコン"
 
-#: ../panel-plugin/desktop-menu-plugin.c:868
+#: ../panel-plugin/desktop-menu-plugin.c:867
 msgid "_Button icon:"
 msgstr "ボタンアイコン(_B):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:892
+#: ../panel-plugin/desktop-menu-plugin.c:891
 msgid "Show _icons in menu"
 msgstr "メニューでアイコンを表示(_I):"
 
-#: ../settings/backdrop-mgr.c:162 ../src/xfce-desktop.c:118
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:118
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -402,40 +404,40 @@ msgstr ""
 "他の場所を選択するか、変更を破棄するためにダイアログのキャンセルボタンを押し"
 "て下さい"
 
-#: ../settings/backdrop-mgr.c:432
+#: ../settings/backdrop-mgr.c:431
 msgid "Select backdrop image file"
 msgstr "背景画像を選択して下さい"
 
-#: ../settings/backdrop-mgr.c:533
+#: ../settings/backdrop-mgr.c:532
 msgid "Choose backdrop list filename"
 msgstr "背景のリストファイル名を選択して下さい"
 
-#: ../settings/backdrop-mgr.c:542
+#: ../settings/backdrop-mgr.c:541
 msgid "List Files"
 msgstr "ファイル一覧"
 
-#: ../settings/backdrop-mgr.c:605
+#: ../settings/backdrop-mgr.c:604
 msgid "Backdrop List"
 msgstr "背景リスト"
 
-#: ../settings/backdrop-mgr.c:622
+#: ../settings/backdrop-mgr.c:621
 msgid "Image files"
 msgstr "画像ファイル"
 
-#: ../settings/backdrop-mgr.c:633 ../settings/backdrop_settings.c:179
+#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:179
 #: ../settings/backdrop_settings.c:188
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: ../settings/backdrop-mgr.c:641
+#: ../settings/backdrop-mgr.c:640
 msgid "List file"
 msgstr "リストファイル"
 
-#: ../settings/backdrop-mgr.c:661
+#: ../settings/backdrop-mgr.c:660
 msgid "Create backdrop list"
 msgstr "背景リスト作成"
 
-#: ../settings/backdrop-mgr.c:692
+#: ../settings/backdrop-mgr.c:691
 msgid "Edit backdrop list"
 msgstr "背景リスト編集"
 
@@ -635,29 +637,29 @@ msgstr "アプリケーションアイコンを表示(_A)"
 msgid "_Edit desktop menu"
 msgstr "デスクトップメニューを編集(_E)"
 
-#: ../src/main.c:253
+#: ../src/main.c:252
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: 不明なオプション: %s\n"
 
-#: ../src/main.c:254
+#: ../src/main.c:253
 msgid "Options are:\n"
 msgstr "オプションは:\n"
 
-#: ../src/main.c:255
+#: ../src/main.c:254
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      全ての設定を再読込みして画像リストを更新\n"
 
-#: ../src/main.c:256
+#: ../src/main.c:255
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        現在のマウス位置でメニューをポップアップ\n"
 
-#: ../src/main.c:257
+#: ../src/main.c:256
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  現在のマウス位置でウィンドウリストをポップアップ\n"
 
-#: ../src/main.c:258
+#: ../src/main.c:257
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        xfdesktop を終了させる\n"
 
