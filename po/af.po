@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-10 19:37+0100\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2005-08-20 16:08+0900\n"
 "Last-Translator: Petri Jooste <petri.jooste@gmail.com>\n"
 "Language-Team: Afrikaans <i18n@af.org.za>\n"
@@ -111,7 +111,7 @@ msgid "quit"
 msgstr "verlaat"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "Voeg 'n eksterne kieslys by"
 
@@ -184,14 +184,14 @@ msgstr "Kies bevel"
 msgid "Select icon"
 msgstr "Kies ikoon"
 
-#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:390
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Alle lêers"
 
-#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:396
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Beeldlêers"
 
@@ -234,14 +234,15 @@ msgstr "Maak kieslyslêer oop"
 msgid ""
 "Cannot write in %s : \n"
 "%s"
-msgstr "Kan nie in %s skryf nie: \n"
+msgstr ""
+"Kan nie in %s skryf nie: \n"
 "%s"
 
 #: menueditor/menueditor.c:844
 msgid "Save as..."
 msgstr "Stoor as..."
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "Redigeer"
 
@@ -340,7 +341,7 @@ msgstr "Geen wortel-element in lêer!"
 msgid "Bad datafile format !"
 msgstr "Slegte datalêerformaat!"
 
-#: menueditor/menueditor.c:1599
+#: menueditor/menueditor.c:1626
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "Lêer %s bestaan nie!"
@@ -379,80 +380,114 @@ msgstr "Alle velde word vereis."
 msgid "/Other"
 msgstr "/Ander"
 
-#: panel-plugin/desktop-menu-plugin.c:205
-#: panel-plugin/desktop-menu-plugin.c:535
+#: panel-plugin/desktop-menu-plugin.c:279
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "Xfce kieslys"
 
-#: panel-plugin/desktop-menu-plugin.c:373
+#: panel-plugin/desktop-menu-plugin.c:493
 msgid "Select Icon"
 msgstr "Selekteer ikoon"
 
-#: panel-plugin/desktop-menu-plugin.c:375
+#: panel-plugin/desktop-menu-plugin.c:495
 msgid "Select Menu File"
 msgstr "Selekteer Kieslyslêer"
 
-#: panel-plugin/desktop-menu-plugin.c:404
+#: panel-plugin/desktop-menu-plugin.c:524
 msgid "Menu Files"
 msgstr "Kieslyslêers"
 
-#: panel-plugin/desktop-menu-plugin.c:465
-msgid "_Menu file:"
-msgstr "_Kieslyslêer:"
+#: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "Kon nie xfce-menueditor laat begin nie: %s"
 
-#: panel-plugin/desktop-menu-plugin.c:499
+#: panel-plugin/desktop-menu-plugin.c:663
+#, fuzzy
+msgid "Button _title:"
+msgstr "Knoppie-_ikoon"
+
+#: panel-plugin/desktop-menu-plugin.c:676
+#, fuzzy
+msgid "Menu File"
+msgstr "Kieslyslêers"
+
+#: panel-plugin/desktop-menu-plugin.c:688
+#, fuzzy
+msgid "Use default _desktop menu file"
+msgstr "R_edigeer werkskermkieslys"
+
+#: panel-plugin/desktop-menu-plugin.c:697
+#, fuzzy
+msgid "Use _custom menu file:"
+msgstr "Maak kieslyslêer oop"
+
+#: panel-plugin/desktop-menu-plugin.c:749
+#: panel-plugin/desktop-menu-plugin.c:751
+#, fuzzy
+msgid "_Edit Menu"
+msgstr "R_edigeer"
+
+#: panel-plugin/desktop-menu-plugin.c:758
+#, fuzzy
+msgid "Icons"
+msgstr "Ikoon:"
+
+#: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
 msgstr "Knoppie-_ikoon"
 
-#: panel-plugin/desktop-menu-plugin.c:524
+#: panel-plugin/desktop-menu-plugin.c:794
 msgid "Show _icons in menu"
 msgstr "_Wys ikone in kieslys"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
 "Please choose another location or press cancel in the dialog to discard your "
 "changes"
-msgstr "Kon nie lêer %s stoor nie: %s\n"
+msgstr ""
+"Kon nie lêer %s stoor nie: %s\n"
 "\n"
-"Kies asb. 'n ander ligging of druk kanselleer in die dialoogkassie om u veranderinge te verloor"
+"Kies asb. 'n ander ligging of druk kanselleer in die dialoogkassie om u "
+"veranderinge te verloor"
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr "Selekteer lêer vir agtergrondbeeld"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "Kies lêernaam vir agtergrondbeeldlys"
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr "Lys lêers"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "Agtergrondlys"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "Beeldlêers"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "agtergronde.lys"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "Lys lêer"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "Skep agtergrondlys"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "Redigeer agtergrondlys"
 
@@ -586,11 +621,6 @@ msgstr "Skerm %d, Monitor %d"
 msgid "_Menu"
 msgstr "_Kieslys"
 
-#: settings/menu_settings.c:132
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "Kon nie xfce-menueditor laat begin nie: %s"
-
 #: settings/menu_settings.c:153
 msgid "Window List"
 msgstr "Vensterlys"
@@ -619,49 +649,48 @@ msgstr "Wys _programikone"
 msgid "_Edit desktop menu"
 msgstr "R_edigeer werkskermkieslys"
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Onbekende opsie: %s\n"
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr "Opsies is:\n"
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "-reload Herlaai alle instellings, verfris beeldlys\n"
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "-menu Wys die kieslys (by die huidige muisposisie)\n"
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "-windowlist Wys die vensterlys (by die huidige muisposisie)\n"
 
-#: src/windowlist.c:176
+#: src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Werkarea %d</b>"
 
-#: src/windowlist.c:184
+#: src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Werkarea %d</i>"
 
-#: src/windowlist.c:247 src/windowlist.c:250
+#: src/windowlist.c:268 src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "_Voeg werkarea by"
 
-#: src/windowlist.c:258
+#: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "Ver_wyder werkarea %d"
 
-#: src/windowlist.c:261
+#: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Ver_wyder werkarea '%s'"
-

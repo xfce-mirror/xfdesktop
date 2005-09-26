@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2005-05-13 03:10+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -115,7 +115,7 @@ msgid "quit"
 msgstr "kilép"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "Külső menü hozzáadása"
 
@@ -189,13 +189,13 @@ msgid "Select icon"
 msgstr "Ikon kiválasztása"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Minden fájl"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Kép fájlok"
 
@@ -246,7 +246,7 @@ msgstr ""
 msgid "Save as..."
 msgstr "Mentés másként..."
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "Szerkesztés"
 
@@ -385,7 +385,7 @@ msgid "/Other"
 msgstr "/Egyéb"
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "Xfce menü"
 
@@ -439,7 +439,7 @@ msgstr "_Gomb ikon:"
 msgid "Show _icons in menu"
 msgstr "Legyenek _ikonok a menüben"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -452,41 +452,41 @@ msgstr ""
 "Válasszon egy másik helyet, vagy nyomja meg a Mégsem gombot a "
 "párbeszédpanelen a változások elvetéséhez."
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr "Háttérkép fájl kiválasztása"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "Háttérlista-fájlnév kiválasztása"
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr "Listafájlok"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "Háttérlista"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "Képfájlok"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 #, fuzzy
 msgid "backdrops.list"
 msgstr "hátterek"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "Listafájl"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "Háttérlista létrehozása"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "Háttérlista szerkesztése"
 
@@ -648,24 +648,24 @@ msgstr "Progr_amikonok megjelenítése"
 msgid "_Edit desktop menu"
 msgstr "Munkaterület menü sz_erkesztése"
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Ismeretlen lehetőség: %s\n"
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr "Lehetőségek:\n"
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      Beállítások visszatöltése, képlista frissítése\n"
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Menü megjelenítése (az egér pozíciójánál)\n"
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist Ablaklista megjelenítése (az egér pozíciójánál)\n"

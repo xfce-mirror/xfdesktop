@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tamil XFDesktop 4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2003-09-24 17:36-0500\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -112,7 +112,7 @@ msgid "quit"
 msgstr ""
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr ""
 
@@ -188,13 +188,13 @@ msgid "Select icon"
 msgstr ""
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr ""
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 #, fuzzy
 msgid "Image Files"
 msgstr "ஓவியக் கோப்புகள்"
@@ -244,7 +244,7 @@ msgstr ""
 msgid "Save as..."
 msgstr ""
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 #, fuzzy
 msgid "Edit"
 msgstr "பட்டியலை திருத்துக"
@@ -387,7 +387,7 @@ msgid "/Other"
 msgstr ""
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr ""
 
@@ -443,7 +443,7 @@ msgstr ""
 msgid "Show _icons in menu"
 msgstr ""
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -455,43 +455,43 @@ msgstr ""
 "\n"
 "வேரோர் þடம் தேரிவுசெய்யவும் அல்லது உரையாடலில் 'நீக்கு' அமுத்தவும்"
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 #, fuzzy
 msgid "Select backdrop image file"
 msgstr "ஓவியம் கோப்பு தெரிவு செய்யவும்"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "பின்னணி-ஓவியம் பட்டியல் கோப்புப் பெயர் தெரிவுசெய்க"
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 #, fuzzy
 msgid "List Files"
 msgstr "பட்டியல் கோப்பு"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "பின்னணி-ஓவியம் பட்டியல்"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "ஓவியக் கோப்புகள்"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 #, fuzzy
 msgid "backdrops.list"
 msgstr "பின்னணி-ஓவியம் பட்டியல் தொகு"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "பட்டியல் கோப்பு"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "பின்னணி-ஓவியம் பட்டியல் படைக்கவும்"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "பின்னணி-ஓவியம் பட்டியல் தொகு"
 
@@ -672,24 +672,24 @@ msgstr ""
 msgid "_Edit desktop menu"
 msgstr ""
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr ""
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr ""
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
@@ -718,62 +718,3 @@ msgstr "வேலை þடம் %d"
 #, fuzzy, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "வேலை þடம் %d"
-
-#, fuzzy
-#~ msgid "Backdrop"
-#~ msgstr "பின்னணி-ஓவியம் பட்டியல்"
-
-#, fuzzy
-#~ msgid "Select backdrop color"
-#~ msgstr "பின்னணி வண்ணத்தை தெரிவுசெய்யவும்"
-
-#~ msgid "New.list"
-#~ msgstr "புதிய.பட்டியல்"
-
-#, fuzzy
-#~ msgid "Desktop background"
-#~ msgstr ""
-#~ "கணிமேசை: \n"
-#~ "பின்னணி-ஓவியம்"
-
-#~ msgid "_Browse..."
-#~ msgstr "_மேலோடு..."
-
-#~ msgid "Background"
-#~ msgstr "பின்னணி"
-
-#~ msgid "Background Settings"
-#~ msgstr "பின்னணி அமைப்புகள்"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr ""
-#~ "கணிமேசை: \n"
-#~ "வேலை þடங்கள்"
-
-#~ msgid "Change name"
-#~ msgstr "பெயர் மாற்றவும்"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "வேலை þடம் பெயர் மாற்ற அதனை தெரிவுசெய்க"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "எத்தனை வேலை இடங்கள்:"
-
-#~ msgid "Workspaces"
-#~ msgstr "வேலை þடங்கள்"
-
-#~ msgid "Workspace names"
-#~ msgstr "வேலை þடங்களின் பெயர்கள்"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "xfdesktop பிழை: பின்னணி ஓவியம் ஏற்றப்படுகின்றது: %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "வேலை þடம் அழிக்கவும்"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr ""
-#~ "xfdesktop: அமைப்புகள் மேலாளருடன் þணைப்பு கொள்ள முடியவில்லை! நிறுவகலை "
-#~ "சரிபார்க்கவும்."

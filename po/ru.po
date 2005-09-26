@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2005-01-08 15:50+0500\n"
 "Last-Translator: Anthony Ivanoff <a-i@bk.ru>\n"
 "Language-Team: Russian\n"
@@ -116,7 +116,7 @@ msgid "quit"
 msgstr "выйти"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "Добавить внешнее меню"
 
@@ -190,13 +190,13 @@ msgid "Select icon"
 msgstr "Выберите значок"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Все файлы"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Файлы изображений"
 
@@ -247,7 +247,7 @@ msgstr ""
 msgid "Save as..."
 msgstr "Сохранить как..."
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "Изменить"
 
@@ -386,7 +386,7 @@ msgid "/Other"
 msgstr "/Другое"
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "Меню Xfce"
 
@@ -446,7 +446,7 @@ msgstr "Значок:"
 msgid "Show _icons in menu"
 msgstr "Показывать значки в меню"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -458,40 +458,40 @@ msgstr ""
 "\n"
 "Выберите другой каталог или нажмите \"Отмена\""
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr "Выберите фоновую картинку"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "Выберите файл со списком фоновых картинок"
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr "Файлы списков"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "Список фоновых изображений"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "Файлы изображений"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "Файл списка"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "Создать список фоновых изображений"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "Изменить список фоновых изображений"
 
@@ -653,25 +653,25 @@ msgstr "Показать значки приложений"
 msgid "_Edit desktop menu"
 msgstr "Изменить меню рабочего стола"
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: неизвестный параметр: %s\n"
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr "Параметры:\n"
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload      Перезагрузить все настройки, обновить список изображений\n"
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Показать меню (в месте, где находится курсор мыши)\n"
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
@@ -700,6 +700,3 @@ msgstr "Удалить рабочее место %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Удалить рабочее место '%s'"
-
-#~ msgid "_Menu file:"
-#~ msgstr "Файл меню:"

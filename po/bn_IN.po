@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2005-04-08 12:28+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bangla INDIA<LL@li.org>\n"
@@ -113,7 +113,7 @@ msgid "quit"
 msgstr "প্রস্থান"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "একটি বহিস্থিত মেনু যোগ করুন"
 
@@ -187,13 +187,13 @@ msgid "Select icon"
 msgstr "আইকন নির্বাচন করুন"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "সমস্ত ফাইল"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "ছবির ফাইল"
 
@@ -244,7 +244,7 @@ msgstr ""
 msgid "Save as..."
 msgstr "নতুন রূপে সংরক্ষণ..."
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "সম্পাদনা"
 
@@ -383,7 +383,7 @@ msgid "/Other"
 msgstr "/অন্যান্য"
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "Xfce মেনু"
 
@@ -437,7 +437,7 @@ msgstr "বাটন আইকন:(_B)"
 msgid "Show _icons in menu"
 msgstr "মেনুর মধ্যে আইকন প্রদর্শন করা হবে (_i)"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -450,40 +450,40 @@ msgstr ""
 "অনুগ্রহ করে একটি পৃথক অবস্থান নির্বাচন করুন অথবা ডায়লগের মধ্যে বাতিল টিপে আপনার করা "
 "পরিবর্তনগুলি অগ্রাহ্য করুন"
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr "পটভূমির জন্য ছবির ফাইল নির্বাচন করুন"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "পটভুমির তালিকায় ফাইলের নাম নির্বাচন করুন"
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr "ফাইল তালিকাভুক্ত করুন"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "পটভূমির তালিকা"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "ছবির ফাইল"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "তালিকার ফাইল"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "পটভূমির তালিকা নির্বাচন করুন"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "পটভূমির তালিকা সম্পাদন করুন"
 
@@ -645,25 +645,25 @@ msgstr "অ্যাপ্লিকেশনের আইকন প্রদর�
 msgid "_Edit desktop menu"
 msgstr "ডেস্কটপ মেনু সম্পাদন করুন (_E)"
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: অজানা অপশন: %s\n"
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr "অপশনগুলি হল:\n"
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload      সমস্ত বৈশিষ্ট্য পুনরায় লোড করুন, ছবির তালিকা নতুন করে প্রদর্শন করুন\n"
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        মেনু পপ-আপ করবে (মাউসের বর্তমান অবস্থানে)\n"
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  উইন্ডোর তালিকা পপ-আপ করবে (মাউসের বর্তমান অবস্থানে)\n"
@@ -691,21 +691,3 @@ msgstr "কর্মক্ষেত্র %d মুছে ফেলুন (_R)"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "কর্মক্ষেত্র '%s' মুছে ফেলুন (_R)"
-
-#~ msgid "_Menu file:"
-#~ msgstr "মেনু ফাইল: (_M)"
-
-#~ msgid "Graphical tool for editing the Xfce 4 menu"
-#~ msgstr "Xfce 4 মেনু সম্পাদন করতে ব্যবহৃত গ্রাফিকাল টুল"
-
-#~ msgid "Menu Editor"
-#~ msgstr "মেনু এডিটর"
-
-#~ msgid "Xfce 4 Menu Editor"
-#~ msgstr "Xfce 4 মেনু এডিটর"
-
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "Xfce 4 ডেস্কটপ নিয়ন্ত্রক সংক্রান্ত বৈশিষ্ট্য"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "Xfce 4 ডেস্কটপের বৈশিষ্ট্য"

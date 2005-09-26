@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2004-09-12 13:49+0300\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -112,7 +112,7 @@ msgid "quit"
 msgstr "выйсьці"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "Дадаць вонкавае мэню"
 
@@ -186,13 +186,13 @@ msgid "Select icon"
 msgstr "Вылучыце значку"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Усе файлы"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Файлы з відарысамі"
 
@@ -243,7 +243,7 @@ msgstr ""
 msgid "Save as..."
 msgstr "Захаваць як..."
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "Рэдагаваць"
 
@@ -382,7 +382,7 @@ msgid "/Other"
 msgstr "/Іншае"
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "Мэню Xfce"
 
@@ -442,7 +442,7 @@ msgstr "Значка _кнопкі:"
 msgid "Show _icons in menu"
 msgstr "Паказваць _значкі ў мэню"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -455,40 +455,40 @@ msgstr ""
 "Калі ласка, абярыце іншае знаходжаньне альбо націсьніце адмену ў дыялёге, "
 "каб скасаваць зьмены, якія вы зрабілі"
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr "Вылучыце файл зь відарысам"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "Абярыце файл са сьпісам тла"
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr "Сьпіс файлаў"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "Сьпіс тла"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "Файлы з відарысамі"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "backgrounds.list"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "Файл сьпіса"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "Стварыць сьпіс тла"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "Рэдагаваць сьпіс тла"
 
@@ -650,24 +650,24 @@ msgstr "Паказваць значкі д_астасаваньняў"
 msgid "_Edit desktop menu"
 msgstr "_Рэдагаваць мэню стальца"
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: невядомы выбар: %s\n"
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr "Выбары:\n"
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      Перачытаць усе наладкі, абнавіць сьпіс відарысаў\n"
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Паказаць мэню (побач з мышой)\n"
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Паказаць сьпіс вокнаў (побач з мышой)\n"
@@ -695,83 +695,3 @@ msgstr "Вы_даліць працоўную прастору %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Вы_даліць працоўную прастору \"%s\""
-
-#~ msgid "_Menu file:"
-#~ msgstr "Файл _мэню:"
-
-#~ msgid "Backdrop"
-#~ msgstr "Тло"
-
-#~ msgid "Adding files from directory %s..."
-#~ msgstr "Даданьне файлаў з тэчкі %s..."
-
-#~ msgid "Adding files from list %s..."
-#~ msgstr "Даданьне файлаў з сьпіса %s..."
-
-#~ msgid "Adding multiple files..."
-#~ msgstr "Даданьне некалькіх файлаў..."
-
-#~ msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-#~ msgstr "XfceDesktopMenu: немагчыма адшукаць xfce-registered-categories.xml"
-
-#~ msgid "%s: missing or unknown attribute for 'related' element\n"
-#~ msgstr "%s: прапушчан ці невядомы атрыбут для элемэнта \"related\"\n"
-
-#~ msgid "%s: unknown xml element %s\n"
-#~ msgstr "%s: невядомы xml элемэнт %s\n"
-
-#~ msgid "Not yet implemented!"
-#~ msgstr "Яшчэ не рэалізавана!"
-
-#~ msgid ""
-#~ "%s: Unable to initialise menu module. Right-click menu will be "
-#~ "unavailable.\n"
-#~ msgstr ""
-#~ "%s: немагчыма ініцыялізаваць модуль мэню. Мэню правае кнопкі мышы будзе "
-#~ "недаступным.\n"
-
-#~ msgid "New.list"
-#~ msgstr "Новы.сьпіс"
-
-#~ msgid "Select background color"
-#~ msgstr "Вылучыце колер тла"
-
-#~ msgid "_Browse..."
-#~ msgstr "Аг_ляд..."
-
-#~ msgid "Background"
-#~ msgstr "Тло"
-
-#~ msgid "Background Settings"
-#~ msgstr "Усталёўкі тла"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr "Сталец: працоўныя прасторы"
-
-#~ msgid "Change name"
-#~ msgstr "Зьмяніць назву"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Пстрыкніце па назве працоўнае прасторы каб рэдагаваць яе"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "Колькасьць працоўных прастораў:"
-
-#~ msgid "Workspaces"
-#~ msgstr "Працоўныя прасторы"
-
-#~ msgid "Workspace names"
-#~ msgstr "Назвы працоўных прастораў"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "xfdesktop: памылка загрузкі відарыса тла: %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "Выдаліць працоўную прастору"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr ""
-#~ "xfdesktop: немагчыма далучыцца да кіраўніка ўсталёўвак! Калі ласка, "
-#~ "праверце ўсталёўку."

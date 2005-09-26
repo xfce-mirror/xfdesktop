@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2004-10-18 21:16+0300\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -111,7 +111,7 @@ msgid "quit"
 msgstr "çık"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "Hârici bir menü ekle"
 
@@ -185,13 +185,13 @@ msgid "Select icon"
 msgstr "Simge seç"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Tüm Dosyalar"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Resim Dosyaları"
 
@@ -243,7 +243,7 @@ msgstr ""
 msgid "Save as..."
 msgstr "Farklı Kaydet..."
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "Düzenle"
 
@@ -382,7 +382,7 @@ msgid "/Other"
 msgstr "/Diğer"
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "Xfce Menüsü"
 
@@ -442,7 +442,7 @@ msgstr "_Düğme simgesi:"
 msgid "Show _icons in menu"
 msgstr "Menüde _simge göster"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -455,40 +455,40 @@ msgstr ""
 "Lütfen kaydetmek için başka bir yer seçin yada diyalogda iptale basarak "
 "değişiklikleri gözardı edin"
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr "Arka plan için resim dosyası seç"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "Arka plan için liste dosyası seçin"
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr "Liste Dosyaları"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "Arka Plan Listesi"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "Görüntü dosyaları"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "arkaplan.list"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "Liste dosyası"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "Arka plan listesi oluştur"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "Arka plan listesi düzenle"
 
@@ -650,24 +650,24 @@ msgstr "_Uygulama simgelerini göster"
 msgid "_Edit desktop menu"
 msgstr "Masaüstü menüsünü düzenle"
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Bilinmeyen seçenek: %s\n"
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr "Seçenekler:\n"
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "     -reload     Tüm seçenkleri ve resim listelerini yeniden yükle\n"
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Seçenek menüsünü aç (fare imleci konumunda)\n"
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Pencere listesi menüsünü aç (fare imleci konumunda)\n"
@@ -695,68 +695,3 @@ msgstr "Çalışma alanı %d'yi _Kaldır"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Çalışma alanı '%s'i _Kaldır"
-
-#~ msgid "_Menu file:"
-#~ msgstr "_Menü dosyası:"
-
-#~ msgid "Backdrop"
-#~ msgstr "Arka Plan"
-
-#~ msgid "Adding files from directory %s..."
-#~ msgstr "%s dizininden simgeler ekleniyor..."
-
-#~ msgid "Adding files from list %s..."
-#~ msgstr "%s listesinden dosyalar ekleniyor..."
-
-#~ msgid "Adding multiple files..."
-#~ msgstr "Çoklu dosya ekleniyor..."
-
-#, fuzzy
-#~ msgid "Select backdrop color"
-#~ msgstr "Arka plan rengi seç"
-
-#~ msgid "New.list"
-#~ msgstr "Yeni.liste"
-
-#~ msgid "Desktop background"
-#~ msgstr "Masaüstü arka plan"
-
-#~ msgid "_Browse..."
-#~ msgstr "_Gözat..."
-
-#~ msgid "Background"
-#~ msgstr "Arka Plan"
-
-#~ msgid "Background Settings"
-#~ msgstr "Arka Plan Ayarları"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr "Masaüstü: çalışma alanları"
-
-#~ msgid "Change name"
-#~ msgstr "İsim değiştir"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Düzenlemek için bir çalışma alanı ismine tıklayın"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "Çalışma alanlarının sayısı:"
-
-#~ msgid "Workspaces"
-#~ msgstr "Çalışma alanları"
-
-#~ msgid "Workspace names"
-#~ msgstr "Çalışma alanı isimleri"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "xfdesktop hatası: arka plan görüntüsü yükleme: %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "Çalışma alanı sil"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr ""
-#~ "xfdesktop: ayar yöneticisine bağlanamıyor! Lütfen kurulumunuzu gözden "
-#~ "geçirin."

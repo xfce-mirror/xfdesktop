@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop-fa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2004-09-29 17:27+0330\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian\n"
@@ -117,7 +117,7 @@ msgid "quit"
 msgstr "ترک"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "افزودن یک منوی بیرونی"
 
@@ -191,13 +191,13 @@ msgid "Select icon"
 msgstr "انتخاب شمایل"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "همه پرونده‌ها"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "پرونده‌های تصویر"
 
@@ -248,7 +248,7 @@ msgstr ""
 msgid "Save as..."
 msgstr "ذخیره با نام..."
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "ویرایش"
 
@@ -387,7 +387,7 @@ msgid "/Other"
 msgstr "/دیگر"
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "منوی Xfce"
 
@@ -447,7 +447,7 @@ msgstr "شمایل _دکمه:"
 msgid "Show _icons in menu"
 msgstr "نشان دادن _شمایل‌ها در منو"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -460,40 +460,40 @@ msgstr ""
 "لطفا مکان دیگری را انتخاب کرده یا برای دور ریختن تغییرات خود دکمه‌ی انصراف "
 "رادر پنجره‌ی گفتگو فشار دهید"
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr "انتخاب کردن پرونده‌ی تصویر زمینه"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "انتخاب کردن نام پرونده‌ی لیست زمینه "
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr "پرونده‌های لیست"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "لیست زمینه"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "پرونده‌های تصویر"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "لیست.زمینه‌ها"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "پرونده‌ی لیست"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "ایجاد کردن لیست زمینه"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "ویرایش کردن لیست زمینه"
 
@@ -655,25 +655,25 @@ msgstr "نشان دادن شمایل‌های برنامه‌های _کاربر�
 msgid "_Edit desktop menu"
 msgstr "_ویرایش منوی رومیزی"
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: گزینه ناشناخته: %s\n"
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr "گزینه‌ها عبارتند از:\n"
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload     همه تنظیمات را بارگذاری مجدد کرده و لیست تصویر نوسازی میشود\n"
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        ,باز کردن منو (در جای موشی کنونی)\n"
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  باز کردن لیست پنجره (در جای موشی کنونی )\n"
@@ -701,18 +701,3 @@ msgstr "بردا_شتن فضای کار %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "بردا_شتن فضای کار '%s'"
-
-#~ msgid "_Menu file:"
-#~ msgstr "پرونده _منو:"
-
-#~ msgid "Backdrop"
-#~ msgstr "زمینه"
-
-#~ msgid "Adding files from directory %s..."
-#~ msgstr "افزودن پرونده‌ها از شاخه‌ی %s..."
-
-#~ msgid "Adding files from list %s..."
-#~ msgstr "افزودن پرونده‌ها از لیست %s..."
-
-#~ msgid "Adding multiple files..."
-#~ msgstr "افزودن چندین پرونده..."

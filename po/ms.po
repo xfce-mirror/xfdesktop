@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop 4.0.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2004-02-07 23:28+0800\n"
 "Last-Translator: Harun Musa <mharun@gmx.net>\n"
 "Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
@@ -112,7 +112,7 @@ msgid "quit"
 msgstr ""
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr ""
 
@@ -188,13 +188,13 @@ msgid "Select icon"
 msgstr ""
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr ""
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 #, fuzzy
 msgid "Image Files"
 msgstr "Fail imej"
@@ -244,7 +244,7 @@ msgstr ""
 msgid "Save as..."
 msgstr ""
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 #, fuzzy
 msgid "Edit"
 msgstr "Edit senarai"
@@ -387,7 +387,7 @@ msgid "/Other"
 msgstr ""
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr ""
 
@@ -443,7 +443,7 @@ msgstr ""
 msgid "Show _icons in menu"
 msgstr ""
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -456,43 +456,43 @@ msgstr ""
 "Sila pilih lokasi lain atau tekan batal dalam dialog untuk abaikan ubahan "
 "anda"
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 #, fuzzy
 msgid "Select backdrop image file"
 msgstr "Pilih fail imej"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "Pilih namail senarai latarbelakang"
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 #, fuzzy
 msgid "List Files"
 msgstr "Senarai fail"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "Senarai Latarbelakang"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "Fail imej"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 #, fuzzy
 msgid "backdrops.list"
 msgstr "Edit senarai latarbelakang"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "Senarai fail"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "Cipta senarai latarbelakang"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "Edit senarai latarbelakang"
 
@@ -673,24 +673,24 @@ msgstr ""
 msgid "_Edit desktop menu"
 msgstr ""
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr ""
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr ""
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
@@ -719,57 +719,3 @@ msgstr "Ruangkerja %d"
 #, fuzzy, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Ruangkerja %d"
-
-#, fuzzy
-#~ msgid "Backdrop"
-#~ msgstr "Senarai Latarbelakang"
-
-#, fuzzy
-#~ msgid "Select backdrop color"
-#~ msgstr "Pilih warna latarbelakang"
-
-#~ msgid "New.list"
-#~ msgstr "Cipta.senarai"
-
-#~ msgid "Desktop background"
-#~ msgstr "Latarbelakang Meja"
-
-#~ msgid "_Browse..."
-#~ msgstr "_Lungsur..."
-
-#~ msgid "Background"
-#~ msgstr "Latarbelakang"
-
-#~ msgid "Background Settings"
-#~ msgstr "Tetapan Latarbelakang"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr "Meja: ruangkerja"
-
-#~ msgid "Change name"
-#~ msgstr "Tukarnama"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Klik atas nama ruangkerja untuk edit"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "Bilangan ruangkerja"
-
-#~ msgid "Workspaces"
-#~ msgstr "Ruangkerja"
-
-#~ msgid "Workspace names"
-#~ msgstr "Nama ruangkerja"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "ralat xfdesktop: memuat imej latarbelakang: %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "Padam ruangkerja"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr ""
-#~ "xfdesktop: tak boleh sambung ke pengurus tetapan!Sila periksa pemasangan "
-#~ "anda."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2005-03-06 14:25+0800\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>\n"
 "Language-Team:  <>\n"
@@ -113,7 +113,7 @@ msgstr "退出"
 
 # NOTE 這裡的「Add」是在原地插入選單，並非新增之意
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "插入外置選單"
 
@@ -190,13 +190,13 @@ msgid "Select icon"
 msgstr "選擇圖示"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "所有檔案"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "影像檔案"
 
@@ -248,7 +248,7 @@ msgstr ""
 msgid "Save as..."
 msgstr "另存新檔..."
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "編輯"
 
@@ -389,7 +389,7 @@ msgid "/Other"
 msgstr "/其他"
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "Xfce 選單"
 
@@ -443,7 +443,7 @@ msgstr "按鈕圖示(_B)："
 msgid "Show _icons in menu"
 msgstr "在選單內顯示圖示(_I)"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -455,43 +455,43 @@ msgstr ""
 "\n"
 "請選擇其他位置，或在對話框中點選「取消」以放棄所作的修改"
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr "選擇背景影像檔案"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "選擇背景清單檔案名稱"
 
 # NOTE「List file」表示「含檔案列表的檔案」，並非「列出檔案」之意
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr "清單檔案"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "背景清單"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "影像檔案"
 
 # TODO check
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "背景清單"
 
 # NOTE「List file」表示「含檔案列表的檔案」，並非「列出檔案」之意
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "清單檔案"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "建立背景列表"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "編輯背景列表"
 
@@ -656,24 +656,24 @@ msgstr "顯示應用程式圖示(_A)"
 msgid "_Edit desktop menu"
 msgstr "修改桌面選單(_E)"
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s：不明的選項：%s\n"
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr "選項如下：\n"
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      刷新所有選項及圖像清單\n"
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        (在目滑鼠游標的所在位置) 彈出選單\n"
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  (在目前滑鼠游標的所在位置) 彈出視窗清單\n"
@@ -702,67 +702,3 @@ msgstr "移除工作區 %d (_R)"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "移除工作區「%s」(_R)"
-
-#~ msgid "_Menu file:"
-#~ msgstr "選單檔案(_M)："
-
-#~ msgid "Backdrop"
-#~ msgstr "背景"
-
-# TODO check translation
-#~ msgid "Adding files from directory %s..."
-#~ msgstr "由目錄 %s 新增檔案中..."
-
-#~ msgid "Adding files from list %s..."
-#~ msgstr "由清單 %s 新增檔案中..."
-
-# TODO 譯文有待改進
-#~ msgid "Adding multiple files..."
-#~ msgstr "新增多個檔案中..."
-
-#~ msgid "Select backdrop color"
-#~ msgstr "選擇背景顏色"
-
-#~ msgid "New.list"
-#~ msgstr "新列表"
-
-#~ msgid "Desktop background"
-#~ msgstr "桌面背景"
-
-#~ msgid "_Browse..."
-#~ msgstr "瀏覽(_B)..."
-
-#~ msgid "Background"
-#~ msgstr "背景"
-
-#~ msgid "Background Settings"
-#~ msgstr "背景設定"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr "桌面：工作區"
-
-#~ msgid "Change name"
-#~ msgstr "改變名稱"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "點選一個工作區名稱來編輯其名稱"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "工作區數目："
-
-#~ msgid "Workspaces"
-#~ msgstr "工作區"
-
-#~ msgid "Workspace names"
-#~ msgstr "工作區名稱"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "xfdesktop 錯誤：載入背景影像： %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "刪除工作區"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr "xfdesktop: 無法連接到設定管理程式！請檢查您的安裝是否正確。"

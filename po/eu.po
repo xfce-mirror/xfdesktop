@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2005-03-20 23:08+0100\n"
 "Last-Translator: Piarres Beobide Egaña <pi@beobide.net>\n"
 "Language-Team: Euskara <librezale@librezale.org>\n"
@@ -115,7 +115,7 @@ msgid "quit"
 msgstr "irten"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "Kanpo menu bat gehitu"
 
@@ -189,13 +189,13 @@ msgid "Select icon"
 msgstr "Ikonoa aukeratu"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Fitxategi Guztiak"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Irudi Fitxategiak"
 
@@ -246,7 +246,7 @@ msgstr ""
 msgid "Save as..."
 msgstr "Gorde honela..."
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "Editatu"
 
@@ -385,7 +385,7 @@ msgid "/Other"
 msgstr "/Besteak"
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "Xfce Menua"
 
@@ -439,7 +439,7 @@ msgstr "_Botoi ikonoa:"
 msgid "Show _icons in menu"
 msgstr "Erakutsi _ikonoak menuan"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -452,40 +452,40 @@ msgstr ""
 "Mesedez, beste kokapen bat aukeratu edo ezeztatu sakatu aldaketak ez "
 "gordetzeko"
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr "Aukeratu irudi fitxategi bat"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "Aukeratu atzekalde zerrenda bat duen fitxategia"
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr "Zerrenda fitxategia"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "Atzekaldeen zerrenda"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "Irudi fitxategiak"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "Zerrenda fitxategia"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "Atzekalde zerrenda egin"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "Editatu atzekalde zerrenda"
 
@@ -647,24 +647,24 @@ msgstr "Bistarazi _aplikazio ikonoak"
 msgid "_Edit desktop menu"
 msgstr "_Editatu idazmahai menua"
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Aukera ezezaguna: %s\n"
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr "Aukerak:\n"
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "-reload Ezarpen guztiak birkargatu, irudi zerrenda freskatu\n"
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Menua bistarazi (saguaren kokalekuan)\n"
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Leiho zerrenda bistarazi (saguaren kokalekuan)\n"
@@ -692,85 +692,3 @@ msgstr "%d Idazmahi Birtuala _Ezabatu"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "'%s' Idazmahai Birtuala _Ezabatu"
-
-#~ msgid "_Menu file:"
-#~ msgstr "_Menu fitxategia:"
-
-#~ msgid "Backdrop"
-#~ msgstr "Atzekaldeen zerrenda"
-
-#~ msgid "Adding files from directory %s..."
-#~ msgstr "Fitxategiak %s karpetatik gehitzen..."
-
-#~ msgid "Adding files from list %s..."
-#~ msgstr "Fitxategiak %s zerrendatik gehitzen..."
-
-#~ msgid "Adding multiple files..."
-#~ msgstr "Fitxategi anitz gehitzen..."
-
-#~ msgid "XfceDesktopMenu: Unable to find xfce-registered-categories.xml"
-#~ msgstr "XfceDesktopMenu: Ezin da xfce-registered-categories.xml aurkitu"
-
-#~ msgid "%s: missing or unknown attribute for 'related' element\n"
-#~ msgstr ""
-#~ "%s: ez da aurkitzen edo atributu ezezaguna 'related' osagaiarentzat\n"
-
-#~ msgid "%s: unknown xml element %s\n"
-#~ msgstr "%s: %s xml elmentu ezezaguna\n"
-
-#~ msgid "Not yet implemented!"
-#~ msgstr "Ez da erabilgarri oraindik!"
-
-#~ msgid ""
-#~ "%s: Unable to initialise menu module. Right-click menu will be "
-#~ "unavailable.\n"
-#~ msgstr ""
-#~ "%s: Ezin da menu modulua abiarazi. Eskuina klikatuz menua ez da "
-#~ "erabilgarri egongo.\n"
-
-#, fuzzy
-#~ msgid "Select backdrop color"
-#~ msgstr "Aukeratu atzekaldeko kolorea"
-
-#~ msgid "New.list"
-#~ msgstr "Lista berria"
-
-#~ msgid "_Browse..."
-#~ msgstr "_Arakatu..."
-
-#~ msgid "Background"
-#~ msgstr "Idazmahi atzekaldea"
-
-#~ msgid "Background Settings"
-#~ msgstr "Idazmahi Atzekaldearen Konfigurazioa"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr "Idazmaia: idazmai birtualak"
-
-#~ msgid "Change name"
-#~ msgstr "Izena aldatu"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Sakatu mahaigainaren izena aldatzeko"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "Mahaigain birtualen zenbakia:"
-
-#~ msgid "Workspaces"
-#~ msgstr "Idazmahai birtualak"
-
-#~ msgid "Workspace names"
-#~ msgstr "Mahaigain birtualen izena"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "xfdesktop-en akatsa: azpiko fitxategia kargatzen %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "Idazmahi birtuala kendu"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr ""
-#~ "xfdesktop:Ezin izan da aukeren administratzailearekin konektatu! Mesedez, "
-#~ "egiaztatuzure instalazioa."

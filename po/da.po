@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2005-02-25 13:17+0100\n"
 "Last-Translator: Jesper Berth <bigsanta@berthit.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -111,7 +111,7 @@ msgid "quit"
 msgstr "Luk"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "Tilføj en ekstern menu"
 
@@ -185,13 +185,13 @@ msgid "Select icon"
 msgstr "Vælg ikon"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "All filer"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Billed filer"
 
@@ -242,7 +242,7 @@ msgstr ""
 msgid "Save as..."
 msgstr "Gem som..."
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "Ændre"
 
@@ -381,7 +381,7 @@ msgid "/Other"
 msgstr "/Andre"
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "Xfce Menu"
 
@@ -441,7 +441,7 @@ msgstr "Knap ikon:"
 msgid "Show _icons in menu"
 msgstr "Vis ikoner i menuen"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -453,40 +453,40 @@ msgstr ""
 "\n"
 "Vælg en anden lokation eller tryk afbryd for at kassere dine ændringer"
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr "Vælg Baggrunds billed fil"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "Vælg Baggrunds liste filnavn"
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr "List filer"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "Baggrunds liste"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "Billed filer"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "Liste fil"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "Lav Baggrunds liste"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "Ændre Baggrunds liste"
 
@@ -648,24 +648,24 @@ msgstr "Vis program ikoner"
 msgid "_Edit desktop menu"
 msgstr "Ændre desktop menu"
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Ukendt valg: %s\n"
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr "Valgmuligheder: \n"
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -genopfrisk\t  Genopfrisk alle indstillinger, og billled liste\n"
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "     -menu \t  Åben menuen (på musens possition)\n"
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -vinduesliste  Åben vindues listen (på musens possition)\n"
@@ -693,34 +693,3 @@ msgstr "Fjern arbejdsområde %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Fjern arbejdsområde '%s'"
-
-#~ msgid "Not yet implemented!"
-#~ msgstr "Er ikke implementeret endnu!"
-
-#~ msgid "%s: missing or unknown attribute for 'related' element\n"
-#~ msgstr "%s: mangler eller ukendt attribut for 'relateret' element\n"
-
-#~ msgid "%s: unknown xml element %s\n"
-#~ msgstr "%s: ukendt xml element %s\n"
-
-#~ msgid "_Menu file:"
-#~ msgstr "Menu fil:"
-
-#~ msgid "Backdrop"
-#~ msgstr "Baggrund"
-
-#~ msgid "Adding files from directory %s..."
-#~ msgstr "Tilføj filer fra bibliotek %s..."
-
-#~ msgid "Adding files from list %s..."
-#~ msgstr "Tilføj filer fra listen %s..."
-
-#~ msgid "Adding multiple files..."
-#~ msgstr "Tilføj flere filer..."
-
-#~ msgid ""
-#~ "%s: Unable to initialise menu module. Right-click menu will be "
-#~ "unavailable.\n"
-#~ msgstr ""
-#~ "%s: Kunne ikke initialicere menu modul. Højre kliks menuen vil ikke være "
-#~ "tilgængelig.\n"

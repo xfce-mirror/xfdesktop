@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2005-01-06 11:43+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -111,7 +111,7 @@ msgid "quit"
 msgstr "вийти"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "Додати зовнішнє меню"
 
@@ -185,13 +185,13 @@ msgid "Select icon"
 msgstr "Виберіть значок"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Усі файли"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Файли зображень"
 
@@ -242,7 +242,7 @@ msgstr ""
 msgid "Save as..."
 msgstr "Зберегти як..."
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "Правка"
 
@@ -381,7 +381,7 @@ msgid "/Other"
 msgstr "/Інше"
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "Меню Xfce"
 
@@ -441,7 +441,7 @@ msgstr "_Значок:"
 msgid "Show _icons in menu"
 msgstr "Показувати з_начки у меню"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -453,40 +453,40 @@ msgstr ""
 "\n"
 "Виберіть інший каталог або натисніть \"Скасувати\""
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr "Виберіть зображення для тла"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "Виберіть файл списку з зображеннями для тла"
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr "Файл зі списком"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "Список зображень для тла"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "Файли зображень"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "Файл зі списком"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "Створити список зображень для тла"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "Редагувати список зображень для тла"
 
@@ -648,25 +648,25 @@ msgstr "Показувати значки п_рограм"
 msgid "_Edit desktop menu"
 msgstr "_Правка меню стільниці"
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Невідомий параметр: %s\n"
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr "Параметри:\n"
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload      Перезавантажити усі параметри, оновити перелік зображень\n"
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Показати меню (у місці, де знаходиться курсор миші)\n"
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
@@ -696,61 +696,3 @@ msgstr "В_идалити робочу область %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "В_идалити робочу область \"%s\""
-
-#~ msgid "_Menu file:"
-#~ msgstr "Файл _меню:"
-
-#, fuzzy
-#~ msgid "Backdrop"
-#~ msgstr "Список зображень для тла"
-
-#, fuzzy
-#~ msgid "Select backdrop color"
-#~ msgstr "Виберіть колір тла"
-
-#~ msgid "New.list"
-#~ msgstr "Додати список"
-
-#, fuzzy
-#~ msgid "Desktop background"
-#~ msgstr "Тло робочої стільниці"
-
-#~ msgid "_Browse..."
-#~ msgstr "Пере_глянути..."
-
-#~ msgid "Background"
-#~ msgstr "Тло"
-
-#~ msgid "Background Settings"
-#~ msgstr "Параметри тла"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr "робочі області"
-
-#~ msgid "Change name"
-#~ msgstr "Змінити назву"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Щоб змінити робочу область - клацніть на її назві"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "Кількість робочих областей:"
-
-#~ msgid "Workspaces"
-#~ msgstr "Робочі області"
-
-#~ msgid "Workspace names"
-#~ msgstr "Назви робочих областей"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "xfdesktop: помилка при завантаженні зображення тла: %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "Видалити робочу область"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr ""
-#~ "xfdesktop: неможливо під'єднатись до менеджера параметрів! Перевірте "
-#~ "правильність встановлення."

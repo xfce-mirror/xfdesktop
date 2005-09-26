@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-12 12:22+0100\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2005-05-04 20:05+0530\n"
 "Last-Translator: \n"
 "Language-Team:  <en@li.org>\n"
@@ -112,7 +112,7 @@ msgid "quit"
 msgstr "थांबवा"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "बाहेरील यादी समाविष्ट करा"
 
@@ -186,13 +186,13 @@ msgid "Select icon"
 msgstr "आयकॉन निवडा"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "सर्व फाईल्स"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "प्रतिमा फाईल्सची "
 
@@ -243,7 +243,7 @@ msgstr ""
 msgid "Save as..."
 msgstr "रक्षण याप्रमाणे..."
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "सपांदन"
 
@@ -382,7 +382,7 @@ msgid "/Other"
 msgstr "/बाकीचे"
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "Xfce यादी"
 
@@ -436,7 +436,7 @@ msgstr "बटन आयकॉन (_B):"
 msgid "Show _icons in menu"
 msgstr "यादीमध्ये आयकॉनस दाखवा (_i)"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -448,40 +448,40 @@ msgstr ""
 "\n"
 " कृपया दुसरी जागा निवडा किंवा बदल नष्ट करण्यासाठी डायलॉगमध्ये रद्द दाबा"
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr "बॅकड्रॉप प्रतिमा फाईल निवडा"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "बॅकड्रॉप सूची फाईलचे नाव निवडा"
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr "फाईल्सची सूची"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "बॅकड्रॉप सूची"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "प्रतिमा फाईल्सची"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "बॅकड्रॉपस.सूची"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "सूची फाईल"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "बॅकड्रॉप सूची तयार करा"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "बॅकड्रॉप सूचीचे संपादन करा"
 
@@ -643,25 +643,26 @@ msgstr "अॅप्लिकेशन आयकॉन दाखवा (_a)"
 msgid "_Edit desktop menu"
 msgstr "डेस्कटॉप यादी संपादन (_E)"
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: अपरिची पर्याय:%s\n"
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr "पर्याय:\n"
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "-रिलोड    सर्व रचना रिलोड करा, इमेजची सूची रिफ्रेश करा\n"
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "      -यादी        यादी दाखवा (माउस सध्या ज्या जागेवेर आहे तिथे)\n"
 
-#: src/main.c:304
-msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+#: src/main.c:252
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr " - विण्डोसूची    विण्डो ची सूची दाखवा (माउस सध्या ज्या जागेवेर आहे तिथे)\n"
 
 #: src/windowlist.c:193
@@ -687,4 +688,3 @@ msgstr "%d कार्यस्थान काढून टाका (_R)"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "%s कार्यस्थान काढून टाका (_R)"
-

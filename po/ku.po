@@ -5,16 +5,16 @@
 #
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2005-08-26 22:26+0200\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: n != 1\n"
 "Project-Id-Version: ku\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
+"PO-Revision-Date: 2005-08-26 22:26+0200\n"
 "Last-Translator: Erdal Ronahi <erdal.ronahi@gmail.com>\n"
 "Language-Team: Kurdish <gnu-ku-wergerandin@lists.sourceforge.net>\n"
-"POT-Creation-Date: 2005-01-10 19:37+0100\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: n != 1\n"
 "X-Poedit-Language: Kurdish\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: KBabel 1.10\n"
@@ -28,8 +28,7 @@ msgstr ""
 msgid "Core developer"
 msgstr ""
 
-#: menueditor/about_dialog.c:44
-#: menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
 #: menueditor/about_dialog.c:46
 msgid "Contributor"
 msgstr "Yên alîkarî kirine"
@@ -38,14 +37,12 @@ msgstr "Yên alîkarî kirine"
 msgid "Icon designer"
 msgstr ""
 
-#: menueditor/add_dialog.c:138
-#: menueditor/add_dialog.c:150
+#: menueditor/add_dialog.c:138 menueditor/add_dialog.c:150
 msgid "Add menu entry"
 msgstr ""
 
 #. Type
-#: menueditor/add_dialog.c:156
-#: menueditor/add_menu_dialog.c:98
+#: menueditor/add_dialog.c:156 menueditor/add_menu_dialog.c:98
 #: menueditor/edit_dialog.c:149
 msgid "Type:"
 msgstr "Cure:"
@@ -71,40 +68,32 @@ msgid "Quit"
 msgstr "Derkeve"
 
 #. Name
-#: menueditor/add_dialog.c:194
-#: menueditor/edit_dialog.c:263
-#: menueditor/edit_dialog.c:314
-#: menueditor/edit_dialog.c:353
+#: menueditor/add_dialog.c:194 menueditor/edit_dialog.c:263
+#: menueditor/edit_dialog.c:314 menueditor/edit_dialog.c:353
 msgid "Name:"
 msgstr "Nav:"
 
-#: menueditor/add_dialog.c:204
-#: menueditor/edit_dialog.c:264
+#: menueditor/add_dialog.c:204 menueditor/edit_dialog.c:264
 msgid "Command:"
 msgstr "Ferman:"
 
-#: menueditor/add_dialog.c:220
-#: menueditor/edit_dialog.c:255
-#: menueditor/edit_dialog.c:319
-#: menueditor/edit_dialog.c:358
+#: menueditor/add_dialog.c:220 menueditor/edit_dialog.c:255
+#: menueditor/edit_dialog.c:319 menueditor/edit_dialog.c:358
 #: menueditor/edit_dialog.c:396
 msgid "Icon:"
 msgstr "Îkon:"
 
 #. Start Notify check button
-#: menueditor/add_dialog.c:236
-#: menueditor/edit_dialog.c:275
+#: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:275
 msgid "Use startup _notification"
 msgstr ""
 
 #. Run in terminal check button
-#: menueditor/add_dialog.c:240
-#: menueditor/edit_dialog.c:276
+#: menueditor/add_dialog.c:240 menueditor/edit_dialog.c:276
 msgid "Run in _terminal"
 msgstr "Di termînalê de bimeşîne"
 
-#: menueditor/add_dialog.c:285
-#: menueditor/edit_dialog.c:468
+#: menueditor/add_dialog.c:285 menueditor/edit_dialog.c:468
 msgid "The command doesn't exist !"
 msgstr "Ev ferman tune!"
 
@@ -116,59 +105,47 @@ msgstr ""
 msgid "The 'Name' field is required."
 msgstr ""
 
-#: menueditor/add_dialog.c:356
-#: menueditor/dnd.c:153
-#: menueditor/menueditor.c:579
-#: menueditor/move.c:87
-#: menueditor/move.c:225
+#: menueditor/add_dialog.c:356 menueditor/dnd.c:153
+#: menueditor/menueditor.c:579 menueditor/move.c:87 menueditor/move.c:225
 msgid "--- separator ---"
 msgstr ""
 
-#: menueditor/add_dialog.c:381
-#: menueditor/edit_dialog.c:505
+#: menueditor/add_dialog.c:381 menueditor/edit_dialog.c:505
 msgid "quit"
 msgstr "derkeve"
 
-#: menueditor/add_menu_dialog.c:81
-#: menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:103
-#: menueditor/edit_dialog.c:152
+#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:152
 msgid "File"
 msgstr "Dosya"
 
-#: menueditor/add_menu_dialog.c:108
-#: menueditor/edit_dialog.c:157
+#: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:157
 msgid "System"
 msgstr "Pergal"
 
-#: menueditor/add_menu_dialog.c:123
-#: menueditor/edit_dialog.c:172
+#: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:172
 msgid "Source:"
 msgstr "Çavkanî:"
 
 #. Style
-#: menueditor/add_menu_dialog.c:136
-#: menueditor/edit_dialog.c:185
+#: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:185
 msgid "Style:"
 msgstr "Teşe:"
 
-#: menueditor/add_menu_dialog.c:139
-#: menueditor/edit_dialog.c:188
+#: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:188
 msgid "Simple"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:142
-#: menueditor/edit_dialog.c:191
+#: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:191
 msgid "Multilevel"
 msgstr ""
 
 #. Unique
-#: menueditor/add_menu_dialog.c:155
-#: menueditor/edit_dialog.c:204
+#: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:204
 msgid "_Unique entries only"
 msgstr ""
 
@@ -176,29 +153,21 @@ msgstr ""
 msgid "The 'Source' field is required."
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:218
-#: menueditor/add_menu_dialog.c:234
-#: menueditor/dnd.c:156
-#: menueditor/edit_dialog.c:521
-#: menueditor/edit_dialog.c:534
-#: menueditor/menueditor.c:618
-#: menueditor/move.c:111
-#: menueditor/move.c:249
+#: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:234
+#: menueditor/dnd.c:156 menueditor/edit_dialog.c:521
+#: menueditor/edit_dialog.c:534 menueditor/menueditor.c:618
+#: menueditor/move.c:111 menueditor/move.c:249
 msgid "--- include ---"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:235
-#: menueditor/dnd.c:161
-#: menueditor/edit_dialog.c:535
-#: menueditor/menueditor.c:621
-#: menueditor/move.c:114
-#: menueditor/move.c:252
+#: menueditor/add_menu_dialog.c:235 menueditor/dnd.c:161
+#: menueditor/edit_dialog.c:535 menueditor/menueditor.c:621
+#: menueditor/move.c:114 menueditor/move.c:252
 msgid "system"
 msgstr "pergal"
 
 #. Create dialog for editing
-#: menueditor/edit_dialog.c:103
-#: menueditor/edit_dialog.c:113
+#: menueditor/edit_dialog.c:103 menueditor/edit_dialog.c:113
 msgid "Edit menu entry"
 msgstr ""
 
@@ -207,8 +176,7 @@ msgid "Separators cannot be edited"
 msgstr ""
 
 #. Name
-#: menueditor/edit_dialog.c:403
-#: menueditor/new_dialog.c:100
+#: menueditor/edit_dialog.c:403 menueditor/new_dialog.c:100
 msgid "Title:"
 msgstr "Sernivîs:"
 
@@ -220,23 +188,18 @@ msgstr "Fermanê hilbijêre"
 msgid "Select icon"
 msgstr "Îkonê hilbijêre"
 
-#: menueditor/menueditor.c:440
-#: panel-plugin/desktop-menu-plugin.c:390
-#: settings/backdrop-mgr.c:414
-#: settings/backdrop-mgr.c:515
+#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr ""
 
-#: menueditor/menueditor.c:444
-#: panel-plugin/desktop-menu-plugin.c:396
-#: settings/backdrop-mgr.c:418
-#: settings/backdrop_settings.c:537
+#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr ""
 
-#: menueditor/menueditor.c:500
-#: menueditor/menueditor.c:903
+#: menueditor/menueditor.c:500 menueditor/menueditor.c:903
 msgid "Do you want to save before closing the menu ?"
 msgstr ""
 
@@ -248,8 +211,7 @@ msgstr ""
 msgid "Forget modifications"
 msgstr ""
 
-#: menueditor/menueditor.c:690
-#: menueditor/menueditor.c:749
+#: menueditor/menueditor.c:690 menueditor/menueditor.c:749
 #: menueditor/menueditor.c:901
 msgid "Question"
 msgstr "Pirs"
@@ -258,8 +220,7 @@ msgstr "Pirs"
 msgid "Do you want to save before opening the default menu ?"
 msgstr ""
 
-#: menueditor/menueditor.c:694
-#: menueditor/menueditor.c:753
+#: menueditor/menueditor.c:694 menueditor/menueditor.c:753
 #: menueditor/menueditor.c:905
 msgid "Ignore modifications"
 msgstr ""
@@ -272,8 +233,7 @@ msgstr ""
 msgid "Open menu file"
 msgstr ""
 
-#: menueditor/menueditor.c:799
-#: menueditor/menueditor.c:810
+#: menueditor/menueditor.c:799 menueditor/menueditor.c:810
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -286,7 +246,7 @@ msgstr ""
 msgid "Save as..."
 msgstr "Wekî ... tomar bike"
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "Biguherîne"
 
@@ -385,7 +345,7 @@ msgstr ""
 msgid "Bad datafile format !"
 msgstr ""
 
-#: menueditor/menueditor.c:1599
+#: menueditor/menueditor.c:1626
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "Dosiyê %s tune!"
@@ -407,8 +367,7 @@ msgid "Do you want to save before closing the file?"
 msgstr ""
 
 #. get the filename and name for the new menu
-#: menueditor/new_dialog.c:85
-#: menueditor/new_dialog.c:94
+#: menueditor/new_dialog.c:85 menueditor/new_dialog.c:94
 msgid "New menu"
 msgstr ""
 
@@ -425,85 +384,112 @@ msgstr ""
 msgid "/Other"
 msgstr "/Wekî din"
 
-#: panel-plugin/desktop-menu-plugin.c:205
-#: panel-plugin/desktop-menu-plugin.c:535
+#: panel-plugin/desktop-menu-plugin.c:279
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "Menuya Xfce"
 
-#: panel-plugin/desktop-menu-plugin.c:373
+#: panel-plugin/desktop-menu-plugin.c:493
 msgid "Select Icon"
 msgstr "Îkonê hilbijêre"
 
-#: panel-plugin/desktop-menu-plugin.c:375
+#: panel-plugin/desktop-menu-plugin.c:495
 msgid "Select Menu File"
 msgstr "Selekteer Kieslyslêer"
 
-#: panel-plugin/desktop-menu-plugin.c:404
+#: panel-plugin/desktop-menu-plugin.c:524
 msgid "Menu Files"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:465
-msgid "_Menu file:"
+#: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:499
+#: panel-plugin/desktop-menu-plugin.c:663
+msgid "Button _title:"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:676
+#, fuzzy
+msgid "Menu File"
+msgstr "Selekteer Kieslyslêer"
+
+#: panel-plugin/desktop-menu-plugin.c:688
+msgid "Use default _desktop menu file"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:697
+msgid "Use _custom menu file:"
+msgstr ""
+
+#: panel-plugin/desktop-menu-plugin.c:749
+#: panel-plugin/desktop-menu-plugin.c:751
+#, fuzzy
+msgid "_Edit Menu"
+msgstr "_Biguherîne"
+
+#: panel-plugin/desktop-menu-plugin.c:758
+#, fuzzy
+msgid "Icons"
+msgstr "Îkon:"
+
+#: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:524
+#: panel-plugin/desktop-menu-plugin.c:794
 msgid "Show _icons in menu"
 msgstr ""
 
-#: settings/backdrop-mgr.c:139
-#: src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your changes"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
 msgstr ""
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr ""
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr ""
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr ""
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr ""
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr ""
 
-#: settings/backdrop-mgr.c:610
-#: settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr ""
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr ""
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr ""
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr ""
 
 #. the dialog
-#: settings/backdrop_settings.c:132
-#: settings/backdrop_settings.c:836
+#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
 #: src/xfce-desktop.c:676
 msgid "Desktop"
 msgstr "Sermasê"
@@ -617,8 +603,7 @@ msgstr ""
 msgid "_Backdrop"
 msgstr ""
 
-#: settings/backdrop_settings.c:1119
-#: settings/backdrop_settings.c:1121
+#: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
 #, c-format
 msgid "Screen %d"
 msgstr ""
@@ -632,11 +617,6 @@ msgstr ""
 #: settings/backdrop_settings.c:1140
 msgid "_Menu"
 msgstr "_Menu"
-
-#: settings/menu_settings.c:132
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr ""
 
 #: settings/menu_settings.c:153
 msgid "Window List"
@@ -666,49 +646,48 @@ msgstr ""
 msgid "_Edit desktop menu"
 msgstr ""
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr ""
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr ""
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
 
-#: src/main.c:304
-msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+#: src/main.c:252
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 
-#: src/windowlist.c:176
+#: src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr ""
 
-#: src/windowlist.c:184
+#: src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr ""
 
-#: src/windowlist.c:247
-#: src/windowlist.c:250
+#: src/windowlist.c:268 src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr ""
 
-#: src/windowlist.c:258
+#: src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr ""
 
-#: src/windowlist.c:261
+#: src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr ""
-

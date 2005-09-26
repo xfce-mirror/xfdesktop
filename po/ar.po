@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2004-3-8 8:25+0300\n"
 "Last-Translator: saleh alhathal <hathalsal@hotmail.com>\n"
 "Language-Team: arabic\n"
@@ -116,7 +116,7 @@ msgid "quit"
 msgstr "خروج"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr ""
 
@@ -193,14 +193,14 @@ msgid "Select icon"
 msgstr "إختر أيقونة"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 #, fuzzy
 msgid "All Files"
 msgstr "ملف"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 #, fuzzy
 msgid "Image Files"
 msgstr "ملفات صور"
@@ -254,7 +254,7 @@ msgstr ""
 msgid "Save as..."
 msgstr ""
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 #, fuzzy
 msgid "Edit"
 msgstr "_تحرير"
@@ -405,7 +405,7 @@ msgid "/Other"
 msgstr "/أخرى"
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr ""
 
@@ -466,7 +466,7 @@ msgstr ""
 msgid "Show _icons in menu"
 msgstr ""
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -475,41 +475,41 @@ msgid ""
 "changes"
 msgstr ""
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 #, fuzzy
 msgid "Select backdrop image file"
 msgstr "إختر ملف صورة"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr ""
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr ""
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr ""
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "ملفات صور"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr ""
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr ""
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr ""
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr ""
 
@@ -690,24 +690,24 @@ msgstr ""
 msgid "_Edit desktop menu"
 msgstr ""
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr ""
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr ""
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
@@ -736,43 +736,3 @@ msgstr "حذف مساحة عمل"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr ""
-
-#, fuzzy
-#~ msgid "_Menu file:"
-#~ msgstr "فتح ملف قائمة XFCE4"
-
-#, fuzzy
-#~ msgid "Backdrop"
-#~ msgstr "خلفية"
-
-#, fuzzy
-#~ msgid "Not yet implemented!"
-#~ msgstr "لم يتم تطبيقها !!!"
-
-#~ msgid "Corrupted file or incorrect file format !\n"
-#~ msgstr "ملف فاسد او صيغة غير صحيحة !\n"
-
-#~ msgid "Bad datafile format !\n"
-#~ msgstr "صيغة الملف غير صالحة !\n"
-
-#, fuzzy
-#~ msgid "Select backdrop color"
-#~ msgstr "إختر لون الخلفية"
-
-#~ msgid "New.list"
-#~ msgstr "قائمة جديدة"
-
-#~ msgid "Desktop background"
-#~ msgstr "خلفية سطح المكتب"
-
-#~ msgid "File:"
-#~ msgstr "ملف :"
-
-#~ msgid "_Browse..."
-#~ msgstr "_تصفح..."
-
-#~ msgid "No Name"
-#~ msgstr "بلا إسم"
-
-#~ msgid "Move down the current entry"
-#~ msgstr "نقل المدخل للأسفل"

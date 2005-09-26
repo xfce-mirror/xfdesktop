@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
-"PO-Revision-Date: 2005-04-22 20:41+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
+"PO-Revision-Date: 2005-09-26 11:53+0900\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team:  <ca@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -116,7 +116,7 @@ msgid "quit"
 msgstr "sortir"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "Afegeix un menú extern "
 
@@ -190,13 +190,13 @@ msgid "Select icon"
 msgstr "Seleccioneu icona"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Tots els fitxers"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Fitxers d'imatge"
 
@@ -247,7 +247,7 @@ msgstr ""
 msgid "Save as..."
 msgstr "Desa com..."
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "Edita"
 
@@ -386,7 +386,7 @@ msgid "/Other"
 msgstr "/Altres"
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "Menú Xfce"
 
@@ -440,7 +440,7 @@ msgstr "_Botó d'icones"
 msgid "Show _icons in menu"
 msgstr "Mostrar _icones al menú"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -453,40 +453,40 @@ msgstr ""
 "Escolliu una altra ubicació o polseu cancel·la en la finestra de diàleg per "
 "descartar els canvis"
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr "Seleccioneu el fitxer de fons"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "Escolliu llistat de fons"
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr "Llista fitxers"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "Llista de fons"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "Fitxers d'imatge"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "Llista fitxers"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "Crea una llista de fons"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "Edita la llista de fons"
 
@@ -648,31 +648,36 @@ msgstr "Mostra les icones d'_aplicacions"
 msgid "_Edit desktop menu"
 msgstr "_Edita el menú d'escriptori"
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Opció desconeguda: %s\n"
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr "Les opcions són:\n"
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "-actualitza    Actualitza tots els paràmetres, actualitza la llista d'images\n"
+msgstr ""
+"-actualitza    Actualitza tots els paràmetres, actualitza la llista "
+"d'images\n"
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "- menú   Mostra el menú (a la posició actual del ratolí)\n"
 
-#: src/main.c:304
-msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "-llistat de finestres     Mostra el llistat de finestres (a la posició actual del ratolí)\n"
+#: src/main.c:252
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+"-llistat de finestres     Mostra el llistat de finestres (a la posició "
+"actual del ratolí)\n"
 
 #: src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "<b>Espai de treball %d<\b>"
+msgstr "<b>Espai de treball %d</b>"
 
 #: src/windowlist.c:201
 #, c-format
@@ -692,4 +697,3 @@ msgstr "Suprimeix un espai de treball %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Suprimeix l'espai de treball '%s'  "
-

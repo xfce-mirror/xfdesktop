@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-10 22:18+0200\n"
+"POT-Creation-Date: 2005-09-26 12:07+0900\n"
 "PO-Revision-Date: 2005-08-20 16:18+0900\n"
 "Last-Translator: Jean-François Wauthy <pollux@xfce.org>\n"
 "Language-Team: French <traduc@traduc.org>\n"
@@ -112,7 +112,7 @@ msgid "quit"
 msgstr "quitter"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
-#: menueditor/menueditor.c:1031
+#: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "Ajouter un menu externe"
 
@@ -186,13 +186,13 @@ msgid "Select icon"
 msgstr "Choisissez une icône"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:414 settings/backdrop-mgr.c:515
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Tous les fichiers"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:418 settings/backdrop_settings.c:537
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Fichiers images"
 
@@ -243,7 +243,7 @@ msgstr ""
 msgid "Save as..."
 msgstr "Enregistrer sous..."
 
-#: menueditor/menueditor.c:1025
+#: menueditor/menueditor.c:1022
 msgid "Edit"
 msgstr "Édition"
 
@@ -382,7 +382,7 @@ msgid "/Other"
 msgstr "/Autre"
 
 #: panel-plugin/desktop-menu-plugin.c:279
-#: panel-plugin/desktop-menu-plugin.c:805
+#: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
 msgstr "Menu Xfce"
 
@@ -436,8 +436,8 @@ msgstr "Icône de _bouton :"
 msgid "Show _icons in menu"
 msgstr "Afficher les _icônes dans le menu"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
-#, c-format, fuzzy
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
+#, fuzzy, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
@@ -449,40 +449,40 @@ msgstr ""
 "Veuillez choisir une autre destination ou appuyer sur annuler dans la boite "
 "de dialogue pour annuler vos changements "
 
-#: settings/backdrop-mgr.c:409
+#: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
 msgstr "Sélection d'une image pour le fond d'écran"
 
-#: settings/backdrop-mgr.c:510
+#: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
 msgstr "Choix du fichier contenant la liste des fonds d'écran"
 
-#: settings/backdrop-mgr.c:519
+#: settings/backdrop-mgr.c:542
 msgid "List Files"
 msgstr "Liste des fichiers"
 
-#: settings/backdrop-mgr.c:582
+#: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
 msgstr "Liste de fonds d'écran"
 
-#: settings/backdrop-mgr.c:599
+#: settings/backdrop-mgr.c:622
 msgid "Image files"
 msgstr "Fichiers images"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 msgid "backdrops.list"
 msgstr "fonds.list"
 
-#: settings/backdrop-mgr.c:618
+#: settings/backdrop-mgr.c:641
 msgid "List file"
 msgstr "Fichier liste"
 
-#: settings/backdrop-mgr.c:638
+#: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
 msgstr "Création d'une liste de fonds d'écran"
 
-#: settings/backdrop-mgr.c:669
+#: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
 msgstr "Édition de la liste de fonds d'écran"
 
@@ -644,26 +644,26 @@ msgstr "Afficher les icônes des _applications"
 msgid "_Edit desktop menu"
 msgstr "Édition du menu de bureau"
 
-#: src/main.c:300
+#: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Option inconnue : %s\n"
 
-#: src/main.c:301
+#: src/main.c:249
 msgid "Options are:\n"
 msgstr "Les options sont :\n"
 
-#: src/main.c:302
+#: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "····-reload······Recharger tous le paramètres,·rafraîchir la liste d'images\n"
 
-#: src/main.c:303
+#: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
 "····-menu········Affiche le menu·(à la position courante de la souris)\n"
 
-#: src/main.c:304
+#: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
