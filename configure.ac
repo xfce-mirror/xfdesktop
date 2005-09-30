@@ -4,7 +4,7 @@ dnl xfdesktop - xfce4's desktop manager
 dnl
 
 dml version info
-m4_define([xfdesktop_version], [4.2.2])
+m4_define([xfdesktop_version], [4.2.3])
 
 dnl init autoconf
 AC_INIT([xfdesktop], [xfdesktop_version], [bjt23@cornell.edu])
