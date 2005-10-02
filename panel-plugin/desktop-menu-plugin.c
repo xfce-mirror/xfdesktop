@@ -232,24 +232,14 @@ static void
 dmp_position_menu (GtkMenu *menu, int *x, int *y, gboolean *push_in, 
                    DMPlugin *dmp)
 {
-    GdkWindow *p;
-    gint xbutton, ybutton, xparent, yparent;
     XfceScreenPosition pos;
     GtkRequisition req;
 
     gtk_widget_size_request(GTK_WIDGET(menu), &req);
 
-    xbutton = dmp->button->allocation.x;
-    ybutton = dmp->button->allocation.y;
-    
-    p = gtk_widget_get_parent_window(dmp->button);
-    gdk_window_get_root_origin(p, &xparent, &yparent);
+    gdk_window_get_origin (GTK_WIDGET (dmp->plugin)->window, x, y);
 
     pos = xfce_panel_plugin_get_screen_position(dmp->plugin);
-
-    /* set x and y to topleft corner of the button */
-    *x = xbutton + xparent;
-    *y = ybutton + yparent;
 
     switch(pos) {
         case XFCE_SCREEN_POSITION_NW_V:
