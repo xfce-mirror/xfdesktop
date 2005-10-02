@@ -720,6 +720,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     
     xid = GDK_DRAWABLE_XID(pmap);
     groot = gdk_screen_get_root_window(XFCE_DESKTOP(desktop)->priv->gscreen);
+    
     gdk_error_trap_push();
     
     /* set root property for transparent Eterms */
@@ -736,8 +737,6 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     gdk_window_set_back_pixmap(groot, pmap, FALSE);
     /* there really should be a standard for this crap... */
     
-    gdk_error_trap_pop();
-    
     /* clear the old pixmap, if any */
     if(XFCE_DESKTOP(desktop)->priv->bg_pixmap)
         g_object_unref(G_OBJECT(XFCE_DESKTOP(desktop)->priv->bg_pixmap));
@@ -746,6 +745,8 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     XFCE_DESKTOP(desktop)->priv->bg_pixmap = pmap;
     gdk_window_set_back_pixmap(desktop->window, pmap, FALSE);
     gtk_widget_queue_draw_area(desktop, rect.x, rect.y, rect.width, rect.height);
+    
+    gdk_error_trap_pop();
 }
 
 static void
@@ -1614,18 +1615,6 @@ xfce_desktop_finalize(GObject *object)
     G_OBJECT_CLASS(parent_class)->finalize(object);
 }
 
-static gboolean
-desktop_set_initial_backdrop_idled(gpointer data)
-{
-    XfceDesktop *desktop = data;
-    gint i;
-    
-    for(i = 0; i < desktop->priv->nbackdrops; i++)
-        backdrop_changed_cb(desktop->priv->backdrops[i], desktop);
-    
-    return FALSE;
-}
-
 static void
 xfce_desktop_realize(GtkWidget *widget)
 {
@@ -1687,8 +1676,8 @@ xfce_desktop_realize(GtkWidget *widget)
     for(i = 0; i < desktop->priv->nbackdrops; i++) {
         g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]), "changed",
                 G_CALLBACK(backdrop_changed_cb), desktop);
+        backdrop_changed_cb(desktop->priv->backdrops[i], desktop);
     }
-    g_idle_add(desktop_set_initial_backdrop_idled, desktop);
     
     g_signal_connect(G_OBJECT(desktop->priv->gscreen), "size-changed",
             G_CALLBACK(screen_size_changed_cb), desktop);
@@ -2107,6 +2096,7 @@ xfce_desktop_new(GdkScreen *gscreen, McsClient *mcs_client)
     if(!gscreen)
         gscreen = gdk_display_get_default_screen(gdk_display_get_default());
     desktop->priv->gscreen = gscreen;
+    gtk_window_set_screen(GTK_WINDOW(desktop), gscreen);
     
     desktop->priv->mcs_client = mcs_client;
     
