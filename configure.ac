@@ -49,7 +49,7 @@ XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.2.0])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.2.0])
 XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.3.4])
 XDT_CHECK_PACKAGE([LIBXFCE4MCS_CLIENT],  [libxfce4mcs-client-1.0], [4.2.0])
-XDT_XFCE_PANEL_PLUGIN([XFCE4_PANEL], [4.2.0])
+XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.3.20])
 XDT_XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.2.0])
 
 dnl Build options
@@ -105,7 +105,7 @@ else
 fi
 
 dnl check for debugging support
-BM_DEBUG_SUPPORT
+XDT_FEATURE_DEBUG
 
 AC_OUTPUT([
 Makefile
