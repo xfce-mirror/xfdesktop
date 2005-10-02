@@ -1626,6 +1626,8 @@ xfce_desktop_realize(GtkWidget *widget)
     GdkWindow *groot;
     GdkVisual *visual;
     
+    gtk_window_set_screen(GTK_WINDOW(desktop), desktop->priv->gscreen);
+    
     /* chain up */
     GTK_WIDGET_CLASS(parent_class)->realize(widget);
     
@@ -2096,7 +2098,6 @@ xfce_desktop_new(GdkScreen *gscreen, McsClient *mcs_client)
     if(!gscreen)
         gscreen = gdk_display_get_default_screen(gdk_display_get_default());
     desktop->priv->gscreen = gscreen;
-    gtk_window_set_screen(GTK_WINDOW(desktop), gscreen);
     
     desktop->priv->mcs_client = mcs_client;
     
