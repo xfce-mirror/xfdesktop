@@ -656,7 +656,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
         return;
     
     gscreen = XFCE_DESKTOP(desktop)->priv->gscreen;
-    cmap = gdk_screen_get_system_colormap(gscreen);
+    cmap = gdk_drawable_get_colormap(GDK_DRAWABLE(GTK_WIDGET(desktop)->window));
     
     if(XFCE_DESKTOP(desktop)->priv->nbackdrops == 1) {    
         /* optimised for single monitor: just dump the pixbuf into a pixmap */
@@ -1614,6 +1614,18 @@ xfce_desktop_finalize(GObject *object)
     G_OBJECT_CLASS(parent_class)->finalize(object);
 }
 
+static gboolean
+desktop_set_initial_backdrop_idled(gpointer data)
+{
+    XfceDesktop *desktop = data;
+    gint i;
+    
+    for(i = 0; i < desktop->priv->nbackdrops; i++)
+        backdrop_changed_cb(desktop->priv->backdrops[i], desktop);
+    
+    return FALSE;
+}
+
 static void
 xfce_desktop_realize(GtkWidget *widget)
 {
@@ -1675,8 +1687,8 @@ xfce_desktop_realize(GtkWidget *widget)
     for(i = 0; i < desktop->priv->nbackdrops; i++) {
         g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]), "changed",
                 G_CALLBACK(backdrop_changed_cb), desktop);
-        backdrop_changed_cb(desktop->priv->backdrops[i], desktop);
     }
+    g_idle_add(desktop_set_initial_backdrop_idled, desktop);
     
     g_signal_connect(G_OBJECT(desktop->priv->gscreen), "size-changed",
             G_CALLBACK(screen_size_changed_cb), desktop);
