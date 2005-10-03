@@ -112,19 +112,31 @@ _do_builtin(GtkMenuItem *mi, gpointer user_data)
     
     switch(type) {
         case MI_BUILTIN_QUIT:
-            {
-                GModule *parent_exe = g_module_open(NULL, 0);
-                if(parent_exe) {
-                    void (*builtin_quit)(gboolean) = NULL;
-                    if(g_module_symbol(parent_exe, "quit",
-                            (gpointer)&builtin_quit))
-                    {
-                        builtin_quit(FALSE);
-                    } else
-                        g_warning("XfceDesktopMenu: Unable to find 'quit' symbol in parent executable.");
-                    g_module_close(parent_exe);
-                } else
-                    g_warning("XfceDesktopMenu: Unable to dlopen() parent exe.");
+            if(!g_getenv("SESSION_MANAGER")) {
+                xfce_message_dialog(NULL, _("Xfce Menu"),
+                                    GTK_STOCK_DIALOG_ERROR,
+                                    _("Unable to quit session."),
+                                    _("Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."),
+                                    GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+                                    NULL);
+            } else {
+                const gchar *fargv[2] = { BINDIR "/xfce4-session-logout", NULL };
+                GError *error = NULL;
+                if(!g_spawn_async(NULL, (gchar **)fargv, NULL, 0, NULL, NULL,
+                                  NULL, NULL))
+                {
+                    if(!g_spawn_command_line_async("xfce4-session-logout", &error)) {
+                        gchar *secondary = g_strdup_printf(_("Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"), error->message);
+                        g_error_free(error);
+                        xfce_message_dialog(NULL, _("Xfce Menu"),
+                                            GTK_STOCK_DIALOG_ERROR,
+                                            _("Unable to quit session."),
+                                            secondary,
+                                            GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+                                            NULL);
+                        g_free(secondary);
+                    }
+                }
             }
             break;
         default:
