@@ -103,6 +103,8 @@ doc/C/Makefile
 doc/C/images/Makefile
 doc/fr/Makefile
 doc/fr/images/Makefile
+doc/he/Makefile
+doc/he/images/Makefile
 menueditor/Makefile
 modules/Makefile
 modules/menu/Makefile
