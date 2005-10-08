@@ -139,6 +139,13 @@ struct _XfceDesktopPriv
     PangoLayout *playout;
     
     XfceDesktopIconWorkspace **icon_workspaces;
+    
+    gboolean maybe_begin_drag;
+    gboolean definitely_dragging;
+    gint press_start_x;
+    gint press_start_y;
+    XfceDesktopIcon *last_clicked_item;
+    GtkTargetList *source_targets;
 #endif
 };
 
@@ -152,10 +159,21 @@ static void xfce_desktop_unsetup_icons(XfceDesktop *desktop);
 static void xfce_desktop_paint_icons(XfceDesktop *desktop, GdkRectangle *area);
 static gboolean xfce_desktop_button_press(GtkWidget *widget, GdkEventButton *evt);
 static gboolean xfce_desktop_button_release(GtkWidget *widget, GdkEventButton *evt);
+static gboolean xfce_desktop_motion_notify(GtkWidget *widfet, GdkEventMotion *evt);
+static void xfce_desktop_drag_begin(GtkWidget *widget, GdkDragContext *context);
+static gboolean xfce_desktop_drag_motion(GtkWidget *widget, GdkDragContext *context, gint x, gint y, guint time);
+static void xfce_desktop_drag_leave(GtkWidget *widget, GdkDragContext *context, guint time);
+static gboolean xfce_desktop_drag_drop(GtkWidget *widget, GdkDragContext *context, gint x, gint y, guint time);
 /* utility funcs */
 static gboolean get_next_free_position(XfceDesktop *desktop, guint idx, guint16 *row, guint16 *col);
 static gboolean grid_is_free_position(XfceDesktop *desktop, gint idx, guint16 row, guint16 col);
 static void determine_next_free_position(XfceDesktop *desktop, guint idx);
+static gboolean xfce_desktop_maybe_begin_drag(XfceDesktop *desktop, GdkEventMotion *evt);
+
+static const GtkTargetEntry targets[] = {
+    { "XFCE_DESKTOP_WINDOW_ICON", GTK_TARGET_SAME_APP, 0 },
+};
+static const gint n_targets = 1;
 #endif
 
 static void xfce_desktop_class_init(XfceDesktopClass *klass);
@@ -178,7 +196,7 @@ static void
 xfce_desktop_icon_free(XfceDesktopIcon *icon)
 {
     if(icon->pix)
-        g_object_unref(icon->pix);
+        g_object_unref(G_OBJECT(icon->pix));
     if(icon->label)
         g_free(icon->label);
     g_free(icon);
@@ -1586,6 +1604,11 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
 #ifdef ENABLE_WINDOW_ICONS
     widget_class->button_press_event = xfce_desktop_button_press;
     widget_class->button_release_event = xfce_desktop_button_release;
+    widget_class->motion_notify_event = xfce_desktop_motion_notify;
+    widget_class->drag_begin = xfce_desktop_drag_begin;
+    widget_class->drag_motion = xfce_desktop_drag_motion;
+    widget_class->drag_leave = xfce_desktop_drag_leave;
+    widget_class->drag_drop = xfce_desktop_drag_drop;
 #endif
 }
 
@@ -1600,7 +1623,11 @@ xfce_desktop_init(XfceDesktop *desktop)
     
 #ifdef ENABLE_WINDOW_ICONS
     gtk_widget_add_events(GTK_WIDGET(desktop),
-                          GDK_BUTTON_PRESS_MASK|GDK_BUTTON_RELEASE_MASK);
+                          GDK_BUTTON_PRESS_MASK
+                          | GDK_BUTTON_RELEASE_MASK
+                          | GDK_POINTER_MOTION_MASK);
+    desktop->priv->source_targets = gtk_target_list_new(targets, n_targets);
+    gtk_drag_dest_set(GTK_WIDGET(desktop), 0, targets, n_targets, GDK_ACTION_MOVE); 
 #else
     /* if we don't have window icons, there's no reason to focus the desktop */
     gtk_window_set_accept_focus(GTK_WINDOW(desktop), FALSE);
@@ -1613,6 +1640,10 @@ xfce_desktop_finalize(GObject *object)
     XfceDesktop *desktop = XFCE_DESKTOP(object);
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+    
+#ifdef ENABLE_WINDOW_ICONS
+    gtk_target_list_unref(desktop->priv->source_targets);
+#endif
     
     g_free(desktop->priv);
     desktop->priv = NULL;
@@ -1848,9 +1879,20 @@ xfce_desktop_button_press(GtkWidget *widget,
             
             priv->icon_workspaces[priv->cur_ws_num]->selected_icon = icon;
             xfce_desktop_icon_paint(desktop, icon);
+            priv->last_clicked_item = icon;
             
-            /* if we're a right click, pop up a window menu and eat the event */
-            if(evt->button == 3) {
+            if(evt->button == 1) {
+                /* we might be the start of a drag */
+                DBG("setting stuff");
+                priv->maybe_begin_drag = TRUE;
+                priv->definitely_dragging = FALSE;
+                priv->press_start_x = evt->x;
+                priv->press_start_y = evt->y;
+                
+                return TRUE;
+            } else if(evt->button == 3) {
+                /* if we're a right click, pop up a window menu and eat
+                 * the event */
                 GtkWidget *menu = netk_create_window_action_menu(icon->window);
                 gtk_widget_show(menu);
                 g_signal_connect(G_OBJECT(menu), "deactivate",
@@ -1867,6 +1909,7 @@ xfce_desktop_button_press(GtkWidget *widget,
                 desktop->priv->icon_workspaces[cur_ws_num]->selected_icon = NULL;
                 xfce_desktop_icon_paint(desktop, old_sel);
             }
+            desktop->priv->last_clicked_item = NULL;
         }
     } else if(evt->type == GDK_2BUTTON_PRESS) {
         g_return_val_if_fail(desktop->priv->icon_workspaces[cur_ws_num]->icons,
@@ -1898,6 +1941,15 @@ static gboolean
 xfce_desktop_button_release(GtkWidget *widget,
                             GdkEventButton *evt)
 {
+    XfceDesktop *desktop = XFCE_DESKTOP(widget);
+    
+    TRACE("entering btn=%d", evt->button);
+    
+    if(evt->button == 1) {
+        DBG("unsetting stuff");
+        desktop->priv->definitely_dragging = FALSE;
+        desktop->priv->maybe_begin_drag = FALSE;
+    }
     
     return FALSE;
 }
@@ -2045,6 +2097,10 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
     }
     
     workspace_changed_cb(desktop->priv->netk_screen, desktop);
+    
+    /* not sure why i need this, since it's also in _init()... */
+    gtk_widget_add_events(GTK_WIDGET(desktop), GDK_POINTER_MOTION_MASK
+                          | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
 }
 
 static void
@@ -2093,7 +2149,234 @@ xfce_desktop_unsetup_icons(XfceDesktop *desktop)
     desktop->priv->playout = NULL;
 }
 
+static gboolean
+xfce_desktop_motion_notify(GtkWidget *widget,
+                           GdkEventMotion *evt)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(widget);
+    XfceDesktopPriv *priv = desktop->priv;
+    gboolean ret = FALSE;
+    
+    if(priv->maybe_begin_drag && !priv->definitely_dragging) {
+        priv->definitely_dragging = xfce_desktop_maybe_begin_drag(desktop, evt);
+        if(priv->definitely_dragging)
+            ret = TRUE;
+    }
+    
+    return ret;
+}
+
+static gboolean
+xfce_desktop_maybe_begin_drag(XfceDesktop *desktop,
+                              GdkEventMotion *evt)
+{
+    GdkDragContext *context;
+    
+    /* sanity check */
+    g_return_val_if_fail(desktop->priv->last_clicked_item, FALSE);
+    
+    if(!gtk_drag_check_threshold(GTK_WIDGET(desktop),
+                                 desktop->priv->press_start_x,
+                                 desktop->priv->press_start_y,
+                                 evt->x, evt->y))
+    {
+        return FALSE;
+    }
+    
+    context = gtk_drag_begin(GTK_WIDGET(desktop),
+                             desktop->priv->source_targets,
+                             GDK_ACTION_MOVE,
+                             1, (GdkEvent *)evt);
+    
+    DBG("DRAG BEGIN!");
+    
+    return TRUE;
+}
+
+static void
+xfce_desktop_drag_begin(GtkWidget *widget,
+                        GdkDragContext *context)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(widget);
+    XfceDesktopIcon *icon;
+    gint x, y;
+    
+    icon = desktop->priv->last_clicked_item;
+    g_return_if_fail(icon);
+    
+    x = desktop->priv->press_start_x - icon->extents.x + 1;
+    y = desktop->priv->press_start_y - icon->extents.y + 1;
+    
+    gtk_drag_set_icon_pixbuf(context, icon->pix, x, y);
+}
+
+static inline void
+desktop_xy_to_rowcol(XfceDesktop *desktop,
+                     gint idx,
+                     gint x,
+                     gint y,
+                     gint *row,
+                     gint *col)
+{
+    g_return_if_fail(row && col);
+    
+    *row = y - desktop->priv->icon_workspaces[idx]->yorigin - CELL_PADDING;
+    *row /= CELL_SIZE;
+    
+    *col = x - desktop->priv->icon_workspaces[idx]->xorigin - CELL_PADDING;
+    *col /= CELL_SIZE;
+}
+
+static gboolean
+xfce_desktop_drag_motion(GtkWidget *widget,
+                         GdkDragContext *context,
+                         gint x,
+                         gint y,
+                         guint time)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(widget);
+    NetkWorkspace *active_ws;
+    gint active_ws_num, row, col;
+    GdkRectangle *cell_highlight;
+    
+    /*TRACE("entering: (%d,%d)", x, y);*/
+    
+    gdk_drag_status(context, GDK_ACTION_MOVE, time);
+    
+    active_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
+    active_ws_num = netk_workspace_get_number(active_ws);
+    
+    cell_highlight = g_object_get_data(G_OBJECT(context),
+                                       "xfce-desktop-cell-highlight");
+    
+    desktop_xy_to_rowcol(desktop, active_ws_num, x, y, &row, &col);
+    if(grid_is_free_position(desktop, active_ws_num, row, col)) {
+        gint newx, newy;
+        
+        newx = desktop->priv->icon_workspaces[active_ws_num]->xorigin;
+        newx += col * CELL_SIZE + CELL_PADDING;
+        newy = desktop->priv->icon_workspaces[active_ws_num]->yorigin;
+        newy += row * CELL_SIZE + CELL_PADDING;
+        
+        if(cell_highlight) {
+            DBG("have old cell higlight: (%d,%d)", cell_highlight->x, cell_highlight->y);
+            if(cell_highlight->x != newx || cell_highlight->y != newy) {
+                gdk_window_clear_area(widget->window,
+                                      cell_highlight->x,
+                                      cell_highlight->y,
+                                      cell_highlight->width + 1,
+                                      cell_highlight->height + 1);
+            }
+        } else {
+            cell_highlight = g_new0(GdkRectangle, 1);
+            g_object_set_data_full(G_OBJECT(context),
+                                   "xfce-desktop-cell-highlight",
+                                   cell_highlight, (GDestroyNotify)g_free);
+        }
+        
+        cell_highlight->x = newx;
+        cell_highlight->y = newy;
+        cell_highlight->width = cell_highlight->height = CELL_SIZE;
+        
+        DBG("painting highlight: (%d,%d)", newx, newy);
+        
+        gdk_draw_rectangle(GDK_DRAWABLE(widget->window),
+                           widget->style->bg_gc[GTK_STATE_SELECTED], FALSE,
+                           newx, newy, CELL_SIZE, CELL_SIZE);
+        
+        return TRUE;
+    } else {
+        if(cell_highlight) {
+            gdk_window_clear_area(widget->window,
+                                  cell_highlight->x,
+                                  cell_highlight->y,
+                                  cell_highlight->width + 1,
+                                  cell_highlight->height + 1);
+        }
+        return FALSE;
+    }
+}
+
+static void
+xfce_desktop_drag_leave(GtkWidget *widget,
+                        GdkDragContext *context,
+                        guint time)
+{
+    GdkRectangle *cell_highlight = g_object_get_data(G_OBJECT(context),
+                                                     "xfce-desktop-cell-highlight");
+    if(cell_highlight) {
+        gdk_window_clear_area(widget->window,
+                              cell_highlight->x,
+                              cell_highlight->y,
+                              cell_highlight->width + 1,
+                              cell_highlight->height + 1);
+    }
+}
+
+static gboolean
+xfce_desktop_drag_drop(GtkWidget *widget,
+                       GdkDragContext *context,
+                       gint x,
+                       gint y,
+                       guint time)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(widget);
+    XfceDesktopIcon *icon;
+    NetkWorkspace *active_ws;
+    gint active_ws_num, row, col, cell_x, cell_y, lfc, lfr;
+    
+    TRACE("entering: (%d,%d)", x, y);
+    
+    active_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
+    active_ws_num = netk_workspace_get_number(active_ws);
+    
+    desktop_xy_to_rowcol(desktop, active_ws_num, x, y, &row, &col);
+    if(!grid_is_free_position(desktop, active_ws_num, row, col)) {
+        gtk_drag_finish(context, FALSE, FALSE, time);
+        return FALSE;
+    }
+    
+    /* clear highlight box */
+    cell_x = desktop->priv->icon_workspaces[active_ws_num]->xorigin;
+    cell_x += col * CELL_SIZE + CELL_PADDING;
+    cell_y = desktop->priv->icon_workspaces[active_ws_num]->yorigin;
+    cell_y += row * CELL_SIZE + CELL_PADDING;
+    gdk_window_clear_area(widget->window, cell_x, cell_y,
+                          CELL_SIZE + 1, CELL_SIZE + 1);
+    
+    icon = desktop->priv->last_clicked_item;
+    g_return_val_if_fail(icon, FALSE);
+    
+    /* reset lowest free position if necessary.  this is kinda icky and
+     * probably doesn't behave quite correctly.  FIXME. */
+    lfr = desktop->priv->icon_workspaces[active_ws_num]->lowest_free_row;
+    lfc = desktop->priv->icon_workspaces[active_ws_num]->lowest_free_col;
+    if(((lfc == icon->col && icon->row < lfr) || icon->col < lfc)
+       || (lfr == row && lfc == col))
+    {
+        desktop->priv->icon_workspaces[active_ws_num]->lowest_free_row = icon->row;
+        desktop->priv->icon_workspaces[active_ws_num]->lowest_free_col = icon->col;
+    }
+    
+    /* set new position */
+    icon->row = row;
+    icon->col = col;
+    
+    /* clear out old position */
+    gdk_window_clear_area(widget->window, icon->extents.x, icon->extents.y,
+                          icon->extents.width, icon->extents.height);
+    icon->extents.x = icon->extents.y = 0;
+    xfce_desktop_icon_paint(desktop, icon);
+    
+    DBG("drag succeeded");
+    
+    gtk_drag_finish(context, TRUE, FALSE, time);
+    
+    return TRUE;
+}
+
 #endif  /* defined(ENABLE_WINDOW_ICONS) */
+
 
 /* public api */
 
