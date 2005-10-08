@@ -64,6 +64,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
+#include <libxfcegui4/netk-window-action-menu.h>
 
 #include "xfce-desktop.h"
 #include "xfdesktop-common.h"
@@ -149,8 +150,8 @@ static void xfce_desktop_icon_free(XfceDesktopIcon *icon);
 static void xfce_desktop_setup_icons(XfceDesktop *desktop);
 static void xfce_desktop_unsetup_icons(XfceDesktop *desktop);
 static void xfce_desktop_paint_icons(XfceDesktop *desktop, GdkRectangle *area);
-static gboolean xfce_desktop_button_press(GtkWidget *widget, GdkEventButton *evt, gpointer user_data);
-static gboolean xfce_desktop_button_release(GtkWidget *widget, GdkEventButton *evt, gpointer user_data);
+static gboolean xfce_desktop_button_press(GtkWidget *widget, GdkEventButton *evt);
+static gboolean xfce_desktop_button_release(GtkWidget *widget, GdkEventButton *evt);
 /* utility funcs */
 static gboolean get_next_free_position(XfceDesktop *desktop, guint idx, guint16 *row, guint16 *col);
 static gboolean grid_is_free_position(XfceDesktop *desktop, gint idx, guint16 row, guint16 col);
@@ -1582,6 +1583,10 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     
     widget_class->realize = xfce_desktop_realize;
     widget_class->unrealize = xfce_desktop_unrealize;
+#ifdef ENABLE_WINDOW_ICONS
+    widget_class->button_press_event = xfce_desktop_button_press;
+    widget_class->button_release_event = xfce_desktop_button_release;
+#endif
 }
 
 static void
@@ -1801,9 +1806,21 @@ check_icon_clicked(gpointer key,
 }
 
 static gboolean
+action_menu_destroy_idled(gpointer data)
+{
+    gtk_widget_destroy(GTK_WIDGET(data));
+    return FALSE;
+}
+
+static void
+action_menu_deactivate_cb(GtkMenu *menu, gpointer user_data)
+{
+    g_idle_add(action_menu_destroy_idled, menu);
+}
+
+static gboolean
 xfce_desktop_button_press(GtkWidget *widget,
-                          GdkEventButton *evt,
-                          gpointer user_data)
+                          GdkEventButton *evt)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
     XfceDesktopPriv *priv = desktop->priv;
@@ -1831,6 +1848,18 @@ xfce_desktop_button_press(GtkWidget *widget,
             
             priv->icon_workspaces[priv->cur_ws_num]->selected_icon = icon;
             xfce_desktop_icon_paint(desktop, icon);
+            
+            /* if we're a right click, pop up a window menu and eat the event */
+            if(evt->button == 3) {
+                GtkWidget *menu = netk_create_window_action_menu(icon->window);
+                gtk_widget_show(menu);
+                g_signal_connect(G_OBJECT(menu), "deactivate",
+                                 G_CALLBACK(action_menu_deactivate_cb), NULL);
+                gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
+                               evt->button, evt->time);
+                
+                return TRUE;
+            }
         } else {
             /* unselect previously selected icon if we didn't click one */
             XfceDesktopIcon *old_sel = desktop->priv->icon_workspaces[cur_ws_num]->selected_icon;
@@ -1867,8 +1896,7 @@ xfce_desktop_button_press(GtkWidget *widget,
 
 static gboolean
 xfce_desktop_button_release(GtkWidget *widget,
-                            GdkEventButton *evt,
-                            gpointer user_data)
+                            GdkEventButton *evt)
 {
     
     return FALSE;
@@ -2017,11 +2045,6 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
     }
     
     workspace_changed_cb(desktop->priv->netk_screen, desktop);
-    
-    g_signal_connect(G_OBJECT(desktop), "button-press-event",
-                     G_CALLBACK(xfce_desktop_button_press), NULL);
-    g_signal_connect(G_OBJECT(desktop), "button-release-event",
-                     G_CALLBACK(xfce_desktop_button_release), NULL);
 }
 
 static void
@@ -2032,13 +2055,6 @@ xfce_desktop_unsetup_icons(XfceDesktop *desktop)
     
     if(!desktop->priv->icon_workspaces)
         return;
-    
-    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
-                                         G_CALLBACK(xfce_desktop_button_press),
-                                         NULL);
-    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
-                                         G_CALLBACK(xfce_desktop_button_release),
-                                         NULL);
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
                                          G_CALLBACK(workspace_changed_cb),

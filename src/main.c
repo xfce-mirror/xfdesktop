@@ -273,10 +273,8 @@ main(int argc, char **argv)
             GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_SCROLL_MASK);
         g_signal_connect(G_OBJECT(desktops[i]), "scroll-event",
                 G_CALLBACK(scroll_cb), NULL);
-        g_signal_connect(G_OBJECT(desktops[i]), "button-press-event",
-            G_CALLBACK(button_cb), NULL);
-        g_signal_connect(G_OBJECT(desktops[i]), "button-release-event",
-            G_CALLBACK(button_cb), NULL);
+        g_signal_connect_after(G_OBJECT(desktops[i]), "button-press-event",
+                G_CALLBACK(button_cb), NULL);
         if(mcs_client)
             settings_register_callback(xfce_desktop_settings_changed, desktops[i]);
         gtk_widget_show(desktops[i]);
