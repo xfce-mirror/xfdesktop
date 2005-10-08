@@ -894,8 +894,6 @@ load_initial_settings(XfceDesktop *desktop, McsClient *mcs_client)
     } else
         desktop->priv->use_window_icons = TRUE;
     
-    gtk_window_set_accept_focus(GTK_WINDOW(desktop),
-                                desktop->priv->use_window_icons);
     if(desktop->priv->use_window_icons && GTK_WIDGET_REALIZED(GTK_WIDGET(desktop)))
         xfce_desktop_setup_icons(desktop);
 #endif
@@ -1620,6 +1618,7 @@ xfce_desktop_init(XfceDesktop *desktop)
     
     gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSURE_MASK);
     gtk_window_set_type_hint(GTK_WINDOW(desktop), GDK_WINDOW_TYPE_HINT_DESKTOP);
+    gtk_window_set_accept_focus(GTK_WINDOW(desktop), FALSE);
     
 #ifdef ENABLE_WINDOW_ICONS
     gtk_widget_add_events(GTK_WIDGET(desktop),
@@ -1628,9 +1627,6 @@ xfce_desktop_init(XfceDesktop *desktop)
                           | GDK_POINTER_MOTION_MASK);
     desktop->priv->source_targets = gtk_target_list_new(targets, n_targets);
     gtk_drag_dest_set(GTK_WIDGET(desktop), 0, targets, n_targets, GDK_ACTION_MOVE); 
-#else
-    /* if we don't have window icons, there's no reason to focus the desktop */
-    gtk_window_set_accept_focus(GTK_WINDOW(desktop), FALSE);
 #endif
 }
 
@@ -2473,8 +2469,6 @@ xfce_desktop_settings_changed(McsClient *client, McsAction action,
                 gtk_widget_queue_draw(GTK_WIDGET(desktop));
             }
         }
-        gtk_window_set_accept_focus(GTK_WINDOW(desktop),
-                                    desktop->priv->use_window_icons);
         return TRUE;
     }
 #endif
