@@ -38,7 +38,7 @@
 <xfce-registered-categories>
 	<category name="Legacy" toplevel="true" replace="Accessories" builtin-icon="UTILITY" />
 	<category name="Core" toplevel="true" replace="Accessories" builtin-icon="UTILITY" />
-	<category name="Development" toplevel="true" builtin-icon="DEVELOPMENT">
+	<category name="Development" replace="開發" toplevel="true" builtin-icon="DEVELOPMENT">
 		<subcategory name="Building" />
 		<subcategory name="Debugger" />
 		<subcategory name="IDE" />
@@ -52,7 +52,7 @@
 	</category>
 	<category name="Building" builtin-icon="DEVELOPMENT" />
 	<category name="Debugger" replace="除錯" builtin-icon="DEVELOPMENT" />
-	<category name="IDE" replace="Environments" builtin-icon="DEVELOPMENT" />
+	<category name="IDE" replace="整合開發環境" builtin-icon="DEVELOPMENT" />
 	<category name="GUIDesigner" replace="使用者介面設計" builtin-icon="DEVELOPMENT" />
 	<category name="Profiling" builtin-icon="DEVELOPMENT" />
 	<category name="RevisionControl" replace="Revision Control" builtin-icon="DEVELOPMENT" />
@@ -78,8 +78,8 @@
 	<category name="ContactManagement" replace="聯絡人管理" builtin-icon="PRODUCTIVITY" />
 	<category name="Database" replace="資料庫" builtin-icon="PRODUCTIVITY" />
 	<category name="Dictionary" replace="字典" builtin-icon="PRODUCTIVITY" />
-	<category name="Chart" builtin-icon="PRODUCTIVITY" />
-	<category name="Email" replace="繪圖" builtin-icon="PRODUCTIVITY" />
+	<category name="Chart" replace="圖表" builtin-icon="PRODUCTIVITY" />
+	<category name="Email" replace="電子郵件" builtin-icon="PRODUCTIVITY" />
 	<category name="Finance" replace="財務" builtin-icon="PRODUCTIVITY" />
 	<category name="FlowChart" replace="流程圖" builtin-icon="PRODUCTIVITY" />
 	<category name="PDA" builtin-icon="PRODUCTIVITY" />
@@ -98,7 +98,7 @@
 		<subcategory name="VectorGraphics" />
 		<subcategory name="RasterGraphics" />
 	</category>
-	<category name="VectorGraphics" replace="Vector Graphics" builtin-icon="GRAPHICS" />
+	<category name="VectorGraphics" replace="向量繪圖" builtin-icon="GRAPHICS" />
 	<category name="RasterGraphics" replace="Raster Graphics" builtin-icon="GRAPHICS" />
 	<category name="3DGraphics" replace="立體繪圖" builtin-icon="GRAPHICS" />
 	<category name="Scanning" replace="掃描" builtin-icon="GRAPHICS">
@@ -106,7 +106,7 @@
 	</category>
 	<category name="OCR" builtin-icon="GRAPHICS" />
 	<category name="Photograph" replace="攝影" builtin-icon="GRAPHICS" />
-	<category name="Viewer" replace="Viewer" builtin-icon="GRAPHICS" />
+	<category name="Viewer" replace="檢視器" builtin-icon="GRAPHICS" />
 	<category name="Settings" replace="設定" toplevel="true" builtin-icon="SETTINGS">
 		<subcategory name="DesktopSettings" />
 		<subcategory name="HardwareSettings" />
@@ -116,7 +116,7 @@
 		<subcategory name="Screensaver" />
 	</category>
 	<category name="DesktopSettings" replace="桌面設定" builtin-icon="SETTINGS" />
-	<category name="HardwareSettings" replace="硬件設定" builtin-icon="SETTINGS" />
+	<category name="HardwareSettings" replace="硬體設定" builtin-icon="SETTINGS" />
 	<category name="PackageSettings" replace="套件設定" builtin-icon="SETTINGS" />
 	<category name="Network" replace="網路" toplevel="true" builtin-icon="NETWORK">
 		<subcategory name="Email" />
@@ -143,7 +143,7 @@
 	<category name="Telephony" replace="電話" builtin-icon="NETWORK" />
 	<category name="WebBrowser" replace="網頁瀏覽" builtin-icon="NETWORK" />
 	<category name="WebDevelopment" replace="網頁設計" builtin-icon="NETWORK" />
-	<category name="AudioVideo" replace="多媒體" toplevel="true" builtin-icon="MULTIMEDIA">
+	<category name="AudioVideo" replace="影音" toplevel="true" builtin-icon="MULTIMEDIA">
 		<subcategory name="Database" />
 		<subcategory name="HamRadio" />
 		<subcategory name="Audio" />
@@ -174,7 +174,7 @@
 		<subcategory name="Music" />
 	</category>
 	<category name="TV" replace="電視" builtin-icon="MULTIMEDIA" />
-	<category name="AudioVideoEditing" replace="編輯" builtin-icon="MULTIMEDIA" />
+	<category name="AudioVideoEditing" replace="影音編輯" builtin-icon="MULTIMEDIA" />
 	<category name="Player" replace="媒體播放" builtin-icon="MULTIMEDIA" />
 	<category name="Recorder" replace="錄音/錄映" builtin-icon="MULTIMEDIA" />
 	<category name="DiscBurning" replace="燒錄 CD 及 DVD" builtin-icon="MULTIMEDIA" />
@@ -194,17 +194,17 @@
 	</category>
 	<category name="ActionGame" replace="動作類遊戲" builtin-icon="GAME" />
 	<category name="AdventureGame" replace="冒險遊戲" builtin-icon="GAME" />
-	<category name="ArcadeGame" replace="Arcade Game" builtin-icon="GAME" />
+	<category name="ArcadeGame" replace="大型機台遊戲" builtin-icon="GAME" />
 	<category name="BoardGame" replace="棋類" builtin-icon="GAME" />
 	<category name="BlocksGame" replace="Puzzle 類遊戲" builtin-icon="GAME" />
 	<category name="CardGame" replace="紙牌遊戲" builtin-icon="GAME" />
 	<category name="KidsGame" replace="兒童遊戲' Games" builtin-icon="GAME" />
 	<category name="LogicGame" replace="邏輯遊戲" builtin-icon="GAME" />
-	<category name="RolePlaying" replace="角色扮演遊戲" builtin-icon="GAME" />
+	<category name="RolePlaying" replace="角色扮演" builtin-icon="GAME" />
 	<category name="Simulation" replace="模擬" builtin-icon="GAME" />
 	<category name="SportsGame" replace="運動類遊戲" builtin-icon="GAME" />
 	<category name="StrategyGame" replace="策略類遊戲" builtin-icon="GAME" />
-	<category name="Education" toplevel="true">
+	<category name="Education" replace="教育" toplevel="true">
 		<subcategory name="Art" />
 		<subcategory name="Construction" />
 		<subcategory name="Music" />
@@ -236,12 +236,12 @@
 	<category name="Applet" replace="Applet" />
 	<category name="Archiving" />
 	<category name="Electronics" replace="電子學" />
-	<category name="Emulator" toplevel="true" replace="系統" builtin-icon="SYSTEM" />
+	<category name="Emulator" replace="模擬器" toplevel="true" replace="系統" builtin-icon="SYSTEM" />
 	<category name="Engineering" replace="工程學" />
 	<category name="FileManager" replace="檔案管理" />
 	<category name="Shell" replace="Shell" />
 	<category name="Screensaver" replace="螢幕保護器" />
-	<category name="TerminalEmulator" replace="終端機" />
+	<category name="TerminalEmulator" replace="終端機模擬器" />
 	<category name="TrayIcon" replace="系統匣圖示" />
 	<category name="System" replace="系統" toplevel="true" builtin-icon="SYSTEM">
 		<subcategory name="FileSystem" />
@@ -252,7 +252,7 @@
 		<subcategory name="Shell" />
 	</category>
 	<category name="Filesystem" replace="檔案系統" builtin-icon="SYSTEM" />
-	<category name="Monitor" replace="監察" builtin-icon="SYSTEM" />
+	<category name="Monitor" replace="監視器" builtin-icon="SYSTEM" />
 	<category name="Security" replace="保安" builtin-icon="SYSTEM" />
 	<category name="Utility" toplevel="true" replace="公用程式" builtin-icon="UTILITY">
 		<subcategory name="Accessibility" />
@@ -267,7 +267,7 @@
 	<category name="Accessibility" builtin-icon="UTILITY" />
 	<category name="Calculator" replace="計算機" builtin-icon="UTILITY" />
 	<category name="Clock" replace="時鐘" builtin-icon="UTILITY" />
-	<category name="TextEditor" replace="本文編輯" builtin-icon="UTILITY" />
+	<category name="TextEditor" replace="文字編輯器" builtin-icon="UTILITY" />
 	<category name="KDE" toplevel="true" ignore="true">
 		<subcategory name="Development" />
 		<subcategory name="Office" />
@@ -332,3 +332,4 @@
 	<category name="Wine" toplevel="true" builtin-icon="WINE" />
 	<category name="WineX" toplevel="true" builtin-icon="WINE" />
 </xfce-registered-categories>
+
