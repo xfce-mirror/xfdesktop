@@ -2,14 +2,15 @@
 # Copyright (C) 2003-2005 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Joakim Andreasson <joakim.andreasson@gmx.net>, 2003-2004.
+# Alexander Toresson <alexander.toresson@gmail.com>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-08 06:14+0900\n"
-"PO-Revision-Date: 2005-08-20 16:30+0900\n"
-"Last-Translator: Joakim Andreasson <joakim.andreasson@gmx.net>\n"
+"POT-Creation-Date: 2005-10-09 15:53+0900\n"
+"PO-Revision-Date: 2005-10-07 18:27+0100\n"
+"Last-Translator: Alexander Toresson <alexander.toresson@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,52 +18,51 @@ msgstr ""
 
 #: menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
-msgstr ""
+msgstr "En menyeditor för Xfce4"
 
 #. Credits
 #: menueditor/about_dialog.c:43
 msgid "Core developer"
-msgstr ""
+msgstr "Huvudutvecklare"
 
 #: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
 #: menueditor/about_dialog.c:46
 msgid "Contributor"
-msgstr ""
+msgstr "Medarbetare"
 
 #: menueditor/about_dialog.c:47
 msgid "Icon designer"
-msgstr ""
+msgstr "Ikondesigner"
 
 #: menueditor/add_dialog.c:138 menueditor/add_dialog.c:150
 msgid "Add menu entry"
-msgstr ""
+msgstr "Lägg till post i menyn"
 
 #. Type
 #: menueditor/add_dialog.c:156 menueditor/add_menu_dialog.c:98
 #: menueditor/edit_dialog.c:149
 msgid "Type:"
-msgstr ""
+msgstr "Typ:"
 
 #: menueditor/add_dialog.c:159
 msgid "Launcher"
-msgstr ""
+msgstr "Programstartare"
 
 #: menueditor/add_dialog.c:164
 msgid "Submenu"
-msgstr ""
+msgstr "Undermeny"
 
 #: menueditor/add_dialog.c:169
 msgid "Separator"
-msgstr ""
+msgstr "Avgränsare"
 
 #: menueditor/add_dialog.c:174
-#, fuzzy
 msgid "Title"
-msgstr "_Uppradad"
+msgstr "Titel"
 
 #: menueditor/add_dialog.c:179
 msgid "Quit"
-msgstr ""
+msgstr "Avsluta"
 
 #. Name
 #: menueditor/add_dialog.c:194 menueditor/edit_dialog.c:263
@@ -72,62 +72,61 @@ msgstr "Namn:"
 
 #: menueditor/add_dialog.c:204 menueditor/edit_dialog.c:264
 msgid "Command:"
-msgstr ""
+msgstr "Kommando:"
 
 #: menueditor/add_dialog.c:220 menueditor/edit_dialog.c:255
 #: menueditor/edit_dialog.c:319 menueditor/edit_dialog.c:358
 #: menueditor/edit_dialog.c:396
 msgid "Icon:"
-msgstr ""
+msgstr "Ikon:"
 
 #. Start Notify check button
 #: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:275
 msgid "Use startup _notification"
-msgstr ""
+msgstr "Använd start_notifiering"
 
 #. Run in terminal check button
 #: menueditor/add_dialog.c:240 menueditor/edit_dialog.c:276
 msgid "Run in _terminal"
-msgstr ""
+msgstr "Kör i _terminal"
 
 #: menueditor/add_dialog.c:285 menueditor/edit_dialog.c:468
 msgid "The command doesn't exist !"
-msgstr ""
+msgstr "Kommandot existerar inte!"
 
 #: menueditor/add_dialog.c:291
 msgid "All fields must be filled to add an item."
-msgstr ""
+msgstr "Alla fält måste fyllas i för att lägga till en ny post"
 
 #: menueditor/add_dialog.c:300
 msgid "The 'Name' field is required."
-msgstr ""
+msgstr "Du måste ange ett namn."
 
 #: menueditor/add_dialog.c:356 menueditor/dnd.c:153
 #: menueditor/menueditor.c:579 menueditor/move.c:87 menueditor/move.c:225
 msgid "--- separator ---"
-msgstr ""
+msgstr "--- avgränsare ---"
 
 #: menueditor/add_dialog.c:381 menueditor/edit_dialog.c:505
 msgid "quit"
-msgstr ""
+msgstr "avsluta"
 
 #: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
 #: menueditor/menueditor.c:1028
 msgid "Add an external menu"
-msgstr ""
+msgstr "Lägg till extern meny"
 
 #: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:152
-#, fuzzy
 msgid "File"
-msgstr "File:"
+msgstr "Fil:"
 
 #: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:157
 msgid "System"
-msgstr ""
+msgstr "System"
 
 #: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:172
 msgid "Source:"
-msgstr ""
+msgstr "Källa:"
 
 #. Style
 #: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:185
@@ -136,102 +135,102 @@ msgstr "Stil:"
 
 #: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:188
 msgid "Simple"
-msgstr ""
+msgstr "Simpel"
 
 #: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:191
 msgid "Multilevel"
-msgstr ""
+msgstr "Multinivås"
 
 #. Unique
 #: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:204
 msgid "_Unique entries only"
-msgstr ""
+msgstr "_Endast unika poster"
 
 #: menueditor/add_menu_dialog.c:208
 msgid "The 'Source' field is required."
-msgstr ""
+msgstr "Du måste ange en källa."
 
 #: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:234
 #: menueditor/dnd.c:156 menueditor/edit_dialog.c:521
 #: menueditor/edit_dialog.c:534 menueditor/menueditor.c:618
 #: menueditor/move.c:111 menueditor/move.c:249
 msgid "--- include ---"
-msgstr ""
+msgstr "--- inkludera ---"
 
 #: menueditor/add_menu_dialog.c:235 menueditor/dnd.c:161
 #: menueditor/edit_dialog.c:535 menueditor/menueditor.c:621
 #: menueditor/move.c:114 menueditor/move.c:252
 msgid "system"
-msgstr ""
+msgstr "system"
 
 #. Create dialog for editing
 #: menueditor/edit_dialog.c:103 menueditor/edit_dialog.c:113
 msgid "Edit menu entry"
-msgstr ""
+msgstr "Redigera menypost"
 
 #: menueditor/edit_dialog.c:131
 msgid "Separators cannot be edited"
-msgstr ""
+msgstr "Avgränsare kan inte redigeras"
 
 #. Name
 #: menueditor/edit_dialog.c:403 menueditor/new_dialog.c:100
-#, fuzzy
 msgid "Title:"
-msgstr "File:"
+msgstr "Titel:"
 
 #: menueditor/menueditor.c:371
 msgid "Select command"
-msgstr ""
+msgstr "Välj kommando"
 
 #: menueditor/menueditor.c:435
 msgid "Select icon"
-msgstr ""
+msgstr "Välj ikon"
 
 #: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
 #: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
-msgstr ""
+msgstr "Alla filer"
 
 #: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
 #: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
-#, fuzzy
 msgid "Image Files"
 msgstr "Bildfiler"
 
 #: menueditor/menueditor.c:500 menueditor/menueditor.c:903
 msgid "Do you want to save before closing the menu ?"
-msgstr ""
+msgstr "Vill du spara dina ändringar?"
 
 #: menueditor/menueditor.c:502
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr ""
+"Du har modifierat menyn, vill du spara dina ändringar innan programmet "
+"avslutas?"
 
 #: menueditor/menueditor.c:504
 msgid "Forget modifications"
-msgstr ""
+msgstr "Kasta bort ändringar"
 
 #: menueditor/menueditor.c:690 menueditor/menueditor.c:749
 #: menueditor/menueditor.c:901
 msgid "Question"
-msgstr ""
+msgstr "Fråga"
 
 #: menueditor/menueditor.c:692
 msgid "Do you want to save before opening the default menu ?"
-msgstr ""
+msgstr "Vill du spara dina ändringar innan du öppnar standardmenyn?"
 
 #: menueditor/menueditor.c:694 menueditor/menueditor.c:753
 #: menueditor/menueditor.c:905
 msgid "Ignore modifications"
-msgstr ""
+msgstr "Ignorera ändringar"
 
 #: menueditor/menueditor.c:751
 msgid "Do you want to save before opening an other menu ?"
-msgstr ""
+msgstr "Vill du spara dina inställningar innan du öppnar en annan meny?"
 
 #: menueditor/menueditor.c:764
 msgid "Open menu file"
-msgstr ""
+msgstr "Öppna menyfil"
 
 #: menueditor/menueditor.c:799 menueditor/menueditor.c:810
 #, c-format
@@ -239,209 +238,205 @@ msgid ""
 "Cannot write in %s : \n"
 "%s"
 msgstr ""
+"Kunde inte skriva i %s: \n"
+"%s"
 
 #: menueditor/menueditor.c:844
 msgid "Save as..."
-msgstr ""
+msgstr "Spara som..."
 
 #: menueditor/menueditor.c:1022
-#, fuzzy
 msgid "Edit"
-msgstr "Redigera lista"
+msgstr "Redigera"
 
 #. File menu
 #: menueditor/menueditor.c:1225
-#, fuzzy
 msgid "_File"
-msgstr "File:"
+msgstr "_Fil:"
 
 #: menueditor/menueditor.c:1234
 msgid "Open default menu"
-msgstr ""
+msgstr "Öppna standardmeny"
 
 #. Edit menu
 #: menueditor/menueditor.c:1248
 msgid "_Edit"
-msgstr ""
+msgstr "_Redigera"
 
 #: menueditor/menueditor.c:1254
 msgid "Add an external menu..."
-msgstr ""
+msgstr "Lägg till en extern meny..."
 
 #. Help menu
 #: menueditor/menueditor.c:1266
 msgid "_Help"
-msgstr ""
+msgstr "_Hjälp"
 
 #: menueditor/menueditor.c:1271
 msgid "_About..."
-msgstr ""
+msgstr "_Om..."
 
 #: menueditor/menueditor.c:1283
 msgid "Create a new Xfce4 menu file"
-msgstr ""
+msgstr "Skapa en ny Xfce4 menyfil"
 
 #: menueditor/menueditor.c:1289
 msgid "Open an Xfce4 menu file"
-msgstr ""
+msgstr "Öppna en Xfce4 menyfil"
 
 #: menueditor/menueditor.c:1295
 msgid "Save current menu"
-msgstr ""
+msgstr "Spara meny"
 
 #: menueditor/menueditor.c:1300
 msgid "Close current menu"
-msgstr ""
+msgstr "Stäng meny"
 
 #: menueditor/menueditor.c:1306
 msgid "Add an entry to the menu"
-msgstr ""
+msgstr "Lägg till en post i menyn"
 
 #: menueditor/menueditor.c:1312
 msgid "Delete the current entry"
-msgstr ""
+msgstr "Ta bort den markerade posten"
 
 #: menueditor/menueditor.c:1318
 msgid "Move the current entry up"
-msgstr ""
+msgstr "Flytta den markerade posten uppåt"
 
 #: menueditor/menueditor.c:1324
 msgid "Move the current entry down"
-msgstr ""
+msgstr "Flytta den markerade posten nedåt"
 
 #: menueditor/menueditor.c:1331
 msgid "Collapse the tree"
-msgstr ""
+msgstr "Kollapsa träd"
 
 #: menueditor/menueditor.c:1336
 msgid "Expand the tree"
-msgstr ""
+msgstr "Expandera träd"
 
 #: menueditor/menueditor.c:1365
-#, fuzzy
 msgid "Name"
 msgstr "Namn:"
 
 #: menueditor/menueditor.c:1368
 msgid "Command"
-msgstr ""
+msgstr "Kommando"
 
 #: menueditor/menueditor.c:1369
 msgid "Hidden"
-msgstr ""
+msgstr "Gömd"
 
 #: menueditor/menueditor.c:1370
 msgid "Pointer"
-msgstr ""
+msgstr "Pekare"
 
 #: menueditor/menueditor.c:1472
 msgid "Corrupted file or incorrect file format !"
-msgstr ""
+msgstr "Korrupt fil eller felaktigt filformat!"
 
 #: menueditor/menueditor.c:1485
 msgid "No root element in file !"
-msgstr ""
+msgstr "Inget rot-element i filen!"
 
 #: menueditor/menueditor.c:1496
 msgid "Bad datafile format !"
-msgstr ""
+msgstr "Felaktigt datumformat!"
 
 #: menueditor/menueditor.c:1626
 #, c-format
 msgid "File %s doesn't exist !"
-msgstr ""
+msgstr "Filen %s existerar inte!"
 
 #: menueditor/move.c:370
 msgid "Do you want to move the item into the parent menu?"
-msgstr ""
+msgstr "Vill du flytta posten till den ovanliggande menyn?"
 
 #: menueditor/move.c:469
 msgid "Do you want to move the item into the submenu?"
-msgstr ""
+msgstr "Vill du flytta posten till den underliggande menyn?"
 
 #: menueditor/new_dialog.c:60
 msgid "Are you sure you want to close the current menu?"
-msgstr ""
+msgstr "Är du säker på att du vill stänga den här menyn?"
 
 #: menueditor/new_dialog.c:75
 msgid "Do you want to save before closing the file?"
-msgstr ""
+msgstr "Vill du spara filen innan du stänger filen?"
 
 #. get the filename and name for the new menu
 #: menueditor/new_dialog.c:85 menueditor/new_dialog.c:94
 msgid "New menu"
-msgstr ""
+msgstr "Ny meny"
 
 #. Filename
 #: menueditor/new_dialog.c:107
-#, fuzzy
 msgid "Filename:"
-msgstr "File:"
+msgstr "Filnamn:"
 
 #: menueditor/new_dialog.c:141
 msgid "All fields are required."
-msgstr ""
+msgstr "Alla fält behöver anges."
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
-msgstr ""
+msgstr "/Andra"
 
 #: panel-plugin/desktop-menu-plugin.c:279
 #: panel-plugin/desktop-menu-plugin.c:807
 msgid "Xfce Menu"
-msgstr ""
+msgstr "Xfce-menyn"
 
 #: panel-plugin/desktop-menu-plugin.c:493
 msgid "Select Icon"
-msgstr ""
+msgstr "Välj ikon"
 
 #: panel-plugin/desktop-menu-plugin.c:495
 msgid "Select Menu File"
-msgstr ""
+msgstr "Välj menyfil"
 
 #: panel-plugin/desktop-menu-plugin.c:524
-#, fuzzy
 msgid "Menu Files"
-msgstr "Bildfiler"
+msgstr "Menyfiler"
 
 #: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr ""
+msgstr "Kunde inte starta xfce4-menueditor: %s"
 
 #: panel-plugin/desktop-menu-plugin.c:663
 msgid "Button _title:"
-msgstr ""
+msgstr "Knapp_titel:"
 
 #: panel-plugin/desktop-menu-plugin.c:676
-#, fuzzy
 msgid "Menu File"
-msgstr "Bildfiler"
+msgstr "Menyfil"
 
 #: panel-plugin/desktop-menu-plugin.c:688
 msgid "Use default _desktop menu file"
-msgstr ""
+msgstr "Använd menyfil som används för _skrivbordet"
 
 #: panel-plugin/desktop-menu-plugin.c:697
 msgid "Use _custom menu file:"
-msgstr ""
+msgstr "Använd _egen menyfil:"
 
 #: panel-plugin/desktop-menu-plugin.c:749
 #: panel-plugin/desktop-menu-plugin.c:751
 msgid "_Edit Menu"
-msgstr ""
+msgstr "_Redigera meny"
 
 #: panel-plugin/desktop-menu-plugin.c:758
 msgid "Icons"
-msgstr ""
+msgstr "Ikoner"
 
 #: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
-msgstr ""
+msgstr "_Knappikon:"
 
 #: panel-plugin/desktop-menu-plugin.c:794
 msgid "Show _icons in menu"
-msgstr ""
+msgstr "Visa _ikoner i menyn"
 
 #: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
 #, c-format
@@ -451,28 +446,26 @@ msgid ""
 "Please choose another location or press cancel in the dialog to discard your "
 "changes"
 msgstr ""
-"Kunde inte spara fil %s: %s\n"
+"Kunde inte spara filen %s: %s\n"
 "\n"
-"Vänligen välj en annan plats eller tryck Avbryt i dialogen för att kassera "
+"Var god välj en annan plats eller tryck Avbryt i dialogen för att kasta bort "
 "dina ändringar"
 
 #: settings/backdrop-mgr.c:432
-#, fuzzy
 msgid "Select backdrop image file"
-msgstr "Välj bildfil"
+msgstr "Välj bakgrundsbild"
 
 #: settings/backdrop-mgr.c:533
 msgid "Choose backdrop list filename"
-msgstr "Välj filnamn för bakgrundslista"
+msgstr "Välj filnamn för lista av bakgrundsbilder"
 
 #: settings/backdrop-mgr.c:542
-#, fuzzy
 msgid "List Files"
-msgstr "Listfil"
+msgstr "Listfiler"
 
 #: settings/backdrop-mgr.c:605
 msgid "Backdrop List"
-msgstr "Bakgrundslista"
+msgstr "Lista av bakgrundsbilder"
 
 #: settings/backdrop-mgr.c:622
 msgid "Image files"
@@ -480,7 +473,6 @@ msgstr "Bildfiler"
 
 #: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
-#, fuzzy
 msgid "backdrops.list"
 msgstr "Redigera bakgrundslista"
 
@@ -490,11 +482,11 @@ msgstr "Listfil"
 
 #: settings/backdrop-mgr.c:661
 msgid "Create backdrop list"
-msgstr "Skapa bakgrundslista"
+msgstr "Skapa lista av bakgrundsbilder"
 
 #: settings/backdrop-mgr.c:692
 msgid "Edit backdrop list"
-msgstr "Redigera bakgrundslista"
+msgstr "Redigera lista bakgrundsbilder"
 
 #. the dialog
 #: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
@@ -503,67 +495,57 @@ msgid "Desktop"
 msgstr "Skrivbord"
 
 #: settings/backdrop_settings.c:528
-#, fuzzy
 msgid "Select backdrop image or list file"
-msgstr "Välj bakgrundsbild eller listfil"
+msgstr "Välj bakgrundsbild eller lista av bakgrundsbilder"
 
 #: settings/backdrop_settings.c:546
 msgid "List Files (*.list)"
-msgstr ""
+msgstr "Listfiler (*.list)"
 
 #: settings/backdrop_settings.c:636
-#, fuzzy
 msgid "_Edit list..."
-msgstr "Redigera lista"
+msgstr "_Redigera lista..."
 
 #: settings/backdrop_settings.c:644
-#, fuzzy
 msgid "_New list..."
-msgstr "Ny lista"
+msgstr "_Ny lista..."
 
 #: settings/backdrop_settings.c:680
-#, fuzzy
 msgid "S_tyle:"
-msgstr "Stil:"
+msgstr "S_til:"
 
 #: settings/backdrop_settings.c:688
-#, fuzzy
 msgid "Tiled"
-msgstr "_Uppradad"
+msgstr "Upprepad"
 
 #: settings/backdrop_settings.c:695
-#, fuzzy
 msgid "Centered"
-msgstr "_Centrerad"
+msgstr "Centrerad"
 
 #: settings/backdrop_settings.c:702
-#, fuzzy
 msgid "Scaled"
-msgstr "_Skalad"
+msgstr "Skalad"
 
 #: settings/backdrop_settings.c:709
 msgid "Stretched"
-msgstr ""
+msgstr "Utsträckt"
 
 #: settings/backdrop_settings.c:716
-#, fuzzy
 msgid "Auto"
-msgstr "_Automatisk"
+msgstr "Automatisk"
 
 #: settings/backdrop_settings.c:782
 msgid "Adjust _Brightness:"
-msgstr ""
+msgstr "Justera _ljusstyrka:"
 
 #. header
 #: settings/backdrop_settings.c:851
-#, fuzzy
 msgid "Desktop Settings"
-msgstr "Arbetsyteinställningar"
+msgstr "Skrivbordsinställningar"
 
 #: settings/backdrop_settings.c:880
-#, fuzzy
 msgid "_Backdrops"
-msgstr "Bakgrundslista"
+msgstr "_Bakgrunder"
 
 #. color settings frame
 #: settings/backdrop_settings.c:906
@@ -571,151 +553,141 @@ msgid "Color"
 msgstr "Färg"
 
 #: settings/backdrop_settings.c:920
-#, fuzzy
 msgid "_Color Style:"
-msgstr "Stil:"
+msgstr "_Färgstil:"
 
 #: settings/backdrop_settings.c:929
-#, fuzzy
 msgid "Solid Color"
-msgstr "Färg"
+msgstr "Enfärgad"
 
 #: settings/backdrop_settings.c:936
 msgid "Horizontal Gradient"
-msgstr ""
+msgstr "Horisontell övergång"
 
 #: settings/backdrop_settings.c:943
 msgid "Vertical Gradient"
-msgstr ""
+msgstr "Vertikal övergång"
 
 #: settings/backdrop_settings.c:964
 msgid "Fi_rst Color:"
-msgstr ""
+msgstr "Fä_rg 1:"
 
 #: settings/backdrop_settings.c:985
-#, fuzzy
 msgid "_Second Color:"
-msgstr "Bakgrundsfärg:"
+msgstr "Fär_g 2:"
 
 #. set color only checkbox
 #: settings/backdrop_settings.c:1006
-#, fuzzy
 msgid "Set color _only"
-msgstr "Använd endast färg:"
+msgstr "Använd _endast färg:"
 
 #: settings/backdrop_settings.c:1021
 msgid "Image"
 msgstr "Bild"
 
 #: settings/backdrop_settings.c:1029
-#, fuzzy
 msgid "Show _Image"
-msgstr "Bild"
+msgstr "Visa _bild"
 
 #: settings/backdrop_settings.c:1051
-#, fuzzy
 msgid "_File:"
-msgstr "File:"
+msgstr "_Fil:"
 
 #. don't set backdrop checkbox
 #: settings/backdrop_settings.c:1088
-#, fuzzy
 msgid "_Don't set backdrop"
-msgstr "Välj bakgrundsfärg"
+msgstr "_Ändra ej bakgrundsfärg"
 
 #. add the single backdrop settings page to the main notebook
 #: settings/backdrop_settings.c:1111
-#, fuzzy
 msgid "_Backdrop"
-msgstr "Bakgrundslista"
+msgstr "_Bakgrund"
 
 #: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
 #, c-format
 msgid "Screen %d"
-msgstr ""
+msgstr "Skärm %d"
 
 #. and if we have multiple screens, each with multiple monitors
 #: settings/backdrop_settings.c:1126
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr ""
+msgstr "Skärm %d, monitor %d"
 
 #: settings/backdrop_settings.c:1140
 msgid "_Menu"
-msgstr ""
+msgstr "_Meny"
 
 #: settings/menu_settings.c:153
 msgid "Window List"
-msgstr ""
+msgstr "Fönsterlista"
 
 #: settings/menu_settings.c:161
 msgid "Show window _list"
-msgstr ""
+msgstr "Visa fönster_lista"
 
 #: settings/menu_settings.c:176
 msgid "Show _window icons"
-msgstr ""
+msgstr "Visa fönster_ikoner"
 
 #: settings/menu_settings.c:189
-#, fuzzy
 msgid "Desktop Menu"
-msgstr "Skrivbord"
+msgstr "Skrivbordsmeny"
 
 #: settings/menu_settings.c:197
 msgid "Show desktop _menu"
-msgstr ""
+msgstr "Visa skrivbords_meny"
 
 #: settings/menu_settings.c:212
 msgid "Show _application icons"
-msgstr ""
+msgstr "Visa _programikoner"
 
 #: settings/menu_settings.c:223
 msgid "_Edit desktop menu"
-msgstr ""
+msgstr "_Redigera skrivbordsmeny"
 
 #: src/main.c:248
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr ""
+msgstr "%s: Okänd inställning: %s\n"
 
 #: src/main.c:249
 msgid "Options are:\n"
-msgstr ""
+msgstr "Giltiga inställningar är:\n"
 
 #: src/main.c:250
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr ""
+msgstr "    -reload      Läs om alla inställningar, fräscha upp bildlista\n"
 
 #: src/main.c:251
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr ""
+msgstr "    -menu        Öppna menyn (vid muspekarens position)\n"
 
 #: src/main.c:252
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
+msgstr "    -windowlist  Öppna fönsterlistan (vid muspekarens position)\n"
 
 #: src/windowlist.c:193
-#, fuzzy, c-format
+#, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "Arbetsyta %d"
+msgstr "<b>Arbetsyta %d</b>"
 
 #: src/windowlist.c:201
-#, fuzzy, c-format
+#, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "Arbetsyta %d"
+msgstr "<i>Arbetsyta %d</i>"
 
 #: src/windowlist.c:268 src/windowlist.c:271
-#, fuzzy
 msgid "_Add Workspace"
-msgstr "Lägg till arbetsyta"
+msgstr "_Lägg till arbetsyta"
 
 #: src/windowlist.c:279
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace %d"
-msgstr "Arbetsyta %d"
+msgstr "_Tag bort arbetsyta %d"
 
 #: src/windowlist.c:282
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Arbetsyta %d"
+msgstr "_Tag bort arbetsyta '%s'"
