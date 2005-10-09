@@ -1,0 +1,701 @@
+# Esperanto translations for the xfdesktop package.
+# Copyright (C) 2002-2005 The Xfce development team.
+# This file is distributed under the same license as the xfdesktop package.
+# Sylvain Vedrenne <sylvain.vedrenne@free.fr>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop\n"
+"Report-Msgid-Bugs-To: Sylvain Vedrenne <sylvain.vedrenne@free.fr>\n"
+"POT-Creation-Date: 2005-10-08 06:14+0900\n"
+"PO-Revision-Date: 2005-10-09 19:25+0200\n"
+"Last-Translator: Sylvain Vedrenne <sylvain.vedrenne@free.fr>\n"
+"Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"nplurals=2; plural=(n != 1);\n"
+
+#: menueditor/about_dialog.c:39
+msgid "A menu editor for Xfce4"
+msgstr "Menua redaktilo por Xfce4"
+
+#. Credits
+#: menueditor/about_dialog.c:43
+msgid "Core developer"
+msgstr "Ĉefa programisto"
+
+#: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:46
+msgid "Contributor"
+msgstr "Partoprenanto"
+
+#: menueditor/about_dialog.c:47
+msgid "Icon designer"
+msgstr "Piktograma redaktilo"
+
+#: menueditor/add_dialog.c:159 menueditor/add_dialog.c:169
+msgid "Add menu entry"
+msgstr "Aldonu menuan elementon"
+
+#. Type
+#: menueditor/add_dialog.c:173 menueditor/add_menu_dialog.c:110
+msgid "Type:"
+msgstr "Specon:"
+
+#: menueditor/add_dialog.c:176
+msgid "Launcher"
+msgstr "Lanĉilo"
+
+#: menueditor/add_dialog.c:180
+msgid "Submenu"
+msgstr "Submenuo"
+
+#: menueditor/add_dialog.c:184
+msgid "Separator"
+msgstr "Disigilo"
+
+#: menueditor/add_dialog.c:188
+msgid "Title"
+msgstr "Titolo"
+
+#: menueditor/add_dialog.c:192
+msgid "Quit"
+msgstr "Adiaŭu"
+
+#. Name
+#: menueditor/add_dialog.c:206 menueditor/edit_dialog.c:158
+#: menueditor/edit_dialog.c:218
+msgid "Name:"
+msgstr "Nomon:"
+
+#: menueditor/add_dialog.c:214 menueditor/edit_dialog.c:163
+msgid "Command:"
+msgstr "Komandon:"
+
+#: menueditor/add_dialog.c:226 menueditor/edit_dialog.c:150
+#: menueditor/edit_dialog.c:210
+msgid "Icon:"
+msgstr "Piktogramon:"
+
+#. Start Notify check button
+#. Startup notification
+#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:171
+msgid "Use startup _notification"
+msgstr "Uzu lanĉan _informigon"
+
+#. Run in terminal check button
+#. Run in terminal
+#: menueditor/add_dialog.c:241 menueditor/edit_dialog.c:174
+msgid "Run in _terminal"
+msgstr "Lanĉu en _terminalo"
+
+#: menueditor/add_dialog.c:272
+msgid "The command doesn't exist !"
+msgstr "La komando ne ekzistas !"
+
+#: menueditor/add_dialog.c:278
+msgid "All fields must be filled to add an item."
+msgstr "Aldoni elementon necesas ke ĉiuj kampoj estu enskribitaj."
+
+#: menueditor/add_dialog.c:287
+msgid "The 'Name' field is required."
+msgstr "La kampo 'Nomon' estas necesa."
+
+#: menueditor/add_dialog.c:331
+msgid "--- separator ---"
+msgstr "--- disigilo ---"
+
+#: menueditor/add_dialog.c:357
+msgid "quit"
+msgstr "adiaŭu"
+
+#: menueditor/add_menu_dialog.c:97 menueditor/add_menu_dialog.c:103
+#: menueditor/menueditor.c:831
+msgid "Add an external menu"
+msgstr "Aldonu eksteran menuon"
+
+#: menueditor/add_menu_dialog.c:115
+msgid "File"
+msgstr "Dosiero"
+
+#: menueditor/add_menu_dialog.c:119
+msgid "System"
+msgstr "Sistemo"
+
+#: menueditor/add_menu_dialog.c:133
+msgid "Source:"
+msgstr "Fonton:"
+
+#. Style
+#: menueditor/add_menu_dialog.c:145
+msgid "Style:"
+msgstr "Stilon:"
+
+#: menueditor/add_menu_dialog.c:148
+msgid "Simple"
+msgstr "Simpla"
+
+#: menueditor/add_menu_dialog.c:150
+msgid "Multilevel"
+msgstr "Plurnivela"
+
+#. Unique
+#: menueditor/add_menu_dialog.c:162
+msgid "_Unique entries only"
+msgstr "_Nur unikaj elementoj"
+
+#: menueditor/add_menu_dialog.c:198
+msgid "The 'Source' field is required."
+msgstr "La kampo 'Fonton' estas necesa."
+
+#: menueditor/add_menu_dialog.c:202 menueditor/add_menu_dialog.c:212
+msgid "--- include ---"
+msgstr "--- inkluzivu ---"
+
+#: menueditor/add_menu_dialog.c:213
+msgid "system"
+msgstr "sistemo"
+
+#. Create dialog for editing
+#: menueditor/edit_dialog.c:127 menueditor/edit_dialog.c:134
+msgid "Edit menu entry"
+msgstr "Modifiu menuan elementon"
+
+#: menueditor/edit_dialog.c:139
+msgid "Separators cannot be edited"
+msgstr "Disigilojn oni ne povas modifii"
+
+#: menueditor/menueditor.c:81
+#, c-format
+msgid "File %s doesn't exist !"
+msgstr "Dosiero %s ne ekzistas !"
+
+#: menueditor/menueditor.c:121 menueditor/menueditor.c:532
+msgid "Do you want to save before closing the menu ?"
+msgstr "Ĉu konservu antaŭ fermi la menuon ?"
+
+#: menueditor/menueditor.c:123
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr "La menuo estis modifita de vi, ĉu konservu ĝin antaŭ adiaŭi ?"
+
+#: menueditor/menueditor.c:125
+msgid "Forget modifications"
+msgstr "Forgesu la ŝanĝojn"
+
+#: menueditor/menueditor.c:310
+msgid "Are you sure you want to close the current menu?"
+msgstr "Ĉu vi vere volas fermi la kurantan menuon?"
+
+#: menueditor/menueditor.c:325
+msgid "Do you want to save before closing the file?"
+msgstr "Ĉu konservu antaŭ fermi la dosieron?"
+
+#: menueditor/menueditor.c:334
+msgid "Select command"
+msgstr "Elektu komandon"
+
+#: menueditor/menueditor.c:366 menueditor/menueditor.c:423
+#: menueditor/menueditor.c:530
+msgid "Question"
+msgstr "Demando"
+
+#: menueditor/menueditor.c:368
+msgid "Do you want to save before opening an other menu ?"
+msgstr "Ĉu konservu antaŭ malfermi alian menuon ?"
+
+#: menueditor/menueditor.c:370 menueditor/menueditor.c:427
+#: menueditor/menueditor.c:534
+msgid "Ignore modifications"
+msgstr "Ignoru la ŝanĝojn"
+
+#: menueditor/menueditor.c:381
+msgid "Open menu file"
+msgstr "Malfermu menuan dosieron"
+
+#: menueditor/menueditor.c:425
+msgid "Do you want to save before opening the default menu ?"
+msgstr "Ĉu konservu antaŭ malfermi la implican menuon ?"
+
+#: menueditor/menueditor.c:483
+msgid "Save as..."
+msgstr "Konservu kiel..."
+
+#: menueditor/menueditor.c:638
+msgid "Do you want to move the item into the parent menu?"
+msgstr "Ĉu movu la elementon en la patran menuon ?"
+
+#: menueditor/menueditor.c:684
+msgid "Do you want to move the item into the submenu?"
+msgstr "Ĉu movu la elementon en la submenuon ?"
+
+#: menueditor/menueditor.c:825
+msgid "Edit"
+msgstr "Modifiu"
+
+#. File menu
+#: menueditor/menueditor.c:849
+msgid "_File"
+msgstr "_Dosiero"
+
+#: menueditor/menueditor.c:858
+msgid "Open default menu"
+msgstr "Malfermu la implican menuon"
+
+#. Edit menu
+#: menueditor/menueditor.c:872
+msgid "_Edit"
+msgstr "_Modifiu"
+
+#: menueditor/menueditor.c:878
+msgid "Add an external menu..."
+msgstr "Aldonu eksteran menuon..."
+
+#. Help menu
+#: menueditor/menueditor.c:890
+msgid "_Help"
+msgstr "_Helpu"
+
+#: menueditor/menueditor.c:894
+msgid "_About..."
+msgstr "_Pri..."
+
+#: menueditor/menueditor.c:906
+msgid "Create a new Xfce4 menu file"
+msgstr "Kreu Xfce4-an menuan dosieron"
+
+#: menueditor/menueditor.c:911
+msgid "Open an Xfce4 menu file"
+msgstr "Malfermu Xfce4-an menuan dosieron"
+
+#: menueditor/menueditor.c:916
+msgid "Save current menu"
+msgstr "Konservu la kurantan menuon"
+
+#: menueditor/menueditor.c:921
+msgid "Close current menu"
+msgstr "Fermu la kurantan menuon"
+
+#: menueditor/menueditor.c:927
+msgid "Add an entry to the menu"
+msgstr "Aldonu elementon al la menuo"
+
+#: menueditor/menueditor.c:931
+msgid "Delete the current entry"
+msgstr "Forigu la kurantan elementon"
+
+#: menueditor/menueditor.c:937
+msgid "Move the current entry up"
+msgstr "Suprenmovu la kurantan elementon"
+
+#: menueditor/menueditor.c:942
+msgid "Move the current entry down"
+msgstr "Malsuprenmovu la kurantan elementon"
+
+#: menueditor/menueditor.c:948
+msgid "Collapse the tree"
+msgstr "Fermu la arbon"
+
+#: menueditor/menueditor.c:953
+msgid "Expand the tree"
+msgstr "Disvastigu la arbon"
+
+#: menueditor/menueditor.c:981
+msgid "Name"
+msgstr "Nomo"
+
+#: menueditor/menueditor.c:984
+msgid "Command"
+msgstr "Komando"
+
+#: menueditor/menueditor.c:985
+msgid "Hidden"
+msgstr "Kaŝita"
+
+#: modules/menu/desktop-menuspec.c:62
+msgid "/Other"
+msgstr "/Alia"
+
+#: panel-plugin/desktop-menu-plugin.c:335
+#: panel-plugin/desktop-menu-plugin.c:904
+msgid "Xfce Menu"
+msgstr "Xfce-a Menuo"
+
+#: panel-plugin/desktop-menu-plugin.c:575
+msgid "Select Icon"
+msgstr "Elektu Piktogramon"
+
+#: panel-plugin/desktop-menu-plugin.c:577
+msgid "Select Menu File"
+msgstr "Elektu Menuan Dosieron"
+
+#: panel-plugin/desktop-menu-plugin.c:592 settings/backdrop-mgr.c:414
+#: settings/backdrop-mgr.c:515 settings/backdrop_settings.c:533
+msgid "All Files"
+msgstr "Ĉiujn dosierojn"
+
+#: panel-plugin/desktop-menu-plugin.c:598 settings/backdrop-mgr.c:418
+#: settings/backdrop_settings.c:537
+msgid "Image Files"
+msgstr "Bildajn Dosierojn"
+
+#: panel-plugin/desktop-menu-plugin.c:606
+msgid "Menu Files"
+msgstr "Menuaj Dosieroj"
+
+#: panel-plugin/desktop-menu-plugin.c:722 settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
+
+#: panel-plugin/desktop-menu-plugin.c:740
+msgid "Button"
+msgstr "Butono"
+
+#: panel-plugin/desktop-menu-plugin.c:753
+msgid "Button _title:"
+msgstr "Butonan _titolon:"
+
+#: panel-plugin/desktop-menu-plugin.c:766
+msgid "_Show title in button"
+msgstr "_Montru la titolon en la butono"
+
+#: panel-plugin/desktop-menu-plugin.c:773
+msgid "Menu File"
+msgstr "Menua Dosiero"
+
+#: panel-plugin/desktop-menu-plugin.c:785
+msgid "Use default _desktop menu file"
+msgstr "Uzu la implican _labortablan menuan dosieron"
+
+#: panel-plugin/desktop-menu-plugin.c:794
+msgid "Use _custom menu file:"
+msgstr "Uzu _personan menuan dosieron:"
+
+#: panel-plugin/desktop-menu-plugin.c:846
+#: panel-plugin/desktop-menu-plugin.c:848
+msgid "_Edit Menu"
+msgstr "_Modifiu Menuon"
+
+#: panel-plugin/desktop-menu-plugin.c:855
+msgid "Icons"
+msgstr "Piktogramoj"
+
+#: panel-plugin/desktop-menu-plugin.c:867
+msgid "_Button icon:"
+msgstr "_Butonan piktogramon:"
+
+#: panel-plugin/desktop-menu-plugin.c:891
+msgid "Show _icons in menu"
+msgstr "Montru la _piktogramojn ĉe la menuo"
+
+#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"Malsukcesis konservi la dosieron %s: %s\n"
+"\n"
+"Bonvolu elekti alian lokon aŭ premi la butonon por forigi viajn ŝanĝojn"
+
+#: settings/backdrop-mgr.c:409
+msgid "Select backdrop image file"
+msgstr "Elektu fonbildan dosieron"
+
+#: settings/backdrop-mgr.c:510
+msgid "Choose backdrop list filename"
+msgstr "Elektu dosiernomon de fonbilda listo"
+
+#: settings/backdrop-mgr.c:519
+msgid "List Files"
+msgstr "Listaj Dosieroj"
+
+#: settings/backdrop-mgr.c:582
+msgid "Backdrop List"
+msgstr "Fonbilda Listo"
+
+#: settings/backdrop-mgr.c:599
+msgid "Image files"
+msgstr "Bildaj dosieroj"
+
+#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
+#: settings/backdrop_settings.c:197
+msgid "backdrops.list"
+msgstr "backdrops.list"
+
+#: settings/backdrop-mgr.c:618
+msgid "List file"
+msgstr "Lista dosiero"
+
+#: settings/backdrop-mgr.c:638
+msgid "Create backdrop list"
+msgstr "Kreu fonbildan liston"
+
+#: settings/backdrop-mgr.c:669
+msgid "Edit backdrop list"
+msgstr "Modifiu fonbildan liston"
+
+#. the dialog
+#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:916
+#: src/xfce-desktop.c:677
+msgid "Desktop"
+msgstr "Labortablo"
+
+#: settings/backdrop_settings.c:528
+msgid "Select backdrop image or list file"
+msgstr "Elektu fonbildon aŭ listan dosieron"
+
+#: settings/backdrop_settings.c:546
+msgid "List Files (*.list)"
+msgstr "Listaj dosieroj (*.list)"
+
+#: settings/backdrop_settings.c:636
+msgid "_Edit list..."
+msgstr "_Modifiu liston..."
+
+#: settings/backdrop_settings.c:644
+msgid "_New list..."
+msgstr "_Novan liston..."
+
+#: settings/backdrop_settings.c:680
+msgid "S_tyle:"
+msgstr "S_tilon:"
+
+#: settings/backdrop_settings.c:688
+msgid "Tiled"
+msgstr "Kaheligita"
+
+#: settings/backdrop_settings.c:695
+msgid "Centered"
+msgstr "Centrigita"
+
+#: settings/backdrop_settings.c:702
+msgid "Scaled"
+msgstr "Laŭskaligita"
+
+#: settings/backdrop_settings.c:709
+msgid "Stretched"
+msgstr "Elstreĉita"
+
+#: settings/backdrop_settings.c:716
+msgid "Auto"
+msgstr "Aŭtomate"
+
+#: settings/backdrop_settings.c:782
+msgid "Adjust _Brightness:"
+msgstr "Agordu la _Luminancon:"
+
+#: settings/backdrop_settings.c:838
+#, c-format
+msgid "Xfce will be unable to manage your desktop (%s)."
+msgstr "Xfce ne povos administradi vian labortablon (%s)."
+
+#: settings/backdrop_settings.c:839
+msgid "Unknown Error"
+msgstr "Nekonata Eraro"
+
+#: settings/backdrop_settings.c:843
+msgid "Error"
+msgstr "Eraro"
+
+#: settings/backdrop_settings.c:845
+msgid "Unable to start xfdesktop"
+msgstr "Malsukcesas lanĉi xfdesktop"
+
+#: settings/backdrop_settings.c:863
+msgid "Information"
+msgstr "Informo"
+
+#: settings/backdrop_settings.c:873
+msgid ""
+"To ensure that Xfce does not manage your desktop the next time you start "
+"Xfce, please be sure to save your session when logging out.  If you are not "
+"using the Xfce Session Manager (xfce4-session), you will need to manually "
+"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
+"documentation provided on http://xfce.org/."
+msgstr ""
+"Por esti certa ke Xfce ne administrados vian labortablon la venontan fojon ke vi lanĉas\n"
+"Xfce, bonvolu certigi ke vi konservas vian seancon kiam vi elsalutas. Se vi ne\n"
+"uzas la Xfce-an Seancadministradilon (xfce4-session), vi bezonos mane modifii\n"
+"vian ~/.config/xfce4/xinitrc dosieron. Detaloj estas disponeblaj en la\n"
+"dokumentaro disdonita ĉe http://xfce.org/."
+
+#: settings/backdrop_settings.c:881
+msgid "_Do not show this again"
+msgstr "_Ne montru ĉi tiun denove"
+
+#. header
+#: settings/backdrop_settings.c:931
+#: settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop Settings"
+msgstr "Labortablaj Parametroj"
+
+#: settings/backdrop_settings.c:936
+msgid "Allow _Xfce to manage the desktop"
+msgstr "Faru ke _Xfce administradas la labortablon"
+
+#: settings/backdrop_settings.c:972
+msgid "_Backdrops"
+msgstr "_Fonbildoj"
+
+#. color settings frame
+#: settings/backdrop_settings.c:998
+msgid "Color"
+msgstr "Koloro"
+
+#: settings/backdrop_settings.c:1012
+msgid "_Color Style:"
+msgstr "_Koloran Stilon:"
+
+#: settings/backdrop_settings.c:1021
+msgid "Solid Color"
+msgstr "Solida Koloro"
+
+#: settings/backdrop_settings.c:1028
+msgid "Horizontal Gradient"
+msgstr "Horizontala Gradiento"
+
+#: settings/backdrop_settings.c:1035
+msgid "Vertical Gradient"
+msgstr "Vertikala Gradiento"
+
+#: settings/backdrop_settings.c:1056
+msgid "Fi_rst Color:"
+msgstr "Un_uan Koloron:"
+
+#: settings/backdrop_settings.c:1077
+msgid "_Second Color:"
+msgstr "_Duan Koloron:"
+
+#: settings/backdrop_settings.c:1102
+msgid "Image"
+msgstr "Bildo"
+
+#: settings/backdrop_settings.c:1110
+msgid "Show _Image"
+msgstr "Montru _Bildon"
+
+#: settings/backdrop_settings.c:1132
+msgid "_File:"
+msgstr "_Dosieron:"
+
+#. add the single backdrop settings page to the main notebook
+#: settings/backdrop_settings.c:1180
+msgid "_Backdrop"
+msgstr "_Fonbidlo"
+
+#: settings/backdrop_settings.c:1188 settings/backdrop_settings.c:1190
+#, c-format
+msgid "Screen %d"
+msgstr "Ekrano %d"
+
+#. and if we have multiple screens, each with multiple monitors
+#: settings/backdrop_settings.c:1195
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Ekrano %d, Monitoro %d"
+
+#: settings/backdrop_settings.c:1209
+msgid "_Menu"
+msgstr "_Menuo"
+
+#: settings/menu_settings.c:153
+msgid "Window List"
+msgstr "Fenestra Listo"
+
+#: settings/menu_settings.c:161
+msgid "Show window _list"
+msgstr "Montru la fenestran _liston"
+
+#: settings/menu_settings.c:176
+msgid "Show _window icons"
+msgstr "Montru la _fenestrajn piktogramojn"
+
+#: settings/menu_settings.c:189
+msgid "Desktop Menu"
+msgstr "Labortabla Menuo"
+
+#: settings/menu_settings.c:197
+msgid "Show desktop _menu"
+msgstr "Montru la labortablan _menuon"
+
+#: settings/menu_settings.c:212
+msgid "Show _application icons"
+msgstr "Montru la _aplikaĵajn piktogramojn"
+
+#: settings/menu_settings.c:223
+msgid "_Edit desktop menu"
+msgstr "_Modifiu la labortablan menuon"
+
+#: src/main.c:253
+#, c-format
+msgid "%s: Unknown option: %s\n"
+msgstr "%s: Nekonata opcio: %s\n"
+
+#: src/main.c:254
+msgid "Options are:\n"
+msgstr "La opcioj estas:\n"
+
+#: src/main.c:255
+msgid "    -reload      Reload all settings, refresh image list\n"
+msgstr "    -reload      Reŝargu ĉiujn parametrojn, refreŝigu la bildan liston\n"
+
+#: src/main.c:256
+msgid "    -menu        Pop up the menu (at the current mouse position)\n"
+msgstr "    -menu        Ŝprucigu la menuon (ĉe la kuranta muspozicio)\n"
+
+#: src/main.c:257
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -windowlist  Ŝprucigu la fenestran liston (ĉe la kuranta muspozicio)\n"
+
+#: src/main.c:258
+msgid "    -quit        Cause xfdesktop to quit\n"
+msgstr "    -quit        Faras ke xfdesktop adiaŭas\n"
+
+#: src/windowlist.c:193
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>Laborspaco %d</b>"
+
+#: src/windowlist.c:201
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr "<i>Laborspaco %d</i>"
+
+#: src/windowlist.c:268 src/windowlist.c:271
+msgid "_Add Workspace"
+msgstr "_Aldonu Laborspacon"
+
+#: src/windowlist.c:279
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "_Forigu Laborspacon %d"
+
+#: src/windowlist.c:282
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "_Forigu Laborspacon '%s'"
+
+#: menueditor/xfce-menueditor.desktop.in.h:1
+msgid "Graphical tool for editing the Xfce 4 menu"
+msgstr "Grafika ilo por modifii la Xfce 4 menuon"
+
+#: menueditor/xfce-menueditor.desktop.in.h:2
+msgid "Menu Editor"
+msgstr "Menua Radaktilo"
+
+#: menueditor/xfce-menueditor.desktop.in.h:3
+msgid "Xfce 4 Menu Editor"
+msgstr "Xfce 4 Menua Redaktilo"
+
+#: settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Settings for the Xfce 4 Desktop Manager"
+msgstr "Parametroj por la Xfce 4 Administrilo de Labortablo"
+
+#: settings/xfce-backdrop-settings.desktop.in.h:3
+msgid "Xfce 4 Desktop Settings"
+msgstr "Xfce 4 Labortablaj Parametroj"
