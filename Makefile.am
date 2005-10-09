@@ -52,6 +52,7 @@ conf_DATA = 								\
 	menu.xml.ro							\
 	menu.xml.ru							\
 	menu.xml.sk							\
+	menu.xml.sv							\
 	menu.xml.uk							\
 	menu.xml.vi 							\
 	menu.xml.zh_TW
