@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-05 12:35+0900\n"
-"PO-Revision-Date: 2005-08-23 17:02+0900\n"
+"POT-Creation-Date: 2005-10-09 22:06+0900\n"
+"PO-Revision-Date: 2005-10-09 22:30+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -318,80 +318,83 @@ msgstr "隠す"
 msgid "/Other"
 msgstr "/その他"
 
-#: ../panel-plugin/desktop-menu-plugin.c:338
-#: ../panel-plugin/desktop-menu-plugin.c:904
-msgid "Xfce Menu"
-msgstr "Xfce メニュー"
-
-#: ../panel-plugin/desktop-menu-plugin.c:574
+#: ../panel-plugin/desktop-menu-plugin.c:486
 msgid "Select Icon"
 msgstr "アイコンを選択して下さい"
 
-#: ../panel-plugin/desktop-menu-plugin.c:576
+#: ../panel-plugin/desktop-menu-plugin.c:488
 msgid "Select Menu File"
 msgstr "メニューファイルを選択して下さい"
 
-#: ../panel-plugin/desktop-menu-plugin.c:591 ../settings/backdrop-mgr.c:436
+#: ../panel-plugin/desktop-menu-plugin.c:503 ../settings/backdrop-mgr.c:436
 #: ../settings/backdrop-mgr.c:537 ../settings/backdrop_settings.c:524
 msgid "All Files"
 msgstr "全てのファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:597 ../settings/backdrop-mgr.c:440
+#: ../panel-plugin/desktop-menu-plugin.c:509 ../settings/backdrop-mgr.c:440
 #: ../settings/backdrop_settings.c:528
 msgid "Image Files"
 msgstr "画像ファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:605
+#: ../panel-plugin/desktop-menu-plugin.c:517
 msgid "Menu Files"
 msgstr "メニューファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:722 ../settings/menu_settings.c:132
+#: ../panel-plugin/desktop-menu-plugin.c:634 ../settings/menu_settings.c:153
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor を実行できません: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:657
+msgid "Edit Properties"
+msgstr "プロパティ編集"
+
+#: ../panel-plugin/desktop-menu-plugin.c:665
+msgid "Xfce Menu"
+msgstr "Xfce メニュー"
+
+#: ../panel-plugin/desktop-menu-plugin.c:675
 msgid "Button"
 msgstr "ボタン"
 
-#: ../panel-plugin/desktop-menu-plugin.c:753
+#: ../panel-plugin/desktop-menu-plugin.c:688
 msgid "Button _title:"
 msgstr "ボタンタイトル(_T):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:766
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "_Show title in button"
 msgstr "ボタンにタイトルを表示(_S)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:773
+#: ../panel-plugin/desktop-menu-plugin.c:708
 msgid "Menu File"
 msgstr "メニューファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:785
+#: ../panel-plugin/desktop-menu-plugin.c:720
 msgid "Use default _desktop menu file"
 msgstr "標準のデスクトップメニューを使用(_D)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:794
+#: ../panel-plugin/desktop-menu-plugin.c:729
 msgid "Use _custom menu file:"
 msgstr "カスタム・メニューファイルを使用(_C):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:846
-#: ../panel-plugin/desktop-menu-plugin.c:848
+#: ../panel-plugin/desktop-menu-plugin.c:781
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "_Edit Menu"
 msgstr "メニューを編集(_E)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:855
+#: ../panel-plugin/desktop-menu-plugin.c:790
 msgid "Icons"
 msgstr "アイコン"
 
-#: ../panel-plugin/desktop-menu-plugin.c:867
+#: ../panel-plugin/desktop-menu-plugin.c:802
 msgid "_Button icon:"
 msgstr "ボタンアイコン(_B):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:891
+#: ../panel-plugin/desktop-menu-plugin.c:826
 msgid "Show _icons in menu"
 msgstr "メニューでアイコンを表示(_I):"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:118
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:504
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -443,7 +446,7 @@ msgstr "背景リスト編集"
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:939
-#: ../src/xfce-desktop.c:726
+#: ../src/xfce-desktop.c:1639
 msgid "Desktop"
 msgstr "デスクトップ"
 
@@ -551,7 +554,7 @@ msgstr "背景(_B)"
 #. color settings frame
 #: ../settings/backdrop_settings.c:1040
 msgid "Color"
-msgstr "カラー"
+msgstr "色"
 
 #: ../settings/backdrop_settings.c:1054
 msgid "_Color Style:"
@@ -605,61 +608,70 @@ msgstr "画面 %d"
 msgid "Screen %d, Monitor %d"
 msgstr "画面 %d, モニタ %d"
 
+# FIXME: should be an another translation
 #: ../settings/backdrop_settings.c:1254
-msgid "_Menu"
-msgstr "メニュー(_M)"
+msgid "_Useless Bloat"
+msgstr "その他(_U)"
 
-#: ../settings/menu_settings.c:153
-msgid "Window List"
-msgstr "ウィンドウリスト"
+#: ../settings/menu_settings.c:174
+msgid "Window List Menu"
+msgstr "ウィンドウリストのメニュー"
 
-#: ../settings/menu_settings.c:161
+#: ../settings/menu_settings.c:182
 msgid "Show window _list"
 msgstr "ウィンドウリストを表示(_L)"
 
-#: ../settings/menu_settings.c:176
+#: ../settings/menu_settings.c:197
 msgid "Show _window icons"
 msgstr "ウィンドウアイコンを表示(_W)"
 
-#: ../settings/menu_settings.c:189
+#: ../settings/menu_settings.c:210
 msgid "Desktop Menu"
 msgstr "デスクトップメニュー"
 
-#: ../settings/menu_settings.c:197
+#: ../settings/menu_settings.c:218
 msgid "Show desktop _menu"
 msgstr "デスクトップメニューを表示(_M)"
 
-#: ../settings/menu_settings.c:212
+#: ../settings/menu_settings.c:233
 msgid "Show _application icons"
 msgstr "アプリケーションアイコンを表示(_A)"
 
-#: ../settings/menu_settings.c:223
+#: ../settings/menu_settings.c:244
 msgid "_Edit desktop menu"
 msgstr "デスクトップメニューを編集(_E)"
 
-#: ../src/main.c:252
+#: ../settings/menu_settings.c:256
+msgid "Window Icons"
+msgstr "ウィンドウアイコン"
+
+#: ../settings/menu_settings.c:264
+msgid "Show minimized window _icons on the desktop"
+msgstr "デスクトップ上に最小化したウィンドウアイコンを表示する(_I)"
+
+#: ../src/main.c:251
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: 不明なオプション: %s\n"
 
-#: ../src/main.c:253
+#: ../src/main.c:252
 msgid "Options are:\n"
 msgstr "オプションは:\n"
 
-#: ../src/main.c:254
+#: ../src/main.c:253
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      全ての設定を再読込みして画像リストを更新\n"
 
-#: ../src/main.c:255
+#: ../src/main.c:254
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        現在のマウス位置でメニューをポップアップ\n"
 
-#: ../src/main.c:256
+#: ../src/main.c:255
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  現在のマウス位置でウィンドウリストをポップアップ\n"
 
-#: ../src/main.c:257
+#: ../src/main.c:256
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        xfdesktop を終了させる\n"
 

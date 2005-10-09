@@ -1,425 +1,429 @@
-# Arabic translation for xfdesktop
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# saleh alhathal <hathalsal@hotmail.com>, 2004.
+# Arabic translations for xfdesktop package.
+# Copyright (C) 2003-2005 The Xfce development team.
+# This file is distributed under the same license as the xfdesktop package.
+# Saleh Alhathal <hathalsal@hotmail.com>, 2004.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: ar\n"
+"Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-01 19:50-0700\n"
-"PO-Revision-Date: 2004-3-8 8:25+0300\n"
-"Last-Translator: saleh alhathal <hathalsal@hotmail.com>\n"
-"Language-Team: arabic\n"
+"POT-Creation-Date: 2005-10-09 22:06+0900\n"
+"PO-Revision-Date: 2005-10-09 22:06+0900\n"
+"Last-Translator: Saleh Alhathal <hathalsal@hotmail.com>\n"
+"Language-Team: Arabic <lumina@silverpen.de>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: menueditor/about_dialog.c:39
+#: ../menueditor/about_dialog.c:39
 #, fuzzy
 msgid "A menu editor for Xfce4"
 msgstr "محرر لقائمة XFce4"
 
 #. Credits
-#: menueditor/about_dialog.c:43
+#: ../menueditor/about_dialog.c:43
 msgid "Core developer"
 msgstr ""
 
-#: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
-#: menueditor/about_dialog.c:46
+#: ../menueditor/about_dialog.c:44 ../menueditor/about_dialog.c:45
+#: ../menueditor/about_dialog.c:46
 msgid "Contributor"
 msgstr ""
 
-#: menueditor/about_dialog.c:47
+#: ../menueditor/about_dialog.c:47
 msgid "Icon designer"
 msgstr ""
 
-#: menueditor/add_dialog.c:159 menueditor/add_dialog.c:169
+#: ../menueditor/add_dialog.c:159 ../menueditor/add_dialog.c:169
 msgid "Add menu entry"
 msgstr "أضف مدخل للقائمة"
 
 #. Type
-#: menueditor/add_dialog.c:173 menueditor/add_menu_dialog.c:110
+#: ../menueditor/add_dialog.c:173 ../menueditor/add_menu_dialog.c:110
 #, fuzzy
 msgid "Type:"
 msgstr "نوع :"
 
-#: menueditor/add_dialog.c:176
+#: ../menueditor/add_dialog.c:176
 msgid "Launcher"
 msgstr ""
 
-#: menueditor/add_dialog.c:180
+#: ../menueditor/add_dialog.c:180
 msgid "Submenu"
 msgstr "قائمة فرعية"
 
-#: menueditor/add_dialog.c:184
+#: ../menueditor/add_dialog.c:184
 msgid "Separator"
 msgstr "فاصل"
 
-#: menueditor/add_dialog.c:188
+#: ../menueditor/add_dialog.c:188
 msgid "Title"
 msgstr "عنوان"
 
-#: menueditor/add_dialog.c:192
+#: ../menueditor/add_dialog.c:192
 msgid "Quit"
 msgstr "خروج"
 
 #. Name
-#: menueditor/add_dialog.c:206 menueditor/edit_dialog.c:158
-#: menueditor/edit_dialog.c:218
+#: ../menueditor/add_dialog.c:206 ../menueditor/edit_dialog.c:147
+#: ../menueditor/edit_dialog.c:207
 #, fuzzy
 msgid "Name:"
 msgstr "أسم :"
 
-#: menueditor/add_dialog.c:214 menueditor/edit_dialog.c:163
+#: ../menueditor/add_dialog.c:214 ../menueditor/edit_dialog.c:152
 #, fuzzy
 msgid "Command:"
 msgstr "أمر :"
 
-#: menueditor/add_dialog.c:226 menueditor/edit_dialog.c:150
-#: menueditor/edit_dialog.c:210
+#: ../menueditor/add_dialog.c:226 ../menueditor/edit_dialog.c:139
+#: ../menueditor/edit_dialog.c:199
 #, fuzzy
 msgid "Icon:"
 msgstr "أيقونة :"
 
 #. Start Notify check button
 #. Startup notification
-#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:171
+#: ../menueditor/add_dialog.c:237 ../menueditor/edit_dialog.c:160
 msgid "Use startup _notification"
 msgstr ""
 
 #. Run in terminal check button
 #. Run in terminal
-#: menueditor/add_dialog.c:241 menueditor/edit_dialog.c:174
+#: ../menueditor/add_dialog.c:241 ../menueditor/edit_dialog.c:163
 msgid "Run in _terminal"
 msgstr ""
 
-#: menueditor/add_dialog.c:272
+#: ../menueditor/add_dialog.c:272 ../menueditor/edit_dialog.c:242
 #, fuzzy
 msgid "The command doesn't exist !"
 msgstr "ملف %s غير موجود !"
 
-#: menueditor/add_dialog.c:278
+#: ../menueditor/add_dialog.c:278 ../menueditor/edit_dialog.c:248
 msgid "All fields must be filled to add an item."
 msgstr ""
 
-#: menueditor/add_dialog.c:287
+#: ../menueditor/add_dialog.c:287 ../menueditor/edit_dialog.c:257
 msgid "The 'Name' field is required."
 msgstr ""
 
-#: menueditor/add_dialog.c:331
+#: ../menueditor/add_dialog.c:331
 msgid "--- separator ---"
 msgstr "--- فاصل ---"
 
-#: menueditor/add_dialog.c:357
+#: ../menueditor/add_dialog.c:357 ../menueditor/edit_dialog.c:316
 msgid "quit"
 msgstr "خروج"
 
-#: menueditor/add_menu_dialog.c:97 menueditor/add_menu_dialog.c:103
-#: menueditor/menueditor.c:831
+#: ../menueditor/add_menu_dialog.c:97 ../menueditor/add_menu_dialog.c:103
+#: ../menueditor/menueditor.c:842
 msgid "Add an external menu"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:115
+#: ../menueditor/add_menu_dialog.c:115
 msgid "File"
 msgstr "ملف"
 
-#: menueditor/add_menu_dialog.c:119
+#: ../menueditor/add_menu_dialog.c:119
 msgid "System"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:133
+#: ../menueditor/add_menu_dialog.c:133
 #, fuzzy
 msgid "Source:"
 msgstr "مصدر :"
 
 #. Style
-#: menueditor/add_menu_dialog.c:145
+#: ../menueditor/add_menu_dialog.c:145
 msgid "Style:"
 msgstr "شكل:"
 
-#: menueditor/add_menu_dialog.c:148
+#: ../menueditor/add_menu_dialog.c:148
 #, fuzzy
 msgid "Simple"
 msgstr "ملف"
 
-#: menueditor/add_menu_dialog.c:150
+#: ../menueditor/add_menu_dialog.c:150
 msgid "Multilevel"
 msgstr ""
 
 #. Unique
-#: menueditor/add_menu_dialog.c:162
+#: ../menueditor/add_menu_dialog.c:162
 msgid "_Unique entries only"
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:198
+#: ../menueditor/add_menu_dialog.c:198
 msgid "The 'Source' field is required."
 msgstr ""
 
-#: menueditor/add_menu_dialog.c:202 menueditor/add_menu_dialog.c:212
+#: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
 msgid "--- include ---"
 msgstr "--- تضمن ---"
 
-#: menueditor/add_menu_dialog.c:213
+#: ../menueditor/add_menu_dialog.c:213
 msgid "system"
 msgstr "النظام"
 
 #. Create dialog for editing
-#: menueditor/edit_dialog.c:127 menueditor/edit_dialog.c:134
+#: ../menueditor/edit_dialog.c:116 ../menueditor/edit_dialog.c:123
 msgid "Edit menu entry"
 msgstr "حرر مدخل القائمة"
 
-#: menueditor/edit_dialog.c:139
+#: ../menueditor/edit_dialog.c:128
 msgid "Separators cannot be edited"
 msgstr ""
 
-#: menueditor/menueditor.c:81
+#: ../menueditor/menueditor.c:81
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "ملف %s غير موجود !"
 
-#: menueditor/menueditor.c:121 menueditor/menueditor.c:532
+#: ../menueditor/menueditor.c:121 ../menueditor/menueditor.c:537
 #, fuzzy
 msgid "Do you want to save before closing the menu ?"
 msgstr "هل تريد الحفظ قبل إغلاق الملف ؟"
 
-#: menueditor/menueditor.c:123
+#: ../menueditor/menueditor.c:123
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr ""
 
-#: menueditor/menueditor.c:125
+#: ../menueditor/menueditor.c:125
 msgid "Forget modifications"
 msgstr ""
 
-#: menueditor/menueditor.c:310
+#: ../menueditor/menueditor.c:314
 #, fuzzy
 msgid "Are you sure you want to close the current menu?"
 msgstr "هل أنت متأكد لإغلاق القائمة الحالية ؟"
 
-#: menueditor/menueditor.c:325
+#: ../menueditor/menueditor.c:329
 #, fuzzy
 msgid "Do you want to save before closing the file?"
 msgstr "هل تريد الحفظ قبل إغلاق الملف ؟"
 
-#: menueditor/menueditor.c:334
+#: ../menueditor/menueditor.c:338
 msgid "Select command"
 msgstr "إختر أمر"
 
-#: menueditor/menueditor.c:366 menueditor/menueditor.c:423
-#: menueditor/menueditor.c:530
+#: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
+#: ../menueditor/menueditor.c:535
 msgid "Question"
 msgstr ""
 
-#: menueditor/menueditor.c:368
+#: ../menueditor/menueditor.c:372
 #, fuzzy
 msgid "Do you want to save before opening an other menu ?"
 msgstr "هل تريد الحفظ قبل إغلاق الملف ؟"
 
-#: menueditor/menueditor.c:370 menueditor/menueditor.c:427
-#: menueditor/menueditor.c:534
+#: ../menueditor/menueditor.c:374 ../menueditor/menueditor.c:431
+#: ../menueditor/menueditor.c:539
 msgid "Ignore modifications"
 msgstr ""
 
-#: menueditor/menueditor.c:381
+#: ../menueditor/menueditor.c:385
 #, fuzzy
 msgid "Open menu file"
 msgstr "فتح ملف قائمة XFCE4"
 
-#: menueditor/menueditor.c:425
+#: ../menueditor/menueditor.c:429
 #, fuzzy
 msgid "Do you want to save before opening the default menu ?"
 msgstr "هل تريد الحفظ قبل إغلاق الملف ؟"
 
-#: menueditor/menueditor.c:483
+#: ../menueditor/menueditor.c:487
 msgid "Save as..."
 msgstr ""
 
-#: menueditor/menueditor.c:638
+#: ../menueditor/menueditor.c:649
 #, fuzzy
 msgid "Do you want to move the item into the parent menu?"
 msgstr "هل أنت متأكد لنقل للقائمة الفرعية ؟"
 
-#: menueditor/menueditor.c:684
+#: ../menueditor/menueditor.c:695
 #, fuzzy
 msgid "Do you want to move the item into the submenu?"
 msgstr "هل أنت متأكد لنقل للقائمة الفرعية ؟"
 
-#: menueditor/menueditor.c:825
+#: ../menueditor/menueditor.c:836
 #, fuzzy
 msgid "Edit"
 msgstr "_تحرير"
 
 #. File menu
-#: menueditor/menueditor.c:849
+#: ../menueditor/menueditor.c:860
 msgid "_File"
 msgstr "_ملف"
 
-#: menueditor/menueditor.c:858
+#: ../menueditor/menueditor.c:869
 msgid "Open default menu"
 msgstr "فتح القائمة اﻷفتراضية"
 
 #. Edit menu
-#: menueditor/menueditor.c:872
+#: ../menueditor/menueditor.c:883
 msgid "_Edit"
 msgstr "_تحرير"
 
-#: menueditor/menueditor.c:878
+#: ../menueditor/menueditor.c:889
 msgid "Add an external menu..."
 msgstr "أضف قائمة أضافية..."
 
 #. Help menu
-#: menueditor/menueditor.c:890
+#: ../menueditor/menueditor.c:901
 msgid "_Help"
 msgstr "_مساعدة"
 
-#: menueditor/menueditor.c:894
+#: ../menueditor/menueditor.c:905
 #, fuzzy
 msgid "_About..."
 msgstr "حول ..."
 
-#: menueditor/menueditor.c:906
+#: ../menueditor/menueditor.c:917
 #, fuzzy
 msgid "Create a new Xfce4 menu file"
 msgstr "تكوين ملف قائمة جديد لي XFCE4"
 
-#: menueditor/menueditor.c:911
+#: ../menueditor/menueditor.c:922
 #, fuzzy
 msgid "Open an Xfce4 menu file"
 msgstr "فتح ملف قائمة XFCE4"
 
-#: menueditor/menueditor.c:916
+#: ../menueditor/menueditor.c:927
 msgid "Save current menu"
 msgstr "حفظ القائمة الحالية"
 
-#: menueditor/menueditor.c:921
+#: ../menueditor/menueditor.c:932
 msgid "Close current menu"
 msgstr "إغلاق القائمة الحالية"
 
-#: menueditor/menueditor.c:927
+#: ../menueditor/menueditor.c:938
 msgid "Add an entry to the menu"
 msgstr "أضف مدخل للقائمة"
 
-#: menueditor/menueditor.c:931
+#: ../menueditor/menueditor.c:942
 msgid "Delete the current entry"
 msgstr "حذف المدخل من القائمة"
 
-#: menueditor/menueditor.c:937
+#: ../menueditor/menueditor.c:948
 #, fuzzy
 msgid "Move the current entry up"
 msgstr "نقل المدخل للأعلى"
 
-#: menueditor/menueditor.c:942
+#: ../menueditor/menueditor.c:953
 #, fuzzy
 msgid "Move the current entry down"
 msgstr "نقل المدخل للأعلى"
 
-#: menueditor/menueditor.c:948
+#: ../menueditor/menueditor.c:959
 msgid "Collapse the tree"
 msgstr ""
 
-#: menueditor/menueditor.c:953
+#: ../menueditor/menueditor.c:964
 msgid "Expand the tree"
 msgstr ""
 
-#: menueditor/menueditor.c:981
+#: ../menueditor/menueditor.c:992
 msgid "Name"
 msgstr "أسم"
 
-#: menueditor/menueditor.c:984
+#: ../menueditor/menueditor.c:995
 msgid "Command"
 msgstr "أمر"
 
-#: menueditor/menueditor.c:985
+#: ../menueditor/menueditor.c:996
 msgid "Hidden"
 msgstr "مخفي"
 
-#: modules/menu/desktop-menuspec.c:62
+#: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
 msgstr "/أخرى"
 
-#: panel-plugin/desktop-menu-plugin.c:335
-#: panel-plugin/desktop-menu-plugin.c:904
-msgid "Xfce Menu"
-msgstr ""
-
-#: panel-plugin/desktop-menu-plugin.c:575
+#: ../panel-plugin/desktop-menu-plugin.c:486
 #, fuzzy
 msgid "Select Icon"
 msgstr "إختر أيقونة"
 
-#: panel-plugin/desktop-menu-plugin.c:577
+#: ../panel-plugin/desktop-menu-plugin.c:488
 #, fuzzy
 msgid "Select Menu File"
 msgstr "فتح ملف قائمة XFCE4"
 
-#: panel-plugin/desktop-menu-plugin.c:592 settings/backdrop-mgr.c:414
-#: settings/backdrop-mgr.c:515 settings/backdrop_settings.c:533
+#: ../panel-plugin/desktop-menu-plugin.c:503 ../settings/backdrop-mgr.c:436
+#: ../settings/backdrop-mgr.c:537 ../settings/backdrop_settings.c:524
 #, fuzzy
 msgid "All Files"
 msgstr "ملف"
 
-#: panel-plugin/desktop-menu-plugin.c:598 settings/backdrop-mgr.c:418
-#: settings/backdrop_settings.c:537
+#: ../panel-plugin/desktop-menu-plugin.c:509 ../settings/backdrop-mgr.c:440
+#: ../settings/backdrop_settings.c:528
 #, fuzzy
 msgid "Image Files"
 msgstr "ملفات صور"
 
-#: panel-plugin/desktop-menu-plugin.c:606
+#: ../panel-plugin/desktop-menu-plugin.c:517
 #, fuzzy
 msgid "Menu Files"
 msgstr "ملفات صور"
 
-#: panel-plugin/desktop-menu-plugin.c:722 settings/menu_settings.c:132
+#: ../panel-plugin/desktop-menu-plugin.c:634 ../settings/menu_settings.c:153
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:657
+msgid "Edit Properties"
+msgstr ""
+
+#: ../panel-plugin/desktop-menu-plugin.c:665
+msgid "Xfce Menu"
+msgstr ""
+
+#: ../panel-plugin/desktop-menu-plugin.c:675
 #, fuzzy
 msgid "Button"
 msgstr "_ذاتي"
 
-#: panel-plugin/desktop-menu-plugin.c:753
+#: ../panel-plugin/desktop-menu-plugin.c:688
 msgid "Button _title:"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:766
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "_Show title in button"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:773
+#: ../panel-plugin/desktop-menu-plugin.c:708
 #, fuzzy
 msgid "Menu File"
 msgstr "ملفات صور"
 
-#: panel-plugin/desktop-menu-plugin.c:785
+#: ../panel-plugin/desktop-menu-plugin.c:720
 msgid "Use default _desktop menu file"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:794
+#: ../panel-plugin/desktop-menu-plugin.c:729
 #, fuzzy
 msgid "Use _custom menu file:"
 msgstr "فتح ملف قائمة XFCE4"
 
-#: panel-plugin/desktop-menu-plugin.c:846
-#: panel-plugin/desktop-menu-plugin.c:848
+#: ../panel-plugin/desktop-menu-plugin.c:781
+#: ../panel-plugin/desktop-menu-plugin.c:783
 #, fuzzy
 msgid "_Edit Menu"
 msgstr "_تحرير"
 
-#: panel-plugin/desktop-menu-plugin.c:855
+#: ../panel-plugin/desktop-menu-plugin.c:790
 #, fuzzy
 msgid "Icons"
 msgstr "أيقونة :"
 
-#: panel-plugin/desktop-menu-plugin.c:867
+#: ../panel-plugin/desktop-menu-plugin.c:802
 msgid "_Button icon:"
 msgstr ""
 
-#: panel-plugin/desktop-menu-plugin.c:891
+#: ../panel-plugin/desktop-menu-plugin.c:826
 msgid "Show _icons in menu"
 msgstr ""
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:504
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -428,125 +432,125 @@ msgid ""
 "changes"
 msgstr ""
 
-#: settings/backdrop-mgr.c:409
+#: ../settings/backdrop-mgr.c:431
 #, fuzzy
 msgid "Select backdrop image file"
 msgstr "إختر ملف صورة"
 
-#: settings/backdrop-mgr.c:510
+#: ../settings/backdrop-mgr.c:532
 msgid "Choose backdrop list filename"
 msgstr ""
 
-#: settings/backdrop-mgr.c:519
+#: ../settings/backdrop-mgr.c:541
 msgid "List Files"
 msgstr ""
 
-#: settings/backdrop-mgr.c:582
+#: ../settings/backdrop-mgr.c:604
 msgid "Backdrop List"
 msgstr ""
 
-#: settings/backdrop-mgr.c:599
+#: ../settings/backdrop-mgr.c:621
 msgid "Image files"
 msgstr "ملفات صور"
 
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
-#: settings/backdrop_settings.c:197
+#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:179
+#: ../settings/backdrop_settings.c:188
 msgid "backdrops.list"
 msgstr ""
 
-#: settings/backdrop-mgr.c:618
+#: ../settings/backdrop-mgr.c:640
 msgid "List file"
 msgstr ""
 
-#: settings/backdrop-mgr.c:638
+#: ../settings/backdrop-mgr.c:660
 msgid "Create backdrop list"
 msgstr ""
 
-#: settings/backdrop-mgr.c:669
+#: ../settings/backdrop-mgr.c:691
 msgid "Edit backdrop list"
 msgstr ""
 
 #. the dialog
-#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:916
-#: src/xfce-desktop.c:677
+#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:939
+#: ../src/xfce-desktop.c:1639
 msgid "Desktop"
 msgstr "سطح المكتب"
 
-#: settings/backdrop_settings.c:528
+#: ../settings/backdrop_settings.c:519
 #, fuzzy
 msgid "Select backdrop image or list file"
 msgstr "إختر ملف صورة"
 
-#: settings/backdrop_settings.c:546
+#: ../settings/backdrop_settings.c:537
 msgid "List Files (*.list)"
 msgstr ""
 
-#: settings/backdrop_settings.c:636
+#: ../settings/backdrop_settings.c:627
 #, fuzzy
 msgid "_Edit list..."
 msgstr "تحرير القائمة"
 
-#: settings/backdrop_settings.c:644
+#: ../settings/backdrop_settings.c:635
 #, fuzzy
 msgid "_New list..."
 msgstr "قائمة جديدة"
 
-#: settings/backdrop_settings.c:680
+#: ../settings/backdrop_settings.c:671
 #, fuzzy
 msgid "S_tyle:"
 msgstr "شكل:"
 
-#: settings/backdrop_settings.c:688
+#: ../settings/backdrop_settings.c:679
 #, fuzzy
 msgid "Tiled"
 msgstr "_كرر"
 
-#: settings/backdrop_settings.c:695
+#: ../settings/backdrop_settings.c:686
 #, fuzzy
 msgid "Centered"
 msgstr "_توسيط"
 
-#: settings/backdrop_settings.c:702
+#: ../settings/backdrop_settings.c:693
 #, fuzzy
 msgid "Scaled"
 msgstr "_تكبير"
 
-#: settings/backdrop_settings.c:709
+#: ../settings/backdrop_settings.c:700
 #, fuzzy
 msgid "Stretched"
 msgstr "_تمدد"
 
-#: settings/backdrop_settings.c:716
+#: ../settings/backdrop_settings.c:707
 #, fuzzy
 msgid "Auto"
 msgstr "_ذاتي"
 
-#: settings/backdrop_settings.c:782
+#: ../settings/backdrop_settings.c:773
 msgid "Adjust _Brightness:"
 msgstr ""
 
-#: settings/backdrop_settings.c:838
+#: ../settings/backdrop_settings.c:829
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr ""
 
-#: settings/backdrop_settings.c:839
+#: ../settings/backdrop_settings.c:830
 msgid "Unknown Error"
 msgstr ""
 
-#: settings/backdrop_settings.c:843
+#: ../settings/backdrop_settings.c:834
 msgid "Error"
 msgstr ""
 
-#: settings/backdrop_settings.c:845
+#: ../settings/backdrop_settings.c:836
 msgid "Unable to start xfdesktop"
 msgstr ""
 
-#: settings/backdrop_settings.c:863
+#: ../settings/backdrop_settings.c:854
 msgid "Information"
 msgstr ""
 
-#: settings/backdrop_settings.c:873
+#: ../settings/backdrop_settings.c:864
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -555,261 +559,203 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 
-#: settings/backdrop_settings.c:881
+#: ../settings/backdrop_settings.c:872
 msgid "_Do not show this again"
 msgstr ""
 
 #. header
-#: settings/backdrop_settings.c:931
-#: settings/xfce-backdrop-settings.desktop.in.h:1
+#: ../settings/backdrop_settings.c:954
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
 #, fuzzy
 msgid "Desktop Settings"
 msgstr "إعدادات الخلفية"
 
-#: settings/backdrop_settings.c:936
+#: ../settings/backdrop_settings.c:959
 msgid "Allow _Xfce to manage the desktop"
 msgstr ""
 
-#: settings/backdrop_settings.c:972
+#: ../settings/backdrop_settings.c:1000
+msgid "Stretch single backdrop onto _all monitors"
+msgstr ""
+
+#: ../settings/backdrop_settings.c:1014
 #, fuzzy
 msgid "_Backdrops"
 msgstr "خلفية"
 
 #. color settings frame
-#: settings/backdrop_settings.c:998
+#: ../settings/backdrop_settings.c:1040
 msgid "Color"
 msgstr "الوان"
 
-#: settings/backdrop_settings.c:1012
+#: ../settings/backdrop_settings.c:1054
 #, fuzzy
 msgid "_Color Style:"
 msgstr "شكل:"
 
-#: settings/backdrop_settings.c:1021
+#: ../settings/backdrop_settings.c:1063
 #, fuzzy
 msgid "Solid Color"
 msgstr "الوان"
 
-#: settings/backdrop_settings.c:1028
+#: ../settings/backdrop_settings.c:1070
 msgid "Horizontal Gradient"
 msgstr ""
 
-#: settings/backdrop_settings.c:1035
+#: ../settings/backdrop_settings.c:1077
 msgid "Vertical Gradient"
 msgstr ""
 
-#: settings/backdrop_settings.c:1056
+#: ../settings/backdrop_settings.c:1098
 msgid "Fi_rst Color:"
 msgstr ""
 
-#: settings/backdrop_settings.c:1077
+#: ../settings/backdrop_settings.c:1119
 #, fuzzy
 msgid "_Second Color:"
 msgstr "لون الخلفية :"
 
-#: settings/backdrop_settings.c:1102
+#: ../settings/backdrop_settings.c:1144
 msgid "Image"
 msgstr "صورة"
 
-#: settings/backdrop_settings.c:1110
+#: ../settings/backdrop_settings.c:1152
 #, fuzzy
 msgid "Show _Image"
 msgstr "صورة"
 
-#: settings/backdrop_settings.c:1132
+#: ../settings/backdrop_settings.c:1174
 #, fuzzy
 msgid "_File:"
 msgstr "_ملف"
 
 #. add the single backdrop settings page to the main notebook
-#: settings/backdrop_settings.c:1180
+#: ../settings/backdrop_settings.c:1219
 #, fuzzy
 msgid "_Backdrop"
 msgstr "خلفية"
 
-#: settings/backdrop_settings.c:1188 settings/backdrop_settings.c:1190
+#: ../settings/backdrop_settings.c:1230 ../settings/backdrop_settings.c:1232
 #, c-format
 msgid "Screen %d"
 msgstr ""
 
 #. and if we have multiple screens, each with multiple monitors
-#: settings/backdrop_settings.c:1195
+#: ../settings/backdrop_settings.c:1237
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr ""
 
-#: settings/backdrop_settings.c:1209
-msgid "_Menu"
+#: ../settings/backdrop_settings.c:1254
+msgid "_Useless Bloat"
 msgstr ""
 
-#: settings/menu_settings.c:153
-msgid "Window List"
-msgstr ""
+#: ../settings/menu_settings.c:174
+#, fuzzy
+msgid "Window List Menu"
+msgstr "_تحرير"
 
-#: settings/menu_settings.c:161
+#: ../settings/menu_settings.c:182
 msgid "Show window _list"
 msgstr ""
 
-#: settings/menu_settings.c:176
+#: ../settings/menu_settings.c:197
 msgid "Show _window icons"
 msgstr ""
 
-#: settings/menu_settings.c:189
+#: ../settings/menu_settings.c:210
 #, fuzzy
 msgid "Desktop Menu"
 msgstr "سطح المكتب"
 
-#: settings/menu_settings.c:197
+#: ../settings/menu_settings.c:218
 msgid "Show desktop _menu"
 msgstr ""
 
-#: settings/menu_settings.c:212
+#: ../settings/menu_settings.c:233
 msgid "Show _application icons"
 msgstr ""
 
-#: settings/menu_settings.c:223
+#: ../settings/menu_settings.c:244
 msgid "_Edit desktop menu"
 msgstr ""
 
-#: src/main.c:253
+#: ../settings/menu_settings.c:256
+msgid "Window Icons"
+msgstr ""
+
+#: ../settings/menu_settings.c:264
+msgid "Show minimized window _icons on the desktop"
+msgstr ""
+
+#: ../src/main.c:251
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr ""
 
-#: src/main.c:254
+#: ../src/main.c:252
 msgid "Options are:\n"
 msgstr ""
 
-#: src/main.c:255
+#: ../src/main.c:253
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 
-#: src/main.c:256
+#: ../src/main.c:254
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
 
-#: src/main.c:257
+#: ../src/main.c:255
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 
-#: src/main.c:258
+#: ../src/main.c:256
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr ""
 
-#: src/windowlist.c:193
+#: ../src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr ""
 
-#: src/windowlist.c:201
+#: ../src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr ""
 
-#: src/windowlist.c:268 src/windowlist.c:271
+#: ../src/windowlist.c:268 ../src/windowlist.c:271
 #, fuzzy
 msgid "_Add Workspace"
 msgstr "أضف مساحة عمل"
 
-#: src/windowlist.c:279
+#: ../src/windowlist.c:279
 #, fuzzy, c-format
 msgid "_Remove Workspace %d"
 msgstr "حذف مساحة عمل"
 
-#: src/windowlist.c:282
+#: ../src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr ""
 
-#: menueditor/xfce-menueditor.desktop.in.h:1
+#: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
 msgstr ""
 
-#: menueditor/xfce-menueditor.desktop.in.h:2
+#: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
 msgstr ""
 
-#: menueditor/xfce-menueditor.desktop.in.h:3
+#: ../menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
 msgstr ""
 
-#: settings/xfce-backdrop-settings.desktop.in.h:2
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
 msgstr ""
 
-#: settings/xfce-backdrop-settings.desktop.in.h:3
+#: ../settings/xfce-backdrop-settings.desktop.in.h:3
 #, fuzzy
 msgid "Xfce 4 Desktop Settings"
 msgstr "إعدادات الخلفية"
-
-#, fuzzy
-#~ msgid "Set color _only"
-#~ msgstr "إستخدم لون فقط :"
-
-#, fuzzy
-#~ msgid "_Menu file:"
-#~ msgstr "فتح ملف قائمة XFCE4"
-
-#, fuzzy
-#~ msgid "Title:"
-#~ msgstr "عنوان :"
-
-#~ msgid "Select icon"
-#~ msgstr "إختر أيقونة"
-
-#~ msgid "Pointer"
-#~ msgstr "طابعة"
-
-#~ msgid "Corrupted file or incorrect file format !"
-#~ msgstr "ملف فاسد او صيغة غير صحيحة !"
-
-#~ msgid "Bad datafile format !"
-#~ msgstr "صيغة الملف غير صالحة !"
-
-#~ msgid "New menu"
-#~ msgstr "قائمة جديدة"
-
-#, fuzzy
-#~ msgid "Filename:"
-#~ msgstr "أسم الملف :"
-
-#, fuzzy
-#~ msgid "All fields are required."
-#~ msgstr "لم يتم ملء كل الحقول !!!"
-
-#, fuzzy
-#~ msgid "Backdrop"
-#~ msgstr "خلفية"
-
-#, fuzzy
-#~ msgid "Not yet implemented!"
-#~ msgstr "لم يتم تطبيقها !!!"
-
-#~ msgid "Corrupted file or incorrect file format !\n"
-#~ msgstr "ملف فاسد او صيغة غير صحيحة !\n"
-
-#~ msgid "Bad datafile format !\n"
-#~ msgstr "صيغة الملف غير صالحة !\n"
-
-#, fuzzy
-#~ msgid "Select backdrop color"
-#~ msgstr "إختر لون الخلفية"
-
-#~ msgid "New.list"
-#~ msgstr "قائمة جديدة"
-
-#~ msgid "Desktop background"
-#~ msgstr "خلفية سطح المكتب"
-
-#~ msgid "File:"
-#~ msgstr "ملف :"
-
-#~ msgid "_Browse..."
-#~ msgstr "_تصفح..."
-
-#~ msgid "No Name"
-#~ msgstr "بلا إسم"
-
-#~ msgid "Move down the current entry"
-#~ msgstr "نقل المدخل للأسفل"

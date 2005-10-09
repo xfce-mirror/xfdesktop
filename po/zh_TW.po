@@ -1,4 +1,5 @@
-# Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER
+# Traditional Chinese translations for xfdesktop package.
+# Copyright (C) 2003-2005 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # umm <umm@pchome.com.tw>, 2003.
 # Ambrose Li <acli@ada.dhs.org>, 2004.
@@ -6,397 +7,401 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
+"Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-01 19:50-0700\n"
-"PO-Revision-Date: 2005-06-27 22:07+0800\n"
+"POT-Creation-Date: 2005-10-09 22:06+0900\n"
+"PO-Revision-Date: 2005-10-09 22:26+0900\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>\n"
-"Language-Team:  <>\n"
+"Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: menueditor/about_dialog.c:39
+#: ../menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
 msgstr "Xfce4 選單編輯器"
 
 #. Credits
-#: menueditor/about_dialog.c:43
+#: ../menueditor/about_dialog.c:43
 msgid "Core developer"
 msgstr "主要開發者"
 
-#: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
-#: menueditor/about_dialog.c:46
+#: ../menueditor/about_dialog.c:44 ../menueditor/about_dialog.c:45
+#: ../menueditor/about_dialog.c:46
 msgid "Contributor"
 msgstr "參與者"
 
-#: menueditor/about_dialog.c:47
+#: ../menueditor/about_dialog.c:47
 msgid "Icon designer"
 msgstr "圖示設計者"
 
-#: menueditor/add_dialog.c:159 menueditor/add_dialog.c:169
+#: ../menueditor/add_dialog.c:159 ../menueditor/add_dialog.c:169
 msgid "Add menu entry"
 msgstr "新增選單項目"
 
 #. Type
-#: menueditor/add_dialog.c:173 menueditor/add_menu_dialog.c:110
+#: ../menueditor/add_dialog.c:173 ../menueditor/add_menu_dialog.c:110
 msgid "Type:"
 msgstr "種類："
 
-#: menueditor/add_dialog.c:176
+#: ../menueditor/add_dialog.c:176
 msgid "Launcher"
 msgstr "啟動器"
 
-#: menueditor/add_dialog.c:180
+#: ../menueditor/add_dialog.c:180
 msgid "Submenu"
 msgstr "子選單"
 
-#: menueditor/add_dialog.c:184
+#: ../menueditor/add_dialog.c:184
 msgid "Separator"
 msgstr "分隔線"
 
-#: menueditor/add_dialog.c:188
+#: ../menueditor/add_dialog.c:188
 msgid "Title"
 msgstr "標題"
 
-#: menueditor/add_dialog.c:192
+#: ../menueditor/add_dialog.c:192
 msgid "Quit"
 msgstr "退出"
 
 #. Name
-#: menueditor/add_dialog.c:206 menueditor/edit_dialog.c:158
-#: menueditor/edit_dialog.c:218
+#: ../menueditor/add_dialog.c:206 ../menueditor/edit_dialog.c:147
+#: ../menueditor/edit_dialog.c:207
 msgid "Name:"
 msgstr "名稱："
 
-#: menueditor/add_dialog.c:214 menueditor/edit_dialog.c:163
+#: ../menueditor/add_dialog.c:214 ../menueditor/edit_dialog.c:152
 msgid "Command:"
 msgstr "指令："
 
-#: menueditor/add_dialog.c:226 menueditor/edit_dialog.c:150
-#: menueditor/edit_dialog.c:210
+#: ../menueditor/add_dialog.c:226 ../menueditor/edit_dialog.c:139
+#: ../menueditor/edit_dialog.c:199
 msgid "Icon:"
 msgstr "圖示："
 
 #. Start Notify check button
 #. Startup notification
-#: menueditor/add_dialog.c:237 menueditor/edit_dialog.c:171
+#: ../menueditor/add_dialog.c:237 ../menueditor/edit_dialog.c:160
 msgid "Use startup _notification"
 msgstr "使用啟動提示(_N)"
 
 #. Run in terminal check button
 #. Run in terminal
-#: menueditor/add_dialog.c:241 menueditor/edit_dialog.c:174
+#: ../menueditor/add_dialog.c:241 ../menueditor/edit_dialog.c:163
 msgid "Run in _terminal"
 msgstr "在終端機內執行(_T)"
 
-#: menueditor/add_dialog.c:272
+#: ../menueditor/add_dialog.c:272 ../menueditor/edit_dialog.c:242
 msgid "The command doesn't exist !"
 msgstr "指定的指令並不存在！"
 
-#: menueditor/add_dialog.c:278
+#: ../menueditor/add_dialog.c:278 ../menueditor/edit_dialog.c:248
 msgid "All fields must be filled to add an item."
 msgstr "要新增項目，就必須填寫所有欄位。"
 
-#: menueditor/add_dialog.c:287
+#: ../menueditor/add_dialog.c:287 ../menueditor/edit_dialog.c:257
 msgid "The 'Name' field is required."
 msgstr "「名稱」一欄必須填寫。"
 
-#: menueditor/add_dialog.c:331
+#: ../menueditor/add_dialog.c:331
 msgid "--- separator ---"
 msgstr "--- 分隔線 ---"
 
-#: menueditor/add_dialog.c:357
+#: ../menueditor/add_dialog.c:357 ../menueditor/edit_dialog.c:316
 msgid "quit"
 msgstr "退出"
 
 # NOTE 這裡的「Add」是在原地插入選單，並非新增之意
-#: menueditor/add_menu_dialog.c:97 menueditor/add_menu_dialog.c:103
-#: menueditor/menueditor.c:831
+#: ../menueditor/add_menu_dialog.c:97 ../menueditor/add_menu_dialog.c:103
+#: ../menueditor/menueditor.c:842
 msgid "Add an external menu"
 msgstr "插入外置選單"
 
-#: menueditor/add_menu_dialog.c:115
+#: ../menueditor/add_menu_dialog.c:115
 msgid "File"
 msgstr "檔案"
 
 # NOTE「系統選單」之略
-#: menueditor/add_menu_dialog.c:119
+#: ../menueditor/add_menu_dialog.c:119
 msgid "System"
 msgstr "系統"
 
-#: menueditor/add_menu_dialog.c:133
+#: ../menueditor/add_menu_dialog.c:133
 msgid "Source:"
 msgstr "來源："
 
 #. Style
-#: menueditor/add_menu_dialog.c:145
+#: ../menueditor/add_menu_dialog.c:145
 msgid "Style:"
 msgstr "樣式："
 
-#: menueditor/add_menu_dialog.c:148
+#: ../menueditor/add_menu_dialog.c:148
 msgid "Simple"
 msgstr "簡單"
 
-#: menueditor/add_menu_dialog.c:150
+#: ../menueditor/add_menu_dialog.c:150
 msgid "Multilevel"
 msgstr "多層"
 
 # FIXME 譯文有待改進
 #. Unique
-#: menueditor/add_menu_dialog.c:162
+#: ../menueditor/add_menu_dialog.c:162
 msgid "_Unique entries only"
 msgstr "只使用不同的項目(_U)"
 
-#: menueditor/add_menu_dialog.c:198
+#: ../menueditor/add_menu_dialog.c:198
 msgid "The 'Source' field is required."
 msgstr "「來源」一欄必須填寫。"
 
-#: menueditor/add_menu_dialog.c:202 menueditor/add_menu_dialog.c:212
+#: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
 msgid "--- include ---"
 msgstr "--- 插入 ---"
 
 # NOTE「系統選單」之略
-#: menueditor/add_menu_dialog.c:213
+#: ../menueditor/add_menu_dialog.c:213
 msgid "system"
 msgstr "系統"
 
 #. Create dialog for editing
-#: menueditor/edit_dialog.c:127 menueditor/edit_dialog.c:134
+#: ../menueditor/edit_dialog.c:116 ../menueditor/edit_dialog.c:123
 msgid "Edit menu entry"
 msgstr "修改選單項目"
 
-#: menueditor/edit_dialog.c:139
+#: ../menueditor/edit_dialog.c:128
 msgid "Separators cannot be edited"
 msgstr "分隔線無法修改"
 
-#: menueditor/menueditor.c:81
+#: ../menueditor/menueditor.c:81
 #, c-format
 msgid "File %s doesn't exist !"
 msgstr "檔案「%s」並不存在！"
 
-#: menueditor/menueditor.c:121 menueditor/menueditor.c:532
+#: ../menueditor/menueditor.c:121 ../menueditor/menueditor.c:537
 msgid "Do you want to save before closing the menu ?"
 msgstr "關閉此選單前要先行儲存嗎？"
 
-#: menueditor/menueditor.c:123
+#: ../menueditor/menueditor.c:123
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "您已對選單作出修改，退出前要先行儲存嗎？"
 
-#: menueditor/menueditor.c:125
+#: ../menueditor/menueditor.c:125
 msgid "Forget modifications"
 msgstr "放棄修改"
 
-#: menueditor/menueditor.c:310
+#: ../menueditor/menueditor.c:314
 msgid "Are you sure you want to close the current menu?"
 msgstr "您真要關閉目前的選單嗎？"
 
-#: menueditor/menueditor.c:325
+#: ../menueditor/menueditor.c:329
 msgid "Do you want to save before closing the file?"
 msgstr "關閉檔案前要先行儲存嗎？"
 
-#: menueditor/menueditor.c:334
+#: ../menueditor/menueditor.c:338
 msgid "Select command"
 msgstr "選擇指令"
 
-#: menueditor/menueditor.c:366 menueditor/menueditor.c:423
-#: menueditor/menueditor.c:530
+#: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
+#: ../menueditor/menueditor.c:535
 msgid "Question"
 msgstr "問題"
 
 # FIXME spelling mistake in source ("an other")
-#: menueditor/menueditor.c:368
+#: ../menueditor/menueditor.c:372
 msgid "Do you want to save before opening an other menu ?"
 msgstr "開啟另一選單前要先行儲存嗎？"
 
-#: menueditor/menueditor.c:370 menueditor/menueditor.c:427
-#: menueditor/menueditor.c:534
+#: ../menueditor/menueditor.c:374 ../menueditor/menueditor.c:431
+#: ../menueditor/menueditor.c:539
 msgid "Ignore modifications"
 msgstr "忽略修改"
 
-#: menueditor/menueditor.c:381
+#: ../menueditor/menueditor.c:385
 msgid "Open menu file"
 msgstr "開啟選單檔案"
 
-#: menueditor/menueditor.c:425
+#: ../menueditor/menueditor.c:429
 msgid "Do you want to save before opening the default menu ?"
 msgstr "開啟預設選單前要先行儲存嗎？"
 
-#: menueditor/menueditor.c:483
+#: ../menueditor/menueditor.c:487
 msgid "Save as..."
 msgstr "另存新檔..."
 
-#: menueditor/menueditor.c:638
+#: ../menueditor/menueditor.c:649
 msgid "Do you want to move the item into the parent menu?"
 msgstr "您想要將這個項目移動到其上層選單嗎？"
 
-#: menueditor/menueditor.c:684
+#: ../menueditor/menueditor.c:695
 msgid "Do you want to move the item into the submenu?"
 msgstr "您要將項目移至子選單嗎？"
 
-#: menueditor/menueditor.c:825
+#: ../menueditor/menueditor.c:836
 msgid "Edit"
 msgstr "編輯"
 
 #. File menu
-#: menueditor/menueditor.c:849
+#: ../menueditor/menueditor.c:860
 msgid "_File"
 msgstr "檔案(_F)"
 
-#: menueditor/menueditor.c:858
+#: ../menueditor/menueditor.c:869
 msgid "Open default menu"
 msgstr "開啟預設選單"
 
 #. Edit menu
-#: menueditor/menueditor.c:872
+#: ../menueditor/menueditor.c:883
 msgid "_Edit"
 msgstr "編輯(_E)"
 
-#: menueditor/menueditor.c:878
+#: ../menueditor/menueditor.c:889
 msgid "Add an external menu..."
 msgstr "插入外置選單..."
 
 #. Help menu
-#: menueditor/menueditor.c:890
+#: ../menueditor/menueditor.c:901
 msgid "_Help"
 msgstr "說明(_H)"
 
-#: menueditor/menueditor.c:894
+#: ../menueditor/menueditor.c:905
 msgid "_About..."
 msgstr "關於(_A)..."
 
-#: menueditor/menueditor.c:906
+#: ../menueditor/menueditor.c:917
 msgid "Create a new Xfce4 menu file"
 msgstr "新增 Xfce4 選單檔案"
 
-#: menueditor/menueditor.c:911
+#: ../menueditor/menueditor.c:922
 msgid "Open an Xfce4 menu file"
 msgstr "開啟 Xfce4 選單檔案"
 
-#: menueditor/menueditor.c:916
+#: ../menueditor/menueditor.c:927
 msgid "Save current menu"
 msgstr "儲存目前的選單"
 
-#: menueditor/menueditor.c:921
+#: ../menueditor/menueditor.c:932
 msgid "Close current menu"
 msgstr "關閉目前的選單"
 
-#: menueditor/menueditor.c:927
+#: ../menueditor/menueditor.c:938
 msgid "Add an entry to the menu"
 msgstr "新增項目至選單"
 
-#: menueditor/menueditor.c:931
+#: ../menueditor/menueditor.c:942
 msgid "Delete the current entry"
 msgstr "移除目前的項目"
 
-#: menueditor/menueditor.c:937
+#: ../menueditor/menueditor.c:948
 msgid "Move the current entry up"
 msgstr "將目前的項目向上移"
 
-#: menueditor/menueditor.c:942
+#: ../menueditor/menueditor.c:953
 msgid "Move the current entry down"
 msgstr "將目前的項目向下移"
 
 # FIXME incomplete but temporarily ok
-#: menueditor/menueditor.c:948
+#: ../menueditor/menueditor.c:959
 msgid "Collapse the tree"
 msgstr "收起子選單"
 
 # FIXME incomplete but temporarily ok
-#: menueditor/menueditor.c:953
+#: ../menueditor/menueditor.c:964
 msgid "Expand the tree"
 msgstr "展開子選單"
 
-#: menueditor/menueditor.c:981
+#: ../menueditor/menueditor.c:992
 msgid "Name"
 msgstr "名稱"
 
-#: menueditor/menueditor.c:984
+#: ../menueditor/menueditor.c:995
 msgid "Command"
 msgstr "指令"
 
-#: menueditor/menueditor.c:985
+#: ../menueditor/menueditor.c:996
 msgid "Hidden"
 msgstr "隱藏"
 
-#: modules/menu/desktop-menuspec.c:62
+#: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
 msgstr "/其他"
 
-#: panel-plugin/desktop-menu-plugin.c:335
-#: panel-plugin/desktop-menu-plugin.c:904
-msgid "Xfce Menu"
-msgstr "Xfce 選單"
-
-#: panel-plugin/desktop-menu-plugin.c:575
+#: ../panel-plugin/desktop-menu-plugin.c:486
 msgid "Select Icon"
 msgstr "選擇圖示"
 
-#: panel-plugin/desktop-menu-plugin.c:577
+#: ../panel-plugin/desktop-menu-plugin.c:488
 msgid "Select Menu File"
 msgstr "選擇選單檔案"
 
-#: panel-plugin/desktop-menu-plugin.c:592 settings/backdrop-mgr.c:414
-#: settings/backdrop-mgr.c:515 settings/backdrop_settings.c:533
+#: ../panel-plugin/desktop-menu-plugin.c:503 ../settings/backdrop-mgr.c:436
+#: ../settings/backdrop-mgr.c:537 ../settings/backdrop_settings.c:524
 msgid "All Files"
 msgstr "所有檔案"
 
-#: panel-plugin/desktop-menu-plugin.c:598 settings/backdrop-mgr.c:418
-#: settings/backdrop_settings.c:537
+#: ../panel-plugin/desktop-menu-plugin.c:509 ../settings/backdrop-mgr.c:440
+#: ../settings/backdrop_settings.c:528
 msgid "Image Files"
 msgstr "影像檔案"
 
-#: panel-plugin/desktop-menu-plugin.c:606
+#: ../panel-plugin/desktop-menu-plugin.c:517
 msgid "Menu Files"
 msgstr "選單檔案"
 
-#: panel-plugin/desktop-menu-plugin.c:722 settings/menu_settings.c:132
+#: ../panel-plugin/desktop-menu-plugin.c:634 ../settings/menu_settings.c:153
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "無法執行 xfce4-menueditor：%s"
 
-#: panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:657
+#, fuzzy
+msgid "Edit Properties"
+msgstr "編輯背景列表"
+
+#: ../panel-plugin/desktop-menu-plugin.c:665
+msgid "Xfce Menu"
+msgstr "Xfce 選單"
+
+#: ../panel-plugin/desktop-menu-plugin.c:675
 msgid "Button"
 msgstr "按鈕"
 
-#: panel-plugin/desktop-menu-plugin.c:753
+#: ../panel-plugin/desktop-menu-plugin.c:688
 msgid "Button _title:"
 msgstr "按鈕標題(_T)："
 
-#: panel-plugin/desktop-menu-plugin.c:766
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "_Show title in button"
 msgstr "在按鈕中顯示標題(_S)"
 
-#: panel-plugin/desktop-menu-plugin.c:773
+#: ../panel-plugin/desktop-menu-plugin.c:708
 msgid "Menu File"
 msgstr "選單檔案"
 
-#: panel-plugin/desktop-menu-plugin.c:785
+#: ../panel-plugin/desktop-menu-plugin.c:720
 msgid "Use default _desktop menu file"
 msgstr "使用預設桌面選單檔案(_D)"
 
-#: panel-plugin/desktop-menu-plugin.c:794
+#: ../panel-plugin/desktop-menu-plugin.c:729
 msgid "Use _custom menu file:"
 msgstr "使用選單檔案(_C)"
 
-#: panel-plugin/desktop-menu-plugin.c:846
-#: panel-plugin/desktop-menu-plugin.c:848
+#: ../panel-plugin/desktop-menu-plugin.c:781
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "_Edit Menu"
 msgstr "編輯選單(_E)"
 
-#: panel-plugin/desktop-menu-plugin.c:855
+#: ../panel-plugin/desktop-menu-plugin.c:790
 msgid "Icons"
 msgstr "圖示"
 
-#: panel-plugin/desktop-menu-plugin.c:867
+#: ../panel-plugin/desktop-menu-plugin.c:802
 msgid "_Button icon:"
 msgstr "按鈕圖示(_B)："
 
-#: panel-plugin/desktop-menu-plugin.c:891
+#: ../panel-plugin/desktop-menu-plugin.c:826
 msgid "Show _icons in menu"
 msgstr "在選單內顯示圖示(_I)"
 
-#: settings/backdrop-mgr.c:139 src/xfce-desktop.c:114
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:504
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -408,119 +413,119 @@ msgstr ""
 "\n"
 "請選擇其他位置，或在對話框中點選「取消」以放棄所作的修改"
 
-#: settings/backdrop-mgr.c:409
+#: ../settings/backdrop-mgr.c:431
 msgid "Select backdrop image file"
 msgstr "選擇背景影像檔案"
 
-#: settings/backdrop-mgr.c:510
+#: ../settings/backdrop-mgr.c:532
 msgid "Choose backdrop list filename"
 msgstr "選擇背景清單檔案名稱"
 
 # NOTE「List file」表示「含檔案列表的檔案」，並非「列出檔案」之意
-#: settings/backdrop-mgr.c:519
+#: ../settings/backdrop-mgr.c:541
 msgid "List Files"
 msgstr "清單檔案"
 
-#: settings/backdrop-mgr.c:582
+#: ../settings/backdrop-mgr.c:604
 msgid "Backdrop List"
 msgstr "背景清單"
 
-#: settings/backdrop-mgr.c:599
+#: ../settings/backdrop-mgr.c:621
 msgid "Image files"
 msgstr "影像檔案"
 
 # TODO check
-#: settings/backdrop-mgr.c:610 settings/backdrop_settings.c:188
-#: settings/backdrop_settings.c:197
+#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:179
+#: ../settings/backdrop_settings.c:188
 msgid "backdrops.list"
 msgstr "背景清單"
 
 # NOTE「List file」表示「含檔案列表的檔案」，並非「列出檔案」之意
-#: settings/backdrop-mgr.c:618
+#: ../settings/backdrop-mgr.c:640
 msgid "List file"
 msgstr "清單檔案"
 
-#: settings/backdrop-mgr.c:638
+#: ../settings/backdrop-mgr.c:660
 msgid "Create backdrop list"
 msgstr "建立背景列表"
 
-#: settings/backdrop-mgr.c:669
+#: ../settings/backdrop-mgr.c:691
 msgid "Edit backdrop list"
 msgstr "編輯背景列表"
 
 #. the dialog
-#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:916
-#: src/xfce-desktop.c:677
+#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:939
+#: ../src/xfce-desktop.c:1639
 msgid "Desktop"
 msgstr "桌面"
 
 # NOTE「List file」表示「含檔案列表的檔案」，並非「列出檔案」之意
-#: settings/backdrop_settings.c:528
+#: ../settings/backdrop_settings.c:519
 msgid "Select backdrop image or list file"
 msgstr "選擇背景影像或清單檔案"
 
-#: settings/backdrop_settings.c:546
+#: ../settings/backdrop_settings.c:537
 msgid "List Files (*.list)"
 msgstr "清單檔案 (*.list)"
 
-#: settings/backdrop_settings.c:636
+#: ../settings/backdrop_settings.c:627
 msgid "_Edit list..."
 msgstr "編輯清單(_E)..."
 
-#: settings/backdrop_settings.c:644
+#: ../settings/backdrop_settings.c:635
 msgid "_New list..."
 msgstr "新增清單(_N)..."
 
-#: settings/backdrop_settings.c:680
+#: ../settings/backdrop_settings.c:671
 msgid "S_tyle:"
 msgstr "樣式(_T)："
 
-#: settings/backdrop_settings.c:688
+#: ../settings/backdrop_settings.c:679
 msgid "Tiled"
 msgstr "平鋪"
 
-#: settings/backdrop_settings.c:695
+#: ../settings/backdrop_settings.c:686
 msgid "Centered"
 msgstr "置中"
 
-#: settings/backdrop_settings.c:702
+#: ../settings/backdrop_settings.c:693
 msgid "Scaled"
 msgstr "按比例延展"
 
-#: settings/backdrop_settings.c:709
+#: ../settings/backdrop_settings.c:700
 msgid "Stretched"
 msgstr "不顧比例，盡量延展"
 
-#: settings/backdrop_settings.c:716
+#: ../settings/backdrop_settings.c:707
 msgid "Auto"
 msgstr "自動"
 
-#: settings/backdrop_settings.c:782
+#: ../settings/backdrop_settings.c:773
 msgid "Adjust _Brightness:"
 msgstr "調校亮度(_B)："
 
-#: settings/backdrop_settings.c:838
+#: ../settings/backdrop_settings.c:829
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce將無法管理您的桌面 (%s)"
 
-#: settings/backdrop_settings.c:839
+#: ../settings/backdrop_settings.c:830
 msgid "Unknown Error"
 msgstr "未知的錯誤"
 
-#: settings/backdrop_settings.c:843
+#: ../settings/backdrop_settings.c:834
 msgid "Error"
 msgstr "錯誤"
 
-#: settings/backdrop_settings.c:845
+#: ../settings/backdrop_settings.c:836
 msgid "Unable to start xfdesktop"
 msgstr "無法啟動xfdesktop"
 
-#: settings/backdrop_settings.c:863
+#: ../settings/backdrop_settings.c:854
 msgid "Information"
 msgstr "資訊"
 
-#: settings/backdrop_settings.c:873
+#: ../settings/backdrop_settings.c:864
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -528,291 +533,201 @@ msgid ""
 "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
-"要保證Xfce在下次啟動時不再管理您的桌面，請確認您於登出時妥善儲存您的工作階段。"
-"如果您現在不是使用 Xfce工作階段管理器 (xfce4-session)，您需要手動編輯您的"
-"~/.config/xfce4/xinitrc檔案。詳細的說明可在 http://xfce.org/ 所提供的文件"
-"中找到。"
+"要保證Xfce在下次啟動時不再管理您的桌面，請確認您於登出時妥善儲存您的工作階"
+"段。如果您現在不是使用 Xfce工作階段管理器 (xfce4-session)，您需要手動編輯您的"
+"~/.config/xfce4/xinitrc檔案。詳細的說明可在 http://xfce.org/ 所提供的文件中找"
+"到。"
 
-#: settings/backdrop_settings.c:881
+#: ../settings/backdrop_settings.c:872
 msgid "_Do not show this again"
 msgstr "下次不顯示(_D)"
 
 #. header
-#: settings/backdrop_settings.c:931
-#: settings/xfce-backdrop-settings.desktop.in.h:1
+#: ../settings/backdrop_settings.c:954
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "桌面設定"
 
-#: settings/backdrop_settings.c:936
+#: ../settings/backdrop_settings.c:959
 msgid "Allow _Xfce to manage the desktop"
 msgstr "讓Xfce管理桌面(_X)"
 
-#: settings/backdrop_settings.c:972
+#: ../settings/backdrop_settings.c:1000
+msgid "Stretch single backdrop onto _all monitors"
+msgstr ""
+
+#: ../settings/backdrop_settings.c:1014
 msgid "_Backdrops"
 msgstr "背景(_B)"
 
 #. color settings frame
-#: settings/backdrop_settings.c:998
+#: ../settings/backdrop_settings.c:1040
 msgid "Color"
 msgstr "顏色"
 
-#: settings/backdrop_settings.c:1012
+#: ../settings/backdrop_settings.c:1054
 msgid "_Color Style:"
 msgstr "填色方法(_C)："
 
-#: settings/backdrop_settings.c:1021
+#: ../settings/backdrop_settings.c:1063
 msgid "Solid Color"
 msgstr "實色"
 
-#: settings/backdrop_settings.c:1028
+#: ../settings/backdrop_settings.c:1070
 msgid "Horizontal Gradient"
 msgstr "水平漸層"
 
-#: settings/backdrop_settings.c:1035
+#: ../settings/backdrop_settings.c:1077
 msgid "Vertical Gradient"
 msgstr "垂直漸層"
 
-#: settings/backdrop_settings.c:1056
+#: ../settings/backdrop_settings.c:1098
 msgid "Fi_rst Color:"
 msgstr "第一色(_R)："
 
-#: settings/backdrop_settings.c:1077
+#: ../settings/backdrop_settings.c:1119
 msgid "_Second Color:"
 msgstr "第二色(_S)："
 
-#: settings/backdrop_settings.c:1102
+#: ../settings/backdrop_settings.c:1144
 msgid "Image"
 msgstr "影像"
 
-#: settings/backdrop_settings.c:1110
+#: ../settings/backdrop_settings.c:1152
 msgid "Show _Image"
 msgstr "顯示影像(_I)"
 
-#: settings/backdrop_settings.c:1132
+#: ../settings/backdrop_settings.c:1174
 msgid "_File:"
 msgstr "檔案(_F)："
 
 #. add the single backdrop settings page to the main notebook
-#: settings/backdrop_settings.c:1180
+#: ../settings/backdrop_settings.c:1219
 msgid "_Backdrop"
 msgstr "背景(_B)"
 
 # TODO check
-#: settings/backdrop_settings.c:1188 settings/backdrop_settings.c:1190
+#: ../settings/backdrop_settings.c:1230 ../settings/backdrop_settings.c:1232
 #, c-format
 msgid "Screen %d"
 msgstr "螢幕 %d"
 
 # TODO check
 #. and if we have multiple screens, each with multiple monitors
-#: settings/backdrop_settings.c:1195
+#: ../settings/backdrop_settings.c:1237
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "螢幕 %d，顯示器 %d"
 
-#: settings/backdrop_settings.c:1209
-msgid "_Menu"
-msgstr "選單(_M)"
+#: ../settings/backdrop_settings.c:1254
+msgid "_Useless Bloat"
+msgstr ""
 
-#: settings/menu_settings.c:153
-msgid "Window List"
+#: ../settings/menu_settings.c:174
+#, fuzzy
+msgid "Window List Menu"
 msgstr "視窗列表"
 
-#: settings/menu_settings.c:161
+#: ../settings/menu_settings.c:182
 msgid "Show window _list"
 msgstr "顯示視窗列表(_L)"
 
-#: settings/menu_settings.c:176
+#: ../settings/menu_settings.c:197
 msgid "Show _window icons"
 msgstr "顯示視窗圖示(_W)"
 
-#: settings/menu_settings.c:189
+#: ../settings/menu_settings.c:210
 msgid "Desktop Menu"
 msgstr "桌面清單"
 
-#: settings/menu_settings.c:197
+#: ../settings/menu_settings.c:218
 msgid "Show desktop _menu"
 msgstr "顯示桌面清單(_M)"
 
-#: settings/menu_settings.c:212
+#: ../settings/menu_settings.c:233
 msgid "Show _application icons"
 msgstr "顯示應用程式圖示(_A)"
 
-#: settings/menu_settings.c:223
+#: ../settings/menu_settings.c:244
 msgid "_Edit desktop menu"
 msgstr "修改桌面選單(_E)"
 
-#: src/main.c:253
+#: ../settings/menu_settings.c:256
+#, fuzzy
+msgid "Window Icons"
+msgstr "視窗列表"
+
+#: ../settings/menu_settings.c:264
+msgid "Show minimized window _icons on the desktop"
+msgstr ""
+
+#: ../src/main.c:251
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s：不明的選項：%s\n"
 
-#: src/main.c:254
+#: ../src/main.c:252
 msgid "Options are:\n"
 msgstr "選項如下：\n"
 
-#: src/main.c:255
+#: ../src/main.c:253
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      刷新所有選項及圖像清單\n"
 
-#: src/main.c:256
+#: ../src/main.c:254
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        (在目滑鼠游標的所在位置) 彈出選單\n"
 
-#: src/main.c:257
+#: ../src/main.c:255
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  (在目前滑鼠游標的所在位置) 彈出視窗清單\n"
 
-#: src/main.c:258
+#: ../src/main.c:256
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        結束xfdesktopi\n"
 
-#: src/windowlist.c:193
+#: ../src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>工作區 %d</b>"
 
 # NOTE 中文用 <i></i> 會很難看，改用 <b></b>
-#: src/windowlist.c:201
+#: ../src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<b>工作區 %d</b>"
 
-#: src/windowlist.c:268 src/windowlist.c:271
+#: ../src/windowlist.c:268 ../src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "新增工作區(_A)"
 
-#: src/windowlist.c:279
+#: ../src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "移除工作區 %d (_R)"
 
-#: src/windowlist.c:282
+#: ../src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "移除工作區「%s」(_R)"
 
-#: menueditor/xfce-menueditor.desktop.in.h:1
+#: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
 msgstr "修改 Xfce 的選單"
 
-#: menueditor/xfce-menueditor.desktop.in.h:2
+#: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
 msgstr "選單編輯器"
 
-#: menueditor/xfce-menueditor.desktop.in.h:3
+#: ../menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
 msgstr "Xfce 4 選單編輯器"
 
-#: settings/xfce-backdrop-settings.desktop.in.h:2
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
 msgstr "設定桌面管理程式"
 
-#: settings/xfce-backdrop-settings.desktop.in.h:3
+#: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 桌面設定"
-
-#~ msgid "Set color _only"
-#~ msgstr "僅使用顏色(_O)"
-
-#~ msgid "_Don't set backdrop"
-#~ msgstr "不要設定背景(_D)"
-
-#~ msgid "_Menu file:"
-#~ msgstr "選單檔案(_M)："
-
-#~ msgid "Title:"
-#~ msgstr "標題："
-
-#~ msgid "Select icon"
-#~ msgstr "選擇圖示"
-
-#~ msgid ""
-#~ "Cannot write in %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "無法寫入 %s：\n"
-#~ "%s"
-
-#~ msgid "Pointer"
-#~ msgstr "指標"
-
-#~ msgid "Corrupted file or incorrect file format !"
-#~ msgstr "檔案損毀或是檔案格式不正確"
-
-#~ msgid "No root element in file !"
-#~ msgstr "檔案中沒有根元素(root element)"
-
-#~ msgid "Bad datafile format !"
-#~ msgstr "檔案資料格式錯誤！"
-
-#~ msgid "New menu"
-#~ msgstr "新增選單"
-
-#~ msgid "Filename:"
-#~ msgstr "檔案名稱："
-
-#~ msgid "All fields are required."
-#~ msgstr "所有欄位均必須填寫。"
-
-#~ msgid "Backdrop"
-#~ msgstr "背景"
-
-# TODO check translation
-#~ msgid "Adding files from directory %s..."
-#~ msgstr "由目錄 %s 新增檔案中..."
-
-#~ msgid "Adding files from list %s..."
-#~ msgstr "由清單 %s 新增檔案中..."
-
-# TODO 譯文有待改進
-#~ msgid "Adding multiple files..."
-#~ msgstr "新增多個檔案中..."
-
-#~ msgid "Select backdrop color"
-#~ msgstr "選擇背景顏色"
-
-#~ msgid "New.list"
-#~ msgstr "新列表"
-
-#~ msgid "Desktop background"
-#~ msgstr "桌面背景"
-
-#~ msgid "_Browse..."
-#~ msgstr "瀏覽(_B)..."
-
-#~ msgid "Background"
-#~ msgstr "背景"
-
-#~ msgid "Background Settings"
-#~ msgstr "背景設定"
-
-#~ msgid "Desktop: workspaces"
-#~ msgstr "桌面：工作區"
-
-#~ msgid "Change name"
-#~ msgstr "改變名稱"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "點選一個工作區名稱來編輯其名稱"
-
-#~ msgid "Number of workspaces:"
-#~ msgstr "工作區數目："
-
-#~ msgid "Workspaces"
-#~ msgstr "工作區"
-
-#~ msgid "Workspace names"
-#~ msgstr "工作區名稱"
-
-#~ msgid "xfdesktop error: loading backdrop image: %s\n"
-#~ msgstr "xfdesktop 錯誤：載入背景影像： %s\n"
-
-#~ msgid "Delete workspace"
-#~ msgstr "刪除工作區"
-
-#~ msgid ""
-#~ "xfdesktop: could not connect to settings manager!Please check your "
-#~ "installation."
-#~ msgstr "xfdesktop: 無法連接到設定管理程式！請檢查您的安裝是否正確。"
