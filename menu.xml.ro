@@ -62,7 +62,7 @@
 	<separator/>
 
 	<app name="Terminal" cmd="xfterm4" icon="gnome-terminal"/>
-	<app name="Administrator fişiere (xffm)" cmd="xffm" icon="file-manager"/>
+	<app name="Administrator fişiere" cmd="xffm" icon="file-manager"/>
 	<app name="Navigator Internet" cmd="mozilla" icon="gnome-globe"/>
 
 	<separator/>
@@ -93,6 +93,6 @@
       This will cause xfce4-session to quit, after first displaying a log-out
       dialog box.  If xfce4-session isn't running, it will quit xfdesktop.
     -->
-    <builtin name="Quit" cmd="quit" icon="gnome-logout"/>
+    <builtin name="Ieşire" cmd="quit" icon="gnome-logout"/>
 
 </xfdesktop-menu>
