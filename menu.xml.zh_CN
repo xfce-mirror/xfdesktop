@@ -3,8 +3,8 @@
 	<!ENTITY menu2 SYSTEM "menu2.xml">
 ]>
 
-<!-- 
-     Explanantion of XFce 4 menu file: 
+<!--
+     Explanantion of XFce 4 menu file:
      =================================
      Here we will try to explain the format of the menu file. Look at the
      actual menu below for the real examples.
@@ -12,9 +12,9 @@
 
 <!-- Obviously, this is how you make a comment ;-) -->
 
-<!-- 
+<!--
 
-  + Everything is between exactly one pair of 
+  + Everything is between exactly one pair of
     <xfdesktop-menu></xfdesktop-menu> tags.
 
   + Applications:
@@ -28,13 +28,13 @@
   + Submenus:
     <menu name="Name in menu" visible="yes"></menu>
     Only 'name' is required.
-    Between the menu tags you can define more applications, separators and 
+    Between the menu tags you can define more applications, separators and
     menus.
 
   + Titles
     <title name="Name in menu" />
     Creates an insensitive menu title
-    
+
   + Including other files:
     Other files can be included by using an xml trick. This is a little bit
     complicated.
@@ -46,7 +46,7 @@
     menu and put it in a separate file.
     Beware the included file should NOT contain a xml header or
     <xfdektop-menu> tags!
-    
+
 -->
 <xfdesktop-menu>
     <title name="桌面菜单" visible="yes" />
@@ -60,7 +60,7 @@
     <menu name="设置" visible="yes">
 	<app name="全部设置..." cmd="xfce-setting-show"/>
         <app name="背景..." cmd="xfce-setting-show backdrop"/>
-<!-- 
+<!--
         <app name="背景" cmd="xfce-setting-show backdrop"/>
 	<app name="工作区" cmd="xfce-setting-show workspaces"/>
 	<app name="文件管理器 (xffm)" cmd="xfce-setting-show xffm"/>
@@ -78,14 +78,14 @@
     <app name="帮助" cmd="xfhelp4"/>
     <!-- <separator/> -->
     <!-- Set visible to yes to use this item.
-      This will exit the desktop manager. If you also put 
+      This will exit the desktop manager. If you also put
       'exec xfdesktop' at the end of your ~/.xinitrc, this menu item can be
       used to exit the X session.
     -->
     <builtin name="退出" cmd="quit" visible="no"/>
     <!-- Example on how to include a file:
       1) declare an ENTITY in the DOCTYPE tag (see above)
-      2) include entity in file: 
+      2) include entity in file:
     -->
     <!--
     &menu2;

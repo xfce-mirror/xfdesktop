@@ -3,7 +3,7 @@
 	<!ENTITY menu2 SYSTEM "menu2.xml">
 ]>
 
-<!-- 
+<!--
      Erläuterung der XFce 4 Menüdatei:
      =================================
 	 Hier wird das Format der Menüdatei erläutert. Schauen Sie sich das
@@ -17,7 +17,7 @@
 
 <!-- Offensichtlich ist dies ein Beispiel für einen Kommentar. ;-) -->
 
-<!-- 
+<!--
 
   + Das ganze Menü ist zwischen genau einem Paar von
     <xfdesktop-menu></xfdesktop-menu> Tags.
@@ -39,18 +39,18 @@
   + Titel
     <title name="Name im Menü" />
 	Erstellt einen Menütitel.
-    
+
   + Einfügen anderer Dateien:
     Andere Dateien können mittels eines xml-Tricks inkludiert werden. Dies ist
 	etwas kompliziert.
 	Als erstes muss eine sogenannte Entität im Dateikopf definiert werden.
-	Schauen Sie oben wo eine 'menu2'-Entität definiert werden umd auf die 
+	Schauen Sie oben wo eine 'menu2'-Entität definiert werden umd auf die
 	Datei "menu2.xml" zu zeigen. Dann können Sie '&entitätsname;' irgendwo
 	in der Menüdatei verwenden, was dann mit dem Inhalt der jeweiligen Datei
 	ersetzt wird.
 	Das Ganze kann nützlich sein wenn Sie beispielsweise ein Skript erstellen,
 	das das GNOME- oder KDE-Menü als extra Datei erstellt.
-    
+
 -->
 <xfdesktop-menu>
     <title name="Desktop-Menü" visible="yes" />
@@ -64,7 +64,7 @@
     <menu name="Einstellungen" visible="yes">
         <app name="Alle Einstellungen ..." cmd="xfce-setting-show"/>
         <app name="Hintergrund ..." cmd="xfce-setting-show backdrop"/>
-<!-- 
+<!--
         <app name="Hintergrund" cmd="xfce-setting-show backdrop"/>
 	<app name="Workspaces" cmd="xfce-setting-show workspaces"/>
 	<app name="Dateimanager (xffm)" cmd="xfce-setting-show xffm"/>
@@ -95,7 +95,7 @@
     <app name="Hilfe" cmd="xfhelp4"/>
     <!-- <separator/> -->
     <!-- Setzen Sie 'visible' auf 'yes', um diesen Eintrag zu verwenden.
-      Dies beendet den Desktopmanager. Wenn Sie außerdem 'exec xfdesktop' 
+      Dies beendet den Desktopmanager. Wenn Sie außerdem 'exec xfdesktop'
 	  an das Ende Ihrer ~/.xinitrc Datei schreiben kann dieser Menüeintrag
 	  zum Beenden Ihrer X11-Sitzung verwendet werden.
     -->

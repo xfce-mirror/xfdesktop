@@ -3,8 +3,8 @@
 	<!ENTITY menu2 SYSTEM "menu2.xml">
 ]>
 
-<!-- 
-     Explanantion of XFce 4 menu file: 
+<!--
+     Explanantion of XFce 4 menu file:
      =================================
      Here we will try to explain the format of the menu file. Look at the
      actual menu below for the real examples.
@@ -12,9 +12,9 @@
 
 <!-- Obviously, this is how you make a comment ;-) -->
 
-<!-- 
+<!--
 
-  + Everything is between exactly one pair of 
+  + Everything is between exactly one pair of
     <xfdesktop-menu></xfdesktop-menu> tags.
 
   + Applications:
@@ -34,7 +34,7 @@
   + Titles
     <title name="Name in menu" />
     Creates an insensitive menu title
-    
+
   + Including other files:
     Other files can be included by using an xml trick. This is a little bit
     complicated.
@@ -44,7 +44,7 @@
     replaced with the contents of the file the entity points to.
     This can be useful for example if you make a script that generates a gnome
     menu and put it in a separate file.
-    
+
 -->
 <xfdesktop-menu>
     <title name="Menu Meja" visible="yes" />
@@ -58,7 +58,7 @@
     <menu name="Tetapan" visible="yes">
         <app name="Semua Tetapan..." cmd="xfce-setting-show"/>
         <app name="Latarbelakang..." cmd="xfce-setting-show backdrop"/>
-<!-- 
+<!--
         <app name="Latarbelakang" cmd="xfce-setting-show backdrop"/>
 	<app name="Ruangkerja" cmd="xfce-setting-show workspaces"/>
 	<app name="Pengurus Fail (xffm)" cmd="xfce-setting-show xffm"/>
@@ -76,14 +76,14 @@
     <app name="Bantuan" cmd="xfhelp4"/>
     <!-- <separator/> -->
     <!-- Set visible to yes to use this item.
-      This will exit the desktop manager. If you also put 
+      This will exit the desktop manager. If you also put
       'exec xfdesktop' at the end of your ~/.xinitrc, this menu item can be
       used to exit the X session.
     -->
     <builtin name="Keluar" cmd="quit" visible="no"/>
     <!-- Example on how to include a file:
       1) declare an ENTITY in the DOCTYPE tag (see above)
-      2) include entity in file: 
+      2) include entity in file:
     -->
     <!--
     &menu2;
