@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xfce-registered-categories>
 
-<!-- Note: You can copy this file to ~/.xfce4/ for customisation. -->
+<!-- Note: You can copy this file to ~/.config/xfce4/desktop/ for customisation. -->
 
 <!--
 	Here is how this file works:
-	
+
 	<xfce-registered-categories> - root element, required.
-	
+
 	<category>
 		name:  Required.  Corresponds to an official category from the
 		  freedesktop.org menu spec.
@@ -22,7 +22,7 @@
 		  items. (default: false)
 		hide: Optional.  Items referencing this category will not appear in any
 			menu. (default: false)
-			
+
 	<subcategory> - sub-element of <category>, specifies a subcategory relation
 		name: Required.  Corresponds to an official category from the
 		  freedesktop.org menu spec.
