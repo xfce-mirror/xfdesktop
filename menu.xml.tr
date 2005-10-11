@@ -3,8 +3,8 @@
 	<!ENTITY menu2 SYSTEM "menu2.xml">
 ]>
 
-<!-- 
-     XFce 4 menü dosyası açıklaması: 
+<!--
+     XFce 4 menü dosyası açıklaması:
      =================================
      Bu kısımda menü dosyası biçemi hakkında açıklama yapılacak. Gerçek
      örnekler için aşağıdaki menüye bakınız.
@@ -12,9 +12,9 @@
 
 <!-- Açıklamalar bu şekilde olacak ;-) -->
 
-<!-- 
+<!--
 
-  + Herşey tam olarak bir çift <xfdesktop-menu></xfdesktop-menu> etiketi 
+  + Herşey tam olarak bir çift <xfdesktop-menu></xfdesktop-menu> etiketi
     arasındadır.
 
   + Uygulamalar:
@@ -33,7 +33,7 @@
   + Başlıklar
     <title name="Menü ismi" />
     Menü için seçilemeyen bir başlık oluşturur
-    
+
   + Başka dosyaları ekleme:
     Başka dosyalar bir xml hilesi ile kullanılabilir. Bu biraz daha karmaşıktır.
 
@@ -43,7 +43,7 @@
     ve girdinin olduğu bölüm tanımlanan dosya içeriği ile değiştirilir.
     Bu özellik gnome menülerini çevirmeye yarayan bir uygulama(*) kullanarak 
     oluşturduğunuz dosyayı kullanmak için oldukça kullanışlı.
-    
+
     (*) http://menumaker.sourceforge.net/
 -->
 <xfdesktop-menu>
@@ -58,7 +58,7 @@
     <menu name="Ayarlar" visible="yes">
         <app name="Tüm Ayarlar..." cmd="xfce-setting-show"/>
         <app name="Arka Plan..." cmd="xfce-setting-show backdrop"/>
-<!-- 
+<!--
         <app name="Arka Plan" cmd="xfce-setting-show backdrop"/>
 	<app name="Çalışma Alanları" cmd="xfce-setting-show workspaces"/>
 	<app name="Dosya Yöneticisi (xffm)" cmd="xfce-setting-show xffm"/>
@@ -76,14 +76,14 @@
     <app name="Yardım" cmd="xfhelp4"/>
     <!-- <separator/> -->
     <!-- Kullanabilmek içi 'visible' değerini 'yes' yapın .
-      Bu masaüstü yöneticisinden çıkmayı sağlayacaktır. Eğer 'exec xfdesktop' 
-      satırını ~/.xinitrc dosyanıza eklediyseniz, bu menü öğesi X oturumundan 
+      Bu masaüstü yöneticisinden çıkmayı sağlayacaktır. Eğer 'exec xfdesktop'
+      satırını ~/.xinitrc dosyanıza eklediyseniz, bu menü öğesi X oturumundan
       çıkmak için kullanılabilir.
     -->
     <builtin name="Çık" cmd="quit" visible="no"/>
     <!-- Bir dosya eklemek için örnek:
       1) DOCTYPE etiketinde (yukarıdaki açıklamalar) ENTITY'yi belirleyin
-      2) Entity'yi bu dosyada kullanın: 
+      2) Entity'yi bu dosyada kullanın:
     -->
     <!--
     &menu2;

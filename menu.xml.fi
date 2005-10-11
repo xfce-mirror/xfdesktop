@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xfdesktop-menu>
 
-<!-- 
-     Xfce 4:n valikkotiedoston selitys: 
+<!--
+     Xfce 4:n valikkotiedoston selitys:
      =================================
      Tässä yritämme selittää valikkotiedoston rakenteen.  Alapuolella olevasta
      varsinaisesta valikosta löydät käytännön esimerkkejä.  Sinun ei pitäisi joutua
@@ -11,7 +11,7 @@
 
 <!-- Näin teet selvästikin kommentin ;-) -->
 
-<!-- 
+<!--
 
   + Kaikki on tarkalleen yhden <xfdesktop-menu></xfdesktop-menu>
     tagiparin välissä.
@@ -38,12 +38,12 @@
     <title name="Nimi valikossa" icon="kuvaketiedosto" visible="true/false" />
     Luo otsakkeen ilman toiminnallisuutta. Voit myös halutessasi lisätä
     kuvakkeen otsakkeelle.
-    
+
   + Muiden tiedostojen sisällyttäminen:
     <include type="file" src="menu2.xml" visible="true/false" />
     Sisällyttää tiedoston menu2.xml. Suhteellisen polun oletetaan alkavan
     kansiosta ~/.config/xfce4/desktop/. Absoluuttista polkua käsitellään normaalisti.
-    
+
   + Automaattisesti luodun järjestelmävalikon sisällyttäminen:
     <include type="system" style="simple" unique="true/false" visible="true/false" />
     Sisällyttää järjestelmävalikon. 'style' voi olla "simple" tai "multilevel".
