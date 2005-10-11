@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-10 07:27+0900\n"
-"PO-Revision-Date: 2005-10-09 22:30+0900\n"
+"POT-Creation-Date: 2005-10-11 02:51+0900\n"
+"PO-Revision-Date: 2005-10-11 03:06+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: ../menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
-msgstr "Xfce4 メニューエディタ"
+msgstr "Xfce4 メニューエディター"
 
 #. Credits
 #: ../menueditor/about_dialog.c:43
@@ -55,7 +55,7 @@ msgstr "サブメニュー"
 
 #: ../menueditor/add_dialog.c:184
 msgid "Separator"
-msgstr "セパレータ"
+msgstr "セパレーター"
 
 #: ../menueditor/add_dialog.c:188
 msgid "Title"
@@ -106,7 +106,7 @@ msgstr "'名前' の項目は必須です。"
 
 #: ../menueditor/add_dialog.c:331
 msgid "--- separator ---"
-msgstr "--- セパレータ ---"
+msgstr "--- セパレーター ---"
 
 #: ../menueditor/add_dialog.c:357 ../menueditor/edit_dialog.c:316
 msgid "quit"
@@ -350,6 +350,7 @@ msgid "Edit Properties"
 msgstr "プロパティ編集"
 
 #: ../panel-plugin/desktop-menu-plugin.c:665
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce メニュー"
 
@@ -375,7 +376,7 @@ msgstr "標準のデスクトップメニューを使用(_D)"
 
 #: ../panel-plugin/desktop-menu-plugin.c:729
 msgid "Use _custom menu file:"
-msgstr "カスタム・メニューファイルを使用(_C):"
+msgstr "指定メニューファイルを使用(_C):"
 
 #: ../panel-plugin/desktop-menu-plugin.c:781
 #: ../panel-plugin/desktop-menu-plugin.c:783
@@ -427,6 +428,7 @@ msgstr "背景リスト"
 msgid "Image files"
 msgstr "画像ファイル"
 
+# FIXME: it shouldn't be translatable
 #: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:179
 #: ../settings/backdrop_settings.c:188
 msgid "backdrops.list"
@@ -558,7 +560,7 @@ msgstr "色"
 
 #: ../settings/backdrop_settings.c:1054
 msgid "_Color Style:"
-msgstr "色スタイル(_C):"
+msgstr "色のスタイル(_C):"
 
 #: ../settings/backdrop_settings.c:1063
 msgid "Solid Color"
@@ -701,20 +703,24 @@ msgstr "ワークスペース '%s' を削除する(_R)"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Xfce 4 メニューを編集するグラフィカルツール"
+msgstr "Xfce 4 メニューを編集するグラフィカルツールです"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
-msgstr "メニューエディタ"
+msgstr "メニューエディター"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
-msgstr "Xfce 4 メニューエディタ"
+msgstr "Xfce 4 メニューエディター"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr "Xfce 4 デスクトップマネージャの設定"
+msgstr "Xfce 4 デスクトップマネージャーの設定"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 デスクトップ設定"
+
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+msgid "Shows a menu containing categories of installed applications"
+msgstr "インストールしているアプリケーションのカテゴリーを含むメニューを表示します"
