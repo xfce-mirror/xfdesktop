@@ -13,7 +13,7 @@
 -->
 
 <!--
-    注記: カスタマイズする方は、このファイルを ~/.config/xfce4/desktop/
+    備考: カスタマイズする方は、このファイルを ~/.config/xfce4/desktop/
     へコピーして下さい。
 -->
 
@@ -65,7 +65,7 @@
 		<subcategory name="WebDevelopment" replace="ウェブ開発" />
 	</category>
 	<category name="Building" builtin-icon="DEVELOPMENT" />
-	<category name="Debugger" replace="バグ解析" builtin-icon="DEVELOPMENT" />
+	<category name="Debugger" replace="Debugging" builtin-icon="DEVELOPMENT" />
 	<category name="IDE" replace="開発環境" builtin-icon="DEVELOPMENT" />
 	<category name="GUIDesigner" replace="GUI 設計" builtin-icon="DEVELOPMENT" />
 	<category name="Profiling" builtin-icon="DEVELOPMENT" />
@@ -162,7 +162,7 @@
 		<subcategory name="HamRadio" replace="ハムラジオ" />
 		<subcategory name="Audio" replace="オーディオ" />
 		<subcategory name="Video" replace="ビデオ" />
-		<subcategory name="AudioVideoEditing" replace="AV 編集" />
+		<subcategory name="AudioVideoEditing" />
 		<subcategory name="Player" replace="プレイヤー" />
 		<subcategory name="Recorder" replace="レコーダー" />
 		<subcategory name="DiscBurning" />
@@ -172,7 +172,7 @@
 		<subcategory name="Mixer" replace="ミキサー" />
 		<subcategory name="Sequencer" replace="シーケンサー" />
 		<subcategory name="Tuner" replace="チューナー" />
-		<subcategory name="AudioVideoEditing" replace="AV 編集" />
+		<subcategory name="AudioVideoEditing" />
 		<subcategory name="Player" replace="プレイヤー" />
 		<subcategory name="Recorder" replace="レコーダー" />
 	</category>
@@ -182,7 +182,7 @@
 	<category name="Tuner" replace="チューナー" builtin-icon="MULTIMEDIA" />
 	<category name="Video" replace="ビデオ" builtin-icon="MULTIMEDIA">
 		<subcategory name="TV" replace="テレビ" />
-		<subcategory name="AudioVideoEditing" replace="AV 編集" />
+		<subcategory name="AudioVideoEditing" />
 		<subcategory name="Player" repace="プレイヤー" />
 		<subcategory name="Recorder" replace="レコーダー" />
 		<subcategory name="Music" replace="音楽" />
@@ -248,7 +248,7 @@
 	<category name="Teaching" replace="教育学" />
 	<category name="Amusement" replace="ゲーム" builtin-icon="GAME" />
 	<category name="Applet" replace="アプレット" />
-	<category name="Archiving" replace="アーカイブ作成" />
+	<category name="Archiving" />
 	<category name="Electronics" replace="電子工学" />
 	<category name="Emulator" toplevel="true" replace="システム" builtin-icon="SYSTEM" />
 	<category name="Engineering" replace="工学" />
