@@ -32,30 +32,33 @@ endif
 
 confdir = $(sysconfdir)/xdg/xfce4/desktop
 
-conf_DATA = 								\
-	menu.xml 							\
-	menu.xml.ca							\
-	menu.xml.de 							\
-	menu.xml.es							\
-	menu.xml.et							\
-	menu.xml.fi							\
-	menu.xml.fr 							\
-	menu.xml.he							\
-	menu.xml.ja							\
-	menu.xml.ko							\
-	menu.xml.nl  							\
-	menu.xml.pt_BR							\
-	menu.xml.ro							\
-	menu.xml.ru							\
-	menu.xml.sk							\
-	menu.xml.uk							\
-	menu.xml.vi 							\
+conf_DATA =		\
+	menu.xml	\
+	menu.xml.ca	\
+	menu.xml.cs	\
+	menu.xml.da	\
+	menu.xml.de	\
+	menu.xml.el	\
+	menu.xml.es	\
+	menu.xml.et	\
+	menu.xml.fi	\
+	menu.xml.fr	\
+	menu.xml.he	\
+	menu.xml.ja	\
+	menu.xml.ko	\
+	menu.xml.nl  	\
+	menu.xml.pt_BR	\
+	menu.xml.ro	\
+	menu.xml.ru	\
+	menu.xml.sk	\
+	menu.xml.sv	\
+	menu.xml.uk	\
+	menu.xml.vi 	\
 	menu.xml.zh_TW
 
 # the following have not been updated from the old 4.0.x menu
 #
 #	menu.xml.az 							
-#	menu.xml.ca 							
 #	menu.xml.eu							
 #	menu.xml.fa_IR 							
 #	menu.xml.hu 							
