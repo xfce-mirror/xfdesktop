@@ -2246,7 +2246,10 @@ xfce_desktop_drag_motion(GtkWidget *widget,
                                        "xfce-desktop-cell-highlight");
     
     desktop_xy_to_rowcol(desktop, active_ws_num, x, y, &row, &col);
-    if(grid_is_free_position(desktop, active_ws_num, row, col)) {
+    if(row < desktop->priv->icon_workspaces[active_ws_num]->nrows
+       && col < desktop->priv->icon_workspaces[active_ws_num]->ncols
+       && grid_is_free_position(desktop, active_ws_num, row, col))
+    {
         gint newx, newy;
         
         newx = desktop->priv->icon_workspaces[active_ws_num]->xorigin;
@@ -2327,7 +2330,10 @@ xfce_desktop_drag_drop(GtkWidget *widget,
     active_ws_num = netk_workspace_get_number(active_ws);
     
     desktop_xy_to_rowcol(desktop, active_ws_num, x, y, &row, &col);
-    if(!grid_is_free_position(desktop, active_ws_num, row, col)) {
+    if(row >= desktop->priv->icon_workspaces[active_ws_num]->nrows
+       || col >= desktop->priv->icon_workspaces[active_ws_num]->ncols
+       || !grid_is_free_position(desktop, active_ws_num, row, col))
+    {
         gtk_drag_finish(context, FALSE, FALSE, time);
         return FALSE;
     }
