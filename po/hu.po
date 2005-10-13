@@ -3,68 +3,67 @@
 # This file is distributed under the same license as the xfdesktop package.
 # Somogyi Peter <jerry@gnu>, 2003.
 # Egmont Koblinger <egmont@uhulinux.hu>, 2003.
+# SZERVÁC Attila <sas@321.hu>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-11 02:51+0900\n"
-"PO-Revision-Date: 2005-10-09 22:17+0900\n"
-"Last-Translator: Egmont Koblinger <egmont@uhulinux.hu>\n"
+"POT-Creation-Date: 2005-10-13 22:43+0900\n"
+"PO-Revision-Date: 2005-10-13 22:41+0900\n"
+"Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: KBabel 1.0.1\n"
 
 #: ../menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
-msgstr ""
+msgstr "Xfce4 menüszerkesztő"
 
 #. Credits
 #: ../menueditor/about_dialog.c:43
 msgid "Core developer"
-msgstr ""
+msgstr "Fő fejlesztő"
 
 #: ../menueditor/about_dialog.c:44 ../menueditor/about_dialog.c:45
 #: ../menueditor/about_dialog.c:46
 msgid "Contributor"
-msgstr ""
+msgstr "Közreműködő"
 
 #: ../menueditor/about_dialog.c:47
 msgid "Icon designer"
-msgstr ""
+msgstr "Ikontervező"
 
 #: ../menueditor/add_dialog.c:159 ../menueditor/add_dialog.c:169
 msgid "Add menu entry"
-msgstr ""
+msgstr "Elem hozzáadása"
 
 #. Type
 #: ../menueditor/add_dialog.c:173 ../menueditor/add_menu_dialog.c:110
 msgid "Type:"
-msgstr ""
+msgstr "Típus"
 
 #: ../menueditor/add_dialog.c:176
 msgid "Launcher"
-msgstr ""
+msgstr "Indító"
 
 #: ../menueditor/add_dialog.c:180
 msgid "Submenu"
-msgstr ""
+msgstr "Almenü"
 
 #: ../menueditor/add_dialog.c:184
 msgid "Separator"
-msgstr ""
+msgstr "Elválasztó"
 
 #: ../menueditor/add_dialog.c:188
-#, fuzzy
 msgid "Title"
-msgstr "_Mozaikszerűen"
+msgstr "Cím"
 
 #: ../menueditor/add_dialog.c:192
 msgid "Quit"
-msgstr ""
+msgstr "Kilép"
 
 #. Name
 #: ../menueditor/add_dialog.c:206 ../menueditor/edit_dialog.c:147
@@ -74,62 +73,61 @@ msgstr "Név:"
 
 #: ../menueditor/add_dialog.c:214 ../menueditor/edit_dialog.c:152
 msgid "Command:"
-msgstr ""
+msgstr "Parancs:"
 
 #: ../menueditor/add_dialog.c:226 ../menueditor/edit_dialog.c:139
 #: ../menueditor/edit_dialog.c:199
 msgid "Icon:"
-msgstr ""
+msgstr "Ikon:"
 
 #. Start Notify check button
 #. Startup notification
 #: ../menueditor/add_dialog.c:237 ../menueditor/edit_dialog.c:160
 msgid "Use startup _notification"
-msgstr ""
+msgstr "Indítás_jelentés használata"
 
 #. Run in terminal check button
 #. Run in terminal
 #: ../menueditor/add_dialog.c:241 ../menueditor/edit_dialog.c:163
 msgid "Run in _terminal"
-msgstr ""
+msgstr "Futtatás _terminálban"
 
 #: ../menueditor/add_dialog.c:272 ../menueditor/edit_dialog.c:242
 msgid "The command doesn't exist !"
-msgstr ""
+msgstr "Nincs ilyen parancs!"
 
 #: ../menueditor/add_dialog.c:278 ../menueditor/edit_dialog.c:248
 msgid "All fields must be filled to add an item."
-msgstr ""
+msgstr "Minden mező kitöltendő egy elem hozzáadásához."
 
 #: ../menueditor/add_dialog.c:287 ../menueditor/edit_dialog.c:257
 msgid "The 'Name' field is required."
-msgstr ""
+msgstr "A 'Név' mező kötelező"
 
 #: ../menueditor/add_dialog.c:331
 msgid "--- separator ---"
-msgstr ""
+msgstr "--- elválasztó ---"
 
 #: ../menueditor/add_dialog.c:357 ../menueditor/edit_dialog.c:316
 msgid "quit"
-msgstr ""
+msgstr "kilép"
 
 #: ../menueditor/add_menu_dialog.c:97 ../menueditor/add_menu_dialog.c:103
 #: ../menueditor/menueditor.c:842
 msgid "Add an external menu"
-msgstr ""
+msgstr "Külső menü hozzáadása"
 
 #: ../menueditor/add_menu_dialog.c:115
-#, fuzzy
 msgid "File"
-msgstr "Fájl:"
+msgstr "Fájl"
 
 #: ../menueditor/add_menu_dialog.c:119
 msgid "System"
-msgstr ""
+msgstr "Rendszer"
 
 #: ../menueditor/add_menu_dialog.c:133
 msgid "Source:"
-msgstr ""
+msgstr "Forrás:"
 
 #. Style
 #: ../menueditor/add_menu_dialog.c:145
@@ -138,272 +136,264 @@ msgstr "Megjelenítés:"
 
 #: ../menueditor/add_menu_dialog.c:148
 msgid "Simple"
-msgstr ""
+msgstr "Egyszerű"
 
 #: ../menueditor/add_menu_dialog.c:150
 msgid "Multilevel"
-msgstr ""
+msgstr "Többszintű"
 
 #. Unique
 #: ../menueditor/add_menu_dialog.c:162
 msgid "_Unique entries only"
-msgstr ""
+msgstr "Csak _egyedi elemek"
 
 #: ../menueditor/add_menu_dialog.c:198
 msgid "The 'Source' field is required."
-msgstr ""
+msgstr "A 'Forrás' mező kötelező"
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
 msgid "--- include ---"
-msgstr ""
+msgstr "--- csatolva ---"
 
 #: ../menueditor/add_menu_dialog.c:213
 msgid "system"
-msgstr ""
+msgstr "rendszer"
 
 #. Create dialog for editing
 #: ../menueditor/edit_dialog.c:116 ../menueditor/edit_dialog.c:123
 msgid "Edit menu entry"
-msgstr ""
+msgstr "Elem szerkesztése"
 
 #: ../menueditor/edit_dialog.c:128
 msgid "Separators cannot be edited"
-msgstr ""
+msgstr "Az elválasztók nem szerkeszthetők"
 
 #: ../menueditor/menueditor.c:81
 #, c-format
 msgid "File %s doesn't exist !"
-msgstr ""
+msgstr "Nincs ilyen fájl: %s"
 
 #: ../menueditor/menueditor.c:121 ../menueditor/menueditor.c:537
 msgid "Do you want to save before closing the menu ?"
-msgstr ""
+msgstr "Akarsz menteni a menü bezárása előtt?"
 
 #: ../menueditor/menueditor.c:123
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr ""
+msgstr "Módosítottad a menüt, akarod menteni kilépés előtt?"
 
 #: ../menueditor/menueditor.c:125
 msgid "Forget modifications"
-msgstr ""
+msgstr "Változások elvetése"
 
 #: ../menueditor/menueditor.c:314
 msgid "Are you sure you want to close the current menu?"
-msgstr ""
+msgstr "Biztos bezárod e menüt?"
 
 #: ../menueditor/menueditor.c:329
 msgid "Do you want to save before closing the file?"
-msgstr ""
+msgstr "Mentesz a fájl bezárása előtt?"
 
 #: ../menueditor/menueditor.c:338
 msgid "Select command"
-msgstr ""
+msgstr "Válassz parancsot"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
 #: ../menueditor/menueditor.c:535
 msgid "Question"
-msgstr ""
+msgstr "Kérdés"
 
 #: ../menueditor/menueditor.c:372
 msgid "Do you want to save before opening an other menu ?"
-msgstr ""
+msgstr "Mentesz, mielőtt megnyitsz egy másik menüt?"
 
 #: ../menueditor/menueditor.c:374 ../menueditor/menueditor.c:431
 #: ../menueditor/menueditor.c:539
 msgid "Ignore modifications"
-msgstr ""
+msgstr "Változások elvetése"
 
 #: ../menueditor/menueditor.c:385
 msgid "Open menu file"
-msgstr ""
+msgstr "Menüfájl megnyitása"
 
 #: ../menueditor/menueditor.c:429
 msgid "Do you want to save before opening the default menu ?"
-msgstr ""
+msgstr "Akarsz menteni az alapmenü megnyitása előtt?"
 
 #: ../menueditor/menueditor.c:487
 msgid "Save as..."
-msgstr ""
+msgstr "Mentés mint..."
 
 #: ../menueditor/menueditor.c:649
 msgid "Do you want to move the item into the parent menu?"
-msgstr ""
+msgstr "Az elemet a szülőmenübe mozgatod?"
 
 #: ../menueditor/menueditor.c:695
 msgid "Do you want to move the item into the submenu?"
-msgstr ""
+msgstr "Az elemet az almenübe mozgatod?"
 
 #: ../menueditor/menueditor.c:836
-#, fuzzy
 msgid "Edit"
-msgstr "Lista szerkesztése"
+msgstr "Szerkesztés"
 
 #. File menu
 #: ../menueditor/menueditor.c:860
-#, fuzzy
 msgid "_File"
-msgstr "Fájl:"
+msgstr "_Fájl"
 
 #: ../menueditor/menueditor.c:869
 msgid "Open default menu"
-msgstr ""
+msgstr "Alapmenü megnyitása"
 
 #. Edit menu
 #: ../menueditor/menueditor.c:883
 msgid "_Edit"
-msgstr ""
+msgstr "Sz_erkesztés"
 
 #: ../menueditor/menueditor.c:889
 msgid "Add an external menu..."
-msgstr ""
+msgstr "Külső menü hozzáadása"
 
 #. Help menu
 #: ../menueditor/menueditor.c:901
 msgid "_Help"
-msgstr ""
+msgstr "_Súgó"
 
 #: ../menueditor/menueditor.c:905
 msgid "_About..."
-msgstr ""
+msgstr "_Névjegy..."
 
 #: ../menueditor/menueditor.c:917
 msgid "Create a new Xfce4 menu file"
-msgstr ""
+msgstr "Új Xfce4 menüfájl létrehozása"
 
 #: ../menueditor/menueditor.c:922
 msgid "Open an Xfce4 menu file"
-msgstr ""
+msgstr "Egy Xfce4 menüfájl megnyitása"
 
 #: ../menueditor/menueditor.c:927
 msgid "Save current menu"
-msgstr ""
+msgstr "Jelen menü mentése"
 
 #: ../menueditor/menueditor.c:932
 msgid "Close current menu"
-msgstr ""
+msgstr "Menü bezárása"
 
 #: ../menueditor/menueditor.c:938
 msgid "Add an entry to the menu"
-msgstr ""
+msgstr "Menüelem hozzáadása"
 
 #: ../menueditor/menueditor.c:942
 msgid "Delete the current entry"
-msgstr ""
+msgstr "Elem törlése"
 
 #: ../menueditor/menueditor.c:948
 msgid "Move the current entry up"
-msgstr ""
+msgstr "Elem fel"
 
 #: ../menueditor/menueditor.c:953
 msgid "Move the current entry down"
-msgstr ""
+msgstr "Elem le"
 
 #: ../menueditor/menueditor.c:959
 msgid "Collapse the tree"
-msgstr ""
+msgstr "Ág bezárása"
 
 #: ../menueditor/menueditor.c:964
 msgid "Expand the tree"
-msgstr ""
+msgstr "Ág kinyitása"
 
 #: ../menueditor/menueditor.c:992
-#, fuzzy
 msgid "Name"
-msgstr "Név:"
+msgstr "Név"
 
 #: ../menueditor/menueditor.c:995
 msgid "Command"
-msgstr ""
+msgstr "Parancs"
 
 #: ../menueditor/menueditor.c:996
 msgid "Hidden"
-msgstr ""
+msgstr "Rejtett"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
-msgstr ""
+msgstr "/Más"
 
 #: ../panel-plugin/desktop-menu-plugin.c:486
 msgid "Select Icon"
-msgstr ""
+msgstr "Válassz ikont"
 
 #: ../panel-plugin/desktop-menu-plugin.c:488
 msgid "Select Menu File"
-msgstr ""
+msgstr "Válassz menüfájlt"
 
 #: ../panel-plugin/desktop-menu-plugin.c:503 ../settings/backdrop-mgr.c:436
 #: ../settings/backdrop-mgr.c:537 ../settings/backdrop_settings.c:524
 msgid "All Files"
-msgstr ""
+msgstr "Minden fájl"
 
 #: ../panel-plugin/desktop-menu-plugin.c:509 ../settings/backdrop-mgr.c:440
 #: ../settings/backdrop_settings.c:528
-#, fuzzy
 msgid "Image Files"
 msgstr "Képfájlok"
 
 #: ../panel-plugin/desktop-menu-plugin.c:517
-#, fuzzy
 msgid "Menu Files"
-msgstr "Képfájlok"
+msgstr "Menüfájlok"
 
 #: ../panel-plugin/desktop-menu-plugin.c:634 ../settings/menu_settings.c:153
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr ""
+msgstr "Nem indítható az xfce4-menueditor: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:657
-#, fuzzy
 msgid "Edit Properties"
-msgstr "Háttérlista szerkesztése"
+msgstr "Tulajdonságok szerkesztése"
 
 #: ../panel-plugin/desktop-menu-plugin.c:665
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
-msgstr ""
+msgstr "Xfce menü"
 
 #: ../panel-plugin/desktop-menu-plugin.c:675
-#, fuzzy
 msgid "Button"
-msgstr "_Automatikusan"
+msgstr "Gomb"
 
 #: ../panel-plugin/desktop-menu-plugin.c:688
 msgid "Button _title:"
-msgstr ""
+msgstr "Gomb né_v:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "_Show title in button"
-msgstr ""
+msgstr "Cím mutatá_sa a gombon"
 
 #: ../panel-plugin/desktop-menu-plugin.c:708
-#, fuzzy
 msgid "Menu File"
-msgstr "Képfájlok"
+msgstr "Menüfájl"
 
 #: ../panel-plugin/desktop-menu-plugin.c:720
 msgid "Use default _desktop menu file"
-msgstr ""
+msgstr "_Alap asztali menüfájl használata"
 
 #: ../panel-plugin/desktop-menu-plugin.c:729
 msgid "Use _custom menu file:"
-msgstr ""
+msgstr "E_gyéni menüfájl használata"
 
 #: ../panel-plugin/desktop-menu-plugin.c:781
 #: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "_Edit Menu"
-msgstr ""
+msgstr "Menü sz_erkesztése"
 
 #: ../panel-plugin/desktop-menu-plugin.c:790
 msgid "Icons"
-msgstr ""
+msgstr "Ikonok"
 
 #: ../panel-plugin/desktop-menu-plugin.c:802
 msgid "_Button icon:"
-msgstr ""
+msgstr "Gomb iko_n:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:826
 msgid "Show _icons in menu"
-msgstr ""
+msgstr "Legyenek _ikonok a menüben"
 
 #: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:522
 #, c-format
@@ -419,18 +409,16 @@ msgstr ""
 "párbeszédpanelen a változások elvetéséhez."
 
 #: ../settings/backdrop-mgr.c:431
-#, fuzzy
 msgid "Select backdrop image file"
-msgstr "Képfájl kiválasztása"
+msgstr "Háttérkép fájl kiválasztása"
 
 #: ../settings/backdrop-mgr.c:532
 msgid "Choose backdrop list filename"
 msgstr "Háttérlista-fájlnév kiválasztása"
 
 #: ../settings/backdrop-mgr.c:541
-#, fuzzy
 msgid "List Files"
-msgstr "Listafájl"
+msgstr "Listafájlok"
 
 #: ../settings/backdrop-mgr.c:604
 msgid "Backdrop List"
@@ -442,9 +430,8 @@ msgstr "Képfájlok"
 
 #: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:179
 #: ../settings/backdrop_settings.c:188
-#, fuzzy
 msgid "backdrops.list"
-msgstr "Háttérlista szerkesztése"
+msgstr "backdrops.list"
 
 #: ../settings/backdrop-mgr.c:640
 msgid "List file"
@@ -465,77 +452,69 @@ msgid "Desktop"
 msgstr "Munkaasztal"
 
 #: ../settings/backdrop_settings.c:519
-#, fuzzy
 msgid "Select backdrop image or list file"
 msgstr "Háttérkép vagy listafájl kiválasztása"
 
 #: ../settings/backdrop_settings.c:537
 msgid "List Files (*.list)"
-msgstr ""
+msgstr "Listafájlok (*.list)"
 
 #: ../settings/backdrop_settings.c:627
-#, fuzzy
 msgid "_Edit list..."
 msgstr "Lista szerkesztése"
 
 #: ../settings/backdrop_settings.c:635
-#, fuzzy
 msgid "_New list..."
 msgstr "Új lista"
 
 #: ../settings/backdrop_settings.c:671
-#, fuzzy
 msgid "S_tyle:"
-msgstr "Megjelenítés:"
+msgstr "S_tílus:"
 
 #: ../settings/backdrop_settings.c:679
-#, fuzzy
 msgid "Tiled"
-msgstr "_Mozaikszerűen"
+msgstr "Csempe"
 
 #: ../settings/backdrop_settings.c:686
-#, fuzzy
 msgid "Centered"
-msgstr "_Középre igazítva"
+msgstr "Középre"
 
 #: ../settings/backdrop_settings.c:693
-#, fuzzy
 msgid "Scaled"
-msgstr "Á_tméretezve"
+msgstr "Átméretezve"
 
 #: ../settings/backdrop_settings.c:700
 msgid "Stretched"
-msgstr ""
+msgstr "Nyújtott"
 
 #: ../settings/backdrop_settings.c:707
-#, fuzzy
 msgid "Auto"
-msgstr "_Automatikusan"
+msgstr "Automatikus"
 
 #: ../settings/backdrop_settings.c:773
 msgid "Adjust _Brightness:"
-msgstr ""
+msgstr "Fénye_rő beállítása:"
 
 #: ../settings/backdrop_settings.c:829
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr ""
+msgstr "Az Xfce nem tudja majd kezelni az asztalt (%s)."
 
 #: ../settings/backdrop_settings.c:830
 msgid "Unknown Error"
-msgstr ""
+msgstr "ismeretlen hiba"
 
 #: ../settings/backdrop_settings.c:834
 msgid "Error"
-msgstr ""
+msgstr "hiba"
 
 #: ../settings/backdrop_settings.c:836
 msgid "Unable to start xfdesktop"
-msgstr ""
+msgstr "Az xfdesktop nem indítható"
 
 #: ../settings/backdrop_settings.c:854
 msgid "Information"
-msgstr ""
+msgstr "Információ"
 
 #: ../settings/backdrop_settings.c:864
 msgid ""
@@ -545,30 +524,32 @@ msgid ""
 "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
+"Hogy az Xfce tutira ne kezelje az asztalodat a következő indítástól, mentsd "
+"a munkafolyamatot a kijelentkezéskor. Ha nem használod az Xfce "
+"folyamatkezelőt (xfce4-session), kézzel kell szerkesztenes a ~/.config/xfce4/"
+"xinitrc fájlt.  Részletek a doksiban a http://xfce.org/ -on."
 
 #: ../settings/backdrop_settings.c:872
 msgid "_Do not show this again"
-msgstr ""
+msgstr "Ne mutas_d legközelebb"
 
 #. header
 #: ../settings/backdrop_settings.c:954
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop Settings"
-msgstr "Munkaterület beállításai"
+msgstr "Asztal beállításai"
 
 #: ../settings/backdrop_settings.c:959
 msgid "Allow _Xfce to manage the desktop"
-msgstr ""
+msgstr "Az _Xfce kezelje az asztalt"
 
 #: ../settings/backdrop_settings.c:1000
 msgid "Stretch single backdrop onto _all monitors"
-msgstr ""
+msgstr "Nyújts egy hátteret v_alamennyi monitorra"
 
 #: ../settings/backdrop_settings.c:1014
-#, fuzzy
 msgid "_Backdrops"
-msgstr "Háttérlista"
+msgstr "_Hátterek"
 
 #. color settings frame
 #: ../settings/backdrop_settings.c:1040
@@ -576,176 +557,167 @@ msgid "Color"
 msgstr "Szín"
 
 #: ../settings/backdrop_settings.c:1054
-#, fuzzy
 msgid "_Color Style:"
-msgstr "Megjelenítés:"
+msgstr "Szí_nstílus:"
 
 #: ../settings/backdrop_settings.c:1063
-#, fuzzy
 msgid "Solid Color"
-msgstr "Szín"
+msgstr "Sima szín"
 
 #: ../settings/backdrop_settings.c:1070
 msgid "Horizontal Gradient"
-msgstr ""
+msgstr "Vízszintes színátmenet"
 
 #: ../settings/backdrop_settings.c:1077
 msgid "Vertical Gradient"
-msgstr ""
+msgstr "Függőleges színátmenet"
 
 #: ../settings/backdrop_settings.c:1098
 msgid "Fi_rst Color:"
-msgstr ""
+msgstr "_1. szín:"
 
 #: ../settings/backdrop_settings.c:1119
-#, fuzzy
 msgid "_Second Color:"
-msgstr "Háttérszín:"
+msgstr "_2. szín:"
 
 #: ../settings/backdrop_settings.c:1144
 msgid "Image"
 msgstr "Kép"
 
 #: ../settings/backdrop_settings.c:1152
-#, fuzzy
 msgid "Show _Image"
-msgstr "Kép"
+msgstr "_Kép mutatása"
 
 #: ../settings/backdrop_settings.c:1174
-#, fuzzy
 msgid "_File:"
 msgstr "Fájl:"
 
 #. add the single backdrop settings page to the main notebook
 #: ../settings/backdrop_settings.c:1219
-#, fuzzy
 msgid "_Backdrop"
-msgstr "Háttérlista"
+msgstr "_Háttér"
 
 #: ../settings/backdrop_settings.c:1230 ../settings/backdrop_settings.c:1232
 #, c-format
 msgid "Screen %d"
-msgstr ""
+msgstr "Képernyő %d"
 
 #. and if we have multiple screens, each with multiple monitors
 #: ../settings/backdrop_settings.c:1237
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr ""
+msgstr "Képernyő %d, Monitor %d"
 
 #: ../settings/backdrop_settings.c:1254
 msgid "_Useless Bloat"
-msgstr ""
+msgstr "Nem használt"
 
 #: ../settings/menu_settings.c:174
 msgid "Window List Menu"
-msgstr ""
+msgstr "Ablaklista menü"
 
 #: ../settings/menu_settings.c:182
 msgid "Show window _list"
-msgstr ""
+msgstr "Ablak _lista mutatása"
 
 #: ../settings/menu_settings.c:197
 msgid "Show _window icons"
-msgstr ""
+msgstr "Ablak _ikonok mutatása"
 
 #: ../settings/menu_settings.c:210
-#, fuzzy
 msgid "Desktop Menu"
-msgstr "Munkaasztal"
+msgstr "Asztali menü"
 
 #: ../settings/menu_settings.c:218
 msgid "Show desktop _menu"
-msgstr ""
+msgstr "Asztali _menü mutatása"
 
 #: ../settings/menu_settings.c:233
 msgid "Show _application icons"
-msgstr ""
+msgstr "Progr_amikonok mutatása"
 
 #: ../settings/menu_settings.c:244
 msgid "_Edit desktop menu"
-msgstr ""
+msgstr "Asztali menü sz_erkesztése"
 
 #: ../settings/menu_settings.c:256
 msgid "Window Icons"
-msgstr ""
+msgstr "Ablak ikonok"
 
 #: ../settings/menu_settings.c:264
 msgid "Show minimized window _icons on the desktop"
-msgstr ""
+msgstr "Minimált ablakok _ikonjai az asztalon"
 
 #: ../src/main.c:251
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr ""
+msgstr "%s: Ismeretlen lehetőség: %s\n"
 
 #: ../src/main.c:252
 msgid "Options are:\n"
-msgstr ""
+msgstr "Lehetőségek:\n"
 
 #: ../src/main.c:253
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr ""
+msgstr "    -reload      Beállítások visszatöltése, képlista frissítése\n"
 
 #: ../src/main.c:254
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr ""
+msgstr "    -menu        Menü megjelenítése (az egér pozíciójánál)\n"
 
 #: ../src/main.c:255
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
+msgstr "    -windowlist Ablaklista megjelenítése (az egér pozíciójánál)\n"
 
 #: ../src/main.c:256
 msgid "    -quit        Cause xfdesktop to quit\n"
-msgstr ""
+msgstr "    -quit        Az xfdesktop kilép\n"
 
 #: ../src/windowlist.c:193
-#, fuzzy, c-format
+#, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "%d. munkaterület"
+msgstr "<b>%d. munkaterület</b>"
 
 #: ../src/windowlist.c:201
-#, fuzzy, c-format
+#, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "%d. munkaterület"
+msgstr "<i>%d. munkaterület</i>"
 
 #: ../src/windowlist.c:268 ../src/windowlist.c:271
-#, fuzzy
 msgid "_Add Workspace"
-msgstr "Munkaterület hozzáadása"
+msgstr "Munkaterület hozzá_adása"
 
 #: ../src/windowlist.c:279
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace %d"
-msgstr "%d. munkaterület"
+msgstr "%d. munkaterület tö_rlése"
 
 #: ../src/windowlist.c:282
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "%d. munkaterület"
+msgstr "E munkaterület tö_rlése: '%s'"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr ""
+msgstr "Grafikus Xfce 4 menüszerkesztő"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
-msgstr ""
+msgstr "Menüszerkesztő"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
-msgstr ""
+msgstr "Xfce 4 menüszerkesztő"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr ""
+msgstr "Xfce 4 asztalkezelő beállítások"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Desktop Settings"
-msgstr "Munkaterület beállításai"
+msgstr "Xfce 4 Asztal Beállítások"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr ""
+msgstr "A telepített programok kategóriáinak menüjét mutatja"
