@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xfce-registered-categories>
 
+<!-- $Id$ -->
+
 <!--
     翻訳者:
 
@@ -8,12 +10,15 @@
 
     誤訳の指摘・改訳の提案等は:
 
+        Daichi Kawahata <daichi@xfce.org> (現在の翻訳者)
         xfce-users-jp <xfce-users-jp@ml.fdiary.net>
         Xfce translations mailing list <xfce-i18n@xfce.org> (英語のみ)
+
+    にお願いします。
 -->
 
 <!--
-    備考: カスタマイズする方は、このファイルを ~/.config/xfce4/desktop/
+    付記: 自分で編集する方は、このファイルを ~/.config/xfce4/desktop/
     へコピーして下さい。
 -->
 
@@ -35,7 +40,7 @@
         ignore: 任意です。このカテゴリーはメニュー・アイテムを一つのグループに
         まとめる時に無視されます。(標準: false)
         hide: 任意です。このカテゴリーを参照するアイテムは、どのメニューにも
-          表示されません。(デフォルト: false)
+          表示されません。(標準: false)
 
     <subcategory> - <category> のサブ要素です、サブカテゴリーに関連する名前を
         指定します: 必須です。freedesktop.org のメニュー仕様にある公式カテゴリー
@@ -53,60 +58,60 @@
 	<category name="Legacy" toplevel="true" replace="アクセサリー" builtin-icon="UTILITY" />
 	<category name="Core" toplevel="true" replace="アクセサリー" builtin-icon="UTILITY" />
 	<category name="Development" toplevel="true" replace="開発" builtin-icon="DEVELOPMENT">
-		<subcategory name="Building" />
-		<subcategory name="Debugger" replace="デバッガ" />
-		<subcategory name="IDE" />
+		<subcategory name="Building" replace="ビルド" />
+		<subcategory name="Debugger" replace="デバッガー" />
+		<subcategory name="IDE" replace="統合開発環境" />
 		<subcategory name="GUIDesigner" replace="GUI 設計" />
-		<subcategory name="Profiling" />
+		<subcategory name="Profiling" replace="プロファイリング" />
 		<subcategory name="RevisionControl" replace="リビジョン管理" />
 		<subcategory name="Translation" replace="翻訳" />
 		<subcategory name="Database" replace="データベース" />
 		<subcategory name="ProjectManagement" replace="プロジェクト管理" />
 		<subcategory name="WebDevelopment" replace="ウェブ開発" />
 	</category>
-	<category name="Building" builtin-icon="DEVELOPMENT" />
-	<category name="Debugger" replace="Debugging" builtin-icon="DEVELOPMENT" />
-	<category name="IDE" replace="開発環境" builtin-icon="DEVELOPMENT" />
+	<category name="Building" replace="ビルド" builtin-icon="DEVELOPMENT" />
+	<category name="Debugger" replace="バグ解析" builtin-icon="DEVELOPMENT" />
+	<category name="IDE" replace="統合開発環境" builtin-icon="DEVELOPMENT" />
 	<category name="GUIDesigner" replace="GUI 設計" builtin-icon="DEVELOPMENT" />
-	<category name="Profiling" builtin-icon="DEVELOPMENT" />
+	<category name="Profiling" replace="プロファイリング" builtin-icon="DEVELOPMENT" />
 	<category name="RevisionControl" replace="リビジョン管理" builtin-icon="DEVELOPMENT" />
 	<category name="Translation" replace="翻訳" builtin-icon="DEVELOPMENT" />
 	<category name="Office" toplevel="true" replace="オフィス" builtin-icon="PRODUCTIVITY">
 		<subcategory name="Calendar" replace="カレンダー" />
-		<subcategory name="ContactManagement" />
+		<subcategory name="ContactManagement" replace="アポイント管理" />
 		<subcategory name="Database" replace="データベース" />
 		<subcategory name="Dictionary" replace="電子辞書" />
 		<subcategory name="Chart" replace="チャート" />
-		<subcategory name="Email" replace="電子メール" />
+		<subcategory name="Email" replace="メール" />
 		<subcategory name="Finance" replace="会計" />
 		<subcategory name="FlowChart" replace="フローチャート" />
 		<subcategory name="PDA" />
 		<subcategory name="ProjectManagement" replace="プロジェクト管理" />
 		<subcategory name="Presentation" replace="プレゼンテーション" />
-		<subcategory name="Spreadsheet" />
+		<subcategory name="Spreadsheet" replace="表計算" />
 		<subcategory name="WordProcessor" replace="ワープロ" />
 		<subcategory name="Photograph" replace="写真" />
-		<subcategory name="Viewer" replace="ビューア" />
+		<subcategory name="Viewer" replace="ビューアー" />
 	</category>
 	<category name="Calendar" replace="カレンダー" builtin-icon="PRODUCTIVITY" />
-	<category name="ContactManagement" replace="Contact Management" builtin-icon="PRODUCTIVITY" />
+	<category name="ContactManagement" replace="アポイント管理" builtin-icon="PRODUCTIVITY" />
 	<category name="Database" replace="データベース" builtin-icon="PRODUCTIVITY" />
 	<category name="Dictionary" replace="電子辞書" builtin-icon="PRODUCTIVITY" />
 	<category name="Chart" replace="チャート" builtin-icon="PRODUCTIVITY" />
-	<category name="Email" replace="電子メール" builtin-icon="PRODUCTIVITY" />
+	<category name="Email" replace="メール" builtin-icon="PRODUCTIVITY" />
 	<category name="Finance" replace="会計" builtin-icon="PRODUCTIVITY" />
 	<category name="FlowChart" replace="フローチャート" builtin-icon="PRODUCTIVITY" />
 	<category name="PDA" builtin-icon="PRODUCTIVITY" />
 	<category name="ProjectManagement" replace="プロジェクト管理" builtin-icon="PRODUCTIVITY" />
 	<category name="Presentation" replace="プレゼンテーション" builtin-icon="PRODUCTIVITY" />
-	<category name="Spreadsheet" replace="スプレッドシート" builtin-icon="PRODUCTIVITY" />
+	<category name="Spreadsheet" replace="表計算" builtin-icon="PRODUCTIVITY" />
 	<category name="WordProcessor" replace="ワープロ" builtin-icon="PRODUCTIVITY" />
 	<category name="Graphics" toplevel="true" replace="グラフィックス" builtin-icon="GRAPHICS">
 		<subcategory name="2DGraphics" replace="2D グラフィックス" />
 		<subcategory name="3DGraphics" replace="3D グラフィックス" />
 		<subcategory name="Scanning" replace="スキャン" />
 		<subcategory name="Photograph" replace="写真" />
-		<subcategory name="Viewer" replace="ビューア" />
+		<subcategory name="Viewer" replace="ビューアー" />
 	</category>
 	<category name="2DGraphics" replace="2D グラフィックス" builtin-icon="GRAPHICS">
 		<subcategory name="VectorGraphics" replace="ベクトルグラフィックス" />
@@ -115,27 +120,27 @@
 	<category name="VectorGraphics" replace="ベクトルグラフィックス" builtin-icon="GRAPHICS" />
 	<category name="RasterGraphics" replace="ラスターグラフィックス" builtin-icon="GRAPHICS" />
 	<category name="3DGraphics" replace="3D グラフィックス" builtin-icon="GRAPHICS" />
-	<category name="Scanning" builtin-icon="GRAPHICS">
+	<category name="Scanning" replace="スキャン" builtin-icon="GRAPHICS">
 		<subcategory name="OCR" />
 	</category>
 	<category name="OCR" builtin-icon="GRAPHICS" />
 	<category name="Photograph" replace="写真" builtin-icon="GRAPHICS" />
-	<category name="Viewer" replace="ビューア" builtin-icon="GRAPHICS" />
+	<category name="Viewer" replace="ビューアー" builtin-icon="GRAPHICS" />
 	<category name="Settings" toplevel="true" replace="設定" builtin-icon="SETTINGS">
 		<subcategory name="DesktopSettings" replace="デスクトップ設定" />
 		<subcategory name="HardwareSettings" replace="ハードウェア設定" />
 		<subcategory name="PackageSettings" replace="パッケージ設定" />
 		<subcategory name="Security" replace="セキュリティ" />
-		<subcategory name="Accessibility" />
-		<subcategory name="Screensaver" replace="スクリーンセーバ" />
+		<subcategory name="Accessibility" replace="障碍者支援" />
+		<subcategory name="Screensaver" replace="スクリーンセーバー" />
 	</category>
 	<category name="DesktopSettings" replace="デスクトップ設定" builtin-icon="SETTINGS" />
 	<category name="HardwareSettings" replace="ハードウェア設定" builtin-icon="SETTINGS" />
 	<category name="PackageSettings" replace="パッケージ設定" builtin-icon="SETTINGS" />
 	<category name="Network" toplevel="true" replace="ネットワーク" builtin-icon="NETWORK">
-		<subcategory name="Email" replace="電子メール" />
+		<subcategory name="Email" replace="メール" />
 		<subcategory name="Dialup" replace="ダイアルアップ" />
-		<subcategory name="InstantMessaging" replace="インスタント・メッセージ" />
+		<subcategory name="InstantMessaging" replace="インスタントメッセージ" />
 		<subcategory name="IRCClient" replace="IRC クライアント" />
 		<subcategory name="FileTransfer" replace="ファイル転送" />
 		<subcategory name="HamRadio" replace="ハムラジオ" />
@@ -143,16 +148,16 @@
 		<subcategory name="P2P" />
 		<subcategory name="RemoteAccess" replace="遠隔アクセス" />
 		<subcategory name="Telephony" replace="IP 電話" />
-		<subcategory name="WebBrowser" replace="ウェブ・ブラウザ" />
+		<subcategory name="WebBrowser" replace="ウェブブラウザー" />
 		<subcategory name="WebDevelopment" replace="ウェブ開発" />
 	</category>
 	<category name="Dialup" replace="ダイアルアップ" builtin-icon="NETWORK" />
-	<category name="InstantMessaging" replace="インスタント・メッセージ" builtin-icon="NETWORK" />
+	<category name="InstantMessaging" replace="インスタントメッセージ" builtin-icon="NETWORK" />
 	<category name="IRCClient" replace="IRC クライアント" builtin-icon="NETWORK" />
 	<category name="FileTransfer" replace="ファイル転送" builtin-icon="NETWORK" />
 	<category name="HamRadio" replace="ハムラジオ" builtin-icon="NETWORK" />
 	<category name="News" replace="ネットニュース" builtin-icon="NETWORK" />
-	<category name="P2P" replace="Peer-to-Peer" builtin-icon="NETWORK" />
+	<category name="P2P" builtin-icon="NETWORK" />
 	<category name="RemoteAccess" replace="遠隔アクセス" builtin-icon="NETWORK" />
 	<category name="Telephony" replace="IP 電話" builtin-icon="NETWORK" />
 	<category name="WebBrowser" replace="ウェブブラウズ" builtin-icon="NETWORK" />
@@ -162,17 +167,17 @@
 		<subcategory name="HamRadio" replace="ハムラジオ" />
 		<subcategory name="Audio" replace="オーディオ" />
 		<subcategory name="Video" replace="ビデオ" />
-		<subcategory name="AudioVideoEditing" />
+		<subcategory name="AudioVideoEditing" replace="オーディオ・ビデオ編集" />
 		<subcategory name="Player" replace="プレイヤー" />
 		<subcategory name="Recorder" replace="レコーダー" />
-		<subcategory name="DiscBurning" />
+		<subcategory name="DiscBurning" replace="ディスク焼き付け" />
 	</category>
 	<category name="Audio" replace="オーディオ" builtin-icon="MULTIMEDIA">
 		<subcategory name="Midi" replace="MIDI" />
 		<subcategory name="Mixer" replace="ミキサー" />
 		<subcategory name="Sequencer" replace="シーケンサー" />
 		<subcategory name="Tuner" replace="チューナー" />
-		<subcategory name="AudioVideoEditing" />
+		<subcategory name="AudioVideoEditing" replace="オーディオ・ビデオ編集" />
 		<subcategory name="Player" replace="プレイヤー" />
 		<subcategory name="Recorder" replace="レコーダー" />
 	</category>
@@ -182,16 +187,16 @@
 	<category name="Tuner" replace="チューナー" builtin-icon="MULTIMEDIA" />
 	<category name="Video" replace="ビデオ" builtin-icon="MULTIMEDIA">
 		<subcategory name="TV" replace="テレビ" />
-		<subcategory name="AudioVideoEditing" />
+		<subcategory name="AudioVideoEditing" replace="オーディオ・ビデオ編集" />
 		<subcategory name="Player" repace="プレイヤー" />
 		<subcategory name="Recorder" replace="レコーダー" />
 		<subcategory name="Music" replace="音楽" />
 	</category>
 	<category name="TV" replace="テレビ" builtin-icon="MULTIMEDIA" />
-	<category name="AudioVideoEditing" replace="Editing" builtin-icon="MULTIMEDIA" />
+	<category name="AudioVideoEditing" replace="オーディオ・ビデオ編集" builtin-icon="MULTIMEDIA" />
 	<category name="Player" replace="メディアプレイヤー" builtin-icon="MULTIMEDIA" />
 	<category name="Recorder" replace="録音・録画" builtin-icon="MULTIMEDIA" />
-	<category name="DiscBurning" replace="CD and DVD Burning" builtin-icon="MULTIMEDIA" />
+	<category name="DiscBurning" replace="CD や DVD の焼き付け" builtin-icon="MULTIMEDIA" />
 	<category name="Game" toplevel="true" replace="ゲーム" builtin-icon="GAME">
 		<subcategory name="ActionGame" replace="アクションゲーム" />
 		<subcategory name="AdventureGame" replace="アドベンチャーゲーム" />
@@ -248,37 +253,37 @@
 	<category name="Teaching" replace="教育学" />
 	<category name="Amusement" replace="ゲーム" builtin-icon="GAME" />
 	<category name="Applet" replace="アプレット" />
-	<category name="Archiving" />
+	<category name="Archiving" replace="アーカイブ作成" />
 	<category name="Electronics" replace="電子工学" />
 	<category name="Emulator" toplevel="true" replace="システム" builtin-icon="SYSTEM" />
 	<category name="Engineering" replace="工学" />
 	<category name="FileManager" replace="ファイル管理" />
 	<category name="Shell" replace="シェル" />
-	<category name="Screensaver" replace="スクリーンセーバ" />
-	<category name="TerminalEmulator" replace="ターミナル・エミュレータ" />
+	<category name="Screensaver" replace="スクリーンセーバー" />
+	<category name="TerminalEmulator" replace="ターミナル・エミュレーター" />
 	<category name="TrayIcon" replace="システムトレイアイコン" />
 	<category name="System" toplevel="true" replace="システム" builtin-icon="SYSTEM">
-		<subcategory name="FileSystem" replace="ファイル・システム" />
-		<subcategory name="Monitor" replace="モニタ" />
+		<subcategory name="FileSystem" replace="ファイルシステム" />
+		<subcategory name="Monitor" replace="モニター" />
 		<subcategory name="Security" replace="セキュリティ" />
-		<subcategory name="Accessibility" />
-		<subcategory name="TerminalEmulator" replace="ターミナル・エミュレータ" />
+		<subcategory name="Accessibility" replace="障碍者支援" />
+		<subcategory name="TerminalEmulator" replace="ターミナル・エミュレーター" />
 		<subcategory name="Shell" replace="シェル" />
 	</category>
-	<category name="Filesystem" replace="ファイル・システム" builtin-icon="SYSTEM" />
-	<category name="Monitor" replace="モニタ" builtin-icon="SYSTEM" />
+	<category name="Filesystem" replace="ファイルシステム" builtin-icon="SYSTEM" />
+	<category name="Monitor" replace="モニター" builtin-icon="SYSTEM" />
 	<category name="Security" replace="セキュリティ" builtin-icon="SYSTEM" />
 	<category name="Utility"  toplevel="true" replace="アクセサリー" builtin-icon="UTILITY">
-		<subcategory name="Accessibility" />
+		<subcategory name="Accessibility" replace="障碍者支援" />
 		<subcategory name="Calculator" replace="電卓" />
 		<subcategory name="Clock" replace="時計" />
-		<subcategory name="TextEditor" replace="テキストエディタ" />
+		<subcategory name="TextEditor" replace="テキストエディター" />
 		<subcategory name="Archiving" replace="アーカイブ作成" />
-		<subcategory name="TerminalEmulator" replace="ターミナル・エミュレータ" />
-		<subcategory name="FileManager" replace="ファイル・マネージャ" />
+		<subcategory name="TerminalEmulator" replace="ターミナル・エミュレーター" />
+		<subcategory name="FileManager" replace="ファイル・マネージャー" />
 		<subcategory name="Shell" replace="シェル" />
 	</category>
-	<category name="Accessibility" builtin-icon="UTILITY" />
+	<category name="Accessibility" replace="障碍者支援" builtin-icon="UTILITY" />
 	<category name="Calculator" replace="電卓" builtin-icon="UTILITY" />
 	<category name="Clock" replace="時計" builtin-icon="UTILITY" />
 	<category name="TextEditor" replace="テキスト編集" builtin-icon="UTILITY" />

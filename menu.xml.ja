@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xfdesktop-menu>
 
+<!-- $Id$ -->
+
 <!--
-    翻訳者:
+     翻訳者:
 
-        Daichi Kawahata <daichi@xfce.org>, 2005.
+         Daichi Kawahata <daichi@xfce.org>, 2005.
 
-    誤訳の指摘・改訳の提案等は:
+     誤訳の指摘・改訳の提案等は:
 
-        xfce-users-jp <xfce-users-jp@ml.fdiary.net>
-        Xfce translations mailing list <xfce-i18n@xfce.org> (英語のみ)
+         Daichi Kawahata <daichi@xfce.org> (現在の翻訳者)
+         xfce-users-jp <xfce-users-jp@ml.fdiary.net>
+         Xfce translations mailing list <xfce-i18n@xfce.org> (英語のみ)
+
+     にお願いします。
 -->
 
 <!--
@@ -37,18 +42,18 @@
     属性 'icon' を付ける事で、アイテムの隣にアイコンを表示する事ができます。
     'name' と 'cmd' のみが必須です。
 
-  + セパレータ:
+  + セパレーター:
 
     <separator visible="true" />
 
-    水平セパレータを作成します。'visible' 属性は任意です。
+    水平セパレーターを作成します。'visible' 属性は任意です。
 
   + サブメニュー:
 
     <menu name="メニューでの名前" icon="アイコンファイル" cisible="true"></menu>
 
     'name' のみが必須ですが、属性 'icon' を付ける事で表示されるアイコンを
-    設定できます。menu タグの間では、一つ以上のアプリケーション、セパレータ
+    設定できます。menu タグの間では、一つ以上のアプリケーション、セパレーター
     及びメニューを指定する事ができます。
 
   + タイトル:
@@ -62,8 +67,9 @@
 
     <include type="file" src="menu2.xml" visible="true" />
 
-    ファイル menu2.xml を組込みます。相対パスのルートは ~/.config/xfce4/desktop/ と
-    見なされます。絶対パスも、ルートが ~/.config/xfce4/desktop/ になってしまいます。
+    ファイル menu2.xml を組込みます。相対パスのルートは ~/.config/xfce4/desktop/
+    と見なされます。絶対パスも、ルートが ~/.config/xfce4/desktop/ になって
+    しまいます。
 
   + 自動生成されたシステムメニューを組み込む:
 
@@ -97,15 +103,15 @@
 	<separator/>
 
 	<!--
-          次の行で現在の位置に自動生成されたメニューを組み込みます。望むなら、
-          これを各々のサブメニューに置く事ができます。
+      次の行で現在の位置に自動生成されたメニューを組み込みます。
+      望むなら、これを各々のサブメニューに置く事ができます。
 	-->
 	<include type="system" style="simple" unique="true"/>
 
 	<!--
-          自動生成されたメニューを使用する代わりに別に分けたメニューファイルを
-          組み込みたいなら、以下の行のコメントを外して (上の行をコメントして)
-          下さい。
+      自動生成されたメニューを使用する代わりに、別に分けたメニュー
+      ファイルを組み込みたいなら、以下の行のコメントを外して (上の
+      行をコメントして) 下さい。
 	-->
 	<!-- <include type="file" src="menu2.xml"/> -->
 
@@ -114,9 +120,10 @@
     <app name="ヘルプ" cmd="xfhelp4" icon="gnome-help"/>
     <app name="Xfce について" cmd="xfce4-about" icon="gnome-info"/>
     <!--
-      ログアウト・ダイアログボックスを最初に表示した後で xfce4-session を
-      終了させます。xfce4-session が動作していないなら、xfdesktop を終了させます。
+      ログアウト・ダイアログボックスを最初に表示した後で xfce4-session
+      を終了させます。xfce4-session が動作していないなら、xfdesktop を
+      終了させます。
     -->
-    <builtin name="終了" cmd="quit" icon="gnome-logout"/>
+    <builtin name="ログアウト" cmd="quit" icon="gnome-logout"/>
 
 </xfdesktop-menu>
