@@ -179,7 +179,7 @@ desktop_menu_cache_init(GtkWidget *root_menu)
 
 gchar *
 desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
-		GHashTable **menufile_mtimes, GHashTable **dentrydir_mtimes,
+		GHashTable *menufile_mtimes, GHashTable *dentrydir_mtimes,
 		gboolean *using_system_menu)
 {
 	gchar *cache_file = NULL, buf[128], filebuf[PATH_MAX];
@@ -210,9 +210,6 @@ desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
 		
 		*using_system_menu = xfce_rc_read_bool_entry(rcfile, "using_system_menu", FALSE);
 	}
-	
-	*menufile_mtimes = g_hash_table_new_full(g_str_hash, g_str_equal,
-				(GDestroyNotify)g_free, NULL);
 	if(xfce_rc_has_group(rcfile, "files")) {
 		xfce_rc_set_group(rcfile, "files");
 		
@@ -229,20 +226,18 @@ desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
 			if(!stat(location, &st)) {
 				if(st.st_mtime > mtime) {
 					xfce_rc_close(rcfile);
-					g_hash_table_destroy(*menufile_mtimes);
-					*menufile_mtimes = NULL;
+					g_hash_table_foreach_remove(menufile_mtimes,
+							(GHRFunc)gtk_true, NULL);
 					TRACE("exiting - failed");
 					return NULL;
 				} else {
-					g_hash_table_insert(*menufile_mtimes, g_strdup(location),
+					g_hash_table_insert(menufile_mtimes, g_strdup(location),
 							GINT_TO_POINTER(st.st_mtime));
 				}
 			}
 		}
 	}
 	
-	*dentrydir_mtimes = g_hash_table_new_full(g_str_hash, g_str_equal,
-				(GDestroyNotify)g_free, NULL);
 	if(xfce_rc_has_group(rcfile, "directories")) {
 		const gchar *env_XDG_DATA_DIRS = g_getenv("XDG_DATA_DIRS");
 		
@@ -255,10 +250,8 @@ desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
 		       && g_ascii_strcasecmp(env_XDG_DATA_DIRS, location)))
 		{
 			xfce_rc_close(rcfile);
-			g_hash_table_destroy(*dentrydir_mtimes);
-			*dentrydir_mtimes = NULL;
-			g_hash_table_destroy(*menufile_mtimes);
-			*menufile_mtimes = NULL;
+			g_hash_table_foreach_remove(menufile_mtimes,
+							(GHRFunc)gtk_true, NULL);
 			TRACE("exiting - failed");
 			return NULL;
 		}
@@ -276,14 +269,14 @@ desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
 			if(!stat(location, &st)) {
 				if(st.st_mtime > mtime) {
 					xfce_rc_close(rcfile);
-					g_hash_table_destroy(*dentrydir_mtimes);
-					*dentrydir_mtimes = NULL;
-					g_hash_table_destroy(*menufile_mtimes);
-					*menufile_mtimes = NULL;
+					g_hash_table_foreach_remove(menufile_mtimes,
+							(GHRFunc)gtk_true, NULL);
+					g_hash_table_foreach_remove(dentrydir_mtimes,
+							(GHRFunc)gtk_true, NULL);
 					TRACE("exiting - failed");
 					return NULL;
 				} else {
-					g_hash_table_insert(*dentrydir_mtimes, g_strdup(location),
+					g_hash_table_insert(dentrydir_mtimes, g_strdup(location),
 							GINT_TO_POINTER(st.st_mtime));
 				}
 			}

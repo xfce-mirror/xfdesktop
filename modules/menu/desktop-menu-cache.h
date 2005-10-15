@@ -39,7 +39,7 @@ typedef enum {
 void desktop_menu_cache_init(GtkWidget *root_menu);
 /* returns menu cache file if valid */
 gchar *desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
-		GHashTable **menufile_mtimes, GHashTable **dentrydir_mtimes,
+		GHashTable *menufile_mtimes, GHashTable *dentrydir_mtimes,
 		gboolean *using_system_menu);
 void desktop_menu_cache_add_entry(DesktopMenuCacheType type, const gchar *name,
 		const gchar *cmd, const gchar *icon, gboolean needs_term,

@@ -102,6 +102,8 @@ _generate_menu(XfceDesktopMenu *desktop_menu, gboolean force)
 	desktop_menu->menufile_mtimes = g_hash_table_new_full(g_str_hash,
 			g_str_equal, (GDestroyNotify)g_free, NULL);
 	desktop_menu->using_system_menu = FALSE;
+	desktop_menu->dentrydir_mtimes = g_hash_table_new_full(g_str_hash,
+			g_str_equal, (GDestroyNotify)g_free, NULL);
 	
 	kiosk = xfce_kiosk_new("xfdesktop");
 	user_menu = xfce_kiosk_query(kiosk, "UserMenu");
@@ -111,7 +113,7 @@ _generate_menu(XfceDesktopMenu *desktop_menu, gboolean force)
 		/* don't use the menu cache if we're in kiosk mode, as the user could
 		 * potentially modify the cache file directly */
 		menu_cache_file = desktop_menu_cache_is_valid(desktop_menu->cache_file_suffix,
-				&desktop_menu->menufile_mtimes, &desktop_menu->dentrydir_mtimes,
+				desktop_menu->menufile_mtimes, desktop_menu->dentrydir_mtimes,
 				&desktop_menu->using_system_menu);
 	}
 	if(menu_cache_file) {

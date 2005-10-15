@@ -611,11 +611,6 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
 			g_hash_table_insert(blacklist, blacklist_arr[i], GINT_TO_POINTER(1));
 	}
 	
-	if(desktop_menu->dentrydir_mtimes)
-		g_hash_table_destroy(desktop_menu->dentrydir_mtimes);
-	desktop_menu->dentrydir_mtimes = g_hash_table_new_full(g_str_hash,
-			g_str_equal, (GDestroyNotify)g_free, NULL);
-	
 	/* lookup applications/ directories */
 	homepath = xfce_get_homefile(".local", "share", NULL);
 	if(kdedir) {
