@@ -147,7 +147,7 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
 	gint i, j, nscreens, nmonitors;
 	gchar setting_name[128];
 
-	rcfile = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, RCFILE, FALSE);
+	rcfile = xfce_resource_lookup(XFCE_RESOURCE_CONFIG, RCFILE);
     mcs_manager_add_channel_from_file (mcs_plugin->manager, BACKDROP_CHANNEL,
 				       rcfile);
     g_free (rcfile);
