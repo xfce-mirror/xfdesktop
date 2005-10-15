@@ -82,38 +82,53 @@
 
 <xfdesktop-menu>
 
-	<title name="デスクトップメニュー" icon="xfce4-backdrop"/>
+    <title name="デスクトップメニュー" icon="xfce4-backdrop"/>
 
-	<separator/>
+    <separator/>
 
-	<app name="プログラムを実行..." cmd="xfrun4" icon="gnome-fs-executable"/>
+    <app name="プログラムを実行..." cmd="xfrun4" icon="gnome-fs-executable"/>
 
-	<separator/>
+    <separator/>
 
-	<app name="ターミナル" cmd="xfterm4" icon="gnome-terminal"/>
-	<app name="ファイルマネージャー (xffm)" cmd="xffm" icon="file-manager"/>
-	<app name="ウェブブラウザー" cmd="mozilla" icon="gnome-globe"/>
+    <!--
+      訳者注: これは環境変数 TERMCMD で定義されているターミナルを
+      実行するラッパースクリプトです。これが定義されていない場合は、
 
-	<separator/>
+        Terminal xterminal xterm aterm rxvt
 
-	<menu name="設定" icon="gnome-settings">
-		<app name="設定マネージャー" cmd="xfce-setting-show" icon="gnome-settings"/>
-	</menu>
+      の順で見つかったものを実行します。
+    -->
+    <app name="ターミナル" cmd="xfterm4" icon="gnome-terminal"/>
+    <!--
+      訳者注: メニューで余白を確保するためにスペースを入れています。
+      また、冗長だと思われる '(xffm)' を削除しました。
+    -->
+    <app name="ファイルマネージャー " cmd="xffm" icon="file-manager"/>
+    <!--
+      訳者注: 元のファイルでは mozilla になっています。
+     -->
+    <app name="ウェブブラウザー" cmd="firefox" icon="gnome-globe"/>
 
-	<separator/>
+    <separator/>
 
-	<!--
+    <menu name="設定" icon="gnome-settings">
+        <app name="設定マネージャー" cmd="xfce-setting-show" icon="gnome-settings"/>
+    </menu>
+
+    <separator/>
+
+    <!--
       次の行で現在の位置に自動生成されたメニューを組み込みます。
       望むなら、これを各々のサブメニューに置く事ができます。
-	-->
-	<include type="system" style="simple" unique="true"/>
+    -->
+    <include type="system" style="simple" unique="true"/>
 
-	<!--
+    <!--
       自動生成されたメニューを使用する代わりに、別に分けたメニュー
       ファイルを組み込みたいなら、以下の行のコメントを外して (上の
       行をコメントして) 下さい。
-	-->
-	<!-- <include type="file" src="menu2.xml"/> -->
+    -->
+    <!-- <include type="file" src="menu2.xml"/> -->
 
     <separator/>
 
