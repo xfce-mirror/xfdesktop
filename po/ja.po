@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-13 22:43+0900\n"
-"PO-Revision-Date: 2005-10-11 03:06+0900\n"
+"POT-Creation-Date: 2005-10-15 21:34+0900\n"
+"PO-Revision-Date: 2005-10-15 11:05+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -98,13 +98,13 @@ msgstr "コマンドは存在しません！"
 
 #: ../menueditor/add_dialog.c:278 ../menueditor/edit_dialog.c:248
 msgid "All fields must be filled to add an item."
-msgstr "アイテムを追加するには全ての項目に記入して下さい。"
+msgstr "アイテムを追加するには全ての箇所に記入して下さい。"
 
 #: ../menueditor/add_dialog.c:287 ../menueditor/edit_dialog.c:257
 msgid "The 'Name' field is required."
-msgstr "'名前' の項目は必須です。"
+msgstr "'名前' の箇所は必須です。"
 
-#: ../menueditor/add_dialog.c:331
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:308
 msgid "--- separator ---"
 msgstr "--- セパレーター ---"
 
@@ -149,13 +149,14 @@ msgstr "ユニークな項目のみ(_U)"
 
 #: ../menueditor/add_menu_dialog.c:198
 msgid "The 'Source' field is required."
-msgstr "'ソース' 項目は必須です。"
+msgstr "'ソース' の箇所は必須です。"
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
+#: ../menueditor/utils.c:362
 msgid "--- include ---"
-msgstr "--- 組込み ---"
+msgstr "--- 組み込み ---"
 
-#: ../menueditor/add_menu_dialog.c:213
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:379
 msgid "system"
 msgstr "システム"
 
@@ -166,7 +167,7 @@ msgstr "メニュー項目を編集"
 
 #: ../menueditor/edit_dialog.c:128
 msgid "Separators cannot be edited"
-msgstr "セパレータは編集できません"
+msgstr "セパレーターは編集できません"
 
 #: ../menueditor/menueditor.c:81
 #, c-format
@@ -193,7 +194,7 @@ msgstr "現在のメニューを閉じても構いませんか？"
 msgid "Do you want to save before closing the file?"
 msgstr "ファイルを閉じる前に保存しますか？"
 
-#: ../menueditor/menueditor.c:338
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:577
 msgid "Select command"
 msgstr "コマンドを選択して下さい"
 
@@ -225,11 +226,11 @@ msgstr "名前を付けて保存..."
 
 #: ../menueditor/menueditor.c:649
 msgid "Do you want to move the item into the parent menu?"
-msgstr "項目をパネルメニューに移動しますか？"
+msgstr "このアイテムを親メニューに移動しますか？"
 
 #: ../menueditor/menueditor.c:695
 msgid "Do you want to move the item into the submenu?"
-msgstr "項目をサブメニューに移動しますか？"
+msgstr "このアイテムをサブメニューに移動しますか？"
 
 #: ../menueditor/menueditor.c:836
 msgid "Edit"
@@ -280,19 +281,19 @@ msgstr "現在のメニューを閉じる"
 
 #: ../menueditor/menueditor.c:938
 msgid "Add an entry to the menu"
-msgstr "メニューに項目を追加"
+msgstr "メニューにアイテムを追加"
 
 #: ../menueditor/menueditor.c:942
 msgid "Delete the current entry"
-msgstr "現在の項目を削除"
+msgstr "現在のアイテムを削除"
 
 #: ../menueditor/menueditor.c:948
 msgid "Move the current entry up"
-msgstr "現在の項目を上に移動"
+msgstr "現在のアイテムを上に移動"
 
 #: ../menueditor/menueditor.c:953
 msgid "Move the current entry down"
-msgstr "現在の項目を下に移動"
+msgstr "現在のアイテムを下に移動"
 
 #: ../menueditor/menueditor.c:959
 msgid "Collapse the tree"
@@ -314,10 +315,69 @@ msgstr "コマンド"
 msgid "Hidden"
 msgstr "隠す"
 
+# MERGEBLE:
+#: ../menueditor/utils.c:639
+msgid "Select icon"
+msgstr "アイコンを選択して下さい"
+
+#: ../menueditor/utils.c:645 ../panel-plugin/desktop-menu-plugin.c:503
+#: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
+#: ../settings/backdrop_settings.c:524
+msgid "All Files"
+msgstr "全てのファイル"
+
+#: ../menueditor/utils.c:649 ../panel-plugin/desktop-menu-plugin.c:509
+#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
+msgid "Image Files"
+msgstr "画像ファイル"
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:1
+msgid "Graphical tool for editing the Xfce 4 menu"
+msgstr "Xfce 4 メニューを編集するグラフィカルツールです"
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:2
+msgid "Menu Editor"
+msgstr "メニューエディター"
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:3
+msgid "Xfce 4 Menu Editor"
+msgstr "Xfce 4 メニューエディター"
+
+#: ../modules/menu/desktop-menu-file.c:116
+#: ../modules/menu/desktop-menu-file.c:131
+#: ../panel-plugin/desktop-menu-plugin.c:665
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
+msgid "Xfce Menu"
+msgstr "Xfce メニュー"
+
+#: ../modules/menu/desktop-menu-file.c:118
+#: ../modules/menu/desktop-menu-file.c:133
+msgid "Unable to quit session."
+msgstr "セッションを終了できません。"
+
+#: ../modules/menu/desktop-menu-file.c:119
+msgid ""
+"Quitting the session requires that Xfce's session manager (xfce4-session) is "
+"running, but it was not detected.  Please quit Xfce via another means."
+msgstr ""
+"セッションを終了するには Xfce のセッションマネージャー (xfce4-session) が動作"
+"している必要がありますが、これを検出できませんでした。別の方法で Xfce を終了"
+"して下さい。"
+
+#: ../modules/menu/desktop-menu-file.c:129
+#, c-format
+msgid ""
+"Quitting the session requires the 'xfce4-session-logout' command, but it "
+"could not be found: %s"
+msgstr ""
+"セッションを終了するにはコマンド 'xfce4-session-logout' が必要ですが、見つけ"
+"られませんでした: %s"
+
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
 msgstr "/その他"
 
+# MERGEBLE:
 #: ../panel-plugin/desktop-menu-plugin.c:486
 msgid "Select Icon"
 msgstr "アイコンを選択して下さい"
@@ -325,16 +385,6 @@ msgstr "アイコンを選択して下さい"
 #: ../panel-plugin/desktop-menu-plugin.c:488
 msgid "Select Menu File"
 msgstr "メニューファイルを選択して下さい"
-
-#: ../panel-plugin/desktop-menu-plugin.c:503 ../settings/backdrop-mgr.c:436
-#: ../settings/backdrop-mgr.c:537 ../settings/backdrop_settings.c:524
-msgid "All Files"
-msgstr "全てのファイル"
-
-#: ../panel-plugin/desktop-menu-plugin.c:509 ../settings/backdrop-mgr.c:440
-#: ../settings/backdrop_settings.c:528
-msgid "Image Files"
-msgstr "画像ファイル"
 
 #: ../panel-plugin/desktop-menu-plugin.c:517
 msgid "Menu Files"
@@ -348,11 +398,6 @@ msgstr "xfce4-menueditor を実行できません: %s"
 #: ../panel-plugin/desktop-menu-plugin.c:657
 msgid "Edit Properties"
 msgstr "プロパティ編集"
-
-#: ../panel-plugin/desktop-menu-plugin.c:665
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Xfce メニュー"
 
 #: ../panel-plugin/desktop-menu-plugin.c:675
 msgid "Button"
@@ -394,6 +439,11 @@ msgstr "ボタンアイコン(_B):"
 #: ../panel-plugin/desktop-menu-plugin.c:826
 msgid "Show _icons in menu"
 msgstr "メニューでアイコンを表示(_I):"
+
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+msgid "Shows a menu containing categories of installed applications"
+msgstr ""
+"インストールしているアプリケーションのカテゴリーを含むメニューを表示します"
 
 #: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:522
 #, c-format
@@ -651,6 +701,14 @@ msgstr "ウィンドウアイコン"
 msgid "Show minimized window _icons on the desktop"
 msgstr "デスクトップ上に最小化したウィンドウアイコンを表示する(_I)"
 
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Settings for the Xfce 4 Desktop Manager"
+msgstr "Xfce 4 デスクトップマネージャーの設定"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:3
+msgid "Xfce 4 Desktop Settings"
+msgstr "Xfce 4 デスクトップ設定"
+
 #: ../src/main.c:251
 #, c-format
 msgid "%s: Unknown option: %s\n"
@@ -700,28 +758,3 @@ msgstr "ワークスペース %d を削除する(_R)"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース '%s' を削除する(_R)"
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:1
-msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Xfce 4 メニューを編集するグラフィカルツールです"
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:2
-msgid "Menu Editor"
-msgstr "メニューエディター"
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:3
-msgid "Xfce 4 Menu Editor"
-msgstr "Xfce 4 メニューエディター"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr "Xfce 4 デスクトップマネージャーの設定"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:3
-msgid "Xfce 4 Desktop Settings"
-msgstr "Xfce 4 デスクトップ設定"
-
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
-msgid "Shows a menu containing categories of installed applications"
-msgstr ""
-"インストールしているアプリケーションのカテゴリーを含むメニューを表示します"
