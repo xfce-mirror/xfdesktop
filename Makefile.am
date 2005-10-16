@@ -48,6 +48,7 @@ conf_DATA = 								\
 	menu.xml.ja							\
 	menu.xml.ko							\
 	menu.xml.nl  							\
+	menu.xml.pl							\
 	menu.xml.pt_BR							\
 	menu.xml.ro							\
 	menu.xml.ru							\
@@ -63,7 +64,6 @@ conf_DATA = 								\
 #	menu.xml.az 							
 #	menu.xml.eu							
 #	menu.xml.fa_IR 							
-#	menu.xml.hu 							
 #	menu.xml.ms  							
 #	menu.xml.ta 							
 #	menu.xml.tr 							
