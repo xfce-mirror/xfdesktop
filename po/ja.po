@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-08 06:14+0900\n"
-"PO-Revision-Date: 2005-10-06 15:10+0900\n"
+"POT-Creation-Date: 2005-10-09 15:53+0900\n"
+"PO-Revision-Date: 2005-10-15 11:11+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
-msgstr "Xfce4 メニューエディタ"
+msgstr "Xfce4 メニューエディター"
 
 #. Credits
 #: menueditor/about_dialog.c:43
@@ -56,7 +56,7 @@ msgstr "サブメニュー"
 
 #: menueditor/add_dialog.c:169
 msgid "Separator"
-msgstr "セパレータ"
+msgstr "セパレーター"
 
 #: menueditor/add_dialog.c:174
 msgid "Title"
@@ -98,16 +98,16 @@ msgstr "コマンドは存在しません！"
 
 #: menueditor/add_dialog.c:291
 msgid "All fields must be filled to add an item."
-msgstr "アイテムを追加するには全ての項目に記入して下さい。"
+msgstr "アイテムを追加するには全ての箇所に記入して下さい。"
 
 #: menueditor/add_dialog.c:300
 msgid "The 'Name' field is required."
-msgstr "'名前' の項目は必須です。"
+msgstr "'名前' の箇所は必須です。"
 
 #: menueditor/add_dialog.c:356 menueditor/dnd.c:153
 #: menueditor/menueditor.c:579 menueditor/move.c:87 menueditor/move.c:225
 msgid "--- separator ---"
-msgstr "--- セパレータ ---"
+msgstr "--- セパレーター ---"
 
 #: menueditor/add_dialog.c:381 menueditor/edit_dialog.c:505
 msgid "quit"
@@ -150,14 +150,14 @@ msgstr "ユニークな項目のみ(_U)"
 
 #: menueditor/add_menu_dialog.c:208
 msgid "The 'Source' field is required."
-msgstr "'ソース' 項目は必須です。"
+msgstr "'ソース' の箇所は必須です。"
 
 #: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:234
 #: menueditor/dnd.c:156 menueditor/edit_dialog.c:521
 #: menueditor/edit_dialog.c:534 menueditor/menueditor.c:618
 #: menueditor/move.c:111 menueditor/move.c:249
 msgid "--- include ---"
-msgstr "--- 組込み ---"
+msgstr "--- 組み込み ---"
 
 #: menueditor/add_menu_dialog.c:235 menueditor/dnd.c:161
 #: menueditor/edit_dialog.c:535 menueditor/menueditor.c:621
@@ -172,7 +172,7 @@ msgstr "メニュー項目の編集"
 
 #: menueditor/edit_dialog.c:131
 msgid "Separators cannot be edited"
-msgstr "セパレータは編集できません"
+msgstr "セパレーターは編集できません"
 
 #. Name
 #: menueditor/edit_dialog.c:403 menueditor/new_dialog.c:100
@@ -217,7 +217,7 @@ msgstr "質問"
 
 #: menueditor/menueditor.c:692
 msgid "Do you want to save before opening the default menu ?"
-msgstr "デフォルトメニューを開く前に保存しますか？"
+msgstr "標準のメニューを開く前に保存しますか？"
 
 #: menueditor/menueditor.c:694 menueditor/menueditor.c:753
 #: menueditor/menueditor.c:905
@@ -256,7 +256,7 @@ msgstr "ファイル(_F)"
 
 #: menueditor/menueditor.c:1234
 msgid "Open default menu"
-msgstr "既定のメニューを開く"
+msgstr "標準のメニューを開く"
 
 #. Edit menu
 #: menueditor/menueditor.c:1248
@@ -377,7 +377,7 @@ msgstr "ファイル名:"
 
 #: menueditor/new_dialog.c:141
 msgid "All fields are required."
-msgstr "全ての項目が必須です。"
+msgstr "全ての箇所が必須です。"
 
 #: modules/menu/desktop-menuspec.c:62
 msgid "/Other"
@@ -415,11 +415,11 @@ msgstr "メニューファイル"
 
 #: panel-plugin/desktop-menu-plugin.c:688
 msgid "Use default _desktop menu file"
-msgstr "既定のデスクトップメニューを使用(_D)"
+msgstr "標準のデスクトップメニューを使用(_D)"
 
 #: panel-plugin/desktop-menu-plugin.c:697
 msgid "Use _custom menu file:"
-msgstr "カスタム・メニューファイルを使用(_C):"
+msgstr "指定メニューファイルを使用(_C):"
 
 #: panel-plugin/desktop-menu-plugin.c:749
 #: panel-plugin/desktop-menu-plugin.c:751
@@ -550,11 +550,11 @@ msgstr "背景(_B)"
 #. color settings frame
 #: settings/backdrop_settings.c:906
 msgid "Color"
-msgstr "カラー"
+msgstr "色"
 
 #: settings/backdrop_settings.c:920
 msgid "_Color Style:"
-msgstr "色スタイル(_C):"
+msgstr "色のスタイル(_C):"
 
 #: settings/backdrop_settings.c:929
 msgid "Solid Color"
