@@ -26,6 +26,7 @@
 #define _XFDESKTOP_COMMON_H_
 
 #include <glib.h>
+#include <gdk/gdk.h>
 
 #include <X11/Xlib.h>
 
@@ -63,6 +64,7 @@ gboolean xfdesktop_check_image_file(const gchar *filename);
 
 void xfdesktop_send_client_message(Window xid, const gchar *msg);
 gboolean xfdesktop_check_is_running(Window *xid);
+gboolean xfdesktop_popup_grab_available(GdkWindow *win, guint32 timestamp);
 
 G_END_DECLS
 

@@ -172,3 +172,52 @@ xfdesktop_check_is_running(Window *xid)
 
 	return FALSE;
 }
+
+/* Code taken from xfwm4/src/menu.c:grab_available().  This should fix the case
+ * where binding 'xfdesktop -menu' to a keyboard shortcut sometimes works and
+ * sometimes doesn't.  Credit for this one goes to Olivier.
+ */
+gboolean
+xfdesktop_popup_grab_available (GdkWindow *win, guint32 timestamp)
+{
+    GdkEventMask mask =
+        GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
+        GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK |
+        GDK_POINTER_MOTION_MASK;
+    GdkGrabStatus g1;
+    GdkGrabStatus g2;
+    gboolean grab_failed = FALSE;
+    gint i = 0;
+
+    TRACE ("entering grab_available");
+
+    g1 = gdk_pointer_grab (win, TRUE, mask, NULL, NULL, timestamp);
+    g2 = gdk_keyboard_grab (win, TRUE, timestamp);
+
+    while ((i++ < 100) && (grab_failed = ((g1 != GDK_GRAB_SUCCESS)
+                || (g2 != GDK_GRAB_SUCCESS))))
+    {
+        TRACE ("grab not available yet, waiting... (%i)", i);
+        g_usleep (100);
+        if (g1 != GDK_GRAB_SUCCESS)
+        {
+            g1 = gdk_pointer_grab (win, TRUE, mask, NULL, NULL, timestamp);
+        }
+        if (g2 != GDK_GRAB_SUCCESS)
+        {
+            g2 = gdk_keyboard_grab (win, TRUE, timestamp);
+        }
+    }
+
+    if (g1 == GDK_GRAB_SUCCESS)
+    {
+        gdk_pointer_ungrab (timestamp);
+    }
+    if (g2 == GDK_GRAB_SUCCESS)
+    {
+        gdk_keyboard_ungrab (timestamp);
+    }
+
+    return (!grab_failed);
+}
+
