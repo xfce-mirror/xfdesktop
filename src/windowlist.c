@@ -310,16 +310,23 @@ windowlist_deactivate_idled(gpointer user_data)
 void
 popup_windowlist(GdkScreen *gscreen, gint button, guint32 time)
 {
-    GtkWidget *windowlist;
+    GdkWindow *root;
     
     if(!show_windowlist)
         return;
     
-    windowlist = windowlist_create(gscreen);
-    gtk_menu_set_screen(GTK_MENU(windowlist), gscreen);
-    g_signal_connect_swapped(G_OBJECT(windowlist), "deactivate",
-            G_CALLBACK(g_idle_add), (gpointer)windowlist_deactivate_idled);
-    gtk_menu_popup(GTK_MENU(windowlist), NULL, NULL, NULL, NULL, button, time);
+    root = gdk_screen_get_root_window(gscreen);
+    if (xfdesktop_popup_grab_available(root, time)) {
+        GtkWidget *windowlist;
+
+        windowlist = windowlist_create(gscreen);
+        gtk_menu_set_screen(GTK_MENU(windowlist), gscreen);
+        g_signal_connect_swapped(G_OBJECT(windowlist), "deactivate",
+                G_CALLBACK(g_idle_add), (gpointer)windowlist_deactivate_idled);
+        gtk_menu_popup(GTK_MENU(windowlist), NULL, NULL, NULL, NULL, button, time);
+    }
+    else
+        g_critical("Unable to get keyboard/mouse grab. Unable to popup windowlist");
 }
 
 void
