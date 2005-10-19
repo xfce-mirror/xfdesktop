@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-11 02:51+0900\n"
+"POT-Creation-Date: 2005-10-19 01:39+0900\n"
 "PO-Revision-Date: 2005-10-09 22:19+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
@@ -102,7 +102,7 @@ msgstr "모든 항목을 입력해야 합니다."
 msgid "The 'Name' field is required."
 msgstr "'이름'을 입력하세요."
 
-#: ../menueditor/add_dialog.c:331
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:308
 msgid "--- separator ---"
 msgstr "--- 분리 표시 ---"
 
@@ -150,10 +150,11 @@ msgid "The 'Source' field is required."
 msgstr "'위치'를 설정해 주어야 합니다."
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
+#: ../menueditor/utils.c:362
 msgid "--- include ---"
 msgstr "--- 외부 메뉴 ---"
 
-#: ../menueditor/add_menu_dialog.c:213
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:379
 msgid "system"
 msgstr "시스템"
 
@@ -191,7 +192,7 @@ msgstr "현재 메뉴를 닫으시렵니까?"
 msgid "Do you want to save before closing the file?"
 msgstr "화일을 닫기 전에 저장하시렵니까?"
 
-#: ../menueditor/menueditor.c:338
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:577
 msgid "Select command"
 msgstr "명령 선택"
 
@@ -312,6 +313,48 @@ msgstr "명령"
 msgid "Hidden"
 msgstr "숨김"
 
+#: ../menueditor/utils.c:639
+#, fuzzy
+msgid "Select icon"
+msgstr "아이콘 선택"
+
+#: ../menueditor/utils.c:645 ../panel-plugin/desktop-menu-plugin.c:503
+#: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
+#: ../settings/backdrop_settings.c:524
+msgid "All Files"
+msgstr "모든 화일"
+
+#: ../menueditor/utils.c:649 ../panel-plugin/desktop-menu-plugin.c:509
+#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
+msgid "Image Files"
+msgstr "그림 화일"
+
+#: ../modules/menu/desktop-menu-file.c:116
+#: ../modules/menu/desktop-menu-file.c:131
+#: ../panel-plugin/desktop-menu-plugin.c:665
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
+msgid "Xfce Menu"
+msgstr "Xfce 메뉴"
+
+#: ../modules/menu/desktop-menu-file.c:118
+#: ../modules/menu/desktop-menu-file.c:133
+#, fuzzy
+msgid "Unable to quit session."
+msgstr "xfdesktop을 기동시키지 못 했습니다."
+
+#: ../modules/menu/desktop-menu-file.c:119
+msgid ""
+"Quitting the session requires that Xfce's session manager (xfce4-session) is "
+"running, but it was not detected.  Please quit Xfce via another means."
+msgstr ""
+
+#: ../modules/menu/desktop-menu-file.c:129
+#, c-format
+msgid ""
+"Quitting the session requires the 'xfce4-session-logout' command, but it "
+"could not be found: %s"
+msgstr ""
+
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
 msgstr "기타"
@@ -323,16 +366,6 @@ msgstr "아이콘 선택"
 #: ../panel-plugin/desktop-menu-plugin.c:488
 msgid "Select Menu File"
 msgstr "메뉴 화일 선택"
-
-#: ../panel-plugin/desktop-menu-plugin.c:503 ../settings/backdrop-mgr.c:436
-#: ../settings/backdrop-mgr.c:537 ../settings/backdrop_settings.c:524
-msgid "All Files"
-msgstr "모든 화일"
-
-#: ../panel-plugin/desktop-menu-plugin.c:509 ../settings/backdrop-mgr.c:440
-#: ../settings/backdrop_settings.c:528
-msgid "Image Files"
-msgstr "그림 화일"
 
 #: ../panel-plugin/desktop-menu-plugin.c:517
 msgid "Menu Files"
@@ -347,11 +380,6 @@ msgstr "Xfce4 메뉴 편집기 기동 실패: %s"
 #, fuzzy
 msgid "Edit Properties"
 msgstr "배경화면 목록을 수정합니다."
-
-#: ../panel-plugin/desktop-menu-plugin.c:665
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Xfce 메뉴"
 
 #: ../panel-plugin/desktop-menu-plugin.c:675
 msgid "Button"

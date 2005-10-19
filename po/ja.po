@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-15 21:34+0900\n"
+"POT-Creation-Date: 2005-10-19 01:39+0900\n"
 "PO-Revision-Date: 2005-10-15 11:05+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -331,18 +331,6 @@ msgstr "全てのファイル"
 msgid "Image Files"
 msgstr "画像ファイル"
 
-#: ../menueditor/xfce-menueditor.desktop.in.h:1
-msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Xfce 4 メニューを編集するグラフィカルツールです"
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:2
-msgid "Menu Editor"
-msgstr "メニューエディター"
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:3
-msgid "Xfce 4 Menu Editor"
-msgstr "Xfce 4 メニューエディター"
-
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
 #: ../panel-plugin/desktop-menu-plugin.c:665
@@ -439,11 +427,6 @@ msgstr "ボタンアイコン(_B):"
 #: ../panel-plugin/desktop-menu-plugin.c:826
 msgid "Show _icons in menu"
 msgstr "メニューでアイコンを表示(_I):"
-
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
-msgid "Shows a menu containing categories of installed applications"
-msgstr ""
-"インストールしているアプリケーションのカテゴリーを含むメニューを表示します"
 
 #: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:522
 #, c-format
@@ -701,14 +684,6 @@ msgstr "ウィンドウアイコン"
 msgid "Show minimized window _icons on the desktop"
 msgstr "デスクトップ上に最小化したウィンドウアイコンを表示する(_I)"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr "Xfce 4 デスクトップマネージャーの設定"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:3
-msgid "Xfce 4 Desktop Settings"
-msgstr "Xfce 4 デスクトップ設定"
-
 #: ../src/main.c:251
 #, c-format
 msgid "%s: Unknown option: %s\n"
@@ -758,3 +733,28 @@ msgstr "ワークスペース %d を削除する(_R)"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース '%s' を削除する(_R)"
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:1
+msgid "Graphical tool for editing the Xfce 4 menu"
+msgstr "Xfce 4 メニューを編集するグラフィカルツールです"
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:2
+msgid "Menu Editor"
+msgstr "メニューエディター"
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:3
+msgid "Xfce 4 Menu Editor"
+msgstr "Xfce 4 メニューエディター"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Settings for the Xfce 4 Desktop Manager"
+msgstr "Xfce 4 デスクトップマネージャーの設定"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:3
+msgid "Xfce 4 Desktop Settings"
+msgstr "Xfce 4 デスクトップ設定"
+
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+msgid "Shows a menu containing categories of installed applications"
+msgstr ""
+"インストールしているアプリケーションのカテゴリーを含むメニューを表示します"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-11 02:51+0900\n"
+"POT-Creation-Date: 2005-10-19 01:39+0900\n"
 "PO-Revision-Date: 2005-10-09 22:19+0900\n"
 "Last-Translator: Luca Marrocco <buildup@libero.it>\n"
 "Language-Team: GUFI <traduzioni@gufi.org>\n"
@@ -104,7 +104,7 @@ msgstr "Per aggiungere un elemento tutti i campi devono essere riempiti."
 msgid "The 'Name' field is required."
 msgstr "Il campo 'Nome' e' obbligatorio."
 
-#: ../menueditor/add_dialog.c:331
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:308
 msgid "--- separator ---"
 msgstr "--- separatore ---"
 
@@ -153,10 +153,11 @@ msgid "The 'Source' field is required."
 msgstr "Il campo 'Sorgente' e' obbligatorio."
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
+#: ../menueditor/utils.c:362
 msgid "--- include ---"
 msgstr "--- includi ---"
 
-#: ../menueditor/add_menu_dialog.c:213
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:379
 msgid "system"
 msgstr "sistema"
 
@@ -194,7 +195,7 @@ msgstr "Siete sicuri di voler chiudere il menu attuale ?"
 msgid "Do you want to save before closing the file?"
 msgstr "Volete salvare prima di chiudere il file?"
 
-#: ../menueditor/menueditor.c:338
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:577
 msgid "Select command"
 msgstr "Seleziona un comando"
 
@@ -319,6 +320,48 @@ msgstr "Comando"
 msgid "Hidden"
 msgstr "Nascosto"
 
+#: ../menueditor/utils.c:639
+#, fuzzy
+msgid "Select icon"
+msgstr "Seleziona un icona"
+
+#: ../menueditor/utils.c:645 ../panel-plugin/desktop-menu-plugin.c:503
+#: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
+#: ../settings/backdrop_settings.c:524
+msgid "All Files"
+msgstr "Tutti i file"
+
+#: ../menueditor/utils.c:649 ../panel-plugin/desktop-menu-plugin.c:509
+#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
+#, fuzzy
+msgid "Image Files"
+msgstr "File immagini"
+
+#: ../modules/menu/desktop-menu-file.c:116
+#: ../modules/menu/desktop-menu-file.c:131
+#: ../panel-plugin/desktop-menu-plugin.c:665
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
+msgid "Xfce Menu"
+msgstr "Menu Xfce"
+
+#: ../modules/menu/desktop-menu-file.c:118
+#: ../modules/menu/desktop-menu-file.c:133
+msgid "Unable to quit session."
+msgstr ""
+
+#: ../modules/menu/desktop-menu-file.c:119
+msgid ""
+"Quitting the session requires that Xfce's session manager (xfce4-session) is "
+"running, but it was not detected.  Please quit Xfce via another means."
+msgstr ""
+
+#: ../modules/menu/desktop-menu-file.c:129
+#, c-format
+msgid ""
+"Quitting the session requires the 'xfce4-session-logout' command, but it "
+"could not be found: %s"
+msgstr ""
+
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
 msgstr "/Altro"
@@ -330,17 +373,6 @@ msgstr "Seleziona un icona"
 #: ../panel-plugin/desktop-menu-plugin.c:488
 msgid "Select Menu File"
 msgstr "Seleziona un Menu File"
-
-#: ../panel-plugin/desktop-menu-plugin.c:503 ../settings/backdrop-mgr.c:436
-#: ../settings/backdrop-mgr.c:537 ../settings/backdrop_settings.c:524
-msgid "All Files"
-msgstr "Tutti i file"
-
-#: ../panel-plugin/desktop-menu-plugin.c:509 ../settings/backdrop-mgr.c:440
-#: ../settings/backdrop_settings.c:528
-#, fuzzy
-msgid "Image Files"
-msgstr "File immagini"
 
 #: ../panel-plugin/desktop-menu-plugin.c:517
 #, fuzzy
@@ -356,11 +388,6 @@ msgstr "Impossibile lanciare xfce4-menueditor: %s"
 #, fuzzy
 msgid "Edit Properties"
 msgstr "Modifica la lista degli sfondi"
-
-#: ../panel-plugin/desktop-menu-plugin.c:665
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Menu Xfce"
 
 #: ../panel-plugin/desktop-menu-plugin.c:675
 #, fuzzy

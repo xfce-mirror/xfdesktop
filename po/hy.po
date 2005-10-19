@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-11 02:51+0900\n"
+"POT-Creation-Date: 2005-10-19 01:39+0900\n"
 "PO-Revision-Date: 2005-10-09 22:18+0900\n"
 "Last-Translator: Norayr Chilingaryan <norik@freenet.am>\n"
 "Language-Team: Armenian <en@li.org>\n"
@@ -102,7 +102,7 @@ msgstr "Անհրաժեշտ է լրացնել բոլոր դաշտերը"
 msgid "The 'Name' field is required."
 msgstr "«Անուն» դաշտը անհրաժեշտ է լրացնել"
 
-#: ../menueditor/add_dialog.c:331
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:308
 msgid "--- separator ---"
 msgstr "––– բաժանիչ –––"
 
@@ -150,10 +150,11 @@ msgid "The 'Source' field is required."
 msgstr "«Ակունք» դաշտը անհրաժեշտ է լրացնել"
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
+#: ../menueditor/utils.c:362
 msgid "--- include ---"
 msgstr "––– ներառել –––"
 
-#: ../menueditor/add_menu_dialog.c:213
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:379
 msgid "system"
 msgstr "համակարգ"
 
@@ -191,7 +192,7 @@ msgstr "Վստա՞հեք, որ ուզում եք փակել ընթացիկ ցա�
 msgid "Do you want to save before closing the file?"
 msgstr "Ուզու՞մ եք հիշել մինչ ֆայլը փակելը"
 
-#: ../menueditor/menueditor.c:338
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:577
 msgid "Select command"
 msgstr "Ընտրեք հրամանը"
 
@@ -312,6 +313,47 @@ msgstr "Հրաման"
 msgid "Hidden"
 msgstr "Թաքուն"
 
+#: ../menueditor/utils.c:639
+#, fuzzy
+msgid "Select icon"
+msgstr "Ընտրեք Պատկերակը"
+
+#: ../menueditor/utils.c:645 ../panel-plugin/desktop-menu-plugin.c:503
+#: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
+#: ../settings/backdrop_settings.c:524
+msgid "All Files"
+msgstr "Բոլոր ֆայլերը"
+
+#: ../menueditor/utils.c:649 ../panel-plugin/desktop-menu-plugin.c:509
+#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
+msgid "Image Files"
+msgstr "Պատկերների ֆայլերը"
+
+#: ../modules/menu/desktop-menu-file.c:116
+#: ../modules/menu/desktop-menu-file.c:131
+#: ../panel-plugin/desktop-menu-plugin.c:665
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
+msgid "Xfce Menu"
+msgstr "Xfce Ցանկ"
+
+#: ../modules/menu/desktop-menu-file.c:118
+#: ../modules/menu/desktop-menu-file.c:133
+msgid "Unable to quit session."
+msgstr ""
+
+#: ../modules/menu/desktop-menu-file.c:119
+msgid ""
+"Quitting the session requires that Xfce's session manager (xfce4-session) is "
+"running, but it was not detected.  Please quit Xfce via another means."
+msgstr ""
+
+#: ../modules/menu/desktop-menu-file.c:129
+#, c-format
+msgid ""
+"Quitting the session requires the 'xfce4-session-logout' command, but it "
+"could not be found: %s"
+msgstr ""
+
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
 msgstr "/Այլ"
@@ -323,16 +365,6 @@ msgstr "Ընտրեք Պատկերակը"
 #: ../panel-plugin/desktop-menu-plugin.c:488
 msgid "Select Menu File"
 msgstr "Ընտրեք ցանկի ֆայլը"
-
-#: ../panel-plugin/desktop-menu-plugin.c:503 ../settings/backdrop-mgr.c:436
-#: ../settings/backdrop-mgr.c:537 ../settings/backdrop_settings.c:524
-msgid "All Files"
-msgstr "Բոլոր ֆայլերը"
-
-#: ../panel-plugin/desktop-menu-plugin.c:509 ../settings/backdrop-mgr.c:440
-#: ../settings/backdrop_settings.c:528
-msgid "Image Files"
-msgstr "Պատկերների ֆայլերը"
 
 #: ../panel-plugin/desktop-menu-plugin.c:517
 msgid "Menu Files"
@@ -347,11 +379,6 @@ msgstr "Հնարավոր չէ աշխատացնել xfce4-menueditor ծրագիր
 #, fuzzy
 msgid "Edit Properties"
 msgstr "Խմբագրել նախադրյալների ցուցակը"
-
-#: ../panel-plugin/desktop-menu-plugin.c:665
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Xfce Ցանկ"
 
 #: ../panel-plugin/desktop-menu-plugin.c:675
 #, fuzzy

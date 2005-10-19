@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-11 02:51+0900\n"
+"POT-Creation-Date: 2005-10-19 01:39+0900\n"
 "PO-Revision-Date: 2005-10-14 21:17+0800\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -103,7 +103,7 @@ msgstr "要新增項目，就必須填寫所有欄位。"
 msgid "The 'Name' field is required."
 msgstr "「名稱」一欄必須填寫。"
 
-#: ../menueditor/add_dialog.c:331
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:308
 msgid "--- separator ---"
 msgstr "--- 分隔線 ---"
 
@@ -154,11 +154,12 @@ msgid "The 'Source' field is required."
 msgstr "「來源」一欄必須填寫。"
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
+#: ../menueditor/utils.c:362
 msgid "--- include ---"
 msgstr "--- 插入 ---"
 
 # NOTE「系統選單」之略
-#: ../menueditor/add_menu_dialog.c:213
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:379
 msgid "system"
 msgstr "系統"
 
@@ -196,7 +197,7 @@ msgstr "您真要關閉目前的選單嗎？"
 msgid "Do you want to save before closing the file?"
 msgstr "關閉檔案前要先行儲存嗎？"
 
-#: ../menueditor/menueditor.c:338
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:577
 msgid "Select command"
 msgstr "選擇指令"
 
@@ -320,6 +321,48 @@ msgstr "指令"
 msgid "Hidden"
 msgstr "隱藏"
 
+#: ../menueditor/utils.c:639
+#, fuzzy
+msgid "Select icon"
+msgstr "選擇圖示"
+
+#: ../menueditor/utils.c:645 ../panel-plugin/desktop-menu-plugin.c:503
+#: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
+#: ../settings/backdrop_settings.c:524
+msgid "All Files"
+msgstr "所有檔案"
+
+#: ../menueditor/utils.c:649 ../panel-plugin/desktop-menu-plugin.c:509
+#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
+msgid "Image Files"
+msgstr "影像檔案"
+
+#: ../modules/menu/desktop-menu-file.c:116
+#: ../modules/menu/desktop-menu-file.c:131
+#: ../panel-plugin/desktop-menu-plugin.c:665
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
+msgid "Xfce Menu"
+msgstr "Xfce 選單"
+
+#: ../modules/menu/desktop-menu-file.c:118
+#: ../modules/menu/desktop-menu-file.c:133
+#, fuzzy
+msgid "Unable to quit session."
+msgstr "無法啟動xfdesktop"
+
+#: ../modules/menu/desktop-menu-file.c:119
+msgid ""
+"Quitting the session requires that Xfce's session manager (xfce4-session) is "
+"running, but it was not detected.  Please quit Xfce via another means."
+msgstr ""
+
+#: ../modules/menu/desktop-menu-file.c:129
+#, c-format
+msgid ""
+"Quitting the session requires the 'xfce4-session-logout' command, but it "
+"could not be found: %s"
+msgstr ""
+
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
 msgstr "/其他"
@@ -331,16 +374,6 @@ msgstr "選擇圖示"
 #: ../panel-plugin/desktop-menu-plugin.c:488
 msgid "Select Menu File"
 msgstr "選擇選單檔案"
-
-#: ../panel-plugin/desktop-menu-plugin.c:503 ../settings/backdrop-mgr.c:436
-#: ../settings/backdrop-mgr.c:537 ../settings/backdrop_settings.c:524
-msgid "All Files"
-msgstr "所有檔案"
-
-#: ../panel-plugin/desktop-menu-plugin.c:509 ../settings/backdrop-mgr.c:440
-#: ../settings/backdrop_settings.c:528
-msgid "Image Files"
-msgstr "影像檔案"
 
 #: ../panel-plugin/desktop-menu-plugin.c:517
 msgid "Menu Files"
@@ -354,11 +387,6 @@ msgstr "無法執行 xfce4-menueditor：%s"
 #: ../panel-plugin/desktop-menu-plugin.c:657
 msgid "Edit Properties"
 msgstr "編輯屬性"
-
-#: ../panel-plugin/desktop-menu-plugin.c:665
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Xfce 選單"
 
 #: ../panel-plugin/desktop-menu-plugin.c:675
 msgid "Button"
