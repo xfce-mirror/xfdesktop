@@ -2231,11 +2231,17 @@ xfce_desktop_drag_motion(GtkWidget *widget,
                          guint time)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
+    GdkAtom target = GDK_NONE;
     NetkWorkspace *active_ws;
     gint active_ws_num, row, col;
     GdkRectangle *cell_highlight;
     
     /*TRACE("entering: (%d,%d)", x, y);*/
+    
+    target = gtk_drag_dest_find_target(widget, context,
+                                       desktop->priv->source_targets);
+    if(target == GDK_NONE)
+        return FALSE;
     
     gdk_drag_status(context, GDK_ACTION_MOVE, time);
     
@@ -2320,12 +2326,18 @@ xfce_desktop_drag_drop(GtkWidget *widget,
                        guint time)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
+    GdkAtom target = GDK_NONE;
     XfceDesktopIcon *icon;
     NetkWorkspace *active_ws;
     gint active_ws_num, row, col, cell_x, cell_y, lfc, lfr;
     
     TRACE("entering: (%d,%d)", x, y);
     
+    target = gtk_drag_dest_find_target(widget, context,
+                                       desktop->priv->source_targets);
+    if(target == GDK_NONE)
+        return FALSE;
+        
     active_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
     active_ws_num = netk_workspace_get_number(active_ws);
     
