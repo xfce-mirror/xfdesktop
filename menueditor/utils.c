@@ -123,7 +123,10 @@ save_treeview_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIte
     fprintf (state->file_menu, "/>\n");
     break;
   case SEPARATOR:
-    fprintf (state->file_menu, "%s<separator/>\n", space);
+    fprintf (state->file_menu, "%s<separator", space);
+    if (hidden)
+        fprintf (state->file_menu, " visible=\"no\"");
+    fprintf (state->file_menu, "/>\n");
     break;
   }
 
