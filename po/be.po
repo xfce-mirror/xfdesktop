@@ -1,14 +1,14 @@
 # Belarusian translations for xfdesktop package.
 # Copyright (C) 2003-2005 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
-# Ales Nyakhaychyk <nab@mail.by>, 2004.
+# Ales Nyakhaychyk <nab@mail.by>, 2004-2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-08 06:14+0900\n"
-"PO-Revision-Date: 2005-09-29 16:15+0900\n"
+"POT-Creation-Date: 2005-10-28 20:59+0900\n"
+"PO-Revision-Date: 2005-10-27 19:02+0900\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
 "MIME-Version: 1.0\n"
@@ -403,35 +403,29 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Немагчыма запусьціць aunch xfce4-menueditor: %s"
 
 #: panel-plugin/desktop-menu-plugin.c:663
-#, fuzzy
 msgid "Button _title:"
-msgstr "Значка _кнопкі:"
+msgstr "Подпіс _кнопкі:"
 
 #: panel-plugin/desktop-menu-plugin.c:676
-#, fuzzy
 msgid "Menu File"
-msgstr "Файлы мэню"
+msgstr "Файл мэню"
 
 #: panel-plugin/desktop-menu-plugin.c:688
-#, fuzzy
 msgid "Use default _desktop menu file"
-msgstr "_Рэдагаваць мэню стальца"
+msgstr "Выкарыстоўваць дапомны файл мэню _стальца"
 
 #: panel-plugin/desktop-menu-plugin.c:697
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "Адчыніць файл мэню"
+msgstr "Выкарыстоўваць _адмысловы файл меню:"
 
 #: panel-plugin/desktop-menu-plugin.c:749
 #: panel-plugin/desktop-menu-plugin.c:751
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "_Мэню"
+msgstr "_Рэдагаваць мэню"
 
 #: panel-plugin/desktop-menu-plugin.c:758
-#, fuzzy
 msgid "Icons"
-msgstr "Значка:"
+msgstr "Значкі"
 
 #: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
@@ -655,18 +649,22 @@ msgid "%s: Unknown option: %s\n"
 msgstr "%s: невядомы выбар: %s\n"
 
 #: src/main.c:249
+#, c-format
 msgid "Options are:\n"
 msgstr "Выбары:\n"
 
 #: src/main.c:250
+#, c-format
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      Перачытаць усе наладкі, абнавіць сьпіс відарысаў\n"
 
 #: src/main.c:251
+#, c-format
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Паказаць мэню (побач з мышой)\n"
 
 #: src/main.c:252
+#, c-format
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Паказаць сьпіс вокнаў (побач з мышой)\n"
