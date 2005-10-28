@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xfce-registered-categories>
+
+<!-- Note: You can copy this file to ~/.config/xfce4/desktop/ for customisation. -->
+
+<!--
+	Here is how this file works:
+
+	<xfce-registered-categories> - root element, required.
+
+	<category>
+		name:  Required.  Corresponds to an official category from the
+		  freedesktop.org menu spec.
+		replace: Optional.  Name that is displayed as the menu name for items
+		  in the category (useful, e.g., for translations).
+		icon: icon to be displayed for this category (actually, for the menu
+		  item referenced by this category's 'replace' attribute)
+		toplevel: Optional.  Marks categories as being "allowed" to be toplevel
+		  menus.  Note: if a category is unrooted, it will be promoted to
+		  toplevel regardless of the value of this attribute. (default: false)
+		ignore: Optional.  This category will be ignored when organising menu
+		  items. (default: false)
+		hide: Optional.  Items referencing this category will not appear in any
+			menu. (default: false)
+
+	<subcategory> - sub-element of <category>, specifies a subcategory relation
+		name: Required.  Corresponds to an official category from the
+		  freedesktop.org menu spec.
+	  Example:
+	  <category name="Graphics">
+		  <subcategory name="RasterGraphics">
+	  </category>
+	  Note that even if subcategories are definied, it is possible to collapse
+	  all subcategories into a flat one-level menu by specifying style="simple"
+	  in the <include> tag in your menu.xml file.
+-->
+
+<xfce-registered-categories>
+	<category name="Legacy" toplevel="true" replace="מיושן" builtin-icon="UTILITY" />
+	<category name="Core" toplevel="true" replace="ליבה" builtin-icon="UTILITY" />
+	<category name="Development" toplevel="true" replace="פיתוח" builtin-icon="DEVELOPMENT">
+		<subcategory name="Building"/>
+		<subcategory name="Debugger"/>
+		<subcategory name="IDE" replace="סביבות פיתוח"/>
+		<subcategory name="GUIDesigner" replace="עיצוב מנשקי משתמש"
+		<subcategory name="Profiling"/>
+		<subcategory name="RevisionControl" replace="בקרת שינויים" />
+		<subcategory name="Translation" replace="תרגום" />
+		<subcategory name="Database" replace="בסיס נתונים" />
+		<subcategory name="ProjectManagement" replace="ניהול פרויקט" />
+		<subcategory name="WebDevelopment" replace="פיתוח אתרים" />
+	</category>
+	<category name="Building" builtin-icon="DEVELOPMENT" />
+	<category name="Debugger" builtin-icon="DEVELOPMENT" />
+	<category name="IDE" replace="סביבות פיתוח" builtin-icon="DEVELOPMENT" />
+	<category name="GUIDesigner" replace="עיצוב מנשקי משתמש" builtin-icon="DEVELOPMENT" />
+	<category name="Profiling" builtin-icon="DEVELOPMENT" />
+	<category name="RevisionControl" replace="בקרת שינויים" builtin-icon="DEVELOPMENT" />
+	<category name="Translation" replace="תרגום" builtin-icon="DEVELOPMENT" />
+	<category name="Office" replace="יישומים משרדיים" toplevel="true" builtin-icon="PRODUCTIVITY">
+		<subcategory name="Calendar" replace="לוח שנה" />
+		<subcategory name="ContactManagement" replace="ניהול פגישות" />
+		<subcategory name="Database" replace="בסיסי נתונים" />
+		<subcategory name="Dictionary" replace="מילון" />
+		<subcategory name="Chart" replace="תרשים" />
+		<subcategory name="Email" replace="דואר אלקטרוני" />
+		<subcategory name="Finance" replace="כספים" />
+		<subcategory name="FlowChart" replace="תרשים זרימה" />
+		<subcategory name="PDA" />
+		<subcategory name="ProjectManagement" replace="ניהול פרויקט" />
+		<subcategory name="Presentation" replace="מצגת" />
+		<subcategory name="Spreadsheet" replace="גליון אלקטרוני" />
+		<subcategory name="WordProcessor" replace="מעבד תמלילים" />
+		<subcategory name="Photograph" replace="תמונה" />
+		<subcategory name="Viewer" replace="מציג קבצים" />
+	</category>
+	<category name="Calendar" replace="לוח שנה" builtin-icon="PRODUCTIVITY" />
+	<category name="ContactManagement" replace="ניהול פגישות" builtin-icon="PRODUCTIVITY" />
+	<category name="Database" repalce="בסיס נתונים" builtin-icon="PRODUCTIVITY" />
+	<category name="Dictionary" replace="מילון" builtin-icon="PRODUCTIVITY" />
+	<category name="Chart" replace="תרשים" builtin-icon="PRODUCTIVITY" />
+	<category name="Email" replace="דואר אלקטרוני" builtin-icon="PRODUCTIVITY" />
+	<category name="Finance" replace="כספים" builtin-icon="PRODUCTIVITY" />
+	<category name="FlowChart" replace="תרשים זרימה" builtin-icon="PRODUCTIVITY" />
+	<category name="PDA" builtin-icon="PRODUCTIVITY" />
+	<category name="ProjectManagement" replace="ניהול פרויקט" builtin-icon="PRODUCTIVITY" />
+	<category name="Presentation" replace="מצגת" builtin-icon="PRODUCTIVITY" />
+	<category name="Spreadsheet" replace="גליון אלקטרוני" builtin-icon="PRODUCTIVITY" />
+	<category name="WordProcessor" replace="מעבד תמלילים" builtin-icon="PRODUCTIVITY" />
+	<category name="Graphics" replace="גרפיקה" toplevel="true" builtin-icon="GRAPHICS">
+		<subcategory name="2DGraphics" replace="גרפיקה דו-מימדיות"/>
+		<subcategory name="3DGraphics" replace="גרפיקה תלת-מימדיות"/>
+		<subcategory name="Scanning" replace="סריקה"/>
+		<subcategory name="Photograph" replace="צילום"/>
+		<subcategory name="Viewer" replace="מציג קבצים"/>
+	</category>
+	<category name="2DGraphics" replace="גרפיקה דו-מימדיות" builtin-icon="GRAPHICS">
+		<subcategory name="VectorGraphics" replace="ציור וקטורי" />
+		<subcategory name="RasterGraphics" replace="איור"/>
+	</category>
+	<category name="VectorGraphics" replace="ציור וקטורי" builtin-icon="GRAPHICS" />
+	<category name="RasterGraphics" replace="איור" builtin-icon="GRAPHICS" />
+	<category name="3DGraphics" replace="גרפיקה תלת-מימדי" builtin-icon="GRAPHICS" />
+	<category name="Scanning" replace="סריקה" builtin-icon="GRAPHICS">
+		<subcategory name="OCR" replace="זיהוי כתב אוטומטי" />
+	</category>
+	<category name="OCR" replace="זיהוי כתב אוטומטי" builtin-icon="GRAPHICS" />
+	<category name="Photograph" replace="צילום" builtin-icon="GRAPHICS" />
+	<category name="Viewer" replace="מציג קבצים" builtin-icon="GRAPHICS" />
+	<category name="Settings" replace="הגדרות" toplevel="true" builtin-icon="SETTINGS">
+		<subcategory name="DesktopSettings" replace="הגדרות שולחן העבודה" />
+		<subcategory name="HardwareSettings" replace="הגדרות חומרה" />
+		<subcategory name="PackageSettings" replace="הגדרות לחבילות" />
+		<subcategory name="Security" replace="אבטחה" />
+		<subcategory name="Accessibility" replace="נגישות" />
+		<subcategory name="Screensaver" replace="שומר מסך"/>
+	</category>
+	<category name="DesktopSettings" replace="הגדרות שולחן העבודה" builtin-icon="SETTINGS" />
+	<category name="HardwareSettings" replace="הגדרות חומרה" builtin-icon="SETTINGS" />
+	<category name="PackageSettings" replace="הגדרות לחבילות" builtin-icon="SETTINGS" />
+	<category name="Network" replace="רשת" toplevel="true" builtin-icon="NETWORK">
+		<subcategory name="Email" replace="דואר אלקטרוני" />
+		<subcategory name="Dialup" replace="חיוג" />
+		<subcategory name="InstantMessaging" replace="מסרים מידיים" />
+		<subcategory name="IRCClient" replace="לקוח IRC"/>
+		<subcategory name="FileTransfer" replace="העברת קבצים"/>
+		<subcategory name="HamRadio" replace="רדיו חובבים"/>
+		<subcategory name="News" replace="חדשות"/>
+		<subcategory name="P2P" replace="P2P"/>
+		<subcategory name="RemoteAccess" replace="גישה מרחוק"/>
+		<subcategory name="Telephony" replace="טלפוניה"/>
+		<subcategory name="WebBrowser" replace="דפדפני אינטרנט"/>
+		<subcategory name="WebDevelopment" replace="פיתוח לאינטרנט"/>
+	</category>
+	<category name="Dialup" replace="חיוג" builtin-icon="NETWORK" />
+	<category name="InstantMessaging" replace="מסרים מידיים" builtin-icon="NETWORK" />
+	<category name="IRCClient" replace="לקוח IRC" builtin-icon="NETWORK" />
+	<category name="FileTransfer" replace="העברת קבצים" builtin-icon="NETWORK" />
+	<category name="HamRadio" replace="רדיו חובבים" builtin-icon="NETWORK" />
+	<category name="News" replace="חדשות" builtin-icon="NETWORK" />
+	<category name="P2P" replace="P2P" builtin-icon="NETWORK" />
+	<category name="RemoteAccess" replace="גישה מרחוק" builtin-icon="NETWORK" />
+	<category name="Telephony" replace="טלפוניה" builtin-icon="NETWORK" />
+	<category name="WebBrowser" replace="דפדפני אינטרנט" builtin-icon="NETWORK" />
+	<category name="WebDevelopment" replace="פיתוח לאינטרנט" builtin-icon="NETWORK" />
+	<category name="AudioVideo" replace="מולטימדיה" toplevel="true" builtin-icon="MULTIMEDIA">
+		<subcategory name="Database" replace="בסיס נתונים" />
+		<subcategory name="HamRadio" replace="רדיו חובבים" />
+		<subcategory name="Audio" replace="צליל" />
+		<subcategory name="Video" replace="וידאו" />
+		<subcategory name="AudioVideoEditing" replace="עריבת קול ווידאו" />
+		<subcategory name="Player" replace="נגן מדיה" />
+		<subcategory name="Recorder" replace="מקליט" />
+		<subcategory name="DiscBurning" replace="צריבת תקליטורים" />
+	</category>
+	<category name="Audio" replace="צליל" builtin-icon="MULTIMEDIA">
+		<subcategory name="Midi"/>
+		<subcategory name="Mixer" replace="מערבל קול" />
+		<subcategory name="Sequencer" replace="Sequencer"/>
+		<subcategory name="Tuner" replace="טיונר" />
+		<subcategory name="AudioVideoEditing" replace="עריכת קול ווידאו" />
+		<subcategory name="Player" replace="נגן מדיה" />
+		<subcategory name="Recorder" replace="מקליט" />
+	</category>
+	<category name="Midi" builtin-icon="MULTIMEDIA" />
+	<category name="Mixer" replace="מערבל קול" builtin-icon="MULTIMEDIA" />
+	<category name="Sequencer" replace="Sequencers" builtin-icon="MULTIMEDIA" />
+	<category name="Tuner" replace="Tuners" builtin-icon="MULTIMEDIA" />
+	<category name="Video" replace="וידאו" builtin-icon="MULTIMEDIA">
+		<subcategory name="TV" replace="TV"/>
+		<subcategory name="AudioVideoEditing" replace="עריכת קול ותמונה" />
+		<subcategory name="Player" replace="נגן מדיה" />
+		<subcategory name="Recorder" replace="מקליט" />
+		<subcategory name="Music" replace="מוזיקה" />
+	</category>
+	<category name="TV" replace="TV" builtin-icon="MULTIMEDIA" />
+	<category name="AudioVideoEditing" replace="עריכת קול ווידאו" builtin-icon="MULTIMEDIA" />
+	<category name="Player" replace="נגן מדיה" builtin-icon="MULTIMEDIA" />
+	<category name="Recorder" replace="מקליט" builtin-icon="MULTIMEDIA" />
+	<category name="DiscBurning" replace="צריבת תקליטורים" builtin-icon="MULTIMEDIA" />
+	<category name="Game" toplevel="true" replace="משחקים" builtin-icon="GAME">
+		<subcategory name="ActionGame" replace="משחקי פעולה" />
+		<subcategory name="AdventureGame" replace="משחקי הרפתקאות" />
+		<subcategory name="ArcadeGame" replace="ארקייד" />
+		<subcategory name="BoardGame" replace="משחקי לוח"/>
+		<subcategory name="BlocksGame" replace="תצרפים" />
+		<subcategory name="CardGame" replace="משחקי קלפים" />
+		<subcategory name="KidsGame" replace="משחקים ילדים" />
+		<subcategory name="LogicGame" replace="משחקי הגיון" />
+		<subcategory name="RolePlaying" replace="משחקי תפקידים" />
+		<subcategory name="Simulation" replace="הדמיה" />
+		<subcategory name="SportsGame" replace="ספורט" />
+		<subcategory name="StrategyGame" replace="משחקי אסרטגיה" />
+	</category>
+	<category name="ActionGame" replace="משחקי פעולה" builtin-icon="GAME" />
+	<category name="AdventureGame" replace="משחקי הרפתקאות" builtin-icon="GAME" />
+	<category name="ArcadeGame" replace="ארקייד" builtin-icon="GAME" />
+	<category name="BoardGame" replace="משחקי לוח" builtin-icon="GAME" />
+	<category name="BlocksGame" replace="תצרפים" builtin-icon="GAME" />
+	<category name="CardGame" replace="משקחי קלפים" builtin-icon="GAME" />
+	<category name="KidsGame" replace="משחקי ילדים" builtin-icon="GAME" />
+	<category name="LogicGame" replace="משחקי הגיון" builtin-icon="GAME" />
+	<category name="RolePlaying" replace="משחקי תפקידים" builtin-icon="GAME" />
+	<category name="Simulation" replace="הדמיה" builtin-icon="GAME" />
+	<category name="SportsGame" replace="ספורט" builtin-icon="GAME" />
+	<category name="StrategyGame" replace="משחקי אסטרטגיה" builtin-icon="GAME" />
+	<category name="Education" replace="לומדות" toplevel="true">
+		<subcategory name="Art" replace="אמנות" />
+		<subcategory name="Construction" replace="בניה" />
+		<subcategory name="Music" replace="מוזיקה" />
+		<subcategory name="Languages" replace="שפות" />
+		<subcategory name="Teaching" replace="הוראה" />
+	</category>
+	<category name="Art" replace="אמנות" />
+	<category name="Construction" replace="בניה" />
+	<category name="Music" replace="מוזיקה" />
+	<category name="Languages" replace="שפות" />
+	<category name="Science" replace="מדעים" toplevel="true">
+		<subcategory name="Astronomy" replace="אסטרונומיה" />
+		<subcategory name="Biology" replace="ביולוגיה" />
+		<subcategory name="Chemistry" replace="כימיה" />
+		<subcategory name="Geology" replace="גיאולוגיה" />
+		<subcategory name="Math" replace="מתמטיקה" />
+		<subcategory name="MedicalSoftware" replace="רפואה" />
+		<subcategory name="Physics" replace="פיזיקה" />
+	</category>
+	<category name="Astronomy" replace="אסטרונומיה" />
+	<category name="Biology" replace="ביולוגיה" />
+	<category name="Chemistry" replace="כימיה" />
+	<category name="Geology" replace="גיאולוגיה" />
+	<category name="Math" replace="מתמטיקה" />
+	<category name="MedicalSoftware" replace="רפואה" />
+	<category name="Physics" replace="פיזיקה" />
+	<category name="Teaching" replace="הוראה" />
+	<category name="Amusement" replace="משחקים" builtin-icon="GAME" />
+	<category name="Applet" replace="יישומים" />
+	<category name="Archiving" replace="ארכיון" />
+	<category name="Electronics" replace="אלקטרוניקה" />
+	<category name="Emulator" toplevel="true" replace="מערכת" builtin-icon="SYSTEM" />
+	<category name="Engineering" replace="הנדסה" />
+	<category name="FileManager" replace="ניהול קבצים" />
+	<category name="Shell" replace="מעטפת" />
+	<category name="Screensaver" replace="שומר מסך" />
+	<category name="TerminalEmulator" replace="מסופים" />
+	<category name="TrayIcon" replace="סמלי מגש מערכת" />
+	<category name="System" replace="מערכת" toplevel="true" builtin-icon="SYSTEM">
+		<subcategory name="FileSystem" replace="מערכת קבצים" />
+		<subcategory name="Monitor" replace="בקרה" />
+		<subcategory name="Security" replace="אבטחה" />
+		<subcategory name="Accessibility" replace="נגישות" />
+		<subcategory name="TerminalEmulator" replace="מסופים" />
+		<subcategory name="Shell" replace="מעטפת" />
+	</category>
+	<category name="Filesystem" replace="מערכת קבצים" builtin-icon="SYSTEM" />
+	<category name="Monitor" replace="בקרה" builtin-icon="SYSTEM" />
+	<category name="Security" replace="אבטחה" builtin-icon="SYSTEM" />
+	<category name="Utility" toplevel="true" replace="עזרים" builtin-icon="UTILITY">
+		<subcategory name="Accessibility" replace="נגישות" />
+		<subcategory name="Calculator" replace="מחשבון" />
+		<subcategory name="Clock" replace="שעון" />
+		<subcategory name="TextEditor" replace="עורך טקסט" />
+		<subcategory name="Archiving" replace="ארכיב" />
+		<subcategory name="TerminalEmulator" replace="מסופים" />
+		<subcategory name="FileManager" replace="ניהול קבצים" />
+		<subcategory name="Shell" replace="מעטפת" />
+	</category>
+	<category name="Accessibility" replace="נגישות" builtin-icon="UTILITY" />
+	<category name="Calculator" replace="מחשבון" builtin-icon="UTILITY" />
+	<category name="Clock" replace="שעון" builtin-icon="UTILITY" />
+	<category name="TextEditor" replace="עורך טקסט" builtin-icon="UTILITY" />
+	<category name="KDE" replace="KDE" toplevel="true" ignore="true">
+		<subcategory name="Development" replace="פיתוח" />
+		<subcategory name="Office" replace="משרד" />
+		<subcategory name="Graphics" replace="גרפיקה" />
+		<subcategory name="Settings" replace="הגדרות" />
+		<subcategory name="Network" replace="רשת" />
+		<subcategory name="AudioVideo" replace="מולטימדיה" />
+		<subcategory name="Game" replace="משחקים" />
+		<subcategory name="Education" replace="לומדות" />
+		<subcategory name="Science" replace="מדעים" />
+		<subcategory name="System" replace="מערכת" />
+		<subcategory name="Utility" replace="יישומים" />
+	</category>
+	<category name="GNOME" replace="GNOME" toplevel="true" ignore="true">
+		<subcategory name="Development" replace="פיתוח" />
+		<subcategory name="Office" replace="משרד" />
+		<subcategory name="Graphics" replace="גרפיקה" />
+		<subcategory name="Settings" replace="הגדרות" />
+		<subcategory name="Network" replace="רשת" />
+		<subcategory name="AudioVideo" replace="מולטימדיה" />
+		<subcategory name="Game" replace="משחקים" />
+		<subcategory name="Education" replace="חינוכי" />
+		<subcategory name="Science" replace="מדעים" />
+		<subcategory name="System" replace="מערכת" />
+		<subcategory name="Utility" replace="יישומים" />
+	</category>
+	<category name="GTK" replace="GTK" toplevel="true" ignore="true">
+		<subcategory name="GNOME" replace="GNOME" />
+	</category>
+	<category name="Qt" replace="QT" toplevel="true" ignore="true">
+		<subcategory name="KDE" replace="KDE" />
+	</category>
+	<category name="Motif" replace="Motif" toplevel="true" ignore="true">
+		<subcategory name="Development" replace="פיתוח" />
+		<subcategory name="Office" replace="משרד" />
+		<subcategory name="Graphics" replace="גרפיקה" />
+		<subcategory name="Settings" replace="הגדרות" />
+		<subcategory name="Network" replace="רשת" />
+		<subcategory name="AudioVideo" replace="מולטימדיה" />
+		<subcategory name="Game" replace="משחקים" />
+		<subcategory name="Education" replace="לומדות" />
+		<subcategory name="Science" replace="מדעים" />
+		<subcategory name="System" replace="מערכת" />
+		<subcategory name="Utility" replace="יישומים" />
+	</category>
+	<category name="Java" replace="Java" toplevel="true" ignore="true">
+		<subcategory name="Applet" replace="יישומונים" />
+	</category>
+	<category name="ConsoleOnly" toplevel="true" replace="קונסול" ignore="true">
+		<subcategory name="Development" replace="פיתוח" />
+		<subcategory name="Office" replace="משרד" />
+		<subcategory name="Graphics" replace="גרפיקה" />
+		<subcategory name="Settings" replace="הגדרות" />
+		<subcategory name="Network" replace="רשת" />
+		<subcategory name="AudioVideo" replace="מולטימדיה" />
+		<subcategory name="Game" replace="משחקים" />
+		<subcategory name="Education" replace="לומדות" />
+		<subcategory name="Science" replace="מדעים" />
+		<subcategory name="System" replace="מערכת" />
+		<subcategory name="Utility" replace="יישומים" />
+	</category>
+	<category name="Wine" replace="Wine" toplevel="true" builtin-icon="WINE" />
+	<category name="WineX" replace="WineX" toplevel="true" builtin-icon="WINE" />
+</xfce-registered-categories>
+
