@@ -20,11 +20,10 @@
 #ifndef __DESKTOP_MENU_H__
 #define __DESKTOP_MENU_H__
 
+#include <glib.h>
 #include <gtk/gtkwidget.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+G_BEGIN_DECLS
 
 typedef struct _XfceDesktopMenu XfceDesktopMenu;
     
@@ -39,6 +38,7 @@ void xfce_desktop_menu_set_show_icons_impl(XfceDesktopMenu *desktop_menu, gboole
 void xfce_desktop_menu_destroy_impl(XfceDesktopMenu *desktop_menu);
 
 extern GdkPixbuf *dummy_icon;
+extern GdkPixbuf *unknown_icon;
 
 #ifdef BDEBUG
 #define BD(fmt, args...) \
@@ -51,8 +51,6 @@ extern GdkPixbuf *dummy_icon;
 #define BD(fmt, args...)
 #endif
 
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
 
 #endif /* !def __DESKTOP_MENU_H__ */

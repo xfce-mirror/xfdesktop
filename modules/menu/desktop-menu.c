@@ -73,6 +73,7 @@
 
 /*< private >*/
 GdkPixbuf *dummy_icon = NULL;
+GdkPixbuf *unknown_icon = NULL;
 gint _xfce_desktop_menu_icon_size = 24;
 XfceIconTheme *_deskmenu_icon_theme = NULL;
 static GList *timeout_handles = NULL;
@@ -202,6 +203,13 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
     desktop_menu->menu_entry_hash = NULL;
     desktop_menu->menufile_mtimes = NULL;
     desktop_menu->dentrydir_mtimes = NULL;
+}
+
+void
+_desktop_menu_ensure_unknown_icon()
+{
+    if(!unknown_icon)
+        unknown_icon = gdk_pixbuf_new_from_inline(-1, xfce_unknown, TRUE, NULL);
 }
 
 static gboolean

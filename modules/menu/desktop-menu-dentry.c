@@ -230,8 +230,25 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
             }
         }
         if(!pix) {
-            img = gtk_image_new_from_pixbuf(dummy_icon);
+            pix = xfce_themed_icon_load("xfce-unknown", _xfce_desktop_menu_icon_size);
+            if(!pix)
+                pix = xfce_themed_icon_load("unknown", _xfce_desktop_menu_icon_size);
+            if(!pix) {
+                _desktop_menu_ensure_unknown_icon();
+                if(gdk_pixbuf_get_width(unknown_icon) != _xfce_desktop_menu_icon_size) {
+                    GdkPixbuf *tmp = gdk_pixbuf_scale_simple(pix,
+                                                             _xfce_desktop_menu_icon_size,
+                                                             _xfce_desktop_menu_icon_size,
+                                                             GDK_INTERP_BILINEAR);
+                    pix = tmp;
+                } else {
+                    pix = unknown_icon;
+                    g_object_ref(G_OBJECT(pix));
+                }
+            }
+            img = gtk_image_new_from_pixbuf(pix);
             gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+            g_object_unref(G_OBJECT(pix));
         }
     } else
         mi = gtk_menu_item_new_with_label(q);
