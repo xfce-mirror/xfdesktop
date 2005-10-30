@@ -260,6 +260,11 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
             if(j != -1 && *attribute_values[j]) {
                 pix = xfce_icon_theme_load(_deskmenu_icon_theme,
                         attribute_values[j], _xfce_desktop_menu_icon_size);
+                if(!pix && !strcmp(attribute_values[j], "XFDESKTOP_BUILTIN_UNKNOWN_ICON")) {
+                    _desktop_menu_ensure_unknown_icon();
+                    pix = unknown_icon;
+                    g_object_ref(G_OBJECT(pix));
+                }
                 if(pix) {
                     image = gtk_image_new_from_pixbuf(pix);
                     gtk_widget_show(image);

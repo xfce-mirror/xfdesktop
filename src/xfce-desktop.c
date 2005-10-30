@@ -392,7 +392,6 @@ xfce_desktop_icon_paint(XfceDesktop *desktop,
     pango_layout_set_text(playout, icon->label, -1);
     pango_layout_get_size(playout, &text_w, &text_h);
     if(text_w > TEXT_WIDTH * PANGO_SCALE) {
-        pango_layout_set_width(playout, TEXT_WIDTH * PANGO_SCALE);
         if(state == GTK_STATE_NORMAL) {
 #if GTK_CHECK_VERSION(2, 6, 0)  /* can't find a way to get pango version info */
             pango_layout_set_ellipsize(playout, PANGO_ELLIPSIZE_END);
@@ -403,6 +402,7 @@ xfce_desktop_icon_paint(XfceDesktop *desktop,
             pango_layout_set_ellipsize(playout, PANGO_ELLIPSIZE_NONE);
 #endif
         }
+        pango_layout_set_width(playout, TEXT_WIDTH * PANGO_SCALE);
     }
     pango_layout_get_pixel_size(playout, &text_w, &text_h);
     

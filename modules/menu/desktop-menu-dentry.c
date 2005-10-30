@@ -230,11 +230,15 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
             }
         }
         if(!pix) {
-            pix = xfce_themed_icon_load("xfce-unknown", _xfce_desktop_menu_icon_size);
-            if(!pix)
-                pix = xfce_themed_icon_load("unknown", _xfce_desktop_menu_icon_size);
+            icon = "xfce-unknown";
+            pix = xfce_themed_icon_load(icon, _xfce_desktop_menu_icon_size);
+            if(!pix) {
+                icon = "unknown";
+                pix = xfce_themed_icon_load(icon, _xfce_desktop_menu_icon_size);
+            }
             if(!pix) {
                 _desktop_menu_ensure_unknown_icon();
+                icon = "XFDESKTOP_BUILTIN_UNKNOWN_ICON";
                 if(gdk_pixbuf_get_width(unknown_icon) != _xfce_desktop_menu_icon_size) {
                     GdkPixbuf *tmp = gdk_pixbuf_scale_simple(pix,
                                                              _xfce_desktop_menu_icon_size,
@@ -262,7 +266,7 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
     menu_pos = _menu_shell_insert_sorted(GTK_MENU_SHELL(parent), mi, q);
     g_hash_table_insert(desktop_menu->menu_branches, g_strdup(path), submenu);
     
-    desktop_menu_cache_add_entry(DM_TYPE_MENU, q, NULL, icon ? icon : NULL,
+    desktop_menu_cache_add_entry(DM_TYPE_MENU, q, NULL, icon,
             FALSE, FALSE, parent, menu_pos, submenu);
     
     BD("for the hell of it: basepath=%s", desktop_menu->dentry_basepath);
