@@ -76,7 +76,6 @@ typedef struct _DMPlugin {
 } DMPlugin;
 
 
-
 #if GTK_CHECK_VERSION(2, 6, 0)
 /* util */
 GtkWidget *
@@ -128,31 +127,74 @@ dmp_get_real_path(const gchar *raw_path)
     return xfce_expand_variables(raw_path, NULL);
 }
 
+static GdkPixbuf *
+dmp_get_icon(const gchar *icon_name, gint size, GtkOrientation orientation)
+{
+    GdkPixbuf *pix = NULL;
+    gchar *filename;
+    gint w, h;
+    
+    filename = xfce_themed_icon_lookup(icon_name, size);
+    if(!filename)
+        return NULL;
+    
+#if GTK_CHECK_VERSION(2, 6, 0)
+    w = orientation == GTK_ORIENTATION_HORIZONTAL ? -1 : size;
+    h = orientation == GTK_ORIENTATION_VERTICAL ? -1 : size;
+    pix = gdk_pixbuf_new_from_file_at_scale(filename, w, h, TRUE, NULL);
+#else
+    pix = gdk_pixbuf_new_from_file(filename, NULL);
+    if(pix) {
+        GdkPixbuf *tmp;
+        gdouble aspect;
+        
+        w = gdk_pixbuf_get_width(pix);
+        h = gdk_pixbuf_get_height(pix);
+        aspect = (gdouble)w / h;
+        
+        w = orientation == GTK_ORIENTATION_HORIZONTAL ? size*aspect : size;
+        h = orientation == GTK_ORIENTATION_VERTICAL ? size*aspect : size;
+        
+        tmp = gdk_pixbuf_scale_simple(pix, w, h, GDK_INTERP_BILINEAR);
+        g_object_unref(G_OBJECT(pix));
+        pix = tmp;
+    }
+#endif
+    
+    g_free(filename);
+    
+    return pix;
+}
+
 static void
 dmp_set_size(XfcePanelPlugin *plugin, gint wsize, DMPlugin *dmp)
 {
-    gint width, height, size;
+    gint width, height, size, pix_w = 0, pix_h = 0;
+    GtkOrientation orientation = xfce_panel_plugin_get_orientation(plugin);
     
     size = wsize - MAX(GTK_WIDGET(dmp->button)->style->xthickness,
                        GTK_WIDGET(dmp->button)->style->ythickness) - 1;
     
     DBG("wsize: %d, size: %d", wsize, size);
     
-    if(dmp->icon_file) { /* not sure why this is here: && !gtk_image_get_pixbuf(GTK_IMAGE(dmp->image))) { */
-        GdkPixbuf *pix = xfce_themed_icon_load(dmp->icon_file, size);
+    if(dmp->icon_file) {
+        GdkPixbuf *pix = dmp_get_icon(dmp->icon_file, size, orientation);
         if(pix) {
+            pix_w = gdk_pixbuf_get_width(pix);
+            pix_h = gdk_pixbuf_get_height(pix);
             xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), pix);
             g_object_unref(G_OBJECT(pix));
         }
     }
     
-    width = height = wsize;
+    width = pix_w + (wsize - size);
+    height = pix_h + (wsize - size);
     
     if(dmp->show_button_title) {
         GtkRequisition req;
         
         gtk_widget_size_request(dmp->label, &req);
-        if(xfce_panel_plugin_get_orientation(plugin) == GTK_ORIENTATION_HORIZONTAL)
+        if(orientation == GTK_ORIENTATION_HORIZONTAL)
             width += req.width + BORDER/2;
         else {
             width = (width > req.width ? width : req.width
