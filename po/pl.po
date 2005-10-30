@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-21 17:33+0900\n"
+"POT-Creation-Date: 2005-10-30 22:26+0900\n"
 "PO-Revision-Date: 2005-09-21 09:50+0900\n"
 "Last-Translator: Robert Kurowski <koorek@o2.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -101,7 +101,7 @@ msgstr "Wszystkie pola muszą być wypełnione aby dodać element."
 msgid "The 'Name' field is required."
 msgstr "Pole 'Nazwa' jest wymagane."
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:308
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:311
 msgid "--- separator ---"
 msgstr "--- separator ---"
 
@@ -149,11 +149,11 @@ msgid "The 'Source' field is required."
 msgstr "Pole 'Źródło' jest wymagane."
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:362
+#: ../menueditor/utils.c:365
 msgid "--- include ---"
 msgstr "--- dołącz ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:379
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:382
 msgid "system"
 msgstr "system"
 
@@ -191,7 +191,7 @@ msgstr "Czy jesteś pewny/a, że chcesz zamknąć bieżące menu?"
 msgid "Do you want to save before closing the file?"
 msgstr "Czy chcesz zapisać przed zamknięciem pliku?"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:577
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:580
 msgid "Select command"
 msgstr "Wybierz polecenie"
 
@@ -312,24 +312,24 @@ msgstr "Polecenie"
 msgid "Hidden"
 msgstr "Ukryty"
 
-#: ../menueditor/utils.c:639
+#: ../menueditor/utils.c:642
 msgid "Select icon"
 msgstr "Wybierz ikonę"
 
-#: ../menueditor/utils.c:645 ../panel-plugin/desktop-menu-plugin.c:503
+#: ../menueditor/utils.c:648 ../panel-plugin/desktop-menu-plugin.c:545
 #: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
 #: ../settings/backdrop_settings.c:524
 msgid "All Files"
 msgstr "Wszystkie pliki"
 
-#: ../menueditor/utils.c:649 ../panel-plugin/desktop-menu-plugin.c:509
+#: ../menueditor/utils.c:652 ../panel-plugin/desktop-menu-plugin.c:551
 #: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
 msgid "Image Files"
 msgstr "Pliki graficzne"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:665
+#: ../panel-plugin/desktop-menu-plugin.c:707
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Menu Xfce"
@@ -357,67 +357,67 @@ msgstr ""
 msgid "/Other"
 msgstr "/Inne"
 
-#: ../panel-plugin/desktop-menu-plugin.c:486
+#: ../panel-plugin/desktop-menu-plugin.c:528
 msgid "Select Icon"
 msgstr "Wybierz ikonę"
 
-#: ../panel-plugin/desktop-menu-plugin.c:488
+#: ../panel-plugin/desktop-menu-plugin.c:530
 msgid "Select Menu File"
 msgstr "Wybierz plik menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:517
+#: ../panel-plugin/desktop-menu-plugin.c:559
 msgid "Menu Files"
 msgstr "Pliki menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:634 ../settings/menu_settings.c:153
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:153
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Nie można było uruchomić xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:657
+#: ../panel-plugin/desktop-menu-plugin.c:699
 #, fuzzy
 msgid "Edit Properties"
 msgstr "Edytuj listę z tłami"
 
-#: ../panel-plugin/desktop-menu-plugin.c:675
+#: ../panel-plugin/desktop-menu-plugin.c:717
 #, fuzzy
 msgid "Button"
 msgstr "_Ikona przycisku:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:688
+#: ../panel-plugin/desktop-menu-plugin.c:730
 msgid "Button _title:"
 msgstr "_Tytuł przycisku:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:701
+#: ../panel-plugin/desktop-menu-plugin.c:743
 msgid "_Show title in button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:708
+#: ../panel-plugin/desktop-menu-plugin.c:750
 msgid "Menu File"
 msgstr "Plik menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:720
+#: ../panel-plugin/desktop-menu-plugin.c:762
 msgid "Use default _desktop menu file"
 msgstr "Użyj _domyślnego pliku menu pulpitu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:729
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Use _custom menu file:"
 msgstr "Użyj _własnego pliku menu:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:781
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:823
+#: ../panel-plugin/desktop-menu-plugin.c:825
 msgid "_Edit Menu"
 msgstr "_Edytuj menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:790
+#: ../panel-plugin/desktop-menu-plugin.c:832
 msgid "Icons"
 msgstr "Ikony"
 
-#: ../panel-plugin/desktop-menu-plugin.c:802
+#: ../panel-plugin/desktop-menu-plugin.c:844
 msgid "_Button icon:"
 msgstr "_Ikona przycisku:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:826
+#: ../panel-plugin/desktop-menu-plugin.c:868
 msgid "Show _icons in menu"
 msgstr "Pokazuj _ikony w menu"
 

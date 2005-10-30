@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-19 01:39+0900\n"
+"POT-Creation-Date: 2005-10-30 22:26+0900\n"
 "PO-Revision-Date: 2005-10-09 22:18+0900\n"
 "Last-Translator: Norayr Chilingaryan <norik@freenet.am>\n"
 "Language-Team: Armenian <en@li.org>\n"
@@ -102,7 +102,7 @@ msgstr "Անհրաժեշտ է լրացնել բոլոր դաշտերը"
 msgid "The 'Name' field is required."
 msgstr "«Անուն» դաշտը անհրաժեշտ է լրացնել"
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:308
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:311
 msgid "--- separator ---"
 msgstr "––– բաժանիչ –––"
 
@@ -150,11 +150,11 @@ msgid "The 'Source' field is required."
 msgstr "«Ակունք» դաշտը անհրաժեշտ է լրացնել"
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:362
+#: ../menueditor/utils.c:365
 msgid "--- include ---"
 msgstr "––– ներառել –––"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:379
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:382
 msgid "system"
 msgstr "համակարգ"
 
@@ -192,7 +192,7 @@ msgstr "Վստա՞հեք, որ ուզում եք փակել ընթացիկ ցա�
 msgid "Do you want to save before closing the file?"
 msgstr "Ուզու՞մ եք հիշել մինչ ֆայլը փակելը"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:577
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:580
 msgid "Select command"
 msgstr "Ընտրեք հրամանը"
 
@@ -313,25 +313,25 @@ msgstr "Հրաման"
 msgid "Hidden"
 msgstr "Թաքուն"
 
-#: ../menueditor/utils.c:639
+#: ../menueditor/utils.c:642
 #, fuzzy
 msgid "Select icon"
 msgstr "Ընտրեք Պատկերակը"
 
-#: ../menueditor/utils.c:645 ../panel-plugin/desktop-menu-plugin.c:503
+#: ../menueditor/utils.c:648 ../panel-plugin/desktop-menu-plugin.c:545
 #: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
 #: ../settings/backdrop_settings.c:524
 msgid "All Files"
 msgstr "Բոլոր ֆայլերը"
 
-#: ../menueditor/utils.c:649 ../panel-plugin/desktop-menu-plugin.c:509
+#: ../menueditor/utils.c:652 ../panel-plugin/desktop-menu-plugin.c:551
 #: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
 msgid "Image Files"
 msgstr "Պատկերների ֆայլերը"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:665
+#: ../panel-plugin/desktop-menu-plugin.c:707
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce Ցանկ"
@@ -358,67 +358,67 @@ msgstr ""
 msgid "/Other"
 msgstr "/Այլ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:486
+#: ../panel-plugin/desktop-menu-plugin.c:528
 msgid "Select Icon"
 msgstr "Ընտրեք Պատկերակը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:488
+#: ../panel-plugin/desktop-menu-plugin.c:530
 msgid "Select Menu File"
 msgstr "Ընտրեք ցանկի ֆայլը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:517
+#: ../panel-plugin/desktop-menu-plugin.c:559
 msgid "Menu Files"
 msgstr "Ցանկի Ֆայլեր"
 
-#: ../panel-plugin/desktop-menu-plugin.c:634 ../settings/menu_settings.c:153
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:153
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Հնարավոր չէ աշխատացնել xfce4-menueditor ծրագիրը՝ %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:657
+#: ../panel-plugin/desktop-menu-plugin.c:699
 #, fuzzy
 msgid "Edit Properties"
 msgstr "Խմբագրել նախադրյալների ցուցակը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:675
+#: ../panel-plugin/desktop-menu-plugin.c:717
 #, fuzzy
 msgid "Button"
 msgstr "_Ստեղն պատկերակը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:688
+#: ../panel-plugin/desktop-menu-plugin.c:730
 msgid "Button _title:"
 msgstr "Ստեղնի _վերնագիրը՝"
 
-#: ../panel-plugin/desktop-menu-plugin.c:701
+#: ../panel-plugin/desktop-menu-plugin.c:743
 msgid "_Show title in button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:708
+#: ../panel-plugin/desktop-menu-plugin.c:750
 msgid "Menu File"
 msgstr "Ցանկի Ֆայլ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:720
+#: ../panel-plugin/desktop-menu-plugin.c:762
 msgid "Use default _desktop menu file"
 msgstr "Կիրառել հիմնական _գրասեղան ցանկի ֆայլը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:729
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Use _custom menu file:"
 msgstr "Կիրառել _փոփոխված ցանկի ֆայլը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:781
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:823
+#: ../panel-plugin/desktop-menu-plugin.c:825
 msgid "_Edit Menu"
 msgstr "_Խմբագրել Ցանկը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:790
+#: ../panel-plugin/desktop-menu-plugin.c:832
 msgid "Icons"
 msgstr "Պատկերակներ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:802
+#: ../panel-plugin/desktop-menu-plugin.c:844
 msgid "_Button icon:"
 msgstr "_Ստեղն պատկերակը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:826
+#: ../panel-plugin/desktop-menu-plugin.c:868
 msgid "Show _icons in menu"
 msgstr "Ցույց տալ _պատկերակները ցանկի մեջ"
 

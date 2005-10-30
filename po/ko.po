@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-21 21:47+0900\n"
+"POT-Creation-Date: 2005-10-30 22:26+0900\n"
 "PO-Revision-Date: 2005-10-21 22:07+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
@@ -102,7 +102,7 @@ msgstr "모든 항목을 입력해야 합니다."
 msgid "The 'Name' field is required."
 msgstr "'이름'을 입력하세요."
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:308
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:311
 msgid "--- separator ---"
 msgstr "--- 분리 표시 ---"
 
@@ -150,11 +150,11 @@ msgid "The 'Source' field is required."
 msgstr "'위치'를 설정해 주어야 합니다."
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:362
+#: ../menueditor/utils.c:365
 msgid "--- include ---"
 msgstr "--- 외부 메뉴 ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:379
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:382
 msgid "system"
 msgstr "시스템"
 
@@ -192,7 +192,7 @@ msgstr "현재 메뉴를 닫으시렵니까?"
 msgid "Do you want to save before closing the file?"
 msgstr "화일을 닫기 전에 저장하시렵니까?"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:577
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:580
 msgid "Select command"
 msgstr "명령 선택"
 
@@ -313,25 +313,25 @@ msgstr "명령"
 msgid "Hidden"
 msgstr "숨김"
 
-#: ../menueditor/utils.c:639
+#: ../menueditor/utils.c:642
 #, fuzzy
 msgid "Select icon"
 msgstr "아이콘 선택"
 
-#: ../menueditor/utils.c:645 ../panel-plugin/desktop-menu-plugin.c:503
+#: ../menueditor/utils.c:648 ../panel-plugin/desktop-menu-plugin.c:545
 #: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
 #: ../settings/backdrop_settings.c:524
 msgid "All Files"
 msgstr "모든 화일"
 
-#: ../menueditor/utils.c:649 ../panel-plugin/desktop-menu-plugin.c:509
+#: ../menueditor/utils.c:652 ../panel-plugin/desktop-menu-plugin.c:551
 #: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
 msgid "Image Files"
 msgstr "그림 화일"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:665
+#: ../panel-plugin/desktop-menu-plugin.c:707
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce 메뉴"
@@ -359,66 +359,66 @@ msgstr ""
 msgid "/Other"
 msgstr "기타"
 
-#: ../panel-plugin/desktop-menu-plugin.c:486
+#: ../panel-plugin/desktop-menu-plugin.c:528
 msgid "Select Icon"
 msgstr "아이콘 선택"
 
-#: ../panel-plugin/desktop-menu-plugin.c:488
+#: ../panel-plugin/desktop-menu-plugin.c:530
 msgid "Select Menu File"
 msgstr "메뉴 화일 선택"
 
-#: ../panel-plugin/desktop-menu-plugin.c:517
+#: ../panel-plugin/desktop-menu-plugin.c:559
 msgid "Menu Files"
 msgstr "메뉴 화일"
 
-#: ../panel-plugin/desktop-menu-plugin.c:634 ../settings/menu_settings.c:153
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:153
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Xfce4 메뉴 편집기 기동 실패: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:657
+#: ../panel-plugin/desktop-menu-plugin.c:699
 #, fuzzy
 msgid "Edit Properties"
 msgstr "배경화면 목록을 수정합니다."
 
-#: ../panel-plugin/desktop-menu-plugin.c:675
+#: ../panel-plugin/desktop-menu-plugin.c:717
 msgid "Button"
 msgstr "버튼"
 
-#: ../panel-plugin/desktop-menu-plugin.c:688
+#: ../panel-plugin/desktop-menu-plugin.c:730
 msgid "Button _title:"
 msgstr "버튼 이름(_t):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:701
+#: ../panel-plugin/desktop-menu-plugin.c:743
 msgid "_Show title in button"
 msgstr "버튼에 이름보이기(_S)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:708
+#: ../panel-plugin/desktop-menu-plugin.c:750
 msgid "Menu File"
 msgstr "메뉴 화일"
 
-#: ../panel-plugin/desktop-menu-plugin.c:720
+#: ../panel-plugin/desktop-menu-plugin.c:762
 msgid "Use default _desktop menu file"
 msgstr "기본 데스크탑 메뉴를 사용합니다(_d)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:729
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Use _custom menu file:"
 msgstr "사용자 메뉴화일 적용(_c):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:781
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:823
+#: ../panel-plugin/desktop-menu-plugin.c:825
 msgid "_Edit Menu"
 msgstr "편집 메뉴(_E)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:790
+#: ../panel-plugin/desktop-menu-plugin.c:832
 msgid "Icons"
 msgstr "아이콘"
 
-#: ../panel-plugin/desktop-menu-plugin.c:802
+#: ../panel-plugin/desktop-menu-plugin.c:844
 msgid "_Button icon:"
 msgstr "버튼 아이콘(_B):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:826
+#: ../panel-plugin/desktop-menu-plugin.c:868
 msgid "Show _icons in menu"
 msgstr "메뉴에 아이콘 보이기(_i)"
 

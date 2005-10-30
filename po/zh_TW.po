@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-19 01:39+0900\n"
+"POT-Creation-Date: 2005-10-30 22:26+0900\n"
 "PO-Revision-Date: 2005-10-14 21:17+0800\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -103,7 +103,7 @@ msgstr "要新增項目，就必須填寫所有欄位。"
 msgid "The 'Name' field is required."
 msgstr "「名稱」一欄必須填寫。"
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:308
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:311
 msgid "--- separator ---"
 msgstr "--- 分隔線 ---"
 
@@ -154,12 +154,12 @@ msgid "The 'Source' field is required."
 msgstr "「來源」一欄必須填寫。"
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:362
+#: ../menueditor/utils.c:365
 msgid "--- include ---"
 msgstr "--- 插入 ---"
 
 # NOTE「系統選單」之略
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:379
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:382
 msgid "system"
 msgstr "系統"
 
@@ -197,7 +197,7 @@ msgstr "您真要關閉目前的選單嗎？"
 msgid "Do you want to save before closing the file?"
 msgstr "關閉檔案前要先行儲存嗎？"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:577
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:580
 msgid "Select command"
 msgstr "選擇指令"
 
@@ -321,25 +321,25 @@ msgstr "指令"
 msgid "Hidden"
 msgstr "隱藏"
 
-#: ../menueditor/utils.c:639
+#: ../menueditor/utils.c:642
 #, fuzzy
 msgid "Select icon"
 msgstr "選擇圖示"
 
-#: ../menueditor/utils.c:645 ../panel-plugin/desktop-menu-plugin.c:503
+#: ../menueditor/utils.c:648 ../panel-plugin/desktop-menu-plugin.c:545
 #: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
 #: ../settings/backdrop_settings.c:524
 msgid "All Files"
 msgstr "所有檔案"
 
-#: ../menueditor/utils.c:649 ../panel-plugin/desktop-menu-plugin.c:509
+#: ../menueditor/utils.c:652 ../panel-plugin/desktop-menu-plugin.c:551
 #: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
 msgid "Image Files"
 msgstr "影像檔案"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:665
+#: ../panel-plugin/desktop-menu-plugin.c:707
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce 選單"
@@ -367,65 +367,65 @@ msgstr ""
 msgid "/Other"
 msgstr "/其他"
 
-#: ../panel-plugin/desktop-menu-plugin.c:486
+#: ../panel-plugin/desktop-menu-plugin.c:528
 msgid "Select Icon"
 msgstr "選擇圖示"
 
-#: ../panel-plugin/desktop-menu-plugin.c:488
+#: ../panel-plugin/desktop-menu-plugin.c:530
 msgid "Select Menu File"
 msgstr "選擇選單檔案"
 
-#: ../panel-plugin/desktop-menu-plugin.c:517
+#: ../panel-plugin/desktop-menu-plugin.c:559
 msgid "Menu Files"
 msgstr "選單檔案"
 
-#: ../panel-plugin/desktop-menu-plugin.c:634 ../settings/menu_settings.c:153
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:153
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "無法執行 xfce4-menueditor：%s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:657
+#: ../panel-plugin/desktop-menu-plugin.c:699
 msgid "Edit Properties"
 msgstr "編輯屬性"
 
-#: ../panel-plugin/desktop-menu-plugin.c:675
+#: ../panel-plugin/desktop-menu-plugin.c:717
 msgid "Button"
 msgstr "按鈕"
 
-#: ../panel-plugin/desktop-menu-plugin.c:688
+#: ../panel-plugin/desktop-menu-plugin.c:730
 msgid "Button _title:"
 msgstr "按鈕標題(_T)："
 
-#: ../panel-plugin/desktop-menu-plugin.c:701
+#: ../panel-plugin/desktop-menu-plugin.c:743
 msgid "_Show title in button"
 msgstr "在按鈕中顯示標題(_S)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:708
+#: ../panel-plugin/desktop-menu-plugin.c:750
 msgid "Menu File"
 msgstr "選單檔案"
 
-#: ../panel-plugin/desktop-menu-plugin.c:720
+#: ../panel-plugin/desktop-menu-plugin.c:762
 msgid "Use default _desktop menu file"
 msgstr "使用預設桌面選單檔案(_D)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:729
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Use _custom menu file:"
 msgstr "使用選單檔案(_C)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:781
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:823
+#: ../panel-plugin/desktop-menu-plugin.c:825
 msgid "_Edit Menu"
 msgstr "編輯選單(_E)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:790
+#: ../panel-plugin/desktop-menu-plugin.c:832
 msgid "Icons"
 msgstr "圖示"
 
-#: ../panel-plugin/desktop-menu-plugin.c:802
+#: ../panel-plugin/desktop-menu-plugin.c:844
 msgid "_Button icon:"
 msgstr "按鈕圖示(_B)："
 
-#: ../panel-plugin/desktop-menu-plugin.c:826
+#: ../panel-plugin/desktop-menu-plugin.c:868
 msgid "Show _icons in menu"
 msgstr "在選單內顯示圖示(_I)"
 

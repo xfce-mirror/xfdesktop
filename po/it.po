@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-28 22:00-0800\n"
+"POT-Creation-Date: 2005-10-30 22:26+0900\n"
 "PO-Revision-Date: 2005-10-21 12:36+0100\n"
 "Last-Translator: Alex Dupre <ale@FreeBSD.org>\n"
 "Language-Team: GUFI <traduzioni@gufi.org>\n"
@@ -24,8 +24,7 @@ msgstr "Editor del menu di Xfce4"
 msgid "Core developer"
 msgstr "Sviluppatore principale"
 
-#: ../menueditor/about_dialog.c:44
-#: ../menueditor/about_dialog.c:45
+#: ../menueditor/about_dialog.c:44 ../menueditor/about_dialog.c:45
 #: ../menueditor/about_dialog.c:46
 msgid "Contributor"
 msgstr "Contribuente"
@@ -34,14 +33,12 @@ msgstr "Contribuente"
 msgid "Icon designer"
 msgstr "Disegnatore di Icone"
 
-#: ../menueditor/add_dialog.c:159
-#: ../menueditor/add_dialog.c:169
+#: ../menueditor/add_dialog.c:159 ../menueditor/add_dialog.c:169
 msgid "Add menu entry"
 msgstr "Aggiunge un elemento al menu"
 
 #. Type
-#: ../menueditor/add_dialog.c:173
-#: ../menueditor/add_menu_dialog.c:110
+#: ../menueditor/add_dialog.c:173 ../menueditor/add_menu_dialog.c:110
 msgid "Type:"
 msgstr "Tipo:"
 
@@ -67,64 +64,53 @@ msgstr "Esci"
 
 #  Name
 #. Name
-#: ../menueditor/add_dialog.c:206
-#: ../menueditor/edit_dialog.c:147
+#: ../menueditor/add_dialog.c:206 ../menueditor/edit_dialog.c:147
 #: ../menueditor/edit_dialog.c:207
 msgid "Name:"
 msgstr "Nome:"
 
-#: ../menueditor/add_dialog.c:214
-#: ../menueditor/edit_dialog.c:152
+#: ../menueditor/add_dialog.c:214 ../menueditor/edit_dialog.c:152
 msgid "Command:"
 msgstr "Comando:"
 
-#: ../menueditor/add_dialog.c:226
-#: ../menueditor/edit_dialog.c:139
+#: ../menueditor/add_dialog.c:226 ../menueditor/edit_dialog.c:139
 #: ../menueditor/edit_dialog.c:199
 msgid "Icon:"
 msgstr "Icona:"
 
 #. Start Notify check button
 #. Startup notification
-#: ../menueditor/add_dialog.c:237
-#: ../menueditor/edit_dialog.c:160
+#: ../menueditor/add_dialog.c:237 ../menueditor/edit_dialog.c:160
 msgid "Use startup _notification"
 msgstr "Usa la _notifica dell'avvio"
 
 #. Run in terminal check button
 #. Run in terminal
-#: ../menueditor/add_dialog.c:241
-#: ../menueditor/edit_dialog.c:163
+#: ../menueditor/add_dialog.c:241 ../menueditor/edit_dialog.c:163
 msgid "Run in _terminal"
 msgstr "Avvia in un _terminale"
 
-#: ../menueditor/add_dialog.c:272
-#: ../menueditor/edit_dialog.c:242
+#: ../menueditor/add_dialog.c:272 ../menueditor/edit_dialog.c:242
 msgid "The command doesn't exist !"
 msgstr "Il comando non esiste !"
 
-#: ../menueditor/add_dialog.c:278
-#: ../menueditor/edit_dialog.c:248
+#: ../menueditor/add_dialog.c:278 ../menueditor/edit_dialog.c:248
 msgid "All fields must be filled to add an item."
 msgstr "Per aggiungere un elemento tutti i campi devono essere riempiti."
 
-#: ../menueditor/add_dialog.c:287
-#: ../menueditor/edit_dialog.c:257
+#: ../menueditor/add_dialog.c:287 ../menueditor/edit_dialog.c:257
 msgid "The 'Name' field is required."
 msgstr "Il campo 'Nome' e' obbligatorio."
 
-#: ../menueditor/add_dialog.c:331
-#: ../menueditor/utils.c:308
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:311
 msgid "--- separator ---"
 msgstr "--- separatore ---"
 
-#: ../menueditor/add_dialog.c:357
-#: ../menueditor/edit_dialog.c:316
+#: ../menueditor/add_dialog.c:357 ../menueditor/edit_dialog.c:316
 msgid "quit"
 msgstr "esci"
 
-#: ../menueditor/add_menu_dialog.c:97
-#: ../menueditor/add_menu_dialog.c:103
+#: ../menueditor/add_menu_dialog.c:97 ../menueditor/add_menu_dialog.c:103
 #: ../menueditor/menueditor.c:842
 msgid "Add an external menu"
 msgstr "Aggiunge un menu esterno"
@@ -163,20 +149,17 @@ msgstr ""
 msgid "The 'Source' field is required."
 msgstr "Il campo 'Sorgente' e' obbligatorio."
 
-#: ../menueditor/add_menu_dialog.c:202
-#: ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:362
+#: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
+#: ../menueditor/utils.c:365
 msgid "--- include ---"
 msgstr "--- includi ---"
 
-#: ../menueditor/add_menu_dialog.c:213
-#: ../menueditor/utils.c:379
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:382
 msgid "system"
 msgstr "sistema"
 
 #. Create dialog for editing
-#: ../menueditor/edit_dialog.c:116
-#: ../menueditor/edit_dialog.c:123
+#: ../menueditor/edit_dialog.c:116 ../menueditor/edit_dialog.c:123
 msgid "Edit menu entry"
 msgstr "Modifice l'elemento del menu"
 
@@ -189,8 +172,7 @@ msgstr "I separatori non possono essere editati"
 msgid "File %s doesn't exist !"
 msgstr "Il file %s non esiste !"
 
-#: ../menueditor/menueditor.c:121
-#: ../menueditor/menueditor.c:537
+#: ../menueditor/menueditor.c:121 ../menueditor/menueditor.c:537
 msgid "Do you want to save before closing the menu ?"
 msgstr "Volete salvare prima di chiudere il menu?"
 
@@ -210,13 +192,11 @@ msgstr "Siete sicuri di voler chiudere il menu attuale ?"
 msgid "Do you want to save before closing the file?"
 msgstr "Volete salvare prima di chiudere il file?"
 
-#: ../menueditor/menueditor.c:338
-#: ../menueditor/utils.c:577
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:580
 msgid "Select command"
 msgstr "Seleziona un comando"
 
-#: ../menueditor/menueditor.c:370
-#: ../menueditor/menueditor.c:427
+#: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
 #: ../menueditor/menueditor.c:535
 msgid "Question"
 msgstr "Domanda"
@@ -225,8 +205,7 @@ msgstr "Domanda"
 msgid "Do you want to save before opening an other menu ?"
 msgstr "Volete salvare prima di aprire un altro menu ?"
 
-#: ../menueditor/menueditor.c:374
-#: ../menueditor/menueditor.c:431
+#: ../menueditor/menueditor.c:374 ../menueditor/menueditor.c:431
 #: ../menueditor/menueditor.c:539
 msgid "Ignore modifications"
 msgstr "Ignora le modifiche"
@@ -335,28 +314,24 @@ msgstr "Comando"
 msgid "Hidden"
 msgstr "Nascosto"
 
-#: ../menueditor/utils.c:639
+#: ../menueditor/utils.c:642
 msgid "Select icon"
 msgstr "Seleziona un'icona"
 
-#: ../menueditor/utils.c:645
-#: ../panel-plugin/desktop-menu-plugin.c:503
-#: ../settings/backdrop-mgr.c:436
-#: ../settings/backdrop-mgr.c:537
+#: ../menueditor/utils.c:648 ../panel-plugin/desktop-menu-plugin.c:545
+#: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
 #: ../settings/backdrop_settings.c:524
 msgid "All Files"
 msgstr "Tutti i file"
 
-#: ../menueditor/utils.c:649
-#: ../panel-plugin/desktop-menu-plugin.c:509
-#: ../settings/backdrop-mgr.c:440
-#: ../settings/backdrop_settings.c:528
+#: ../menueditor/utils.c:652 ../panel-plugin/desktop-menu-plugin.c:551
+#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
 msgid "Image Files"
 msgstr "Immagini"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:665
+#: ../panel-plugin/desktop-menu-plugin.c:707
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Menu Xfce"
@@ -367,88 +342,91 @@ msgid "Unable to quit session."
 msgstr "Impossibile uscire dalla sessione."
 
 #: ../modules/menu/desktop-menu-file.c:119
-msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
+msgid ""
+"Quitting the session requires that Xfce's session manager (xfce4-session) is "
+"running, but it was not detected.  Please quit Xfce via another means."
 msgstr ""
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
-msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
+msgid ""
+"Quitting the session requires the 'xfce4-session-logout' command, but it "
+"could not be found: %s"
 msgstr ""
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
 msgstr "/Altro"
 
-#: ../panel-plugin/desktop-menu-plugin.c:486
+#: ../panel-plugin/desktop-menu-plugin.c:528
 msgid "Select Icon"
 msgstr "Seleziona un icona"
 
-#: ../panel-plugin/desktop-menu-plugin.c:488
+#: ../panel-plugin/desktop-menu-plugin.c:530
 msgid "Select Menu File"
 msgstr "Seleziona un Menu File"
 
-#: ../panel-plugin/desktop-menu-plugin.c:517
+#: ../panel-plugin/desktop-menu-plugin.c:559
 msgid "Menu Files"
 msgstr "Menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:634
-#: ../settings/menu_settings.c:153
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:153
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Impossibile lanciare xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:657
+#: ../panel-plugin/desktop-menu-plugin.c:699
 msgid "Edit Properties"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:675
+#: ../panel-plugin/desktop-menu-plugin.c:717
 msgid "Button"
 msgstr "Bottone"
 
-#: ../panel-plugin/desktop-menu-plugin.c:688
+#: ../panel-plugin/desktop-menu-plugin.c:730
 msgid "Button _title:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:701
+#: ../panel-plugin/desktop-menu-plugin.c:743
 msgid "_Show title in button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:708
+#: ../panel-plugin/desktop-menu-plugin.c:750
 msgid "Menu File"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:720
+#: ../panel-plugin/desktop-menu-plugin.c:762
 msgid "Use default _desktop menu file"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:729
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Use _custom menu file:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:781
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:823
+#: ../panel-plugin/desktop-menu-plugin.c:825
 msgid "_Edit Menu"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:790
+#: ../panel-plugin/desktop-menu-plugin.c:832
 msgid "Icons"
 msgstr "Icone"
 
-#: ../panel-plugin/desktop-menu-plugin.c:802
+#: ../panel-plugin/desktop-menu-plugin.c:844
 msgid "_Button icon:"
 msgstr "icona _Bottone:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:826
+#: ../panel-plugin/desktop-menu-plugin.c:868
 msgid "Show _icons in menu"
 msgstr "Visualizza le _icone nel menu"
 
-#: ../settings/backdrop-mgr.c:161
-#: ../src/xfce-desktop.c:522
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:522
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your changes"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
 msgstr ""
 "Impossibile salvare il file %s: %s\n"
 "\n"
@@ -474,8 +452,7 @@ msgstr "Lista di Sfondi"
 msgid "Image files"
 msgstr "File immagini"
 
-#: ../settings/backdrop-mgr.c:632
-#: ../settings/backdrop_settings.c:179
+#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:179
 #: ../settings/backdrop_settings.c:188
 msgid "backdrops.list"
 msgstr "sfondi.list"
@@ -493,8 +470,7 @@ msgid "Edit backdrop list"
 msgstr "Modifica la lista degli sfondi"
 
 #. the dialog
-#: ../settings/backdrop_settings.c:133
-#: ../settings/backdrop_settings.c:939
+#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:939
 #: ../src/xfce-desktop.c:1666
 msgid "Desktop"
 msgstr "Desktop"
@@ -565,7 +541,12 @@ msgid "Information"
 msgstr "Informazioni"
 
 #: ../settings/backdrop_settings.c:864
-msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgid ""
+"To ensure that Xfce does not manage your desktop the next time you start "
+"Xfce, please be sure to save your session when logging out.  If you are not "
+"using the Xfce Session Manager (xfce4-session), you will need to manually "
+"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
+"documentation provided on http://xfce.org/."
 msgstr ""
 
 #: ../settings/backdrop_settings.c:872
@@ -636,8 +617,7 @@ msgstr "_File:"
 msgid "_Backdrop"
 msgstr "_Sfondo"
 
-#: ../settings/backdrop_settings.c:1230
-#: ../settings/backdrop_settings.c:1232
+#: ../settings/backdrop_settings.c:1230 ../settings/backdrop_settings.c:1232
 #, c-format
 msgid "Screen %d"
 msgstr "Schermo %d"
@@ -699,15 +679,20 @@ msgstr "Le opzioni sono:\n"
 
 #: ../src/main.c:253
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "    -reload      Rilegge tutte le impostazioni, aggiorna la lista delle immagini\n"
+msgstr ""
+"    -reload      Rilegge tutte le impostazioni, aggiorna la lista delle "
+"immagini\n"
 
 #: ../src/main.c:254
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Pop uppa il menu (all'attuale posizione del mouse)\n"
 
 #: ../src/main.c:255
-msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  Pop uppa la lista delle finestre (all'attuale posizione del mouse)\n"
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+"    -windowlist  Pop uppa la lista delle finestre (all'attuale posizione del "
+"mouse)\n"
 
 #: ../src/main.c:256
 msgid "    -quit        Cause xfdesktop to quit\n"
@@ -723,8 +708,7 @@ msgstr "<b>Spazio di lavoro %d</b>"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Spazio di lavoro %d</i>"
 
-#: ../src/windowlist.c:268
-#: ../src/windowlist.c:271
+#: ../src/windowlist.c:268 ../src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "_Aggiungi spazio di lavoro"
 
@@ -761,4 +745,3 @@ msgstr "Impostazioni del Desktop di Xfce 4"
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr ""
-

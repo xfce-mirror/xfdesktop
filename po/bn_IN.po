@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-19 01:39+0900\n"
+"POT-Creation-Date: 2005-10-30 22:26+0900\n"
 "PO-Revision-Date: 2005-04-06 19:28+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bangla INDIA <LL@li.org>\n"
@@ -102,7 +102,7 @@ msgstr "নতুন বস্তু যোগ করার জন্য সম�
 msgid "The 'Name' field is required."
 msgstr "'নাম' ক্ষেত্রটি আবশ্যক।"
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:308
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:311
 msgid "--- separator ---"
 msgstr "--- বিভাজন রেখা ---"
 
@@ -150,11 +150,11 @@ msgid "The 'Source' field is required."
 msgstr "'উত্‍‌স' ক্ষেত্রটি পূর্ণ করা আবশ্যক।"
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:362
+#: ../menueditor/utils.c:365
 msgid "--- include ---"
 msgstr "--- অন্তর্ভুক্ত করা হবে ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:379
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:382
 msgid "system"
 msgstr "সিস্টেম"
 
@@ -194,7 +194,7 @@ msgstr "আপনি কি নিশ্চিতরূপে বর্তমা
 msgid "Do you want to save before closing the file?"
 msgstr "ফাইল বন্ধ করার পূর্বে কি আপনি সংরক্ষণ করতে ইচ্ছুক?"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:577
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:580
 msgid "Select command"
 msgstr "কমান্ড নির্বাচন করুন"
 
@@ -315,25 +315,25 @@ msgstr "কমান্ড"
 msgid "Hidden"
 msgstr "লুকোনো"
 
-#: ../menueditor/utils.c:639
+#: ../menueditor/utils.c:642
 #, fuzzy
 msgid "Select icon"
 msgstr "আইকন নির্বাচন করুন"
 
-#: ../menueditor/utils.c:645 ../panel-plugin/desktop-menu-plugin.c:503
+#: ../menueditor/utils.c:648 ../panel-plugin/desktop-menu-plugin.c:545
 #: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
 #: ../settings/backdrop_settings.c:524
 msgid "All Files"
 msgstr "সমস্ত ফাইল"
 
-#: ../menueditor/utils.c:649 ../panel-plugin/desktop-menu-plugin.c:509
+#: ../menueditor/utils.c:652 ../panel-plugin/desktop-menu-plugin.c:551
 #: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
 msgid "Image Files"
 msgstr "ছবির ফাইল"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:665
+#: ../panel-plugin/desktop-menu-plugin.c:707
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce মেনু"
@@ -360,73 +360,73 @@ msgstr ""
 msgid "/Other"
 msgstr "/অন্যান্য"
 
-#: ../panel-plugin/desktop-menu-plugin.c:486
+#: ../panel-plugin/desktop-menu-plugin.c:528
 msgid "Select Icon"
 msgstr "আইকন নির্বাচন করুন"
 
-#: ../panel-plugin/desktop-menu-plugin.c:488
+#: ../panel-plugin/desktop-menu-plugin.c:530
 msgid "Select Menu File"
 msgstr "মেনু ফাইল নির্বাচন করুন"
 
-#: ../panel-plugin/desktop-menu-plugin.c:517
+#: ../panel-plugin/desktop-menu-plugin.c:559
 msgid "Menu Files"
 msgstr "মেনু ফাইল"
 
-#: ../panel-plugin/desktop-menu-plugin.c:634 ../settings/menu_settings.c:153
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:153
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:657
+#: ../panel-plugin/desktop-menu-plugin.c:699
 #, fuzzy
 msgid "Edit Properties"
 msgstr "পটভূমির তালিকা সম্পাদন করুন"
 
-#: ../panel-plugin/desktop-menu-plugin.c:675
+#: ../panel-plugin/desktop-menu-plugin.c:717
 #, fuzzy
 msgid "Button"
 msgstr "বাটন আইকন:(_B)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:688
+#: ../panel-plugin/desktop-menu-plugin.c:730
 #, fuzzy
 msgid "Button _title:"
 msgstr "বাটন আইকন:(_B)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:701
+#: ../panel-plugin/desktop-menu-plugin.c:743
 msgid "_Show title in button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:708
+#: ../panel-plugin/desktop-menu-plugin.c:750
 #, fuzzy
 msgid "Menu File"
 msgstr "মেনু ফাইল"
 
-#: ../panel-plugin/desktop-menu-plugin.c:720
+#: ../panel-plugin/desktop-menu-plugin.c:762
 #, fuzzy
 msgid "Use default _desktop menu file"
 msgstr "ডেস্কটপ মেনু সম্পাদন করুন (_E)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:729
+#: ../panel-plugin/desktop-menu-plugin.c:771
 #, fuzzy
 msgid "Use _custom menu file:"
 msgstr "মেনু ফাইল খুলুন"
 
-#: ../panel-plugin/desktop-menu-plugin.c:781
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:823
+#: ../panel-plugin/desktop-menu-plugin.c:825
 #, fuzzy
 msgid "_Edit Menu"
 msgstr "মেনু (_M)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:790
+#: ../panel-plugin/desktop-menu-plugin.c:832
 #, fuzzy
 msgid "Icons"
 msgstr "আইকন:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:802
+#: ../panel-plugin/desktop-menu-plugin.c:844
 msgid "_Button icon:"
 msgstr "বাটন আইকন:(_B)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:826
+#: ../panel-plugin/desktop-menu-plugin.c:868
 msgid "Show _icons in menu"
 msgstr "মেনুর মধ্যে আইকন প্রদর্শন করা হবে (_i)"
 
