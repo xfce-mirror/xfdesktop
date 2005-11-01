@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-09 15:53+0900\n"
-"PO-Revision-Date: 2005-10-11 07:49+0900\n"
+"POT-Creation-Date: 2005-10-28 20:59+0900\n"
+"PO-Revision-Date: 2005-10-31 17:33+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
 "net>\n"
@@ -328,7 +328,7 @@ msgstr "숨김"
 
 #: menueditor/menueditor.c:1370
 msgid "Pointer"
-msgstr ""
+msgstr "포인터"
 
 #: menueditor/menueditor.c:1472
 msgid "Corrupted file or incorrect file format !"
@@ -649,19 +649,23 @@ msgid "%s: Unknown option: %s\n"
 msgstr "%s: 모르는 옵션: %s\n"
 
 #: src/main.c:249
+#, c-format
 msgid "Options are:\n"
 msgstr "옵션은 다음과 같니다:\n"
 
 #: src/main.c:250
+#, c-format
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload      모든 설정을 새로 읽어 오고, 그림 목록을 새로 고칩니다.\n"
 
 #: src/main.c:251
+#, c-format
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        메뉴를 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
 
 #: src/main.c:252
+#, c-format
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
