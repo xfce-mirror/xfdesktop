@@ -36,7 +36,7 @@ dnl Check for i18n support
 BM_I18N([xfdesktop], [af ar az be bg bn_IN ca cs da de el en_GB
 		      eo es es_MX et eu fa fi fr gu he hi hu hy it
 		      ja ko ku lt mr ms nb_NO nl pa pl pt_BR pt_PT
-		      ro ru sk sv ta tr uk vi zh_CN zh_TW])
+		      ro ru sk sl sv ta tr uk vi zh_CN zh_TW])
 
 dnl Check for X11 installed
 BM_LIBX11_REQUIRE

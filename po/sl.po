@@ -1,0 +1,691 @@
+# Slovenian translations for xfdesktop package.
+# Copyright (C) 2003-2005 The Xfce development team.
+# This file is distributed under the same license as the xfdesktop package.
+# Boštjan Špetič <igzebedze@auch.eu.org>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop 4.2.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-10-28 20:59+0900\n"
+"PO-Revision-Date: 2005-11-02 21:17+0900\n"
+"Last-Translator: Boštjan Špetič <igzebedze@auch.eu.org>\n"
+"Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10.2\n"
+
+#: menueditor/about_dialog.c:39
+msgid "A menu editor for Xfce4"
+msgstr "Urejevalnik menijev za Xfce4"
+
+#. Credits
+#: menueditor/about_dialog.c:43
+msgid "Core developer"
+msgstr "Glavni razvijalec"
+
+#: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:46
+msgid "Contributor"
+msgstr "Prispevnik"
+
+#: menueditor/about_dialog.c:47
+msgid "Icon designer"
+msgstr "Oblikovalec ikon"
+
+#: menueditor/add_dialog.c:138 menueditor/add_dialog.c:150
+msgid "Add menu entry"
+msgstr "Dodaj vnos v meni"
+
+#. Type
+#: menueditor/add_dialog.c:156 menueditor/add_menu_dialog.c:98
+#: menueditor/edit_dialog.c:149
+msgid "Type:"
+msgstr "Vrsta:"
+
+#: menueditor/add_dialog.c:159
+msgid "Launcher"
+msgstr "Zaganjalnik"
+
+#: menueditor/add_dialog.c:164
+msgid "Submenu"
+msgstr "Podmeni"
+
+#: menueditor/add_dialog.c:169
+msgid "Separator"
+msgstr "Ločilo"
+
+#: menueditor/add_dialog.c:174
+msgid "Title"
+msgstr "Naziv"
+
+#: menueditor/add_dialog.c:179
+msgid "Quit"
+msgstr "Končaj"
+
+#. Name
+#: menueditor/add_dialog.c:194 menueditor/edit_dialog.c:263
+#: menueditor/edit_dialog.c:314 menueditor/edit_dialog.c:353
+msgid "Name:"
+msgstr "Ime:"
+
+#: menueditor/add_dialog.c:204 menueditor/edit_dialog.c:264
+msgid "Command:"
+msgstr "Ukaz:"
+
+#: menueditor/add_dialog.c:220 menueditor/edit_dialog.c:255
+#: menueditor/edit_dialog.c:319 menueditor/edit_dialog.c:358
+#: menueditor/edit_dialog.c:396
+msgid "Icon:"
+msgstr "Ikona:"
+
+#. Start Notify check button
+#: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:275
+msgid "Use startup _notification"
+msgstr "Uporabi zagonsko _obveščanje"
+
+#. Run in terminal check button
+#: menueditor/add_dialog.c:240 menueditor/edit_dialog.c:276
+msgid "Run in _terminal"
+msgstr "Poženi v _terminalu"
+
+#: menueditor/add_dialog.c:285 menueditor/edit_dialog.c:468
+msgid "The command doesn't exist !"
+msgstr "Ukaz ne obstaja!"
+
+#: menueditor/add_dialog.c:291
+msgid "All fields must be filled to add an item."
+msgstr "Za dodajanje predmeta morajo biti izpolnjena vsa polja."
+
+#: menueditor/add_dialog.c:300
+msgid "The 'Name' field is required."
+msgstr "Polje 'Ime' je obvezno."
+
+#: menueditor/add_dialog.c:356 menueditor/dnd.c:153
+#: menueditor/menueditor.c:579 menueditor/move.c:87 menueditor/move.c:225
+msgid "--- separator ---"
+msgstr "--- ločilo ---"
+
+#: menueditor/add_dialog.c:381 menueditor/edit_dialog.c:505
+msgid "quit"
+msgstr "končaj"
+
+#: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
+#: menueditor/menueditor.c:1028
+msgid "Add an external menu"
+msgstr "Dodaj dodaten meni"
+
+#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:152
+msgid "File"
+msgstr "Datoteka"
+
+#: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:157
+msgid "System"
+msgstr "Sistem"
+
+#: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:172
+msgid "Source:"
+msgstr "Vir:"
+
+#. Style
+#: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:185
+msgid "Style:"
+msgstr "Slog:"
+
+#: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:188
+msgid "Simple"
+msgstr "Enostavno"
+
+#: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:191
+msgid "Multilevel"
+msgstr "Več stopenjsko"
+
+#. Unique
+#: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:204
+msgid "_Unique entries only"
+msgstr "Samo _edinstveni vnosi"
+
+#: menueditor/add_menu_dialog.c:208
+msgid "The 'Source' field is required."
+msgstr "Polje 'Vir' je obvezno."
+
+#: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:234
+#: menueditor/dnd.c:156 menueditor/edit_dialog.c:521
+#: menueditor/edit_dialog.c:534 menueditor/menueditor.c:618
+#: menueditor/move.c:111 menueditor/move.c:249
+msgid "--- include ---"
+msgstr "--- vključi ---"
+
+#: menueditor/add_menu_dialog.c:235 menueditor/dnd.c:161
+#: menueditor/edit_dialog.c:535 menueditor/menueditor.c:621
+#: menueditor/move.c:114 menueditor/move.c:252
+msgid "system"
+msgstr "sistem"
+
+#. Create dialog for editing
+#: menueditor/edit_dialog.c:103 menueditor/edit_dialog.c:113
+msgid "Edit menu entry"
+msgstr "Dodaj vnos v meni"
+
+#: menueditor/edit_dialog.c:131
+msgid "Separators cannot be edited"
+msgstr "Ločil ne morete urejati"
+
+#. Name
+#: menueditor/edit_dialog.c:403 menueditor/new_dialog.c:100
+msgid "Title:"
+msgstr "Naziv:"
+
+#: menueditor/menueditor.c:371
+msgid "Select command"
+msgstr "Izberi ukaz"
+
+#: menueditor/menueditor.c:435
+msgid "Select icon"
+msgstr "Izberi ikono"
+
+#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
+#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
+#: settings/backdrop_settings.c:533
+msgid "All Files"
+msgstr "Vse datoteke"
+
+#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
+#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
+msgid "Image Files"
+msgstr "Datoteke s slikami"
+
+#: menueditor/menueditor.c:500 menueditor/menueditor.c:903
+msgid "Do you want to save before closing the menu ?"
+msgstr "Ali želite shraniti preden zaprete meni?"
+
+#: menueditor/menueditor.c:502
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr "Spremenili ste meni, ali ga želite shraniti preden zaprete?"
+
+#: menueditor/menueditor.c:504
+msgid "Forget modifications"
+msgstr "Pozabi spremembe"
+
+#: menueditor/menueditor.c:690 menueditor/menueditor.c:749
+#: menueditor/menueditor.c:901
+msgid "Question"
+msgstr "Vprašanje"
+
+#: menueditor/menueditor.c:692
+msgid "Do you want to save before opening the default menu ?"
+msgstr "Ali želite shraniti pred odpiranjem privzetega menija?"
+
+#: menueditor/menueditor.c:694 menueditor/menueditor.c:753
+#: menueditor/menueditor.c:905
+msgid "Ignore modifications"
+msgstr "Zanemari spremembe"
+
+#: menueditor/menueditor.c:751
+msgid "Do you want to save before opening an other menu ?"
+msgstr "Ali želite shraniti pred odpiranjem drugega menija?"
+
+#: menueditor/menueditor.c:764
+msgid "Open menu file"
+msgstr "Odpri datoteko z menijem"
+
+#: menueditor/menueditor.c:799 menueditor/menueditor.c:810
+#, c-format
+msgid ""
+"Cannot write in %s : \n"
+"%s"
+msgstr ""
+"Ne morem zapisati v %s : \n"
+"%s"
+
+#: menueditor/menueditor.c:844
+msgid "Save as..."
+msgstr "Shrani kot..."
+
+#: menueditor/menueditor.c:1022
+msgid "Edit"
+msgstr "Uredi"
+
+#. File menu
+#: menueditor/menueditor.c:1225
+msgid "_File"
+msgstr "_Datoteka"
+
+#: menueditor/menueditor.c:1234
+msgid "Open default menu"
+msgstr "Odpri privzet meni"
+
+#. Edit menu
+#: menueditor/menueditor.c:1248
+msgid "_Edit"
+msgstr "_Uredi"
+
+#: menueditor/menueditor.c:1254
+msgid "Add an external menu..."
+msgstr "Dodaj dodaten meni..."
+
+#. Help menu
+#: menueditor/menueditor.c:1266
+msgid "_Help"
+msgstr "_Pomoč"
+
+#: menueditor/menueditor.c:1271
+msgid "_About..."
+msgstr "O programu..."
+
+#: menueditor/menueditor.c:1283
+msgid "Create a new Xfce4 menu file"
+msgstr "UStvari novo datoteko z Xfce4 menijem"
+
+#: menueditor/menueditor.c:1289
+msgid "Open an Xfce4 menu file"
+msgstr "Odpri datoteko z Xfce4 menijem"
+
+#: menueditor/menueditor.c:1295
+msgid "Save current menu"
+msgstr "Shrani trenutni meni"
+
+#: menueditor/menueditor.c:1300
+msgid "Close current menu"
+msgstr "Zapri trenutni meni"
+
+#: menueditor/menueditor.c:1306
+msgid "Add an entry to the menu"
+msgstr "Dodaj predmet v meni"
+
+#: menueditor/menueditor.c:1312
+msgid "Delete the current entry"
+msgstr "Zbriši trenutni meni"
+
+#: menueditor/menueditor.c:1318
+msgid "Move the current entry up"
+msgstr "Premakni trenutno polje navzgor"
+
+#: menueditor/menueditor.c:1324
+msgid "Move the current entry down"
+msgstr "Premakni trenutno polje navzdol"
+
+#: menueditor/menueditor.c:1331
+msgid "Collapse the tree"
+msgstr "Zapri drevo"
+
+#: menueditor/menueditor.c:1336
+msgid "Expand the tree"
+msgstr "Razširi drevo"
+
+#: menueditor/menueditor.c:1365
+msgid "Name"
+msgstr "Ime"
+
+#: menueditor/menueditor.c:1368
+msgid "Command"
+msgstr "Ukaz"
+
+#: menueditor/menueditor.c:1369
+msgid "Hidden"
+msgstr "Skrito"
+
+#: menueditor/menueditor.c:1370
+msgid "Pointer"
+msgstr "Kazalec"
+
+#: menueditor/menueditor.c:1472
+msgid "Corrupted file or incorrect file format !"
+msgstr "Pokvarjena datoteka ali napačna oblika zapisa!"
+
+#: menueditor/menueditor.c:1485
+msgid "No root element in file !"
+msgstr "V datoteki ni korenskega elementa!"
+
+#: menueditor/menueditor.c:1496
+msgid "Bad datafile format !"
+msgstr ""
+
+#: menueditor/menueditor.c:1626
+#, c-format
+msgid "File %s doesn't exist !"
+msgstr "Datoteka %s ne obstaja!"
+
+#: menueditor/move.c:370
+msgid "Do you want to move the item into the parent menu?"
+msgstr "Ali želite premakniti predmet v starševski meni?"
+
+#: menueditor/move.c:469
+msgid "Do you want to move the item into the submenu?"
+msgstr "Ali želite premakniti predmet v podmeni?"
+
+#: menueditor/new_dialog.c:60
+msgid "Are you sure you want to close the current menu?"
+msgstr "Ali res želite zapreti meni?"
+
+#: menueditor/new_dialog.c:75
+msgid "Do you want to save before closing the file?"
+msgstr "Ali želite shraniti pred zapiranjem datoteke?"
+
+#. get the filename and name for the new menu
+#: menueditor/new_dialog.c:85 menueditor/new_dialog.c:94
+msgid "New menu"
+msgstr "Nov meni"
+
+#. Filename
+#: menueditor/new_dialog.c:107
+msgid "Filename:"
+msgstr "Ime datoteke:"
+
+#: menueditor/new_dialog.c:141
+msgid "All fields are required."
+msgstr "Vsa polja so obvezna."
+
+#: modules/menu/desktop-menuspec.c:62
+msgid "/Other"
+msgstr "/drugo"
+
+#: panel-plugin/desktop-menu-plugin.c:279
+#: panel-plugin/desktop-menu-plugin.c:807
+msgid "Xfce Menu"
+msgstr "Xfce meni"
+
+#: panel-plugin/desktop-menu-plugin.c:493
+msgid "Select Icon"
+msgstr "Izberi ikono"
+
+#: panel-plugin/desktop-menu-plugin.c:495
+msgid "Select Menu File"
+msgstr "Izberite datoteko menija"
+
+#: panel-plugin/desktop-menu-plugin.c:524
+msgid "Menu Files"
+msgstr "Datoteke menija"
+
+#: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "Neuspešno zaganjanje urejevalnika menijev Xfce4: %s"
+
+#: panel-plugin/desktop-menu-plugin.c:663
+msgid "Button _title:"
+msgstr "_Naslov gumba:"
+
+#: panel-plugin/desktop-menu-plugin.c:676
+msgid "Menu File"
+msgstr "Datoteka menija"
+
+#: panel-plugin/desktop-menu-plugin.c:688
+msgid "Use default _desktop menu file"
+msgstr "Uporabi privzeto datoteko _namiznega menija"
+
+#: panel-plugin/desktop-menu-plugin.c:697
+msgid "Use _custom menu file:"
+msgstr "Uporabi _posebno datoteko menija:"
+
+#: panel-plugin/desktop-menu-plugin.c:749
+#: panel-plugin/desktop-menu-plugin.c:751
+msgid "_Edit Menu"
+msgstr "_Uredi menu"
+
+#: panel-plugin/desktop-menu-plugin.c:758
+msgid "Icons"
+msgstr "Ikone"
+
+#: panel-plugin/desktop-menu-plugin.c:770
+msgid "_Button icon:"
+msgstr "Ikona gumba:"
+
+#: panel-plugin/desktop-menu-plugin.c:794
+msgid "Show _icons in menu"
+msgstr "Kaži _ikone v meniju"
+
+#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+
+#: settings/backdrop-mgr.c:432
+msgid "Select backdrop image file"
+msgstr "Izberite sliko ozadja"
+
+#: settings/backdrop-mgr.c:533
+msgid "Choose backdrop list filename"
+msgstr ""
+
+#: settings/backdrop-mgr.c:542
+msgid "List Files"
+msgstr "Preglej datoteke"
+
+#: settings/backdrop-mgr.c:605
+msgid "Backdrop List"
+msgstr ""
+
+#: settings/backdrop-mgr.c:622
+msgid "Image files"
+msgstr "Datoteke s slikami"
+
+#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
+#: settings/backdrop_settings.c:197
+msgid "backdrops.list"
+msgstr ""
+
+#: settings/backdrop-mgr.c:641
+msgid "List file"
+msgstr ""
+
+#: settings/backdrop-mgr.c:661
+msgid "Create backdrop list"
+msgstr ""
+
+#: settings/backdrop-mgr.c:692
+msgid "Edit backdrop list"
+msgstr ""
+
+#. the dialog
+#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
+#: src/xfce-desktop.c:676
+msgid "Desktop"
+msgstr "Namizje"
+
+#: settings/backdrop_settings.c:528
+msgid "Select backdrop image or list file"
+msgstr ""
+
+#: settings/backdrop_settings.c:546
+msgid "List Files (*.list)"
+msgstr ""
+
+#: settings/backdrop_settings.c:636
+msgid "_Edit list..."
+msgstr "Uredi seznam..."
+
+#: settings/backdrop_settings.c:644
+msgid "_New list..."
+msgstr "Nov seznam..."
+
+#: settings/backdrop_settings.c:680
+msgid "S_tyle:"
+msgstr "Slog:"
+
+#: settings/backdrop_settings.c:688
+msgid "Tiled"
+msgstr "Tlakovano"
+
+#: settings/backdrop_settings.c:695
+msgid "Centered"
+msgstr "Na sredini"
+
+#: settings/backdrop_settings.c:702
+msgid "Scaled"
+msgstr "Umerjeno"
+
+#: settings/backdrop_settings.c:709
+msgid "Stretched"
+msgstr "Raztegnjeno"
+
+#: settings/backdrop_settings.c:716
+msgid "Auto"
+msgstr "Samodejno"
+
+#: settings/backdrop_settings.c:782
+msgid "Adjust _Brightness:"
+msgstr "Prilagodi _svetlost:"
+
+#. header
+#: settings/backdrop_settings.c:851
+msgid "Desktop Settings"
+msgstr "Nastavite namizja"
+
+#: settings/backdrop_settings.c:880
+msgid "_Backdrops"
+msgstr "_Ozadja"
+
+#. color settings frame
+#: settings/backdrop_settings.c:906
+msgid "Color"
+msgstr "Barva"
+
+#: settings/backdrop_settings.c:920
+msgid "_Color Style:"
+msgstr "Slog _barve:"
+
+#: settings/backdrop_settings.c:929
+msgid "Solid Color"
+msgstr "Čista barva"
+
+#: settings/backdrop_settings.c:936
+msgid "Horizontal Gradient"
+msgstr "Vodoravni preliv"
+
+#: settings/backdrop_settings.c:943
+msgid "Vertical Gradient"
+msgstr "Navpični preliv"
+
+#: settings/backdrop_settings.c:964
+msgid "Fi_rst Color:"
+msgstr "_Prva barva:"
+
+#: settings/backdrop_settings.c:985
+msgid "_Second Color:"
+msgstr "_Druga barva:"
+
+#. set color only checkbox
+#: settings/backdrop_settings.c:1006
+msgid "Set color _only"
+msgstr "Nastavi zgolj _barvo"
+
+#: settings/backdrop_settings.c:1021
+msgid "Image"
+msgstr "Slika"
+
+#: settings/backdrop_settings.c:1029
+msgid "Show _Image"
+msgstr "Prikaži sliko"
+
+#: settings/backdrop_settings.c:1051
+msgid "_File:"
+msgstr "_Datoteka:"
+
+#. don't set backdrop checkbox
+#: settings/backdrop_settings.c:1088
+msgid "_Don't set backdrop"
+msgstr "_Ne nastavi ozadja"
+
+#. add the single backdrop settings page to the main notebook
+#: settings/backdrop_settings.c:1111
+msgid "_Backdrop"
+msgstr "_Ozadje"
+
+#: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
+#, c-format
+msgid "Screen %d"
+msgstr "Zaslon %d"
+
+#. and if we have multiple screens, each with multiple monitors
+#: settings/backdrop_settings.c:1126
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Zaslon %d, Ekran %d"
+
+#: settings/backdrop_settings.c:1140
+msgid "_Menu"
+msgstr "_Meni"
+
+#: settings/menu_settings.c:153
+msgid "Window List"
+msgstr "Seznam oken"
+
+#: settings/menu_settings.c:161
+msgid "Show window _list"
+msgstr "Prikaži seznam oken"
+
+#: settings/menu_settings.c:176
+msgid "Show _window icons"
+msgstr ""
+
+#: settings/menu_settings.c:189
+msgid "Desktop Menu"
+msgstr "Namizni menu"
+
+#: settings/menu_settings.c:197
+msgid "Show desktop _menu"
+msgstr ""
+
+#: settings/menu_settings.c:212
+msgid "Show _application icons"
+msgstr "Prikaži ikone programov"
+
+#: settings/menu_settings.c:223
+msgid "_Edit desktop menu"
+msgstr ""
+
+#: src/main.c:248
+#, c-format
+msgid "%s: Unknown option: %s\n"
+msgstr ""
+
+#: src/main.c:249
+#, c-format
+msgid "Options are:\n"
+msgstr ""
+
+#: src/main.c:250
+#, c-format
+msgid "    -reload      Reload all settings, refresh image list\n"
+msgstr ""
+
+#: src/main.c:251
+#, c-format
+msgid "    -menu        Pop up the menu (at the current mouse position)\n"
+msgstr ""
+
+#: src/main.c:252
+#, c-format
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+
+#: src/windowlist.c:193
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr ""
+
+#: src/windowlist.c:201
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr ""
+
+#: src/windowlist.c:268 src/windowlist.c:271
+msgid "_Add Workspace"
+msgstr ""
+
+#: src/windowlist.c:279
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr ""
+
+#: src/windowlist.c:282
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr ""
