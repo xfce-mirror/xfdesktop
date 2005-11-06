@@ -138,7 +138,7 @@ dmp_get_icon(const gchar *icon_name, gint size, GtkOrientation orientation)
     if(!filename)
         return NULL;
     
-#if GTK_CHECK_VERSION(2, 6, 0)
+#if GTK_CHECK_VERSION(2, 8, 0)
     w = orientation == GTK_ORIENTATION_HORIZONTAL ? -1 : size;
     h = orientation == GTK_ORIENTATION_VERTICAL ? -1 : size;
     pix = gdk_pixbuf_new_from_file_at_scale(filename, w, h, TRUE, NULL);
