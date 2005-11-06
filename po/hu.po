@@ -3,15 +3,14 @@
 # This file is distributed under the same license as the xfdesktop package.
 # Somogyi Peter <jerry@gnu>, 2003.
 # Egmont Koblinger <egmont@uhulinux.hu>, 2003.
-# Servitore <sas@321 uh:))>, 2004.
-# SZERVÁC Attila <sas@321.hu>, 2005.
+# Servitore <sas@321 uh:))>, 2004-2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.2.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-10-08 06:14+0900\n"
-"PO-Revision-Date: 2005-09-29 16:24+0900\n"
+"PO-Revision-Date: 2005-10-13 14:58+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +27,8 @@ msgstr "Xfce4 menüszerkesztő"
 msgid "Core developer"
 msgstr "Fő fejlesztő"
 
-#: menueditor/about_dialog.c:44 menueditor/about_dialog.c:45
+#: menueditor/about_dialog.c:44
+#: menueditor/about_dialog.c:45
 #: menueditor/about_dialog.c:46
 msgid "Contributor"
 msgstr "Közreműködő"
@@ -37,12 +37,14 @@ msgstr "Közreműködő"
 msgid "Icon designer"
 msgstr "Ikontervező"
 
-#: menueditor/add_dialog.c:138 menueditor/add_dialog.c:150
+#: menueditor/add_dialog.c:138
+#: menueditor/add_dialog.c:150
 msgid "Add menu entry"
 msgstr "Elem hozzáadása"
 
 #. Type
-#: menueditor/add_dialog.c:156 menueditor/add_menu_dialog.c:98
+#: menueditor/add_dialog.c:156
+#: menueditor/add_menu_dialog.c:98
 #: menueditor/edit_dialog.c:149
 msgid "Type:"
 msgstr "Típus:"
@@ -68,32 +70,40 @@ msgid "Quit"
 msgstr "Kilép"
 
 #. Name
-#: menueditor/add_dialog.c:194 menueditor/edit_dialog.c:263
-#: menueditor/edit_dialog.c:314 menueditor/edit_dialog.c:353
+#: menueditor/add_dialog.c:194
+#: menueditor/edit_dialog.c:263
+#: menueditor/edit_dialog.c:314
+#: menueditor/edit_dialog.c:353
 msgid "Name:"
 msgstr "Név:"
 
-#: menueditor/add_dialog.c:204 menueditor/edit_dialog.c:264
+#: menueditor/add_dialog.c:204
+#: menueditor/edit_dialog.c:264
 msgid "Command:"
 msgstr "Parancs:"
 
-#: menueditor/add_dialog.c:220 menueditor/edit_dialog.c:255
-#: menueditor/edit_dialog.c:319 menueditor/edit_dialog.c:358
+#: menueditor/add_dialog.c:220
+#: menueditor/edit_dialog.c:255
+#: menueditor/edit_dialog.c:319
+#: menueditor/edit_dialog.c:358
 #: menueditor/edit_dialog.c:396
 msgid "Icon:"
 msgstr "Ikon:"
 
 #. Start Notify check button
-#: menueditor/add_dialog.c:236 menueditor/edit_dialog.c:275
+#: menueditor/add_dialog.c:236
+#: menueditor/edit_dialog.c:275
 msgid "Use startup _notification"
-msgstr "I_ndítási jelentés használata"
+msgstr "Indítás_jelentés használata"
 
 #. Run in terminal check button
-#: menueditor/add_dialog.c:240 menueditor/edit_dialog.c:276
+#: menueditor/add_dialog.c:240
+#: menueditor/edit_dialog.c:276
 msgid "Run in _terminal"
 msgstr "Futtatás _terminálban"
 
-#: menueditor/add_dialog.c:285 menueditor/edit_dialog.c:468
+#: menueditor/add_dialog.c:285
+#: menueditor/edit_dialog.c:468
 msgid "The command doesn't exist !"
 msgstr "Nincs ilyen parancs!"
 
@@ -105,47 +115,59 @@ msgstr "Minden mező kitöltendő egy elem hozzáadásához."
 msgid "The 'Name' field is required."
 msgstr "A 'Név' mező kötelező"
 
-#: menueditor/add_dialog.c:356 menueditor/dnd.c:153
-#: menueditor/menueditor.c:579 menueditor/move.c:87 menueditor/move.c:225
+#: menueditor/add_dialog.c:356
+#: menueditor/dnd.c:153
+#: menueditor/menueditor.c:579
+#: menueditor/move.c:87
+#: menueditor/move.c:225
 msgid "--- separator ---"
 msgstr "--- elválasztó ---"
 
-#: menueditor/add_dialog.c:381 menueditor/edit_dialog.c:505
+#: menueditor/add_dialog.c:381
+#: menueditor/edit_dialog.c:505
 msgid "quit"
 msgstr "kilép"
 
-#: menueditor/add_menu_dialog.c:81 menueditor/add_menu_dialog.c:89
+#: menueditor/add_menu_dialog.c:81
+#: menueditor/add_menu_dialog.c:89
 #: menueditor/menueditor.c:1028
 msgid "Add an external menu"
 msgstr "Külső menü hozzáadása"
 
-#: menueditor/add_menu_dialog.c:103 menueditor/edit_dialog.c:152
+#: menueditor/add_menu_dialog.c:103
+#: menueditor/edit_dialog.c:152
 msgid "File"
 msgstr "Fájl"
 
-#: menueditor/add_menu_dialog.c:108 menueditor/edit_dialog.c:157
+#: menueditor/add_menu_dialog.c:108
+#: menueditor/edit_dialog.c:157
 msgid "System"
 msgstr "Rendszer"
 
-#: menueditor/add_menu_dialog.c:123 menueditor/edit_dialog.c:172
+#: menueditor/add_menu_dialog.c:123
+#: menueditor/edit_dialog.c:172
 msgid "Source:"
 msgstr "Forrás:"
 
 #. Style
-#: menueditor/add_menu_dialog.c:136 menueditor/edit_dialog.c:185
+#: menueditor/add_menu_dialog.c:136
+#: menueditor/edit_dialog.c:185
 msgid "Style:"
 msgstr "Stílus:"
 
-#: menueditor/add_menu_dialog.c:139 menueditor/edit_dialog.c:188
+#: menueditor/add_menu_dialog.c:139
+#: menueditor/edit_dialog.c:188
 msgid "Simple"
 msgstr "Sima"
 
-#: menueditor/add_menu_dialog.c:142 menueditor/edit_dialog.c:191
+#: menueditor/add_menu_dialog.c:142
+#: menueditor/edit_dialog.c:191
 msgid "Multilevel"
 msgstr "Többszintű"
 
 #. Unique
-#: menueditor/add_menu_dialog.c:155 menueditor/edit_dialog.c:204
+#: menueditor/add_menu_dialog.c:155
+#: menueditor/edit_dialog.c:204
 msgid "_Unique entries only"
 msgstr "Csak _egyedi elemek"
 
@@ -153,21 +175,29 @@ msgstr "Csak _egyedi elemek"
 msgid "The 'Source' field is required."
 msgstr "A 'Forrás' mező kötelező"
 
-#: menueditor/add_menu_dialog.c:218 menueditor/add_menu_dialog.c:234
-#: menueditor/dnd.c:156 menueditor/edit_dialog.c:521
-#: menueditor/edit_dialog.c:534 menueditor/menueditor.c:618
-#: menueditor/move.c:111 menueditor/move.c:249
+#: menueditor/add_menu_dialog.c:218
+#: menueditor/add_menu_dialog.c:234
+#: menueditor/dnd.c:156
+#: menueditor/edit_dialog.c:521
+#: menueditor/edit_dialog.c:534
+#: menueditor/menueditor.c:618
+#: menueditor/move.c:111
+#: menueditor/move.c:249
 msgid "--- include ---"
 msgstr "--- csatolva ---"
 
-#: menueditor/add_menu_dialog.c:235 menueditor/dnd.c:161
-#: menueditor/edit_dialog.c:535 menueditor/menueditor.c:621
-#: menueditor/move.c:114 menueditor/move.c:252
+#: menueditor/add_menu_dialog.c:235
+#: menueditor/dnd.c:161
+#: menueditor/edit_dialog.c:535
+#: menueditor/menueditor.c:621
+#: menueditor/move.c:114
+#: menueditor/move.c:252
 msgid "system"
 msgstr "rendszer"
 
 #. Create dialog for editing
-#: menueditor/edit_dialog.c:103 menueditor/edit_dialog.c:113
+#: menueditor/edit_dialog.c:103
+#: menueditor/edit_dialog.c:113
 msgid "Edit menu entry"
 msgstr "Elem szerkesztése"
 
@@ -176,7 +206,8 @@ msgid "Separators cannot be edited"
 msgstr "Az elválasztók nem szerkeszthetők"
 
 #. Name
-#: menueditor/edit_dialog.c:403 menueditor/new_dialog.c:100
+#: menueditor/edit_dialog.c:403
+#: menueditor/new_dialog.c:100
 msgid "Title:"
 msgstr "Cím:"
 
@@ -188,18 +219,23 @@ msgstr "Parancs kiválasztása"
 msgid "Select icon"
 msgstr "Ikon kiválasztása"
 
-#: menueditor/menueditor.c:440 panel-plugin/desktop-menu-plugin.c:510
-#: settings/backdrop-mgr.c:437 settings/backdrop-mgr.c:538
+#: menueditor/menueditor.c:440
+#: panel-plugin/desktop-menu-plugin.c:510
+#: settings/backdrop-mgr.c:437
+#: settings/backdrop-mgr.c:538
 #: settings/backdrop_settings.c:533
 msgid "All Files"
 msgstr "Minden fájl"
 
-#: menueditor/menueditor.c:444 panel-plugin/desktop-menu-plugin.c:516
-#: settings/backdrop-mgr.c:441 settings/backdrop_settings.c:537
+#: menueditor/menueditor.c:444
+#: panel-plugin/desktop-menu-plugin.c:516
+#: settings/backdrop-mgr.c:441
+#: settings/backdrop_settings.c:537
 msgid "Image Files"
 msgstr "Kép fájlok"
 
-#: menueditor/menueditor.c:500 menueditor/menueditor.c:903
+#: menueditor/menueditor.c:500
+#: menueditor/menueditor.c:903
 msgid "Do you want to save before closing the menu ?"
 msgstr "Akarsz menteni a menü bezárása előtt?"
 
@@ -211,7 +247,8 @@ msgstr "Módosítottad a menüt, akarod menteni kilépés előtt?"
 msgid "Forget modifications"
 msgstr "Változások elvetése"
 
-#: menueditor/menueditor.c:690 menueditor/menueditor.c:749
+#: menueditor/menueditor.c:690
+#: menueditor/menueditor.c:749
 #: menueditor/menueditor.c:901
 msgid "Question"
 msgstr "Kérdés"
@@ -220,7 +257,8 @@ msgstr "Kérdés"
 msgid "Do you want to save before opening the default menu ?"
 msgstr "Akarsz menteni az alapmenü megnyitása előtt?"
 
-#: menueditor/menueditor.c:694 menueditor/menueditor.c:753
+#: menueditor/menueditor.c:694
+#: menueditor/menueditor.c:753
 #: menueditor/menueditor.c:905
 msgid "Ignore modifications"
 msgstr "Módosítások figyelmen kívül hagyása"
@@ -233,7 +271,8 @@ msgstr "Mentesz, mielőtt megnyitsz egy másik menüt?"
 msgid "Open menu file"
 msgstr "Menüfájl megnyitása"
 
-#: menueditor/menueditor.c:799 menueditor/menueditor.c:810
+#: menueditor/menueditor.c:799
+#: menueditor/menueditor.c:810
 #, c-format
 msgid ""
 "Cannot write in %s : \n"
@@ -367,7 +406,8 @@ msgid "Do you want to save before closing the file?"
 msgstr "Mented a fájlt bezárás előtt?"
 
 #. get the filename and name for the new menu
-#: menueditor/new_dialog.c:85 menueditor/new_dialog.c:94
+#: menueditor/new_dialog.c:85
+#: menueditor/new_dialog.c:94
 msgid "New menu"
 msgstr "Új menü"
 
@@ -401,14 +441,15 @@ msgstr "Menüfájl kiválasztása"
 msgid "Menu Files"
 msgstr "Menü fájlok"
 
-#: panel-plugin/desktop-menu-plugin.c:640 settings/menu_settings.c:132
+#: panel-plugin/desktop-menu-plugin.c:640
+#: settings/menu_settings.c:132
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Nem indítható az xfce4-menueditor: %s"
 
 #: panel-plugin/desktop-menu-plugin.c:663
 msgid "Button _title:"
-msgstr "Gomb név:"
+msgstr "Gomb né_v:"
 
 #: panel-plugin/desktop-menu-plugin.c:676
 msgid "Menu File"
@@ -416,11 +457,11 @@ msgstr "Menü fájl"
 
 #: panel-plugin/desktop-menu-plugin.c:688
 msgid "Use default _desktop menu file"
-msgstr "Alap asztali menüfájl használata"
+msgstr "_Alap asztali menüfájl használata"
 
 #: panel-plugin/desktop-menu-plugin.c:697
 msgid "Use _custom menu file:"
-msgstr "Egyéni menüfájl használata"
+msgstr "E_gyéni menüfájl használata"
 
 #: panel-plugin/desktop-menu-plugin.c:749
 #: panel-plugin/desktop-menu-plugin.c:751
@@ -433,24 +474,23 @@ msgstr "Ikonok"
 
 #: panel-plugin/desktop-menu-plugin.c:770
 msgid "_Button icon:"
-msgstr "_Gomb ikon:"
+msgstr "Gomb iko_n:"
 
 #: panel-plugin/desktop-menu-plugin.c:794
 msgid "Show _icons in menu"
 msgstr "Legyenek _ikonok a menüben"
 
-#: settings/backdrop-mgr.c:162 src/xfce-desktop.c:114
+#: settings/backdrop-mgr.c:162
+#: src/xfce-desktop.c:114
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
+"Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
 "A %s fájlt nem sikerült menteni: %s\n"
 "\n"
-"Válasszon egy másik helyet, vagy nyomja meg a Mégsem gombot a "
-"párbeszédpanelen a változások elvetéséhez."
+"Válasszon egy másik helyet, vagy nyomja meg a Mégsem gombot a párbeszédpanelen a változások elvetéséhez."
 
 #: settings/backdrop-mgr.c:432
 msgid "Select backdrop image file"
@@ -472,7 +512,8 @@ msgstr "Háttérlista"
 msgid "Image files"
 msgstr "Képfájlok"
 
-#: settings/backdrop-mgr.c:633 settings/backdrop_settings.c:188
+#: settings/backdrop-mgr.c:633
+#: settings/backdrop_settings.c:188
 #: settings/backdrop_settings.c:197
 #, fuzzy
 msgid "backdrops.list"
@@ -491,7 +532,8 @@ msgid "Edit backdrop list"
 msgstr "Háttérlista szerkesztése"
 
 #. the dialog
-#: settings/backdrop_settings.c:132 settings/backdrop_settings.c:836
+#: settings/backdrop_settings.c:132
+#: settings/backdrop_settings.c:836
 #: src/xfce-desktop.c:676
 msgid "Desktop"
 msgstr "Munkaasztal"
@@ -547,7 +589,7 @@ msgstr "Asztal beállításai"
 
 #: settings/backdrop_settings.c:880
 msgid "_Backdrops"
-msgstr "Hátterek"
+msgstr "_Hátterek"
 
 #. color settings frame
 #: settings/backdrop_settings.c:906
@@ -581,7 +623,7 @@ msgstr "_2. szín:"
 #. set color only checkbox
 #: settings/backdrop_settings.c:1006
 msgid "Set color _only"
-msgstr "Csak szín használata:"
+msgstr "_Csak szín használata:"
 
 #: settings/backdrop_settings.c:1021
 msgid "Image"
@@ -605,7 +647,8 @@ msgstr "Mellőz_d a hátteret"
 msgid "_Backdrop"
 msgstr "_Háttér"
 
-#: settings/backdrop_settings.c:1119 settings/backdrop_settings.c:1121
+#: settings/backdrop_settings.c:1119
+#: settings/backdrop_settings.c:1121
 #, c-format
 msgid "Screen %d"
 msgstr "Képernyő %d"
@@ -646,7 +689,7 @@ msgstr "Progr_amikonok megjelenítése"
 
 #: settings/menu_settings.c:223
 msgid "_Edit desktop menu"
-msgstr "Munkaterület menü sz_erkesztése"
+msgstr "Asztali menü sz_erkesztése"
 
 #: src/main.c:248
 #, c-format
@@ -666,8 +709,7 @@ msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Menü megjelenítése (az egér pozíciójánál)\n"
 
 #: src/main.c:252
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist Ablaklista megjelenítése (az egér pozíciójánál)\n"
 
 #: src/windowlist.c:193
@@ -680,7 +722,8 @@ msgstr "<b>%d. munkaterület</b>"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>%d. munkaterület</i>"
 
-#: src/windowlist.c:268 src/windowlist.c:271
+#: src/windowlist.c:268
+#: src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "Munkaterület hozzá_adása"
 
@@ -693,3 +736,4 @@ msgstr "%d. munkaterület tö_rlése"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "E munkaterület tö_rlése: '%s'"
+
