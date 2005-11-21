@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-30 22:26+0900\n"
+"POT-Creation-Date: 2005-11-22 00:22+0900\n"
 "PO-Revision-Date: 2005-11-10 01:10-0500\n"
 "Last-Translator: Rudy Godoy <rudy@stone-head.org>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -698,7 +698,9 @@ msgstr "    -menu        Muestra el menú (en la posición actual del ratón)\n"
 #: ../src/main.c:255
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  Muestra lista de ventanas (en la posición actual del ratón)\n"
+msgstr ""
+"    -windowlist  Muestra lista de ventanas (en la posición actual del "
+"ratón)\n"
 
 #: ../src/main.c:256
 msgid "    -quit        Cause xfdesktop to quit\n"
@@ -740,6 +742,10 @@ msgstr "Editor de menú"
 msgid "Xfce 4 Menu Editor"
 msgstr "Editor de menú de Xfce4"
 
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+msgid "Shows a menu containing categories of installed applications"
+msgstr "Muestra un menú con las categorías de las aplicaciones instaladas"
+
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
 msgstr "Configuración para el escritorio Xfce4"
@@ -747,7 +753,3 @@ msgstr "Configuración para el escritorio Xfce4"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Configuración para el escritorio Xfce4"
-
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
-msgid "Shows a menu containing categories of installed applications"
-msgstr "Muestra un menú con las categorías de las aplicaciones instaladas"

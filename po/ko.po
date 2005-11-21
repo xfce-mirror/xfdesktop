@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-30 22:26+0900\n"
+"POT-Creation-Date: 2005-11-22 00:22+0900\n"
 "PO-Revision-Date: 2005-11-03 01:13+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
@@ -345,16 +345,17 @@ msgid ""
 "Quitting the session requires that Xfce's session manager (xfce4-session) is "
 "running, but it was not detected.  Please quit Xfce via another means."
 msgstr ""
-"실행 중인 Xfce 세션관리자(xfce4-session)를 찾을 수 있어야만 세션 관리자를 "
-"종료할 수 있습니다. 다른 방법으로 Xfce를 종료하시기 바랍니다."
+"실행 중인 Xfce 세션관리자(xfce4-session)를 찾을 수 있어야만 세션 관리자를 종"
+"료할 수 있습니다. 다른 방법으로 Xfce를 종료하시기 바랍니다."
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
 msgid ""
 "Quitting the session requires the 'xfce4-session-logout' command, but it "
 "could not be found: %s"
-msgstr "세션을 종료하려면 'xfce4-session-logout' 명령이 있어야 합니다. "
-"%s를(을) 찾지 못했습니다."
+msgstr ""
+"세션을 종료하려면 'xfce4-session-logout' 명령이 있어야 합니다. %s를(을) 찾지 "
+"못했습니다."
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
@@ -738,6 +739,10 @@ msgstr "메뉴 편집기"
 msgid "Xfce 4 Menu Editor"
 msgstr "Xfce 메뉴 편집기"
 
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+msgid "Shows a menu containing categories of installed applications"
+msgstr "설치된 프로그램을 분류별로 메뉴에 보이기"
+
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
 msgstr "Xfce 4 데스크탑 관리 도구의 환경 설정"
@@ -745,7 +750,3 @@ msgstr "Xfce 4 데스크탑 관리 도구의 환경 설정"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 데스크탑 설정"
-
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
-msgid "Shows a menu containing categories of installed applications"
-msgstr "설치된 프로그램을 분류별로 메뉴에 보이기"
