@@ -475,6 +475,7 @@ xfce_desktop_icon_paint_delayed(NetkWindow *window,
     g_signal_handlers_disconnect_by_func(G_OBJECT(window),
                                          G_CALLBACK(xfce_desktop_icon_paint_delayed),
                                          ifed);
+    g_object_unref(G_OBJECT(window));
     
     xfce_desktop_icon_paint(ifed->desktop, (XfceDesktopIcon *)ifed->data);
     g_free(ifed);
@@ -1919,11 +1920,13 @@ xfce_desktop_button_press(GtkWidget *widget,
             if(icon->extents.height + 3 * CELL_PADDING > CELL_SIZE)
                 icon_below = find_icon_below(desktop, icon);
             netk_window_activate(icon->window);
+            desktop->priv->icon_workspaces[cur_ws_num]->selected_icon = NULL;
             if(icon_below) {
                 /* delay repaint of below icon to avoid visual bugs */
                 IconForeachData *ifed = g_new(IconForeachData, 1);
                 ifed->desktop = desktop;
                 ifed->data = icon_below;
+                g_object_ref(G_OBJECT(icon->window));
                 g_signal_connect_after(G_OBJECT(icon->window), "state-changed",
                      G_CALLBACK(xfce_desktop_icon_paint_delayed), ifed);
             }
