@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-11-22 00:22+0900\n"
-"PO-Revision-Date: 2005-10-21 21:02+0900\n"
+"POT-Creation-Date: 2005-11-28 21:24+0900\n"
+"PO-Revision-Date: 2005-11-30 00:14+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -428,7 +428,7 @@ msgstr "ボタンアイコン(_B):"
 msgid "Show _icons in menu"
 msgstr "メニューでアイコンを表示(_I):"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:522
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:523
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -443,11 +443,11 @@ msgstr ""
 
 #: ../settings/backdrop-mgr.c:431
 msgid "Select backdrop image file"
-msgstr "背景画像を選択して下さい"
+msgstr "背景画像ファイルを選択して下さい"
 
 #: ../settings/backdrop-mgr.c:532
 msgid "Choose backdrop list filename"
-msgstr "背景のリストファイル名を選択して下さい"
+msgstr "背景リストのファイル名を選択して下さい"
 
 #: ../settings/backdrop-mgr.c:541
 msgid "List Files"
@@ -473,15 +473,15 @@ msgstr "リストファイル"
 
 #: ../settings/backdrop-mgr.c:660
 msgid "Create backdrop list"
-msgstr "背景リスト作成"
+msgstr "背景リストを作成"
 
 #: ../settings/backdrop-mgr.c:691
 msgid "Edit backdrop list"
-msgstr "背景リスト編集"
+msgstr "背景リストを編集"
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:939
-#: ../src/xfce-desktop.c:1666
+#: ../src/xfce-desktop.c:1667
 msgid "Desktop"
 msgstr "デスクトップ"
 
@@ -568,11 +568,12 @@ msgstr ""
 msgid "_Do not show this again"
 msgstr "二度と表示しない(_D)"
 
+# FIXME: Q_ (../settings/backdrop_settings.c)
 #. header
 #: ../settings/backdrop_settings.c:954
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
-msgstr "デスクトップ設定"
+msgstr "デスクトップ"
 
 #: ../settings/backdrop_settings.c:959
 msgid "Allow _Xfce to manage the desktop"
@@ -582,6 +583,7 @@ msgstr "Xfce にデスクトップを管理させる(_X)"
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "一枚の背景を全てのモニターに伸ばす(_A)"
 
+# MERGEBLE:
 #: ../settings/backdrop_settings.c:1014
 msgid "_Backdrops"
 msgstr "背景(_B)"
@@ -627,6 +629,7 @@ msgstr "画像を表示する(_I)"
 msgid "_File:"
 msgstr "ファイル(_F):"
 
+# MERGEBLE:
 #. add the single backdrop settings page to the main notebook
 #: ../settings/backdrop_settings.c:1219
 msgid "_Backdrop"
@@ -641,7 +644,7 @@ msgstr "画面 %d"
 #: ../settings/backdrop_settings.c:1237
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr "画面 %d, モニタ %d"
+msgstr "画面 %d, モニター %d"
 
 # FIXME: should be an another translation
 #: ../settings/backdrop_settings.c:1254
@@ -736,7 +739,7 @@ msgstr "ワークスペース '%s' を削除する(_R)"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Xfce 4 メニューを編集するグラフィカルツールです"
+msgstr "Xfce 4 メニューを編集するグラフィカルなツールです。"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
@@ -748,8 +751,7 @@ msgstr "Xfce 4 メニューエディター"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr ""
-"インストールしているアプリケーションのカテゴリーを含むメニューを表示します"
+msgstr "インストール済アプリケーションのカテゴリーを含むメニューを表示します。"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
@@ -757,4 +759,4 @@ msgstr "Xfce 4 デスクトップマネージャーの設定"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
-msgstr "Xfce 4 デスクトップ設定"
+msgstr "Xfce 4 デスクトップの設定"
