@@ -97,6 +97,7 @@ typedef struct _XfceDesktopIcon
     gchar *label;
     GdkRectangle extents;
     NetkWindow *window;
+    XfceDesktop *desktop;
 } XfceDesktopIcon;
 
 typedef struct _XfceDesktopIconWorkspace
@@ -112,12 +113,6 @@ typedef struct _XfceDesktopIconWorkspace
     guint16 lowest_free_row;
     guint16 lowest_free_col;
 } XfceDesktopIconWorkspace;
-
-typedef struct
-{
-    XfceDesktop *desktop;
-    gpointer data;
-} IconForeachData;
 
 #endif /* defined(ENABLE_WINDOW_ICONS) */
 
@@ -150,13 +145,15 @@ struct _XfceDesktopPriv
 };
 
 #ifdef ENABLE_WINDOW_ICONS
-static void xfce_desktop_icon_paint(XfceDesktop *desktop, XfceDesktopIcon *icon);
+static void xfce_desktop_icon_paint(XfceDesktopIcon *icon);
 static void xfce_desktop_icon_add(XfceDesktop *desktop, NetkWindow *window, guint idx);
 static void xfce_desktop_icon_remove(XfceDesktop *desktop, XfceDesktopIcon *icon, NetkWindow *window, guint idx);
 static void xfce_desktop_icon_free(XfceDesktopIcon *icon);
 static void xfce_desktop_setup_icons(XfceDesktop *desktop);
 static void xfce_desktop_unsetup_icons(XfceDesktop *desktop);
 static void xfce_desktop_paint_icons(XfceDesktop *desktop, GdkRectangle *area);
+static void xfce_desktop_window_name_changed_cb(NetkWindow *window, gpointer user_data);
+static void xfce_desktop_window_icon_changed_cb(NetkWindow *window, gpointer user_data);
 static gboolean xfce_desktop_button_press(GtkWidget *widget, GdkEventButton *evt);
 static gboolean xfce_desktop_button_release(GtkWidget *widget, GdkEventButton *evt);
 static gboolean xfce_desktop_motion_notify(GtkWidget *widfet, GdkEventMotion *evt);
@@ -257,12 +254,18 @@ xfce_desktop_icon_add(XfceDesktop *desktop,
     }
     icon->label = g_strdup(netk_window_get_name(window));
     icon->window = window;
+    icon->desktop = desktop;
     g_hash_table_insert(desktop->priv->icon_workspaces[idx]->icons,
                         window, icon);
     
+    g_signal_connect(G_OBJECT(window), "name-changed",
+                     G_CALLBACK(xfce_desktop_window_name_changed_cb), icon);
+    g_signal_connect(G_OBJECT(window), "icon-changed",
+                     G_CALLBACK(xfce_desktop_window_icon_changed_cb), icon);
+    
     active_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
     if(idx == netk_workspace_get_number(active_ws))
-        xfce_desktop_icon_paint(desktop, icon);
+        xfce_desktop_icon_paint(icon);
 }
 
 static void
@@ -286,6 +289,10 @@ xfce_desktop_icon_remove(XfceDesktop *desktop,
     
     if(desktop->priv->icon_workspaces[idx]->selected_icon == icon)
         desktop->priv->icon_workspaces[idx]->selected_icon = NULL;
+    
+    g_signal_handlers_disconnect_by_func(G_OBJECT(window),
+                                         G_CALLBACK(xfce_desktop_window_name_changed_cb),
+                                         icon);
     
     g_hash_table_remove(desktop->priv->icon_workspaces[idx]->icons,
                         window);
@@ -350,9 +357,9 @@ find_icon_below(XfceDesktop *desktop,
 }
 
 static void
-xfce_desktop_icon_paint(XfceDesktop *desktop,
-                        XfceDesktopIcon *icon)
+xfce_desktop_icon_paint(XfceDesktopIcon *icon)
 {
+    XfceDesktop *desktop = icon->desktop;
     GtkWidget *widget = GTK_WIDGET(desktop);
     gint pix_w, pix_h, pix_x, pix_y, text_x, text_y, text_w, text_h,
          cell_x, cell_y, state, active_ws_num;
@@ -374,7 +381,7 @@ xfce_desktop_icon_paint(XfceDesktop *desktop,
         if(icon->extents.height + 3 * CELL_PADDING > CELL_SIZE) {
             XfceDesktopIcon *icon_below = find_icon_below(desktop, icon);
             if(icon_below)
-                xfce_desktop_icon_paint(desktop, icon_below);
+                xfce_desktop_icon_paint(icon_below);
         }
     }
     
@@ -468,28 +475,57 @@ xfce_desktop_icon_paint_delayed(NetkWindow *window,
                                 NetkWindowState new_state,
                                 gpointer user_data)
 {
-    IconForeachData *ifed = user_data;
-    
     DBG("repainting under icon");
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(window),
                                          G_CALLBACK(xfce_desktop_icon_paint_delayed),
-                                         ifed);
+                                         user_data);
     g_object_unref(G_OBJECT(window));
     
-    xfce_desktop_icon_paint(ifed->desktop, (XfceDesktopIcon *)ifed->data);
-    g_free(ifed);
+    xfce_desktop_icon_paint((XfceDesktopIcon *)user_data);
 }
 
 static gboolean
 xfce_desktop_icon_paint_idled(gpointer user_data)
 {
-    IconForeachData *ifed = user_data;
-    
-    xfce_desktop_icon_paint(ifed->desktop, (XfceDesktopIcon *)ifed->data);
-    g_free(ifed);
+    xfce_desktop_icon_paint((XfceDesktopIcon *)user_data);
     
     return FALSE;
+}
+
+static void
+xfce_desktop_window_name_changed_cb(NetkWindow *window,
+                                    gpointer user_data)
+{
+    XfceDesktopIcon *icon = user_data;
+    
+    g_free(icon->label);
+    icon->label = g_strdup(netk_window_get_name(window));
+    
+    xfce_desktop_icon_paint(icon);
+}
+
+static void
+xfce_desktop_window_icon_changed_cb(NetkWindow *window,
+                                    gpointer user_data)
+{
+    XfceDesktopIcon *icon = user_data;
+    
+    if(icon->pix)
+        g_object_unref(G_OBJECT(icon->pix));
+    
+    icon->pix = netk_window_get_icon(window);
+    if(icon->pix) {
+        if(gdk_pixbuf_get_width(icon->pix) != ICON_SIZE) {
+            icon->pix = gdk_pixbuf_scale_simple(icon->pix,
+                                                ICON_SIZE,
+                                                ICON_SIZE,
+                                                GDK_INTERP_BILINEAR);
+        }
+        g_object_ref(G_OBJECT(icon->pix));
+    }
+    
+    xfce_desktop_icon_paint(icon);
 }
 
 #endif /* defined(ENABLE_WINDOW_ICONS) */
@@ -1241,8 +1277,15 @@ workspace_changed_cb(NetkScreen *netk_screen,
                 }
                 icon->label = g_strdup(netk_window_get_name(window));
                 icon->window = window;
+                icon->desktop = desktop;
                 g_hash_table_insert(desktop->priv->icon_workspaces[n]->icons,
                                     window, icon);
+                g_signal_connect(G_OBJECT(window), "name-changed",
+                                 G_CALLBACK(xfce_desktop_window_name_changed_cb),
+                                 icon);
+                g_signal_connect(G_OBJECT(window), "icon-changed",
+                                 G_CALLBACK(xfce_desktop_window_icon_changed_cb),
+                                 icon);
                 
                 cur_row++;
                 if(cur_row >= desktop->priv->icon_workspaces[n]->nrows) {
@@ -1871,11 +1914,11 @@ xfce_desktop_button_press(GtkWidget *widget,
             if(priv->icon_workspaces[priv->cur_ws_num]->selected_icon) {
                 XfceDesktopIcon *old_sel = priv->icon_workspaces[priv->cur_ws_num]->selected_icon;
                 priv->icon_workspaces[priv->cur_ws_num]->selected_icon = NULL;
-                xfce_desktop_icon_paint(desktop, old_sel);
+                xfce_desktop_icon_paint(old_sel);
             }
             
             priv->icon_workspaces[priv->cur_ws_num]->selected_icon = icon;
-            xfce_desktop_icon_paint(desktop, icon);
+            xfce_desktop_icon_paint(icon);
             priv->last_clicked_item = icon;
             
             if(evt->button == 1) {
@@ -1904,7 +1947,7 @@ xfce_desktop_button_press(GtkWidget *widget,
             XfceDesktopIcon *old_sel = desktop->priv->icon_workspaces[cur_ws_num]->selected_icon;
             if(old_sel) {
                 desktop->priv->icon_workspaces[cur_ws_num]->selected_icon = NULL;
-                xfce_desktop_icon_paint(desktop, old_sel);
+                xfce_desktop_icon_paint(old_sel);
             }
             desktop->priv->last_clicked_item = NULL;
         }
@@ -1923,12 +1966,10 @@ xfce_desktop_button_press(GtkWidget *widget,
             desktop->priv->icon_workspaces[cur_ws_num]->selected_icon = NULL;
             if(icon_below) {
                 /* delay repaint of below icon to avoid visual bugs */
-                IconForeachData *ifed = g_new(IconForeachData, 1);
-                ifed->desktop = desktop;
-                ifed->data = icon_below;
                 g_object_ref(G_OBJECT(icon->window));
                 g_signal_connect_after(G_OBJECT(icon->window), "state-changed",
-                     G_CALLBACK(xfce_desktop_icon_paint_delayed), ifed);
+                                       G_CALLBACK(xfce_desktop_icon_paint_delayed),
+                                       icon_below);
             }
         }
     }
@@ -1984,36 +2025,29 @@ check_icon_needs_repaint(gpointer key,
                          gpointer user_data)
 {
     XfceDesktopIcon *icon = (XfceDesktopIcon *)value;
-    IconForeachData *ifed = (IconForeachData *)user_data;
-    GdkRectangle *area = ifed->data, dummy;
+    GdkRectangle *area = user_data, dummy;
     
     if(icon->extents.width == 0 || icon->extents.height == 0
        || gdk_rectangle_intersect(area, &icon->extents, &dummy))
     {
-        if(icon == ifed->desktop->priv->icon_workspaces[ifed->desktop->priv->cur_ws_num]->selected_icon) {
-            /* save it for last */
-            IconForeachData *ifed1 = g_new(IconForeachData, 1);
-            ifed1->desktop = ifed->desktop;
-            ifed1->data = icon;
-            g_idle_add(xfce_desktop_icon_paint_idled, ifed1);
+        if(icon == icon->desktop->priv->icon_workspaces[icon->desktop->priv->cur_ws_num]->selected_icon) {
+            /* save it for last to avoid painting another icon over top of
+             * part of this one if it has an overly-large label */
+            g_idle_add(xfce_desktop_icon_paint_idled, icon);
         } else
-            xfce_desktop_icon_paint(ifed->desktop, icon);
+            xfce_desktop_icon_paint(icon);
     }
 }
 
 static void
 xfce_desktop_paint_icons(XfceDesktop *desktop, GdkRectangle *area)
 {
-    IconForeachData ifed;
-    
     TRACE("entering");
     
     g_return_if_fail(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->icons);
     
-    ifed.desktop = desktop;
-    ifed.data = area;
     g_hash_table_foreach(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->icons,
-                         check_icon_needs_repaint, &ifed);
+                         check_icon_needs_repaint, area);
 }
 
 static void
@@ -2383,7 +2417,7 @@ xfce_desktop_drag_drop(GtkWidget *widget,
     gdk_window_clear_area(widget->window, icon->extents.x, icon->extents.y,
                           icon->extents.width, icon->extents.height);
     icon->extents.x = icon->extents.y = 0;
-    xfce_desktop_icon_paint(desktop, icon);
+    xfce_desktop_icon_paint(icon);
     
     DBG("drag succeeded");
     
