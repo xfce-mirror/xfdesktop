@@ -293,6 +293,9 @@ xfce_desktop_icon_remove(XfceDesktop *desktop,
     g_signal_handlers_disconnect_by_func(G_OBJECT(window),
                                          G_CALLBACK(xfce_desktop_window_name_changed_cb),
                                          icon);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(window),
+                                         G_CALLBACK(xfce_desktop_window_icon_changed_cb),
+                                         icon);
     
     g_hash_table_remove(desktop->priv->icon_workspaces[idx]->icons,
                         window);
