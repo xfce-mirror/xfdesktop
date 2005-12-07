@@ -340,13 +340,15 @@ msgstr "Xfce Menua"
 #: ../modules/menu/desktop-menu-file.c:118
 #: ../modules/menu/desktop-menu-file.c:133
 msgid "Unable to quit session."
-msgstr ""
+msgstr "Ezinda saioa amaitu."
 
 #: ../modules/menu/desktop-menu-file.c:119
 msgid ""
 "Quitting the session requires that Xfce's session manager (xfce4-session) is "
 "running, but it was not detected.  Please quit Xfce via another means."
 msgstr ""
+"Saioa ixteak Xfce-ren saio kudeatzailea (xfce4-session) abiarazirik egotea "
+"behar du baina ez da atzeman. Mesedez Xfce beste era batetara itxi."
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
@@ -354,6 +356,8 @@ msgid ""
 "Quitting the session requires the 'xfce4-session-logout' command, but it "
 "could not be found: %s"
 msgstr ""
+"Saioa ixteak 'xfce4-session-logout' komandoa behar du baina ezin da "
+"aurkitu: %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
@@ -385,9 +389,8 @@ msgid "Button"
 msgstr "Botoia"
 
 #: ../panel-plugin/desktop-menu-plugin.c:730
-#, fuzzy
 msgid "Button _title:"
-msgstr "Botoi _titulua"
+msgstr "Botoi _titulua:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:743
 msgid "_Show title in button"
@@ -525,19 +528,19 @@ msgstr "_Distira Doitu:"
 #: ../settings/backdrop_settings.c:829
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr ""
+msgstr "Xfce ez da zure idazmahaia kudeatzeko gai izango (%s)"
 
 #: ../settings/backdrop_settings.c:830
 msgid "Unknown Error"
-msgstr ""
+msgstr "Errore Ezezaguna"
 
 #: ../settings/backdrop_settings.c:834
 msgid "Error"
-msgstr ""
+msgstr "Errorea"
 
 #: ../settings/backdrop_settings.c:836
 msgid "Unable to start xfdesktop"
-msgstr ""
+msgstr "Ezinda xfdesktop abiarazi"
 
 #: ../settings/backdrop_settings.c:854
 msgid "Information"
@@ -551,6 +554,11 @@ msgid ""
 "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
+"Xfce abiarazten duzun hurrengo aldian Xfce-k zure idazmahaia ez kudeatzea "
+"ziurtatzeko, saio uzterakoan berau gorde egiten duzula ziurtatu.  Ez bazaude "
+"Xfce Saio Kudeatzailea (xfce4-session) erabiltzen ~/.config/xfce4/xinitrc "
+"fitxategia eskuz editatu beharko duzu.  Xehetasunak http://xfce.org/ guneko "
+"dokumentazioan aurki ditzakezu."
 
 #: ../settings/backdrop_settings.c:872
 msgid "_Do not show this again"
@@ -568,7 +576,7 @@ msgstr "_Xfce idazmahaia kudeatzeko baimendu"
 
 #: ../settings/backdrop_settings.c:1000
 msgid "Stretch single backdrop onto _all monitors"
-msgstr ""
+msgstr "Zabaldu atzekalde bakar bat monitore _guztietara"
 
 #: ../settings/backdrop_settings.c:1014
 msgid "_Backdrops"
@@ -633,7 +641,7 @@ msgstr "%d Pantaila, %d Monitorea"
 
 #: ../settings/backdrop_settings.c:1254
 msgid "_Useless Bloat"
-msgstr ""
+msgstr "P_uzte erabilezina"
 
 #: ../settings/menu_settings.c:174
 msgid "Window List Menu"
@@ -669,7 +677,7 @@ msgstr "Leiho Ikonoak"
 
 #: ../settings/menu_settings.c:264
 msgid "Show minimized window _icons on the desktop"
-msgstr ""
+msgstr "Txikituriko leiho _ikonoak idazmahaiean bistarazi"
 
 #: ../src/main.c:251
 #, c-format
@@ -695,7 +703,7 @@ msgstr "    -windowlist  Leiho zerrenda bistarazi (saguaren kokalekuan)\n"
 
 #: ../src/main.c:256
 msgid "    -quit        Cause xfdesktop to quit\n"
-msgstr ""
+msgstr "    -quit        xfdesktop itxi\n"
 
 #: ../src/windowlist.c:193
 #, c-format
@@ -735,13 +743,12 @@ msgstr "Xfce 4 Menu Editorea"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr ""
+msgstr "Instalatutako aplikazioaen kategoriak dituen menua bistarazi"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
 msgstr "Xfce 4 Idazmahai kudeatzaile ezarpenak"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Desktop Settings"
-msgstr "Xfce 4 mahaigain birtualen ezarpenak"
+msgstr "Xfce 4 Idazmahai Ezarpenak"
