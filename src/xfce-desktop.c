@@ -71,16 +71,14 @@
 #include "main.h"
 
 
+#ifdef ENABLE_WINDOW_ICONS
+
 /********
  * TODO *
  ********
  * + screen size changes
  * + theme/font changes
- * + DnD to move stuff around
  */
-
-
-#ifdef ENABLE_WINDOW_ICONS
 
 #define ICON_SIZE     32
 #define CELL_SIZE     112
@@ -110,8 +108,7 @@ typedef struct _XfceDesktopIconWorkspace
          height;
     guint16 nrows;
     guint16 ncols;
-    guint16 lowest_free_row;
-    guint16 lowest_free_col;
+    guint8 *grid_layout;
 } XfceDesktopIconWorkspace;
 
 #endif /* defined(ENABLE_WINDOW_ICONS) */
@@ -162,9 +159,10 @@ static gboolean xfce_desktop_drag_motion(GtkWidget *widget, GdkDragContext *cont
 static void xfce_desktop_drag_leave(GtkWidget *widget, GdkDragContext *context, guint time);
 static gboolean xfce_desktop_drag_drop(GtkWidget *widget, GdkDragContext *context, gint x, gint y, guint time);
 /* utility funcs */
-static gboolean get_next_free_position(XfceDesktop *desktop, guint idx, guint16 *row, guint16 *col);
+static gboolean grid_get_next_free_position(XfceDesktop *desktop, guint idx, guint16 *row, guint16 *col);
 static gboolean grid_is_free_position(XfceDesktop *desktop, gint idx, guint16 row, guint16 col);
-static void determine_next_free_position(XfceDesktop *desktop, guint idx);
+static void grid_set_position_free(XfceDesktop *desktop, gint idx, guint16 row, guint16 col);
+static void grid_unset_position_free(XfceDesktop *desktop, gint idx, guint16 row, guint16 col);
 static gboolean xfce_desktop_maybe_begin_drag(XfceDesktop *desktop, GdkEventMotion *evt);
 
 static const GtkTargetEntry targets[] = {
@@ -188,6 +186,21 @@ GtkWindowClass *parent_class = NULL;
 
 
 #ifdef ENABLE_WINDOW_ICONS
+
+#if defined(DEBUG) && DEBUG > 0
+#define dump_grid_layout(desktop, idx) \
+{\
+    gint my_i, my_maxi;\
+    \
+    g_printerr("\nDBG[%s:%d] %s\n", __FILE__, __LINE__, __FUNCTION__);\
+    my_maxi = desktop->priv->icon_workspaces[idx]->nrows * desktop->priv->icon_workspaces[idx]->ncols / 8 + 1;\
+    for(my_i = 0; my_i < my_maxi; my_i++)\
+        g_printerr("%02hhx ", desktop->priv->icon_workspaces[idx]->grid_layout[my_i]);\
+    g_printerr("\n\n");\
+}
+#else
+#define dump_grid_layout(desktop, idx)
+#endif
 
 static void
 xfce_desktop_icon_free(XfceDesktopIcon *icon)
@@ -228,20 +241,16 @@ xfce_desktop_icon_add(XfceDesktop *desktop,
     }
     
     if(!got_pos) {
-       if(!get_next_free_position(desktop, idx, &icon->row, &icon->col)) {
+       if(!grid_get_next_free_position(desktop, idx, &icon->row, &icon->col)) {
            g_free(icon);
            return;
        } else {
            DBG("old position didn't exist or isn't free, got (%d,%d) instead", icon->row, icon->col);
        }
     }
+    
+    grid_unset_position_free(desktop, idx, icon->row, icon->col);
 
-    determine_next_free_position(desktop, idx);
-    
-    DBG("set next free position to (%d,%d)",
-        desktop->priv->icon_workspaces[idx]->lowest_free_row,
-        desktop->priv->icon_workspaces[idx]->lowest_free_col);
-    
     icon->pix = netk_window_get_icon(window);
     if(icon->pix) {
         if(gdk_pixbuf_get_width(icon->pix) != ICON_SIZE) {
@@ -316,13 +325,7 @@ xfce_desktop_icon_remove(XfceDesktop *desktop,
     g_object_set_data(G_OBJECT(window), data_name,
                       GUINT_TO_POINTER(col+1));
     
-    if((desktop->priv->icon_workspaces[idx]->lowest_free_col == col
-        && row < desktop->priv->icon_workspaces[idx]->lowest_free_row)
-       || col < desktop->priv->icon_workspaces[idx]->lowest_free_col)
-    {
-        desktop->priv->icon_workspaces[idx]->lowest_free_row = row;
-        desktop->priv->icon_workspaces[idx]->lowest_free_col = col;
-    }
+    grid_set_position_free(desktop, idx, row, col);
 }
 
 static gboolean
@@ -1290,6 +1293,8 @@ workspace_changed_cb(NetkScreen *netk_screen,
                                  G_CALLBACK(xfce_desktop_window_icon_changed_cb),
                                  icon);
                 
+                grid_unset_position_free(desktop, n, cur_row, cur_col);
+                
                 cur_row++;
                 if(cur_row >= desktop->priv->icon_workspaces[n]->nrows) {
                     cur_col++;
@@ -1299,10 +1304,6 @@ workspace_changed_cb(NetkScreen *netk_screen,
                 }
             }
         }
-        
-        /* save next available row/col */
-        desktop->priv->icon_workspaces[n]->lowest_free_row = cur_row;
-        desktop->priv->icon_workspaces[n]->lowest_free_col = cur_col;
     }
     
     gtk_widget_queue_draw(GTK_WIDGET(desktop));
@@ -1349,6 +1350,9 @@ workspace_created_cb(NetkScreen *netk_screen,
         desktop->priv->icon_workspaces[ws_num]->height / CELL_SIZE;
     desktop->priv->icon_workspaces[ws_num]->ncols = 
         desktop->priv->icon_workspaces[ws_num]->width / CELL_SIZE;
+    desktop->priv->icon_workspaces[ws_num]->grid_layout =
+        g_malloc0(desktop->priv->icon_workspaces[ws_num]->nrows
+                  * desktop->priv->icon_workspaces[ws_num]->ncols / 8 + 1);
 }
 
 static void
@@ -1381,81 +1385,74 @@ workspace_destroyed_cb(NetkScreen *netk_screen,
 }
 
 static gboolean
-check_position_really_free(gpointer key,
-                           gpointer value,
-                           gpointer user_data)
-{
-    XfceDesktopIcon *icon = value;
-    guint32 pos = GPOINTER_TO_UINT(user_data);
-    
-    if(icon->row == ((pos >> 16) & 0xffff) && icon->col == (pos & 0xffff))
-        return TRUE;
-    else
-        return FALSE;
-}
-
-static gboolean
 grid_is_free_position(XfceDesktop *desktop,
                       gint idx,
                       guint16 row,
                       guint16 col)
 {
-    /* this is somewhat evil, probably. */
-    guint32 pos = ((row << 16) & 0xffff0000) | (col & 0xffff);
+    guint abit = col * desktop->priv->icon_workspaces[idx]->nrows + row;
+    guint8 abyte = desktop->priv->icon_workspaces[idx]->grid_layout[abit/8];
+    gboolean is_set = abyte & (0x80 >> (abit % 8));
     
-    if(g_hash_table_find(desktop->priv->icon_workspaces[idx]->icons,
-                         check_position_really_free,
-                         GUINT_TO_POINTER(pos)))
-    {
-        return FALSE;
-    } else
-        return TRUE;
-}
-
-static void
-determine_next_free_position(XfceDesktop *desktop,
-                             guint idx)
-{
-    /* FIXME: this is horribly horribly slow and inefficient.  however, the only
-     * alternatives i can come up right now with waste a lot of RAM. */
-    for(;;) {            
-        desktop->priv->icon_workspaces[idx]->lowest_free_row++;
-        if(desktop->priv->icon_workspaces[idx]->lowest_free_row >= desktop->priv->icon_workspaces[idx]->nrows) {
-            desktop->priv->icon_workspaces[idx]->lowest_free_row = 0;
-            desktop->priv->icon_workspaces[idx]->lowest_free_col++;
-            if(desktop->priv->icon_workspaces[idx]->lowest_free_col >= desktop->priv->icon_workspaces[idx]->ncols)
-                break;
-        }
-        
-        if(g_hash_table_size(desktop->priv->icon_workspaces[idx]->icons) == 0
-           || grid_is_free_position(desktop, idx,
-                                    desktop->priv->icon_workspaces[idx]->lowest_free_row,
-                                    desktop->priv->icon_workspaces[idx]->lowest_free_col))
-        {
-            break;
-        }
-    }
+    return !is_set;
 }
 
 static gboolean
-get_next_free_position(XfceDesktop *desktop,
+grid_get_next_free_position(XfceDesktop *desktop,
                        guint idx,
                        guint16 *row,
                        guint16 *col)
 {
-    g_return_val_if_fail(XFCE_IS_DESKTOP(desktop) && row && col, FALSE);
+    gint i, maxi, k;
+    guint8 j;
+    guint8 *grid_layout = desktop->priv->icon_workspaces[idx]->grid_layout;
     
-    if(desktop->priv->icon_workspaces[idx]->lowest_free_col >= desktop->priv->icon_workspaces[idx]->ncols
-       || (desktop->priv->icon_workspaces[idx]->lowest_free_col == desktop->priv->icon_workspaces[idx]->ncols - 1
-           && desktop->priv->icon_workspaces[idx]->lowest_free_row >= desktop->priv->icon_workspaces[idx]->nrows))
-    {
-        return FALSE;
-    }
-    
-    *row = desktop->priv->icon_workspaces[idx]->lowest_free_row;
-    *col = desktop->priv->icon_workspaces[idx]->lowest_free_col;
-    
-    return TRUE;
+    maxi = desktop->priv->icon_workspaces[idx]->nrows
+           * desktop->priv->icon_workspaces[idx]->ncols + 1;
+    for(i = 0; i < maxi; ++i) {
+       if(grid_layout[i] != 0xff) {
+           for(j = 0x80, k = 0; j; j >>= 1, ++k) {
+               if(~grid_layout[i] & j) {
+                   guint abit = i * 8 + k;
+                   *row = abit % desktop->priv->icon_workspaces[idx]->nrows;
+                   *col = (abit + 1) / desktop->priv->icon_workspaces[idx]->ncols;
+                   return TRUE;
+               }
+           }
+       }
+   }
+   
+   return FALSE;
+}
+
+static void
+grid_set_position_free(XfceDesktop *desktop,
+                       gint idx,
+                       guint16 row,
+                       guint16 col)
+{
+    guint8 *grid_layout = desktop->priv->icon_workspaces[idx]->grid_layout;
+    guint abit = col * desktop->priv->icon_workspaces[idx]->nrows + row;
+    guint abyte = abit / 8;
+    guint8 mask = ~(0x80 >> (abit % 8));
+    dump_grid_layout(desktop, idx);
+    grid_layout[abyte] &= mask;
+    dump_grid_layout(desktop, idx);
+}
+
+static void
+grid_unset_position_free(XfceDesktop *desktop,
+                         gint idx,
+                         guint16 row,
+                         guint16 col)
+{
+    guint8 *grid_layout = desktop->priv->icon_workspaces[idx]->grid_layout;
+    guint abit = col * desktop->priv->icon_workspaces[idx]->nrows + row;
+    guint abyte = abit / 8;
+    guint8 mask = 0x80 >> (abit % 8);
+    dump_grid_layout(desktop, idx);
+    grid_layout[abyte] |= mask;
+    dump_grid_layout(desktop, idx);
 }
 
 static void
@@ -2097,6 +2094,16 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
             
             desktop->priv->icon_workspaces[i]->nrows = heights[i] / CELL_SIZE;
             desktop->priv->icon_workspaces[i]->ncols = widths[i] / CELL_SIZE;
+            
+            desktop->priv->icon_workspaces[i]->grid_layout = g_malloc0(
+                desktop->priv->icon_workspaces[i]->nrows
+                * desktop->priv->icon_workspaces[i]->ncols / 8 + 1);
+            DBG("created grid_layout with %d bytes (%d positions)",
+                desktop->priv->icon_workspaces[i]->nrows
+                * desktop->priv->icon_workspaces[i]->ncols / 8 + 1,
+                desktop->priv->icon_workspaces[i]->nrows
+                * desktop->priv->icon_workspaces[i]->ncols);
+            dump_grid_layout(desktop, i);
         }
     } else {
         gint w = gdk_screen_get_width(desktop->priv->gscreen);
@@ -2110,6 +2117,16 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
             
             desktop->priv->icon_workspaces[i]->nrows = h / CELL_SIZE;
             desktop->priv->icon_workspaces[i]->ncols = w / CELL_SIZE;
+            
+            desktop->priv->icon_workspaces[i]->grid_layout = g_malloc0(
+                desktop->priv->icon_workspaces[i]->nrows
+                * desktop->priv->icon_workspaces[i]->ncols / 8 + 1);
+            DBG("created grid_layout with %d bytes (%d positions)",
+                desktop->priv->icon_workspaces[i]->nrows
+                * desktop->priv->icon_workspaces[i]->ncols / 8 + 1,
+                desktop->priv->icon_workspaces[i]->nrows
+                * desktop->priv->icon_workspaces[i]->ncols);
+            dump_grid_layout(desktop, i);
         }
     }
     
@@ -2176,6 +2193,7 @@ xfce_desktop_unsetup_icons(XfceDesktop *desktop)
     for(i = 0; i < nws; i++) {
         if(desktop->priv->icon_workspaces[i]->icons)
             g_hash_table_destroy(desktop->priv->icon_workspaces[i]->icons);
+        g_free(desktop->priv->icon_workspaces[i]->grid_layout);
         g_free(desktop->priv->icon_workspaces[i]);
     }
     g_free(desktop->priv->icon_workspaces);
@@ -2369,7 +2387,7 @@ xfce_desktop_drag_drop(GtkWidget *widget,
     GdkAtom target = GDK_NONE;
     XfceDesktopIcon *icon;
     NetkWorkspace *active_ws;
-    gint active_ws_num, row, col, cell_x, cell_y, lfc, lfr;
+    gint active_ws_num, row, col, cell_x, cell_y;
     
     TRACE("entering: (%d,%d)", x, y);
     
@@ -2401,16 +2419,8 @@ xfce_desktop_drag_drop(GtkWidget *widget,
     icon = desktop->priv->last_clicked_item;
     g_return_val_if_fail(icon, FALSE);
     
-    /* reset lowest free position if necessary.  this is kinda icky and
-     * probably doesn't behave quite correctly.  FIXME. */
-    lfr = desktop->priv->icon_workspaces[active_ws_num]->lowest_free_row;
-    lfc = desktop->priv->icon_workspaces[active_ws_num]->lowest_free_col;
-    if(((lfc == icon->col && icon->row < lfr) || icon->col < lfc)
-       || (lfr == row && lfc == col))
-    {
-        desktop->priv->icon_workspaces[active_ws_num]->lowest_free_row = icon->row;
-        desktop->priv->icon_workspaces[active_ws_num]->lowest_free_col = icon->col;
-    }
+    grid_set_position_free(desktop, active_ws_num, icon->row, icon->col);
+    grid_unset_position_free(desktop, active_ws_num, row, col);
     
     /* set new position */
     icon->row = row;
