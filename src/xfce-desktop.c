@@ -2221,6 +2221,10 @@ desktop_rootwin_watch_workarea(GdkXEvent *gxevent,
        && XInternAtom(GDK_DISPLAY(), "_NET_WORKAREA", False) == xevt->atom)
     {
         DBG("got _NET_WORKAREA change on rootwin!");
+        if(desktop->priv->grid_resize_timeout) {
+            g_source_remove(desktop->priv->grid_resize_timeout);
+            desktop->priv->grid_resize_timeout = 0;
+        }
         desktop_grid_do_resize(desktop);
     }
     
