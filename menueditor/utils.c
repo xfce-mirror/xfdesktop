@@ -81,7 +81,10 @@ save_treeview_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIte
       fprintf (state->file_menu, " visible=\"no\"");
     if (option_1 && strlen (option_1) > 0)
       fprintf (state->file_menu, " icon=\"%s\"", option_1);
-    fprintf (state->file_menu, ">\n");
+    if (gtk_tree_model_iter_has_child (model, iter))
+      fprintf (state->file_menu, ">\n");
+    else
+      fprintf (state->file_menu, "/>\n");
     break;
   case APP:
     fprintf (state->file_menu, "%s<app name=\"%s\" cmd=\"%s\"", space, name, command);
