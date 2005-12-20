@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-10 09:38+0900\n"
+"POT-Creation-Date: 2005-12-20 20:43+0900\n"
 "PO-Revision-Date: 2004-01-18 12:33-0200\n"
 "Last-Translator: Felix da Silva Costa <felix@online.eti.br>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
@@ -101,7 +101,7 @@ msgstr "Todos os campos devem ser preenchidos para adicionar um item."
 msgid "The 'Name' field is required."
 msgstr "O campo 'Nome' é obrigatório."
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:311
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:314
 msgid "--- separator ---"
 msgstr "--- separador ---"
 
@@ -149,11 +149,11 @@ msgid "The 'Source' field is required."
 msgstr "o Campo 'Fonte' é obrigatório"
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:365
+#: ../menueditor/utils.c:368
 msgid "--- include ---"
 msgstr "--- incluir ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:382
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:385
 msgid "system"
 msgstr "sistema"
 
@@ -191,7 +191,7 @@ msgstr "Você tem certeza que deseja fechar o menu atual?"
 msgid "Do you want to save before closing the file?"
 msgstr "Você quer salvar antes de fechar o arquivo?"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:580
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:583
 msgid "Select command"
 msgstr "Selecionar comando"
 
@@ -315,18 +315,18 @@ msgstr "Comando"
 msgid "Hidden"
 msgstr "Escondido"
 
-#: ../menueditor/utils.c:642
+#: ../menueditor/utils.c:645
 #, fuzzy
 msgid "Select icon"
 msgstr "Selecionar ícone"
 
-#: ../menueditor/utils.c:648 ../panel-plugin/desktop-menu-plugin.c:545
+#: ../menueditor/utils.c:651 ../panel-plugin/desktop-menu-plugin.c:545
 #: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
 #: ../settings/backdrop_settings.c:524
 msgid "All Files"
 msgstr "Todos os arquivos"
 
-#: ../menueditor/utils.c:652 ../panel-plugin/desktop-menu-plugin.c:551
+#: ../menueditor/utils.c:655 ../panel-plugin/desktop-menu-plugin.c:551
 #: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
 msgid "Image Files"
 msgstr "Arquivo de imagens"
@@ -431,7 +431,7 @@ msgstr "Ícone do botão:"
 msgid "Show _icons in menu"
 msgstr "Mostrar _ícones no menu"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:562
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:572
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -483,7 +483,7 @@ msgstr "Editar lista de fundos"
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:939
-#: ../src/xfce-desktop.c:1713
+#: ../src/xfce-desktop.c:1790
 msgid "Desktop"
 msgstr "Área de trabalho"
 

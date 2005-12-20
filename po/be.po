@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-10 09:38+0900\n"
+"POT-Creation-Date: 2005-12-20 20:43+0900\n"
 "PO-Revision-Date: 2005-10-09 22:10+0900\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -101,7 +101,7 @@ msgstr "Каб дадаць элемэн, павінны быць запоўне
 msgid "The 'Name' field is required."
 msgstr "Поле \"Назва\" зьяўляецца абавязковым."
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:311
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:314
 msgid "--- separator ---"
 msgstr "--- падзяляльнік ---"
 
@@ -149,11 +149,11 @@ msgid "The 'Source' field is required."
 msgstr "Поле \"Крыніца\" зьяўляецца абавязковым."
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:365
+#: ../menueditor/utils.c:368
 msgid "--- include ---"
 msgstr "--- падстаноўка ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:382
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:385
 msgid "system"
 msgstr "сыстэма"
 
@@ -191,7 +191,7 @@ msgstr "Вы насамрэч жадаеце зачыніць бягучае м�
 msgid "Do you want to save before closing the file?"
 msgstr "Мо жадаеце захаваць зьмены перш чым зачыніць файл?"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:580
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:583
 msgid "Select command"
 msgstr "Вылучыце загад"
 
@@ -312,18 +312,18 @@ msgstr "Загад"
 msgid "Hidden"
 msgstr "Схаваны"
 
-#: ../menueditor/utils.c:642
+#: ../menueditor/utils.c:645
 #, fuzzy
 msgid "Select icon"
 msgstr "Вылучыце значку"
 
-#: ../menueditor/utils.c:648 ../panel-plugin/desktop-menu-plugin.c:545
+#: ../menueditor/utils.c:651 ../panel-plugin/desktop-menu-plugin.c:545
 #: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
 #: ../settings/backdrop_settings.c:524
 msgid "All Files"
 msgstr "Усе файлы"
 
-#: ../menueditor/utils.c:652 ../panel-plugin/desktop-menu-plugin.c:551
+#: ../menueditor/utils.c:655 ../panel-plugin/desktop-menu-plugin.c:551
 #: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
 msgid "Image Files"
 msgstr "Файлы з відарысамі"
@@ -427,7 +427,7 @@ msgstr "Значка _кнопкі:"
 msgid "Show _icons in menu"
 msgstr "Паказваць _значкі ў мэню"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:562
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:572
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -479,7 +479,7 @@ msgstr "Рэдагаваць сьпіс тла"
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:939
-#: ../src/xfce-desktop.c:1713
+#: ../src/xfce-desktop.c:1790
 msgid "Desktop"
 msgstr "Сталец"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-10 09:38+0900\n"
+"POT-Creation-Date: 2005-12-20 20:43+0900\n"
 "PO-Revision-Date: 2005-09-21 09:50+0900\n"
 "Last-Translator: Robert Kurowski <koorek@o2.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -101,7 +101,7 @@ msgstr "Wszystkie pola muszą być wypełnione aby dodać element."
 msgid "The 'Name' field is required."
 msgstr "Pole 'Nazwa' jest wymagane."
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:311
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:314
 msgid "--- separator ---"
 msgstr "--- separator ---"
 
@@ -149,11 +149,11 @@ msgid "The 'Source' field is required."
 msgstr "Pole 'Źródło' jest wymagane."
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:365
+#: ../menueditor/utils.c:368
 msgid "--- include ---"
 msgstr "--- dołącz ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:382
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:385
 msgid "system"
 msgstr "system"
 
@@ -191,7 +191,7 @@ msgstr "Czy jesteś pewny/a, że chcesz zamknąć bieżące menu?"
 msgid "Do you want to save before closing the file?"
 msgstr "Czy chcesz zapisać przed zamknięciem pliku?"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:580
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:583
 msgid "Select command"
 msgstr "Wybierz polecenie"
 
@@ -312,17 +312,17 @@ msgstr "Polecenie"
 msgid "Hidden"
 msgstr "Ukryty"
 
-#: ../menueditor/utils.c:642
+#: ../menueditor/utils.c:645
 msgid "Select icon"
 msgstr "Wybierz ikonę"
 
-#: ../menueditor/utils.c:648 ../panel-plugin/desktop-menu-plugin.c:545
+#: ../menueditor/utils.c:651 ../panel-plugin/desktop-menu-plugin.c:545
 #: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
 #: ../settings/backdrop_settings.c:524
 msgid "All Files"
 msgstr "Wszystkie pliki"
 
-#: ../menueditor/utils.c:652 ../panel-plugin/desktop-menu-plugin.c:551
+#: ../menueditor/utils.c:655 ../panel-plugin/desktop-menu-plugin.c:551
 #: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
 msgid "Image Files"
 msgstr "Pliki graficzne"
@@ -421,7 +421,7 @@ msgstr "_Ikona przycisku:"
 msgid "Show _icons in menu"
 msgstr "Pokazuj _ikony w menu"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:562
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:572
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -472,7 +472,7 @@ msgstr "Edytuj listę z tłami"
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:939
-#: ../src/xfce-desktop.c:1713
+#: ../src/xfce-desktop.c:1790
 msgid "Desktop"
 msgstr "Pulpit"
 

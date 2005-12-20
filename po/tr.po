@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-10 09:38+0900\n"
+"POT-Creation-Date: 2005-12-20 20:43+0900\n"
 "PO-Revision-Date: 2005-10-09 22:25+0900\n"
 "Last-Translator: Erçin EKER <erc.caldera@gmx.net>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -101,7 +101,7 @@ msgstr "Ekleme yapabilmek için tüm alanları doldurmalısınız."
 msgid "The 'Name' field is required."
 msgstr "'İsim' alanı dolu olmalı."
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:311
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:314
 msgid "--- separator ---"
 msgstr "--- ayırıcı ---"
 
@@ -149,11 +149,11 @@ msgid "The 'Source' field is required."
 msgstr "'Kaynak' bölümü gerekli."
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:365
+#: ../menueditor/utils.c:368
 msgid "--- include ---"
 msgstr "--- içer ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:382
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:385
 msgid "system"
 msgstr "sistem"
 
@@ -192,7 +192,7 @@ msgstr "Şu an ki menüyü kapatmak istediğinizden emin misiniz?"
 msgid "Do you want to save before closing the file?"
 msgstr "Dosyayı kapatmadan önce kaydetmek ister misiniz?"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:580
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:583
 msgid "Select command"
 msgstr "Komut seç"
 
@@ -313,18 +313,18 @@ msgstr "Komut"
 msgid "Hidden"
 msgstr "Gizli"
 
-#: ../menueditor/utils.c:642
+#: ../menueditor/utils.c:645
 #, fuzzy
 msgid "Select icon"
 msgstr "Simge Seç"
 
-#: ../menueditor/utils.c:648 ../panel-plugin/desktop-menu-plugin.c:545
+#: ../menueditor/utils.c:651 ../panel-plugin/desktop-menu-plugin.c:545
 #: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
 #: ../settings/backdrop_settings.c:524
 msgid "All Files"
 msgstr "Tüm Dosyalar"
 
-#: ../menueditor/utils.c:652 ../panel-plugin/desktop-menu-plugin.c:551
+#: ../menueditor/utils.c:655 ../panel-plugin/desktop-menu-plugin.c:551
 #: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
 msgid "Image Files"
 msgstr "Resim Dosyaları"
@@ -428,7 +428,7 @@ msgstr "_Düğme simgesi:"
 msgid "Show _icons in menu"
 msgstr "Menüde _simge göster"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:562
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:572
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -480,7 +480,7 @@ msgstr "Arka plan listesi düzenle"
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:939
-#: ../src/xfce-desktop.c:1713
+#: ../src/xfce-desktop.c:1790
 msgid "Desktop"
 msgstr "Masaüstü"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-10 09:38+0900\n"
+"POT-Creation-Date: 2005-12-20 20:43+0900\n"
 "PO-Revision-Date: 2005-10-09 22:18+0900\n"
 "Last-Translator: Norayr Chilingaryan <norik@freenet.am>\n"
 "Language-Team: Armenian <en@li.org>\n"
@@ -102,7 +102,7 @@ msgstr "Անհրաժեշտ է լրացնել բոլոր դաշտերը"
 msgid "The 'Name' field is required."
 msgstr "«Անուն» դաշտը անհրաժեշտ է լրացնել"
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:311
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:314
 msgid "--- separator ---"
 msgstr "––– բաժանիչ –––"
 
@@ -150,11 +150,11 @@ msgid "The 'Source' field is required."
 msgstr "«Ակունք» դաշտը անհրաժեշտ է լրացնել"
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:365
+#: ../menueditor/utils.c:368
 msgid "--- include ---"
 msgstr "––– ներառել –––"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:382
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:385
 msgid "system"
 msgstr "համակարգ"
 
@@ -192,7 +192,7 @@ msgstr "Վստա՞հեք, որ ուզում եք փակել ընթացիկ ցա�
 msgid "Do you want to save before closing the file?"
 msgstr "Ուզու՞մ եք հիշել մինչ ֆայլը փակելը"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:580
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:583
 msgid "Select command"
 msgstr "Ընտրեք հրամանը"
 
@@ -313,18 +313,18 @@ msgstr "Հրաման"
 msgid "Hidden"
 msgstr "Թաքուն"
 
-#: ../menueditor/utils.c:642
+#: ../menueditor/utils.c:645
 #, fuzzy
 msgid "Select icon"
 msgstr "Ընտրեք Պատկերակը"
 
-#: ../menueditor/utils.c:648 ../panel-plugin/desktop-menu-plugin.c:545
+#: ../menueditor/utils.c:651 ../panel-plugin/desktop-menu-plugin.c:545
 #: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
 #: ../settings/backdrop_settings.c:524
 msgid "All Files"
 msgstr "Բոլոր ֆայլերը"
 
-#: ../menueditor/utils.c:652 ../panel-plugin/desktop-menu-plugin.c:551
+#: ../menueditor/utils.c:655 ../panel-plugin/desktop-menu-plugin.c:551
 #: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
 msgid "Image Files"
 msgstr "Պատկերների ֆայլերը"
@@ -422,7 +422,7 @@ msgstr "_Ստեղն պատկերակը"
 msgid "Show _icons in menu"
 msgstr "Ցույց տալ _պատկերակները ցանկի մեջ"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:562
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:572
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -474,7 +474,7 @@ msgstr "Խմբագրել նախադրյալների ցուցակը"
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:939
-#: ../src/xfce-desktop.c:1713
+#: ../src/xfce-desktop.c:1790
 msgid "Desktop"
 msgstr "Գրասեղան"
 
