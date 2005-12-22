@@ -907,7 +907,7 @@ dmp_new(XfcePanelPlugin *plugin)
         gtk_widget_show(dmp->label);
     gtk_box_pack_start(GTK_BOX(dmp->box), dmp->label, TRUE, TRUE, 0);
     
-    dmp->desktop_menu = xfce_desktop_menu_new(dmp->use_default_menu
+    dmp->desktop_menu = xfce_desktop_menu_new(!dmp->use_default_menu
                                                 ? dmp->menu_file : NULL,
                                               TRUE);
     if(dmp->desktop_menu) {
