@@ -6,7 +6,7 @@
 <!--
      翻訳者:
 
-         Daichi Kawahata <daichi@xfce.org>, 2005.
+         Daichi Kawahata <daichi@xfce.org>, 2005-2006.
 
      誤訳の指摘・改訳の提案等は:
 
@@ -85,7 +85,7 @@
 
     <separator/>
 
-    <app name="プログラムを実行..." cmd="xfrun4" icon="gnome-fs-executable"/>
+    <app name="プログラムの実行..." cmd="xfrun4" icon="gnome-fs-executable"/>
 
     <separator/>
 
@@ -134,10 +134,10 @@
     <app name="ヘルプ" cmd="xfhelp4" icon="gnome-help"/>
     <app name="Xfce について" cmd="xfce4-about" icon="gnome-info"/>
     <!--
-      ログアウト・ダイアログボックスを最初に表示した後で xfce4-session
+      ログアウトのダイアログボックスを最初に表示した後で xfce4-session
       を終了させます。xfce4-session が動作していないなら、xfdesktop を
       終了させます。
     -->
-    <builtin name="ログアウト" cmd="quit" icon="gnome-logout"/>
+    <builtin name="終了" cmd="quit" icon="gnome-logout"/>
 
 </xfdesktop-menu>
