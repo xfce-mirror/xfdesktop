@@ -131,7 +131,9 @@ struct _XfceDesktopPriv
     PangoLayout *playout;
     
     XfceDesktopIconWorkspace **icon_workspaces;
+    
     guint grid_resize_timeout;
+    guint icon_repaint_id;
     
     gboolean maybe_begin_drag;
     gboolean definitely_dragging;
@@ -501,7 +503,11 @@ xfce_desktop_icon_paint_delayed(NetkWindow *window,
 static gboolean
 xfce_desktop_icon_paint_idled(gpointer user_data)
 {
-    xfce_desktop_icon_paint((XfceDesktopIcon *)user_data);
+    XfceDesktopIcon *icon = (XfceDesktopIcon *)user_data;
+    
+    icon->desktop->priv->icon_repaint_id = 0;
+    
+    xfce_desktop_icon_paint(icon);
     
     return FALSE;
 }
@@ -2113,7 +2119,10 @@ check_icon_needs_repaint(gpointer key,
         if(icon == icon->desktop->priv->icon_workspaces[icon->desktop->priv->cur_ws_num]->selected_icon) {
             /* save it for last to avoid painting another icon over top of
              * part of this one if it has an overly-large label */
-            g_idle_add(xfce_desktop_icon_paint_idled, icon);
+            if(icon->desktop->priv->icon_repaint_id)
+                g_source_remove(icon->desktop->priv->icon_repaint_id);
+            icon->desktop->priv->icon_repaint_id = g_idle_add(xfce_desktop_icon_paint_idled,
+                                                              icon);
         } else
             xfce_desktop_icon_paint(icon);
     }
@@ -2305,6 +2314,11 @@ xfce_desktop_unsetup_icons(XfceDesktop *desktop)
     if(desktop->priv->grid_resize_timeout) {
         g_source_remove(desktop->priv->grid_resize_timeout);
         desktop->priv->grid_resize_timeout = 0;
+    }
+    
+    if(desktop->priv->icon_repaint_id) {
+        g_source_remove(desktop->priv->icon_repaint_id);
+        desktop->priv->icon_repaint_id = 0;
     }
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
