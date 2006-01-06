@@ -1294,20 +1294,25 @@ desktop_get_workarea(XfceDesktop *desktop,
                                          &actual_type, &actual_format, &nitems,
                                          &bytes_after, &data_p))
         {
+            if(!data_p)
+                break;
+            
             if(actual_format != 32 || actual_type != XA_CARDINAL) {
-                XFree(data);
+                XFree(data_p);
                 break;
             }
             
             data = (gulong *)data_p;
             for(j = 0; j < nitems; j++, i++)
                 full_data[i] = data[j];
-            XFree(data);
+            XFree(data_p);
+            data_p = NULL;
             
             if(i == nworkspaces * 4)
                 ret = TRUE;
             
             offset += actual_format * nitems;
+            
         } else
             break;
     } while(bytes_after > 0);
@@ -1503,7 +1508,7 @@ grid_get_next_free_position(XfceDesktopIconWorkspace *icon_workspace,
                if(~grid_layout[i] & j) {
                    guint abit = i * 8 + k;
                    *row = abit % icon_workspace->nrows;
-                   *col = (abit + 1) / icon_workspace->ncols;
+                   *col = abit / icon_workspace->nrows;
                    return TRUE;
                }
            }
