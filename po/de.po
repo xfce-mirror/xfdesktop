@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the xfdesktop package.
 # Benedikt Meurer <benny@xfce.org>, 2003.
 # Moritz Heiber <moe@xfce.org>, 2004.
-# Fabian Nowak <timystery@arcor.de>, 2005.
+# Fabian Nowak <timystery@arcor.de>, 2005, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-01-07 12:21+0900\n"
-"PO-Revision-Date: 2005-10-12 04:09+0900\n"
+"PO-Revision-Date: 2006-01-06 12:51+0100\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -83,13 +83,13 @@ msgstr "Symbol:"
 #. Startup notification
 #: ../menueditor/add_dialog.c:237 ../menueditor/edit_dialog.c:160
 msgid "Use startup _notification"
-msgstr "Benutze Startup Notifikation"
+msgstr "Benutze Startup _Notifikation"
 
 #. Run in terminal check button
 #. Run in terminal
 #: ../menueditor/add_dialog.c:241 ../menueditor/edit_dialog.c:163
 msgid "Run in _terminal"
-msgstr "In Terminal ausführen"
+msgstr "In _Terminal ausführen"
 
 #: ../menueditor/add_dialog.c:272 ../menueditor/edit_dialog.c:242
 msgid "The command doesn't exist !"
@@ -144,7 +144,7 @@ msgstr "Mehrere Ebenen"
 #. Unique
 #: ../menueditor/add_menu_dialog.c:162
 msgid "_Unique entries only"
-msgstr "Nur einzelne Einträge"
+msgstr "Nur einde_utige Einträge"
 
 #: ../menueditor/add_menu_dialog.c:198
 msgid "The 'Source' field is required."
@@ -261,7 +261,7 @@ msgstr "_Hilfe"
 
 #: ../menueditor/menueditor.c:905
 msgid "_About..."
-msgstr "Über..."
+msgstr "Ü_ber..."
 
 #: ../menueditor/menueditor.c:917
 msgid "Create a new Xfce4 menu file"
@@ -316,7 +316,6 @@ msgid "Hidden"
 msgstr "Versteckt"
 
 #: ../menueditor/utils.c:645
-#, fuzzy
 msgid "Select icon"
 msgstr "Icon auswählen"
 
@@ -340,15 +339,17 @@ msgstr "Xfce Menü"
 
 #: ../modules/menu/desktop-menu-file.c:118
 #: ../modules/menu/desktop-menu-file.c:133
-#, fuzzy
 msgid "Unable to quit session."
-msgstr "Kann Xfdesktop nicht starten"
+msgstr "Kann Sitzung nicht beenden"
 
 #: ../modules/menu/desktop-menu-file.c:119
 msgid ""
 "Quitting the session requires that Xfce's session manager (xfce4-session) is "
 "running, but it was not detected.  Please quit Xfce via another means."
 msgstr ""
+"Um die Sitzung zu beenden, muss der Xfce Sitzungsmanager (xfce4-session) "
+"laufen, er wurde jedoch nicht gefunden. Bitte beenden Sie Xfce auf andere "
+"Weise."
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
@@ -356,6 +357,8 @@ msgid ""
 "Quitting the session requires the 'xfce4-session-logout' command, but it "
 "could not be found: %s"
 msgstr ""
+"Um die Sitzung zu beenden, wird der Befehl 'xfce4-session-logout' benötigt, "
+"er wurde jedoch nicht gefunden: %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
@@ -417,11 +420,11 @@ msgstr "Symbole"
 
 #: ../panel-plugin/desktop-menu-plugin.c:844
 msgid "_Button icon:"
-msgstr "Buttonicon:"
+msgstr "_Buttonicon:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:868
 msgid "Show _icons in menu"
-msgstr "Symbole im Menü anzeigen"
+msgstr "Symbole _im Menü anzeigen"
 
 #: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:578
 #, c-format
@@ -431,7 +434,7 @@ msgid ""
 "Please choose another location or press cancel in the dialog to discard your "
 "changes"
 msgstr ""
-"Konnte Datei %s: %s nicht abspeichern\n"
+"Konnte Datei %s nicht abspeichern: %s\n"
 "\n"
 "Bitte anderen Speicherplatz wählen oder Abbrechen um die Änderungen zu "
 "verwerfen"
@@ -553,11 +556,11 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 "Um sicherzustellen, dass Xfce den Arbeitsplatz nicht verwaltet, wenn das "
-"nächste Mal Xfce gestartet wird, stelle bitte sicher, dass die Sitzung beim "
-"Abmelden gespeichert wird. Falls der Xfce Sitzungs-Manager (xfce4-session) "
-"nicht verwendet wird, muss die Datei ~/.config/xfce4/xinitrc manuell "
-"geändert werden. Details dazu sind in der Dokumentation unter http://xfce."
-"org/ verfügbar."
+"nächste Mal Xfce gestartet wird, stellen Sie bitte sicher, dass die Sitzung "
+"beim Abmelden gespeichert wird. Falls der Xfce Sitzungs-Manager (xfce4-"
+"session) nicht verwendet wird, muss die Datei ~/.config/xfce4/xinitrc "
+"manuell geändert werden. Details dazu sind in der Dokumentation unter http://"
+"xfce.org/ verfügbar."
 
 #: ../settings/backdrop_settings.c:872
 msgid "_Do not show this again"
@@ -571,7 +574,7 @@ msgstr "Hintergrundeinstellungen"
 
 #: ../settings/backdrop_settings.c:959
 msgid "Allow _Xfce to manage the desktop"
-msgstr "Xfce den ARbeitsplatz verwalten lassen"
+msgstr "_Xfce den Arbeitsplatz verwalten lassen"
 
 #: ../settings/backdrop_settings.c:1000
 msgid "Stretch single backdrop onto _all monitors"
@@ -625,7 +628,7 @@ msgstr "_Datei:"
 #. add the single backdrop settings page to the main notebook
 #: ../settings/backdrop_settings.c:1219
 msgid "_Backdrop"
-msgstr "Hintergrund"
+msgstr "_Hintergrund"
 
 #: ../settings/backdrop_settings.c:1230 ../settings/backdrop_settings.c:1232
 #, c-format
@@ -648,11 +651,11 @@ msgstr "Fensterliste"
 
 #: ../settings/menu_settings.c:182
 msgid "Show window _list"
-msgstr "Zeige Fensterliste_"
+msgstr "Zeige Fenster_liste"
 
 #: ../settings/menu_settings.c:197
 msgid "Show _window icons"
-msgstr "Zeige Icons der Fenster"
+msgstr "Zeige Icons der _Fenster"
 
 #: ../settings/menu_settings.c:210
 msgid "Desktop Menu"
@@ -660,7 +663,7 @@ msgstr "Desktopmenü"
 
 #: ../settings/menu_settings.c:218
 msgid "Show desktop _menu"
-msgstr "Zeige _Desktopmenü"
+msgstr "Zeige Desktop_menü"
 
 #: ../settings/menu_settings.c:233
 msgid "Show _application icons"
@@ -668,7 +671,7 @@ msgstr "_Zeige Programmicons"
 
 #: ../settings/menu_settings.c:244
 msgid "_Edit desktop menu"
-msgstr "_Desktopmenü bearbeiten"
+msgstr "D_esktopmenü bearbeiten"
 
 #: ../settings/menu_settings.c:256
 msgid "Window Icons"
@@ -676,7 +679,7 @@ msgstr "Fenstersymbole"
 
 #: ../settings/menu_settings.c:264
 msgid "Show minimized window _icons on the desktop"
-msgstr "Zeige minimierte Fenstersymbole auf der Arbeitsfläche"
+msgstr "Zeige minimierte _Fenstersymbole auf der Arbeitsfläche"
 
 #: ../src/main.c:251
 #, c-format
@@ -743,11 +746,11 @@ msgstr "Xfce Menü Editor"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr ""
+msgstr "Zeigt ein Menü mit den Kategorien der installierten Anwendungen"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr "Einstellungen für den Xfce4 Dekstop Manager"
+msgstr "Einstellungen für den Xfce4 Desktop Manager"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
