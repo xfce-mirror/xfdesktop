@@ -2,6 +2,7 @@
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Robert Kurowski <koorek@o2.pl>, 2005.
+# Piotr Maliński <riklaunim@gmail.com>, 2006.
 #
 msgid ""
 msgstr ""
@@ -9,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-01-07 12:21+0900\n"
 "PO-Revision-Date: 2005-09-21 09:50+0900\n"
-"Last-Translator: Robert Kurowski <koorek@o2.pl>\n"
+"Last-Translator: Piotr Maliński <riklaunim@gmail.com>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -344,14 +345,16 @@ msgstr "Nie można uruchomić xfdesktop"
 msgid ""
 "Quitting the session requires that Xfce's session manager (xfce4-session) is "
 "running, but it was not detected.  Please quit Xfce via another means."
-msgstr ""
+msgstr "Wyłączenie XFCE wymaga dostępu do sesji obsługiwanej przez "
+"xfce4-session. Niestety nie jest on dostępny. Wyłącz XFCE innymi metodami."
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
 msgid ""
 "Quitting the session requires the 'xfce4-session-logout' command, but it "
 "could not be found: %s"
-msgstr ""
+msgstr "Wyjście z XFCE wymaga polecenia xfce4-session-logout lecz nie "
+"zostało ono znalezione: %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
@@ -390,7 +393,7 @@ msgstr "_Tytuł przycisku:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:743
 msgid "_Show title in button"
-msgstr ""
+msgstr "_Pokaż tytuł na przycisku"
 
 #: ../panel-plugin/desktop-menu-plugin.c:750
 msgid "Menu File"
@@ -567,7 +570,7 @@ msgstr "Zezwól _Xfce na zarządzanie pulpitem"
 
 #: ../settings/backdrop_settings.c:1000
 msgid "Stretch single backdrop onto _all monitors"
-msgstr ""
+msgstr "Rozciągnij jedno tło na _wszystkie monitory"
 
 #: ../settings/backdrop_settings.c:1014
 msgid "_Backdrops"
@@ -697,7 +700,7 @@ msgstr "    -windowlist  Pokazuje listę okien (w miejscu kursora myszki)\n"
 
 #: ../src/main.c:256
 msgid "    -quit        Cause xfdesktop to quit\n"
-msgstr ""
+msgstr "	-quit		Powoduje zamknięcie xfdesktop\n"
 
 #: ../src/windowlist.c:193
 #, c-format
