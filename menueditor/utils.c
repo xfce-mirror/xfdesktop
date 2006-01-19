@@ -36,6 +36,7 @@ save_treeview_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIte
 {
   struct MenuFileSaveState *state = data;
   gchar *space = NULL;
+  gint i;
   gchar *name = NULL;
   gchar *command = NULL;
   gboolean hidden = FALSE;
@@ -47,8 +48,12 @@ save_treeview_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIte
 
   space = g_strnfill (gtk_tree_path_get_depth (path), '\t');
 
-  if (state->last_depth > gtk_tree_path_get_depth (path)) {
-    fprintf (state->file_menu, "%s</menu>\n", space);
+  for (i = state->last_depth; i > gtk_tree_path_get_depth(path); i--) {
+    gchar *space2 = NULL;
+
+    space2 = g_strnfill(i - 1,'\t');
+    fprintf (state->file_menu, "%s</menu>\n", space2);
+    g_free (space2);
   }
 
   gtk_tree_model_get (model, iter,
