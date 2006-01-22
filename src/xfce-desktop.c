@@ -1,7 +1,7 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright (c) 2004-2005 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (c) 2004-2006 Brian Tarricone, <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -76,8 +76,8 @@
 /********
  * TODO *
  ********
- * + screen size changes
  * + theme/font changes
+ * + keyboard navigation, allow kbd focus
  */
 
 #define ICON_SIZE     32
@@ -413,6 +413,7 @@ xfce_desktop_icon_paint(XfceDesktopIcon *icon)
     pango_layout_set_width(playout, -1);
     pango_layout_set_text(playout, icon->label, -1);
     pango_layout_get_size(playout, &text_w, &text_h);
+    DBG("unadjusted size: %dx%d", text_w/PANGO_SCALE, text_h/PANGO_SCALE);
     if(text_w > TEXT_WIDTH * PANGO_SCALE) {
         if(state == GTK_STATE_NORMAL) {
 #if GTK_CHECK_VERSION(2, 6, 0)  /* can't find a way to get pango version info */
@@ -427,6 +428,7 @@ xfce_desktop_icon_paint(XfceDesktopIcon *icon)
         pango_layout_set_width(playout, TEXT_WIDTH * PANGO_SCALE);
     }
     pango_layout_get_pixel_size(playout, &text_w, &text_h);
+    DBG("adjusted size: %dx%d", text_w, text_h);
     
     cell_x = desktop->priv->icon_workspaces[active_ws_num]->xorigin;
     cell_x += icon->col * CELL_SIZE + CELL_PADDING;
@@ -824,6 +826,8 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     gdk_error_trap_pop();
 }
 
+#ifdef ENABLE_WINDOW_ICONS
+
 static gboolean
 desktop_icons_constrain(gpointer key,
                         gpointer value,
@@ -895,6 +899,8 @@ desktop_grid_resize_timeout(gpointer user_data)
     desktop->priv->grid_resize_timeout = 0;
     return FALSE;
 }
+
+#endif  /* #ifdef ENABLE_WINDOW_ICONS */
 
 static void
 screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
