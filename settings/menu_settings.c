@@ -230,7 +230,7 @@ create_menu_page(BackdropDialog *bd)
     gtk_widget_show(vbox);
     gtk_container_add(GTK_CONTAINER(bd->frame_dm1), vbox);
     
-    chk = gtk_check_button_new_with_mnemonic(_("Show _application icons"));
+    chk = gtk_check_button_new_with_mnemonic(_("_Show application icons"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), show_desktopmenu_icons);
     g_object_set_data(G_OBJECT(chk), "xfce-chknum", GUINT_TO_POINTER(OPT_SHOWDMI));
     gtk_widget_show(chk);

@@ -775,7 +775,7 @@ add_brightness_slider(GtkWidget *vbox, BackdropPanel *bp)
     gtk_widget_show(hbox);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
     
-    label = gtk_label_new_with_mnemonic(_("Adjust _Brightness:"));
+    label = gtk_label_new_with_mnemonic(_("A_djust Brightness:"));
     gtk_widget_show(label);
     gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 4);
     
@@ -1016,7 +1016,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
         gtk_widget_show(bd->screens_notebook);
         gtk_box_pack_start(GTK_BOX(vbox), bd->screens_notebook, FALSE, FALSE, 0);
         
-        label = gtk_label_new_with_mnemonic(_("_Backdrops"));
+        label = gtk_label_new_with_mnemonic(_("_Appearance"));
         gtk_widget_show(label);
         gtk_notebook_append_page(GTK_NOTEBOOK(bd->top_notebook), vbox, label);
     }
@@ -1221,7 +1221,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
             
             if(nscreens == 1 && nmonitors == 1) {
                 /* add the single backdrop settings page to the main notebook */
-                label = gtk_label_new_with_mnemonic(_("_Backdrop"));
+                label = gtk_label_new_with_mnemonic(_("_Appearance"));
                 gtk_widget_show(label);
                 gtk_notebook_append_page(GTK_NOTEBOOK(bd->top_notebook), page, label);
             } else if((nscreens > 1 && nmonitors == 1)
@@ -1256,7 +1256,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
     vbox = create_menu_page(bd);
     gtk_widget_show(vbox);
     
-    label = gtk_label_new_with_mnemonic(_("_Useless Bloat"));
+    label = gtk_label_new_with_mnemonic(_("_Behavior"));
     gtk_widget_show(label);
     gtk_notebook_append_page(GTK_NOTEBOOK(bd->top_notebook), vbox, label);
     
