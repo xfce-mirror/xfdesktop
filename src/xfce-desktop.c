@@ -300,11 +300,9 @@ xfce_desktop_icon_remove(XfceDesktop *desktop,
     GdkRectangle area;
     guint16 row, col;
     gchar data_name[256];
-    NetkWorkspace *active_ws;
     gint active_ws_num;
     
-    active_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
-    active_ws_num = netk_workspace_get_number(active_ws);
+    active_ws_num = desktop->priv->cur_ws_num;
     
     row = icon->row;
     col = icon->col;
@@ -361,11 +359,9 @@ find_icon_below(XfceDesktop *desktop,
                 XfceDesktopIcon *icon)
 {
     XfceDesktopIcon *icon_below = NULL;
-    NetkWorkspace *active_ws;
     gint active_ws_num;
     
-    active_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
-    active_ws_num = netk_workspace_get_number(active_ws);
+    active_ws_num = desktop->priv->cur_ws_num;
     
     if(icon->row == desktop->priv->icon_workspaces[active_ws_num]->nrows - 1)
         return NULL;
@@ -422,7 +418,7 @@ clear_rounded_corners(GdkPixbuf *pix,
 #undef corner_size
 }
 
-/* Copied from Nautilus, Copyright (C) 2000 Eazel, Inc. */
+
 #define EEL_RGBA_COLOR_GET_R(color) (((color) >> 16) & 0xff)
 #define EEL_RGBA_COLOR_GET_G(color) (((color) >> 8) & 0xff)
 #define EEL_RGBA_COLOR_GET_B(color) (((color) >> 0) & 0xff)
@@ -432,6 +428,7 @@ clear_rounded_corners(GdkPixbuf *pix,
   (((guint32)r) << 16) |                        \
   (((guint32)g) <<  8) |                        \
   (((guint32)b) <<  0) )
+/* Copied from Nautilus, Copyright (C) 2000 Eazel, Inc. */
 /* Multiplies each pixel in a pixbuf by the specified color */
 static void
 multiply_pixbuf_rgba (GdkPixbuf *pixbuf, guint rgba)
@@ -523,7 +520,7 @@ xfce_desktop_icon_paint(XfceDesktopIcon *icon)
     
     TRACE("entering");
     
-    active_ws_num = netk_workspace_get_number(netk_screen_get_active_workspace(desktop->priv->netk_screen));
+    active_ws_num = desktop->priv->cur_ws_num;
     
     if(icon->extents.width > 0 && icon->extents.height > 0) {
         /* FIXME: this is really only needed when going from selected <-> not
@@ -2730,7 +2727,6 @@ xfce_desktop_drag_motion(GtkWidget *widget,
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
     GdkAtom target = GDK_NONE;
-    NetkWorkspace *active_ws;
     gint active_ws_num, row, col;
     GdkRectangle *cell_highlight;
     
@@ -2743,8 +2739,7 @@ xfce_desktop_drag_motion(GtkWidget *widget,
     
     gdk_drag_status(context, GDK_ACTION_MOVE, time);
     
-    active_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
-    active_ws_num = netk_workspace_get_number(active_ws);
+    active_ws_num = desktop->priv->cur_ws_num;
     
     cell_highlight = g_object_get_data(G_OBJECT(context),
                                        "xfce-desktop-cell-highlight");
@@ -2827,7 +2822,6 @@ xfce_desktop_drag_drop(GtkWidget *widget,
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
     GdkAtom target = GDK_NONE;
     XfceDesktopIcon *icon;
-    NetkWorkspace *active_ws;
     gint active_ws_num, row, col, cell_x, cell_y;
     
     TRACE("entering: (%d,%d)", x, y);
@@ -2837,8 +2831,7 @@ xfce_desktop_drag_drop(GtkWidget *widget,
     if(target == GDK_NONE)
         return FALSE;
         
-    active_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
-    active_ws_num = netk_workspace_get_number(active_ws);
+    active_ws_num = desktop->priv->cur_ws_num;
     
     desktop_xy_to_rowcol(desktop, active_ws_num, x, y, &row, &col);
     if(row >= desktop->priv->icon_workspaces[active_ws_num]->nrows
