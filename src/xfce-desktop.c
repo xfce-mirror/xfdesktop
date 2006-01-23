@@ -59,6 +59,7 @@
 
 #include <glib.h>
 #include <gdk/gdkx.h>
+#include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 #include <pango/pango.h>
 
@@ -80,12 +81,13 @@
  * + keyboard navigation, allow kbd focus
  */
 
-#define ICON_SIZE     32
-#define CELL_SIZE     112
-#define TEXT_WIDTH    100
-#define CELL_PADDING  6
-#define SPACING       8
-#define SCREEN_MARGIN 16
+#define ICON_SIZE         32
+#define CELL_SIZE         112
+#define TEXT_WIDTH        100
+#define CELL_PADDING      6
+#define SPACING           8
+#define SCREEN_MARGIN     16
+#define CORNER_ROUNDNESS  4
 
 typedef struct _XfceDesktopIcon
 {
@@ -141,6 +143,8 @@ struct _XfceDesktopPriv
     gint press_start_y;
     XfceDesktopIcon *last_clicked_item;
     GtkTargetList *source_targets;
+    
+    GdkPixbuf *rounded_frame;
 #endif
 };
 
@@ -161,6 +165,7 @@ static void xfce_desktop_drag_begin(GtkWidget *widget, GdkDragContext *context);
 static gboolean xfce_desktop_drag_motion(GtkWidget *widget, GdkDragContext *context, gint x, gint y, guint time);
 static void xfce_desktop_drag_leave(GtkWidget *widget, GdkDragContext *context, guint time);
 static gboolean xfce_desktop_drag_drop(GtkWidget *widget, GdkDragContext *context, gint x, gint y, guint time);
+static gboolean xfce_desktop_key_press_cb(GtkWidget *widget, GdkEventKey *evt, gpointer user_data);
 /* utility funcs */
 static void desktop_setup_grids(XfceDesktop *desktop, gint nws);
 static gboolean grid_get_next_free_position(XfceDesktopIconWorkspace *icon_workspace, guint16 *row, guint16 *col);
@@ -203,7 +208,7 @@ GtkWindowClass *parent_class = NULL;
     g_printerr("\n\n");\
 }
 #else
-#define dump_grid_layout(icon_workspace)
+#define dump_grid_layout(my_icon_workspace)
 #endif
 
 static void
@@ -247,14 +252,14 @@ xfce_desktop_icon_add(XfceDesktop *desktop,
     }
     
     if(!got_pos) {
-       if(!grid_get_next_free_position(desktop->priv->icon_workspaces[idx],
-                                       &icon->row, &icon->col)) 
+        if(!grid_get_next_free_position(desktop->priv->icon_workspaces[idx],
+                                        &icon->row, &icon->col)) 
         {
-           g_free(icon);
-           return;
-       } else {
-           DBG("old position didn't exist or isn't free, got (%d,%d) instead", icon->row, icon->col);
-       }
+            g_free(icon);
+            return;
+        } else {
+            DBG("old position didn't exist or isn't free, got (%d,%d) instead", icon->row, icon->col);
+        }
     }
     
     grid_unset_position_free(desktop->priv->icon_workspaces[idx],
@@ -371,6 +376,141 @@ find_icon_below(XfceDesktop *desktop,
     return icon_below;
 }
 
+/* Copied from Nautilus, Copyright (C) 2000 Eazel, Inc. */
+static void
+clear_rounded_corners(GdkPixbuf *pix,
+                      GdkPixbuf *corners_pix)
+{
+#define corner_size  CORNER_ROUNDNESS
+    gint dest_width, dest_height, src_width, src_height;
+    
+    g_return_if_fail(pix && corners_pix);
+    
+    dest_width = gdk_pixbuf_get_width(pix);
+    dest_height = gdk_pixbuf_get_height(pix);
+    
+    src_width = gdk_pixbuf_get_width(corners_pix);
+    src_height = gdk_pixbuf_get_height(corners_pix);
+    
+    /* draw top left corner */
+    gdk_pixbuf_copy_area(corners_pix,
+                         0, 0,
+                         corner_size, corner_size,
+                         pix,
+                         0, 0);
+	
+	/* draw top right corner */
+	gdk_pixbuf_copy_area(corners_pix,
+                         src_width - corner_size, 0,
+                         corner_size, corner_size,
+                         pix,
+                         dest_width - corner_size, 0);
+
+	/* draw bottom left corner */
+	gdk_pixbuf_copy_area(corners_pix,
+                         0, src_height - corner_size,
+                         corner_size, corner_size,
+                         pix,
+                         0, dest_height - corner_size);
+	
+	/* draw bottom right corner */
+	gdk_pixbuf_copy_area(corners_pix,
+                         src_width - corner_size, src_height - corner_size,
+                         corner_size, corner_size,
+                         pix,
+                         dest_width - corner_size, dest_height - corner_size);
+#undef corner_size
+}
+
+/* Copied from Nautilus, Copyright (C) 2000 Eazel, Inc. */
+#define EEL_RGBA_COLOR_GET_R(color) (((color) >> 16) & 0xff)
+#define EEL_RGBA_COLOR_GET_G(color) (((color) >> 8) & 0xff)
+#define EEL_RGBA_COLOR_GET_B(color) (((color) >> 0) & 0xff)
+#define EEL_RGBA_COLOR_GET_A(color) (((color) >> 24) & 0xff)
+#define EEL_RGBA_COLOR_PACK(r, g, b, a)         \
+( (((guint32)a) << 24) |                        \
+  (((guint32)r) << 16) |                        \
+  (((guint32)g) <<  8) |                        \
+  (((guint32)b) <<  0) )
+/* Multiplies each pixel in a pixbuf by the specified color */
+static void
+multiply_pixbuf_rgba (GdkPixbuf *pixbuf, guint rgba)
+{
+	guchar *pixels;
+	int r, g, b, a;
+	int width, height, rowstride;
+	gboolean has_alpha;
+	int x, y;
+	guchar *p;
+
+	g_return_if_fail (gdk_pixbuf_get_colorspace (pixbuf) == GDK_COLORSPACE_RGB);
+	g_return_if_fail (gdk_pixbuf_get_n_channels (pixbuf) == 3
+			  || gdk_pixbuf_get_n_channels (pixbuf) == 4);
+
+	r = EEL_RGBA_COLOR_GET_R (rgba);
+	g = EEL_RGBA_COLOR_GET_G (rgba);
+	b = EEL_RGBA_COLOR_GET_B (rgba);
+	a = EEL_RGBA_COLOR_GET_A (rgba);
+
+	width = gdk_pixbuf_get_width (pixbuf);
+	height = gdk_pixbuf_get_height (pixbuf);
+	rowstride = gdk_pixbuf_get_rowstride (pixbuf);
+	has_alpha = gdk_pixbuf_get_has_alpha (pixbuf);
+
+	pixels = gdk_pixbuf_get_pixels (pixbuf);
+
+	for (y = 0; y < height; y++) {
+		p = pixels;
+
+		for (x = 0; x < width; x++) {
+			p[0] = p[0] * r / 255;
+			p[1] = p[1] * g / 255;
+			p[2] = p[2] * b / 255;
+
+			if (has_alpha) {
+				p[3] = p[3] * a / 255;
+				p += 4;
+			} else
+				p += 3;
+		}
+
+		pixels += rowstride;
+	}
+}
+
+static void
+paint_rounded_box(XfceDesktop *desktop,
+                  GtkStateType state,
+                  GdkRectangle *area)
+{
+    GdkPixbuf *box_pix;
+    GtkStyle *style = GTK_WIDGET(desktop)->style;
+    
+    box_pix = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8,
+                             area->width + CORNER_ROUNDNESS * 2,
+                             area->height + CORNER_ROUNDNESS * 2);
+    gdk_pixbuf_fill(box_pix, 0xffffffff);
+    
+    if(!desktop->priv->rounded_frame)
+        desktop->priv->rounded_frame = gdk_pixbuf_new_from_file(DATADIR "/pixmaps/xfce4/xfdesktop/text-selection-frame.png", NULL);
+    
+    clear_rounded_corners(box_pix, desktop->priv->rounded_frame);
+    multiply_pixbuf_rgba(box_pix,
+                         EEL_RGBA_COLOR_PACK(style->base[state].red >> 8, 
+                                             style->base[state].green >> 8, 
+                                             style->base[state].blue >> 8,
+                                             0xff));
+    
+    gdk_draw_pixbuf(GDK_DRAWABLE(GTK_WIDGET(desktop)->window), NULL,
+                    box_pix, 0, 0,
+                    area->x - CORNER_ROUNDNESS, area->y - CORNER_ROUNDNESS,
+                    area->width + CORNER_ROUNDNESS * 2,
+                    area->height + CORNER_ROUNDNESS * 2,
+                    GDK_RGB_DITHER_NORMAL, 0, 0);
+    
+    g_object_unref(G_OBJECT(box_pix));
+}
+
 static void
 xfce_desktop_icon_paint(XfceDesktopIcon *icon)
 {
@@ -400,16 +540,19 @@ xfce_desktop_icon_paint(XfceDesktopIcon *icon)
         }
     }
     
-    if(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->selected_icon == icon)
-        state = GTK_STATE_SELECTED;
-    else
+    if(desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->selected_icon == icon) {
+        if(GTK_WIDGET_FLAGS(GTK_WIDGET(desktop)) & GTK_HAS_FOCUS)
+            state = GTK_STATE_SELECTED;
+        else
+            state = GTK_STATE_ACTIVE;
+    } else
         state = GTK_STATE_NORMAL;
     
     pix_w = gdk_pixbuf_get_width(icon->pix);
     pix_h = gdk_pixbuf_get_height(icon->pix);
     
     playout = desktop->priv->playout;
-    pango_layout_set_alignment(playout, PANGO_ALIGN_CENTER);
+    pango_layout_set_alignment(playout, PANGO_ALIGN_LEFT);
     pango_layout_set_width(playout, -1);
     pango_layout_set_text(playout, icon->label, -1);
     pango_layout_get_size(playout, &text_w, &text_h);
@@ -426,9 +569,10 @@ xfce_desktop_icon_paint(XfceDesktopIcon *icon)
 #endif
         }
         pango_layout_set_width(playout, TEXT_WIDTH * PANGO_SCALE);
+        pango_layout_get_size(playout, &text_w, &text_h);
+        DBG("adjusted size: %dx%d.  Tried to set width to %d.", text_w, text_h, TEXT_WIDTH*PANGO_SCALE);
     }
     pango_layout_get_pixel_size(playout, &text_w, &text_h);
-    DBG("adjusted size: %dx%d", text_w, text_h);
     
     cell_x = desktop->priv->icon_workspaces[active_ws_num]->xorigin;
     cell_x += icon->col * CELL_SIZE + CELL_PADDING;
@@ -458,14 +602,16 @@ xfce_desktop_icon_paint(XfceDesktopIcon *icon)
     
     DBG("painting layout: area: %dx%d+%d+%d", text_w, text_h, text_x, text_y);
     
-    area.x = text_x - 2;
-    area.y = text_y - 2;
-    area.width = text_w + 4;
-    area.height = text_h + 4;
+    area.x = text_x;
+    area.y = text_y;
+    area.width = text_w;
+    area.height = text_h;
     
-    gtk_paint_box(widget->style, widget->window, state,
-                  GTK_SHADOW_IN, &area, widget, "background",
-                  area.x, area.y, area.width, area.height);
+    //gtk_paint_box(widget->style, widget->window, state,
+    //              GTK_SHADOW_IN, &area, widget, "background",
+    //              area.x, area.y, area.width, area.height);
+    
+    paint_rounded_box(desktop, state, &area);
     
     gtk_paint_layout(widget->style, widget->window, state, FALSE,
                      &area, widget, "label", text_x, text_y, playout);
@@ -480,10 +626,10 @@ xfce_desktop_icon_paint(XfceDesktopIcon *icon)
                        CELL_SIZE);
 #endif
     
-    icon->extents.x = (pix_w > text_w + 4 ? pix_x : text_x - 2);
+    icon->extents.x = (pix_w > text_w + CORNER_ROUNDNESS * 2 ? pix_x : text_x - CORNER_ROUNDNESS);
     icon->extents.y = cell_y + (2 * CELL_PADDING);
-    icon->extents.width = (pix_w > text_w + 4 ? pix_w : text_w + 4);
-    icon->extents.height = (text_y + text_h + 2) - icon->extents.y;
+    icon->extents.width = (pix_w > text_w + CORNER_ROUNDNESS * 2 ? pix_w : text_w + CORNER_ROUNDNESS * 2);
+    icon->extents.height = (text_y + text_h + CORNER_ROUNDNESS * 2) - icon->extents.y;
 }
 
 static void
@@ -2091,6 +2237,74 @@ xfce_desktop_button_release(GtkWidget *widget,
     return FALSE;
 }
 
+static gboolean
+xfce_desktop_key_press_cb(GtkWidget *widget,
+                          GdkEventKey *evt,
+                          gpointer user_data)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(widget);
+    XfceDesktopIcon *icon;
+    NetkWorkspace *cur_ws;
+    gint cur_ws_num;
+    
+    /* FIXME: put in a conditional */
+    cur_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
+    cur_ws_num = netk_workspace_get_number(cur_ws);
+    icon = desktop->priv->icon_workspaces[cur_ws_num]->selected_icon;
+    
+    switch(evt->keyval) {
+        case GDK_Up:
+        case GDK_KP_Up:
+            if(icon) {
+            
+            } else {
+                
+            }
+            break;
+        
+        case GDK_Down:
+        case GDK_KP_Down:
+            
+            break;
+        
+        case GDK_Left:
+        case GDK_KP_Left:
+            
+            break;
+        
+        case GDK_Right:
+        case GDK_KP_Right:
+            
+            break;
+        
+        case GDK_Return:
+        case GDK_KP_Enter:
+            if(icon) {
+                XfceDesktopIcon *icon_below = NULL;
+                
+                if(icon->extents.height + 3 * CELL_PADDING > CELL_SIZE)
+                    icon_below = find_icon_below(desktop, icon);
+                netk_window_activate(icon->window);
+                desktop->priv->icon_workspaces[cur_ws_num]->selected_icon = NULL;
+                if(icon_below) {
+                    /* delay repaint of below icon to avoid visual bugs */
+                    g_object_ref(G_OBJECT(icon->window));
+                    g_signal_connect_after(G_OBJECT(icon->window),
+                                           "state-changed",
+                                           G_CALLBACK(xfce_desktop_icon_paint_delayed),
+                                           icon_below);
+                }
+            }
+            break;
+        
+        default:
+            return FALSE;
+    }
+    
+    return TRUE;
+}
+
+
 #endif
 
 static gboolean
@@ -2251,6 +2465,44 @@ desktop_rootwin_watch_workarea(GdkXEvent *gxevent,
     return GDK_FILTER_CONTINUE;
 }
 
+static gboolean
+focus_in_cb(GtkWidget *w,
+            GdkEventFocus *evt,
+            gpointer user_data)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(w);
+    XfceDesktopIcon *icon;
+    
+    GTK_WIDGET_SET_FLAGS(w, GTK_HAS_FOCUS);
+    DBG("GOT FOCUS");
+    
+    icon = desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->selected_icon;
+    if(icon)
+        xfce_desktop_icon_paint(icon);
+    
+    return FALSE;
+}
+
+static gboolean
+focus_out_cb(GtkWidget *w,
+             GdkEventFocus *evt,
+             gpointer user_data)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(w);
+    XfceDesktopIcon *icon;
+    
+    GTK_WIDGET_UNSET_FLAGS(w, GTK_HAS_FOCUS);
+    DBG("LOST FOCUS");
+    
+    icon = desktop->priv->icon_workspaces[desktop->priv->cur_ws_num]->selected_icon;
+    if(icon) {
+        DBG("REPAINTING");
+        xfce_desktop_icon_paint(icon);
+    }
+    
+    return FALSE;
+}
+
 static void
 xfce_desktop_setup_icons(XfceDesktop *desktop)
 {
@@ -2277,6 +2529,12 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
     g_signal_connect(G_OBJECT(desktop->priv->netk_screen),
                      "workspace-destroyed",
                      G_CALLBACK(workspace_destroyed_cb), desktop);
+    
+    gtk_widget_add_events(GTK_WIDGET(desktop), GDK_FOCUS_CHANGE_MASK);
+    g_signal_connect(G_OBJECT(desktop), "focus-in-event",
+                     G_CALLBACK(focus_in_cb), NULL);
+    g_signal_connect(G_OBJECT(desktop), "focus-out-event",
+                     G_CALLBACK(focus_out_cb), NULL);
     
     nws = netk_screen_get_workspace_count(desktop->priv->netk_screen);
     desktop->priv->icon_workspaces = g_new0(XfceDesktopIconWorkspace *, nws);
@@ -2307,6 +2565,11 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
     gdk_window_set_events(groot, gdk_window_get_events(groot)
                                  | GDK_PROPERTY_CHANGE_MASK);
     gdk_window_add_filter(groot, desktop_rootwin_watch_workarea, desktop);
+    
+    /* keyboard navigation */
+    gtk_window_set_accept_focus(GTK_WINDOW(desktop), TRUE);
+    g_signal_connect(G_OBJECT(desktop), "key-press-event",
+                     G_CALLBACK(xfce_desktop_key_press_cb), NULL);
 }
 
 static void
@@ -2318,6 +2581,8 @@ xfce_desktop_unsetup_icons(XfceDesktop *desktop)
     
     if(!desktop->priv->icon_workspaces)
         return;
+    
+    gtk_window_set_accept_focus(GTK_WINDOW(desktop), FALSE);
     
     groot = gdk_screen_get_root_window(desktop->priv->gscreen);
     gdk_window_remove_filter(groot, desktop_rootwin_watch_workarea, desktop);
@@ -2344,6 +2609,9 @@ xfce_desktop_unsetup_icons(XfceDesktop *desktop)
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->netk_screen),
                                          G_CALLBACK(workspace_destroyed_cb),
                                          desktop);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
+                                         G_CALLBACK(xfce_desktop_key_press_cb),
+                                         NULL);
     
     windows = netk_screen_get_windows(desktop->priv->netk_screen);
     for(l = windows; l; l = l->next) {
@@ -2368,6 +2636,11 @@ xfce_desktop_unsetup_icons(XfceDesktop *desktop)
     
     g_object_unref(G_OBJECT(desktop->priv->playout));
     desktop->priv->playout = NULL;
+    
+    if(desktop->priv->rounded_frame) {
+        g_object_unref(G_OBJECT(desktop->priv->rounded_frame));
+        desktop->priv->rounded_frame = NULL;
+    }
 }
 
 static gboolean

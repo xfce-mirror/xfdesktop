@@ -25,8 +25,14 @@ pixmaps_DATA = \
 	xfce4_xicon3.png \
 	xfce4_xicon4.png
 
+highlightdir = $(datadir)/pixmaps/xfce4/xfdesktop
+
+highlight_DATA = \
+	text-selection-frame.png
+
 EXTRA_DIST = \
 	$(icons32_DATA) \
 	$(icons48_DATA) \
 	$(iconssc_DATA) \
-	$(pixmaps_DATA)
+	$(pixmaps_DATA) \
+	$(highlight_DATA)
