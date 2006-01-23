@@ -394,23 +394,23 @@ clear_rounded_corners(GdkPixbuf *pix,
                          corner_size, corner_size,
                          pix,
                          0, 0);
-	
-	/* draw top right corner */
-	gdk_pixbuf_copy_area(corners_pix,
+    
+    /* draw top right corner */
+    gdk_pixbuf_copy_area(corners_pix,
                          src_width - corner_size, 0,
                          corner_size, corner_size,
                          pix,
                          dest_width - corner_size, 0);
 
-	/* draw bottom left corner */
-	gdk_pixbuf_copy_area(corners_pix,
+    /* draw bottom left corner */
+    gdk_pixbuf_copy_area(corners_pix,
                          0, src_height - corner_size,
                          corner_size, corner_size,
                          pix,
                          0, dest_height - corner_size);
-	
-	/* draw bottom right corner */
-	gdk_pixbuf_copy_area(corners_pix,
+    
+    /* draw bottom right corner */
+    gdk_pixbuf_copy_area(corners_pix,
                          src_width - corner_size, src_height - corner_size,
                          corner_size, corner_size,
                          pix,
@@ -433,46 +433,46 @@ clear_rounded_corners(GdkPixbuf *pix,
 static void
 multiply_pixbuf_rgba (GdkPixbuf *pixbuf, guint rgba)
 {
-	guchar *pixels;
-	int r, g, b, a;
-	int width, height, rowstride;
-	gboolean has_alpha;
-	int x, y;
-	guchar *p;
+    guchar *pixels;
+    int r, g, b, a;
+    int width, height, rowstride;
+    gboolean has_alpha;
+    int x, y;
+    guchar *p;
 
-	g_return_if_fail (gdk_pixbuf_get_colorspace (pixbuf) == GDK_COLORSPACE_RGB);
-	g_return_if_fail (gdk_pixbuf_get_n_channels (pixbuf) == 3
-			  || gdk_pixbuf_get_n_channels (pixbuf) == 4);
+    g_return_if_fail (gdk_pixbuf_get_colorspace (pixbuf) == GDK_COLORSPACE_RGB);
+    g_return_if_fail (gdk_pixbuf_get_n_channels (pixbuf) == 3
+              || gdk_pixbuf_get_n_channels (pixbuf) == 4);
 
-	r = EEL_RGBA_COLOR_GET_R (rgba);
-	g = EEL_RGBA_COLOR_GET_G (rgba);
-	b = EEL_RGBA_COLOR_GET_B (rgba);
-	a = EEL_RGBA_COLOR_GET_A (rgba);
+    r = EEL_RGBA_COLOR_GET_R (rgba);
+    g = EEL_RGBA_COLOR_GET_G (rgba);
+    b = EEL_RGBA_COLOR_GET_B (rgba);
+    a = EEL_RGBA_COLOR_GET_A (rgba);
 
-	width = gdk_pixbuf_get_width (pixbuf);
-	height = gdk_pixbuf_get_height (pixbuf);
-	rowstride = gdk_pixbuf_get_rowstride (pixbuf);
-	has_alpha = gdk_pixbuf_get_has_alpha (pixbuf);
+    width = gdk_pixbuf_get_width (pixbuf);
+    height = gdk_pixbuf_get_height (pixbuf);
+    rowstride = gdk_pixbuf_get_rowstride (pixbuf);
+    has_alpha = gdk_pixbuf_get_has_alpha (pixbuf);
 
-	pixels = gdk_pixbuf_get_pixels (pixbuf);
+    pixels = gdk_pixbuf_get_pixels (pixbuf);
 
-	for (y = 0; y < height; y++) {
-		p = pixels;
+    for (y = 0; y < height; y++) {
+        p = pixels;
 
-		for (x = 0; x < width; x++) {
-			p[0] = p[0] * r / 255;
-			p[1] = p[1] * g / 255;
-			p[2] = p[2] * b / 255;
+        for (x = 0; x < width; x++) {
+            p[0] = p[0] * r / 255;
+            p[1] = p[1] * g / 255;
+            p[2] = p[2] * b / 255;
 
-			if (has_alpha) {
-				p[3] = p[3] * a / 255;
-				p += 4;
-			} else
-				p += 3;
-		}
+            if (has_alpha) {
+                p[3] = p[3] * a / 255;
+                p += 4;
+            } else
+                p += 3;
+        }
 
-		pixels += rowstride;
-	}
+        pixels += rowstride;
+    }
 }
 
 static void
@@ -604,29 +604,25 @@ xfce_desktop_icon_paint(XfceDesktopIcon *icon)
     area.width = text_w;
     area.height = text_h;
     
-    //gtk_paint_box(widget->style, widget->window, state,
-    //              GTK_SHADOW_IN, &area, widget, "background",
-    //              area.x, area.y, area.width, area.height);
-    
     paint_rounded_box(desktop, state, &area);
     
     gtk_paint_layout(widget->style, widget->window, state, FALSE,
                      &area, widget, "label", text_x, text_y, playout);
     
+    icon->extents.x = (pix_w > text_w + CORNER_ROUNDNESS * 2 ? pix_x : text_x - CORNER_ROUNDNESS);
+    icon->extents.y = cell_y + (2 * CELL_PADDING);
+    icon->extents.width = (pix_w > text_w + CORNER_ROUNDNESS * 2 ? pix_w : text_w + CORNER_ROUNDNESS * 2);
+    icon->extents.height = pix_h + SPACING + text_h + CORNER_ROUNDNESS  + 2;
+    
 #if 0 /* debug */
     gdk_draw_rectangle(GDK_DRAWABLE(widget->window),
                        widget->style->white_gc,
                        FALSE,
-                       cell_x - CELL_PADDING,
-                       cell_y - CELL_PADDING,
-                       CELL_SIZE,
-                       CELL_SIZE);
+                       icon->extents.x,
+                       icon->extents.y,
+                       icon->extents.width,
+                       icon->extents.height);
 #endif
-    
-    icon->extents.x = (pix_w > text_w + CORNER_ROUNDNESS * 2 ? pix_x : text_x - CORNER_ROUNDNESS);
-    icon->extents.y = cell_y + (2 * CELL_PADDING);
-    icon->extents.width = (pix_w > text_w + CORNER_ROUNDNESS * 2 ? pix_w : text_w + CORNER_ROUNDNESS * 2);
-    icon->extents.height = (text_y + text_h + CORNER_ROUNDNESS * 2) - icon->extents.y;
 }
 
 static void
@@ -2463,9 +2459,9 @@ desktop_rootwin_watch_workarea(GdkXEvent *gxevent,
 }
 
 static gboolean
-focus_in_cb(GtkWidget *w,
-            GdkEventFocus *evt,
-            gpointer user_data)
+xfce_desktop_focus_in_cb(GtkWidget *w,
+                         GdkEventFocus *evt,
+                         gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
     XfceDesktopIcon *icon;
@@ -2481,9 +2477,9 @@ focus_in_cb(GtkWidget *w,
 }
 
 static gboolean
-focus_out_cb(GtkWidget *w,
-             GdkEventFocus *evt,
-             gpointer user_data)
+xfce_desktop_focus_out_cb(GtkWidget *w,
+                          GdkEventFocus *evt,
+                          gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
     XfceDesktopIcon *icon;
@@ -2527,12 +2523,6 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
                      "workspace-destroyed",
                      G_CALLBACK(workspace_destroyed_cb), desktop);
     
-    gtk_widget_add_events(GTK_WIDGET(desktop), GDK_FOCUS_CHANGE_MASK);
-    g_signal_connect(G_OBJECT(desktop), "focus-in-event",
-                     G_CALLBACK(focus_in_cb), NULL);
-    g_signal_connect(G_OBJECT(desktop), "focus-out-event",
-                     G_CALLBACK(focus_out_cb), NULL);
-    
     nws = netk_screen_get_workspace_count(desktop->priv->netk_screen);
     desktop->priv->icon_workspaces = g_new0(XfceDesktopIconWorkspace *, nws);
     desktop_setup_grids(desktop, nws);
@@ -2555,7 +2545,13 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
     
     /* not sure why i need this, since it's also in _init()... */
     gtk_widget_add_events(GTK_WIDGET(desktop), GDK_POINTER_MOTION_MASK
-                          | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
+                          | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK
+                          | GDK_FOCUS_CHANGE_MASK);
+    
+    g_signal_connect(G_OBJECT(desktop), "focus-in-event",
+                     G_CALLBACK(xfce_desktop_focus_in_cb), NULL);
+    g_signal_connect(G_OBJECT(desktop), "focus-out-event",
+                     G_CALLBACK(xfce_desktop_focus_out_cb), NULL);
     
     /* watch for _NET_WORKAREA changes */
     groot = gdk_screen_get_root_window(desktop->priv->gscreen);
@@ -2608,6 +2604,12 @@ xfce_desktop_unsetup_icons(XfceDesktop *desktop)
                                          desktop);
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
                                          G_CALLBACK(xfce_desktop_key_press_cb),
+                                         NULL);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
+                                         G_CALLBACK(xfce_desktop_focus_in_cb),
+                                         NULL);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
+                                         G_CALLBACK(xfce_desktop_focus_out_cb),
                                          NULL);
     
     windows = netk_screen_get_windows(desktop->priv->netk_screen);
