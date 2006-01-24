@@ -74,19 +74,12 @@
 
 #ifdef ENABLE_WINDOW_ICONS
 
-/********
- * TODO *
- ********
- * + theme/font changes
- * + keyboard navigation, allow kbd focus
- */
-
 #define ICON_SIZE         32
 #define CELL_SIZE         112
 #define TEXT_WIDTH        100
 #define CELL_PADDING      6
 #define SPACING           8
-#define SCREEN_MARGIN     16
+#define SCREEN_MARGIN     8
 #define CORNER_ROUNDNESS  4
 
 typedef struct _XfceDesktopIcon
@@ -110,8 +103,16 @@ typedef struct _XfceDesktopIconWorkspace
          height;
     guint16 nrows;
     guint16 ncols;
-    guint8 *grid_layout;
+    XfceDesktopIcon **grid_layout;
 } XfceDesktopIconWorkspace;
+
+typedef enum
+{
+    XFCE_DESKTOP_DIRECTION_UP = 0,
+    XFCE_DESKTOP_DIRECTION_DOWN,
+    XFCE_DESKTOP_DIRECTION_LEFT,
+    XFCE_DESKTOP_DIRECTION_RIGHT,
+} XfceDesktopDirection;
 
 #endif /* defined(ENABLE_WINDOW_ICONS) */
 
@@ -169,9 +170,9 @@ static gboolean xfce_desktop_key_press_cb(GtkWidget *widget, GdkEventKey *evt, g
 /* utility funcs */
 static void desktop_setup_grids(XfceDesktop *desktop, gint nws);
 static gboolean grid_get_next_free_position(XfceDesktopIconWorkspace *icon_workspace, guint16 *row, guint16 *col);
-static gboolean grid_is_free_position(XfceDesktopIconWorkspace *icon_workspace, guint16 row, guint16 col);
-static void grid_set_position_free(XfceDesktopIconWorkspace *icon_workspace, guint16 row, guint16 col);
-static void grid_unset_position_free(XfceDesktopIconWorkspace *icon_workspace, guint16 row, guint16 col);
+static inline gboolean grid_is_free_position(XfceDesktopIconWorkspace *icon_workspace, guint16 row, guint16 col);
+static inline void grid_set_position_free(XfceDesktopIconWorkspace *icon_workspace, guint16 row, guint16 col);
+static inline void grid_unset_position_free(XfceDesktopIconWorkspace *icon_workspace, XfceDesktopIcon *icon);
 static gboolean xfce_desktop_maybe_begin_drag(XfceDesktop *desktop, GdkEventMotion *evt);
 
 static const GtkTargetEntry targets[] = {
@@ -202,9 +203,9 @@ GtkWindowClass *parent_class = NULL;
     gint my_i, my_maxi;\
     \
     g_printerr("\nDBG[%s:%d] %s\n", __FILE__, __LINE__, __FUNCTION__);\
-    my_maxi = my_icon_workspace->nrows * my_icon_workspace->ncols / 8 + 1;\
+    my_maxi = my_icon_workspace->nrows * my_icon_workspace->ncols;\
     for(my_i = 0; my_i < my_maxi; my_i++)\
-        g_printerr("%02hhx ", my_icon_workspace->grid_layout[my_i]);\
+        g_printerr("%c ", my_icon_workspace->grid_layout[my_i] ? '1' : '0');\
     g_printerr("\n\n");\
 }
 #else
@@ -262,8 +263,7 @@ xfce_desktop_icon_add(XfceDesktop *desktop,
         }
     }
     
-    grid_unset_position_free(desktop->priv->icon_workspaces[idx],
-                             icon->row, icon->col);
+    grid_unset_position_free(desktop->priv->icon_workspaces[idx], icon);
 
     icon->pix = netk_window_get_icon(window);
     if(icon->pix) {
@@ -983,7 +983,7 @@ desktop_icons_constrain(gpointer key,
         
         DBG("icon %s moved to (%d,%d)", icon->label, icon->row, icon->col);
         
-        grid_unset_position_free(icon_workspace, icon->row, icon->col);
+        grid_unset_position_free(icon_workspace, icon);
     }
     
     return FALSE;
@@ -1534,7 +1534,7 @@ workspace_changed_cb(NetkScreen *netk_screen,
                                  icon);
                 
                 grid_unset_position_free(desktop->priv->icon_workspaces[n],
-                                         cur_row, cur_col);
+                                         icon);
                 
                 cur_row++;
                 if(cur_row >= desktop->priv->icon_workspaces[n]->nrows) {
@@ -1593,7 +1593,8 @@ workspace_created_cb(NetkScreen *netk_screen,
         desktop->priv->icon_workspaces[ws_num]->width / CELL_SIZE;
     desktop->priv->icon_workspaces[ws_num]->grid_layout =
         g_malloc0(desktop->priv->icon_workspaces[ws_num]->nrows
-                  * desktop->priv->icon_workspaces[ws_num]->ncols / 8 + 1);
+                  * desktop->priv->icon_workspaces[ws_num]->ncols
+                  * sizeof(XfceDesktopIcon *));
 }
 
 static void
@@ -1625,16 +1626,15 @@ workspace_destroyed_cb(NetkScreen *netk_screen,
                                                sizeof(XfceDesktopIconWorkspace *) * n_ws);
 }
 
-static gboolean
+static inline gboolean
 grid_is_free_position(XfceDesktopIconWorkspace *icon_workspace,
                       guint16 row,
                       guint16 col)
 {
-    guint abit = col * icon_workspace->nrows + row;
-    guint8 abyte = icon_workspace->grid_layout[abit/8];
-    gboolean is_set = abyte & (0x80 >> (abit % 8));
+    g_return_val_if_fail(icon_workspace && row < icon_workspace->nrows
+                         && col < icon_workspace->ncols, FALSE);
     
-    return !is_set;
+    return !icon_workspace->grid_layout[col * icon_workspace->nrows + row];
 }
 
 static gboolean
@@ -1642,53 +1642,147 @@ grid_get_next_free_position(XfceDesktopIconWorkspace *icon_workspace,
                             guint16 *row,
                             guint16 *col)
 {
-    gint i, maxi, k;
-    guint8 j;
-    guint8 *grid_layout = icon_workspace->grid_layout;
+    gint i, maxi;
     
-    maxi = icon_workspace->nrows * icon_workspace->ncols + 1;
+    g_return_val_if_fail(icon_workspace && row && col, FALSE);
+    
+    maxi = icon_workspace->nrows * icon_workspace->ncols;
     for(i = 0; i < maxi; ++i) {
-       if(grid_layout[i] != 0xff) {
-           for(j = 0x80, k = 0; j; j >>= 1, ++k) {
-               if(~grid_layout[i] & j) {
-                   guint abit = i * 8 + k;
-                   *row = abit % icon_workspace->nrows;
-                   *col = abit / icon_workspace->nrows;
-                   return TRUE;
-               }
-           }
-       }
-   }
-   
-   return FALSE;
+        if(!icon_workspace->grid_layout[i]) {
+            *row = i % icon_workspace->nrows;
+            *col = i / icon_workspace->nrows;
+            return TRUE;
+        }
+    }
+    
+    return FALSE;
 }
 
-static void
+static inline void
 grid_set_position_free(XfceDesktopIconWorkspace *icon_workspace,
                        guint16 row,
                        guint16 col)
 {
-    guint8 *grid_layout = icon_workspace->grid_layout;
-    guint abit = col * icon_workspace->nrows + row;
-    guint abyte = abit / 8;
-    guint8 mask = ~(0x80 >> (abit % 8));
+    g_return_if_fail(icon_workspace && row < icon_workspace->nrows
+                     && col < icon_workspace->ncols);
+    
     dump_grid_layout(icon_workspace);
-    grid_layout[abyte] &= mask;
+    icon_workspace->grid_layout[col * icon_workspace->nrows + row] = NULL;
+    dump_grid_layout(icon_workspace);
+}
+
+static inline void
+grid_unset_position_free(XfceDesktopIconWorkspace *icon_workspace,
+                         XfceDesktopIcon *icon)
+{
+    g_return_if_fail(icon_workspace && icon && icon->row < icon_workspace->nrows
+                     && icon->col < icon_workspace->ncols);
+    
+    dump_grid_layout(icon_workspace);
+    icon_workspace->grid_layout[icon->col * icon_workspace->nrows + icon->row] = icon;
     dump_grid_layout(icon_workspace);
 }
 
 static void
-grid_unset_position_free(XfceDesktopIconWorkspace *icon_workspace,
-                         guint16 row,
-                         guint16 col)
+desktop_grid_find_nearest(XfceDesktopIconWorkspace *icon_workspace,
+                          XfceDesktopIcon *icon,
+                          XfceDesktopDirection dir)
 {
-    guint8 *grid_layout = icon_workspace->grid_layout;
-    guint abit = col * icon_workspace->nrows + row;
-    guint abyte = abit / 8;
-    guint8 mask = 0x80 >> (abit % 8);
-    dump_grid_layout(icon_workspace);
-    grid_layout[abyte] |= mask;
-    dump_grid_layout(icon_workspace);
+    XfceDesktopIcon **grid_layout = icon_workspace->grid_layout;
+    
+    if(!icon) {
+        gint i, maxi;
+        
+        maxi = icon_workspace->nrows * icon_workspace->ncols;
+        for(i = 0; i < maxi; ++i) {
+            if(grid_layout[i]) {
+                icon_workspace->selected_icon = grid_layout[i];
+                xfce_desktop_icon_paint(grid_layout[i]);
+                return;
+            }
+        }
+    } else {
+        gint i, cur_i = icon->col * icon_workspace->nrows + icon->row, maxi;
+        
+        switch(dir) {
+            case XFCE_DESKTOP_DIRECTION_UP:
+                for(i = cur_i - 1; i >= 0; --i) {
+                    if(grid_layout[i]) {
+                        icon_workspace->selected_icon = grid_layout[i];
+                        xfce_desktop_icon_paint(icon);
+                        xfce_desktop_icon_paint(grid_layout[i]);
+                        return;
+                    }
+                }
+                break;
+            
+            case XFCE_DESKTOP_DIRECTION_DOWN:
+                maxi = icon_workspace->nrows * icon_workspace->ncols;
+                for(i = cur_i + 1; i < maxi; ++i) {
+                    if(grid_layout[i]) {
+                        icon_workspace->selected_icon = grid_layout[i];
+                        xfce_desktop_icon_paint(icon);
+                        xfce_desktop_icon_paint(grid_layout[i]);
+                        return;
+                    }
+                }
+                break;
+            
+            case XFCE_DESKTOP_DIRECTION_LEFT:
+                if(cur_i == 0)
+                    return;
+                
+                for(i = cur_i >= icon_workspace->nrows
+                        ? cur_i - icon_workspace->nrows
+                        : icon_workspace->nrows * icon_workspace->ncols - 1
+                          - (icon_workspace->nrows - cur_i);
+                    i >= 0;
+                    i = i >= icon_workspace->nrows
+                        ? i - icon_workspace->nrows
+                        : icon_workspace->nrows * icon_workspace->ncols - 1
+                          - (icon_workspace->nrows - i))
+                {
+                    if(grid_layout[i]) {
+                        icon_workspace->selected_icon = grid_layout[i];
+                        xfce_desktop_icon_paint(icon);
+                        xfce_desktop_icon_paint(grid_layout[i]);
+                        return;
+                    }
+                    
+                    if(i == 0)
+                        return;
+                }
+                break;
+            
+            case XFCE_DESKTOP_DIRECTION_RIGHT:
+                maxi = icon_workspace->nrows * icon_workspace->ncols;
+                if(cur_i == maxi - 1)
+                    return;
+                
+                for(i = cur_i < icon_workspace->nrows * (icon_workspace->ncols - 1)
+                        ? cur_i + icon_workspace->nrows
+                        : cur_i % icon_workspace->nrows + 1;
+                    i < maxi;
+                    i = i < icon_workspace->nrows * (icon_workspace->ncols - 1)
+                        ? i + icon_workspace->nrows
+                        : i % icon_workspace->nrows + 1)
+                {
+                    if(grid_layout[i]) {
+                        icon_workspace->selected_icon = grid_layout[i];
+                        xfce_desktop_icon_paint(icon);
+                        xfce_desktop_icon_paint(grid_layout[i]);
+                        return;
+                    }
+                    
+                    if(i == maxi - 1)
+                        return;
+                }
+                break;
+            
+            default:
+                break;
+        }
+    }
 }
 
 static void
@@ -2237,37 +2331,35 @@ xfce_desktop_key_press_cb(GtkWidget *widget,
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
     XfceDesktopIcon *icon;
-    NetkWorkspace *cur_ws;
     gint cur_ws_num;
     
     /* FIXME: put in a conditional */
-    cur_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
-    cur_ws_num = netk_workspace_get_number(cur_ws);
+    cur_ws_num = desktop->priv->cur_ws_num;
     icon = desktop->priv->icon_workspaces[cur_ws_num]->selected_icon;
     
     switch(evt->keyval) {
         case GDK_Up:
         case GDK_KP_Up:
-            if(icon) {
-            
-            } else {
-                
-            }
+            desktop_grid_find_nearest(desktop->priv->icon_workspaces[cur_ws_num],
+                                      icon, XFCE_DESKTOP_DIRECTION_UP);
             break;
         
         case GDK_Down:
         case GDK_KP_Down:
-            
+            desktop_grid_find_nearest(desktop->priv->icon_workspaces[cur_ws_num],
+                                      icon, XFCE_DESKTOP_DIRECTION_DOWN);
             break;
         
         case GDK_Left:
         case GDK_KP_Left:
-            
+            desktop_grid_find_nearest(desktop->priv->icon_workspaces[cur_ws_num],
+                                      icon, XFCE_DESKTOP_DIRECTION_LEFT);
             break;
         
         case GDK_Right:
         case GDK_KP_Right:
-            
+            desktop_grid_find_nearest(desktop->priv->icon_workspaces[cur_ws_num],
+                                      icon, XFCE_DESKTOP_DIRECTION_RIGHT);
             break;
         
         case GDK_Return:
@@ -2381,8 +2473,9 @@ desktop_setup_grids(XfceDesktop *desktop,
             desktop->priv->icon_workspaces[i]->nrows = heights[i] / CELL_SIZE;
             desktop->priv->icon_workspaces[i]->ncols = widths[i] / CELL_SIZE;
             
-            tmp = 1 + desktop->priv->icon_workspaces[i]->nrows
-                  * desktop->priv->icon_workspaces[i]->ncols / 8;
+            tmp = desktop->priv->icon_workspaces[i]->nrows
+                  * desktop->priv->icon_workspaces[i]->ncols
+                  * sizeof(XfceDesktopIcon *);
             
             if(G_UNLIKELY(desktop->priv->icon_workspaces[i]->grid_layout)) {
                 desktop->priv->icon_workspaces[i]->grid_layout = g_realloc(
@@ -2392,9 +2485,7 @@ desktop_setup_grids(XfceDesktop *desktop,
             } else
                 desktop->priv->icon_workspaces[i]->grid_layout = g_malloc0(tmp);
             
-            DBG("created grid_layout with %d bytes (%d positions)", tmp,
-                desktop->priv->icon_workspaces[i]->nrows
-                * desktop->priv->icon_workspaces[i]->ncols);
+            DBG("created grid_layout with %d positions", tmp);
             dump_grid_layout(desktop->priv->icon_workspaces[i]);
         }
     } else {
@@ -2412,8 +2503,9 @@ desktop_setup_grids(XfceDesktop *desktop,
             desktop->priv->icon_workspaces[i]->nrows = h / CELL_SIZE;
             desktop->priv->icon_workspaces[i]->ncols = w / CELL_SIZE;
             
-            tmp = 1 + desktop->priv->icon_workspaces[i]->nrows
-                  * desktop->priv->icon_workspaces[i]->ncols / 8;
+            tmp = desktop->priv->icon_workspaces[i]->nrows
+                  * desktop->priv->icon_workspaces[i]->ncols
+                  * sizeof(XfceDesktopIcon *);
             
             if(G_UNLIKELY(desktop->priv->icon_workspaces[i]->grid_layout)) {
                 desktop->priv->icon_workspaces[i]->grid_layout = g_realloc(
@@ -2423,9 +2515,7 @@ desktop_setup_grids(XfceDesktop *desktop,
             } else
                 desktop->priv->icon_workspaces[i]->grid_layout = g_malloc0(tmp);
             
-            DBG("created grid_layout with %d bytes (%d positions)", tmp,
-                desktop->priv->icon_workspaces[i]->nrows
-                * desktop->priv->icon_workspaces[i]->ncols);
+            DBG("created grid_layout with %d positions", tmp);
             dump_grid_layout(desktop->priv->icon_workspaces[i]);
         }
     }
@@ -2823,7 +2913,7 @@ xfce_desktop_drag_drop(GtkWidget *widget,
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
     GdkAtom target = GDK_NONE;
-    XfceDesktopIcon *icon;
+    XfceDesktopIcon *icon, *icon_below;
     gint active_ws_num, row, col, cell_x, cell_y;
     
     TRACE("entering: (%d,%d)", x, y);
@@ -2856,20 +2946,21 @@ xfce_desktop_drag_drop(GtkWidget *widget,
     icon = desktop->priv->last_clicked_item;
     g_return_val_if_fail(icon, FALSE);
     
+    icon_below = find_icon_below(desktop, icon);
     grid_set_position_free(desktop->priv->icon_workspaces[active_ws_num],
                            icon->row, icon->col);
-    grid_unset_position_free(desktop->priv->icon_workspaces[active_ws_num],
-                             row, col);
-    
-    /* set new position */
     icon->row = row;
     icon->col = col;
+    grid_unset_position_free(desktop->priv->icon_workspaces[active_ws_num],
+                             icon);
     
     /* clear out old position */
     gdk_window_clear_area(widget->window, icon->extents.x, icon->extents.y,
                           icon->extents.width, icon->extents.height);
     icon->extents.x = icon->extents.y = 0;
     xfce_desktop_icon_paint(icon);
+    if(icon_below)
+        xfce_desktop_icon_paint(icon_below);
     
     DBG("drag succeeded");
     
