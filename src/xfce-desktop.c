@@ -240,7 +240,7 @@ xfce_desktop_icon_add(XfceDesktop *desktop,
     guint16 old_row, old_col;
     gboolean got_pos = FALSE;
     NetkWorkspace *active_ws;
-            
+    
     /* check for availability of old position (if any) */
     g_snprintf(data_name, 256, "xfdesktop-last-row-%d", idx);
     old_row = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
@@ -1506,6 +1506,11 @@ workspace_changed_cb(NetkScreen *netk_screen,
     NetkWorkspace *ws;
     
     ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
+    if(!NETK_IS_WORKSPACE(ws)) {
+        DBG("got weird failure of netk_screen_get_active_workspace(), bailing");
+        return;
+    }
+    
     desktop->priv->cur_ws_num = n = netk_workspace_get_number(ws);
     if(!desktop->priv->icon_workspaces[n]->icons) {
         GList *windows, *l;
