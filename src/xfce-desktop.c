@@ -114,6 +114,13 @@ typedef enum
     XFCE_DESKTOP_DIRECTION_RIGHT,
 } XfceDesktopDirection;
 
+typedef enum
+{
+    XFCE_DESKTOP_WORKAREA_OK = 0,
+    XFCE_DESKTOP_WORKAREA_FAILED,
+    XFCE_DESKTOP_WORKAREA_ABORTED,
+} XfceDesktopWorkareaStatus;
+
 #endif /* defined(ENABLE_WINDOW_ICONS) */
 
 struct _XfceDesktopPriv
@@ -130,10 +137,11 @@ struct _XfceDesktopPriv
     gboolean use_window_icons;
     
     NetkScreen *netk_screen;
-    gint cur_ws_num;
     PangoLayout *playout;
     
+    guint nworkspaces;
     XfceDesktopIconWorkspace **icon_workspaces;
+    guint cur_ws_num;
     
     guint grid_resize_timeout;
     guint icon_repaint_id;
@@ -992,27 +1000,25 @@ desktop_icons_constrain(gpointer key,
 static void
 desktop_grid_do_resize(XfceDesktop *desktop)
 {
-    gint i, nws, *old_rows, *old_cols;
-    
-    nws = netk_screen_get_workspace_count(desktop->priv->netk_screen);
+    gint i, *old_rows, *old_cols;
     
     /* remember the old sizes */
-    old_rows = g_new(gint, nws);
-    old_cols = g_new(gint, nws);
-    for(i = 0; i < nws; i++) {
+    old_rows = g_new(gint, desktop->priv->nworkspaces);
+    old_cols = g_new(gint, desktop->priv->nworkspaces);
+    for(i = 0; i < desktop->priv->nworkspaces; i++) {
         old_rows[i] = desktop->priv->icon_workspaces[i]->nrows;
         old_cols[i] = desktop->priv->icon_workspaces[i]->ncols;
     }
     
     DBG("old geom: %dx%d", old_rows[0], old_cols[0]);
     
-    desktop_setup_grids(desktop, nws);
+    desktop_setup_grids(desktop, desktop->priv->nworkspaces);
     
     DBG("new geom: %dx%d", desktop->priv->icon_workspaces[0]->nrows,
         desktop->priv->icon_workspaces[0]->ncols);
     
     /* make sure we don't lose any icons off the screen */
-    for(i = 0; i < nws; i++) {
+    for(i = 0; i < desktop->priv->nworkspaces; i++) {
         if(old_rows[i] > desktop->priv->icon_workspaces[i]->nrows
            || old_cols[i] > desktop->priv->icon_workspaces[i]->ncols)
         {
@@ -1405,7 +1411,7 @@ desktop_get_workarea_single(XfceDesktop *desktop,
     return ret;
 }
 
-static gboolean
+static XfceDesktopWorkareaStatus
 desktop_get_workarea(XfceDesktop *desktop,
                      guint nworkspaces,
                      gint *xorigins,
@@ -1413,11 +1419,11 @@ desktop_get_workarea(XfceDesktop *desktop,
                      gint *widths,
                      gint *heights)
 {
-    gboolean ret = FALSE;
+    gboolean ret = XFCE_DESKTOP_WORKAREA_FAILED;
     Display *dpy;
     Window root;
     Atom property, actual_type = None;
-    gint actual_format = 0;
+    gint actual_format = 0, new_nworkspaces = -1;
     gulong nitems = 0, bytes_after = 0, *data = NULL, offset = 0;
     gint *full_data, i = 0, j;
     unsigned char *data_p = NULL;
@@ -1447,6 +1453,19 @@ desktop_get_workarea(XfceDesktop *desktop,
                 break;
             }
             
+            if(new_nworkspaces == -1) {
+                gint tot_bytes = nitems * sizeof(gulong) + bytes_after;
+                new_nworkspaces = tot_bytes / sizeof(gulong) / 4;
+                DBG("WORKAREA says we have %d workspaces now (nitems=%ld, tot_bytes=%d, bytes_after=%ld", new_nworkspaces, nitems, tot_bytes, bytes_after);
+                
+                if(new_nworkspaces != nworkspaces) {
+                    DBG("bailing on getting workarea: workspaces count doesn't match");
+                    XFree(data_p);
+                    ret = XFCE_DESKTOP_WORKAREA_ABORTED;
+                    break;
+                }
+            }
+            
             data = (gulong *)data_p;
             for(j = 0; j < nitems; j++, i++)
                 full_data[i] = data[j];
@@ -1454,7 +1473,7 @@ desktop_get_workarea(XfceDesktop *desktop,
             data_p = NULL;
             
             if(i == nworkspaces * 4)
-                ret = TRUE;
+                ret = XFCE_DESKTOP_WORKAREA_OK;
             
             offset += actual_format * nitems;
             
@@ -1464,7 +1483,7 @@ desktop_get_workarea(XfceDesktop *desktop,
     
     gdk_error_trap_pop();
     
-    if(ret) {
+    if(ret == XFCE_DESKTOP_WORKAREA_OK) {
         for(i = 0; i < nworkspaces*4; i += 4) {
             xorigins[i/4] = full_data[i] + SCREEN_MARGIN;
             yorigins[i/4] = full_data[i+1] + SCREEN_MARGIN;
@@ -1559,6 +1578,7 @@ workspace_created_cb(NetkScreen *netk_screen,
     gint ws_num, n_ws, xo, yo, w, h;
     
     n_ws = netk_screen_get_workspace_count(netk_screen);
+    desktop->priv->nworkspaces = n_ws;
     ws_num = netk_workspace_get_number(workspace);
     
     desktop->priv->icon_workspaces = g_realloc(desktop->priv->icon_workspaces,
@@ -1579,12 +1599,12 @@ workspace_created_cb(NetkScreen *netk_screen,
         desktop->priv->icon_workspaces[ws_num]->width = w;
         desktop->priv->icon_workspaces[ws_num]->height = h;
     } else {
-        desktop->priv->icon_workspaces[ws_num]->xorigin = 0;
-        desktop->priv->icon_workspaces[ws_num]->yorigin = 0;
+        desktop->priv->icon_workspaces[ws_num]->xorigin = SCREEN_MARGIN;
+        desktop->priv->icon_workspaces[ws_num]->yorigin = SCREEN_MARGIN;
         desktop->priv->icon_workspaces[ws_num]->width =
-                gdk_screen_get_width(desktop->priv->gscreen);
+                gdk_screen_get_width(desktop->priv->gscreen) - 2 * SCREEN_MARGIN;
         desktop->priv->icon_workspaces[ws_num]->height =
-                gdk_screen_get_height(desktop->priv->gscreen);
+                gdk_screen_get_height(desktop->priv->gscreen) - 2 * SCREEN_MARGIN;
     }
     
     desktop->priv->icon_workspaces[ws_num]->nrows = 
@@ -1610,6 +1630,7 @@ workspace_destroyed_cb(NetkScreen *netk_screen,
     gint ws_num, n_ws;
     
     n_ws = netk_screen_get_workspace_count(netk_screen);
+    desktop->priv->nworkspaces = n_ws;
     ws_num = netk_workspace_get_number(workspace);
     
     if(desktop->priv->icon_workspaces[ws_num]->icons)
@@ -1822,7 +1843,7 @@ window_state_changed_cb(NetkWindow *window,
      * from a single workspace otherwise, without duplicating code */
     if(netk_window_is_pinned(window)) {
         i = 0;
-        max_i = netk_screen_get_workspace_count(desktop->priv->netk_screen);
+        max_i = desktop->priv->nworkspaces;
     } else {
         g_return_if_fail(ws_num != -1);
         i = ws_num;
@@ -1867,7 +1888,7 @@ window_workspace_changed_cb(NetkWindow *window,
     if(!netk_window_is_minimized(window))
         return;
     
-    n_ws = netk_screen_get_workspace_count(desktop->priv->netk_screen);
+    n_ws = desktop->priv->nworkspaces;
     
     new_ws = netk_window_get_workspace(window);
     if(new_ws)
@@ -1900,11 +1921,10 @@ window_destroyed_cb(gpointer data,
 {
     XfceDesktop *desktop = data;
     NetkWindow *window = (NetkWindow *)where_the_object_was;
-    gint nws, i;
+    gint i;
     XfceDesktopIcon *icon;
     
-    nws = netk_screen_get_workspace_count(desktop->priv->netk_screen);
-    for(i = 0; i < nws; i++) {
+    for(i = 0; i < desktop->priv->nworkspaces; i++) {
         if(!desktop->priv->icon_workspaces[i]->icons)
             continue;
         
@@ -2454,70 +2474,83 @@ desktop_setup_grids(XfceDesktop *desktop,
                     gint nws)
 {
     gint i, *xorigins, *yorigins, *widths, *heights, tmp;
+    XfceDesktopWorkareaStatus ret;
     
     xorigins = g_new(gint, nws);
     yorigins = g_new(gint, nws);
     widths = g_new(gint, nws);
     heights = g_new(gint, nws);
     
-    if(desktop_get_workarea(desktop, nws, xorigins, yorigins, widths, heights)) {
-        for(i = 0; i < nws; i++) {
-            if(G_LIKELY(!desktop->priv->icon_workspaces[i]))
-                desktop->priv->icon_workspaces[i] = g_new0(XfceDesktopIconWorkspace, 1);
-            
-            desktop->priv->icon_workspaces[i]->xorigin = xorigins[i];
-            desktop->priv->icon_workspaces[i]->yorigin = yorigins[i];
-            desktop->priv->icon_workspaces[i]->width = widths[i];
-            desktop->priv->icon_workspaces[i]->height = heights[i];
-            
-            desktop->priv->icon_workspaces[i]->nrows = heights[i] / CELL_SIZE;
-            desktop->priv->icon_workspaces[i]->ncols = widths[i] / CELL_SIZE;
-            
-            tmp = desktop->priv->icon_workspaces[i]->nrows
-                  * desktop->priv->icon_workspaces[i]->ncols
-                  * sizeof(XfceDesktopIcon *);
-            
-            if(G_UNLIKELY(desktop->priv->icon_workspaces[i]->grid_layout)) {
-                desktop->priv->icon_workspaces[i]->grid_layout = g_realloc(
-                    desktop->priv->icon_workspaces[i]->grid_layout,
-                    tmp
-                );
-            } else
-                desktop->priv->icon_workspaces[i]->grid_layout = g_malloc0(tmp);
-            
-            DBG("created grid_layout with %d positions", tmp);
-            dump_grid_layout(desktop->priv->icon_workspaces[i]);
-        }
-    } else {
-        gint w = gdk_screen_get_width(desktop->priv->gscreen);
-        gint h = gdk_screen_get_height(desktop->priv->gscreen);
-        for(i = 0; i < nws; i++) {
-            if(G_LIKELY(!desktop->priv->icon_workspaces[i]))
-                desktop->priv->icon_workspaces[i] = g_new0(XfceDesktopIconWorkspace, 1);
-            
-            desktop->priv->icon_workspaces[i]->xorigin = 0;
-            desktop->priv->icon_workspaces[i]->yorigin = 0;
-            desktop->priv->icon_workspaces[i]->width = w;
-            desktop->priv->icon_workspaces[i]->height = h;
-            
-            desktop->priv->icon_workspaces[i]->nrows = h / CELL_SIZE;
-            desktop->priv->icon_workspaces[i]->ncols = w / CELL_SIZE;
-            
-            tmp = desktop->priv->icon_workspaces[i]->nrows
-                  * desktop->priv->icon_workspaces[i]->ncols
-                  * sizeof(XfceDesktopIcon *);
-            
-            if(G_UNLIKELY(desktop->priv->icon_workspaces[i]->grid_layout)) {
-                desktop->priv->icon_workspaces[i]->grid_layout = g_realloc(
-                    desktop->priv->icon_workspaces[i]->grid_layout,
-                    tmp
-                );
-            } else
-                desktop->priv->icon_workspaces[i]->grid_layout = g_malloc0(tmp);
-            
-            DBG("created grid_layout with %d positions", tmp);
-            dump_grid_layout(desktop->priv->icon_workspaces[i]);
-        }
+    ret = desktop_get_workarea(desktop, nws, xorigins, yorigins, widths, heights);
+    switch(ret) {
+        case XFCE_DESKTOP_WORKAREA_OK:
+            for(i = 0; i < nws; i++) {
+                if(G_LIKELY(!desktop->priv->icon_workspaces[i]))
+                    desktop->priv->icon_workspaces[i] = g_new0(XfceDesktopIconWorkspace, 1);
+                
+                desktop->priv->icon_workspaces[i]->xorigin = xorigins[i];
+                desktop->priv->icon_workspaces[i]->yorigin = yorigins[i];
+                desktop->priv->icon_workspaces[i]->width = widths[i];
+                desktop->priv->icon_workspaces[i]->height = heights[i];
+                
+                desktop->priv->icon_workspaces[i]->nrows = heights[i] / CELL_SIZE;
+                desktop->priv->icon_workspaces[i]->ncols = widths[i] / CELL_SIZE;
+                
+                tmp = desktop->priv->icon_workspaces[i]->nrows
+                      * desktop->priv->icon_workspaces[i]->ncols
+                      * sizeof(XfceDesktopIcon *);
+                
+                if(G_UNLIKELY(desktop->priv->icon_workspaces[i]->grid_layout)) {
+                    desktop->priv->icon_workspaces[i]->grid_layout = g_realloc(
+                        desktop->priv->icon_workspaces[i]->grid_layout,
+                        tmp
+                    );
+                } else
+                    desktop->priv->icon_workspaces[i]->grid_layout = g_malloc0(tmp);
+                
+                DBG("created grid_layout with %d positions", tmp);
+                dump_grid_layout(desktop->priv->icon_workspaces[i]);
+            }
+            break;
+        
+        case XFCE_DESKTOP_WORKAREA_FAILED:
+            {
+                gint w = gdk_screen_get_width(desktop->priv->gscreen);
+                gint h = gdk_screen_get_height(desktop->priv->gscreen);
+                for(i = 0; i < nws; i++) {
+                    if(G_LIKELY(!desktop->priv->icon_workspaces[i]))
+                        desktop->priv->icon_workspaces[i] = g_new0(XfceDesktopIconWorkspace, 1);
+                    
+                    desktop->priv->icon_workspaces[i]->xorigin = 0;
+                    desktop->priv->icon_workspaces[i]->yorigin = 0;
+                    desktop->priv->icon_workspaces[i]->width = w;
+                    desktop->priv->icon_workspaces[i]->height = h;
+                    
+                    desktop->priv->icon_workspaces[i]->nrows = h / CELL_SIZE;
+                    desktop->priv->icon_workspaces[i]->ncols = w / CELL_SIZE;
+                    
+                    tmp = desktop->priv->icon_workspaces[i]->nrows
+                          * desktop->priv->icon_workspaces[i]->ncols
+                          * sizeof(XfceDesktopIcon *);
+                    
+                    if(G_UNLIKELY(desktop->priv->icon_workspaces[i]->grid_layout)) {
+                        desktop->priv->icon_workspaces[i]->grid_layout = g_realloc(
+                            desktop->priv->icon_workspaces[i]->grid_layout,
+                            tmp
+                        );
+                    } else
+                        desktop->priv->icon_workspaces[i]->grid_layout = g_malloc0(tmp);
+                    
+                    DBG("created grid_layout with %d positions", tmp);
+                    dump_grid_layout(desktop->priv->icon_workspaces[i]);
+                }
+            }
+            break;
+        
+        case XFCE_DESKTOP_WORKAREA_ABORTED:
+            /* do nothing */
+            DBG("got XFCE_DESKTOP_WORKAREA_ABORTED");
+            break;
     }
     
     g_free(xorigins);
@@ -2614,6 +2647,7 @@ xfce_desktop_setup_icons(XfceDesktop *desktop)
                      G_CALLBACK(workspace_destroyed_cb), desktop);
     
     nws = netk_screen_get_workspace_count(desktop->priv->netk_screen);
+    desktop->priv->nworkspaces = nws;
     desktop->priv->icon_workspaces = g_new0(XfceDesktopIconWorkspace *, nws);
     desktop_setup_grids(desktop, nws);
     
@@ -2659,7 +2693,7 @@ static void
 xfce_desktop_unsetup_icons(XfceDesktop *desktop)
 {
     GList *windows, *l;
-    gint nws, i;
+    gint i;
     GdkWindow *groot;
     
     if(!desktop->priv->icon_workspaces)
@@ -2713,8 +2747,7 @@ xfce_desktop_unsetup_icons(XfceDesktop *desktop)
         g_object_weak_unref(G_OBJECT(l->data), window_destroyed_cb, desktop);
     }
     
-    nws = netk_screen_get_workspace_count(desktop->priv->netk_screen);
-    for(i = 0; i < nws; i++) {
+    for(i = 0; i < desktop->priv->nworkspaces; i++) {
         if(desktop->priv->icon_workspaces[i]->icons)
             g_hash_table_destroy(desktop->priv->icon_workspaces[i]->icons);
         g_free(desktop->priv->icon_workspaces[i]->grid_layout);
