@@ -239,7 +239,6 @@ xfce_desktop_icon_add(XfceDesktop *desktop,
     gchar data_name[256];
     guint16 old_row, old_col;
     gboolean got_pos = FALSE;
-    NetkWorkspace *active_ws;
     
     /* check for availability of old position (if any) */
     g_snprintf(data_name, 256, "xfdesktop-last-row-%d", idx);
@@ -294,8 +293,7 @@ xfce_desktop_icon_add(XfceDesktop *desktop,
     g_signal_connect(G_OBJECT(window), "icon-changed",
                      G_CALLBACK(xfce_desktop_window_icon_changed_cb), icon);
     
-    active_ws = netk_screen_get_active_workspace(desktop->priv->netk_screen);
-    if(idx == netk_workspace_get_number(active_ws))
+    if(idx == desktop->priv->cur_ws_num)
         xfce_desktop_icon_paint(icon);
 }
 
@@ -670,7 +668,12 @@ xfce_desktop_window_name_changed_cb(NetkWindow *window,
     g_free(icon->label);
     icon->label = g_strdup(netk_window_get_name(window));
     
-    xfce_desktop_icon_paint(icon);
+    if(netk_workspace_get_number(netk_window_get_workspace(icon->window))
+       == icon->desktop->priv->cur_ws_num
+       || netk_window_is_pinned(icon->window))
+    {
+        xfce_desktop_icon_paint(icon);
+    }
 }
 
 static void
@@ -693,7 +696,12 @@ xfce_desktop_window_icon_changed_cb(NetkWindow *window,
         g_object_ref(G_OBJECT(icon->pix));
     }
     
-    xfce_desktop_icon_paint(icon);
+    if(netk_workspace_get_number(netk_window_get_workspace(icon->window))
+       == icon->desktop->priv->cur_ws_num
+       || netk_window_is_pinned(icon->window))
+    {
+        xfce_desktop_icon_paint(icon);
+    }
 }
 
 #endif /* defined(ENABLE_WINDOW_ICONS) */
