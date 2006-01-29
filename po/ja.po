@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-01-26 20:09+0900\n"
-"PO-Revision-Date: 2006-01-02 07:55+0900\n"
+"PO-Revision-Date: 2006-01-29 16:14+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -115,7 +115,7 @@ msgstr "終了"
 #: ../menueditor/add_menu_dialog.c:97 ../menueditor/add_menu_dialog.c:103
 #: ../menueditor/menueditor.c:842
 msgid "Add an external menu"
-msgstr "外部メニューを追加"
+msgstr "外部メニューの追加"
 
 #: ../menueditor/add_menu_dialog.c:115
 msgid "File"
@@ -149,7 +149,7 @@ msgstr "ユニークな項目のみ(_U)"
 
 #: ../menueditor/add_menu_dialog.c:198
 msgid "The 'Source' field is required."
-msgstr "'ソース' の箇所は必須です。"
+msgstr "「ソース」の箇所は必須です。"
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
 #: ../menueditor/utils.c:373
@@ -265,43 +265,43 @@ msgstr "このプログラムについて(_A)..."
 
 #: ../menueditor/menueditor.c:917
 msgid "Create a new Xfce4 menu file"
-msgstr "新規 Xfce4 メニューファイルを作成"
+msgstr "新規 Xfce4 メニューファイルを作成します"
 
 #: ../menueditor/menueditor.c:922
 msgid "Open an Xfce4 menu file"
-msgstr "Xfce4 メニューファイルを開く"
+msgstr "Xfce4 メニューファイルを開きます"
 
 #: ../menueditor/menueditor.c:927
 msgid "Save current menu"
-msgstr "現在のメニューを保存"
+msgstr "現在のメニューを保存します"
 
 #: ../menueditor/menueditor.c:932
 msgid "Close current menu"
-msgstr "現在のメニューを閉じる"
+msgstr "現在のメニューを閉じます"
 
 #: ../menueditor/menueditor.c:938
 msgid "Add an entry to the menu"
-msgstr "メニューにアイテムを追加"
+msgstr "メニューに項目を追加します"
 
 #: ../menueditor/menueditor.c:942
 msgid "Delete the current entry"
-msgstr "現在のアイテムを削除"
+msgstr "現在の項目を削除します"
 
 #: ../menueditor/menueditor.c:948
 msgid "Move the current entry up"
-msgstr "現在のアイテムを上に移動"
+msgstr "現在の項目を上に移動します"
 
 #: ../menueditor/menueditor.c:953
 msgid "Move the current entry down"
-msgstr "現在のアイテムを下に移動"
+msgstr "現在の項目を下に移動します"
 
 #: ../menueditor/menueditor.c:959
 msgid "Collapse the tree"
-msgstr "このツリーを折畳む"
+msgstr "このツリーを畳みます"
 
 #: ../menueditor/menueditor.c:964
 msgid "Expand the tree"
-msgstr "このツリーを拡げる"
+msgstr "このツリーを拡げます"
 
 #: ../menueditor/menueditor.c:992
 msgid "Name"
@@ -315,7 +315,6 @@ msgstr "コマンド"
 msgid "Hidden"
 msgstr "隠す"
 
-# MERGEBLE:
 #: ../menueditor/utils.c:650
 msgid "Select icon"
 msgstr "アイコンを選択して下さい"
@@ -365,7 +364,6 @@ msgstr ""
 msgid "/Other"
 msgstr "/その他"
 
-# MERGEBLE:
 #: ../panel-plugin/desktop-menu-plugin.c:528
 msgid "Select Icon"
 msgstr "アイコンを選択して下さい"
@@ -461,7 +459,6 @@ msgstr "背景リスト"
 msgid "Image files"
 msgstr "画像ファイル"
 
-# FIXME: it shouldn't be translatable
 #: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:184
 #: ../settings/backdrop_settings.c:193
 msgid "backdrops.list"
@@ -526,9 +523,8 @@ msgid "Auto"
 msgstr "自動"
 
 #: ../settings/backdrop_settings.c:778
-#, fuzzy
 msgid "A_djust Brightness:"
-msgstr "明度の調節(_B):"
+msgstr "明度の調節(_D):"
 
 #: ../settings/backdrop_settings.c:834
 #, c-format
@@ -569,7 +565,6 @@ msgstr ""
 msgid "_Do not show this again"
 msgstr "二度と表示しない(_D)"
 
-# FIXME: Q_ (../settings/backdrop_settings.c)
 #. header
 #: ../settings/backdrop_settings.c:959
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
@@ -587,7 +582,7 @@ msgstr "一枚の背景を全てのモニターに伸ばす(_A)"
 #. add the single backdrop settings page to the main notebook
 #: ../settings/backdrop_settings.c:1019 ../settings/backdrop_settings.c:1224
 msgid "_Appearance"
-msgstr ""
+msgstr "外観(_A)"
 
 #. color settings frame
 #: ../settings/backdrop_settings.c:1045
@@ -643,7 +638,7 @@ msgstr "画面 %d, モニター %d"
 
 #: ../settings/backdrop_settings.c:1259
 msgid "_Behavior"
-msgstr ""
+msgstr "振る舞い(_B)"
 
 #: ../settings/menu_settings.c:174
 msgid "Window List Menu"
@@ -666,9 +661,8 @@ msgid "Show desktop _menu"
 msgstr "デスクトップメニューを表示する(_M)"
 
 #: ../settings/menu_settings.c:233
-#, fuzzy
 msgid "_Show application icons"
-msgstr "アプリケーションアイコンを表示する(_A)"
+msgstr "アプリケーションアイコンを表示する(_S)"
 
 #: ../settings/menu_settings.c:244
 msgid "_Edit desktop menu"
