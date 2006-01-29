@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-07 12:21+0900\n"
+"POT-Creation-Date: 2006-01-26 20:09+0900\n"
 "PO-Revision-Date: 2005-10-14 18:34+0900\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -104,7 +104,7 @@ msgstr "Minden mező kitöltendő egy elem hozzáadásához."
 msgid "The 'Name' field is required."
 msgstr "A 'Név' mező kötelező"
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:314
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:319
 msgid "--- separator ---"
 msgstr "--- elválasztó ---"
 
@@ -152,11 +152,11 @@ msgid "The 'Source' field is required."
 msgstr "A 'Forrás' mező kötelező"
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:368
+#: ../menueditor/utils.c:373
 msgid "--- include ---"
 msgstr "--- csatolva ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:385
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:390
 msgid "system"
 msgstr "rendszer"
 
@@ -194,7 +194,7 @@ msgstr "Biztos bezárod e menüt?"
 msgid "Do you want to save before closing the file?"
 msgstr "Mentesz a fájl bezárása előtt?"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:583
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:588
 msgid "Select command"
 msgstr "Válassz parancsot"
 
@@ -315,19 +315,19 @@ msgstr "Parancs"
 msgid "Hidden"
 msgstr "Rejtett"
 
-#: ../menueditor/utils.c:645
+#: ../menueditor/utils.c:650
 #, fuzzy
 msgid "Select icon"
 msgstr "Válassz ikont"
 
-#: ../menueditor/utils.c:651 ../panel-plugin/desktop-menu-plugin.c:545
+#: ../menueditor/utils.c:656 ../panel-plugin/desktop-menu-plugin.c:545
 #: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
-#: ../settings/backdrop_settings.c:524
+#: ../settings/backdrop_settings.c:529
 msgid "All Files"
 msgstr "Minden fájl"
 
-#: ../menueditor/utils.c:655 ../panel-plugin/desktop-menu-plugin.c:551
-#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
+#: ../menueditor/utils.c:660 ../panel-plugin/desktop-menu-plugin.c:551
+#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:533
 msgid "Image Files"
 msgstr "Képfájlok"
 
@@ -423,7 +423,7 @@ msgstr "Gomb iko_n:"
 msgid "Show _icons in menu"
 msgstr "Legyenek _ikonok a menüben"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:578
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:735
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -456,8 +456,8 @@ msgstr "Háttérlista"
 msgid "Image files"
 msgstr "Képfájlok"
 
-#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:179
-#: ../settings/backdrop_settings.c:188
+#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:184
+#: ../settings/backdrop_settings.c:193
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
@@ -474,77 +474,78 @@ msgid "Edit backdrop list"
 msgstr "Háttérlista szerkesztése"
 
 #. the dialog
-#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:939
-#: ../src/xfce-desktop.c:1801
+#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:944
+#: ../src/xfce-desktop.c:2073
 msgid "Desktop"
 msgstr "Munkaasztal"
 
-#: ../settings/backdrop_settings.c:519
+#: ../settings/backdrop_settings.c:524
 msgid "Select backdrop image or list file"
 msgstr "Háttérkép vagy listafájl kiválasztása"
 
-#: ../settings/backdrop_settings.c:537
+#: ../settings/backdrop_settings.c:542
 msgid "List Files (*.list)"
 msgstr "Listafájlok (*.list)"
 
-#: ../settings/backdrop_settings.c:627
+#: ../settings/backdrop_settings.c:632
 msgid "_Edit list..."
 msgstr "Lista szerkesztése"
 
-#: ../settings/backdrop_settings.c:635
+#: ../settings/backdrop_settings.c:640
 msgid "_New list..."
 msgstr "Új lista"
 
-#: ../settings/backdrop_settings.c:671
+#: ../settings/backdrop_settings.c:676
 msgid "S_tyle:"
 msgstr "S_tílus:"
 
-#: ../settings/backdrop_settings.c:679
+#: ../settings/backdrop_settings.c:684
 msgid "Tiled"
 msgstr "Csempe"
 
-#: ../settings/backdrop_settings.c:686
+#: ../settings/backdrop_settings.c:691
 msgid "Centered"
 msgstr "Középre"
 
-#: ../settings/backdrop_settings.c:693
+#: ../settings/backdrop_settings.c:698
 msgid "Scaled"
 msgstr "Átméretezve"
 
-#: ../settings/backdrop_settings.c:700
+#: ../settings/backdrop_settings.c:705
 msgid "Stretched"
 msgstr "Nyújtott"
 
-#: ../settings/backdrop_settings.c:707
+#: ../settings/backdrop_settings.c:712
 msgid "Auto"
 msgstr "Automatikus"
 
-#: ../settings/backdrop_settings.c:773
-msgid "Adjust _Brightness:"
+#: ../settings/backdrop_settings.c:778
+#, fuzzy
+msgid "A_djust Brightness:"
 msgstr "Fénye_rő beállítása:"
 
-#: ../settings/backdrop_settings.c:829
+#: ../settings/backdrop_settings.c:834
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Az Xfce nem tudja majd kezelni az asztalt (%s)."
 
-#: ../settings/backdrop_settings.c:830
+#: ../settings/backdrop_settings.c:835
 msgid "Unknown Error"
 msgstr "ismeretlen hiba"
 
-#: ../settings/backdrop_settings.c:834
+#: ../settings/backdrop_settings.c:839
 msgid "Error"
 msgstr "hiba"
 
-#: ../settings/backdrop_settings.c:836
+#: ../settings/backdrop_settings.c:841
 msgid "Unable to start xfdesktop"
 msgstr "Az xfdesktop nem indítható"
 
-#: ../settings/backdrop_settings.c:854
+#: ../settings/backdrop_settings.c:859
 msgid "Information"
 msgstr "Információ"
 
-#: ../settings/backdrop_settings.c:864
+#: ../settings/backdrop_settings.c:869
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -557,87 +558,83 @@ msgstr ""
 "folyamatkezelőt (xfce4-session), kézzel kell szerkesztenes a ~/.config/xfce4/"
 "xinitrc fájlt.  Részletek a doksiban a http://xfce.org/ -on."
 
-#: ../settings/backdrop_settings.c:872
+#: ../settings/backdrop_settings.c:877
 msgid "_Do not show this again"
 msgstr "Ne mutas_d legközelebb"
 
 #. header
-#: ../settings/backdrop_settings.c:954
+#: ../settings/backdrop_settings.c:959
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "Asztal beállításai"
 
-#: ../settings/backdrop_settings.c:959
+#: ../settings/backdrop_settings.c:964
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Az _Xfce kezelje az asztalt"
 
-#: ../settings/backdrop_settings.c:1000
+#: ../settings/backdrop_settings.c:1005
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "Nyújts egy hátteret v_alamennyi monitorra"
 
-#: ../settings/backdrop_settings.c:1014
-msgid "_Backdrops"
-msgstr "_Hátterek"
+#. add the single backdrop settings page to the main notebook
+#: ../settings/backdrop_settings.c:1019 ../settings/backdrop_settings.c:1224
+msgid "_Appearance"
+msgstr ""
 
 #. color settings frame
-#: ../settings/backdrop_settings.c:1040
+#: ../settings/backdrop_settings.c:1045
 msgid "Color"
 msgstr "Szín"
 
-#: ../settings/backdrop_settings.c:1054
+#: ../settings/backdrop_settings.c:1059
 msgid "_Color Style:"
 msgstr "Szí_nstílus:"
 
-#: ../settings/backdrop_settings.c:1063
+#: ../settings/backdrop_settings.c:1068
 msgid "Solid Color"
 msgstr "Sima szín"
 
-#: ../settings/backdrop_settings.c:1070
+#: ../settings/backdrop_settings.c:1075
 msgid "Horizontal Gradient"
 msgstr "Vízszintes színátmenet"
 
-#: ../settings/backdrop_settings.c:1077
+#: ../settings/backdrop_settings.c:1082
 msgid "Vertical Gradient"
 msgstr "Függőleges színátmenet"
 
-#: ../settings/backdrop_settings.c:1098
+#: ../settings/backdrop_settings.c:1103
 msgid "Fi_rst Color:"
 msgstr "_1. szín:"
 
-#: ../settings/backdrop_settings.c:1119
+#: ../settings/backdrop_settings.c:1124
 msgid "_Second Color:"
 msgstr "_2. szín:"
 
-#: ../settings/backdrop_settings.c:1144
+#: ../settings/backdrop_settings.c:1149
 msgid "Image"
 msgstr "Kép"
 
-#: ../settings/backdrop_settings.c:1152
+#: ../settings/backdrop_settings.c:1157
 msgid "Show _Image"
 msgstr "_Kép mutatása"
 
-#: ../settings/backdrop_settings.c:1174
+#: ../settings/backdrop_settings.c:1179
 msgid "_File:"
 msgstr "Fájl:"
 
-#. add the single backdrop settings page to the main notebook
-#: ../settings/backdrop_settings.c:1219
-msgid "_Backdrop"
-msgstr "_Háttér"
-
-#: ../settings/backdrop_settings.c:1230 ../settings/backdrop_settings.c:1232
+#: ../settings/backdrop_settings.c:1235 ../settings/backdrop_settings.c:1237
 #, c-format
 msgid "Screen %d"
 msgstr "Képernyő %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/backdrop_settings.c:1237
+#: ../settings/backdrop_settings.c:1242
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Képernyő %d, Monitor %d"
 
-#: ../settings/backdrop_settings.c:1254
-msgid "_Useless Bloat"
+#: ../settings/backdrop_settings.c:1259
+msgid "_Behavior"
 msgstr ""
 
 #: ../settings/menu_settings.c:174
@@ -661,7 +658,8 @@ msgid "Show desktop _menu"
 msgstr "Asztali _menü mutatása"
 
 #: ../settings/menu_settings.c:233
-msgid "Show _application icons"
+#, fuzzy
+msgid "_Show application icons"
 msgstr "Progr_amikonok mutatása"
 
 #: ../settings/menu_settings.c:244

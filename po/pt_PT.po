@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-07 12:21+0900\n"
+"POT-Creation-Date: 2006-01-26 20:09+0900\n"
 "PO-Revision-Date: 2005-08-18 23:00+0900\n"
 "Last-Translator: Nuno Donato <nunodonato@gmail.com>\n"
 "Language-Team: Portuguese <translation-team-pt@lists.sourceforge.net>\n"
@@ -101,7 +101,7 @@ msgstr "Todos os campos têm que ser preenchidos para se adicionar um item."
 msgid "The 'Name' field is required."
 msgstr "O campo 'Nome' é necessário."
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:314
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:319
 msgid "--- separator ---"
 msgstr "--- separador ---"
 
@@ -149,11 +149,11 @@ msgid "The 'Source' field is required."
 msgstr "O campo 'Fonte' é necessário."
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:368
+#: ../menueditor/utils.c:373
 msgid "--- include ---"
 msgstr "--- externo ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:385
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:390
 msgid "system"
 msgstr "sistema"
 
@@ -191,7 +191,7 @@ msgstr "Tem a certeza que quer fechar o menu actual?"
 msgid "Do you want to save before closing the file?"
 msgstr "Deseja gravar antes de fechar o ficheiro?"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:583
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:588
 msgid "Select command"
 msgstr "Seleccionar comando"
 
@@ -312,19 +312,19 @@ msgstr "Comando"
 msgid "Hidden"
 msgstr "Escondido"
 
-#: ../menueditor/utils.c:645
+#: ../menueditor/utils.c:650
 #, fuzzy
 msgid "Select icon"
 msgstr "Seleccionar Ícone"
 
-#: ../menueditor/utils.c:651 ../panel-plugin/desktop-menu-plugin.c:545
+#: ../menueditor/utils.c:656 ../panel-plugin/desktop-menu-plugin.c:545
 #: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
-#: ../settings/backdrop_settings.c:524
+#: ../settings/backdrop_settings.c:529
 msgid "All Files"
 msgstr "Todos os ficheiros"
 
-#: ../menueditor/utils.c:655 ../panel-plugin/desktop-menu-plugin.c:551
-#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
+#: ../menueditor/utils.c:660 ../panel-plugin/desktop-menu-plugin.c:551
+#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:533
 msgid "Image Files"
 msgstr "Ficheiros de Imagem"
 
@@ -427,7 +427,7 @@ msgstr "Ícone do _botão:"
 msgid "Show _icons in menu"
 msgstr "Mostrar _icones no menu"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:578
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:735
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -460,8 +460,8 @@ msgstr "Lista de Fundos"
 msgid "Image files"
 msgstr "Ficheiros de Imagem"
 
-#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:179
-#: ../settings/backdrop_settings.c:188
+#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:184
+#: ../settings/backdrop_settings.c:193
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
@@ -478,78 +478,79 @@ msgid "Edit backdrop list"
 msgstr "Editar lista de fundos"
 
 #. the dialog
-#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:939
-#: ../src/xfce-desktop.c:1801
+#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:944
+#: ../src/xfce-desktop.c:2073
 msgid "Desktop"
 msgstr "Ambiente de Trabalho"
 
-#: ../settings/backdrop_settings.c:519
+#: ../settings/backdrop_settings.c:524
 msgid "Select backdrop image or list file"
 msgstr "Selecione a imagem de fundo ou um ficheiro de lista"
 
-#: ../settings/backdrop_settings.c:537
+#: ../settings/backdrop_settings.c:542
 msgid "List Files (*.list)"
 msgstr "Ficheiros de Lista (*.list)"
 
-#: ../settings/backdrop_settings.c:627
+#: ../settings/backdrop_settings.c:632
 msgid "_Edit list..."
 msgstr "_Editar lista"
 
-#: ../settings/backdrop_settings.c:635
+#: ../settings/backdrop_settings.c:640
 msgid "_New list..."
 msgstr "_Nova lista"
 
-#: ../settings/backdrop_settings.c:671
+#: ../settings/backdrop_settings.c:676
 msgid "S_tyle:"
 msgstr "Es_tilo:"
 
-#: ../settings/backdrop_settings.c:679
+#: ../settings/backdrop_settings.c:684
 msgid "Tiled"
 msgstr "Mosaico"
 
-#: ../settings/backdrop_settings.c:686
+#: ../settings/backdrop_settings.c:691
 msgid "Centered"
 msgstr "Centrado"
 
-#: ../settings/backdrop_settings.c:693
+#: ../settings/backdrop_settings.c:698
 msgid "Scaled"
 msgstr "_Escalado"
 
-#: ../settings/backdrop_settings.c:700
+#: ../settings/backdrop_settings.c:705
 msgid "Stretched"
 msgstr "Esticado"
 
-#: ../settings/backdrop_settings.c:707
+#: ../settings/backdrop_settings.c:712
 msgid "Auto"
 msgstr "Automático"
 
-#: ../settings/backdrop_settings.c:773
-msgid "Adjust _Brightness:"
+#: ../settings/backdrop_settings.c:778
+#, fuzzy
+msgid "A_djust Brightness:"
 msgstr "Ajustar brilho"
 
-#: ../settings/backdrop_settings.c:829
+#: ../settings/backdrop_settings.c:834
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr ""
 
-#: ../settings/backdrop_settings.c:830
+#: ../settings/backdrop_settings.c:835
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:834
+#: ../settings/backdrop_settings.c:839
 msgid "Error"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:836
+#: ../settings/backdrop_settings.c:841
 msgid "Unable to start xfdesktop"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:854
+#: ../settings/backdrop_settings.c:859
 #, fuzzy
 msgid "Information"
 msgstr "Ignorar modificações"
 
-#: ../settings/backdrop_settings.c:864
+#: ../settings/backdrop_settings.c:869
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -558,87 +559,83 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 
-#: ../settings/backdrop_settings.c:872
+#: ../settings/backdrop_settings.c:877
 msgid "_Do not show this again"
 msgstr ""
 
 #. header
-#: ../settings/backdrop_settings.c:954
+#: ../settings/backdrop_settings.c:959
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "Definições das Areas de Trabalho"
 
-#: ../settings/backdrop_settings.c:959
+#: ../settings/backdrop_settings.c:964
 msgid "Allow _Xfce to manage the desktop"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:1000
+#: ../settings/backdrop_settings.c:1005
 msgid "Stretch single backdrop onto _all monitors"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:1014
-msgid "_Backdrops"
-msgstr "_Lista de Fundos"
+#. add the single backdrop settings page to the main notebook
+#: ../settings/backdrop_settings.c:1019 ../settings/backdrop_settings.c:1224
+msgid "_Appearance"
+msgstr ""
 
 #. color settings frame
-#: ../settings/backdrop_settings.c:1040
+#: ../settings/backdrop_settings.c:1045
 msgid "Color"
 msgstr "Côr"
 
-#: ../settings/backdrop_settings.c:1054
+#: ../settings/backdrop_settings.c:1059
 msgid "_Color Style:"
 msgstr "Estilo da _Côr:"
 
-#: ../settings/backdrop_settings.c:1063
+#: ../settings/backdrop_settings.c:1068
 msgid "Solid Color"
 msgstr "Côr Sólida"
 
-#: ../settings/backdrop_settings.c:1070
+#: ../settings/backdrop_settings.c:1075
 msgid "Horizontal Gradient"
 msgstr "Gradiente Horizontal"
 
-#: ../settings/backdrop_settings.c:1077
+#: ../settings/backdrop_settings.c:1082
 msgid "Vertical Gradient"
 msgstr "Gradiente Vertical"
 
-#: ../settings/backdrop_settings.c:1098
+#: ../settings/backdrop_settings.c:1103
 msgid "Fi_rst Color:"
 msgstr "P_rimeira Côr:"
 
-#: ../settings/backdrop_settings.c:1119
+#: ../settings/backdrop_settings.c:1124
 msgid "_Second Color:"
 msgstr "Últi_ma Côr:"
 
-#: ../settings/backdrop_settings.c:1144
+#: ../settings/backdrop_settings.c:1149
 msgid "Image"
 msgstr "Imagem"
 
-#: ../settings/backdrop_settings.c:1152
+#: ../settings/backdrop_settings.c:1157
 msgid "Show _Image"
 msgstr "Mostrar _Imagem"
 
-#: ../settings/backdrop_settings.c:1174
+#: ../settings/backdrop_settings.c:1179
 msgid "_File:"
 msgstr "_Ficheiro"
 
-#. add the single backdrop settings page to the main notebook
-#: ../settings/backdrop_settings.c:1219
-msgid "_Backdrop"
-msgstr "_Fundos"
-
-#: ../settings/backdrop_settings.c:1230 ../settings/backdrop_settings.c:1232
+#: ../settings/backdrop_settings.c:1235 ../settings/backdrop_settings.c:1237
 #, c-format
 msgid "Screen %d"
 msgstr "Ecrã %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/backdrop_settings.c:1237
+#: ../settings/backdrop_settings.c:1242
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Ecrã %d, Monitor %d"
 
-#: ../settings/backdrop_settings.c:1254
-msgid "_Useless Bloat"
+#: ../settings/backdrop_settings.c:1259
+msgid "_Behavior"
 msgstr ""
 
 #: ../settings/menu_settings.c:174
@@ -663,7 +660,8 @@ msgid "Show desktop _menu"
 msgstr "Mostrar _menu do ambiente de trabalho"
 
 #: ../settings/menu_settings.c:233
-msgid "Show _application icons"
+#, fuzzy
+msgid "_Show application icons"
 msgstr "Mostrar ícones das aplicações"
 
 #: ../settings/menu_settings.c:244

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-07 12:21+0900\n"
+"POT-Creation-Date: 2006-01-26 20:09+0900\n"
 "PO-Revision-Date: 2005-10-21 22:04+0900\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: Simplified Chinese <i18n-translation@lists.linux.net.cn>\n"
@@ -102,7 +102,7 @@ msgstr "必须填写所有字段才能添加条目。"
 msgid "The 'Name' field is required."
 msgstr "需要“名称”字段。"
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:314
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:319
 msgid "--- separator ---"
 msgstr "--- 隔离符 ---"
 
@@ -150,11 +150,11 @@ msgid "The 'Source' field is required."
 msgstr "字段“源”是必须的。"
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:368
+#: ../menueditor/utils.c:373
 msgid "--- include ---"
 msgstr "--- 包含 ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:385
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:390
 msgid "system"
 msgstr "系统"
 
@@ -192,7 +192,7 @@ msgstr "您确定要关闭当前菜单吗？"
 msgid "Do you want to save before closing the file?"
 msgstr "您希望在关闭文件之前保存吗？"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:583
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:588
 msgid "Select command"
 msgstr "选择命令"
 
@@ -313,19 +313,19 @@ msgstr "命令"
 msgid "Hidden"
 msgstr "隐藏"
 
-#: ../menueditor/utils.c:645
+#: ../menueditor/utils.c:650
 #, fuzzy
 msgid "Select icon"
 msgstr "选择图标"
 
-#: ../menueditor/utils.c:651 ../panel-plugin/desktop-menu-plugin.c:545
+#: ../menueditor/utils.c:656 ../panel-plugin/desktop-menu-plugin.c:545
 #: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
-#: ../settings/backdrop_settings.c:524
+#: ../settings/backdrop_settings.c:529
 msgid "All Files"
 msgstr "全部文件"
 
-#: ../menueditor/utils.c:655 ../panel-plugin/desktop-menu-plugin.c:551
-#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
+#: ../menueditor/utils.c:660 ../panel-plugin/desktop-menu-plugin.c:551
+#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:533
 msgid "Image Files"
 msgstr "图像文件"
 
@@ -428,7 +428,7 @@ msgstr "按钮图标(_B)："
 msgid "Show _icons in menu"
 msgstr "在菜单中显示图标(_i)"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:578
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:735
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -460,8 +460,8 @@ msgstr "背景列表"
 msgid "Image files"
 msgstr "图像文件"
 
-#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:179
-#: ../settings/backdrop_settings.c:188
+#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:184
+#: ../settings/backdrop_settings.c:193
 msgid "backdrops.list"
 msgstr "背景列表"
 
@@ -478,78 +478,79 @@ msgid "Edit backdrop list"
 msgstr "编辑背景列表"
 
 #. the dialog
-#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:939
-#: ../src/xfce-desktop.c:1801
+#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:944
+#: ../src/xfce-desktop.c:2073
 msgid "Desktop"
 msgstr "桌面"
 
-#: ../settings/backdrop_settings.c:519
+#: ../settings/backdrop_settings.c:524
 msgid "Select backdrop image or list file"
 msgstr "选择背景图像或者列出文件"
 
-#: ../settings/backdrop_settings.c:537
+#: ../settings/backdrop_settings.c:542
 msgid "List Files (*.list)"
 msgstr "列出文件 (*.list) "
 
-#: ../settings/backdrop_settings.c:627
+#: ../settings/backdrop_settings.c:632
 msgid "_Edit list..."
 msgstr "编辑列表(_E)"
 
-#: ../settings/backdrop_settings.c:635
+#: ../settings/backdrop_settings.c:640
 msgid "_New list..."
 msgstr "新列表(_N)"
 
-#: ../settings/backdrop_settings.c:671
+#: ../settings/backdrop_settings.c:676
 msgid "S_tyle:"
 msgstr "风格(_t):"
 
-#: ../settings/backdrop_settings.c:679
+#: ../settings/backdrop_settings.c:684
 msgid "Tiled"
 msgstr "平铺"
 
-#: ../settings/backdrop_settings.c:686
+#: ../settings/backdrop_settings.c:691
 msgid "Centered"
 msgstr "居中"
 
-#: ../settings/backdrop_settings.c:693
+#: ../settings/backdrop_settings.c:698
 msgid "Scaled"
 msgstr "缩放"
 
-#: ../settings/backdrop_settings.c:700
+#: ../settings/backdrop_settings.c:705
 msgid "Stretched"
 msgstr "拉伸"
 
-#: ../settings/backdrop_settings.c:707
+#: ../settings/backdrop_settings.c:712
 msgid "Auto"
 msgstr "自动"
 
-#: ../settings/backdrop_settings.c:773
-msgid "Adjust _Brightness:"
+#: ../settings/backdrop_settings.c:778
+#, fuzzy
+msgid "A_djust Brightness:"
 msgstr "调整亮度(_B)："
 
-#: ../settings/backdrop_settings.c:829
+#: ../settings/backdrop_settings.c:834
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr ""
 
-#: ../settings/backdrop_settings.c:830
+#: ../settings/backdrop_settings.c:835
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:834
+#: ../settings/backdrop_settings.c:839
 msgid "Error"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:836
+#: ../settings/backdrop_settings.c:841
 msgid "Unable to start xfdesktop"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:854
+#: ../settings/backdrop_settings.c:859
 #, fuzzy
 msgid "Information"
 msgstr "忽略修改"
 
-#: ../settings/backdrop_settings.c:864
+#: ../settings/backdrop_settings.c:869
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -558,87 +559,83 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 
-#: ../settings/backdrop_settings.c:872
+#: ../settings/backdrop_settings.c:877
 msgid "_Do not show this again"
 msgstr ""
 
 #. header
-#: ../settings/backdrop_settings.c:954
+#: ../settings/backdrop_settings.c:959
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "工作区设置"
 
-#: ../settings/backdrop_settings.c:959
+#: ../settings/backdrop_settings.c:964
 msgid "Allow _Xfce to manage the desktop"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:1000
+#: ../settings/backdrop_settings.c:1005
 msgid "Stretch single backdrop onto _all monitors"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:1014
-msgid "_Backdrops"
-msgstr "背景(_B)"
+#. add the single backdrop settings page to the main notebook
+#: ../settings/backdrop_settings.c:1019 ../settings/backdrop_settings.c:1224
+msgid "_Appearance"
+msgstr ""
 
 #. color settings frame
-#: ../settings/backdrop_settings.c:1040
+#: ../settings/backdrop_settings.c:1045
 msgid "Color"
 msgstr "颜色"
 
-#: ../settings/backdrop_settings.c:1054
+#: ../settings/backdrop_settings.c:1059
 msgid "_Color Style:"
 msgstr "颜色风格(_C):"
 
-#: ../settings/backdrop_settings.c:1063
+#: ../settings/backdrop_settings.c:1068
 msgid "Solid Color"
 msgstr "纯色"
 
-#: ../settings/backdrop_settings.c:1070
+#: ../settings/backdrop_settings.c:1075
 msgid "Horizontal Gradient"
 msgstr "水平梯度"
 
-#: ../settings/backdrop_settings.c:1077
+#: ../settings/backdrop_settings.c:1082
 msgid "Vertical Gradient"
 msgstr "垂直梯度"
 
-#: ../settings/backdrop_settings.c:1098
+#: ../settings/backdrop_settings.c:1103
 msgid "Fi_rst Color:"
 msgstr "第一颜色(_r)："
 
-#: ../settings/backdrop_settings.c:1119
+#: ../settings/backdrop_settings.c:1124
 msgid "_Second Color:"
 msgstr "第二颜色(_S):"
 
-#: ../settings/backdrop_settings.c:1144
+#: ../settings/backdrop_settings.c:1149
 msgid "Image"
 msgstr "图像"
 
-#: ../settings/backdrop_settings.c:1152
+#: ../settings/backdrop_settings.c:1157
 msgid "Show _Image"
 msgstr "显示图像(_I)"
 
-#: ../settings/backdrop_settings.c:1174
+#: ../settings/backdrop_settings.c:1179
 msgid "_File:"
 msgstr "文件(_F)："
 
-#. add the single backdrop settings page to the main notebook
-#: ../settings/backdrop_settings.c:1219
-msgid "_Backdrop"
-msgstr "背景(_B)"
-
-#: ../settings/backdrop_settings.c:1230 ../settings/backdrop_settings.c:1232
+#: ../settings/backdrop_settings.c:1235 ../settings/backdrop_settings.c:1237
 #, c-format
 msgid "Screen %d"
 msgstr "屏幕 %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/backdrop_settings.c:1237
+#: ../settings/backdrop_settings.c:1242
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "屏幕 %d，显示器 %d"
 
-#: ../settings/backdrop_settings.c:1254
-msgid "_Useless Bloat"
+#: ../settings/backdrop_settings.c:1259
+msgid "_Behavior"
 msgstr ""
 
 #: ../settings/menu_settings.c:174
@@ -663,7 +660,8 @@ msgid "Show desktop _menu"
 msgstr "显示桌面菜单(_m)"
 
 #: ../settings/menu_settings.c:233
-msgid "Show _application icons"
+#, fuzzy
+msgid "_Show application icons"
 msgstr "显示应用程序图标(_a)"
 
 #: ../settings/menu_settings.c:244

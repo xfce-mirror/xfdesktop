@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-07 12:21+0900\n"
+"POT-Creation-Date: 2006-01-26 20:09+0900\n"
 "PO-Revision-Date: 2005-10-09 22:24+0900\n"
 "Last-Translator: Juraj Brosz <juro@jurajbrosz.info>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -102,7 +102,7 @@ msgstr "Pre pridanie položky musia byť vyplnené všetky polia."
 msgid "The 'Name' field is required."
 msgstr "Pole 'Názov' musí byť vyplnené."
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:314
+#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:319
 msgid "--- separator ---"
 msgstr "--- oddeľovač ---"
 
@@ -150,11 +150,11 @@ msgid "The 'Source' field is required."
 msgstr "Pole 'Zdroj' musí byť vyplnené."
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:368
+#: ../menueditor/utils.c:373
 msgid "--- include ---"
 msgstr "--- obsahuje ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:385
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:390
 msgid "system"
 msgstr "systém"
 
@@ -192,7 +192,7 @@ msgstr "Ste si istý, že chcete zatvoriť aktuálne menu ?"
 msgid "Do you want to save before closing the file?"
 msgstr "Chcete uložiť pred zatvorením súboru ?"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:583
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:588
 msgid "Select command"
 msgstr "Vybrať príkaz"
 
@@ -313,19 +313,19 @@ msgstr "Príkaz"
 msgid "Hidden"
 msgstr "Skryté"
 
-#: ../menueditor/utils.c:645
+#: ../menueditor/utils.c:650
 #, fuzzy
 msgid "Select icon"
 msgstr "Vybrať ikonu"
 
-#: ../menueditor/utils.c:651 ../panel-plugin/desktop-menu-plugin.c:545
+#: ../menueditor/utils.c:656 ../panel-plugin/desktop-menu-plugin.c:545
 #: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
-#: ../settings/backdrop_settings.c:524
+#: ../settings/backdrop_settings.c:529
 msgid "All Files"
 msgstr "Všetky súbory"
 
-#: ../menueditor/utils.c:655 ../panel-plugin/desktop-menu-plugin.c:551
-#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:528
+#: ../menueditor/utils.c:660 ../panel-plugin/desktop-menu-plugin.c:551
+#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:533
 msgid "Image Files"
 msgstr "Obrázkové súbory"
 
@@ -428,7 +428,7 @@ msgstr "Ikona _tlačidla:"
 msgid "Show _icons in menu"
 msgstr "Zobraziť _ikony v menu"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:578
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:735
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -461,8 +461,8 @@ msgstr "Zoznam pozadí"
 msgid "Image files"
 msgstr "Obrázkové súbory"
 
-#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:179
-#: ../settings/backdrop_settings.c:188
+#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:184
+#: ../settings/backdrop_settings.c:193
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
@@ -479,78 +479,79 @@ msgid "Edit backdrop list"
 msgstr "Editovať zoznam pozadí"
 
 #. the dialog
-#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:939
-#: ../src/xfce-desktop.c:1801
+#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:944
+#: ../src/xfce-desktop.c:2073
 msgid "Desktop"
 msgstr "Plocha"
 
-#: ../settings/backdrop_settings.c:519
+#: ../settings/backdrop_settings.c:524
 msgid "Select backdrop image or list file"
 msgstr "Vyberte obrázok pozadia alebo súbor zo zoznamu"
 
-#: ../settings/backdrop_settings.c:537
+#: ../settings/backdrop_settings.c:542
 msgid "List Files (*.list)"
 msgstr "Zoznam súborov (*.list)"
 
-#: ../settings/backdrop_settings.c:627
+#: ../settings/backdrop_settings.c:632
 msgid "_Edit list..."
 msgstr "_Upraviť zoznam..."
 
-#: ../settings/backdrop_settings.c:635
+#: ../settings/backdrop_settings.c:640
 msgid "_New list..."
 msgstr "_Nový zoznam..."
 
-#: ../settings/backdrop_settings.c:671
+#: ../settings/backdrop_settings.c:676
 msgid "S_tyle:"
 msgstr "Š_týl:"
 
-#: ../settings/backdrop_settings.c:679
+#: ../settings/backdrop_settings.c:684
 msgid "Tiled"
 msgstr "Dlaždicovať"
 
-#: ../settings/backdrop_settings.c:686
+#: ../settings/backdrop_settings.c:691
 msgid "Centered"
 msgstr "V strede"
 
-#: ../settings/backdrop_settings.c:693
+#: ../settings/backdrop_settings.c:698
 msgid "Scaled"
 msgstr "Škálovať"
 
-#: ../settings/backdrop_settings.c:700
+#: ../settings/backdrop_settings.c:705
 msgid "Stretched"
 msgstr "Roztiahnuť"
 
-#: ../settings/backdrop_settings.c:707
+#: ../settings/backdrop_settings.c:712
 msgid "Auto"
 msgstr "Automaticky"
 
-#: ../settings/backdrop_settings.c:773
-msgid "Adjust _Brightness:"
+#: ../settings/backdrop_settings.c:778
+#, fuzzy
+msgid "A_djust Brightness:"
 msgstr "Prispôsobiť _jas:"
 
-#: ../settings/backdrop_settings.c:829
+#: ../settings/backdrop_settings.c:834
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr ""
 
-#: ../settings/backdrop_settings.c:830
+#: ../settings/backdrop_settings.c:835
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:834
+#: ../settings/backdrop_settings.c:839
 msgid "Error"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:836
+#: ../settings/backdrop_settings.c:841
 msgid "Unable to start xfdesktop"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:854
+#: ../settings/backdrop_settings.c:859
 #, fuzzy
 msgid "Information"
 msgstr "Ignorovať modifikácie"
 
-#: ../settings/backdrop_settings.c:864
+#: ../settings/backdrop_settings.c:869
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -559,87 +560,83 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 
-#: ../settings/backdrop_settings.c:872
+#: ../settings/backdrop_settings.c:877
 msgid "_Do not show this again"
 msgstr ""
 
 #. header
-#: ../settings/backdrop_settings.c:954
+#: ../settings/backdrop_settings.c:959
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "Nastavenia plochy"
 
-#: ../settings/backdrop_settings.c:959
+#: ../settings/backdrop_settings.c:964
 msgid "Allow _Xfce to manage the desktop"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:1000
+#: ../settings/backdrop_settings.c:1005
 msgid "Stretch single backdrop onto _all monitors"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:1014
-msgid "_Backdrops"
-msgstr "_Pozadia"
+#. add the single backdrop settings page to the main notebook
+#: ../settings/backdrop_settings.c:1019 ../settings/backdrop_settings.c:1224
+msgid "_Appearance"
+msgstr ""
 
 #. color settings frame
-#: ../settings/backdrop_settings.c:1040
+#: ../settings/backdrop_settings.c:1045
 msgid "Color"
 msgstr "Farba"
 
-#: ../settings/backdrop_settings.c:1054
+#: ../settings/backdrop_settings.c:1059
 msgid "_Color Style:"
 msgstr "Štýl _farby:"
 
-#: ../settings/backdrop_settings.c:1063
+#: ../settings/backdrop_settings.c:1068
 msgid "Solid Color"
 msgstr "Plná farba"
 
-#: ../settings/backdrop_settings.c:1070
+#: ../settings/backdrop_settings.c:1075
 msgid "Horizontal Gradient"
 msgstr "Horizontálne stupňovať"
 
-#: ../settings/backdrop_settings.c:1077
+#: ../settings/backdrop_settings.c:1082
 msgid "Vertical Gradient"
 msgstr "Vertikálne stupňovať"
 
-#: ../settings/backdrop_settings.c:1098
+#: ../settings/backdrop_settings.c:1103
 msgid "Fi_rst Color:"
 msgstr "P_rvá farba:"
 
-#: ../settings/backdrop_settings.c:1119
+#: ../settings/backdrop_settings.c:1124
 msgid "_Second Color:"
 msgstr "_Druhá farba:"
 
-#: ../settings/backdrop_settings.c:1144
+#: ../settings/backdrop_settings.c:1149
 msgid "Image"
 msgstr "Obrázok"
 
-#: ../settings/backdrop_settings.c:1152
+#: ../settings/backdrop_settings.c:1157
 msgid "Show _Image"
 msgstr "Ukázať _obrázok"
 
-#: ../settings/backdrop_settings.c:1174
+#: ../settings/backdrop_settings.c:1179
 msgid "_File:"
 msgstr "_Súbor:"
 
-#. add the single backdrop settings page to the main notebook
-#: ../settings/backdrop_settings.c:1219
-msgid "_Backdrop"
-msgstr "_Pozadie"
-
-#: ../settings/backdrop_settings.c:1230 ../settings/backdrop_settings.c:1232
+#: ../settings/backdrop_settings.c:1235 ../settings/backdrop_settings.c:1237
 #, c-format
 msgid "Screen %d"
 msgstr "Obrazovka %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/backdrop_settings.c:1237
+#: ../settings/backdrop_settings.c:1242
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Obrazovka %d, Monitor %d"
 
-#: ../settings/backdrop_settings.c:1254
-msgid "_Useless Bloat"
+#: ../settings/backdrop_settings.c:1259
+msgid "_Behavior"
 msgstr ""
 
 #: ../settings/menu_settings.c:174
@@ -664,7 +661,8 @@ msgid "Show desktop _menu"
 msgstr "Zobraziť menu plochy"
 
 #: ../settings/menu_settings.c:233
-msgid "Show _application icons"
+#, fuzzy
+msgid "_Show application icons"
 msgstr "Zobraziť ikony aplikácii"
 
 #: ../settings/menu_settings.c:244
