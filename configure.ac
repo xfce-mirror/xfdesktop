@@ -108,6 +108,7 @@ else
     enable_desktop_icons="yes"
     AC_DEFINE([ENABLE_DESKTOP_ICONS], [1], [Set if desktop icon support is enabled])
 fi
+AM_CONDITIONAL([ENABLE_DESKTOP_ICONS], [test "x$enable_desktop_icons" = "xyes"])
 
 dnl check for debugging support
 XDT_FEATURE_DEBUG

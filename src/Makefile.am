@@ -12,7 +12,9 @@ xfdesktop_SOURCES = \
 	xfce-backdrop.c \
 	xfce-backdrop.h \
 	xfce-desktop.c \
-	xfce-desktop.h \
+	xfce-desktop.h
+
+desktop_icon_sources = \
 	xfdesktop-icon.c \
 	xfdesktop-icon.h \
 	xfdesktop-icon-view.c \
@@ -20,16 +22,18 @@ xfdesktop_SOURCES = \
 	xfdesktop-window-icon.c \
 	xfdesktop-window-icon.h
 
-if HAVE_THUNAR_VFS
-  xfdesktop_SOURCES += \
+desktop_file_icon_sources = \
 	xfdesktop-file-icon.c \
 	xfdesktop-file-icon.h
+
+if ENABLE_DESKTOP_ICONS
+  xfdesktop_SOURCES += $(desktop_icon_sources)
+if HAVE_THUNAR_VFS
+    xfdesktop_SOURCES += $(desktop_file_icon_sources)
+endif
 endif
 
-EXTRA_DIST = \
-	$(xfdesktop_SOURCES)
-	xfdesktop-file-icon.c \
-	xfdesktop-file-icon.h
+EXTRA_DIST = $(desktop_icon_sources) $(desktop_file_icon_sources)
 
 xfdesktop_CFLAGS = \
 	-I$(top_srcdir) \
