@@ -72,7 +72,7 @@
 #include "main.h"
 
 
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
 
 #define ICON_SIZE         32
 #define CELL_SIZE         112
@@ -121,7 +121,7 @@ typedef enum
     XFCE_DESKTOP_WORKAREA_ABORTED,
 } XfceDesktopWorkareaStatus;
 
-#endif /* defined(ENABLE_WINDOW_ICONS) */
+#endif /* defined(ENABLE_DESKTOP_ICONS) */
 
 struct _XfceDesktopPriv
 {
@@ -133,7 +133,7 @@ struct _XfceDesktopPriv
     guint nbackdrops;
     XfceBackdrop **backdrops;
     
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
     gboolean use_window_icons;
     
     NetkScreen *netk_screen;
@@ -157,7 +157,7 @@ struct _XfceDesktopPriv
 #endif
 };
 
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
 static void xfce_desktop_icon_paint(XfceDesktopIcon *icon);
 static void xfce_desktop_icon_add(XfceDesktop *desktop, NetkWindow *window, guint idx);
 static void xfce_desktop_icon_remove(XfceDesktop *desktop, XfceDesktopIcon *icon, NetkWindow *window, guint idx);
@@ -206,7 +206,7 @@ static void load_initial_settings(XfceDesktop *desktop, McsClient *mcs_client);
 GtkWindowClass *parent_class = NULL;
 
 
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
 
 #if defined(DEBUG) && DEBUG > 0
 #define dump_grid_layout(my_icon_workspace) \
@@ -700,7 +700,7 @@ xfce_desktop_window_icon_changed_cb(NetkWindow *window,
     }
 }
 
-#endif /* defined(ENABLE_WINDOW_ICONS) */
+#endif /* defined(ENABLE_DESKTOP_ICONS) */
 
 /* private functions */
     
@@ -977,7 +977,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     gdk_error_trap_pop();
 }
 
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
 
 static void
 desktop_icons_set_map(gpointer key,
@@ -1074,7 +1074,7 @@ desktop_grid_resize_timeout(gpointer user_data)
     return FALSE;
 }
 
-#endif  /* #ifdef ENABLE_WINDOW_ICONS */
+#endif  /* #ifdef ENABLE_DESKTOP_ICONS */
 
 static void
 screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
@@ -1108,7 +1108,7 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
         }
     }
     
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
     /* this is kinda icky.  we want to use _NET_WORKAREA to reset the size of
      * the grid, but we can never be sure it'll actually change.  so let's
      * give it 7 seconds, and then fix it manually */
@@ -1194,7 +1194,7 @@ load_initial_settings(XfceDesktop *desktop, McsClient *mcs_client)
         setting = NULL;
     }
     
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
     if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "usewindowicons",
             BACKDROP_CHANNEL, &setting))
     {
@@ -1365,14 +1365,14 @@ desktop_style_set_cb(GtkWidget *w, GtkStyle *old, gpointer user_data)
         gtk_widget_queue_draw(w);
     }
     
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
     
     /* TODO: see if the font has changed and redraw text */
     
 #endif
 }
 
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
 
 static gboolean
 desktop_get_workarea_single(XfceDesktop *desktop,
@@ -1992,7 +1992,7 @@ window_created_cb(NetkScreen *netk_screen,
     g_object_weak_ref(G_OBJECT(window), window_destroyed_cb, desktop);
 }
 
-#endif  /* defined(ENABLE_WINDOW_ICONS) */
+#endif  /* defined(ENABLE_DESKTOP_ICONS) */
 
 /* gobject-related functions */
 
@@ -2036,7 +2036,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     
     widget_class->realize = xfce_desktop_realize;
     widget_class->unrealize = xfce_desktop_unrealize;
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
     widget_class->button_press_event = xfce_desktop_button_press;
     widget_class->button_release_event = xfce_desktop_button_release;
     widget_class->motion_notify_event = xfce_desktop_motion_notify;
@@ -2057,7 +2057,7 @@ xfce_desktop_init(XfceDesktop *desktop)
     gtk_window_set_type_hint(GTK_WINDOW(desktop), GDK_WINDOW_TYPE_HINT_DESKTOP);
     gtk_window_set_accept_focus(GTK_WINDOW(desktop), FALSE);
     
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
     gtk_widget_add_events(GTK_WIDGET(desktop),
                           GDK_BUTTON_PRESS_MASK
                           | GDK_BUTTON_RELEASE_MASK
@@ -2074,7 +2074,7 @@ xfce_desktop_finalize(GObject *object)
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
     gtk_target_list_unref(desktop->priv->source_targets);
 #endif
     
@@ -2160,7 +2160,7 @@ xfce_desktop_realize(GtkWidget *widget)
     g_signal_connect(G_OBJECT(desktop), "style-set",
             G_CALLBACK(desktop_style_set_cb), NULL);
     
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
     if(desktop->priv->use_window_icons)
         xfce_desktop_setup_icons(desktop);
 #endif
@@ -2181,7 +2181,7 @@ xfce_desktop_unrealize(GtkWidget *widget)
         gtk_widget_unmap(widget);
     GTK_WIDGET_UNSET_FLAGS(widget, GTK_MAPPED);
     
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
     if(desktop->priv->use_window_icons)
         xfce_desktop_unsetup_icons(desktop);
 #endif
@@ -2239,7 +2239,7 @@ xfce_desktop_unrealize(GtkWidget *widget)
     GTK_WIDGET_UNSET_FLAGS(widget, GTK_REALIZED);
 }
 
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
 
 static inline gboolean
 xfce_desktop_rectangle_contains_point(GdkRectangle *rect, gint x, gint y)
@@ -2471,7 +2471,7 @@ xfce_desktop_expose(GtkWidget *w,
     gdk_window_clear_area(w->window, evt->area.x, evt->area.y,
             evt->area.width, evt->area.height);
     
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
     if(XFCE_DESKTOP(w)->priv->use_window_icons)
         xfce_desktop_paint_icons(XFCE_DESKTOP(w), &evt->area);
 #endif
@@ -2479,7 +2479,7 @@ xfce_desktop_expose(GtkWidget *w,
     return TRUE;
 }
 
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
 
 static void
 check_icon_needs_repaint(gpointer key,
@@ -3048,7 +3048,7 @@ xfce_desktop_drag_drop(GtkWidget *widget,
     return TRUE;
 }
 
-#endif  /* defined(ENABLE_WINDOW_ICONS) */
+#endif  /* defined(ENABLE_DESKTOP_ICONS) */
 
 
 /* public api */
@@ -3133,7 +3133,7 @@ xfce_desktop_settings_changed(McsClient *client, McsAction action,
         return TRUE;
     }
     
-#ifdef ENABLE_WINDOW_ICONS
+#ifdef ENABLE_DESKTOP_ICONS
     if(!strcmp(setting->name, "usewindowicons")) {
         if(setting->data.v_int) {
             desktop->priv->use_window_icons = TRUE;
