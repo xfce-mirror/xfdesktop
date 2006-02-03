@@ -31,8 +31,8 @@
 
 struct _XfdesktopWindowIconPrivate
 {
-    guint16 row;
-    guint16 col;
+    gint16 row;
+    gint16 col;
     GdkPixbuf *pix;
     gint cur_pix_size;
     gchar *label;
@@ -166,10 +166,13 @@ xfdesktop_window_icon_get_position(XfdesktopIcon *icon,
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
     
-    *row = window_icon->priv->row;
-    *col = window_icon->priv->col;
+    if(window_icon->priv->row >= 0 && window_icon->priv->col >= 0) {
+        *row = window_icon->priv->row;
+        *col = window_icon->priv->col;
+        return TRUE;
+    }
     
-    return TRUE;
+    return FALSE;
 }
 
 static void
