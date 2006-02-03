@@ -119,6 +119,64 @@ xfdesktop_icon_peek_label(XfdesktopIcon *icon)
 }
 
 void
+xfdesktop_icon_set_position(XfdesktopIcon *icon,
+                            gint16 row,
+                            gint16 col)
+{
+    XfdesktopIconIface *iface;
+    
+    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+    
+    iface = XFDESKTOP_ICON_GET_IFACE(icon);
+    g_return_if_fail(iface->set_position);
+    
+    iface->set_position(icon, row, col);
+}
+
+gboolean
+xfdesktop_icon_get_position(XfdesktopIcon *icon,
+                            gint16 *row,
+                            gint16 *col)
+{
+    XfdesktopIconIface *iface;
+    
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    g_return_val_if_fail(row && col, FALSE);
+    
+    iface = XFDESKTOP_ICON_GET_IFACE(icon);
+    g_return_val_if_fail(iface->get_position, FALSE);
+    
+    return iface->get_position(icon, row, col);
+}
+
+void
+xfdesktop_icon_set_extents(XfdesktopIcon *icon,
+                           GdkRectangle *extents)
+{
+    XfdesktopIconIface *iface;
+    
+    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+    
+    iface = XFDESKTOP_ICON_GET_IFACE(icon);
+    g_return_if_fail(iface->set_extents);
+    
+    iface->set_extents(icon, extents);
+}
+
+G_CONST_RETURN GdkRectangle *
+xfdesktop_icon_get_extents(XfdesktopIcon *icon)
+{
+    XfdesktopIconIface *iface;
+    
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    
+    iface = XFDESKTOP_ICON_GET_IFACE(icon);
+    g_return_val_if_fail(iface->get_extents, NULL);
+    
+    return iface->get_extents(icon);
+}
+
+void
 xfdesktop_icon_selected(XfdesktopIcon *icon)
 {
     XfdesktopIconIface *iface;
@@ -157,20 +215,7 @@ xfdesktop_icon_menu_popup(XfdesktopIcon *icon)
     iface->menu_popup(icon);
 }
 
-void
-xfdesktop_icon_position_changed(XfdesktopIcon *icon,
-                                gint new_row,
-                                gint new_col)
-{
-    XfdesktopIconIface *iface;
-    
-    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
-    
-    iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    g_return_if_fail(iface->position_changed);
-    
-    iface->position_changed(icon, new_row, new_col);
-}
+/*< signal triggers >*/
 
 void
 xfdesktop_icon_pixbuf_changed(XfdesktopIcon *icon)

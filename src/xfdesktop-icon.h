@@ -22,7 +22,7 @@
 #define __XFDESKTOP_ICON_H__
 
 #include <glib-object.h>
-#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <gdk/gdk.h>
 
 G_BEGIN_DECLS
 
@@ -46,26 +46,41 @@ struct _XfdesktopIconIface
     GdkPixbuf *(*peek_pixbuf)(XfdesktopIcon *icon, gint size);
     G_CONST_RETURN gchar *(*peek_label)(XfdesktopIcon *icon);
     
+    void (*set_position)(XfdesktopIcon *icon, gint16 row, gint16 col);
+    gboolean (*get_position)(XfdesktopIcon *icon, gint16 *row, gint16 *col);
+    
+    void (*set_extents)(XfdesktopIcon *icon, GdkRectangle *extents);
+    G_CONST_RETURN GdkRectangle *(*get_extents)(XfdesktopIcon *icon);
+    
     void (*selected)(XfdesktopIcon *icon);
     void (*activated)(XfdesktopIcon *icon);
     void (*menu_popup)(XfdesktopIcon *icon);
-    
-    void (*position_changed)(XfdesktopIcon *icon, gint new_row, gint new_col);
 };
 
 GType xfdesktop_icon_get_type() G_GNUC_CONST;
+
+/* virtual function accessors */
 
 GdkPixbuf *xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
                                      gint size);
 G_CONST_RETURN gchar *xfdesktop_icon_peek_label(XfdesktopIcon *icon);
 
+void xfdesktop_icon_set_position(XfdesktopIcon *icon,
+                                 gint16 row,
+                                 gint16 col);
+gboolean xfdesktop_icon_get_position(XfdesktopIcon *icon,
+                                     gint16 *row,
+                                     gint16 *col);
+
+void xfdesktop_icon_set_extents(XfdesktopIcon *icon,
+                                GdkRectangle *extents);
+G_CONST_RETURN GdkRectangle *xfdesktop_icon_get_extents(XfdesktopIcon *icon);
+
 void xfdesktop_icon_selected(XfdesktopIcon *icon);
 void xfdesktop_icon_activated(XfdesktopIcon *icon);
 void xfdesktop_icon_menu_popup(XfdesktopIcon *icon);
 
-void xfdesktop_icon_position_changed(XfdesktopIcon *icon,
-                                     gint new_row,
-                                     gint new_col);
+/*< signal triggers >*/
 
 void xfdesktop_icon_pixbuf_changed(XfdesktopIcon *icon);
 void xfdesktop_icon_label_changed(XfdesktopIcon *icon);
