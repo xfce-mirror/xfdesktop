@@ -52,6 +52,11 @@ XDT_CHECK_PACKAGE([LIBXFCE4MCS_CLIENT],  [libxfce4mcs-client-1.0], [4.2.0])
 XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.3.22])
 XDT_XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.2.0])
 
+XDT_CHECK_OPTIONAL_PACKAGE([THUNAR_VFS], [thunar-vfs-1], [0.2.0], [thunar-vfs],
+    AC_HELP_STRING([--disable-thunar-vfs],
+                   [Disable the use Thunar's VFS layer to show the desktop folder (default=enabled)]))
+AM_CONDITIONAL([HAVE_THUNAR_VFS], [test "x$THUNAR_VFS_FOUND" = "xyes"])
+
 dnl Build options
 AC_ARG_ENABLE([menu-editor],
         AC_HELP_STRING([--disable-menueditor],
@@ -92,16 +97,16 @@ else
 fi
 AM_CONDITIONAL([BUILD_PANEL_PLUGIN], [test "x$build_panel_plugin" = "xyes"])
 
-AC_ARG_ENABLE([window-icons],
-        [AC_HELP_STRING([--disable-window-icons],
-                [Do not display minimized icons on the desktop (default=enabled)])],
-        [ac_cv_enable_window_icons=$enableval],
-        [ac_cv_enable_window_icons=yes])
-if test "x$ac_cv_enable_window_icons" = "xno"; then
-    enable_window_icons="no"
+AC_ARG_ENABLE([desktop-icons],
+    [AC_HELP_STRING([--disable-desktop-icons],
+            [Do not compile in support for desktop icons (default=enabled)])],
+        [ac_cv_enable_desktop_icons=$enableval],
+        [ac_cv_enable_desktop_icons=yes])
+if test "x$ac_cv_enable_desktop_icons" = "xno"; then
+    enable_desktop_icons="no"
 else
-    enable_window_icons="yes"
-    AC_DEFINE([ENABLE_WINDOW_ICONS], [1], [Set if minimized window icon support is enabled])
+    enable_desktop_icons="yes"
+    AC_DEFINE([ENABLE_DESKTOP_ICONS], [1], [Set if desktop icon support is enabled])
 fi
 
 dnl check for debugging support
@@ -134,5 +139,5 @@ echo "Build Configuration:"
 echo "  Build menu editor:                            $build_menueditor"
 echo "  Build desktop menu module:                    $build_desktop_menu"
 echo "  Build desktop menu panel plugin:              $build_panel_plugin"
-echo "  Build support for minimized window icons:     $enable_window_icons"
+echo "  Build support for desktop icons:              $enable_desktop_icons"
 echo

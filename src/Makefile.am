@@ -12,7 +12,24 @@ xfdesktop_SOURCES = \
 	xfce-backdrop.c \
 	xfce-backdrop.h \
 	xfce-desktop.c \
-	xfce-desktop.h
+	xfce-desktop.h \
+	xfdesktop-icon.c \
+	xfdesktop-icon.h \
+	xfdesktop-icon-view.c \
+	xfdesktop-icon-view.h \
+	xfdesktop-window-icon.c \
+	xfdesktop-window-icon.h
+
+if HAVE_THUNAR_VFS
+  xfdesktop_SOURCES += \
+	xfdesktop-file-icon.c \
+	xfdesktop-file-icon.h
+endif
+
+EXTRA_DIST = \
+	$(xfdesktop_SOURCES)
+	xfdesktop-file-icon.c \
+	xfdesktop-file-icon.h
 
 xfdesktop_CFLAGS = \
 	-I$(top_srcdir) \
@@ -21,6 +38,7 @@ xfdesktop_CFLAGS = \
 	@GMODULE_CFLAGS@ \
 	@LIBXFCEGUI4_CFLAGS@ \
 	@LIBXFCE4MCS_CLIENT_CFLAGS@ \
+	@THUNAR_VFS_CFLAGS@ \
 	-DLOCALEDIR=\"$(localedir)\" \
 	-DDATADIR=\"$(datadir)\" \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
@@ -38,4 +56,5 @@ xfdesktop_LDADD += \
 	@LIBX11_LDFLAGS@ \
 	@LIBX11_LIBS@ \
 	@LIBXFCEGUI4_LIBS@ \
-	@LIBXFCE4MCS_CLIENT_LIBS@
+	@LIBXFCE4MCS_CLIENT_LIBS@ \
+	@THUNAR_VFS_LIBS@
