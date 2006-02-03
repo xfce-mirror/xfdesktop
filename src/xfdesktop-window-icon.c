@@ -22,6 +22,10 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_STRING_H
+#include <string.h>
+#endif
+
 #include "xfdesktop-icon.h"
 #include "xfdesktop-window-icon.h"
 
@@ -43,13 +47,22 @@ static GdkPixbuf *xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                    gint size);
 static G_CONST_RETURN gchar *xfdesktop_window_icon_peek_label(XfdesktopIcon *icon);
 
+static void xfdesktop_window_icon_set_position(XfdesktopIcon *icon,
+                                               gint16 row,
+                                               gint16 col);
+static gboolean xfdesktop_window_icon_get_position(XfdesktopIcon *icon,
+                                                   gint16 *row,
+                                                   gint16 *col);
+
+static void xfdesktop_window_icon_set_extents(XfdesktopIcon *icon,
+                                              const GdkRectangle *extents);
+static gboolean xfdesktop_window_icon_get_extents(XfdesktopIcon *icon,
+                                                  GdkRectangle *extents);
+
 static void xfdesktop_window_icon_selected(XfdesktopIcon *icon);
 static void xfdesktop_window_icon_activated(XfdesktopIcon *icon);
 static void xfdesktop_window_icon_menu_popup(XfdesktopIcon *icon);
 
-static void xfdesktop_window_icon_position_changed(XfdesktopIcon *icon,
-                                                   gint new_row,
-                                                   gint new_col);
 
 G_DEFINE_TYPE_EXTENDED(XfdesktopWindowIcon, xfdesktop_window_icon,
                        G_TYPE_OBJECT, 0,
@@ -88,10 +101,13 @@ xfdesktop_window_icon_icon_init(XfdesktopIconIface *iface)
 {
     iface->peek_pixbuf = xfdesktop_window_icon_peek_pixbuf;
     iface->peek_label = xfdesktop_window_icon_peek_label;
+    iface->set_position = xfdesktop_window_icon_set_position;
+    iface->get_position = xfdesktop_window_icon_get_position;
+    iface->set_extents = xfdesktop_window_icon_set_extents;
+    iface->get_extents = xfdesktop_window_icon_get_extents;
     iface->selected = xfdesktop_window_icon_selected;
     iface->activated = xfdesktop_window_icon_activated;
     iface->menu_popup = xfdesktop_window_icon_menu_popup;
-    iface->position_changed = xfdesktop_window_icon_position_changed;
 }
 
 XfdesktopWindowIcon *
@@ -133,6 +149,55 @@ xfdesktop_window_icon_peek_label(XfdesktopIcon *icon)
 }
 
 static void
+xfdesktop_window_icon_set_position(XfdesktopIcon *icon,
+                                   gint16 row,
+                                   gint16 col)
+{
+    XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
+    
+    window_icon->priv->row = row;
+    window_icon->priv->row = col;
+}
+    
+static gboolean
+xfdesktop_window_icon_get_position(XfdesktopIcon *icon,
+                                   gint16 *row,
+                                   gint16 *col)
+{
+    XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
+    
+    *row = window_icon->priv->row;
+    *col = window_icon->priv->col;
+    
+    return TRUE;
+}
+
+static void
+xfdesktop_window_icon_set_extents(XfdesktopIcon *icon,
+                                  const GdkRectangle *extents)
+{
+    XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
+    
+    memcpy(&window_icon->priv->extents, extents, sizeof(GdkRectangle));
+}
+
+static gboolean
+xfdesktop_window_icon_get_extents(XfdesktopIcon *icon,
+                                  GdkRectangle *extents)
+{
+    XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
+    
+    if(window_icon->priv->extents.width > 0
+       && window_icon->priv->extents.height > 0)
+    {
+        memcpy(extents, &window_icon->priv->extents, sizeof(GdkRectangle));
+        return TRUE;
+    }
+    
+    return FALSE;
+}
+
+static void
 xfdesktop_window_icon_selected(XfdesktopIcon *icon)
 {
     /* nada */
@@ -153,15 +218,4 @@ xfdesktop_window_icon_menu_popup(XfdesktopIcon *icon)
     
     (void)window_icon;
     /* TODO: popup action menu */
-}
-
-static void
-xfdesktop_window_icon_position_changed(XfdesktopIcon *icon,
-                                       gint new_row,
-                                       gint new_col)
-{
-    XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
-    
-    window_icon->priv->row = new_row;
-    window_icon->priv->col = new_col;
 }

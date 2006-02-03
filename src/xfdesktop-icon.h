@@ -49,8 +49,8 @@ struct _XfdesktopIconIface
     void (*set_position)(XfdesktopIcon *icon, gint16 row, gint16 col);
     gboolean (*get_position)(XfdesktopIcon *icon, gint16 *row, gint16 *col);
     
-    void (*set_extents)(XfdesktopIcon *icon, GdkRectangle *extents);
-    G_CONST_RETURN GdkRectangle *(*get_extents)(XfdesktopIcon *icon);
+    void (*set_extents)(XfdesktopIcon *icon, const GdkRectangle *extents);
+    gboolean (*get_extents)(XfdesktopIcon *icon, GdkRectangle *extents);
     
     void (*selected)(XfdesktopIcon *icon);
     void (*activated)(XfdesktopIcon *icon);
@@ -73,8 +73,9 @@ gboolean xfdesktop_icon_get_position(XfdesktopIcon *icon,
                                      gint16 *col);
 
 void xfdesktop_icon_set_extents(XfdesktopIcon *icon,
-                                GdkRectangle *extents);
-G_CONST_RETURN GdkRectangle *xfdesktop_icon_get_extents(XfdesktopIcon *icon);
+                                const GdkRectangle *extents);
+gboolean xfdesktop_icon_get_extents(XfdesktopIcon *icon,
+                                    GdkRectangle *extents);
 
 void xfdesktop_icon_selected(XfdesktopIcon *icon);
 void xfdesktop_icon_activated(XfdesktopIcon *icon);

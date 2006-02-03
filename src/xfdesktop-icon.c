@@ -151,7 +151,7 @@ xfdesktop_icon_get_position(XfdesktopIcon *icon,
 
 void
 xfdesktop_icon_set_extents(XfdesktopIcon *icon,
-                           GdkRectangle *extents)
+                           const GdkRectangle *extents)
 {
     XfdesktopIconIface *iface;
     
@@ -163,17 +163,19 @@ xfdesktop_icon_set_extents(XfdesktopIcon *icon,
     iface->set_extents(icon, extents);
 }
 
-G_CONST_RETURN GdkRectangle *
-xfdesktop_icon_get_extents(XfdesktopIcon *icon)
+gboolean
+xfdesktop_icon_get_extents(XfdesktopIcon *icon,
+                           GdkRectangle *extents)
 {
     XfdesktopIconIface *iface;
     
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    g_return_val_if_fail(extents, FALSE);
     
     iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    g_return_val_if_fail(iface->get_extents, NULL);
+    g_return_val_if_fail(iface->get_extents, FALSE);
     
-    return iface->get_extents(icon);
+    return iface->get_extents(icon, extents);
 }
 
 void
