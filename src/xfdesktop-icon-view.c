@@ -75,6 +75,8 @@ typedef enum
 
 struct _XfdesktopIconViewPrivate
 {
+    XfdesktopIconViewIconFiniFunc fini_func;
+    
     GtkWidget *parent_window;
     
     NetkScreen *netk_screen;
@@ -241,6 +243,9 @@ static void
 xfdesktop_icon_view_finalize(GObject *obj)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(obj);
+    
+    if(icon_view->priv->fini_func)
+        icon_view->priv->fini_func(icon_view);
     
     gtk_target_list_unref(icon_view->priv->source_targets);
     
@@ -1844,15 +1849,17 @@ xfdesktop_list_foreach_repaint(gpointer data,
 
 
 GtkWidget *
-xfdesktop_icon_view_new(XfdesktopIconViewIconSetupFunc setup_func)
+xfdesktop_icon_view_new(XfdesktopIconViewIconInitFunc init_func,
+                        XfdesktopIconViewIconFiniFunc fini_func)
 {
     XfdesktopIconView *icon_view;
     
-    g_return_val_if_fail(setup_func, NULL);
+    g_return_val_if_fail(init_func, NULL);
     
     icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW, NULL);
+    icon_view->priv->fini_func = fini_func;
     
-    setup_func(icon_view);
+    init_func(icon_view);
     
     return GTK_WIDGET(icon_view);
 }

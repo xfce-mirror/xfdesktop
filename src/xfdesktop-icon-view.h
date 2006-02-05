@@ -35,7 +35,8 @@ typedef struct _XfdesktopIconView         XfdesktopIconView;
 typedef struct _XfdesktopIconViewClass    XfdesktopIconViewClass;
 typedef struct _XfdesktopIconViewPrivate  XfdesktopIconViewPrivate;
 
-typedef void (*XfdesktopIconViewIconSetupFunc)(XfdesktopIconView *icon_view);
+typedef void (*XfdesktopIconViewIconInitFunc)(XfdesktopIconView *icon_view);
+typedef void (*XfdesktopIconViewIconFiniFunc)(XfdesktopIconView *icon_view);
 
 struct _XfdesktopIconView
 {
@@ -50,15 +51,10 @@ struct _XfdesktopIconViewClass
     GtkWidgetClass parent;
 };
 
-typedef enum
-{
-    XFDESKTOP_ICON_VIEW_STYLE_WINDOWS = 0,
-    XFDESKTOP_ICON_VIEW_STYLE_FILES,
-} XfdesktopIconViewStyle;
-
 GType xfdesktop_icon_view_get_type() G_GNUC_CONST;
 
-GtkWidget *xfdesktop_icon_view_new(XfdesktopIconViewIconSetupFunc setup_func);
+GtkWidget *xfdesktop_icon_view_new(XfdesktopIconViewIconInitFunc init_func,
+                                   XfdesktopIconViewIconFiniFunc fini_func);
 
 void xfdesktop_icon_view_add_item(XfdesktopIconView *icon_view,
                                   XfdesktopIcon *icon);
