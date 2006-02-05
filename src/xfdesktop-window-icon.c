@@ -161,18 +161,15 @@ xfdesktop_window_icon_set_position(XfdesktopIcon *icon,
     
 static gboolean
 xfdesktop_window_icon_get_position(XfdesktopIcon *icon,
-                                   gint16 *row,
-                                   gint16 *col)
+                                   guint16 *row,
+                                   guint16 *col)
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
     
-    if(window_icon->priv->row >= 0 && window_icon->priv->col >= 0) {
-        *row = window_icon->priv->row;
-        *col = window_icon->priv->col;
-        return TRUE;
-    }
+    *row = window_icon->priv->row;
+    *col = window_icon->priv->col;
     
-    return FALSE;
+    return TRUE;
 }
 
 static void
