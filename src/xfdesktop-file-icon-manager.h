@@ -32,4 +32,4 @@ void xfdesktop_file_icon_manager_fini(XfdesktopIconView *icon_view);
 
 G_END_DECLS
 
-#endif  /* __XFDESKTOP_WINDOW_ICON_MANAGER_H__ */
+#endif  /* __XFDESKTOP_FILE_ICON_MANAGER_H__ */
