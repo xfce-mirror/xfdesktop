@@ -35,6 +35,8 @@ typedef struct _XfdesktopIconView         XfdesktopIconView;
 typedef struct _XfdesktopIconViewClass    XfdesktopIconViewClass;
 typedef struct _XfdesktopIconViewPrivate  XfdesktopIconViewPrivate;
 
+typedef void (*XfdesktopIconViewIconSetupFunc)(XfdesktopIconView *icon_view);
+
 struct _XfdesktopIconView
 {
     GtkWidget parent;
@@ -46,23 +48,24 @@ struct _XfdesktopIconView
 struct _XfdesktopIconViewClass
 {
     GtkWidgetClass parent;
-    
-    /*< signals >*/
-    void (*icon_selected)(XfdesktopIconView *icon_view, gint row, gint col);
-    void (*icon_activated)(XfdesktopIconView *icon_view, gint row, gint col);
-    void (*icon_menu_popup)(XfdesktopIconView *icon_view, gint row, gint col);
 };
+
+typedef enum
+{
+    XFDESKTOP_ICON_VIEW_STYLE_WINDOWS = 0,
+    XFDESKTOP_ICON_VIEW_STYLE_FILES,
+} XfdesktopIconViewStyle;
 
 GType xfdesktop_icon_view_get_type() G_GNUC_CONST;
 
-GtkWidget *xfdesktop_icon_view_new(GtkWidget *parent);
+GtkWidget *xfdesktop_icon_view_new(XfdesktopIconViewIconSetupFunc setup_func);
 
 void xfdesktop_icon_view_add_item(XfdesktopIconView *icon_view,
                                   XfdesktopIcon *icon);
 
 void xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
                                      XfdesktopIcon *icon);
-
+void xfdesktop_icon_view_remove_all(XfdesktopIconView *icon_view);
 
 void xfdesktop_icon_view_set_selection_mode(XfdesktopIconView *icon_view,
                                             GtkSelectionMode mode);
@@ -70,7 +73,7 @@ GtkSelectionMode xfdesktop_icon_view_get_selection_mode(XfdesktopIconView *icon_
 
 void xfdesktop_icon_view_set_allow_overlapping_drops(XfdesktopIconView *icon_view,
                                                      gboolean allow_overlap);
-XfdesktopIcon *xfdesktop_icon_view_get_drag_dest_item(XfdesktopIconView *icon_view);
+gboolean xfdesktop_icon_view_get_allow_overlapping_drops(XfdesktopIconView *icon_view);
 
 XfdesktopIcon *xfdesktop_icon_view_widget_coords_to_item(XfdesktopIconView *icon_view,
                                                          gint wx,

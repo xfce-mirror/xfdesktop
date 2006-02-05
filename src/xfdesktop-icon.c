@@ -135,10 +135,12 @@ xfdesktop_icon_set_position(XfdesktopIcon *icon,
 
 gboolean
 xfdesktop_icon_get_position(XfdesktopIcon *icon,
-                            gint16 *row,
-                            gint16 *col)
+                            guint16 *row,
+                            guint16 *col)
 {
     XfdesktopIconIface *iface;
+    gboolean ret;
+    gint16 _row, _col;
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
     g_return_val_if_fail(row && col, FALSE);
@@ -146,7 +148,19 @@ xfdesktop_icon_get_position(XfdesktopIcon *icon,
     iface = XFDESKTOP_ICON_GET_IFACE(icon);
     g_return_val_if_fail(iface->get_position, FALSE);
     
-    return iface->get_position(icon, row, col);
+    /* this function is somewhat special.  if row or col is < zero after this
+     * call, then the position is invalid and we should return FALSE. */
+    ret = iface->get_position(icon, &_row, &_col);
+    if(ret) {
+        if(_row < 0 || _col < 0)
+            ret = FALSE;
+        else {
+            *row = _row;
+            *col = _col;
+        }
+    }
+    
+    return ret;
 }
 
 void
@@ -168,6 +182,7 @@ xfdesktop_icon_get_extents(XfdesktopIcon *icon,
                            GdkRectangle *extents)
 {
     XfdesktopIconIface *iface;
+    gboolean ret;
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
     g_return_val_if_fail(extents, FALSE);
@@ -175,7 +190,16 @@ xfdesktop_icon_get_extents(XfdesktopIcon *icon,
     iface = XFDESKTOP_ICON_GET_IFACE(icon);
     g_return_val_if_fail(iface->get_extents, FALSE);
     
-    return iface->get_extents(icon, extents);
+    /* this function is somewhat special.  if extents->width or extents->height
+     * is zero after this call, then the bounding box is invalid and we should
+     * return FALSE. */
+    ret = iface->get_extents(icon, extents);
+    if(ret) {
+        if(extents->width == 0 || extents->height ==0)
+            ret = FALSE;
+    }
+    
+    return ret;
 }
 
 void

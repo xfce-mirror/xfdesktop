@@ -69,8 +69,8 @@ void xfdesktop_icon_set_position(XfdesktopIcon *icon,
                                  gint16 row,
                                  gint16 col);
 gboolean xfdesktop_icon_get_position(XfdesktopIcon *icon,
-                                     gint16 *row,
-                                     gint16 *col);
+                                     guint16 *row,
+                                     guint16 *col);
 
 void xfdesktop_icon_set_extents(XfdesktopIcon *icon,
                                 const GdkRectangle *extents);
