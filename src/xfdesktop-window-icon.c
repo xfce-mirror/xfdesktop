@@ -161,8 +161,8 @@ xfdesktop_window_icon_set_position(XfdesktopIcon *icon,
     
 static gboolean
 xfdesktop_window_icon_get_position(XfdesktopIcon *icon,
-                                   guint16 *row,
-                                   guint16 *col)
+                                   gint16 *row,
+                                   gint16 *col)
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
     
