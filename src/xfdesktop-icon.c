@@ -92,8 +92,8 @@ xfdesktop_icon_base_init(gpointer g_class)
 }
 
 GdkPixbuf *
-xfdesktop_icon_get_pixbuf(XfdesktopIcon *icon,
-                          gint size)
+xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
+                           gint size)
 {
     XfdesktopIconIface *iface;
     

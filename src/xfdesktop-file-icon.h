@@ -22,6 +22,7 @@
 #define __XFDESKTOP_FILE_ICON_H__
 
 #include <glib-object.h>
+
 #define EXO_API_SUBJECT_TO_CHANGE
 #include <thunar-vfs/thunar-vfs.h>
 

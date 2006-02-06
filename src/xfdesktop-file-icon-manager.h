@@ -23,12 +23,37 @@
 
 #include <glib.h>
 
-#include "xfdesktop-icon-view.h"
+#define EXO_API_SUBJECT_TO_CHANGE
+#include <thunar-vfs/thunar-vfs.h>
+
+#include "xfdesktop-icon-view-manager.h"
 
 G_BEGIN_DECLS
 
-void xfdesktop_file_icon_manager_init(XfdesktopIconView *icon_view);
-void xfdesktop_file_icon_manager_fini(XfdesktopIconView *icon_view);
+#define XFDESKTOP_TYPE_FILE_ICON_MANAGER     (xfdesktop_file_icon_manager_get_type())
+#define XFDESKTOP_FILE_ICON_MANAGER(obj)     (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_FILE_ICON_MANAGER, XfdesktopFileIconManager))
+#define XFDESKTOP_IS_FILE_ICON_MANAGER(obj)  (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_FILE_ICON_MANAGER))
+
+typedef struct _XfdesktopFileIconManager         XfdesktopFileIconManager;
+typedef struct _XfdesktopFileIconManagerClass    XfdesktopFileIconManagerClass;
+typedef struct _XfdesktopFileIconManagerPrivate  XfdesktopFileIconManagerPrivate;
+
+struct _XfdesktopFileIconManager
+{
+    GObject parent;
+    
+    /*< private >*/
+    XfdesktopFileIconManagerPrivate *priv;
+};
+
+struct _XfdesktopFileIconManagerClass
+{
+    GObjectClass parent;
+};
+
+GType xfdesktop_file_icon_manager_get_type() G_GNUC_CONST;
+
+XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(ThunarVfsPath *folder);
 
 G_END_DECLS
 

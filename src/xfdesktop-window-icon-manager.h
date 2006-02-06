@@ -22,13 +22,36 @@
 #define __XFDESKTOP_WINDOW_ICON_MANAGER_H__
 
 #include <glib.h>
+#include <gdk/gdk.h>
 
-#include "xfdesktop-icon-view.h"
+#include "xfdesktop-icon-view-manager.h"
 
 G_BEGIN_DECLS
 
-void xfdesktop_window_icon_manager_init(XfdesktopIconView *icon_view);
-void xfdesktop_window_icon_manager_fini(XfdesktopIconView *icon_view);
+#define XFDESKTOP_TYPE_WINDOW_ICON_MANAGER     (xfdesktop_window_icon_manager_get_type())
+#define XFDESKTOP_WINDOW_ICON_MANAGER(obj)     (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_WINDOW_ICON_MANAGER, XfdesktopWindowIconManager))
+#define XFDESKTOP_IS_WINDOW_ICON_MANAGER(obj)  (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_WINDOW_ICON_MANAGER))
+
+typedef struct _XfdesktopWindowIconManager         XfdesktopWindowIconManager;
+typedef struct _XfdesktopWindowIconManagerClass    XfdesktopWindowIconManagerClass;
+typedef struct _XfdesktopWindowIconManagerPrivate  XfdesktopWindowIconManagerPrivate;
+
+struct _XfdesktopWindowIconManager
+{
+    GObject parent;
+    
+    /*< private >*/
+    XfdesktopWindowIconManagerPrivate *priv;
+};
+
+struct _XfdesktopWindowIconManagerClass
+{
+    GObjectClass parent;
+};
+
+GType xfdesktop_window_icon_manager_get_type() G_GNUC_CONST;
+
+XfdesktopIconViewManager *xfdesktop_window_icon_manager_new(GdkScreen *gscreen);
 
 G_END_DECLS
 

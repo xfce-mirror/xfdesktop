@@ -19,12 +19,18 @@ desktop_icon_sources = \
 	xfdesktop-icon.h \
 	xfdesktop-icon-view.c \
 	xfdesktop-icon-view.h \
+	xfdesktop-icon-view-manager.c \
+	xfdesktop-icon-view-manager.h \
 	xfdesktop-window-icon.c \
-	xfdesktop-window-icon.h
+	xfdesktop-window-icon.h \
+	xfdesktop-window-icon-manager.c \
+	xfdesktop-window-icon-manager.h
 
 desktop_file_icon_sources = \
 	xfdesktop-file-icon.c \
-	xfdesktop-file-icon.h
+	xfdesktop-file-icon.h \
+	xfdesktop-file-icon-manager.c \
+	xfdesktop-file-icon-manager.h
 
 if ENABLE_DESKTOP_ICONS
   xfdesktop_SOURCES += $(desktop_icon_sources)

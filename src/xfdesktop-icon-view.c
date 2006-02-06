@@ -75,7 +75,7 @@ typedef enum
 
 struct _XfdesktopIconViewPrivate
 {
-    XfdesktopIconViewIconFiniFunc fini_func;
+    XfdesktopIconViewManager *manager;
     
     GtkWidget *parent_window;
     
@@ -200,7 +200,7 @@ static const GtkTargetEntry targets[] = {
 static const gint n_targets = 1;
 
 
-G_DEFINE_TYPE(XfdesktopIconView, xfdesktop_icon_view, XFDESKTOP_TYPE_ICON_VIEW)
+G_DEFINE_TYPE(XfdesktopIconView, xfdesktop_icon_view, GTK_TYPE_WIDGET)
 
 
 static void
@@ -237,6 +237,8 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
                           | GDK_POINTER_MOTION_MASK);
     icon_view->priv->source_targets = gtk_target_list_new(targets, n_targets);
     gtk_drag_dest_set(GTK_WIDGET(icon_view), 0, targets, n_targets, GDK_ACTION_MOVE); 
+    
+    icon_view->priv->icons = g_hash_table_new(g_direct_hash, g_direct_equal);
 }
 
 static void
@@ -244,10 +246,14 @@ xfdesktop_icon_view_finalize(GObject *obj)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(obj);
     
-    if(icon_view->priv->fini_func)
-        icon_view->priv->fini_func(icon_view);
+    if(icon_view->priv->manager) {
+        xfdesktop_icon_view_manager_fini(icon_view->priv->manager, icon_view);
+        g_object_unref(G_OBJECT(icon_view->priv->manager));
+    }
     
     gtk_target_list_unref(icon_view->priv->source_targets);
+    
+    g_hash_table_destroy(icon_view->priv->icons);
     
     G_OBJECT_CLASS(xfdesktop_icon_view_parent_class)->finalize(obj);
 }
@@ -295,17 +301,6 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             } else if(evt->button == 3) {
                 /* if we're a right click, emit signal on the icon */
                 xfdesktop_icon_menu_popup(icon);
-                
-#if 0
-                /* FIXME: move to window icon code */
-                GtkWidget *menu = netk_create_window_action_menu(icon->window);
-                gtk_widget_show(menu);
-                g_signal_connect(G_OBJECT(menu), "deactivate",
-                                 G_CALLBACK(action_menu_deactivate_cb), NULL);
-                gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
-                               evt->button, evt->time);
-#endif
-                
                 return TRUE;
             }
         } else {
@@ -703,7 +698,7 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
                                  | GDK_PROPERTY_CHANGE_MASK);
     gdk_window_add_filter(groot, xfdesktop_rootwin_watch_workarea, icon_view);
     
-    g_signal_connect(G_OBJECT(gscreen), "screen-size-changed",
+    g_signal_connect(G_OBJECT(gscreen), "size-changed",
                      G_CALLBACK(xfdesktop_screen_size_changed_cb), icon_view);
 }
 
@@ -734,8 +729,6 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
                                          G_CALLBACK(xfdesktop_screen_size_changed_cb),
                                          icon_view);
     
-    g_hash_table_destroy(icon_view->priv->icons);
-    icon_view->priv->icons = NULL;
     g_list_free(icon_view->priv->selected_icons);
     icon_view->priv->selected_icons = NULL;
     g_free(icon_view->priv->grid_layout);
@@ -1300,7 +1293,9 @@ xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
                          icon_view);
     DUMP_GRID_LAYOUT(icon_view);
                          
-    if(old_rows > icon_view->priv->nrows || old_cols> icon_view->priv->ncols) {
+    if(icon_view->priv->icons
+       && (old_rows > icon_view->priv->nrows || old_cols> icon_view->priv->ncols))
+    {
         g_hash_table_foreach_remove(icon_view->priv->icons,
                                     xfdesktop_icons_constrain,
                                     icon_view);
@@ -1849,17 +1844,16 @@ xfdesktop_list_foreach_repaint(gpointer data,
 
 
 GtkWidget *
-xfdesktop_icon_view_new(XfdesktopIconViewIconInitFunc init_func,
-                        XfdesktopIconViewIconFiniFunc fini_func)
+xfdesktop_icon_view_new(XfdesktopIconViewManager *manager)
 {
     XfdesktopIconView *icon_view;
     
-    g_return_val_if_fail(init_func, NULL);
+    g_return_val_if_fail(manager, NULL);
     
     icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW, NULL);
-    icon_view->priv->fini_func = fini_func;
+    icon_view->priv->manager = manager;
     
-    init_func(icon_view);
+    xfdesktop_icon_view_manager_init(manager, icon_view);
     
     return GTK_WIDGET(icon_view);
 }
@@ -1907,6 +1901,9 @@ xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
 {
     gint16 row, col;
     
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view)
+                     && XFDESKTOP_IS_ICON(icon));
+    
     if(g_hash_table_lookup(icon_view->priv->icons, icon)) {
         XfdesktopIcon *icon_below = NULL;
         GdkRectangle extents;
@@ -1932,13 +1929,33 @@ xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
     g_object_set_data(G_OBJECT(icon), "--xfdesktop-icon-view", NULL);
 }
 
+void
+xfdesktop_icon_view_remove_all(XfdesktopIconView *icon_view)
+{
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+    
+    g_hash_table_foreach_remove(icon_view->priv->icons, (GHRFunc)gtk_true, NULL);
+    
+    g_list_free(icon_view->priv->selected_icons);
+    icon_view->priv->selected_icons = NULL;
+    
+    if(GTK_WIDGET_REALIZED(GTK_WIDGET(icon_view))) {
+        GdkWindow *window;
+        gint w, h;
+        
+        window = GTK_WIDGET(icon_view)->window;
+        gdk_drawable_get_size(GDK_DRAWABLE(window), &w, &h);
+        gdk_window_clear_area(window, 0, 0, w, h);
+        gtk_widget_queue_draw(GTK_WIDGET(icon_view));
+    }
+}
 
 void
 xfdesktop_icon_view_set_selection_mode(XfdesktopIconView *icon_view,
                                        GtkSelectionMode mode)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
-    g_return_if_fail(mode > GTK_SELECTION_MULTIPLE);
+    g_return_if_fail(mode <= GTK_SELECTION_MULTIPLE);
     
     if(mode == icon_view->priv->sel_mode)
         return;
