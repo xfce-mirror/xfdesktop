@@ -169,14 +169,19 @@ xfdesktop_window_icon_manager_icon_view_manager_init(XfdesktopIconViewManagerIfa
 
 
 static void
-xfdesktop_window_icon_manager_icon_selected_cb(XfdesktopIcon *icon,
+xfdesktop_window_icon_manager_icon_selected_cb(XfdesktopIconView *icon_view,
                                                gpointer user_data)
 {
     XfdesktopWindowIconManager *wmanager = user_data;
-    XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
-    gint ws = xfdesktop_window_icon_get_workspace(window_icon);
+    GList *selected;
     
-    wmanager->priv->icon_workspaces[ws]->selected_icon = window_icon;
+    selected = xfdesktop_icon_view_get_selected_items(icon_view);
+    if(selected) {
+        XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(selected->data);
+        gint ws = xfdesktop_window_icon_get_workspace(window_icon);
+        wmanager->priv->icon_workspaces[ws]->selected_icon = window_icon;
+        g_list_free(selected);
+    }
 }
 
 static XfdesktopWindowIcon *
@@ -192,10 +197,6 @@ xfdesktop_window_icon_manager_add_icon(XfdesktopWindowIconManager *wmanager,
     if(ws_num == wmanager->priv->active_ws_num)
         xfdesktop_icon_view_add_item(wmanager->priv->icon_view,
                                      XFDESKTOP_ICON(icon));
-    
-    g_signal_connect(G_OBJECT(icon), "selected",
-                     G_CALLBACK(xfdesktop_window_icon_manager_icon_selected_cb),
-                     wmanager);
     
     return icon;
 }
@@ -496,6 +497,9 @@ xfdesktop_window_icon_manager_real_init(XfdesktopIconViewManager *manager,
     wmanager->priv->icon_view = icon_view;
     xfdesktop_icon_view_set_allow_overlapping_drops(icon_view, FALSE);
     xfdesktop_icon_view_set_selection_mode(icon_view, GTK_SELECTION_SINGLE);
+    g_signal_connect(G_OBJECT(icon_view), "icon-selected",
+                     G_CALLBACK(xfdesktop_window_icon_manager_icon_selected_cb),
+                     wmanager);
     
     netk_screen_force_update(wmanager->priv->netk_screen);
     g_signal_connect(G_OBJECT(wmanager->priv->netk_screen),
@@ -565,6 +569,11 @@ xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager,
                                              wmanager);
         g_object_weak_unref(G_OBJECT(l->data), window_destroyed_cb, wmanager);
     }
+    
+    xfdesktop_icon_view_remove_all(wmanager->priv->icon_view);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view),
+                                         G_CALLBACK(xfdesktop_window_icon_manager_icon_selected_cb),
+                                         wmanager);
     
     for(i = 0; i < wmanager->priv->nworkspaces; ++i) {
         g_hash_table_destroy(wmanager->priv->icon_workspaces[i]->icons);

@@ -26,6 +26,8 @@
 #include <string.h>
 #endif
 
+#include <glib-object.h>
+
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
@@ -72,6 +74,13 @@ typedef enum
     XFDESKTOP_WORKAREA_FAILED,
     XFDESKTOP_WORKAREA_ABORTED,
 } XfdesktopWorkareaStatus;
+
+enum
+{
+    SIG_ICON_SELECTED = 0,
+    SIG_ICON_ACTIVATED,
+    SIG_N_SIGNALS,
+};
 
 struct _XfdesktopIconViewPrivate
 {
@@ -199,6 +208,7 @@ static const GtkTargetEntry targets[] = {
 };
 static const gint n_targets = 1;
 
+static guint __signals[SIG_N_SIGNALS] = { 0, };
 
 G_DEFINE_TYPE(XfdesktopIconView, xfdesktop_icon_view, GTK_TYPE_WIDGET)
 
@@ -224,6 +234,24 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     widget_class->drag_motion = xfdesktop_icon_view_drag_motion;
     widget_class->drag_leave = xfdesktop_icon_view_drag_leave;
     widget_class->drag_drop = xfdesktop_icon_view_drag_drop;
+    
+    __signals[SIG_ICON_SELECTED] = g_signal_new("icon-selected",
+                                                XFDESKTOP_TYPE_ICON_VIEW,
+                                                G_SIGNAL_RUN_LAST,
+                                                G_STRUCT_OFFSET(XfdesktopIconViewClass,
+                                                                icon_selected),
+                                                NULL, NULL,
+                                                g_cclosure_marshal_VOID__VOID,
+                                                G_TYPE_NONE, 0);
+    
+    __signals[SIG_ICON_SELECTED] = g_signal_new("icon-activated",
+                                                XFDESKTOP_TYPE_ICON_VIEW,
+                                                G_SIGNAL_RUN_LAST,
+                                                G_STRUCT_OFFSET(XfdesktopIconViewClass,
+                                                                icon_activated),
+                                                NULL, NULL,
+                                                g_cclosure_marshal_VOID__VOID,
+                                                G_TYPE_NONE, 0);
 }
 
 static void
@@ -289,6 +317,8 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             xfdesktop_icon_view_paint_icon(icon_view, icon);
             icon_view->priv->last_clicked_item = icon;
             
+            g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_SELECTED], 0);
+            
             if(evt->button == 1) {
                 /* we might be the start of a drag */
                 DBG("setting stuff");
@@ -317,8 +347,10 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
     } else if(evt->type == GDK_2BUTTON_PRESS) {
         icon = g_hash_table_find(icon_view->priv->icons,
                                  xfdesktop_check_icon_clicked, evt);
-        if(icon)
+        if(icon) {
             xfdesktop_icon_activated(icon);
+            g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED], 0);
+        }
     }
     
     return FALSE;

@@ -50,6 +50,10 @@ struct _XfdesktopIconView
 struct _XfdesktopIconViewClass
 {
     GtkWidgetClass parent;
+    
+    /*< signals >*/
+    void (*icon_selected)(XfdesktopIconView *icon_view);
+    void (*icon_activated)(XfdesktopIconView *icon_view);
 };
 
 GType xfdesktop_icon_view_get_type() G_GNUC_CONST;
