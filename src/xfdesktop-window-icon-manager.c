@@ -168,6 +168,16 @@ xfdesktop_window_icon_manager_icon_view_manager_init(XfdesktopIconViewManagerIfa
 }
 
 
+static void
+xfdesktop_window_icon_manager_icon_selected_cb(XfdesktopIcon *icon,
+                                               gpointer user_data)
+{
+    XfdesktopWindowIconManager *wmanager = user_data;
+    XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
+    gint ws = xfdesktop_window_icon_get_workspace(window_icon);
+    
+    wmanager->priv->icon_workspaces[ws]->selected_icon = window_icon;
+}
 
 static XfdesktopWindowIcon *
 xfdesktop_window_icon_manager_add_icon(XfdesktopWindowIconManager *wmanager,
@@ -182,6 +192,10 @@ xfdesktop_window_icon_manager_add_icon(XfdesktopWindowIconManager *wmanager,
     if(ws_num == wmanager->priv->active_ws_num)
         xfdesktop_icon_view_add_item(wmanager->priv->icon_view,
                                      XFDESKTOP_ICON(icon));
+    
+    g_signal_connect(G_OBJECT(icon), "selected",
+                     G_CALLBACK(xfdesktop_window_icon_manager_icon_selected_cb),
+                     wmanager);
     
     return icon;
 }
@@ -214,11 +228,6 @@ workspace_changed_cb(NetkScreen *netk_screen,
     
     wmanager->priv->active_ws_num = n = netk_workspace_get_number(ws);
     
-    if(!wmanager->priv->icon_workspaces[n]) {
-        wmanager->priv->icon_workspaces[n] = g_new0(XfdesktopWindowIconWorkspace,
-                                                    1);
-    }
-    
     if(!wmanager->priv->icon_workspaces[n]->icons) {
         GList *windows, *l;
         
@@ -244,6 +253,11 @@ workspace_changed_cb(NetkScreen *netk_screen,
     } else
         g_hash_table_foreach(wmanager->priv->icon_workspaces[n]->icons,
                              xfdesktop_add_window_icons_foreach, wmanager);
+    
+    if(wmanager->priv->icon_workspaces[n]->selected_icon) {
+        xfdesktop_icon_view_select_item(wmanager->priv->icon_view,
+                                        XFDESKTOP_ICON(wmanager->priv->icon_workspaces[n]->selected_icon));
+    }
 }
 
 static void
@@ -477,6 +491,7 @@ xfdesktop_window_icon_manager_real_init(XfdesktopIconViewManager *manager,
 {
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
     GList *windows, *l;
+    gint i;
     
     wmanager->priv->icon_view = icon_view;
     xfdesktop_icon_view_set_allow_overlapping_drops(icon_view, FALSE);
@@ -498,6 +513,10 @@ xfdesktop_window_icon_manager_real_init(XfdesktopIconViewManager *manager,
     wmanager->priv->active_ws_num = netk_workspace_get_number(netk_screen_get_active_workspace(wmanager->priv->netk_screen));
     wmanager->priv->icon_workspaces = g_malloc0(wmanager->priv->nworkspaces
                                                 * sizeof(gpointer));
+    for(i = 0; i < wmanager->priv->nworkspaces; ++i) {
+        wmanager->priv->icon_workspaces[i] = g_new0(XfdesktopWindowIconWorkspace,
+                                                    1);
+    }
     
     windows = netk_screen_get_windows(wmanager->priv->netk_screen);
     for(l = windows; l; l = l->next) {
@@ -548,9 +567,6 @@ xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager,
     }
     
     for(i = 0; i < wmanager->priv->nworkspaces; ++i) {
-        if(!wmanager->priv->icon_workspaces[i])
-            continue;
-        
         g_hash_table_destroy(wmanager->priv->icon_workspaces[i]->icons);
         g_free(wmanager->priv->icon_workspaces[i]);
     }

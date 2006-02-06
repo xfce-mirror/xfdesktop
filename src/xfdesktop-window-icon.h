@@ -52,6 +52,8 @@ GType xfdesktop_window_icon_get_type() G_GNUC_CONST;
 XfdesktopWindowIcon *xfdesktop_window_icon_new(NetkWindow *window,
                                                gint workspace);
 
+gint xfdesktop_window_icon_get_workspace(XfdesktopWindowIcon *window_icon);
+
 G_END_DECLS
 
 #endif /* __XFDESKTOP_WINDOW_ICON_H__ */

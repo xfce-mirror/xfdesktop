@@ -204,6 +204,13 @@ xfdesktop_window_icon_new(NetkWindow *window,
     return icon;
 }
 
+gint
+xfdesktop_window_icon_get_workspace(XfdesktopWindowIcon *window_icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_WINDOW_ICON(window_icon), -1);
+    return window_icon->priv->workspace;
+}
+
 static GdkPixbuf *
 xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,
                                  gint size)
