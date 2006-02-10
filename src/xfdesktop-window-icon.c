@@ -188,11 +188,16 @@ xfdesktop_window_icon_new(NetkWindow *window,
                                              data_name));
     if(row > 0)
         icon->priv->row = row - 1;
+    else
+        icon->priv->row = -1;
+    
     g_snprintf(data_name, 256, "--xfdesktop-last-col-%d", workspace);
     col = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
                                              data_name));
     if(col > 0)
         icon->priv->col = col - 1;
+    else
+        icon->priv->col = -1;
     
     g_signal_connect(G_OBJECT(window), "name-changed",
                      G_CALLBACK(xfdesktop_window_name_changed_cb),
@@ -256,7 +261,7 @@ xfdesktop_window_icon_set_position(XfdesktopIcon *icon,
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
     
     window_icon->priv->row = row;
-    window_icon->priv->row = col;
+    window_icon->priv->col = col;
 }
     
 static gboolean

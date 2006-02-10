@@ -335,6 +335,8 @@ window_state_changed_cb(NetkWindow *window,
         return;
     }
     
+    DBG("changed_mask indicates an action");
+    
     ws = netk_window_get_workspace(window);
     if(ws)
         ws_num = netk_workspace_get_number(ws);
@@ -346,6 +348,8 @@ window_state_changed_cb(NetkWindow *window,
     {
         is_add = TRUE;
     }
+    
+    DBG("is_add == %s", is_add?"TRUE":"FALSE");
     
     /* this is a cute way of handling adding/removing from *all* workspaces
      * when we're dealing with a sticky windows, and just adding/removing
@@ -361,6 +365,7 @@ window_state_changed_cb(NetkWindow *window,
     
     if(is_add) {
         for(; i < max_i; i++) {
+            TRACE("loop: %d", i);
             if(!wmanager->priv->icon_workspaces[i]->icons
                || g_hash_table_lookup(wmanager->priv->icon_workspaces[i]->icons,
                                       window))
@@ -368,18 +373,27 @@ window_state_changed_cb(NetkWindow *window,
                 continue;
             }
             
+            DBG("adding to WS %d", i);
             xfdesktop_window_icon_manager_add_icon(wmanager, window, i);
         }
     } else {
         for(; i < max_i; i++) {
+            TRACE("loop: %d", i);
             if(!wmanager->priv->icon_workspaces[i]->icons)
                 continue;
             
             icon = g_hash_table_lookup(wmanager->priv->icon_workspaces[i]->icons,
                                        window);
-            if(icon && i == wmanager->priv->active_ws_num) {
-                xfdesktop_icon_view_remove_item(wmanager->priv->icon_view,
-                                                XFDESKTOP_ICON(icon));
+            if(icon) {
+                if(wmanager->priv->icon_workspaces[i]->selected_icon == icon)
+                    wmanager->priv->icon_workspaces[i]->selected_icon = NULL;
+                if(i == wmanager->priv->active_ws_num) {
+                    DBG("removing from WS %d", i);
+                    xfdesktop_icon_view_remove_item(wmanager->priv->icon_view,
+                                                    XFDESKTOP_ICON(icon));
+                    g_hash_table_remove(wmanager->priv->icon_workspaces[i]->icons,
+                                        window);
+                }
             }
         }
     }
@@ -447,6 +461,8 @@ window_destroyed_cb(gpointer data,
         icon = g_hash_table_lookup(wmanager->priv->icon_workspaces[i]->icons,
                                    window);
         if(icon) {
+            if(wmanager->priv->icon_workspaces[i]->selected_icon)
+                wmanager->priv->icon_workspaces[i]->selected_icon = NULL;
             if(i == wmanager->priv->active_ws_num) {
                 xfdesktop_icon_view_remove_item(wmanager->priv->icon_view,
                                                 icon);
