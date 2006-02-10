@@ -40,6 +40,7 @@ struct _XfdesktopFileIconPrivate
     gchar *label;
     GdkRectangle extents;
     ThunarVfsPath *path;
+    GdkScreen *gscreen;
 };
 
 static void xfdesktop_file_icon_icon_init(XfdesktopIconIface *iface);
@@ -65,6 +66,8 @@ static void xfdesktop_file_icon_selected(XfdesktopIcon *icon);
 static void xfdesktop_file_icon_activated(XfdesktopIcon *icon);
 static void xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon);
 
+
+static ThunarVfsMimeInfo *xfdesktop_file_icon_get_mime_info(XfdesktopFileIcon *icon);
 
 G_DEFINE_TYPE_EXTENDED(XfdesktopFileIcon, xfdesktop_file_icon,
                        G_TYPE_OBJECT, 0,
@@ -124,10 +127,12 @@ xfdesktop_file_icon_icon_init(XfdesktopIconIface *iface)
 
 
 XfdesktopFileIcon *
-xfdesktop_file_icon_new(ThunarVfsPath *path)
+xfdesktop_file_icon_new(ThunarVfsPath *path,
+                        GdkScreen *screen)
 {
     XfdesktopFileIcon *file_icon = g_object_new(XFDESKTOP_TYPE_FILE_ICON, NULL);
     file_icon->priv->path = thunar_vfs_path_ref(path);
+    file_icon->priv->gscreen = screen;
     
     return file_icon;
 }
@@ -160,18 +165,8 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
             
             if(!file_icon->priv->pix) {
                 ThunarVfsMimeInfo *mime_info;
-                gchar *file_path;
                 
-                if(!thunar_mime_database)
-                    thunar_mime_database = thunar_vfs_mime_database_get_default();
-                
-                if(!file_icon->priv->label)
-                    xfdesktop_file_icon_peek_label(icon);
-                
-                file_path = thunar_vfs_path_dup_string(file_icon->priv->path);
-                mime_info = thunar_vfs_mime_database_get_info_for_file(thunar_mime_database,
-                                                                       file_path,
-                                                                       file_icon->priv->label);
+                mime_info = xfdesktop_file_icon_get_mime_info(file_icon);
                 if(mime_info) {
                     /* FIXME: GtkIconTheme/XfceIconTheme */
                     const gchar *icon_name = thunar_vfs_mime_info_lookup_icon_name(mime_info,
@@ -185,8 +180,6 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                     
                     thunar_vfs_mime_info_unref(mime_info);
                 }
-                
-                g_free(file_path);
             }
             
             thunar_vfs_info_unref(info);
@@ -271,11 +264,59 @@ xfdesktop_file_icon_selected(XfdesktopIcon *icon)
 static void
 xfdesktop_file_icon_activated(XfdesktopIcon *icon)
 {
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
+    ThunarVfsMimeInfo *mime_info;
+    ThunarVfsMimeApplication *mime_app;
     
+    TRACE("entering");
+    
+    mime_info = xfdesktop_file_icon_get_mime_info(file_icon);
+    if(mime_info) {
+        mime_app = thunar_vfs_mime_database_get_default_application(thunar_mime_database,
+                                                                    mime_info);
+        if(mime_app) {
+            GList *path_list = g_list_prepend(NULL, file_icon->priv->path);
+            
+            DBG("executing");
+            
+            thunar_vfs_mime_handler_exec(THUNAR_VFS_MIME_HANDLER(mime_app),
+                                         file_icon->priv->gscreen,
+                                         path_list,
+                                         NULL);
+            
+            g_object_unref(G_OBJECT(mime_app));
+            g_list_free(path_list);
+        }
+    
+        thunar_vfs_mime_info_unref(mime_info);
+    }
 }
 
 static void
 xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon)
 {
     
+}
+
+
+
+static ThunarVfsMimeInfo *
+xfdesktop_file_icon_get_mime_info(XfdesktopFileIcon *icon)
+{
+    ThunarVfsMimeInfo *mime_info = NULL;
+    gchar *file_path;
+    
+    if(!thunar_mime_database)
+        thunar_mime_database = thunar_vfs_mime_database_get_default();
+    
+    if(!icon->priv->label)
+        xfdesktop_file_icon_peek_label(XFDESKTOP_ICON(icon));
+    
+    file_path = thunar_vfs_path_dup_string(icon->priv->path);
+    mime_info = thunar_vfs_mime_database_get_info_for_file(thunar_mime_database,
+                                                           file_path,
+                                                           icon->priv->label);
+    g_free(file_path);
+    
+    return mime_info;
 }

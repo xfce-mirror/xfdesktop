@@ -60,6 +60,8 @@ struct _XfdesktopFileIconManagerPrivate
 {
     XfdesktopIconView *icon_view;
     
+    GdkScreen *gscreen;
+    
     ThunarVfsPath *folder;
     ThunarVfsMonitor *monitor;
     ThunarVfsMonitorHandle *handle;
@@ -96,6 +98,9 @@ static void
 xfdesktop_file_icon_manager_init(XfdesktopFileIconManager *fmanager)
 {
     fmanager->priv = g_new0(XfdesktopFileIconManagerPrivate, 1);
+    
+    /* be safe */
+    fmanager->priv->gscreen = gdk_screen_get_default();
 }
 
 static void
@@ -170,7 +175,8 @@ xfdesktop_file_icon_manager_volume_manager_cb(ThunarVfsMonitor *monitor,
         case THUNAR_VFS_MONITOR_EVENT_CREATED:
             DBG("got created event");
             thunar_vfs_path_ref(event_path);
-            icon = xfdesktop_file_icon_new(event_path);                
+            icon = xfdesktop_file_icon_new(event_path,
+                                           fmanager->priv->gscreen);                
             g_hash_table_insert(fmanager->priv->icons, event_path, icon);
             xfdesktop_icon_view_add_item(fmanager->priv->icon_view,
                                          XFDESKTOP_ICON(icon));
@@ -210,7 +216,7 @@ xfdesktop_file_icon_manager_listdir_infos_ready_cb(ThunarVfsJob *job,
         DBG("got a ThunarVfsInfo: %s", info->display_name);
         
         thunar_vfs_path_ref(info->path);
-        icon = xfdesktop_file_icon_new(info->path);
+        icon = xfdesktop_file_icon_new(info->path, fmanager->priv->gscreen);
             
         g_hash_table_insert(fmanager->priv->icons, info->path, icon);
         xfdesktop_icon_view_add_item(fmanager->priv->icon_view,
@@ -266,6 +272,10 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
                                                   thunar_vfs_path_equal,
                                                   (GDestroyNotify)thunar_vfs_path_unref,
                                                   (GDestroyNotify)g_object_unref);
+    
+    if(!GTK_WIDGET_REALIZED(GTK_WIDGET(icon_view)))
+        gtk_widget_realize(GTK_WIDGET(icon_view));
+    fmanager->priv->gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
     
     thunar_vfs_init();
     
