@@ -145,7 +145,11 @@ init_menu_settings(McsPlugin *plugin)
             BACKDROP_CHANNEL);
     if(setting) {
         desktop_icon_style = setting->data.v_int;
+# ifdef HAVE_THUNAR_VFS
         if(desktop_icon_style > XFCE_DESKTOP_ICON_STYLE_FILES)
+# else
+        if(desktop_icon_style > XFCE_DESKTOP_ICON_STYLE_WINDOWS)
+# endif
             desktop_icon_style = XFCE_DESKTOP_ICON_STYLE_WINDOWS;
     } else
         mcs_manager_set_int(plugin->manager, "desktopiconstyle",
@@ -275,7 +279,9 @@ create_menu_page(BackdropDialog *bd)
     combo = gtk_combo_box_new_text();
     gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("None"));
     gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Minimized application icons"));
+# ifdef HAVE_THUNAR_VFS
     gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("File/launcher icons"));
+# endif
     gtk_combo_box_set_active(GTK_COMBO_BOX(combo), desktop_icon_style);
     gtk_widget_show(combo);
     gtk_container_add(GTK_CONTAINER(frame_bin), combo);
