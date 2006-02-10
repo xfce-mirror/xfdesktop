@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-26 20:09+0900\n"
+"POT-Creation-Date: 2006-02-10 07:11-0800\n"
 "PO-Revision-Date: 2005-08-18 22:52+0900\n"
 "Last-Translator: Edscott Wilson Garcia <edscott@xfce.org>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -196,7 +196,7 @@ msgid "Select command"
 msgstr "Seleccionar comando"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:464
 msgid "Question"
 msgstr "Pregunta"
 
@@ -369,7 +369,7 @@ msgstr "Seleccionar archivo de menú"
 msgid "Menu Files"
 msgstr "Archivos de menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:153
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:169
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "No se puede ejecutar xfce4-menueditor: %s"
@@ -427,7 +427,7 @@ msgstr "Ícono del botón"
 msgid "Show _icons in menu"
 msgstr "Mostrar íconos en el menú"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:735
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:202
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -479,7 +479,7 @@ msgstr "Editar lista de fondos"
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:944
-#: ../src/xfce-desktop.c:2073
+#: ../src/xfce-desktop.c:788
 msgid "Desktop"
 msgstr "Escritorio"
 
@@ -537,7 +537,8 @@ msgstr ""
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:839
+#: ../settings/backdrop_settings.c:839 ../src/xfdesktop-file-icon.c:425
+#: ../src/xfdesktop-file-icon.c:446
 msgid "Error"
 msgstr ""
 
@@ -638,68 +639,77 @@ msgstr "Pantalla %d, Monitor %d"
 msgid "_Behavior"
 msgstr ""
 
-#: ../settings/menu_settings.c:174
+#: ../settings/menu_settings.c:193
 #, fuzzy
 msgid "Window List Menu"
 msgstr "Lista de ventanas"
 
-#: ../settings/menu_settings.c:182
+#: ../settings/menu_settings.c:201
 msgid "Show window _list"
 msgstr "Mostrar lista de ventanas"
 
-#: ../settings/menu_settings.c:197
+#: ../settings/menu_settings.c:216
 msgid "Show _window icons"
 msgstr "Mostrar íconos de ventanas"
 
-#: ../settings/menu_settings.c:210
+#: ../settings/menu_settings.c:229
 msgid "Desktop Menu"
 msgstr "Menú del escritorio"
 
-#: ../settings/menu_settings.c:218
+#: ../settings/menu_settings.c:237
 msgid "Show desktop _menu"
 msgstr "Mostrar menú del escritorio"
 
-#: ../settings/menu_settings.c:233
+#: ../settings/menu_settings.c:252
 #, fuzzy
 msgid "_Show application icons"
 msgstr "Mostrar íconos de aplicaciones"
 
-#: ../settings/menu_settings.c:244
+#: ../settings/menu_settings.c:263
 msgid "_Edit desktop menu"
 msgstr "Editar menú de escritorio"
 
-#: ../settings/menu_settings.c:256
+#: ../settings/menu_settings.c:275
 #, fuzzy
-msgid "Window Icons"
-msgstr "Lista de ventanas"
+msgid "Desktop Icons"
+msgstr "Menú del escritorio"
 
-#: ../settings/menu_settings.c:264
-msgid "Show minimized window _icons on the desktop"
+#: ../settings/menu_settings.c:280
+msgid "None"
 msgstr ""
 
-#: ../src/main.c:251
+#: ../settings/menu_settings.c:281
+#, fuzzy
+msgid "Minimized application icons"
+msgstr "Mostrar íconos de aplicaciones"
+
+#: ../settings/menu_settings.c:283
+msgid "File/launcher icons"
+msgstr ""
+
+#: ../src/main.c:254
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Opción desconocida: %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:255
 msgid "Options are:\n"
 msgstr "Las opciones:\n"
 
-#: ../src/main.c:253
+#: ../src/main.c:256
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -recargar    Recargar configuración\n"
 
-#: ../src/main.c:254
+#: ../src/main.c:257
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menú        Mostrar el menú\n"
 
-#: ../src/main.c:255
+#: ../src/main.c:258
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Mostrar lista de ventanas\n"
 
-#: ../src/main.c:256
+#: ../src/main.c:259
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr ""
 
@@ -727,6 +737,69 @@ msgstr "_Remover escritorio Virtual %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Remover escritorio Virtual %s"
 
+#: ../src/xfdesktop-file-icon.c:367
+#, c-format
+msgid "Rename \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:397
+msgid "Enter the new name:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:423
+#, c-format
+msgid "Failed to rename \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:466
+msgid "If you delete a file, it is permanently lost."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:508
+msgid "_Open With "
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:508
+msgid "Open With "
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:567
+msgid "_Open"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:575
+msgid "_Execute"
+msgstr ""
+
+#. FIXME: implement this
+#: ../src/xfdesktop-file-icon.c:614
+msgid "Open With Other _Application..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:629
+#, fuzzy
+msgid "_Copy File"
+msgstr "Archivo"
+
+#: ../src/xfdesktop-file-icon.c:638
+#, fuzzy
+msgid "Cu_t File"
+msgstr "Archivo"
+
+#: ../src/xfdesktop-file-icon.c:646
+#, fuzzy
+msgid "_Delete File"
+msgstr "Seleccionar archivo de menú"
+
+#: ../src/xfdesktop-file-icon.c:657
+msgid "_Rename..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:670
+#, fuzzy
+msgid "_Properties..."
+msgstr "Editar lista de fondos"
+
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
 msgstr "Herramienta para editar el menú Xfce4"
@@ -750,3 +823,7 @@ msgstr "Configuración para el escritorio Xfce4"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Configuración para el escritorio Xfce4"
+
+#, fuzzy
+#~ msgid "Window Icons"
+#~ msgstr "Lista de ventanas"

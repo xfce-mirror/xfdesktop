@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-26 20:09+0900\n"
+"POT-Creation-Date: 2006-02-10 07:11-0800\n"
 "PO-Revision-Date: 2005-10-09 22:21+0900\n"
 "Last-Translator: Amanpreet Singh Alam <aalam@redhat.com>\n"
 "Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
@@ -198,7 +198,7 @@ msgid "Select command"
 msgstr "ਕਮਾਂਡ ਚੁਣੋ"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:464
 msgid "Question"
 msgstr "ਸਵਾਲ"
 
@@ -371,7 +371,7 @@ msgstr "ਮੇਨੂ ਫਾਇਲ ਚੁਣੋ"
 msgid "Menu Files"
 msgstr "ਮੇਨੂ ਫਾਇਲਾਂ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:153
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:169
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4- ਮੇਨੂ ਸੰਪਾਦਕ ਜਾਰੀ ਕਰਨ ਵਿੱਚ ਅਸਫਲ: %s"
@@ -429,7 +429,7 @@ msgstr "_ਬਟਨ ਆਈਕਾਨ:"
 msgid "Show _icons in menu"
 msgstr "ਮੇਨੂ ਵਿੱਚ _ਆਈਕਾਨ ਵੇਖਾਓ"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:735
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:202
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -480,7 +480,7 @@ msgstr "ਬੈਕਡਰੋਪ ਸੂਚੀ ਸੋਧ"
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:944
-#: ../src/xfce-desktop.c:2073
+#: ../src/xfce-desktop.c:788
 msgid "Desktop"
 msgstr "ਵਿਹੜਾ"
 
@@ -538,7 +538,8 @@ msgstr ""
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:839
+#: ../settings/backdrop_settings.c:839 ../src/xfdesktop-file-icon.c:425
+#: ../src/xfdesktop-file-icon.c:446
 msgid "Error"
 msgstr ""
 
@@ -639,68 +640,77 @@ msgstr "ਪਰਦਾ %d, ਮਾਨੀਟਰ %d"
 msgid "_Behavior"
 msgstr ""
 
-#: ../settings/menu_settings.c:174
+#: ../settings/menu_settings.c:193
 #, fuzzy
 msgid "Window List Menu"
 msgstr "ਝਰੋਖਾ ਸੂਚੀ"
 
-#: ../settings/menu_settings.c:182
+#: ../settings/menu_settings.c:201
 msgid "Show window _list"
 msgstr "ਝਰੋਖਾ _ਸੂਚੀ ਵੇਖਾਓ"
 
-#: ../settings/menu_settings.c:197
+#: ../settings/menu_settings.c:216
 msgid "Show _window icons"
 msgstr "ਝਰੋਖਾ _ਆਈਕਾਨ ਵੇਖਾਓ"
 
-#: ../settings/menu_settings.c:210
+#: ../settings/menu_settings.c:229
 msgid "Desktop Menu"
 msgstr "ਵਿਹੜਾ ਮੇਨੂ"
 
-#: ../settings/menu_settings.c:218
+#: ../settings/menu_settings.c:237
 msgid "Show desktop _menu"
 msgstr "ਵਿਹੜਾ _ ਮੇਨੂ ਵੇਖਾਓ"
 
-#: ../settings/menu_settings.c:233
+#: ../settings/menu_settings.c:252
 #, fuzzy
 msgid "_Show application icons"
 msgstr "_ਕਾਰਜ ਆਈਕਾਨ ਵੇਖਾਓ"
 
-#: ../settings/menu_settings.c:244
+#: ../settings/menu_settings.c:263
 msgid "_Edit desktop menu"
 msgstr "ਵਿਹੜਾ ਮੇਨੂ _ਸੋਧ"
 
-#: ../settings/menu_settings.c:256
+#: ../settings/menu_settings.c:275
 #, fuzzy
-msgid "Window Icons"
-msgstr "ਝਰੋਖਾ ਸੂਚੀ"
+msgid "Desktop Icons"
+msgstr "ਵਿਹੜਾ ਮੇਨੂ"
 
-#: ../settings/menu_settings.c:264
-msgid "Show minimized window _icons on the desktop"
+#: ../settings/menu_settings.c:280
+msgid "None"
 msgstr ""
 
-#: ../src/main.c:251
+#: ../settings/menu_settings.c:281
+#, fuzzy
+msgid "Minimized application icons"
+msgstr "_ਕਾਰਜ ਆਈਕਾਨ ਵੇਖਾਓ"
+
+#: ../settings/menu_settings.c:283
+msgid "File/launcher icons"
+msgstr ""
+
+#: ../src/main.c:254
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: ਅਣਜਾਣ ਚੋਣ: %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:255
 msgid "Options are:\n"
 msgstr "ਚੋਣਾਂ ਹਨ:\n"
 
-#: ../src/main.c:253
+#: ../src/main.c:256
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      ਸਭ ਵਿਵਸਥਾ ਮੁੜ-ਲੋਡ, ਚਿੱਤਰ ਸੂਚੀ ਤਾਜ਼ਾ ਕਰੋ\n"
 
-#: ../src/main.c:254
+#: ../src/main.c:257
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        ਮੇਨੂ ਖੁੱਲੇਗਾ (ਮਾਊਸ ਦੇ ਮੌਜੂਦਾ ਸਥਿਤੀ ਤੇ ਖੁੱਲੇਗਾ)\n"
 
-#: ../src/main.c:255
+#: ../src/main.c:258
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  ਝਰੋਖਾ ਸੂਚੀ ਖੁੱਲੇਗੀ (ਮਾਊਸ ਦੀ ਮੌਜੂਦਾ ਸਥਿਤੀ ਤੇ ਖੁੱਲੇਗੀ)\n"
 
-#: ../src/main.c:256
+#: ../src/main.c:259
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr ""
 
@@ -728,6 +738,69 @@ msgstr "ਅਖਾੜਾ %d _ਹਟਾਓ"
 msgid "_Remove Workspace '%s'"
 msgstr "ਅਖਾੜਾ '%s' _ਹਟਾਓ"
 
+#: ../src/xfdesktop-file-icon.c:367
+#, c-format
+msgid "Rename \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:397
+msgid "Enter the new name:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:423
+#, c-format
+msgid "Failed to rename \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:466
+msgid "If you delete a file, it is permanently lost."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:508
+msgid "_Open With "
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:508
+msgid "Open With "
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:567
+msgid "_Open"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:575
+msgid "_Execute"
+msgstr ""
+
+#. FIXME: implement this
+#: ../src/xfdesktop-file-icon.c:614
+msgid "Open With Other _Application..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:629
+#, fuzzy
+msgid "_Copy File"
+msgstr "_ਫਾਇਲ"
+
+#: ../src/xfdesktop-file-icon.c:638
+#, fuzzy
+msgid "Cu_t File"
+msgstr "_ਫਾਇਲ"
+
+#: ../src/xfdesktop-file-icon.c:646
+#, fuzzy
+msgid "_Delete File"
+msgstr "ਮੇਨੂ ਫਾਇਲ ਚੁਣੋ"
+
+#: ../src/xfdesktop-file-icon.c:657
+msgid "_Rename..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:670
+#, fuzzy
+msgid "_Properties..."
+msgstr "ਬੈਕਡਰੋਪ ਸੂਚੀ ਸੋਧ"
+
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
 msgstr ""
@@ -753,3 +826,7 @@ msgstr ""
 #, fuzzy
 msgid "Xfce 4 Desktop Settings"
 msgstr "ਵਿਹੜਾ ਵਿਵਸਥਾ"
+
+#, fuzzy
+#~ msgid "Window Icons"
+#~ msgstr "ਝਰੋਖਾ ਸੂਚੀ"

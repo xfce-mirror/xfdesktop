@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-26 20:09+0900\n"
+"POT-Creation-Date: 2006-02-10 07:11-0800\n"
 "PO-Revision-Date: 2006-01-06 12:51+0100\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -199,7 +199,7 @@ msgid "Select command"
 msgstr "Kommando auswählen"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:464
 msgid "Question"
 msgstr "Frage"
 
@@ -376,7 +376,7 @@ msgstr "Menüdatei auswählen"
 msgid "Menu Files"
 msgstr "Menüdateien"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:153
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:169
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Konnte xfce4-menueditor nicht starten: %s"
@@ -426,7 +426,7 @@ msgstr "_Buttonicon:"
 msgid "Show _icons in menu"
 msgstr "Symbole _im Menü anzeigen"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:735
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:202
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -478,7 +478,7 @@ msgstr "Liste mit Hintergrundbildern bearbeiten"
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:944
-#: ../src/xfce-desktop.c:2073
+#: ../src/xfce-desktop.c:788
 msgid "Desktop"
 msgstr "Desktop"
 
@@ -536,7 +536,8 @@ msgstr "Xfce kann den Arbeitsplatz (%s) nicht verwalten."
 msgid "Unknown Error"
 msgstr "Unbekannter Fehler"
 
-#: ../settings/backdrop_settings.c:839
+#: ../settings/backdrop_settings.c:839 ../src/xfdesktop-file-icon.c:425
+#: ../src/xfdesktop-file-icon.c:446
 msgid "Error"
 msgstr "Fehler"
 
@@ -642,67 +643,77 @@ msgstr "Bildschirm %d, Monitor %d"
 msgid "_Behavior"
 msgstr ""
 
-#: ../settings/menu_settings.c:174
+#: ../settings/menu_settings.c:193
 msgid "Window List Menu"
 msgstr "Fensterliste"
 
-#: ../settings/menu_settings.c:182
+#: ../settings/menu_settings.c:201
 msgid "Show window _list"
 msgstr "Zeige Fenster_liste"
 
-#: ../settings/menu_settings.c:197
+#: ../settings/menu_settings.c:216
 msgid "Show _window icons"
 msgstr "Zeige Icons der _Fenster"
 
-#: ../settings/menu_settings.c:210
+#: ../settings/menu_settings.c:229
 msgid "Desktop Menu"
 msgstr "Desktopmenü"
 
-#: ../settings/menu_settings.c:218
+#: ../settings/menu_settings.c:237
 msgid "Show desktop _menu"
 msgstr "Zeige Desktop_menü"
 
-#: ../settings/menu_settings.c:233
+#: ../settings/menu_settings.c:252
 #, fuzzy
 msgid "_Show application icons"
 msgstr "_Zeige Programmicons"
 
-#: ../settings/menu_settings.c:244
+#: ../settings/menu_settings.c:263
 msgid "_Edit desktop menu"
 msgstr "D_esktopmenü bearbeiten"
 
-#: ../settings/menu_settings.c:256
-msgid "Window Icons"
-msgstr "Fenstersymbole"
+#: ../settings/menu_settings.c:275
+#, fuzzy
+msgid "Desktop Icons"
+msgstr "Desktopmenü"
 
-#: ../settings/menu_settings.c:264
-msgid "Show minimized window _icons on the desktop"
-msgstr "Zeige minimierte _Fenstersymbole auf der Arbeitsfläche"
+#: ../settings/menu_settings.c:280
+msgid "None"
+msgstr ""
 
-#: ../src/main.c:251
+#: ../settings/menu_settings.c:281
+#, fuzzy
+msgid "Minimized application icons"
+msgstr "_Zeige Programmicons"
+
+#: ../settings/menu_settings.c:283
+msgid "File/launcher icons"
+msgstr ""
+
+#: ../src/main.c:254
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Unbekannte Option %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:255
 msgid "Options are:\n"
 msgstr "Optionen sind:\n"
 
-#: ../src/main.c:253
+#: ../src/main.c:256
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "   -reload\tEinstellungen neu laden, Liste auffrischen\n"
 
-#: ../src/main.c:254
+#: ../src/main.c:257
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "   -menu\t\tDas Menü (an der Zeigerposition) aufpoppen lassen\n"
 
-#: ../src/main.c:255
+#: ../src/main.c:258
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    -windowlist  Fensterliste (an der Zeigerposition) aufpoppen lassen\n"
 
-#: ../src/main.c:256
+#: ../src/main.c:259
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        Xfdesktop beenden\n"
 
@@ -730,6 +741,69 @@ msgstr "A_rbeitsfläche %d entfernen"
 msgid "_Remove Workspace '%s'"
 msgstr "A_rbeitsfläche '%s' entfernen"
 
+#: ../src/xfdesktop-file-icon.c:367
+#, c-format
+msgid "Rename \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:397
+msgid "Enter the new name:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:423
+#, c-format
+msgid "Failed to rename \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:466
+msgid "If you delete a file, it is permanently lost."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:508
+msgid "_Open With "
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:508
+msgid "Open With "
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:567
+msgid "_Open"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:575
+msgid "_Execute"
+msgstr ""
+
+#. FIXME: implement this
+#: ../src/xfdesktop-file-icon.c:614
+msgid "Open With Other _Application..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:629
+#, fuzzy
+msgid "_Copy File"
+msgstr "_Datei"
+
+#: ../src/xfdesktop-file-icon.c:638
+#, fuzzy
+msgid "Cu_t File"
+msgstr "_Datei"
+
+#: ../src/xfdesktop-file-icon.c:646
+#, fuzzy
+msgid "_Delete File"
+msgstr "Menüdatei auswählen"
+
+#: ../src/xfdesktop-file-icon.c:657
+msgid "_Rename..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:670
+#, fuzzy
+msgid "_Properties..."
+msgstr "Eigenschaften bearbeiten"
+
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
 msgstr "Grafisches Werkzeug zum Bearbeiten des Xfce4 Menüs"
@@ -753,3 +827,9 @@ msgstr "Einstellungen für den Xfce4 Desktop Manager"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce4 Arbeitsplatz Einstellungen"
+
+#~ msgid "Window Icons"
+#~ msgstr "Fenstersymbole"
+
+#~ msgid "Show minimized window _icons on the desktop"
+#~ msgstr "Zeige minimierte _Fenstersymbole auf der Arbeitsfläche"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-26 20:09+0900\n"
+"POT-Creation-Date: 2006-02-10 07:11-0800\n"
 "PO-Revision-Date: 2005-10-14 18:34+0900\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -199,7 +199,7 @@ msgid "Select command"
 msgstr "Válassz parancsot"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:464
 msgid "Question"
 msgstr "Kérdés"
 
@@ -373,7 +373,7 @@ msgstr "Válassz menüfájlt"
 msgid "Menu Files"
 msgstr "Menüfájlok"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:153
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:169
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Nem indítható az xfce4-menueditor: %s"
@@ -423,7 +423,7 @@ msgstr "Gomb iko_n:"
 msgid "Show _icons in menu"
 msgstr "Legyenek _ikonok a menüben"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:735
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:202
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -475,7 +475,7 @@ msgstr "Háttérlista szerkesztése"
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:944
-#: ../src/xfce-desktop.c:2073
+#: ../src/xfce-desktop.c:788
 msgid "Desktop"
 msgstr "Munkaasztal"
 
@@ -533,7 +533,8 @@ msgstr "Az Xfce nem tudja majd kezelni az asztalt (%s)."
 msgid "Unknown Error"
 msgstr "ismeretlen hiba"
 
-#: ../settings/backdrop_settings.c:839
+#: ../settings/backdrop_settings.c:839 ../src/xfdesktop-file-icon.c:425
+#: ../src/xfdesktop-file-icon.c:446
 msgid "Error"
 msgstr "hiba"
 
@@ -637,66 +638,76 @@ msgstr "Képernyő %d, Monitor %d"
 msgid "_Behavior"
 msgstr ""
 
-#: ../settings/menu_settings.c:174
+#: ../settings/menu_settings.c:193
 msgid "Window List Menu"
 msgstr "Ablaklista menü"
 
-#: ../settings/menu_settings.c:182
+#: ../settings/menu_settings.c:201
 msgid "Show window _list"
 msgstr "Ablak _lista mutatása"
 
-#: ../settings/menu_settings.c:197
+#: ../settings/menu_settings.c:216
 msgid "Show _window icons"
 msgstr "Ablak _ikonok mutatása"
 
-#: ../settings/menu_settings.c:210
+#: ../settings/menu_settings.c:229
 msgid "Desktop Menu"
 msgstr "Asztali menü"
 
-#: ../settings/menu_settings.c:218
+#: ../settings/menu_settings.c:237
 msgid "Show desktop _menu"
 msgstr "Asztali _menü mutatása"
 
-#: ../settings/menu_settings.c:233
+#: ../settings/menu_settings.c:252
 #, fuzzy
 msgid "_Show application icons"
 msgstr "Progr_amikonok mutatása"
 
-#: ../settings/menu_settings.c:244
+#: ../settings/menu_settings.c:263
 msgid "_Edit desktop menu"
 msgstr "Asztali menü sz_erkesztése"
 
-#: ../settings/menu_settings.c:256
-msgid "Window Icons"
-msgstr "Ablak ikonok"
+#: ../settings/menu_settings.c:275
+#, fuzzy
+msgid "Desktop Icons"
+msgstr "Asztali menü"
 
-#: ../settings/menu_settings.c:264
-msgid "Show minimized window _icons on the desktop"
-msgstr "Minimált ablakok _ikonjai az asztalon"
+#: ../settings/menu_settings.c:280
+msgid "None"
+msgstr ""
 
-#: ../src/main.c:251
+#: ../settings/menu_settings.c:281
+#, fuzzy
+msgid "Minimized application icons"
+msgstr "Progr_amikonok mutatása"
+
+#: ../settings/menu_settings.c:283
+msgid "File/launcher icons"
+msgstr ""
+
+#: ../src/main.c:254
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Ismeretlen lehetőség: %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:255
 msgid "Options are:\n"
 msgstr "Lehetőségek:\n"
 
-#: ../src/main.c:253
+#: ../src/main.c:256
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      Beállítások visszatöltése, képlista frissítése\n"
 
-#: ../src/main.c:254
+#: ../src/main.c:257
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Menü megjelenítése (az egér pozíciójánál)\n"
 
-#: ../src/main.c:255
+#: ../src/main.c:258
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist Ablaklista megjelenítése (az egér pozíciójánál)\n"
 
-#: ../src/main.c:256
+#: ../src/main.c:259
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        Az xfdesktop kilép\n"
 
@@ -724,6 +735,69 @@ msgstr "%d. munkaterület tö_rlése"
 msgid "_Remove Workspace '%s'"
 msgstr "E munkaterület tö_rlése: '%s'"
 
+#: ../src/xfdesktop-file-icon.c:367
+#, c-format
+msgid "Rename \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:397
+msgid "Enter the new name:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:423
+#, c-format
+msgid "Failed to rename \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:466
+msgid "If you delete a file, it is permanently lost."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:508
+msgid "_Open With "
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:508
+msgid "Open With "
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:567
+msgid "_Open"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:575
+msgid "_Execute"
+msgstr ""
+
+#. FIXME: implement this
+#: ../src/xfdesktop-file-icon.c:614
+msgid "Open With Other _Application..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:629
+#, fuzzy
+msgid "_Copy File"
+msgstr "_Fájl"
+
+#: ../src/xfdesktop-file-icon.c:638
+#, fuzzy
+msgid "Cu_t File"
+msgstr "_Fájl"
+
+#: ../src/xfdesktop-file-icon.c:646
+#, fuzzy
+msgid "_Delete File"
+msgstr "Válassz menüfájlt"
+
+#: ../src/xfdesktop-file-icon.c:657
+msgid "_Rename..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:670
+#, fuzzy
+msgid "_Properties..."
+msgstr "Tulajdonságok szerkesztése"
+
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
 msgstr "Grafikus Xfce 4 menüszerkesztő"
@@ -747,3 +821,9 @@ msgstr "Xfce 4 asztalkezelő beállítások"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 Asztal Beállítások"
+
+#~ msgid "Window Icons"
+#~ msgstr "Ablak ikonok"
+
+#~ msgid "Show minimized window _icons on the desktop"
+#~ msgstr "Minimált ablakok _ikonjai az asztalon"

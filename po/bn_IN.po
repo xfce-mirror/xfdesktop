@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-26 20:09+0900\n"
+"POT-Creation-Date: 2006-02-10 07:11-0800\n"
 "PO-Revision-Date: 2005-04-06 19:28+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bangla INDIA <LL@li.org>\n"
@@ -199,7 +199,7 @@ msgid "Select command"
 msgstr "কমান্ড নির্বাচন করুন"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:464
 msgid "Question"
 msgstr "প্রশ্ন"
 
@@ -372,7 +372,7 @@ msgstr "মেনু ফাইল নির্বাচন করুন"
 msgid "Menu Files"
 msgstr "মেনু ফাইল"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:153
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:169
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
@@ -430,7 +430,7 @@ msgstr "বাটন আইকন:(_B)"
 msgid "Show _icons in menu"
 msgstr "মেনুর মধ্যে আইকন প্রদর্শন করা হবে (_i)"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:735
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:202
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -482,7 +482,7 @@ msgstr "পটভূমির তালিকা সম্পাদন করু
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:944
-#: ../src/xfce-desktop.c:2073
+#: ../src/xfce-desktop.c:788
 msgid "Desktop"
 msgstr "ডেস্কটপ"
 
@@ -540,7 +540,8 @@ msgstr ""
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/backdrop_settings.c:839
+#: ../settings/backdrop_settings.c:839 ../src/xfdesktop-file-icon.c:425
+#: ../src/xfdesktop-file-icon.c:446
 msgid "Error"
 msgstr ""
 
@@ -641,69 +642,78 @@ msgstr "পর্দা %d, মনিটর %d"
 msgid "_Behavior"
 msgstr ""
 
-#: ../settings/menu_settings.c:174
+#: ../settings/menu_settings.c:193
 #, fuzzy
 msgid "Window List Menu"
 msgstr "উইন্ডোর তালিকা"
 
-#: ../settings/menu_settings.c:182
+#: ../settings/menu_settings.c:201
 msgid "Show window _list"
 msgstr "উইন্ডোর তালিকা প্রদর্শন করুন (_l)"
 
-#: ../settings/menu_settings.c:197
+#: ../settings/menu_settings.c:216
 msgid "Show _window icons"
 msgstr "উইন্ডোর আইকন প্রদর্শন করুন (_w)"
 
-#: ../settings/menu_settings.c:210
+#: ../settings/menu_settings.c:229
 msgid "Desktop Menu"
 msgstr "ডেস্কটপ মেনু"
 
-#: ../settings/menu_settings.c:218
+#: ../settings/menu_settings.c:237
 msgid "Show desktop _menu"
 msgstr "ডেস্কটপ মেনু প্রদর্শন করুন (_m)"
 
-#: ../settings/menu_settings.c:233
+#: ../settings/menu_settings.c:252
 #, fuzzy
 msgid "_Show application icons"
 msgstr "অ্যাপ্লিকেশনের আইকন প্রদর্শন করুন (_a)"
 
-#: ../settings/menu_settings.c:244
+#: ../settings/menu_settings.c:263
 msgid "_Edit desktop menu"
 msgstr "ডেস্কটপ মেনু সম্পাদন করুন (_E)"
 
-#: ../settings/menu_settings.c:256
+#: ../settings/menu_settings.c:275
 #, fuzzy
-msgid "Window Icons"
-msgstr "উইন্ডোর তালিকা"
+msgid "Desktop Icons"
+msgstr "ডেস্কটপ মেনু"
 
-#: ../settings/menu_settings.c:264
-msgid "Show minimized window _icons on the desktop"
+#: ../settings/menu_settings.c:280
+msgid "None"
 msgstr ""
 
-#: ../src/main.c:251
+#: ../settings/menu_settings.c:281
+#, fuzzy
+msgid "Minimized application icons"
+msgstr "অ্যাপ্লিকেশনের আইকন প্রদর্শন করুন (_a)"
+
+#: ../settings/menu_settings.c:283
+msgid "File/launcher icons"
+msgstr ""
+
+#: ../src/main.c:254
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: অজানা অপশন: %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:255
 msgid "Options are:\n"
 msgstr "অপশনগুলি হল:\n"
 
-#: ../src/main.c:253
+#: ../src/main.c:256
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload      সমস্ত বৈশিষ্ট্য পুনরায় লোড করুন, ছবির তালিকা নতুন করে প্রদর্শন করুন\n"
 
-#: ../src/main.c:254
+#: ../src/main.c:257
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        মেনু পপ-আপ করবে (মাউসের বর্তমান অবস্থানে)\n"
 
-#: ../src/main.c:255
+#: ../src/main.c:258
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  উইন্ডোর তালিকা পপ-আপ করবে (মাউসের বর্তমান অবস্থানে)\n"
 
-#: ../src/main.c:256
+#: ../src/main.c:259
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr ""
 
@@ -731,6 +741,69 @@ msgstr "কর্মক্ষেত্র %d মুছে ফেলুন (_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "কর্মক্ষেত্র '%s' মুছে ফেলুন (_R)"
 
+#: ../src/xfdesktop-file-icon.c:367
+#, c-format
+msgid "Rename \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:397
+msgid "Enter the new name:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:423
+#, c-format
+msgid "Failed to rename \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:466
+msgid "If you delete a file, it is permanently lost."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:508
+msgid "_Open With "
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:508
+msgid "Open With "
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:567
+msgid "_Open"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:575
+msgid "_Execute"
+msgstr ""
+
+#. FIXME: implement this
+#: ../src/xfdesktop-file-icon.c:614
+msgid "Open With Other _Application..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:629
+#, fuzzy
+msgid "_Copy File"
+msgstr "ফাইল (_F)"
+
+#: ../src/xfdesktop-file-icon.c:638
+#, fuzzy
+msgid "Cu_t File"
+msgstr "ফাইল (_F)"
+
+#: ../src/xfdesktop-file-icon.c:646
+#, fuzzy
+msgid "_Delete File"
+msgstr "মেনু ফাইল নির্বাচন করুন"
+
+#: ../src/xfdesktop-file-icon.c:657
+msgid "_Rename..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:670
+#, fuzzy
+msgid "_Properties..."
+msgstr "পটভূমির তালিকা সম্পাদন করুন"
+
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
 msgstr "Xfce 4 মেনু সম্পাদন করতে ব্যবহৃত গ্রাফিকাল টুল"
@@ -754,3 +827,7 @@ msgstr "Xfce 4 ডেস্কটপ নিয়ন্ত্রক সংক্র
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 ডেস্কটপের বৈশিষ্ট্য"
+
+#, fuzzy
+#~ msgid "Window Icons"
+#~ msgstr "উইন্ডোর তালিকা"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-26 20:09+0900\n"
+"POT-Creation-Date: 2006-02-10 07:11-0800\n"
 "PO-Revision-Date: 2006-01-08 21:49+0100\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: catalan\n"
@@ -238,7 +238,7 @@ msgid "Select command"
 msgstr "Seleccioneu ordre"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:464
 #, fuzzy
 msgid "Question"
 msgstr "Pregunta"
@@ -448,7 +448,7 @@ msgstr "Selecciona fitxer de menú"
 msgid "Menu Files"
 msgstr "Fitxers de menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:153
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:169
 #, fuzzy, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "No s'ha pogut executar xfce4-menueditor: %s"
@@ -509,7 +509,7 @@ msgstr "_Botó d'icones"
 msgid "Show _icons in menu"
 msgstr "Mostrar _icones al menú"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:735
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:202
 #, fuzzy, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -570,7 +570,7 @@ msgstr "Edita la llista de fons"
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:944
-#: ../src/xfce-desktop.c:2073
+#: ../src/xfce-desktop.c:788
 #, fuzzy
 msgid "Desktop"
 msgstr "Escriptori"
@@ -640,7 +640,8 @@ msgstr "a ."
 msgid "Unknown Error"
 msgstr "Error desconegut"
 
-#: ../settings/backdrop_settings.c:839
+#: ../settings/backdrop_settings.c:839 ../src/xfdesktop-file-icon.c:425
+#: ../src/xfdesktop-file-icon.c:446
 #, fuzzy
 msgid "Error"
 msgstr "Error"
@@ -760,74 +761,82 @@ msgstr "Pantalla %d, monitor %d"
 msgid "_Behavior"
 msgstr ""
 
-#: ../settings/menu_settings.c:174
+#: ../settings/menu_settings.c:193
 #, fuzzy
 msgid "Window List Menu"
 msgstr "Finestra Llista Menú"
 
-#: ../settings/menu_settings.c:182
+#: ../settings/menu_settings.c:201
 #, fuzzy
 msgid "Show window _list"
 msgstr "Mostra el llistat de finestres"
 
-#: ../settings/menu_settings.c:197
+#: ../settings/menu_settings.c:216
 #, fuzzy
 msgid "Show _window icons"
 msgstr "Mostra les icones de finestra"
 
-#: ../settings/menu_settings.c:210
+#: ../settings/menu_settings.c:229
 #, fuzzy
 msgid "Desktop Menu"
 msgstr "Menú d'escriptoris"
 
-#: ../settings/menu_settings.c:218
+#: ../settings/menu_settings.c:237
 #, fuzzy
 msgid "Show desktop _menu"
 msgstr "Mostra el _menú d'escriptoris"
 
-#: ../settings/menu_settings.c:233
+#: ../settings/menu_settings.c:252
 #, fuzzy
 msgid "_Show application icons"
 msgstr "Mostra les icones d'_aplicacions"
 
-#: ../settings/menu_settings.c:244
+#: ../settings/menu_settings.c:263
 #, fuzzy
 msgid "_Edit desktop menu"
 msgstr "_Edita el menú d'escriptori"
 
-#: ../settings/menu_settings.c:256
+#: ../settings/menu_settings.c:275
 #, fuzzy
-msgid "Window Icons"
-msgstr "Finestra Icones"
+msgid "Desktop Icons"
+msgstr "Menú d'escriptoris"
 
-#: ../settings/menu_settings.c:264
+#: ../settings/menu_settings.c:280
+msgid "None"
+msgstr ""
+
+#: ../settings/menu_settings.c:281
 #, fuzzy
-msgid "Show minimized window _icons on the desktop"
-msgstr "Mostra minimitzat finestra on  "
+msgid "Minimized application icons"
+msgstr "Mostra les icones d'_aplicacions"
 
-#: ../src/main.c:251
+#: ../settings/menu_settings.c:283
+msgid "File/launcher icons"
+msgstr ""
+
+#: ../src/main.c:254
 #, fuzzy, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Opció desconeguda: %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:255
 #, fuzzy
 msgid "Options are:\n"
 msgstr "Les opcions són:\n"
 
-#: ../src/main.c:253
+#: ../src/main.c:256
 #, fuzzy
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "-actualitza    Actualitza tots els paràmetres, actualitza la llista "
 "d'images\n"
 
-#: ../src/main.c:254
+#: ../src/main.c:257
 #, fuzzy
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "- menú   Mostra el menú (a la posició actual del ratolí)\n"
 
-#: ../src/main.c:255
+#: ../src/main.c:258
 #, fuzzy
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
@@ -835,7 +844,7 @@ msgstr ""
 "-llistat de finestres     Mostra el llistat de finestres (a la posició "
 "actual del ratolí)\n"
 
-#: ../src/main.c:256
+#: ../src/main.c:259
 #, fuzzy
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr "surt a  surt n"
@@ -864,6 +873,69 @@ msgstr "Suprimeix un espai de treball %d"
 #, fuzzy, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Suprimeix l'espai de treball '%s'  "
+
+#: ../src/xfdesktop-file-icon.c:367
+#, c-format
+msgid "Rename \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:397
+msgid "Enter the new name:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:423
+#, c-format
+msgid "Failed to rename \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:466
+msgid "If you delete a file, it is permanently lost."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:508
+msgid "_Open With "
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:508
+msgid "Open With "
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:567
+msgid "_Open"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:575
+msgid "_Execute"
+msgstr ""
+
+#. FIXME: implement this
+#: ../src/xfdesktop-file-icon.c:614
+msgid "Open With Other _Application..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:629
+#, fuzzy
+msgid "_Copy File"
+msgstr "_Fitxer"
+
+#: ../src/xfdesktop-file-icon.c:638
+#, fuzzy
+msgid "Cu_t File"
+msgstr "_Fitxer"
+
+#: ../src/xfdesktop-file-icon.c:646
+#, fuzzy
+msgid "_Delete File"
+msgstr "Selecciona fitxer de menú"
+
+#: ../src/xfdesktop-file-icon.c:657
+msgid "_Rename..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:670
+#, fuzzy
+msgid "_Properties..."
+msgstr "Edita Propietats"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 #, fuzzy
@@ -894,3 +966,11 @@ msgstr "Paràmetres per a   Escriptori Gestor"
 #, fuzzy
 msgid "Xfce 4 Desktop Settings"
 msgstr "Escriptori Paràmetres"
+
+#, fuzzy
+#~ msgid "Window Icons"
+#~ msgstr "Finestra Icones"
+
+#, fuzzy
+#~ msgid "Show minimized window _icons on the desktop"
+#~ msgstr "Mostra minimitzat finestra on  "

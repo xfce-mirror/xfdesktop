@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-26 20:09+0900\n"
+"POT-Creation-Date: 2006-02-10 07:11-0800\n"
 "PO-Revision-Date: 2005-10-09 22:16+0900\n"
 "Last-Translator: Ankit Patel <ankit644@yahoo.com>\n"
 "Language-Team: Gujarati <indianoss-gujarati@lists.sourceforge.net>\n"
@@ -198,7 +198,7 @@ msgid "Select command"
 msgstr "આદેશ પસંદ કરો"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:464
 msgid "Question"
 msgstr "પ્રશ્ન"
 
@@ -372,7 +372,7 @@ msgstr "મેનુ ફાઈલ પસંદ કરો"
 msgid "Menu Files"
 msgstr "મેનુ ફાઈલો"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:153
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:169
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor લોન્ચ કરવામાં નિષ્ફળ: %s"
@@ -423,7 +423,7 @@ msgstr "બટન ચિહ્ન (_B):"
 msgid "Show _icons in menu"
 msgstr "મેનુમાં ચિહ્નો બતાવો (_i)"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:735
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:202
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -475,7 +475,7 @@ msgstr "બેકડ્રોપ યાદીમાં ફેરફાર કર
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:944
-#: ../src/xfce-desktop.c:2073
+#: ../src/xfce-desktop.c:788
 msgid "Desktop"
 msgstr "ડેસ્કટોપ"
 
@@ -533,7 +533,8 @@ msgstr "Xfce એ તમારી ડેસ્કટોપની વ્યવસ�
 msgid "Unknown Error"
 msgstr "અજ્ઞાત ભૂલ"
 
-#: ../settings/backdrop_settings.c:839
+#: ../settings/backdrop_settings.c:839 ../src/xfdesktop-file-icon.c:425
+#: ../src/xfdesktop-file-icon.c:446
 msgid "Error"
 msgstr "ભૂલ"
 
@@ -638,68 +639,77 @@ msgstr "સ્ક્રીન %d, મોનિટર %d"
 msgid "_Behavior"
 msgstr ""
 
-#: ../settings/menu_settings.c:174
+#: ../settings/menu_settings.c:193
 #, fuzzy
 msgid "Window List Menu"
 msgstr "વિન્ડો યાદી"
 
-#: ../settings/menu_settings.c:182
+#: ../settings/menu_settings.c:201
 msgid "Show window _list"
 msgstr "વિન્ડો યાદી બતાવો (_l)"
 
-#: ../settings/menu_settings.c:197
+#: ../settings/menu_settings.c:216
 msgid "Show _window icons"
 msgstr "વિન્ડો ચિહ્નો બતાવો (_w)"
 
-#: ../settings/menu_settings.c:210
+#: ../settings/menu_settings.c:229
 msgid "Desktop Menu"
 msgstr "ડેસ્કટોપ મેનુ"
 
-#: ../settings/menu_settings.c:218
+#: ../settings/menu_settings.c:237
 msgid "Show desktop _menu"
 msgstr "ડેસ્કટોપ મેનુ બતાવો (_m)"
 
-#: ../settings/menu_settings.c:233
+#: ../settings/menu_settings.c:252
 #, fuzzy
 msgid "_Show application icons"
 msgstr "કાર્યક્રમ ચિહ્નો બતાવો (_a)"
 
-#: ../settings/menu_settings.c:244
+#: ../settings/menu_settings.c:263
 msgid "_Edit desktop menu"
 msgstr "ડેસ્કટોપ મેનુમાં ફેરફાર કરો (_E)"
 
-#: ../settings/menu_settings.c:256
+#: ../settings/menu_settings.c:275
 #, fuzzy
-msgid "Window Icons"
-msgstr "વિન્ડો યાદી"
+msgid "Desktop Icons"
+msgstr "ડેસ્કટોપ મેનુ"
 
-#: ../settings/menu_settings.c:264
-msgid "Show minimized window _icons on the desktop"
+#: ../settings/menu_settings.c:280
+msgid "None"
 msgstr ""
 
-#: ../src/main.c:251
+#: ../settings/menu_settings.c:281
+#, fuzzy
+msgid "Minimized application icons"
+msgstr "કાર્યક્રમ ચિહ્નો બતાવો (_a)"
+
+#: ../settings/menu_settings.c:283
+msgid "File/launcher icons"
+msgstr ""
+
+#: ../src/main.c:254
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: અજ્ઞાત વિકલ્પ: %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:255
 msgid "Options are:\n"
 msgstr "વિકલ્પો છે:\n"
 
-#: ../src/main.c:253
+#: ../src/main.c:256
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      બધા સુયોજનો ફરીથી લાવો, ઈમેજ યાદી ફરીથી તાજી કરો\n"
 
-#: ../src/main.c:254
+#: ../src/main.c:257
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        મેનુને પોપઅપ કરે છે (માઉસની વર્તમાન જગ્યાએ)\n"
 
-#: ../src/main.c:255
+#: ../src/main.c:258
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -menu        વિન્ડો યાદીને પોપઅપ કરે છે (માઉસની વર્તમાન જગ્યાએ)\n"
 
-#: ../src/main.c:256
+#: ../src/main.c:259
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        xfdesktop ને બંધ કરવાનું કારણ બને છે\n"
 
@@ -727,6 +737,69 @@ msgstr "કામ કરવાની જગ્યા %d દૂર કરો (_R)
 msgid "_Remove Workspace '%s'"
 msgstr "કામ કરવાની જગ્યા %s દૂર કરો (_R)"
 
+#: ../src/xfdesktop-file-icon.c:367
+#, c-format
+msgid "Rename \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:397
+msgid "Enter the new name:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:423
+#, c-format
+msgid "Failed to rename \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:466
+msgid "If you delete a file, it is permanently lost."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:508
+msgid "_Open With "
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:508
+msgid "Open With "
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:567
+msgid "_Open"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:575
+msgid "_Execute"
+msgstr ""
+
+#. FIXME: implement this
+#: ../src/xfdesktop-file-icon.c:614
+msgid "Open With Other _Application..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:629
+#, fuzzy
+msgid "_Copy File"
+msgstr "ફાઈલ (_F)"
+
+#: ../src/xfdesktop-file-icon.c:638
+#, fuzzy
+msgid "Cu_t File"
+msgstr "ફાઈલ (_F)"
+
+#: ../src/xfdesktop-file-icon.c:646
+#, fuzzy
+msgid "_Delete File"
+msgstr "મેનુ ફાઈલ પસંદ કરો"
+
+#: ../src/xfdesktop-file-icon.c:657
+msgid "_Rename..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:670
+#, fuzzy
+msgid "_Properties..."
+msgstr "બેકડ્રોપ યાદીમાં ફેરફાર કરો"
+
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
 msgstr "Xfce 4 મેનુમાં ફેરફાર કરવા માટેનું ગ્રાફિકવાળું સાધન"
@@ -750,3 +823,7 @@ msgstr "Xfce 4 ડેસ્કટોપ વ્યવસ્થાપક માટ
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 ડેસ્કટોપ સુયોજનો"
+
+#, fuzzy
+#~ msgid "Window Icons"
+#~ msgstr "વિન્ડો યાદી"
