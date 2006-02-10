@@ -148,12 +148,14 @@ xfdesktop_window_icon_manager_finalize(GObject *obj)
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(obj);
     gint i;
     
-    for(i = 0; i < wmanager->priv->nworkspaces; ++i) {
-        if(wmanager->priv->icon_workspaces[i]->icons)
-            g_hash_table_destroy(wmanager->priv->icon_workspaces[i]->icons);
-        g_free(wmanager->priv->icon_workspaces[i]);
+    if(wmanager->priv->icon_workspaces) {
+        for(i = 0; i < wmanager->priv->nworkspaces; ++i) {
+            if(wmanager->priv->icon_workspaces[i]->icons)
+                g_hash_table_destroy(wmanager->priv->icon_workspaces[i]->icons);
+            g_free(wmanager->priv->icon_workspaces[i]);
+        }
+        g_free(wmanager->priv->icon_workspaces);
     }
-    g_free(wmanager->priv->icon_workspaces);
     
     g_free(wmanager->priv);
     
@@ -592,7 +594,8 @@ xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager,
                                          wmanager);
     
     for(i = 0; i < wmanager->priv->nworkspaces; ++i) {
-        g_hash_table_destroy(wmanager->priv->icon_workspaces[i]->icons);
+        if(wmanager->priv->icon_workspaces[i]->icons)
+            g_hash_table_destroy(wmanager->priv->icon_workspaces[i]->icons);
         g_free(wmanager->priv->icon_workspaces[i]);
     }
     g_free(wmanager->priv->icon_workspaces);

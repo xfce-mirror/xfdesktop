@@ -8,7 +8,7 @@ UserMenu=%wheel
 CustomizeBackdrop=ALL
 CustomizeDesktopMenu=%wheel
 CustomizeWindowlist=NONE
-CustomizeWindowIcons=brian
+CustomizeDesktopIcons=brian
 ---  end xfdesktop.kioskrc  ---
 
 Additionally, the above can be added to $sysconfdir/xdg/xfce4/kiosk/kioskrc
@@ -20,7 +20,7 @@ UserMenu=%wheel
 CustomizeBackdrop=ALL
 CustomizeDesktopMenu=%wheel
 CustomizeWindowlist=NONE
-CustomizeWindowIcons=brian
+CustomizeDesktopIcons=brian
 ---  end kioskrc  ---
 
 Entries in $sysconfdir/xdg/xfce4/kiosk/kioskrc will override any entries in
@@ -48,5 +48,5 @@ CustomizeWindowlist: Whether or not to allow user modifications to the window
            list.  This includes showing or hiding window icons, as well as
            showing or hiding the menu itself.
 
-CustomizeWindowIcons: Whether or not to allow the user to enable or disable
-           the display of minimized applications as icons on the desktop.
+CustomizeDesktopIcons: Whether or not to allow the user to enable or disable
+           the display of desktop icons, or change their style.

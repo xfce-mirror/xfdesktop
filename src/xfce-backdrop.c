@@ -63,7 +63,6 @@ enum {
     LAST_SIGNAL
 };
 
-static GObjectClass *parent_class = NULL;
 static guint backdrop_signals[LAST_SIGNAL] = { 0 };
 
 /* helper functions */
@@ -190,30 +189,9 @@ create_gradient(GdkColor *color1, GdkColor *color2, gint width, gint height,
 
 /* gobject-related functions */
 
-GType
-xfce_backdrop_get_type()
-{
-    static GType backdrop_type = 0;
-    
-    if(!backdrop_type) {
-        static const GTypeInfo backdrop_info = {
-            sizeof(XfceBackdropClass),
-            NULL,
-            NULL,
-            (GClassInitFunc)xfce_backdrop_class_init,
-            NULL,
-            NULL,
-            sizeof(XfceBackdrop),
-            0,
-            (GInstanceInitFunc)xfce_backdrop_init
-        };
-        
-        backdrop_type = g_type_register_static(G_TYPE_OBJECT, "XfceBackdrop",
-                &backdrop_info, 0);
-    }
-    
-    return backdrop_type;
-}
+
+G_DEFINE_TYPE(XfceBackdrop, xfce_backdrop, G_TYPE_OBJECT)
+
 
 static void
 xfce_backdrop_class_init(XfceBackdropClass *klass)
@@ -221,9 +199,7 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
     GObjectClass *gobject_class;
     
     gobject_class = (GObjectClass *)klass;
-    
-    parent_class = g_type_class_peek_parent(klass);
-    
+        
     gobject_class->dispose = xfce_backdrop_dispose;
     gobject_class->finalize = xfce_backdrop_finalize;
     
@@ -252,7 +228,7 @@ xfce_backdrop_dispose(GObject *object)
         backdrop->priv->image_path = NULL;
     }
     
-    (*G_OBJECT_CLASS(parent_class)->dispose)(object);
+    G_OBJECT_CLASS(xfce_backdrop_parent_class)->dispose(object);
 }
 
 static void
@@ -265,7 +241,7 @@ xfce_backdrop_finalize(GObject *object)
     g_free(backdrop->priv);
     backdrop->priv = NULL;
     
-    (*G_OBJECT_CLASS(parent_class)->finalize)(object);
+    G_OBJECT_CLASS(xfce_backdrop_parent_class)->finalize(object);
 }
 
 

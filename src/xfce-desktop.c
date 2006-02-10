@@ -77,9 +77,11 @@
 #include "xfce-desktop.h"
 
 #ifdef ENABLE_DESKTOP_ICONS
+/* !! keep in sync with settings/menu_settings.c !! */
 typedef enum
 {
-    XFCE_DESKTOP_ICON_STYLE_WINDOWS = 0,
+    XFCE_DESKTOP_ICON_STYLE_NONE = 0,
+    XFCE_DESKTOP_ICON_STYLE_WINDOWS,
     XFCE_DESKTOP_ICON_STYLE_FILES,
 } XfceDesktopIconStyle;
 #endif
@@ -95,9 +97,8 @@ struct _XfceDesktopPriv
     XfceBackdrop **backdrops;
     
 #ifdef ENABLE_DESKTOP_ICONS
-    gboolean use_desktop_icons;
-    GtkWidget *icon_view;
     XfceDesktopIconStyle icons_style;
+    GtkWidget *icon_view;
 #endif
 };
 
@@ -115,18 +116,24 @@ static void load_initial_settings(XfceDesktop *desktop,
                                   McsClient *mcs_client);
 
 
-GtkWindowClass *parent_class = NULL;
-
-
 /* private functions */
 
 #ifdef ENABLE_DESKTOP_ICONS
 static void
-xfce_desktop_create_icon_view(XfceDesktop *desktop)
+xfce_desktop_setup_icon_view(XfceDesktop *desktop)
 {
     XfdesktopIconViewManager *manager = NULL;
     
+    if(desktop->priv->icon_view) {
+        gtk_widget_destroy(desktop->priv->icon_view);
+        desktop->priv->icon_view = NULL;
+    }
+    
     switch(desktop->priv->icons_style) {
+        case XFCE_DESKTOP_ICON_STYLE_NONE:
+            /* nada */
+            break;
+        
         case XFCE_DESKTOP_ICON_STYLE_WINDOWS:
             manager = xfdesktop_window_icon_manager_new(desktop->priv->gscreen);
             break;
@@ -161,6 +168,8 @@ xfce_desktop_create_icon_view(XfceDesktop *desktop)
         gtk_widget_show(desktop->priv->icon_view);
         gtk_container_add(GTK_CONTAINER(desktop), desktop->priv->icon_view);
     }
+    
+    gtk_widget_queue_draw(GTK_WIDGET(desktop));
 }
 #endif
 
@@ -545,18 +554,6 @@ load_initial_settings(XfceDesktop *desktop, McsClient *mcs_client)
     }
     
 #ifdef ENABLE_DESKTOP_ICONS
-    if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "usedesktopicons",
-            BACKDROP_CHANNEL, &setting))
-    {
-        if(setting->data.v_int)
-            desktop->priv->use_desktop_icons = TRUE;
-        else
-            desktop->priv->use_desktop_icons = FALSE;
-        mcs_setting_free(setting);
-        setting = NULL;
-    } else
-        desktop->priv->use_desktop_icons = TRUE;
-    
     if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "desktopiconstyle",
                                                  BACKDROP_CHANNEL, &setting))
     {
@@ -566,8 +563,7 @@ load_initial_settings(XfceDesktop *desktop, McsClient *mcs_client)
     } else
         desktop->priv->icons_style = XFCE_DESKTOP_ICON_STYLE_WINDOWS;
     
-    if(desktop->priv->use_desktop_icons)
-        xfce_desktop_create_icon_view(desktop);
+    xfce_desktop_setup_icon_view(desktop);
 #endif
     
     for(i = 0; i < desktop->priv->nbackdrops; i++) {
@@ -728,30 +724,9 @@ desktop_style_set_cb(GtkWidget *w, GtkStyle *old, gpointer user_data)
 
 /* gobject-related functions */
 
-GType
-xfce_desktop_get_type()
-{
-    static GType desktop_type = 0;
-    
-    if(!desktop_type) {
-        static const GTypeInfo desktop_info = {
-            sizeof(XfceDesktopClass),
-            NULL,
-            NULL,
-            (GClassInitFunc)xfce_desktop_class_init,
-            NULL,
-            NULL,
-            sizeof(XfceDesktop),
-            0,
-            (GInstanceInitFunc)xfce_desktop_init
-        };
-        
-        desktop_type = g_type_register_static(GTK_TYPE_WINDOW, "XfceDesktop",
-                &desktop_info, 0);
-    }
-    
-    return desktop_type;
-}
+
+G_DEFINE_TYPE(XfceDesktop, xfce_desktop, GTK_TYPE_WINDOW)
+
 
 static void
 xfce_desktop_class_init(XfceDesktopClass *klass)
@@ -761,8 +736,6 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     
     gobject_class = (GObjectClass *)klass;
     widget_class = (GtkWidgetClass *)klass;
-    
-    parent_class = g_type_class_peek_parent(klass);
     
     gobject_class->finalize = xfce_desktop_finalize;
     
@@ -791,7 +764,7 @@ xfce_desktop_finalize(GObject *object)
     g_free(desktop->priv);
     desktop->priv = NULL;
     
-    G_OBJECT_CLASS(parent_class)->finalize(object);
+    G_OBJECT_CLASS(xfce_desktop_parent_class)->finalize(object);
 }
 
 static void
@@ -808,7 +781,7 @@ xfce_desktop_realize(GtkWidget *widget)
     gtk_window_set_screen(GTK_WINDOW(desktop), desktop->priv->gscreen);
     
     /* chain up */
-    GTK_WIDGET_CLASS(parent_class)->realize(widget);
+    GTK_WIDGET_CLASS(xfce_desktop_parent_class)->realize(widget);
     
     gtk_window_set_title(GTK_WINDOW(desktop), _("Desktop"));
     if(GTK_WIDGET_DOUBLE_BUFFERED(GTK_WIDGET(desktop)))
@@ -942,8 +915,8 @@ xfce_desktop_expose(GtkWidget *w,
     if(evt->count != 0)
         return FALSE;
     
-    if(GTK_WIDGET_CLASS(parent_class)->expose_event)
-        GTK_WIDGET_CLASS(parent_class)->expose_event(w, evt);
+    if(GTK_WIDGET_CLASS(xfce_desktop_parent_class)->expose_event)
+        GTK_WIDGET_CLASS(xfce_desktop_parent_class)->expose_event(w, evt);
     
     gdk_window_clear_area(w->window, evt->area.x, evt->area.y,
             evt->area.width, evt->area.height);
@@ -1036,45 +1009,10 @@ xfce_desktop_settings_changed(McsClient *client, McsAction action,
     }
     
 #ifdef ENABLE_DESKTOP_ICONS
-    if(!strcmp(setting->name, "usedesktopicons")) {
-        if(setting->data.v_int) {
-            McsSetting *setting1 = NULL;
-            
-            desktop->priv->use_desktop_icons = TRUE;
-            
-            if(MCS_SUCCESS == mcs_client_get_setting(client,
-                                                     "desktopiconstyle",
-                                                     BACKDROP_CHANNEL,
-                                                     &setting1))
-            {
-                desktop->priv->icons_style = setting1->data.v_int;
-                mcs_setting_free(setting1);
-                setting1 = NULL;
-            }
-            
-            xfce_desktop_create_icon_view(desktop);
-        } else {
-            desktop->priv->use_desktop_icons = FALSE;
-            
-            gtk_widget_destroy(desktop->priv->icon_view);
-            desktop->priv->icon_view = NULL;
-            gtk_widget_queue_draw(GTK_WIDGET(desktop));
-        }
-        
-        return TRUE;
-    }
-    
     if(!strcmp(setting->name, "desktopiconstyle")) {
         if(setting->data.v_int != desktop->priv->icons_style) {
             desktop->priv->icons_style = setting->data.v_int;
-            
-            if(desktop->priv->use_desktop_icons) {
-                if(desktop->priv->icon_view)
-                    gtk_widget_destroy(desktop->priv->icon_view);
-                
-                xfce_desktop_create_icon_view(desktop);
-                gtk_widget_queue_draw(GTK_WIDGET(desktop));
-            }
+            xfce_desktop_setup_icon_view(desktop);
         }
         
         return TRUE;

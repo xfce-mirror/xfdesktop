@@ -2029,13 +2029,13 @@ xfdesktop_icon_view_remove_all(XfdesktopIconView *icon_view)
     g_list_free(icon_view->priv->selected_icons);
     icon_view->priv->selected_icons = NULL;
     
-    memset(icon_view->priv->grid_layout, 0, icon_view->priv->nrows
-                                            * icon_view->priv->ncols
-                                            * sizeof(gpointer));
-    
     if(GTK_WIDGET_REALIZED(GTK_WIDGET(icon_view))) {
         GdkWindow *window;
         gint w, h;
+        
+        memset(icon_view->priv->grid_layout, 0, icon_view->priv->nrows
+                                                * icon_view->priv->ncols
+                                                * sizeof(gpointer));
         
         window = GTK_WIDGET(icon_view)->window;
         gdk_drawable_get_size(GDK_DRAWABLE(window), &w, &h);
