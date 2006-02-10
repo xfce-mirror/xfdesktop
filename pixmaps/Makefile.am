@@ -25,6 +25,11 @@ pixmaps_DATA = \
 	xfce4_xicon3.png \
 	xfce4_xicon4.png
 
+pixmapsxdir = $(datadir)/pixmaps/xfdesktop
+
+pixmapsx_DATA = \
+	xfdesktop-fallback-icon.png
+
 highlightdir = $(datadir)/pixmaps/xfce4/xfdesktop
 
 highlight_DATA = \

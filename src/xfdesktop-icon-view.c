@@ -711,6 +711,11 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
     widget->window = icon_view->priv->parent_window->window;
     GTK_WIDGET_SET_FLAGS(widget, GTK_REALIZED);
     
+    /* there's no reason to start up the manager before we're realized,
+     * but we do NOT shut it down if we unrealize, since there may not be
+     * a reason to do so.  shutdown occurs in finalize. */
+    xfdesktop_icon_view_manager_init(icon_view->priv->manager, icon_view);
+    
     gtk_window_set_accept_focus(GTK_WINDOW(icon_view->priv->parent_window),
                                 TRUE);
     
@@ -1926,8 +1931,6 @@ xfdesktop_icon_view_new(XfdesktopIconViewManager *manager)
     
     icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW, NULL);
     icon_view->priv->manager = manager;
-    
-    xfdesktop_icon_view_manager_init(manager, icon_view);
     
     return GTK_WIDGET(icon_view);
 }
