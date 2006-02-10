@@ -233,7 +233,10 @@ main(int argc, char **argv)
 
     /* bind gettext textdomain */
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
-
+    
+#ifdef HAVE_THUNAR_VFS  /* move to xfce-desktop.c? */
+    g_thread_init(NULL);
+#endif
     gtk_init(&argc, &argv);
 
     if(xfdesktop_check_is_running(&xid)) {

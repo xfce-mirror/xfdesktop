@@ -271,7 +271,7 @@ xfdesktop_icon_view_finalize(GObject *obj)
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(obj);
     
     if(icon_view->priv->manager) {
-        xfdesktop_icon_view_manager_fini(icon_view->priv->manager, icon_view);
+        xfdesktop_icon_view_manager_fini(icon_view->priv->manager);
         g_object_unref(G_OBJECT(icon_view->priv->manager));
     }
     

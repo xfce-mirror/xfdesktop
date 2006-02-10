@@ -48,8 +48,7 @@ static void xfdesktop_window_icon_manager_icon_view_manager_init(XfdesktopIconVi
 
 static gboolean xfdesktop_window_icon_manager_real_init(XfdesktopIconViewManager *manager,
                                                         XfdesktopIconView *icon_view);
-static void xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager,
-                                               XfdesktopIconView *icon_view);
+static void xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager);
 
 enum
 {
@@ -557,8 +556,7 @@ xfdesktop_window_icon_manager_real_init(XfdesktopIconViewManager *manager,
 }
 
 static void
-xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager,
-                                   XfdesktopIconView *icon_view)
+xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager)
 {
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
     gint i;
@@ -589,7 +587,7 @@ xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager,
     }
     
     xfdesktop_icon_view_remove_all(wmanager->priv->icon_view);
-    g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view),
+    g_signal_handlers_disconnect_by_func(G_OBJECT(wmanager->priv->icon_view),
                                          G_CALLBACK(xfdesktop_window_icon_manager_icon_selected_cb),
                                          wmanager);
     

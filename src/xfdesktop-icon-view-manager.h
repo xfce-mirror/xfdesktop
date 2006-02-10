@@ -42,7 +42,7 @@ struct _XfdesktopIconViewManagerIface
     
     /*< virtual functions >*/
     gboolean (*manager_init)(XfdesktopIconViewManager *manager, struct _XfdesktopIconView *icon_view);
-    void (*manager_fini)(XfdesktopIconViewManager *manager, struct _XfdesktopIconView *icon_view);
+    void (*manager_fini)(XfdesktopIconViewManager *manager);
 };
 
 GType xfdesktop_icon_view_manager_get_type() G_GNUC_CONST;
@@ -51,8 +51,7 @@ GType xfdesktop_icon_view_manager_get_type() G_GNUC_CONST;
 
 gboolean xfdesktop_icon_view_manager_init(XfdesktopIconViewManager *manager,
                                           struct _XfdesktopIconView *icon_view);
-void xfdesktop_icon_view_manager_fini(XfdesktopIconViewManager *manager,
-                                      struct _XfdesktopIconView *icon_view);
+void xfdesktop_icon_view_manager_fini(XfdesktopIconViewManager *manager);
 
 G_END_DECLS
 

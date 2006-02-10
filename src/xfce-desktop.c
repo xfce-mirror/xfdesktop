@@ -141,15 +141,17 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
 #ifdef HAVE_THUNAR_VFS
         case XFCE_DESKTOP_ICON_STYLE_FILES:
             {
-                gchar *desktop_path = xfce_get_homefile(xfce_get_homedir(),
-                                                        "Desktop",
+                gchar *desktop_path = xfce_get_homefile("Desktop",
                                                         NULL);
+                thunar_vfs_init();
                 ThunarVfsPath *path = thunar_vfs_path_new(desktop_path, NULL);
-                if(path)
+                if(path) {
                     manager = xfdesktop_file_icon_manager_new(path);
-                else {
+                    thunar_vfs_path_unref(path);
+                } else {
                     g_critical("Unable to create ThunarVfsPath for '%s'",
                                desktop_path);
+                    thunar_vfs_shutdown();
                 }
                 g_free(desktop_path);
             }

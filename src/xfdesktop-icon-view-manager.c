@@ -70,16 +70,14 @@ xfdesktop_icon_view_manager_init(XfdesktopIconViewManager *manager,
 }
 
 void
-xfdesktop_icon_view_manager_fini(XfdesktopIconViewManager *manager,
-                                 XfdesktopIconView *icon_view)
+xfdesktop_icon_view_manager_fini(XfdesktopIconViewManager *manager)
 {
     XfdesktopIconViewManagerIface *iface;
     
-    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager)
-                     && XFDESKTOP_IS_ICON_VIEW(icon_view));
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager));
     
     iface = XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(manager);
     g_return_if_fail(iface->manager_fini);
     
-    iface->manager_fini(manager, icon_view);
+    iface->manager_fini(manager);
 }
