@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-02-10 07:11-0800\n"
-"PO-Revision-Date: 2006-01-29 16:14+0900\n"
+"PO-Revision-Date: 2006-02-11 12:25+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -670,22 +670,20 @@ msgid "_Edit desktop menu"
 msgstr "デスクトップメニューの編集(_E)"
 
 #: ../settings/menu_settings.c:275
-#, fuzzy
 msgid "Desktop Icons"
-msgstr "デスクトップメニュー"
+msgstr "デスクトップアイコン"
 
 #: ../settings/menu_settings.c:280
 msgid "None"
-msgstr ""
+msgstr "無し"
 
 #: ../settings/menu_settings.c:281
-#, fuzzy
 msgid "Minimized application icons"
-msgstr "アプリケーションアイコンを表示する(_S)"
+msgstr "最小化されたアプリアイコン"
 
 #: ../settings/menu_settings.c:283
 msgid "File/launcher icons"
-msgstr ""
+msgstr "ファイル/ランチャーアイコン"
 
 #: ../src/main.c:254
 #, c-format
@@ -725,80 +723,78 @@ msgstr "<i>ワークスペース %d</i>"
 
 #: ../src/windowlist.c:268 ../src/windowlist.c:271
 msgid "_Add Workspace"
-msgstr "ワークスペースを追加する(_A)"
+msgstr "ワークスペースを追加(_A)"
 
 #: ../src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "ワークスペース %d を削除する(_R)"
+msgstr "ワークスペース %d を削除(_R)"
 
 #: ../src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "ワークスペース '%s' を削除する(_R)"
+msgstr "ワークスペース「%s」を削除(_R)"
 
 #: ../src/xfdesktop-file-icon.c:367
 #, c-format
 msgid "Rename \"%s\""
-msgstr ""
+msgstr "「%s」の名前変更"
 
 #: ../src/xfdesktop-file-icon.c:397
 msgid "Enter the new name:"
-msgstr ""
+msgstr "新しい名前を入力して下さい:"
 
 #: ../src/xfdesktop-file-icon.c:423
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr ""
+msgstr "「%s」の名前を「%s」に変更するのに失敗しました:"
 
 #: ../src/xfdesktop-file-icon.c:466
 msgid "If you delete a file, it is permanently lost."
-msgstr ""
+msgstr "削除されたファイルは二度と復元できません。"
 
+# FIXME: format string
 #: ../src/xfdesktop-file-icon.c:508
 msgid "_Open With "
-msgstr ""
+msgstr "次で開く(_O)"
 
+# FIXME: format string
 #: ../src/xfdesktop-file-icon.c:508
 msgid "Open With "
-msgstr ""
+msgstr "次で開く "
 
 #: ../src/xfdesktop-file-icon.c:567
 msgid "_Open"
-msgstr ""
+msgstr "開く(_O)"
 
 #: ../src/xfdesktop-file-icon.c:575
 msgid "_Execute"
-msgstr ""
+msgstr "実行(_E)"
 
 #. FIXME: implement this
 #: ../src/xfdesktop-file-icon.c:614
 msgid "Open With Other _Application..."
-msgstr ""
+msgstr "他のアプリケーションで開く(_A)..."
 
 #: ../src/xfdesktop-file-icon.c:629
-#, fuzzy
 msgid "_Copy File"
-msgstr "ファイル(_F)"
+msgstr "コピー(_C)"
 
 #: ../src/xfdesktop-file-icon.c:638
-#, fuzzy
 msgid "Cu_t File"
-msgstr "ファイル(_F)"
+msgstr "切り取り(_T)"
 
 #: ../src/xfdesktop-file-icon.c:646
-#, fuzzy
 msgid "_Delete File"
-msgstr "メニューファイルを選択して下さい"
+msgstr "削除(_D)"
 
 #: ../src/xfdesktop-file-icon.c:657
 msgid "_Rename..."
-msgstr ""
+msgstr "名前変更(_R)..."
 
 #: ../src/xfdesktop-file-icon.c:670
-#, fuzzy
 msgid "_Properties..."
-msgstr "プロパティの編集"
+msgstr "プロパティ(_P)..."
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
@@ -823,9 +819,3 @@ msgstr "Xfce 4 デスクトップマネージャーの設定"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 デスクトップの設定"
-
-#~ msgid "Window Icons"
-#~ msgstr "ウィンドウアイコン"
-
-#~ msgid "Show minimized window _icons on the desktop"
-#~ msgstr "デスクトップ上に最小化したウィンドウアイコンを表示する(_I)"
