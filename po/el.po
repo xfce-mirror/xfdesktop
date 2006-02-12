@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-10 07:11-0800\n"
-"PO-Revision-Date: 2006-02-05 02:04+0200\n"
+"POT-Creation-Date: 2006-02-12 12:29+0200\n"
+"PO-Revision-Date: 2006-02-12 12:02+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <i18ngr@lists.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -395,7 +395,7 @@ msgstr "Τίτλος _κουμπιού:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:743
 msgid "_Show title in button"
-msgstr "Προβολή τίτλου στο κουμπί"
+msgstr "_Προβολή τίτλου στο κουμπί"
 
 #: ../panel-plugin/desktop-menu-plugin.c:750
 msgid "Menu File"
@@ -403,11 +403,11 @@ msgstr "Αρχείο Μενού"
 
 #: ../panel-plugin/desktop-menu-plugin.c:762
 msgid "Use default _desktop menu file"
-msgstr "Χρήση προκαθορισμένου αρχείου μενού"
+msgstr "Χρήση προκαθορισμένου αρχείου _μενού"
 
 #: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Use _custom menu file:"
-msgstr "Χρήση προσαρμοσμένου αρχείου μενού"
+msgstr "Χρήση _προσαρμοσμένου αρχείου μενού"
 
 #: ../panel-plugin/desktop-menu-plugin.c:823
 #: ../panel-plugin/desktop-menu-plugin.c:825
@@ -424,7 +424,7 @@ msgstr "Εικονίδιο _Κουμπιού"
 
 #: ../panel-plugin/desktop-menu-plugin.c:868
 msgid "Show _icons in menu"
-msgstr "Εμφάνιση εικονιδίων στο μενού"
+msgstr "Εμφάνιση εικον_ιδίων στο μενού"
 
 #: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:202
 #, c-format
@@ -613,7 +613,7 @@ msgstr "_Πρώτο Χρώμα:"
 
 #: ../settings/backdrop_settings.c:1124
 msgid "_Second Color:"
-msgstr "Δεύτερο Χρώμα:"
+msgstr "_Δεύτερο Χρώμα:"
 
 #: ../settings/backdrop_settings.c:1149
 msgid "Image"
@@ -668,25 +668,23 @@ msgstr "_Προβολή των εικονιδίων των εφαρμογών"
 
 #: ../settings/menu_settings.c:263
 msgid "_Edit desktop menu"
-msgstr "Επεξεργασία μενού επιφάνειας εργασίας"
+msgstr "_Επεξεργασία μενού επιφάνειας εργασίας"
 
 #: ../settings/menu_settings.c:275
-#, fuzzy
 msgid "Desktop Icons"
-msgstr "Μενού Επιφάνειας Εργασίας"
+msgstr "Εικονίδια Επιφάνειας Εργασίας"
 
 #: ../settings/menu_settings.c:280
 msgid "None"
-msgstr ""
+msgstr "Καθόλου"
 
 #: ../settings/menu_settings.c:281
-#, fuzzy
 msgid "Minimized application icons"
-msgstr "_Προβολή των εικονιδίων των εφαρμογών"
+msgstr "Ελάχιστοποιημένες εφαρμογές"
 
 #: ../settings/menu_settings.c:283
 msgid "File/launcher icons"
-msgstr ""
+msgstr "Αρχεία και συντομεύσεις"
 
 #: ../src/main.c:254
 #, c-format
@@ -730,7 +728,7 @@ msgstr "<i>Χώρος Εργασίας %d</i>"
 
 #: ../src/windowlist.c:268 ../src/windowlist.c:271
 msgid "_Add Workspace"
-msgstr "Προσθήκη χώρου εργασίας"
+msgstr "_Προσθήκη χώρου εργασίας"
 
 #: ../src/windowlist.c:279
 #, c-format
@@ -745,65 +743,61 @@ msgstr "_Αφαίρεση Χώρου Εργασίας '%s'"
 #: ../src/xfdesktop-file-icon.c:367
 #, c-format
 msgid "Rename \"%s\""
-msgstr ""
+msgstr "Μετονομασία του \"%s\""
 
 #: ../src/xfdesktop-file-icon.c:397
 msgid "Enter the new name:"
-msgstr ""
+msgstr "Εισάγετε το νέο όνομα:"
 
 #: ../src/xfdesktop-file-icon.c:423
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Η μετονομασία του \"%s\" σε \"%s\" απέτυχε:"
 
 #: ../src/xfdesktop-file-icon.c:466
 msgid "If you delete a file, it is permanently lost."
-msgstr ""
+msgstr "Εάν διαγράψετε ένα αρχείο, χάνεται για πάντα."
 
 #: ../src/xfdesktop-file-icon.c:508
 msgid "_Open With "
-msgstr ""
+msgstr "Άνοιγμα _Με"
 
 #: ../src/xfdesktop-file-icon.c:508
 msgid "Open With "
-msgstr ""
+msgstr "Άνοιγμα Με"
 
 #: ../src/xfdesktop-file-icon.c:567
 msgid "_Open"
-msgstr ""
+msgstr "_Άνοιγμα"
 
 #: ../src/xfdesktop-file-icon.c:575
 msgid "_Execute"
-msgstr ""
+msgstr "_Εκτέλεση"
 
 #. FIXME: implement this
 #: ../src/xfdesktop-file-icon.c:614
 msgid "Open With Other _Application..."
-msgstr ""
+msgstr "Άνοιγμα Με Άλλη Ε_φαρμογή..."
 
 #: ../src/xfdesktop-file-icon.c:629
-#, fuzzy
 msgid "_Copy File"
-msgstr "_Αρχείο"
+msgstr "Α_ντιγραφή Αρχείου"
 
 #: ../src/xfdesktop-file-icon.c:638
-#, fuzzy
 msgid "Cu_t File"
-msgstr "_Αρχείο"
+msgstr "Α_ποκοπή Αρχείου"
 
 #: ../src/xfdesktop-file-icon.c:646
-#, fuzzy
 msgid "_Delete File"
-msgstr "Επιλογή Αρχείου Μενού"
+msgstr "_Διαγραφή Αρχείου"
 
 #: ../src/xfdesktop-file-icon.c:657
 msgid "_Rename..."
-msgstr ""
+msgstr "_Μετονομασία..."
 
 #: ../src/xfdesktop-file-icon.c:670
-#, fuzzy
 msgid "_Properties..."
-msgstr "Επεξεργασία Ιδιοτήτων"
+msgstr "_Ιδιότητες..."
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
