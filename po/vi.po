@@ -2,18 +2,20 @@
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Lâm Vĩnh Niên <nienvl@yahoo.ca>, 2004.
+# Phan Vĩnh Thịnh <teppi@vnlinux.org>, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-10 07:11-0800\n"
-"PO-Revision-Date: 2005-10-09 22:25+0900\n"
-"Last-Translator: Lâm Vĩnh Niên <nienvl@yahoo.ca>\n"
-"Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2006-01-26 20:09+0900\n"
+"PO-Revision-Date: 2006-02-12 03:09+0300\n"
+"Last-Translator: Phan Vĩnh Thịnh <teppi@vnlinux.org>\n"
+"Language-Team: Vietnamese <none@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: ../menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
@@ -196,7 +198,7 @@ msgid "Select command"
 msgstr "Chọn lệnh"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:464
+#: ../menueditor/menueditor.c:535
 msgid "Question"
 msgstr "Câu hỏi"
 
@@ -313,7 +315,6 @@ msgid "Hidden"
 msgstr "Ẩn"
 
 #: ../menueditor/utils.c:650
-#, fuzzy
 msgid "Select icon"
 msgstr "Chọn biểu tượng"
 
@@ -338,13 +339,15 @@ msgstr "Thực đơn Xfce"
 #: ../modules/menu/desktop-menu-file.c:118
 #: ../modules/menu/desktop-menu-file.c:133
 msgid "Unable to quit session."
-msgstr ""
+msgstr "Không thoát được buổi làm việc."
 
 #: ../modules/menu/desktop-menu-file.c:119
 msgid ""
 "Quitting the session requires that Xfce's session manager (xfce4-session) is "
 "running, but it was not detected.  Please quit Xfce via another means."
 msgstr ""
+"Để thoát buổi làm việc cần trình quản lý xfce4-session đang chạy, nhưng "
+"không tìm ra nó.  Xin hãy thoát Xfce bằng cách khác."
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
@@ -352,6 +355,8 @@ msgid ""
 "Quitting the session requires the 'xfce4-session-logout' command, but it "
 "could not be found: %s"
 msgstr ""
+"Để thoát buổi làm việc cần câu lệnh 'xfce4-session-logout', nhưng không "
+"tìm thấy nó: %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
@@ -369,55 +374,47 @@ msgstr "Chọn tập tin thực đơn"
 msgid "Menu Files"
 msgstr "Tập tin thực đơn"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:169
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:153
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Không thể gọi xfce4-menueditor: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:699
-#, fuzzy
 msgid "Edit Properties"
-msgstr "Biên tập danh sách phông nền"
+msgstr "Sửa thuộc tính"
 
 #: ../panel-plugin/desktop-menu-plugin.c:717
-#, fuzzy
 msgid "Button"
-msgstr "Biểu tượng _nút:"
+msgstr "Nút"
 
 #: ../panel-plugin/desktop-menu-plugin.c:730
-#, fuzzy
 msgid "Button _title:"
-msgstr "Biểu tượng _nút:"
+msgstr "Tiêu đề _nút:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:743
 msgid "_Show title in button"
-msgstr ""
+msgstr "_Hiển thị tiêu đề trong nút"
 
 #: ../panel-plugin/desktop-menu-plugin.c:750
-#, fuzzy
 msgid "Menu File"
 msgstr "Tập tin thực đơn"
 
 #: ../panel-plugin/desktop-menu-plugin.c:762
-#, fuzzy
 msgid "Use default _desktop menu file"
-msgstr "_Biên tập thực đơn desktop"
+msgstr "Dùng tập tin thực đơn _mặc định"
 
 #: ../panel-plugin/desktop-menu-plugin.c:771
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "Mở tập tin thực đơn"
+msgstr "Dùng tập tin thực đơn _cá nhân"
 
 #: ../panel-plugin/desktop-menu-plugin.c:823
 #: ../panel-plugin/desktop-menu-plugin.c:825
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "Thự_c đơn"
+msgstr "_Sửa thực đơn"
 
 #: ../panel-plugin/desktop-menu-plugin.c:832
-#, fuzzy
 msgid "Icons"
-msgstr "Biểu tượng:"
+msgstr "Biểu tượng"
 
 #: ../panel-plugin/desktop-menu-plugin.c:844
 msgid "_Button icon:"
@@ -427,7 +424,7 @@ msgstr "Biểu tượng _nút:"
 msgid "Show _icons in menu"
 msgstr "Hiển thị _biểu tượng trong thực đơn"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:202
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:735
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -478,7 +475,7 @@ msgstr "Biên tập danh sách phông nền"
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:944
-#: ../src/xfce-desktop.c:788
+#: ../src/xfce-desktop.c:2073
 msgid "Desktop"
 msgstr "Desktop"
 
@@ -523,32 +520,29 @@ msgid "Auto"
 msgstr "Tự động"
 
 #: ../settings/backdrop_settings.c:778
-#, fuzzy
 msgid "A_djust Brightness:"
 msgstr "Chỉnh độ _sáng:"
 
 #: ../settings/backdrop_settings.c:834
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr ""
+msgstr "Xfce sẽ không thể quản lý nền (%s)."
 
 #: ../settings/backdrop_settings.c:835
 msgid "Unknown Error"
-msgstr ""
+msgstr "Lỗi không rõ nguyên nhân"
 
-#: ../settings/backdrop_settings.c:839 ../src/xfdesktop-file-icon.c:425
-#: ../src/xfdesktop-file-icon.c:446
+#: ../settings/backdrop_settings.c:839
 msgid "Error"
-msgstr ""
+msgstr "Lỗi"
 
 #: ../settings/backdrop_settings.c:841
 msgid "Unable to start xfdesktop"
-msgstr ""
+msgstr "Không chạy được xfdesktop"
 
 #: ../settings/backdrop_settings.c:859
-#, fuzzy
 msgid "Information"
-msgstr "Bỏ qua các thay đổi"
+msgstr "Thông tin"
 
 #: ../settings/backdrop_settings.c:869
 msgid ""
@@ -558,10 +552,15 @@ msgid ""
 "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
+"Để chắc chắn là Xfce sẽ không quản lý nền trong lần khởi động tiếp "
+"theo, xin hãy ghi nhớ lại buổi làm việc khi thoát.  Nếu không dùng Trình "
+"quản lý buổi làm việc của Xfce (xfce4-session), thì cần tự sửa tập tin "
+"~/.config/xfce4/xinitrc.  Chi tiết có trong tài liệu hướng dẫn "
+"trên http://xfce.org/."
 
 #: ../settings/backdrop_settings.c:877
 msgid "_Do not show this again"
-msgstr ""
+msgstr "_Không hiển thị lại nữa"
 
 #. header
 #: ../settings/backdrop_settings.c:959
@@ -571,16 +570,16 @@ msgstr "Các thiết lập desktop"
 
 #: ../settings/backdrop_settings.c:964
 msgid "Allow _Xfce to manage the desktop"
-msgstr ""
+msgstr "Cho phép _Xfce quản lý nền"
 
 #: ../settings/backdrop_settings.c:1005
 msgid "Stretch single backdrop onto _all monitors"
-msgstr ""
+msgstr "Kéo một hình ảnh nền lên trên _mọi màn hình"
 
 #. add the single backdrop settings page to the main notebook
 #: ../settings/backdrop_settings.c:1019 ../settings/backdrop_settings.c:1224
 msgid "_Appearance"
-msgstr ""
+msgstr "_Vẻ ngoài"
 
 #. color settings frame
 #: ../settings/backdrop_settings.c:1045
@@ -636,81 +635,68 @@ msgstr "Màn hình %d, Monitor %d"
 
 #: ../settings/backdrop_settings.c:1259
 msgid "_Behavior"
-msgstr ""
+msgstr "_Cách làm việc"
 
-#: ../settings/menu_settings.c:193
-#, fuzzy
+#: ../settings/menu_settings.c:174
 msgid "Window List Menu"
-msgstr "Danh sách cửa sổ"
+msgstr "Thực đơn danh sách cửa sổ"
 
-#: ../settings/menu_settings.c:201
+#: ../settings/menu_settings.c:182
 msgid "Show window _list"
 msgstr "Hiển thị _danh sách cửa sổ"
 
-#: ../settings/menu_settings.c:216
+#: ../settings/menu_settings.c:197
 msgid "Show _window icons"
 msgstr "Hiển thị biểu tượng cử_a sổ"
 
-#: ../settings/menu_settings.c:229
+#: ../settings/menu_settings.c:210
 msgid "Desktop Menu"
 msgstr "Thực đơn desktop"
 
-#: ../settings/menu_settings.c:237
+#: ../settings/menu_settings.c:218
 msgid "Show desktop _menu"
 msgstr "Hiển thị thự_c đơn desktop"
 
-#: ../settings/menu_settings.c:252
-#, fuzzy
+#: ../settings/menu_settings.c:233
 msgid "_Show application icons"
-msgstr "Hiển thị biểu tượng ứng _dụng"
+msgstr "_Hiển thị biểu tượng ứng dụng"
 
-#: ../settings/menu_settings.c:263
+#: ../settings/menu_settings.c:244
 msgid "_Edit desktop menu"
 msgstr "_Biên tập thực đơn desktop"
 
-#: ../settings/menu_settings.c:275
-#, fuzzy
-msgid "Desktop Icons"
-msgstr "Thực đơn desktop"
+#: ../settings/menu_settings.c:256
+msgid "Window Icons"
+msgstr "Biểu tượng cửa sổ"
 
-#: ../settings/menu_settings.c:280
-msgid "None"
-msgstr ""
+#: ../settings/menu_settings.c:264
+msgid "Show minimized window _icons on the desktop"
+msgstr "Hiển thị _biểu tượng cửa sổ thu nhỏ trên nền"
 
-#: ../settings/menu_settings.c:281
-#, fuzzy
-msgid "Minimized application icons"
-msgstr "Hiển thị biểu tượng ứng _dụng"
-
-#: ../settings/menu_settings.c:283
-msgid "File/launcher icons"
-msgstr ""
-
-#: ../src/main.c:254
+#: ../src/main.c:251
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Tuỳ chọn không rõ: %s\n"
 
-#: ../src/main.c:255
+#: ../src/main.c:252
 msgid "Options are:\n"
 msgstr "Tuỳ chọn là:\n"
 
-#: ../src/main.c:256
+#: ../src/main.c:253
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload     Nạp lại mọi thiết lập, làm tươi danh sách hình ảnh\n"
 
-#: ../src/main.c:257
+#: ../src/main.c:254
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Bập thực đơn (ở vị trí con chuột hiện tại)\n"
 
-#: ../src/main.c:258
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+#: ../src/main.c:255
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Bật danh sách cửa sổ (ở vị trí con chuột hiện tại)\n"
 
-#: ../src/main.c:259
+#: ../src/main.c:256
 msgid "    -quit        Cause xfdesktop to quit\n"
-msgstr ""
+msgstr "    -quit        Thoát xfdesktop\n"
 
 #: ../src/windowlist.c:193
 #, c-format
@@ -736,95 +722,27 @@ msgstr "Gỡ _bỏ vùng làm việc %d"
 msgid "_Remove Workspace '%s'"
 msgstr "Gỡ _bỏ vùng làm việc '%s'"
 
-#: ../src/xfdesktop-file-icon.c:367
-#, c-format
-msgid "Rename \"%s\""
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:397
-msgid "Enter the new name:"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:423
-#, c-format
-msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:466
-msgid "If you delete a file, it is permanently lost."
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:508
-msgid "_Open With "
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:508
-msgid "Open With "
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:567
-msgid "_Open"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:575
-msgid "_Execute"
-msgstr ""
-
-#. FIXME: implement this
-#: ../src/xfdesktop-file-icon.c:614
-msgid "Open With Other _Application..."
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:629
-#, fuzzy
-msgid "_Copy File"
-msgstr "_Tập tin"
-
-#: ../src/xfdesktop-file-icon.c:638
-#, fuzzy
-msgid "Cu_t File"
-msgstr "_Tập tin"
-
-#: ../src/xfdesktop-file-icon.c:646
-#, fuzzy
-msgid "_Delete File"
-msgstr "Chọn tập tin thực đơn"
-
-#: ../src/xfdesktop-file-icon.c:657
-msgid "_Rename..."
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:670
-#, fuzzy
-msgid "_Properties..."
-msgstr "Biên tập danh sách phông nền"
-
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr ""
+msgstr "Công cụ soạn thảo thực đơn đồ họa"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
-msgstr ""
+msgstr "Trình soạn thảo thực đơn"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Menu Editor"
-msgstr "Thực đơn Xfce"
+msgstr "Trình soạn thảo thực đơn Xfce 4"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr ""
+msgstr "Hiển thị một thực đơn gồm tất cả các dạng ứng dụng đã cài đặt"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr ""
+msgstr "Thiết lập cho trình quản lý nền Xfce 4"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Desktop Settings"
-msgstr "Các thiết lập desktop"
+msgstr "Thiết lập nền Xfce 4"
 
-#, fuzzy
-#~ msgid "Window Icons"
-#~ msgstr "Danh sách cửa sổ"
