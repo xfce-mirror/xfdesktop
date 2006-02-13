@@ -51,7 +51,7 @@ struct _XfdesktopFileIconClass
 
 GType xfdesktop_file_icon_get_type() G_GNUC_CONST;
 
-XfdesktopFileIcon *xfdesktop_file_icon_new(ThunarVfsPath *path,
+XfdesktopFileIcon *xfdesktop_file_icon_new(ThunarVfsInfo *info,
                                            GdkScreen *screen);
 
 G_END_DECLS

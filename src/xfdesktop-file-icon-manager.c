@@ -1,7 +1,8 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright (c) 2006 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright(c) 2006 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright(c) 2006 Benedikt Meurer, <benny@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -166,7 +167,7 @@ xfdesktop_file_icon_manager_volume_manager_cb(ThunarVfsMonitor *monitor,
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     XfdesktopFileIcon *icon;
-    const gchar *name;
+    ThunarVfsInfo *info;
     
     switch(event) {
         case THUNAR_VFS_MONITOR_EVENT_CHANGED:
@@ -175,17 +176,20 @@ xfdesktop_file_icon_manager_volume_manager_cb(ThunarVfsMonitor *monitor,
         
         case THUNAR_VFS_MONITOR_EVENT_CREATED:
             DBG("got created event");
-            
-            name = thunar_vfs_path_get_name(event_path);
-            if(name && name[0] == '.')
-                break;
-        
-            thunar_vfs_path_ref(event_path);
-            icon = xfdesktop_file_icon_new(event_path,
-                                           fmanager->priv->gscreen);                
-            g_hash_table_insert(fmanager->priv->icons, event_path, icon);
-            xfdesktop_icon_view_add_item(fmanager->priv->icon_view,
-                                         XFDESKTOP_ICON(icon));
+
+            info = thunar_vfs_info_new_for_path(event_path, NULL);
+            if(info) {
+                if((info->flags & THUNAR_VFS_FILE_FLAGS_HIDDEN) == 0) {
+                    thunar_vfs_path_ref(event_path);
+                    icon = xfdesktop_file_icon_new(info,
+                                                   fmanager->priv->gscreen);                
+                    g_hash_table_insert(fmanager->priv->icons, event_path, icon);
+                    xfdesktop_icon_view_add_item(fmanager->priv->icon_view,
+                                                 XFDESKTOP_ICON(icon));
+                }
+
+                thunar_vfs_info_unref(info);
+            }
             break;
         
         case THUNAR_VFS_MONITOR_EVENT_DELETED:
@@ -211,7 +215,6 @@ xfdesktop_file_icon_manager_listdir_infos_ready_cb(ThunarVfsJob *job,
     GList *l;
     ThunarVfsInfo *info;
     XfdesktopFileIcon *icon;
-    const gchar *name;
     
     g_return_val_if_fail(job == fmanager->priv->list_job, FALSE);
     
@@ -222,13 +225,12 @@ xfdesktop_file_icon_manager_listdir_infos_ready_cb(ThunarVfsJob *job,
         
         DBG("got a ThunarVfsInfo: %s", info->display_name);
         
-        name = thunar_vfs_path_get_name(info->path);
-        if(name && name[0] == '.')
+        if((info->flags & THUNAR_VFS_FILE_FLAGS_HIDDEN) != 0)
             continue;
         
-        thunar_vfs_path_ref(info->path);
-        icon = xfdesktop_file_icon_new(info->path, fmanager->priv->gscreen);
+        icon = xfdesktop_file_icon_new(info, fmanager->priv->gscreen);
             
+        thunar_vfs_path_ref(info->path);
         g_hash_table_insert(fmanager->priv->icons, info->path, icon);
         xfdesktop_icon_view_add_item(fmanager->priv->icon_view,
                                      XFDESKTOP_ICON(icon));

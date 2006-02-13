@@ -1,7 +1,8 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright (c) 2006 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright(c) 2006 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright(c) 2006 Benedikt Meurer, <benny@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -39,9 +40,8 @@ struct _XfdesktopFileIconPrivate
     gint16 col;
     GdkPixbuf *pix;
     gint cur_pix_size;
-    gchar *label;
     GdkRectangle extents;
-    ThunarVfsPath *path;
+    ThunarVfsInfo *info;
     GdkScreen *gscreen;
 };
 
@@ -69,7 +69,6 @@ static void xfdesktop_file_icon_activated(XfdesktopIcon *icon);
 static void xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon);
 
 
-static ThunarVfsMimeInfo *xfdesktop_file_icon_get_mime_info(XfdesktopFileIcon *icon);
 static GdkPixbuf *xfdesktop_fallback_icon = NULL;
 
 static GQuark xfdesktop_mime_app_quark = 0;
@@ -81,7 +80,6 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopFileIcon, xfdesktop_file_icon,
                                              xfdesktop_file_icon_icon_init))
 
 
-/* FIXME: memleak */
 static ThunarVfsMimeDatabase *thunar_mime_database = NULL;
 
 
@@ -98,6 +96,14 @@ xfdesktop_file_icon_class_init(XfdesktopFileIconClass *klass)
 static void
 xfdesktop_file_icon_init(XfdesktopFileIcon *icon)
 {
+    /* grab a shared reference on the mime database */
+    if(thunar_mime_database == NULL) {
+        thunar_mime_database = thunar_vfs_mime_database_get_default();
+        g_object_add_weak_pointer(G_OBJECT(thunar_mime_database), (gpointer) &thunar_mime_database);
+    } else {
+        g_object_ref(G_OBJECT(thunar_mime_database));
+    }
+
     icon->priv = g_new0(XfdesktopFileIconPrivate, 1);
 }
 
@@ -109,10 +115,8 @@ xfdesktop_file_icon_finalize(GObject *obj)
     if(icon->priv->pix)
         g_object_unref(G_OBJECT(icon->priv->pix));
     
-    g_free(icon->priv->label);
-    
-    if(icon->priv->path)
-        thunar_vfs_path_unref(icon->priv->path);
+    if(icon->priv->info)
+        thunar_vfs_info_unref(icon->priv->info);
     
     g_free(icon->priv);
     
@@ -135,11 +139,11 @@ xfdesktop_file_icon_icon_init(XfdesktopIconIface *iface)
 
 
 XfdesktopFileIcon *
-xfdesktop_file_icon_new(ThunarVfsPath *path,
+xfdesktop_file_icon_new(ThunarVfsInfo *info,
                         GdkScreen *screen)
 {
     XfdesktopFileIcon *file_icon = g_object_new(XFDESKTOP_TYPE_FILE_ICON, NULL);
-    file_icon->priv->path = thunar_vfs_path_ref(path);
+    file_icon->priv->info = thunar_vfs_info_ref(info);
     file_icon->priv->gscreen = screen;
     
     return file_icon;
@@ -151,52 +155,31 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                 gint size)
 {
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
+    const gchar *icon_name;
     
     if(!file_icon->priv->pix || size != file_icon->priv->cur_pix_size) {
-        ThunarVfsInfo *info;
-        
         if(file_icon->priv->pix) {
             g_object_unref(G_OBJECT(file_icon->priv->pix));
             file_icon->priv->pix = NULL;
         }
-        
-        info = thunar_vfs_info_new_for_path(file_icon->priv->path, NULL);
-        
-        if(info) {
-            if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
-                file_icon->priv->pix = xfce_themed_icon_load("stock_folder", size);
+
+        icon_name = thunar_vfs_info_get_custom_icon(file_icon->priv->info);
+        if(icon_name) {
+            file_icon->priv->pix = xfce_themed_icon_load(icon_name, size);
+            if(file_icon->priv->pix)
+                file_icon->priv->cur_pix_size = size;
+        }
+            
+        if(!file_icon->priv->pix) {
+            /* FIXME: GtkIconTheme/XfceIconTheme */
+            icon_name = thunar_vfs_mime_info_lookup_icon_name(file_icon->priv->info->mime_info,
+                                                              gtk_icon_theme_get_default());
+            
+            if(icon_name) {
+                file_icon->priv->pix = xfce_themed_icon_load(icon_name, size);
                 if(file_icon->priv->pix)
                     file_icon->priv->cur_pix_size = size;
-            } else {
-                const gchar *custom_icon = thunar_vfs_info_get_custom_icon(info);
-                
-                if(custom_icon) {
-                    file_icon->priv->pix = xfce_themed_icon_load(custom_icon, size);
-                    if(file_icon->priv->pix)
-                        file_icon->priv->cur_pix_size = size;
-                }
-                
-                if(!file_icon->priv->pix) {
-                    ThunarVfsMimeInfo *mime_info;
-                    
-                    mime_info = xfdesktop_file_icon_get_mime_info(file_icon);
-                    if(mime_info) {
-                        /* FIXME: GtkIconTheme/XfceIconTheme */
-                        const gchar *icon_name = thunar_vfs_mime_info_lookup_icon_name(mime_info,
-                                                                                       gtk_icon_theme_get_default());
-                        
-                        if(icon_name) {
-                            file_icon->priv->pix = xfce_themed_icon_load(icon_name, size);
-                            if(file_icon->priv->pix)
-                                file_icon->priv->cur_pix_size = size;
-                        }
-                        
-                        thunar_vfs_mime_info_unref(mime_info);
-                    }
-                }
             }
-            
-            thunar_vfs_info_unref(info);
         }
     }
     
@@ -225,16 +208,7 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
 static G_CONST_RETURN gchar *
 xfdesktop_file_icon_peek_label(XfdesktopIcon *icon)
 {
-    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-    
-    if(!file_icon->priv->label) {
-        const char *name = thunar_vfs_path_get_name(file_icon->priv->path);
-        if(name)
-            file_icon->priv->label = g_filename_to_utf8(name, -1, NULL,
-                                                        NULL, NULL);
-    }
-    
-    return file_icon->priv->label;
+    return XFDESKTOP_FILE_ICON(icon)->priv->info->display_name;
 }
 
 static void
@@ -296,57 +270,62 @@ static void
 xfdesktop_file_icon_activated(XfdesktopIcon *icon)
 {
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-    ThunarVfsMimeInfo *mime_info;
     ThunarVfsMimeApplication *mime_app;
-    ThunarVfsInfo *info = thunar_vfs_info_new_for_path(file_icon->priv->path,
-                                                       NULL);
+    const ThunarVfsInfo *info = file_icon->priv->info;
     gboolean succeeded = FALSE;
-    GList *path_list = g_list_prepend(NULL, file_icon->priv->path);
+    gchar *thunar_app, *folder_name, *commandline;
+    gchar *display_name;
+    gint status;
+    GList *path_list = g_list_prepend(NULL, info->path);
     
     TRACE("entering");
     
-    if(info) {
-        if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
-            gchar *thunar_app = g_find_program_in_path("Thunar");
+    if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
+        folder_name = thunar_vfs_path_dup_string(file_icon->priv->info->path);
+        display_name = gdk_screen_make_display_name(file_icon->priv->gscreen);
+
+        /* try the org.xfce.FileManager D-BUS interface first */
+        commandline = g_strdup_printf("dbus-send --print-reply --dest=org.xfce.FileManager "
+                                      "/org/xfce/FileManager org.xfce.FileManager.Launch "
+                                      "string:\"%s\" string:\"%s\"", folder_name, display_name);
+        succeeded = (g_spawn_command_line_sync(commandline, NULL, NULL, &status, NULL) && status == 0);
+        g_free(commandline);
+
+        /* hardcoded fallback to Thunar if that didn't work */
+        if(!succeeded) {
+            thunar_app = g_find_program_in_path("Thunar");
             
             if(thunar_app) {
-                gchar *folder_name = thunar_vfs_path_dup_string(file_icon->priv->path);
-                gchar *commandline = g_strconcat(thunar_app, " \"", folder_name,
-                                                 "\"", NULL);
+                commandline = g_strconcat("env DISPLAY=\"", display_name, "\" ", thunar_app, " \"", folder_name, "\"", NULL);
                 
                 DBG("executing:\n%s\n", commandline);
                 
                 succeeded = xfce_exec(commandline, FALSE, TRUE, NULL);
-                g_free(folder_name);
                 g_free(commandline);
             }
             g_free(thunar_app);
-        } else if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
-            succeeded = thunar_vfs_info_execute(info,
-                                                file_icon->priv->gscreen,
-                                                path_list,
-                                                NULL);
         }
-        
-        thunar_vfs_info_unref(info);
+
+        g_free(display_name);
+        g_free(folder_name);
+    } else if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
+        succeeded = thunar_vfs_info_execute(info,
+                                            file_icon->priv->gscreen,
+                                            NULL,
+                                            NULL);
     }
     
     if(!succeeded) {
-        mime_info = xfdesktop_file_icon_get_mime_info(file_icon);
-        if(mime_info) {
-            mime_app = thunar_vfs_mime_database_get_default_application(thunar_mime_database,
-                                                                        mime_info);
-            if(mime_app) {
-                DBG("executing");
-                
-                succeeded = thunar_vfs_mime_handler_exec(THUNAR_VFS_MIME_HANDLER(mime_app),
-                                                         file_icon->priv->gscreen,
-                                                         path_list,
-                                                         NULL); 
-                g_object_unref(G_OBJECT(mime_app));
-            }
-        
-            thunar_vfs_mime_info_unref(mime_info);
+        mime_app = thunar_vfs_mime_database_get_default_application(thunar_mime_database,
+                                                                    info->mime_info);
+        if(mime_app) {
+            DBG("executing");
+            
+            succeeded = thunar_vfs_mime_handler_exec(THUNAR_VFS_MIME_HANDLER(mime_app),
+                                                     file_icon->priv->gscreen,
+                                                     path_list,
+                                                     NULL); 
+            g_object_unref(G_OBJECT(mime_app));
         }
     }    
     
@@ -361,11 +340,9 @@ xfdesktop_file_icon_menu_rename(GtkWidget *widget,
     GtkWidget *dlg, *entry, *lbl, *img, *hbox, *vbox, *topvbox;
     GdkPixbuf *pix;
     gchar *title, *p;
-    const gchar *name;
     gint w, h;
     
-    title = g_strdup_printf(_("Rename \"%s\""),
-                            thunar_vfs_path_get_name(icon->priv->path));
+    title = g_strdup_printf(_("Rename \"%s\""), icon->priv->info->display_name);
     
     dlg = gtk_dialog_new_with_buttons(title, NULL, GTK_DIALOG_NO_SEPARATOR,
                                       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
@@ -400,10 +377,9 @@ xfdesktop_file_icon_menu_rename(GtkWidget *widget,
     gtk_box_pack_start(GTK_BOX(vbox), lbl, FALSE, FALSE, 0);
     
     entry = gtk_entry_new();
-    name = xfdesktop_file_icon_peek_label(XFDESKTOP_ICON(icon));
-    gtk_entry_set_text(GTK_ENTRY(entry), name);
-    if((p = g_utf8_strrchr(name, -1, '.'))) {
-        gint offset = g_utf8_strlen(name, p - name);
+    gtk_entry_set_text(GTK_ENTRY(entry), icon->priv->info->display_name);
+    if((p = g_utf8_strrchr(icon->priv->info->display_name, -1, '.'))) {
+        gint offset = g_utf8_strlen(icon->priv->info->display_name, p - icon->priv->info->display_name);
         gtk_editable_set_position(GTK_EDITABLE(entry), offset);
         gtk_editable_select_region(GTK_EDITABLE(entry), 0, offset);
     }
@@ -412,16 +388,15 @@ xfdesktop_file_icon_menu_rename(GtkWidget *widget,
     gtk_box_pack_start(GTK_BOX(vbox), entry, FALSE, FALSE, 0);
     
     if(GTK_RESPONSE_ACCEPT == gtk_dialog_run(GTK_DIALOG(dlg))) {
-        ThunarVfsInfo *info = thunar_vfs_info_new_for_path(icon->priv->path,
-                                                           NULL);
         gchar *new_name;
         GError *error = NULL;
         
         new_name = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
         
-        if(!thunar_vfs_info_rename(info, new_name, &error)) {
+        // FIXME: Need to re-register with the VFS monitor after successfull rename
+        if(!thunar_vfs_info_rename(icon->priv->info, new_name, &error)) {
             gchar *primary = g_strdup_printf(_("Failed to rename \"%s\" to \"%s\":"),
-                                               name, new_name);
+                                               icon->priv->info->display_name, new_name);
             xfce_message_dialog(NULL, _("Error"), GTK_STOCK_DIALOG_ERROR,
                                 primary, error->message,
                                 GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
@@ -440,8 +415,7 @@ xfdesktop_delete_file_error(ThunarVfsJob *job,
                             gpointer user_data)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);
-    gchar *primary = g_strdup_printf("There was an error deleting \"%s\":",
-                                     thunar_vfs_path_get_name(icon->priv->path));
+    gchar *primary = g_strdup_printf("There was an error deleting \"%s\":", icon->priv->info->display_name);
                                      
     xfce_message_dialog(NULL, _("Error"), GTK_STOCK_DIALOG_ERROR, primary,
                         error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
@@ -460,7 +434,7 @@ xfdesktop_file_icon_menu_delete(GtkWidget *widget,
     ThunarVfsJob *job;
     
     primary = g_strdup_printf("Are you sure that you want to permanently delete \"%s\"?",
-                              thunar_vfs_path_get_name(icon->priv->path));
+                              icon->priv->info->display_name);
     ret = xfce_message_dialog(NULL, _("Question"), GTK_STOCK_DIALOG_QUESTION,
                               primary,
                               _("If you delete a file, it is permanently lost."),
@@ -468,7 +442,9 @@ xfdesktop_file_icon_menu_delete(GtkWidget *widget,
                               GTK_STOCK_DELETE, GTK_RESPONSE_ACCEPT, NULL);
     g_free(primary);
     if(GTK_RESPONSE_ACCEPT == ret) {
-        job = thunar_vfs_unlink_file(icon->priv->path, NULL);
+        job = thunar_vfs_unlink_file(icon->priv->info->path, NULL);
+        // FIXME: This is going to crash if the icon is destroyed and the
+        // error signal is emitted afterwards
         g_signal_connect(G_OBJECT(job), "error",
                          G_CALLBACK(xfdesktop_delete_file_error), icon);
         g_signal_connect(G_OBJECT(job), "finished",
@@ -482,7 +458,7 @@ xfdesktop_file_icon_menu_executed(GtkWidget *widget,
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);
     ThunarVfsMimeApplication *mime_app;
-    GList *path_list = g_list_append(NULL, icon->priv->path);
+    GList *path_list = g_list_append(NULL, icon->priv->info->path);
     
     mime_app = g_object_get_qdata(G_OBJECT(widget), xfdesktop_mime_app_quark);
     g_return_if_fail(mime_app);
@@ -550,8 +526,8 @@ static void
 xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon)
 {
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-    ThunarVfsMimeInfo *mime_info = xfdesktop_file_icon_get_mime_info(file_icon);
-    ThunarVfsInfo *info;
+    ThunarVfsInfo *info = file_icon->priv->info;
+    ThunarVfsMimeInfo *mime_info = info->mime_info;
     GList *mime_apps, *l;
     GtkWidget *menu, *mi, *img;
     
@@ -560,7 +536,6 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon)
     g_signal_connect_swapped(G_OBJECT(menu), "deactivate",
                              G_CALLBACK(g_idle_add), menu_deactivate_idled);
     
-    info = thunar_vfs_info_new_for_path(file_icon->priv->path, NULL);
     if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
         img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
         gtk_widget_show(img);
@@ -576,38 +551,35 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon)
             gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        } if(mime_info) {
-            mime_apps = thunar_vfs_mime_database_get_applications(thunar_mime_database,
-                                                                  mime_info);
-            if(mime_apps) {
-                gint w, h;
-                ThunarVfsMimeApplication *mime_app = mime_apps->data;
-                
-                gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
-                
-                mi = xfdesktop_menu_item_from_mime_app(file_icon, mime_app, w,
-                                                       TRUE);
+        }
+        mime_apps = thunar_vfs_mime_database_get_applications(thunar_mime_database,
+                                                              mime_info);
+        if(mime_apps) {
+            gint w, h;
+            ThunarVfsMimeApplication *mime_app = mime_apps->data;
+            
+            gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
+            
+            mi = xfdesktop_menu_item_from_mime_app(file_icon, mime_app, w,
+                                                   TRUE);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            
+            if(mime_apps->next) {
+                mi = gtk_separator_menu_item_new();
+                gtk_widget_show(mi);
                 gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                 
-                if(mime_apps->next) {
-                    mi = gtk_separator_menu_item_new();
-                    gtk_widget_show(mi);
+                for(l = mime_apps->next; l; l = l->next) {
+                    mime_app = l->data;
+                    mi = xfdesktop_menu_item_from_mime_app(file_icon,
+                                                           mime_app, w,
+                                                           FALSE);
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-                    
-                    for(l = mime_apps->next; l; l = l->next) {
-                        mime_app = l->data;
-                        mi = xfdesktop_menu_item_from_mime_app(file_icon,
-                                                               mime_app, w,
-                                                               FALSE);
-                        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-                    }
                 }
-                
-                /* don't free the mime apps!  just the list! */
-                g_list_free(mime_apps);
             }
             
-            thunar_vfs_mime_info_unref(mime_info);
+            /* don't free the mime apps!  just the list! */
+            g_list_free(mime_apps);
         }
         
         /* FIXME: implement this */
@@ -616,8 +588,6 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon)
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         gtk_widget_set_sensitive(mi, FALSE);
     }
-    
-    thunar_vfs_info_unref(info);
     
     mi = gtk_separator_menu_item_new();
     gtk_widget_show(mi);
@@ -679,23 +649,4 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon)
 
 
 
-static ThunarVfsMimeInfo *
-xfdesktop_file_icon_get_mime_info(XfdesktopFileIcon *icon)
-{
-    ThunarVfsMimeInfo *mime_info = NULL;
-    gchar *file_path;
-    
-    if(!thunar_mime_database)
-        thunar_mime_database = thunar_vfs_mime_database_get_default();
-    
-    if(!icon->priv->label)
-        xfdesktop_file_icon_peek_label(XFDESKTOP_ICON(icon));
-    
-    file_path = thunar_vfs_path_dup_string(icon->priv->path);
-    mime_info = thunar_vfs_mime_database_get_info_for_file(thunar_mime_database,
-                                                           file_path,
-                                                           icon->priv->label);
-    g_free(file_path);
-    
-    return mime_info;
-}
+
