@@ -116,6 +116,13 @@ struct _XfdesktopIconViewPrivate
     XfdesktopIcon *last_clicked_item;
     GtkTargetList *source_targets;
     
+    GtkTargetList *foreign_source_targets;
+    GdkDragAction foreign_source_actions;
+    GdkModifierType foreign_source_mask;
+    
+    GtkTargetList *foreign_dest_targets;
+    GdkDragAction foreign_dest_actions;
+    
     GdkPixbuf *rounded_frame;
 };
 
@@ -188,7 +195,8 @@ static void xfdesktop_list_foreach_repaint(gpointer data,
                                            gpointer user_data);
 static void xfdesktop_grid_find_nearest(XfdesktopIconView *icon_view,
                                         XfdesktopIcon *icon,
-                                        XfdesktopDirection dir);
+                                        XfdesktopDirection dir,
+                                        gboolean allow_multiple);
 static inline void xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
                                           gint x,
                                           gint y,
@@ -209,11 +217,15 @@ static gboolean xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
                                               gint *height);
 static void xfdesktop_grid_do_resize(XfdesktopIconView *icon_view);
 
-
-static const GtkTargetEntry targets[] = {
-    { "XFDESKTOP_ICON", GTK_TARGET_SAME_APP, 0 },
+enum
+{
+    TARGET_XFDESKTOP_ICON = 9999,
 };
-static const gint n_targets = 1;
+
+static const GtkTargetEntry icon_view_targets[] = {
+    { "XFDESKTOP_ICON", GTK_TARGET_SAME_APP, TARGET_XFDESKTOP_ICON }
+};
+static const gint icon_view_n_targets = 1;
 
 static guint __signals[SIG_N_SIGNALS] = { 0, };
 
@@ -259,8 +271,9 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
 {
     icon_view->priv = g_new0(XfdesktopIconViewPrivate, 1);
     
-    icon_view->priv->source_targets = gtk_target_list_new(targets, n_targets);
-    gtk_drag_dest_set(GTK_WIDGET(icon_view), 0, targets, n_targets, GDK_ACTION_MOVE);
+    icon_view->priv->source_targets = gtk_target_list_new(icon_view_targets,
+                                                          icon_view_n_targets);
+    gtk_drag_dest_set(GTK_WIDGET(icon_view), 0, NULL, 0, GDK_ACTION_MOVE);
     
     GTK_WIDGET_SET_FLAGS(GTK_WIDGET(icon_view), GTK_NO_WINDOW);
 }
@@ -381,6 +394,8 @@ xfdesktop_icon_view_key_press(GtkWidget *widget,
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
     XfdesktopIcon *icon = NULL;
+    gboolean allow_multiple = (evt->state & GDK_CONTROL_MASK)
+                              || (evt->state & GDK_SHIFT_MASK);
     
     if(icon_view->priv->selected_icons)
         icon = icon_view->priv->selected_icons->data;
@@ -389,25 +404,29 @@ xfdesktop_icon_view_key_press(GtkWidget *widget,
         case GDK_Up:
         case GDK_KP_Up:
             xfdesktop_grid_find_nearest(icon_view, icon,
-                                        XFDESKTOP_DIRECTION_UP);
+                                        XFDESKTOP_DIRECTION_UP,
+                                        allow_multiple);
             break;
         
         case GDK_Down:
         case GDK_KP_Down:
             xfdesktop_grid_find_nearest(icon_view, icon,
-                                        XFDESKTOP_DIRECTION_DOWN);
+                                        XFDESKTOP_DIRECTION_DOWN,
+                                        allow_multiple);
             break;
         
         case GDK_Left:
         case GDK_KP_Left:
             xfdesktop_grid_find_nearest(icon_view, icon,
-                                        XFDESKTOP_DIRECTION_LEFT);
+                                        XFDESKTOP_DIRECTION_LEFT,
+                                        allow_multiple);
             break;
         
         case GDK_Right:
         case GDK_KP_Right:
             xfdesktop_grid_find_nearest(icon_view, icon,
-                                        XFDESKTOP_DIRECTION_RIGHT);
+                                        XFDESKTOP_DIRECTION_RIGHT,
+                                        allow_multiple);
             break;
         
         case GDK_Return:
@@ -464,6 +483,7 @@ xfdesktop_icon_view_maybe_begin_drag(XfdesktopIconView *icon_view,
                                      GdkEventMotion *evt)
 {
     GdkDragContext *context;
+    GdkDragAction actions;
     
     /* sanity check */
     g_return_val_if_fail(icon_view->priv->last_clicked_item, FALSE);
@@ -476,9 +496,12 @@ xfdesktop_icon_view_maybe_begin_drag(XfdesktopIconView *icon_view,
         return FALSE;
     }
     
+    actions = GDK_ACTION_MOVE | (icon_view->priv->foreign_source_targets ?
+                                 icon_view->priv->foreign_source_actions : 0);
+    
     context = gtk_drag_begin(GTK_WIDGET(icon_view),
                              icon_view->priv->source_targets,
-                             GDK_ACTION_MOVE,
+                             actions,
                              1, (GdkEvent *)evt);
     
     DBG("DRAG BEGIN!");
@@ -560,8 +583,12 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
     
     target = gtk_drag_dest_find_target(widget, context,
                                        icon_view->priv->source_targets);
-    if(target == GDK_NONE)
-        return FALSE;
+    if(target == GDK_NONE && icon_view->priv->foreign_source_targets) {
+        target = gtk_drag_dest_find_target(widget, context,
+                                           icon_view->priv->foreign_source_targets);
+        if(target == GDK_NONE)
+            return FALSE;
+    }
     
     gdk_drag_status(context, GDK_ACTION_MOVE, time);
     
@@ -570,7 +597,8 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
     
     xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
     if(row < icon_view->priv->nrows && col < icon_view->priv->ncols
-       && xfdesktop_grid_is_free_position(icon_view, row, col))
+       && (icon_view->priv->allow_overlapping_drops
+           || xfdesktop_grid_is_free_position(icon_view, row, col)))
     {
         gint newx, newy;
         
@@ -652,12 +680,19 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     
     target = gtk_drag_dest_find_target(widget, context,
                                        icon_view->priv->source_targets);
-    if(target == GDK_NONE)
-        return FALSE;
+    if(target == GDK_NONE) {
+        if(icon_view->priv->foreign_dest_targets) {
+            target = gtk_drag_dest_find_target(widget, context,
+                                               icon_view->priv->foreign_dest_targets);
+        }
+        if(target == GDK_NONE)
+            return FALSE;
+    }
     
     xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
     if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols
-       || !xfdesktop_grid_is_free_position(icon_view, row, col))
+       || (!icon_view->priv->allow_overlapping_drops
+           && !xfdesktop_grid_is_free_position(icon_view, row, col)))
     {
         gtk_drag_finish(context, FALSE, FALSE, time);
         return FALSE;
@@ -669,30 +704,34 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     gdk_window_clear_area(widget->window, cell_x, cell_y,
                           CELL_SIZE + 1, CELL_SIZE + 1);
     
-    icon = icon_view->priv->last_clicked_item;
-    g_return_val_if_fail(icon, FALSE);
+    if(target == gdk_atom_intern("XFDESKTOP_ICON", FALSE)) {
+        icon = icon_view->priv->last_clicked_item;
+        g_return_val_if_fail(icon, FALSE);
+        
+        icon_below = xfdesktop_find_icon_below(icon_view, icon);
+        if(xfdesktop_icon_get_position(icon, &old_row, &old_col))
+            xfdesktop_grid_set_position_free(icon_view, old_row, old_col);
+        xfdesktop_icon_set_position(icon, row, col);
+        xfdesktop_grid_unset_position_free(icon_view, icon);
     
-    icon_below = xfdesktop_find_icon_below(icon_view, icon);
-    if(xfdesktop_icon_get_position(icon, &old_row, &old_col))
-        xfdesktop_grid_set_position_free(icon_view, old_row, old_col);
-    xfdesktop_icon_set_position(icon, row, col);
-    xfdesktop_grid_unset_position_free(icon_view, icon);
-    
-    /* clear out old position */
-    if(xfdesktop_icon_get_extents(icon, &extents)) {
-        gdk_window_clear_area(widget->window, extents.x, extents.y,
-                              extents.width, extents.height);
-        extents.width = extents.height = 0;
-        xfdesktop_icon_set_extents(icon, &extents);
+        /* clear out old position */
+        if(xfdesktop_icon_get_extents(icon, &extents)) {
+            gdk_window_clear_area(widget->window, extents.x, extents.y,
+                                  extents.width, extents.height);
+            extents.width = extents.height = 0;
+            xfdesktop_icon_set_extents(icon, &extents);
+        }
+        
+        xfdesktop_icon_view_paint_icon(icon_view, icon);
+        if(icon_below)
+            xfdesktop_icon_view_paint_icon(icon_view, icon_below);
+        
+        DBG("drag succeeded");
+        
+        gtk_drag_finish(context, TRUE, FALSE, time);
+    } else {
+        /* other handler will take care of stuff */
     }
-    
-    xfdesktop_icon_view_paint_icon(icon_view, icon);
-    if(icon_below)
-        xfdesktop_icon_view_paint_icon(icon_view, icon_below);
-    
-    DBG("drag succeeded");
-    
-    gtk_drag_finish(context, TRUE, FALSE, time);
     
     return TRUE;
 }
@@ -1764,7 +1803,8 @@ xfdesktop_grid_unset_position_free(XfdesktopIconView *icon_view,
 static void
 xfdesktop_grid_find_nearest(XfdesktopIconView *icon_view,
                             XfdesktopIcon *icon,
-                            XfdesktopDirection dir)
+                            XfdesktopDirection dir,
+                            gboolean allow_multiple)
 {
     XfdesktopIcon **grid_layout = icon_view->priv->grid_layout;
     gint i, maxi;
@@ -1773,8 +1813,12 @@ xfdesktop_grid_find_nearest(XfdesktopIconView *icon_view,
     if(icon && !xfdesktop_icon_get_position(icon, &row, &col))
         return;
     
-    if(icon_view->priv->selected_icons)
+    if((icon_view->priv->sel_mode != GTK_SELECTION_MULTIPLE
+        || !allow_multiple)
+       && icon_view->priv->selected_icons)
+    {
         xfdesktop_icon_view_unselect_all(icon_view);
+    }
     
     if(!icon) {
         maxi = icon_view->priv->nrows * icon_view->priv->ncols;
@@ -1939,26 +1983,26 @@ void
 xfdesktop_icon_view_add_item(XfdesktopIconView *icon_view,
                              XfdesktopIcon *icon)
 {
-    gboolean got_pos = FALSE;
+    gboolean icon_has_pos;
     guint16 row, col;
     
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view)
                      && XFDESKTOP_IS_ICON(icon));
     
+    icon_has_pos = xfdesktop_icon_get_position(icon, &row, &col);
     
     if(!GTK_WIDGET_REALIZED(GTK_WIDGET(icon_view))) {
-        icon_view->priv->pending_icons = g_list_append(icon_view->priv->pending_icons,
-                                                       icon);
+        if(icon_has_pos) {
+            icon_view->priv->pending_icons = g_list_prepend(icon_view->priv->pending_icons,
+                                                            icon);
+        } else {
+            icon_view->priv->pending_icons = g_list_append(icon_view->priv->pending_icons,
+                                                           icon);
+        }
         return;
     }
     
-    if(xfdesktop_icon_get_position(icon, &row, &col)
-       && xfdesktop_grid_is_free_position(icon_view, row, col))
-    {
-        got_pos = TRUE;
-    }
-    
-    if(!got_pos) {
+    if(!icon_has_pos || !xfdesktop_grid_is_free_position(icon_view, row, col)) {
         if(xfdesktop_grid_get_next_free_position(icon_view, &row, &col)) {
             DBG("old position didn't exist or isn't free, got (%d,%d) instead",
                 row, col);
@@ -2115,6 +2159,68 @@ xfdesktop_icon_view_get_allow_overlapping_drops(XfdesktopIconView *icon_view)
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
     
     return icon_view->priv->allow_overlapping_drops;
+}
+
+void
+xfdesktop_icon_view_enable_drag_source(XfdesktopIconView *icon_view,
+                                       GdkModifierType start_button_mask,
+                                       const GtkTargetEntry *targets,
+                                       gint n_targets,
+                                       GdkDragAction actions)
+{
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+    
+    if(icon_view->priv->foreign_source_targets)
+        gtk_target_list_unref(icon_view->priv->foreign_source_targets);
+    
+    gtk_drag_source_set(GTK_WIDGET(icon_view), start_button_mask, NULL, 0,
+                        GDK_ACTION_MOVE | actions);
+    
+    icon_view->priv->foreign_source_targets = gtk_target_list_new(targets,
+                                                                  n_targets);
+    icon_view->priv->foreign_source_actions = actions;
+    icon_view->priv->foreign_source_mask = start_button_mask;
+}
+
+void
+xfdesktop_icon_view_enable_drag_dest(XfdesktopIconView *icon_view,
+                                     const GtkTargetEntry *targets,
+                                     gint n_targets,
+                                     GdkDragAction actions)
+{
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+    
+    if(icon_view->priv->foreign_dest_targets)
+        gtk_target_list_unref(icon_view->priv->foreign_dest_targets);
+    
+    gtk_drag_dest_set(GTK_WIDGET(icon_view), 0, NULL, 0,
+                      GDK_ACTION_MOVE | actions);
+    
+    icon_view->priv->foreign_dest_targets = gtk_target_list_new(targets,
+                                                                n_targets);
+    icon_view->priv->foreign_dest_actions = actions;
+}
+
+void
+xfdesktop_icon_view_unset_drag_source(XfdesktopIconView *icon_view)
+{
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+    
+    if(icon_view->priv->foreign_source_targets) {
+        gtk_target_list_unref(icon_view->priv->foreign_source_targets);
+        icon_view->priv->foreign_source_targets = NULL;
+    }
+}
+
+void
+xfdesktop_icon_view_unset_drag_dest(XfdesktopIconView *icon_view)
+{
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+    
+    if(icon_view->priv->foreign_dest_targets) {
+        gtk_target_list_unref(icon_view->priv->foreign_dest_targets);
+        icon_view->priv->foreign_dest_targets = NULL;
+    }
 }
 
 XfdesktopIcon *

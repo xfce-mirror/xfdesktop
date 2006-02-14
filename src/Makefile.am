@@ -27,6 +27,8 @@ desktop_icon_sources = \
 	xfdesktop-window-icon-manager.h
 
 desktop_file_icon_sources = \
+	xfdesktop-clipboard-manager.c \
+	xfdesktop-clipboard-manager.h \
 	xfdesktop-file-icon.c \
 	xfdesktop-file-icon.h \
 	xfdesktop-file-icon-manager.c \

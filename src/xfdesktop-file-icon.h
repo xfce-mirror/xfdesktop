@@ -47,12 +47,18 @@ struct _XfdesktopFileIcon
 struct _XfdesktopFileIconClass
 {
     GObjectClass parent;
+    
+    /*< signals >*/
+    void (*position_changed)(XfdesktopFileIcon *icon);
 };
 
 GType xfdesktop_file_icon_get_type() G_GNUC_CONST;
 
 XfdesktopFileIcon *xfdesktop_file_icon_new(ThunarVfsInfo *info,
                                            GdkScreen *screen);
+
+/* utility function for the clipboard manager */
+GList *xfdesktop_file_icon_list_to_path_list(GList *icon_list);
 
 G_END_DECLS
 

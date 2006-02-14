@@ -75,6 +75,18 @@ void xfdesktop_icon_view_set_allow_overlapping_drops(XfdesktopIconView *icon_vie
                                                      gboolean allow_overlap);
 gboolean xfdesktop_icon_view_get_allow_overlapping_drops(XfdesktopIconView *icon_view);
 
+void xfdesktop_icon_view_enable_drag_source(XfdesktopIconView *icon_view,
+                                            GdkModifierType start_button_mask,
+                                            const GtkTargetEntry *targets,
+                                            gint n_targets,
+                                            GdkDragAction actions);
+void xfdesktop_icon_view_enable_drag_dest(XfdesktopIconView *icon_view,
+                                          const GtkTargetEntry *targets,
+                                          gint n_targets,
+                                          GdkDragAction actions);
+void xfdesktop_icon_view_unset_drag_source(XfdesktopIconView *icon_view);
+void xfdesktop_icon_view_unset_drag_dest(XfdesktopIconView *icon_view);
+
 XfdesktopIcon *xfdesktop_icon_view_widget_coords_to_item(XfdesktopIconView *icon_view,
                                                          gint wx,
                                                          gint wy);
