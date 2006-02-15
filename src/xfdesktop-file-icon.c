@@ -441,6 +441,7 @@ xfdesktop_file_icon_menu_rename(GtkWidget *widget,
     gtk_widget_show(entry);
     gtk_box_pack_start(GTK_BOX(vbox), entry, FALSE, FALSE, 0);
     
+    xfce_gtk_window_center_on_monitor_with_pointer(GTK_WINDOW(dlg));
     if(GTK_RESPONSE_ACCEPT == gtk_dialog_run(GTK_DIALOG(dlg))) {
         gchar *new_name;
         GError *error = NULL;
@@ -492,14 +493,27 @@ xfdesktop_delete_file_finished(ThunarVfsJob *job,
     g_object_unref(G_OBJECT(job));
 }
 
+void
+xfdesktop_file_icon_delete_file(XfdesktopFileIcon *icon)
+{
+    ThunarVfsJob *job;
+    
+    job = thunar_vfs_unlink_file(icon->priv->info->path, NULL);
+    icon->priv->active_jobs = g_list_prepend(icon->priv->active_jobs, job);
+    g_signal_connect(G_OBJECT(job), "error",
+                     G_CALLBACK(xfdesktop_delete_file_error), icon);
+    g_signal_connect(G_OBJECT(job), "finished",
+                     G_CALLBACK(xfdesktop_delete_file_finished), icon);
+}
+
 static void
 xfdesktop_file_icon_menu_delete(GtkWidget *widget,
                                 gpointer user_data)
 {
+    /* WARNING: do not use |widget| in this function, as it could be NULL */
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);
     gchar *primary;
     gint ret;
-    ThunarVfsJob *job;
     
     primary = g_strdup_printf("Are you sure that you want to permanently delete \"%s\"?",
                               icon->priv->info->display_name);
@@ -509,14 +523,14 @@ xfdesktop_file_icon_menu_delete(GtkWidget *widget,
                               GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
                               GTK_STOCK_DELETE, GTK_RESPONSE_ACCEPT, NULL);
     g_free(primary);
-    if(GTK_RESPONSE_ACCEPT == ret) {
-        job = thunar_vfs_unlink_file(icon->priv->info->path, NULL);
-        icon->priv->active_jobs = g_list_prepend(icon->priv->active_jobs, job);
-        g_signal_connect(G_OBJECT(job), "error",
-                         G_CALLBACK(xfdesktop_delete_file_error), icon);
-        g_signal_connect(G_OBJECT(job), "finished",
-                         G_CALLBACK(xfdesktop_delete_file_finished), icon);
-    }
+    if(GTK_RESPONSE_ACCEPT == ret)
+        xfdesktop_file_icon_delete_file(icon);
+}
+
+void
+xfdesktop_file_icon_trigger_delete(XfdesktopFileIcon *icon)
+{
+    xfdesktop_file_icon_menu_delete(NULL, icon);
 }
 
 static void
@@ -621,6 +635,101 @@ xfdesktop_file_icon_menu_copy(GtkWidget *widget,
     xfdesktop_clipboard_manager_copy_files(clipboard_manager, files);
     
     g_list_free(files);
+}
+
+static void
+xfdesktop_file_icon_menu_properties(GtkWidget *widget,
+                                    gpointer user_data)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);
+    GtkWidget *dlg, *table, *hbox, *lbl, *img, *spacer;
+    gint row = 0, w, h;
+    PangoFontDescription *pfd = pango_font_description_from_string("bold");
+    gchar *str = NULL;
+    
+    gtk_icon_size_lookup(GTK_ICON_SIZE_DIALOG, &w, &h);
+    
+    dlg = gtk_dialog_new_with_buttons(xfdesktop_file_icon_peek_label(XFDESKTOP_ICON(icon)),
+                                      NULL,
+                                      GTK_DIALOG_NO_SEPARATOR,
+                                      GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                                      NULL);
+    gtk_window_set_icon(GTK_WINDOW(dlg),
+                        xfdesktop_file_icon_peek_pixbuf(XFDESKTOP_ICON(icon), w));
+    g_signal_connect(GTK_DIALOG(dlg), "response",
+                     G_CALLBACK(gtk_widget_destroy), NULL);
+    
+    table = gtk_table_new(3, 2, TRUE);
+    g_object_set(G_OBJECT(table),
+                 "border-width", 6,
+                 "column-spacing", 12,
+                 "row-spacing", 6,
+                 NULL);
+    gtk_widget_show(table);
+    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), table, TRUE, TRUE, 0);
+    
+    hbox = gtk_hbox_new(FALSE, BORDER);
+    gtk_widget_show(hbox);
+    gtk_table_attach(GTK_TABLE(table), hbox, 0, 1, row, row + 1,
+                     GTK_FILL, GTK_FILL, 0, 0);
+    
+    img = gtk_image_new_from_pixbuf(xfdesktop_file_icon_peek_pixbuf(XFDESKTOP_ICON(icon),
+                                                                    w));
+    gtk_widget_show(img);
+    gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, TRUE, 0);
+    
+    lbl = gtk_label_new(_("Name:"));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
+    gtk_widget_modify_font(lbl, pfd);
+    gtk_widget_show(lbl);
+    gtk_box_pack_start(GTK_BOX(hbox), lbl, TRUE, TRUE, 0);
+    
+    lbl = gtk_label_new(xfdesktop_file_icon_peek_label(XFDESKTOP_ICON(icon)));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    spacer = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
+    gtk_widget_set_size_request(spacer, -1, 12);
+    gtk_widget_show(spacer);
+    gtk_table_attach(GTK_TABLE(table), spacer, 0, 1, row, row + 1,
+                     GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    lbl = gtk_label_new(_("Kind:"));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
+    gtk_widget_modify_font(lbl, pfd);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    if(!strcmp(thunar_vfs_mime_info_get_name(icon->priv->info->mime_info),
+               "inode/symlink"))
+    {
+        str = g_strdup(_("broken link"));
+    } else if(icon->priv->info->type == THUNAR_VFS_FILE_TYPE_SYMLINK) {
+        str = g_strdup_printf(_("link to %s"),
+                              thunar_vfs_mime_info_get_comment(icon->priv->info->mime_info));
+    } else
+        str = g_strdup(thunar_vfs_mime_info_get_comment(icon->priv->info->mime_info));
+    lbl = gtk_label_new(str);
+    g_free(str);
+    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    /* FIXME: finish this. */
+    
+    pango_font_description_free(pfd);
+    
+    gtk_widget_show(dlg);
 }
 
 static gboolean
@@ -748,14 +857,14 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon)
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     
-    /* FIXME: implement this */
     img = gtk_image_new_from_stock(GTK_STOCK_PROPERTIES, GTK_ICON_SIZE_MENU);
     gtk_widget_show(img);
     mi = gtk_image_menu_item_new_with_mnemonic(_("_Properties..."));
     gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    gtk_widget_set_sensitive(mi, FALSE);
+    g_signal_connect(G_OBJECT(mi), "activate",
+                     G_CALLBACK(xfdesktop_file_icon_menu_properties), file_icon);
     
     gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0,
                    gtk_get_current_event_time());

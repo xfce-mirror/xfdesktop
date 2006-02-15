@@ -99,6 +99,8 @@ void xfdesktop_icon_view_unselect_item(XfdesktopIconView *icon_view,
                                        XfdesktopIcon *icon);
 void xfdesktop_icon_view_unselect_all(XfdesktopIconView *icon_view);
 
+GtkWidget *xfdesktop_icon_view_get_window_widget(XfdesktopIconView *icon_view);
+
 G_END_DECLS
 
 #endif  /* __XFDESKTOP_ICON_VIEW_H__ */

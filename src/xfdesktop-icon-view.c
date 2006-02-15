@@ -865,7 +865,6 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
         icon_view->priv->rounded_frame = NULL;
     }
     
-    icon_view->priv->parent_window = NULL;
     widget->window = NULL;
     GTK_WIDGET_UNSET_FLAGS(widget, GTK_REALIZED);
 }
@@ -2290,4 +2289,12 @@ xfdesktop_icon_view_unselect_all(XfdesktopIconView *icon_view)
                        icon_view);
         g_list_free(repaint_icons);
     }
+}
+
+GtkWidget *
+xfdesktop_icon_view_get_window_widget(XfdesktopIconView *icon_view)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), NULL);
+    
+    return icon_view->priv->parent_window;
 }
