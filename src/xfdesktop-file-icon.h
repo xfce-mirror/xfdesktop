@@ -57,6 +57,9 @@ GType xfdesktop_file_icon_get_type() G_GNUC_CONST;
 XfdesktopFileIcon *xfdesktop_file_icon_new(ThunarVfsInfo *info,
                                            GdkScreen *screen);
 
+void xfdesktop_file_icon_update_info(XfdesktopFileIcon *icon,
+                                     ThunarVfsInfo *info);
+
 void xfdesktop_file_icon_trigger_delete(XfdesktopFileIcon *icon);
 void xfdesktop_file_icon_delete_file(XfdesktopFileIcon *icon);
 

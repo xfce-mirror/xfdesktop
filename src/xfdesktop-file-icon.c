@@ -27,6 +27,10 @@
 #include <string.h>
 #endif
 
+#ifdef HAVE_TIME_H
+#include <time.h>
+#endif
+
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "xfdesktop-icon.h"
@@ -642,10 +646,18 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
                                     gpointer user_data)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);
-    GtkWidget *dlg, *table, *hbox, *lbl, *img, *spacer;
+    GtkWidget *dlg, *table, *hbox, *lbl, *img, *spacer, *notebook, *vbox;
     gint row = 0, w, h;
     PangoFontDescription *pfd = pango_font_description_from_string("bold");
-    gchar *str = NULL;
+    gchar *str = NULL, buf[64];
+    struct tm *tm;
+    ThunarVfsUserManager *user_manager;
+    ThunarVfsUser *user;
+    ThunarVfsGroup *group;
+    ThunarVfsFileMode mode;
+    static const gchar *access_types[4] = {
+        N_("None"), N_("Write only"), N_("Read only"), N_("Read & Write")
+    };
     
     gtk_icon_size_lookup(GTK_ICON_SIZE_DIALOG, &w, &h);
     
@@ -659,14 +671,24 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     g_signal_connect(GTK_DIALOG(dlg), "response",
                      G_CALLBACK(gtk_widget_destroy), NULL);
     
-    table = gtk_table_new(3, 2, TRUE);
-    g_object_set(G_OBJECT(table),
-                 "border-width", 6,
-                 "column-spacing", 12,
-                 "row-spacing", 6,
-                 NULL);
+    notebook = gtk_notebook_new();
+    gtk_widget_show(notebook);
+    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), notebook, TRUE, TRUE, 0);
+    
+    lbl = gtk_label_new(_("General"));
+    gtk_widget_show(lbl);
+    vbox = gtk_vbox_new(FALSE, BORDER);
+    gtk_widget_show(vbox);
+    gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, lbl);
+    
+    table = g_object_new(GTK_TYPE_TABLE,
+                         "border-width", 6,
+                         "column-spacing", 12,
+                         "row-spacing", 6,
+                         NULL);
     gtk_widget_show(table);
-    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), table, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 0);
+    
     
     hbox = gtk_hbox_new(FALSE, BORDER);
     gtk_widget_show(hbox);
@@ -725,7 +747,211 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     
     ++row;
     
-    /* FIXME: finish this. */
+    spacer = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
+    gtk_widget_set_size_request(spacer, -1, 12);
+    gtk_widget_show(spacer);
+    gtk_table_attach(GTK_TABLE(table), spacer, 0, 1, row, row + 1,
+                     GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    lbl = gtk_label_new(_("Modified:"));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
+    gtk_widget_modify_font(lbl, pfd);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    tm = localtime(&icon->priv->info->mtime);
+    strftime(buf, 64, "%Y-%m-%d %H:%M:%S", tm);
+    
+    lbl = gtk_label_new(buf);
+    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    lbl = gtk_label_new(_("Accessed:"));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
+    gtk_widget_modify_font(lbl, pfd);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    tm = localtime(&icon->priv->info->atime);
+    strftime(buf, 64, "%Y-%m-%d %H:%M:%S", tm);
+    
+    lbl = gtk_label_new(buf);
+    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    spacer = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
+    gtk_widget_set_size_request(spacer, -1, 12);
+    gtk_widget_show(spacer);
+    gtk_table_attach(GTK_TABLE(table), spacer, 0, 1, row, row + 1,
+                     GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    if(icon->priv->info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY)
+        lbl = gtk_label_new(_("Free Space:"));
+    else
+        lbl = gtk_label_new(_("Size:"));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
+    gtk_widget_modify_font(lbl, pfd);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    if(icon->priv->info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
+        ThunarVfsFileSize free_space;
+        if(thunar_vfs_info_get_free_space(icon->priv->info, &free_space)) {
+            thunar_vfs_humanize_size(free_space, buf, 64);
+            lbl = gtk_label_new(buf);
+        } else
+            lbl = gtk_label_new(_("unknown"));
+    } else {
+        thunar_vfs_humanize_size(icon->priv->info->size, buf, 64);
+        str = g_strdup_printf(_("%s (%" G_GINT64_FORMAT " Bytes)"), buf,
+                              (gint64)icon->priv->info->size);
+        lbl = gtk_label_new(str);
+        g_free(str);
+    }
+    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    
+    /* permissions tab */
+    
+    lbl = gtk_label_new(_("Permissions"));;
+    gtk_widget_show(lbl);
+    vbox = gtk_vbox_new(FALSE, BORDER);
+    gtk_widget_show(vbox);
+    gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, lbl);
+    
+    row = 0;
+    table = g_object_new(GTK_TYPE_TABLE,
+                         "border-width", 6,
+                         "column-spacing", 12,
+                         "row-spacing", 6,
+                         NULL);
+    gtk_widget_show(table);
+    gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 0);
+    
+    user_manager = thunar_vfs_user_manager_get_default();
+    user = thunar_vfs_user_manager_get_user_by_id(user_manager,
+                                                  icon->priv->info->uid);
+    group = thunar_vfs_user_manager_get_group_by_id(user_manager,
+                                                    icon->priv->info->gid);
+    mode = icon->priv->info->mode;
+    
+    lbl = gtk_label_new(_("Owner:"));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
+    gtk_widget_modify_font(lbl, pfd);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    str = g_strdup_printf("%s (%s)", thunar_vfs_user_get_real_name(user),
+                          thunar_vfs_user_get_name(user));
+    lbl = gtk_label_new(str);
+    g_free(str);
+    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    lbl = gtk_label_new(_("Access:"));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
+    gtk_widget_modify_font(lbl, pfd);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    lbl = gtk_label_new(_(access_types[((mode >> (2 * 3)) & 0007) >> 1]));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    spacer = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
+    gtk_widget_set_size_request(spacer, -1, 12);
+    gtk_widget_show(spacer);
+    gtk_table_attach(GTK_TABLE(table), spacer, 0, 1, row, row + 1,
+                     GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    lbl = gtk_label_new(_("Group:"));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
+    gtk_widget_modify_font(lbl, pfd);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    lbl = gtk_label_new(thunar_vfs_group_get_name(group));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    lbl = gtk_label_new(_("Access:"));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
+    gtk_widget_modify_font(lbl, pfd);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    lbl = gtk_label_new(_(access_types[((mode >> (1 * 3)) & 0007) >> 1]));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    spacer = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
+    gtk_widget_set_size_request(spacer, -1, 12);
+    gtk_widget_show(spacer);
+    gtk_table_attach(GTK_TABLE(table), spacer, 0, 1, row, row + 1,
+                     GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    lbl = gtk_label_new(_("Others:"));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
+    gtk_widget_modify_font(lbl, pfd);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    lbl = gtk_label_new(_(access_types[((mode >> (0 * 3)) & 0007) >> 1]));
+    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+    gtk_widget_show(lbl);
+    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    
+    ++row;
+    
+    g_object_unref(G_OBJECT(user_manager));
+    g_object_unref(G_OBJECT(user));
+    g_object_unref(G_OBJECT(group));
     
     pango_font_description_free(pfd);
     
@@ -868,6 +1094,18 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon)
     
     gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0,
                    gtk_get_current_event_time());
+}
+
+void
+xfdesktop_file_icon_update_info(XfdesktopFileIcon *icon,
+                                ThunarVfsInfo *info)
+{
+    g_return_if_fail(XFDESKTOP_IS_ICON(icon) && info);
+    
+    thunar_vfs_info_unref(icon->priv->info);
+    icon->priv->info = thunar_vfs_info_ref(info);
+    
+    /* FIXME: force redraw of icon? */
 }
 
 GList *

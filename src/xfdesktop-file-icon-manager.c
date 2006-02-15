@@ -418,6 +418,7 @@ xfdesktop_delete_a_bunch_o_files(GList *files)
                                   _("If you delete a file, it is permanently lost."),
                                   GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
                                   GTK_STOCK_DELETE, GTK_RESPONSE_ACCEPT, NULL);
+    gtk_dialog_set_default_response(GTK_DIALOG(dlg), GTK_RESPONSE_CANCEL);
     g_free(primary);
     vbox = GTK_DIALOG(dlg)->vbox;
     
@@ -546,6 +547,17 @@ xfdesktop_file_icon_manager_volume_manager_cb(ThunarVfsMonitor *monitor,
     switch(event) {
         case THUNAR_VFS_MONITOR_EVENT_CHANGED:
             DBG("got changed event");
+            
+            icon = g_hash_table_lookup(fmanager->priv->icons, event_path);
+            if(icon) {
+                DBG("found event_path in HT");
+                
+                info = thunar_vfs_info_new_for_path(event_path, NULL);
+                if(info) {
+                    xfdesktop_file_icon_update_info(icon, info);
+                    thunar_vfs_info_unref(info);
+                }
+            }
             break;
         
         case THUNAR_VFS_MONITOR_EVENT_CREATED:
