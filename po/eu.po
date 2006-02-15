@@ -2,21 +2,21 @@
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Jon Latorre Martinez <patataman@airtel.net>, 2003.
-# Piarres Beobide Egaña <pi@beobide.net>, 2004.
+# Piarres Beobide  <pi@beobide.net>, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-02-10 07:11-0800\n"
-"PO-Revision-Date: 2005-10-09 22:14+0900\n"
-"Last-Translator: Piarres Beobide Egaña <pi@beobide.net>\n"
+"PO-Revision-Date: 2006-02-15 16:42+0100\n"
+"Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Euskara <librezale@librezale.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3.1\n"
-"Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Pootle 0.6.3.20060126\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
@@ -522,7 +522,6 @@ msgid "Auto"
 msgstr "Automatikoa"
 
 #: ../settings/backdrop_settings.c:778
-#, fuzzy
 msgid "A_djust Brightness:"
 msgstr "_Distira Doitu:"
 
@@ -583,7 +582,7 @@ msgstr "Zabaldu atzekalde bakar bat monitore _guztietara"
 #. add the single backdrop settings page to the main notebook
 #: ../settings/backdrop_settings.c:1019 ../settings/backdrop_settings.c:1224
 msgid "_Appearance"
-msgstr ""
+msgstr "_Itxura"
 
 #. color settings frame
 #: ../settings/backdrop_settings.c:1045
@@ -639,7 +638,7 @@ msgstr "%d Pantaila, %d Monitorea"
 
 #: ../settings/backdrop_settings.c:1259
 msgid "_Behavior"
-msgstr ""
+msgstr "_Portaera"
 
 #: ../settings/menu_settings.c:193
 msgid "Window List Menu"
@@ -662,31 +661,28 @@ msgid "Show desktop _menu"
 msgstr "Bistarazi idazmahai _menua"
 
 #: ../settings/menu_settings.c:252
-#, fuzzy
 msgid "_Show application icons"
-msgstr "Bistarazi _aplikazio ikonoak"
+msgstr "_Aplikazio ikonoak bistarazu"
 
 #: ../settings/menu_settings.c:263
 msgid "_Edit desktop menu"
 msgstr "_Editatu idazmahai menua"
 
 #: ../settings/menu_settings.c:275
-#, fuzzy
 msgid "Desktop Icons"
-msgstr "Idazmahai Menua"
+msgstr "Idazmahai Ikonoak"
 
 #: ../settings/menu_settings.c:280
 msgid "None"
-msgstr ""
+msgstr "Batez"
 
 #: ../settings/menu_settings.c:281
-#, fuzzy
 msgid "Minimized application icons"
-msgstr "Bistarazi _aplikazio ikonoak"
+msgstr "Txikituriko aplikazio ikonoak"
 
 #: ../settings/menu_settings.c:283
 msgid "File/launcher icons"
-msgstr ""
+msgstr "Fitxategi/abiarazle ikonoak"
 
 #: ../src/main.c:254
 #, c-format
@@ -741,65 +737,61 @@ msgstr "_Ezabatu '%s' Idazmahi Birtuala"
 #: ../src/xfdesktop-file-icon.c:367
 #, c-format
 msgid "Rename \"%s\""
-msgstr ""
+msgstr "\"%s\" berrizendatu"
 
 #: ../src/xfdesktop-file-icon.c:397
 msgid "Enter the new name:"
-msgstr ""
+msgstr "Izen berria idatzi:"
 
 #: ../src/xfdesktop-file-icon.c:423
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Huts \"%s\"-tik \"%s\"-ra berrizendatzerakoan:"
 
 #: ../src/xfdesktop-file-icon.c:466
 msgid "If you delete a file, it is permanently lost."
-msgstr ""
+msgstr "Fixtategi bat ezabatu ezkero, betirako galduko da."
 
 #: ../src/xfdesktop-file-icon.c:508
 msgid "_Open With "
-msgstr ""
+msgstr "Honekin _Ireki"
 
 #: ../src/xfdesktop-file-icon.c:508
 msgid "Open With "
-msgstr ""
+msgstr "Honekin Ireki"
 
 #: ../src/xfdesktop-file-icon.c:567
 msgid "_Open"
-msgstr ""
+msgstr "_Ireki"
 
 #: ../src/xfdesktop-file-icon.c:575
 msgid "_Execute"
-msgstr ""
+msgstr "_Abiarazi"
 
 #. FIXME: implement this
 #: ../src/xfdesktop-file-icon.c:614
 msgid "Open With Other _Application..."
-msgstr ""
+msgstr "_Beste _Aplikazio Batekin Ireki..."
 
 #: ../src/xfdesktop-file-icon.c:629
-#, fuzzy
 msgid "_Copy File"
-msgstr "_Fitxategia"
+msgstr "Fitxategia _Kopiatu"
 
 #: ../src/xfdesktop-file-icon.c:638
-#, fuzzy
 msgid "Cu_t File"
-msgstr "_Fitxategia"
+msgstr "Fitxategia Moz_tu"
 
 #: ../src/xfdesktop-file-icon.c:646
-#, fuzzy
 msgid "_Delete File"
-msgstr "Menu Fitxategia Aukeratu"
+msgstr "Fitxategia _Ezabatu"
 
 #: ../src/xfdesktop-file-icon.c:657
 msgid "_Rename..."
-msgstr ""
+msgstr "Be_rrizendatu..."
 
 #: ../src/xfdesktop-file-icon.c:670
-#, fuzzy
 msgid "_Properties..."
-msgstr "Propietateak Editatu"
+msgstr "_Propietateak..."
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
@@ -830,3 +822,4 @@ msgstr "Xfce 4 Idazmahai Ezarpenak"
 
 #~ msgid "Show minimized window _icons on the desktop"
 #~ msgstr "Txikituriko leiho _ikonoak idazmahaiean bistarazi"
+
