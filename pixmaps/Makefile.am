@@ -40,4 +40,5 @@ EXTRA_DIST = \
 	$(icons48_DATA) \
 	$(iconssc_DATA) \
 	$(pixmaps_DATA) \
+	$(pixmapsx_DATA) \
 	$(highlight_DATA)
