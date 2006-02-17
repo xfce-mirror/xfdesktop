@@ -312,6 +312,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
         GList *icon_l = g_list_find_custom(icon_view->priv->icons, evt,
                                            (GCompareFunc)xfdesktop_check_icon_clicked);
         if(icon_l && (icon = icon_l->data)) {
+            XfdesktopIcon *icon_below = NULL;
             /* if selection mode is not multiple, or if it is, but shift/ctrl
             * is not held down, unselect the others */
             if(icon_view->priv->sel_mode != GTK_SELECTION_MULTIPLE
@@ -324,9 +325,17 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 g_list_free(repaint_icons);
             }
             
-            icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
-                                                             icon);
+            if(g_list_find(icon_view->priv->selected_icons, icon)) {
+                icon_view->priv->selected_icons = g_list_remove(icon_view->priv->selected_icons,
+                                                                icon);
+                icon_below = xfdesktop_find_icon_below(icon_view, icon);
+            } else {
+                icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
+                                                                 icon);
+            }
             xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+            if(icon_below)
+                xfdesktop_icon_view_paint_icon(icon_view, icon_below);
             xfdesktop_icon_view_paint_icon(icon_view, icon);
             icon_view->priv->last_clicked_item = icon;
             
@@ -397,8 +406,8 @@ xfdesktop_icon_view_key_press(GtkWidget *widget,
     gboolean allow_multiple = (evt->state & GDK_CONTROL_MASK)
                               || (evt->state & GDK_SHIFT_MASK);
     
-    if(icon_view->priv->selected_icons)
-        icon = icon_view->priv->selected_icons->data;
+    if(icon_view->priv->last_clicked_item)
+        icon = icon_view->priv->last_clicked_item;
     
     switch(evt->keyval) {
         case GDK_Up:
@@ -1909,12 +1918,20 @@ xfdesktop_grid_find_nearest(XfdesktopIconView *icon_view,
         }
         
         if(new_sel_icon) {
-            icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
-                                                             grid_layout[i]);
+            if(g_list_find(icon_view->priv->selected_icons, new_sel_icon)) {
+                icon_view->priv->selected_icons = g_list_remove(icon_view->priv->selected_icons,
+                                                                icon);
+            } else {
+                icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
+                                                                 new_sel_icon);
+            }
+            
             xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
-            xfdesktop_icon_view_clear_icon_extents(icon_view, grid_layout[i]);
+            xfdesktop_icon_view_clear_icon_extents(icon_view, new_sel_icon);
             xfdesktop_icon_view_paint_icon(icon_view, icon);
-            xfdesktop_icon_view_paint_icon(icon_view, grid_layout[i]);
+            xfdesktop_icon_view_paint_icon(icon_view, new_sel_icon);
+            
+            icon_view->priv->last_clicked_item = new_sel_icon;
         }
     }
 }
