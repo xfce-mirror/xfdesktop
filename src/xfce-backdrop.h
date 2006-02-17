@@ -42,6 +42,22 @@ typedef struct _XfceBackdrop XfceBackdrop;
 typedef struct _XfceBackdropClass XfceBackdropClass;
 typedef struct _XfceBackdropPriv XfceBackdropPriv;
 
+typedef enum
+{
+    XFCE_BACKDROP_IMAGE_AUTO = 0,
+    XFCE_BACKDROP_IMAGE_CENTERED,
+    XFCE_BACKDROP_IMAGE_TILED,
+    XFCE_BACKDROP_IMAGE_STRETCHED,
+    XFCE_BACKDROP_IMAGE_SCALED
+} XfceBackdropImageStyle;
+
+typedef enum
+{
+    XFCE_BACKDROP_COLOR_SOLID = 0,
+    XFCE_BACKDROP_COLOR_HORIZ_GRADIENT,
+    XFCE_BACKDROP_COLOR_VERT_GRADIENT
+} XfceBackdropColorStyle;
+
 struct _XfceBackdrop
 {
     GObject gobject;
@@ -72,24 +88,36 @@ void xfce_backdrop_set_size              (XfceBackdrop *backdrop,
 
 void xfce_backdrop_set_color_style       (XfceBackdrop *backdrop,
                                           XfceBackdropColorStyle style);
+XfceBackdropColorStyle xfce_backdrop_get_color_style
+                                         (XfceBackdrop *backdrop);
 
 void xfce_backdrop_set_first_color       (XfceBackdrop *backdrop,
+                                          const GdkColor *color);
+void xfce_backdrop_get_first_color       (XfceBackdrop *backdrop,
                                           GdkColor *color);
 
 void xfce_backdrop_set_second_color      (XfceBackdrop *backdrop,
+                                          const GdkColor *color);
+void xfce_backdrop_get_second_color      (XfceBackdrop *backdrop,
                                           GdkColor *color);
 
 void xfce_backdrop_set_show_image        (XfceBackdrop *backdrop,
                                           gboolean show_image);
+gboolean xfce_backdrop_get_show_image    (XfceBackdrop *backdrop);
 
 void xfce_backdrop_set_image_style       (XfceBackdrop *backdrop,
                                           XfceBackdropImageStyle style);
+XfceBackdropImageStyle xfce_backdrop_get_image_style
+                                         (XfceBackdrop *backdrop);
 
 void xfce_backdrop_set_image_filename    (XfceBackdrop *backdrop,
                                           const gchar *filename);
+G_CONST_RETURN gchar *xfce_backdrop_get_image_filename
+                                         (XfceBackdrop *backdrop);
 
 void xfce_backdrop_set_brightness        (XfceBackdrop *backdrop,
                                           gint brightness);
+gint xfce_backdrop_get_brightness        (XfceBackdrop *backdrop);
 
 GdkPixbuf *xfce_backdrop_get_pixbuf      (XfceBackdrop *backdrop);
 

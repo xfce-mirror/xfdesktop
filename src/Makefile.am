@@ -12,7 +12,9 @@ xfdesktop_SOURCES = \
 	xfce-backdrop.c \
 	xfce-backdrop.h \
 	xfce-desktop.c \
-	xfce-desktop.h
+	xfce-desktop.h \
+	xfce-desktop-settings.c \
+	xfce-desktop-settings.h
 
 desktop_icon_sources = \
 	xfdesktop-icon.c \

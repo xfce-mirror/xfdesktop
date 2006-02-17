@@ -5,6 +5,7 @@ libxfdesktop_la_SOURCES = \
 	xfdesktop-common.h
 
 libxfdesktop_la_CFLAGS = \
+	-I$(top_srcdir)/src \
 	@LIBXFCEGUI4_CFLAGS@ \
 	@GTK_CFLAGS@
 

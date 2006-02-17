@@ -29,8 +29,9 @@
 #include <xfce-mcs-manager/manager-plugin.h>
 
 #include "xfdesktop-common.h"
+#include "xfce-backdrop.h"
 
-#define BORDER 5
+#define BORDER 8
 
 typedef struct {
     McsPlugin *plugin;

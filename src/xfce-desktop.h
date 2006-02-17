@@ -25,8 +25,6 @@
 #include <glib-object.h>
 #include <gtk/gtkwindow.h>
 
-#include <libxfce4mcs/mcs-client.h>
-
 #include "xfce-backdrop.h"
 
 G_BEGIN_DECLS
@@ -41,6 +39,13 @@ G_BEGIN_DECLS
 typedef struct _XfceDesktop XfceDesktop;
 typedef struct _XfceDesktopClass XfceDesktopClass;
 typedef struct _XfceDesktopPriv XfceDesktopPriv;
+
+typedef enum
+{
+    XFCE_DESKTOP_ICON_STYLE_NONE = 0,
+    XFCE_DESKTOP_ICON_STYLE_WINDOWS,
+    XFCE_DESKTOP_ICON_STYLE_FILES,
+} XfceDesktopIconStyle;
 
 struct _XfceDesktop
 {
@@ -57,16 +62,23 @@ struct _XfceDesktopClass
 
 GType xfce_desktop_get_type                     () G_GNUC_CONST;
 
-GtkWidget *xfce_desktop_new(GdkScreen *gscreen, McsClient *mcs_client);
+GtkWidget *xfce_desktop_new(GdkScreen *gscreen);
 
 guint xfce_desktop_get_n_monitors(XfceDesktop *desktop);
-
-XfceBackdrop *xfce_desktop_get_backdrop(XfceDesktop *desktop, guint n);
 
 gint xfce_desktop_get_width(XfceDesktop *desktop);
 gint xfce_desktop_get_height(XfceDesktop *desktop);
 
-gboolean xfce_desktop_settings_changed(McsClient *client, McsAction action, McsSetting *setting, gpointer user_data);
+void xfce_desktop_set_xinerama_stretch(XfceDesktop *desktop,
+                                       gboolean stretch);
+gboolean xfce_desktop_get_xinerama_stretch(XfceDesktop *desktop);
+
+void xfce_desktop_set_icon_style(XfceDesktop *desktop,
+                                 XfceDesktopIconStyle style);
+XfceDesktopIconStyle xfce_desktop_get_icon_style(XfceDesktop *desktop);
+
+XfceBackdrop *xfce_desktop_peek_backdrop(XfceDesktop *desktop,
+                                         guint monitor);
 
 G_END_DECLS
 

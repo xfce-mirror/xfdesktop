@@ -43,22 +43,6 @@
 
 G_BEGIN_DECLS
 
-typedef enum
-{
-    XFCE_BACKDROP_IMAGE_AUTO = 0,
-    XFCE_BACKDROP_IMAGE_CENTERED,
-    XFCE_BACKDROP_IMAGE_TILED,
-    XFCE_BACKDROP_IMAGE_STRETCHED,
-    XFCE_BACKDROP_IMAGE_SCALED
-} XfceBackdropImageStyle;
-
-typedef enum
-{
-    XFCE_BACKDROP_COLOR_SOLID = 0,
-    XFCE_BACKDROP_COLOR_HORIZ_GRADIENT,
-    XFCE_BACKDROP_COLOR_VERT_GRADIENT
-} XfceBackdropColorStyle;
-
 gchar **get_list_from_file(const gchar *);
 gboolean is_backdrop_list(const gchar *path);
 gboolean xfdesktop_check_image_file(const gchar *filename);

@@ -76,25 +76,16 @@
 #include "main.h"
 #include "xfce-desktop.h"
 
-#ifdef ENABLE_DESKTOP_ICONS
-/* !! keep in sync with settings/menu_settings.c !! */
-typedef enum
-{
-    XFCE_DESKTOP_ICON_STYLE_NONE = 0,
-    XFCE_DESKTOP_ICON_STYLE_WINDOWS,
-    XFCE_DESKTOP_ICON_STYLE_FILES,
-} XfceDesktopIconStyle;
-#endif
-
 struct _XfceDesktopPriv
 {
     GdkScreen *gscreen;
-    McsClient *mcs_client;
     
     GdkPixmap *bg_pixmap;
     
     guint nbackdrops;
     XfceBackdrop **backdrops;
+    
+    gboolean xinerama_stretch;
     
 #ifdef ENABLE_DESKTOP_ICONS
     XfceDesktopIconStyle icons_style;
@@ -111,9 +102,6 @@ static void xfce_desktop_unrealize(GtkWidget *widget);
 
 static gboolean xfce_desktop_expose(GtkWidget *w,
                                     GdkEventExpose *evt);
-
-static void load_initial_settings(XfceDesktop *desktop,
-                                  McsClient *mcs_client);
 
 
 /* private functions */
@@ -182,161 +170,22 @@ set_imgfile_root_property(XfceDesktop *desktop, const gchar *filename,
     gchar property_name[128];
     
     g_snprintf(property_name, 128, XFDESKTOP_IMAGE_FILE_FMT, monitor);
-    gdk_property_change(gdk_screen_get_root_window(desktop->priv->gscreen),
-                gdk_atom_intern(property_name, FALSE),
-                gdk_x11_xatom_to_atom(XA_STRING), 8, GDK_PROP_MODE_REPLACE,
-                (guchar *)filename, strlen(filename)+1);
-}
-
-static void
-save_list_file_minus_one(const gchar *filename, const gchar **files, gint badi)
-{
-    FILE *fp;
-    gint fd, i;
-
-#ifdef O_EXLOCK
-    if((fd = open (filename, O_CREAT|O_EXLOCK|O_TRUNC|O_WRONLY, 0640)) < 0) {
-#else
-    if((fd = open (filename, O_CREAT| O_TRUNC|O_WRONLY, 0640)) < 0) {
-#endif
-        xfce_err (_("Could not save file %s: %s\n\n"
-                "Please choose another location or press "
-                "cancel in the dialog to discard your changes"),
-                filename, g_strerror(errno));
-        return;
+    if(filename) {
+        gdk_property_change(gdk_screen_get_root_window(desktop->priv->gscreen),
+                            gdk_atom_intern(property_name, FALSE),
+                            gdk_x11_xatom_to_atom(XA_STRING), 8,
+                            GDK_PROP_MODE_REPLACE,
+                            (guchar *)filename, strlen(filename)+1);
+    } else {
+        gdk_property_delete(gdk_screen_get_root_window(desktop->priv->gscreen),
+                            gdk_atom_intern(property_name, FALSE));
     }
-
-    if((fp = fdopen (fd, "w")) == NULL) {
-        g_warning ("Unable to fdopen(%s). This should not happen!\n", filename);
-        close(fd);
-        return;
-    }
-
-    fprintf (fp, "%s\n", LIST_TEXT);
-    
-    for(i = 0; files[i] && *files[i] && *files[i] != '\n'; i++) {
-        if(i != badi)
-            fprintf(fp, "%s\n", files[i]);
-    }
-    
-    fclose(fp);
-}
-
-inline gint
-count_elements(const gchar **list)
-{
-    gint i, c = 0;
-    
-    for(i = 0; list[i]; i++) {
-        if(*list[i] && *list[i] != '\n')
-            c++;
-    }
-    
-    return c;
-}
-
-static const gchar **
-get_listfile_contents(const gchar *listfile)
-{
-    static gchar *prevfile = NULL;
-    static gchar **files = NULL;
-    static time_t mtime = 0;
-    struct stat st;
-    
-    if(!listfile) {
-        if(prevfile) {
-            g_free(prevfile);
-            prevfile = NULL;
-        }
-        return NULL;
-    }
-    
-    if(stat(listfile, &st) < 0) {
-        if(prevfile) {
-            g_free(prevfile);
-            prevfile = NULL;
-        }
-        mtime = 0;
-        return NULL;
-    }
-    
-    if(!prevfile || strcmp(listfile, prevfile) || mtime < st.st_mtime) {
-        if(files)
-            g_strfreev(files);
-        if(prevfile)
-            g_free(prevfile);
-    
-        files = get_list_from_file(listfile);
-        prevfile = g_strdup(listfile);
-        mtime = st.st_mtime;
-    }
-    
-    return (const gchar **)files;
-}
-
-static const gchar *
-get_path_from_listfile(const gchar *listfile)
-{
-    static gboolean __initialized = FALSE;
-    static gint previndex = -1;
-    gint i, n;
-    const gchar **files;
-    
-    /* NOTE: 4.3BSD random()/srandom() are a) stronger and b) faster than
-    * ANSI-C rand()/srand(). So we use random() if available
-    */
-    if (!__initialized)    {
-        guint seed = time(NULL) ^ (getpid() + (getpid() << 15));
-#ifdef HAVE_SRANDOM
-        srandom(seed);
-#else
-        srand(seed);
-#endif
-        __initialized = TRUE;
-    }
-    
-    do {
-        /* get the contents of the list file */
-        files = get_listfile_contents(listfile);
-        
-        /* if zero or one item, return immediately */
-        n = count_elements(files);
-        if(!n)
-            return NULL;
-        else if(n == 1)
-            return (const gchar *)files[0];
-        
-        /* pick a random item */
-        do {
-#ifdef HAVE_SRANDOM
-            i = random() % n;
-#else
-            i = rand() % n;
-#endif
-            if(i != previndex) /* same as last time? */
-                break;
-        } while(1);
-        
-        g_print("picked i=%d, %s\n", i, files[i]);
-        /* validate the image; if it's good, return it */
-        if(xfdesktop_check_image_file(files[i]))
-            break;
-        
-        g_print("file not valid, ditching\n");
-        
-        /* bad image: remove it from the list and write it out */
-        save_list_file_minus_one(listfile, files, i);
-        previndex = -1;
-        /* loop and try again */
-    } while(1);
-    
-    return (const gchar *)files[(previndex = i)];
 }
 
 static void
 backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 {
-    GtkWidget *desktop = user_data;
+    XfceDesktop *desktop = XFCE_DESKTOP(user_data);
     GdkPixbuf *pix;
     GdkPixmap *pmap = NULL;
     GdkColormap *cmap;
@@ -344,20 +193,33 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     GdkRectangle rect;
     Pixmap xid;
     GdkWindow *groot;
+    gint i, monitor = -1;
     
     TRACE("dummy");
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+    
+    if(!GTK_WIDGET_REALIZED(GTK_WIDGET(desktop)))
+        return;
+    
+    gscreen = desktop->priv->gscreen;
+    cmap = gdk_drawable_get_colormap(GDK_DRAWABLE(GTK_WIDGET(desktop)->window));
+    
+    for(i = 0; i < XFCE_DESKTOP(desktop)->priv->nbackdrops; i++) {
+        if(backdrop == XFCE_DESKTOP(desktop)->priv->backdrops[i]) {
+            monitor = i;
+            break;
+        }
+    }
+    if(monitor == -1)
+        return;
     
     /* create/get the composited backdrop pixmap */
     pix = xfce_backdrop_get_pixbuf(backdrop);
     if(!pix)
         return;
     
-    gscreen = XFCE_DESKTOP(desktop)->priv->gscreen;
-    cmap = gdk_drawable_get_colormap(GDK_DRAWABLE(GTK_WIDGET(desktop)->window));
-    
-    if(XFCE_DESKTOP(desktop)->priv->nbackdrops == 1) {    
+    if(desktop->priv->nbackdrops == 1) {    
         /* optimised for single monitor: just dump the pixbuf into a pixmap */
         gdk_pixbuf_render_pixmap_and_mask_for_colormap(pix, cmap, &pmap, NULL, 0);
         g_object_unref(G_OBJECT(pix));
@@ -372,23 +234,12 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
          * probably still faster than redoing the whole thing. */
         GdkPixmap *cur_pmap = NULL;
         GdkPixbuf *cur_pbuf = NULL;
-        gint i, n = -1, swidth, sheight;
-        
-        for(i = 0; i < XFCE_DESKTOP(desktop)->priv->nbackdrops; i++) {
-            if(backdrop == XFCE_DESKTOP(desktop)->priv->backdrops[i]) {
-                n = i;
-                break;
-            }
-        }
-        if(n == -1) {
-            g_object_unref(G_OBJECT(pix));
-            return;
-        }
+        gint swidth, sheight;
         
         swidth = gdk_screen_get_width(gscreen);
         sheight = gdk_screen_get_height(gscreen);
         
-        cur_pmap = XFCE_DESKTOP(desktop)->priv->bg_pixmap;
+        cur_pmap = desktop->priv->bg_pixmap;
         if(cur_pmap) {
             gint pw, ph;
             gdk_drawable_get_size(GDK_DRAWABLE(cur_pmap), &pw, &ph);
@@ -405,7 +256,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
                     swidth, sheight);
         }
         
-        gdk_screen_get_monitor_geometry(gscreen, n, &rect);
+        gdk_screen_get_monitor_geometry(gscreen, monitor, &rect);
         gdk_pixbuf_copy_area(pix, 0, 0, gdk_pixbuf_get_width(pix),
                 gdk_pixbuf_get_height(pix), cur_pbuf, rect.x, rect.y);
         g_object_unref(G_OBJECT(pix));
@@ -418,7 +269,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     }
     
     xid = GDK_DRAWABLE_XID(pmap);
-    groot = gdk_screen_get_root_window(XFCE_DESKTOP(desktop)->priv->gscreen);
+    groot = gdk_screen_get_root_window(gscreen);
     
     gdk_error_trap_push();
     
@@ -437,15 +288,20 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     /* there really should be a standard for this crap... */
     
     /* clear the old pixmap, if any */
-    if(XFCE_DESKTOP(desktop)->priv->bg_pixmap)
-        g_object_unref(G_OBJECT(XFCE_DESKTOP(desktop)->priv->bg_pixmap));
+    if(desktop->priv->bg_pixmap)
+        g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
     
     /* set the new pixmap and tell gtk to redraw it */
-    XFCE_DESKTOP(desktop)->priv->bg_pixmap = pmap;
-    gdk_window_set_back_pixmap(desktop->window, pmap, FALSE);
-    gtk_widget_queue_draw_area(desktop, rect.x, rect.y, rect.width, rect.height);
+    desktop->priv->bg_pixmap = pmap;
+    gdk_window_set_back_pixmap(GTK_WIDGET(desktop)->window, pmap, FALSE);
+    gtk_widget_queue_draw_area(GTK_WIDGET(desktop), rect.x, rect.y,
+                               rect.width, rect.height);
     
     gdk_error_trap_pop();
+    
+    set_imgfile_root_property(desktop,
+                              xfce_backdrop_get_image_filename(backdrop),
+                              monitor);
 }
 
 static void
@@ -524,9 +380,6 @@ handle_xinerama_unstretch(XfceDesktop *desktop)
                 rect.width, rect.height);
     }
     
-    if(desktop->priv->mcs_client)
-        load_initial_settings(desktop, desktop->priv->mcs_client);
-    
     backdrop_changed_cb(backdrop0, desktop);
     for(i = 1; i < desktop->priv->nbackdrops; i++) {
         g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]), "changed",
@@ -535,135 +388,7 @@ handle_xinerama_unstretch(XfceDesktop *desktop)
     }
 }
 
-static void
-load_initial_settings(XfceDesktop *desktop, McsClient *mcs_client)
-{
-    gchar setting_name[64];
-    McsSetting *setting = NULL;
-    gint screen, i;
-    XfceBackdrop *backdrop;
-    GdkColor color;
-    
-    screen = gdk_screen_get_number(desktop->priv->gscreen);
-    
-    if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "xineramastretch",
-            BACKDROP_CHANNEL, &setting))
-    {
-        if(setting->data.v_int)
-            handle_xinerama_stretch(desktop);
-        mcs_setting_free(setting);
-        setting = NULL;
-    }
-    
-#ifdef ENABLE_DESKTOP_ICONS
-    if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "desktopiconstyle",
-                                                 BACKDROP_CHANNEL, &setting))
-    {
-        desktop->priv->icons_style = setting->data.v_int;
-        mcs_setting_free(setting);
-        setting = NULL;
-    } else
-        desktop->priv->icons_style = XFCE_DESKTOP_ICON_STYLE_WINDOWS;
-    
-    xfce_desktop_setup_icon_view(desktop);
-#endif
-    
-    for(i = 0; i < desktop->priv->nbackdrops; i++) {
-        backdrop = desktop->priv->backdrops[i];
-        
-        g_snprintf(setting_name, 64, "showimage_%d_%d", screen, i);
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
-                BACKDROP_CHANNEL, &setting))
-        {
-            xfce_backdrop_set_show_image(backdrop, setting->data.v_int);
-            mcs_setting_free(setting);
-            setting = NULL;
-        }
-        
-        g_snprintf(setting_name, 64, "imagepath_%d_%d", screen, i);
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
-                BACKDROP_CHANNEL, &setting))
-        {
-            if(is_backdrop_list(setting->data.v_string)) {
-                const gchar *imgfile = get_path_from_listfile(setting->data.v_string);
-                xfce_backdrop_set_image_filename(backdrop, imgfile);
-                set_imgfile_root_property(desktop, imgfile, i);
-            } else {
-                xfce_backdrop_set_image_filename(backdrop, setting->data.v_string);
-                set_imgfile_root_property(desktop, setting->data.v_string, i);
-            }
-            mcs_setting_free(setting);
-            setting = NULL;
-        } else
-            xfce_backdrop_set_image_filename(backdrop, DEFAULT_BACKDROP);
-        
-        g_snprintf(setting_name, 64, "imagestyle_%d_%d", screen, i);
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
-                BACKDROP_CHANNEL, &setting))
-        {
-            xfce_backdrop_set_image_style(backdrop, setting->data.v_int);
-            mcs_setting_free(setting);
-            setting = NULL;
-        } else
-            xfce_backdrop_set_image_style(backdrop, XFCE_BACKDROP_IMAGE_STRETCHED);
-        
-        g_snprintf(setting_name, 64, "color1_%d_%d", screen, i);
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
-                BACKDROP_CHANNEL, &setting))
-        {
-            color.red = setting->data.v_color.red;
-            color.green = setting->data.v_color.green;
-            color.blue = setting->data.v_color.blue;
-            xfce_backdrop_set_first_color(backdrop, &color);
-            mcs_setting_free(setting);
-            setting = NULL;
-        } else {
-            /* default color1 is #6985b7 */
-            color.red = (guint16)0x6900;
-            color.green = (guint16)0x8500;
-            color.blue = (guint16)0xb700;
-            xfce_backdrop_set_first_color(backdrop, &color);
-        }
-        
-        g_snprintf(setting_name, 64, "color2_%d_%d", screen, i);
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
-                BACKDROP_CHANNEL, &setting))
-        {
-            color.red = setting->data.v_color.red;
-            color.green = setting->data.v_color.green;
-            color.blue = setting->data.v_color.blue;
-            xfce_backdrop_set_second_color(backdrop, &color);
-            mcs_setting_free(setting);
-            setting = NULL;
-        } else {
-            /* default color2 is #dbe8ff */
-            color.red = (guint16)0xdb00;
-            color.green = (guint16)0xe800;
-            color.blue = (guint16)0xff00;
-            xfce_backdrop_set_second_color(backdrop, &color);
-        }
-        
-        g_snprintf(setting_name, 64, "colorstyle_%d_%d", screen, i);
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
-                BACKDROP_CHANNEL, &setting))
-        {
-            xfce_backdrop_set_color_style(backdrop, setting->data.v_int);
-            mcs_setting_free(setting);
-            setting = NULL;
-        } else
-            xfce_backdrop_set_color_style(backdrop, XFCE_BACKDROP_COLOR_HORIZ_GRADIENT);
-        
-        g_snprintf(setting_name, 64, "brightness_%d_%d", screen, i);
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
-                BACKDROP_CHANNEL, &setting))
-        {
-            xfce_backdrop_set_brightness(backdrop, setting->data.v_int);
-            mcs_setting_free(setting);
-            setting = NULL;
-        } else
-            xfce_backdrop_set_brightness(backdrop, 0);
-    }
-}
+
 
 static void
 screen_set_selection(XfceDesktop *desktop)
@@ -826,9 +551,6 @@ xfce_desktop_realize(GtkWidget *widget)
                 rect.width, rect.height);
     }
     
-    if(desktop->priv->mcs_client)
-        load_initial_settings(desktop, desktop->priv->mcs_client);
-    
     for(i = 0; i < desktop->priv->nbackdrops; i++) {
         g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]), "changed",
                 G_CALLBACK(backdrop_changed_cb), desktop);
@@ -840,6 +562,8 @@ xfce_desktop_realize(GtkWidget *widget)
     
     g_signal_connect(G_OBJECT(desktop), "style-set",
             G_CALLBACK(desktop_style_set_cb), NULL);
+    
+    gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSURE_MASK);
 }
 
 static void
@@ -849,7 +573,6 @@ xfce_desktop_unrealize(GtkWidget *widget)
     gint i;
     GdkWindow *groot;
     gchar property_name[128];
-    GdkColor c;
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
@@ -895,16 +618,6 @@ xfce_desktop_unrealize(GtkWidget *widget)
     
     gtk_selection_remove_all(widget);
     
-    /* blank out the root window */
-    gdk_window_set_back_pixmap(groot, NULL, FALSE);
-    c.red = c.blue = c.green = 0;
-    gdk_window_set_background(groot, &c);
-    gdk_window_clear(groot);
-    GdkRectangle rect;
-    rect.x = rect.y = 0;
-    gdk_drawable_get_size(GDK_DRAWABLE(groot), &rect.x, &rect.y);
-    gdk_window_invalidate_rect(groot, &rect, FALSE);
-    
     GTK_WIDGET_UNSET_FLAGS(widget, GTK_REALIZED);
 }
 
@@ -912,7 +625,7 @@ static gboolean
 xfce_desktop_expose(GtkWidget *w,
                     GdkEventExpose *evt)
 {
-    //TRACE("entering");
+    TRACE("entering");
     
     if(evt->count != 0)
         return FALSE;
@@ -921,7 +634,7 @@ xfce_desktop_expose(GtkWidget *w,
         GTK_WIDGET_CLASS(xfce_desktop_parent_class)->expose_event(w, evt);
     
     gdk_window_clear_area(w->window, evt->area.x, evt->area.y,
-            evt->area.width, evt->area.height);
+                          evt->area.width, evt->area.height);
     
     return FALSE;
 }
@@ -940,15 +653,13 @@ xfce_desktop_expose(GtkWidget *w,
  * Return value: A new #XfceDesktop.
  **/
 GtkWidget *
-xfce_desktop_new(GdkScreen *gscreen, McsClient *mcs_client)
+xfce_desktop_new(GdkScreen *gscreen)
 {
     XfceDesktop *desktop = g_object_new(XFCE_TYPE_DESKTOP, NULL);
     
     if(!gscreen)
         gscreen = gdk_display_get_default_screen(gdk_display_get_default());
     desktop->priv->gscreen = gscreen;
-    
-    desktop->priv->mcs_client = mcs_client;
     
     return GTK_WIDGET(desktop);
 }
@@ -959,15 +670,6 @@ xfce_desktop_get_n_monitors(XfceDesktop *desktop)
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), 0);
     
     return desktop->priv->nbackdrops;
-}
-
-XfceBackdrop *
-xfce_desktop_get_backdrop(XfceDesktop *desktop, guint n)
-{
-    g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), NULL);
-    g_return_val_if_fail(n < desktop->priv->nbackdrops, NULL);
-    
-    return desktop->priv->backdrops[n];
 }
 
 gint
@@ -986,117 +688,68 @@ xfce_desktop_get_height(XfceDesktop *desktop)
     return gdk_screen_get_height(desktop->priv->gscreen);
 }
 
-gboolean
-xfce_desktop_settings_changed(McsClient *client, McsAction action,
-        McsSetting *setting, gpointer user_data)
+void
+xfce_desktop_set_xinerama_stretch(XfceDesktop *desktop,
+                                  gboolean stretch)
 {
-    XfceDesktop *desktop = user_data;
-    XfceBackdrop *backdrop;
-    gchar *sname, *p, *q;
-    gint screen, monitor;
-    GdkColor color;
-    gboolean handled = FALSE;
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
-    TRACE("dummy");
-    
-    g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), FALSE);
-    
-    if(!strcmp(setting->name, "xineramastretch")) {
-        if(setting->data.v_int && desktop->priv->nbackdrops > 1) {
-            handle_xinerama_stretch(desktop);
-            backdrop_changed_cb(desktop->priv->backdrops[0], desktop);
-        } else if(!setting->data.v_int)
-            handle_xinerama_unstretch(desktop);
-        return TRUE;
+    if(stretch == desktop->priv->xinerama_stretch
+       || desktop->priv->nbackdrops <= 1)
+    {
+        return;
     }
+    
+    desktop->priv->xinerama_stretch = stretch;
+    
+    if(stretch)
+        handle_xinerama_stretch(desktop);
+    else
+        handle_xinerama_unstretch(desktop);
+    
+    backdrop_changed_cb(desktop->priv->backdrops[0], desktop);
+}
+
+gboolean
+xfce_desktop_get_xinerama_stretch(XfceDesktop *desktop)
+{
+    g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), FALSE);
+    return desktop->priv->xinerama_stretch;
+}
+
+void
+xfce_desktop_set_icon_style(XfceDesktop *desktop,
+                            XfceDesktopIconStyle style)
+{
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop)
+                     && style <= XFCE_DESKTOP_ICON_STYLE_FILES);
     
 #ifdef ENABLE_DESKTOP_ICONS
-    if(!strcmp(setting->name, "desktopiconstyle")) {
-        if(setting->data.v_int != desktop->priv->icons_style) {
-            desktop->priv->icons_style = setting->data.v_int;
-            xfce_desktop_setup_icon_view(desktop);
-        }
-        
-        return TRUE;
-    }
+    if(style == desktop->priv->icons_style)
+        return;
     
+    desktop->priv->icons_style = style;
+    xfce_desktop_setup_icon_view(desktop);
 #endif
+}
+
+XfceDesktopIconStyle
+xfce_desktop_get_icon_style(XfceDesktop *desktop)
+{
+    g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), XFCE_DESKTOP_ICON_STYLE_NONE);
     
-    /* get the screen and monitor number */
-    sname = g_strdup(setting->name);
-    q = g_strrstr(sname, "_");
-    if(!q || q == sname) {
-        g_free(sname);
-        return FALSE;
-    }
-    p = strstr(sname, "_");
-    if(!p || p == q) {
-        g_free(sname);
-        return FALSE;
-    }
-    *q = 0;
-    screen = atoi(p+1);
-    monitor = atoi(q+1);
-    g_free(sname);
-    
-    if(screen == -1 || monitor == -1
-            || screen != gdk_screen_get_number(desktop->priv->gscreen)
-            || monitor >= desktop->priv->nbackdrops)
-    {
-        /* not ours */
-        return FALSE;
-    }
-    
-    backdrop = desktop->priv->backdrops[monitor];
-    if(!backdrop)
-        return FALSE;
-    
-    switch(action) {
-        case MCS_ACTION_NEW:
-        case MCS_ACTION_CHANGED:
-            if(strstr(setting->name, "showimage") == setting->name) {
-                xfce_backdrop_set_show_image(backdrop, setting->data.v_int);
-                handled = TRUE;
-            } else if(strstr(setting->name, "imagepath") == setting->name) {
-                if(is_backdrop_list(setting->data.v_string)) {
-                    const gchar *imgfile = get_path_from_listfile(setting->data.v_string);
-                    xfce_backdrop_set_image_filename(backdrop, imgfile);
-                    set_imgfile_root_property(desktop, imgfile, monitor);
-                } else {
-                    xfce_backdrop_set_image_filename(backdrop,
-                            setting->data.v_string);
-                    set_imgfile_root_property(desktop, setting->data.v_string,
-                            monitor);
-                }
-                handled = TRUE;
-            } else if(strstr(setting->name, "imagestyle") == setting->name) {
-                xfce_backdrop_set_image_style(backdrop, setting->data.v_int);
-                handled = TRUE;
-            } else if(strstr(setting->name, "color1") == setting->name) {
-                color.red = setting->data.v_color.red;
-                color.blue = setting->data.v_color.blue;
-                color.green = setting->data.v_color.green;
-                xfce_backdrop_set_first_color(backdrop, &color);
-                handled = TRUE;
-            } else if(strstr(setting->name, "color2") == setting->name) {
-                color.red = setting->data.v_color.red;
-                color.blue = setting->data.v_color.blue;
-                color.green = setting->data.v_color.green;
-                xfce_backdrop_set_second_color(backdrop, &color);
-                handled = TRUE;
-            } else if(strstr(setting->name, "colorstyle") == setting->name) {
-                xfce_backdrop_set_color_style(backdrop, setting->data.v_int);
-                handled = TRUE;
-            } else if(strstr(setting->name, "brightness") == setting->name) {
-                xfce_backdrop_set_brightness(backdrop, setting->data.v_int);
-                handled = TRUE;
-            }
-            
-            break;
-        
-        case MCS_ACTION_DELETED:
-            break;
-    }
-    
-    return handled;
+#ifdef ENABLE_DESKTOP_ICONS
+    return desktop->priv->icons_style;
+#else
+    return XFCE_DESKTOP_ICON_STYLE_NONE;
+#endif
+}
+
+XfceBackdrop *
+xfce_desktop_peek_backdrop(XfceDesktop *desktop,
+                           guint monitor)
+{
+    g_return_val_if_fail(XFCE_IS_DESKTOP(desktop)
+                         && monitor < desktop->priv->nbackdrops, NULL);
+    return desktop->priv->backdrops[monitor];
 }

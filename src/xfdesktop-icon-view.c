@@ -874,6 +874,8 @@ xfdesktop_icon_view_expose(GtkWidget *widget,
                            GdkEventExpose *evt,
                            gpointer user_data)
 {
+    TRACE("entering");
+    
     if(evt->count != 0)
         return FALSE;
     

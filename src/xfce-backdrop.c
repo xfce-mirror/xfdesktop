@@ -332,6 +332,14 @@ xfce_backdrop_set_color_style(XfceBackdrop *backdrop,
     }
 }
 
+XfceBackdropColorStyle
+xfce_backdrop_get_color_style(XfceBackdrop *backdrop)
+{
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop),
+                         XFCE_BACKDROP_COLOR_SOLID);
+    return backdrop->priv->color_style;
+}
+
 /**
  * xfce_backdrop_set_first_color:
  * @backdrop: An #XfceBackdrop.
@@ -344,7 +352,8 @@ xfce_backdrop_set_color_style(XfceBackdrop *backdrop,
  * respectively.
  **/
 void
-xfce_backdrop_set_first_color(XfceBackdrop *backdrop, GdkColor *color)
+xfce_backdrop_set_first_color(XfceBackdrop *backdrop,
+                              const GdkColor *color)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop) && color != NULL);
     
@@ -359,6 +368,15 @@ xfce_backdrop_set_first_color(XfceBackdrop *backdrop, GdkColor *color)
     }
 }
 
+void
+xfce_backdrop_get_first_color(XfceBackdrop *backdrop,
+                              GdkColor *color)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop) && color);
+    
+    memcpy(color, &backdrop->priv->color1, sizeof(GdkColor));
+}
+
 /**
  * xfce_backdrop_set_second_color:
  * @backdrop: An #XfceBackdrop.
@@ -370,7 +388,8 @@ xfce_backdrop_set_first_color(XfceBackdrop *backdrop, GdkColor *color)
  * respectively.
  **/
 void
-xfce_backdrop_set_second_color(XfceBackdrop *backdrop, GdkColor *color)
+xfce_backdrop_set_second_color(XfceBackdrop *backdrop,
+                               const GdkColor *color)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop) && color != NULL);
     
@@ -384,6 +403,15 @@ xfce_backdrop_set_second_color(XfceBackdrop *backdrop, GdkColor *color)
         if(backdrop->priv->color_style != XFCE_BACKDROP_COLOR_SOLID)
             g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
     }
+}
+
+void
+xfce_backdrop_get_second_color(XfceBackdrop *backdrop,
+                               GdkColor *color)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop) && color);
+    
+    memcpy(color, &backdrop->priv->color2, sizeof(GdkColor));
 }
 
 /**
@@ -405,6 +433,13 @@ xfce_backdrop_set_show_image(XfceBackdrop *backdrop, gboolean show_image)
     }
 }
 
+gboolean
+xfce_backdrop_get_show_image(XfceBackdrop *backdrop)
+{
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), FALSE);
+    return backdrop->priv->show_image;
+}
+
 /**
  * xfce_backdrop_set_image_style:
  * @backdrop: An #XfceBackdrop.
@@ -413,8 +448,8 @@ xfce_backdrop_set_show_image(XfceBackdrop *backdrop, gboolean show_image)
  * Sets the image style to be used for the #XfceBackdrop.  "AUTO" attempts to
  * pick the best of "TILED" or "STRETCHED" based on the image size.
  * "STRETCHED" will stretch the image to the full width and height of the
- * #XfceBackdrop, which "SCALED" will find a "best-fit" for the image size,
- * while keeping the original image's aspect ratio.
+ * #XfceBackdrop, while "SCALED" will resize the image to fit the desktop
+ * while maintaining the image's aspect ratio.
  **/
 void
 xfce_backdrop_set_image_style(XfceBackdrop *backdrop,
@@ -426,6 +461,14 @@ xfce_backdrop_set_image_style(XfceBackdrop *backdrop,
         backdrop->priv->image_style = style;
         g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
     }
+}
+
+XfceBackdropImageStyle
+xfce_backdrop_get_image_style(XfceBackdrop *backdrop)
+{
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop),
+                         XFCE_BACKDROP_IMAGE_TILED);
+    return backdrop->priv->image_style;
 }
 
 /**
@@ -450,6 +493,13 @@ xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
     g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
 }
 
+G_CONST_RETURN gchar *
+xfce_backdrop_get_image_filename(XfceBackdrop *backdrop)
+{
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
+    return backdrop->priv->image_path;
+}
+
 /**
  * xfce_backdrop_set_brightness:
  * @backdrop: An #XfceBackdrop.
@@ -468,6 +518,13 @@ xfce_backdrop_set_brightness(XfceBackdrop *backdrop, gint brightness)
         backdrop->priv->brightness = brightness;
         g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
     }
+}
+
+gint
+xfce_backdrop_get_brightness(XfceBackdrop *backdrop)
+{
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), 0);
+    return backdrop->priv->brightness;
 }
 
 /**

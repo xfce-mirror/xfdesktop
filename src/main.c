@@ -53,6 +53,7 @@
 #include "xfdesktop-common.h"
 #include "xfce-backdrop.h"
 #include "xfce-desktop.h"
+#include "xfce-desktop-settings.h"
 #include "menu.h"
 #include "windowlist.h"
 #include "settings.h"
@@ -222,17 +223,33 @@ main(int argc, char **argv)
     McsClient *mcs_client;
     
     if(argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V"))) {
-        g_print("\tThis is %s version %s for Xfce %s\n", PACKAGE, VERSION,
+        g_print(_("This is %s version %s, running on Xfce %s.\n"), PACKAGE, VERSION,
                 xfce_version_string());
-        g_print("\tbuilt with GTK+-%d.%d.%d, ", GTK_MAJOR_VERSION,
-                GTK_MINOR_VERSION, GTK_MICRO_VERSION);
-        g_print("linked with GTK+-%d.%d.%d.\n", gtk_major_version,
-                gtk_minor_version, gtk_micro_version);
+        g_print(_("Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."),
+                GTK_MAJOR_VERSION,GTK_MINOR_VERSION, GTK_MICRO_VERSION,
+                gtk_major_version, gtk_minor_version, gtk_micro_version);
+        g_print("\n");
+        g_print(_("Build options:\n"));
+        g_print(_("    Desktop Menu:        %s\n"),
+#ifdef USE_DESKTOP_MENU
+                _("enabled")
+#else
+                _("disabled")
+#endif
+                );
+        g_print(_("    Desktop Icons:       %s\n"),
+#ifdef ENABLE_DESKTOP_ICONS
+                _("enabled")
+#else
+                _("disabled")
+#endif
+                );
+        
         exit(0);
     }
 
     /* bind gettext textdomain */
-    xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+    xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     
 #ifdef HAVE_THUNAR_VFS  /* move to xfce-desktop.c? */
     g_thread_init(NULL);
@@ -271,15 +288,18 @@ main(int argc, char **argv)
     nscreens = gdk_display_get_n_screens(gdpy);
     desktops = g_new(GtkWidget *, nscreens);
     for(i = 0; i < nscreens; i++) {
-        desktops[i] = xfce_desktop_new(gdk_display_get_screen(gdpy, i), mcs_client);
-        gtk_widget_add_events(desktops[i],
-            GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK | GDK_SCROLL_MASK);
+        desktops[i] = xfce_desktop_new(gdk_display_get_screen(gdpy, i));
+        gtk_widget_add_events(desktops[i], GDK_BUTTON_PRESS_MASK
+                              | GDK_BUTTON_RELEASE_MASK | GDK_SCROLL_MASK);
         g_signal_connect(G_OBJECT(desktops[i]), "scroll-event",
-                G_CALLBACK(scroll_cb), NULL);
+                         G_CALLBACK(scroll_cb), NULL);
         g_signal_connect_after(G_OBJECT(desktops[i]), "button-press-event",
-                G_CALLBACK(button_cb), NULL);
-        if(mcs_client)
+                               G_CALLBACK(button_cb), NULL);
+        if(mcs_client) {
             settings_register_callback(xfce_desktop_settings_changed, desktops[i]);
+            xfce_desktop_settings_load_initial(XFCE_DESKTOP(desktops[i]),
+                                               mcs_client);
+        }
         gtk_widget_show(desktops[i]);
         gdk_window_lower(desktops[i]->window);
     }
@@ -287,7 +307,7 @@ main(int argc, char **argv)
     signal(SIGPIPE, SIG_IGN);
     
     client_session = client_session_new(argc, argv, NULL,
-            SESSION_RESTART_IF_RUNNING, 35);
+                                        SESSION_RESTART_IF_RUNNING, 35);
     client_session->die = session_die;
     is_session_managed = session_init(client_session);
     

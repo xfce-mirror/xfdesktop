@@ -650,12 +650,11 @@ add_button_box (GtkWidget *vbox, BackdropPanel *bp)
 
 /* style options */
 static void
-set_style(GtkWidget *item, BackdropPanel *bp)
+set_style(GtkWidget *combo, BackdropPanel *bp)
 {
     gchar setting_name[128];
     
-    bp->style = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (item),
-                              "user-data"));
+    bp->style = gtk_combo_box_get_active(GTK_COMBO_BOX(combo));
     g_snprintf(setting_name, 128, "imagestyle_%d_%d", bp->xscreen, bp->monitor);
     mcs_manager_set_int (bp->bd->plugin->manager, setting_name, BACKDROP_CHANNEL,
              bp->style);
@@ -665,9 +664,7 @@ set_style(GtkWidget *item, BackdropPanel *bp)
 static void
 add_style_options (GtkWidget *vbox, GtkSizeGroup * sg, BackdropPanel *bp)
 {
-    GtkWidget *hbox, *label;
-    GtkWidget *rb_tiled, *rb_centered, *rb_scaled, *rb_stretched, *rb_auto;
-    GtkWidget *menu, *omenu;
+    GtkWidget *hbox, *label, *combo;
 
     hbox = gtk_hbox_new (FALSE, BORDER);
     gtk_widget_show (hbox);
@@ -678,53 +675,19 @@ add_style_options (GtkWidget *vbox, GtkSizeGroup * sg, BackdropPanel *bp)
     gtk_size_group_add_widget (sg, label);
     gtk_widget_show (label);
     gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-
-    menu = gtk_menu_new ();
-
-    rb_tiled = gtk_menu_item_new_with_label (_("Tiled"));
-    g_object_set_data (G_OBJECT (rb_tiled), "user-data",
-               GUINT_TO_POINTER (XFCE_BACKDROP_IMAGE_TILED));
-    gtk_widget_show (rb_tiled);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), rb_tiled);
-    g_signal_connect (rb_tiled, "activate", G_CALLBACK (set_style), bp);
-
-    rb_centered = gtk_menu_item_new_with_label (_("Centered"));
-    g_object_set_data (G_OBJECT (rb_centered), "user-data",
-               GUINT_TO_POINTER (XFCE_BACKDROP_IMAGE_CENTERED));
-    gtk_widget_show (rb_centered);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), rb_centered);
-    g_signal_connect (rb_centered, "activate", G_CALLBACK (set_style), bp);
-
-    rb_scaled = gtk_menu_item_new_with_label (_("Scaled"));
-    g_object_set_data (G_OBJECT (rb_scaled), "user-data",
-               GUINT_TO_POINTER (XFCE_BACKDROP_IMAGE_SCALED));
-    gtk_widget_show (rb_scaled);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), rb_scaled);
-    g_signal_connect (rb_scaled, "activate", G_CALLBACK (set_style), bp);
-
-    rb_stretched = gtk_menu_item_new_with_label (_("Stretched"));
-    g_object_set_data (G_OBJECT (rb_stretched), "user-data",
-               GUINT_TO_POINTER (XFCE_BACKDROP_IMAGE_STRETCHED));
-    gtk_widget_show (rb_stretched);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), rb_stretched);
-    g_signal_connect (rb_stretched, "activate", G_CALLBACK (set_style), bp);
-
-    rb_auto = gtk_menu_item_new_with_label (_("Auto"));
-    g_object_set_data (G_OBJECT (rb_auto), "user-data",
-               GUINT_TO_POINTER (XFCE_BACKDROP_IMAGE_AUTO));
-    gtk_widget_show (rb_auto);
-    gtk_menu_shell_append (GTK_MENU_SHELL (menu), rb_auto);
-    g_signal_connect (rb_auto, "activate", G_CALLBACK (set_style), bp);
-
-    bp->style_combo = omenu = gtk_option_menu_new ();
-    gtk_option_menu_set_menu (GTK_OPTION_MENU (omenu), menu);
-    gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), bp->style);
     
-    gtk_label_set_mnemonic_widget(GTK_LABEL(label), omenu);
-
-    gtk_widget_show (menu);
-    gtk_widget_show (omenu);
-    gtk_box_pack_start (GTK_BOX (hbox), omenu, FALSE, FALSE, 6);
+    bp->style_combo = combo = gtk_combo_box_new_text();
+    gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Auto"));
+    gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Centered"));
+    gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Tiled"));
+    gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Stretched"));
+    gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Scaled"));
+    gtk_combo_box_set_active(GTK_COMBO_BOX(combo), bp->style);
+    gtk_label_set_mnemonic_widget(GTK_LABEL(label), combo);
+    gtk_widget_show(combo);
+    gtk_box_pack_start(GTK_BOX(hbox), combo, TRUE, TRUE, 0);
+    g_signal_connect(G_OBJECT(combo), "changed",
+                     G_CALLBACK(set_style), bp);
 }
 
 static void
@@ -927,8 +890,8 @@ xinerama_stretch_toggled_cb(GtkToggleButton *tb, gpointer user_data)
 static BackdropDialog *
 create_backdrop_dialog (McsPlugin * mcs_plugin)
 {
-    GtkWidget *mainvbox, *frame, *vbox, *hbox, *header, *label, *mi,
-            *menu, *button, *image, *chk;
+    GtkWidget *mainvbox, *frame, *vbox, *hbox, *header, *label, *combo,
+              *button, *image, *chk;
     GtkSizeGroup *sg;
     GdkColor color;
     BackdropDialog *bd;
@@ -1062,38 +1025,16 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
             gtk_widget_show(label);
             gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
             
-            /* create type combo */
-            menu = gtk_menu_new();
-            
-            mi = gtk_menu_item_new_with_label(_("Solid Color"));
-            g_object_set_data(G_OBJECT(mi), "user-data",
-                    GUINT_TO_POINTER(XFCE_BACKDROP_COLOR_SOLID));
-            gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            g_signal_connect(G_OBJECT(mi), "activate", G_CALLBACK(set_color_style), bp);
-            
-            mi = gtk_menu_item_new_with_label(_("Horizontal Gradient"));
-            g_object_set_data(G_OBJECT(mi), "user-data",
-                    GUINT_TO_POINTER(XFCE_BACKDROP_COLOR_HORIZ_GRADIENT));
-            gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            g_signal_connect(G_OBJECT(mi), "activate", G_CALLBACK(set_color_style), bp);
-            
-            mi = gtk_menu_item_new_with_label(_("Vertical Gradient"));
-            g_object_set_data(G_OBJECT(mi), "user-data",
-                    GUINT_TO_POINTER(XFCE_BACKDROP_COLOR_VERT_GRADIENT));
-            gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            g_signal_connect(G_OBJECT(mi), "activate", G_CALLBACK(set_color_style), bp);
-            
-            bp->color_style_combo = gtk_option_menu_new();
-            gtk_widget_show(bp->color_style_combo);
-            gtk_option_menu_set_menu(GTK_OPTION_MENU(bp->color_style_combo), menu);
-            gtk_option_menu_set_history(GTK_OPTION_MENU(bp->color_style_combo),
-                    bp->color_style);
-            gtk_box_pack_start(GTK_BOX(hbox), bp->color_style_combo, FALSE, FALSE, 0);
-            
-            gtk_label_set_mnemonic_widget(GTK_LABEL(label), bp->color_style_combo);
+            bp->color_style_combo = combo = gtk_combo_box_new_text();
+            gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Solid Color"));
+            gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Horizontal Gradient"));
+            gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Vertical Gradient"));
+            gtk_combo_box_set_active(GTK_COMBO_BOX(combo), bp->color_style);
+            gtk_widget_show(combo);
+            gtk_box_pack_start(GTK_BOX(hbox), combo, TRUE, TRUE, 0);
+            g_signal_connect(G_OBJECT(combo), "changed",
+                             G_CALLBACK(set_color_style), bp);
+            gtk_label_set_mnemonic_widget(GTK_LABEL(label), combo);
             
             /* first color */
             hbox = gtk_hbox_new(FALSE, BORDER);
@@ -1184,7 +1125,6 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
             
             /* file entry */
             bp->file_entry = gtk_entry_new();
-            gtk_widget_set_size_request(bp->file_entry, 350, -1);
             gtk_widget_show(bp->file_entry);
             if(bp->image_path)
                 gtk_entry_set_text(GTK_ENTRY(bp->file_entry), bp->image_path);
