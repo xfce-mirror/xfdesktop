@@ -1,10 +1,12 @@
 for 4.4:
-* different backdrop for different workspaces
-* put more common code into common/
-* add cmdline options for remote control, e.g., --set-backdrop-image
-* desktop icons - files/launchers <-- hack on and integrate benny's filer
-* minimised app icons
-* hack on and integrate benny's menu code
-
-post-4.4:
-??
+* DnD to/from Thunar to desktop
+* fix DnD on top of other icons in file icon mode - move/copy when dropped on
+  folder, do nothing otherwise
+* icon size setting
+* nifty rollover/selection effects for the icon rendering like in thunar
+* not sure how to make these coexist with the desktop menu:
+  - "create folder" menu item
+  - "create shortcut" menu option
+  - "create document" menu option
+  - "arrange items"/"auto arrange" menu option
+* rubber banding?  probably not.
