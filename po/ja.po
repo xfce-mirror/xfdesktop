@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-10 07:11-0800\n"
+"POT-Creation-Date: 2006-02-18 21:35+0900\n"
 "PO-Revision-Date: 2006-02-11 12:25+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -67,7 +67,7 @@ msgstr "終了"
 
 #. Name
 #: ../menueditor/add_dialog.c:206 ../menueditor/edit_dialog.c:147
-#: ../menueditor/edit_dialog.c:207
+#: ../menueditor/edit_dialog.c:207 ../src/xfdesktop-file-icon.c:703
 msgid "Name:"
 msgstr "名前:"
 
@@ -199,7 +199,7 @@ msgid "Select command"
 msgstr "コマンドを選択して下さい"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:464
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:524
 msgid "Question"
 msgstr "質問"
 
@@ -426,7 +426,7 @@ msgstr "ボタンアイコン(_B):"
 msgid "Show _icons in menu"
 msgstr "メニューでアイコンを表示する(_I):"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop.c:202
+#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop-settings.c:74
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -477,8 +477,8 @@ msgid "Edit backdrop list"
 msgstr "背景リストの編集"
 
 #. the dialog
-#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:944
-#: ../src/xfce-desktop.c:788
+#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:907
+#: ../src/xfce-desktop.c:513
 msgid "Desktop"
 msgstr "デスクトップ"
 
@@ -498,57 +498,57 @@ msgstr "リストの編集(_E)..."
 msgid "_New list..."
 msgstr "新規リスト(_N)..."
 
-#: ../settings/backdrop_settings.c:676
+#: ../settings/backdrop_settings.c:673
 msgid "S_tyle:"
 msgstr "スタイル(_T):"
 
-#: ../settings/backdrop_settings.c:684
-msgid "Tiled"
-msgstr "タイル状"
-
-#: ../settings/backdrop_settings.c:691
-msgid "Centered"
-msgstr "中央揃え"
-
-#: ../settings/backdrop_settings.c:698
-msgid "Scaled"
-msgstr "拡大縮小"
-
-#: ../settings/backdrop_settings.c:705
-msgid "Stretched"
-msgstr "伸縮あり"
-
-#: ../settings/backdrop_settings.c:712
+#: ../settings/backdrop_settings.c:680
 msgid "Auto"
 msgstr "自動"
 
-#: ../settings/backdrop_settings.c:778
+#: ../settings/backdrop_settings.c:681
+msgid "Centered"
+msgstr "中央揃え"
+
+#: ../settings/backdrop_settings.c:682
+msgid "Tiled"
+msgstr "タイル状"
+
+#: ../settings/backdrop_settings.c:683
+msgid "Stretched"
+msgstr "伸縮あり"
+
+#: ../settings/backdrop_settings.c:684
+msgid "Scaled"
+msgstr "拡大縮小"
+
+#: ../settings/backdrop_settings.c:741
 msgid "A_djust Brightness:"
 msgstr "明度の調節(_D):"
 
-#: ../settings/backdrop_settings.c:834
+#: ../settings/backdrop_settings.c:797
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce はあなたのデスクトップ (%s) を管理できません。"
 
-#: ../settings/backdrop_settings.c:835
+#: ../settings/backdrop_settings.c:798
 msgid "Unknown Error"
 msgstr "不明なエラー"
 
-#: ../settings/backdrop_settings.c:839 ../src/xfdesktop-file-icon.c:425
-#: ../src/xfdesktop-file-icon.c:446
+#: ../settings/backdrop_settings.c:802 ../src/xfdesktop-file-icon.c:459
+#: ../src/xfdesktop-file-icon.c:479 ../src/xfdesktop-file-icon.c:612
 msgid "Error"
 msgstr "エラー"
 
-#: ../settings/backdrop_settings.c:841
+#: ../settings/backdrop_settings.c:804
 msgid "Unable to start xfdesktop"
 msgstr "xfdesktop を起動できません"
 
-#: ../settings/backdrop_settings.c:859
+#: ../settings/backdrop_settings.c:822
 msgid "Information"
 msgstr "情報"
 
-#: ../settings/backdrop_settings.c:869
+#: ../settings/backdrop_settings.c:832
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -562,82 +562,82 @@ msgstr ""
 "ファイルを自分で編集する必要があります。さらに細かいことは http://xfce.org/ "
 "にある文書を御覧下さい。"
 
-#: ../settings/backdrop_settings.c:877
+#: ../settings/backdrop_settings.c:840
 msgid "_Do not show this again"
 msgstr "二度と表示しない(_D)"
 
 #. header
-#: ../settings/backdrop_settings.c:959
+#: ../settings/backdrop_settings.c:922
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "デスクトップ"
 
-#: ../settings/backdrop_settings.c:964
+#: ../settings/backdrop_settings.c:927
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Xfce にデスクトップを管理させる(_X)"
 
-#: ../settings/backdrop_settings.c:1005
+#: ../settings/backdrop_settings.c:968
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "一枚の背景を全てのモニターに伸ばす(_A)"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/backdrop_settings.c:1019 ../settings/backdrop_settings.c:1224
+#: ../settings/backdrop_settings.c:982 ../settings/backdrop_settings.c:1164
 msgid "_Appearance"
 msgstr "外観(_A)"
 
 #. color settings frame
-#: ../settings/backdrop_settings.c:1045
+#: ../settings/backdrop_settings.c:1008
 msgid "Color"
 msgstr "配色"
 
-#: ../settings/backdrop_settings.c:1059
+#: ../settings/backdrop_settings.c:1022
 msgid "_Color Style:"
 msgstr "配色のスタイル(_C):"
 
-#: ../settings/backdrop_settings.c:1068
+#: ../settings/backdrop_settings.c:1029
 msgid "Solid Color"
 msgstr "単色"
 
-#: ../settings/backdrop_settings.c:1075
+#: ../settings/backdrop_settings.c:1030
 msgid "Horizontal Gradient"
 msgstr "水平グラデーション"
 
-#: ../settings/backdrop_settings.c:1082
+#: ../settings/backdrop_settings.c:1031
 msgid "Vertical Gradient"
 msgstr "垂直グラデーション"
 
-#: ../settings/backdrop_settings.c:1103
+#: ../settings/backdrop_settings.c:1044
 msgid "Fi_rst Color:"
 msgstr "最初の色(_R):"
 
-#: ../settings/backdrop_settings.c:1124
+#: ../settings/backdrop_settings.c:1065
 msgid "_Second Color:"
 msgstr "二番目の色(_S):"
 
-#: ../settings/backdrop_settings.c:1149
+#: ../settings/backdrop_settings.c:1090
 msgid "Image"
 msgstr "画像"
 
-#: ../settings/backdrop_settings.c:1157
+#: ../settings/backdrop_settings.c:1098
 msgid "Show _Image"
 msgstr "画像を表示する(_I)"
 
-#: ../settings/backdrop_settings.c:1179
+#: ../settings/backdrop_settings.c:1120
 msgid "_File:"
 msgstr "ファイル(_F):"
 
-#: ../settings/backdrop_settings.c:1235 ../settings/backdrop_settings.c:1237
+#: ../settings/backdrop_settings.c:1175 ../settings/backdrop_settings.c:1177
 #, c-format
 msgid "Screen %d"
 msgstr "画面 %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/backdrop_settings.c:1242
+#: ../settings/backdrop_settings.c:1182
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "画面 %d, モニター %d"
 
-#: ../settings/backdrop_settings.c:1259
+#: ../settings/backdrop_settings.c:1199
 msgid "_Behavior"
 msgstr "振る舞い(_B)"
 
@@ -673,7 +673,7 @@ msgstr "デスクトップメニューの編集(_E)"
 msgid "Desktop Icons"
 msgstr "デスクトップアイコン"
 
-#: ../settings/menu_settings.c:280
+#: ../settings/menu_settings.c:280 ../src/xfdesktop-file-icon.c:659
 msgid "None"
 msgstr "無し"
 
@@ -685,29 +685,63 @@ msgstr "最小化されたアプリアイコン"
 msgid "File/launcher icons"
 msgstr "ファイル/ランチャーアイコン"
 
-#: ../src/main.c:254
+#: ../src/main.c:226
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr ""
+
+#: ../src/main.c:228
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr ""
+
+#: ../src/main.c:232
+msgid "Build options:\n"
+msgstr ""
+
+#: ../src/main.c:233
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr ""
+
+#: ../src/main.c:235 ../src/main.c:242
+#, fuzzy
+msgid "enabled"
+msgstr "拡大縮小"
+
+#: ../src/main.c:237 ../src/main.c:244
+#, fuzzy
+msgid "disabled"
+msgstr "タイル状"
+
+#: ../src/main.c:240
+#, fuzzy, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "デスクトップアイコン"
+
+#: ../src/main.c:271
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: 不明なオプション: %s\n"
 
-#: ../src/main.c:255
+#: ../src/main.c:272
 msgid "Options are:\n"
 msgstr "オプションは:\n"
 
-#: ../src/main.c:256
+#: ../src/main.c:273
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      全ての設定を再読込みして画像リストを更新\n"
 
-#: ../src/main.c:257
+#: ../src/main.c:274
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        現在のマウス位置でメニューをポップアップ\n"
 
-#: ../src/main.c:258
+#: ../src/main.c:275
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  現在のマウス位置でウィンドウリストをポップアップ\n"
 
-#: ../src/main.c:259
+#: ../src/main.c:276
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        xfdesktop を終了させる\n"
 
@@ -735,64 +769,163 @@ msgstr "ワークスペース %d を削除(_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース「%s」を削除(_R)"
 
-#: ../src/xfdesktop-file-icon.c:367
+#: ../src/xfdesktop-file-icon-manager.c:413
+#, fuzzy, c-format
+msgid "Are you sure you want to permanently delete the following %d files?"
+msgstr "現在のメニューを閉じても構いませんか？"
+
+#: ../src/xfdesktop-file-icon-manager.c:415
+#, fuzzy
+msgid "Delete Multiple Files"
+msgstr "削除(_D)"
+
+#: ../src/xfdesktop-file-icon-manager.c:418 ../src/xfdesktop-file-icon.c:526
+msgid "If you delete a file, it is permanently lost."
+msgstr "削除されたファイルは二度と復元できません。"
+
+#: ../src/xfdesktop-file-icon.c:403
 #, c-format
 msgid "Rename \"%s\""
 msgstr "「%s」の名前変更"
 
-#: ../src/xfdesktop-file-icon.c:397
+#: ../src/xfdesktop-file-icon.c:432
 msgid "Enter the new name:"
 msgstr "新しい名前を入力して下さい:"
 
-#: ../src/xfdesktop-file-icon.c:423
+#: ../src/xfdesktop-file-icon.c:457
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "「%s」の名前を「%s」に変更するのに失敗しました:"
 
-#: ../src/xfdesktop-file-icon.c:466
-msgid "If you delete a file, it is permanently lost."
-msgstr "削除されたファイルは二度と復元できません。"
-
 # FIXME: format string
-#: ../src/xfdesktop-file-icon.c:508
+#: ../src/xfdesktop-file-icon.c:569
 msgid "_Open With "
 msgstr "次で開く(_O)"
 
 # FIXME: format string
-#: ../src/xfdesktop-file-icon.c:508
+#: ../src/xfdesktop-file-icon.c:569
 msgid "Open With "
 msgstr "次で開く "
 
-#: ../src/xfdesktop-file-icon.c:567
+#: ../src/xfdesktop-file-icon.c:610
+#, fuzzy, c-format
+msgid "Unable to launch \"%s\"."
+msgstr "xfce4-menueditor を実行できません: %s"
+
+#: ../src/xfdesktop-file-icon.c:614
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:659
+msgid "Write only"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:659
+msgid "Read only"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:659
+msgid "Read & Write"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:678
+msgid "General"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:725
+msgid "Kind:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:735
+msgid "broken link"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:737
+#, c-format
+msgid "link to %s"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:758
+msgid "Modified:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:776
+msgid "Accessed:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:803
+msgid "Free Space:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:805
+msgid "Size:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:818
+msgid "unknown"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:821
+msgid "%s (%"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:821
+msgid " Bytes)"
+msgstr ""
+
+#. permissions tab
+#: ../src/xfdesktop-file-icon.c:836
+msgid "Permissions"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:858
+msgid "Owner:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:876 ../src/xfdesktop-file-icon.c:914
+msgid "Access:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:899
+msgid "Group:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:937
+#, fuzzy
+msgid "Others:"
+msgstr "/その他"
+
+#: ../src/xfdesktop-file-icon.c:986
 msgid "_Open"
 msgstr "開く(_O)"
 
-#: ../src/xfdesktop-file-icon.c:575
+#: ../src/xfdesktop-file-icon.c:994
 msgid "_Execute"
 msgstr "実行(_E)"
 
-#. FIXME: implement this
-#: ../src/xfdesktop-file-icon.c:614
+#: ../src/xfdesktop-file-icon.c:1031
 msgid "Open With Other _Application..."
 msgstr "他のアプリケーションで開く(_A)..."
 
-#: ../src/xfdesktop-file-icon.c:629
+#: ../src/xfdesktop-file-icon.c:1047
 msgid "_Copy File"
 msgstr "コピー(_C)"
 
-#: ../src/xfdesktop-file-icon.c:638
+#: ../src/xfdesktop-file-icon.c:1056
 msgid "Cu_t File"
 msgstr "切り取り(_T)"
 
-#: ../src/xfdesktop-file-icon.c:646
+#: ../src/xfdesktop-file-icon.c:1065
 msgid "_Delete File"
 msgstr "削除(_D)"
 
-#: ../src/xfdesktop-file-icon.c:657
+#: ../src/xfdesktop-file-icon.c:1076
 msgid "_Rename..."
 msgstr "名前変更(_R)..."
 
-#: ../src/xfdesktop-file-icon.c:670
+#: ../src/xfdesktop-file-icon.c:1088
 msgid "_Properties..."
 msgstr "プロパティ(_P)..."
 
