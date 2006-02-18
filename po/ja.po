@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-02-18 21:35+0900\n"
-"PO-Revision-Date: 2006-02-11 12:25+0900\n"
+"PO-Revision-Date: 2006-02-18 21:47+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -688,36 +688,34 @@ msgstr "ファイル/ランチャーアイコン"
 #: ../src/main.c:226
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "%s バージョン %s, Xfce %s で実行されています。\n"
 
 #: ../src/main.c:228
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Gtk+ %d.%d.%d でビルド、Gtk+ %d.%d.%d で実行しています。"
 
 #: ../src/main.c:232
 msgid "Build options:\n"
-msgstr ""
+msgstr "ビルドオプション:\n"
 
 #: ../src/main.c:233
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "    メニュー:            %s\n"
 
 #: ../src/main.c:235 ../src/main.c:242
-#, fuzzy
 msgid "enabled"
-msgstr "拡大縮小"
+msgstr "有効"
 
 #: ../src/main.c:237 ../src/main.c:244
-#, fuzzy
 msgid "disabled"
-msgstr "タイル状"
+msgstr "無効"
 
 #: ../src/main.c:240
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "デスクトップアイコン"
+msgstr "    アイコン:            %s\n"
 
 #: ../src/main.c:271
 #, c-format
@@ -730,20 +728,21 @@ msgstr "オプションは:\n"
 
 #: ../src/main.c:273
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "    -reload      全ての設定を再読込みして画像リストを更新\n"
+msgstr "    -reload      全ての設定を再読込みして画像リストを更新します\n"
 
 #: ../src/main.c:274
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    -menu        現在のマウス位置でメニューをポップアップ\n"
+msgstr "    -menu        現在のマウス位置でメニューをポップアップします\n"
 
 #: ../src/main.c:275
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  現在のマウス位置でウィンドウリストをポップアップ\n"
+msgstr ""
+"    -windowlist  現在のマウス位置でウィンドウリストをポップアップします\n"
 
 #: ../src/main.c:276
 msgid "    -quit        Cause xfdesktop to quit\n"
-msgstr "    -quit        xfdesktop を終了させる\n"
+msgstr "    -quit        xfdesktop を終了させます\n"
 
 #: ../src/windowlist.c:193
 #, c-format
@@ -770,14 +769,13 @@ msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース「%s」を削除(_R)"
 
 #: ../src/xfdesktop-file-icon-manager.c:413
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to permanently delete the following %d files?"
-msgstr "現在のメニューを閉じても構いませんか？"
+msgstr "本当に以下の %d 個のファイルを削除してもよろしいですか？"
 
 #: ../src/xfdesktop-file-icon-manager.c:415
-#, fuzzy
 msgid "Delete Multiple Files"
-msgstr "削除(_D)"
+msgstr "複数のファイルを削除"
 
 #: ../src/xfdesktop-file-icon-manager.c:418 ../src/xfdesktop-file-icon.c:526
 msgid "If you delete a file, it is permanently lost."
@@ -808,94 +806,96 @@ msgid "Open With "
 msgstr "次で開く "
 
 #: ../src/xfdesktop-file-icon.c:610
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to launch \"%s\"."
-msgstr "xfce4-menueditor を実行できません: %s"
+msgstr "「%s」を実行できません。"
 
 #: ../src/xfdesktop-file-icon.c:614
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
+"この機能には (Thunar が提供するような) ファイルマネージャーが必要です。"
 
 #: ../src/xfdesktop-file-icon.c:659
 msgid "Write only"
-msgstr ""
+msgstr "書込専用"
 
 #: ../src/xfdesktop-file-icon.c:659
 msgid "Read only"
-msgstr ""
+msgstr "読込専用"
 
 #: ../src/xfdesktop-file-icon.c:659
 msgid "Read & Write"
-msgstr ""
+msgstr "読込と書込"
 
 #: ../src/xfdesktop-file-icon.c:678
 msgid "General"
-msgstr ""
+msgstr "全般"
 
 #: ../src/xfdesktop-file-icon.c:725
 msgid "Kind:"
-msgstr ""
+msgstr "種類:"
 
 #: ../src/xfdesktop-file-icon.c:735
 msgid "broken link"
-msgstr ""
+msgstr "壊れたリンク"
 
 #: ../src/xfdesktop-file-icon.c:737
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "%sへのリンク"
 
 #: ../src/xfdesktop-file-icon.c:758
 msgid "Modified:"
-msgstr ""
+msgstr "変更日時:"
 
 #: ../src/xfdesktop-file-icon.c:776
 msgid "Accessed:"
-msgstr ""
+msgstr "アクセス日時:"
 
 #: ../src/xfdesktop-file-icon.c:803
 msgid "Free Space:"
-msgstr ""
+msgstr "空き容量:"
 
 #: ../src/xfdesktop-file-icon.c:805
 msgid "Size:"
-msgstr ""
+msgstr "サイズ:"
 
 #: ../src/xfdesktop-file-icon.c:818
 msgid "unknown"
-msgstr ""
+msgstr "不明"
 
+# FIXME: a macro breaks the string!
 #: ../src/xfdesktop-file-icon.c:821
 msgid "%s (%"
-msgstr ""
+msgstr "%s (%"
 
+# FIXME: ditto
 #: ../src/xfdesktop-file-icon.c:821
 msgid " Bytes)"
-msgstr ""
+msgstr " バイト)"
 
 #. permissions tab
 #: ../src/xfdesktop-file-icon.c:836
 msgid "Permissions"
-msgstr ""
+msgstr "アクセス権"
 
 #: ../src/xfdesktop-file-icon.c:858
 msgid "Owner:"
-msgstr ""
+msgstr "ファイル所有者:"
 
 #: ../src/xfdesktop-file-icon.c:876 ../src/xfdesktop-file-icon.c:914
 msgid "Access:"
-msgstr ""
+msgstr "アクセス:"
 
 #: ../src/xfdesktop-file-icon.c:899
 msgid "Group:"
-msgstr ""
+msgstr "所属グループ:"
 
 #: ../src/xfdesktop-file-icon.c:937
-#, fuzzy
 msgid "Others:"
-msgstr "/その他"
+msgstr "その他の人達:"
 
 #: ../src/xfdesktop-file-icon.c:986
 msgid "_Open"
