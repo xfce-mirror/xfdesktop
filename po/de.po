@@ -436,7 +436,7 @@ msgid ""
 msgstr ""
 "Konnte Datei %s nicht abspeichern: %s\n"
 "\n"
-"Bitte anderen Speicherplatz wählen oder Abbrechen um die Änderungen zu "
+"Bitte anderen Speicherplatz wählen oder abbrechen um die Änderungen zu "
 "verwerfen"
 
 #: ../settings/backdrop-mgr.c:431
@@ -523,14 +523,13 @@ msgid "Scaled"
 msgstr "Skaliert"
 
 #: ../settings/backdrop_settings.c:741
-#, fuzzy
 msgid "A_djust Brightness:"
 msgstr "Helligkeit _einstellen:"
 
 #: ../settings/backdrop_settings.c:797
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr "Xfce kann den Arbeitsplatz (%s) nicht verwalten."
+msgstr "Xfce wird die Arbeitsfläche (%s) nicht verwalten können."
 
 #: ../settings/backdrop_settings.c:798
 msgid "Unknown Error"
@@ -585,7 +584,7 @@ msgstr "Einzelnes Hintergrundbild auf _alle Bildschirme strecken"
 #. add the single backdrop settings page to the main notebook
 #: ../settings/backdrop_settings.c:982 ../settings/backdrop_settings.c:1164
 msgid "_Appearance"
-msgstr ""
+msgstr "_Erscheinung"
 
 #. color settings frame
 #: ../settings/backdrop_settings.c:1008
@@ -641,7 +640,7 @@ msgstr "Bildschirm %d, Monitor %d"
 
 #: ../settings/backdrop_settings.c:1199
 msgid "_Behavior"
-msgstr ""
+msgstr "_Verhalten"
 
 #: ../settings/menu_settings.c:193
 msgid "Window List Menu"
@@ -664,65 +663,60 @@ msgid "Show desktop _menu"
 msgstr "Zeige Desktop_menü"
 
 #: ../settings/menu_settings.c:252
-#, fuzzy
 msgid "_Show application icons"
-msgstr "_Zeige Programmicons"
+msgstr "_Zeige Symbole für Anwendungen"
 
 #: ../settings/menu_settings.c:263
 msgid "_Edit desktop menu"
 msgstr "D_esktopmenü bearbeiten"
 
 #: ../settings/menu_settings.c:275
-#, fuzzy
 msgid "Desktop Icons"
-msgstr "Desktopmenü"
+msgstr "Symbole auf der Arbeitsfläche"
 
 #: ../settings/menu_settings.c:280 ../src/xfdesktop-file-icon.c:659
 msgid "None"
-msgstr ""
+msgstr "Keine"
 
 #: ../settings/menu_settings.c:281
-#, fuzzy
 msgid "Minimized application icons"
-msgstr "_Zeige Programmicons"
+msgstr "Symbole für minimierte Anwendungen"
 
 #: ../settings/menu_settings.c:283
 msgid "File/launcher icons"
-msgstr ""
+msgstr "Symbol für Date/Starter"
 
 #: ../src/main.c:226
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "Dies ist %s version %s, auf Xfce %s.\n"
 
 #: ../src/main.c:228
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Erzeugt mit GTK+ %d.%d.%d, verknüpft mit GTK+ %d.%d.%d."
 
 #: ../src/main.c:232
 msgid "Build options:\n"
-msgstr ""
+msgstr "Optionen bei der Erzeugung:\n"
 
 #: ../src/main.c:233
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "    Desktopmenü:        %s\n"
 
 #: ../src/main.c:235 ../src/main.c:242
-#, fuzzy
 msgid "enabled"
-msgstr "Skaliert"
+msgstr "aktiviert"
 
 #: ../src/main.c:237 ../src/main.c:244
-#, fuzzy
 msgid "disabled"
-msgstr "Gekachelt"
+msgstr "deaktiviert"
 
 #: ../src/main.c:240
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "Desktopmenü"
+msgstr "    Symbole auf der Arbeitsfläche:       %s\n"
 
 #: ../src/main.c:271
 #, c-format
@@ -776,166 +770,162 @@ msgid "_Remove Workspace '%s'"
 msgstr "A_rbeitsfläche '%s' entfernen"
 
 #: ../src/xfdesktop-file-icon-manager.c:413
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to permanently delete the following %d files?"
-msgstr "Wollen Sie dieses Menü wirklich schließen?"
+msgstr "Wollen Sie die folgenden %d Dateien wirklich dauerhaft löschen?"
 
 #: ../src/xfdesktop-file-icon-manager.c:415
-#, fuzzy
 msgid "Delete Multiple Files"
-msgstr "Menüdatei auswählen"
+msgstr "Mehrere Dateien löschen"
 
 #: ../src/xfdesktop-file-icon-manager.c:418 ../src/xfdesktop-file-icon.c:526
 msgid "If you delete a file, it is permanently lost."
-msgstr ""
+msgstr "Wenn Sie eine Datei löschen, ist sie dauerhaft verloren."
 
 #: ../src/xfdesktop-file-icon.c:403
 #, c-format
 msgid "Rename \"%s\""
-msgstr ""
+msgstr "\"%s\" umbenennen"
 
 #: ../src/xfdesktop-file-icon.c:432
 msgid "Enter the new name:"
-msgstr ""
+msgstr "Neuen Namen eingeben:"
 
 #: ../src/xfdesktop-file-icon.c:457
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Konnte \"%s\" nicht in \"%s\" umbenennen:"
 
 #: ../src/xfdesktop-file-icon.c:569
 msgid "_Open With "
-msgstr ""
+msgstr "_Öffnen mit "
 
 #: ../src/xfdesktop-file-icon.c:569
 msgid "Open With "
-msgstr ""
+msgstr "Öffnen mit "
 
 #: ../src/xfdesktop-file-icon.c:610
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to launch \"%s\"."
-msgstr "Konnte xfce4-menueditor nicht starten: %s"
+msgstr "Konnte \"%s\" nicht starten."
 
 #: ../src/xfdesktop-file-icon.c:614
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
+"Diese Fähigkeit benötigt einen Dienst eines Dateimanagers (wie er von Thunar "
+"gestellt wird)."
 
 #: ../src/xfdesktop-file-icon.c:659
 msgid "Write only"
-msgstr ""
+msgstr "Nur schreiben"
 
 #: ../src/xfdesktop-file-icon.c:659
 msgid "Read only"
-msgstr ""
+msgstr "Nur lesen"
 
 #: ../src/xfdesktop-file-icon.c:659
 msgid "Read & Write"
-msgstr ""
+msgstr "Lesen und Schreiben"
 
 #: ../src/xfdesktop-file-icon.c:678
 msgid "General"
-msgstr ""
+msgstr "Allgemein"
 
 #: ../src/xfdesktop-file-icon.c:725
 msgid "Kind:"
-msgstr ""
+msgstr "Gültig:"
 
 #: ../src/xfdesktop-file-icon.c:735
 msgid "broken link"
-msgstr ""
+msgstr "Kaputte Verknüpfung"
 
 #: ../src/xfdesktop-file-icon.c:737
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "Verknüpfung zu %s"
 
 #: ../src/xfdesktop-file-icon.c:758
 msgid "Modified:"
-msgstr ""
+msgstr "Geändert:"
 
 #: ../src/xfdesktop-file-icon.c:776
 msgid "Accessed:"
-msgstr ""
+msgstr "Zugegriffen:"
 
 #: ../src/xfdesktop-file-icon.c:803
 msgid "Free Space:"
-msgstr ""
+msgstr "Freier Platz:"
 
 #: ../src/xfdesktop-file-icon.c:805
 msgid "Size:"
-msgstr ""
+msgstr "Größe:"
 
 #: ../src/xfdesktop-file-icon.c:818
 msgid "unknown"
-msgstr ""
+msgstr "Unbekannt"
 
 #: ../src/xfdesktop-file-icon.c:821
 msgid "%s (%"
-msgstr ""
+msgstr "%s (%"
 
 #: ../src/xfdesktop-file-icon.c:821
 msgid " Bytes)"
-msgstr ""
+msgstr " Bytes)"
 
 #. permissions tab
 #: ../src/xfdesktop-file-icon.c:836
 msgid "Permissions"
-msgstr ""
+msgstr "Zugriffsrechte"
 
 #: ../src/xfdesktop-file-icon.c:858
 msgid "Owner:"
-msgstr ""
+msgstr "Besitzer:"
 
 #: ../src/xfdesktop-file-icon.c:876 ../src/xfdesktop-file-icon.c:914
 msgid "Access:"
-msgstr ""
+msgstr "Zugriff:"
 
 #: ../src/xfdesktop-file-icon.c:899
 msgid "Group:"
-msgstr ""
+msgstr "Gruppe:"
 
 #: ../src/xfdesktop-file-icon.c:937
-#, fuzzy
 msgid "Others:"
-msgstr "/Andere"
+msgstr "Andere:"
 
 #: ../src/xfdesktop-file-icon.c:986
 msgid "_Open"
-msgstr ""
+msgstr "_Öffnen"
 
 #: ../src/xfdesktop-file-icon.c:994
 msgid "_Execute"
-msgstr ""
+msgstr "_Ausführen"
 
 #: ../src/xfdesktop-file-icon.c:1031
 msgid "Open With Other _Application..."
-msgstr ""
+msgstr "Mit anderer _Anwendung öffnen..."
 
 #: ../src/xfdesktop-file-icon.c:1047
-#, fuzzy
 msgid "_Copy File"
-msgstr "_Datei"
+msgstr "_Datei kopieren"
 
 #: ../src/xfdesktop-file-icon.c:1056
-#, fuzzy
 msgid "Cu_t File"
-msgstr "_Datei"
+msgstr "_Datei ausschneiden"
 
 #: ../src/xfdesktop-file-icon.c:1065
-#, fuzzy
 msgid "_Delete File"
-msgstr "Menüdatei auswählen"
+msgstr "_Datei löschen"
 
 #: ../src/xfdesktop-file-icon.c:1076
 msgid "_Rename..."
-msgstr ""
+msgstr "_Umbenennen..."
 
 #: ../src/xfdesktop-file-icon.c:1088
-#, fuzzy
 msgid "_Properties..."
-msgstr "Eigenschaften bearbeiten"
+msgstr "_Eigenschaften..."
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
@@ -960,9 +950,3 @@ msgstr "Einstellungen für den Xfce4 Desktop Manager"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce4 Arbeitsplatz Einstellungen"
-
-#~ msgid "Window Icons"
-#~ msgstr "Fenstersymbole"
-
-#~ msgid "Show minimized window _icons on the desktop"
-#~ msgstr "Zeige minimierte _Fenstersymbole auf der Arbeitsfläche"
