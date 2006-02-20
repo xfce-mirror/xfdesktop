@@ -566,9 +566,13 @@ xfdesktop_menu_item_from_mime_app(XfdesktopFileIcon *icon,
     gchar *title;
     const gchar *icon_name;
     
-    title = g_strconcat(with_mnemonic ? _("_Open With ") : _("Open With "),
-                        thunar_vfs_mime_application_get_name(mime_app),
-                        NULL);
+    if(with_mnemonic) {
+        title = g_strdup_printf(_("_Open With \"%s\""),
+                                thunar_vfs_mime_application_get_name(mime_app));
+    } else {
+        title = g_strdup_printf(_("Open With \"%s\""),
+                                thunar_vfs_mime_application_get_name(mime_app));
+    }
     icon_name = thunar_vfs_mime_handler_lookup_icon_name(THUNAR_VFS_MIME_HANDLER(mime_app),
                                                          gtk_icon_theme_get_default());
     
