@@ -42,9 +42,7 @@ typedef struct {
     GtkWidget *screens_notebook;
     
     /* menu options */
-    GtkWidget *frame_wl1;
 #ifdef USE_DESKTOP_MENU
-    GtkWidget *frame_dm1;
     GtkWidget *frame_sysfont;
 #endif
 } BackdropDialog;

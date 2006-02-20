@@ -23,15 +23,14 @@
 
 #include <libxfcegui4/libxfcegui4.h>
 
+#include "xfce-desktop.h"
 #include "xfdesktop-common.h"
 #include "settings_common.h"
 
 enum {
     OPT_SHOWWL = 1,
-    OPT_SHOWWLI,
 #ifdef USE_DESKTOP_MENU
     OPT_SHOWDM,
-    OPT_SHOWDMI,
 #endif
 #ifdef ENABLE_DESKTOP_ICONS
     OPT_ICONSSYSTEMFONT,
@@ -42,19 +41,10 @@ enum {
 
 /* globals */
 static gboolean show_windowlist = TRUE;
-static gboolean show_windowlist_icons = TRUE;
 #ifdef USE_DESKTOP_MENU
 static gboolean show_desktopmenu = TRUE;
-static gboolean show_desktopmenu_icons = TRUE;
 #endif
 #ifdef ENABLE_DESKTOP_ICONS
-/* !! keep in sync with src/xfce-desktop.c !! */
-typedef enum
-{
-    XFCE_DESKTOP_ICON_STYLE_NONE = 0,
-    XFCE_DESKTOP_ICON_STYLE_WINDOWS,
-    XFCE_DESKTOP_ICON_STYLE_FILES,
-} XfceDesktopIconStyle;
 static XfceDesktopIconStyle desktop_icon_style = XFCE_DESKTOP_ICON_STYLE_WINDOWS;
 static gboolean desktop_icons_use_system_font = TRUE;
 static guint desktop_icons_font_size = 12;  /* default, i guess */
@@ -73,24 +63,12 @@ set_chk_option(GtkWidget *w, gpointer user_data)
             show_windowlist = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w));
             mcs_manager_set_int(bd->plugin->manager, "showwl", BACKDROP_CHANNEL,
                     show_windowlist ? 1 : 0);
-            gtk_widget_set_sensitive(bd->frame_wl1, show_windowlist);
-            break;
-        case OPT_SHOWWLI:
-            show_windowlist_icons = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w));
-            mcs_manager_set_int(bd->plugin->manager, "showwli", BACKDROP_CHANNEL,
-                    show_windowlist_icons ? 1 : 0);
             break;
 #ifdef USE_DESKTOP_MENU
         case OPT_SHOWDM:
             show_desktopmenu = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w));
             mcs_manager_set_int(bd->plugin->manager, "showdm", BACKDROP_CHANNEL,
                     show_desktopmenu ? 1 : 0);
-            gtk_widget_set_sensitive(bd->frame_dm1, show_desktopmenu);
-            break;
-        case OPT_SHOWDMI:
-            show_desktopmenu_icons = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w));
-            mcs_manager_set_int(bd->plugin->manager, "showdmi", BACKDROP_CHANNEL,
-                    show_desktopmenu_icons ? 1 : 0);
             break;
 #endif
 #ifdef ENABLE_DESKTOP_ICONS
@@ -162,13 +140,6 @@ init_menu_settings(McsPlugin *plugin)
         show_windowlist = setting->data.v_int == 0 ? FALSE : TRUE;
     else
         mcs_manager_set_int(plugin->manager, "showwl", BACKDROP_CHANNEL, 1);
-    
-    setting = mcs_manager_setting_lookup(plugin->manager, "showwli",
-            BACKDROP_CHANNEL);
-    if(setting)
-        show_windowlist_icons = setting->data.v_int == 0 ? FALSE : TRUE;
-    else
-        mcs_manager_set_int(plugin->manager, "showwli", BACKDROP_CHANNEL, 1);
 
 #ifdef USE_DESKTOP_MENU
     setting = mcs_manager_setting_lookup(plugin->manager, "showdm",
@@ -177,13 +148,6 @@ init_menu_settings(McsPlugin *plugin)
         show_desktopmenu = setting->data.v_int == 0 ? FALSE : TRUE;
     else
         mcs_manager_set_int(plugin->manager, "showdm", BACKDROP_CHANNEL, 1);
-    
-    setting = mcs_manager_setting_lookup(plugin->manager, "showdmi",
-            BACKDROP_CHANNEL);
-    if(setting)
-        show_desktopmenu_icons = setting->data.v_int == 0 ? FALSE : TRUE;
-    else
-        mcs_manager_set_int(plugin->manager, "showdmi", BACKDROP_CHANNEL, 1);
 #endif
     
 #ifdef ENABLE_DESKTOP_ICONS
@@ -206,6 +170,9 @@ init_menu_settings(McsPlugin *plugin)
                                          BACKDROP_CHANNEL);
     if(setting)
         desktop_icons_use_system_font = setting->data.v_int ? TRUE : FALSE;
+    else
+        mcs_manager_set_int(plugin->manager, "icons_use_system_font_size",
+                            BACKDROP_CHANNEL, 1);
     
     setting = mcs_manager_setting_lookup(plugin->manager, "icons_font_size",
                                          BACKDROP_CHANNEL);
@@ -237,14 +204,14 @@ _edit_menu_cb(GtkWidget *w, gpointer user_data)
 GtkWidget *
 create_menu_page(BackdropDialog *bd)
 {
-    GtkWidget *page, *vbox, *frame, *frame_bin, *chk, *wl_vbox, *dm_vbox;
+    XfceKiosk *kiosk;
+    GtkWidget *page, *vbox, *frame, *frame_bin, *chk;
 #ifdef USE_DESKTOP_MENU
-    GtkWidget *hbox, *btn;
+    GtkWidget *btn;
 #endif
 #ifdef ENABLE_DESKTOP_ICONS
-    GtkWidget *combo, *sbtn, *lbl;
+    GtkWidget *combo, *sbtn, *lbl, *hbox;
 #endif
-    XfceKiosk *kiosk;
     
     kiosk = xfce_kiosk_new("xfdesktop");
     
@@ -252,85 +219,41 @@ create_menu_page(BackdropDialog *bd)
     
     add_spacer(GTK_BOX(page));
     
-    frame = xfce_create_framebox(_("Window List Menu"), &frame_bin);
+    frame = xfce_create_framebox(_("Menus"), &frame_bin);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(page), frame, FALSE, FALSE, 0);
     
-    wl_vbox = vbox = gtk_vbox_new(FALSE, 0);
+    vbox = gtk_vbox_new(FALSE, BORDER);
     gtk_widget_show(vbox);
     gtk_container_add(GTK_CONTAINER(frame_bin), vbox);
     
-    chk = gtk_check_button_new_with_mnemonic(_("Show window _list"));
+    chk = gtk_check_button_new_with_mnemonic(_("Show _window list on middle click"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), show_windowlist);
     g_object_set_data(G_OBJECT(chk), "xfce-chknum", GUINT_TO_POINTER(OPT_SHOWWL));
     gtk_widget_show(chk);
     gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, 0);
     g_signal_connect(G_OBJECT(chk), "toggled", G_CALLBACK(set_chk_option), bd);
     
-    frame = xfce_create_framebox(NULL, &bd->frame_wl1);
-    gtk_widget_show(frame);
-    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
-    
-    vbox = gtk_vbox_new(FALSE, BORDER);
-    gtk_widget_show(vbox);
-    gtk_container_add(GTK_CONTAINER(bd->frame_wl1), vbox);
-    
-    chk = gtk_check_button_new_with_mnemonic(_("Show _window icons"));
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), show_windowlist_icons);
-    g_object_set_data(G_OBJECT(chk), "xfce-chknum", GUINT_TO_POINTER(OPT_SHOWWLI));
-    gtk_widget_show(chk);
-    gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, 0);
-    g_signal_connect(G_OBJECT(chk), "toggled", G_CALLBACK(set_chk_option), bd);
-    
-    gtk_widget_set_sensitive(bd->frame_wl1, show_windowlist);
-    
     if(!xfce_kiosk_query(kiosk, "CustomizeWindowlist"))
-        gtk_widget_set_sensitive(wl_vbox, FALSE);
+        gtk_widget_set_sensitive(chk, FALSE);
     
-#ifdef USE_DESKTOP_MENU
-    frame = xfce_create_framebox(_("Desktop Menu"), &frame_bin);
-    gtk_widget_show(frame);
-    gtk_box_pack_start(GTK_BOX(page), frame, FALSE, FALSE, 0);
-    
-    dm_vbox = vbox = gtk_vbox_new(FALSE, 0);
-    gtk_widget_show(vbox);
-    gtk_container_add(GTK_CONTAINER(frame_bin), vbox);
-    
-    chk = gtk_check_button_new_with_mnemonic(_("Show desktop _menu"));
+#ifdef USE_DESKTOP_MENU    
+    chk = gtk_check_button_new_with_mnemonic(_("Show _desktop menu"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), show_desktopmenu);
     g_object_set_data(G_OBJECT(chk), "xfce-chknum", GUINT_TO_POINTER(OPT_SHOWDM));
     gtk_widget_show(chk);
     gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, 0);
     g_signal_connect(G_OBJECT(chk), "toggled", G_CALLBACK(set_chk_option), bd);
     
-    frame = xfce_create_framebox(NULL, &bd->frame_dm1);
-    gtk_widget_show(frame);
-    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
-    
-    vbox = gtk_vbox_new(FALSE, BORDER);
-    gtk_widget_show(vbox);
-    gtk_container_add(GTK_CONTAINER(bd->frame_dm1), vbox);
-    
-    chk = gtk_check_button_new_with_mnemonic(_("_Show application icons"));
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), show_desktopmenu_icons);
-    g_object_set_data(G_OBJECT(chk), "xfce-chknum", GUINT_TO_POINTER(OPT_SHOWDMI));
-    gtk_widget_show(chk);
-    gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, 0);
-    g_signal_connect(G_OBJECT(chk), "toggled", G_CALLBACK(set_chk_option), bd);
-    
-    hbox = gtk_hbox_new(FALSE, BORDER);
-    gtk_widget_show(hbox);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
-    
-    btn = xfce_create_mixed_button(_("_Edit Menu"), GTK_STOCK_EDIT);
+    btn = xfce_create_mixed_button(GTK_STOCK_EDIT, _("_Edit Menu"));
     gtk_widget_show(btn);
-    gtk_box_pack_start(GTK_BOX(hbox), btn, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 0);
     g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(_edit_menu_cb), NULL);
     
-    gtk_widget_set_sensitive(bd->frame_dm1, show_desktopmenu);
-    
-    if(!xfce_kiosk_query(kiosk, "CustomizeDesktopMenu"))
-        gtk_widget_set_sensitive(dm_vbox, FALSE);
+    if(!xfce_kiosk_query(kiosk, "CustomizeDesktopMenu")) {
+        gtk_widget_set_sensitive(chk, FALSE);
+        gtk_widget_set_sensitive(btn, FALSE);
+    }
 #endif
     
 #ifdef ENABLE_DESKTOP_ICONS
@@ -357,7 +280,7 @@ create_menu_page(BackdropDialog *bd)
     gtk_widget_show(hbox);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
     
-    lbl = gtk_label_new_with_mnemonic(_("Icon _size:"));
+    lbl = gtk_label_new_with_mnemonic(_("_Icon size:"));
     gtk_widget_show(lbl);
     gtk_box_pack_start(GTK_BOX(hbox), lbl, FALSE, FALSE, 0);
     
@@ -371,7 +294,7 @@ create_menu_page(BackdropDialog *bd)
     g_signal_connect(G_OBJECT(sbtn), "value-changed",
                      G_CALLBACK(set_sbtn_option), bd);
     
-    chk = gtk_check_button_new_with_mnemonic(_("Use system _font size"));
+    chk = gtk_check_button_new_with_mnemonic(_("Use _system font size"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk),
                                  desktop_icons_use_system_font);
     g_object_set_data(G_OBJECT(chk), "xfce-chknum",
@@ -388,7 +311,7 @@ create_menu_page(BackdropDialog *bd)
     gtk_widget_show(hbox);
     gtk_container_add(GTK_CONTAINER(bd->frame_sysfont), hbox);
     
-    lbl = gtk_label_new_with_mnemonic(_("_Custom font size:"));
+    lbl = gtk_label_new_with_mnemonic(_("Custom _font size:"));
     gtk_widget_show(lbl);
     gtk_box_pack_start(GTK_BOX(hbox), lbl, FALSE, FALSE, 0);
     
