@@ -251,8 +251,7 @@ xfce_desktop_settings_load_initial(XfceDesktop *desktop,
                                              "icons_use_system_font_size",
                                              BACKDROP_CHANNEL, &setting))
     {
-        if(!setting->data.v_int)
-            xfce_desktop_unset_icon_font_size(desktop);
+        xfce_desktop_set_icon_use_system_font_size(desktop, setting->data.v_int);
         mcs_setting_free(setting);
         setting = NULL;
     }
@@ -391,18 +390,18 @@ xfce_desktop_settings_changed(McsClient *client,
         return TRUE;
     }
     
-    if(!strcmp(setting->name, "icons_font_size")) {
-        xfce_desktop_set_icon_font_size(desktop, setting->data.v_int);
+    if(!strcmp(setting->name, "icons_icon_size")) {
+        xfce_desktop_set_icon_size(desktop, setting->data.v_int);
         return TRUE;
     }
     
     if(!strcmp(setting->name, "icons_use_system_font_size")) {
-        xfce_desktop_unset_icon_font_size(desktop);
+        xfce_desktop_set_icon_use_system_font_size(desktop, setting->data.v_int);
         return TRUE;
     }
     
-    if(!strcmp(setting->name, "icons_icon_size")) {
-        xfce_desktop_set_icon_size(desktop, setting->data.v_int);
+    if(!strcmp(setting->name, "icons_font_size")) {
+        xfce_desktop_set_icon_font_size(desktop, setting->data.v_int);
         return TRUE;
     }
 #endif

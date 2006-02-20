@@ -47,12 +47,11 @@
 #define CORNER_ROUNDNESS  4
 #endif
 
+#define DEFAULT_FONT_SIZE  12
 #define DEFAULT_ICON_SIZE  32
 
 #define ICON_SIZE         (icon_view->priv->icon_size)
-#define TEXT_WIDTH        ((icon_view->priv->use_system_font_size \
-                            ? (gint)icon_view->priv->system_font_size \
-                            : icon_view->priv->label_size) * 9)
+#define TEXT_WIDTH        (icon_view->priv->font_size * 9)
 #define CELL_PADDING      4
 #define CELL_SIZE         (TEXT_WIDTH + CELL_PADDING * 2)
 #define SPACING           6
@@ -103,9 +102,7 @@ struct _XfdesktopIconViewPrivate
     GtkWidget *parent_window;
     
     guint icon_size;
-    guint label_size;
-    gboolean use_system_font_size;
-    gdouble system_font_size;
+    guint font_size;
     
     NetkScreen *netk_screen;
     PangoLayout *playout;
@@ -236,8 +233,8 @@ static gboolean xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
                                               gint *height);
 static void xfdesktop_grid_do_resize(XfdesktopIconView *icon_view);
 
-static gint xfdesktop_icon_view_set_system_font_size(XfdesktopIconView *icon_view);
-static void xfdesktop_icon_view_modify_font_size(XfdesktopIconView *icon_view, gint size);
+static void xfdesktop_icon_view_modify_font_size(XfdesktopIconView *icon_view,
+                                                 gint size);
 
 enum
 {
@@ -294,9 +291,8 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->priv = g_new0(XfdesktopIconViewPrivate, 1);
     
     icon_view->priv->icon_size = DEFAULT_ICON_SIZE;
-    icon_view->priv->use_system_font_size = TRUE;
-    xfdesktop_icon_view_set_system_font_size(icon_view);
-    
+    icon_view->priv->font_size = DEFAULT_FONT_SIZE;
+
     icon_view->priv->source_targets = gtk_target_list_new(icon_view_targets,
                                                           icon_view_n_targets);
     gtk_drag_dest_set(GTK_WIDGET(icon_view), 0, NULL, 0, GDK_ACTION_MOVE);
@@ -796,11 +792,9 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
     pctx = gtk_widget_get_pango_context(GTK_WIDGET(icon_view));
     icon_view->priv->playout = pango_layout_new(pctx);
     
-    if(!icon_view->priv->use_system_font_size
-       && icon_view->priv->label_size > 0)
-    {
+    if(icon_view->priv->font_size > 0) {
         xfdesktop_icon_view_modify_font_size(icon_view,
-                                             icon_view->priv->label_size);
+                                             icon_view->priv->font_size);
     }
     
     xfdesktop_setup_grids(icon_view);
@@ -848,8 +842,6 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
         xfdesktop_icon_view_add_item(icon_view, XFDESKTOP_ICON(l->data));
     g_list_free(icon_view->priv->pending_icons);
     icon_view->priv->pending_icons = NULL;
-    
-    xfdesktop_icon_view_set_system_font_size(icon_view);
 }
 
 static void
@@ -1782,34 +1774,6 @@ xfdesktop_list_foreach_repaint(gpointer data,
     xfdesktop_icon_view_paint_icon(icon_view, (XfdesktopIcon *)data);
 }
 
-static gint
-xfdesktop_icon_view_set_system_font_size(XfdesktopIconView *icon_view)
-{
-    GdkScreen *gscreen;
-    GtkSettings *settings;
-    gchar *font_name = NULL;
-    PangoFontDescription *pfd;
-    
-    gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
-    /* FIXME: needed? */
-    if(!gscreen)
-        gscreen = gdk_display_get_default_screen(gdk_display_get_default());
-    
-    settings = gtk_settings_get_for_screen(gscreen);
-    g_object_get(G_OBJECT(settings), "gtk-font-name", &font_name, NULL);
-    
-    pfd = pango_font_description_from_string(font_name);
-    icon_view->priv->system_font_size = pango_font_description_get_size(pfd);
-    /* FIXME: this seems backwards from the documentation */
-    if(!pango_font_description_get_size_is_absolute(pfd)) {
-        DBG("dividing by PANGO_SCALE");
-        icon_view->priv->system_font_size /= PANGO_SCALE;
-    }
-    DBG("system font size is %.05f", icon_view->priv->system_font_size);
-    
-    return icon_view->priv->system_font_size;
-}
-
 static void
 xfdesktop_icon_view_modify_font_size(XfdesktopIconView *icon_view,
                                      gint size)
@@ -2187,52 +2151,28 @@ xfdesktop_icon_view_get_icon_size(XfdesktopIconView *icon_view)
 }
 
 void
-xfdesktop_icon_view_set_label_size(XfdesktopIconView *icon_view,
-                                   gint label_size_points)
+xfdesktop_icon_view_set_font_size(XfdesktopIconView *icon_view,
+                                  gint font_size_points)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
     
-    if(label_size_points == icon_view->priv->label_size
-       && !icon_view->priv->use_system_font_size)
-    {
-        return;
-    }
-    
-    icon_view->priv->label_size = label_size_points;
-    icon_view->priv->use_system_font_size = FALSE;
-    
-    if(GTK_WIDGET_REALIZED(GTK_WIDGET(icon_view))) {
-        xfdesktop_icon_view_modify_font_size(icon_view, label_size_points);
-        xfdesktop_grid_do_resize(icon_view);
-        gtk_widget_queue_draw(GTK_WIDGET(icon_view));
-    }
-}
-
-void
-xfdesktop_icon_view_unset_label_size(XfdesktopIconView *icon_view)
-{
-    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
-    
-    if(icon_view->priv->use_system_font_size)
+    if(font_size_points == icon_view->priv->font_size)
         return;
     
-    icon_view->priv->use_system_font_size = TRUE;
+    icon_view->priv->font_size = font_size_points;
     
     if(GTK_WIDGET_REALIZED(GTK_WIDGET(icon_view))) {
-        xfdesktop_icon_view_modify_font_size(icon_view,
-                                             icon_view->priv->system_font_size);
+        xfdesktop_icon_view_modify_font_size(icon_view, font_size_points);
         xfdesktop_grid_do_resize(icon_view);
         gtk_widget_queue_draw(GTK_WIDGET(icon_view));
     }
 }
 
 guint
-xfdesktop_icon_view_get_label_size(XfdesktopIconView *icon_view)
+xfdesktop_icon_view_get_font_size(XfdesktopIconView *icon_view)
 {
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), 0);
-    return (icon_view->priv->use_system_font_size
-            ? (guint)icon_view->priv->system_font_size
-            : icon_view->priv->label_size);
+    return icon_view->priv->font_size;
 }
 
 GtkWidget *

@@ -93,6 +93,7 @@ struct _XfceDesktopPriv
     guint icons_font_size;
     guint icons_size;
     GtkWidget *icon_view;
+    gdouble system_font_size;
 #endif
 };
 
@@ -110,6 +111,34 @@ static gboolean xfce_desktop_expose(GtkWidget *w,
 /* private functions */
 
 #ifdef ENABLE_DESKTOP_ICONS
+static gdouble
+xfce_desktop_ensure_system_font_size(XfceDesktop *desktop)
+{
+    GdkScreen *gscreen;
+    GtkSettings *settings;
+    gchar *font_name = NULL;
+    PangoFontDescription *pfd;
+    
+    gscreen = gtk_widget_get_screen(GTK_WIDGET(desktop));
+    /* FIXME: needed? */
+    if(!gscreen)
+        gscreen = gdk_display_get_default_screen(gdk_display_get_default());
+    
+    settings = gtk_settings_get_for_screen(gscreen);
+    g_object_get(G_OBJECT(settings), "gtk-font-name", &font_name, NULL);
+    
+    pfd = pango_font_description_from_string(font_name);
+    desktop->priv->system_font_size = pango_font_description_get_size(pfd);
+    /* FIXME: this seems backwards from the documentation */
+    if(!pango_font_description_get_size_is_absolute(pfd)) {
+        DBG("dividing by PANGO_SCALE");
+        desktop->priv->system_font_size /= PANGO_SCALE;
+    }
+    DBG("system font size is %.05f", desktop->priv->system_font_size);
+    
+    return desktop->priv->system_font_size;
+}
+
 static void
 xfce_desktop_setup_icon_view(XfceDesktop *desktop)
 {
@@ -161,12 +190,13 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
         if(!desktop->priv->icons_use_system_font
            && desktop->priv->icons_font_size > 0)
         {
-            xfdesktop_icon_view_set_label_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
-                                               desktop->priv->icons_font_size);
+            xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
+                                              desktop->priv->icons_font_size);
         }
-        if(desktop->priv->icons_size > 0)
+        if(desktop->priv->icons_size > 0) {
             xfdesktop_icon_view_set_icon_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
                                               desktop->priv->icons_size);
+        }
         gtk_widget_show(desktop->priv->icon_view);
         gtk_container_add(GTK_CONTAINER(desktop), desktop->priv->icon_view);
     }
@@ -786,35 +816,40 @@ xfce_desktop_set_icon_font_size(XfceDesktop *desktop,
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
 #ifdef ENABLE_DESKTOP_ICONS
-    if(font_size_points == desktop->priv->icons_font_size
-       && !desktop->priv->icons_use_system_font)
-    {
+    if(font_size_points == desktop->priv->icons_font_size)
         return;
-    }
     
     desktop->priv->icons_font_size = font_size_points;
-    desktop->priv->icons_use_system_font = FALSE;
     
-    if(desktop->priv->icon_view) {
-        xfdesktop_icon_view_set_label_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
+    if(desktop->priv->icon_view && !desktop->priv->icons_use_system_font) {
+        xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
                                            font_size_points);
     }
 #endif
 }
 
 void
-xfce_desktop_unset_icon_font_size(XfceDesktop *desktop)
+xfce_desktop_set_icon_use_system_font_size(XfceDesktop *desktop,
+                                           gboolean use_system)
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
 #ifdef ENABLE_DESKTOP_ICONS
-    if(desktop->priv->icons_use_system_font)
+    if(use_system == desktop->priv->icons_use_system_font)
         return;
     
-    desktop->priv->icons_use_system_font = TRUE;
+    desktop->priv->icons_use_system_font = use_system;
     
-    if(desktop->priv->icon_view)
-        xfdesktop_icon_view_unset_label_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view));
+    if(desktop->priv->icon_view) {
+        if(use_system) {
+            xfce_desktop_ensure_system_font_size(desktop);
+            xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
+                                              desktop->priv->system_font_size);
+        } else {
+            xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
+                                              desktop->priv->icons_font_size);
+        }
+    }
 #endif
 }
 
