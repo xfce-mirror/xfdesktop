@@ -1031,6 +1031,9 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon)
         gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        g_signal_connect_swapped(G_OBJECT(mi), "activate",
+                                 G_CALLBACK(xfdesktop_file_icon_launch_external),
+                                 file_icon);
     } else {
         if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
             img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
@@ -1047,6 +1050,12 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon)
             gint w, h;
             ThunarVfsMimeApplication *mime_app = mime_apps->data;
             
+            if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
+                mi = gtk_separator_menu_item_new();
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            }
+            
             gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
             
             mi = xfdesktop_menu_item_from_mime_app(file_icon, mime_app, w,
@@ -1054,16 +1063,32 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon)
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             
             if(mime_apps->next) {
-                mi = gtk_separator_menu_item_new();
-                gtk_widget_show(mi);
-                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                GtkWidget *mime_apps_menu;
+                
+                if(!(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE)) {
+                    mi = gtk_separator_menu_item_new();
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                }
+                
+                if(g_list_length(mime_apps->next) > 3) {
+                    mi = gtk_menu_item_new_with_label(_("Open With"));
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    
+                    mime_apps_menu = gtk_menu_new();
+                    gtk_widget_show(mime_apps_menu);
+                    gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi),
+                                              mime_apps_menu);
+                } else
+                    mime_apps_menu = menu;
                 
                 for(l = mime_apps->next; l; l = l->next) {
                     mime_app = l->data;
                     mi = xfdesktop_menu_item_from_mime_app(file_icon,
                                                            mime_app, w,
                                                            FALSE);
-                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(mime_apps_menu), mi);
                 }
             }
             
