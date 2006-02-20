@@ -655,6 +655,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     ThunarVfsUser *user;
     ThunarVfsGroup *group;
     ThunarVfsFileMode mode;
+    ThunarVfsMimeApplication *mime_app;
     static const gchar *access_types[4] = {
         N_("None"), N_("Write only"), N_("Read only"), N_("Read & Write")
     };
@@ -698,7 +699,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     img = gtk_image_new_from_pixbuf(xfdesktop_file_icon_peek_pixbuf(XFDESKTOP_ICON(icon),
                                                                     w));
     gtk_widget_show(img);
-    gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, FALSE, 0);
     
     lbl = gtk_label_new(_("Name:"));
     gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
@@ -746,6 +747,49 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
                      GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
     
     ++row;
+    
+    mime_app = thunar_vfs_mime_database_get_default_application(thunar_mime_database,
+                                                                icon->priv->info->mime_info);
+    
+    if(mime_app) {
+        const gchar *icon_name;
+        
+        lbl = gtk_label_new(_("Open With:"));
+        gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
+        gtk_widget_modify_font(lbl, pfd);
+        gtk_widget_show(lbl);
+        gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
+                         GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+        
+        hbox = gtk_hbox_new(FALSE, BORDER);
+        gtk_widget_show(hbox);
+        gtk_table_attach(GTK_TABLE(table), hbox, 1, 2, row, row + 1,
+                         GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+        
+        icon_name = thunar_vfs_mime_handler_lookup_icon_name(THUNAR_VFS_MIME_HANDLER(mime_app),
+                                                             gtk_icon_theme_get_default());
+        if(icon_name) {
+            gint w, h;
+            GdkPixbuf *pix;
+            
+            gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
+            
+            pix = xfce_themed_icon_load(icon_name, w);
+            if(pix) {
+                img = gtk_image_new_from_pixbuf(pix);
+                gtk_widget_show(img);
+                gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, FALSE, 0);
+                g_object_unref(G_OBJECT(pix));
+            }
+        }
+        
+        lbl = gtk_label_new(thunar_vfs_mime_application_get_name(mime_app));
+        gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+        gtk_widget_show(lbl);
+        gtk_box_pack_start(GTK_BOX(hbox), lbl, TRUE, TRUE, 0);
+        
+        ++row;
+    }
     
     spacer = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
     gtk_widget_set_size_request(spacer, -1, 12);
