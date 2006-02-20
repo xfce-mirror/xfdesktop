@@ -77,6 +77,13 @@ void xfce_desktop_set_icon_style(XfceDesktop *desktop,
                                  XfceDesktopIconStyle style);
 XfceDesktopIconStyle xfce_desktop_get_icon_style(XfceDesktop *desktop);
 
+void xfce_desktop_set_icon_size(XfceDesktop *desktop,
+                                guint icon_size);
+
+void xfce_desktop_set_icon_font_size(XfceDesktop *desktop,
+                                     guint font_size_points);
+void xfce_desktop_unset_icon_font_size(XfceDesktop *desktop);
+
 XfceBackdrop *xfce_desktop_peek_backdrop(XfceDesktop *desktop,
                                          guint monitor);
 

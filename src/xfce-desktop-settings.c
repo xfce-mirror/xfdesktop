@@ -238,6 +238,32 @@ xfce_desktop_settings_load_initial(XfceDesktop *desktop,
         setting = NULL;
     } else
         xfce_desktop_set_icon_style(desktop, XFCE_DESKTOP_ICON_STYLE_WINDOWS);
+    
+    if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "icons_font_size",
+                                             BACKDROP_CHANNEL, &setting))
+    {
+        xfce_desktop_set_icon_font_size(desktop, setting->data.v_int);
+        mcs_setting_free(setting);
+        setting = NULL;
+    }
+    
+    if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, 
+                                             "icons_use_system_font_size",
+                                             BACKDROP_CHANNEL, &setting))
+    {
+        if(!setting->data.v_int)
+            xfce_desktop_unset_icon_font_size(desktop);
+        mcs_setting_free(setting);
+        setting = NULL;
+    }
+    
+    if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "icons_icon_size",
+                                             BACKDROP_CHANNEL, &setting))
+    {
+        xfce_desktop_set_icon_size(desktop, setting->data.v_int);
+        mcs_setting_free(setting);
+        setting = NULL;
+    }
 #endif
     
     for(i = 0; i < nmonitors; i++) {
@@ -365,6 +391,20 @@ xfce_desktop_settings_changed(McsClient *client,
         return TRUE;
     }
     
+    if(!strcmp(setting->name, "icons_font_size")) {
+        xfce_desktop_set_icon_font_size(desktop, setting->data.v_int);
+        return TRUE;
+    }
+    
+    if(!strcmp(setting->name, "icons_use_system_font_size")) {
+        xfce_desktop_unset_icon_font_size(desktop);
+        return TRUE;
+    }
+    
+    if(!strcmp(setting->name, "icons_icon_size")) {
+        xfce_desktop_set_icon_size(desktop, setting->data.v_int);
+        return TRUE;
+    }
 #endif
     
     /* get the screen and monitor number */
