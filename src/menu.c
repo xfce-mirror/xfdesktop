@@ -43,7 +43,8 @@
 #endif
 
 #ifdef USE_DESKTOP_MENU
-XfceDesktopMenu *desktop_menu = NULL;
+static XfceDesktopMenu *desktop_menu = NULL;
+static gboolean show_desktop_menu_icons = TRUE;
 #endif
 
 #ifdef USE_DESKTOP_MENU
@@ -61,6 +62,7 @@ _start_menu_module()
 {
     desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
     if(desktop_menu) {
+        xfce_desktop_menu_set_show_icons(desktop_menu, show_desktop_menu_icons);
         xfce_desktop_menu_start_autoregen(desktop_menu, 10);
         return TRUE;
     } else {
@@ -116,17 +118,6 @@ menu_init(McsClient *mcs_client)
             setting = NULL;
         } else
             _start_menu_module();
-        
-        if(desktop_menu) {
-            if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "showdmi",
-                    BACKDROP_CHANNEL, &setting))
-            {
-                if(!setting->data.v_int)
-                    xfce_desktop_menu_set_show_icons(desktop_menu, FALSE);
-                mcs_setting_free(setting);
-                setting = NULL;
-            }
-        }
     }
 #endif
 }
@@ -156,10 +147,6 @@ menu_settings_changed(McsClient *client, McsAction action, McsSetting *setting,
                 } else if(!setting->data.v_int && desktop_menu)
                     _stop_menu_module();
                 return TRUE;
-            } else if(!strcmp(setting->name, "showdmi")) {
-                if(desktop_menu)
-                    xfce_desktop_menu_set_show_icons(desktop_menu, setting->data.v_int);
-                return TRUE;
             }
             break;
         
@@ -169,6 +156,16 @@ menu_settings_changed(McsClient *client, McsAction action, McsSetting *setting,
 #endif
     
     return FALSE;    
+}
+
+void
+menu_set_show_icons(gboolean show_icons)
+{
+#ifdef USE_DESKTOP_MENU
+    show_desktop_menu_icons = show_icons;
+    if(desktop_menu)
+        xfce_desktop_menu_set_show_icons(desktop_menu, show_icons);
+#endif
 }
 
 void

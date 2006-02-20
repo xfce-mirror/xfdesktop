@@ -342,14 +342,6 @@ windowlist_init(McsClient *mcs_client)
             mcs_setting_free(setting);
             setting = NULL;
         }
-        
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "showwli",
-                BACKDROP_CHANNEL, &setting))
-        {
-            show_windowlist_icons = setting->data.v_int;
-            mcs_setting_free(setting);
-            setting = NULL;
-        }
     }
 }
 
@@ -363,9 +355,6 @@ windowlist_settings_changed(McsClient *client, McsAction action,
             if(!strcmp(setting->name, "showwl")) {
                 show_windowlist = setting->data.v_int;
                 return TRUE;
-            } else if(!strcmp(setting->name, "showwli")) {
-                show_windowlist_icons = setting->data.v_int;
-                return TRUE;
             }
             break;
         
@@ -374,6 +363,12 @@ windowlist_settings_changed(McsClient *client, McsAction action,
     }
     
     return FALSE;
+}
+
+void
+windowlist_set_show_icons(gboolean show_icons)
+{
+    show_windowlist_icons = show_icons;
 }
 
 void

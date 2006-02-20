@@ -34,6 +34,7 @@ G_BEGIN_DECLS
 void windowlist_init(McsClient *mcs_client);
 void popup_windowlist(GdkScreen *gscreen, gint button, guint32 time);
 gboolean windowlist_settings_changed(McsClient *client, McsAction action, McsSetting *setting, gpointer user_data);
+void windowlist_set_show_icons(gboolean show_icons);
 void windowlist_cleanup();
 
 G_END_DECLS

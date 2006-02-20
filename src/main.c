@@ -58,8 +58,9 @@
 #include "windowlist.h"
 #include "settings.h"
 
-SessionClient *client_session = NULL;
-gboolean is_session_managed = FALSE;
+static SessionClient *client_session = NULL;
+static gboolean is_session_managed = FALSE;
+static gboolean desktop_gtk_menu_images = TRUE;
 
 G_MODULE_EXPORT void
 quit(gboolean force)
@@ -74,6 +75,18 @@ static void
 session_die(gpointer user_data)
 {
     gtk_main_quit();
+}
+
+static void
+desktop_settings_menu_images_notify(GObject *gobject,
+                                    GParamSpec *arg1,
+                                    gpointer user_data)
+{
+    g_object_get(G_OBJECT(gobject),
+                 "gtk-menu-images", &desktop_gtk_menu_images,
+                 NULL);
+    windowlist_set_show_icons(desktop_gtk_menu_images);
+    menu_set_show_icons(desktop_gtk_menu_images);
 }
 
 static void
@@ -217,10 +230,11 @@ int
 main(int argc, char **argv)
 {
     GdkDisplay *gdpy;
-    GtkWidget **desktops;
+    GtkWidget **desktops, *dummy;
     gint i, nscreens;
     Window xid;
     McsClient *mcs_client;
+    GtkSettings *settings;
     
     if(argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V"))) {
         g_print(_("This is %s version %s, running on Xfce %s.\n"), PACKAGE, VERSION,
@@ -282,8 +296,18 @@ main(int argc, char **argv)
     }
     
     gdpy = gdk_display_get_default();
-    
     mcs_client = settings_init();
+    
+    /* need GtkImageMenuItem to install the property */
+    dummy = gtk_image_menu_item_new();
+    gtk_widget_destroy(dummy);
+    
+    settings = gtk_settings_get_for_screen(gdk_display_get_default_screen(gdpy));
+    g_object_get(G_OBJECT(settings),
+                 "gtk-menu-images", &desktop_gtk_menu_images,
+                 NULL);
+    g_signal_connect(G_OBJECT(settings), "notify::gtk-menu-images",
+                     G_CALLBACK(desktop_settings_menu_images_notify), NULL);
     
     nscreens = gdk_display_get_n_screens(gdpy);
     desktops = g_new(GtkWidget *, nscreens);
@@ -312,7 +336,10 @@ main(int argc, char **argv)
     is_session_managed = session_init(client_session);
     
     menu_init(mcs_client);
+    menu_set_show_icons(desktop_gtk_menu_images);
+    
     windowlist_init(mcs_client);
+    windowlist_set_show_icons(desktop_gtk_menu_images);
     
     if(mcs_client) {
         settings_register_callback(menu_settings_changed, NULL);
