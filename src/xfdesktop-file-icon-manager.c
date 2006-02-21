@@ -442,6 +442,8 @@ xfdesktop_delete_a_bunch_o_files(GList *files)
     
     treeview = gtk_tree_view_new_with_model(GTK_TREE_MODEL(ls));
     gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(treeview), FALSE);
+    gtk_tree_selection_set_mode(gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview)),
+                                GTK_SELECTION_NONE);
     
     render = gtk_cell_renderer_pixbuf_new();
     col = gtk_tree_view_column_new_with_attributes("pix", render,
