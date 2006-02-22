@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-18 21:35+0900\n"
-"PO-Revision-Date: 2006-02-12 12:02+0200\n"
+"POT-Creation-Date: 2006-02-22 22:59+0200\n"
+"PO-Revision-Date: 2006-02-22 23:04+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <i18ngr@lists.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -66,7 +66,7 @@ msgstr "Έξοδος"
 
 #. Name
 #: ../menueditor/add_dialog.c:206 ../menueditor/edit_dialog.c:147
-#: ../menueditor/edit_dialog.c:207 ../src/xfdesktop-file-icon.c:703
+#: ../menueditor/edit_dialog.c:207 ../src/xfdesktop-file-icon.c:708
 msgid "Name:"
 msgstr "Όνομα:"
 
@@ -376,7 +376,7 @@ msgstr "Επιλογή Αρχείου Μενού"
 msgid "Menu Files"
 msgstr "Αρχεία Μενού"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:169
+#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:198
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Αδυναμία εκκίνησης του επεξεργαστή μενού του Xfce: %s"
@@ -410,7 +410,7 @@ msgid "Use _custom menu file:"
 msgstr "Χρήση _προσαρμοσμένου αρχείου μενού"
 
 #: ../panel-plugin/desktop-menu-plugin.c:823
-#: ../panel-plugin/desktop-menu-plugin.c:825
+#: ../panel-plugin/desktop-menu-plugin.c:825 ../settings/menu_settings.c:248
 msgid "_Edit Menu"
 msgstr "_Επεξεργασία του Μενού"
 
@@ -478,7 +478,7 @@ msgstr "Επεξεργασία λίστας παρασκηνίων"
 
 #. the dialog
 #: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:907
-#: ../src/xfce-desktop.c:513
+#: ../src/xfce-desktop.c:558
 msgid "Desktop"
 msgstr "Επιφάνεια Εργασίας"
 
@@ -536,7 +536,7 @@ msgid "Unknown Error"
 msgstr "Άγνωστο σφάλμα"
 
 #: ../settings/backdrop_settings.c:802 ../src/xfdesktop-file-icon.c:459
-#: ../src/xfdesktop-file-icon.c:479 ../src/xfdesktop-file-icon.c:612
+#: ../src/xfdesktop-file-icon.c:479 ../src/xfdesktop-file-icon.c:616
 msgid "Error"
 msgstr "Σφάλμα"
 
@@ -642,111 +642,105 @@ msgstr "Οθόνη %d, Monitor %d"
 msgid "_Behavior"
 msgstr "_Συμπεριφορά"
 
-#: ../settings/menu_settings.c:193
-msgid "Window List Menu"
-msgstr "Λίστα Παραθύρων"
+#: ../settings/menu_settings.c:222
+msgid "Menus"
+msgstr "Μενού"
 
-#: ../settings/menu_settings.c:201
-msgid "Show window _list"
-msgstr "Εμφάνιση _λίστας παραθύρων"
+#: ../settings/menu_settings.c:230
+msgid "Show _window list on middle click"
+msgstr "Εμφάνιση _λίστας παραθύρων στο μεσαίο κλίκ"
 
-#: ../settings/menu_settings.c:216
-msgid "Show _window icons"
-msgstr "Εμφάνιση εικονιδίων _παραθύρων"
-
-#: ../settings/menu_settings.c:229
-msgid "Desktop Menu"
-msgstr "Μενού Επιφάνειας Εργασίας"
-
-#: ../settings/menu_settings.c:237
-msgid "Show desktop _menu"
+#: ../settings/menu_settings.c:241
+msgid "Show _desktop menu"
 msgstr "Εμφάνιση _μενού επιφάνειας εργασίας"
 
-#: ../settings/menu_settings.c:252
-msgid "_Show application icons"
-msgstr "_Προβολή των εικονιδίων των εφαρμογών"
-
-#: ../settings/menu_settings.c:263
-msgid "_Edit desktop menu"
-msgstr "_Επεξεργασία μενού επιφάνειας εργασίας"
-
-#: ../settings/menu_settings.c:275
+#: ../settings/menu_settings.c:260
 msgid "Desktop Icons"
 msgstr "Εικονίδια Επιφάνειας Εργασίας"
 
-#: ../settings/menu_settings.c:280 ../src/xfdesktop-file-icon.c:659
+#: ../settings/menu_settings.c:269 ../src/xfdesktop-file-icon.c:664
 msgid "None"
 msgstr "Καθόλου"
 
-#: ../settings/menu_settings.c:281
+#: ../settings/menu_settings.c:270
 msgid "Minimized application icons"
 msgstr "Ελάχιστοποιημένες εφαρμογές"
 
-#: ../settings/menu_settings.c:283
+#: ../settings/menu_settings.c:272
 msgid "File/launcher icons"
 msgstr "Αρχεία και συντομεύσεις"
 
-#: ../src/main.c:226
-#, c-format
-msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+#: ../settings/menu_settings.c:283
+msgid "_Icon size:"
+msgstr "Μέγεθος ε_ικονιδίων:"
 
-#: ../src/main.c:228
-#, c-format
-msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+#: ../settings/menu_settings.c:297
+msgid "Use _system font size"
+msgstr "Χρήση μεγέθους γραμματοσειράς _συστήματος"
 
-#: ../src/main.c:232
-msgid "Build options:\n"
-msgstr ""
-
-#: ../src/main.c:233
-#, c-format
-msgid "    Desktop Menu:        %s\n"
-msgstr ""
-
-#: ../src/main.c:235 ../src/main.c:242
-#, fuzzy
-msgid "enabled"
-msgstr "Σε κλίμακα"
-
-#: ../src/main.c:237 ../src/main.c:244
-#, fuzzy
-msgid "disabled"
-msgstr "Σε παράθεση"
+#: ../settings/menu_settings.c:314
+msgid "Custom _font size:"
+msgstr "Προσαρμοσμένο μέγεθος _γραμματοσειράς:"
 
 #: ../src/main.c:240
-#, fuzzy, c-format
-msgid "    Desktop Icons:       %s\n"
-msgstr "Εικονίδια Επιφάνειας Εργασίας"
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Αυτό είναι το %s έκδοση %s, που τρέχει στο Xfce %s.\n"
 
-#: ../src/main.c:271
+#: ../src/main.c:242
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Χτίστηκε στο GTK+ %d.%d.%d, τρέχει σε GTK+ %d.%d.%d."
+
+#: ../src/main.c:246
+msgid "Build options:\n"
+msgstr "Επιλογές:\n"
+
+#: ../src/main.c:247
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "    Μενού Επιφάνειας Εργασίας:         %s\n"
+
+#: ../src/main.c:249 ../src/main.c:256
+msgid "enabled"
+msgstr "ενεργοποιημένο"
+
+#: ../src/main.c:251 ../src/main.c:258
+msgid "disabled"
+msgstr "απενεργοποιημένο"
+
+#: ../src/main.c:254
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "    Εικονίδια Επιφάνειας Εργασίας:     %s\n"
+
+#: ../src/main.c:285
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Άγνωστη επιλογή: %s\n"
 
-#: ../src/main.c:272
+#: ../src/main.c:286
 msgid "Options are:\n"
 msgstr "Οι επιλογές είναι:\n"
 
-#: ../src/main.c:273
+#: ../src/main.c:287
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload     Επαναφόρτωση όλων των ρυθμίσεων, ανανέωση της λίστας "
 "εικόνων \n"
 
-#: ../src/main.c:274
+#: ../src/main.c:288
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu       Εμφάνιση του μενού (στην τρέχουσα θέση του κέρσορα)\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:289
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    -windowlist Εμφάνιση της λίστας παραθύρων (στην τρέχουσα θέση του "
 "κέρσορα)\n"
 
-#: ../src/main.c:276
+#: ../src/main.c:290
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr "    -quit       Εξαναγκάζει το xfdesktop σε τερματισμό\n"
 
@@ -775,14 +769,14 @@ msgid "_Remove Workspace '%s'"
 msgstr "_Αφαίρεση Χώρου Εργασίας '%s'"
 
 #: ../src/xfdesktop-file-icon-manager.c:413
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to permanently delete the following %d files?"
-msgstr "Είστε σίγουρος/η ότι θέλετε να κλείσετε αυτό το μενού;"
+msgstr ""
+"Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά τα  %d επιλεγμένα αρχεία;"
 
 #: ../src/xfdesktop-file-icon-manager.c:415
-#, fuzzy
 msgid "Delete Multiple Files"
-msgstr "_Διαγραφή Αρχείου"
+msgstr "Διαγραφή Πολλαπλών Αρχείων"
 
 #: ../src/xfdesktop-file-icon-manager.c:418 ../src/xfdesktop-file-icon.c:526
 msgid "If you delete a file, it is permanently lost."
@@ -802,133 +796,144 @@ msgstr "Εισάγετε το νέο όνομα:"
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Η μετονομασία του \"%s\" σε \"%s\" απέτυχε:"
 
-#: ../src/xfdesktop-file-icon.c:569
-msgid "_Open With "
-msgstr "Άνοιγμα _Με"
+#: ../src/xfdesktop-file-icon.c:570
+#, c-format
+msgid "_Open With \"%s\""
+msgstr "Άνοιγμα _Με \"%s\""
 
-#: ../src/xfdesktop-file-icon.c:569
-msgid "Open With "
-msgstr "Άνοιγμα Με"
-
-#: ../src/xfdesktop-file-icon.c:610
-#, fuzzy, c-format
-msgid "Unable to launch \"%s\"."
-msgstr "Αδυναμία εκκίνησης του επεξεργαστή μενού του Xfce: %s"
+#: ../src/xfdesktop-file-icon.c:573
+#, c-format
+msgid "Open With \"%s\""
+msgstr "Άνοιγμα Με \"%s\""
 
 #: ../src/xfdesktop-file-icon.c:614
+#, c-format
+msgid "Unable to launch \"%s\"."
+msgstr "Η εκκίνηση του \"%s\" απέτυχε."
+
+#: ../src/xfdesktop-file-icon.c:618
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
+"Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή αρχείων (όπως αυτή "
+"που παρέχει ο Thunar)."
 
-#: ../src/xfdesktop-file-icon.c:659
+#: ../src/xfdesktop-file-icon.c:664
 msgid "Write only"
-msgstr ""
+msgstr "Μόνο εγγραφή"
 
-#: ../src/xfdesktop-file-icon.c:659
+#: ../src/xfdesktop-file-icon.c:664
 msgid "Read only"
-msgstr ""
+msgstr "Μόνο για ανάγνωση"
 
-#: ../src/xfdesktop-file-icon.c:659
+#: ../src/xfdesktop-file-icon.c:664
 msgid "Read & Write"
-msgstr ""
+msgstr "Εγγραφή και Ανάγνωση"
 
-#: ../src/xfdesktop-file-icon.c:678
+#: ../src/xfdesktop-file-icon.c:683
 msgid "General"
-msgstr ""
+msgstr "Γενικές"
 
-#: ../src/xfdesktop-file-icon.c:725
+#: ../src/xfdesktop-file-icon.c:730
 msgid "Kind:"
-msgstr ""
+msgstr "Είδος:"
 
-#: ../src/xfdesktop-file-icon.c:735
+#: ../src/xfdesktop-file-icon.c:740
 msgid "broken link"
-msgstr ""
+msgstr "σπασμένος δεσμός"
 
-#: ../src/xfdesktop-file-icon.c:737
+#: ../src/xfdesktop-file-icon.c:742
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "σύνδεσμος στο %s"
 
-#: ../src/xfdesktop-file-icon.c:758
+#: ../src/xfdesktop-file-icon.c:761
+msgid "Open With:"
+msgstr "Άνοιγμα Με:"
+
+#: ../src/xfdesktop-file-icon.c:806
 msgid "Modified:"
-msgstr ""
+msgstr "Τροποποιήθηκε:"
 
-#: ../src/xfdesktop-file-icon.c:776
+#: ../src/xfdesktop-file-icon.c:824
 msgid "Accessed:"
-msgstr ""
+msgstr "Προσπελάστηκε:"
 
-#: ../src/xfdesktop-file-icon.c:803
+#: ../src/xfdesktop-file-icon.c:851
 msgid "Free Space:"
-msgstr ""
+msgstr "Ελεύθερος Χώρος:"
 
-#: ../src/xfdesktop-file-icon.c:805
+#: ../src/xfdesktop-file-icon.c:853
 msgid "Size:"
-msgstr ""
+msgstr "Μέγεθος:"
 
-#: ../src/xfdesktop-file-icon.c:818
+#: ../src/xfdesktop-file-icon.c:866
 msgid "unknown"
-msgstr ""
+msgstr "άγνωστο"
 
-#: ../src/xfdesktop-file-icon.c:821
+#: ../src/xfdesktop-file-icon.c:869
 msgid "%s (%"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:821
+#: ../src/xfdesktop-file-icon.c:869
 msgid " Bytes)"
 msgstr ""
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon.c:836
+#: ../src/xfdesktop-file-icon.c:884
 msgid "Permissions"
-msgstr ""
+msgstr "Δικαιώματα"
 
-#: ../src/xfdesktop-file-icon.c:858
+#: ../src/xfdesktop-file-icon.c:906
 msgid "Owner:"
-msgstr ""
+msgstr "Ιδιοκτήτης:"
 
-#: ../src/xfdesktop-file-icon.c:876 ../src/xfdesktop-file-icon.c:914
+#: ../src/xfdesktop-file-icon.c:924 ../src/xfdesktop-file-icon.c:962
 msgid "Access:"
-msgstr ""
+msgstr "Πρόσβαση:"
 
-#: ../src/xfdesktop-file-icon.c:899
+#: ../src/xfdesktop-file-icon.c:947
 msgid "Group:"
-msgstr ""
+msgstr "Ομάδα:"
 
-#: ../src/xfdesktop-file-icon.c:937
-#, fuzzy
+#: ../src/xfdesktop-file-icon.c:985
 msgid "Others:"
-msgstr "/Άλλο"
+msgstr "Άλλα:"
 
-#: ../src/xfdesktop-file-icon.c:986
+#: ../src/xfdesktop-file-icon.c:1034
 msgid "_Open"
 msgstr "_Άνοιγμα"
 
-#: ../src/xfdesktop-file-icon.c:994
+#: ../src/xfdesktop-file-icon.c:1045
 msgid "_Execute"
 msgstr "_Εκτέλεση"
 
-#: ../src/xfdesktop-file-icon.c:1031
+#: ../src/xfdesktop-file-icon.c:1079
+msgid "Open With"
+msgstr "Άνοιγμα Με"
+
+#: ../src/xfdesktop-file-icon.c:1104
 msgid "Open With Other _Application..."
 msgstr "Άνοιγμα Με Άλλη Ε_φαρμογή..."
 
-#: ../src/xfdesktop-file-icon.c:1047
+#: ../src/xfdesktop-file-icon.c:1120
 msgid "_Copy File"
 msgstr "Α_ντιγραφή Αρχείου"
 
-#: ../src/xfdesktop-file-icon.c:1056
+#: ../src/xfdesktop-file-icon.c:1129
 msgid "Cu_t File"
 msgstr "Α_ποκοπή Αρχείου"
 
-#: ../src/xfdesktop-file-icon.c:1065
+#: ../src/xfdesktop-file-icon.c:1138
 msgid "_Delete File"
 msgstr "_Διαγραφή Αρχείου"
 
-#: ../src/xfdesktop-file-icon.c:1076
+#: ../src/xfdesktop-file-icon.c:1149
 msgid "_Rename..."
 msgstr "_Μετονομασία..."
 
-#: ../src/xfdesktop-file-icon.c:1088
+#: ../src/xfdesktop-file-icon.c:1161
 msgid "_Properties..."
 msgstr "_Ιδιότητες..."
 
@@ -956,6 +961,21 @@ msgstr "Ρυθμίσεις Διαχειριστή Επιφάνειας Εργα�
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Ρυθμίσεις επιφάνειας εργασίας Xfce 4"
+
+#~ msgid "Window List Menu"
+#~ msgstr "Λίστα Παραθύρων"
+
+#~ msgid "Show _window icons"
+#~ msgstr "Εμφάνιση εικονιδίων _παραθύρων"
+
+#~ msgid "Desktop Menu"
+#~ msgstr "Μενού Επιφάνειας Εργασίας"
+
+#~ msgid "_Show application icons"
+#~ msgstr "_Προβολή των εικονιδίων των εφαρμογών"
+
+#~ msgid "_Edit desktop menu"
+#~ msgstr "_Επεξεργασία μενού επιφάνειας εργασίας"
 
 #~ msgid "Window Icons"
 #~ msgstr "Εικονίδια Παραθύρων"
