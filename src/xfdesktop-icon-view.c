@@ -37,16 +37,6 @@
 
 #include "xfdesktop-icon-view.h"
 
-#if 0
-#define ICON_SIZE         32
-#define CELL_SIZE         112  
-#define TEXT_WIDTH        100
-#define CELL_PADDING      6
-#define SPACING           8
-#define SCREEN_MARGIN     8
-#define CORNER_ROUNDNESS  4
-#endif
-
 #define DEFAULT_FONT_SIZE  12
 #define DEFAULT_ICON_SIZE  32
 
@@ -633,8 +623,8 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
     {
         gint newx, newy;
         
-        newx = icon_view->priv->xorigin + col * CELL_SIZE + CELL_PADDING;
-        newy = icon_view->priv->yorigin + row * CELL_SIZE + CELL_PADDING;
+        newx = SCREEN_MARGIN + icon_view->priv->xorigin + col * CELL_SIZE;
+        newy = SCREEN_MARGIN + icon_view->priv->yorigin + row * CELL_SIZE;
         
         if(cell_highlight) {
             DBG("have old cell higlight: (%d,%d)", cell_highlight->x,
@@ -1322,23 +1312,14 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     }
     pango_layout_get_pixel_size(playout, &text_w, &text_h);
     
-    cell_x = icon_view->priv->xorigin + col * CELL_SIZE + CELL_PADDING;
-    cell_y = icon_view->priv->yorigin + row * CELL_SIZE + CELL_PADDING;
+    cell_x = SCREEN_MARGIN + icon_view->priv->xorigin + col * CELL_SIZE;
+    cell_y = SCREEN_MARGIN + icon_view->priv->yorigin + row * CELL_SIZE;
+
+    pix_x = cell_x + CELL_PADDING + ((CELL_SIZE - 2 * CELL_PADDING) - pix_w) / 2;
+    pix_y = cell_y + CELL_PADDING + SPACING;
     
-    pix_x = cell_x + ((CELL_SIZE - 2 * CELL_PADDING) - pix_w) / 2;
-    pix_y = cell_y + 2 * CELL_PADDING;
-    
-    /*
-    DBG("computing text_x:\n\tcell_x=%d\n\tcell width: %d\n\ttext_w: %d\n\tnon-text space: %d\n\tdiv 2: %d",
-        cell_x,
-        CELL_SIZE - 2 * CELL_PADDING,
-        text_w,
-        ((CELL_SIZE - 2 * CELL_PADDING) - text_w),
-        ((CELL_SIZE - 2 * CELL_PADDING) - text_w) / 2);
-    */
-    
-    text_x = cell_x + ((CELL_SIZE - 2 * CELL_PADDING) - text_w) / 2;
-    text_y = cell_y + 2 * CELL_PADDING + pix_h + SPACING + 2;
+    text_x = cell_x + CELL_PADDING + ((CELL_SIZE - 2 * CELL_PADDING) - text_w) / 2;
+    text_y = cell_y + CELL_PADDING + SPACING + pix_h + SPACING + 2;
     
     DBG("drawing pixbuf at (%d,%d)", pix_x, pix_y);
     
@@ -1359,9 +1340,9 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
                      &area, widget, "label", text_x, text_y, playout);
     
     area.x = (pix_w > text_w + CORNER_ROUNDNESS * 2 ? pix_x : text_x - CORNER_ROUNDNESS);
-    area.y = cell_y + (2 * CELL_PADDING);
+    area.y = cell_y + CELL_PADDING + SPACING;
     area.width = (pix_w > text_w + CORNER_ROUNDNESS * 2 ? pix_w : text_w + CORNER_ROUNDNESS * 2);
-    area.height = pix_h + SPACING + text_h + CORNER_ROUNDNESS  + 2;
+    area.height = pix_h + SPACING + text_h + CORNER_ROUNDNESS + 2;
     xfdesktop_icon_set_extents(icon, &area);
     
 #if 0 /* debug */
@@ -1860,7 +1841,7 @@ void
 xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
                                 XfdesktopIcon *icon)
 {
-    gint16 row, col;
+    guint16 row, col;
     
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view)
                      && XFDESKTOP_IS_ICON(icon));
