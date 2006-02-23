@@ -330,5 +330,6 @@
 		<subcategory name="Utility" replace="Tillbehör" />
 	</category>
 	<category name="Wine" toplevel="true" builtin-icon="WINE" />
-	<category name="WineX" toplevel="true" builtin-icon="WINE" />
+	<category name="WineX" replace="Wine" toplevel="true" builtin-icon="WINE" />
+	<category name="CrossOver" replace="Wine" toplevel="true" builtin-icon="WINE" />
 </xfce-registered-categories>
