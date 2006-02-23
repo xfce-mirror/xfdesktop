@@ -338,19 +338,21 @@ menu_deactivated(GtkWidget *menu, gpointer user_data)
     g_signal_handler_disconnect(menu, id);
 }
 
-static void
-dmp_popup(GtkWidget *w, gpointer user_data)
+static gboolean
+dmp_popup(GtkWidget *w,
+          GdkEventButton *evt,
+          gpointer user_data)
 {
     GtkWidget *menu;
     DMPlugin *dmp = user_data;
     
-    if(!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w)))
-        return;
-    
+    if(evt->button != 1)
+        return FALSE;
+
     if(!dmp->desktop_menu) {
         g_critical("dmp->desktop_menu is NULL - module load failed?");
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), FALSE);
-        return;
+        return TRUE;
     }
     
     if(xfce_desktop_menu_need_update(dmp->desktop_menu))
@@ -363,11 +365,14 @@ dmp_popup(GtkWidget *w, gpointer user_data)
         id = g_signal_connect(menu, "deactivate", 
                 G_CALLBACK(menu_deactivated), dmp);
         g_object_set_data(G_OBJECT(menu), "sig_id", GUINT_TO_POINTER(id));
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), TRUE);
         gtk_menu_popup(GTK_MENU(menu), NULL, NULL,
                        (GtkMenuPositionFunc)dmp_position_menu, dmp,
                        1, gtk_get_current_event_time());
     } else
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), FALSE);
+
+    return TRUE;
 }
 
 static void
@@ -915,7 +920,7 @@ dmp_new(XfcePanelPlugin *plugin)
                                          dmp->show_menu_icons);
         xfce_desktop_menu_start_autoregen(dmp->desktop_menu, 10);
     }
-    g_signal_connect(G_OBJECT(dmp->button), "toggled",
+    g_signal_connect(G_OBJECT(dmp->button), "button-press-event",
             G_CALLBACK(dmp_popup), dmp);
     
     xfce_panel_plugin_add_action_widget(plugin, dmp->button);
