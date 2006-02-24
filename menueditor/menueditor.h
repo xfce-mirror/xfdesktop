@@ -70,7 +70,6 @@ struct _menueditor_app
   gboolean menu_modified;
   gchar *menu_file_name;
 
-  XfceIconTheme *icon_theme;
   GtkWidget *window;
 
   /* Tree */

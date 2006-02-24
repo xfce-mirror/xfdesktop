@@ -46,7 +46,7 @@ about_cb (GtkWidget * widget, gpointer data)
   xfce_about_info_add_credit (info, "Jens Luedicke", "perldude@lunar-linux.org", _("Contributor"));
   xfce_about_info_add_credit (info, "Francois Le Clainche", "fleclainche@xfce.org", _("Icon designer"));
 
-  icon = xfce_icon_theme_load (me->icon_theme, "xfce4-menueditor", 48);
+  icon = xfce_themed_icon_load ("xfce4-menueditor", 48);
 
   dialog = xfce_about_dialog_new_with_values (GTK_WINDOW (me->window), info, icon);
 

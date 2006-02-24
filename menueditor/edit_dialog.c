@@ -24,7 +24,6 @@
 #include "edit_dialog.h"
 
 struct _EditDialog {
-  XfceIconTheme *icon_theme;
   GtkWidget *dialog;
   ENTRY_TYPE type;
 
@@ -46,7 +45,7 @@ browse_command_clicked_cb (GtkWidget * widget, EditDialog * edit_dialog)
 static void
 browse_icon_clicked_cb (GtkWidget * widget, EditDialog * edit_dialog)
 {
-  browse_icon (GTK_ENTRY (edit_dialog->entry_icon), GTK_WINDOW (edit_dialog->dialog), edit_dialog->icon_theme);
+  browse_icon (GTK_ENTRY (edit_dialog->entry_icon), GTK_WINDOW (edit_dialog->dialog));
 }
 
 /***************/
@@ -88,7 +87,6 @@ edit_selection (MenuEditor *me)
   gint response;
 
   edit_dialog = g_new0 (EditDialog, 1);
-  edit_dialog->icon_theme = me->icon_theme;
 
   selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (me->treeview));
 
@@ -270,7 +268,7 @@ edit_selection (MenuEditor *me)
       str_icon = gtk_entry_get_text (GTK_ENTRY (edit_dialog->entry_icon));
       /* set the new icon if there is one and it exists otherwise use the dummy one */
       if ((edit_dialog->entry_icon && strlen (str_icon) != 0)) {
-        icon = xfce_icon_theme_load (me->icon_theme, str_icon, ICON_SIZE);
+        icon = xfce_themed_icon_load (str_icon, ICON_SIZE);
         if (!icon)
           icon = dummy_icon;
 	g_free (option_1);

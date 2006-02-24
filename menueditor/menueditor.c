@@ -165,7 +165,7 @@ icon_theme_update_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTre
     if (icon)
       g_object_unref (icon);
 
-    icon = xfce_icon_theme_load (me->icon_theme, icon_name, ICON_SIZE);
+    icon = xfce_themed_icon_load (icon_name, ICON_SIZE);
     if (icon) {
       gtk_tree_store_set (GTK_TREE_STORE (model), iter, COLUMN_ICON, icon, -1);
       g_object_unref (icon);
@@ -180,7 +180,7 @@ icon_theme_update_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTre
 }
 
 static void
-icon_theme_changed_cb (XfceIconTheme * icon_theme, gpointer user_data)
+icon_theme_changed_cb (GtkIconTheme * icon_theme, gpointer user_data)
 {
   MenuEditor *me;
   GtkTreeModel *model;
@@ -815,7 +815,6 @@ create_main_window (MenuEditor * me)
 			   {"application/x-desktop", 0, DND_TARGET_APP_DESKTOP} };
 
   accel_group = gtk_accel_group_new ();
-  me->icon_theme = xfce_icon_theme_get_for_screen (NULL);
 
   /* Window */
   me->window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -823,7 +822,7 @@ create_main_window (MenuEditor * me)
   gtk_window_set_default_size (GTK_WINDOW (me->window), 600, 450);
 
   /* Set default icon */
-  icon = xfce_icon_theme_load (me->icon_theme, "xfce4-menueditor", 48);
+  icon = xfce_themed_icon_load ("xfce4-menueditor", 48);
   gtk_window_set_icon (GTK_WINDOW (me->window), icon);
   g_object_unref (icon);
 
@@ -1019,7 +1018,7 @@ create_main_window (MenuEditor * me)
   /* Connect signals */
   /* =============== */
   g_signal_connect (G_OBJECT (me->window), "delete-event", G_CALLBACK (delete_main_window_cb), me);
-  g_signal_connect (G_OBJECT (me->icon_theme), "changed", G_CALLBACK (icon_theme_changed_cb), me);
+  g_signal_connect (G_OBJECT (gtk_icon_theme_get_default ()), "changed", G_CALLBACK (icon_theme_changed_cb), me);
 
   /* Menu */
   g_signal_connect (G_OBJECT (me->menu_item_file_new), "activate", G_CALLBACK (new_menu_cb), me);

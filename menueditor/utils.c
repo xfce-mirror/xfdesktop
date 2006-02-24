@@ -193,7 +193,6 @@ struct MenuFileParserState
 {
   gboolean started;
   GtkTreeView *treeview;
-  XfceIconTheme *icontheme;
   GQueue *parents;
   gchar *cur_parent;
 };
@@ -274,7 +273,7 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
 
     m = _find_attribute (attribute_names, "icon");
     if (m != -1 && *attribute_values[m])
-      icon = xfce_icon_theme_load (state->icontheme, attribute_values[m], ICON_SIZE);
+      icon = xfce_themed_icon_load (attribute_values[m], ICON_SIZE);
 
     gtk_tree_store_append (treestore, &iter, iter_parent);
     gtk_tree_store_set (treestore, &iter,
@@ -299,7 +298,7 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
 
     j = _find_attribute (attribute_names, "icon");
     if (j != -1 && *attribute_values[j])
-      icon = xfce_icon_theme_load (state->icontheme, attribute_values[j], ICON_SIZE);
+      icon = xfce_themed_icon_load (attribute_values[j], ICON_SIZE);
 
     gtk_tree_store_append (treestore, &iter, iter_parent);
     gtk_tree_store_set (treestore, &iter,
@@ -335,7 +334,7 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
 
     k = _find_attribute (attribute_names, "icon");
     if (k != -1 && *attribute_values[k])
-      icon = xfce_icon_theme_load (state->icontheme, attribute_values[k], ICON_SIZE);
+      icon = xfce_themed_icon_load (attribute_values[k], ICON_SIZE);
 
     gtk_tree_store_append (treestore, &iter, iter_parent);
     gtk_tree_store_set (treestore, &iter,
@@ -356,7 +355,7 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
 
     j = _find_attribute (attribute_names, "icon");
     if (j != -1 && *attribute_values[j])
-      icon = xfce_icon_theme_load (state->icontheme, attribute_values[j], ICON_SIZE);
+      icon = xfce_themed_icon_load (attribute_values[j], ICON_SIZE);
 
     gtk_tree_store_append (treestore, &iter, iter_parent);
     gtk_tree_store_set (treestore, &iter,
@@ -447,7 +446,7 @@ load_menu_in_treeview (const gchar * filename, MenuEditor * me)
     NULL,
     NULL
   };
-  struct MenuFileParserState state = { FALSE, NULL, NULL, NULL, NULL };
+  struct MenuFileParserState state = { FALSE, NULL, NULL, NULL };
   gboolean ret = FALSE;
   GError *err = NULL;
 #ifdef HAVE_MMAP
@@ -483,7 +482,6 @@ load_menu_in_treeview (const gchar * filename, MenuEditor * me)
   state.started = FALSE;
   state.parents = g_queue_new ();
   state.treeview = GTK_TREE_VIEW (me->treeview);
-  state.icontheme = me->icon_theme;
 
   gpcontext = g_markup_parse_context_new (&gmparser, 0, &state, NULL);
 
@@ -640,7 +638,7 @@ browse_icon_update_preview_cb (GtkFileChooser * chooser, gpointer data)
 }
 
 void
-browse_icon (GtkEntry * entry, GtkWindow * parent, XfceIconTheme * icon_theme)
+browse_icon (GtkEntry * entry, GtkWindow * parent)
 {
   GtkWidget *filesel_dialog, *preview;
   GtkFileFilter *filter;
@@ -677,7 +675,7 @@ browse_icon (GtkEntry * entry, GtkWindow * parent, XfceIconTheme * icon_theme)
   if (strlen (text) != 0) {
     gchar *iconpath = NULL;
 
-    iconpath = xfce_icon_theme_lookup (icon_theme, text, ICON_SIZE);
+    iconpath = xfce_themed_icon_lookup (text, ICON_SIZE);
     gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (filesel_dialog), iconpath);
 
     g_free (iconpath);

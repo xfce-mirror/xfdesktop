@@ -27,7 +27,6 @@
 struct _AddDialog
 {
   GtkWidget *dialog;
-  XfceIconTheme *icon_theme;
   ENTRY_TYPE type;
 
   GtkWidget *label_name;
@@ -126,7 +125,7 @@ browse_command_clicked_cb (GtkWidget * widget, AddDialog * add_dialog)
 static void
 browse_icon_clicked_cb (GtkWidget * widget, AddDialog * add_dialog)
 {
-  browse_icon (GTK_ENTRY (add_dialog->entry_icon), GTK_WINDOW (add_dialog->dialog), add_dialog->icon_theme);
+  browse_icon (GTK_ENTRY (add_dialog->entry_icon), GTK_WINDOW (add_dialog->dialog));
 }
 
 /*******************/
@@ -155,7 +154,6 @@ add_entry_cb (GtkWidget * widget, gpointer data)
 
   add_dialog = g_new0 (AddDialog, 1);
 
-  add_dialog->icon_theme = me->icon_theme;
   add_dialog->dialog = gtk_dialog_new_with_buttons (_("Add menu entry"),
                                                     GTK_WINDOW (me->window),
                                                     GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -297,7 +295,7 @@ add_entry_cb (GtkWidget * widget, gpointer data)
         /* Set icon if needed */
         if (strlen (gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_icon))) != 0)
           icon =
-            xfce_icon_theme_load (me->icon_theme, gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_icon)), ICON_SIZE);
+            xfce_themed_icon_load (gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_icon)), ICON_SIZE);
 
         name = g_markup_printf_escaped (NAME_FORMAT, gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_name)));
         command = g_markup_printf_escaped (COMMAND_FORMAT, gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_command)));
@@ -317,7 +315,7 @@ add_entry_cb (GtkWidget * widget, gpointer data)
         /* Set icon if needed */
         if (strlen (gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_icon))) != 0)
           icon =
-            xfce_icon_theme_load (me->icon_theme, gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_icon)), ICON_SIZE);
+            xfce_themed_icon_load (gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_icon)), ICON_SIZE);
 
         name = g_markup_printf_escaped (MENU_FORMAT, gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_name)));
         command = g_strdup ("");
@@ -338,7 +336,7 @@ add_entry_cb (GtkWidget * widget, gpointer data)
         /* Set icon if needed */
         if (strlen (gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_icon))) != 0)
           icon =
-            xfce_icon_theme_load (me->icon_theme, gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_icon)), ICON_SIZE);
+            xfce_themed_icon_load (gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_icon)), ICON_SIZE);
 
         name = g_markup_printf_escaped (MENU_FORMAT, gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_name)));
         command = g_strdup ("");
@@ -351,7 +349,7 @@ add_entry_cb (GtkWidget * widget, gpointer data)
         /* Set icon if needed */
         if (strlen (gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_icon))) != 0)
           icon =
-            xfce_icon_theme_load (me->icon_theme, gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_icon)), ICON_SIZE);
+            xfce_themed_icon_load (gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_icon)), ICON_SIZE);
 
         name = g_markup_printf_escaped (BUILTIN_FORMAT, gtk_entry_get_text (GTK_ENTRY (add_dialog->entry_name)));
         command = g_markup_printf_escaped (COMMAND_FORMAT, _("quit"));
