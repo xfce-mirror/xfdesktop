@@ -758,6 +758,13 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
 }
 
 static void
+xfdesktop_icon_view_icon_theme_changed(GtkIconTheme *icon_theme,
+                                       gpointer user_data)
+{
+    gtk_widget_queue_draw(GTK_WIDGET(user_data));
+}    
+
+static void
 xfdesktop_icon_view_realize(GtkWidget *widget)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
@@ -828,6 +835,11 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
     g_signal_connect(G_OBJECT(gscreen), "size-changed",
                      G_CALLBACK(xfdesktop_screen_size_changed_cb), icon_view);
     
+    g_signal_connect_after(G_OBJECT(gtk_icon_theme_get_for_screen(gscreen)),
+                           "changed",
+                           G_CALLBACK(xfdesktop_icon_view_icon_theme_changed),
+                           icon_view);
+    
     for(l = icon_view->priv->pending_icons; l; l = l->next)
         xfdesktop_icon_view_add_item(icon_view, XFDESKTOP_ICON(l->data));
     g_list_free(icon_view->priv->pending_icons);
@@ -846,6 +858,10 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
     gscreen = gtk_widget_get_screen(widget);
     groot = gdk_screen_get_root_window(gscreen);
     gdk_window_remove_filter(groot, xfdesktop_rootwin_watch_workarea, icon_view);
+    
+    g_signal_handlers_disconnect_by_func(G_OBJECT(gtk_icon_theme_get_for_screen(gscreen)),
+                     G_CALLBACK(xfdesktop_icon_view_icon_theme_changed),
+                     icon_view);
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view->priv->parent_window),
                      G_CALLBACK(xfdesktop_icon_view_motion_notify), icon_view);

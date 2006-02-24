@@ -84,6 +84,7 @@ static void xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon);
 static void xfdesktop_delete_file_finished(ThunarVfsJob *job,
                                            gpointer user_data);
 
+static void xfdesktop_file_icon_invalidate_pixbuf(XfdesktopFileIcon *icon);
 
 static guint __signals[N_SIGS] = { 0, };
 static GdkPixbuf *xfdesktop_fallback_icon = NULL;
@@ -137,6 +138,11 @@ static void
 xfdesktop_file_icon_finalize(GObject *obj)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(obj);
+    GtkIconTheme *itheme = gtk_icon_theme_get_for_screen(icon->priv->gscreen);
+    
+    g_signal_handlers_disconnect_by_func(G_OBJECT(itheme),
+                                         G_CALLBACK(xfdesktop_file_icon_invalidate_pixbuf),
+                                         icon);
     
     if(icon->priv->active_jobs) {
         GList *l;
@@ -177,6 +183,15 @@ xfdesktop_file_icon_icon_init(XfdesktopIconIface *iface)
 }
 
 
+static void
+xfdesktop_file_icon_invalidate_pixbuf(XfdesktopFileIcon *icon)
+{
+    if(icon->priv->pix) {
+        g_object_unref(G_OBJECT(icon->priv->pix));
+        icon->priv->pix = NULL;
+    }
+}
+
 XfdesktopFileIcon *
 xfdesktop_file_icon_new(ThunarVfsInfo *info,
                         GdkScreen *screen)
@@ -191,6 +206,11 @@ xfdesktop_file_icon_new(ThunarVfsInfo *info,
                                   (gpointer)&clipboard_manager);
     } else
         g_object_ref(G_OBJECT(clipboard_manager));
+    
+    g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
+                             "changed",
+                             G_CALLBACK(xfdesktop_file_icon_invalidate_pixbuf),
+                             file_icon);
     
     return file_icon;
 }
