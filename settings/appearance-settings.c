@@ -1233,6 +1233,7 @@ run_dialog (McsPlugin * mcs_plugin)
     
     if(is_running) {
         if(bd && bd->dialog) {
+            gdk_x11_window_set_user_time(bd->dialog->window, GDK_CURRENT_TIME);
             gtk_window_present(GTK_WINDOW(bd->dialog));
             return;
         } else
