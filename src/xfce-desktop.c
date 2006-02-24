@@ -237,6 +237,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     Pixmap xid;
     GdkWindow *groot;
     gint i, monitor = -1;
+    GtkStyle *style;
     
     TRACE("dummy");
     
@@ -336,7 +337,14 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     
     /* set the new pixmap and tell gtk to redraw it */
     desktop->priv->bg_pixmap = pmap;
-    gdk_window_set_back_pixmap(GTK_WIDGET(desktop)->window, pmap, FALSE);
+    style = gtk_widget_get_style(GTK_WIDGET(desktop));
+    for(i = 0; i < 5; ++i) {
+        if(style->bg_pixmap[i])
+            g_object_unref(G_OBJECT(style->bg_pixmap[i]));
+        style->bg_pixmap[i] = g_object_ref(G_OBJECT(desktop->priv->bg_pixmap));
+    }
+    gtk_widget_set_style(GTK_WIDGET(desktop), style);
+
     gtk_widget_queue_draw_area(GTK_WIDGET(desktop), rect.x, rect.y,
                                rect.width, rect.height);
     
@@ -482,13 +490,26 @@ static void
 desktop_style_set_cb(GtkWidget *w, GtkStyle *old, gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
+    GtkStyle *style;
+    gint i;
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
-    if(desktop->priv->bg_pixmap) {
-        gdk_window_set_back_pixmap(w->window, desktop->priv->bg_pixmap, FALSE);
-        gtk_widget_queue_draw(w);
+    if(!desktop->priv->bg_pixmap)
+        backdrop_changed_cb(desktop->priv->backdrops[0], desktop);
+
+    if(!desktop->priv->bg_pixmap) {
+        g_critical("Can't override style because bg_pixmap == NULL");
+        return;
     }
+        
+    style = gtk_widget_get_style(w);
+    for(i = 0; i < 5; ++i) {
+        if(style->bg_pixmap[i])
+            g_object_unref(G_OBJECT(style->bg_pixmap[i]));
+        style->bg_pixmap[i] = g_object_ref(G_OBJECT(desktop->priv->bg_pixmap));
+    }
+    gtk_widget_set_style(w, style);
 }
 
 
