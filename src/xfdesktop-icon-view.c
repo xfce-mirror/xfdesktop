@@ -966,7 +966,7 @@ xfdesktop_icon_view_paint_icons(XfdesktopIconView *icon_view,
 static void
 xfdesktop_setup_grids(XfdesktopIconView *icon_view)
 {
-    gint xorigin, yorigin, width, height, tmp;
+    gint xorigin = 0, yorigin = 0, width = 0, height = 0, tmp;
     
     if(xfdesktop_get_workarea_single(icon_view, 0,
                                      &xorigin, &yorigin,

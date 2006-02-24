@@ -186,13 +186,14 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
     }
     
     if(manager) {
+        xfce_desktop_ensure_system_font_size(desktop);
+        
         desktop->priv->icon_view = xfdesktop_icon_view_new(manager);
-        if(!desktop->priv->icons_use_system_font
-           && desktop->priv->icons_font_size > 0)
-        {
-            xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
-                                              desktop->priv->icons_font_size);
-        }
+        xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
+                                          (desktop->priv->icons_use_system_font
+                                           || !desktop->priv->icons_font_size)
+                                          ? desktop->priv->system_font_size
+                                          : desktop->priv->icons_font_size);
         if(desktop->priv->icons_size > 0) {
             xfdesktop_icon_view_set_icon_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
                                               desktop->priv->icons_size);
@@ -821,7 +822,10 @@ xfce_desktop_set_icon_font_size(XfceDesktop *desktop,
     
     desktop->priv->icons_font_size = font_size_points;
     
-    if(desktop->priv->icon_view && !desktop->priv->icons_use_system_font) {
+    if(desktop->priv->icons_use_system_font)
+        return;
+    
+    if(desktop->priv->icon_view) {
         xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
                                            font_size_points);
     }
