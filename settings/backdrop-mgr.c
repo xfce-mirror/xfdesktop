@@ -707,7 +707,7 @@ edit_list_file(const gchar *path, GtkWidget *parent, ListMgrCb callback,
             do {
                 file = NULL;
                 gtk_tree_model_get(GTK_TREE_MODEL(ls), &itr, 0, &file, -1);
-                if(!strcmp(curimg, file)) {
+                if(!strcmp((gchar *)curimg, file)) {
                     GtkTreePath *path;
                     
                     gtk_list_store_set(ls, &itr, 1, PANGO_WEIGHT_BOLD, -1);

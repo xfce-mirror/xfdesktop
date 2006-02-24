@@ -238,7 +238,7 @@ create_menu_page(BackdropDialog *bd)
         gtk_widget_set_sensitive(chk, FALSE);
     
 #ifdef USE_DESKTOP_MENU    
-    chk = gtk_check_button_new_with_mnemonic(_("Show _desktop menu"));
+    chk = gtk_check_button_new_with_mnemonic(_("Show _desktop menu on right click"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), show_desktopmenu);
     g_object_set_data(G_OBJECT(chk), "xfce-chknum", GUINT_TO_POINTER(OPT_SHOWDM));
     gtk_widget_show(chk);
