@@ -19,13 +19,13 @@ if HAVE_CYGWIN
 endif
 
 backdrop_settings_la_SOURCES = \
-	backdrop_settings.c						\
-	backdrop-mgr.c							\
-	backdrop-mgr.h							\
-	settings_common.c						\
-	settings_common.h						\
-	menu_settings.c							\
-	menu_settings.h
+	appearance-settings.c						\
+	backdrop-list-manager.c						\
+	backdrop-list-manager.h						\
+	settings-common.c						\
+	settings-common.h						\
+	behavior-settings.c						\
+	behavior-settings.h
 
 backdrop_settings_la_CFLAGS =						\
 	-I$(top_srcdir)							\

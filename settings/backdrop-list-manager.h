@@ -20,10 +20,21 @@
 #ifndef __XFDESKTOP_BACKDROP_MGR_H__
 #define __XFDESKTOP_BACKDROP_MGR_H__
 
-typedef void (*ListMgrCb) (char *, gpointer);
+#include <gtk/gtk.h>
 
-extern void create_list_file (GtkWidget *, ListMgrCb, gpointer);
+G_BEGIN_DECLS
 
-extern void edit_list_file (const char *, GtkWidget *, ListMgrCb, gpointer);
+typedef void (*BackdropListMgrCb)(gchar *filename, gpointer data);
+
+void backdrop_list_manager_create_list_file(GtkWidget *parent,
+                                            BackdropListMgrCb callback,
+                                            gpointer data);
+
+void backdrop_list_manager_edit_list_file(const gchar *path,
+                                          GtkWidget *parent,
+                                          BackdropListMgrCb callback,
+                                          gpointer data);
+
+G_END_DECLS
 
 #endif /* !__XFDESKTOP_BACKDROP_MGR_H__ */

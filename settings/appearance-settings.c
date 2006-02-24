@@ -62,9 +62,9 @@
 #include <xfce-mcs-manager/manager-plugin.h>
 
 #include "xfdesktop-common.h"
-#include "backdrop-mgr.h"
-#include "settings_common.h"
-#include "menu_settings.h"
+#include "backdrop-list-manager.h"
+#include "settings-common.h"
+#include "behavior-settings.h"
 
 #define OLD_RCFILE  "settings/backdrop.xml"
 #define RCFILE      "xfce4/mcs_settings/desktop.xml"
@@ -293,7 +293,7 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
         }
     }
     
-    init_menu_settings(mcs_plugin);
+    behavior_settings_load(mcs_plugin);
 
     mcs_manager_notify(mcs_plugin->manager, BACKDROP_CHANNEL);
 }
@@ -611,13 +611,15 @@ set_path_cb(const char *path, BackdropPanel *bp)
 static void
 edit_list_cb(GtkWidget *w, BackdropPanel *bp)
 {
-    edit_list_file(bp->image_path, bp->bd->dialog, (ListMgrCb)set_path_cb, (gpointer)bp);
+    backdrop_list_manager_edit_list_file(bp->image_path, bp->bd->dialog,
+                                         (BackdropListMgrCb)set_path_cb, bp);
 }
 
 void
 new_list_cb(GtkWidget *w, BackdropPanel *bp)
 {
-    create_list_file(bp->bd->dialog, (ListMgrCb)set_path_cb, (gpointer)bp);
+    backdrop_list_manager_create_list_file(bp->bd->dialog,
+                                           (BackdropListMgrCb)set_path_cb, bp);
 }
 
 static void
@@ -1193,7 +1195,7 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
     
     /* menu page */
     
-    vbox = create_menu_page(bd);
+    vbox = behavior_page_create(bd);
     gtk_widget_show(vbox);
     
     label = gtk_label_new_with_mnemonic(_("_Behavior"));

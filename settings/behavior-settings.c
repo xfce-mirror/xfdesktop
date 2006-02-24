@@ -25,7 +25,8 @@
 
 #include "xfce-desktop.h"
 #include "xfdesktop-common.h"
-#include "settings_common.h"
+#include "settings-common.h"
+#include "behavior-settings.h"
 
 enum {
     OPT_SHOWWL = 1,
@@ -130,7 +131,7 @@ set_di_option(GtkComboBox *combo,
 }
 
 void
-init_menu_settings(McsPlugin *plugin)
+behavior_settings_load(McsPlugin *plugin)
 {
     McsSetting *setting;
     
@@ -202,7 +203,7 @@ _edit_menu_cb(GtkWidget *w, gpointer user_data)
 #endif
 
 GtkWidget *
-create_menu_page(BackdropDialog *bd)
+behavior_page_create(BackdropDialog *bd)
 {
     XfceKiosk *kiosk;
     GtkWidget *page, *vbox, *frame, *frame_bin, *chk;

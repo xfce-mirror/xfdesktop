@@ -56,12 +56,11 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
-#include "settings_common.h"
+#include "settings-common.h"
 #include "xfdesktop-common.h"
-#include "backdrop-mgr.h"
-#include "settings_common.h"
+#include "backdrop-list-manager.h"
 
-static gchar *_listdlg_last_dir;
+static gchar *_listdlg_last_dir = NULL;
 
 static void
 reload_xfdesktop_trigger(GtkWidget *w, gpointer user_data)
@@ -652,7 +651,9 @@ list_mgr_dialog_new(const gchar *title, GtkWidget *parent, const gchar *path,
 
 /* exported interface */
 void
-create_list_file(GtkWidget *parent, ListMgrCb callback, gpointer data)
+backdrop_list_manager_create_list_file(GtkWidget *parent,
+                                       BackdropListMgrCb callback,
+                                       gpointer data)
 {
     GtkWidget *dialog = NULL, *entry = NULL;
     GtkTreeView *tv = NULL;
@@ -670,8 +671,10 @@ create_list_file(GtkWidget *parent, ListMgrCb callback, gpointer data)
 }
 
 void
-edit_list_file(const gchar *path, GtkWidget *parent, ListMgrCb callback,
-        gpointer data)
+backdrop_list_manager_edit_list_file(const gchar *path,
+                                     GtkWidget *parent,
+                                     BackdropListMgrCb callback,
+                                     gpointer data)
 {
     GtkWidget *dialog = NULL, *entry = NULL;
     GtkTreeView *tv = NULL;
