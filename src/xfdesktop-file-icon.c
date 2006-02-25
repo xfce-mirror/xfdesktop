@@ -389,6 +389,7 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon)
         succeeded = thunar_vfs_info_execute(info,
                                             file_icon->priv->gscreen,
                                             NULL,
+                                            xfce_get_homedir (),
                                             NULL);
     }
     
