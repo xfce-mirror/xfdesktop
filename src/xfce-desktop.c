@@ -106,7 +106,9 @@ static void xfce_desktop_unrealize(GtkWidget *widget);
 
 static gboolean xfce_desktop_expose(GtkWidget *w,
                                     GdkEventExpose *evt);
-
+static void xfce_desktop_style_set_cb(GtkWidget *w,
+                                      GtkStyle *old,
+                                      gpointer user_data);
 
 /* private functions */
 
@@ -226,6 +228,34 @@ set_imgfile_root_property(XfceDesktop *desktop, const gchar *filename,
 }
 
 static void
+xfce_desktop_apply_bg_pixmap(XfceDesktop *desktop)
+{
+    GtkStyle *style, *style_new;
+    gint i;
+    
+    style = gtk_widget_get_style(GTK_WIDGET(desktop));
+    
+    g_return_if_fail(GTK_IS_STYLE(style) && desktop->priv->bg_pixmap);
+    
+    style_new = gtk_style_copy(style);
+    
+    for(i = 0; i < 5; ++i) {
+        if(style_new->bg_pixmap[i])
+            g_object_unref(G_OBJECT(style_new->bg_pixmap[i]));
+        style_new->bg_pixmap[i] = g_object_ref(G_OBJECT(desktop->priv->bg_pixmap));
+    }
+    
+    g_signal_handlers_block_by_func(G_OBJECT(desktop),
+                                    G_CALLBACK(xfce_desktop_style_set_cb),
+                                    NULL);
+    gtk_widget_set_style(GTK_WIDGET(desktop), style_new);
+    g_signal_handlers_unblock_by_func(G_OBJECT(desktop),
+                                      G_CALLBACK(xfce_desktop_style_set_cb),
+                                      NULL);
+    g_object_unref(G_OBJECT(style_new));
+}
+
+static void
 backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
@@ -237,7 +267,6 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     Pixmap xid;
     GdkWindow *groot;
     gint i, monitor = -1;
-    GtkStyle *style;
     
     TRACE("dummy");
     
@@ -337,14 +366,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     
     /* set the new pixmap and tell gtk to redraw it */
     desktop->priv->bg_pixmap = pmap;
-    style = gtk_widget_get_style(GTK_WIDGET(desktop));
-    for(i = 0; i < 5; ++i) {
-        if(style->bg_pixmap[i])
-            g_object_unref(G_OBJECT(style->bg_pixmap[i]));
-        style->bg_pixmap[i] = g_object_ref(G_OBJECT(desktop->priv->bg_pixmap));
-    }
-    gtk_widget_set_style(GTK_WIDGET(desktop), style);
-
+    xfce_desktop_apply_bg_pixmap(desktop);
     gtk_widget_queue_draw_area(GTK_WIDGET(desktop), rect.x, rect.y,
                                rect.width, rect.height);
     
@@ -487,29 +509,20 @@ screen_set_selection(XfceDesktop *desktop)
 }
 
 static void
-desktop_style_set_cb(GtkWidget *w, GtkStyle *old, gpointer user_data)
+xfce_desktop_style_set_cb(GtkWidget *w, GtkStyle *old, gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
-    GtkStyle *style;
-    gint i;
     
-    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+    TRACE("entering");
     
-    if(!desktop->priv->bg_pixmap)
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop) && desktop->priv->nbackdrops > 0);
+    
+    if(desktop->priv->bg_pixmap)
+        xfce_desktop_apply_bg_pixmap(desktop);
+    else
         backdrop_changed_cb(desktop->priv->backdrops[0], desktop);
-
-    if(!desktop->priv->bg_pixmap) {
-        g_critical("Can't override style because bg_pixmap == NULL");
-        return;
-    }
-        
-    style = gtk_widget_get_style(w);
-    for(i = 0; i < 5; ++i) {
-        if(style->bg_pixmap[i])
-            g_object_unref(G_OBJECT(style->bg_pixmap[i]));
-        style->bg_pixmap[i] = g_object_ref(G_OBJECT(desktop->priv->bg_pixmap));
-    }
-    gtk_widget_set_style(w, style);
+    
+    gtk_widget_queue_draw(w);
 }
 
 
@@ -628,7 +641,7 @@ xfce_desktop_realize(GtkWidget *widget)
             G_CALLBACK(screen_size_changed_cb), desktop);
     
     g_signal_connect(G_OBJECT(desktop), "style-set",
-            G_CALLBACK(desktop_style_set_cb), NULL);
+            G_CALLBACK(xfce_desktop_style_set_cb), NULL);
     
     gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSURE_MASK);
 }
@@ -652,7 +665,7 @@ xfce_desktop_unrealize(GtkWidget *widget)
                          NULL);
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
-            G_CALLBACK(desktop_style_set_cb), NULL);
+            G_CALLBACK(xfce_desktop_style_set_cb), NULL);
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),
             G_CALLBACK(screen_size_changed_cb), desktop);
     
