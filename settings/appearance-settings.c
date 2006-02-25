@@ -1233,7 +1233,8 @@ run_dialog (McsPlugin * mcs_plugin)
     
     if(is_running) {
         if(bd && bd->dialog) {
-            gdk_x11_window_set_user_time(bd->dialog->window, GDK_CURRENT_TIME);
+            gdk_x11_window_set_user_time(bd->dialog->window, 
+                    gdk_x11_get_server_time (bd->dialog->window));
             gtk_window_present(GTK_WINDOW(bd->dialog));
             return;
         } else
@@ -1254,7 +1255,8 @@ run_dialog (McsPlugin * mcs_plugin)
     g_signal_connect(G_OBJECT(bd->dialog), "response",
             G_CALLBACK(run_dialog_cb), bd);
     gtk_window_set_modal(GTK_WINDOW(bd->dialog), FALSE);
-    gdk_x11_window_set_user_time(bd->dialog->window, GDK_CURRENT_TIME);
+    gdk_x11_window_set_user_time(bd->dialog->window, 
+            gdk_x11_get_server_time (bd->dialog->window));
     gtk_widget_show(bd->dialog);
 }
 
