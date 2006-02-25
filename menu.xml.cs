@@ -68,7 +68,7 @@
 	<separator/>
 
 	<menu name="Nastavení" icon="gnome-settings">
-		<app name="Správce nastavení" cmd="xfce-setting-show" icon="gnome-settings"/>
+		<app name="Správce nastavení" cmd="xfce-setting-show" snotify="true" icon="gnome-settings"/>
 	</menu>
 
 	<separator/>

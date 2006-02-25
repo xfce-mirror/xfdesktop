@@ -56,7 +56,7 @@
     <app name="Pelayar Web" cmd="mozilla"/>
     <separator/>
     <menu name="Tetapan" visible="yes">
-        <app name="Semua Tetapan..." cmd="xfce-setting-show"/>
+        <app name="Semua Tetapan..." cmd="xfce-setting-show" snotify="true"/>
         <app name="Latarbelakang..." cmd="xfce-setting-show backdrop"/>
 <!--
         <app name="Latarbelakang" cmd="xfce-setting-show backdrop"/>

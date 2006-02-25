@@ -56,7 +56,7 @@
     <app name="Web Tarayıcı" cmd="mozilla"/>
     <separator/>
     <menu name="Ayarlar" visible="yes">
-        <app name="Tüm Ayarlar..." cmd="xfce-setting-show"/>
+        <app name="Tüm Ayarlar..." cmd="xfce-setting-show" snotify="true"/>
         <app name="Arka Plan..." cmd="xfce-setting-show backdrop"/>
 <!--
         <app name="Arka Plan" cmd="xfce-setting-show backdrop"/>

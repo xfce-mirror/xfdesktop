@@ -57,7 +57,7 @@
     <app name="مرورگر وب" cmd="mozilla"/>
     <separator/>
     <menu name="تنظيمات" visible="yes">
-        <app name="همه‌ی تنظيمات..." cmd="xfce-setting-show"/>
+        <app name="همه‌ی تنظيمات..." cmd="xfce-setting-show" snotify="true"/>
         <app name="پس‌زمينه..." cmd="xfce-setting-show backdrop"/>
 <!--
         <app name="پس‌زمينه" cmd="xfce-setting-show backdrop"/>

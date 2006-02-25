@@ -56,7 +56,7 @@
     <app name="வலை மேலோடி" cmd="mozilla"/>
     <separator/>
     <menu name="அமைப்புகள்" visible="yes">
-        <app name="அனைத்தும்..." cmd="xfce-setting-show"/>
+        <app name="அனைத்தும்..." cmd="xfce-setting-show" snotify="true"/>
         <app name="கணிமேசை ஓவியம்..." cmd="xfce-setting-show backdrop"/>
 <!--
         <app name="Background" cmd="xfce-setting-show backdrop"/>

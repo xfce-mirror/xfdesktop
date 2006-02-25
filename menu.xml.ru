@@ -68,7 +68,7 @@
 	<separator/>
 
 	<menu name="Настройки" icon="gnome-settings">
-		<app name="Диспетчер настроек Xfce" cmd="xfce-setting-show" icon="gnome-settings"/>
+		<app name="Диспетчер настроек Xfce" cmd="xfce-setting-show" snotify="true" icon="gnome-settings"/>
 	</menu>
 
 	<separator/>

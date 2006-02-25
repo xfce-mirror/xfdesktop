@@ -68,7 +68,7 @@
 	<separator/>
 
 	<menu name="Instellingen" icon="gnome-settings">
-		<app name="Configuratiemanager" cmd="xfce-setting-show" icon="gnome-settings"/>
+		<app name="Configuratiemanager" cmd="xfce-setting-show" snotify="true" icon="gnome-settings"/>
 	</menu>
 
 	<separator/>

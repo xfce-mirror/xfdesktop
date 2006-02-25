@@ -67,7 +67,7 @@
 	<separator/>
 
 	<menu name="Configuracion" icon="gnome-settings">
-		<app name="Administrador de configuracion" cmd="xfce-setting-show" icon="gnome-settings" visible="true"/>
+		<app name="Administrador de configuracion" cmd="xfce-setting-show" snotify="true" icon="gnome-settings" visible="true"/>
 	</menu>
 
 	<separator visible="true"/>

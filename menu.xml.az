@@ -45,7 +45,7 @@
     <app name="Veb Səyyahı" cmd="mozilla"/>
     <separator/>
     <menu name="Qurğular" visible="yes">
-        <app name="Bütün Qqurğular.." cmd="xfce-setting-show"/>
+        <app name="Bütün Qqurğular.." cmd="xfce-setting-show" snotify="true"/>
         <app name="Arxa plan..." cmd="xfce-setting-show backdrop"/>
 <!--
         <app name="Arxa plan" cmd="xfce-setting-show backdrop"/>

@@ -56,7 +56,7 @@
     <app name="Web kudeatzeailea" cmd="mozilla"/>
     <separator/>
     <menu name="Ezarpenak" visible="yes">
-        <app name="Ezarpen guztiak..." cmd="xfce-setting-show"/>
+        <app name="Ezarpen guztiak..." cmd="xfce-setting-show" snotify="true"/>
         <app name="Backdrop..." cmd="xfce-setting-show backdrop"/>
 <!--
         <app name="Atzekaldea" cmd="xfce-setting-show backdrop"/>

@@ -58,7 +58,7 @@
     <app name="网络浏览器" cmd="mozilla"/>
     <separator/>
     <menu name="设置" visible="yes">
-	<app name="全部设置..." cmd="xfce-setting-show"/>
+	<app name="全部设置..." cmd="xfce-setting-show" snotify="true"/>
         <app name="背景..." cmd="xfce-setting-show backdrop"/>
 <!--
         <app name="背景" cmd="xfce-setting-show backdrop"/>
