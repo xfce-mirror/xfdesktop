@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-18 21:35+0900\n"
+"POT-Creation-Date: 2006-02-26 22:36+0900\n"
 "PO-Revision-Date: 2005-10-10 07:28+0900\n"
 "Last-Translator: Sylvain Vedrenne <sylvain.vedrenne@free.fr>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -34,84 +34,84 @@ msgstr "Partoprenanto"
 msgid "Icon designer"
 msgstr "Piktograma redaktilo"
 
-#: ../menueditor/add_dialog.c:159 ../menueditor/add_dialog.c:169
+#: ../menueditor/add_dialog.c:157 ../menueditor/add_dialog.c:167
 msgid "Add menu entry"
 msgstr "Aldonu menuan elementon"
 
 #. Type
-#: ../menueditor/add_dialog.c:173 ../menueditor/add_menu_dialog.c:110
+#: ../menueditor/add_dialog.c:171 ../menueditor/add_menu_dialog.c:110
 msgid "Type:"
 msgstr "Specon:"
 
-#: ../menueditor/add_dialog.c:176
+#: ../menueditor/add_dialog.c:174
 msgid "Launcher"
 msgstr "Lanĉilo"
 
-#: ../menueditor/add_dialog.c:180
+#: ../menueditor/add_dialog.c:178
 msgid "Submenu"
 msgstr "Submenuo"
 
-#: ../menueditor/add_dialog.c:184
+#: ../menueditor/add_dialog.c:182
 msgid "Separator"
 msgstr "Disigilo"
 
-#: ../menueditor/add_dialog.c:188
+#: ../menueditor/add_dialog.c:186
 msgid "Title"
 msgstr "Titolo"
 
-#: ../menueditor/add_dialog.c:192
+#: ../menueditor/add_dialog.c:190
 msgid "Quit"
 msgstr "Adiaŭu"
 
 #. Name
-#: ../menueditor/add_dialog.c:206 ../menueditor/edit_dialog.c:147
-#: ../menueditor/edit_dialog.c:207 ../src/xfdesktop-file-icon.c:703
+#: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon.c:922
 msgid "Name:"
 msgstr "Nomon:"
 
-#: ../menueditor/add_dialog.c:214 ../menueditor/edit_dialog.c:152
+#: ../menueditor/add_dialog.c:212 ../menueditor/edit_dialog.c:150
 msgid "Command:"
 msgstr "Komandon:"
 
-#: ../menueditor/add_dialog.c:226 ../menueditor/edit_dialog.c:139
-#: ../menueditor/edit_dialog.c:199
+#: ../menueditor/add_dialog.c:224 ../menueditor/edit_dialog.c:137
+#: ../menueditor/edit_dialog.c:197
 msgid "Icon:"
 msgstr "Piktogramon:"
 
 #. Start Notify check button
 #. Startup notification
-#: ../menueditor/add_dialog.c:237 ../menueditor/edit_dialog.c:160
+#: ../menueditor/add_dialog.c:235 ../menueditor/edit_dialog.c:158
 msgid "Use startup _notification"
 msgstr "Uzu lanĉan _informigon"
 
 #. Run in terminal check button
 #. Run in terminal
-#: ../menueditor/add_dialog.c:241 ../menueditor/edit_dialog.c:163
+#: ../menueditor/add_dialog.c:239 ../menueditor/edit_dialog.c:161
 msgid "Run in _terminal"
 msgstr "Lanĉu en _terminalo"
 
-#: ../menueditor/add_dialog.c:272 ../menueditor/edit_dialog.c:242
+#: ../menueditor/add_dialog.c:270 ../menueditor/edit_dialog.c:240
 msgid "The command doesn't exist !"
 msgstr "La komando ne ekzistas !"
 
-#: ../menueditor/add_dialog.c:278 ../menueditor/edit_dialog.c:248
+#: ../menueditor/add_dialog.c:276 ../menueditor/edit_dialog.c:246
 msgid "All fields must be filled to add an item."
 msgstr "Aldoni elementon necesas ke ĉiuj kampoj estu enskribitaj."
 
-#: ../menueditor/add_dialog.c:287 ../menueditor/edit_dialog.c:257
+#: ../menueditor/add_dialog.c:285 ../menueditor/edit_dialog.c:255
 msgid "The 'Name' field is required."
 msgstr "La kampo 'Nomon' estas necesa."
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:319
+#: ../menueditor/add_dialog.c:329 ../menueditor/utils.c:318
 msgid "--- separator ---"
 msgstr "--- disigilo ---"
 
-#: ../menueditor/add_dialog.c:357 ../menueditor/edit_dialog.c:316
+#: ../menueditor/add_dialog.c:355 ../menueditor/edit_dialog.c:314
 msgid "quit"
 msgstr "adiaŭu"
 
 #: ../menueditor/add_menu_dialog.c:97 ../menueditor/add_menu_dialog.c:103
-#: ../menueditor/menueditor.c:842
+#: ../menueditor/menueditor.c:841
 msgid "Add an external menu"
 msgstr "Aldonu eksteran menuon"
 
@@ -150,20 +150,20 @@ msgid "The 'Source' field is required."
 msgstr "La kampo 'Fonton' estas necesa."
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:373
+#: ../menueditor/utils.c:372
 msgid "--- include ---"
 msgstr "--- inkluzivu ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:390
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:389
 msgid "system"
 msgstr "sistemo"
 
 #. Create dialog for editing
-#: ../menueditor/edit_dialog.c:116 ../menueditor/edit_dialog.c:123
+#: ../menueditor/edit_dialog.c:114 ../menueditor/edit_dialog.c:121
 msgid "Edit menu entry"
 msgstr "Modifiu menuan elementon"
 
-#: ../menueditor/edit_dialog.c:128
+#: ../menueditor/edit_dialog.c:126
 msgid "Separators cannot be edited"
 msgstr "Disigilojn oni ne povas modifii"
 
@@ -192,12 +192,12 @@ msgstr "Ĉu vi vere volas fermi la kurantan menuon?"
 msgid "Do you want to save before closing the file?"
 msgstr "Ĉu konservu antaŭ fermi la dosieron?"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:588
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:586
 msgid "Select command"
 msgstr "Elektu komandon"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:524
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:738
 msgid "Question"
 msgstr "Demando"
 
@@ -230,108 +230,110 @@ msgstr "Ĉu movu la elementon en la patran menuon ?"
 msgid "Do you want to move the item into the submenu?"
 msgstr "Ĉu movu la elementon en la submenuon ?"
 
-#: ../menueditor/menueditor.c:836
+#: ../menueditor/menueditor.c:835
 msgid "Edit"
 msgstr "Modifiu"
 
 #. File menu
-#: ../menueditor/menueditor.c:860
+#: ../menueditor/menueditor.c:859
 msgid "_File"
 msgstr "_Dosiero"
 
-#: ../menueditor/menueditor.c:869
+#: ../menueditor/menueditor.c:868
 msgid "Open default menu"
 msgstr "Malfermu la implican menuon"
 
 #. Edit menu
-#: ../menueditor/menueditor.c:883
+#: ../menueditor/menueditor.c:882
 msgid "_Edit"
 msgstr "_Modifiu"
 
-#: ../menueditor/menueditor.c:889
+#: ../menueditor/menueditor.c:888
 msgid "Add an external menu..."
 msgstr "Aldonu eksteran menuon..."
 
 #. Help menu
-#: ../menueditor/menueditor.c:901
+#: ../menueditor/menueditor.c:900
 msgid "_Help"
 msgstr "_Helpu"
 
-#: ../menueditor/menueditor.c:905
+#: ../menueditor/menueditor.c:904
 msgid "_About..."
 msgstr "_Pri..."
 
-#: ../menueditor/menueditor.c:917
+#: ../menueditor/menueditor.c:916
 msgid "Create a new Xfce4 menu file"
 msgstr "Kreu Xfce4-an menuan dosieron"
 
-#: ../menueditor/menueditor.c:922
+#: ../menueditor/menueditor.c:921
 msgid "Open an Xfce4 menu file"
 msgstr "Malfermu Xfce4-an menuan dosieron"
 
-#: ../menueditor/menueditor.c:927
+#: ../menueditor/menueditor.c:926
 msgid "Save current menu"
 msgstr "Konservu la kurantan menuon"
 
-#: ../menueditor/menueditor.c:932
+#: ../menueditor/menueditor.c:931
 msgid "Close current menu"
 msgstr "Fermu la kurantan menuon"
 
-#: ../menueditor/menueditor.c:938
+#: ../menueditor/menueditor.c:937
 msgid "Add an entry to the menu"
 msgstr "Aldonu elementon al la menuo"
 
-#: ../menueditor/menueditor.c:942
+#: ../menueditor/menueditor.c:941
 msgid "Delete the current entry"
 msgstr "Forigu la kurantan elementon"
 
-#: ../menueditor/menueditor.c:948
+#: ../menueditor/menueditor.c:947
 msgid "Move the current entry up"
 msgstr "Suprenmovu la kurantan elementon"
 
-#: ../menueditor/menueditor.c:953
+#: ../menueditor/menueditor.c:952
 msgid "Move the current entry down"
 msgstr "Malsuprenmovu la kurantan elementon"
 
-#: ../menueditor/menueditor.c:959
+#: ../menueditor/menueditor.c:958
 msgid "Collapse the tree"
 msgstr "Fermu la arbon"
 
-#: ../menueditor/menueditor.c:964
+#: ../menueditor/menueditor.c:963
 msgid "Expand the tree"
 msgstr "Disvastigu la arbon"
 
-#: ../menueditor/menueditor.c:992
+#: ../menueditor/menueditor.c:991
 msgid "Name"
 msgstr "Nomo"
 
-#: ../menueditor/menueditor.c:995
+#: ../menueditor/menueditor.c:994
 msgid "Command"
 msgstr "Komando"
 
-#: ../menueditor/menueditor.c:996
+#: ../menueditor/menueditor.c:995
 msgid "Hidden"
 msgstr "Kaŝita"
 
-#: ../menueditor/utils.c:650
+#: ../menueditor/utils.c:648
 #, fuzzy
 msgid "Select icon"
 msgstr "Elektu Piktogramon"
 
-#: ../menueditor/utils.c:656 ../panel-plugin/desktop-menu-plugin.c:545
-#: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
-#: ../settings/backdrop_settings.c:529
+#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:550
+#: ../settings/appearance-settings.c:529
+#: ../settings/backdrop-list-manager.c:435
+#: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Ĉiujn dosierojn"
 
-#: ../menueditor/utils.c:660 ../panel-plugin/desktop-menu-plugin.c:551
-#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:533
+#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:556
+#: ../settings/appearance-settings.c:533
+#: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Bildajn Dosierojn"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:707
+#: ../panel-plugin/desktop-menu-plugin.c:712
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce-a Menuo"
@@ -359,192 +361,150 @@ msgstr ""
 msgid "/Other"
 msgstr "/Alia"
 
-#: ../panel-plugin/desktop-menu-plugin.c:528
+#: ../panel-plugin/desktop-menu-plugin.c:533
 msgid "Select Icon"
 msgstr "Elektu Piktogramon"
 
-#: ../panel-plugin/desktop-menu-plugin.c:530
+#: ../panel-plugin/desktop-menu-plugin.c:535
 msgid "Select Menu File"
 msgstr "Elektu Menuan Dosieron"
 
-#: ../panel-plugin/desktop-menu-plugin.c:559
+#: ../panel-plugin/desktop-menu-plugin.c:564
 msgid "Menu Files"
 msgstr "Menuaj Dosieroj"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:169
+#: ../panel-plugin/desktop-menu-plugin.c:681
+#: ../settings/behavior-settings.c:199
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:699
+#: ../panel-plugin/desktop-menu-plugin.c:704
 #, fuzzy
 msgid "Edit Properties"
 msgstr "Modifiu fonbildan liston"
 
-#: ../panel-plugin/desktop-menu-plugin.c:717
+#: ../panel-plugin/desktop-menu-plugin.c:722
 msgid "Button"
 msgstr "Butono"
 
-#: ../panel-plugin/desktop-menu-plugin.c:730
+#: ../panel-plugin/desktop-menu-plugin.c:735
 msgid "Button _title:"
 msgstr "Butonan _titolon:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:743
+#: ../panel-plugin/desktop-menu-plugin.c:748
 msgid "_Show title in button"
 msgstr "_Montru la titolon en la butono"
 
-#: ../panel-plugin/desktop-menu-plugin.c:750
+#: ../panel-plugin/desktop-menu-plugin.c:755
 msgid "Menu File"
 msgstr "Menua Dosiero"
 
-#: ../panel-plugin/desktop-menu-plugin.c:762
+#: ../panel-plugin/desktop-menu-plugin.c:767
 msgid "Use default _desktop menu file"
 msgstr "Uzu la implican _labortablan menuan dosieron"
 
-#: ../panel-plugin/desktop-menu-plugin.c:771
+#: ../panel-plugin/desktop-menu-plugin.c:776
 msgid "Use _custom menu file:"
 msgstr "Uzu _personan menuan dosieron:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:823
-#: ../panel-plugin/desktop-menu-plugin.c:825
+#: ../panel-plugin/desktop-menu-plugin.c:828
+#: ../panel-plugin/desktop-menu-plugin.c:830
+#: ../settings/behavior-settings.c:249
 msgid "_Edit Menu"
 msgstr "_Modifiu Menuon"
 
-#: ../panel-plugin/desktop-menu-plugin.c:832
+#: ../panel-plugin/desktop-menu-plugin.c:837
 msgid "Icons"
 msgstr "Piktogramoj"
 
-#: ../panel-plugin/desktop-menu-plugin.c:844
+#: ../panel-plugin/desktop-menu-plugin.c:849
 msgid "_Button icon:"
 msgstr "_Butonan piktogramon:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:868
+#: ../panel-plugin/desktop-menu-plugin.c:873
 msgid "Show _icons in menu"
 msgstr "Montru la _piktogramojn ĉe la menuo"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop-settings.c:74
-#, c-format
-msgid ""
-"Could not save file %s: %s\n"
-"\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
-msgstr ""
-"Malsukcesis konservi la dosieron %s: %s\n"
-"\n"
-"Bonvolu elekti alian lokon aŭ premi la butonon por forigi viajn ŝanĝojn"
-
-#: ../settings/backdrop-mgr.c:431
-msgid "Select backdrop image file"
-msgstr "Elektu fonbildan dosieron"
-
-#: ../settings/backdrop-mgr.c:532
-msgid "Choose backdrop list filename"
-msgstr "Elektu dosiernomon de fonbilda listo"
-
-#: ../settings/backdrop-mgr.c:541
-msgid "List Files"
-msgstr "Listaj Dosieroj"
-
-#: ../settings/backdrop-mgr.c:604
-msgid "Backdrop List"
-msgstr "Fonbilda Listo"
-
-#: ../settings/backdrop-mgr.c:621
-msgid "Image files"
-msgstr "Bildaj dosieroj"
-
-#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:184
-#: ../settings/backdrop_settings.c:193
-msgid "backdrops.list"
-msgstr "backdrops.list"
-
-#: ../settings/backdrop-mgr.c:640
-msgid "List file"
-msgstr "Lista dosiero"
-
-#: ../settings/backdrop-mgr.c:660
-msgid "Create backdrop list"
-msgstr "Kreu fonbildan liston"
-
-#: ../settings/backdrop-mgr.c:691
-msgid "Edit backdrop list"
-msgstr "Modifiu fonbildan liston"
-
 #. the dialog
-#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:907
-#: ../src/xfce-desktop.c:513
+#: ../settings/appearance-settings.c:133 ../settings/appearance-settings.c:909
+#: ../src/xfce-desktop.c:593
 msgid "Desktop"
 msgstr "Labortablo"
 
-#: ../settings/backdrop_settings.c:524
+#: ../settings/appearance-settings.c:184 ../settings/appearance-settings.c:193
+#: ../settings/backdrop-list-manager.c:631
+msgid "backdrops.list"
+msgstr "backdrops.list"
+
+#: ../settings/appearance-settings.c:524
 msgid "Select backdrop image or list file"
 msgstr "Elektu fonbildon aŭ listan dosieron"
 
-#: ../settings/backdrop_settings.c:542
+#: ../settings/appearance-settings.c:542
 msgid "List Files (*.list)"
 msgstr "Listaj dosieroj (*.list)"
 
-#: ../settings/backdrop_settings.c:632
+#: ../settings/appearance-settings.c:634
 msgid "_Edit list..."
 msgstr "_Modifiu liston..."
 
-#: ../settings/backdrop_settings.c:640
+#: ../settings/appearance-settings.c:642
 msgid "_New list..."
 msgstr "_Novan liston..."
 
-#: ../settings/backdrop_settings.c:673
+#: ../settings/appearance-settings.c:675
 msgid "S_tyle:"
 msgstr "S_tilon:"
 
-#: ../settings/backdrop_settings.c:680
+#: ../settings/appearance-settings.c:682
 msgid "Auto"
 msgstr "Aŭtomate"
 
-#: ../settings/backdrop_settings.c:681
+#: ../settings/appearance-settings.c:683
 msgid "Centered"
 msgstr "Centrigita"
 
-#: ../settings/backdrop_settings.c:682
+#: ../settings/appearance-settings.c:684
 msgid "Tiled"
 msgstr "Kaheligita"
 
-#: ../settings/backdrop_settings.c:683
+#: ../settings/appearance-settings.c:685
 msgid "Stretched"
 msgstr "Elstreĉita"
 
-#: ../settings/backdrop_settings.c:684
+#: ../settings/appearance-settings.c:686
 msgid "Scaled"
 msgstr "Laŭskaligita"
 
-#: ../settings/backdrop_settings.c:741
+#: ../settings/appearance-settings.c:743
 #, fuzzy
 msgid "A_djust Brightness:"
 msgstr "Agordu la _Luminancon:"
 
-#: ../settings/backdrop_settings.c:797
+#: ../settings/appearance-settings.c:799
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce ne povos administradi vian labortablon (%s)."
 
-#: ../settings/backdrop_settings.c:798
+#: ../settings/appearance-settings.c:800
 msgid "Unknown Error"
 msgstr "Nekonata Eraro"
 
-#: ../settings/backdrop_settings.c:802 ../src/xfdesktop-file-icon.c:459
-#: ../src/xfdesktop-file-icon.c:479 ../src/xfdesktop-file-icon.c:612
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:668
+#: ../src/xfdesktop-file-icon.c:688 ../src/xfdesktop-file-icon.c:830
 msgid "Error"
 msgstr "Eraro"
 
-#: ../settings/backdrop_settings.c:804
+#: ../settings/appearance-settings.c:806
 msgid "Unable to start xfdesktop"
 msgstr "Malsukcesas lanĉi xfdesktop"
 
-#: ../settings/backdrop_settings.c:822
+#: ../settings/appearance-settings.c:824
 msgid "Information"
 msgstr "Informo"
 
-#: ../settings/backdrop_settings.c:832
+#: ../settings/appearance-settings.c:834
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -561,192 +521,237 @@ msgstr ""
 "vian ~/.config/xfce4/xinitrc dosieron. Detaloj estas disponeblaj en la\n"
 "dokumentaro disdonita ĉe http://xfce.org/."
 
-#: ../settings/backdrop_settings.c:840
+#: ../settings/appearance-settings.c:842
 msgid "_Do not show this again"
 msgstr "_Ne montru ĉi tiun denove"
 
 #. header
-#: ../settings/backdrop_settings.c:922
+#: ../settings/appearance-settings.c:924
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "Labortablaj Parametroj"
 
-#: ../settings/backdrop_settings.c:927
+#: ../settings/appearance-settings.c:929
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Faru ke _Xfce administradas la labortablon"
 
-#: ../settings/backdrop_settings.c:968
+#: ../settings/appearance-settings.c:970
 msgid "Stretch single backdrop onto _all monitors"
 msgstr ""
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/backdrop_settings.c:982 ../settings/backdrop_settings.c:1164
+#: ../settings/appearance-settings.c:984
+#: ../settings/appearance-settings.c:1166
 msgid "_Appearance"
 msgstr ""
 
 #. color settings frame
-#: ../settings/backdrop_settings.c:1008
+#: ../settings/appearance-settings.c:1010
 msgid "Color"
 msgstr "Koloro"
 
-#: ../settings/backdrop_settings.c:1022
+#: ../settings/appearance-settings.c:1024
 msgid "_Color Style:"
 msgstr "_Koloran Stilon:"
 
-#: ../settings/backdrop_settings.c:1029
+#: ../settings/appearance-settings.c:1031
 msgid "Solid Color"
 msgstr "Solida Koloro"
 
-#: ../settings/backdrop_settings.c:1030
+#: ../settings/appearance-settings.c:1032
 msgid "Horizontal Gradient"
 msgstr "Horizontala Gradiento"
 
-#: ../settings/backdrop_settings.c:1031
+#: ../settings/appearance-settings.c:1033
 msgid "Vertical Gradient"
 msgstr "Vertikala Gradiento"
 
-#: ../settings/backdrop_settings.c:1044
+#: ../settings/appearance-settings.c:1046
 msgid "Fi_rst Color:"
 msgstr "Un_uan Koloron:"
 
-#: ../settings/backdrop_settings.c:1065
+#: ../settings/appearance-settings.c:1067
 msgid "_Second Color:"
 msgstr "_Duan Koloron:"
 
-#: ../settings/backdrop_settings.c:1090
+#: ../settings/appearance-settings.c:1092
 msgid "Image"
 msgstr "Bildo"
 
-#: ../settings/backdrop_settings.c:1098
+#: ../settings/appearance-settings.c:1100
 msgid "Show _Image"
 msgstr "Montru _Bildon"
 
-#: ../settings/backdrop_settings.c:1120
+#: ../settings/appearance-settings.c:1122
 msgid "_File:"
 msgstr "_Dosieron:"
 
-#: ../settings/backdrop_settings.c:1175 ../settings/backdrop_settings.c:1177
+#: ../settings/appearance-settings.c:1177
+#: ../settings/appearance-settings.c:1179
 #, c-format
 msgid "Screen %d"
 msgstr "Ekrano %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/backdrop_settings.c:1182
+#: ../settings/appearance-settings.c:1184
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Ekrano %d, Monitoro %d"
 
-#: ../settings/backdrop_settings.c:1199
+#: ../settings/appearance-settings.c:1201
 msgid "_Behavior"
 msgstr ""
 
-#: ../settings/menu_settings.c:193
-#, fuzzy
-msgid "Window List Menu"
-msgstr "Fenestra Listo"
+#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"Malsukcesis konservi la dosieron %s: %s\n"
+"\n"
+"Bonvolu elekti alian lokon aŭ premi la butonon por forigi viajn ŝanĝojn"
 
-#: ../settings/menu_settings.c:201
-msgid "Show window _list"
+#: ../settings/backdrop-list-manager.c:430
+msgid "Select backdrop image file"
+msgstr "Elektu fonbildan dosieron"
+
+#: ../settings/backdrop-list-manager.c:531
+msgid "Choose backdrop list filename"
+msgstr "Elektu dosiernomon de fonbilda listo"
+
+#: ../settings/backdrop-list-manager.c:540
+msgid "List Files"
+msgstr "Listaj Dosieroj"
+
+#: ../settings/backdrop-list-manager.c:603
+msgid "Backdrop List"
+msgstr "Fonbilda Listo"
+
+#: ../settings/backdrop-list-manager.c:620
+msgid "Image files"
+msgstr "Bildaj dosieroj"
+
+#: ../settings/backdrop-list-manager.c:639
+msgid "List file"
+msgstr "Lista dosiero"
+
+#: ../settings/backdrop-list-manager.c:661
+msgid "Create backdrop list"
+msgstr "Kreu fonbildan liston"
+
+#: ../settings/backdrop-list-manager.c:694
+msgid "Edit backdrop list"
+msgstr "Modifiu fonbildan liston"
+
+#: ../settings/behavior-settings.c:223
+#, fuzzy
+msgid "Menus"
+msgstr "Menuaj Dosieroj"
+
+#: ../settings/behavior-settings.c:231
+#, fuzzy
+msgid "Show _window list on middle click"
 msgstr "Montru la fenestran _liston"
 
-#: ../settings/menu_settings.c:216
-msgid "Show _window icons"
-msgstr "Montru la _fenestrajn piktogramojn"
-
-#: ../settings/menu_settings.c:229
-msgid "Desktop Menu"
-msgstr "Labortabla Menuo"
-
-#: ../settings/menu_settings.c:237
-msgid "Show desktop _menu"
+#: ../settings/behavior-settings.c:242
+#, fuzzy
+msgid "Show _desktop menu on right click"
 msgstr "Montru la labortablan _menuon"
 
-#: ../settings/menu_settings.c:252
-#, fuzzy
-msgid "_Show application icons"
-msgstr "Montru la _aplikaĵajn piktogramojn"
-
-#: ../settings/menu_settings.c:263
-msgid "_Edit desktop menu"
-msgstr "_Modifiu la labortablan menuon"
-
-#: ../settings/menu_settings.c:275
+#: ../settings/behavior-settings.c:261
 #, fuzzy
 msgid "Desktop Icons"
 msgstr "Labortabla Menuo"
 
-#: ../settings/menu_settings.c:280 ../src/xfdesktop-file-icon.c:659
+#: ../settings/behavior-settings.c:270 ../src/xfdesktop-file-icon.c:878
 msgid "None"
 msgstr ""
 
-#: ../settings/menu_settings.c:281
+#: ../settings/behavior-settings.c:271
 #, fuzzy
 msgid "Minimized application icons"
 msgstr "Montru la _aplikaĵajn piktogramojn"
 
-#: ../settings/menu_settings.c:283
+#: ../settings/behavior-settings.c:273
 msgid "File/launcher icons"
 msgstr ""
 
-#: ../src/main.c:226
+#: ../settings/behavior-settings.c:284
+#, fuzzy
+msgid "_Icon size:"
+msgstr "Piktograma redaktilo"
+
+#: ../settings/behavior-settings.c:298
+#, fuzzy
+msgid "Use _system font size"
+msgstr "Uzu _personan menuan dosieron:"
+
+#: ../settings/behavior-settings.c:315
+msgid "Custom _font size:"
+msgstr ""
+
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr ""
 
-#: ../src/main.c:228
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr ""
 
-#: ../src/main.c:232
+#: ../src/main.c:246
 msgid "Build options:\n"
 msgstr ""
 
-#: ../src/main.c:233
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr ""
 
-#: ../src/main.c:235 ../src/main.c:242
+#: ../src/main.c:249 ../src/main.c:256
 #, fuzzy
 msgid "enabled"
 msgstr "Laŭskaligita"
 
-#: ../src/main.c:237 ../src/main.c:244
+#: ../src/main.c:251 ../src/main.c:258
 #, fuzzy
 msgid "disabled"
 msgstr "Kaheligita"
 
-#: ../src/main.c:240
+#: ../src/main.c:254
 #, fuzzy, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Labortabla Menuo"
 
-#: ../src/main.c:271
+#: ../src/main.c:285
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Nekonata opcio: %s\n"
 
-#: ../src/main.c:272
+#: ../src/main.c:286
 msgid "Options are:\n"
 msgstr "La opcioj estas:\n"
 
-#: ../src/main.c:273
+#: ../src/main.c:287
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload      Reŝargu ĉiujn parametrojn, refreŝigu la bildan liston\n"
 
-#: ../src/main.c:274
+#: ../src/main.c:288
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Ŝprucigu la menuon (ĉe la kuranta muspozicio)\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:289
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    -windowlist  Ŝprucigu la fenestran liston (ĉe la kuranta muspozicio)\n"
 
-#: ../src/main.c:276
+#: ../src/main.c:290
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        Faras ke xfdesktop adiaŭas\n"
 
@@ -784,154 +789,196 @@ msgstr "Ĉu vi vere volas fermi la kurantan menuon?"
 msgid "Delete Multiple Files"
 msgstr "Elektu Menuan Dosieron"
 
-#: ../src/xfdesktop-file-icon-manager.c:418 ../src/xfdesktop-file-icon.c:526
+#: ../src/xfdesktop-file-icon-manager.c:418 ../src/xfdesktop-file-icon.c:740
 msgid "If you delete a file, it is permanently lost."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:403
+#: ../src/xfdesktop-file-icon.c:370
+#, c-format
+msgid "There was an error %s \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:372
+msgid "moving"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:374
+msgid "copying"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:375
+msgid "linking"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:378
+#, fuzzy
+msgid "File Error"
+msgstr "Eraro"
+
+#: ../src/xfdesktop-file-icon.c:438
+#, fuzzy, c-format
+msgid "Failed to run \"%s\":"
+msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
+
+#: ../src/xfdesktop-file-icon.c:440
+#, fuzzy
+msgid "Run Error"
+msgstr "Eraro"
+
+#: ../src/xfdesktop-file-icon.c:612
 #, c-format
 msgid "Rename \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:432
+#: ../src/xfdesktop-file-icon.c:641
 msgid "Enter the new name:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:457
+#: ../src/xfdesktop-file-icon.c:666
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:569
-msgid "_Open With "
+#: ../src/xfdesktop-file-icon.c:784
+#, c-format
+msgid "_Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:569
-msgid "Open With "
+#: ../src/xfdesktop-file-icon.c:787
+#, c-format
+msgid "Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:610
+#: ../src/xfdesktop-file-icon.c:828
 #, fuzzy, c-format
 msgid "Unable to launch \"%s\"."
 msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
 
-#: ../src/xfdesktop-file-icon.c:614
+#: ../src/xfdesktop-file-icon.c:832
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:659
+#: ../src/xfdesktop-file-icon.c:878
 msgid "Write only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:659
+#: ../src/xfdesktop-file-icon.c:878
 msgid "Read only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:659
+#: ../src/xfdesktop-file-icon.c:878
 msgid "Read & Write"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:678
+#: ../src/xfdesktop-file-icon.c:897
 msgid "General"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:725
+#: ../src/xfdesktop-file-icon.c:944
 msgid "Kind:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:735
+#: ../src/xfdesktop-file-icon.c:954
 msgid "broken link"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:737
+#: ../src/xfdesktop-file-icon.c:956
 #, c-format
 msgid "link to %s"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:758
+#: ../src/xfdesktop-file-icon.c:975
+msgid "Open With:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:1020
 msgid "Modified:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:776
+#: ../src/xfdesktop-file-icon.c:1038
 msgid "Accessed:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:803
+#: ../src/xfdesktop-file-icon.c:1065
 msgid "Free Space:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:805
+#: ../src/xfdesktop-file-icon.c:1067
 msgid "Size:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:818
+#: ../src/xfdesktop-file-icon.c:1080
 msgid "unknown"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:821
+#: ../src/xfdesktop-file-icon.c:1083
 msgid "%s (%"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:821
+#: ../src/xfdesktop-file-icon.c:1083
 msgid " Bytes)"
 msgstr ""
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon.c:836
+#: ../src/xfdesktop-file-icon.c:1098
 msgid "Permissions"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:858
+#: ../src/xfdesktop-file-icon.c:1120
 msgid "Owner:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:876 ../src/xfdesktop-file-icon.c:914
+#: ../src/xfdesktop-file-icon.c:1138 ../src/xfdesktop-file-icon.c:1176
 msgid "Access:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:899
+#: ../src/xfdesktop-file-icon.c:1161
 msgid "Group:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:937
+#: ../src/xfdesktop-file-icon.c:1199
 #, fuzzy
 msgid "Others:"
 msgstr "/Alia"
 
-#: ../src/xfdesktop-file-icon.c:986
+#: ../src/xfdesktop-file-icon.c:1248
 msgid "_Open"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:994
+#: ../src/xfdesktop-file-icon.c:1259
 msgid "_Execute"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:1031
+#: ../src/xfdesktop-file-icon.c:1293
+msgid "Open With"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:1318
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:1047
+#: ../src/xfdesktop-file-icon.c:1334
 #, fuzzy
 msgid "_Copy File"
 msgstr "_Dosiero"
 
-#: ../src/xfdesktop-file-icon.c:1056
+#: ../src/xfdesktop-file-icon.c:1343
 #, fuzzy
 msgid "Cu_t File"
 msgstr "_Dosiero"
 
-#: ../src/xfdesktop-file-icon.c:1065
+#: ../src/xfdesktop-file-icon.c:1352
 #, fuzzy
 msgid "_Delete File"
 msgstr "Elektu Menuan Dosieron"
 
-#: ../src/xfdesktop-file-icon.c:1076
+#: ../src/xfdesktop-file-icon.c:1363
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:1088
+#: ../src/xfdesktop-file-icon.c:1375
 #, fuzzy
 msgid "_Properties..."
 msgstr "Modifiu fonbildan liston"
@@ -959,7 +1006,3 @@ msgstr "Parametroj por la Xfce 4 Administrilo de Labortablo"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 Labortablaj Parametroj"
-
-#, fuzzy
-#~ msgid "Window Icons"
-#~ msgstr "Fenestra Listo"

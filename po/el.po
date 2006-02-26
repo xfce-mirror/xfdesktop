@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-22 22:59+0200\n"
+"POT-Creation-Date: 2006-02-26 22:36+0900\n"
 "PO-Revision-Date: 2006-02-22 23:04+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <i18ngr@lists.hellug.gr>\n"
@@ -35,85 +35,85 @@ msgstr "Συντελεστής"
 msgid "Icon designer"
 msgstr "Σχεδιαστής εικονιδίων"
 
-#: ../menueditor/add_dialog.c:159 ../menueditor/add_dialog.c:169
+#: ../menueditor/add_dialog.c:157 ../menueditor/add_dialog.c:167
 msgid "Add menu entry"
 msgstr "Προσθήκη νέας καταχώρησης μενού"
 
 #. Type
-#: ../menueditor/add_dialog.c:173 ../menueditor/add_menu_dialog.c:110
+#: ../menueditor/add_dialog.c:171 ../menueditor/add_menu_dialog.c:110
 msgid "Type:"
 msgstr "Τύπος:"
 
-#: ../menueditor/add_dialog.c:176
+#: ../menueditor/add_dialog.c:174
 msgid "Launcher"
 msgstr "Εκκινητής"
 
-#: ../menueditor/add_dialog.c:180
+#: ../menueditor/add_dialog.c:178
 msgid "Submenu"
 msgstr "Υπομενού"
 
-#: ../menueditor/add_dialog.c:184
+#: ../menueditor/add_dialog.c:182
 msgid "Separator"
 msgstr "Διαχωριστικό"
 
-#: ../menueditor/add_dialog.c:188
+#: ../menueditor/add_dialog.c:186
 msgid "Title"
 msgstr "Τίτλος"
 
-#: ../menueditor/add_dialog.c:192
+#: ../menueditor/add_dialog.c:190
 msgid "Quit"
 msgstr "Έξοδος"
 
 #. Name
-#: ../menueditor/add_dialog.c:206 ../menueditor/edit_dialog.c:147
-#: ../menueditor/edit_dialog.c:207 ../src/xfdesktop-file-icon.c:708
+#: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon.c:922
 msgid "Name:"
 msgstr "Όνομα:"
 
-#: ../menueditor/add_dialog.c:214 ../menueditor/edit_dialog.c:152
+#: ../menueditor/add_dialog.c:212 ../menueditor/edit_dialog.c:150
 msgid "Command:"
 msgstr "Εντολή:"
 
-#: ../menueditor/add_dialog.c:226 ../menueditor/edit_dialog.c:139
-#: ../menueditor/edit_dialog.c:199
+#: ../menueditor/add_dialog.c:224 ../menueditor/edit_dialog.c:137
+#: ../menueditor/edit_dialog.c:197
 msgid "Icon:"
 msgstr "Εικονίδιο:"
 
 #. Start Notify check button
 #. Startup notification
-#: ../menueditor/add_dialog.c:237 ../menueditor/edit_dialog.c:160
+#: ../menueditor/add_dialog.c:235 ../menueditor/edit_dialog.c:158
 msgid "Use startup _notification"
 msgstr "Χρήση ειδοποίησης _εκκίνησης"
 
 #. Run in terminal check button
 #. Run in terminal
-#: ../menueditor/add_dialog.c:241 ../menueditor/edit_dialog.c:163
+#: ../menueditor/add_dialog.c:239 ../menueditor/edit_dialog.c:161
 msgid "Run in _terminal"
 msgstr "Εκτέλεση σε τερματι_κό"
 
-#: ../menueditor/add_dialog.c:272 ../menueditor/edit_dialog.c:242
+#: ../menueditor/add_dialog.c:270 ../menueditor/edit_dialog.c:240
 msgid "The command doesn't exist !"
 msgstr "Η εντολή δεν υπάρχει !"
 
-#: ../menueditor/add_dialog.c:278 ../menueditor/edit_dialog.c:248
+#: ../menueditor/add_dialog.c:276 ../menueditor/edit_dialog.c:246
 msgid "All fields must be filled to add an item."
 msgstr ""
 "Πρέπει να είναι συμπληρωμένα όλα τα πεδία για να προστεθεί το αντικείμενο."
 
-#: ../menueditor/add_dialog.c:287 ../menueditor/edit_dialog.c:257
+#: ../menueditor/add_dialog.c:285 ../menueditor/edit_dialog.c:255
 msgid "The 'Name' field is required."
 msgstr "Το πεδίο 'Όνομα' είναι υποχρεωτικό."
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:319
+#: ../menueditor/add_dialog.c:329 ../menueditor/utils.c:318
 msgid "--- separator ---"
 msgstr "--- διαχωριστικό ---"
 
-#: ../menueditor/add_dialog.c:357 ../menueditor/edit_dialog.c:316
+#: ../menueditor/add_dialog.c:355 ../menueditor/edit_dialog.c:314
 msgid "quit"
 msgstr "έξοδος"
 
 #: ../menueditor/add_menu_dialog.c:97 ../menueditor/add_menu_dialog.c:103
-#: ../menueditor/menueditor.c:842
+#: ../menueditor/menueditor.c:841
 msgid "Add an external menu"
 msgstr "Προσθήκη ενός εξωτερικού μενού"
 
@@ -152,20 +152,20 @@ msgid "The 'Source' field is required."
 msgstr "Το πεδίο 'Πηγή' απαιτείται."
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:373
+#: ../menueditor/utils.c:372
 msgid "--- include ---"
 msgstr "--- περίληψη ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:390
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:389
 msgid "system"
 msgstr "σύστημα"
 
 #. Create dialog for editing
-#: ../menueditor/edit_dialog.c:116 ../menueditor/edit_dialog.c:123
+#: ../menueditor/edit_dialog.c:114 ../menueditor/edit_dialog.c:121
 msgid "Edit menu entry"
 msgstr "Επεξεργασία καταχώρησης μενού"
 
-#: ../menueditor/edit_dialog.c:128
+#: ../menueditor/edit_dialog.c:126
 msgid "Separators cannot be edited"
 msgstr "Τα διαχωριστικά δεν είναι δυνατό να επεξεργαστούν"
 
@@ -194,12 +194,12 @@ msgstr "Είστε σίγουρος/η ότι θέλετε να κλείσετε
 msgid "Do you want to save before closing the file?"
 msgstr "Θέλετε να αποθηκεύσετε πριν κλείσετε το αρχείο;"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:588
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:586
 msgid "Select command"
 msgstr "Επιλογή εντολής"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:524
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:738
 msgid "Question"
 msgstr "Ερώτηση"
 
@@ -232,107 +232,109 @@ msgstr "Θέλετε να μετακινείσετε το αντικείμενο
 msgid "Do you want to move the item into the submenu?"
 msgstr "Θέλετε να μετακινείσετε το αντικείμενο στο υπομενού;"
 
-#: ../menueditor/menueditor.c:836
+#: ../menueditor/menueditor.c:835
 msgid "Edit"
 msgstr "Επεξεργασία"
 
 #. File menu
-#: ../menueditor/menueditor.c:860
+#: ../menueditor/menueditor.c:859
 msgid "_File"
 msgstr "_Αρχείο"
 
-#: ../menueditor/menueditor.c:869
+#: ../menueditor/menueditor.c:868
 msgid "Open default menu"
 msgstr "Άνοιγμα προκαθορισμένου μενού"
 
 #. Edit menu
-#: ../menueditor/menueditor.c:883
+#: ../menueditor/menueditor.c:882
 msgid "_Edit"
 msgstr "_Επεξεργασία"
 
-#: ../menueditor/menueditor.c:889
+#: ../menueditor/menueditor.c:888
 msgid "Add an external menu..."
 msgstr "Προσθήκη ενός εξωτερικού μενού..."
 
 #. Help menu
-#: ../menueditor/menueditor.c:901
+#: ../menueditor/menueditor.c:900
 msgid "_Help"
 msgstr "_Βοήθεια"
 
-#: ../menueditor/menueditor.c:905
+#: ../menueditor/menueditor.c:904
 msgid "_About..."
 msgstr "_Περί..."
 
-#: ../menueditor/menueditor.c:917
+#: ../menueditor/menueditor.c:916
 msgid "Create a new Xfce4 menu file"
 msgstr "Δημιουργία ενός νέου αρχείου μενού του Xfce4"
 
-#: ../menueditor/menueditor.c:922
+#: ../menueditor/menueditor.c:921
 msgid "Open an Xfce4 menu file"
 msgstr "Άνοιγμα ενός νέου αρχείου μενού του Xfce4"
 
-#: ../menueditor/menueditor.c:927
+#: ../menueditor/menueditor.c:926
 msgid "Save current menu"
 msgstr "Αποθήκευση του τρέχοντος μενού"
 
-#: ../menueditor/menueditor.c:932
+#: ../menueditor/menueditor.c:931
 msgid "Close current menu"
 msgstr "Κλείσιμο του τρέχοντος μενού"
 
-#: ../menueditor/menueditor.c:938
+#: ../menueditor/menueditor.c:937
 msgid "Add an entry to the menu"
 msgstr "Προσθήκη μιας καταχώρησης "
 
-#: ../menueditor/menueditor.c:942
+#: ../menueditor/menueditor.c:941
 msgid "Delete the current entry"
 msgstr "Διαγραφή τρέχουσας καταχώρησης"
 
-#: ../menueditor/menueditor.c:948
+#: ../menueditor/menueditor.c:947
 msgid "Move the current entry up"
 msgstr "Μετακίνηση της τρέχουσας καταχώρησης επάνω"
 
-#: ../menueditor/menueditor.c:953
+#: ../menueditor/menueditor.c:952
 msgid "Move the current entry down"
 msgstr "Μετακίνηση της τρέχουσας καταχώρησης κάτω"
 
-#: ../menueditor/menueditor.c:959
+#: ../menueditor/menueditor.c:958
 msgid "Collapse the tree"
 msgstr "Σύμπτυξη του δέντρου"
 
-#: ../menueditor/menueditor.c:964
+#: ../menueditor/menueditor.c:963
 msgid "Expand the tree"
 msgstr "Ανάπτυξη του δέντρου"
 
-#: ../menueditor/menueditor.c:992
+#: ../menueditor/menueditor.c:991
 msgid "Name"
 msgstr "Όνομα"
 
-#: ../menueditor/menueditor.c:995
+#: ../menueditor/menueditor.c:994
 msgid "Command"
 msgstr "Εντολή"
 
-#: ../menueditor/menueditor.c:996
+#: ../menueditor/menueditor.c:995
 msgid "Hidden"
 msgstr "Κρυμμένο"
 
-#: ../menueditor/utils.c:650
+#: ../menueditor/utils.c:648
 msgid "Select icon"
 msgstr "Επιλογή εικονιδίου"
 
-#: ../menueditor/utils.c:656 ../panel-plugin/desktop-menu-plugin.c:545
-#: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
-#: ../settings/backdrop_settings.c:529
+#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:550
+#: ../settings/appearance-settings.c:529
+#: ../settings/backdrop-list-manager.c:435
+#: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Όλα τα Αρχεία"
 
-#: ../menueditor/utils.c:660 ../panel-plugin/desktop-menu-plugin.c:551
-#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:533
+#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:556
+#: ../settings/appearance-settings.c:533
+#: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Αρχεία Εικόνων"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:707
+#: ../panel-plugin/desktop-menu-plugin.c:712
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Μενού του Xfce"
@@ -364,191 +366,148 @@ msgstr ""
 msgid "/Other"
 msgstr "/Άλλο"
 
-#: ../panel-plugin/desktop-menu-plugin.c:528
+#: ../panel-plugin/desktop-menu-plugin.c:533
 msgid "Select Icon"
 msgstr "Επιλογή Εικονιδίου"
 
-#: ../panel-plugin/desktop-menu-plugin.c:530
+#: ../panel-plugin/desktop-menu-plugin.c:535
 msgid "Select Menu File"
 msgstr "Επιλογή Αρχείου Μενού"
 
-#: ../panel-plugin/desktop-menu-plugin.c:559
+#: ../panel-plugin/desktop-menu-plugin.c:564
 msgid "Menu Files"
 msgstr "Αρχεία Μενού"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:198
+#: ../panel-plugin/desktop-menu-plugin.c:681
+#: ../settings/behavior-settings.c:199
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Αδυναμία εκκίνησης του επεξεργαστή μενού του Xfce: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:699
+#: ../panel-plugin/desktop-menu-plugin.c:704
 msgid "Edit Properties"
 msgstr "Επεξεργασία Ιδιοτήτων"
 
-#: ../panel-plugin/desktop-menu-plugin.c:717
+#: ../panel-plugin/desktop-menu-plugin.c:722
 msgid "Button"
 msgstr "Κουμπί"
 
-#: ../panel-plugin/desktop-menu-plugin.c:730
+#: ../panel-plugin/desktop-menu-plugin.c:735
 msgid "Button _title:"
 msgstr "Τίτλος _κουμπιού:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:743
+#: ../panel-plugin/desktop-menu-plugin.c:748
 msgid "_Show title in button"
 msgstr "_Προβολή τίτλου στο κουμπί"
 
-#: ../panel-plugin/desktop-menu-plugin.c:750
+#: ../panel-plugin/desktop-menu-plugin.c:755
 msgid "Menu File"
 msgstr "Αρχείο Μενού"
 
-#: ../panel-plugin/desktop-menu-plugin.c:762
+#: ../panel-plugin/desktop-menu-plugin.c:767
 msgid "Use default _desktop menu file"
 msgstr "Χρήση προκαθορισμένου αρχείου _μενού"
 
-#: ../panel-plugin/desktop-menu-plugin.c:771
+#: ../panel-plugin/desktop-menu-plugin.c:776
 msgid "Use _custom menu file:"
 msgstr "Χρήση _προσαρμοσμένου αρχείου μενού"
 
-#: ../panel-plugin/desktop-menu-plugin.c:823
-#: ../panel-plugin/desktop-menu-plugin.c:825 ../settings/menu_settings.c:248
+#: ../panel-plugin/desktop-menu-plugin.c:828
+#: ../panel-plugin/desktop-menu-plugin.c:830
+#: ../settings/behavior-settings.c:249
 msgid "_Edit Menu"
 msgstr "_Επεξεργασία του Μενού"
 
-#: ../panel-plugin/desktop-menu-plugin.c:832
+#: ../panel-plugin/desktop-menu-plugin.c:837
 msgid "Icons"
 msgstr "Εικονίδια"
 
-#: ../panel-plugin/desktop-menu-plugin.c:844
+#: ../panel-plugin/desktop-menu-plugin.c:849
 msgid "_Button icon:"
 msgstr "Εικονίδιο _Κουμπιού"
 
-#: ../panel-plugin/desktop-menu-plugin.c:868
+#: ../panel-plugin/desktop-menu-plugin.c:873
 msgid "Show _icons in menu"
 msgstr "Εμφάνιση εικον_ιδίων στο μενού"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop-settings.c:74
-#, c-format
-msgid ""
-"Could not save file %s: %s\n"
-"\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
-msgstr ""
-"Η αποθήκευση του αρχείου %s δεν ήταν δυνατή: %s\n"
-"\n"
-"Παρακαλώ επιλέξτε μια άλλη τοποθεσία ή επιλέξτε άκυρο στο πλαίσο διαλόγου "
-"για να απαλείψετε τις αλλαγές σας"
-
-#: ../settings/backdrop-mgr.c:431
-msgid "Select backdrop image file"
-msgstr "Επιλέξτε ένα αρχείο εικόνας για το παρασκήνιο"
-
-#: ../settings/backdrop-mgr.c:532
-msgid "Choose backdrop list filename"
-msgstr "Επιλέξτε ένα όνομα αρχείου για την λίστα εικόνων παρασκηνίου"
-
-#: ../settings/backdrop-mgr.c:541
-msgid "List Files"
-msgstr "Αρχεία Λίστας"
-
-#: ../settings/backdrop-mgr.c:604
-msgid "Backdrop List"
-msgstr "Λίστα παρασκηνίων"
-
-#: ../settings/backdrop-mgr.c:621
-msgid "Image files"
-msgstr "Αρχεία εικόνας"
-
-#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:184
-#: ../settings/backdrop_settings.c:193
-msgid "backdrops.list"
-msgstr "backdrops.list"
-
-#: ../settings/backdrop-mgr.c:640
-msgid "List file"
-msgstr "Αρχείο λίστας"
-
-#: ../settings/backdrop-mgr.c:660
-msgid "Create backdrop list"
-msgstr "Δημιουργία λίστας παρασκηνίων"
-
-#: ../settings/backdrop-mgr.c:691
-msgid "Edit backdrop list"
-msgstr "Επεξεργασία λίστας παρασκηνίων"
-
 #. the dialog
-#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:907
-#: ../src/xfce-desktop.c:558
+#: ../settings/appearance-settings.c:133 ../settings/appearance-settings.c:909
+#: ../src/xfce-desktop.c:593
 msgid "Desktop"
 msgstr "Επιφάνεια Εργασίας"
 
-#: ../settings/backdrop_settings.c:524
+#: ../settings/appearance-settings.c:184 ../settings/appearance-settings.c:193
+#: ../settings/backdrop-list-manager.c:631
+msgid "backdrops.list"
+msgstr "backdrops.list"
+
+#: ../settings/appearance-settings.c:524
 msgid "Select backdrop image or list file"
 msgstr "Επιλέξτε εικόνα παρασκηνίου ή αρχείο λίστας εικόνων παρασκηνίου"
 
-#: ../settings/backdrop_settings.c:542
+#: ../settings/appearance-settings.c:542
 msgid "List Files (*.list)"
 msgstr "Αρχεία Λίστας (*.list)"
 
-#: ../settings/backdrop_settings.c:632
+#: ../settings/appearance-settings.c:634
 msgid "_Edit list..."
 msgstr "_Επεξεργασία λίστας..."
 
-#: ../settings/backdrop_settings.c:640
+#: ../settings/appearance-settings.c:642
 msgid "_New list..."
 msgstr "_Νέα λίστα..."
 
-#: ../settings/backdrop_settings.c:673
+#: ../settings/appearance-settings.c:675
 msgid "S_tyle:"
 msgstr "Σ_τυλ:"
 
-#: ../settings/backdrop_settings.c:680
+#: ../settings/appearance-settings.c:682
 msgid "Auto"
 msgstr "Αυτόματο"
 
-#: ../settings/backdrop_settings.c:681
+#: ../settings/appearance-settings.c:683
 msgid "Centered"
 msgstr "Κεντραρισμένη"
 
-#: ../settings/backdrop_settings.c:682
+#: ../settings/appearance-settings.c:684
 msgid "Tiled"
 msgstr "Σε παράθεση"
 
-#: ../settings/backdrop_settings.c:683
+#: ../settings/appearance-settings.c:685
 msgid "Stretched"
 msgstr "τεντωμένο"
 
-#: ../settings/backdrop_settings.c:684
+#: ../settings/appearance-settings.c:686
 msgid "Scaled"
 msgstr "Σε κλίμακα"
 
-#: ../settings/backdrop_settings.c:741
+#: ../settings/appearance-settings.c:743
 msgid "A_djust Brightness:"
 msgstr "Ρύ_θμιση φωτεινότητας:"
 
-#: ../settings/backdrop_settings.c:797
+#: ../settings/appearance-settings.c:799
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Το Xfce δεν θα μπορεί να διαχειριστεί την επιφάνεια εργασίας σας (%s)."
 
-#: ../settings/backdrop_settings.c:798
+#: ../settings/appearance-settings.c:800
 msgid "Unknown Error"
 msgstr "Άγνωστο σφάλμα"
 
-#: ../settings/backdrop_settings.c:802 ../src/xfdesktop-file-icon.c:459
-#: ../src/xfdesktop-file-icon.c:479 ../src/xfdesktop-file-icon.c:616
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:668
+#: ../src/xfdesktop-file-icon.c:688 ../src/xfdesktop-file-icon.c:830
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: ../settings/backdrop_settings.c:804
+#: ../settings/appearance-settings.c:806
 msgid "Unable to start xfdesktop"
 msgstr "Αδύνατη η εκκίνηση του xfdesktop"
 
-#: ../settings/backdrop_settings.c:822
+#: ../settings/appearance-settings.c:824
 msgid "Information"
 msgstr "Πληροφορίες"
 
-#: ../settings/backdrop_settings.c:832
+#: ../settings/appearance-settings.c:834
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -563,122 +522,170 @@ msgstr ""
 "xfce4/xinitrc. Υπάρχουν λεπτομέριες διαθέσιμες στην τεκμηρίωση που "
 "διατίθεται στο http://xfce.org/."
 
-#: ../settings/backdrop_settings.c:840
+#: ../settings/appearance-settings.c:842
 msgid "_Do not show this again"
 msgstr "_Να μην εμφανιστεί ξανά αυτή η προειδοποίηση"
 
 #. header
-#: ../settings/backdrop_settings.c:922
+#: ../settings/appearance-settings.c:924
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "Ρυθμίσεις επιφάνειας εργασίας"
 
-#: ../settings/backdrop_settings.c:927
+#: ../settings/appearance-settings.c:929
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Να επιτρέπεται στο _Xfce να διαχειρίζεται την επιφάνεια εργασίας"
 
-#: ../settings/backdrop_settings.c:968
+#: ../settings/appearance-settings.c:970
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "Επέκταση μιας εικόνας παρασκηνίου σε όλες τις _οθόνες"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/backdrop_settings.c:982 ../settings/backdrop_settings.c:1164
+#: ../settings/appearance-settings.c:984
+#: ../settings/appearance-settings.c:1166
 msgid "_Appearance"
 msgstr "_Εμφάνιση"
 
 #. color settings frame
-#: ../settings/backdrop_settings.c:1008
+#: ../settings/appearance-settings.c:1010
 msgid "Color"
 msgstr "Χρώμα"
 
-#: ../settings/backdrop_settings.c:1022
+#: ../settings/appearance-settings.c:1024
 msgid "_Color Style:"
 msgstr "Στυλ _Χρώματος"
 
-#: ../settings/backdrop_settings.c:1029
+#: ../settings/appearance-settings.c:1031
 msgid "Solid Color"
 msgstr "Συμπαγές Χρώμα"
 
-#: ../settings/backdrop_settings.c:1030
+#: ../settings/appearance-settings.c:1032
 msgid "Horizontal Gradient"
 msgstr "Οριζόντια Διαβάθμιση"
 
-#: ../settings/backdrop_settings.c:1031
+#: ../settings/appearance-settings.c:1033
 msgid "Vertical Gradient"
 msgstr "Κάθετη Διαβάθμιση"
 
-#: ../settings/backdrop_settings.c:1044
+#: ../settings/appearance-settings.c:1046
 msgid "Fi_rst Color:"
 msgstr "_Πρώτο Χρώμα:"
 
-#: ../settings/backdrop_settings.c:1065
+#: ../settings/appearance-settings.c:1067
 msgid "_Second Color:"
 msgstr "_Δεύτερο Χρώμα:"
 
-#: ../settings/backdrop_settings.c:1090
+#: ../settings/appearance-settings.c:1092
 msgid "Image"
 msgstr "Εικόνα"
 
-#: ../settings/backdrop_settings.c:1098
+#: ../settings/appearance-settings.c:1100
 msgid "Show _Image"
 msgstr "Εμφάνιση ει_κόνας"
 
-#: ../settings/backdrop_settings.c:1120
+#: ../settings/appearance-settings.c:1122
 msgid "_File:"
 msgstr "_Αρχείο:"
 
-#: ../settings/backdrop_settings.c:1175 ../settings/backdrop_settings.c:1177
+#: ../settings/appearance-settings.c:1177
+#: ../settings/appearance-settings.c:1179
 #, c-format
 msgid "Screen %d"
 msgstr "Οθόνη %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/backdrop_settings.c:1182
+#: ../settings/appearance-settings.c:1184
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Οθόνη %d, Monitor %d"
 
-#: ../settings/backdrop_settings.c:1199
+#: ../settings/appearance-settings.c:1201
 msgid "_Behavior"
 msgstr "_Συμπεριφορά"
 
-#: ../settings/menu_settings.c:222
+#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"Η αποθήκευση του αρχείου %s δεν ήταν δυνατή: %s\n"
+"\n"
+"Παρακαλώ επιλέξτε μια άλλη τοποθεσία ή επιλέξτε άκυρο στο πλαίσο διαλόγου "
+"για να απαλείψετε τις αλλαγές σας"
+
+#: ../settings/backdrop-list-manager.c:430
+msgid "Select backdrop image file"
+msgstr "Επιλέξτε ένα αρχείο εικόνας για το παρασκήνιο"
+
+#: ../settings/backdrop-list-manager.c:531
+msgid "Choose backdrop list filename"
+msgstr "Επιλέξτε ένα όνομα αρχείου για την λίστα εικόνων παρασκηνίου"
+
+#: ../settings/backdrop-list-manager.c:540
+msgid "List Files"
+msgstr "Αρχεία Λίστας"
+
+#: ../settings/backdrop-list-manager.c:603
+msgid "Backdrop List"
+msgstr "Λίστα παρασκηνίων"
+
+#: ../settings/backdrop-list-manager.c:620
+msgid "Image files"
+msgstr "Αρχεία εικόνας"
+
+#: ../settings/backdrop-list-manager.c:639
+msgid "List file"
+msgstr "Αρχείο λίστας"
+
+#: ../settings/backdrop-list-manager.c:661
+msgid "Create backdrop list"
+msgstr "Δημιουργία λίστας παρασκηνίων"
+
+#: ../settings/backdrop-list-manager.c:694
+msgid "Edit backdrop list"
+msgstr "Επεξεργασία λίστας παρασκηνίων"
+
+#: ../settings/behavior-settings.c:223
 msgid "Menus"
 msgstr "Μενού"
 
-#: ../settings/menu_settings.c:230
+#: ../settings/behavior-settings.c:231
 msgid "Show _window list on middle click"
 msgstr "Εμφάνιση _λίστας παραθύρων στο μεσαίο κλίκ"
 
-#: ../settings/menu_settings.c:241
-msgid "Show _desktop menu"
+#: ../settings/behavior-settings.c:242
+#, fuzzy
+msgid "Show _desktop menu on right click"
 msgstr "Εμφάνιση _μενού επιφάνειας εργασίας"
 
-#: ../settings/menu_settings.c:260
+#: ../settings/behavior-settings.c:261
 msgid "Desktop Icons"
 msgstr "Εικονίδια Επιφάνειας Εργασίας"
 
-#: ../settings/menu_settings.c:269 ../src/xfdesktop-file-icon.c:664
+#: ../settings/behavior-settings.c:270 ../src/xfdesktop-file-icon.c:878
 msgid "None"
 msgstr "Καθόλου"
 
-#: ../settings/menu_settings.c:270
+#: ../settings/behavior-settings.c:271
 msgid "Minimized application icons"
 msgstr "Ελάχιστοποιημένες εφαρμογές"
 
-#: ../settings/menu_settings.c:272
+#: ../settings/behavior-settings.c:273
 msgid "File/launcher icons"
 msgstr "Αρχεία και συντομεύσεις"
 
-#: ../settings/menu_settings.c:283
+#: ../settings/behavior-settings.c:284
 msgid "_Icon size:"
 msgstr "Μέγεθος ε_ικονιδίων:"
 
-#: ../settings/menu_settings.c:297
+#: ../settings/behavior-settings.c:298
 msgid "Use _system font size"
 msgstr "Χρήση μεγέθους γραμματοσειράς _συστήματος"
 
-#: ../settings/menu_settings.c:314
+#: ../settings/behavior-settings.c:315
 msgid "Custom _font size:"
 msgstr "Προσαρμοσμένο μέγεθος _γραμματοσειράς:"
 
@@ -778,40 +785,72 @@ msgstr ""
 msgid "Delete Multiple Files"
 msgstr "Διαγραφή Πολλαπλών Αρχείων"
 
-#: ../src/xfdesktop-file-icon-manager.c:418 ../src/xfdesktop-file-icon.c:526
+#: ../src/xfdesktop-file-icon-manager.c:418 ../src/xfdesktop-file-icon.c:740
 msgid "If you delete a file, it is permanently lost."
 msgstr "Εάν διαγράψετε ένα αρχείο, χάνεται για πάντα."
 
-#: ../src/xfdesktop-file-icon.c:403
+#: ../src/xfdesktop-file-icon.c:370
+#, c-format
+msgid "There was an error %s \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:372
+msgid "moving"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:374
+msgid "copying"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:375
+msgid "linking"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:378
+#, fuzzy
+msgid "File Error"
+msgstr "Σφάλμα"
+
+#: ../src/xfdesktop-file-icon.c:438
+#, fuzzy, c-format
+msgid "Failed to run \"%s\":"
+msgstr "Η μετονομασία του \"%s\" σε \"%s\" απέτυχε:"
+
+#: ../src/xfdesktop-file-icon.c:440
+#, fuzzy
+msgid "Run Error"
+msgstr "Σφάλμα"
+
+#: ../src/xfdesktop-file-icon.c:612
 #, c-format
 msgid "Rename \"%s\""
 msgstr "Μετονομασία του \"%s\""
 
-#: ../src/xfdesktop-file-icon.c:432
+#: ../src/xfdesktop-file-icon.c:641
 msgid "Enter the new name:"
 msgstr "Εισάγετε το νέο όνομα:"
 
-#: ../src/xfdesktop-file-icon.c:457
+#: ../src/xfdesktop-file-icon.c:666
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Η μετονομασία του \"%s\" σε \"%s\" απέτυχε:"
 
-#: ../src/xfdesktop-file-icon.c:570
+#: ../src/xfdesktop-file-icon.c:784
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "Άνοιγμα _Με \"%s\""
 
-#: ../src/xfdesktop-file-icon.c:573
+#: ../src/xfdesktop-file-icon.c:787
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Άνοιγμα Με \"%s\""
 
-#: ../src/xfdesktop-file-icon.c:614
+#: ../src/xfdesktop-file-icon.c:828
 #, c-format
 msgid "Unable to launch \"%s\"."
 msgstr "Η εκκίνηση του \"%s\" απέτυχε."
 
-#: ../src/xfdesktop-file-icon.c:618
+#: ../src/xfdesktop-file-icon.c:832
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -819,121 +858,122 @@ msgstr ""
 "Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή αρχείων (όπως αυτή "
 "που παρέχει ο Thunar)."
 
-#: ../src/xfdesktop-file-icon.c:664
+#: ../src/xfdesktop-file-icon.c:878
 msgid "Write only"
 msgstr "Μόνο εγγραφή"
 
-#: ../src/xfdesktop-file-icon.c:664
+#: ../src/xfdesktop-file-icon.c:878
 msgid "Read only"
 msgstr "Μόνο για ανάγνωση"
 
-#: ../src/xfdesktop-file-icon.c:664
+#: ../src/xfdesktop-file-icon.c:878
 msgid "Read & Write"
 msgstr "Εγγραφή και Ανάγνωση"
 
-#: ../src/xfdesktop-file-icon.c:683
+#: ../src/xfdesktop-file-icon.c:897
 msgid "General"
 msgstr "Γενικές"
 
-#: ../src/xfdesktop-file-icon.c:730
+#: ../src/xfdesktop-file-icon.c:944
 msgid "Kind:"
 msgstr "Είδος:"
 
-#: ../src/xfdesktop-file-icon.c:740
+#: ../src/xfdesktop-file-icon.c:954
 msgid "broken link"
 msgstr "σπασμένος δεσμός"
 
-#: ../src/xfdesktop-file-icon.c:742
+#: ../src/xfdesktop-file-icon.c:956
 #, c-format
 msgid "link to %s"
 msgstr "σύνδεσμος στο %s"
 
-#: ../src/xfdesktop-file-icon.c:761
+#: ../src/xfdesktop-file-icon.c:975
 msgid "Open With:"
 msgstr "Άνοιγμα Με:"
 
-#: ../src/xfdesktop-file-icon.c:806
+#: ../src/xfdesktop-file-icon.c:1020
 msgid "Modified:"
 msgstr "Τροποποιήθηκε:"
 
-#: ../src/xfdesktop-file-icon.c:824
+#: ../src/xfdesktop-file-icon.c:1038
 msgid "Accessed:"
 msgstr "Προσπελάστηκε:"
 
-#: ../src/xfdesktop-file-icon.c:851
+#: ../src/xfdesktop-file-icon.c:1065
 msgid "Free Space:"
 msgstr "Ελεύθερος Χώρος:"
 
-#: ../src/xfdesktop-file-icon.c:853
+#: ../src/xfdesktop-file-icon.c:1067
 msgid "Size:"
 msgstr "Μέγεθος:"
 
-#: ../src/xfdesktop-file-icon.c:866
+#: ../src/xfdesktop-file-icon.c:1080
 msgid "unknown"
 msgstr "άγνωστο"
 
-#: ../src/xfdesktop-file-icon.c:869
+#: ../src/xfdesktop-file-icon.c:1083
 msgid "%s (%"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:869
+#: ../src/xfdesktop-file-icon.c:1083
 msgid " Bytes)"
 msgstr ""
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon.c:884
+#: ../src/xfdesktop-file-icon.c:1098
 msgid "Permissions"
 msgstr "Δικαιώματα"
 
-#: ../src/xfdesktop-file-icon.c:906
+#: ../src/xfdesktop-file-icon.c:1120
 msgid "Owner:"
 msgstr "Ιδιοκτήτης:"
 
-#: ../src/xfdesktop-file-icon.c:924 ../src/xfdesktop-file-icon.c:962
+#: ../src/xfdesktop-file-icon.c:1138 ../src/xfdesktop-file-icon.c:1176
 msgid "Access:"
 msgstr "Πρόσβαση:"
 
-#: ../src/xfdesktop-file-icon.c:947
+#: ../src/xfdesktop-file-icon.c:1161
 msgid "Group:"
 msgstr "Ομάδα:"
 
-#: ../src/xfdesktop-file-icon.c:985
+#: ../src/xfdesktop-file-icon.c:1199
 msgid "Others:"
 msgstr "Άλλα:"
 
-#: ../src/xfdesktop-file-icon.c:1034
+#: ../src/xfdesktop-file-icon.c:1248
 msgid "_Open"
 msgstr "_Άνοιγμα"
 
-#: ../src/xfdesktop-file-icon.c:1045
+#: ../src/xfdesktop-file-icon.c:1259
 msgid "_Execute"
 msgstr "_Εκτέλεση"
 
-#: ../src/xfdesktop-file-icon.c:1079
+#: ../src/xfdesktop-file-icon.c:1293
+#, fuzzy
 msgid "Open With"
 msgstr "Άνοιγμα Με"
 
-#: ../src/xfdesktop-file-icon.c:1104
+#: ../src/xfdesktop-file-icon.c:1318
 msgid "Open With Other _Application..."
 msgstr "Άνοιγμα Με Άλλη Ε_φαρμογή..."
 
-#: ../src/xfdesktop-file-icon.c:1120
+#: ../src/xfdesktop-file-icon.c:1334
 msgid "_Copy File"
 msgstr "Α_ντιγραφή Αρχείου"
 
-#: ../src/xfdesktop-file-icon.c:1129
+#: ../src/xfdesktop-file-icon.c:1343
 msgid "Cu_t File"
 msgstr "Α_ποκοπή Αρχείου"
 
-#: ../src/xfdesktop-file-icon.c:1138
+#: ../src/xfdesktop-file-icon.c:1352
 msgid "_Delete File"
 msgstr "_Διαγραφή Αρχείου"
 
-#: ../src/xfdesktop-file-icon.c:1149
+#: ../src/xfdesktop-file-icon.c:1363
 msgid "_Rename..."
 msgstr "_Μετονομασία..."
 
-#: ../src/xfdesktop-file-icon.c:1161
+#: ../src/xfdesktop-file-icon.c:1375
 msgid "_Properties..."
 msgstr "_Ιδιότητες..."
 
@@ -961,26 +1001,3 @@ msgstr "Ρυθμίσεις Διαχειριστή Επιφάνειας Εργα�
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Ρυθμίσεις επιφάνειας εργασίας Xfce 4"
-
-#~ msgid "Window List Menu"
-#~ msgstr "Λίστα Παραθύρων"
-
-#~ msgid "Show _window icons"
-#~ msgstr "Εμφάνιση εικονιδίων _παραθύρων"
-
-#~ msgid "Desktop Menu"
-#~ msgstr "Μενού Επιφάνειας Εργασίας"
-
-#~ msgid "_Show application icons"
-#~ msgstr "_Προβολή των εικονιδίων των εφαρμογών"
-
-#~ msgid "_Edit desktop menu"
-#~ msgstr "_Επεξεργασία μενού επιφάνειας εργασίας"
-
-#~ msgid "Window Icons"
-#~ msgstr "Εικονίδια Παραθύρων"
-
-#~ msgid "Show minimized window _icons on the desktop"
-#~ msgstr ""
-#~ "Εμφάνιση εικονιδίων για τα _ελαχιστοποιημένα παράθυρα στην επιφάνεια "
-#~ "εργασίας"

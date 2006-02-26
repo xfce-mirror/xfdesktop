@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-18 21:35+0900\n"
+"POT-Creation-Date: 2006-02-26 22:36+0900\n"
 "PO-Revision-Date: 2005-02-23 17:29+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -34,84 +34,84 @@ msgstr "Avustava kehittäjä"
 msgid "Icon designer"
 msgstr "Kuvakesuunnittelija"
 
-#: ../menueditor/add_dialog.c:159 ../menueditor/add_dialog.c:169
+#: ../menueditor/add_dialog.c:157 ../menueditor/add_dialog.c:167
 msgid "Add menu entry"
 msgstr "Lisää kohde valikkoon"
 
 #. Type
-#: ../menueditor/add_dialog.c:173 ../menueditor/add_menu_dialog.c:110
+#: ../menueditor/add_dialog.c:171 ../menueditor/add_menu_dialog.c:110
 msgid "Type:"
 msgstr "Tyyppi:"
 
-#: ../menueditor/add_dialog.c:176
+#: ../menueditor/add_dialog.c:174
 msgid "Launcher"
 msgstr "Käynnistin"
 
-#: ../menueditor/add_dialog.c:180
+#: ../menueditor/add_dialog.c:178
 msgid "Submenu"
 msgstr "Alivalikko"
 
-#: ../menueditor/add_dialog.c:184
+#: ../menueditor/add_dialog.c:182
 msgid "Separator"
 msgstr "Erotin"
 
-#: ../menueditor/add_dialog.c:188
+#: ../menueditor/add_dialog.c:186
 msgid "Title"
 msgstr "Otsake"
 
-#: ../menueditor/add_dialog.c:192
+#: ../menueditor/add_dialog.c:190
 msgid "Quit"
 msgstr "Lopeta"
 
 #. Name
-#: ../menueditor/add_dialog.c:206 ../menueditor/edit_dialog.c:147
-#: ../menueditor/edit_dialog.c:207 ../src/xfdesktop-file-icon.c:703
+#: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon.c:922
 msgid "Name:"
 msgstr "Nimi:"
 
-#: ../menueditor/add_dialog.c:214 ../menueditor/edit_dialog.c:152
+#: ../menueditor/add_dialog.c:212 ../menueditor/edit_dialog.c:150
 msgid "Command:"
 msgstr "Komento:"
 
-#: ../menueditor/add_dialog.c:226 ../menueditor/edit_dialog.c:139
-#: ../menueditor/edit_dialog.c:199
+#: ../menueditor/add_dialog.c:224 ../menueditor/edit_dialog.c:137
+#: ../menueditor/edit_dialog.c:197
 msgid "Icon:"
 msgstr "Kuvake:"
 
 #. Start Notify check button
 #. Startup notification
-#: ../menueditor/add_dialog.c:237 ../menueditor/edit_dialog.c:160
+#: ../menueditor/add_dialog.c:235 ../menueditor/edit_dialog.c:158
 msgid "Use startup _notification"
 msgstr "Käytä käynnistyksen _huomautusta"
 
 #. Run in terminal check button
 #. Run in terminal
-#: ../menueditor/add_dialog.c:241 ../menueditor/edit_dialog.c:163
+#: ../menueditor/add_dialog.c:239 ../menueditor/edit_dialog.c:161
 msgid "Run in _terminal"
 msgstr "Suorita _päätteessä"
 
-#: ../menueditor/add_dialog.c:272 ../menueditor/edit_dialog.c:242
+#: ../menueditor/add_dialog.c:270 ../menueditor/edit_dialog.c:240
 msgid "The command doesn't exist !"
 msgstr "Komentoa ei löydy!"
 
-#: ../menueditor/add_dialog.c:278 ../menueditor/edit_dialog.c:248
+#: ../menueditor/add_dialog.c:276 ../menueditor/edit_dialog.c:246
 msgid "All fields must be filled to add an item."
 msgstr "Kaikki kentät täytyy täyttää, jotta kohteen voi lisätä."
 
-#: ../menueditor/add_dialog.c:287 ../menueditor/edit_dialog.c:257
+#: ../menueditor/add_dialog.c:285 ../menueditor/edit_dialog.c:255
 msgid "The 'Name' field is required."
 msgstr "'Nimi'-kenttä on pakollinen."
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:319
+#: ../menueditor/add_dialog.c:329 ../menueditor/utils.c:318
 msgid "--- separator ---"
 msgstr "--- erotin ---"
 
-#: ../menueditor/add_dialog.c:357 ../menueditor/edit_dialog.c:316
+#: ../menueditor/add_dialog.c:355 ../menueditor/edit_dialog.c:314
 msgid "quit"
 msgstr "lopeta"
 
 #: ../menueditor/add_menu_dialog.c:97 ../menueditor/add_menu_dialog.c:103
-#: ../menueditor/menueditor.c:842
+#: ../menueditor/menueditor.c:841
 msgid "Add an external menu"
 msgstr "Lisää ulkoinen valikko"
 
@@ -150,20 +150,20 @@ msgid "The 'Source' field is required."
 msgstr "'Lähde'-kenttä on pakollinen."
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:373
+#: ../menueditor/utils.c:372
 msgid "--- include ---"
 msgstr "--- sisällytys ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:390
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:389
 msgid "system"
 msgstr "järjestelmä"
 
 #. Create dialog for editing
-#: ../menueditor/edit_dialog.c:116 ../menueditor/edit_dialog.c:123
+#: ../menueditor/edit_dialog.c:114 ../menueditor/edit_dialog.c:121
 msgid "Edit menu entry"
 msgstr "Muokkaa valikon kohdetta"
 
-#: ../menueditor/edit_dialog.c:128
+#: ../menueditor/edit_dialog.c:126
 msgid "Separators cannot be edited"
 msgstr "Erottimia ei voi muokata"
 
@@ -192,12 +192,12 @@ msgstr "Haluatko varmasti sulkea nykyisen valikon?"
 msgid "Do you want to save before closing the file?"
 msgstr "Haluatko tallentaa ennen tiedoston sulkemista?"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:588
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:586
 msgid "Select command"
 msgstr "Valitse komento"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:524
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:738
 msgid "Question"
 msgstr "Kysymys"
 
@@ -230,107 +230,109 @@ msgstr "Haluatko siirtää kohteen ylempään valikkoon?"
 msgid "Do you want to move the item into the submenu?"
 msgstr "Haluatko siirtää kohteen alivalikkoon?"
 
-#: ../menueditor/menueditor.c:836
+#: ../menueditor/menueditor.c:835
 msgid "Edit"
 msgstr "Muokkaa"
 
 #. File menu
-#: ../menueditor/menueditor.c:860
+#: ../menueditor/menueditor.c:859
 msgid "_File"
 msgstr "_Tiedosto"
 
-#: ../menueditor/menueditor.c:869
+#: ../menueditor/menueditor.c:868
 msgid "Open default menu"
 msgstr "Avaa oletusvalikko"
 
 #. Edit menu
-#: ../menueditor/menueditor.c:883
+#: ../menueditor/menueditor.c:882
 msgid "_Edit"
 msgstr "_Muokkaa"
 
-#: ../menueditor/menueditor.c:889
+#: ../menueditor/menueditor.c:888
 msgid "Add an external menu..."
 msgstr "Lisää ulkoinen valikko..."
 
 #. Help menu
-#: ../menueditor/menueditor.c:901
+#: ../menueditor/menueditor.c:900
 msgid "_Help"
 msgstr "_Ohje"
 
-#: ../menueditor/menueditor.c:905
+#: ../menueditor/menueditor.c:904
 msgid "_About..."
 msgstr "T_ietoja..."
 
-#: ../menueditor/menueditor.c:917
+#: ../menueditor/menueditor.c:916
 msgid "Create a new Xfce4 menu file"
 msgstr "Luo uusi Xfce4-valikkotiedosto"
 
-#: ../menueditor/menueditor.c:922
+#: ../menueditor/menueditor.c:921
 msgid "Open an Xfce4 menu file"
 msgstr "Avaa Xfce4-valikkotietosto"
 
-#: ../menueditor/menueditor.c:927
+#: ../menueditor/menueditor.c:926
 msgid "Save current menu"
 msgstr "Tallenna nykyinen valikko"
 
-#: ../menueditor/menueditor.c:932
+#: ../menueditor/menueditor.c:931
 msgid "Close current menu"
 msgstr "Sulje nykyinen valikko"
 
-#: ../menueditor/menueditor.c:938
+#: ../menueditor/menueditor.c:937
 msgid "Add an entry to the menu"
 msgstr "Lisää kohde valikkoon"
 
-#: ../menueditor/menueditor.c:942
+#: ../menueditor/menueditor.c:941
 msgid "Delete the current entry"
 msgstr "Poista nykyinen kohde"
 
-#: ../menueditor/menueditor.c:948
+#: ../menueditor/menueditor.c:947
 msgid "Move the current entry up"
 msgstr "Siirrä kohdetta ylös"
 
-#: ../menueditor/menueditor.c:953
+#: ../menueditor/menueditor.c:952
 msgid "Move the current entry down"
 msgstr "Siirrä kohdetta alas"
 
-#: ../menueditor/menueditor.c:959
+#: ../menueditor/menueditor.c:958
 msgid "Collapse the tree"
 msgstr "Supista puu"
 
-#: ../menueditor/menueditor.c:964
+#: ../menueditor/menueditor.c:963
 msgid "Expand the tree"
 msgstr "Laajenna puu"
 
-#: ../menueditor/menueditor.c:992
+#: ../menueditor/menueditor.c:991
 msgid "Name"
 msgstr "Nimi"
 
-#: ../menueditor/menueditor.c:995
+#: ../menueditor/menueditor.c:994
 msgid "Command"
 msgstr "Komento"
 
-#: ../menueditor/menueditor.c:996
+#: ../menueditor/menueditor.c:995
 msgid "Hidden"
 msgstr "Piilotettu"
 
-#: ../menueditor/utils.c:650
+#: ../menueditor/utils.c:648
 msgid "Select icon"
 msgstr "Valitse kuvake"
 
-#: ../menueditor/utils.c:656 ../panel-plugin/desktop-menu-plugin.c:545
-#: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
-#: ../settings/backdrop_settings.c:529
+#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:550
+#: ../settings/appearance-settings.c:529
+#: ../settings/backdrop-list-manager.c:435
+#: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Kaikki tiedostot"
 
-#: ../menueditor/utils.c:660 ../panel-plugin/desktop-menu-plugin.c:551
-#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:533
+#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:556
+#: ../settings/appearance-settings.c:533
+#: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Kuvatiedostot"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:707
+#: ../panel-plugin/desktop-menu-plugin.c:712
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce-valikko"
@@ -362,190 +364,148 @@ msgstr ""
 msgid "/Other"
 msgstr "/Muut"
 
-#: ../panel-plugin/desktop-menu-plugin.c:528
+#: ../panel-plugin/desktop-menu-plugin.c:533
 msgid "Select Icon"
 msgstr "Valitse kuvake"
 
-#: ../panel-plugin/desktop-menu-plugin.c:530
+#: ../panel-plugin/desktop-menu-plugin.c:535
 msgid "Select Menu File"
 msgstr "Valitse valikkotiedosto"
 
-#: ../panel-plugin/desktop-menu-plugin.c:559
+#: ../panel-plugin/desktop-menu-plugin.c:564
 msgid "Menu Files"
 msgstr "Valikkotiedostot"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:169
+#: ../panel-plugin/desktop-menu-plugin.c:681
+#: ../settings/behavior-settings.c:199
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-valikkoeditoria ei voitu käynnistää: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:699
+#: ../panel-plugin/desktop-menu-plugin.c:704
 msgid "Edit Properties"
 msgstr "Muokkaa ominaisuuksia"
 
-#: ../panel-plugin/desktop-menu-plugin.c:717
+#: ../panel-plugin/desktop-menu-plugin.c:722
 msgid "Button"
 msgstr "Painike"
 
-#: ../panel-plugin/desktop-menu-plugin.c:730
+#: ../panel-plugin/desktop-menu-plugin.c:735
 msgid "Button _title:"
 msgstr "_Painikkeen otsake:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:743
+#: ../panel-plugin/desktop-menu-plugin.c:748
 msgid "_Show title in button"
 msgstr "_Näytä painikkeen otsake"
 
-#: ../panel-plugin/desktop-menu-plugin.c:750
+#: ../panel-plugin/desktop-menu-plugin.c:755
 msgid "Menu File"
 msgstr "Valikkotiedosto"
 
-#: ../panel-plugin/desktop-menu-plugin.c:762
+#: ../panel-plugin/desktop-menu-plugin.c:767
 msgid "Use default _desktop menu file"
 msgstr "Käytä _oletusvalikkotiedostoa"
 
-#: ../panel-plugin/desktop-menu-plugin.c:771
+#: ../panel-plugin/desktop-menu-plugin.c:776
 msgid "Use _custom menu file:"
 msgstr "Avaa _mukautettu valikkotiedosto:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:823
-#: ../panel-plugin/desktop-menu-plugin.c:825
+#: ../panel-plugin/desktop-menu-plugin.c:828
+#: ../panel-plugin/desktop-menu-plugin.c:830
+#: ../settings/behavior-settings.c:249
 msgid "_Edit Menu"
 msgstr "M_uokkaa valikkoa"
 
-#: ../panel-plugin/desktop-menu-plugin.c:832
+#: ../panel-plugin/desktop-menu-plugin.c:837
 msgid "Icons"
 msgstr "Kuvakkeet"
 
-#: ../panel-plugin/desktop-menu-plugin.c:844
+#: ../panel-plugin/desktop-menu-plugin.c:849
 msgid "_Button icon:"
 msgstr "_Painikkeen kuvake:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:868
+#: ../panel-plugin/desktop-menu-plugin.c:873
 msgid "Show _icons in menu"
 msgstr "Näytä k_uvake valikossa"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop-settings.c:74
-#, c-format
-msgid ""
-"Could not save file %s: %s\n"
-"\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
-msgstr ""
-"Tiedostoa %s ei voitu tallentaa: %s\n"
-"\n"
-"Valitse toinen sijainti tai paina peruuta-painiketta hylätäksesti muutokset"
-
-#: ../settings/backdrop-mgr.c:431
-msgid "Select backdrop image file"
-msgstr "Valitse taustakuvatiedosto"
-
-#: ../settings/backdrop-mgr.c:532
-msgid "Choose backdrop list filename"
-msgstr "Valitse taustakuvalistan tiedostonimi"
-
-#: ../settings/backdrop-mgr.c:541
-msgid "List Files"
-msgstr "Listatiedostot"
-
-#: ../settings/backdrop-mgr.c:604
-msgid "Backdrop List"
-msgstr "Taustakuvalista"
-
-#: ../settings/backdrop-mgr.c:621
-msgid "Image files"
-msgstr "Kuvatiedostot"
-
-#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:184
-#: ../settings/backdrop_settings.c:193
-msgid "backdrops.list"
-msgstr "backdrops.list"
-
-#: ../settings/backdrop-mgr.c:640
-msgid "List file"
-msgstr "Listatiedosto"
-
-#: ../settings/backdrop-mgr.c:660
-msgid "Create backdrop list"
-msgstr "Luo taustakuvalista"
-
-#: ../settings/backdrop-mgr.c:691
-msgid "Edit backdrop list"
-msgstr "Muokkaa taustakuvalistaa"
-
 #. the dialog
-#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:907
-#: ../src/xfce-desktop.c:513
+#: ../settings/appearance-settings.c:133 ../settings/appearance-settings.c:909
+#: ../src/xfce-desktop.c:593
 msgid "Desktop"
 msgstr "Työpöytä"
 
-#: ../settings/backdrop_settings.c:524
+#: ../settings/appearance-settings.c:184 ../settings/appearance-settings.c:193
+#: ../settings/backdrop-list-manager.c:631
+msgid "backdrops.list"
+msgstr "backdrops.list"
+
+#: ../settings/appearance-settings.c:524
 msgid "Select backdrop image or list file"
 msgstr "Valitse taustakuva tai listatiedosto"
 
-#: ../settings/backdrop_settings.c:542
+#: ../settings/appearance-settings.c:542
 msgid "List Files (*.list)"
 msgstr "Listatiedostot (*.list)"
 
-#: ../settings/backdrop_settings.c:632
+#: ../settings/appearance-settings.c:634
 msgid "_Edit list..."
 msgstr "_Muokkaa listaa"
 
-#: ../settings/backdrop_settings.c:640
+#: ../settings/appearance-settings.c:642
 msgid "_New list..."
 msgstr "_Uusi lista"
 
-#: ../settings/backdrop_settings.c:673
+#: ../settings/appearance-settings.c:675
 msgid "S_tyle:"
 msgstr "T_yyli:"
 
-#: ../settings/backdrop_settings.c:680
+#: ../settings/appearance-settings.c:682
 msgid "Auto"
 msgstr "Automaattinen"
 
-#: ../settings/backdrop_settings.c:681
+#: ../settings/appearance-settings.c:683
 msgid "Centered"
 msgstr "Keskitetty"
 
-#: ../settings/backdrop_settings.c:682
+#: ../settings/appearance-settings.c:684
 msgid "Tiled"
 msgstr "Rinnakkain"
 
-#: ../settings/backdrop_settings.c:683
+#: ../settings/appearance-settings.c:685
 msgid "Stretched"
 msgstr "Venytetty"
 
-#: ../settings/backdrop_settings.c:684
+#: ../settings/appearance-settings.c:686
 msgid "Scaled"
 msgstr "Skaalattu"
 
-#: ../settings/backdrop_settings.c:741
+#: ../settings/appearance-settings.c:743
 msgid "A_djust Brightness:"
 msgstr "Säädä ki_rkkautta:"
 
-#: ../settings/backdrop_settings.c:797
+#: ../settings/appearance-settings.c:799
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce ei voi hallita työpöytääsi (%s)."
 
-#: ../settings/backdrop_settings.c:798
+#: ../settings/appearance-settings.c:800
 msgid "Unknown Error"
 msgstr "Tuntematon virhe"
 
-#: ../settings/backdrop_settings.c:802 ../src/xfdesktop-file-icon.c:459
-#: ../src/xfdesktop-file-icon.c:479 ../src/xfdesktop-file-icon.c:612
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:668
+#: ../src/xfdesktop-file-icon.c:688 ../src/xfdesktop-file-icon.c:830
 msgid "Error"
 msgstr "Virhe"
 
-#: ../settings/backdrop_settings.c:804
+#: ../settings/appearance-settings.c:806
 msgid "Unable to start xfdesktop"
 msgstr "Ei voi käynnistää xfdesktopia"
 
-#: ../settings/backdrop_settings.c:822
+#: ../settings/appearance-settings.c:824
 msgid "Information"
 msgstr "Tietoja"
 
-#: ../settings/backdrop_settings.c:832
+#: ../settings/appearance-settings.c:834
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -559,192 +519,232 @@ msgstr ""
 "config/xfce4/xinitrc käsin. Lisätietoja löydät ohjeistuksesta osoitteessa "
 "http://xfce.org/."
 
-#: ../settings/backdrop_settings.c:840
+#: ../settings/appearance-settings.c:842
 msgid "_Do not show this again"
 msgstr "_Älä näytä tätä uudelleen"
 
 #. header
-#: ../settings/backdrop_settings.c:922
+#: ../settings/appearance-settings.c:924
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "Työpöydän asetukset"
 
-#: ../settings/backdrop_settings.c:927
+#: ../settings/appearance-settings.c:929
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Anna _Xfce:n hallita työpöytää"
 
-#: ../settings/backdrop_settings.c:968
+#: ../settings/appearance-settings.c:970
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "Venytä yksi taustakuva _kaikille näytöille"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/backdrop_settings.c:982 ../settings/backdrop_settings.c:1164
+#: ../settings/appearance-settings.c:984
+#: ../settings/appearance-settings.c:1166
 msgid "_Appearance"
 msgstr "_Ulkoasu"
 
 #. color settings frame
-#: ../settings/backdrop_settings.c:1008
+#: ../settings/appearance-settings.c:1010
 msgid "Color"
 msgstr "Väri"
 
-#: ../settings/backdrop_settings.c:1022
+#: ../settings/appearance-settings.c:1024
 msgid "_Color Style:"
 msgstr "_Väritystapa:"
 
-#: ../settings/backdrop_settings.c:1029
+#: ../settings/appearance-settings.c:1031
 msgid "Solid Color"
 msgstr "Yksivärinen"
 
-#: ../settings/backdrop_settings.c:1030
+#: ../settings/appearance-settings.c:1032
 msgid "Horizontal Gradient"
 msgstr "Vaakaväriliuku"
 
-#: ../settings/backdrop_settings.c:1031
+#: ../settings/appearance-settings.c:1033
 msgid "Vertical Gradient"
 msgstr "Pystyväriliuku"
 
-#: ../settings/backdrop_settings.c:1044
+#: ../settings/appearance-settings.c:1046
 msgid "Fi_rst Color:"
 msgstr "_Ensimmäinen väri:"
 
-#: ../settings/backdrop_settings.c:1065
+#: ../settings/appearance-settings.c:1067
 msgid "_Second Color:"
 msgstr "_Toinen väri"
 
-#: ../settings/backdrop_settings.c:1090
+#: ../settings/appearance-settings.c:1092
 msgid "Image"
 msgstr "Kuva"
 
-#: ../settings/backdrop_settings.c:1098
+#: ../settings/appearance-settings.c:1100
 msgid "Show _Image"
 msgstr "Näytä _kuva"
 
-#: ../settings/backdrop_settings.c:1120
+#: ../settings/appearance-settings.c:1122
 msgid "_File:"
 msgstr "Tie_dosto:"
 
-#: ../settings/backdrop_settings.c:1175 ../settings/backdrop_settings.c:1177
+#: ../settings/appearance-settings.c:1177
+#: ../settings/appearance-settings.c:1179
 #, c-format
 msgid "Screen %d"
 msgstr "Näyttö %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/backdrop_settings.c:1182
+#: ../settings/appearance-settings.c:1184
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Näyttö %d, Monitori %d"
 
-#: ../settings/backdrop_settings.c:1199
+#: ../settings/appearance-settings.c:1201
 msgid "_Behavior"
 msgstr "_Käytös"
 
-#: ../settings/menu_settings.c:193
-#, fuzzy
-msgid "Window List Menu"
-msgstr "M_uokkaa valikkoa"
+#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"Tiedostoa %s ei voitu tallentaa: %s\n"
+"\n"
+"Valitse toinen sijainti tai paina peruuta-painiketta hylätäksesti muutokset"
 
-#: ../settings/menu_settings.c:201
+#: ../settings/backdrop-list-manager.c:430
+msgid "Select backdrop image file"
+msgstr "Valitse taustakuvatiedosto"
+
+#: ../settings/backdrop-list-manager.c:531
+msgid "Choose backdrop list filename"
+msgstr "Valitse taustakuvalistan tiedostonimi"
+
+#: ../settings/backdrop-list-manager.c:540
+msgid "List Files"
+msgstr "Listatiedostot"
+
+#: ../settings/backdrop-list-manager.c:603
+msgid "Backdrop List"
+msgstr "Taustakuvalista"
+
+#: ../settings/backdrop-list-manager.c:620
+msgid "Image files"
+msgstr "Kuvatiedostot"
+
+#: ../settings/backdrop-list-manager.c:639
+msgid "List file"
+msgstr "Listatiedosto"
+
+#: ../settings/backdrop-list-manager.c:661
+msgid "Create backdrop list"
+msgstr "Luo taustakuvalista"
+
+#: ../settings/backdrop-list-manager.c:694
+msgid "Edit backdrop list"
+msgstr "Muokkaa taustakuvalistaa"
+
+#: ../settings/behavior-settings.c:223
 #, fuzzy
-msgid "Show window _list"
+msgid "Menus"
+msgstr "Valikkotiedostot"
+
+#: ../settings/behavior-settings.c:231
+#, fuzzy
+msgid "Show _window list on middle click"
 msgstr "Näytä i_kkunalista keskipainiketta napsautettaessa"
 
-#: ../settings/menu_settings.c:216
+#: ../settings/behavior-settings.c:242
 #, fuzzy
-msgid "Show _window icons"
-msgstr "Näytä i_kkunalista keskipainiketta napsautettaessa"
-
-#: ../settings/menu_settings.c:229
-#, fuzzy
-msgid "Desktop Menu"
-msgstr "Työpöytä"
-
-#: ../settings/menu_settings.c:237
-#, fuzzy
-msgid "Show desktop _menu"
+msgid "Show _desktop menu on right click"
 msgstr "Näytä _työpöytävalikko"
 
-#: ../settings/menu_settings.c:252
-#, fuzzy
-msgid "_Show application icons"
-msgstr "Pienennettyjen s_ovellusten kuvakkeet"
-
-#: ../settings/menu_settings.c:263
-#, fuzzy
-msgid "_Edit desktop menu"
-msgstr "Näytä _työpöytävalikko"
-
-#: ../settings/menu_settings.c:275
+#: ../settings/behavior-settings.c:261
 msgid "Desktop Icons"
 msgstr "Työpöytäkuvakkeet"
 
-#: ../settings/menu_settings.c:280 ../src/xfdesktop-file-icon.c:659
+#: ../settings/behavior-settings.c:270 ../src/xfdesktop-file-icon.c:878
 msgid "None"
 msgstr "Ei mitään"
 
-#: ../settings/menu_settings.c:281
+#: ../settings/behavior-settings.c:271
 msgid "Minimized application icons"
 msgstr "Pienennettyjen s_ovellusten kuvakkeet"
 
-#: ../settings/menu_settings.c:283
+#: ../settings/behavior-settings.c:273
 msgid "File/launcher icons"
 msgstr "Tiedostojen/käynnistimien kuvakkeet"
 
-#: ../src/main.c:226
+#: ../settings/behavior-settings.c:284
+#, fuzzy
+msgid "_Icon size:"
+msgstr "Kuvakesuunnittelija"
+
+#: ../settings/behavior-settings.c:298
+#, fuzzy
+msgid "Use _system font size"
+msgstr "Avaa _mukautettu valikkotiedosto:"
+
+#: ../settings/behavior-settings.c:315
+msgid "Custom _font size:"
+msgstr ""
+
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Tämä on %s versio %s, suoritusympäristönä Xfce %s.\n"
 
-#: ../src/main.c:228
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Kääntäessä käytössä GTK+ %d.%d.%d, nyt GTK+ %d.%d.%d."
 
-#: ../src/main.c:232
+#: ../src/main.c:246
 msgid "Build options:\n"
 msgstr "Käännösvalitsimet:\n"
 
-#: ../src/main.c:233
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Työpöytävalikko:     %s\n"
 
-#: ../src/main.c:235 ../src/main.c:242
+#: ../src/main.c:249 ../src/main.c:256
 msgid "enabled"
 msgstr "käytössä"
 
-#: ../src/main.c:237 ../src/main.c:244
+#: ../src/main.c:251 ../src/main.c:258
 msgid "disabled"
 msgstr "poissa käytöstä"
 
-#: ../src/main.c:240
+#: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Työpöytäkuvakkeet:   %s\n"
 
-#: ../src/main.c:271
+#: ../src/main.c:285
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Tuntematon valitsin: %s\n"
 
-#: ../src/main.c:272
+#: ../src/main.c:286
 msgid "Options are:\n"
 msgstr "Valitsimet ovat:\n"
 
-#: ../src/main.c:273
+#: ../src/main.c:287
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload     Lataa kaikki asetukset uudelleen, päivittää kuvalistan\n"
 
-#: ../src/main.c:274
+#: ../src/main.c:288
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Näyttää valikon (nykyisessä hiiren kohdassa)\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:289
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Näyttää ikkunalistan (nykyisessä hiiden kohdassa)\n"
 
-#: ../src/main.c:276
+#: ../src/main.c:290
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        Lopeta xfdesktop 4.3.0\n"
 
@@ -781,40 +781,72 @@ msgstr "Haluatko varmasti poistaa lopullisesti seuraavat %d tiedostoa?"
 msgid "Delete Multiple Files"
 msgstr "Poista useita tiedostoja"
 
-#: ../src/xfdesktop-file-icon-manager.c:418 ../src/xfdesktop-file-icon.c:526
+#: ../src/xfdesktop-file-icon-manager.c:418 ../src/xfdesktop-file-icon.c:740
 msgid "If you delete a file, it is permanently lost."
 msgstr "Jos poistat tiedoston, sitä ei voi palauttaa."
 
-#: ../src/xfdesktop-file-icon.c:403
+#: ../src/xfdesktop-file-icon.c:370
+#, c-format
+msgid "There was an error %s \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:372
+msgid "moving"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:374
+msgid "copying"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:375
+msgid "linking"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:378
+#, fuzzy
+msgid "File Error"
+msgstr "Virhe"
+
+#: ../src/xfdesktop-file-icon.c:438
+#, fuzzy, c-format
+msgid "Failed to run \"%s\":"
+msgstr "Nimen \"%s\" muuttaminen muotoon \"%s\" epäonnistui:"
+
+#: ../src/xfdesktop-file-icon.c:440
+#, fuzzy
+msgid "Run Error"
+msgstr "Virhe"
+
+#: ../src/xfdesktop-file-icon.c:612
 #, c-format
 msgid "Rename \"%s\""
 msgstr "Nimeä \"%s\" uudelleen"
 
-#: ../src/xfdesktop-file-icon.c:432
+#: ../src/xfdesktop-file-icon.c:641
 msgid "Enter the new name:"
 msgstr "Syötä uusi nimi:"
 
-#: ../src/xfdesktop-file-icon.c:457
+#: ../src/xfdesktop-file-icon.c:666
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Nimen \"%s\" muuttaminen muotoon \"%s\" epäonnistui:"
 
-#: ../src/xfdesktop-file-icon.c:569
-#, fuzzy
-msgid "_Open With "
+#: ../src/xfdesktop-file-icon.c:784
+#, fuzzy, c-format
+msgid "_Open With \"%s\""
 msgstr "Avaa sovelluksessa"
 
-#: ../src/xfdesktop-file-icon.c:569
-#, fuzzy
-msgid "Open With "
+#: ../src/xfdesktop-file-icon.c:787
+#, fuzzy, c-format
+msgid "Open With \"%s\""
 msgstr "Avaa sovelluksessa"
 
-#: ../src/xfdesktop-file-icon.c:610
+#: ../src/xfdesktop-file-icon.c:828
 #, c-format
 msgid "Unable to launch \"%s\"."
 msgstr "Ei voi käynnistää kohdetta \"%s\"."
 
-#: ../src/xfdesktop-file-icon.c:614
+#: ../src/xfdesktop-file-icon.c:832
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -822,113 +854,123 @@ msgstr ""
 "Toiminto vaatii tiedostonhallintapalvelun (jollaisen tarjoaa esimerkiksi "
 "Thunar)."
 
-#: ../src/xfdesktop-file-icon.c:659
+#: ../src/xfdesktop-file-icon.c:878
 msgid "Write only"
 msgstr "Vain kirjoitus"
 
-#: ../src/xfdesktop-file-icon.c:659
+#: ../src/xfdesktop-file-icon.c:878
 msgid "Read only"
 msgstr "Vain luku"
 
-#: ../src/xfdesktop-file-icon.c:659
+#: ../src/xfdesktop-file-icon.c:878
 msgid "Read & Write"
 msgstr "Luku ja kirjoitus"
 
-#: ../src/xfdesktop-file-icon.c:678
+#: ../src/xfdesktop-file-icon.c:897
 msgid "General"
 msgstr "Yleiset"
 
-#: ../src/xfdesktop-file-icon.c:725
+#: ../src/xfdesktop-file-icon.c:944
 msgid "Kind:"
 msgstr "Tyyppi:"
 
-#: ../src/xfdesktop-file-icon.c:735
+#: ../src/xfdesktop-file-icon.c:954
 msgid "broken link"
 msgstr "rikkinäinen linkki"
 
-#: ../src/xfdesktop-file-icon.c:737
+#: ../src/xfdesktop-file-icon.c:956
 #, c-format
 msgid "link to %s"
 msgstr "linkki kohteeseen %s"
 
-#: ../src/xfdesktop-file-icon.c:758
+#: ../src/xfdesktop-file-icon.c:975
+#, fuzzy
+msgid "Open With:"
+msgstr "Avaa sovelluksessa"
+
+#: ../src/xfdesktop-file-icon.c:1020
 msgid "Modified:"
 msgstr "Muokattu:"
 
-#: ../src/xfdesktop-file-icon.c:776
+#: ../src/xfdesktop-file-icon.c:1038
 msgid "Accessed:"
 msgstr "Käytetty:"
 
-#: ../src/xfdesktop-file-icon.c:803
+#: ../src/xfdesktop-file-icon.c:1065
 msgid "Free Space:"
 msgstr "Vapaata tilaa:"
 
-#: ../src/xfdesktop-file-icon.c:805
+#: ../src/xfdesktop-file-icon.c:1067
 msgid "Size:"
 msgstr "Koko:"
 
-#: ../src/xfdesktop-file-icon.c:818
+#: ../src/xfdesktop-file-icon.c:1080
 msgid "unknown"
 msgstr "tuntematon"
 
-#: ../src/xfdesktop-file-icon.c:821
+#: ../src/xfdesktop-file-icon.c:1083
 msgid "%s (%"
 msgstr "%s (%"
 
-#: ../src/xfdesktop-file-icon.c:821
+#: ../src/xfdesktop-file-icon.c:1083
 msgid " Bytes)"
 msgstr " tavua)"
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon.c:836
+#: ../src/xfdesktop-file-icon.c:1098
 msgid "Permissions"
 msgstr "Käyttöoikeudet"
 
-#: ../src/xfdesktop-file-icon.c:858
+#: ../src/xfdesktop-file-icon.c:1120
 msgid "Owner:"
 msgstr "Omistaja:"
 
-#: ../src/xfdesktop-file-icon.c:876 ../src/xfdesktop-file-icon.c:914
+#: ../src/xfdesktop-file-icon.c:1138 ../src/xfdesktop-file-icon.c:1176
 msgid "Access:"
 msgstr "Käyttöoikeus:"
 
-#: ../src/xfdesktop-file-icon.c:899
+#: ../src/xfdesktop-file-icon.c:1161
 msgid "Group:"
 msgstr "Ryhmä:"
 
-#: ../src/xfdesktop-file-icon.c:937
+#: ../src/xfdesktop-file-icon.c:1199
 msgid "Others:"
 msgstr "Muut:"
 
-#: ../src/xfdesktop-file-icon.c:986
+#: ../src/xfdesktop-file-icon.c:1248
 msgid "_Open"
 msgstr "_Avaa"
 
-#: ../src/xfdesktop-file-icon.c:994
+#: ../src/xfdesktop-file-icon.c:1259
 msgid "_Execute"
 msgstr "_Suorita"
 
-#: ../src/xfdesktop-file-icon.c:1031
+#: ../src/xfdesktop-file-icon.c:1293
+#, fuzzy
+msgid "Open With"
+msgstr "Avaa sovelluksessa"
+
+#: ../src/xfdesktop-file-icon.c:1318
 msgid "Open With Other _Application..."
 msgstr "Avaa _muussa sovelluksessa..."
 
-#: ../src/xfdesktop-file-icon.c:1047
+#: ../src/xfdesktop-file-icon.c:1334
 msgid "_Copy File"
 msgstr "_Kopioi tiedosto"
 
-#: ../src/xfdesktop-file-icon.c:1056
+#: ../src/xfdesktop-file-icon.c:1343
 msgid "Cu_t File"
 msgstr "_Leikkaa tiedosto"
 
-#: ../src/xfdesktop-file-icon.c:1065
+#: ../src/xfdesktop-file-icon.c:1352
 msgid "_Delete File"
 msgstr "_Poista tiedosto"
 
-#: ../src/xfdesktop-file-icon.c:1076
+#: ../src/xfdesktop-file-icon.c:1363
 msgid "_Rename..."
 msgstr "_Nimeä uudelleen..."
 
-#: ../src/xfdesktop-file-icon.c:1088
+#: ../src/xfdesktop-file-icon.c:1375
 msgid "_Properties..."
 msgstr "_Ominaisuudet"
 

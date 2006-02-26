@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-18 21:35+0900\n"
+"POT-Creation-Date: 2006-02-26 22:36+0900\n"
 "PO-Revision-Date: 2006-02-12 03:09+0300\n"
 "Last-Translator: Phan Vĩnh Thịnh <teppi@vnlinux.org>\n"
 "Language-Team: Vietnamese <none@li.org>\n"
@@ -35,84 +35,84 @@ msgstr "Người đóng góp"
 msgid "Icon designer"
 msgstr "Người thiết kế biểu tượng"
 
-#: ../menueditor/add_dialog.c:159 ../menueditor/add_dialog.c:169
+#: ../menueditor/add_dialog.c:157 ../menueditor/add_dialog.c:167
 msgid "Add menu entry"
 msgstr "Thêm đề mục thực đơn"
 
 #. Type
-#: ../menueditor/add_dialog.c:173 ../menueditor/add_menu_dialog.c:110
+#: ../menueditor/add_dialog.c:171 ../menueditor/add_menu_dialog.c:110
 msgid "Type:"
 msgstr "Loại:"
 
-#: ../menueditor/add_dialog.c:176
+#: ../menueditor/add_dialog.c:174
 msgid "Launcher"
 msgstr "Trình gọi"
 
-#: ../menueditor/add_dialog.c:180
+#: ../menueditor/add_dialog.c:178
 msgid "Submenu"
 msgstr "Thực đơn phụ"
 
-#: ../menueditor/add_dialog.c:184
+#: ../menueditor/add_dialog.c:182
 msgid "Separator"
 msgstr "Dấu cách"
 
-#: ../menueditor/add_dialog.c:188
+#: ../menueditor/add_dialog.c:186
 msgid "Title"
 msgstr "Tiêu đề"
 
-#: ../menueditor/add_dialog.c:192
+#: ../menueditor/add_dialog.c:190
 msgid "Quit"
 msgstr "Thoát"
 
 #. Name
-#: ../menueditor/add_dialog.c:206 ../menueditor/edit_dialog.c:147
-#: ../menueditor/edit_dialog.c:207 ../src/xfdesktop-file-icon.c:703
+#: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon.c:922
 msgid "Name:"
 msgstr "Tên:"
 
-#: ../menueditor/add_dialog.c:214 ../menueditor/edit_dialog.c:152
+#: ../menueditor/add_dialog.c:212 ../menueditor/edit_dialog.c:150
 msgid "Command:"
 msgstr "Lệnh:"
 
-#: ../menueditor/add_dialog.c:226 ../menueditor/edit_dialog.c:139
-#: ../menueditor/edit_dialog.c:199
+#: ../menueditor/add_dialog.c:224 ../menueditor/edit_dialog.c:137
+#: ../menueditor/edit_dialog.c:197
 msgid "Icon:"
 msgstr "Biểu tượng:"
 
 #. Start Notify check button
 #. Startup notification
-#: ../menueditor/add_dialog.c:237 ../menueditor/edit_dialog.c:160
+#: ../menueditor/add_dialog.c:235 ../menueditor/edit_dialog.c:158
 msgid "Use startup _notification"
 msgstr "Dùng thông _báo khởi động"
 
 #. Run in terminal check button
 #. Run in terminal
-#: ../menueditor/add_dialog.c:241 ../menueditor/edit_dialog.c:163
+#: ../menueditor/add_dialog.c:239 ../menueditor/edit_dialog.c:161
 msgid "Run in _terminal"
 msgstr "Chạy ở _trạm cuối"
 
-#: ../menueditor/add_dialog.c:272 ../menueditor/edit_dialog.c:242
+#: ../menueditor/add_dialog.c:270 ../menueditor/edit_dialog.c:240
 msgid "The command doesn't exist !"
 msgstr "Lệnh này không tồn tại !"
 
-#: ../menueditor/add_dialog.c:278 ../menueditor/edit_dialog.c:248
+#: ../menueditor/add_dialog.c:276 ../menueditor/edit_dialog.c:246
 msgid "All fields must be filled to add an item."
 msgstr "Tất cả các khoản cần được điền để thêm mục mới"
 
-#: ../menueditor/add_dialog.c:287 ../menueditor/edit_dialog.c:257
+#: ../menueditor/add_dialog.c:285 ../menueditor/edit_dialog.c:255
 msgid "The 'Name' field is required."
 msgstr "Khoản 'Tên' cần thiết"
 
-#: ../menueditor/add_dialog.c:331 ../menueditor/utils.c:319
+#: ../menueditor/add_dialog.c:329 ../menueditor/utils.c:318
 msgid "--- separator ---"
 msgstr "--- dấu cách ---"
 
-#: ../menueditor/add_dialog.c:357 ../menueditor/edit_dialog.c:316
+#: ../menueditor/add_dialog.c:355 ../menueditor/edit_dialog.c:314
 msgid "quit"
 msgstr "thoát"
 
 #: ../menueditor/add_menu_dialog.c:97 ../menueditor/add_menu_dialog.c:103
-#: ../menueditor/menueditor.c:842
+#: ../menueditor/menueditor.c:841
 msgid "Add an external menu"
 msgstr "Thêm thực đơn bên ngoài"
 
@@ -151,20 +151,20 @@ msgid "The 'Source' field is required."
 msgstr "Khoảng 'Nguồn' cần thiết."
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:373
+#: ../menueditor/utils.c:372
 msgid "--- include ---"
 msgstr "--- gồm ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:390
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:389
 msgid "system"
 msgstr "hệ thống"
 
 #. Create dialog for editing
-#: ../menueditor/edit_dialog.c:116 ../menueditor/edit_dialog.c:123
+#: ../menueditor/edit_dialog.c:114 ../menueditor/edit_dialog.c:121
 msgid "Edit menu entry"
 msgstr "Biên tập đề mục thực đon"
 
-#: ../menueditor/edit_dialog.c:128
+#: ../menueditor/edit_dialog.c:126
 msgid "Separators cannot be edited"
 msgstr "Không thể biên tập dấu cách"
 
@@ -193,12 +193,12 @@ msgstr "Bạn có chắc bạn muốn đóng thực đơn hiện tại?"
 msgid "Do you want to save before closing the file?"
 msgstr "Bạn có muốn lưu trước khi đóng tập tin?"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:588
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:586
 msgid "Select command"
 msgstr "Chọn lệnh"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:524
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon.c:738
 msgid "Question"
 msgstr "Câu hỏi"
 
@@ -231,107 +231,109 @@ msgstr "Bạn có muốn di chuyển mục vào thực đơn mẹ?"
 msgid "Do you want to move the item into the submenu?"
 msgstr "Bạn có muốn di chuyển mục vào thực đơn phụ?"
 
-#: ../menueditor/menueditor.c:836
+#: ../menueditor/menueditor.c:835
 msgid "Edit"
 msgstr "Biên tập"
 
 #. File menu
-#: ../menueditor/menueditor.c:860
+#: ../menueditor/menueditor.c:859
 msgid "_File"
 msgstr "_Tập tin"
 
-#: ../menueditor/menueditor.c:869
+#: ../menueditor/menueditor.c:868
 msgid "Open default menu"
 msgstr "Mở thực đơn mặc định"
 
 #. Edit menu
-#: ../menueditor/menueditor.c:883
+#: ../menueditor/menueditor.c:882
 msgid "_Edit"
 msgstr "_Biên tập"
 
-#: ../menueditor/menueditor.c:889
+#: ../menueditor/menueditor.c:888
 msgid "Add an external menu..."
 msgstr "Thêm thực đơn bên ngoài..."
 
 #. Help menu
-#: ../menueditor/menueditor.c:901
+#: ../menueditor/menueditor.c:900
 msgid "_Help"
 msgstr "_Giúp đỡ"
 
-#: ../menueditor/menueditor.c:905
+#: ../menueditor/menueditor.c:904
 msgid "_About..."
 msgstr "_Về..."
 
-#: ../menueditor/menueditor.c:917
+#: ../menueditor/menueditor.c:916
 msgid "Create a new Xfce4 menu file"
 msgstr "Tạo tập tin thực đơn Xfce4 mới"
 
-#: ../menueditor/menueditor.c:922
+#: ../menueditor/menueditor.c:921
 msgid "Open an Xfce4 menu file"
 msgstr "Mở tập tin thực đơn Xfce4"
 
-#: ../menueditor/menueditor.c:927
+#: ../menueditor/menueditor.c:926
 msgid "Save current menu"
 msgstr "Lưu thực đơn hiện tại"
 
-#: ../menueditor/menueditor.c:932
+#: ../menueditor/menueditor.c:931
 msgid "Close current menu"
 msgstr "Đóng thực đơn hiện tại"
 
-#: ../menueditor/menueditor.c:938
+#: ../menueditor/menueditor.c:937
 msgid "Add an entry to the menu"
 msgstr "Thêm đề mục vào thực đơn"
 
-#: ../menueditor/menueditor.c:942
+#: ../menueditor/menueditor.c:941
 msgid "Delete the current entry"
 msgstr "Xoá đề mục hiện tại"
 
-#: ../menueditor/menueditor.c:948
+#: ../menueditor/menueditor.c:947
 msgid "Move the current entry up"
 msgstr "Di chuyển đề mục hiện tại lên"
 
-#: ../menueditor/menueditor.c:953
+#: ../menueditor/menueditor.c:952
 msgid "Move the current entry down"
 msgstr "Di chuyển đề mục hiện tại xuống"
 
-#: ../menueditor/menueditor.c:959
+#: ../menueditor/menueditor.c:958
 msgid "Collapse the tree"
 msgstr "Khép cây"
 
-#: ../menueditor/menueditor.c:964
+#: ../menueditor/menueditor.c:963
 msgid "Expand the tree"
 msgstr "Mở cây"
 
-#: ../menueditor/menueditor.c:992
+#: ../menueditor/menueditor.c:991
 msgid "Name"
 msgstr "Tên"
 
-#: ../menueditor/menueditor.c:995
+#: ../menueditor/menueditor.c:994
 msgid "Command"
 msgstr "Lệnh"
 
-#: ../menueditor/menueditor.c:996
+#: ../menueditor/menueditor.c:995
 msgid "Hidden"
 msgstr "Ẩn"
 
-#: ../menueditor/utils.c:650
+#: ../menueditor/utils.c:648
 msgid "Select icon"
 msgstr "Chọn biểu tượng"
 
-#: ../menueditor/utils.c:656 ../panel-plugin/desktop-menu-plugin.c:545
-#: ../settings/backdrop-mgr.c:436 ../settings/backdrop-mgr.c:537
-#: ../settings/backdrop_settings.c:529
+#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:550
+#: ../settings/appearance-settings.c:529
+#: ../settings/backdrop-list-manager.c:435
+#: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Mọi tập tin"
 
-#: ../menueditor/utils.c:660 ../panel-plugin/desktop-menu-plugin.c:551
-#: ../settings/backdrop-mgr.c:440 ../settings/backdrop_settings.c:533
+#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:556
+#: ../settings/appearance-settings.c:533
+#: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Các tập tin hình ảnh"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:707
+#: ../panel-plugin/desktop-menu-plugin.c:712
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Thực đơn Xfce"
@@ -362,190 +364,148 @@ msgstr ""
 msgid "/Other"
 msgstr "/Khác"
 
-#: ../panel-plugin/desktop-menu-plugin.c:528
+#: ../panel-plugin/desktop-menu-plugin.c:533
 msgid "Select Icon"
 msgstr "Chọn biểu tượng"
 
-#: ../panel-plugin/desktop-menu-plugin.c:530
+#: ../panel-plugin/desktop-menu-plugin.c:535
 msgid "Select Menu File"
 msgstr "Chọn tập tin thực đơn"
 
-#: ../panel-plugin/desktop-menu-plugin.c:559
+#: ../panel-plugin/desktop-menu-plugin.c:564
 msgid "Menu Files"
 msgstr "Tập tin thực đơn"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676 ../settings/menu_settings.c:169
+#: ../panel-plugin/desktop-menu-plugin.c:681
+#: ../settings/behavior-settings.c:199
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Không thể gọi xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:699
+#: ../panel-plugin/desktop-menu-plugin.c:704
 msgid "Edit Properties"
 msgstr "Sửa thuộc tính"
 
-#: ../panel-plugin/desktop-menu-plugin.c:717
+#: ../panel-plugin/desktop-menu-plugin.c:722
 msgid "Button"
 msgstr "Nút"
 
-#: ../panel-plugin/desktop-menu-plugin.c:730
+#: ../panel-plugin/desktop-menu-plugin.c:735
 msgid "Button _title:"
 msgstr "Tiêu đề _nút:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:743
+#: ../panel-plugin/desktop-menu-plugin.c:748
 msgid "_Show title in button"
 msgstr "_Hiển thị tiêu đề trong nút"
 
-#: ../panel-plugin/desktop-menu-plugin.c:750
+#: ../panel-plugin/desktop-menu-plugin.c:755
 msgid "Menu File"
 msgstr "Tập tin thực đơn"
 
-#: ../panel-plugin/desktop-menu-plugin.c:762
+#: ../panel-plugin/desktop-menu-plugin.c:767
 msgid "Use default _desktop menu file"
 msgstr "Dùng tập tin thực đơn _mặc định"
 
-#: ../panel-plugin/desktop-menu-plugin.c:771
+#: ../panel-plugin/desktop-menu-plugin.c:776
 msgid "Use _custom menu file:"
 msgstr "Dùng tập tin thực đơn _cá nhân"
 
-#: ../panel-plugin/desktop-menu-plugin.c:823
-#: ../panel-plugin/desktop-menu-plugin.c:825
+#: ../panel-plugin/desktop-menu-plugin.c:828
+#: ../panel-plugin/desktop-menu-plugin.c:830
+#: ../settings/behavior-settings.c:249
 msgid "_Edit Menu"
 msgstr "_Sửa thực đơn"
 
-#: ../panel-plugin/desktop-menu-plugin.c:832
+#: ../panel-plugin/desktop-menu-plugin.c:837
 msgid "Icons"
 msgstr "Biểu tượng"
 
-#: ../panel-plugin/desktop-menu-plugin.c:844
+#: ../panel-plugin/desktop-menu-plugin.c:849
 msgid "_Button icon:"
 msgstr "Biểu tượng _nút:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:868
+#: ../panel-plugin/desktop-menu-plugin.c:873
 msgid "Show _icons in menu"
 msgstr "Hiển thị _biểu tượng trong thực đơn"
 
-#: ../settings/backdrop-mgr.c:161 ../src/xfce-desktop-settings.c:74
-#, c-format
-msgid ""
-"Could not save file %s: %s\n"
-"\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
-msgstr ""
-"Không thể lưu tập tin %s: %s\n"
-"\n"
-"Vui lòng chọn vị trí khác hoặc ấn bỏ qua trong hộp thoại để huỷ bỏ thay đổi "
-
-#: ../settings/backdrop-mgr.c:431
-msgid "Select backdrop image file"
-msgstr "Chọn tập tin hình ảnh phông nền"
-
-#: ../settings/backdrop-mgr.c:532
-msgid "Choose backdrop list filename"
-msgstr "Chọn tên tập tin danh sách phông nền"
-
-#: ../settings/backdrop-mgr.c:541
-msgid "List Files"
-msgstr "Liệt kê tập tin"
-
-#: ../settings/backdrop-mgr.c:604
-msgid "Backdrop List"
-msgstr "Danh sách phông nền"
-
-#: ../settings/backdrop-mgr.c:621
-msgid "Image files"
-msgstr "Tập tin hình ảnh"
-
-#: ../settings/backdrop-mgr.c:632 ../settings/backdrop_settings.c:184
-#: ../settings/backdrop_settings.c:193
-msgid "backdrops.list"
-msgstr "backdrops.list"
-
-#: ../settings/backdrop-mgr.c:640
-msgid "List file"
-msgstr "Liệt kê tập tin"
-
-#: ../settings/backdrop-mgr.c:660
-msgid "Create backdrop list"
-msgstr "Tạo danh sách phông nền"
-
-#: ../settings/backdrop-mgr.c:691
-msgid "Edit backdrop list"
-msgstr "Biên tập danh sách phông nền"
-
 #. the dialog
-#: ../settings/backdrop_settings.c:133 ../settings/backdrop_settings.c:907
-#: ../src/xfce-desktop.c:513
+#: ../settings/appearance-settings.c:133 ../settings/appearance-settings.c:909
+#: ../src/xfce-desktop.c:593
 msgid "Desktop"
 msgstr "Desktop"
 
-#: ../settings/backdrop_settings.c:524
+#: ../settings/appearance-settings.c:184 ../settings/appearance-settings.c:193
+#: ../settings/backdrop-list-manager.c:631
+msgid "backdrops.list"
+msgstr "backdrops.list"
+
+#: ../settings/appearance-settings.c:524
 msgid "Select backdrop image or list file"
 msgstr "Chọn hình ảnh phông nền hoặc tập tin danh sách"
 
-#: ../settings/backdrop_settings.c:542
+#: ../settings/appearance-settings.c:542
 msgid "List Files (*.list)"
 msgstr " Liệt kê tập tin (*.list)"
 
-#: ../settings/backdrop_settings.c:632
+#: ../settings/appearance-settings.c:634
 msgid "_Edit list..."
 msgstr "_Biên tập danh sách..."
 
-#: ../settings/backdrop_settings.c:640
+#: ../settings/appearance-settings.c:642
 msgid "_New list..."
 msgstr "_Danh sách mới..."
 
-#: ../settings/backdrop_settings.c:673
+#: ../settings/appearance-settings.c:675
 msgid "S_tyle:"
 msgstr "_Phong cách:"
 
-#: ../settings/backdrop_settings.c:680
+#: ../settings/appearance-settings.c:682
 msgid "Auto"
 msgstr "Tự động"
 
-#: ../settings/backdrop_settings.c:681
+#: ../settings/appearance-settings.c:683
 msgid "Centered"
 msgstr "Giữa"
 
-#: ../settings/backdrop_settings.c:682
+#: ../settings/appearance-settings.c:684
 msgid "Tiled"
 msgstr "Lợp"
 
-#: ../settings/backdrop_settings.c:683
+#: ../settings/appearance-settings.c:685
 msgid "Stretched"
 msgstr "Trải"
 
-#: ../settings/backdrop_settings.c:684
+#: ../settings/appearance-settings.c:686
 msgid "Scaled"
 msgstr "Vảy"
 
-#: ../settings/backdrop_settings.c:741
+#: ../settings/appearance-settings.c:743
 msgid "A_djust Brightness:"
 msgstr "Chỉnh độ _sáng:"
 
-#: ../settings/backdrop_settings.c:797
+#: ../settings/appearance-settings.c:799
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce sẽ không thể quản lý nền (%s)."
 
-#: ../settings/backdrop_settings.c:798
+#: ../settings/appearance-settings.c:800
 msgid "Unknown Error"
 msgstr "Lỗi không rõ nguyên nhân"
 
-#: ../settings/backdrop_settings.c:802 ../src/xfdesktop-file-icon.c:459
-#: ../src/xfdesktop-file-icon.c:479 ../src/xfdesktop-file-icon.c:612
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:668
+#: ../src/xfdesktop-file-icon.c:688 ../src/xfdesktop-file-icon.c:830
 msgid "Error"
 msgstr "Lỗi"
 
-#: ../settings/backdrop_settings.c:804
+#: ../settings/appearance-settings.c:806
 msgid "Unable to start xfdesktop"
 msgstr "Không chạy được xfdesktop"
 
-#: ../settings/backdrop_settings.c:822
+#: ../settings/appearance-settings.c:824
 msgid "Information"
 msgstr "Thông tin"
 
-#: ../settings/backdrop_settings.c:832
+#: ../settings/appearance-settings.c:834
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -558,188 +518,235 @@ msgstr ""
 "làm việc của Xfce (xfce4-session), thì cần tự sửa tập tin ~/.config/xfce4/"
 "xinitrc.  Chi tiết có trong tài liệu hướng dẫn trên http://xfce.org/."
 
-#: ../settings/backdrop_settings.c:840
+#: ../settings/appearance-settings.c:842
 msgid "_Do not show this again"
 msgstr "_Không hiển thị lại nữa"
 
 #. header
-#: ../settings/backdrop_settings.c:922
+#: ../settings/appearance-settings.c:924
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "Các thiết lập desktop"
 
-#: ../settings/backdrop_settings.c:927
+#: ../settings/appearance-settings.c:929
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Cho phép _Xfce quản lý nền"
 
-#: ../settings/backdrop_settings.c:968
+#: ../settings/appearance-settings.c:970
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "Kéo một hình ảnh nền lên trên _mọi màn hình"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/backdrop_settings.c:982 ../settings/backdrop_settings.c:1164
+#: ../settings/appearance-settings.c:984
+#: ../settings/appearance-settings.c:1166
 msgid "_Appearance"
 msgstr "_Vẻ ngoài"
 
 #. color settings frame
-#: ../settings/backdrop_settings.c:1008
+#: ../settings/appearance-settings.c:1010
 msgid "Color"
 msgstr "Màu sắc"
 
-#: ../settings/backdrop_settings.c:1022
+#: ../settings/appearance-settings.c:1024
 msgid "_Color Style:"
 msgstr "Kiểu _màu:"
 
-#: ../settings/backdrop_settings.c:1029
+#: ../settings/appearance-settings.c:1031
 msgid "Solid Color"
 msgstr "Màu đặc"
 
-#: ../settings/backdrop_settings.c:1030
+#: ../settings/appearance-settings.c:1032
 msgid "Horizontal Gradient"
 msgstr "Độ lệch ngang"
 
-#: ../settings/backdrop_settings.c:1031
+#: ../settings/appearance-settings.c:1033
 msgid "Vertical Gradient"
 msgstr "Độ lệch dọc"
 
-#: ../settings/backdrop_settings.c:1044
+#: ../settings/appearance-settings.c:1046
 msgid "Fi_rst Color:"
 msgstr "Màu thứ _nhất:"
 
-#: ../settings/backdrop_settings.c:1065
+#: ../settings/appearance-settings.c:1067
 msgid "_Second Color:"
 msgstr "Màu thứ _hai:"
 
-#: ../settings/backdrop_settings.c:1090
+#: ../settings/appearance-settings.c:1092
 msgid "Image"
 msgstr "Hình ảnh"
 
-#: ../settings/backdrop_settings.c:1098
+#: ../settings/appearance-settings.c:1100
 msgid "Show _Image"
 msgstr "Hiển thị hì_nh ảnh"
 
-#: ../settings/backdrop_settings.c:1120
+#: ../settings/appearance-settings.c:1122
 msgid "_File:"
 msgstr "_Tập tin:"
 
-#: ../settings/backdrop_settings.c:1175 ../settings/backdrop_settings.c:1177
+#: ../settings/appearance-settings.c:1177
+#: ../settings/appearance-settings.c:1179
 #, c-format
 msgid "Screen %d"
 msgstr "Màn hình %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/backdrop_settings.c:1182
+#: ../settings/appearance-settings.c:1184
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Màn hình %d, Monitor %d"
 
-#: ../settings/backdrop_settings.c:1199
+#: ../settings/appearance-settings.c:1201
 msgid "_Behavior"
 msgstr "_Cách làm việc"
 
-#: ../settings/menu_settings.c:193
-msgid "Window List Menu"
-msgstr "Thực đơn danh sách cửa sổ"
+#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"Không thể lưu tập tin %s: %s\n"
+"\n"
+"Vui lòng chọn vị trí khác hoặc ấn bỏ qua trong hộp thoại để huỷ bỏ thay đổi "
 
-#: ../settings/menu_settings.c:201
-msgid "Show window _list"
+#: ../settings/backdrop-list-manager.c:430
+msgid "Select backdrop image file"
+msgstr "Chọn tập tin hình ảnh phông nền"
+
+#: ../settings/backdrop-list-manager.c:531
+msgid "Choose backdrop list filename"
+msgstr "Chọn tên tập tin danh sách phông nền"
+
+#: ../settings/backdrop-list-manager.c:540
+msgid "List Files"
+msgstr "Liệt kê tập tin"
+
+#: ../settings/backdrop-list-manager.c:603
+msgid "Backdrop List"
+msgstr "Danh sách phông nền"
+
+#: ../settings/backdrop-list-manager.c:620
+msgid "Image files"
+msgstr "Tập tin hình ảnh"
+
+#: ../settings/backdrop-list-manager.c:639
+msgid "List file"
+msgstr "Liệt kê tập tin"
+
+#: ../settings/backdrop-list-manager.c:661
+msgid "Create backdrop list"
+msgstr "Tạo danh sách phông nền"
+
+#: ../settings/backdrop-list-manager.c:694
+msgid "Edit backdrop list"
+msgstr "Biên tập danh sách phông nền"
+
+#: ../settings/behavior-settings.c:223
+#, fuzzy
+msgid "Menus"
+msgstr "Tập tin thực đơn"
+
+#: ../settings/behavior-settings.c:231
+#, fuzzy
+msgid "Show _window list on middle click"
 msgstr "Hiển thị _danh sách cửa sổ"
 
-#: ../settings/menu_settings.c:216
-msgid "Show _window icons"
-msgstr "Hiển thị biểu tượng cử_a sổ"
-
-#: ../settings/menu_settings.c:229
-msgid "Desktop Menu"
-msgstr "Thực đơn desktop"
-
-#: ../settings/menu_settings.c:237
-msgid "Show desktop _menu"
+#: ../settings/behavior-settings.c:242
+#, fuzzy
+msgid "Show _desktop menu on right click"
 msgstr "Hiển thị thự_c đơn desktop"
 
-#: ../settings/menu_settings.c:252
-msgid "_Show application icons"
-msgstr "_Hiển thị biểu tượng ứng dụng"
-
-#: ../settings/menu_settings.c:263
-msgid "_Edit desktop menu"
-msgstr "_Biên tập thực đơn desktop"
-
-#: ../settings/menu_settings.c:275
+#: ../settings/behavior-settings.c:261
 #, fuzzy
 msgid "Desktop Icons"
 msgstr "Thực đơn desktop"
 
-#: ../settings/menu_settings.c:280 ../src/xfdesktop-file-icon.c:659
+#: ../settings/behavior-settings.c:270 ../src/xfdesktop-file-icon.c:878
 msgid "None"
 msgstr ""
 
-#: ../settings/menu_settings.c:281
+#: ../settings/behavior-settings.c:271
 #, fuzzy
 msgid "Minimized application icons"
 msgstr "_Hiển thị biểu tượng ứng dụng"
 
-#: ../settings/menu_settings.c:283
+#: ../settings/behavior-settings.c:273
 msgid "File/launcher icons"
 msgstr ""
 
-#: ../src/main.c:226
+#: ../settings/behavior-settings.c:284
+#, fuzzy
+msgid "_Icon size:"
+msgstr "Người thiết kế biểu tượng"
+
+#: ../settings/behavior-settings.c:298
+#, fuzzy
+msgid "Use _system font size"
+msgstr "Dùng tập tin thực đơn _cá nhân"
+
+#: ../settings/behavior-settings.c:315
+msgid "Custom _font size:"
+msgstr ""
+
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr ""
 
-#: ../src/main.c:228
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr ""
 
-#: ../src/main.c:232
+#: ../src/main.c:246
 msgid "Build options:\n"
 msgstr ""
 
-#: ../src/main.c:233
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr ""
 
-#: ../src/main.c:235 ../src/main.c:242
+#: ../src/main.c:249 ../src/main.c:256
 #, fuzzy
 msgid "enabled"
 msgstr "Vảy"
 
-#: ../src/main.c:237 ../src/main.c:244
+#: ../src/main.c:251 ../src/main.c:258
 #, fuzzy
 msgid "disabled"
 msgstr "Lợp"
 
-#: ../src/main.c:240
+#: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr ""
 
-#: ../src/main.c:271
+#: ../src/main.c:285
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Tuỳ chọn không rõ: %s\n"
 
-#: ../src/main.c:272
+#: ../src/main.c:286
 msgid "Options are:\n"
 msgstr "Tuỳ chọn là:\n"
 
-#: ../src/main.c:273
+#: ../src/main.c:287
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload     Nạp lại mọi thiết lập, làm tươi danh sách hình ảnh\n"
 
-#: ../src/main.c:274
+#: ../src/main.c:288
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Bập thực đơn (ở vị trí con chuột hiện tại)\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:289
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Bật danh sách cửa sổ (ở vị trí con chuột hiện tại)\n"
 
-#: ../src/main.c:276
+#: ../src/main.c:290
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        Thoát xfdesktop\n"
 
@@ -777,154 +784,196 @@ msgstr "Bạn có chắc bạn muốn đóng thực đơn hiện tại?"
 msgid "Delete Multiple Files"
 msgstr "Chọn tập tin thực đơn"
 
-#: ../src/xfdesktop-file-icon-manager.c:418 ../src/xfdesktop-file-icon.c:526
+#: ../src/xfdesktop-file-icon-manager.c:418 ../src/xfdesktop-file-icon.c:740
 msgid "If you delete a file, it is permanently lost."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:403
+#: ../src/xfdesktop-file-icon.c:370
+#, c-format
+msgid "There was an error %s \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:372
+msgid "moving"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:374
+msgid "copying"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:375
+msgid "linking"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:378
+#, fuzzy
+msgid "File Error"
+msgstr "Lỗi"
+
+#: ../src/xfdesktop-file-icon.c:438
+#, fuzzy, c-format
+msgid "Failed to run \"%s\":"
+msgstr "Không thể gọi xfce4-menueditor: %s"
+
+#: ../src/xfdesktop-file-icon.c:440
+#, fuzzy
+msgid "Run Error"
+msgstr "Lỗi"
+
+#: ../src/xfdesktop-file-icon.c:612
 #, c-format
 msgid "Rename \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:432
+#: ../src/xfdesktop-file-icon.c:641
 msgid "Enter the new name:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:457
+#: ../src/xfdesktop-file-icon.c:666
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:569
-msgid "_Open With "
+#: ../src/xfdesktop-file-icon.c:784
+#, c-format
+msgid "_Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:569
-msgid "Open With "
+#: ../src/xfdesktop-file-icon.c:787
+#, c-format
+msgid "Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:610
+#: ../src/xfdesktop-file-icon.c:828
 #, fuzzy, c-format
 msgid "Unable to launch \"%s\"."
 msgstr "Không thể gọi xfce4-menueditor: %s"
 
-#: ../src/xfdesktop-file-icon.c:614
+#: ../src/xfdesktop-file-icon.c:832
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:659
+#: ../src/xfdesktop-file-icon.c:878
 msgid "Write only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:659
+#: ../src/xfdesktop-file-icon.c:878
 msgid "Read only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:659
+#: ../src/xfdesktop-file-icon.c:878
 msgid "Read & Write"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:678
+#: ../src/xfdesktop-file-icon.c:897
 msgid "General"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:725
+#: ../src/xfdesktop-file-icon.c:944
 msgid "Kind:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:735
+#: ../src/xfdesktop-file-icon.c:954
 msgid "broken link"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:737
+#: ../src/xfdesktop-file-icon.c:956
 #, c-format
 msgid "link to %s"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:758
+#: ../src/xfdesktop-file-icon.c:975
+msgid "Open With:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:1020
 msgid "Modified:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:776
+#: ../src/xfdesktop-file-icon.c:1038
 msgid "Accessed:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:803
+#: ../src/xfdesktop-file-icon.c:1065
 msgid "Free Space:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:805
+#: ../src/xfdesktop-file-icon.c:1067
 msgid "Size:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:818
+#: ../src/xfdesktop-file-icon.c:1080
 msgid "unknown"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:821
+#: ../src/xfdesktop-file-icon.c:1083
 msgid "%s (%"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:821
+#: ../src/xfdesktop-file-icon.c:1083
 msgid " Bytes)"
 msgstr ""
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon.c:836
+#: ../src/xfdesktop-file-icon.c:1098
 msgid "Permissions"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:858
+#: ../src/xfdesktop-file-icon.c:1120
 msgid "Owner:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:876 ../src/xfdesktop-file-icon.c:914
+#: ../src/xfdesktop-file-icon.c:1138 ../src/xfdesktop-file-icon.c:1176
 msgid "Access:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:899
+#: ../src/xfdesktop-file-icon.c:1161
 msgid "Group:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:937
+#: ../src/xfdesktop-file-icon.c:1199
 #, fuzzy
 msgid "Others:"
 msgstr "/Khác"
 
-#: ../src/xfdesktop-file-icon.c:986
+#: ../src/xfdesktop-file-icon.c:1248
 msgid "_Open"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:994
+#: ../src/xfdesktop-file-icon.c:1259
 msgid "_Execute"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:1031
+#: ../src/xfdesktop-file-icon.c:1293
+msgid "Open With"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:1318
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:1047
+#: ../src/xfdesktop-file-icon.c:1334
 #, fuzzy
 msgid "_Copy File"
 msgstr "_Tập tin"
 
-#: ../src/xfdesktop-file-icon.c:1056
+#: ../src/xfdesktop-file-icon.c:1343
 #, fuzzy
 msgid "Cu_t File"
 msgstr "_Tập tin"
 
-#: ../src/xfdesktop-file-icon.c:1065
+#: ../src/xfdesktop-file-icon.c:1352
 #, fuzzy
 msgid "_Delete File"
 msgstr "Chọn tập tin thực đơn"
 
-#: ../src/xfdesktop-file-icon.c:1076
+#: ../src/xfdesktop-file-icon.c:1363
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:1088
+#: ../src/xfdesktop-file-icon.c:1375
 #, fuzzy
 msgid "_Properties..."
 msgstr "Sửa thuộc tính"
@@ -952,9 +1001,3 @@ msgstr "Thiết lập cho trình quản lý nền Xfce 4"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Thiết lập nền Xfce 4"
-
-#~ msgid "Window Icons"
-#~ msgstr "Biểu tượng cửa sổ"
-
-#~ msgid "Show minimized window _icons on the desktop"
-#~ msgstr "Hiển thị _biểu tượng cửa sổ thu nhỏ trên nền"
