@@ -173,7 +173,7 @@ static void xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
                                            XfdesktopIcon *icon);
 static void xfdesktop_icon_view_paint_icons(XfdesktopIconView *icon_view,
                                             GdkRectangle *area);
-
+                                  
 static void xfdesktop_setup_grids(XfdesktopIconView *icon_view);
 static gboolean xfdesktop_grid_get_next_free_position(XfdesktopIconView *icon_view,
                                                       guint16 *row,
@@ -644,14 +644,14 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         newy = SCREEN_MARGIN + icon_view->priv->yorigin + row * CELL_SIZE;
         
         if(cell_highlight) {
-            DBG("have old cell higlight: (%d,%d)", cell_highlight->x,
-                cell_highlight->y);
+            /*DBG("have old cell higlight: (%d,%d)", cell_highlight->x,
+                cell_highlight->y);*/
             if(cell_highlight->x != newx || cell_highlight->y != newy) {
-                gdk_window_clear_area(widget->window,
-                                      cell_highlight->x,
-                                      cell_highlight->y,
-                                      cell_highlight->width + 1,
-                                      cell_highlight->height + 1);
+                gtk_widget_queue_draw_area(widget,
+                                           cell_highlight->x,
+                                           cell_highlight->y,
+                                           cell_highlight->width + 1,
+                                           cell_highlight->height + 1);
                 if(icon_view->priv->allow_overlapping_drops)
                     xfdesktop_icon_view_paint_icons(icon_view, cell_highlight);
             }
@@ -666,7 +666,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         cell_highlight->y = newy;
         cell_highlight->width = cell_highlight->height = CELL_SIZE;
         
-        DBG("painting highlight: (%d,%d)", newx, newy);
+        /*DBG("painting highlight: (%d,%d)", newx, newy);*/
         
         gdk_draw_rectangle(GDK_DRAWABLE(widget->window),
                            widget->style->bg_gc[GTK_STATE_SELECTED], FALSE,
@@ -675,11 +675,11 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         return TRUE;
     } else {
         if(cell_highlight) {
-            gdk_window_clear_area(widget->window,
-                                  cell_highlight->x,
-                                  cell_highlight->y,
-                                  cell_highlight->width + 1,
-                                  cell_highlight->height + 1);
+            gtk_widget_queue_draw_area(widget,
+                                       cell_highlight->x,
+                                       cell_highlight->y,
+                                       cell_highlight->width + 1,
+                                       cell_highlight->height+ 1);
             if(icon_view->priv->allow_overlapping_drops)
                 xfdesktop_icon_view_paint_icons(icon_view, cell_highlight);
         }
@@ -696,11 +696,11 @@ xfdesktop_icon_view_drag_leave(GtkWidget *widget,
                                                      "xfce-desktop-cell-highlight");
     if(cell_highlight) {
         XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-        gdk_window_clear_area(widget->window,
-                              cell_highlight->x,
-                              cell_highlight->y,
-                              cell_highlight->width + 1,
-                              cell_highlight->height + 1);
+        gtk_widget_queue_draw_area(widget,
+                                   cell_highlight->x,
+                                   cell_highlight->y,
+                                   cell_highlight->width + 1,
+                                   cell_highlight->height + 1);
         if(icon_view->priv->allow_overlapping_drops)
             xfdesktop_icon_view_paint_icons(icon_view, cell_highlight);
     }
@@ -748,8 +748,8 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     /* clear highlight box */
     cell_x = icon_view->priv->xorigin + col * CELL_SIZE + CELL_PADDING;
     cell_y = icon_view->priv->yorigin + row * CELL_SIZE + CELL_PADDING;
-    gdk_window_clear_area(widget->window, cell_x, cell_y,
-                          CELL_SIZE + 1, CELL_SIZE + 1);
+    gtk_widget_queue_draw_area(widget, cell_x, cell_y,
+                               CELL_SIZE + 1, CELL_SIZE + 1);
     
     icon_on_dest = icon_view->priv->grid_layout[col * icon_view->priv->nrows + row];
     
@@ -785,8 +785,8 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     
         /* clear out old position */
         if(xfdesktop_icon_get_extents(icon, &extents)) {
-            gdk_window_clear_area(widget->window, extents.x, extents.y,
-                                  extents.width, extents.height);
+            gtk_widget_queue_draw_area(widget, extents.x, extents.y,
+                                       extents.width, extents.height);
             extents.width = extents.height = 0;
             xfdesktop_icon_set_extents(icon, &extents);
         }
@@ -1163,9 +1163,9 @@ xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
     g_return_if_fail(icon);
     
     if(xfdesktop_icon_get_extents(icon, &extents)) {
-        gdk_window_clear_area(GTK_WIDGET(icon_view)->window,
-                              extents.x, extents.y,
-                              extents.width, extents.height);
+        gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
+                                   extents.x, extents.y,
+                                   extents.width, extents.height);
         
         /* check and make sure we didn't used to be too large for the cell.
          * if so, repaint the one below it. */
@@ -1956,16 +1956,9 @@ xfdesktop_icon_view_remove_all(XfdesktopIconView *icon_view)
     icon_view->priv->selected_icons = NULL;
     
     if(GTK_WIDGET_REALIZED(GTK_WIDGET(icon_view))) {
-        GdkWindow *window;
-        gint w, h;
-        
         memset(icon_view->priv->grid_layout, 0, icon_view->priv->nrows
                                                 * icon_view->priv->ncols
                                                 * sizeof(gpointer));
-        
-        window = GTK_WIDGET(icon_view)->window;
-        gdk_drawable_get_size(GDK_DRAWABLE(window), &w, &h);
-        gdk_window_clear_area(window, 0, 0, w, h);
         gtk_widget_queue_draw(GTK_WIDGET(icon_view));
     }
 }
