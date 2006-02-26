@@ -577,8 +577,8 @@ xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
 {
     g_return_if_fail(row && col);
     
-    *row = (y - icon_view->priv->xorigin - CELL_PADDING) / CELL_SIZE;
-    *col = (x - icon_view->priv->yorigin - CELL_PADDING) / CELL_SIZE;
+    *row = (y - icon_view->priv->yorigin - SCREEN_MARGIN) / CELL_SIZE;
+    *col = (x - icon_view->priv->xorigin - SCREEN_MARGIN) / CELL_SIZE;
 }
 
 static gboolean
