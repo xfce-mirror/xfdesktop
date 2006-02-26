@@ -77,6 +77,8 @@ static void xfdesktop_file_icon_set_extents(XfdesktopIcon *icon,
 static gboolean xfdesktop_file_icon_get_extents(XfdesktopIcon *icon,
                                                 GdkRectangle *extents);
 
+static gboolean xfdesktop_file_icon_is_drop_dest(XfdesktopIcon *icon);
+
 static void xfdesktop_file_icon_selected(XfdesktopIcon *icon);
 static void xfdesktop_file_icon_activated(XfdesktopIcon *icon);
 static void xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon);
@@ -177,6 +179,7 @@ xfdesktop_file_icon_icon_init(XfdesktopIconIface *iface)
     iface->get_position = xfdesktop_file_icon_get_position;
     iface->set_extents = xfdesktop_file_icon_set_extents;
     iface->get_extents = xfdesktop_file_icon_get_extents;
+    iface->is_drop_dest = xfdesktop_file_icon_is_drop_dest;
     iface->selected = xfdesktop_file_icon_selected;
     iface->activated = xfdesktop_file_icon_activated;
     iface->menu_popup = xfdesktop_file_icon_menu_popup;
@@ -326,6 +329,13 @@ xfdesktop_file_icon_get_extents(XfdesktopIcon *icon,
     }
     
     return FALSE;
+}
+
+static gboolean
+xfdesktop_file_icon_is_drop_dest(XfdesktopIcon *icon)
+{
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
+    return (file_icon->priv->info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY);
 }
 
 static void

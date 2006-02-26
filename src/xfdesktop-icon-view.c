@@ -71,13 +71,6 @@ typedef enum
     XFDESKTOP_DIRECTION_RIGHT,
 } XfdesktopDirection;
 
-typedef enum
-{
-    XFDESKTOP_WORKAREA_OK = 0,
-    XFDESKTOP_WORKAREA_FAILED,
-    XFDESKTOP_WORKAREA_ABORTED,
-} XfdesktopWorkareaStatus;
-
 enum
 {
     SIG_ICON_SELECTED = 0,
@@ -590,14 +583,14 @@ xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
 
 static gboolean
 xfdesktop_icon_view_drag_motion(GtkWidget *widget,
-                               GdkDragContext *context,
-                               gint x,
-                               gint y,
-                               guint time)
+                                GdkDragContext *context,
+                                gint x,
+                                gint y,
+                                guint time)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     GdkAtom target = GDK_NONE;
-    guint16 row, col;
+    guint16 row, col, icon_row, icon_col;
     GdkRectangle *cell_highlight;
     
     /*TRACE("entering: (%d,%d)", x, y);*/
@@ -611,15 +604,32 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
             return FALSE;
     }
     
+    if(!xfdesktop_icon_get_position(icon_view->priv->last_clicked_item,
+                                &icon_row, &icon_col))
+    {
+        return FALSE;
+    }
+    
+    xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
+    if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols)
+        return FALSE;
+    
+    if(icon_view->priv->allow_overlapping_drops) {
+        XfdesktopIcon *icon_on_dest = icon_view->priv->grid_layout[col * icon_view->priv->nrows + row];
+        if(icon_on_dest) {
+            if(!xfdesktop_icon_is_drop_dest(icon_on_dest))
+                return FALSE;
+        }
+    }
+    
     gdk_drag_status(context, GDK_ACTION_MOVE, time);
     
     cell_highlight = g_object_get_data(G_OBJECT(context),
                                        "xfce-desktop-cell-highlight");
     
-    xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
-    if(row < icon_view->priv->nrows && col < icon_view->priv->ncols
-       && (icon_view->priv->allow_overlapping_drops
-           || xfdesktop_grid_is_free_position(icon_view, row, col)))
+    if(((icon_view->priv->allow_overlapping_drops
+         && (icon_row != row || icon_col != col))
+       || xfdesktop_grid_is_free_position(icon_view, row, col)))
     {
         gint newx, newy;
         
@@ -635,6 +645,8 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                                       cell_highlight->y,
                                       cell_highlight->width + 1,
                                       cell_highlight->height + 1);
+                if(icon_view->priv->allow_overlapping_drops)
+                    xfdesktop_icon_view_paint_icons(icon_view, cell_highlight);
             }
         } else {
             cell_highlight = g_new0(GdkRectangle, 1);
@@ -661,6 +673,8 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                                   cell_highlight->y,
                                   cell_highlight->width + 1,
                                   cell_highlight->height + 1);
+            if(icon_view->priv->allow_overlapping_drops)
+                xfdesktop_icon_view_paint_icons(icon_view, cell_highlight);
         }
         return FALSE;
     }
@@ -674,11 +688,14 @@ xfdesktop_icon_view_drag_leave(GtkWidget *widget,
     GdkRectangle *cell_highlight = g_object_get_data(G_OBJECT(context),
                                                      "xfce-desktop-cell-highlight");
     if(cell_highlight) {
+        XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
         gdk_window_clear_area(widget->window,
                               cell_highlight->x,
                               cell_highlight->y,
                               cell_highlight->width + 1,
                               cell_highlight->height + 1);
+        if(icon_view->priv->allow_overlapping_drops)
+            xfdesktop_icon_view_paint_icons(icon_view, cell_highlight);
     }
 }
 

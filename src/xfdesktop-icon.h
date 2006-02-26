@@ -52,6 +52,8 @@ struct _XfdesktopIconIface
     void (*set_extents)(XfdesktopIcon *icon, const GdkRectangle *extents);
     gboolean (*get_extents)(XfdesktopIcon *icon, GdkRectangle *extents);
     
+    gboolean (*is_drop_dest)(XfdesktopIcon *icon);
+    
     void (*selected)(XfdesktopIcon *icon);
     void (*activated)(XfdesktopIcon *icon);
     void (*menu_popup)(XfdesktopIcon *icon);
@@ -76,6 +78,8 @@ void xfdesktop_icon_set_extents(XfdesktopIcon *icon,
                                 const GdkRectangle *extents);
 gboolean xfdesktop_icon_get_extents(XfdesktopIcon *icon,
                                     GdkRectangle *extents);
+
+gboolean xfdesktop_icon_is_drop_dest(XfdesktopIcon *icon);
 
 void xfdesktop_icon_selected(XfdesktopIcon *icon);
 void xfdesktop_icon_activated(XfdesktopIcon *icon);

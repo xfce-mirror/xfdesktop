@@ -202,6 +202,19 @@ xfdesktop_icon_get_extents(XfdesktopIcon *icon,
     return ret;
 }
 
+gboolean
+xfdesktop_icon_is_drop_dest(XfdesktopIcon *icon)
+{
+    XfdesktopIconIface *iface;
+    
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    
+    iface = XFDESKTOP_ICON_GET_IFACE(icon);
+    g_return_val_if_fail(iface->is_drop_dest, FALSE);
+    
+    return iface->is_drop_dest(icon);
+}
+
 void
 xfdesktop_icon_selected(XfdesktopIcon *icon)
 {

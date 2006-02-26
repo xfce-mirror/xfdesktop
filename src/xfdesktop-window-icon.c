@@ -63,6 +63,8 @@ static void xfdesktop_window_icon_set_extents(XfdesktopIcon *icon,
 static gboolean xfdesktop_window_icon_get_extents(XfdesktopIcon *icon,
                                                   GdkRectangle *extents);
 
+static gboolean xfdesktop_window_icon_is_drop_dest(XfdesktopIcon *icon);
+
 static void xfdesktop_window_icon_selected(XfdesktopIcon *icon);
 static void xfdesktop_window_icon_activated(XfdesktopIcon *icon);
 static void xfdesktop_window_icon_menu_popup(XfdesktopIcon *icon);
@@ -166,6 +168,7 @@ xfdesktop_window_icon_icon_init(XfdesktopIconIface *iface)
     iface->get_position = xfdesktop_window_icon_get_position;
     iface->set_extents = xfdesktop_window_icon_set_extents;
     iface->get_extents = xfdesktop_window_icon_get_extents;
+    iface->is_drop_dest = xfdesktop_window_icon_is_drop_dest;
     iface->selected = xfdesktop_window_icon_selected;
     iface->activated = xfdesktop_window_icon_activated;
     iface->menu_popup = xfdesktop_window_icon_menu_popup;
@@ -299,6 +302,12 @@ xfdesktop_window_icon_get_extents(XfdesktopIcon *icon,
         return TRUE;
     }
     
+    return FALSE;
+}
+
+static gboolean
+xfdesktop_window_icon_is_drop_dest(XfdesktopIcon *icon)
+{
     return FALSE;
 }
 
