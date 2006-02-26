@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-02-26 22:36+0900\n"
-"PO-Revision-Date: 2006-02-18 21:47+0900\n"
+"PO-Revision-Date: 2006-02-26 22:30+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -648,19 +648,16 @@ msgid "Edit backdrop list"
 msgstr "背景リストの編集"
 
 #: ../settings/behavior-settings.c:223
-#, fuzzy
 msgid "Menus"
-msgstr "メニューファイル"
+msgstr "メニュー"
 
 #: ../settings/behavior-settings.c:231
-#, fuzzy
 msgid "Show _window list on middle click"
-msgstr "ウィンドウリストを表示する(_L)"
+msgstr "ミドルクリックでウィンドウリストを表示する(_W)"
 
 #: ../settings/behavior-settings.c:242
-#, fuzzy
 msgid "Show _desktop menu on right click"
-msgstr "デスクトップメニューを表示する(_M)"
+msgstr "右クリックでデスクトップメニューを表示する(_D)"
 
 #: ../settings/behavior-settings.c:261
 msgid "Desktop Icons"
@@ -679,18 +676,16 @@ msgid "File/launcher icons"
 msgstr "ファイル/ランチャーアイコン"
 
 #: ../settings/behavior-settings.c:284
-#, fuzzy
 msgid "_Icon size:"
-msgstr "アイコンデザイナー"
+msgstr "アイコンのサイズ(_I):"
 
 #: ../settings/behavior-settings.c:298
-#, fuzzy
 msgid "Use _system font size"
-msgstr "指定したメニューファイルを使用する(_C):"
+msgstr "システムのフォントサイズを使用する(_S)"
 
 #: ../settings/behavior-settings.c:315
 msgid "Custom _font size:"
-msgstr ""
+msgstr "指定フォントサイズを使用する(_F):"
 
 #: ../src/main.c:240
 #, c-format
@@ -791,34 +786,32 @@ msgstr "削除されたファイルは二度と復元できません。"
 #: ../src/xfdesktop-file-icon.c:370
 #, c-format
 msgid "There was an error %s \"%s\" to \"%s\":"
-msgstr ""
+msgstr "%s「%s」から「%s」へのエラーが発生しました:"
 
 #: ../src/xfdesktop-file-icon.c:372
 msgid "moving"
-msgstr ""
+msgstr "移動しています"
 
 #: ../src/xfdesktop-file-icon.c:374
 msgid "copying"
-msgstr ""
+msgstr "コピーしています"
 
 #: ../src/xfdesktop-file-icon.c:375
 msgid "linking"
-msgstr ""
+msgstr "リンクしています"
 
 #: ../src/xfdesktop-file-icon.c:378
-#, fuzzy
 msgid "File Error"
-msgstr "エラー"
+msgstr "ファイルエラー"
 
 #: ../src/xfdesktop-file-icon.c:438
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\":"
-msgstr "「%s」の名前を「%s」に変更するのに失敗しました:"
+msgstr "「%s」の実行に失敗しました:"
 
 #: ../src/xfdesktop-file-icon.c:440
-#, fuzzy
 msgid "Run Error"
-msgstr "エラー"
+msgstr "実行エラー"
 
 #: ../src/xfdesktop-file-icon.c:612
 #, c-format
@@ -834,17 +827,15 @@ msgstr "新しい名前を入力して下さい:"
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "「%s」の名前を「%s」に変更するのに失敗しました:"
 
-# FIXME: format string
 #: ../src/xfdesktop-file-icon.c:784
-#, fuzzy, c-format
+#, c-format
 msgid "_Open With \"%s\""
-msgstr "次で開く(_O)"
+msgstr "「%s」で開く(_O)"
 
-# FIXME: format string
 #: ../src/xfdesktop-file-icon.c:787
-#, fuzzy, c-format
+#, c-format
 msgid "Open With \"%s\""
-msgstr "次で開く "
+msgstr "「%s」で開く"
 
 #: ../src/xfdesktop-file-icon.c:828
 #, c-format
@@ -889,9 +880,8 @@ msgstr "%sへのリンク"
 
 # FIXME: format string
 #: ../src/xfdesktop-file-icon.c:975
-#, fuzzy
 msgid "Open With:"
-msgstr "次で開く "
+msgstr "次で開く:"
 
 #: ../src/xfdesktop-file-icon.c:1020
 msgid "Modified:"
@@ -954,9 +944,8 @@ msgstr "実行(_E)"
 
 # FIXME: format string
 #: ../src/xfdesktop-file-icon.c:1293
-#, fuzzy
 msgid "Open With"
-msgstr "次で開く "
+msgstr "次で開く"
 
 #: ../src/xfdesktop-file-icon.c:1318
 msgid "Open With Other _Application..."
