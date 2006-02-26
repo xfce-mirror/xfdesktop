@@ -31,6 +31,13 @@ G_BEGIN_DECLS
 #define XFDESKTOP_IS_ICON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_ICON))
 #define XFDESKTOP_ICON_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE((obj), XFDESKTOP_TYPE_ICON, XfdesktopIconIface))
 
+typedef enum
+{
+    XFDESKTOP_ICON_DRAG_FAILED = 0,
+    XFDESKTOP_ICON_DRAG_SUCCEEDED_MOVE_ICON,
+    XFDESKTOP_ICON_DRAG_SUCCEEDED_NO_ACTION,
+} XfdesktopIconDragResult;
+
 typedef struct _XfdesktopIconIface XfdesktopIconIface;
 typedef struct _XfdesktopIcon      XfdesktopIcon;  /* dummy */
 
@@ -53,6 +60,7 @@ struct _XfdesktopIconIface
     gboolean (*get_extents)(XfdesktopIcon *icon, GdkRectangle *extents);
     
     gboolean (*is_drop_dest)(XfdesktopIcon *icon);
+    XfdesktopIconDragResult (*do_drop_dest)(XfdesktopIcon *icon, XfdesktopIcon *src_icon, GdkDragAction action);
     
     void (*selected)(XfdesktopIcon *icon);
     void (*activated)(XfdesktopIcon *icon);
@@ -80,6 +88,9 @@ gboolean xfdesktop_icon_get_extents(XfdesktopIcon *icon,
                                     GdkRectangle *extents);
 
 gboolean xfdesktop_icon_is_drop_dest(XfdesktopIcon *icon);
+XfdesktopIconDragResult xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
+                                                    XfdesktopIcon *src_icon,
+                                                    GdkDragAction action);
 
 void xfdesktop_icon_selected(XfdesktopIcon *icon);
 void xfdesktop_icon_activated(XfdesktopIcon *icon);

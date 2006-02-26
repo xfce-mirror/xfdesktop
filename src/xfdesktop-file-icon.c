@@ -78,6 +78,9 @@ static gboolean xfdesktop_file_icon_get_extents(XfdesktopIcon *icon,
                                                 GdkRectangle *extents);
 
 static gboolean xfdesktop_file_icon_is_drop_dest(XfdesktopIcon *icon);
+static XfdesktopIconDragResult xfdesktop_file_icon_do_drop_dest(XfdesktopIcon *icon,
+                                                                XfdesktopIcon *src_icon,
+                                                                GdkDragAction action);
 
 static void xfdesktop_file_icon_selected(XfdesktopIcon *icon);
 static void xfdesktop_file_icon_activated(XfdesktopIcon *icon);
@@ -151,10 +154,19 @@ xfdesktop_file_icon_finalize(GObject *obj)
         ThunarVfsJob *job;
         for(l = icon->priv->active_jobs; l; l = l->next) {
             job = THUNAR_VFS_JOB(l->data);
-            g_signal_handlers_disconnect_by_func(G_OBJECT(job),
-                                                 G_CALLBACK(xfdesktop_delete_file_finished),
-                                                 icon);
+            GCallback cb = g_object_get_data(G_OBJECT(job),
+                                             "--xfdesktop-file-icon-callback");
+            if(cb) {
+                gpointer data = g_object_get_data(G_OBJECT(obj),
+                                                  "-xfdesktop-file-icon-data");
+                g_signal_handlers_disconnect_by_func(G_OBJECT(job),
+                                                     G_CALLBACK(cb),
+                                                     data);
+                g_object_set_data(G_OBJECT(job),
+                                  "--xfdesktop-file-icon-callback", NULL);
+            }
             thunar_vfs_job_cancel(job);
+            g_object_unref(G_OBJECT(job));
         }
         g_list_free(icon->priv->active_jobs);
     }
@@ -180,6 +192,7 @@ xfdesktop_file_icon_icon_init(XfdesktopIconIface *iface)
     iface->set_extents = xfdesktop_file_icon_set_extents;
     iface->get_extents = xfdesktop_file_icon_get_extents;
     iface->is_drop_dest = xfdesktop_file_icon_is_drop_dest;
+    iface->do_drop_dest = xfdesktop_file_icon_do_drop_dest;
     iface->selected = xfdesktop_file_icon_selected;
     iface->activated = xfdesktop_file_icon_activated;
     iface->menu_popup = xfdesktop_file_icon_menu_popup;
@@ -335,7 +348,172 @@ static gboolean
 xfdesktop_file_icon_is_drop_dest(XfdesktopIcon *icon)
 {
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-    return (file_icon->priv->info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY);
+    return (file_icon->priv->info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY
+            || file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE);
+}
+
+static void
+xfdesktop_file_icon_drag_job_error(ThunarVfsJob *job,
+                                   GError *error,
+                                   gpointer user_data)
+{
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(user_data);
+    XfdesktopFileIcon *src_file_icon = g_object_get_data(G_OBJECT(job),
+                                                         "--xfdesktop-src-file-icon");
+    GdkDragAction action = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(job),
+                                                             "--xfdesktop-file-icon-action"));
+    gchar *primary;
+    
+    g_return_if_fail(file_icon && src_file_icon);
+    
+    if(error) {
+        primary = g_strdup_printf(_("There was an error %s \"%s\" to \"%s\":"),
+                                  action == GDK_ACTION_MOVE
+                                  ? _("moving")
+                                  : (action == GDK_ACTION_COPY
+                                     ? _("copying")
+                                     : _("linking")),
+                                  src_file_icon->priv->info->display_name,
+                                  file_icon->priv->info->display_name);
+        xfce_message_dialog(NULL, _("File Error"), GTK_STOCK_DIALOG_ERROR,
+                            primary, error->message,
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+        g_free(primary);
+    }
+}
+
+static void
+xfdesktop_file_icon_drag_job_finished(ThunarVfsJob *job,
+                                      gpointer user_data)
+{
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(user_data);
+    XfdesktopFileIcon *src_file_icon = g_object_get_data(G_OBJECT(job),
+                                                         "--xfdesktop-src-file-icon");
+    
+    if(g_list_find(file_icon->priv->active_jobs, job)) {
+        file_icon->priv->active_jobs = g_list_remove(file_icon->priv->active_jobs,
+                                                     job);
+    } else
+        g_critical("ThunarVfsJob 0x%p not found in active jobs list", job);
+    
+    if(g_list_find(src_file_icon->priv->active_jobs, job)) {
+        src_file_icon->priv->active_jobs = g_list_remove(src_file_icon->priv->active_jobs,
+                                                         job);
+    } else
+        g_critical("ThunarVfsJob 0x%p not found in active jobs list", job);
+    
+    /* yes, twice is correct */
+    g_object_unref(G_OBJECT(job));
+    g_object_unref(G_OBJECT(job));
+}
+
+static XfdesktopIconDragResult
+xfdesktop_file_icon_do_drop_dest(XfdesktopIcon *icon,
+                                 XfdesktopIcon *src_icon,
+                                 GdkDragAction action)
+{
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
+    XfdesktopFileIcon *src_file_icon = XFDESKTOP_FILE_ICON(src_icon);
+    
+    DBG("entering");
+    
+    g_return_val_if_fail(file_icon && src_file_icon,
+                         XFDESKTOP_ICON_DRAG_FAILED);
+    g_return_val_if_fail(xfdesktop_file_icon_is_drop_dest(icon),
+                         XFDESKTOP_ICON_DRAG_FAILED);
+    
+    if(file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
+        GList *path_list = g_list_prepend(NULL, src_file_icon->priv->info->path);
+        GError *error = NULL;
+        gboolean succeeded;
+        
+        succeeded = thunar_vfs_info_execute(file_icon->priv->info,
+                                            file_icon->priv->gscreen,
+                                            path_list,
+                                            xfce_get_homedir(),
+                                            &error);
+        g_list_free(path_list);
+        
+        if(!succeeded) {
+            gchar *primary = g_strdup_printf(_("Failed to run \"%s\":"),
+                                             file_icon->priv->info->display_name);
+            xfce_message_dialog(NULL, _("Run Error"), GTK_STOCK_DIALOG_ERROR,
+                                primary, error->message,
+                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+            g_free(primary);
+            g_error_free(error);
+            
+            return XFDESKTOP_ICON_DRAG_FAILED;
+        }
+        
+        return XFDESKTOP_ICON_DRAG_SUCCEEDED_NO_ACTION;
+    } else {
+        ThunarVfsJob *job = NULL;
+        const gchar *name;
+        ThunarVfsPath *dest_path;
+        
+        name = thunar_vfs_path_get_name(src_file_icon->priv->info->path);
+        g_return_val_if_fail(name, XFDESKTOP_ICON_DRAG_FAILED);
+        
+        dest_path = thunar_vfs_path_relative(file_icon->priv->info->path,
+                                             name);
+        g_return_val_if_fail(dest_path, XFDESKTOP_ICON_DRAG_FAILED);
+        
+        switch(action) {
+            case GDK_ACTION_MOVE:
+                DBG("doing move");
+                job = thunar_vfs_move_file(src_file_icon->priv->info->path,
+                                           dest_path, NULL);
+                break;
+            
+            case GDK_ACTION_COPY:
+                DBG("doing copy");
+                job = thunar_vfs_copy_file(src_file_icon->priv->info->path,
+                                           dest_path, NULL);
+                break;
+            
+            case GDK_ACTION_LINK:
+                DBG("doing link");
+                job = thunar_vfs_link_file(src_file_icon->priv->info->path,
+                                           dest_path, NULL);
+                break;
+            
+            default:
+                g_warning("Unsupported drag action: %d", action);
+        }
+        
+        thunar_vfs_path_unref(dest_path);
+        
+        if(job) {
+            DBG("got job, action initiated");
+            
+            g_object_set_data(G_OBJECT(job), "--xfdesktop-file-icon-callback",
+                              G_CALLBACK(xfdesktop_file_icon_drag_job_finished));
+            g_object_set_data(G_OBJECT(job), "--xfdesktop-file-icon-data", icon);
+            file_icon->priv->active_jobs = g_list_prepend(file_icon->priv->active_jobs,
+                                                          job);
+            src_file_icon->priv->active_jobs = g_list_prepend(src_file_icon->priv->active_jobs,
+                                                              job);
+            
+            g_object_set_data(G_OBJECT(job), "--xfdesktop-src-file-icon",
+                              src_file_icon);
+            g_object_set_data(G_OBJECT(job), "--xfdesktop-file-icon-action",
+                              GINT_TO_POINTER(action));
+            g_signal_connect(G_OBJECT(job), "error",
+                             G_CALLBACK(xfdesktop_file_icon_drag_job_error),
+                             file_icon);
+            g_signal_connect(G_OBJECT(job), "finished",
+                             G_CALLBACK(xfdesktop_file_icon_drag_job_finished),
+                             file_icon);
+            
+            g_object_ref(G_OBJECT(job));
+            
+            return XFDESKTOP_ICON_DRAG_SUCCEEDED_NO_ACTION;
+        } else
+            return XFDESKTOP_ICON_DRAG_FAILED;
+    }
+    
+    return XFDESKTOP_ICON_DRAG_FAILED;
 }
 
 static void
@@ -399,7 +577,7 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon)
         succeeded = thunar_vfs_info_execute(info,
                                             file_icon->priv->gscreen,
                                             NULL,
-                                            xfce_get_homedir (),
+                                            xfce_get_homedir(),
                                             NULL);
     }
     
@@ -534,7 +712,12 @@ xfdesktop_file_icon_delete_file(XfdesktopFileIcon *icon)
     ThunarVfsJob *job;
     
     job = thunar_vfs_unlink_file(icon->priv->info->path, NULL);
+    
+    g_object_set_data(G_OBJECT(job), "--xfdesktop-file-icon-callback",
+                      G_CALLBACK(xfdesktop_delete_file_finished));
+    g_object_set_data(G_OBJECT(job), "--xfdesktop-file-icon-data", icon);
     icon->priv->active_jobs = g_list_prepend(icon->priv->active_jobs, job);
+    
     g_signal_connect(G_OBJECT(job), "error",
                      G_CALLBACK(xfdesktop_delete_file_error), icon);
     g_signal_connect(G_OBJECT(job), "finished",

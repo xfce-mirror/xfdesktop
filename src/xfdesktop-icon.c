@@ -195,7 +195,7 @@ xfdesktop_icon_get_extents(XfdesktopIcon *icon,
      * return FALSE. */
     ret = iface->get_extents(icon, extents);
     if(ret) {
-        if(extents->width == 0 || extents->height ==0)
+        if(extents->width == 0 || extents->height == 0)
             ret = FALSE;
     }
     
@@ -213,6 +213,21 @@ xfdesktop_icon_is_drop_dest(XfdesktopIcon *icon)
     g_return_val_if_fail(iface->is_drop_dest, FALSE);
     
     return iface->is_drop_dest(icon);
+}
+
+XfdesktopIconDragResult
+xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
+                            XfdesktopIcon *src_icon,
+                            GdkDragAction action)
+{
+    XfdesktopIconIface *iface;
+    
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    
+    iface = XFDESKTOP_ICON_GET_IFACE(icon);
+    g_return_val_if_fail(iface->do_drop_dest, FALSE);
+    
+    return iface->do_drop_dest(icon, src_icon, action);
 }
 
 void

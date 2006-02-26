@@ -64,6 +64,9 @@ static gboolean xfdesktop_window_icon_get_extents(XfdesktopIcon *icon,
                                                   GdkRectangle *extents);
 
 static gboolean xfdesktop_window_icon_is_drop_dest(XfdesktopIcon *icon);
+static XfdesktopIconDragResult xfdesktop_window_icon_do_drop_dest(XfdesktopIcon *icon,
+                                                                  XfdesktopIcon *src_icon,
+                                                                  GdkDragAction action);
 
 static void xfdesktop_window_icon_selected(XfdesktopIcon *icon);
 static void xfdesktop_window_icon_activated(XfdesktopIcon *icon);
@@ -169,6 +172,7 @@ xfdesktop_window_icon_icon_init(XfdesktopIconIface *iface)
     iface->set_extents = xfdesktop_window_icon_set_extents;
     iface->get_extents = xfdesktop_window_icon_get_extents;
     iface->is_drop_dest = xfdesktop_window_icon_is_drop_dest;
+    iface->do_drop_dest = xfdesktop_window_icon_do_drop_dest;
     iface->selected = xfdesktop_window_icon_selected;
     iface->activated = xfdesktop_window_icon_activated;
     iface->menu_popup = xfdesktop_window_icon_menu_popup;
@@ -309,6 +313,14 @@ static gboolean
 xfdesktop_window_icon_is_drop_dest(XfdesktopIcon *icon)
 {
     return FALSE;
+}
+
+static XfdesktopIconDragResult
+xfdesktop_window_icon_do_drop_dest(XfdesktopIcon *icon,
+                                   XfdesktopIcon *src_icon,
+                                   GdkDragAction action)
+{
+    return XFDESKTOP_ICON_DRAG_FAILED;
 }
 
 static void

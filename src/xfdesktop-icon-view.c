@@ -515,7 +515,8 @@ xfdesktop_icon_view_maybe_begin_drag(XfdesktopIconView *icon_view,
     
     context = gtk_drag_begin(GTK_WIDGET(icon_view),
                              icon_view->priv->source_targets,
-                             actions,
+                             GDK_ACTION_COPY | GDK_ACTION_MOVE
+                             | GDK_ACTION_LINK,
                              1, (GdkEvent *)evt);
     
     DBG("DRAG BEGIN!");
@@ -592,6 +593,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
     GdkAtom target = GDK_NONE;
     guint16 row, col, icon_row, icon_col;
     GdkRectangle *cell_highlight;
+    XfdesktopIcon *icon_on_dest = NULL;
     
     /*TRACE("entering: (%d,%d)", x, y);*/
     
@@ -615,14 +617,19 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         return FALSE;
     
     if(icon_view->priv->allow_overlapping_drops) {
-        XfdesktopIcon *icon_on_dest = icon_view->priv->grid_layout[col * icon_view->priv->nrows + row];
+        icon_on_dest = icon_view->priv->grid_layout[col * icon_view->priv->nrows + row];
         if(icon_on_dest) {
             if(!xfdesktop_icon_is_drop_dest(icon_on_dest))
                 return FALSE;
         }
     }
     
-    gdk_drag_status(context, GDK_ACTION_MOVE, time);
+    if(icon_view->priv->allow_overlapping_drops && !icon_on_dest) {
+        /* FIXME: support copy on desktop of file already on desktop?  need
+         * to handle window icons somehow if so. */
+        gdk_drag_status(context, GDK_ACTION_MOVE, time);
+    } else
+        gdk_drag_status(context, context->suggested_action, time);
     
     cell_highlight = g_object_get_data(G_OBJECT(context),
                                        "xfce-desktop-cell-highlight");
@@ -713,6 +720,8 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     guint16 old_row, old_col, row, col;
     gint cell_x, cell_y;
     GdkRectangle extents;
+    XfdesktopIcon *icon_on_dest = NULL;
+    XfdesktopIconDragResult res;
     
     TRACE("entering: (%d,%d)", x, y);
     
@@ -742,9 +751,31 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     gdk_window_clear_area(widget->window, cell_x, cell_y,
                           CELL_SIZE + 1, CELL_SIZE + 1);
     
+    icon_on_dest = icon_view->priv->grid_layout[col * icon_view->priv->nrows + row];
+    
     if(target == gdk_atom_intern("XFDESKTOP_ICON", FALSE)) {
         icon = icon_view->priv->last_clicked_item;
         g_return_val_if_fail(icon, FALSE);
+        
+        if(icon_on_dest) {
+            res = xfdesktop_icon_do_drop_dest(icon_on_dest, icon,
+                                              context->suggested_action);
+            switch(res) {
+                case XFDESKTOP_ICON_DRAG_FAILED:
+                    xfdesktop_icon_view_paint_icon(icon_view, icon_on_dest);
+                    gtk_drag_finish(context, FALSE, FALSE, time);
+                    return TRUE;
+                
+                case XFDESKTOP_ICON_DRAG_SUCCEEDED_NO_ACTION:
+                    xfdesktop_icon_view_paint_icon(icon_view, icon_on_dest);
+                    gtk_drag_finish(context, TRUE, FALSE, time);
+                    return TRUE;
+                
+                case XFDESKTOP_ICON_DRAG_SUCCEEDED_MOVE_ICON:
+                    /* do the stuff below */
+                    break;
+            }
+        }
         
         icon_below = xfdesktop_find_icon_below(icon_view, icon);
         if(xfdesktop_icon_get_position(icon, &old_row, &old_col))
