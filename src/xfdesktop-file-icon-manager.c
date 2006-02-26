@@ -559,8 +559,10 @@ xfdesktop_file_icon_manager_volume_manager_cb(ThunarVfsMonitor *monitor,
                     xfdesktop_file_icon_update_info(icon, info);
                     thunar_vfs_info_unref(info);
                 }
+                
+                break;
             }
-            break;
+            /* fall through - not sure why this is needed sometimes */
         
         case THUNAR_VFS_MONITOR_EVENT_CREATED:
             DBG("got created event");
