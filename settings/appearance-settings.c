@@ -1233,9 +1233,8 @@ run_dialog (McsPlugin * mcs_plugin)
     
     if(is_running) {
         if(bd && bd->dialog) {
-            gdk_x11_window_set_user_time(bd->dialog->window, 
-                    gdk_x11_get_server_time (bd->dialog->window));
             gtk_window_present(GTK_WINDOW(bd->dialog));
+            gtk_window_set_focus (GTK_WINDOW(bd->dialog), NULL);
             return;
         } else
             is_running = FALSE;
