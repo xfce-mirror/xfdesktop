@@ -7,3 +7,7 @@ for 4.4:
   - "create document" menu option
   - "arrange items"/"auto arrange" menu option
 * rubber banding?  probably not.
+* figure out why xfdesktop_setup_grids() is called 3 times on startup instead
+  of only 2
+* special-case startup so backdrop_changed_cb() isn't called 4-6 times on
+  startup

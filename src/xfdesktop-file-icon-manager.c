@@ -398,7 +398,7 @@ enum
 static void
 xfdesktop_delete_a_bunch_o_files(GList *files)
 {
-    GtkWidget *dlg, *treeview, *vbox, *sw;
+    GtkWidget *dlg, *treeview, *vbox, *sw, *cancel_btn, *delete_btn;
     GtkListStore *ls;
     GtkTreeIter itr;
     GtkTreeViewColumn *col;
@@ -416,9 +416,7 @@ xfdesktop_delete_a_bunch_o_files(GList *files)
                                   GTK_STOCK_DIALOG_QUESTION,
                                   primary,
                                   _("If you delete a file, it is permanently lost."),
-                                  GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                  GTK_STOCK_DELETE, GTK_RESPONSE_ACCEPT, NULL);
-    gtk_dialog_set_default_response(GTK_DIALOG(dlg), GTK_RESPONSE_CANCEL);
+                                  NULL);
     g_free(primary);
     vbox = GTK_DIALOG(dlg)->vbox;
     
@@ -461,6 +459,21 @@ xfdesktop_delete_a_bunch_o_files(GList *files)
     
     gtk_widget_show(treeview);
     gtk_container_add(GTK_CONTAINER(sw), treeview);
+    
+    cancel_btn = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
+    GTK_WIDGET_SET_FLAGS(cancel_btn, GTK_CAN_DEFAULT);
+    gtk_widget_show(cancel_btn);
+    gtk_dialog_add_action_widget(GTK_DIALOG(dlg), cancel_btn,
+                                 GTK_RESPONSE_CANCEL);
+    
+    delete_btn = gtk_button_new_from_stock(GTK_STOCK_DELETE);
+    gtk_widget_show(delete_btn);
+    gtk_dialog_add_action_widget(GTK_DIALOG(dlg), delete_btn,
+                                 GTK_RESPONSE_ACCEPT);
+    
+    gtk_dialog_set_default_response(GTK_DIALOG(dlg), GTK_RESPONSE_CANCEL);
+    gtk_widget_show(dlg);
+    gtk_widget_grab_focus(cancel_btn);
     
     if(GTK_RESPONSE_ACCEPT == gtk_dialog_run(GTK_DIALOG(dlg)))
         g_list_foreach(files, (GFunc)xfdesktop_file_icon_delete_file, NULL);
