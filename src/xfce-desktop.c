@@ -79,6 +79,7 @@
 struct _XfceDesktopPriv
 {
     GdkScreen *gscreen;
+    gboolean updates_frozen;
     
     GdkPixmap *bg_pixmap;
     
@@ -237,12 +238,14 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     GdkWindow *groot;
     gint i, monitor = -1;
     
-    TRACE("dummy");
+    TRACE("entering");
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
-    if(!GTK_WIDGET_REALIZED(GTK_WIDGET(desktop)))
+    if(desktop->priv->updates_frozen || !GTK_WIDGET_REALIZED(GTK_WIDGET(desktop)))
         return;
+    
+    TRACE("really entering");
     
     gscreen = desktop->priv->gscreen;
     cmap = gdk_drawable_get_colormap(GDK_DRAWABLE(GTK_WIDGET(desktop)->window));
@@ -386,6 +389,9 @@ handle_xinerama_stretch(XfceDesktop *desktop)
     XfceBackdrop *backdrop0;
     gint i;
     
+    if(desktop->priv->nbackdrops <= 1)
+        return;
+    
     for(i = 1; i < desktop->priv->nbackdrops; i++)
         g_object_unref(G_OBJECT(desktop->priv->backdrops[i]));
     
@@ -407,6 +413,9 @@ handle_xinerama_unstretch(XfceDesktop *desktop)
     GdkRectangle rect;
     GdkVisual *visual;
     gint i;
+    
+    if(desktop->priv->nbackdrops > 1)
+        return;
     
     desktop->priv->nbackdrops = gdk_screen_get_n_monitors(desktop->priv->gscreen);
     g_free(desktop->priv->backdrops);
@@ -540,6 +549,8 @@ xfce_desktop_realize(GtkWidget *widget)
     GdkWindow *groot;
     GdkVisual *visual;
     
+    TRACE("entering");
+    
     gtk_window_set_screen(GTK_WINDOW(desktop), desktop->priv->gscreen);
     
     /* chain up */
@@ -596,6 +607,8 @@ xfce_desktop_realize(GtkWidget *widget)
             G_CALLBACK(screen_size_changed_cb), desktop);
     
     gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSURE_MASK);
+    
+    TRACE("exiting");
 }
 
 static void
@@ -698,6 +711,7 @@ xfce_desktop_new(GdkScreen *gscreen)
     
     if(!gscreen)
         gscreen = gdk_display_get_default_screen(gdk_display_get_default());
+    GTK_WINDOW(desktop)->screen = gscreen;
     desktop->priv->gscreen = gscreen;
     
     return GTK_WIDGET(desktop);
@@ -741,12 +755,14 @@ xfce_desktop_set_xinerama_stretch(XfceDesktop *desktop,
     
     desktop->priv->xinerama_stretch = stretch;
     
-    if(stretch)
-        handle_xinerama_stretch(desktop);
-    else
-        handle_xinerama_unstretch(desktop);
-    
-    backdrop_changed_cb(desktop->priv->backdrops[0], desktop);
+    if(!desktop->priv->updates_frozen) {
+        if(stretch)
+            handle_xinerama_stretch(desktop);
+        else
+            handle_xinerama_unstretch(desktop);
+        
+        backdrop_changed_cb(desktop->priv->backdrops[0], desktop);
+    }
 }
 
 gboolean
@@ -850,11 +866,41 @@ xfce_desktop_set_icon_use_system_font_size(XfceDesktop *desktop,
 #endif
 }
 
+void
+xfce_desktop_freeze_updates(XfceDesktop *desktop)
+{
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+    desktop->priv->updates_frozen = TRUE;
+}
+
+void
+xfce_desktop_thaw_updates(XfceDesktop *desktop)
+{
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+    
+    desktop->priv->updates_frozen = FALSE;
+    
+    if(desktop->priv->xinerama_stretch) {
+        if(desktop->priv->nbackdrops > 1)
+            handle_xinerama_stretch(desktop);
+        backdrop_changed_cb(desktop->priv->backdrops[0], desktop);
+    } else {
+        if(desktop->priv->nbackdrops == 1)
+            handle_xinerama_unstretch(desktop);
+        else {
+            gint i;
+            for(i = 0; i < desktop->priv->nbackdrops; ++i)
+                backdrop_changed_cb(desktop->priv->backdrops[i], desktop);
+        }
+    }
+}
+
 XfceBackdrop *
 xfce_desktop_peek_backdrop(XfceDesktop *desktop,
                            guint monitor)
 {
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop)
+                         && GTK_WIDGET_REALIZED(GTK_WIDGET(desktop))
                          && monitor < desktop->priv->nbackdrops, NULL);
     return desktop->priv->backdrops[monitor];
 }

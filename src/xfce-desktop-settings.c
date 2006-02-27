@@ -211,13 +211,16 @@ xfce_desktop_settings_load_initial(XfceDesktop *desktop,
 {
     gchar setting_name[64];
     McsSetting *setting = NULL;
-    GdkScreen *gscreen;
+    GdkScreen *gscreen = GTK_WINDOW(desktop)->screen;
     gint screen, i, nmonitors;
     XfceBackdrop *backdrop;
     GdkColor color;
     
+    TRACE("entering");
+    
+    xfce_desktop_freeze_updates(desktop);
+    
     gtk_widget_realize(GTK_WIDGET(desktop));
-    gscreen = gtk_widget_get_screen(GTK_WIDGET(desktop));
     screen = gdk_screen_get_number(gscreen);
     nmonitors = xfce_desktop_get_n_monitors(desktop);
     
@@ -359,6 +362,10 @@ xfce_desktop_settings_load_initial(XfceDesktop *desktop,
         } else
             xfce_backdrop_set_brightness(backdrop, 0);
     }
+    
+    xfce_desktop_thaw_updates(desktop);
+    
+    TRACE("exiting");
 }
 
 gboolean

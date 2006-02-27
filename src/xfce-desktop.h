@@ -85,6 +85,8 @@ void xfce_desktop_set_icon_use_system_font_size(XfceDesktop *desktop,
 void xfce_desktop_set_icon_font_size(XfceDesktop *desktop,
                                      guint font_size_points);
 
+void xfce_desktop_freeze_updates(XfceDesktop *desktop);
+void xfce_desktop_thaw_updates(XfceDesktop *desktop);
 
 XfceBackdrop *xfce_desktop_peek_backdrop(XfceDesktop *desktop,
                                          guint monitor);
