@@ -958,7 +958,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     {
         str = g_strdup(_("broken link"));
         is_link = TRUE;
-    } else if(icon->priv->info->flags == THUNAR_VFS_FILE_FLAGS_SYMLINK) {
+    } else if(icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_SYMLINK) {
         str = g_strdup_printf(_("link to %s"),
                               thunar_vfs_mime_info_get_comment(icon->priv->info->mime_info));
         is_link = TRUE;

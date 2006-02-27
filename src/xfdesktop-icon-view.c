@@ -644,8 +644,6 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         newy = SCREEN_MARGIN + icon_view->priv->yorigin + row * CELL_SIZE;
         
         if(cell_highlight) {
-            /*DBG("have old cell higlight: (%d,%d)", cell_highlight->x,
-                cell_highlight->y);*/
             if(cell_highlight->x != newx || cell_highlight->y != newy) {
                 gtk_widget_queue_draw_area(widget,
                                            cell_highlight->x,
@@ -665,8 +663,6 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         cell_highlight->x = newx;
         cell_highlight->y = newy;
         cell_highlight->width = cell_highlight->height = CELL_SIZE;
-        
-        /*DBG("painting highlight: (%d,%d)", newx, newy);*/
         
         gdk_draw_rectangle(GDK_DRAWABLE(widget->window),
                            widget->style->bg_gc[GTK_STATE_SELECTED], FALSE,
