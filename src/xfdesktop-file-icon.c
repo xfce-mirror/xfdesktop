@@ -864,10 +864,11 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
                                     gpointer user_data)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);
-    GtkWidget *dlg, *table, *hbox, *lbl, *img, *spacer, *notebook, *vbox;
+    GtkWidget *dlg, *table, *hbox, *lbl, *img, *spacer, *notebook, *vbox, *entry;
     gint row = 0, w, h;
     PangoFontDescription *pfd = pango_font_description_from_string("bold");
     gchar *str = NULL, buf[64];
+    gboolean is_link = FALSE;
     struct tm *tm;
     ThunarVfsUserManager *user_manager;
     ThunarVfsUser *user;
@@ -925,11 +926,15 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     gtk_widget_show(lbl);
     gtk_box_pack_start(GTK_BOX(hbox), lbl, TRUE, TRUE, 0);
     
-    lbl = gtk_label_new(xfdesktop_file_icon_peek_label(XFDESKTOP_ICON(icon)));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
+    entry = gtk_entry_new();
+    gtk_entry_set_text(GTK_ENTRY(entry),
+                       xfdesktop_file_icon_peek_label(XFDESKTOP_ICON(icon)));
+    gtk_editable_select_region(GTK_EDITABLE(entry), 0, -1);
+    gtk_editable_set_editable(GTK_EDITABLE(entry), FALSE);  /* FIXME */
+    gtk_widget_show(entry);
+    gtk_table_attach(GTK_TABLE(table), entry, 1, 2, row, row + 1,
                      GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+    gtk_widget_grab_focus(entry);
     
     ++row;
     
@@ -946,15 +951,17 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     gtk_widget_modify_font(lbl, pfd);
     gtk_widget_show(lbl);
     gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+                     GTK_FILL, GTK_FILL, 0, 0);
     
     if(!strcmp(thunar_vfs_mime_info_get_name(icon->priv->info->mime_info),
                "inode/symlink"))
     {
         str = g_strdup(_("broken link"));
-    } else if(icon->priv->info->type == THUNAR_VFS_FILE_TYPE_SYMLINK) {
+        is_link = TRUE;
+    } else if(icon->priv->info->flags == THUNAR_VFS_FILE_FLAGS_SYMLINK) {
         str = g_strdup_printf(_("link to %s"),
                               thunar_vfs_mime_info_get_comment(icon->priv->info->mime_info));
+        is_link = TRUE;
     } else
         str = g_strdup(thunar_vfs_mime_info_get_comment(icon->priv->info->mime_info));
     lbl = gtk_label_new(str);
@@ -965,6 +972,35 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
                      GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
     
     ++row;
+    
+    if(is_link) {
+        gchar *link_name, *display_name;
+        
+        lbl = gtk_label_new(_("Link Target:"));
+        gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
+        gtk_widget_modify_font(lbl, pfd);
+        gtk_widget_show(lbl);
+        gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
+                         GTK_FILL, GTK_FILL, 0, 0);
+        
+        link_name = thunar_vfs_info_read_link(icon->priv->info, NULL);
+        if(link_name) {
+            display_name = g_filename_display_name(link_name);
+            lbl = gtk_label_new(display_name);
+            g_object_set(G_OBJECT(lbl),
+                         "ellipsize", EXO_PANGO_ELLIPSIZE_START,
+                         NULL);
+            g_free(display_name);
+            g_free(link_name);
+        } else
+            lbl = gtk_label_new(_("(unknown)"));
+        gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+        gtk_widget_show(lbl);
+        gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
+                         GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+        
+        ++row;
+    }
     
     mime_app = thunar_vfs_mime_database_get_default_application(thunar_mime_database,
                                                                 icon->priv->info->mime_info);
@@ -977,7 +1013,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
         gtk_widget_modify_font(lbl, pfd);
         gtk_widget_show(lbl);
         gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                         GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+                         GTK_FILL, GTK_FILL, 0, 0);
         
         hbox = gtk_hbox_new(FALSE, BORDER);
         gtk_widget_show(hbox);
@@ -1022,7 +1058,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     gtk_widget_modify_font(lbl, pfd);
     gtk_widget_show(lbl);
     gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+                     GTK_FILL, GTK_FILL, 0, 0);
     
     tm = localtime(&icon->priv->info->mtime);
     strftime(buf, 64, "%Y-%m-%d %H:%M:%S", tm);
@@ -1040,7 +1076,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     gtk_widget_modify_font(lbl, pfd);
     gtk_widget_show(lbl);
     gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+                     GTK_FILL, GTK_FILL, 0, 0);
     
     tm = localtime(&icon->priv->info->atime);
     strftime(buf, 64, "%Y-%m-%d %H:%M:%S", tm);
@@ -1069,7 +1105,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     gtk_widget_modify_font(lbl, pfd);
     gtk_widget_show(lbl);
     gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+                     GTK_FILL, GTK_FILL, 0, 0);
     
     if(icon->priv->info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
         ThunarVfsFileSize free_space;
@@ -1077,7 +1113,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
             thunar_vfs_humanize_size(free_space, buf, 64);
             lbl = gtk_label_new(buf);
         } else
-            lbl = gtk_label_new(_("unknown"));
+            lbl = gtk_label_new(_("(unknown)"));
     } else {
         thunar_vfs_humanize_size(icon->priv->info->size, buf, 64);
         str = g_strdup_printf(_("%s (%" G_GINT64_FORMAT " Bytes)"), buf,
@@ -1122,7 +1158,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     gtk_widget_modify_font(lbl, pfd);
     gtk_widget_show(lbl);
     gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+                     GTK_FILL, GTK_FILL, 0, 0);
     
     str = g_strdup_printf("%s (%s)", thunar_vfs_user_get_real_name(user),
                           thunar_vfs_user_get_name(user));
@@ -1140,7 +1176,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     gtk_widget_modify_font(lbl, pfd);
     gtk_widget_show(lbl);
     gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+                     GTK_FILL, GTK_FILL, 0, 0);
     
     lbl = gtk_label_new(_(access_types[((mode >> (2 * 3)) & 0007) >> 1]));
     gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
@@ -1163,7 +1199,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     gtk_widget_modify_font(lbl, pfd);
     gtk_widget_show(lbl);
     gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+                     GTK_FILL, GTK_FILL, 0, 0);
     
     lbl = gtk_label_new(thunar_vfs_group_get_name(group));
     gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
@@ -1178,7 +1214,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     gtk_widget_modify_font(lbl, pfd);
     gtk_widget_show(lbl);
     gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+                     GTK_FILL, GTK_FILL, 0, 0);
     
     lbl = gtk_label_new(_(access_types[((mode >> (1 * 3)) & 0007) >> 1]));
     gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
@@ -1201,7 +1237,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     gtk_widget_modify_font(lbl, pfd);
     gtk_widget_show(lbl);
     gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+                     GTK_FILL, GTK_FILL, 0, 0);
     
     lbl = gtk_label_new(_(access_types[((mode >> (0 * 3)) & 0007) >> 1]));
     gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
