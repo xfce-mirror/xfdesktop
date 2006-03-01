@@ -81,3 +81,58 @@ xfdesktop_icon_view_manager_fini(XfdesktopIconViewManager *manager)
     
     iface->manager_fini(manager);
 }
+
+gboolean
+xfdesktop_icon_view_manager_drag_drop(XfdesktopIconViewManager *manager,
+                                      XfdesktopIcon *drop_icon,
+                                      GdkDragContext *context,
+                                      guint16 row,
+                                      guint16 col,
+                                      guint time)
+{
+    XfdesktopIconViewManagerIface *iface;
+    
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager), FALSE);
+    
+    iface = XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(manager);
+    g_return_val_if_fail(iface->drag_drop, FALSE);
+    
+    return iface->drag_drop(manager, drop_icon, context, row, col, time);
+}
+
+void
+xfdesktop_icon_view_manager_drag_data_received(XfdesktopIconViewManager *manager,
+                                               GdkDragContext *context,
+                                               guint16 row,
+                                               guint16 col,
+                                               GtkSelectionData *data,
+                                               guint info,
+                                               guint time)
+{
+    XfdesktopIconViewManagerIface *iface;
+    
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager));
+    
+    iface = XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(manager);
+    g_return_if_fail(iface->drag_data_received);
+    
+    iface->drag_data_received(manager, context, row, col, data, info, time);
+}
+
+void
+xfdesktop_icon_view_manager_drag_data_get(XfdesktopIconViewManager *manager,
+                                          XfdesktopIcon *drag_icon,
+                                          GdkDragContext *context,
+                                          GtkSelectionData *data,
+                                          guint info,
+                                          guint time)
+{
+    XfdesktopIconViewManagerIface *iface;
+    
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager));
+    
+    iface = XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(manager);
+    g_return_if_fail(iface->drag_data_get);
+    
+    iface->drag_data_get(manager, drag_icon, context, data, info, time);
+}

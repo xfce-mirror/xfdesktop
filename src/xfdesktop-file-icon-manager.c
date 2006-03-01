@@ -63,6 +63,26 @@ static gboolean xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *
                                                       XfdesktopIconView *icon_view);
 static void xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager);
 
+static gboolean xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *manager,
+                                                      XfdesktopIcon *drop_icon,
+                                                      GdkDragContext *context,
+                                                      guint16 row,
+                                                      guint16 col,
+                                                      guint time);
+static void xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager,
+                                                           GdkDragContext *context,
+                                                           guint16 row,
+                                                           guint16 col,
+                                                           GtkSelectionData *data,
+                                                           guint info,
+                                                           guint time);
+static void xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *manager,
+                                                      XfdesktopIcon *drag_icon,
+                                                      GdkDragContext *context,
+                                                      GtkSelectionData *data,
+                                                      guint info,
+                                                      guint time);
+
 static void xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanager);
 
 enum
@@ -105,13 +125,15 @@ enum
 {
     TARGET_GNOME_COPIED_FILES = 0,
     TARGET_UTF8_STRING,
+    TARGET_TEXT_URI_LIST,
 };
 
 static const GtkTargetEntry targets[] = {
     { "x-special/gnome-copied-files", 0, TARGET_GNOME_COPIED_FILES },
-    { "UTF8_STRING", 0, TARGET_UTF8_STRING }
+    { "UTF8_STRING", 0, TARGET_UTF8_STRING },
+    { "text/uri-list", 0, TARGET_TEXT_URI_LIST},
 };
-static const gint n_targets = 2;
+static const gint n_targets = 3;
 
 static XfdesktopClipboardManager *clipboard_manager = NULL;
 
@@ -195,6 +217,9 @@ xfdesktop_file_icon_manager_icon_view_manager_init(XfdesktopIconViewManagerIface
 {
     iface->manager_init = xfdesktop_file_icon_manager_real_init;
     iface->manager_fini = xfdesktop_file_icon_manager_fini;
+    iface->drag_drop = xfdesktop_file_icon_manager_drag_drop;
+    iface->drag_data_received = xfdesktop_file_icon_manager_drag_data_received;
+    iface->drag_data_get = xfdesktop_file_icon_manager_drag_data_get;
 }
 
 
@@ -307,86 +332,6 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
         g_object_unref(G_OBJECT(icon));
 }
 
-static gboolean
-xfdesktop_file_icon_manager_drag_drop(GtkWidget *widget,
-                                      GdkDragContext *drag_context,
-                                      gint x,
-                                      gint y,
-                                      guint time,
-                                      gpointer user_data)
-{
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    GdkAtom target;
-    
-    target = gtk_drag_dest_find_target(widget, drag_context,
-                                       fmanager->priv->targets);
-    if(target == GDK_NONE)
-        return FALSE;
-    
-    if(target == gdk_atom_intern("x-special/gnome-copied-files", FALSE))
-        gtk_drag_get_data(widget, drag_context, target, time);
-    else  /* handle utf8 string? */
-        return FALSE;
-    
-    return TRUE;
-}
-
-static void
-xfdesktop_file_icon_manager_drag_data_received(GtkWidget *widget,
-                                               GdkDragContext *drag_context,
-                                               gint x,
-                                               gint y,
-                                               GtkSelectionData *sel_data,
-                                               guint info,
-                                               guint time,
-                                               gpointer user_data)
-{
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(widget);
-    gboolean copy_only = TRUE;
-    GList *path_list;
-    gchar *data;
-    gboolean drop_ok = FALSE;
-    
-    if(sel_data->length > 0) {
-        data = (gchar *)sel_data->data;
-        data[sel_data->length] = 0;
-        
-        if(!g_ascii_strncasecmp(data, "copy\n", 5)) {
-            copy_only = TRUE;
-            data += 5;
-        } else if(!g_ascii_strncasecmp(data, "cut\n", 4)) {
-            copy_only = FALSE;
-            data += 4;
-        }
-        
-        path_list = thunar_vfs_path_list_from_string(data, NULL);
-        
-        if(path_list) {
-            ThunarVfsJob *job = NULL;
-            GList *dest_path_list = NULL;
-            gint i, n;
-            
-            n = g_list_length(path_list);
-            for(i = 0; i < n; ++i) {
-                dest_path_list = g_list_prepend(dest_path_list,
-                                                fmanager->priv->folder);
-            }
-            
-            if(copy_only)
-                job = thunar_vfs_copy_files(path_list, dest_path_list, NULL);
-            else
-                job = thunar_vfs_move_files(path_list, dest_path_list, NULL);
-            
-            if(job)
-                drop_ok = TRUE;
-            
-            g_list_free(dest_path_list);
-            g_list_free(path_list);
-        }
-    }
-    
-    gtk_drag_finish(drag_context, drop_ok, !copy_only, time);
-}
 
 enum
 {
@@ -741,17 +686,11 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     xfdesktop_icon_view_enable_drag_source(icon_view,
                                            GDK_SHIFT_MASK | GDK_CONTROL_MASK,
                                            targets, n_targets,
-                                           GDK_ACTION_DEFAULT | GDK_ACTION_COPY
+                                           GDK_ACTION_LINK | GDK_ACTION_COPY
                                            | GDK_ACTION_MOVE);
     xfdesktop_icon_view_enable_drag_dest(icon_view, targets, n_targets,
-                                         GDK_ACTION_DEFAULT | GDK_ACTION_COPY
+                                         GDK_ACTION_LINK | GDK_ACTION_COPY
                                          | GDK_ACTION_MOVE);
-    g_signal_connect(G_OBJECT(icon_view), "drag-drop",
-                     G_CALLBACK(xfdesktop_file_icon_manager_drag_drop),
-                     fmanager);
-    g_signal_connect(G_OBJECT(icon_view), "drag-data-received",
-                     G_CALLBACK(xfdesktop_file_icon_manager_drag_data_received),
-                     fmanager);
     
     g_signal_connect(G_OBJECT(xfdesktop_icon_view_get_window_widget(icon_view)),
                      "key-press-event",
@@ -810,18 +749,119 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
     g_hash_table_destroy(fmanager->priv->icons);
     fmanager->priv->icons = NULL;
     
-    g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->icon_view),
-                                         G_CALLBACK(xfdesktop_file_icon_manager_drag_drop),
-                                         fmanager);
-    g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->icon_view),
-                                         G_CALLBACK(xfdesktop_file_icon_manager_drag_data_received),
-                                         fmanager);
     g_signal_handlers_disconnect_by_func(G_OBJECT(xfdesktop_icon_view_get_window_widget(fmanager->priv->icon_view)),
                                          G_CALLBACK(xfdesktop_file_icon_manager_key_press),
                                          fmanager);
     
     xfdesktop_icon_view_unset_drag_source(fmanager->priv->icon_view);
     xfdesktop_icon_view_unset_drag_dest(fmanager->priv->icon_view);
+}
+
+static gboolean
+xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *manager,
+                                      XfdesktopIcon *drop_icon,
+                                      GdkDragContext *context,
+                                      guint16 row,
+                                      guint16 col,
+                                      guint time)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
+    GtkWidget *widget = GTK_WIDGET(fmanager->priv->icon_view);
+    GdkAtom target;
+    
+    target = gtk_drag_dest_find_target(widget, context,
+                                       fmanager->priv->targets);
+    if(target == GDK_NONE)
+        return FALSE;
+    
+    if(target == gdk_atom_intern("x-special/gnome-copied-files", FALSE)
+       || target == gdk_atom_intern("UTF8_STRING", FALSE)
+       || target == gdk_atom_intern("text/uri-list", FALSE))
+    {
+        gtk_drag_get_data(widget, context, target, time);
+    } else
+        return FALSE;
+    
+    return TRUE;
+}
+
+static void
+xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager,
+                                               GdkDragContext *context,
+                                               guint16 row,
+                                               guint16 col,
+                                               GtkSelectionData *sel_data,
+                                               guint info,
+                                               guint time)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
+    gboolean copy_only = TRUE;
+    GList *path_list;
+    gchar *data;
+    gboolean drop_ok = FALSE;
+    
+    if(sel_data->length > 0) {
+        data = (gchar *)sel_data->data;
+        data[sel_data->length] = 0;
+        
+        if(!g_ascii_strncasecmp(data, "copy\n", 5)) {
+            copy_only = TRUE;
+            data += 5;
+        } else if(!g_ascii_strncasecmp(data, "cut\n", 4)) {
+            copy_only = FALSE;
+            data += 4;
+        } else
+            copy_only = !(context->suggested_action == GDK_ACTION_MOVE);
+        
+        path_list = thunar_vfs_path_list_from_string(data, NULL);
+        
+        if(path_list) {
+            ThunarVfsJob *job = NULL;
+            GList *dest_path_list = NULL, *l;
+            const gchar *name;
+            ThunarVfsPath *dest_path;
+            
+            for(l = path_list; l; l = l->next) {
+                name = thunar_vfs_path_get_name((ThunarVfsPath *)l->data);
+                dest_path = thunar_vfs_path_relative(fmanager->priv->folder,
+                                                     name);
+                dest_path_list = g_list_prepend(dest_path_list, dest_path);
+            }
+            dest_path_list = g_list_reverse(dest_path_list);
+            
+            if(copy_only)
+                job = thunar_vfs_copy_files(path_list, dest_path_list, NULL);
+            else
+                job = thunar_vfs_move_files(path_list, dest_path_list, NULL);
+            
+            if(job)
+                drop_ok = TRUE;
+            
+            g_list_foreach(dest_path_list, (GFunc)thunar_vfs_path_unref, NULL);
+            g_list_free(dest_path_list);
+            g_list_free(path_list);
+            
+            /* FIXME: watch error */
+            g_signal_connect(G_OBJECT(job), "finished",
+                             G_CALLBACK(g_object_unref), NULL);
+        }
+    }
+    
+    DBG("finishing drop on desktop from external source: drop_ok=%s, copy_only=%s",
+        drop_ok?"TRUE":"FALSE", copy_only?"TRUE":"FALSE");
+    
+    gtk_drag_finish(context, drop_ok, !copy_only, time);
+}
+
+static void
+xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *manager,
+                                          XfdesktopIcon *drag_icon,
+                                          GdkDragContext *context,
+                                          GtkSelectionData *data,
+                                          guint info,
+                                          guint time)
+{
+    
 }
 
 
