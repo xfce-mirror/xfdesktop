@@ -325,6 +325,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             {
                 GList *repaint_icons = icon_view->priv->selected_icons;
                 icon_view->priv->selected_icons = NULL;
+                repaint_icons = g_list_remove(repaint_icons, icon);
                 g_list_foreach(repaint_icons, xfdesktop_list_foreach_repaint,
                                icon_view);
                 g_list_free(repaint_icons);
@@ -356,6 +357,9 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 
                 return TRUE;
             } else if(evt->button == 3) {
+                /* avoid repaint delay */
+                while(gtk_events_pending())
+                    gtk_main_iteration();
                 /* if we're a right click, emit signal on the icon */
                 xfdesktop_icon_menu_popup(icon);
                 return TRUE;
