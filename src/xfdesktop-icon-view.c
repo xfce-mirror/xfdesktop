@@ -210,6 +210,8 @@ static gint xfdesktop_check_icon_clicked(gconstpointer data,
                                          gconstpointer user_data);
 static void xfdesktop_list_foreach_repaint(gpointer data,
                                            gpointer user_data);
+static void xfdesktop_list_foreach_invalidate(gpointer data,
+                                              gpointer user_data);
 static void xfdesktop_grid_find_nearest(XfdesktopIconView *icon_view,
                                         XfdesktopIcon *icon,
                                         XfdesktopDirection dir,
@@ -378,7 +380,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                     /* unselect all of the other icons */
                     GList *repaint_icons = icon_view->priv->selected_icons;
                     icon_view->priv->selected_icons = NULL;
-                    g_list_foreach(repaint_icons, xfdesktop_list_foreach_repaint,
+                    g_list_foreach(repaint_icons, xfdesktop_list_foreach_invalidate,
                                    icon_view);
                     g_list_free(repaint_icons);
                 }
@@ -417,7 +419,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                || !(evt->state & (GDK_CONTROL_MASK|GDK_SHIFT_MASK))) {
                 GList *repaint_icons = icon_view->priv->selected_icons;
                 icon_view->priv->selected_icons = NULL;
-                g_list_foreach(repaint_icons, xfdesktop_list_foreach_repaint,
+                g_list_foreach(repaint_icons, xfdesktop_list_foreach_invalidate,
                                icon_view);
                 g_list_free(repaint_icons);
             }
@@ -1900,7 +1902,15 @@ xfdesktop_list_foreach_repaint(gpointer data,
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
     XfdesktopIcon *icon = XFDESKTOP_ICON(data);
-    DBG("entering (%s)", xfdesktop_icon_peek_label(icon));
+    xfdesktop_icon_view_paint_icon(icon_view, icon);
+}
+
+static void
+xfdesktop_list_foreach_invalidate(gpointer data,
+                                  gpointer user_data)
+{
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
+    XfdesktopIcon *icon = XFDESKTOP_ICON(data);
     xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
 }
 
