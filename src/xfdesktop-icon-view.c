@@ -240,7 +240,9 @@ static gboolean xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
                                               gint *width,
                                               gint *height);
 static void xfdesktop_grid_do_resize(XfdesktopIconView *icon_view);
-
+static inline gboolean xfdesktop_rectangle_contains_point(GdkRectangle *rect,
+                                                          gint x,
+                                                          gint y);
 static void xfdesktop_icon_view_modify_font_size(XfdesktopIconView *icon_view,
                                                  gint size);
 
@@ -603,8 +605,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
         if(icon_view->priv->item_under_pointer) {
             if(!xfdesktop_icon_get_extents(icon_view->priv->item_under_pointer,
                                            &extents)
-               || evt->x < extents.x || evt->x >= extents.x + extents.width
-               || evt->y < extents.y || evt->y >= extents.y + extents.height)
+               || !xfdesktop_rectangle_contains_point(&extents, evt->x, evt->y))
             {
                 /* we're not over the icon anymore */
                 icon = icon_view->priv->item_under_pointer;
@@ -616,8 +617,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                                                              evt->x,
                                                              evt->y);
             if(icon && xfdesktop_icon_get_extents(icon, &extents)
-               && evt->x >= extents.x && evt->x < extents.x + extents.width
-               && evt->y >= extents.y && evt->y < extents.y + extents.height)
+               && xfdesktop_rectangle_contains_point(&extents, evt->x, evt->y))
             {
                 icon_view->priv->item_under_pointer = icon;
                 xfdesktop_icon_view_paint_icon(icon_view, icon);
@@ -1245,7 +1245,7 @@ xfdesktop_rootwin_watch_workarea(GdkXEvent *gxevent,
     XPropertyEvent *xevt = (XPropertyEvent *)gxevent;
     
     if(xevt->type == PropertyNotify
-       && XInternAtom(GDK_DISPLAY(), "_NET_WORKAREA", False) == xevt->atom)
+       && XInternAtom(xevt->display, "_NET_WORKAREA", False) == xevt->atom)
     {
         DBG("got _NET_WORKAREA change on rootwin!");
         if(icon_view->priv->grid_resize_timeout) {
@@ -1499,27 +1499,19 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     pix_h = gdk_pixbuf_get_height(pix);
     
     playout = icon_view->priv->playout;
-    pango_layout_set_alignment(playout, PANGO_ALIGN_LEFT);
     pango_layout_set_width(playout, -1);
     label = xfdesktop_icon_peek_label(icon);
     pango_layout_set_text(playout, label, -1);
     pango_layout_get_size(playout, &text_w, &text_h);
-    //DBG("unadjusted size: %dx%d", text_w/PANGO_SCALE, text_h/PANGO_SCALE);
     if(text_w > TEXT_WIDTH * PANGO_SCALE) {
-        if(state == GTK_STATE_NORMAL) {
-#if GTK_CHECK_VERSION(2, 6, 0)  /* can't find a way to get pango version info */
+        if(state == GTK_STATE_NORMAL)
             pango_layout_set_ellipsize(playout, PANGO_ELLIPSIZE_END);
-#endif
-        } else {
+        else {
             pango_layout_set_wrap(playout, PANGO_WRAP_WORD_CHAR);
-#if GTK_CHECK_VERSION(2, 6, 0)  /* can't find a way to get pango version info */
             pango_layout_set_ellipsize(playout, PANGO_ELLIPSIZE_NONE);
-#endif
         }
         pango_layout_set_width(playout, TEXT_WIDTH * PANGO_SCALE);
         pango_layout_get_size(playout, &text_w, &text_h);
-        //DBG("adjusted size: %dx%d.  Tried to set width to %d.",
-        //    text_w, text_h, TEXT_WIDTH*PANGO_SCALE);
     }
     pango_layout_get_pixel_size(playout, &text_w, &text_h);
     
@@ -1551,9 +1543,9 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
                      &area, widget, "label", text_x, text_y, playout);
     
     area.x = (pix_w > text_w + CORNER_ROUNDNESS * 2 ? pix_x : text_x - CORNER_ROUNDNESS);
-    area.y = cell_y + CELL_PADDING + SPACING;
+    area.y = pix_y;
     area.width = (pix_w > text_w + CORNER_ROUNDNESS * 2 ? pix_w : text_w + CORNER_ROUNDNESS * 2);
-    area.height = pix_h + SPACING + text_h + CORNER_ROUNDNESS + 2;
+    area.height = pix_h + SPACING + 2 + text_h + CORNER_ROUNDNESS;
     xfdesktop_icon_set_extents(icon, &area);
     
     if(pix_free)
@@ -1705,7 +1697,7 @@ xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
             gulong *data = (gulong *)data_p;
             
             if(actual_format != 32 || actual_type != XA_CARDINAL) {
-                XFree(data);
+                XFree(data_p);
                 break;
             }
             
@@ -1721,10 +1713,12 @@ xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
             if(i + nitems >= first_id + 3 && first_id - offset + 3 >= 0) {
                 *height = data[first_id - offset + 3] - 2 * SCREEN_MARGIN;
                 ret = TRUE;
+                XFree(data_p);
                 break;
             }
             
             offset += actual_format * nitems;
+            XFree(data_p);
         } else
             break;
     } while(bytes_after > 0);
@@ -1733,7 +1727,6 @@ xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
     
     return ret;
 }
-
 
 static inline gboolean
 xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
@@ -1826,7 +1819,6 @@ xfdesktop_grid_find_nearest(XfdesktopIconView *icon_view,
                                                                  grid_layout[i]);
                 xfdesktop_icon_view_clear_icon_extents(icon_view,
                                                        grid_layout[i]);
-                xfdesktop_icon_view_paint_icon(icon_view, grid_layout[i]);
                 return;
             }
         }
@@ -1906,6 +1898,8 @@ xfdesktop_grid_find_nearest(XfdesktopIconView *icon_view,
         }
         
         if(new_sel_icon) {
+            XfdesktopIcon *icon_below;
+            
             if(g_list_find(icon_view->priv->selected_icons, new_sel_icon)) {
                 icon_view->priv->selected_icons = g_list_remove(icon_view->priv->selected_icons,
                                                                 icon);
@@ -1914,12 +1908,14 @@ xfdesktop_grid_find_nearest(XfdesktopIconView *icon_view,
                                                                  new_sel_icon);
             }
             
-            xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
-            xfdesktop_icon_view_clear_icon_extents(icon_view, new_sel_icon);
-            xfdesktop_icon_view_paint_icon(icon_view, icon);
-            xfdesktop_icon_view_paint_icon(icon_view, new_sel_icon);
-            
             icon_view->priv->last_clicked_item = new_sel_icon;
+            
+            xfdesktop_icon_view_clear_icon_extents(icon_view, new_sel_icon);
+            xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+            
+            icon_below = xfdesktop_find_icon_below(icon_view, icon);
+            if(icon_below)
+                xfdesktop_icon_view_clear_icon_extents(icon_view, icon_below);
         }
     }
 }
@@ -2348,15 +2344,16 @@ xfdesktop_icon_view_widget_coords_to_item(XfdesktopIconView *icon_view,
                                           gint wx,
                                           gint wy)
 {
-    XfdesktopIcon *icon = NULL;
     guint16 row, col;
     
     xfdesktop_xy_to_rowcol(icon_view, wx, wy, &row, &col);
-    g_return_val_if_fail(row < icon_view->priv->nrows
-                         && col < icon_view->priv->ncols, NULL);
-    icon = icon_view->priv->grid_layout[col * icon_view->priv->nrows + row];
+    if(row >= icon_view->priv->nrows
+       || col >= icon_view->priv->ncols)
+    {
+        return NULL;
+    }
     
-    return icon;
+    return icon_view->priv->grid_layout[col * icon_view->priv->nrows + row];
 }
 
 GList *
@@ -2408,7 +2405,7 @@ xfdesktop_icon_view_unselect_all(XfdesktopIconView *icon_view)
     if(icon_view->priv->selected_icons) {
         GList *repaint_icons = icon_view->priv->selected_icons;
         icon_view->priv->selected_icons = NULL;
-        g_list_foreach(repaint_icons, xfdesktop_list_foreach_repaint,
+        g_list_foreach(repaint_icons, xfdesktop_list_foreach_invalidate,
                        icon_view);
         g_list_free(repaint_icons);
     }
