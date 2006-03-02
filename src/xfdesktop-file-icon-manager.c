@@ -486,7 +486,7 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
             /* fall through */
         case GDK_F5:
             xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
-            break;
+            return TRUE;
     }
     
     return FALSE;

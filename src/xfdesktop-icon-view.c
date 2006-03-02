@@ -104,7 +104,9 @@ struct _XfdesktopIconViewPrivate
     XfdesktopIcon **grid_layout;
     
     guint grid_resize_timeout;
-    guint icon_repaint_id;
+    
+    guint repaint_queue_id;
+    GQueue *repaint_queue;
     
     GtkSelectionMode sel_mode;
     gboolean allow_overlapping_drops;
@@ -222,7 +224,7 @@ static void xfdesktop_screen_size_changed_cb(GdkScreen *gscreen,
 static GdkFilterReturn xfdesktop_rootwin_watch_workarea(GdkXEvent *gxevent,
                                                         GdkEvent *event,
                                                         gpointer user_data);
-static gboolean xfdesktop_icon_view_paint_icon_idled(gpointer user_data);
+static gboolean xfdesktop_icon_view_repaint_queued_icons(gpointer user_data);
 static gboolean xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
                                               guint ws_num,
                                               gint *xorigin,
@@ -293,6 +295,8 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->priv->icon_size = DEFAULT_ICON_SIZE;
     icon_view->priv->font_size = DEFAULT_FONT_SIZE;
     
+    icon_view->priv->repaint_queue = g_queue_new();
+    
     icon_view->priv->native_targets = gtk_target_list_new(icon_view_targets,
                                                           icon_view_n_targets);
     
@@ -320,6 +324,8 @@ xfdesktop_icon_view_finalize(GObject *obj)
     gtk_target_list_unref(icon_view->priv->native_targets);
     gtk_target_list_unref(icon_view->priv->source_targets);
     gtk_target_list_unref(icon_view->priv->dest_targets);
+    
+    g_queue_free(icon_view->priv->repaint_queue);
     
     g_list_free(icon_view->priv->icons);
     g_list_free(icon_view->priv->pending_icons);
@@ -1000,9 +1006,9 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
         icon_view->priv->grid_resize_timeout = 0;
     }
     
-    if(icon_view->priv->icon_repaint_id) {
-        g_source_remove(icon_view->priv->icon_repaint_id);
-        icon_view->priv->icon_repaint_id = 0;
+    if(icon_view->priv->repaint_queue_id) {
+        g_source_remove(icon_view->priv->repaint_queue_id);
+        icon_view->priv->repaint_queue_id = 0;
     }
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(gscreen),
@@ -1075,10 +1081,11 @@ xfdesktop_check_icon_needs_repaint(gpointer data,
         if(g_list_find(icon_view->priv->selected_icons, icon)) {
             /* save it for last to avoid painting another icon over top of
              * part of this one if it has an overly-large label */
-            if(icon_view->priv->icon_repaint_id)
-                g_source_remove(icon_view->priv->icon_repaint_id);
-            icon_view->priv->icon_repaint_id = g_idle_add(xfdesktop_icon_view_paint_icon_idled,
-                                                          icon);
+            g_queue_push_tail(icon_view->priv->repaint_queue,
+                              icon);
+            if(!icon_view->priv->repaint_queue_id)
+                icon_view->priv->repaint_queue_id = g_idle_add(xfdesktop_icon_view_repaint_queued_icons,
+                                                            icon_view);
         } else
             xfdesktop_icon_view_paint_icon(icon_view, icon);
     }
@@ -1235,7 +1242,7 @@ xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
             XfdesktopIcon *icon_below = xfdesktop_find_icon_below(icon_view,
                                                                   icon);
             if(icon_below)
-                xfdesktop_icon_view_paint_icon(icon_view, icon_below);
+                xfdesktop_icon_view_clear_icon_extents(icon_view, icon_below);
         }
     }
 }
@@ -1392,7 +1399,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     const gchar *label;
     guint16 row, col;
     
-    TRACE("entering");
+    TRACE("entering (%s)", xfdesktop_icon_peek_label(icon));
     
     g_return_if_fail(xfdesktop_icon_get_position(icon, &row, &col));
     
@@ -1478,19 +1485,15 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
 }
 
 static gboolean
-xfdesktop_icon_view_paint_icon_idled(gpointer user_data)
+xfdesktop_icon_view_repaint_queued_icons(gpointer user_data)
 {
-    XfdesktopIcon *icon = XFDESKTOP_ICON(user_data);
-    XfdesktopIconView *icon_view;
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
+    XfdesktopIcon *icon;
     
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    while((icon = g_queue_pop_head(icon_view->priv->repaint_queue)))
+        xfdesktop_icon_view_paint_icon(icon_view, icon);
     
-    icon_view = g_object_get_data(G_OBJECT(icon), "--xfdesktop-icon-view");
-    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
-    
-    icon_view->priv->icon_repaint_id = 0;
-    
-    xfdesktop_icon_view_paint_icon(icon_view, icon);
+    icon_view->priv->repaint_queue_id = 0;
     
     return FALSE;
 }
@@ -1872,8 +1875,9 @@ xfdesktop_list_foreach_repaint(gpointer data,
                                gpointer user_data)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
-    xfdesktop_icon_view_clear_icon_extents(icon_view, (XfdesktopIcon *)data);
-    xfdesktop_icon_view_paint_icon(icon_view, (XfdesktopIcon *)data);
+    XfdesktopIcon *icon = XFDESKTOP_ICON(data);
+    DBG("entering (%s)", xfdesktop_icon_peek_label(icon));
+    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
 }
 
 static void
