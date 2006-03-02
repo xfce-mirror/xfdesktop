@@ -435,7 +435,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 g_list_free(repaint_icons);
             }
         }
-    } else if(evt->type == GDK_2BUTTON_PRESS) {
+    } else if(evt->type == GDK_2BUTTON_PRESS && evt->button == 1) {
         GList *icon_l = g_list_find_custom(icon_view->priv->icons, evt,
                                            (GCompareFunc)xfdesktop_check_icon_clicked);
         if(icon_l && (icon = icon_l->data)) {
