@@ -27,9 +27,13 @@
 #include <string.h>
 #endif
 
+#ifdef HAVE_LIBEXO
+#define EXO_API_SUBJECT_TO_CHANGE
+#include <exo/exo.h>
+#endif
+
 #include <libxfcegui4/libxfcegui4.h>
 
-#include "xfdesktop-gdk-pixbuf-extensions.h"
 #include "xfdesktop-icon.h"
 #include "xfdesktop-file-icon.h"
 
@@ -247,12 +251,14 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
             }
         }
         
+#ifdef HAVE_LIBEXO
         if(file_icon->priv->pix_opacity != 100) {
-            GdkPixbuf *tmp = xfdesktop_gdk_pixbuf_lucent(file_icon->priv->pix,
-                                                         file_icon->priv->pix_opacity);
+            GdkPixbuf *tmp = exo_gdk_pixbuf_lucent(file_icon->priv->pix,
+                                                   file_icon->priv->pix_opacity);
             g_object_unref(G_OBJECT(file_icon->priv->pix));
             file_icon->priv->pix = tmp;
         }
+#endif
     }
     
     /* fallback */
@@ -273,12 +279,14 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
         file_icon->priv->pix = g_object_ref(G_OBJECT(xfdesktop_fallback_icon));
         file_icon->priv->cur_pix_size = size;
         
+#ifdef HAVE_LIBEXO
         if(file_icon->priv->pix_opacity != 100) {
-            GdkPixbuf *tmp = xfdesktop_gdk_pixbuf_lucent(file_icon->priv->pix,
-                                                         file_icon->priv->pix_opacity);
+            GdkPixbuf *tmp = exo_gdk_pixbuf_lucent(file_icon->priv->pix,
+                                                   file_icon->priv->pix_opacity);
             g_object_unref(G_OBJECT(file_icon->priv->pix));
             file_icon->priv->pix = tmp;
         }
+#endif
     }
     
     return file_icon->priv->pix;

@@ -35,7 +35,11 @@
 
 #include <libxfcegui4/libxfcegui4.h>
 
-#include "xfdesktop-gdk-pixbuf-extensions.h"
+#ifdef HAVE_LIBEXO
+#define EXO_API_SUBJECT_TO_CHANGE
+#include <exo/exo.h>
+#endif
+
 #include "xfdesktop-icon-view.h"
 
 #define DEFAULT_FONT_SIZE  12
@@ -598,7 +602,9 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                                                                                     evt);
         if(icon_view->priv->definitely_dragging)
             ret = TRUE;
-    } else {
+    }
+#ifdef HAVE_LIBEXO  /* no need to waste the CPU cycles otherwise... */
+    else {
         XfdesktopIcon *icon;
         GdkRectangle extents;
         
@@ -624,6 +630,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
             }
         }
     }
+#endif
     
     return ret;
 }
@@ -633,6 +640,7 @@ xfdesktop_icon_view_leave_notify(GtkWidget *widget,
                                  GdkEventCrossing *evt,
                                  gpointer user_data)
 {
+#ifdef HAVE_LIBEXO  /* no need to waste the CPU cycles otherwise... */
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
     
     if(icon_view->priv->item_under_pointer) {
@@ -640,6 +648,7 @@ xfdesktop_icon_view_leave_notify(GtkWidget *widget,
         icon_view->priv->item_under_pointer = NULL;
         xfdesktop_icon_view_paint_icon(icon_view, icon);
     }
+#endif
     
     return FALSE;
 }
@@ -1483,18 +1492,19 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         state = GTK_STATE_NORMAL;
     
     pix = xfdesktop_icon_peek_pixbuf(icon, ICON_SIZE);
+#ifdef HAVE_LIBEXO
     if(state != GTK_STATE_NORMAL) {
-        pix_free = xfdesktop_gdk_pixbuf_colorize(pix,
-                                                 &widget->style->base[state]);
+        pix_free = exo_gdk_pixbuf_colorize(pix, &widget->style->base[state]);
         pix = pix_free;
     }
     if(icon_view->priv->item_under_pointer == icon) {
-        GdkPixbuf *tmp = xfdesktop_gdk_pixbuf_spotlight(pix);
+        GdkPixbuf *tmp = exo_gdk_pixbuf_spotlight(pix);
         if(pix_free)
             g_object_unref(G_OBJECT(pix_free));
         pix = tmp;
         pix_free = tmp;
     }
+#endif
     pix_w = gdk_pixbuf_get_width(pix);
     pix_h = gdk_pixbuf_get_height(pix);
     

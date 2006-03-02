@@ -17,8 +17,6 @@ xfdesktop_SOURCES = \
 	xfce-desktop-settings.h
 
 desktop_icon_sources = \
-	xfdesktop-gdk-pixbuf-extensions.c \
-	xfdesktop-gdk-pixbuf-extensions.h \
 	xfdesktop-icon.c \
 	xfdesktop-icon.h \
 	xfdesktop-icon-view.c \
@@ -38,27 +36,17 @@ desktop_file_icon_sources = \
 	xfdesktop-file-icon-manager.c \
 	xfdesktop-file-icon-manager.h
 
-if ENABLE_DESKTOP_ICONS
-  xfdesktop_SOURCES += $(desktop_icon_sources)
-if HAVE_THUNAR_VFS
-    xfdesktop_SOURCES += $(desktop_file_icon_sources)
-endif
-endif
-
-EXTRA_DIST = $(desktop_icon_sources) $(desktop_file_icon_sources)
-
 xfdesktop_CFLAGS = \
 	-I$(top_srcdir) \
 	-I$(top_srcdir)/common	\
-	@LIBX11_CFLAGS@	\
-	@GMODULE_CFLAGS@ \
-	@LIBXFCEGUI4_CFLAGS@ \
-	@LIBXFCE4MCS_CLIENT_CFLAGS@ \
-	@THUNAR_VFS_CFLAGS@ \
 	-DLOCALEDIR=\"$(localedir)\" \
 	-DDATADIR=\"$(datadir)\" \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
-	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\"
+	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\" \
+	@LIBX11_CFLAGS@	\
+	@GMODULE_CFLAGS@ \
+	@LIBXFCEGUI4_CFLAGS@ \
+	@LIBXFCE4MCS_CLIENT_CFLAGS@
 
 xfdesktop_LDFLAGS = \
 	-export-dynamic
@@ -72,5 +60,24 @@ xfdesktop_LDADD += \
 	@LIBX11_LDFLAGS@ \
 	@LIBX11_LIBS@ \
 	@LIBXFCEGUI4_LIBS@ \
-	@LIBXFCE4MCS_CLIENT_LIBS@ \
+	@LIBXFCE4MCS_CLIENT_LIBS@
+
+
+if ENABLE_DESKTOP_ICONS
+  xfdesktop_SOURCES += $(desktop_icon_sources)
+
+if HAVE_THUNAR_VFS
+    xfdesktop_SOURCES += $(desktop_file_icon_sources)
+endif
+
+xfdesktop_CFLAGS += \
+	@LIBEXO_CFLAGS@ \
+	@THUNAR_VFS_CFLAGS@
+
+xfdesktop_LDADD += \
+	@LIBEXO_LIBS@ \
 	@THUNAR_VFS_LIBS@
+
+endif
+
+EXTRA_DIST = $(desktop_icon_sources) $(desktop_file_icon_sources)

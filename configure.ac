@@ -30,7 +30,7 @@ AC_PROG_INTLTOOL([0.31], [no-xml])
 
 dnl check for standard header files
 AC_HEADER_STDC
-AC_CHECK_HEADERS([errno.h fcntl.h math.h mmintrin.h signal.h stddef.h \
+AC_CHECK_HEADERS([errno.h fcntl.h math.h signal.h stddef.h \
                   string.h sys/stat.h sys/types.h sys/wait.h time.h \
                   unistd.h])
 AC_CHECK_FUNCS([mmap sigaction srandom])
@@ -58,6 +58,10 @@ XDT_CHECK_OPTIONAL_PACKAGE([THUNAR_VFS], [thunar-vfs-1], [0.2.0], [thunar-vfs],
     AC_HELP_STRING([--disable-thunar-vfs],
                    [Disable the use Thunar's VFS layer to show the desktop folder (default=enabled)]))
 AM_CONDITIONAL([HAVE_THUNAR_VFS], [test "x$THUNAR_VFS_FOUND" = "xyes"])
+
+XDT_CHECK_OPTIONAL_PACKAGE([LIBEXO], [exo-0.3], [0.3.1], [exo],
+    AC_HELP_STRING([--disable-exo],
+                   [Disable the use of libexo for nifty icon effects (default=enabled)]))
 
 dnl Build options
 AC_ARG_ENABLE([menu-editor],
