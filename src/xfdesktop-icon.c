@@ -30,6 +30,9 @@
 enum {
     SIG_PIXBUF_CHANGED = 0,
     SIG_LABEL_CHANGED,
+    SIG_SELECTED,
+    SIG_ACTIVATED,
+    SIG_MENU_POPUP,
     SIG_N_SIGNALS,
 };
 
@@ -86,6 +89,33 @@ xfdesktop_icon_base_init(gpointer g_class)
                                                     NULL, NULL,
                                                     g_cclosure_marshal_VOID__VOID,
                                                     G_TYPE_NONE, 0);
+        
+        __signals[SIG_SELECTED] = g_signal_new("selected",
+                                               XFDESKTOP_TYPE_ICON,
+                                               G_SIGNAL_RUN_LAST,
+                                               G_STRUCT_OFFSET(XfdesktopIconIface,
+                                                               selected),
+                                               NULL, NULL,
+                                               g_cclosure_marshal_VOID__VOID,
+                                               G_TYPE_NONE, 0);
+        
+        __signals[SIG_ACTIVATED] = g_signal_new("activated",
+                                                XFDESKTOP_TYPE_ICON,
+                                                G_SIGNAL_RUN_LAST,
+                                                G_STRUCT_OFFSET(XfdesktopIconIface,
+                                                                activated),
+                                                NULL, NULL,
+                                                g_cclosure_marshal_VOID__VOID,
+                                                G_TYPE_NONE, 0);
+        
+        __signals[SIG_MENU_POPUP] = g_signal_new("menu-popup",
+                                                 XFDESKTOP_TYPE_ICON,
+                                                 G_SIGNAL_RUN_LAST,
+                                                 G_STRUCT_OFFSET(XfdesktopIconIface,
+                                                                 menu_popup),
+                                                 NULL, NULL,
+                                                 g_cclosure_marshal_VOID__VOID,
+                                                 G_TYPE_NONE, 0);
         
         __inited = TRUE;
     }
@@ -230,44 +260,6 @@ xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
     return iface->do_drop_dest(icon, src_icon, action);
 }
 
-void
-xfdesktop_icon_selected(XfdesktopIcon *icon)
-{
-    XfdesktopIconIface *iface;
-    
-    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
-    
-    iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    g_return_if_fail(iface->selected);
-    
-    iface->selected(icon);
-}
-
-void
-xfdesktop_icon_activated(XfdesktopIcon *icon)
-{
-    XfdesktopIconIface *iface;
-    
-    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
-    
-    iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    g_return_if_fail(iface->activated);
-    
-    iface->activated(icon);
-}
-
-void
-xfdesktop_icon_menu_popup(XfdesktopIcon *icon)
-{
-    XfdesktopIconIface *iface;
-    
-    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
-    
-    iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    g_return_if_fail(iface->menu_popup);
-    
-    iface->menu_popup(icon);
-}
 
 /*< signal triggers >*/
 
@@ -275,7 +267,6 @@ void
 xfdesktop_icon_pixbuf_changed(XfdesktopIcon *icon)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON(icon));
-    
     g_signal_emit(icon, __signals[SIG_PIXBUF_CHANGED], 0);
 }
 
@@ -283,6 +274,26 @@ void
 xfdesktop_icon_label_changed(XfdesktopIcon *icon)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON(icon));
-    
     g_signal_emit(icon, __signals[SIG_LABEL_CHANGED], 0);
+}
+
+void
+xfdesktop_icon_selected(XfdesktopIcon *icon)
+{
+    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+    g_signal_emit(G_OBJECT(icon), __signals[SIG_SELECTED], 0, NULL);
+}
+
+void
+xfdesktop_icon_activated(XfdesktopIcon *icon)
+{
+    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+    g_signal_emit(G_OBJECT(icon), __signals[SIG_ACTIVATED], 0, NULL);
+}
+
+void
+xfdesktop_icon_menu_popup(XfdesktopIcon *icon)
+{
+    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+    g_signal_emit(G_OBJECT(icon), __signals[SIG_MENU_POPUP], 0, NULL);
 }
