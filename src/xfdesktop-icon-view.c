@@ -350,34 +350,49 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                                            (GCompareFunc)xfdesktop_check_icon_clicked);
         if(icon_l && (icon = icon_l->data)) {
             XfdesktopIcon *icon_below = NULL;
-            /* if selection mode is not multiple, or if it is, but shift/ctrl
-            * is not held down, unselect the others */
-            if(icon_view->priv->sel_mode != GTK_SELECTION_MULTIPLE
-               || !(evt->state & (GDK_CONTROL_MASK|GDK_SHIFT_MASK)))
-            {
-                GList *repaint_icons = icon_view->priv->selected_icons;
-                icon_view->priv->selected_icons = NULL;
-                repaint_icons = g_list_remove(repaint_icons, icon);
-                g_list_foreach(repaint_icons, xfdesktop_list_foreach_repaint,
-                               icon_view);
-                g_list_free(repaint_icons);
-            }
             
-            if(g_list_find(icon_view->priv->selected_icons, icon)) {
-                icon_view->priv->selected_icons = g_list_remove(icon_view->priv->selected_icons,
-                                                                icon);
-                icon_below = xfdesktop_find_icon_below(icon_view, icon);
-            } else {
-                icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
-                                                                 icon);
-            }
-            xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
-            if(icon_below)
-                xfdesktop_icon_view_paint_icon(icon_view, icon_below);
-            xfdesktop_icon_view_paint_icon(icon_view, icon);
             icon_view->priv->last_clicked_item = icon;
             
-            g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_SELECTED], 0);
+            if(g_list_find(icon_view->priv->selected_icons, icon)) {
+                /* clicked an already-selected icon */
+                
+                if(evt->state & (GDK_CONTROL_MASK|GDK_SHIFT_MASK)) {
+                    /* unselect */
+                    icon_view->priv->selected_icons = g_list_remove(icon_view->priv->selected_icons,
+                                                                    icon);
+                    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+                    icon_below = xfdesktop_find_icon_below(icon_view, icon);
+                    if(icon_below) {
+                        xfdesktop_icon_view_clear_icon_extents(icon_view,
+                                                               icon_below);
+                    }
+                } else {
+                    /* do nothing */
+                }
+            } else {
+                /* clicked a non-selected icon */
+                if(icon_view->priv->sel_mode != GTK_SELECTION_MULTIPLE
+                   || !(evt->state & (GDK_CONTROL_MASK|GDK_SHIFT_MASK)))
+                {
+                    /* unselect all of the other icons */
+                    GList *repaint_icons = icon_view->priv->selected_icons;
+                    icon_view->priv->selected_icons = NULL;
+                    g_list_foreach(repaint_icons, xfdesktop_list_foreach_repaint,
+                                   icon_view);
+                    g_list_free(repaint_icons);
+                }
+                
+                icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
+                                                                 icon);
+                xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+                icon_below = xfdesktop_find_icon_below(icon_view, icon);
+                if(icon_below)
+                    xfdesktop_icon_view_clear_icon_extents(icon_view, icon_below);
+            
+                g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_SELECTED],
+                              0, NULL);
+                xfdesktop_icon_selected(icon);
+            }
             
             if(evt->button == 1) {
                 /* we might be the start of a drag */
@@ -386,16 +401,15 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 icon_view->priv->definitely_dragging = FALSE;
                 icon_view->priv->press_start_x = evt->x;
                 icon_view->priv->press_start_y = evt->y;
-                
-                return TRUE;
             } else if(evt->button == 3) {
                 /* avoid repaint delay */
                 while(gtk_events_pending())
                     gtk_main_iteration();
                 /* if we're a right click, emit signal on the icon */
                 xfdesktop_icon_menu_popup(icon);
-                return TRUE;
             }
+            
+            return TRUE;
         } else {
             /* unselect previously selected icons if we didn't click one */
             if(icon_view->priv->sel_mode != GTK_SELECTION_MULTIPLE
@@ -411,8 +425,9 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
         GList *icon_l = g_list_find_custom(icon_view->priv->icons, evt,
                                            (GCompareFunc)xfdesktop_check_icon_clicked);
         if(icon_l && (icon = icon_l->data)) {
+            g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED],
+                          0, NULL);
             xfdesktop_icon_activated(icon);
-            g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED], 0);
         }
     }
     
