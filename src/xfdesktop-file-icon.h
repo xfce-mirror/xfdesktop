@@ -57,11 +57,13 @@ GType xfdesktop_file_icon_get_type() G_GNUC_CONST;
 XfdesktopFileIcon *xfdesktop_file_icon_new(ThunarVfsInfo *info,
                                            GdkScreen *screen);
 
+G_CONST_RETURN ThunarVfsInfo *xfdesktop_file_icon_peek_info(XfdesktopFileIcon *icon);
 void xfdesktop_file_icon_update_info(XfdesktopFileIcon *icon,
                                      ThunarVfsInfo *info);
 
-void xfdesktop_file_icon_trigger_delete(XfdesktopFileIcon *icon);
 void xfdesktop_file_icon_delete_file(XfdesktopFileIcon *icon);
+gboolean xfdesktop_file_icon_rename_file(XfdesktopFileIcon *icon, 
+                                         const gchar *new_name);
 
 /* utility function for the clipboard manager */
 GList *xfdesktop_file_icon_list_to_path_list(GList *icon_list);
