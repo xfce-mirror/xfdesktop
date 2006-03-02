@@ -29,6 +29,7 @@
 
 #include <libxfcegui4/libxfcegui4.h>
 
+#include "xfdesktop-gdk-pixbuf-extensions.h"
 #include "xfdesktop-icon.h"
 #include "xfdesktop-file-icon.h"
 
@@ -43,6 +44,7 @@ struct _XfdesktopFileIconPrivate
     gint16 row;
     gint16 col;
     GdkPixbuf *pix;
+    guint pix_opacity;
     gint cur_pix_size;
     GdkRectangle extents;
     ThunarVfsInfo *info;
@@ -111,6 +113,7 @@ static void
 xfdesktop_file_icon_init(XfdesktopFileIcon *icon)
 {
     icon->priv = g_new0(XfdesktopFileIconPrivate, 1);
+    icon->priv->pix_opacity = 100;
 }
 
 static void
@@ -195,6 +198,23 @@ xfdesktop_file_icon_new(ThunarVfsInfo *info,
     return file_icon;
 }
 
+void
+xfdesktop_file_icon_set_pixbuf_opacity(XfdesktopFileIcon *icon,
+                                       guint opacity)
+{
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon) && opacity <= 100);
+    
+    if(opacity == icon->priv->pix_opacity)
+        return;
+    
+    icon->priv->pix_opacity = opacity;
+    if(icon->priv->pix) {
+        g_object_unref(G_OBJECT(icon->priv->pix));
+        icon->priv->pix = NULL;
+    }
+    
+    xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
+}
 
 static GdkPixbuf *
 xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
@@ -217,7 +237,6 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
         }
             
         if(!file_icon->priv->pix) {
-            /* FIXME: GtkIconTheme/XfceIconTheme */
             icon_name = thunar_vfs_mime_info_lookup_icon_name(file_icon->priv->info->mime_info,
                                                               gtk_icon_theme_get_default());
             
@@ -226,6 +245,13 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                 if(file_icon->priv->pix)
                     file_icon->priv->cur_pix_size = size;
             }
+        }
+        
+        if(file_icon->priv->pix_opacity != 100) {
+            GdkPixbuf *tmp = xfdesktop_gdk_pixbuf_lucent(file_icon->priv->pix,
+                                                         file_icon->priv->pix_opacity);
+            g_object_unref(G_OBJECT(file_icon->priv->pix));
+            file_icon->priv->pix = tmp;
         }
     }
     
@@ -246,6 +272,13 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
         
         file_icon->priv->pix = g_object_ref(G_OBJECT(xfdesktop_fallback_icon));
         file_icon->priv->cur_pix_size = size;
+        
+        if(file_icon->priv->pix_opacity != 100) {
+            GdkPixbuf *tmp = xfdesktop_gdk_pixbuf_lucent(file_icon->priv->pix,
+                                                         file_icon->priv->pix_opacity);
+            g_object_unref(G_OBJECT(file_icon->priv->pix));
+            file_icon->priv->pix = tmp;
+        }
     }
     
     return file_icon->priv->pix;
@@ -568,7 +601,7 @@ xfdesktop_file_icon_update_info(XfdesktopFileIcon *icon,
     thunar_vfs_info_unref(icon->priv->info);
     icon->priv->info = thunar_vfs_info_ref(info);
     
-    /* FIXME: force redraw of icon? */
+    xfdesktop_icon_label_changed(XFDESKTOP_ICON(icon));
 }
 
 GList *

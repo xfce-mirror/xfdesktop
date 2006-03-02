@@ -30,7 +30,9 @@ AC_PROG_INTLTOOL([0.31], [no-xml])
 
 dnl check for standard header files
 AC_HEADER_STDC
-AC_CHECK_HEADERS([errno.h fcntl.h math.h signal.h stddef.h string.h sys/stat.h sys/types.h sys/wait.h time.h unistd.h])
+AC_CHECK_HEADERS([errno.h fcntl.h math.h mmintrin.h signal.h stddef.h \
+                  string.h sys/stat.h sys/types.h sys/wait.h time.h \
+                  unistd.h])
 AC_CHECK_FUNCS([mmap sigaction srandom])
 
 dnl Check for i18n support

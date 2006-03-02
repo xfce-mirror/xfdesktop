@@ -1584,6 +1584,34 @@ xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanag
                      fmanager);
 }
 
+static void
+xfdesktop_file_icon_manager_check_icons_opacity(gpointer key,
+                                                gpointer value,
+                                                gpointer data)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(value);
+    XfdesktopClipboardManager *cmanager = XFDESKTOP_CLIPBOARD_MANAGER(data);
+    
+    if(G_UNLIKELY(xfdesktop_clipboard_manager_has_cutted_file(cmanager, icon)))
+        xfdesktop_file_icon_set_pixbuf_opacity(icon, 50);
+    else
+        xfdesktop_file_icon_set_pixbuf_opacity(icon, 100);
+}
+
+static void
+xfdesktop_file_icon_manager_clipboard_changed(XfdesktopClipboardManager *cmanager,
+                                              gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    
+    TRACE("entering");
+    
+    /* slooow? */
+    g_hash_table_foreach(fmanager->priv->icons,
+                         xfdesktop_file_icon_manager_check_icons_opacity,
+                         cmanager);
+}
+
 
 /* virtual functions */
 
@@ -1608,6 +1636,10 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
                                   (gpointer)&clipboard_manager);
     } else
         g_object_ref(G_OBJECT(clipboard_manager));
+    
+    g_signal_connect(G_OBJECT(clipboard_manager), "changed",
+                     G_CALLBACK(xfdesktop_file_icon_manager_clipboard_changed),
+                     fmanager);
     
     if(!thunar_mime_database) {
         thunar_mime_database = thunar_vfs_mime_database_get_default();
@@ -1653,6 +1685,10 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
     g_return_if_fail(fmanager->priv->inited);
     
     fmanager->priv->inited = FALSE;
+    
+    g_signal_handlers_disconnect_by_func(G_OBJECT(clipboard_manager),
+                                         G_CALLBACK(xfdesktop_file_icon_manager_clipboard_changed),
+                                         fmanager);
     
     g_object_unref(G_OBJECT(clipboard_manager));
     g_object_unref(G_OBJECT(thunar_mime_database));

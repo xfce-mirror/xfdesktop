@@ -17,6 +17,8 @@ xfdesktop_SOURCES = \
 	xfce-desktop-settings.h
 
 desktop_icon_sources = \
+	xfdesktop-gdk-pixbuf-extensions.c \
+	xfdesktop-gdk-pixbuf-extensions.h \
 	xfdesktop-icon.c \
 	xfdesktop-icon.h \
 	xfdesktop-icon-view.c \

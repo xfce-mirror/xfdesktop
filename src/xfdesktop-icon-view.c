@@ -35,6 +35,7 @@
 
 #include <libxfcegui4/libxfcegui4.h>
 
+#include "xfdesktop-gdk-pixbuf-extensions.h"
 #include "xfdesktop-icon-view.h"
 
 #define DEFAULT_FONT_SIZE  12
@@ -1406,7 +1407,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
                                XfdesktopIcon *icon)
 {
     GtkWidget *widget = GTK_WIDGET(icon_view);
-    GdkPixbuf *pix = NULL;
+    GdkPixbuf *pix = NULL, *pix_free = NULL;
     gint pix_w, pix_h, pix_x, pix_y, text_x, text_y, text_w, text_h,
          cell_x, cell_y, state;
     PangoLayout *playout;
@@ -1427,6 +1428,11 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         state = GTK_STATE_NORMAL;
     
     pix = xfdesktop_icon_peek_pixbuf(icon, ICON_SIZE);
+    if(state != GTK_STATE_NORMAL) {
+        pix_free = xfdesktop_gdk_pixbuf_colorize(pix,
+                                                 &widget->style->base[state]);
+        pix = pix_free;
+    }
     pix_w = gdk_pixbuf_get_width(pix);
     pix_h = gdk_pixbuf_get_height(pix);
     
@@ -1487,6 +1493,9 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     area.width = (pix_w > text_w + CORNER_ROUNDNESS * 2 ? pix_w : text_w + CORNER_ROUNDNESS * 2);
     area.height = pix_h + SPACING + text_h + CORNER_ROUNDNESS + 2;
     xfdesktop_icon_set_extents(icon, &area);
+    
+    if(pix_free)
+        g_object_unref(G_OBJECT(pix_free));
     
 #if 0 /* debug */
     gdk_draw_rectangle(GDK_DRAWABLE(widget->window),
@@ -1915,6 +1924,29 @@ xfdesktop_icon_view_modify_font_size(XfdesktopIconView *icon_view,
     pango_font_description_free(pfd_new);
 }
 
+static void
+xfdesktop_icon_view_icon_pixbuf_changed(XfdesktopIcon *icon,
+                                        gpointer user_data)
+{
+    GdkRectangle extents;
+    
+    if(xfdesktop_icon_get_extents(icon, &extents)) {
+        gtk_widget_queue_draw_area(GTK_WIDGET(user_data), extents.x, extents.y,
+                                   extents.width, extents.height);
+    }
+}
+
+static void
+xfdesktop_icon_view_icon_label_changed(XfdesktopIcon *icon,
+                                       gpointer user_data)
+{
+    GdkRectangle extents;
+    
+    if(xfdesktop_icon_get_extents(icon, &extents)) {
+        gtk_widget_queue_draw_area(GTK_WIDGET(user_data), extents.x, extents.y,
+                                   extents.width, extents.height);
+    }
+}
 
 
 
@@ -1974,6 +2006,13 @@ xfdesktop_icon_view_add_item(XfdesktopIconView *icon_view,
     
     g_object_set_data(G_OBJECT(icon), "--xfdesktop-icon-view", icon_view);
     
+    g_signal_connect(G_OBJECT(icon), "pixbuf-changed",
+                     G_CALLBACK(xfdesktop_icon_view_icon_pixbuf_changed),
+                     icon_view);
+    g_signal_connect(G_OBJECT(icon), "label-changed",
+                     G_CALLBACK(xfdesktop_icon_view_icon_label_changed),
+                     icon_view);
+    
     xfdesktop_icon_view_paint_icon(icon_view, icon);
 }
 
@@ -1995,6 +2034,13 @@ xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
     if(g_list_find(icon_view->priv->icons, icon)) {
         XfdesktopIcon *icon_below = NULL;
         GdkRectangle extents;
+        
+        g_signal_handlers_disconnect_by_func(G_OBJECT(icon),
+                                             G_CALLBACK(xfdesktop_icon_view_icon_pixbuf_changed),
+                                             icon_view);
+        g_signal_handlers_disconnect_by_func(G_OBJECT(icon),
+                                             G_CALLBACK(xfdesktop_icon_view_icon_label_changed),
+                                             icon_view);
         
         if(xfdesktop_icon_get_extents(icon, &extents)
            && extents.height + 3 * CELL_PADDING > CELL_SIZE)
