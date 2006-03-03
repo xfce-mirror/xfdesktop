@@ -55,6 +55,7 @@ struct _XfdesktopIconViewManagerIface
                           guint16 col,
                           guint time);
     void (*drag_data_received)(XfdesktopIconViewManager *manager,
+                               XfdesktopIcon *drop_icon,
                                GdkDragContext *context,
                                guint16 row,
                                guint16 col,
@@ -62,7 +63,7 @@ struct _XfdesktopIconViewManagerIface
                                guint info,
                                guint time);
     void (*drag_data_get)(XfdesktopIconViewManager *manager,
-                          XfdesktopIcon *drag_icon,
+                          GList *drag_icons,
                           GdkDragContext *context,
                           GtkSelectionData *data,
                           guint info,
@@ -84,6 +85,7 @@ gboolean xfdesktop_icon_view_manager_drag_drop(XfdesktopIconViewManager *manager
                                                guint16 col,
                                                guint time);
 void xfdesktop_icon_view_manager_drag_data_received(XfdesktopIconViewManager *manager,
+                                                    XfdesktopIcon *drop_icon,
                                                     GdkDragContext *context,
                                                     guint16 row,
                                                     guint16 col,
@@ -91,7 +93,7 @@ void xfdesktop_icon_view_manager_drag_data_received(XfdesktopIconViewManager *ma
                                                     guint info,
                                                     guint time);
 void xfdesktop_icon_view_manager_drag_data_get(XfdesktopIconViewManager *manager,
-                                               XfdesktopIcon *drag_icon,
+                                               GList *drag_icons,
                                                GdkDragContext *context,
                                                GtkSelectionData *data,
                                                guint info,

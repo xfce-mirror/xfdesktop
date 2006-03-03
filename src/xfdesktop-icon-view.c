@@ -906,6 +906,8 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
         
         gtk_drag_finish(context, TRUE, FALSE, time);
     } else {
+        g_object_set_data(G_OBJECT(context), "--xfdesktop-icon-view-drop-icon",
+                          icon_on_dest);
         return xfdesktop_icon_view_manager_drag_drop(icon_view->priv->manager,
                                                      icon_on_dest,
                                                      context,
@@ -926,8 +928,10 @@ xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
     
     TRACE("entering");
     
+    g_return_if_fail(icon_view->priv->selected_icons);
+    
     xfdesktop_icon_view_manager_drag_data_get(icon_view->priv->manager,
-                                              NULL,  /* FIXME: drop icon */
+                                              icon_view->priv->selected_icons,
                                               context, data, info, time);
 }
 
@@ -942,6 +946,7 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     guint16 row, col;
+    XfdesktopIcon *icon_on_dest;
     
     TRACE("entering");
     
@@ -949,7 +954,11 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
     if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols)
         return;
     
+    icon_on_dest = g_object_get_data(G_OBJECT(context),
+                                     "--xfdesktop-icon-view-drop-icon");
+    
     xfdesktop_icon_view_manager_drag_data_received(icon_view->priv->manager,
+                                                   icon_on_dest,
                                                    context, row, col, data,
                                                    info, time);
 }

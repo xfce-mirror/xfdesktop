@@ -102,6 +102,7 @@ xfdesktop_icon_view_manager_drag_drop(XfdesktopIconViewManager *manager,
 
 void
 xfdesktop_icon_view_manager_drag_data_received(XfdesktopIconViewManager *manager,
+                                               XfdesktopIcon *drop_icon,
                                                GdkDragContext *context,
                                                guint16 row,
                                                guint16 col,
@@ -116,12 +117,13 @@ xfdesktop_icon_view_manager_drag_data_received(XfdesktopIconViewManager *manager
     iface = XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(manager);
     g_return_if_fail(iface->drag_data_received);
     
-    iface->drag_data_received(manager, context, row, col, data, info, time);
+    iface->drag_data_received(manager, drop_icon, context, row, col, data, info,
+                              time);
 }
 
 void
 xfdesktop_icon_view_manager_drag_data_get(XfdesktopIconViewManager *manager,
-                                          XfdesktopIcon *drag_icon,
+                                          GList *drag_icons,
                                           GdkDragContext *context,
                                           GtkSelectionData *data,
                                           guint info,
@@ -134,5 +136,5 @@ xfdesktop_icon_view_manager_drag_data_get(XfdesktopIconViewManager *manager,
     iface = XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(manager);
     g_return_if_fail(iface->drag_data_get);
     
-    iface->drag_data_get(manager, drag_icon, context, data, info, time);
+    iface->drag_data_get(manager, drag_icons, context, data, info, time);
 }

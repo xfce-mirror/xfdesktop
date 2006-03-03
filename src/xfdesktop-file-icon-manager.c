@@ -76,6 +76,7 @@ static gboolean xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *
                                                       guint16 col,
                                                       guint time);
 static void xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager,
+                                                           XfdesktopIcon *drop_icon,
                                                            GdkDragContext *context,
                                                            guint16 row,
                                                            guint16 col,
@@ -83,7 +84,7 @@ static void xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewMana
                                                            guint info,
                                                            guint time);
 static void xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *manager,
-                                                      XfdesktopIcon *drag_icon,
+                                                      GList *drag_icons,
                                                       GdkDragContext *context,
                                                       GtkSelectionData *data,
                                                       guint info,
@@ -129,17 +130,13 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopFileIconManager,
 
 enum
 {
-    TARGET_GNOME_COPIED_FILES = 0,
-    TARGET_UTF8_STRING,
-    TARGET_TEXT_URI_LIST,
+    TARGET_TEXT_URI_LIST = 0,
 };
 
 static const GtkTargetEntry targets[] = {
-    { "x-special/gnome-copied-files", 0, TARGET_GNOME_COPIED_FILES },
-    { "UTF8_STRING", 0, TARGET_UTF8_STRING },
-    { "text/uri-list", 0, TARGET_TEXT_URI_LIST},
+    { "text/uri-list", 0, TARGET_TEXT_URI_LIST, },
 };
-static const gint n_targets = 3;
+static const gint n_targets = 1;
 
 static XfdesktopClipboardManager *clipboard_manager = NULL;
 static ThunarVfsMimeDatabase *thunar_mime_database = NULL;
@@ -1734,67 +1731,93 @@ xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *manager,
     GtkWidget *widget = GTK_WIDGET(fmanager->priv->icon_view);
     GdkAtom target;
     
+    TRACE("entering");
+    
     target = gtk_drag_dest_find_target(widget, context,
                                        fmanager->priv->targets);
-    if(target == GDK_NONE)
+    if(target != gdk_atom_intern("text/uri-list", FALSE))
         return FALSE;
     
-    if(target == gdk_atom_intern("x-special/gnome-copied-files", FALSE)
-       || target == gdk_atom_intern("UTF8_STRING", FALSE)
-       || target == gdk_atom_intern("text/uri-list", FALSE))
-    {
-        gtk_drag_get_data(widget, context, target, time);
-    } else
-        return FALSE;
+    TRACE("target good");
+    
+    gtk_drag_get_data(widget, context, target, time);
     
     return TRUE;
 }
 
 static void
 xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager,
+                                               XfdesktopIcon *drop_icon,
                                                GdkDragContext *context,
                                                guint16 row,
                                                guint16 col,
-                                               GtkSelectionData *sel_data,
+                                               GtkSelectionData *data,
                                                guint info,
                                                guint time)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
-    gboolean copy_only = TRUE;
+    XfdesktopFileIcon *file_icon = NULL;
+    const ThunarVfsInfo *tinfo = NULL;
+    gboolean copy_only = TRUE, drop_ok = FALSE;
     GList *path_list;
-    gchar *data;
-    gboolean drop_ok = FALSE;
     
-    if(sel_data->length > 0) {
-        data = (gchar *)sel_data->data;
-        data[sel_data->length] = 0;
-        
-        if(!g_ascii_strncasecmp(data, "copy\n", 5)) {
-            copy_only = TRUE;
-            data += 5;
-        } else if(!g_ascii_strncasecmp(data, "cut\n", 4)) {
-            copy_only = FALSE;
-            data += 4;
-        } else
-            copy_only = !(context->suggested_action == GDK_ACTION_MOVE);
-        
-        path_list = thunar_vfs_path_list_from_string(data, NULL);
-        
-        if(path_list) {
+    g_return_if_fail(G_LIKELY(info == TARGET_TEXT_URI_LIST));
+    
+    if(drop_icon) {
+        file_icon = XFDESKTOP_FILE_ICON(drop_icon);
+        tinfo = xfdesktop_file_icon_peek_info(file_icon);
+    }
+    
+    copy_only = (context->suggested_action != GDK_ACTION_MOVE);
+    
+    path_list = thunar_vfs_path_list_from_string(data->data, NULL);
+
+    if(path_list) {
+        if(tinfo && tinfo->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
+            gboolean succeeded;
+            GError *error = NULL;
+            
+            succeeded = thunar_vfs_info_execute(tinfo,
+                                                fmanager->priv->gscreen,
+                                                path_list,
+                                                xfce_get_homedir(),
+                                                &error);
+            if(!succeeded) {
+                gchar *primary = g_strdup_printf(_("Failed to run \"%s\":"),
+                                                 tinfo->display_name);
+                xfce_message_dialog(NULL, _("Run Error"),
+                                    GTK_STOCK_DIALOG_ERROR,
+                                    primary, error->message,
+                                    GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                                    NULL);
+                g_free(primary);
+                g_error_free(error);
+            } else
+                drop_ok = TRUE;
+        } else {
             ThunarVfsJob *job = NULL;
             GList *dest_path_list = NULL, *l;
             const gchar *name;
-            ThunarVfsPath *dest_path;
+            ThunarVfsPath *base_dest_path, *dest_path;
+            
+            if(tinfo && tinfo->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
+                base_dest_path = thunar_vfs_path_relative(fmanager->priv->folder,
+                                                          thunar_vfs_path_get_name(tinfo->path));
+            } else
+                base_dest_path = thunar_vfs_path_ref(fmanager->priv->folder);
             
             for(l = path_list; l; l = l->next) {
                 name = thunar_vfs_path_get_name((ThunarVfsPath *)l->data);
-                dest_path = thunar_vfs_path_relative(fmanager->priv->folder,
+                dest_path = thunar_vfs_path_relative(base_dest_path,
                                                      name);
                 dest_path_list = g_list_prepend(dest_path_list, dest_path);
             }
+            thunar_vfs_path_unref(base_dest_path);
             dest_path_list = g_list_reverse(dest_path_list);
             
-            if(copy_only)
+            if(context->suggested_action == GDK_ACTION_LINK)
+                job = thunar_vfs_link_files(path_list, dest_path_list, NULL);
+            else if(copy_only)
                 job = thunar_vfs_copy_files(path_list, dest_path_list, NULL);
             else
                 job = thunar_vfs_move_files(path_list, dest_path_list, NULL);
@@ -1802,14 +1825,15 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
             if(job)
                 drop_ok = TRUE;
             
-            g_list_foreach(dest_path_list, (GFunc)thunar_vfs_path_unref, NULL);
-            g_list_free(dest_path_list);
-            g_list_free(path_list);
+            
+            thunar_vfs_path_list_free(dest_path_list);
             
             /* FIXME: watch error */
             g_signal_connect(G_OBJECT(job), "finished",
                              G_CALLBACK(g_object_unref), NULL);
         }
+        
+        thunar_vfs_path_list_free(path_list);
     }
     
     DBG("finishing drop on desktop from external source: drop_ok=%s, copy_only=%s",
@@ -1820,13 +1844,26 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
 
 static void
 xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *manager,
-                                          XfdesktopIcon *drag_icon,
+                                          GList *drag_icons,
                                           GdkDragContext *context,
                                           GtkSelectionData *data,
                                           guint info,
                                           guint time)
 {
+    GList *path_list;
+    gchar *str;
     
+    TRACE("entering");
+    
+    g_return_if_fail(drag_icons);
+    g_return_if_fail(G_LIKELY(info == TARGET_TEXT_URI_LIST));
+    
+    path_list = xfdesktop_file_icon_list_to_path_list(drag_icons);
+    str = thunar_vfs_path_list_to_string(path_list);
+    gtk_selection_data_set(data, data->target, 8, (guchar *)str, strlen(str));
+    
+    g_free(str);
+    thunar_vfs_path_list_free(path_list);
 }
 
 
