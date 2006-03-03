@@ -72,11 +72,13 @@ endif
 
 xfdesktop_CFLAGS += \
 	@LIBEXO_CFLAGS@ \
-	@THUNAR_VFS_CFLAGS@
+	@THUNAR_VFS_CFLAGS@ \
+	@THUNARX_CFLAGS@
 
 xfdesktop_LDADD += \
 	@LIBEXO_LIBS@ \
-	@THUNAR_VFS_LIBS@
+	@THUNAR_VFS_LIBS@ \
+	@THUNARX_LIBS@
 
 endif
 

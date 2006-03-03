@@ -27,12 +27,24 @@
 #include <string.h>
 #endif
 
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+
+#ifndef PATH_MAX
+#define PATH_MAX 4096
+#endif
+
 #ifdef HAVE_LIBEXO
 #define EXO_API_SUBJECT_TO_CHANGE
 #include <exo/exo.h>
 #endif
 
 #include <libxfcegui4/libxfcegui4.h>
+
+#ifdef HAVE_THUNARX
+#include <thunarx/thunarx.h>
+#endif
 
 #include "xfdesktop-icon.h"
 #include "xfdesktop-file-icon.h"
@@ -56,29 +68,41 @@ struct _XfdesktopFileIconPrivate
     GList *active_jobs;
 };
 
-static void xfdesktop_file_icon_icon_init(XfdesktopIconIface *iface);
 static void xfdesktop_file_icon_finalize(GObject *obj);
 
+static void xfdesktop_file_icon_icon_init(XfdesktopIconIface *iface);
 static GdkPixbuf *xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                   gint size);
 static G_CONST_RETURN gchar *xfdesktop_file_icon_peek_label(XfdesktopIcon *icon);
-
 static void xfdesktop_file_icon_set_position(XfdesktopIcon *icon,
                                              gint16 row,
                                              gint16 col);
 static gboolean xfdesktop_file_icon_get_position(XfdesktopIcon *icon,
                                                  gint16 *row,
                                                  gint16 *col);
-
 static void xfdesktop_file_icon_set_extents(XfdesktopIcon *icon,
                                             const GdkRectangle *extents);
 static gboolean xfdesktop_file_icon_get_extents(XfdesktopIcon *icon,
                                                 GdkRectangle *extents);
-
 static gboolean xfdesktop_file_icon_is_drop_dest(XfdesktopIcon *icon);
 static XfdesktopIconDragResult xfdesktop_file_icon_do_drop_dest(XfdesktopIcon *icon,
                                                                 XfdesktopIcon *src_icon,
                                                                 GdkDragAction action);
+
+
+#ifdef HAVE_THUNARX
+static void xfdesktop_file_icon_tfi_init(ThunarxFileInfoIface *iface);
+static gchar *xfdesktop_file_icon_tfi_get_name(ThunarxFileInfo *file_info);
+static gchar *xfdesktop_file_icon_tfi_get_uri(ThunarxFileInfo *file_info);
+static gchar *xfdesktop_file_icon_tfi_get_parent_uri(ThunarxFileInfo *file_info);
+static gchar *xfdesktop_file_icon_tfi_get_uri_scheme(ThunarxFileInfo *file_info);
+static gchar *xfdesktop_file_icon_tfi_get_mime_type(ThunarxFileInfo *file_info);
+static gboolean xfdesktop_file_icon_tfi_has_mime_type(ThunarxFileInfo *file_info,
+                                                      const gchar *mime_type);
+static gboolean xfdesktop_file_icon_tfi_is_directory(ThunarxFileInfo *file_info);
+static ThunarVfsInfo *xfdesktop_file_icon_tfi_get_vfs_info(ThunarxFileInfo *file_info);
+#endif
+
 
 static void xfdesktop_delete_file_finished(ThunarVfsJob *job,
                                            gpointer user_data);
@@ -92,7 +116,12 @@ static GdkPixbuf *xfdesktop_fallback_icon = NULL;
 G_DEFINE_TYPE_EXTENDED(XfdesktopFileIcon, xfdesktop_file_icon,
                        G_TYPE_OBJECT, 0,
                        G_IMPLEMENT_INTERFACE(XFDESKTOP_TYPE_ICON,
-                                             xfdesktop_file_icon_icon_init))
+                                             xfdesktop_file_icon_icon_init)
+#ifdef HAVE_THUNARX
+                       G_IMPLEMENT_INTERFACE(THUNARX_TYPE_FILE_INFO,
+                                             xfdesktop_file_icon_tfi_init)
+#endif
+                       )
 
 
 
@@ -175,7 +204,6 @@ xfdesktop_file_icon_icon_init(XfdesktopIconIface *iface)
     iface->is_drop_dest = xfdesktop_file_icon_is_drop_dest;
     iface->do_drop_dest = xfdesktop_file_icon_do_drop_dest;
 }
-
 
 static void
 xfdesktop_file_icon_invalidate_pixbuf(XfdesktopFileIcon *icon)
@@ -624,3 +652,122 @@ xfdesktop_file_icon_list_to_path_list(GList *icon_list)
     
     return g_list_reverse(path_list);
 }
+
+
+/* thunar extension interface stuff: ThunarxFileInfo implementation */
+
+#ifdef HAVE_THUNARX
+
+static void
+xfdesktop_file_icon_tfi_init(ThunarxFileInfoIface *iface)
+{
+    iface->get_name = xfdesktop_file_icon_tfi_get_name;
+    iface->get_uri = xfdesktop_file_icon_tfi_get_uri;
+    iface->get_parent_uri = xfdesktop_file_icon_tfi_get_parent_uri;
+    iface->get_uri_scheme = xfdesktop_file_icon_tfi_get_uri_scheme;
+    iface->get_mime_type = xfdesktop_file_icon_tfi_get_mime_type;
+    iface->has_mime_type = xfdesktop_file_icon_tfi_has_mime_type;
+    iface->is_directory = xfdesktop_file_icon_tfi_is_directory;
+    iface->get_vfs_info = xfdesktop_file_icon_tfi_get_vfs_info;
+}
+
+static gchar *
+xfdesktop_file_icon_tfi_get_name(ThunarxFileInfo *file_info)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
+    return g_strdup(thunar_vfs_path_get_name(icon->priv->info->path));
+}
+
+static gchar *
+xfdesktop_file_icon_tfi_get_uri(ThunarxFileInfo *file_info)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
+    gchar buf[PATH_MAX];
+    
+    g_return_val_if_fail(thunar_vfs_path_to_uri(icon->priv->info->path,
+                                                buf, PATH_MAX, NULL) > 0,
+                         NULL);
+    
+    return g_strdup(buf);
+}
+
+static gchar *
+xfdesktop_file_icon_tfi_get_parent_uri(ThunarxFileInfo *file_info)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
+    ThunarVfsPath *parent = thunar_vfs_path_get_parent(icon->priv->info->path);
+    gchar buf[PATH_MAX];
+    
+    if(G_UNLIKELY(!parent))
+        return NULL;
+    
+    g_return_val_if_fail(thunar_vfs_path_to_uri(parent, buf, PATH_MAX,
+                                                NULL) > 0,
+                         NULL);
+    
+    return g_strdup(buf);
+}
+
+static gchar *
+xfdesktop_file_icon_tfi_get_uri_scheme(ThunarxFileInfo *file_info)
+{
+    return g_strdup("file");  /* FIXME: safe bet? */
+}
+    
+static gchar *
+xfdesktop_file_icon_tfi_get_mime_type(ThunarxFileInfo *file_info)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
+    
+    if(!icon->priv->info->mime_info)
+        return NULL;
+    
+    return g_strdup(thunar_vfs_mime_info_get_name(icon->priv->info->mime_info));
+}
+
+static gboolean
+xfdesktop_file_icon_tfi_has_mime_type(ThunarxFileInfo *file_info,
+                                      const gchar *mime_type)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
+    ThunarVfsMimeDatabase *mime_db;
+    GList *mime_infos, *l;
+    ThunarVfsMimeInfo *minfo;
+    gboolean has_type = FALSE;
+    
+    if(!icon->priv->info->mime_info)
+        return FALSE;
+    
+    mime_db = thunar_vfs_mime_database_get_default();
+    
+    mime_infos = thunar_vfs_mime_database_get_infos_for_info(mime_db,
+                                                             icon->priv->info->mime_info);
+    for(l = mime_infos; l; l = l->next) {
+        minfo = (ThunarVfsMimeInfo *)l->data;
+        if(!g_ascii_strcasecmp(mime_type, thunar_vfs_mime_info_get_name(minfo))) {
+            has_type = TRUE;
+            break;
+        }
+    }
+    thunar_vfs_mime_info_list_free(mime_infos);
+    
+    g_object_unref(G_OBJECT(mime_db));
+    
+    return has_type;
+}
+
+static gboolean
+xfdesktop_file_icon_tfi_is_directory(ThunarxFileInfo *file_info)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
+    return (icon->priv->info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY);
+}
+
+static ThunarVfsInfo *
+xfdesktop_file_icon_tfi_get_vfs_info(ThunarxFileInfo *file_info)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
+    return thunar_vfs_info_ref(icon->priv->info);
+}
+
+#endif  /* HAVE_THUNARX */

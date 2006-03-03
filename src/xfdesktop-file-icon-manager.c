@@ -45,6 +45,10 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
+#ifdef HAVE_THUNARX
+#include <thunarx/thunarx.h>
+#endif
+
 #include "xfdesktop-icon-view.h"
 #include "xfdesktop-file-icon.h"
 #include "xfdesktop-clipboard-manager.h"
@@ -119,6 +123,11 @@ struct _XfdesktopFileIconManagerPrivate
     GList *deferred_icons;
     
     GtkTargetList *targets;
+    
+#ifdef HAVE_THUNARX
+    GList *thunarx_menu_providers;
+    GList *thunarx_properties_providers;
+#endif
 };
 
 
@@ -642,6 +651,10 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
                                     gpointer user_data)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);
+#ifdef HAVE_THUNARX
+    XfdesktopFileIconManager *fmanager = g_object_get_data(G_OBJECT(icon),
+                                                           "--xfdesktop-fmanager");
+#endif
     GtkWidget *dlg, *table, *hbox, *lbl, *img, *spacer, *notebook, *vbox, *entry;
     gint row = 0, w, h;
     PangoFontDescription *pfd = pango_font_description_from_string("bold");
@@ -1032,6 +1045,39 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     
     pango_font_description_free(pfd);
     
+#ifdef HAVE_THUNARX
+    if(fmanager->priv->thunarx_properties_providers) {
+        GList *l, *pages, *p, *files = g_list_append(NULL, icon);
+        ThunarxPropertyPageProvider *provider;
+        ThunarxPropertyPage *page;
+        GtkWidget *label_widget;
+        const gchar *label;
+        
+        for(l = fmanager->priv->thunarx_properties_providers; l; l = l->next) {
+            provider = THUNARX_PROPERTY_PAGE_PROVIDER(l->data);
+            pages = thunarx_property_page_provider_get_pages(provider, files);
+            
+            for(p = pages; p; p = p->next) {
+                page = THUNARX_PROPERTY_PAGE(p->data);
+                label_widget = thunarx_property_page_get_label_widget(page);
+                if(!label_widget) {
+                    label = thunarx_property_page_get_label(page);
+                    label_widget = gtk_label_new(label);
+                }
+                gtk_widget_show(GTK_WIDGET(page));
+                gtk_widget_show(label_widget);
+                gtk_notebook_append_page(GTK_NOTEBOOK(notebook),
+                                         GTK_WIDGET(page), label_widget);
+            }
+            
+            /* each page should be freed when the dialog is destroyed (?) */
+            g_list_free(pages);
+        }
+        
+        g_list_free(files);
+    }
+#endif
+    
     gtk_widget_show(dlg);
 }
 
@@ -1041,6 +1087,24 @@ xfdesktop_file_icon_menu_deactivate_idled(gpointer user_data)
     gtk_widget_destroy(GTK_WIDGET(user_data));
     return FALSE;
 }
+
+#ifdef HAVE_THUNARX
+static inline void
+xfdesktop_menu_shell_append_action_list(GtkMenuShell *menu_shell,
+                                        GList *actions)
+{
+    GList *l;
+    GtkAction *action;
+    GtkWidget *mi;
+    
+    for(l = actions; l; l = l->next) {
+        action = GTK_ACTION(l->data);
+        mi = gtk_action_create_menu_item(action);
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(menu_shell, mi);    
+    }
+}
+#endif
 
 static void
 xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
@@ -1057,7 +1121,11 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
     g_return_if_fail(selected);
     multi_sel = (g_list_length(selected) > 1);
-    g_list_free(selected);
+    
+#ifdef HAVE_THUNARX
+    /* meh */
+    g_object_set_data(G_OBJECT(icon), "--xfdesktop-fmanager", fmanager);
+#endif
     
     menu = gtk_menu_new();
     gtk_widget_show(menu);
@@ -1160,6 +1228,53 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
         }
     }
     
+#ifdef HAVE_THUNARX
+    if(!multi_sel && fmanager->priv->thunarx_menu_providers) {
+        GtkWidget *window = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+        GList *menu_actions, *l;
+        ThunarxMenuProvider *provider;
+        gboolean added_separator = FALSE;
+        
+        if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
+            for(l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
+                provider = THUNARX_MENU_PROVIDER(l->data);
+                menu_actions = thunarx_menu_provider_get_folder_actions(provider,
+                                                                        window,
+                                                                        THUNARX_FILE_INFO(file_icon));
+                if(menu_actions && !added_separator) {
+                    mi = gtk_separator_menu_item_new();
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    added_separator = TRUE;
+                }
+                
+                xfdesktop_menu_shell_append_action_list(GTK_MENU_SHELL(menu),
+                                                        menu_actions);
+                g_list_foreach(menu_actions, (GFunc)g_object_unref, NULL);
+                g_list_free(menu_actions);
+            }
+        } else {
+            for(l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
+                provider = THUNARX_MENU_PROVIDER(l->data);
+                menu_actions = thunarx_menu_provider_get_file_actions(provider,
+                                                                      window,
+                                                                      selected);
+                if(menu_actions && !added_separator) {
+                    mi = gtk_separator_menu_item_new();
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    added_separator = TRUE;
+                }
+                
+                xfdesktop_menu_shell_append_action_list(GTK_MENU_SHELL(menu),
+                                                        menu_actions);
+                g_list_foreach(menu_actions, (GFunc)g_object_unref, NULL);
+                g_list_free(menu_actions);
+            }
+        }
+    }
+#endif
+    
     mi = gtk_separator_menu_item_new();
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -1227,6 +1342,8 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                          G_CALLBACK(xfdesktop_file_icon_menu_properties),
                          file_icon);
     }
+    
+    g_list_free(selected);
     
     gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0,
                    gtk_get_current_event_time());
@@ -1617,6 +1734,9 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
                                       XfdesktopIconView *icon_view)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
+#ifdef HAVE_THUNARX
+    ThunarxProviderFactory *thunarx_pfac;
+#endif
     
     g_return_val_if_fail(!fmanager->priv->inited, FALSE);
     
@@ -1669,6 +1789,21 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     
     xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
     
+#ifdef HAVE_THUNARX
+    thunarx_pfac = thunarx_provider_factory_get_default();
+    
+    fmanager->priv->thunarx_menu_providers =
+        thunarx_provider_factory_list_providers(thunarx_pfac,
+                                                THUNARX_TYPE_MENU_PROVIDER);
+    fmanager->priv->thunarx_properties_providers =
+        thunarx_provider_factory_list_providers(thunarx_pfac,
+                                                THUNARX_TYPE_PROPERTY_PAGE_PROVIDER);
+    
+    
+    
+    g_object_unref(G_OBJECT(thunarx_pfac));
+#endif
+    
     fmanager->priv->inited = TRUE;
     
     return TRUE;
@@ -1682,6 +1817,16 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
     g_return_if_fail(fmanager->priv->inited);
     
     fmanager->priv->inited = FALSE;
+    
+#ifdef HAVE_THUNARX
+    g_list_foreach(fmanager->priv->thunarx_menu_providers,
+                   (GFunc)g_object_unref, NULL);
+    g_list_free(fmanager->priv->thunarx_menu_providers);
+    
+    g_list_foreach(fmanager->priv->thunarx_properties_providers,
+                   (GFunc)g_object_unref, NULL);
+    g_list_free(fmanager->priv->thunarx_properties_providers);
+#endif
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(clipboard_manager),
                                          G_CALLBACK(xfdesktop_file_icon_manager_clipboard_changed),
