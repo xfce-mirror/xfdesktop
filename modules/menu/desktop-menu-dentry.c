@@ -220,8 +220,10 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
         
         icon = desktop_menuspec_displayname_to_icon(q);
         if(icon) {
-            pix = xfce_pixbuf_new_from_file_at_size(icon,
-                    _xfce_desktop_menu_icon_size, _xfce_desktop_menu_icon_size, NULL);
+            pix = gdk_pixbuf_new_from_file_at_size(icon,
+                                                   _xfce_desktop_menu_icon_size,
+                                                   _xfce_desktop_menu_icon_size,
+                                                   NULL);
             if(pix) {
                 img = gtk_image_new_from_pixbuf(pix);
                 gtk_widget_show(img);
