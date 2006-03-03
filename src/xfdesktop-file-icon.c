@@ -270,10 +270,10 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
             }
         }
         if(!xfdesktop_fallback_icon) {
-            xfdesktop_fallback_icon = xfce_pixbuf_new_from_file_at_size(DATADIR "/pixmaps/xfdesktop/xfdesktop-fallback-icon.png",
-                                                                        size,
-                                                                        size,
-                                                                        NULL);
+            xfdesktop_fallback_icon = gdk_pixbuf_new_from_file_at_size(DATADIR "/pixmaps/xfdesktop/xfdesktop-fallback-icon.png",
+                                                                       size,
+                                                                       size,
+                                                                       NULL);
         }
         
         file_icon->priv->pix = g_object_ref(G_OBJECT(xfdesktop_fallback_icon));

@@ -627,7 +627,7 @@ browse_icon_update_preview_cb (GtkFileChooser * chooser, gpointer data)
   filename = gtk_file_chooser_get_filename (chooser);
 
   if (g_file_test (filename, G_FILE_TEST_IS_REGULAR))
-    pix = xfce_pixbuf_new_from_file_at_size (filename, 250, 250, NULL);
+    pix = gdk_pixbuf_new_from_file_at_size (filename, 250, 250, NULL);
   g_free (filename);
 
   if (pix) {

@@ -257,20 +257,20 @@ xfdesktop_file_icon_launch_external(XfdesktopFileIcon *icon,
            && status == 0);
     g_free(commandline);
 
-    /* hardcoded fallback to Thunar if that didn't work */
+    /* hardcoded fallback to a file manager if that didn't work */
     if(!ret) {
-        gchar *thunar_app = g_find_program_in_path("Thunar");
+        gchar *file_manager_app = g_find_program_in_path(FILE_MANAGER_FALLBACK);
         
-        if(thunar_app) {
-            commandline = g_strconcat("env DISPLAY=\"", display_name, "\" ",
-                                      thunar_app, " \"", folder_name, "\"",
-                                      NULL);
+        if(file_manager_app) {
+            commandline = g_strconcat("env DISPLAY=\"", display_name, "\" \"",
+                                      file_manager_app, "\" \"", folder_name,
+                                      "\"", NULL);
             
             DBG("executing:\n%s\n", commandline);
             
             ret = xfce_exec(commandline, FALSE, TRUE, NULL);
             g_free(commandline);
-            g_free(thunar_app);
+            g_free(file_manager_app);
         }
     }
 
