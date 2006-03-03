@@ -75,12 +75,12 @@
 GdkPixbuf *dummy_icon = NULL;
 GdkPixbuf *unknown_icon = NULL;
 gint _xfce_desktop_menu_icon_size = 24;
-XfceIconTheme *_deskmenu_icon_theme = NULL;
+static GtkIconTheme *_deskmenu_icon_theme = NULL;
 static GList *timeout_handles = NULL;
 static time_t last_settings_change = 0;
 
 static void
-itheme_changed_cb(XfceIconTheme *itheme, gpointer user_data)
+itheme_changed_cb(GtkIconTheme *itheme, gpointer user_data)
 {
     last_settings_change = time(NULL);
 }
@@ -429,7 +429,7 @@ g_module_check_init(GModule *module)
     dummy_icon = xfce_inline_icon_at_size(dummy_icon_data,
             _xfce_desktop_menu_icon_size, _xfce_desktop_menu_icon_size);
     
-    _deskmenu_icon_theme = xfce_icon_theme_get_for_screen(NULL);
+    _deskmenu_icon_theme = gtk_icon_theme_get_default();
     g_signal_connect(G_OBJECT(_deskmenu_icon_theme), "changed",
             G_CALLBACK(itheme_changed_cb), NULL);
     
@@ -440,11 +440,6 @@ G_MODULE_EXPORT void
 g_module_unload(GModule *module)
 {
     GList *l;
-    
-    if(_deskmenu_icon_theme) {
-        g_object_unref(G_OBJECT(_deskmenu_icon_theme));
-        _deskmenu_icon_theme = NULL;
-    }
     
     if(timeout_handles) {
         for(l=timeout_handles; l; l=l->next)

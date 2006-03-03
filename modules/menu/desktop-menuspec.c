@@ -88,56 +88,56 @@ static gchar *
 menuspec_builtin_icon_to_filename(const gchar *name)
 {
     if(!strcmp(name, "UNKNOWN"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_UNKNOWN, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_UNKNOWN,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "EDITOR"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_EDITOR, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_EDITOR,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "FILEMAN"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_FILEMAN, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_FILEMAN,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "UTILITY"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_UTILITY, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_UTILITY,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "GAME"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_GAME, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_GAME,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "HELP"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_HELP, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_HELP,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "MULTIMEDIA"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_MULTIMEDIA, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_MULTIMEDIA,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "NETWORK"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_NETWORK, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_NETWORK,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "GRAPHICS"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_GRAPHICS, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_GRAPHICS,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "PRINTER"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_PRINTER, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_PRINTER,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "PRODUCTIVITY"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_PRODUCTIVITY, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_PRODUCTIVITY,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "SOUND"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_SOUND, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_SOUND,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "TERMINAL"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_TERMINAL, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_TERMINAL,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "DEVELOPMENT"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_DEVELOPMENT, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_DEVELOPMENT,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "SETTINGS"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_SETTINGS, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_SETTINGS,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "SYSTEM"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_SYSTEM, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_SYSTEM,
+                                                _xfce_desktop_menu_icon_size);
     else if(!strcmp(name, "WINE"))
-        return xfce_icon_theme_lookup_category(_deskmenu_icon_theme,
-                XFCE_ICON_CATEGORY_WINE, _xfce_desktop_menu_icon_size);
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_WINE,
+                                                _xfce_desktop_menu_icon_size);
     
     return NULL;
 }
@@ -309,8 +309,8 @@ menuspec_xml_start(GMarkupParseContext *context, const gchar *element_name,
             if(builtin_icon)
                 icon_filename = menuspec_builtin_icon_to_filename(builtin_icon);
             if(!icon_filename && icon) {
-                icon_filename = xfce_icon_theme_lookup(_deskmenu_icon_theme,
-                        icon, _xfce_desktop_menu_icon_size);
+                icon_filename = xfce_themed_icon_lookup(icon,
+                                                        _xfce_desktop_menu_icon_size);
             }
             
             if(icon_filename) {

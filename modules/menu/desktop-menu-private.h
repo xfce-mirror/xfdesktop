@@ -56,6 +56,5 @@ struct _XfceDesktopMenu {
 void _xfce_desktop_menu_free_menudata(struct _XfceDesktopMenu *desktop_menu);
 void _desktop_menu_ensure_unknown_icon();
 extern gint _xfce_desktop_menu_icon_size;
-extern XfceIconTheme *_deskmenu_icon_theme;
 
 #endif  /* !def __DESKTOP_MENU_PRIVATE_H__ */
