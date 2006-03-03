@@ -49,7 +49,7 @@ XDT_CHECK_PACKAGE([GMODULE], [gmodule-2.0], [2.2.0])
 XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [2.2.0])
 XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.2.0])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.2.0])
-XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.3.8])
+XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.3.9])
 XDT_CHECK_PACKAGE([LIBXFCE4MCS_CLIENT],  [libxfce4mcs-client-1.0], [4.2.0])
 XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.3.22])
 XDT_XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.2.0])
@@ -115,6 +115,14 @@ else
     AC_DEFINE([ENABLE_DESKTOP_ICONS], [1], [Set if desktop icon support is enabled])
 fi
 AM_CONDITIONAL([ENABLE_DESKTOP_ICONS], [test "x$enable_desktop_icons" = "xyes"])
+
+AC_ARG_WITH([file-manager-fallback],
+    [AC_HELP_STRING([--with-file-manager-fallback=PATH],
+            [Default file manager fallback to handle external folders and applications (default=Thunar)])],
+    [ac_cv_file_manager_fallback="$withval"],
+    [ac_cv_file_manager_fallback=Thunar])
+AC_DEFINE_UNQUOTED([FILE_MANAGER_FALLBACK], ["$ac_cv_file_manager_fallback"],
+    [Set to the file manager to use as a fallback])
 
 dnl check for debugging support
 XDT_FEATURE_DEBUG
