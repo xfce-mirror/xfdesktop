@@ -1799,8 +1799,6 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
         thunarx_provider_factory_list_providers(thunarx_pfac,
                                                 THUNARX_TYPE_PROPERTY_PAGE_PROVIDER);
     
-    
-    
     g_object_unref(G_OBJECT(thunarx_pfac));
 #endif
     
