@@ -328,6 +328,33 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon,
     }    
     
     g_list_free(path_list);
+    
+    if(!succeeded) {
+        GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+        gchar *primary = g_strdup_printf(_("Unable to launch \"%s\":"),
+                                         info->display_name);
+        xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
+                            GTK_STOCK_DIALOG_ERROR, primary,
+                            _("The associated application could not be found or executed."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+        g_free(primary);
+    }
+}
+
+static void
+xfdesktop_file_icon_menu_executed(GtkWidget *widget,
+                                  gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopIcon *icon;
+    GList *selected;
+    
+    selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
+    g_return_if_fail(g_list_length(selected) == 1);
+    icon = XFDESKTOP_ICON(selected->data);
+    g_list_free(selected);
+    
+    xfdesktop_file_icon_activated(icon, fmanager);
 }
 
 static void
@@ -348,16 +375,27 @@ static void
 xfdesktop_file_icon_menu_rename(GtkWidget *widget,
                                 gpointer user_data)
 {
-    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
-    GtkWidget *dlg, *entry, *lbl, *img, *hbox, *vbox, *topvbox;
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopFileIcon *icon;
+    GList *selected;
+    const ThunarVfsInfo *info;
+    GtkWidget *dlg, *entry, *lbl, *img, *hbox, *vbox, *topvbox, *toplevel;
     GdkPixbuf *pix;
     gchar *title, *p;
     gint w, h;
     
+    selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
+    g_return_if_fail(g_list_length(selected) == 1);
+    icon = XFDESKTOP_FILE_ICON(selected->data);
+    g_list_free(selected);
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    
+    info = xfdesktop_file_icon_peek_info(icon);
+    
     title = g_strdup_printf(_("Rename \"%s\""), info->display_name);
     
-    dlg = gtk_dialog_new_with_buttons(title, NULL, GTK_DIALOG_NO_SEPARATOR,
+    dlg = gtk_dialog_new_with_buttons(title, GTK_WINDOW(toplevel),
+                                      GTK_DIALOG_NO_SEPARATOR,
                                       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
                                       GTK_STOCK_OK, GTK_RESPONSE_ACCEPT, NULL);
     gtk_dialog_set_default_response(GTK_DIALOG(dlg), GTK_RESPONSE_ACCEPT);
@@ -427,6 +465,7 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager)
     gchar *primary;
     gint ret = GTK_RESPONSE_CANCEL;
     XfdesktopIcon *icon;
+    GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
     
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
     g_return_if_fail(selected);
@@ -436,7 +475,8 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager)
         
         primary = g_strdup_printf("Are you sure that you want to delete \"%s\"?",
                                   xfdesktop_icon_peek_label(icon));
-        ret = xfce_message_dialog(NULL, _("Question"), GTK_STOCK_DIALOG_QUESTION,
+        ret = xfce_message_dialog(GTK_WINDOW(toplevel),
+                                  _("Question"), GTK_STOCK_DIALOG_QUESTION,
                                   primary,
                                   _("If you delete a file, it is permanently lost."),
                                   GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
@@ -454,7 +494,8 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager)
         
         primary = g_strdup_printf(_("Are you sure you want to delete the following %d files?"),
                                   g_list_length(selected));
-        dlg = xfce_message_dialog_new(NULL, _("Delete Multiple Files"),
+        dlg = xfce_message_dialog_new(GTK_WINDOW(toplevel),
+                                      _("Delete Multiple Files"),
                                       GTK_STOCK_DIALOG_QUESTION,
                                       primary,
                                       _("If you delete a file, it is permanently lost."),
@@ -528,27 +569,49 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager)
 }
 
 static void
-xfdesktop_file_icon_menu_executed(GtkWidget *widget,
-                                  gpointer user_data)
+xfdesktop_file_icon_menu_mime_app_executed(GtkWidget *widget,
+                                           gpointer user_data)
 {
-    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopFileIcon *icon;
     ThunarVfsMimeApplication *mime_app;
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
-    GList *path_list = g_list_append(NULL, info->path);
+    const ThunarVfsInfo *info;
+    GList *path_list, *selected;
+    GtkWidget *toplevel;
+    GError *error = NULL;
+    
+    selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
+    g_return_if_fail(g_list_length(selected) == 1);
+    icon = XFDESKTOP_FILE_ICON(selected->data);
+    g_list_free(selected);
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    
+    info = xfdesktop_file_icon_peek_info(icon);
+    path_list = g_list_append(NULL, info->path);
     
     mime_app = g_object_get_qdata(G_OBJECT(widget), xfdesktop_mime_app_quark);
     g_return_if_fail(mime_app);
     
-    thunar_vfs_mime_handler_exec(THUNAR_VFS_MIME_HANDLER(mime_app),
-                             gtk_widget_get_screen(widget),
-                             path_list,
-                             NULL);
+    if(!thunar_vfs_mime_handler_exec(THUNAR_VFS_MIME_HANDLER(mime_app),
+                                     gtk_widget_get_screen(widget),
+                                     path_list,
+                                     &error))
+    {
+        gchar *primary = g_strdup_printf(_("Unable to launch \"%s\":"),
+                                         thunar_vfs_mime_application_get_name(mime_app));
+        xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
+                            GTK_STOCK_DIALOG_ERROR, primary, error->message,
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+        g_free(primary);
+        g_error_free(error);
+    }
     
     g_list_free(path_list);
 }
 
 static GtkWidget *
-xfdesktop_menu_item_from_mime_app(XfdesktopFileIcon *icon,
+xfdesktop_menu_item_from_mime_app(XfdesktopFileIconManager *fmanager,
+                                  XfdesktopFileIcon *icon,
                                   ThunarVfsMimeApplication *mime_app,
                                   gint icon_size,
                                   gboolean with_mnemonic)
@@ -590,7 +653,8 @@ xfdesktop_menu_item_from_mime_app(XfdesktopFileIcon *icon,
     gtk_widget_show(mi);
     
     g_signal_connect(G_OBJECT(mi), "activate",
-                     G_CALLBACK(xfdesktop_file_icon_menu_executed), icon);
+                     G_CALLBACK(xfdesktop_file_icon_menu_mime_app_executed),
+                     fmanager);
     
     return mi;
 }
@@ -599,16 +663,28 @@ static void
 xfdesktop_file_icon_menu_other_app(GtkWidget *widget,
                                    gpointer user_data)
 {
-    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopFileIcon *icon;
+    GList *selected;
+    const ThunarVfsInfo *info;
     GdkScreen *gscreen;
+    GtkWidget *toplevel;
+    
+    selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
+    g_return_if_fail(g_list_length(selected) == 1);
+    icon = XFDESKTOP_FILE_ICON(selected->data);
+    g_list_free(selected);
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    
+    info = xfdesktop_file_icon_peek_info(icon);
     
     gscreen = gtk_widget_get_screen(widget);
     
     if(!xfdesktop_file_icon_launch_external(icon, gscreen)) {
-        gchar *primary = g_strdup_printf(_("Unable to launch \"%s\"."),
+        gchar *primary = g_strdup_printf(_("Unable to launch \"%s\":"),
                                          info->display_name);
-        xfce_message_dialog(NULL, _("Error"), GTK_STOCK_DIALOG_ERROR,
+        xfce_message_dialog(GTK_WINDOW(toplevel),
+                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
                             primary,
                             _("This feature requires a file manager service present (such as that supplied by Thunar)."),
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
@@ -650,18 +726,17 @@ static void
 xfdesktop_file_icon_menu_properties(GtkWidget *widget,
                                     gpointer user_data)
 {
-    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);
-#ifdef HAVE_THUNARX
-    XfdesktopFileIconManager *fmanager = g_object_get_data(G_OBJECT(icon),
-                                                           "--xfdesktop-fmanager");
-#endif
-    GtkWidget *dlg, *table, *hbox, *lbl, *img, *spacer, *notebook, *vbox, *entry;
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopFileIcon *icon;
+    GList *selected;
+    GtkWidget *dlg, *table, *hbox, *lbl, *img, *spacer, *notebook, *vbox,
+              *entry, *toplevel;
     gint row = 0, w, h;
     PangoFontDescription *pfd = pango_font_description_from_string("bold");
     gchar *str = NULL, buf[64];
     gboolean is_link = FALSE;
     struct tm *tm;
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
+    const ThunarVfsInfo *info;
     ThunarVfsUserManager *user_manager;
     ThunarVfsUser *user;
     ThunarVfsGroup *group;
@@ -671,10 +746,18 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
         N_("None"), N_("Write only"), N_("Read only"), N_("Read & Write")
     };
     
+    selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
+    g_return_if_fail(g_list_length(selected) == 1);
+    icon = XFDESKTOP_FILE_ICON(selected->data);
+    g_list_free(selected);
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    
+    info = xfdesktop_file_icon_peek_info(icon);
+    
     gtk_icon_size_lookup(GTK_ICON_SIZE_DIALOG, &w, &h);
     
     dlg = gtk_dialog_new_with_buttons(xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)),
-                                      NULL,
+                                      GTK_WINDOW(toplevel),
                                       GTK_DIALOG_NO_SEPARATOR,
                                       GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
                                       NULL);
@@ -1122,11 +1205,6 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     g_return_if_fail(selected);
     multi_sel = (g_list_length(selected) > 1);
     
-#ifdef HAVE_THUNARX
-    /* meh */
-    g_object_set_data(G_OBJECT(icon), "--xfdesktop-fmanager", fmanager);
-#endif
-    
     menu = gtk_menu_new();
     gtk_widget_show(menu);
     g_signal_connect_swapped(G_OBJECT(menu), "deactivate",
@@ -1151,9 +1229,9 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
             gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            g_signal_connect_swapped(G_OBJECT(mi), "activate",
-                                     G_CALLBACK(xfdesktop_file_icon_launch_external),
-                                     file_icon);
+            g_signal_connect(G_OBJECT(mi), "activate",
+                             G_CALLBACK(xfdesktop_file_icon_menu_other_app),
+                             fmanager);
         } else {
             if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
                 img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
@@ -1162,6 +1240,9 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                 gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
                 gtk_widget_show(mi);
                 gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                g_signal_connect(G_OBJECT(mi), "activate",
+                                 G_CALLBACK(xfdesktop_file_icon_menu_executed),
+                                 fmanager);
             }
             
             mime_apps = thunar_vfs_mime_database_get_applications(thunar_mime_database,
@@ -1178,8 +1259,8 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                 
                 gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
                 
-                mi = xfdesktop_menu_item_from_mime_app(file_icon, mime_app, w,
-                                                       TRUE);
+                mi = xfdesktop_menu_item_from_mime_app(fmanager, file_icon,
+                                                       mime_app, w, TRUE);
                 gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                 
                 if(mime_apps->next) {
@@ -1205,7 +1286,8 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                     
                     for(l = mime_apps->next; l; l = l->next) {
                         mime_app = l->data;
-                        mi = xfdesktop_menu_item_from_mime_app(file_icon,
+                        mi = xfdesktop_menu_item_from_mime_app(fmanager,
+                                                               file_icon,
                                                                mime_app, w,
                                                                FALSE);
                         gtk_menu_shell_append(GTK_MENU_SHELL(mime_apps_menu), mi);
@@ -1223,7 +1305,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                 gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                 g_signal_connect(G_OBJECT(mi), "activate",
                                  G_CALLBACK(xfdesktop_file_icon_menu_other_app),
-                                 file_icon);
+                                 fmanager);
             }
         }
     }
@@ -1322,7 +1404,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     else {
         g_signal_connect(G_OBJECT(mi), "activate",
                          G_CALLBACK(xfdesktop_file_icon_menu_rename),
-                         file_icon);
+                         fmanager);
     }
     
     mi = gtk_separator_menu_item_new();
@@ -1340,7 +1422,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     else {
         g_signal_connect(G_OBJECT(mi), "activate",
                          G_CALLBACK(xfdesktop_file_icon_menu_properties),
-                         file_icon);
+                         fmanager);
     }
     
     g_list_free(selected);
