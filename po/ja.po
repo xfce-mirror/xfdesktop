@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-03-04 19:19+0900\n"
-"PO-Revision-Date: 2006-02-26 22:30+0900\n"
+"PO-Revision-Date: 2006-03-04 21:07+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -787,7 +787,7 @@ msgid "If you delete a file, it is permanently lost."
 msgstr "削除されたファイルは二度と復元できません。"
 
 #: ../src/xfdesktop-file-icon-manager.c:455
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "本当に以下の %d 個のファイルを削除してもよろしいですか？"
 
@@ -848,18 +848,16 @@ msgstr "%sへのリンク"
 
 #: ../src/xfdesktop-file-icon-manager.c:771
 msgid "Link Target:"
-msgstr ""
+msgstr "リンク先:"
 
 #: ../src/xfdesktop-file-icon-manager.c:788
 #: ../src/xfdesktop-file-icon-manager.c:908
-#, fuzzy
 msgid "(unknown)"
-msgstr "不明"
+msgstr "(不明)"
 
-# FIXME: format string
 #: ../src/xfdesktop-file-icon-manager.c:803
 msgid "Open With:"
-msgstr "次で開く:"
+msgstr "これで開く:"
 
 #: ../src/xfdesktop-file-icon-manager.c:848
 msgid "Modified:"
@@ -910,9 +908,8 @@ msgid "Others:"
 msgstr "その他の人達:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1139
-#, fuzzy
 msgid "_Open all"
-msgstr "開く(_O)"
+msgstr "全て開く(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1150
 msgid "_Open"
@@ -931,29 +928,32 @@ msgstr "次で開く"
 msgid "Open With Other _Application..."
 msgstr "他のアプリケーションで開く(_A)..."
 
+# FIXME: ngettext()
 #: ../src/xfdesktop-file-icon-manager.c:1284
-#, fuzzy
 msgid "_Copy Files"
 msgstr "コピー(_C)"
 
+# FIXME: ngettext()
 #: ../src/xfdesktop-file-icon-manager.c:1285
 msgid "_Copy File"
 msgstr "コピー(_C)"
 
+# FIXME: ngettext()
 #: ../src/xfdesktop-file-icon-manager.c:1294
-#, fuzzy
 msgid "Cu_t Files"
 msgstr "切り取り(_T)"
 
+# FIXME: ngettext()
 #: ../src/xfdesktop-file-icon-manager.c:1295
 msgid "Cu_t File"
 msgstr "切り取り(_T)"
 
+# FIXME: ngettext()
 #: ../src/xfdesktop-file-icon-manager.c:1304
-#, fuzzy
 msgid "_Delete Files"
 msgstr "削除(_D)"
 
+# FIXME: ngettext()
 #: ../src/xfdesktop-file-icon-manager.c:1305
 msgid "_Delete File"
 msgstr "削除(_D)"
