@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-03-04 19:19+0900\n"
-"PO-Revision-Date: 2005-02-23 17:29+0200\n"
+"PO-Revision-Date: 2005-03-05 12:10+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -646,19 +646,16 @@ msgid "Edit backdrop list"
 msgstr "Muokkaa taustakuvalistaa"
 
 #: ../settings/behavior-settings.c:223
-#, fuzzy
 msgid "Menus"
-msgstr "Valikkotiedostot"
+msgstr "Valikot"
 
 #: ../settings/behavior-settings.c:231
-#, fuzzy
 msgid "Show _window list on middle click"
 msgstr "Näytä i_kkunalista keskipainiketta napsautettaessa"
 
 #: ../settings/behavior-settings.c:242
-#, fuzzy
 msgid "Show _desktop menu on right click"
-msgstr "Näytä _työpöytävalikko"
+msgstr "Näytä _työpöytävalikko oikeanpuoleista painiketta napsautettaessa"
 
 #: ../settings/behavior-settings.c:261
 msgid "Desktop Icons"
@@ -678,18 +675,16 @@ msgid "File/launcher icons"
 msgstr "Tiedostojen/käynnistimien kuvakkeet"
 
 #: ../settings/behavior-settings.c:284
-#, fuzzy
 msgid "_Icon size:"
-msgstr "Kuvakesuunnittelija"
+msgstr "_Kuvakkeen koko:"
 
 #: ../settings/behavior-settings.c:298
-#, fuzzy
 msgid "Use _system font size"
-msgstr "Avaa _mukautettu valikkotiedosto:"
+msgstr "Käytä _järjestelmän kirjasinkokoa"
 
 #: ../settings/behavior-settings.c:315
 msgid "Custom _font size:"
-msgstr ""
+msgstr "Mukautettu ki_rjasinkoko"
 
 #: ../src/main.c:240
 #, c-format
@@ -789,28 +784,28 @@ msgid "If you delete a file, it is permanently lost."
 msgstr "Jos poistat tiedoston, sitä ei voi palauttaa."
 
 #: ../src/xfdesktop-file-icon-manager.c:455
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "Haluatko varmasti poistaa lopullisesti seuraavat %d tiedostoa?"
+msgstr "Haluatko varmasti poistaa seuraavat %d tiedostoa?"
 
 #: ../src/xfdesktop-file-icon-manager.c:457
 msgid "Delete Multiple Files"
 msgstr "Poista useita tiedostoja"
 
 #: ../src/xfdesktop-file-icon-manager.c:561
-#, fuzzy, c-format
+#, c-format
 msgid "_Open With \"%s\""
-msgstr "Avaa sovelluksessa"
+msgstr "Avaa _sovelluksessa \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:564
-#, fuzzy, c-format
+#, c-format
 msgid "Open With \"%s\""
-msgstr "Avaa sovelluksessa"
+msgstr "Avaa sovelluksessa \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:609
-#, c-format
+#, fuzzy, c-format
 msgid "Unable to launch \"%s\"."
-msgstr "Ei voi käynnistää kohdetta \"%s\"."
+msgstr "Ei voi käynnistää kohdetta \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:613
 msgid ""
@@ -851,18 +846,16 @@ msgstr "linkki kohteeseen %s"
 
 #: ../src/xfdesktop-file-icon-manager.c:771
 msgid "Link Target:"
-msgstr ""
+msgstr "Linkin kohde:"
 
 #: ../src/xfdesktop-file-icon-manager.c:788
 #: ../src/xfdesktop-file-icon-manager.c:908
-#, fuzzy
 msgid "(unknown)"
-msgstr "tuntematon"
+msgstr "(tuntematon)"
 
 #: ../src/xfdesktop-file-icon-manager.c:803
-#, fuzzy
 msgid "Open With:"
-msgstr "Avaa sovelluksessa"
+msgstr "Avaa sovelluksessa:"
 
 #: ../src/xfdesktop-file-icon-manager.c:848
 msgid "Modified:"
@@ -911,9 +904,8 @@ msgid "Others:"
 msgstr "Muut:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1139
-#, fuzzy
 msgid "_Open all"
-msgstr "_Avaa"
+msgstr "_Avaa kaikki"
 
 #: ../src/xfdesktop-file-icon-manager.c:1150
 msgid "_Open"
@@ -924,7 +916,6 @@ msgid "_Execute"
 msgstr "_Suorita"
 
 #: ../src/xfdesktop-file-icon-manager.c:1195
-#, fuzzy
 msgid "Open With"
 msgstr "Avaa sovelluksessa"
 
@@ -933,27 +924,24 @@ msgid "Open With Other _Application..."
 msgstr "Avaa _muussa sovelluksessa..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1284
-#, fuzzy
 msgid "_Copy Files"
-msgstr "_Kopioi tiedosto"
+msgstr "_Kopioi tiedostot"
 
 #: ../src/xfdesktop-file-icon-manager.c:1285
 msgid "_Copy File"
 msgstr "_Kopioi tiedosto"
 
 #: ../src/xfdesktop-file-icon-manager.c:1294
-#, fuzzy
 msgid "Cu_t Files"
-msgstr "_Leikkaa tiedosto"
+msgstr "_Leikkaa tiedostot"
 
 #: ../src/xfdesktop-file-icon-manager.c:1295
 msgid "Cu_t File"
 msgstr "_Leikkaa tiedosto"
 
 #: ../src/xfdesktop-file-icon-manager.c:1304
-#, fuzzy
 msgid "_Delete Files"
-msgstr "_Poista tiedosto"
+msgstr "_Poista tiedostot"
 
 #: ../src/xfdesktop-file-icon-manager.c:1305
 msgid "_Delete File"
@@ -968,36 +956,34 @@ msgid "_Properties..."
 msgstr "_Ominaisuudet"
 
 #: ../src/xfdesktop-file-icon-manager.c:1929 ../src/xfdesktop-file-icon.c:471
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\":"
-msgstr "Nimen \"%s\" muuttaminen muotoon \"%s\" epäonnistui:"
+msgstr "Kohteen \"%s\" suorittaminen epäonnistui:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1931 ../src/xfdesktop-file-icon.c:473
-#, fuzzy
 msgid "Run Error"
-msgstr "Virhe"
+msgstr "Suoritusvirhe"
 
 #: ../src/xfdesktop-file-icon.c:403
 #, c-format
 msgid "There was an error %s \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Virhe %s \"%s\" -> \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:405
 msgid "moving"
-msgstr ""
+msgstr "siirretään"
 
 #: ../src/xfdesktop-file-icon.c:407
 msgid "copying"
-msgstr ""
+msgstr "kopioidaan"
 
 #: ../src/xfdesktop-file-icon.c:408
 msgid "linking"
-msgstr ""
+msgstr "linkitetään"
 
 #: ../src/xfdesktop-file-icon.c:411
-#, fuzzy
 msgid "File Error"
-msgstr "Virhe"
+msgstr "Tiedostovirhe"
 
 #: ../src/xfdesktop-file-icon.c:609
 #, c-format
