@@ -90,6 +90,7 @@ set_chk_option(GtkWidget *w, gpointer user_data)
     mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
 }
 
+#ifdef ENABLE_DESKTOP_ICONS
 static void
 set_sbtn_option(GtkSpinButton *sbtn,
                 gpointer user_data)
@@ -117,6 +118,7 @@ set_sbtn_option(GtkSpinButton *sbtn,
     
     mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
 }
+#endif
 
 static void
 set_di_option(GtkComboBox *combo,
