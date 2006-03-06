@@ -49,6 +49,8 @@
 #include "xfdesktop-icon.h"
 #include "xfdesktop-file-icon.h"
 
+#define EMBLEM_SYMLINK  "emblem-symbolic-link"
+
 enum
 {
     SIG_POS_CHANGED = 0,
@@ -254,6 +256,7 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
 {
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
     const gchar *icon_name;
+    gboolean loaded_new = FALSE;
     
     if(!file_icon->priv->pix || size != file_icon->priv->cur_pix_size) {
         if(file_icon->priv->pix) {
@@ -274,19 +277,12 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
             
             if(icon_name) {
                 file_icon->priv->pix = xfce_themed_icon_load(icon_name, size);
-                if(file_icon->priv->pix)
+                if(file_icon->priv->pix) {
                     file_icon->priv->cur_pix_size = size;
+                    loaded_new = TRUE;
+                }
             }
         }
-        
-#ifdef HAVE_LIBEXO
-        if(file_icon->priv->pix_opacity != 100) {
-            GdkPixbuf *tmp = exo_gdk_pixbuf_lucent(file_icon->priv->pix,
-                                                   file_icon->priv->pix_opacity);
-            g_object_unref(G_OBJECT(file_icon->priv->pix));
-            file_icon->priv->pix = tmp;
-        }
-#endif
     }
     
     /* fallback */
@@ -306,8 +302,26 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
         
         file_icon->priv->pix = g_object_ref(G_OBJECT(xfdesktop_fallback_icon));
         file_icon->priv->cur_pix_size = size;
-        
+        loaded_new = TRUE;
+    }
+    
+    if(loaded_new) {
+        if(file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_SYMLINK) {
+            GdkPixbuf *sym_pix;
+            gint sym_pix_size = size * 2 / 3;
+            
+            sym_pix = xfce_themed_icon_load(EMBLEM_SYMLINK, sym_pix_size);
+            if(sym_pix) {
+                gdk_pixbuf_composite(sym_pix, file_icon->priv->pix,
+                                     size - sym_pix_size, size - sym_pix_size,
+                                     sym_pix_size, sym_pix_size,
+                                     size - sym_pix_size, size - sym_pix_size,
+                                     1.0, 1.0, GDK_INTERP_BILINEAR, 255);
+                g_object_unref(G_OBJECT(sym_pix));
+            }
+        }
 #ifdef HAVE_LIBEXO
+        
         if(file_icon->priv->pix_opacity != 100) {
             GdkPixbuf *tmp = exo_gdk_pixbuf_lucent(file_icon->priv->pix,
                                                    file_icon->priv->pix_opacity);
