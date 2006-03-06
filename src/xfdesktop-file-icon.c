@@ -452,6 +452,9 @@ xfdesktop_file_icon_drag_job_finished(ThunarVfsJob *job,
     /* yes, twice is correct */
     g_object_unref(G_OBJECT(job));
     g_object_unref(G_OBJECT(job));
+    
+    g_object_unref(G_OBJECT(src_file_icon));
+    g_object_unref(G_OBJECT(file_icon));
 }
 
 static XfdesktopIconDragResult
@@ -534,6 +537,10 @@ xfdesktop_file_icon_do_drop_dest(XfdesktopIcon *icon,
         if(job) {
             DBG("got job, action initiated");
             
+            /* ensure they aren't destroyed until the job is finished */
+            g_object_ref(G_OBJECT(src_file_icon));
+            g_object_ref(G_OBJECT(file_icon));
+            
             g_object_set_data(G_OBJECT(job), "--xfdesktop-file-icon-callback",
                               G_CALLBACK(xfdesktop_file_icon_drag_job_finished));
             g_object_set_data(G_OBJECT(job), "--xfdesktop-file-icon-data", icon);
@@ -590,6 +597,7 @@ xfdesktop_delete_file_finished(ThunarVfsJob *job,
         g_critical("ThunarVfsJob 0x%p not found in active jobs list", job);
     
     g_object_unref(G_OBJECT(job));
+    g_object_unref(G_OBJECT(icon));
 }
 
 void
@@ -608,6 +616,8 @@ xfdesktop_file_icon_delete_file(XfdesktopFileIcon *icon)
                      G_CALLBACK(xfdesktop_delete_file_error), icon);
     g_signal_connect(G_OBJECT(job), "finished",
                      G_CALLBACK(xfdesktop_delete_file_finished), icon);
+    
+    g_object_ref(G_OBJECT(icon));
 }
 
 gboolean

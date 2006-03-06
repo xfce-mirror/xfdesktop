@@ -392,6 +392,9 @@ xfdesktop_file_icon_menu_rename(GtkWidget *widget,
     
     info = xfdesktop_file_icon_peek_info(icon);
     
+    /* make sure the icon doesn't get destroyed while the dialog is open */
+    g_object_ref(G_OBJECT(icon));
+    
     title = g_strdup_printf(_("Rename \"%s\""), info->display_name);
     
     dlg = gtk_dialog_new_with_buttons(title, GTK_WINDOW(toplevel),
@@ -449,6 +452,7 @@ xfdesktop_file_icon_menu_rename(GtkWidget *widget,
     }
     
     gtk_widget_destroy(dlg);
+    g_object_unref(G_OBJECT(icon));
 }
 
 enum
@@ -469,6 +473,9 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager)
     
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
     g_return_if_fail(selected);
+    
+    /* make sure the icons don't get destroyed while the dialog is open */
+    g_list_foreach(selected, (GFunc)g_object_ref, NULL);
     
     if(g_list_length(selected) == 1) {
         icon = XFDESKTOP_ICON(selected->data);
@@ -565,6 +572,7 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager)
     if(GTK_RESPONSE_ACCEPT == ret)
         g_list_foreach(selected, (GFunc)xfdesktop_file_icon_delete_file, NULL);
     
+    g_list_foreach(selected, (GFunc)g_object_unref, NULL);
     g_list_free(selected);
 }
 
@@ -1172,7 +1180,16 @@ xfdesktop_menu_item_from_mime_handler(XfdesktopFileIconManager *fmanager,
 static gboolean
 xfdesktop_file_icon_menu_deactivate_idled(gpointer user_data)
 {
+    GList *icon_list = g_object_get_data(G_OBJECT(user_data),
+                                         "--xfdesktop-icon-list");
+    
     gtk_widget_destroy(GTK_WIDGET(user_data));
+    
+    if(icon_list) {
+        g_list_foreach(icon_list, (GFunc)g_object_unref, NULL);
+        g_list_free(icon_list);
+    }
+    
     return FALSE;
 }
 
@@ -1216,6 +1233,10 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     g_signal_connect_swapped(G_OBJECT(menu), "deactivate",
                              G_CALLBACK(g_idle_add),
                              xfdesktop_file_icon_menu_deactivate_idled);
+    
+    /* make sure icons don't get destroyed while menu is open */
+    g_list_foreach(selected, (GFunc)g_object_ref, NULL);
+    g_object_set_data(G_OBJECT(menu), "--xfdesktop-icon-list", selected);
     
     if(multi_sel) {
         img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
@@ -1461,10 +1482,10 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                          fmanager);
     }
     
-    g_list_free(selected);
-    
     gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0,
                    gtk_get_current_event_time());
+    
+    /* don't free |selected|.  the menu deactivated handler does that */
 }
 
 static gboolean
