@@ -1881,8 +1881,6 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     
     fmanager->priv->icon_view = icon_view;
     
-    if(!GTK_WIDGET_REALIZED(GTK_WIDGET(icon_view)))
-        gtk_widget_realize(GTK_WIDGET(icon_view));
     fmanager->priv->gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
     
     if(!clipboard_manager) {
