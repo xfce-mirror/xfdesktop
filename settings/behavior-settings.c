@@ -118,7 +118,6 @@ set_sbtn_option(GtkSpinButton *sbtn,
     
     mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
 }
-#endif
 
 static void
 set_di_option(GtkComboBox *combo,
@@ -131,6 +130,7 @@ set_di_option(GtkComboBox *combo,
                         BACKDROP_CHANNEL, desktop_icon_style);
     mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
 }
+#endif
 
 void
 behavior_settings_load(McsPlugin *plugin)
