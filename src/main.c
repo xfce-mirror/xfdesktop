@@ -265,7 +265,8 @@ main(int argc, char **argv)
     /* bind gettext textdomain */
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     
-#ifdef HAVE_THUNAR_VFS  /* move to xfce-desktop.c? */
+#if defined(ENABLE_DESKTOP_ICONS) && defined(HAVE_THUNAR_VFS)
+    /* move to xfce-desktop.c? */
     g_thread_init(NULL);
 #endif
     gtk_init(&argc, &argv);
