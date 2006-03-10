@@ -121,6 +121,7 @@ struct _XfdesktopIconViewPrivate
     gint press_start_y;
     
     XfdesktopIcon *last_clicked_item;
+    XfdesktopIcon *first_clicked_item;
     XfdesktopIcon *item_under_pointer;
     
     GtkTargetList *native_targets;
@@ -357,20 +358,16 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
     XfdesktopIcon *icon;
     
-    TRACE("entering, type is %s", evt->type == GDK_BUTTON_PRESS ? "GDK_BUTTON_PRESS" : (evt->type == GDK_2BUTTON_PRESS ? "GDK_2BUTTON_PRESS" : "i dunno"));
-    
     if(evt->type == GDK_BUTTON_PRESS) {
         GList *icon_l = g_list_find_custom(icon_view->priv->icons, evt,
                                            (GCompareFunc)xfdesktop_check_icon_clicked);
         if(icon_l && (icon = icon_l->data)) {
             XfdesktopIcon *icon_below = NULL;
             
-            icon_view->priv->last_clicked_item = icon;
-            
             if(g_list_find(icon_view->priv->selected_icons, icon)) {
                 /* clicked an already-selected icon */
                 
-                if(evt->state & (GDK_CONTROL_MASK|GDK_SHIFT_MASK)) {
+                if(evt->state & GDK_CONTROL_MASK) {
                     /* unselect */
                     icon_view->priv->selected_icons = g_list_remove(icon_view->priv->selected_icons,
                                                                     icon);
@@ -386,26 +383,82 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             } else {
                 /* clicked a non-selected icon */
                 if(icon_view->priv->sel_mode != GTK_SELECTION_MULTIPLE
-                   || !(evt->state & (GDK_CONTROL_MASK|GDK_SHIFT_MASK)))
+                   || !(evt->state & GDK_CONTROL_MASK))
                 {
-                    /* unselect all of the other icons */
+                    /* unselect all of the other icons if we haven't held
+                     * down the ctrl key.  we'll handle shift in the next block,
+                     * but for shift we do need to unselect everything */
                     GList *repaint_icons = icon_view->priv->selected_icons;
                     icon_view->priv->selected_icons = NULL;
-                    g_list_foreach(repaint_icons, xfdesktop_list_foreach_invalidate,
+                    g_list_foreach(repaint_icons,
+                                   xfdesktop_list_foreach_invalidate,
                                    icon_view);
                     g_list_free(repaint_icons);
+                    
+                    if(!(evt->state & GDK_SHIFT_MASK))
+                        icon_view->priv->first_clicked_item = NULL;
                 }
                 
-                icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
-                                                                 icon);
-                xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
-                icon_below = xfdesktop_find_icon_below(icon_view, icon);
-                if(icon_below)
-                    xfdesktop_icon_view_clear_icon_extents(icon_view, icon_below);
-            
-                g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_SELECTED],
-                              0, NULL);
-                xfdesktop_icon_selected(icon);
+                icon_view->priv->last_clicked_item = icon;
+                if(!icon_view->priv->first_clicked_item)
+                    icon_view->priv->first_clicked_item = icon;
+                
+                if(icon_view->priv->sel_mode == GTK_SELECTION_MULTIPLE
+                   && evt->state & GDK_SHIFT_MASK
+                   && icon_view->priv->first_clicked_item
+                   && icon_view->priv->first_clicked_item != icon)
+                {
+                    /* select all icons between the first-clicked icon in this
+                     * selection run and the newly-clicked icon */
+                    guint16 first_row = 0, first_col = 0, row = 0, col = 0;
+                    if(xfdesktop_icon_get_position(icon_view->priv->first_clicked_item,
+                                                   &first_row, &first_col)
+                       && xfdesktop_icon_get_position(icon, &row, &col))
+                    {
+                        gint i, j, idx;
+                        XfdesktopIcon *icon1 = NULL;
+                        
+                        for(i = (row < first_row ? row : first_row);
+                            i <= (row < first_row ? first_row : row);
+                            ++i)
+                        {
+                            for(j = (col < first_col ? col : first_col);
+                                j <= (col < first_col ? first_col : col);
+                                ++j)
+                            {
+                                idx = j * icon_view->priv->nrows + i;
+                                icon1 = icon_view->priv->grid_layout[idx];
+                                if(icon1
+                                   && !g_list_find(icon_view->priv->selected_icons,
+                                                   icon1))
+                                {
+                                    icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
+                                                                                     icon1);
+                                    xfdesktop_icon_view_clear_icon_extents(icon_view,
+                                                                           icon1);
+                                    g_signal_emit(G_OBJECT(icon_view),
+                                                  __signals[SIG_ICON_SELECTED],
+                                                  0, NULL);
+                                    xfdesktop_icon_selected(icon1);
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
+                                                                     icon);
+                    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+                    icon_below = xfdesktop_find_icon_below(icon_view, icon);
+                    if(icon_below) {
+                        xfdesktop_icon_view_clear_icon_extents(icon_view,
+                                                               icon_below);
+                    }
+                    
+                    g_signal_emit(G_OBJECT(icon_view),
+                                  __signals[SIG_ICON_SELECTED],
+                                  0, NULL);
+                    xfdesktop_icon_selected(icon);
+                }
             }
             
             if(evt->button == 1) {
@@ -427,21 +480,27 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
         } else {
             /* unselect previously selected icons if we didn't click one */
             if(icon_view->priv->sel_mode != GTK_SELECTION_MULTIPLE
-               || !(evt->state & (GDK_CONTROL_MASK|GDK_SHIFT_MASK))) {
+               || !(evt->state & GDK_CONTROL_MASK)) {
                 GList *repaint_icons = icon_view->priv->selected_icons;
                 icon_view->priv->selected_icons = NULL;
                 g_list_foreach(repaint_icons, xfdesktop_list_foreach_invalidate,
                                icon_view);
                 g_list_free(repaint_icons);
             }
+            
+            icon_view->priv->last_clicked_item = NULL;
+            icon_view->priv->first_clicked_item = NULL;
         }
     } else if(evt->type == GDK_2BUTTON_PRESS && evt->button == 1) {
         GList *icon_l = g_list_find_custom(icon_view->priv->icons, evt,
                                            (GCompareFunc)xfdesktop_check_icon_clicked);
         if(icon_l && (icon = icon_l->data)) {
+            icon_view->priv->last_clicked_item = icon;
             g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED],
                           0, NULL);
             xfdesktop_icon_activated(icon);
+            
+            return TRUE;
         }
     }
     
