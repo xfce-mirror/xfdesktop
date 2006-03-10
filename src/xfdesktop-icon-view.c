@@ -2204,6 +2204,8 @@ xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
             if(icon_view->priv->selected_icons)
                 icon_view->priv->last_clicked_item = icon_view->priv->selected_icons->data;
         }
+        if(icon_view->priv->first_clicked_item == icon)
+            icon_view->priv->first_clicked_item = NULL;
         if(icon_view->priv->item_under_pointer == icon)
             icon_view->priv->item_under_pointer = NULL;
         
@@ -2241,6 +2243,7 @@ xfdesktop_icon_view_remove_all(XfdesktopIconView *icon_view)
     
     icon_view->priv->item_under_pointer = NULL;
     icon_view->priv->last_clicked_item = NULL;
+    icon_view->priv->first_clicked_item = NULL;
     
     if(GTK_WIDGET_REALIZED(GTK_WIDGET(icon_view))) {
         memset(icon_view->priv->grid_layout, 0, icon_view->priv->nrows
