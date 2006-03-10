@@ -693,12 +693,11 @@ add_style_options (GtkWidget *vbox, GtkSizeGroup * sg, BackdropPanel *bp)
 }
 
 static void
-set_color_style(GtkWidget *item, BackdropPanel *bp)
+set_color_style(GtkComboBox *combo, BackdropPanel *bp)
 {
     gchar setting_name[128];
     
-    bp->color_style = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (item),
-                              "user-data"));
+    bp->color_style = gtk_combo_box_get_active(combo);
     
     if(bp->color_style == XFCE_BACKDROP_COLOR_SOLID)
         gtk_widget_set_sensitive(bp->color2_hbox, FALSE);
