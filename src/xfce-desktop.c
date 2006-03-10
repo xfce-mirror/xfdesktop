@@ -508,6 +508,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     widget_class->realize = xfce_desktop_realize;
     widget_class->unrealize = xfce_desktop_unrealize;
     widget_class->expose_event = xfce_desktop_expose;
+    widget_class->delete_event = (gboolean (*)(GtkWidget *, GdkEventAny *))gtk_true;
 }
 
 static void
