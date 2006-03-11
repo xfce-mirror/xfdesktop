@@ -670,7 +670,7 @@ xfce_desktop_expose(GtkWidget *w,
                     GdkEventExpose *evt)
 {
     XfceDesktop *desktop;
-    GtkStyle *style;
+    GList *children, *l;
     
     TRACE("entering");
     
@@ -678,16 +678,25 @@ xfce_desktop_expose(GtkWidget *w,
         return FALSE;
     
     desktop = XFCE_DESKTOP(w);
-    style = gtk_widget_get_style(w);
     
     if(!desktop->priv->bg_pixmap && desktop->priv->nbackdrops > 0)
         backdrop_changed_cb(desktop->priv->backdrops[0], desktop);
-    g_return_val_if_fail(desktop->priv->bg_pixmap, FALSE);
     
-    gdk_draw_drawable(GDK_DRAWABLE(w->window), style->black_gc,
-                      GDK_DRAWABLE(desktop->priv->bg_pixmap),
-                      evt->area.x, evt->area.y, evt->area.x, evt->area.y,
-                      evt->area.width, evt->area.height);
+    if(desktop->priv->bg_pixmap) {
+        GtkStyle *style = gtk_widget_get_style(w);
+        gdk_draw_drawable(GDK_DRAWABLE(w->window), style->black_gc,
+                          GDK_DRAWABLE(desktop->priv->bg_pixmap),
+                          evt->area.x, evt->area.y, evt->area.x, evt->area.y,
+                          evt->area.width, evt->area.height);
+    }
+    
+    children = gtk_container_get_children(GTK_CONTAINER(w));
+    for(l = children; l; l = l->next) {
+        gtk_container_propagate_expose(GTK_CONTAINER(w),
+                                       GTK_WIDGET(l->data),
+                                       evt);
+    }
+    g_list_free(children);
     
     return FALSE;
 }

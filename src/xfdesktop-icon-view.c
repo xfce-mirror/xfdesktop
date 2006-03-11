@@ -162,8 +162,7 @@ static gboolean xfdesktop_icon_view_leave_notify(GtkWidget *widget,
 static void xfdesktop_icon_view_realize(GtkWidget *widget);
 static void xfdesktop_icon_view_unrealize(GtkWidget *widget);
 static gboolean xfdesktop_icon_view_expose(GtkWidget *widget,
-                                           GdkEventExpose *evt,
-                                           gpointer user_data);
+                                           GdkEventExpose *evt);
 static void xfdesktop_icon_view_drag_begin(GtkWidget *widget,
                                            GdkDragContext *contest);
 static gboolean xfdesktop_icon_view_drag_motion(GtkWidget *widget,
@@ -276,6 +275,7 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     
     widget_class->realize = xfdesktop_icon_view_realize;
     widget_class->unrealize = xfdesktop_icon_view_unrealize;
+    widget_class->expose_event = xfdesktop_icon_view_expose;
     widget_class->drag_begin = xfdesktop_icon_view_drag_begin;
     widget_class->drag_motion = xfdesktop_icon_view_drag_motion;
     widget_class->drag_leave = xfdesktop_icon_view_drag_leave;
@@ -1091,9 +1091,6 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
     g_signal_connect(G_OBJECT(icon_view->priv->parent_window),
                      "focus-out-event",
                      G_CALLBACK(xfdesktop_icon_view_focus_out), icon_view);
-    g_signal_connect_after(G_OBJECT(icon_view->priv->parent_window),
-                           "expose-event",
-                           G_CALLBACK(xfdesktop_icon_view_expose), icon_view);
     
     /* watch for _NET_WORKAREA changes */
     gscreen = gtk_widget_get_screen(widget);
@@ -1147,8 +1144,6 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
                      G_CALLBACK(xfdesktop_icon_view_focus_in), icon_view);
     g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view->priv->parent_window),
                      G_CALLBACK(xfdesktop_icon_view_focus_out), icon_view);
-    g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view->priv->parent_window),
-                     G_CALLBACK(xfdesktop_icon_view_expose), icon_view);
     
     if(icon_view->priv->grid_resize_timeout) {
         g_source_remove(icon_view->priv->grid_resize_timeout);
@@ -1185,15 +1180,14 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
 
 static gboolean
 xfdesktop_icon_view_expose(GtkWidget *widget,
-                           GdkEventExpose *evt,
-                           gpointer user_data)
+                           GdkEventExpose *evt)
 {
     TRACE("entering");
     
     if(evt->count != 0)
         return FALSE;
     
-    xfdesktop_icon_view_paint_icons(XFDESKTOP_ICON_VIEW(user_data), &evt->area);
+    xfdesktop_icon_view_paint_icons(XFDESKTOP_ICON_VIEW(widget), &evt->area);
     
     return FALSE;
 }
