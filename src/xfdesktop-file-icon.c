@@ -68,6 +68,7 @@ struct _XfdesktopFileIconPrivate
     ThunarVfsInfo *info;
     GdkScreen *gscreen;
     GList *active_jobs;
+    ThunarVfsVolume *volume;
 };
 
 static void xfdesktop_file_icon_finalize(GObject *obj);
@@ -109,7 +110,7 @@ static ThunarVfsInfo *xfdesktop_file_icon_tfi_get_vfs_info(ThunarxFileInfo *file
 static void xfdesktop_delete_file_finished(ThunarVfsJob *job,
                                            gpointer user_data);
 
-static void xfdesktop_file_icon_invalidate_pixbuf(XfdesktopFileIcon *icon);
+static inline void xfdesktop_file_icon_invalidate_pixbuf(XfdesktopFileIcon *icon);
 
 static guint __signals[N_SIGS] = { 0, };
 static GdkPixbuf *xfdesktop_fallback_icon = NULL;
@@ -189,6 +190,9 @@ xfdesktop_file_icon_finalize(GObject *obj)
     if(icon->priv->info)
         thunar_vfs_info_unref(icon->priv->info);
     
+    if(icon->priv->volume)
+        g_object_unref(G_OBJECT(icon->priv->volume));
+    
     g_free(icon->priv);
     
     G_OBJECT_CLASS(xfdesktop_file_icon_parent_class)->finalize(obj);
@@ -207,7 +211,7 @@ xfdesktop_file_icon_icon_init(XfdesktopIconIface *iface)
     iface->do_drop_dest = xfdesktop_file_icon_do_drop_dest;
 }
 
-static void
+static inline void
 xfdesktop_file_icon_invalidate_pixbuf(XfdesktopFileIcon *icon)
 {
     if(icon->priv->pix) {
@@ -258,29 +262,41 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
     const gchar *icon_name;
     gboolean loaded_new = FALSE;
     
-    if(!file_icon->priv->pix || size != file_icon->priv->cur_pix_size) {
+    if(size != file_icon->priv->cur_pix_size) {
         if(file_icon->priv->pix) {
             g_object_unref(G_OBJECT(file_icon->priv->pix));
             file_icon->priv->pix = NULL;
         }
-
-        icon_name = thunar_vfs_info_get_custom_icon(file_icon->priv->info);
-        if(icon_name) {
-            file_icon->priv->pix = xfce_themed_icon_load(icon_name, size);
-            if(file_icon->priv->pix)
-                file_icon->priv->cur_pix_size = size;
+    }
+    
+    if(!file_icon->priv->pix) {
+        if(file_icon->priv->volume) {
+            icon_name = thunar_vfs_volume_lookup_icon_name(file_icon->priv->volume,
+                                                           gtk_icon_theme_get_default());
+            if(icon_name) {
+                file_icon->priv->pix = xfce_themed_icon_load(icon_name, size);
+                if(file_icon->priv->pix)
+                    loaded_new = TRUE;
+            }
+        }
+        
+        if(!file_icon->priv->pix) {
+            icon_name = thunar_vfs_info_get_custom_icon(file_icon->priv->info);
+            if(icon_name) {
+                file_icon->priv->pix = xfce_themed_icon_load(icon_name, size);
+                if(file_icon->priv->pix)
+                    loaded_new = TRUE;
+            }
         }
             
-        if(!file_icon->priv->pix) {
+        if(G_UNLIKELY(!file_icon->priv->pix)) {
             icon_name = thunar_vfs_mime_info_lookup_icon_name(file_icon->priv->info->mime_info,
                                                               gtk_icon_theme_get_default());
             
             if(icon_name) {
                 file_icon->priv->pix = xfce_themed_icon_load(icon_name, size);
-                if(file_icon->priv->pix) {
-                    file_icon->priv->cur_pix_size = size;
+                if(file_icon->priv->pix)
                     loaded_new = TRUE;
-                }
             }
         }
     }
@@ -301,9 +317,11 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
         }
         
         file_icon->priv->pix = g_object_ref(G_OBJECT(xfdesktop_fallback_icon));
-        file_icon->priv->cur_pix_size = size;
         loaded_new = TRUE;
     }
+    
+    if(file_icon->priv->pix)
+        file_icon->priv->cur_pix_size = size;
     
     if(loaded_new) {
         if(file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_SYMLINK) {
@@ -337,7 +355,12 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
 static G_CONST_RETURN gchar *
 xfdesktop_file_icon_peek_label(XfdesktopIcon *icon)
 {
-    return XFDESKTOP_FILE_ICON(icon)->priv->info->display_name;
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
+    
+    if(file_icon->priv->volume)
+        return thunar_vfs_volume_get_name(file_icon->priv->volume);
+    else
+        return file_icon->priv->info->display_name;
 }
 
 static void
@@ -676,6 +699,31 @@ xfdesktop_file_icon_list_to_path_list(GList *icon_list)
     
     return g_list_reverse(path_list);
 }
+
+void
+xfdesktop_file_icon_set_volume(XfdesktopFileIcon *icon,
+                               ThunarVfsVolume *volume)
+{
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
+    
+    if(volume == icon->priv->volume)
+        return;
+    
+    if(icon->priv->volume)
+      g_object_unref(G_OBJECT(icon->priv->volume));
+    
+    icon->priv->volume = g_object_ref(G_OBJECT(volume));
+    
+    xfdesktop_file_icon_invalidate_pixbuf(icon);
+}
+
+ThunarVfsVolume *
+xfdesktop_file_icon_peek_volume(XfdesktopFileIcon *icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), NULL);
+    return icon->priv->volume;
+}
+
 
 
 /* thunar extension interface stuff: ThunarxFileInfo implementation */

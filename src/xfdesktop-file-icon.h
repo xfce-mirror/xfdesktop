@@ -68,6 +68,9 @@ void xfdesktop_file_icon_delete_file(XfdesktopFileIcon *icon);
 gboolean xfdesktop_file_icon_rename_file(XfdesktopFileIcon *icon, 
                                          const gchar *new_name);
 
+void xfdesktop_file_icon_set_volume(XfdesktopFileIcon *icon,
+                                    ThunarVfsVolume *volume);
+ThunarVfsVolume *xfdesktop_file_icon_peek_volume(XfdesktopFileIcon *icon);
 
 /* utility function for the clipboard manager */
 GList *xfdesktop_file_icon_list_to_path_list(GList *icon_list);

@@ -55,6 +55,10 @@ GType xfdesktop_file_icon_manager_get_type() G_GNUC_CONST;
 
 XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(ThunarVfsPath *folder);
 
+void xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIconManager *manager,
+                                                          gboolean show_removable_media);
+gboolean xfdesktop_file_icon_manager_get_show_removable_media(XfdesktopFileIconManager *manager);
+
 G_END_DECLS
 
 #endif  /* __XFDESKTOP_FILE_ICON_MANAGER_H__ */

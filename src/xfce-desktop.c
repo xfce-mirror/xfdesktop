@@ -167,6 +167,9 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
                 ThunarVfsPath *path = thunar_vfs_path_new(desktop_path, NULL);
                 if(path) {
                     manager = xfdesktop_file_icon_manager_new(path);
+                    /* FIXME: make a pref */
+                    xfdesktop_file_icon_manager_set_show_removable_media(XFDESKTOP_FILE_ICON_MANAGER(manager),
+                                                                         TRUE);
                     thunar_vfs_path_unref(path);
                 } else {
                     g_critical("Unable to create ThunarVfsPath for '%s'",

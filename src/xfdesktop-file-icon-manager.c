@@ -117,6 +117,8 @@ struct _XfdesktopFileIconManagerPrivate
     
     GHashTable *icons;
     
+    gboolean show_removable_media;
+    
     GList *icons_to_save;
     guint save_icons_id;
     
@@ -149,6 +151,7 @@ static const gint n_targets = 1;
 
 static XfdesktopClipboardManager *clipboard_manager = NULL;
 static ThunarVfsMimeDatabase *thunar_mime_database = NULL;
+static ThunarVfsVolumeManager *thunar_volume_manager = NULL;
 
 static GQuark xfdesktop_mime_app_quark = 0;
 
@@ -681,6 +684,98 @@ xfdesktop_file_icon_menu_copy(GtkWidget *widget,
 }
 
 static void
+xfdesktop_file_icon_menu_toggle_mount(GtkWidget *widget,
+                                      gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopFileIcon *icon;
+    GList *selected;
+    GtkWidget *toplevel;
+    ThunarVfsVolume *volume;
+    GError *error = NULL;
+    gboolean is_mount;
+    
+    selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
+    g_return_if_fail(g_list_length(selected) == 1);
+    icon = XFDESKTOP_FILE_ICON(selected->data);
+    g_list_free(selected);
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    
+    volume = xfdesktop_file_icon_peek_volume(icon);
+    g_return_if_fail(volume);
+    
+    is_mount = !thunar_vfs_volume_is_mounted(volume);
+    
+    if(!is_mount)
+        thunar_vfs_volume_unmount(volume, toplevel, &error);
+    else {
+        if(thunar_vfs_volume_mount(volume, toplevel, &error)) {
+            const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
+            ThunarVfsPath *new_path = thunar_vfs_volume_get_mount_point(volume);
+            
+            if(!thunar_vfs_path_equal(info->path, new_path)) {
+                ThunarVfsInfo *new_info = thunar_vfs_info_new_for_path(new_path,
+                                                                       NULL);
+                if(new_info) {
+                    /* g_hash_table_remove() here will unref the icon, but
+                     * we want to keep it */
+                    g_object_ref(G_OBJECT(icon));
+                    g_hash_table_remove(fmanager->priv->icons, info->path);
+                    g_hash_table_insert(fmanager->priv->icons,
+                                        thunar_vfs_path_ref(new_path), icon);
+                    
+                    xfdesktop_file_icon_update_info(icon, new_info);
+                    thunar_vfs_info_unref(new_info);
+                }
+            }
+        }
+    }
+    
+    if(error) {
+        gchar *primary = g_strdup_printf(is_mount ? _("Unable to mount \"%s\":")
+                                                  : _("Unable to unmount \"%s\":"),
+                                         thunar_vfs_volume_get_name(volume));
+        xfce_message_dialog(GTK_WINDOW(toplevel),
+                            is_mount ? _("Mount Failed") : _("Unmount Failed"),
+                            GTK_STOCK_DIALOG_ERROR, primary, error->message,
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+        g_free(primary);
+        g_error_free(error);
+    }
+}
+
+static void
+xfdesktop_file_icon_menu_eject(GtkWidget *widget,
+                               gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopFileIcon *icon;
+    GList *selected;
+    GtkWidget *toplevel;
+    ThunarVfsVolume *volume;
+    GError *error = NULL;
+    
+    selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
+    g_return_if_fail(g_list_length(selected) == 1);
+    icon = XFDESKTOP_FILE_ICON(selected->data);
+    g_list_free(selected);
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    
+    volume = xfdesktop_file_icon_peek_volume(icon);
+    g_return_if_fail(volume);
+    
+    if(!thunar_vfs_volume_eject(volume, toplevel, &error)) {
+        gchar *primary = g_strdup_printf(_("Unable to eject \"%s\":"),
+                                         thunar_vfs_volume_get_name(volume));
+        xfce_message_dialog(GTK_WINDOW(toplevel), _("Eject Failed"),
+                            GTK_STOCK_DIALOG_ERROR, primary, error->message,
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+        g_free(primary);
+        g_error_free(error);
+    }
+}
+
+static void
 xfdesktop_file_icon_menu_properties(GtkWidget *widget,
                                     gpointer user_data)
 {
@@ -835,47 +930,51 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
         ++row;
     }
     
-    mime_app = thunar_vfs_mime_database_get_default_application(thunar_mime_database,
-                                                                info->mime_info);
-    
-    if(mime_app) {
-        const gchar *icon_name;
+    if(info->type != THUNAR_VFS_FILE_TYPE_DIRECTORY) {
+        mime_app = thunar_vfs_mime_database_get_default_application(thunar_mime_database,
+                                                                    info->mime_info);
         
-        lbl = gtk_label_new(_("Open With:"));
-        gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
-        gtk_widget_modify_font(lbl, pfd);
-        gtk_widget_show(lbl);
-        gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                         GTK_FILL, GTK_FILL, 0, 0);
-        
-        hbox = gtk_hbox_new(FALSE, BORDER);
-        gtk_widget_show(hbox);
-        gtk_table_attach(GTK_TABLE(table), hbox, 1, 2, row, row + 1,
-                         GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-        
-        icon_name = thunar_vfs_mime_handler_lookup_icon_name(THUNAR_VFS_MIME_HANDLER(mime_app),
-                                                             gtk_icon_theme_get_default());
-        if(icon_name) {
-            gint w, h;
-            GdkPixbuf *pix;
+        if(mime_app) {
+            const gchar *icon_name;
             
-            gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
+            lbl = gtk_label_new(_("Open With:"));
+            gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
+            gtk_widget_modify_font(lbl, pfd);
+            gtk_widget_show(lbl);
+            gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
+                             GTK_FILL, GTK_FILL, 0, 0);
             
-            pix = xfce_themed_icon_load(icon_name, w);
-            if(pix) {
-                img = gtk_image_new_from_pixbuf(pix);
-                gtk_widget_show(img);
-                gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, FALSE, 0);
-                g_object_unref(G_OBJECT(pix));
+            hbox = gtk_hbox_new(FALSE, BORDER);
+            gtk_widget_show(hbox);
+            gtk_table_attach(GTK_TABLE(table), hbox, 1, 2, row, row + 1,
+                             GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+            
+            icon_name = thunar_vfs_mime_handler_lookup_icon_name(THUNAR_VFS_MIME_HANDLER(mime_app),
+                                                                 gtk_icon_theme_get_default());
+            if(icon_name) {
+                gint w, h;
+                GdkPixbuf *pix;
+                
+                gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
+                
+                pix = xfce_themed_icon_load(icon_name, w);
+                if(pix) {
+                    img = gtk_image_new_from_pixbuf(pix);
+                    gtk_widget_show(img);
+                    gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, FALSE, 0);
+                    g_object_unref(G_OBJECT(pix));
+                }
             }
+            
+            lbl = gtk_label_new(thunar_vfs_mime_application_get_name(mime_app));
+            gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+            gtk_widget_show(lbl);
+            gtk_box_pack_start(GTK_BOX(hbox), lbl, TRUE, TRUE, 0);
+            
+            ++row;
+            
+            g_object_unref(G_OBJECT(mime_app));
         }
-        
-        lbl = gtk_label_new(thunar_vfs_mime_application_get_name(mime_app));
-        gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
-        gtk_widget_show(lbl);
-        gtk_box_pack_start(GTK_BOX(hbox), lbl, TRUE, TRUE, 0);
-        
-        ++row;
     }
     
     spacer = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
@@ -1219,6 +1318,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(file_icon);
     ThunarVfsMimeInfo *mime_info = info->mime_info;
+    ThunarVfsVolume *volume = xfdesktop_file_icon_peek_volume(file_icon);
     GList *selected, *mime_apps, *l, *mime_actions = NULL;
     GtkWidget *menu, *mi, *img;
     gboolean multi_sel;
@@ -1418,50 +1518,84 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     
-    img = gtk_image_new_from_stock(GTK_STOCK_COPY, GTK_ICON_SIZE_MENU);
-    gtk_widget_show(img);
-    mi = gtk_image_menu_item_new_with_mnemonic(multi_sel ? _("_Copy Files")
-                                                         : _("_Copy File"));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    g_signal_connect(G_OBJECT(mi), "activate",
-                     G_CALLBACK(xfdesktop_file_icon_menu_copy), fmanager);
-    
-    img = gtk_image_new_from_stock(GTK_STOCK_CUT, GTK_ICON_SIZE_MENU);
-    gtk_widget_show(img);
-    mi = gtk_image_menu_item_new_with_mnemonic(multi_sel ? _("Cu_t Files")
-                                                         : _("Cu_t File"));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    g_signal_connect(G_OBJECT(mi), "activate",
-                     G_CALLBACK(xfdesktop_file_icon_menu_cut), fmanager);
-    
-    img = gtk_image_new_from_stock(GTK_STOCK_DELETE, GTK_ICON_SIZE_MENU);
-    gtk_widget_show(img);
-    mi = gtk_image_menu_item_new_with_mnemonic(multi_sel ? _("_Delete Files")
-                                                         : _("_Delete File"));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    g_signal_connect_swapped(G_OBJECT(mi), "activate",
-                             G_CALLBACK(xfdesktop_file_icon_manager_delete_selected), 
+    /* FIXME: need to handle multi-selection properly */
+    if(volume && !multi_sel) {
+        mi = gtk_image_menu_item_new_with_mnemonic(_("_Mount Volume"));
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        if(thunar_vfs_volume_is_mounted(volume))
+            gtk_widget_set_sensitive(mi, FALSE);
+        else {
+            g_signal_connect(G_OBJECT(mi), "activate",
+                             G_CALLBACK(xfdesktop_file_icon_menu_toggle_mount),
                              fmanager);
-    
-    mi = gtk_separator_menu_item_new();
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_Rename..."));
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    if(multi_sel)
-        gtk_widget_set_sensitive(mi, FALSE);
-    else {
+        }
+        
+        mi = gtk_image_menu_item_new_with_mnemonic(_("_Unmount Volume"));
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        if(!thunar_vfs_volume_is_mounted(volume))
+            gtk_widget_set_sensitive(mi, FALSE);
+        else {
+            g_signal_connect(G_OBJECT(mi), "activate",
+                             G_CALLBACK(xfdesktop_file_icon_menu_toggle_mount),
+                             fmanager);
+        }
+        
+        if(thunar_vfs_volume_is_ejectable(volume)) {
+            mi = gtk_image_menu_item_new_with_mnemonic(_("_Eject Volume"));
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            g_signal_connect(G_OBJECT(mi), "activate",
+                             G_CALLBACK(xfdesktop_file_icon_menu_eject),
+                             fmanager);
+        }
+    } else {
+        img = gtk_image_new_from_stock(GTK_STOCK_COPY, GTK_ICON_SIZE_MENU);
+        gtk_widget_show(img);
+        mi = gtk_image_menu_item_new_with_mnemonic(multi_sel ? _("_Copy Files")
+                                                             : _("_Copy File"));
+        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         g_signal_connect(G_OBJECT(mi), "activate",
-                         G_CALLBACK(xfdesktop_file_icon_menu_rename),
-                         fmanager);
+                         G_CALLBACK(xfdesktop_file_icon_menu_copy), fmanager);
+        
+        img = gtk_image_new_from_stock(GTK_STOCK_CUT, GTK_ICON_SIZE_MENU);
+        gtk_widget_show(img);
+        mi = gtk_image_menu_item_new_with_mnemonic(multi_sel ? _("Cu_t Files")
+                                                             : _("Cu_t File"));
+        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        g_signal_connect(G_OBJECT(mi), "activate",
+                         G_CALLBACK(xfdesktop_file_icon_menu_cut), fmanager);
+        
+        img = gtk_image_new_from_stock(GTK_STOCK_DELETE, GTK_ICON_SIZE_MENU);
+        gtk_widget_show(img);
+        mi = gtk_image_menu_item_new_with_mnemonic(multi_sel ? _("_Delete Files")
+                                                             : _("_Delete File"));
+        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        g_signal_connect_swapped(G_OBJECT(mi), "activate",
+                                 G_CALLBACK(xfdesktop_file_icon_manager_delete_selected), 
+                                 fmanager);
+        
+        mi = gtk_separator_menu_item_new();
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        
+        mi = gtk_image_menu_item_new_with_mnemonic(_("_Rename..."));
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        if(multi_sel)
+            gtk_widget_set_sensitive(mi, FALSE);
+        else {
+            g_signal_connect(G_OBJECT(mi), "activate",
+                             G_CALLBACK(xfdesktop_file_icon_menu_rename),
+                             fmanager);
+        }
     }
     
     mi = gtk_separator_menu_item_new();
@@ -1551,9 +1685,10 @@ xfdesktop_file_icon_position_changed(XfdesktopFileIcon *icon,
 /*   *****   */
 
 
-static void
+static XfdesktopFileIcon *
 xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
                                      ThunarVfsInfo *info,
+                                     ThunarVfsVolume *volume,
                                      gboolean defer_if_missing)
 {
     XfdesktopFileIcon *icon = NULL;
@@ -1563,6 +1698,8 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
     gboolean do_add = FALSE;
     
     icon = xfdesktop_file_icon_new(info, fmanager->priv->gscreen);
+    if(volume)
+        xfdesktop_file_icon_set_volume(icon, volume);
     
     g_snprintf(relpath, PATH_MAX, "xfce4/desktop/icons.screen%d.rc",
                gdk_screen_get_number(fmanager->priv->gscreen));
@@ -1601,8 +1738,12 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
         xfdesktop_icon_view_add_item(fmanager->priv->icon_view,
                                      XFDESKTOP_ICON(icon));
         g_hash_table_insert(fmanager->priv->icons, info->path, icon);
-    } else
+    } else {
         g_object_unref(G_OBJECT(icon));
+        icon = NULL;
+    }
+    
+    return icon;
 }
 
 static gboolean
@@ -1658,6 +1799,11 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
             }
             /* fall through */
         case GDK_F5:
+            xfdesktop_icon_view_remove_all(fmanager->priv->icon_view);
+            if(fmanager->priv->icons) {
+                g_hash_table_foreach_remove(fmanager->priv->icons,
+                                            (GHRFunc)gtk_true, NULL);
+            }
             xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
             return TRUE;
     }
@@ -1703,7 +1849,7 @@ xfdesktop_file_icon_manager_volume_manager_cb(ThunarVfsMonitor *monitor,
                 if((info->flags & THUNAR_VFS_FILE_FLAGS_HIDDEN) == 0) {
                     thunar_vfs_path_ref(event_path);
                     xfdesktop_file_icon_manager_add_icon(fmanager,
-                                                         info,
+                                                         info, NULL,
                                                          FALSE);
                 }
                 
@@ -1747,7 +1893,7 @@ xfdesktop_file_icon_manager_listdir_infos_ready_cb(ThunarVfsJob *job,
             continue;
         
         thunar_vfs_path_ref(info->path);
-        xfdesktop_file_icon_manager_add_icon(fmanager, info, TRUE);
+        xfdesktop_file_icon_manager_add_icon(fmanager, info, NULL, TRUE);
     }
     
     return FALSE;
@@ -1768,7 +1914,7 @@ xfdesktop_file_icon_manager_listdir_finished_cb(ThunarVfsJob *job,
         for(l = fmanager->priv->deferred_icons; l; l = l->next) {
             xfdesktop_file_icon_manager_add_icon(fmanager,
                                                  (ThunarVfsInfo *)l->data,
-                                                 FALSE);
+                                                 NULL, FALSE);
             thunar_vfs_info_unref((ThunarVfsInfo *)l->data);
         }
         g_list_free(fmanager->priv->deferred_icons);
@@ -1809,15 +1955,6 @@ xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanag
         fmanager->priv->deferred_icons = NULL;
     }
     
-    if(fmanager->priv->icons) {
-        xfdesktop_icon_view_remove_all(fmanager->priv->icon_view);
-        g_hash_table_destroy(fmanager->priv->icons);
-    }
-    fmanager->priv->icons = g_hash_table_new_full(thunar_vfs_path_hash,
-                                                  thunar_vfs_path_equal,
-                                                  (GDestroyNotify)thunar_vfs_path_unref,
-                                                  (GDestroyNotify)g_object_unref);
-        
     if(fmanager->priv->list_job) {
         thunar_vfs_job_cancel(fmanager->priv->list_job);
         g_object_unref(G_OBJECT(fmanager->priv->list_job));
@@ -1866,6 +2003,132 @@ xfdesktop_file_icon_manager_clipboard_changed(XfdesktopClipboardManager *cmanage
 }
 
 
+static void
+xfdesktop_file_icon_manager_add_removable_volume(XfdesktopFileIconManager *fmanager,
+                                                 ThunarVfsVolume *volume)
+{
+    ThunarVfsPath *path;
+    ThunarVfsInfo *info;
+    XfdesktopFileIcon *icon;
+    
+    if(!thunar_vfs_volume_is_removable(volume))
+        return;
+        
+    path = thunar_vfs_volume_get_mount_point(volume);
+    if(!path)
+        return;
+        
+    /* presumably the mount point is local, so don't worry about delays */
+    info = thunar_vfs_info_new_for_path(path, NULL);
+    if(!info)
+        return;
+        
+    icon = xfdesktop_file_icon_manager_add_icon(fmanager, info, volume, FALSE);
+}
+
+static void
+xfdesktop_file_icon_manager_volumes_added(ThunarVfsVolumeManager *vmanager,
+                                          GList *volumes,
+                                          gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    GList *l;
+    ThunarVfsVolume *volume;
+    
+    for(l = volumes; l; l = l->next) {
+        volume = THUNAR_VFS_VOLUME(l->data);
+        xfdesktop_file_icon_manager_add_removable_volume(fmanager, volume);
+    }
+}
+
+static void
+xfdesktop_file_icon_manager_volumes_removed(ThunarVfsVolumeManager *vmanager,
+                                            GList *volumes,
+                                            gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    GList *l;
+    ThunarVfsVolume *volume;
+    ThunarVfsPath *path;
+    XfdesktopIcon *icon;
+    
+    for(l = volumes; l; l = l->next) {
+        volume = THUNAR_VFS_VOLUME(l->data);
+        path = thunar_vfs_volume_get_mount_point(volume);
+        icon = g_hash_table_lookup(fmanager->priv->icons, path);
+        if(icon) {
+            xfdesktop_icon_view_remove_item(fmanager->priv->icon_view, icon);
+            g_hash_table_remove(fmanager->priv->icons, path);
+        }
+    }
+}
+
+static void
+xfdesktop_file_icon_manager_load_removable_media(XfdesktopFileIconManager *fmanager)
+{
+    GList *volumes, *l;
+    ThunarVfsVolume *volume;
+    
+    if(!thunar_volume_manager) {
+        thunar_volume_manager = thunar_vfs_volume_manager_get_default();
+        g_object_add_weak_pointer(G_OBJECT(thunar_volume_manager),
+                                  (gpointer)&thunar_volume_manager);
+    } else
+       g_object_ref(G_OBJECT(thunar_volume_manager));
+    
+    volumes = thunar_vfs_volume_manager_get_volumes(thunar_volume_manager);
+    if(!volumes)
+        return;
+    
+    for(l = volumes; l; l = l->next) {
+        volume = THUNAR_VFS_VOLUME(l->data);
+        xfdesktop_file_icon_manager_add_removable_volume(fmanager,
+                                                         volume);
+    }
+    
+    g_signal_connect(G_OBJECT(thunar_volume_manager), "volumes-added",
+                     G_CALLBACK(xfdesktop_file_icon_manager_volumes_added),
+                     fmanager);
+    g_signal_connect(G_OBJECT(thunar_volume_manager), "volumes-removed",
+                     G_CALLBACK(xfdesktop_file_icon_manager_volumes_removed),
+                     fmanager);
+}
+
+static gboolean
+xfdesktop_file_icon_manager_ht_remove_removable_media(gpointer key,
+                                                      gpointer value,
+                                                      gpointer user_data)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(value);
+    XfdesktopFileIconManager *fmanager;
+    
+    if(!xfdesktop_file_icon_peek_volume(icon))
+        return FALSE;
+    else {
+        fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+        xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
+                                        XFDESKTOP_ICON(icon));
+        return TRUE;
+    }
+}
+
+static void
+xfdesktop_file_icon_manager_remove_removable_media(XfdesktopFileIconManager *fmanager)
+{
+    g_hash_table_foreach_remove(fmanager->priv->icons,
+                                xfdesktop_file_icon_manager_ht_remove_removable_media,
+                                fmanager);
+    
+    g_signal_handlers_disconnect_by_func(G_OBJECT(thunar_volume_manager),
+                                         G_CALLBACK(xfdesktop_file_icon_manager_volumes_added),
+                                         fmanager);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(thunar_volume_manager),
+                                         G_CALLBACK(xfdesktop_file_icon_manager_volumes_removed),
+                                         fmanager);
+    g_object_unref(G_OBJECT(thunar_volume_manager));
+}
+
+
 /* virtual functions */
 
 static gboolean
@@ -1897,10 +2160,10 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     
     if(!thunar_mime_database) {
         thunar_mime_database = thunar_vfs_mime_database_get_default();
-        g_object_add_weak_pointer(G_OBJECT(thunar_mime_database), (gpointer) &thunar_mime_database);
-    } else {
+        g_object_add_weak_pointer(G_OBJECT(thunar_mime_database),
+                                  (gpointer)&thunar_mime_database);
+    } else
         g_object_ref(G_OBJECT(thunar_mime_database));
-    }
     
     xfdesktop_icon_view_set_allow_overlapping_drops(icon_view, TRUE);
     xfdesktop_icon_view_set_selection_mode(icon_view, GTK_SELECTION_MULTIPLE);
@@ -1924,6 +2187,14 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     
     fmanager->priv->monitor = thunar_vfs_monitor_get_default();
     
+    fmanager->priv->icons = g_hash_table_new_full(thunar_vfs_path_hash,
+                                                  thunar_vfs_path_equal,
+                                                  (GDestroyNotify)thunar_vfs_path_unref,
+                                                  (GDestroyNotify)g_object_unref);
+    
+    
+    if(fmanager->priv->show_removable_media)
+        xfdesktop_file_icon_manager_load_removable_media(fmanager);
     xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
     
 #ifdef HAVE_THUNARX
@@ -1953,22 +2224,15 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
     
     fmanager->priv->inited = FALSE;
     
-#ifdef HAVE_THUNARX
-    g_list_foreach(fmanager->priv->thunarx_menu_providers,
-                   (GFunc)g_object_unref, NULL);
-    g_list_free(fmanager->priv->thunarx_menu_providers);
-    
-    g_list_foreach(fmanager->priv->thunarx_properties_providers,
-                   (GFunc)g_object_unref, NULL);
-    g_list_free(fmanager->priv->thunarx_properties_providers);
-#endif
-    
     g_signal_handlers_disconnect_by_func(G_OBJECT(clipboard_manager),
                                          G_CALLBACK(xfdesktop_file_icon_manager_clipboard_changed),
                                          fmanager);
     
     g_object_unref(G_OBJECT(clipboard_manager));
     g_object_unref(G_OBJECT(thunar_mime_database));
+    
+    if(fmanager->priv->show_removable_media)
+        xfdesktop_file_icon_manager_remove_removable_media(fmanager);
     
     if(fmanager->priv->deferred_icons) {
         g_list_foreach(fmanager->priv->deferred_icons,
@@ -1985,6 +2249,16 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
     
     g_object_unref(G_OBJECT(fmanager->priv->monitor));
     fmanager->priv->monitor = NULL;
+    
+#ifdef HAVE_THUNARX
+    g_list_foreach(fmanager->priv->thunarx_menu_providers,
+                   (GFunc)g_object_unref, NULL);
+    g_list_free(fmanager->priv->thunarx_menu_providers);
+    
+    g_list_foreach(fmanager->priv->thunarx_properties_providers,
+                   (GFunc)g_object_unref, NULL);
+    g_list_free(fmanager->priv->thunarx_properties_providers);
+#endif
     
     thunar_vfs_shutdown();
     
@@ -2155,4 +2429,30 @@ xfdesktop_file_icon_manager_new(ThunarVfsPath *folder)
     return g_object_new(XFDESKTOP_TYPE_FILE_ICON_MANAGER,
                         "folder", folder,
                         NULL);
+}
+
+void
+xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIconManager *manager,
+                                                     gboolean show_removable_media)
+{
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager));
+    
+    if(show_removable_media == manager->priv->show_removable_media)
+        return;
+    
+    manager->priv->show_removable_media = show_removable_media;
+    
+    if(manager->priv->inited) {
+        if(show_removable_media)
+            xfdesktop_file_icon_manager_load_removable_media(manager);
+        else
+            xfdesktop_file_icon_manager_remove_removable_media(manager);
+    }
+}
+
+gboolean
+xfdesktop_file_icon_manager_get_show_removable_media(XfdesktopFileIconManager *manager)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager), FALSE);
+    return manager->priv->show_removable_media;
 }
