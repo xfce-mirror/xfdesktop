@@ -169,14 +169,16 @@ button_cb(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
     gint button = evt->button;
     gint state = evt->state;
     
-    if(button == 2 || (button == 1 && (state & GDK_SHIFT_MASK)
-            && (state & GDK_CONTROL_MASK)))
-    {
-        popup_windowlist(gscreen, button, evt->time);
-        return TRUE;
-    } else if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK))) {
-        popup_desktop_menu(gscreen, button, evt->time);
-        return TRUE;
+    if(evt->type == GDK_BUTTON_PRESS) {
+        if(button == 2 || (button == 1 && (state & GDK_SHIFT_MASK)
+                           && (state & GDK_CONTROL_MASK)))
+        {
+            popup_windowlist(gscreen, button, evt->time);
+            return TRUE;
+        } else if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK))) {
+            popup_desktop_menu(gscreen, button, evt->time);
+            return TRUE;
+        }
     }
     
     return FALSE;
