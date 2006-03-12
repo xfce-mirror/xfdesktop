@@ -775,6 +775,79 @@ xfdesktop_file_icon_menu_eject(GtkWidget *widget,
     }
 }
 
+enum
+{
+    OPENWITH_COL_PIX = 0,
+    OPENWITH_COL_NAME,
+    OPENWITH_COL_HANDLER,
+    OPENWITH_N_COLS,
+};
+
+static gboolean
+xfdesktop_mime_handlers_free_ls(GtkTreeModel *model,
+                                GtkTreePath *path,
+                                GtkTreeIter *itr,
+                                gpointer data)
+{
+    GObject *handler = NULL;
+    
+    gtk_tree_model_get(model, itr,
+                       OPENWITH_COL_HANDLER, &handler,
+                       -1);
+    if(handler)
+        g_object_unref(handler);
+    
+    return FALSE;
+}
+
+static void
+xfdesktop_file_icon_menu_properties_destroyed(GtkWidget *widget,
+                                              gpointer user_data)
+{
+    GtkTreeModel *model = GTK_TREE_MODEL(user_data);
+    
+    gtk_tree_model_foreach(model, xfdesktop_mime_handlers_free_ls, NULL);
+}
+
+static void
+xfdesktop_file_icon_set_default_mime_handler(GtkComboBox *combo,
+                                             gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopFileIcon *icon = g_object_get_data(G_OBJECT(combo),
+                                                "--xfdesktop-icon");
+    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
+    GtkTreeIter itr;
+    GtkTreeModel *model;
+    ThunarVfsMimeApplication *mime_app = NULL;
+    GError *error = NULL;
+    
+    if(!gtk_combo_box_get_active_iter(combo, &itr))
+        return;
+    
+    model = gtk_combo_box_get_model(combo);
+    gtk_tree_model_get(model, &itr,
+                       OPENWITH_COL_HANDLER, &mime_app,
+                       -1);
+    if(mime_app) {
+        if(!thunar_vfs_mime_database_set_default_application(thunar_mime_database,
+                                                             info->mime_info,
+                                                             mime_app,
+                                                             &error))
+        {
+            GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+            gchar *primary = g_strdup_printf(_("Unable to set default application for \"%s\" to \"%s\":"),
+                                             xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)),
+                                             thunar_vfs_mime_application_get_name(mime_app));
+            xfce_message_dialog(GTK_WINDOW(toplevel), _("Properties Error"),
+                                GTK_STOCK_DIALOG_ERROR, primary, error->message,
+                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+            g_free(primary);
+            g_error_free(error);
+        }
+    }
+}
+
 static void
 xfdesktop_file_icon_menu_properties(GtkWidget *widget,
                                     gpointer user_data)
@@ -783,7 +856,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     XfdesktopFileIcon *icon;
     GList *selected;
     GtkWidget *dlg, *table, *hbox, *lbl, *img, *spacer, *notebook, *vbox,
-              *entry, *toplevel;
+              *entry, *toplevel, *combo;
     gint row = 0, w, h;
     PangoFontDescription *pfd = pango_font_description_from_string("bold");
     gchar *str = NULL, buf[64];
@@ -794,7 +867,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     ThunarVfsUser *user;
     ThunarVfsGroup *group;
     ThunarVfsFileMode mode;
-    ThunarVfsMimeApplication *mime_app;
+    GList *mime_apps, *l;
     static const gchar *access_types[4] = {
         N_("None"), N_("Write only"), N_("Read only"), N_("Read & Write")
     };
@@ -931,11 +1004,17 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     }
     
     if(info->type != THUNAR_VFS_FILE_TYPE_DIRECTORY) {
-        mime_app = thunar_vfs_mime_database_get_default_application(thunar_mime_database,
-                                                                    info->mime_info);
+        mime_apps = thunar_vfs_mime_database_get_applications(thunar_mime_database,
+                                                              info->mime_info);
         
-        if(mime_app) {
+        if(mime_apps) {
+            GtkListStore *ls;
+            GtkTreeIter itr;
+            GtkCellRenderer *render;
+            ThunarVfsMimeHandler *handler;
             const gchar *icon_name;
+            gint w, h;
+            GdkPixbuf *pix;
             
             lbl = gtk_label_new(_("Open With:"));
             gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
@@ -949,31 +1028,60 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
             gtk_table_attach(GTK_TABLE(table), hbox, 1, 2, row, row + 1,
                              GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
             
-            icon_name = thunar_vfs_mime_handler_lookup_icon_name(THUNAR_VFS_MIME_HANDLER(mime_app),
-                                                                 gtk_icon_theme_get_default());
-            if(icon_name) {
-                gint w, h;
-                GdkPixbuf *pix;
+            gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
+            
+            ls = gtk_list_store_new(OPENWITH_N_COLS, GDK_TYPE_PIXBUF,
+                                    G_TYPE_STRING, G_TYPE_POINTER);
+            for(l = mime_apps; l; l = l->next) {
+                handler = THUNAR_VFS_MIME_HANDLER(l->data);
+                pix = NULL;
                 
-                gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
+                gtk_list_store_append(ls, &itr);
                 
-                pix = xfce_themed_icon_load(icon_name, w);
-                if(pix) {
-                    img = gtk_image_new_from_pixbuf(pix);
-                    gtk_widget_show(img);
-                    gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, FALSE, 0);
+                icon_name = thunar_vfs_mime_handler_lookup_icon_name(handler,
+                                                                     gtk_icon_theme_get_default());
+                if(icon_name)
+                    pix = xfce_themed_icon_load(icon_name, w);
+                
+                gtk_list_store_set(ls, &itr,
+                                   OPENWITH_COL_PIX, pix,
+                                   OPENWITH_COL_NAME,
+                                   thunar_vfs_mime_handler_get_name(handler),
+                                   OPENWITH_COL_HANDLER, handler,
+                                   -1);
+                
+                if(pix)
                     g_object_unref(G_OBJECT(pix));
-                }
             }
             
-            lbl = gtk_label_new(thunar_vfs_mime_application_get_name(mime_app));
-            gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
-            gtk_widget_show(lbl);
-            gtk_box_pack_start(GTK_BOX(hbox), lbl, TRUE, TRUE, 0);
+            g_signal_connect(G_OBJECT(dlg), "destroy",
+                             G_CALLBACK(xfdesktop_file_icon_menu_properties_destroyed),
+                             ls);
+            
+            g_list_free(mime_apps);
+            
+            combo = gtk_combo_box_new_with_model(GTK_TREE_MODEL(ls));
+            
+            render = gtk_cell_renderer_pixbuf_new();
+            gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo), render, FALSE);
+            gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(combo), render,
+                                          "pixbuf", OPENWITH_COL_PIX);
+            
+            render = gtk_cell_renderer_text_new();
+            gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo), render, FALSE);
+            gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(combo), render,
+                                          "text", OPENWITH_COL_NAME);
+            
+            gtk_combo_box_set_active(GTK_COMBO_BOX(combo), 0);
+            g_object_set_data(G_OBJECT(combo), "--xfdesktop-icon", icon);
+            gtk_widget_show(combo);
+            gtk_table_attach(GTK_TABLE(table), combo, 1, 2, row, row + 1,
+                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+            g_signal_connect(G_OBJECT(combo), "changed",
+                             G_CALLBACK(xfdesktop_file_icon_set_default_mime_handler),
+                             fmanager);
             
             ++row;
-            
-            g_object_unref(G_OBJECT(mime_app));
         }
     }
     
