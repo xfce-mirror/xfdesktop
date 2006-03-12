@@ -491,17 +491,19 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             icon_view->priv->last_clicked_item = NULL;
             icon_view->priv->first_clicked_item = NULL;
         }
-    } else if(evt->type == GDK_2BUTTON_PRESS && evt->button == 1) {
-        GList *icon_l = g_list_find_custom(icon_view->priv->icons, evt,
-                                           (GCompareFunc)xfdesktop_check_icon_clicked);
-        if(icon_l && (icon = icon_l->data)) {
-            icon_view->priv->last_clicked_item = icon;
-            g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED],
-                          0, NULL);
-            xfdesktop_icon_activated(icon);
-            
-            return TRUE;
+    } else if(evt->type == GDK_2BUTTON_PRESS) {
+        if(evt->button == 1) {
+            GList *icon_l = g_list_find_custom(icon_view->priv->icons, evt,
+                                               (GCompareFunc)xfdesktop_check_icon_clicked);
+            if(icon_l && (icon = icon_l->data)) {
+                icon_view->priv->last_clicked_item = icon;
+                g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED],
+                              0, NULL);
+                xfdesktop_icon_activated(icon);
+            }
         }
+        
+        return TRUE;
     }
     
     return FALSE;
