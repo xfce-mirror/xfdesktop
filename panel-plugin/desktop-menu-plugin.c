@@ -346,8 +346,13 @@ dmp_popup(GtkWidget *w,
     GtkWidget *menu;
     DMPlugin *dmp = user_data;
     
-    if(evt->button != 1)
+    if(evt->button != 1 || ((evt->state & GDK_CONTROL_MASK)
+                            && !(evt->state & (GDK_MOD1_MASK|GDK_SHIFT_MASK
+                                               |GDK_MOD4_MASK))))
+    {
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), FALSE);
         return FALSE;
+    }
 
     if(!dmp->desktop_menu) {
         g_critical("dmp->desktop_menu is NULL - module load failed?");
