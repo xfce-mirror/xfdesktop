@@ -2112,6 +2112,35 @@ xfdesktop_file_icon_manager_clipboard_changed(XfdesktopClipboardManager *cmanage
 
 
 static void
+xfdesktop_file_icon_manager_volume_changed(ThunarVfsVolume *volume,
+                                           gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    ThunarVfsPath *path;
+    XfdesktopIcon *icon;
+    
+    path = thunar_vfs_volume_get_mount_point(volume);
+    
+    icon = g_hash_table_lookup(fmanager->priv->icons, path);
+
+    if(thunar_vfs_volume_is_present(volume)) {
+        if(!icon) {
+            ThunarVfsInfo *info = thunar_vfs_info_new_for_path(path, NULL);
+            if(info) {
+                xfdesktop_file_icon_manager_add_icon(fmanager, info, volume,
+                                                     FALSE);
+                thunar_vfs_info_unref(info);
+            }
+        }
+    } else {
+        if(icon) {
+            xfdesktop_icon_view_remove_item(fmanager->priv->icon_view, icon);
+            g_hash_table_remove(fmanager->priv->icons, path);
+        }
+    }
+}
+
+static void
 xfdesktop_file_icon_manager_add_removable_volume(XfdesktopFileIconManager *fmanager,
                                                  ThunarVfsVolume *volume)
 {
@@ -2130,8 +2159,17 @@ xfdesktop_file_icon_manager_add_removable_volume(XfdesktopFileIconManager *fmana
     info = thunar_vfs_info_new_for_path(path, NULL);
     if(!info)
         return;
-        
-    icon = xfdesktop_file_icon_manager_add_icon(fmanager, info, volume, FALSE);
+    
+    if(thunar_vfs_volume_is_present(volume)) {
+        icon = xfdesktop_file_icon_manager_add_icon(fmanager, info, volume,
+                                                    FALSE);
+    }
+    
+    thunar_vfs_info_unref(info);
+    
+    g_signal_connect(G_OBJECT(volume), "changed",
+                     G_CALLBACK(xfdesktop_file_icon_manager_volume_changed),
+                     fmanager);
 }
 
 static void
@@ -2210,19 +2248,28 @@ xfdesktop_file_icon_manager_ht_remove_removable_media(gpointer key,
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(value);
     XfdesktopFileIconManager *fmanager;
     
-    if(!xfdesktop_file_icon_peek_volume(icon))
-        return FALSE;
-    else {
+    if(xfdesktop_file_icon_peek_volume(icon)) {
         fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
         xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
                                         XFDESKTOP_ICON(icon));
         return TRUE;
     }
+    
+    return FALSE;
 }
 
 static void
 xfdesktop_file_icon_manager_remove_removable_media(XfdesktopFileIconManager *fmanager)
 {
+    GList *volumes, *l;
+    
+    volumes = thunar_vfs_volume_manager_get_volumes(thunar_volume_manager);
+    for(l = volumes; l; l = l->next) {
+        g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
+                                             G_CALLBACK(xfdesktop_file_icon_manager_volume_changed),
+                                             fmanager);
+    }
+    
     g_hash_table_foreach_remove(fmanager->priv->icons,
                                 xfdesktop_file_icon_manager_ht_remove_removable_media,
                                 fmanager);
