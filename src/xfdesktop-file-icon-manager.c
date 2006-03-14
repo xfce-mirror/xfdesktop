@@ -2432,7 +2432,7 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
     
     copy_only = (context->suggested_action != GDK_ACTION_MOVE);
     
-    path_list = thunar_vfs_path_list_from_string(data->data, NULL);
+    path_list = thunar_vfs_path_list_from_string((gchar *)data->data, NULL);
 
     if(path_list) {
         if(tinfo && tinfo->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
