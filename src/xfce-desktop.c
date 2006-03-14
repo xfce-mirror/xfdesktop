@@ -136,6 +136,9 @@ xfce_desktop_ensure_system_font_size(XfceDesktop *desktop)
     }
     DBG("system font size is %.05f", desktop->priv->system_font_size);
     
+    g_free(font_name);
+    pango_font_description_free(pfd);
+    
     return desktop->priv->system_font_size;
 }
 

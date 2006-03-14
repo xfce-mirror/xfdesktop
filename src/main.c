@@ -361,6 +361,7 @@ main(int argc, char **argv)
     
     for(i = 0; i < nscreens; i++)
         gtk_widget_destroy(desktops[i]);
+    g_free(desktops);
     
     settings_cleanup();
     
