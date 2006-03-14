@@ -1920,12 +1920,12 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
 }
 
 static void
-xfdesktop_file_icon_manager_volume_manager_cb(ThunarVfsMonitor *monitor,
-                                              ThunarVfsMonitorHandle *handle,
-                                              ThunarVfsMonitorEvent event,
-                                              ThunarVfsPath *handle_path,
-                                              ThunarVfsPath *event_path,
-                                              gpointer user_data)
+xfdesktop_file_icon_manager_vfs_monitor_cb(ThunarVfsMonitor *monitor,
+                                           ThunarVfsMonitorHandle *handle,
+                                           ThunarVfsMonitorEvent event,
+                                           ThunarVfsPath *handle_path,
+                                           ThunarVfsPath *event_path,
+                                           gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     XfdesktopFileIcon *icon;
@@ -2032,7 +2032,7 @@ xfdesktop_file_icon_manager_listdir_finished_cb(ThunarVfsJob *job,
     if(!fmanager->priv->handle) {
         fmanager->priv->handle = thunar_vfs_monitor_add_directory(fmanager->priv->monitor,
                                                                   fmanager->priv->folder,
-                                                                  xfdesktop_file_icon_manager_volume_manager_cb,
+                                                                  xfdesktop_file_icon_manager_vfs_monitor_cb,
                                                                   fmanager);
     }
     
