@@ -95,6 +95,8 @@ static void xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *
                                                       guint time);
 
 static void xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanager);
+static void xfdesktop_file_icon_manager_load_removable_media(XfdesktopFileIconManager *fmanager);
+static void xfdesktop_file_icon_manager_remove_removable_media(XfdesktopFileIconManager *fmanager);
 
 enum
 {
@@ -1907,11 +1909,17 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
             }
             /* fall through */
         case GDK_F5:
+            if(fmanager->priv->show_removable_media) {
+                /* ensure we don't get double signal connects and whatnot */
+                xfdesktop_file_icon_manager_remove_removable_media(fmanager);
+            }
             xfdesktop_icon_view_remove_all(fmanager->priv->icon_view);
             if(fmanager->priv->icons) {
                 g_hash_table_foreach_remove(fmanager->priv->icons,
                                             (GHRFunc)gtk_true, NULL);
             }
+            if(fmanager->priv->show_removable_media)
+                xfdesktop_file_icon_manager_load_removable_media(fmanager);
             xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
             return TRUE;
     }
