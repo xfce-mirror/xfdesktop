@@ -129,6 +129,7 @@ xfdesktop_window_icon_finalize(GObject *obj)
                                          G_CALLBACK(xfdesktop_window_icon_changed_cb),
                                          icon);
     
+    g_free(icon->priv);
     G_OBJECT_CLASS(xfdesktop_window_icon_parent_class)->finalize(obj);
 }
 

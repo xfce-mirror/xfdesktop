@@ -631,6 +631,7 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
         return;
     if(!desktop_menuspec_parse_categories(catfile)) {
         g_critical("XfceDesktopMenu: Unable to find xfce-registered-categories.xml");
+        g_free(catfile);
         return;
     }
     
@@ -677,7 +678,7 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
         menu_dentry_legacy_init();
         menu_dentry_legacy_add_all(desktop_menu, pathtype);
     }
-    
+    g_free(catfile);
     desktop_menuspec_free();
 }
 
