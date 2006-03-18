@@ -31,7 +31,7 @@
 #include <X11/Xlib.h>
 
 #define BACKDROP_CHANNEL         "BACKDROP"
-#define DEFAULT_BACKDROP         DATADIR "/xfce4/backdrops/xfce-stripes.png"
+#define DEFAULT_BACKDROP         DATADIR "/xfce4/backdrops/xfce-smoke.png"
 #define LIST_TEXT                "# xfce backdrop list"
 #define XFDESKTOP_SELECTION_FMT  "XFDESKTOP_SELECTION_%d"
 #define XFDESKTOP_IMAGE_FILE_FMT "XFDESKTOP_IMAGE_FILE_%d"
