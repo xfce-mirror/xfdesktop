@@ -317,9 +317,8 @@ msgid "Hidden"
 msgstr "Скрыть"
 
 #: ../menueditor/utils.c:648
-#, fuzzy
 msgid "Select icon"
-msgstr "Выбор значка"
+msgstr "Выберите значок"
 
 #: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:555
 #: ../settings/appearance-settings.c:529
@@ -344,7 +343,7 @@ msgstr "Меню Xfce"
 #: ../modules/menu/desktop-menu-file.c:118
 #: ../modules/menu/desktop-menu-file.c:133
 msgid "Unable to quit session."
-msgstr ""
+msgstr "Невозможно завершить сеанс"
 
 #: ../modules/menu/desktop-menu-file.c:119
 msgid ""
@@ -382,28 +381,25 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Невомзожно запустить редактор меню xfce4-menueditor: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:709
-#, fuzzy
 msgid "Edit Properties"
-msgstr "Изменить список фоновых изображений"
+msgstr "Изменить свойства"
 
 #: ../panel-plugin/desktop-menu-plugin.c:727
-#, fuzzy
 msgid "Button"
-msgstr "Значок:"
+msgstr "Кнопка"
 
 #: ../panel-plugin/desktop-menu-plugin.c:740
 #, fuzzy
 msgid "Button _title:"
-msgstr "Значок:"
+msgstr "Заголовок кнопки"
 
 #: ../panel-plugin/desktop-menu-plugin.c:753
 msgid "_Show title in button"
 msgstr ""
 
 #: ../panel-plugin/desktop-menu-plugin.c:760
-#, fuzzy
 msgid "Menu File"
-msgstr "Файлы меню"
+msgstr "Меню файл"
 
 #: ../panel-plugin/desktop-menu-plugin.c:772
 #, fuzzy
@@ -423,9 +419,8 @@ msgid "_Edit Menu"
 msgstr "Меню"
 
 #: ../panel-plugin/desktop-menu-plugin.c:842
-#, fuzzy
 msgid "Icons"
-msgstr "Значок:"
+msgstr "Значки"
 
 #: ../panel-plugin/desktop-menu-plugin.c:854
 msgid "_Button icon:"
@@ -498,21 +493,20 @@ msgstr ""
 
 #: ../settings/appearance-settings.c:799
 msgid "Unknown Error"
-msgstr ""
+msgstr "Неизвестная ошибка"
 
 #: ../settings/appearance-settings.c:803 ../src/xfdesktop-file-icon.c:604
 #: ../src/xfdesktop-file-icon.c:659
 msgid "Error"
-msgstr ""
+msgstr "Ошибка"
 
 #: ../settings/appearance-settings.c:805
 msgid "Unable to start xfdesktop"
-msgstr ""
+msgstr "Невозможно запустить xfdesktop"
 
 #: ../settings/appearance-settings.c:823
-#, fuzzy
 msgid "Information"
-msgstr "Игнорировать изменения"
+msgstr "Информация"
 
 #: ../settings/appearance-settings.c:833
 msgid ""
@@ -649,9 +643,8 @@ msgid "Edit backdrop list"
 msgstr "Изменить список фоновых изображений"
 
 #: ../settings/behavior-settings.c:225
-#, fuzzy
 msgid "Menus"
-msgstr "Файлы меню"
+msgstr "Меню"
 
 #: ../settings/behavior-settings.c:233
 #, fuzzy
@@ -664,9 +657,8 @@ msgid "Show _desktop menu on right click"
 msgstr "Показать меню рабочего стола"
 
 #: ../settings/behavior-settings.c:263
-#, fuzzy
 msgid "Desktop Icons"
-msgstr "Меню рабочего стола"
+msgstr "Значки на рабочем столе"
 
 #: ../settings/behavior-settings.c:272
 #: ../src/xfdesktop-file-icon-manager.c:874
@@ -726,9 +718,9 @@ msgid "disabled"
 msgstr "Черепицей"
 
 #: ../src/main.c:256
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "Меню рабочего стола"
+msgstr "    Значки на рабочем столе:       %s\n"
 
 #: ../src/main.c:288
 #, c-format
@@ -794,7 +786,7 @@ msgstr "Невомзожно запустить редактор меню xfce4-
 #: ../src/xfdesktop-file-icon-manager.c:650
 #, fuzzy
 msgid "Launch Error"
-msgstr "Запуск"
+msgstr "Ошибка при выполнении"
 
 #: ../src/xfdesktop-file-icon-manager.c:343
 msgid "The associated application could not be found or executed."
@@ -803,16 +795,16 @@ msgstr ""
 #: ../src/xfdesktop-file-icon-manager.c:403
 #, c-format
 msgid "Rename \"%s\""
-msgstr ""
+msgstr "Переименовать \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:433
 msgid "Enter the new name:"
-msgstr ""
+msgstr "Укажите новое имя:"
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 #: ../src/xfdesktop-file-icon-manager.c:513
 msgid "If you delete a file, it is permanently lost."
-msgstr ""
+msgstr "Если вы удалите файл, он будет потерян навсегда."
 
 #: ../src/xfdesktop-file-icon-manager.c:507
 #, fuzzy, c-format
@@ -843,12 +835,12 @@ msgstr "Невомзожно запустить редактор меню xfce4-
 #: ../src/xfdesktop-file-icon-manager.c:741
 #, fuzzy
 msgid "Mount Failed"
-msgstr "Файлы меню"
+msgstr "Меню файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:741
 #, fuzzy
 msgid "Unmount Failed"
-msgstr "Файлы меню"
+msgstr "Меню файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:770
 #, fuzzy, c-format
@@ -871,15 +863,15 @@ msgstr "Изменить список фоновых изображений"
 
 #: ../src/xfdesktop-file-icon-manager.c:874
 msgid "Write only"
-msgstr ""
+msgstr "Только запись"
 
 #: ../src/xfdesktop-file-icon-manager.c:874
 msgid "Read only"
-msgstr ""
+msgstr "Только чтение"
 
 #: ../src/xfdesktop-file-icon-manager.c:874
 msgid "Read & Write"
-msgstr ""
+msgstr "Чтение и запись"
 
 #: ../src/xfdesktop-file-icon-manager.c:901
 msgid "General"
@@ -891,12 +883,12 @@ msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:962
 msgid "broken link"
-msgstr ""
+msgstr "битая ссылка"
 
 #: ../src/xfdesktop-file-icon-manager.c:965
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "ссылка на %s"
 
 #: ../src/xfdesktop-file-icon-manager.c:982
 msgid "Link Target:"
@@ -905,15 +897,15 @@ msgstr ""
 #: ../src/xfdesktop-file-icon-manager.c:999
 #: ../src/xfdesktop-file-icon-manager.c:1158
 msgid "(unknown)"
-msgstr ""
+msgstr "(неизвестно)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1021
 msgid "Open With:"
-msgstr ""
+msgstr "Открыть с помощью:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1098
 msgid "Modified:"
-msgstr ""
+msgstr "Изменено"
 
 #: ../src/xfdesktop-file-icon-manager.c:1116
 msgid "Accessed:"
@@ -921,28 +913,28 @@ msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:1143
 msgid "Free Space:"
-msgstr ""
+msgstr "Свободное место"
 
 #: ../src/xfdesktop-file-icon-manager.c:1145
 msgid "Size:"
-msgstr ""
+msgstr "Размер"
 
 #: ../src/xfdesktop-file-icon-manager.c:1161
 msgid "%s (%"
-msgstr ""
+msgstr "%s (%"
 
 #: ../src/xfdesktop-file-icon-manager.c:1161
 msgid " Bytes)"
-msgstr ""
+msgstr " байт)"
 
 #. permissions tab
 #: ../src/xfdesktop-file-icon-manager.c:1176
 msgid "Permissions"
-msgstr ""
+msgstr "Права"
 
 #: ../src/xfdesktop-file-icon-manager.c:1198
 msgid "Owner:"
-msgstr ""
+msgstr "Владелец:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1216
 #: ../src/xfdesktop-file-icon-manager.c:1254
@@ -951,12 +943,11 @@ msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:1239
 msgid "Group:"
-msgstr ""
+msgstr "Группа"
 
 #: ../src/xfdesktop-file-icon-manager.c:1277
-#, fuzzy
 msgid "Others:"
-msgstr "/Другое"
+msgstr "Другое:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1350
 #, c-format
@@ -966,7 +957,7 @@ msgstr ""
 #: ../src/xfdesktop-file-icon-manager.c:1353
 #, c-format
 msgid "Open With \"%s\""
-msgstr ""
+msgstr "Открыть с помощью \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1454
 msgid "_Open all"
@@ -982,7 +973,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:1520
 msgid "Open With"
-msgstr ""
+msgstr "Открыть с помощью"
 
 #: ../src/xfdesktop-file-icon-manager.c:1550
 msgid "Open With Other _Application..."
@@ -1046,7 +1037,7 @@ msgstr "Невомзожно запустить редактор меню xfce4-
 
 #: ../src/xfdesktop-file-icon-manager.c:2505 ../src/xfdesktop-file-icon.c:513
 msgid "Run Error"
-msgstr ""
+msgstr "Ошибка при выполнении"
 
 #: ../src/xfdesktop-file-icon.c:440
 #, c-format
@@ -1055,24 +1046,24 @@ msgstr ""
 
 #: ../src/xfdesktop-file-icon.c:442
 msgid "moving"
-msgstr ""
+msgstr "перемещение"
 
 #: ../src/xfdesktop-file-icon.c:444
 msgid "copying"
-msgstr ""
+msgstr "копирование"
 
 #: ../src/xfdesktop-file-icon.c:445
 msgid "linking"
-msgstr ""
+msgstr "создание ссылки"
 
 #: ../src/xfdesktop-file-icon.c:448
 msgid "File Error"
-msgstr ""
+msgstr "Ошибка файла"
 
 #: ../src/xfdesktop-file-icon.c:656
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Не удалось переименовать \"%s\" в \"%s\":"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
@@ -1088,7 +1079,7 @@ msgstr "Редактор меню Xfce 4"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr ""
+msgstr "Отображает меню, содержащее категории устовленных приложений"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
