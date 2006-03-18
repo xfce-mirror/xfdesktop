@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-04 19:19+0900\n"
+"POT-Creation-Date: 2006-03-18 17:58+0900\n"
 "PO-Revision-Date: 2005-10-09 22:20+0900\n"
 "Last-Translator: Harun Musa <mharun@gmx.net>\n"
 "Language-Team: Malay <translation-team-ms@list.sourceforge.net>\n"
@@ -65,7 +65,7 @@ msgstr ""
 
 #. Name
 #: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:715
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:926
 msgid "Name:"
 msgstr "Nama:"
 
@@ -198,7 +198,7 @@ msgid "Select command"
 msgstr ""
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:439
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:491
 msgid "Question"
 msgstr ""
 
@@ -321,14 +321,14 @@ msgstr ""
 msgid "Select icon"
 msgstr ""
 
-#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:550
+#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:555
 #: ../settings/appearance-settings.c:529
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr ""
 
-#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:556
+#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:561
 #: ../settings/appearance-settings.c:533
 #: ../settings/backdrop-list-manager.c:439
 #, fuzzy
@@ -337,7 +337,7 @@ msgstr "Fail imej"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:712
+#: ../panel-plugin/desktop-menu-plugin.c:717
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr ""
@@ -364,77 +364,77 @@ msgstr ""
 msgid "/Other"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:533
+#: ../panel-plugin/desktop-menu-plugin.c:538
 msgid "Select Icon"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:535
+#: ../panel-plugin/desktop-menu-plugin.c:540
 msgid "Select Menu File"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:564
+#: ../panel-plugin/desktop-menu-plugin.c:569
 #, fuzzy
 msgid "Menu Files"
 msgstr "Fail imej"
 
-#: ../panel-plugin/desktop-menu-plugin.c:681
-#: ../settings/behavior-settings.c:199
+#: ../panel-plugin/desktop-menu-plugin.c:686
+#: ../settings/behavior-settings.c:201
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:704
+#: ../panel-plugin/desktop-menu-plugin.c:709
 #, fuzzy
 msgid "Edit Properties"
 msgstr "Edit senarai latarbelakang"
 
-#: ../panel-plugin/desktop-menu-plugin.c:722
+#: ../panel-plugin/desktop-menu-plugin.c:727
 #, fuzzy
 msgid "Button"
 msgstr "_Auto"
 
-#: ../panel-plugin/desktop-menu-plugin.c:735
+#: ../panel-plugin/desktop-menu-plugin.c:740
 msgid "Button _title:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:748
+#: ../panel-plugin/desktop-menu-plugin.c:753
 msgid "_Show title in button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:755
+#: ../panel-plugin/desktop-menu-plugin.c:760
 #, fuzzy
 msgid "Menu File"
 msgstr "Fail imej"
 
-#: ../panel-plugin/desktop-menu-plugin.c:767
+#: ../panel-plugin/desktop-menu-plugin.c:772
 msgid "Use default _desktop menu file"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:776
+#: ../panel-plugin/desktop-menu-plugin.c:781
 msgid "Use _custom menu file:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:828
-#: ../panel-plugin/desktop-menu-plugin.c:830
-#: ../settings/behavior-settings.c:249
+#: ../panel-plugin/desktop-menu-plugin.c:833
+#: ../panel-plugin/desktop-menu-plugin.c:835
+#: ../settings/behavior-settings.c:251
 msgid "_Edit Menu"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:837
+#: ../panel-plugin/desktop-menu-plugin.c:842
 msgid "Icons"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:849
+#: ../panel-plugin/desktop-menu-plugin.c:854
 msgid "_Button icon:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:873
+#: ../panel-plugin/desktop-menu-plugin.c:878
 msgid "Show _icons in menu"
 msgstr ""
 
 #. the dialog
-#: ../settings/appearance-settings.c:133 ../settings/appearance-settings.c:909
-#: ../src/xfce-desktop.c:559
+#: ../settings/appearance-settings.c:133 ../settings/appearance-settings.c:908
+#: ../src/xfce-desktop.c:566
 msgid "Desktop"
 msgstr ""
 
@@ -492,34 +492,33 @@ msgstr ""
 msgid "Scaled"
 msgstr "_Scaled"
 
-#: ../settings/appearance-settings.c:743
+#: ../settings/appearance-settings.c:742
 msgid "A_djust Brightness:"
 msgstr ""
 
-#: ../settings/appearance-settings.c:799
+#: ../settings/appearance-settings.c:798
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr ""
 
-#: ../settings/appearance-settings.c:800
+#: ../settings/appearance-settings.c:799
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:804
-#: ../src/xfdesktop-file-icon-manager.c:611 ../src/xfdesktop-file-icon.c:560
-#: ../src/xfdesktop-file-icon.c:612
+#: ../settings/appearance-settings.c:803 ../src/xfdesktop-file-icon.c:604
+#: ../src/xfdesktop-file-icon.c:659
 msgid "Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:806
+#: ../settings/appearance-settings.c:805
 msgid "Unable to start xfdesktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:824
+#: ../settings/appearance-settings.c:823
 msgid "Information"
 msgstr ""
 
-#: ../settings/appearance-settings.c:834
+#: ../settings/appearance-settings.c:833
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -528,90 +527,90 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 
-#: ../settings/appearance-settings.c:842
+#: ../settings/appearance-settings.c:841
 msgid "_Do not show this again"
 msgstr ""
 
 #. header
-#: ../settings/appearance-settings.c:924
+#: ../settings/appearance-settings.c:923
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 #, fuzzy
 msgid "Desktop Settings"
 msgstr "Tetapan Ruangkerja"
 
-#: ../settings/appearance-settings.c:929
+#: ../settings/appearance-settings.c:928
 msgid "Allow _Xfce to manage the desktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:970
+#: ../settings/appearance-settings.c:969
 msgid "Stretch single backdrop onto _all monitors"
 msgstr ""
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:984
-#: ../settings/appearance-settings.c:1166
+#: ../settings/appearance-settings.c:983
+#: ../settings/appearance-settings.c:1165
 msgid "_Appearance"
 msgstr ""
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1010
+#: ../settings/appearance-settings.c:1009
 msgid "Color"
 msgstr "Warna"
 
-#: ../settings/appearance-settings.c:1024
+#: ../settings/appearance-settings.c:1023
 #, fuzzy
 msgid "_Color Style:"
 msgstr "Stail:"
 
-#: ../settings/appearance-settings.c:1031
+#: ../settings/appearance-settings.c:1030
 #, fuzzy
 msgid "Solid Color"
 msgstr "Warna"
 
-#: ../settings/appearance-settings.c:1032
+#: ../settings/appearance-settings.c:1031
 msgid "Horizontal Gradient"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1033
+#: ../settings/appearance-settings.c:1032
 msgid "Vertical Gradient"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1046
+#: ../settings/appearance-settings.c:1045
 msgid "Fi_rst Color:"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1067
+#: ../settings/appearance-settings.c:1066
 #, fuzzy
 msgid "_Second Color:"
 msgstr "Warna latarbelakang:"
 
-#: ../settings/appearance-settings.c:1092
+#: ../settings/appearance-settings.c:1091
 msgid "Image"
 msgstr "Imej"
 
-#: ../settings/appearance-settings.c:1100
+#: ../settings/appearance-settings.c:1099
 #, fuzzy
 msgid "Show _Image"
 msgstr "Imej"
 
-#: ../settings/appearance-settings.c:1122
+#: ../settings/appearance-settings.c:1121
 #, fuzzy
 msgid "_File:"
 msgstr "Fail:"
 
-#: ../settings/appearance-settings.c:1177
-#: ../settings/appearance-settings.c:1179
+#: ../settings/appearance-settings.c:1176
+#: ../settings/appearance-settings.c:1178
 #, c-format
 msgid "Screen %d"
 msgstr ""
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1184
+#: ../settings/appearance-settings.c:1183
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1201
+#: ../settings/appearance-settings.c:1200
 msgid "_Behavior"
 msgstr ""
 
@@ -662,106 +661,106 @@ msgstr "Cipta senarai latarbelakang"
 msgid "Edit backdrop list"
 msgstr "Edit senarai latarbelakang"
 
-#: ../settings/behavior-settings.c:223
+#: ../settings/behavior-settings.c:225
 #, fuzzy
 msgid "Menus"
 msgstr "Fail imej"
 
-#: ../settings/behavior-settings.c:231
+#: ../settings/behavior-settings.c:233
 msgid "Show _window list on middle click"
 msgstr ""
 
-#: ../settings/behavior-settings.c:242
+#: ../settings/behavior-settings.c:244
 msgid "Show _desktop menu on right click"
 msgstr ""
 
-#: ../settings/behavior-settings.c:261
+#: ../settings/behavior-settings.c:263
 #, fuzzy
 msgid "Desktop Icons"
 msgstr "Tetapan Ruangkerja"
 
-#: ../settings/behavior-settings.c:270
-#: ../src/xfdesktop-file-icon-manager.c:671
+#: ../settings/behavior-settings.c:272
+#: ../src/xfdesktop-file-icon-manager.c:874
 msgid "None"
 msgstr ""
 
-#: ../settings/behavior-settings.c:271
+#: ../settings/behavior-settings.c:273
 msgid "Minimized application icons"
 msgstr ""
 
-#: ../settings/behavior-settings.c:273
+#: ../settings/behavior-settings.c:275
 msgid "File/launcher icons"
 msgstr ""
 
-#: ../settings/behavior-settings.c:284
+#: ../settings/behavior-settings.c:286
 msgid "_Icon size:"
 msgstr ""
 
-#: ../settings/behavior-settings.c:298
+#: ../settings/behavior-settings.c:300
 msgid "Use _system font size"
 msgstr ""
 
-#: ../settings/behavior-settings.c:315
+#: ../settings/behavior-settings.c:317
 msgid "Custom _font size:"
-msgstr ""
-
-#: ../src/main.c:240
-#, c-format
-msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr ""
 
 #: ../src/main.c:242
 #, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr ""
+
+#: ../src/main.c:244
+#, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr ""
 
-#: ../src/main.c:246
+#: ../src/main.c:248
 msgid "Build options:\n"
 msgstr ""
 
-#: ../src/main.c:247
+#: ../src/main.c:249
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr ""
 
-#: ../src/main.c:249 ../src/main.c:256
+#: ../src/main.c:251 ../src/main.c:258
 #, fuzzy
 msgid "enabled"
 msgstr "_Scaled"
 
-#: ../src/main.c:251 ../src/main.c:258
+#: ../src/main.c:253 ../src/main.c:260
 #, fuzzy
 msgid "disabled"
 msgstr "_Tiled"
 
-#: ../src/main.c:254
+#: ../src/main.c:256
 #, fuzzy, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Tetapan Ruangkerja"
 
-#: ../src/main.c:285
+#: ../src/main.c:288
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr ""
 
-#: ../src/main.c:286
+#: ../src/main.c:289
 msgid "Options are:\n"
 msgstr ""
 
-#: ../src/main.c:287
+#: ../src/main.c:290
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 
-#: ../src/main.c:288
+#: ../src/main.c:291
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
 
-#: ../src/main.c:289
+#: ../src/main.c:292
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 
-#: ../src/main.c:290
+#: ../src/main.c:293
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr ""
 
@@ -790,227 +789,290 @@ msgstr "Ruangkerja %d"
 msgid "_Remove Workspace '%s'"
 msgstr "Ruangkerja %d"
 
-#: ../src/xfdesktop-file-icon-manager.c:358
+#: ../src/xfdesktop-file-icon-manager.c:339
+#: ../src/xfdesktop-file-icon-manager.c:613
+#: ../src/xfdesktop-file-icon-manager.c:647
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:341
+#: ../src/xfdesktop-file-icon-manager.c:615
+#: ../src/xfdesktop-file-icon-manager.c:650
+msgid "Launch Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:343
+msgid "The associated application could not be found or executed."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:403
 #, c-format
 msgid "Rename \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:387
+#: ../src/xfdesktop-file-icon-manager.c:433
 msgid "Enter the new name:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:441
-#: ../src/xfdesktop-file-icon-manager.c:460
+#: ../src/xfdesktop-file-icon-manager.c:493
+#: ../src/xfdesktop-file-icon-manager.c:513
 msgid "If you delete a file, it is permanently lost."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:455
+#: ../src/xfdesktop-file-icon-manager.c:507
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:457
+#: ../src/xfdesktop-file-icon-manager.c:510
 msgid "Delete Multiple Files"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:561
-#, c-format
-msgid "_Open With \"%s\""
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:564
-#, c-format
-msgid "Open With \"%s\""
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:609
-#, c-format
-msgid "Unable to launch \"%s\"."
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:613
+#: ../src/xfdesktop-file-icon-manager.c:652
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:671
-msgid "Write only"
+#: ../src/xfdesktop-file-icon-manager.c:737
+#, c-format
+msgid "Unable to mount \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:671
-msgid "Read only"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:671
-msgid "Read & Write"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:690
-msgid "General"
+#: ../src/xfdesktop-file-icon-manager.c:738
+#, c-format
+msgid "Unable to unmount \"%s\":"
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:741
+#, fuzzy
+msgid "Mount Failed"
+msgstr "Fail imej"
+
+#: ../src/xfdesktop-file-icon-manager.c:741
+#, fuzzy
+msgid "Unmount Failed"
+msgstr "Fail imej"
+
+#: ../src/xfdesktop-file-icon-manager.c:770
+#, c-format
+msgid "Unable to eject \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:772
+msgid "Eject Failed"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:841
+#, c-format
+msgid "Unable to set default application for \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:844
+#, fuzzy
+msgid "Properties Error"
+msgstr "Edit senarai latarbelakang"
+
+#: ../src/xfdesktop-file-icon-manager.c:874
+msgid "Write only"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:874
+msgid "Read only"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:874
+msgid "Read & Write"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:901
+msgid "General"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:952
 msgid "Kind:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:751
+#: ../src/xfdesktop-file-icon-manager.c:962
 msgid "broken link"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:754
+#: ../src/xfdesktop-file-icon-manager.c:965
 #, c-format
 msgid "link to %s"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:771
+#: ../src/xfdesktop-file-icon-manager.c:982
 msgid "Link Target:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:788
-#: ../src/xfdesktop-file-icon-manager.c:908
+#: ../src/xfdesktop-file-icon-manager.c:999
+#: ../src/xfdesktop-file-icon-manager.c:1158
 msgid "(unknown)"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:803
+#: ../src/xfdesktop-file-icon-manager.c:1021
 msgid "Open With:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:848
+#: ../src/xfdesktop-file-icon-manager.c:1098
 msgid "Modified:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:866
+#: ../src/xfdesktop-file-icon-manager.c:1116
 msgid "Accessed:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:893
+#: ../src/xfdesktop-file-icon-manager.c:1143
 msgid "Free Space:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:895
+#: ../src/xfdesktop-file-icon-manager.c:1145
 msgid "Size:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:911
+#: ../src/xfdesktop-file-icon-manager.c:1161
 msgid "%s (%"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:911
+#: ../src/xfdesktop-file-icon-manager.c:1161
 msgid " Bytes)"
 msgstr ""
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:926
+#: ../src/xfdesktop-file-icon-manager.c:1176
 msgid "Permissions"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:948
+#: ../src/xfdesktop-file-icon-manager.c:1198
 msgid "Owner:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:966
-#: ../src/xfdesktop-file-icon-manager.c:1004
+#: ../src/xfdesktop-file-icon-manager.c:1216
+#: ../src/xfdesktop-file-icon-manager.c:1254
 msgid "Access:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:989
+#: ../src/xfdesktop-file-icon-manager.c:1239
 msgid "Group:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1027
+#: ../src/xfdesktop-file-icon-manager.c:1277
 msgid "Others:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1139
+#: ../src/xfdesktop-file-icon-manager.c:1350
+#, c-format
+msgid "_Open With \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1353
+#, c-format
+msgid "Open With \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1454
 msgid "_Open all"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1150
+#: ../src/xfdesktop-file-icon-manager.c:1465
 msgid "_Open"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1161
+#: ../src/xfdesktop-file-icon-manager.c:1476
 msgid "_Execute"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1195
+#: ../src/xfdesktop-file-icon-manager.c:1520
 msgid "Open With"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1220
+#: ../src/xfdesktop-file-icon-manager.c:1550
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1284
+#: ../src/xfdesktop-file-icon-manager.c:1633
+msgid "_Mount Volume"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1644
+msgid "_Unmount Volume"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1656
+msgid "_Eject Volume"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1666
 #, fuzzy
 msgid "_Copy Files"
 msgstr "Fail:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1285
+#: ../src/xfdesktop-file-icon-manager.c:1667
 #, fuzzy
 msgid "_Copy File"
 msgstr "Fail:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1294
+#: ../src/xfdesktop-file-icon-manager.c:1676
 #, fuzzy
 msgid "Cu_t Files"
 msgstr "Fail:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1295
+#: ../src/xfdesktop-file-icon-manager.c:1677
 #, fuzzy
 msgid "Cu_t File"
 msgstr "Fail:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1304
+#: ../src/xfdesktop-file-icon-manager.c:1686
 #, fuzzy
 msgid "_Delete Files"
 msgstr "Fail:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1305
+#: ../src/xfdesktop-file-icon-manager.c:1687
 msgid "_Delete File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1317
+#: ../src/xfdesktop-file-icon-manager.c:1699
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1334
+#: ../src/xfdesktop-file-icon-manager.c:1717
 #, fuzzy
 msgid "_Properties..."
 msgstr "Edit senarai latarbelakang"
 
-#: ../src/xfdesktop-file-icon-manager.c:1929 ../src/xfdesktop-file-icon.c:471
+#: ../src/xfdesktop-file-icon-manager.c:2503 ../src/xfdesktop-file-icon.c:511
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1931 ../src/xfdesktop-file-icon.c:473
+#: ../src/xfdesktop-file-icon-manager.c:2505 ../src/xfdesktop-file-icon.c:513
 msgid "Run Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:403
+#: ../src/xfdesktop-file-icon.c:440
 #, c-format
 msgid "There was an error %s \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:405
+#: ../src/xfdesktop-file-icon.c:442
 msgid "moving"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:407
+#: ../src/xfdesktop-file-icon.c:444
 msgid "copying"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:408
+#: ../src/xfdesktop-file-icon.c:445
 msgid "linking"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:411
+#: ../src/xfdesktop-file-icon.c:448
 msgid "File Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:609
+#: ../src/xfdesktop-file-icon.c:656
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr ""
