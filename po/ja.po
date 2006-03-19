@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-03-18 17:58+0900\n"
-"PO-Revision-Date: 2006-03-04 21:07+0900\n"
+"PO-Revision-Date: 2006-03-18 19:40+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -774,20 +774,21 @@ msgstr "ワークスペース「%s」を削除(_R)"
 #: ../src/xfdesktop-file-icon-manager.c:339
 #: ../src/xfdesktop-file-icon-manager.c:613
 #: ../src/xfdesktop-file-icon-manager.c:647
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "「%s」を実行できません。"
+msgstr "「%s」を実行できません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:341
 #: ../src/xfdesktop-file-icon-manager.c:615
 #: ../src/xfdesktop-file-icon-manager.c:650
-#, fuzzy
 msgid "Launch Error"
 msgstr "実行エラー"
 
 #: ../src/xfdesktop-file-icon-manager.c:343
 msgid "The associated application could not be found or executed."
 msgstr ""
+"関連付けられているアプリケーションが見つからない、あるいは実行できませんでし"
+"た。"
 
 #: ../src/xfdesktop-file-icon-manager.c:403
 #, c-format
@@ -820,43 +821,40 @@ msgstr ""
 "この機能には (Thunar が提供するような) ファイルマネージャーが必要です。"
 
 #: ../src/xfdesktop-file-icon-manager.c:737
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "「%s」を実行できません。"
+msgstr "「%s」をマウントできません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:738
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "「%s」を実行できません。"
+msgstr "「%s」をマウント解除できません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:741
-#, fuzzy
 msgid "Mount Failed"
-msgstr "メニューファイル"
+msgstr "マウントに失敗しました"
 
 #: ../src/xfdesktop-file-icon-manager.c:741
-#, fuzzy
 msgid "Unmount Failed"
-msgstr "メニューファイル"
+msgstr "マウント解除に失敗しました"
 
 #: ../src/xfdesktop-file-icon-manager.c:770
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "「%s」を実行できません。"
+msgstr "「%s」を取り出せません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:772
 msgid "Eject Failed"
-msgstr ""
+msgstr "取り出しに失敗しました"
 
 #: ../src/xfdesktop-file-icon-manager.c:841
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
+msgstr "「%s」の標準アプリケーションを「%s」にできません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:844
-#, fuzzy
 msgid "Properties Error"
-msgstr "プロパティ(_P)..."
+msgstr "プロパティエラー"
 
 #: ../src/xfdesktop-file-icon-manager.c:874
 msgid "Write only"
@@ -981,15 +979,15 @@ msgstr "他のアプリケーションで開く(_A)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1633
 msgid "_Mount Volume"
-msgstr ""
+msgstr "マウント(_M)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1644
 msgid "_Unmount Volume"
-msgstr ""
+msgstr "マウント解除(_U)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1656
 msgid "_Eject Volume"
-msgstr ""
+msgstr "取り出し(_E)"
 
 # FIXME: ngettext()
 #: ../src/xfdesktop-file-icon-manager.c:1666
