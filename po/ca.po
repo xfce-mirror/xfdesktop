@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-03-18 17:58+0900\n"
-"PO-Revision-Date: 2006-03-19 17:34+0100\n"
+"PO-Revision-Date: 2006-04-02 22:31+0200\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
@@ -204,9 +204,9 @@ msgid "Separators cannot be edited"
 msgstr "Separadors"
 
 #: ../menueditor/menueditor.c:81
-#, fuzzy, c-format
+#, c-format
 msgid "File %s doesn't exist !"
-msgstr "Fitxer!"
+msgstr "El fitxer %s no existeix!"
 
 #: ../menueditor/menueditor.c:121 ../menueditor/menueditor.c:537
 #, fuzzy
@@ -430,7 +430,7 @@ msgstr "  Sessió Sessió manager Sessió és no surt."
 msgid ""
 "Quitting the session requires the 'xfce4-session-logout' command, but it "
 "could not be found: %s"
-msgstr "  Sessió   Sessió no"
+msgstr ""
 
 #: ../modules/menu/desktop-menuspec.c:61
 #, fuzzy
@@ -456,7 +456,7 @@ msgstr "Menú Fitxers"
 #: ../settings/behavior-settings.c:201
 #, fuzzy, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "a "
+msgstr ""
 
 #: ../panel-plugin/desktop-menu-plugin.c:709
 #, fuzzy
@@ -587,7 +587,7 @@ msgstr "A Brillantor:"
 #, c-format
 #, fuzzy
 msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr "a ."
+msgstr ""
 
 #: ../settings/appearance-settings.c:799
 #, fuzzy
@@ -702,15 +702,15 @@ msgstr "_Fitxer:"
 
 #: ../settings/appearance-settings.c:1176
 #: ../settings/appearance-settings.c:1178
-#, fuzzy, c-format
+#, c-format
 msgid "Screen %d"
 msgstr "Pantalla %d"
 
 #. and if we have multiple screens, each with multiple monitors
 #: ../settings/appearance-settings.c:1183
-#, fuzzy, c-format
+#, c-format
 msgid "Screen %d, Monitor %d"
-msgstr "Pantalla Monitor"
+msgstr "Pantalla %d, Monitor %d"
 
 #: ../settings/appearance-settings.c:1200
 #, fuzzy
@@ -724,7 +724,7 @@ msgid ""
 "\n"
 "Please choose another location or press cancel in the dialog to discard your "
 "changes"
-msgstr "no desa fitxer n o cancel·la po   diàleg a "
+msgstr ""
 
 #: ../settings/backdrop-list-manager.c:430
 #, fuzzy
@@ -821,24 +821,24 @@ msgstr "Personalitzat mida:"
 #, c-format
 #, fuzzy
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "és on n"
+msgstr ""
 
 #: ../src/main.c:244
 #, c-format
 #, fuzzy
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "amb amb."
+msgstr ""
 
 #: ../src/main.c:248
 #, fuzzy
 msgid "Build options:\n"
-msgstr "Munta n"
+msgstr ""
 
 #: ../src/main.c:249
 #, c-format
 #, fuzzy
 msgid "    Desktop Menu:        %s\n"
-msgstr "Escriptori Menú n"
+msgstr ""
 
 #: ../src/main.c:251 ../src/main.c:258
 #, fuzzy
@@ -851,19 +851,18 @@ msgid "disabled"
 msgstr "inhabilitat"
 
 #: ../src/main.c:256
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "Escriptori Icones n"
+msgstr "Icones de l'escriptori:      %s\n"
 
 #: ../src/main.c:288
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr "Desconegut n"
+msgstr "%s: opció desconeguda: %s\n"
 
 #: ../src/main.c:289
-#, fuzzy
 msgid "Options are:\n"
-msgstr "Opcions n"
+msgstr "Són opcions:\n"
 
 #: ../src/main.c:290
 #, fuzzy
@@ -883,39 +882,38 @@ msgstr "Pop amunt   finestra llista   ratolí posició n"
 #: ../src/main.c:293
 #, fuzzy
 msgid "    -quit        Cause xfdesktop to quit\n"
-msgstr "surt a  surt n"
+msgstr ""
 
 #: ../src/windowlist.c:193
-#, fuzzy, c-format
+#, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "<b> Àrea de treball</b>"
+msgstr "<b>Àrea de treball %d</b>"
 
 #: ../src/windowlist.c:201
-#, fuzzy, c-format
+#, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "<i> Àrea de treball</i>"
+msgstr "<i> Àrea de treball %d</i>"
 
 #: ../src/windowlist.c:268 ../src/windowlist.c:271
-#, fuzzy
 msgid "_Add Workspace"
-msgstr "Afegeix Àrea de treball"
+msgstr "_Afegeix àrea de treball"
 
 #: ../src/windowlist.c:279
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace %d"
-msgstr "Suprimeix Àrea de treball"
+msgstr "Suprimeix l'à_rea de treball %d"
 
 #: ../src/windowlist.c:282
-#, fuzzy, c-format
+#, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Suprimeix Àrea de treball"
+msgstr "Suprimeix l'à_rea de treball '%s'"
 
 #: ../src/xfdesktop-file-icon-manager.c:339
 #: ../src/xfdesktop-file-icon-manager.c:613
 #: ../src/xfdesktop-file-icon-manager.c:647
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "a :"
+msgstr "No s'ha pogut executar \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:341
 #: ../src/xfdesktop-file-icon-manager.c:615
@@ -933,7 +931,7 @@ msgstr "aplicació no o."
 #, c-format
 #, fuzzy
 msgid "Rename \"%s\""
-msgstr "Reanomena"
+msgstr "Reanomena \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:433
 #, fuzzy
@@ -947,9 +945,9 @@ msgid "If you delete a file, it is permanently lost."
 msgstr "Si tu suprimeix a fitxer és."
 
 #: ../src/xfdesktop-file-icon-manager.c:507
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "tu tu a  suprimeix   següent fitxers?"
+msgstr "Esteu segur que voleu suprimir els següents %d fitxers?"
 
 #: ../src/xfdesktop-file-icon-manager.c:510
 #, fuzzy
@@ -986,7 +984,7 @@ msgstr "Fallit"
 #: ../src/xfdesktop-file-icon-manager.c:770
 #, fuzzy, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "a :"
+msgstr "No s'ha pogut expulsar \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:772
 #, fuzzy
@@ -997,7 +995,7 @@ msgstr "Expulsa Fallit"
 #, c-format
 #, fuzzy
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr "a  set per defecte aplicació per a a :"
+msgstr "No s'ha pogut definir l'aplicació per defecte de \"%s\" per \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:844
 #, fuzzy
@@ -1078,7 +1076,7 @@ msgstr "Mida:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1161
 msgid "%s (%"
-msgstr ""
+msgstr "%s (%"
 
 #: ../src/xfdesktop-file-icon-manager.c:1161
 #, fuzzy
@@ -1099,7 +1097,7 @@ msgstr "Propietari:"
 #: ../src/xfdesktop-file-icon-manager.c:1216
 #: ../src/xfdesktop-file-icon-manager.c:1254
 msgid "Access:"
-msgstr ""
+msgstr "Accés:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1239
 #, fuzzy
@@ -1115,13 +1113,13 @@ msgstr "Altres:"
 #, c-format
 #, fuzzy
 msgid "_Open With \"%s\""
-msgstr "Obre"
+msgstr "_Obre amb \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1353
 #, c-format
 #, fuzzy
 msgid "Open With \"%s\""
-msgstr "Obre"
+msgstr "Obre amb \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1454
 #, fuzzy
@@ -1217,19 +1215,19 @@ msgstr "Ejecutar Error"
 #, c-format
 #, fuzzy
 msgid "There was an error %s \"%s\" to \"%s\":"
-msgstr "error a :"
+msgstr "Hi ha hagut un error %s \"%s\" a \"%s\""
 
 #: ../src/xfdesktop-file-icon.c:442
 msgid "moving"
-msgstr ""
+msgstr "s'està movent"
 
 #: ../src/xfdesktop-file-icon.c:444
 msgid "copying"
-msgstr ""
+msgstr "s'està copiant"
 
 #: ../src/xfdesktop-file-icon.c:445
 msgid "linking"
-msgstr ""
+msgstr "s'està enllaçant"
 
 #: ../src/xfdesktop-file-icon.c:448
 #, fuzzy
@@ -1240,7 +1238,7 @@ msgstr "Fitxer Error"
 #, c-format
 #, fuzzy
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr "Fallit a  rename a :"
+msgstr "No s'ha pogut renomenar \"%s\" a \"%s\":"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 #, fuzzy
