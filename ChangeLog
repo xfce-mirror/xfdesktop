@@ -1,3 +1,124 @@
+2006-03-05 06:23  daichi
+
+	* libxfcegui4/branches/xfce_4_2/configure.ac,
+	  libxfcegui4/branches/xfce_4_2/po/sq.po,
+	  xfcalendar/branches/xfce_4_2/configure.ac,
+	  xfcalendar/branches/xfce_4_2/po/sq.po,
+	  xfce-mcs-manager/branches/xfce_4_2/configure.ac,
+	  xfce-mcs-manager/branches/xfce_4_2/po/sq.po,
+	  xfce-mcs-plugins/branches/xfce_4_2/configure.ac,
+	  xfce-mcs-plugins/branches/xfce_4_2/po/sq.po,
+	  xfce-utils/branches/xfce_4_2/configure.ac,
+	  xfce-utils/branches/xfce_4_2/po/sq.po,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.az,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.ca,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.de,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.es,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.eu,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.fi,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.fr,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.he,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.az,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.ca,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.de,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.es,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.eu,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.fi,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.fr,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.it,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.ja,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.lt,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.ro,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.ru,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.sk,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.vi,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.zh_TW,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.it,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.ja,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.lt,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.ro,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.ru,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.sk,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.uk,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.vi,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.zh_TW,
+	  xfce4-appfinder/branches/xfce_4_2/configure.ac,
+	  xfce4-appfinder/branches/xfce_4_2/po/sq.po,
+	  xfce4-iconbox/branches/xfce_4_2/configure.ac,
+	  xfce4-iconbox/branches/xfce_4_2/po/sq.po,
+	  xfce4-mixer/branches/xfce_4_2/configure.ac,
+	  xfce4-mixer/branches/xfce_4_2/po/sq.po,
+	  xfce4-panel/branches/xfce_4_2/configure.ac,
+	  xfce4-panel/branches/xfce_4_2/po/sq.po,
+	  xfce4-session/branches/xfce_4_2/configure.ac,
+	  xfce4-session/branches/xfce_4_2/po/sq.po,
+	  xfce4-toys/branches/xfce_4_2/configure.ac,
+	  xfce4-toys/branches/xfce_4_2/po/sq.po,
+	  xfce4-trigger-launcher/branches/xfce_4_2/configure.ac,
+	  xfce4-trigger-launcher/branches/xfce_4_2/po/sq.po,
+	  xfdesktop/branches/xfce_4_2/configure.ac,
+	  xfdesktop/branches/xfce_4_2/po/sq.po,
+	  xffm/branches/xfce_4_2/configure.ac,
+	  xffm/branches/xfce_4_2/po/sq.po,
+	  xfprint/branches/xfce_4_2/configure.ac,
+	  xfprint/branches/xfce_4_2/po/sq.po,
+	  xfwm4/branches/xfce_4_2/configure.ac,
+	  xfwm4/branches/xfce_4_2/po/sq.po: Added Albanian translations by
+	  Besnik Bleta <besnik@spymac.com>.
+
+2006-02-25 01:46  daichi
+
+	* xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
+	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.el,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.el:
+	  Added Greek translations by Stavros Giannouris
+	  <stavrosg2002@freemail.gr>.
+
+2006-01-01 23:18  daichi
+
+	* xfcalendar/trunk/po/ja.po, xfce-mcs-plugins/trunk/po/ja.po,
+	  xfdesktop/branches/xfce_4_2/menu.xml.ja,
+	  xfdesktop/trunk/menu.xml.ja, xfdesktop/trunk/po/ja.po,
+	  xfwm4/trunk/po/ja.po: Updated Japanese translations.
+
+2005-11-14 23:54  daichi
+
+	* libxfcegui4/branches/xfce_4_2/po/ChangeLog,
+	  xfcalendar/branches/xfce_4_2/po/ChangeLog,
+	  xfce-mcs-manager/branches/xfce_4_2/po/ChangeLog,
+	  xfce-mcs-plugins/branches/xfce_4_2/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-appfinder/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-iconbox/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-mixer/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-panel/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-toys/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-trigger-launcher/branches/xfce_4_2/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_2/po/ChangeLog,
+	  xffm/branches/xfce_4_2/po/ChangeLog,
+	  xfprint/branches/xfce_4_2/po/ChangeLog,
+	  xfwm4/branches/xfce_4_2/po/ChangeLog: Updated.
+
+2005-11-11 17:53  daichi
+
+	* xfcalendar/branches/xfce_4_2/po/pt_BR.po,
+	  xfce-utils/branches/xfce_4_2/po/pt_BR.po,
+	  xfdesktop/branches/xfce_4_2/po/pt_BR.po: Added missing
+	  accelerator keys by Adriano Winter Bess <awbess@gmail.com>.
+
+2005-11-06 09:26  olivier
+
+	* xfdesktop/branches/xfce_4_2/po/hu.po: Update Hungarian
+	  translation by Attila SZERVÁC <sas@321.hu>
+
+2005-11-05 14:14  olivier
+
+	* xfdesktop/branches/xfce_4_2/ChangeLog: Update ChangeLog
+
 2005-11-03 13:27  daichi
 
 	* xfdesktop/branches/xfce_4_2/configure.ac,
@@ -83,9 +204,10 @@
 	  xfdesktop/trunk/common/xfdesktop-common.h,
 	  xfdesktop/trunk/src/menu.c, xfdesktop/trunk/src/windowlist.c:
 	  move menu_grab_available() from menu.c and into
-	  xfdesktop-common.c, and use it for popping up the windowlist as
-	  well, as it suffers from the same keybinding problem that the
-	  menu did. patch from pasi orovuo.
+	  xfdesktop-common.c, and use it
+	  for popping up the windowlist as well, as it suffers from the
+	  same keybinding
+	  problem that the menu did. patch from pasi orovuo.
 
 2005-10-16 17:33  daichi
 
@@ -116,7 +238,11 @@
 
 	* xfdesktop/branches/xfce_4_2/menu.xml.ja,
 	  xfdesktop/trunk/menu.xml.ja: * Changed some default values
-	  (L10N). * Added notes for the end users. * Style change.
+	  (L10N).
+	  
+	  * Added notes for the end users.
+	  
+	  * Style change.
 
 2005-10-15 11:04  kelnos
 
@@ -174,8 +300,9 @@
 
 	* xfdesktop/branches/xfce_4_2/menu.xml.cs,
 	  xfdesktop/branches/xfce_4_2/menu.xml.da,
-	  xfdesktop/branches/xfce_4_2/menu.xml.hu: * Corrected path. *
-	  Removed extra white-spaces.
+	  xfdesktop/branches/xfce_4_2/menu.xml.hu: * Corrected path.
+	  
+	  * Removed extra white-spaces.
 
 2005-10-11 14:30  daichi
 
@@ -185,11 +312,17 @@
 2005-10-11 14:29  daichi
 
 	* xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.cs,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.eu,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.pl,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ro,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.sk:
-	  * Changed notation on its location. * Removed extra white-spaces.
+	  * Changed notation on its location.
+	  
+	  * Removed extra white-spaces.
 
 2005-10-11 13:54  daichi
 
@@ -281,20 +414,29 @@
 2005-10-09 09:13  daichi
 
 	* xfce-mcs-manager/branches/xfce_4_2/xfce-setting-show/xfce-settings-manager.desktop,
+	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/display_plugin/xfce-display-settings.desktop,
+	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/keyboard_plugin/xfce-keyboard-settings.desktop,
+	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/mouse_plugin/xfce-mouse-settings.desktop,
+	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/ui_plugin/xfce-ui-settings.desktop,
 	  xfce-utils/branches/xfce_4_2/gdm/xfce.desktop,
 	  xfce-utils/branches/xfce_4_2/xftaskbar/plugin/xfce-taskbar-settings.desktop,
 	  xfce4-appfinder/branches/xfce_4_2/src/xfce4-appfinder.desktop,
 	  xfce4-iconbox/branches/xfce_4_2/settings/xfce-iconbox-settings.desktop,
+	  
 	  xfce4-mixer/branches/xfce_4_2/settings/xfce-mixer-settings.desktop,
+	  
 	  xfce4-panel/branches/xfce_4_2/settings/xfce-panel-settings.desktop,
+	  
 	  xfce4-session/branches/xfce_4_2/settings/session/xfce-session-settings.desktop,
+	  
 	  xfce4-session/branches/xfce_4_2/settings/splash/xfce-splash-settings.desktop,
 	  xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
 	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop,
+	  
 	  xffm/branches/xfce_4_2/plugin-mcs/xfce-filemanager-settings.desktop,
 	  xffm/branches/xfce_4_2/src/Xfbook.desktop,
 	  xffm/branches/xfce_4_2/src/Xfdiff.desktop,
@@ -305,21 +447,35 @@
 	  xffm/branches/xfce_4_2/src/Xfsamba.desktop,
 	  xffm/branches/xfce_4_2/src/Xftree.desktop,
 	  xfprint/branches/xfce_4_2/mcs-plugin/xfce-xfprint-settings.desktop,
+	  
 	  xfprint/branches/xfce_4_2/xfprint-manager/xfprint-manager.desktop,
 	  xfprint/branches/xfce_4_2/xfprint/xfprint.desktop,
 	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
 	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-workspaces-settings.desktop:
-	  .desktop * Added Swedish translations by Alexander Toresson
-	  <alexander.toresson@gmail.com>. * Added Japanese translations by
-	  Daichi Kawahata <daichi@xfce.org>. * Changed orders
-	  alphabetically at each places. * Fixed errors emitted by
-	  'desktop-file-validate', however there're still errors:
-	  Xfmime_edit.desktop: warning: the fields "Name" and "Comment"
-	  have the same value xfce-settings-manager.desktop: warning: the
-	  fields "Name" and "Comment" have the same value
+	  .desktop
+	  
+	  * Added Swedish translations by
+	  Alexander Toresson <alexander.toresson@gmail.com>.
+	  
+	  * Added Japanese translations by
+	  Daichi Kawahata <daichi@xfce.org>.
+	  
+	  * Changed orders alphabetically at each places.
+	  
+	  * Fixed errors emitted by 'desktop-file-validate', however
+	  there're
+	  still errors:
+	  
+	  Xfmime_edit.desktop: warning: the fields "Name" and
+	  "Comment" have the same value
+	  xfce-settings-manager.desktop: warning: the fields "Name"
+	  and "Comment" have the same value
 	  xfce4-appfinder.desktop: warning: the fields "Name" and
-	  "Comment" have the same value xfce.desktop * Removed executable
-	  attribute.
+	  "Comment" have the same value
+	  
+	  xfce.desktop
+	  
+	  * Removed executable attribute.
 
 2005-10-09 07:00  daichi
 
@@ -342,8 +498,8 @@
 	  xffm/branches/xfce_4_2/po/sv.po,
 	  xfprint/branches/xfce_4_2/po/sv.po,
 	  xfwm4/branches/xfce_4_2/po/sv.po: Added and updated Swedish
-	  translations by Alexander Toresson
-	  <alexander.toresson@gmail.com>.
+	  translations by
+	  Alexander Toresson <alexander.toresson@gmail.com>.
 
 2005-10-09 06:36  daichi
 
@@ -351,8 +507,8 @@
 	  xfdesktop/branches/xfce_4_2/menu.xml.sv,
 	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.sv:
-	  Added Swedish translations by Alexander Toresson
-	  <alexander.toresson@gmail.com>.
+	  Added Swedish translations by
+	  Alexander Toresson <alexander.toresson@gmail.com>.
 
 2005-10-08 15:38  stavrosg
 
@@ -360,9 +516,9 @@
 	  xfce4-mixer/branches/xfce_4_2/po/el.po,
 	  xfce4-panel/branches/xfce_4_2/po/el.po,
 	  xfdesktop/branches/xfce_4_2/po/el.po,
-	  xfprint/branches/xfce_4_2/po/el.po: Fix missing accelerators for
-	  xfce-utils , xfprint, xfce4-panel, xfce4-mixer & xfdesktop in
-	  4.2 branch (EL)
+	  xfprint/branches/xfce_4_2/po/el.po: Fix missing accelerators
+	  for xfce-utils , xfprint, xfce4-panel,
+	  xfce4-mixer & xfdesktop in 4.2 branch (EL)
 
 2005-10-08 08:20  daichi
 
@@ -1140,8 +1296,11 @@
 	  xfce-mcs-manager/branches/xfce_4_2/doc/he/images,
 	  xfce-mcs-manager/branches/xfce_4_2/doc/he/images/Makefile.am,
 	  xfce-mcs-manager/branches/xfce_4_2/doc/he/images/settings_manager.png,
+	  
 	  xfce-mcs-manager/branches/xfce_4_2/doc/he/images/smgr_from_root_menu.png,
+	  
 	  xfce-mcs-manager/branches/xfce_4_2/doc/he/images/smgr_from_setup_button.png,
+	  
 	  xfce-mcs-manager/branches/xfce_4_2/doc/he/xfce-mcs-manager.html,
 	  xfce-mcs-manager/branches/xfce_4_2/doc/he/xfce-mcs-manager.xml,
 	  xfce-mcs-plugins/branches/xfce_4_2/configure.ac,
@@ -1151,10 +1310,15 @@
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/images,
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/images/Makefile.am,
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/images/display_preferences.png,
+	  
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/images/font_selection.png,
+	  
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/images/keyboard_settings.png,
+	  
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/images/mouse_settings.png,
+	  
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/images/user_interface_settings.png,
+	  
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/xfce-mcs-plugins.html,
 	  xfce-mcs-plugins/branches/xfce_4_2/doc/he/xfce-mcs-plugins.xml,
 	  xfce-utils/branches/xfce_4_2/configure.ac,
@@ -1167,8 +1331,11 @@
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/Makefile.am,
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/images,
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/images/Makefile.am,
+	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/images/about-dialog.png,
+	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/images/run-dialog.png,
+	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/images/taskbar_settings.png,
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/xfce-utils.html,
 	  xfce-utils/branches/xfce_4_2/doc/xfce-utils/he/xfce-utils.xml,
@@ -1181,17 +1348,27 @@
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/LGPL.html,
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/LGPL.xml,
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/Makefile.am,
+	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/copyright.xml,
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/images,
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/images/Makefile.am,
+	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/images/default-session.png,
+	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/images/link_xfce.jpg,
+	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/xfce4-components.html,
+	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/xfce4-copyright.html,
+	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/xfce4-install.html,
+	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/xfce4-intro.html,
+	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/xfce4-use.html,
+	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/xfce4-user-guide.html,
+	  
 	  xfce-utils/branches/xfce_4_2/doc/xfce4-user-guide/he/xfce4-user-guide.xml,
 	  xfce4-appfinder/branches/xfce_4_2/configure.ac,
 	  xfce4-appfinder/branches/xfce_4_2/doc/Makefile.am,
@@ -1200,7 +1377,9 @@
 	  xfce4-appfinder/branches/xfce_4_2/doc/he/images,
 	  xfce4-appfinder/branches/xfce_4_2/doc/he/images/Makefile.am,
 	  xfce4-appfinder/branches/xfce_4_2/doc/he/images/appfinder-handle-popup.png,
+	  
 	  xfce4-appfinder/branches/xfce_4_2/doc/he/images/appfinder-item-popup.png,
+	  
 	  xfce4-appfinder/branches/xfce_4_2/doc/he/images/default_appfinder.png,
 	  xfce4-appfinder/branches/xfce_4_2/doc/he/xfce4-appfinder.html,
 	  xfce4-appfinder/branches/xfce_4_2/doc/he/xfce4-appfinder.xml,
@@ -1216,9 +1395,13 @@
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/handle-popup.png,
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/item-popup.png,
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/launcher-properties.png,
+	  
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/mailcheck-properties.png,
+	  
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/menuitem-properties.png,
+	  
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/nooptions-properties.png,
+	  
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/pager-properties.png,
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/panel-settings.png,
 	  xfce4-panel/branches/xfce_4_2/doc/he/images/systembuttons-properties.png,
@@ -1348,9 +1531,13 @@
 	  xfdesktop/branches/xfce_4_2/po/vi.po,
 	  xfdesktop/branches/xfce_4_2/po/zh_CN.po,
 	  xfdesktop/branches/xfce_4_2/po/zh_TW.po: * Bumped version at the
-	  "Project-Id-Version: " for the next release. * Added fall back
-	  address at the "Language-Team: ", according to the
+	  "Project-Id-Version: " for the next release.
+	  
+	  * Added fall back address at the "Language-Team: ", according to
+	  the
+	  
 	  http://www.iro.umontreal.ca/translation/registry.cgi?team=index
+	  
 	  * Modified initial comment strings using template by "msginit".
 
 2005-09-26 03:24  daichi
@@ -2062,7 +2249,9 @@
 	  xfwm4/branches/xfce_4_2/po/vi.po,
 	  xfwm4/branches/xfce_4_2/po/zh_CN.po,
 	  xfwm4/branches/xfce_4_2/po/zh_TW.po: Sorry, I really hope this
-	  doesn't cause disaster. * Updated with the re-created POT files.
+	  doesn't cause disaster.
+	  
+	  * Updated with the re-created POT files.
 	  * Discarded obsolete translations.
 
 2005-09-21 02:20  daichi
@@ -2082,8 +2271,10 @@
 	  xfdesktop/branches/xfce_4_2/po/ja.po,
 	  xffm/branches/xfce_4_2/po/ja.po,
 	  xfprint/branches/xfce_4_2/po/ja.po,
-	  xfwm4/branches/xfce_4_2/po/ja.po: Added initial '$Id$'. Bumped
-	  version at the 'Project-Id-Version: ' for the next release.
+	  xfwm4/branches/xfce_4_2/po/ja.po: Added initial '$Id$'.
+	  
+	  Bumped version at the 'Project-Id-Version: ' for the next
+	  release.
 
 2005-09-21 02:04  daichi
 
@@ -2104,12 +2295,19 @@
 	  xffm/branches/xfce_4_2/po/pl.po,
 	  xfprint/branches/xfce_4_2/po/pl.po,
 	  xfwm4/branches/xfce_4_2/po/pl.po: Added Polish translations by
-	  by Piotr Malinski. Updated Polish translations by Piotr
-	  Malinski. Added fall back address at the 'Language-Team: ',
-	  according to the
+	  by Piotr Malinski.
+	  
+	  Updated Polish translations by Piotr Malinski.
+	  
+	  Added fall back address at the 'Language-Team: ', according to
+	  the
+	  
 	  http://www.iro.umontreal.ca/translation/registry.cgi?team=index
+	  
 	  Bumped version at the 'Project-Id-Version: ' for the next
-	  release. Modified initial comment strings.
+	  release.
+	  
+	  Modified initial comment strings.
 
 2005-09-10 16:57  daichi
 
@@ -2128,8 +2326,11 @@
 	  xfdesktop/branches/xfce_4_2/po/pt_BR.po,
 	  xffm/branches/xfce_4_2/po/pt_BR.po,
 	  xfprint/branches/xfce_4_2/po/pt_BR.po,
-	  xfwm4/branches/xfce_4_2/po/pt_BR.po: Corrected a typo. Bumped
-	  version at the 'Project-Id-Version: ' for the next release.
+	  xfwm4/branches/xfce_4_2/po/pt_BR.po: Corrected a typo.
+	  
+	  Bumped version at the 'Project-Id-Version: ' for the next
+	  release.
+	  
 	  Modified initial comment strings.
 
 2005-09-09 16:53  stavrosg
@@ -2183,19 +2384,27 @@
 2005-09-02 16:26  pollux
 
 	* xfce-mcs-manager/branches/xfce_4_2/xfce-setting-show/xfce-settings-manager.desktop,
+	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/display_plugin/xfce-display-settings.desktop,
+	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/keyboard_plugin/xfce-keyboard-settings.desktop,
+	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/mouse_plugin/xfce-mouse-settings.desktop,
+	  
 	  xfce-mcs-plugins/branches/xfce_4_2/plugins/ui_plugin/xfce-ui-settings.desktop,
 	  xfce-utils/branches/xfce_4_2/gdm/xfce.desktop,
 	  xfce-utils/branches/xfce_4_2/xftaskbar/plugin/xfce-taskbar-settings.desktop,
 	  xfce4-appfinder/branches/xfce_4_2/src/xfce4-appfinder.desktop,
 	  xfce4-mixer/branches/xfce_4_2/settings/xfce-mixer-settings.desktop,
+	  
 	  xfce4-panel/branches/xfce_4_2/settings/xfce-panel-settings.desktop,
+	  
 	  xfce4-session/branches/xfce_4_2/settings/session/xfce-session-settings.desktop,
+	  
 	  xfce4-session/branches/xfce_4_2/settings/splash/xfce-splash-settings.desktop,
 	  xfdesktop/branches/xfce_4_2/menueditor/xfce-menueditor.desktop,
 	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop,
+	  
 	  xffm/branches/xfce_4_2/plugin-mcs/xfce-filemanager-settings.desktop,
 	  xffm/branches/xfce_4_2/src/Xfbook.desktop,
 	  xffm/branches/xfce_4_2/src/Xfdiff.desktop,
@@ -2208,9 +2417,9 @@
 	  xfprint/branches/xfce_4_2/xfprint-manager/xfprint-manager.desktop,
 	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
 	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-workspaces-settings.desktop:
-	  * Added Greek translations by Stavros Giannouris. * Changed
-	  language order alphabetically. * Removed extra trailer white
-	  space.
+	  * Added Greek translations by Stavros Giannouris.
+	  * Changed language order alphabetically.
+	  * Removed extra trailer white space.
 
 2005-08-29 21:48  daichi
 
@@ -2254,8 +2463,8 @@
 	  xffm/branches/xfce_4_2/po/ku.po,
 	  xfprint/branches/xfce_4_2/po/ku.po,
 	  xfwm4/branches/xfce_4_2/po/ku.po: Added Kurdish translations by
-	  Erdal Ronahi, in which removed unnecessary strings from initial
-	  comments.
+	  Erdal Ronahi, in which
+	  removed unnecessary strings from initial comments.
 
 2005-08-29 21:34  daichi
 
@@ -2274,8 +2483,8 @@
 	  xffm/branches/xfce_4_2/configure.ac,
 	  xfprint/branches/xfce_4_2/configure.ac,
 	  xfwm4/branches/xfce_4_2/configure.ac: Added 'ku' at BM_I18N().
-	  Changed language code order alphabetically. Wrapped lines so
-	  they're within the 72 characters per line.
+	  Changed language code order alphabetically.
+	  Wrapped lines so they're within the 72 characters per line.
 
 2005-08-25 15:58  yuvaltanny
 
@@ -2303,12 +2512,18 @@
 	  xfdesktop/branches/xfce_4_2/po/pt_PT.po,
 	  xfdesktop/branches/xfce_4_2/po/sv.po,
 	  xfdesktop/branches/xfce_4_2/po/zh_CN.po: Fixed errors emitted by
-	  'msgfmt -c'. Added fall back address at the 'Language-Team: ',
-	  according to the
+	  'msgfmt -c'.
+	  
+	  Added fall back address at the 'Language-Team: ', according to
+	  the
+	  
 	  http://www.iro.umontreal.ca/translation/registry.cgi?team=index
+	  
 	  Modified initial comment strings with template by 'msginit'.
-	  Converted local charsets to UTF-8. Discarded obsolete
-	  translations.
+	  
+	  Converted local charsets to UTF-8.
+	  
+	  Discarded obsolete translations.
 
 2005-08-18 12:08  daichi
 
@@ -2356,24 +2571,37 @@
 
 	* xfdesktop/branches/xfce_4_2/settings/backdrop-mgr.c,
 	  xfdesktop/trunk/settings/backdrop-mgr.c: if the currently-active
-	  backdrop is removed from the backdrop list, reload a new
-	  backdrop after saving the new list (bug 929)
+	  backdrop is removed from the backdrop list, reload
+	  a new backdrop after saving the new list (bug 929)
 
 2005-08-16 08:05  kelnos
 
 	* xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.cs,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.eu,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.fi,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.hu,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ja,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.nl,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.pl,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.pt_BR,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ro,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ru,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.sk,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.zh_CN,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.zh_TW,
 	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml,
 	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.fi,
@@ -2382,9 +2610,11 @@
 	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.pt_BR,
 	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.ru,
 	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.zh_CN,
+	  
 	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.zh_TW:
-	  fix typo in categories XML file name="Project Management" should
-	  be name="ProjectManagement"
+	  fix typo in categories XML file name="Project Management"
+	  should be
+	  name="ProjectManagement"
 
 2005-08-15 18:17  pollux
 
@@ -2478,7 +2708,8 @@
 	  xfdesktop/branches/xfce_4_2/settings,
 	  xfdesktop/branches/xfce_4_2/src,
 	  xfdesktop/trunk/doc/Makefile.am: * fix make dist so
-	  doc/README.kiosk is included * fix svn:ignore settings
+	  doc/README.kiosk is included
+	  * fix svn:ignore settings
 
 2005-08-10 18:54  kelnos
 
@@ -2662,6 +2893,7 @@
 	  xffm/branches/xfce_4_2/src/Xfglob.desktop,
 	  xffm/branches/xfce_4_2/src/Xfmime_edit.desktop,
 	  xfprint/branches/xfce_4_2/mcs-plugin/xfce-xfprint-settings.desktop,
+	  
 	  xfprint/branches/xfce_4_2/xfprint-manager/xfprint-manager.desktop,
 	  xfprint/branches/xfce_4_2/xfprint/xfprint.desktop: update HU
 	  translations
@@ -2673,10 +2905,13 @@
 	  xfce4-appfinder/branches/xfce_4_2/src/xfce4-appfinder.desktop,
 	  xfce4-panel/branches/xfce_4_2/contents.xml.ro,
 	  xfce4-panel/branches/xfce_4_2/settings/xfce-panel-settings.desktop,
+	  
 	  xfce4-session/branches/xfce_4_2/settings/session/xfce-session-settings.desktop,
+	  
 	  xfce4-session/branches/xfce_4_2/settings/splash/xfce-splash-settings.desktop,
 	  xfdesktop/branches/xfce_4_2/po/ro.po,
 	  xfprint/branches/xfce_4_2/mcs-plugin/xfce-xfprint-settings.desktop,
+	  
 	  xfprint/branches/xfce_4_2/xfprint-manager/xfprint-manager.desktop,
 	  xfprint/branches/xfce_4_2/xfprint/xfprint.desktop,
 	  xfwm4/branches/xfce_4_2/mcs-plugin/xfce-wm-settings.desktop,
@@ -2720,12 +2955,19 @@
 	  xfdesktop/branches/xfce_4_2/menu.xml.vi,
 	  xfdesktop/branches/xfce_4_2/menu.xml.zh_TW,
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.fi,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ja,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.nl,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.pt_BR,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ru,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.zh_CN,
+	  
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.zh_TW:
 	  fix documentation comments (thanks Daichi)
 
@@ -3172,8 +3414,8 @@
 
 	* xfdesktop/branches/xfce_4_2/po/ja.po: update JA translations
 	* xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ja,
-	  xfdesktop/branches/xfce_4_2/po/ja.gmo, xfdesktop/trunk/po/ja.po:
-	  update JA translations
+	  xfdesktop/branches/xfce_4_2/po/ja.gmo,
+	  xfdesktop/trunk/po/ja.po: update JA translations
 
 2005-03-06 15:01  olivier
 
@@ -3207,6 +3449,7 @@
 	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.am,
 	  xfdesktop/branches/xfce_4_2/modules/menu/Makefile.in,
 	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.hu,
+	  
 	  xfdesktop/branches/xfce_4_2/settings/xfce-backdrop-settings.desktop:
 	  update HU translations
 
@@ -3354,20 +3597,23 @@
 
 	* xfdesktop/branches/xfce_4_2/panel-plugin/desktop-menu-plugin.c:
 	  add option to use default desktop menu (i.e., the one used by
-	  xfdesktop), or to specify a custom menu file, which will always
-	  be honored (bug 778)
+	  xfdesktop), or
+	  to specify a custom menu file, which will always be honored (bug
+	  778)
 
 2005-02-20 07:38  kelnos
 
 	* xfdesktop/branches/xfce_4_2/panel-plugin/desktop-menu-plugin.c:
 	  interpolate the $XDG_ variables, and then environment variables,
-	  when loading the menu file for the plugin
+	  when loading
+	  the menu file for the plugin
 
 2005-02-18 18:46  kelnos
 
 	* xfdesktop/branches/xfce_4_2/modules/menu/desktop-menu-dentry.c:
 	  if a .desktop file is missing its Categories line, make sure it
-	  gets put in the "Other" category (bug 776)
+	  gets
+	  put in the "Other" category (bug 776)
 
 2005-02-01 17:25  pollux
 
@@ -3403,9 +3649,11 @@
 2005-01-26 21:22  kelnos
 
 	* xfdesktop/branches/xfce_4_2/src/windowlist.c: looks like i
-	  forgot to backport this: fix case where open windowlist ->
-	  window is destroyed -> select window in windowlist -> xfdesktop
-	  crash (bug 672)
+	  forgot to backport this:
+	  
+	  fix case where open windowlist -> window is destroyed -> select
+	  window in
+	  windowlist -> xfdesktop crash (bug 672)
 
 2005-01-23 17:09  pollux
 
@@ -3718,18 +3966,19 @@
 2004-12-18 20:17  kelnos
 
 	* xfdesktop/trunk/src/xfce-desktop.c: ditch gdk_draw_drawable()
-	  and use gdk_window_clear_area() instead. i'm not sure why this
-	  wasn't working before (perhaps i was forgetting to call
+	  and use gdk_window_clear_area() instead. i'm not
+	  sure why this wasn't working before (perhaps i was forgetting to
+	  call
 	  gdk_window_set_back_pixmap() at that point), but it works now,
-	  and it should definitely be faster than asking the X server to
-	  draw on demand.
+	  and it should
+	  definitely be faster than asking the X server to draw on demand.
 
 2004-12-18 11:20  kelnos
 
 	* xfdesktop/trunk/src/xfce-desktop.c: ok, this should actually fix
-	  the menu redraw problem (bug 403). i'm still convinced that gtk
-	  2.6 should not have changed the behavior here, but at least this
-	  works around it.
+	  the menu redraw problem (bug 403). i'm
+	  still convinced that gtk 2.6 should not have changed the behavior
+	  here, but at least this works around it.
 
 2004-12-18 10:57  kelnos
 
@@ -3788,14 +4037,14 @@
 2004-12-11 03:07  kelnos
 
 	* xfdesktop/trunk/src/windowlist.c: put back the add/remove
-	  workspace menu items in the window list because francois asked
-	  so nicely ^_^
+	  workspace menu items in the window list because
+	  francois asked so nicely ^_^
 
 2004-12-10 03:11  kelnos
 
 	* xfdesktop/trunk/src/xfce-desktop.c: check size of existing
-	  bg_pixmap in the GtkStyle to make sure it fits the screen
-	  dimensions before reusing it (hopefully fix bug 584)
+	  bg_pixmap in the GtkStyle to make sure it fits
+	  the screen dimensions before reusing it (hopefully fix bug 584)
 
 2004-12-05 21:38  pollux
 
@@ -3896,10 +4145,12 @@
 2004-12-03 06:02  kelnos
 
 	* xfdesktop/trunk/src/windowlist.c: er, oops. last commit message
-	  was supposed to be: just create a PangoFontDescription at the
-	  top of the function and destroy it at the end. also use the
-	  deactivate signal to destroy the windowlist menu when it's been
-	  closed. ditches a global.
+	  was supposed to be:
+	  just create a PangoFontDescription at the top of the function
+	  and destroy
+	  it at the end. also use the deactivate signal to destroy the
+	  windowlist
+	  menu when it's been closed. ditches a global.
 
 2004-12-03 06:00  kelnos
 
@@ -3916,7 +4167,8 @@
 	* xfdesktop/trunk/src/windowlist.c: don't use markup when
 	  generating window list items; use gtk_widget_modify_font()
 	  instead. this way we don't have to worry about escaping markup
-	  in titles. (bug 567)
+	  in titles.
+	  (bug 567)
 
 2004-12-01 12:03  pollux
 
@@ -3939,10 +4191,11 @@
 2004-11-25 08:01  kelnos
 
 	* xfdesktop/trunk/modules/menu/desktop-menu-file.c: hmm, didn't
-	  mean to commit this, but this cleans up the quasi-fix for the
-	  problem of not loading the menu module because for some odd
+	  mean to commit this, but this cleans up the quasi-fix for
+	  the problem of not loading the menu module because for some odd
 	  reason some systems can't resolve quit() from the xfdesktop
-	  binary. (bug 501)
+	  binary.
+	  (bug 501)
 
 2004-11-25 05:37  kelnos
 
@@ -3969,7 +4222,8 @@
 2004-11-20 11:40  kelnos
 
 	* xfdesktop/trunk/src/windowlist.c: i'm sorry for smoking crack
-	  while coding. windowlist shows sticky windows now (bug 518).
+	  while coding. windowlist shows sticky
+	  windows now (bug 518).
 
 2004-11-20 10:07  olivier
 
@@ -3980,8 +4234,9 @@
 2004-11-16 14:01  kelnos
 
 	* xfdesktop/trunk/modules/menu/desktop-menu-dentry.c: * refuse to
-	  add items with the same desktop id (.desktop file name) * use a
-	  static string in a couple places instead of malloc()ing over and
+	  add items with the same desktop id (.desktop file name)
+	  * use a static string in a couple places instead of malloc()ing
+	  over and
 	  over
 
 2004-11-16 07:12  jasper
@@ -4052,8 +4307,8 @@
 2004-11-07 01:04  kelnos
 
 	* xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c: possibly fix
-	  471 (menu button sometimes remains in active state after menu
-	  disappears, often when no menu pops up in the first place)
+	  471 (menu button sometimes remains in active state after
+	  menu disappears, often when no menu pops up in the first place)
 
 2004-11-06 16:24  olivier
 
@@ -4079,8 +4334,9 @@
 	  xfdesktop/trunk/settings/Makefile.in,
 	  xfdesktop/trunk/src/Makefile.in: Update
 	  automake/autoconf/libtool/gettext versions to generate the
-	  configure scripts and Makefiles, Update versions of all packages
-	  to 4.1.99.1 (ie 4.2 RC1), Update ChangeLogs.
+	  configure scripts and Makefiles,
+	  Update versions of all packages to 4.1.99.1 (ie 4.2 RC1),
+	  Update ChangeLogs.
 
 2004-11-06 05:42  kelnos
 
@@ -4159,9 +4415,9 @@
 	  xfdesktop/trunk/panel-plugin/Makefile.in,
 	  xfdesktop/trunk/pixmaps/Makefile.in,
 	  xfdesktop/trunk/settings/Makefile.in,
-	  xfdesktop/trunk/src/Makefile.in: * update ChangeLog and NEWS *
-	  bump version dependencies to 4.1.91 * regen and commit all
-	  autotools-related files
+	  xfdesktop/trunk/src/Makefile.in: * update ChangeLog and NEWS
+	  * bump version dependencies to 4.1.91
+	  * regen and commit all autotools-related files
 
 2004-10-28 11:55  pollux
 
@@ -4248,8 +4504,8 @@
 
 2004-10-22 19:33  olivier
 
-	* xfdesktop/trunk/po/xfdesktop.pot: Theme fixes update locale [fr]
-	  for desktop files
+	* xfdesktop/trunk/po/xfdesktop.pot: Theme fixes
+	  update locale [fr] for desktop files
 
 2004-10-20 22:06  pollux
 
@@ -4267,8 +4523,8 @@
 2004-10-17 09:21  kelnos
 
 	* xfdesktop/trunk/modules/menu/desktop-menu-dentry.c: check to
-	  make sure xfce_app_menu_item_new_from_desktop_entry() returns a
-	  valid pointer
+	  make sure xfce_app_menu_item_new_from_desktop_entry() returns
+	  a valid pointer
 
 2004-10-17 09:04  kelnos
 
@@ -4285,8 +4541,8 @@
 
 	* xfdesktop/trunk/src/windowlist.c,
 	  xfdesktop/trunk/src/xfce-backdrop.c,
-	  xfdesktop/trunk/src/xfce-desktop.c: * fix some warnings *
-	  hopefully fix crash on exit (bug #344)
+	  xfdesktop/trunk/src/xfce-desktop.c: * fix some warnings
+	  * hopefully fix crash on exit (bug #344)
 
 2004-10-14 06:31  olivier
 
@@ -4364,7 +4620,8 @@
 
 	* xfdesktop/trunk/po/es.po, xfdesktop/trunk/po/es_MX.po: update
 	  translations. Note to Brian: there are way too many similar or
-	  nearly identical translations strings.
+	  nearly
+	  identical translations strings.
 
 2004-10-07 20:36  benny
 
@@ -4387,7 +4644,8 @@
 	  xfdesktop/trunk/pixmaps/Makefile.in,
 	  xfdesktop/trunk/settings/Makefile.in,
 	  xfdesktop/trunk/src/Makefile.in: Added --enable-final (-O1 for
-	  GNU ld) as per Jaspers request. Added missing m4 files.
+	  GNU ld) as per Jaspers request. Added missing
+	  m4 files.
 
 2004-10-03 16:14  pollux
 
@@ -4469,8 +4727,8 @@
 	  xfdesktop/trunk/settings/settings_common.c,
 	  xfdesktop/trunk/settings/settings_common.h,
 	  xfdesktop/trunk/src/xfce-desktop.c: remove image validation from
-	  backdrop list editor; handle fixing up list files in xfdesktop
-	  instead (bug #326)
+	  backdrop list editor; handle fixing up list
+	  files in xfdesktop instead (bug #326)
 
 2004-09-26 09:56  jasper
 
@@ -4488,9 +4746,10 @@
 2004-09-25 22:23  kelnos
 
 	* xfdesktop/trunk/src/main.c: committing nils rennebarth's patch
-	  to forward scroll events and other unused mouse events to the
-	  (real) root window. with a couple style fixes, and making it
-	  non-broken for multihead ^_~
+	  to forward scroll events and other
+	  unused mouse events to the (real) root window. with a couple
+	  style fixes,
+	  and making it non-broken for multihead ^_~
 
 2004-09-24 06:05  kelnos
 
@@ -4609,8 +4868,8 @@
 
 	* xfdesktop/trunk/src/xfce-backdrop.c,
 	  xfdesktop/trunk/src/xfce-desktop.c: whoops! committed the wrong
-	  file. reverting xfce-desktop.c and committing my "just in
-	  case..." to xfce-backdrop.c
+	  file. reverting xfce-desktop.c and committing
+	  my "just in case..." to xfce-backdrop.c
 
 2004-09-23 02:28  kelnos
 
@@ -4690,7 +4949,8 @@
 	* xfdesktop/trunk/modules/menu/desktop-menu-dentry.c,
 	  xfdesktop/trunk/modules/menu/desktop-menu-file.c: revert
 	  speed-enhancing fix. at least the menu widgets won't get all
-	  funky for some people (odd that i've never seen it.)
+	  funky
+	  for some people (odd that i've never seen it.)
 
 2004-09-21 11:51  jasper
 
@@ -4762,9 +5022,9 @@
 2004-09-20 01:56  kelnos
 
 	* xfdesktop/trunk/src/main.c, xfdesktop/trunk/src/xfce-desktop.c:
-	  * xfdesktop cleans up after itself on exit (and doesn't crash) *
-	  fix xrandr screen change on xinerama screens * random cleanups
-	  and stuff
+	  * xfdesktop cleans up after itself on exit (and doesn't crash)
+	  * fix xrandr screen change on xinerama screens
+	  * random cleanups and stuff
 
 2004-09-19 00:25  moe
 
@@ -4791,8 +5051,8 @@
 2004-09-18 10:02  moe
 
 	* xfdesktop/trunk/po/de.po: hm .. xfdesktop for now. Ain't
-	  touching xffm as usual ;-). xfwm4 yet to come. Eagerly awaiting
-	  Olivier's changes.
+	  touching xffm as usual ;-).
+	  xfwm4 yet to come. Eagerly awaiting Olivier's changes.
 
 2004-09-18 04:01  kelnos
 
@@ -4802,9 +5062,9 @@
 2004-09-18 00:02  moe
 
 	* xfdesktop/trunk/po/de.po: Updating these for alpha release. Not
-	  yet finished .. but I'm just too tired to continue. Needs
-	  extensive spell checking and approvement (Note to myself: Write
-	  mail to the list!).
+	  yet finished .. but I'm
+	  just too tired to continue. Needs extensive spell checking
+	  and approvement (Note to myself: Write mail to the list!).
 
 2004-09-17 15:50  pollux
 
@@ -4841,9 +5101,11 @@
 	* xfdesktop/trunk/modules/menu/Makefile.am,
 	  xfdesktop/trunk/modules/menu/Makefile.in,
 	  xfdesktop/trunk/src/Makefile.am,
-	  xfdesktop/trunk/src/Makefile.in: cygwin fixes: * add -module to
-	  modules/menu/Makefile.am and rename library to remove 'lib'
-	  prefix * correct the library link order in src/Makefile.am
+	  xfdesktop/trunk/src/Makefile.in: cygwin fixes:
+	  * add -module to modules/menu/Makefile.am and rename library to
+	  remove
+	  'lib' prefix
+	  * correct the library link order in src/Makefile.am
 
 2004-09-16 02:53  kelnos
 
@@ -4879,8 +5141,8 @@
 2004-09-13 08:35  kelnos
 
 	* xfdesktop/trunk/modules/menu/desktop-menu-dentry.c: * look in
-	  ~/.local/share/applications for .desktop files * merge KDE dir
-	  lookups into main lookup
+	  ~/.local/share/applications for .desktop files
+	  * merge KDE dir lookups into main lookup
 
 2004-09-13 08:23  kelnos
 
@@ -4906,9 +5168,10 @@
 	  xfdesktop/trunk/modules/menu/desktop-menu.c,
 	  xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c,
 	  xfdesktop/trunk/src/menu.c: clean up how the desktop menu stub
-	  library works, simplify the interface so it's more transparent.
-	  also, i found a race condition that causes a crash that i've
-	  just never triggered until now. all better ^_^.
+	  library works, simplify the interface
+	  so it's more transparent. also, i found a race condition that
+	  causes a crash
+	  that i've just never triggered until now. all better ^_^.
 
 2004-09-12 13:54  kelnos
 
@@ -4921,8 +5184,8 @@
 	  xfdesktop/trunk/modules/menu/desktop-menu-file.c: this should
 	  drastically speed up app responsiveness while the desktop menu
 	  is being generated. i'm not really happy with the solution, so
-	  it's only in there conditionally, as long as it doesn't cause
-	  problems.
+	  it's only in
+	  there conditionally, as long as it doesn't cause problems.
 
 2004-09-12 01:10  dannym
 
@@ -4967,8 +5230,8 @@
 	  xfdesktop/trunk/pixmaps/Makefile.in,
 	  xfdesktop/trunk/settings/Makefile.in,
 	  xfdesktop/trunk/src/Makefile.in: XDG basedir stuff for menu.xml
-	  and xfce-registered-categories.xml NOTE: i haven't migrated the
-	  mcs plugin's file yet
+	  and xfce-registered-categories.xml
+	  NOTE: i haven't migrated the mcs plugin's file yet
 
 2004-09-10 20:49  pollux
 
@@ -5039,7 +5302,8 @@
 
 2004-08-30 07:06  dannym
 
-	* xfdesktop/trunk/menu.xml.de: mess with menu.xml.de *hides*
+	* xfdesktop/trunk/menu.xml.de: mess with menu.xml.de
+	  *hides*
 
 2004-08-30 00:10  kelnos
 
@@ -5124,10 +5388,11 @@
 	  xfdesktop/trunk/po/vi.gmo, xfdesktop/trunk/po/vi.po,
 	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
 	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.gmo,
-	  xfdesktop/trunk/po/zh_TW.po: * make the menu use XfceIconTheme *
-	  make xfce-registered-categories use the builtin category icon
-	  lists from XfceIconTheme * update xfdesktop.pot and run 'make
-	  update-po'
+	  xfdesktop/trunk/po/zh_TW.po: * make the menu use XfceIconTheme
+	  * make xfce-registered-categories use the builtin category icon
+	  lists from
+	  XfceIconTheme
+	  * update xfdesktop.pot and run 'make update-po'
 
 2004-08-29 02:02  kelnos
 
@@ -5145,8 +5410,8 @@
 	  xfdesktop/trunk/settings/backdrop_settings.c,
 	  xfdesktop/trunk/settings/settings_common.c,
 	  xfdesktop/trunk/settings/settings_common.h: * large backdrop
-	  lists will load MUCH faster in the editor now * cosmetic dialog
-	  fixes
+	  lists will load MUCH faster in the editor now
+	  * cosmetic dialog fixes
 
 2004-08-28 19:21  pollux
 
@@ -5217,10 +5482,13 @@
 	  xfdesktop/trunk/settings/backdrop_settings.c,
 	  xfdesktop/trunk/settings/menu_settings.c,
 	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: Resync
-	  with repository, most notably: - libxfcegui4 fixes with gtk 2.2
-	  - xfwm4 updates - Present panel plugins in alphabetical order -
-	  Fix add plugin dialog being placed over the panel when using SM
-	  - French po updates - Other various small bug fixes
+	  with repository, most notably:
+	  - libxfcegui4 fixes with gtk 2.2
+	  - xfwm4 updates
+	  - Present panel plugins in alphabetical order
+	  - Fix add plugin dialog being placed over the panel when using SM
+	  - French po updates
+	  - Other various small bug fixes
 
 2004-08-15 19:07  dannym
 
@@ -5245,7 +5513,8 @@
 	  xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/menu.xml.ro,
 	  xfdesktop/trunk/menueditor/about_dialog.c,
 	  xfdesktop/trunk/menueditor/menueditor.c: adds menu.xml Romanian
-	  translation from Razvan T. Coloja some little fixes in menueditor
+	  translation from Razvan T. Coloja
+	  some little fixes in menueditor
 
 2004-08-08 14:00  benny
 
@@ -5273,8 +5542,8 @@
 	* xfdesktop/trunk/common/desktop-menu-stub.c,
 	  xfdesktop/trunk/modules/menu/desktop-menu.c,
 	  xfdesktop/trunk/modules/menu/desktop-menu.h: fix symbol clash -
-	  should fix problem where module unload/reload sometimes causes
-	  the panel to crash
+	  should fix problem where module unload/reload
+	  sometimes causes the panel to crash
 
 2004-07-30 18:09  kelnos
 
@@ -5296,7 +5565,8 @@
 2004-07-28 21:22  benny
 
 	* xfdesktop/trunk/m4/depends.m4: Fixed (module)_FOUND bug reported
-	  by brian. Hopefully nothing else broke this time.
+	  by brian. Hopefully nothing else broke
+	  this time.
 
 2004-07-28 19:15  pollux
 
@@ -5405,7 +5675,8 @@
 2004-07-24 18:52  benny
 
 	* xfdesktop/trunk/m4/depends.m4: Readded XFCE_MCS_PLUGIN() again,
-	  dunno how I manage to remove it everytime I edit depends.m4!
+	  dunno how I manage to remove it everytime
+	  I edit depends.m4!
 
 2004-07-24 17:30  benny
 
@@ -5470,8 +5741,8 @@
 2004-07-20 20:58  benny
 
 	* xfdesktop/trunk/m4/depends.m4: Modifed panel plugin check, so
-	  one (the installer) can choose to install into a different
-	  plugin dir.
+	  one (the installer) can choose to install
+	  into a different plugin dir.
 
 2004-07-20 18:15  kelnos
 
@@ -5490,7 +5761,8 @@
 2004-07-20 01:34  kelnos
 
 	* xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c: * tweak
-	  settings dialog * handle settings a little better
+	  settings dialog
+	  * handle settings a little better
 
 2004-07-20 01:22  kelnos
 
@@ -5536,8 +5808,9 @@
 	  xfdesktop/trunk/po/xfdesktop.pot, xfdesktop/trunk/po/zh_CN.gmo,
 	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.gmo,
 	  xfdesktop/trunk/po/zh_TW.po: * allow multiple cache files for
-	  different menu files * reorg and simplify some menu code * add
-	  menu file option to panel plugin
+	  different menu files
+	  * reorg and simplify some menu code
+	  * add menu file option to panel plugin
 
 2004-07-18 17:55  kelnos
 
@@ -5546,7 +5819,8 @@
 	  'xfdesktop -reload'
 	* xfdesktop/trunk/modules/menu/xfce-registered-categories.xml: add
 	  wine and winex to the registered categories list (so they aren't
-	  actually registered; who cares)
+	  actually
+	  registered; who cares)
 
 2004-07-18 12:54  pollux
 
@@ -5576,9 +5850,11 @@
 	  xfdesktop/trunk/modules/menu/desktop-menu-file.h,
 	  xfdesktop/trunk/modules/menu/desktop-menu-private.h,
 	  xfdesktop/trunk/modules/menu/desktop-menu.c: * rewrote the
-	  file/dir mtime checks for menu update * a lot of cache reworking
-	  so it knows where to look for changes while we're using the
-	  cache * XDG spec for legacy menu dirs from benny
+	  file/dir mtime checks for menu update
+	  * a lot of cache reworking so it knows where to look for changes
+	  while we're
+	  using the cache
+	  * XDG spec for legacy menu dirs from benny
 
 2004-07-17 12:52  pollux
 
@@ -5596,14 +5872,15 @@
 
 	* xfdesktop/trunk/modules/menu/desktop-menu-cache.c: move
 	  g_markup_escape_text() into cache_add_entry() to clean things
-	  up, also escape the command
+	  up, also
+	  escape the command
 
 2004-07-17 10:48  kelnos
 
 	* xfdesktop/trunk/modules/menu/desktop-menu-cache.c,
 	  xfdesktop/trunk/modules/menu/desktop-menu-dentry.c: from benny:
-	  * use g_markup_escape_text() before writing to XML file * use
-	  XDG basedirs for .desktop file search
+	  * use g_markup_escape_text() before writing to XML file
+	  * use XDG basedirs for .desktop file search
 
 2004-07-16 19:33  kelnos
 
@@ -5615,8 +5892,8 @@
 
 2004-07-16 19:12  kelnos
 
-	* xfdesktop/trunk/modules/menu/desktop-menu-cache.c: oops. go copy
-	  and paste!
+	* xfdesktop/trunk/modules/menu/desktop-menu-cache.c: oops. go
+	  copy and paste!
 
 2004-07-16 19:09  kelnos
 
@@ -5668,8 +5945,8 @@
 
 2004-07-16 14:12  pollux
 
-	* xfdesktop/trunk/menueditor/menueditor.c: - fix #256 - change
-	  some hardcoded .xfce4 to xfce_get_userdir
+	* xfdesktop/trunk/menueditor/menueditor.c: - fix #256
+	  - change some hardcoded .xfce4 to xfce_get_userdir
 
 2004-07-15 08:49  pollux
 
@@ -5680,8 +5957,8 @@
 	* xfdesktop/trunk/menueditor/ChangeLog,
 	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
 	  xfdesktop/trunk/menueditor/edit_dialog.c,
-	  xfdesktop/trunk/menueditor/move.c: - some code cleaning - update
-	  ChangeLog
+	  xfdesktop/trunk/menueditor/move.c: - some code cleaning
+	  - update ChangeLog
 
 2004-07-14 20:56  jasper
 
@@ -5736,24 +6013,26 @@
 	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
 	  xfdesktop/trunk/src/main.c, xfdesktop/trunk/src/main.h: * fix
 	  bug #192 - selecting "quit" builtin when we're a panel plugin
-	  should log out from the session manager if it's active * also
-	  remove the gtk_widget_set_name() stuff in prep for a possible
-	  fix for that theming bug
+	  should
+	  log out from the session manager if it's active
+	  * also remove the gtk_widget_set_name() stuff in prep for a
+	  possible fix for
+	  that theming bug
 
 2004-06-29 00:32  kelnos
 
 	* xfdesktop/trunk/settings/backdrop-mgr.c,
 	  xfdesktop/trunk/settings/backdrop_settings.c: * remove
-	  deprecated calls to xfce_file_chooser_set_local_only() * fix
-	  directory setting for gtk 2.2 file chooser
+	  deprecated calls to xfce_file_chooser_set_local_only()
+	  * fix directory setting for gtk 2.2 file chooser
 
 2004-06-28 23:21  kelnos
 
 	* xfdesktop/trunk/modules/menu/desktop-menu-dentry.c,
 	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
-	  xfdesktop/trunk/modules/menu/desktop-menu.c: DnD fixes: *
-	  GDK_ACTION_DEFAULT -> GDK_ACTION_COPY * add STRING and
-	  text/plain types
+	  xfdesktop/trunk/modules/menu/desktop-menu.c: DnD fixes:
+	  * GDK_ACTION_DEFAULT -> GDK_ACTION_COPY
+	  * add STRING and text/plain types
 
 2004-06-28 23:07  kelnos
 
@@ -5761,8 +6040,8 @@
 	  xfdesktop/trunk/settings/Makefile.in,
 	  xfdesktop/trunk/settings/backdrop_settings.c,
 	  xfdesktop/trunk/settings/menu_settings.c: * fix "-0" problem
-	  with settings brightness slider * be a bit smarter about
-	  executing xfce4-menueditor from settings
+	  with settings brightness slider
+	  * be a bit smarter about executing xfce4-menueditor from settings
 
 2004-06-22 06:30  pollux
 
@@ -5836,8 +6115,8 @@
 2004-06-20 21:42  kelnos
 
 	* xfdesktop/trunk/src/xfce-desktop.c: might as well set the
-	  XFDESKTOP_IMAGE_FILE_# property all the time, not just when
-	  we're setting it from an image list
+	  XFDESKTOP_IMAGE_FILE_# property all the time, not just
+	  when we're setting it from an image list
 
 2004-06-20 16:24  pollux
 
@@ -5918,8 +6197,8 @@
 	  xfdesktop/trunk/po/vi.po, xfdesktop/trunk/po/xfdesktop.pot,
 	  xfdesktop/trunk/po/zh_CN.gmo, xfdesktop/trunk/po/zh_CN.po,
 	  xfdesktop/trunk/po/zh_TW.gmo, xfdesktop/trunk/po/zh_TW.po: * fix
-	  translations and .po files AGAIN * add preliminary desktop menu
-	  DnD support
+	  translations and .po files AGAIN
+	  * add preliminary desktop menu DnD support
 
 2004-06-19 05:48  kelnos
 
@@ -5943,8 +6222,8 @@
 	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.po,
 	  xfdesktop/trunk/src/main.c, xfdesktop/trunk/src/menu.c,
 	  xfdesktop/trunk/xfdesktop.spec.in: re-hook the gettext stuff,
-	  update POTFILES.in, update xfdesktop.pot, ran make update-po,
-	  update ChangeLog, a few misc tweaks
+	  update POTFILES.in, update xfdesktop.pot,
+	  ran make update-po, update ChangeLog, a few misc tweaks
 
 2004-06-19 05:27  kelnos
 
@@ -5968,8 +6247,9 @@
 	  xfdesktop/trunk/src/xfce-backdrop.c,
 	  xfdesktop/trunk/src/xfce-backdrop.h,
 	  xfdesktop/trunk/src/xfce-desktop.c: add image brightness %
-	  option as suggested by some dude in #xfce. it's actually image
-	  color saturation, but it's a pretty neat effect. don't worry,
+	  option as suggested by some dude in #xfce. it's
+	  actually image color saturation, but it's a pretty neat effect.
+	  don't worry,
 	  there's no performance impact if you leave it at 100% ^_~
 
 2004-06-17 16:42  kelnos
@@ -6030,10 +6310,11 @@
 	  xfdesktop/trunk/src/xfce-desktop.c,
 	  xfdesktop/trunk/src/xfce-desktop.h,
 	  xfdesktop/trunk/xfdesktop.spec.in: merging in the new xfdesktop,
-	  version is 4.1.5 *crosses fingers* this will fix the app
-	  crashing problem, and has full multihead support, among a bunch
-	  of other improvements i won't list here. also fixing some
-	  warnings in menueditor (for --enable-debug=full)
+	  version is 4.1.5 *crosses fingers*
+	  this will fix the app crashing problem, and has full multihead
+	  support, among
+	  a bunch of other improvements i won't list here.
+	  also fixing some warnings in menueditor (for --enable-debug=full)
 
 2004-06-16 09:49  perldude
 
@@ -6060,8 +6341,8 @@
 2004-06-01 20:29  kelnos
 
 	* xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c: not sure why
-	  i was including time.h, but it doesn't appear to be needed yes,
-	  you can tell i'm bored.
+	  i was including time.h, but it doesn't appear to be needed
+	  yes, you can tell i'm bored.
 
 2004-06-01 20:06  kelnos
 
@@ -6078,9 +6359,11 @@
 	  xfdesktop/trunk/pixmaps/xfce4_xicon2.png,
 	  xfdesktop/trunk/pixmaps/xfce4_xicon3.png,
 	  xfdesktop/trunk/pixmaps/xfce4_xicon4.png,
-	  xfdesktop/trunk/po/xfdesktop.pot: * add new icons from nikola! *
-	  change default to xfce4_xicon1.png (which is a renamed
-	  xfce4_icon.png from nikola) * also add tooltip to button
+	  xfdesktop/trunk/po/xfdesktop.pot: * add new icons from nikola!
+	  * change default to xfce4_xicon1.png (which is a renamed
+	  xfce4_icon.png from
+	  nikola)
+	  * also add tooltip to button
 
 2004-06-01 18:24  kelnos
 
@@ -6090,7 +6373,8 @@
 2004-06-01 18:11  kelnos
 
 	* xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c: fix icon
-	  resize bug reported by Philip Scott also fix a memleak or two
+	  resize bug reported by Philip Scott
+	  also fix a memleak or two
 
 2004-05-29 22:16  pollux
 
@@ -6100,7 +6384,7 @@
 	  xfdesktop/trunk/pixmaps/me-icon24.xpm,
 	  xfdesktop/trunk/pixmaps/me-icon32.xpm,
 	  xfdesktop/trunk/pixmaps/me-icon48.xpm: menueditor uses new nice
-	  icon from Fran&#65533;ois
+	  icon from Fran�ois
 
 2004-05-27 12:28  pollux
 
@@ -6171,10 +6455,11 @@
 
 	* xfdesktop/trunk/menueditor/about_dialog.c,
 	  xfdesktop/trunk/menueditor/move.c: despite time running out
-	  before the exams, found time... - my_gtk_tree_store_swap_up/down
-	  fully rewrited (fix bug reported by Jasper in which menu content
-	  wasn't moved), but moving with the up and down arrow still need
-	  a little work - Fran&#65533;ois added in the credits :-)
+	  before the exams, found time...
+	  - my_gtk_tree_store_swap_up/down fully rewrited (fix bug
+	  reported by Jasper in which menu content wasn't moved), but
+	  moving with the up and down arrow still need a little work
+	  - Fran�ois added in the credits :-)
 
 2004-05-21 18:56  kelnos
 
@@ -6198,7 +6483,8 @@
 	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
 	  xfdesktop/trunk/modules/menu/desktop-menu-private.h,
 	  xfdesktop/trunk/modules/menu/desktop-menu.c: * add .desktop
-	  directories recursively * overhaul the dentry need_update checks
+	  directories recursively
+	  * overhaul the dentry need_update checks
 
 2004-05-12 08:52  kelnos
 
@@ -6211,23 +6497,26 @@
 	* xfdesktop/trunk/modules/menu/desktop-menu-file.c,
 	  xfdesktop/trunk/modules/menu/desktop-menu-file.h,
 	  xfdesktop/trunk/modules/menu/desktop-menu-private.h,
-	  xfdesktop/trunk/modules/menu/desktop-menu.c: bugfix: if the user
-	  has no ~/.xfce4/menu.xml, but later creates one, we should
-	  notice that and regenerate using their custom file
+	  xfdesktop/trunk/modules/menu/desktop-menu.c: bugfix:
+	  if the user has no ~/.xfce4/menu.xml, but later creates one, we
+	  should notice
+	  that and regenerate using their custom file
 
 2004-05-11 16:33  kelnos
 
 	* xfdesktop/trunk/po/xfdesktop.pot,
 	  xfdesktop/trunk/settings/backdrop_settings.c,
 	  xfdesktop/trunk/settings/menu_settings.c: add "edit desktop
-	  menu" button to the menu settings at francois' suggestion add
-	  some keyboard mnemonics to the settings panel in general
+	  menu" button to the menu settings at francois' suggestion
+	  add some keyboard mnemonics to the settings panel in general
 
 2004-05-11 15:25  kelnos
 
 	* xfdesktop/trunk/src/menu.c: fix initial menu-less settings
-	  problem (this is something that shouldn't occur, but does if the
-	  mcs plugin isn't loaded properly the first time)
+	  problem
+	  (this is something that shouldn't occur, but does if the mcs
+	  plugin isn't
+	  loaded properly the first time)
 
 2004-05-11 14:55  jasper
 
@@ -6326,7 +6615,8 @@
 	  state of 'show icons' checkbox on addition of new item
 	* xfdesktop/trunk/modules/menu/desktop-menu-dentry.c: fix item
 	  height for autogenerated submenus if an icon isn't found (i.e.,
-	  add dummy trans icon to _ensure_path())
+	  add
+	  dummy trans icon to _ensure_path())
 
 2004-05-03 21:44  olivier
 
@@ -6366,8 +6656,8 @@
 	* xfdesktop/trunk/common/desktop-menu-stub.c,
 	  xfdesktop/trunk/common/desktop-menu-stub.h,
 	  xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c: * remove
-	  useless and hacky function from desktop-menu-stub * add "show
-	  menu icons" option to panel plugin
+	  useless and hacky function from desktop-menu-stub
+	  * add "show menu icons" option to panel plugin
 
 2004-05-03 08:20  kelnos
 
@@ -6392,9 +6682,11 @@
 	  xfdesktop/trunk/src/main.h, xfdesktop/trunk/src/menu.c,
 	  xfdesktop/trunk/src/menu.h, xfdesktop/trunk/src/settings.c,
 	  xfdesktop/trunk/src/settings.h: * add options to settings dialog
-	  for window list and desktop menu * preselect and frame with
-	  asterisks the currently set backdrop when the user edits the
-	  backdrop list * random cleanups and improvements
+	  for window list and desktop menu
+	  * preselect and frame with asterisks the currently set backdrop
+	  when the user
+	  edits the backdrop list
+	  * random cleanups and improvements
 
 2004-05-01 22:09  kelnos
 
@@ -6405,8 +6697,9 @@
 2004-05-01 16:28  kelnos
 
 	* xfdesktop/trunk/settings/backdrop-mgr.c: add support for DnD of
-	  directories into image lists also make file chooser (image lists
-	  again) allow multiple file selection
+	  directories into image lists
+	  also make file chooser (image lists again) allow multiple file
+	  selection
 
 2004-04-30 20:46  kelnos
 
@@ -6436,8 +6729,8 @@
 	  xfdesktop/trunk/modules/menu/desktop-menu.c,
 	  xfdesktop/trunk/modules/menu/desktop-menu.h,
 	  xfdesktop/trunk/modules/menu/dummy.h: add dummy transparent icon
-	  to make sure all menu items are the same height, even if some
-	  items don't have icons.
+	  to make sure all menu items are the same height,
+	  even if some items don't have icons.
 
 2004-04-29 20:52  kelnos
 
@@ -6462,8 +6755,9 @@
 2004-04-26 18:34  kelnos
 
 	* xfdesktop/trunk/settings/backdrop_settings.c: make settings
-	  dialog not block the settings manager make "use color only"
-	  checkbox get set properly on dialog creation
+	  dialog not block the settings manager
+	  make "use color only" checkbox get set properly on dialog
+	  creation
 
 2004-04-26 05:16  kelnos
 
@@ -6473,7 +6767,8 @@
 2004-04-26 05:04  kelnos
 
 	* xfdesktop/trunk/src/backdrop.c: fix problem where the gtk2
-	  theme's background pixmap would override our backdrop
+	  theme's background pixmap would override our
+	  backdrop
 
 2004-04-23 19:20  pollux
 
@@ -6491,7 +6786,8 @@
 
 	* xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/main.c: fix
 	  initialisation order, (hopefully) fix the color missing problem,
-	  speed up startup a little.
+	  speed
+	  up startup a little.
 
 2004-04-22 05:57  kelnos
 
@@ -6507,8 +6803,8 @@
 	* xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/backdrop.h,
 	  xfdesktop/trunk/src/main.c, xfdesktop/trunk/src/main.h,
 	  xfdesktop/trunk/src/menu.c: keep around the GdkScreen for each
-	  xfdesktop/xfbackdrop to reduce the multiple calls to
-	  gdk_display_get_screen().
+	  xfdesktop/xfbackdrop to reduce the
+	  multiple calls to gdk_display_get_screen().
 
 2004-04-21 22:46  kelnos
 
@@ -6524,16 +6820,16 @@
 	* xfdesktop/trunk/settings/Makefile.in,
 	  xfdesktop/trunk/settings/backdrop-mgr.c,
 	  xfdesktop/trunk/settings/backdrop_settings.c: use XfceFileFilter
-	  instead of GtkFileFilter (forgot to commit yesterday) don't
-	  display the tab notebook in the settings panel if we only have
-	  one screen
+	  instead of GtkFileFilter (forgot to commit yesterday)
+	  don't display the tab notebook in the settings panel if we only
+	  have one screen
 
 2004-04-21 00:59  kelnos
 
 	* xfdesktop/trunk/panel-plugin/Makefile.in,
 	  xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c: make desktop
-	  menu plugin work with new gtk-less libxfcegui4 apply icon border
-	  size fix to initial icon as well
+	  menu plugin work with new gtk-less libxfcegui4
+	  apply icon border size fix to initial icon as well
 
 2004-04-21 00:58  kelnos
 
@@ -6542,8 +6838,8 @@
 	  xfdesktop/trunk/modules/menu/desktop-menu.c,
 	  xfdesktop/trunk/src/Makefile.in, xfdesktop/trunk/src/main.c,
 	  xfdesktop/trunk/src/menu.c: make xfdesktop's icon themes work
-	  properly with gtk 2.2 (no GtkIconTheme). also, xfdesktop now
-	  requires gtk 2.2.0 or greater
+	  properly with gtk 2.2 (no GtkIconTheme).
+	  also, xfdesktop now requires gtk 2.2.0 or greater
 
 2004-04-21 00:57  kelnos
 
@@ -6560,7 +6856,8 @@
 
 	* xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/main.c:
 	  woohoo, multiscreen officially works! big thanks to danny for
-	  helping me track this one down.
+	  helping me
+	  track this one down.
 
 2004-04-20 18:51  dannym
 
@@ -6575,8 +6872,8 @@
 
 	* xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/main.c,
 	  xfdesktop/trunk/src/main.h: multiscreen still doesn't work (get
-	  'BadMatch'). this is as far as i can get (bunches of debug
-	  messages). works fine with single head.
+	  'BadMatch'). this is as far as i can
+	  get (bunches of debug messages). works fine with single head.
 
 2004-04-20 15:56  kelnos
 
@@ -6602,9 +6899,11 @@
 	  xfdesktop/trunk/src/menu.c, xfdesktop/trunk/src/menu.h,
 	  xfdesktop/trunk/src/settings.c, xfdesktop/trunk/src/settings.h:
 	  brand-spankin' new desktop settings dialog (mostly), which
-	  should support multiscreen. a lot of multiscreen fixes (i hope).
-	  needs a lot of testing, but i think this is a huge step in the
-	  right direction.
+	  should support
+	  multiscreen.
+	  a lot of multiscreen fixes (i hope). needs a lot of testing,
+	  but i think
+	  this is a huge step in the right direction.
 
 2004-04-20 10:27  kelnos
 
@@ -6630,13 +6929,19 @@
 	* xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/main.c,
 	  xfdesktop/trunk/src/main.h, xfdesktop/trunk/src/settings.c,
 	  xfdesktop/trunk/src/settings.h: reworked desktop handling. now
-	  we can have multiple desktops, which should give us multi-screen
-	  support. this is only preliminary: the menu probably won't work
-	  properly yet. also, settings aren't really handled all that
+	  we can have multiple desktops, which should
+	  give us multi-screen support. this is only preliminary: the
+	  menu probably
+	  won't work properly yet. also, settings aren't really handled
+	  all that
 	  intelligently yet, so settings from different screens will
-	  clobber each other when they get saved. !! as a side-effect, it
-	  appears that i've fixed the crashing problem when some threaded
-	  gnome apps are launched from the desktop menu (as i hoped) !!
+	  clobber each other
+	  when they get saved.
+	  
+	  !! as a side-effect, it appears that i've fixed the crashing
+	  problem when some
+	  threaded gnome apps are launched from the desktop menu (as i
+	  hoped) !!
 
 2004-04-18 17:14  pollux
 
@@ -6664,8 +6969,8 @@
 	  xfdesktop/trunk/src/Makefile.am,
 	  xfdesktop/trunk/src/Makefile.in, xfdesktop/trunk/src/main.c,
 	  xfdesktop/trunk/xfdesktop.spec.in: * change --version string to
-	  conform to xfwm4's style (yeah, i'm a conformist) * XFce -> Xfce
-	  in a bunch of places
+	  conform to xfwm4's style (yeah, i'm a conformist)
+	  * XFce -> Xfce in a bunch of places
 
 2004-04-15 21:24  kelnos
 
@@ -6696,13 +7001,13 @@
 
 2004-04-12 13:50  dannym
 
-	* xfdesktop/trunk/menu.xml.ca: catalan menu.xml by Carles Mu&#65533;&#65533;oz
+	* xfdesktop/trunk/menu.xml.ca: catalan menu.xml by Carles Mu��oz
 	  Gorriz
 
 2004-04-12 13:34  dannym
 
 	* xfdesktop/trunk/po/ca.gmo, xfdesktop/trunk/po/ca.po: Updated
-	  Catalan translations by Carles Mu&#65533;&#65533;oz Gorriz
+	  Catalan translations by Carles Mu��oz Gorriz
 
 2004-04-10 15:50  pollux
 
@@ -6719,8 +7024,8 @@
 	* xfdesktop/trunk/menueditor/add_dialog.c,
 	  xfdesktop/trunk/menueditor/menueditor.c,
 	  xfdesktop/trunk/menueditor/menueditor.h: - in add dialog : if
-	  icon isn't exist however stores the path - add popup menu in the
-	  treeview
+	  icon isn't exist however stores the path
+	  - add popup menu in the treeview
 
 2004-04-08 19:17  kelnos
 
@@ -6738,8 +7043,9 @@
 	  xfdesktop/trunk/menueditor/move.c,
 	  xfdesktop/trunk/menueditor/new_dialog.c,
 	  xfdesktop/trunk/po/xfdesktop.pot: bunch of string fixes,
-	  aesthetic mods mainly don't use "gtk-new", "gtk-open", etc., but
-	  GTK_STOCK_NEW, GTK_STOCK_OPEN
+	  aesthetic mods mainly
+	  don't use "gtk-new", "gtk-open", etc., but GTK_STOCK_NEW,
+	  GTK_STOCK_OPEN
 
 2004-04-08 12:07  kelnos
 
@@ -6756,7 +7062,8 @@
 	* xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c: partial fix
 	  so desktop menu doesn't make the panel taller. it still isn't
 	  perfect (panel grows a pixel or two depending on the panel
-	  size), but it's better.
+	  size), but it's
+	  better.
 
 2004-04-03 03:39  kelnos
 
@@ -6780,7 +7087,8 @@
 	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
 	  xfdesktop/trunk/src/Makefile.in, xfdesktop/trunk/src/menu.c:
 	  #ifdef out all the menu loading code in xfdesktop (including the
-	  stub loader) if --disable-desktop-menu is specified
+	  stub
+	  loader) if --disable-desktop-menu is specified
 
 2004-03-31 20:47  kelnos
 
@@ -6820,18 +7128,20 @@
 	  xfdesktop/trunk/settings/Makefile.am,
 	  xfdesktop/trunk/settings/Makefile.in,
 	  xfdesktop/trunk/src/Makefile.in: fixing POTFILES.in and 'make
-	  dist' also changing benny's email address at his request
+	  dist'
+	  also changing benny's email address at his request
 
 2004-03-31 18:42  kelnos
 
 	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/Makefile.in,
 	  xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac,
 	  xfdesktop/trunk/modules/Makefile.am,
-	  xfdesktop/trunk/modules/Makefile.in: i got bored, so: * make
-	  libxml2 check non-fatal, and disable building xfce4-menueditor
-	  if it isn't present * add --disable-desktop-menu and
-	  --disable-panel-plugin * print build config summary at end of
-	  configure output
+	  xfdesktop/trunk/modules/Makefile.in: i got bored, so:
+	  * make libxml2 check non-fatal, and disable building
+	  xfce4-menueditor if
+	  it isn't present
+	  * add --disable-desktop-menu and --disable-panel-plugin
+	  * print build config summary at end of configure output
 
 2004-03-29 17:34  kelnos
 
@@ -6847,22 +7157,24 @@
 
 	* xfdesktop/trunk/settings/backdrop-mgr.c,
 	  xfdesktop/trunk/settings/backdrop_settings.c: not critical, but
-	  might as well ditch those functions for gtk 2.4 since we don't
-	  use them
+	  might as well ditch those functions for gtk 2.4 since
+	  we don't use them
 
 2004-03-29 08:13  kelnos
 
 	* xfdesktop/trunk/settings/backdrop-mgr.c,
 	  xfdesktop/trunk/settings/backdrop_settings.c: * fix image list
-	  edit memleak * lots of refactoring * lots of cleanup
+	  edit memleak
+	  * lots of refactoring
+	  * lots of cleanup
 
 2004-03-27 11:37  kelnos
 
 	* xfdesktop/trunk/modules/menu/desktop-menu-dentry.c,
 	  xfdesktop/trunk/modules/menu/desktop-menu.c: * ok, new way of
-	  attacking icon size: start larger, and gradually work our way
-	  down to the desired size. that seems to work better. * do a
-	  couple sanity checks when parsing .desktop files
+	  attacking icon size: start larger, and gradually work
+	  our way down to the desired size. that seems to work better.
+	  * do a couple sanity checks when parsing .desktop files
 
 2004-03-27 10:18  kelnos
 
@@ -6871,9 +7183,10 @@
 	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
 	  xfdesktop/trunk/modules/menu/desktop-menu-private.h,
 	  xfdesktop/trunk/modules/menu/desktop-menu.c: set icon size
-	  properly for all items fix bug in legacydir code (all legacy
-	  entries dumped in the same menu) better memory management of
-	  pixbufs
+	  properly for all items
+	  fix bug in legacydir code (all legacy entries dumped in the same
+	  menu)
+	  better memory management of pixbufs
 
 2004-03-27 03:06  kelnos
 
@@ -7013,7 +7326,8 @@
 	  xfdesktop/trunk/po/.cvsignore, xfdesktop/trunk/settings,
 	  xfdesktop/trunk/settings/.cvsignore, xfdesktop/trunk/src,
 	  xfdesktop/trunk/src/.cvsignore: so tired of all the noise in
-	  'cvs update' output (sorry for the commits spam!)
+	  'cvs update' output (sorry for the commits
+	  spam!)
 
 2004-03-24 10:05  pollux
 
@@ -7023,7 +7337,8 @@
 	  xfdesktop/trunk/menueditor/add_menu_dialog.c,
 	  xfdesktop/trunk/menueditor/edit_dialog.c,
 	  xfdesktop/trunk/menueditor/menueditor.c: - new.c/h renamed into
-	  new_dialog.c/h - add default response in dialogs
+	  new_dialog.c/h
+	  - add default response in dialogs
 
 2004-03-22 20:28  kelnos
 
@@ -7126,10 +7441,11 @@
 	  xfdesktop/trunk/po/ar.gmo, xfdesktop/trunk/po/ar.po,
 	  xfdesktop/trunk/po/bg.gmo, xfdesktop/trunk/po/bg.po,
 	  xfdesktop/trunk/po/it.gmo, xfdesktop/trunk/po/it.po: Add/update
-	  i18n for: Bulgarian from Miroslav Yordanov
-	  <miordanov@i-space.org> and Peter Slavov <peshka@i-space.org>
-	  Italian from Alex Dupre <ale@FreeBSD.org> Arabic from Saleh
-	  Hathal <hathalsal@hotmail.com>
+	  i18n for:
+	  Bulgarian from Miroslav Yordanov <miordanov@i-space.org> and
+	  Peter Slavov <peshka@i-space.org>
+	  Italian from Alex Dupre <ale@FreeBSD.org>
+	  Arabic from Saleh Hathal <hathalsal@hotmail.com>
 
 2004-03-13 12:21  pollux
 
@@ -7172,7 +7488,8 @@
 	  xfdesktop/trunk/menueditor/add_dialog.h,
 	  xfdesktop/trunk/menueditor/edit_dialog.c,
 	  xfdesktop/trunk/menueditor/menueditor.c: - added snotify tag
-	  support - now the edited filename is showed in the titlebar
+	  support
+	  - now the edited filename is showed in the titlebar
 
 2004-03-07 11:30  olivier
 
@@ -7182,8 +7499,8 @@
 2004-03-07 10:45  pollux
 
 	* xfdesktop/trunk/menueditor/TODO,
-	  xfdesktop/trunk/menueditor/about_dialog.c: - updated TODO -
-	  added some contributors in the about dialog
+	  xfdesktop/trunk/menueditor/about_dialog.c: - updated TODO
+	  - added some contributors in the about dialog
 
 2004-03-07 05:49  kelnos
 
@@ -7193,8 +7510,8 @@
 	  xfdesktop/trunk/menueditor/edit_dialog.c,
 	  xfdesktop/trunk/menueditor/menueditor.c,
 	  xfdesktop/trunk/menueditor/new.c: fix (hopefully) all warnings.
-	  --enable-debug=full _should_ work now. /me looks pointedly at
-	  dannym
+	  --enable-debug=full _should_ work now.
+	  /me looks pointedly at dannym
 
 2004-03-07 00:35  moe
 
@@ -7208,12 +7525,14 @@
 2004-03-06 21:58  dannym
 
 	* xfdesktop/trunk/menueditor/add_menu_dialog.c: add_menu_dialog.c:
-	  In function `add_menu_cb': add_menu_dialog.c:68: Warnung:
-	  implicit declaration of function `create_header'
+	  In function `add_menu_cb':
+	  add_menu_dialog.c:68: Warnung: implicit declaration of function
+	  `create_header'
 	  add_menu_dialog.c:68: Warnung: assignment makes pointer from
-	  integer without a cast add_menu_dialog.c:152: Warnung: implicit
-	  declaration of function `strlen' add_menu_dialog.c:125: Warnung:
-	  unused variable `root_iter'
+	  integer without a cast
+	  add_menu_dialog.c:152: Warnung: implicit declaration of function
+	  `strlen'
+	  add_menu_dialog.c:125: Warnung: unused variable `root_iter'
 
 2004-03-06 21:29  dannym
 
@@ -7248,8 +7567,9 @@
 2004-03-06 21:11  dannym
 
 	* xfdesktop/trunk/src/menuspec.c: sigh... changing deprecated gtk
-	  function g_strcasecmp to g_ascii_strcasecmp, although the
-	  "ascii" in the name kinda sounds like it will freak out with
+	  function g_strcasecmp to g_ascii_strcasecmp,
+	  although the "ascii" in the name kinda sounds like it will freak
+	  out with
 	  utf8, well we'll see... and it shouldn't matter in this specific
 	  case.
 
@@ -7312,9 +7632,9 @@
 2004-03-06 19:48  dannym
 
 	* xfdesktop/trunk/settings/backdrop-icon.h: since the previous
-	  icons seemed to be a bit smaller than everything else in the
-	  settings manager, here I go, using a scythe to make it all equal
-	  ;P
+	  icons seemed to be a bit smaller than everything else
+	  in the settings manager, here I go, using a scythe to make it
+	  all equal ;P
 
 2004-03-06 19:39  dannym
 
@@ -7334,22 +7654,25 @@
 	  xfdesktop/trunk/src/menu-dentry.c,
 	  xfdesktop/trunk/src/menu-file.c, xfdesktop/trunk/src/menu.c,
 	  xfdesktop/trunk/src/menu.h: use xfce_exec() for all your
-	  spawning needs. also hook up startup notification for apps that
-	  support it. note: added menu.xml <app> attribute
-	  snotify="true|false". yes, like we need another one...
+	  spawning needs. also hook up startup
+	  notification for apps that support it.
+	  note: added menu.xml <app> attribute snotify="true|false". yes,
+	  like we
+	  need another one...
 	  (libxfcegui4 >= 4.1.8 req. now)
 
 2004-03-03 05:01  kelnos
 
 	* xfdesktop/trunk/src/menu-dentry.c: fix check for dentry dir
-	  mtime check - after each pass they were getting inited to zero,
-	  and thus would appear to need a regen every 10 seconds
+	  mtime check - after each pass they were getting
+	  inited to zero, and thus would appear to need a regen every 10
+	  seconds
 
 2004-03-02 04:55  kelnos
 
 	* xfdesktop/trunk/src/menu-dentry.c: breaking things is bad,
-	  mmkay? let's actually keep track of _all_ the directory mtimes
-	  again...
+	  mmkay? let's actually keep track of _all_ the
+	  directory mtimes again...
 
 2004-03-02 04:24  kelnos
 
@@ -7362,8 +7685,8 @@
 2004-03-02 04:13  kelnos
 
 	* xfdesktop/trunk/src/menu-file.c: we don't need to check for a
-	  localised filename in the user's .xfce4 directory. good call
-	  jasper.
+	  localised filename in the user's .xfce4
+	  directory. good call jasper.
 
 2004-03-01 22:37  benny
 
@@ -7373,7 +7696,8 @@
 2004-03-01 21:09  benny
 
 	* xfdesktop/trunk/m4/debug.m4: Added --enable-gcov to compile xfce
-	  with support for coverage tests. Very useful.
+	  with support for coverage tests. Very
+	  useful.
 
 2004-03-01 18:16  kelnos
 
@@ -7401,9 +7725,9 @@
 	* xfdesktop/trunk/settings/Makefile.am,
 	  xfdesktop/trunk/settings/Makefile.in,
 	  xfdesktop/trunk/settings/backdrop_settings.c: * revert mcs
-	  settings panel icon handling changes - no need to go thru the
-	  trouble of converting the rest until DBUS. *
-	  s/background/backdrop/i <-- let's be consistent
+	  settings panel icon handling changes - no need to go thru
+	  the trouble of converting the rest until DBUS.
+	  * s/background/backdrop/i <-- let's be consistent
 
 2004-02-28 12:27  benny
 
@@ -7436,17 +7760,20 @@
 	  xfdesktop/trunk/menueditor/edit_dialog.c,
 	  xfdesktop/trunk/menueditor/menueditor.c,
 	  xfdesktop/trunk/menueditor/menueditor.h: - menueditor now uses
-	  xfce_load_themed_icon instead of home made load_icon_from_theme
+	  xfce_load_themed_icon instead of home made
+	  load_icon_from_theme
 	  - little changes in the about box
 
 2004-02-27 05:43  kelnos
 
 	* xfdesktop/trunk/settings/Makefile.am,
 	  xfdesktop/trunk/settings/Makefile.in: * make sized icons for the
-	  backdrop settings panel and the menu editor, and install them to
-	  the hicolor icon theme. * make the settings panel icon use
-	  xfce_load_themed_icon() * change names to 'Xfce 4' from 'Xfce4'
-	  and remove extension from icon in .desktop files
+	  backdrop settings panel and the menu editor,
+	  and install them to the hicolor icon theme.
+	  * make the settings panel icon use xfce_load_themed_icon()
+	  * change names to 'Xfce 4' from 'Xfce4' and remove extension
+	  from icon
+	  in .desktop files
 
 2004-02-27 05:19  kelnos
 
@@ -7465,9 +7792,11 @@
 	  xfdesktop/trunk/settings/backdrop_settings.c,
 	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: * make
 	  sized icons for the backdrop settings panel and the menu editor,
-	  and install them to the hicolor icon theme. * make the settings
-	  panel icon use xfce_load_themed_icon() * change names to 'Xfce
-	  4' from 'Xfce4' and remove extension from icon in .desktop files
+	  and install them to the hicolor icon theme.
+	  * make the settings panel icon use xfce_load_themed_icon()
+	  * change names to 'Xfce 4' from 'Xfce4' and remove extension
+	  from icon
+	  in .desktop files
 
 2004-02-27 00:50  kelnos
 
@@ -7494,13 +7823,16 @@
 2004-02-26 03:38  kelnos
 
 	* xfdesktop/trunk/src/menu-dentry.c: fix memleak, move check for
-	  blacklisted entry above the MenuItem allocation so we don't have
-	  to free it on a blacklist match. also, bail if Exec is NULL.
+	  blacklisted entry above the MenuItem
+	  allocation so we don't have to free it on a blacklist match.
+	  also, bail
+	  if Exec is NULL.
 
 2004-02-26 03:14  kelnos
 
 	* xfdesktop/trunk/src/menu-dentry.c: add a 'blacklist' of
-	  gnome/kde control panels that don't have an OnlyShowIn= property
+	  gnome/kde control panels that don't have an
+	  OnlyShowIn= property
 
 2004-02-26 01:05  kelnos
 
@@ -7511,7 +7843,8 @@
 	  xfdesktop/trunk/settings/Makefile.in,
 	  xfdesktop/trunk/settings/backdrop.png,
 	  xfdesktop/trunk/settings/xfce-backdrop-settings.desktop: * add
-	  .desktop file for backdrop settings * rename and move pixmap
+	  .desktop file for backdrop settings
+	  * rename and move pixmap
 
 2004-02-26 00:25  kelnos
 
@@ -7533,8 +7866,8 @@
 	  xfdesktop/trunk/menueditor/edit_dialog.c,
 	  xfdesktop/trunk/menueditor/menueditor.c,
 	  xfdesktop/trunk/menueditor/menueditor.h: - add_dialog and
-	  edit_dialog now use find_icon - when deleting an entry the
-	  GdkPixbuf of the icon is now freed
+	  edit_dialog now use find_icon
+	  - when deleting an entry the GdkPixbuf of the icon is now freed
 
 2004-02-25 12:53  pollux
 
@@ -7554,14 +7887,15 @@
 	  xfdesktop/trunk/menueditor/move.h,
 	  xfdesktop/trunk/menueditor/new.c,
 	  xfdesktop/trunk/menueditor/new.h: - menueditor.h is no more
-	  included in all .h but in the .c - website in the about dialog
-	  changed in http://www.xfce.org - some (little) code corrections
+	  included in all .h but in the .c
+	  - website in the about dialog changed in http://www.xfce.org
+	  - some (little) code corrections
 
 2004-02-25 08:11  kelnos
 
 	* xfdesktop/trunk/src/menu-dentry.c, xfdesktop/trunk/src/menu.c: *
-	  use g_getenv() instead of probing for system getenv() * make
-	  sanitise_dentry_cmd() a little more sane
+	  use g_getenv() instead of probing for system getenv()
+	  * make sanitise_dentry_cmd() a little more sane
 
 2004-02-24 20:08  pollux
 
@@ -7585,9 +7919,10 @@
 	  xfdesktop/trunk/src/menu-icon.c,
 	  xfdesktop/trunk/src/menu-icon.h, xfdesktop/trunk/src/menu.c,
 	  xfdesktop/trunk/src/menu.h: desktop menu now uses GtkIconTheme,
-	  bump libxfcegui4 version requirement. note: this will somewhat
-	  break some icon loading until i fix the /usr/share/xfce4/themes
-	  hierarchy.
+	  bump libxfcegui4 version
+	  requirement. note: this will somewhat break some icon loading
+	  until i
+	  fix the /usr/share/xfce4/themes hierarchy.
 
 2004-02-20 15:12  pollux
 
@@ -7606,8 +7941,8 @@
 	  xfdesktop/trunk/menueditor/undo.h, xfdesktop/trunk/po/fr.gmo,
 	  xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/xfdesktop.pot,
 	  xfdesktop/trunk/settings/Makefile.in,
-	  xfdesktop/trunk/src/Makefile.in: - French translations updated -
-	  undo.c and undo.h removed
+	  xfdesktop/trunk/src/Makefile.in: - French translations updated
+	  - undo.c and undo.h removed
 
 2004-02-19 16:06  kelnos
 
@@ -7692,17 +8027,20 @@
 
 2004-02-16 21:38  kelnos
 
-	* xfdesktop/trunk/AUTHORS: adding myself to AUTHORS file... plus a
-	  test commit to see if my commits get to xfce4-commits now...
+	* xfdesktop/trunk/AUTHORS: adding myself to AUTHORS file... plus
+	  a test commit to see if my
+	  commits get to xfce4-commits now...
 
 2004-02-16 07:01  kelnos
 
 	* xfdesktop/trunk/src/menu-icon.c,
 	  xfdesktop/trunk/src/menu-icon.h, xfdesktop/trunk/src/menu.c: *
 	  move the icon sizing code out of menu-icon.c. menu_icon_find()
-	  now takes an extra |gint size| parameter. * tweaked the icon
-	  sizing a bit. seems to work well with small point sizes on the
-	  menu item fonts (8pt) and large too (96pt).
+	  now
+	  takes an extra |gint size| parameter.
+	  * tweaked the icon sizing a bit. seems to work well with small
+	  point
+	  sizes on the menu item fonts (8pt) and large too (96pt).
 
 2004-02-16 06:41  kelnos
 
@@ -7710,14 +8048,21 @@
 	  xfdesktop/trunk/src/menu-file.c,
 	  xfdesktop/trunk/src/menu-icon.c, xfdesktop/trunk/src/menu.c,
 	  xfdesktop/trunk/src/menuspec.c: * menu entry "themability" from
-	  danny (somewhat reworked). you can add a style class to
-	  ~/.gtkrc-2.0 to change the appearance of menu items: style
-	  "xfdesktopmenu" { font_name = "Times New Roman 16" } widget
-	  "*xfdesktopmenu*" style "xfdesktopmenu" i intend to turn this
-	  into a real feature eventually, not just an rc-file hack. *
-	  simplified icon sizing code, will work with the rc-theming and
-	  eliminates the allocaiton of a PangoContext * tweaked a couple
-	  things to reduce some memory allocations
+	  danny (somewhat reworked). you can add
+	  a style class to ~/.gtkrc-2.0 to change the appearance of menu
+	  items:
+	  style "xfdesktopmenu" {
+	  font_name = "Times New Roman 16"
+	  }
+	  widget "*xfdesktopmenu*" style "xfdesktopmenu"
+	  i intend to turn this into a real feature eventually, not just
+	  an
+	  rc-file hack.
+	  
+	  * simplified icon sizing code, will work with the rc-theming and
+	  eliminates the allocaiton of a PangoContext
+	  
+	  * tweaked a couple things to reduce some memory allocations
 
 2004-02-14 22:43  dannym
 
@@ -7744,9 +8089,11 @@
 2004-02-11 20:31  kelnos
 
 	* xfdesktop/trunk/src/menu.c: i don't know why this broke
-	  launching things from the menu for some people, so i'm putting
-	  it back until i have a chance to look at it more closely.
-	  unfortunately, this way, if you kill xfdesktop, all apps
+	  launching things from the menu for some
+	  people, so i'm putting it back until i have a chance to look at
+	  it more
+	  closely. unfortunately, this way, if you kill xfdesktop, all
+	  apps
 	  launched by it will die as well.
 
 2004-02-11 16:58  kelnos
@@ -7757,13 +8104,15 @@
 2004-02-11 16:45  kelnos
 
 	* xfdesktop/trunk/src/menu.c: whoops, g_error() calls abort(),
-	  forgot about that. let's use g_warning() instead, mmm?
+	  forgot about that. let's use
+	  g_warning() instead, mmm?
 
 2004-02-11 00:05  kelnos
 
-	* xfdesktop/trunk/src/menu-icon.c: add a few more icon paths move
-	  the KDE icon path search out into its own generic function, and
-	  use it to do a search of ~/.icons as well
+	* xfdesktop/trunk/src/menu-icon.c: add a few more icon paths
+	  move the KDE icon path search out into its own generic function,
+	  and use
+	  it to do a search of ~/.icons as well
 
 2004-02-10 21:04  dannym
 
@@ -7784,7 +8133,8 @@
 2004-02-10 04:22  kelnos
 
 	* xfdesktop/trunk/src/menu.c: whoops, i broke the actual execution
-	  of apps. no idea why this actually fixes it though.
+	  of apps. no idea why this actually
+	  fixes it though.
 
 2004-02-10 03:36  kelnos
 
@@ -7800,10 +8150,14 @@
 	  xfdesktop/trunk/src/menu.h, xfdesktop/trunk/src/menuspec.c,
 	  xfdesktop/trunk/src/menuspec.h,
 	  xfdesktop/trunk/src/xfce-registered-categories.xml: menu icon
-	  support for the desktop menu! quick summary: *major code reorg
-	  *menu icon support *new <include> tag for menu.xml
-	  *autogenerated menus via the freedesktop.org menu spec NOTE: SVG
-	  icon support disabled pending resolution of major memory leaks
+	  support for the desktop menu!
+	  quick summary:
+	  *major code reorg
+	  *menu icon support
+	  *new <include> tag for menu.xml
+	  *autogenerated menus via the freedesktop.org menu spec
+	  NOTE: SVG icon support disabled pending resolution of major
+	  memory leaks
 	  in librsvg and/or the SVG gdk-pixbuf loader
 
 2004-02-06 17:58  olivier
@@ -7818,9 +8172,10 @@
 2004-02-01 00:08  kelnos
 
 	* xfdesktop/trunk/src/backdrop.c: fix for bug #94. thanks to
-	  dannym for figuring this out. moral of the story: don't call
-	  functions that can put up dialog boxes from inside an X event
-	  handler.
+	  dannym for figuring this out. moral of the
+	  story: don't call functions that can put up dialog boxes from
+	  inside an
+	  X event handler.
 
 2004-01-29 15:51  jasper
 
@@ -8155,34 +8510,57 @@
 	  xfdesktop/trunk/src/Makefile.am,
 	  xfdesktop/trunk/src/Makefile.in, xfdesktop/trunk/src/menu.c,
 	  xfdesktop/trunk/src/settings.c: Huge commit to bring new
-	  repository in sync with SF. We are losing some CVS history here,
-	  but for completeness sake I'm including the ChangeLog entries
-	  here: +++ 2003-10-11 00:08 edscott * xffm/src/: add_folder.c,
-	  add_node_contents.c, callbacks.c, keybindings.c, main.c,
-	  treeview.c: do second letter search if first letter is / -- DONE
-	  autohide diagnostics on click or keypress--DONE compare dates
-	  between mime file and dbh file before updating applications --
-	  DONE scroll by keyboard debugged and enhanced --DONE g_strchug()
-	  crash on openwith by menu... --FIXED on go_up do not place in
-	  history, nor back nor forward --DONE 2003-10-11 00:05 edscott *
-	  xffm/: libs/apps.c, libs/bookmarks.c, libs/constants.h,
+	  repository in sync with SF. We are losing some
+	  CVS history here, but for completeness sake I'm including the
+	  ChangeLog
+	  entries here:
+	  
+	  +++
+	  
+	  2003-10-11 00:08 edscott
+	  
+	  * xffm/src/: add_folder.c, add_node_contents.c, callbacks.c,
+	  keybindings.c, main.c, treeview.c: do second letter search if
+	  first
+	  letter is / -- DONE autohide diagnostics on click or
+	  keypress--DONE
+	  compare dates between mime file and dbh file before updating
+	  applications -- DONE scroll by keyboard debugged and enhanced
+	  --DONE g_strchug() crash on openwith by menu... --FIXED on
+	  go_up do
+	  not place in history, nor back nor forward --DONE
+	  
+	  2003-10-11 00:05 edscott
+	  
+	  * xffm/: libs/apps.c, libs/bookmarks.c, libs/constants.h,
 	  libs/cpy.c, libs/dnd.c, libs/dummies.c, libs/duplicate.c,
 	  libs/entry.c, libs/goto.c, libs/goto.h, libs/icons.c,
-	  libs/menu.c, libs/menu_callbacks.c, libs/misc.c, libs/misc.h,
-	  libs/monitor.c, libs/new_win.c, libs/pasteboard.c, libs/print.c,
-	  libs/refresh.c, libs/reg.c, libs/remove.c, libs/rename.c,
-	  libs/run.c, libs/run.h, libs/scramble.c, libs/symlink.c,
-	  libs/terminal.c, libs/touch.c, libs/trash.c, libs/xfdiff.c,
-	  smb/smb_download.c, smb/smb_list.c: do second letter search if
-	  first letter is / -- DONE autohide diagnostics on click or
-	  keypress--DONE compare dates between mime file and dbh file
-	  before updating applications -- DONE scroll by keyboard debugged
-	  and enhanced --DONE g_strchug() crash on openwith by menu...
-	  --FIXED on go_up do not place in history, nor back nor forward
-	  --DONE 2003-10-10 23:19 xfce * xfce-utils/scripts/xinitrc: Don't
-	  use cpp in xrdb so that DPI settings load even on workstations
-	  w/out cpp 2003-10-10 22:17 xfce *
-	  libxfcegui4/libxfcegui4/netk-pager.c, xfwm4/configure,
+	  libs/menu.c,
+	  libs/menu_callbacks.c, libs/misc.c, libs/misc.h, libs/monitor.c,
+	  libs/new_win.c, libs/pasteboard.c, libs/print.c, libs/refresh.c,
+	  libs/reg.c, libs/remove.c, libs/rename.c, libs/run.c,
+	  libs/run.h,
+	  libs/scramble.c, libs/symlink.c, libs/terminal.c, libs/touch.c,
+	  libs/trash.c, libs/xfdiff.c, smb/smb_download.c,
+	  smb/smb_list.c: do
+	  second letter search if first letter is / -- DONE autohide
+	  diagnostics on click or keypress--DONE compare dates between
+	  mime
+	  file and dbh file before updating applications -- DONE scroll by
+	  keyboard debugged and enhanced --DONE g_strchug() crash on
+	  openwith
+	  by menu... --FIXED on go_up do not place in history, nor back
+	  nor
+	  forward --DONE
+	  
+	  2003-10-10 23:19 xfce
+	  
+	  * xfce-utils/scripts/xinitrc: Don't use cpp in xrdb so that DPI
+	  settings load even on workstations w/out cpp
+	  
+	  2003-10-10 22:17 xfce
+	  
+	  * libxfcegui4/libxfcegui4/netk-pager.c, xfwm4/configure,
 	  xfwm4/configure.ac, xfwm4/themes/Makefile.am,
 	  xfwm4/themes/Makefile.in,
 	  xfwm4/themes/default/bottom-active.xpm,
@@ -8237,15 +8615,28 @@
 	  xfwm4/themes/default/top-left-inactive.xpm,
 	  xfwm4/themes/default/top-right-active.xpm,
 	  xfwm4/themes/default/top-right-inactive.xpm: Revert xfwm4
-	  default theme to the one found in pre-release as it looked
-	  better Fix a very small thing in netk-pager 2003-10-10 19:21
-	  huysmans * xfce4/plugins/pager/pager.c: Fix resizing bug
-	  2003-10-09 23:41 huysmans * xfwm4/: mcs-plugin/workspaces.c,
-	  src/settings.c: Move workspace names settings into settings
-	  plugin. Rename count to Xfwm/WorkspaceCount for consistency.
-	  2003-10-09 23:03 xfce * libxfcegui4/: configure, configure.ac:
-	  Increase version number 2003-10-09 22:13 xfce *
-	  xfwm4/themes/default/: close-active.xpm, close-inactive.xpm,
+	  default
+	  theme to the one found in pre-release as it looked better Fix a
+	  very small thing in netk-pager
+	  
+	  2003-10-10 19:21 huysmans
+	  
+	  * xfce4/plugins/pager/pager.c: Fix resizing bug
+	  
+	  2003-10-09 23:41 huysmans
+	  
+	  * xfwm4/: mcs-plugin/workspaces.c, src/settings.c: Move
+	  workspace
+	  names settings into settings plugin. Rename count to
+	  Xfwm/WorkspaceCount for consistency.
+	  
+	  2003-10-09 23:03 xfce
+	  
+	  * libxfcegui4/: configure, configure.ac: Increase version number
+	  
+	  2003-10-09 22:13 xfce
+	  
+	  * xfwm4/themes/default/: close-active.xpm, close-inactive.xpm,
 	  close-pressed.xpm, hide-active.xpm, hide-inactive.xpm,
 	  hide-pressed.xpm, maximize-active.xpm, maximize-inactive.xpm,
 	  maximize-pressed.xpm, maximize-toggled-active.xpm,
@@ -8258,65 +8649,95 @@
 	  stick-toggled-inactive.xpm, stick-toggled-pressed.xpm, themerc,
 	  title-2-active.xpm, title-2-inactive.xpm, title-3-active.xpm,
 	  title-3-inactive.xpm, title-4-active.xpm, title-4-inactive.xpm:
-	  Change default theme for 4.2 2003-10-09 15:19 edscott * xffm/:
-	  glade_intl, src/glade_callbacks.h, src/glade_gui.c.bak,
-	  src/glade_gui.h: remove obsolete files 2003-10-09 07:04 edscott
+	  Change default theme for 4.2
+	  
+	  2003-10-09 15:19 edscott
+	  
+	  * xffm/: glade_intl, src/glade_callbacks.h, src/glade_gui.c.bak,
+	  src/glade_gui.h: remove obsolete files
+	  
+	  2003-10-09 07:04 edscott
+	  
 	  * xffm/src/: Makefile.am, Makefile.in, callbacks.c,
-	  keybindings.c, keybindings.h, treeview.c, treeview.h: scroll by
-	  keyboard is now case insensitive, if shift is pressed, scroll
-	  search w ill proceed backwards. Backward scroll-search will not
-	  wrap. Forward scroll-sear ch will wrap (as before). 2003-10-09
-	  04:14 edscott * xffm/: glade/xffm_main.glade, libs/apps.c,
-	  libs/bookmarks.c, libs/combo.c, libs/cpy.c, libs/dummies.c,
-	  libs/duplicate.c, libs/entry.c, libs/filter.c, libs/find.h,
-	  libs/goto.c, libs/goto.h, libs/icons.c, libs/input.c,
-	  libs/menu.c, libs/menu_callbacks.c, libs/misc.c, libs/monitor.c,
-	  libs/options.c, libs/options.h, libs/print.h, libs/refresh.c,
-	  libs/reg.c, libs/reg.h, libs/remove.c, libs/remove.h,
-	  libs/rename.c, libs/run.c, libs/run.h, libs/symlink.c,
-	  libs/touch.c, libs/trash.c, smb/smb_download.c, smb/smb_list.c,
-	  src/glade_main_gui.c, src/main.c, src/treeview.c, src/widgets.c:
-	  eliminate all warnings when compiling with --enable-debug
-	  2003-10-09 01:46 edscott * xffm/: xffm.glade, xffm.gladep,
-	  glade/xffm_find.glade, glade/xffm_find.gladep,
-	  glade/xffm_main.glade, glade/xffm_main.gladep,
-	  glade/xffm_remove.glade, glade/xffm_remove.gladep,
-	  libs/Makefile.am, libs/Makefile.in, libs/apps.c,
-	  libs/bookmarks.c, libs/combo.c, libs/combo.h, libs/cpy.c,
-	  libs/dnd.c, libs/duplicate.c, libs/entry.c, libs/filter.c,
-	  libs/filter.h, libs/find.c, libs/fstab.c, libs/goto.c,
-	  libs/help.c, libs/input.c, libs/input.h, libs/menu_callbacks.c,
-	  libs/menu_callbacks.h, libs/misc.c, libs/monitor.c, libs/new.c,
-	  libs/options.c, libs/pasteboard.c, libs/print.c, libs/refresh.c,
-	  libs/reg.c, libs/remove.c, libs/rename.c, libs/run.c,
-	  libs/scramble.c, libs/settings.c, libs/symlink.c,
-	  libs/terminal.c, libs/touch.c, libs/trash.c, libs/tubo.c,
-	  libs/xfdiff.c, libs/zoom.c, smb/smb_list.c, src/Makefile.am,
-	  src/Makefile.in, src/add_file.c, src/add_folder.c,
+	  keybindings.c,
+	  keybindings.h, treeview.c, treeview.h: scroll by keyboard is now
+	  case insensitive, if shift is pressed, scroll search w ill
+	  proceed
+	  backwards. Backward scroll-search will not wrap. Forward
+	  scroll-sear ch will wrap (as before).
+	  
+	  2003-10-09 04:14 edscott
+	  
+	  * xffm/: glade/xffm_main.glade, libs/apps.c, libs/bookmarks.c,
+	  libs/combo.c, libs/cpy.c, libs/dummies.c, libs/duplicate.c,
+	  libs/entry.c, libs/filter.c, libs/find.h, libs/goto.c,
+	  libs/goto.h,
+	  libs/icons.c, libs/input.c, libs/menu.c, libs/menu_callbacks.c,
+	  libs/misc.c, libs/monitor.c, libs/options.c, libs/options.h,
+	  libs/print.h, libs/refresh.c, libs/reg.c, libs/reg.h,
+	  libs/remove.c, libs/remove.h, libs/rename.c, libs/run.c,
+	  libs/run.h, libs/symlink.c, libs/touch.c, libs/trash.c,
+	  smb/smb_download.c, smb/smb_list.c, src/glade_main_gui.c,
+	  src/main.c, src/treeview.c, src/widgets.c: eliminate all
+	  warnings
+	  when compiling with --enable-debug
+	  
+	  2003-10-09 01:46 edscott
+	  
+	  * xffm/: xffm.glade, xffm.gladep, glade/xffm_find.glade,
+	  glade/xffm_find.gladep, glade/xffm_main.glade,
+	  glade/xffm_main.gladep, glade/xffm_remove.glade,
+	  glade/xffm_remove.gladep, libs/Makefile.am, libs/Makefile.in,
+	  libs/apps.c, libs/bookmarks.c, libs/combo.c, libs/combo.h,
+	  libs/cpy.c, libs/dnd.c, libs/duplicate.c, libs/entry.c,
+	  libs/filter.c, libs/filter.h, libs/find.c, libs/fstab.c,
+	  libs/goto.c, libs/help.c, libs/input.c, libs/input.h,
+	  libs/menu_callbacks.c, libs/menu_callbacks.h, libs/misc.c,
+	  libs/monitor.c, libs/new.c, libs/options.c, libs/pasteboard.c,
+	  libs/print.c, libs/refresh.c, libs/reg.c, libs/remove.c,
+	  libs/rename.c, libs/run.c, libs/scramble.c, libs/settings.c,
+	  libs/symlink.c, libs/terminal.c, libs/touch.c, libs/trash.c,
+	  libs/tubo.c, libs/xfdiff.c, libs/zoom.c, smb/smb_list.c,
+	  src/Makefile.am, src/Makefile.in, src/add_file.c,
+	  src/add_folder.c,
 	  src/add_node_contents.c, src/aux.c, src/callbacks.c,
 	  src/glade_callbacks.c, src/glade_find_callbacks.c,
 	  src/glade_find_callbacks.h, src/glade_find_gui.c,
 	  src/glade_find_gui.h, src/glade_gui.c,
-	  src/glade_main_callbacks.c, src/glade_main_callbacks.h,
-	  src/glade_main_gui.c, src/glade_main_gui.h,
-	  src/glade_remove_callbacks.c, src/glade_remove_callbacks.h,
-	  src/glade_remove_gui.c, src/glade_remove_gui.h, src/main.c,
-	  src/mcs-manager.c, src/treeview.c, src/widgets.c: broke glade
-	  files into three parts 2003-10-08 23:43 xfce * xfwm4/src/:
-	  client.c, events.c, settings.c: [no log message] 2003-10-08
-	  22:29 xfce * xfwm4/themes/default.keys/keythemerc: Change
-	  raise/lower key 2003-10-08 22:24 xfce * xfwm4/: src/settings.c,
-	  themes/default.keys/keythemerc: Fix raise/lower key shortcut
-	  patch 2003-10-08 22:12 xfce * xfwm4/: configure, configure.ac,
-	  themes/Makefile.am, themes/Makefile.in,
-	  themes/default/title-2-active.xpm,
+	  src/glade_main_callbacks.c,
+	  src/glade_main_callbacks.h, src/glade_main_gui.c,
+	  src/glade_main_gui.h, src/glade_remove_callbacks.c,
+	  src/glade_remove_callbacks.h, src/glade_remove_gui.c,
+	  src/glade_remove_gui.h, src/main.c, src/mcs-manager.c,
+	  src/treeview.c, src/widgets.c: broke glade files into three
+	  parts
+	  
+	  2003-10-08 23:43 xfce
+	  
+	  * xfwm4/src/: client.c, events.c, settings.c: [no log message]
+	  
+	  2003-10-08 22:29 xfce
+	  
+	  * xfwm4/themes/default.keys/keythemerc: Change raise/lower key
+	  
+	  2003-10-08 22:24 xfce
+	  
+	  * xfwm4/: src/settings.c, themes/default.keys/keythemerc: Fix
+	  raise/lower key shortcut patch
+	  
+	  2003-10-08 22:12 xfce
+	  
+	  * xfwm4/: configure, configure.ac, themes/Makefile.am,
+	  themes/Makefile.in, themes/default/title-2-active.xpm,
 	  themes/default/title-2-inactive.xpm,
 	  themes/default/title-4-active.xpm,
 	  themes/default/title-4-inactive.xpm,
 	  themes/default/top-right-active.xpm,
 	  themes/default/top-right-inactive.xpm: Add missing files
-	  2003-10-08 10:20 huysmans * xfdesktop/doc/C/xfdesktop.html,
-	  xfdesktop/doc/C/xfdesktop.xml,
+	  
+	  2003-10-08 10:20 huysmans
+	  
+	  * xfdesktop/doc/C/xfdesktop.html, xfdesktop/doc/C/xfdesktop.xml,
 	  xfdesktop/doc/C/images/Makefile.am,
 	  xfdesktop/doc/C/images/Makefile.in,
 	  xfdesktop/doc/C/images/xfdesktop-workspace.png,
@@ -8334,16 +8755,27 @@
 	  xfwm4/mcs-plugin/workspaces.c, xfwm4/mcs-plugin/workspaces.h,
 	  xfwm4/mcs-plugin/workspaces.png, xfwm4/src/settings.c,
 	  xfwm4/themes/Makefile.am, xfwm4/themes/Makefile.in: Largish
-	  update: merge workspaces dialog from xfdesktop with workspace
-	  margins dialog from xfwm4. The new dialog is part of xfwm4.
-	  2003-10-07 22:44 xfce * libxfcegui4/libxfcegui4/: Makefile.am,
-	  Makefile.in, netk-class-group.c, netk-class-group.h,
-	  netk-private.h, netk-screen.c, netk-screen.h, netk-tasklist.c,
-	  netk-window.c, netk-window.h, netk-xutils.c, netk-xutils.h:
-	  Backport changes from libwnck HEAD cvs 2003-10-07 22:40 xfce *
-	  xffm/libs/: input.c, run.c: Include Edscott patches 2003-10-07
-	  22:31 xfce * xfwm4/: configure, configure.ac, src/client.c,
-	  src/events.c, themes/Makefile.am, themes/Makefile.in,
+	  update:
+	  merge workspaces dialog from xfdesktop with workspace margins
+	  dialog from xfwm4. The new dialog is part of xfwm4.
+	  
+	  2003-10-07 22:44 xfce
+	  
+	  * libxfcegui4/libxfcegui4/: Makefile.am, Makefile.in,
+	  netk-class-group.c, netk-class-group.h, netk-private.h,
+	  netk-screen.c, netk-screen.h, netk-tasklist.c, netk-window.c,
+	  netk-window.h, netk-xutils.c, netk-xutils.h: Backport changes
+	  from
+	  libwnck HEAD cvs
+	  
+	  2003-10-07 22:40 xfce
+	  
+	  * xffm/libs/: input.c, run.c: Include Edscott patches
+	  
+	  2003-10-07 22:31 xfce
+	  
+	  * xfwm4/: configure, configure.ac, src/client.c, src/events.c,
+	  themes/Makefile.am, themes/Makefile.in,
 	  themes/default/bottom-active.xpm,
 	  themes/default/bottom-inactive.xpm,
 	  themes/default/bottom-left-active.xpm,
@@ -8353,8 +8785,8 @@
 	  themes/default/left-active.xpm,
 	  themes/default/left-inactive.xpm,
 	  themes/default/right-active.xpm,
-	  themes/default/right-inactive.xpm, themes/default/themerc,
-	  themes/default/title-1-active.xpm,
+	  themes/default/right-inactive.xpm,
+	  themes/default/themerc, themes/default/title-1-active.xpm,
 	  themes/default/title-1-inactive.xpm,
 	  themes/default/title-2-active.xpm,
 	  themes/default/title-2-inactive.xpm,
@@ -8420,9 +8852,12 @@
 	  themes/tgc-large/top-left-inactive.xpm,
 	  themes/tgc-large/top-right-active.xpm,
 	  themes/tgc-large/top-right-inactive.xpm: Change default theme,
-	  keep old 4.0 theme as default-4.0 and add tgc-large theme
-	  Include improvements for fullscreen mode for gst from Arwed von
-	  Merkatz <v.merkatz@gmx.net> +++
+	  keep
+	  old 4.0 theme as default-4.0 and add tgc-large theme Include
+	  improvements for fullscreen mode for gst from Arwed von Merkatz
+	  <v.merkatz@gmx.net>
+	  
+	  +++
 
 2003-09-30 14:10  huysmans
 
@@ -8466,8 +8901,8 @@
 2003-09-21 22:19  xfce
 
 	* xfdesktop/trunk/configure, xfdesktop/trunk/configure.ac: Update
-	  version number to 4.0.0 Improve focus change for modal dialogs
-	  in xfwm4
+	  version number to 4.0.0
+	  Improve focus change for modal dialogs in xfwm4
 
 2003-09-19 21:10  xfce
 
@@ -8925,14 +9360,16 @@
 	  xfdesktop/trunk/doc/C/images/Makefile.in,
 	  xfdesktop/trunk/doc/Makefile.in, xfdesktop/trunk/ltmain.sh,
 	  xfdesktop/trunk/settings/Makefile.in,
-	  xfdesktop/trunk/src/Makefile.in: Update to libtool-1.5 Use
-	  proper complete CURRENT:REVISION:AGE scheme for lib versionning
+	  xfdesktop/trunk/src/Makefile.in: Update to libtool-1.5
+	  Use proper complete CURRENT:REVISION:AGE scheme for lib
+	  versionning
 
 2003-06-21 21:10  bmeurer
 
 	* xfdesktop/trunk/settings/Makefile.am,
 	  xfdesktop/trunk/settings/Makefile.in: Added menu_settings.* to
-	  EXTRA_DIST, so it doesn't break if POTFILES.in is wrong.
+	  EXTRA_DIST, so it doesn't break if POTFILES.in is
+	  wrong.
 
 2003-06-21 21:00  bmeurer
 
@@ -9016,8 +9453,8 @@
 
 	* xfdesktop/trunk/settings/backdrop_settings.c,
 	  xfdesktop/trunk/settings/workspaces_settings.c: Add new widget
-	  xfce_framebox to unify look across UI Migrate all plugins to
-	  this new widget
+	  xfce_framebox to unify look across UI
+	  Migrate all plugins to this new widget
 
 2003-06-09 17:18  xfce
 
@@ -9085,8 +9522,8 @@
 	  xfdesktop/trunk/settings/backdrop_settings.c: Changed UI of the
 	  "Backdrop settings" dialog as noted in
 	  20030604100902.GB36220@vmax.unix-ag.uni-siegen.de. No strings
-	  are affected by this change, therefore no translations have to
-	  be updated.
+	  are affected
+	  by this change, therefore no translations have to be updated.
 
 2003-06-04 09:40  huysmans
 
@@ -9095,8 +9532,8 @@
 2003-06-03 19:59  xfce
 
 	* xfdesktop/trunk/settings/backdrop_settings.c: Follow JAsper's
-	  advice and use the logo as default image Change default color to
-	  #404080 (kinda smooth purple)
+	  advice and use the logo as default image
+	  Change default color to #404080 (kinda smooth purple)
 
 2003-06-03 12:27  huysmans
 
@@ -9237,8 +9674,9 @@
 2003-05-21 20:30  xfce
 
 	* xfdesktop/trunk/settings/backdrop_settings.c: Use no backdrop by
-	  default Unselect "color only" checkbox when the user choose an
-	  image, assuming that (s)he want to see the selected image
+	  default
+	  Unselect "color only" checkbox when the user choose an image,
+	  assuming that (s)he want to see the selected image
 
 2003-05-20 21:30  huysmans
 
@@ -9366,8 +9804,8 @@
 	  xfdesktop/trunk/settings/Makefile.am,
 	  xfdesktop/trunk/settings/Makefile.in,
 	  xfdesktop/trunk/src/Makefile.in: Several changes. See
-	  http://www.home.unix-ag.org/bmeurer/xfce/index.html#20030502 for
-	  details.
+	  http://www.home.unix-ag.org/bmeurer/xfce/index.html#20030502
+	  for details.
 
 2003-05-01 10:42  bmeurer
 
@@ -9436,8 +9874,9 @@
 2003-04-25 09:53  bmeurer
 
 	* xfdesktop/trunk/m4/depends.m4: Updated depends.m4 and added
-	  macro for use with panel plugins. Updated libxfce4util to
-	  install the common m4 files into $(datadir)/xfce4/m4.
+	  macro for use with panel plugins. Updated
+	  libxfce4util to install the common m4 files into
+	  $(datadir)/xfce4/m4.
 
 2003-04-25 09:22  bmeurer
 
@@ -9461,9 +9900,11 @@
 
 	* xfdesktop/trunk/aclocal.m4, xfdesktop/trunk/configure,
 	  xfdesktop/trunk/m4/debug.m4, xfdesktop/trunk/src/main.c:
-	  Improved debug.m4: 1) --disable-debug no longer disables
-	  assert()'s 2) --enable-profiling now enables profiling code 3)
-	  --disable-asserts allows disabling of assert()'s
+	  Improved debug.m4:
+	  
+	  1) --disable-debug no longer disables assert()'s
+	  2) --enable-profiling now enables profiling code
+	  3) --disable-asserts allows disabling of assert()'s
 
 2003-04-06 20:34  bmeurer
 
@@ -9495,10 +9936,11 @@
 	* xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/main.c,
 	  xfdesktop/trunk/src/menu.c, xfdesktop/trunk/src/settings.c,
 	  xfdesktop/trunk/src/workspaces.c: Revert last change in debug.h,
-	  use "??" instead of ((__const char *)0) Replace DBG() statements
-	  with TRACE() in libxfcegui4 and xfwm4 because it was generating
-	  far too much logs in simple debug mode (use --enable-debug=full
-	  to get full traces) Add params to TRACE() (just like in DBG())
+	  use "??" instead of ((__const char *)0)
+	  Replace DBG() statements with TRACE() in libxfcegui4 and xfwm4
+	  because it was generating far too much logs in simple debug mode
+	  (use --enable-debug=full to get full traces)
+	  Add params to TRACE() (just like in DBG())
 	  Remove trailing CR in log messages
 
 2003-04-03 22:08  bmeurer
@@ -9546,22 +9988,27 @@
 	  xfdesktop/trunk/src/settings.h,
 	  xfdesktop/trunk/src/workspaces.c,
 	  xfdesktop/trunk/src/workspaces.h: Debugging stuff now provided
-	  by libxfce4util. As a result of this change libxfcegui4 now
-	  depends on libxfce4util. Some other updates. added a hint to the
-	  libxfcegui4 README for Xinerama problems with XFree86.
+	  by libxfce4util. As a result of this change
+	  libxfcegui4 now depends on libxfce4util.
+	  Some other updates.
+	  added a hint to the libxfcegui4 README for Xinerama problems
+	  with XFree86.
 
 2003-04-02 16:02  bmeurer
 
 	* xfdesktop/trunk/m4/X11.m4: Updated i18n stuff (libxfce4util now
-	  provides a i18n.h). updated X11.m4 updated xfwm4 to compile well
-	  with -Werror -Wall updated xfce-mcs-plugins and added a hint to
-	  the README for XFree86 users
+	  provides a i18n.h).
+	  updated X11.m4
+	  updated xfwm4 to compile well with -Werror -Wall
+	  updated xfce-mcs-plugins and added a hint to the README for
+	  XFree86 users
 
 2003-04-01 21:33  xfce
 
 	* xfdesktop/trunk/settings/backdrop_settings.c,
 	  xfdesktop/trunk/settings/workspaces_settings.c: Initialize early
-	  i18n in mcs plugins Add Etria theme
+	  i18n in mcs plugins
+	  Add Etria theme
 
 2003-03-27 21:37  xfce
 
@@ -9600,9 +10047,10 @@
 
 	* xfdesktop/trunk/ChangeLog, xfdesktop/trunk/Makefile.in,
 	  xfdesktop/trunk/ltcf-c.sh, xfdesktop/trunk/ltconfig,
-	  xfdesktop/trunk/ltmain.sh: Update ChangeLog Update build scripts
-	  (ie rerun autogen.sh) Update xfwm4's microdeck theme Remove 1
-	  pix border arround xffm menu bar
+	  xfdesktop/trunk/ltmain.sh: Update ChangeLog
+	  Update build scripts (ie rerun autogen.sh)
+	  Update xfwm4's microdeck theme
+	  Remove 1 pix border arround xffm menu bar
 
 2003-03-15 11:15  bmeurer
 
@@ -9655,8 +10103,8 @@
 	  xfdesktop/trunk/src/Makefile.in, xfdesktop/trunk/src/backdrop.c,
 	  xfdesktop/trunk/src/backdrop.h, xfdesktop/trunk/src/main.c,
 	  xfdesktop/trunk/src/main.h: Autotools update 2nd stage. Started
-	  putting common code into common/. Reverted removal of
-	  g_file_get_contents().
+	  putting common code into common/.
+	  Reverted removal of g_file_get_contents().
 
 2003-03-14 10:20  bmeurer
 
@@ -9690,10 +10138,12 @@
 	  xfdesktop/trunk/src/Makefile.in, xfdesktop/trunk/src/backdrop.c,
 	  xfdesktop/trunk/src/main.c, xfdesktop/trunk/src/main.h,
 	  xfdesktop/trunk/src/menu.c: Autotools update. Bugfixes in
-	  backdrop code (some of the memory leaks are fixed now, the
-	  others are to come soon, hopefully). Use xfce_*() instead of
-	  show_*(), also changed and added some message, so translations
-	  need to be updated.
+	  backdrop code (some of the memory leaks are
+	  fixed now, the others are to come soon, hopefully). Use xfce_*()
+	  instead
+	  of show_*(), also changed and added some message, so
+	  translations need
+	  to be updated.
 
 2003-03-13 20:39  xfce
 
@@ -9728,7 +10178,8 @@
 	  xfdesktop/trunk/doc/xml/Makefile.in, xfdesktop/trunk/ltmain.sh,
 	  xfdesktop/trunk/settings/Makefile.in,
 	  xfdesktop/trunk/src/Makefile.in: Fix xfce-mcs-manager API/ABI
-	  versionning Update configure/libtool to use libtool 1.4.3
+	  versionning
+	  Update configure/libtool to use libtool 1.4.3
 
 2003-02-28 10:55  bmeurer
 
@@ -9764,9 +10215,9 @@
 	  xfdesktop/trunk/settings/backdrop_settings.c,
 	  xfdesktop/trunk/settings/settings_common.c,
 	  xfdesktop/trunk/src/Makefile.in: Apply Benedikt Meurer
-	  <Benedikt.Meurer@unix-ag.uni-siegen.de> patch Replace all
-	  occurences of g_getenv("HOME") with g_get_home_dir() Regenerate
-	  all Makefiles.on and configure scripts
+	  <Benedikt.Meurer@unix-ag.uni-siegen.de> patch
+	  Replace all occurences of g_getenv("HOME") with g_get_home_dir()
+	  Regenerate all Makefiles.on and configure scripts
 
 2003-02-25 10:54  huysmans
 
@@ -9921,10 +10372,10 @@
 2003-02-07 09:56  xfce
 
 	* xfdesktop/trunk/settings/backdrop_settings.c,
-	  xfdesktop/trunk/src/backdrop.c: Fix problem with textured theme
-	  : 1) in backdrop window, by using our own theme not derived from
-	  the widget theme 2) in color oicker button by using
-	  GtkImage/GdkPixbuf
+	  xfdesktop/trunk/src/backdrop.c: Fix problem with textured theme :
+	  1) in backdrop window, by using our own theme not derived from
+	  the widget theme
+	  2) in color oicker button by using GtkImage/GdkPixbuf
 
 2003-02-04 21:31  huysmans
 
@@ -9950,14 +10401,17 @@
 
 	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/configure.ac: Fixed
 	  a couple of bugs related to adding dependency to libxml2 and
-	  adding a new data file: menu.xml
+	  adding a
+	  new data file: menu.xml
 
 2003-02-04 13:28  botsie
 
 	* xfdesktop/trunk/backdrops/Makefile.in,
 	  xfdesktop/trunk/settings/Makefile.in,
 	  xfdesktop/trunk/src/Makefile.in: Oops ... forgot to add
-	  dependency to libxml2. Required by configurable menu. ;-)
+	  dependency to libxml2. Required by configurable
+	  menu. ;-)
+	  
 	  Updated AUTHORS.
 
 2003-02-04 13:02  botsie
@@ -10069,6 +10523,7 @@
 	  xfdesktop/trunk/settings/backdrop_settings.c,
 	  xfdesktop/trunk/xfdesktop.spec.in: Modify default settings and
 	  add two background images so that defaults look like this :
+	  
 	  http://www.xfce.org/archive/xfce4default.png
 
 2003-01-25 14:35  xfce
@@ -10152,13 +10607,14 @@
 2003-01-18 13:51  xfce
 
 	* xfdesktop/trunk/src/backdrop.c, xfdesktop/trunk/src/main.c: *
-	  Remove double buffering in desktop window otherwise gtk
-	  allocates twice the size of the screen in video memory which can
-	  show to be unusable even on a GeForce II MX with 32Mb using 3D
-	  because the video RAM alloted to pixmaps cannot handle the total
-	  amount of pixmaps. * Reduce scale quality to BILINEAR instead of
-	  HYPER because it takes too long even on a PIV 1.7GHz scalling
-	  from 1024x768 to 1280x768
+	  Remove double buffering in desktop window otherwise
+	  gtk allocates twice the size of the screen in video memory
+	  which can show to be unusable even on a GeForce II MX with
+	  32Mb using 3D because the video RAM alloted to pixmaps
+	  cannot handle the total amount of pixmaps.
+	  * Reduce scale quality to BILINEAR instead of HYPER because it
+	  takes too
+	  long even on a PIV 1.7GHz scalling from 1024x768 to 1280x768
 
 2003-01-16 20:51  xfce
 
