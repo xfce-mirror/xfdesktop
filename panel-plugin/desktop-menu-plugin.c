@@ -45,6 +45,7 @@
 
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfce4panel/xfce-panel-plugin.h>
+#include <libxfce4panel/xfce-panel-convenience.h>
 
 #include "desktop-menu-stub.h"
 
@@ -182,7 +183,7 @@ dmp_set_size(XfcePanelPlugin *plugin, gint wsize, DMPlugin *dmp)
         if(pix) {
             pix_w = gdk_pixbuf_get_width(pix);
             pix_h = gdk_pixbuf_get_height(pix);
-            xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), pix);
+            gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), pix);
             g_object_unref(G_OBJECT(pix));
         }
     }
@@ -477,7 +478,7 @@ entry_focus_out_cb(GtkWidget *w, GdkEventFocus *evt, gpointer user_data)
         if(dmp->icon_file && *dmp->icon_file)
             dmp_set_size(dmp->plugin, xfce_panel_plugin_get_size(dmp->plugin), dmp);
         else
-            xfce_scaled_image_set_from_pixbuf(XFCE_SCALED_IMAGE(dmp->image), NULL);            
+            gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), NULL);            
     } else if(w == dmp->file_entry) {
         if(dmp->menu_file)
             g_free(dmp->menu_file);
@@ -893,8 +894,7 @@ dmp_new(XfcePanelPlugin *plugin)
     
     dmp->tooltip = gtk_tooltips_new();
     
-    dmp->button = gtk_toggle_button_new();
-    gtk_button_set_relief(GTK_BUTTON(dmp->button), GTK_RELIEF_NONE);
+    dmp->button = xfce_create_panel_toggle_button();
     gtk_widget_set_name(dmp->button, "xfce-menu-button");
     gtk_widget_show(dmp->button);
     gtk_tooltips_set_tip(dmp->tooltip, dmp->button, dmp->button_title, NULL);
@@ -907,7 +907,7 @@ dmp_new(XfcePanelPlugin *plugin)
     gtk_widget_show(dmp->box);
     gtk_container_add(GTK_CONTAINER(dmp->button), dmp->box);
     
-    dmp->image = xfce_scaled_image_new();
+    dmp->image = gtk_image_new();
     g_object_ref(G_OBJECT(dmp->image));
     gtk_widget_show(dmp->image);
     gtk_box_pack_start(GTK_BOX(dmp->box), dmp->image, TRUE, TRUE, 0);
