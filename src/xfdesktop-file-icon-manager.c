@@ -723,8 +723,8 @@ xfdesktop_file_icon_menu_toggle_mount(GtkWidget *widget,
                      * we want to keep it */
                     g_object_ref(G_OBJECT(icon));
                     g_hash_table_remove(fmanager->priv->icons, info->path);
-                    g_hash_table_insert(fmanager->priv->icons,
-                                        thunar_vfs_path_ref(new_path), icon);
+                    g_hash_table_replace(fmanager->priv->icons,
+                                         thunar_vfs_path_ref(new_path), icon);
                     
                     xfdesktop_file_icon_update_info(icon, new_info);
                     thunar_vfs_info_unref(new_info);
@@ -1847,7 +1847,8 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
                          G_CALLBACK(xfdesktop_file_icon_menu_popup), fmanager);
         xfdesktop_icon_view_add_item(fmanager->priv->icon_view,
                                      XFDESKTOP_ICON(icon));
-        g_hash_table_insert(fmanager->priv->icons, info->path, icon);
+        g_hash_table_replace(fmanager->priv->icons,
+                             thunar_vfs_path_ref(info->path), icon);
     } else {
         g_object_unref(G_OBJECT(icon));
         icon = NULL;
