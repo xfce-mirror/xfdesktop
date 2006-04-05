@@ -77,37 +77,6 @@ typedef struct _DMPlugin {
 } DMPlugin;
 
 
-#if GTK_CHECK_VERSION(2, 6, 0)
-/* util */
-GtkWidget *
-xfutil_custom_button_new(const gchar *text, const gchar *icon)
-{
-    GtkWidget *btn, *hbox, *img, *lbl;
-    
-    hbox = gtk_hbox_new(FALSE, 4);
-    gtk_widget_show(hbox);
-    
-    img = gtk_image_new_from_stock(icon, GTK_ICON_SIZE_BUTTON);
-    if(img) {
-        if(gtk_image_get_storage_type(GTK_IMAGE(img)) != GTK_IMAGE_EMPTY) {
-            gtk_widget_show(img);
-            gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, FALSE, 0);
-        } else
-            gtk_widget_destroy(img);
-    }
-    
-    lbl = gtk_label_new_with_mnemonic(text);
-    gtk_widget_show(lbl);
-    gtk_box_pack_start(GTK_BOX(hbox), lbl, FALSE, FALSE, 0);
-    
-    btn = gtk_button_new();
-    gtk_container_add(GTK_CONTAINER(btn), hbox);
-    gtk_label_set_mnemonic_widget(GTK_LABEL(lbl), btn);
-    
-    return btn;
-}
-#endif
-
 static gchar *
 dmp_get_real_path(const gchar *raw_path)
 {
@@ -194,6 +163,7 @@ dmp_set_size(XfcePanelPlugin *plugin, gint wsize, DMPlugin *dmp)
     if(dmp->show_button_title) {
         GtkRequisition req;
         
+        gtk_widget_set_size_request(dmp->label, -1, -1);
         gtk_widget_size_request(dmp->label, &req);
         if(orientation == GTK_ORIENTATION_HORIZONTAL)
             width += req.width + BORDER/2;
@@ -202,6 +172,15 @@ dmp_set_size(XfcePanelPlugin *plugin, gint wsize, DMPlugin *dmp)
                      + GTK_WIDGET(dmp->label)->style->xthickness);
             height += req.height + BORDER/2;
         }
+    }
+    
+    if(dmp->icon_file && dmp->show_button_title) {
+        gint delta = gtk_box_get_spacing(GTK_BOX(dmp->box));
+        
+        if(orientation == GTK_ORIENTATION_HORIZONTAL)
+            width += delta;
+        else
+            height += delta;
     }
     
     DBG("width: %d, height: %d", width, height);
@@ -830,11 +809,7 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
     gtk_widget_show(hbox);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
     
-#if GTK_CHECK_VERSION(2, 6, 0)
-    btn = xfutil_custom_button_new(_("_Edit Menu"), GTK_STOCK_EDIT);
-#else
-    btn = gtk_button_new_with_mnemonic(_("_Edit Menu"));
-#endif
+    btn = xfce_create_mixed_button(GTK_STOCK_EDIT, _("_Edit Menu"));
     gtk_widget_show(btn);
     gtk_box_pack_end(GTK_BOX(hbox), btn, FALSE, FALSE, 0);
     g_signal_connect(G_OBJECT(btn), "clicked",
