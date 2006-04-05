@@ -895,6 +895,7 @@ dmp_new(XfcePanelPlugin *plugin)
     
     dmp->button = gtk_toggle_button_new();
     gtk_button_set_relief(GTK_BUTTON(dmp->button), GTK_RELIEF_NONE);
+    gtk_widget_set_name(dmp->button, "xfce-menu-button");
     gtk_widget_show(dmp->button);
     gtk_tooltips_set_tip(dmp->tooltip, dmp->button, dmp->button_title, NULL);
     
