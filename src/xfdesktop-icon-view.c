@@ -378,10 +378,18 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                                                                icon_below);
                     }
                 } else {
-                    /* do nothing */
+                    /* expand the text */
+                    XfdesktopIcon *old_sel = icon_view->priv->last_clicked_item;
+                    
+                    icon_view->priv->last_clicked_item = icon;
+                    if(old_sel)
+                        xfdesktop_icon_view_clear_icon_extents(icon_view, old_sel);
+                    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
                 }
             } else {
                 /* clicked a non-selected icon */
+                XfdesktopIcon *old_sel;
+                
                 if(icon_view->priv->sel_mode != GTK_SELECTION_MULTIPLE
                    || !(evt->state & GDK_CONTROL_MASK))
                 {
@@ -399,7 +407,11 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                         icon_view->priv->first_clicked_item = NULL;
                 }
                 
+                old_sel = icon_view->priv->last_clicked_item;
                 icon_view->priv->last_clicked_item = icon;
+                if(old_sel)
+                    xfdesktop_icon_view_clear_icon_extents(icon_view, old_sel);
+                
                 if(!icon_view->priv->first_clicked_item)
                     icon_view->priv->first_clicked_item = icon;
                 
@@ -1579,7 +1591,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     pango_layout_set_text(playout, label, -1);
     pango_layout_get_size(playout, &text_w, &text_h);
     if(text_w > TEXT_WIDTH * PANGO_SCALE) {
-        if(state == GTK_STATE_NORMAL)
+        if(icon != icon_view->priv->last_clicked_item)
             pango_layout_set_ellipsize(playout, PANGO_ELLIPSIZE_END);
         else {
             pango_layout_set_wrap(playout, PANGO_WRAP_WORD_CHAR);
