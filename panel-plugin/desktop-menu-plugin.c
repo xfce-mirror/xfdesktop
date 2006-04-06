@@ -163,7 +163,6 @@ dmp_set_size(XfcePanelPlugin *plugin, gint wsize, DMPlugin *dmp)
     if(dmp->show_button_title) {
         GtkRequisition req;
         
-        gtk_widget_set_size_request(dmp->label, -1, -1);
         gtk_widget_size_request(dmp->label, &req);
         if(orientation == GTK_ORIENTATION_HORIZONTAL)
             width += req.width + BORDER/2;
@@ -639,6 +638,7 @@ dmp_button_title_focus_out_cb(GtkWidget *w, GdkEventFocus *evt,
     
     gtk_tooltips_set_tip(dmp->tooltip, dmp->button, dmp->button_title, NULL);
     gtk_label_set_text(GTK_LABEL(dmp->label), dmp->button_title);
+    dmp_set_size(dmp->plugin, xfce_panel_plugin_get_size(dmp->plugin), dmp);
     
     return FALSE;
 }
