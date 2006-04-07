@@ -1489,7 +1489,8 @@ xfdesktop_file_icon_menu_create_folder(GtkWidget *widget,
     
     if(GTK_RESPONSE_ACCEPT == gtk_dialog_run(GTK_DIALOG(dlg))) {
         gchar *name = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
-        ThunarVfsPath *path = thunar_vfs_path_relative(fmanager->priv->folder, name);
+        ThunarVfsPath *path = thunar_vfs_path_relative(fmanager->priv->folder,
+                                                       name);
         ThunarVfsJob *job = thunar_vfs_make_directory(path, NULL);
         if(job) {
             g_object_set_data_full(G_OBJECT(job), "xfdesktop-folder-name",
@@ -1508,10 +1509,101 @@ xfdesktop_file_icon_menu_create_folder(GtkWidget *widget,
 }
 
 static void
+xfdesktop_file_icon_create_file_error(ThunarVfsJob *job,
+                                      GError *error,
+                                      gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    const gchar *file_name = g_object_get_data(G_OBJECT(job),
+                                               "xfdesktop-file-name");
+    gchar *primary = g_strdup_printf(_("Unable to create file named \"%s\":"),
+                                     file_name);
+    
+    xfce_message_dialog(GTK_WINDOW(toplevel), _("Create File Failed"),
+                        GTK_STOCK_DIALOG_ERROR, primary, error->message,
+                        GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    
+    g_free(primary);
+}
+
+static void
 xfdesktop_file_icon_template_item_activated(GtkWidget *mi,
                                             gpointer user_data)
 {
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    GtkWidget *dlg, *entry = NULL, *toplevel;
+    GdkPixbuf *pix = NULL;
+    ThunarVfsInfo *info = g_object_get_data(G_OBJECT(mi), "thunar-vfs-info");
+    ThunarVfsJob *job = NULL;
     
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    
+    if(info) {
+        gchar *title;
+        const gchar *icon_name;
+        gint w, h;
+        
+        thunar_vfs_info_ref(info);
+        
+        title = g_strdup_printf(_("Create Document from template \"%s\""),
+                                info->display_name);
+        
+        icon_name = thunar_vfs_mime_info_lookup_icon_name(info->mime_info,
+                                                          gtk_icon_theme_get_default());
+        gtk_icon_size_lookup(GTK_ICON_SIZE_DIALOG, &w, &h);
+        pix = xfce_themed_icon_load(icon_name, w);
+        
+        dlg = xfdesktop_file_icon_create_entry_dialog(title,
+                                                      GTK_WINDOW(toplevel),
+                                                      pix,
+                                                      _("Enter the new name:"),
+                                                      info->display_name,
+                                                      _("Create"),
+                                                      &entry);
+        g_free(title);
+    } else {
+        pix = gtk_widget_render_icon(GTK_WIDGET(fmanager->priv->icon_view),
+                                     GTK_STOCK_NEW, GTK_ICON_SIZE_DIALOG, NULL);
+        dlg = xfdesktop_file_icon_create_entry_dialog(_("Create Empty File"),
+                                                      GTK_WINDOW(toplevel),
+                                                      pix,
+                                                      _("Enter the new name:"),
+                                                      _("New Empty File"),
+                                                      _("Create"),
+                                                      &entry);
+    }
+    
+    if(pix)
+        g_object_unref(G_OBJECT(pix));
+    
+    if(GTK_RESPONSE_ACCEPT == gtk_dialog_run(GTK_DIALOG(dlg))) {
+        gchar *name = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
+        ThunarVfsPath *path = thunar_vfs_path_relative(fmanager->priv->folder,
+                                                       name);
+        if(info)
+            job = thunar_vfs_copy_file(info->path, path, NULL);
+        else
+            job = thunar_vfs_create_file(path, NULL);
+        
+        if(job) {
+            g_object_set_data_full(G_OBJECT(job), "xfdesktop-file-name",
+                                   name, (GDestroyNotify)g_free);
+            g_signal_connect(G_OBJECT(job), "error",
+                             G_CALLBACK(xfdesktop_file_icon_create_file_error),
+                             fmanager);
+            g_signal_connect(G_OBJECT(job), "finished",
+                             G_CALLBACK(g_object_unref), NULL);
+            /* don't free |name|, GObject will do it */
+        } else
+            g_free(name);
+        thunar_vfs_path_unref(path);        
+    }
+    
+    gtk_widget_destroy(dlg);
+    
+    if(info)
+        thunar_vfs_info_unref(info);
 }
 
 /* copied from Thunar, Copyright (c) 2005 Benedikt Meurer */
