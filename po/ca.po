@@ -7,9 +7,9 @@
 # Pau Rul·lan Ferragut <paurullan@bulma.net> 2005, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: ca\n"
+"Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-18 17:58+0900\n"
+"POT-Creation-Date: 2006-04-09 11:13+0900\n"
 "PO-Revision-Date: 2006-04-04 08:26+0200\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan\n"
@@ -67,7 +67,7 @@ msgstr "Surt"
 
 #. Name
 #: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:926
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:959
 msgid "Name:"
 msgstr "Nom:"
 
@@ -199,7 +199,7 @@ msgid "Select command"
 msgstr "Esculliu ordre"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:491
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:524
 msgid "Question"
 msgstr "Pregunta"
 
@@ -319,14 +319,14 @@ msgstr "Ocult"
 msgid "Select icon"
 msgstr "Seleccioneu una icona"
 
-#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:555
+#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:534
 #: ../settings/appearance-settings.c:529
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Tots els fitxers"
 
-#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:561
+#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:540
 #: ../settings/appearance-settings.c:533
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
@@ -334,7 +334,7 @@ msgstr "Fitxers d'imatge"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:717
+#: ../panel-plugin/desktop-menu-plugin.c:697
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Menú Xfce"
@@ -348,81 +348,84 @@ msgstr "No s'ha pogut tancar la sessió"
 msgid ""
 "Quitting the session requires that Xfce's session manager (xfce4-session) is "
 "running, but it was not detected.  Please quit Xfce via another means."
-msgstr "Per tancar la sessió s'ha de menester el gestor de sessions d'Xfce, xfce4-session, en execució. Malgrat això no s'ha pogut trobar el gestor. Si us plau, sortiu d'Xfce d'alguna altra manera."
+msgstr ""
+"Per tancar la sessió s'ha de menester el gestor de sessions d'Xfce, xfce4-"
+"session, en execució. Malgrat això no s'ha pogut trobar el gestor. Si us "
+"plau, sortiu d'Xfce d'alguna altra manera."
 
 #: ../modules/menu/desktop-menu-file.c:129
-#, c-format
-#, fuzzy
+#, fuzzy, c-format
 msgid ""
 "Quitting the session requires the 'xfce4-session-logout' command, but it "
 "could not be found: %s"
-msgstr "Per tancar la sessió s'ha de menester l'ordre 'xfce4-session-logout' però no s'ha pogut trobar: %s"
+msgstr ""
+"Per tancar la sessió s'ha de menester l'ordre 'xfce4-session-logout' però no "
+"s'ha pogut trobar: %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
 msgstr "/Altres"
 
-#: ../panel-plugin/desktop-menu-plugin.c:538
+#: ../panel-plugin/desktop-menu-plugin.c:517
 msgid "Select Icon"
 msgstr "Seleccioneu icona"
 
-#: ../panel-plugin/desktop-menu-plugin.c:540
+#: ../panel-plugin/desktop-menu-plugin.c:519
 msgid "Select Menu File"
 msgstr "Seleccioneu un fitxer de menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:569
+#: ../panel-plugin/desktop-menu-plugin.c:548
 msgid "Menu Files"
 msgstr "Fitxers de menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:686
+#: ../panel-plugin/desktop-menu-plugin.c:666
 #: ../settings/behavior-settings.c:201
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "No s'ha pogut llançar xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:709
+#: ../panel-plugin/desktop-menu-plugin.c:689
 msgid "Edit Properties"
 msgstr "Edita propietats"
 
-#: ../panel-plugin/desktop-menu-plugin.c:727
+#: ../panel-plugin/desktop-menu-plugin.c:707
 msgid "Button"
 msgstr "Botó"
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:720
 msgid "Button _title:"
 msgstr "Títol del botó:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:753
+#: ../panel-plugin/desktop-menu-plugin.c:733
 msgid "_Show title in button"
 msgstr "Mo_stra títol dins el botó"
 
-#: ../panel-plugin/desktop-menu-plugin.c:760
+#: ../panel-plugin/desktop-menu-plugin.c:740
 msgid "Menu File"
 msgstr "Fitxer de menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:772
+#: ../panel-plugin/desktop-menu-plugin.c:752
 msgid "Use default _desktop menu file"
 msgstr "Utilitzar el fitxer d'escriptori predeterminat"
 
-#: ../panel-plugin/desktop-menu-plugin.c:781
+#: ../panel-plugin/desktop-menu-plugin.c:761
 msgid "Use _custom menu file:"
 msgstr "Utilitza un _fitxer de menú personalitzat:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:833
-#: ../panel-plugin/desktop-menu-plugin.c:835
+#: ../panel-plugin/desktop-menu-plugin.c:812
 #: ../settings/behavior-settings.c:251
 msgid "_Edit Menu"
 msgstr "_Edita Menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:842
+#: ../panel-plugin/desktop-menu-plugin.c:818
 msgid "Icons"
 msgstr "Icones"
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:830
 msgid "_Button icon:"
 msgstr "_Botó d'icona:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:878
+#: ../panel-plugin/desktop-menu-plugin.c:854
 msgid "Show _icons in menu"
 msgstr "Mostra icones al menú"
 
@@ -483,8 +486,7 @@ msgid "A_djust Brightness:"
 msgstr "Ajusta brillantor:"
 
 #: ../settings/appearance-settings.c:798
-#, c-format
-#, fuzzy
+#, fuzzy, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "No s'ha pogut gestionar l'escriptori des de Xfce (%s)."
 
@@ -614,7 +616,8 @@ msgid ""
 msgstr ""
 "No s'ha pogut desar l'arxiu %s: %s\n"
 "\n"
-"Si us plau indiqueu un altre ubicació o preméu cancelar al diàleg a fi de descartar els c anvis."
+"Si us plau indiqueu un altre ubicació o preméu cancelar al diàleg a fi de "
+"descartar els c anvis."
 
 #: ../settings/backdrop-list-manager.c:430
 #, fuzzy
@@ -677,7 +680,7 @@ msgid "Desktop Icons"
 msgstr "Escriptori Icones"
 
 #: ../settings/behavior-settings.c:272
-#: ../src/xfdesktop-file-icon-manager.c:874
+#: ../src/xfdesktop-file-icon-manager.c:907
 #, fuzzy
 msgid "None"
 msgstr "Cap"
@@ -708,14 +711,12 @@ msgid "Custom _font size:"
 msgstr "Personalitzat mida:"
 
 #: ../src/main.c:242
-#, c-format
-#, fuzzy
+#, fuzzy, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Això és %s versió %s, executant-se sobre Xfce %s.\n"
 
 #: ../src/main.c:244
-#, c-format
-#, fuzzy
+#, fuzzy, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Construit sobre GTK+ %d.%d.%d, enllaçat amb GTK+ %d.%d.%d."
 
@@ -724,8 +725,7 @@ msgid "Build options:\n"
 msgstr "Opcions de construcció:\n"
 
 #: ../src/main.c:249
-#, c-format
-#, fuzzy
+#, fuzzy, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "Menú de l'escriptori:           %s\n"
 
@@ -755,15 +755,20 @@ msgstr "Són opcions:\n"
 
 #: ../src/main.c:290
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "    -reload      Refresca tots els paràmetres, refresca el llistat d'imatges\n"
+msgstr ""
+"    -reload      Refresca tots els paràmetres, refresca el llistat "
+"d'imatges\n"
 
 #: ../src/main.c:291
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu           Alça un menú sobre la posicó del ratolí\n"
 
 #: ../src/main.c:292
-msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "   -windowlist          Alça el llistat de finestres sobre la posició del ratolí\n"
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+"   -windowlist          Alça el llistat de finestres sobre la posició del "
+"ratolí\n"
 
 #: ../src/main.c:293
 msgid "    -quit        Cause xfdesktop to quit\n"
@@ -794,15 +799,15 @@ msgid "_Remove Workspace '%s'"
 msgstr "Suprimeix l'à_rea de treball '%s'"
 
 #: ../src/xfdesktop-file-icon-manager.c:339
-#: ../src/xfdesktop-file-icon-manager.c:613
-#: ../src/xfdesktop-file-icon-manager.c:647
+#: ../src/xfdesktop-file-icon-manager.c:646
+#: ../src/xfdesktop-file-icon-manager.c:680
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "No s'ha pogut executar \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:341
-#: ../src/xfdesktop-file-icon-manager.c:615
-#: ../src/xfdesktop-file-icon-manager.c:650
+#: ../src/xfdesktop-file-icon-manager.c:648
+#: ../src/xfdesktop-file-icon-manager.c:683
 #, fuzzy
 msgid "Launch Error"
 msgstr "Error"
@@ -812,291 +817,356 @@ msgstr "Error"
 msgid "The associated application could not be found or executed."
 msgstr "aplicació no o."
 
-#: ../src/xfdesktop-file-icon-manager.c:403
-#, c-format
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:470
+#, fuzzy, c-format
 msgid "Rename \"%s\""
 msgstr "Reanomena \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:433
+#: ../src/xfdesktop-file-icon-manager.c:477
+#: ../src/xfdesktop-file-icon-manager.c:1482
+#: ../src/xfdesktop-file-icon-manager.c:1560
+#: ../src/xfdesktop-file-icon-manager.c:1571
 #, fuzzy
 msgid "Enter the new name:"
 msgstr "Retorn   nou nom:"
 
-#: ../src/xfdesktop-file-icon-manager.c:493
-#: ../src/xfdesktop-file-icon-manager.c:513
+#: ../src/xfdesktop-file-icon-manager.c:479
+#, fuzzy
+msgid "Rename"
+msgstr "_Reanomena..."
+
+#: ../src/xfdesktop-file-icon-manager.c:526
+#: ../src/xfdesktop-file-icon-manager.c:546
 #, fuzzy
 msgid "If you delete a file, it is permanently lost."
 msgstr "Si tu suprimeix a fitxer és."
 
-#: ../src/xfdesktop-file-icon-manager.c:507
+#: ../src/xfdesktop-file-icon-manager.c:540
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Esteu segur que voleu suprimir els següents %d fitxers?"
 
-#: ../src/xfdesktop-file-icon-manager.c:510
+#: ../src/xfdesktop-file-icon-manager.c:543
 #, fuzzy
 msgid "Delete Multiple Files"
 msgstr "Suprimeix multiple Fitxers"
 
-#: ../src/xfdesktop-file-icon-manager.c:652
+#: ../src/xfdesktop-file-icon-manager.c:685
 #, fuzzy
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr "a fitxer manager per."
 
-#: ../src/xfdesktop-file-icon-manager.c:737
+#: ../src/xfdesktop-file-icon-manager.c:770
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "No s'ha pogut muntar \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:738
+#: ../src/xfdesktop-file-icon-manager.c:771
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "No s'ha pogut desmuntar \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:741
+#: ../src/xfdesktop-file-icon-manager.c:774
 #, fuzzy
 msgid "Mount Failed"
 msgstr "Munta Fallit"
 
-#: ../src/xfdesktop-file-icon-manager.c:741
+#: ../src/xfdesktop-file-icon-manager.c:774
 #, fuzzy
 msgid "Unmount Failed"
 msgstr "Fallit"
 
-#: ../src/xfdesktop-file-icon-manager.c:770
+#: ../src/xfdesktop-file-icon-manager.c:803
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "No s'ha pogut expulsar \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:772
+#: ../src/xfdesktop-file-icon-manager.c:805
 #, fuzzy
 msgid "Eject Failed"
 msgstr "Expulsa Fallit"
 
-#: ../src/xfdesktop-file-icon-manager.c:841
-#, c-format
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:874
+#, fuzzy, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr "No s'ha pogut definir l'aplicació per defecte de \"%s\" per \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:844
+#: ../src/xfdesktop-file-icon-manager.c:877
 #, fuzzy
 msgid "Properties Error"
 msgstr "Propietats Error"
 
-#: ../src/xfdesktop-file-icon-manager.c:874
+#: ../src/xfdesktop-file-icon-manager.c:907
 #, fuzzy
 msgid "Write only"
 msgstr "Escriu"
 
-#: ../src/xfdesktop-file-icon-manager.c:874
+#: ../src/xfdesktop-file-icon-manager.c:907
 #, fuzzy
 msgid "Read only"
 msgstr "Només lectura"
 
-#: ../src/xfdesktop-file-icon-manager.c:874
+#: ../src/xfdesktop-file-icon-manager.c:907
 #, fuzzy
 msgid "Read & Write"
 msgstr "Llegeix Escriu"
 
-#: ../src/xfdesktop-file-icon-manager.c:901
+#: ../src/xfdesktop-file-icon-manager.c:934
 #, fuzzy
 msgid "General"
 msgstr "General"
 
-#: ../src/xfdesktop-file-icon-manager.c:952
+#: ../src/xfdesktop-file-icon-manager.c:985
 #, fuzzy
 msgid "Kind:"
 msgstr "Tipus:"
 
-#: ../src/xfdesktop-file-icon-manager.c:962
+#: ../src/xfdesktop-file-icon-manager.c:995
 #, fuzzy
 msgid "broken link"
 msgstr "enllaç"
 
-#: ../src/xfdesktop-file-icon-manager.c:965
-#, c-format
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:998
+#, fuzzy, c-format
 msgid "link to %s"
 msgstr "enllaç a %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:982
+#: ../src/xfdesktop-file-icon-manager.c:1015
 #, fuzzy
 msgid "Link Target:"
 msgstr "Enllaç Objectiu:"
 
-#: ../src/xfdesktop-file-icon-manager.c:999
-#: ../src/xfdesktop-file-icon-manager.c:1158
+#: ../src/xfdesktop-file-icon-manager.c:1032
+#: ../src/xfdesktop-file-icon-manager.c:1191
 #, fuzzy
 msgid "(unknown)"
 msgstr "(desconegut)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1054
 #, fuzzy
 msgid "Open With:"
 msgstr "Obre:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1098
+#: ../src/xfdesktop-file-icon-manager.c:1131
 #, fuzzy
 msgid "Modified:"
 msgstr "Modificat:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1116
+#: ../src/xfdesktop-file-icon-manager.c:1149
 #, fuzzy
 msgid "Accessed:"
 msgstr "Accedit:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1143
+#: ../src/xfdesktop-file-icon-manager.c:1176
 #, fuzzy
 msgid "Free Space:"
 msgstr "Lliure Espai:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1145
+#: ../src/xfdesktop-file-icon-manager.c:1178
 #, fuzzy
 msgid "Size:"
 msgstr "Mida:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1161
+#: ../src/xfdesktop-file-icon-manager.c:1194
 msgid "%s (%"
 msgstr "%s (%"
 
-#: ../src/xfdesktop-file-icon-manager.c:1161
+#: ../src/xfdesktop-file-icon-manager.c:1194
 #, fuzzy
 msgid " Bytes)"
 msgstr "Bytes"
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1176
+#: ../src/xfdesktop-file-icon-manager.c:1209
 #, fuzzy
 msgid "Permissions"
 msgstr "Permisos"
 
-#: ../src/xfdesktop-file-icon-manager.c:1198
+#: ../src/xfdesktop-file-icon-manager.c:1231
 #, fuzzy
 msgid "Owner:"
 msgstr "Propietari:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1216
-#: ../src/xfdesktop-file-icon-manager.c:1254
+#: ../src/xfdesktop-file-icon-manager.c:1249
+#: ../src/xfdesktop-file-icon-manager.c:1287
 msgid "Access:"
 msgstr "Accés:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1239
+#: ../src/xfdesktop-file-icon-manager.c:1272
 #, fuzzy
 msgid "Group:"
 msgstr "Grup:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1277
+#: ../src/xfdesktop-file-icon-manager.c:1310
 #, fuzzy
 msgid "Others:"
 msgstr "Altres:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1350
-#, c-format
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:1383
+#, fuzzy, c-format
 msgid "_Open With \"%s\""
 msgstr "_Obre amb \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1353
-#, c-format
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:1386
+#, fuzzy, c-format
 msgid "Open With \"%s\""
 msgstr "Obre amb \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1454
+#: ../src/xfdesktop-file-icon-manager.c:1447
+#, fuzzy, c-format
+msgid "Unable to create folder named \"%s\":"
+msgstr "No s'ha pogut muntar \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:1450
+msgid "Create Folder Failed"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1479
+msgid "Create New Folder"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1483
+msgid "New Folder"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1484
+#: ../src/xfdesktop-file-icon-manager.c:1562
+#: ../src/xfdesktop-file-icon-manager.c:1573
+msgid "Create"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1520
+#, fuzzy, c-format
+msgid "Unable to create file named \"%s\":"
+msgstr "No s'ha pogut expulsar \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:1523
+#, fuzzy
+msgid "Create File Failed"
+msgstr "Suprimeix multiple Fitxers"
+
+#: ../src/xfdesktop-file-icon-manager.c:1549
+#, c-format
+msgid "Create Document from template \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1568
+msgid "Create Empty File"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1572
+msgid "New Empty File"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1827
 #, fuzzy
 msgid "_Open all"
 msgstr "Obre all"
 
-#: ../src/xfdesktop-file-icon-manager.c:1465
+#: ../src/xfdesktop-file-icon-manager.c:1838
 #, fuzzy
 msgid "_Open"
 msgstr "_Obre"
 
-#: ../src/xfdesktop-file-icon-manager.c:1476
+#: ../src/xfdesktop-file-icon-manager.c:1849
 #, fuzzy
 msgid "_Execute"
 msgstr "_Executa"
 
-#: ../src/xfdesktop-file-icon-manager.c:1520
+#: ../src/xfdesktop-file-icon-manager.c:1893
 #, fuzzy
 msgid "Open With"
 msgstr "Obre amb"
 
-#: ../src/xfdesktop-file-icon-manager.c:1550
+#: ../src/xfdesktop-file-icon-manager.c:1923
 #, fuzzy
 msgid "Open With Other _Application..."
 msgstr "Obre Altres Aplicació."
 
-#: ../src/xfdesktop-file-icon-manager.c:1633
+#: ../src/xfdesktop-file-icon-manager.c:2006
 #, fuzzy
 msgid "_Mount Volume"
 msgstr "_Munta el volum"
 
-#: ../src/xfdesktop-file-icon-manager.c:1644
+#: ../src/xfdesktop-file-icon-manager.c:2017
 #, fuzzy
 msgid "_Unmount Volume"
 msgstr "Desm_unta el volum"
 
-#: ../src/xfdesktop-file-icon-manager.c:1656
+#: ../src/xfdesktop-file-icon-manager.c:2029
 #, fuzzy
 msgid "_Eject Volume"
 msgstr "Expulsa Volum"
 
-#: ../src/xfdesktop-file-icon-manager.c:1666
+#: ../src/xfdesktop-file-icon-manager.c:2039
 #, fuzzy
 msgid "_Copy Files"
 msgstr "_Còpia els fitxers"
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:2040
 #, fuzzy
 msgid "_Copy File"
 msgstr "_Còpia el fitxer"
 
-#: ../src/xfdesktop-file-icon-manager.c:1676
+#: ../src/xfdesktop-file-icon-manager.c:2049
 #, fuzzy
 msgid "Cu_t Files"
 msgstr "Re_talla els fitxer"
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
+#: ../src/xfdesktop-file-icon-manager.c:2050
 #, fuzzy
 msgid "Cu_t File"
 msgstr "Re_talla el fitxer"
 
-#: ../src/xfdesktop-file-icon-manager.c:1686
+#: ../src/xfdesktop-file-icon-manager.c:2059
 #, fuzzy
 msgid "_Delete Files"
 msgstr "Suprimeix Fitxers"
 
-#: ../src/xfdesktop-file-icon-manager.c:1687
+#: ../src/xfdesktop-file-icon-manager.c:2060
 #, fuzzy
 msgid "_Delete File"
 msgstr "Suprimeix Fitxer"
 
-#: ../src/xfdesktop-file-icon-manager.c:1699
+#: ../src/xfdesktop-file-icon-manager.c:2072
 #, fuzzy
 msgid "_Rename..."
 msgstr "_Reanomena..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1717
+#: ../src/xfdesktop-file-icon-manager.c:2090
 msgid "_Properties..."
 msgstr "_Propietats..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2503 ../src/xfdesktop-file-icon.c:511
+#: ../src/xfdesktop-file-icon-manager.c:2106
+msgid "Create _Folder..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2113
+msgid "Create _Document"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2134
+msgid "No Templates installed"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2146
+#, fuzzy
+msgid "_Empty File"
+msgstr "_Còpia el fitxer"
+
+#: ../src/xfdesktop-file-icon-manager.c:2929 ../src/xfdesktop-file-icon.c:511
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "No s'ha pogut executar \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:2505 ../src/xfdesktop-file-icon.c:513
+#: ../src/xfdesktop-file-icon-manager.c:2931 ../src/xfdesktop-file-icon.c:513
 msgid "Run Error"
 msgstr "Error d'execució"
 
 #: ../src/xfdesktop-file-icon.c:440
-#, c-format
-#, fuzzy
+#, fuzzy, c-format
 msgid "There was an error %s \"%s\" to \"%s\":"
 msgstr "Hi ha hagut un error %s \"%s\" a \"%s\""
 
@@ -1118,8 +1188,7 @@ msgid "File Error"
 msgstr "Fitxer Error"
 
 #: ../src/xfdesktop-file-icon.c:656
-#, c-format
-#, fuzzy
+#, fuzzy, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "No s'ha pogut renomenar \"%s\" a \"%s\":"
 
@@ -1152,4 +1221,3 @@ msgstr "Paràmetres per a   Escriptori Gestor"
 #, fuzzy
 msgid "Xfce 4 Desktop Settings"
 msgstr "Escriptori Paràmetres"
-

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-18 17:58+0900\n"
+"POT-Creation-Date: 2006-04-09 11:13+0900\n"
 "PO-Revision-Date: 2006-01-06 12:51+0100\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -66,7 +66,7 @@ msgstr "Beenden"
 
 #. Name
 #: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:926
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:959
 msgid "Name:"
 msgstr "Name:"
 
@@ -199,7 +199,7 @@ msgid "Select command"
 msgstr "Kommando auswählen"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:491
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:524
 msgid "Question"
 msgstr "Frage"
 
@@ -319,14 +319,14 @@ msgstr "Versteckt"
 msgid "Select icon"
 msgstr "Icon auswählen"
 
-#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:555
+#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:534
 #: ../settings/appearance-settings.c:529
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Alle Dateien"
 
-#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:561
+#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:540
 #: ../settings/appearance-settings.c:533
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
@@ -334,7 +334,7 @@ msgstr "Bilddateien"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:717
+#: ../panel-plugin/desktop-menu-plugin.c:697
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce Menü"
@@ -366,67 +366,66 @@ msgstr ""
 msgid "/Other"
 msgstr "/Andere"
 
-#: ../panel-plugin/desktop-menu-plugin.c:538
+#: ../panel-plugin/desktop-menu-plugin.c:517
 msgid "Select Icon"
 msgstr "Icon auswählen"
 
-#: ../panel-plugin/desktop-menu-plugin.c:540
+#: ../panel-plugin/desktop-menu-plugin.c:519
 msgid "Select Menu File"
 msgstr "Menüdatei auswählen"
 
-#: ../panel-plugin/desktop-menu-plugin.c:569
+#: ../panel-plugin/desktop-menu-plugin.c:548
 msgid "Menu Files"
 msgstr "Menüdateien"
 
-#: ../panel-plugin/desktop-menu-plugin.c:686
+#: ../panel-plugin/desktop-menu-plugin.c:666
 #: ../settings/behavior-settings.c:201
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Konnte xfce4-menueditor nicht starten: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:709
+#: ../panel-plugin/desktop-menu-plugin.c:689
 msgid "Edit Properties"
 msgstr "Eigenschaften bearbeiten"
 
-#: ../panel-plugin/desktop-menu-plugin.c:727
+#: ../panel-plugin/desktop-menu-plugin.c:707
 msgid "Button"
 msgstr "Buttonsymbol"
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:720
 msgid "Button _title:"
 msgstr "_Titel im Button:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:753
+#: ../panel-plugin/desktop-menu-plugin.c:733
 msgid "_Show title in button"
 msgstr "_Titel im Button anzeigen"
 
-#: ../panel-plugin/desktop-menu-plugin.c:760
+#: ../panel-plugin/desktop-menu-plugin.c:740
 msgid "Menu File"
 msgstr "Menüdatei"
 
-#: ../panel-plugin/desktop-menu-plugin.c:772
+#: ../panel-plugin/desktop-menu-plugin.c:752
 msgid "Use default _desktop menu file"
 msgstr "Stan_darddatei für das Menü verwenden"
 
-#: ../panel-plugin/desktop-menu-plugin.c:781
+#: ../panel-plugin/desktop-menu-plugin.c:761
 msgid "Use _custom menu file:"
 msgstr "_Eigene Menüdatei verwenden:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:833
-#: ../panel-plugin/desktop-menu-plugin.c:835
+#: ../panel-plugin/desktop-menu-plugin.c:812
 #: ../settings/behavior-settings.c:251
 msgid "_Edit Menu"
 msgstr "_Menü ändern"
 
-#: ../panel-plugin/desktop-menu-plugin.c:842
+#: ../panel-plugin/desktop-menu-plugin.c:818
 msgid "Icons"
 msgstr "Symbole"
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:830
 msgid "_Button icon:"
 msgstr "_Buttonicon:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:878
+#: ../panel-plugin/desktop-menu-plugin.c:854
 msgid "Show _icons in menu"
 msgstr "Symbole _im Menü anzeigen"
 
@@ -668,7 +667,7 @@ msgid "Desktop Icons"
 msgstr "Symbole auf der Arbeitsfläche"
 
 #: ../settings/behavior-settings.c:272
-#: ../src/xfdesktop-file-icon-manager.c:874
+#: ../src/xfdesktop-file-icon-manager.c:907
 msgid "None"
 msgstr "Keine"
 
@@ -778,15 +777,15 @@ msgid "_Remove Workspace '%s'"
 msgstr "A_rbeitsfläche '%s' entfernen"
 
 #: ../src/xfdesktop-file-icon-manager.c:339
-#: ../src/xfdesktop-file-icon-manager.c:613
-#: ../src/xfdesktop-file-icon-manager.c:647
+#: ../src/xfdesktop-file-icon-manager.c:646
+#: ../src/xfdesktop-file-icon-manager.c:680
 #, fuzzy, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Konnte \"%s\" nicht starten."
 
 #: ../src/xfdesktop-file-icon-manager.c:341
-#: ../src/xfdesktop-file-icon-manager.c:615
-#: ../src/xfdesktop-file-icon-manager.c:650
+#: ../src/xfdesktop-file-icon-manager.c:648
+#: ../src/xfdesktop-file-icon-manager.c:683
 #, fuzzy
 msgid "Launch Error"
 msgstr "Fehler"
@@ -795,30 +794,38 @@ msgstr "Fehler"
 msgid "The associated application could not be found or executed."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:403
+#: ../src/xfdesktop-file-icon-manager.c:470
 #, c-format
 msgid "Rename \"%s\""
 msgstr "\"%s\" umbenennen"
 
-#: ../src/xfdesktop-file-icon-manager.c:433
+#: ../src/xfdesktop-file-icon-manager.c:477
+#: ../src/xfdesktop-file-icon-manager.c:1482
+#: ../src/xfdesktop-file-icon-manager.c:1560
+#: ../src/xfdesktop-file-icon-manager.c:1571
 msgid "Enter the new name:"
 msgstr "Neuen Namen eingeben:"
 
-#: ../src/xfdesktop-file-icon-manager.c:493
-#: ../src/xfdesktop-file-icon-manager.c:513
+#: ../src/xfdesktop-file-icon-manager.c:479
+#, fuzzy
+msgid "Rename"
+msgstr "_Umbenennen..."
+
+#: ../src/xfdesktop-file-icon-manager.c:526
+#: ../src/xfdesktop-file-icon-manager.c:546
 msgid "If you delete a file, it is permanently lost."
 msgstr "Wenn Sie eine Datei löschen, ist sie dauerhaft verloren."
 
-#: ../src/xfdesktop-file-icon-manager.c:507
+#: ../src/xfdesktop-file-icon-manager.c:540
 #, fuzzy, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Wollen Sie die folgenden %d Dateien wirklich dauerhaft löschen?"
 
-#: ../src/xfdesktop-file-icon-manager.c:510
+#: ../src/xfdesktop-file-icon-manager.c:543
 msgid "Delete Multiple Files"
 msgstr "Mehrere Dateien löschen"
 
-#: ../src/xfdesktop-file-icon-manager.c:652
+#: ../src/xfdesktop-file-icon-manager.c:685
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -826,220 +833,283 @@ msgstr ""
 "Diese Fähigkeit benötigt einen Dienst eines Dateimanagers (wie er von Thunar "
 "gestellt wird)."
 
-#: ../src/xfdesktop-file-icon-manager.c:737
+#: ../src/xfdesktop-file-icon-manager.c:770
 #, fuzzy, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "Konnte \"%s\" nicht starten."
 
-#: ../src/xfdesktop-file-icon-manager.c:738
+#: ../src/xfdesktop-file-icon-manager.c:771
 #, fuzzy, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "Konnte \"%s\" nicht starten."
 
-#: ../src/xfdesktop-file-icon-manager.c:741
+#: ../src/xfdesktop-file-icon-manager.c:774
 #, fuzzy
 msgid "Mount Failed"
 msgstr "Menüdatei"
 
-#: ../src/xfdesktop-file-icon-manager.c:741
+#: ../src/xfdesktop-file-icon-manager.c:774
 #, fuzzy
 msgid "Unmount Failed"
 msgstr "Menüdatei"
 
-#: ../src/xfdesktop-file-icon-manager.c:770
+#: ../src/xfdesktop-file-icon-manager.c:803
 #, fuzzy, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "Konnte \"%s\" nicht starten."
 
-#: ../src/xfdesktop-file-icon-manager.c:772
+#: ../src/xfdesktop-file-icon-manager.c:805
 msgid "Eject Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:841
+#: ../src/xfdesktop-file-icon-manager.c:874
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:844
+#: ../src/xfdesktop-file-icon-manager.c:877
 #, fuzzy
 msgid "Properties Error"
 msgstr "_Eigenschaften..."
 
-#: ../src/xfdesktop-file-icon-manager.c:874
+#: ../src/xfdesktop-file-icon-manager.c:907
 msgid "Write only"
 msgstr "Nur schreiben"
 
-#: ../src/xfdesktop-file-icon-manager.c:874
+#: ../src/xfdesktop-file-icon-manager.c:907
 msgid "Read only"
 msgstr "Nur lesen"
 
-#: ../src/xfdesktop-file-icon-manager.c:874
+#: ../src/xfdesktop-file-icon-manager.c:907
 msgid "Read & Write"
 msgstr "Lesen und Schreiben"
 
-#: ../src/xfdesktop-file-icon-manager.c:901
+#: ../src/xfdesktop-file-icon-manager.c:934
 msgid "General"
 msgstr "Allgemein"
 
-#: ../src/xfdesktop-file-icon-manager.c:952
+#: ../src/xfdesktop-file-icon-manager.c:985
 msgid "Kind:"
 msgstr "Gültig:"
 
-#: ../src/xfdesktop-file-icon-manager.c:962
+#: ../src/xfdesktop-file-icon-manager.c:995
 msgid "broken link"
 msgstr "Kaputte Verknüpfung"
 
-#: ../src/xfdesktop-file-icon-manager.c:965
+#: ../src/xfdesktop-file-icon-manager.c:998
 #, c-format
 msgid "link to %s"
 msgstr "Verknüpfung zu %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:982
+#: ../src/xfdesktop-file-icon-manager.c:1015
 msgid "Link Target:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:999
-#: ../src/xfdesktop-file-icon-manager.c:1158
+#: ../src/xfdesktop-file-icon-manager.c:1032
+#: ../src/xfdesktop-file-icon-manager.c:1191
 #, fuzzy
 msgid "(unknown)"
 msgstr "Unbekannt"
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1054
 #, fuzzy
 msgid "Open With:"
 msgstr "Öffnen mit "
 
-#: ../src/xfdesktop-file-icon-manager.c:1098
+#: ../src/xfdesktop-file-icon-manager.c:1131
 msgid "Modified:"
 msgstr "Geändert:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1116
+#: ../src/xfdesktop-file-icon-manager.c:1149
 msgid "Accessed:"
 msgstr "Zugegriffen:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1143
+#: ../src/xfdesktop-file-icon-manager.c:1176
 msgid "Free Space:"
 msgstr "Freier Platz:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1145
+#: ../src/xfdesktop-file-icon-manager.c:1178
 msgid "Size:"
 msgstr "Größe:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1161
+#: ../src/xfdesktop-file-icon-manager.c:1194
 msgid "%s (%"
 msgstr "%s (%"
 
-#: ../src/xfdesktop-file-icon-manager.c:1161
+#: ../src/xfdesktop-file-icon-manager.c:1194
 msgid " Bytes)"
 msgstr " Bytes)"
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1176
+#: ../src/xfdesktop-file-icon-manager.c:1209
 msgid "Permissions"
 msgstr "Zugriffsrechte"
 
-#: ../src/xfdesktop-file-icon-manager.c:1198
+#: ../src/xfdesktop-file-icon-manager.c:1231
 msgid "Owner:"
 msgstr "Besitzer:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1216
-#: ../src/xfdesktop-file-icon-manager.c:1254
+#: ../src/xfdesktop-file-icon-manager.c:1249
+#: ../src/xfdesktop-file-icon-manager.c:1287
 msgid "Access:"
 msgstr "Zugriff:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1239
+#: ../src/xfdesktop-file-icon-manager.c:1272
 msgid "Group:"
 msgstr "Gruppe:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1277
+#: ../src/xfdesktop-file-icon-manager.c:1310
 msgid "Others:"
 msgstr "Andere:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1350
+#: ../src/xfdesktop-file-icon-manager.c:1383
 #, fuzzy, c-format
 msgid "_Open With \"%s\""
 msgstr "_Öffnen mit "
 
-#: ../src/xfdesktop-file-icon-manager.c:1353
+#: ../src/xfdesktop-file-icon-manager.c:1386
 #, fuzzy, c-format
 msgid "Open With \"%s\""
 msgstr "Öffnen mit "
 
-#: ../src/xfdesktop-file-icon-manager.c:1454
+#: ../src/xfdesktop-file-icon-manager.c:1447
+#, fuzzy, c-format
+msgid "Unable to create folder named \"%s\":"
+msgstr "Konnte \"%s\" nicht starten."
+
+#: ../src/xfdesktop-file-icon-manager.c:1450
+msgid "Create Folder Failed"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1479
+msgid "Create New Folder"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1483
+msgid "New Folder"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1484
+#: ../src/xfdesktop-file-icon-manager.c:1562
+#: ../src/xfdesktop-file-icon-manager.c:1573
+msgid "Create"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1520
+#, fuzzy, c-format
+msgid "Unable to create file named \"%s\":"
+msgstr "Konnte \"%s\" nicht starten."
+
+#: ../src/xfdesktop-file-icon-manager.c:1523
+#, fuzzy
+msgid "Create File Failed"
+msgstr "Mehrere Dateien löschen"
+
+#: ../src/xfdesktop-file-icon-manager.c:1549
+#, c-format
+msgid "Create Document from template \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1568
+msgid "Create Empty File"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1572
+msgid "New Empty File"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1827
 #, fuzzy
 msgid "_Open all"
 msgstr "_Öffnen"
 
-#: ../src/xfdesktop-file-icon-manager.c:1465
+#: ../src/xfdesktop-file-icon-manager.c:1838
 msgid "_Open"
 msgstr "_Öffnen"
 
-#: ../src/xfdesktop-file-icon-manager.c:1476
+#: ../src/xfdesktop-file-icon-manager.c:1849
 msgid "_Execute"
 msgstr "_Ausführen"
 
-#: ../src/xfdesktop-file-icon-manager.c:1520
+#: ../src/xfdesktop-file-icon-manager.c:1893
 #, fuzzy
 msgid "Open With"
 msgstr "Öffnen mit "
 
-#: ../src/xfdesktop-file-icon-manager.c:1550
+#: ../src/xfdesktop-file-icon-manager.c:1923
 msgid "Open With Other _Application..."
 msgstr "Mit anderer _Anwendung öffnen..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1633
+#: ../src/xfdesktop-file-icon-manager.c:2006
 msgid "_Mount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1644
+#: ../src/xfdesktop-file-icon-manager.c:2017
 msgid "_Unmount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1656
+#: ../src/xfdesktop-file-icon-manager.c:2029
 msgid "_Eject Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1666
+#: ../src/xfdesktop-file-icon-manager.c:2039
 #, fuzzy
 msgid "_Copy Files"
 msgstr "_Datei kopieren"
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:2040
 msgid "_Copy File"
 msgstr "_Datei kopieren"
 
-#: ../src/xfdesktop-file-icon-manager.c:1676
+#: ../src/xfdesktop-file-icon-manager.c:2049
 #, fuzzy
 msgid "Cu_t Files"
 msgstr "_Datei ausschneiden"
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
+#: ../src/xfdesktop-file-icon-manager.c:2050
 msgid "Cu_t File"
 msgstr "_Datei ausschneiden"
 
-#: ../src/xfdesktop-file-icon-manager.c:1686
+#: ../src/xfdesktop-file-icon-manager.c:2059
 #, fuzzy
 msgid "_Delete Files"
 msgstr "_Datei löschen"
 
-#: ../src/xfdesktop-file-icon-manager.c:1687
+#: ../src/xfdesktop-file-icon-manager.c:2060
 msgid "_Delete File"
 msgstr "_Datei löschen"
 
-#: ../src/xfdesktop-file-icon-manager.c:1699
+#: ../src/xfdesktop-file-icon-manager.c:2072
 msgid "_Rename..."
 msgstr "_Umbenennen..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1717
+#: ../src/xfdesktop-file-icon-manager.c:2090
 msgid "_Properties..."
 msgstr "_Eigenschaften..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2503 ../src/xfdesktop-file-icon.c:511
+#: ../src/xfdesktop-file-icon-manager.c:2106
+msgid "Create _Folder..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2113
+msgid "Create _Document"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2134
+msgid "No Templates installed"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2146
+#, fuzzy
+msgid "_Empty File"
+msgstr "_Datei kopieren"
+
+#: ../src/xfdesktop-file-icon-manager.c:2929 ../src/xfdesktop-file-icon.c:511
 #, fuzzy, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Konnte \"%s\" nicht in \"%s\" umbenennen:"
 
-#: ../src/xfdesktop-file-icon-manager.c:2505 ../src/xfdesktop-file-icon.c:513
+#: ../src/xfdesktop-file-icon-manager.c:2931 ../src/xfdesktop-file-icon.c:513
 #, fuzzy
 msgid "Run Error"
 msgstr "Fehler"

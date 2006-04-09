@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-18 17:58+0900\n"
+"POT-Creation-Date: 2006-04-09 11:13+0900\n"
 "PO-Revision-Date: 2005-10-09 22:17+0900\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-group@lists.sourceforge.net>\n"
@@ -65,7 +65,7 @@ msgstr ""
 
 #. Name
 #: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:926
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:959
 msgid "Name:"
 msgstr "नाम :"
 
@@ -198,7 +198,7 @@ msgid "Select command"
 msgstr ""
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:491
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:524
 msgid "Question"
 msgstr ""
 
@@ -321,14 +321,14 @@ msgstr ""
 msgid "Select icon"
 msgstr ""
 
-#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:555
+#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:534
 #: ../settings/appearance-settings.c:529
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr ""
 
-#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:561
+#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:540
 #: ../settings/appearance-settings.c:533
 #: ../settings/backdrop-list-manager.c:439
 #, fuzzy
@@ -337,7 +337,7 @@ msgstr "चित्र फाइलें"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:717
+#: ../panel-plugin/desktop-menu-plugin.c:697
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr ""
@@ -364,71 +364,70 @@ msgstr ""
 msgid "/Other"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:538
+#: ../panel-plugin/desktop-menu-plugin.c:517
 msgid "Select Icon"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:540
+#: ../panel-plugin/desktop-menu-plugin.c:519
 msgid "Select Menu File"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:569
+#: ../panel-plugin/desktop-menu-plugin.c:548
 #, fuzzy
 msgid "Menu Files"
 msgstr "चित्र फाइलें"
 
-#: ../panel-plugin/desktop-menu-plugin.c:686
+#: ../panel-plugin/desktop-menu-plugin.c:666
 #: ../settings/behavior-settings.c:201
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:709
+#: ../panel-plugin/desktop-menu-plugin.c:689
 #, fuzzy
 msgid "Edit Properties"
 msgstr "बैकड्रॉप सूची संपादित करें"
 
-#: ../panel-plugin/desktop-menu-plugin.c:727
+#: ../panel-plugin/desktop-menu-plugin.c:707
 #, fuzzy
 msgid "Button"
 msgstr "स्वतः (_A)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:720
 msgid "Button _title:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:753
+#: ../panel-plugin/desktop-menu-plugin.c:733
 msgid "_Show title in button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:760
+#: ../panel-plugin/desktop-menu-plugin.c:740
 #, fuzzy
 msgid "Menu File"
 msgstr "चित्र फाइलें"
 
-#: ../panel-plugin/desktop-menu-plugin.c:772
+#: ../panel-plugin/desktop-menu-plugin.c:752
 msgid "Use default _desktop menu file"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:781
+#: ../panel-plugin/desktop-menu-plugin.c:761
 msgid "Use _custom menu file:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:833
-#: ../panel-plugin/desktop-menu-plugin.c:835
+#: ../panel-plugin/desktop-menu-plugin.c:812
 #: ../settings/behavior-settings.c:251
 msgid "_Edit Menu"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:842
+#: ../panel-plugin/desktop-menu-plugin.c:818
 msgid "Icons"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:830
 msgid "_Button icon:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:878
+#: ../panel-plugin/desktop-menu-plugin.c:854
 msgid "Show _icons in menu"
 msgstr ""
 
@@ -687,7 +686,7 @@ msgid "Desktop Icons"
 msgstr "डेस्कटॉप"
 
 #: ../settings/behavior-settings.c:272
-#: ../src/xfdesktop-file-icon-manager.c:874
+#: ../src/xfdesktop-file-icon-manager.c:907
 msgid "None"
 msgstr ""
 
@@ -797,15 +796,15 @@ msgid "_Remove Workspace '%s'"
 msgstr "कार्यस्थान %d"
 
 #: ../src/xfdesktop-file-icon-manager.c:339
-#: ../src/xfdesktop-file-icon-manager.c:613
-#: ../src/xfdesktop-file-icon-manager.c:647
+#: ../src/xfdesktop-file-icon-manager.c:646
+#: ../src/xfdesktop-file-icon-manager.c:680
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:341
-#: ../src/xfdesktop-file-icon-manager.c:615
-#: ../src/xfdesktop-file-icon-manager.c:650
+#: ../src/xfdesktop-file-icon-manager.c:648
+#: ../src/xfdesktop-file-icon-manager.c:683
 msgid "Launch Error"
 msgstr ""
 
@@ -813,248 +812,318 @@ msgstr ""
 msgid "The associated application could not be found or executed."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:403
+#: ../src/xfdesktop-file-icon-manager.c:470
 #, c-format
 msgid "Rename \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:433
+#: ../src/xfdesktop-file-icon-manager.c:477
+#: ../src/xfdesktop-file-icon-manager.c:1482
+#: ../src/xfdesktop-file-icon-manager.c:1560
+#: ../src/xfdesktop-file-icon-manager.c:1571
 msgid "Enter the new name:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:493
-#: ../src/xfdesktop-file-icon-manager.c:513
+#: ../src/xfdesktop-file-icon-manager.c:479
+#, fuzzy
+msgid "Rename"
+msgstr "पूरे स्क्रीन में (स्केल्ड) (_S)"
+
+#: ../src/xfdesktop-file-icon-manager.c:526
+#: ../src/xfdesktop-file-icon-manager.c:546
 msgid "If you delete a file, it is permanently lost."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:507
+#: ../src/xfdesktop-file-icon-manager.c:540
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:510
+#: ../src/xfdesktop-file-icon-manager.c:543
 msgid "Delete Multiple Files"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:652
+#: ../src/xfdesktop-file-icon-manager.c:685
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:737
+#: ../src/xfdesktop-file-icon-manager.c:770
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:738
+#: ../src/xfdesktop-file-icon-manager.c:771
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:741
+#: ../src/xfdesktop-file-icon-manager.c:774
 #, fuzzy
 msgid "Mount Failed"
 msgstr "चित्र फाइलें"
 
-#: ../src/xfdesktop-file-icon-manager.c:741
+#: ../src/xfdesktop-file-icon-manager.c:774
 #, fuzzy
 msgid "Unmount Failed"
 msgstr "चित्र फाइलें"
 
-#: ../src/xfdesktop-file-icon-manager.c:770
+#: ../src/xfdesktop-file-icon-manager.c:803
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:772
+#: ../src/xfdesktop-file-icon-manager.c:805
 msgid "Eject Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:841
+#: ../src/xfdesktop-file-icon-manager.c:874
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:844
+#: ../src/xfdesktop-file-icon-manager.c:877
 #, fuzzy
 msgid "Properties Error"
 msgstr "बैकड्रॉप सूची संपादित करें"
 
-#: ../src/xfdesktop-file-icon-manager.c:874
+#: ../src/xfdesktop-file-icon-manager.c:907
 msgid "Write only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:874
+#: ../src/xfdesktop-file-icon-manager.c:907
 msgid "Read only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:874
+#: ../src/xfdesktop-file-icon-manager.c:907
 msgid "Read & Write"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:901
+#: ../src/xfdesktop-file-icon-manager.c:934
 msgid "General"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:952
+#: ../src/xfdesktop-file-icon-manager.c:985
 msgid "Kind:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:962
+#: ../src/xfdesktop-file-icon-manager.c:995
 msgid "broken link"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:965
+#: ../src/xfdesktop-file-icon-manager.c:998
 #, c-format
 msgid "link to %s"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:982
+#: ../src/xfdesktop-file-icon-manager.c:1015
 msgid "Link Target:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:999
-#: ../src/xfdesktop-file-icon-manager.c:1158
+#: ../src/xfdesktop-file-icon-manager.c:1032
+#: ../src/xfdesktop-file-icon-manager.c:1191
 msgid "(unknown)"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1054
 msgid "Open With:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1098
+#: ../src/xfdesktop-file-icon-manager.c:1131
 msgid "Modified:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1116
+#: ../src/xfdesktop-file-icon-manager.c:1149
 msgid "Accessed:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1143
+#: ../src/xfdesktop-file-icon-manager.c:1176
 msgid "Free Space:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1145
+#: ../src/xfdesktop-file-icon-manager.c:1178
 msgid "Size:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1161
+#: ../src/xfdesktop-file-icon-manager.c:1194
 msgid "%s (%"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1161
+#: ../src/xfdesktop-file-icon-manager.c:1194
 msgid " Bytes)"
 msgstr ""
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1176
+#: ../src/xfdesktop-file-icon-manager.c:1209
 msgid "Permissions"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1198
+#: ../src/xfdesktop-file-icon-manager.c:1231
 msgid "Owner:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1216
-#: ../src/xfdesktop-file-icon-manager.c:1254
+#: ../src/xfdesktop-file-icon-manager.c:1249
+#: ../src/xfdesktop-file-icon-manager.c:1287
 msgid "Access:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1239
+#: ../src/xfdesktop-file-icon-manager.c:1272
 msgid "Group:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1277
+#: ../src/xfdesktop-file-icon-manager.c:1310
 msgid "Others:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1350
+#: ../src/xfdesktop-file-icon-manager.c:1383
 #, c-format
 msgid "_Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1353
+#: ../src/xfdesktop-file-icon-manager.c:1386
 #, c-format
 msgid "Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1454
-msgid "_Open all"
+#: ../src/xfdesktop-file-icon-manager.c:1447
+#, c-format
+msgid "Unable to create folder named \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1465
-msgid "_Open"
+#: ../src/xfdesktop-file-icon-manager.c:1450
+msgid "Create Folder Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1476
-msgid "_Execute"
+#: ../src/xfdesktop-file-icon-manager.c:1479
+msgid "Create New Folder"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1483
+msgid "New Folder"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1484
+#: ../src/xfdesktop-file-icon-manager.c:1562
+#: ../src/xfdesktop-file-icon-manager.c:1573
+msgid "Create"
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:1520
+#, c-format
+msgid "Unable to create file named \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1523
+msgid "Create File Failed"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1549
+#, c-format
+msgid "Create Document from template \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1568
+msgid "Create Empty File"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1572
+msgid "New Empty File"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1827
+msgid "_Open all"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1838
+msgid "_Open"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1849
+msgid "_Execute"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1893
 msgid "Open With"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1550
+#: ../src/xfdesktop-file-icon-manager.c:1923
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1633
+#: ../src/xfdesktop-file-icon-manager.c:2006
 msgid "_Mount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1644
+#: ../src/xfdesktop-file-icon-manager.c:2017
 msgid "_Unmount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1656
+#: ../src/xfdesktop-file-icon-manager.c:2029
 msgid "_Eject Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1666
+#: ../src/xfdesktop-file-icon-manager.c:2039
 #, fuzzy
 msgid "_Copy Files"
 msgstr " फाइल:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:2040
 #, fuzzy
 msgid "_Copy File"
 msgstr " फाइल:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1676
+#: ../src/xfdesktop-file-icon-manager.c:2049
 #, fuzzy
 msgid "Cu_t Files"
 msgstr " फाइल:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
+#: ../src/xfdesktop-file-icon-manager.c:2050
 #, fuzzy
 msgid "Cu_t File"
 msgstr " फाइल:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1686
+#: ../src/xfdesktop-file-icon-manager.c:2059
 #, fuzzy
 msgid "_Delete Files"
 msgstr " फाइल:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1687
+#: ../src/xfdesktop-file-icon-manager.c:2060
 msgid "_Delete File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1699
+#: ../src/xfdesktop-file-icon-manager.c:2072
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1717
+#: ../src/xfdesktop-file-icon-manager.c:2090
 #, fuzzy
 msgid "_Properties..."
 msgstr "बैकड्रॉप सूची संपादित करें"
 
-#: ../src/xfdesktop-file-icon-manager.c:2503 ../src/xfdesktop-file-icon.c:511
+#: ../src/xfdesktop-file-icon-manager.c:2106
+msgid "Create _Folder..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2113
+msgid "Create _Document"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2134
+msgid "No Templates installed"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2146
+#, fuzzy
+msgid "_Empty File"
+msgstr " फाइल:"
+
+#: ../src/xfdesktop-file-icon-manager.c:2929 ../src/xfdesktop-file-icon.c:511
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2505 ../src/xfdesktop-file-icon.c:513
+#: ../src/xfdesktop-file-icon-manager.c:2931 ../src/xfdesktop-file-icon.c:513
 msgid "Run Error"
 msgstr ""
 
