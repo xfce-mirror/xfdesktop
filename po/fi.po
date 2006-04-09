@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-09 11:13+0900\n"
-"PO-Revision-Date: 2005-03-05 12:10+0200\n"
+"PO-Revision-Date: 2005-04-08 22:10+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -770,20 +770,20 @@ msgstr "_Poista työtila '%s'"
 #: ../src/xfdesktop-file-icon-manager.c:339
 #: ../src/xfdesktop-file-icon-manager.c:646
 #: ../src/xfdesktop-file-icon-manager.c:680
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Ei voi käynnistää kohdetta \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:341
 #: ../src/xfdesktop-file-icon-manager.c:648
 #: ../src/xfdesktop-file-icon-manager.c:683
-#, fuzzy
 msgid "Launch Error"
-msgstr "Suoritusvirhe"
+msgstr "Käynnistysvirhe"
 
 #: ../src/xfdesktop-file-icon-manager.c:343
 msgid "The associated application could not be found or executed."
 msgstr ""
+"Tiedostotyyppiin liitettyä sovellusta ei löydy, tai sitä ei voi suorittaa."
 
 #: ../src/xfdesktop-file-icon-manager.c:470
 #, c-format
@@ -798,9 +798,8 @@ msgid "Enter the new name:"
 msgstr "Syötä uusi nimi:"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
-#, fuzzy
 msgid "Rename"
-msgstr "_Nimeä uudelleen..."
+msgstr "Nimeä uudelleen"
 
 #: ../src/xfdesktop-file-icon-manager.c:526
 #: ../src/xfdesktop-file-icon-manager.c:546
@@ -825,43 +824,40 @@ msgstr ""
 "Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:770
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "Ei voi käynnistää kohdetta \"%s\":"
+msgstr "Ei voi liittää kohdetta \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:771
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "Ei voi käynnistää kohdetta \"%s\":"
+msgstr "Ei voi irrottaa kohdetta \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:774
-#, fuzzy
 msgid "Mount Failed"
-msgstr "Valikkotiedosto"
+msgstr "Liittäminen epäonnistui"
 
 #: ../src/xfdesktop-file-icon-manager.c:774
-#, fuzzy
 msgid "Unmount Failed"
-msgstr "Valikkotiedosto"
+msgstr "Irrottaminen epäonnistui"
 
 #: ../src/xfdesktop-file-icon-manager.c:803
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "Ei voi käynnistää kohdetta \"%s\":"
+msgstr "Ei voi poistaa levyä \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:805
 msgid "Eject Failed"
-msgstr ""
+msgstr "Levyn poistaminen epäonnistui"
 
 #: ../src/xfdesktop-file-icon-manager.c:874
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Ei voi asettaa tyypille \"%s\" oletussovellusta \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:877
-#, fuzzy
 msgid "Properties Error"
-msgstr "_Ominaisuudet"
+msgstr "Ominaisuusvirhe"
 
 #: ../src/xfdesktop-file-icon-manager.c:907
 msgid "Write only"
@@ -962,50 +958,49 @@ msgid "Open With \"%s\""
 msgstr "Avaa sovelluksessa \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1447
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "Ei voi käynnistää kohdetta \"%s\":"
+msgstr "Ei voi luoda hakemistoa \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create Folder Failed"
-msgstr ""
+msgstr "Hakemiston luominen epäonnistui"
 
 #: ../src/xfdesktop-file-icon-manager.c:1479
 msgid "Create New Folder"
-msgstr ""
+msgstr "Luo uusi hakemisto"
 
 #: ../src/xfdesktop-file-icon-manager.c:1483
 msgid "New Folder"
-msgstr ""
+msgstr "Uusi hakemisto"
 
 #: ../src/xfdesktop-file-icon-manager.c:1484
 #: ../src/xfdesktop-file-icon-manager.c:1562
 #: ../src/xfdesktop-file-icon-manager.c:1573
 msgid "Create"
-msgstr ""
+msgstr "Luo"
 
 #: ../src/xfdesktop-file-icon-manager.c:1520
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "Ei voi käynnistää kohdetta \"%s\":"
+msgstr "Ei voi luoda tiedostoa \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1523
-#, fuzzy
 msgid "Create File Failed"
-msgstr "Poista useita tiedostoja"
+msgstr "Tiedoston luominen epäonnistui"
 
 #: ../src/xfdesktop-file-icon-manager.c:1549
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr ""
+msgstr "Luo asiakirja mallista \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1568
 msgid "Create Empty File"
-msgstr ""
+msgstr "Luo tyhjä tiedosto"
 
 #: ../src/xfdesktop-file-icon-manager.c:1572
 msgid "New Empty File"
-msgstr ""
+msgstr "Uusi tyhjä tiedosto"
 
 #: ../src/xfdesktop-file-icon-manager.c:1827
 msgid "_Open all"
@@ -1029,15 +1024,15 @@ msgstr "Avaa _muussa sovelluksessa..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2006
 msgid "_Mount Volume"
-msgstr ""
+msgstr "_Liitä taltio"
 
 #: ../src/xfdesktop-file-icon-manager.c:2017
 msgid "_Unmount Volume"
-msgstr ""
+msgstr "_Irrota taltio"
 
 #: ../src/xfdesktop-file-icon-manager.c:2029
 msgid "_Eject Volume"
-msgstr ""
+msgstr "_Poista levy"
 
 #: ../src/xfdesktop-file-icon-manager.c:2039
 msgid "_Copy Files"
@@ -1069,24 +1064,23 @@ msgstr "_Nimeä uudelleen..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2090
 msgid "_Properties..."
-msgstr "_Ominaisuudet"
+msgstr "_Ominaisuudet..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2106
 msgid "Create _Folder..."
-msgstr ""
+msgstr "Luo _hakemisto..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2113
 msgid "Create _Document"
-msgstr ""
+msgstr "Luo _asiakirja"
 
 #: ../src/xfdesktop-file-icon-manager.c:2134
 msgid "No Templates installed"
-msgstr ""
+msgstr "Ei asennettuja asiakirjamalleja"
 
 #: ../src/xfdesktop-file-icon-manager.c:2146
-#, fuzzy
 msgid "_Empty File"
-msgstr "_Kopioi tiedosto"
+msgstr "_Tyhjä tiedosto"
 
 #: ../src/xfdesktop-file-icon-manager.c:2929 ../src/xfdesktop-file-icon.c:511
 #, c-format
