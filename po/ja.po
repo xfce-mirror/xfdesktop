@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-09 11:13+0900\n"
-"PO-Revision-Date: 2006-03-18 19:40+0900\n"
+"PO-Revision-Date: 2006-04-09 11:24+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -98,7 +98,7 @@ msgstr "コマンドは存在しません！"
 
 #: ../menueditor/add_dialog.c:276 ../menueditor/edit_dialog.c:246
 msgid "All fields must be filled to add an item."
-msgstr "アイテムを追加するには全ての箇所に記入して下さい。"
+msgstr "アイテムを追加するには全ての箇所に記入してください。"
 
 #: ../menueditor/add_dialog.c:285 ../menueditor/edit_dialog.c:255
 msgid "The 'Name' field is required."
@@ -196,7 +196,7 @@ msgstr "ファイルを閉じる前に保存しますか？"
 
 #: ../menueditor/menueditor.c:338 ../menueditor/utils.c:586
 msgid "Select command"
-msgstr "コマンドを選択して下さい"
+msgstr "コマンドを選択してください"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
 #: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:524
@@ -317,7 +317,7 @@ msgstr "隠す"
 
 #: ../menueditor/utils.c:648
 msgid "Select icon"
-msgstr "アイコンを選択して下さい"
+msgstr "アイコンを選択してください"
 
 #: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:534
 #: ../settings/appearance-settings.c:529
@@ -351,7 +351,7 @@ msgid ""
 msgstr ""
 "セッションを終了するには Xfce のセッションマネージャー (xfce4-session) が動作"
 "している必要がありますが、これを検出できませんでした。別の方法で Xfce を終了"
-"して下さい。"
+"してください。"
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
@@ -368,11 +368,11 @@ msgstr "/その他"
 
 #: ../panel-plugin/desktop-menu-plugin.c:517
 msgid "Select Icon"
-msgstr "アイコンを選択して下さい"
+msgstr "アイコンを選択してください"
 
 #: ../panel-plugin/desktop-menu-plugin.c:519
 msgid "Select Menu File"
-msgstr "メニューファイルを選択して下さい"
+msgstr "メニューファイルを選択してください"
 
 #: ../panel-plugin/desktop-menu-plugin.c:548
 msgid "Menu Files"
@@ -442,7 +442,7 @@ msgstr "backdrops.list"
 
 #: ../settings/appearance-settings.c:524
 msgid "Select backdrop image or list file"
-msgstr "背景画像かリストファイルを選択して下さい"
+msgstr "背景画像かリストファイルを選択してください"
 
 #: ../settings/appearance-settings.c:542
 msgid "List Files (*.list)"
@@ -515,10 +515,10 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 "次回に Xfce を起動する時に Xfce にあなたのデスクトップを管理させないために、"
-"ログアウトする際にセッションを保存するのを忘れないで下さい。Xfce セッション・"
-"マネージャ (xfce4-session) を使用していない場合は、~/.config/xfce4/xinitrc "
-"ファイルを自分で編集する必要があります。さらに細かいことは http://xfce.org/ "
-"にある文書を御覧下さい。"
+"ログアウトする際にセッションを保存するのを忘れないでください。Xfce セッショ"
+"ン・マネージャ (xfce4-session) を使用していない場合は、~/.config/xfce4/"
+"xinitrc ファイルを自分で編集する必要があります。さらに細かいことは http://"
+"xfce.org/ にある文書を御覧ください。"
 
 #: ../settings/appearance-settings.c:841
 msgid "_Do not show this again"
@@ -612,15 +612,15 @@ msgstr ""
 "ファイル %s を保存できませんでした: %s\n"
 "\n"
 "他の場所を選択するか、変更を破棄するためにダイアログのキャンセルボタンを押し"
-"て下さい"
+"てください"
 
 #: ../settings/backdrop-list-manager.c:430
 msgid "Select backdrop image file"
-msgstr "背景画像ファイルを選択して下さい"
+msgstr "背景画像ファイルを選択してください"
 
 #: ../settings/backdrop-list-manager.c:531
 msgid "Choose backdrop list filename"
-msgstr "背景リストのファイル名を選択して下さい"
+msgstr "背景リストのファイル名を選択してください"
 
 #: ../settings/backdrop-list-manager.c:540
 msgid "List Files"
@@ -799,12 +799,11 @@ msgstr "「%s」の名前変更"
 #: ../src/xfdesktop-file-icon-manager.c:1560
 #: ../src/xfdesktop-file-icon-manager.c:1571
 msgid "Enter the new name:"
-msgstr "新しい名前を入力して下さい:"
+msgstr "新しい名前を入力してください:"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
-#, fuzzy
 msgid "Rename"
-msgstr "名前変更(_R)..."
+msgstr "名前変更"
 
 #: ../src/xfdesktop-file-icon-manager.c:526
 #: ../src/xfdesktop-file-icon-manager.c:546
@@ -964,50 +963,49 @@ msgid "Open With \"%s\""
 msgstr "「%s」で開く"
 
 #: ../src/xfdesktop-file-icon-manager.c:1447
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "「%s」をマウントできません:"
+msgstr "フォルダ「%s」を作成できません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create Folder Failed"
-msgstr ""
+msgstr "フォルダの作成に失敗しました"
 
 #: ../src/xfdesktop-file-icon-manager.c:1479
 msgid "Create New Folder"
-msgstr ""
+msgstr "新規フォルダを作成"
 
 #: ../src/xfdesktop-file-icon-manager.c:1483
 msgid "New Folder"
-msgstr ""
+msgstr "新規フォルダ"
 
 #: ../src/xfdesktop-file-icon-manager.c:1484
 #: ../src/xfdesktop-file-icon-manager.c:1562
 #: ../src/xfdesktop-file-icon-manager.c:1573
 msgid "Create"
-msgstr ""
+msgstr "作成"
 
 #: ../src/xfdesktop-file-icon-manager.c:1520
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "「%s」を取り出せません:"
+msgstr "ファイル「%s」を作成できません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1523
-#, fuzzy
 msgid "Create File Failed"
-msgstr "複数のファイルを削除"
+msgstr "ファイルの作成に失敗しました"
 
 #: ../src/xfdesktop-file-icon-manager.c:1549
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr ""
+msgstr "テンプレート「%s」から文書を作成"
 
 #: ../src/xfdesktop-file-icon-manager.c:1568
 msgid "Create Empty File"
-msgstr ""
+msgstr "空ファイルを作成"
 
 #: ../src/xfdesktop-file-icon-manager.c:1572
 msgid "New Empty File"
-msgstr ""
+msgstr "新規の空ファイル"
 
 #: ../src/xfdesktop-file-icon-manager.c:1827
 msgid "_Open all"
@@ -1082,21 +1080,19 @@ msgstr "プロパティ(_P)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2106
 msgid "Create _Folder..."
-msgstr ""
+msgstr "フォルダを作成(_F)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2113
 msgid "Create _Document"
-msgstr ""
+msgstr "文書を作成(_D)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2134
 msgid "No Templates installed"
-msgstr ""
+msgstr "テンプレートがインストールされていません"
 
-# FIXME: ngettext()
 #: ../src/xfdesktop-file-icon-manager.c:2146
-#, fuzzy
 msgid "_Empty File"
-msgstr "コピー(_C)"
+msgstr "空のファイル(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2929 ../src/xfdesktop-file-icon.c:511
 #, c-format
