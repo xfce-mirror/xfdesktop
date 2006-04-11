@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.2.3\n"
+"Project-Id-Version: xfdesktop 4.2.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-08 06:14+0900\n"
+"POT-Creation-Date: 2005-10-28 20:59+0900\n"
 "PO-Revision-Date: 2005-09-29 16:16+0900\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan <ca@dodds.net>\n"
@@ -651,20 +651,24 @@ msgid "%s: Unknown option: %s\n"
 msgstr "%s: Opció desconeguda: %s\n"
 
 #: src/main.c:249
+#, c-format
 msgid "Options are:\n"
 msgstr "Les opcions són:\n"
 
 #: src/main.c:250
+#, c-format
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "-actualitza    Actualitza tots els paràmetres, actualitza la llista "
 "d'images\n"
 
 #: src/main.c:251
+#, c-format
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "- menú   Mostra el menú (a la posició actual del ratolí)\n"
 
 #: src/main.c:252
+#, c-format
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""

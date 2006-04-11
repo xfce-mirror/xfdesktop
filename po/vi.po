@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.2.3\n"
+"Project-Id-Version: xfdesktop 4.2.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-08 06:14+0900\n"
+"POT-Creation-Date: 2005-10-28 20:59+0900\n"
 "PO-Revision-Date: 2005-09-29 16:33+0900\n"
 "Last-Translator: Lâm Vĩnh Niên <nienvl@yahoo.ca>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
@@ -649,18 +649,22 @@ msgid "%s: Unknown option: %s\n"
 msgstr "%s: Tuỳ chọn không rõ: %s\n"
 
 #: src/main.c:249
+#, c-format
 msgid "Options are:\n"
 msgstr "Tuỳ chọn là:\n"
 
 #: src/main.c:250
+#, c-format
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      Nạp lại mọi thiết lập, cập nhật danh sách hình ảnh\n"
 
 #: src/main.c:251
+#, c-format
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Bật thực đơn (ở vị trí hiện tại của trỏ chuột)\n"
 
 #: src/main.c:252
+#, c-format
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""

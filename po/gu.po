@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.2.3\n"
+"Project-Id-Version: xfdesktop 4.2.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-08 06:14+0900\n"
+"POT-Creation-Date: 2005-10-28 20:59+0900\n"
 "PO-Revision-Date: 2005-09-29 16:22+0900\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
 "Language-Team: Gujarati <indianoss-gujarati@lists.sourceforge.net>\n"
@@ -653,18 +653,22 @@ msgid "%s: Unknown option: %s\n"
 msgstr "%s: અજ્ઞાત વિકલ્પ: %s\n"
 
 #: src/main.c:249
+#, c-format
 msgid "Options are:\n"
 msgstr "વિકલ્પો છે:\n"
 
 #: src/main.c:250
+#, c-format
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      બધા સુયોજનો ફરીથી લાવો, ઈમેજ યાદી ફરીથી તાજી કરો\n"
 
 #: src/main.c:251
+#, c-format
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        મેનુને પોપઅપ કરે છે (માઉસની વર્તમાન જગ્યાએ)\n"
 
 #: src/main.c:252
+#, c-format
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -menu        વિન્ડો યાદીને પોપઅપ કરે છે (માઉસની વર્તમાન જગ્યાએ)\n"

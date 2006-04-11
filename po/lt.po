@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.2.3\n"
+"Project-Id-Version: xfdesktop 4.2.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-08 06:14+0900\n"
+"POT-Creation-Date: 2005-10-28 20:59+0900\n"
 "PO-Revision-Date: 2005-09-29 16:27+0900\n"
 "Last-Translator: Rimas Kudelis <rq@akl.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -650,19 +650,23 @@ msgid "%s: Unknown option: %s\n"
 msgstr "%s: Nežinomas parametras: %s\n"
 
 #: src/main.c:249
+#, c-format
 msgid "Options are:\n"
 msgstr "Parametrai yra:\n"
 
 #: src/main.c:250
+#, c-format
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload      Perkrauti visus nustaytmus, atšviežinti paveikslų sąrašą\n"
 
 #: src/main.c:251
+#, c-format
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Atverti meniu (esamoje pelės pozicijoje)\n"
 
 #: src/main.c:252
+#, c-format
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Atverti langų sąrašą (esamoje pelės pozicijoje)\n"

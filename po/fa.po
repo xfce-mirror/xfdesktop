@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.2.3\n"
+"Project-Id-Version: xfdesktop 4.2.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-08 06:14+0900\n"
+"POT-Creation-Date: 2005-10-28 20:59+0900\n"
 "PO-Revision-Date: 2005-09-29 16:20+0900\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian <translation-team-fa@lists.sourceforge.net>\n"
@@ -656,19 +656,23 @@ msgid "%s: Unknown option: %s\n"
 msgstr "%s: گزینه ناشناخته: %s\n"
 
 #: src/main.c:249
+#, c-format
 msgid "Options are:\n"
 msgstr "گزینه‌ها عبارتند از:\n"
 
 #: src/main.c:250
+#, c-format
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload     همه تنظیمات را بارگذاری مجدد کرده و لیست تصویر نوسازی میشود\n"
 
 #: src/main.c:251
+#, c-format
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        ,باز کردن منو (در جای موشی کنونی)\n"
 
 #: src/main.c:252
+#, c-format
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  باز کردن لیست پنجره (در جای موشی کنونی )\n"

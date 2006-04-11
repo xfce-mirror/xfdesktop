@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.2.3\n"
-"Report-Msgid-Bugs-To: Sylvain Vedrenne <sylvain.vedrenne@free.fr>\n"
-"POT-Creation-Date: 2005-10-08 06:14+0900\n"
+"Project-Id-Version: xfdesktop 4.2.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-10-28 20:59+0900\n"
 "PO-Revision-Date: 2005-10-09 19:00+0200\n"
 "Last-Translator: Sylvain Vedrenne <sylvain.vedrenne@free.fr>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -649,21 +649,27 @@ msgid "%s: Unknown option: %s\n"
 msgstr "%s: Nekonata opcio: %s\n"
 
 #: src/main.c:249
+#, c-format
 msgid "Options are:\n"
 msgstr "La opcioj estas:\n"
 
 #: src/main.c:250
+#, c-format
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "    -reload      Reŝargu ĉiujn parametrojn, refreŝigu la bildan liston\n"
+msgstr ""
+"    -reload      Reŝargu ĉiujn parametrojn, refreŝigu la bildan liston\n"
 
 #: src/main.c:251
+#, c-format
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Ŝprucigu la menuon (ĉe la kuranta muspozicio)\n"
 
 #: src/main.c:252
+#, c-format
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  Ŝprucigu la liston de fenestroj (ĉe la kuranta muspozicio)\n"
+msgstr ""
+"    -windowlist  Ŝprucigu la liston de fenestroj (ĉe la kuranta muspozicio)\n"
 
 #: src/windowlist.c:193
 #, c-format

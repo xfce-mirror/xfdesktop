@@ -1,4 +1,4 @@
-# #-#-#-#-#  zh_CN.po (xfdesktop 4.2.3)  #-#-#-#-#
+# #-#-#-#-#  zh_CN.po (xfdesktop 4.2.4)  #-#-#-#-#
 # Simplified Chinese translations for xfdesktop package.
 # Copyright (C) 2003-2005 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.2.3\n"
+"Project-Id-Version: xfdesktop 4.2.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-09 15:53+0900\n"
+"POT-Creation-Date: 2005-10-28 20:59+0900\n"
 "PO-Revision-Date: 2005-10-11 07:50+0900\n"
 "Last-Translator: Yongtao Yang <yongtao.yang@telia.com>\n"
 "Language-Team: Simplified Chinese <i18n-translation@lists.linux.net.cn>\n"
@@ -655,18 +655,22 @@ msgid "%s: Unknown option: %s\n"
 msgstr "%s：未知选项： %s\n"
 
 #: src/main.c:249
+#, c-format
 msgid "Options are:\n"
 msgstr "选项为：\n"
 
 #: src/main.c:250
+#, c-format
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "  -relod    重新载入全部设置，刷新图像列表\n"
 
 #: src/main.c:251
+#, c-format
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "  -menu    弹出菜单 (在鼠标当前位置)\n"
 
 #: src/main.c:252
+#, c-format
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "  -windowlist    弹出窗口列表 (在鼠标当前位置)\n"
