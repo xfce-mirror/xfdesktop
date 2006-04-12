@@ -676,9 +676,11 @@ browse_icon (GtkEntry * entry, GtkWindow * parent)
     gchar *iconpath = NULL;
 
     iconpath = xfce_themed_icon_lookup (text, ICON_SIZE);
-    gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (filesel_dialog), iconpath);
-
-    g_free (iconpath);
+    if (iconpath)
+    {
+      gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (filesel_dialog), iconpath);
+      g_free (iconpath);
+    }
   }
 
   if (gtk_dialog_run (GTK_DIALOG (filesel_dialog)) == GTK_RESPONSE_ACCEPT) {
