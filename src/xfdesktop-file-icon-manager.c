@@ -518,7 +518,7 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager)
     if(g_list_length(selected) == 1) {
         icon = XFDESKTOP_ICON(selected->data);
         
-        primary = g_strdup_printf("Are you sure that you want to delete \"%s\"?",
+        primary = g_strdup_printf(_("Are you sure that you want to delete \"%s\"?"),
                                   xfdesktop_icon_peek_label(icon));
         ret = xfce_message_dialog(GTK_WINDOW(toplevel),
                                   _("Question"), GTK_STOCK_DIALOG_QUESTION,

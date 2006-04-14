@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-09 11:13+0900\n"
+"POT-Creation-Date: 2006-04-15 08:30+0900\n"
 "PO-Revision-Date: 2006-03-25 17:37+0500\n"
 "Last-Translator: Andrey Fedoseev <andrey.fedoseev@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -804,6 +804,11 @@ msgstr "Укажите новое имя:"
 #, fuzzy
 msgid "Rename"
 msgstr "Переименовать..."
+
+#: ../src/xfdesktop-file-icon-manager.c:521
+#, fuzzy, c-format
+msgid "Are you sure that you want to delete \"%s\"?"
+msgstr "Вы уверены, что хотите удалить следующие %d файлов?"
 
 #: ../src/xfdesktop-file-icon-manager.c:526
 #: ../src/xfdesktop-file-icon-manager.c:546
