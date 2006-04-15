@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-15 08:30+0900\n"
-"PO-Revision-Date: 2005-11-03 01:13+0900\n"
+"PO-Revision-Date: 2006-04-15 05:51+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
 "net>\n"
@@ -361,7 +361,7 @@ msgstr ""
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
-msgstr "기타"
+msgstr "/기타"
 
 #: ../panel-plugin/desktop-menu-plugin.c:517
 msgid "Select Icon"
@@ -478,7 +478,6 @@ msgid "Scaled"
 msgstr "크기조절"
 
 #: ../settings/appearance-settings.c:742
-#, fuzzy
 msgid "A_djust Brightness:"
 msgstr "밝기 조절(_B):"
 
@@ -539,7 +538,7 @@ msgstr "배경화면을 전체 모니터에 맞게 늘입니다.(_a)"
 #: ../settings/appearance-settings.c:983
 #: ../settings/appearance-settings.c:1165
 msgid "_Appearance"
-msgstr ""
+msgstr "겉 모습(_A)"
 
 #. color settings frame
 #: ../settings/appearance-settings.c:1009
@@ -596,7 +595,7 @@ msgstr "화면 %d, 모니터 %d"
 
 #: ../settings/appearance-settings.c:1200
 msgid "_Behavior"
-msgstr ""
+msgstr "동작(_B)"
 
 #: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
 #, c-format
@@ -643,86 +642,77 @@ msgid "Edit backdrop list"
 msgstr "배경화면 목록을 수정합니다."
 
 #: ../settings/behavior-settings.c:225
-#, fuzzy
 msgid "Menus"
-msgstr "메뉴 화일"
+msgstr "메뉴"
 
 #: ../settings/behavior-settings.c:233
-#, fuzzy
 msgid "Show _window list on middle click"
-msgstr "창 목록 보이기(_l)"
+msgstr "가운데 버튼 클릭으로 창 목록 보이기(_w)"
 
 #: ../settings/behavior-settings.c:244
-#, fuzzy
 msgid "Show _desktop menu on right click"
-msgstr "데스크탑 메뉴 보이기(_m)"
+msgstr "오른쪽 버튼 클릭으로 데스크탑 메뉴 보이기(_d)"
 
 #: ../settings/behavior-settings.c:263
-#, fuzzy
 msgid "Desktop Icons"
-msgstr "데스크탑 메뉴"
+msgstr "데스크탑 아이콘"
 
 #: ../settings/behavior-settings.c:272
 #: ../src/xfdesktop-file-icon-manager.c:907
 msgid "None"
-msgstr ""
+msgstr "없음"
 
 #: ../settings/behavior-settings.c:273
-#, fuzzy
 msgid "Minimized application icons"
-msgstr "프로그램 아이콘 보이기(_a)"
+msgstr "프로그램 아이콘 최소화"
 
 #: ../settings/behavior-settings.c:275
 msgid "File/launcher icons"
-msgstr ""
+msgstr "화일/실행기 아이콘"
 
 #: ../settings/behavior-settings.c:286
-#, fuzzy
 msgid "_Icon size:"
-msgstr "아이콘 디자인"
+msgstr "아이콘 크기(_I):"
 
 #: ../settings/behavior-settings.c:300
-#, fuzzy
 msgid "Use _system font size"
-msgstr "사용자 메뉴화일 적용(_c):"
+msgstr "시스템글꼴 크기사용(_s):"
 
 #: ../settings/behavior-settings.c:317
 msgid "Custom _font size:"
-msgstr ""
+msgstr "사용자 글꼴크기(_f):"
 
 #: ../src/main.c:242
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "%s 버전 %s입니다. Xfce %s에서 동작 중입니다.\n"
 
 #: ../src/main.c:244
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "GTK+ %d.%d.%d로 만들고, GTK+ %d.%d.%d로 링크했습니다."
 
 #: ../src/main.c:248
 msgid "Build options:\n"
-msgstr ""
+msgstr "빌드 옵션:\n"
 
 #: ../src/main.c:249
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "    데스크탑 메뉴:       %s\n"
 
 #: ../src/main.c:251 ../src/main.c:258
-#, fuzzy
 msgid "enabled"
-msgstr "크기조절"
+msgstr "사용함"
 
 #: ../src/main.c:253 ../src/main.c:260
-#, fuzzy
 msgid "disabled"
-msgstr "바둑판"
+msgstr "사용안함"
 
 #: ../src/main.c:256
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "데스크탑 메뉴"
+msgstr "    데스크탑 아이콘:     %s\n"
 
 #: ../src/main.c:288
 #, c-format
@@ -779,372 +769,356 @@ msgstr "작업공간 '%s' 삭제(_R)"
 #: ../src/xfdesktop-file-icon-manager.c:339
 #: ../src/xfdesktop-file-icon-manager.c:646
 #: ../src/xfdesktop-file-icon-manager.c:680
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "Xfce4 메뉴 편집기 기동 실패: %s"
+msgstr "실행 실패 \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:341
 #: ../src/xfdesktop-file-icon-manager.c:648
 #: ../src/xfdesktop-file-icon-manager.c:683
-#, fuzzy
 msgid "Launch Error"
-msgstr "오류"
+msgstr "실행 오류"
 
 #: ../src/xfdesktop-file-icon-manager.c:343
 msgid "The associated application could not be found or executed."
-msgstr ""
+msgstr "해당하는 프로그램을 못 찾았거나 실행시키지 못 했습니다."
 
 #: ../src/xfdesktop-file-icon-manager.c:470
 #, c-format
 msgid "Rename \"%s\""
-msgstr ""
+msgstr "\"%s\" 이름 변경"
 
 #: ../src/xfdesktop-file-icon-manager.c:477
 #: ../src/xfdesktop-file-icon-manager.c:1482
 #: ../src/xfdesktop-file-icon-manager.c:1560
 #: ../src/xfdesktop-file-icon-manager.c:1571
 msgid "Enter the new name:"
-msgstr ""
+msgstr "새로운 이름:"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
-#, fuzzy
 msgid "Rename"
-msgstr "크기조절"
+msgstr "이름 변경"
 
 #: ../src/xfdesktop-file-icon-manager.c:521
 #, fuzzy, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "현재 메뉴를 닫으시렵니까?"
+msgstr "%d개의 화일을 지우시렵니까?"
 
 #: ../src/xfdesktop-file-icon-manager.c:526
 #: ../src/xfdesktop-file-icon-manager.c:546
 msgid "If you delete a file, it is permanently lost."
-msgstr ""
+msgstr "화일을 지우면, 영영 복구할 수 없습니다."
 
 #: ../src/xfdesktop-file-icon-manager.c:540
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "현재 메뉴를 닫으시렵니까?"
+msgstr "%d개의 화일을 지우시렵니까?"
 
 #: ../src/xfdesktop-file-icon-manager.c:543
-#, fuzzy
 msgid "Delete Multiple Files"
-msgstr "메뉴 화일 선택"
+msgstr "여러 화일 삭제"
 
 #: ../src/xfdesktop-file-icon-manager.c:685
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
+"이 기능을 사용하시려면 Thunar에서 제공하는 화일 관리자 같은 서비스가 필요합니"
+"다."
 
 #: ../src/xfdesktop-file-icon-manager.c:770
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "Xfce4 메뉴 편집기 기동 실패: %s"
+msgstr "\"%s\" 마운트 실패:"
 
 #: ../src/xfdesktop-file-icon-manager.c:771
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "Xfce4 메뉴 편집기 기동 실패: %s"
+msgstr "\"%s\" 마운트 실패:"
 
 #: ../src/xfdesktop-file-icon-manager.c:774
-#, fuzzy
 msgid "Mount Failed"
-msgstr "메뉴 화일"
+msgstr "마운트 실패"
 
 #: ../src/xfdesktop-file-icon-manager.c:774
-#, fuzzy
 msgid "Unmount Failed"
-msgstr "메뉴 화일"
+msgstr "언마운트 실패"
 
 #: ../src/xfdesktop-file-icon-manager.c:803
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "Xfce4 메뉴 편집기 기동 실패: %s"
+msgstr "\"%s\" 추출 실패:"
 
 #: ../src/xfdesktop-file-icon-manager.c:805
 msgid "Eject Failed"
-msgstr ""
+msgstr "추출 실패"
 
 #: ../src/xfdesktop-file-icon-manager.c:874
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
+msgstr "\"%s\"에 대한 기본 프로그램으로 \"%s\"를 설정하지 못 했습니다."
 
 #: ../src/xfdesktop-file-icon-manager.c:877
-#, fuzzy
 msgid "Properties Error"
-msgstr "속성 변경"
+msgstr "속성 오류"
 
 #: ../src/xfdesktop-file-icon-manager.c:907
 msgid "Write only"
-msgstr ""
+msgstr "쓰기 전용"
 
 #: ../src/xfdesktop-file-icon-manager.c:907
 msgid "Read only"
-msgstr ""
+msgstr "일기 전용"
 
 #: ../src/xfdesktop-file-icon-manager.c:907
 msgid "Read & Write"
-msgstr ""
+msgstr "읽고 쓰기"
 
 #: ../src/xfdesktop-file-icon-manager.c:934
 msgid "General"
-msgstr ""
+msgstr "일반"
 
 #: ../src/xfdesktop-file-icon-manager.c:985
 msgid "Kind:"
-msgstr ""
+msgstr "종류:"
 
 #: ../src/xfdesktop-file-icon-manager.c:995
 msgid "broken link"
-msgstr ""
+msgstr "끊어진 링크"
 
 #: ../src/xfdesktop-file-icon-manager.c:998
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "%s로 링크"
 
 #: ../src/xfdesktop-file-icon-manager.c:1015
 msgid "Link Target:"
-msgstr ""
+msgstr "링크 타겟:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1032
 #: ../src/xfdesktop-file-icon-manager.c:1191
 msgid "(unknown)"
-msgstr ""
+msgstr "(모름)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1054
 msgid "Open With:"
-msgstr ""
+msgstr "무엇으로 열어볼까요:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1131
 msgid "Modified:"
-msgstr ""
+msgstr "변경:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1149
 msgid "Accessed:"
-msgstr ""
+msgstr "접근:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1176
 msgid "Free Space:"
-msgstr ""
+msgstr "남은 공간"
 
 #: ../src/xfdesktop-file-icon-manager.c:1178
 msgid "Size:"
-msgstr ""
+msgstr "크기"
 
 #: ../src/xfdesktop-file-icon-manager.c:1194
 msgid "%s (%"
-msgstr ""
+msgstr "%S (%"
 
 #: ../src/xfdesktop-file-icon-manager.c:1194
 msgid " Bytes)"
-msgstr ""
+msgstr " 바이트)"
 
 #. permissions tab
 #: ../src/xfdesktop-file-icon-manager.c:1209
 msgid "Permissions"
-msgstr ""
+msgstr "권한"
 
 #: ../src/xfdesktop-file-icon-manager.c:1231
 msgid "Owner:"
-msgstr ""
+msgstr "소유자:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1249
 #: ../src/xfdesktop-file-icon-manager.c:1287
 msgid "Access:"
-msgstr ""
+msgstr "접근:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1272
 msgid "Group:"
-msgstr ""
+msgstr "그룹:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1310
-#, fuzzy
 msgid "Others:"
-msgstr "기타"
+msgstr "기타:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1383
 #, c-format
 msgid "_Open With \"%s\""
-msgstr ""
+msgstr "\"%s\"로 엽니다(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1386
 #, c-format
 msgid "Open With \"%s\""
-msgstr ""
+msgstr "\"%s\"로 엽니다"
 
 #: ../src/xfdesktop-file-icon-manager.c:1447
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "Xfce4 메뉴 편집기 기동 실패: %s"
+msgstr "디렉토리 \"%s\"을(를) 만들지 못 했습니다."
 
 #: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create Folder Failed"
-msgstr ""
+msgstr "디렉토리 생성 실패"
 
 #: ../src/xfdesktop-file-icon-manager.c:1479
 msgid "Create New Folder"
-msgstr ""
+msgstr "새로운 디렉토리 생성"
 
 #: ../src/xfdesktop-file-icon-manager.c:1483
 msgid "New Folder"
-msgstr ""
+msgstr "새로운 디렉토리"
 
 #: ../src/xfdesktop-file-icon-manager.c:1484
 #: ../src/xfdesktop-file-icon-manager.c:1562
 #: ../src/xfdesktop-file-icon-manager.c:1573
 msgid "Create"
-msgstr ""
+msgstr "생성"
 
 #: ../src/xfdesktop-file-icon-manager.c:1520
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "Xfce4 메뉴 편집기 기동 실패: %s"
+msgstr "화일 \"%s\"을(를) 만들지 못 했습니다."
 
 #: ../src/xfdesktop-file-icon-manager.c:1523
-#, fuzzy
 msgid "Create File Failed"
-msgstr "메뉴 화일 선택"
+msgstr "화일 생성 실패"
 
 #: ../src/xfdesktop-file-icon-manager.c:1549
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr ""
+msgstr "템플릿 \"%s\"로부터 문서 생성"
 
 #: ../src/xfdesktop-file-icon-manager.c:1568
 msgid "Create Empty File"
-msgstr ""
+msgstr "빈 화일 생성"
 
 #: ../src/xfdesktop-file-icon-manager.c:1572
 msgid "New Empty File"
-msgstr ""
+msgstr "새로운 빈 화일"
 
 #: ../src/xfdesktop-file-icon-manager.c:1827
 msgid "_Open all"
-msgstr ""
+msgstr "모두 열기(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1838
 msgid "_Open"
-msgstr ""
+msgstr "열기(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1849
 msgid "_Execute"
-msgstr ""
+msgstr "실행(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1893
 msgid "Open With"
-msgstr ""
+msgstr "열어볼 프로그램"
 
 #: ../src/xfdesktop-file-icon-manager.c:1923
 msgid "Open With Other _Application..."
-msgstr ""
+msgstr "다른 프로그램으로 열어 볼까요(_A)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2006
 msgid "_Mount Volume"
-msgstr ""
+msgstr "마운트(_M)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2017
 msgid "_Unmount Volume"
-msgstr ""
+msgstr "언마운트(_U)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2029
 msgid "_Eject Volume"
-msgstr ""
+msgstr "추출(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2039
-#, fuzzy
 msgid "_Copy Files"
-msgstr "화일(_F)"
+msgstr "여러 화일 복사(_C)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2040
-#, fuzzy
 msgid "_Copy File"
-msgstr "화일(_F)"
+msgstr "화일 복사(_C)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2049
-#, fuzzy
 msgid "Cu_t Files"
-msgstr "화일(_F)"
+msgstr "여러 화일 잘라내기(_t)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2050
-#, fuzzy
 msgid "Cu_t File"
-msgstr "화일(_F)"
+msgstr "화일 잘라내기(_t)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2059
-#, fuzzy
 msgid "_Delete Files"
-msgstr "메뉴 화일 선택"
+msgstr "여러 화일 삭제(_D)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2060
-#, fuzzy
 msgid "_Delete File"
-msgstr "메뉴 화일 선택"
+msgstr "화일 삭제(_D)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2072
 msgid "_Rename..."
-msgstr ""
+msgstr "이름 바꾸기(_R)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2090
-#, fuzzy
 msgid "_Properties..."
-msgstr "속성 변경"
+msgstr "속성(_P)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2106
 msgid "Create _Folder..."
-msgstr ""
+msgstr "디렉토리 만들기(_F)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2113
 msgid "Create _Document"
-msgstr ""
+msgstr "문서 만들기(_D)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2134
 msgid "No Templates installed"
-msgstr ""
+msgstr "템플릿을 설치하지 않았군요."
 
 #: ../src/xfdesktop-file-icon-manager.c:2146
-#, fuzzy
 msgid "_Empty File"
-msgstr "화일(_F)"
+msgstr "빈 화일(_F)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2929 ../src/xfdesktop-file-icon.c:511
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\":"
-msgstr "Xfce4 메뉴 편집기 기동 실패: %s"
+msgstr "\"%s\" 실행 실패"
 
 #: ../src/xfdesktop-file-icon-manager.c:2931 ../src/xfdesktop-file-icon.c:513
-#, fuzzy
 msgid "Run Error"
-msgstr "오류"
+msgstr "실행 오류"
 
 #: ../src/xfdesktop-file-icon.c:440
 #, c-format
 msgid "There was an error %s \"%s\" to \"%s\":"
-msgstr ""
+msgstr "There was an error %s \"%s\" to \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:442
 msgid "moving"
-msgstr ""
+msgstr "이동시키고 있습니다."
 
 #: ../src/xfdesktop-file-icon.c:444
 msgid "copying"
-msgstr ""
+msgstr "복사하고 있습니다."
 
 #: ../src/xfdesktop-file-icon.c:445
 msgid "linking"
-msgstr ""
+msgstr "링크하고 있습니다."
 
 #: ../src/xfdesktop-file-icon.c:448
-#, fuzzy
 msgid "File Error"
-msgstr "오류"
+msgstr "화일 오류"
 
 #: ../src/xfdesktop-file-icon.c:656
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr ""
+msgstr "\"%s\"을(를) \"%s\"(으)로 변경하시 못 했습니다."
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
