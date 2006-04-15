@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-15 08:30+0900\n"
-"PO-Revision-Date: 2006-04-09 11:24+0900\n"
+"PO-Revision-Date: 2006-04-15 11:39+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -806,9 +806,9 @@ msgid "Rename"
 msgstr "名前変更"
 
 #: ../src/xfdesktop-file-icon-manager.c:521
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "本当に以下の %d 個のファイルを削除してもよろしいですか？"
+msgstr "「%s」を削除してもよろしいですか？"
 
 #: ../src/xfdesktop-file-icon-manager.c:526
 #: ../src/xfdesktop-file-icon-manager.c:546
@@ -818,7 +818,7 @@ msgstr "削除されたファイルは二度と復元できません。"
 #: ../src/xfdesktop-file-icon-manager.c:540
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "本当に以下の %d 個のファイルを削除してもよろしいですか？"
+msgstr "以下 %d 個のファイルを削除してもよろしいですか？"
 
 #: ../src/xfdesktop-file-icon-manager.c:543
 msgid "Delete Multiple Files"
