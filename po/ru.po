@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-15 08:30+0900\n"
-"PO-Revision-Date: 2006-03-25 17:37+0500\n"
+"PO-Revision-Date: 2006-04-15 12:02+0600\n"
 "Last-Translator: Andrey Fedoseev <andrey.fedoseev@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: KBabel 1.11.2\n"
 
 #: ../menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
@@ -32,7 +31,7 @@ msgstr "Главный разработчик"
 #: ../menueditor/about_dialog.c:44 ../menueditor/about_dialog.c:45
 #: ../menueditor/about_dialog.c:46
 msgid "Contributor"
-msgstr "Помощник"
+msgstr "Сделал вклад"
 
 #: ../menueditor/about_dialog.c:47
 msgid "Icon designer"
@@ -529,7 +528,7 @@ msgstr "Больше не показывать"
 #: ../settings/appearance-settings.c:923
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
-msgstr "Настройки рабочего стола"
+msgstr "Настройка рабочего стола"
 
 #: ../settings/appearance-settings.c:928
 msgid "Allow _Xfce to manage the desktop"
@@ -690,7 +689,7 @@ msgstr "Размер шрифта:"
 #: ../src/main.c:242
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "Это %s версии %s, запущенный на Xfce %s.\n"
 
 #: ../src/main.c:244
 #, c-format
@@ -704,7 +703,7 @@ msgstr "Параметры сборки:\n"
 #: ../src/main.c:249
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "    Меню рабочего стола: %s\n"
 
 #: ../src/main.c:251 ../src/main.c:258
 msgid "enabled"
@@ -745,7 +744,7 @@ msgstr ""
 
 #: ../src/main.c:293
 msgid "    -quit        Cause xfdesktop to quit\n"
-msgstr ""
+msgstr "    -quit        Выйти из xfdesktop\n"
 
 #: ../src/windowlist.c:193
 #, c-format
@@ -801,14 +800,13 @@ msgid "Enter the new name:"
 msgstr "Укажите новое имя:"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
-#, fuzzy
 msgid "Rename"
-msgstr "Переименовать..."
+msgstr "Переименовать"
 
 #: ../src/xfdesktop-file-icon-manager.c:521
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "Вы уверены, что хотите удалить следующие %d файлов?"
+msgstr "Вы уверены, что хотите удалить \"%s\"?"
 
 #: ../src/xfdesktop-file-icon-manager.c:526
 #: ../src/xfdesktop-file-icon-manager.c:546
@@ -862,7 +860,7 @@ msgstr "Не удалось извлечь"
 #: ../src/xfdesktop-file-icon-manager.c:874
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Не удалось назначить приложение по умолчанию для \"%s\" \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:877
 msgid "Properties Error"
@@ -967,50 +965,49 @@ msgid "Open With \"%s\""
 msgstr "Открыть с помощью \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1447
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "Невозможно смонтировать \"%s\":"
+msgstr "Не удалось создать папку с именем \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create Folder Failed"
-msgstr ""
+msgstr "Не удалось создать папку"
 
 #: ../src/xfdesktop-file-icon-manager.c:1479
 msgid "Create New Folder"
-msgstr ""
+msgstr "Создать новую папку"
 
 #: ../src/xfdesktop-file-icon-manager.c:1483
 msgid "New Folder"
-msgstr ""
+msgstr "Новая папка"
 
 #: ../src/xfdesktop-file-icon-manager.c:1484
 #: ../src/xfdesktop-file-icon-manager.c:1562
 #: ../src/xfdesktop-file-icon-manager.c:1573
 msgid "Create"
-msgstr ""
+msgstr "Создать"
 
 #: ../src/xfdesktop-file-icon-manager.c:1520
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "Невозможно извлечь  \"%s\":"
+msgstr "Невозможно создать файл с именем \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1523
-#, fuzzy
 msgid "Create File Failed"
-msgstr "Удалить несколько файлов"
+msgstr "Не удалось создать файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:1549
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr ""
+msgstr "Создать документ из шаблона \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1568
 msgid "Create Empty File"
-msgstr ""
+msgstr "Создать пустой файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:1572
 msgid "New Empty File"
-msgstr ""
+msgstr "Новый файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:1827
 msgid "_Open all"
@@ -1078,20 +1075,19 @@ msgstr "Свойства..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2106
 msgid "Create _Folder..."
-msgstr ""
+msgstr "Создать папку..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2113
 msgid "Create _Document"
-msgstr ""
+msgstr "Создать документ"
 
 #: ../src/xfdesktop-file-icon-manager.c:2134
 msgid "No Templates installed"
-msgstr ""
+msgstr "Не установлено ни одного шаблона"
 
 #: ../src/xfdesktop-file-icon-manager.c:2146
-#, fuzzy
 msgid "_Empty File"
-msgstr "_Копировать файл"
+msgstr "Пустой файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:2929 ../src/xfdesktop-file-icon.c:511
 #, c-format
@@ -1105,19 +1101,19 @@ msgstr "Ошибка при выполнении"
 #: ../src/xfdesktop-file-icon.c:440
 #, c-format
 msgid "There was an error %s \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Произошла ошибка при %s \"%s\" в \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:442
 msgid "moving"
-msgstr "перемещение"
+msgstr "перемещении"
 
 #: ../src/xfdesktop-file-icon.c:444
 msgid "copying"
-msgstr "копирование"
+msgstr "копировании"
 
 #: ../src/xfdesktop-file-icon.c:445
 msgid "linking"
-msgstr "создание ссылки"
+msgstr "создании ссылки"
 
 #: ../src/xfdesktop-file-icon.c:448
 msgid "File Error"
@@ -1146,7 +1142,7 @@ msgstr "Отображает меню, содержащее категории �
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr "Настройки для программы управления рабочим столом Xfce 4"
+msgstr "Настройки программы управления рабочим столом Xfce 4"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
