@@ -38,8 +38,8 @@
 <xfce-registered-categories>
 	<category name="Legacy" toplevel="true" replace="Accessories" builtin-icon="UTILITY" />
 	<category name="Core" toplevel="true" replace="Accessories" builtin-icon="UTILITY" />
-	<category name="Development" toplevel="true" builtin-icon="DEVELOPMENT">
-		<subcategory name="Building" />
+	<category name="Development" toplevel="true" replace="Разработка" builtin-icon="DEVELOPMENT">
+		<subcategory name="Building"/>
 		<subcategory name="Debugger" />
 		<subcategory name="IDE" />
 		<subcategory name="GUIDesigner" />
@@ -57,7 +57,7 @@
 	<category name="Profiling" builtin-icon="DEVELOPMENT" />
 	<category name="RevisionControl" replace="Система контроля версий" builtin-icon="DEVELOPMENT" />
 	<category name="Translation" builtin-icon="DEVELOPMENT" />
-	<category name="Office" toplevel="true" builtin-icon="PRODUCTIVITY">
+	<category name="Office" toplevel="true" replace="Офис" builtin-icon="PRODUCTIVITY">
 		<subcategory name="Calendar" />
 		<subcategory name="ContactManagement" />
 		<subcategory name="Database" />
@@ -118,7 +118,7 @@
 	<category name="DesktopSettings" replace="Настройки рабочего стола" builtin-icon="SETTINGS" />
 	<category name="HardwareSettings" replace="Настройки оборудования" builtin-icon="SETTINGS" />
 	<category name="PackageSettings" replace="Управление пакетами" builtin-icon="SETTINGS" />
-	<category name="Network" toplevel="true" builtin-icon="NETWORK">
+	<category name="Network" toplevel="true" replace="Сеть" builtin-icon="NETWORK">
 		<subcategory name="Email" />
 		<subcategory name="Dialup" />
 		<subcategory name="InstantMessaging" />
@@ -153,7 +153,7 @@
 		<subcategory name="Recorder" />
 		<subcategory name="DiscBurning" />
 	</category>
-	<category name="Audio" builtin-icon="MULTIMEDIA">
+	<category name="Audio" replace="Аудио" builtin-icon="MULTIMEDIA">
 		<subcategory name="Midi" />
 		<subcategory name="Mixer" />
 		<subcategory name="Sequencer" />
@@ -162,7 +162,7 @@
 		<subcategory name="Player" />
 		<subcategory name="Recorder" />
 	</category>
-	<category name="Midi"  builtin-icon="MULTIMEDIA" />
+	<category name="Midi" replace="Midi" builtin-icon="MULTIMEDIA" />
 	<category name="Mixer" replace="Микшеры" builtin-icon="MULTIMEDIA" />
 	<category name="Sequencer" replace="Секвенсеры" builtin-icon="MULTIMEDIA" />
 	<category name="Tuner" replace="Тюнеры" builtin-icon="MULTIMEDIA" />
@@ -243,7 +243,7 @@
 	<category name="Screensaver" replace="Хранители экрана" />
 	<category name="TerminalEmulator" replace="Эмуляторы терминала" />
 	<category name="TrayIcon" replace="Значки в системном лотке" />
-	<category name="System" toplevel="true" builtin-icon="SYSTEM">
+	<category name="System" toplevel="true" replace="Система" builtin-icon="SYSTEM">
 		<subcategory name="FileSystem" />
 		<subcategory name="Monitor" />
 		<subcategory name="Security" />
@@ -268,7 +268,7 @@
 	<category name="Calculator" replace="Калькуляторы" builtin-icon="UTILITY" />
 	<category name="Clock" replace="Часы" builtin-icon="UTILITY" />
 	<category name="TextEditor" replace="Редактирование текста" builtin-icon="UTILITY" />
-	<category name="KDE" toplevel="true" ignore="true">
+	<category name="KDE" toplevel="true" replace="KDE" ignore="true">
 		<subcategory name="Development" />
 		<subcategory name="Office" />
 		<subcategory name="Graphics" />
@@ -281,7 +281,7 @@
 		<subcategory name="System" />
 		<subcategory name="Utility" />
 	</category>
-	<category name="GNOME" toplevel="true" ignore="true">
+	<category name="GNOME" toplevel="true" replace="GNOME" ignore="true">
 		<subcategory name="Development" />
 		<subcategory name="Office" />
 		<subcategory name="Graphics" />
@@ -294,13 +294,13 @@
 		<subcategory name="System" />
 		<subcategory name="Utility" />
 	</category>
-	<category name="GTK" toplevel="true" ignore="true">
+	<category name="GTK" toplevel="true" replace="GTK" ignore="true">
 		<subcategory name="GNOME" />
 	</category>
-	<category name="Qt" toplevel="true" ignore="true">
+	<category name="Qt" toplevel="true" replace="Qt" ignore="true">
 		<subcategory name="KDE" />
 	</category>
-	<category name="Motif" toplevel="true" ignore="true">
+	<category name="Motif" toplevel="true" replace="Motif" ignore="true">
 		<subcategory name="Development" />
 		<subcategory name="Office" />
 		<subcategory name="Graphics" />
@@ -313,10 +313,10 @@
 		<subcategory name="System" />
 		<subcategory name="Utility" />
 	</category>
-	<category name="Java" toplevel="true" ignore="true">
+	<category name="Java" toplevel="true" replace="Java" ignore="true">
 		<subcategory name="Applet" />
 	</category>
-	<category name="ConsoleOnly" toplevel="true" replace="Console" ignore="true">
+	<category name="ConsoleOnly" toplevel="true" replace="Консольные приложения" ignore="true">
 		<subcategory name="Development" />
 		<subcategory name="Office" />
 		<subcategory name="Graphics" />
@@ -329,6 +329,7 @@
 		<subcategory name="System" />
 		<subcategory name="Utility" />
 	</category>
-	<category name="Wine" toplevel="true" builtin-icon="WINE" />
-	<category name="WineX" toplevel="true" builtin-icon="WINE" />
+	<category name="Wine" toplevel="Wine" builtin-icon="WINE" />
+	<category name="WineX" replace="WineX" toplevel="true" builtin-icon="WINE" />
+	<category name="CrossOver" replace="CrossOver" toplevel="true" builtin-icon="WINE" />
 </xfce-registered-categories>
