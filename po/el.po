@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-15 08:30+0900\n"
-"PO-Revision-Date: 2006-03-30 15:18+0300\n"
-"Last-Translator: Stathis Kamperis <ekamperi@auth.gr>\n"
+"POT-Creation-Date: 2006-04-15 03:30+0300\n"
+"PO-Revision-Date: 2006-04-15 03:29+0200\n"
+"Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -805,15 +805,13 @@ msgid "Enter the new name:"
 msgstr "Εισάγετε το νέο όνομα:"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
-#, fuzzy
 msgid "Rename"
-msgstr "_Μετονομασία..."
+msgstr "Μετονομασία"
 
 #: ../src/xfdesktop-file-icon-manager.c:521
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr ""
-"Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά τα  %d επιλεγμένα αρχεία;"
+msgstr "Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά το \"%s\";"
 
 #: ../src/xfdesktop-file-icon-manager.c:526
 #: ../src/xfdesktop-file-icon-manager.c:546
@@ -974,50 +972,49 @@ msgid "Open With \"%s\""
 msgstr "Άνοιγμα με \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1447
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "Δεν ήταν δυνατή η προσάρτηση του \"%s\":"
+msgstr "Δεν ήταν δυνατή η δημιουργία φακέλου με όνομα \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create Folder Failed"
-msgstr ""
+msgstr "Η δημιουργία του φακέλου απέτυχε"
 
 #: ../src/xfdesktop-file-icon-manager.c:1479
 msgid "Create New Folder"
-msgstr ""
+msgstr "Δημιουργία νέου φακέλου"
 
 #: ../src/xfdesktop-file-icon-manager.c:1483
 msgid "New Folder"
-msgstr ""
+msgstr "Νέος φάκελος"
 
 #: ../src/xfdesktop-file-icon-manager.c:1484
 #: ../src/xfdesktop-file-icon-manager.c:1562
 #: ../src/xfdesktop-file-icon-manager.c:1573
 msgid "Create"
-msgstr ""
+msgstr "Δημιουργία"
 
 #: ../src/xfdesktop-file-icon-manager.c:1520
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "Δεν ήταν δυνατή η αποβολή του \"%s\":"
+msgstr "Δεν ήταν δυνατή η δημιουργία αρχείου με όνομα \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1523
-#, fuzzy
 msgid "Create File Failed"
-msgstr "Διαγραφή πολλαπλών αρχείων"
+msgstr "Η δημιουργία του αρχείου απέτυχε"
 
 #: ../src/xfdesktop-file-icon-manager.c:1549
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr ""
+msgstr "Δημιουργία εγγράφου από πρότυπο \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1568
 msgid "Create Empty File"
-msgstr ""
+msgstr "Δημιουργία κενού αρχείου"
 
 #: ../src/xfdesktop-file-icon-manager.c:1572
 msgid "New Empty File"
-msgstr ""
+msgstr "Νέο κενό αρχείο"
 
 #: ../src/xfdesktop-file-icon-manager.c:1827
 msgid "_Open all"
@@ -1085,20 +1082,19 @@ msgstr "_Ιδιότητες..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2106
 msgid "Create _Folder..."
-msgstr ""
+msgstr "Δημιουργία _Φακέλου..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2113
 msgid "Create _Document"
-msgstr ""
+msgstr "Δημιουργία _Εγγράφου"
 
 #: ../src/xfdesktop-file-icon-manager.c:2134
 msgid "No Templates installed"
-msgstr ""
+msgstr "Δεν υπάρχουν εγκατεστημένα πρότυπα"
 
 #: ../src/xfdesktop-file-icon-manager.c:2146
-#, fuzzy
 msgid "_Empty File"
-msgstr "Α_ντιγραφή αρχείου"
+msgstr "_Κενό αρχείο"
 
 #: ../src/xfdesktop-file-icon-manager.c:2929 ../src/xfdesktop-file-icon.c:511
 #, c-format
