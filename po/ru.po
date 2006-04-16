@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-15 08:30+0900\n"
-"PO-Revision-Date: 2006-04-15 12:02+0600\n"
+"PO-Revision-Date: 2006-04-16 09:39+0600\n"
 "Last-Translator: Andrey Fedoseev <andrey.fedoseev@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,7 @@ msgstr "Значок:"
 #. Startup notification
 #: ../menueditor/add_dialog.c:235 ../menueditor/edit_dialog.c:158
 msgid "Use startup _notification"
-msgstr "Использовать уведомление о запуске"
+msgstr "Использовать _уведомление о запуске"
 
 #. Run in terminal check button
 #. Run in terminal
@@ -95,7 +95,7 @@ msgstr "Запускать в _терминале"
 
 #: ../menueditor/add_dialog.c:270 ../menueditor/edit_dialog.c:240
 msgid "The command doesn't exist !"
-msgstr "Команда не существует!"
+msgstr "Такая команда не существует!"
 
 #: ../menueditor/add_dialog.c:276 ../menueditor/edit_dialog.c:246
 msgid "All fields must be filled to add an item."
@@ -146,7 +146,7 @@ msgstr "Многоуровневое"
 #. Unique
 #: ../menueditor/add_menu_dialog.c:162
 msgid "_Unique entries only"
-msgstr "Только неповторяющиеся пункты"
+msgstr "Только _неповторяющиеся пункты"
 
 #: ../menueditor/add_menu_dialog.c:198
 msgid "The 'Source' field is required."
@@ -240,7 +240,7 @@ msgstr "Изменить"
 #. File menu
 #: ../menueditor/menueditor.c:859
 msgid "_File"
-msgstr "Файл"
+msgstr "_Файл"
 
 #: ../menueditor/menueditor.c:868
 msgid "Open default menu"
@@ -249,7 +249,7 @@ msgstr "Открыть меню по умолчанию"
 #. Edit menu
 #: ../menueditor/menueditor.c:882
 msgid "_Edit"
-msgstr "Правка"
+msgstr "_Правка"
 
 #: ../menueditor/menueditor.c:888
 msgid "Add an external menu..."
@@ -258,11 +258,11 @@ msgstr "Добавить внешнее меню..."
 #. Help menu
 #: ../menueditor/menueditor.c:900
 msgid "_Help"
-msgstr "Помощь"
+msgstr "_Справка"
 
 #: ../menueditor/menueditor.c:904
 msgid "_About..."
-msgstr "О программе..."
+msgstr "_О программе..."
 
 #: ../menueditor/menueditor.c:916
 msgid "Create a new Xfce4 menu file"
@@ -386,7 +386,7 @@ msgstr "Невозможно запустить редактор меню xfce4-
 
 #: ../panel-plugin/desktop-menu-plugin.c:689
 msgid "Edit Properties"
-msgstr "Изменить свойства"
+msgstr "Изменить параметры"
 
 #: ../panel-plugin/desktop-menu-plugin.c:707
 msgid "Button"
@@ -394,11 +394,11 @@ msgstr "Кнопка"
 
 #: ../panel-plugin/desktop-menu-plugin.c:720
 msgid "Button _title:"
-msgstr "Заголовок кнопки:"
+msgstr "_Заголовок кнопки:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:733
 msgid "_Show title in button"
-msgstr "Показывать заголовок на кнопке"
+msgstr "_Показывать заголовок на кнопке"
 
 #: ../panel-plugin/desktop-menu-plugin.c:740
 msgid "Menu File"
@@ -406,16 +406,16 @@ msgstr "Меню файл"
 
 #: ../panel-plugin/desktop-menu-plugin.c:752
 msgid "Use default _desktop menu file"
-msgstr "Использовать меню рабочего стола по умолчанию"
+msgstr "Использовать меню _рабочего стола по умолчанию"
 
 #: ../panel-plugin/desktop-menu-plugin.c:761
 msgid "Use _custom menu file:"
-msgstr "Использовать другой файл меню:"
+msgstr "Использовать _другой файл меню:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:812
 #: ../settings/behavior-settings.c:251
 msgid "_Edit Menu"
-msgstr "Редактировать меню"
+msgstr "Р_едактировать меню"
 
 #: ../panel-plugin/desktop-menu-plugin.c:818
 msgid "Icons"
@@ -423,11 +423,11 @@ msgstr "Значки"
 
 #: ../panel-plugin/desktop-menu-plugin.c:830
 msgid "_Button icon:"
-msgstr "Значок:"
+msgstr "З_начок:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:854
 msgid "Show _icons in menu"
-msgstr "Показывать значки в меню"
+msgstr "П_оказывать значки в меню"
 
 #. the dialog
 #: ../settings/appearance-settings.c:133 ../settings/appearance-settings.c:908
@@ -450,15 +450,15 @@ msgstr "Файлы списка (*.list)"
 
 #: ../settings/appearance-settings.c:634
 msgid "_Edit list..."
-msgstr "Изменить список..."
+msgstr "_Изменить список..."
 
 #: ../settings/appearance-settings.c:642
 msgid "_New list..."
-msgstr "Создать список..."
+msgstr "_Создать список..."
 
 #: ../settings/appearance-settings.c:675
 msgid "S_tyle:"
-msgstr "Стиль:"
+msgstr "С_тиль:"
 
 #: ../settings/appearance-settings.c:682
 msgid "Auto"
@@ -522,27 +522,27 @@ msgstr ""
 
 #: ../settings/appearance-settings.c:841
 msgid "_Do not show this again"
-msgstr "Больше не показывать"
+msgstr "Больше _не показывать"
 
 #. header
 #: ../settings/appearance-settings.c:923
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
-msgstr "Настройка рабочего стола"
+msgstr "Рабочий стол"
 
 #: ../settings/appearance-settings.c:928
 msgid "Allow _Xfce to manage the desktop"
-msgstr "Разрешить Xfce управлять рабочим столом"
+msgstr "_Разрешить Xfce управлять рабочим столом"
 
 #: ../settings/appearance-settings.c:969
 msgid "Stretch single backdrop onto _all monitors"
-msgstr ""
+msgstr "Растягивать изображение на _все экраны"
 
 #. add the single backdrop settings page to the main notebook
 #: ../settings/appearance-settings.c:983
 #: ../settings/appearance-settings.c:1165
 msgid "_Appearance"
-msgstr "Внешний вид"
+msgstr "_Внешний вид"
 
 #. color settings frame
 #: ../settings/appearance-settings.c:1009
@@ -551,7 +551,7 @@ msgstr "Цвет"
 
 #: ../settings/appearance-settings.c:1023
 msgid "_Color Style:"
-msgstr "Стиль заполнения цветом:"
+msgstr "Стиль _заполнения цветом:"
 
 #: ../settings/appearance-settings.c:1030
 msgid "Solid Color"
@@ -567,11 +567,11 @@ msgstr "Вертикальный градиент"
 
 #: ../settings/appearance-settings.c:1045
 msgid "Fi_rst Color:"
-msgstr "Первый цвет:"
+msgstr "П_ервый цвет:"
 
 #: ../settings/appearance-settings.c:1066
 msgid "_Second Color:"
-msgstr "Второй цвет:"
+msgstr "В_торой цвет:"
 
 #: ../settings/appearance-settings.c:1091
 msgid "Image"
@@ -579,11 +579,11 @@ msgstr "Изображение"
 
 #: ../settings/appearance-settings.c:1099
 msgid "Show _Image"
-msgstr "Показывать изображение"
+msgstr "Показывать _изображение"
 
 #: ../settings/appearance-settings.c:1121
 msgid "_File:"
-msgstr "Файл:"
+msgstr "_Файл:"
 
 #: ../settings/appearance-settings.c:1176
 #: ../settings/appearance-settings.c:1178
@@ -599,7 +599,7 @@ msgstr "Экран %d, монитор %d"
 
 #: ../settings/appearance-settings.c:1200
 msgid "_Behavior"
-msgstr "Поведение"
+msgstr "_Поведение"
 
 #: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
 #, c-format
@@ -651,11 +651,11 @@ msgstr "Меню"
 
 #: ../settings/behavior-settings.c:233
 msgid "Show _window list on middle click"
-msgstr "Показывать список окон по щелчку средней кнопкой мыши"
+msgstr "Показывать _список окон по щелчку средней кнопкой мыши"
 
 #: ../settings/behavior-settings.c:244
 msgid "Show _desktop menu on right click"
-msgstr "Показать меню рабочего стола по щелчку правой кнопой мыши"
+msgstr "Показать _меню рабочего стола по щелчку правой кнопой мыши"
 
 #: ../settings/behavior-settings.c:263
 msgid "Desktop Icons"
@@ -676,15 +676,15 @@ msgstr "Значки файлов или запуска"
 
 #: ../settings/behavior-settings.c:286
 msgid "_Icon size:"
-msgstr "Размер значков:"
+msgstr "Размер _значков:"
 
 #: ../settings/behavior-settings.c:300
 msgid "Use _system font size"
-msgstr "Использовать системный размер шрифта"
+msgstr "Использовать _системный размер шрифта"
 
 #: ../settings/behavior-settings.c:317
 msgid "Custom _font size:"
-msgstr "Размер шрифта:"
+msgstr "Размер _шрифта:"
 
 #: ../src/main.c:242
 #, c-format
@@ -694,7 +694,7 @@ msgstr "Это %s версии %s, запущенный на Xfce %s.\n"
 #: ../src/main.c:244
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Собрано с GTK+ %d.%d.%d, слинковано с GTK+ %d.%d.%d."
 
 #: ../src/main.c:248
 msgid "Build options:\n"
@@ -758,17 +758,17 @@ msgstr "<i>Рабочее место %d</i>"
 
 #: ../src/windowlist.c:268 ../src/windowlist.c:271
 msgid "_Add Workspace"
-msgstr "Добавить рабочее место"
+msgstr "_Добавить рабочее место"
 
 #: ../src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "Удалить рабочее место %d"
+msgstr "_Удалить рабочее место %d"
 
 #: ../src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Удалить рабочее место '%s'"
+msgstr "_Удалить рабочее место '%s'"
 
 #: ../src/xfdesktop-file-icon-manager.c:339
 #: ../src/xfdesktop-file-icon-manager.c:646
@@ -957,7 +957,7 @@ msgstr "Другое:"
 #: ../src/xfdesktop-file-icon-manager.c:1383
 #, c-format
 msgid "_Open With \"%s\""
-msgstr "Открывать с помощью \"%s\""
+msgstr "_Открыть с помощью \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1386
 #, c-format
@@ -1011,15 +1011,15 @@ msgstr "Новый файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:1827
 msgid "_Open all"
-msgstr "Открыть все"
+msgstr "Открыть _все"
 
 #: ../src/xfdesktop-file-icon-manager.c:1838
 msgid "_Open"
-msgstr "Открыть"
+msgstr "_Открыть"
 
 #: ../src/xfdesktop-file-icon-manager.c:1849
 msgid "_Execute"
-msgstr "Выполнить"
+msgstr "_Выполнить"
 
 #: ../src/xfdesktop-file-icon-manager.c:1893
 msgid "Open With"
@@ -1031,15 +1031,15 @@ msgstr "Открыть с помощью другого приложения..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2006
 msgid "_Mount Volume"
-msgstr "Подключить том"
+msgstr "_Подключить том"
 
 #: ../src/xfdesktop-file-icon-manager.c:2017
 msgid "_Unmount Volume"
-msgstr "Отключить том"
+msgstr "О_тключить том"
 
 #: ../src/xfdesktop-file-icon-manager.c:2029
 msgid "_Eject Volume"
-msgstr "Извлечь том"
+msgstr "_Извлечь том"
 
 #: ../src/xfdesktop-file-icon-manager.c:2039
 msgid "_Copy Files"
@@ -1051,11 +1051,11 @@ msgstr "_Копировать файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:2049
 msgid "Cu_t Files"
-msgstr "Вырезать файлы"
+msgstr "_Вырезать файлы"
 
 #: ../src/xfdesktop-file-icon-manager.c:2050
 msgid "Cu_t File"
-msgstr "Вырезать файл"
+msgstr "_Вырезать файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:2059
 msgid "_Delete Files"
@@ -1071,15 +1071,15 @@ msgstr "Переименовать..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2090
 msgid "_Properties..."
-msgstr "Свойства..."
+msgstr "_Свойства..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2106
 msgid "Create _Folder..."
-msgstr "Создать папку..."
+msgstr "Создать _папку..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2113
 msgid "Create _Document"
-msgstr "Создать документ"
+msgstr "Создать _документ"
 
 #: ../src/xfdesktop-file-icon-manager.c:2134
 msgid "No Templates installed"
@@ -1087,7 +1087,7 @@ msgstr "Не установлено ни одного шаблона"
 
 #: ../src/xfdesktop-file-icon-manager.c:2146
 msgid "_Empty File"
-msgstr "Пустой файл"
+msgstr "_Пустой файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:2929 ../src/xfdesktop-file-icon.c:511
 #, c-format
