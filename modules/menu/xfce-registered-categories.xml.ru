@@ -107,7 +107,7 @@
 	<category name="OCR" replace="Распознавание текста" builtin-icon="GRAPHICS" />
 	<category name="Photograph" replace="Фото" builtin-icon="GRAPHICS" />
 	<category name="Viewer" replace="Просмотр изображений" builtin-icon="GRAPHICS" />
-	<category name="Settings" replace="Настройки" toplevel="true" builtin-icon="SETTINGS">
+	<category name="Settings" replace="Настройка" toplevel="true" builtin-icon="SETTINGS">
 		<subcategory name="DesktopSettings" />
 		<subcategory name="HardwareSettings" />
 		<subcategory name="PackageSettings" />
@@ -115,10 +115,10 @@
 		<subcategory name="Accessibility" />
 		<subcategory name="Screensaver" />
 	</category>
-	<category name="DesktopSettings" replace="Настройки рабочего стола" builtin-icon="SETTINGS" />
-	<category name="HardwareSettings" replace="Настройки оборудования" builtin-icon="SETTINGS" />
+	<category name="DesktopSettings" replace="Рабочий стол" builtin-icon="SETTINGS" />
+	<category name="HardwareSettings" replace="Оборудование" builtin-icon="SETTINGS" />
 	<category name="PackageSettings" replace="Управление пакетами" builtin-icon="SETTINGS" />
-	<category name="Network" toplevel="true" replace="Сеть" builtin-icon="NETWORK">
+	<category name="Network" toplevel="true" replace="Интернет" builtin-icon="NETWORK">
 		<subcategory name="Email" />
 		<subcategory name="Dialup" />
 		<subcategory name="InstantMessaging" />
@@ -143,7 +143,7 @@
 	<category name="Telephony" replace="Телефония" builtin-icon="NETWORK" />
 	<category name="WebBrowser" replace="Просмотр Веб" builtin-icon="NETWORK" />
 	<category name="WebDevelopment" replace="Разработка веб-страниц" builtin-icon="NETWORK" />
-	<category name="AudioVideo" replace="Мультимедиа" toplevel="true" builtin-icon="MULTIMEDIA">
+	<category name="AudioVideo" replace="Аудио и видео" toplevel="true" builtin-icon="MULTIMEDIA">
 		<subcategory name="Database" />
 		<subcategory name="HamRadio" />
 		<subcategory name="Audio" />
@@ -254,7 +254,7 @@
 	<category name="Filesystem" replace="Файловая система" builtin-icon="SYSTEM" />
 	<category name="Monitor" replace="Монитор" builtin-icon="SYSTEM" />
 	<category name="Security" replace="Безопасность" builtin-icon="SYSTEM" />
-	<category name="Utility" toplevel="true" replace="Утилиты" builtin-icon="UTILITY">
+	<category name="Utility" toplevel="true" replace="Инструменты" builtin-icon="UTILITY">
 		<subcategory name="Accessibility" />
 		<subcategory name="Calculator" />
 		<subcategory name="Clock" />
@@ -329,7 +329,7 @@
 		<subcategory name="System" />
 		<subcategory name="Utility" />
 	</category>
-	<category name="Wine" toplevel="Wine" builtin-icon="WINE" />
-	<category name="WineX" replace="WineX" toplevel="true" builtin-icon="WINE" />
-	<category name="CrossOver" replace="CrossOver" toplevel="true" builtin-icon="WINE" />
+	<category name="Wine" toplevel="true" builtin-icon="WINE" />
+	<category name="WineX" replace="Wine" toplevel="true" builtin-icon="WINE" />
+	<category name="CrossOver" replace="Wine" toplevel="true" builtin-icon="WINE" />
 </xfce-registered-categories>
