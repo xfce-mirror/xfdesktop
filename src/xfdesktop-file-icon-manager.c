@@ -42,9 +42,6 @@
 #include <glib-object.h>
 #include <gdk/gdkkeysyms.h>
 
-#include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/libxfcegui4.h>
-
 #ifdef HAVE_THUNARX
 #include <thunarx/thunarx.h>
 #endif
@@ -53,6 +50,9 @@
 #include "xfdesktop-file-icon.h"
 #include "xfdesktop-clipboard-manager.h"
 #include "xfdesktop-file-icon-manager.h"
+
+#include <libxfce4util/libxfce4util.h>
+#include <libxfcegui4/libxfcegui4.h>
 
 #define SAVE_DELAY 7000
 #define BORDER     8

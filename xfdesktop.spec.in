@@ -10,9 +10,11 @@ BuildRoot:	%{_tmppath}/%{name}-root
 Requires:	gtk2 >= @GTK_REQUIRED_VERSION@
 Requires:	libxfce4mcs >= @LIBXFCE4MCS_CLIENT_REQUIRED_VERSION@
 Requires:	libxfcegui4 >= @LIBXFCEGUI4_REQUIRED_VERSION@
+Requires:	Thunar >= @THUNAR_VFS_REQUIRES_VERSION@
 BuildRequires:	gtk2 >= @GTK_REQUIRED_VERSION@
 BuildRequires:	libxfce4mcs-devel >= @LIBXFCE4MCS_CLIENT_REQUIRED_VERSION@
 BuildRequires:	libxfcegui4-devel >= @LIBXFCEGUI4_REQUIRED_VERSION@
+BuildRequires:	Thunar-devel >= @THUNAR_VFS_REQUIRES_VERSION@
 
 %description
 xfdesktop is a desktop manager for the Xfce Desktop Environment
@@ -21,7 +23,7 @@ xfdesktop is a desktop manager for the Xfce Desktop Environment
 %setup -q
 
 %build
-%configure
+%configure --enable-final
 make
 
 %install
@@ -30,6 +32,18 @@ make install DESTDIR=$RPM_BUILD_ROOT mandir=%{_mandir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+touch --no-create %{_datadir}/icons/hicolor || :
+if [ -x %{_bindir}/gtk-update-icon-cache ]; then
+   %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
+fi
+
+%postun
+touch --no-create %{_datadir}/icons/hicolor || :
+if [ -x %{_bindir}/gtk-update-icon-cache ]; then
+   %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
+fi
 
 %files
 %defattr(-,root,root)

@@ -86,6 +86,10 @@ DISTCLEANFILES = \
 	intltool-merge \
 	intltool-update
 
+AUTOMAKE_OPTIONS =							\
+	1.8								\
+	dist-bzip2
+
 distclean-local:
 	-rm -rf *.cache *~
 
@@ -96,10 +100,3 @@ rpm: dist
 html: Makefile
 	(cd docs && $(MAKE) $(AM_MAKEFLAGS) html)
 
-dist-bz2: dist
-	zcat $(PACKAGE)-$(VERSION).tar.gz | \
-	    bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
-
-distcheck-bz2: distcheck
-	zcat $(PACKAGE)-$(VERSION).tar.gz | \
-	    bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2

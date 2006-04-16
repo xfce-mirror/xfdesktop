@@ -33,14 +33,14 @@
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 
-#include <libxfcegui4/libxfcegui4.h>
-
 #ifdef HAVE_LIBEXO
 #define EXO_API_SUBJECT_TO_CHANGE
 #include <exo/exo.h>
 #endif
 
 #include "xfdesktop-icon-view.h"
+
+#include <libxfcegui4/libxfcegui4.h>
 
 #define DEFAULT_FONT_SIZE  12
 #define DEFAULT_ICON_SIZE  32

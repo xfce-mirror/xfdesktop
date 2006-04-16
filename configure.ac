@@ -45,25 +45,25 @@ XDT_CHECK_LIBX11_REQUIRE
 XDT_CHECK_LIBSM
 
 dnl required
-XDT_CHECK_PACKAGE([GMODULE], [gmodule-2.0], [2.2.0])
-XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [2.2.0])
-XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.2.0])
-XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.2.0])
-XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.3.9])
-XDT_CHECK_PACKAGE([LIBXFCE4MCS_CLIENT],  [libxfce4mcs-client-1.0], [4.2.0])
-XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.3.29])
-XDT_XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.2.0])
+XDT_CHECK_PACKAGE([GMODULE], [gmodule-2.0], [2.6.0])
+XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [2.6.0])
+XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.6.0])
+XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.3.90.1])
+XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.3.90.1])
+XDT_CHECK_PACKAGE([LIBXFCE4MCS_CLIENT],  [libxfce4mcs-client-1.0], [4.3.90.1])
+XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.3.90.1])
+XDT_XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.3.90.1])
 
-XDT_CHECK_OPTIONAL_PACKAGE([THUNAR_VFS], [thunar-vfs-1], [0.2.0], [thunar-vfs],
+XDT_CHECK_OPTIONAL_PACKAGE([THUNAR_VFS], [thunar-vfs-1], [0.3.0], [thunar-vfs],
     AC_HELP_STRING([--disable-thunar-vfs],
                    [Disable the use Thunar's VFS layer to show the desktop folder (default=enabled)]))
 AM_CONDITIONAL([HAVE_THUNAR_VFS], [test "x$THUNAR_VFS_FOUND" = "xyes"])
 
-XDT_CHECK_OPTIONAL_PACKAGE([THUNARX], [thunarx-1], [0.2.0], [thunarx],
+XDT_CHECK_OPTIONAL_PACKAGE([THUNARX], [thunarx-1], [0.3.0], [thunarx],
     AC_HELP_STRING([--disable-thunarx],
                    [Disable the use of Thunar's extension mechanism to add external features to the desktop icon implementation (default=enabled)]))
 
-XDT_CHECK_OPTIONAL_PACKAGE([LIBEXO], [exo-0.3], [0.3.1], [exo],
+XDT_CHECK_OPTIONAL_PACKAGE([LIBEXO], [exo-0.3], [0.3.1.6], [exo],
     AC_HELP_STRING([--disable-exo],
                    [Disable the use of libexo for nifty icon effects (default=enabled)]))
 
