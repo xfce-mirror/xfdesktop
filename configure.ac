@@ -51,7 +51,6 @@ XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.6.0])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.3.90.1])
 XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.3.90.1])
 XDT_CHECK_PACKAGE([LIBXFCE4MCS_CLIENT],  [libxfce4mcs-client-1.0], [4.3.90.1])
-XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.3.90.1])
 XDT_XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.3.90.1])
 
 XDT_CHECK_OPTIONAL_PACKAGE([THUNAR_VFS], [thunar-vfs-1], [0.3.0], [thunar-vfs],
@@ -104,6 +103,7 @@ if test "x$ac_cv_enable_panel_plugin" = "xno" -o "x$build_desktop_menu" = "xno";
         build_panel_plugin="no"
 else
         build_panel_plugin="yes"
+        XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.3.90.1])
 fi
 AM_CONDITIONAL([BUILD_PANEL_PLUGIN], [test "x$build_panel_plugin" = "xyes"])
 
