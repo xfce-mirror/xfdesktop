@@ -1,3 +1,52 @@
+20060418 (Xfce 4.4beta1):
+-------------------------
+
+    As usual, it's been a while since I've written anything.  The major new
+    accomplishment since my last entry is that all the desktop icon code
+    has been refactored, and now, in addition to CDEish minimised application
+    icons, xfdesktop supports traditional desktop file icons.  This
+    functionality requires very recent versions of libexo and thunar-vfs to
+    be present and installed before compiling xfdesktop.
+    
+    Olivier and Benny just put together the 4.4beta1 release over the weekend,
+    so we're (finally!) gearing up to release 4.4.0 final within the next 4-6
+    weeks (hopefully).
+
+(Brian)
+
+
+20051031:
+---------
+
+    Happy Halloween.  I haven't wrote anything here in quite a while.
+    Quite a bit has happened, including numerous bugfixes and enhancements.
+    I don't have the energy to list them all here, but the one thing that
+    really sticks out is that xfdesktop now supports icons on the desktop.
+    No, it's not what you think: you can't put launcher icons on it, and
+    you can't view lists of files either.  What you *can* do is see icons
+    representing all your minimized applications, a la CDE.  Other
+    projects (xffm, Thunar) will address the need for file and launcher
+    icons.
+    
+    The Xfce menu panel plugin has seen several improvements, including
+    some menu generation speed enhancements, and the ability to put a
+    text title in the button, as well as using non-square icons.
+    
+    On the bugfix front, notably, you can bind 'xfdesktop -menu' and
+    'xfdesktop -windowlist' to keys now, and it should work properly all
+    the time.
+    
+    There are a few small enhancements to the backdrop functionality,
+    such as the ability to stretch a single image across a Xinerama-
+    enabled desktop.
+    
+    I suppose that's all for now.  Development of Xfce as a whole has been
+    moving somewhat slowly lately, so 4.4.0 may not be coming as soon as
+    we'd like.
+
+(Brian)
+
+
 20041220 (Xfce 4.2rc3):
 -----------------------
 
@@ -18,6 +67,7 @@
 	for 4.2.0-final.  Of course, now that I said it, it's ruined.
 
 (Brian)
+
 
 20041205 (Xfce 4.2rc2):
 -----------------------
@@ -43,8 +93,9 @@
 
 (Brian)
 
+
 20041029 (Xfce 4.2beta2):
----------
+-------------------------
 
 	* Wow, it's been a while since anyone's put anything in here.  We're
 	  gearing up for the release of 4.2beta2, the second beta release
@@ -66,6 +117,7 @@
 
 (Brian)
 
+
 20031019:
 ---------
 
@@ -73,9 +125,14 @@
 	  make it reaload/refresh the image, popup the menu or popup the
 	  windowlist repectively.
 
+(Jasper)
+
+
 20031016:
 ---------
 
 	* Added support for the XRandR X extension available with XFree86
 	  4.3 and above. The XRandR support requires you to have Gtk+
 	  2.2 or better installed.
+
+(Benny)
