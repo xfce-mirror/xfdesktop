@@ -1,4 +1,4 @@
-README for xfdesktop version 4.x
+README for xfdesktop version 4.4
 ================================
 
 WHAT IS IT?
@@ -8,9 +8,5 @@ in this respect means the root window. The manager handles the following
 tasks:
 - background image / color
 - root menu, window list
-
-WHAT IS IT NOT?
-~~~~~~~~~~~~~~~
-It's not an app to handle icons on the desktop or show minimized app icons.
-That is to say, it isn't _yet_. Code contributions that implement this
-functionality are of course more than welcome.
+- minimized app icons
+- file icons on the desktop (using Thunar libs)
