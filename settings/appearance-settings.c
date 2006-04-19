@@ -130,7 +130,8 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
     mcs_plugin->plugin_name = g_strdup (PLUGIN_NAME);
-    mcs_plugin->caption = g_strdup (_("Desktop"));
+    /* the button label in the xfce-mcs-manager dialog */
+    mcs_plugin->caption = g_strdup (Q_ ("Button Label|Desktop"));
     mcs_plugin->run_dialog = run_dialog;
 
     mcs_plugin->icon = xfce_themed_icon_load("xfce4-backdrop", 48);
