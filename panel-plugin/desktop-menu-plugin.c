@@ -350,6 +350,7 @@ dmp_popup(GtkWidget *w,
                 G_CALLBACK(menu_deactivated), dmp);
         g_object_set_data(G_OBJECT(menu), "sig_id", GUINT_TO_POINTER(id));
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), TRUE);
+        xfce_panel_plugin_register_menu (dmp->plugin, GTK_MENU(menu));
         gtk_menu_popup(GTK_MENU(menu), NULL, NULL,
                        (GtkMenuPositionFunc)dmp_position_menu, dmp,
                        1, gtk_get_current_event_time());
