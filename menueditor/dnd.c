@@ -104,12 +104,12 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
     XfceDesktopEntry *de = NULL;
     const char *cat[] = { "Name", "Exec", "Icon" };
 
-    if (g_str_has_prefix (sd->data, "file://"))
-      buf = g_build_filename (&(sd->data)[7], NULL);
-    else if (g_str_has_prefix (sd->data, "file:"))
-      buf = g_build_filename (&(sd->data)[5], NULL);
+    if (g_str_has_prefix ((gchar *) sd->data, "file://"))
+      buf = g_build_filename ((gchar *) &(sd->data)[7], NULL);
+    else if (g_str_has_prefix ((gchar *) sd->data, "file:"))
+      buf = g_build_filename ((gchar *) &(sd->data)[5], NULL);
     else
-      buf = g_strdup (sd->data);
+      buf = g_strdup ((gchar *) sd->data);
 
     /* Remove \n at the end of filename (if present) */
     temp = strtok (buf, "\n");
@@ -154,7 +154,7 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
     const char *cat[] = { "Name", "Exec", "Icon" };
     gchar *temp = NULL;
 
-    de = xfce_desktop_entry_new_from_data (sd->data, cat, 3);
+    de = xfce_desktop_entry_new_from_data ((gchar *) sd->data, cat, 3);
     if (!de) {
       g_warning ("not valid desktop data");
       goto cleanup;
