@@ -1,23 +1,23 @@
-# translation of he.po to Hebrew
+# translation of he2.po to Hebrew
 # Hebrew translations for xfdesktop package.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
-#
 # Dotan Kamber <kamberd@yahoo.com>, 2004, 2006.
 # Jonatan Perry <Jonatan443@walla.co.il>, 2004.
-# Yuval Tanny <tanai@int.gov.il>, 2004.
+# Yuval Tanny <tanai@int.gov.il>, 2004, 2006.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.3.90.1\n"
+"Project-Id-Version: he2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-16 16:43+0200\n"
-"PO-Revision-Date: 2006-01-30 00:02+0200\n"
-"Last-Translator: Dotan Kamber <kamberd@yahoo.com>\n"
+"PO-Revision-Date: 2006-04-22 01:32+0300\n"
+"Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11\n"
+"X-Generator: KBabel 1.10.2\n"
 
 #: ../menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
@@ -479,7 +479,6 @@ msgid "Scaled"
 msgstr "מותאמת"
 
 #: ../settings/appearance-settings.c:742
-#, fuzzy
 msgid "A_djust Brightness:"
 msgstr "התאם _בהירות:"
 
@@ -540,7 +539,7 @@ msgstr "מתח תמונת רקע יחידה על _כל הצגים"
 #: ../settings/appearance-settings.c:983
 #: ../settings/appearance-settings.c:1165
 msgid "_Appearance"
-msgstr ""
+msgstr "_מראה"
 
 #. color settings frame
 #: ../settings/appearance-settings.c:1009
@@ -597,7 +596,7 @@ msgstr "מסך %d, צג %d"
 
 #: ../settings/appearance-settings.c:1200
 msgid "_Behavior"
-msgstr ""
+msgstr "_התנהגות"
 
 #: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
 #, c-format
@@ -644,118 +643,107 @@ msgid "Edit backdrop list"
 msgstr "ערוך רשימת טפטים"
 
 #: ../settings/behavior-settings.c:225
-#, fuzzy
 msgid "Menus"
-msgstr "קבצי תפריט"
+msgstr "תפריטים"
 
 #: ../settings/behavior-settings.c:233
-#, fuzzy
 msgid "Show _window list on middle click"
-msgstr "הצג רשימת _חלונות"
+msgstr "הצג רשימת _חלונות בלחיצה אמצעית"
 
 #: ../settings/behavior-settings.c:244
-#, fuzzy
 msgid "Show _desktop menu on right click"
-msgstr "הצג _תפריט שולחן עבודה"
+msgstr "הצג _תפריט שולחן עבודה בלחיצה ימנית"
 
 #: ../settings/behavior-settings.c:263
-#, fuzzy
 msgid "Desktop Icons"
-msgstr "תפריט שולחן העבודה"
+msgstr "סמלי שולחן עבודה"
 
 #: ../settings/behavior-settings.c:272
 #: ../src/xfdesktop-file-icon-manager.c:907
 msgid "None"
-msgstr ""
+msgstr "ללא"
 
 #: ../settings/behavior-settings.c:273
-#, fuzzy
 msgid "Minimized application icons"
-msgstr "הצג סמלי _יישומים"
+msgstr "סמלי יישומים ממוזערים"
 
 #: ../settings/behavior-settings.c:275
 msgid "File/launcher icons"
-msgstr ""
+msgstr "סמלי קובץ/משגר"
 
 #: ../settings/behavior-settings.c:286
-#, fuzzy
 msgid "_Icon size:"
-msgstr "מעצבי סמלים"
+msgstr "_גודל סמל:"
 
 #: ../settings/behavior-settings.c:300
-#, fuzzy
 msgid "Use _system font size"
-msgstr "השתמש בקובץ תפריט _מותאם אישית:"
+msgstr "השתמש בגודל גופן ה_מערכת"
 
 #: ../settings/behavior-settings.c:317
 msgid "Custom _font size:"
-msgstr ""
+msgstr "גודל גופן מותאם _אישית:"
 
 #: ../src/main.c:242
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "זהו %s מגרסה %s, מופעל על Xfce %s.\n"
 
 #: ../src/main.c:244
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "נבנה עם GTK+ %d.%d/%d, מקושר עם GTK+ %d.%d.%d."
 
 #: ../src/main.c:248
 msgid "Build options:\n"
-msgstr ""
+msgstr "אפשרויות בניה:\n"
 
 #: ../src/main.c:249
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "    תפריט שולחן העבודה:        %s\n"
 
 #: ../src/main.c:251 ../src/main.c:258
-#, fuzzy
 msgid "enabled"
-msgstr "מותאמת"
+msgstr "מופעל"
 
 #: ../src/main.c:253 ../src/main.c:260
-#, fuzzy
 msgid "disabled"
-msgstr "פרושה"
+msgstr "מבוטל"
 
 #: ../src/main.c:256
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "תפריט שולחן העבודה"
+msgstr "    סמלי שולחן העבודה:       %s\n"
 
 #: ../src/main.c:288
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr "%s אפשרות לא ידועה: %s\n"
+msgstr "%s: Unknown option: %s\n"
 
 #: ../src/main.c:289
 msgid "Options are:\n"
-msgstr "האפשרויות הם:\n"
+msgstr "Options are:\n"
 
 #: ../src/main.c:290
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr "    -טוען      טוען את כל ההגדרות, מרענן את רשימת החלונות\n"
+msgstr "    -reload      Reload all settings, refresh image list\n"
 
 #: ../src/main.c:291
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    -תפריט        מקפיץ תפריט (במיקום הסמן הנוכחי)\n"
+msgstr "    -menu        Pop up the menu (at the current mouse position)\n"
 
 #: ../src/main.c:292
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -רשימת חלונות  מקפיץ את רשימת החלונות (במיקום הסמן הנוכחי)\n"
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -windowlist  Pop up the window list (at the current mouse position)\n"
 
 #: ../src/main.c:293
-#, fuzzy
 msgid "    -quit        Cause xfdesktop to quit\n"
-msgstr "    -quit        גורם ליציאה מ- xfdesktop\n"
+msgstr "    -quit        Cause xfdesktop to quit\n"
 
 #: ../src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "<b>סיבבת עבודה %d</b>"
+msgstr "<b>סביבת עבודה %d</b>"
 
 #: ../src/windowlist.c:201
 #, c-format
@@ -779,372 +767,354 @@ msgstr "_הסר סביבת עבודה %s"
 #: ../src/xfdesktop-file-icon-manager.c:339
 #: ../src/xfdesktop-file-icon-manager.c:646
 #: ../src/xfdesktop-file-icon-manager.c:680
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "אין אפשרות להפעיל את עורך התפריטים של Xfce4: %s"
+msgstr "אין אפשרות לשגר \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:341
 #: ../src/xfdesktop-file-icon-manager.c:648
 #: ../src/xfdesktop-file-icon-manager.c:683
-#, fuzzy
 msgid "Launch Error"
-msgstr "שגיאה"
+msgstr "שגיאת הפעלה"
 
 #: ../src/xfdesktop-file-icon-manager.c:343
 msgid "The associated application could not be found or executed."
-msgstr ""
+msgstr "לא הייתה אפשרות למצוא או להפעיל את היישום המקושר."
 
 #: ../src/xfdesktop-file-icon-manager.c:470
 #, c-format
 msgid "Rename \"%s\""
-msgstr ""
+msgstr "שנה שם \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:477
 #: ../src/xfdesktop-file-icon-manager.c:1482
 #: ../src/xfdesktop-file-icon-manager.c:1560
 #: ../src/xfdesktop-file-icon-manager.c:1571
 msgid "Enter the new name:"
-msgstr ""
+msgstr "הזנת השם החדש:"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
-#, fuzzy
 msgid "Rename"
-msgstr "מותאמת"
+msgstr "שנה שם"
 
 #: ../src/xfdesktop-file-icon-manager.c:521
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "האם אתה בטוח שברצונך לסגור את התפריט הנוכחי?"
+msgstr "האם אתה בטוח שברצונך למחוק את \"%s\"?"
 
 #: ../src/xfdesktop-file-icon-manager.c:526
 #: ../src/xfdesktop-file-icon-manager.c:546
 msgid "If you delete a file, it is permanently lost."
-msgstr ""
+msgstr "במחיקת קובץ הוא אובד לעולם."
 
 #: ../src/xfdesktop-file-icon-manager.c:540
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "האם אתה בטוח שברצונך לסגור את התפריט הנוכחי?"
+msgstr "האם אתה בטוח שברצונך למחוק את %d הקבצים הבאים?"
 
 #: ../src/xfdesktop-file-icon-manager.c:543
-#, fuzzy
 msgid "Delete Multiple Files"
-msgstr "בחר קובץ תפריט"
+msgstr "מחיקת מספר קבצים"
 
 #: ../src/xfdesktop-file-icon-manager.c:685
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
-msgstr ""
+msgstr "אפשרות זו דורשת נוכחות של שירות מנהל קבצים (כמו לדוגמה זה המסופק על ידי Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:770
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "אין אפשרות להפעיל את עורך התפריטים של Xfce4: %s"
+msgstr "אין אפשרות לעגן את \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:771
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "אין אפשרות להפעיל את עורך התפריטים של Xfce4: %s"
+msgstr "אין אפשרות לנתק את עיגון \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:774
-#, fuzzy
 msgid "Mount Failed"
-msgstr "קובץ תפריט"
+msgstr "העיגון כשל"
 
 #: ../src/xfdesktop-file-icon-manager.c:774
-#, fuzzy
 msgid "Unmount Failed"
-msgstr "קובץ תפריט"
+msgstr "ניתוק העיגון כשל"
 
 #: ../src/xfdesktop-file-icon-manager.c:803
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "אין אפשרות להפעיל את עורך התפריטים של Xfce4: %s"
+msgstr "אין אפשרות להוציא את \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:805
 msgid "Eject Failed"
-msgstr ""
+msgstr "הוצאה כשלה"
 
 #: ../src/xfdesktop-file-icon-manager.c:874
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
+msgstr "אין אפשרות להגדיר את יישום ברירת המחדל ל-\"%s\" אל \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:877
-#, fuzzy
 msgid "Properties Error"
-msgstr "עריכת מאפיינים"
+msgstr "שגיאת מאפיינים"
 
 #: ../src/xfdesktop-file-icon-manager.c:907
 msgid "Write only"
-msgstr ""
+msgstr "כתיבה בלבד"
 
 #: ../src/xfdesktop-file-icon-manager.c:907
 msgid "Read only"
-msgstr ""
+msgstr "קריאה בלבד"
 
 #: ../src/xfdesktop-file-icon-manager.c:907
 msgid "Read & Write"
-msgstr ""
+msgstr "קריאה וכתיבה"
 
 #: ../src/xfdesktop-file-icon-manager.c:934
 msgid "General"
-msgstr ""
+msgstr "כללי"
 
 #: ../src/xfdesktop-file-icon-manager.c:985
 msgid "Kind:"
-msgstr ""
+msgstr "סוג:"
 
 #: ../src/xfdesktop-file-icon-manager.c:995
 msgid "broken link"
-msgstr ""
+msgstr "קישור שבור"
 
 #: ../src/xfdesktop-file-icon-manager.c:998
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "קיצור דרך אל %s"
 
 #: ../src/xfdesktop-file-icon-manager.c:1015
 msgid "Link Target:"
-msgstr ""
+msgstr "יעד הקישור:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1032
 #: ../src/xfdesktop-file-icon-manager.c:1191
 msgid "(unknown)"
-msgstr ""
+msgstr "(לא ידוע)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1054
 msgid "Open With:"
-msgstr ""
+msgstr "פתח באמצעות:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1131
 msgid "Modified:"
-msgstr ""
+msgstr "שונה:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1149
 msgid "Accessed:"
-msgstr ""
+msgstr "ניגש:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1176
 msgid "Free Space:"
-msgstr ""
+msgstr "מקום פנוי:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1178
 msgid "Size:"
-msgstr ""
+msgstr "גודל:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1194
 msgid "%s (%"
-msgstr ""
+msgstr "%s (%"
 
 #: ../src/xfdesktop-file-icon-manager.c:1194
 msgid " Bytes)"
-msgstr ""
+msgstr "בתים"
 
 #. permissions tab
 #: ../src/xfdesktop-file-icon-manager.c:1209
 msgid "Permissions"
-msgstr ""
+msgstr "הרשאות"
 
 #: ../src/xfdesktop-file-icon-manager.c:1231
 msgid "Owner:"
-msgstr ""
+msgstr "בעלים:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1249
 #: ../src/xfdesktop-file-icon-manager.c:1287
 msgid "Access:"
-msgstr ""
+msgstr "גישה:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1272
 msgid "Group:"
-msgstr ""
+msgstr "קבוצה:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1310
-#, fuzzy
 msgid "Others:"
-msgstr "/אחר"
+msgstr "אחרים:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1383
 #, c-format
 msgid "_Open With \"%s\""
-msgstr ""
+msgstr "_פתיחה באמצעות \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1386
 #, c-format
 msgid "Open With \"%s\""
-msgstr ""
+msgstr "פתיחה באמצעות \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1447
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "אין אפשרות להפעיל את עורך התפריטים של Xfce4: %s"
+msgstr "אין אפשרות ליצור תיקיה בשם \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create Folder Failed"
-msgstr ""
+msgstr "יצירת תיקיה נכשלה"
 
 #: ../src/xfdesktop-file-icon-manager.c:1479
 msgid "Create New Folder"
-msgstr ""
+msgstr "יצירת תיקיה חדשה"
 
 #: ../src/xfdesktop-file-icon-manager.c:1483
 msgid "New Folder"
-msgstr ""
+msgstr "תיקייה חדשה"
 
 #: ../src/xfdesktop-file-icon-manager.c:1484
 #: ../src/xfdesktop-file-icon-manager.c:1562
 #: ../src/xfdesktop-file-icon-manager.c:1573
 msgid "Create"
-msgstr ""
+msgstr "צור"
 
 #: ../src/xfdesktop-file-icon-manager.c:1520
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "אין אפשרות להפעיל את עורך התפריטים של Xfce4: %s"
+msgstr "אין אפשרות ליצור קובץ בשם \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1523
-#, fuzzy
 msgid "Create File Failed"
-msgstr "בחר קובץ תפריט"
+msgstr "יצירת קובץ נכשלה"
 
 #: ../src/xfdesktop-file-icon-manager.c:1549
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr ""
+msgstr "יצירת מסמך מתבנית \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1568
 msgid "Create Empty File"
-msgstr ""
+msgstr "יצירת קובץ ריק"
 
 #: ../src/xfdesktop-file-icon-manager.c:1572
 msgid "New Empty File"
-msgstr ""
+msgstr "קובץ ריק חדש"
 
 #: ../src/xfdesktop-file-icon-manager.c:1827
 msgid "_Open all"
-msgstr ""
+msgstr "_פתח הכל"
 
 #: ../src/xfdesktop-file-icon-manager.c:1838
 msgid "_Open"
-msgstr ""
+msgstr "_פתיחה"
 
 #: ../src/xfdesktop-file-icon-manager.c:1849
 msgid "_Execute"
-msgstr ""
+msgstr "_הפעלה"
 
 #: ../src/xfdesktop-file-icon-manager.c:1893
 msgid "Open With"
-msgstr ""
+msgstr "פתיחה באמצעות"
 
 #: ../src/xfdesktop-file-icon-manager.c:1923
 msgid "Open With Other _Application..."
-msgstr ""
+msgstr "פתיחה באמצעות יישום _אחר..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2006
 msgid "_Mount Volume"
-msgstr ""
+msgstr "_Mount Volume"
 
 #: ../src/xfdesktop-file-icon-manager.c:2017
 msgid "_Unmount Volume"
-msgstr ""
+msgstr "_נתק כרך"
 
 #: ../src/xfdesktop-file-icon-manager.c:2029
 msgid "_Eject Volume"
-msgstr ""
+msgstr "_הוצא כרך"
 
 #: ../src/xfdesktop-file-icon-manager.c:2039
-#, fuzzy
 msgid "_Copy Files"
-msgstr "_קובץ"
+msgstr "_העתקת קבצים"
 
 #: ../src/xfdesktop-file-icon-manager.c:2040
-#, fuzzy
 msgid "_Copy File"
-msgstr "_קובץ"
+msgstr "_העתק קובץ"
 
 #: ../src/xfdesktop-file-icon-manager.c:2049
-#, fuzzy
 msgid "Cu_t Files"
-msgstr "_קובץ"
+msgstr "_גזירת קבצים"
 
 #: ../src/xfdesktop-file-icon-manager.c:2050
-#, fuzzy
 msgid "Cu_t File"
-msgstr "_קובץ"
+msgstr "_גזירת קובץ"
 
 #: ../src/xfdesktop-file-icon-manager.c:2059
-#, fuzzy
 msgid "_Delete Files"
-msgstr "בחר קובץ תפריט"
+msgstr "_מחיקת קבצים"
 
 #: ../src/xfdesktop-file-icon-manager.c:2060
-#, fuzzy
 msgid "_Delete File"
-msgstr "בחר קובץ תפריט"
+msgstr "_מחיקת קובץ"
 
 #: ../src/xfdesktop-file-icon-manager.c:2072
 msgid "_Rename..."
-msgstr ""
+msgstr "_שנה שם..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2090
-#, fuzzy
 msgid "_Properties..."
-msgstr "עריכת מאפיינים"
+msgstr "_מאפיינים..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2106
 msgid "Create _Folder..."
-msgstr ""
+msgstr "צור _תיקייה..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2113
 msgid "Create _Document"
-msgstr ""
+msgstr "צור _מסמך"
 
 #: ../src/xfdesktop-file-icon-manager.c:2134
 msgid "No Templates installed"
-msgstr ""
+msgstr "אין תבניות מותקנות"
 
 #: ../src/xfdesktop-file-icon-manager.c:2146
-#, fuzzy
 msgid "_Empty File"
-msgstr "_קובץ"
+msgstr "קובץ ֹ_ריק"
 
 #: ../src/xfdesktop-file-icon-manager.c:2929 ../src/xfdesktop-file-icon.c:511
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\":"
-msgstr "אין אפשרות להפעיל את עורך התפריטים של Xfce4: %s"
+msgstr "אין אפשרות להריץ את \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:2931 ../src/xfdesktop-file-icon.c:513
-#, fuzzy
 msgid "Run Error"
-msgstr "שגיאה"
+msgstr "שגיאת הרצה"
 
 #: ../src/xfdesktop-file-icon.c:440
 #, c-format
 msgid "There was an error %s \"%s\" to \"%s\":"
-msgstr ""
+msgstr "ארעה שגיאה %s \"%s\" אל \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:442
 msgid "moving"
-msgstr ""
+msgstr "מעביר"
 
 #: ../src/xfdesktop-file-icon.c:444
 msgid "copying"
-msgstr ""
+msgstr "מעתיק"
 
 #: ../src/xfdesktop-file-icon.c:445
 msgid "linking"
-msgstr ""
+msgstr "מקשר"
 
 #: ../src/xfdesktop-file-icon.c:448
-#, fuzzy
 msgid "File Error"
-msgstr "שגיאה"
+msgstr "שגיאת בקובץ"
 
 #: ../src/xfdesktop-file-icon.c:656
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr ""
+msgstr "כשל בשינוי שם \"%s\" ל-\"%s\":"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
@@ -1169,3 +1139,4 @@ msgstr "הגדרות שולחן העבודה של Xfce 4"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "הגדרות שולחן העבודה Xfce 4"
+
