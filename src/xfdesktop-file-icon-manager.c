@@ -35,6 +35,18 @@
 #include <unistd.h>
 #endif
 
+#ifdef HAVE_SYS_STAT_H
+#include <sys/stat.h>
+#endif
+
+#ifdef HAVE_SYS_TYPES_H
+#include <sys/types.h>
+#endif
+
+#ifdef HAVE_ERRNO_H
+#include <errno.h>
+#endif
+
 #ifndef PATH_MAX
 #define PATH_MAX 4096
 #endif
@@ -198,6 +210,33 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
     switch(property_id) {
         case PROP_FOLDER:
             fmanager->priv->folder = thunar_vfs_path_ref((ThunarVfsPath *)g_value_get_boxed(value));
+            if(fmanager->priv->folder) {
+                gchar *pathname = thunar_vfs_path_dup_string(fmanager->priv->folder);
+                if(!g_file_test(pathname, G_FILE_TEST_EXISTS)) {
+                    /* would prefer to use thunar_vfs_make_directory() here,
+                     * but i don't want to use an async operation */
+                    if(mkdir(pathname, 0700)) {
+                        gchar *primary = g_strdup_printf(_("Xfdesktop was unable to create the folder \"%s\" to store desktop items:"),
+                                                         pathname);
+                        xfce_message_dialog(NULL, _("Create Folder Failed"),
+                                            GTK_STOCK_DIALOG_WARNING, primary,
+                                            strerror(errno), GTK_STOCK_CLOSE,
+                                            GTK_RESPONSE_ACCEPT, NULL);
+                        g_free(primary);
+                    }
+                } else if(!g_file_test(pathname, G_FILE_TEST_IS_DIR)) {
+                    gchar *primary = g_strdup_printf(_("Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."),
+                                                     pathname);
+                    xfce_message_dialog(NULL, _("Create Folder Failed"),
+                                        GTK_STOCK_DIALOG_WARNING, primary,
+                                        _("Please delete or rename the file."),
+                                        GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                                        NULL);
+                    g_free(primary);
+                }
+                
+                g_free(pathname);
+            }
             break;
         
         default:
