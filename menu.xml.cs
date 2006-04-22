@@ -63,7 +63,7 @@
 
 	<app name="Terminál" cmd="xfterm4" icon="gnome-terminal"/>
 	<app name="Správce souborů (xffm)" cmd="xffm" icon="file-manager"/>
-	<app name="Webový prohlížeč" cmd="mozilla" icon="gnome-globe"/>
+	<app name="Webový prohlížeč" cmd="xfbrowser4" icon="gnome-globe"/>
 
 	<separator/>
 

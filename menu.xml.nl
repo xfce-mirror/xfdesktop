@@ -63,7 +63,7 @@
 
 	<app name="Terminal" cmd="xfterm4" icon="gnome-terminal"/>
 	<app name="Bestandsmanager (xffm)" cmd="xffm" icon="file-manager"/>
-	<app name="Web Browser" cmd="mozilla" icon="gnome-globe"/>
+	<app name="Web Browser" cmd="xfbrowser4" icon="gnome-globe"/>
 
 	<separator/>
 

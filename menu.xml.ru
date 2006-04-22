@@ -63,7 +63,7 @@
 
 	<app name="Терминал" cmd="xfterm4" icon="gnome-terminal"/>
 	<app name="Файловый менеджер (xffm)" cmd="xffm" icon="file-manager"/>
-	<app name="Интернет-браузер" cmd="mozilla" icon="gnome-globe"/>
+	<app name="Интернет-браузер" cmd="xfbrowser4" icon="gnome-globe"/>
 
 	<separator/>
 

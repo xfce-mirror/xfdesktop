@@ -53,7 +53,7 @@
     <separator/>
     <app name="Terminal" cmd="xfterm4" />
     <app name="Pengurus Fail (xffm)" cmd="xffm"/>
-    <app name="Pelayar Web" cmd="mozilla"/>
+    <app name="Pelayar Web" cmd="xfbrowser4"/>
     <separator/>
     <menu name="Tetapan" visible="yes">
         <app name="Semua Tetapan..." cmd="xfce-setting-show" snotify="true"/>
