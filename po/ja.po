@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-23 15:12+0900\n"
-"PO-Revision-Date: 2006-04-15 11:39+0900\n"
+"PO-Revision-Date: 2006-04-23 16:17+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -432,7 +432,7 @@ msgstr "メニューでアイコンを表示する(_I):"
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
 msgid "Button Label|Desktop"
-msgstr ""
+msgstr "デスクトップ"
 
 #: ../settings/appearance-settings.c:185 ../settings/appearance-settings.c:194
 #: ../settings/backdrop-list-manager.c:631
@@ -778,7 +778,7 @@ msgstr "ワークスペース「%s」を削除(_R)"
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
+msgstr "デスクトップのアイテムを保存するフォルダ「%s」を作成できませんでした:"
 
 #: ../src/xfdesktop-file-icon-manager.c:221
 #: ../src/xfdesktop-file-icon-manager.c:230
@@ -791,11 +791,11 @@ msgstr "フォルダの作成に失敗しました"
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
-msgstr ""
+msgstr "「%s」はフォルダではありませんので、デスクトップのアイテムを保存できません。"
 
 #: ../src/xfdesktop-file-icon-manager.c:232
 msgid "Please delete or rename the file."
-msgstr ""
+msgstr "ファイルを削除するか名前を変えてください。"
 
 #: ../src/xfdesktop-file-icon-manager.c:378
 #: ../src/xfdesktop-file-icon-manager.c:685
