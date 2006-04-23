@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-16 16:43+0200\n"
+"POT-Creation-Date: 2006-04-23 15:12+0900\n"
 "PO-Revision-Date: 2005-10-09 22:14+0900\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian <translation-team-fa@lists.sourceforge.net>\n"
@@ -65,7 +65,7 @@ msgstr "ترک"
 
 #. Name
 #: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:959
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:998
 msgid "Name:"
 msgstr "نام:"
 
@@ -197,7 +197,7 @@ msgid "Select command"
 msgstr "انتخاب فرمان"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:524
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:563
 msgid "Question"
 msgstr "پرسش"
 
@@ -318,22 +318,22 @@ msgstr "پنهان"
 msgid "Select icon"
 msgstr "انتخاب شمایل"
 
-#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:534
-#: ../settings/appearance-settings.c:529
+#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:535
+#: ../settings/appearance-settings.c:530
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "همه پرونده‌ها"
 
-#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:540
-#: ../settings/appearance-settings.c:533
+#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:541
+#: ../settings/appearance-settings.c:534
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "پرونده‌های تصویر"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:697
+#: ../panel-plugin/desktop-menu-plugin.c:698
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "منوی Xfce"
@@ -360,157 +360,156 @@ msgstr ""
 msgid "/Other"
 msgstr "/دیگر"
 
-#: ../panel-plugin/desktop-menu-plugin.c:517
+#: ../panel-plugin/desktop-menu-plugin.c:518
 msgid "Select Icon"
 msgstr "انتخاب شمایل"
 
-#: ../panel-plugin/desktop-menu-plugin.c:519
+#: ../panel-plugin/desktop-menu-plugin.c:520
 msgid "Select Menu File"
 msgstr "انتخاب پرونده منو"
 
-#: ../panel-plugin/desktop-menu-plugin.c:548
+#: ../panel-plugin/desktop-menu-plugin.c:549
 msgid "Menu Files"
 msgstr "پرونده‌های منو"
 
-#: ../panel-plugin/desktop-menu-plugin.c:666
+#: ../panel-plugin/desktop-menu-plugin.c:667
 #: ../settings/behavior-settings.c:201
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:689
+#: ../panel-plugin/desktop-menu-plugin.c:690
 #, fuzzy
 msgid "Edit Properties"
 msgstr "ویرایش کردن لیست زمینه"
 
-#: ../panel-plugin/desktop-menu-plugin.c:707
+#: ../panel-plugin/desktop-menu-plugin.c:708
 #, fuzzy
 msgid "Button"
 msgstr "شمایل _دکمه:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:720
+#: ../panel-plugin/desktop-menu-plugin.c:721
 #, fuzzy
 msgid "Button _title:"
 msgstr "شمایل _دکمه:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:733
+#: ../panel-plugin/desktop-menu-plugin.c:734
 msgid "_Show title in button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:741
 #, fuzzy
 msgid "Menu File"
 msgstr "پرونده‌های منو"
 
-#: ../panel-plugin/desktop-menu-plugin.c:752
+#: ../panel-plugin/desktop-menu-plugin.c:753
 #, fuzzy
 msgid "Use default _desktop menu file"
 msgstr "_ویرایش منوی رومیزی"
 
-#: ../panel-plugin/desktop-menu-plugin.c:761
+#: ../panel-plugin/desktop-menu-plugin.c:762
 #, fuzzy
 msgid "Use _custom menu file:"
 msgstr "باز کردن پرونده منو"
 
-#: ../panel-plugin/desktop-menu-plugin.c:812
+#: ../panel-plugin/desktop-menu-plugin.c:813
 #: ../settings/behavior-settings.c:251
 #, fuzzy
 msgid "_Edit Menu"
 msgstr "_منو"
 
-#: ../panel-plugin/desktop-menu-plugin.c:818
+#: ../panel-plugin/desktop-menu-plugin.c:819
 #, fuzzy
 msgid "Icons"
 msgstr "شمایل:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:830
+#: ../panel-plugin/desktop-menu-plugin.c:831
 msgid "_Button icon:"
 msgstr "شمایل _دکمه:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:855
 msgid "Show _icons in menu"
 msgstr "نشان دادن _شمایل‌ها در منو"
 
-#. the dialog
-#: ../settings/appearance-settings.c:133 ../settings/appearance-settings.c:908
-#: ../src/xfce-desktop.c:566
-msgid "Desktop"
-msgstr "رومیزی"
+#. the button label in the xfce-mcs-manager dialog
+#: ../settings/appearance-settings.c:134
+msgid "Button Label|Desktop"
+msgstr ""
 
-#: ../settings/appearance-settings.c:184 ../settings/appearance-settings.c:193
+#: ../settings/appearance-settings.c:185 ../settings/appearance-settings.c:194
 #: ../settings/backdrop-list-manager.c:631
 msgid "backdrops.list"
 msgstr "لیست.زمینه‌ها"
 
-#: ../settings/appearance-settings.c:524
+#: ../settings/appearance-settings.c:525
 msgid "Select backdrop image or list file"
 msgstr "انتخاب کردن تصویرزمینه یا پرونده‌ی لیست"
 
-#: ../settings/appearance-settings.c:542
+#: ../settings/appearance-settings.c:543
 msgid "List Files (*.list)"
 msgstr "پرونده‌های لیست (*.list)"
 
-#: ../settings/appearance-settings.c:634
+#: ../settings/appearance-settings.c:635
 msgid "_Edit list..."
 msgstr "_ویرایش لیست..."
 
-#: ../settings/appearance-settings.c:642
+#: ../settings/appearance-settings.c:643
 msgid "_New list..."
 msgstr "لیست _جدید..."
 
-#: ../settings/appearance-settings.c:675
+#: ../settings/appearance-settings.c:676
 msgid "S_tyle:"
 msgstr "_سبک:"
 
-#: ../settings/appearance-settings.c:682
+#: ../settings/appearance-settings.c:683
 msgid "Auto"
 msgstr "خودکار"
 
-#: ../settings/appearance-settings.c:683
+#: ../settings/appearance-settings.c:684
 msgid "Centered"
 msgstr "مرکزی شده"
 
-#: ../settings/appearance-settings.c:684
+#: ../settings/appearance-settings.c:685
 msgid "Tiled"
 msgstr "چیده شده"
 
-#: ../settings/appearance-settings.c:685
+#: ../settings/appearance-settings.c:686
 msgid "Stretched"
 msgstr "کشیده شده"
 
-#: ../settings/appearance-settings.c:686
+#: ../settings/appearance-settings.c:687
 msgid "Scaled"
 msgstr "مقیاس شده"
 
-#: ../settings/appearance-settings.c:742
+#: ../settings/appearance-settings.c:743
 #, fuzzy
 msgid "A_djust Brightness:"
 msgstr "متناسب کردن رو_شنایی:"
 
-#: ../settings/appearance-settings.c:798
+#: ../settings/appearance-settings.c:799
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr ""
 
-#: ../settings/appearance-settings.c:799
+#: ../settings/appearance-settings.c:800
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:803 ../src/xfdesktop-file-icon.c:604
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:604
 #: ../src/xfdesktop-file-icon.c:659
 msgid "Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:805
+#: ../settings/appearance-settings.c:806
 msgid "Unable to start xfdesktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:823
+#: ../settings/appearance-settings.c:824
 #, fuzzy
 msgid "Information"
 msgstr "نادیده گیری تغییرات"
 
-#: ../settings/appearance-settings.c:833
+#: ../settings/appearance-settings.c:834
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -519,84 +518,89 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 
-#: ../settings/appearance-settings.c:841
+#: ../settings/appearance-settings.c:842
 msgid "_Do not show this again"
 msgstr ""
 
+#. the dialog
+#: ../settings/appearance-settings.c:909 ../src/xfce-desktop.c:566
+msgid "Desktop"
+msgstr "رومیزی"
+
 #. header
-#: ../settings/appearance-settings.c:923
+#: ../settings/appearance-settings.c:924
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "تنظیمات رومیزی"
 
-#: ../settings/appearance-settings.c:928
+#: ../settings/appearance-settings.c:929
 msgid "Allow _Xfce to manage the desktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:969
+#: ../settings/appearance-settings.c:970
 msgid "Stretch single backdrop onto _all monitors"
 msgstr ""
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:983
-#: ../settings/appearance-settings.c:1165
+#: ../settings/appearance-settings.c:984
+#: ../settings/appearance-settings.c:1166
 msgid "_Appearance"
 msgstr ""
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1009
+#: ../settings/appearance-settings.c:1010
 msgid "Color"
 msgstr "رنگ"
 
-#: ../settings/appearance-settings.c:1023
+#: ../settings/appearance-settings.c:1024
 msgid "_Color Style:"
 msgstr "سبک _رنگ:"
 
-#: ../settings/appearance-settings.c:1030
+#: ../settings/appearance-settings.c:1031
 msgid "Solid Color"
 msgstr "رنگ یکدست"
 
-#: ../settings/appearance-settings.c:1031
+#: ../settings/appearance-settings.c:1032
 msgid "Horizontal Gradient"
 msgstr "افت افقی"
 
-#: ../settings/appearance-settings.c:1032
+#: ../settings/appearance-settings.c:1033
 msgid "Vertical Gradient"
 msgstr "افت عمودی"
 
-#: ../settings/appearance-settings.c:1045
+#: ../settings/appearance-settings.c:1046
 msgid "Fi_rst Color:"
 msgstr "رنگ او_ل:"
 
-#: ../settings/appearance-settings.c:1066
+#: ../settings/appearance-settings.c:1067
 msgid "_Second Color:"
 msgstr "رنگ _دوم:"
 
-#: ../settings/appearance-settings.c:1091
+#: ../settings/appearance-settings.c:1092
 msgid "Image"
 msgstr "تصویر"
 
-#: ../settings/appearance-settings.c:1099
+#: ../settings/appearance-settings.c:1100
 msgid "Show _Image"
 msgstr "نشان دادن _تصویر"
 
-#: ../settings/appearance-settings.c:1121
+#: ../settings/appearance-settings.c:1122
 msgid "_File:"
 msgstr "_پرونده:"
 
-#: ../settings/appearance-settings.c:1176
-#: ../settings/appearance-settings.c:1178
+#: ../settings/appearance-settings.c:1177
+#: ../settings/appearance-settings.c:1179
 #, c-format
 msgid "Screen %d"
 msgstr "صفحه %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1183
+#: ../settings/appearance-settings.c:1184
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "صفحه %d، نمایشگر %d"
 
-#: ../settings/appearance-settings.c:1200
+#: ../settings/appearance-settings.c:1201
 msgid "_Behavior"
 msgstr ""
 
@@ -666,7 +670,7 @@ msgid "Desktop Icons"
 msgstr "منوی رومیزی"
 
 #: ../settings/behavior-settings.c:272
-#: ../src/xfdesktop-file-icon-manager.c:907
+#: ../src/xfdesktop-file-icon-manager.c:946
 msgid "None"
 msgstr ""
 
@@ -778,345 +782,364 @@ msgstr "بردا_شتن فضای کار %d"
 msgid "_Remove Workspace '%s'"
 msgstr "بردا_شتن فضای کار '%s'"
 
-#: ../src/xfdesktop-file-icon-manager.c:339
-#: ../src/xfdesktop-file-icon-manager.c:646
-#: ../src/xfdesktop-file-icon-manager.c:680
+#: ../src/xfdesktop-file-icon-manager.c:219
+#, c-format
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:221
+#: ../src/xfdesktop-file-icon-manager.c:230
+#: ../src/xfdesktop-file-icon-manager.c:1489
+msgid "Create Folder Failed"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:228
+#, c-format
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:232
+msgid "Please delete or rename the file."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:378
+#: ../src/xfdesktop-file-icon-manager.c:685
+#: ../src/xfdesktop-file-icon-manager.c:719
 #, fuzzy, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:341
-#: ../src/xfdesktop-file-icon-manager.c:648
-#: ../src/xfdesktop-file-icon-manager.c:683
+#: ../src/xfdesktop-file-icon-manager.c:380
+#: ../src/xfdesktop-file-icon-manager.c:687
+#: ../src/xfdesktop-file-icon-manager.c:722
 #, fuzzy
 msgid "Launch Error"
 msgstr "پرتابگر"
 
-#: ../src/xfdesktop-file-icon-manager.c:343
+#: ../src/xfdesktop-file-icon-manager.c:382
 msgid "The associated application could not be found or executed."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:470
+#: ../src/xfdesktop-file-icon-manager.c:509
 #, c-format
 msgid "Rename \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:477
-#: ../src/xfdesktop-file-icon-manager.c:1482
-#: ../src/xfdesktop-file-icon-manager.c:1560
-#: ../src/xfdesktop-file-icon-manager.c:1571
+#: ../src/xfdesktop-file-icon-manager.c:516
+#: ../src/xfdesktop-file-icon-manager.c:1521
+#: ../src/xfdesktop-file-icon-manager.c:1599
+#: ../src/xfdesktop-file-icon-manager.c:1610
 msgid "Enter the new name:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:479
+#: ../src/xfdesktop-file-icon-manager.c:518
 #, fuzzy
 msgid "Rename"
 msgstr "مقیاس شده"
 
-#: ../src/xfdesktop-file-icon-manager.c:521
+#: ../src/xfdesktop-file-icon-manager.c:560
 #, fuzzy, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "آیا مطمئن هستید که میخواهید منوی کنونی را ببندید؟"
 
-#: ../src/xfdesktop-file-icon-manager.c:526
-#: ../src/xfdesktop-file-icon-manager.c:546
+#: ../src/xfdesktop-file-icon-manager.c:565
+#: ../src/xfdesktop-file-icon-manager.c:585
 msgid "If you delete a file, it is permanently lost."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:540
+#: ../src/xfdesktop-file-icon-manager.c:579
 #, fuzzy, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "آیا مطمئن هستید که میخواهید منوی کنونی را ببندید؟"
 
-#: ../src/xfdesktop-file-icon-manager.c:543
+#: ../src/xfdesktop-file-icon-manager.c:582
 #, fuzzy
 msgid "Delete Multiple Files"
 msgstr "انتخاب پرونده منو"
 
-#: ../src/xfdesktop-file-icon-manager.c:685
+#: ../src/xfdesktop-file-icon-manager.c:724
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:770
+#: ../src/xfdesktop-file-icon-manager.c:809
 #, fuzzy, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:771
+#: ../src/xfdesktop-file-icon-manager.c:810
 #, fuzzy, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:774
+#: ../src/xfdesktop-file-icon-manager.c:813
 #, fuzzy
 msgid "Mount Failed"
 msgstr "پرونده‌های منو"
 
-#: ../src/xfdesktop-file-icon-manager.c:774
+#: ../src/xfdesktop-file-icon-manager.c:813
 #, fuzzy
 msgid "Unmount Failed"
 msgstr "پرونده‌های منو"
 
-#: ../src/xfdesktop-file-icon-manager.c:803
+#: ../src/xfdesktop-file-icon-manager.c:842
 #, fuzzy, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:805
+#: ../src/xfdesktop-file-icon-manager.c:844
 msgid "Eject Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:874
+#: ../src/xfdesktop-file-icon-manager.c:913
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:877
+#: ../src/xfdesktop-file-icon-manager.c:916
 #, fuzzy
 msgid "Properties Error"
 msgstr "ویرایش کردن لیست زمینه"
 
-#: ../src/xfdesktop-file-icon-manager.c:907
+#: ../src/xfdesktop-file-icon-manager.c:946
 msgid "Write only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:907
+#: ../src/xfdesktop-file-icon-manager.c:946
 msgid "Read only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:907
+#: ../src/xfdesktop-file-icon-manager.c:946
 msgid "Read & Write"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:934
+#: ../src/xfdesktop-file-icon-manager.c:973
 msgid "General"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:985
+#: ../src/xfdesktop-file-icon-manager.c:1024
 msgid "Kind:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:995
+#: ../src/xfdesktop-file-icon-manager.c:1034
 msgid "broken link"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:998
+#: ../src/xfdesktop-file-icon-manager.c:1037
 #, c-format
 msgid "link to %s"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1015
+#: ../src/xfdesktop-file-icon-manager.c:1054
 msgid "Link Target:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1032
-#: ../src/xfdesktop-file-icon-manager.c:1191
+#: ../src/xfdesktop-file-icon-manager.c:1071
+#: ../src/xfdesktop-file-icon-manager.c:1230
 msgid "(unknown)"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1054
+#: ../src/xfdesktop-file-icon-manager.c:1093
 msgid "Open With:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1131
+#: ../src/xfdesktop-file-icon-manager.c:1170
 msgid "Modified:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1149
+#: ../src/xfdesktop-file-icon-manager.c:1188
 msgid "Accessed:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1176
+#: ../src/xfdesktop-file-icon-manager.c:1215
 msgid "Free Space:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1178
+#: ../src/xfdesktop-file-icon-manager.c:1217
 msgid "Size:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1194
+#: ../src/xfdesktop-file-icon-manager.c:1233
 msgid "%s (%"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1194
+#: ../src/xfdesktop-file-icon-manager.c:1233
 msgid " Bytes)"
 msgstr ""
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1209
+#: ../src/xfdesktop-file-icon-manager.c:1248
 msgid "Permissions"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1231
+#: ../src/xfdesktop-file-icon-manager.c:1270
 msgid "Owner:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1249
-#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1288
+#: ../src/xfdesktop-file-icon-manager.c:1326
 msgid "Access:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1272
+#: ../src/xfdesktop-file-icon-manager.c:1311
 msgid "Group:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1310
+#: ../src/xfdesktop-file-icon-manager.c:1349
 #, fuzzy
 msgid "Others:"
 msgstr "/دیگر"
 
-#: ../src/xfdesktop-file-icon-manager.c:1383
+#: ../src/xfdesktop-file-icon-manager.c:1422
 #, c-format
 msgid "_Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1386
+#: ../src/xfdesktop-file-icon-manager.c:1425
 #, c-format
 msgid "Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1447
+#: ../src/xfdesktop-file-icon-manager.c:1486
 #, fuzzy, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1450
-msgid "Create Folder Failed"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1479
+#: ../src/xfdesktop-file-icon-manager.c:1518
 msgid "Create New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1483
+#: ../src/xfdesktop-file-icon-manager.c:1522
 msgid "New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1484
-#: ../src/xfdesktop-file-icon-manager.c:1562
-#: ../src/xfdesktop-file-icon-manager.c:1573
+#: ../src/xfdesktop-file-icon-manager.c:1523
+#: ../src/xfdesktop-file-icon-manager.c:1601
+#: ../src/xfdesktop-file-icon-manager.c:1612
 msgid "Create"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1520
+#: ../src/xfdesktop-file-icon-manager.c:1559
 #, fuzzy, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1523
+#: ../src/xfdesktop-file-icon-manager.c:1562
 #, fuzzy
 msgid "Create File Failed"
 msgstr "انتخاب پرونده منو"
 
-#: ../src/xfdesktop-file-icon-manager.c:1549
+#: ../src/xfdesktop-file-icon-manager.c:1588
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1568
+#: ../src/xfdesktop-file-icon-manager.c:1607
 msgid "Create Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1572
+#: ../src/xfdesktop-file-icon-manager.c:1611
 msgid "New Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1827
+#: ../src/xfdesktop-file-icon-manager.c:1866
 msgid "_Open all"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1838
+#: ../src/xfdesktop-file-icon-manager.c:1877
 msgid "_Open"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1849
+#: ../src/xfdesktop-file-icon-manager.c:1888
 msgid "_Execute"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1893
+#: ../src/xfdesktop-file-icon-manager.c:1932
 msgid "Open With"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1923
+#: ../src/xfdesktop-file-icon-manager.c:1962
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2006
+#: ../src/xfdesktop-file-icon-manager.c:2045
 msgid "_Mount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2017
+#: ../src/xfdesktop-file-icon-manager.c:2056
 msgid "_Unmount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2029
+#: ../src/xfdesktop-file-icon-manager.c:2068
 msgid "_Eject Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2039
+#: ../src/xfdesktop-file-icon-manager.c:2078
 #, fuzzy
 msgid "_Copy Files"
 msgstr "_پرونده"
 
-#: ../src/xfdesktop-file-icon-manager.c:2040
+#: ../src/xfdesktop-file-icon-manager.c:2079
 #, fuzzy
 msgid "_Copy File"
 msgstr "_پرونده"
 
-#: ../src/xfdesktop-file-icon-manager.c:2049
+#: ../src/xfdesktop-file-icon-manager.c:2088
 #, fuzzy
 msgid "Cu_t Files"
 msgstr "_پرونده"
 
-#: ../src/xfdesktop-file-icon-manager.c:2050
+#: ../src/xfdesktop-file-icon-manager.c:2089
 #, fuzzy
 msgid "Cu_t File"
 msgstr "_پرونده"
 
-#: ../src/xfdesktop-file-icon-manager.c:2059
+#: ../src/xfdesktop-file-icon-manager.c:2098
 #, fuzzy
 msgid "_Delete Files"
 msgstr "انتخاب پرونده منو"
 
-#: ../src/xfdesktop-file-icon-manager.c:2060
+#: ../src/xfdesktop-file-icon-manager.c:2099
 #, fuzzy
 msgid "_Delete File"
 msgstr "انتخاب پرونده منو"
 
-#: ../src/xfdesktop-file-icon-manager.c:2072
+#: ../src/xfdesktop-file-icon-manager.c:2111
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2090
+#: ../src/xfdesktop-file-icon-manager.c:2129
 #, fuzzy
 msgid "_Properties..."
 msgstr "ویرایش کردن لیست زمینه"
 
-#: ../src/xfdesktop-file-icon-manager.c:2106
+#: ../src/xfdesktop-file-icon-manager.c:2145
 msgid "Create _Folder..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2113
+#: ../src/xfdesktop-file-icon-manager.c:2152
 msgid "Create _Document"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2134
+#: ../src/xfdesktop-file-icon-manager.c:2173
 msgid "No Templates installed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2146
+#: ../src/xfdesktop-file-icon-manager.c:2185
 #, fuzzy
 msgid "_Empty File"
 msgstr "_پرونده"
 
-#: ../src/xfdesktop-file-icon-manager.c:2929 ../src/xfdesktop-file-icon.c:511
+#: ../src/xfdesktop-file-icon-manager.c:2968 ../src/xfdesktop-file-icon.c:511
 #, fuzzy, c-format
 msgid "Failed to run \"%s\":"
 msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:2931 ../src/xfdesktop-file-icon.c:513
+#: ../src/xfdesktop-file-icon-manager.c:2970 ../src/xfdesktop-file-icon.c:513
 msgid "Run Error"
 msgstr ""
 
