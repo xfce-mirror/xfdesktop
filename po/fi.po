@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-23 15:12+0900\n"
-"PO-Revision-Date: 2005-04-14 22:22+0300\n"
+"POT-Creation-Date: 2006-04-23 10:24+0300\n"
+"PO-Revision-Date: 2005-04-23 10:30+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -430,7 +430,7 @@ msgstr "Näytä k_uvake valikossa"
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
 msgid "Button Label|Desktop"
-msgstr ""
+msgstr "Työpöytä"
 
 #: ../settings/appearance-settings.c:185 ../settings/appearance-settings.c:194
 #: ../settings/backdrop-list-manager.c:631
@@ -775,7 +775,7 @@ msgstr "_Poista työtila '%s'"
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
+msgstr "Xfdesktop ei voinut luoda hakemistoa \"%s\" työpöydän tiedostoille:"
 
 #: ../src/xfdesktop-file-icon-manager.c:221
 #: ../src/xfdesktop-file-icon-manager.c:230
@@ -789,10 +789,12 @@ msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
+"Xfdesktop ei voi käyttää polkua \"%s\" työpöydän tiedostojen säilyttämiseen, "
+"koska se ei ole hakemisto."
 
 #: ../src/xfdesktop-file-icon-manager.c:232
 msgid "Please delete or rename the file."
-msgstr ""
+msgstr "Poista kyseinen tiedosto tai nimeä se uudelleen."
 
 #: ../src/xfdesktop-file-icon-manager.c:378
 #: ../src/xfdesktop-file-icon-manager.c:685
