@@ -107,7 +107,7 @@
 	<category name="OCR" builtin-icon="GRAPHICS" />
 	<category name="Photograph" replace="Φωτογραφία" builtin-icon="GRAPHICS" />
 	<category name="Viewer" replace="Προβολείς" builtin-icon="GRAPHICS" />
-	<category name="Settings" toplevel="true" builtin-icon="SETTINGS">
+	<category name="Settings" replace="Ρυθμίσεις" toplevel="true" builtin-icon="SETTINGS">
 		<subcategory name="DesktopSettings" />
 		<subcategory name="HardwareSettings" />
 		<subcategory name="PackageSettings" />
@@ -118,7 +118,7 @@
 	<category name="DesktopSettings" replace="Ρυθμισεις Επιφάνειας Εργασίας" builtin-icon="SETTINGS" />
 	<category name="HardwareSettings" replace="Ρυθμίσεις Υλικού" builtin-icon="SETTINGS" />
 	<category name="PackageSettings" replace="Ρυθμίσεις Πακέτων" builtin-icon="SETTINGS" />
-	<category name="Network" toplevel="true" builtin-icon="NETWORK">
+	<category name="Network" toplevel="true" replace="Δικτυο" builtin-icon="NETWORK">
 		<subcategory name="Email" />
 		<subcategory name="Dialup" />
 		<subcategory name="InstantMessaging" />
@@ -204,18 +204,18 @@
 	<category name="Simulation" builtin-icon="GAME" />
 	<category name="SportsGame" replace="Αθλητικά Παιχνίδια" builtin-icon="GAME" />
 	<category name="StrategyGame" replace="Παιχνίδια Στρατηγικής" builtin-icon="GAME" />
-	<category name="Education" toplevel="true">
+	<category name="Education" replace="Εκπαίδευση" toplevel="true">
 		<subcategory name="Art" />
 		<subcategory name="Construction" />
 		<subcategory name="Music" />
 		<subcategory name="Languages" />
 		<subcategory name="Teaching" />
 	</category>
-	<category name="Art" />
-	<category name="Construction" />
-	<category name="Music" />
-	<category name="Languages" />
-	<category name="Science" toplevel="true">
+	<category name="Art" replace="Τέχνες" />
+	<category name="Construction" replace="Κατασκευές" />
+	<category name="Music" replace="Μουσική" />
+	<category name="Languages" replace="Γλώσσες" />
+	<category name="Science" replace="Επιστήμη" toplevel="true">
 		<subcategory name="Astronomy" />
 		<subcategory name="Biology" />
 		<subcategory name="Chemistry" />
@@ -224,26 +224,26 @@
 		<subcategory name="MedicalSoftware" />
 		<subcategory name="Physics" />
 	</category>
-	<category name="Astronomy" />
-	<category name="Biology" />
-	<category name="Chemistry" />
-	<category name="Geology" />
-	<category name="Math" />
-	<category name="MedicalSoftware" replace="Medical" />
-	<category name="Physics" />
-	<category name="Teaching" />
-	<category name="Amusement" replace="Games" builtin-icon="GAME" />
+	<category name="Astronomy" replace="Αστρονομία" />
+	<category name="Biology" replace="Βιολογία" />
+	<category name="Chemistry" replace="Χημεία" />
+	<category name="Geology" replace="Γεωλογία" />
+	<category name="Math" replace="Μαθηματικά" />
+	<category name="MedicalSoftware" replace="Ιατρικά" />
+	<category name="Physics" replace="Φυσική" />
+	<category name="Teaching" replace="Διδασκαλία" />
+	<category name="Amusement" replace="Διασκέδαση" builtin-icon="GAME" />
 	<category name="Applet" replace="Applets" />
-	<category name="Archiving" />
-	<category name="Electronics" />
-	<category name="Emulator" toplevel="true" replace="System" builtin-icon="SYSTEM" />
-	<category name="Engineering" />
+	<category name="Archiving" replace="Αρχειοθέτηση" />
+	<category name="Electronics" replace="Ηλεκτρονικά" />
+	<category name="Emulator" toplevel="true" replace="Σύστημα" builtin-icon="SYSTEM" />
+	<category name="Engineering" replace="Ανάπτυξη" />
 	<category name="FileManager" replace="Διαχείριση Αρχείων" />
-	<category name="Shell" replace="Shells" />
-	<category name="Screensaver" />
-	<category name="TerminalEmulator" replace="Terminal Emulators" />
-	<category name="TrayIcon" replace="System Tray Icons" />
-	<category name="System" toplevel="true" builtin-icon="SYSTEM">
+	<category name="Shell" replace="Κέλυφη" />
+	<category name="Screensaver" replace="Προφύλαξη Οθόνης" />
+	<category name="TerminalEmulator" replace="Τερματικά" />
+	<category name="TrayIcon" replace="Εικονίδια συστήματος" />
+	<category name="System" toplevel="true" replace="Σύστημα" builtin-icon="SYSTEM">
 		<subcategory name="FileSystem" />
 		<subcategory name="Monitor" />
 		<subcategory name="Security" />
@@ -251,10 +251,10 @@
 		<subcategory name="TerminalEmulator" />
 		<subcategory name="Shell" />
 	</category>
-	<category name="Filesystem" builtin-icon="SYSTEM" />
-	<category name="Monitor" builtin-icon="SYSTEM" />
-	<category name="Security" builtin-icon="SYSTEM" />
-	<category name="Utility" toplevel="true" replace="Accessories" builtin-icon="UTILITY">
+	<category name="Filesystem" replace="Σύστημα Αρχείων" builtin-icon="SYSTEM" />
+	<category name="Monitor" replace="Παρακολούθηση" builtin-icon="SYSTEM" />
+	<category name="Security" replace="Ασφαλεια" builtin-icon="SYSTEM" />
+	<category name="Utility" toplevel="true" replace="Βοηθήματα" builtin-icon="UTILITY">
 		<subcategory name="Accessibility" />
 		<subcategory name="Calculator" />
 		<subcategory name="Clock" />
@@ -264,7 +264,7 @@
 		<subcategory name="FileManager" />
 		<subcategory name="Shell" />
 	</category>
-	<category name="Accessibility" builtin-icon="UTILITY" />
+	<category name="Accessibility" replace="Προσβασιμότητα" builtin-icon="UTILITY" />
 	<category name="Calculator" replace="Κομπιουτεράκια" builtin-icon="UTILITY" />
 	<category name="Clock" replace="Ρολόγια" builtin-icon="UTILITY" />
 	<category name="TextEditor" replace="Επεξεργασία Κειμένου" builtin-icon="UTILITY" />
@@ -316,7 +316,7 @@
 	<category name="Java" toplevel="true" ignore="true">
 		<subcategory name="Applet" />
 	</category>
-	<category name="ConsoleOnly" toplevel="true" replace="Console" ignore="true">
+	<category name="ConsoleOnly" toplevel="true" replace="Κονσόλα" ignore="true">
 		<subcategory name="Development" />
 		<subcategory name="Office" />
 		<subcategory name="Graphics" />
