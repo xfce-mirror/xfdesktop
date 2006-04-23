@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-23 15:12+0900\n"
-"PO-Revision-Date: 2006-04-16 09:39+0600\n"
+"PO-Revision-Date: 2006-04-23 16:37+0600\n"
 "Last-Translator: Andrey Fedoseev <andrey.fedoseev@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -173,7 +173,7 @@ msgstr "Разделители нельзя редактировать"
 #: ../menueditor/menueditor.c:81
 #, c-format
 msgid "File %s doesn't exist !"
-msgstr "Файл %s не существует."
+msgstr "Файл %s не существует !"
 
 #: ../menueditor/menueditor.c:121 ../menueditor/menueditor.c:537
 msgid "Do you want to save before closing the menu ?"
@@ -343,7 +343,7 @@ msgstr "Меню Xfce"
 #: ../modules/menu/desktop-menu-file.c:118
 #: ../modules/menu/desktop-menu-file.c:133
 msgid "Unable to quit session."
-msgstr "Невозможно завершить сеанс"
+msgstr "Невозможно завершить сеанс."
 
 #: ../modules/menu/desktop-menu-file.c:119
 msgid ""
@@ -432,7 +432,7 @@ msgstr "П_оказывать значки в меню"
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
 msgid "Button Label|Desktop"
-msgstr ""
+msgstr "Рабочий стол"
 
 #: ../settings/appearance-settings.c:185 ../settings/appearance-settings.c:194
 #: ../settings/backdrop-list-manager.c:631
@@ -486,7 +486,7 @@ msgstr "Регулировать _яркость:"
 #: ../settings/appearance-settings.c:799
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr "Xfce не сможет управлять вашим рабочим столом (%s)"
+msgstr "Xfce не сможет управлять вашим рабочим столом (%s)."
 
 #: ../settings/appearance-settings.c:800
 msgid "Unknown Error"
@@ -659,7 +659,7 @@ msgstr "Показывать _список окон по щелчку средн
 
 #: ../settings/behavior-settings.c:244
 msgid "Show _desktop menu on right click"
-msgstr "Показать _меню рабочего стола по щелчку правой кнопой мыши"
+msgstr "Показать _меню рабочего стола по щелчку правой кнопкой мыши"
 
 #: ../settings/behavior-settings.c:263
 msgid "Desktop Icons"
@@ -779,6 +779,7 @@ msgstr "_Удалить рабочее место '%s'"
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
+"Не удалось создать папку \"%s\" для хранения элементов рабочего стола:"
 
 #: ../src/xfdesktop-file-icon-manager.c:221
 #: ../src/xfdesktop-file-icon-manager.c:230
@@ -792,10 +793,12 @@ msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
+"Нельзя использовать \"%s\" для хранения элементов рабочего стола потому что "
+"это не папкаю."
 
 #: ../src/xfdesktop-file-icon-manager.c:232
 msgid "Please delete or rename the file."
-msgstr ""
+msgstr "Удалите или переименуйте файл."
 
 #: ../src/xfdesktop-file-icon-manager.c:378
 #: ../src/xfdesktop-file-icon-manager.c:685
@@ -812,7 +815,7 @@ msgstr "Ошибка запуска"
 
 #: ../src/xfdesktop-file-icon-manager.c:382
 msgid "The associated application could not be found or executed."
-msgstr "Связанное с этим файлом приложение не может быть найдено или запущено"
+msgstr "Связанное с этим файлом приложение не может быть найдено или запущено."
 
 #: ../src/xfdesktop-file-icon-manager.c:509
 #, c-format
@@ -855,7 +858,7 @@ msgid ""
 "by Thunar)."
 msgstr ""
 "Эта функция требует наличия службы файлового менеджера (такой, которая "
-"поддерживается в Thunar)"
+"поддерживается в Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:809
 #, c-format
@@ -945,7 +948,7 @@ msgstr "Доступ:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1215
 msgid "Free Space:"
-msgstr "Свободное место"
+msgstr "Свободное место:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1217
 msgid "Size:"
@@ -975,7 +978,7 @@ msgstr "Доступ:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1311
 msgid "Group:"
-msgstr "Группа"
+msgstr "Группа:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1349
 msgid "Others:"
@@ -1115,7 +1118,7 @@ msgstr "_Пустой файл"
 #: ../src/xfdesktop-file-icon-manager.c:2968 ../src/xfdesktop-file-icon.c:511
 #, c-format
 msgid "Failed to run \"%s\":"
-msgstr "Невомзожно запустить \"%s\":"
+msgstr "Невозможно запустить \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:2970 ../src/xfdesktop-file-icon.c:513
 msgid "Run Error"
@@ -1161,7 +1164,7 @@ msgstr "Редактор меню Xfce 4"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr "Отображает меню, содержащее категории устовленных приложений"
+msgstr "Отображает меню, содержащее категории уставленных приложений"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
