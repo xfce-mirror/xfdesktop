@@ -1,15 +1,15 @@
 # Ukrainian translation of xfdesktop.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
-# Maxim Dziumanenko <mvd@mylinux.com.ua>, 2003-2005.
+# Maxim Dziumanenko <mvd@mylinux.ua>, 2003-2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.3.90.1\n"
+"Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-23 15:12+0900\n"
+"POT-Creation-Date: 2006-04-25 19:56+0300\n"
 "PO-Revision-Date: 2005-10-09 22:25+0900\n"
-"Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
+"Last-Translator: Maxim Dziumanenko <mvd@mylinux.ua>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -164,7 +164,7 @@ msgstr "Правка пункту меню"
 
 #: ../menueditor/edit_dialog.c:126
 msgid "Separators cannot be edited"
-msgstr "Розділювачі неможна змінювати"
+msgstr "Розділювачі не можна змінювати"
 
 #: ../menueditor/menueditor.c:81
 #, c-format
@@ -313,9 +313,8 @@ msgid "Hidden"
 msgstr "Сховати"
 
 #: ../menueditor/utils.c:648
-#, fuzzy
 msgid "Select icon"
-msgstr "Вибір значка"
+msgstr "Виберіть значок"
 
 #: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:535
 #: ../settings/appearance-settings.c:530
@@ -340,13 +339,15 @@ msgstr "Меню Xfce"
 #: ../modules/menu/desktop-menu-file.c:118
 #: ../modules/menu/desktop-menu-file.c:133
 msgid "Unable to quit session."
-msgstr ""
+msgstr "Не вдається вийти з сеансу."
 
 #: ../modules/menu/desktop-menu-file.c:119
 msgid ""
 "Quitting the session requires that Xfce's session manager (xfce4-session) is "
 "running, but it was not detected.  Please quit Xfce via another means."
 msgstr ""
+"Щоб завершити сеанс треба, щоб був запущений диспетчер сеансів Xfce (xfce4-"
+"session), але його не виявлено. Будь-ласка, вийдіть з Xfce іншим шляхом."
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
@@ -354,6 +355,8 @@ msgid ""
 "Quitting the session requires the 'xfce4-session-logout' command, but it "
 "could not be found: %s"
 msgstr ""
+"Щоб завершити сеанс потрібна команда 'xfce4-session-logout', але вона не "
+"знайдена: %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
@@ -378,49 +381,41 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Не вдається запустити редактор меню xfce4-menueditor: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:690
-#, fuzzy
 msgid "Edit Properties"
-msgstr "Редагувати список зображень для тла"
+msgstr "Змінити параметри"
 
 #: ../panel-plugin/desktop-menu-plugin.c:708
-#, fuzzy
 msgid "Button"
-msgstr "_Значок:"
+msgstr "Кнопка"
 
 #: ../panel-plugin/desktop-menu-plugin.c:721
-#, fuzzy
 msgid "Button _title:"
-msgstr "_Значок:"
+msgstr "_Заголовок кнопки:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:734
 msgid "_Show title in button"
-msgstr ""
+msgstr "_Показувати заголовок на кнопці"
 
 #: ../panel-plugin/desktop-menu-plugin.c:741
-#, fuzzy
 msgid "Menu File"
 msgstr "Файли меню"
 
 #: ../panel-plugin/desktop-menu-plugin.c:753
-#, fuzzy
 msgid "Use default _desktop menu file"
-msgstr "_Правка меню стільниці"
+msgstr "Використовувати типово _меню робочого столу"
 
 #: ../panel-plugin/desktop-menu-plugin.c:762
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "Відкрити файл меню"
+msgstr "Використовувати _інший файл меню:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:813
 #: ../settings/behavior-settings.c:251
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "_Меню"
+msgstr "_Правка меню"
 
 #: ../panel-plugin/desktop-menu-plugin.c:819
-#, fuzzy
 msgid "Icons"
-msgstr "Значок:"
+msgstr "Значки"
 
 #: ../panel-plugin/desktop-menu-plugin.c:831
 msgid "_Button icon:"
@@ -433,7 +428,7 @@ msgstr "Показувати з_начки у меню"
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
 msgid "Button Label|Desktop"
-msgstr ""
+msgstr "Робочий стіл"
 
 #: ../settings/appearance-settings.c:185 ../settings/appearance-settings.c:194
 #: ../settings/backdrop-list-manager.c:631
@@ -481,32 +476,30 @@ msgid "Scaled"
 msgstr "Масштабувати"
 
 #: ../settings/appearance-settings.c:743
-#, fuzzy
 msgid "A_djust Brightness:"
-msgstr "_Яскравість:"
+msgstr "Регулювати _яскравість:"
 
 #: ../settings/appearance-settings.c:799
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr ""
+msgstr "Xfce не зможе керувати вашою робочим столом (%s)."
 
 #: ../settings/appearance-settings.c:800
 msgid "Unknown Error"
-msgstr ""
+msgstr "Невідома помилка"
 
 #: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:604
 #: ../src/xfdesktop-file-icon.c:659
 msgid "Error"
-msgstr ""
+msgstr "Помилка"
 
 #: ../settings/appearance-settings.c:806
 msgid "Unable to start xfdesktop"
-msgstr ""
+msgstr "Не вдається запустити xfdesktop"
 
 #: ../settings/appearance-settings.c:824
-#, fuzzy
 msgid "Information"
-msgstr "Ігнорувати зміни"
+msgstr "Інформація"
 
 #: ../settings/appearance-settings.c:834
 msgid ""
@@ -516,35 +509,40 @@ msgid ""
 "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
+"Щоб переконатись, що Xfce не буде керувати вашим робочим столом під час "
+"наступного запуску, перевірте, що ви зберегли сеанс при виході.  Якщо ви не "
+"використовуєте диспетчер сеансів Xfce (xfce4-session), потрібно вручну "
+"змінити файл ~/.config/xfce4/xinitrc.  Докладніша документація доступна на "
+"сайті http://xfce.org/."
 
 #: ../settings/appearance-settings.c:842
 msgid "_Do not show this again"
-msgstr ""
+msgstr "Надалі _не показувати"
 
 #. the dialog
 #: ../settings/appearance-settings.c:909 ../src/xfce-desktop.c:566
 msgid "Desktop"
-msgstr "Робоча стільниця"
+msgstr "Робочий стіл"
 
 #. header
 #: ../settings/appearance-settings.c:924
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
-msgstr "Параметри робочої стільниці"
+msgstr "Параметри робочого столу"
 
 #: ../settings/appearance-settings.c:929
 msgid "Allow _Xfce to manage the desktop"
-msgstr ""
+msgstr "_Дозволити керування робочим столом Xfce"
 
 #: ../settings/appearance-settings.c:970
 msgid "Stretch single backdrop onto _all monitors"
-msgstr ""
+msgstr "Розтягувати робочий стіл на _усі монітори"
 
 #. add the single backdrop settings page to the main notebook
 #: ../settings/appearance-settings.c:984
 #: ../settings/appearance-settings.c:1166
 msgid "_Appearance"
-msgstr ""
+msgstr "_Зовнішній вигляд"
 
 #. color settings frame
 #: ../settings/appearance-settings.c:1010
@@ -601,7 +599,7 @@ msgstr "Екран %d, монітор %d"
 
 #: ../settings/appearance-settings.c:1201
 msgid "_Behavior"
-msgstr ""
+msgstr "_Поведінка"
 
 #: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
 #, c-format
@@ -648,86 +646,77 @@ msgid "Edit backdrop list"
 msgstr "Редагувати список зображень для тла"
 
 #: ../settings/behavior-settings.c:225
-#, fuzzy
 msgid "Menus"
-msgstr "Файли меню"
+msgstr "Меню"
 
 #: ../settings/behavior-settings.c:233
-#, fuzzy
 msgid "Show _window list on middle click"
-msgstr "Показувати _перелік вікон"
+msgstr "Показувати _список вікон при клацанні середньою кнопкою"
 
 #: ../settings/behavior-settings.c:244
-#, fuzzy
 msgid "Show _desktop menu on right click"
-msgstr "Показувати _меню робочої стільниці"
+msgstr "Показувати _меню робочого столу при клацанні середньою кнопкою"
 
 #: ../settings/behavior-settings.c:263
-#, fuzzy
 msgid "Desktop Icons"
-msgstr "Меню робочої стільниці"
+msgstr "Значки на робочому столі"
 
 #: ../settings/behavior-settings.c:272
 #: ../src/xfdesktop-file-icon-manager.c:946
 msgid "None"
-msgstr ""
+msgstr "Немає"
 
 #: ../settings/behavior-settings.c:273
-#, fuzzy
 msgid "Minimized application icons"
-msgstr "Показувати значки п_рограм"
+msgstr "Значки згорнутих вікон"
 
 #: ../settings/behavior-settings.c:275
 msgid "File/launcher icons"
-msgstr ""
+msgstr "Значки файлів або запуску"
 
 #: ../settings/behavior-settings.c:286
-#, fuzzy
 msgid "_Icon size:"
-msgstr "Дизайнер значків"
+msgstr "Розмір _значків:"
 
 #: ../settings/behavior-settings.c:300
-#, fuzzy
 msgid "Use _system font size"
-msgstr "Відкрити файл меню"
+msgstr "Використовувати _системний розмір шрифту"
 
 #: ../settings/behavior-settings.c:317
 msgid "Custom _font size:"
-msgstr ""
+msgstr "Розмір _шрифту:"
 
 #: ../src/main.c:242
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "Це %s версії %s, що виконується у Xfce %s.\n"
 
 #: ../src/main.c:244
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Зібрано з GTK+ %d.%d.%d, зв'язано з GTK+ %d.%d.%d."
 
 #: ../src/main.c:248
 msgid "Build options:\n"
-msgstr ""
+msgstr "Параметри збирання:\n"
 
 #: ../src/main.c:249
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "    Меню робочого столу:        %s\n"
 
 #: ../src/main.c:251 ../src/main.c:258
-#, fuzzy
 msgid "enabled"
-msgstr "Масштабувати"
+msgstr "увімкнено"
 
 #: ../src/main.c:253 ../src/main.c:260
-#, fuzzy
 msgid "disabled"
-msgstr "Мозаїка"
+msgstr "вимкнено"
 
 #: ../src/main.c:256
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "Меню робочої стільниці"
+msgstr "    Значки на робочому столі:       %s\n"
 
 #: ../src/main.c:288
 #, c-format
@@ -756,7 +745,7 @@ msgstr ""
 
 #: ../src/main.c:293
 msgid "    -quit        Cause xfdesktop to quit\n"
-msgstr ""
+msgstr "    -quit        Вийти з xfdesktop\n"
 
 #: ../src/windowlist.c:193
 #, c-format
@@ -787,12 +776,13 @@ msgstr "В_идалити робочу область \"%s\""
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
+"Xfdesktop не може створити теку \"%s\" для зберігання об'єктів робочого столу:"
 
 #: ../src/xfdesktop-file-icon-manager.c:221
 #: ../src/xfdesktop-file-icon-manager.c:230
 #: ../src/xfdesktop-file-icon-manager.c:1489
 msgid "Create Folder Failed"
-msgstr ""
+msgstr "Не вдається створити теку"
 
 #: ../src/xfdesktop-file-icon-manager.c:228
 #, c-format
@@ -800,397 +790,382 @@ msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
+"Xfdesktop не може використовувати \"%s\" для зберігання об'єктів, оскільки це не тека."
 
 #: ../src/xfdesktop-file-icon-manager.c:232
 msgid "Please delete or rename the file."
-msgstr ""
+msgstr "Видаліть або перейменуйте файл."
 
 #: ../src/xfdesktop-file-icon-manager.c:378
 #: ../src/xfdesktop-file-icon-manager.c:685
 #: ../src/xfdesktop-file-icon-manager.c:719
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "Не вдається запустити редактор меню xfce4-menueditor: %s"
+msgstr "Не вдається запустити \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:380
 #: ../src/xfdesktop-file-icon-manager.c:687
 #: ../src/xfdesktop-file-icon-manager.c:722
-#, fuzzy
 msgid "Launch Error"
-msgstr "Запуск"
+msgstr "Помилка запуску"
 
 #: ../src/xfdesktop-file-icon-manager.c:382
 msgid "The associated application could not be found or executed."
-msgstr ""
+msgstr "Пов'язану з цим файлом програму неможливо знайти чи виконати."
 
 #: ../src/xfdesktop-file-icon-manager.c:509
 #, c-format
 msgid "Rename \"%s\""
-msgstr ""
+msgstr "Перейменувати \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:516
 #: ../src/xfdesktop-file-icon-manager.c:1521
 #: ../src/xfdesktop-file-icon-manager.c:1599
 #: ../src/xfdesktop-file-icon-manager.c:1610
 msgid "Enter the new name:"
-msgstr ""
+msgstr "Вкажіть нову назву:"
 
 #: ../src/xfdesktop-file-icon-manager.c:518
-#, fuzzy
 msgid "Rename"
-msgstr "Масштабувати"
+msgstr "Перейменувати"
 
 #: ../src/xfdesktop-file-icon-manager.c:560
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "Ви впевнені, що бажаєте закрити поточне меню?"
+msgstr "Ви впевнені, що бажаєте видалити \"%s\"?"
 
 #: ../src/xfdesktop-file-icon-manager.c:565
 #: ../src/xfdesktop-file-icon-manager.c:585
 msgid "If you delete a file, it is permanently lost."
-msgstr ""
+msgstr "Якщо ви видалите файл, він буде остаточно втрачений."
 
 #: ../src/xfdesktop-file-icon-manager.c:579
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "Ви впевнені, що бажаєте закрити поточне меню?"
+msgstr "Ви дійсно бажаєте видалити наступні %d файлів?"
 
 #: ../src/xfdesktop-file-icon-manager.c:582
-#, fuzzy
 msgid "Delete Multiple Files"
-msgstr "Вибір файла меню"
+msgstr "Видалення кількох файлів"
 
 #: ../src/xfdesktop-file-icon-manager.c:724
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
+"Ця функція вимагає наявності файлового менеджера (наприклад, підтримується "
+"Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:809
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "Не вдається запустити редактор меню xfce4-menueditor: %s"
+msgstr "Не вдається підключити \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:810
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "Не вдається запустити редактор меню xfce4-menueditor: %s"
+msgstr "Не вдається відключити \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:813
-#, fuzzy
 msgid "Mount Failed"
-msgstr "Файли меню"
+msgstr "Помилка підключення"
 
 #: ../src/xfdesktop-file-icon-manager.c:813
-#, fuzzy
 msgid "Unmount Failed"
-msgstr "Файли меню"
+msgstr "Помилка відключення"
 
 #: ../src/xfdesktop-file-icon-manager.c:842
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "Не вдається запустити редактор меню xfce4-menueditor: %s"
+msgstr "Не вдається витягнути \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:844
 msgid "Eject Failed"
-msgstr ""
+msgstr "Не вдається витягнути"
 
 #: ../src/xfdesktop-file-icon-manager.c:913
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Не вдається призначити типову програму для \"%s\": \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:916
-#, fuzzy
 msgid "Properties Error"
-msgstr "Редагувати список зображень для тла"
+msgstr "Помилка у властивостях"
 
 #: ../src/xfdesktop-file-icon-manager.c:946
 msgid "Write only"
-msgstr ""
+msgstr "Лише запис"
 
 #: ../src/xfdesktop-file-icon-manager.c:946
 msgid "Read only"
-msgstr ""
+msgstr "Лише читання"
 
 #: ../src/xfdesktop-file-icon-manager.c:946
 msgid "Read & Write"
-msgstr ""
+msgstr "Читання та запис"
 
 #: ../src/xfdesktop-file-icon-manager.c:973
 msgid "General"
-msgstr ""
+msgstr "Загальне"
 
 #: ../src/xfdesktop-file-icon-manager.c:1024
 msgid "Kind:"
-msgstr ""
+msgstr "Тип:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1034
 msgid "broken link"
-msgstr ""
+msgstr "зіпсоване посилання"
 
 #: ../src/xfdesktop-file-icon-manager.c:1037
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "посилання на %s"
 
 #: ../src/xfdesktop-file-icon-manager.c:1054
 msgid "Link Target:"
-msgstr ""
+msgstr "Ціль посилання:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1071
 #: ../src/xfdesktop-file-icon-manager.c:1230
 msgid "(unknown)"
-msgstr ""
+msgstr "(невідомо)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1093
 msgid "Open With:"
-msgstr ""
+msgstr "Відкрити у програмі:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1170
 msgid "Modified:"
-msgstr ""
+msgstr "Змінено:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1188
 msgid "Accessed:"
-msgstr ""
+msgstr "Доступ:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1215
 msgid "Free Space:"
-msgstr ""
+msgstr "Вільний простір:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1217
 msgid "Size:"
-msgstr ""
+msgstr "Розмір:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1233
 msgid "%s (%"
-msgstr ""
+msgstr "%s (%"
 
 #: ../src/xfdesktop-file-icon-manager.c:1233
 msgid " Bytes)"
-msgstr ""
+msgstr " байтів)"
 
 #. permissions tab
 #: ../src/xfdesktop-file-icon-manager.c:1248
 msgid "Permissions"
-msgstr ""
+msgstr "Права"
 
 #: ../src/xfdesktop-file-icon-manager.c:1270
 msgid "Owner:"
-msgstr ""
+msgstr "Власник:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1288
 #: ../src/xfdesktop-file-icon-manager.c:1326
 msgid "Access:"
-msgstr ""
+msgstr "Доступ:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1311
 msgid "Group:"
-msgstr ""
+msgstr "Група:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1349
-#, fuzzy
 msgid "Others:"
-msgstr "/Інше"
+msgstr "Інші:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1422
 #, c-format
 msgid "_Open With \"%s\""
-msgstr ""
+msgstr "_Відкрити у програмі \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1425
 #, c-format
 msgid "Open With \"%s\""
-msgstr ""
+msgstr "Відкрити у програмі \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1486
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "Не вдається запустити редактор меню xfce4-menueditor: %s"
+msgstr "Не вдається створити теку з назвою \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1518
 msgid "Create New Folder"
-msgstr ""
+msgstr "Створити нову теку"
 
 #: ../src/xfdesktop-file-icon-manager.c:1522
 msgid "New Folder"
-msgstr ""
+msgstr "Нова тека"
 
 #: ../src/xfdesktop-file-icon-manager.c:1523
 #: ../src/xfdesktop-file-icon-manager.c:1601
 #: ../src/xfdesktop-file-icon-manager.c:1612
 msgid "Create"
-msgstr ""
+msgstr "Створити"
 
 #: ../src/xfdesktop-file-icon-manager.c:1559
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "Не вдається запустити редактор меню xfce4-menueditor: %s"
+msgstr "Не вдається файл з такою назвою \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1562
-#, fuzzy
 msgid "Create File Failed"
-msgstr "Вибір файла меню"
+msgstr "Помилка створення файлу"
 
 #: ../src/xfdesktop-file-icon-manager.c:1588
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr ""
+msgstr "Створити документ з шаблону \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1607
 msgid "Create Empty File"
-msgstr ""
+msgstr "Створити порожній файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:1611
 msgid "New Empty File"
-msgstr ""
+msgstr "Новий файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:1866
 msgid "_Open all"
-msgstr ""
+msgstr "_Відкрити усе"
 
 #: ../src/xfdesktop-file-icon-manager.c:1877
 msgid "_Open"
-msgstr ""
+msgstr "_Відкрити"
 
 #: ../src/xfdesktop-file-icon-manager.c:1888
 msgid "_Execute"
-msgstr ""
+msgstr "Ви_конати"
 
 #: ../src/xfdesktop-file-icon-manager.c:1932
 msgid "Open With"
-msgstr ""
+msgstr "Відкрити у програмі"
 
 #: ../src/xfdesktop-file-icon-manager.c:1962
 msgid "Open With Other _Application..."
-msgstr ""
+msgstr "Відкрити у іншій п_рограмі..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2045
 msgid "_Mount Volume"
-msgstr ""
+msgstr "_Підключити том"
 
 #: ../src/xfdesktop-file-icon-manager.c:2056
 msgid "_Unmount Volume"
-msgstr ""
+msgstr "В_ідключити том"
 
 #: ../src/xfdesktop-file-icon-manager.c:2068
 msgid "_Eject Volume"
-msgstr ""
+msgstr "Вит_ягнути том"
 
 #: ../src/xfdesktop-file-icon-manager.c:2078
-#, fuzzy
 msgid "_Copy Files"
-msgstr "_Файл"
+msgstr "_Копіювати файли"
 
 #: ../src/xfdesktop-file-icon-manager.c:2079
-#, fuzzy
 msgid "_Copy File"
-msgstr "_Файл"
+msgstr "_Копіювати файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:2088
-#, fuzzy
 msgid "Cu_t Files"
-msgstr "_Файл"
+msgstr "_Вирізати файли"
 
 #: ../src/xfdesktop-file-icon-manager.c:2089
-#, fuzzy
 msgid "Cu_t File"
-msgstr "_Файл"
+msgstr "_Вирізати файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:2098
-#, fuzzy
 msgid "_Delete Files"
-msgstr "Вибір файла меню"
+msgstr "В_идалити файли"
 
 #: ../src/xfdesktop-file-icon-manager.c:2099
-#, fuzzy
 msgid "_Delete File"
-msgstr "Вибір файла меню"
+msgstr "В_идалити файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:2111
 msgid "_Rename..."
-msgstr ""
+msgstr "Перей_менувати..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2129
-#, fuzzy
 msgid "_Properties..."
-msgstr "Редагувати список зображень для тла"
+msgstr "В_ластивості..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2145
 msgid "Create _Folder..."
-msgstr ""
+msgstr "Створити _теку..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2152
 msgid "Create _Document"
-msgstr ""
+msgstr "Створити _документ"
 
 #: ../src/xfdesktop-file-icon-manager.c:2173
 msgid "No Templates installed"
-msgstr ""
+msgstr "Не встановлено жодного шаблону"
 
 #: ../src/xfdesktop-file-icon-manager.c:2185
-#, fuzzy
 msgid "_Empty File"
-msgstr "_Файл"
+msgstr "_Порожній файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:2968 ../src/xfdesktop-file-icon.c:511
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\":"
-msgstr "Не вдається запустити редактор меню xfce4-menueditor: %s"
+msgstr "Не вдається запустити \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:2970 ../src/xfdesktop-file-icon.c:513
 msgid "Run Error"
-msgstr ""
+msgstr "Помилка при виконанні"
 
 #: ../src/xfdesktop-file-icon.c:440
 #, c-format
 msgid "There was an error %s \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Помилка при %s \"%s\" у \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:442
 msgid "moving"
-msgstr ""
+msgstr "переміщенні"
 
 #: ../src/xfdesktop-file-icon.c:444
 msgid "copying"
-msgstr ""
+msgstr "копіюванні"
 
 #: ../src/xfdesktop-file-icon.c:445
 msgid "linking"
-msgstr ""
+msgstr "створенні посилання"
 
 #: ../src/xfdesktop-file-icon.c:448
 msgid "File Error"
-msgstr ""
+msgstr "Помилка файлу"
 
 #: ../src/xfdesktop-file-icon.c:656
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Не вдається перейменувати \"%s\" у \"%s\":"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr ""
+msgstr "Графічна програма редагування меню Xfce 4"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
-msgstr ""
+msgstr "Редактор меню"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Menu Editor"
-msgstr "Меню Xfce"
+msgstr "Редактор меню Xfce 4"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr ""
+msgstr "Відображає меню, що містить категорії встановлених програм"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr ""
+msgstr "Параметри керування робочим столом Xfce 4"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Desktop Settings"
-msgstr "Параметри робочої стільниці"
+msgstr "Параметри робочого столу Xfce 4"
