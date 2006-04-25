@@ -62,13 +62,13 @@
 	<separator/>
 
 	<app name="מסוף" cmd="xfterm4" icon="gnome-terminal"/>
-	<app name="סייר קבצים (xffm)" cmd="xffm" icon="file-manager"/>
-	<app name="דפדפן" cmd="xfbrowser4" icon="gnome-globe"/>
+	<app name="דפדפן קבצים" cmd="xffm" icon="file-manager"/>
+	<app name="דפדפן אינטרנט" cmd="xfbrowser4" icon="gnome-globe"/>
 
 	<separator/>
 
 	<menu name="הגדרות" icon="gnome-settings">
-		<app name="Xfce 4 מנהל ההגדרות" cmd="xfce-setting-show" snotify="true" icon="gnome-settings"/>
+		<app name="Xfce 4 מנהל הגדרות" cmd="xfce-setting-show" snotify="true" icon="gnome-settings"/>
 	</menu>
 
 	<separator/>
