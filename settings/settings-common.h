@@ -43,6 +43,7 @@ typedef struct {
     
     /* menu options */
 #ifdef ENABLE_DESKTOP_ICONS
+    GtkWidget *vbox_icon_settings;
     GtkWidget *frame_sysfont;
 #endif
 } BackdropDialog;

@@ -46,7 +46,11 @@ static gboolean show_windowlist = TRUE;
 static gboolean show_desktopmenu = TRUE;
 #endif
 #ifdef ENABLE_DESKTOP_ICONS
+# ifdef HAVE_THUNAR_VFS
+static XfceDesktopIconStyle desktop_icon_style = XFCE_DESKTOP_ICON_STYLE_FILES;
+# else
 static XfceDesktopIconStyle desktop_icon_style = XFCE_DESKTOP_ICON_STYLE_WINDOWS;
+# endif
 static gboolean desktop_icons_use_system_font = TRUE;
 static guint desktop_icons_font_size = 12;  /* default, i guess */
 static guint desktop_icons_icon_size = 32;  /* default */
@@ -126,11 +130,21 @@ set_di_option(GtkComboBox *combo,
     BackdropDialog *bd = (BackdropDialog *)user_data;
     
     desktop_icon_style = gtk_combo_box_get_active(combo);
+    
+    if(desktop_icon_style != XFCE_DESKTOP_ICON_STYLE_NONE) {
+        gtk_widget_set_sensitive(bd->vbox_icon_settings, TRUE);
+        if(desktop_icons_use_system_font)
+            gtk_widget_set_sensitive(bd->frame_sysfont, FALSE);
+    } else
+        gtk_widget_set_sensitive(bd->vbox_icon_settings, FALSE);
+    
+    
     mcs_manager_set_int(bd->plugin->manager, "desktopiconstyle",
                         BACKDROP_CHANNEL, desktop_icon_style);
     mcs_manager_notify(bd->plugin->manager, BACKDROP_CHANNEL);
 }
-#endif
+
+#endif  /* ENABLE_DESKTOP_ICONS */
 
 void
 behavior_settings_load(McsPlugin *plugin)
@@ -160,10 +174,11 @@ behavior_settings_load(McsPlugin *plugin)
         desktop_icon_style = setting->data.v_int;
 # ifdef HAVE_THUNAR_VFS
         if(desktop_icon_style > XFCE_DESKTOP_ICON_STYLE_FILES)
+            desktop_icon_style = XFCE_DESKTOP_ICON_STYLE_FILES;
 # else
         if(desktop_icon_style > XFCE_DESKTOP_ICON_STYLE_WINDOWS)
-# endif
             desktop_icon_style = XFCE_DESKTOP_ICON_STYLE_WINDOWS;
+# endif
     } else
         mcs_manager_set_int(plugin->manager, "desktopiconstyle",
                             BACKDROP_CHANNEL, desktop_icon_style);
@@ -186,7 +201,8 @@ behavior_settings_load(McsPlugin *plugin)
                                          BACKDROP_CHANNEL);
     if(setting && setting->data.v_int > 0)
         desktop_icons_icon_size = setting->data.v_int;
-#endif
+
+#endif  /* ENABLE_DESKTOP_ICONS */
 }
 
 #if USE_DESKTOP_MENU
@@ -279,9 +295,13 @@ behavior_page_create(BackdropDialog *bd)
     gtk_box_pack_start(GTK_BOX(vbox), combo, FALSE, FALSE, BORDER);
     g_signal_connect(G_OBJECT(combo), "changed", G_CALLBACK(set_di_option), bd);
     
+    bd->vbox_icon_settings = gtk_vbox_new(FALSE, 0);
+    gtk_widget_show(bd->vbox_icon_settings);
+    gtk_box_pack_start(GTK_BOX(vbox), bd->vbox_icon_settings, FALSE, FALSE, 0);
+    
     hbox = gtk_hbox_new(FALSE, BORDER);
     gtk_widget_show(hbox);
-    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(bd->vbox_icon_settings), hbox, FALSE, FALSE, 0);
     
     lbl = gtk_label_new_with_mnemonic(_("_Icon size:"));
     gtk_widget_show(lbl);
@@ -303,12 +323,12 @@ behavior_page_create(BackdropDialog *bd)
     g_object_set_data(G_OBJECT(chk), "xfce-chknum",
                       GUINT_TO_POINTER(OPT_ICONSSYSTEMFONT));
     gtk_widget_show(chk);
-    gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(bd->vbox_icon_settings), chk, FALSE, FALSE, 0);
     g_signal_connect(G_OBJECT(chk), "toggled", G_CALLBACK(set_chk_option), bd);
     
     frame = xfce_create_framebox(NULL, &bd->frame_sysfont);
     gtk_widget_show(frame);
-    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(bd->vbox_icon_settings), frame, FALSE, FALSE, 0);
     
     hbox = gtk_hbox_new(FALSE, BORDER);
     gtk_widget_show(hbox);
@@ -329,6 +349,9 @@ behavior_page_create(BackdropDialog *bd)
                      G_CALLBACK(set_sbtn_option), bd);
     
     gtk_widget_set_sensitive(bd->frame_sysfont, !desktop_icons_use_system_font);
+    
+    if(desktop_icon_style == XFCE_DESKTOP_ICON_STYLE_NONE)
+        gtk_widget_set_sensitive(bd->vbox_icon_settings, FALSE);
     
     if(!xfce_kiosk_query(kiosk, "CustomizeDesktopIcons"))
         gtk_widget_set_sensitive(frame_bin, FALSE);
