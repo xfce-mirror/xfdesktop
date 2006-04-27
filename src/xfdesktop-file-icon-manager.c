@@ -551,6 +551,30 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager)
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
     g_return_if_fail(selected);
     
+    /* remove any removable volumes from the list */
+    for(l = selected; l; ) {
+        if(xfdesktop_file_icon_peek_volume(XFDESKTOP_FILE_ICON(l->data))) {
+            GList *next = l->next;
+            
+            if(l->prev)
+                l->prev->next = l->next;
+            else  /* this is the first item; reset |selected| */
+                selected = l->next;
+            
+            if(l->next)
+                l->next->prev = l->prev;
+            
+            l->next = l->prev = NULL;
+            g_list_free_1(l);
+            
+            l = next;
+        } else
+            l = l->next;
+    }
+    
+    if(G_UNLIKELY(!selected))
+        return;
+    
     /* make sure the icons don't get destroyed while the dialog is open */
     g_list_foreach(selected, (GFunc)g_object_ref, NULL);
     
@@ -2064,8 +2088,10 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                              fmanager);
         }
         
-        if(thunar_vfs_volume_is_ejectable(volume)) {
-            mi = gtk_image_menu_item_new_with_mnemonic(_("_Eject Volume"));
+        if(thunar_vfs_volume_is_disc(volume)
+           && thunar_vfs_volume_is_ejectable(volume))
+        {
+            mi = gtk_image_menu_item_new_with_mnemonic(_("E_ject Volume"));
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             g_signal_connect(G_OBJECT(mi), "activate",
@@ -2271,9 +2297,15 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
     gint16 row, col;
     gboolean do_add = FALSE;
     
-    icon = xfdesktop_file_icon_new(info, fmanager->priv->gscreen);
-    if(volume)
-        xfdesktop_file_icon_set_volume(icon, volume);
+    /* if |info| is NULL, we have a volume that doesn't have a mount point yet,
+     * so |volume| must be valid */
+    g_return_val_if_fail(info || volume, NULL);
+    
+    if(volume) {
+        icon = xfdesktop_file_icon_new_for_volume(info, volume,
+                                                  fmanager->priv->gscreen);
+    } else
+        icon = xfdesktop_file_icon_new(info, fmanager->priv->gscreen);
     
     g_snprintf(relpath, PATH_MAX, "xfce4/desktop/icons.screen%d.rc",
                gdk_screen_get_number(fmanager->priv->gscreen));
@@ -2618,27 +2650,27 @@ xfdesktop_file_icon_manager_add_removable_volume(XfdesktopFileIconManager *fmana
                                                  ThunarVfsVolume *volume)
 {
     ThunarVfsPath *path;
-    ThunarVfsInfo *info;
+    ThunarVfsInfo *info = NULL;
     XfdesktopFileIcon *icon;
     
     if(!thunar_vfs_volume_is_removable(volume))
         return;
         
     path = thunar_vfs_volume_get_mount_point(volume);
-    if(!path)
-        return;
-        
-    /* presumably the mount point is local, so don't worry about delays */
-    info = thunar_vfs_info_new_for_path(path, NULL);
-    if(!info)
-        return;
+    if(path) {
+        /* presumably the mount point is local, so don't worry about delays */
+        info = thunar_vfs_info_new_for_path(path, NULL);
+    }
+    /* if info is NULL, the mount point probably hasn't been created yet,
+     * but that's ok */
     
     if(thunar_vfs_volume_is_present(volume)) {
         icon = xfdesktop_file_icon_manager_add_icon(fmanager, info, volume,
                                                     FALSE);
     }
     
-    thunar_vfs_info_unref(info);
+    if(info)
+        thunar_vfs_info_unref(info);
     
     g_signal_connect(G_OBJECT(volume), "changed",
                      G_CALLBACK(xfdesktop_file_icon_manager_volume_changed),

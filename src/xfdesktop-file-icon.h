@@ -56,6 +56,9 @@ GType xfdesktop_file_icon_get_type() G_GNUC_CONST;
 
 XfdesktopFileIcon *xfdesktop_file_icon_new(ThunarVfsInfo *info,
                                            GdkScreen *screen);
+XfdesktopFileIcon *xfdesktop_file_icon_new_for_volume(ThunarVfsInfo *info,
+                                                      ThunarVfsVolume *volume,
+                                                      GdkScreen *screen);
 
 void xfdesktop_file_icon_set_pixbuf_opacity(XfdesktopFileIcon *icon,
                                             guint opacity);
@@ -68,8 +71,6 @@ void xfdesktop_file_icon_delete_file(XfdesktopFileIcon *icon);
 gboolean xfdesktop_file_icon_rename_file(XfdesktopFileIcon *icon, 
                                          const gchar *new_name);
 
-void xfdesktop_file_icon_set_volume(XfdesktopFileIcon *icon,
-                                    ThunarVfsVolume *volume);
 ThunarVfsVolume *xfdesktop_file_icon_peek_volume(XfdesktopFileIcon *icon);
 
 /* utility function for the clipboard manager */

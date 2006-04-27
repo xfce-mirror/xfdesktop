@@ -220,12 +220,16 @@ xfdesktop_file_icon_invalidate_pixbuf(XfdesktopFileIcon *icon)
     }
 }
 
-XfdesktopFileIcon *
-xfdesktop_file_icon_new(ThunarVfsInfo *info,
-                        GdkScreen *screen)
+
+
+static XfdesktopFileIcon *
+_xfdesktop_file_icon_new_internal(ThunarVfsInfo *info,
+                                  ThunarVfsVolume *volume,
+                                  GdkScreen *screen)
 {
     XfdesktopFileIcon *file_icon = g_object_new(XFDESKTOP_TYPE_FILE_ICON, NULL);
-    file_icon->priv->info = thunar_vfs_info_ref(info);
+    file_icon->priv->info = info ? thunar_vfs_info_ref(info) : NULL;
+    file_icon->priv->volume = volume ? g_object_ref(G_OBJECT(volume)) : NULL;
     file_icon->priv->gscreen = screen;
     
     g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
@@ -234,6 +238,24 @@ xfdesktop_file_icon_new(ThunarVfsInfo *info,
                              file_icon);
     
     return file_icon;
+
+}
+
+XfdesktopFileIcon *
+xfdesktop_file_icon_new(ThunarVfsInfo *info,
+                        GdkScreen *screen)
+{
+    g_return_val_if_fail(info, NULL);
+    return _xfdesktop_file_icon_new_internal(info, NULL, screen);
+}
+
+XfdesktopFileIcon *
+xfdesktop_file_icon_new_for_volume(ThunarVfsInfo *info,
+                                   ThunarVfsVolume *volume,
+                                   GdkScreen *screen)
+{
+    g_return_val_if_fail(THUNAR_VFS_IS_VOLUME(volume), NULL);
+    return _xfdesktop_file_icon_new_internal(info, volume, screen);
 }
 
 void
@@ -280,7 +302,7 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
             }
         }
         
-        if(!file_icon->priv->pix) {
+        if(!file_icon->priv->pix && file_icon->priv->info) {
             icon_name = thunar_vfs_info_get_custom_icon(file_icon->priv->info);
             if(icon_name) {
                 file_icon->priv->pix = xfce_themed_icon_load(icon_name, size);
@@ -289,7 +311,7 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
             }
         }
             
-        if(G_UNLIKELY(!file_icon->priv->pix)) {
+        if(G_UNLIKELY(!file_icon->priv->pix) && file_icon->priv->info) {
             icon_name = thunar_vfs_mime_info_lookup_icon_name(file_icon->priv->info->mime_info,
                                                               gtk_icon_theme_get_default());
             
@@ -324,7 +346,9 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
         file_icon->priv->cur_pix_size = size;
     
     if(loaded_new) {
-        if(file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_SYMLINK) {
+        if(file_icon->priv->info
+           && file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_SYMLINK)
+        {
             GdkPixbuf *sym_pix;
             gint sym_pix_size = size * 2 / 3;
             
@@ -418,8 +442,9 @@ static gboolean
 xfdesktop_file_icon_is_drop_dest(XfdesktopIcon *icon)
 {
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-    return (file_icon->priv->info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY
-            || file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE);
+    return (file_icon->priv->info
+            && (file_icon->priv->info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY
+                || file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE));
 }
 
 static void
@@ -599,7 +624,8 @@ xfdesktop_delete_file_error(ThunarVfsJob *job,
                             gpointer user_data)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);
-    gchar *primary = g_strdup_printf("There was an error deleting \"%s\":", icon->priv->info->display_name);
+    gchar *primary = g_strdup_printf("There was an error deleting \"%s\":",
+                                     icon->priv->info->display_name);
                                      
     xfce_message_dialog(NULL, _("Error"), GTK_STOCK_DIALOG_ERROR, primary,
                         error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
@@ -628,6 +654,8 @@ xfdesktop_file_icon_delete_file(XfdesktopFileIcon *icon)
 {
     ThunarVfsJob *job;
     
+    g_return_if_fail(!icon->priv->volume);
+    
     job = thunar_vfs_unlink_file(icon->priv->info->path, NULL);
     
     g_object_set_data(G_OBJECT(job), "--xfdesktop-file-icon-callback",
@@ -649,9 +677,10 @@ xfdesktop_file_icon_rename_file(XfdesktopFileIcon *icon,
 {
     GError *error = NULL;
     
-    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon) && new_name && *new_name,
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon) && new_name && *new_name
+                         && !icon->priv->volume,
                          FALSE);
-        
+    
     if(!thunar_vfs_info_rename(icon->priv->info, new_name, &error)) {
         gchar *primary = g_strdup_printf(_("Failed to rename \"%s\" to \"%s\":"),
                                          icon->priv->info->display_name,
@@ -681,7 +710,8 @@ xfdesktop_file_icon_update_info(XfdesktopFileIcon *icon,
 {
     g_return_if_fail(XFDESKTOP_IS_ICON(icon) && info);
     
-    thunar_vfs_info_unref(icon->priv->info);
+    if(icon->priv->info)
+        thunar_vfs_info_unref(icon->priv->info);
     icon->priv->info = thunar_vfs_info_ref(info);
     
     xfdesktop_icon_label_changed(XFDESKTOP_ICON(icon));
@@ -698,23 +728,6 @@ xfdesktop_file_icon_list_to_path_list(GList *icon_list)
     }
     
     return g_list_reverse(path_list);
-}
-
-void
-xfdesktop_file_icon_set_volume(XfdesktopFileIcon *icon,
-                               ThunarVfsVolume *volume)
-{
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
-    
-    if(volume == icon->priv->volume)
-        return;
-    
-    if(icon->priv->volume)
-      g_object_unref(G_OBJECT(icon->priv->volume));
-    
-    icon->priv->volume = g_object_ref(G_OBJECT(volume));
-    
-    xfdesktop_file_icon_invalidate_pixbuf(icon);
 }
 
 ThunarVfsVolume *
