@@ -1,3 +1,4 @@
+# translation of he.po to Hebrew
 # translation of he2.po to Hebrew
 # Hebrew translations for xfdesktop package.
 # Copyright (C) 2003-2006 The Xfce development team.
@@ -8,10 +9,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: he2\n"
+"Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-23 15:12+0900\n"
-"PO-Revision-Date: 2006-04-22 01:32+0300\n"
+"PO-Revision-Date: 2006-04-28 13:36+0300\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -430,7 +431,7 @@ msgstr "הראה _סמלים בתפריט"
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
 msgid "Button Label|Desktop"
-msgstr ""
+msgstr "שולחן עבודה"
 
 #: ../settings/appearance-settings.c:185 ../settings/appearance-settings.c:194
 #: ../settings/backdrop-list-manager.c:631
@@ -511,8 +512,8 @@ msgid ""
 "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
-"כדי לודא ש- Xfce אינו מנהל את שולחן העבודה שלך בפעם הבאה שיותחל Xfce, נא "
-"לודא שמירת ההפעלה ביציאה. אם אינך עושה שימוש במנהלך ההפעלה של Xfce (xfce4-"
+"כדי לוודא ש- Xfce אינו מנהל את שולחן העבודה שלך בפעם הבאה שיותחל Xfce, נא "
+"לוודא שמירת ההפעלה ביציאה. אם אינך עושה שימוש במנהלך ההפעלה של Xfce (xfce4-"
 "session) יהיה עליך לערוך ידנית את הקובץ  ~/.config/xfce4/xinitrc. פרטים "
 "זמינים בתיעוד הנמצא ב- http://xfce.org/."
 
@@ -737,10 +738,8 @@ msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Pop up the menu (at the current mouse position)\n"
 
 #: ../src/main.c:292
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -windowlist  Pop up the window list (at the current mouse position)\n"
 
 #: ../src/main.c:293
 msgid "    -quit        Cause xfdesktop to quit\n"
@@ -772,9 +771,8 @@ msgstr "_הסר סביבת עבודה %s"
 
 #: ../src/xfdesktop-file-icon-manager.c:219
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "לא ניתן ליצור את התיקייה \"%s\" בשביל לשמור שם את פריטי שולחן העבודה:"
 
 #: ../src/xfdesktop-file-icon-manager.c:221
 #: ../src/xfdesktop-file-icon-manager.c:230
@@ -787,11 +785,11 @@ msgstr "יצירת תיקיה נכשלה"
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
-msgstr ""
+msgstr "לא ניתן להשתמש ב\"%s\" בשביל לשמור שם את פריטי שולחן העבודה משום זה לא תיקייה."
 
 #: ../src/xfdesktop-file-icon-manager.c:232
 msgid "Please delete or rename the file."
-msgstr ""
+msgstr "אנא מחק או שנה את שם הקובץ."
 
 #: ../src/xfdesktop-file-icon-manager.c:378
 #: ../src/xfdesktop-file-icon-manager.c:685
@@ -1166,3 +1164,4 @@ msgstr "הגדרות שולחן העבודה של Xfce 4"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "הגדרות שולחן העבודה Xfce 4"
+
