@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-16 16:43+0200\n"
+"POT-Creation-Date: 2006-04-29 20:34+0900\n"
 "PO-Revision-Date: 2005-10-09 22:13+0900\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -65,7 +65,7 @@ msgstr "Välja"
 
 #. Name
 #: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:959
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1022
 msgid "Name:"
 msgstr "Nimi:"
 
@@ -198,7 +198,7 @@ msgid "Select command"
 msgstr "Vali käsklus"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:524
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:587
 msgid "Question"
 msgstr "Küsimus"
 
@@ -319,22 +319,22 @@ msgstr "Varjatud"
 msgid "Select icon"
 msgstr "Vali ikoon"
 
-#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:534
-#: ../settings/appearance-settings.c:529
+#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:535
+#: ../settings/appearance-settings.c:530
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Kõik failid"
 
-#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:540
-#: ../settings/appearance-settings.c:533
+#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:541
+#: ../settings/appearance-settings.c:534
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Pildi failid"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:697
+#: ../panel-plugin/desktop-menu-plugin.c:698
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce menüü"
@@ -361,157 +361,156 @@ msgstr ""
 msgid "/Other"
 msgstr "/Muu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:517
+#: ../panel-plugin/desktop-menu-plugin.c:518
 msgid "Select Icon"
 msgstr "Vali ikoon"
 
-#: ../panel-plugin/desktop-menu-plugin.c:519
+#: ../panel-plugin/desktop-menu-plugin.c:520
 msgid "Select Menu File"
 msgstr "Vali menüüfail"
 
-#: ../panel-plugin/desktop-menu-plugin.c:548
+#: ../panel-plugin/desktop-menu-plugin.c:549
 msgid "Menu Files"
 msgstr "Menüüfailid"
 
-#: ../panel-plugin/desktop-menu-plugin.c:666
-#: ../settings/behavior-settings.c:201
+#: ../panel-plugin/desktop-menu-plugin.c:667
+#: ../settings/behavior-settings.c:217
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Ei õnnestu käivitada xfce4-menüüredaktorit: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:689
+#: ../panel-plugin/desktop-menu-plugin.c:690
 #, fuzzy
 msgid "Edit Properties"
 msgstr "Muuda tausta nimistut"
 
-#: ../panel-plugin/desktop-menu-plugin.c:707
+#: ../panel-plugin/desktop-menu-plugin.c:708
 #, fuzzy
 msgid "Button"
 msgstr "_Nupu ikoon:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:720
+#: ../panel-plugin/desktop-menu-plugin.c:721
 #, fuzzy
 msgid "Button _title:"
 msgstr "_Nupu ikoon:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:733
+#: ../panel-plugin/desktop-menu-plugin.c:734
 msgid "_Show title in button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:741
 #, fuzzy
 msgid "Menu File"
 msgstr "Menüüfailid"
 
-#: ../panel-plugin/desktop-menu-plugin.c:752
+#: ../panel-plugin/desktop-menu-plugin.c:753
 #, fuzzy
 msgid "Use default _desktop menu file"
 msgstr "_Muuda töölaua menüüd"
 
-#: ../panel-plugin/desktop-menu-plugin.c:761
+#: ../panel-plugin/desktop-menu-plugin.c:762
 #, fuzzy
 msgid "Use _custom menu file:"
 msgstr "Ava menüü fail"
 
-#: ../panel-plugin/desktop-menu-plugin.c:812
-#: ../settings/behavior-settings.c:251
+#: ../panel-plugin/desktop-menu-plugin.c:813
+#: ../settings/behavior-settings.c:267
 #, fuzzy
 msgid "_Edit Menu"
 msgstr "_Menüü"
 
-#: ../panel-plugin/desktop-menu-plugin.c:818
+#: ../panel-plugin/desktop-menu-plugin.c:819
 #, fuzzy
 msgid "Icons"
 msgstr "Ikoon:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:830
+#: ../panel-plugin/desktop-menu-plugin.c:831
 msgid "_Button icon:"
 msgstr "_Nupu ikoon:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:855
 msgid "Show _icons in menu"
 msgstr "Näita menüüs ikoone"
 
-#. the dialog
-#: ../settings/appearance-settings.c:133 ../settings/appearance-settings.c:908
-#: ../src/xfce-desktop.c:566
-msgid "Desktop"
-msgstr "Töölaud"
+#. the button label in the xfce-mcs-manager dialog
+#: ../settings/appearance-settings.c:134
+msgid "Button Label|Desktop"
+msgstr ""
 
-#: ../settings/appearance-settings.c:184 ../settings/appearance-settings.c:193
+#: ../settings/appearance-settings.c:185 ../settings/appearance-settings.c:194
 #: ../settings/backdrop-list-manager.c:631
 msgid "backdrops.list"
 msgstr "taustad.list"
 
-#: ../settings/appearance-settings.c:524
+#: ../settings/appearance-settings.c:525
 msgid "Select backdrop image or list file"
 msgstr "Vali tausta pilt või nimistu fail"
 
-#: ../settings/appearance-settings.c:542
+#: ../settings/appearance-settings.c:543
 msgid "List Files (*.list)"
 msgstr "Nimistu failid (*.list)"
 
-#: ../settings/appearance-settings.c:634
+#: ../settings/appearance-settings.c:635
 msgid "_Edit list..."
 msgstr "_Muuda nimistut"
 
-#: ../settings/appearance-settings.c:642
+#: ../settings/appearance-settings.c:643
 msgid "_New list..."
 msgstr "_Uus nimistu"
 
-#: ../settings/appearance-settings.c:675
+#: ../settings/appearance-settings.c:676
 msgid "S_tyle:"
 msgstr "S_tiil:"
 
-#: ../settings/appearance-settings.c:682
+#: ../settings/appearance-settings.c:683
 msgid "Auto"
 msgstr "Automaatne"
 
-#: ../settings/appearance-settings.c:683
+#: ../settings/appearance-settings.c:684
 msgid "Centered"
 msgstr "Tsentreeritud"
 
-#: ../settings/appearance-settings.c:684
+#: ../settings/appearance-settings.c:685
 msgid "Tiled"
 msgstr "Jaotatud"
 
-#: ../settings/appearance-settings.c:685
+#: ../settings/appearance-settings.c:686
 msgid "Stretched"
 msgstr "Venitatud"
 
-#: ../settings/appearance-settings.c:686
+#: ../settings/appearance-settings.c:687
 msgid "Scaled"
 msgstr "Skaleeritud"
 
-#: ../settings/appearance-settings.c:742
+#: ../settings/appearance-settings.c:743
 #, fuzzy
 msgid "A_djust Brightness:"
 msgstr "Kohenda _heledust:"
 
-#: ../settings/appearance-settings.c:798
+#: ../settings/appearance-settings.c:799
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr ""
 
-#: ../settings/appearance-settings.c:799
+#: ../settings/appearance-settings.c:800
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:803 ../src/xfdesktop-file-icon.c:604
-#: ../src/xfdesktop-file-icon.c:659
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:630
+#: ../src/xfdesktop-file-icon.c:688
 msgid "Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:805
+#: ../settings/appearance-settings.c:806
 msgid "Unable to start xfdesktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:823
+#: ../settings/appearance-settings.c:824
 #, fuzzy
 msgid "Information"
 msgstr "Ignoreeri muudatusi"
 
-#: ../settings/appearance-settings.c:833
+#: ../settings/appearance-settings.c:834
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -520,84 +519,89 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 
-#: ../settings/appearance-settings.c:841
+#: ../settings/appearance-settings.c:842
 msgid "_Do not show this again"
 msgstr ""
 
+#. the dialog
+#: ../settings/appearance-settings.c:909 ../src/xfce-desktop.c:566
+msgid "Desktop"
+msgstr "Töölaud"
+
 #. header
-#: ../settings/appearance-settings.c:923
+#: ../settings/appearance-settings.c:924
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
 msgstr "Töölaua seaded"
 
-#: ../settings/appearance-settings.c:928
+#: ../settings/appearance-settings.c:929
 msgid "Allow _Xfce to manage the desktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:969
+#: ../settings/appearance-settings.c:970
 msgid "Stretch single backdrop onto _all monitors"
 msgstr ""
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:983
-#: ../settings/appearance-settings.c:1165
+#: ../settings/appearance-settings.c:984
+#: ../settings/appearance-settings.c:1166
 msgid "_Appearance"
 msgstr ""
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1009
+#: ../settings/appearance-settings.c:1010
 msgid "Color"
 msgstr "Värv"
 
-#: ../settings/appearance-settings.c:1023
+#: ../settings/appearance-settings.c:1024
 msgid "_Color Style:"
 msgstr "_Värvi stiil:"
 
-#: ../settings/appearance-settings.c:1030
+#: ../settings/appearance-settings.c:1031
 msgid "Solid Color"
 msgstr "Ühtlane värv"
 
-#: ../settings/appearance-settings.c:1031
+#: ../settings/appearance-settings.c:1032
 msgid "Horizontal Gradient"
 msgstr "Horisontaalne muutus"
 
-#: ../settings/appearance-settings.c:1032
+#: ../settings/appearance-settings.c:1033
 msgid "Vertical Gradient"
 msgstr "Vertikaalne muutus"
 
-#: ../settings/appearance-settings.c:1045
+#: ../settings/appearance-settings.c:1046
 msgid "Fi_rst Color:"
 msgstr "Es_imene värv:"
 
-#: ../settings/appearance-settings.c:1066
+#: ../settings/appearance-settings.c:1067
 msgid "_Second Color:"
 msgstr "_Teine värv:"
 
-#: ../settings/appearance-settings.c:1091
+#: ../settings/appearance-settings.c:1092
 msgid "Image"
 msgstr "Pilt"
 
-#: ../settings/appearance-settings.c:1099
+#: ../settings/appearance-settings.c:1100
 msgid "Show _Image"
 msgstr "Näita _Pilti"
 
-#: ../settings/appearance-settings.c:1121
+#: ../settings/appearance-settings.c:1122
 msgid "_File:"
 msgstr "_Fail:"
 
-#: ../settings/appearance-settings.c:1176
-#: ../settings/appearance-settings.c:1178
+#: ../settings/appearance-settings.c:1177
+#: ../settings/appearance-settings.c:1179
 #, c-format
 msgid "Screen %d"
 msgstr "Ekraan %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1183
+#: ../settings/appearance-settings.c:1184
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Ekraan %d, Kuvar %d"
 
-#: ../settings/appearance-settings.c:1200
+#: ../settings/appearance-settings.c:1201
 msgid "_Behavior"
 msgstr ""
 
@@ -646,51 +650,51 @@ msgstr "Tekita tausta nimistu"
 msgid "Edit backdrop list"
 msgstr "Muuda tausta nimistut"
 
-#: ../settings/behavior-settings.c:225
+#: ../settings/behavior-settings.c:241
 #, fuzzy
 msgid "Menus"
 msgstr "Menüüfailid"
 
-#: ../settings/behavior-settings.c:233
+#: ../settings/behavior-settings.c:249
 #, fuzzy
 msgid "Show _window list on middle click"
 msgstr "Näita akende nimekirja"
 
-#: ../settings/behavior-settings.c:244
+#: ../settings/behavior-settings.c:260
 #, fuzzy
 msgid "Show _desktop menu on right click"
 msgstr "Näita töölaua _menüüd"
 
-#: ../settings/behavior-settings.c:263
+#: ../settings/behavior-settings.c:279
 #, fuzzy
 msgid "Desktop Icons"
 msgstr "Töölaua menüü"
 
-#: ../settings/behavior-settings.c:272
-#: ../src/xfdesktop-file-icon-manager.c:907
+#: ../settings/behavior-settings.c:288
+#: ../src/xfdesktop-file-icon-manager.c:970
 msgid "None"
 msgstr ""
 
-#: ../settings/behavior-settings.c:273
+#: ../settings/behavior-settings.c:289
 #, fuzzy
 msgid "Minimized application icons"
 msgstr "Näita _programmide ikoone"
 
-#: ../settings/behavior-settings.c:275
+#: ../settings/behavior-settings.c:291
 msgid "File/launcher icons"
 msgstr ""
 
-#: ../settings/behavior-settings.c:286
+#: ../settings/behavior-settings.c:306
 #, fuzzy
 msgid "_Icon size:"
 msgstr "Ikoonide disainer"
 
-#: ../settings/behavior-settings.c:300
+#: ../settings/behavior-settings.c:320
 #, fuzzy
 msgid "Use _system font size"
 msgstr "Ava menüü fail"
 
-#: ../settings/behavior-settings.c:317
+#: ../settings/behavior-settings.c:337
 msgid "Custom _font size:"
 msgstr ""
 
@@ -778,370 +782,389 @@ msgstr "_Eemalda Tööruum %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Eemalda Tööruum %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:339
-#: ../src/xfdesktop-file-icon-manager.c:646
-#: ../src/xfdesktop-file-icon-manager.c:680
+#: ../src/xfdesktop-file-icon-manager.c:219
+#, c-format
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:221
+#: ../src/xfdesktop-file-icon-manager.c:230
+#: ../src/xfdesktop-file-icon-manager.c:1513
+msgid "Create Folder Failed"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:228
+#, c-format
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:232
+msgid "Please delete or rename the file."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:378
+#: ../src/xfdesktop-file-icon-manager.c:709
+#: ../src/xfdesktop-file-icon-manager.c:743
 #, fuzzy, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Ei õnnestu käivitada xfce4-menüüredaktorit: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:341
-#: ../src/xfdesktop-file-icon-manager.c:648
-#: ../src/xfdesktop-file-icon-manager.c:683
+#: ../src/xfdesktop-file-icon-manager.c:380
+#: ../src/xfdesktop-file-icon-manager.c:711
+#: ../src/xfdesktop-file-icon-manager.c:746
 #, fuzzy
 msgid "Launch Error"
 msgstr "Käivitaja"
 
-#: ../src/xfdesktop-file-icon-manager.c:343
+#: ../src/xfdesktop-file-icon-manager.c:382
 msgid "The associated application could not be found or executed."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:470
+#: ../src/xfdesktop-file-icon-manager.c:509
 #, c-format
 msgid "Rename \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:477
-#: ../src/xfdesktop-file-icon-manager.c:1482
-#: ../src/xfdesktop-file-icon-manager.c:1560
-#: ../src/xfdesktop-file-icon-manager.c:1571
+#: ../src/xfdesktop-file-icon-manager.c:516
+#: ../src/xfdesktop-file-icon-manager.c:1545
+#: ../src/xfdesktop-file-icon-manager.c:1623
+#: ../src/xfdesktop-file-icon-manager.c:1634
 msgid "Enter the new name:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:479
+#: ../src/xfdesktop-file-icon-manager.c:518
 #, fuzzy
 msgid "Rename"
 msgstr "Skaleeritud"
 
-#: ../src/xfdesktop-file-icon-manager.c:521
+#: ../src/xfdesktop-file-icon-manager.c:584
 #, fuzzy, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Oled sa kindel, et soovid selle menüü sulgeda?"
 
-#: ../src/xfdesktop-file-icon-manager.c:526
-#: ../src/xfdesktop-file-icon-manager.c:546
+#: ../src/xfdesktop-file-icon-manager.c:589
+#: ../src/xfdesktop-file-icon-manager.c:609
 msgid "If you delete a file, it is permanently lost."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:540
+#: ../src/xfdesktop-file-icon-manager.c:603
 #, fuzzy, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Oled sa kindel, et soovid selle menüü sulgeda?"
 
-#: ../src/xfdesktop-file-icon-manager.c:543
+#: ../src/xfdesktop-file-icon-manager.c:606
 #, fuzzy
 msgid "Delete Multiple Files"
 msgstr "Vali menüüfail"
 
-#: ../src/xfdesktop-file-icon-manager.c:685
+#: ../src/xfdesktop-file-icon-manager.c:748
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:770
+#: ../src/xfdesktop-file-icon-manager.c:833
 #, fuzzy, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "Ei õnnestu käivitada xfce4-menüüredaktorit: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:771
+#: ../src/xfdesktop-file-icon-manager.c:834
 #, fuzzy, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "Ei õnnestu käivitada xfce4-menüüredaktorit: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:774
+#: ../src/xfdesktop-file-icon-manager.c:837
 #, fuzzy
 msgid "Mount Failed"
 msgstr "Menüüfailid"
 
-#: ../src/xfdesktop-file-icon-manager.c:774
+#: ../src/xfdesktop-file-icon-manager.c:837
 #, fuzzy
 msgid "Unmount Failed"
 msgstr "Menüüfailid"
 
-#: ../src/xfdesktop-file-icon-manager.c:803
+#: ../src/xfdesktop-file-icon-manager.c:866
 #, fuzzy, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "Ei õnnestu käivitada xfce4-menüüredaktorit: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:805
+#: ../src/xfdesktop-file-icon-manager.c:868
 msgid "Eject Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:874
+#: ../src/xfdesktop-file-icon-manager.c:937
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:877
+#: ../src/xfdesktop-file-icon-manager.c:940
 #, fuzzy
 msgid "Properties Error"
 msgstr "Muuda tausta nimistut"
 
-#: ../src/xfdesktop-file-icon-manager.c:907
+#: ../src/xfdesktop-file-icon-manager.c:970
 msgid "Write only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:907
+#: ../src/xfdesktop-file-icon-manager.c:970
 msgid "Read only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:907
+#: ../src/xfdesktop-file-icon-manager.c:970
 msgid "Read & Write"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:934
+#: ../src/xfdesktop-file-icon-manager.c:997
 msgid "General"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:985
+#: ../src/xfdesktop-file-icon-manager.c:1048
 msgid "Kind:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:995
+#: ../src/xfdesktop-file-icon-manager.c:1058
 msgid "broken link"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:998
+#: ../src/xfdesktop-file-icon-manager.c:1061
 #, c-format
 msgid "link to %s"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1015
+#: ../src/xfdesktop-file-icon-manager.c:1078
 msgid "Link Target:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1032
-#: ../src/xfdesktop-file-icon-manager.c:1191
+#: ../src/xfdesktop-file-icon-manager.c:1095
+#: ../src/xfdesktop-file-icon-manager.c:1254
 msgid "(unknown)"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1054
+#: ../src/xfdesktop-file-icon-manager.c:1117
 msgid "Open With:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1131
+#: ../src/xfdesktop-file-icon-manager.c:1194
 msgid "Modified:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1149
+#: ../src/xfdesktop-file-icon-manager.c:1212
 msgid "Accessed:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1176
+#: ../src/xfdesktop-file-icon-manager.c:1239
 msgid "Free Space:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1178
+#: ../src/xfdesktop-file-icon-manager.c:1241
 msgid "Size:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1194
+#: ../src/xfdesktop-file-icon-manager.c:1257
 msgid "%s (%"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1194
+#: ../src/xfdesktop-file-icon-manager.c:1257
 msgid " Bytes)"
 msgstr ""
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1209
+#: ../src/xfdesktop-file-icon-manager.c:1272
 msgid "Permissions"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1231
+#: ../src/xfdesktop-file-icon-manager.c:1294
 msgid "Owner:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1249
-#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1312
+#: ../src/xfdesktop-file-icon-manager.c:1350
 msgid "Access:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1272
+#: ../src/xfdesktop-file-icon-manager.c:1335
 msgid "Group:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1310
+#: ../src/xfdesktop-file-icon-manager.c:1373
 #, fuzzy
 msgid "Others:"
 msgstr "/Muu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1383
+#: ../src/xfdesktop-file-icon-manager.c:1446
 #, c-format
 msgid "_Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1386
+#: ../src/xfdesktop-file-icon-manager.c:1449
 #, c-format
 msgid "Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1447
+#: ../src/xfdesktop-file-icon-manager.c:1510
 #, fuzzy, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Ei õnnestu käivitada xfce4-menüüredaktorit: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1450
-msgid "Create Folder Failed"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1479
+#: ../src/xfdesktop-file-icon-manager.c:1542
 msgid "Create New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1483
+#: ../src/xfdesktop-file-icon-manager.c:1546
 msgid "New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1484
-#: ../src/xfdesktop-file-icon-manager.c:1562
-#: ../src/xfdesktop-file-icon-manager.c:1573
+#: ../src/xfdesktop-file-icon-manager.c:1547
+#: ../src/xfdesktop-file-icon-manager.c:1625
+#: ../src/xfdesktop-file-icon-manager.c:1636
 msgid "Create"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1520
+#: ../src/xfdesktop-file-icon-manager.c:1583
 #, fuzzy, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Ei õnnestu käivitada xfce4-menüüredaktorit: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1523
+#: ../src/xfdesktop-file-icon-manager.c:1586
 #, fuzzy
 msgid "Create File Failed"
 msgstr "Vali menüüfail"
 
-#: ../src/xfdesktop-file-icon-manager.c:1549
+#: ../src/xfdesktop-file-icon-manager.c:1612
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1568
+#: ../src/xfdesktop-file-icon-manager.c:1631
 msgid "Create Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1572
+#: ../src/xfdesktop-file-icon-manager.c:1635
 msgid "New Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1827
+#: ../src/xfdesktop-file-icon-manager.c:1890
 msgid "_Open all"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1838
+#: ../src/xfdesktop-file-icon-manager.c:1901
 msgid "_Open"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1849
+#: ../src/xfdesktop-file-icon-manager.c:1912
 msgid "_Execute"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1893
+#: ../src/xfdesktop-file-icon-manager.c:1956
 msgid "Open With"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1923
+#: ../src/xfdesktop-file-icon-manager.c:1986
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2006
+#: ../src/xfdesktop-file-icon-manager.c:2069
 msgid "_Mount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2017
+#: ../src/xfdesktop-file-icon-manager.c:2080
 msgid "_Unmount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2029
-msgid "_Eject Volume"
+#: ../src/xfdesktop-file-icon-manager.c:2094
+msgid "E_ject Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2039
+#: ../src/xfdesktop-file-icon-manager.c:2104
 #, fuzzy
 msgid "_Copy Files"
 msgstr "_Fail"
 
-#: ../src/xfdesktop-file-icon-manager.c:2040
+#: ../src/xfdesktop-file-icon-manager.c:2105
 #, fuzzy
 msgid "_Copy File"
 msgstr "_Fail"
 
-#: ../src/xfdesktop-file-icon-manager.c:2049
+#: ../src/xfdesktop-file-icon-manager.c:2114
 #, fuzzy
 msgid "Cu_t Files"
 msgstr "_Fail"
 
-#: ../src/xfdesktop-file-icon-manager.c:2050
+#: ../src/xfdesktop-file-icon-manager.c:2115
 #, fuzzy
 msgid "Cu_t File"
 msgstr "_Fail"
 
-#: ../src/xfdesktop-file-icon-manager.c:2059
+#: ../src/xfdesktop-file-icon-manager.c:2124
 #, fuzzy
 msgid "_Delete Files"
 msgstr "Vali menüüfail"
 
-#: ../src/xfdesktop-file-icon-manager.c:2060
+#: ../src/xfdesktop-file-icon-manager.c:2125
 #, fuzzy
 msgid "_Delete File"
 msgstr "Vali menüüfail"
 
-#: ../src/xfdesktop-file-icon-manager.c:2072
+#: ../src/xfdesktop-file-icon-manager.c:2137
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2090
+#: ../src/xfdesktop-file-icon-manager.c:2155
 #, fuzzy
 msgid "_Properties..."
 msgstr "Muuda tausta nimistut"
 
-#: ../src/xfdesktop-file-icon-manager.c:2106
+#: ../src/xfdesktop-file-icon-manager.c:2171
 msgid "Create _Folder..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2113
+#: ../src/xfdesktop-file-icon-manager.c:2178
 msgid "Create _Document"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2134
+#: ../src/xfdesktop-file-icon-manager.c:2199
 msgid "No Templates installed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2146
+#: ../src/xfdesktop-file-icon-manager.c:2211
 #, fuzzy
 msgid "_Empty File"
 msgstr "_Fail"
 
-#: ../src/xfdesktop-file-icon-manager.c:2929 ../src/xfdesktop-file-icon.c:511
+#: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:536
 #, fuzzy, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Ei õnnestu käivitada xfce4-menüüredaktorit: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:2931 ../src/xfdesktop-file-icon.c:513
+#: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:538
 msgid "Run Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:440
+#: ../src/xfdesktop-file-icon.c:465
 #, c-format
 msgid "There was an error %s \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:442
+#: ../src/xfdesktop-file-icon.c:467
 msgid "moving"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:444
+#: ../src/xfdesktop-file-icon.c:469
 msgid "copying"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:445
+#: ../src/xfdesktop-file-icon.c:470
 msgid "linking"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:448
+#: ../src/xfdesktop-file-icon.c:473
 msgid "File Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:656
+#: ../src/xfdesktop-file-icon.c:685
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr ""

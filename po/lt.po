@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-23 15:12+0900\n"
+"POT-Creation-Date: 2006-04-29 20:34+0900\n"
 "PO-Revision-Date: 2005-10-09 22:19+0900\n"
 "Last-Translator: Mantas Zapolskas <mantaz@users.sf.net>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -64,7 +64,7 @@ msgstr "Išeiti"
 
 #. Name
 #: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:998
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1022
 msgid "Name:"
 msgstr "Vardas:"
 
@@ -196,7 +196,7 @@ msgid "Select command"
 msgstr "Pasirinkite komandą"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:563
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:587
 msgid "Question"
 msgstr "Klausimas"
 
@@ -372,7 +372,7 @@ msgid "Menu Files"
 msgstr "Meniu failai"
 
 #: ../panel-plugin/desktop-menu-plugin.c:667
-#: ../settings/behavior-settings.c:201
+#: ../settings/behavior-settings.c:217
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Neįmanoma paleisti xfce4-menueditor:·%s"
@@ -412,7 +412,7 @@ msgid "Use _custom menu file:"
 msgstr "Atidaryti meniu failą"
 
 #: ../panel-plugin/desktop-menu-plugin.c:813
-#: ../settings/behavior-settings.c:251
+#: ../settings/behavior-settings.c:267
 #, fuzzy
 msgid "_Edit Menu"
 msgstr "_Meniu"
@@ -494,8 +494,8 @@ msgstr ""
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:604
-#: ../src/xfdesktop-file-icon.c:659
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:630
+#: ../src/xfdesktop-file-icon.c:688
 msgid "Error"
 msgstr ""
 
@@ -648,51 +648,51 @@ msgstr "Sukurti fonų sąrašą"
 msgid "Edit backdrop list"
 msgstr "Redaguoti fonų sąrašą"
 
-#: ../settings/behavior-settings.c:225
+#: ../settings/behavior-settings.c:241
 #, fuzzy
 msgid "Menus"
 msgstr "Meniu failai"
 
-#: ../settings/behavior-settings.c:233
+#: ../settings/behavior-settings.c:249
 #, fuzzy
 msgid "Show _window list on middle click"
 msgstr "Rodyti langų _sąrašą"
 
-#: ../settings/behavior-settings.c:244
+#: ../settings/behavior-settings.c:260
 #, fuzzy
 msgid "Show _desktop menu on right click"
 msgstr "Rodyti darbastalio _meniu"
 
-#: ../settings/behavior-settings.c:263
+#: ../settings/behavior-settings.c:279
 #, fuzzy
 msgid "Desktop Icons"
 msgstr "Darbastalio Meniu"
 
-#: ../settings/behavior-settings.c:272
-#: ../src/xfdesktop-file-icon-manager.c:946
+#: ../settings/behavior-settings.c:288
+#: ../src/xfdesktop-file-icon-manager.c:970
 msgid "None"
 msgstr ""
 
-#: ../settings/behavior-settings.c:273
+#: ../settings/behavior-settings.c:289
 #, fuzzy
 msgid "Minimized application icons"
 msgstr "Rodyti progr_amos ikonas"
 
-#: ../settings/behavior-settings.c:275
+#: ../settings/behavior-settings.c:291
 msgid "File/launcher icons"
 msgstr ""
 
-#: ../settings/behavior-settings.c:286
+#: ../settings/behavior-settings.c:306
 #, fuzzy
 msgid "_Icon size:"
 msgstr "Ikonų dizaineris"
 
-#: ../settings/behavior-settings.c:300
+#: ../settings/behavior-settings.c:320
 #, fuzzy
 msgid "Use _system font size"
 msgstr "Atidaryti meniu failą"
 
-#: ../settings/behavior-settings.c:317
+#: ../settings/behavior-settings.c:337
 msgid "Custom _font size:"
 msgstr ""
 
@@ -790,7 +790,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:221
 #: ../src/xfdesktop-file-icon-manager.c:230
-#: ../src/xfdesktop-file-icon-manager.c:1489
+#: ../src/xfdesktop-file-icon-manager.c:1513
 msgid "Create Folder Failed"
 msgstr ""
 
@@ -806,15 +806,15 @@ msgid "Please delete or rename the file."
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:378
-#: ../src/xfdesktop-file-icon-manager.c:685
-#: ../src/xfdesktop-file-icon-manager.c:719
+#: ../src/xfdesktop-file-icon-manager.c:709
+#: ../src/xfdesktop-file-icon-manager.c:743
 #, fuzzy, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Neįmanoma paleisti xfce4-menueditor:·%s"
 
 #: ../src/xfdesktop-file-icon-manager.c:380
-#: ../src/xfdesktop-file-icon-manager.c:687
-#: ../src/xfdesktop-file-icon-manager.c:722
+#: ../src/xfdesktop-file-icon-manager.c:711
+#: ../src/xfdesktop-file-icon-manager.c:746
 #, fuzzy
 msgid "Launch Error"
 msgstr "Leistukas"
@@ -829,9 +829,9 @@ msgid "Rename \"%s\""
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:516
-#: ../src/xfdesktop-file-icon-manager.c:1521
-#: ../src/xfdesktop-file-icon-manager.c:1599
-#: ../src/xfdesktop-file-icon-manager.c:1610
+#: ../src/xfdesktop-file-icon-manager.c:1545
+#: ../src/xfdesktop-file-icon-manager.c:1623
+#: ../src/xfdesktop-file-icon-manager.c:1634
 msgid "Enter the new name:"
 msgstr ""
 
@@ -840,331 +840,331 @@ msgstr ""
 msgid "Rename"
 msgstr "Mastelis"
 
-#: ../src/xfdesktop-file-icon-manager.c:560
+#: ../src/xfdesktop-file-icon-manager.c:584
 #, fuzzy, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Ar tikrai norite uždaryti šį meniu?"
 
-#: ../src/xfdesktop-file-icon-manager.c:565
-#: ../src/xfdesktop-file-icon-manager.c:585
+#: ../src/xfdesktop-file-icon-manager.c:589
+#: ../src/xfdesktop-file-icon-manager.c:609
 msgid "If you delete a file, it is permanently lost."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:579
+#: ../src/xfdesktop-file-icon-manager.c:603
 #, fuzzy, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Ar tikrai norite uždaryti šį meniu?"
 
-#: ../src/xfdesktop-file-icon-manager.c:582
+#: ../src/xfdesktop-file-icon-manager.c:606
 #, fuzzy
 msgid "Delete Multiple Files"
 msgstr "Pasirinkti Meniu Failą"
 
-#: ../src/xfdesktop-file-icon-manager.c:724
+#: ../src/xfdesktop-file-icon-manager.c:748
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:809
+#: ../src/xfdesktop-file-icon-manager.c:833
 #, fuzzy, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "Neįmanoma paleisti xfce4-menueditor:·%s"
 
-#: ../src/xfdesktop-file-icon-manager.c:810
+#: ../src/xfdesktop-file-icon-manager.c:834
 #, fuzzy, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "Neįmanoma paleisti xfce4-menueditor:·%s"
 
-#: ../src/xfdesktop-file-icon-manager.c:813
+#: ../src/xfdesktop-file-icon-manager.c:837
 #, fuzzy
 msgid "Mount Failed"
 msgstr "Meniu failai"
 
-#: ../src/xfdesktop-file-icon-manager.c:813
+#: ../src/xfdesktop-file-icon-manager.c:837
 #, fuzzy
 msgid "Unmount Failed"
 msgstr "Meniu failai"
 
-#: ../src/xfdesktop-file-icon-manager.c:842
+#: ../src/xfdesktop-file-icon-manager.c:866
 #, fuzzy, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "Neįmanoma paleisti xfce4-menueditor:·%s"
 
-#: ../src/xfdesktop-file-icon-manager.c:844
+#: ../src/xfdesktop-file-icon-manager.c:868
 msgid "Eject Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:913
+#: ../src/xfdesktop-file-icon-manager.c:937
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:916
+#: ../src/xfdesktop-file-icon-manager.c:940
 #, fuzzy
 msgid "Properties Error"
 msgstr "Redaguoti fonų sąrašą"
 
-#: ../src/xfdesktop-file-icon-manager.c:946
+#: ../src/xfdesktop-file-icon-manager.c:970
 msgid "Write only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:946
+#: ../src/xfdesktop-file-icon-manager.c:970
 msgid "Read only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:946
+#: ../src/xfdesktop-file-icon-manager.c:970
 msgid "Read & Write"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:973
+#: ../src/xfdesktop-file-icon-manager.c:997
 msgid "General"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1024
+#: ../src/xfdesktop-file-icon-manager.c:1048
 msgid "Kind:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1034
+#: ../src/xfdesktop-file-icon-manager.c:1058
 msgid "broken link"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1037
+#: ../src/xfdesktop-file-icon-manager.c:1061
 #, c-format
 msgid "link to %s"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1054
+#: ../src/xfdesktop-file-icon-manager.c:1078
 msgid "Link Target:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1071
-#: ../src/xfdesktop-file-icon-manager.c:1230
+#: ../src/xfdesktop-file-icon-manager.c:1095
+#: ../src/xfdesktop-file-icon-manager.c:1254
 msgid "(unknown)"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1093
+#: ../src/xfdesktop-file-icon-manager.c:1117
 msgid "Open With:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1170
+#: ../src/xfdesktop-file-icon-manager.c:1194
 msgid "Modified:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1188
+#: ../src/xfdesktop-file-icon-manager.c:1212
 msgid "Accessed:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1215
+#: ../src/xfdesktop-file-icon-manager.c:1239
 msgid "Free Space:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1217
+#: ../src/xfdesktop-file-icon-manager.c:1241
 msgid "Size:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1233
+#: ../src/xfdesktop-file-icon-manager.c:1257
 msgid "%s (%"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1233
+#: ../src/xfdesktop-file-icon-manager.c:1257
 msgid " Bytes)"
 msgstr ""
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1248
+#: ../src/xfdesktop-file-icon-manager.c:1272
 msgid "Permissions"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1270
+#: ../src/xfdesktop-file-icon-manager.c:1294
 msgid "Owner:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1288
-#: ../src/xfdesktop-file-icon-manager.c:1326
+#: ../src/xfdesktop-file-icon-manager.c:1312
+#: ../src/xfdesktop-file-icon-manager.c:1350
 msgid "Access:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1311
+#: ../src/xfdesktop-file-icon-manager.c:1335
 msgid "Group:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1349
+#: ../src/xfdesktop-file-icon-manager.c:1373
 #, fuzzy
 msgid "Others:"
 msgstr "/Kitas"
 
-#: ../src/xfdesktop-file-icon-manager.c:1422
+#: ../src/xfdesktop-file-icon-manager.c:1446
 #, c-format
 msgid "_Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1425
+#: ../src/xfdesktop-file-icon-manager.c:1449
 #, c-format
 msgid "Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1486
+#: ../src/xfdesktop-file-icon-manager.c:1510
 #, fuzzy, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Neįmanoma paleisti xfce4-menueditor:·%s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1518
+#: ../src/xfdesktop-file-icon-manager.c:1542
 msgid "Create New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1522
+#: ../src/xfdesktop-file-icon-manager.c:1546
 msgid "New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1523
-#: ../src/xfdesktop-file-icon-manager.c:1601
-#: ../src/xfdesktop-file-icon-manager.c:1612
+#: ../src/xfdesktop-file-icon-manager.c:1547
+#: ../src/xfdesktop-file-icon-manager.c:1625
+#: ../src/xfdesktop-file-icon-manager.c:1636
 msgid "Create"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1559
+#: ../src/xfdesktop-file-icon-manager.c:1583
 #, fuzzy, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Neįmanoma paleisti xfce4-menueditor:·%s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1562
+#: ../src/xfdesktop-file-icon-manager.c:1586
 #, fuzzy
 msgid "Create File Failed"
 msgstr "Pasirinkti Meniu Failą"
 
-#: ../src/xfdesktop-file-icon-manager.c:1588
+#: ../src/xfdesktop-file-icon-manager.c:1612
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1607
+#: ../src/xfdesktop-file-icon-manager.c:1631
 msgid "Create Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1611
+#: ../src/xfdesktop-file-icon-manager.c:1635
 msgid "New Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1866
+#: ../src/xfdesktop-file-icon-manager.c:1890
 msgid "_Open all"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1877
+#: ../src/xfdesktop-file-icon-manager.c:1901
 msgid "_Open"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1888
+#: ../src/xfdesktop-file-icon-manager.c:1912
 msgid "_Execute"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1932
+#: ../src/xfdesktop-file-icon-manager.c:1956
 msgid "Open With"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1962
+#: ../src/xfdesktop-file-icon-manager.c:1986
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2045
+#: ../src/xfdesktop-file-icon-manager.c:2069
 msgid "_Mount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2056
+#: ../src/xfdesktop-file-icon-manager.c:2080
 msgid "_Unmount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2068
-msgid "_Eject Volume"
+#: ../src/xfdesktop-file-icon-manager.c:2094
+msgid "E_ject Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2078
+#: ../src/xfdesktop-file-icon-manager.c:2104
 #, fuzzy
 msgid "_Copy Files"
 msgstr "_Failas"
 
-#: ../src/xfdesktop-file-icon-manager.c:2079
+#: ../src/xfdesktop-file-icon-manager.c:2105
 #, fuzzy
 msgid "_Copy File"
 msgstr "_Failas"
 
-#: ../src/xfdesktop-file-icon-manager.c:2088
+#: ../src/xfdesktop-file-icon-manager.c:2114
 #, fuzzy
 msgid "Cu_t Files"
 msgstr "_Failas"
 
-#: ../src/xfdesktop-file-icon-manager.c:2089
+#: ../src/xfdesktop-file-icon-manager.c:2115
 #, fuzzy
 msgid "Cu_t File"
 msgstr "_Failas"
 
-#: ../src/xfdesktop-file-icon-manager.c:2098
+#: ../src/xfdesktop-file-icon-manager.c:2124
 #, fuzzy
 msgid "_Delete Files"
 msgstr "Pasirinkti Meniu Failą"
 
-#: ../src/xfdesktop-file-icon-manager.c:2099
+#: ../src/xfdesktop-file-icon-manager.c:2125
 #, fuzzy
 msgid "_Delete File"
 msgstr "Pasirinkti Meniu Failą"
 
-#: ../src/xfdesktop-file-icon-manager.c:2111
+#: ../src/xfdesktop-file-icon-manager.c:2137
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2129
+#: ../src/xfdesktop-file-icon-manager.c:2155
 #, fuzzy
 msgid "_Properties..."
 msgstr "Redaguoti fonų sąrašą"
 
-#: ../src/xfdesktop-file-icon-manager.c:2145
+#: ../src/xfdesktop-file-icon-manager.c:2171
 msgid "Create _Folder..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2152
+#: ../src/xfdesktop-file-icon-manager.c:2178
 msgid "Create _Document"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2173
+#: ../src/xfdesktop-file-icon-manager.c:2199
 msgid "No Templates installed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2185
+#: ../src/xfdesktop-file-icon-manager.c:2211
 #, fuzzy
 msgid "_Empty File"
 msgstr "_Failas"
 
-#: ../src/xfdesktop-file-icon-manager.c:2968 ../src/xfdesktop-file-icon.c:511
+#: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:536
 #, fuzzy, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Neįmanoma paleisti xfce4-menueditor:·%s"
 
-#: ../src/xfdesktop-file-icon-manager.c:2970 ../src/xfdesktop-file-icon.c:513
+#: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:538
 msgid "Run Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:440
+#: ../src/xfdesktop-file-icon.c:465
 #, c-format
 msgid "There was an error %s \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:442
+#: ../src/xfdesktop-file-icon.c:467
 msgid "moving"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:444
+#: ../src/xfdesktop-file-icon.c:469
 msgid "copying"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:445
+#: ../src/xfdesktop-file-icon.c:470
 msgid "linking"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:448
+#: ../src/xfdesktop-file-icon.c:473
 msgid "File Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:656
+#: ../src/xfdesktop-file-icon.c:685
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr ""
