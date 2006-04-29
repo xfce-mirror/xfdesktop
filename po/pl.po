@@ -339,9 +339,8 @@ msgstr "Menu Xfce"
 
 #: ../modules/menu/desktop-menu-file.c:118
 #: ../modules/menu/desktop-menu-file.c:133
-#, fuzzy
 msgid "Unable to quit session."
-msgstr "Nie można uruchomić xfdesktop"
+msgstr "Nie można zakończyć sesji"
 
 #: ../modules/menu/desktop-menu-file.c:119
 msgid ""
@@ -383,14 +382,12 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Nie można było uruchomić xfce4-menueditor: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:690
-#, fuzzy
 msgid "Edit Properties"
-msgstr "Edytuj listę z tłami"
+msgstr "Edytuj Właściwości"
 
 #: ../panel-plugin/desktop-menu-plugin.c:708
-#, fuzzy
 msgid "Button"
-msgstr "_Ikona przycisku:"
+msgstr "Przycisk"
 
 #: ../panel-plugin/desktop-menu-plugin.c:721
 msgid "Button _title:"
@@ -480,7 +477,6 @@ msgid "Scaled"
 msgstr "Skaluj"
 
 #: ../settings/appearance-settings.c:743
-#, fuzzy
 msgid "A_djust Brightness:"
 msgstr "Dostosuj _jasność:"
 
@@ -503,9 +499,8 @@ msgid "Unable to start xfdesktop"
 msgstr "Nie można uruchomić xfdesktop"
 
 #: ../settings/appearance-settings.c:824
-#, fuzzy
 msgid "Information"
-msgstr "Ignoruj zmiany"
+msgstr "Informacje"
 
 #: ../settings/appearance-settings.c:834
 msgid ""
@@ -515,6 +510,9 @@ msgid ""
 "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
+"By upewnić się że Xfce nie zarządza twoim pulpitem zapisz sesję przy "
+"następnym wylogowaniu się. Możesz też ręcznie edytować ~/.config/xfce4/"
+"xinitrc file."
 
 #: ../settings/appearance-settings.c:842
 msgid "_Do not show this again"
@@ -543,7 +541,7 @@ msgstr "Rozciągnij jedno tło na _wszystkie monitory"
 #: ../settings/appearance-settings.c:984
 #: ../settings/appearance-settings.c:1166
 msgid "_Appearance"
-msgstr ""
+msgstr "_Wygląd"
 
 #. color settings frame
 #: ../settings/appearance-settings.c:1010
@@ -600,7 +598,7 @@ msgstr "Ekran %d, Monitor %d"
 
 #: ../settings/appearance-settings.c:1201
 msgid "_Behavior"
-msgstr ""
+msgstr "_Zachowanie"
 
 #: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
 #, c-format
@@ -647,86 +645,77 @@ msgid "Edit backdrop list"
 msgstr "Edytuj listę z tłami"
 
 #: ../settings/behavior-settings.c:241
-#, fuzzy
 msgid "Menus"
-msgstr "Pliki menu"
+msgstr "Menus"
 
 #: ../settings/behavior-settings.c:249
-#, fuzzy
 msgid "Show _window list on middle click"
-msgstr "Pokazuj _listę okien"
+msgstr "Pokazuj _listę okien przy środkowym kliknięciu"
 
 #: ../settings/behavior-settings.c:260
-#, fuzzy
 msgid "Show _desktop menu on right click"
-msgstr "Pokazuj _menu pulpitu"
+msgstr "Pokazuj _menu pulpitu przy prawym kliknięciu"
 
 #: ../settings/behavior-settings.c:279
-#, fuzzy
 msgid "Desktop Icons"
-msgstr "Menu pulpitu"
+msgstr "Ikony pulpitu"
 
 #: ../settings/behavior-settings.c:288
 #: ../src/xfdesktop-file-icon-manager.c:970
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 #: ../settings/behavior-settings.c:289
-#, fuzzy
 msgid "Minimized application icons"
-msgstr "Pokazuj ikony _aplikacji"
+msgstr "Ikony zminimalizowanych aplikacji"
 
 #: ../settings/behavior-settings.c:291
 msgid "File/launcher icons"
-msgstr ""
+msgstr "Pliki/ikony wyzwalaczy"
 
 #: ../settings/behavior-settings.c:306
-#, fuzzy
 msgid "_Icon size:"
-msgstr "Projektant ikon"
+msgstr "_Rozmiar ikon:"
 
 #: ../settings/behavior-settings.c:320
-#, fuzzy
 msgid "Use _system font size"
-msgstr "Użyj _własnego pliku menu:"
+msgstr "Użyj _systemowego rozmiaru czcionki"
 
 #: ../settings/behavior-settings.c:337
 msgid "Custom _font size:"
-msgstr ""
+msgstr "Własny _rozmiar czcionki:"
 
 #: ../src/main.c:242
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "To jest %s wersja %s, działająca pod Xfce %s.\n"
 
 #: ../src/main.c:244
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Skompilowane pod GTK+ %d.%d.%d, linkowane z GTK+ %d.%d.%d."
 
 #: ../src/main.c:248
 msgid "Build options:\n"
-msgstr ""
+msgstr "Opcje kompilacji:\n"
 
 #: ../src/main.c:249
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "    Menu Pulpitu:        %s\n"
 
 #: ../src/main.c:251 ../src/main.c:258
-#, fuzzy
 msgid "enabled"
-msgstr "Skaluj"
+msgstr "włączone"
 
 #: ../src/main.c:253 ../src/main.c:260
-#, fuzzy
 msgid "disabled"
-msgstr "Kafelki"
+msgstr "wyłączone"
 
 #: ../src/main.c:256
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "Menu pulpitu"
+msgstr "   Ikony Pulpitu:       %s\n"
 
 #: ../src/main.c:288
 #, c-format
@@ -789,7 +778,7 @@ msgstr ""
 #: ../src/xfdesktop-file-icon-manager.c:230
 #: ../src/xfdesktop-file-icon-manager.c:1513
 msgid "Create Folder Failed"
-msgstr ""
+msgstr "Nieudane tworzenie folderu"
 
 #: ../src/xfdesktop-file-icon-manager.c:228
 #, c-format
@@ -805,368 +794,352 @@ msgstr ""
 #: ../src/xfdesktop-file-icon-manager.c:378
 #: ../src/xfdesktop-file-icon-manager.c:709
 #: ../src/xfdesktop-file-icon-manager.c:743
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "Nie można było uruchomić xfce4-menueditor: %s"
+msgstr "Nie można uruchomić \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:380
 #: ../src/xfdesktop-file-icon-manager.c:711
 #: ../src/xfdesktop-file-icon-manager.c:746
-#, fuzzy
 msgid "Launch Error"
-msgstr "Błąd"
+msgstr "Błąd uruchamiania"
 
 #: ../src/xfdesktop-file-icon-manager.c:382
 msgid "The associated application could not be found or executed."
 msgstr ""
+"Przypisana aplikacja nie została znaleziona lub nie można jej uruchomić."
 
 #: ../src/xfdesktop-file-icon-manager.c:509
 #, c-format
 msgid "Rename \"%s\""
-msgstr ""
+msgstr "Zmień nazwę \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:516
 #: ../src/xfdesktop-file-icon-manager.c:1545
 #: ../src/xfdesktop-file-icon-manager.c:1623
 #: ../src/xfdesktop-file-icon-manager.c:1634
 msgid "Enter the new name:"
-msgstr ""
+msgstr "Podaj nową nazwę"
 
 #: ../src/xfdesktop-file-icon-manager.c:518
-#, fuzzy
 msgid "Rename"
-msgstr "Skaluj"
+msgstr "Zmień nazwę"
 
 #: ../src/xfdesktop-file-icon-manager.c:584
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "Czy jesteś pewny/a, że chcesz zamknąć bieżące menu?"
+msgstr "Czy chcesz usunać \"%s\"?"
 
 #: ../src/xfdesktop-file-icon-manager.c:589
 #: ../src/xfdesktop-file-icon-manager.c:609
 msgid "If you delete a file, it is permanently lost."
-msgstr ""
+msgstr "Jeżeli skasujesz plik, to stracisz go nieodwracalnie"
 
 #: ../src/xfdesktop-file-icon-manager.c:603
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "Czy jesteś pewny/a, że chcesz zamknąć bieżące menu?"
+msgstr "Czy chcesz skasować następujące pliki: %d?"
 
 #: ../src/xfdesktop-file-icon-manager.c:606
-#, fuzzy
 msgid "Delete Multiple Files"
-msgstr "Wybierz plik menu"
+msgstr "Kasuj wiele plików"
 
 #: ../src/xfdesktop-file-icon-manager.c:748
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
-msgstr ""
+msgstr "Ta opcja wymaga menadżera plików takiego jak Thunar."
 
 #: ../src/xfdesktop-file-icon-manager.c:833
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "Nie można było uruchomić xfce4-menueditor: %s"
+msgstr "Nie można zamontować \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:834
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "Nie można było uruchomić xfce4-menueditor: %s"
+msgstr "Nie można odmontować \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:837
-#, fuzzy
 msgid "Mount Failed"
-msgstr "Plik menu"
+msgstr "Montowanie nieudane"
 
 #: ../src/xfdesktop-file-icon-manager.c:837
-#, fuzzy
 msgid "Unmount Failed"
-msgstr "Plik menu"
+msgstr "Odmontowanie nieudane"
 
 #: ../src/xfdesktop-file-icon-manager.c:866
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "Nie można było uruchomić xfce4-menueditor: %s"
+msgstr "Nie można wysunąć \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:868
 msgid "Eject Failed"
-msgstr ""
+msgstr "Wysuwanie nieudane"
 
 #: ../src/xfdesktop-file-icon-manager.c:937
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Nie można przypisać domyślnej aplikacji dla \"%s\" na \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:940
-#, fuzzy
 msgid "Properties Error"
-msgstr "Edytuj listę z tłami"
+msgstr "Właściwości Błędów"
 
 #: ../src/xfdesktop-file-icon-manager.c:970
 msgid "Write only"
-msgstr ""
+msgstr "Tylko zapis"
 
 #: ../src/xfdesktop-file-icon-manager.c:970
 msgid "Read only"
-msgstr ""
+msgstr "Tylko odczyt"
 
 #: ../src/xfdesktop-file-icon-manager.c:970
 msgid "Read & Write"
-msgstr ""
+msgstr "Odczyt i Zapis"
 
 #: ../src/xfdesktop-file-icon-manager.c:997
 msgid "General"
-msgstr ""
+msgstr "Ogólne"
 
 #: ../src/xfdesktop-file-icon-manager.c:1048
 msgid "Kind:"
-msgstr ""
+msgstr "Typ:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1058
 msgid "broken link"
-msgstr ""
+msgstr "zepsuty link"
 
 #: ../src/xfdesktop-file-icon-manager.c:1061
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "kieruj na %s"
 
 #: ../src/xfdesktop-file-icon-manager.c:1078
 msgid "Link Target:"
-msgstr ""
+msgstr "Target linka:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1095
 #: ../src/xfdesktop-file-icon-manager.c:1254
 msgid "(unknown)"
-msgstr ""
+msgstr "(nieznany)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1117
 msgid "Open With:"
-msgstr ""
+msgstr "Otwórz za pomocą:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1194
 msgid "Modified:"
-msgstr ""
+msgstr "Modyfikowany:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1212
 msgid "Accessed:"
-msgstr ""
+msgstr "Dostęp:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1239
 msgid "Free Space:"
-msgstr ""
+msgstr "Wolne Miejsce:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1241
 msgid "Size:"
-msgstr ""
+msgstr "Rozmiar:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1257
 msgid "%s (%"
-msgstr ""
+msgstr "%s (%"
 
 #: ../src/xfdesktop-file-icon-manager.c:1257
 msgid " Bytes)"
-msgstr ""
+msgstr " Bajtów)"
 
 #. permissions tab
 #: ../src/xfdesktop-file-icon-manager.c:1272
 msgid "Permissions"
-msgstr ""
+msgstr "Uprawnienia"
 
 #: ../src/xfdesktop-file-icon-manager.c:1294
 msgid "Owner:"
-msgstr ""
+msgstr "Właściciel: "
 
 #: ../src/xfdesktop-file-icon-manager.c:1312
 #: ../src/xfdesktop-file-icon-manager.c:1350
 msgid "Access:"
-msgstr ""
+msgstr "Dostę:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1335
 msgid "Group:"
-msgstr ""
+msgstr "Grupa:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1373
-#, fuzzy
 msgid "Others:"
-msgstr "/Inne"
+msgstr "Inne:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1446
 #, c-format
 msgid "_Open With \"%s\""
-msgstr ""
+msgstr "_Otwórz za pomocą \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1449
 #, c-format
 msgid "Open With \"%s\""
-msgstr ""
+msgstr "Otwórz za pomocą \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1510
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "Nie można było uruchomić xfce4-menueditor: %s"
+msgstr "Nie można stworzyć folderu o nazwie \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1542
 msgid "Create New Folder"
-msgstr ""
+msgstr "Stwórz nowy folder"
 
 #: ../src/xfdesktop-file-icon-manager.c:1546
 msgid "New Folder"
-msgstr ""
+msgstr "Nowy Folder"
 
 #: ../src/xfdesktop-file-icon-manager.c:1547
 #: ../src/xfdesktop-file-icon-manager.c:1625
 #: ../src/xfdesktop-file-icon-manager.c:1636
 msgid "Create"
-msgstr ""
+msgstr "Stwórz"
 
 #: ../src/xfdesktop-file-icon-manager.c:1583
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "Nie można było uruchomić xfce4-menueditor: %s"
+msgstr "Nie udało się stworzyć pliku o nazwie \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1586
-#, fuzzy
 msgid "Create File Failed"
-msgstr "Wybierz plik menu"
+msgstr "Tworzenie pliku nieudane"
 
 #: ../src/xfdesktop-file-icon-manager.c:1612
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr ""
+msgstr "Stwórz Dokument z szablonu \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1631
 msgid "Create Empty File"
-msgstr ""
+msgstr "Stwórz Pusty Plik"
 
 #: ../src/xfdesktop-file-icon-manager.c:1635
 msgid "New Empty File"
-msgstr ""
+msgstr "Nowy Pusty Plik"
 
 #: ../src/xfdesktop-file-icon-manager.c:1890
 msgid "_Open all"
-msgstr ""
+msgstr "_Otwórz wszystkie"
 
 #: ../src/xfdesktop-file-icon-manager.c:1901
 msgid "_Open"
-msgstr ""
+msgstr "_Otwórz"
 
 #: ../src/xfdesktop-file-icon-manager.c:1912
 msgid "_Execute"
-msgstr ""
+msgstr "_Wykonaj"
 
 #: ../src/xfdesktop-file-icon-manager.c:1956
 msgid "Open With"
-msgstr ""
+msgstr "Otwórz za pomocą"
 
 #: ../src/xfdesktop-file-icon-manager.c:1986
 msgid "Open With Other _Application..."
-msgstr ""
+msgstr "Otwórz za pomocą innej _aplikacji..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2069
 msgid "_Mount Volume"
-msgstr ""
+msgstr "_Zamontuj"
 
 #: ../src/xfdesktop-file-icon-manager.c:2080
 msgid "_Unmount Volume"
-msgstr ""
+msgstr "_Odmontuj"
 
 #: ../src/xfdesktop-file-icon-manager.c:2094
+#, fuzzy
 msgid "E_ject Volume"
-msgstr ""
+msgstr "_Wysuń"
 
 #: ../src/xfdesktop-file-icon-manager.c:2104
-#, fuzzy
 msgid "_Copy Files"
-msgstr "_Plik"
+msgstr "_Skopiuj Pliki"
 
 #: ../src/xfdesktop-file-icon-manager.c:2105
-#, fuzzy
 msgid "_Copy File"
-msgstr "_Plik"
+msgstr "_Skopiuj Plik"
 
 #: ../src/xfdesktop-file-icon-manager.c:2114
-#, fuzzy
 msgid "Cu_t Files"
-msgstr "_Plik"
+msgstr "_Wytnij Pliki"
 
 #: ../src/xfdesktop-file-icon-manager.c:2115
-#, fuzzy
 msgid "Cu_t File"
-msgstr "_Plik"
+msgstr "_Wytnij Plik"
 
 #: ../src/xfdesktop-file-icon-manager.c:2124
-#, fuzzy
 msgid "_Delete Files"
-msgstr "Wybierz plik menu"
+msgstr "_Kasuj Pliki"
 
 #: ../src/xfdesktop-file-icon-manager.c:2125
-#, fuzzy
 msgid "_Delete File"
-msgstr "Wybierz plik menu"
+msgstr "_Skasuj Plik"
 
 #: ../src/xfdesktop-file-icon-manager.c:2137
 msgid "_Rename..."
-msgstr ""
+msgstr "_Zmień nazwę..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2155
-#, fuzzy
 msgid "_Properties..."
-msgstr "Edytuj listę z tłami"
+msgstr "_Właściwości..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2171
 msgid "Create _Folder..."
-msgstr ""
+msgstr "Stwórz _Folder..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2178
 msgid "Create _Document"
-msgstr ""
+msgstr "Stwórz _Dokument"
 
 #: ../src/xfdesktop-file-icon-manager.c:2199
 msgid "No Templates installed"
-msgstr ""
+msgstr "Brak Szablonów"
 
 #: ../src/xfdesktop-file-icon-manager.c:2211
-#, fuzzy
 msgid "_Empty File"
-msgstr "_Plik"
+msgstr "_Pusty Plik"
 
 #: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:536
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\":"
-msgstr "Nie można było uruchomić xfce4-menueditor: %s"
+msgstr "Nie można było uruchomić \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:538
-#, fuzzy
 msgid "Run Error"
-msgstr "Błąd"
+msgstr "Błąd Wykonania"
 
 #: ../src/xfdesktop-file-icon.c:465
 #, c-format
 msgid "There was an error %s \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Pojawił się błąd %s \"%s\" do \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:467
 msgid "moving"
-msgstr ""
+msgstr "przenoszę"
 
 #: ../src/xfdesktop-file-icon.c:469
 msgid "copying"
-msgstr ""
+msgstr "kopiuję"
 
 #: ../src/xfdesktop-file-icon.c:470
 msgid "linking"
-msgstr ""
+msgstr "linkuję"
 
 #: ../src/xfdesktop-file-icon.c:473
-#, fuzzy
 msgid "File Error"
-msgstr "Błąd"
+msgstr "Błąd Pliku"
 
 #: ../src/xfdesktop-file-icon.c:685
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Nie można zmienić nazwy \"%s\" na \"%s\":"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
@@ -1177,9 +1150,8 @@ msgid "Menu Editor"
 msgstr "Edytor menu"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Menu Editor"
-msgstr "Menu Xfce"
+msgstr "Edytor Menu Xfce"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
@@ -1190,6 +1162,5 @@ msgid "Settings for the Xfce 4 Desktop Manager"
 msgstr "Ustawienia XFCE 4 Menadżera Pulpitów"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Desktop Settings"
-msgstr "Ustawienia pulpitu"
+msgstr "Ustawienia pulpitu Xfce 4"
