@@ -41,6 +41,7 @@ conf_DATA = 								\
 	menu.xml.el							\
 	menu.xml.es							\
 	menu.xml.et							\
+	menu.xml.eu							\
 	menu.xml.fi							\
 	menu.xml.fr 							\
 	menu.xml.he							\
@@ -62,7 +63,6 @@ conf_DATA = 								\
 # the following have not been updated from the old 4.0.x menu
 #
 #	menu.xml.az 							
-#	menu.xml.eu							
 #	menu.xml.fa_IR 							
 #	menu.xml.ms  							
 #	menu.xml.ta 							
