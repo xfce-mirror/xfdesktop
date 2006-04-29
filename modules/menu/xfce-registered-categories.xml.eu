@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xfce-registered-categories>
+<!DOCTYPE xfce-registered-categories> 
 
 <!-- Note: You can copy this file to ~/.config/xfce4/desktop/ for customisation. -->
 
@@ -38,261 +38,261 @@
 <xfce-registered-categories>
 	<category name="Legacy" toplevel="true" replace="Aplikazioak" builtin-icon="UTILITY" />
 	<category name="Core" toplevel="true" replace="Aplikazioak" builtin-icon="UTILITY" />
-	<category name="Development" toplevel="true" builtin-icon="DEVELOPMENT">
-		<subcategory name="Building" />
-		<subcategory name="Debugger" />
-		<subcategory name="IDE" />
-		<subcategory name="GUIDesigner" />
-		<subcategory name="Profiling" />
-		<subcategory name="RevisionControl" />
-		<subcategory name="Translation" />
-		<subcategory name="Database" />
-		<subcategory name="ProjectManagement" />
-		<subcategory name="WebDevelopment" />
+	<category name="Development" toplevel="true" replace="Garapena" builtin-icon="DEVELOPMENT">
+		<subcategory name="Sorpena" />
+		<subcategory name="Arazpena" />
+		<subcategory name="Inguruneak" />
+		<subcategory name="GUIDiseinua" />
+		<subcategory name="Soslaiak" />
+		<subcategory name="BerrikusteKontrola" />
+		<subcategory name="Itzulpenak" />
+		<subcategory name="Datubaseak" />
+		<subcategory name="ProiektKudeatzailea" />
+		<subcategory name="WebGarapena" />
 	</category>
-	<category name="Building" builtin-icon="DEVELOPMENT" />
+	<category name="Building" replace="Sorpena" builtin-icon="DEVELOPMENT" />
 	<category name="Debugger" replace="Arazpena" builtin-icon="DEVELOPMENT" />
 	<category name="IDE" replace="Inguruneak" builtin-icon="DEVELOPMENT" />
-	<category name="GUIDesigner" replace="GUI diseinugilea" builtin-icon="DEVELOPMENT" />
-	<category name="Profiling" builtin-icon="DEVELOPMENT" />
+	<category name="GUIDesigner" replace="GUI Diseinugilea" builtin-icon="DEVELOPMENT" />
+	<category name="Profiling" replace="Soslaiak" builtin-icon="DEVELOPMENT" />
 	<category name="RevisionControl" replace="Berrikuste Kontrola" builtin-icon="DEVELOPMENT" />
-	<category name="Translation" builtin-icon="DEVELOPMENT" />
-	<category name="Office" toplevel="true" builtin-icon="PRODUCTIVITY">
-		<subcategory name="Calendar" />
-		<subcategory name="ContactManagement" />
-		<subcategory name="Database" />
-		<subcategory name="Dictionary" />
-		<subcategory name="Chart" />
-		<subcategory name="Email" />
-		<subcategory name="Finance" />
-		<subcategory name="FlowChart" />
+	<category name="Translation"replace="Itzulpenak"  builtin-icon="DEVELOPMENT" />
+	<category name="Office"replace="Ofizina"  toplevel="true" builtin-icon="PRODUCTIVITY">
+		<subcategory name="Calendar" replace="Egutegia" />
+		<subcategory name="ContactManagement" replace="KontaktuKudeaketa" />
+		<subcategory name="Database" replace="Datubasea" />
+		<subcategory name="Dictionary" replace="Hiztegia" />
+		<subcategory name="Chart" replace="Karaktereak" />
+		<subcategory name="Email" replace="ePosta" />
+		<subcategory name="Finance" replace="Finantzak" />
+		<subcategory name="FlowChart" replace="Organigrama" />
 		<subcategory name="PDA" />
-		<subcategory name="ProjectManagement" />
-		<subcategory name="Presentation" />
-		<subcategory name="Spreadsheet" />
-		<subcategory name="WordProcessor" />
-		<subcategory name="Photograph" />
-		<subcategory name="Viewer" />
+		<subcategory name="ProjectManagement" replace="ProiektuKudeaketa" />
+		<subcategory name="Presentation" replace="Aurkezpena" />
+		<subcategory name="Spreadsheet" replace="KalkuluOrriak" />
+		<subcategory name="WordProcessor" replace="Edizioa" />
+		<subcategory name="Photograph" replace="Argazkiak" />
+		<subcategory name="Viewer" replace="Ikustatzaileak" />
 	</category>
-	<category name="Calendar" builtin-icon="PRODUCTIVITY" />
+	<category name="Calendar" replace="Egutegia" builtin-icon="PRODUCTIVITY" />
 	<category name="ContactManagement" replace="Kontaktu Kudeaketa" builtin-icon="PRODUCTIVITY" />
-	<category name="Database" builtin-icon="PRODUCTIVITY" />
-	<category name="Dictionary" builtin-icon="PRODUCTIVITY" />
-	<category name="Chart" builtin-icon="PRODUCTIVITY" />
-	<category name="Email" builtin-icon="PRODUCTIVITY" />
-	<category name="Finance" builtin-icon="PRODUCTIVITY" />
-	<category name="FlowChart" replace="Organigrama" builtin-icon="PRODUCTIVITY" />
+	<category name="Database" replace="Datubaseak" builtin-icon="PRODUCTIVITY" />
+	<category name="Dictionary" replace="Hiztegiak" builtin-icon="PRODUCTIVITY" />
+	<category name="Chart" replace="Karaktereak" builtin-icon="PRODUCTIVITY" />
+	<category name="Email" replace="ePosta" builtin-icon="PRODUCTIVITY" />
+	<category name="Finance" replace="Finantzak" builtin-icon="PRODUCTIVITY" />
+	<category name="FlowChart" replace="Organigramak" builtin-icon="PRODUCTIVITY" />
 	<category name="PDA" builtin-icon="PRODUCTIVITY" />
 	<category name="ProjectManagement" replace="Proiektu Kudeaketa" builtin-icon="PRODUCTIVITY" />
-	<category name="Presentation" builtin-icon="PRODUCTIVITY" />
-	<category name="Spreadsheet" builtin-icon="PRODUCTIVITY" />
-	<category name="WordProcessor" replace="Hitz Prozesatzea" builtin-icon="PRODUCTIVITY" />
-	<category name="Graphics" toplevel="true" builtin-icon="GRAPHICS">
-		<subcategory name="2DGraphics" />
-		<subcategory name="3DGraphics" />
-		<subcategory name="Scanning" />
-		<subcategory name="Photograph" />
-		<subcategory name="Viewer" />
+	<category name="Presentation" replace="Aurkezpenak" builtin-icon="PRODUCTIVITY" />
+	<category name="Spreadsheet" replace="Kalkulu Orriak" builtin-icon="PRODUCTIVITY" />
+	<category name="WordProcessor" replace="Testu Prozesatzaileak" builtin-icon="PRODUCTIVITY" />
+	<category name="Graphics" toplevel="true" replace="Grafikoak" builtin-icon="GRAPHICS">
+		<subcategory name="2DGraphics" replace="2dDGrafikoak" />
+		<subcategory name="3DGraphics" replace="3DGrafikoak" />
+		<subcategory name="Scanning"  replace="Eskanerra"/>
+		<subcategory name="Photograph" replace="Argazkiak"/>
+		<subcategory name="Viewer" replace="Ikustatzaileak"/>
 	</category>
-	<category name="2DGraphics" replace="2-D Grfiakoak" builtin-icon="GRAPHICS">
-		<subcategory name="VectorGraphics" />
-		<subcategory name="RasterGraphics" />
+	<category name="2DGraphics" replace="2-D Grafikoak" builtin-icon="GRAPHICS" >
+		<subcategory name="VectorGraphics" replace="BektoreGrafiokoak" />
+		<subcategory name="RasterGraphics" replace="BilbeGrafikoak" />
 	</category>
-	<category name="VectorGraphics" replace="Grafiko Bektorialak" builtin-icon="GRAPHICS" />
+	<category name="VectorGraphics" replace="Bektore Grafikoak" builtin-icon="GRAPHICS" />
 	<category name="RasterGraphics" replace="Bilbe Grafikoak" builtin-icon="GRAPHICS" />
 	<category name="3DGraphics" replace="3-D Grafikoak" builtin-icon="GRAPHICS" />
-	<category name="Scanning" builtin-icon="GRAPHICS">
+	<category name="Scanning" builtin-icon="GRAPHICS" replace="Eskanerra">
 		<subcategory name="OCR" />
 	</category>
 	<category name="OCR" builtin-icon="GRAPHICS" />
 	<category name="Photograph" replace="Argazkilaritza" builtin-icon="GRAPHICS" />
 	<category name="Viewer" replace="Ikustatzaileak" builtin-icon="GRAPHICS" />
-	<category name="Settings" toplevel="true" builtin-icon="SETTINGS">
-		<subcategory name="DesktopSettings" />
-		<subcategory name="HardwareSettings" />
-		<subcategory name="PackageSettings" />
-		<subcategory name="Security" />
-		<subcategory name="Accessibility" />
-		<subcategory name="Screensaver" />
+	<category name="Settings" replace="Ezarpenak" toplevel="true" builtin-icon="SETTINGS">
+		<subcategory name="DesktopSettings" replace="IdazmahaiEzarpenak" />
+		<subcategory name="HardwareSettings" replace="HardwareEzarpenak" />
+		<subcategory name="PackageSettings" replace="PaketeEzarpenak" />
+		<subcategory name="Security" replace="Segurtasuna" />
+		<subcategory name="Accessibility" replace="Erabilerraztasuna" />
+		<subcategory name="Screensaver" replace="PantailaBabeslea" />
 	</category>
 	<category name="DesktopSettings" replace="Idazmahai Ezarpenak" builtin-icon="SETTINGS" />
 	<category name="HardwareSettings" replace="Hardware Ezarpenak" builtin-icon="SETTINGS" />
 	<category name="PackageSettings" replace="Pakete Ezarpenak" builtin-icon="SETTINGS" />
-	<category name="Network" toplevel="true" builtin-icon="NETWORK">
-		<subcategory name="Email" />
-		<subcategory name="Dialup" />
-		<subcategory name="InstantMessaging" />
-		<subcategory name="IRCClient" />
-		<subcategory name="FileTransfer" />
+	<category name="Network" replace="Sarea" toplevel="true" builtin-icon="NETWORK">
+		<subcategory name="Email" replace="ePosta" />
+		<subcategory name="Dialup" replace="Markatzea" />
+		<subcategory name="InstantMessaging" replace="UnekoMezularitza" />
+		<subcategory name="IRCClient" replace="IRCBezeroa"/>
+		<subcategory name="FileTransfer" replace="FitxategiTransferentzia"/>
 		<subcategory name="HamRadio" />
-		<subcategory name="News" />
+		<subcategory name="News" replace="Berriak"/>
 		<subcategory name="P2P" />
-		<subcategory name="RemoteAccess" />
-		<subcategory name="Telephony" />
-		<subcategory name="WebBrowser" />
-		<subcategory name="WebDevelopment" />
+		<subcategory name="RemoteAccess" replace="UrrunekoSarrera" />
+		<subcategory name="Telephony" replace="Telefonia" />
+		<subcategory name="WebBrowser" replace="WebNabigazioa" />
+		<subcategory name="WebDevelopment" replace="WebGarapena" />
 	</category>
-	<category name="Dialup" builtin-icon="NETWORK" />
+	<category name="Dialup" replace="Markatzea" builtin-icon="NETWORK" />
 	<category name="InstantMessaging" replace="Uneko Mezularitza" builtin-icon="NETWORK" />
 	<category name="IRCClient" replace="IRC Bezeroak" builtin-icon="NETWORK" />
 	<category name="FileTransfer" replace="Fitxategi Transferentzia" builtin-icon="NETWORK" />
 	<category name="HamRadio" replace="Ham Radio" builtin-icon="NETWORK" />
-	<category name="News" builtin-icon="NETWORK" />
+	<category name="News" replace="Berri-taldeak" builtin-icon="NETWORK" />
 	<category name="P2P" replace="Parez Parekoak" builtin-icon="NETWORK" />
 	<category name="RemoteAccess" replace="Urruneko Sarrera" builtin-icon="NETWORK" />
-	<category name="Telephony" builtin-icon="NETWORK" />
-	<category name="WebBrowser" replace="Web Kudeaketa" builtin-icon="NETWORK" />
+	<category name="Telephony" replace="Telefonia" builtin-icon="NETWORK" />
+	<category name="WebBrowser" replace="Web Nabigatzea" builtin-icon="NETWORK" />
 	<category name="WebDevelopment" replace="Web Garapena" builtin-icon="NETWORK" />
 	<category name="AudioVideo" replace="Multimedia" toplevel="true" builtin-icon="MULTIMEDIA">
-		<subcategory name="Database" />
+		<subcategory name="Database" replace="Datubasea" />
 		<subcategory name="HamRadio" />
-		<subcategory name="Audio" />
-		<subcategory name="Video" />
-		<subcategory name="AudioVideoEditing" />
-		<subcategory name="Player" />
-		<subcategory name="Recorder" />
-		<subcategory name="DiscBurning" />
+		<subcategory name="Audio" replace="Audioa" />
+		<subcategory name="Video" replace="Bideoa" />
+		<subcategory name="AudioVideoEditing" replace="AudioBideoEdizioa" />
+		<subcategory name="Player" replace="Erreproduzgailua" />
+		<subcategory name="Recorder" replace="Grabatzailea" />
+		<subcategory name="DiscBurning" replace="DiskaGrabatzea" />
 	</category>
-	<category name="Audio" builtin-icon="MULTIMEDIA">
+	<category name="Audio" replace="Audioa" builtin-icon="MULTIMEDIA">
 		<subcategory name="Midi" />
-		<subcategory name="Mixer" />
-		<subcategory name="Sequencer" />
-		<subcategory name="Tuner" />
-		<subcategory name="AudioVideoEditing" />
-		<subcategory name="Player" />
-		<subcategory name="Recorder" />
+		<subcategory name="Mixer" replace="Nahasgailua" />
+		<subcategory name="Sequencer" replace="Sekuentziadorea" />
+		<subcategory name="Tuner" replace="Sintonizatzailea" />
+		<subcategory name="AudioVideoEditing" replace="AudioBideoEdizioa" />
+		<subcategory name="Player" replace="Erreproduzgailua" />
+		<subcategory name="Recorder" replace="Grabatzailea" />
 	</category>
 	<category name="Midi"  builtin-icon="MULTIMEDIA" />
 	<category name="Mixer" replace="Soinu Nahasleak" builtin-icon="MULTIMEDIA" />
 	<category name="Sequencer" replace="Sekuentziadoreak" builtin-icon="MULTIMEDIA" />
 	<category name="Tuner" replace="Sintonizatzaileak" builtin-icon="MULTIMEDIA" />
-	<category name="Video" builtin-icon="MULTIMEDIA">
-		<subcategory name="TV" />
-		<subcategory name="AudioVideoEditing" />
-		<subcategory name="Player" />
-		<subcategory name="Recorder" />
-		<subcategory name="Music" />
+	<category name="Video" Replace="Bideoa" builtin-icon="MULTIMEDIA">
+		<subcategory name="TV" replace="Telebista" />
+		<subcategory name="AudioVideoEditing" replace="AudioBideoEdizioa "/>
+		<subcategory name="Player" replace="Erreproduzgailua" />
+		<subcategory name="Recorder" replace="Grabatzailea" />
+		<subcategory name="Music" replace="Musika" />
 	</category>
-	<category name="TV" builtin-icon="MULTIMEDIA" />
-	<category name="AudioVideoEditing" replace="Editatzea" builtin-icon="MULTIMEDIA" />
-	<category name="Player" replace="Medio Erreproduzitzaileak" builtin-icon="MULTIMEDIA" />
+	<category name="TV" replace="Telebista" builtin-icon="MULTIMEDIA" />
+	<category name="AudioVideoEditing" replace="Edizioa" builtin-icon="MULTIMEDIA" />
+	<category name="Player" replace="Medio Erreproduzgailuak" builtin-icon="MULTIMEDIA" />
 	<category name="Recorder" replace="Grabaketa" builtin-icon="MULTIMEDIA" />
 	<category name="DiscBurning" replace="CD eta DVD Grabaketa" builtin-icon="MULTIMEDIA" />
 	<category name="Game" toplevel="true" replace="Jokoak" builtin-icon="GAME">
-		<subcategory name="ActionGame" />
-		<subcategory name="AdventureGame" />
-		<subcategory name="ArcadeGame" />
-		<subcategory name="BoardGame" />
-		<subcategory name="BlocksGame" />
-		<subcategory name="CardGame" />
-		<subcategory name="KidsGame" />
-		<subcategory name="LogicGame" />
-		<subcategory name="RolePlaying" />
-		<subcategory name="Simulation" />
-		<subcategory name="SportsGame" />
-		<subcategory name="StrategyGame" />
+		<subcategory name="ActionGame" replace="EkintzaJokoak" />
+		<subcategory name="AdventureGame" replace="AbenturaJokoak" />
+		<subcategory name="ArcadeGame" replace="ArkadeJokoak" />
+		<subcategory name="BoardGame" replace="MahaigainJokoak" />
+		<subcategory name="BlocksGame" replace="BlokeJokoak" />
+		<subcategory name="CardGame" replace="KartaJokoak" />
+		<subcategory name="KidsGame" replace="UmeJokoak" />
+		<subcategory name="LogicGame" replace="LogikaJokoak" />
+		<subcategory name="RolePlaying"replace="RolJokoak" />
+		<subcategory name="Simulation" replace="Simulazioak" />
+		<subcategory name="SportsGame" replace="KirolJokoak" />
+		<subcategory name="StrategyGame" replace="EstrategiaJokoak" />
 	</category>
 	<category name="ActionGame" replace="Ekintza Jokoak" builtin-icon="GAME" />
 	<category name="AdventureGame" replace="Abentura Jokoak" builtin-icon="GAME" />
 	<category name="ArcadeGame" replace="Arkade Jokoak" builtin-icon="GAME" />
-	<category name="BoardGame" replace="Idazmahai Jokoak" builtin-icon="GAME" />
+	<category name="BoardGame" replace="Mahaigain Jokoak" builtin-icon="GAME" />
 	<category name="BlocksGame" replace="Puzzle Jokoak" builtin-icon="GAME" />
 	<category name="CardGame" replace="Karta Jokoak" builtin-icon="GAME" />
-	<category name="KidsGame" replace="Haur Jokoak" builtin-icon="GAME" />
-	<category name="LogicGame" replace="Logika Jokoak" builtin-icon="GAME" />
+	<category name="KidsGame" replace="Ume Jokoak" builtin-icon="GAME" />
+	<category name="LogicGame" replace="Logija Jokoak" builtin-icon="GAME" />
 	<category name="RolePlaying" replace="Rol Jokoak" builtin-icon="GAME" />
-	<category name="Simulation" builtin-icon="GAME" />
-	<category name="SportsGame" replace="Kirol Jokoak" builtin-icon="GAME" />
+	<category name="Simulation" builtin-icon="GAME" replace="Simulazioak" />
+	<category name="SportsGame"  replace="Kirol Jokoak" builtin-icon="GAME" />
 	<category name="StrategyGame" replace="Estrategia Jokoak" builtin-icon="GAME" />
-	<category name="Education" toplevel="true">
-		<subcategory name="Art" />
-		<subcategory name="Construction" />
-		<subcategory name="Music" />
-		<subcategory name="Languages" />
-		<subcategory name="Teaching" />
+	<category name="Education" replace="Hezkuntza" toplevel="true">
+		<subcategory name="Art" replace="Artea" />
+		<subcategory name="Construction" replace="Eraikuntza" />
+		<subcategory name="Music" replace="Musika" />
+		<subcategory name="Languages" replace="Hizkuntzak" />
+		<subcategory name="Teaching" replace="Heziketa" />
 	</category>
-	<category name="Art" />
-	<category name="Construction" />
-	<category name="Music" />
-	<category name="Languages" />
-	<category name="Science" toplevel="true">
-		<subcategory name="Astronomy" />
-		<subcategory name="Biology" />
-		<subcategory name="Chemistry" />
-		<subcategory name="Geology" />
-		<subcategory name="Math" />
-		<subcategory name="MedicalSoftware" />
-		<subcategory name="Physics" />
+	<category name="Art" replace="Artea" />
+	<category name="Construction" replace="Eraikuntza" />
+	<category name="Music" replace="Musika" />
+	<category name="Languages" replace="Hizkuntzak" />
+	<category name="Science" replace="Zientzia"toplevel="true">
+		<subcategory name="Astronomy" replace="Astronomia" />
+		<subcategory name="Biology" replace="Biologia" />
+		<subcategory name="Chemistry" replace="Kimika" />
+		<subcategory name="Geology" replace="Geologia" />
+		<subcategory name="Math" replace="Matematika" />
+		<subcategory name="MedicalSoftware" replace="SoftwareMedikua" />
+		<subcategory name="Physics" replace="Fisika" />
 	</category>
-	<category name="Astronomy" />
-	<category name="Biology" />
-	<category name="Chemistry" />
-	<category name="Geology" />
-	<category name="Math" />
-	<category name="MedicalSoftware" replace="Medikoa" />
-	<category name="Physics" />
-	<category name="Teaching" />
+	<category name="Astronomy" replace="Astronomia" />
+	<category name="Biology" replace="Biologia" />
+	<category name="Chemistry" replace="Kimika" />
+	<category name="Geology" replace="Geologia" />
+	<category name="Math" replace="Matematika" />
+	<category name="MedicalSoftware" replace="Medikua" />
+	<category name="Physics" replace="Fisika" />
+	<category name="Teaching" replace="Heziketa" />
 	<category name="Amusement" replace="Jokoak" builtin-icon="GAME" />
 	<category name="Applet" replace="Applet-ak" />
-	<category name="Archiving" />
-	<category name="Electronics" />
+	<category name="Archiving" replace="Biltegiratzea" />
+	<category name="Electronics" replace="Elektronika" />
 	<category name="Emulator" toplevel="true" replace="Sistema" builtin-icon="SYSTEM" />
-	<category name="Engineering" />
-	<category name="FileManager" replace="Fitxategi Kdeaketa" />
-	<category name="Shell" replace="Shell-ak" />
-	<category name="Screensaver" />
-	<category name="TerminalEmulator" replace="Terminal Emuladoreak" />
-	<category name="TrayIcon" replace="Sistema Barrak Ikonoak" />
-	<category name="System" toplevel="true" builtin-icon="SYSTEM">
-		<subcategory name="FileSystem" />
-		<subcategory name="Monitor" />
-		<subcategory name="Security" />
-		<subcategory name="Accessibility" />
-		<subcategory name="TerminalEmulator" />
+	<category name="Engineering" replace="Ingenieritza" />
+	<category name="FileManager" replace="Fitxategi Kudeaketa" />
+	<category name="Shell" replace="Shells-ak" />
+	<category name="Screensaver" replace="Pantaila Babeslea"/>
+	<category name="TerminalEmulator" replace="TerminalEmuladoreak" />
+	<category name="TrayIcon" replace="Sistem Barra Ikonoak" />
+	<category name="System" toplevel="true" replace="Sistema" builtin-icon="SYSTEM">
+		<subcategory name="FileSystem" replace="FixtategiSistema" />
+		<subcategory name="Monitor" replace="Monitorea" />
+		<subcategory name="Security" replace="Segurtasuna" />
+		<subcategory name="Accessibility" replace="Erabilerraztasuna" />
+		<subcategory name="TerminalEmulator" replace="TerminalEmuladorea"/>
 		<subcategory name="Shell" />
 	</category>
-	<category name="Filesystem" builtin-icon="SYSTEM" />
-	<category name="Monitor" builtin-icon="SYSTEM" />
-	<category name="Security" builtin-icon="SYSTEM" />
+	<category name="Filesystem" replace="Fixtategi Sistema" builtin-icon="SYSTEM" />
+	<category name="Monitor" replace="Monitorea" builtin-icon="SYSTEM" />
+	<category name="Security" replace="Segurtasuna" builtin-icon="SYSTEM" />
 	<category name="Utility" toplevel="true" replace="Gehigarriak" builtin-icon="UTILITY">
-		<subcategory name="Accessibility" />
-		<subcategory name="Calculator" />
-		<subcategory name="Clock" />
-		<subcategory name="TextEditor" />
-		<subcategory name="Archiving" />
-		<subcategory name="TerminalEmulator" />
-		<subcategory name="FileManager" />
+		<subcategory name="Accessibility" replace="Erabilerraztasuna" />
+		<subcategory name="Calculator" replace="Kalkulagailua" />
+		<subcategory name="Clock" replace="Ordularia" />
+		<subcategory name="TextEditor" replace="TestuEditorea" />
+		<subcategory name="Archiving" replace="Biltegiratzea" />
+		<subcategory name="TerminalEmulator" replace="TerminalEmuladorea"/>
+		<subcategory name="FileManager" replace="FixategiKudeaketa"/>
 		<subcategory name="Shell" />
 	</category>
-	<category name="Accessibility" builtin-icon="UTILITY" />
+	<category name="Accessibility" replace="Erabilerraztasuna" builtin-icon="UTILITY" />
 	<category name="Calculator" replace="Kalkulagailuak" builtin-icon="UTILITY" />
 	<category name="Clock" replace="Ordulariak" builtin-icon="UTILITY" />
-	<category name="TextEditor" replace="Testu Editoreak" builtin-icon="UTILITY" />
+	<category name="TextEditor" replace="Testu Editorak" builtin-icon="UTILITY" />
 	<category name="KDE" toplevel="true" ignore="true">
-		<subcategory name="Development" />
-		<subcategory name="Office" />
-		<subcategory name="Graphics" />
-		<subcategory name="Settings" />
-		<subcategory name="Network" />
-		<subcategory name="AudioVideo" />
-		<subcategory name="Game" />
-		<subcategory name="Education" />
-		<subcategory name="Science" />
-		<subcategory name="System" />
-		<subcategory name="Utility" />
+		<subcategory name="Development" replace="Garapena" />
+		<subcategory name="Office" replace="Ofizina" />
+		<subcategory name="Graphics" replace="Grafikoak" />
+		<subcategory name="Settings" replace="Ezarpenak" />
+		<subcategory name="Network" replace="Sarea" />
+		<subcategory name="AudioVideo" replace="AudioBideoa" />
+		<subcategory name="Game" replace="Jokoak" />
+		<subcategory name="Education" replace="Hezkuntza" />
+		<subcategory name="Science" replace="Zientzia" />
+		<subcategory name="System" replace="Sistema" />
+		<subcategory name="Utility" replace="Erabilgarria" />
 	</category>
 	<category name="GNOME" toplevel="true" ignore="true">
-		<subcategory name="Development" />
-		<subcategory name="Office" />
-		<subcategory name="Graphics" />
-		<subcategory name="Settings" />
-		<subcategory name="Network" />
-		<subcategory name="AudioVideo" />
-		<subcategory name="Game" />
-		<subcategory name="Education" />
-		<subcategory name="Science" />
-		<subcategory name="System" />
-		<subcategory name="Utility" />
+		<subcategory name="Development" replace="Garapena" />
+		<subcategory name="Office" replace="Ofizina" />
+		<subcategory name="Graphics" replace="Grafikoak" />
+		<subcategory name="Settings" replace="Ezarpenak" />
+		<subcategory name="Network" replace="Sarea" />
+		<subcategory name="AudioVideo" replace="AudioBideoa" />
+		<subcategory name="Game" replace="Jokoak" />
+		<subcategory name="Education" replace="Hezkuntza" />
+		<subcategory name="Science" replace="Zientzia" />
+		<subcategory name="System" replace="Sistema" />
+		<subcategory name="Utility" replace="Erabilgarria" />
 	</category>
 	<category name="GTK" toplevel="true" ignore="true">
 		<subcategory name="GNOME" />
@@ -301,35 +301,35 @@
 		<subcategory name="KDE" />
 	</category>
 	<category name="Motif" toplevel="true" ignore="true">
-		<subcategory name="Development" />
-		<subcategory name="Office" />
-		<subcategory name="Graphics" />
-		<subcategory name="Settings" />
-		<subcategory name="Network" />
-		<subcategory name="AudioVideo" />
-		<subcategory name="Game" />
-		<subcategory name="Education" />
-		<subcategory name="Science" />
-		<subcategory name="System" />
-		<subcategory name="Utility" />
+		<subcategory name="Development" replace="Garapena" />
+		<subcategory name="Office" replace="Ofizina" />
+		<subcategory name="Graphics" replace="Grafikoak" />
+		<subcategory name="Settings" replace="Ezarpenak" />
+		<subcategory name="Network" replace="Sarea" />
+		<subcategory name="AudioVideo" replace="AudioBideoa" />
+		<subcategory name="Game" replace="Jokoak" />
+		<subcategory name="Education" replace="Hezkuntza" />
+		<subcategory name="Science" replace="Zientzia" />
+		<subcategory name="System" replace="Sistema" />
+		<subcategory name="Utility" replace="Erabilgarria" />
 	</category>
 	<category name="Java" toplevel="true" ignore="true">
-		<subcategory name="Applet" />
+		<subcategory name="Applet" replace="Applet-a"/>
 	</category>
-	<category name="ConsoleOnly" toplevel="true" replace="Konsola" ignore="true">
-		<subcategory name="Development" />
-		<subcategory name="Office" />
-		<subcategory name="Graphics" />
-		<subcategory name="Settings" />
-		<subcategory name="Network" />
-		<subcategory name="AudioVideo" />
-		<subcategory name="Game" />
-		<subcategory name="Education" />
-		<subcategory name="Science" />
-		<subcategory name="System" />
-		<subcategory name="Utility" />
+	<category name="ConsoleOnly" toplevel="true" replace="Kontsola" ignore="true">
+		<subcategory name="Development" replace="Garapena" />
+		<subcategory name="Office" replace="Ofizina" />
+		<subcategory name="Graphics" replace="Grafikoak" />
+		<subcategory name="Settings" replace="Ezarpenak" />
+		<subcategory name="Network" replace="Sarea" />
+		<subcategory name="AudioVideo" replace="AudioBideoa" />
+		<subcategory name="Game" replace="Jokoak" />
+		<subcategory name="Education" replace="Hezkuntza" />
+		<subcategory name="Science" replace="Zientzia" />
+		<subcategory name="System" replace="Sistema" />
+		<subcategory name="Utility" replace="Erabilgarria" />
 	</category>
 	<category name="Wine" toplevel="true" builtin-icon="WINE" />
-	<category name="WineX" replace="Wine" toplevel="true" builtin-icon="WINE" />
-	<category name="CrossOver" replace="Wine" toplevel="true" builtin-icon="WINE" />
+	<category name="WineX" toplevel="true" builtin-icon="WINE" />
 </xfce-registered-categories>
+
