@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-29 20:34+0900\n"
-"PO-Revision-Date: 2006-04-23 16:17+0900\n"
+"PO-Revision-Date: 2006-04-30 12:57+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -1066,9 +1066,8 @@ msgid "_Unmount Volume"
 msgstr "マウント解除(_U)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2094
-#, fuzzy
 msgid "E_ject Volume"
-msgstr "取り出し(_E)"
+msgstr "取り出し(_J)"
 
 # FIXME: ngettext()
 #: ../src/xfdesktop-file-icon-manager.c:2104
@@ -1136,19 +1135,19 @@ msgstr "実行エラー"
 #: ../src/xfdesktop-file-icon.c:465
 #, c-format
 msgid "There was an error %s \"%s\" to \"%s\":"
-msgstr "%s「%s」から「%s」へのエラーが発生しました:"
+msgstr "「%2$s」を「%3$s」へ%1$sにエラーが発生しました:"
 
 #: ../src/xfdesktop-file-icon.c:467
 msgid "moving"
-msgstr "移動しています"
+msgstr "移動中"
 
 #: ../src/xfdesktop-file-icon.c:469
 msgid "copying"
-msgstr "コピーしています"
+msgstr "コピー中"
 
 #: ../src/xfdesktop-file-icon.c:470
 msgid "linking"
-msgstr "リンクしています"
+msgstr "リンク中"
 
 #: ../src/xfdesktop-file-icon.c:473
 msgid "File Error"
