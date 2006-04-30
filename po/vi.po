@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-29 20:34+0900\n"
+"POT-Creation-Date: 2006-04-30 17:19+0900\n"
 "PO-Revision-Date: 2006-04-26 22:41+0400\n"
 "Last-Translator: Phan Vĩnh Thịnh <teppi@vnlinux.org>\n"
 "Language-Team: Vietnamese <vi_VN@googlegroups.com>\n"
@@ -491,8 +491,8 @@ msgstr "Xfce sẽ không thể quản lý nền (%s)."
 msgid "Unknown Error"
 msgstr "Lỗi không rõ nguyên nhân"
 
-#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:630
-#: ../src/xfdesktop-file-icon.c:688
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:634
+#: ../src/xfdesktop-file-icon.c:692
 msgid "Error"
 msgstr "Lỗi"
 
@@ -1111,37 +1111,35 @@ msgstr "Chưa có mẫu nào được cài"
 msgid "_Empty File"
 msgstr "Tậ_p tin rỗng"
 
-#: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:536
+#: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:540
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Lỗi chạy \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:538
+#: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:542
 msgid "Run Error"
 msgstr "Lỗi chạy"
 
-#: ../src/xfdesktop-file-icon.c:465
-#, c-format
-msgid "There was an error %s \"%s\" to \"%s\":"
+#: ../src/xfdesktop-file-icon.c:468
+#, fuzzy, c-format
+msgid "There was an error moving \"%s\" to \"%s\":"
 msgstr "Có lỗi khi %s \"%s\" tới \"%s\":"
 
-#: ../src/xfdesktop-file-icon.c:467
-msgid "moving"
-msgstr "đang chuyển"
-
-#: ../src/xfdesktop-file-icon.c:469
-msgid "copying"
-msgstr "đang sao"
-
 #: ../src/xfdesktop-file-icon.c:470
-msgid "linking"
-msgstr "đang tạo liên kết"
+#, fuzzy, c-format
+msgid "There was an error copying \"%s\" to \"%s\":"
+msgstr "Có lỗi khi %s \"%s\" tới \"%s\":"
 
-#: ../src/xfdesktop-file-icon.c:473
+#: ../src/xfdesktop-file-icon.c:472
+#, fuzzy, c-format
+msgid "There was an error linking \"%s\" to \"%s\":"
+msgstr "Có lỗi khi %s \"%s\" tới \"%s\":"
+
+#: ../src/xfdesktop-file-icon.c:477
 msgid "File Error"
 msgstr "Lỗi tập tin"
 
-#: ../src/xfdesktop-file-icon.c:685
+#: ../src/xfdesktop-file-icon.c:689
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Lỗi đổi tên \"%s\" thành \"%s\":"

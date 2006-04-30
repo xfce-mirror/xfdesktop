@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-29 20:34+0900\n"
+"POT-Creation-Date: 2006-04-30 17:19+0900\n"
 "PO-Revision-Date: 2006-04-28 13:36+0300\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
@@ -491,8 +491,8 @@ msgstr "Xfce לא יוכל לנהל את שולחן העבודה שלך (%s)."
 msgid "Unknown Error"
 msgstr "שגיאה לא מוכרת"
 
-#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:630
-#: ../src/xfdesktop-file-icon.c:688
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:634
+#: ../src/xfdesktop-file-icon.c:692
 msgid "Error"
 msgstr "שגיאה"
 
@@ -1112,37 +1112,35 @@ msgstr "אין תבניות מותקנות"
 msgid "_Empty File"
 msgstr "קובץ ֹ_ריק"
 
-#: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:536
+#: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:540
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "אין אפשרות להריץ את \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:538
+#: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:542
 msgid "Run Error"
 msgstr "שגיאת הרצה"
 
-#: ../src/xfdesktop-file-icon.c:465
-#, c-format
-msgid "There was an error %s \"%s\" to \"%s\":"
+#: ../src/xfdesktop-file-icon.c:468
+#, fuzzy, c-format
+msgid "There was an error moving \"%s\" to \"%s\":"
 msgstr "ארעה שגיאה %s \"%s\" אל \"%s\":"
 
-#: ../src/xfdesktop-file-icon.c:467
-msgid "moving"
-msgstr "מעביר"
-
-#: ../src/xfdesktop-file-icon.c:469
-msgid "copying"
-msgstr "מעתיק"
-
 #: ../src/xfdesktop-file-icon.c:470
-msgid "linking"
-msgstr "מקשר"
+#, fuzzy, c-format
+msgid "There was an error copying \"%s\" to \"%s\":"
+msgstr "ארעה שגיאה %s \"%s\" אל \"%s\":"
 
-#: ../src/xfdesktop-file-icon.c:473
+#: ../src/xfdesktop-file-icon.c:472
+#, fuzzy, c-format
+msgid "There was an error linking \"%s\" to \"%s\":"
+msgstr "ארעה שגיאה %s \"%s\" אל \"%s\":"
+
+#: ../src/xfdesktop-file-icon.c:477
 msgid "File Error"
 msgstr "שגיאת בקובץ"
 
-#: ../src/xfdesktop-file-icon.c:685
+#: ../src/xfdesktop-file-icon.c:689
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "כשל בשינוי שם \"%s\" ל-\"%s\":"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-29 20:34+0900\n"
+"POT-Creation-Date: 2006-04-30 17:19+0900\n"
 "PO-Revision-Date: 2005-09-21 09:50+0900\n"
 "Last-Translator: Piotr Maliński <riklaunim@gmail.com>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -489,8 +489,8 @@ msgstr "Xfce nie będzie w stanie zarządzać pulpitem (%s)"
 msgid "Unknown Error"
 msgstr "Nieznany Błąd"
 
-#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:630
-#: ../src/xfdesktop-file-icon.c:688
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:634
+#: ../src/xfdesktop-file-icon.c:692
 msgid "Error"
 msgstr "Błąd"
 
@@ -1106,37 +1106,35 @@ msgstr "Brak Szablonów"
 msgid "_Empty File"
 msgstr "_Pusty Plik"
 
-#: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:536
+#: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:540
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Nie można było uruchomić \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:538
+#: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:542
 msgid "Run Error"
 msgstr "Błąd Wykonania"
 
-#: ../src/xfdesktop-file-icon.c:465
-#, c-format
-msgid "There was an error %s \"%s\" to \"%s\":"
+#: ../src/xfdesktop-file-icon.c:468
+#, fuzzy, c-format
+msgid "There was an error moving \"%s\" to \"%s\":"
 msgstr "Pojawił się błąd %s \"%s\" do \"%s\":"
 
-#: ../src/xfdesktop-file-icon.c:467
-msgid "moving"
-msgstr "przenoszę"
-
-#: ../src/xfdesktop-file-icon.c:469
-msgid "copying"
-msgstr "kopiuję"
-
 #: ../src/xfdesktop-file-icon.c:470
-msgid "linking"
-msgstr "linkuję"
+#, fuzzy, c-format
+msgid "There was an error copying \"%s\" to \"%s\":"
+msgstr "Pojawił się błąd %s \"%s\" do \"%s\":"
 
-#: ../src/xfdesktop-file-icon.c:473
+#: ../src/xfdesktop-file-icon.c:472
+#, fuzzy, c-format
+msgid "There was an error linking \"%s\" to \"%s\":"
+msgstr "Pojawił się błąd %s \"%s\" do \"%s\":"
+
+#: ../src/xfdesktop-file-icon.c:477
 msgid "File Error"
 msgstr "Błąd Pliku"
 
-#: ../src/xfdesktop-file-icon.c:685
+#: ../src/xfdesktop-file-icon.c:689
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Nie można zmienić nazwy \"%s\" na \"%s\":"

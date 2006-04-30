@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-29 20:34+0900\n"
+"POT-Creation-Date: 2006-04-30 17:19+0900\n"
 "PO-Revision-Date: 2005-10-09 22:18+0900\n"
 "Last-Translator: Norayr Chilingaryan <norik@freenet.am>\n"
 "Language-Team: Armenian <en@li.org>\n"
@@ -489,8 +489,8 @@ msgstr ""
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:630
-#: ../src/xfdesktop-file-icon.c:688
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:634
+#: ../src/xfdesktop-file-icon.c:692
 msgid "Error"
 msgstr ""
 
@@ -1130,37 +1130,35 @@ msgstr ""
 msgid "_Empty File"
 msgstr "_Ֆայլ"
 
-#: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:536
+#: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:540
 #, fuzzy, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Հնարավոր չէ աշխատացնել xfce4-menueditor ծրագիրը՝ %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:538
+#: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:542
 msgid "Run Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:465
+#: ../src/xfdesktop-file-icon.c:468
 #, c-format
-msgid "There was an error %s \"%s\" to \"%s\":"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:467
-msgid "moving"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:469
-msgid "copying"
+msgid "There was an error moving \"%s\" to \"%s\":"
 msgstr ""
 
 #: ../src/xfdesktop-file-icon.c:470
-msgid "linking"
+#, c-format
+msgid "There was an error copying \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:473
+#: ../src/xfdesktop-file-icon.c:472
+#, c-format
+msgid "There was an error linking \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon.c:477
 msgid "File Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:685
+#: ../src/xfdesktop-file-icon.c:689
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr ""
