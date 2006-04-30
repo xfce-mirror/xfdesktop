@@ -462,12 +462,16 @@ xfdesktop_file_icon_drag_job_error(ThunarVfsJob *job,
     g_return_if_fail(file_icon && src_file_icon);
     
     if(error) {
-        primary = g_strdup_printf(_("There was an error %s \"%s\" to \"%s\":"),
-                                  action == GDK_ACTION_MOVE
-                                  ? _("moving")
-                                  : (action == GDK_ACTION_COPY
-                                     ? _("copying")
-                                     : _("linking")),
+        gchar *primary_fmt;
+        
+        if(action == GDK_ACTION_MOVE)
+            primary_fmt = _("There was an error moving \"%s\" to \"%s\":");
+        else if(action == GDK_ACTION_COPY)
+            primary_fmt = _("There was an error copying \"%s\" to \"%s\":");
+        else
+            primary_fmt = _("There was an error linking \"%s\" to \"%s\":");
+        
+        primary = g_strdup_printf(primary_fmt,
                                   src_file_icon->priv->info->display_name,
                                   file_icon->priv->info->display_name);
         xfce_message_dialog(NULL, _("File Error"), GTK_STOCK_DIALOG_ERROR,
