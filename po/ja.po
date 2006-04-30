@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-30 17:19+0900\n"
-"PO-Revision-Date: 2006-04-30 12:57+0900\n"
+"PO-Revision-Date: 2006-04-30 17:43+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -1133,19 +1133,19 @@ msgid "Run Error"
 msgstr "実行エラー"
 
 #: ../src/xfdesktop-file-icon.c:468
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr "「%2$s」を「%3$s」へ%1$sにエラーが発生しました:"
+msgstr "「%s」を「%s」へ移動中にエラーが発生しました:"
 
 #: ../src/xfdesktop-file-icon.c:470
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr "「%2$s」を「%3$s」へ%1$sにエラーが発生しました:"
+msgstr "「%s」を「%s」にコピー中にエラーが発生しました:"
 
 #: ../src/xfdesktop-file-icon.c:472
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr "「%2$s」を「%3$s」へ%1$sにエラーが発生しました:"
+msgstr "「%s」を「%s」へリンク中にエラーが発生しました:"
 
 #: ../src/xfdesktop-file-icon.c:477
 msgid "File Error"
@@ -1158,7 +1158,7 @@ msgstr "「%s」の名前を「%s」に変更するのに失敗しました:"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Xfce 4 メニューを編集するグラフィカルなツールです。"
+msgstr "Xfce 4 メニューを編集するグラフィカルなツールです"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
@@ -1170,7 +1170,7 @@ msgstr "Xfce 4 メニューエディター"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr "インストール済アプリケーションのカテゴリーを含むメニューを表示します。"
+msgstr "インストール済アプリのカテゴリーを含むメニューを表示します"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
