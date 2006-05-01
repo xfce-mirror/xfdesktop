@@ -27,8 +27,7 @@ msgstr "Xfce4 menüszerkesztő"
 msgid "Core developer"
 msgstr "Fő fejlesztő"
 
-#: ../menueditor/about_dialog.c:44
-#: ../menueditor/about_dialog.c:45
+#: ../menueditor/about_dialog.c:44 ../menueditor/about_dialog.c:45
 #: ../menueditor/about_dialog.c:46
 msgid "Contributor"
 msgstr "Közreműködő"
@@ -37,14 +36,12 @@ msgstr "Közreműködő"
 msgid "Icon designer"
 msgstr "Ikontervező"
 
-#: ../menueditor/add_dialog.c:157
-#: ../menueditor/add_dialog.c:167
+#: ../menueditor/add_dialog.c:157 ../menueditor/add_dialog.c:167
 msgid "Add menu entry"
 msgstr "Elem hozzáadása"
 
 #. Type
-#: ../menueditor/add_dialog.c:171
-#: ../menueditor/add_menu_dialog.c:110
+#: ../menueditor/add_dialog.c:171 ../menueditor/add_menu_dialog.c:110
 msgid "Type:"
 msgstr "Típus"
 
@@ -69,65 +66,53 @@ msgid "Quit"
 msgstr "Kilép"
 
 #. Name
-#: ../menueditor/add_dialog.c:204
-#: ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205
-#: ../src/xfdesktop-file-icon-manager.c:1022
+#: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1022
 msgid "Name:"
 msgstr "Név:"
 
-#: ../menueditor/add_dialog.c:212
-#: ../menueditor/edit_dialog.c:150
+#: ../menueditor/add_dialog.c:212 ../menueditor/edit_dialog.c:150
 msgid "Command:"
 msgstr "Parancs:"
 
-#: ../menueditor/add_dialog.c:224
-#: ../menueditor/edit_dialog.c:137
+#: ../menueditor/add_dialog.c:224 ../menueditor/edit_dialog.c:137
 #: ../menueditor/edit_dialog.c:197
 msgid "Icon:"
 msgstr "Ikon:"
 
 #. Start Notify check button
 #. Startup notification
-#: ../menueditor/add_dialog.c:235
-#: ../menueditor/edit_dialog.c:158
+#: ../menueditor/add_dialog.c:235 ../menueditor/edit_dialog.c:158
 msgid "Use startup _notification"
 msgstr "Indítás_jelentés használata"
 
 #. Run in terminal check button
 #. Run in terminal
-#: ../menueditor/add_dialog.c:239
-#: ../menueditor/edit_dialog.c:161
+#: ../menueditor/add_dialog.c:239 ../menueditor/edit_dialog.c:161
 msgid "Run in _terminal"
 msgstr "Futtatás _terminálban"
 
-#: ../menueditor/add_dialog.c:270
-#: ../menueditor/edit_dialog.c:240
+#: ../menueditor/add_dialog.c:270 ../menueditor/edit_dialog.c:240
 msgid "The command doesn't exist !"
 msgstr "Nincs ilyen parancs!"
 
-#: ../menueditor/add_dialog.c:276
-#: ../menueditor/edit_dialog.c:246
+#: ../menueditor/add_dialog.c:276 ../menueditor/edit_dialog.c:246
 msgid "All fields must be filled to add an item."
 msgstr "Minden mező kitöltendő egy elem hozzáadásához."
 
-#: ../menueditor/add_dialog.c:285
-#: ../menueditor/edit_dialog.c:255
+#: ../menueditor/add_dialog.c:285 ../menueditor/edit_dialog.c:255
 msgid "The 'Name' field is required."
 msgstr "A 'Név' mező kötelező"
 
-#: ../menueditor/add_dialog.c:329
-#: ../menueditor/utils.c:318
+#: ../menueditor/add_dialog.c:329 ../menueditor/utils.c:318
 msgid "--- separator ---"
 msgstr "--- elválasztó ---"
 
-#: ../menueditor/add_dialog.c:355
-#: ../menueditor/edit_dialog.c:314
+#: ../menueditor/add_dialog.c:355 ../menueditor/edit_dialog.c:314
 msgid "quit"
 msgstr "kilép"
 
-#: ../menueditor/add_menu_dialog.c:97
-#: ../menueditor/add_menu_dialog.c:103
+#: ../menueditor/add_menu_dialog.c:97 ../menueditor/add_menu_dialog.c:103
 #: ../menueditor/menueditor.c:841
 msgid "Add an external menu"
 msgstr "Külső menü hozzáadása"
@@ -166,20 +151,17 @@ msgstr "Csak _egyedi elemek"
 msgid "The 'Source' field is required."
 msgstr "A 'Forrás' mező kötelező"
 
-#: ../menueditor/add_menu_dialog.c:202
-#: ../menueditor/add_menu_dialog.c:212
+#: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
 #: ../menueditor/utils.c:372
 msgid "--- include ---"
 msgstr "--- csatolva ---"
 
-#: ../menueditor/add_menu_dialog.c:213
-#: ../menueditor/utils.c:389
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:389
 msgid "system"
 msgstr "rendszer"
 
 #. Create dialog for editing
-#: ../menueditor/edit_dialog.c:114
-#: ../menueditor/edit_dialog.c:121
+#: ../menueditor/edit_dialog.c:114 ../menueditor/edit_dialog.c:121
 msgid "Edit menu entry"
 msgstr "Elem szerkesztése"
 
@@ -192,8 +174,7 @@ msgstr "Az elválasztók nem szerkeszthetők"
 msgid "File %s doesn't exist !"
 msgstr "Nincs ilyen fájl: %s"
 
-#: ../menueditor/menueditor.c:121
-#: ../menueditor/menueditor.c:537
+#: ../menueditor/menueditor.c:121 ../menueditor/menueditor.c:537
 msgid "Do you want to save before closing the menu ?"
 msgstr "Akarsz menteni a menü bezárása előtt?"
 
@@ -213,15 +194,12 @@ msgstr "Biztos bezárod e menüt?"
 msgid "Do you want to save before closing the file?"
 msgstr "Mentesz a fájl bezárása előtt?"
 
-#: ../menueditor/menueditor.c:338
-#: ../menueditor/utils.c:586
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:586
 msgid "Select command"
 msgstr "Válassz parancsot"
 
-#: ../menueditor/menueditor.c:370
-#: ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535
-#: ../src/xfdesktop-file-icon-manager.c:587
+#: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:587
 msgid "Question"
 msgstr "Kérdés"
 
@@ -229,8 +207,7 @@ msgstr "Kérdés"
 msgid "Do you want to save before opening an other menu ?"
 msgstr "Mentesz, mielőtt megnyitsz egy másik menüt?"
 
-#: ../menueditor/menueditor.c:374
-#: ../menueditor/menueditor.c:431
+#: ../menueditor/menueditor.c:374 ../menueditor/menueditor.c:431
 #: ../menueditor/menueditor.c:539
 msgid "Ignore modifications"
 msgstr "Változások elvetése"
@@ -342,16 +319,14 @@ msgstr "Rejtett"
 msgid "Select icon"
 msgstr "Válassz ikont"
 
-#: ../menueditor/utils.c:654
-#: ../panel-plugin/desktop-menu-plugin.c:535
+#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:535
 #: ../settings/appearance-settings.c:530
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Minden fájl"
 
-#: ../menueditor/utils.c:658
-#: ../panel-plugin/desktop-menu-plugin.c:541
+#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:541
 #: ../settings/appearance-settings.c:534
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
@@ -370,13 +345,21 @@ msgid "Unable to quit session."
 msgstr "Nem tudok kilépni a folyamatból"
 
 #: ../modules/menu/desktop-menu-file.c:119
-msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
-msgstr "A folyamatból való kilépés az Xfce folyamatkezelő futását igényli, de az nem fut. Lépj ki más módon."
+msgid ""
+"Quitting the session requires that Xfce's session manager (xfce4-session) is "
+"running, but it was not detected.  Please quit Xfce via another means."
+msgstr ""
+"A folyamatból való kilépés az Xfce folyamatkezelő futását igényli, de az nem "
+"fut. Lépj ki más módon."
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
-msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
-msgstr "A folyamatból való kilépés az 'xfce4-session-logout' parancsot igényli, de az nem található: %s"
+msgid ""
+"Quitting the session requires the 'xfce4-session-logout' command, but it "
+"could not be found: %s"
+msgstr ""
+"A folyamatból való kilépés az 'xfce4-session-logout' parancsot igényli, de "
+"az nem található: %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
@@ -450,8 +433,7 @@ msgstr "Legyenek _ikonok a menüben"
 msgid "Button Label|Desktop"
 msgstr "Asztal"
 
-#: ../settings/appearance-settings.c:185
-#: ../settings/appearance-settings.c:194
+#: ../settings/appearance-settings.c:185 ../settings/appearance-settings.c:194
 #: ../settings/backdrop-list-manager.c:631
 msgid "backdrops.list"
 msgstr "backdrops.list"
@@ -509,8 +491,7 @@ msgstr "Az Xfce nem tudja majd kezelni az asztalt (%s)."
 msgid "Unknown Error"
 msgstr "ismeretlen hiba"
 
-#: ../settings/appearance-settings.c:804
-#: ../src/xfdesktop-file-icon.c:634
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:634
 #: ../src/xfdesktop-file-icon.c:692
 msgid "Error"
 msgstr "hiba"
@@ -524,16 +505,24 @@ msgid "Information"
 msgstr "Információ"
 
 #: ../settings/appearance-settings.c:834
-msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
-msgstr "Hogy az Xfce tutira ne kezelje az asztalodat a következő indítástól, mentsd a munkafolyamatot a kijelentkezéskor. Ha nem használod az Xfce folyamatkezelőt (xfce4-session), kézzel kell szerkesztenes a ~/.config/xfce4/xinitrc fájlt.  Részletek a doksiban a http://xfce.org/ -on."
+msgid ""
+"To ensure that Xfce does not manage your desktop the next time you start "
+"Xfce, please be sure to save your session when logging out.  If you are not "
+"using the Xfce Session Manager (xfce4-session), you will need to manually "
+"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
+"documentation provided on http://xfce.org/."
+msgstr ""
+"Hogy az Xfce tutira ne kezelje az asztalodat a következő indítástól, mentsd "
+"a munkafolyamatot a kijelentkezéskor. Ha nem használod az Xfce "
+"folyamatkezelőt (xfce4-session), kézzel kell szerkesztenes a ~/.config/xfce4/"
+"xinitrc fájlt.  Részletek a doksiban a http://xfce.org/ -on."
 
 #: ../settings/appearance-settings.c:842
 msgid "_Do not show this again"
 msgstr "Ne mutas_d legközelebb"
 
 #. the dialog
-#: ../settings/appearance-settings.c:909
-#: ../src/xfce-desktop.c:566
+#: ../settings/appearance-settings.c:909 ../src/xfce-desktop.c:566
 msgid "Desktop"
 msgstr "Munkaasztal"
 
@@ -614,17 +603,18 @@ msgstr "Képernyő %d, Monitor %d"
 msgid "_Behavior"
 msgstr "Viselkedés"
 
-#: ../settings/backdrop-list-manager.c:160
-#: ../src/xfce-desktop-settings.c:74
+#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your changes"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
 msgstr ""
 "A %s fájlt nem sikerült menteni: %s\n"
 "\n"
-"Válasszon egy másik helyet, vagy nyomja meg a Mégsem gombot a párbeszédpanelen a változások elvetéséhez."
+"Válasszon egy másik helyet, vagy nyomja meg a Mégsem gombot a "
+"párbeszédpanelen a változások elvetéséhez."
 
 #: ../settings/backdrop-list-manager.c:430
 msgid "Select backdrop image file"
@@ -718,13 +708,11 @@ msgstr "Fordítási opciók:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Asztali Menü:        %s\n"
 
-#: ../src/main.c:251
-#: ../src/main.c:258
+#: ../src/main.c:251 ../src/main.c:258
 msgid "enabled"
 msgstr "bekapcsolva"
 
-#: ../src/main.c:253
-#: ../src/main.c:260
+#: ../src/main.c:253 ../src/main.c:260
 msgid "disabled"
 msgstr "kikapcsolva"
 
@@ -751,7 +739,8 @@ msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Menü megjelenítése (az egér pozíciójánál)\n"
 
 #: ../src/main.c:292
-msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist Ablaklista megjelenítése (az egér pozíciójánál)\n"
 
 #: ../src/main.c:293
@@ -768,8 +757,7 @@ msgstr "<b>%d. munkaterület</b>"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>%d. munkaterület</i>"
 
-#: ../src/windowlist.c:268
-#: ../src/windowlist.c:271
+#: ../src/windowlist.c:268 ../src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "Munkaterület hozzá_adása"
 
@@ -785,7 +773,8 @@ msgstr "E munkaterület tö_rlése: '%s'"
 
 #: ../src/xfdesktop-file-icon-manager.c:219
 #, c-format
-msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "Az Xfdesktop nem tud \"%s\" könyvtárat létrehozni az asztal elemekhez:"
 
 #: ../src/xfdesktop-file-icon-manager.c:221
@@ -796,8 +785,12 @@ msgstr "Mappa létrehozási hiba"
 
 #: ../src/xfdesktop-file-icon-manager.c:228
 #, c-format
-msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr "Az Xfdesktop nem tudja \"%s\"-t használni az asztali elemekhez, mert nem könyvtár"
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr ""
+"Az Xfdesktop nem tudja \"%s\"-t használni az asztali elemekhez, mert nem "
+"könyvtár"
 
 #: ../src/xfdesktop-file-icon-manager.c:232
 msgid "Please delete or rename the file."
@@ -856,8 +849,11 @@ msgid "Delete Multiple Files"
 msgstr "Fájlok törlése"
 
 #: ../src/xfdesktop-file-icon-manager.c:748
-msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-msgstr "E képesség fájlkezelő szolgáltatást kíván (mint amilyet például a Thunar ad)"
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
+msgstr ""
+"E képesség fájlkezelő szolgáltatást kíván (mint amilyet például a Thunar ad)"
 
 #: ../src/xfdesktop-file-icon-manager.c:833
 #, c-format
@@ -1114,14 +1110,12 @@ msgstr "Nincsenek telepített sablonok"
 msgid "_Empty File"
 msgstr "Üres fájl"
 
-#: ../src/xfdesktop-file-icon-manager.c:3000
-#: ../src/xfdesktop-file-icon.c:540
+#: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:540
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "\"%s\" nem futtatható:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3002
-#: ../src/xfdesktop-file-icon.c:542
+#: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:542
 msgid "Run Error"
 msgstr "Futtatási hiba"
 
@@ -1172,4 +1166,3 @@ msgstr "Xfce 4 asztalkezelő beállítások"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 Asztal Beállítások"
-
