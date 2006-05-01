@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-30 17:19+0900\n"
-"PO-Revision-Date: 2006-04-23 16:37+0600\n"
+"PO-Revision-Date: 2006-05-01 17:53+0600\n"
 "Last-Translator: Andrey Fedoseev <andrey.fedoseev@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -792,8 +792,8 @@ msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
-"Нельзя использовать \"%s\" для хранения элементов рабочего стола потому что "
-"это не папкаю."
+"Нельзя использовать \"%s\" для хранения элементов рабочего стола, потому что "
+"это не папка."
 
 #: ../src/xfdesktop-file-icon-manager.c:232
 msgid "Please delete or rename the file."
@@ -862,20 +862,20 @@ msgstr ""
 #: ../src/xfdesktop-file-icon-manager.c:833
 #, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "Невозможно смонтировать \"%s\":"
+msgstr "Невозможно подключить \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:834
 #, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "Невозможно размонтировать \"%s\":"
+msgstr "Невозможно отключить \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:837
 msgid "Mount Failed"
-msgstr "Не удалось смонтировать"
+msgstr "Не удалось подключить"
 
 #: ../src/xfdesktop-file-icon-manager.c:837
 msgid "Unmount Failed"
-msgstr "Не удалось размонтировать"
+msgstr "Не удалось отключить"
 
 #: ../src/xfdesktop-file-icon-manager.c:866
 #, c-format
@@ -1063,7 +1063,6 @@ msgid "_Unmount Volume"
 msgstr "О_тключить том"
 
 #: ../src/xfdesktop-file-icon-manager.c:2094
-#, fuzzy
 msgid "E_ject Volume"
 msgstr "_Извлечь том"
 
@@ -1125,19 +1124,19 @@ msgid "Run Error"
 msgstr "Ошибка при выполнении"
 
 #: ../src/xfdesktop-file-icon.c:468
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr "Произошла ошибка при %s \"%s\" в \"%s\":"
+msgstr "Произошла ошибка при перемещении \"%s\" в \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:470
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr "Произошла ошибка при %s \"%s\" в \"%s\":"
+msgstr "Произошла ошибка при копировании \"%s\" в \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:472
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr "Произошла ошибка при %s \"%s\" в \"%s\":"
+msgstr "Произошла ошибка при создани ссылки на \"%s\" в \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:477
 msgid "File Error"
@@ -1162,7 +1161,7 @@ msgstr "Редактор меню Xfce 4"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr "Отображает меню, содержащее категории уставленных приложений"
+msgstr "Отображает меню, содержащее категории установленных приложений"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
