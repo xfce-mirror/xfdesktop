@@ -1065,6 +1065,8 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
     
     gtk_window_set_accept_focus(GTK_WINDOW(icon_view->priv->parent_window),
                                 TRUE);
+    gtk_window_set_focus_on_map(GTK_WINDOW(icon_view->priv->parent_window),
+                                FALSE);
     
     pctx = gtk_widget_get_pango_context(GTK_WIDGET(icon_view));
     icon_view->priv->playout = pango_layout_new(pctx);
