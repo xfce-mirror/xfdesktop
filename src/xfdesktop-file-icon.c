@@ -31,13 +31,13 @@
 #include <unistd.h>
 #endif
 
-#ifndef PATH_MAX
-#define PATH_MAX 4096
-#endif
-
 #ifdef HAVE_LIBEXO
 #define EXO_API_SUBJECT_TO_CHANGE
 #include <exo/exo.h>
+#endif
+
+#ifndef PATH_MAX
+#define PATH_MAX 4096
 #endif
 
 #include <libxfcegui4/libxfcegui4.h>
@@ -116,15 +116,21 @@ static guint __signals[N_SIGS] = { 0, };
 static GdkPixbuf *xfdesktop_fallback_icon = NULL;
 
 
+#ifdef HAVE_THUNARX
 G_DEFINE_TYPE_EXTENDED(XfdesktopFileIcon, xfdesktop_file_icon,
                        G_TYPE_OBJECT, 0,
                        G_IMPLEMENT_INTERFACE(XFDESKTOP_TYPE_ICON,
                                              xfdesktop_file_icon_icon_init)
-#ifdef HAVE_THUNARX
                        G_IMPLEMENT_INTERFACE(THUNARX_TYPE_FILE_INFO,
                                              xfdesktop_file_icon_tfi_init)
-#endif
                        )
+#else
+G_DEFINE_TYPE_EXTENDED(XfdesktopFileIcon, xfdesktop_file_icon,
+                       G_TYPE_OBJECT, 0,
+                       G_IMPLEMENT_INTERFACE(XFDESKTOP_TYPE_ICON,
+                                             xfdesktop_file_icon_icon_init)
+                       )
+#endif
 
 
 
@@ -165,9 +171,10 @@ xfdesktop_file_icon_finalize(GObject *obj)
     if(icon->priv->active_jobs) {
         GList *l;
         ThunarVfsJob *job;
+        GCallback cb;
         for(l = icon->priv->active_jobs; l; l = l->next) {
             job = THUNAR_VFS_JOB(l->data);
-            GCallback cb = g_object_get_data(G_OBJECT(job),
+            cb = g_object_get_data(G_OBJECT(job),
                                              "--xfdesktop-file-icon-callback");
             if(cb) {
                 gpointer data = g_object_get_data(G_OBJECT(obj),

@@ -28,13 +28,16 @@ void
 treeview_drag_data_get_cb (GtkWidget * widget, GdkDragContext * dc,
                            GtkSelectionData * data, guint info, guint time, gpointer user_data)
 {
+  GtkTreeRowReference *ref;
+  GtkTreePath *path_source;
+
   if (info == DND_TARGET_MENUEDITOR) {
     MenuEditor *me;
 
     me = (MenuEditor *) user_data;
     
-    GtkTreeRowReference *ref = g_object_get_data (G_OBJECT (dc), "gtk-tree-view-source-row");
-    GtkTreePath *path_source = gtk_tree_row_reference_get_path (ref);
+    ref = g_object_get_data (G_OBJECT (dc), "gtk-tree-view-source-row");
+    path_source = gtk_tree_row_reference_get_path (ref);
 
     gtk_selection_data_set (data, gdk_atom_intern ("MENUEDITOR_ENTRY", FALSE), 8,  /* bits */
 			    (gpointer) &path_source, sizeof (path_source));

@@ -164,10 +164,11 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
 #ifdef HAVE_THUNAR_VFS
         case XFCE_DESKTOP_ICON_STYLE_FILES:
             {
+                ThunarVfsPath *path;
                 gchar *desktop_path = xfce_get_homefile("Desktop",
                                                         NULL);
                 thunar_vfs_init();
-                ThunarVfsPath *path = thunar_vfs_path_new(desktop_path, NULL);
+                path = thunar_vfs_path_new(desktop_path, NULL);
                 if(path) {
                     manager = xfdesktop_file_icon_manager_new(path);
                     /* FIXME: make a pref */
