@@ -56,8 +56,7 @@ GType xfdesktop_file_icon_get_type() G_GNUC_CONST;
 
 XfdesktopFileIcon *xfdesktop_file_icon_new(ThunarVfsInfo *info,
                                            GdkScreen *screen);
-XfdesktopFileIcon *xfdesktop_file_icon_new_for_volume(ThunarVfsInfo *info,
-                                                      ThunarVfsVolume *volume,
+XfdesktopFileIcon *xfdesktop_file_icon_new_for_volume(ThunarVfsVolume *volume,
                                                       GdkScreen *screen);
 
 void xfdesktop_file_icon_set_pixbuf_opacity(XfdesktopFileIcon *icon,

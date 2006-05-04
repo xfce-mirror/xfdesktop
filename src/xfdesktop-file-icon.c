@@ -257,11 +257,18 @@ xfdesktop_file_icon_new(ThunarVfsInfo *info,
 }
 
 XfdesktopFileIcon *
-xfdesktop_file_icon_new_for_volume(ThunarVfsInfo *info,
-                                   ThunarVfsVolume *volume,
+xfdesktop_file_icon_new_for_volume(ThunarVfsVolume *volume,
                                    GdkScreen *screen)
 {
+    ThunarVfsPath *path;
+    ThunarVfsInfo *info = NULL;
+    
     g_return_val_if_fail(THUNAR_VFS_IS_VOLUME(volume), NULL);
+    
+    path = thunar_vfs_volume_get_mount_point(volume);
+    if(path)
+        info = thunar_vfs_info_new_for_path(path, NULL);
+    
     return _xfdesktop_file_icon_new_internal(info, volume, screen);
 }
 
