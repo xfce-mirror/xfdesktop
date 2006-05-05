@@ -51,9 +51,9 @@
 		<subcategory name="WebDevelopment" />
 	</category>
 	<category name="Building" replace="Koostaminen" builtin-icon="DEVELOPMENT" />
-	<category name="Debugger" replace="Virheiden korjaus" builtin-icon="DEVELOPMENT" />
+	<category name="Debugger" replace="Vianetsintä" builtin-icon="DEVELOPMENT" />
 	<category name="IDE" replace="Kehitysympäristöt" builtin-icon="DEVELOPMENT" />
-	<category name="GUIDesigner" replace="GUI Designerit" builtin-icon="DEVELOPMENT" />
+	<category name="GUIDesigner" replace="GUI-suunnittelu" builtin-icon="DEVELOPMENT" />
 	<category name="Profiling" replace="Profilointi" builtin-icon="DEVELOPMENT" />
 	<category name="RevisionControl" replace="Versionhallinta" builtin-icon="DEVELOPMENT" />
 	<category name="Translation" replace="Kääntäminen" builtin-icon="DEVELOPMENT" />
@@ -75,7 +75,7 @@
 		<subcategory name="Viewer" />
 	</category>
 	<category name="Calendar" replace="Kalenteri" builtin-icon="PRODUCTIVITY" />
-	<category name="ContactManagement" replace="Yhteystietojen Hallinta" builtin-icon="PRODUCTIVITY" />
+	<category name="ContactManagement" replace="Yhteystietojen hallinta" builtin-icon="PRODUCTIVITY" />
 	<category name="Database" replace="Tietokannat" builtin-icon="PRODUCTIVITY" />
 	<category name="Dictionary" replace="Sanakirjat" builtin-icon="PRODUCTIVITY" />
 	<category name="Chart" replace="Kaaviot" builtin-icon="PRODUCTIVITY" />
@@ -101,7 +101,7 @@
 	<category name="VectorGraphics" replace="Vektorigrafiikka" builtin-icon="GRAPHICS" />
 	<category name="RasterGraphics" replace="Rasterigrafiikka" builtin-icon="GRAPHICS" />
 	<category name="3DGraphics" replace="3D-grafiikka" builtin-icon="GRAPHICS" />
-	<category name="Scanning" replace="Skannaus" builtin-icon="GRAPHICS">
+	<category name="Scanning" replace="Kuvanluku" builtin-icon="GRAPHICS">
 		<subcategory name="OCR" />
 	</category>
 	<category name="OCR" replace="Tekstintunnistus" builtin-icon="GRAPHICS" />
@@ -132,7 +132,7 @@
 		<subcategory name="WebBrowser" />
 		<subcategory name="WebDevelopment" />
 	</category>
-	<category name="Dialup" replace="valintaverkko" builtin-icon="NETWORK" />
+	<category name="Dialup" replace="Valintaverkko" builtin-icon="NETWORK" />
 	<category name="InstantMessaging" replace="Suoraviestintä" builtin-icon="NETWORK" />
 	<category name="IRCClient" replace="IRC-asiakasohjelmat" builtin-icon="NETWORK" />
 	<category name="FileTransfer" replace="Tiedostonsiirto" builtin-icon="NETWORK" />
@@ -143,7 +143,7 @@
 	<category name="Telephony" replace="Puhelintoiminta" builtin-icon="NETWORK" />
 	<category name="WebBrowser" replace="Web-selaus" builtin-icon="NETWORK" />
 	<category name="WebDevelopment" replace="Web-ohjelmointi" builtin-icon="NETWORK" />
-	<category name="AudioVideo" replace="Multimedia" toplevel="true" builtin-icon="MULTIMEDIA">
+	<category name="AudioVideo" replace="Ääni ja kuva" toplevel="true" builtin-icon="MULTIMEDIA">
 		<subcategory name="Database" />
 		<subcategory name="HamRadio" />
 		<subcategory name="Audio" />
@@ -163,7 +163,7 @@
 		<subcategory name="Recorder" />
 	</category>
 	<category name="Midi" builtin-icon="MULTIMEDIA" />
-	<category name="Mixer" replace="Äänenvoimakkuuden säätö" builtin-icon="MULTIMEDIA" />
+	<category name="Mixer" replace="Äänenvoimakkuus" builtin-icon="MULTIMEDIA" />
 	<category name="Sequencer" replace="Sekvensserit" builtin-icon="MULTIMEDIA" />
 	<category name="Tuner" replace="Virittimet" builtin-icon="MULTIMEDIA" />
 	<category name="Video" builtin-icon="MULTIMEDIA">
@@ -175,7 +175,7 @@
 	</category>
 	<category name="TV" builtin-icon="MULTIMEDIA" />
 	<category name="AudioVideoEditing" replace="Muokkaus" builtin-icon="MULTIMEDIA" />
-	<category name="Player" replace="Mediasoittimet" builtin-icon="MULTIMEDIA" />
+	<category name="Player" replace="Soittimet" builtin-icon="MULTIMEDIA" />
 	<category name="Recorder" replace="Tallennus" builtin-icon="MULTIMEDIA" />
 	<category name="DiscBurning" replace="CD- ja DVD-tallennus" builtin-icon="MULTIMEDIA" />
 	<category name="Game" toplevel="true" replace="Pelit" builtin-icon="GAME">
@@ -224,8 +224,8 @@
 		<subcategory name="MedicalSoftware" />
 		<subcategory name="Physics" />
 	</category>
-	<category name="Astronomy" replace="tähtitiede" />
-	<category name="Biology" replace="biologia" />
+	<category name="Astronomy" replace="Tähtitiede" />
+	<category name="Biology" replace="Biologia" />
 	<category name="Chemistry" replace="Kemia" />
 	<category name="Geology" replace="Geologia" />
 	<category name="Math" replace="Matematiikka" />
@@ -241,7 +241,7 @@
 	<category name="FileManager" replace="Tiedostonhallinta" />
 	<category name="Shell" replace="Komentotulkit" />
 	<category name="Screensaver" replace="Näytönsäästäjät" />
-	<category name="TerminalEmulator" replace="Pääte-emulaattorit" />
+	<category name="TerminalEmulator" replace="Pääteohjelmat" />
 	<category name="TrayIcon" replace="Järjestelmäkuvakkeet" />
 	<category name="System" replace="Järjestelmä" toplevel="true" builtin-icon="SYSTEM">
 		<subcategory name="FileSystem" />
