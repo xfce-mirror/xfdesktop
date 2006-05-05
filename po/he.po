@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-30 17:19+0900\n"
+"POT-Creation-Date: 2006-05-06 05:40+0900\n"
 "PO-Revision-Date: 2006-05-05 22:29+0300\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
@@ -68,7 +68,7 @@ msgstr "יציאה"
 
 #. Name
 #: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1022
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1016
 msgid "Name:"
 msgstr "שם:"
 
@@ -200,7 +200,7 @@ msgid "Select command"
 msgstr "בחירת פקודה"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:587
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:588
 msgid "Question"
 msgstr "שאלה"
 
@@ -490,8 +490,8 @@ msgstr "Xfce לא יוכל לנהל את שולחן העבודה שלך (%s)."
 msgid "Unknown Error"
 msgstr "שגיאה לא מוכרת"
 
-#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:634
-#: ../src/xfdesktop-file-icon.c:692
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:648
+#: ../src/xfdesktop-file-icon.c:706
 msgid "Error"
 msgstr "שגיאה"
 
@@ -521,7 +521,7 @@ msgid "_Do not show this again"
 msgstr "_אל תציג זאת שוב"
 
 #. the dialog
-#: ../settings/appearance-settings.c:909 ../src/xfce-desktop.c:566
+#: ../settings/appearance-settings.c:909 ../src/xfce-desktop.c:567
 msgid "Desktop"
 msgstr "שולחן עבודה"
 
@@ -663,7 +663,7 @@ msgid "Desktop Icons"
 msgstr "סמלי שולחן עבודה"
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-icon-manager.c:970
+#: ../src/xfdesktop-file-icon-manager.c:964
 msgid "None"
 msgstr "ללא"
 
@@ -737,8 +737,10 @@ msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Pop up the menu (at the current mouse position)\n"
 
 #: ../src/main.c:292
-msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgid ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+"    -windowlist  Pop up the window list (at the current mouse position)\n"
 
 #: ../src/main.c:293
 msgid "    -quit        Cause xfdesktop to quit\n"
@@ -768,18 +770,19 @@ msgstr "_הסר סביבת עבודה %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_הסר סביבת עבודה %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:219
+#: ../src/xfdesktop-file-icon-manager.c:220
 #, c-format
-msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "לא ניתן ליצור את התיקייה \"%s\" בשביל לשמור שם את פריטי שולחן העבודה:"
 
-#: ../src/xfdesktop-file-icon-manager.c:221
-#: ../src/xfdesktop-file-icon-manager.c:230
-#: ../src/xfdesktop-file-icon-manager.c:1513
+#: ../src/xfdesktop-file-icon-manager.c:222
+#: ../src/xfdesktop-file-icon-manager.c:231
+#: ../src/xfdesktop-file-icon-manager.c:1507
 msgid "Create Folder Failed"
 msgstr "יצירת תיקיה נכשלה"
 
-#: ../src/xfdesktop-file-icon-manager.c:228
+#: ../src/xfdesktop-file-icon-manager.c:229
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
@@ -788,63 +791,63 @@ msgstr ""
 "לא ניתן להשתמש ב\"%s\" בשביל לשמור שם את פריטי שולחן העבודה משום זה לא "
 "תיקייה."
 
-#: ../src/xfdesktop-file-icon-manager.c:232
+#: ../src/xfdesktop-file-icon-manager.c:233
 msgid "Please delete or rename the file."
 msgstr "אנא מחק או שנה את שם הקובץ."
 
-#: ../src/xfdesktop-file-icon-manager.c:378
-#: ../src/xfdesktop-file-icon-manager.c:709
-#: ../src/xfdesktop-file-icon-manager.c:743
+#: ../src/xfdesktop-file-icon-manager.c:379
+#: ../src/xfdesktop-file-icon-manager.c:710
+#: ../src/xfdesktop-file-icon-manager.c:744
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "אין אפשרות לשגר \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:380
-#: ../src/xfdesktop-file-icon-manager.c:711
-#: ../src/xfdesktop-file-icon-manager.c:746
+#: ../src/xfdesktop-file-icon-manager.c:381
+#: ../src/xfdesktop-file-icon-manager.c:712
+#: ../src/xfdesktop-file-icon-manager.c:747
 msgid "Launch Error"
 msgstr "שגיאת הפעלה"
 
-#: ../src/xfdesktop-file-icon-manager.c:382
+#: ../src/xfdesktop-file-icon-manager.c:383
 msgid "The associated application could not be found or executed."
 msgstr "לא הייתה אפשרות למצוא או להפעיל את היישום המקושר."
 
-#: ../src/xfdesktop-file-icon-manager.c:509
+#: ../src/xfdesktop-file-icon-manager.c:510
 #, c-format
 msgid "Rename \"%s\""
 msgstr "שנה שם \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:516
-#: ../src/xfdesktop-file-icon-manager.c:1545
-#: ../src/xfdesktop-file-icon-manager.c:1623
-#: ../src/xfdesktop-file-icon-manager.c:1634
+#: ../src/xfdesktop-file-icon-manager.c:517
+#: ../src/xfdesktop-file-icon-manager.c:1539
+#: ../src/xfdesktop-file-icon-manager.c:1617
+#: ../src/xfdesktop-file-icon-manager.c:1628
 msgid "Enter the new name:"
 msgstr "הכנס את השם החדש:"
 
-#: ../src/xfdesktop-file-icon-manager.c:518
+#: ../src/xfdesktop-file-icon-manager.c:519
 msgid "Rename"
 msgstr "שנה שם"
 
-#: ../src/xfdesktop-file-icon-manager.c:584
+#: ../src/xfdesktop-file-icon-manager.c:585
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "האם אתה בטוח שברצונך למחוק את \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:589
-#: ../src/xfdesktop-file-icon-manager.c:609
+#: ../src/xfdesktop-file-icon-manager.c:590
+#: ../src/xfdesktop-file-icon-manager.c:610
 msgid "If you delete a file, it is permanently lost."
 msgstr "אם תמחק את הקובץ הוא ימחק לצמיתות."
 
-#: ../src/xfdesktop-file-icon-manager.c:603
+#: ../src/xfdesktop-file-icon-manager.c:604
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "האם אתה בטוח שברצונך למחוק את %d הקבצים הבאים?"
 
-#: ../src/xfdesktop-file-icon-manager.c:606
+#: ../src/xfdesktop-file-icon-manager.c:607
 msgid "Delete Multiple Files"
 msgstr "מחיקת מספר קבצים"
 
-#: ../src/xfdesktop-file-icon-manager.c:748
+#: ../src/xfdesktop-file-icon-manager.c:749
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -852,291 +855,291 @@ msgstr ""
 "אפשרות זו דורשת נוכחות של שירות מנהל קבצים (כמו לדוגמה זה המסופק על ידי "
 "Thunar)."
 
-#: ../src/xfdesktop-file-icon-manager.c:833
+#: ../src/xfdesktop-file-icon-manager.c:827
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "אין אפשרות לעגן את \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:834
+#: ../src/xfdesktop-file-icon-manager.c:828
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "אין אפשרות לנתק את עיגון \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:837
+#: ../src/xfdesktop-file-icon-manager.c:831
 msgid "Mount Failed"
 msgstr "העיגון כשל"
 
-#: ../src/xfdesktop-file-icon-manager.c:837
+#: ../src/xfdesktop-file-icon-manager.c:831
 msgid "Unmount Failed"
 msgstr "ניתוק העיגון כשל"
 
-#: ../src/xfdesktop-file-icon-manager.c:866
+#: ../src/xfdesktop-file-icon-manager.c:860
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "אין אפשרות להוציא את \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:868
+#: ../src/xfdesktop-file-icon-manager.c:862
 msgid "Eject Failed"
 msgstr "הוצאה כשלה"
 
-#: ../src/xfdesktop-file-icon-manager.c:937
+#: ../src/xfdesktop-file-icon-manager.c:931
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr "אין אפשרות להגדיר את יישום ברירת המחדל ל-\"%s\" אל \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:940
+#: ../src/xfdesktop-file-icon-manager.c:934
 msgid "Properties Error"
 msgstr "שגיאת מאפיינים"
 
-#: ../src/xfdesktop-file-icon-manager.c:970
+#: ../src/xfdesktop-file-icon-manager.c:964
 msgid "Write only"
 msgstr "כתיבה בלבד"
 
-#: ../src/xfdesktop-file-icon-manager.c:970
+#: ../src/xfdesktop-file-icon-manager.c:964
 msgid "Read only"
 msgstr "קריאה בלבד"
 
-#: ../src/xfdesktop-file-icon-manager.c:970
+#: ../src/xfdesktop-file-icon-manager.c:964
 msgid "Read & Write"
 msgstr "קריאה וכתיבה"
 
-#: ../src/xfdesktop-file-icon-manager.c:997
+#: ../src/xfdesktop-file-icon-manager.c:991
 msgid "General"
 msgstr "כללי"
 
-#: ../src/xfdesktop-file-icon-manager.c:1048
+#: ../src/xfdesktop-file-icon-manager.c:1042
 msgid "Kind:"
 msgstr "סוג:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1058
+#: ../src/xfdesktop-file-icon-manager.c:1052
 msgid "broken link"
 msgstr "קישור שבור"
 
-#: ../src/xfdesktop-file-icon-manager.c:1061
+#: ../src/xfdesktop-file-icon-manager.c:1055
 #, c-format
 msgid "link to %s"
 msgstr "קיצור דרך אל %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1078
+#: ../src/xfdesktop-file-icon-manager.c:1072
 msgid "Link Target:"
 msgstr "יעד הקישור:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1095
-#: ../src/xfdesktop-file-icon-manager.c:1254
+#: ../src/xfdesktop-file-icon-manager.c:1089
+#: ../src/xfdesktop-file-icon-manager.c:1248
 msgid "(unknown)"
 msgstr "(לא ידוע)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1117
+#: ../src/xfdesktop-file-icon-manager.c:1111
 msgid "Open With:"
 msgstr "פתח באמצעות:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1194
+#: ../src/xfdesktop-file-icon-manager.c:1188
 msgid "Modified:"
 msgstr "שונה:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1212
+#: ../src/xfdesktop-file-icon-manager.c:1206
 msgid "Accessed:"
 msgstr "ניגש:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1239
+#: ../src/xfdesktop-file-icon-manager.c:1233
 msgid "Free Space:"
 msgstr "מקום פנוי:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1241
+#: ../src/xfdesktop-file-icon-manager.c:1235
 msgid "Size:"
 msgstr "גודל:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1257
+#: ../src/xfdesktop-file-icon-manager.c:1251
 msgid "%s (%"
 msgstr "%s (%"
 
-#: ../src/xfdesktop-file-icon-manager.c:1257
+#: ../src/xfdesktop-file-icon-manager.c:1251
 msgid " Bytes)"
 msgstr "בתים"
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1272
+#: ../src/xfdesktop-file-icon-manager.c:1266
 msgid "Permissions"
 msgstr "הרשאות"
 
-#: ../src/xfdesktop-file-icon-manager.c:1294
+#: ../src/xfdesktop-file-icon-manager.c:1288
 msgid "Owner:"
 msgstr "בעלים:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1312
-#: ../src/xfdesktop-file-icon-manager.c:1350
+#: ../src/xfdesktop-file-icon-manager.c:1306
+#: ../src/xfdesktop-file-icon-manager.c:1344
 msgid "Access:"
 msgstr "גישה:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1335
+#: ../src/xfdesktop-file-icon-manager.c:1329
 msgid "Group:"
 msgstr "קבוצה:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1373
+#: ../src/xfdesktop-file-icon-manager.c:1367
 msgid "Others:"
 msgstr "אחרים:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1446
+#: ../src/xfdesktop-file-icon-manager.c:1440
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "פתח באמצעות \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1449
+#: ../src/xfdesktop-file-icon-manager.c:1443
 #, c-format
 msgid "Open With \"%s\""
 msgstr "פתח באמצעות \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1510
+#: ../src/xfdesktop-file-icon-manager.c:1504
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "אין אפשרות ליצור תיקיה בשם \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1542
+#: ../src/xfdesktop-file-icon-manager.c:1536
 msgid "Create New Folder"
 msgstr "יצירת תיקיה חדשה"
 
-#: ../src/xfdesktop-file-icon-manager.c:1546
+#: ../src/xfdesktop-file-icon-manager.c:1540
 msgid "New Folder"
 msgstr "תיקייה חדשה"
 
-#: ../src/xfdesktop-file-icon-manager.c:1547
-#: ../src/xfdesktop-file-icon-manager.c:1625
-#: ../src/xfdesktop-file-icon-manager.c:1636
+#: ../src/xfdesktop-file-icon-manager.c:1541
+#: ../src/xfdesktop-file-icon-manager.c:1619
+#: ../src/xfdesktop-file-icon-manager.c:1630
 msgid "Create"
 msgstr "צור"
 
-#: ../src/xfdesktop-file-icon-manager.c:1583
+#: ../src/xfdesktop-file-icon-manager.c:1577
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "אין אפשרות ליצור קובץ בשם \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1586
+#: ../src/xfdesktop-file-icon-manager.c:1580
 msgid "Create File Failed"
 msgstr "יצירת קובץ נכשלה"
 
-#: ../src/xfdesktop-file-icon-manager.c:1612
+#: ../src/xfdesktop-file-icon-manager.c:1606
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "יצירת מסמך מתבנית \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1631
+#: ../src/xfdesktop-file-icon-manager.c:1625
 msgid "Create Empty File"
 msgstr "יצירת קובץ ריק"
 
-#: ../src/xfdesktop-file-icon-manager.c:1635
+#: ../src/xfdesktop-file-icon-manager.c:1629
 msgid "New Empty File"
 msgstr "קובץ ריק חדש"
 
-#: ../src/xfdesktop-file-icon-manager.c:1890
+#: ../src/xfdesktop-file-icon-manager.c:1884
 msgid "_Open all"
 msgstr "_פתח הכל"
 
-#: ../src/xfdesktop-file-icon-manager.c:1901
+#: ../src/xfdesktop-file-icon-manager.c:1895
 msgid "_Open"
 msgstr "_פתיחה"
 
-#: ../src/xfdesktop-file-icon-manager.c:1912
+#: ../src/xfdesktop-file-icon-manager.c:1906
 msgid "_Execute"
 msgstr "_הפעלה"
 
-#: ../src/xfdesktop-file-icon-manager.c:1956
+#: ../src/xfdesktop-file-icon-manager.c:1950
 msgid "Open With"
 msgstr "פתיחה באמצעות"
 
-#: ../src/xfdesktop-file-icon-manager.c:1986
+#: ../src/xfdesktop-file-icon-manager.c:1980
 msgid "Open With Other _Application..."
 msgstr "פתיחה באמצעות יישום _אחר..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2069
+#: ../src/xfdesktop-file-icon-manager.c:2063
 msgid "_Mount Volume"
 msgstr "_Mount Volume"
 
-#: ../src/xfdesktop-file-icon-manager.c:2080
+#: ../src/xfdesktop-file-icon-manager.c:2074
 msgid "_Unmount Volume"
 msgstr "_נתק כרך"
 
-#: ../src/xfdesktop-file-icon-manager.c:2094
+#: ../src/xfdesktop-file-icon-manager.c:2088
 #, fuzzy
 msgid "E_ject Volume"
 msgstr "_הוצא כרך"
 
-#: ../src/xfdesktop-file-icon-manager.c:2104
+#: ../src/xfdesktop-file-icon-manager.c:2098
 msgid "_Copy Files"
 msgstr "_העתקת קבצים"
 
-#: ../src/xfdesktop-file-icon-manager.c:2105
+#: ../src/xfdesktop-file-icon-manager.c:2099
 msgid "_Copy File"
 msgstr "_העתק קובץ"
 
-#: ../src/xfdesktop-file-icon-manager.c:2114
+#: ../src/xfdesktop-file-icon-manager.c:2108
 msgid "Cu_t Files"
 msgstr "_גזור קבצים"
 
-#: ../src/xfdesktop-file-icon-manager.c:2115
+#: ../src/xfdesktop-file-icon-manager.c:2109
 msgid "Cu_t File"
 msgstr "_גזור קובץ"
 
-#: ../src/xfdesktop-file-icon-manager.c:2124
+#: ../src/xfdesktop-file-icon-manager.c:2118
 msgid "_Delete Files"
 msgstr "_מחק קבצים"
 
-#: ../src/xfdesktop-file-icon-manager.c:2125
+#: ../src/xfdesktop-file-icon-manager.c:2119
 msgid "_Delete File"
 msgstr "_מחק קובץ"
 
-#: ../src/xfdesktop-file-icon-manager.c:2137
+#: ../src/xfdesktop-file-icon-manager.c:2131
 msgid "_Rename..."
 msgstr "_שנה שם..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2155
+#: ../src/xfdesktop-file-icon-manager.c:2149
 msgid "_Properties..."
 msgstr "_מאפיינים..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2171
+#: ../src/xfdesktop-file-icon-manager.c:2165
 msgid "Create _Folder..."
 msgstr "צור _תיקייה..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2178
+#: ../src/xfdesktop-file-icon-manager.c:2172
 msgid "Create _Document"
 msgstr "צור _מסמך"
 
-#: ../src/xfdesktop-file-icon-manager.c:2199
+#: ../src/xfdesktop-file-icon-manager.c:2193
 msgid "No Templates installed"
 msgstr "אין תבניות מותקנות"
 
-#: ../src/xfdesktop-file-icon-manager.c:2211
+#: ../src/xfdesktop-file-icon-manager.c:2205
 msgid "_Empty File"
 msgstr "קובץ _ריק"
 
-#: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:540
+#: ../src/xfdesktop-file-icon-manager.c:3005 ../src/xfdesktop-file-icon.c:554
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "אין אפשרות להריץ את \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:542
+#: ../src/xfdesktop-file-icon-manager.c:3007 ../src/xfdesktop-file-icon.c:556
 msgid "Run Error"
 msgstr "שגיאת הרצה"
 
-#: ../src/xfdesktop-file-icon.c:468
+#: ../src/xfdesktop-file-icon.c:482
 #, fuzzy, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
 msgstr "ארעה שגיאה %s \"%s\" אל \"%s\":"
 
-#: ../src/xfdesktop-file-icon.c:470
+#: ../src/xfdesktop-file-icon.c:484
 #, fuzzy, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
 msgstr "ארעה שגיאה %s \"%s\" אל \"%s\":"
 
-#: ../src/xfdesktop-file-icon.c:472
+#: ../src/xfdesktop-file-icon.c:486
 #, fuzzy, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
 msgstr "ארעה שגיאה %s \"%s\" אל \"%s\":"
 
-#: ../src/xfdesktop-file-icon.c:477
+#: ../src/xfdesktop-file-icon.c:491
 msgid "File Error"
 msgstr "שגיאת בקובץ"
 
-#: ../src/xfdesktop-file-icon.c:689
+#: ../src/xfdesktop-file-icon.c:703
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "כשל בשינוי שם \"%s\" ל-\"%s\":"
@@ -1164,4 +1167,3 @@ msgstr "הגדרות שולחן העבודה של Xfce 4"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "הגדרות שולחן העבודה Xfce 4"
-

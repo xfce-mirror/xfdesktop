@@ -7,9 +7,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.3.90.1\n"
+"Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-30 17:19+0900\n"
+"POT-Creation-Date: 2006-05-06 05:40+0900\n"
 "PO-Revision-Date: 2006-05-01 17:53+0600\n"
 "Last-Translator: Andrey Fedoseev <andrey.fedoseev@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -68,7 +68,7 @@ msgstr "Выйти"
 
 #. Name
 #: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1022
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1016
 msgid "Name:"
 msgstr "Название:"
 
@@ -200,7 +200,7 @@ msgid "Select command"
 msgstr "Выберите команду"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:587
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:588
 msgid "Question"
 msgstr "Вопрос"
 
@@ -492,8 +492,8 @@ msgstr "Xfce не сможет управлять вашим рабочим ст
 msgid "Unknown Error"
 msgstr "Неизвестная ошибка"
 
-#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:634
-#: ../src/xfdesktop-file-icon.c:692
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:648
+#: ../src/xfdesktop-file-icon.c:706
 msgid "Error"
 msgstr "Ошибка"
 
@@ -524,7 +524,7 @@ msgid "_Do not show this again"
 msgstr "Больше _не показывать"
 
 #. the dialog
-#: ../settings/appearance-settings.c:909 ../src/xfce-desktop.c:566
+#: ../settings/appearance-settings.c:909 ../src/xfce-desktop.c:567
 msgid "Desktop"
 msgstr "Рабочий стол"
 
@@ -666,7 +666,7 @@ msgid "Desktop Icons"
 msgstr "Значки на рабочем столе"
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-icon-manager.c:970
+#: ../src/xfdesktop-file-icon-manager.c:964
 msgid "None"
 msgstr "Ничего"
 
@@ -774,19 +774,19 @@ msgstr "_Удалить рабочее место %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Удалить рабочее место '%s'"
 
-#: ../src/xfdesktop-file-icon-manager.c:219
+#: ../src/xfdesktop-file-icon-manager.c:220
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "Не удалось создать папку \"%s\" для хранения элементов рабочего стола:"
 
-#: ../src/xfdesktop-file-icon-manager.c:221
-#: ../src/xfdesktop-file-icon-manager.c:230
-#: ../src/xfdesktop-file-icon-manager.c:1513
+#: ../src/xfdesktop-file-icon-manager.c:222
+#: ../src/xfdesktop-file-icon-manager.c:231
+#: ../src/xfdesktop-file-icon-manager.c:1507
 msgid "Create Folder Failed"
 msgstr "Не удалось создать папку"
 
-#: ../src/xfdesktop-file-icon-manager.c:228
+#: ../src/xfdesktop-file-icon-manager.c:229
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
@@ -795,63 +795,63 @@ msgstr ""
 "Нельзя использовать \"%s\" для хранения элементов рабочего стола, потому что "
 "это не папка."
 
-#: ../src/xfdesktop-file-icon-manager.c:232
+#: ../src/xfdesktop-file-icon-manager.c:233
 msgid "Please delete or rename the file."
 msgstr "Удалите или переименуйте файл."
 
-#: ../src/xfdesktop-file-icon-manager.c:378
-#: ../src/xfdesktop-file-icon-manager.c:709
-#: ../src/xfdesktop-file-icon-manager.c:743
+#: ../src/xfdesktop-file-icon-manager.c:379
+#: ../src/xfdesktop-file-icon-manager.c:710
+#: ../src/xfdesktop-file-icon-manager.c:744
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Невозможно запустить \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:380
-#: ../src/xfdesktop-file-icon-manager.c:711
-#: ../src/xfdesktop-file-icon-manager.c:746
+#: ../src/xfdesktop-file-icon-manager.c:381
+#: ../src/xfdesktop-file-icon-manager.c:712
+#: ../src/xfdesktop-file-icon-manager.c:747
 msgid "Launch Error"
 msgstr "Ошибка запуска"
 
-#: ../src/xfdesktop-file-icon-manager.c:382
+#: ../src/xfdesktop-file-icon-manager.c:383
 msgid "The associated application could not be found or executed."
 msgstr "Связанное с этим файлом приложение не может быть найдено или запущено."
 
-#: ../src/xfdesktop-file-icon-manager.c:509
+#: ../src/xfdesktop-file-icon-manager.c:510
 #, c-format
 msgid "Rename \"%s\""
 msgstr "Переименовать \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:516
-#: ../src/xfdesktop-file-icon-manager.c:1545
-#: ../src/xfdesktop-file-icon-manager.c:1623
-#: ../src/xfdesktop-file-icon-manager.c:1634
+#: ../src/xfdesktop-file-icon-manager.c:517
+#: ../src/xfdesktop-file-icon-manager.c:1539
+#: ../src/xfdesktop-file-icon-manager.c:1617
+#: ../src/xfdesktop-file-icon-manager.c:1628
 msgid "Enter the new name:"
 msgstr "Укажите новое имя:"
 
-#: ../src/xfdesktop-file-icon-manager.c:518
+#: ../src/xfdesktop-file-icon-manager.c:519
 msgid "Rename"
 msgstr "Переименовать"
 
-#: ../src/xfdesktop-file-icon-manager.c:584
+#: ../src/xfdesktop-file-icon-manager.c:585
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Вы уверены, что хотите удалить \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:589
-#: ../src/xfdesktop-file-icon-manager.c:609
+#: ../src/xfdesktop-file-icon-manager.c:590
+#: ../src/xfdesktop-file-icon-manager.c:610
 msgid "If you delete a file, it is permanently lost."
 msgstr "Если вы удалите файл, он будет потерян навсегда."
 
-#: ../src/xfdesktop-file-icon-manager.c:603
+#: ../src/xfdesktop-file-icon-manager.c:604
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Вы уверены, что хотите удалить следующие %d файлов?"
 
-#: ../src/xfdesktop-file-icon-manager.c:606
+#: ../src/xfdesktop-file-icon-manager.c:607
 msgid "Delete Multiple Files"
 msgstr "Удалить несколько файлов"
 
-#: ../src/xfdesktop-file-icon-manager.c:748
+#: ../src/xfdesktop-file-icon-manager.c:749
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -859,290 +859,290 @@ msgstr ""
 "Эта функция требует наличия службы файлового менеджера (такой, которая "
 "поддерживается в Thunar)."
 
-#: ../src/xfdesktop-file-icon-manager.c:833
+#: ../src/xfdesktop-file-icon-manager.c:827
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "Невозможно подключить \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:834
+#: ../src/xfdesktop-file-icon-manager.c:828
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "Невозможно отключить \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:837
+#: ../src/xfdesktop-file-icon-manager.c:831
 msgid "Mount Failed"
 msgstr "Не удалось подключить"
 
-#: ../src/xfdesktop-file-icon-manager.c:837
+#: ../src/xfdesktop-file-icon-manager.c:831
 msgid "Unmount Failed"
 msgstr "Не удалось отключить"
 
-#: ../src/xfdesktop-file-icon-manager.c:866
+#: ../src/xfdesktop-file-icon-manager.c:860
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "Невозможно извлечь  \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:868
+#: ../src/xfdesktop-file-icon-manager.c:862
 msgid "Eject Failed"
 msgstr "Не удалось извлечь"
 
-#: ../src/xfdesktop-file-icon-manager.c:937
+#: ../src/xfdesktop-file-icon-manager.c:931
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr "Не удалось назначить приложение по умолчанию для \"%s\" \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:940
+#: ../src/xfdesktop-file-icon-manager.c:934
 msgid "Properties Error"
 msgstr "Ошибка в свойствах"
 
-#: ../src/xfdesktop-file-icon-manager.c:970
+#: ../src/xfdesktop-file-icon-manager.c:964
 msgid "Write only"
 msgstr "Только запись"
 
-#: ../src/xfdesktop-file-icon-manager.c:970
+#: ../src/xfdesktop-file-icon-manager.c:964
 msgid "Read only"
 msgstr "Только чтение"
 
-#: ../src/xfdesktop-file-icon-manager.c:970
+#: ../src/xfdesktop-file-icon-manager.c:964
 msgid "Read & Write"
 msgstr "Чтение и запись"
 
-#: ../src/xfdesktop-file-icon-manager.c:997
+#: ../src/xfdesktop-file-icon-manager.c:991
 msgid "General"
 msgstr "Общее"
 
-#: ../src/xfdesktop-file-icon-manager.c:1048
+#: ../src/xfdesktop-file-icon-manager.c:1042
 msgid "Kind:"
 msgstr "Тип:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1058
+#: ../src/xfdesktop-file-icon-manager.c:1052
 msgid "broken link"
 msgstr "битая ссылка"
 
-#: ../src/xfdesktop-file-icon-manager.c:1061
+#: ../src/xfdesktop-file-icon-manager.c:1055
 #, c-format
 msgid "link to %s"
 msgstr "ссылка на %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1078
+#: ../src/xfdesktop-file-icon-manager.c:1072
 msgid "Link Target:"
 msgstr "Цель ссылки:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1095
-#: ../src/xfdesktop-file-icon-manager.c:1254
+#: ../src/xfdesktop-file-icon-manager.c:1089
+#: ../src/xfdesktop-file-icon-manager.c:1248
 msgid "(unknown)"
 msgstr "(неизвестно)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1117
+#: ../src/xfdesktop-file-icon-manager.c:1111
 msgid "Open With:"
 msgstr "Открыть с помощью:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1194
+#: ../src/xfdesktop-file-icon-manager.c:1188
 msgid "Modified:"
 msgstr "Изменено:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1212
+#: ../src/xfdesktop-file-icon-manager.c:1206
 msgid "Accessed:"
 msgstr "Доступ:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1239
+#: ../src/xfdesktop-file-icon-manager.c:1233
 msgid "Free Space:"
 msgstr "Свободное место:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1241
+#: ../src/xfdesktop-file-icon-manager.c:1235
 msgid "Size:"
 msgstr "Размер:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1257
+#: ../src/xfdesktop-file-icon-manager.c:1251
 msgid "%s (%"
 msgstr "%s (%"
 
-#: ../src/xfdesktop-file-icon-manager.c:1257
+#: ../src/xfdesktop-file-icon-manager.c:1251
 msgid " Bytes)"
 msgstr " байт)"
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1272
+#: ../src/xfdesktop-file-icon-manager.c:1266
 msgid "Permissions"
 msgstr "Права"
 
-#: ../src/xfdesktop-file-icon-manager.c:1294
+#: ../src/xfdesktop-file-icon-manager.c:1288
 msgid "Owner:"
 msgstr "Владелец:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1312
-#: ../src/xfdesktop-file-icon-manager.c:1350
+#: ../src/xfdesktop-file-icon-manager.c:1306
+#: ../src/xfdesktop-file-icon-manager.c:1344
 msgid "Access:"
 msgstr "Доступ:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1335
+#: ../src/xfdesktop-file-icon-manager.c:1329
 msgid "Group:"
 msgstr "Группа:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1373
+#: ../src/xfdesktop-file-icon-manager.c:1367
 msgid "Others:"
 msgstr "Другое:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1446
+#: ../src/xfdesktop-file-icon-manager.c:1440
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Открыть с помощью \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1449
+#: ../src/xfdesktop-file-icon-manager.c:1443
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Открыть с помощью \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1510
+#: ../src/xfdesktop-file-icon-manager.c:1504
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Не удалось создать папку с именем \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1542
+#: ../src/xfdesktop-file-icon-manager.c:1536
 msgid "Create New Folder"
 msgstr "Создать новую папку"
 
-#: ../src/xfdesktop-file-icon-manager.c:1546
+#: ../src/xfdesktop-file-icon-manager.c:1540
 msgid "New Folder"
 msgstr "Новая папка"
 
-#: ../src/xfdesktop-file-icon-manager.c:1547
-#: ../src/xfdesktop-file-icon-manager.c:1625
-#: ../src/xfdesktop-file-icon-manager.c:1636
+#: ../src/xfdesktop-file-icon-manager.c:1541
+#: ../src/xfdesktop-file-icon-manager.c:1619
+#: ../src/xfdesktop-file-icon-manager.c:1630
 msgid "Create"
 msgstr "Создать"
 
-#: ../src/xfdesktop-file-icon-manager.c:1583
+#: ../src/xfdesktop-file-icon-manager.c:1577
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Невозможно создать файл с именем \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1586
+#: ../src/xfdesktop-file-icon-manager.c:1580
 msgid "Create File Failed"
 msgstr "Не удалось создать файл"
 
-#: ../src/xfdesktop-file-icon-manager.c:1612
+#: ../src/xfdesktop-file-icon-manager.c:1606
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Создать документ из шаблона \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1631
+#: ../src/xfdesktop-file-icon-manager.c:1625
 msgid "Create Empty File"
 msgstr "Создать пустой файл"
 
-#: ../src/xfdesktop-file-icon-manager.c:1635
+#: ../src/xfdesktop-file-icon-manager.c:1629
 msgid "New Empty File"
 msgstr "Новый файл"
 
-#: ../src/xfdesktop-file-icon-manager.c:1890
+#: ../src/xfdesktop-file-icon-manager.c:1884
 msgid "_Open all"
 msgstr "Открыть _все"
 
-#: ../src/xfdesktop-file-icon-manager.c:1901
+#: ../src/xfdesktop-file-icon-manager.c:1895
 msgid "_Open"
 msgstr "_Открыть"
 
-#: ../src/xfdesktop-file-icon-manager.c:1912
+#: ../src/xfdesktop-file-icon-manager.c:1906
 msgid "_Execute"
 msgstr "_Выполнить"
 
-#: ../src/xfdesktop-file-icon-manager.c:1956
+#: ../src/xfdesktop-file-icon-manager.c:1950
 msgid "Open With"
 msgstr "Открыть с помощью"
 
-#: ../src/xfdesktop-file-icon-manager.c:1986
+#: ../src/xfdesktop-file-icon-manager.c:1980
 msgid "Open With Other _Application..."
 msgstr "Открыть с помощью другого приложения..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2069
+#: ../src/xfdesktop-file-icon-manager.c:2063
 msgid "_Mount Volume"
 msgstr "_Подключить том"
 
-#: ../src/xfdesktop-file-icon-manager.c:2080
+#: ../src/xfdesktop-file-icon-manager.c:2074
 msgid "_Unmount Volume"
 msgstr "О_тключить том"
 
-#: ../src/xfdesktop-file-icon-manager.c:2094
+#: ../src/xfdesktop-file-icon-manager.c:2088
 msgid "E_ject Volume"
 msgstr "_Извлечь том"
 
-#: ../src/xfdesktop-file-icon-manager.c:2104
+#: ../src/xfdesktop-file-icon-manager.c:2098
 msgid "_Copy Files"
 msgstr "_Копировать файлы"
 
-#: ../src/xfdesktop-file-icon-manager.c:2105
+#: ../src/xfdesktop-file-icon-manager.c:2099
 msgid "_Copy File"
 msgstr "_Копировать файл"
 
-#: ../src/xfdesktop-file-icon-manager.c:2114
+#: ../src/xfdesktop-file-icon-manager.c:2108
 msgid "Cu_t Files"
 msgstr "_Вырезать файлы"
 
-#: ../src/xfdesktop-file-icon-manager.c:2115
+#: ../src/xfdesktop-file-icon-manager.c:2109
 msgid "Cu_t File"
 msgstr "_Вырезать файл"
 
-#: ../src/xfdesktop-file-icon-manager.c:2124
+#: ../src/xfdesktop-file-icon-manager.c:2118
 msgid "_Delete Files"
 msgstr "_Удалить файлы"
 
-#: ../src/xfdesktop-file-icon-manager.c:2125
+#: ../src/xfdesktop-file-icon-manager.c:2119
 msgid "_Delete File"
 msgstr "_Удалить файл"
 
-#: ../src/xfdesktop-file-icon-manager.c:2137
+#: ../src/xfdesktop-file-icon-manager.c:2131
 msgid "_Rename..."
 msgstr "Переименовать..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2155
+#: ../src/xfdesktop-file-icon-manager.c:2149
 msgid "_Properties..."
 msgstr "_Свойства..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2171
+#: ../src/xfdesktop-file-icon-manager.c:2165
 msgid "Create _Folder..."
 msgstr "Создать _папку..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2178
+#: ../src/xfdesktop-file-icon-manager.c:2172
 msgid "Create _Document"
 msgstr "Создать _документ"
 
-#: ../src/xfdesktop-file-icon-manager.c:2199
+#: ../src/xfdesktop-file-icon-manager.c:2193
 msgid "No Templates installed"
 msgstr "Не установлено ни одного шаблона"
 
-#: ../src/xfdesktop-file-icon-manager.c:2211
+#: ../src/xfdesktop-file-icon-manager.c:2205
 msgid "_Empty File"
 msgstr "_Пустой файл"
 
-#: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:540
+#: ../src/xfdesktop-file-icon-manager.c:3005 ../src/xfdesktop-file-icon.c:554
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Невозможно запустить \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:542
+#: ../src/xfdesktop-file-icon-manager.c:3007 ../src/xfdesktop-file-icon.c:556
 msgid "Run Error"
 msgstr "Ошибка при выполнении"
 
-#: ../src/xfdesktop-file-icon.c:468
+#: ../src/xfdesktop-file-icon.c:482
 #, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
 msgstr "Произошла ошибка при перемещении \"%s\" в \"%s\":"
 
-#: ../src/xfdesktop-file-icon.c:470
+#: ../src/xfdesktop-file-icon.c:484
 #, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
 msgstr "Произошла ошибка при копировании \"%s\" в \"%s\":"
 
-#: ../src/xfdesktop-file-icon.c:472
+#: ../src/xfdesktop-file-icon.c:486
 #, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
 msgstr "Произошла ошибка при создани ссылки на \"%s\" в \"%s\":"
 
-#: ../src/xfdesktop-file-icon.c:477
+#: ../src/xfdesktop-file-icon.c:491
 msgid "File Error"
 msgstr "Ошибка файла"
 
-#: ../src/xfdesktop-file-icon.c:689
+#: ../src/xfdesktop-file-icon.c:703
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Не удалось переименовать \"%s\" в \"%s\":"

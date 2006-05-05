@@ -8,9 +8,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.3.90.1\n"
+"Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-30 17:19+0900\n"
+"POT-Creation-Date: 2006-05-06 05:40+0900\n"
 "PO-Revision-Date: 2006-05-05 13:40+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -67,7 +67,7 @@ msgstr "終了"
 
 #. Name
 #: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1022
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1016
 msgid "Name:"
 msgstr "名前:"
 
@@ -199,7 +199,7 @@ msgid "Select command"
 msgstr "コマンドを選択してください"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:587
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:588
 msgid "Question"
 msgstr "質問"
 
@@ -492,8 +492,8 @@ msgstr "Xfce はあなたのデスクトップ (%s) を管理できません。"
 msgid "Unknown Error"
 msgstr "不明なエラー"
 
-#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:634
-#: ../src/xfdesktop-file-icon.c:692
+#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:648
+#: ../src/xfdesktop-file-icon.c:706
 msgid "Error"
 msgstr "エラー"
 
@@ -524,7 +524,7 @@ msgid "_Do not show this again"
 msgstr "二度と表示しない(_D)"
 
 #. the dialog
-#: ../settings/appearance-settings.c:909 ../src/xfce-desktop.c:566
+#: ../settings/appearance-settings.c:909 ../src/xfce-desktop.c:567
 msgid "Desktop"
 msgstr "デスクトップ"
 
@@ -667,7 +667,7 @@ msgid "Desktop Icons"
 msgstr "デスクトップアイコン"
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-icon-manager.c:970
+#: ../src/xfdesktop-file-icon-manager.c:964
 msgid "None"
 msgstr "無し"
 
@@ -774,19 +774,19 @@ msgstr "ワークスペース %d を削除(_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース「%s」を削除(_R)"
 
-#: ../src/xfdesktop-file-icon-manager.c:219
+#: ../src/xfdesktop-file-icon-manager.c:220
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "デスクトップのアイテムを保存するフォルダ「%s」を作成できませんでした:"
 
-#: ../src/xfdesktop-file-icon-manager.c:221
-#: ../src/xfdesktop-file-icon-manager.c:230
-#: ../src/xfdesktop-file-icon-manager.c:1513
+#: ../src/xfdesktop-file-icon-manager.c:222
+#: ../src/xfdesktop-file-icon-manager.c:231
+#: ../src/xfdesktop-file-icon-manager.c:1507
 msgid "Create Folder Failed"
 msgstr "フォルダの作成に失敗しました"
 
-#: ../src/xfdesktop-file-icon-manager.c:228
+#: ../src/xfdesktop-file-icon-manager.c:229
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
@@ -794,364 +794,364 @@ msgid ""
 msgstr ""
 "「%s」はフォルダではありませんので、デスクトップのアイテムを保存できません。"
 
-#: ../src/xfdesktop-file-icon-manager.c:232
+#: ../src/xfdesktop-file-icon-manager.c:233
 msgid "Please delete or rename the file."
 msgstr "ファイルを削除するか名前を変えてください。"
 
-#: ../src/xfdesktop-file-icon-manager.c:378
-#: ../src/xfdesktop-file-icon-manager.c:709
-#: ../src/xfdesktop-file-icon-manager.c:743
+#: ../src/xfdesktop-file-icon-manager.c:379
+#: ../src/xfdesktop-file-icon-manager.c:710
+#: ../src/xfdesktop-file-icon-manager.c:744
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "「%s」を実行できません:"
 
-#: ../src/xfdesktop-file-icon-manager.c:380
-#: ../src/xfdesktop-file-icon-manager.c:711
-#: ../src/xfdesktop-file-icon-manager.c:746
+#: ../src/xfdesktop-file-icon-manager.c:381
+#: ../src/xfdesktop-file-icon-manager.c:712
+#: ../src/xfdesktop-file-icon-manager.c:747
 msgid "Launch Error"
 msgstr "実行エラー"
 
-#: ../src/xfdesktop-file-icon-manager.c:382
+#: ../src/xfdesktop-file-icon-manager.c:383
 msgid "The associated application could not be found or executed."
 msgstr ""
 "関連付けられているアプリケーションが見つからない、あるいは実行できませんでし"
 "た。"
 
-#: ../src/xfdesktop-file-icon-manager.c:509
+#: ../src/xfdesktop-file-icon-manager.c:510
 #, c-format
 msgid "Rename \"%s\""
 msgstr "「%s」の名前変更"
 
-#: ../src/xfdesktop-file-icon-manager.c:516
-#: ../src/xfdesktop-file-icon-manager.c:1545
-#: ../src/xfdesktop-file-icon-manager.c:1623
-#: ../src/xfdesktop-file-icon-manager.c:1634
+#: ../src/xfdesktop-file-icon-manager.c:517
+#: ../src/xfdesktop-file-icon-manager.c:1539
+#: ../src/xfdesktop-file-icon-manager.c:1617
+#: ../src/xfdesktop-file-icon-manager.c:1628
 msgid "Enter the new name:"
 msgstr "新しい名前を入力してください:"
 
-#: ../src/xfdesktop-file-icon-manager.c:518
+#: ../src/xfdesktop-file-icon-manager.c:519
 msgid "Rename"
 msgstr "名前変更"
 
-#: ../src/xfdesktop-file-icon-manager.c:584
+#: ../src/xfdesktop-file-icon-manager.c:585
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "「%s」を削除してもよろしいですか？"
 
-#: ../src/xfdesktop-file-icon-manager.c:589
-#: ../src/xfdesktop-file-icon-manager.c:609
+#: ../src/xfdesktop-file-icon-manager.c:590
+#: ../src/xfdesktop-file-icon-manager.c:610
 msgid "If you delete a file, it is permanently lost."
 msgstr "削除されたファイルは二度と復元できません。"
 
-#: ../src/xfdesktop-file-icon-manager.c:603
+#: ../src/xfdesktop-file-icon-manager.c:604
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "以下 %d 個のファイルを削除してもよろしいですか？"
 
-#: ../src/xfdesktop-file-icon-manager.c:606
+#: ../src/xfdesktop-file-icon-manager.c:607
 msgid "Delete Multiple Files"
 msgstr "複数のファイルを削除"
 
-#: ../src/xfdesktop-file-icon-manager.c:748
+#: ../src/xfdesktop-file-icon-manager.c:749
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 "この機能には (Thunar が提供するような) ファイルマネージャーが必要です。"
 
-#: ../src/xfdesktop-file-icon-manager.c:833
+#: ../src/xfdesktop-file-icon-manager.c:827
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "「%s」をマウントできません:"
 
-#: ../src/xfdesktop-file-icon-manager.c:834
+#: ../src/xfdesktop-file-icon-manager.c:828
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "「%s」をマウント解除できません:"
 
-#: ../src/xfdesktop-file-icon-manager.c:837
+#: ../src/xfdesktop-file-icon-manager.c:831
 msgid "Mount Failed"
 msgstr "マウントに失敗しました"
 
-#: ../src/xfdesktop-file-icon-manager.c:837
+#: ../src/xfdesktop-file-icon-manager.c:831
 msgid "Unmount Failed"
 msgstr "マウント解除に失敗しました"
 
-#: ../src/xfdesktop-file-icon-manager.c:866
+#: ../src/xfdesktop-file-icon-manager.c:860
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "「%s」を取り出せません:"
 
-#: ../src/xfdesktop-file-icon-manager.c:868
+#: ../src/xfdesktop-file-icon-manager.c:862
 msgid "Eject Failed"
 msgstr "取り出しに失敗しました"
 
-#: ../src/xfdesktop-file-icon-manager.c:937
+#: ../src/xfdesktop-file-icon-manager.c:931
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr "「%s」の標準アプリケーションを「%s」にできません:"
 
-#: ../src/xfdesktop-file-icon-manager.c:940
+#: ../src/xfdesktop-file-icon-manager.c:934
 msgid "Properties Error"
 msgstr "プロパティエラー"
 
-#: ../src/xfdesktop-file-icon-manager.c:970
+#: ../src/xfdesktop-file-icon-manager.c:964
 msgid "Write only"
 msgstr "書込専用"
 
-#: ../src/xfdesktop-file-icon-manager.c:970
+#: ../src/xfdesktop-file-icon-manager.c:964
 msgid "Read only"
 msgstr "読込専用"
 
-#: ../src/xfdesktop-file-icon-manager.c:970
+#: ../src/xfdesktop-file-icon-manager.c:964
 msgid "Read & Write"
 msgstr "読込と書込"
 
-#: ../src/xfdesktop-file-icon-manager.c:997
+#: ../src/xfdesktop-file-icon-manager.c:991
 msgid "General"
 msgstr "全般"
 
-#: ../src/xfdesktop-file-icon-manager.c:1048
+#: ../src/xfdesktop-file-icon-manager.c:1042
 msgid "Kind:"
 msgstr "種類:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1058
+#: ../src/xfdesktop-file-icon-manager.c:1052
 msgid "broken link"
 msgstr "壊れたリンク"
 
-#: ../src/xfdesktop-file-icon-manager.c:1061
+#: ../src/xfdesktop-file-icon-manager.c:1055
 #, c-format
 msgid "link to %s"
 msgstr "%sへのリンク"
 
-#: ../src/xfdesktop-file-icon-manager.c:1078
+#: ../src/xfdesktop-file-icon-manager.c:1072
 msgid "Link Target:"
 msgstr "リンク先:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1095
-#: ../src/xfdesktop-file-icon-manager.c:1254
+#: ../src/xfdesktop-file-icon-manager.c:1089
+#: ../src/xfdesktop-file-icon-manager.c:1248
 msgid "(unknown)"
 msgstr "(不明)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1117
+#: ../src/xfdesktop-file-icon-manager.c:1111
 msgid "Open With:"
 msgstr "これで開く:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1194
+#: ../src/xfdesktop-file-icon-manager.c:1188
 msgid "Modified:"
 msgstr "変更日時:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1212
+#: ../src/xfdesktop-file-icon-manager.c:1206
 msgid "Accessed:"
 msgstr "アクセス日時:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1239
+#: ../src/xfdesktop-file-icon-manager.c:1233
 msgid "Free Space:"
 msgstr "空き容量:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1241
+#: ../src/xfdesktop-file-icon-manager.c:1235
 msgid "Size:"
 msgstr "サイズ:"
 
 # FIXME: a macro breaks the string!
-#: ../src/xfdesktop-file-icon-manager.c:1257
+#: ../src/xfdesktop-file-icon-manager.c:1251
 msgid "%s (%"
 msgstr "%s (%"
 
 # FIXME: ditto
-#: ../src/xfdesktop-file-icon-manager.c:1257
+#: ../src/xfdesktop-file-icon-manager.c:1251
 msgid " Bytes)"
 msgstr " バイト)"
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1272
+#: ../src/xfdesktop-file-icon-manager.c:1266
 msgid "Permissions"
 msgstr "アクセス権"
 
-#: ../src/xfdesktop-file-icon-manager.c:1294
+#: ../src/xfdesktop-file-icon-manager.c:1288
 msgid "Owner:"
 msgstr "ファイル所有者:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1312
-#: ../src/xfdesktop-file-icon-manager.c:1350
+#: ../src/xfdesktop-file-icon-manager.c:1306
+#: ../src/xfdesktop-file-icon-manager.c:1344
 msgid "Access:"
 msgstr "アクセス:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1335
+#: ../src/xfdesktop-file-icon-manager.c:1329
 msgid "Group:"
 msgstr "所属グループ:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1373
+#: ../src/xfdesktop-file-icon-manager.c:1367
 msgid "Others:"
 msgstr "その他の人達:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1446
+#: ../src/xfdesktop-file-icon-manager.c:1440
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "「%s」で開く(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1449
+#: ../src/xfdesktop-file-icon-manager.c:1443
 #, c-format
 msgid "Open With \"%s\""
 msgstr "「%s」で開く"
 
-#: ../src/xfdesktop-file-icon-manager.c:1510
+#: ../src/xfdesktop-file-icon-manager.c:1504
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "フォルダ「%s」を作成できません:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1542
+#: ../src/xfdesktop-file-icon-manager.c:1536
 msgid "Create New Folder"
 msgstr "新規フォルダを作成"
 
-#: ../src/xfdesktop-file-icon-manager.c:1546
+#: ../src/xfdesktop-file-icon-manager.c:1540
 msgid "New Folder"
 msgstr "新規フォルダ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1547
-#: ../src/xfdesktop-file-icon-manager.c:1625
-#: ../src/xfdesktop-file-icon-manager.c:1636
+#: ../src/xfdesktop-file-icon-manager.c:1541
+#: ../src/xfdesktop-file-icon-manager.c:1619
+#: ../src/xfdesktop-file-icon-manager.c:1630
 msgid "Create"
 msgstr "作成"
 
-#: ../src/xfdesktop-file-icon-manager.c:1583
+#: ../src/xfdesktop-file-icon-manager.c:1577
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "ファイル「%s」を作成できません:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1586
+#: ../src/xfdesktop-file-icon-manager.c:1580
 msgid "Create File Failed"
 msgstr "ファイルの作成に失敗しました"
 
-#: ../src/xfdesktop-file-icon-manager.c:1612
+#: ../src/xfdesktop-file-icon-manager.c:1606
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "テンプレート「%s」から文書を作成"
 
-#: ../src/xfdesktop-file-icon-manager.c:1631
+#: ../src/xfdesktop-file-icon-manager.c:1625
 msgid "Create Empty File"
 msgstr "空ファイルを作成"
 
-#: ../src/xfdesktop-file-icon-manager.c:1635
+#: ../src/xfdesktop-file-icon-manager.c:1629
 msgid "New Empty File"
 msgstr "新規の空ファイル"
 
-#: ../src/xfdesktop-file-icon-manager.c:1890
+#: ../src/xfdesktop-file-icon-manager.c:1884
 msgid "_Open all"
 msgstr "全て開く(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1901
+#: ../src/xfdesktop-file-icon-manager.c:1895
 msgid "_Open"
 msgstr "開く(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1912
+#: ../src/xfdesktop-file-icon-manager.c:1906
 msgid "_Execute"
 msgstr "実行(_E)"
 
 # FIXME: format string
-#: ../src/xfdesktop-file-icon-manager.c:1956
+#: ../src/xfdesktop-file-icon-manager.c:1950
 msgid "Open With"
 msgstr "次で開く"
 
-#: ../src/xfdesktop-file-icon-manager.c:1986
+#: ../src/xfdesktop-file-icon-manager.c:1980
 msgid "Open With Other _Application..."
 msgstr "他のアプリケーションで開く(_A)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2069
+#: ../src/xfdesktop-file-icon-manager.c:2063
 msgid "_Mount Volume"
 msgstr "マウント(_M)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2080
+#: ../src/xfdesktop-file-icon-manager.c:2074
 msgid "_Unmount Volume"
 msgstr "マウント解除(_U)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2094
+#: ../src/xfdesktop-file-icon-manager.c:2088
 msgid "E_ject Volume"
 msgstr "取り出し(_J)"
 
 # FIXME: ngettext()
-#: ../src/xfdesktop-file-icon-manager.c:2104
+#: ../src/xfdesktop-file-icon-manager.c:2098
 msgid "_Copy Files"
 msgstr "コピー(_C)"
 
 # FIXME: ngettext()
-#: ../src/xfdesktop-file-icon-manager.c:2105
+#: ../src/xfdesktop-file-icon-manager.c:2099
 msgid "_Copy File"
 msgstr "コピー(_C)"
 
 # FIXME: ngettext()
-#: ../src/xfdesktop-file-icon-manager.c:2114
+#: ../src/xfdesktop-file-icon-manager.c:2108
 msgid "Cu_t Files"
 msgstr "切り取り(_T)"
 
 # FIXME: ngettext()
-#: ../src/xfdesktop-file-icon-manager.c:2115
+#: ../src/xfdesktop-file-icon-manager.c:2109
 msgid "Cu_t File"
 msgstr "切り取り(_T)"
 
 # FIXME: ngettext()
-#: ../src/xfdesktop-file-icon-manager.c:2124
+#: ../src/xfdesktop-file-icon-manager.c:2118
 msgid "_Delete Files"
 msgstr "削除(_D)"
 
 # FIXME: ngettext()
-#: ../src/xfdesktop-file-icon-manager.c:2125
+#: ../src/xfdesktop-file-icon-manager.c:2119
 msgid "_Delete File"
 msgstr "削除(_D)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2137
+#: ../src/xfdesktop-file-icon-manager.c:2131
 msgid "_Rename..."
 msgstr "名前変更(_R)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2155
+#: ../src/xfdesktop-file-icon-manager.c:2149
 msgid "_Properties..."
 msgstr "プロパティ(_P)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2171
+#: ../src/xfdesktop-file-icon-manager.c:2165
 msgid "Create _Folder..."
 msgstr "フォルダを作成(_F)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2178
+#: ../src/xfdesktop-file-icon-manager.c:2172
 msgid "Create _Document"
 msgstr "文書を作成(_D)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2199
+#: ../src/xfdesktop-file-icon-manager.c:2193
 msgid "No Templates installed"
 msgstr "テンプレートがインストールされていません"
 
-#: ../src/xfdesktop-file-icon-manager.c:2211
+#: ../src/xfdesktop-file-icon-manager.c:2205
 msgid "_Empty File"
 msgstr "空のファイル(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3000 ../src/xfdesktop-file-icon.c:540
+#: ../src/xfdesktop-file-icon-manager.c:3005 ../src/xfdesktop-file-icon.c:554
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "「%s」の実行に失敗しました:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3002 ../src/xfdesktop-file-icon.c:542
+#: ../src/xfdesktop-file-icon-manager.c:3007 ../src/xfdesktop-file-icon.c:556
 msgid "Run Error"
 msgstr "実行エラー"
 
-#: ../src/xfdesktop-file-icon.c:468
+#: ../src/xfdesktop-file-icon.c:482
 #, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
 msgstr "「%s」を「%s」へ移動中にエラーが発生しました:"
 
-#: ../src/xfdesktop-file-icon.c:470
+#: ../src/xfdesktop-file-icon.c:484
 #, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
 msgstr "「%s」を「%s」にコピー中にエラーが発生しました:"
 
-#: ../src/xfdesktop-file-icon.c:472
+#: ../src/xfdesktop-file-icon.c:486
 #, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
 msgstr "「%s」を「%s」へリンク中にエラーが発生しました:"
 
-#: ../src/xfdesktop-file-icon.c:477
+#: ../src/xfdesktop-file-icon.c:491
 msgid "File Error"
 msgstr "ファイルエラー"
 
-#: ../src/xfdesktop-file-icon.c:689
+#: ../src/xfdesktop-file-icon.c:703
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "「%s」の名前を「%s」に変更するのに失敗しました:"
