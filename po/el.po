@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.3.90.2\n"
+"Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-06 05:40+0900\n"
-"PO-Revision-Date: 2006-04-23 16:38+0200\n"
+"POT-Creation-Date: 2006-05-04 22:57+0300\n"
+"PO-Revision-Date: 2006-05-06 17:15+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: ../menueditor/about_dialog.c:39
 msgid "A menu editor for Xfce4"
-msgstr "Ένας επεξεργαστής μενού για το Xfce4"
+msgstr "Επεξεργαστής μενού για το Xfce 4"
 
 #. Credits
 #: ../menueditor/about_dialog.c:43
@@ -518,9 +518,9 @@ msgid ""
 msgstr ""
 "Για να σιγουρευτείτε ότι το Xfce δε θα διαχειρίζεται την επιφάνεια εργασίας "
 "σας την επόμενη φορά που θα το ξεκινήσετε, αποθηκεύσετε τη συνεδρία σας όταν "
-"αποσυνδεθείτε. Εαν δε χρησιμοποιείτε τον Διαχειριστή συνεδρίας του Xfce "
+"αποσυνδεθείτε. Αν δε χρησιμοποιείτε τον Διαχειριστή συνεδρίας του Xfce "
 "(xfce4-session), θα πρέπει να επεξεργαστείτε χειροκίνητα το αρχείο ~/.config/"
-"xfce4/xinitrc. Υπάρχουν λεπτομέριες διαθέσιμες στην τεκμηρίωση που "
+"xfce4/xinitrc. Υπάρχουν λεπτομέρειες διαθέσιμες στην τεκμηρίωση που "
 "διατίθεται στο http://xfce.org/."
 
 #: ../settings/appearance-settings.c:842
@@ -536,7 +536,7 @@ msgstr "Επιφάνεια εργασίας"
 #: ../settings/appearance-settings.c:924
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
-msgstr "Ρυθμίσεις επιφάνειας εργασίας"
+msgstr "Επιφάνεια εργασίας"
 
 #: ../settings/appearance-settings.c:929
 msgid "Allow _Xfce to manage the desktop"
@@ -619,7 +619,7 @@ msgid ""
 msgstr ""
 "Η αποθήκευση του αρχείου %s δεν ήταν δυνατή: %s\n"
 "\n"
-"Παρακαλώ επιλέξτε μια άλλη τοποθεσία ή επιλέξτε άκυρο στο πλαίσο διαλόγου "
+"Παρακαλώ επιλέξτε μια άλλη τοποθεσία ή επιλέξτε άκυρο στο πλαίσιο διαλόγου "
 "για να απαλείψετε τις αλλαγές σας"
 
 #: ../settings/backdrop-list-manager.c:430
@@ -660,7 +660,7 @@ msgstr "Μενού"
 
 #: ../settings/behavior-settings.c:249
 msgid "Show _window list on middle click"
-msgstr "Εμφάνιση _λίστας παραθύρων στο μεσαίο κλίκ"
+msgstr "Εμφάνιση _λίστας παραθύρων στο μεσαίο κλικ"
 
 #: ../settings/behavior-settings.c:260
 msgid "Show _desktop menu on right click"
@@ -677,7 +677,7 @@ msgstr "Καθόλου"
 
 #: ../settings/behavior-settings.c:289
 msgid "Minimized application icons"
-msgstr "Ελάχιστοποιημένες εφαρμογές"
+msgstr "Ελαχιστοποιημένες εφαρμογές"
 
 #: ../settings/behavior-settings.c:291
 msgid "File/launcher icons"
@@ -1074,7 +1074,6 @@ msgid "_Unmount Volume"
 msgstr "Αποπρο_σάρτηση τόμου"
 
 #: ../src/xfdesktop-file-icon-manager.c:2088
-#, fuzzy
 msgid "E_ject Volume"
 msgstr "Απο_βολή τόμου"
 
@@ -1136,19 +1135,19 @@ msgid "Run Error"
 msgstr "Σφάλμα Εκτέλεσης"
 
 #: ../src/xfdesktop-file-icon.c:482
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr "Δημιουργήθηκε ένα σφάλμα %s \"%s\" σε \"%s\":"
+msgstr "Προέκυψε ένα σφάλμα κατά τη μετακίνηση του \"%s\" σε \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:484
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr "Δημιουργήθηκε ένα σφάλμα %s \"%s\" σε \"%s\":"
+msgstr "Προέκυψε ένα σφάλμα κατά την αντιγραφή του \"%s\" σε \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:486
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr "Δημιουργήθηκε ένα σφάλμα %s \"%s\" σε \"%s\":"
+msgstr "Προέκυψε ένα σφάλμα κατά τη δημιουργία δεσμού από \"%s\" στο \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:491
 msgid "File Error"
