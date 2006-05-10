@@ -2262,7 +2262,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                      G_CALLBACK(xfdesktop_file_icon_menu_create_launcher),
                      fmanager);
     
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_URL Launcher..."));
+    mi = gtk_image_menu_item_new_with_mnemonic(_("_URL Link..."));
     pix = xfce_themed_icon_load("gnome-fs-bookmark", w);  /* FIXME: icon naming spec */
     if(pix) {
         img = gtk_image_new_from_pixbuf(pix);
