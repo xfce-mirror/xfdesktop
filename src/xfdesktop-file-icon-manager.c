@@ -1516,27 +1516,37 @@ xfdesktop_file_icon_menu_create_launcher(GtkWidget *widget,
                                          gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    gchar *cmd, *pathstr;
-    const gchar *type;
+    ThunarVfsInfo *info;
+    gchar *cmd = NULL, *pathstr = NULL, *display_name;
     GError *error = NULL;
     
-    pathstr = thunar_vfs_path_dup_string(fmanager->priv->folder);
-    type = g_object_get_data(G_OBJECT(widget), "xfdesktop-launcher-type");
-    if(G_UNLIKELY(!type))
-        type = "Application";
-    cmd = g_strdup_printf("exo-desktop-item-edit --create-new --type %s \"%s\"",
-                          type, pathstr);
+    display_name = gdk_screen_make_display_name(fmanager->priv->gscreen);
+    
+    info = g_object_get_data(G_OBJECT(widget), "thunar-vfs-info");
+    if(info) {
+        pathstr = thunar_vfs_path_dup_string(info->path);
+        cmd = g_strdup_printf("exo-desktop-item-edit \"--display=%s\" \"%s\"",
+                              display_name, pathstr);
+    } else {
+        const gchar *type = g_object_get_data(G_OBJECT(widget), "xfdesktop-launcher-type");
+        pathstr = thunar_vfs_path_dup_string(fmanager->priv->folder);
+        if(G_UNLIKELY(!type))
+            type = "Application";
+        cmd = g_strdup_printf("exo-desktop-item-edit \"--display=%s\" --create-new --type %s \"%s\"",
+                              display_name, type, pathstr);
+    }
     
     if(!xfce_exec(cmd, FALSE, FALSE, &error)) {
         GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
         xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
                             GTK_STOCK_DIALOG_ERROR, 
-                            _("Unable to launch \"exo-desktop-item-edit\", which is required to create launchers and links on the desktop."),
+                            _("Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."),
                             error->message, GTK_STOCK_CLOSE,
                             GTK_RESPONSE_ACCEPT, NULL);
         g_error_free(error);
     }
     
+    g_free(display_name);
     g_free(pathstr);
     g_free(cmd);
 }
@@ -1934,6 +1944,8 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                              G_CALLBACK(xfdesktop_file_icon_menu_other_app),
                              fmanager);
         } else {
+            gboolean have_separator = FALSE;
+            
             if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
                 img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
                 gtk_widget_show(img);
@@ -1944,6 +1956,28 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                 g_signal_connect(G_OBJECT(mi), "activate",
                                  G_CALLBACK(xfdesktop_file_icon_menu_executed),
                                  fmanager);
+                
+                if(!g_ascii_strcasecmp("application/x-desktop",
+                                       thunar_vfs_mime_info_get_name(info->mime_info)))
+                {
+                    mi = gtk_separator_menu_item_new();
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    have_separator = TRUE;
+                    
+                    img = gtk_image_new_from_stock(GTK_STOCK_EDIT, GTK_ICON_SIZE_MENU);
+                    gtk_widget_show(img);
+                    mi = gtk_image_menu_item_new_with_mnemonic(_("_Edit"));
+                    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                    g_object_set_data_full(G_OBJECT(mi), "thunar-vfs-info",
+                                           thunar_vfs_info_ref((ThunarVfsInfo *)info),
+                                           (GDestroyNotify)thunar_vfs_info_unref);
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    g_signal_connect(G_OBJECT(mi), "activate",
+                                     G_CALLBACK(xfdesktop_file_icon_menu_create_launcher),
+                                     fmanager);
+                }
             }
             
             mime_apps = thunar_vfs_mime_database_get_applications(thunar_mime_database,
@@ -1952,7 +1986,9 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                 ThunarVfsMimeHandler *mime_handler = mime_apps->data;
                 GList *tmp;
                 
-                if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
+                if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE
+                   && !have_separator)
+                {
                     mi = gtk_separator_menu_item_new();
                     gtk_widget_show(mi);
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
