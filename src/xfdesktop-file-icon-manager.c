@@ -339,10 +339,46 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon,
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
     ThunarVfsMimeApplication *mime_app;
     const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(file_icon);
+    ThunarVfsVolume *volume = xfdesktop_file_icon_peek_volume(file_icon);
     gboolean succeeded = FALSE;
-    GList *path_list = g_list_prepend(NULL, info->path);
     
     TRACE("entering");
+    
+    if(volume && !thunar_vfs_volume_is_mounted(volume)) {
+        GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+        GError *error = NULL;
+        
+        if(thunar_vfs_volume_mount(volume, toplevel, &error)) {
+            ThunarVfsPath *new_path = thunar_vfs_volume_get_mount_point(volume);
+            
+            if(!info || !thunar_vfs_path_equal(info->path, new_path)) {
+                ThunarVfsInfo *new_info = thunar_vfs_info_new_for_path(new_path,
+                                                                       NULL);
+                if(new_info) {
+                    xfdesktop_file_icon_update_info(file_icon, new_info);
+                    thunar_vfs_info_unref(new_info);
+                    info = new_info;
+                }
+            }
+        }
+        
+        info = xfdesktop_file_icon_peek_info(file_icon);
+        if(!info) {
+            gchar *primary = g_strdup_printf(_("Unable to mount \"%s\":"),
+                                             thunar_vfs_volume_get_name(volume));
+            xfce_message_dialog(GTK_WINDOW(toplevel), _("Mount Failed"),
+                                GTK_STOCK_DIALOG_ERROR, primary,
+                                error ? error->message : _("Unknown error."),
+                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+            g_free(primary);
+        }
+        
+        if(error)
+            g_error_free(error);
+        
+        if(!info)  /* if we failed, and |info| is NULL, bail */
+            return;
+    }
     
     if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
         succeeded = xfdesktop_file_icon_launch_external(file_icon,
@@ -359,6 +395,8 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon,
         mime_app = thunar_vfs_mime_database_get_default_application(thunar_mime_database,
                                                                     info->mime_info);
         if(mime_app) {
+            GList *path_list = g_list_prepend(NULL, info->path);
+            
             DBG("executing");
             
             succeeded = thunar_vfs_mime_handler_exec(THUNAR_VFS_MIME_HANDLER(mime_app),
@@ -366,13 +404,12 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon,
                                                      path_list,
                                                      NULL); 
             g_object_unref(G_OBJECT(mime_app));
+            g_list_free(path_list);
         } else {
             succeeded = xfdesktop_file_icon_launch_external(file_icon,
                                                             fmanager->priv->gscreen);
         }
     }    
-    
-    g_list_free(path_list);
     
     if(!succeeded) {
         GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
@@ -1895,7 +1932,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(file_icon);
-    ThunarVfsMimeInfo *mime_info = info->mime_info;
+    ThunarVfsMimeInfo *mime_info = info ? info->mime_info : NULL;
     ThunarVfsVolume *volume = xfdesktop_file_icon_peek_volume(file_icon);
     GList *selected, *mime_apps, *l, *mime_actions = NULL;
     GtkWidget *menu, *mi, *img, *menu2;
@@ -1932,7 +1969,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
         g_signal_connect(G_OBJECT(mi), "activate",
                          G_CALLBACK(xfdesktop_file_icon_menu_open_all),
                          fmanager);
-    } else {
+    } else if(info) {
         if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
             img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
             gtk_widget_show(img);
@@ -2076,7 +2113,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     }
     
 #ifdef HAVE_THUNARX
-    if(!multi_sel && fmanager->priv->thunarx_menu_providers) {
+    if(!multi_sel && info && fmanager->priv->thunarx_menu_providers) {
         GtkWidget *window = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
         GList *menu_actions, *l;
         ThunarxMenuProvider *provider;
@@ -2218,7 +2255,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    if(multi_sel)
+    if(multi_sel || !info)
         gtk_widget_set_sensitive(mi, FALSE);
     else {
         g_signal_connect(G_OBJECT(mi), "activate",
