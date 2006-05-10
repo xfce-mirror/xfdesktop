@@ -1967,7 +1967,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                     
                     img = gtk_image_new_from_stock(GTK_STOCK_EDIT, GTK_ICON_SIZE_MENU);
                     gtk_widget_show(img);
-                    mi = gtk_image_menu_item_new_with_mnemonic(_("_Edit"));
+                    mi = gtk_image_menu_item_new_with_mnemonic(_("_Edit Launcher"));
                     gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
                     g_object_set_data_full(G_OBJECT(mi), "thunar-vfs-info",
                                            thunar_vfs_info_ref((ThunarVfsInfo *)info),
