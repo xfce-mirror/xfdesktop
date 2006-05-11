@@ -1,7 +1,7 @@
 /*  xfce4
  *  
  *  Copyright (C) 2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
- *  Copyright (C) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
+ *  Copyright (C) 2003,2006 Benedikt Meurer <benny@xfce.org>
  *  Copyright (c) 2004 Brian Tarricone <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -135,6 +135,8 @@ mcs_plugin_init (McsPlugin * mcs_plugin)
     mcs_plugin->run_dialog = run_dialog;
 
     mcs_plugin->icon = xfce_themed_icon_load("xfce4-backdrop", 48);
+    if (G_LIKELY (mcs_plugin->icon != NULL))
+        g_object_set_data_full(G_OBJECT(mcs_plugin->icon), "mcs-plugin-icon-name", g_strdup("xfce4-backdrop"), g_free);
 
     backdrop_create_channel (mcs_plugin);
 
@@ -892,7 +894,7 @@ xinerama_stretch_toggled_cb(GtkToggleButton *tb, gpointer user_data)
 static BackdropDialog *
 create_backdrop_dialog (McsPlugin * mcs_plugin)
 {
-    GtkWidget *mainvbox, *frame, *vbox, *hbox, *header, *label, *combo,
+    GtkWidget *mainvbox, *frame, *vbox, *hbox, *label, *combo,
               *button, *image, *chk;
     GtkSizeGroup *sg;
     GdkColor color;
@@ -906,23 +908,20 @@ create_backdrop_dialog (McsPlugin * mcs_plugin)
     bd->plugin = mcs_plugin;
 
     /* the dialog */
-    bd->dialog = gtk_dialog_new_with_buttons (_("Desktop"), NULL,
+    bd->dialog = xfce_titled_dialog_new_with_buttons (_("Desktop Preferences"), NULL,
                           GTK_DIALOG_NO_SEPARATOR,
                           GTK_STOCK_CLOSE,
-                          GTK_RESPONSE_ACCEPT,
+                          GTK_RESPONSE_CANCEL,
 #ifndef NO_HELP_BUTTON
                           GTK_STOCK_HELP,
                           GTK_RESPONSE_HELP,
 #endif
                           NULL);
 
-    gtk_dialog_set_default_response(GTK_DIALOG(bd->dialog), GTK_RESPONSE_ACCEPT);
+    gtk_window_set_icon_name(GTK_WINDOW(bd->dialog), "xfce4-backdrop");
+    gtk_dialog_set_default_response(GTK_DIALOG(bd->dialog), GTK_RESPONSE_CANCEL);
     
     mainvbox = GTK_DIALOG (bd->dialog)->vbox;
-
-    /* header */
-    header = xfce_create_header (bd->plugin->icon, _("Desktop Settings"));
-    gtk_box_pack_start (GTK_BOX (mainvbox), header, FALSE, TRUE, 0);
 
     add_spacer(GTK_BOX(mainvbox));
     
