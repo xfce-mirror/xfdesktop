@@ -83,6 +83,12 @@ enum
     SIG_N_SIGNALS,
 };
 
+typedef struct
+{
+    XfdesktopIconView *icon_view;
+    GdkRectangle area;
+} XfdesktopIdleRepaintData;
+
 struct _XfdesktopIconViewPrivate
 {
     XfdesktopIconViewManager *manager;
@@ -136,6 +142,7 @@ struct _XfdesktopIconViewPrivate
     GdkDragAction foreign_dest_actions;
     
     GdkPixbuf *rounded_frame;
+    gint label_alpha;
 };
 
 static gboolean xfdesktop_icon_view_button_press(GtkWidget *widget,
@@ -197,9 +204,10 @@ static void xfdesktop_icon_view_finalize(GObject *obj);
 static void xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
                                                    XfdesktopIcon *icon);
 static void xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
-                                           XfdesktopIcon *icon);
-static void xfdesktop_icon_view_paint_icons(XfdesktopIconView *icon_view,
-                                            GdkRectangle *area);
+                                           XfdesktopIcon *icon,
+                                           GdkRectangle *area);
+static void xfdesktop_icon_view_repaint_icons(XfdesktopIconView *icon_view,
+                                              GdkRectangle *area);
                                   
 static void xfdesktop_setup_grids(XfdesktopIconView *icon_view);
 static gboolean xfdesktop_grid_get_next_free_position(XfdesktopIconView *icon_view,
@@ -300,6 +308,13 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                  NULL, NULL,
                                                  g_cclosure_marshal_VOID__VOID,
                                                  G_TYPE_NONE, 0);
+    
+    gtk_widget_class_install_style_property(widget_class,
+                                            g_param_spec_int("label-alpha",
+                                                             "Label alpha",
+                                                             "Alpha value for the text label's background",
+                                                             0, 255, 155,
+                                                             G_PARAM_READABLE));
 }
 
 static void
@@ -322,6 +337,11 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->priv->dest_targets = gtk_target_list_new(icon_view_targets,
                                                         icon_view_n_targets);
     gtk_drag_dest_set(GTK_WIDGET(icon_view), 0, NULL, 0, GDK_ACTION_MOVE);
+    
+    gtk_widget_style_get(GTK_WIDGET(icon_view),
+                         "label-alpha", &icon_view->priv->label_alpha,
+                         NULL);
+    DBG("-> label alpha is %d", icon_view->priv->label_alpha);
     
     GTK_WIDGET_SET_FLAGS(GTK_WIDGET(icon_view), GTK_NO_WINDOW);
 }
@@ -362,8 +382,6 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
         GList *icon_l = g_list_find_custom(icon_view->priv->icons, evt,
                                            (GCompareFunc)xfdesktop_check_icon_clicked);
         if(icon_l && (icon = icon_l->data)) {
-            XfdesktopIcon *icon_below = NULL;
-            
             if(g_list_find(icon_view->priv->selected_icons, icon)) {
                 /* clicked an already-selected icon */
                 
@@ -372,11 +390,6 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                     icon_view->priv->selected_icons = g_list_remove(icon_view->priv->selected_icons,
                                                                     icon);
                     xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
-                    icon_below = xfdesktop_find_icon_below(icon_view, icon);
-                    if(icon_below) {
-                        xfdesktop_icon_view_clear_icon_extents(icon_view,
-                                                               icon_below);
-                    }
                 } else {
                     /* expand the text */
                     XfdesktopIcon *old_sel = icon_view->priv->last_clicked_item;
@@ -460,11 +473,6 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                     icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
                                                                      icon);
                     xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
-                    icon_below = xfdesktop_find_icon_below(icon_view, icon);
-                    if(icon_below) {
-                        xfdesktop_icon_view_clear_icon_extents(icon_view,
-                                                               icon_below);
-                    }
                     
                     g_signal_emit(G_OBJECT(icon_view),
                                   __signals[SIG_ICON_SELECTED],
@@ -689,7 +697,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                 /* we're not over the icon anymore */
                 icon = icon_view->priv->item_under_pointer;
                 icon_view->priv->item_under_pointer = NULL;
-                xfdesktop_icon_view_paint_icon(icon_view, icon);
+                xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
             }
         } else {
             icon = xfdesktop_icon_view_widget_coords_to_item(icon_view,
@@ -699,7 +707,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                && xfdesktop_rectangle_contains_point(&extents, evt->x, evt->y))
             {
                 icon_view->priv->item_under_pointer = icon;
-                xfdesktop_icon_view_paint_icon(icon_view, icon);
+                xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
             }
         }
     }
@@ -719,7 +727,7 @@ xfdesktop_icon_view_leave_notify(GtkWidget *widget,
     if(icon_view->priv->item_under_pointer) {
         XfdesktopIcon *icon = icon_view->priv->item_under_pointer;
         icon_view->priv->item_under_pointer = NULL;
-        xfdesktop_icon_view_paint_icon(icon_view, icon);
+        xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
     }
 #endif
     
@@ -775,8 +783,6 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
     guint16 row, col, icon_row = 0, icon_col = 0;
     GdkRectangle *cell_highlight;
     XfdesktopIcon *icon_on_dest = NULL;
-    
-    //TRACE("entering: (%d,%d)", x, y);
     
     target = gtk_drag_dest_find_target(widget, context, 
                                        icon_view->priv->native_targets);
@@ -836,7 +842,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                                            cell_highlight->width + 1,
                                            cell_highlight->height + 1);
                 if(icon_view->priv->allow_overlapping_drops)
-                    xfdesktop_icon_view_paint_icons(icon_view, cell_highlight);
+                    xfdesktop_icon_view_repaint_icons(icon_view, cell_highlight);
             }
         } else {
             cell_highlight = g_new0(GdkRectangle, 1);
@@ -862,7 +868,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                                        cell_highlight->width + 1,
                                        cell_highlight->height+ 1);
             if(icon_view->priv->allow_overlapping_drops)
-                xfdesktop_icon_view_paint_icons(icon_view, cell_highlight);
+                xfdesktop_icon_view_repaint_icons(icon_view, cell_highlight);
         }
         return FALSE;
     }
@@ -883,7 +889,7 @@ xfdesktop_icon_view_drag_leave(GtkWidget *widget,
                                    cell_highlight->width + 1,
                                    cell_highlight->height + 1);
         if(icon_view->priv->allow_overlapping_drops)
-            xfdesktop_icon_view_paint_icons(icon_view, cell_highlight);
+            xfdesktop_icon_view_repaint_icons(icon_view, cell_highlight);
     }
 }
 
@@ -897,9 +903,8 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     GdkAtom target = GDK_NONE;
-    XfdesktopIcon *icon, *icon_below;
+    XfdesktopIcon *icon;
     guint16 old_row, old_col, row, col;
-    gint cell_x, cell_y;
     GdkRectangle extents;
     XfdesktopIcon *icon_on_dest = NULL;
     XfdesktopIconDragResult res;
@@ -925,12 +930,6 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
         return FALSE;
     }
     
-    /* clear highlight box */
-    cell_x = icon_view->priv->xorigin + col * CELL_SIZE + CELL_PADDING;
-    cell_y = icon_view->priv->yorigin + row * CELL_SIZE + CELL_PADDING;
-    gtk_widget_queue_draw_area(widget, cell_x, cell_y,
-                               CELL_SIZE + 1, CELL_SIZE + 1);
-    
     icon_on_dest = icon_view->priv->grid_layout[col * icon_view->priv->nrows + row];
     
     if(target == gdk_atom_intern("XFDESKTOP_ICON", FALSE)) {
@@ -942,12 +941,14 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                                               context->suggested_action);
             switch(res) {
                 case XFDESKTOP_ICON_DRAG_FAILED:
-                    xfdesktop_icon_view_paint_icon(icon_view, icon_on_dest);
+                    xfdesktop_icon_view_clear_icon_extents(icon_view,
+                                                           icon_on_dest);
                     gtk_drag_finish(context, FALSE, FALSE, time);
                     return TRUE;
                 
                 case XFDESKTOP_ICON_DRAG_SUCCEEDED_NO_ACTION:
-                    xfdesktop_icon_view_paint_icon(icon_view, icon_on_dest);
+                    xfdesktop_icon_view_clear_icon_extents(icon_view,
+                                                           icon_on_dest);
                     gtk_drag_finish(context, TRUE, FALSE, time);
                     return TRUE;
                 
@@ -957,23 +958,19 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
             }
         }
         
-        icon_below = xfdesktop_find_icon_below(icon_view, icon);
+        /* clear out old position */
+        xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
         if(xfdesktop_icon_get_position(icon, &old_row, &old_col))
             xfdesktop_grid_set_position_free(icon_view, old_row, old_col);
+        /* set new position */
         xfdesktop_icon_set_position(icon, row, col);
         xfdesktop_grid_unset_position_free(icon_view, icon);
-    
-        /* clear out old position */
+        
+        /* clear out old extents, if any */
         if(xfdesktop_icon_get_extents(icon, &extents)) {
-            gtk_widget_queue_draw_area(widget, extents.x, extents.y,
-                                       extents.width, extents.height);
             extents.width = extents.height = 0;
             xfdesktop_icon_set_extents(icon, &extents);
         }
-        
-        xfdesktop_icon_view_paint_icon(icon_view, icon);
-        if(icon_below)
-            xfdesktop_icon_view_paint_icon(icon_view, icon_below);
         
         DBG("drag succeeded");
         
@@ -1203,7 +1200,7 @@ xfdesktop_icon_view_expose(GtkWidget *widget,
     if(evt->count != 0)
         return FALSE;
     
-    xfdesktop_icon_view_paint_icons(XFDESKTOP_ICON_VIEW(widget), &evt->area);
+    xfdesktop_icon_view_repaint_icons(XFDESKTOP_ICON_VIEW(widget), &evt->area);
     
     return FALSE;
 }
@@ -1242,16 +1239,20 @@ xfdesktop_check_icon_needs_repaint(gpointer data,
              * part of this one if it has an overly-large label */
             g_queue_push_tail(icon_view->priv->repaint_queue,
                               icon);
-            if(!icon_view->priv->repaint_queue_id)
+            if(!icon_view->priv->repaint_queue_id) {
+                XfdesktopIdleRepaintData *ird = g_new0(XfdesktopIdleRepaintData, 1);
+                ird->icon_view = icon_view;
+                memcpy(&ird->area, area, sizeof(GdkRectangle));
                 icon_view->priv->repaint_queue_id = g_idle_add(xfdesktop_icon_view_repaint_queued_icons,
-                                                            icon_view);
+                                                               ird);
+            }
         } else
-            xfdesktop_icon_view_paint_icon(icon_view, icon);
+            xfdesktop_icon_view_paint_icon(icon_view, icon, area);
     }
 }
 
 static void
-xfdesktop_icon_view_paint_icons(XfdesktopIconView *icon_view,
+xfdesktop_icon_view_repaint_icons(XfdesktopIconView *icon_view,
                                 GdkRectangle *area)
 {
     if(icon_view->priv->icons) {    
@@ -1390,6 +1391,8 @@ xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
     
     g_return_if_fail(icon);
     
+    TRACE("entering");
+    
     if(xfdesktop_icon_get_extents(icon, &extents)) {
         gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
                                    extents.x, extents.y,
@@ -1403,6 +1406,9 @@ xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
             if(icon_below)
                 xfdesktop_icon_view_clear_icon_extents(icon_view, icon_below);
         }
+    } else {
+        DBG("Icon '%s' doesn't have extents: need to call paint some other way",
+            xfdesktop_icon_peek_label(icon));
     }
 }
 
@@ -1453,6 +1459,7 @@ xfdesktop_clear_rounded_corners(GdkPixbuf *pix,
                          dest_height - CORNER_ROUNDNESS);
 }
 
+#define LCLAMP(x, min)  ( (x) < (min) ? (min) : (x) )
 #define EEL_RGBA_COLOR_GET_R(color) (((color) >> 16) & 0xff)
 #define EEL_RGBA_COLOR_GET_G(color) (((color) >> 8) & 0xff)
 #define EEL_RGBA_COLOR_GET_B(color) (((color) >> 0) & 0xff)
@@ -1513,48 +1520,65 @@ xfdesktop_multiply_pixbuf_rgba(GdkPixbuf *pixbuf,
 static void
 xfdesktop_paint_rounded_box(XfdesktopIconView *icon_view,
                             GtkStateType state,
-                            GdkRectangle *area)
+                            GdkRectangle *text_area,
+                            GdkRectangle *expose_area)
 {
-    GdkPixbuf *box_pix;
-    GtkStyle *style = GTK_WIDGET(icon_view)->style;
+    GdkRectangle intersection;
     
-    box_pix = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8,
-                             area->width + CORNER_ROUNDNESS * 2,
-                             area->height + CORNER_ROUNDNESS * 2);
-    gdk_pixbuf_fill(box_pix, 0xffffffff);
+    /* make sure to undo this before returning */
+    text_area->x -= CORNER_ROUNDNESS;
+    text_area->y -= CORNER_ROUNDNESS;
+    text_area->width += CORNER_ROUNDNESS * 2;
+    text_area->height += CORNER_ROUNDNESS * 2;
     
-    if(!icon_view->priv->rounded_frame)
-        icon_view->priv->rounded_frame = gdk_pixbuf_new_from_file(DATADIR \
-                                                                  "/pixmaps/xfce4/xfdesktop/text-selection-frame.png",
-                                                                  NULL);
+    if(gdk_rectangle_intersect(text_area, expose_area, &intersection)) {
+        GdkPixbuf *box_pix = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8,
+                                            text_area->width,
+                                            text_area->height);
+        GtkStyle *style = GTK_WIDGET(icon_view)->style;
+        
+        gdk_pixbuf_fill(box_pix, 0xffffffff);
+        
+        if(!icon_view->priv->rounded_frame)
+            icon_view->priv->rounded_frame = gdk_pixbuf_new_from_file(DATADIR \
+                                                                      "/pixmaps/xfce4/xfdesktop/text-selection-frame.png",
+                                                                      NULL);
+        
+        xfdesktop_clear_rounded_corners(box_pix,
+                                        icon_view->priv->rounded_frame);
+        xfdesktop_multiply_pixbuf_rgba(box_pix,
+                                       EEL_RGBA_COLOR_PACK(style->base[state].red >> 8, 
+                                                           style->base[state].green >> 8, 
+                                                           style->base[state].blue >> 8,
+                                                           icon_view->priv->label_alpha));
+        
+        gdk_draw_pixbuf(GDK_DRAWABLE(GTK_WIDGET(icon_view)->window), NULL,
+                        box_pix, intersection.x - text_area->x,
+                        intersection.y - text_area->y,
+                        intersection.x, intersection.y,
+                        intersection.width, intersection.height,
+                        GDK_RGB_DITHER_NORMAL, 0, 0);
+        
+        g_object_unref(G_OBJECT(box_pix));
+    }
     
-    xfdesktop_clear_rounded_corners(box_pix, icon_view->priv->rounded_frame);
-    xfdesktop_multiply_pixbuf_rgba(box_pix,
-                                   EEL_RGBA_COLOR_PACK(style->base[state].red >> 8, 
-                                                       style->base[state].green >> 8, 
-                                                       style->base[state].blue >> 8,
-                                                       0xff));
-    
-    gdk_draw_pixbuf(GDK_DRAWABLE(GTK_WIDGET(icon_view)->window), NULL,
-                    box_pix, 0, 0,
-                    area->x - CORNER_ROUNDNESS, area->y - CORNER_ROUNDNESS,
-                    area->width + CORNER_ROUNDNESS * 2,
-                    area->height + CORNER_ROUNDNESS * 2,
-                    GDK_RGB_DITHER_NORMAL, 0, 0);
-    
-    g_object_unref(G_OBJECT(box_pix));
+    /* undone from above */
+    text_area->x += CORNER_ROUNDNESS;
+    text_area->y += CORNER_ROUNDNESS;
+    text_area->width -= CORNER_ROUNDNESS * 2;
+    text_area->height -= CORNER_ROUNDNESS * 2;
 }
 
 static void
 xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
-                               XfdesktopIcon *icon)
+                               XfdesktopIcon *icon,
+                               GdkRectangle *area)
 {
     GtkWidget *widget = GTK_WIDGET(icon_view);
-    GdkPixbuf *pix = NULL, *pix_free = NULL;
-    gint pix_w, pix_h, pix_x, pix_y, text_x, text_y, text_w, text_h,
-         cell_x, cell_y, state;
+    GdkPixbuf *pix = NULL;
+    gint cell_x, cell_y, state;
     PangoLayout *playout;
-    GdkRectangle area;
+    GdkRectangle pix_area, text_area, intersection, adj_area;
     const gchar *label;
     guint16 row, col;
     
@@ -1571,28 +1595,15 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         state = GTK_STATE_NORMAL;
     
     pix = xfdesktop_icon_peek_pixbuf(icon, ICON_SIZE);
-#ifdef HAVE_LIBEXO
-    if(state != GTK_STATE_NORMAL) {
-        pix_free = exo_gdk_pixbuf_colorize(pix, &widget->style->base[state]);
-        pix = pix_free;
-    }
-    if(icon_view->priv->item_under_pointer == icon) {
-        GdkPixbuf *tmp = exo_gdk_pixbuf_spotlight(pix);
-        if(pix_free)
-            g_object_unref(G_OBJECT(pix_free));
-        pix = tmp;
-        pix_free = tmp;
-    }
-#endif
-    pix_w = gdk_pixbuf_get_width(pix);
-    pix_h = gdk_pixbuf_get_height(pix);
+    pix_area.width = gdk_pixbuf_get_width(pix);
+    pix_area.height = gdk_pixbuf_get_height(pix);
     
     playout = icon_view->priv->playout;
     pango_layout_set_width(playout, -1);
     label = xfdesktop_icon_peek_label(icon);
     pango_layout_set_text(playout, label, -1);
-    pango_layout_get_size(playout, &text_w, &text_h);
-    if(text_w > TEXT_WIDTH * PANGO_SCALE) {
+    pango_layout_get_size(playout, &text_area.width, &text_area.height);
+    if(text_area.width > TEXT_WIDTH * PANGO_SCALE) {
         if(icon != icon_view->priv->last_clicked_item)
             pango_layout_set_ellipsize(playout, PANGO_ELLIPSIZE_END);
         else {
@@ -1600,67 +1611,99 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
             pango_layout_set_ellipsize(playout, PANGO_ELLIPSIZE_NONE);
         }
         pango_layout_set_width(playout, TEXT_WIDTH * PANGO_SCALE);
-        pango_layout_get_size(playout, &text_w, &text_h);
     }
-    pango_layout_get_pixel_size(playout, &text_w, &text_h);
+    pango_layout_get_pixel_size(playout, &text_area.width, &text_area.height);
     
     cell_x = SCREEN_MARGIN + icon_view->priv->xorigin + col * CELL_SIZE;
     cell_y = SCREEN_MARGIN + icon_view->priv->yorigin + row * CELL_SIZE;
 
-    pix_x = cell_x + CELL_PADDING + ((CELL_SIZE - 2 * CELL_PADDING) - pix_w) / 2;
-    pix_y = cell_y + CELL_PADDING + SPACING;
+    pix_area.x = cell_x + CELL_PADDING + ((CELL_SIZE - 2 * CELL_PADDING) - pix_area.width) / 2;
+    pix_area.y = cell_y + CELL_PADDING + SPACING;
     
-    text_x = cell_x + CELL_PADDING + ((CELL_SIZE - 2 * CELL_PADDING) - text_w) / 2;
-    text_y = cell_y + CELL_PADDING + SPACING + pix_h + SPACING + 2;
+    text_area.x = cell_x + CELL_PADDING + ((CELL_SIZE - 2 * CELL_PADDING) - text_area.width) / 2;
+    text_area.y = cell_y + CELL_PADDING + SPACING + pix_area.height + SPACING + 2;
     
-    //DBG("drawing pixbuf at (%d,%d)", pix_x, pix_y);
+    if(gdk_rectangle_intersect(area, &pix_area, &intersection)) {
+#ifdef HAVE_LIBEXO
+        GdkPixbuf *pix_free = NULL;
+        
+        if(state != GTK_STATE_NORMAL) {
+            pix_free = exo_gdk_pixbuf_colorize(pix, &widget->style->base[state]);
+            pix = pix_free;
+        }
+        if(icon_view->priv->item_under_pointer == icon) {
+            GdkPixbuf *tmp = exo_gdk_pixbuf_spotlight(pix);
+            if(pix_free)
+                g_object_unref(G_OBJECT(pix_free));
+            pix = tmp;
+            pix_free = tmp;
+        }
+#endif
+        
+        gdk_draw_pixbuf(GDK_DRAWABLE(widget->window), widget->style->black_gc,
+                        pix, intersection.x - pix_area.x,
+                        intersection.y - pix_area.y,
+                        intersection.x, intersection.y,
+                        intersection.width, intersection.height,
+                        GDK_RGB_DITHER_NORMAL, 0, 0);
+        
+#ifdef HAVE_LIBEXO
+        if(pix_free)
+            g_object_unref(G_OBJECT(pix_free));
+#endif
+    }
     
-    gdk_draw_pixbuf(GDK_DRAWABLE(widget->window), widget->style->black_gc,
-                    pix, 0, 0, pix_x, pix_y, pix_w, pix_h,
-                    GDK_RGB_DITHER_NORMAL, 0, 0);
+    /* this little hack is needed to ensure we paint the full text area even
+     * if the new text area is larger than the old */
+    if(xfdesktop_icon_get_extents(icon, &intersection)
+       && (text_area.x < intersection.x || text_area.y < intersection.y
+           || text_area.width > intersection.width
+           || text_area.height > intersection.height)
+       && (area->x > text_area.x || area->y > text_area.y
+           || area->width < text_area.width || area->height < text_area.height))
+    {
+        DBG("*** adjusting expose area");
+        memcpy(&adj_area, &text_area, sizeof(GdkRectangle));
+        adj_area.x -= CORNER_ROUNDNESS;
+        adj_area.y -= CORNER_ROUNDNESS;
+        adj_area.width += CORNER_ROUNDNESS * 2;
+        adj_area.height += CORNER_ROUNDNESS * 2;
+    } else
+        memcpy(&adj_area, area, sizeof(GdkRectangle));
     
-    //DBG("painting layout: area: %dx%d+%d+%d", text_w, text_h, text_x, text_y);
-    
-    area.x = text_x;
-    area.y = text_y;
-    area.width = text_w;
-    area.height = text_h;
-    
-    xfdesktop_paint_rounded_box(icon_view, state, &area);
-    
+    xfdesktop_paint_rounded_box(icon_view, state, &text_area, &adj_area);
     gtk_paint_layout(widget->style, widget->window, state, FALSE,
-                     &area, widget, "label", text_x, text_y, playout);
+                     &adj_area, widget, "label", text_area.x, text_area.y, playout);
     
-    area.x = (pix_w > text_w + CORNER_ROUNDNESS * 2 ? pix_x : text_x - CORNER_ROUNDNESS);
-    area.y = pix_y;
-    area.width = (pix_w > text_w + CORNER_ROUNDNESS * 2 ? pix_w : text_w + CORNER_ROUNDNESS * 2);
-    area.height = pix_h + SPACING + 2 + text_h + CORNER_ROUNDNESS;
-    xfdesktop_icon_set_extents(icon, &area);
-    
-    if(pix_free)
-        g_object_unref(G_OBJECT(pix_free));
+    intersection.x = (pix_area.width > text_area.width + CORNER_ROUNDNESS * 2 ? pix_area.x : text_area.x - CORNER_ROUNDNESS);
+    intersection.y = pix_area.y;
+    intersection.width = (pix_area.width > text_area.width + CORNER_ROUNDNESS * 2 ? pix_area.width : text_area.width + CORNER_ROUNDNESS * 2);
+    intersection.height = pix_area.height + SPACING + 2 + text_area.height + CORNER_ROUNDNESS;
+    xfdesktop_icon_set_extents(icon, &intersection);
     
 #if 0 /* debug */
     gdk_draw_rectangle(GDK_DRAWABLE(widget->window),
                        widget->style->white_gc,
                        FALSE,
-                       area.x,
-                       area.y,
-                       area.width,
-                       area.height);
+                       area->x,
+                       area->y,
+                       area->width,
+                       area->height);
 #endif
 }
 
 static gboolean
 xfdesktop_icon_view_repaint_queued_icons(gpointer user_data)
 {
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
+    XfdesktopIdleRepaintData *ird = user_data;
     XfdesktopIcon *icon;
     
-    while((icon = g_queue_pop_head(icon_view->priv->repaint_queue)))
-        xfdesktop_icon_view_paint_icon(icon_view, icon);
+    while((icon = g_queue_pop_head(ird->icon_view->priv->repaint_queue)))
+        xfdesktop_icon_view_paint_icon(ird->icon_view, icon, &ird->area);
     
-    icon_view->priv->repaint_queue_id = 0;
+    ird->icon_view->priv->repaint_queue_id = 0;
+    
+    g_free(ird);
     
     return FALSE;
 }
@@ -1987,8 +2030,6 @@ xfdesktop_grid_find_nearest(XfdesktopIconView *icon_view,
         }
         
         if(new_sel_icon) {
-            XfdesktopIcon *icon_below;
-            
             if(g_list_find(icon_view->priv->selected_icons, new_sel_icon)) {
                 icon_view->priv->selected_icons = g_list_remove(icon_view->priv->selected_icons,
                                                                 icon);
@@ -2001,10 +2042,6 @@ xfdesktop_grid_find_nearest(XfdesktopIconView *icon_view,
             
             xfdesktop_icon_view_clear_icon_extents(icon_view, new_sel_icon);
             xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
-            
-            icon_below = xfdesktop_find_icon_below(icon_view, icon);
-            if(icon_below)
-                xfdesktop_icon_view_clear_icon_extents(icon_view, icon_below);
         }
     }
 }
@@ -2046,7 +2083,7 @@ xfdesktop_list_foreach_repaint(gpointer data,
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
     XfdesktopIcon *icon = XFDESKTOP_ICON(data);
-    xfdesktop_icon_view_paint_icon(icon_view, icon);
+    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
 }
 
 static void
@@ -2126,6 +2163,7 @@ xfdesktop_icon_view_add_item(XfdesktopIconView *icon_view,
 {
     gboolean icon_has_pos;
     guint16 row, col;
+    GdkRectangle fake_area;
     
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view)
                      && XFDESKTOP_IS_ICON(icon));
@@ -2167,7 +2205,10 @@ xfdesktop_icon_view_add_item(XfdesktopIconView *icon_view,
                      G_CALLBACK(xfdesktop_icon_view_icon_label_changed),
                      icon_view);
     
-    xfdesktop_icon_view_paint_icon(icon_view, icon);
+    fake_area.x = SCREEN_MARGIN + icon_view->priv->xorigin + col * CELL_SIZE;
+    fake_area.y = SCREEN_MARGIN + icon_view->priv->yorigin + row * CELL_SIZE;
+    fake_area.width = fake_area.height = CELL_SIZE;
+    xfdesktop_icon_view_paint_icon(icon_view, icon, &fake_area);
 }
 
 void
@@ -2186,21 +2227,12 @@ xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
     }
     
     if(g_list_find(icon_view->priv->icons, icon)) {
-        XfdesktopIcon *icon_below = NULL;
-        GdkRectangle extents;
-        
         g_signal_handlers_disconnect_by_func(G_OBJECT(icon),
                                              G_CALLBACK(xfdesktop_icon_view_icon_pixbuf_changed),
                                              icon_view);
         g_signal_handlers_disconnect_by_func(G_OBJECT(icon),
                                              G_CALLBACK(xfdesktop_icon_view_icon_label_changed),
                                              icon_view);
-        
-        if(xfdesktop_icon_get_extents(icon, &extents)
-           && extents.height + 3 * CELL_PADDING > CELL_SIZE)
-        {
-            icon_below = xfdesktop_find_icon_below(icon_view, icon);
-        }
         
         if(xfdesktop_icon_get_position(icon, &row, &col)) {
             xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
@@ -2218,9 +2250,6 @@ xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
             icon_view->priv->first_clicked_item = NULL;
         if(icon_view->priv->item_under_pointer == icon)
             icon_view->priv->item_under_pointer = NULL;
-        
-        if(icon_below)
-            xfdesktop_icon_view_paint_icon(icon_view, icon_below);
     }
     
     g_object_set_data(G_OBJECT(icon), "--xfdesktop-icon-view", NULL);
@@ -2471,7 +2500,6 @@ xfdesktop_icon_view_select_item(XfdesktopIconView *icon_view,
     icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
                                                      icon);
     xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
-    xfdesktop_icon_view_paint_icon(icon_view, icon);
 }
 
 void
@@ -2485,7 +2513,6 @@ xfdesktop_icon_view_unselect_item(XfdesktopIconView *icon_view,
         icon_view->priv->selected_icons = g_list_remove(icon_view->priv->selected_icons,
                                                         icon);
         xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
-        xfdesktop_icon_view_paint_icon(icon_view, icon);
     }
 }
 
