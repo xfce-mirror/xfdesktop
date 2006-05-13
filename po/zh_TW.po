@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-06 05:40+0900\n"
-"PO-Revision-Date: 2005-10-14 21:17+0800\n"
+"PO-Revision-Date: 2006-05-13 13:44+0800\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@mail.educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -158,7 +158,6 @@ msgstr "「來源」一欄必須填寫。"
 msgid "--- include ---"
 msgstr "--- 插入 ---"
 
-# NOTE「系統選單」之略
 #: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:389
 msgid "system"
 msgstr "系統"
@@ -175,7 +174,7 @@ msgstr "分隔線無法修改"
 #: ../menueditor/menueditor.c:81
 #, c-format
 msgid "File %s doesn't exist !"
-msgstr "檔案「%s」並不存在！"
+msgstr "檔案 %s 並不存在！"
 
 #: ../menueditor/menueditor.c:121 ../menueditor/menueditor.c:537
 msgid "Do you want to save before closing the menu ?"
@@ -322,7 +321,6 @@ msgid "Hidden"
 msgstr "隱藏"
 
 #: ../menueditor/utils.c:648
-#, fuzzy
 msgid "Select icon"
 msgstr "選擇圖示"
 
@@ -348,15 +346,16 @@ msgstr "Xfce 選單"
 
 #: ../modules/menu/desktop-menu-file.c:118
 #: ../modules/menu/desktop-menu-file.c:133
-#, fuzzy
 msgid "Unable to quit session."
-msgstr "無法啟動xfdesktop"
+msgstr "無法離開程序"
 
 #: ../modules/menu/desktop-menu-file.c:119
 msgid ""
 "Quitting the session requires that Xfce's session manager (xfce4-session) is "
 "running, but it was not detected.  Please quit Xfce via another means."
 msgstr ""
+"離開此程序需要運行中的 Xfce 的程序管理程式 (xfce4-session)，目前沒偵測到。請利"
+"用其他方式離開 Xfce。"
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
@@ -364,6 +363,7 @@ msgid ""
 "Quitting the session requires the 'xfce4-session-logout' command, but it "
 "could not be found: %s"
 msgstr ""
+"離開此程序需要指令 'xfce4-session-logout'，然無法找到： %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
@@ -435,7 +435,7 @@ msgstr "在選單內顯示圖示(_I)"
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
 msgid "Button Label|Desktop"
-msgstr ""
+msgstr "按鈕標籤|桌面"
 
 # TODO check
 #: ../settings/appearance-settings.c:185 ../settings/appearance-settings.c:194
@@ -485,9 +485,8 @@ msgid "Scaled"
 msgstr "按比例延展"
 
 #: ../settings/appearance-settings.c:743
-#, fuzzy
 msgid "A_djust Brightness:"
-msgstr "調校亮度(_B)："
+msgstr "調校亮度(_A)："
 
 #: ../settings/appearance-settings.c:799
 #, c-format
@@ -551,7 +550,7 @@ msgstr ""
 #: ../settings/appearance-settings.c:984
 #: ../settings/appearance-settings.c:1166
 msgid "_Appearance"
-msgstr ""
+msgstr "外觀(_A)"
 
 #. color settings frame
 #: ../settings/appearance-settings.c:1010
@@ -610,7 +609,7 @@ msgstr "螢幕 %d，顯示器 %d"
 
 #: ../settings/appearance-settings.c:1201
 msgid "_Behavior"
-msgstr ""
+msgstr "行為(_B)"
 
 #: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
 #, c-format
@@ -659,52 +658,45 @@ msgid "Edit backdrop list"
 msgstr "編輯背景列表"
 
 #: ../settings/behavior-settings.c:241
-#, fuzzy
 msgid "Menus"
-msgstr "選單檔案"
+msgstr "選單"
 
 #: ../settings/behavior-settings.c:249
-#, fuzzy
 msgid "Show _window list on middle click"
-msgstr "顯示視窗列表(_L)"
+msgstr "按下中鍵時顯示視窗列表(_W)"
 
 #: ../settings/behavior-settings.c:260
-#, fuzzy
 msgid "Show _desktop menu on right click"
-msgstr "顯示桌面清單(_M)"
+msgstr "按下右鍵時顯示桌面清單(_D)"
 
 #: ../settings/behavior-settings.c:279
-#, fuzzy
 msgid "Desktop Icons"
-msgstr "桌面清單"
+msgstr "桌面圖示"
 
 #: ../settings/behavior-settings.c:288
 #: ../src/xfdesktop-file-icon-manager.c:964
 msgid "None"
-msgstr ""
+msgstr "無"
 
 #: ../settings/behavior-settings.c:289
-#, fuzzy
 msgid "Minimized application icons"
-msgstr "顯示應用程式圖示(_A)"
+msgstr "顯示最小化的應用程式圖示"
 
 #: ../settings/behavior-settings.c:291
 msgid "File/launcher icons"
-msgstr ""
+msgstr "檔案/啟動啟圖示"
 
 #: ../settings/behavior-settings.c:306
-#, fuzzy
 msgid "_Icon size:"
-msgstr "圖示設計者"
+msgstr "圖示大小(_I)："
 
 #: ../settings/behavior-settings.c:320
-#, fuzzy
 msgid "Use _system font size"
-msgstr "使用選單檔案(_C)"
+msgstr "使用系統字型大小(_S)"
 
 #: ../settings/behavior-settings.c:337
 msgid "Custom _font size:"
-msgstr ""
+msgstr "調整字型大小(_F)："
 
 #: ../src/main.c:242
 #, c-format
@@ -718,27 +710,25 @@ msgstr ""
 
 #: ../src/main.c:248
 msgid "Build options:\n"
-msgstr ""
+msgstr "編譯選項：\n"
 
 #: ../src/main.c:249
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "    桌面選單：     %s\n"
 
 #: ../src/main.c:251 ../src/main.c:258
-#, fuzzy
 msgid "enabled"
-msgstr "按比例延展"
+msgstr "啟用"
 
 #: ../src/main.c:253 ../src/main.c:260
-#, fuzzy
 msgid "disabled"
-msgstr "平鋪"
+msgstr "停用"
 
 #: ../src/main.c:256
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "桌面清單"
+msgstr "    桌面圖示：     %s\n"
 
 #: ../src/main.c:288
 #, c-format
@@ -796,12 +786,13 @@ msgstr "移除工作區「%s」(_R)"
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
+"Xfdesktop 無法建立資料夾 \"%s\" 來存放桌面項目："
 
 #: ../src/xfdesktop-file-icon-manager.c:222
 #: ../src/xfdesktop-file-icon-manager.c:231
 #: ../src/xfdesktop-file-icon-manager.c:1507
 msgid "Create Folder Failed"
-msgstr ""
+msgstr "建立資料夾失敗"
 
 #: ../src/xfdesktop-file-icon-manager.c:229
 #, c-format
@@ -809,91 +800,88 @@ msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
+"Xfdesktop 無法使用 \"%s\" 來放置桌面項目，蓋其非資料夾也。"
 
 #: ../src/xfdesktop-file-icon-manager.c:233
 msgid "Please delete or rename the file."
-msgstr ""
+msgstr "請刪除或將該檔案更名"
 
 #: ../src/xfdesktop-file-icon-manager.c:379
 #: ../src/xfdesktop-file-icon-manager.c:710
 #: ../src/xfdesktop-file-icon-manager.c:744
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "無法執行 xfce4-menueditor：%s"
+msgstr "無法啟動 \"%s\"："
 
 #: ../src/xfdesktop-file-icon-manager.c:381
 #: ../src/xfdesktop-file-icon-manager.c:712
 #: ../src/xfdesktop-file-icon-manager.c:747
-#, fuzzy
 msgid "Launch Error"
-msgstr "錯誤"
+msgstr "啟動錯誤"
 
 #: ../src/xfdesktop-file-icon-manager.c:383
 msgid "The associated application could not be found or executed."
-msgstr ""
+msgstr "相關的應用程式找不到或是無法執行"
 
 #: ../src/xfdesktop-file-icon-manager.c:510
 #, c-format
 msgid "Rename \"%s\""
-msgstr ""
+msgstr "重新命名 \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:517
 #: ../src/xfdesktop-file-icon-manager.c:1539
 #: ../src/xfdesktop-file-icon-manager.c:1617
 #: ../src/xfdesktop-file-icon-manager.c:1628
 msgid "Enter the new name:"
-msgstr ""
+msgstr "鍵入新名稱："
 
 #: ../src/xfdesktop-file-icon-manager.c:519
-#, fuzzy
 msgid "Rename"
-msgstr "按比例延展"
+msgstr "重新命名"
 
 #: ../src/xfdesktop-file-icon-manager.c:585
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "您真要關閉目前的選單嗎？"
+msgstr "您確定要刪除 \"%s\" 嗎？"
 
 #: ../src/xfdesktop-file-icon-manager.c:590
 #: ../src/xfdesktop-file-icon-manager.c:610
 msgid "If you delete a file, it is permanently lost."
-msgstr ""
+msgstr "如果您將一個檔案刪除，它就永遠不見了。"
 
 #: ../src/xfdesktop-file-icon-manager.c:604
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "您真要關閉目前的選單嗎？"
+msgstr "您確定要刪除下列 %d 個檔案嗎？"
 
 #: ../src/xfdesktop-file-icon-manager.c:607
-#, fuzzy
 msgid "Delete Multiple Files"
-msgstr "選擇選單檔案"
+msgstr "刪除多個檔案"
 
 #: ../src/xfdesktop-file-icon-manager.c:749
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
+"這項特性需要檔案管理程式提供相關服務(像是 Thunar 所提供的)。"
 
 #: ../src/xfdesktop-file-icon-manager.c:827
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "無法執行 xfce4-menueditor：%s"
+msgstr "無法執行掛載 \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:828
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "無法執行 xfce4-menueditor：%s"
+msgstr "無法執行卸載 \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:831
-#, fuzzy
 msgid "Mount Failed"
-msgstr "選單檔案"
+msgstr "掛載失敗"
 
 #: ../src/xfdesktop-file-icon-manager.c:831
-#, fuzzy
 msgid "Unmount Failed"
-msgstr "選單檔案"
+msgstr "卸載失敗"
 
 #: ../src/xfdesktop-file-icon-manager.c:860
 #, fuzzy, c-format
@@ -1122,9 +1110,8 @@ msgid "_Rename..."
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:2149
-#, fuzzy
 msgid "_Properties..."
-msgstr "編輯屬性"
+msgstr "屬性(_P)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2165
 msgid "Create _Folder..."
@@ -1169,14 +1156,13 @@ msgid "There was an error linking \"%s\" to \"%s\":"
 msgstr ""
 
 #: ../src/xfdesktop-file-icon.c:491
-#, fuzzy
 msgid "File Error"
-msgstr "錯誤"
+msgstr "檔案錯誤"
 
 #: ../src/xfdesktop-file-icon.c:703
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr ""
+msgstr "無法將 \"%s\" 更名為 \"%s\"："
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
