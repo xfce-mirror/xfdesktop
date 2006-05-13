@@ -203,6 +203,10 @@ static void xfdesktop_icon_view_finalize(GObject *obj);
 
 static void xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
                                                    XfdesktopIcon *icon);
+#ifdef HAVE_LIBEXO
+static void xfdesktop_icon_view_clear_icon_pixbuf_extents(XfdesktopIconView *icon_view,
+                                                          XfdesktopIcon *icon);
+#endif
 static void xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
                                            XfdesktopIcon *icon,
                                            GdkRectangle *area);
@@ -697,7 +701,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                 /* we're not over the icon anymore */
                 icon = icon_view->priv->item_under_pointer;
                 icon_view->priv->item_under_pointer = NULL;
-                xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+                xfdesktop_icon_view_clear_icon_pixbuf_extents(icon_view, icon);
             }
         } else {
             icon = xfdesktop_icon_view_widget_coords_to_item(icon_view,
@@ -707,7 +711,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                && xfdesktop_rectangle_contains_point(&extents, evt->x, evt->y))
             {
                 icon_view->priv->item_under_pointer = icon;
-                xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+                xfdesktop_icon_view_clear_icon_pixbuf_extents(icon_view, icon);
             }
         }
     }
@@ -1411,6 +1415,34 @@ xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
             xfdesktop_icon_peek_label(icon));
     }
 }
+
+#ifdef HAVE_LIBEXO
+static void
+xfdesktop_icon_view_clear_icon_pixbuf_extents(XfdesktopIconView *icon_view,
+                                              XfdesktopIcon *icon)
+{
+    guint16 row, col;
+    GdkPixbuf *pix;
+    
+    if(xfdesktop_icon_get_position(icon, &row, &col)
+       && (pix = xfdesktop_icon_peek_pixbuf(icon, ICON_SIZE)))
+    {
+        gint pix_x, pix_y, pix_w, pix_h, cell_x, cell_y;
+        
+        pix_w = gdk_pixbuf_get_width(pix);
+        pix_h = gdk_pixbuf_get_height(pix);
+        
+        cell_x = SCREEN_MARGIN + icon_view->priv->xorigin + col * CELL_SIZE;
+        cell_y = SCREEN_MARGIN + icon_view->priv->yorigin + row * CELL_SIZE;
+
+        pix_x = cell_x + CELL_PADDING + ((CELL_SIZE - 2 * CELL_PADDING) - pix_w) / 2;
+        pix_y = cell_y + CELL_PADDING + SPACING;
+        
+        gtk_widget_queue_draw_area(GTK_WIDGET(icon_view), pix_x, pix_y,
+                                   pix_w, pix_h);
+    }
+}
+#endif
 
 
 /* Copied from Nautilus, Copyright (C) 2000 Eazel, Inc. */
