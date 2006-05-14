@@ -291,7 +291,7 @@ dmp_position_menu (GtkMenu *menu, int *x, int *y, gboolean *push_in,
         
         default:  /* floating */
         {
-            GdkScreen *screen = g_new(GdkScreen,1);
+            GdkScreen *screen = NULL;
             gint screen_width, screen_height;
 
             gdk_display_get_pointer(gtk_widget_get_display(GTK_WIDGET(dmp->plugin)),
