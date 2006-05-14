@@ -290,8 +290,19 @@ dmp_position_menu (GtkMenu *menu, int *x, int *y, gboolean *push_in,
             break;
         
         default:  /* floating */
+        {
+            GdkScreen *screen = g_new(GdkScreen,1);
+            gint screen_width, screen_height;
+
             gdk_display_get_pointer(gtk_widget_get_display(GTK_WIDGET(dmp->plugin)),
-                                                           NULL, x, y, NULL);
+                                                           &screen, x, y, NULL);
+            screen_width = gdk_screen_get_width(screen);
+            screen_height = gdk_screen_get_height(screen);
+            if ((*x + req.width) > screen_width)
+                *x -= req.width;
+            if ((*y + req.height) > screen_height)
+                *y -= req.height;
+        }
     }
 
     if (*x < 0)
