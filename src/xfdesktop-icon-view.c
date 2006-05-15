@@ -225,8 +225,10 @@ static inline void xfdesktop_grid_set_position_free(XfdesktopIconView *icon_view
                                                     guint16 col);
 static inline void xfdesktop_grid_unset_position_free(XfdesktopIconView *icon_view,
                                                       XfdesktopIcon *icon);
+#if 0
 static XfdesktopIcon *xfdesktop_find_icon_below(XfdesktopIconView *icon_view,
                                                 XfdesktopIcon *icon);
+#endif
 static gint xfdesktop_check_icon_clicked(gconstpointer data,
                                          gconstpointer user_data);
 static void xfdesktop_list_foreach_repaint(gpointer data,
@@ -1351,6 +1353,7 @@ xfdesktop_rootwin_watch_workarea(GdkXEvent *gxevent,
     return GDK_FILTER_CONTINUE;
 }
 
+#if 0
 static gint
 xfdesktop_find_icon_below_from_hash(gconstpointer data,
                                     gconstpointer user_data)
@@ -1386,6 +1389,7 @@ xfdesktop_find_icon_below(XfdesktopIconView *icon_view,
     
     return icon_below_l ? icon_below_l->data : NULL;
 }
+#endif
 
 static void
 xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
@@ -1402,6 +1406,7 @@ xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
                                    extents.x, extents.y,
                                    extents.width, extents.height);
         
+#if 0
         /* check and make sure we didn't used to be too large for the cell.
          * if so, repaint the one below it. */
         if(extents.height + 3 * CELL_PADDING > CELL_SIZE) {
@@ -1410,6 +1415,7 @@ xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
             if(icon_below)
                 xfdesktop_icon_view_clear_icon_extents(icon_view, icon_below);
         }
+#endif
     } else {
         DBG("Icon '%s' doesn't have extents: need to call paint some other way",
             xfdesktop_icon_peek_label(icon));
@@ -1491,7 +1497,6 @@ xfdesktop_clear_rounded_corners(GdkPixbuf *pix,
                          dest_height - CORNER_ROUNDNESS);
 }
 
-#define LCLAMP(x, min)  ( (x) < (min) ? (min) : (x) )
 #define EEL_RGBA_COLOR_GET_R(color) (((color) >> 16) & 0xff)
 #define EEL_RGBA_COLOR_GET_G(color) (((color) >> 8) & 0xff)
 #define EEL_RGBA_COLOR_GET_B(color) (((color) >> 0) & 0xff)
@@ -1708,16 +1713,6 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     intersection.width = (pix_area.width > text_area.width + CORNER_ROUNDNESS * 2 ? pix_area.width : text_area.width + CORNER_ROUNDNESS * 2);
     intersection.height = pix_area.height + SPACING + 2 + text_area.height + CORNER_ROUNDNESS;
     xfdesktop_icon_set_extents(icon, &intersection);
-    
-#if 0 /* debug */
-    gdk_draw_rectangle(GDK_DRAWABLE(widget->window),
-                       widget->style->white_gc,
-                       FALSE,
-                       area->x,
-                       area->y,
-                       area->width,
-                       area->height);
-#endif
 }
 
 static gboolean
