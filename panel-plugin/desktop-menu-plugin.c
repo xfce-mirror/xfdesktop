@@ -916,9 +916,6 @@ dmp_new(XfcePanelPlugin *plugin)
     g_signal_connect(G_OBJECT(dmp->button), "button-press-event",
             G_CALLBACK(dmp_popup), dmp);
     
-    xfce_panel_plugin_add_action_widget(plugin, dmp->button);
-    gtk_container_add(GTK_CONTAINER(plugin), dmp->button);
-    
     return dmp;
 }
 
@@ -926,11 +923,25 @@ static void
 desktop_menu_plugin_construct(XfcePanelPlugin *plugin)
 {
     DMPlugin *dmp;
+    GtkWidget *mi, *img;
     
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     
     if(!(dmp = dmp_new(plugin)))
         exit(1);
+    
+    xfce_panel_plugin_add_action_widget(plugin, dmp->button);
+    gtk_container_add(GTK_CONTAINER(plugin), dmp->button);
+    
+    /* Add edit menu option to right click menu */
+    img = gtk_image_new_from_stock(GTK_STOCK_EDIT, GTK_ICON_SIZE_MENU);
+    gtk_widget_show(img);
+    mi = gtk_image_menu_item_new_with_label(_("Edit Menu"));
+    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+    gtk_widget_show(mi);
+    xfce_panel_plugin_menu_insert_item(plugin, GTK_MENU_ITEM(mi));
+    g_signal_connect(G_OBJECT(mi), "activate", 
+                     G_CALLBACK(dmp_edit_menu_clicked_cb), dmp);
     
     g_signal_connect(plugin, "free-data",
                      G_CALLBACK(dmp_free), dmp);
