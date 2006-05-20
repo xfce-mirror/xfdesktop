@@ -1715,10 +1715,12 @@ xfdesktop_file_icon_template_item_activated(GtkWidget *mi,
         gchar *name = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
         ThunarVfsPath *path = thunar_vfs_path_relative(fmanager->priv->folder,
                                                        name);
+        GError *error = NULL;
+        
         if(info)
-            job = thunar_vfs_copy_file(info->path, path, NULL);
+            job = thunar_vfs_copy_file(info->path, path, &error);
         else
-            job = thunar_vfs_create_file(path, NULL);
+            job = thunar_vfs_create_file(path, &error);
         
         if(job) {
             g_object_set_data_full(G_OBJECT(job), "xfdesktop-file-name",
@@ -1729,8 +1731,18 @@ xfdesktop_file_icon_template_item_activated(GtkWidget *mi,
             g_signal_connect(G_OBJECT(job), "finished",
                              G_CALLBACK(g_object_unref), NULL);
             /* don't free |name|, GObject will do it */
-        } else
+        } else {
+            if(error) {
+                gchar *primary = g_strdup_printf(_("Unable to create file \"%s\":"), name);
+                xfce_message_dialog(GTK_WINDOW(toplevel), _("Create Error"),
+                                    GTK_STOCK_DIALOG_ERROR, primary,
+                                    error->message, GTK_STOCK_CLOSE,
+                                    GTK_RESPONSE_ACCEPT, NULL);
+                g_free(primary);
+                g_error_free(error);
+            }
             g_free(name);
+        }
         thunar_vfs_path_unref(path);        
     }
     
