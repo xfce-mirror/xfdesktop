@@ -62,13 +62,11 @@ static SessionClient *client_session = NULL;
 static gboolean is_session_managed = FALSE;
 static gboolean desktop_gtk_menu_images = TRUE;
 
-G_MODULE_EXPORT void
-quit(gboolean force)
+static void
+session_logout()
 {
-    if(is_session_managed)
-        logout_session(client_session);
-    else
-        gtk_main_quit();
+    g_return_if_fail(is_session_managed);
+    logout_session(client_session);
 }
 
 static void
@@ -337,6 +335,12 @@ main(int argc, char **argv)
                                         SESSION_RESTART_IF_RUNNING, 35);
     client_session->die = session_die;
     is_session_managed = session_init(client_session);
+    
+    if(is_session_managed) {
+        for(i = 0; i < nscreens; ++i)
+            xfce_desktop_set_session_logout_func(XFCE_DESKTOP(desktops[i]),
+                                                 session_logout);
+    }
     
     menu_init(mcs_client);
     menu_set_show_icons(desktop_gtk_menu_images);

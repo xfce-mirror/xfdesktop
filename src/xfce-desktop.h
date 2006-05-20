@@ -40,6 +40,8 @@ typedef struct _XfceDesktop XfceDesktop;
 typedef struct _XfceDesktopClass XfceDesktopClass;
 typedef struct _XfceDesktopPriv XfceDesktopPriv;
 
+typedef void (*SessionLogoutFunc)();
+
 typedef enum
 {
     XFCE_DESKTOP_ICON_STYLE_NONE = 0,
@@ -84,6 +86,9 @@ void xfce_desktop_set_icon_use_system_font_size(XfceDesktop *desktop,
                                                 gboolean use_system);
 void xfce_desktop_set_icon_font_size(XfceDesktop *desktop,
                                      guint font_size_points);
+
+void xfce_desktop_set_session_logout_func(XfceDesktop *desktop,
+                                          SessionLogoutFunc logout_func);
 
 void xfce_desktop_freeze_updates(XfceDesktop *desktop);
 void xfce_desktop_thaw_updates(XfceDesktop *desktop);

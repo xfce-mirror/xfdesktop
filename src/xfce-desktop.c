@@ -88,6 +88,8 @@ struct _XfceDesktopPriv
     
     gboolean xinerama_stretch;
     
+    SessionLogoutFunc session_logout_func;
+    
 #ifdef ENABLE_DESKTOP_ICONS
     XfceDesktopIconStyle icons_style;
     gboolean icons_use_system_font;
@@ -107,6 +109,8 @@ static void xfce_desktop_unrealize(GtkWidget *widget);
 
 static gboolean xfce_desktop_expose(GtkWidget *w,
                                     GdkEventExpose *evt);
+static gboolean xfce_desktop_delete_event(GtkWidget *w,
+                                          GdkEventAny *evt);
 
 /* private functions */
 
@@ -515,7 +519,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     widget_class->realize = xfce_desktop_realize;
     widget_class->unrealize = xfce_desktop_unrealize;
     widget_class->expose_event = xfce_desktop_expose;
-    widget_class->delete_event = (gboolean (*)(GtkWidget *, GdkEventAny *))gtk_true;
+    widget_class->delete_event = xfce_desktop_delete_event;
 }
 
 static void
@@ -708,6 +712,16 @@ xfce_desktop_expose(GtkWidget *w,
     return FALSE;
 }
 
+static gboolean
+xfce_desktop_delete_event(GtkWidget *w,
+                          GdkEventAny *evt)
+{
+    if(XFCE_DESKTOP(w)->priv->session_logout_func)
+        XFCE_DESKTOP(w)->priv->session_logout_func();
+    
+    return TRUE;
+}
+
 
 
 /* public api */
@@ -881,6 +895,14 @@ xfce_desktop_set_icon_use_system_font_size(XfceDesktop *desktop,
         }
     }
 #endif
+}
+
+void
+xfce_desktop_set_session_logout_func(XfceDesktop *desktop,
+                                     SessionLogoutFunc logout_func)
+{
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+    desktop->priv->session_logout_func = logout_func;
 }
 
 void
