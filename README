@@ -10,3 +10,56 @@ tasks:
 - root menu, window list
 - minimized app icons
 - file icons on the desktop (using Thunar libs)
+
+
+HIDDEN CUSTOMISATIONS
+~~~~~~~~~~~~~~~~~~~~~
+
+If you're using the icon view, and would like to change how the text looks,
+you have three things you can change: the opacity (transparency) of the
+rounded text background, the color of the rounded text background, and the
+color of the text itself.
+
+You'd want to add something like this to your ~/.gtkrc-2.0 file:
+
+style "xfdesktop-icon-view" {
+    XfdesktopIconView::label-alpha = 75
+
+    base[NORMAL] = "#00ff00"
+    base[SELECTED] = "#5050ff"
+    base[ACTIVE] = "#0000ff"
+
+    fg[NORMAL] = "#ff0000"
+    fg[SELECTED] = "#ff0000"
+    fg[ACTIVE] = "#ff0000"
+}
+widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"
+
+The first entry sets the opacity of the rounded text background.  The allowed
+values are from 0 (totally transparent) to 255 (totally opaque).
+
+The second three entries set the color of the rounded text background.
+* NORMAL sets the color for the regular, unselected state.
+* SELECTED sets the color for when the icon is selected, and the desktop has
+  keyboard/mouse focus.
+* ACTIVE sets the color for when the icon is selected, but the desktop does
+  not have keyboard/mouse focus.
+
+The final three entries set the color of the label text.  See above for the
+differences between NORMAL, SELECTED, and ACTIVE.
+
+.:.
+
+You may also want to show or hide the icons in the desktop menu (right-click)
+and the window menu (middle-click).  This is controlled by the global gtk
+"gtk-menu-images" style property, which can be set by adding something like
+the following to your ~/.gtkrc-2.0 file:
+
+style "menu-images" {
+    gtk-menu-images = false
+}
+widget_class "*" style "menu-images"
+
+Unfortunately, this will act on all gtk menus, not just on the desktop or
+window menu.  There is currently no way to set this property just for these
+two menus.
