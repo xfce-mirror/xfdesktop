@@ -166,6 +166,8 @@ static gboolean xfdesktop_icon_view_motion_notify(GtkWidget *widget,
 static gboolean xfdesktop_icon_view_leave_notify(GtkWidget *widget,
                                                  GdkEventCrossing *evt,
                                                  gpointer user_data);
+static void xfdesktop_icon_view_style_set(GtkWidget *widget,
+                                          GtkStyle *previous_style);
 static void xfdesktop_icon_view_realize(GtkWidget *widget);
 static void xfdesktop_icon_view_unrealize(GtkWidget *widget);
 static gboolean xfdesktop_icon_view_expose(GtkWidget *widget,
@@ -287,6 +289,7 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     
     gobject_class->finalize = xfdesktop_icon_view_finalize;
     
+    widget_class->style_set = xfdesktop_icon_view_style_set;
     widget_class->realize = xfdesktop_icon_view_realize;
     widget_class->unrealize = xfdesktop_icon_view_unrealize;
     widget_class->expose_event = xfdesktop_icon_view_expose;
@@ -343,11 +346,6 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->priv->dest_targets = gtk_target_list_new(icon_view_targets,
                                                         icon_view_n_targets);
     gtk_drag_dest_set(GTK_WIDGET(icon_view), 0, NULL, 0, GDK_ACTION_MOVE);
-    
-    gtk_widget_style_get(GTK_WIDGET(icon_view),
-                         "label-alpha", &icon_view->priv->label_alpha,
-                         NULL);
-    DBG("-> label alpha is %d", icon_view->priv->label_alpha);
     
     GTK_WIDGET_SET_FLAGS(GTK_WIDGET(icon_view), GTK_NO_WINDOW);
 }
@@ -1045,6 +1043,21 @@ xfdesktop_icon_view_icon_theme_changed(GtkIconTheme *icon_theme,
 {
     gtk_widget_queue_draw(GTK_WIDGET(user_data));
 }    
+
+static void
+xfdesktop_icon_view_style_set(GtkWidget *widget,
+                              GtkStyle *previous_style)
+{
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
+    
+    gtk_widget_style_get(GTK_WIDGET(icon_view),
+                         "label-alpha", &icon_view->priv->label_alpha,
+                         NULL);
+    DBG("label alpha is %d", icon_view->priv->label_alpha);
+    
+    GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->style_set(widget,
+                                                                  previous_style);
+}
 
 static void
 xfdesktop_icon_view_realize(GtkWidget *widget)
