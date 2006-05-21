@@ -59,6 +59,7 @@
 #endif
 
 #include "xfdesktop-icon-view.h"
+#include "xfdesktop-file-utils.h"
 #include "xfdesktop-file-icon.h"
 #include "xfdesktop-clipboard-manager.h"
 #include "xfdesktop-file-icon-manager.h"
@@ -1661,6 +1662,19 @@ xfdesktop_file_icon_create_file_error(ThunarVfsJob *job,
     g_free(primary);
 }
 
+static ThunarVfsInteractiveJobResponse
+xfdesktop_file_icon_interactive_job_ask(ThunarVfsJob *job,
+                                        const gchar *message,
+                                        ThunarVfsInteractiveJobResponse choices,
+                                        gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    
+    return xfdesktop_file_utils_interactive_job_ask(GTK_WINDOW(toplevel),
+                                                    message, choices);
+}
+
 static void
 xfdesktop_file_icon_template_item_activated(GtkWidget *mi,
                                             gpointer user_data)
@@ -1727,6 +1741,9 @@ xfdesktop_file_icon_template_item_activated(GtkWidget *mi,
                                    name, (GDestroyNotify)g_free);
             g_signal_connect(G_OBJECT(job), "error",
                              G_CALLBACK(xfdesktop_file_icon_create_file_error),
+                             fmanager);
+            g_signal_connect(G_OBJECT(job), "ask",
+                             G_CALLBACK(xfdesktop_file_icon_interactive_job_ask),
                              fmanager);
             g_signal_connect(G_OBJECT(job), "finished",
                              G_CALLBACK(g_object_unref), NULL);
@@ -2652,7 +2669,18 @@ xfdesktop_file_icon_manager_vfs_monitor_cb(ThunarVfsMonitor *monitor,
         
         case THUNAR_VFS_MONITOR_EVENT_CREATED:
             DBG("got created event");
-
+            
+            /* first make sure we don't already have an icon for this path.
+             * this seems to be necessary as thunar-vfs does not emit a
+             * DELETED signal if a file is overwritten with another file of
+             * the same name. */
+            icon = g_hash_table_lookup(fmanager->priv->icons, event_path);
+            if(icon) {
+                xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
+                                                XFDESKTOP_ICON(icon));
+                g_hash_table_remove(fmanager->priv->icons, event_path);
+            }
+            
             info = thunar_vfs_info_new_for_path(event_path, NULL);
             if(info) {
                 if((info->flags & THUNAR_VFS_FILE_FLAGS_HIDDEN) == 0) {
@@ -3127,6 +3155,20 @@ xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *manager,
     return TRUE;
 }
 
+#if 0   /* FIXME: implement me */
+static void
+xfdesktop_file_icon_manager_fileop_error(ThunarVfsJob *job,
+                                         GError *error,
+                                         gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    XfdesktopFileUtilsFileop fileop = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(job),
+                                                                        "--xfdesktop-fileop"));
+    
+    xfdesktop_file_utils_handle_fileop_error(GTK_WINDOW(toplevel), /* ... */);
+#endif
+
 static void
 xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager,
                                                XfdesktopIcon *drop_icon,
@@ -3204,15 +3246,28 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
             else
                 job = thunar_vfs_move_files(path_list, dest_path_list, NULL);
             
-            if(job)
+            if(job) {
                 drop_ok = TRUE;
-            
+                
+#if 0  /* FIXME: implement me: need way to pass multiple files */
+                g_signal_connect(G_OBJECT(job), "error",
+                                 G_CALLBACK(xfdesktop_file_icon_manager_fileop_error),
+                                 fmanager);
+                g_object_set_data(G_OBJECT(job), "--xfdesktop-fileop",
+                                  GINT_TO_POINTER(context->suggested_action == GDK_ACTION_LINK
+                                                  ? XFDESKTOP_FILE_UTILS_FILEOP_LINK
+                                                  : (copy_only
+                                                     ? XFDESKTOP_FILE_UTILS_FILEOP_COPY
+                                                     : XFDESKTOP_FILE_UTILS_FILEOP_MOVE)));
+#endif
+                g_signal_connect(G_OBJECT(job), "ask",
+                                 G_CALLBACK(xfdesktop_file_icon_interactive_job_ask),
+                                 fmanager);
+                g_signal_connect(G_OBJECT(job), "finished",
+                                 G_CALLBACK(g_object_unref), NULL);
+            }
             
             thunar_vfs_path_list_free(dest_path_list);
-            
-            /* FIXME: watch error */
-            g_signal_connect(G_OBJECT(job), "finished",
-                             G_CALLBACK(g_object_unref), NULL);
         }
         
         thunar_vfs_path_list_free(path_list);

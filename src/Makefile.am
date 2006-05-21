@@ -34,7 +34,9 @@ desktop_file_icon_sources = \
 	xfdesktop-file-icon.c \
 	xfdesktop-file-icon.h \
 	xfdesktop-file-icon-manager.c \
-	xfdesktop-file-icon-manager.h
+	xfdesktop-file-icon-manager.h \
+	xfdesktop-file-utils.c \
+	xfdesktop-file-utils.h
 
 xfdesktop_CFLAGS = \
 	-I$(top_srcdir) \

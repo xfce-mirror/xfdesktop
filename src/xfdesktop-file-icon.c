@@ -46,6 +46,7 @@
 #include <thunarx/thunarx.h>
 #endif
 
+#include "xfdesktop-file-utils.h"
 #include "xfdesktop-icon.h"
 #include "xfdesktop-file-icon.h"
 
@@ -469,30 +470,23 @@ xfdesktop_file_icon_drag_job_error(ThunarVfsJob *job,
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(user_data);
     XfdesktopFileIcon *src_file_icon = g_object_get_data(G_OBJECT(job),
                                                          "--xfdesktop-src-file-icon");
-    GdkDragAction action = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(job),
-                                                             "--xfdesktop-file-icon-action"));
-    gchar *primary;
+    XfdesktopFileUtilsFileop fileop = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(job),
+                                                                        "--xfdesktop-file-icon-action"));
     
     g_return_if_fail(file_icon && src_file_icon);
     
-    if(error) {
-        gchar *primary_fmt;
-        
-        if(action == GDK_ACTION_MOVE)
-            primary_fmt = _("There was an error moving \"%s\" to \"%s\":");
-        else if(action == GDK_ACTION_COPY)
-            primary_fmt = _("There was an error copying \"%s\" to \"%s\":");
-        else
-            primary_fmt = _("There was an error linking \"%s\" to \"%s\":");
-        
-        primary = g_strdup_printf(primary_fmt,
-                                  src_file_icon->priv->info->display_name,
-                                  file_icon->priv->info->display_name);
-        xfce_message_dialog(NULL, _("File Error"), GTK_STOCK_DIALOG_ERROR,
-                            primary, error->message,
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-        g_free(primary);
-    }
+    xfdesktop_file_utils_handle_fileop_error(NULL, src_file_icon->priv->info,
+                                             file_icon->priv->info, fileop,
+                                             error);
+}
+
+static ThunarVfsInteractiveJobResponse
+xfdesktop_file_icon_interactive_job_ask(ThunarVfsJob *job,
+                                        const gchar *message,
+                                        ThunarVfsInteractiveJobResponse choices,
+                                        gpointer user_data)
+{
+    return xfdesktop_file_utils_interactive_job_ask(NULL, message, choices);
 }
 
 static void
@@ -618,9 +612,16 @@ xfdesktop_file_icon_do_drop_dest(XfdesktopIcon *icon,
             g_object_set_data(G_OBJECT(job), "--xfdesktop-src-file-icon",
                               src_file_icon);
             g_object_set_data(G_OBJECT(job), "--xfdesktop-file-icon-action",
-                              GINT_TO_POINTER(action));
+                              GINT_TO_POINTER(action == GDK_ACTION_MOVE
+                                              ? XFDESKTOP_FILE_UTILS_FILEOP_MOVE
+                                              : (action == GDK_ACTION_COPY
+                                                 ? XFDESKTOP_FILE_UTILS_FILEOP_COPY
+                                                 : XFDESKTOP_FILE_UTILS_FILEOP_LINK)));
             g_signal_connect(G_OBJECT(job), "error",
                              G_CALLBACK(xfdesktop_file_icon_drag_job_error),
+                             file_icon);
+            g_signal_connect(G_OBJECT(job), "ask",
+                             G_CALLBACK(xfdesktop_file_icon_interactive_job_ask),
                              file_icon);
             g_signal_connect(G_OBJECT(job), "finished",
                              G_CALLBACK(xfdesktop_file_icon_drag_job_finished),
