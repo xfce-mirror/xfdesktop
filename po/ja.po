@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-21 11:18+0900\n"
-"PO-Revision-Date: 2006-05-05 13:40+0900\n"
+"PO-Revision-Date: 2006-05-21 11:51+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -430,9 +430,8 @@ msgid "Show _icons in menu"
 msgstr "メニューでアイコンを表示する(_I):"
 
 #: ../panel-plugin/desktop-menu-plugin.c:939
-#, fuzzy
 msgid "Edit Menu"
-msgstr "メニューの編集(_E)"
+msgstr "メニューの編集"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
@@ -530,9 +529,8 @@ msgstr "二度と表示しない(_D)"
 
 #. the dialog
 #: ../settings/appearance-settings.c:911
-#, fuzzy
 msgid "Desktop Preferences"
-msgstr "デスクトップ"
+msgstr "デスクトップ環境設定"
 
 #: ../settings/appearance-settings.c:928
 msgid "Allow _Xfce to manage the desktop"
@@ -814,9 +812,8 @@ msgid "Mount Failed"
 msgstr "マウントに失敗しました"
 
 #: ../src/xfdesktop-file-icon-manager.c:371
-#, fuzzy
 msgid "Unknown error."
-msgstr "不明なエラー"
+msgstr "不明なエラーが発生しました。"
 
 #: ../src/xfdesktop-file-icon-manager.c:416
 #: ../src/xfdesktop-file-icon-manager.c:747
@@ -1017,6 +1014,8 @@ msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
+"「exo-desktop-item-edit」を実行できません、これはデスクトップにランチャーやリ"
+"ンクを作成したり編集するのに必要です。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1613
 msgid "Create New Folder"
@@ -1055,14 +1054,13 @@ msgid "New Empty File"
 msgstr "新規の空ファイル"
 
 #: ../src/xfdesktop-file-icon-manager.c:1736
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "ファイル「%s」を作成できません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1737
-#, fuzzy
 msgid "Create Error"
-msgstr "プロパティエラー"
+msgstr "作成エラー"
 
 #: ../src/xfdesktop-file-icon-manager.c:1977
 msgid "_Open all"
@@ -1077,9 +1075,8 @@ msgid "_Execute"
 msgstr "実行(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2019
-#, fuzzy
 msgid "_Edit Launcher"
-msgstr "ランチャー"
+msgstr "ランチャーを編集(_E)"
 
 # FIXME: format string
 #: ../src/xfdesktop-file-icon-manager.c:2067
@@ -1141,23 +1138,20 @@ msgid "_Properties..."
 msgstr "プロパティ(_P)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2284
-#, fuzzy
 msgid "Create _New"
-msgstr "新規フォルダを作成"
+msgstr "新規作成(_N)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2293
-#, fuzzy
 msgid "_Launcher..."
-msgstr "ランチャー"
+msgstr "ランチャー(_L)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2314
 msgid "_URL Link..."
-msgstr ""
+msgstr "URLリンク(_U)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2329
-#, fuzzy
 msgid "_Folder..."
-msgstr "フォルダを作成(_F)..."
+msgstr "フォルダ(_F)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2368
 msgid "_Empty File"
