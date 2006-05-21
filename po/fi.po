@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-21 11:18+0900\n"
-"PO-Revision-Date: 2005-05-17 17:39+0300\n"
+"POT-Creation-Date: 2006-05-21 12:07+0300\n"
+"PO-Revision-Date: 2005-05-21 12:07+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgstr "Lopeta"
 
 #. Name
 #: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1053
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1054
 msgid "Name:"
 msgstr "Nimi:"
 
@@ -197,7 +197,7 @@ msgid "Select command"
 msgstr "Valitse komento"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:625
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:626
 msgid "Question"
 msgstr "Kysymys"
 
@@ -428,9 +428,8 @@ msgid "Show _icons in menu"
 msgstr "Näytä k_uvakkeet valikossa"
 
 #: ../panel-plugin/desktop-menu-plugin.c:939
-#, fuzzy
 msgid "Edit Menu"
-msgstr "_Muokkaa valikkoa"
+msgstr "Muokkaa valikkoa"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
@@ -495,8 +494,8 @@ msgstr "Xfce ei voi hallita työpöytääsi (%s)."
 msgid "Unknown Error"
 msgstr "Tuntematon virhe"
 
-#: ../settings/appearance-settings.c:806 ../src/xfdesktop-file-icon.c:648
-#: ../src/xfdesktop-file-icon.c:706
+#: ../settings/appearance-settings.c:806 ../src/xfdesktop-file-icon.c:649
+#: ../src/xfdesktop-file-icon.c:707
 msgid "Error"
 msgstr "Virhe"
 
@@ -663,7 +662,7 @@ msgid "Desktop Icons"
 msgstr "Työpöytäkuvakkeet"
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-icon-manager.c:1001
+#: ../src/xfdesktop-file-icon-manager.c:1002
 msgid "None"
 msgstr "Ei mitään"
 
@@ -774,19 +773,19 @@ msgstr "_Poista työtila '%s'"
 msgid "Desktop"
 msgstr "Työpöytä"
 
-#: ../src/xfdesktop-file-icon-manager.c:220
+#: ../src/xfdesktop-file-icon-manager.c:221
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "Xfdesktop ei voinut luoda hakemistoa \"%s\" työpöydän tiedostoille:"
 
-#: ../src/xfdesktop-file-icon-manager.c:222
-#: ../src/xfdesktop-file-icon-manager.c:231
-#: ../src/xfdesktop-file-icon-manager.c:1544
+#: ../src/xfdesktop-file-icon-manager.c:223
+#: ../src/xfdesktop-file-icon-manager.c:232
+#: ../src/xfdesktop-file-icon-manager.c:1545
 msgid "Create Folder Failed"
 msgstr "Hakemiston luominen epäonnistui"
 
-#: ../src/xfdesktop-file-icon-manager.c:229
+#: ../src/xfdesktop-file-icon-manager.c:230
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
@@ -795,79 +794,79 @@ msgstr ""
 "Xfdesktop ei voi käyttää polkua \"%s\" työpöydän tiedostojen säilyttämiseen, "
 "koska se ei ole hakemisto."
 
-#: ../src/xfdesktop-file-icon-manager.c:233
+#: ../src/xfdesktop-file-icon-manager.c:234
 msgid "Please delete or rename the file."
 msgstr "Poista kyseinen tiedosto tai nimeä se uudelleen."
 
-#: ../src/xfdesktop-file-icon-manager.c:367
-#: ../src/xfdesktop-file-icon-manager.c:864
+#: ../src/xfdesktop-file-icon-manager.c:368
+#: ../src/xfdesktop-file-icon-manager.c:865
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "Ei voi liittää kohdetta \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:369
-#: ../src/xfdesktop-file-icon-manager.c:868
+#: ../src/xfdesktop-file-icon-manager.c:370
+#: ../src/xfdesktop-file-icon-manager.c:869
 msgid "Mount Failed"
 msgstr "Liittäminen epäonnistui"
 
-#: ../src/xfdesktop-file-icon-manager.c:371
+#: ../src/xfdesktop-file-icon-manager.c:372
 msgid "Unknown error."
 msgstr "Tuntematon virhe."
 
-#: ../src/xfdesktop-file-icon-manager.c:416
-#: ../src/xfdesktop-file-icon-manager.c:747
-#: ../src/xfdesktop-file-icon-manager.c:781
+#: ../src/xfdesktop-file-icon-manager.c:417
+#: ../src/xfdesktop-file-icon-manager.c:748
+#: ../src/xfdesktop-file-icon-manager.c:782
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Ei voi käynnistää kohdetta \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:418
-#: ../src/xfdesktop-file-icon-manager.c:749
-#: ../src/xfdesktop-file-icon-manager.c:784
-#: ../src/xfdesktop-file-icon-manager.c:1578
+#: ../src/xfdesktop-file-icon-manager.c:419
+#: ../src/xfdesktop-file-icon-manager.c:750
+#: ../src/xfdesktop-file-icon-manager.c:785
+#: ../src/xfdesktop-file-icon-manager.c:1579
 msgid "Launch Error"
 msgstr "Käynnistysvirhe"
 
-#: ../src/xfdesktop-file-icon-manager.c:420
+#: ../src/xfdesktop-file-icon-manager.c:421
 msgid "The associated application could not be found or executed."
 msgstr "Oletussovellusta ei löydy, tai sitä ei voi suorittaa."
 
-#: ../src/xfdesktop-file-icon-manager.c:547
+#: ../src/xfdesktop-file-icon-manager.c:548
 #, c-format
 msgid "Rename \"%s\""
 msgstr "Nimeä \"%s\" uudelleen"
 
-#: ../src/xfdesktop-file-icon-manager.c:554
-#: ../src/xfdesktop-file-icon-manager.c:1616
-#: ../src/xfdesktop-file-icon-manager.c:1694
-#: ../src/xfdesktop-file-icon-manager.c:1705
+#: ../src/xfdesktop-file-icon-manager.c:555
+#: ../src/xfdesktop-file-icon-manager.c:1617
+#: ../src/xfdesktop-file-icon-manager.c:1708
+#: ../src/xfdesktop-file-icon-manager.c:1719
 msgid "Enter the new name:"
 msgstr "Syötä uusi nimi:"
 
-#: ../src/xfdesktop-file-icon-manager.c:556
+#: ../src/xfdesktop-file-icon-manager.c:557
 msgid "Rename"
 msgstr "Nimeä uudelleen"
 
-#: ../src/xfdesktop-file-icon-manager.c:622
+#: ../src/xfdesktop-file-icon-manager.c:623
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Haluatko varmasti poistaa kohteen \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:627
-#: ../src/xfdesktop-file-icon-manager.c:647
+#: ../src/xfdesktop-file-icon-manager.c:628
+#: ../src/xfdesktop-file-icon-manager.c:648
 msgid "If you delete a file, it is permanently lost."
 msgstr "Jos poistat tiedoston, sitä ei voi palauttaa."
 
-#: ../src/xfdesktop-file-icon-manager.c:641
+#: ../src/xfdesktop-file-icon-manager.c:642
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Haluatko varmasti poistaa seuraavat %d tiedostoa?"
 
-#: ../src/xfdesktop-file-icon-manager.c:644
+#: ../src/xfdesktop-file-icon-manager.c:645
 msgid "Delete Multiple Files"
 msgstr "Poista useita tiedostoja"
 
-#: ../src/xfdesktop-file-icon-manager.c:786
+#: ../src/xfdesktop-file-icon-manager.c:787
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -875,137 +874,137 @@ msgstr ""
 "Toiminto vaatii tiedostonhallintapalvelun (jollaisen tarjoaa esimerkiksi "
 "Thunar)."
 
-#: ../src/xfdesktop-file-icon-manager.c:865
+#: ../src/xfdesktop-file-icon-manager.c:866
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "Ei voi irrottaa kohdetta \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:868
+#: ../src/xfdesktop-file-icon-manager.c:869
 msgid "Unmount Failed"
 msgstr "Irrottaminen epäonnistui"
 
-#: ../src/xfdesktop-file-icon-manager.c:897
+#: ../src/xfdesktop-file-icon-manager.c:898
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "Ei voi poistaa levyä \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:899
+#: ../src/xfdesktop-file-icon-manager.c:900
 msgid "Eject Failed"
 msgstr "Levyn poistaminen epäonnistui"
 
-#: ../src/xfdesktop-file-icon-manager.c:968
+#: ../src/xfdesktop-file-icon-manager.c:969
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr "Ei voi asettaa tyypille \"%s\" oletussovellusta \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:971
+#: ../src/xfdesktop-file-icon-manager.c:972
 msgid "Properties Error"
 msgstr "Ominaisuusvirhe"
 
-#: ../src/xfdesktop-file-icon-manager.c:1001
+#: ../src/xfdesktop-file-icon-manager.c:1002
 msgid "Write only"
 msgstr "Vain kirjoitus"
 
-#: ../src/xfdesktop-file-icon-manager.c:1001
+#: ../src/xfdesktop-file-icon-manager.c:1002
 msgid "Read only"
 msgstr "Vain luku"
 
-#: ../src/xfdesktop-file-icon-manager.c:1001
+#: ../src/xfdesktop-file-icon-manager.c:1002
 msgid "Read & Write"
 msgstr "Luku ja kirjoitus"
 
-#: ../src/xfdesktop-file-icon-manager.c:1028
+#: ../src/xfdesktop-file-icon-manager.c:1029
 msgid "General"
 msgstr "Yleiset"
 
-#: ../src/xfdesktop-file-icon-manager.c:1079
+#: ../src/xfdesktop-file-icon-manager.c:1080
 msgid "Kind:"
 msgstr "Tyyppi:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1089
+#: ../src/xfdesktop-file-icon-manager.c:1090
 msgid "broken link"
 msgstr "rikkinäinen linkki"
 
-#: ../src/xfdesktop-file-icon-manager.c:1092
+#: ../src/xfdesktop-file-icon-manager.c:1093
 #, c-format
 msgid "link to %s"
 msgstr "linkki kohteeseen %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1109
+#: ../src/xfdesktop-file-icon-manager.c:1110
 msgid "Link Target:"
 msgstr "Linkin kohde:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1126
-#: ../src/xfdesktop-file-icon-manager.c:1285
+#: ../src/xfdesktop-file-icon-manager.c:1127
+#: ../src/xfdesktop-file-icon-manager.c:1286
 msgid "(unknown)"
 msgstr "(tuntematon)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1148
+#: ../src/xfdesktop-file-icon-manager.c:1149
 msgid "Open With:"
 msgstr "Avaa sovelluksessa:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1225
+#: ../src/xfdesktop-file-icon-manager.c:1226
 msgid "Modified:"
 msgstr "Muokattu:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1243
+#: ../src/xfdesktop-file-icon-manager.c:1244
 msgid "Accessed:"
 msgstr "Käytetty:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1270
+#: ../src/xfdesktop-file-icon-manager.c:1271
 msgid "Free Space:"
 msgstr "Vapaata tilaa:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1272
+#: ../src/xfdesktop-file-icon-manager.c:1273
 msgid "Size:"
 msgstr "Koko:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1288
+#: ../src/xfdesktop-file-icon-manager.c:1289
 msgid "%s (%"
 msgstr "%s (%"
 
-#: ../src/xfdesktop-file-icon-manager.c:1288
+#: ../src/xfdesktop-file-icon-manager.c:1289
 msgid " Bytes)"
 msgstr " tavua)"
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1303
+#: ../src/xfdesktop-file-icon-manager.c:1304
 msgid "Permissions"
 msgstr "Käyttöoikeudet"
 
-#: ../src/xfdesktop-file-icon-manager.c:1325
+#: ../src/xfdesktop-file-icon-manager.c:1326
 msgid "Owner:"
 msgstr "Omistaja:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1343
-#: ../src/xfdesktop-file-icon-manager.c:1381
+#: ../src/xfdesktop-file-icon-manager.c:1344
+#: ../src/xfdesktop-file-icon-manager.c:1382
 msgid "Access:"
 msgstr "Käyttöoikeus:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1366
+#: ../src/xfdesktop-file-icon-manager.c:1367
 msgid "Group:"
 msgstr "Ryhmä:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1404
+#: ../src/xfdesktop-file-icon-manager.c:1405
 msgid "Others:"
 msgstr "Muut:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1477
+#: ../src/xfdesktop-file-icon-manager.c:1478
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "Avaa _sovelluksessa \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1480
+#: ../src/xfdesktop-file-icon-manager.c:1481
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Avaa sovelluksessa \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1541
+#: ../src/xfdesktop-file-icon-manager.c:1542
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Ei voi luoda hakemistoa \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1580
+#: ../src/xfdesktop-file-icon-manager.c:1581
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -1013,169 +1012,149 @@ msgstr ""
 "Ei voi käynnistää \"exo-desktop-item-edit\" -toimintoa, jota tarvitaan "
 "käynnistimien ja linkkien luomiseen työpöydälle."
 
-#: ../src/xfdesktop-file-icon-manager.c:1613
+#: ../src/xfdesktop-file-icon-manager.c:1614
 msgid "Create New Folder"
 msgstr "Luo uusi hakemisto"
 
-#: ../src/xfdesktop-file-icon-manager.c:1617
+#: ../src/xfdesktop-file-icon-manager.c:1618
 msgid "New Folder"
 msgstr "Uusi hakemisto"
 
-#: ../src/xfdesktop-file-icon-manager.c:1618
-#: ../src/xfdesktop-file-icon-manager.c:1696
-#: ../src/xfdesktop-file-icon-manager.c:1707
+#: ../src/xfdesktop-file-icon-manager.c:1619
+#: ../src/xfdesktop-file-icon-manager.c:1710
+#: ../src/xfdesktop-file-icon-manager.c:1721
 msgid "Create"
 msgstr "Luo"
 
-#: ../src/xfdesktop-file-icon-manager.c:1654
+#: ../src/xfdesktop-file-icon-manager.c:1655
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Ei voi luoda tiedostoa \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1657
+#: ../src/xfdesktop-file-icon-manager.c:1658
 msgid "Create File Failed"
 msgstr "Tiedoston luominen epäonnistui"
 
-#: ../src/xfdesktop-file-icon-manager.c:1683
+#: ../src/xfdesktop-file-icon-manager.c:1697
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Luo asiakirja mallista \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1702
+#: ../src/xfdesktop-file-icon-manager.c:1716
 msgid "Create Empty File"
 msgstr "Luo tyhjä tiedosto"
 
-#: ../src/xfdesktop-file-icon-manager.c:1706
+#: ../src/xfdesktop-file-icon-manager.c:1720
 msgid "New Empty File"
 msgstr "Uusi tyhjä tiedosto"
 
-#: ../src/xfdesktop-file-icon-manager.c:1736
-#, fuzzy, c-format
+#: ../src/xfdesktop-file-icon-manager.c:1753
+#, c-format
 msgid "Unable to create file \"%s\":"
-msgstr "Ei voi luoda tiedostoa \"%s\":"
+msgstr "Tiedostoa \"%s\" ei voi luoda:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1737
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:1754
 msgid "Create Error"
-msgstr "Ominaisuusvirhe"
+msgstr "Luomisvirhe"
 
-#: ../src/xfdesktop-file-icon-manager.c:1977
+#: ../src/xfdesktop-file-icon-manager.c:1994
 msgid "_Open all"
 msgstr "_Avaa kaikki"
 
-#: ../src/xfdesktop-file-icon-manager.c:1988
+#: ../src/xfdesktop-file-icon-manager.c:2005
 msgid "_Open"
 msgstr "_Avaa"
 
-#: ../src/xfdesktop-file-icon-manager.c:2001
+#: ../src/xfdesktop-file-icon-manager.c:2018
 msgid "_Execute"
 msgstr "_Suorita"
 
-#: ../src/xfdesktop-file-icon-manager.c:2019
+#: ../src/xfdesktop-file-icon-manager.c:2036
 msgid "_Edit Launcher"
 msgstr "_Muokkaa käynnistintä"
 
-#: ../src/xfdesktop-file-icon-manager.c:2067
+#: ../src/xfdesktop-file-icon-manager.c:2084
 msgid "Open With"
 msgstr "Avaa sovelluksessa"
 
-#: ../src/xfdesktop-file-icon-manager.c:2097
+#: ../src/xfdesktop-file-icon-manager.c:2114
 msgid "Open With Other _Application..."
 msgstr "Avaa _muussa sovelluksessa..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2180
+#: ../src/xfdesktop-file-icon-manager.c:2197
 msgid "_Mount Volume"
 msgstr "_Liitä taltio"
 
-#: ../src/xfdesktop-file-icon-manager.c:2191
+#: ../src/xfdesktop-file-icon-manager.c:2208
 msgid "_Unmount Volume"
 msgstr "_Irrota taltio"
 
-#: ../src/xfdesktop-file-icon-manager.c:2205
+#: ../src/xfdesktop-file-icon-manager.c:2222
 msgid "E_ject Volume"
 msgstr "_Poista levy"
 
-#: ../src/xfdesktop-file-icon-manager.c:2215
+#: ../src/xfdesktop-file-icon-manager.c:2232
 msgid "_Copy Files"
 msgstr "_Kopioi tiedostot"
 
-#: ../src/xfdesktop-file-icon-manager.c:2216
+#: ../src/xfdesktop-file-icon-manager.c:2233
 msgid "_Copy File"
 msgstr "_Kopioi tiedosto"
 
-#: ../src/xfdesktop-file-icon-manager.c:2225
+#: ../src/xfdesktop-file-icon-manager.c:2242
 msgid "Cu_t Files"
 msgstr "_Leikkaa tiedostot"
 
-#: ../src/xfdesktop-file-icon-manager.c:2226
+#: ../src/xfdesktop-file-icon-manager.c:2243
 msgid "Cu_t File"
 msgstr "_Leikkaa tiedosto"
 
-#: ../src/xfdesktop-file-icon-manager.c:2235
+#: ../src/xfdesktop-file-icon-manager.c:2252
 msgid "_Delete Files"
 msgstr "_Poista tiedostot"
 
-#: ../src/xfdesktop-file-icon-manager.c:2236
+#: ../src/xfdesktop-file-icon-manager.c:2253
 msgid "_Delete File"
 msgstr "_Poista tiedosto"
 
-#: ../src/xfdesktop-file-icon-manager.c:2248
+#: ../src/xfdesktop-file-icon-manager.c:2265
 msgid "_Rename..."
 msgstr "_Nimeä uudelleen..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2266
+#: ../src/xfdesktop-file-icon-manager.c:2283
 msgid "_Properties..."
 msgstr "_Ominaisuudet..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2284
+#: ../src/xfdesktop-file-icon-manager.c:2301
 msgid "Create _New"
 msgstr "_Luo uusi"
 
-#: ../src/xfdesktop-file-icon-manager.c:2293
+#: ../src/xfdesktop-file-icon-manager.c:2310
 msgid "_Launcher..."
 msgstr "_Käynnistin..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2314
+#: ../src/xfdesktop-file-icon-manager.c:2331
 msgid "_URL Link..."
 msgstr "_URL-linkki..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2329
+#: ../src/xfdesktop-file-icon-manager.c:2346
 msgid "_Folder..."
 msgstr "_Hakemisto..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2368
+#: ../src/xfdesktop-file-icon-manager.c:2385
 msgid "_Empty File"
 msgstr "_Tyhjä tiedosto"
 
-#: ../src/xfdesktop-file-icon-manager.c:3168 ../src/xfdesktop-file-icon.c:554
+#: ../src/xfdesktop-file-icon-manager.c:3210 ../src/xfdesktop-file-icon.c:548
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Kohteen \"%s\" suorittaminen epäonnistui:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3170 ../src/xfdesktop-file-icon.c:556
+#: ../src/xfdesktop-file-icon-manager.c:3212 ../src/xfdesktop-file-icon.c:550
 msgid "Run Error"
 msgstr "Suoritusvirhe"
 
-#: ../src/xfdesktop-file-icon.c:482
-#, c-format
-msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr "Virhe siirrettäessä tiedostoa \"%s\" kohteeseen \"%s\":"
-
-#: ../src/xfdesktop-file-icon.c:484
-#, c-format
-msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr "Virhe kopioitaessa tiedostoa \"%s\" kohteeseen \"%s\":"
-
-#: ../src/xfdesktop-file-icon.c:486
-#, c-format
-msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr "Virhe linkitettäessä tiedostoa \"%s\" kohteeseen \"%s\":"
-
-#: ../src/xfdesktop-file-icon.c:491
-msgid "File Error"
-msgstr "Tiedostovirhe"
-
-#: ../src/xfdesktop-file-icon.c:703
+#: ../src/xfdesktop-file-icon.c:704
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Nimen \"%s\" muuttaminen muotoon \"%s\" epäonnistui:"
