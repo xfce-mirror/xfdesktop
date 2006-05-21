@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-06 05:40+0900\n"
+"POT-Creation-Date: 2006-05-21 11:18+0900\n"
 "PO-Revision-Date: 2006-04-30 11:00+0100\n"
 "Last-Translator: SZERVÑC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -67,7 +67,7 @@ msgstr "Kilép"
 
 #. Name
 #: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1016
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1053
 msgid "Name:"
 msgstr "Név:"
 
@@ -199,7 +199,7 @@ msgid "Select command"
 msgstr "Válassz parancsot"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:588
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:625
 msgid "Question"
 msgstr "Kérdés"
 
@@ -319,22 +319,22 @@ msgstr "Rejtett"
 msgid "Select icon"
 msgstr "Válassz ikont"
 
-#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:535
-#: ../settings/appearance-settings.c:530
+#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:546
+#: ../settings/appearance-settings.c:532
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Minden fájl"
 
-#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:541
-#: ../settings/appearance-settings.c:534
+#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:552
+#: ../settings/appearance-settings.c:536
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Képfájlok"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:698
+#: ../panel-plugin/desktop-menu-plugin.c:709
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce menü"
@@ -365,146 +365,151 @@ msgstr ""
 msgid "/Other"
 msgstr "/Más"
 
-#: ../panel-plugin/desktop-menu-plugin.c:518
+#: ../panel-plugin/desktop-menu-plugin.c:529
 msgid "Select Icon"
 msgstr "Válassz ikont"
 
-#: ../panel-plugin/desktop-menu-plugin.c:520
+#: ../panel-plugin/desktop-menu-plugin.c:531
 msgid "Select Menu File"
 msgstr "Válassz menüfájlt"
 
-#: ../panel-plugin/desktop-menu-plugin.c:549
+#: ../panel-plugin/desktop-menu-plugin.c:560
 msgid "Menu Files"
 msgstr "Menüfájlok"
 
-#: ../panel-plugin/desktop-menu-plugin.c:667
+#: ../panel-plugin/desktop-menu-plugin.c:678
 #: ../settings/behavior-settings.c:217
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Nem indítható az xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:690
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "Edit Properties"
 msgstr "Tulajdonságok szerkesztése"
 
-#: ../panel-plugin/desktop-menu-plugin.c:708
+#: ../panel-plugin/desktop-menu-plugin.c:719
 msgid "Button"
 msgstr "Gomb"
 
-#: ../panel-plugin/desktop-menu-plugin.c:721
+#: ../panel-plugin/desktop-menu-plugin.c:732
 msgid "Button _title:"
 msgstr "Gomb né_v:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:734
+#: ../panel-plugin/desktop-menu-plugin.c:745
 msgid "_Show title in button"
 msgstr "Cím mutatá_sa a gombon"
 
-#: ../panel-plugin/desktop-menu-plugin.c:741
+#: ../panel-plugin/desktop-menu-plugin.c:752
 msgid "Menu File"
 msgstr "Menüfájl"
 
-#: ../panel-plugin/desktop-menu-plugin.c:753
+#: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "Use default _desktop menu file"
 msgstr "_Alap asztali menüfájl használata"
 
-#: ../panel-plugin/desktop-menu-plugin.c:762
+#: ../panel-plugin/desktop-menu-plugin.c:773
 msgid "Use _custom menu file:"
 msgstr "E_gyéni menüfájl használata"
 
-#: ../panel-plugin/desktop-menu-plugin.c:813
+#: ../panel-plugin/desktop-menu-plugin.c:824
 #: ../settings/behavior-settings.c:267
 msgid "_Edit Menu"
 msgstr "Menü sz_erkesztése"
 
-#: ../panel-plugin/desktop-menu-plugin.c:819
+#: ../panel-plugin/desktop-menu-plugin.c:830
 msgid "Icons"
 msgstr "Ikonok"
 
-#: ../panel-plugin/desktop-menu-plugin.c:831
+#: ../panel-plugin/desktop-menu-plugin.c:842
 msgid "_Button icon:"
 msgstr "Gomb iko_n:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:855
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
 msgstr "Legyenek _ikonok a menüben"
+
+#: ../panel-plugin/desktop-menu-plugin.c:939
+#, fuzzy
+msgid "Edit Menu"
+msgstr "Menü sz_erkesztése"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
 msgid "Button Label|Desktop"
 msgstr "Asztal"
 
-#: ../settings/appearance-settings.c:185 ../settings/appearance-settings.c:194
+#: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
 #: ../settings/backdrop-list-manager.c:631
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: ../settings/appearance-settings.c:525
+#: ../settings/appearance-settings.c:527
 msgid "Select backdrop image or list file"
 msgstr "Háttérkép vagy listafájl kiválasztása"
 
-#: ../settings/appearance-settings.c:543
+#: ../settings/appearance-settings.c:545
 msgid "List Files (*.list)"
 msgstr "Listafájlok (*.list)"
 
-#: ../settings/appearance-settings.c:635
+#: ../settings/appearance-settings.c:637
 msgid "_Edit list..."
 msgstr "Lista szerkesztése"
 
-#: ../settings/appearance-settings.c:643
+#: ../settings/appearance-settings.c:645
 msgid "_New list..."
 msgstr "Új lista"
 
-#: ../settings/appearance-settings.c:676
+#: ../settings/appearance-settings.c:678
 msgid "S_tyle:"
 msgstr "S_tílus:"
 
-#: ../settings/appearance-settings.c:683
+#: ../settings/appearance-settings.c:685
 msgid "Auto"
 msgstr "Automatikus"
 
-#: ../settings/appearance-settings.c:684
+#: ../settings/appearance-settings.c:686
 msgid "Centered"
 msgstr "Középre"
 
-#: ../settings/appearance-settings.c:685
+#: ../settings/appearance-settings.c:687
 msgid "Tiled"
 msgstr "Csempe"
 
-#: ../settings/appearance-settings.c:686
+#: ../settings/appearance-settings.c:688
 msgid "Stretched"
 msgstr "Nyújtott"
 
-#: ../settings/appearance-settings.c:687
+#: ../settings/appearance-settings.c:689
 msgid "Scaled"
 msgstr "Átméretezve"
 
-#: ../settings/appearance-settings.c:743
+#: ../settings/appearance-settings.c:745
 msgid "A_djust Brightness:"
 msgstr "Fényerő beállítása:"
 
-#: ../settings/appearance-settings.c:799
+#: ../settings/appearance-settings.c:801
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Az Xfce nem tudja majd kezelni az asztalt (%s)."
 
-#: ../settings/appearance-settings.c:800
+#: ../settings/appearance-settings.c:802
 msgid "Unknown Error"
 msgstr "ismeretlen hiba"
 
-#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:648
+#: ../settings/appearance-settings.c:806 ../src/xfdesktop-file-icon.c:648
 #: ../src/xfdesktop-file-icon.c:706
 msgid "Error"
 msgstr "hiba"
 
-#: ../settings/appearance-settings.c:806
+#: ../settings/appearance-settings.c:808
 msgid "Unable to start xfdesktop"
 msgstr "Az xfdesktop nem indítható"
 
-#: ../settings/appearance-settings.c:824
+#: ../settings/appearance-settings.c:826
 msgid "Information"
 msgstr "Információ"
 
-#: ../settings/appearance-settings.c:834
+#: ../settings/appearance-settings.c:836
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -517,89 +522,84 @@ msgstr ""
 "folyamatkezelőt (xfce4-session), kézzel kell szerkesztenes a ~/.config/xfce4/"
 "xinitrc fájlt.  Részletek a doksiban a http://xfce.org/ -on."
 
-#: ../settings/appearance-settings.c:842
+#: ../settings/appearance-settings.c:844
 msgid "_Do not show this again"
 msgstr "Ne mutas_d legközelebb"
 
 #. the dialog
-#: ../settings/appearance-settings.c:909 ../src/xfce-desktop.c:567
-msgid "Desktop"
-msgstr "Munkaasztal"
-
-#. header
-#: ../settings/appearance-settings.c:924
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
-msgid "Desktop Settings"
+#: ../settings/appearance-settings.c:911
+#, fuzzy
+msgid "Desktop Preferences"
 msgstr "Asztal beállításai"
 
-#: ../settings/appearance-settings.c:929
+#: ../settings/appearance-settings.c:928
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Az _Xfce kezelje az asztalt"
 
-#: ../settings/appearance-settings.c:970
+#: ../settings/appearance-settings.c:969
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "Nyújts egy hátteret v_alamennyi monitorra"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:984
-#: ../settings/appearance-settings.c:1166
+#: ../settings/appearance-settings.c:983
+#: ../settings/appearance-settings.c:1165
 msgid "_Appearance"
 msgstr "Megjelenés"
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1010
+#: ../settings/appearance-settings.c:1009
 msgid "Color"
 msgstr "Szín"
 
-#: ../settings/appearance-settings.c:1024
+#: ../settings/appearance-settings.c:1023
 msgid "_Color Style:"
 msgstr "Szí_nstílus:"
 
-#: ../settings/appearance-settings.c:1031
+#: ../settings/appearance-settings.c:1030
 msgid "Solid Color"
 msgstr "Sima szín"
 
-#: ../settings/appearance-settings.c:1032
+#: ../settings/appearance-settings.c:1031
 msgid "Horizontal Gradient"
 msgstr "Vízszintes színátmenet"
 
-#: ../settings/appearance-settings.c:1033
+#: ../settings/appearance-settings.c:1032
 msgid "Vertical Gradient"
 msgstr "Függőleges színátmenet"
 
-#: ../settings/appearance-settings.c:1046
+#: ../settings/appearance-settings.c:1045
 msgid "Fi_rst Color:"
 msgstr "_1. szín:"
 
-#: ../settings/appearance-settings.c:1067
+#: ../settings/appearance-settings.c:1066
 msgid "_Second Color:"
 msgstr "_2. szín:"
 
-#: ../settings/appearance-settings.c:1092
+#: ../settings/appearance-settings.c:1091
 msgid "Image"
 msgstr "Kép"
 
-#: ../settings/appearance-settings.c:1100
+#: ../settings/appearance-settings.c:1099
 msgid "Show _Image"
 msgstr "_Kép mutatása"
 
-#: ../settings/appearance-settings.c:1122
+#: ../settings/appearance-settings.c:1121
 msgid "_File:"
 msgstr "Fájl:"
 
-#: ../settings/appearance-settings.c:1177
-#: ../settings/appearance-settings.c:1179
+#: ../settings/appearance-settings.c:1176
+#: ../settings/appearance-settings.c:1178
 #, c-format
 msgid "Screen %d"
 msgstr "Képernyő %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1184
+#: ../settings/appearance-settings.c:1183
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Képernyő %d, Monitor %d"
 
-#: ../settings/appearance-settings.c:1201
+#: ../settings/appearance-settings.c:1200
 msgid "_Behavior"
 msgstr "Viselkedés"
 
@@ -665,7 +665,7 @@ msgid "Desktop Icons"
 msgstr "Asztali ikonok"
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-icon-manager.c:964
+#: ../src/xfdesktop-file-icon-manager.c:1001
 msgid "None"
 msgstr "Nincs"
 
@@ -689,61 +689,61 @@ msgstr "Rendszer betű méret használata"
 msgid "Custom _font size:"
 msgstr "Egyéni betűméret"
 
-#: ../src/main.c:242
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Ez az alábbi program: %s %s verziója, az Xfce %s verzióján fut.\n"
 
-#: ../src/main.c:244
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Fordítva az alábbival: GTK+ %d.%d.%d, linkelve: GTK+ %d.%d.%d."
 
-#: ../src/main.c:248
+#: ../src/main.c:246
 msgid "Build options:\n"
 msgstr "Fordítási opciók:\n"
 
-#: ../src/main.c:249
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Asztali Menü:        %s\n"
 
-#: ../src/main.c:251 ../src/main.c:258
+#: ../src/main.c:249 ../src/main.c:256
 msgid "enabled"
 msgstr "bekapcsolva"
 
-#: ../src/main.c:253 ../src/main.c:260
+#: ../src/main.c:251 ../src/main.c:258
 msgid "disabled"
 msgstr "kikapcsolva"
 
-#: ../src/main.c:256
+#: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Asztali Ikonok:       %s\n"
 
-#: ../src/main.c:288
+#: ../src/main.c:286
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Ismeretlen lehetőség: %s\n"
 
-#: ../src/main.c:289
+#: ../src/main.c:287
 msgid "Options are:\n"
 msgstr "Lehetőségek:\n"
 
-#: ../src/main.c:290
+#: ../src/main.c:288
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      Beállítások visszatöltése, képlista frissítése\n"
 
-#: ../src/main.c:291
+#: ../src/main.c:289
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Menü megjelenítése (az egér pozíciójánál)\n"
 
-#: ../src/main.c:292
+#: ../src/main.c:290
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist Ablaklista megjelenítése (az egér pozíciójánál)\n"
 
-#: ../src/main.c:293
+#: ../src/main.c:291
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        Az xfdesktop kilép\n"
 
@@ -771,6 +771,10 @@ msgstr "%d. munkaterület tö_rlése"
 msgid "_Remove Workspace '%s'"
 msgstr "E munkaterület tö_rlése: '%s'"
 
+#: ../src/xfce-desktop.c:571
+msgid "Desktop"
+msgstr "Munkaasztal"
+
 #: ../src/xfdesktop-file-icon-manager.c:220
 #, c-format
 msgid ""
@@ -779,7 +783,7 @@ msgstr "Az Xfdesktop nem tud \"%s\" könyvtárat létrehozni az asztal elemekhez
 
 #: ../src/xfdesktop-file-icon-manager.c:222
 #: ../src/xfdesktop-file-icon-manager.c:231
-#: ../src/xfdesktop-file-icon-manager.c:1507
+#: ../src/xfdesktop-file-icon-manager.c:1544
 msgid "Create Folder Failed"
 msgstr "Mappa létrehozási hiba"
 
@@ -796,326 +800,362 @@ msgstr ""
 msgid "Please delete or rename the file."
 msgstr "Töröld vagy nevezd át a fájlt."
 
-#: ../src/xfdesktop-file-icon-manager.c:379
-#: ../src/xfdesktop-file-icon-manager.c:710
-#: ../src/xfdesktop-file-icon-manager.c:744
+#: ../src/xfdesktop-file-icon-manager.c:367
+#: ../src/xfdesktop-file-icon-manager.c:864
+#, c-format
+msgid "Unable to mount \"%s\":"
+msgstr "\"%s\" felcsatolása sikertelen:"
+
+#: ../src/xfdesktop-file-icon-manager.c:369
+#: ../src/xfdesktop-file-icon-manager.c:868
+msgid "Mount Failed"
+msgstr "Sikertelen felcsatolás"
+
+#: ../src/xfdesktop-file-icon-manager.c:371
+#, fuzzy
+msgid "Unknown error."
+msgstr "ismeretlen hiba"
+
+#: ../src/xfdesktop-file-icon-manager.c:416
+#: ../src/xfdesktop-file-icon-manager.c:747
+#: ../src/xfdesktop-file-icon-manager.c:781
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "%s nem indítható:"
 
-#: ../src/xfdesktop-file-icon-manager.c:381
-#: ../src/xfdesktop-file-icon-manager.c:712
-#: ../src/xfdesktop-file-icon-manager.c:747
+#: ../src/xfdesktop-file-icon-manager.c:418
+#: ../src/xfdesktop-file-icon-manager.c:749
+#: ../src/xfdesktop-file-icon-manager.c:784
+#: ../src/xfdesktop-file-icon-manager.c:1578
 msgid "Launch Error"
 msgstr "Indítási hiba"
 
-#: ../src/xfdesktop-file-icon-manager.c:383
+#: ../src/xfdesktop-file-icon-manager.c:420
 msgid "The associated application could not be found or executed."
 msgstr "A társított alkalmazás nincs meg vagy nem futtatható"
 
-#: ../src/xfdesktop-file-icon-manager.c:510
+#: ../src/xfdesktop-file-icon-manager.c:547
 #, c-format
 msgid "Rename \"%s\""
 msgstr "\"%s\" átnevezése"
 
-#: ../src/xfdesktop-file-icon-manager.c:517
-#: ../src/xfdesktop-file-icon-manager.c:1539
-#: ../src/xfdesktop-file-icon-manager.c:1617
-#: ../src/xfdesktop-file-icon-manager.c:1628
+#: ../src/xfdesktop-file-icon-manager.c:554
+#: ../src/xfdesktop-file-icon-manager.c:1616
+#: ../src/xfdesktop-file-icon-manager.c:1694
+#: ../src/xfdesktop-file-icon-manager.c:1705
 msgid "Enter the new name:"
 msgstr "Add meg az ú nevet:"
 
-#: ../src/xfdesktop-file-icon-manager.c:519
+#: ../src/xfdesktop-file-icon-manager.c:556
 msgid "Rename"
 msgstr "Átnevezés"
 
-#: ../src/xfdesktop-file-icon-manager.c:585
+#: ../src/xfdesktop-file-icon-manager.c:622
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Biztos törlöd az alábbit: \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:590
-#: ../src/xfdesktop-file-icon-manager.c:610
+#: ../src/xfdesktop-file-icon-manager.c:627
+#: ../src/xfdesktop-file-icon-manager.c:647
 msgid "If you delete a file, it is permanently lost."
 msgstr "Ha törölsz egy fájlt, örökre elvész"
 
-#: ../src/xfdesktop-file-icon-manager.c:604
+#: ../src/xfdesktop-file-icon-manager.c:641
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Törlöd az alábbi %d fájlt?"
 
-#: ../src/xfdesktop-file-icon-manager.c:607
+#: ../src/xfdesktop-file-icon-manager.c:644
 msgid "Delete Multiple Files"
 msgstr "Fájlok törlése"
 
-#: ../src/xfdesktop-file-icon-manager.c:749
+#: ../src/xfdesktop-file-icon-manager.c:786
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 "E képesség fájlkezelő szolgáltatást kíván (mint amilyet például a Thunar ad)"
 
-#: ../src/xfdesktop-file-icon-manager.c:827
-#, c-format
-msgid "Unable to mount \"%s\":"
-msgstr "\"%s\" felcsatolása sikertelen:"
-
-#: ../src/xfdesktop-file-icon-manager.c:828
+#: ../src/xfdesktop-file-icon-manager.c:865
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "\"%s\" lecsatolása sikertelen:"
 
-#: ../src/xfdesktop-file-icon-manager.c:831
-msgid "Mount Failed"
-msgstr "Sikertelen felcsatolás"
-
-#: ../src/xfdesktop-file-icon-manager.c:831
+#: ../src/xfdesktop-file-icon-manager.c:868
 msgid "Unmount Failed"
 msgstr "Sikertelen lecsatolás"
 
-#: ../src/xfdesktop-file-icon-manager.c:860
+#: ../src/xfdesktop-file-icon-manager.c:897
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "\"%s\" kiadása sikertelen:"
 
-#: ../src/xfdesktop-file-icon-manager.c:862
+#: ../src/xfdesktop-file-icon-manager.c:899
 msgid "Eject Failed"
 msgstr "Kiadás sikertelen"
 
-#: ../src/xfdesktop-file-icon-manager.c:931
+#: ../src/xfdesktop-file-icon-manager.c:968
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr "Nem tudom beállítani \"%s\" alapértelmezett alkalmazását erre: \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:934
+#: ../src/xfdesktop-file-icon-manager.c:971
 msgid "Properties Error"
 msgstr "Hibás tulajdonságok"
 
-#: ../src/xfdesktop-file-icon-manager.c:964
+#: ../src/xfdesktop-file-icon-manager.c:1001
 msgid "Write only"
 msgstr "Csak írás"
 
-#: ../src/xfdesktop-file-icon-manager.c:964
+#: ../src/xfdesktop-file-icon-manager.c:1001
 msgid "Read only"
 msgstr "Csak olvasás"
 
-#: ../src/xfdesktop-file-icon-manager.c:964
+#: ../src/xfdesktop-file-icon-manager.c:1001
 msgid "Read & Write"
 msgstr "Írás és olvasás"
 
-#: ../src/xfdesktop-file-icon-manager.c:991
+#: ../src/xfdesktop-file-icon-manager.c:1028
 msgid "General"
 msgstr "Általános"
 
-#: ../src/xfdesktop-file-icon-manager.c:1042
+#: ../src/xfdesktop-file-icon-manager.c:1079
 msgid "Kind:"
 msgstr "Fajta:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1052
+#: ../src/xfdesktop-file-icon-manager.c:1089
 msgid "broken link"
 msgstr "törött lánc"
 
-#: ../src/xfdesktop-file-icon-manager.c:1055
+#: ../src/xfdesktop-file-icon-manager.c:1092
 #, c-format
 msgid "link to %s"
 msgstr "lánc ide: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1072
+#: ../src/xfdesktop-file-icon-manager.c:1109
 msgid "Link Target:"
 msgstr "A lánc célja:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1089
-#: ../src/xfdesktop-file-icon-manager.c:1248
+#: ../src/xfdesktop-file-icon-manager.c:1126
+#: ../src/xfdesktop-file-icon-manager.c:1285
 msgid "(unknown)"
 msgstr "(ismeretlen)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1111
+#: ../src/xfdesktop-file-icon-manager.c:1148
 msgid "Open With:"
 msgstr "Megnyitás ezzel."
 
-#: ../src/xfdesktop-file-icon-manager.c:1188
+#: ../src/xfdesktop-file-icon-manager.c:1225
 msgid "Modified:"
 msgstr "Módosítva:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1206
+#: ../src/xfdesktop-file-icon-manager.c:1243
 msgid "Accessed:"
 msgstr "Megnyitva:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1233
+#: ../src/xfdesktop-file-icon-manager.c:1270
 msgid "Free Space:"
 msgstr "Szabad hely:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1235
+#: ../src/xfdesktop-file-icon-manager.c:1272
 msgid "Size:"
 msgstr "Méret:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1251
+#: ../src/xfdesktop-file-icon-manager.c:1288
 msgid "%s (%"
 msgstr "%s (%"
 
-#: ../src/xfdesktop-file-icon-manager.c:1251
+#: ../src/xfdesktop-file-icon-manager.c:1288
 msgid " Bytes)"
 msgstr " bájt)"
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1266
+#: ../src/xfdesktop-file-icon-manager.c:1303
 msgid "Permissions"
 msgstr "Jogok"
 
-#: ../src/xfdesktop-file-icon-manager.c:1288
+#: ../src/xfdesktop-file-icon-manager.c:1325
 msgid "Owner:"
 msgstr "Tulajdonos:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1306
-#: ../src/xfdesktop-file-icon-manager.c:1344
+#: ../src/xfdesktop-file-icon-manager.c:1343
+#: ../src/xfdesktop-file-icon-manager.c:1381
 msgid "Access:"
 msgstr "Elérés:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1329
+#: ../src/xfdesktop-file-icon-manager.c:1366
 msgid "Group:"
 msgstr "Csoport:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1367
+#: ../src/xfdesktop-file-icon-manager.c:1404
 msgid "Others:"
 msgstr "Mások:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1440
+#: ../src/xfdesktop-file-icon-manager.c:1477
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "Megnyitás ezzel: \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1443
+#: ../src/xfdesktop-file-icon-manager.c:1480
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Megnyitás ezzel: \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1504
+#: ../src/xfdesktop-file-icon-manager.c:1541
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "\"%s\" könyvtár létrehozása meghiúsult:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1536
+#: ../src/xfdesktop-file-icon-manager.c:1580
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1613
 msgid "Create New Folder"
 msgstr "Új mappa létrehozása"
 
-#: ../src/xfdesktop-file-icon-manager.c:1540
+#: ../src/xfdesktop-file-icon-manager.c:1617
 msgid "New Folder"
 msgstr "Új mappa"
 
-#: ../src/xfdesktop-file-icon-manager.c:1541
-#: ../src/xfdesktop-file-icon-manager.c:1619
-#: ../src/xfdesktop-file-icon-manager.c:1630
+#: ../src/xfdesktop-file-icon-manager.c:1618
+#: ../src/xfdesktop-file-icon-manager.c:1696
+#: ../src/xfdesktop-file-icon-manager.c:1707
 msgid "Create"
 msgstr "Létrehozás"
 
-#: ../src/xfdesktop-file-icon-manager.c:1577
+#: ../src/xfdesktop-file-icon-manager.c:1654
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "\"%s\" fájl létrehozása meghiúsult:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1580
+#: ../src/xfdesktop-file-icon-manager.c:1657
 msgid "Create File Failed"
 msgstr "A fájl létrehozása meghiúsult"
 
-#: ../src/xfdesktop-file-icon-manager.c:1606
+#: ../src/xfdesktop-file-icon-manager.c:1683
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Dokumentum létrehozása e sablonból: \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1625
+#: ../src/xfdesktop-file-icon-manager.c:1702
 msgid "Create Empty File"
 msgstr "Üres fájl létrehozása"
 
-#: ../src/xfdesktop-file-icon-manager.c:1629
+#: ../src/xfdesktop-file-icon-manager.c:1706
 msgid "New Empty File"
 msgstr "Új üres fájl"
 
-#: ../src/xfdesktop-file-icon-manager.c:1884
+#: ../src/xfdesktop-file-icon-manager.c:1736
+#, fuzzy, c-format
+msgid "Unable to create file \"%s\":"
+msgstr "\"%s\" fájl létrehozása meghiúsult:"
+
+#: ../src/xfdesktop-file-icon-manager.c:1737
+#, fuzzy
+msgid "Create Error"
+msgstr "Hibás tulajdonságok"
+
+#: ../src/xfdesktop-file-icon-manager.c:1977
 msgid "_Open all"
 msgstr "Mindet megnyitja"
 
-#: ../src/xfdesktop-file-icon-manager.c:1895
+#: ../src/xfdesktop-file-icon-manager.c:1988
 msgid "_Open"
 msgstr "Megnyit"
 
-#: ../src/xfdesktop-file-icon-manager.c:1906
+#: ../src/xfdesktop-file-icon-manager.c:2001
 msgid "_Execute"
 msgstr "Futtat"
 
-#: ../src/xfdesktop-file-icon-manager.c:1950
+#: ../src/xfdesktop-file-icon-manager.c:2019
+#, fuzzy
+msgid "_Edit Launcher"
+msgstr "Indító"
+
+#: ../src/xfdesktop-file-icon-manager.c:2067
 msgid "Open With"
 msgstr "Megnyitás ezzel"
 
-#: ../src/xfdesktop-file-icon-manager.c:1980
+#: ../src/xfdesktop-file-icon-manager.c:2097
 msgid "Open With Other _Application..."
 msgstr "Megnyitás más _alkalmazással..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2063
+#: ../src/xfdesktop-file-icon-manager.c:2180
 msgid "_Mount Volume"
 msgstr "Kötet felcsatolása"
 
-#: ../src/xfdesktop-file-icon-manager.c:2074
+#: ../src/xfdesktop-file-icon-manager.c:2191
 msgid "_Unmount Volume"
 msgstr "Kötet lecsatolása"
 
-#: ../src/xfdesktop-file-icon-manager.c:2088
+#: ../src/xfdesktop-file-icon-manager.c:2205
 msgid "E_ject Volume"
 msgstr "Kötet kiadása"
 
-#: ../src/xfdesktop-file-icon-manager.c:2098
+#: ../src/xfdesktop-file-icon-manager.c:2215
 msgid "_Copy Files"
 msgstr "Fájlok _Másolása"
 
-#: ../src/xfdesktop-file-icon-manager.c:2099
+#: ../src/xfdesktop-file-icon-manager.c:2216
 msgid "_Copy File"
 msgstr "Fájl _Másolása"
 
-#: ../src/xfdesktop-file-icon-manager.c:2108
+#: ../src/xfdesktop-file-icon-manager.c:2225
 msgid "Cu_t Files"
 msgstr "Fájlok _Kivágása"
 
-#: ../src/xfdesktop-file-icon-manager.c:2109
+#: ../src/xfdesktop-file-icon-manager.c:2226
 msgid "Cu_t File"
 msgstr "Fájl _Kivágása"
 
-#: ../src/xfdesktop-file-icon-manager.c:2118
+#: ../src/xfdesktop-file-icon-manager.c:2235
 msgid "_Delete Files"
 msgstr "Fájlok _Törlése"
 
-#: ../src/xfdesktop-file-icon-manager.c:2119
+#: ../src/xfdesktop-file-icon-manager.c:2236
 msgid "_Delete File"
 msgstr "Fájl _Törlése"
 
-#: ../src/xfdesktop-file-icon-manager.c:2131
+#: ../src/xfdesktop-file-icon-manager.c:2248
 msgid "_Rename..."
 msgstr "Átnevezés..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2149
+#: ../src/xfdesktop-file-icon-manager.c:2266
 msgid "_Properties..."
 msgstr "Tulajdonságok..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2165
-msgid "Create _Folder..."
+#: ../src/xfdesktop-file-icon-manager.c:2284
+#, fuzzy
+msgid "Create _New"
+msgstr "Új mappa létrehozása"
+
+#: ../src/xfdesktop-file-icon-manager.c:2293
+#, fuzzy
+msgid "_Launcher..."
+msgstr "Indító"
+
+#: ../src/xfdesktop-file-icon-manager.c:2314
+msgid "_URL Link..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2329
+#, fuzzy
+msgid "_Folder..."
 msgstr "Mappa létehozása"
 
-#: ../src/xfdesktop-file-icon-manager.c:2172
-msgid "Create _Document"
-msgstr "_Dokumentum létrehozása"
-
-#: ../src/xfdesktop-file-icon-manager.c:2193
-msgid "No Templates installed"
-msgstr "Nincsenek telepített sablonok"
-
-#: ../src/xfdesktop-file-icon-manager.c:2205
+#: ../src/xfdesktop-file-icon-manager.c:2368
 msgid "_Empty File"
 msgstr "Üres fájl"
 
-#: ../src/xfdesktop-file-icon-manager.c:3005 ../src/xfdesktop-file-icon.c:554
+#: ../src/xfdesktop-file-icon-manager.c:3168 ../src/xfdesktop-file-icon.c:554
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "\"%s\" nem futtatható:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3007 ../src/xfdesktop-file-icon.c:556
+#: ../src/xfdesktop-file-icon-manager.c:3170 ../src/xfdesktop-file-icon.c:556
 msgid "Run Error"
 msgstr "Futtatási hiba"
 
@@ -1158,6 +1198,10 @@ msgstr "Xfce 4 menüszerkesztő"
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr "A telepített programok kategóriáinak menüjét mutatja"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop Settings"
+msgstr "Asztal beállításai"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"

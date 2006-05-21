@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-06 05:40+0900\n"
+"POT-Creation-Date: 2006-05-21 11:18+0900\n"
 "PO-Revision-Date: 2005-10-09 22:18+0900\n"
 "Last-Translator: Norayr Chilingaryan <norik@freenet.am>\n"
 "Language-Team: Armenian <en@li.org>\n"
@@ -65,7 +65,7 @@ msgstr "Ելք"
 
 #. Name
 #: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1016
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1053
 msgid "Name:"
 msgstr "Անունը՝"
 
@@ -197,7 +197,7 @@ msgid "Select command"
 msgstr "Ընտրեք հրամանը"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:588
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:625
 msgid "Question"
 msgstr "Հարց"
 
@@ -318,22 +318,22 @@ msgstr "Թաքուն"
 msgid "Select icon"
 msgstr "Ընտրեք Պատկերակը"
 
-#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:535
-#: ../settings/appearance-settings.c:530
+#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:546
+#: ../settings/appearance-settings.c:532
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Բոլոր ֆայլերը"
 
-#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:541
-#: ../settings/appearance-settings.c:534
+#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:552
+#: ../settings/appearance-settings.c:536
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Պատկերների ֆայլերը"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:698
+#: ../panel-plugin/desktop-menu-plugin.c:709
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce Ցանկ"
@@ -360,150 +360,155 @@ msgstr ""
 msgid "/Other"
 msgstr "/Այլ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:518
+#: ../panel-plugin/desktop-menu-plugin.c:529
 msgid "Select Icon"
 msgstr "Ընտրեք Պատկերակը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:520
+#: ../panel-plugin/desktop-menu-plugin.c:531
 msgid "Select Menu File"
 msgstr "Ընտրեք ցանկի ֆայլը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:549
+#: ../panel-plugin/desktop-menu-plugin.c:560
 msgid "Menu Files"
 msgstr "Ցանկի Ֆայլեր"
 
-#: ../panel-plugin/desktop-menu-plugin.c:667
+#: ../panel-plugin/desktop-menu-plugin.c:678
 #: ../settings/behavior-settings.c:217
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Հնարավոր չէ աշխատացնել xfce4-menueditor ծրագիրը՝ %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:690
+#: ../panel-plugin/desktop-menu-plugin.c:701
 #, fuzzy
 msgid "Edit Properties"
 msgstr "Խմբագրել նախադրյալների ցուցակը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:708
+#: ../panel-plugin/desktop-menu-plugin.c:719
 #, fuzzy
 msgid "Button"
 msgstr "_Ստեղն պատկերակը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:721
+#: ../panel-plugin/desktop-menu-plugin.c:732
 msgid "Button _title:"
 msgstr "Ստեղնի _վերնագիրը՝"
 
-#: ../panel-plugin/desktop-menu-plugin.c:734
+#: ../panel-plugin/desktop-menu-plugin.c:745
 msgid "_Show title in button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:741
+#: ../panel-plugin/desktop-menu-plugin.c:752
 msgid "Menu File"
 msgstr "Ցանկի Ֆայլ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:753
+#: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "Use default _desktop menu file"
 msgstr "Կիրառել հիմնական _գրասեղան ցանկի ֆայլը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:762
+#: ../panel-plugin/desktop-menu-plugin.c:773
 msgid "Use _custom menu file:"
 msgstr "Կիրառել _փոփոխված ցանկի ֆայլը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:813
+#: ../panel-plugin/desktop-menu-plugin.c:824
 #: ../settings/behavior-settings.c:267
 msgid "_Edit Menu"
 msgstr "_Խմբագրել Ցանկը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:819
+#: ../panel-plugin/desktop-menu-plugin.c:830
 msgid "Icons"
 msgstr "Պատկերակներ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:831
+#: ../panel-plugin/desktop-menu-plugin.c:842
 msgid "_Button icon:"
 msgstr "_Ստեղն պատկերակը"
 
-#: ../panel-plugin/desktop-menu-plugin.c:855
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
 msgstr "Ցույց տալ _պատկերակները ցանկի մեջ"
+
+#: ../panel-plugin/desktop-menu-plugin.c:939
+#, fuzzy
+msgid "Edit Menu"
+msgstr "_Խմբագրել Ցանկը"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
 msgid "Button Label|Desktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:185 ../settings/appearance-settings.c:194
+#: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
 #: ../settings/backdrop-list-manager.c:631
 msgid "backdrops.list"
 msgstr "Նախադրալներ.ցուցակ"
 
-#: ../settings/appearance-settings.c:525
+#: ../settings/appearance-settings.c:527
 msgid "Select backdrop image or list file"
 msgstr "Ընտրեք նախադրյալ պատկերը կամ ցուցակը"
 
-#: ../settings/appearance-settings.c:543
+#: ../settings/appearance-settings.c:545
 msgid "List Files (*.list)"
 msgstr "Թվել Ֆայլերը (*.list)"
 
-#: ../settings/appearance-settings.c:635
+#: ../settings/appearance-settings.c:637
 msgid "_Edit list..."
 msgstr "_Խմբագրել ցուցակը"
 
-#: ../settings/appearance-settings.c:643
+#: ../settings/appearance-settings.c:645
 msgid "_New list..."
 msgstr "_Նոր ցուցակ…"
 
-#: ../settings/appearance-settings.c:676
+#: ../settings/appearance-settings.c:678
 msgid "S_tyle:"
 msgstr "Ո_ճը՝"
 
-#: ../settings/appearance-settings.c:683
+#: ../settings/appearance-settings.c:685
 msgid "Auto"
 msgstr "Ավտո"
 
-#: ../settings/appearance-settings.c:684
+#: ../settings/appearance-settings.c:686
 msgid "Centered"
 msgstr "Կենտրոնացված"
 
-#: ../settings/appearance-settings.c:685
+#: ../settings/appearance-settings.c:687
 msgid "Tiled"
 msgstr "Հաղճասալ"
 
-#: ../settings/appearance-settings.c:686
+#: ../settings/appearance-settings.c:688
 msgid "Stretched"
 msgstr "Պարզված"
 
-#: ../settings/appearance-settings.c:687
+#: ../settings/appearance-settings.c:689
 msgid "Scaled"
 msgstr "Թեփավոր"
 
-#: ../settings/appearance-settings.c:743
+#: ../settings/appearance-settings.c:745
 #, fuzzy
 msgid "A_djust Brightness:"
 msgstr "Ճշտել _Պայծառությունը"
 
-#: ../settings/appearance-settings.c:799
+#: ../settings/appearance-settings.c:801
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr ""
 
-#: ../settings/appearance-settings.c:800
+#: ../settings/appearance-settings.c:802
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:804 ../src/xfdesktop-file-icon.c:648
+#: ../settings/appearance-settings.c:806 ../src/xfdesktop-file-icon.c:648
 #: ../src/xfdesktop-file-icon.c:706
 msgid "Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:806
+#: ../settings/appearance-settings.c:808
 msgid "Unable to start xfdesktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:824
+#: ../settings/appearance-settings.c:826
 #, fuzzy
 msgid "Information"
 msgstr "Անտեսել փոփոխությունները"
 
-#: ../settings/appearance-settings.c:834
+#: ../settings/appearance-settings.c:836
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -512,89 +517,84 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 
-#: ../settings/appearance-settings.c:842
+#: ../settings/appearance-settings.c:844
 msgid "_Do not show this again"
 msgstr ""
 
 #. the dialog
-#: ../settings/appearance-settings.c:909 ../src/xfce-desktop.c:567
-msgid "Desktop"
-msgstr "Գրասեղան"
-
-#. header
-#: ../settings/appearance-settings.c:924
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
-msgid "Desktop Settings"
+#: ../settings/appearance-settings.c:911
+#, fuzzy
+msgid "Desktop Preferences"
 msgstr "Գրասեղանի նախընտրանքները"
 
-#: ../settings/appearance-settings.c:929
+#: ../settings/appearance-settings.c:928
 msgid "Allow _Xfce to manage the desktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:970
+#: ../settings/appearance-settings.c:969
 msgid "Stretch single backdrop onto _all monitors"
 msgstr ""
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:984
-#: ../settings/appearance-settings.c:1166
+#: ../settings/appearance-settings.c:983
+#: ../settings/appearance-settings.c:1165
 msgid "_Appearance"
 msgstr ""
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1010
+#: ../settings/appearance-settings.c:1009
 msgid "Color"
 msgstr "Գույն"
 
-#: ../settings/appearance-settings.c:1024
+#: ../settings/appearance-settings.c:1023
 msgid "_Color Style:"
 msgstr "_Գույնի Ոճը՝"
 
-#: ../settings/appearance-settings.c:1031
+#: ../settings/appearance-settings.c:1030
 msgid "Solid Color"
 msgstr "Կարծր Գույն"
 
-#: ../settings/appearance-settings.c:1032
+#: ../settings/appearance-settings.c:1031
 msgid "Horizontal Gradient"
 msgstr "Հորիզոնական թեքվածք"
 
-#: ../settings/appearance-settings.c:1033
+#: ../settings/appearance-settings.c:1032
 msgid "Vertical Gradient"
 msgstr "Ուղղահայաց թեքվածք"
 
-#: ../settings/appearance-settings.c:1046
+#: ../settings/appearance-settings.c:1045
 msgid "Fi_rst Color:"
 msgstr "Առա_ջին Գույնը՝"
 
-#: ../settings/appearance-settings.c:1067
+#: ../settings/appearance-settings.c:1066
 msgid "_Second Color:"
 msgstr "_Երկրորդ Գույնը՝"
 
-#: ../settings/appearance-settings.c:1092
+#: ../settings/appearance-settings.c:1091
 msgid "Image"
 msgstr "Պատկեր"
 
-#: ../settings/appearance-settings.c:1100
+#: ../settings/appearance-settings.c:1099
 msgid "Show _Image"
 msgstr "Ցույց տալ պատկերը"
 
-#: ../settings/appearance-settings.c:1122
+#: ../settings/appearance-settings.c:1121
 msgid "_File:"
 msgstr "_Ֆայլ"
 
-#: ../settings/appearance-settings.c:1177
-#: ../settings/appearance-settings.c:1179
+#: ../settings/appearance-settings.c:1176
+#: ../settings/appearance-settings.c:1178
 #, c-format
 msgid "Screen %d"
 msgstr "Էկրան %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1184
+#: ../settings/appearance-settings.c:1183
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Էկրան %d, Մոնիտոր %d"
 
-#: ../settings/appearance-settings.c:1201
+#: ../settings/appearance-settings.c:1200
 msgid "_Behavior"
 msgstr ""
 
@@ -664,7 +664,7 @@ msgid "Desktop Icons"
 msgstr "Գրասեղանի Ցանկը"
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-icon-manager.c:964
+#: ../src/xfdesktop-file-icon-manager.c:1001
 msgid "None"
 msgstr ""
 
@@ -691,66 +691,66 @@ msgstr "Կիրառել _փոփոխված ցանկի ֆայլը"
 msgid "Custom _font size:"
 msgstr ""
 
-#: ../src/main.c:242
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr ""
 
-#: ../src/main.c:244
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr ""
 
-#: ../src/main.c:248
+#: ../src/main.c:246
 msgid "Build options:\n"
 msgstr ""
 
-#: ../src/main.c:249
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr ""
 
-#: ../src/main.c:251 ../src/main.c:258
+#: ../src/main.c:249 ../src/main.c:256
 #, fuzzy
 msgid "enabled"
 msgstr "Թեփավոր"
 
-#: ../src/main.c:253 ../src/main.c:260
+#: ../src/main.c:251 ../src/main.c:258
 #, fuzzy
 msgid "disabled"
 msgstr "Հաղճասալ"
 
-#: ../src/main.c:256
+#: ../src/main.c:254
 #, fuzzy, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Գրասեղանի Ցանկը"
 
-#: ../src/main.c:288
+#: ../src/main.c:286
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Անհայտ ընտրություն՝ %s\n"
 
-#: ../src/main.c:289
+#: ../src/main.c:287
 msgid "Options are:\n"
 msgstr "Ընտրությունները կարող են լինել՝ \n"
 
-#: ../src/main.c:290
+#: ../src/main.c:288
 msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -վերաբեռնել      Վերաբեռնել բոլոր նախընտրանքները, նորացնել պատկերների "
 "ցուցակը\n"
 
-#: ../src/main.c:291
+#: ../src/main.c:289
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -ցանկ        Բացել ցանկը (մկնիկի ընթացիկ վայրում)\n"
 
-#: ../src/main.c:292
+#: ../src/main.c:290
 msgid ""
 "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    -պատուհանների ցանկ  Բացել պատուհանների ցանկը (մկնիկի ընթացիկ վայրում)\n"
 
-#: ../src/main.c:293
+#: ../src/main.c:291
 msgid "    -quit        Cause xfdesktop to quit\n"
 msgstr ""
 
@@ -778,6 +778,10 @@ msgstr "_Վերացնել Տիրույթ %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Վերացնել Տիրույթ '%s'"
 
+#: ../src/xfce-desktop.c:571
+msgid "Desktop"
+msgstr "Գրասեղան"
+
 #: ../src/xfdesktop-file-icon-manager.c:220
 #, c-format
 msgid ""
@@ -786,7 +790,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:222
 #: ../src/xfdesktop-file-icon-manager.c:231
-#: ../src/xfdesktop-file-icon-manager.c:1507
+#: ../src/xfdesktop-file-icon-manager.c:1544
 msgid "Create Folder Failed"
 msgstr ""
 
@@ -801,341 +805,374 @@ msgstr ""
 msgid "Please delete or rename the file."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:379
-#: ../src/xfdesktop-file-icon-manager.c:710
-#: ../src/xfdesktop-file-icon-manager.c:744
+#: ../src/xfdesktop-file-icon-manager.c:367
+#: ../src/xfdesktop-file-icon-manager.c:864
+#, fuzzy, c-format
+msgid "Unable to mount \"%s\":"
+msgstr "Հնարավոր չէ աշխատացնել xfce4-menueditor ծրագիրը՝ %s"
+
+#: ../src/xfdesktop-file-icon-manager.c:369
+#: ../src/xfdesktop-file-icon-manager.c:868
+#, fuzzy
+msgid "Mount Failed"
+msgstr "Ցանկի Ֆայլ"
+
+#: ../src/xfdesktop-file-icon-manager.c:371
+msgid "Unknown error."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:416
+#: ../src/xfdesktop-file-icon-manager.c:747
+#: ../src/xfdesktop-file-icon-manager.c:781
 #, fuzzy, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Հնարավոր չէ աշխատացնել xfce4-menueditor ծրագիրը՝ %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:381
-#: ../src/xfdesktop-file-icon-manager.c:712
-#: ../src/xfdesktop-file-icon-manager.c:747
+#: ../src/xfdesktop-file-icon-manager.c:418
+#: ../src/xfdesktop-file-icon-manager.c:749
+#: ../src/xfdesktop-file-icon-manager.c:784
+#: ../src/xfdesktop-file-icon-manager.c:1578
 #, fuzzy
 msgid "Launch Error"
 msgstr "Պիտակը"
 
-#: ../src/xfdesktop-file-icon-manager.c:383
+#: ../src/xfdesktop-file-icon-manager.c:420
 msgid "The associated application could not be found or executed."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:510
+#: ../src/xfdesktop-file-icon-manager.c:547
 #, c-format
 msgid "Rename \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:517
-#: ../src/xfdesktop-file-icon-manager.c:1539
-#: ../src/xfdesktop-file-icon-manager.c:1617
-#: ../src/xfdesktop-file-icon-manager.c:1628
+#: ../src/xfdesktop-file-icon-manager.c:554
+#: ../src/xfdesktop-file-icon-manager.c:1616
+#: ../src/xfdesktop-file-icon-manager.c:1694
+#: ../src/xfdesktop-file-icon-manager.c:1705
 msgid "Enter the new name:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:519
+#: ../src/xfdesktop-file-icon-manager.c:556
 #, fuzzy
 msgid "Rename"
 msgstr "Թեփավոր"
 
-#: ../src/xfdesktop-file-icon-manager.c:585
+#: ../src/xfdesktop-file-icon-manager.c:622
 #, fuzzy, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Վստա՞հեք, որ ուզում եք փակել ընթացիկ ցանկը"
 
-#: ../src/xfdesktop-file-icon-manager.c:590
-#: ../src/xfdesktop-file-icon-manager.c:610
+#: ../src/xfdesktop-file-icon-manager.c:627
+#: ../src/xfdesktop-file-icon-manager.c:647
 msgid "If you delete a file, it is permanently lost."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:604
+#: ../src/xfdesktop-file-icon-manager.c:641
 #, fuzzy, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Վստա՞հեք, որ ուզում եք փակել ընթացիկ ցանկը"
 
-#: ../src/xfdesktop-file-icon-manager.c:607
+#: ../src/xfdesktop-file-icon-manager.c:644
 #, fuzzy
 msgid "Delete Multiple Files"
 msgstr "Ընտրեք ցանկի ֆայլը"
 
-#: ../src/xfdesktop-file-icon-manager.c:749
+#: ../src/xfdesktop-file-icon-manager.c:786
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:827
-#, fuzzy, c-format
-msgid "Unable to mount \"%s\":"
-msgstr "Հնարավոր չէ աշխատացնել xfce4-menueditor ծրագիրը՝ %s"
-
-#: ../src/xfdesktop-file-icon-manager.c:828
+#: ../src/xfdesktop-file-icon-manager.c:865
 #, fuzzy, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "Հնարավոր չէ աշխատացնել xfce4-menueditor ծրագիրը՝ %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:831
-#, fuzzy
-msgid "Mount Failed"
-msgstr "Ցանկի Ֆայլ"
-
-#: ../src/xfdesktop-file-icon-manager.c:831
+#: ../src/xfdesktop-file-icon-manager.c:868
 #, fuzzy
 msgid "Unmount Failed"
 msgstr "Ցանկի Ֆայլ"
 
-#: ../src/xfdesktop-file-icon-manager.c:860
+#: ../src/xfdesktop-file-icon-manager.c:897
 #, fuzzy, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "Հնարավոր չէ աշխատացնել xfce4-menueditor ծրագիրը՝ %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:862
+#: ../src/xfdesktop-file-icon-manager.c:899
 msgid "Eject Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:931
+#: ../src/xfdesktop-file-icon-manager.c:968
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:934
+#: ../src/xfdesktop-file-icon-manager.c:971
 #, fuzzy
 msgid "Properties Error"
 msgstr "Խմբագրել նախադրյալների ցուցակը"
 
-#: ../src/xfdesktop-file-icon-manager.c:964
+#: ../src/xfdesktop-file-icon-manager.c:1001
 msgid "Write only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:964
+#: ../src/xfdesktop-file-icon-manager.c:1001
 msgid "Read only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:964
+#: ../src/xfdesktop-file-icon-manager.c:1001
 msgid "Read & Write"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:991
+#: ../src/xfdesktop-file-icon-manager.c:1028
 msgid "General"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1042
+#: ../src/xfdesktop-file-icon-manager.c:1079
 msgid "Kind:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1052
+#: ../src/xfdesktop-file-icon-manager.c:1089
 msgid "broken link"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1055
+#: ../src/xfdesktop-file-icon-manager.c:1092
 #, c-format
 msgid "link to %s"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1072
+#: ../src/xfdesktop-file-icon-manager.c:1109
 msgid "Link Target:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1089
-#: ../src/xfdesktop-file-icon-manager.c:1248
+#: ../src/xfdesktop-file-icon-manager.c:1126
+#: ../src/xfdesktop-file-icon-manager.c:1285
 msgid "(unknown)"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1111
+#: ../src/xfdesktop-file-icon-manager.c:1148
 msgid "Open With:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1188
+#: ../src/xfdesktop-file-icon-manager.c:1225
 msgid "Modified:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1206
+#: ../src/xfdesktop-file-icon-manager.c:1243
 msgid "Accessed:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1233
+#: ../src/xfdesktop-file-icon-manager.c:1270
 msgid "Free Space:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1235
+#: ../src/xfdesktop-file-icon-manager.c:1272
 msgid "Size:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1251
+#: ../src/xfdesktop-file-icon-manager.c:1288
 msgid "%s (%"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1251
+#: ../src/xfdesktop-file-icon-manager.c:1288
 msgid " Bytes)"
 msgstr ""
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1266
+#: ../src/xfdesktop-file-icon-manager.c:1303
 msgid "Permissions"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1288
+#: ../src/xfdesktop-file-icon-manager.c:1325
 msgid "Owner:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1306
-#: ../src/xfdesktop-file-icon-manager.c:1344
+#: ../src/xfdesktop-file-icon-manager.c:1343
+#: ../src/xfdesktop-file-icon-manager.c:1381
 msgid "Access:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1329
+#: ../src/xfdesktop-file-icon-manager.c:1366
 msgid "Group:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1367
+#: ../src/xfdesktop-file-icon-manager.c:1404
 #, fuzzy
 msgid "Others:"
 msgstr "/Այլ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1440
+#: ../src/xfdesktop-file-icon-manager.c:1477
 #, c-format
 msgid "_Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1443
+#: ../src/xfdesktop-file-icon-manager.c:1480
 #, c-format
 msgid "Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1504
+#: ../src/xfdesktop-file-icon-manager.c:1541
 #, fuzzy, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Հնարավոր չէ աշխատացնել xfce4-menueditor ծրագիրը՝ %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1536
+#: ../src/xfdesktop-file-icon-manager.c:1580
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1613
 msgid "Create New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1540
+#: ../src/xfdesktop-file-icon-manager.c:1617
 msgid "New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1541
-#: ../src/xfdesktop-file-icon-manager.c:1619
-#: ../src/xfdesktop-file-icon-manager.c:1630
+#: ../src/xfdesktop-file-icon-manager.c:1618
+#: ../src/xfdesktop-file-icon-manager.c:1696
+#: ../src/xfdesktop-file-icon-manager.c:1707
 msgid "Create"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1577
+#: ../src/xfdesktop-file-icon-manager.c:1654
 #, fuzzy, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Հնարավոր չէ աշխատացնել xfce4-menueditor ծրագիրը՝ %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1580
+#: ../src/xfdesktop-file-icon-manager.c:1657
 #, fuzzy
 msgid "Create File Failed"
 msgstr "Ընտրեք ցանկի ֆայլը"
 
-#: ../src/xfdesktop-file-icon-manager.c:1606
+#: ../src/xfdesktop-file-icon-manager.c:1683
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1625
+#: ../src/xfdesktop-file-icon-manager.c:1702
 msgid "Create Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1629
+#: ../src/xfdesktop-file-icon-manager.c:1706
 msgid "New Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1884
+#: ../src/xfdesktop-file-icon-manager.c:1736
+#, fuzzy, c-format
+msgid "Unable to create file \"%s\":"
+msgstr "Հնարավոր չէ աշխատացնել xfce4-menueditor ծրագիրը՝ %s"
+
+#: ../src/xfdesktop-file-icon-manager.c:1737
+#, fuzzy
+msgid "Create Error"
+msgstr "Խմբագրել նախադրյալների ցուցակը"
+
+#: ../src/xfdesktop-file-icon-manager.c:1977
 msgid "_Open all"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1895
+#: ../src/xfdesktop-file-icon-manager.c:1988
 msgid "_Open"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1906
+#: ../src/xfdesktop-file-icon-manager.c:2001
 msgid "_Execute"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1950
+#: ../src/xfdesktop-file-icon-manager.c:2019
+#, fuzzy
+msgid "_Edit Launcher"
+msgstr "Պիտակը"
+
+#: ../src/xfdesktop-file-icon-manager.c:2067
 msgid "Open With"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1980
+#: ../src/xfdesktop-file-icon-manager.c:2097
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2063
+#: ../src/xfdesktop-file-icon-manager.c:2180
 msgid "_Mount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2074
+#: ../src/xfdesktop-file-icon-manager.c:2191
 msgid "_Unmount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2088
+#: ../src/xfdesktop-file-icon-manager.c:2205
 msgid "E_ject Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2098
+#: ../src/xfdesktop-file-icon-manager.c:2215
 #, fuzzy
 msgid "_Copy Files"
 msgstr "_Ֆայլ"
 
-#: ../src/xfdesktop-file-icon-manager.c:2099
+#: ../src/xfdesktop-file-icon-manager.c:2216
 #, fuzzy
 msgid "_Copy File"
 msgstr "_Ֆայլ"
 
-#: ../src/xfdesktop-file-icon-manager.c:2108
+#: ../src/xfdesktop-file-icon-manager.c:2225
 #, fuzzy
 msgid "Cu_t Files"
 msgstr "_Ֆայլ"
 
-#: ../src/xfdesktop-file-icon-manager.c:2109
+#: ../src/xfdesktop-file-icon-manager.c:2226
 #, fuzzy
 msgid "Cu_t File"
 msgstr "_Ֆայլ"
 
-#: ../src/xfdesktop-file-icon-manager.c:2118
+#: ../src/xfdesktop-file-icon-manager.c:2235
 #, fuzzy
 msgid "_Delete Files"
 msgstr "Ընտրեք ցանկի ֆայլը"
 
-#: ../src/xfdesktop-file-icon-manager.c:2119
+#: ../src/xfdesktop-file-icon-manager.c:2236
 #, fuzzy
 msgid "_Delete File"
 msgstr "Ընտրեք ցանկի ֆայլը"
 
-#: ../src/xfdesktop-file-icon-manager.c:2131
+#: ../src/xfdesktop-file-icon-manager.c:2248
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2149
+#: ../src/xfdesktop-file-icon-manager.c:2266
 #, fuzzy
 msgid "_Properties..."
 msgstr "Խմբագրել նախադրյալների ցուցակը"
 
-#: ../src/xfdesktop-file-icon-manager.c:2165
-msgid "Create _Folder..."
+#: ../src/xfdesktop-file-icon-manager.c:2284
+msgid "Create _New"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2172
-msgid "Create _Document"
+#: ../src/xfdesktop-file-icon-manager.c:2293
+#, fuzzy
+msgid "_Launcher..."
+msgstr "Պիտակը"
+
+#: ../src/xfdesktop-file-icon-manager.c:2314
+msgid "_URL Link..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2193
-msgid "No Templates installed"
+#: ../src/xfdesktop-file-icon-manager.c:2329
+msgid "_Folder..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2205
+#: ../src/xfdesktop-file-icon-manager.c:2368
 #, fuzzy
 msgid "_Empty File"
 msgstr "_Ֆայլ"
 
-#: ../src/xfdesktop-file-icon-manager.c:3005 ../src/xfdesktop-file-icon.c:554
+#: ../src/xfdesktop-file-icon-manager.c:3168 ../src/xfdesktop-file-icon.c:554
 #, fuzzy, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Հնարավոր չէ աշխատացնել xfce4-menueditor ծրագիրը՝ %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:3007 ../src/xfdesktop-file-icon.c:556
+#: ../src/xfdesktop-file-icon-manager.c:3170 ../src/xfdesktop-file-icon.c:556
 msgid "Run Error"
 msgstr ""
 
@@ -1179,6 +1216,10 @@ msgstr "Xfce Ցանկ"
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr ""
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop Settings"
+msgstr "Գրասեղանի նախընտրանքները"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
