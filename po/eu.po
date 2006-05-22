@@ -7,10 +7,10 @@
 # Piarres Beobide  <pi@beobide.net>, 2004, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.3.90.2\n"
+"Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-21 11:18+0900\n"
-"PO-Revision-Date: 2006-04-30 23:52+0200\n"
+"PO-Revision-Date: 2006-05-22 23:43+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: librezale <librezale@librezale.org>\n"
 "MIME-Version: 1.0\n"
@@ -398,7 +398,7 @@ msgstr "Botoi _titulua:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:745
 msgid "_Show title in button"
-msgstr "_Bsiatarazi titurlua botoiean"
+msgstr "_Bistarazi titulua botoiean"
 
 #: ../panel-plugin/desktop-menu-plugin.c:752
 msgid "Menu File"
@@ -430,9 +430,8 @@ msgid "Show _icons in menu"
 msgstr "Erakutsi _ikonoak menuan"
 
 #: ../panel-plugin/desktop-menu-plugin.c:939
-#, fuzzy
 msgid "Edit Menu"
-msgstr "_Menua Editatu"
+msgstr "Menua Editatu"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
@@ -530,9 +529,8 @@ msgstr "_Ez erakutsi berriz"
 
 #. the dialog
 #: ../settings/appearance-settings.c:911
-#, fuzzy
 msgid "Desktop Preferences"
-msgstr "Mahaigain birtualen ezarpenak"
+msgstr "Mahaigain ezarpenak"
 
 #: ../settings/appearance-settings.c:928
 msgid "Allow _Xfce to manage the desktop"
@@ -741,8 +739,7 @@ msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Menua bistarazi (saguaren kokalekuan)\n"
 
 #: ../src/main.c:290
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Leiho zerrenda bistarazi (saguaren kokalekuan)\n"
 
 #: ../src/main.c:291
@@ -779,10 +776,8 @@ msgstr "Idazmahia"
 
 #: ../src/xfdesktop-file-icon-manager.c:220
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop ez da idazmahai elmentuak gordetzeko \"%s\" karpeta sortzeko gai."
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop ez da idazmahai elmentuak gordetzeko \"%s\" karpeta sortzeko gai."
 
 #: ../src/xfdesktop-file-icon-manager.c:222
 #: ../src/xfdesktop-file-icon-manager.c:231
@@ -815,9 +810,8 @@ msgid "Mount Failed"
 msgstr "Huts Muntatzerakoan"
 
 #: ../src/xfdesktop-file-icon-manager.c:371
-#, fuzzy
 msgid "Unknown error."
-msgstr "Errore Ezezaguna"
+msgstr "Errore ezezaguna."
 
 #: ../src/xfdesktop-file-icon-manager.c:416
 #: ../src/xfdesktop-file-icon-manager.c:747
@@ -1015,6 +1009,8 @@ msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
+"Ezin da \"exo-desktop-item-edit\" abiarazi zein beharrezkoa da abiarazleak "
+"eta idazmahai loturak sortu eta ediatzteko."
 
 #: ../src/xfdesktop-file-icon-manager.c:1613
 msgid "Create New Folder"
@@ -1053,18 +1049,17 @@ msgid "New Empty File"
 msgstr "Fitxategi Huts Berria"
 
 #: ../src/xfdesktop-file-icon-manager.c:1736
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "Ezin da \"%s\" izeneko fitxategi bat sortu:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1737
-#, fuzzy
 msgid "Create Error"
-msgstr "Propietatea Errorea"
+msgstr "Sorzte Errorea"
 
 #: ../src/xfdesktop-file-icon-manager.c:1977
 msgid "_Open all"
-msgstr "_Ireki dana"
+msgstr "_Ireki dena"
 
 #: ../src/xfdesktop-file-icon-manager.c:1988
 msgid "_Open"
@@ -1075,9 +1070,8 @@ msgid "_Execute"
 msgstr "_Abiarazi"
 
 #: ../src/xfdesktop-file-icon-manager.c:2019
-#, fuzzy
 msgid "_Edit Launcher"
-msgstr "Abiarazlea"
+msgstr "_Editatu Abiarazlea"
 
 #: ../src/xfdesktop-file-icon-manager.c:2067
 msgid "Open With"
@@ -1132,23 +1126,20 @@ msgid "_Properties..."
 msgstr "_Propietateak..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2284
-#, fuzzy
 msgid "Create _New"
-msgstr "Karpeta Berria Sortu"
+msgstr "_Berria Sortu"
 
 #: ../src/xfdesktop-file-icon-manager.c:2293
-#, fuzzy
 msgid "_Launcher..."
-msgstr "Abiarazlea"
+msgstr "_Abiarazlea..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2314
 msgid "_URL Link..."
-msgstr ""
+msgstr "_URL Lotura..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2329
-#, fuzzy
 msgid "_Folder..."
-msgstr "_Karpeta Sortu..."
+msgstr "_Karpeta..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2368
 msgid "_Empty File"
@@ -1214,3 +1205,4 @@ msgstr "Xfce 4 Idazmahai kudeatzaile ezarpenak"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 Idazmahai Ezarpenak"
+
