@@ -2014,6 +2014,10 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
         g_signal_connect(G_OBJECT(mi), "activate",
                          G_CALLBACK(xfdesktop_file_icon_menu_open_all),
                          fmanager);
+        
+        mi = gtk_separator_menu_item_new();
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     } else if(info) {
         if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
             img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
@@ -2025,9 +2029,11 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
             g_signal_connect(G_OBJECT(mi), "activate",
                              G_CALLBACK(xfdesktop_file_icon_menu_other_app),
                              fmanager);
-        } else {
-            gboolean have_separator = FALSE;
             
+            mi = gtk_separator_menu_item_new();
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        } else {
             if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
                 img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
                 gtk_widget_show(img);
@@ -2039,14 +2045,13 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                                  G_CALLBACK(xfdesktop_file_icon_menu_executed),
                                  fmanager);
                 
+                mi = gtk_separator_menu_item_new();
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                
                 if(!g_ascii_strcasecmp("application/x-desktop",
                                        thunar_vfs_mime_info_get_name(info->mime_info)))
                 {
-                    mi = gtk_separator_menu_item_new();
-                    gtk_widget_show(mi);
-                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-                    have_separator = TRUE;
-                    
                     img = gtk_image_new_from_stock(GTK_STOCK_EDIT, GTK_ICON_SIZE_MENU);
                     gtk_widget_show(img);
                     mi = gtk_image_menu_item_new_with_mnemonic(_("_Edit Launcher"));
@@ -2067,14 +2072,6 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
             if(mime_apps) {
                 ThunarVfsMimeHandler *mime_handler = mime_apps->data;
                 GList *tmp;
-                
-                if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE
-                   && !have_separator)
-                {
-                    mi = gtk_separator_menu_item_new();
-                    gtk_widget_show(mi);
-                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-                }
                 
                 mi = xfdesktop_menu_item_from_mime_handler(fmanager, file_icon,
                                                            mime_handler,
@@ -2124,6 +2121,10 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                 
                 /* don't free the mime apps!  just the list! */
                 g_list_free(mime_apps);
+                
+                mi = gtk_separator_menu_item_new();
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             } else {
                 img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
                 gtk_widget_show(img);
@@ -2141,10 +2142,6 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     if(mime_actions) {
         ThunarVfsMimeHandler *mime_handler;
         
-        mi = gtk_separator_menu_item_new();
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        
         for(l = mime_actions; l; l = l->next) {
             mime_handler = THUNAR_VFS_MIME_HANDLER(l->data);
             mi = xfdesktop_menu_item_from_mime_handler(fmanager, file_icon,
@@ -2155,58 +2152,50 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
         
         /* don't free the mime actions themselves */
         g_list_free(mime_actions);
+        
+        mi = gtk_separator_menu_item_new();
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     }
     
 #ifdef HAVE_THUNARX
-    if(!multi_sel && info && fmanager->priv->thunarx_menu_providers) {
+    if(!multi_sel && info && fmanager->priv->thunarx_menu_providers
+       && (!volume || thunar_vfs_volume_is_mounted(volume)))
+    {
         GtkWidget *window = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-        GList *menu_actions, *l;
+        GList *menu_actions = NULL, *l;
         ThunarxMenuProvider *provider;
-        gboolean added_separator = FALSE;
         
         if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
             for(l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
                 provider = THUNARX_MENU_PROVIDER(l->data);
-                menu_actions = thunarx_menu_provider_get_folder_actions(provider,
-                                                                        window,
-                                                                        THUNARX_FILE_INFO(file_icon));
-                if(menu_actions && !added_separator) {
-                    mi = gtk_separator_menu_item_new();
-                    gtk_widget_show(mi);
-                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-                    added_separator = TRUE;
-                }
-                
-                xfdesktop_menu_shell_append_action_list(GTK_MENU_SHELL(menu),
-                                                        menu_actions);
-                g_list_foreach(menu_actions, (GFunc)g_object_unref, NULL);
-                g_list_free(menu_actions);
+                menu_actions = g_list_concat(menu_actions,
+                                             thunarx_menu_provider_get_folder_actions(provider,
+                                                                                      window,
+                                                                                      THUNARX_FILE_INFO(file_icon)));
             }
         } else {
             for(l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
                 provider = THUNARX_MENU_PROVIDER(l->data);
-                menu_actions = thunarx_menu_provider_get_file_actions(provider,
-                                                                      window,
-                                                                      selected);
-                if(menu_actions && !added_separator) {
-                    mi = gtk_separator_menu_item_new();
-                    gtk_widget_show(mi);
-                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-                    added_separator = TRUE;
-                }
-                
-                xfdesktop_menu_shell_append_action_list(GTK_MENU_SHELL(menu),
-                                                        menu_actions);
-                g_list_foreach(menu_actions, (GFunc)g_object_unref, NULL);
-                g_list_free(menu_actions);
+                menu_actions = g_list_concat(menu_actions,
+                                             thunarx_menu_provider_get_file_actions(provider,
+                                                                                    window,
+                                                                                    selected));
             }
+        }
+        
+        if(menu_actions) {
+            xfdesktop_menu_shell_append_action_list(GTK_MENU_SHELL(menu),
+                                                    menu_actions);
+            g_list_foreach(menu_actions, (GFunc)g_object_unref, NULL);
+            g_list_free(menu_actions);
+            
+            mi = gtk_separator_menu_item_new();
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         }
     }
 #endif
-    
-    mi = gtk_separator_menu_item_new();
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     
     /* FIXME: need to handle multi-selection properly */
     if(volume && !multi_sel) {
