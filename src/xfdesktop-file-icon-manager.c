@@ -140,7 +140,8 @@ struct _XfdesktopFileIconManagerPrivate
     
     GList *deferred_icons;
     
-    GtkTargetList *targets;
+    GtkTargetList *drag_targets;
+    GtkTargetList *drop_targets;
     
 #ifdef HAVE_THUNARX
     GList *thunarx_menu_providers;
@@ -158,12 +159,20 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopFileIconManager,
 enum
 {
     TARGET_TEXT_URI_LIST = 0,
+    TARGET_XDND_DIRECT_SAVE0,
+    TARGET_NETSCAPE_URL,
 };
 
-static const GtkTargetEntry targets[] = {
+static const GtkTargetEntry drag_targets[] = {
     { "text/uri-list", 0, TARGET_TEXT_URI_LIST, },
 };
-static const gint n_targets = 1;
+static const gint n_drag_targets = (sizeof(drag_targets)/sizeof(drag_targets[0]));
+static const GtkTargetEntry drop_targets[] = {
+    { "text/uri-list", 0, TARGET_TEXT_URI_LIST, },
+    { "XdndDirectSave0", 0, TARGET_XDND_DIRECT_SAVE0, },
+    { "_NETSCAPE_URL", 0, TARGET_NETSCAPE_URL },
+};
+static const gint n_drop_targets = (sizeof(drop_targets)/sizeof(drop_targets[0]));
 
 static XfdesktopClipboardManager *clipboard_manager = NULL;
 static ThunarVfsMimeDatabase *thunar_mime_database = NULL;
@@ -198,7 +207,10 @@ xfdesktop_file_icon_manager_init(XfdesktopFileIconManager *fmanager)
     
     /* be safe */
     fmanager->priv->gscreen = gdk_screen_get_default();
-    fmanager->priv->targets = gtk_target_list_new(targets, n_targets);
+    fmanager->priv->drag_targets = gtk_target_list_new(drag_targets,
+                                                       n_drag_targets);
+    fmanager->priv->drop_targets = gtk_target_list_new(drop_targets,
+                                                       n_drop_targets);
 }
 
 static void
@@ -269,7 +281,8 @@ xfdesktop_file_icon_manager_finalize(GObject *obj)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(obj);
     
-    gtk_target_list_unref(fmanager->priv->targets);
+    gtk_target_list_unref(fmanager->priv->drag_targets);
+    gtk_target_list_unref(fmanager->priv->drop_targets);
     
     g_free(fmanager->priv);
     
@@ -3025,12 +3038,12 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     xfdesktop_icon_view_set_selection_mode(icon_view, GTK_SELECTION_MULTIPLE);
     xfdesktop_icon_view_enable_drag_source(icon_view,
                                            GDK_SHIFT_MASK | GDK_CONTROL_MASK,
-                                           targets, n_targets,
+                                           drag_targets, n_drag_targets,
                                            GDK_ACTION_LINK | GDK_ACTION_COPY
                                            | GDK_ACTION_MOVE);
-    xfdesktop_icon_view_enable_drag_dest(icon_view, targets, n_targets,
-                                         GDK_ACTION_LINK | GDK_ACTION_COPY
-                                         | GDK_ACTION_MOVE);
+    xfdesktop_icon_view_enable_drag_dest(icon_view, drop_targets,
+                                         n_drop_targets, GDK_ACTION_LINK
+                                         | GDK_ACTION_COPY | GDK_ACTION_MOVE);
     
     g_signal_connect(G_OBJECT(xfdesktop_icon_view_get_window_widget(icon_view)),
                      "key-press-event",
@@ -3144,9 +3157,64 @@ xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *manager,
     TRACE("entering");
     
     target = gtk_drag_dest_find_target(widget, context,
-                                       fmanager->priv->targets);
-    if(target != gdk_atom_intern("text/uri-list", FALSE))
+                                       fmanager->priv->drop_targets);
+    if(target == GDK_NONE)
         return FALSE;
+    else if(target == gdk_atom_intern("XdndDirectSave0", FALSE)) {
+        /* X direct save protocol implementation copied more or less from
+         * Thunar, Copyright (c) Benedikt Meurer */
+        gint prop_len;
+        guchar *prop_text = NULL;
+        ThunarVfsPath *src_path, *path;
+        gchar *uri = NULL;
+        
+        if(drop_icon) {
+            const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(drop_icon));
+            if(!info)
+                return FALSE;
+            
+            if(!(info->type & THUNAR_VFS_FILE_TYPE_DIRECTORY))
+                return FALSE;
+            
+            src_path = info->path;
+            
+        } else
+            src_path = fmanager->priv->folder;
+        
+        if(gdk_property_get(context->source_window,
+                            gdk_atom_intern("XdndDirectSave0", FALSE),
+                            gdk_atom_intern("text/plain", FALSE),
+                            0, 1024, FALSE, NULL, NULL, &prop_len,
+                            &prop_text) && prop_text)
+        {
+            prop_text = g_realloc(prop_text, prop_len + 1);
+            prop_text[prop_len] = 0;
+            
+            path = thunar_vfs_path_relative(src_path, (const gchar *)prop_text);
+            uri = thunar_vfs_path_dup_uri(path);
+            
+            gdk_property_change(context->source_window,
+                                gdk_atom_intern("XdndDirectSave0", FALSE),
+                                gdk_atom_intern("text/plain", FALSE), 8,
+                                GDK_PROP_MODE_REPLACE, (const guchar *)uri,
+                                strlen(uri));
+            
+            thunar_vfs_path_unref(path);
+            g_free(prop_text);
+            g_free(uri);
+        }
+        
+        if(!uri)
+            return FALSE;
+    } else if(target == gdk_atom_intern("_NETSCAPE_URL", FALSE)) {
+        if(drop_icon) {
+            /* don't allow a drop on an icon that isn't a folder (i.e., not
+             * on an icon that's an executable */
+            const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(drop_icon));
+            if(!info || !(info->type & THUNAR_VFS_FILE_TYPE_DIRECTORY))
+                return FALSE;
+        }
+    }
     
     TRACE("target good");
     
@@ -3185,92 +3253,151 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
     gboolean copy_only = TRUE, drop_ok = FALSE;
     GList *path_list;
     
-    g_return_if_fail(G_LIKELY(info == TARGET_TEXT_URI_LIST));
-    
-    if(drop_icon) {
-        file_icon = XFDESKTOP_FILE_ICON(drop_icon);
-        tinfo = xfdesktop_file_icon_peek_info(file_icon);
-    }
-    
-    copy_only = (context->suggested_action != GDK_ACTION_MOVE);
-    
-    path_list = thunar_vfs_path_list_from_string((gchar *)data->data, NULL);
-
-    if(path_list) {
-        if(tinfo && tinfo->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
-            gboolean succeeded;
-            GError *error = NULL;
-            
-            succeeded = thunar_vfs_info_execute(tinfo,
-                                                fmanager->priv->gscreen,
-                                                path_list,
-                                                xfce_get_homedir(),
-                                                &error);
-            if(!succeeded) {
-                gchar *primary = g_strdup_printf(_("Failed to run \"%s\":"),
-                                                 tinfo->display_name);
-                xfce_message_dialog(NULL, _("Run Error"),
-                                    GTK_STOCK_DIALOG_ERROR,
-                                    primary, error->message,
-                                    GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
-                                    NULL);
-                g_free(primary);
-                g_error_free(error);
-            } else
-                drop_ok = TRUE;
-        } else {
-            ThunarVfsJob *job = NULL;
-            GList *dest_path_list = NULL, *l;
-            const gchar *name;
-            ThunarVfsPath *base_dest_path, *dest_path;
-            
-            if(tinfo && tinfo->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
-                base_dest_path = thunar_vfs_path_relative(fmanager->priv->folder,
-                                                          thunar_vfs_path_get_name(tinfo->path));
-            } else
-                base_dest_path = thunar_vfs_path_ref(fmanager->priv->folder);
-            
-            for(l = path_list; l; l = l->next) {
-                name = thunar_vfs_path_get_name((ThunarVfsPath *)l->data);
-                dest_path = thunar_vfs_path_relative(base_dest_path,
-                                                     name);
-                dest_path_list = g_list_prepend(dest_path_list, dest_path);
-            }
-            thunar_vfs_path_unref(base_dest_path);
-            dest_path_list = g_list_reverse(dest_path_list);
-            
-            if(context->suggested_action == GDK_ACTION_LINK)
-                job = thunar_vfs_link_files(path_list, dest_path_list, NULL);
-            else if(copy_only)
-                job = thunar_vfs_copy_files(path_list, dest_path_list, NULL);
-            else
-                job = thunar_vfs_move_files(path_list, dest_path_list, NULL);
-            
-            if(job) {
-                drop_ok = TRUE;
-                
-#if 0  /* FIXME: implement me: need way to pass multiple files */
-                g_signal_connect(G_OBJECT(job), "error",
-                                 G_CALLBACK(xfdesktop_file_icon_manager_fileop_error),
-                                 fmanager);
-                g_object_set_data(G_OBJECT(job), "--xfdesktop-fileop",
-                                  GINT_TO_POINTER(context->suggested_action == GDK_ACTION_LINK
-                                                  ? XFDESKTOP_FILE_UTILS_FILEOP_LINK
-                                                  : (copy_only
-                                                     ? XFDESKTOP_FILE_UTILS_FILEOP_COPY
-                                                     : XFDESKTOP_FILE_UTILS_FILEOP_MOVE)));
-#endif
-                g_signal_connect(G_OBJECT(job), "ask",
-                                 G_CALLBACK(xfdesktop_file_icon_interactive_job_ask),
-                                 fmanager);
-                g_signal_connect(G_OBJECT(job), "finished",
-                                 G_CALLBACK(g_object_unref), NULL);
-            }
-            
-            thunar_vfs_path_list_free(dest_path_list);
+    if(info == TARGET_XDND_DIRECT_SAVE0) {
+        /* we don't suppose XdndDirectSave stage 3, result F, i.e., the app
+         * has to save the data itself given the filename we provided in
+         * stage 1 */
+        if(8 == data->format && 1 == data->length && 'F' == data->data[0]) {
+            gdk_property_change(context->source_window,
+                                gdk_atom_intern("XdndDirectSave0", FALSE),
+                                gdk_atom_intern("text/plain", FALSE), 8,
+                                GDK_PROP_MODE_REPLACE, (const guchar *)"", 0);
+        } else if(8 == data->format && data->length == 1
+                  && 'S' == data->data[0])
+        {
+            /* FIXME: do we really need to do anything here?  xfdesktop should
+             * detect when something changes on its own */
         }
         
-        thunar_vfs_path_list_free(path_list);
+        drop_ok = TRUE;
+    } else if(info == TARGET_NETSCAPE_URL) {
+        /* data is "URL\nTITLE" */
+        ThunarVfsPath *src_path = NULL;
+        gchar *exo_desktop_item_edit = g_find_program_in_path("exo-desktop-item-edit");
+        
+        if(drop_icon) {
+            const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(drop_icon));
+            if(info && info->type & THUNAR_VFS_FILE_TYPE_DIRECTORY)
+                src_path = info->path;
+        } else
+            src_path = fmanager->priv->folder;
+        
+        if(src_path && exo_desktop_item_edit) {
+            gchar **parts = g_strsplit((const gchar *)data->data, "\n", -1);
+            
+            if(2 == g_strv_length(parts)) {
+                gchar *cwd = thunar_vfs_path_dup_string(src_path);
+                gchar *myargv[16];
+                gint i = 0;
+                
+                /* use the argv form so we don't have to worry about quoting
+                 * the link title */
+                myargv[i++] = exo_desktop_item_edit;
+                myargv[i++] = "--type=Link";
+                myargv[i++] = "--url";
+                myargv[i++] = parts[0];
+                myargv[i++] = "--name";
+                myargv[i++] = parts[1];
+                myargv[i++] = "--create-new";
+                myargv[i++] = cwd;
+                myargv[i++] = NULL;
+                
+                if(xfce_exec_argv(myargv, FALSE, FALSE, NULL))
+                    drop_ok = TRUE;
+                
+                g_free(cwd);
+            }
+            
+            g_strfreev(parts);
+        }
+        
+        g_free(exo_desktop_item_edit);
+    } else if(info == TARGET_TEXT_URI_LIST) {
+        if(drop_icon) {
+            file_icon = XFDESKTOP_FILE_ICON(drop_icon);
+            tinfo = xfdesktop_file_icon_peek_info(file_icon);
+        }
+        
+        copy_only = (context->suggested_action != GDK_ACTION_MOVE);
+        
+        path_list = thunar_vfs_path_list_from_string((gchar *)data->data, NULL);
+    
+        if(path_list) {
+            if(tinfo && tinfo->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
+                gboolean succeeded;
+                GError *error = NULL;
+                
+                succeeded = thunar_vfs_info_execute(tinfo,
+                                                    fmanager->priv->gscreen,
+                                                    path_list,
+                                                    xfce_get_homedir(),
+                                                    &error);
+                if(!succeeded) {
+                    gchar *primary = g_strdup_printf(_("Failed to run \"%s\":"),
+                                                     tinfo->display_name);
+                    xfce_message_dialog(NULL, _("Run Error"),
+                                        GTK_STOCK_DIALOG_ERROR,
+                                        primary, error->message,
+                                        GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                                        NULL);
+                    g_free(primary);
+                    g_error_free(error);
+                } else
+                    drop_ok = TRUE;
+            } else {
+                ThunarVfsJob *job = NULL;
+                GList *dest_path_list = NULL, *l;
+                const gchar *name;
+                ThunarVfsPath *base_dest_path, *dest_path;
+                
+                if(tinfo && tinfo->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
+                    base_dest_path = thunar_vfs_path_relative(fmanager->priv->folder,
+                                                              thunar_vfs_path_get_name(tinfo->path));
+                } else
+                    base_dest_path = thunar_vfs_path_ref(fmanager->priv->folder);
+                
+                for(l = path_list; l; l = l->next) {
+                    name = thunar_vfs_path_get_name((ThunarVfsPath *)l->data);
+                    dest_path = thunar_vfs_path_relative(base_dest_path,
+                                                         name);
+                    dest_path_list = g_list_prepend(dest_path_list, dest_path);
+                }
+                thunar_vfs_path_unref(base_dest_path);
+                dest_path_list = g_list_reverse(dest_path_list);
+                
+                if(context->suggested_action == GDK_ACTION_LINK)
+                    job = thunar_vfs_link_files(path_list, dest_path_list, NULL);
+                else if(copy_only)
+                    job = thunar_vfs_copy_files(path_list, dest_path_list, NULL);
+                else
+                    job = thunar_vfs_move_files(path_list, dest_path_list, NULL);
+                
+                if(job) {
+                    drop_ok = TRUE;
+                    
+#if 0  /* FIXME: implement me: need way to pass multiple files */
+                    g_signal_connect(G_OBJECT(job), "error",
+                                     G_CALLBACK(xfdesktop_file_icon_manager_fileop_error),
+                                     fmanager);
+                    g_object_set_data(G_OBJECT(job), "--xfdesktop-fileop",
+                                      GINT_TO_POINTER(context->suggested_action == GDK_ACTION_LINK
+                                                      ? XFDESKTOP_FILE_UTILS_FILEOP_LINK
+                                                      : (copy_only
+                                                         ? XFDESKTOP_FILE_UTILS_FILEOP_COPY
+                                                         : XFDESKTOP_FILE_UTILS_FILEOP_MOVE)));
+#endif
+                    g_signal_connect(G_OBJECT(job), "ask",
+                                     G_CALLBACK(xfdesktop_file_icon_interactive_job_ask),
+                                     fmanager);
+                    g_signal_connect(G_OBJECT(job), "finished",
+                                     G_CALLBACK(g_object_unref), NULL);
+                }
+                
+                thunar_vfs_path_list_free(dest_path_list);
+            }
+            
+            thunar_vfs_path_list_free(path_list);
+        }
     }
     
     DBG("finishing drop on desktop from external source: drop_ok=%s, copy_only=%s",
