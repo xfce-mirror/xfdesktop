@@ -358,40 +358,43 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon,
     
     TRACE("entering");
     
-    if(volume && !thunar_vfs_volume_is_mounted(volume)) {
-        GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    if(volume) {
         GError *error = NULL;
+        ThunarVfsPath *new_path = NULL;
         
-        if(thunar_vfs_volume_mount(volume, toplevel, &error)) {
-            ThunarVfsPath *new_path = thunar_vfs_volume_get_mount_point(volume);
+        if(!thunar_vfs_volume_is_mounted(volume)) {
+            GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+            if(!thunar_vfs_volume_mount(volume, toplevel, &error)) {
+                gchar *primary = g_strdup_printf(_("Unable to mount \"%s\":"),
+                                                 thunar_vfs_volume_get_name(volume));
+                xfce_message_dialog(GTK_WINDOW(toplevel), _("Mount Failed"),
+                                    GTK_STOCK_DIALOG_ERROR, primary,
+                                    error ? error->message : _("Unknown error."),
+                                    GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                g_free(primary);
+                g_error_free(error);
+            }
+        }
+        
+        new_path = thunar_vfs_volume_get_mount_point(volume);
             
-            if(!info || !thunar_vfs_path_equal(info->path, new_path)) {
-                ThunarVfsInfo *new_info = thunar_vfs_info_new_for_path(new_path,
-                                                                       NULL);
-                if(new_info) {
-                    xfdesktop_file_icon_update_info(file_icon, new_info);
-                    thunar_vfs_info_unref(new_info);
-                    info = new_info;
-                }
+        if(new_path && (!info
+                        || !thunar_vfs_path_equal(info->path, new_path)))
+        {
+            ThunarVfsInfo *new_info = thunar_vfs_info_new_for_path(new_path,
+                                                                   NULL);
+            if(new_info) {
+                xfdesktop_file_icon_update_info(file_icon, new_info);
+                thunar_vfs_info_unref(new_info);
             }
         }
         
         info = xfdesktop_file_icon_peek_info(file_icon);
-        if(!info) {
-            gchar *primary = g_strdup_printf(_("Unable to mount \"%s\":"),
-                                             thunar_vfs_volume_get_name(volume));
-            xfce_message_dialog(GTK_WINDOW(toplevel), _("Mount Failed"),
-                                GTK_STOCK_DIALOG_ERROR, primary,
-                                error ? error->message : _("Unknown error."),
-                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-            g_free(primary);
-        }
-        
-        if(error)
-            g_error_free(error);
-        
-        if(!info)  /* if we failed, and |info| is NULL, bail */
+        if(!info || !new_path) {
+            /* if |new_path| is NULL, but |info| isn't, it's possible we have
+             * a stale |info|, and we shouldn't continue */
             return;
+        }
     }
     
     if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
