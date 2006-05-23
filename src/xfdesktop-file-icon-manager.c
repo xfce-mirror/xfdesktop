@@ -2018,8 +2018,8 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
         mi = gtk_separator_menu_item_new();
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    } else if(info) {
-        if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
+    } else if(volume || info) {
+        if(volume || info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
             img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
             gtk_widget_show(img);
             mi = gtk_image_menu_item_new_with_mnemonic(_("_Open"));
@@ -2027,7 +2027,9 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             g_signal_connect(G_OBJECT(mi), "activate",
-                             G_CALLBACK(xfdesktop_file_icon_menu_other_app),
+                             (volume
+                              ? G_CALLBACK(xfdesktop_file_icon_menu_executed)
+                              : G_CALLBACK(xfdesktop_file_icon_menu_other_app)),
                              fmanager);
             
             mi = gtk_separator_menu_item_new();
@@ -2974,7 +2976,7 @@ xfdesktop_file_icon_manager_remove_removable_media(XfdesktopFileIconManager *fma
                                              fmanager);
     }
     
-    g_hash_table_foreach(fmanager->priv->icons,
+    g_hash_table_foreach(fmanager->priv->removable_icons,
                          xfdesktop_file_icon_manager_ht_remove_removable_media,
                          fmanager);
     g_hash_table_destroy(fmanager->priv->removable_icons);
