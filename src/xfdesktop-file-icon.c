@@ -236,7 +236,7 @@ _xfdesktop_file_icon_new_internal(ThunarVfsInfo *info,
                                   GdkScreen *screen)
 {
     XfdesktopFileIcon *file_icon = g_object_new(XFDESKTOP_TYPE_FILE_ICON, NULL);
-    file_icon->priv->info = info ? thunar_vfs_info_ref(info) : NULL;
+    file_icon->priv->info = info;
     file_icon->priv->volume = volume ? g_object_ref(G_OBJECT(volume)) : NULL;
     file_icon->priv->gscreen = screen;
     
@@ -254,7 +254,8 @@ xfdesktop_file_icon_new(ThunarVfsInfo *info,
                         GdkScreen *screen)
 {
     g_return_val_if_fail(info, NULL);
-    return _xfdesktop_file_icon_new_internal(info, NULL, screen);
+    return _xfdesktop_file_icon_new_internal(thunar_vfs_info_ref(info), NULL,
+                                             screen);
 }
 
 XfdesktopFileIcon *

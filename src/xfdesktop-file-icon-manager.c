@@ -281,6 +281,9 @@ xfdesktop_file_icon_manager_finalize(GObject *obj)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(obj);
     
+    if(fmanager->priv->inited)
+        xfdesktop_file_icon_manager_fini(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
+    
     gtk_target_list_unref(fmanager->priv->drag_targets);
     gtk_target_list_unref(fmanager->priv->drop_targets);
     
@@ -2626,6 +2629,13 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
             }
             /* fall through */
         case GDK_F5:
+            if(fmanager->priv->save_icons_id) {
+                /* flush icon positions */
+                g_source_remove(fmanager->priv->save_icons_id);
+                fmanager->priv->save_icons_id = 0;
+                xfdesktop_file_icon_manager_save_icons(fmanager);
+            }
+            
             if(fmanager->priv->show_removable_media) {
                 /* ensure we don't get double signal connects and whatnot */
                 xfdesktop_file_icon_manager_remove_removable_media(fmanager);
@@ -2635,6 +2645,7 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
                 g_hash_table_foreach_remove(fmanager->priv->icons,
                                             (GHRFunc)gtk_true, NULL);
             }
+            
             if(fmanager->priv->show_removable_media)
                 xfdesktop_file_icon_manager_load_removable_media(fmanager);
             xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
@@ -3086,6 +3097,12 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
     g_return_if_fail(fmanager->priv->inited);
     
     fmanager->priv->inited = FALSE;
+    
+    if(fmanager->priv->save_icons_id) {
+        g_source_remove(fmanager->priv->save_icons_id);
+        fmanager->priv->save_icons_id = 0;
+        xfdesktop_file_icon_manager_save_icons(fmanager);
+    }
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(clipboard_manager),
                                          G_CALLBACK(xfdesktop_file_icon_manager_clipboard_changed),
