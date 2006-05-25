@@ -32,7 +32,7 @@ linguas=`sed -e '/^#/d' po/LINGUAS`
 revision=`LC_ALL=C svn info $0 | awk '/^Revision: / {printf "%05d\n", $2}'`
 sed -e "s/@LINGUAS@/${linguas}/g" \
     -e "s/@REVISION@/${revision}/g" \
-    < "configure.in.in" > "configure.in"
+    < "configure.ac.in" > "configure.ac"
 
 exec xdt-autogen $@
 
