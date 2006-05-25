@@ -120,6 +120,10 @@ menuspec_builtin_icon_to_filename(const gchar *name)
     else if(!strcmp(name, "PRODUCTIVITY"))
         return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_PRODUCTIVITY,
                                                 _xfce_desktop_menu_icon_size);
+    else if(!strcmp(name, "OFFICE"))
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_OFFICE,
+                                                _xfce_desktop_menu_icon_size);
+
     else if(!strcmp(name, "SOUND"))
         return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_SOUND,
                                                 _xfce_desktop_menu_icon_size);

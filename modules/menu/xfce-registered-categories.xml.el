@@ -57,7 +57,7 @@
 	<category name="Profiling" builtin-icon="DEVELOPMENT" />
 	<category name="RevisionControl" replace="Έλεγχος Εκδόσεων" builtin-icon="DEVELOPMENT" />
 	<category name="Translation" replace="Μετάφραση" builtin-icon="DEVELOPMENT" />
-	<category name="Office" toplevel="true" replace="Γραφείο" builtin-icon="PRODUCTIVITY">
+	<category name="Office" toplevel="true" replace="Γραφείο" builtin-icon="OFFICE">
 		<subcategory name="Calendar" />
 		<subcategory name="ContactManagement" />
 		<subcategory name="Database" />
@@ -74,19 +74,19 @@
 		<subcategory name="Photograph" />
 		<subcategory name="Viewer" />
 	</category>
-	<category name="Calendar" replace="Ημερολόγιο" builtin-icon="PRODUCTIVITY" />
-	<category name="ContactManagement" replace="Διαχείριση Επαφών" builtin-icon="PRODUCTIVITY" />
-	<category name="Database" replace="Βάσεις Δεδομένων" builtin-icon="PRODUCTIVITY" />
-	<category name="Dictionary" replace="Λεξικό" builtin-icon="PRODUCTIVITY" />
-	<category name="Chart" builtin-icon="PRODUCTIVITY" />
-	<category name="Email" replace="Ηλεκτρονική Αλληλογραφία" builtin-icon="PRODUCTIVITY" />
-	<category name="Finance" replace="Οικονομικά" builtin-icon="PRODUCTIVITY" />
-	<category name="FlowChart" replace="Flow Chart" builtin-icon="PRODUCTIVITY" />
-	<category name="PDA" builtin-icon="PRODUCTIVITY" />
-	<category name="ProjectManagement" replace="Διαχείριση Έργων" builtin-icon="PRODUCTIVITY" />
-	<category name="Presentation" replace="Παρουσιάσεις" builtin-icon="PRODUCTIVITY" />
-	<category name="Spreadsheet" replace="Φύλλα Δεδομένων" builtin-icon="PRODUCTIVITY" />
-	<category name="WordProcessor" replace="Επεξεργασία Κειμένου" builtin-icon="PRODUCTIVITY" />
+	<category name="Calendar" replace="Ημερολόγιο" builtin-icon="OFFICE" />
+	<category name="ContactManagement" replace="Διαχείριση Επαφών" builtin-icon="OFFICE" />
+	<category name="Database" replace="Βάσεις Δεδομένων" builtin-icon="OFFICE" />
+	<category name="Dictionary" replace="Λεξικό" builtin-icon="OFFICE" />
+	<category name="Chart" builtin-icon="OFFICE" />
+	<category name="Email" replace="Ηλεκτρονική Αλληλογραφία" builtin-icon="OFFICE" />
+	<category name="Finance" replace="Οικονομικά" builtin-icon="OFFICE" />
+	<category name="FlowChart" replace="Flow Chart" builtin-icon="OFFICE" />
+	<category name="PDA" builtin-icon="OFFICE" />
+	<category name="ProjectManagement" replace="Διαχείριση Έργων" builtin-icon="OFFICE" />
+	<category name="Presentation" replace="Παρουσιάσεις" builtin-icon="OFFICE" />
+	<category name="Spreadsheet" replace="Φύλλα Δεδομένων" builtin-icon="OFFICE" />
+	<category name="WordProcessor" replace="Επεξεργασία Κειμένου" builtin-icon="OFFICE" />
 	<category name="Graphics" toplevel="true" replace="Γραφικά" builtin-icon="GRAPHICS">
 		<subcategory name="2DGraphics" />
 		<subcategory name="3DGraphics" />

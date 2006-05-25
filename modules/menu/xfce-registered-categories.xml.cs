@@ -57,7 +57,7 @@
 	<category name="Profiling" builtin-icon="DEVELOPMENT" />
 	<category name="RevisionControl" replace="Revizní Kontrola" builtin-icon="DEVELOPMENT" />
 	<category name="Translation" replace="Překlad" builtin-icon="DEVELOPMENT" />
-	<category name="Office" toplevel="true" replace="Kancelář" builtin-icon="PRODUCTIVITY">
+	<category name="Office" toplevel="true" replace="Kancelář" builtin-icon="OFFICE">
 		<subcategory name="Calendar" />
 		<subcategory name="ContactManagement" />
 		<subcategory name="Database" />
@@ -74,19 +74,19 @@
 		<subcategory name="Photograph" />
 		<subcategory name="Viewer" />
 	</category>
-	<category name="Calendar" replace="Kalendář" builtin-icon="PRODUCTIVITY" />
-	<category name="ContactManagement" replace="Správce adres" builtin-icon="PRODUCTIVITY" />
-	<category name="Database" replace="Databáze" builtin-icon="PRODUCTIVITY" />
-	<category name="Dictionary" replace="Slovníky" builtin-icon="PRODUCTIVITY" />
-	<category name="Chart" builtin-icon="PRODUCTIVITY" />
-	<category name="Email" replace="Pošta" builtin-icon="PRODUCTIVITY" />
-	<category name="Finance" replace="Finance" builtin-icon="PRODUCTIVITY" />
-	<category name="FlowChart" replace="Flow Chart" builtin-icon="PRODUCTIVITY" />
-	<category name="PDA" builtin-icon="PRODUCTIVITY" />
-	<category name="ProjectManagement" replace="Správa projektů" builtin-icon="PRODUCTIVITY" />
-	<category name="Presentation" replace="Prezentace" builtin-icon="PRODUCTIVITY" />
-	<category name="Spreadsheet" replace="Tabulkové procesory" builtin-icon="PRODUCTIVITY" />
-	<category name="WordProcessor" replace="Textové procesory" builtin-icon="PRODUCTIVITY" />
+	<category name="Calendar" replace="Kalendář" builtin-icon="OFFICE" />
+	<category name="ContactManagement" replace="Správce adres" builtin-icon="OFFICE" />
+	<category name="Database" replace="Databáze" builtin-icon="OFFICE" />
+	<category name="Dictionary" replace="Slovníky" builtin-icon="OFFICE" />
+	<category name="Chart" builtin-icon="OFFICE" />
+	<category name="Email" replace="Pošta" builtin-icon="OFFICE" />
+	<category name="Finance" replace="Finance" builtin-icon="OFFICE" />
+	<category name="FlowChart" replace="Flow Chart" builtin-icon="OFFICE" />
+	<category name="PDA" builtin-icon="OFFICE" />
+	<category name="ProjectManagement" replace="Správa projektů" builtin-icon="OFFICE" />
+	<category name="Presentation" replace="Prezentace" builtin-icon="OFFICE" />
+	<category name="Spreadsheet" replace="Tabulkové procesory" builtin-icon="OFFICE" />
+	<category name="WordProcessor" replace="Textové procesory" builtin-icon="OFFICE" />
 	<category name="Graphics" toplevel="true" replace="Grafika" builtin-icon="GRAPHICS">
 		<subcategory name="2DGraphics" />
 		<subcategory name="3DGraphics" />

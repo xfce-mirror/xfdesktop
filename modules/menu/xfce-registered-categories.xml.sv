@@ -57,7 +57,7 @@
 	<category name="Profiling" replace="Profilering" builtin-icon="DEVELOPMENT" />
 	<category name="RevisionControl" replace="Revisionskontroll" builtin-icon="DEVELOPMENT" />
 	<category name="Translation" replace="Översättning" builtin-icon="DEVELOPMENT" />
-	<category name="Office" toplevel="true" replace="Kontor" builtin-icon="PRODUCTIVITY">
+	<category name="Office" toplevel="true" replace="Kontor" builtin-icon="OFFICE">
 		<subcategory name="Calendar" replace="Kalender" />
 		<subcategory name="ContactManagement" replace="Kontakthantering" />
 		<subcategory name="Database" replace="Databas" />
@@ -74,19 +74,19 @@
 		<subcategory name="Photograph" replace="Fotografier" />
 		<subcategory name="Viewer" replace="Visare" />
 	</category>
-	<category name="Calendar" replace="Kalender" builtin-icon="PRODUCTIVITY" />
-	<category name="ContactManagement" replace="Kontakthantering" builtin-icon="PRODUCTIVITY" />
-	<category name="Database" replace="Databas" builtin-icon="PRODUCTIVITY" />
-	<category name="Dictionary" replace="Ordlistor" builtin-icon="PRODUCTIVITY" />
-	<category name="Chart" builtin-icon="PRODUCTIVITY" />
-	<category name="Email" replace="E-post" builtin-icon="PRODUCTIVITY" />
-	<category name="Finance" replace="Finans" builtin-icon="PRODUCTIVITY" />
-	<category name="FlowChart" replace="Flow Chart" builtin-icon="PRODUCTIVITY" />
-	<category name="PDA" builtin-icon="PRODUCTIVITY" />
-	<category name="ProjectManagement" replace="Projekthantering" builtin-icon="PRODUCTIVITY" />
-	<category name="Presentation" builtin-icon="PRODUCTIVITY" />
-	<category name="Spreadsheet" replace="Kalkylprogram" builtin-icon="PRODUCTIVITY" />
-	<category name="WordProcessor" replace="Ordbehandlare" builtin-icon="PRODUCTIVITY" />
+	<category name="Calendar" replace="Kalender" builtin-icon="OFFICE" />
+	<category name="ContactManagement" replace="Kontakthantering" builtin-icon="OFFICE" />
+	<category name="Database" replace="Databas" builtin-icon="OFFICE" />
+	<category name="Dictionary" replace="Ordlistor" builtin-icon="OFFICE" />
+	<category name="Chart" builtin-icon="OFFICE" />
+	<category name="Email" replace="E-post" builtin-icon="OFFICE" />
+	<category name="Finance" replace="Finans" builtin-icon="OFFICE" />
+	<category name="FlowChart" replace="Flow Chart" builtin-icon="OFFICE" />
+	<category name="PDA" builtin-icon="OFFICE" />
+	<category name="ProjectManagement" replace="Projekthantering" builtin-icon="OFFICE" />
+	<category name="Presentation" builtin-icon="OFFICE" />
+	<category name="Spreadsheet" replace="Kalkylprogram" builtin-icon="OFFICE" />
+	<category name="WordProcessor" replace="Ordbehandlare" builtin-icon="OFFICE" />
 	<category name="Graphics" toplevel="true" replace="Grafik" builtin-icon="GRAPHICS">
 		<subcategory name="2DGraphics" replace="2d-grafik" />
 		<subcategory name="3DGraphics" replace="3d-grafik" />

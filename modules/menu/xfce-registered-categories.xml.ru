@@ -57,7 +57,7 @@
 	<category name="Profiling" builtin-icon="DEVELOPMENT" />
 	<category name="RevisionControl" replace="Система контроля версий" builtin-icon="DEVELOPMENT" />
 	<category name="Translation" builtin-icon="DEVELOPMENT" />
-	<category name="Office" toplevel="true" replace="Офис" builtin-icon="PRODUCTIVITY">
+	<category name="Office" toplevel="true" replace="Офис" builtin-icon="OFFICE">
 		<subcategory name="Calendar" />
 		<subcategory name="ContactManagement" />
 		<subcategory name="Database" />
@@ -74,19 +74,19 @@
 		<subcategory name="Photograph" />
 		<subcategory name="Viewer" />
 	</category>
-	<category name="Calendar" replace="Календарь" builtin-icon="PRODUCTIVITY" />
-	<category name="ContactManagement" replace="Управление контактами" builtin-icon="PRODUCTIVITY" />
-	<category name="Database" replace="База данных" builtin-icon="PRODUCTIVITY" />
-	<category name="Dictionary" replace="Словарь" builtin-icon="PRODUCTIVITY" />
-	<category name="Chart" replace="Чертежи" builtin-icon="PRODUCTIVITY" />
-	<category name="Email" replace="Электронная почта" builtin-icon="PRODUCTIVITY" />
-	<category name="Finance" replace="Финансы" builtin-icon="PRODUCTIVITY" />
-	<category name="FlowChart" replace="Диаграммы" builtin-icon="PRODUCTIVITY" />
-	<category name="PDA" replace="КПК" builtin-icon="PRODUCTIVITY" />
-	<category name="ProjectManagement" replace="Управление проектами" builtin-icon="PRODUCTIVITY" />
-	<category name="Presentation" replace="Презентации" builtin-icon="PRODUCTIVITY" />
-	<category name="Spreadsheet" replace="Электронные таблицы" builtin-icon="PRODUCTIVITY" />
-	<category name="WordProcessor" replace="Текстовый процессор" builtin-icon="PRODUCTIVITY" />
+	<category name="Calendar" replace="Календарь" builtin-icon="OFFICE" />
+	<category name="ContactManagement" replace="Управление контактами" builtin-icon="OFFICE" />
+	<category name="Database" replace="База данных" builtin-icon="OFFICE" />
+	<category name="Dictionary" replace="Словарь" builtin-icon="OFFICE" />
+	<category name="Chart" replace="Чертежи" builtin-icon="OFFICE" />
+	<category name="Email" replace="Электронная почта" builtin-icon="OFFICE" />
+	<category name="Finance" replace="Финансы" builtin-icon="OFFICE" />
+	<category name="FlowChart" replace="Диаграммы" builtin-icon="OFFICE" />
+	<category name="PDA" replace="КПК" builtin-icon="OFFICE" />
+	<category name="ProjectManagement" replace="Управление проектами" builtin-icon="OFFICE" />
+	<category name="Presentation" replace="Презентации" builtin-icon="OFFICE" />
+	<category name="Spreadsheet" replace="Электронные таблицы" builtin-icon="OFFICE" />
+	<category name="WordProcessor" replace="Текстовый процессор" builtin-icon="OFFICE" />
 	<category name="Graphics" replace="Графика" toplevel="true" builtin-icon="GRAPHICS">
 		<subcategory name="2DGraphics" />
 		<subcategory name="3DGraphics" />

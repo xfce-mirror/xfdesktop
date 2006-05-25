@@ -57,7 +57,7 @@
 	<category name="Profiling" replace="Profilowanie" builtin-icon="DEVELOPMENT" />
 	<category name="RevisionControl" replace="Kontrola wersji" builtin-icon="DEVELOPMENT" />
 	<category name="Translation" replace="Tłumaczenie" builtin-icon="DEVELOPMENT" />
-	<category name="Office" replace="Biuro" toplevel="true" builtin-icon="PRODUCTIVITY">
+	<category name="Office" replace="Biuro" toplevel="true" builtin-icon="OFFICE">
 		<subcategory name="Calendar" replace="Kalendarz" />
 		<subcategory name="ContactManagement" replace="Zarządzanie Treścią" />
 		<subcategory name="Database" replace="Baza danych" />
@@ -74,19 +74,19 @@
 		<subcategory name="Photograph" replace="Zdjęcie" />
 		<subcategory name="Viewer" replace="Przeglądarka" />
 	</category>
-	<category name="Calendar" replace="Kalendarz" builtin-icon="PRODUCTIVITY" />
-	<category name="ContactManagement" replace="Zarządzanie treścią" builtin-icon="PRODUCTIVITY" />
-	<category name="Database" replace="Baza danych" builtin-icon="PRODUCTIVITY" />
-	<category name="Dictionary" replace="Słownik" builtin-icon="PRODUCTIVITY" />
-	<category name="Chart" replace="Wykres" builtin-icon="PRODUCTIVITY" />
-	<category name="Email" replace="Email" builtin-icon="PRODUCTIVITY" />
-	<category name="Finance" replace="Finanse" builtin-icon="PRODUCTIVITY" />
-	<category name="FlowChart" replace="Arkusz" builtin-icon="PRODUCTIVITY" />
-	<category name="PDA" builtin-icon="PRODUCTIVITY" />
-	<category name="ProjectManagement" replace="Zarządzanie Projektem" builtin-icon="PRODUCTIVITY" />
-	<category name="Presentation" replace="Prezentacja" builtin-icon="PRODUCTIVITY" />
-	<category name="Spreadsheet" replace="Arkusz Kalkulacyjny" builtin-icon="PRODUCTIVITY" />
-	<category name="WordProcessor" replace="Edytor Tekstu" builtin-icon="PRODUCTIVITY" />
+	<category name="Calendar" replace="Kalendarz" builtin-icon="OFFICE" />
+	<category name="ContactManagement" replace="Zarządzanie treścią" builtin-icon="OFFICE" />
+	<category name="Database" replace="Baza danych" builtin-icon="OFFICE" />
+	<category name="Dictionary" replace="Słownik" builtin-icon="OFFICE" />
+	<category name="Chart" replace="Wykres" builtin-icon="OFFICE" />
+	<category name="Email" replace="Email" builtin-icon="OFFICE" />
+	<category name="Finance" replace="Finanse" builtin-icon="OFFICE" />
+	<category name="FlowChart" replace="Arkusz" builtin-icon="OFFICE" />
+	<category name="PDA" builtin-icon="OFFICE" />
+	<category name="ProjectManagement" replace="Zarządzanie Projektem" builtin-icon="OFFICE" />
+	<category name="Presentation" replace="Prezentacja" builtin-icon="OFFICE" />
+	<category name="Spreadsheet" replace="Arkusz Kalkulacyjny" builtin-icon="OFFICE" />
+	<category name="WordProcessor" replace="Edytor Tekstu" builtin-icon="OFFICE" />
 	<category name="Graphics" replace="Grafika" toplevel="true" builtin-icon="GRAPHICS">
 		<subcategory name="2DGraphics" replace="Grafika 2D" />
 		<subcategory name="3DGraphics" replace="Grafika 3D" />

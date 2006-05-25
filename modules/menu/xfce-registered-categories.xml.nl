@@ -57,7 +57,7 @@
 	<category name="Profiling" builtin-icon="DEVELOPMENT" />
 	<category name="RevisionControl" replace="Versiebeheer" builtin-icon="DEVELOPMENT" />
 	<category name="Translation" replace="Vertalen" builtin-icon="DEVELOPMENT" />
-	<category name="Office" replace="Kantoor" toplevel="true" builtin-icon="PRODUCTIVITY">
+	<category name="Office" replace="Kantoor" toplevel="true" builtin-icon="OFFICE">
 		<subcategory name="Calendar" />
 		<subcategory name="ContactManagement" />
 		<subcategory name="Database" />
@@ -74,19 +74,19 @@
 		<subcategory name="Photograph" />
 		<subcategory name="Viewer" />
 	</category>
-	<category name="Calendar" replace="Agenda" builtin-icon="PRODUCTIVITY" />
-	<category name="ContactManagement" replace="Contact Management" builtin-icon="PRODUCTIVITY" />
-	<category name="Database" builtin-icon="PRODUCTIVITY" />
-	<category name="Dictionary" replace="Woordenboek" builtin-icon="PRODUCTIVITY" />
-	<category name="Chart" replace="Grafieken" builtin-icon="PRODUCTIVITY" />
-	<category name="Email" builtin-icon="PRODUCTIVITY" />
-	<category name="Finance" replace="Financieel" builtin-icon="PRODUCTIVITY" />
-	<category name="FlowChart" replace="Flow Chart" builtin-icon="PRODUCTIVITY" />
-	<category name="PDA" builtin-icon="PRODUCTIVITY" />
-	<category name="ProjectManagement" replace="Project Management" builtin-icon="PRODUCTIVITY" />
-	<category name="Presentation" replace="Presentatie" builtin-icon="PRODUCTIVITY" />
-	<category name="Spreadsheet" builtin-icon="PRODUCTIVITY" />
-	<category name="WordProcessor" replace="Tekstverwerking" builtin-icon="PRODUCTIVITY" />
+	<category name="Calendar" replace="Agenda" builtin-icon="OFFICE" />
+	<category name="ContactManagement" replace="Contact Management" builtin-icon="OFFICE" />
+	<category name="Database" builtin-icon="OFFICE" />
+	<category name="Dictionary" replace="Woordenboek" builtin-icon="OFFICE" />
+	<category name="Chart" replace="Grafieken" builtin-icon="OFFICE" />
+	<category name="Email" builtin-icon="OFFICE" />
+	<category name="Finance" replace="Financieel" builtin-icon="OFFICE" />
+	<category name="FlowChart" replace="Flow Chart" builtin-icon="OFFICE" />
+	<category name="PDA" builtin-icon="OFFICE" />
+	<category name="ProjectManagement" replace="Project Management" builtin-icon="OFFICE" />
+	<category name="Presentation" replace="Presentatie" builtin-icon="OFFICE" />
+	<category name="Spreadsheet" builtin-icon="OFFICE" />
+	<category name="WordProcessor" replace="Tekstverwerking" builtin-icon="OFFICE" />
 	<category name="Graphics" replace="Grafisch" toplevel="true" builtin-icon="GRAPHICS">
 		<subcategory name="2DGraphics" />
 		<subcategory name="3DGraphics" />
