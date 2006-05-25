@@ -831,7 +831,7 @@ extract_text_from_markup (const gchar *markup)
     if (strlen (*temp_set) > 0 && !g_strrstr (*temp_set, "span")) {
       text = g_markup_escape_text (*temp_set, strlen (*temp_set) * sizeof (gchar));
     }
-    *temp_set = *temp_set + 1;
+    (*temp_set)++;
   }
   g_strfreev (set);
 
