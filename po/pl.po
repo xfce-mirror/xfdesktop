@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-21 11:18+0900\n"
-"PO-Revision-Date: 2006-05-07 19:50+0200\n"
+"PO-Revision-Date: 2006-05-27 13:02+0200\n"
 "Last-Translator: Szymon Kałasz <szymon_maestro@gazeta.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -428,9 +428,8 @@ msgid "Show _icons in menu"
 msgstr "Pokazuj _ikony w menu"
 
 #: ../panel-plugin/desktop-menu-plugin.c:939
-#, fuzzy
 msgid "Edit Menu"
-msgstr "_Edytuj menu"
+msgstr "Edytuj menu"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
@@ -526,9 +525,8 @@ msgstr "_Nie pokazuj ponownie"
 
 #. the dialog
 #: ../settings/appearance-settings.c:911
-#, fuzzy
 msgid "Desktop Preferences"
-msgstr "Ustawienia pulpitu"
+msgstr "Preferencje pulpitu"
 
 #: ../settings/appearance-settings.c:928
 msgid "Allow _Xfce to manage the desktop"
@@ -811,9 +809,8 @@ msgid "Mount Failed"
 msgstr "Montowanie nieudane"
 
 #: ../src/xfdesktop-file-icon-manager.c:371
-#, fuzzy
 msgid "Unknown error."
-msgstr "Nieznany Błąd"
+msgstr "Nieznany błąd."
 
 #: ../src/xfdesktop-file-icon-manager.c:416
 #: ../src/xfdesktop-file-icon-manager.c:747
@@ -1010,6 +1007,8 @@ msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
+"Nie można uruchomić \"exo-desktop-item-edit\", potrzebnego do tworzenia oraz "
+"edytowania aktywatorów i łączy na pulpicie."
 
 #: ../src/xfdesktop-file-icon-manager.c:1613
 msgid "Create New Folder"
@@ -1048,14 +1047,13 @@ msgid "New Empty File"
 msgstr "Nowy Pusty Plik"
 
 #: ../src/xfdesktop-file-icon-manager.c:1736
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file \"%s\":"
-msgstr "Nie udało się stworzyć pliku o nazwie \"%s\":"
+msgstr "Nie udało się utworzyć pliku \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1737
-#, fuzzy
 msgid "Create Error"
-msgstr "Właściwości Błędów"
+msgstr "Błąd tworzenia"
 
 #: ../src/xfdesktop-file-icon-manager.c:1977
 msgid "_Open all"
@@ -1070,9 +1068,8 @@ msgid "_Execute"
 msgstr "_Wykonaj"
 
 #: ../src/xfdesktop-file-icon-manager.c:2019
-#, fuzzy
 msgid "_Edit Launcher"
-msgstr "Aktywator"
+msgstr "_Edytuj aktywator"
 
 #: ../src/xfdesktop-file-icon-manager.c:2067
 msgid "Open With"
@@ -1127,23 +1124,20 @@ msgid "_Properties..."
 msgstr "_Właściwości..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2284
-#, fuzzy
 msgid "Create _New"
-msgstr "Stwórz nowy folder"
+msgstr "Utwórz _nowy"
 
 #: ../src/xfdesktop-file-icon-manager.c:2293
-#, fuzzy
 msgid "_Launcher..."
-msgstr "Aktywator"
+msgstr "_Aktywator..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2314
 msgid "_URL Link..."
-msgstr ""
+msgstr "Łącze _URL..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2329
-#, fuzzy
 msgid "_Folder..."
-msgstr "Stwórz _Folder..."
+msgstr "_Folder..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2368
 msgid "_Empty File"
