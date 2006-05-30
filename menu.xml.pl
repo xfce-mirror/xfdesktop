@@ -62,7 +62,7 @@
 	<separator/>
 
 	<app name="Terminal" cmd="xfterm4" icon="gnome-terminal"/>
-	<app name="Menadżer Plików (xffm)" cmd="xffm" icon="file-manager"/>
+	<app name="Menadżer Plików" cmd="thunar" icon="file-manager"/>
 	<app name="Przeglądarka internetowa" cmd="xfbrowser4" icon="gnome-globe"/>
 
 	<separator/>

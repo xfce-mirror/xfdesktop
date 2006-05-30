@@ -52,7 +52,7 @@
     <app name="Lari Program..." cmd="xfrun4"/>
     <separator/>
     <app name="Terminal" cmd="xfterm4" />
-    <app name="Pengurus Fail (xffm)" cmd="xffm"/>
+    <app name="Pengurus Fail" cmd="thunar" icon="file-manager"/>
     <app name="Pelayar Web" cmd="xfbrowser4"/>
     <separator/>
     <menu name="Tetapan" visible="yes">

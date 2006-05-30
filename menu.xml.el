@@ -62,7 +62,7 @@
 	<separator/>
 
 	<app name="Τερματικό" cmd="xfterm4" icon="gnome-terminal"/>
-	<app name="Διαχειριστής Αρχείων (xffm)" cmd="xffm" icon="file-manager"/>
+	<app name="Διαχειριστής Αρχείων" cmd="thunar" icon="file-manager"/>
 	<app name="Περιηγητής Ιστού" cmd="xfbrowser4" icon="gnome-globe"/>
 
 	<separator/>
