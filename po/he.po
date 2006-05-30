@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-21 11:18+0900\n"
-"PO-Revision-Date: 2006-05-05 22:29+0300\n"
+"PO-Revision-Date: 2006-05-31 02:15+0300\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -428,9 +428,8 @@ msgid "Show _icons in menu"
 msgstr "הראה _סמלים בתפריט"
 
 #: ../panel-plugin/desktop-menu-plugin.c:939
-#, fuzzy
 msgid "Edit Menu"
-msgstr "_ערוך תפריט"
+msgstr "ערוך תפריט"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
@@ -527,9 +526,8 @@ msgstr "_אל תציג זאת שוב"
 
 #. the dialog
 #: ../settings/appearance-settings.c:911
-#, fuzzy
 msgid "Desktop Preferences"
-msgstr "הגדרות שולחן עבודה"
+msgstr "העדפות שולחן עבודה"
 
 #: ../settings/appearance-settings.c:928
 msgid "Allow _Xfce to manage the desktop"
@@ -737,10 +735,8 @@ msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Pop up the menu (at the current mouse position)\n"
 
 #: ../src/main.c:290
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -windowlist  Pop up the window list (at the current mouse position)\n"
 
 #: ../src/main.c:291
 msgid "    -quit        Cause xfdesktop to quit\n"
@@ -776,8 +772,7 @@ msgstr "שולחן עבודה"
 
 #: ../src/xfdesktop-file-icon-manager.c:220
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "לא ניתן ליצור את התיקייה \"%s\" בשביל לשמור שם את פריטי שולחן העבודה:"
 
 #: ../src/xfdesktop-file-icon-manager.c:222
@@ -811,9 +806,8 @@ msgid "Mount Failed"
 msgstr "העיגון כשל"
 
 #: ../src/xfdesktop-file-icon-manager.c:371
-#, fuzzy
 msgid "Unknown error."
-msgstr "שגיאה לא מוכרת"
+msgstr "שגיאה לא ידועה."
 
 #: ../src/xfdesktop-file-icon-manager.c:416
 #: ../src/xfdesktop-file-icon-manager.c:747
@@ -1010,7 +1004,7 @@ msgstr "אין אפשרות ליצור תיקיה בשם \"%s\":"
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr ""
+msgstr "איו אפשרות להפעיל את \"exo-desktop-item-edit\", אשר נחוץ כדי ליצור ולערוך משגרים וקיצורי דרך על שולחן העבודה."
 
 #: ../src/xfdesktop-file-icon-manager.c:1613
 msgid "Create New Folder"
@@ -1049,14 +1043,13 @@ msgid "New Empty File"
 msgstr "קובץ ריק חדש"
 
 #: ../src/xfdesktop-file-icon-manager.c:1736
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file \"%s\":"
-msgstr "אין אפשרות ליצור קובץ בשם \"%s\":"
+msgstr "אין אפשרות ליצור קובץ \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1737
-#, fuzzy
 msgid "Create Error"
-msgstr "שגיאת מאפיינים"
+msgstr "שגיאת יצירה"
 
 #: ../src/xfdesktop-file-icon-manager.c:1977
 msgid "_Open all"
@@ -1071,9 +1064,8 @@ msgid "_Execute"
 msgstr "_הפעלה"
 
 #: ../src/xfdesktop-file-icon-manager.c:2019
-#, fuzzy
 msgid "_Edit Launcher"
-msgstr "משגר"
+msgstr "_ערוך משגר"
 
 #: ../src/xfdesktop-file-icon-manager.c:2067
 msgid "Open With"
@@ -1085,14 +1077,13 @@ msgstr "פתיחה באמצעות יישום _אחר..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2180
 msgid "_Mount Volume"
-msgstr "_Mount Volume"
+msgstr "_חבר כרך"
 
 #: ../src/xfdesktop-file-icon-manager.c:2191
 msgid "_Unmount Volume"
 msgstr "_נתק כרך"
 
 #: ../src/xfdesktop-file-icon-manager.c:2205
-#, fuzzy
 msgid "E_ject Volume"
 msgstr "_הוצא כרך"
 
@@ -1129,23 +1120,20 @@ msgid "_Properties..."
 msgstr "_מאפיינים..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2284
-#, fuzzy
 msgid "Create _New"
-msgstr "יצירת תיקיה חדשה"
+msgstr "צור _חדש"
 
 #: ../src/xfdesktop-file-icon-manager.c:2293
-#, fuzzy
 msgid "_Launcher..."
-msgstr "משגר"
+msgstr "משגר..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2314
 msgid "_URL Link..."
-msgstr ""
+msgstr "_קישור URL..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2329
-#, fuzzy
 msgid "_Folder..."
-msgstr "צור _תיקייה..."
+msgstr "_תיקייה..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2368
 msgid "_Empty File"
@@ -1161,19 +1149,19 @@ msgid "Run Error"
 msgstr "שגיאת הרצה"
 
 #: ../src/xfdesktop-file-icon.c:482
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr "ארעה שגיאה %s \"%s\" אל \"%s\":"
+msgstr "ארעה שגיאה בהעברת \"%s\" אל \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:484
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr "ארעה שגיאה %s \"%s\" אל \"%s\":"
+msgstr "ארעה שגיאה בהעתקת \"%s\" אל \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:486
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr "ארעה שגיאה %s \"%s\" אל \"%s\":"
+msgstr "ארעה שגיאה בקישור \"%s\" אל \"%s\":"
 
 #: ../src/xfdesktop-file-icon.c:491
 msgid "File Error"
@@ -1211,3 +1199,4 @@ msgstr "הגדרות שולחן העבודה של Xfce 4"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "הגדרות שולחן העבודה Xfce 4"
+
