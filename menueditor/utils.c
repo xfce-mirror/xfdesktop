@@ -171,8 +171,18 @@ save_treeview_in_file (MenuEditor * me)
     fprintf (file_menu, "<xfdesktop-menu>\n");
 
     model = gtk_tree_view_get_model (GTK_TREE_VIEW (me->treeview));
-    if (model)
+    if (model) {
+      gint i;
+
       gtk_tree_model_foreach (model, &save_treeview_foreach_func, &state);
+      for (i = state.last_depth; i > 1; i--) {
+        gchar *space = NULL;
+ 
+        space = g_strnfill (i - 1,'\t');
+        fprintf (file_menu, "%s</menu>\n", space);
+	g_free (space);
+      }
+    }
 
     fprintf (file_menu, "</xfdesktop-menu>\n");
     fclose (file_menu);
