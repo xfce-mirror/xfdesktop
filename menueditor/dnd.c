@@ -143,9 +143,9 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
     if (xfce_desktop_entry_get_string (de, "Icon", TRUE, &temp)) {
       icon = xfce_themed_icon_load (temp, ICON_SIZE);
       option_1 = g_strdup (temp);
+      g_free (temp);
     } else
       option_1 = g_strdup ("");
-    g_free (temp);
 
     type = APP;
 
