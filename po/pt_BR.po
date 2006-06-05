@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-21 11:18+0900\n"
-"PO-Revision-Date: 2006-05-05 12:30-0300\n"
+"POT-Creation-Date: 2006-06-04 23:13-0300\n"
+"PO-Revision-Date: 2006-06-04 23:20-0300\n"
 "Last-Translator: Adriano Winter Bess <awbess@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgstr "Sair"
 
 #. Name
 #: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1053
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1073
 msgid "Name:"
 msgstr "Nome:"
 
@@ -102,7 +102,7 @@ msgstr "Todos os campos devem ser preenchidos para adicionar um item."
 msgid "The 'Name' field is required."
 msgstr "O campo 'Nome' é obrigatório."
 
-#: ../menueditor/add_dialog.c:329 ../menueditor/utils.c:318
+#: ../menueditor/add_dialog.c:329 ../menueditor/utils.c:328
 msgid "--- separator ---"
 msgstr "--- separador ---"
 
@@ -150,11 +150,11 @@ msgid "The 'Source' field is required."
 msgstr "O campo 'Fonte' é obrigatório."
 
 #: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:372
+#: ../menueditor/utils.c:382
 msgid "--- include ---"
 msgstr "--- incluir ---"
 
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:389
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:399
 msgid "system"
 msgstr "sistema"
 
@@ -192,12 +192,12 @@ msgstr "Você tem certeza que deseja fechar o menu atual?"
 msgid "Do you want to save before closing the file?"
 msgstr "Você quer salvar antes de fechar o arquivo?"
 
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:586
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:596
 msgid "Select command"
 msgstr "Selecionar comando"
 
 #: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:625
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:645
 msgid "Question"
 msgstr "Pergunta"
 
@@ -313,18 +313,18 @@ msgstr "Comando"
 msgid "Hidden"
 msgstr "Escondido"
 
-#: ../menueditor/utils.c:648
+#: ../menueditor/utils.c:658
 msgid "Select icon"
 msgstr "Selecionar ícone"
 
-#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:546
+#: ../menueditor/utils.c:664 ../panel-plugin/desktop-menu-plugin.c:546
 #: ../settings/appearance-settings.c:532
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Todos os arquivos"
 
-#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:552
+#: ../menueditor/utils.c:668 ../panel-plugin/desktop-menu-plugin.c:552
 #: ../settings/appearance-settings.c:536
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
@@ -428,9 +428,8 @@ msgid "Show _icons in menu"
 msgstr "Mostrar _ícones no menu"
 
 #: ../panel-plugin/desktop-menu-plugin.c:939
-#, fuzzy
 msgid "Edit Menu"
-msgstr "_Editar Menu"
+msgstr "Editar Menu"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
@@ -495,8 +494,8 @@ msgstr "Xfce estará impossibilitado de gerenciar sua área de trabalho (%s)."
 msgid "Unknown Error"
 msgstr "Erro Desconhecido"
 
-#: ../settings/appearance-settings.c:806 ../src/xfdesktop-file-icon.c:648
-#: ../src/xfdesktop-file-icon.c:706
+#: ../settings/appearance-settings.c:806 ../src/xfdesktop-file-icon.c:650
+#: ../src/xfdesktop-file-icon.c:708
 msgid "Error"
 msgstr "Erro"
 
@@ -528,9 +527,8 @@ msgstr "_Não mostrar isto novamente"
 
 #. the dialog
 #: ../settings/appearance-settings.c:911
-#, fuzzy
 msgid "Desktop Preferences"
-msgstr "Configurações da Área de Trabalho"
+msgstr "Preferências da Área de Trabalho"
 
 #: ../settings/appearance-settings.c:928
 msgid "Allow _Xfce to manage the desktop"
@@ -665,7 +663,7 @@ msgid "Desktop Icons"
 msgstr "Ícones da Área de Trabalho"
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-icon-manager.c:1001
+#: ../src/xfdesktop-file-icon-manager.c:1021
 msgid "None"
 msgstr "Nenhum"
 
@@ -778,7 +776,7 @@ msgstr "_Remover Área de Trabalho '%s'"
 msgid "Desktop"
 msgstr "Área de Trabalho"
 
-#: ../src/xfdesktop-file-icon-manager.c:220
+#: ../src/xfdesktop-file-icon-manager.c:233
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
@@ -786,13 +784,13 @@ msgstr ""
 "Xfdesktop não foi capaz de criar a pasta \"%s\" para armazenar itens da área "
 "de trabalho:"
 
-#: ../src/xfdesktop-file-icon-manager.c:222
-#: ../src/xfdesktop-file-icon-manager.c:231
-#: ../src/xfdesktop-file-icon-manager.c:1544
+#: ../src/xfdesktop-file-icon-manager.c:235
+#: ../src/xfdesktop-file-icon-manager.c:244
+#: ../src/xfdesktop-file-icon-manager.c:1564
 msgid "Create Folder Failed"
 msgstr "Falha na Criação de Pasta"
 
-#: ../src/xfdesktop-file-icon-manager.c:229
+#: ../src/xfdesktop-file-icon-manager.c:242
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
@@ -801,80 +799,79 @@ msgstr ""
 "Xfdesktop não é capaz de usar \"%s\" para armazenar itens da área de "
 "trabalho porque não é uma pasta."
 
-#: ../src/xfdesktop-file-icon-manager.c:233
+#: ../src/xfdesktop-file-icon-manager.c:246
 msgid "Please delete or rename the file."
 msgstr "Por favor remova ou renomeie o arquivo."
 
-#: ../src/xfdesktop-file-icon-manager.c:367
-#: ../src/xfdesktop-file-icon-manager.c:864
+#: ../src/xfdesktop-file-icon-manager.c:371
+#: ../src/xfdesktop-file-icon-manager.c:884
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "Impossível montar \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:369
-#: ../src/xfdesktop-file-icon-manager.c:868
+#: ../src/xfdesktop-file-icon-manager.c:373
+#: ../src/xfdesktop-file-icon-manager.c:888
 msgid "Mount Failed"
 msgstr "Falha ao Montar"
 
-#: ../src/xfdesktop-file-icon-manager.c:371
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:375
 msgid "Unknown error."
-msgstr "Erro Desconhecido"
+msgstr "Erro desconhecido."
 
-#: ../src/xfdesktop-file-icon-manager.c:416
-#: ../src/xfdesktop-file-icon-manager.c:747
-#: ../src/xfdesktop-file-icon-manager.c:781
+#: ../src/xfdesktop-file-icon-manager.c:436
+#: ../src/xfdesktop-file-icon-manager.c:767
+#: ../src/xfdesktop-file-icon-manager.c:801
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Impossível lançar \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:418
-#: ../src/xfdesktop-file-icon-manager.c:749
-#: ../src/xfdesktop-file-icon-manager.c:784
-#: ../src/xfdesktop-file-icon-manager.c:1578
+#: ../src/xfdesktop-file-icon-manager.c:438
+#: ../src/xfdesktop-file-icon-manager.c:769
+#: ../src/xfdesktop-file-icon-manager.c:804
+#: ../src/xfdesktop-file-icon-manager.c:1598
 msgid "Launch Error"
 msgstr "Erro ao Lançar"
 
-#: ../src/xfdesktop-file-icon-manager.c:420
+#: ../src/xfdesktop-file-icon-manager.c:440
 msgid "The associated application could not be found or executed."
 msgstr "A aplicação associada não pode ser encontrada ou executada."
 
-#: ../src/xfdesktop-file-icon-manager.c:547
+#: ../src/xfdesktop-file-icon-manager.c:567
 #, c-format
 msgid "Rename \"%s\""
 msgstr "Renomear \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:554
-#: ../src/xfdesktop-file-icon-manager.c:1616
-#: ../src/xfdesktop-file-icon-manager.c:1694
-#: ../src/xfdesktop-file-icon-manager.c:1705
+#: ../src/xfdesktop-file-icon-manager.c:574
+#: ../src/xfdesktop-file-icon-manager.c:1636
+#: ../src/xfdesktop-file-icon-manager.c:1727
+#: ../src/xfdesktop-file-icon-manager.c:1738
 msgid "Enter the new name:"
 msgstr "Entre com o novo nome:"
 
-#: ../src/xfdesktop-file-icon-manager.c:556
+#: ../src/xfdesktop-file-icon-manager.c:576
 msgid "Rename"
 msgstr "Renomear"
 
-#: ../src/xfdesktop-file-icon-manager.c:622
+#: ../src/xfdesktop-file-icon-manager.c:642
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Você tem certeza que deseja remover \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:627
 #: ../src/xfdesktop-file-icon-manager.c:647
+#: ../src/xfdesktop-file-icon-manager.c:667
 msgid "If you delete a file, it is permanently lost."
 msgstr "Se você remover um arquivo, ele será perdido permanentemente."
 
-#: ../src/xfdesktop-file-icon-manager.c:641
+#: ../src/xfdesktop-file-icon-manager.c:661
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Você tem certeza que deseja remover os %d seguintes arquivos?"
 
-#: ../src/xfdesktop-file-icon-manager.c:644
+#: ../src/xfdesktop-file-icon-manager.c:664
 msgid "Delete Multiple Files"
 msgstr "Remover Múltiplos Arquivos"
 
-#: ../src/xfdesktop-file-icon-manager.c:786
+#: ../src/xfdesktop-file-icon-manager.c:806
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -882,309 +879,287 @@ msgstr ""
 "Este recurso requer um serviço de gerenciador de arquivos presente (como o "
 "provido pelo Thunar)."
 
-#: ../src/xfdesktop-file-icon-manager.c:865
+#: ../src/xfdesktop-file-icon-manager.c:885
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "Impossível desmontar \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:868
+#: ../src/xfdesktop-file-icon-manager.c:888
 msgid "Unmount Failed"
 msgstr "Falha ao Desmontar"
 
-#: ../src/xfdesktop-file-icon-manager.c:897
+#: ../src/xfdesktop-file-icon-manager.c:917
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "Impossível ejetar \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:899
+#: ../src/xfdesktop-file-icon-manager.c:919
 msgid "Eject Failed"
 msgstr "Falha ao Ejetar"
 
-#: ../src/xfdesktop-file-icon-manager.c:968
+#: ../src/xfdesktop-file-icon-manager.c:988
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr "Impossível ajustar aplicação padrão para \"%s\" para \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:971
+#: ../src/xfdesktop-file-icon-manager.c:991
 msgid "Properties Error"
 msgstr "Erro de Propriedades"
 
-#: ../src/xfdesktop-file-icon-manager.c:1001
+#: ../src/xfdesktop-file-icon-manager.c:1021
 msgid "Write only"
 msgstr "Apenas escrita"
 
-#: ../src/xfdesktop-file-icon-manager.c:1001
+#: ../src/xfdesktop-file-icon-manager.c:1021
 msgid "Read only"
 msgstr "Apenas leitura"
 
-#: ../src/xfdesktop-file-icon-manager.c:1001
+#: ../src/xfdesktop-file-icon-manager.c:1021
 msgid "Read & Write"
 msgstr "Leitura & Escrita"
 
-#: ../src/xfdesktop-file-icon-manager.c:1028
+#: ../src/xfdesktop-file-icon-manager.c:1048
 msgid "General"
 msgstr "Geral"
 
-#: ../src/xfdesktop-file-icon-manager.c:1079
+#: ../src/xfdesktop-file-icon-manager.c:1099
 msgid "Kind:"
 msgstr "Tipo:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1089
+#: ../src/xfdesktop-file-icon-manager.c:1109
 msgid "broken link"
 msgstr "ligação quebrada"
 
-#: ../src/xfdesktop-file-icon-manager.c:1092
+#: ../src/xfdesktop-file-icon-manager.c:1112
 #, c-format
 msgid "link to %s"
 msgstr "ligação para %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1109
+#: ../src/xfdesktop-file-icon-manager.c:1129
 msgid "Link Target:"
 msgstr "Alvo da Ligação:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1126
-#: ../src/xfdesktop-file-icon-manager.c:1285
+#: ../src/xfdesktop-file-icon-manager.c:1146
+#: ../src/xfdesktop-file-icon-manager.c:1305
 msgid "(unknown)"
 msgstr "(desconhecido)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1148
+#: ../src/xfdesktop-file-icon-manager.c:1168
 msgid "Open With:"
 msgstr "Abrir Com:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1225
+#: ../src/xfdesktop-file-icon-manager.c:1245
 msgid "Modified:"
 msgstr "Modificado:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1243
+#: ../src/xfdesktop-file-icon-manager.c:1263
 msgid "Accessed:"
 msgstr "Acessado:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1270
+#: ../src/xfdesktop-file-icon-manager.c:1290
 msgid "Free Space:"
 msgstr "Espaço Livre:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1272
+#: ../src/xfdesktop-file-icon-manager.c:1292
 msgid "Size:"
 msgstr "Tamanho:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1288
+#: ../src/xfdesktop-file-icon-manager.c:1308
 msgid "%s (%"
 msgstr "%s (%"
 
-#: ../src/xfdesktop-file-icon-manager.c:1288
+#: ../src/xfdesktop-file-icon-manager.c:1308
 msgid " Bytes)"
 msgstr " Bytes)"
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1303
+#: ../src/xfdesktop-file-icon-manager.c:1323
 msgid "Permissions"
 msgstr "Permissões"
 
-#: ../src/xfdesktop-file-icon-manager.c:1325
+#: ../src/xfdesktop-file-icon-manager.c:1345
 msgid "Owner:"
 msgstr "Proprietário:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1343
-#: ../src/xfdesktop-file-icon-manager.c:1381
+#: ../src/xfdesktop-file-icon-manager.c:1363
+#: ../src/xfdesktop-file-icon-manager.c:1401
 msgid "Access:"
 msgstr "Acesso:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1366
+#: ../src/xfdesktop-file-icon-manager.c:1386
 msgid "Group:"
 msgstr "Grupo:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1404
+#: ../src/xfdesktop-file-icon-manager.c:1424
 msgid "Others:"
 msgstr "Outros:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1477
+#: ../src/xfdesktop-file-icon-manager.c:1497
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "Abrir C_om \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1480
+#: ../src/xfdesktop-file-icon-manager.c:1500
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Abrir Com \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1541
+#: ../src/xfdesktop-file-icon-manager.c:1561
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Impossível criar pasta com nome \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1580
+#: ../src/xfdesktop-file-icon-manager.c:1600
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
+"Não é possível executar \"exo-desktop-item-edit\", que é necessário para "
+"criar e editar lançadores e ligações na área de trabalho."
 
-#: ../src/xfdesktop-file-icon-manager.c:1613
+#: ../src/xfdesktop-file-icon-manager.c:1633
 msgid "Create New Folder"
 msgstr "Criar Nova Pasta"
 
-#: ../src/xfdesktop-file-icon-manager.c:1617
+#: ../src/xfdesktop-file-icon-manager.c:1637
 msgid "New Folder"
 msgstr "Nova Pasta"
 
-#: ../src/xfdesktop-file-icon-manager.c:1618
-#: ../src/xfdesktop-file-icon-manager.c:1696
-#: ../src/xfdesktop-file-icon-manager.c:1707
+#: ../src/xfdesktop-file-icon-manager.c:1638
+#: ../src/xfdesktop-file-icon-manager.c:1729
+#: ../src/xfdesktop-file-icon-manager.c:1740
 msgid "Create"
 msgstr "Criar"
 
-#: ../src/xfdesktop-file-icon-manager.c:1654
+#: ../src/xfdesktop-file-icon-manager.c:1674
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Impossível criar arquivo com nome \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1657
+#: ../src/xfdesktop-file-icon-manager.c:1677
 msgid "Create File Failed"
 msgstr "Falha ao Criar Arquivo"
 
-#: ../src/xfdesktop-file-icon-manager.c:1683
+#: ../src/xfdesktop-file-icon-manager.c:1716
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Criar Documento a partir do modelo \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1702
+#: ../src/xfdesktop-file-icon-manager.c:1735
 msgid "Create Empty File"
 msgstr "Criar Arquivo Vazio"
 
-#: ../src/xfdesktop-file-icon-manager.c:1706
+#: ../src/xfdesktop-file-icon-manager.c:1739
 msgid "New Empty File"
 msgstr "Novo Arquivo Vazio"
 
-#: ../src/xfdesktop-file-icon-manager.c:1736
-#, fuzzy, c-format
+#: ../src/xfdesktop-file-icon-manager.c:1772
+#, c-format
 msgid "Unable to create file \"%s\":"
-msgstr "Impossível criar arquivo com nome \"%s\":"
+msgstr "Impossível criar arquivo \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1737
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:1773
 msgid "Create Error"
-msgstr "Erro de Propriedades"
+msgstr "Erro ao Criar"
 
-#: ../src/xfdesktop-file-icon-manager.c:1977
+#: ../src/xfdesktop-file-icon-manager.c:2013
 msgid "_Open all"
 msgstr "A_brir todos"
 
-#: ../src/xfdesktop-file-icon-manager.c:1988
+#: ../src/xfdesktop-file-icon-manager.c:2028
 msgid "_Open"
 msgstr "A_brir"
 
-#: ../src/xfdesktop-file-icon-manager.c:2001
+#: ../src/xfdesktop-file-icon-manager.c:2045
 msgid "_Execute"
 msgstr "_Executar"
 
-#: ../src/xfdesktop-file-icon-manager.c:2019
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2062
 msgid "_Edit Launcher"
-msgstr "Lançador"
+msgstr "_Editar Lançador"
 
-#: ../src/xfdesktop-file-icon-manager.c:2067
+#: ../src/xfdesktop-file-icon-manager.c:2102
 msgid "Open With"
 msgstr "Abrir Com"
 
-#: ../src/xfdesktop-file-icon-manager.c:2097
+#: ../src/xfdesktop-file-icon-manager.c:2136
 msgid "Open With Other _Application..."
 msgstr "Abrir Com Outra _Aplicação..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2180
+#: ../src/xfdesktop-file-icon-manager.c:2207
 msgid "_Mount Volume"
 msgstr "_Montar Volume"
 
-#: ../src/xfdesktop-file-icon-manager.c:2191
+#: ../src/xfdesktop-file-icon-manager.c:2218
 msgid "_Unmount Volume"
 msgstr "_Desmontar Volume"
 
-#: ../src/xfdesktop-file-icon-manager.c:2205
+#: ../src/xfdesktop-file-icon-manager.c:2232
 msgid "E_ject Volume"
 msgstr "E_jetar Volume"
 
-#: ../src/xfdesktop-file-icon-manager.c:2215
+#: ../src/xfdesktop-file-icon-manager.c:2242
 msgid "_Copy Files"
 msgstr "_Copiar Arquivos"
 
-#: ../src/xfdesktop-file-icon-manager.c:2216
+#: ../src/xfdesktop-file-icon-manager.c:2243
 msgid "_Copy File"
 msgstr "_Copiar Arquivo"
 
-#: ../src/xfdesktop-file-icon-manager.c:2225
+#: ../src/xfdesktop-file-icon-manager.c:2252
 msgid "Cu_t Files"
 msgstr "Recor_tar Arquivos"
 
-#: ../src/xfdesktop-file-icon-manager.c:2226
+#: ../src/xfdesktop-file-icon-manager.c:2253
 msgid "Cu_t File"
 msgstr "Recor_tar Arquivo"
 
-#: ../src/xfdesktop-file-icon-manager.c:2235
+#: ../src/xfdesktop-file-icon-manager.c:2262
 msgid "_Delete Files"
 msgstr "Remo_ver Arquivos"
 
-#: ../src/xfdesktop-file-icon-manager.c:2236
+#: ../src/xfdesktop-file-icon-manager.c:2263
 msgid "_Delete File"
 msgstr "Remo_ver Arquivo"
 
-#: ../src/xfdesktop-file-icon-manager.c:2248
+#: ../src/xfdesktop-file-icon-manager.c:2275
 msgid "_Rename..."
 msgstr "_Renomear..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2266
+#: ../src/xfdesktop-file-icon-manager.c:2293
 msgid "_Properties..."
 msgstr "_Propriedades..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2284
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2311
 msgid "Create _New"
-msgstr "Criar Nova Pasta"
+msgstr "Criar _Novo"
 
-#: ../src/xfdesktop-file-icon-manager.c:2293
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2320
 msgid "_Launcher..."
-msgstr "Lançador"
+msgstr "_Lançador..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2314
+#: ../src/xfdesktop-file-icon-manager.c:2341
 msgid "_URL Link..."
-msgstr ""
+msgstr "Ligação _URL..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2329
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2356
 msgid "_Folder..."
-msgstr "Criar _Pasta..."
+msgstr "_Pasta..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2368
+#: ../src/xfdesktop-file-icon-manager.c:2395
 msgid "_Empty File"
 msgstr "Ar_quivo Vazio"
 
-#: ../src/xfdesktop-file-icon-manager.c:3168 ../src/xfdesktop-file-icon.c:554
+#: ../src/xfdesktop-file-icon-manager.c:3347 ../src/xfdesktop-file-icon.c:549
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Falhou ao executar \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:3170 ../src/xfdesktop-file-icon.c:556
+#: ../src/xfdesktop-file-icon-manager.c:3349 ../src/xfdesktop-file-icon.c:551
 msgid "Run Error"
 msgstr "Erro de Execução"
 
-#: ../src/xfdesktop-file-icon.c:482
-#, c-format
-msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr "Ocorreu um erro movendo \"%s\" para \"%s\":"
-
-#: ../src/xfdesktop-file-icon.c:484
-#, c-format
-msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr "Ocorreu um erro copiando \"%s\" para \"%s\":"
-
-#: ../src/xfdesktop-file-icon.c:486
-#, c-format
-msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr "Ocorreu um erro ligando \"%s\" com \"%s\":"
-
-#: ../src/xfdesktop-file-icon.c:491
-msgid "File Error"
-msgstr "Erro de Arquivo"
-
-#: ../src/xfdesktop-file-icon.c:703
+#: ../src/xfdesktop-file-icon.c:705
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Falhou ao renomear \"%s\" para \"%s\":"
@@ -1216,3 +1191,15 @@ msgstr "Configurações para o Gerenciador da Área de Trabalho do Xfce 4"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Configurações da Área de Trabalho Xfce 4"
+
+#~ msgid "There was an error moving \"%s\" to \"%s\":"
+#~ msgstr "Ocorreu um erro movendo \"%s\" para \"%s\":"
+
+#~ msgid "There was an error copying \"%s\" to \"%s\":"
+#~ msgstr "Ocorreu um erro copiando \"%s\" para \"%s\":"
+
+#~ msgid "There was an error linking \"%s\" to \"%s\":"
+#~ msgstr "Ocorreu um erro ligando \"%s\" com \"%s\":"
+
+#~ msgid "File Error"
+#~ msgstr "Erro de Arquivo"
