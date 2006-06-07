@@ -152,7 +152,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
     gint i, j, k, l, m, menu_pos;
     GList *children;
     GtkWidget *mi = NULL;
-    gchar tmppath[2048];
+    gchar tmppath[2048], *cmd_locale;
     struct MenuFileParserState *state = user_data;
     
     BD("cur_path: %s, hidelevel=%d", state->cur_path, state->hidelevel);
@@ -185,11 +185,20 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
         j = _find_attribute(attribute_names, "cmd");
         if(j == -1)
             return;
+        
+        cmd_locale = g_filename_from_utf8(attribute_values[j],
+                                          strlen(attribute_values[j]),
+                                          NULL, NULL, NULL);
+        
+        mi = xfce_app_menu_item_new_with_command(attribute_values[i],
+                                                 (cmd_locale
+                                                  ? cmd_locale
+                                                  : attribute_values[j]));
+        g_free(cmd_locale);
+
         k = _find_attribute(attribute_names, "term");
         l = _find_attribute(attribute_names, "snotify");
         
-        mi = xfce_app_menu_item_new_with_command(attribute_values[i],
-                attribute_values[j]);
         if(k != -1 && (!strcmp(attribute_values[k], "true") || 
                 !strcmp(attribute_values[k], "yes")))
         {
