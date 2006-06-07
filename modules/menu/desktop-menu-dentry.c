@@ -66,7 +66,7 @@ static void menu_dentry_legacy_add_all(XfceDesktopMenu *desktop_menu,
 
 static const char *dentry_keywords [] = {
    "Name", "Comment", "Icon", "Hidden", "StartupNotify",
-   "Categories", "OnlyShowIn", "Exec", "Terminal",
+   "Categories", "OnlyShowIn", "Exec", "TryExec", "Terminal",
    "NoDisplay", "GenericName",
 };
 
@@ -276,12 +276,37 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
     return submenu;
 }
 
+static void
+menu_cleanup_executable(gchar *string)
+{
+    gchar *p;
+
+    if(!string)
+        return;
+
+    if((p = strchr(string, ' ')))
+        *p = 0;
+
+    if(string[0] == '"') {
+        int i;
+
+        for(i = 1; string[i-1] != '\0'; ++i) {
+            if(string[i] != '"')
+                string[i-1] = string[i];
+            else {
+                string[i-1] = '\0';
+                break;
+            }
+        }
+    }
+}
+
 static gboolean
 menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
         MenuPathType pathtype, gboolean is_legacy, const gchar *extra_cat)
 {
     gchar *categories = NULL, *hidden = NULL, *onlyshowin = NULL;
-    gchar *nodisplay = NULL;
+    gchar *nodisplay = NULL, *tryexec = NULL;
     gchar *path = NULL, *exec = NULL, *p;
     GtkWidget *mi = NULL, *menu;
     gint i, menu_pos;
@@ -290,7 +315,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
     gchar tmppath[2048];
     gboolean ret = FALSE;
 
-    xfce_desktop_entry_get_string (de, "OnlyShowIn", FALSE, &onlyshowin);
+    xfce_desktop_entry_get_string(de, "OnlyShowIn", FALSE, &onlyshowin);
     /* each element needs to be ';'-terminated.  i'm not working around
      * broken files. */
     if(onlyshowin && !strstr(onlyshowin, "XFCE;"))
@@ -304,47 +329,35 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
     if(nodisplay && !g_ascii_strcasecmp(nodisplay, "true"))
         goto cleanup;
     
-    /* check for blacklisted item */
-    xfce_desktop_entry_get_string(de, "Exec", FALSE, &exec);
-    if(!exec)
-        goto cleanup;
-    if((p = strchr(exec, ' ')))
-        *p = 0;
-    /* filter out quotes around the command (yeah, people do that!) */
-    if (exec[0] == '"') {
-        int i;
-
-        for (i = 1; exec[i-1] != '\0'; ++i) {
-            if (exec[i] != '"')
-                exec[i-1] = exec[i];
-            else {
-                exec[i-1] = '\0';
-                break;
-            }
-        }
-    }
-    
-    if(blacklist && g_hash_table_lookup(blacklist, exec))
-        goto cleanup;
-
-    if (!g_path_is_absolute (exec))
-    {
-        p = g_find_program_in_path(exec);
+    xfce_desktop_entry_get_string(de, "TryExec", FALSE, &tryexec);
+    menu_cleanup_executable(tryexec);
+    if(tryexec) {
+        p = g_find_program_in_path(tryexec);
         if(!p)
             goto cleanup;
         g_free(p);
     }
-
-    xfce_desktop_entry_get_string (de, "Categories", TRUE, &categories);
     
+    /* check for blacklisted item */
+    xfce_desktop_entry_get_string(de, "Exec", FALSE, &exec);
+    if(!exec)
+        goto cleanup;
+    
+    /* filter out quotes around the command (yeah, people do that!) */
+    menu_cleanup_executable(exec);
+ 
+    if(blacklist && g_hash_table_lookup(blacklist, exec))
+        goto cleanup;
+
+    xfce_desktop_entry_get_string(de, "Categories", TRUE, &categories);    
     if(categories || !is_legacy) {
         /* hack: leave out items that look like they are KDE control panels */
         if(categories && strstr(categories, ";X-KDE-"))
             goto cleanup;
         
-        if(pathtype==MPATH_SIMPLE || pathtype==MPATH_SIMPLE_UNIQUE)
+        if(pathtype == MPATH_SIMPLE || pathtype == MPATH_SIMPLE_UNIQUE)
             newpaths = desktop_menuspec_get_path_simple(categories);
-        else if(pathtype==MPATH_MULTI || pathtype==MPATH_MULTI_UNIQUE)
+        else if(pathtype == MPATH_MULTI || pathtype == MPATH_MULTI_UNIQUE)
             newpaths = desktop_menuspec_get_path_multilevel(categories);
         
         if(!newpaths)
@@ -474,18 +487,13 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
     
     if(newpaths)
         desktop_menuspec_path_free(newpaths);
-    if(onlyshowin)
-        g_free(onlyshowin);
-    if(nodisplay)
-        g_free(nodisplay);
-    if(hidden)
-        g_free(hidden);
-    if(categories)
-        g_free(categories);
-    if(exec)
-        g_free(exec);
-    if(path)
-        g_free(path);
+    g_free(onlyshowin);
+    g_free(nodisplay);
+    g_free(hidden);
+    g_free(categories);
+    g_free(tryexec);
+    g_free(exec);
+    g_free(path);
 
     return ret;
 }
