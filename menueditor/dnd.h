@@ -22,7 +22,7 @@
 #define __HAVE_DND_HEADER
 
 /* Prototype */
-void treeview_drag_data_get_cb (GtkWidget * widget, GdkDragContext * dc, GtkSelectionData * data, guint info, guint time, gpointer user_data);
 void treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc, guint x, guint y, GtkSelectionData * sd, guint info, guint t, gpointer user_data);
+gboolean treeview_drag_drop_cb (GtkWidget *widget, GdkDragContext *drag_context, gint x, gint y, guint time, MenuEditor *me);
 
 #endif

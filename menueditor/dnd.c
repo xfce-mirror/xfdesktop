@@ -23,25 +23,33 @@
 
 #include "dnd.h"
 
-/* Get DnD */
-void
-treeview_drag_data_get_cb (GtkWidget * widget, GdkDragContext * dc,
-                           GtkSelectionData * data, guint info, guint time, gpointer user_data)
+gboolean
+treeview_drag_drop_cb (GtkWidget *widget, GdkDragContext *drag_context, gint x, gint y, guint time, MenuEditor *me) 
 {
-  GtkTreeRowReference *ref;
-  GtkTreePath *path_source;
-
-  if (info == DND_TARGET_MENUEDITOR) {
-    MenuEditor *me;
-
-    me = (MenuEditor *) user_data;
-    
-    ref = g_object_get_data (G_OBJECT (dc), "gtk-tree-view-source-row");
-    path_source = gtk_tree_row_reference_get_path (ref);
-
-    gtk_selection_data_set (data, gdk_atom_intern ("MENUEDITOR_ENTRY", FALSE), 8,  /* bits */
-			    (gpointer) &path_source, sizeof (path_source));
+  GtkTreePath *path = NULL;
+  GtkTreeViewDropPosition position;
+  
+  if (gtk_tree_view_get_dest_row_at_pos (GTK_TREE_VIEW (widget), x, y, &path, &position)) {
+	if (position == GTK_TREE_VIEW_DROP_INTO_OR_BEFORE || position == GTK_TREE_VIEW_DROP_INTO_OR_AFTER) {
+	  GtkTreeModel *model;
+	  GtkTreeIter iter;
+	  gint type;
+	  
+	  model = gtk_tree_view_get_model (GTK_TREE_VIEW (widget));
+	  gtk_tree_model_get_iter (model, &iter, path);
+	  gtk_tree_path_free (path);
+	  
+	  gtk_tree_model_get (model, &iter, COLUMN_TYPE, &type, -1);
+	  
+	  if (type != MENU)
+		return TRUE;
+	}
+	
+	menueditor_menu_modified (me);
+	return FALSE;
   }
+  
+  return TRUE;
 }
 
 /* Receive DnD */
@@ -71,7 +79,7 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
   gboolean inserted = FALSE;
 
   me = (MenuEditor *) user_data;
-
+  
   g_return_if_fail (sd->data);
   gtk_tree_view_get_dest_row_at_pos (GTK_TREE_VIEW (widget), x, y, &path_where_insert, &position);
 
@@ -81,24 +89,7 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
     goto cleanup;
   }
   
-  if (sd->target == gdk_atom_intern ("MENUEDITOR_ENTRY", FALSE)) {
-    GtkTreePath *path_source;
-    GtkTreeIter iter_source;
-    memcpy (&path_source, sd->data, sizeof (path_source));
-    
-    if (!path_source) {
-      g_warning ("wrong path_source");
-      goto cleanup;
-    }
-    
-    gtk_tree_model_get_iter (model, &iter_source, path_source);
-    
-    gtk_tree_model_get (model, &iter_source, COLUMN_ICON, &icon, COLUMN_NAME, &name,
-			COLUMN_COMMAND, &command, COLUMN_HIDDEN, &hidden,
-			COLUMN_TYPE, &type, COLUMN_OPTION_1, &option_1,
-			COLUMN_OPTION_2, &option_2, COLUMN_OPTION_3, &option_3, -1);
-    gtk_tree_path_free (path_source);
-  } else if (sd->target == gdk_atom_intern ("text/plain", FALSE)) {
+  if (sd->target == gdk_atom_intern ("text/plain", FALSE)) {
     /* text/plain */
     gchar *filename = NULL;
     gchar *temp = NULL;
@@ -182,9 +173,12 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
 
     option_2 = g_strdup ("false");
     option_3 = g_strdup ("false");
-  } else
-    goto cleanup;
-
+  } else {
+	gtk_tree_path_free (path_where_insert);
+	
+	return;
+  }
+  
   /* Insert in the tree */
   gtk_tree_model_get_iter (model, &iter_where_insert, path_where_insert);
   switch (position){

@@ -810,8 +810,7 @@ create_main_window (MenuEditor * me)
   GtkWidget *statusbar;
 
   /* DnD */
-  GtkTargetEntry gte[] = { {"MENUEDITOR_ENTRY", GTK_TARGET_SAME_WIDGET, DND_TARGET_MENUEDITOR},
-			   {"text/plain", 0, DND_TARGET_TEXT_PLAIN},
+  GtkTargetEntry gte[] = {{"text/plain", 0, DND_TARGET_TEXT_PLAIN},
 			   {"application/x-desktop", 0, DND_TARGET_APP_DESKTOP} };
 
   accel_group = gtk_accel_group_new ();
@@ -1011,10 +1010,9 @@ create_main_window (MenuEditor * me)
   gtk_box_pack_start (GTK_BOX (vbox), statusbar, FALSE, FALSE, 0);
 
   /* Set up DnD */
-  gtk_tree_view_enable_model_drag_source (GTK_TREE_VIEW (me->treeview), GDK_BUTTON1_MASK, gte,
-					  TARGETS, GDK_ACTION_COPY | GDK_ACTION_MOVE);
   gtk_tree_view_enable_model_drag_dest (GTK_TREE_VIEW (me->treeview), gte, TARGETS, GDK_ACTION_COPY);
-
+  gtk_tree_view_set_reorderable (GTK_TREE_VIEW (me->treeview), TRUE);
+  
   /* Connect signals */
   /* =============== */
   g_signal_connect (G_OBJECT (me->window), "delete-event", G_CALLBACK (delete_main_window_cb), me);
@@ -1050,10 +1048,10 @@ create_main_window (MenuEditor * me)
   g_signal_connect (G_OBJECT (me->treeview), "row-activated", G_CALLBACK (treeview_activate_cb), me);
   g_signal_connect (G_OBJECT (me->treeview), "cursor-changed", G_CALLBACK (treeview_cursor_changed_cb), me);
   g_signal_connect (G_OBJECT (cell_hidden), "toggled", G_CALLBACK (visible_column_toggled_cb), me);
-
+  
   /* DnD */
   g_signal_connect (G_OBJECT (me->treeview), "drag-data-received", G_CALLBACK (treeview_drag_data_rcv_cb), me);
-  g_signal_connect (G_OBJECT (me->treeview), "drag-data-get", G_CALLBACK (treeview_drag_data_get_cb), me);
+  g_signal_connect (G_OBJECT (me->treeview), "drag-drop", G_CALLBACK (treeview_drag_drop_cb), me);
 
   /* Add accelerators */
   gtk_window_add_accel_group (GTK_WINDOW (me->window), accel_group);
