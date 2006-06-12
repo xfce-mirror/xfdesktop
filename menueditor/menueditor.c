@@ -811,7 +811,7 @@ create_main_window (MenuEditor * me)
 
   /* DnD */
   GtkTargetEntry gte[] = {{"text/plain", 0, DND_TARGET_TEXT_PLAIN},
-			   {"application/x-desktop", 0, DND_TARGET_APP_DESKTOP} };
+			   {"application/x-desktop", 0, DND_TARGET_APP_DESKTOP}, };
 
   accel_group = gtk_accel_group_new ();
 
