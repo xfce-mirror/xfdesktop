@@ -23,33 +23,102 @@
 
 #include "dnd.h"
 
-gboolean
-treeview_drag_drop_cb (GtkWidget *widget, GdkDragContext *drag_context, gint x, gint y, guint time, MenuEditor *me) 
+/* Move Iter around in the treeview */
+static void
+copy_menuelement_to (MenuEditor *me, GtkTreeIter *src, GtkTreeIter *dest, GtkTreeViewDropPosition position)
 {
-  GtkTreePath *path = NULL;
-  GtkTreeViewDropPosition position;
-  
-  if (gtk_tree_view_get_dest_row_at_pos (GTK_TREE_VIEW (widget), x, y, &path, &position)) {
-	if (position == GTK_TREE_VIEW_DROP_INTO_OR_BEFORE || position == GTK_TREE_VIEW_DROP_INTO_OR_AFTER) {
-	  GtkTreeModel *model;
-	  GtkTreeIter iter;
-	  gint type;
-	  
-	  model = gtk_tree_view_get_model (GTK_TREE_VIEW (widget));
-	  gtk_tree_model_get_iter (model, &iter, path);
-	  gtk_tree_path_free (path);
-	  
-	  gtk_tree_model_get (model, &iter, COLUMN_TYPE, &type, -1);
-	  
-	  if (type != MENU)
-		return TRUE;
-	}
-	
-	menueditor_menu_modified (me);
-	return FALSE;
+  GtkTreeModel *model;
+  GtkTreeIter iter_new;
+
+  GdkPixbuf *icon = NULL;
+  gchar *name = NULL;
+  gchar *command = NULL;
+  gboolean hidden = FALSE;
+  EntryType type = SEPARATOR;
+  gchar *option_1 = NULL;
+  gchar *option_2 = NULL;
+  gchar *option_3 = NULL;
+
+  gint n_children = 0;
+  gint i;
+  GtkTreePath *path_src = NULL;
+
+  model = gtk_tree_view_get_model (GTK_TREE_VIEW (me->treeview));
+
+  gtk_tree_model_get (model, src, COLUMN_ICON, &icon, COLUMN_NAME, &name,
+		      COLUMN_COMMAND, &command, COLUMN_HIDDEN, &hidden,
+		      COLUMN_TYPE, &type, COLUMN_OPTION_1, &option_1,
+		      COLUMN_OPTION_2, &option_2, COLUMN_OPTION_3, &option_3, -1);
+
+  switch (position) {
+  case GTK_TREE_VIEW_DROP_BEFORE:
+    gtk_tree_store_insert_before (GTK_TREE_STORE (model), &iter_new, NULL, dest);
+    break;
+  case GTK_TREE_VIEW_DROP_AFTER:
+    gtk_tree_store_insert_after (GTK_TREE_STORE (model), &iter_new, NULL, dest);
+    break;
+  case GTK_TREE_VIEW_DROP_INTO_OR_BEFORE:
+    gtk_tree_store_insert_before (GTK_TREE_STORE (model), &iter_new, dest, NULL);
+    break;
+  case GTK_TREE_VIEW_DROP_INTO_OR_AFTER:
+    gtk_tree_store_insert_after (GTK_TREE_STORE (model), &iter_new, dest, NULL);
+    break;
   }
-  
-  return TRUE;
+
+  gtk_tree_store_set (GTK_TREE_STORE (model), &iter_new,
+		      COLUMN_ICON, G_IS_OBJECT (icon) ? icon : dummy_icon,
+		      COLUMN_NAME, name,
+		      COLUMN_COMMAND, command, COLUMN_HIDDEN, hidden,
+		      COLUMN_TYPE, type, COLUMN_OPTION_1, option_1,
+		      COLUMN_OPTION_2, option_2, COLUMN_OPTION_3, option_3, -1);
+
+  n_children = gtk_tree_model_iter_n_children (model, src);
+
+  for (i = 0; i < n_children; i++) {
+    GtkTreeIter iter_child;
+
+    if (gtk_tree_model_iter_nth_child (model, &iter_child, src, i))
+      copy_menuelement_to (me, &iter_child, &iter_new, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
+  }
+
+  path_src = gtk_tree_model_get_path (model, src);
+  if (n_children > 0 && gtk_tree_view_row_expanded (GTK_TREE_VIEW (me->treeview), path_src)) {
+    GtkTreePath *path_new = NULL;
+
+    path_new = gtk_tree_model_get_path (model, &iter_new);
+    gtk_tree_view_expand_row (GTK_TREE_VIEW (me->treeview), path_new, FALSE);
+    gtk_tree_path_free (path_new);
+  }
+  gtk_tree_path_free (path_src);
+
+  if (G_IS_OBJECT (icon))
+    g_object_unref (icon);
+  g_free (name);
+  g_free (command);
+  g_free (option_1);
+  g_free (option_2);
+  g_free (option_3);
+}
+
+/* Get DnD */
+void
+treeview_drag_data_get_cb (GtkWidget * widget, GdkDragContext * dc,
+                           GtkSelectionData * data, guint info, guint time, gpointer user_data)
+{
+  GtkTreeRowReference *ref;
+  GtkTreePath *path_source;
+
+  if (info == DND_TARGET_MENUEDITOR) {
+    MenuEditor *me;
+
+    me = (MenuEditor *) user_data;
+    
+    ref = g_object_get_data (G_OBJECT (dc), "gtk-tree-view-source-row");
+    path_source = gtk_tree_row_reference_get_path (ref);
+
+    gtk_selection_data_set (data, gdk_atom_intern ("MENUEDITOR_ENTRY", FALSE), 8,  /* bits */
+			    (gpointer) &path_source, sizeof (path_source));
+  }
 }
 
 /* Receive DnD */
@@ -66,7 +135,7 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
   gchar *name = NULL;
   gchar *command = NULL;
   gboolean hidden = FALSE;
-  ENTRY_TYPE type = SEPARATOR;
+  EntryType type = SEPARATOR;
   gchar *option_1 = NULL;
   gchar *option_2 = NULL;
   gchar *option_3 = NULL;
@@ -75,11 +144,11 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
   GtkTreeIter iter_new;
 
   /* insertion */
-  ENTRY_TYPE type_where_insert;
+  EntryType type_where_insert;
   gboolean inserted = FALSE;
 
   me = (MenuEditor *) user_data;
-  
+
   g_return_if_fail (sd->data);
   gtk_tree_view_get_dest_row_at_pos (GTK_TREE_VIEW (widget), x, y, &path_where_insert, &position);
 
@@ -89,7 +158,30 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
     goto cleanup;
   }
   
-  if (sd->target == gdk_atom_intern ("text/plain", FALSE)) {
+  if (sd->target == gdk_atom_intern ("MENUEDITOR_ENTRY", FALSE)) {
+    GtkTreePath *path_source;
+    GtkTreeIter iter_source;
+    memcpy (&path_source, sd->data, sizeof (path_source));
+    
+    if (!path_source) {
+      g_warning ("wrong path_source");
+      goto cleanup;
+    }
+    
+    gtk_tree_model_get_iter (model, &iter_source, path_source);
+    gtk_tree_path_free (path_source);
+    gtk_tree_model_get_iter (model, &iter_where_insert, path_where_insert);
+
+    gtk_tree_model_get (model, &iter_where_insert, COLUMN_TYPE, &type, -1);
+
+    if ((type == MENU) || (position == GTK_TREE_VIEW_DROP_BEFORE) || (position == GTK_TREE_VIEW_DROP_AFTER)) {
+      copy_menuelement_to (me, &iter_source, &iter_where_insert, position);
+      menueditor_menu_modified (me);
+      inserted = TRUE;
+    }
+
+    goto cleanup;
+  } else if (sd->target == gdk_atom_intern ("text/plain", FALSE)) {
     /* text/plain */
     gchar *filename = NULL;
     gchar *temp = NULL;
@@ -173,12 +265,9 @@ treeview_drag_data_rcv_cb (GtkWidget * widget, GdkDragContext * dc,
 
     option_2 = g_strdup ("false");
     option_3 = g_strdup ("false");
-  } else {
-	gtk_tree_path_free (path_where_insert);
-	
-	return;
-  }
-  
+  } else
+    goto cleanup;
+
   /* Insert in the tree */
   gtk_tree_model_get_iter (model, &iter_where_insert, path_where_insert);
   switch (position){

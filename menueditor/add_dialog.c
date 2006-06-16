@@ -27,7 +27,7 @@
 struct _AddDialog
 {
   GtkWidget *dialog;
-  ENTRY_TYPE type;
+  EntryType type;
 
   GtkWidget *label_name;
   GtkWidget *entry_name;
@@ -253,7 +253,7 @@ add_entry_cb (GtkWidget * widget, gpointer data)
       GdkPixbuf *icon = NULL;
       gchar *name = NULL;
       gchar *command = NULL;
-      ENTRY_TYPE type = SEPARATOR;
+      EntryType type = SEPARATOR;
       gchar *option_1 = NULL;
       gchar *option_2 = NULL;
       gchar *option_3 = NULL;
@@ -364,7 +364,7 @@ add_entry_cb (GtkWidget * widget, gpointer data)
 
       selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (me->treeview));
       if (gtk_tree_selection_get_selected (selection, &model, &iter_selected)) {
-        ENTRY_TYPE type_selected = SEPARATOR;
+        EntryType type_selected = SEPARATOR;
 
         gtk_tree_model_get (model, &iter_selected, COLUMN_TYPE, &type_selected, -1);
 

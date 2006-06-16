@@ -25,7 +25,7 @@
 
 struct _EditDialog {
   GtkWidget *dialog;
-  ENTRY_TYPE type;
+  EntryType type;
 
   GtkWidget *entry_icon;
   GtkWidget *entry_command;
@@ -64,7 +64,7 @@ edit_selection (MenuEditor *me)
   GdkPixbuf *icon = NULL;
   gchar *name = NULL;
   gchar *command = NULL;
-  ENTRY_TYPE type = SEPARATOR;
+  EntryType type = SEPARATOR;
   gchar *option_1 = NULL;
   gchar *option_2 = NULL;
   gchar *option_3 = NULL;

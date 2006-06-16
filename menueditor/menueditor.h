@@ -52,20 +52,17 @@ enum
   COLUMN_OPTION_1, COLUMN_OPTION_2, COLUMN_OPTION_3, COLUMNS
 };
 
-enum _ENTRY_TYPE
+typedef enum
 {
   TITLE, MENU, APP, SEPARATOR, BUILTIN, INCLUDE_FILE, INCLUDE_SYSTEM
-};
+} EntryType;
 
 enum
 {
-  DND_TARGET_TEXT_PLAIN, DND_TARGET_APP_DESKTOP, TARGETS
+  DND_TARGET_MENUEDITOR, DND_TARGET_TEXT_PLAIN, DND_TARGET_APP_DESKTOP, TARGETS
 };
 
-typedef struct _menueditor_app MenuEditor;
-typedef enum _ENTRY_TYPE ENTRY_TYPE;
-
-struct _menueditor_app
+typedef struct
 {
   gboolean menu_modified;
   gchar *menu_file_name;
@@ -115,7 +112,7 @@ struct _menueditor_app
   GtkWidget *toolbar_del;
   GtkWidget *toolbar_up;
   GtkWidget *toolbar_down;
-};
+} MenuEditor;
 
 extern GdkPixbuf *dummy_icon;
 #endif

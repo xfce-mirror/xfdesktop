@@ -43,7 +43,7 @@ save_treeview_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIte
   gchar *option_1 = NULL;
   gchar *option_2 = NULL;
   gchar *option_3 = NULL;
-  ENTRY_TYPE type = SEPARATOR;
+  EntryType type = SEPARATOR;
   gchar *temp;
 
   space = g_strnfill (gtk_tree_path_get_depth (path), '\t');
@@ -718,7 +718,7 @@ menueditor_tree_store_swap_down (GtkTreeStore * tree_store, GtkTreeIter * a, Gtk
   gchar *name = NULL;
   gchar *command = NULL;
   gboolean hidden = FALSE;
-  ENTRY_TYPE type = SEPARATOR;
+  EntryType type = SEPARATOR;
   gchar *option_1 = NULL;
   gchar *option_2 = NULL;
   gchar *option_3 = NULL;
@@ -770,7 +770,7 @@ menueditor_tree_store_swap_up (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTr
   gchar *name = NULL;
   gchar *command = NULL;
   gboolean hidden = FALSE;
-  ENTRY_TYPE type = SEPARATOR;
+  EntryType type = SEPARATOR;
   gchar *option_1 = NULL;
   gchar *option_2 = NULL;
   gchar *option_3 = NULL;
