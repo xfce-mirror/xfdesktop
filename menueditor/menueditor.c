@@ -635,7 +635,7 @@ entry_up_cb (GtkWidget * widget, gpointer data)
   /* Retrieve previous iter */
   if (gtk_tree_path_prev (path_prev)) {
     gtk_tree_model_get_iter (model, &iter_prev, path_prev);
-    menueditor_tree_store_swap_up (GTK_TREE_STORE (model), &iter, &iter_prev, me);
+    gtk_tree_store_swap (GTK_TREE_STORE (model), &iter, &iter_prev);
 
     menueditor_menu_modified (me);
   }
@@ -648,7 +648,7 @@ entry_up_cb (GtkWidget * widget, gpointer data)
                                                   GTK_BUTTONS_YES_NO,
                                                   _("Do you want to move the item into the parent menu?"));
       if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES) {
-        menueditor_tree_store_swap_up (GTK_TREE_STORE (model), &iter, &iter_prev, me);
+	gtk_tree_store_swap (GTK_TREE_STORE (model), &iter, &iter_prev);
         menueditor_menu_modified (me);
       }
       gtk_widget_destroy (dialog);
@@ -745,14 +745,14 @@ entry_down_cb (GtkWidget * widget, gpointer data)
       }
       else {
         /* move after the menu */
-        menueditor_tree_store_swap_down (GTK_TREE_STORE (model), &iter, &iter_next, me);
+	gtk_tree_store_swap (GTK_TREE_STORE (model), &iter, &iter_next);
         menueditor_menu_modified (me);
       }
       gtk_widget_destroy (dialog);
     }
     else {
       /* next isn't a menu */
-      menueditor_tree_store_swap_down (GTK_TREE_STORE (model), &iter, &iter_next, me);
+      gtk_tree_store_swap (GTK_TREE_STORE (model), &iter, &iter_next);
       menueditor_menu_modified (me);
     }
   }

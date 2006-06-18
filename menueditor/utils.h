@@ -58,7 +58,5 @@ void browse_file (GtkEntry * entry, GtkWindow * parent);
 void browse_icon (GtkEntry * entry, GtkWindow * parent);
 gboolean load_menu_in_treeview (const gchar * filename, MenuEditor * me);
 gboolean save_treeview_in_file ();
-void menueditor_tree_store_swap_up (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTreeIter * b, gpointer data);
-void menueditor_tree_store_swap_down (GtkTreeStore * tree_store, GtkTreeIter * a, GtkTreeIter * b, gpointer data);
 void menueditor_menu_modified (MenuEditor * me);
 #endif
