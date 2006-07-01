@@ -21,7 +21,13 @@
  *    Jean-Francois Wauthy (option panel for choice between icon/text)
  *    Jasper Huijsmans (menu placement function, toggle button, scaled image
  *                      fixes)
+ *    Olivier Fourdan  (remote popup)
  */
+
+#include <gtk/gtk.h>
+#include <glib.h>
+#include <gdk/gdkx.h>
+#include <X11/Xlib.h>
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -48,10 +54,16 @@
 #include <libxfce4panel/xfce-panel-convenience.h>
 
 #include "desktop-menu-stub.h"
+#include "xfdesktop-common.h"
+#include "xfce4-popup-menu.h"
 
 #define BORDER 8
 #define DEFAULT_BUTTON_ICON  DATADIR "/pixmaps/xfce4_xicon1.png"
 #define DEFAULT_BUTTON_TITLE "Xfce Menu"
+
+#ifndef CHECK_RUNNING_PLUGIN
+#define CHECK_RUNNING_PLUGIN 0
+#endif
 
 typedef struct _DMPlugin {
     XfcePanelPlugin *plugin;
@@ -328,6 +340,66 @@ menu_deactivated(GtkWidget *menu, gpointer user_data)
     g_signal_handler_disconnect(menu, id);
 }
 
+static void
+menu_activate(DMPlugin *dmp)
+{
+    GtkWidget *menu;
+    GtkWidget *button;
+    
+    button = dmp->button;
+    if(!dmp->desktop_menu) {
+        g_critical("dmp->desktop_menu is NULL - module load failed?");
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), FALSE);
+    }
+    
+    if(xfce_desktop_menu_need_update(dmp->desktop_menu))
+        xfce_desktop_menu_force_regen(dmp->desktop_menu);
+
+    menu = xfce_desktop_menu_get_widget(dmp->desktop_menu);
+    if(menu) {
+        guint id;
+        
+        id = g_signal_connect(menu, "deactivate", 
+                G_CALLBACK(menu_deactivated), dmp);
+        g_object_set_data(G_OBJECT(menu), "sig_id", GUINT_TO_POINTER(id));
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
+        xfce_panel_plugin_register_menu (dmp->plugin, GTK_MENU(menu));
+        gtk_menu_popup(GTK_MENU(menu), NULL, NULL,
+                       (GtkMenuPositionFunc)dmp_position_menu, dmp,
+                       1, gtk_get_current_event_time());
+    } else
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), FALSE);
+}
+
+static gboolean
+dmp_message_received(GtkWidget *w, 
+                        GdkEventClient *evt, 
+                        gpointer user_data)
+{
+    DMPlugin *dmp = user_data;
+    GdkScreen *gscreen;
+    GdkWindow *root;
+    GtkWidget *button;
+
+    button = dmp->button;
+    gscreen = gtk_widget_get_screen (button);
+    root = gdk_screen_get_root_window(gscreen);
+    if(!xfdesktop_popup_grab_available(root, GDK_CURRENT_TIME))
+    {
+        g_critical("Unable to get keyboard/mouse grab.");
+        return;
+    }
+
+    if(evt->data_format == 8) {
+        if(strcmp(XFCE_MENU_MESSAGE, evt->data.b) == 0) {
+            menu_activate(dmp);
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
 static gboolean
 dmp_popup(GtkWidget *w,
           GdkEventButton *evt,
@@ -344,29 +416,7 @@ dmp_popup(GtkWidget *w,
         return FALSE;
     }
 
-    if(!dmp->desktop_menu) {
-        g_critical("dmp->desktop_menu is NULL - module load failed?");
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), FALSE);
-        return TRUE;
-    }
-    
-    if(xfce_desktop_menu_need_update(dmp->desktop_menu))
-        xfce_desktop_menu_force_regen(dmp->desktop_menu);
-
-    menu = xfce_desktop_menu_get_widget(dmp->desktop_menu);
-    if(menu) {
-        guint id;
-        
-        id = g_signal_connect(menu, "deactivate", 
-                G_CALLBACK(menu_deactivated), dmp);
-        g_object_set_data(G_OBJECT(menu), "sig_id", GUINT_TO_POINTER(id));
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), TRUE);
-        xfce_panel_plugin_register_menu (dmp->plugin, GTK_MENU(menu));
-        gtk_menu_popup(GTK_MENU(menu), NULL, NULL,
-                       (GtkMenuPositionFunc)dmp_position_menu, dmp,
-                       1, gtk_get_current_event_time());
-    } else
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(w), FALSE);
+    menu_activate(dmp);
 
     return TRUE;
 }
@@ -872,10 +922,67 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
     gtk_widget_show(dlg);
 }
 
+#if CHECK_RUNNING_PLUGIN
+static gboolean 
+desktop_menu_plugin_check (GdkScreen *gscreen)
+{
+    gchar selection_name[32];
+    Atom selection_atom;
+    
+    g_snprintf(selection_name, 
+               sizeof(selection_name), 
+               XFCE_MENU_SELECTION"%d", 
+               gdk_screen_get_number (gscreen));
+    selection_atom = XInternAtom(GDK_DISPLAY(), selection_name, False);
+
+    if(XGetSelectionOwner(GDK_DISPLAY(), selection_atom)) {
+        xfce_info (_("There is already a panel menu registered for this screen"));
+        return FALSE;
+    }
+
+    return TRUE;
+}
+#endif
+
+static gboolean
+dmp_set_selection(DMPlugin *dmp)
+{
+    GdkScreen *gscreen;
+    gchar selection_name[32];
+    Atom selection_atom;
+    GtkWidget *win;
+    Window xwin;
+
+    win = gtk_invisible_new();
+    gtk_widget_realize(win);
+    xwin = GDK_WINDOW_XID(GTK_WIDGET(win)->window);
+
+    gscreen = gtk_widget_get_screen (win);
+    g_snprintf(selection_name, 
+               sizeof(selection_name), 
+               XFCE_MENU_SELECTION"%d", 
+               gdk_screen_get_number (gscreen));
+    selection_atom = XInternAtom(GDK_DISPLAY(), selection_name, False);
+
+    if(XGetSelectionOwner(GDK_DISPLAY(), selection_atom)) {
+        gtk_widget_destroy (win);
+        return FALSE;
+    }
+
+    XSelectInput(GDK_DISPLAY(), xwin, PropertyChangeMask);
+    XSetSelectionOwner(GDK_DISPLAY(), selection_atom, xwin, GDK_CURRENT_TIME);
+
+    g_signal_connect(G_OBJECT(win), "client-event",
+                     G_CALLBACK(dmp_message_received), dmp);
+    
+    return TRUE;
+}
+
 static DMPlugin *
 dmp_new(XfcePanelPlugin *plugin)
 {
     DMPlugin *dmp = g_new0(DMPlugin, 1);
+
     dmp->plugin = plugin;
     dmp_read_config(plugin, dmp);
     
@@ -915,7 +1022,8 @@ dmp_new(XfcePanelPlugin *plugin)
     }
     g_signal_connect(G_OBJECT(dmp->button), "button-press-event",
             G_CALLBACK(dmp_popup), dmp);
-    
+    dmp_set_selection(dmp);
+
     return dmp;
 }
 
@@ -959,4 +1067,9 @@ desktop_menu_plugin_construct(XfcePanelPlugin *plugin)
     dmp_set_size(plugin, xfce_panel_plugin_get_size(plugin), dmp);
 }
 
+#if CHECK_RUNNING_PLUGIN
+XFCE_PANEL_PLUGIN_REGISTER_EXTERNAL_WITH_CHECK (desktop_menu_plugin_construct,
+                                                desktop_menu_plugin_check)
+#else
 XFCE_PANEL_PLUGIN_REGISTER_EXTERNAL(desktop_menu_plugin_construct)
+#endif
