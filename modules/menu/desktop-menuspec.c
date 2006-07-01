@@ -123,7 +123,6 @@ menuspec_builtin_icon_to_filename(const gchar *name)
     else if(!strcmp(name, "OFFICE"))
         return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_OFFICE,
                                                 _xfce_desktop_menu_icon_size);
-
     else if(!strcmp(name, "SOUND"))
         return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_SOUND,
                                                 _xfce_desktop_menu_icon_size);
@@ -168,11 +167,11 @@ get_paths_simple_single(GNode *node, gpointer data)
             }
             if(!n)
                 n = node;
-                        if (cat_to_displayname)
-                    foundcat = g_hash_table_lookup(cat_to_displayname, n->data);
+            if (cat_to_displayname)
+                foundcat = g_hash_table_lookup(cat_to_displayname, n->data);
             else
-                                foundcat = NULL;
-                        if(!foundcat)
+                foundcat = NULL;
+            if(!foundcat)
                 foundcat = n->data;
             g_ptr_array_add(mtfpi->paths, g_strconcat("/", foundcat, NULL));
             return TRUE;
@@ -196,11 +195,11 @@ get_paths_multilevel(GNode *node, gpointer data)
             totlen = 0;
             revpath = g_ptr_array_new();
             for(n=node; ((char *)n->data)[0] != '/'; n=n->parent) {
-                                if (cat_to_displayname)
-                        foundcat = g_hash_table_lookup(cat_to_displayname, n->data);
+                if (cat_to_displayname)
+                    foundcat = g_hash_table_lookup(cat_to_displayname, n->data);
                 else
-                                        foundcat = NULL;
-                                if(!foundcat) {
+                    foundcat = NULL;
+                if(!foundcat) {
                     g_ptr_array_free(revpath, FALSE);
                     revpath = NULL;
                     break;

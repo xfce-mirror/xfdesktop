@@ -254,7 +254,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
         
         i = _find_attribute(attribute_names, "name");
         if(i == -1)
-                return;
+            return;
         
         j = -1;
         if(!state->desktop_menu->use_menu_icons)

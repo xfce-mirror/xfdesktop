@@ -80,9 +80,10 @@ static char *blacklist_arr[] = {
     "kpersonalizer",
     "kappfinder",
     "kfmclient",
+    "*.kss",
     NULL
 };
-static GHashTable *blacklist = NULL;
+static GList *blacklist = NULL;
 static gchar **legacy_dirs = NULL;
 static GHashTable *dir_to_cat = NULL;
 
@@ -301,6 +302,16 @@ menu_cleanup_executable(gchar *string)
     }
 }
 
+static gint list_find(gconstpointer a, gconstpointer b)
+{
+    gchar *glist_elmt = (gchar *) a;
+    gchar *comp_elmt  = (gchar *) b;
+
+    if (*glist_elmt == '*')
+        return !g_str_has_suffix(comp_elmt, ++glist_elmt);
+    return g_ascii_strncasecmp(comp_elmt, glist_elmt, strlen (glist_elmt));
+}
+
 static gboolean
 menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
         MenuPathType pathtype, gboolean is_legacy, const gchar *extra_cat)
@@ -314,13 +325,13 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
     const gchar *name;
     gchar tmppath[2048];
     gboolean ret = FALSE;
-
+    
     xfce_desktop_entry_get_string(de, "OnlyShowIn", FALSE, &onlyshowin);
     /* each element needs to be ';'-terminated.  i'm not working around
      * broken files. */
     if(onlyshowin && !strstr(onlyshowin, "XFCE;"))
         goto cleanup;
-
+    
     xfce_desktop_entry_get_string(de, "Hidden", FALSE, &hidden);
     if(hidden && !g_ascii_strcasecmp(hidden, "true"))
         goto cleanup;
@@ -331,24 +342,36 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
     
     xfce_desktop_entry_get_string(de, "TryExec", FALSE, &tryexec);
     menu_cleanup_executable(tryexec);
+    
     if(tryexec) {
+        /* check for blacklisted item */
+        if(blacklist && g_list_find_custom(blacklist, tryexec, list_find))
+            goto cleanup;
+    
+        /* Check for "TryExec" command in path */
         p = g_find_program_in_path(tryexec);
         if(!p)
             goto cleanup;
         g_free(p);
     }
     
-    /* check for blacklisted item */
     xfce_desktop_entry_get_string(de, "Exec", FALSE, &exec);
     if(!exec)
         goto cleanup;
     
     /* filter out quotes around the command (yeah, people do that!) */
     menu_cleanup_executable(exec);
- 
-    if(blacklist && g_hash_table_lookup(blacklist, exec))
+    
+    /* Check for "Exec" command in path, too */
+    p = g_find_program_in_path(exec);
+    if(!p)
         goto cleanup;
-
+    g_free(p);
+    
+    /* check for blacklisted item */
+    if(blacklist && g_list_find_custom(blacklist, exec, list_find))
+        goto cleanup;
+    
     xfce_desktop_entry_get_string(de, "Categories", TRUE, &categories);    
     if(categories || !is_legacy) {
         /* hack: leave out items that look like they are KDE control panels */
@@ -644,9 +667,8 @@ desktop_menu_dentry_parse_files(XfceDesktopMenu *desktop_menu,
     }
     
     if(!blacklist) {
-        blacklist = g_hash_table_new(g_str_hash, g_str_equal);
         for(i=0; blacklist_arr[i]; i++)
-            g_hash_table_insert(blacklist, blacklist_arr[i], GINT_TO_POINTER(1));
+            blacklist = g_list_append(blacklist, blacklist_arr[i]);
     }
     
     /* lookup applications/ directories */

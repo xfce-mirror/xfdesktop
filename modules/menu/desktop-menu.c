@@ -194,6 +194,8 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
         gtk_widget_destroy(desktop_menu->menu);
     if(desktop_menu->menu_entry_hash)
         g_hash_table_destroy(desktop_menu->menu_entry_hash);
+    if(desktop_menu->menu_branches)
+        g_hash_table_destroy(desktop_menu->menu_branches);
     if(desktop_menu->menufile_mtimes)
         g_hash_table_destroy(desktop_menu->menufile_mtimes);
     if(desktop_menu->dentrydir_mtimes)
@@ -201,6 +203,7 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
     
     desktop_menu->menu = NULL;
     desktop_menu->menu_entry_hash = NULL;
+    desktop_menu->menu_branches = NULL;
     desktop_menu->menufile_mtimes = NULL;
     desktop_menu->dentrydir_mtimes = NULL;
 }
