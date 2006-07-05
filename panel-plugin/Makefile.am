@@ -38,6 +38,7 @@ xfce4_popup_menu_CFLAGS = \
 	$(GTK_CFLAGS)
 
 xfce4_popup_menu_LDADD = \
+	$(LIBX11_LDFLAGS) \
 	$(LIBX11_LIBS) \
 	$(GTK_LIBS)
 
