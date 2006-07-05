@@ -18,6 +18,7 @@ xfce4_desktop_menu_la_SOURCES = \
 
 xfce4_desktop_menu_la_CFLAGS = \
 	@GMODULE_CFLAGS@ \
+	@LIBX11_CFLAGS@ \
 	@LIBXFCEGUI4_CFLAGS@ \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DDATADIR=\"$(datadir)\" \
@@ -37,6 +38,7 @@ endif
 
 xfce4_desktop_menu_la_LIBADD = \
 	@GMODULE_LIBS@ \
+	@LIBX11_LIBS@ \
 	@LIBXFCEGUI4_LIBS@
 
 xfceconfdir = $(sysconfdir)/xdg/xfce4/desktop
