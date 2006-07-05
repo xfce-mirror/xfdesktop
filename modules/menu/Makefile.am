@@ -38,6 +38,7 @@ endif
 
 xfce4_desktop_menu_la_LIBADD = \
 	$(GMODULE_LIBS) \
+	$(LIBX11_LDFLAGS) \
 	$(LIBX11_LIBS) \
 	$(LIBXFCEGUI4_LIBS)
 
