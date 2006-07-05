@@ -31,7 +31,7 @@ backdrop_settings_la_CFLAGS =						\
 	-I$(top_srcdir)							\
 	-I$(top_srcdir)/common						\
 	-I$(top_srcdir)/src \
-	@XFCE_MCS_MANAGER_CFLAGS@					\
+	$(XFCE_MCS_MANAGER_CFLAGS)					\
 	-DLOCALEDIR=\"$(localedir)\"					\
 	-DDATADIR=\"$(datadir)\"					\
 	-DBINDIR=\"$(bindir)\"
@@ -41,8 +41,8 @@ backdrop_settings_la_LIBADD =						\
 
 if HAVE_CYGWIN
   backdrop_settings_la_LIBADD += \
-	@XFCE_MCS_MANAGER_LIBS@ \
-	@LIBX11_LIBS@
+	$(XFCE_MCS_MANAGER_LIBS) \
+	$(LIBX11_LIBS)
 endif
 
 desktopdir = $(datadir)/applications

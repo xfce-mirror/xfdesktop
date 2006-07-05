@@ -45,10 +45,10 @@ xfdesktop_CFLAGS = \
 	-DDATADIR=\"$(datadir)\" \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\" \
-	@LIBX11_CFLAGS@	\
-	@GMODULE_CFLAGS@ \
-	@LIBXFCEGUI4_CFLAGS@ \
-	@LIBXFCE4MCS_CLIENT_CFLAGS@
+	$(LIBX11_CFLAGS)	\
+	$(GMODULE_CFLAGS) \
+	$(LIBXFCEGUI4_CFLAGS) \
+	$(LIBXFCE4MCS_CLIENT_CFLAGS)
 
 xfdesktop_LDFLAGS = \
 	-export-dynamic
@@ -59,10 +59,10 @@ if BUILD_DESKTOP_MENU
   xfdesktop_LDADD += $(top_builddir)/common/libxfdesktop-menu.la
 endif
 xfdesktop_LDADD += \
-	@LIBX11_LDFLAGS@ \
-	@LIBX11_LIBS@ \
-	@LIBXFCEGUI4_LIBS@ \
-	@LIBXFCE4MCS_CLIENT_LIBS@
+	$(LIBX11_LDFLAGS) \
+	$(LIBX11_LIBS) \
+	$(LIBXFCEGUI4_LIBS) \
+	$(LIBXFCE4MCS_CLIENT_LIBS)
 
 
 if ENABLE_DESKTOP_ICONS
@@ -73,14 +73,14 @@ if HAVE_THUNAR_VFS
 endif
 
 xfdesktop_CFLAGS += \
-	@LIBEXO_CFLAGS@ \
-	@THUNAR_VFS_CFLAGS@ \
-	@THUNARX_CFLAGS@
+	$(LIBEXO_CFLAGS) \
+	$(THUNAR_VFS_CFLAGS) \
+	$(THUNARX_CFLAGS)
 
 xfdesktop_LDADD += \
-	@LIBEXO_LIBS@ \
-	@THUNAR_VFS_LIBS@ \
-	@THUNARX_LIBS@
+	$(LIBEXO_LIBS) \
+	$(THUNAR_VFS_LIBS) \
+	$(THUNARX_LIBS)
 
 endif
 

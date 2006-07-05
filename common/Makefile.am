@@ -6,15 +6,15 @@ libxfdesktop_la_SOURCES = \
 
 libxfdesktop_la_CFLAGS = \
 	-I$(top_srcdir)/src \
-	@LIBXFCEGUI4_CFLAGS@ \
-	@GTK_CFLAGS@
+	$(LIBXFCEGUI4_CFLAGS) \
+	$(GTK_CFLAGS)
 
 if BUILD_DESKTOP_MENU
   noinst_LTLIBRARIES += libxfdesktop-menu.la
   libxfdesktop_menu_la_SOURCES = desktop-menu-stub.c desktop-menu-stub.h
   libxfdesktop_menu_la_CFLAGS = \
-	@GMODULE_CFLAGS@ \
-	@GTK_CFLAGS@ \
+	$(GMODULE_CFLAGS) \
+	$(GTK_CFLAGS) \
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\"
 endif
 
