@@ -6,9 +6,9 @@ xfce4_menu_plugin_SOURCES = \
 
 xfce4_menu_plugin_CFLAGS = \
 	-I$(top_srcdir)/common \
-	@LIBX11_CFLAGS@ \
-	@LIBXFCEGUI4_CFLAGS@ \
-	@LIBXFCE4PANEL_CFLAGS@ \
+	$(LIBX11_CFLAGS) \
+	$(LIBXFCEGUI4_CFLAGS) \
+	$(LIBXFCE4PANEL_CFLAGS) \
 	-DDATADIR=\"$(datadir)\" \
 	-DLOCALEDIR=\"$(localedir)\" \
 	-DBINDIR=\"$(bindir)\"
@@ -16,9 +16,9 @@ xfce4_menu_plugin_CFLAGS = \
 xfce4_menu_plugin_LDADD = \
 	$(top_builddir)/common/libxfdesktop-menu.la \
 	$(top_builddir)/common/libxfdesktop.la \
-	@LIBX11_LIBS@ \
-	@LIBXFCEGUI4_LIBS@ \
-	@LIBXFCE4PANEL_LIBS@
+	$(LIBX11_LIBS) \
+	$(LIBXFCEGUI4_LIBS) \
+	$(LIBXFCE4PANEL_LIBS)
 
 if HAVE_CYGWIN
 xfce4_menu_plugin_LDFLAGS = \
@@ -34,12 +34,12 @@ xfce4_popup_menu_SOURCES = \
 	xfce4-popup-menu.c
 
 xfce4_popup_menu_CFLAGS = \
-	@LIBX11_CFLAGS@ \
-	@GTK_CFLAGS@
+	$(LIBX11_CFLAGS) \
+	$(GTK_CFLAGS)
 
 xfce4_popup_menu_LDADD = \
-	@LIBX11_LIBS@ \
-	@GTK_LIBS@
+	$(LIBX11_LIBS) \
+	$(GTK_LIBS)
 
 # .desktop file
 #
