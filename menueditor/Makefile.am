@@ -1,20 +1,18 @@
 bin_PROGRAMS = xfce4-menueditor
 
 xfce4_menueditor_SOURCES =						\
-	about_dialog.c							\
-	about_dialog.h							\
-	add_dialog.c							\
-	add_dialog.h							\
-	add_menu_dialog.c						\
-	add_menu_dialog.h						\
-	dnd.c								\
-	dnd.h								\
-	edit_dialog.c							\
-	edit_dialog.h							\
-	menueditor.c							\
-	menueditor.h							\
-	utils.c								\
-	utils.h								
+	menueditor-add-dialog.h						\
+	menueditor-add-dialog.c						\
+	menueditor-add-external-dialog.h				\
+	menueditor-add-external-dialog.c				\
+	menueditor-edit-dialog.h					\
+	menueditor-edit-dialog.c					\
+	menueditor-edit-external-dialog.h				\
+	menueditor-edit-external-dialog.c				\
+	menueditor-main.h						\
+	menueditor-main.c						\
+	menueditor-main-window.h					\
+	menueditor-main-window.c					
 	
 
 xfce4_menueditor_CFLAGS = 						\
@@ -24,7 +22,8 @@ xfce4_menueditor_CFLAGS = 						\
 	$(LIBX11_CFLAGS)						\
 	$(LIBXFCEGUI4_CFLAGS)						\
 	-DLOCALEDIR=\"$(localedir)\"					\
-	-DDATADIR=\"$(pkgdatadir)\"					\
+	-DDATADIR=\"$(datadir)\"					\
+	-DBINDIR=\"$(bindir)\"						\
 	-DSYSCONFDIR=\"$(sysconfdir)\"					\
 	-DXFCEDATADIR=\"$(datadir)/xfce4\"
 	
@@ -41,6 +40,10 @@ apps_in_files = xfce-menueditor.desktop.in
 apps_DATA = $(apps_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
-EXTRA_DIST = $(apps_in_files)
+uidir = $(datadir)/xfce4-menueditor
+ui_DATA = xfce4-menueditor.ui
+
+EXTRA_DIST = $(apps_in_files)						\
+	     $(ui_DATA)
 
 DISTCLEANFILES = $(apps_DATA)

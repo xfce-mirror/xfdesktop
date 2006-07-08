@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2006 Jean-François Wauthy
+
+  xfce4-menueditor User Interface description file
+-->
+
+<ui>
+  <!-- The main menu bar -->
+  <menubar name="main-menu">
+    <menu action="file-menu">
+      <menuitem action="new-menu"/>
+      <menuitem action="open-menu"/>
+      <menuitem action="open-default-menu"/>
+      <separator />
+      <menuitem action="save-menu"/>
+      <menuitem action="save-menu-as"/>
+      <menuitem action="close-menu"/>
+      <separator />
+      <menuitem action="quit"/>
+    </menu>
+    <menu action="edit-menu">
+      <menuitem action="edit"/>
+      <separator />
+      <menuitem action="add"/>
+      <menuitem action="add-external"/>
+      <menuitem action="remove"/>
+      <separator />
+      <menuitem action="up"/>
+      <menuitem action="down"/>
+    </menu>
+    <menu action="help-menu">
+      <menuitem action="about"/>
+    </menu>
+  </menubar>
+
+  <toolbar action="main-toolbar">
+    <toolitem action="new-menu"/>
+    <toolitem action="open-menu"/>
+    <separator />
+    <toolitem action="save-menu"/>
+    <toolitem action="close-menu"/>
+    <separator />
+    <toolitem action="add"/>
+    <toolitem action="remove"/>
+    <toolitem action="up"/>
+    <toolitem action="down"/>
+    <separator />
+    <toolitem action="collapse-all"/>
+    <toolitem action="expand-all"/>
+  </toolbar>
+
+  <popup action="main-popup">
+    <menuitem action="edit"/>
+    <separator />
+    <menuitem action="add"/>
+    <menuitem action="add-external"/>
+    <menuitem action="remove"/>
+    <separator />
+    <menuitem action="up"/>
+    <menuitem action="down"/>
+  </popup>
+</ui>
+
