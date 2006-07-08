@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-25 22:58+0300\n"
+"POT-Creation-Date: 2006-07-09 00:08+0200\n"
 "PO-Revision-Date: 2006-05-25 23:07+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -18,324 +18,481 @@ msgstr ""
 "X-Poedit-Language: Greek\n"
 "X-Poedit-Country: GREECE\n"
 
-#: ../menueditor/about_dialog.c:39
-msgid "A menu editor for Xfce4"
-msgstr "Επεξεργαστής μενού για το Xfce 4"
-
-#. Credits
-#: ../menueditor/about_dialog.c:43
-msgid "Core developer"
-msgstr "Βασικός προγραμματιστής"
-
-#: ../menueditor/about_dialog.c:44 ../menueditor/about_dialog.c:45
-#: ../menueditor/about_dialog.c:46
-msgid "Contributor"
-msgstr "Συντελεστής"
-
-#: ../menueditor/about_dialog.c:47
-msgid "Icon designer"
-msgstr "Σχεδιαστής εικονιδίων"
-
-#: ../menueditor/add_dialog.c:157 ../menueditor/add_dialog.c:167
+#: ../menueditor/menueditor-add-dialog.c:111
 msgid "Add menu entry"
 msgstr "Προσθήκη νέας καταχώρησης μενού"
 
 #. Type
-#: ../menueditor/add_dialog.c:171 ../menueditor/add_menu_dialog.c:110
+#: ../menueditor/menueditor-add-dialog.c:124
+#: ../menueditor/menueditor-add-dialog.c:125
+#: ../menueditor/menueditor-add-external-dialog.c:113
+#: ../menueditor/menueditor-add-external-dialog.c:114
 msgid "Type:"
 msgstr "Τύπος:"
 
-#: ../menueditor/add_dialog.c:174
-msgid "Launcher"
-msgstr "Εκκινητής"
-
-#: ../menueditor/add_dialog.c:178
-msgid "Submenu"
-msgstr "Υπομενού"
-
-#: ../menueditor/add_dialog.c:182
-msgid "Separator"
-msgstr "Διαχωριστικό"
-
-#: ../menueditor/add_dialog.c:186
+#: ../menueditor/menueditor-add-dialog.c:133
 msgid "Title"
 msgstr "Τίτλος"
 
-#: ../menueditor/add_dialog.c:190
+#: ../menueditor/menueditor-add-dialog.c:134
+msgid "Submenu"
+msgstr "Υπομενού"
+
+#: ../menueditor/menueditor-add-dialog.c:135
+msgid "Launcher"
+msgstr "Εκκινητής"
+
+#: ../menueditor/menueditor-add-dialog.c:136
+msgid "Separator"
+msgstr "Διαχωριστικό"
+
+#: ../menueditor/menueditor-add-dialog.c:137
 msgid "Quit"
 msgstr "Έξοδος"
 
 #. Name
-#: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1073
+#: ../menueditor/menueditor-add-dialog.c:144
+#: ../menueditor/menueditor-add-dialog.c:145
+#: ../menueditor/menueditor-edit-dialog.c:120
+#: ../menueditor/menueditor-edit-dialog.c:121
+#: ../src/xfdesktop-file-icon-manager.c:1073
 msgid "Name:"
 msgstr "Όνομα:"
 
-#: ../menueditor/add_dialog.c:212 ../menueditor/edit_dialog.c:150
+#. Command
+#: ../menueditor/menueditor-add-dialog.c:157
+#: ../menueditor/menueditor-add-dialog.c:158
+#: ../menueditor/menueditor-edit-dialog.c:133
+#: ../menueditor/menueditor-edit-dialog.c:134
 msgid "Command:"
 msgstr "Εντολή:"
 
-#: ../menueditor/add_dialog.c:224 ../menueditor/edit_dialog.c:137
-#: ../menueditor/edit_dialog.c:197
+#: ../menueditor/menueditor-add-dialog.c:185
+#: ../menueditor/menueditor-add-dialog.c:186
+#: ../menueditor/menueditor-edit-dialog.c:161
+#: ../menueditor/menueditor-edit-dialog.c:162
+#, fuzzy
+msgid "Themed icon:"
+msgstr "Επιλογή εικονιδίου"
+
+#: ../menueditor/menueditor-add-dialog.c:203
+#: ../menueditor/menueditor-add-dialog.c:204
+#: ../menueditor/menueditor-edit-dialog.c:179
+#: ../menueditor/menueditor-edit-dialog.c:180
 msgid "Icon:"
 msgstr "Εικονίδιο:"
 
-#. Start Notify check button
-#. Startup notification
-#: ../menueditor/add_dialog.c:235 ../menueditor/edit_dialog.c:158
-msgid "Use startup _notification"
-msgstr "Χρήση ειδοποίησης _εκκίνησης"
-
-#. Run in terminal check button
-#. Run in terminal
-#: ../menueditor/add_dialog.c:239 ../menueditor/edit_dialog.c:161
-msgid "Run in _terminal"
-msgstr "Εκτέλεση σε τερματι_κό"
-
-#: ../menueditor/add_dialog.c:270 ../menueditor/edit_dialog.c:240
-msgid "The command doesn't exist !"
-msgstr "Η εντολή δεν υπάρχει !"
-
-#: ../menueditor/add_dialog.c:276 ../menueditor/edit_dialog.c:246
-msgid "All fields must be filled to add an item."
-msgstr ""
-"Πρέπει να είναι συμπληρωμένα όλα τα πεδία για να προστεθεί το αντικείμενο."
-
-#: ../menueditor/add_dialog.c:285 ../menueditor/edit_dialog.c:255
-msgid "The 'Name' field is required."
-msgstr "Το πεδίο 'Όνομα' είναι υποχρεωτικό."
-
-#: ../menueditor/add_dialog.c:329 ../menueditor/utils.c:318
-msgid "--- separator ---"
-msgstr "--- διαχωριστικό ---"
-
-#: ../menueditor/add_dialog.c:355 ../menueditor/edit_dialog.c:314
-msgid "quit"
-msgstr "έξοδος"
-
-#: ../menueditor/add_menu_dialog.c:97 ../menueditor/add_menu_dialog.c:103
-#: ../menueditor/menueditor.c:841
-msgid "Add an external menu"
-msgstr "Προσθήκη ενός εξωτερικού μενού"
-
-#: ../menueditor/add_menu_dialog.c:115
-msgid "File"
-msgstr "Αρχείο"
-
-#: ../menueditor/add_menu_dialog.c:119
-msgid "System"
-msgstr "Σύστημα"
-
-#: ../menueditor/add_menu_dialog.c:133
-msgid "Source:"
-msgstr "Πηγή:"
-
-#. Style
-#: ../menueditor/add_menu_dialog.c:145
-msgid "Style:"
-msgstr "Στυλ:"
-
-#: ../menueditor/add_menu_dialog.c:148
-msgid "Simple"
-msgstr "Απλό"
-
-#: ../menueditor/add_menu_dialog.c:150
-msgid "Multilevel"
-msgstr "Πολυεπίπεδο"
-
-#. Unique
-#: ../menueditor/add_menu_dialog.c:162
-msgid "_Unique entries only"
-msgstr "_Μοναδικές καταχωρήσεις μόνο"
-
-#: ../menueditor/add_menu_dialog.c:198
-msgid "The 'Source' field is required."
-msgstr "Το πεδίο 'Πηγή' απαιτείται."
-
-#: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:372
-msgid "--- include ---"
-msgstr "--- περίληψη ---"
-
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:389
-msgid "system"
-msgstr "σύστημα"
-
-#. Create dialog for editing
-#: ../menueditor/edit_dialog.c:114 ../menueditor/edit_dialog.c:121
-msgid "Edit menu entry"
-msgstr "Επεξεργασία καταχώρησης μενού"
-
-#: ../menueditor/edit_dialog.c:126
-msgid "Separators cannot be edited"
-msgstr "Τα διαχωριστικά δεν είναι δυνατό να επεξεργαστούν"
-
-#: ../menueditor/menueditor.c:81
-#, c-format
-msgid "File %s doesn't exist !"
-msgstr "Το αρχείο %s δεν υπάρχει !"
-
-#: ../menueditor/menueditor.c:121 ../menueditor/menueditor.c:537
-msgid "Do you want to save before closing the menu ?"
-msgstr "Θέλετε να αποθηκεύσετε πριν κλείσετε το μενού;"
-
-#: ../menueditor/menueditor.c:123
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Έχετε μεταβάλλει το μενού, θέλετε να το αποθηκεύσετε πριν την έξοδο;"
-
-#: ../menueditor/menueditor.c:125
-msgid "Forget modifications"
-msgstr "Ξέχασε τις τροποποιήσεις"
-
-#: ../menueditor/menueditor.c:314
-msgid "Are you sure you want to close the current menu?"
-msgstr "Είστε σίγουρος/η ότι θέλετε να κλείσετε αυτό το μενού;"
-
-#: ../menueditor/menueditor.c:329
-msgid "Do you want to save before closing the file?"
-msgstr "Θέλετε να αποθηκεύσετε πριν κλείσετε το αρχείο;"
-
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:586
-msgid "Select command"
-msgstr "Επιλογή εντολής"
-
-#: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:645
-msgid "Question"
-msgstr "Ερώτηση"
-
-#: ../menueditor/menueditor.c:372
-msgid "Do you want to save before opening an other menu ?"
-msgstr "Θέλετε να αποθηκεύσετε πριν ανοίξετε ένα άλλο μενού;"
-
-#: ../menueditor/menueditor.c:374 ../menueditor/menueditor.c:431
-#: ../menueditor/menueditor.c:539
-msgid "Ignore modifications"
-msgstr "Αγνόηση τροποποιήσεων"
-
-#: ../menueditor/menueditor.c:385
-msgid "Open menu file"
-msgstr "Άνοιγμα αρχείου μενού"
-
-#: ../menueditor/menueditor.c:429
-msgid "Do you want to save before opening the default menu ?"
-msgstr "Θέλετε να αποθηκεύσετε πριν ανοίξετε το προκαθορισμένου μενού;"
-
-#: ../menueditor/menueditor.c:487
-msgid "Save as..."
-msgstr "Αποθήκευση ως..."
-
-#: ../menueditor/menueditor.c:649
-msgid "Do you want to move the item into the parent menu?"
-msgstr "Θέλετε να μετακινήσετε το αντικείμενο στο γονεϊκό μενού;"
-
-#: ../menueditor/menueditor.c:695
-msgid "Do you want to move the item into the submenu?"
-msgstr "Θέλετε να μετακινήσετε το αντικείμενο στο υπομενού;"
-
-#: ../menueditor/menueditor.c:835
-msgid "Edit"
-msgstr "Επεξεργασία"
-
-#. File menu
-#: ../menueditor/menueditor.c:859
-msgid "_File"
-msgstr "_Αρχείο"
-
-#: ../menueditor/menueditor.c:868
-msgid "Open default menu"
-msgstr "Άνοιγμα προκαθορισμένου μενού"
-
-#. Edit menu
-#: ../menueditor/menueditor.c:882
-msgid "_Edit"
-msgstr "_Επεξεργασία"
-
-#: ../menueditor/menueditor.c:888
-msgid "Add an external menu..."
-msgstr "Προσθήκη ενός εξωτερικού μενού..."
-
-#. Help menu
-#: ../menueditor/menueditor.c:900
-msgid "_Help"
-msgstr "_Βοήθεια"
-
-#: ../menueditor/menueditor.c:904
-msgid "_About..."
-msgstr "_Περί..."
-
-#: ../menueditor/menueditor.c:916
-msgid "Create a new Xfce4 menu file"
-msgstr "Δημιουργία ενός νέου αρχείου μενού του Xfce4"
-
-#: ../menueditor/menueditor.c:921
-msgid "Open an Xfce4 menu file"
-msgstr "Άνοιγμα ενός νέου αρχείου μενού του Xfce4"
-
-#: ../menueditor/menueditor.c:926
-msgid "Save current menu"
-msgstr "Αποθήκευση του τρέχοντος μενού"
-
-#: ../menueditor/menueditor.c:931
-msgid "Close current menu"
-msgstr "Κλείσιμο του τρέχοντος μενού"
-
-#: ../menueditor/menueditor.c:937
-msgid "Add an entry to the menu"
-msgstr "Προσθήκη μιας καταχώρησης "
-
-#: ../menueditor/menueditor.c:941
-msgid "Delete the current entry"
-msgstr "Διαγραφή τρέχουσας καταχώρησης"
-
-#: ../menueditor/menueditor.c:947
-msgid "Move the current entry up"
-msgstr "Μετακίνηση της τρέχουσας καταχώρησης επάνω"
-
-#: ../menueditor/menueditor.c:952
-msgid "Move the current entry down"
-msgstr "Μετακίνηση της τρέχουσας καταχώρησης κάτω"
-
-#: ../menueditor/menueditor.c:958
-msgid "Collapse the tree"
-msgstr "Σύμπτυξη του δέντρου"
-
-#: ../menueditor/menueditor.c:963
-msgid "Expand the tree"
-msgstr "Ανάπτυξη του δέντρου"
-
-#: ../menueditor/menueditor.c:991
-msgid "Name"
-msgstr "Όνομα"
-
-#: ../menueditor/menueditor.c:994
-msgid "Command"
-msgstr "Εντολή"
-
-#: ../menueditor/menueditor.c:995
-msgid "Hidden"
-msgstr "Κρυμμένο"
-
-#: ../menueditor/utils.c:648
+#: ../menueditor/menueditor-add-dialog.c:211
+#: ../menueditor/menueditor-edit-dialog.c:187
 msgid "Select icon"
 msgstr "Επιλογή εικονιδίου"
 
-#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:546
+#: ../menueditor/menueditor-add-dialog.c:216
+#: ../menueditor/menueditor-add-dialog.c:268
+#: ../menueditor/menueditor-add-external-dialog.c:142
+#: ../menueditor/menueditor-edit-dialog.c:192
+#: ../menueditor/menueditor-edit-dialog.c:244
+#: ../menueditor/menueditor-edit-external-dialog.c:122
+#: ../panel-plugin/desktop-menu-plugin.c:596
 #: ../settings/appearance-settings.c:532
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Όλα τα αρχεία"
 
-#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:552
+#: ../menueditor/menueditor-add-dialog.c:220
+#: ../menueditor/menueditor-edit-dialog.c:196
+#: ../panel-plugin/desktop-menu-plugin.c:602
 #: ../settings/appearance-settings.c:536
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Αρχεία εικόνων"
 
+#. Start Notify check button
+#: ../menueditor/menueditor-add-dialog.c:235
+#: ../menueditor/menueditor-edit-dialog.c:211
+msgid "Use startup _notification"
+msgstr "Χρήση ειδοποίησης _εκκίνησης"
+
+#. Run in terminal check button
+#: ../menueditor/menueditor-add-dialog.c:240
+#: ../menueditor/menueditor-edit-dialog.c:216
+msgid "Run in _terminal"
+msgstr "Εκτέλεση σε τερματι_κό"
+
+#: ../menueditor/menueditor-add-dialog.c:258
+#: ../menueditor/menueditor-edit-dialog.c:234
+#: ../menueditor/menueditor-main-window.c:450
+msgid "Select command"
+msgstr "Επιλογή εντολής"
+
+#: ../menueditor/menueditor-add-dialog.c:273
+#: ../menueditor/menueditor-edit-dialog.c:249
+#, fuzzy
+msgid "Executable Files"
+msgstr "Η αποβολή απέτυχε"
+
+#: ../menueditor/menueditor-add-dialog.c:288
+#: ../menueditor/menueditor-edit-dialog.c:264
+msgid "Perl Scripts"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:294
+#: ../menueditor/menueditor-edit-dialog.c:270
+msgid "Python Scripts"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:300
+#: ../menueditor/menueditor-edit-dialog.c:276
+msgid "Ruby Scripts"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:306
+#: ../menueditor/menueditor-edit-dialog.c:282
+msgid "Shell Scripts"
+msgstr ""
+
+#: ../menueditor/menueditor-add-external-dialog.c:100
+#, fuzzy
+msgid "Add external menu entry"
+msgstr "Προσθήκη ενός εξωτερικού μενού"
+
+#: ../menueditor/menueditor-add-external-dialog.c:122
+msgid "File"
+msgstr "Αρχείο"
+
+#: ../menueditor/menueditor-add-external-dialog.c:123
+msgid "System"
+msgstr "Σύστημα"
+
+#. Source
+#: ../menueditor/menueditor-add-external-dialog.c:129
+#: ../menueditor/menueditor-add-external-dialog.c:130
+#: ../menueditor/menueditor-edit-external-dialog.c:109
+#: ../menueditor/menueditor-edit-external-dialog.c:110
+msgid "Source:"
+msgstr "Πηγή:"
+
+#: ../menueditor/menueditor-add-external-dialog.c:137
+#: ../menueditor/menueditor-edit-external-dialog.c:117
+#, fuzzy
+msgid "Select external menu"
+msgstr "Προσθήκη ενός εξωτερικού μενού"
+
+#: ../menueditor/menueditor-add-external-dialog.c:146
+#: ../menueditor/menueditor-edit-external-dialog.c:126
+#: ../panel-plugin/desktop-menu-plugin.c:610
+msgid "Menu Files"
+msgstr "Αρχεία μενού"
+
+#. Style
+#: ../menueditor/menueditor-add-external-dialog.c:155
+#: ../menueditor/menueditor-add-external-dialog.c:156
+#: ../menueditor/menueditor-edit-external-dialog.c:135
+#: ../menueditor/menueditor-edit-external-dialog.c:136
+msgid "Style:"
+msgstr "Στυλ:"
+
+#: ../menueditor/menueditor-add-external-dialog.c:165
+#: ../menueditor/menueditor-edit-external-dialog.c:145
+msgid "Simple"
+msgstr "Απλό"
+
+#: ../menueditor/menueditor-add-external-dialog.c:166
+#: ../menueditor/menueditor-edit-external-dialog.c:146
+msgid "Multilevel"
+msgstr "Πολυεπίπεδο"
+
+#. Unique check button
+#: ../menueditor/menueditor-add-external-dialog.c:171
+#: ../menueditor/menueditor-edit-external-dialog.c:151
+msgid "_Unique entries only"
+msgstr "_Μοναδικές καταχωρήσεις μόνο"
+
+#: ../menueditor/menueditor-edit-dialog.c:107
+msgid "Edit menu entry"
+msgstr "Επεξεργασία καταχώρησης μενού"
+
+#: ../menueditor/menueditor-edit-external-dialog.c:96
+#, fuzzy
+msgid "Edit external menu entry"
+msgstr "Προσθήκη ενός εξωτερικού μενού"
+
+#: ../menueditor/menueditor-main.c:43
+#, fuzzy
+msgid "Xfce4-MenuEditor"
+msgstr "Επεξεργαστής μενού Xfce 4"
+
+#: ../menueditor/menueditor-main-window.c:140
+msgid "_File"
+msgstr "_Αρχείο"
+
+#: ../menueditor/menueditor-main-window.c:141
+msgid "_New"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:141
+#, fuzzy
+msgid "Create a new empty menu"
+msgstr "Δημιουργία ενός νέου αρχείου μενού του Xfce4"
+
+#: ../menueditor/menueditor-main-window.c:142
+#: ../src/xfdesktop-file-icon-manager.c:2028
+msgid "_Open"
+msgstr "_Άνοιγμα"
+
+#: ../menueditor/menueditor-main-window.c:142
+#, fuzzy
+msgid "Open existing menu"
+msgstr "Άνοιγμα προκαθορισμένου μενού"
+
+#: ../menueditor/menueditor-main-window.c:143
+#, fuzzy
+msgid "Open _default menu"
+msgstr "Άνοιγμα προκαθορισμένου μενού"
+
+#: ../menueditor/menueditor-main-window.c:143
+msgid "Open default menu"
+msgstr "Άνοιγμα προκαθορισμένου μενού"
+
+#: ../menueditor/menueditor-main-window.c:144
+msgid "_Save"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:144
+#, fuzzy
+msgid "Save modifications"
+msgstr "Ξέχασε τις τροποποιήσεις"
+
+#: ../menueditor/menueditor-main-window.c:145
+#, fuzzy
+msgid "Save _as..."
+msgstr "Αποθήκευση ως..."
+
+#: ../menueditor/menueditor-main-window.c:145
+msgid "Save menu under a given name"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:146
+msgid "_Close"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:146
+#, fuzzy
+msgid "Close menu"
+msgstr "Κλείσιμο του τρέχοντος μενού"
+
+#: ../menueditor/menueditor-main-window.c:147
+#, fuzzy
+msgid "_Quit"
+msgstr "Έξοδος"
+
+#: ../menueditor/menueditor-main-window.c:147
+#, fuzzy
+msgid "Quit Xfce4-Menueditor"
+msgstr "Επεξεργαστής μενού Xfce 4"
+
+#: ../menueditor/menueditor-main-window.c:149
+msgid "_Edit"
+msgstr "_Επεξεργασία"
+
+#: ../menueditor/menueditor-main-window.c:150
+#, fuzzy
+msgid "_Edit entry"
+msgstr "Επεξεργασία καταχώρησης μενού"
+
+#: ../menueditor/menueditor-main-window.c:150
+#, fuzzy
+msgid "Edit selected entry"
+msgstr "Επεξεργασία καταχώρησης μενού"
+
+#: ../menueditor/menueditor-main-window.c:151
+#, fuzzy
+msgid "_Add entry"
+msgstr "Προσθήκη νέας καταχώρησης μενού"
+
+#: ../menueditor/menueditor-main-window.c:151
+#, fuzzy
+msgid "Add a new entry in the menu"
+msgstr "Προσθήκη μιας καταχώρησης "
+
+#: ../menueditor/menueditor-main-window.c:152
+#, fuzzy
+msgid "Add _external"
+msgstr "Προσθήκη ενός εξωτερικού μενού"
+
+#: ../menueditor/menueditor-main-window.c:152
+#, fuzzy
+msgid "Add an external entry"
+msgstr "Προσθήκη ενός εξωτερικού μενού"
+
+#: ../menueditor/menueditor-main-window.c:153
+msgid "_Remove entry"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:153
+#, fuzzy
+msgid "Remove entry"
+msgstr "Προσθήκη νέας καταχώρησης μενού"
+
+#: ../menueditor/menueditor-main-window.c:154
+msgid "_Up"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:154
+#, fuzzy
+msgid "Move entry up"
+msgstr "Μετακίνηση της τρέχουσας καταχώρησης επάνω"
+
+#: ../menueditor/menueditor-main-window.c:155
+msgid "_Down"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:155
+#, fuzzy
+msgid "Move entry down"
+msgstr "Μετακίνηση της τρέχουσας καταχώρησης κάτω"
+
+#: ../menueditor/menueditor-main-window.c:157
+msgid "_Help"
+msgstr "_Βοήθεια"
+
+#: ../menueditor/menueditor-main-window.c:158
+msgid "_About..."
+msgstr "_Περί..."
+
+#: ../menueditor/menueditor-main-window.c:158
+#, fuzzy
+msgid "Show informations about xfce4-menueditor"
+msgstr "Αδυναμία εκκίνησης του επεξεργαστή μενού του Xfce: %s"
+
+#: ../menueditor/menueditor-main-window.c:160
+#, fuzzy
+msgid "Collapse all"
+msgstr "Σύμπτυξη του δέντρου"
+
+#: ../menueditor/menueditor-main-window.c:160
+#, fuzzy
+msgid "Collapse all menu entries"
+msgstr "Σύμπτυξη του δέντρου"
+
+#: ../menueditor/menueditor-main-window.c:161
+#, fuzzy
+msgid "Expand all"
+msgstr "_Άνοιγμα όλων"
+
+#: ../menueditor/menueditor-main-window.c:161
+#, fuzzy
+msgid "Expand all menu entries"
+msgstr "Ανάπτυξη του δέντρου"
+
+#: ../menueditor/menueditor-main-window.c:341
+msgid "Name"
+msgstr "Όνομα"
+
+#: ../menueditor/menueditor-main-window.c:344
+msgid "Command"
+msgstr "Εντολή"
+
+#: ../menueditor/menueditor-main-window.c:345
+msgid "Hidden"
+msgstr "Κρυμμένο"
+
+#: ../menueditor/menueditor-main-window.c:427
+msgid "Are you sure you want to close the current menu?"
+msgstr "Είστε σίγουρος/η ότι θέλετε να κλείσετε αυτό το μενού;"
+
+#: ../menueditor/menueditor-main-window.c:441
+msgid "Do you want to save before closing the file?"
+msgstr "Θέλετε να αποθηκεύσετε πριν κλείσετε το αρχείο;"
+
+#: ../menueditor/menueditor-main-window.c:479
+#: ../menueditor/menueditor-main-window.c:532
+#: ../menueditor/menueditor-main-window.c:603
+#: ../src/xfdesktop-file-icon-manager.c:645
+msgid "Question"
+msgstr "Ερώτηση"
+
+#: ../menueditor/menueditor-main-window.c:481
+msgid "Do you want to save before opening an other menu ?"
+msgstr "Θέλετε να αποθηκεύσετε πριν ανοίξετε ένα άλλο μενού;"
+
+#: ../menueditor/menueditor-main-window.c:483
+#: ../menueditor/menueditor-main-window.c:536
+#: ../menueditor/menueditor-main-window.c:607
+msgid "Ignore modifications"
+msgstr "Αγνόηση τροποποιήσεων"
+
+#: ../menueditor/menueditor-main-window.c:494
+msgid "Open menu file"
+msgstr "Άνοιγμα αρχείου μενού"
+
+#: ../menueditor/menueditor-main-window.c:534
+msgid "Do you want to save before opening the default menu ?"
+msgstr "Θέλετε να αποθηκεύσετε πριν ανοίξετε το προκαθορισμένου μενού;"
+
+#: ../menueditor/menueditor-main-window.c:605
+#: ../menueditor/menueditor-main-window.c:1314
+msgid "Do you want to save before closing the menu ?"
+msgstr "Θέλετε να αποθηκεύσετε πριν κλείσετε το μενού;"
+
+#: ../menueditor/menueditor-main-window.c:829
+#: ../menueditor/menueditor-main-window.c:959
+msgid "quit"
+msgstr "έξοδος"
+
+#: ../menueditor/menueditor-main-window.c:934
+#: ../menueditor/menueditor-main-window.c:1555
+msgid "--- separator ---"
+msgstr "--- διαχωριστικό ---"
+
+#: ../menueditor/menueditor-main-window.c:1052
+#: ../menueditor/menueditor-main-window.c:1059
+#: ../menueditor/menueditor-main-window.c:1609
+msgid "--- include ---"
+msgstr "--- περίληψη ---"
+
+#: ../menueditor/menueditor-main-window.c:1060
+#: ../menueditor/menueditor-main-window.c:1626
+msgid "system"
+msgstr "σύστημα"
+
+#: ../menueditor/menueditor-main-window.c:1186
+#: ../menueditor/menueditor-main-window.c:1234
+msgid "Do you want to move the item into the submenu?"
+msgstr "Θέλετε να μετακινήσετε το αντικείμενο στο υπομενού;"
+
+#: ../menueditor/menueditor-main-window.c:1264
+msgid "A menu editor for Xfce4"
+msgstr "Επεξεργαστής μενού για το Xfce 4"
+
+#. Credits
+#: ../menueditor/menueditor-main-window.c:1269
+msgid "Author/Maintainer"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:1270
+#: ../menueditor/menueditor-main-window.c:1271
+#: ../menueditor/menueditor-main-window.c:1272
+msgid "Contributor"
+msgstr "Συντελεστής"
+
+#: ../menueditor/menueditor-main-window.c:1273
+msgid "Icon designer"
+msgstr "Σχεδιαστής εικονιδίων"
+
+#: ../menueditor/menueditor-main-window.c:1316
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr "Έχετε μεταβάλλει το μενού, θέλετε να το αποθηκεύσετε πριν την έξοδο;"
+
+#: ../menueditor/menueditor-main-window.c:1318
+#, fuzzy
+msgid "Forget modifications"
+msgstr "Αγνόηση τροποποιήσεων"
+
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:709
+#: ../panel-plugin/desktop-menu-plugin.c:759
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Μενού του Xfce"
@@ -367,70 +524,70 @@ msgstr ""
 msgid "/Other"
 msgstr "/Άλλο"
 
-#: ../panel-plugin/desktop-menu-plugin.c:529
+#: ../panel-plugin/desktop-menu-plugin.c:579
 msgid "Select Icon"
 msgstr "Επιλογή εικονιδίου"
 
-#: ../panel-plugin/desktop-menu-plugin.c:531
+#: ../panel-plugin/desktop-menu-plugin.c:581
 msgid "Select Menu File"
 msgstr "Επιλογή αρχείου μενού"
 
-#: ../panel-plugin/desktop-menu-plugin.c:560
-msgid "Menu Files"
-msgstr "Αρχεία μενού"
-
-#: ../panel-plugin/desktop-menu-plugin.c:678
+#: ../panel-plugin/desktop-menu-plugin.c:728
 #: ../settings/behavior-settings.c:217
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Αδυναμία εκκίνησης του επεξεργαστή μενού του Xfce: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:701
+#: ../panel-plugin/desktop-menu-plugin.c:751
 msgid "Edit Properties"
 msgstr "Επεξεργασία ιδιοτήτων"
 
-#: ../panel-plugin/desktop-menu-plugin.c:719
+#: ../panel-plugin/desktop-menu-plugin.c:769
 msgid "Button"
 msgstr "Κουμπί"
 
-#: ../panel-plugin/desktop-menu-plugin.c:732
+#: ../panel-plugin/desktop-menu-plugin.c:782
 msgid "Button _title:"
 msgstr "Τίτλος _κουμπιού:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:745
+#: ../panel-plugin/desktop-menu-plugin.c:795
 msgid "_Show title in button"
 msgstr "_Προβολή τίτλου στο κουμπί"
 
-#: ../panel-plugin/desktop-menu-plugin.c:752
+#: ../panel-plugin/desktop-menu-plugin.c:802
 msgid "Menu File"
 msgstr "Αρχείο μενού"
 
-#: ../panel-plugin/desktop-menu-plugin.c:764
+#: ../panel-plugin/desktop-menu-plugin.c:814
 msgid "Use default _desktop menu file"
 msgstr "Χρήση προκαθορισμένου αρχείου _μενού"
 
-#: ../panel-plugin/desktop-menu-plugin.c:773
+#: ../panel-plugin/desktop-menu-plugin.c:823
 msgid "Use _custom menu file:"
 msgstr "Χρήση _προσαρμοσμένου αρχείου μενού"
 
-#: ../panel-plugin/desktop-menu-plugin.c:824
+#: ../panel-plugin/desktop-menu-plugin.c:874
 #: ../settings/behavior-settings.c:267
 msgid "_Edit Menu"
 msgstr "_Επεξεργασία του μενού"
 
-#: ../panel-plugin/desktop-menu-plugin.c:830
+#: ../panel-plugin/desktop-menu-plugin.c:880
 msgid "Icons"
 msgstr "Εικονίδια"
 
-#: ../panel-plugin/desktop-menu-plugin.c:842
+#: ../panel-plugin/desktop-menu-plugin.c:892
 msgid "_Button icon:"
 msgstr "Εικονίδιο _κουμπιού"
 
-#: ../panel-plugin/desktop-menu-plugin.c:866
+#: ../panel-plugin/desktop-menu-plugin.c:916
 msgid "Show _icons in menu"
 msgstr "Εμφάνιση εικον_ιδίων στο μενού"
 
 #: ../panel-plugin/desktop-menu-plugin.c:939
+msgid "There is already a panel menu registered for this screen"
+msgstr ""
+
+#: ../panel-plugin/desktop-menu-plugin.c:1047
 msgid "Edit Menu"
 msgstr "Επεξεργασία μενού"
 
@@ -1076,10 +1233,6 @@ msgstr "Σφάλμα δημιουργίας"
 msgid "_Open all"
 msgstr "_Άνοιγμα όλων"
 
-#: ../src/xfdesktop-file-icon-manager.c:2028
-msgid "_Open"
-msgstr "_Άνοιγμα"
-
 #: ../src/xfdesktop-file-icon-manager.c:2045
 msgid "_Execute"
 msgstr "_Εκτέλεση"
@@ -1202,6 +1355,50 @@ msgstr "Ρυθμίσεις Διαχειριστή επιφάνειας εργα�
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Ρυθμίσεις επιφάνειας εργασίας Xfce 4"
+
+#, fuzzy
+#~ msgid "Are sure you want to quit?"
+#~ msgstr "Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά το \"%s\";"
+
+#~ msgid "Core developer"
+#~ msgstr "Βασικός προγραμματιστής"
+
+#~ msgid "The command doesn't exist !"
+#~ msgstr "Η εντολή δεν υπάρχει !"
+
+#~ msgid "All fields must be filled to add an item."
+#~ msgstr ""
+#~ "Πρέπει να είναι συμπληρωμένα όλα τα πεδία για να προστεθεί το αντικείμενο."
+
+#~ msgid "The 'Name' field is required."
+#~ msgstr "Το πεδίο 'Όνομα' είναι υποχρεωτικό."
+
+#~ msgid "The 'Source' field is required."
+#~ msgstr "Το πεδίο 'Πηγή' απαιτείται."
+
+#~ msgid "Separators cannot be edited"
+#~ msgstr "Τα διαχωριστικά δεν είναι δυνατό να επεξεργαστούν"
+
+#~ msgid "File %s doesn't exist !"
+#~ msgstr "Το αρχείο %s δεν υπάρχει !"
+
+#~ msgid "Do you want to move the item into the parent menu?"
+#~ msgstr "Θέλετε να μετακινήσετε το αντικείμενο στο γονεϊκό μενού;"
+
+#~ msgid "Edit"
+#~ msgstr "Επεξεργασία"
+
+#~ msgid "Add an external menu..."
+#~ msgstr "Προσθήκη ενός εξωτερικού μενού..."
+
+#~ msgid "Open an Xfce4 menu file"
+#~ msgstr "Άνοιγμα ενός νέου αρχείου μενού του Xfce4"
+
+#~ msgid "Save current menu"
+#~ msgstr "Αποθήκευση του τρέχοντος μενού"
+
+#~ msgid "Delete the current entry"
+#~ msgstr "Διαγραφή τρέχουσας καταχώρησης"
 
 #~ msgid "There was an error moving \"%s\" to \"%s\":"
 #~ msgstr "Προέκυψε ένα σφάλμα κατά τη μετακίνηση του \"%s\" σε \"%s\":"

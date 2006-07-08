@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-21 11:18+0900\n"
+"POT-Creation-Date: 2006-07-09 00:08+0200\n"
 "PO-Revision-Date: 2005-08-18 22:57+0900\n"
 "Last-Translator: Eskild Hustvedt <eskild@goldenfiles.com>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
@@ -15,323 +15,458 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../menueditor/about_dialog.c:39
-msgid "A menu editor for Xfce4"
-msgstr "En menyredigerer for Xfce4"
-
-#. Credits
-#: ../menueditor/about_dialog.c:43
-msgid "Core developer"
-msgstr "Hovedutvikler"
-
-#: ../menueditor/about_dialog.c:44 ../menueditor/about_dialog.c:45
-#: ../menueditor/about_dialog.c:46
-msgid "Contributor"
-msgstr "Bidragsyter"
-
-#: ../menueditor/about_dialog.c:47
-msgid "Icon designer"
-msgstr "Ikon designer"
-
-#: ../menueditor/add_dialog.c:157 ../menueditor/add_dialog.c:167
+#: ../menueditor/menueditor-add-dialog.c:111
 msgid "Add menu entry"
 msgstr "Legg til menyoppføring"
 
 #. Type
-#: ../menueditor/add_dialog.c:171 ../menueditor/add_menu_dialog.c:110
+#: ../menueditor/menueditor-add-dialog.c:124
+#: ../menueditor/menueditor-add-dialog.c:125
+#: ../menueditor/menueditor-add-external-dialog.c:113
+#: ../menueditor/menueditor-add-external-dialog.c:114
 msgid "Type:"
 msgstr "Type:"
 
-#: ../menueditor/add_dialog.c:174
-msgid "Launcher"
-msgstr "Start"
-
-#: ../menueditor/add_dialog.c:178
-msgid "Submenu"
-msgstr "Undermenu"
-
-#: ../menueditor/add_dialog.c:182
-msgid "Separator"
-msgstr ""
-
-#: ../menueditor/add_dialog.c:186
+#: ../menueditor/menueditor-add-dialog.c:133
 msgid "Title"
 msgstr ""
 
-#: ../menueditor/add_dialog.c:190
+#: ../menueditor/menueditor-add-dialog.c:134
+msgid "Submenu"
+msgstr "Undermenu"
+
+#: ../menueditor/menueditor-add-dialog.c:135
+msgid "Launcher"
+msgstr "Start"
+
+#: ../menueditor/menueditor-add-dialog.c:136
+msgid "Separator"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:137
 msgid "Quit"
 msgstr ""
 
 #. Name
-#: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
-#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1053
+#: ../menueditor/menueditor-add-dialog.c:144
+#: ../menueditor/menueditor-add-dialog.c:145
+#: ../menueditor/menueditor-edit-dialog.c:120
+#: ../menueditor/menueditor-edit-dialog.c:121
+#: ../src/xfdesktop-file-icon-manager.c:1073
 msgid "Name:"
 msgstr ""
 
-#: ../menueditor/add_dialog.c:212 ../menueditor/edit_dialog.c:150
+#. Command
+#: ../menueditor/menueditor-add-dialog.c:157
+#: ../menueditor/menueditor-add-dialog.c:158
+#: ../menueditor/menueditor-edit-dialog.c:133
+#: ../menueditor/menueditor-edit-dialog.c:134
 msgid "Command:"
 msgstr ""
 
-#: ../menueditor/add_dialog.c:224 ../menueditor/edit_dialog.c:137
-#: ../menueditor/edit_dialog.c:197
+#: ../menueditor/menueditor-add-dialog.c:185
+#: ../menueditor/menueditor-add-dialog.c:186
+#: ../menueditor/menueditor-edit-dialog.c:161
+#: ../menueditor/menueditor-edit-dialog.c:162
+msgid "Themed icon:"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:203
+#: ../menueditor/menueditor-add-dialog.c:204
+#: ../menueditor/menueditor-edit-dialog.c:179
+#: ../menueditor/menueditor-edit-dialog.c:180
 msgid "Icon:"
 msgstr ""
 
-#. Start Notify check button
-#. Startup notification
-#: ../menueditor/add_dialog.c:235 ../menueditor/edit_dialog.c:158
-msgid "Use startup _notification"
-msgstr ""
-
-#. Run in terminal check button
-#. Run in terminal
-#: ../menueditor/add_dialog.c:239 ../menueditor/edit_dialog.c:161
-msgid "Run in _terminal"
-msgstr ""
-
-#: ../menueditor/add_dialog.c:270 ../menueditor/edit_dialog.c:240
-msgid "The command doesn't exist !"
-msgstr ""
-
-#: ../menueditor/add_dialog.c:276 ../menueditor/edit_dialog.c:246
-msgid "All fields must be filled to add an item."
-msgstr ""
-
-#: ../menueditor/add_dialog.c:285 ../menueditor/edit_dialog.c:255
-msgid "The 'Name' field is required."
-msgstr ""
-
-#: ../menueditor/add_dialog.c:329 ../menueditor/utils.c:318
-msgid "--- separator ---"
-msgstr ""
-
-#: ../menueditor/add_dialog.c:355 ../menueditor/edit_dialog.c:314
-msgid "quit"
-msgstr ""
-
-#: ../menueditor/add_menu_dialog.c:97 ../menueditor/add_menu_dialog.c:103
-#: ../menueditor/menueditor.c:841
-msgid "Add an external menu"
-msgstr ""
-
-#: ../menueditor/add_menu_dialog.c:115
-msgid "File"
-msgstr ""
-
-#: ../menueditor/add_menu_dialog.c:119
-msgid "System"
-msgstr ""
-
-#: ../menueditor/add_menu_dialog.c:133
-msgid "Source:"
-msgstr ""
-
-#. Style
-#: ../menueditor/add_menu_dialog.c:145
-msgid "Style:"
-msgstr ""
-
-#: ../menueditor/add_menu_dialog.c:148
-msgid "Simple"
-msgstr ""
-
-#: ../menueditor/add_menu_dialog.c:150
-msgid "Multilevel"
-msgstr ""
-
-#. Unique
-#: ../menueditor/add_menu_dialog.c:162
-msgid "_Unique entries only"
-msgstr ""
-
-#: ../menueditor/add_menu_dialog.c:198
-msgid "The 'Source' field is required."
-msgstr ""
-
-#: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
-#: ../menueditor/utils.c:372
-msgid "--- include ---"
-msgstr ""
-
-#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:389
-msgid "system"
-msgstr ""
-
-#. Create dialog for editing
-#: ../menueditor/edit_dialog.c:114 ../menueditor/edit_dialog.c:121
-msgid "Edit menu entry"
-msgstr ""
-
-#: ../menueditor/edit_dialog.c:126
-msgid "Separators cannot be edited"
-msgstr ""
-
-#: ../menueditor/menueditor.c:81
-#, c-format
-msgid "File %s doesn't exist !"
-msgstr ""
-
-#: ../menueditor/menueditor.c:121 ../menueditor/menueditor.c:537
-msgid "Do you want to save before closing the menu ?"
-msgstr ""
-
-#: ../menueditor/menueditor.c:123
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr ""
-
-#: ../menueditor/menueditor.c:125
-msgid "Forget modifications"
-msgstr ""
-
-#: ../menueditor/menueditor.c:314
-msgid "Are you sure you want to close the current menu?"
-msgstr ""
-
-#: ../menueditor/menueditor.c:329
-msgid "Do you want to save before closing the file?"
-msgstr ""
-
-#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:586
-msgid "Select command"
-msgstr ""
-
-#: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
-#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:625
-msgid "Question"
-msgstr ""
-
-#: ../menueditor/menueditor.c:372
-msgid "Do you want to save before opening an other menu ?"
-msgstr ""
-
-#: ../menueditor/menueditor.c:374 ../menueditor/menueditor.c:431
-#: ../menueditor/menueditor.c:539
-msgid "Ignore modifications"
-msgstr ""
-
-#: ../menueditor/menueditor.c:385
-msgid "Open menu file"
-msgstr ""
-
-#: ../menueditor/menueditor.c:429
-msgid "Do you want to save before opening the default menu ?"
-msgstr ""
-
-#: ../menueditor/menueditor.c:487
-msgid "Save as..."
-msgstr ""
-
-#: ../menueditor/menueditor.c:649
-msgid "Do you want to move the item into the parent menu?"
-msgstr ""
-
-#: ../menueditor/menueditor.c:695
-msgid "Do you want to move the item into the submenu?"
-msgstr ""
-
-#: ../menueditor/menueditor.c:835
-msgid "Edit"
-msgstr ""
-
-#. File menu
-#: ../menueditor/menueditor.c:859
-msgid "_File"
-msgstr ""
-
-#: ../menueditor/menueditor.c:868
-msgid "Open default menu"
-msgstr ""
-
-#. Edit menu
-#: ../menueditor/menueditor.c:882
-msgid "_Edit"
-msgstr ""
-
-#: ../menueditor/menueditor.c:888
-msgid "Add an external menu..."
-msgstr ""
-
-#. Help menu
-#: ../menueditor/menueditor.c:900
-msgid "_Help"
-msgstr ""
-
-#: ../menueditor/menueditor.c:904
-msgid "_About..."
-msgstr ""
-
-#: ../menueditor/menueditor.c:916
-msgid "Create a new Xfce4 menu file"
-msgstr ""
-
-#: ../menueditor/menueditor.c:921
-msgid "Open an Xfce4 menu file"
-msgstr ""
-
-#: ../menueditor/menueditor.c:926
-msgid "Save current menu"
-msgstr ""
-
-#: ../menueditor/menueditor.c:931
-msgid "Close current menu"
-msgstr ""
-
-#: ../menueditor/menueditor.c:937
-msgid "Add an entry to the menu"
-msgstr ""
-
-#: ../menueditor/menueditor.c:941
-msgid "Delete the current entry"
-msgstr ""
-
-#: ../menueditor/menueditor.c:947
-msgid "Move the current entry up"
-msgstr ""
-
-#: ../menueditor/menueditor.c:952
-msgid "Move the current entry down"
-msgstr ""
-
-#: ../menueditor/menueditor.c:958
-msgid "Collapse the tree"
-msgstr ""
-
-#: ../menueditor/menueditor.c:963
-msgid "Expand the tree"
-msgstr ""
-
-#: ../menueditor/menueditor.c:991
-msgid "Name"
-msgstr ""
-
-#: ../menueditor/menueditor.c:994
-msgid "Command"
-msgstr ""
-
-#: ../menueditor/menueditor.c:995
-msgid "Hidden"
-msgstr ""
-
-#: ../menueditor/utils.c:648
+#: ../menueditor/menueditor-add-dialog.c:211
+#: ../menueditor/menueditor-edit-dialog.c:187
 msgid "Select icon"
 msgstr ""
 
-#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:546
+#: ../menueditor/menueditor-add-dialog.c:216
+#: ../menueditor/menueditor-add-dialog.c:268
+#: ../menueditor/menueditor-add-external-dialog.c:142
+#: ../menueditor/menueditor-edit-dialog.c:192
+#: ../menueditor/menueditor-edit-dialog.c:244
+#: ../menueditor/menueditor-edit-external-dialog.c:122
+#: ../panel-plugin/desktop-menu-plugin.c:596
 #: ../settings/appearance-settings.c:532
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr ""
 
-#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:552
+#: ../menueditor/menueditor-add-dialog.c:220
+#: ../menueditor/menueditor-edit-dialog.c:196
+#: ../panel-plugin/desktop-menu-plugin.c:602
 #: ../settings/appearance-settings.c:536
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr ""
 
+#. Start Notify check button
+#: ../menueditor/menueditor-add-dialog.c:235
+#: ../menueditor/menueditor-edit-dialog.c:211
+msgid "Use startup _notification"
+msgstr ""
+
+#. Run in terminal check button
+#: ../menueditor/menueditor-add-dialog.c:240
+#: ../menueditor/menueditor-edit-dialog.c:216
+msgid "Run in _terminal"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:258
+#: ../menueditor/menueditor-edit-dialog.c:234
+#: ../menueditor/menueditor-main-window.c:450
+msgid "Select command"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:273
+#: ../menueditor/menueditor-edit-dialog.c:249
+msgid "Executable Files"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:288
+#: ../menueditor/menueditor-edit-dialog.c:264
+msgid "Perl Scripts"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:294
+#: ../menueditor/menueditor-edit-dialog.c:270
+msgid "Python Scripts"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:300
+#: ../menueditor/menueditor-edit-dialog.c:276
+msgid "Ruby Scripts"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:306
+#: ../menueditor/menueditor-edit-dialog.c:282
+msgid "Shell Scripts"
+msgstr ""
+
+#: ../menueditor/menueditor-add-external-dialog.c:100
+#, fuzzy
+msgid "Add external menu entry"
+msgstr "Legg til menyoppføring"
+
+#: ../menueditor/menueditor-add-external-dialog.c:122
+msgid "File"
+msgstr ""
+
+#: ../menueditor/menueditor-add-external-dialog.c:123
+msgid "System"
+msgstr ""
+
+#. Source
+#: ../menueditor/menueditor-add-external-dialog.c:129
+#: ../menueditor/menueditor-add-external-dialog.c:130
+#: ../menueditor/menueditor-edit-external-dialog.c:109
+#: ../menueditor/menueditor-edit-external-dialog.c:110
+msgid "Source:"
+msgstr ""
+
+#: ../menueditor/menueditor-add-external-dialog.c:137
+#: ../menueditor/menueditor-edit-external-dialog.c:117
+msgid "Select external menu"
+msgstr ""
+
+#: ../menueditor/menueditor-add-external-dialog.c:146
+#: ../menueditor/menueditor-edit-external-dialog.c:126
+#: ../panel-plugin/desktop-menu-plugin.c:610
+msgid "Menu Files"
+msgstr ""
+
+#. Style
+#: ../menueditor/menueditor-add-external-dialog.c:155
+#: ../menueditor/menueditor-add-external-dialog.c:156
+#: ../menueditor/menueditor-edit-external-dialog.c:135
+#: ../menueditor/menueditor-edit-external-dialog.c:136
+msgid "Style:"
+msgstr ""
+
+#: ../menueditor/menueditor-add-external-dialog.c:165
+#: ../menueditor/menueditor-edit-external-dialog.c:145
+msgid "Simple"
+msgstr ""
+
+#: ../menueditor/menueditor-add-external-dialog.c:166
+#: ../menueditor/menueditor-edit-external-dialog.c:146
+msgid "Multilevel"
+msgstr ""
+
+#. Unique check button
+#: ../menueditor/menueditor-add-external-dialog.c:171
+#: ../menueditor/menueditor-edit-external-dialog.c:151
+msgid "_Unique entries only"
+msgstr ""
+
+#: ../menueditor/menueditor-edit-dialog.c:107
+msgid "Edit menu entry"
+msgstr ""
+
+#: ../menueditor/menueditor-edit-external-dialog.c:96
+#, fuzzy
+msgid "Edit external menu entry"
+msgstr "Legg til menyoppføring"
+
+#: ../menueditor/menueditor-main.c:43
+msgid "Xfce4-MenuEditor"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:140
+msgid "_File"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:141
+msgid "_New"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:141
+msgid "Create a new empty menu"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:142
+#: ../src/xfdesktop-file-icon-manager.c:2028
+msgid "_Open"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:142
+msgid "Open existing menu"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:143
+msgid "Open _default menu"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:143
+msgid "Open default menu"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:144
+msgid "_Save"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:144
+msgid "Save modifications"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:145
+msgid "Save _as..."
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:145
+msgid "Save menu under a given name"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:146
+msgid "_Close"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:146
+msgid "Close menu"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:147
+msgid "_Quit"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:147
+msgid "Quit Xfce4-Menueditor"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:149
+msgid "_Edit"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:150
+#, fuzzy
+msgid "_Edit entry"
+msgstr "Start"
+
+#: ../menueditor/menueditor-main-window.c:150
+msgid "Edit selected entry"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:151
+#, fuzzy
+msgid "_Add entry"
+msgstr "Legg til menyoppføring"
+
+#: ../menueditor/menueditor-main-window.c:151
+msgid "Add a new entry in the menu"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:152
+msgid "Add _external"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:152
+#, fuzzy
+msgid "Add an external entry"
+msgstr "Legg til menyoppføring"
+
+#: ../menueditor/menueditor-main-window.c:153
+msgid "_Remove entry"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:153
+#, fuzzy
+msgid "Remove entry"
+msgstr "Legg til menyoppføring"
+
+#: ../menueditor/menueditor-main-window.c:154
+msgid "_Up"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:154
+msgid "Move entry up"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:155
+msgid "_Down"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:155
+msgid "Move entry down"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:157
+msgid "_Help"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:158
+msgid "_About..."
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:158
+msgid "Show informations about xfce4-menueditor"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:160
+msgid "Collapse all"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:160
+msgid "Collapse all menu entries"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:161
+msgid "Expand all"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:161
+msgid "Expand all menu entries"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:341
+msgid "Name"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:344
+msgid "Command"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:345
+msgid "Hidden"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:427
+msgid "Are you sure you want to close the current menu?"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:441
+msgid "Do you want to save before closing the file?"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:479
+#: ../menueditor/menueditor-main-window.c:532
+#: ../menueditor/menueditor-main-window.c:603
+#: ../src/xfdesktop-file-icon-manager.c:645
+msgid "Question"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:481
+msgid "Do you want to save before opening an other menu ?"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:483
+#: ../menueditor/menueditor-main-window.c:536
+#: ../menueditor/menueditor-main-window.c:607
+msgid "Ignore modifications"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:494
+msgid "Open menu file"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:534
+msgid "Do you want to save before opening the default menu ?"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:605
+#: ../menueditor/menueditor-main-window.c:1314
+msgid "Do you want to save before closing the menu ?"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:829
+#: ../menueditor/menueditor-main-window.c:959
+msgid "quit"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:934
+#: ../menueditor/menueditor-main-window.c:1555
+msgid "--- separator ---"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:1052
+#: ../menueditor/menueditor-main-window.c:1059
+#: ../menueditor/menueditor-main-window.c:1609
+msgid "--- include ---"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:1060
+#: ../menueditor/menueditor-main-window.c:1626
+msgid "system"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:1186
+#: ../menueditor/menueditor-main-window.c:1234
+msgid "Do you want to move the item into the submenu?"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:1264
+msgid "A menu editor for Xfce4"
+msgstr "En menyredigerer for Xfce4"
+
+#. Credits
+#: ../menueditor/menueditor-main-window.c:1269
+msgid "Author/Maintainer"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:1270
+#: ../menueditor/menueditor-main-window.c:1271
+#: ../menueditor/menueditor-main-window.c:1272
+msgid "Contributor"
+msgstr "Bidragsyter"
+
+#: ../menueditor/menueditor-main-window.c:1273
+msgid "Icon designer"
+msgstr "Ikon designer"
+
+#: ../menueditor/menueditor-main-window.c:1316
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:1318
+msgid "Forget modifications"
+msgstr ""
+
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:709
+#: ../panel-plugin/desktop-menu-plugin.c:759
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr ""
@@ -358,70 +493,70 @@ msgstr ""
 msgid "/Other"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:529
+#: ../panel-plugin/desktop-menu-plugin.c:579
 msgid "Select Icon"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:531
+#: ../panel-plugin/desktop-menu-plugin.c:581
 msgid "Select Menu File"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:560
-msgid "Menu Files"
-msgstr ""
-
-#: ../panel-plugin/desktop-menu-plugin.c:678
+#: ../panel-plugin/desktop-menu-plugin.c:728
 #: ../settings/behavior-settings.c:217
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:701
+#: ../panel-plugin/desktop-menu-plugin.c:751
 msgid "Edit Properties"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:719
+#: ../panel-plugin/desktop-menu-plugin.c:769
 msgid "Button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:732
+#: ../panel-plugin/desktop-menu-plugin.c:782
 msgid "Button _title:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:745
+#: ../panel-plugin/desktop-menu-plugin.c:795
 msgid "_Show title in button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:752
+#: ../panel-plugin/desktop-menu-plugin.c:802
 msgid "Menu File"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:764
+#: ../panel-plugin/desktop-menu-plugin.c:814
 msgid "Use default _desktop menu file"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:773
+#: ../panel-plugin/desktop-menu-plugin.c:823
 msgid "Use _custom menu file:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:824
+#: ../panel-plugin/desktop-menu-plugin.c:874
 #: ../settings/behavior-settings.c:267
 msgid "_Edit Menu"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:830
+#: ../panel-plugin/desktop-menu-plugin.c:880
 msgid "Icons"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:842
+#: ../panel-plugin/desktop-menu-plugin.c:892
 msgid "_Button icon:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:866
+#: ../panel-plugin/desktop-menu-plugin.c:916
 msgid "Show _icons in menu"
 msgstr ""
 
 #: ../panel-plugin/desktop-menu-plugin.c:939
+msgid "There is already a panel menu registered for this screen"
+msgstr ""
+
+#: ../panel-plugin/desktop-menu-plugin.c:1047
 msgid "Edit Menu"
 msgstr ""
 
@@ -488,8 +623,8 @@ msgstr ""
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:806 ../src/xfdesktop-file-icon.c:648
-#: ../src/xfdesktop-file-icon.c:706
+#: ../settings/appearance-settings.c:806 ../src/xfdesktop-file-icon.c:650
+#: ../src/xfdesktop-file-icon.c:708
 msgid "Error"
 msgstr ""
 
@@ -648,7 +783,7 @@ msgid "Desktop Icons"
 msgstr ""
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-icon-manager.c:1001
+#: ../src/xfdesktop-file-icon-manager.c:1021
 msgid "None"
 msgstr ""
 
@@ -759,404 +894,381 @@ msgstr ""
 msgid "Desktop"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:220
+#: ../src/xfdesktop-file-icon-manager.c:233
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:222
-#: ../src/xfdesktop-file-icon-manager.c:231
-#: ../src/xfdesktop-file-icon-manager.c:1544
+#: ../src/xfdesktop-file-icon-manager.c:235
+#: ../src/xfdesktop-file-icon-manager.c:244
+#: ../src/xfdesktop-file-icon-manager.c:1564
 msgid "Create Folder Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:229
+#: ../src/xfdesktop-file-icon-manager.c:242
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:233
+#: ../src/xfdesktop-file-icon-manager.c:246
 msgid "Please delete or rename the file."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:367
-#: ../src/xfdesktop-file-icon-manager.c:864
+#: ../src/xfdesktop-file-icon-manager.c:371
+#: ../src/xfdesktop-file-icon-manager.c:884
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:369
-#: ../src/xfdesktop-file-icon-manager.c:868
+#: ../src/xfdesktop-file-icon-manager.c:373
+#: ../src/xfdesktop-file-icon-manager.c:888
 msgid "Mount Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:371
+#: ../src/xfdesktop-file-icon-manager.c:375
 msgid "Unknown error."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:416
-#: ../src/xfdesktop-file-icon-manager.c:747
-#: ../src/xfdesktop-file-icon-manager.c:781
+#: ../src/xfdesktop-file-icon-manager.c:436
+#: ../src/xfdesktop-file-icon-manager.c:767
+#: ../src/xfdesktop-file-icon-manager.c:801
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:418
-#: ../src/xfdesktop-file-icon-manager.c:749
-#: ../src/xfdesktop-file-icon-manager.c:784
-#: ../src/xfdesktop-file-icon-manager.c:1578
+#: ../src/xfdesktop-file-icon-manager.c:438
+#: ../src/xfdesktop-file-icon-manager.c:769
+#: ../src/xfdesktop-file-icon-manager.c:804
+#: ../src/xfdesktop-file-icon-manager.c:1598
 #, fuzzy
 msgid "Launch Error"
 msgstr "Start"
 
-#: ../src/xfdesktop-file-icon-manager.c:420
+#: ../src/xfdesktop-file-icon-manager.c:440
 msgid "The associated application could not be found or executed."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:547
+#: ../src/xfdesktop-file-icon-manager.c:567
 #, c-format
 msgid "Rename \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:554
-#: ../src/xfdesktop-file-icon-manager.c:1616
-#: ../src/xfdesktop-file-icon-manager.c:1694
-#: ../src/xfdesktop-file-icon-manager.c:1705
+#: ../src/xfdesktop-file-icon-manager.c:574
+#: ../src/xfdesktop-file-icon-manager.c:1636
+#: ../src/xfdesktop-file-icon-manager.c:1727
+#: ../src/xfdesktop-file-icon-manager.c:1738
 msgid "Enter the new name:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:556
+#: ../src/xfdesktop-file-icon-manager.c:576
 msgid "Rename"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:622
+#: ../src/xfdesktop-file-icon-manager.c:642
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:627
 #: ../src/xfdesktop-file-icon-manager.c:647
+#: ../src/xfdesktop-file-icon-manager.c:667
 msgid "If you delete a file, it is permanently lost."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:641
+#: ../src/xfdesktop-file-icon-manager.c:661
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:644
+#: ../src/xfdesktop-file-icon-manager.c:664
 msgid "Delete Multiple Files"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:786
+#: ../src/xfdesktop-file-icon-manager.c:806
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:865
+#: ../src/xfdesktop-file-icon-manager.c:885
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:868
+#: ../src/xfdesktop-file-icon-manager.c:888
 msgid "Unmount Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:897
+#: ../src/xfdesktop-file-icon-manager.c:917
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:899
+#: ../src/xfdesktop-file-icon-manager.c:919
 msgid "Eject Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:968
+#: ../src/xfdesktop-file-icon-manager.c:988
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:971
+#: ../src/xfdesktop-file-icon-manager.c:991
 msgid "Properties Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1001
+#: ../src/xfdesktop-file-icon-manager.c:1021
 msgid "Write only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1001
+#: ../src/xfdesktop-file-icon-manager.c:1021
 msgid "Read only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1001
+#: ../src/xfdesktop-file-icon-manager.c:1021
 msgid "Read & Write"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1028
+#: ../src/xfdesktop-file-icon-manager.c:1048
 msgid "General"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1079
+#: ../src/xfdesktop-file-icon-manager.c:1099
 msgid "Kind:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1089
+#: ../src/xfdesktop-file-icon-manager.c:1109
 msgid "broken link"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1092
+#: ../src/xfdesktop-file-icon-manager.c:1112
 #, c-format
 msgid "link to %s"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1109
+#: ../src/xfdesktop-file-icon-manager.c:1129
 msgid "Link Target:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1126
-#: ../src/xfdesktop-file-icon-manager.c:1285
+#: ../src/xfdesktop-file-icon-manager.c:1146
+#: ../src/xfdesktop-file-icon-manager.c:1305
 msgid "(unknown)"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1148
+#: ../src/xfdesktop-file-icon-manager.c:1168
 msgid "Open With:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1225
+#: ../src/xfdesktop-file-icon-manager.c:1245
 msgid "Modified:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1243
+#: ../src/xfdesktop-file-icon-manager.c:1263
 msgid "Accessed:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1270
+#: ../src/xfdesktop-file-icon-manager.c:1290
 msgid "Free Space:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1272
+#: ../src/xfdesktop-file-icon-manager.c:1292
 msgid "Size:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1288
+#: ../src/xfdesktop-file-icon-manager.c:1308
 msgid "%s (%"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1288
+#: ../src/xfdesktop-file-icon-manager.c:1308
 msgid " Bytes)"
 msgstr ""
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1303
+#: ../src/xfdesktop-file-icon-manager.c:1323
 msgid "Permissions"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1325
+#: ../src/xfdesktop-file-icon-manager.c:1345
 msgid "Owner:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1343
-#: ../src/xfdesktop-file-icon-manager.c:1381
+#: ../src/xfdesktop-file-icon-manager.c:1363
+#: ../src/xfdesktop-file-icon-manager.c:1401
 msgid "Access:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1366
+#: ../src/xfdesktop-file-icon-manager.c:1386
 msgid "Group:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1404
+#: ../src/xfdesktop-file-icon-manager.c:1424
 msgid "Others:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1477
+#: ../src/xfdesktop-file-icon-manager.c:1497
 #, c-format
 msgid "_Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1480
+#: ../src/xfdesktop-file-icon-manager.c:1500
 #, c-format
 msgid "Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1541
+#: ../src/xfdesktop-file-icon-manager.c:1561
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1580
+#: ../src/xfdesktop-file-icon-manager.c:1600
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1613
+#: ../src/xfdesktop-file-icon-manager.c:1633
 msgid "Create New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1617
+#: ../src/xfdesktop-file-icon-manager.c:1637
 msgid "New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1618
-#: ../src/xfdesktop-file-icon-manager.c:1696
-#: ../src/xfdesktop-file-icon-manager.c:1707
+#: ../src/xfdesktop-file-icon-manager.c:1638
+#: ../src/xfdesktop-file-icon-manager.c:1729
+#: ../src/xfdesktop-file-icon-manager.c:1740
 msgid "Create"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1654
+#: ../src/xfdesktop-file-icon-manager.c:1674
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1657
+#: ../src/xfdesktop-file-icon-manager.c:1677
 msgid "Create File Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1683
+#: ../src/xfdesktop-file-icon-manager.c:1716
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1702
+#: ../src/xfdesktop-file-icon-manager.c:1735
 msgid "Create Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1706
+#: ../src/xfdesktop-file-icon-manager.c:1739
 msgid "New Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1736
+#: ../src/xfdesktop-file-icon-manager.c:1772
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1737
+#: ../src/xfdesktop-file-icon-manager.c:1773
 msgid "Create Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1977
+#: ../src/xfdesktop-file-icon-manager.c:2013
 msgid "_Open all"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1988
-msgid "_Open"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:2001
+#: ../src/xfdesktop-file-icon-manager.c:2045
 msgid "_Execute"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2019
+#: ../src/xfdesktop-file-icon-manager.c:2062
 #, fuzzy
 msgid "_Edit Launcher"
 msgstr "Start"
 
-#: ../src/xfdesktop-file-icon-manager.c:2067
+#: ../src/xfdesktop-file-icon-manager.c:2102
 msgid "Open With"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2097
+#: ../src/xfdesktop-file-icon-manager.c:2136
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2180
+#: ../src/xfdesktop-file-icon-manager.c:2207
 msgid "_Mount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2191
+#: ../src/xfdesktop-file-icon-manager.c:2218
 msgid "_Unmount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2205
+#: ../src/xfdesktop-file-icon-manager.c:2232
 msgid "E_ject Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2215
+#: ../src/xfdesktop-file-icon-manager.c:2242
 msgid "_Copy Files"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2216
+#: ../src/xfdesktop-file-icon-manager.c:2243
 msgid "_Copy File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2225
+#: ../src/xfdesktop-file-icon-manager.c:2252
 msgid "Cu_t Files"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2226
+#: ../src/xfdesktop-file-icon-manager.c:2253
 msgid "Cu_t File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2235
+#: ../src/xfdesktop-file-icon-manager.c:2262
 msgid "_Delete Files"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2236
+#: ../src/xfdesktop-file-icon-manager.c:2263
 msgid "_Delete File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2248
+#: ../src/xfdesktop-file-icon-manager.c:2275
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2266
+#: ../src/xfdesktop-file-icon-manager.c:2293
 msgid "_Properties..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2284
+#: ../src/xfdesktop-file-icon-manager.c:2311
 msgid "Create _New"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2293
+#: ../src/xfdesktop-file-icon-manager.c:2320
 #, fuzzy
 msgid "_Launcher..."
 msgstr "Start"
 
-#: ../src/xfdesktop-file-icon-manager.c:2314
+#: ../src/xfdesktop-file-icon-manager.c:2341
 msgid "_URL Link..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2329
+#: ../src/xfdesktop-file-icon-manager.c:2356
 msgid "_Folder..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2368
+#: ../src/xfdesktop-file-icon-manager.c:2395
 msgid "_Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:3168 ../src/xfdesktop-file-icon.c:554
+#: ../src/xfdesktop-file-icon-manager.c:3347 ../src/xfdesktop-file-icon.c:549
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:3170 ../src/xfdesktop-file-icon.c:556
+#: ../src/xfdesktop-file-icon-manager.c:3349 ../src/xfdesktop-file-icon.c:551
 msgid "Run Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon.c:482
-#, c-format
-msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:484
-#, c-format
-msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:486
-#, c-format
-msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:491
-msgid "File Error"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:703
+#: ../src/xfdesktop-file-icon.c:705
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr ""
@@ -1188,3 +1300,6 @@ msgstr ""
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr ""
+
+#~ msgid "Core developer"
+#~ msgstr "Hovedutvikler"
