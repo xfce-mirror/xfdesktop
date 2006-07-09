@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-07-09 00:08+0200\n"
-"PO-Revision-Date: 2006-05-31 02:15+0300\n"
+"PO-Revision-Date: 2006-07-09 16:42+0300\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -72,9 +72,8 @@ msgstr "פקודה:"
 #: ../menueditor/menueditor-add-dialog.c:186
 #: ../menueditor/menueditor-edit-dialog.c:161
 #: ../menueditor/menueditor-edit-dialog.c:162
-#, fuzzy
 msgid "Themed icon:"
-msgstr "בחר סמל"
+msgstr "סמל עם נושא:"
 
 #: ../menueditor/menueditor-add-dialog.c:203
 #: ../menueditor/menueditor-add-dialog.c:204
@@ -129,34 +128,32 @@ msgstr "בחירת פקודה"
 
 #: ../menueditor/menueditor-add-dialog.c:273
 #: ../menueditor/menueditor-edit-dialog.c:249
-#, fuzzy
 msgid "Executable Files"
-msgstr "הוצאה כשלה"
+msgstr "קובץ בר-הרצה"
 
 #: ../menueditor/menueditor-add-dialog.c:288
 #: ../menueditor/menueditor-edit-dialog.c:264
 msgid "Perl Scripts"
-msgstr ""
+msgstr "תסריט Perl"
 
 #: ../menueditor/menueditor-add-dialog.c:294
 #: ../menueditor/menueditor-edit-dialog.c:270
 msgid "Python Scripts"
-msgstr ""
+msgstr "תסריט Python"
 
 #: ../menueditor/menueditor-add-dialog.c:300
 #: ../menueditor/menueditor-edit-dialog.c:276
 msgid "Ruby Scripts"
-msgstr ""
+msgstr "תסריט Ruby"
 
 #: ../menueditor/menueditor-add-dialog.c:306
 #: ../menueditor/menueditor-edit-dialog.c:282
 msgid "Shell Scripts"
-msgstr ""
+msgstr "תסריט Shell"
 
 #: ../menueditor/menueditor-add-external-dialog.c:100
-#, fuzzy
 msgid "Add external menu entry"
-msgstr "הוסף תפריט חיצוני"
+msgstr "הוסף רשומת תפריט חיצוני"
 
 #: ../menueditor/menueditor-add-external-dialog.c:122
 msgid "File"
@@ -176,9 +173,8 @@ msgstr "מקור:"
 
 #: ../menueditor/menueditor-add-external-dialog.c:137
 #: ../menueditor/menueditor-edit-external-dialog.c:117
-#, fuzzy
 msgid "Select external menu"
-msgstr "הוסף תפריט חיצוני"
+msgstr "בחר תפריט חיצוני"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
@@ -215,14 +211,12 @@ msgid "Edit menu entry"
 msgstr "ערוך רשומת תפריט"
 
 #: ../menueditor/menueditor-edit-external-dialog.c:96
-#, fuzzy
 msgid "Edit external menu entry"
-msgstr "הוסף תפריט חיצוני"
+msgstr "ערוך רשומת תפריט חיצוני"
 
 #: ../menueditor/menueditor-main.c:43
-#, fuzzy
 msgid "Xfce4-MenuEditor"
-msgstr "עורך תפריט Xfce4"
+msgstr "עורך התפריטים של Xfce4"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -230,12 +224,11 @@ msgstr "_קובץ"
 
 #: ../menueditor/menueditor-main-window.c:141
 msgid "_New"
-msgstr ""
+msgstr "_חדש"
 
 #: ../menueditor/menueditor-main-window.c:141
-#, fuzzy
 msgid "Create a new empty menu"
-msgstr "צור קובץ תפריט Xfce4 חדש"
+msgstr "צור תפריט חדש וריק"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:2028
@@ -243,12 +236,10 @@ msgid "_Open"
 msgstr "_פתיחה"
 
 #: ../menueditor/menueditor-main-window.c:142
-#, fuzzy
 msgid "Open existing menu"
-msgstr "פתח תפריט ברירת מחדל"
+msgstr "פתח תפריט קיים"
 
 #: ../menueditor/menueditor-main-window.c:143
-#, fuzzy
 msgid "Open _default menu"
 msgstr "פתח תפריט ברירת מחדל"
 
@@ -258,101 +249,87 @@ msgstr "פתח תפריט ברירת מחדל"
 
 #: ../menueditor/menueditor-main-window.c:144
 msgid "_Save"
-msgstr ""
+msgstr "_שמירה"
 
 #: ../menueditor/menueditor-main-window.c:144
-#, fuzzy
 msgid "Save modifications"
-msgstr "בטל שינויים"
+msgstr "שמור שינויים"
 
 #: ../menueditor/menueditor-main-window.c:145
-#, fuzzy
 msgid "Save _as..."
-msgstr "שמירה בשם..."
+msgstr "שמירה _בשם..."
 
 #: ../menueditor/menueditor-main-window.c:145
 msgid "Save menu under a given name"
-msgstr ""
+msgstr "שמור תפריט בשם מסויים"
 
 #: ../menueditor/menueditor-main-window.c:146
 msgid "_Close"
-msgstr ""
+msgstr "_סגירה"
 
 #: ../menueditor/menueditor-main-window.c:146
-#, fuzzy
 msgid "Close menu"
-msgstr "סגור תפריט נוכחי"
+msgstr "סגור תפריט"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "_Quit"
-msgstr "יציאה"
+msgstr "_יציאה"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "Quit Xfce4-Menueditor"
-msgstr "עורך תפריט Xfce4"
+msgstr "צא מעורך התפריטים של Xfce4"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
 msgstr "_עריכה"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "_Edit entry"
-msgstr "ערוך רשומת תפריט"
+msgstr "_ערוך רשומה"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "Edit selected entry"
-msgstr "ערוך רשומת תפריט"
+msgstr "ערוך רשומה נבחרת"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "_Add entry"
-msgstr "הוסף רשומת תפריט"
+msgstr "_הוסף רשומה"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "Add a new entry in the menu"
-msgstr "הוסף רשומה לתפריט"
+msgstr "הוסף רשומה חדשה לתפריט"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add _external"
-msgstr "הוסף תפריט חיצוני"
+msgstr "הוסף _חיצוני"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add an external entry"
-msgstr "הוסף תפריט חיצוני"
+msgstr "הוסף רשומה חיצונית"
 
 #: ../menueditor/menueditor-main-window.c:153
 msgid "_Remove entry"
-msgstr ""
+msgstr "ה_סר רשומה"
 
 #: ../menueditor/menueditor-main-window.c:153
-#, fuzzy
 msgid "Remove entry"
-msgstr "הוסף רשומת תפריט"
+msgstr "הסר רשומה"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "_Up"
-msgstr ""
+msgstr "_למעלה"
 
 #: ../menueditor/menueditor-main-window.c:154
-#, fuzzy
 msgid "Move entry up"
-msgstr "הזז את הרשומה הנוכחית למעלה"
+msgstr "הזז רשומה למעלה"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "_Down"
-msgstr ""
+msgstr "_למטה"
 
 #: ../menueditor/menueditor-main-window.c:155
-#, fuzzy
 msgid "Move entry down"
-msgstr "הזז את הרשומה הנוכחית למטה"
+msgstr "הזז רשומה למטה"
 
 #: ../menueditor/menueditor-main-window.c:157
 msgid "_Help"
@@ -363,29 +340,24 @@ msgid "_About..."
 msgstr "_אודות..."
 
 #: ../menueditor/menueditor-main-window.c:158
-#, fuzzy
 msgid "Show informations about xfce4-menueditor"
-msgstr "אין אפשרות להפעיל את עורך התפריטים של Xfce4: %s"
+msgstr "הצג מידע אודות עורך התפריטים של Xfce4"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all"
-msgstr "צמצם את העץ"
+msgstr "צמצם את הכל"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all menu entries"
-msgstr "צמצם את העץ"
+msgstr "צמצם את כל רשומות התפריטים"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all"
-msgstr "_פתח הכל"
+msgstr "הרחב הכל"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all menu entries"
-msgstr "הרחב את העץ"
+msgstr "הרחב את כל רשומות התפריטים"
 
 #: ../menueditor/menueditor-main-window.c:341
 msgid "Name"
@@ -470,7 +442,7 @@ msgstr "עורך תפריטים עבור Xfce4"
 #. Credits
 #: ../menueditor/menueditor-main-window.c:1269
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "מחבר/מתחזק"
 
 #: ../menueditor/menueditor-main-window.c:1270
 #: ../menueditor/menueditor-main-window.c:1271
@@ -487,7 +459,6 @@ msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "שינית את התפריט, האם ברצונך לשמור לפני היציאה?"
 
 #: ../menueditor/menueditor-main-window.c:1318
-#, fuzzy
 msgid "Forget modifications"
 msgstr "התעלם משינויים"
 
@@ -583,7 +554,7 @@ msgstr "הראה _סמלים בתפריט"
 
 #: ../panel-plugin/desktop-menu-plugin.c:939
 msgid "There is already a panel menu registered for this screen"
-msgstr ""
+msgstr "כבר קיים לוח תפריט רשום במסך זה"
 
 #: ../panel-plugin/desktop-menu-plugin.c:1047
 msgid "Edit Menu"
@@ -893,10 +864,8 @@ msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Pop up the menu (at the current mouse position)\n"
 
 #: ../src/main.c:290
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -windowlist  Pop up the window list (at the current mouse position)\n"
 
 #: ../src/main.c:291
 msgid "    -quit        Cause xfdesktop to quit\n"
@@ -932,8 +901,7 @@ msgstr "שולחן עבודה"
 
 #: ../src/xfdesktop-file-icon-manager.c:233
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "לא ניתן ליצור את התיקייה \"%s\" בשביל לשמור שם את פריטי שולחן העבודה:"
 
 #: ../src/xfdesktop-file-icon-manager.c:235
@@ -1340,57 +1308,3 @@ msgstr "הגדרות שולחן העבודה של Xfce 4"
 msgid "Xfce 4 Desktop Settings"
 msgstr "הגדרות שולחן העבודה Xfce 4"
 
-#, fuzzy
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "האם אתה בטוח שברצונך למחוק את \"%s\"?"
-
-#~ msgid "Core developer"
-#~ msgstr "מפתחים מרכזיים"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "הפקודה לא קיימת."
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "כל השדות צריכים להיות מלאים כדי להוסיף פריט."
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "השדה 'שם' נחוץ."
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "השדה 'מקור' נחוץ."
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "אין אפשרות לערוך קווים מפרידים"
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "קובץ %s לא קיים."
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "האם ברצונך להזיז את הפריט לתפריט האב?"
-
-#~ msgid "Edit"
-#~ msgstr "עריכה"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "הוסף תפריט חיצוני..."
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "פתח קובץ תפריט Xfce4"
-
-#~ msgid "Save current menu"
-#~ msgstr "שמור תפריט נוכחי"
-
-#~ msgid "Delete the current entry"
-#~ msgstr "מחק רשומה נוכחית"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "ארעה שגיאה בהעברת \"%s\" אל \"%s\":"
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "ארעה שגיאה בהעתקת \"%s\" אל \"%s\":"
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr "ארעה שגיאה בקישור \"%s\" אל \"%s\":"
-
-#~ msgid "File Error"
-#~ msgstr "שגיאת בקובץ"
