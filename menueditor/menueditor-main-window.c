@@ -588,6 +588,33 @@ action_save_menu (GtkAction *action, MenuEditorMainWindow *window)
 static void
 action_save_menu_as (GtkAction *action, MenuEditorMainWindow *window)
 {
+  MenuEditorMainWindowPrivate *priv = MENUEDITOR_MAIN_WINDOW_GET_PRIVATE (window);
+  GtkWidget *save_dialog;
+  
+  save_dialog = gtk_file_chooser_dialog_new (_("Save menu file as"), GTK_WINDOW (window),
+                                             GTK_FILE_CHOOSER_ACTION_SAVE,
+                                             GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+                                             GTK_STOCK_SAVE_AS, GTK_RESPONSE_ACCEPT, NULL);
+  
+  gtk_file_chooser_set_local_only (GTK_FILE_CHOOSER (save_dialog), TRUE);
+  gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (save_dialog), "menu.xml");
+  
+  if (gtk_dialog_run (GTK_DIALOG (save_dialog)) == GTK_RESPONSE_ACCEPT) {
+    gchar *filename = NULL;
+    gchar *window_title = NULL;
+    
+    filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (save_dialog));
+    
+    g_free (priv->menu_file_name);
+    priv->menu_file_name = g_strdup (filename);
+    save_treeview_in_file (window);
+    
+    window_title = g_strdup_printf ("Xfce4-MenuEditor - %s", filename);
+    gtk_window_set_title (GTK_WINDOW (window), window_title);
+    g_free (window_title);
+  }
+  
+  gtk_widget_destroy (save_dialog);
 }
 
 static void
