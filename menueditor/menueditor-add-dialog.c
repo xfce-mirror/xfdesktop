@@ -51,6 +51,7 @@ typedef struct {
 static void menueditor_add_dialog_class_init (MenuEditorAddDialogClass *);
 static void menueditor_add_dialog_init (MenuEditorAddDialog *);
 
+static void cb_chooser_icon_update_preview (GtkFileChooser *, GtkImage *);
 static void cb_browse_button_clicked (GtkButton *, MenuEditorAddDialog *);
 static void cb_combo_changed (GtkComboBox *, MenuEditorAddDialog *);
 static void cb_radio_button_themed_icon_toggled (GtkToggleButton *, MenuEditorAddDialog *);
@@ -106,6 +107,7 @@ menueditor_add_dialog_init (MenuEditorAddDialog * dialog)
   GtkWidget *hbox;
   GtkWidget *button_browse;
   GtkFileFilter *filter;
+  GtkWidget *preview;
   GSList *radio_button_group = NULL;
   
   gtk_window_set_title (GTK_WINDOW (dialog), _("Add menu entry"));
@@ -227,6 +229,12 @@ menueditor_add_dialog_init (MenuEditorAddDialog * dialog)
   gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (priv->chooser_icon), filter);
   gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (priv->chooser_icon), filter);
   
+  preview = gtk_image_new ();
+  gtk_widget_show (preview);
+  gtk_file_chooser_set_preview_widget (GTK_FILE_CHOOSER (priv->chooser_icon), preview);
+  gtk_file_chooser_set_preview_widget_active (GTK_FILE_CHOOSER (priv->chooser_icon), TRUE);
+  g_signal_connect (G_OBJECT (priv->chooser_icon), "update-preview", G_CALLBACK (cb_chooser_icon_update_preview), preview);
+  
   gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (priv->chooser_icon), DATADIR "/icons");
   gtk_widget_show (priv->chooser_icon);
   gtk_table_attach (GTK_TABLE (table), priv->chooser_icon, 1, 2, 4, 5, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 6);
@@ -247,6 +255,25 @@ menueditor_add_dialog_init (MenuEditorAddDialog * dialog)
 /*************/
 /* internals */
 /*************/
+static void
+cb_chooser_icon_update_preview (GtkFileChooser * chooser, GtkImage *preview)
+{
+  gchar *filename;
+  GdkPixbuf *pix = NULL;
+
+  filename = gtk_file_chooser_get_filename (chooser);
+  if (g_file_test (filename, G_FILE_TEST_IS_REGULAR))
+    pix = gdk_pixbuf_new_from_file_at_size (filename, 64, 64, NULL);
+  g_free (filename);
+
+  if (G_IS_OBJECT (pix)) {
+    gtk_image_set_from_pixbuf (preview, pix);
+    g_object_unref (G_OBJECT (pix));
+  }
+  
+  gtk_file_chooser_set_preview_widget_active (chooser, G_IS_OBJECT (pix));
+}
+
 static void
 cb_browse_button_clicked (GtkButton *button, MenuEditorAddDialog *dialog)
 {
