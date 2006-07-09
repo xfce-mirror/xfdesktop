@@ -9,7 +9,6 @@ xfce4_menueditor_SOURCES =						\
 	menueditor-edit-dialog.c					\
 	menueditor-edit-external-dialog.h				\
 	menueditor-edit-external-dialog.c				\
-	menueditor-main.h						\
 	menueditor-main.c						\
 	menueditor-main-window.h					\
 	menueditor-main-window.c					
