@@ -1,3 +1,1748 @@
+2006-07-08 22:06  pollux
+
+	* po/POTFILES.in, po/ar.po, po/az.po, po/be.po, po/bg.po,
+	  po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/el.po,
+	  po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po, po/he.po,
+	  po/hi.po, po/hu.po, po/hy.po, po/it.po, po/ja.po, po/ko.po,
+	  po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po,
+	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po,
+	  po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po,
+	  po/xfdesktop.pot, po/zh_CN.po, po/zh_TW.po: update-po to include
+	  MenuEditor changes
+
+2006-07-08 22:06  pollux
+
+	* menueditor/Makefile.am, menueditor/TODO,
+	  menueditor/about_dialog.c, menueditor/about_dialog.h,
+	  menueditor/add_dialog.c, menueditor/add_dialog.h,
+	  menueditor/add_menu_dialog.c, menueditor/add_menu_dialog.h,
+	  menueditor/dnd.c, menueditor/dnd.h, menueditor/edit_dialog.c,
+	  menueditor/edit_dialog.h, menueditor/menueditor-add-dialog.c,
+	  menueditor/menueditor-add-dialog.h,
+	  menueditor/menueditor-add-external-dialog.c,
+	  menueditor/menueditor-add-external-dialog.h,
+	  menueditor/menueditor-edit-dialog.c,
+	  menueditor/menueditor-edit-dialog.h,
+	  menueditor/menueditor-edit-external-dialog.c,
+	  menueditor/menueditor-edit-external-dialog.h,
+	  menueditor/menueditor-main-window.c,
+	  menueditor/menueditor-main-window.h,
+	  menueditor/menueditor-main.c, menueditor/menueditor.c,
+	  menueditor/menueditor.h, menueditor/utils.c, menueditor/utils.h,
+	  menueditor/xfce4-menueditor.ui: Clean up MenuEditor:
+	  
+	  * Dialog are now classes deriving XfceTitledDialog
+	  * Source files have been renamed for to reflect class name
+	  * Uses GtkUIManager to build the GUI
+	  * Bug fixes and plug some memleaks
+
+2006-07-05 20:43  olivier
+
+	* configure.ac.in: Update version
+
+2006-07-05 19:53  olivier
+
+	* modules/menu/Makefile.am: Add missing LIBX11_LDFLAGS everywhere
+	  (bug #1984)
+
+2006-07-05 19:50  olivier
+
+	* panel-plugin/Makefile.am: Add missing LIBX11_LDFLAGS (bug #1984)
+
+2006-07-05 19:43  olivier
+
+	* common/Makefile.am, menueditor/Makefile.am,
+	  modules/menu/Makefile.am, settings/Makefile.am, src/Makefile.am:
+	  Use $(x) instaed of @x@ all over the place.
+
+2006-07-05 19:30  olivier
+
+	* panel-plugin/Makefile.am: Use fix suggested by Benny
+
+2006-07-05 18:44  olivier
+
+	* modules/menu/Makefile.am: Add X11 CFLAGS/LIBS (should fix bug
+	  #1984)
+
+2006-07-01 07:03  olivier
+
+	* modules/menu/desktop-menu-dentry.c,
+	  modules/menu/desktop-menu-file.c, modules/menu/desktop-menu.c,
+	  modules/menu/desktop-menuspec.c: Filter out KDE screensaver
+	  files from the menu (bug #1928)
+
+2006-07-01 07:01  olivier
+
+	* panel-plugin/xfce4-popup-menu.c,
+	  panel-plugin/xfce4-popup-menu.h: Add missing bits
+
+2006-07-01 07:01  olivier
+
+	* panel-plugin/Makefile.am, panel-plugin/desktop-menu-plugin.c:
+	  Add xfce-menu remote popup and shortcut (bug #1971)
+
+2006-06-28 18:55  eulex
+
+	* libexo/trunk/po/sv.po, xfcalendar/trunk/po/sv.po,
+	  xfce4-panel/trunk/po/sv.po, xfce4-session/trunk/po/sv.po,
+	  po/sv.po: Some very minor changes to tidy up the contents of the
+	  settings menu in swedish, not worthy a changelog entry imho,
+	  bitch at me if I'm wrong.
+
+2006-06-18 15:57  pollux
+
+	* menueditor/menueditor.c, menueditor/utils.c, menueditor/utils.h:
+	  no need for workarounds anymore (fix bug #1657 BTW)
+
+2006-06-16 20:22  pollux
+
+	* menueditor/add_dialog.c, menueditor/add_menu_dialog.c,
+	  menueditor/dnd.c, menueditor/dnd.h, menueditor/edit_dialog.c,
+	  menueditor/menueditor.c, menueditor/menueditor.h,
+	  menueditor/utils.c: fix cleanly submenu DnD once and for all (i
+	  hope)
+
+2006-06-12 14:26  hydonsingore
+
+	* libxfcegui4/trunk/po/ChangeLog, libxfcegui4/trunk/po/zh_TW.po,
+	  mousepad/trunk/po/ChangeLog, mousepad/trunk/po/zh_TW.po,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/zh_TW.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/zh_TW.po,
+	  xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/zh_TW.po,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/zh_TW.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/zh_TW.po,
+	  xfce-utils/trunk/po/ChangeLog, xfce-utils/trunk/po/zh_TW.po,
+	  xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/zh_TW.po,
+	  xfce4-icon-theme/trunk/po/ChangeLog,
+	  xfce4-icon-theme/trunk/po/zh_TW.po,
+	  xfce4-mailwatch-plugin/trunk/po/ChangeLog,
+	  xfce4-mailwatch-plugin/trunk/po/zh_TW.po,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-mixer/trunk/po/zh_TW.po,
+	  xfce4-panel/trunk/po/ChangeLog, xfce4-panel/trunk/po/zh_TW.po,
+	  xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/zh_TW.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/zh_TW.po, po/ChangeLog,
+	  po/zh_TW.po, xfmedia/trunk/po/ChangeLog,
+	  xfmedia/trunk/po/zh_TW.po, xfprint/trunk/po/ChangeLog,
+	  xfprint/trunk/po/zh_TW.po, xfwm4/trunk/po/ChangeLog,
+	  xfwm4/trunk/po/zh_TW.po: Update traditional Chinese
+	  translations; Modify personal e-mail address.
+
+2006-06-12 12:03  pollux
+
+	* menueditor/menueditor.c, menueditor/menueditor.h: fix crash in
+	  menuditor (bug #1913)
+
+2006-06-10 18:24  pollux
+
+	* menueditor/utils.c: i definely have a mental blocage with
+	  pointer incrementation (fix bug #1863)
+
+2006-06-10 16:20  pollux
+
+	* menueditor/dnd.c, menueditor/dnd.h, menueditor/menueditor.c: fix
+	  submenu DnD (DnD in TreeView sucks)
+
+2006-06-07 05:45  kelnos
+
+	* modules/menu/desktop-menu-file.c: convert filenames in the cmd=
+	  field from utf-8 to the filesystem encoding
+
+2006-06-07 04:24  kelnos
+
+	* modules/menu/desktop-menu-dentry.c: tryexec patch from olivier,
+	  some cleanups
+
+2006-06-05 23:11  adriano
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/pt_BR.po,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/pt_BR.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/pt_BR.po,
+	  xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/pt_BR.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/pt_BR.po,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-mixer/trunk/po/pt_BR.po,
+	  xfce4-panel/trunk/po/ChangeLog, xfce4-panel/trunk/po/pt_BR.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/pt_BR.po, po/ChangeLog,
+	  po/pt_BR.po, xfwm4/trunk/po/ChangeLog, xfwm4/trunk/po/pt_BR.po:
+	  Updated brazilian portuguese translations.
+
+2006-06-04 18:42  pollux
+
+	* menueditor/utils.c: close all the left-opened menu tag when last
+	  menu entry is a sub-menu (fix bug #1677)
+
+2006-06-04 18:38  pollux
+
+	* menueditor/dnd.c: fix incorrect free when a .desktop file
+	  without Icon field set is DnD (bug #1676)
+
+2006-06-04 08:12  eulex
+
+	* libexo/trunk/po/ChangeLog, libxfcegui4/trunk/po/ChangeLog,
+	  terminal/trunk/po/ChangeLog, thunar/trunk/po/ChangeLog,
+	  xfcalendar/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-utils/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog, po/ChangeLog,
+	  xfwm4/trunk/po/ChangeLog: Changelogs for appfinder, exo, utils,
+	  mcs-plugins, mcs-manager,
+	  xfce4-session, xfce4-mixer, thunar, libgui, xfwm4, the panel,
+	  orage, trigger-launcher and terminal updated.
+	  Also couldn't resist to fix a small error in the xfce4-mixer
+	  Changelog.
+	  Didn't updated the changelog of xfprint, because I discovered
+	  that that translation wasn't updated, it had just slipped through
+	  the commit by mistake.
+
+2006-06-04 00:10  eulex
+
+	* libxfcegui4/trunk/po/sv.po, thunar/trunk/po/sv.po,
+	  xfcalendar/trunk/po/sv.po, xfce-mcs-plugins/trunk/po/sv.po,
+	  xfce-utils/trunk/po/sv.po, xfce4-panel/trunk/po/sv.po,
+	  xfce4-session/trunk/po/sv.po, po/sv.po, xfprint/trunk/po/sv.po,
+	  xfwm4/trunk/po/sv.po: obsolete strings in the swedish
+	  translations removed
+
+2006-06-03 23:44  eulex
+
+	* libexo/trunk/po/LINGUAS, libexo/trunk/po/sv.po,
+	  libxfcegui4/trunk/po/sv.po, terminal/trunk/po/LINGUAS,
+	  terminal/trunk/po/sv.po, thunar/trunk/po/sv.po,
+	  xfcalendar/trunk/po/sv.po, xfce-mcs-manager/trunk/po/sv.po,
+	  xfce-mcs-plugins/trunk/po/sv.po, xfce-utils/trunk/po/sv.po,
+	  xfce4-appfinder/trunk/po/sv.po, xfce4-mixer/trunk/po/sv.po,
+	  xfce4-panel/trunk/po/sv.po, xfce4-session/trunk/po/sv.po,
+	  xfce4-trigger-launcher/trunk/po/sv.po, po/sv.po,
+	  xfprint/trunk/po/sv.po, xfwm4/trunk/po/sv.po: Merged Swedish
+	  translations (by me and Jens Hagerman) into the xfce svn.
+	  This includes updated translations of appfinder, xfce-utils,
+	  mcs-plugins,
+	  xfprint, xfce4-session, xfce4-mixer, thunar, libxfcegui4, xfwm4,
+	  xfce4-panel, xfdesktop, orage, xfce4-trigger-launcher and
+	  mcs-manager,
+	  and added translations for libexo and terminal.
+	  The appropriate LINGUAS files were also updated.
+
+2006-05-30 23:21  yuvaltanny
+
+	* terminal/trunk/po/he.po, xfce-mcs-plugins/trunk/po/he.po,
+	  xfce4-mixer/trunk/po/he.po, xfce4-panel/trunk/po/he.po,
+	  xfce4-trigger-launcher/trunk/po/he.po, po/he.po,
+	  xfwm4/trunk/po/he.po: Update Hebrew translation
+
+2006-05-30 04:25  kelnos
+
+	* menu.xml, menu.xml.az, menu.xml.ca, menu.xml.cs, menu.xml.da,
+	  menu.xml.de, menu.xml.el, menu.xml.es, menu.xml.et, menu.xml.eu,
+	  menu.xml.fa_IR, menu.xml.fi, menu.xml.fr, menu.xml.he,
+	  menu.xml.hu, menu.xml.ja, menu.xml.ko, menu.xml.ms, menu.xml.nl,
+	  menu.xml.pl, menu.xml.pt_BR, menu.xml.ro, menu.xml.ru,
+	  menu.xml.sk, menu.xml.sv, menu.xml.ta, menu.xml.tr, menu.xml.uk,
+	  menu.xml.vi, menu.xml.zh_CN, menu.xml.zh_TW: change default menu
+	  to use thunar as the file manager instead of xffm
+	  (patch from olivier, bug 1871)
+
+2006-05-27 15:25  daichi
+
+	* terminal/trunk/po/ChangeLog, terminal/trunk/po/pl.po,
+	  xarchiver/trunk/po/ChangeLog, xarchiver/trunk/po/pl.po,
+	  po/ChangeLog, po/pl.po, xfwm4/trunk/po/ChangeLog,
+	  xfwm4/trunk/po/pl.po: Updated Polish translations by Szymon
+	  Kalasz <szymon_maestro@gazeta.pl>.
+
+2006-05-25 20:47  pollux
+
+	* menueditor/utils.c: i prefer that syntax
+
+2006-05-25 20:33  kelnos
+
+	* autogen.sh, configure.ac.in, configure.in.in: i like
+	  configure.ac{,.in} better. what can i say, i'm anal.
+
+2006-05-25 20:33  kelnos
+
+	* menueditor/utils.c: fix gcc4 warning (i think that actually
+	  might be a bug, even)
+
+2006-05-25 20:07  stavrosg
+
+	* po/ChangeLog, po/el.po: Greek translations update
+
+2006-05-25 18:40  pollux
+
+	* xfce4-session/trunk/autogen.sh,
+	  xfce4-session/trunk/configure.in.in, xfce4-session/trunk/po,
+	  xfce4-session/trunk/po/LINGUAS,
+	  xfce4-trigger-launcher/trunk/autogen.sh,
+	  xfce4-trigger-launcher/trunk/configure.ac,
+	  xfce4-trigger-launcher/trunk/configure.in.in,
+	  xfce4-trigger-launcher/trunk/po/LINGUAS, ., autogen.sh,
+	  configure.ac, configure.in.in, panel-plugin, po, po/LINGUAS,
+	  xfwm4/trunk, xfwm4/trunk/autogen.sh,
+	  xfwm4/trunk/configure.ac.in, xfwm4/trunk/mcs-plugin,
+	  xfwm4/trunk/po, xfwm4/trunk/po/LINGUAS, xfwm4/trunk/src,
+	  xfwm4/trunk/themes/katiola, xfwm4/trunk/themes/moheli,
+	  xfwm4/trunk/themes/stoneage: * add LINGUAS support
+	  * update svn:ignore
+
+2006-05-25 07:34  kelnos
+
+	* src/xfdesktop-file-icon-manager.c, src/xfdesktop-file-icon.c: *
+	  fix thunar-vfs finalize warning when the user manually refreshes
+	  the desktop
+	  after moving a removable volume icon, but before the timeout
+	  after which the
+	  icon positions are flushed to disk.
+	  * while i'm here, also flush the icon positions before
+	  finalizing the icon
+	  view manager, if necessary.
+
+2006-05-25 07:04  kelnos
+
+	* modules/menu/desktop-menuspec.c,
+	  modules/menu/xfce-registered-categories.xml,
+	  modules/menu/xfce-registered-categories.xml.cs,
+	  modules/menu/xfce-registered-categories.xml.el,
+	  modules/menu/xfce-registered-categories.xml.es,
+	  modules/menu/xfce-registered-categories.xml.eu,
+	  modules/menu/xfce-registered-categories.xml.fi,
+	  modules/menu/xfce-registered-categories.xml.fr,
+	  modules/menu/xfce-registered-categories.xml.he,
+	  modules/menu/xfce-registered-categories.xml.hu,
+	  modules/menu/xfce-registered-categories.xml.ja,
+	  modules/menu/xfce-registered-categories.xml.nl,
+	  modules/menu/xfce-registered-categories.xml.pl,
+	  modules/menu/xfce-registered-categories.xml.pt_BR,
+	  modules/menu/xfce-registered-categories.xml.ro,
+	  modules/menu/xfce-registered-categories.xml.ru,
+	  modules/menu/xfce-registered-categories.xml.sk,
+	  modules/menu/xfce-registered-categories.xml.sv,
+	  modules/menu/xfce-registered-categories.xml.zh_CN,
+	  modules/menu/xfce-registered-categories.xml.zh_TW: add OFFICE
+	  category to builtin icons, change PRODUCTIVITY to OFFICE in all
+	  menu categories
+
+2006-05-23 17:32  hydonsingore
+
+	* xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/zh_TW.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/zh_TW.po,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-mixer/trunk/po/zh_TW.po,
+	  xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/zh_TW.po, po/ChangeLog, po/zh_TW.po,
+	  xfwm4/trunk/po/ChangeLog, xfwm4/trunk/po/zh_TW.po: Correct
+	  strings containing Button Label in traditional Chinese
+	  translations.
+
+2006-05-23 09:26  kelnos
+
+	* src/xfdesktop-file-icon-manager.c: * show 'Open' item for all
+	  removable volumes, even if they don't have a valid
+	  ThunarVfsInfo, since we try to mount it on activate now.
+	  * fix a glib warning when removing the removable volumes from
+	  the desktop
+	  (bug 1839)
+
+2006-05-23 09:14  kelnos
+
+	* src/xfdesktop-file-icon-manager.c: redo menu separator handling
+	  to ensure we don't get double separators when
+	  removable volumes don't have mountpoints. at least i think this
+	  works.
+	  (bug 1799)
+
+2006-05-23 08:40  kelnos
+
+	* src/xfdesktop-file-icon-manager.c: ensure that the file icon's
+	  ThunarVfsInfo is valid before trying to activate
+	  it in the case of removable volumes. need to make sure the info
+	  is up-to-date,
+	  since another entity might have mounted or unmounted the volume
+	  without our
+	  knowledge (bug 1897)
+
+2006-05-23 08:22  kelnos
+
+	* src/xfdesktop-file-icon-manager.c: instead of fixing bugs, let's
+	  instead add XDirectSave support, as well as
+	  support for dragging and dropping links from firefox (and
+	  presumably other
+	  web browsers) on the desktop
+
+2006-05-23 02:45  daichi
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/fi.po,
+	  libxfce4util/trunk/po/ChangeLog, libxfce4util/trunk/po/fi.po,
+	  libxfcegui4/branches/xfce_4_2/po/ChangeLog,
+	  libxfcegui4/branches/xfce_4_2/po/fi.po,
+	  libxfcegui4/trunk/po/ChangeLog, libxfcegui4/trunk/po/fi.po,
+	  mousepad/trunk/po/ChangeLog, mousepad/trunk/po/fi.po,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/fi.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/fi.po,
+	  xfcalendar/branches/xfce_4_2/po/ChangeLog,
+	  xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/fi.po,
+	  xfce-mcs-manager/branches/xfce_4_2/po/ChangeLog,
+	  xfce-mcs-manager/branches/xfce_4_2/po/fi.po,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/fi.po,
+	  xfce-mcs-plugins/branches/xfce_4_2/po/ChangeLog,
+	  xfce-mcs-plugins/branches/xfce_4_2/po/fi.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/fi.po,
+	  xfce-utils/branches/xfce_4_2/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_2/po/fi.po,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.az,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.ca,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.de,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.es,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.eu,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.fi,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.fr,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.he,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.az,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.ca,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.de,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.es,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.eu,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.fi,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.fr,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.it,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.ja,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.lt,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.ro,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.ru,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.sk,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.vi,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.html.zh_TW,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.it,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.ja,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.lt,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.ro,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.ru,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.sk,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.uk,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.vi,
+	  xfce-utils/branches/xfce_4_2/xfce4-about/AUTHORS.zh_TW,
+	  xfce-utils/trunk/po/ChangeLog, xfce-utils/trunk/po/fi.po,
+	  xfce-utils/trunk/xfce4-about/AUTHORS,
+	  xfce4-appfinder/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-appfinder/branches/xfce_4_2/po/fi.po,
+	  xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/fi.po,
+	  xfce4-icon-theme/trunk/po/ChangeLog,
+	  xfce4-icon-theme/trunk/po/fi.po,
+	  xfce4-iconbox/branches/xfce_4_2/po/fi.po,
+	  xfce4-mailwatch-plugin/trunk/po/fi.po,
+	  xfce4-mixer/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-mixer/branches/xfce_4_2/po/fi.po,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-mixer/trunk/po/fi.po,
+	  xfce4-panel/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-panel/branches/xfce_4_2/po/fi.po,
+	  xfce4-panel/trunk/po/ChangeLog, xfce4-panel/trunk/po/fi.po,
+	  xfce4-session/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_2/po/fi.po,
+	  xfce4-session/trunk/po/ChangeLog, xfce4-session/trunk/po/fi.po,
+	  xfce4-toys/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-toys/branches/xfce_4_2/po/fi.po,
+	  xfce4-trigger-launcher/branches/xfce_4_2/po/ChangeLog,
+	  xfce4-trigger-launcher/branches/xfce_4_2/po/fi.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/fi.po,
+	  xfdesktop/branches/xfce_4_2/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_2/po/fi.po, po/ChangeLog, po/fi.po,
+	  xffm/branches/xfce_4_2/po/ChangeLog,
+	  xffm/branches/xfce_4_2/po/fi.po, xfmedia/trunk/po/fi.po,
+	  xfprint/branches/xfce_4_2/po/ChangeLog,
+	  xfprint/branches/xfce_4_2/po/fi.po, xfprint/trunk/po/ChangeLog,
+	  xfprint/trunk/po/fi.po, xfwm4/branches/xfce_4_2/po/ChangeLog,
+	  xfwm4/branches/xfce_4_2/po/fi.po, xfwm4/trunk/po/ChangeLog,
+	  xfwm4/trunk/po/fi.po: Changed an address.
+
+2006-05-22 21:40  piarres
+
+	* po/ChangeLog, po/eu.po: [l10n:eu] Basque trasnlation update
+
+2006-05-21 09:06  jari
+
+	* terminal/trunk/po/fi.po, po/fi.po, xfwm4/trunk/po/fi.po: Updated
+	  Finnish translations.
+
+2006-05-21 08:30  kelnos
+
+	* src/Makefile.am, src/xfdesktop-file-icon-manager.c,
+	  src/xfdesktop-file-icon.c, src/xfdesktop-file-utils.c,
+	  src/xfdesktop-file-utils.h: handle interactive job signals,
+	  handle a coupler more errors gracefully.
+	  need to do something special with the multiple-file case.
+
+2006-05-21 07:52  sas
+
+	* po/ChangeLog, po/hu.po: hu trunk: desktop update
+
+2006-05-21 04:59  daichi
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/ja.po,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/ja.po,
+	  po/ChangeLog, po/ja.po, xfwm4/trunk/po/ChangeLog,
+	  xfwm4/trunk/po/ja.po: Updated Japanese translations.
+
+2006-05-21 02:46  daichi
+
+	* po/ChangeLog, po/ar.po, po/az.po, po/be.po, po/bg.po,
+	  po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/el.po,
+	  po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po, po/he.po,
+	  po/hi.po, po/hu.po, po/hy.po, po/it.po, po/ja.po, po/ko.po,
+	  po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po,
+	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po,
+	  po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po,
+	  po/xfdesktop.pot, po/zh_CN.po, po/zh_TW.po: Updated.
+
+2006-05-20 23:28  kelnos
+
+	* src/xfdesktop-file-icon-manager.c: don't ignore GError return
+	  from thunar_vfs_copy_file() or
+	  thunar_vfs_create_file() when creating a file from a template
+
+2006-05-20 22:05  kelnos
+
+	* src/main.c, src/xfce-desktop.c, src/xfce-desktop.h,
+	  src/xfdesktop.def: * instruct the session manager to logout on
+	  WM_DELETE (bug 1776)
+	  * remove the old exported quit() function, as the menu hasn't
+	  used it in a
+	  long time.
+	  * remove xfdesktop.def, as it's not needed anymore.
+
+2006-05-20 21:10  kelnos
+
+	* README: add section about customising the icon view text, and
+	  about turning
+	  on or off menu images, to the README
+
+2006-05-20 20:50  kelnos
+
+	* src/xfdesktop-icon-view.c: fix label-alpha style property setting
+
+2006-05-19 08:15  kelnos
+
+	* panel-plugin/desktop-menu-plugin.c: add 'edit menu' item to
+	  panel right-click menu, patch from nick (bug 1824)
+
+2006-05-17 14:44  jari
+
+	* xfce4-mixer/trunk/po/fi.po, po/fi.po: Finnish translations
+	  updated.
+
+2006-05-15 05:12  kelnos
+
+	* src/xfdesktop-icon-view.c: i'm relatively sure this just isn't
+	  necessary anymore. i'm not convinced it
+	  ever was, actually. should speed up repaints.
+
+2006-05-14 05:18  kelnos
+
+	* panel-plugin/desktop-menu-plugin.c: er, that introduces a
+	  memleak every time the menu is popped up. bad!
+
+2006-05-14 05:12  kelnos
+
+	* panel-plugin/desktop-menu-plugin.c: fix menu positioning for
+	  floating panels, patch from juha kautto (bug 1660)
+
+2006-05-13 20:17  paurullan
+
+	* terminal/trunk/po/ChangeLog, terminal/trunk/po/ca.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/ca.po,
+	  xfburn/trunk/po/ChangeLog, xfburn/trunk/po/ca.po,
+	  xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/ca.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/ca.po, xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-panel/trunk/po/ca.po, xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/ca.po, po/ChangeLog, po/ca.po: [i18n]
+	  catalan
+	  Update various translations
+
+2006-05-13 08:19  kelnos
+
+	* src/xfdesktop-icon-view.c: optimise the mouseover redraw: only
+	  invalidate the pixbuf, since that's all
+	  that's changed
+
+2006-05-13 07:57  kelnos
+
+	* src/xfdesktop-icon-view.c: fix text drawing glitch when going
+	  between selected and not selected. much
+	  simpler than before, too.
+
+2006-05-13 07:08  kelnos
+
+	* src/xfdesktop-icon-view.c: * add variable alpha channel to the
+	  icon view text background
+	  * rework a lot of the painting and expose handling. i might
+	  have introduced
+	  some new drawing glitches, but i fixed some as well, and
+	  removed some
+	  spurious repaints.
+
+2006-05-13 06:04  daichi
+
+	* libexo/trunk/po/ChangeLog, mousepad/trunk/po/ChangeLog,
+	  terminal/trunk/po/ChangeLog, thunar/trunk/po/ChangeLog,
+	  xarchiver/trunk/po/ChangeLog, xfcalendar/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog, po/ChangeLog: Updated.
+
+2006-05-13 05:45  hydonsingore
+
+	* po/ChangeLog, po/zh_TW.po: Update traditional Chinese
+	  translations.
+
+2006-05-13 04:56  daichi
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/pl.po,
+	  libxfce4util/trunk/po/ChangeLog, libxfce4util/trunk/po/pl.po,
+	  mousepad/trunk/po/ChangeLog, mousepad/trunk/po/pl.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/pl.po,
+	  xarchiver/trunk/po/ChangeLog, xfcalendar/trunk/po/pl.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/pl.po, xfce4-mixer/trunk/po/ChangeLog,
+	  xfce4-mixer/trunk/po/pl.po, xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-panel/trunk/po/pl.po, xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/pl.po, po/ChangeLog, po/pl.po,
+	  xfwm4/trunk/po/ChangeLog, xfwm4/trunk/po/pl.po: Updated Polish
+	  translations by Szymon Kalasz <szymon_maestro@gazeta.pl>.
+
+2006-05-11 19:00  benny
+
+	* settings/appearance-settings.c: Use XfceTitledDialog. Set
+	  "mcs-plugin-icon-name" property.
+
+2006-05-10 14:14  jari
+
+	* libexo/trunk/po/fi.po, thunar/trunk/po/fi.po, po/fi.po: Finnish
+	  translations updated.
+
+2006-05-10 09:11  kelnos
+
+	* src/xfdesktop-file-icon-manager.c: fix crashes when launching or
+	  popping up the menu on removable volumes that
+	  are unmounted and do not have mount points (bug 1763)
+
+2006-05-10 08:45  kelnos
+
+	* src/xfdesktop-file-icon-manager.c: 'URL Launcher' -> 'URL Link'.
+	  yes, i'm nitpicky.
+
+2006-05-10 08:43  kelnos
+
+	* src/xfdesktop-file-icon-manager.c: 'Edit' -> 'Edit Launcher'
+
+2006-05-10 08:39  kelnos
+
+	* TODO, src/xfdesktop-file-icon-manager.c: add 'Edit' item for
+	  .desktop launchers so they can be edited with the libexo
+	  desktop item launcher. update todo
+
+2006-05-10 08:19  kelnos
+
+	* src/xfdesktop-file-icon-manager.c: add support for creation of
+	  launchers and url launchers using
+	  exo-desktop-item-edit. rearrange right-click menu a bit.
+
+2006-05-07 10:55  daichi
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/pl.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/pl.po,
+	  xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/pl.po,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/pl.po,
+	  xfce4-session/trunk/po/ChangeLog, xfce4-session/trunk/po/pl.po,
+	  po/ChangeLog, po/pl.po, xfmedia/trunk/po/ChangeLog,
+	  xfmedia/trunk/po/pl.po, xfwm4/trunk/po/ChangeLog,
+	  xfwm4/trunk/po/pl.po: Updated Polish translations by Piotr
+	  Malinski <admin@rk.edu.pl>.
+
+2006-05-06 17:57  adriano
+
+	* libexo/trunk/po/pt_BR.po, mousepad/trunk/po/pt_BR.po,
+	  terminal/trunk/po/pt_BR.po, thunar/trunk/po/pt_BR.po,
+	  xfce-mcs-manager/trunk/po/pt_BR.po,
+	  xfce4-panel/trunk/po/pt_BR.po, xfce4-session/trunk/po/pt_BR.po,
+	  po/pt_BR.po, xfprint/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_BR.po:
+	  Updated Brazilian Portuguese translations.
+
+2006-05-06 14:30  stavrosg
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/el.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/el.po,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/el.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/el.po,
+	  xfce4-mailwatch-plugin/trunk/po/el.po,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-mixer/trunk/po/el.po,
+	  xfce4-panel/trunk/po/ChangeLog, xfce4-panel/trunk/po/el.po,
+	  xfce4-session/trunk/po/ChangeLog, xfce4-session/trunk/po/el.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/el.po, po/ChangeLog, po/el.po,
+	  xfprint/trunk/po/ChangeLog, xfprint/trunk/po/el.po,
+	  xfwm4/trunk/po/ChangeLog, xfwm4/trunk/po/el.po: Greek
+	  translations update.
+
+2006-05-05 21:25  daichi
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/cs.po,
+	  libxfcegui4/trunk/po/ChangeLog, libxfcegui4/trunk/po/cs.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/cs.po, po/ChangeLog, po/cs.po,
+	  xfprint/trunk/po/ChangeLog, xfprint/trunk/po/cs.po,
+	  xfwm4/trunk/po/ChangeLog, xfwm4/trunk/po/cs.po: Updated Czech
+	  translations by Michal Varady <miko.vaji@gmail.com>.
+
+2006-05-05 21:01  daichi
+
+	* libxfcegui4/trunk/po/be.po, libxfcegui4/trunk/po/bn_IN.po,
+	  libxfcegui4/trunk/po/ca.po, libxfcegui4/trunk/po/cs.po,
+	  libxfcegui4/trunk/po/de.po, libxfcegui4/trunk/po/el.po,
+	  libxfcegui4/trunk/po/en_GB.po, libxfcegui4/trunk/po/eo.po,
+	  libxfcegui4/trunk/po/es.po, libxfcegui4/trunk/po/et.po,
+	  libxfcegui4/trunk/po/eu.po, libxfcegui4/trunk/po/fa.po,
+	  libxfcegui4/trunk/po/fi.po, libxfcegui4/trunk/po/fr.po,
+	  libxfcegui4/trunk/po/gu.po, libxfcegui4/trunk/po/he.po,
+	  libxfcegui4/trunk/po/hu.po, libxfcegui4/trunk/po/hy.po,
+	  libxfcegui4/trunk/po/it.po, libxfcegui4/trunk/po/ja.po,
+	  libxfcegui4/trunk/po/ko.po,
+	  libxfcegui4/trunk/po/libxfcegui4.pot,
+	  libxfcegui4/trunk/po/lt.po, libxfcegui4/trunk/po/mr.po,
+	  libxfcegui4/trunk/po/nl.po, libxfcegui4/trunk/po/pa.po,
+	  libxfcegui4/trunk/po/pl.po, libxfcegui4/trunk/po/pt_BR.po,
+	  libxfcegui4/trunk/po/ro.po, libxfcegui4/trunk/po/ru.po,
+	  libxfcegui4/trunk/po/sk.po, libxfcegui4/trunk/po/sv.po,
+	  libxfcegui4/trunk/po/ta.po, libxfcegui4/trunk/po/uk.po,
+	  libxfcegui4/trunk/po/zh_CN.po, libxfcegui4/trunk/po/zh_TW.po,
+	  xfcalendar/trunk/po/ar.po, xfcalendar/trunk/po/az.po,
+	  xfcalendar/trunk/po/be.po, xfcalendar/trunk/po/bg.po,
+	  xfcalendar/trunk/po/bn_IN.po, xfcalendar/trunk/po/ca.po,
+	  xfcalendar/trunk/po/cs.po, xfcalendar/trunk/po/de.po,
+	  xfcalendar/trunk/po/el.po, xfcalendar/trunk/po/en_GB.po,
+	  xfcalendar/trunk/po/eo.po, xfcalendar/trunk/po/es.po,
+	  xfcalendar/trunk/po/et.po, xfcalendar/trunk/po/eu.po,
+	  xfcalendar/trunk/po/fa.po, xfcalendar/trunk/po/fi.po,
+	  xfcalendar/trunk/po/fr.po, xfcalendar/trunk/po/gu.po,
+	  xfcalendar/trunk/po/he.po, xfcalendar/trunk/po/hi.po,
+	  xfcalendar/trunk/po/hu.po, xfcalendar/trunk/po/hy.po,
+	  xfcalendar/trunk/po/it.po, xfcalendar/trunk/po/ja.po,
+	  xfcalendar/trunk/po/ko.po, xfcalendar/trunk/po/lt.po,
+	  xfcalendar/trunk/po/mr.po, xfcalendar/trunk/po/ms.po,
+	  xfcalendar/trunk/po/nb_NO.po, xfcalendar/trunk/po/nl.po,
+	  xfcalendar/trunk/po/orage.pot, xfcalendar/trunk/po/pa.po,
+	  xfcalendar/trunk/po/pl.po, xfcalendar/trunk/po/pt_BR.po,
+	  xfcalendar/trunk/po/pt_PT.po, xfcalendar/trunk/po/ro.po,
+	  xfcalendar/trunk/po/ru.po, xfcalendar/trunk/po/sk.po,
+	  xfcalendar/trunk/po/sv.po, xfcalendar/trunk/po/ta.po,
+	  xfcalendar/trunk/po/tr.po, xfcalendar/trunk/po/uk.po,
+	  xfcalendar/trunk/po/vi.po, xfcalendar/trunk/po/zh_CN.po,
+	  xfcalendar/trunk/po/zh_TW.po, xfce-mcs-manager/trunk/po/ar.po,
+	  xfce-mcs-manager/trunk/po/az.po,
+	  xfce-mcs-manager/trunk/po/be.po,
+	  xfce-mcs-manager/trunk/po/bg.po,
+	  xfce-mcs-manager/trunk/po/bn_IN.po,
+	  xfce-mcs-manager/trunk/po/ca.po,
+	  xfce-mcs-manager/trunk/po/cs.po,
+	  xfce-mcs-manager/trunk/po/el.po,
+	  xfce-mcs-manager/trunk/po/en_GB.po,
+	  xfce-mcs-manager/trunk/po/eo.po,
+	  xfce-mcs-manager/trunk/po/es.po,
+	  xfce-mcs-manager/trunk/po/es_MX.po,
+	  xfce-mcs-manager/trunk/po/et.po,
+	  xfce-mcs-manager/trunk/po/eu.po,
+	  xfce-mcs-manager/trunk/po/fa.po,
+	  xfce-mcs-manager/trunk/po/fi.po,
+	  xfce-mcs-manager/trunk/po/fr.po,
+	  xfce-mcs-manager/trunk/po/gu.po,
+	  xfce-mcs-manager/trunk/po/he.po,
+	  xfce-mcs-manager/trunk/po/hi.po,
+	  xfce-mcs-manager/trunk/po/hu.po,
+	  xfce-mcs-manager/trunk/po/it.po,
+	  xfce-mcs-manager/trunk/po/ja.po,
+	  xfce-mcs-manager/trunk/po/ko.po,
+	  xfce-mcs-manager/trunk/po/lt.po,
+	  xfce-mcs-manager/trunk/po/mr.po,
+	  xfce-mcs-manager/trunk/po/ms.po,
+	  xfce-mcs-manager/trunk/po/nb_NO.po,
+	  xfce-mcs-manager/trunk/po/nl.po,
+	  xfce-mcs-manager/trunk/po/pa.po,
+	  xfce-mcs-manager/trunk/po/pl.po,
+	  xfce-mcs-manager/trunk/po/pt_BR.po,
+	  xfce-mcs-manager/trunk/po/pt_PT.po,
+	  xfce-mcs-manager/trunk/po/ro.po,
+	  xfce-mcs-manager/trunk/po/ru.po,
+	  xfce-mcs-manager/trunk/po/sk.po,
+	  xfce-mcs-manager/trunk/po/sv.po,
+	  xfce-mcs-manager/trunk/po/ta.po,
+	  xfce-mcs-manager/trunk/po/tr.po,
+	  xfce-mcs-manager/trunk/po/uk.po,
+	  xfce-mcs-manager/trunk/po/vi.po,
+	  xfce-mcs-manager/trunk/po/zh_CN.po,
+	  xfce-mcs-manager/trunk/po/zh_TW.po,
+	  xfce-mcs-plugins/trunk/po/ar.po,
+	  xfce-mcs-plugins/trunk/po/az.po,
+	  xfce-mcs-plugins/trunk/po/be.po,
+	  xfce-mcs-plugins/trunk/po/bg.po,
+	  xfce-mcs-plugins/trunk/po/bn_IN.po,
+	  xfce-mcs-plugins/trunk/po/ca.po,
+	  xfce-mcs-plugins/trunk/po/cs.po,
+	  xfce-mcs-plugins/trunk/po/de.po,
+	  xfce-mcs-plugins/trunk/po/el.po,
+	  xfce-mcs-plugins/trunk/po/en_GB.po,
+	  xfce-mcs-plugins/trunk/po/eo.po,
+	  xfce-mcs-plugins/trunk/po/es.po,
+	  xfce-mcs-plugins/trunk/po/es_MX.po,
+	  xfce-mcs-plugins/trunk/po/et.po,
+	  xfce-mcs-plugins/trunk/po/eu.po,
+	  xfce-mcs-plugins/trunk/po/fa.po,
+	  xfce-mcs-plugins/trunk/po/fi.po,
+	  xfce-mcs-plugins/trunk/po/fr.po,
+	  xfce-mcs-plugins/trunk/po/gu.po,
+	  xfce-mcs-plugins/trunk/po/he.po,
+	  xfce-mcs-plugins/trunk/po/hi.po,
+	  xfce-mcs-plugins/trunk/po/hu.po,
+	  xfce-mcs-plugins/trunk/po/it.po,
+	  xfce-mcs-plugins/trunk/po/ja.po,
+	  xfce-mcs-plugins/trunk/po/ko.po,
+	  xfce-mcs-plugins/trunk/po/lt.po,
+	  xfce-mcs-plugins/trunk/po/mr.po,
+	  xfce-mcs-plugins/trunk/po/ms.po,
+	  xfce-mcs-plugins/trunk/po/nl.po,
+	  xfce-mcs-plugins/trunk/po/pa.po,
+	  xfce-mcs-plugins/trunk/po/pl.po,
+	  xfce-mcs-plugins/trunk/po/pt_BR.po,
+	  xfce-mcs-plugins/trunk/po/pt_PT.po,
+	  xfce-mcs-plugins/trunk/po/ro.po,
+	  xfce-mcs-plugins/trunk/po/ru.po,
+	  xfce-mcs-plugins/trunk/po/sk.po,
+	  xfce-mcs-plugins/trunk/po/sv.po,
+	  xfce-mcs-plugins/trunk/po/ta.po,
+	  xfce-mcs-plugins/trunk/po/tr.po,
+	  xfce-mcs-plugins/trunk/po/uk.po,
+	  xfce-mcs-plugins/trunk/po/vi.po,
+	  xfce-mcs-plugins/trunk/po/zh_CN.po,
+	  xfce-mcs-plugins/trunk/po/zh_TW.po, xfce-utils/trunk/po/af.po,
+	  xfce-utils/trunk/po/ar.po, xfce-utils/trunk/po/az.po,
+	  xfce-utils/trunk/po/be.po, xfce-utils/trunk/po/bg.po,
+	  xfce-utils/trunk/po/bn_IN.po, xfce-utils/trunk/po/ca.po,
+	  xfce-utils/trunk/po/cs.po, xfce-utils/trunk/po/de.po,
+	  xfce-utils/trunk/po/el.po, xfce-utils/trunk/po/en_GB.po,
+	  xfce-utils/trunk/po/eo.po, xfce-utils/trunk/po/es.po,
+	  xfce-utils/trunk/po/es_MX.po, xfce-utils/trunk/po/et.po,
+	  xfce-utils/trunk/po/eu.po, xfce-utils/trunk/po/fa.po,
+	  xfce-utils/trunk/po/fi.po, xfce-utils/trunk/po/fr.po,
+	  xfce-utils/trunk/po/gu.po, xfce-utils/trunk/po/he.po,
+	  xfce-utils/trunk/po/hi.po, xfce-utils/trunk/po/hu.po,
+	  xfce-utils/trunk/po/hy.po, xfce-utils/trunk/po/it.po,
+	  xfce-utils/trunk/po/ja.po, xfce-utils/trunk/po/ko.po,
+	  xfce-utils/trunk/po/lt.po, xfce-utils/trunk/po/mr.po,
+	  xfce-utils/trunk/po/ms.po, xfce-utils/trunk/po/nl.po,
+	  xfce-utils/trunk/po/pa.po, xfce-utils/trunk/po/pl.po,
+	  xfce-utils/trunk/po/pt_BR.po, xfce-utils/trunk/po/pt_PT.po,
+	  xfce-utils/trunk/po/ro.po, xfce-utils/trunk/po/ru.po,
+	  xfce-utils/trunk/po/sk.po, xfce-utils/trunk/po/sv.po,
+	  xfce-utils/trunk/po/ta.po, xfce-utils/trunk/po/tr.po,
+	  xfce-utils/trunk/po/uk.po, xfce-utils/trunk/po/vi.po,
+	  xfce-utils/trunk/po/xfce-utils.pot,
+	  xfce-utils/trunk/po/zh_CN.po, xfce-utils/trunk/po/zh_TW.po,
+	  xfce4-appfinder/trunk/po/be.po,
+	  xfce4-appfinder/trunk/po/bn_IN.po,
+	  xfce4-appfinder/trunk/po/ca.po, xfce4-appfinder/trunk/po/cs.po,
+	  xfce4-appfinder/trunk/po/de.po, xfce4-appfinder/trunk/po/el.po,
+	  xfce4-appfinder/trunk/po/en_GB.po,
+	  xfce4-appfinder/trunk/po/es.po,
+	  xfce4-appfinder/trunk/po/es_MX.po,
+	  xfce4-appfinder/trunk/po/et.po, xfce4-appfinder/trunk/po/eu.po,
+	  xfce4-appfinder/trunk/po/fa.po, xfce4-appfinder/trunk/po/fi.po,
+	  xfce4-appfinder/trunk/po/fr.po, xfce4-appfinder/trunk/po/gu.po,
+	  xfce4-appfinder/trunk/po/he.po, xfce4-appfinder/trunk/po/hu.po,
+	  xfce4-appfinder/trunk/po/hy.po, xfce4-appfinder/trunk/po/it.po,
+	  xfce4-appfinder/trunk/po/ja.po, xfce4-appfinder/trunk/po/ko.po,
+	  xfce4-appfinder/trunk/po/lt.po, xfce4-appfinder/trunk/po/mr.po,
+	  xfce4-appfinder/trunk/po/nl.po, xfce4-appfinder/trunk/po/pa.po,
+	  xfce4-appfinder/trunk/po/pl.po,
+	  xfce4-appfinder/trunk/po/pt_BR.po,
+	  xfce4-appfinder/trunk/po/pt_PT.po,
+	  xfce4-appfinder/trunk/po/ro.po, xfce4-appfinder/trunk/po/ru.po,
+	  xfce4-appfinder/trunk/po/sk.po, xfce4-appfinder/trunk/po/sv.po,
+	  xfce4-appfinder/trunk/po/tr.po, xfce4-appfinder/trunk/po/uk.po,
+	  xfce4-appfinder/trunk/po/zh_CN.po,
+	  xfce4-appfinder/trunk/po/zh_TW.po,
+	  xfce4-icon-theme/trunk/po/ca.po,
+	  xfce4-icon-theme/trunk/po/de.po,
+	  xfce4-icon-theme/trunk/po/el.po,
+	  xfce4-icon-theme/trunk/po/et.po,
+	  xfce4-icon-theme/trunk/po/fi.po,
+	  xfce4-icon-theme/trunk/po/hu.po,
+	  xfce4-icon-theme/trunk/po/ja.po,
+	  xfce4-icon-theme/trunk/po/ko.po,
+	  xfce4-icon-theme/trunk/po/pl.po,
+	  xfce4-icon-theme/trunk/po/ru.po,
+	  xfce4-icon-theme/trunk/po/sk.po,
+	  xfce4-icon-theme/trunk/po/uk.po,
+	  xfce4-icon-theme/trunk/po/zh_CN.po,
+	  xfce4-icon-theme/trunk/po/zh_TW.po,
+	  xfce4-mailwatch-plugin/trunk/po/ca.po,
+	  xfce4-mailwatch-plugin/trunk/po/de.po,
+	  xfce4-mailwatch-plugin/trunk/po/el.po,
+	  xfce4-mailwatch-plugin/trunk/po/eu.po,
+	  xfce4-mailwatch-plugin/trunk/po/fi.po,
+	  xfce4-mailwatch-plugin/trunk/po/fr.po,
+	  xfce4-mailwatch-plugin/trunk/po/gu.po,
+	  xfce4-mailwatch-plugin/trunk/po/he.po,
+	  xfce4-mailwatch-plugin/trunk/po/ja.po,
+	  xfce4-mailwatch-plugin/trunk/po/pt_BR.po,
+	  xfce4-mailwatch-plugin/trunk/po/ru.po,
+	  xfce4-mailwatch-plugin/trunk/po/uk.po,
+	  xfce4-mailwatch-plugin/trunk/po/vi.po,
+	  xfce4-mailwatch-plugin/trunk/po/xfce4-mailwatch-plugin.pot,
+	  xfce4-mailwatch-plugin/trunk/po/zh_TW.po,
+	  xfce4-mixer/trunk/po/ar.po, xfce4-mixer/trunk/po/az.po,
+	  xfce4-mixer/trunk/po/be.po, xfce4-mixer/trunk/po/bg.po,
+	  xfce4-mixer/trunk/po/bn_IN.po, xfce4-mixer/trunk/po/ca.po,
+	  xfce4-mixer/trunk/po/cs.po, xfce4-mixer/trunk/po/de.po,
+	  xfce4-mixer/trunk/po/el.po, xfce4-mixer/trunk/po/en_GB.po,
+	  xfce4-mixer/trunk/po/es.po, xfce4-mixer/trunk/po/es_MX.po,
+	  xfce4-mixer/trunk/po/et.po, xfce4-mixer/trunk/po/eu.po,
+	  xfce4-mixer/trunk/po/fa.po, xfce4-mixer/trunk/po/fi.po,
+	  xfce4-mixer/trunk/po/fr.po, xfce4-mixer/trunk/po/gu.po,
+	  xfce4-mixer/trunk/po/he.po, xfce4-mixer/trunk/po/hi.po,
+	  xfce4-mixer/trunk/po/hu.po, xfce4-mixer/trunk/po/hy.po,
+	  xfce4-mixer/trunk/po/it.po, xfce4-mixer/trunk/po/ja.po,
+	  xfce4-mixer/trunk/po/ko.po, xfce4-mixer/trunk/po/lt.po,
+	  xfce4-mixer/trunk/po/mr.po, xfce4-mixer/trunk/po/ms.po,
+	  xfce4-mixer/trunk/po/nb_NO.po, xfce4-mixer/trunk/po/nl.po,
+	  xfce4-mixer/trunk/po/pa.po, xfce4-mixer/trunk/po/pl.po,
+	  xfce4-mixer/trunk/po/pt_BR.po, xfce4-mixer/trunk/po/pt_PT.po,
+	  xfce4-mixer/trunk/po/ro.po, xfce4-mixer/trunk/po/ru.po,
+	  xfce4-mixer/trunk/po/sk.po, xfce4-mixer/trunk/po/sv.po,
+	  xfce4-mixer/trunk/po/ta.po, xfce4-mixer/trunk/po/tr.po,
+	  xfce4-mixer/trunk/po/uk.po, xfce4-mixer/trunk/po/vi.po,
+	  xfce4-mixer/trunk/po/xfce4-mixer.pot,
+	  xfce4-mixer/trunk/po/zh_CN.po, xfce4-mixer/trunk/po/zh_TW.po,
+	  xfce4-panel/trunk/po/ar.po, xfce4-panel/trunk/po/az.po,
+	  xfce4-panel/trunk/po/be.po, xfce4-panel/trunk/po/bg.po,
+	  xfce4-panel/trunk/po/bn_IN.po, xfce4-panel/trunk/po/ca.po,
+	  xfce4-panel/trunk/po/cs.po, xfce4-panel/trunk/po/de.po,
+	  xfce4-panel/trunk/po/el.po, xfce4-panel/trunk/po/en_GB.po,
+	  xfce4-panel/trunk/po/eo.po, xfce4-panel/trunk/po/es.po,
+	  xfce4-panel/trunk/po/es_MX.po, xfce4-panel/trunk/po/et.po,
+	  xfce4-panel/trunk/po/eu.po, xfce4-panel/trunk/po/fa.po,
+	  xfce4-panel/trunk/po/fi.po, xfce4-panel/trunk/po/fr.po,
+	  xfce4-panel/trunk/po/gu.po, xfce4-panel/trunk/po/he.po,
+	  xfce4-panel/trunk/po/hi.po, xfce4-panel/trunk/po/hu.po,
+	  xfce4-panel/trunk/po/hy.po, xfce4-panel/trunk/po/it.po,
+	  xfce4-panel/trunk/po/ja.po, xfce4-panel/trunk/po/ko.po,
+	  xfce4-panel/trunk/po/lt.po, xfce4-panel/trunk/po/mr.po,
+	  xfce4-panel/trunk/po/ms.po, xfce4-panel/trunk/po/nb_NO.po,
+	  xfce4-panel/trunk/po/nl.po, xfce4-panel/trunk/po/pa.po,
+	  xfce4-panel/trunk/po/pl.po, xfce4-panel/trunk/po/pt_BR.po,
+	  xfce4-panel/trunk/po/pt_PT.po, xfce4-panel/trunk/po/ro.po,
+	  xfce4-panel/trunk/po/ru.po, xfce4-panel/trunk/po/sk.po,
+	  xfce4-panel/trunk/po/sv.po, xfce4-panel/trunk/po/ta.po,
+	  xfce4-panel/trunk/po/tr.po, xfce4-panel/trunk/po/uk.po,
+	  xfce4-panel/trunk/po/vi.po,
+	  xfce4-panel/trunk/po/xfce4-panel.pot,
+	  xfce4-panel/trunk/po/zh_CN.po, xfce4-panel/trunk/po/zh_TW.po,
+	  xfce4-session/trunk/po/ar.po, xfce4-session/trunk/po/az.po,
+	  xfce4-session/trunk/po/be.po, xfce4-session/trunk/po/bn_IN.po,
+	  xfce4-session/trunk/po/ca.po, xfce4-session/trunk/po/cs.po,
+	  xfce4-session/trunk/po/de.po, xfce4-session/trunk/po/el.po,
+	  xfce4-session/trunk/po/en_GB.po, xfce4-session/trunk/po/eo.po,
+	  xfce4-session/trunk/po/es.po, xfce4-session/trunk/po/es_MX.po,
+	  xfce4-session/trunk/po/et.po, xfce4-session/trunk/po/eu.po,
+	  xfce4-session/trunk/po/fa.po, xfce4-session/trunk/po/fi.po,
+	  xfce4-session/trunk/po/fr.po, xfce4-session/trunk/po/gu.po,
+	  xfce4-session/trunk/po/hi.po, xfce4-session/trunk/po/hu.po,
+	  xfce4-session/trunk/po/it.po, xfce4-session/trunk/po/ja.po,
+	  xfce4-session/trunk/po/ko.po, xfce4-session/trunk/po/lt.po,
+	  xfce4-session/trunk/po/mr.po, xfce4-session/trunk/po/ms.po,
+	  xfce4-session/trunk/po/nb_NO.po, xfce4-session/trunk/po/nl.po,
+	  xfce4-session/trunk/po/pa.po, xfce4-session/trunk/po/pl.po,
+	  xfce4-session/trunk/po/pt_BR.po,
+	  xfce4-session/trunk/po/pt_PT.po, xfce4-session/trunk/po/ro.po,
+	  xfce4-session/trunk/po/ru.po, xfce4-session/trunk/po/sk.po,
+	  xfce4-session/trunk/po/sv.po, xfce4-session/trunk/po/ta.po,
+	  xfce4-session/trunk/po/tr.po, xfce4-session/trunk/po/uk.po,
+	  xfce4-session/trunk/po/vi.po,
+	  xfce4-session/trunk/po/xfce4-session.pot,
+	  xfce4-session/trunk/po/zh_CN.po,
+	  xfce4-session/trunk/po/zh_TW.po,
+	  xfce4-trigger-launcher/trunk/po/ar.po,
+	  xfce4-trigger-launcher/trunk/po/az.po,
+	  xfce4-trigger-launcher/trunk/po/be.po,
+	  xfce4-trigger-launcher/trunk/po/bg.po,
+	  xfce4-trigger-launcher/trunk/po/bn_IN.po,
+	  xfce4-trigger-launcher/trunk/po/ca.po,
+	  xfce4-trigger-launcher/trunk/po/cs.po,
+	  xfce4-trigger-launcher/trunk/po/de.po,
+	  xfce4-trigger-launcher/trunk/po/el.po,
+	  xfce4-trigger-launcher/trunk/po/en_GB.po,
+	  xfce4-trigger-launcher/trunk/po/eo.po,
+	  xfce4-trigger-launcher/trunk/po/es.po,
+	  xfce4-trigger-launcher/trunk/po/es_MX.po,
+	  xfce4-trigger-launcher/trunk/po/et.po,
+	  xfce4-trigger-launcher/trunk/po/eu.po,
+	  xfce4-trigger-launcher/trunk/po/fa.po,
+	  xfce4-trigger-launcher/trunk/po/fi.po,
+	  xfce4-trigger-launcher/trunk/po/fr.po,
+	  xfce4-trigger-launcher/trunk/po/gu.po,
+	  xfce4-trigger-launcher/trunk/po/hi.po,
+	  xfce4-trigger-launcher/trunk/po/hu.po,
+	  xfce4-trigger-launcher/trunk/po/it.po,
+	  xfce4-trigger-launcher/trunk/po/ja.po,
+	  xfce4-trigger-launcher/trunk/po/ko.po,
+	  xfce4-trigger-launcher/trunk/po/lt.po,
+	  xfce4-trigger-launcher/trunk/po/mr.po,
+	  xfce4-trigger-launcher/trunk/po/ms.po,
+	  xfce4-trigger-launcher/trunk/po/nl.po,
+	  xfce4-trigger-launcher/trunk/po/pa.po,
+	  xfce4-trigger-launcher/trunk/po/pl.po,
+	  xfce4-trigger-launcher/trunk/po/pt_BR.po,
+	  xfce4-trigger-launcher/trunk/po/pt_PT.po,
+	  xfce4-trigger-launcher/trunk/po/ro.po,
+	  xfce4-trigger-launcher/trunk/po/ru.po,
+	  xfce4-trigger-launcher/trunk/po/sk.po,
+	  xfce4-trigger-launcher/trunk/po/sv.po,
+	  xfce4-trigger-launcher/trunk/po/ta.po,
+	  xfce4-trigger-launcher/trunk/po/tr.po,
+	  xfce4-trigger-launcher/trunk/po/uk.po,
+	  xfce4-trigger-launcher/trunk/po/vi.po,
+	  xfce4-trigger-launcher/trunk/po/zh_CN.po,
+	  xfce4-trigger-launcher/trunk/po/zh_TW.po, po/ar.po, po/az.po,
+	  po/be.po, po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po, po/de.po,
+	  po/el.po, po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po,
+	  po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po,
+	  po/he.po, po/hi.po, po/hu.po, po/hy.po, po/it.po, po/ja.po,
+	  po/ko.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po,
+	  po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po,
+	  po/ru.po, po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po,
+	  po/vi.po, po/xfdesktop.pot, po/zh_CN.po, po/zh_TW.po,
+	  xfprint/trunk/po/ar.po, xfprint/trunk/po/az.po,
+	  xfprint/trunk/po/be.po, xfprint/trunk/po/bg.po,
+	  xfprint/trunk/po/bn_IN.po, xfprint/trunk/po/ca.po,
+	  xfprint/trunk/po/cs.po, xfprint/trunk/po/de.po,
+	  xfprint/trunk/po/el.po, xfprint/trunk/po/en_GB.po,
+	  xfprint/trunk/po/es.po, xfprint/trunk/po/es_MX.po,
+	  xfprint/trunk/po/et.po, xfprint/trunk/po/eu.po,
+	  xfprint/trunk/po/fa.po, xfprint/trunk/po/fi.po,
+	  xfprint/trunk/po/fr.po, xfprint/trunk/po/gu.po,
+	  xfprint/trunk/po/he.po, xfprint/trunk/po/hi.po,
+	  xfprint/trunk/po/hu.po, xfprint/trunk/po/it.po,
+	  xfprint/trunk/po/ja.po, xfprint/trunk/po/ko.po,
+	  xfprint/trunk/po/lt.po, xfprint/trunk/po/mr.po,
+	  xfprint/trunk/po/ms.po, xfprint/trunk/po/nl.po,
+	  xfprint/trunk/po/pa.po, xfprint/trunk/po/pl.po,
+	  xfprint/trunk/po/pt_BR.po, xfprint/trunk/po/pt_PT.po,
+	  xfprint/trunk/po/ro.po, xfprint/trunk/po/ru.po,
+	  xfprint/trunk/po/sk.po, xfprint/trunk/po/sv.po,
+	  xfprint/trunk/po/ta.po, xfprint/trunk/po/tr.po,
+	  xfprint/trunk/po/uk.po, xfprint/trunk/po/vi.po,
+	  xfprint/trunk/po/zh_CN.po, xfprint/trunk/po/zh_TW.po: Bump.
+
+2006-05-05 19:23  yuvaltanny
+
+	* thunar/trunk/po/he.po, xarchiver/trunk/po/he.po,
+	  xfcalendar/trunk/po/he.po, xfce-mcs-manager/trunk/po/he.po,
+	  xfce4-mixer/trunk/po/he.po, xfce4-panel/trunk/po/he.po,
+	  xfce4-session/trunk/po/he.po,
+	  xfce4-trigger-launcher/trunk/po/he.po, po/he.po,
+	  xfmedia/trunk/po/he.po: Updated Hebrew translation
+
+2006-05-05 11:37  jari
+
+	* modules/menu/xfce-registered-categories.xml.fi: Finnish
+	  translation of menu categories updated.
+
+2006-05-05 11:00  yuvaltanny
+
+	* menu.xml.he, modules/menu/xfce-registered-categories.xml.he:
+	  update the menu Hebrew translation
+
+2006-05-05 06:11  daichi
+
+	* xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/ja.po,
+	  xfce-utils/trunk/po/ChangeLog, xfce-utils/trunk/po/ja.po,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-mixer/trunk/po/ja.po,
+	  xfce4-panel/trunk/po/ChangeLog, xfce4-panel/trunk/po/ja.po,
+	  xfce4-session/trunk/po/ChangeLog, xfce4-session/trunk/po/ja.po,
+	  po/ChangeLog, po/ja.po, xfwm4/trunk/po/ChangeLog,
+	  xfwm4/trunk/po/ja.po: Updated Japanese translations.
+
+2006-05-04 06:14  kelnos
+
+	* src/xfdesktop-file-icon-manager.c, src/xfdesktop-file-icon.c,
+	  src/xfdesktop-file-icon.h: reorg how removable volumes are
+	  handled to fix crash bug if the volume
+	  doesn't have a mount point on insertion (bug 1763)
+
+2006-05-03 04:33  kelnos
+
+	* menueditor/dnd.c, src/xfce-desktop.c, src/xfdesktop-file-icon.c:
+	  gcc 2.95 patch from Oliver Lehmann
+
+2006-05-02 16:06  daichi
+
+	* libxfcegui4/trunk/po/ChangeLog, xfburn/trunk/po/ChangeLog,
+	  xfcalendar/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-utils/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-icon-theme/trunk/po/ChangeLog,
+	  xfce4-mailwatch-plugin/trunk/po/ChangeLog,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog, po/ChangeLog,
+	  xffm/trunk/fgr/po/ChangeLog, xffm/trunk/libxffm/po/ChangeLog,
+	  xffm/trunk/plugins/xfapps/po/ChangeLog,
+	  xffm/trunk/plugins/xfbook/po/ChangeLog,
+	  xffm/trunk/plugins/xffstab/po/ChangeLog,
+	  xffm/trunk/plugins/xflocate/po/ChangeLog,
+	  xffm/trunk/plugins/xfproc/po/ChangeLog,
+	  xffm/trunk/plugins/xfrecent/po/ChangeLog,
+	  xffm/trunk/plugins/xfsamba/po/ChangeLog,
+	  xffm/trunk/plugins/xftrash/po/ChangeLog,
+	  xffm/trunk/scramble/po/ChangeLog,
+	  xffm/trunk/xfdiff/po/ChangeLog,
+	  xffm/trunk/xffm-gui/po/ChangeLog,
+	  xffm/trunk/xfmime-edit/po/ChangeLog, xfmedia/trunk/po/ChangeLog,
+	  xfprint/trunk/po/ChangeLog, xfwm4/trunk/po/ChangeLog: Removed
+	  timestamps so that a translator isn't bothered:
+	  "Then, what time is it now in UTC?"
+
+2006-05-02 12:23  daichi
+
+	* thunar/trunk/po/ChangeLog, thunar/trunk/po/pl.po,
+	  xfcalendar/trunk/po/pl.po, xfce-mcs-plugins/trunk/po/pl.po,
+	  xfce4-mixer/trunk/po/pl.po, xfce4-panel/trunk/po/pl.po,
+	  xfce4-session/trunk/po/pl.po,
+	  xfce4-trigger-launcher/trunk/po/pl.po, po/pl.po,
+	  xfprint/trunk/po/pl.po, xfwm4/trunk/po/pl.po: Updated Polish
+	  translations by Piotr Malinski <admin@rk.edu.pl>.
+
+2006-05-02 09:00  kelnos
+
+	* src/xfdesktop-icon-view.c: no need to take focus when the window
+	  comes up
+
+2006-05-01 14:11  jari
+
+	* xfcalendar/trunk/po/fi.po, xfce4-mixer/trunk/po/fi.po,
+	  xfce4-session/trunk/po/fi.po, po/fi.po: Finnish translations
+	  updated.
+
+2006-05-01 13:31  daichi
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/ru.po,
+	  mousepad/trunk/po/ChangeLog, mousepad/trunk/po/ru.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/ru.po,
+	  xarchiver/trunk/po/ru.po, xfburn/trunk/po/ru.po,
+	  xfcalendar/trunk/po/ru.po, xfce-mcs-plugins/trunk/po/ru.po,
+	  xfce4-mixer/trunk/po/ru.po, xfce4-panel/trunk/po/ru.po,
+	  xfce4-session/trunk/po/ChangeLog, xfce4-session/trunk/po/ru.po,
+	  xfce4-trigger-launcher/trunk/po/ru.po, po/ru.po,
+	  xffm/trunk/plugins/xftrash/po/ru.po,
+	  xffm/trunk/scramble/po/ru.po, xffm/trunk/xffm-gui/po/ru.po:
+	  Updated Russian translations by
+	  Anthony Ivanoff <a-i@bk.ru>,
+	  Maxim Zenin <webmechanics@gmail.com>,
+	  Sergey Fedoseev <fedoseev.sergey@gmail.com>.
+
+2006-05-01 07:04  daichi
+
+	* libexo/trunk/po/eu.po, libexo/trunk/po/fi.po,
+	  libexo/trunk/po/he.po, libexo/trunk/po/hu.po,
+	  libxfce4util/trunk/po/de.po, libxfce4util/trunk/po/fi.po,
+	  libxfce4util/trunk/po/he.po, libxfce4util/trunk/po/pt_BR.po,
+	  libxfce4util/trunk/po/uk.po, mousepad/trunk/po/eu.po,
+	  thunar/trunk/po/et.po, thunar/trunk/po/zh_TW.po,
+	  xfburn/trunk/po/de.po, xfburn/trunk/po/he.po,
+	  xfburn/trunk/po/uk.po, xfce-mcs-manager/trunk/po/uk.po,
+	  xfce-mcs-plugins/trunk/po/hu.po, xfce-utils/trunk/po/he.po,
+	  xfce4-icon-theme/trunk/po/he.po,
+	  xfce4-icon-theme/trunk/po/uk.po,
+	  xfce4-mailwatch-plugin/trunk/po/uk.po,
+	  xfce4-mixer/trunk/po/ar.po, xfce4-mixer/trunk/po/az.po,
+	  xfce4-mixer/trunk/po/be.po, xfce4-mixer/trunk/po/bg.po,
+	  xfce4-mixer/trunk/po/bn_IN.po, xfce4-mixer/trunk/po/ca.po,
+	  xfce4-mixer/trunk/po/cs.po, xfce4-mixer/trunk/po/de.po,
+	  xfce4-mixer/trunk/po/el.po, xfce4-mixer/trunk/po/en_GB.po,
+	  xfce4-mixer/trunk/po/es.po, xfce4-mixer/trunk/po/es_MX.po,
+	  xfce4-mixer/trunk/po/et.po, xfce4-mixer/trunk/po/eu.po,
+	  xfce4-mixer/trunk/po/fa.po, xfce4-mixer/trunk/po/fi.po,
+	  xfce4-mixer/trunk/po/fr.po, xfce4-mixer/trunk/po/gu.po,
+	  xfce4-mixer/trunk/po/he.po, xfce4-mixer/trunk/po/hi.po,
+	  xfce4-mixer/trunk/po/hu.po, xfce4-mixer/trunk/po/hy.po,
+	  xfce4-mixer/trunk/po/it.po, xfce4-mixer/trunk/po/ja.po,
+	  xfce4-mixer/trunk/po/ko.po, xfce4-mixer/trunk/po/lt.po,
+	  xfce4-mixer/trunk/po/mr.po, xfce4-mixer/trunk/po/ms.po,
+	  xfce4-mixer/trunk/po/nb_NO.po, xfce4-mixer/trunk/po/nl.po,
+	  xfce4-mixer/trunk/po/pa.po, xfce4-mixer/trunk/po/pl.po,
+	  xfce4-mixer/trunk/po/pt_BR.po, xfce4-mixer/trunk/po/pt_PT.po,
+	  xfce4-mixer/trunk/po/ro.po, xfce4-mixer/trunk/po/ru.po,
+	  xfce4-mixer/trunk/po/sk.po, xfce4-mixer/trunk/po/sv.po,
+	  xfce4-mixer/trunk/po/ta.po, xfce4-mixer/trunk/po/tr.po,
+	  xfce4-mixer/trunk/po/uk.po, xfce4-mixer/trunk/po/vi.po,
+	  xfce4-mixer/trunk/po/xfce4-mixer.pot,
+	  xfce4-mixer/trunk/po/zh_CN.po, xfce4-mixer/trunk/po/zh_TW.po,
+	  xfce4-panel/trunk/po/ar.po, xfce4-panel/trunk/po/az.po,
+	  xfce4-panel/trunk/po/be.po, xfce4-panel/trunk/po/bg.po,
+	  xfce4-panel/trunk/po/bn_IN.po, xfce4-panel/trunk/po/ca.po,
+	  xfce4-panel/trunk/po/de.po, xfce4-panel/trunk/po/el.po,
+	  xfce4-panel/trunk/po/en_GB.po, xfce4-panel/trunk/po/eo.po,
+	  xfce4-panel/trunk/po/es.po, xfce4-panel/trunk/po/es_MX.po,
+	  xfce4-panel/trunk/po/et.po, xfce4-panel/trunk/po/eu.po,
+	  xfce4-panel/trunk/po/fa.po, xfce4-panel/trunk/po/fi.po,
+	  xfce4-panel/trunk/po/fr.po, xfce4-panel/trunk/po/gu.po,
+	  xfce4-panel/trunk/po/he.po, xfce4-panel/trunk/po/hi.po,
+	  xfce4-panel/trunk/po/hu.po, xfce4-panel/trunk/po/hy.po,
+	  xfce4-panel/trunk/po/it.po, xfce4-panel/trunk/po/ja.po,
+	  xfce4-panel/trunk/po/ko.po, xfce4-panel/trunk/po/lt.po,
+	  xfce4-panel/trunk/po/mr.po, xfce4-panel/trunk/po/ms.po,
+	  xfce4-panel/trunk/po/nb_NO.po, xfce4-panel/trunk/po/nl.po,
+	  xfce4-panel/trunk/po/pa.po, xfce4-panel/trunk/po/pt_BR.po,
+	  xfce4-panel/trunk/po/pt_PT.po, xfce4-panel/trunk/po/ro.po,
+	  xfce4-panel/trunk/po/ru.po, xfce4-panel/trunk/po/sk.po,
+	  xfce4-panel/trunk/po/sv.po, xfce4-panel/trunk/po/ta.po,
+	  xfce4-panel/trunk/po/tr.po, xfce4-panel/trunk/po/uk.po,
+	  xfce4-panel/trunk/po/vi.po, xfce4-panel/trunk/po/zh_CN.po,
+	  xfce4-panel/trunk/po/zh_TW.po, xfce4-session/trunk/po/ar.po,
+	  xfce4-session/trunk/po/az.po, xfce4-session/trunk/po/be.po,
+	  xfce4-session/trunk/po/bn_IN.po, xfce4-session/trunk/po/ca.po,
+	  xfce4-session/trunk/po/cs.po, xfce4-session/trunk/po/de.po,
+	  xfce4-session/trunk/po/el.po, xfce4-session/trunk/po/en_GB.po,
+	  xfce4-session/trunk/po/eo.po, xfce4-session/trunk/po/es.po,
+	  xfce4-session/trunk/po/es_MX.po, xfce4-session/trunk/po/et.po,
+	  xfce4-session/trunk/po/eu.po, xfce4-session/trunk/po/fa.po,
+	  xfce4-session/trunk/po/fi.po, xfce4-session/trunk/po/fr.po,
+	  xfce4-session/trunk/po/gu.po, xfce4-session/trunk/po/he.po,
+	  xfce4-session/trunk/po/hi.po, xfce4-session/trunk/po/hu.po,
+	  xfce4-session/trunk/po/it.po, xfce4-session/trunk/po/ja.po,
+	  xfce4-session/trunk/po/ko.po, xfce4-session/trunk/po/lt.po,
+	  xfce4-session/trunk/po/mr.po, xfce4-session/trunk/po/ms.po,
+	  xfce4-session/trunk/po/nb_NO.po, xfce4-session/trunk/po/nl.po,
+	  xfce4-session/trunk/po/pa.po, xfce4-session/trunk/po/pl.po,
+	  xfce4-session/trunk/po/pt_BR.po,
+	  xfce4-session/trunk/po/pt_PT.po, xfce4-session/trunk/po/ro.po,
+	  xfce4-session/trunk/po/ru.po, xfce4-session/trunk/po/sk.po,
+	  xfce4-session/trunk/po/sv.po, xfce4-session/trunk/po/ta.po,
+	  xfce4-session/trunk/po/tr.po, xfce4-session/trunk/po/uk.po,
+	  xfce4-session/trunk/po/vi.po,
+	  xfce4-session/trunk/po/xfce4-session.pot,
+	  xfce4-session/trunk/po/zh_CN.po,
+	  xfce4-session/trunk/po/zh_TW.po,
+	  xfce4-trigger-launcher/trunk/po/hu.po,
+	  xfce4-trigger-launcher/trunk/po/uk.po, po/eu.po, po/hu.po,
+	  po/uk.po, xfwm4/trunk/po/hu.po: Updated.
+
+2006-04-30 22:07  piarres
+
+	* po/eu.po: [l10n:eu] Basque translation update
+
+2006-04-30 16:00  daichi
+
+	* mousepad/trunk/po/ChangeLog, mousepad/trunk/po/pl.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/pl.po,
+	  xfcalendar/trunk/po/pl.po, xfce-mcs-plugins/trunk/po/pl.po,
+	  xfce-utils/trunk/po/pl.po, xfce4-appfinder/trunk/po/pl.po,
+	  xfce4-panel/trunk/po/pl.po, po/pl.po, xfmedia/trunk/po/pl.po,
+	  xfprint/trunk/po/pl.po, xfwm4/trunk/po/pl.po: Updated Polish
+	  translations by Piotr Malinski <admin@rk.edu.pl>.
+
+2006-04-30 09:07  sas
+
+	* libxfcegui4/trunk/po/hu.po, xarchiver/trunk/po/hu.po,
+	  xfce-mcs-plugins/trunk/po/hu.po, po/hu.po, xfwm4/trunk/po/hu.po:
+	  hu trunk: updates
+
+2006-04-30 08:46  daichi
+
+	* xfcalendar/trunk/po/ja.po, po/ja.po: Updated Japanese
+	  translations.
+
+2006-04-30 08:36  daichi
+
+	* libxfcegui4/trunk/po/be.po, libxfcegui4/trunk/po/bn_IN.po,
+	  libxfcegui4/trunk/po/ca.po, libxfcegui4/trunk/po/cs.po,
+	  libxfcegui4/trunk/po/de.po, libxfcegui4/trunk/po/el.po,
+	  libxfcegui4/trunk/po/en_GB.po, libxfcegui4/trunk/po/eo.po,
+	  libxfcegui4/trunk/po/es.po, libxfcegui4/trunk/po/et.po,
+	  libxfcegui4/trunk/po/eu.po, libxfcegui4/trunk/po/fa.po,
+	  libxfcegui4/trunk/po/fi.po, libxfcegui4/trunk/po/fr.po,
+	  libxfcegui4/trunk/po/gu.po, libxfcegui4/trunk/po/he.po,
+	  libxfcegui4/trunk/po/hu.po, libxfcegui4/trunk/po/hy.po,
+	  libxfcegui4/trunk/po/it.po, libxfcegui4/trunk/po/ja.po,
+	  libxfcegui4/trunk/po/ko.po,
+	  libxfcegui4/trunk/po/libxfcegui4.pot,
+	  libxfcegui4/trunk/po/lt.po, libxfcegui4/trunk/po/mr.po,
+	  libxfcegui4/trunk/po/nl.po, libxfcegui4/trunk/po/pa.po,
+	  libxfcegui4/trunk/po/pl.po, libxfcegui4/trunk/po/pt_BR.po,
+	  libxfcegui4/trunk/po/ro.po, libxfcegui4/trunk/po/ru.po,
+	  libxfcegui4/trunk/po/sk.po, libxfcegui4/trunk/po/sv.po,
+	  libxfcegui4/trunk/po/ta.po, libxfcegui4/trunk/po/uk.po,
+	  libxfcegui4/trunk/po/zh_CN.po, libxfcegui4/trunk/po/zh_TW.po,
+	  xfcalendar/trunk/po/POTFILES.in, xfcalendar/trunk/po/ar.po,
+	  xfcalendar/trunk/po/az.po, xfcalendar/trunk/po/be.po,
+	  xfcalendar/trunk/po/bg.po, xfcalendar/trunk/po/bn_IN.po,
+	  xfcalendar/trunk/po/ca.po, xfcalendar/trunk/po/cs.po,
+	  xfcalendar/trunk/po/de.po, xfcalendar/trunk/po/el.po,
+	  xfcalendar/trunk/po/en_GB.po, xfcalendar/trunk/po/eo.po,
+	  xfcalendar/trunk/po/es.po, xfcalendar/trunk/po/et.po,
+	  xfcalendar/trunk/po/eu.po, xfcalendar/trunk/po/fa.po,
+	  xfcalendar/trunk/po/fi.po, xfcalendar/trunk/po/fr.po,
+	  xfcalendar/trunk/po/gu.po, xfcalendar/trunk/po/he.po,
+	  xfcalendar/trunk/po/hi.po, xfcalendar/trunk/po/hu.po,
+	  xfcalendar/trunk/po/hy.po, xfcalendar/trunk/po/it.po,
+	  xfcalendar/trunk/po/ja.po, xfcalendar/trunk/po/ko.po,
+	  xfcalendar/trunk/po/lt.po, xfcalendar/trunk/po/mr.po,
+	  xfcalendar/trunk/po/ms.po, xfcalendar/trunk/po/nb_NO.po,
+	  xfcalendar/trunk/po/nl.po, xfcalendar/trunk/po/orage.pot,
+	  xfcalendar/trunk/po/pa.po, xfcalendar/trunk/po/pl.po,
+	  xfcalendar/trunk/po/pt_BR.po, xfcalendar/trunk/po/pt_PT.po,
+	  xfcalendar/trunk/po/ro.po, xfcalendar/trunk/po/ru.po,
+	  xfcalendar/trunk/po/sk.po, xfcalendar/trunk/po/sv.po,
+	  xfcalendar/trunk/po/ta.po, xfcalendar/trunk/po/tr.po,
+	  xfcalendar/trunk/po/uk.po, xfcalendar/trunk/po/vi.po,
+	  xfcalendar/trunk/po/zh_CN.po, xfcalendar/trunk/po/zh_TW.po,
+	  xfce-mcs-plugins/trunk/po/ar.po,
+	  xfce-mcs-plugins/trunk/po/az.po,
+	  xfce-mcs-plugins/trunk/po/be.po,
+	  xfce-mcs-plugins/trunk/po/bg.po,
+	  xfce-mcs-plugins/trunk/po/bn_IN.po,
+	  xfce-mcs-plugins/trunk/po/ca.po,
+	  xfce-mcs-plugins/trunk/po/cs.po,
+	  xfce-mcs-plugins/trunk/po/de.po,
+	  xfce-mcs-plugins/trunk/po/el.po,
+	  xfce-mcs-plugins/trunk/po/en_GB.po,
+	  xfce-mcs-plugins/trunk/po/eo.po,
+	  xfce-mcs-plugins/trunk/po/es.po,
+	  xfce-mcs-plugins/trunk/po/es_MX.po,
+	  xfce-mcs-plugins/trunk/po/et.po,
+	  xfce-mcs-plugins/trunk/po/eu.po,
+	  xfce-mcs-plugins/trunk/po/fa.po,
+	  xfce-mcs-plugins/trunk/po/fi.po,
+	  xfce-mcs-plugins/trunk/po/fr.po,
+	  xfce-mcs-plugins/trunk/po/gu.po,
+	  xfce-mcs-plugins/trunk/po/he.po,
+	  xfce-mcs-plugins/trunk/po/hi.po,
+	  xfce-mcs-plugins/trunk/po/hu.po,
+	  xfce-mcs-plugins/trunk/po/it.po,
+	  xfce-mcs-plugins/trunk/po/ja.po,
+	  xfce-mcs-plugins/trunk/po/ko.po,
+	  xfce-mcs-plugins/trunk/po/lt.po,
+	  xfce-mcs-plugins/trunk/po/mr.po,
+	  xfce-mcs-plugins/trunk/po/ms.po,
+	  xfce-mcs-plugins/trunk/po/nl.po,
+	  xfce-mcs-plugins/trunk/po/pa.po,
+	  xfce-mcs-plugins/trunk/po/pl.po,
+	  xfce-mcs-plugins/trunk/po/pt_BR.po,
+	  xfce-mcs-plugins/trunk/po/pt_PT.po,
+	  xfce-mcs-plugins/trunk/po/ro.po,
+	  xfce-mcs-plugins/trunk/po/ru.po,
+	  xfce-mcs-plugins/trunk/po/sk.po,
+	  xfce-mcs-plugins/trunk/po/sv.po,
+	  xfce-mcs-plugins/trunk/po/ta.po,
+	  xfce-mcs-plugins/trunk/po/tr.po,
+	  xfce-mcs-plugins/trunk/po/uk.po,
+	  xfce-mcs-plugins/trunk/po/vi.po,
+	  xfce-mcs-plugins/trunk/po/xfce-mcs-plugins.pot,
+	  xfce-mcs-plugins/trunk/po/zh_CN.po,
+	  xfce-mcs-plugins/trunk/po/zh_TW.po,
+	  xfce4-appfinder/trunk/po/be.po,
+	  xfce4-appfinder/trunk/po/bn_IN.po,
+	  xfce4-appfinder/trunk/po/ca.po, xfce4-appfinder/trunk/po/cs.po,
+	  xfce4-appfinder/trunk/po/de.po, xfce4-appfinder/trunk/po/el.po,
+	  xfce4-appfinder/trunk/po/en_GB.po,
+	  xfce4-appfinder/trunk/po/es.po,
+	  xfce4-appfinder/trunk/po/es_MX.po,
+	  xfce4-appfinder/trunk/po/et.po, xfce4-appfinder/trunk/po/eu.po,
+	  xfce4-appfinder/trunk/po/fa.po, xfce4-appfinder/trunk/po/fi.po,
+	  xfce4-appfinder/trunk/po/fr.po, xfce4-appfinder/trunk/po/gu.po,
+	  xfce4-appfinder/trunk/po/he.po, xfce4-appfinder/trunk/po/hu.po,
+	  xfce4-appfinder/trunk/po/hy.po, xfce4-appfinder/trunk/po/it.po,
+	  xfce4-appfinder/trunk/po/ja.po, xfce4-appfinder/trunk/po/ko.po,
+	  xfce4-appfinder/trunk/po/lt.po, xfce4-appfinder/trunk/po/mr.po,
+	  xfce4-appfinder/trunk/po/nl.po, xfce4-appfinder/trunk/po/pa.po,
+	  xfce4-appfinder/trunk/po/pl.po,
+	  xfce4-appfinder/trunk/po/pt_BR.po,
+	  xfce4-appfinder/trunk/po/pt_PT.po,
+	  xfce4-appfinder/trunk/po/ro.po, xfce4-appfinder/trunk/po/ru.po,
+	  xfce4-appfinder/trunk/po/sk.po, xfce4-appfinder/trunk/po/sv.po,
+	  xfce4-appfinder/trunk/po/tr.po, xfce4-appfinder/trunk/po/uk.po,
+	  xfce4-appfinder/trunk/po/xfce4-appfinder.pot,
+	  xfce4-appfinder/trunk/po/zh_CN.po,
+	  xfce4-appfinder/trunk/po/zh_TW.po, po/ar.po, po/az.po, po/be.po,
+	  po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/el.po,
+	  po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po, po/he.po,
+	  po/hi.po, po/hu.po, po/hy.po, po/it.po, po/ja.po, po/ko.po,
+	  po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po,
+	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po,
+	  po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po,
+	  po/xfdesktop.pot, po/zh_CN.po, po/zh_TW.po,
+	  xfwm4/trunk/po/ar.po, xfwm4/trunk/po/az.po,
+	  xfwm4/trunk/po/be.po, xfwm4/trunk/po/bg.po,
+	  xfwm4/trunk/po/bn_IN.po, xfwm4/trunk/po/ca.po,
+	  xfwm4/trunk/po/cs.po, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/el.po, xfwm4/trunk/po/en_GB.po,
+	  xfwm4/trunk/po/eo.po, xfwm4/trunk/po/es.po,
+	  xfwm4/trunk/po/es_MX.po, xfwm4/trunk/po/et.po,
+	  xfwm4/trunk/po/eu.po, xfwm4/trunk/po/fa.po,
+	  xfwm4/trunk/po/fi.po, xfwm4/trunk/po/fr.po,
+	  xfwm4/trunk/po/gu.po, xfwm4/trunk/po/he.po,
+	  xfwm4/trunk/po/hi.po, xfwm4/trunk/po/hu.po,
+	  xfwm4/trunk/po/it.po, xfwm4/trunk/po/ja.po,
+	  xfwm4/trunk/po/ko.po, xfwm4/trunk/po/lt.po,
+	  xfwm4/trunk/po/mr.po, xfwm4/trunk/po/ms.po,
+	  xfwm4/trunk/po/nb_NO.po, xfwm4/trunk/po/nl.po,
+	  xfwm4/trunk/po/pa.po, xfwm4/trunk/po/pl.po,
+	  xfwm4/trunk/po/pt_BR.po, xfwm4/trunk/po/pt_PT.po,
+	  xfwm4/trunk/po/ro.po, xfwm4/trunk/po/ru.po,
+	  xfwm4/trunk/po/sk.po, xfwm4/trunk/po/sv.po,
+	  xfwm4/trunk/po/ta.po, xfwm4/trunk/po/tr.po,
+	  xfwm4/trunk/po/uk.po, xfwm4/trunk/po/vi.po,
+	  xfwm4/trunk/po/xfwm4.pot, xfwm4/trunk/po/zh_CN.po,
+	  xfwm4/trunk/po/zh_TW.po: Updated.
+
+2006-04-30 07:11  kelnos
+
+	* src/xfdesktop-file-icon.c: split string out into three separate
+	  strings to ease translations
+
+2006-04-30 04:04  daichi
+
+	* thunar/trunk/po/ChangeLog, thunar/trunk/po/ja.po,
+	  xfcalendar/trunk/po/ja.po, po/ja.po: Updated Japanese
+	  translations.
+
+2006-04-29 15:49  adriano
+
+	* po/pt_BR.po: Updated pt_BR translations.
+
+2006-04-29 12:15  daichi
+
+	* mousepad/trunk/po/ChangeLog, mousepad/trunk/po/pl.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/pl.po,
+	  xfce4-panel/trunk/po/pl.po, po/pl.po, xfmedia/trunk/po/pl.po,
+	  xfprint/trunk/po/pl.po, xfwm4/trunk/po/pl.po: Updated Polish
+	  translations by Piotr Malinski <riklaunim@gmail.com>.
+
+2006-04-29 11:48  daichi
+
+	* terminal/trunk/po/ChangeLog, terminal/trunk/po/vi.po,
+	  xfcalendar/trunk/po/vi.po, xfce-mcs-plugins/trunk/po/vi.po,
+	  xfce4-panel/trunk/po/vi.po, po/vi.po, xfwm4/trunk/po/vi.po:
+	  Updated Vietnamese translations by Phan Vinh Thinh
+	  <teppi@vnlinux.org>.
+
+2006-04-29 11:43  daichi
+
+	* terminal/trunk/po/ChangeLog, terminal/trunk/po/Terminal.pot,
+	  terminal/trunk/po/ca.po, terminal/trunk/po/de.po,
+	  terminal/trunk/po/el.po, terminal/trunk/po/en_GB.po,
+	  terminal/trunk/po/es.po, terminal/trunk/po/eu.po,
+	  terminal/trunk/po/fi.po, terminal/trunk/po/fr.po,
+	  terminal/trunk/po/he.po, terminal/trunk/po/hu.po,
+	  terminal/trunk/po/it.po, terminal/trunk/po/ja.po,
+	  terminal/trunk/po/ko.po, terminal/trunk/po/nl.po,
+	  terminal/trunk/po/pt_BR.po, terminal/trunk/po/ru.po,
+	  terminal/trunk/po/sk.po, terminal/trunk/po/vi.po,
+	  terminal/trunk/po/zh_CN.po, terminal/trunk/po/zh_TW.po,
+	  po/ar.po, po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po,
+	  po/cs.po, po/de.po, po/el.po, po/en_GB.po, po/eo.po, po/es.po,
+	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
+	  po/gu.po, po/he.po, po/hi.po, po/hu.po, po/hy.po, po/it.po,
+	  po/ja.po, po/ko.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po,
+	  po/nl.po, po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po,
+	  po/ro.po, po/ru.po, po/sk.po, po/sv.po, po/ta.po, po/tr.po,
+	  po/uk.po, po/vi.po, po/xfdesktop.pot, po/zh_CN.po, po/zh_TW.po:
+	  Updated.
+
+2006-04-29 11:10  daichi
+
+	* xfdesktop/branches/xfce_4_2/Makefile.am,
+	  xfdesktop/branches/xfce_4_2/menu.xml.eu,
+	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.eu,
+	  Makefile.am, menu.xml.eu,
+	  modules/menu/xfce-registered-categories.xml.eu: Updated Basque
+	  translations by Piarres Beobide <pi@beobide.net>.
+
+2006-04-28 10:53  yuvaltanny
+
+	* xfcalendar/trunk/po/he.po, xfce-mcs-plugins/trunk/po/he.po,
+	  xfce4-mailwatch-plugin/trunk/po/he.po,
+	  xfce4-panel/trunk/po/he.po, po/he.po: Hebrew translation update
+
+2006-04-27 08:20  kelnos
+
+	* settings/behavior-settings.c, settings/settings-common.h:
+	  disable icon settings controls if style is set to 'none'
+
+2006-04-27 07:38  kelnos
+
+	* src/xfdesktop-file-icon-manager.c, src/xfdesktop-file-icon.c,
+	  src/xfdesktop-file-icon.h: * fix non-ejectable media showing as
+	  ejectable (patch from jani monoses)
+	  * fix removable media not appearing when its mount point has not
+	  yet been
+	  created.
+	  * fix something else that i forgot.
+
+2006-04-26 08:38  peetervois
+
+	* po/et.po:
+
+2006-04-25 16:27  jari
+
+	* thunar/trunk/po/fi.po, xfce4-panel/trunk/po/fi.po, po/fi.po:
+	  Finnish translations updated.
+
+2006-04-25 15:58  mvd
+
+	* po/uk.po: 2006-04-25 Maxim Dziumanenko <mvd@mylinux.ua>
+	  
+	  * Updated Ukrainian translation.
+
+2006-04-25 04:53  yuvaltanny
+
+	* libexo/trunk/po/LINGUAS, libexo/trunk/po/he.po, menu.xml.he,
+	  modules/menu/xfce-registered-categories.xml.he: Hebrew
+	  translation update
+
+2006-04-23 15:05  daichi
+
+	* xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.el,
+	  modules/menu/xfce-registered-categories.xml.el: Updated Greek
+	  translations by Stavros Giannouris <stavrosg2002@freemail.gr>.
+
+2006-04-23 14:14  stavrosg
+
+	* xfcalendar/trunk/po/el.po, xfce-mcs-plugins/trunk/po/el.po,
+	  po/el.po, xfprint/trunk/po/el.po, xfwm4/trunk/po/el.po: Greek
+	  translation update
+
+2006-04-23 11:56  daichi
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/ru.po,
+	  mousepad/trunk/po/ChangeLog, mousepad/trunk/po/ru.po,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/ru.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/ru.po,
+	  xfburn/trunk/po/ru.po, xfcalendar/trunk/po/ru.po,
+	  xfce-mcs-plugins/trunk/po/ru.po, xfce-utils/trunk/po/ru.po,
+	  xfce4-appfinder/trunk/po/ru.po,
+	  xfce4-mailwatch-plugin/trunk/po/ru.po,
+	  xfce4-panel/trunk/po/ru.po, xfce4-session/trunk/po/ru.po,
+	  xfce4-trigger-launcher/trunk/po/ru.po, po/ru.po,
+	  xffm/trunk/libxffm/po/ru.po, xffm/trunk/plugins/xfbook/po/ru.po,
+	  xffm/trunk/plugins/xffstab/po/ru.po,
+	  xffm/trunk/plugins/xflocate/po/ru.po,
+	  xffm/trunk/plugins/xfproc/po/ru.po,
+	  xffm/trunk/plugins/xfrecent/po/ru.po,
+	  xffm/trunk/plugins/xfsamba/po/ru.po,
+	  xffm/trunk/xfmime-edit/po/ru.po, xfmedia/trunk/po/ru.po,
+	  xfprint/trunk/po/ru.po, xfwm4/trunk/po/ru.po: Updated Russian
+	  translations by Sergey Fedoseev <fedoseev.sergey@gmail.com>.
+
+2006-04-23 09:39  sas
+
+	* xfcalendar/trunk/po/hu.po, xfce-mcs-plugins/trunk/po/hu.po,
+	  xfce4-panel/trunk/po/hu.po, po/hu.po: hu trunk: cal, desktop,
+	  mcs-plugins & panel updates
+
+2006-04-23 09:06  daichi
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/ja.po,
+	  mousepad/trunk/po/ChangeLog, mousepad/trunk/po/ja.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/ja.po,
+	  xfce-mcs-plugins/trunk/po/ja.po, po/ja.po, xfwm4/trunk/po/ja.po:
+	  Updated Japanese translations.
+
+2006-04-23 07:54  jari
+
+	* xfce-mcs-plugins/trunk/po/fi.po, po/fi.po, xfwm4/trunk/po/fi.po:
+	  Finnish translations updated.
+
+2006-04-23 06:28  daichi
+
+	* xfce-mcs-plugins/trunk/po/vi.po, po/vi.po, xfwm4/trunk/po/vi.po:
+	  Updated Vietnamese translations by Phan Vinh Thinh
+	  <teppi@vnlinux.org>.
+
+2006-04-23 06:20  daichi
+
+	* xfce-mcs-plugins/trunk/po/ar.po,
+	  xfce-mcs-plugins/trunk/po/az.po,
+	  xfce-mcs-plugins/trunk/po/be.po,
+	  xfce-mcs-plugins/trunk/po/bg.po,
+	  xfce-mcs-plugins/trunk/po/bn_IN.po,
+	  xfce-mcs-plugins/trunk/po/ca.po,
+	  xfce-mcs-plugins/trunk/po/cs.po,
+	  xfce-mcs-plugins/trunk/po/de.po,
+	  xfce-mcs-plugins/trunk/po/el.po,
+	  xfce-mcs-plugins/trunk/po/en_GB.po,
+	  xfce-mcs-plugins/trunk/po/eo.po,
+	  xfce-mcs-plugins/trunk/po/es.po,
+	  xfce-mcs-plugins/trunk/po/es_MX.po,
+	  xfce-mcs-plugins/trunk/po/et.po,
+	  xfce-mcs-plugins/trunk/po/eu.po,
+	  xfce-mcs-plugins/trunk/po/fa.po,
+	  xfce-mcs-plugins/trunk/po/fi.po,
+	  xfce-mcs-plugins/trunk/po/fr.po,
+	  xfce-mcs-plugins/trunk/po/gu.po,
+	  xfce-mcs-plugins/trunk/po/he.po,
+	  xfce-mcs-plugins/trunk/po/hi.po,
+	  xfce-mcs-plugins/trunk/po/hu.po,
+	  xfce-mcs-plugins/trunk/po/it.po,
+	  xfce-mcs-plugins/trunk/po/ja.po,
+	  xfce-mcs-plugins/trunk/po/ko.po,
+	  xfce-mcs-plugins/trunk/po/lt.po,
+	  xfce-mcs-plugins/trunk/po/mr.po,
+	  xfce-mcs-plugins/trunk/po/ms.po,
+	  xfce-mcs-plugins/trunk/po/nl.po,
+	  xfce-mcs-plugins/trunk/po/pa.po,
+	  xfce-mcs-plugins/trunk/po/pl.po,
+	  xfce-mcs-plugins/trunk/po/pt_BR.po,
+	  xfce-mcs-plugins/trunk/po/pt_PT.po,
+	  xfce-mcs-plugins/trunk/po/ro.po,
+	  xfce-mcs-plugins/trunk/po/ru.po,
+	  xfce-mcs-plugins/trunk/po/sk.po,
+	  xfce-mcs-plugins/trunk/po/sv.po,
+	  xfce-mcs-plugins/trunk/po/ta.po,
+	  xfce-mcs-plugins/trunk/po/tr.po,
+	  xfce-mcs-plugins/trunk/po/uk.po,
+	  xfce-mcs-plugins/trunk/po/vi.po,
+	  xfce-mcs-plugins/trunk/po/xfce-mcs-plugins.pot,
+	  xfce-mcs-plugins/trunk/po/zh_CN.po,
+	  xfce-mcs-plugins/trunk/po/zh_TW.po, po/ar.po, po/az.po,
+	  po/be.po, po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po, po/de.po,
+	  po/el.po, po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po,
+	  po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po,
+	  po/he.po, po/hi.po, po/hu.po, po/hy.po, po/it.po, po/ja.po,
+	  po/ko.po, po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po,
+	  po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po,
+	  po/ru.po, po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po,
+	  po/vi.po, po/xfdesktop.pot, po/zh_CN.po, po/zh_TW.po: Updated.
+
+2006-04-22 02:19  kelnos
+
+	* menu.xml, menu.xml.az, menu.xml.ca, menu.xml.cs, menu.xml.da,
+	  menu.xml.de, menu.xml.el, menu.xml.es, menu.xml.et, menu.xml.eu,
+	  menu.xml.fa_IR, menu.xml.fi, menu.xml.fr, menu.xml.he,
+	  menu.xml.hu, menu.xml.ko, menu.xml.ms, menu.xml.nl, menu.xml.pl,
+	  menu.xml.pt_BR, menu.xml.ro, menu.xml.ru, menu.xml.sk,
+	  menu.xml.sv, menu.xml.ta, menu.xml.tr, menu.xml.uk, menu.xml.vi,
+	  menu.xml.zh_CN, menu.xml.zh_TW: change 'Web Browser' to run
+	  xfbrowser4 instead of mozilla.
+
+2006-04-21 21:58  yuvaltanny
+
+	* terminal/trunk/po/he.po, xfcalendar/trunk/po/he.po,
+	  xfce-mcs-plugins/trunk/po/he.po, xfce-utils/trunk/po/he.po,
+	  xfce4-icon-theme/trunk/po/he.po,
+	  xfce4-mailwatch-plugin/trunk/configure.ac,
+	  xfce4-mailwatch-plugin/trunk/po/he.po,
+	  xfce4-mixer/trunk/po/he.po, xfce4-panel/trunk/po/he.po,
+	  xfce4-trigger-launcher/trunk/po/he.po, po/he.po,
+	  xfprint/trunk/po/he.po: Hebrew translations update
+
+2006-04-21 18:46  kelnos
+
+	* menueditor/dnd.c: fix gcc4 --enable-debug=full warnings. hope
+	  you don't mind, JF (i know
+	  you're busy)
+
+2006-04-21 08:28  kelnos
+
+	* src/xfdesktop-file-icon-manager.c: attempt to create ~/Desktop
+	  if it does not exist and the user turns on
+	  file/launcher icons (bug 1691)
+
+2006-04-20 19:51  jasper
+
+	* panel-plugin/desktop-menu-plugin.c: Register open menu, so
+	  autohide will work when the menu closes.
+
+2006-04-19 17:00  sas
+
+	* libexo/trunk/po/hu.po, mousepad/trunk/po/hu.po,
+	  xfce4-session/trunk/po/hu.po, po/hu.po, xfwm4/trunk/po/hu.po: hu
+	  trunk: updates
+
+2006-04-19 16:07  benny
+
+	* settings/appearance-settings.c: Separate translation for the
+	  settings manager label. Patch from Adriano Winter Bess. Bug
+	  #1669.
+
+2006-04-18 22:38  kelnos
+
+	* configure.ac: don't require libxfce4panel if
+	  --disable-panel-plugin was passed
+
+2006-04-18 20:02  kelnos
+
+	* NEWS: update NEWS for 4.4beta1. apparently i also wrote in this
+	  6 months ago and
+	  forgot to commit it, so that's there too. go me.
+
+2006-04-18 19:54  kelnos
+
+	* README: update readme (patch from jari rahkonen)
+
+2006-04-16 14:45  benny
+
+	* Makefile.am, configure.ac, po/ar.po, po/az.po, po/be.po,
+	  po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po, po/de.po, po/el.po,
+	  po/en_GB.po, po/eo.po, po/es.po, po/es_MX.po, po/et.po,
+	  po/eu.po, po/fa.po, po/fi.po, po/fr.po, po/gu.po, po/he.po,
+	  po/hi.po, po/hu.po, po/hy.po, po/it.po, po/ja.po, po/ko.po,
+	  po/lt.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po, po/pa.po,
+	  po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po,
+	  po/sk.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po, po/vi.po,
+	  po/xfdesktop.pot, po/zh_CN.po, po/zh_TW.po, src/xfce-desktop.c,
+	  src/xfdesktop-file-icon-manager.c, src/xfdesktop-icon-view.c,
+	  xfdesktop.spec.in: Update for 4.4beta1.
+
+2006-04-16 04:36  daichi
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/ru.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/ru.po,
+	  xfcalendar/trunk/po/ru.po, xfce-mcs-plugins/trunk/po/ru.po,
+	  xfce4-mixer/trunk/po/ru.po, xfce4-session/trunk/po/ru.po,
+	  xfdesktop/branches/xfce_4_2/modules/menu/xfce-registered-categories.xml.ru,
+	  modules/menu/xfce-registered-categories.xml.ru, po/ru.po,
+	  xfwm4/trunk/po/ru.po: Updated Russian translations by Andrey
+	  Fedoseev <andrey.fedoseev@gmail.com>.
+
+2006-04-15 20:54  paurullan
+
+	* thunar/trunk/po/ca.po, po/ca.po: [i18n] catalan
+	  update of Thunar and xfdesktop
+
+2006-04-15 17:41  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2006-04-15 12:10  daichi
 
 	* libexo/trunk/po/ca.po, libexo/trunk/po/el.po,

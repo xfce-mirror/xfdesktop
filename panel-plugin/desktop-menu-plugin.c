@@ -387,7 +387,7 @@ dmp_message_received(GtkWidget *w,
     if(!xfdesktop_popup_grab_available(root, GDK_CURRENT_TIME))
     {
         g_critical("Unable to get keyboard/mouse grab.");
-        return;
+        return FALSE;
     }
 
     if(evt->data_format == 8) {
@@ -405,7 +405,6 @@ dmp_popup(GtkWidget *w,
           GdkEventButton *evt,
           gpointer user_data)
 {
-    GtkWidget *menu;
     DMPlugin *dmp = user_data;
     
     if(evt->button != 1 || ((evt->state & GDK_CONTROL_MASK)
