@@ -51,16 +51,16 @@ XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.3.90.2])
 XDT_CHECK_PACKAGE([LIBXFCE4MCS_CLIENT],  [libxfce4mcs-client-1.0], [4.3.90.2])
 XDT_XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.3.90.2])
 
-XDT_CHECK_OPTIONAL_PACKAGE([THUNAR_VFS], [thunar-vfs-1], [0.3.0], [thunar-vfs],
+XDT_CHECK_OPTIONAL_PACKAGE([THUNAR_VFS], [thunar-vfs-1], [0.3.2], [thunar-vfs],
     AC_HELP_STRING([--disable-thunar-vfs],
                    [Disable the use Thunar's VFS layer to show the desktop folder (default=enabled)]))
 AM_CONDITIONAL([HAVE_THUNAR_VFS], [test "x$THUNAR_VFS_FOUND" = "xyes"])
 
-XDT_CHECK_OPTIONAL_PACKAGE([THUNARX], [thunarx-1], [0.3.0], [thunarx],
+XDT_CHECK_OPTIONAL_PACKAGE([THUNARX], [thunarx-1], [0.3.2], [thunarx],
     AC_HELP_STRING([--disable-thunarx],
                    [Disable the use of Thunar's extension mechanism to add external features to the desktop icon implementation (default=enabled)]))
 
-XDT_CHECK_OPTIONAL_PACKAGE([LIBEXO], [exo-0.3], [0.3.1.6], [exo],
+XDT_CHECK_OPTIONAL_PACKAGE([LIBEXO], [exo-0.3], [0.3.1.8], [exo],
     AC_HELP_STRING([--disable-exo],
                    [Disable the use of libexo for nifty icon effects (default=enabled)]))
 
