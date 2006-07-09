@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-09 00:08+0200\n"
-"PO-Revision-Date: 2006-05-25 23:07+0200\n"
+"POT-Creation-Date: 2006-07-09 18:52+0300\n"
+"PO-Revision-Date: 2006-07-09 19:22+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -71,9 +71,8 @@ msgstr "Εντολή:"
 #: ../menueditor/menueditor-add-dialog.c:186
 #: ../menueditor/menueditor-edit-dialog.c:161
 #: ../menueditor/menueditor-edit-dialog.c:162
-#, fuzzy
 msgid "Themed icon:"
-msgstr "Επιλογή εικονιδίου"
+msgstr "Εικονίδιο θέματος:"
 
 #: ../menueditor/menueditor-add-dialog.c:203
 #: ../menueditor/menueditor-add-dialog.c:204
@@ -128,34 +127,32 @@ msgstr "Επιλογή εντολής"
 
 #: ../menueditor/menueditor-add-dialog.c:273
 #: ../menueditor/menueditor-edit-dialog.c:249
-#, fuzzy
 msgid "Executable Files"
-msgstr "Η αποβολή απέτυχε"
+msgstr "Εκτελέσιμα αρχεία"
 
 #: ../menueditor/menueditor-add-dialog.c:288
 #: ../menueditor/menueditor-edit-dialog.c:264
 msgid "Perl Scripts"
-msgstr ""
+msgstr "Δέσμες ενεργειών Perl"
 
 #: ../menueditor/menueditor-add-dialog.c:294
 #: ../menueditor/menueditor-edit-dialog.c:270
 msgid "Python Scripts"
-msgstr ""
+msgstr "Δέσμες ενεργειών Python"
 
 #: ../menueditor/menueditor-add-dialog.c:300
 #: ../menueditor/menueditor-edit-dialog.c:276
 msgid "Ruby Scripts"
-msgstr ""
+msgstr "Δέσμες ενεργειών Ruby"
 
 #: ../menueditor/menueditor-add-dialog.c:306
 #: ../menueditor/menueditor-edit-dialog.c:282
 msgid "Shell Scripts"
-msgstr ""
+msgstr "Δέσμες ενεργειών κέλυφους"
 
 #: ../menueditor/menueditor-add-external-dialog.c:100
-#, fuzzy
 msgid "Add external menu entry"
-msgstr "Προσθήκη ενός εξωτερικού μενού"
+msgstr "Προσθήκη εγγραφής μενού"
 
 #: ../menueditor/menueditor-add-external-dialog.c:122
 msgid "File"
@@ -175,9 +172,8 @@ msgstr "Πηγή:"
 
 #: ../menueditor/menueditor-add-external-dialog.c:137
 #: ../menueditor/menueditor-edit-external-dialog.c:117
-#, fuzzy
 msgid "Select external menu"
-msgstr "Προσθήκη ενός εξωτερικού μενού"
+msgstr "Επιλογή εξωτερικού μενού"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
@@ -214,14 +210,12 @@ msgid "Edit menu entry"
 msgstr "Επεξεργασία καταχώρησης μενού"
 
 #: ../menueditor/menueditor-edit-external-dialog.c:96
-#, fuzzy
 msgid "Edit external menu entry"
-msgstr "Προσθήκη ενός εξωτερικού μενού"
+msgstr "Επεξεργασία εξωτερικής εγγραφής μενού"
 
 #: ../menueditor/menueditor-main.c:43
-#, fuzzy
 msgid "Xfce4-MenuEditor"
-msgstr "Επεξεργαστής μενού Xfce 4"
+msgstr "Xfce4-MenuEditor"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -229,12 +223,11 @@ msgstr "_Αρχείο"
 
 #: ../menueditor/menueditor-main-window.c:141
 msgid "_New"
-msgstr ""
+msgstr "_Νέο"
 
 #: ../menueditor/menueditor-main-window.c:141
-#, fuzzy
 msgid "Create a new empty menu"
-msgstr "Δημιουργία ενός νέου αρχείου μενού του Xfce4"
+msgstr "Δημιουργία νέου κενού μενού"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:2028
@@ -242,14 +235,12 @@ msgid "_Open"
 msgstr "_Άνοιγμα"
 
 #: ../menueditor/menueditor-main-window.c:142
-#, fuzzy
 msgid "Open existing menu"
-msgstr "Άνοιγμα προκαθορισμένου μενού"
+msgstr "Άνοιγμα υπάρχοντος μενού"
 
 #: ../menueditor/menueditor-main-window.c:143
-#, fuzzy
 msgid "Open _default menu"
-msgstr "Άνοιγμα προκαθορισμένου μενού"
+msgstr "Άνοιγμα _προεπιλεγμένου μενού"
 
 #: ../menueditor/menueditor-main-window.c:143
 msgid "Open default menu"
@@ -257,101 +248,87 @@ msgstr "Άνοιγμα προκαθορισμένου μενού"
 
 #: ../menueditor/menueditor-main-window.c:144
 msgid "_Save"
-msgstr ""
+msgstr "Απο_θήκευση"
 
 #: ../menueditor/menueditor-main-window.c:144
-#, fuzzy
 msgid "Save modifications"
-msgstr "Ξέχασε τις τροποποιήσεις"
+msgstr "Αποθήκευση τροποποιήσεων"
 
 #: ../menueditor/menueditor-main-window.c:145
-#, fuzzy
 msgid "Save _as..."
 msgstr "Αποθήκευση ως..."
 
 #: ../menueditor/menueditor-main-window.c:145
 msgid "Save menu under a given name"
-msgstr ""
+msgstr "Αποθήκευση ως"
 
 #: ../menueditor/menueditor-main-window.c:146
 msgid "_Close"
-msgstr ""
+msgstr "_Κλείσιμο"
 
 #: ../menueditor/menueditor-main-window.c:146
-#, fuzzy
 msgid "Close menu"
-msgstr "Κλείσιμο του τρέχοντος μενού"
+msgstr "Κλείσιμο μενού"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "_Quit"
-msgstr "Έξοδος"
+msgstr "Έ_ξοδος"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "Quit Xfce4-Menueditor"
-msgstr "Επεξεργαστής μενού Xfce 4"
+msgstr "Έξοδος από το Xfce4-Menueditor"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
 msgstr "_Επεξεργασία"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "_Edit entry"
-msgstr "Επεξεργασία καταχώρησης μενού"
+msgstr "_Επεξεργασία εγγραφής"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "Edit selected entry"
-msgstr "Επεξεργασία καταχώρησης μενού"
+msgstr "Επεξεργασία επιλεγμένης εγγραφής"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "_Add entry"
-msgstr "Προσθήκη νέας καταχώρησης μενού"
+msgstr "_Προσθήκη εγγραφής"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "Add a new entry in the menu"
-msgstr "Προσθήκη μιας καταχώρησης "
+msgstr "Προσθήκη νέας εγγραφής στο μενού"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add _external"
-msgstr "Προσθήκη ενός εξωτερικού μενού"
+msgstr "Προσθήκη ε_ξωτερικής"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add an external entry"
-msgstr "Προσθήκη ενός εξωτερικού μενού"
+msgstr "Προσθήκη νέας εξωτερικής εγγραφής"
 
 #: ../menueditor/menueditor-main-window.c:153
 msgid "_Remove entry"
-msgstr ""
+msgstr "_Διαγραφή εγγραφής"
 
 #: ../menueditor/menueditor-main-window.c:153
-#, fuzzy
 msgid "Remove entry"
-msgstr "Προσθήκη νέας καταχώρησης μενού"
+msgstr "Διαγραφή εγγραφής"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "_Up"
-msgstr ""
+msgstr "_Επάνω"
 
 #: ../menueditor/menueditor-main-window.c:154
-#, fuzzy
 msgid "Move entry up"
-msgstr "Μετακίνηση της τρέχουσας καταχώρησης επάνω"
+msgstr "Μετακίνηση εγγραφής προς τα επάνω"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "_Down"
-msgstr ""
+msgstr "_Κάτω"
 
 #: ../menueditor/menueditor-main-window.c:155
-#, fuzzy
 msgid "Move entry down"
-msgstr "Μετακίνηση της τρέχουσας καταχώρησης κάτω"
+msgstr "Μετακίνηση εγγραφής προς τα κάτω"
 
 #: ../menueditor/menueditor-main-window.c:157
 msgid "_Help"
@@ -362,29 +339,24 @@ msgid "_About..."
 msgstr "_Περί..."
 
 #: ../menueditor/menueditor-main-window.c:158
-#, fuzzy
 msgid "Show informations about xfce4-menueditor"
-msgstr "Αδυναμία εκκίνησης του επεξεργαστή μενού του Xfce: %s"
+msgstr "Πληροφορίες για το xfce4-menueditor"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all"
-msgstr "Σύμπτυξη του δέντρου"
+msgstr "Σύμπτυξη όλων"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all menu entries"
-msgstr "Σύμπτυξη του δέντρου"
+msgstr "Σύμπτυξη όλων των εγγραφών του μενού"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all"
-msgstr "_Άνοιγμα όλων"
+msgstr "Ανάπτυξη όλων"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all menu entries"
-msgstr "Ανάπτυξη του δέντρου"
+msgstr "Ανάπτυξη όλων των εγγραφών του μενού"
 
 #: ../menueditor/menueditor-main-window.c:341
 msgid "Name"
@@ -469,7 +441,7 @@ msgstr "Επεξεργαστής μενού για το Xfce 4"
 #. Credits
 #: ../menueditor/menueditor-main-window.c:1269
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "Δημιουργός"
 
 #: ../menueditor/menueditor-main-window.c:1270
 #: ../menueditor/menueditor-main-window.c:1271
@@ -486,9 +458,8 @@ msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "Έχετε μεταβάλλει το μενού, θέλετε να το αποθηκεύσετε πριν την έξοδο;"
 
 #: ../menueditor/menueditor-main-window.c:1318
-#, fuzzy
 msgid "Forget modifications"
-msgstr "Αγνόηση τροποποιήσεων"
+msgstr "Ξέχασε τις τροποποιήσεις"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
@@ -503,22 +474,13 @@ msgid "Unable to quit session."
 msgstr "Δεν ήταν δυνατή η έξοδος από τη συνεδρία."
 
 #: ../modules/menu/desktop-menu-file.c:119
-msgid ""
-"Quitting the session requires that Xfce's session manager (xfce4-session) is "
-"running, but it was not detected.  Please quit Xfce via another means."
-msgstr ""
-"Για να γίνει η έξοδος πρέπει να εκτελείται ο διαχειριστής συνεδρίας του Xfce "
-"(xfce4-session) αλλά δεν εντοπίστηκε. Παρακαλώ βγείτε από το Xfce με άλλα "
-"μέσα."
+msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
+msgstr "Για να γίνει η έξοδος πρέπει να εκτελείται ο διαχειριστής συνεδρίας του Xfce (xfce4-session) αλλά δεν εντοπίστηκε. Παρακαλώ βγείτε από το Xfce με άλλα μέσα."
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
-msgid ""
-"Quitting the session requires the 'xfce4-session-logout' command, but it "
-"could not be found: %s"
-msgstr ""
-"Για να γίνει η έξοδος απαιτείται η εντολή 'xfce4-session-logout', αλλά δεν "
-"είναι δυνατό να βρεθεί: %s"
+msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
+msgstr "Για να γίνει η έξοδος απαιτείται η εντολή 'xfce4-session-logout', αλλά δεν είναι δυνατό να βρεθεί: %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
@@ -585,7 +547,7 @@ msgstr "Εμφάνιση εικον_ιδίων στο μενού"
 
 #: ../panel-plugin/desktop-menu-plugin.c:939
 msgid "There is already a panel menu registered for this screen"
-msgstr ""
+msgstr "Υπάρχει ήδη ένα μενού σε ταμπλό για αυτή την οθόνη"
 
 #: ../panel-plugin/desktop-menu-plugin.c:1047
 msgid "Edit Menu"
@@ -598,7 +560,8 @@ msgstr ""
 "Επιφάνεια\n"
 "Εργασίας"
 
-#: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
+#: ../settings/appearance-settings.c:187
+#: ../settings/appearance-settings.c:196
 #: ../settings/backdrop-list-manager.c:631
 msgid "backdrops.list"
 msgstr "backdrops.list"
@@ -656,7 +619,8 @@ msgstr "Το Xfce δε θα μπορεί να διαχειριστεί την ε
 msgid "Unknown Error"
 msgstr "Άγνωστο σφάλμα"
 
-#: ../settings/appearance-settings.c:806 ../src/xfdesktop-file-icon.c:650
+#: ../settings/appearance-settings.c:806
+#: ../src/xfdesktop-file-icon.c:650
 #: ../src/xfdesktop-file-icon.c:708
 msgid "Error"
 msgstr "Σφάλμα"
@@ -670,19 +634,8 @@ msgid "Information"
 msgstr "Πληροφορίες"
 
 #: ../settings/appearance-settings.c:836
-msgid ""
-"To ensure that Xfce does not manage your desktop the next time you start "
-"Xfce, please be sure to save your session when logging out.  If you are not "
-"using the Xfce Session Manager (xfce4-session), you will need to manually "
-"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-"Για να σιγουρευτείτε ότι το Xfce δε θα διαχειρίζεται την επιφάνεια εργασίας "
-"σας την επόμενη φορά που θα το ξεκινήσετε, αποθηκεύσετε τη συνεδρία σας όταν "
-"αποσυνδεθείτε. Αν δε χρησιμοποιείτε τον Διαχειριστή συνεδρίας του Xfce "
-"(xfce4-session), θα πρέπει να επεξεργαστείτε χειροκίνητα το αρχείο ~/.config/"
-"xfce4/xinitrc. Υπάρχουν λεπτομέρειες διαθέσιμες στην τεκμηρίωση που "
-"διατίθεται στο http://xfce.org/."
+msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "Για να σιγουρευτείτε ότι το Xfce δε θα διαχειρίζεται την επιφάνεια εργασίας σας την επόμενη φορά που θα το ξεκινήσετε, αποθηκεύσετε τη συνεδρία σας όταν αποσυνδεθείτε. Αν δε χρησιμοποιείτε τον Διαχειριστή συνεδρίας του Xfce (xfce4-session), θα πρέπει να επεξεργαστείτε χειροκίνητα το αρχείο ~/.config/xfce4/xinitrc. Υπάρχουν λεπτομέρειες διαθέσιμες στην τεκμηρίωση που διατίθεται στο http://xfce.org/."
 
 #: ../settings/appearance-settings.c:844
 msgid "_Do not show this again"
@@ -764,18 +717,17 @@ msgstr "Οθόνη %d, Monitor %d"
 msgid "_Behavior"
 msgstr "_Συμπεριφορά"
 
-#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#: ../settings/backdrop-list-manager.c:160
+#: ../src/xfce-desktop-settings.c:74
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
+"Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
 "Η αποθήκευση του αρχείου %s δεν ήταν δυνατή: %s\n"
 "\n"
-"Παρακαλώ επιλέξτε μια άλλη τοποθεσία ή επιλέξτε άκυρο στο πλαίσιο διαλόγου "
-"για να απαλείψετε τις αλλαγές σας"
+"Παρακαλώ επιλέξτε μια άλλη τοποθεσία ή επιλέξτε άκυρο στο πλαίσιο διαλόγου για να απαλείψετε τις αλλαγές σας"
 
 #: ../settings/backdrop-list-manager.c:430
 msgid "Select backdrop image file"
@@ -869,11 +821,13 @@ msgstr "Επιλογές:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Μενού επιφάνειας εργασίας:         %s\n"
 
-#: ../src/main.c:249 ../src/main.c:256
+#: ../src/main.c:249
+#: ../src/main.c:256
 msgid "enabled"
 msgstr "ενεργοποιημένο"
 
-#: ../src/main.c:251 ../src/main.c:258
+#: ../src/main.c:251
+#: ../src/main.c:258
 msgid "disabled"
 msgstr "απενεργοποιημένο"
 
@@ -893,20 +847,15 @@ msgstr "Οι επιλογές είναι:\n"
 
 #: ../src/main.c:288
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    -reload     Επαναφόρτωση όλων των ρυθμίσεων, ανανέωση της λίστας "
-"εικόνων \n"
+msgstr "    -reload     Επαναφόρτωση όλων των ρυθμίσεων, ανανέωση της λίστας εικόνων \n"
 
 #: ../src/main.c:289
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu       Εμφάνιση του μενού (στην τρέχουσα θέση του κέρσορα)\n"
 
 #: ../src/main.c:290
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    -windowlist Εμφάνιση της λίστας παραθύρων (στην τρέχουσα θέση του "
-"κέρσορα)\n"
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -windowlist Εμφάνιση της λίστας παραθύρων (στην τρέχουσα θέση του κέρσορα)\n"
 
 #: ../src/main.c:291
 msgid "    -quit        Cause xfdesktop to quit\n"
@@ -922,7 +871,8 @@ msgstr "<b>Χώρος εργασίας %d</b>"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Χώρος εργασίας %d</i>"
 
-#: ../src/windowlist.c:268 ../src/windowlist.c:271
+#: ../src/windowlist.c:268
+#: ../src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "_Προσθήκη χώρου εργασίας"
 
@@ -942,11 +892,8 @@ msgstr "Επιφάνεια εργασίας"
 
 #: ../src/xfdesktop-file-icon-manager.c:233
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Δεν ήταν δυνατή η δημιουργία του φακέλου \"%s\" για τα αντικείμενα της "
-"επιφάνειας εργασίας:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Δεν ήταν δυνατή η δημιουργία του φακέλου \"%s\" για τα αντικείμενα της επιφάνειας εργασίας:"
 
 #: ../src/xfdesktop-file-icon-manager.c:235
 #: ../src/xfdesktop-file-icon-manager.c:244
@@ -956,12 +903,8 @@ msgstr "Η δημιουργία του φακέλου απέτυχε"
 
 #: ../src/xfdesktop-file-icon-manager.c:242
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Δεν είναι δυνατή η χρήση του \"%s\" για τα αντικείμενα της επιφάνεια "
-"εργασίας επειδή δεν είναι φάκελος."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Δεν είναι δυνατή η χρήση του \"%s\" για τα αντικείμενα της επιφάνεια εργασίας επειδή δεν είναι φάκελος."
 
 #: ../src/xfdesktop-file-icon-manager.c:246
 msgid "Please delete or rename the file."
@@ -1029,20 +972,15 @@ msgstr "Εάν διαγράψετε ένα αρχείο, χάνεται για �
 #: ../src/xfdesktop-file-icon-manager.c:661
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr ""
-"Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά τα  %d επιλεγμένα αρχεία;"
+msgstr "Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά τα  %d επιλεγμένα αρχεία;"
 
 #: ../src/xfdesktop-file-icon-manager.c:664
 msgid "Delete Multiple Files"
 msgstr "Διαγραφή πολλαπλών αρχείων"
 
 #: ../src/xfdesktop-file-icon-manager.c:806
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή αρχείων (όπως αυτή "
-"που παρέχει ο Thunar)."
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή αρχείων (όπως αυτή που παρέχει ο Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:885
 #, c-format
@@ -1065,8 +1003,7 @@ msgstr "Η αποβολή απέτυχε"
 #: ../src/xfdesktop-file-icon-manager.c:988
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
-"Ο ορισμός της προκαθορισμένης εφαρμογής για το \"%s\" σε \"%s\" απέτυχε."
+msgstr "Ο ορισμός της προκαθορισμένης εφαρμογής για το \"%s\" σε \"%s\" απέτυχε."
 
 #: ../src/xfdesktop-file-icon-manager.c:991
 msgid "Properties Error"
@@ -1176,13 +1113,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Δεν ήταν δυνατή η δημιουργία φακέλου με όνομα \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1600
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Δεν ήταν δυνατή η εκκίνηση του \"exo-desktop-item-edit\", που απαιτείται για "
-"τη δημιουργία και την επεξεργασία εκκινητών και συνδέσμων στην επιφάνεια "
-"εργασίας."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Δεν ήταν δυνατή η εκκίνηση του \"exo-desktop-item-edit\", που απαιτείται για τη δημιουργία και την επεξεργασία εκκινητών και συνδέσμων στην επιφάνεια εργασίας."
 
 #: ../src/xfdesktop-file-icon-manager.c:1633
 msgid "Create New Folder"
@@ -1313,12 +1245,14 @@ msgstr "_Φάκελος..."
 msgid "_Empty File"
 msgstr "_Κενό αρχείο"
 
-#: ../src/xfdesktop-file-icon-manager.c:3347 ../src/xfdesktop-file-icon.c:549
+#: ../src/xfdesktop-file-icon-manager.c:3347
+#: ../src/xfdesktop-file-icon.c:549
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Η εκτέλεση του \"%s\" απέτυχε:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3349 ../src/xfdesktop-file-icon.c:551
+#: ../src/xfdesktop-file-icon-manager.c:3349
+#: ../src/xfdesktop-file-icon.c:551
 msgid "Run Error"
 msgstr "Σφάλμα Εκτέλεσης"
 
@@ -1341,8 +1275,7 @@ msgstr "Επεξεργαστής μενού Xfce 4"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr ""
-"Εμφανίζει ένα μενού που περιέχει τις κατηγορίες των εγκατεστημένων εφαρμογών"
+msgstr "Εμφανίζει ένα μενού που περιέχει τις κατηγορίες των εγκατεστημένων εφαρμογών"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
@@ -1356,59 +1289,3 @@ msgstr "Ρυθμίσεις Διαχειριστή επιφάνειας εργα�
 msgid "Xfce 4 Desktop Settings"
 msgstr "Ρυθμίσεις επιφάνειας εργασίας Xfce 4"
 
-#, fuzzy
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά το \"%s\";"
-
-#~ msgid "Core developer"
-#~ msgstr "Βασικός προγραμματιστής"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "Η εντολή δεν υπάρχει !"
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr ""
-#~ "Πρέπει να είναι συμπληρωμένα όλα τα πεδία για να προστεθεί το αντικείμενο."
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "Το πεδίο 'Όνομα' είναι υποχρεωτικό."
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "Το πεδίο 'Πηγή' απαιτείται."
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "Τα διαχωριστικά δεν είναι δυνατό να επεξεργαστούν"
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "Το αρχείο %s δεν υπάρχει !"
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "Θέλετε να μετακινήσετε το αντικείμενο στο γονεϊκό μενού;"
-
-#~ msgid "Edit"
-#~ msgstr "Επεξεργασία"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "Προσθήκη ενός εξωτερικού μενού..."
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "Άνοιγμα ενός νέου αρχείου μενού του Xfce4"
-
-#~ msgid "Save current menu"
-#~ msgstr "Αποθήκευση του τρέχοντος μενού"
-
-#~ msgid "Delete the current entry"
-#~ msgstr "Διαγραφή τρέχουσας καταχώρησης"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "Προέκυψε ένα σφάλμα κατά τη μετακίνηση του \"%s\" σε \"%s\":"
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "Προέκυψε ένα σφάλμα κατά την αντιγραφή του \"%s\" σε \"%s\":"
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr ""
-#~ "Προέκυψε ένα σφάλμα κατά τη δημιουργία δεσμού από \"%s\" στο \"%s\":"
-
-#~ msgid "File Error"
-#~ msgstr "Σφάλμα αρχείου"
