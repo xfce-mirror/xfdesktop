@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-09 00:08+0200\n"
+"POT-Creation-Date: 2006-05-21 11:18+0900\n"
 "PO-Revision-Date: 2006-05-22 23:43+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: librezale <librezale@librezale.org>\n"
@@ -19,481 +19,323 @@ msgstr ""
 "X-Generator: KBabel 1.11.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../menueditor/menueditor-add-dialog.c:111
+#: ../menueditor/about_dialog.c:39
+msgid "A menu editor for Xfce4"
+msgstr "Xfce4 menu editorea"
+
+#. Credits
+#: ../menueditor/about_dialog.c:43
+msgid "Core developer"
+msgstr "Muin garatzailea"
+
+#: ../menueditor/about_dialog.c:44 ../menueditor/about_dialog.c:45
+#: ../menueditor/about_dialog.c:46
+msgid "Contributor"
+msgstr "Laguntzailea"
+
+#: ../menueditor/about_dialog.c:47
+msgid "Icon designer"
+msgstr "Ikono diseinua"
+
+#: ../menueditor/add_dialog.c:157 ../menueditor/add_dialog.c:167
 msgid "Add menu entry"
 msgstr "Menu sarrera gehitu"
 
 #. Type
-#: ../menueditor/menueditor-add-dialog.c:124
-#: ../menueditor/menueditor-add-dialog.c:125
-#: ../menueditor/menueditor-add-external-dialog.c:113
-#: ../menueditor/menueditor-add-external-dialog.c:114
+#: ../menueditor/add_dialog.c:171 ../menueditor/add_menu_dialog.c:110
 msgid "Type:"
 msgstr "Mota:"
 
-#: ../menueditor/menueditor-add-dialog.c:133
-msgid "Title"
-msgstr "Izenburua"
-
-#: ../menueditor/menueditor-add-dialog.c:134
-msgid "Submenu"
-msgstr "Azpi-menua"
-
-#: ../menueditor/menueditor-add-dialog.c:135
+#: ../menueditor/add_dialog.c:174
 msgid "Launcher"
 msgstr "Abiarazlea"
 
-#: ../menueditor/menueditor-add-dialog.c:136
+#: ../menueditor/add_dialog.c:178
+msgid "Submenu"
+msgstr "Azpi-menua"
+
+#: ../menueditor/add_dialog.c:182
 msgid "Separator"
 msgstr "Bereizlea"
 
-#: ../menueditor/menueditor-add-dialog.c:137
+#: ../menueditor/add_dialog.c:186
+msgid "Title"
+msgstr "Izenburua"
+
+#: ../menueditor/add_dialog.c:190
 msgid "Quit"
 msgstr "Irten"
 
 #. Name
-#: ../menueditor/menueditor-add-dialog.c:144
-#: ../menueditor/menueditor-add-dialog.c:145
-#: ../menueditor/menueditor-edit-dialog.c:120
-#: ../menueditor/menueditor-edit-dialog.c:121
-#: ../src/xfdesktop-file-icon-manager.c:1073
+#: ../menueditor/add_dialog.c:204 ../menueditor/edit_dialog.c:145
+#: ../menueditor/edit_dialog.c:205 ../src/xfdesktop-file-icon-manager.c:1053
 msgid "Name:"
 msgstr "Izena:"
 
-#. Command
-#: ../menueditor/menueditor-add-dialog.c:157
-#: ../menueditor/menueditor-add-dialog.c:158
-#: ../menueditor/menueditor-edit-dialog.c:133
-#: ../menueditor/menueditor-edit-dialog.c:134
+#: ../menueditor/add_dialog.c:212 ../menueditor/edit_dialog.c:150
 msgid "Command:"
 msgstr "Komandoa:"
 
-#: ../menueditor/menueditor-add-dialog.c:185
-#: ../menueditor/menueditor-add-dialog.c:186
-#: ../menueditor/menueditor-edit-dialog.c:161
-#: ../menueditor/menueditor-edit-dialog.c:162
-#, fuzzy
-msgid "Themed icon:"
-msgstr "Ikonoa aukeratu"
-
-#: ../menueditor/menueditor-add-dialog.c:203
-#: ../menueditor/menueditor-add-dialog.c:204
-#: ../menueditor/menueditor-edit-dialog.c:179
-#: ../menueditor/menueditor-edit-dialog.c:180
+#: ../menueditor/add_dialog.c:224 ../menueditor/edit_dialog.c:137
+#: ../menueditor/edit_dialog.c:197
 msgid "Icon:"
 msgstr "Ikonoa:"
 
-#: ../menueditor/menueditor-add-dialog.c:211
-#: ../menueditor/menueditor-edit-dialog.c:187
+#. Start Notify check button
+#. Startup notification
+#: ../menueditor/add_dialog.c:235 ../menueditor/edit_dialog.c:158
+msgid "Use startup _notification"
+msgstr "Erabili hasiera _oharra"
+
+#. Run in terminal check button
+#. Run in terminal
+#: ../menueditor/add_dialog.c:239 ../menueditor/edit_dialog.c:161
+msgid "Run in _terminal"
+msgstr "Exekutatu _terminalean"
+
+#: ../menueditor/add_dialog.c:270 ../menueditor/edit_dialog.c:240
+msgid "The command doesn't exist !"
+msgstr "Komadoa ez dago!"
+
+#: ../menueditor/add_dialog.c:276 ../menueditor/edit_dialog.c:246
+msgid "All fields must be filled to add an item."
+msgstr "Eremu guztiak bete behar dira sarrera gehitzeko"
+
+#: ../menueditor/add_dialog.c:285 ../menueditor/edit_dialog.c:255
+msgid "The 'Name' field is required."
+msgstr "'Izena' eremua beharrezkoa da."
+
+#: ../menueditor/add_dialog.c:329 ../menueditor/utils.c:318
+msgid "--- separator ---"
+msgstr "--- bereizlea ---"
+
+#: ../menueditor/add_dialog.c:355 ../menueditor/edit_dialog.c:314
+msgid "quit"
+msgstr "irten"
+
+#: ../menueditor/add_menu_dialog.c:97 ../menueditor/add_menu_dialog.c:103
+#: ../menueditor/menueditor.c:841
+msgid "Add an external menu"
+msgstr "Kanpo menu bat gehitu"
+
+#: ../menueditor/add_menu_dialog.c:115
+msgid "File"
+msgstr "Fitxategia:"
+
+#: ../menueditor/add_menu_dialog.c:119
+msgid "System"
+msgstr "Sistema"
+
+#: ../menueditor/add_menu_dialog.c:133
+msgid "Source:"
+msgstr "Iturburua:"
+
+#. Style
+#: ../menueditor/add_menu_dialog.c:145
+msgid "Style:"
+msgstr "Estiloa"
+
+#: ../menueditor/add_menu_dialog.c:148
+msgid "Simple"
+msgstr "Soila"
+
+#: ../menueditor/add_menu_dialog.c:150
+msgid "Multilevel"
+msgstr "Maila anitzekoa"
+
+#. Unique
+#: ../menueditor/add_menu_dialog.c:162
+msgid "_Unique entries only"
+msgstr "_Sarrera bakanak bakarrik"
+
+#: ../menueditor/add_menu_dialog.c:198
+msgid "The 'Source' field is required."
+msgstr "'Iturburu' eremua beharrezkoa da."
+
+#: ../menueditor/add_menu_dialog.c:202 ../menueditor/add_menu_dialog.c:212
+#: ../menueditor/utils.c:372
+msgid "--- include ---"
+msgstr "--- sartu ---"
+
+#: ../menueditor/add_menu_dialog.c:213 ../menueditor/utils.c:389
+msgid "system"
+msgstr "sistema"
+
+#. Create dialog for editing
+#: ../menueditor/edit_dialog.c:114 ../menueditor/edit_dialog.c:121
+msgid "Edit menu entry"
+msgstr "Menu sarrera editatu"
+
+#: ../menueditor/edit_dialog.c:126
+msgid "Separators cannot be edited"
+msgstr "Berezileak ezin dira editatu"
+
+#: ../menueditor/menueditor.c:81
+#, c-format
+msgid "File %s doesn't exist !"
+msgstr "%s fitxategia ez dago !"
+
+#: ../menueditor/menueditor.c:121 ../menueditor/menueditor.c:537
+msgid "Do you want to save before closing the menu ?"
+msgstr "Menua itxi aurretik gorde nahi al duzu?"
+
+#: ../menueditor/menueditor.c:123
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr "Menua aldatu duzu, atera aurretik gorde nahi al duzu?"
+
+#: ../menueditor/menueditor.c:125
+msgid "Forget modifications"
+msgstr "Ahaztu aldaketak"
+
+#: ../menueditor/menueditor.c:314
+msgid "Are you sure you want to close the current menu?"
+msgstr "Ziur al zaude menu hau itxi nahi duzula?"
+
+#: ../menueditor/menueditor.c:329
+msgid "Do you want to save before closing the file?"
+msgstr "Fitxatgia itxi aurretik grabatu nahi al duzu?"
+
+#: ../menueditor/menueditor.c:338 ../menueditor/utils.c:586
+msgid "Select command"
+msgstr "Komandoa aukeratu"
+
+#: ../menueditor/menueditor.c:370 ../menueditor/menueditor.c:427
+#: ../menueditor/menueditor.c:535 ../src/xfdesktop-file-icon-manager.c:625
+msgid "Question"
+msgstr "Galdera"
+
+#: ../menueditor/menueditor.c:372
+msgid "Do you want to save before opening an other menu ?"
+msgstr "Beste menu bat iraki aurretik gorde nahi al duzu?"
+
+#: ../menueditor/menueditor.c:374 ../menueditor/menueditor.c:431
+#: ../menueditor/menueditor.c:539
+msgid "Ignore modifications"
+msgstr "Aldaketak alda batetara utzi"
+
+#: ../menueditor/menueditor.c:385
+msgid "Open menu file"
+msgstr "Menu fitxategia ireki"
+
+#: ../menueditor/menueditor.c:429
+msgid "Do you want to save before opening the default menu ?"
+msgstr "Lehenetsitako menua ireki aurretik gorde nahi al duzu?"
+
+#: ../menueditor/menueditor.c:487
+msgid "Save as..."
+msgstr "Gorde honela..."
+
+#: ../menueditor/menueditor.c:649
+msgid "Do you want to move the item into the parent menu?"
+msgstr "Osagai hau goiko menura mugitu nahi al duzu?"
+
+#: ../menueditor/menueditor.c:695
+msgid "Do you want to move the item into the submenu?"
+msgstr "Osagai hau azpimenura mugitu nahi al duzu?"
+
+#: ../menueditor/menueditor.c:835
+msgid "Edit"
+msgstr "Editatu"
+
+#. File menu
+#: ../menueditor/menueditor.c:859
+msgid "_File"
+msgstr "_Fitxategia"
+
+#: ../menueditor/menueditor.c:868
+msgid "Open default menu"
+msgstr "Lehenetsitako menua ireki"
+
+#. Edit menu
+#: ../menueditor/menueditor.c:882
+msgid "_Edit"
+msgstr "_Editatu"
+
+#: ../menueditor/menueditor.c:888
+msgid "Add an external menu..."
+msgstr "Kanpo menu bat gehitu..."
+
+#. Help menu
+#: ../menueditor/menueditor.c:900
+msgid "_Help"
+msgstr "_Laguntza"
+
+#: ../menueditor/menueditor.c:904
+msgid "_About..."
+msgstr "H_oni buruz..."
+
+#: ../menueditor/menueditor.c:916
+msgid "Create a new Xfce4 menu file"
+msgstr "Xfce4 menu fitxategi berri bat sortu"
+
+#: ../menueditor/menueditor.c:921
+msgid "Open an Xfce4 menu file"
+msgstr "Xfce4 menu fitxategia ireki"
+
+#: ../menueditor/menueditor.c:926
+msgid "Save current menu"
+msgstr "Gorde uneko menua"
+
+#: ../menueditor/menueditor.c:931
+msgid "Close current menu"
+msgstr "Itxi uneko menua"
+
+#: ../menueditor/menueditor.c:937
+msgid "Add an entry to the menu"
+msgstr "Menura sarrera bat gehitu"
+
+#: ../menueditor/menueditor.c:941
+msgid "Delete the current entry"
+msgstr "Uneko sarrera ezabatu"
+
+#: ../menueditor/menueditor.c:947
+msgid "Move the current entry up"
+msgstr "Uneko sarrera gora mugitu"
+
+#: ../menueditor/menueditor.c:952
+msgid "Move the current entry down"
+msgstr "Uneko sarrera behera mugitu"
+
+#: ../menueditor/menueditor.c:958
+msgid "Collapse the tree"
+msgstr "Zuhaitza itxi"
+
+#: ../menueditor/menueditor.c:963
+msgid "Expand the tree"
+msgstr "Zuhaitza ireki"
+
+#: ../menueditor/menueditor.c:991
+msgid "Name"
+msgstr "Izena"
+
+#: ../menueditor/menueditor.c:994
+msgid "Command"
+msgstr "Komandoa"
+
+#: ../menueditor/menueditor.c:995
+msgid "Hidden"
+msgstr "Ezkutatu"
+
+#: ../menueditor/utils.c:648
 msgid "Select icon"
 msgstr "Ikonoa aukeratu"
 
-#: ../menueditor/menueditor-add-dialog.c:216
-#: ../menueditor/menueditor-add-dialog.c:268
-#: ../menueditor/menueditor-add-external-dialog.c:142
-#: ../menueditor/menueditor-edit-dialog.c:192
-#: ../menueditor/menueditor-edit-dialog.c:244
-#: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:596
+#: ../menueditor/utils.c:654 ../panel-plugin/desktop-menu-plugin.c:546
 #: ../settings/appearance-settings.c:532
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Fitxategi Guztiak"
 
-#: ../menueditor/menueditor-add-dialog.c:220
-#: ../menueditor/menueditor-edit-dialog.c:196
-#: ../panel-plugin/desktop-menu-plugin.c:602
+#: ../menueditor/utils.c:658 ../panel-plugin/desktop-menu-plugin.c:552
 #: ../settings/appearance-settings.c:536
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Irudi Fitxategiak"
 
-#. Start Notify check button
-#: ../menueditor/menueditor-add-dialog.c:235
-#: ../menueditor/menueditor-edit-dialog.c:211
-msgid "Use startup _notification"
-msgstr "Erabili hasiera _oharra"
-
-#. Run in terminal check button
-#: ../menueditor/menueditor-add-dialog.c:240
-#: ../menueditor/menueditor-edit-dialog.c:216
-msgid "Run in _terminal"
-msgstr "Exekutatu _terminalean"
-
-#: ../menueditor/menueditor-add-dialog.c:258
-#: ../menueditor/menueditor-edit-dialog.c:234
-#: ../menueditor/menueditor-main-window.c:450
-msgid "Select command"
-msgstr "Komandoa aukeratu"
-
-#: ../menueditor/menueditor-add-dialog.c:273
-#: ../menueditor/menueditor-edit-dialog.c:249
-#, fuzzy
-msgid "Executable Files"
-msgstr "Huts Ateratzerakoan"
-
-#: ../menueditor/menueditor-add-dialog.c:288
-#: ../menueditor/menueditor-edit-dialog.c:264
-msgid "Perl Scripts"
-msgstr ""
-
-#: ../menueditor/menueditor-add-dialog.c:294
-#: ../menueditor/menueditor-edit-dialog.c:270
-msgid "Python Scripts"
-msgstr ""
-
-#: ../menueditor/menueditor-add-dialog.c:300
-#: ../menueditor/menueditor-edit-dialog.c:276
-msgid "Ruby Scripts"
-msgstr ""
-
-#: ../menueditor/menueditor-add-dialog.c:306
-#: ../menueditor/menueditor-edit-dialog.c:282
-msgid "Shell Scripts"
-msgstr ""
-
-#: ../menueditor/menueditor-add-external-dialog.c:100
-#, fuzzy
-msgid "Add external menu entry"
-msgstr "Kanpo menu bat gehitu"
-
-#: ../menueditor/menueditor-add-external-dialog.c:122
-msgid "File"
-msgstr "Fitxategia:"
-
-#: ../menueditor/menueditor-add-external-dialog.c:123
-msgid "System"
-msgstr "Sistema"
-
-#. Source
-#: ../menueditor/menueditor-add-external-dialog.c:129
-#: ../menueditor/menueditor-add-external-dialog.c:130
-#: ../menueditor/menueditor-edit-external-dialog.c:109
-#: ../menueditor/menueditor-edit-external-dialog.c:110
-msgid "Source:"
-msgstr "Iturburua:"
-
-#: ../menueditor/menueditor-add-external-dialog.c:137
-#: ../menueditor/menueditor-edit-external-dialog.c:117
-#, fuzzy
-msgid "Select external menu"
-msgstr "Kanpo menu bat gehitu"
-
-#: ../menueditor/menueditor-add-external-dialog.c:146
-#: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:610
-msgid "Menu Files"
-msgstr "Irudi Fitxategia"
-
-#. Style
-#: ../menueditor/menueditor-add-external-dialog.c:155
-#: ../menueditor/menueditor-add-external-dialog.c:156
-#: ../menueditor/menueditor-edit-external-dialog.c:135
-#: ../menueditor/menueditor-edit-external-dialog.c:136
-msgid "Style:"
-msgstr "Estiloa"
-
-#: ../menueditor/menueditor-add-external-dialog.c:165
-#: ../menueditor/menueditor-edit-external-dialog.c:145
-msgid "Simple"
-msgstr "Soila"
-
-#: ../menueditor/menueditor-add-external-dialog.c:166
-#: ../menueditor/menueditor-edit-external-dialog.c:146
-msgid "Multilevel"
-msgstr "Maila anitzekoa"
-
-#. Unique check button
-#: ../menueditor/menueditor-add-external-dialog.c:171
-#: ../menueditor/menueditor-edit-external-dialog.c:151
-msgid "_Unique entries only"
-msgstr "_Sarrera bakanak bakarrik"
-
-#: ../menueditor/menueditor-edit-dialog.c:107
-msgid "Edit menu entry"
-msgstr "Menu sarrera editatu"
-
-#: ../menueditor/menueditor-edit-external-dialog.c:96
-#, fuzzy
-msgid "Edit external menu entry"
-msgstr "Kanpo menu bat gehitu"
-
-#: ../menueditor/menueditor-main.c:43
-#, fuzzy
-msgid "Xfce4-MenuEditor"
-msgstr "Xfce 4 Menu Editorea"
-
-#: ../menueditor/menueditor-main-window.c:140
-msgid "_File"
-msgstr "_Fitxategia"
-
-#: ../menueditor/menueditor-main-window.c:141
-msgid "_New"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:141
-#, fuzzy
-msgid "Create a new empty menu"
-msgstr "Xfce4 menu fitxategi berri bat sortu"
-
-#: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:2028
-msgid "_Open"
-msgstr "_Ireki"
-
-#: ../menueditor/menueditor-main-window.c:142
-#, fuzzy
-msgid "Open existing menu"
-msgstr "Lehenetsitako menua ireki"
-
-#: ../menueditor/menueditor-main-window.c:143
-#, fuzzy
-msgid "Open _default menu"
-msgstr "Lehenetsitako menua ireki"
-
-#: ../menueditor/menueditor-main-window.c:143
-msgid "Open default menu"
-msgstr "Lehenetsitako menua ireki"
-
-#: ../menueditor/menueditor-main-window.c:144
-msgid "_Save"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:144
-#, fuzzy
-msgid "Save modifications"
-msgstr "Ahaztu aldaketak"
-
-#: ../menueditor/menueditor-main-window.c:145
-#, fuzzy
-msgid "Save _as..."
-msgstr "Gorde honela..."
-
-#: ../menueditor/menueditor-main-window.c:145
-msgid "Save menu under a given name"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:146
-msgid "_Close"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:146
-#, fuzzy
-msgid "Close menu"
-msgstr "Itxi uneko menua"
-
-#: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
-msgid "_Quit"
-msgstr "Irten"
-
-#: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
-msgid "Quit Xfce4-Menueditor"
-msgstr "Xfce 4 Menu Editorea"
-
-#: ../menueditor/menueditor-main-window.c:149
-msgid "_Edit"
-msgstr "_Editatu"
-
-#: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
-msgid "_Edit entry"
-msgstr "Menu sarrera editatu"
-
-#: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
-msgid "Edit selected entry"
-msgstr "Menu sarrera editatu"
-
-#: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
-msgid "_Add entry"
-msgstr "Menu sarrera gehitu"
-
-#: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
-msgid "Add a new entry in the menu"
-msgstr "Menura sarrera bat gehitu"
-
-#: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
-msgid "Add _external"
-msgstr "Kanpo menu bat gehitu"
-
-#: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
-msgid "Add an external entry"
-msgstr "Kanpo menu bat gehitu"
-
-#: ../menueditor/menueditor-main-window.c:153
-msgid "_Remove entry"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:153
-#, fuzzy
-msgid "Remove entry"
-msgstr "Menu sarrera gehitu"
-
-#: ../menueditor/menueditor-main-window.c:154
-msgid "_Up"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:154
-#, fuzzy
-msgid "Move entry up"
-msgstr "Uneko sarrera gora mugitu"
-
-#: ../menueditor/menueditor-main-window.c:155
-msgid "_Down"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:155
-#, fuzzy
-msgid "Move entry down"
-msgstr "Uneko sarrera behera mugitu"
-
-#: ../menueditor/menueditor-main-window.c:157
-msgid "_Help"
-msgstr "_Laguntza"
-
-#: ../menueditor/menueditor-main-window.c:158
-msgid "_About..."
-msgstr "H_oni buruz..."
-
-#: ../menueditor/menueditor-main-window.c:158
-#, fuzzy
-msgid "Show informations about xfce4-menueditor"
-msgstr "Ezin da xfce4-menueditor abiarazi: %s"
-
-#: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
-msgid "Collapse all"
-msgstr "Zuhaitza itxi"
-
-#: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
-msgid "Collapse all menu entries"
-msgstr "Zuhaitza itxi"
-
-#: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
-msgid "Expand all"
-msgstr "_Ireki dena"
-
-#: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
-msgid "Expand all menu entries"
-msgstr "Zuhaitza ireki"
-
-#: ../menueditor/menueditor-main-window.c:341
-msgid "Name"
-msgstr "Izena"
-
-#: ../menueditor/menueditor-main-window.c:344
-msgid "Command"
-msgstr "Komandoa"
-
-#: ../menueditor/menueditor-main-window.c:345
-msgid "Hidden"
-msgstr "Ezkutatu"
-
-#: ../menueditor/menueditor-main-window.c:427
-msgid "Are you sure you want to close the current menu?"
-msgstr "Ziur al zaude menu hau itxi nahi duzula?"
-
-#: ../menueditor/menueditor-main-window.c:441
-msgid "Do you want to save before closing the file?"
-msgstr "Fitxatgia itxi aurretik grabatu nahi al duzu?"
-
-#: ../menueditor/menueditor-main-window.c:479
-#: ../menueditor/menueditor-main-window.c:532
-#: ../menueditor/menueditor-main-window.c:603
-#: ../src/xfdesktop-file-icon-manager.c:645
-msgid "Question"
-msgstr "Galdera"
-
-#: ../menueditor/menueditor-main-window.c:481
-msgid "Do you want to save before opening an other menu ?"
-msgstr "Beste menu bat iraki aurretik gorde nahi al duzu?"
-
-#: ../menueditor/menueditor-main-window.c:483
-#: ../menueditor/menueditor-main-window.c:536
-#: ../menueditor/menueditor-main-window.c:607
-msgid "Ignore modifications"
-msgstr "Aldaketak alda batetara utzi"
-
-#: ../menueditor/menueditor-main-window.c:494
-msgid "Open menu file"
-msgstr "Menu fitxategia ireki"
-
-#: ../menueditor/menueditor-main-window.c:534
-msgid "Do you want to save before opening the default menu ?"
-msgstr "Lehenetsitako menua ireki aurretik gorde nahi al duzu?"
-
-#: ../menueditor/menueditor-main-window.c:605
-#: ../menueditor/menueditor-main-window.c:1314
-msgid "Do you want to save before closing the menu ?"
-msgstr "Menua itxi aurretik gorde nahi al duzu?"
-
-#: ../menueditor/menueditor-main-window.c:829
-#: ../menueditor/menueditor-main-window.c:959
-msgid "quit"
-msgstr "irten"
-
-#: ../menueditor/menueditor-main-window.c:934
-#: ../menueditor/menueditor-main-window.c:1555
-msgid "--- separator ---"
-msgstr "--- bereizlea ---"
-
-#: ../menueditor/menueditor-main-window.c:1052
-#: ../menueditor/menueditor-main-window.c:1059
-#: ../menueditor/menueditor-main-window.c:1609
-msgid "--- include ---"
-msgstr "--- sartu ---"
-
-#: ../menueditor/menueditor-main-window.c:1060
-#: ../menueditor/menueditor-main-window.c:1626
-msgid "system"
-msgstr "sistema"
-
-#: ../menueditor/menueditor-main-window.c:1186
-#: ../menueditor/menueditor-main-window.c:1234
-msgid "Do you want to move the item into the submenu?"
-msgstr "Osagai hau azpimenura mugitu nahi al duzu?"
-
-#: ../menueditor/menueditor-main-window.c:1264
-msgid "A menu editor for Xfce4"
-msgstr "Xfce4 menu editorea"
-
-#. Credits
-#: ../menueditor/menueditor-main-window.c:1269
-msgid "Author/Maintainer"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:1270
-#: ../menueditor/menueditor-main-window.c:1271
-#: ../menueditor/menueditor-main-window.c:1272
-msgid "Contributor"
-msgstr "Laguntzailea"
-
-#: ../menueditor/menueditor-main-window.c:1273
-msgid "Icon designer"
-msgstr "Ikono diseinua"
-
-#: ../menueditor/menueditor-main-window.c:1316
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Menua aldatu duzu, atera aurretik gorde nahi al duzu?"
-
-#: ../menueditor/menueditor-main-window.c:1318
-#, fuzzy
-msgid "Forget modifications"
-msgstr "Aldaketak alda batetara utzi"
-
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:759
+#: ../panel-plugin/desktop-menu-plugin.c:709
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce Menua"
@@ -524,77 +366,77 @@ msgstr ""
 msgid "/Other"
 msgstr "/Besteak"
 
-#: ../panel-plugin/desktop-menu-plugin.c:579
+#: ../panel-plugin/desktop-menu-plugin.c:529
 msgid "Select Icon"
 msgstr "Ikonoa aukeratu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:581
+#: ../panel-plugin/desktop-menu-plugin.c:531
 msgid "Select Menu File"
 msgstr "Menu Fitxategia Aukeratu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:728
+#: ../panel-plugin/desktop-menu-plugin.c:560
+msgid "Menu Files"
+msgstr "Irudi Fitxategia"
+
+#: ../panel-plugin/desktop-menu-plugin.c:678
 #: ../settings/behavior-settings.c:217
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Ezin da xfce4-menueditor abiarazi: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:751
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "Edit Properties"
 msgstr "Propietateak Editatu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:769
+#: ../panel-plugin/desktop-menu-plugin.c:719
 msgid "Button"
 msgstr "Botoia"
 
-#: ../panel-plugin/desktop-menu-plugin.c:782
+#: ../panel-plugin/desktop-menu-plugin.c:732
 msgid "Button _title:"
 msgstr "Botoi _titulua:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:795
+#: ../panel-plugin/desktop-menu-plugin.c:745
 msgid "_Show title in button"
 msgstr "_Bistarazi titulua botoiean"
 
-#: ../panel-plugin/desktop-menu-plugin.c:802
+#: ../panel-plugin/desktop-menu-plugin.c:752
 msgid "Menu File"
 msgstr "Menu Fitxategia"
 
-#: ../panel-plugin/desktop-menu-plugin.c:814
+#: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "Use default _desktop menu file"
 msgstr "Lehenetsiriko _desktop menu fitxategia erabili"
 
-#: ../panel-plugin/desktop-menu-plugin.c:823
+#: ../panel-plugin/desktop-menu-plugin.c:773
 msgid "Use _custom menu file:"
 msgstr "Menu fitxategi _pertsonalizatua erabili"
 
-#: ../panel-plugin/desktop-menu-plugin.c:874
+#: ../panel-plugin/desktop-menu-plugin.c:824
 #: ../settings/behavior-settings.c:267
 msgid "_Edit Menu"
 msgstr "_Menua Editatu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:880
+#: ../panel-plugin/desktop-menu-plugin.c:830
 msgid "Icons"
 msgstr "Ikonoak"
 
-#: ../panel-plugin/desktop-menu-plugin.c:892
+#: ../panel-plugin/desktop-menu-plugin.c:842
 msgid "_Button icon:"
 msgstr "_Botoi ikonoa:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:916
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
 msgstr "Erakutsi _ikonoak menuan"
 
 #: ../panel-plugin/desktop-menu-plugin.c:939
-msgid "There is already a panel menu registered for this screen"
-msgstr ""
-
-#: ../panel-plugin/desktop-menu-plugin.c:1047
 msgid "Edit Menu"
 msgstr "Menua Editatu"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
 msgid "Button Label|Desktop"
-msgstr "Idazhamahaia"
+msgstr "Idazmahaia"
 
 #: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
 #: ../settings/backdrop-list-manager.c:631
@@ -654,8 +496,8 @@ msgstr "Xfce ez da zure idazmahaia kudeatzeko gai izango (%s)"
 msgid "Unknown Error"
 msgstr "Errore Ezezaguna"
 
-#: ../settings/appearance-settings.c:806 ../src/xfdesktop-file-icon.c:650
-#: ../src/xfdesktop-file-icon.c:708
+#: ../settings/appearance-settings.c:806 ../src/xfdesktop-file-icon.c:648
+#: ../src/xfdesktop-file-icon.c:706
 msgid "Error"
 msgstr "Errorea"
 
@@ -823,7 +665,7 @@ msgid "Desktop Icons"
 msgstr "Idazmahai Ikonoak"
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1001
 msgid "None"
 msgstr "Batez"
 
@@ -897,8 +739,7 @@ msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Menua bistarazi (saguaren kokalekuan)\n"
 
 #: ../src/main.c:290
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Leiho zerrenda bistarazi (saguaren kokalekuan)\n"
 
 #: ../src/main.c:291
@@ -931,22 +772,20 @@ msgstr "_Ezabatu '%s' Idazmahi Birtuala"
 
 #: ../src/xfce-desktop.c:571
 msgid "Desktop"
-msgstr "Idazmahia"
+msgstr "Idazmahaia"
 
-#: ../src/xfdesktop-file-icon-manager.c:233
+#: ../src/xfdesktop-file-icon-manager.c:220
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop ez da idazmahai elmentuak gordetzeko \"%s\" karpeta sortzeko gai."
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop ez da idazmahai elmentuak gordetzeko \"%s\" karpeta sortzeko gai."
 
-#: ../src/xfdesktop-file-icon-manager.c:235
-#: ../src/xfdesktop-file-icon-manager.c:244
-#: ../src/xfdesktop-file-icon-manager.c:1564
+#: ../src/xfdesktop-file-icon-manager.c:222
+#: ../src/xfdesktop-file-icon-manager.c:231
+#: ../src/xfdesktop-file-icon-manager.c:1544
 msgid "Create Folder Failed"
 msgstr "Huts Karpeta Sortzean"
 
-#: ../src/xfdesktop-file-icon-manager.c:242
+#: ../src/xfdesktop-file-icon-manager.c:229
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
@@ -955,79 +794,79 @@ msgstr ""
 "Xfdesktop ez da \"%s\" idazmahai elementuak gordetzeko erabiltzeko gai ez "
 "bait da karpeta bat."
 
-#: ../src/xfdesktop-file-icon-manager.c:246
+#: ../src/xfdesktop-file-icon-manager.c:233
 msgid "Please delete or rename the file."
 msgstr "Mesedez fitxategia ezabatu edo berrizendatu."
 
-#: ../src/xfdesktop-file-icon-manager.c:371
-#: ../src/xfdesktop-file-icon-manager.c:884
+#: ../src/xfdesktop-file-icon-manager.c:367
+#: ../src/xfdesktop-file-icon-manager.c:864
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "Ezin da \"%s\" muntatu:"
 
-#: ../src/xfdesktop-file-icon-manager.c:373
-#: ../src/xfdesktop-file-icon-manager.c:888
+#: ../src/xfdesktop-file-icon-manager.c:369
+#: ../src/xfdesktop-file-icon-manager.c:868
 msgid "Mount Failed"
 msgstr "Huts Muntatzerakoan"
 
-#: ../src/xfdesktop-file-icon-manager.c:375
+#: ../src/xfdesktop-file-icon-manager.c:371
 msgid "Unknown error."
 msgstr "Errore ezezaguna."
 
-#: ../src/xfdesktop-file-icon-manager.c:436
-#: ../src/xfdesktop-file-icon-manager.c:767
-#: ../src/xfdesktop-file-icon-manager.c:801
+#: ../src/xfdesktop-file-icon-manager.c:416
+#: ../src/xfdesktop-file-icon-manager.c:747
+#: ../src/xfdesktop-file-icon-manager.c:781
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Ezin da \"%s\" abiarazi:"
 
-#: ../src/xfdesktop-file-icon-manager.c:438
-#: ../src/xfdesktop-file-icon-manager.c:769
-#: ../src/xfdesktop-file-icon-manager.c:804
-#: ../src/xfdesktop-file-icon-manager.c:1598
+#: ../src/xfdesktop-file-icon-manager.c:418
+#: ../src/xfdesktop-file-icon-manager.c:749
+#: ../src/xfdesktop-file-icon-manager.c:784
+#: ../src/xfdesktop-file-icon-manager.c:1578
 msgid "Launch Error"
 msgstr "Errorea Abiaraztean"
 
-#: ../src/xfdesktop-file-icon-manager.c:440
+#: ../src/xfdesktop-file-icon-manager.c:420
 msgid "The associated application could not be found or executed."
 msgstr "Loturiko aplikazioa ezin da aurkitu edo abiarazi."
 
-#: ../src/xfdesktop-file-icon-manager.c:567
+#: ../src/xfdesktop-file-icon-manager.c:547
 #, c-format
 msgid "Rename \"%s\""
 msgstr "\"%s\" berrizendatu"
 
-#: ../src/xfdesktop-file-icon-manager.c:574
-#: ../src/xfdesktop-file-icon-manager.c:1636
-#: ../src/xfdesktop-file-icon-manager.c:1727
-#: ../src/xfdesktop-file-icon-manager.c:1738
+#: ../src/xfdesktop-file-icon-manager.c:554
+#: ../src/xfdesktop-file-icon-manager.c:1616
+#: ../src/xfdesktop-file-icon-manager.c:1694
+#: ../src/xfdesktop-file-icon-manager.c:1705
 msgid "Enter the new name:"
 msgstr "Izen berria idatzi:"
 
-#: ../src/xfdesktop-file-icon-manager.c:576
+#: ../src/xfdesktop-file-icon-manager.c:556
 msgid "Rename"
 msgstr "Berrizendatu"
 
-#: ../src/xfdesktop-file-icon-manager.c:642
+#: ../src/xfdesktop-file-icon-manager.c:622
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Ziur al zaude \"%s\" ezabatu nahi duzula?"
 
+#: ../src/xfdesktop-file-icon-manager.c:627
 #: ../src/xfdesktop-file-icon-manager.c:647
-#: ../src/xfdesktop-file-icon-manager.c:667
 msgid "If you delete a file, it is permanently lost."
 msgstr "Fitxategi bat ezabatu ezkero, betirako galduko da."
 
-#: ../src/xfdesktop-file-icon-manager.c:661
+#: ../src/xfdesktop-file-icon-manager.c:641
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Ziur al zaude %d fitxategi hauek ezabatu nahi dituzula?"
 
-#: ../src/xfdesktop-file-icon-manager.c:664
+#: ../src/xfdesktop-file-icon-manager.c:644
 msgid "Delete Multiple Files"
 msgstr "Fitxategi Anitz Ezabatu"
 
-#: ../src/xfdesktop-file-icon-manager.c:806
+#: ../src/xfdesktop-file-icon-manager.c:786
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -1035,137 +874,137 @@ msgstr ""
 "Ezaugarri honek fitxategi kudeaketa zerbitzu bat instaturik egotea behar du "
 "(Thunar-ek duena bezalakoa)"
 
-#: ../src/xfdesktop-file-icon-manager.c:885
+#: ../src/xfdesktop-file-icon-manager.c:865
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "Ezin da \"%s\" desmuntatu:"
 
-#: ../src/xfdesktop-file-icon-manager.c:888
+#: ../src/xfdesktop-file-icon-manager.c:868
 msgid "Unmount Failed"
 msgstr "Huts Desmuntatzerakoan"
 
-#: ../src/xfdesktop-file-icon-manager.c:917
+#: ../src/xfdesktop-file-icon-manager.c:897
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "Ezin da \"%s\" atera:"
 
-#: ../src/xfdesktop-file-icon-manager.c:919
+#: ../src/xfdesktop-file-icon-manager.c:899
 msgid "Eject Failed"
 msgstr "Huts Ateratzerakoan"
 
-#: ../src/xfdesktop-file-icon-manager.c:988
+#: ../src/xfdesktop-file-icon-manager.c:968
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr "Ezin da \"%s\"-ren lehenetsiriko aplikazio bezala \"%s\" ezarri:"
 
-#: ../src/xfdesktop-file-icon-manager.c:991
+#: ../src/xfdesktop-file-icon-manager.c:971
 msgid "Properties Error"
 msgstr "Propietatea Errorea"
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1001
 msgid "Write only"
 msgstr "IDazketa bakarrik"
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1001
 msgid "Read only"
 msgstr "Irakurketa bakarrik"
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1001
 msgid "Read & Write"
 msgstr "Irakurri eta Idatzi"
 
-#: ../src/xfdesktop-file-icon-manager.c:1048
+#: ../src/xfdesktop-file-icon-manager.c:1028
 msgid "General"
 msgstr "Orokorra"
 
-#: ../src/xfdesktop-file-icon-manager.c:1099
+#: ../src/xfdesktop-file-icon-manager.c:1079
 msgid "Kind:"
 msgstr "Mota:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1109
+#: ../src/xfdesktop-file-icon-manager.c:1089
 msgid "broken link"
 msgstr "apurturiko lotura"
 
-#: ../src/xfdesktop-file-icon-manager.c:1112
+#: ../src/xfdesktop-file-icon-manager.c:1092
 #, c-format
 msgid "link to %s"
 msgstr "%s-ra lotura"
 
-#: ../src/xfdesktop-file-icon-manager.c:1129
+#: ../src/xfdesktop-file-icon-manager.c:1109
 msgid "Link Target:"
 msgstr "Lotura Helburua:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1146
-#: ../src/xfdesktop-file-icon-manager.c:1305
+#: ../src/xfdesktop-file-icon-manager.c:1126
+#: ../src/xfdesktop-file-icon-manager.c:1285
 msgid "(unknown)"
 msgstr "(ezezaguna)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1168
+#: ../src/xfdesktop-file-icon-manager.c:1148
 msgid "Open With:"
 msgstr "Honekin Ireki:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1245
+#: ../src/xfdesktop-file-icon-manager.c:1225
 msgid "Modified:"
 msgstr "Aldaketa:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1263
+#: ../src/xfdesktop-file-icon-manager.c:1243
 msgid "Accessed:"
 msgstr "Irakurketa:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1290
+#: ../src/xfdesktop-file-icon-manager.c:1270
 msgid "Free Space:"
 msgstr "LEku Librea:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1292
+#: ../src/xfdesktop-file-icon-manager.c:1272
 msgid "Size:"
 msgstr "Tamaina:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1308
+#: ../src/xfdesktop-file-icon-manager.c:1288
 msgid "%s (%"
 msgstr "%s (%"
 
-#: ../src/xfdesktop-file-icon-manager.c:1308
+#: ../src/xfdesktop-file-icon-manager.c:1288
 msgid " Bytes)"
 msgstr " Byte)"
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1323
+#: ../src/xfdesktop-file-icon-manager.c:1303
 msgid "Permissions"
 msgstr "Baimenak"
 
-#: ../src/xfdesktop-file-icon-manager.c:1345
+#: ../src/xfdesktop-file-icon-manager.c:1325
 msgid "Owner:"
 msgstr "Jabea:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1363
-#: ../src/xfdesktop-file-icon-manager.c:1401
+#: ../src/xfdesktop-file-icon-manager.c:1343
+#: ../src/xfdesktop-file-icon-manager.c:1381
 msgid "Access:"
 msgstr "Sarrera:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1386
+#: ../src/xfdesktop-file-icon-manager.c:1366
 msgid "Group:"
 msgstr "Taldea;"
 
-#: ../src/xfdesktop-file-icon-manager.c:1424
+#: ../src/xfdesktop-file-icon-manager.c:1404
 msgid "Others:"
 msgstr "Besteak:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1497
+#: ../src/xfdesktop-file-icon-manager.c:1477
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "\"%s\"-(re)kin _Ireki"
 
-#: ../src/xfdesktop-file-icon-manager.c:1500
+#: ../src/xfdesktop-file-icon-manager.c:1480
 #, c-format
 msgid "Open With \"%s\""
 msgstr "\"%s\"-(re)kin Ireki"
 
-#: ../src/xfdesktop-file-icon-manager.c:1561
+#: ../src/xfdesktop-file-icon-manager.c:1541
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Ezin da \"%s\" izeneko karpeta bat sortu:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1600
+#: ../src/xfdesktop-file-icon-manager.c:1580
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -1173,145 +1012,168 @@ msgstr ""
 "Ezin da \"exo-desktop-item-edit\" abiarazi zein beharrezkoa da abiarazleak "
 "eta idazmahai loturak sortu eta ediatzteko."
 
-#: ../src/xfdesktop-file-icon-manager.c:1633
+#: ../src/xfdesktop-file-icon-manager.c:1613
 msgid "Create New Folder"
 msgstr "Karpeta Berria Sortu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1637
+#: ../src/xfdesktop-file-icon-manager.c:1617
 msgid "New Folder"
 msgstr "Karpeta Berria"
 
-#: ../src/xfdesktop-file-icon-manager.c:1638
-#: ../src/xfdesktop-file-icon-manager.c:1729
-#: ../src/xfdesktop-file-icon-manager.c:1740
+#: ../src/xfdesktop-file-icon-manager.c:1618
+#: ../src/xfdesktop-file-icon-manager.c:1696
+#: ../src/xfdesktop-file-icon-manager.c:1707
 msgid "Create"
 msgstr "Sortu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1674
+#: ../src/xfdesktop-file-icon-manager.c:1654
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Ezin da \"%s\" izeneko fitxategi bat sortu:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
+#: ../src/xfdesktop-file-icon-manager.c:1657
 msgid "Create File Failed"
 msgstr "Huts Fitxategia Sortzerakoan"
 
-#: ../src/xfdesktop-file-icon-manager.c:1716
+#: ../src/xfdesktop-file-icon-manager.c:1683
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Sortu dokumentua \"%s\" txantilloietik"
 
-#: ../src/xfdesktop-file-icon-manager.c:1735
+#: ../src/xfdesktop-file-icon-manager.c:1702
 msgid "Create Empty File"
 msgstr "Fitxategi Huts Bat Sortu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1739
+#: ../src/xfdesktop-file-icon-manager.c:1706
 msgid "New Empty File"
 msgstr "Fitxategi Huts Berria"
 
-#: ../src/xfdesktop-file-icon-manager.c:1772
+#: ../src/xfdesktop-file-icon-manager.c:1736
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "Ezin da \"%s\" izeneko fitxategi bat sortu:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1773
+#: ../src/xfdesktop-file-icon-manager.c:1737
 msgid "Create Error"
 msgstr "Sorzte Errorea"
 
-#: ../src/xfdesktop-file-icon-manager.c:2013
+#: ../src/xfdesktop-file-icon-manager.c:1977
 msgid "_Open all"
 msgstr "_Ireki dena"
 
-#: ../src/xfdesktop-file-icon-manager.c:2045
+#: ../src/xfdesktop-file-icon-manager.c:1988
+msgid "_Open"
+msgstr "_Ireki"
+
+#: ../src/xfdesktop-file-icon-manager.c:2001
 msgid "_Execute"
 msgstr "_Abiarazi"
 
-#: ../src/xfdesktop-file-icon-manager.c:2062
+#: ../src/xfdesktop-file-icon-manager.c:2019
 msgid "_Edit Launcher"
 msgstr "_Editatu Abiarazlea"
 
-#: ../src/xfdesktop-file-icon-manager.c:2102
+#: ../src/xfdesktop-file-icon-manager.c:2067
 msgid "Open With"
 msgstr "Honekin Ireki"
 
-#: ../src/xfdesktop-file-icon-manager.c:2136
+#: ../src/xfdesktop-file-icon-manager.c:2097
 msgid "Open With Other _Application..."
 msgstr "Beste _Aplikazio Batekin Ireki..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2207
+#: ../src/xfdesktop-file-icon-manager.c:2180
 msgid "_Mount Volume"
 msgstr "Bolumena _Muntatu"
 
-#: ../src/xfdesktop-file-icon-manager.c:2218
+#: ../src/xfdesktop-file-icon-manager.c:2191
 msgid "_Unmount Volume"
 msgstr "Bolumena _Desmuntatu"
 
-#: ../src/xfdesktop-file-icon-manager.c:2232
+#: ../src/xfdesktop-file-icon-manager.c:2205
 msgid "E_ject Volume"
 msgstr "Bolumena _Atera"
 
-#: ../src/xfdesktop-file-icon-manager.c:2242
+#: ../src/xfdesktop-file-icon-manager.c:2215
 msgid "_Copy Files"
 msgstr "Fitxategiak _Kopiatu"
 
-#: ../src/xfdesktop-file-icon-manager.c:2243
+#: ../src/xfdesktop-file-icon-manager.c:2216
 msgid "_Copy File"
 msgstr "Fitxategia _Kopiatu"
 
-#: ../src/xfdesktop-file-icon-manager.c:2252
+#: ../src/xfdesktop-file-icon-manager.c:2225
 msgid "Cu_t Files"
 msgstr "Fitxategiak Moz_tu"
 
-#: ../src/xfdesktop-file-icon-manager.c:2253
+#: ../src/xfdesktop-file-icon-manager.c:2226
 msgid "Cu_t File"
 msgstr "Fitxategia Moz_tu"
 
-#: ../src/xfdesktop-file-icon-manager.c:2262
+#: ../src/xfdesktop-file-icon-manager.c:2235
 msgid "_Delete Files"
 msgstr "Fitxategiak _Ezabatu"
 
-#: ../src/xfdesktop-file-icon-manager.c:2263
+#: ../src/xfdesktop-file-icon-manager.c:2236
 msgid "_Delete File"
 msgstr "Fitxategia _Ezabatu"
 
-#: ../src/xfdesktop-file-icon-manager.c:2275
+#: ../src/xfdesktop-file-icon-manager.c:2248
 msgid "_Rename..."
 msgstr "Be_rrizendatu..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2293
+#: ../src/xfdesktop-file-icon-manager.c:2266
 msgid "_Properties..."
 msgstr "_Propietateak..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2311
+#: ../src/xfdesktop-file-icon-manager.c:2284
 msgid "Create _New"
 msgstr "_Berria Sortu"
 
-#: ../src/xfdesktop-file-icon-manager.c:2320
+#: ../src/xfdesktop-file-icon-manager.c:2293
 msgid "_Launcher..."
 msgstr "_Abiarazlea..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2341
+#: ../src/xfdesktop-file-icon-manager.c:2314
 msgid "_URL Link..."
 msgstr "_URL Lotura..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2356
+#: ../src/xfdesktop-file-icon-manager.c:2329
 msgid "_Folder..."
 msgstr "_Karpeta..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2395
+#: ../src/xfdesktop-file-icon-manager.c:2368
 msgid "_Empty File"
 msgstr "Fitxategi _Hutsa"
 
-#: ../src/xfdesktop-file-icon-manager.c:3347 ../src/xfdesktop-file-icon.c:549
+#: ../src/xfdesktop-file-icon-manager.c:3168 ../src/xfdesktop-file-icon.c:554
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Huts \"%s\"-abiarazterakoan:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3349 ../src/xfdesktop-file-icon.c:551
+#: ../src/xfdesktop-file-icon-manager.c:3170 ../src/xfdesktop-file-icon.c:556
 msgid "Run Error"
 msgstr "Errorea Abiaraztean"
 
-#: ../src/xfdesktop-file-icon.c:705
+#: ../src/xfdesktop-file-icon.c:482
+#, c-format
+msgid "There was an error moving \"%s\" to \"%s\":"
+msgstr "Errore bat egon da \"%s\" \"%s\"-ra mugitzerakoan:"
+
+#: ../src/xfdesktop-file-icon.c:484
+#, c-format
+msgid "There was an error copying \"%s\" to \"%s\":"
+msgstr "Errore bat egon da \"%s\" \"%s\"-ra kopiatzerakoan:"
+
+#: ../src/xfdesktop-file-icon.c:486
+#, c-format
+msgid "There was an error linking \"%s\" to \"%s\":"
+msgstr "Errore bat egon da \"%s\" \"%s\"-ra lotzerakoan:"
+
+#: ../src/xfdesktop-file-icon.c:491
+msgid "File Error"
+msgstr "Fixtategi Errorea"
+
+#: ../src/xfdesktop-file-icon.c:703
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Huts \"%s\"-tik \"%s\"-ra berrizendatzerakoan:"
@@ -1344,57 +1206,3 @@ msgstr "Xfce 4 Idazmahai kudeatzaile ezarpenak"
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 Idazmahai Ezarpenak"
 
-#, fuzzy
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "Ziur al zaude \"%s\" ezabatu nahi duzula?"
-
-#~ msgid "Core developer"
-#~ msgstr "Muin garatzailea"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "Komadoa ez dago!"
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "Eremu guztiak bete behar dira sarrera gehitzeko"
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "'Izena' eremua beharrezkoa da."
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "'Iturburu' eremua beharrezkoa da."
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "Berezileak ezin dira editatu"
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "%s fitxategia ez dago !"
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "Osagai hau goiko menura mugitu nahi al duzu?"
-
-#~ msgid "Edit"
-#~ msgstr "Editatu"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "Kanpo menu bat gehitu..."
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "Xfce4 menu fitxategia ireki"
-
-#~ msgid "Save current menu"
-#~ msgstr "Gorde uneko menua"
-
-#~ msgid "Delete the current entry"
-#~ msgstr "Uneko sarrera ezabatu"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "Errore bat egon da \"%s\" \"%s\"-ra mugitzerakoan:"
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "Errore bat egon da \"%s\" \"%s\"-ra kopiatzerakoan:"
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr "Errore bat egon da \"%s\" \"%s\"-ra lotzerakoan:"
-
-#~ msgid "File Error"
-#~ msgstr "Fixtategi Errorea"
