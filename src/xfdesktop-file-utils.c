@@ -22,6 +22,10 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_STRING_H
+#include <string.h>
+#endif
+
 #include <gtk/gtk.h>
 
 #include <libxfcegui4/libxfcegui4.h>
@@ -107,4 +111,30 @@ xfdesktop_file_utils_handle_fileop_error(GtkWindow *parent,
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
         g_free(primary);
     }
+}
+
+gchar *
+xfdesktop_file_utils_get_file_kind(const ThunarVfsInfo *info,
+                                   gboolean *is_link)
+{
+    gchar *str = NULL;
+
+    if(!strcmp(thunar_vfs_mime_info_get_name(info->mime_info),
+               "inode/symlink"))
+    {
+        str = g_strdup(_("broken link"));
+        if(is_link)
+            *is_link = TRUE;
+    } else if(info->flags & THUNAR_VFS_FILE_FLAGS_SYMLINK) {
+        str = g_strdup_printf(_("link to %s"),
+                              thunar_vfs_mime_info_get_comment(info->mime_info));
+        if(is_link)
+            *is_link = TRUE;
+    } else {
+        str = g_strdup(thunar_vfs_mime_info_get_comment(info->mime_info));
+        if(is_link)
+            *is_link = FALSE;
+    }
+    
+    return str;
 }

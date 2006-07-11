@@ -260,6 +260,20 @@ xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
     return iface->do_drop_dest(icon, src_icon, action);
 }
 
+G_CONST_RETURN gchar *
+xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon)
+{
+    XfdesktopIconIface *iface;
+    
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    
+    iface = XFDESKTOP_ICON_GET_IFACE(icon);
+    if(!iface->peek_tooltip)
+        return NULL;
+    
+    return iface->peek_tooltip(icon);
+}
+
 
 /*< signal triggers >*/
 

@@ -65,6 +65,8 @@ struct _XfdesktopIconIface
     
     gboolean (*is_drop_dest)(XfdesktopIcon *icon);
     XfdesktopIconDragResult (*do_drop_dest)(XfdesktopIcon *icon, XfdesktopIcon *src_icon, GdkDragAction action);
+    
+    G_CONST_RETURN gchar *(*peek_tooltip)(XfdesktopIcon *icon);
 };
 
 GType xfdesktop_icon_get_type() G_GNUC_CONST;
@@ -74,6 +76,7 @@ GType xfdesktop_icon_get_type() G_GNUC_CONST;
 GdkPixbuf *xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
                                      gint size);
 G_CONST_RETURN gchar *xfdesktop_icon_peek_label(XfdesktopIcon *icon);
+G_CONST_RETURN gchar *xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon);
 
 void xfdesktop_icon_set_position(XfdesktopIcon *icon,
                                  gint16 row,
@@ -91,6 +94,7 @@ gboolean xfdesktop_icon_is_drop_dest(XfdesktopIcon *icon);
 XfdesktopIconDragResult xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
                                                     XfdesktopIcon *src_icon,
                                                     GdkDragAction action);
+
 
 /*< signal triggers >*/
 

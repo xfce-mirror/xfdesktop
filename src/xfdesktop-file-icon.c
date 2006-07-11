@@ -31,6 +31,10 @@
 #include <unistd.h>
 #endif
 
+#ifdef HAVE_TIME_H
+#include <time.h>
+#endif
+
 #ifdef HAVE_LIBEXO
 #define EXO_API_SUBJECT_TO_CHANGE
 #include <exo/exo.h>
@@ -63,6 +67,7 @@ struct _XfdesktopFileIconPrivate
     gint16 row;
     gint16 col;
     GdkPixbuf *pix;
+    gchar *tooltip;
     guint pix_opacity;
     gint cur_pix_size;
     GdkRectangle extents;
@@ -78,6 +83,7 @@ static void xfdesktop_file_icon_icon_init(XfdesktopIconIface *iface);
 static GdkPixbuf *xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                   gint size);
 static G_CONST_RETURN gchar *xfdesktop_file_icon_peek_label(XfdesktopIcon *icon);
+static G_CONST_RETURN gchar *xfdesktop_file_icon_peek_tooltip(XfdesktopIcon *icon);
 static void xfdesktop_file_icon_set_position(XfdesktopIcon *icon,
                                              gint16 row,
                                              gint16 col);
@@ -92,7 +98,6 @@ static gboolean xfdesktop_file_icon_is_drop_dest(XfdesktopIcon *icon);
 static XfdesktopIconDragResult xfdesktop_file_icon_do_drop_dest(XfdesktopIcon *icon,
                                                                 XfdesktopIcon *src_icon,
                                                                 GdkDragAction action);
-
 
 #ifdef HAVE_THUNARX
 static void xfdesktop_file_icon_tfi_init(ThunarxFileInfoIface *iface);
@@ -211,6 +216,7 @@ xfdesktop_file_icon_icon_init(XfdesktopIconIface *iface)
 {
     iface->peek_pixbuf = xfdesktop_file_icon_peek_pixbuf;
     iface->peek_label = xfdesktop_file_icon_peek_label;
+    iface->peek_tooltip = xfdesktop_file_icon_peek_tooltip;
     iface->set_position = xfdesktop_file_icon_set_position;
     iface->get_position = xfdesktop_file_icon_get_position;
     iface->set_extents = xfdesktop_file_icon_set_extents;
@@ -636,6 +642,34 @@ xfdesktop_file_icon_do_drop_dest(XfdesktopIcon *icon,
     }
     
     return XFDESKTOP_ICON_DRAG_FAILED;
+}
+
+static G_CONST_RETURN gchar *
+xfdesktop_file_icon_peek_tooltip(XfdesktopIcon *icon)
+{
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
+    
+    if(!file_icon->priv->info)
+       return NULL;  /* FIXME: implement something here */
+    
+    if(!file_icon->priv->tooltip) {
+        gchar mod[64], *kind, sizebuf[64], *size;
+        struct tm *tm = localtime(&file_icon->priv->info->mtime);
+
+        strftime(mod, 64, "%Y-%m-%d %H:%M:%S", tm);
+        kind = xfdesktop_file_utils_get_file_kind(file_icon->priv->info, NULL);
+        thunar_vfs_humanize_size(file_icon->priv->info->size, sizebuf, 64);
+        size = g_strdup_printf(_("%s (%" G_GINT64_FORMAT " Bytes)"), sizebuf,
+                              (gint64)file_icon->priv->info->size);
+        
+        file_icon->priv->tooltip = g_strdup_printf(_("Kind: %s\nModified:%s\nSize: %s"),
+                                                   kind, mod, size);
+        
+        g_free(kind);
+        g_free(size);
+    }
+    
+    return file_icon->priv->tooltip;
 }
 
 static void

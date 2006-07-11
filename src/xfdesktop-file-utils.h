@@ -41,4 +41,7 @@ void xfdesktop_file_utils_handle_fileop_error(GtkWindow *parent,
                                               XfdesktopFileUtilsFileop fileop,
                                               GError *error);
 
+gchar *xfdesktop_file_utils_get_file_kind(const ThunarVfsInfo *info,
+                                          gboolean *is_link);
+
 #endif

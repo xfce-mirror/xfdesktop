@@ -1103,17 +1103,7 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
                      GTK_FILL, GTK_FILL, 0, 0);
     
-    if(!strcmp(thunar_vfs_mime_info_get_name(info->mime_info),
-               "inode/symlink"))
-    {
-        str = g_strdup(_("broken link"));
-        is_link = TRUE;
-    } else if(info->flags & THUNAR_VFS_FILE_FLAGS_SYMLINK) {
-        str = g_strdup_printf(_("link to %s"),
-                              thunar_vfs_mime_info_get_comment(info->mime_info));
-        is_link = TRUE;
-    } else
-        str = g_strdup(thunar_vfs_mime_info_get_comment(info->mime_info));
+    str = xfdesktop_file_utils_get_file_kind(info, &is_link);
     lbl = gtk_label_new(str);
     g_free(str);
     gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
