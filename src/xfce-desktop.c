@@ -349,6 +349,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     
     /* set the new pixmap and tell gtk to redraw it */
     desktop->priv->bg_pixmap = pmap;
+    gdk_window_set_back_pixmap(GTK_WIDGET(desktop)->window, pmap, FALSE);
     gtk_widget_queue_draw_area(GTK_WIDGET(desktop), rect.x, rect.y,
                                rect.width, rect.height);
     
@@ -533,8 +534,6 @@ xfce_desktop_init(XfceDesktop *desktop)
     
     gtk_window_set_type_hint(GTK_WINDOW(desktop), GDK_WINDOW_TYPE_HINT_DESKTOP);
     gtk_window_set_accept_focus(GTK_WINDOW(desktop), FALSE);
-    
-    gtk_widget_set_app_paintable(GTK_WIDGET(desktop), TRUE);
 }
 
 static void
@@ -690,16 +689,8 @@ xfce_desktop_expose(GtkWidget *w,
     
     desktop = XFCE_DESKTOP(w);
     
-    if(!desktop->priv->bg_pixmap && desktop->priv->nbackdrops > 0)
-        backdrop_changed_cb(desktop->priv->backdrops[0], desktop);
-    
-    if(desktop->priv->bg_pixmap) {
-        GtkStyle *style = gtk_widget_get_style(w);
-        gdk_draw_drawable(GDK_DRAWABLE(w->window), style->black_gc,
-                          GDK_DRAWABLE(desktop->priv->bg_pixmap),
-                          evt->area.x, evt->area.y, evt->area.x, evt->area.y,
+    gdk_window_clear_area(w->window, evt->area.x, evt->area.y,
                           evt->area.width, evt->area.height);
-    }
     
     children = gtk_container_get_children(GTK_CONTAINER(w));
     for(l = children; l; l = l->next) {
@@ -720,6 +711,19 @@ xfce_desktop_delete_event(GtkWidget *w,
         XFCE_DESKTOP(w)->priv->session_logout_func();
     
     return TRUE;
+}
+
+static void
+style_set_cb(GtkWidget *w,
+             GtkStyle *old_style,
+             gpointer user_data)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(w);
+    
+    if(desktop->priv->bg_pixmap) {
+        gdk_window_set_back_pixmap(w->window, desktop->priv->bg_pixmap, FALSE);
+        gtk_widget_queue_draw(w);
+    }
 }
 
 
@@ -744,6 +748,9 @@ xfce_desktop_new(GdkScreen *gscreen)
         gscreen = gdk_display_get_default_screen(gdk_display_get_default());
     GTK_WINDOW(desktop)->screen = gscreen;
     desktop->priv->gscreen = gscreen;
+    
+    g_signal_connect(G_OBJECT(desktop), "style-set",
+                     G_CALLBACK(style_set_cb), NULL);
     
     return GTK_WIDGET(desktop);
 }
