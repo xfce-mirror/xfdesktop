@@ -137,6 +137,7 @@ xfce_desktop_get_menufile()
     XfceKiosk *kiosk;
     gboolean user_menu;
     gchar filename[PATH_MAX], searchpath[PATH_MAX*3+2], **all_dirs;
+    const gchar *userhome = xfce_get_homedir();
     gint i;
 
     kiosk = xfce_kiosk_new("xfdesktop");
@@ -144,17 +145,16 @@ xfce_desktop_get_menufile()
     xfce_kiosk_free(kiosk);
     
     if(!user_menu) {
-        const gchar *userhome = xfce_get_homedir();
         all_dirs = xfce_resource_lookup_all(XFCE_RESOURCE_CONFIG,
-                "xfce4/desktop/");
+                                            "xfce4/desktop/");
         
         for(i = 0; all_dirs[i]; i++) {
             if(strstr(all_dirs[i], userhome) != all_dirs[i]) {
                 g_snprintf(searchpath, PATH_MAX*3+2,
-                        "%s%%F.%%L:%s%%F.%%l:%s%%F",
-                        all_dirs[i], all_dirs[i], all_dirs[i]);
+                           "%s%%F.%%L:%s%%F.%%l:%s%%F",
+                           all_dirs[i], all_dirs[i], all_dirs[i]);
                 if(xfce_get_path_localized(filename, PATH_MAX, searchpath,
-                        "menu.xml", G_FILE_TEST_IS_REGULAR))
+                                           "menu.xml", G_FILE_TEST_IS_REGULAR))
                 {
                     g_strfreev(all_dirs);
                     return g_strdup(filename);
@@ -164,24 +164,27 @@ xfce_desktop_get_menufile()
         g_strfreev(all_dirs);
     } else {
         gchar *menu_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
-                "xfce4/desktop/menu.xml", FALSE);
+                                                       "xfce4/desktop/menu.xml",
+                                                       FALSE);
         if(menu_file && g_file_test(menu_file, G_FILE_TEST_IS_REGULAR))
             return menu_file;
         else if(menu_file)
             g_free(menu_file);
         
         all_dirs = xfce_resource_lookup_all(XFCE_RESOURCE_CONFIG,
-                "xfce4/desktop/");
+                                            "xfce4/desktop/");
         for(i = 0; all_dirs[i]; i++) {
-            g_snprintf(searchpath, PATH_MAX*3+2,
-                    "%s%%F.%%L:%s%%F.%%l:%s%%F",
-                    all_dirs[i], all_dirs[i], all_dirs[i]);
-            if(xfce_get_path_localized(filename, PATH_MAX, searchpath,
-                    "menu.xml", G_FILE_TEST_IS_REGULAR))
-            {
-                g_strfreev(all_dirs);
-                return g_strdup(filename);
-            }        
+            if(strstr(all_dirs[i], userhome) != all_dirs[i]) {
+                g_snprintf(searchpath, PATH_MAX*3+2,
+                           "%s%%F.%%L:%s%%F.%%l:%s%%F",
+                           all_dirs[i], all_dirs[i], all_dirs[i]);
+                if(xfce_get_path_localized(filename, PATH_MAX, searchpath,
+                                           "menu.xml", G_FILE_TEST_IS_REGULAR))
+                {
+                    g_strfreev(all_dirs);
+                    return g_strdup(filename);
+                }        
+            }
         }
         g_strfreev(all_dirs);
     }
