@@ -709,20 +709,30 @@ dmp_edit_menu_clicked_cb(GtkWidget *w, gpointer user_data)
 {
     DMPlugin *dmp = user_data;
     GError *err = NULL;
-    const gchar *menu_file;
+    const gchar *menu_file = NULL;
     gchar cmd[PATH_MAX];
     
     g_return_if_fail(dmp && dmp->desktop_menu);
     
-    menu_file = xfce_desktop_menu_get_menu_file(dmp->desktop_menu);
-    if(!menu_file)
-        return;
     
-    g_snprintf(cmd, PATH_MAX, "%s/xfce4-menueditor \"%s\"", BINDIR, menu_file);
+    if(dmp->use_default_menu)
+        g_snprintf(cmd, PATH_MAX, "%s/xfce4-menueditor", BINDIR);
+    else {
+        menu_file = xfce_desktop_menu_get_menu_file(dmp->desktop_menu);
+        if(!menu_file)
+            return;
+        g_snprintf(cmd, PATH_MAX, "%s/xfce4-menueditor \"%s\"", BINDIR,
+                   menu_file);
+    }
+    
     if(xfce_exec(cmd, FALSE, FALSE, NULL))
         return;
     
-    g_snprintf(cmd, PATH_MAX, "xfce4-menueditor \"%s\"", menu_file);
+    if(dmp->use_default_menu)
+        g_strlcpy(cmd, "xfce4-menueditor", PATH_MAX);
+    else
+        g_snprintf(cmd, PATH_MAX, "xfce4-menueditor \"%s\"", menu_file);
+    
     if(!xfce_exec(cmd, FALSE, FALSE, &err)) {
         xfce_warn(_("Unable to launch xfce4-menueditor: %s"), err->message);
         g_error_free(err);
