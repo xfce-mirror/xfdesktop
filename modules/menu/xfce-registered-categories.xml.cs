@@ -36,8 +36,8 @@
 -->
 
 <xfce-registered-categories>
-	<category name="Legacy" toplevel="true" builtin-icon="UTILITY" />
-	<category name="Core" toplevel="true" builtin-icon="UTILITY" />
+	<category name="Legacy" toplevel="true" builtin-icon="ACCESSORIES" />
+	<category name="Core" toplevel="true" builtin-icon="ACCESSORIES" />
 	<category name="Development" toplevel="true" replace="Vývoj" builtin-icon="DEVELOPMENT">
 		<subcategory name="Building" />
 		<subcategory name="Debugger" />
@@ -254,7 +254,7 @@
 	<category name="Filesystem" replace="Souborový systém" builtin-icon="SYSTEM" />
 	<category name="Monitor" replace="Monitorování" builtin-icon="SYSTEM" />
 	<category name="Security" replace="Bezpečnost" builtin-icon="SYSTEM" />
-	<category name="Utility" toplevel="true" replace="Nástroje" builtin-icon="UTILITY">
+	<category name="Utility" toplevel="true" replace="Nástroje" builtin-icon="ACCESSORIES">
 		<subcategory name="Accessibility" />
 		<subcategory name="Calculator" />
 		<subcategory name="Clock" />
@@ -265,9 +265,9 @@
 		<subcategory name="Shell" />
 	</category>
 	<category name="Accessibility" builtin-icon="UTILITY" />
-	<category name="Calculator" replace="Kalkulačky" builtin-icon="UTILITY" />
-	<category name="Clock" replace="Hodiny" builtin-icon="UTILITY" />
-	<category name="TextEditor" replace="Textový editor" builtin-icon="UTILITY" />
+	<category name="Calculator" replace="Kalkulačky" builtin-icon="ACCESSORIES" />
+	<category name="Clock" replace="Hodiny" builtin-icon="ACCESSORIES" />
+	<category name="TextEditor" replace="Textový editor" builtin-icon="ACCESSORIES" />
 	<category name="KDE" toplevel="true" ignore="true">
 		<subcategory name="Development" />
 		<subcategory name="Office" />

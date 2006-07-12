@@ -36,8 +36,8 @@
 -->
 
 <xfce-registered-categories>
-	<category name="Legacy" toplevel="true" replace="Aplikazioak" builtin-icon="UTILITY" />
-	<category name="Core" toplevel="true" replace="Aplikazioak" builtin-icon="UTILITY" />
+	<category name="Legacy" toplevel="true" replace="Aplikazioak" builtin-icon="ACCESSORIES" />
+	<category name="Core" toplevel="true" replace="Aplikazioak" builtin-icon="ACCESSORIES" />
 	<category name="Development" toplevel="true" replace="Garapena" builtin-icon="DEVELOPMENT">
 		<subcategory name="Sorpena" />
 		<subcategory name="Arazpena" />
@@ -254,7 +254,7 @@
 	<category name="Filesystem" replace="Fixtategi Sistema" builtin-icon="SYSTEM" />
 	<category name="Monitor" replace="Monitorea" builtin-icon="SYSTEM" />
 	<category name="Security" replace="Segurtasuna" builtin-icon="SYSTEM" />
-	<category name="Utility" toplevel="true" replace="Gehigarriak" builtin-icon="UTILITY">
+	<category name="Utility" toplevel="true" replace="Gehigarriak" builtin-icon="ACCESSORIES">
 		<subcategory name="Accessibility" replace="Erabilerraztasuna" />
 		<subcategory name="Calculator" replace="Kalkulagailua" />
 		<subcategory name="Clock" replace="Ordularia" />
@@ -265,9 +265,9 @@
 		<subcategory name="Shell" />
 	</category>
 	<category name="Accessibility" replace="Erabilerraztasuna" builtin-icon="UTILITY" />
-	<category name="Calculator" replace="Kalkulagailuak" builtin-icon="UTILITY" />
-	<category name="Clock" replace="Ordulariak" builtin-icon="UTILITY" />
-	<category name="TextEditor" replace="Testu Editorak" builtin-icon="UTILITY" />
+	<category name="Calculator" replace="Kalkulagailuak" builtin-icon="ACCESSORIES" />
+	<category name="Clock" replace="Ordulariak" builtin-icon="ACCESSORIES" />
+	<category name="TextEditor" replace="Testu Editorak" builtin-icon="ACCESSORIES" />
 	<category name="KDE" toplevel="true" ignore="true">
 		<subcategory name="Development" replace="Garapena" />
 		<subcategory name="Office" replace="Ofizina" />

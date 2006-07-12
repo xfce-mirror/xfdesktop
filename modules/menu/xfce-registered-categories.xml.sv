@@ -36,8 +36,8 @@
 -->
 
 <xfce-registered-categories>
-	<category name="Legacy" toplevel="true" replace="Tillbehör" builtin-icon="UTILITY" />
-	<category name="Core" toplevel="true" replace="Tillbehör" builtin-icon="UTILITY" />
+	<category name="Legacy" toplevel="true" replace="Tillbehör" builtin-icon="ACCESSORIES" />
+	<category name="Core" toplevel="true" replace="Tillbehör" builtin-icon="ACCESSORIES" />
 	<category name="Development" toplevel="true" replace="Utveckling" builtin-icon="DEVELOPMENT">
 		<subcategory name="Building" />
 		<subcategory name="Debugger"  replace="Felsökning" />
@@ -254,7 +254,7 @@
 	<category name="Filesystem" replace="FIlsystem" builtin-icon="SYSTEM" />
 	<category name="Monitor" replace="Monitor" builtin-icon="SYSTEM" />
 	<category name="Security" replace="Säkerhet" builtin-icon="SYSTEM" />
-	<category name="Utility" replace="Tillbehör" toplevel="true" builtin-icon="UTILITY">
+	<category name="Utility" replace="Tillbehör" toplevel="true" builtin-icon="ACCESSORIES">
 		<subcategory name="Accessibility" replace="Hjälpmedelsfunktioner" />
 		<subcategory name="Calculator" replace="Miniräknare" />
 		<subcategory name="Clock" replace="Klockor" />
@@ -265,9 +265,9 @@
 		<subcategory name="Shell" replace="Skal" />
 	</category>
 	<category name="Accessibility" replace="Hjälpmedelsfunktioner" builtin-icon="UTILITY" />
-	<category name="Calculator" replace="Miniräknare" builtin-icon="UTILITY" />
-	<category name="Clock" replace="Klockor" builtin-icon="UTILITY" />
-	<category name="TextEditor" replace="Textredigerare" builtin-icon="UTILITY" />
+	<category name="Calculator" replace="Miniräknare" builtin-icon="ACCESSORIES" />
+	<category name="Clock" replace="Klockor" builtin-icon="ACCESSORIES" />
+	<category name="TextEditor" replace="Textredigerare" builtin-icon="ACCESSORIES" />
 	<category name="KDE" toplevel="true" ignore="true">
 		<subcategory name="Development" replace="Utveckling" />
 		<subcategory name="Office" replace="Kontor" />

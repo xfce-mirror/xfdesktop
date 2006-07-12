@@ -36,8 +36,8 @@
 -->
 
 <xfce-registered-categories>
-	<category name="Legacy" toplevel="true" replace="Akcesoria" builtin-icon="UTILITY" />
-	<category name="Core" toplevel="true" replace="Akcesoria" builtin-icon="UTILITY" />
+	<category name="Legacy" toplevel="true" replace="Akcesoria" builtin-icon="ACCESSORIES" />
+	<category name="Core" toplevel="true" replace="Akcesoria" builtin-icon="ACCESSORIES" />
 	<category name="Development" replace="Programowanie" toplevel="true" builtin-icon="DEVELOPMENT">
 		<subcategory name="Building" replace="Budowanie" />
 		<subcategory name="Debugger" />
@@ -254,7 +254,7 @@
 	<category name="Filesystem" replace="System plików" builtin-icon="SYSTEM" />
 	<category name="Monitor" builtin-icon="SYSTEM" />
 	<category name="Security" replace="Bezpieczeństwo" builtin-icon="SYSTEM" />
-	<category name="Utility" toplevel="true" replace="Akcesoria" builtin-icon="UTILITY">
+	<category name="Utility" toplevel="true" replace="Akcesoria" builtin-icon="ACCESSORIES">
 		<subcategory name="Accessibility" />
 		<subcategory name="Calculator" />
 		<subcategory name="Clock" />
@@ -265,9 +265,9 @@
 		<subcategory name="Shell" />
 	</category>
 	<category name="Accessibility" replace="Dostępność" builtin-icon="UTILITY" />
-	<category name="Calculator" replace="Kalkulatory" builtin-icon="UTILITY" />
-	<category name="Clock" replace="Zegary" builtin-icon="UTILITY" />
-	<category name="TextEditor" replace="Edycja tekstu" builtin-icon="UTILITY" />
+	<category name="Calculator" replace="Kalkulatory" builtin-icon="ACCESSORIES" />
+	<category name="Clock" replace="Zegary" builtin-icon="ACCESSORIES" />
+	<category name="TextEditor" replace="Edycja tekstu" builtin-icon="ACCESSORIES" />
 	<category name="KDE" toplevel="true" ignore="true">
 		<subcategory name="Development" replace="Programowanie" />
 		<subcategory name="Office" replace="Biuro" />

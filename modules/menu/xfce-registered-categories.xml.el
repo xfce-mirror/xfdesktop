@@ -36,8 +36,8 @@
 -->
 
 <xfce-registered-categories>
-	<category name="Legacy" toplevel="true" replace="Βοηθήματα" builtin-icon="UTILITY" />
-	<category name="Core" toplevel="true" replace="Βοηθήματα" builtin-icon="UTILITY" />
+	<category name="Legacy" toplevel="true" replace="Βοηθήματα" builtin-icon="ACCESSORIES" />
+	<category name="Core" toplevel="true" replace="Βοηθήματα" builtin-icon="ACCESSORIES" />
 	<category name="Development" toplevel="true" replace="Ανάπτυξη" builtin-icon="DEVELOPMENT">
 		<subcategory name="Building" />
 		<subcategory name="Debugger" />
@@ -254,7 +254,7 @@
 	<category name="Filesystem" replace="Σύστημα Αρχείων" builtin-icon="SYSTEM" />
 	<category name="Monitor" replace="Παρακολούθηση" builtin-icon="SYSTEM" />
 	<category name="Security" replace="Ασφαλεια" builtin-icon="SYSTEM" />
-	<category name="Utility" toplevel="true" replace="Βοηθήματα" builtin-icon="UTILITY">
+	<category name="Utility" toplevel="true" replace="Βοηθήματα" builtin-icon="ACCESSORIES">
 		<subcategory name="Accessibility" />
 		<subcategory name="Calculator" />
 		<subcategory name="Clock" />
@@ -265,9 +265,9 @@
 		<subcategory name="Shell" />
 	</category>
 	<category name="Accessibility" replace="Προσβασιμότητα" builtin-icon="UTILITY" />
-	<category name="Calculator" replace="Κομπιουτεράκια" builtin-icon="UTILITY" />
-	<category name="Clock" replace="Ρολόγια" builtin-icon="UTILITY" />
-	<category name="TextEditor" replace="Επεξεργασία Κειμένου" builtin-icon="UTILITY" />
+	<category name="Calculator" replace="Κομπιουτεράκια" builtin-icon="ACCESSORIES" />
+	<category name="Clock" replace="Ρολόγια" builtin-icon="ACCESSORIES" />
+	<category name="TextEditor" replace="Επεξεργασία Κειμένου" builtin-icon="ACCESSORIES" />
 	<category name="KDE" toplevel="true" ignore="true">
 		<subcategory name="Development" />
 		<subcategory name="Office" />

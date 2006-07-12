@@ -36,8 +36,8 @@
 -->
 
 <xfce-registered-categories>
-	<category name="Legacy" toplevel="true" replace="Accesorii" builtin-icon="UTILITY" />
-	<category name="Core" toplevel="true" replace="Accesorii" builtin-icon="UTILITY" />
+	<category name="Legacy" toplevel="true" replace="Accesorii" builtin-icon="ACCESSORIES" />
+	<category name="Core" toplevel="true" replace="Accesorii" builtin-icon="ACCESSORIES" />
 	<category name="Development" toplevel="true" builtin-icon="DEVELOPMENT">
 		<subcategory name="Building" />
 		<subcategory name="Debugger" />
@@ -254,7 +254,7 @@
 	<category name="Filesystem" replace="Sistem de fişiere" builtin-icon="SYSTEM" />
 	<category name="Monitor" replace="Monitorizare" builtin-icon="SYSTEM" />
 	<category name="Security" replace="Securitate" builtin-icon="SYSTEM" />
-	<category name="Utility" toplevel="true" replace="Utilitare" builtin-icon="UTILITY">
+	<category name="Utility" toplevel="true" replace="Utilitare" builtin-icon="ACCESSORIES">
 		<subcategory name="Accessibility" />
 		<subcategory name="Calculator" />
 		<subcategory name="Clock" />
@@ -265,9 +265,9 @@
 		<subcategory name="Shell" />
 	</category>
 	<category name="Accessibility" replace="Accesibilitate" builtin-icon="UTILITY" />
-	<category name="Calculator" replace="Calculator" builtin-icon="UTILITY" />
-	<category name="Clock" replace="Ceas" builtin-icon="UTILITY" />
-	<category name="TextEditor" replace="Editor de text" builtin-icon="UTILITY" />
+	<category name="Calculator" replace="Calculator" builtin-icon="ACCESSORIES" />
+	<category name="Clock" replace="Ceas" builtin-icon="ACCESSORIES" />
+	<category name="TextEditor" replace="Editor de text" builtin-icon="ACCESSORIES" />
 	<category name="KDE" toplevel="true" ignore="true">
 		<subcategory name="Development" />
 		<subcategory name="Office" />

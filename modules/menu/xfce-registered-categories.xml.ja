@@ -55,8 +55,8 @@
 -->
 
 <xfce-registered-categories>
-	<category name="Legacy" toplevel="true" replace="アクセサリー" builtin-icon="UTILITY" />
-	<category name="Core" toplevel="true" replace="アクセサリー" builtin-icon="UTILITY" />
+	<category name="Legacy" toplevel="true" replace="アクセサリー" builtin-icon="ACCESSORIES" />
+	<category name="Core" toplevel="true" replace="アクセサリー" builtin-icon="ACCESSORIES" />
 	<category name="Development" toplevel="true" replace="開発" builtin-icon="DEVELOPMENT">
 		<subcategory name="Building" replace="ビルド" />
 		<subcategory name="Debugger" replace="デバッガー" />
@@ -273,7 +273,7 @@
 	<category name="Filesystem" replace="ファイルシステム" builtin-icon="SYSTEM" />
 	<category name="Monitor" replace="モニター" builtin-icon="SYSTEM" />
 	<category name="Security" replace="セキュリティ" builtin-icon="SYSTEM" />
-	<category name="Utility"  toplevel="true" replace="アクセサリー" builtin-icon="UTILITY">
+	<category name="Utility"  toplevel="true" replace="アクセサリー" builtin-icon="ACCESSORIES">
 		<subcategory name="Accessibility" replace="障碍者支援" />
 		<subcategory name="Calculator" replace="電卓" />
 		<subcategory name="Clock" replace="時計" />
@@ -284,9 +284,9 @@
 		<subcategory name="Shell" replace="シェル" />
 	</category>
 	<category name="Accessibility" replace="障碍者支援" builtin-icon="UTILITY" />
-	<category name="Calculator" replace="電卓" builtin-icon="UTILITY" />
-	<category name="Clock" replace="時計" builtin-icon="UTILITY" />
-	<category name="TextEditor" replace="テキスト編集" builtin-icon="UTILITY" />
+	<category name="Calculator" replace="電卓" builtin-icon="ACCESSORIES" />
+	<category name="Clock" replace="時計" builtin-icon="ACCESSORIES" />
+	<category name="TextEditor" replace="テキスト編集" builtin-icon="ACCESSORIES" />
 	<category name="KDE" toplevel="true" ignore="true">
 		<subcategory name="Development" replace="開発" />
 		<subcategory name="Office" replace="オフィス" />

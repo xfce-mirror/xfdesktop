@@ -141,6 +141,9 @@ menuspec_builtin_icon_to_filename(const gchar *name)
     else if(!strcmp(name, "WINE"))
         return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_WINE,
                                                 _xfce_desktop_menu_icon_size);
+    else if(!strcmp(name, "ACCESSORIES"))
+        return xfce_themed_icon_lookup_category(XFCE_ICON_CATEGORY_ACCESSORIES,
+                                                _xfce_desktop_menu_icon_size);
     
     return NULL;
 }
