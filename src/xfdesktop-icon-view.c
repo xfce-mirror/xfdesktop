@@ -737,6 +737,8 @@ xfdesktop_icon_view_tip_window_expose(GtkWidget *w,
     gtk_widget_size_request(w, &req);
     gtk_paint_flat_box(w->style, w->window, GTK_STATE_NORMAL, GTK_SHADOW_OUT,
                        NULL, w, "tooltip", 0, 0, req.width, req.height);
+    
+    return FALSE;
 }
 
 static void
