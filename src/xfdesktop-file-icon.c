@@ -317,6 +317,7 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
     }
     
     if(!file_icon->priv->pix) {
+        /* if we're a removable volume, first try to get the volume's icon */
         if(file_icon->priv->volume) {
             icon_name = thunar_vfs_volume_lookup_icon_name(file_icon->priv->volume,
                                                            gtk_icon_theme_get_default());
@@ -325,6 +326,16 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                 if(file_icon->priv->pix)
                     loaded_new = TRUE;
             }
+        }
+        
+        /* check the application's binary name like thunar does (bug 1956) */
+        if(!file_icon->priv->pix && file_icon->priv->info
+           && file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE)
+        {
+            icon_name = thunar_vfs_path_get_name(file_icon->priv->info->path);
+            file_icon->priv->pix = xfce_themed_icon_load(icon_name, size);
+            if(file_icon->priv->pix)
+                loaded_new = TRUE;
         }
         
         if(!file_icon->priv->pix && file_icon->priv->info) {
