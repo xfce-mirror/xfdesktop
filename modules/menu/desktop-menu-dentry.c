@@ -233,12 +233,8 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
             }
         }
         if(!pix) {
-            icon = "xfce-unknown";
+            icon = "applications-other";
             pix = xfce_themed_icon_load(icon, _xfce_desktop_menu_icon_size);
-            if(!pix) {
-                icon = "unknown";
-                pix = xfce_themed_icon_load(icon, _xfce_desktop_menu_icon_size);
-            }
             if(!pix) {
                 _desktop_menu_ensure_unknown_icon();
                 icon = "XFDESKTOP_BUILTIN_UNKNOWN_ICON";
