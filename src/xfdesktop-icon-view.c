@@ -397,8 +397,21 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
     XfdesktopIcon *icon;
     
     if(evt->type == GDK_BUTTON_PRESS) {
-        GList *icon_l = g_list_find_custom(icon_view->priv->icons, evt,
-                                           (GCompareFunc)xfdesktop_check_icon_clicked);
+        GList *icon_l;
+        
+        /* always hide the tooltip on button press */
+        if(icon_view->priv->tip_window
+           && GTK_WIDGET_VISIBLE(icon_view->priv->tip_window))
+        {
+            gtk_widget_hide(icon_view->priv->tip_window);
+        }
+        if(icon_view->priv->tip_show_id) {
+            g_source_remove(icon_view->priv->tip_show_id);
+            icon_view->priv->tip_show_id = 0;
+        }
+        
+        icon_l = g_list_find_custom(icon_view->priv->icons, evt,
+                                    (GCompareFunc)xfdesktop_check_icon_clicked);
         if(icon_l && (icon = icon_l->data)) {
             if(g_list_find(icon_view->priv->selected_icons, icon)) {
                 /* clicked an already-selected icon */
@@ -879,7 +892,9 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
             if(icon && xfdesktop_icon_get_extents(icon, &extents)
                && xfdesktop_rectangle_contains_point(&extents, evt->x, evt->y))
             {
-                if(icon != icon_view->priv->item_under_pointer) {
+                if(icon != icon_view->priv->item_under_pointer
+                   && !icon_view->priv->maybe_begin_drag)
+                {
                     /* show tip soon */
                     icon_view->priv->tip_show_id = g_timeout_add(icon_view->priv->tip_timeout,
                                                                  xfdesktop_icon_view_show_tooltip,
