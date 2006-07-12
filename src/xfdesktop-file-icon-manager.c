@@ -2116,10 +2116,6 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                 
                 /* don't free the mime apps!  just the list! */
                 g_list_free(mime_apps);
-                
-                mi = gtk_separator_menu_item_new();
-                gtk_widget_show(mi);
-                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             } else {
                 img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
                 gtk_widget_show(img);
@@ -2131,6 +2127,10 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                                  G_CALLBACK(xfdesktop_file_icon_menu_other_app),
                                  fmanager);
             }
+            
+            mi = gtk_separator_menu_item_new();
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         }
     }
     
