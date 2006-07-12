@@ -206,6 +206,9 @@ xfdesktop_file_icon_finalize(GObject *obj)
     if(icon->priv->volume)
         g_object_unref(G_OBJECT(icon->priv->volume));
     
+    if(icon->priv->tooltip)
+        g_free(icon->priv->tooltip);
+    
     g_free(icon->priv);
     
     G_OBJECT_CLASS(xfdesktop_file_icon_parent_class)->finalize(obj);
