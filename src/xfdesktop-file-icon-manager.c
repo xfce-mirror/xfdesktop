@@ -1973,7 +1973,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     ThunarVfsMimeInfo *mime_info = info ? info->mime_info : NULL;
     ThunarVfsVolume *volume = xfdesktop_file_icon_peek_volume(file_icon);
     GList *selected, *mime_apps, *l, *mime_actions = NULL;
-    GtkWidget *menu, *mi, *img, *menu2;
+    GtkWidget *menu, *mi, *img, *menu2, *menu3;
     gboolean multi_sel, have_templates = FALSE;
     gint w = 0, h = 0;
     GdkPixbuf *pix;
@@ -2296,10 +2296,18 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     
-    img = gtk_image_new_from_stock(GTK_STOCK_NEW, GTK_ICON_SIZE_MENU);
-    gtk_widget_show(img);
-    mi = gtk_image_menu_item_new_with_mnemonic(_("Create _New"));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+    mi = gtk_image_menu_item_new_with_mnemonic(_("Des_ktop"));
+    pix = xfce_themed_icon_load("user-desktop", w);
+    if(!pix)
+        pix = xfce_themed_icon_load("gnome-fs-desktop", w);
+    if(!pix)
+        pix = xfce_themed_icon_load("xfce4-backdrop", w);
+    if(pix) {
+        img = gtk_image_new_from_pixbuf(pix);
+        gtk_widget_show(img);
+        g_object_unref(G_OBJECT(pix));
+        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+    }
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     
@@ -2307,7 +2315,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     gtk_widget_show(menu2);
     gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), menu2);
     
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_Launcher..."));
+    mi = gtk_image_menu_item_new_with_mnemonic(_("Create _Launcher..."));
     minfo = thunar_vfs_mime_database_get_info(thunar_mime_database,
                                               "application/x-desktop");
     if(minfo) {
@@ -2328,8 +2336,10 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                      G_CALLBACK(xfdesktop_file_icon_menu_create_launcher),
                      fmanager);
     
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_URL Link..."));
-    pix = xfce_themed_icon_load("gnome-fs-bookmark", w);  /* FIXME: icon naming spec */
+    mi = gtk_image_menu_item_new_with_mnemonic(_("Create _URL Link..."));
+    pix = xfce_themed_icon_load("gnome-fs-bookmark", w);
+    if(!pix)
+        pix = xfce_themed_icon_load("emblem-favorite", w);
     if(pix) {
         img = gtk_image_new_from_pixbuf(pix);
         gtk_widget_show(img);
@@ -2343,7 +2353,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                      G_CALLBACK(xfdesktop_file_icon_menu_create_launcher),
                      fmanager);
     
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_Folder..."));
+    mi = gtk_image_menu_item_new_with_mnemonic(_("Create _Folder..."));
     minfo = thunar_vfs_mime_database_get_info(thunar_mime_database,
                                               "inode/directory");
     if(minfo) {
@@ -2364,9 +2374,13 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                      G_CALLBACK(xfdesktop_file_icon_menu_create_folder),
                      fmanager);
     
-    mi = gtk_separator_menu_item_new();
+    mi = gtk_menu_item_new_with_mnemonic("Create From _Template");
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu2), mi);
+    
+    menu3 = gtk_menu_new();
+    gtk_widget_show(menu3);
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), menu3);
     
     templates_path_str = g_build_filename(xfce_get_homedir(),
                                           "Templates",
@@ -2374,7 +2388,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     templates_path = thunar_vfs_path_new(templates_path_str, NULL);
     g_free(templates_path_str);
     if(templates_path) {
-        have_templates = xfdesktop_file_icon_menu_fill_template_menu(menu2,
+        have_templates = xfdesktop_file_icon_menu_fill_template_menu(menu3,
                                                                      templates_path,
                                                                      fmanager);
         thunar_vfs_path_unref(templates_path);
@@ -2385,10 +2399,23 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     mi = gtk_image_menu_item_new_with_mnemonic(_("_Empty File"));
     gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
     gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu2), mi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
     g_signal_connect(G_OBJECT(mi), "activate",
                      G_CALLBACK(xfdesktop_file_icon_template_item_activated),
                      fmanager);
+
+    mi = gtk_separator_menu_item_new();
+    gtk_widget_show(mi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu2), mi);
+    
+    img = gtk_image_new_from_stock(GTK_STOCK_PASTE, GTK_ICON_SIZE_MENU);
+    gtk_widget_show(img);
+    mi = gtk_image_menu_item_new_with_mnemonic(_("_Paste Files"));
+    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+    gtk_widget_show(mi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu2), mi);
+    /* FIXME: implement */
+    gtk_widget_set_sensitive(mi, FALSE);
     
     gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0,
                    gtk_get_current_event_time());
