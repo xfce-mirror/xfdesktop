@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-12 17:01-0700\n"
+"POT-Creation-Date: 2006-07-12 20:47-0700\n"
 "PO-Revision-Date: 2006-05-05 19:34+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -55,7 +55,7 @@ msgstr "Konec"
 #: ../menueditor/menueditor-add-dialog.c:147
 #: ../menueditor/menueditor-edit-dialog.c:122
 #: ../menueditor/menueditor-edit-dialog.c:123
-#: ../src/xfdesktop-file-icon-manager.c:1073
+#: ../src/xfdesktop-file-icon-manager.c:1067
 msgid "Name:"
 msgstr "Název:"
 
@@ -237,7 +237,7 @@ msgid "Create a new empty menu"
 msgstr "Vytvořit souborové menu Xfce4 "
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:2018
+#: ../src/xfdesktop-file-icon-manager.c:2068
 msgid "_Open"
 msgstr "_Otevřít"
 
@@ -409,7 +409,7 @@ msgstr "Chcete uložit před uzavřením souboru?"
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:645
+#: ../src/xfdesktop-file-icon-manager.c:646
 msgid "Question"
 msgstr "Otázka"
 
@@ -828,7 +828,7 @@ msgid "Desktop Icons"
 msgstr "Ikony na ploše"
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1019
 msgid "None"
 msgstr "Nic"
 
@@ -940,20 +940,20 @@ msgstr "_Odebrat pracovní plochu %s"
 msgid "Desktop"
 msgstr "Plocha"
 
-#: ../src/xfdesktop-file-icon-manager.c:233
+#: ../src/xfdesktop-file-icon-manager.c:234
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
 "Xfdesktop nebyl schopen vytvořit adresář \"%s\" pro uchování položek plochy:"
 
-#: ../src/xfdesktop-file-icon-manager.c:235
-#: ../src/xfdesktop-file-icon-manager.c:244
-#: ../src/xfdesktop-file-icon-manager.c:1554
+#: ../src/xfdesktop-file-icon-manager.c:236
+#: ../src/xfdesktop-file-icon-manager.c:245
+#: ../src/xfdesktop-file-icon-manager.c:1571
 msgid "Create Folder Failed"
 msgstr "Vytvoření adresáře selhalo"
 
-#: ../src/xfdesktop-file-icon-manager.c:242
+#: ../src/xfdesktop-file-icon-manager.c:243
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
@@ -962,80 +962,82 @@ msgstr ""
 "Xfdesktop není schopen použít \"%s\" k uchování položek plochy, protože není "
 "adresářem."
 
-#: ../src/xfdesktop-file-icon-manager.c:246
+#: ../src/xfdesktop-file-icon-manager.c:247
 msgid "Please delete or rename the file."
 msgstr "Prosím smažte nebo přejmenujte soubor."
 
-#: ../src/xfdesktop-file-icon-manager.c:371
-#: ../src/xfdesktop-file-icon-manager.c:884
+#: ../src/xfdesktop-file-icon-manager.c:372
+#: ../src/xfdesktop-file-icon-manager.c:885
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "Nelze připojit \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:373
-#: ../src/xfdesktop-file-icon-manager.c:888
+#: ../src/xfdesktop-file-icon-manager.c:374
+#: ../src/xfdesktop-file-icon-manager.c:889
 msgid "Mount Failed"
 msgstr "Připojení selhalo"
 
-#: ../src/xfdesktop-file-icon-manager.c:375
+#: ../src/xfdesktop-file-icon-manager.c:376
 #, fuzzy
 msgid "Unknown error."
 msgstr "Neznámá chyba"
 
-#: ../src/xfdesktop-file-icon-manager.c:436
-#: ../src/xfdesktop-file-icon-manager.c:767
-#: ../src/xfdesktop-file-icon-manager.c:801
+#: ../src/xfdesktop-file-icon-manager.c:437
+#: ../src/xfdesktop-file-icon-manager.c:768
+#: ../src/xfdesktop-file-icon-manager.c:802
+#: ../src/xfdesktop-file-icon-manager.c:2004
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Nelze spustit \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:438
-#: ../src/xfdesktop-file-icon-manager.c:769
-#: ../src/xfdesktop-file-icon-manager.c:804
-#: ../src/xfdesktop-file-icon-manager.c:1588
+#: ../src/xfdesktop-file-icon-manager.c:439
+#: ../src/xfdesktop-file-icon-manager.c:770
+#: ../src/xfdesktop-file-icon-manager.c:805
+#: ../src/xfdesktop-file-icon-manager.c:1605
+#: ../src/xfdesktop-file-icon-manager.c:2006
 msgid "Launch Error"
 msgstr "Chyba při spuštění"
 
-#: ../src/xfdesktop-file-icon-manager.c:440
+#: ../src/xfdesktop-file-icon-manager.c:441
 msgid "The associated application could not be found or executed."
 msgstr "Asociovanou aplikaci nelze nalézt nebo spustit."
 
-#: ../src/xfdesktop-file-icon-manager.c:567
+#: ../src/xfdesktop-file-icon-manager.c:568
 #, c-format
 msgid "Rename \"%s\""
 msgstr "Přejmenovat \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:574
-#: ../src/xfdesktop-file-icon-manager.c:1626
-#: ../src/xfdesktop-file-icon-manager.c:1717
-#: ../src/xfdesktop-file-icon-manager.c:1728
+#: ../src/xfdesktop-file-icon-manager.c:575
+#: ../src/xfdesktop-file-icon-manager.c:1643
+#: ../src/xfdesktop-file-icon-manager.c:1734
+#: ../src/xfdesktop-file-icon-manager.c:1745
 msgid "Enter the new name:"
 msgstr "Zadejte nový název:"
 
-#: ../src/xfdesktop-file-icon-manager.c:576
+#: ../src/xfdesktop-file-icon-manager.c:577
 msgid "Rename"
 msgstr "Přejmenovat"
 
-#: ../src/xfdesktop-file-icon-manager.c:642
+#: ../src/xfdesktop-file-icon-manager.c:643
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Opravdu chcete smazat \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:647
-#: ../src/xfdesktop-file-icon-manager.c:667
+#: ../src/xfdesktop-file-icon-manager.c:648
+#: ../src/xfdesktop-file-icon-manager.c:668
 msgid "If you delete a file, it is permanently lost."
 msgstr "Pokud smažete soubor, bude nenávratně ztracen."
 
-#: ../src/xfdesktop-file-icon-manager.c:661
+#: ../src/xfdesktop-file-icon-manager.c:662
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Opravdu chcete odstranit těchto %d souborů?"
 
-#: ../src/xfdesktop-file-icon-manager.c:664
+#: ../src/xfdesktop-file-icon-manager.c:665
 msgid "Delete Multiple Files"
 msgstr "Smazat více souborů"
 
-#: ../src/xfdesktop-file-icon-manager.c:806
+#: ../src/xfdesktop-file-icon-manager.c:807
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -1043,278 +1045,259 @@ msgstr ""
 "Tato vlastnost vyžaduje přítomnost služby správce souborů (taková služba je "
 "dodávána aplikací Thunar)."
 
-#: ../src/xfdesktop-file-icon-manager.c:885
+#: ../src/xfdesktop-file-icon-manager.c:886
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "Nelze odpojit \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:888
+#: ../src/xfdesktop-file-icon-manager.c:889
 msgid "Unmount Failed"
 msgstr "Odpojení selhalo"
 
-#: ../src/xfdesktop-file-icon-manager.c:917
+#: ../src/xfdesktop-file-icon-manager.c:918
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "Nemohu vysunout \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:919
+#: ../src/xfdesktop-file-icon-manager.c:920
 msgid "Eject Failed"
 msgstr "Vysunutí se nezdařilo"
 
-#: ../src/xfdesktop-file-icon-manager.c:988
+#: ../src/xfdesktop-file-icon-manager.c:989
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr "Nelze nastavit výchozí aplikaci pro \"%s\" na \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:991
+#: ../src/xfdesktop-file-icon-manager.c:992
 msgid "Properties Error"
 msgstr "Chyba vlastností"
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1019
 msgid "Write only"
 msgstr "Jen pro zápis"
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1019
 msgid "Read only"
 msgstr "Jen pro čtení"
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1019
 msgid "Read & Write"
 msgstr "Pro zápis i pro čtení"
 
-#: ../src/xfdesktop-file-icon-manager.c:1048
+#: ../src/xfdesktop-file-icon-manager.c:1042
 msgid "General"
 msgstr "Obecné"
 
-#: ../src/xfdesktop-file-icon-manager.c:1099
+#: ../src/xfdesktop-file-icon-manager.c:1093
 msgid "Kind:"
 msgstr "Druh:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1119
+#: ../src/xfdesktop-file-icon-manager.c:1113
 msgid "Link Target:"
 msgstr "Cíl odkazu:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1136
-#: ../src/xfdesktop-file-icon-manager.c:1295
+#: ../src/xfdesktop-file-icon-manager.c:1130
+#: ../src/xfdesktop-file-icon-manager.c:1289
 msgid "(unknown)"
 msgstr "(neznámý)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1158
+#: ../src/xfdesktop-file-icon-manager.c:1152
 msgid "Open With:"
 msgstr "Otevřít pomocí:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1235
+#: ../src/xfdesktop-file-icon-manager.c:1229
 msgid "Modified:"
 msgstr "Změněno:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1253
+#: ../src/xfdesktop-file-icon-manager.c:1247
 msgid "Accessed:"
 msgstr "Poslední přístup:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1280
+#: ../src/xfdesktop-file-icon-manager.c:1274
 msgid "Free Space:"
 msgstr "Volné místo:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1282
+#: ../src/xfdesktop-file-icon-manager.c:1276
 msgid "Size:"
 msgstr "Velikost:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1298 ../src/xfdesktop-file-icon.c:676
+#: ../src/xfdesktop-file-icon-manager.c:1292 ../src/xfdesktop-file-icon.c:676
 msgid "%s (%"
 msgstr "%s (%"
 
-#: ../src/xfdesktop-file-icon-manager.c:1298 ../src/xfdesktop-file-icon.c:676
+#: ../src/xfdesktop-file-icon-manager.c:1292 ../src/xfdesktop-file-icon.c:676
 msgid " Bytes)"
 msgstr "bajtů)"
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1313
+#: ../src/xfdesktop-file-icon-manager.c:1307
 msgid "Permissions"
 msgstr "Přístupová práva"
 
-#: ../src/xfdesktop-file-icon-manager.c:1335
+#: ../src/xfdesktop-file-icon-manager.c:1329
 msgid "Owner:"
 msgstr "Vlastník:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1353
-#: ../src/xfdesktop-file-icon-manager.c:1391
+#: ../src/xfdesktop-file-icon-manager.c:1347
+#: ../src/xfdesktop-file-icon-manager.c:1385
 msgid "Access:"
 msgstr "Přístup:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1376
+#: ../src/xfdesktop-file-icon-manager.c:1370
 msgid "Group:"
 msgstr "Skupina:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1414
+#: ../src/xfdesktop-file-icon-manager.c:1408
 msgid "Others:"
 msgstr "Ostatní:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1487
+#: ../src/xfdesktop-file-icon-manager.c:1504
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Otevřít pomocí \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1490
+#: ../src/xfdesktop-file-icon-manager.c:1507
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Otevřít pomocí \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1551
+#: ../src/xfdesktop-file-icon-manager.c:1568
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Nelze vytvořit soubor s názvem \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1590
+#: ../src/xfdesktop-file-icon-manager.c:1607
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1623
+#: ../src/xfdesktop-file-icon-manager.c:1640
 msgid "Create New Folder"
 msgstr "Vytvořit nový adresář"
 
-#: ../src/xfdesktop-file-icon-manager.c:1627
+#: ../src/xfdesktop-file-icon-manager.c:1644
 msgid "New Folder"
 msgstr "Nový adresář"
 
-#: ../src/xfdesktop-file-icon-manager.c:1628
-#: ../src/xfdesktop-file-icon-manager.c:1719
-#: ../src/xfdesktop-file-icon-manager.c:1730
+#: ../src/xfdesktop-file-icon-manager.c:1645
+#: ../src/xfdesktop-file-icon-manager.c:1736
+#: ../src/xfdesktop-file-icon-manager.c:1747
 msgid "Create"
 msgstr "Vytvořit"
 
-#: ../src/xfdesktop-file-icon-manager.c:1664
+#: ../src/xfdesktop-file-icon-manager.c:1681
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Nelze vytvořit soubor s názvem \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1684
 msgid "Create File Failed"
 msgstr "Vytvoření souboru selhalo"
 
-#: ../src/xfdesktop-file-icon-manager.c:1706
+#: ../src/xfdesktop-file-icon-manager.c:1723
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Vytvořit dokument ze šablony \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1725
+#: ../src/xfdesktop-file-icon-manager.c:1742
 msgid "Create Empty File"
 msgstr "Vytvořit prázdný soubor"
 
-#: ../src/xfdesktop-file-icon-manager.c:1729
+#: ../src/xfdesktop-file-icon-manager.c:1746
 msgid "New Empty File"
 msgstr "Nový prázdný soubor"
 
-#: ../src/xfdesktop-file-icon-manager.c:1762
+#: ../src/xfdesktop-file-icon-manager.c:1779
 #, fuzzy, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "Nelze vytvořit soubor s názvem \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1763
+#: ../src/xfdesktop-file-icon-manager.c:1780
 #, fuzzy
 msgid "Create Error"
 msgstr "Chyba vlastností"
 
-#: ../src/xfdesktop-file-icon-manager.c:2003
+#: ../src/xfdesktop-file-icon-manager.c:2053
 msgid "_Open all"
 msgstr "_Otevřít vše"
 
-#: ../src/xfdesktop-file-icon-manager.c:2035
+#: ../src/xfdesktop-file-icon-manager.c:2085
 msgid "_Execute"
 msgstr "_Spustit"
 
-#: ../src/xfdesktop-file-icon-manager.c:2052
+#: ../src/xfdesktop-file-icon-manager.c:2102
 #, fuzzy
 msgid "_Edit Launcher"
 msgstr "Spouštěč"
 
-#: ../src/xfdesktop-file-icon-manager.c:2092
+#: ../src/xfdesktop-file-icon-manager.c:2142
 msgid "Open With"
 msgstr "Otevřít pomocí"
 
-#: ../src/xfdesktop-file-icon-manager.c:2122
+#: ../src/xfdesktop-file-icon-manager.c:2172
 msgid "Open With Other _Application..."
 msgstr "Otevřít v jiné _aplikaci..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2197
+#: ../src/xfdesktop-file-icon-manager.c:2246
 msgid "_Mount Volume"
 msgstr "_Připojit svazek"
 
-#: ../src/xfdesktop-file-icon-manager.c:2208
+#: ../src/xfdesktop-file-icon-manager.c:2257
 msgid "_Unmount Volume"
 msgstr "_Odpojit svazek"
 
-#: ../src/xfdesktop-file-icon-manager.c:2222
+#: ../src/xfdesktop-file-icon-manager.c:2271
 msgid "E_ject Volume"
 msgstr "_Vysunout médium"
 
-#: ../src/xfdesktop-file-icon-manager.c:2232
-msgid "_Copy Files"
-msgstr "_Kopírovat soubory"
-
-#: ../src/xfdesktop-file-icon-manager.c:2233
-msgid "_Copy File"
-msgstr "_Kopírovat soubor"
-
-#: ../src/xfdesktop-file-icon-manager.c:2242
-msgid "Cu_t Files"
-msgstr "Vyj_mout soubory"
-
-#: ../src/xfdesktop-file-icon-manager.c:2243
-msgid "Cu_t File"
-msgstr "Vyjmou_t soubor"
-
-#: ../src/xfdesktop-file-icon-manager.c:2252
-msgid "_Delete Files"
-msgstr "_Smazat soubory"
-
-#: ../src/xfdesktop-file-icon-manager.c:2253
-msgid "_Delete File"
-msgstr "_Smazat soubor"
-
-#: ../src/xfdesktop-file-icon-manager.c:2265
+#: ../src/xfdesktop-file-icon-manager.c:2302
 msgid "_Rename..."
 msgstr "Přej_menovat..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2283
+#: ../src/xfdesktop-file-icon-manager.c:2320
 msgid "_Properties..."
 msgstr "_Vlastnosti..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2299
+#: ../src/xfdesktop-file-icon-manager.c:2336
 #, fuzzy
 msgid "Des_ktop"
 msgstr "Plocha"
 
-#: ../src/xfdesktop-file-icon-manager.c:2318
+#: ../src/xfdesktop-file-icon-manager.c:2355
 #, fuzzy
 msgid "Create _Launcher..."
 msgstr "Spouštěč"
 
-#: ../src/xfdesktop-file-icon-manager.c:2339
+#: ../src/xfdesktop-file-icon-manager.c:2376
 msgid "Create _URL Link..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2356
+#: ../src/xfdesktop-file-icon-manager.c:2393
 #, fuzzy
 msgid "Create _Folder..."
 msgstr "Vytvořit nový adresář"
 
-#: ../src/xfdesktop-file-icon-manager.c:2399
+#: ../src/xfdesktop-file-icon-manager.c:2436
 msgid "_Empty File"
 msgstr "_Prázdný soubor"
 
-#: ../src/xfdesktop-file-icon-manager.c:2413
+#: ../src/xfdesktop-file-icon-manager.c:2477
 #, fuzzy
-msgid "_Paste Files"
-msgstr "Seznam souborů"
+msgid "Desktop _Settings..."
+msgstr "Nastavení plochy"
 
-#: ../src/xfdesktop-file-icon-manager.c:3364 ../src/xfdesktop-file-icon.c:569
+#: ../src/xfdesktop-file-icon-manager.c:2486
+#, fuzzy
+msgid "_Desktop Properties..."
+msgstr "_Vlastnosti..."
+
+#: ../src/xfdesktop-file-icon-manager.c:3449 ../src/xfdesktop-file-icon.c:569
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Spuštění \"%s\" selhalo:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3366 ../src/xfdesktop-file-icon.c:571
+#: ../src/xfdesktop-file-icon-manager.c:3451 ../src/xfdesktop-file-icon.c:571
 msgid "Run Error"
 msgstr "Chyba při běhu"
 
@@ -1358,6 +1341,28 @@ msgstr "Nastavení správce prostředí Xfce4"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Nastavení plochy prostředí Xfce4"
+
+#~ msgid "_Copy Files"
+#~ msgstr "_Kopírovat soubory"
+
+#~ msgid "_Copy File"
+#~ msgstr "_Kopírovat soubor"
+
+#~ msgid "Cu_t Files"
+#~ msgstr "Vyj_mout soubory"
+
+#~ msgid "Cu_t File"
+#~ msgstr "Vyjmou_t soubor"
+
+#~ msgid "_Delete Files"
+#~ msgstr "_Smazat soubory"
+
+#~ msgid "_Delete File"
+#~ msgstr "_Smazat soubor"
+
+#, fuzzy
+#~ msgid "_Paste Files"
+#~ msgstr "Seznam souborů"
 
 #~ msgid "broken link"
 #~ msgstr "neplatný odkaz"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-12 17:01-0700\n"
+"POT-Creation-Date: 2006-07-12 20:47-0700\n"
 "PO-Revision-Date: 2006-05-22 23:43+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: librezale <librezale@librezale.org>\n"
@@ -56,7 +56,7 @@ msgstr "Irten"
 #: ../menueditor/menueditor-add-dialog.c:147
 #: ../menueditor/menueditor-edit-dialog.c:122
 #: ../menueditor/menueditor-edit-dialog.c:123
-#: ../src/xfdesktop-file-icon-manager.c:1073
+#: ../src/xfdesktop-file-icon-manager.c:1067
 msgid "Name:"
 msgstr "Izena:"
 
@@ -238,7 +238,7 @@ msgid "Create a new empty menu"
 msgstr "Xfce4 menu fitxategi berri bat sortu"
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:2018
+#: ../src/xfdesktop-file-icon-manager.c:2068
 msgid "_Open"
 msgstr "_Ireki"
 
@@ -410,7 +410,7 @@ msgstr "Fitxatgia itxi aurretik grabatu nahi al duzu?"
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:645
+#: ../src/xfdesktop-file-icon-manager.c:646
 msgid "Question"
 msgstr "Galdera"
 
@@ -827,7 +827,7 @@ msgid "Desktop Icons"
 msgstr "Idazmahai Ikonoak"
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1019
 msgid "None"
 msgstr "Batez"
 
@@ -937,20 +937,20 @@ msgstr "_Ezabatu '%s' Idazmahi Birtuala"
 msgid "Desktop"
 msgstr "Idazmahaia"
 
-#: ../src/xfdesktop-file-icon-manager.c:233
+#: ../src/xfdesktop-file-icon-manager.c:234
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
 "Xfdesktop ez da idazmahai elmentuak gordetzeko \"%s\" karpeta sortzeko gai."
 
-#: ../src/xfdesktop-file-icon-manager.c:235
-#: ../src/xfdesktop-file-icon-manager.c:244
-#: ../src/xfdesktop-file-icon-manager.c:1554
+#: ../src/xfdesktop-file-icon-manager.c:236
+#: ../src/xfdesktop-file-icon-manager.c:245
+#: ../src/xfdesktop-file-icon-manager.c:1571
 msgid "Create Folder Failed"
 msgstr "Huts Karpeta Sortzean"
 
-#: ../src/xfdesktop-file-icon-manager.c:242
+#: ../src/xfdesktop-file-icon-manager.c:243
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
@@ -959,79 +959,81 @@ msgstr ""
 "Xfdesktop ez da \"%s\" idazmahai elementuak gordetzeko erabiltzeko gai ez "
 "bait da karpeta bat."
 
-#: ../src/xfdesktop-file-icon-manager.c:246
+#: ../src/xfdesktop-file-icon-manager.c:247
 msgid "Please delete or rename the file."
 msgstr "Mesedez fitxategia ezabatu edo berrizendatu."
 
-#: ../src/xfdesktop-file-icon-manager.c:371
-#: ../src/xfdesktop-file-icon-manager.c:884
+#: ../src/xfdesktop-file-icon-manager.c:372
+#: ../src/xfdesktop-file-icon-manager.c:885
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "Ezin da \"%s\" muntatu:"
 
-#: ../src/xfdesktop-file-icon-manager.c:373
-#: ../src/xfdesktop-file-icon-manager.c:888
+#: ../src/xfdesktop-file-icon-manager.c:374
+#: ../src/xfdesktop-file-icon-manager.c:889
 msgid "Mount Failed"
 msgstr "Huts Muntatzerakoan"
 
-#: ../src/xfdesktop-file-icon-manager.c:375
+#: ../src/xfdesktop-file-icon-manager.c:376
 msgid "Unknown error."
 msgstr "Errore ezezaguna."
 
-#: ../src/xfdesktop-file-icon-manager.c:436
-#: ../src/xfdesktop-file-icon-manager.c:767
-#: ../src/xfdesktop-file-icon-manager.c:801
+#: ../src/xfdesktop-file-icon-manager.c:437
+#: ../src/xfdesktop-file-icon-manager.c:768
+#: ../src/xfdesktop-file-icon-manager.c:802
+#: ../src/xfdesktop-file-icon-manager.c:2004
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Ezin da \"%s\" abiarazi:"
 
-#: ../src/xfdesktop-file-icon-manager.c:438
-#: ../src/xfdesktop-file-icon-manager.c:769
-#: ../src/xfdesktop-file-icon-manager.c:804
-#: ../src/xfdesktop-file-icon-manager.c:1588
+#: ../src/xfdesktop-file-icon-manager.c:439
+#: ../src/xfdesktop-file-icon-manager.c:770
+#: ../src/xfdesktop-file-icon-manager.c:805
+#: ../src/xfdesktop-file-icon-manager.c:1605
+#: ../src/xfdesktop-file-icon-manager.c:2006
 msgid "Launch Error"
 msgstr "Errorea Abiaraztean"
 
-#: ../src/xfdesktop-file-icon-manager.c:440
+#: ../src/xfdesktop-file-icon-manager.c:441
 msgid "The associated application could not be found or executed."
 msgstr "Loturiko aplikazioa ezin da aurkitu edo abiarazi."
 
-#: ../src/xfdesktop-file-icon-manager.c:567
+#: ../src/xfdesktop-file-icon-manager.c:568
 #, c-format
 msgid "Rename \"%s\""
 msgstr "\"%s\" berrizendatu"
 
-#: ../src/xfdesktop-file-icon-manager.c:574
-#: ../src/xfdesktop-file-icon-manager.c:1626
-#: ../src/xfdesktop-file-icon-manager.c:1717
-#: ../src/xfdesktop-file-icon-manager.c:1728
+#: ../src/xfdesktop-file-icon-manager.c:575
+#: ../src/xfdesktop-file-icon-manager.c:1643
+#: ../src/xfdesktop-file-icon-manager.c:1734
+#: ../src/xfdesktop-file-icon-manager.c:1745
 msgid "Enter the new name:"
 msgstr "Izen berria idatzi:"
 
-#: ../src/xfdesktop-file-icon-manager.c:576
+#: ../src/xfdesktop-file-icon-manager.c:577
 msgid "Rename"
 msgstr "Berrizendatu"
 
-#: ../src/xfdesktop-file-icon-manager.c:642
+#: ../src/xfdesktop-file-icon-manager.c:643
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Ziur al zaude \"%s\" ezabatu nahi duzula?"
 
-#: ../src/xfdesktop-file-icon-manager.c:647
-#: ../src/xfdesktop-file-icon-manager.c:667
+#: ../src/xfdesktop-file-icon-manager.c:648
+#: ../src/xfdesktop-file-icon-manager.c:668
 msgid "If you delete a file, it is permanently lost."
 msgstr "Fitxategi bat ezabatu ezkero, betirako galduko da."
 
-#: ../src/xfdesktop-file-icon-manager.c:661
+#: ../src/xfdesktop-file-icon-manager.c:662
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Ziur al zaude %d fitxategi hauek ezabatu nahi dituzula?"
 
-#: ../src/xfdesktop-file-icon-manager.c:664
+#: ../src/xfdesktop-file-icon-manager.c:665
 msgid "Delete Multiple Files"
 msgstr "Fitxategi Anitz Ezabatu"
 
-#: ../src/xfdesktop-file-icon-manager.c:806
+#: ../src/xfdesktop-file-icon-manager.c:807
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -1039,128 +1041,128 @@ msgstr ""
 "Ezaugarri honek fitxategi kudeaketa zerbitzu bat instaturik egotea behar du "
 "(Thunar-ek duena bezalakoa)"
 
-#: ../src/xfdesktop-file-icon-manager.c:885
+#: ../src/xfdesktop-file-icon-manager.c:886
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "Ezin da \"%s\" desmuntatu:"
 
-#: ../src/xfdesktop-file-icon-manager.c:888
+#: ../src/xfdesktop-file-icon-manager.c:889
 msgid "Unmount Failed"
 msgstr "Huts Desmuntatzerakoan"
 
-#: ../src/xfdesktop-file-icon-manager.c:917
+#: ../src/xfdesktop-file-icon-manager.c:918
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "Ezin da \"%s\" atera:"
 
-#: ../src/xfdesktop-file-icon-manager.c:919
+#: ../src/xfdesktop-file-icon-manager.c:920
 msgid "Eject Failed"
 msgstr "Huts Ateratzerakoan"
 
-#: ../src/xfdesktop-file-icon-manager.c:988
+#: ../src/xfdesktop-file-icon-manager.c:989
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr "Ezin da \"%s\"-ren lehenetsiriko aplikazio bezala \"%s\" ezarri:"
 
-#: ../src/xfdesktop-file-icon-manager.c:991
+#: ../src/xfdesktop-file-icon-manager.c:992
 msgid "Properties Error"
 msgstr "Propietatea Errorea"
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1019
 msgid "Write only"
 msgstr "IDazketa bakarrik"
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1019
 msgid "Read only"
 msgstr "Irakurketa bakarrik"
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1019
 msgid "Read & Write"
 msgstr "Irakurri eta Idatzi"
 
-#: ../src/xfdesktop-file-icon-manager.c:1048
+#: ../src/xfdesktop-file-icon-manager.c:1042
 msgid "General"
 msgstr "Orokorra"
 
-#: ../src/xfdesktop-file-icon-manager.c:1099
+#: ../src/xfdesktop-file-icon-manager.c:1093
 msgid "Kind:"
 msgstr "Mota:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1119
+#: ../src/xfdesktop-file-icon-manager.c:1113
 msgid "Link Target:"
 msgstr "Lotura Helburua:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1136
-#: ../src/xfdesktop-file-icon-manager.c:1295
+#: ../src/xfdesktop-file-icon-manager.c:1130
+#: ../src/xfdesktop-file-icon-manager.c:1289
 msgid "(unknown)"
 msgstr "(ezezaguna)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1158
+#: ../src/xfdesktop-file-icon-manager.c:1152
 msgid "Open With:"
 msgstr "Honekin Ireki:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1235
+#: ../src/xfdesktop-file-icon-manager.c:1229
 msgid "Modified:"
 msgstr "Aldaketa:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1253
+#: ../src/xfdesktop-file-icon-manager.c:1247
 msgid "Accessed:"
 msgstr "Irakurketa:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1280
+#: ../src/xfdesktop-file-icon-manager.c:1274
 msgid "Free Space:"
 msgstr "LEku Librea:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1282
+#: ../src/xfdesktop-file-icon-manager.c:1276
 msgid "Size:"
 msgstr "Tamaina:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1298 ../src/xfdesktop-file-icon.c:676
+#: ../src/xfdesktop-file-icon-manager.c:1292 ../src/xfdesktop-file-icon.c:676
 msgid "%s (%"
 msgstr "%s (%"
 
-#: ../src/xfdesktop-file-icon-manager.c:1298 ../src/xfdesktop-file-icon.c:676
+#: ../src/xfdesktop-file-icon-manager.c:1292 ../src/xfdesktop-file-icon.c:676
 msgid " Bytes)"
 msgstr " Byte)"
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1313
+#: ../src/xfdesktop-file-icon-manager.c:1307
 msgid "Permissions"
 msgstr "Baimenak"
 
-#: ../src/xfdesktop-file-icon-manager.c:1335
+#: ../src/xfdesktop-file-icon-manager.c:1329
 msgid "Owner:"
 msgstr "Jabea:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1353
-#: ../src/xfdesktop-file-icon-manager.c:1391
+#: ../src/xfdesktop-file-icon-manager.c:1347
+#: ../src/xfdesktop-file-icon-manager.c:1385
 msgid "Access:"
 msgstr "Sarrera:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1376
+#: ../src/xfdesktop-file-icon-manager.c:1370
 msgid "Group:"
 msgstr "Taldea;"
 
-#: ../src/xfdesktop-file-icon-manager.c:1414
+#: ../src/xfdesktop-file-icon-manager.c:1408
 msgid "Others:"
 msgstr "Besteak:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1487
+#: ../src/xfdesktop-file-icon-manager.c:1504
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "\"%s\"-(re)kin _Ireki"
 
-#: ../src/xfdesktop-file-icon-manager.c:1490
+#: ../src/xfdesktop-file-icon-manager.c:1507
 #, c-format
 msgid "Open With \"%s\""
 msgstr "\"%s\"-(re)kin Ireki"
 
-#: ../src/xfdesktop-file-icon-manager.c:1551
+#: ../src/xfdesktop-file-icon-manager.c:1568
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Ezin da \"%s\" izeneko karpeta bat sortu:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1590
+#: ../src/xfdesktop-file-icon-manager.c:1607
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -1168,150 +1170,131 @@ msgstr ""
 "Ezin da \"exo-desktop-item-edit\" abiarazi zein beharrezkoa da abiarazleak "
 "eta idazmahai loturak sortu eta ediatzteko."
 
-#: ../src/xfdesktop-file-icon-manager.c:1623
+#: ../src/xfdesktop-file-icon-manager.c:1640
 msgid "Create New Folder"
 msgstr "Karpeta Berria Sortu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1627
+#: ../src/xfdesktop-file-icon-manager.c:1644
 msgid "New Folder"
 msgstr "Karpeta Berria"
 
-#: ../src/xfdesktop-file-icon-manager.c:1628
-#: ../src/xfdesktop-file-icon-manager.c:1719
-#: ../src/xfdesktop-file-icon-manager.c:1730
+#: ../src/xfdesktop-file-icon-manager.c:1645
+#: ../src/xfdesktop-file-icon-manager.c:1736
+#: ../src/xfdesktop-file-icon-manager.c:1747
 msgid "Create"
 msgstr "Sortu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1664
+#: ../src/xfdesktop-file-icon-manager.c:1681
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Ezin da \"%s\" izeneko fitxategi bat sortu:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1684
 msgid "Create File Failed"
 msgstr "Huts Fitxategia Sortzerakoan"
 
-#: ../src/xfdesktop-file-icon-manager.c:1706
+#: ../src/xfdesktop-file-icon-manager.c:1723
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Sortu dokumentua \"%s\" txantilloietik"
 
-#: ../src/xfdesktop-file-icon-manager.c:1725
+#: ../src/xfdesktop-file-icon-manager.c:1742
 msgid "Create Empty File"
 msgstr "Fitxategi Huts Bat Sortu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1729
+#: ../src/xfdesktop-file-icon-manager.c:1746
 msgid "New Empty File"
 msgstr "Fitxategi Huts Berria"
 
-#: ../src/xfdesktop-file-icon-manager.c:1762
+#: ../src/xfdesktop-file-icon-manager.c:1779
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "Ezin da \"%s\" izeneko fitxategi bat sortu:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1763
+#: ../src/xfdesktop-file-icon-manager.c:1780
 msgid "Create Error"
 msgstr "Sorzte Errorea"
 
-#: ../src/xfdesktop-file-icon-manager.c:2003
+#: ../src/xfdesktop-file-icon-manager.c:2053
 msgid "_Open all"
 msgstr "_Ireki dena"
 
-#: ../src/xfdesktop-file-icon-manager.c:2035
+#: ../src/xfdesktop-file-icon-manager.c:2085
 msgid "_Execute"
 msgstr "_Abiarazi"
 
-#: ../src/xfdesktop-file-icon-manager.c:2052
+#: ../src/xfdesktop-file-icon-manager.c:2102
 msgid "_Edit Launcher"
 msgstr "_Editatu Abiarazlea"
 
-#: ../src/xfdesktop-file-icon-manager.c:2092
+#: ../src/xfdesktop-file-icon-manager.c:2142
 msgid "Open With"
 msgstr "Honekin Ireki"
 
-#: ../src/xfdesktop-file-icon-manager.c:2122
+#: ../src/xfdesktop-file-icon-manager.c:2172
 msgid "Open With Other _Application..."
 msgstr "Beste _Aplikazio Batekin Ireki..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2197
+#: ../src/xfdesktop-file-icon-manager.c:2246
 msgid "_Mount Volume"
 msgstr "Bolumena _Muntatu"
 
-#: ../src/xfdesktop-file-icon-manager.c:2208
+#: ../src/xfdesktop-file-icon-manager.c:2257
 msgid "_Unmount Volume"
 msgstr "Bolumena _Desmuntatu"
 
-#: ../src/xfdesktop-file-icon-manager.c:2222
+#: ../src/xfdesktop-file-icon-manager.c:2271
 msgid "E_ject Volume"
 msgstr "Bolumena _Atera"
 
-#: ../src/xfdesktop-file-icon-manager.c:2232
-msgid "_Copy Files"
-msgstr "Fitxategiak _Kopiatu"
-
-#: ../src/xfdesktop-file-icon-manager.c:2233
-msgid "_Copy File"
-msgstr "Fitxategia _Kopiatu"
-
-#: ../src/xfdesktop-file-icon-manager.c:2242
-msgid "Cu_t Files"
-msgstr "Fitxategiak Moz_tu"
-
-#: ../src/xfdesktop-file-icon-manager.c:2243
-msgid "Cu_t File"
-msgstr "Fitxategia Moz_tu"
-
-#: ../src/xfdesktop-file-icon-manager.c:2252
-msgid "_Delete Files"
-msgstr "Fitxategiak _Ezabatu"
-
-#: ../src/xfdesktop-file-icon-manager.c:2253
-msgid "_Delete File"
-msgstr "Fitxategia _Ezabatu"
-
-#: ../src/xfdesktop-file-icon-manager.c:2265
+#: ../src/xfdesktop-file-icon-manager.c:2302
 msgid "_Rename..."
 msgstr "Be_rrizendatu..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2283
+#: ../src/xfdesktop-file-icon-manager.c:2320
 msgid "_Properties..."
 msgstr "_Propietateak..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2299
+#: ../src/xfdesktop-file-icon-manager.c:2336
 #, fuzzy
 msgid "Des_ktop"
 msgstr "Idazmahaia"
 
-#: ../src/xfdesktop-file-icon-manager.c:2318
+#: ../src/xfdesktop-file-icon-manager.c:2355
 #, fuzzy
 msgid "Create _Launcher..."
 msgstr "_Abiarazlea..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2339
+#: ../src/xfdesktop-file-icon-manager.c:2376
 #, fuzzy
 msgid "Create _URL Link..."
 msgstr "_URL Lotura..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2356
+#: ../src/xfdesktop-file-icon-manager.c:2393
 #, fuzzy
 msgid "Create _Folder..."
 msgstr "Karpeta Berria Sortu"
 
-#: ../src/xfdesktop-file-icon-manager.c:2399
+#: ../src/xfdesktop-file-icon-manager.c:2436
 msgid "_Empty File"
 msgstr "Fitxategi _Hutsa"
 
-#: ../src/xfdesktop-file-icon-manager.c:2413
+#: ../src/xfdesktop-file-icon-manager.c:2477
 #, fuzzy
-msgid "_Paste Files"
-msgstr "Zerrenda fitxategia"
+msgid "Desktop _Settings..."
+msgstr "Mahaigain birtualen ezarpenak"
 
-#: ../src/xfdesktop-file-icon-manager.c:3364 ../src/xfdesktop-file-icon.c:569
+#: ../src/xfdesktop-file-icon-manager.c:2486
+#, fuzzy
+msgid "_Desktop Properties..."
+msgstr "_Propietateak..."
+
+#: ../src/xfdesktop-file-icon-manager.c:3449 ../src/xfdesktop-file-icon.c:569
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Huts \"%s\"-abiarazterakoan:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3366 ../src/xfdesktop-file-icon.c:571
+#: ../src/xfdesktop-file-icon-manager.c:3451 ../src/xfdesktop-file-icon.c:571
 msgid "Run Error"
 msgstr "Errorea Abiaraztean"
 
@@ -1355,6 +1338,28 @@ msgstr "Xfce 4 Idazmahai kudeatzaile ezarpenak"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 Idazmahai Ezarpenak"
+
+#~ msgid "_Copy Files"
+#~ msgstr "Fitxategiak _Kopiatu"
+
+#~ msgid "_Copy File"
+#~ msgstr "Fitxategia _Kopiatu"
+
+#~ msgid "Cu_t Files"
+#~ msgstr "Fitxategiak Moz_tu"
+
+#~ msgid "Cu_t File"
+#~ msgstr "Fitxategia Moz_tu"
+
+#~ msgid "_Delete Files"
+#~ msgstr "Fitxategiak _Ezabatu"
+
+#~ msgid "_Delete File"
+#~ msgstr "Fitxategia _Ezabatu"
+
+#, fuzzy
+#~ msgid "_Paste Files"
+#~ msgstr "Zerrenda fitxategia"
 
 #~ msgid "Core developer"
 #~ msgstr "Muin garatzailea"

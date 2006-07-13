@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-12 17:01-0700\n"
+"POT-Creation-Date: 2006-07-12 20:47-0700\n"
 "PO-Revision-Date: 2005-10-09 22:24+0900\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -53,7 +53,7 @@ msgstr ""
 #: ../menueditor/menueditor-add-dialog.c:147
 #: ../menueditor/menueditor-edit-dialog.c:122
 #: ../menueditor/menueditor-edit-dialog.c:123
-#: ../src/xfdesktop-file-icon-manager.c:1073
+#: ../src/xfdesktop-file-icon-manager.c:1067
 msgid "Name:"
 msgstr "பெயர்:"
 
@@ -233,7 +233,7 @@ msgid "Create a new empty menu"
 msgstr ""
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:2018
+#: ../src/xfdesktop-file-icon-manager.c:2068
 msgid "_Open"
 msgstr ""
 
@@ -386,7 +386,7 @@ msgstr ""
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:645
+#: ../src/xfdesktop-file-icon-manager.c:646
 msgid "Question"
 msgstr ""
 
@@ -815,7 +815,7 @@ msgid "Desktop Icons"
 msgstr "கனிமேசை"
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1019
 msgid "None"
 msgstr ""
 
@@ -928,384 +928,362 @@ msgstr "வேலை þடம் %d"
 msgid "Desktop"
 msgstr "கனிமேசை"
 
-#: ../src/xfdesktop-file-icon-manager.c:233
+#: ../src/xfdesktop-file-icon-manager.c:234
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:235
-#: ../src/xfdesktop-file-icon-manager.c:244
-#: ../src/xfdesktop-file-icon-manager.c:1554
+#: ../src/xfdesktop-file-icon-manager.c:236
+#: ../src/xfdesktop-file-icon-manager.c:245
+#: ../src/xfdesktop-file-icon-manager.c:1571
 msgid "Create Folder Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:242
+#: ../src/xfdesktop-file-icon-manager.c:243
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:246
+#: ../src/xfdesktop-file-icon-manager.c:247
 msgid "Please delete or rename the file."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:371
-#: ../src/xfdesktop-file-icon-manager.c:884
+#: ../src/xfdesktop-file-icon-manager.c:372
+#: ../src/xfdesktop-file-icon-manager.c:885
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:373
-#: ../src/xfdesktop-file-icon-manager.c:888
+#: ../src/xfdesktop-file-icon-manager.c:374
+#: ../src/xfdesktop-file-icon-manager.c:889
 #, fuzzy
 msgid "Mount Failed"
 msgstr "ஓவியக் கோப்புகள்"
 
-#: ../src/xfdesktop-file-icon-manager.c:375
+#: ../src/xfdesktop-file-icon-manager.c:376
 msgid "Unknown error."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:436
-#: ../src/xfdesktop-file-icon-manager.c:767
-#: ../src/xfdesktop-file-icon-manager.c:801
+#: ../src/xfdesktop-file-icon-manager.c:437
+#: ../src/xfdesktop-file-icon-manager.c:768
+#: ../src/xfdesktop-file-icon-manager.c:802
+#: ../src/xfdesktop-file-icon-manager.c:2004
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:438
-#: ../src/xfdesktop-file-icon-manager.c:769
-#: ../src/xfdesktop-file-icon-manager.c:804
-#: ../src/xfdesktop-file-icon-manager.c:1588
+#: ../src/xfdesktop-file-icon-manager.c:439
+#: ../src/xfdesktop-file-icon-manager.c:770
+#: ../src/xfdesktop-file-icon-manager.c:805
+#: ../src/xfdesktop-file-icon-manager.c:1605
+#: ../src/xfdesktop-file-icon-manager.c:2006
 msgid "Launch Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:440
+#: ../src/xfdesktop-file-icon-manager.c:441
 msgid "The associated application could not be found or executed."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:567
+#: ../src/xfdesktop-file-icon-manager.c:568
 #, c-format
 msgid "Rename \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:574
-#: ../src/xfdesktop-file-icon-manager.c:1626
-#: ../src/xfdesktop-file-icon-manager.c:1717
-#: ../src/xfdesktop-file-icon-manager.c:1728
+#: ../src/xfdesktop-file-icon-manager.c:575
+#: ../src/xfdesktop-file-icon-manager.c:1643
+#: ../src/xfdesktop-file-icon-manager.c:1734
+#: ../src/xfdesktop-file-icon-manager.c:1745
 msgid "Enter the new name:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:576
+#: ../src/xfdesktop-file-icon-manager.c:577
 #, fuzzy
 msgid "Rename"
 msgstr "_முழுத் திரையிலும்"
 
-#: ../src/xfdesktop-file-icon-manager.c:642
+#: ../src/xfdesktop-file-icon-manager.c:643
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:647
-#: ../src/xfdesktop-file-icon-manager.c:667
+#: ../src/xfdesktop-file-icon-manager.c:648
+#: ../src/xfdesktop-file-icon-manager.c:668
 msgid "If you delete a file, it is permanently lost."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:661
+#: ../src/xfdesktop-file-icon-manager.c:662
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:664
+#: ../src/xfdesktop-file-icon-manager.c:665
 msgid "Delete Multiple Files"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:806
+#: ../src/xfdesktop-file-icon-manager.c:807
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:885
+#: ../src/xfdesktop-file-icon-manager.c:886
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:888
+#: ../src/xfdesktop-file-icon-manager.c:889
 #, fuzzy
 msgid "Unmount Failed"
 msgstr "ஓவியக் கோப்புகள்"
 
-#: ../src/xfdesktop-file-icon-manager.c:917
+#: ../src/xfdesktop-file-icon-manager.c:918
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:919
+#: ../src/xfdesktop-file-icon-manager.c:920
 msgid "Eject Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:988
+#: ../src/xfdesktop-file-icon-manager.c:989
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:991
+#: ../src/xfdesktop-file-icon-manager.c:992
 #, fuzzy
 msgid "Properties Error"
 msgstr "பின்னணி-ஓவியம் பட்டியல் தொகு"
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1019
 msgid "Write only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1019
 msgid "Read only"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1021
+#: ../src/xfdesktop-file-icon-manager.c:1019
 msgid "Read & Write"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1048
+#: ../src/xfdesktop-file-icon-manager.c:1042
 msgid "General"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1099
+#: ../src/xfdesktop-file-icon-manager.c:1093
 msgid "Kind:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1119
+#: ../src/xfdesktop-file-icon-manager.c:1113
 msgid "Link Target:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1136
-#: ../src/xfdesktop-file-icon-manager.c:1295
+#: ../src/xfdesktop-file-icon-manager.c:1130
+#: ../src/xfdesktop-file-icon-manager.c:1289
 msgid "(unknown)"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1158
+#: ../src/xfdesktop-file-icon-manager.c:1152
 msgid "Open With:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1235
+#: ../src/xfdesktop-file-icon-manager.c:1229
 msgid "Modified:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1253
+#: ../src/xfdesktop-file-icon-manager.c:1247
 msgid "Accessed:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1280
+#: ../src/xfdesktop-file-icon-manager.c:1274
 msgid "Free Space:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1282
+#: ../src/xfdesktop-file-icon-manager.c:1276
 msgid "Size:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1298 ../src/xfdesktop-file-icon.c:676
+#: ../src/xfdesktop-file-icon-manager.c:1292 ../src/xfdesktop-file-icon.c:676
 msgid "%s (%"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1298 ../src/xfdesktop-file-icon.c:676
+#: ../src/xfdesktop-file-icon-manager.c:1292 ../src/xfdesktop-file-icon.c:676
 msgid " Bytes)"
 msgstr ""
 
 #. permissions tab
-#: ../src/xfdesktop-file-icon-manager.c:1313
+#: ../src/xfdesktop-file-icon-manager.c:1307
 msgid "Permissions"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1335
+#: ../src/xfdesktop-file-icon-manager.c:1329
 msgid "Owner:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1353
-#: ../src/xfdesktop-file-icon-manager.c:1391
+#: ../src/xfdesktop-file-icon-manager.c:1347
+#: ../src/xfdesktop-file-icon-manager.c:1385
 msgid "Access:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1376
+#: ../src/xfdesktop-file-icon-manager.c:1370
 msgid "Group:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1414
+#: ../src/xfdesktop-file-icon-manager.c:1408
 msgid "Others:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1487
+#: ../src/xfdesktop-file-icon-manager.c:1504
 #, c-format
 msgid "_Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1490
+#: ../src/xfdesktop-file-icon-manager.c:1507
 #, c-format
 msgid "Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1551
+#: ../src/xfdesktop-file-icon-manager.c:1568
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1590
+#: ../src/xfdesktop-file-icon-manager.c:1607
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1623
+#: ../src/xfdesktop-file-icon-manager.c:1640
 msgid "Create New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1627
+#: ../src/xfdesktop-file-icon-manager.c:1644
 msgid "New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1628
-#: ../src/xfdesktop-file-icon-manager.c:1719
-#: ../src/xfdesktop-file-icon-manager.c:1730
+#: ../src/xfdesktop-file-icon-manager.c:1645
+#: ../src/xfdesktop-file-icon-manager.c:1736
+#: ../src/xfdesktop-file-icon-manager.c:1747
 msgid "Create"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1664
+#: ../src/xfdesktop-file-icon-manager.c:1681
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1684
 msgid "Create File Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1706
+#: ../src/xfdesktop-file-icon-manager.c:1723
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1725
+#: ../src/xfdesktop-file-icon-manager.c:1742
 msgid "Create Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1729
+#: ../src/xfdesktop-file-icon-manager.c:1746
 msgid "New Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1762
+#: ../src/xfdesktop-file-icon-manager.c:1779
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1763
+#: ../src/xfdesktop-file-icon-manager.c:1780
 #, fuzzy
 msgid "Create Error"
 msgstr "பின்னணி-ஓவியம் பட்டியல் தொகு"
 
-#: ../src/xfdesktop-file-icon-manager.c:2003
+#: ../src/xfdesktop-file-icon-manager.c:2053
 msgid "_Open all"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2035
+#: ../src/xfdesktop-file-icon-manager.c:2085
 msgid "_Execute"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2052
+#: ../src/xfdesktop-file-icon-manager.c:2102
 msgid "_Edit Launcher"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2092
+#: ../src/xfdesktop-file-icon-manager.c:2142
 msgid "Open With"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2122
+#: ../src/xfdesktop-file-icon-manager.c:2172
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2197
+#: ../src/xfdesktop-file-icon-manager.c:2246
 msgid "_Mount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2208
+#: ../src/xfdesktop-file-icon-manager.c:2257
 msgid "_Unmount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2222
+#: ../src/xfdesktop-file-icon-manager.c:2271
 msgid "E_ject Volume"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2232
-#, fuzzy
-msgid "_Copy Files"
-msgstr "கோப்பு:"
-
-#: ../src/xfdesktop-file-icon-manager.c:2233
-#, fuzzy
-msgid "_Copy File"
-msgstr "கோப்பு:"
-
-#: ../src/xfdesktop-file-icon-manager.c:2242
-#, fuzzy
-msgid "Cu_t Files"
-msgstr "கோப்பு:"
-
-#: ../src/xfdesktop-file-icon-manager.c:2243
-#, fuzzy
-msgid "Cu_t File"
-msgstr "கோப்பு:"
-
-#: ../src/xfdesktop-file-icon-manager.c:2252
-#, fuzzy
-msgid "_Delete Files"
-msgstr "கோப்பு:"
-
-#: ../src/xfdesktop-file-icon-manager.c:2253
-msgid "_Delete File"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:2265
+#: ../src/xfdesktop-file-icon-manager.c:2302
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2283
+#: ../src/xfdesktop-file-icon-manager.c:2320
 #, fuzzy
 msgid "_Properties..."
 msgstr "பின்னணி-ஓவியம் பட்டியல் தொகு"
 
-#: ../src/xfdesktop-file-icon-manager.c:2299
+#: ../src/xfdesktop-file-icon-manager.c:2336
 #, fuzzy
 msgid "Des_ktop"
 msgstr "கனிமேசை"
 
-#: ../src/xfdesktop-file-icon-manager.c:2318
+#: ../src/xfdesktop-file-icon-manager.c:2355
 msgid "Create _Launcher..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2339
+#: ../src/xfdesktop-file-icon-manager.c:2376
 msgid "Create _URL Link..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2356
+#: ../src/xfdesktop-file-icon-manager.c:2393
 #, fuzzy
 msgid "Create _Folder..."
 msgstr "பின்னணி-ஓவியம் பட்டியல் தொகு"
 
-#: ../src/xfdesktop-file-icon-manager.c:2399
+#: ../src/xfdesktop-file-icon-manager.c:2436
 #, fuzzy
 msgid "_Empty File"
 msgstr "கோப்பு:"
 
-#: ../src/xfdesktop-file-icon-manager.c:2413
+#: ../src/xfdesktop-file-icon-manager.c:2477
 #, fuzzy
-msgid "_Paste Files"
-msgstr "பட்டியல் கோப்பு"
+msgid "Desktop _Settings..."
+msgstr "வேலை þடங்கள் அமைப்புகள்"
 
-#: ../src/xfdesktop-file-icon-manager.c:3364 ../src/xfdesktop-file-icon.c:569
+#: ../src/xfdesktop-file-icon-manager.c:2486
+#, fuzzy
+msgid "_Desktop Properties..."
+msgstr "பின்னணி-ஓவியம் பட்டியல் தொகு"
+
+#: ../src/xfdesktop-file-icon-manager.c:3449 ../src/xfdesktop-file-icon.c:569
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:3366 ../src/xfdesktop-file-icon.c:571
+#: ../src/xfdesktop-file-icon-manager.c:3451 ../src/xfdesktop-file-icon.c:571
 msgid "Run Error"
 msgstr ""
 
@@ -1351,6 +1329,30 @@ msgstr ""
 #, fuzzy
 msgid "Xfce 4 Desktop Settings"
 msgstr "வேலை þடங்கள் அமைப்புகள்"
+
+#, fuzzy
+#~ msgid "_Copy Files"
+#~ msgstr "கோப்பு:"
+
+#, fuzzy
+#~ msgid "_Copy File"
+#~ msgstr "கோப்பு:"
+
+#, fuzzy
+#~ msgid "Cu_t Files"
+#~ msgstr "கோப்பு:"
+
+#, fuzzy
+#~ msgid "Cu_t File"
+#~ msgstr "கோப்பு:"
+
+#, fuzzy
+#~ msgid "_Delete Files"
+#~ msgstr "கோப்பு:"
+
+#, fuzzy
+#~ msgid "_Paste Files"
+#~ msgstr "பட்டியல் கோப்பு"
 
 #, fuzzy
 #~ msgid "Edit"
