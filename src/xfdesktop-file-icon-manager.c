@@ -126,6 +126,7 @@ struct _XfdesktopFileIconManagerPrivate
     GdkScreen *gscreen;
     
     ThunarVfsPath *folder;
+    XfdesktopFileIcon *desktop_icon;
     ThunarVfsMonitor *monitor;
     ThunarVfsMonitorHandle *handle;
     ThunarVfsJob *list_job;
@@ -146,7 +147,6 @@ struct _XfdesktopFileIconManagerPrivate
 #ifdef HAVE_THUNARX
     GList *thunarx_menu_providers;
     GList *thunarx_properties_providers;
-    XfdesktopFileIcon *desktop_icon;
 #endif
 };
 
@@ -3101,9 +3101,9 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
                                       XfdesktopIconView *icon_view)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
+    ThunarVfsInfo *desktop_info;
 #ifdef HAVE_THUNARX
     ThunarxProviderFactory *thunarx_pfac;
-    ThunarVfsInfo *desktop_info;
 #endif
     
     g_return_val_if_fail(!fmanager->priv->inited, FALSE);
@@ -3173,15 +3173,16 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
         thunarx_provider_factory_list_providers(thunarx_pfac,
                                                 THUNARX_TYPE_PROPERTY_PAGE_PROVIDER);
     
-    g_object_unref(G_OBJECT(thunarx_pfac));
+    g_object_unref(G_OBJECT(thunarx_pfac));    
+#endif
     
-    /* keep around a dummy icon for the desktop folder for use with thunarx */
+    /* keep around a dummy icon for the desktop folder for use with thunarx
+     * and the properties dialog */
     desktop_info = thunar_vfs_info_new_for_path(fmanager->priv->folder, NULL);
     fmanager->priv->desktop_icon = xfdesktop_file_icon_new(desktop_info,
                                                            fmanager->priv->gscreen);
     thunar_vfs_info_unref(desktop_info);
-#endif
-    
+
     fmanager->priv->inited = TRUE;
     
     return TRUE;
@@ -3228,10 +3229,10 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
     g_object_unref(G_OBJECT(fmanager->priv->monitor));
     fmanager->priv->monitor = NULL;
     
-#ifdef HAVE_THUNARX
     g_object_unref(G_OBJECT(fmanager->priv->desktop_icon));
     fmanager->priv->desktop_icon = NULL;
     
+#ifdef HAVE_THUNARX
     g_list_foreach(fmanager->priv->thunarx_menu_providers,
                    (GFunc)g_object_unref, NULL);
     g_list_free(fmanager->priv->thunarx_menu_providers);
