@@ -223,6 +223,8 @@ set_imgfile_root_property(XfceDesktop *desktop, const gchar *filename,
 {
     gchar property_name[128];
     
+    gdk_error_trap_push();
+    
     g_snprintf(property_name, 128, XFDESKTOP_IMAGE_FILE_FMT, monitor);
     if(filename) {
         gdk_property_change(gdk_screen_get_root_window(desktop->priv->gscreen),
@@ -234,95 +236,16 @@ set_imgfile_root_property(XfceDesktop *desktop, const gchar *filename,
         gdk_property_delete(gdk_screen_get_root_window(desktop->priv->gscreen),
                             gdk_atom_intern(property_name, FALSE));
     }
+    
+    gdk_error_trap_pop();
 }
 
 static void
-backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
+set_real_root_window_pixmap(GdkScreen *gscreen,
+                            GdkPixmap *pmap)
 {
-    XfceDesktop *desktop = XFCE_DESKTOP(user_data);
-    GdkPixbuf *pix;
-    GdkPixmap *pmap = NULL;
-    GdkColormap *cmap;
-    GdkScreen *gscreen;
-    GdkRectangle rect;
-    Pixmap xid;
+    Window xid;
     GdkWindow *groot;
-    gint i, monitor = -1;
-    
-    TRACE("entering");
-    
-    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-    
-    if(desktop->priv->updates_frozen || !GTK_WIDGET_REALIZED(GTK_WIDGET(desktop)))
-        return;
-    
-    TRACE("really entering");
-    
-    gscreen = desktop->priv->gscreen;
-    cmap = gdk_drawable_get_colormap(GDK_DRAWABLE(GTK_WIDGET(desktop)->window));
-    
-    for(i = 0; i < XFCE_DESKTOP(desktop)->priv->nbackdrops; i++) {
-        if(backdrop == XFCE_DESKTOP(desktop)->priv->backdrops[i]) {
-            monitor = i;
-            break;
-        }
-    }
-    if(monitor == -1)
-        return;
-    
-    /* create/get the composited backdrop pixmap */
-    pix = xfce_backdrop_get_pixbuf(backdrop);
-    if(!pix)
-        return;
-    
-    if(desktop->priv->nbackdrops == 1) {    
-        /* optimised for single monitor: just dump the pixbuf into a pixmap */
-        gdk_pixbuf_render_pixmap_and_mask_for_colormap(pix, cmap, &pmap, NULL, 0);
-        g_object_unref(G_OBJECT(pix));
-        if(!pmap)
-            return;
-        rect.x = rect.y = 0;
-        rect.width = gdk_screen_get_width(gscreen);
-        rect.height = gdk_screen_get_height(gscreen);
-    } else {
-        /* multiple monitors (xinerama): download the current backdrop, paint
-         * over the correct area, and upload it back.  this is slow, but
-         * probably still faster than redoing the whole thing. */
-        GdkPixmap *cur_pmap = NULL;
-        GdkPixbuf *cur_pbuf = NULL;
-        gint swidth, sheight;
-        
-        swidth = gdk_screen_get_width(gscreen);
-        sheight = gdk_screen_get_height(gscreen);
-        
-        cur_pmap = desktop->priv->bg_pixmap;
-        if(cur_pmap) {
-            gint pw, ph;
-            gdk_drawable_get_size(GDK_DRAWABLE(cur_pmap), &pw, &ph);
-            if(pw == swidth && ph == sheight) {
-                cur_pbuf = gdk_pixbuf_get_from_drawable(NULL, 
-                        GDK_DRAWABLE(cur_pmap), cmap, 0, 0, 0, 0, swidth,
-                        sheight);
-            } else
-                cur_pmap = NULL;
-        }
-        /* if the style's bg_pixmap was empty, or the above failed... */
-        if(!cur_pmap) {
-            cur_pbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8,
-                    swidth, sheight);
-        }
-        
-        gdk_screen_get_monitor_geometry(gscreen, monitor, &rect);
-        gdk_pixbuf_copy_area(pix, 0, 0, gdk_pixbuf_get_width(pix),
-                gdk_pixbuf_get_height(pix), cur_pbuf, rect.x, rect.y);
-        g_object_unref(G_OBJECT(pix));
-        pmap = NULL;
-        gdk_pixbuf_render_pixmap_and_mask_for_colormap(cur_pbuf, cmap,
-                &pmap, NULL, 0);
-        g_object_unref(G_OBJECT(cur_pbuf));
-        if(!pmap)
-            return;
-    }
     
     xid = GDK_DRAWABLE_XID(pmap);
     groot = gdk_screen_get_root_window(gscreen);
@@ -343,17 +266,59 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     gdk_window_set_back_pixmap(groot, pmap, FALSE);
     /* there really should be a standard for this crap... */
     
-    /* clear the old pixmap, if any */
-    if(desktop->priv->bg_pixmap)
-        g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
+    gdk_error_trap_pop();
+}
+
+static void
+backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(user_data);
+    GdkPixmap *pmap = desktop->priv->bg_pixmap;
+    GdkScreen *gscreen = desktop->priv->gscreen;
+    GdkPixbuf *pix;
+    GdkRectangle rect;
+    gint i, monitor = -1;
     
-    /* set the new pixmap and tell gtk to redraw it */
-    desktop->priv->bg_pixmap = pmap;
-    gdk_window_set_back_pixmap(GTK_WIDGET(desktop)->window, pmap, FALSE);
+    TRACE("entering");
+    
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+    
+    if(desktop->priv->updates_frozen || !GTK_WIDGET_REALIZED(GTK_WIDGET(desktop)))
+        return;
+    
+    TRACE("really entering");
+    
+    for(i = 0; i < XFCE_DESKTOP(desktop)->priv->nbackdrops; i++) {
+        if(backdrop == XFCE_DESKTOP(desktop)->priv->backdrops[i]) {
+            monitor = i;
+            break;
+        }
+    }
+    if(monitor == -1)
+        return;
+    
+    /* create/get the composited backdrop pixmap */
+    pix = xfce_backdrop_get_pixbuf(backdrop);
+    if(!pix)
+        return;
+    
+    if(desktop->priv->nbackdrops == 1) {
+        /* single monitor */
+        rect.x = rect.y = 0;
+        rect.width = gdk_screen_get_width(gscreen);
+        rect.height = gdk_screen_get_height(gscreen);
+    } else
+        gdk_screen_get_monitor_geometry(gscreen, monitor, &rect);
+
+    gdk_draw_pixbuf(GDK_DRAWABLE(pmap), GTK_WIDGET(desktop)->style->black_gc,
+                    pix, 0, 0, rect.x, rect.y,
+                    gdk_pixbuf_get_width(pix), gdk_pixbuf_get_height(pix),
+                    GDK_RGB_DITHER_MAX, 0, 0);
+    g_object_unref(G_OBJECT(pix));
+    
+    /* tell gtk to redraw the repainted area */
     gtk_widget_queue_draw_area(GTK_WIDGET(desktop), rect.x, rect.y,
                                rect.width, rect.height);
-    
-    gdk_error_trap_pop();
     
     set_imgfile_root_property(desktop,
                               xfce_backdrop_get_image_filename(backdrop),
@@ -374,10 +339,13 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
     gtk_widget_set_size_request(GTK_WIDGET(desktop), w, h);
     gtk_window_resize(GTK_WINDOW(desktop), w, h);
     
-    if(desktop->priv->bg_pixmap) {
-        g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
-        desktop->priv->bg_pixmap = NULL;
-    }
+    g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
+    desktop->priv->bg_pixmap = gdk_pixmap_new(GDK_DRAWABLE(GTK_WIDGET(desktop)->window),
+                                              w, h, -1);
+    set_real_root_window_pixmap(desktop->priv->gscreen,
+                                desktop->priv->bg_pixmap);
+    gdk_window_set_back_pixmap(GTK_WIDGET(desktop)->window,
+                               desktop->priv->bg_pixmap, FALSE);
     
     /* special case for 1 backdrop to handle xinerama stretching properly.
      * this is broken if it ever becomes possible to change the number of
@@ -451,8 +419,6 @@ handle_xinerama_unstretch(XfceDesktop *desktop)
         backdrop_changed_cb(desktop->priv->backdrops[i], desktop);
     }
 }
-
-
 
 static void
 screen_set_selection(XfceDesktop *desktop)
@@ -554,7 +520,7 @@ xfce_desktop_realize(GtkWidget *widget)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
     GdkAtom atom;
-    gint i;
+    gint i, sw, sh;
     Window xid;
     GdkDisplay *gdpy;
     GdkWindow *groot;
@@ -563,6 +529,8 @@ xfce_desktop_realize(GtkWidget *widget)
     TRACE("entering");
     
     gtk_window_set_screen(GTK_WINDOW(desktop), desktop->priv->gscreen);
+    sw = gdk_screen_get_width(desktop->priv->gscreen);
+    sh = gdk_screen_get_height(desktop->priv->gscreen);
     
     /* chain up */
     GTK_WIDGET_CLASS(xfce_desktop_parent_class)->realize(widget);
@@ -571,9 +539,7 @@ xfce_desktop_realize(GtkWidget *widget)
     if(GTK_WIDGET_DOUBLE_BUFFERED(GTK_WIDGET(desktop)))
         gtk_widget_set_double_buffered(GTK_WIDGET(desktop), FALSE);
     
-    gtk_widget_set_size_request(GTK_WIDGET(desktop),
-                      gdk_screen_get_width(desktop->priv->gscreen),
-                      gdk_screen_get_height(desktop->priv->gscreen));
+    gtk_widget_set_size_request(GTK_WIDGET(desktop), sw, sh);
     gtk_window_move(GTK_WINDOW(desktop), 0, 0);
     
     atom = gdk_atom_intern("_NET_WM_WINDOW_TYPE_DESKTOP", FALSE);
@@ -607,6 +573,13 @@ xfce_desktop_realize(GtkWidget *widget)
         desktop->priv->backdrops[i] = xfce_backdrop_new_with_size(visual,
                 rect.width, rect.height);
     }
+    
+    desktop->priv->bg_pixmap = gdk_pixmap_new(GDK_DRAWABLE(GTK_WIDGET(desktop)->window),
+                                              sw, sh, -1);
+    set_real_root_window_pixmap(desktop->priv->gscreen,
+                                desktop->priv->bg_pixmap);
+    gdk_window_set_back_pixmap(GTK_WIDGET(desktop)->window,
+                               desktop->priv->bg_pixmap, FALSE);
     
     for(i = 0; i < desktop->priv->nbackdrops; i++) {
         g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]), "changed",
@@ -648,6 +621,7 @@ xfce_desktop_unrealize(GtkWidget *widget)
     gdk_property_delete(groot, gdk_atom_intern("NAUTILUS_DESKTOP_WINDOW_ID", FALSE));
     gdk_property_delete(groot, gdk_atom_intern("_XROOTPMAP_ID", FALSE));
     gdk_property_delete(groot, gdk_atom_intern("ESETROOT_PMAP_ID", FALSE));
+    gdk_window_set_back_pixmap(groot, NULL, FALSE);
     
     if(desktop->priv->backdrops) {
         for(i = 0; i < desktop->priv->nbackdrops; i++) {
@@ -659,10 +633,8 @@ xfce_desktop_unrealize(GtkWidget *widget)
         desktop->priv->backdrops = NULL;
     }
     
-    if(desktop->priv->bg_pixmap) {
-        g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
-        desktop->priv->bg_pixmap = NULL;
-    }
+    g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
+    desktop->priv->bg_pixmap = NULL;
     
     gtk_window_set_icon(GTK_WINDOW(widget), NULL);
     
@@ -720,10 +692,8 @@ style_set_cb(GtkWidget *w,
 {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
     
-    if(desktop->priv->bg_pixmap) {
-        gdk_window_set_back_pixmap(w->window, desktop->priv->bg_pixmap, FALSE);
-        gtk_widget_queue_draw(w);
-    }
+    gdk_window_set_back_pixmap(w->window, desktop->priv->bg_pixmap, FALSE);
+    gtk_widget_queue_draw(w);
 }
 
 
