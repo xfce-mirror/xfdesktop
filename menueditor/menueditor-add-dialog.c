@@ -152,6 +152,7 @@ menueditor_add_dialog_init (MenuEditorAddDialog * dialog)
   gtk_table_attach (GTK_TABLE (table), priv->label_name, 0, 1, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   
   priv->entry_name = gtk_entry_new ();
+  gtk_entry_set_activates_default (GTK_ENTRY (priv->entry_name), TRUE);
   gtk_widget_show (priv->entry_name);
   gtk_table_attach (GTK_TABLE (table), priv->entry_name, 1, 2, 1, 2, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 6);
 
@@ -166,7 +167,9 @@ menueditor_add_dialog_init (MenuEditorAddDialog * dialog)
 
   hbox = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (hbox);
+
   priv->entry_command = gtk_entry_new ();
+  gtk_entry_set_activates_default (GTK_ENTRY (priv->entry_command), TRUE);
   gtk_widget_show (priv->entry_command);
   gtk_box_pack_start (GTK_BOX (hbox), priv->entry_command, TRUE, TRUE, 0);
   
@@ -193,6 +196,7 @@ menueditor_add_dialog_init (MenuEditorAddDialog * dialog)
   gtk_container_add (GTK_CONTAINER (priv->radio_button_themed_icon), label);
   
   priv->entry_themed_icon = gtk_entry_new ();
+  gtk_entry_set_activates_default (GTK_ENTRY (priv->entry_themed_icon), TRUE);
   gtk_widget_show (priv->entry_themed_icon);
   gtk_table_attach (GTK_TABLE (table), priv->entry_themed_icon, 1, 2, 3, 4, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   
@@ -250,6 +254,7 @@ menueditor_add_dialog_init (MenuEditorAddDialog * dialog)
   gtk_table_attach (GTK_TABLE (table), priv->check_button_interm, 1, 2, 6, 7, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
 
   gtk_dialog_add_buttons (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
+  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 }
 
 /*************/

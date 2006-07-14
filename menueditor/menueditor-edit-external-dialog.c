@@ -153,6 +153,7 @@ menueditor_edit_external_dialog_init (MenuEditorEditExternalDialog * dialog)
   gtk_table_attach (GTK_TABLE (table), priv->check_button_unique, 1, 2, 2, 3, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
 
   gtk_dialog_add_buttons (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
+  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 }
 
 /******************/
