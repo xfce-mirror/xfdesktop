@@ -776,13 +776,26 @@ void
 xfdesktop_file_icon_update_info(XfdesktopFileIcon *icon,
                                 ThunarVfsInfo *info)
 {
+    gboolean label_changed = TRUE;
+    
     g_return_if_fail(XFDESKTOP_IS_ICON(icon) && info);
     
-    if(icon->priv->info)
+    if(icon->priv->info) {
+        if(!strcmp(icon->priv->info->display_name, info->display_name))
+            label_changed = FALSE;
         thunar_vfs_info_unref(icon->priv->info);
+    }
     icon->priv->info = thunar_vfs_info_ref(info);
     
-    xfdesktop_icon_label_changed(XFDESKTOP_ICON(icon));
+    if(label_changed)
+        xfdesktop_icon_label_changed(XFDESKTOP_ICON(icon));
+    
+    /* not really easy to check if this changed or not, so just invalidate it */
+    if(icon->priv->pix) {
+        g_object_unref(G_OBJECT(icon->priv->pix));
+        icon->priv->pix = NULL;
+    }
+    xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
 }
 
 GList *

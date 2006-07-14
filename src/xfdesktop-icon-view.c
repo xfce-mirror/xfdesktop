@@ -2359,30 +2359,6 @@ xfdesktop_icon_view_modify_font_size(XfdesktopIconView *icon_view,
     pango_font_description_free(pfd_new);
 }
 
-static void
-xfdesktop_icon_view_icon_pixbuf_changed(XfdesktopIcon *icon,
-                                        gpointer user_data)
-{
-    GdkRectangle extents;
-    
-    if(xfdesktop_icon_get_extents(icon, &extents)) {
-        gtk_widget_queue_draw_area(GTK_WIDGET(user_data), extents.x, extents.y,
-                                   extents.width, extents.height);
-    }
-}
-
-static void
-xfdesktop_icon_view_icon_label_changed(XfdesktopIcon *icon,
-                                       gpointer user_data)
-{
-    GdkRectangle extents;
-    
-    if(xfdesktop_icon_get_extents(icon, &extents)) {
-        gtk_widget_queue_draw_area(GTK_WIDGET(user_data), extents.x, extents.y,
-                                   extents.width, extents.height);
-    }
-}
-
 
 
 /* public api */
@@ -2442,12 +2418,12 @@ xfdesktop_icon_view_add_item(XfdesktopIconView *icon_view,
     
     g_object_set_data(G_OBJECT(icon), "--xfdesktop-icon-view", icon_view);
     
-    g_signal_connect(G_OBJECT(icon), "pixbuf-changed",
-                     G_CALLBACK(xfdesktop_icon_view_icon_pixbuf_changed),
-                     icon_view);
-    g_signal_connect(G_OBJECT(icon), "label-changed",
-                     G_CALLBACK(xfdesktop_icon_view_icon_label_changed),
-                     icon_view);
+    g_signal_connect_swapped(G_OBJECT(icon), "pixbuf-changed",
+                             G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
+                             icon_view);
+    g_signal_connect_swapped(G_OBJECT(icon), "label-changed",
+                             G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
+                             icon_view);
     
     fake_area.x = SCREEN_MARGIN + icon_view->priv->xorigin + col * CELL_SIZE;
     fake_area.y = SCREEN_MARGIN + icon_view->priv->yorigin + row * CELL_SIZE;
@@ -2472,10 +2448,7 @@ xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
     
     if(g_list_find(icon_view->priv->icons, icon)) {
         g_signal_handlers_disconnect_by_func(G_OBJECT(icon),
-                                             G_CALLBACK(xfdesktop_icon_view_icon_pixbuf_changed),
-                                             icon_view);
-        g_signal_handlers_disconnect_by_func(G_OBJECT(icon),
-                                             G_CALLBACK(xfdesktop_icon_view_icon_label_changed),
+                                             G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
                                              icon_view);
         
         if(xfdesktop_icon_get_position(icon, &row, &col)) {
@@ -2511,10 +2484,7 @@ xfdesktop_icon_view_remove_all(XfdesktopIconView *icon_view)
     
     for(l = icon_view->priv->icons; l; l = l->next) {
         g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
-                                             G_CALLBACK(xfdesktop_icon_view_icon_pixbuf_changed),
-                                             icon_view);
-        g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
-                                             G_CALLBACK(xfdesktop_icon_view_icon_label_changed),
+                                             G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
                                              icon_view);
         g_object_set_data(G_OBJECT(l->data), "--xfdesktop-icon-view", NULL);
     }
