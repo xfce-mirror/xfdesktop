@@ -2779,6 +2779,10 @@ xfdesktop_file_icon_manager_vfs_monitor_cb(ThunarVfsMonitor *monitor,
         case THUNAR_VFS_MONITOR_EVENT_CREATED:
             DBG("got created event");
             
+            /* make sure it's not the desktop folder itself */
+            if(thunar_vfs_path_equal(fmanager->priv->folder, event_path))
+                return;
+            
             /* first make sure we don't already have an icon for this path.
              * this seems to be necessary as thunar-vfs does not emit a
              * DELETED signal if a file is overwritten with another file of
