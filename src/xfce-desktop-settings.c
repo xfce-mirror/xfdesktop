@@ -317,10 +317,10 @@ xfce_desktop_settings_load_initial(XfceDesktop *desktop,
             mcs_setting_free(setting);
             setting = NULL;
         } else {
-            /* default color1 is #3e689e */
-            color.red = (guint16)0x3e00;
-            color.green = (guint16)0x6800;
-            color.blue = (guint16)0x9e00;
+            /* default color1 is #3b5b89 */
+            color.red = (guint16)0x3b00;
+            color.green = (guint16)0x5b00;
+            color.blue = (guint16)0x8900;
             xfce_backdrop_set_first_color(backdrop, &color);
         }
         
@@ -335,10 +335,10 @@ xfce_desktop_settings_load_initial(XfceDesktop *desktop,
             mcs_setting_free(setting);
             setting = NULL;
         } else {
-            /* default color2 is #3b5b89 */
-            color.red = (guint16)0x3b00;
-            color.green = (guint16)0x5b00;
-            color.blue = (guint16)0x8900;
+            /* default color2 is #3e689e */
+            color.red = (guint16)0x3e00;
+            color.green = (guint16)0x6800;
+            color.blue = (guint16)0x9e00;
             xfce_backdrop_set_second_color(backdrop, &color);
         }
         
