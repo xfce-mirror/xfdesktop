@@ -317,10 +317,10 @@ xfce_desktop_settings_load_initial(XfceDesktop *desktop,
             mcs_setting_free(setting);
             setting = NULL;
         } else {
-            /* default color1 is #6985b7 */
-            color.red = (guint16)0x6900;
-            color.green = (guint16)0x8500;
-            color.blue = (guint16)0xb700;
+            /* default color1 is #3e689e */
+            color.red = (guint16)0x3e00;
+            color.green = (guint16)0x6800;
+            color.blue = (guint16)0x9e00;
             xfce_backdrop_set_first_color(backdrop, &color);
         }
         
@@ -335,10 +335,10 @@ xfce_desktop_settings_load_initial(XfceDesktop *desktop,
             mcs_setting_free(setting);
             setting = NULL;
         } else {
-            /* default color2 is #dbe8ff */
-            color.red = (guint16)0xdb00;
-            color.green = (guint16)0xe800;
-            color.blue = (guint16)0xff00;
+            /* default color2 is #3b5b89 */
+            color.red = (guint16)0x3b00;
+            color.green = (guint16)0x5b00;
+            color.blue = (guint16)0x8900;
             xfce_backdrop_set_second_color(backdrop, &color);
         }
         
@@ -350,7 +350,7 @@ xfce_desktop_settings_load_initial(XfceDesktop *desktop,
             mcs_setting_free(setting);
             setting = NULL;
         } else
-            xfce_backdrop_set_color_style(backdrop, XFCE_BACKDROP_COLOR_HORIZ_GRADIENT);
+            xfce_backdrop_set_color_style(backdrop, XFCE_BACKDROP_COLOR_VERT_GRADIENT);
         
         g_snprintf(setting_name, 64, "brightness_%d_%d", screen, i);
         if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
