@@ -68,7 +68,7 @@
 	<separator/>
 
 	<menu name="Ρυθμίσεις" icon="gnome-settings">
-		<app name="Settings Manager" cmd="xfce-setting-show" snotify="true" icon="gnome-settings"/>
+		<app name="Διαχειριστής Ρυθμίσεων" cmd="xfce-setting-show" snotify="true" icon="gnome-settings"/>
 	</menu>
 
 	<separator/>
