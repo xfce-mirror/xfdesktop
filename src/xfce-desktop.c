@@ -111,6 +111,9 @@ static gboolean xfce_desktop_expose(GtkWidget *w,
                                     GdkEventExpose *evt);
 static gboolean xfce_desktop_delete_event(GtkWidget *w,
                                           GdkEventAny *evt);
+static void style_set_cb(GtkWidget *w,
+                         GtkStyle *old_style,
+                         gpointer user_data);
 
 /* private functions */
 
@@ -581,6 +584,9 @@ xfce_desktop_realize(GtkWidget *widget)
     gdk_window_set_back_pixmap(GTK_WIDGET(desktop)->window,
                                desktop->priv->bg_pixmap, FALSE);
     
+    g_signal_connect(G_OBJECT(desktop), "style-set",
+                     G_CALLBACK(style_set_cb), NULL);
+    
     for(i = 0; i < desktop->priv->nbackdrops; i++) {
         g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]), "changed",
                 G_CALLBACK(backdrop_changed_cb), desktop);
@@ -604,6 +610,9 @@ xfce_desktop_unrealize(GtkWidget *widget)
     gchar property_name[128];
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+    
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
+                                         G_CALLBACK(style_set_cb), NULL);
     
     if(GTK_WIDGET_MAPPED(widget))
         gtk_widget_unmap(widget);
@@ -718,9 +727,6 @@ xfce_desktop_new(GdkScreen *gscreen)
         gscreen = gdk_display_get_default_screen(gdk_display_get_default());
     GTK_WINDOW(desktop)->screen = gscreen;
     desktop->priv->gscreen = gscreen;
-    
-    g_signal_connect(G_OBJECT(desktop), "style-set",
-                     G_CALLBACK(style_set_cb), NULL);
     
     return GTK_WIDGET(desktop);
 }
