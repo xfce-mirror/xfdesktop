@@ -380,7 +380,7 @@ xfdesktop_icon_view_finalize(GObject *obj)
     
     if(icon_view->priv->tip_show_id)
         g_source_remove(icon_view->priv->tip_show_id);
-    if(icon_view->priv->tip_window);
+    if(icon_view->priv->tip_window)
         gtk_widget_destroy(icon_view->priv->tip_window);
     
     g_free(icon_view->priv);
