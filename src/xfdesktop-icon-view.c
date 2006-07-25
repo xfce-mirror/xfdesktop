@@ -421,7 +421,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                     icon_view->priv->selected_icons = g_list_remove(icon_view->priv->selected_icons,
                                                                     icon);
                     xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
-                } else {
+                } else if(icon != icon_view->priv->last_clicked_item) {
                     /* expand the text */
                     XfdesktopIcon *old_sel = icon_view->priv->last_clicked_item;
                     
