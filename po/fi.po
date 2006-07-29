@@ -2,15 +2,15 @@
 # Copyright (C) 2003-2006 The Xfce Development Team.
 # This file is distributed under the same license as the xfdesktop package.
 # Ilkka Ollakka <ilkka.ollakka@iki.fi>, 2004.
-# Jari Rahkonen <jari.rahkonen@pp2.inet.fi>, 2005-2006.
+# Jari Rahkonen <jari.rahkonen@pp1.inet.fi>, 2005-2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-12 20:47-0700\n"
-"PO-Revision-Date: 2005-05-21 12:07+0300\n"
-"Last-Translator: Jari Rahkonen <jari.rahkonen@pp2.inet.fi>\n"
+"POT-Creation-Date: 2006-07-29 13:45+0300\n"
+"PO-Revision-Date: 2005-07-29 13:47+0300\n"
+"Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -58,38 +58,37 @@ msgid "Name:"
 msgstr "Nimi:"
 
 #. Command
-#: ../menueditor/menueditor-add-dialog.c:159
 #: ../menueditor/menueditor-add-dialog.c:160
-#: ../menueditor/menueditor-edit-dialog.c:135
+#: ../menueditor/menueditor-add-dialog.c:161
 #: ../menueditor/menueditor-edit-dialog.c:136
+#: ../menueditor/menueditor-edit-dialog.c:137
 msgid "Command:"
 msgstr "Komento:"
 
-#: ../menueditor/menueditor-add-dialog.c:187
-#: ../menueditor/menueditor-add-dialog.c:188
-#: ../menueditor/menueditor-edit-dialog.c:163
-#: ../menueditor/menueditor-edit-dialog.c:164
-#, fuzzy
+#: ../menueditor/menueditor-add-dialog.c:190
+#: ../menueditor/menueditor-add-dialog.c:191
+#: ../menueditor/menueditor-edit-dialog.c:166
+#: ../menueditor/menueditor-edit-dialog.c:167
 msgid "Themed icon:"
-msgstr "Valitse kuvake"
+msgstr "Teemakuvake:"
 
-#: ../menueditor/menueditor-add-dialog.c:205
-#: ../menueditor/menueditor-add-dialog.c:206
-#: ../menueditor/menueditor-edit-dialog.c:181
-#: ../menueditor/menueditor-edit-dialog.c:182
+#: ../menueditor/menueditor-add-dialog.c:209
+#: ../menueditor/menueditor-add-dialog.c:210
+#: ../menueditor/menueditor-edit-dialog.c:185
+#: ../menueditor/menueditor-edit-dialog.c:186
 msgid "Icon:"
 msgstr "Kuvake:"
 
-#: ../menueditor/menueditor-add-dialog.c:213
-#: ../menueditor/menueditor-edit-dialog.c:189
+#: ../menueditor/menueditor-add-dialog.c:217
+#: ../menueditor/menueditor-edit-dialog.c:193
 msgid "Select icon"
 msgstr "Valitse kuvake"
 
-#: ../menueditor/menueditor-add-dialog.c:218
-#: ../menueditor/menueditor-add-dialog.c:295
+#: ../menueditor/menueditor-add-dialog.c:222
+#: ../menueditor/menueditor-add-dialog.c:300
 #: ../menueditor/menueditor-add-external-dialog.c:142
-#: ../menueditor/menueditor-edit-dialog.c:194
-#: ../menueditor/menueditor-edit-dialog.c:271
+#: ../menueditor/menueditor-edit-dialog.c:198
+#: ../menueditor/menueditor-edit-dialog.c:276
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:595
 #: ../settings/appearance-settings.c:532
@@ -98,8 +97,8 @@ msgstr "Valitse kuvake"
 msgid "All Files"
 msgstr "Kaikki tiedostot"
 
-#: ../menueditor/menueditor-add-dialog.c:222
-#: ../menueditor/menueditor-edit-dialog.c:198
+#: ../menueditor/menueditor-add-dialog.c:226
+#: ../menueditor/menueditor-edit-dialog.c:202
 #: ../panel-plugin/desktop-menu-plugin.c:601
 #: ../settings/appearance-settings.c:536
 #: ../settings/backdrop-list-manager.c:439
@@ -107,51 +106,49 @@ msgid "Image Files"
 msgstr "Kuvatiedostot"
 
 #. Start Notify check button
-#: ../menueditor/menueditor-add-dialog.c:243
-#: ../menueditor/menueditor-edit-dialog.c:219
+#: ../menueditor/menueditor-add-dialog.c:247
+#: ../menueditor/menueditor-edit-dialog.c:223
 msgid "Use startup _notification"
 msgstr "Käytä käynnistyksen _huomautusta"
 
 #. Run in terminal check button
-#: ../menueditor/menueditor-add-dialog.c:248
-#: ../menueditor/menueditor-edit-dialog.c:224
+#: ../menueditor/menueditor-add-dialog.c:252
+#: ../menueditor/menueditor-edit-dialog.c:228
 msgid "Run in _terminal"
 msgstr "Suorita _päätteessä"
 
-#: ../menueditor/menueditor-add-dialog.c:285
-#: ../menueditor/menueditor-edit-dialog.c:261
+#: ../menueditor/menueditor-add-dialog.c:290
+#: ../menueditor/menueditor-edit-dialog.c:266
 #: ../menueditor/menueditor-main-window.c:450
 msgid "Select command"
 msgstr "Valitse komento"
 
-#: ../menueditor/menueditor-add-dialog.c:300
-#: ../menueditor/menueditor-edit-dialog.c:276
-#, fuzzy
+#: ../menueditor/menueditor-add-dialog.c:305
+#: ../menueditor/menueditor-edit-dialog.c:281
 msgid "Executable Files"
-msgstr "Levyn poistaminen epäonnistui"
+msgstr "Suoritettavat tiedostot"
 
-#: ../menueditor/menueditor-add-dialog.c:315
-#: ../menueditor/menueditor-edit-dialog.c:291
+#: ../menueditor/menueditor-add-dialog.c:320
+#: ../menueditor/menueditor-edit-dialog.c:296
 msgid "Perl Scripts"
-msgstr ""
+msgstr "Perl-komentotiedostot"
 
-#: ../menueditor/menueditor-add-dialog.c:321
-#: ../menueditor/menueditor-edit-dialog.c:297
+#: ../menueditor/menueditor-add-dialog.c:326
+#: ../menueditor/menueditor-edit-dialog.c:302
 msgid "Python Scripts"
-msgstr ""
+msgstr "Python-komentotiedostot"
 
-#: ../menueditor/menueditor-add-dialog.c:327
-#: ../menueditor/menueditor-edit-dialog.c:303
+#: ../menueditor/menueditor-add-dialog.c:332
+#: ../menueditor/menueditor-edit-dialog.c:308
 msgid "Ruby Scripts"
-msgstr ""
+msgstr "Ruby-komentotiedostot"
 
-#: ../menueditor/menueditor-add-dialog.c:333
-#: ../menueditor/menueditor-edit-dialog.c:309
+#: ../menueditor/menueditor-add-dialog.c:338
+#: ../menueditor/menueditor-edit-dialog.c:314
 msgid "Shell Scripts"
-msgstr ""
+msgstr "Komentotulkin käskysarjat"
 
 #: ../menueditor/menueditor-add-external-dialog.c:100
-#, fuzzy
 msgid "Add external menu entry"
 msgstr "Lisää ulkoinen valikko"
 
@@ -173,9 +170,8 @@ msgstr "Lähde:"
 
 #: ../menueditor/menueditor-add-external-dialog.c:137
 #: ../menueditor/menueditor-edit-external-dialog.c:117
-#, fuzzy
 msgid "Select external menu"
-msgstr "Lisää ulkoinen valikko"
+msgstr "Valitse ulkoinen valikko"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
@@ -212,14 +208,12 @@ msgid "Edit menu entry"
 msgstr "Muokkaa valikon kohdetta"
 
 #: ../menueditor/menueditor-edit-external-dialog.c:96
-#, fuzzy
 msgid "Edit external menu entry"
-msgstr "Lisää ulkoinen valikko"
+msgstr "Muokkaa ulkoista valikkokohdetta"
 
 #: ../menueditor/menueditor-main.c:43
-#, fuzzy
 msgid "Xfce4-MenuEditor"
-msgstr "Xfce 4 valikkoeditori"
+msgstr "Xfce4-valikkoeditori"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -227,27 +221,24 @@ msgstr "_Tiedosto"
 
 #: ../menueditor/menueditor-main-window.c:141
 msgid "_New"
-msgstr ""
+msgstr "_Uusi"
 
 #: ../menueditor/menueditor-main-window.c:141
-#, fuzzy
 msgid "Create a new empty menu"
-msgstr "Luo uusi Xfce4-valikkotiedosto"
+msgstr "Luo uusi tyhjä valikko"
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:2068
+#: ../src/xfdesktop-file-icon-manager.c:2069
 msgid "_Open"
 msgstr "_Avaa"
 
 #: ../menueditor/menueditor-main-window.c:142
-#, fuzzy
 msgid "Open existing menu"
-msgstr "Avaa oletusvalikko"
+msgstr "Avaa olemassa oleva valikko"
 
 #: ../menueditor/menueditor-main-window.c:143
-#, fuzzy
 msgid "Open _default menu"
-msgstr "Avaa oletusvalikko"
+msgstr "Avaa _oletusvalikko"
 
 #: ../menueditor/menueditor-main-window.c:143
 msgid "Open default menu"
@@ -255,99 +246,85 @@ msgstr "Avaa oletusvalikko"
 
 #: ../menueditor/menueditor-main-window.c:144
 msgid "_Save"
-msgstr ""
+msgstr "_Tallenna"
 
 #: ../menueditor/menueditor-main-window.c:144
-#, fuzzy
 msgid "Save modifications"
-msgstr "Unohda muutokset"
+msgstr "Tallenna muutokset"
 
 #: ../menueditor/menueditor-main-window.c:145
-#, fuzzy
 msgid "Save _as..."
-msgstr "Tallenna nimellä..."
+msgstr "Tallenna _nimellä..."
 
 #: ../menueditor/menueditor-main-window.c:145
 msgid "Save menu under a given name"
-msgstr ""
+msgstr "Tallenna valikko annetulla nimellä"
 
 #: ../menueditor/menueditor-main-window.c:146
 msgid "_Close"
-msgstr ""
+msgstr "_Sulje"
 
 #: ../menueditor/menueditor-main-window.c:146
-#, fuzzy
 msgid "Close menu"
-msgstr "Sulje nykyinen valikko"
+msgstr "Sulje valikko"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "_Quit"
-msgstr "Lopeta"
+msgstr "_Lopeta"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "Quit Xfce4-Menueditor"
-msgstr "Xfce 4 valikkoeditori"
+msgstr "Poistu Xfce-4 valikkoeditorista"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
 msgstr "_Muokkaa"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "_Edit entry"
-msgstr "Muokkaa valikon kohdetta"
+msgstr "_Muokkaa kohdetta"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "Edit selected entry"
-msgstr "Muokkaa valikon kohdetta"
+msgstr "Muokkaa valittua kohdetta"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "_Add entry"
-msgstr "Lisää kohde valikkoon"
+msgstr "_Lisää kohde"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "Add a new entry in the menu"
-msgstr "Lisää kohde valikkoon"
+msgstr "Lisää uusi kohde valikkoon"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add _external"
-msgstr "Lisää ulkoinen valikko"
+msgstr "Lisää _ulkoinen"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add an external entry"
-msgstr "Lisää ulkoinen valikko"
+msgstr "Lisää ulkoinen kohde"
 
 #: ../menueditor/menueditor-main-window.c:153
 msgid "_Remove entry"
-msgstr ""
+msgstr "_Poista kohde"
 
 #: ../menueditor/menueditor-main-window.c:153
-#, fuzzy
 msgid "Remove entry"
-msgstr "Lisää kohde valikkoon"
+msgstr "Poista kohde"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "_Up"
-msgstr ""
+msgstr "_Ylös"
 
 #: ../menueditor/menueditor-main-window.c:154
-#, fuzzy
 msgid "Move entry up"
 msgstr "Siirrä kohdetta ylös"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "_Down"
-msgstr ""
+msgstr "_Alas"
 
 #: ../menueditor/menueditor-main-window.c:155
-#, fuzzy
 msgid "Move entry down"
 msgstr "Siirrä kohdetta alas"
 
@@ -360,29 +337,24 @@ msgid "_About..."
 msgstr "T_ietoja..."
 
 #: ../menueditor/menueditor-main-window.c:158
-#, fuzzy
 msgid "Show informations about xfce4-menueditor"
-msgstr "xfce4-valikkoeditoria ei voitu käynnistää: %s"
+msgstr "Näytä tietoja xfce4-valikkoeditorista"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all"
-msgstr "Supista puu"
+msgstr "Supista kaikki"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all menu entries"
-msgstr "Supista puu"
+msgstr "Supista kaikki valikon kohteet"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all"
-msgstr "_Avaa kaikki"
+msgstr "Laajenna kaikki"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all menu entries"
-msgstr "Laajenna puu"
+msgstr "Laajenna kaikki valikon kohteet"
 
 #: ../menueditor/menueditor-main-window.c:341
 msgid "Name"
@@ -430,9 +402,8 @@ msgid "Do you want to save before opening the default menu ?"
 msgstr "Haluatko tallentaa ennen oletusvalikon avaamista?"
 
 #: ../menueditor/menueditor-main-window.c:594
-#, fuzzy
 msgid "Save menu file as"
-msgstr "Avaa valikkotiedosto"
+msgstr "Tallenna valikkotiedosto nimellä"
 
 #: ../menueditor/menueditor-main-window.c:632
 #: ../menueditor/menueditor-main-window.c:1341
@@ -472,7 +443,7 @@ msgstr "Valikkoeditori Xfce4:lle"
 #. Credits
 #: ../menueditor/menueditor-main-window.c:1296
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "Kehittäjä/ylläpitäjä"
 
 #: ../menueditor/menueditor-main-window.c:1297
 #: ../menueditor/menueditor-main-window.c:1298
@@ -489,7 +460,6 @@ msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "Olet muokannut valikkoa, haluatko tallentaa sen ennen lopettamista?"
 
 #: ../menueditor/menueditor-main-window.c:1345
-#, fuzzy
 msgid "Forget modifications"
 msgstr "Hylkää muutokset"
 
@@ -588,7 +558,7 @@ msgstr "Näytä k_uvakkeet valikossa"
 
 #: ../panel-plugin/desktop-menu-plugin.c:948
 msgid "There is already a panel menu registered for this screen"
-msgstr ""
+msgstr "Tälle näytölle on jo rekisteröity paneelivalikko"
 
 #: ../panel-plugin/desktop-menu-plugin.c:1056
 msgid "Edit Menu"
@@ -657,8 +627,8 @@ msgstr "Xfce ei voi hallita työpöytääsi (%s)."
 msgid "Unknown Error"
 msgstr "Tuntematon virhe"
 
-#: ../settings/appearance-settings.c:806 ../src/xfdesktop-file-icon.c:698
-#: ../src/xfdesktop-file-icon.c:756
+#: ../settings/appearance-settings.c:806 ../src/xfdesktop-file-icon.c:737
+#: ../src/xfdesktop-file-icon.c:795
 msgid "Error"
 msgstr "Virhe"
 
@@ -831,7 +801,7 @@ msgstr "Ei mitään"
 
 #: ../settings/behavior-settings.c:289
 msgid "Minimized application icons"
-msgstr "Pienennettyjen s_ovellusten kuvakkeet"
+msgstr "Pienennettyjen sovellusten kuvakkeet"
 
 #: ../settings/behavior-settings.c:291
 msgid "File/launcher icons"
@@ -932,7 +902,7 @@ msgstr "_Poista työtila %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Poista työtila '%s'"
 
-#: ../src/xfce-desktop.c:570
+#: ../src/xfce-desktop.c:541
 msgid "Desktop"
 msgstr "Työpöytä"
 
@@ -976,10 +946,11 @@ msgstr "Liittäminen epäonnistui"
 msgid "Unknown error."
 msgstr "Tuntematon virhe."
 
+#. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:437
 #: ../src/xfdesktop-file-icon-manager.c:768
 #: ../src/xfdesktop-file-icon-manager.c:802
-#: ../src/xfdesktop-file-icon-manager.c:2004
+#: ../src/xfdesktop-file-icon-manager.c:2005
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Ei voi käynnistää kohdetta \"%s\":"
@@ -988,7 +959,7 @@ msgstr "Ei voi käynnistää kohdetta \"%s\":"
 #: ../src/xfdesktop-file-icon-manager.c:770
 #: ../src/xfdesktop-file-icon-manager.c:805
 #: ../src/xfdesktop-file-icon-manager.c:1605
-#: ../src/xfdesktop-file-icon-manager.c:2006
+#: ../src/xfdesktop-file-icon-manager.c:2007
 msgid "Launch Error"
 msgstr "Käynnistysvirhe"
 
@@ -1115,11 +1086,11 @@ msgstr "Vapaata tilaa:"
 msgid "Size:"
 msgstr "Koko:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1292 ../src/xfdesktop-file-icon.c:676
+#: ../src/xfdesktop-file-icon-manager.c:1292 ../src/xfdesktop-file-icon.c:715
 msgid "%s (%"
 msgstr "%s (%"
 
-#: ../src/xfdesktop-file-icon-manager.c:1292 ../src/xfdesktop-file-icon.c:676
+#: ../src/xfdesktop-file-icon-manager.c:1292 ../src/xfdesktop-file-icon.c:715
 msgid " Bytes)"
 msgstr " tavua)"
 
@@ -1213,98 +1184,95 @@ msgstr "Tiedostoa \"%s\" ei voi luoda:"
 msgid "Create Error"
 msgstr "Luomisvirhe"
 
-#: ../src/xfdesktop-file-icon-manager.c:2053
+#: ../src/xfdesktop-file-icon-manager.c:2054
 msgid "_Open all"
 msgstr "_Avaa kaikki"
 
-#: ../src/xfdesktop-file-icon-manager.c:2085
+#: ../src/xfdesktop-file-icon-manager.c:2086
 msgid "_Execute"
 msgstr "_Suorita"
 
-#: ../src/xfdesktop-file-icon-manager.c:2102
+#: ../src/xfdesktop-file-icon-manager.c:2103
 msgid "_Edit Launcher"
 msgstr "_Muokkaa käynnistintä"
 
-#: ../src/xfdesktop-file-icon-manager.c:2142
+#: ../src/xfdesktop-file-icon-manager.c:2143
 msgid "Open With"
 msgstr "Avaa sovelluksessa"
 
-#: ../src/xfdesktop-file-icon-manager.c:2172
+#: ../src/xfdesktop-file-icon-manager.c:2173
 msgid "Open With Other _Application..."
 msgstr "Avaa _muussa sovelluksessa..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2246
+#: ../src/xfdesktop-file-icon-manager.c:2247
 msgid "_Mount Volume"
 msgstr "_Liitä taltio"
 
-#: ../src/xfdesktop-file-icon-manager.c:2257
+#: ../src/xfdesktop-file-icon-manager.c:2258
 msgid "_Unmount Volume"
 msgstr "_Irrota taltio"
 
-#: ../src/xfdesktop-file-icon-manager.c:2271
+#: ../src/xfdesktop-file-icon-manager.c:2272
 msgid "E_ject Volume"
 msgstr "_Poista levy"
 
-#: ../src/xfdesktop-file-icon-manager.c:2302
+#: ../src/xfdesktop-file-icon-manager.c:2303
 msgid "_Rename..."
 msgstr "_Nimeä uudelleen..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2320
+#: ../src/xfdesktop-file-icon-manager.c:2321
 msgid "_Properties..."
 msgstr "_Ominaisuudet..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2336
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2337
 msgid "Des_ktop"
-msgstr "Työpöytä"
+msgstr "_Työpöytä"
 
-#: ../src/xfdesktop-file-icon-manager.c:2355
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2356
 msgid "Create _Launcher..."
-msgstr "_Käynnistin..."
+msgstr "Luo _käynnistin..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2376
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2377
 msgid "Create _URL Link..."
-msgstr "_URL-linkki..."
+msgstr "Luo _URL-linkki..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2393
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2394
 msgid "Create _Folder..."
-msgstr "Luo uusi hakemisto"
+msgstr "Luo _hakemisto"
 
-#: ../src/xfdesktop-file-icon-manager.c:2436
+#: ../src/xfdesktop-file-icon-manager.c:2437
 msgid "_Empty File"
 msgstr "_Tyhjä tiedosto"
 
-#: ../src/xfdesktop-file-icon-manager.c:2477
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2478
 msgid "Desktop _Settings..."
-msgstr "Työpöydän asetukset"
+msgstr "Työpöydän _asetukset..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2486
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2487
 msgid "_Desktop Properties..."
-msgstr "_Ominaisuudet..."
+msgstr "_Työpöydän ominaisuudet..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3449 ../src/xfdesktop-file-icon.c:569
+#: ../src/xfdesktop-file-icon-manager.c:3454 ../src/xfdesktop-file-icon.c:608
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Kohteen \"%s\" suorittaminen epäonnistui:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3451 ../src/xfdesktop-file-icon.c:571
+#: ../src/xfdesktop-file-icon-manager.c:3456 ../src/xfdesktop-file-icon.c:610
 msgid "Run Error"
 msgstr "Suoritusvirhe"
 
-#: ../src/xfdesktop-file-icon.c:679
+#: ../src/xfdesktop-file-icon.c:718
 #, c-format
 msgid ""
 "Kind: %s\n"
 "Modified:%s\n"
 "Size: %s"
 msgstr ""
+"Tyyppi: %s\n"
+"Muokattu:%s\n"
+"Koko: %s"
 
-#: ../src/xfdesktop-file-icon.c:753
+#: ../src/xfdesktop-file-icon.c:792
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Nimen \"%s\" muuttaminen muotoon \"%s\" epäonnistui:"
@@ -1336,80 +1304,3 @@ msgstr "Xfce 4 työpöydänhallinnan asetukset"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 työpöydän asetukset"
-
-#~ msgid "_Copy Files"
-#~ msgstr "_Kopioi tiedostot"
-
-#~ msgid "_Copy File"
-#~ msgstr "_Kopioi tiedosto"
-
-#~ msgid "Cu_t Files"
-#~ msgstr "_Leikkaa tiedostot"
-
-#~ msgid "Cu_t File"
-#~ msgstr "_Leikkaa tiedosto"
-
-#~ msgid "_Delete Files"
-#~ msgstr "_Poista tiedostot"
-
-#~ msgid "_Delete File"
-#~ msgstr "_Poista tiedosto"
-
-#, fuzzy
-#~ msgid "_Paste Files"
-#~ msgstr "Listatiedostot"
-
-#~ msgid "broken link"
-#~ msgstr "rikkinäinen linkki"
-
-#~ msgid "link to %s"
-#~ msgstr "linkki kohteeseen %s"
-
-#~ msgid "Create _New"
-#~ msgstr "_Luo uusi"
-
-#~ msgid "_Folder..."
-#~ msgstr "_Hakemisto..."
-
-#, fuzzy
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "Haluatko varmasti poistaa kohteen \"%s\"?"
-
-#~ msgid "Core developer"
-#~ msgstr "Pääkehittäjä"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "Komentoa ei löydy!"
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "Kaikki kentät täytyy täyttää, jotta kohteen voi lisätä."
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "'Nimi'-kenttä on pakollinen."
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "'Lähde'-kenttä on pakollinen."
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "Erottimia ei voi muokata"
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "Tiedostoa %s ei ole olemassa!"
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "Haluatko siirtää kohteen ylempään valikkoon?"
-
-#~ msgid "Edit"
-#~ msgstr "Muokkaa"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "Lisää ulkoinen valikko..."
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "Avaa Xfce4-valikkotietosto"
-
-#~ msgid "Save current menu"
-#~ msgstr "Tallenna nykyinen valikko"
-
-#~ msgid "Delete the current entry"
-#~ msgstr "Poista nykyinen kohde"
