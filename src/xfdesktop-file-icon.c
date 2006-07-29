@@ -120,7 +120,7 @@ static inline void xfdesktop_file_icon_invalidate_pixbuf(XfdesktopFileIcon *icon
 
 static guint __signals[N_SIGS] = { 0, };
 static GdkPixbuf *xfdesktop_fallback_icon = NULL;
-
+static gint xfdesktop_fallback_icon_size = -1;
 
 #ifdef HAVE_THUNARX
 G_DEFINE_TYPE_EXTENDED(XfdesktopFileIcon, xfdesktop_file_icon,
@@ -237,6 +237,42 @@ xfdesktop_file_icon_invalidate_pixbuf(XfdesktopFileIcon *icon)
     }
 }
 
+static void
+xfdesktop_file_icon_ensure_fallback_icon(gint size)
+{
+    if(size != xfdesktop_fallback_icon_size && xfdesktop_fallback_icon) {
+        g_object_unref(G_OBJECT(xfdesktop_fallback_icon));
+        xfdesktop_fallback_icon = NULL;
+    }
+    
+    if(!xfdesktop_fallback_icon) {
+        xfdesktop_fallback_icon = gdk_pixbuf_new_from_file_at_size(DATADIR "/pixmaps/xfdesktop/xfdesktop-fallback-icon.png",
+                                                                   size,
+                                                                   size,
+                                                                   NULL);
+    }
+    
+    if(G_UNLIKELY(!xfdesktop_fallback_icon)) {
+        GtkWidget *dummy = gtk_invisible_new();
+        gtk_widget_realize(dummy);
+        
+        /* this is kinda crappy, but hopefully should never happen */
+        xfdesktop_fallback_icon = gtk_widget_render_icon(dummy,
+                                                         GTK_STOCK_MISSING_IMAGE,
+                                                         (GtkIconSize)-1, NULL);
+        if(gdk_pixbuf_get_width(xfdesktop_fallback_icon) != size
+           || gdk_pixbuf_get_height(xfdesktop_fallback_icon) != size)
+        {
+            GdkPixbuf *tmp = gdk_pixbuf_scale_simple(xfdesktop_fallback_icon,
+                                                     size, size,
+                                                     GDK_INTERP_BILINEAR);
+            g_object_unref(G_OBJECT(xfdesktop_fallback_icon));
+            xfdesktop_fallback_icon = tmp;
+        }
+    }
+    
+    xfdesktop_fallback_icon_size = size;
+}
 
 
 static XfdesktopFileIcon *
@@ -293,11 +329,8 @@ xfdesktop_file_icon_set_pixbuf_opacity(XfdesktopFileIcon *icon,
         return;
     
     icon->priv->pix_opacity = opacity;
-    if(icon->priv->pix) {
-        g_object_unref(G_OBJECT(icon->priv->pix));
-        icon->priv->pix = NULL;
-    }
     
+    xfdesktop_file_icon_invalidate_pixbuf(icon);
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
 }
 
@@ -360,20 +393,8 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
     }
     
     /* fallback */
-    if(!file_icon->priv->pix) {
-        if(xfdesktop_fallback_icon) {
-            if(gdk_pixbuf_get_width(xfdesktop_fallback_icon) != size) {
-                g_object_unref(G_OBJECT(xfdesktop_fallback_icon));
-                xfdesktop_fallback_icon = NULL;
-            }
-        }
-        if(!xfdesktop_fallback_icon) {
-            xfdesktop_fallback_icon = gdk_pixbuf_new_from_file_at_size(DATADIR "/pixmaps/xfdesktop/xfdesktop-fallback-icon.png",
-                                                                       size,
-                                                                       size,
-                                                                       NULL);
-        }
-        
+    if(G_UNLIKELY(!file_icon->priv->pix)) {
+        xfdesktop_file_icon_ensure_fallback_icon(size);
         file_icon->priv->pix = g_object_ref(G_OBJECT(xfdesktop_fallback_icon));
         loaded_new = TRUE;
     }
@@ -387,13 +408,31 @@ xfdesktop_file_icon_peek_pixbuf(XfdesktopIcon *icon,
         {
             GdkPixbuf *sym_pix;
             gint sym_pix_size = size * 2 / 3;
+            gint dest_size = size - sym_pix_size;
             
             sym_pix = xfce_themed_icon_load(EMBLEM_SYMLINK, sym_pix_size);
             if(sym_pix) {
-                gdk_pixbuf_composite(sym_pix, file_icon->priv->pix,
-                                     size - sym_pix_size, size - sym_pix_size,
+                if(gdk_pixbuf_get_width(sym_pix) != sym_pix_size
+                   || gdk_pixbuf_get_height(sym_pix) != sym_pix_size)
+                {
+                    GdkPixbuf *tmp = gdk_pixbuf_scale_simple(sym_pix,
+                                                             sym_pix_size,
+                                                             sym_pix_size,
+                                                             GDK_INTERP_BILINEAR);
+                    g_object_unref(G_OBJECT(sym_pix));
+                    sym_pix = tmp;
+                }
+                
+                DBG("calling gdk_pixbuf_composite(%p, %p, %d, %d, %d, %d, %.1f, %.1f, %.1f, %.1f, %d, %d)",
+                                     sym_pix, file_icon->priv->pix,
+                                     dest_size, dest_size,
                                      sym_pix_size, sym_pix_size,
-                                     size - sym_pix_size, size - sym_pix_size,
+                                     (gdouble)dest_size, (gdouble)dest_size,
+                                     1.0, 1.0, GDK_INTERP_BILINEAR, 255);
+                gdk_pixbuf_composite(sym_pix, file_icon->priv->pix,
+                                     dest_size, dest_size,
+                                     sym_pix_size, sym_pix_size,
+                                     dest_size, dest_size,
                                      1.0, 1.0, GDK_INTERP_BILINEAR, 255);
                 g_object_unref(G_OBJECT(sym_pix));
             }
@@ -566,8 +605,8 @@ xfdesktop_file_icon_do_drop_dest(XfdesktopIcon *icon,
         g_list_free(path_list);
         
         if(!succeeded) {
-            gchar *primary = g_strdup_printf(_("Failed to run \"%s\":"),
-                                             file_icon->priv->info->display_name);
+            gchar *primary = g_markup_printf_escaped(_("Failed to run \"%s\":"),
+                                                     file_icon->priv->info->display_name);
             xfce_message_dialog(NULL, _("Run Error"), GTK_STOCK_DIALOG_ERROR,
                                 primary, error->message,
                                 GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
@@ -692,8 +731,8 @@ xfdesktop_delete_file_error(ThunarVfsJob *job,
                             gpointer user_data)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);
-    gchar *primary = g_strdup_printf("There was an error deleting \"%s\":",
-                                     icon->priv->info->display_name);
+    gchar *primary = g_markup_printf_escaped("There was an error deleting \"%s\":",
+                                             icon->priv->info->display_name);
                                      
     xfce_message_dialog(NULL, _("Error"), GTK_STOCK_DIALOG_ERROR, primary,
                         error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
@@ -750,9 +789,9 @@ xfdesktop_file_icon_rename_file(XfdesktopFileIcon *icon,
                          FALSE);
     
     if(!thunar_vfs_info_rename(icon->priv->info, new_name, &error)) {
-        gchar *primary = g_strdup_printf(_("Failed to rename \"%s\" to \"%s\":"),
-                                         icon->priv->info->display_name,
-                                         new_name);
+        gchar *primary = g_markup_printf_escaped(_("Failed to rename \"%s\" to \"%s\":"),
+                                                 icon->priv->info->display_name,
+                                                 new_name);
         xfce_message_dialog(NULL, _("Error"), GTK_STOCK_DIALOG_ERROR,
                             primary, error->message,
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);

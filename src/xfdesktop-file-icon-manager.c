@@ -231,8 +231,8 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
                     /* would prefer to use thunar_vfs_make_directory() here,
                      * but i don't want to use an async operation */
                     if(mkdir(pathname, 0700)) {
-                        gchar *primary = g_strdup_printf(_("Xfdesktop was unable to create the folder \"%s\" to store desktop items:"),
-                                                         pathname);
+                        gchar *primary = g_markup_printf_excaped(_("Xfdesktop was unable to create the folder \"%s\" to store desktop items:"),
+                                                                 pathname);
                         xfce_message_dialog(NULL, _("Create Folder Failed"),
                                             GTK_STOCK_DIALOG_WARNING, primary,
                                             strerror(errno), GTK_STOCK_CLOSE,
@@ -240,8 +240,8 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
                         g_free(primary);
                     }
                 } else if(!g_file_test(pathname, G_FILE_TEST_IS_DIR)) {
-                    gchar *primary = g_strdup_printf(_("Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."),
-                                                     pathname);
+                    gchar *primary = g_markup_printf_escaped(_("Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."),
+                                                             pathname);
                     xfce_message_dialog(NULL, _("Create Folder Failed"),
                                         GTK_STOCK_DIALOG_WARNING, primary,
                                         _("Please delete or rename the file."),
@@ -369,8 +369,8 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon,
         if(!thunar_vfs_volume_is_mounted(volume)) {
             GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
             if(!thunar_vfs_volume_mount(volume, toplevel, &error)) {
-                gchar *primary = g_strdup_printf(_("Unable to mount \"%s\":"),
-                                                 thunar_vfs_volume_get_name(volume));
+                gchar *primary = g_markup_printf_escaped(_("Unable to mount \"%s\":"),
+                                                         thunar_vfs_volume_get_name(volume));
                 xfce_message_dialog(GTK_WINDOW(toplevel), _("Mount Failed"),
                                     GTK_STOCK_DIALOG_ERROR, primary,
                                     error ? error->message : _("Unknown error."),
@@ -434,8 +434,8 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon,
     
     if(!succeeded) {
         GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-        gchar *primary = g_strdup_printf(_("Unable to launch \"%s\":"),
-                                         info->display_name);
+        gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
+                                                 info->display_name);
         xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
                             GTK_STOCK_DIALOG_ERROR, primary,
                             _("The associated application could not be found or executed."),
@@ -640,8 +640,8 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager)
     if(g_list_length(selected) == 1) {
         icon = XFDESKTOP_ICON(selected->data);
         
-        primary = g_strdup_printf(_("Are you sure that you want to delete \"%s\"?"),
-                                  xfdesktop_icon_peek_label(icon));
+        primary = g_markup_printf_escaped(_("Are you sure that you want to delete \"%s\"?"),
+                                          xfdesktop_icon_peek_label(icon));
         ret = xfce_message_dialog(GTK_WINDOW(toplevel),
                                   _("Question"), GTK_STOCK_DIALOG_QUESTION,
                                   primary,
@@ -765,8 +765,8 @@ xfdesktop_file_icon_menu_mime_app_executed(GtkWidget *widget,
                                      path_list,
                                      &error))
     {
-        gchar *primary = g_strdup_printf(_("Unable to launch \"%s\":"),
-                                         thunar_vfs_mime_application_get_name(mime_app));
+        gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
+                                                 thunar_vfs_mime_application_get_name(mime_app));
         xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
                             GTK_STOCK_DIALOG_ERROR, primary, error->message,
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
@@ -799,8 +799,8 @@ xfdesktop_file_icon_menu_other_app(GtkWidget *widget,
     gscreen = gtk_widget_get_screen(widget);
     
     if(!xfdesktop_file_icon_launch_external(icon, gscreen)) {
-        gchar *primary = g_strdup_printf(_("Unable to launch \"%s\":"),
-                                         info->display_name);
+        gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
+                                                 info->display_name);
         xfce_message_dialog(GTK_WINDOW(toplevel),
                             _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
                             primary,
@@ -882,9 +882,9 @@ xfdesktop_file_icon_menu_toggle_mount(GtkWidget *widget,
     }
     
     if(error) {
-        gchar *primary = g_strdup_printf(is_mount ? _("Unable to mount \"%s\":")
-                                                  : _("Unable to unmount \"%s\":"),
-                                         thunar_vfs_volume_get_name(volume));
+        gchar *primary = g_markup_printf_escaped(is_mount ? _("Unable to mount \"%s\":")
+                                                          : _("Unable to unmount \"%s\":"),
+                                                 thunar_vfs_volume_get_name(volume));
         xfce_message_dialog(GTK_WINDOW(toplevel),
                             is_mount ? _("Mount Failed") : _("Unmount Failed"),
                             GTK_STOCK_DIALOG_ERROR, primary, error->message,
@@ -915,8 +915,8 @@ xfdesktop_file_icon_menu_eject(GtkWidget *widget,
     g_return_if_fail(volume);
     
     if(!thunar_vfs_volume_eject(volume, toplevel, &error)) {
-        gchar *primary = g_strdup_printf(_("Unable to eject \"%s\":"),
-                                         thunar_vfs_volume_get_name(volume));
+        gchar *primary = g_markup_printf_escaped(_("Unable to eject \"%s\":"),
+                                                 thunar_vfs_volume_get_name(volume));
         xfce_message_dialog(GTK_WINDOW(toplevel), _("Eject Failed"),
                             GTK_STOCK_DIALOG_ERROR, primary, error->message,
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
@@ -986,8 +986,8 @@ xfdesktop_file_icon_set_default_mime_handler(GtkComboBox *combo,
                                                              &error))
         {
             GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-            gchar *primary = g_strdup_printf(_("Unable to set default application for \"%s\" to \"%s\":"),
-                                             xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)),
+            gchar *primary = g_markup_printf_escaped(_("Unable to set default application for \"%s\" to \"%s\":"),
+                                                     xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)),
                                              thunar_vfs_mime_application_get_name(mime_app));
             xfce_message_dialog(GTK_WINDOW(toplevel), _("Properties Error"),
                                 GTK_STOCK_DIALOG_ERROR, primary, error->message,
@@ -1565,8 +1565,8 @@ xfdesktop_file_icon_create_directory_error(ThunarVfsJob *job,
     GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
     const gchar *folder_name = g_object_get_data(G_OBJECT(job),
                                                  "xfdesktop-folder-name");
-    gchar *primary = g_strdup_printf(_("Unable to create folder named \"%s\":"),
-                                     folder_name);
+    gchar *primary = g_markup_printf_escaped(_("Unable to create folder named \"%s\":"),
+                                             folder_name);
     
     xfce_message_dialog(GTK_WINDOW(toplevel), _("Create Folder Failed"),
                         GTK_STOCK_DIALOG_ERROR, primary, error->message,
@@ -1678,8 +1678,8 @@ xfdesktop_file_icon_create_file_error(ThunarVfsJob *job,
     GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
     const gchar *file_name = g_object_get_data(G_OBJECT(job),
                                                "xfdesktop-file-name");
-    gchar *primary = g_strdup_printf(_("Unable to create file named \"%s\":"),
-                                     file_name);
+    gchar *primary = g_markup_printf_escaped(_("Unable to create file named \"%s\":"),
+                                             file_name);
     
     xfce_message_dialog(GTK_WINDOW(toplevel), _("Create File Failed"),
                         GTK_STOCK_DIALOG_ERROR, primary, error->message,
@@ -1776,7 +1776,7 @@ xfdesktop_file_icon_template_item_activated(GtkWidget *mi,
             /* don't free |name|, GObject will do it */
         } else {
             if(error) {
-                gchar *primary = g_strdup_printf(_("Unable to create file \"%s\":"), name);
+                gchar *primary = g_markup_printf_escaped(_("Unable to create file \"%s\":"), name);
                 xfce_message_dialog(GTK_WINDOW(toplevel), _("Create Error"),
                                     GTK_STOCK_DIALOG_ERROR, primary,
                                     error->message, GTK_STOCK_CLOSE,
@@ -2001,6 +2001,7 @@ xfdesktop_mcs_settings_launch(GtkWidget *w,
     
     if(!xfce_exec(buf, FALSE, TRUE, &error)) {
         GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+        /* printf is to be translator-friendly */
         gchar *primary = g_strdup_printf(_("Unable to launch \"%s\":"),
                                          "xfce-setting-show");
         xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
@@ -3450,8 +3451,8 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                                                     xfce_get_homedir(),
                                                     &error);
                 if(!succeeded) {
-                    gchar *primary = g_strdup_printf(_("Failed to run \"%s\":"),
-                                                     tinfo->display_name);
+                    gchar *primary = g_markup_printf_escaped(_("Failed to run \"%s\":"),
+                                                             tinfo->display_name);
                     xfce_message_dialog(NULL, _("Run Error"),
                                         GTK_STOCK_DIALOG_ERROR,
                                         primary, error->message,
