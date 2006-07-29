@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-07-12 20:47-0700\n"
-"PO-Revision-Date: 2006-06-12 22:23+0800\n"
+"PO-Revision-Date: 2006-07-29 11:22+0800\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "新增選單項目"
 #: ../menueditor/menueditor-add-external-dialog.c:113
 #: ../menueditor/menueditor-add-external-dialog.c:114
 msgid "Type:"
-msgstr "種類："
+msgstr "種型："
 
 #: ../menueditor/menueditor-add-dialog.c:135
 msgid "Title"
@@ -70,9 +70,8 @@ msgstr "指令："
 #: ../menueditor/menueditor-add-dialog.c:188
 #: ../menueditor/menueditor-edit-dialog.c:163
 #: ../menueditor/menueditor-edit-dialog.c:164
-#, fuzzy
 msgid "Themed icon:"
-msgstr "選擇圖示"
+msgstr "主題圖示"
 
 #: ../menueditor/menueditor-add-dialog.c:205
 #: ../menueditor/menueditor-add-dialog.c:206
@@ -127,35 +126,33 @@ msgstr "選擇指令"
 
 #: ../menueditor/menueditor-add-dialog.c:300
 #: ../menueditor/menueditor-edit-dialog.c:276
-#, fuzzy
 msgid "Executable Files"
-msgstr "退出失敗"
+msgstr "可執行檔"
 
 #: ../menueditor/menueditor-add-dialog.c:315
 #: ../menueditor/menueditor-edit-dialog.c:291
 msgid "Perl Scripts"
-msgstr ""
+msgstr "Perl 指令稿"
 
 #: ../menueditor/menueditor-add-dialog.c:321
 #: ../menueditor/menueditor-edit-dialog.c:297
 msgid "Python Scripts"
-msgstr ""
+msgstr "Python 指令稿"
 
 #: ../menueditor/menueditor-add-dialog.c:327
 #: ../menueditor/menueditor-edit-dialog.c:303
 msgid "Ruby Scripts"
-msgstr ""
+msgstr "Ruby 指令稿"
 
 #: ../menueditor/menueditor-add-dialog.c:333
 #: ../menueditor/menueditor-edit-dialog.c:309
 msgid "Shell Scripts"
-msgstr ""
+msgstr "Shell 指令稿"
 
 # NOTE 這裡的「Add」是在原地插入選單，並非新增之意
 #: ../menueditor/menueditor-add-external-dialog.c:100
-#, fuzzy
 msgid "Add external menu entry"
-msgstr "插入外置選單"
+msgstr "插入外置選單項目"
 
 #: ../menueditor/menueditor-add-external-dialog.c:122
 msgid "File"
@@ -177,9 +174,8 @@ msgstr "來源："
 # NOTE 這裡的「Add」是在原地插入選單，並非新增之意
 #: ../menueditor/menueditor-add-external-dialog.c:137
 #: ../menueditor/menueditor-edit-external-dialog.c:117
-#, fuzzy
 msgid "Select external menu"
-msgstr "插入外置選單"
+msgstr "選擇外置選單"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
@@ -216,14 +212,11 @@ msgstr "只使用不同的項目(_U)"
 msgid "Edit menu entry"
 msgstr "修改選單項目"
 
-# NOTE 這裡的「Add」是在原地插入選單，並非新增之意
 #: ../menueditor/menueditor-edit-external-dialog.c:96
-#, fuzzy
 msgid "Edit external menu entry"
-msgstr "插入外置選單"
+msgstr "編輯外置選單項目"
 
 #: ../menueditor/menueditor-main.c:43
-#, fuzzy
 msgid "Xfce4-MenuEditor"
 msgstr "Xfce 4 選單編輯器"
 
@@ -233,12 +226,11 @@ msgstr "檔案(_F)"
 
 #: ../menueditor/menueditor-main-window.c:141
 msgid "_New"
-msgstr ""
+msgstr "新增(_N)"
 
 #: ../menueditor/menueditor-main-window.c:141
-#, fuzzy
 msgid "Create a new empty menu"
-msgstr "新增 Xfce4 選單檔案"
+msgstr "新增一空選單"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:2068
@@ -246,14 +238,12 @@ msgid "_Open"
 msgstr "開啟(_O)"
 
 #: ../menueditor/menueditor-main-window.c:142
-#, fuzzy
 msgid "Open existing menu"
-msgstr "開啟預設選單"
+msgstr "開啟現存選單"
 
 #: ../menueditor/menueditor-main-window.c:143
-#, fuzzy
 msgid "Open _default menu"
-msgstr "開啟預設選單"
+msgstr "開啟預設選單(_D)"
 
 #: ../menueditor/menueditor-main-window.c:143
 msgid "Open default menu"
@@ -261,17 +251,15 @@ msgstr "開啟預設選單"
 
 #: ../menueditor/menueditor-main-window.c:144
 msgid "_Save"
-msgstr ""
+msgstr "儲存(_S)"
 
 #: ../menueditor/menueditor-main-window.c:144
-#, fuzzy
 msgid "Save modifications"
-msgstr "放棄修改"
+msgstr "儲存修改"
 
 #: ../menueditor/menueditor-main-window.c:145
-#, fuzzy
 msgid "Save _as..."
-msgstr "另存新檔..."
+msgstr "另存新檔...(_A)"
 
 #: ../menueditor/menueditor-main-window.c:145
 msgid "Save menu under a given name"
@@ -279,85 +267,73 @@ msgstr ""
 
 #: ../menueditor/menueditor-main-window.c:146
 msgid "_Close"
-msgstr ""
+msgstr "關閉(_C)"
 
 #: ../menueditor/menueditor-main-window.c:146
-#, fuzzy
 msgid "Close menu"
-msgstr "關閉目前的選單"
+msgstr "關閉選單"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "_Quit"
-msgstr "退出"
+msgstr "離開(_Q)"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "Quit Xfce4-Menueditor"
-msgstr "Xfce 4 選單編輯器"
+msgstr "離開 Xfce 4 選單編輯器"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
 msgstr "編輯(_E)"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "_Edit entry"
-msgstr "修改選單項目"
+msgstr "修改項目(_E)"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "Edit selected entry"
-msgstr "修改選單項目"
+msgstr "修改所選的項目"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "_Add entry"
-msgstr "新增選單項目"
+msgstr "插入項目(_A)"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "Add a new entry in the menu"
-msgstr "新增項目至選單"
+msgstr "新增項目到該選單中"
 
 # NOTE 這裡的「Add」是在原地插入選單，並非新增之意
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add _external"
-msgstr "插入外置選單"
+msgstr "插入外置選單(_E)"
 
 # NOTE 這裡的「Add」是在原地插入選單，並非新增之意
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add an external entry"
-msgstr "插入外置選單"
+msgstr "插入外置選單項目"
 
 #: ../menueditor/menueditor-main-window.c:153
 msgid "_Remove entry"
-msgstr ""
+msgstr "移除選單項目(_R)"
 
 #: ../menueditor/menueditor-main-window.c:153
-#, fuzzy
 msgid "Remove entry"
-msgstr "新增選單項目"
+msgstr "移除項目"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "_Up"
-msgstr ""
+msgstr "上移(_U)"
 
 #: ../menueditor/menueditor-main-window.c:154
-#, fuzzy
 msgid "Move entry up"
-msgstr "將目前的項目向上移"
+msgstr "項目上移"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "_Down"
-msgstr ""
+msgstr "下移(_D)"
 
 #: ../menueditor/menueditor-main-window.c:155
-#, fuzzy
 msgid "Move entry down"
-msgstr "將目前的項目向下移"
+msgstr "項目下移"
 
 #: ../menueditor/menueditor-main-window.c:157
 msgid "_Help"
@@ -368,32 +344,27 @@ msgid "_About..."
 msgstr "關於(_A)..."
 
 #: ../menueditor/menueditor-main-window.c:158
-#, fuzzy
 msgid "Show informations about xfce4-menueditor"
-msgstr "無法執行 xfce4-menueditor：%s"
+msgstr "顯示關於 xfce4-menueditor 的資訊"
 
 # FIXME incomplete but temporarily ok
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all"
-msgstr "收起子選單"
+msgstr "全部收起"
 
 # FIXME incomplete but temporarily ok
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all menu entries"
-msgstr "收起子選單"
+msgstr "收起所有選單項目"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all"
-msgstr "開啟全部(_O)"
+msgstr "全部展開"
 
 # FIXME incomplete but temporarily ok
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all menu entries"
-msgstr "展開子選單"
+msgstr "展開選單項目"
 
 #: ../menueditor/menueditor-main-window.c:341
 msgid "Name"
@@ -442,9 +413,8 @@ msgid "Do you want to save before opening the default menu ?"
 msgstr "開啟預設選單前要先行儲存嗎？"
 
 #: ../menueditor/menueditor-main-window.c:594
-#, fuzzy
 msgid "Save menu file as"
-msgstr "開啟選單檔案"
+msgstr "將選單檔案儲存為"
 
 #: ../menueditor/menueditor-main-window.c:632
 #: ../menueditor/menueditor-main-window.c:1341
@@ -454,7 +424,7 @@ msgstr "關閉此選單前要先行儲存嗎？"
 #: ../menueditor/menueditor-main-window.c:856
 #: ../menueditor/menueditor-main-window.c:986
 msgid "quit"
-msgstr "退出"
+msgstr "離開"
 
 #: ../menueditor/menueditor-main-window.c:961
 #: ../menueditor/menueditor-main-window.c:1582
@@ -484,7 +454,7 @@ msgstr "Xfce4 選單編輯器"
 #. Credits
 #: ../menueditor/menueditor-main-window.c:1296
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "作者/維護者"
 
 #: ../menueditor/menueditor-main-window.c:1297
 #: ../menueditor/menueditor-main-window.c:1298
@@ -498,10 +468,9 @@ msgstr "圖示設計者"
 
 #: ../menueditor/menueditor-main-window.c:1343
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "您已對選單作出修改，退出前要先行儲存嗎？"
+msgstr "您已對選單作出修改，離開前要先行儲存嗎？"
 
 #: ../menueditor/menueditor-main-window.c:1345
-#, fuzzy
 msgid "Forget modifications"
 msgstr "忽略修改"
 
@@ -1094,7 +1063,7 @@ msgstr "一般"
 
 #: ../src/xfdesktop-file-icon-manager.c:1093
 msgid "Kind:"
-msgstr ""
+msgstr "種類"
 
 #: ../src/xfdesktop-file-icon-manager.c:1113
 msgid "Link Target:"
@@ -1260,41 +1229,35 @@ msgstr "重新命名(_R)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2320
 msgid "_Properties..."
-msgstr "屬性(_P)"
+msgstr "屬性(_P)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2336
-#, fuzzy
 msgid "Des_ktop"
-msgstr "桌面"
+msgstr "桌面(_K)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2355
-#, fuzzy
 msgid "Create _Launcher..."
-msgstr "啟動器(_L)"
+msgstr "建立啟動器(_L)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2376
-#, fuzzy
 msgid "Create _URL Link..."
-msgstr "URL 連結(_U)..."
+msgstr "建立 URL 連結(_U)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2393
-#, fuzzy
 msgid "Create _Folder..."
-msgstr "建立新資料夾"
+msgstr "建立資料夾(_F)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2436
 msgid "_Empty File"
 msgstr "空檔案(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2477
-#, fuzzy
 msgid "Desktop _Settings..."
-msgstr "桌面設定"
+msgstr "桌面設定(_S)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2486
-#, fuzzy
 msgid "_Desktop Properties..."
-msgstr "屬性(_P)"
+msgstr "桌面屬性(_D)"
 
 #: ../src/xfdesktop-file-icon-manager.c:3449 ../src/xfdesktop-file-icon.c:569
 #, c-format
@@ -1312,6 +1275,9 @@ msgid ""
 "Modified:%s\n"
 "Size: %s"
 msgstr ""
+"種類：%s\n"
+"修改於：%s\n"
+"大小：%s"
 
 #: ../src/xfdesktop-file-icon.c:753
 #, c-format
@@ -1345,93 +1311,3 @@ msgstr "設定桌面管理程式"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 桌面設定"
-
-#~ msgid "_Copy Files"
-#~ msgstr "複製檔案(_C)"
-
-#~ msgid "_Copy File"
-#~ msgstr "複製檔案(_C)"
-
-#~ msgid "Cu_t Files"
-#~ msgstr "剪下檔案(_T)"
-
-#~ msgid "Cu_t File"
-#~ msgstr "剪下檔案(_T)"
-
-#~ msgid "_Delete Files"
-#~ msgstr "刪除檔案(_D)"
-
-#~ msgid "_Delete File"
-#~ msgstr "刪除檔案(_D)"
-
-# NOTE「List file」表示「含檔案列表的檔案」，並非「列出檔案」之意
-#, fuzzy
-#~ msgid "_Paste Files"
-#~ msgstr "清單檔案"
-
-#~ msgid "broken link"
-#~ msgstr "失效的連結"
-
-#~ msgid "link to %s"
-#~ msgstr "連結至 %s"
-
-#~ msgid "Create _New"
-#~ msgstr "新建立(_N)"
-
-#~ msgid "_Folder..."
-#~ msgstr "資料夾(_F)..."
-
-#, fuzzy
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "您確定要刪除 \"%s\" 嗎？"
-
-#~ msgid "Core developer"
-#~ msgstr "主要開發者"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "指定的指令並不存在！"
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "要新增項目，就必須填寫所有欄位。"
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "「名稱」一欄必須填寫。"
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "「來源」一欄必須填寫。"
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "分隔線無法修改"
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "檔案 %s 並不存在！"
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "您想要將這個項目移動到其上層選單嗎？"
-
-#~ msgid "Edit"
-#~ msgstr "編輯"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "插入外置選單..."
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "開啟 Xfce4 選單檔案"
-
-#~ msgid "Save current menu"
-#~ msgstr "儲存目前的選單"
-
-#~ msgid "Delete the current entry"
-#~ msgstr "移除目前的項目"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "將 \"%s\" 移至 \"%s\" 時發生錯誤："
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "將 \"%s\" 複製到 \"%s\" 時發生錯誤："
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr "將 \"%s\" 連結至 \"%s\" 時發生錯誤："
-
-#~ msgid "File Error"
-#~ msgstr "檔案錯誤"
