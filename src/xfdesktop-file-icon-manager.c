@@ -231,7 +231,7 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
                     /* would prefer to use thunar_vfs_make_directory() here,
                      * but i don't want to use an async operation */
                     if(mkdir(pathname, 0700)) {
-                        gchar *primary = g_markup_printf_excaped(_("Xfdesktop was unable to create the folder \"%s\" to store desktop items:"),
+                        gchar *primary = g_markup_printf_escaped(_("Xfdesktop was unable to create the folder \"%s\" to store desktop items:"),
                                                                  pathname);
                         xfce_message_dialog(NULL, _("Create Folder Failed"),
                                             GTK_STOCK_DIALOG_WARNING, primary,
