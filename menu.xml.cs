@@ -53,7 +53,7 @@
 
 <xfdesktop-menu>
 
-	<title name="Menu plochy" icon="xfce4-backdrop"/>
+	<title name="Hlavní menu" icon="xfce4-backdrop"/>
 
 	<separator/>
 
@@ -87,8 +87,8 @@
 
     <separator/>
 
-    <app name="Nápovda" cmd="xfhelp4" icon="gnome-help"/>
-    <app name="O Xfce" cmd="xfce4-about" icon="gnome-info"/>
+    <app name="Nápověda" cmd="xfhelp4" icon="gnome-help"/>
+    <app name="O prostředí Xfce" cmd="xfce4-about" icon="gnome-info"/>
     <!--
       This will cause xfce4-session to quit, after first displaying a log-out
       dialog box.  If xfce4-session isn't running, it will quit xfdesktop.

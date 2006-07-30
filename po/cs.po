@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-07-12 20:47-0700\n"
-"PO-Revision-Date: 2006-05-05 19:34+0100\n"
+"PO-Revision-Date: 2006-07-26 21:27+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -71,9 +71,8 @@ msgstr "Příkaz:"
 #: ../menueditor/menueditor-add-dialog.c:188
 #: ../menueditor/menueditor-edit-dialog.c:163
 #: ../menueditor/menueditor-edit-dialog.c:164
-#, fuzzy
 msgid "Themed icon:"
-msgstr "Vybrat ikonu"
+msgstr "Ikona motivu:"
 
 #: ../menueditor/menueditor-add-dialog.c:205
 #: ../menueditor/menueditor-add-dialog.c:206
@@ -112,13 +111,13 @@ msgstr "Soubory s obrázky"
 #: ../menueditor/menueditor-add-dialog.c:243
 #: ../menueditor/menueditor-edit-dialog.c:219
 msgid "Use startup _notification"
-msgstr "Použít startovací _oznámení"
+msgstr "Použít _oznámení při spuštění"
 
 #. Run in terminal check button
 #: ../menueditor/menueditor-add-dialog.c:248
 #: ../menueditor/menueditor-edit-dialog.c:224
 msgid "Run in _terminal"
-msgstr "Pustit v _terminálu"
+msgstr "Spustit v _terminálu"
 
 #: ../menueditor/menueditor-add-dialog.c:285
 #: ../menueditor/menueditor-edit-dialog.c:261
@@ -128,34 +127,32 @@ msgstr "Vybrat příkaz"
 
 #: ../menueditor/menueditor-add-dialog.c:300
 #: ../menueditor/menueditor-edit-dialog.c:276
-#, fuzzy
 msgid "Executable Files"
-msgstr "Vysunutí se nezdařilo"
+msgstr "Spustitelné soubory"
 
 #: ../menueditor/menueditor-add-dialog.c:315
 #: ../menueditor/menueditor-edit-dialog.c:291
 msgid "Perl Scripts"
-msgstr ""
+msgstr "Skripty jazyka Perl"
 
 #: ../menueditor/menueditor-add-dialog.c:321
 #: ../menueditor/menueditor-edit-dialog.c:297
 msgid "Python Scripts"
-msgstr ""
+msgstr "Skripty jazyka Python"
 
 #: ../menueditor/menueditor-add-dialog.c:327
 #: ../menueditor/menueditor-edit-dialog.c:303
 msgid "Ruby Scripts"
-msgstr ""
+msgstr "Skripty jazyka Ruby"
 
 #: ../menueditor/menueditor-add-dialog.c:333
 #: ../menueditor/menueditor-edit-dialog.c:309
 msgid "Shell Scripts"
-msgstr ""
+msgstr "Shellové skripty"
 
 #: ../menueditor/menueditor-add-external-dialog.c:100
-#, fuzzy
 msgid "Add external menu entry"
-msgstr "Přidat externí menu"
+msgstr "Přidat externí položku menu"
 
 #: ../menueditor/menueditor-add-external-dialog.c:122
 msgid "File"
@@ -175,15 +172,14 @@ msgstr "Zdroj:"
 
 #: ../menueditor/menueditor-add-external-dialog.c:137
 #: ../menueditor/menueditor-edit-external-dialog.c:117
-#, fuzzy
 msgid "Select external menu"
-msgstr "Přidat externí menu"
+msgstr "Vybrat externí menu"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
 #: ../panel-plugin/desktop-menu-plugin.c:609
 msgid "Menu Files"
-msgstr "Souborové menu"
+msgstr "Soubory s menu"
 
 #. Style
 #: ../menueditor/menueditor-add-external-dialog.c:155
@@ -214,14 +210,12 @@ msgid "Edit menu entry"
 msgstr "Upravit položku menu"
 
 #: ../menueditor/menueditor-edit-external-dialog.c:96
-#, fuzzy
 msgid "Edit external menu entry"
-msgstr "Přidat externí menu"
+msgstr "Upravit položku externího menu"
 
 #: ../menueditor/menueditor-main.c:43
-#, fuzzy
 msgid "Xfce4-MenuEditor"
-msgstr "Editor hlavní nabídky prostředí Xfce4"
+msgstr "Xfce4-MenuEditor"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -229,12 +223,11 @@ msgstr "_Soubor"
 
 #: ../menueditor/menueditor-main-window.c:141
 msgid "_New"
-msgstr ""
+msgstr "_Nový"
 
 #: ../menueditor/menueditor-main-window.c:141
-#, fuzzy
 msgid "Create a new empty menu"
-msgstr "Vytvořit souborové menu Xfce4 "
+msgstr "Vytvořit nové prázdné menu"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:2068
@@ -242,149 +235,128 @@ msgid "_Open"
 msgstr "_Otevřít"
 
 #: ../menueditor/menueditor-main-window.c:142
-#, fuzzy
 msgid "Open existing menu"
-msgstr "Otevřít standardní menu"
+msgstr "Otevřít existující menu"
 
 #: ../menueditor/menueditor-main-window.c:143
-#, fuzzy
 msgid "Open _default menu"
-msgstr "Otevřít standardní menu"
+msgstr "Otevřít vý_chozí menu"
 
 #: ../menueditor/menueditor-main-window.c:143
 msgid "Open default menu"
-msgstr "Otevřít standardní menu"
+msgstr "Otevřít výchozí menu"
 
 #: ../menueditor/menueditor-main-window.c:144
 msgid "_Save"
-msgstr ""
+msgstr "_Uložit"
 
 #: ../menueditor/menueditor-main-window.c:144
-#, fuzzy
 msgid "Save modifications"
-msgstr "Zrušit modifikace."
+msgstr "Uložit změny"
 
 #: ../menueditor/menueditor-main-window.c:145
-#, fuzzy
 msgid "Save _as..."
-msgstr "Uložit jako..."
+msgstr "Uložit j_ako..."
 
 #: ../menueditor/menueditor-main-window.c:145
 msgid "Save menu under a given name"
-msgstr ""
+msgstr "Uložit menu pod daným názvem"
 
 #: ../menueditor/menueditor-main-window.c:146
 msgid "_Close"
-msgstr ""
+msgstr "_Zavřít"
 
 #: ../menueditor/menueditor-main-window.c:146
-#, fuzzy
 msgid "Close menu"
-msgstr "Zavřít aktuální menu "
+msgstr "Zavřít menu"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "_Quit"
-msgstr "Konec"
+msgstr "U_končit"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "Quit Xfce4-Menueditor"
-msgstr "Editor hlavní nabídky prostředí Xfce4"
+msgstr "Ukončit Xfce4-Menueditor"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
 msgstr "_Upravit"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "_Edit entry"
-msgstr "Upravit položku menu"
+msgstr "_Upravit položku"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "Edit selected entry"
-msgstr "Upravit položku menu"
+msgstr "Upravit vybranou položku"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "_Add entry"
-msgstr "Přidat položku menu"
+msgstr "_Přidat položku"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "Add a new entry in the menu"
-msgstr "Přidat položku do menu"
+msgstr "Přidat novou položku do menu"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add _external"
-msgstr "Přidat externí menu"
+msgstr "Přidat _externí"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add an external entry"
-msgstr "Přidat externí menu"
+msgstr "Přidat externí položku"
 
 #: ../menueditor/menueditor-main-window.c:153
 msgid "_Remove entry"
-msgstr ""
+msgstr "_Odebrat položku"
 
 #: ../menueditor/menueditor-main-window.c:153
-#, fuzzy
 msgid "Remove entry"
-msgstr "Přidat položku menu"
+msgstr "Odebrat položku"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "_Up"
-msgstr ""
+msgstr "_Nahoru"
 
 #: ../menueditor/menueditor-main-window.c:154
-#, fuzzy
 msgid "Move entry up"
-msgstr "Přesunout aktuální položku nahoru"
+msgstr "Posunout položku nahoru"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "_Down"
-msgstr ""
+msgstr "_Dolů"
 
 #: ../menueditor/menueditor-main-window.c:155
-#, fuzzy
 msgid "Move entry down"
-msgstr "Přesunout aktuální položku dolů"
+msgstr "Posunout položku dolů"
 
 #: ../menueditor/menueditor-main-window.c:157
 msgid "_Help"
-msgstr "_Pomoc"
+msgstr "_Nápověda"
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "_About..."
-msgstr "_O..."
+msgstr "_O aplikaci..."
 
 #: ../menueditor/menueditor-main-window.c:158
-#, fuzzy
 msgid "Show informations about xfce4-menueditor"
-msgstr "Nelze spustit Xfce4 menu editor : %s"
+msgstr "Zobrazit informace o xfce4-menueditor"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all"
-msgstr "Sbalit strom"
+msgstr "Sbalit vše"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all menu entries"
-msgstr "Sbalit strom"
+msgstr "Sbalit všechny položky menu"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all"
-msgstr "_Otevřít vše"
+msgstr "Rozbalit vše"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all menu entries"
-msgstr "Rozbalit strom"
+msgstr "Rozbalit všechny položky menu"
 
 #: ../menueditor/menueditor-main-window.c:341
 msgid "Name"
@@ -396,15 +368,15 @@ msgstr "Příkaz"
 
 #: ../menueditor/menueditor-main-window.c:345
 msgid "Hidden"
-msgstr "Skryto"
+msgstr "Skrytý"
 
 #: ../menueditor/menueditor-main-window.c:427
 msgid "Are you sure you want to close the current menu?"
-msgstr "Jste si jistý, že chcete zavčít aktuální menu ?"
+msgstr "Jste si jisti, že chcete zavřít aktuální menu ?"
 
 #: ../menueditor/menueditor-main-window.c:441
 msgid "Do you want to save before closing the file?"
-msgstr "Chcete uložit před uzavřením souboru?"
+msgstr "Chcete soubor před zavřením uložit?"
 
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
@@ -415,31 +387,30 @@ msgstr "Otázka"
 
 #: ../menueditor/menueditor-main-window.c:481
 msgid "Do you want to save before opening an other menu ?"
-msgstr "Chcete uložit před otevřením jiného menu ?"
+msgstr "Chcete toto menu uložit před otevřením jiného menu?"
 
 #: ../menueditor/menueditor-main-window.c:483
 #: ../menueditor/menueditor-main-window.c:536
 #: ../menueditor/menueditor-main-window.c:634
 msgid "Ignore modifications"
-msgstr "Ignorovat modifikace"
+msgstr "Zahodit změny"
 
 #: ../menueditor/menueditor-main-window.c:494
 msgid "Open menu file"
-msgstr "Otevřít souborové menu"
+msgstr "Otevřít soubor s menu"
 
 #: ../menueditor/menueditor-main-window.c:534
 msgid "Do you want to save before opening the default menu ?"
-msgstr "Chcete uložit před otevřením standartního menu?"
+msgstr "Chcete toto menu uložit před otevřením výchozího menu?"
 
 #: ../menueditor/menueditor-main-window.c:594
-#, fuzzy
 msgid "Save menu file as"
-msgstr "Otevřít souborové menu"
+msgstr "Uložit soubor s menu jako"
 
 #: ../menueditor/menueditor-main-window.c:632
 #: ../menueditor/menueditor-main-window.c:1341
 msgid "Do you want to save before closing the menu ?"
-msgstr "Chcete uložit před zavřením menu?"
+msgstr "Chcete toto menu před zavřením uložit?"
 
 #: ../menueditor/menueditor-main-window.c:856
 #: ../menueditor/menueditor-main-window.c:986
@@ -455,32 +426,32 @@ msgstr "--- oddělovač ---"
 #: ../menueditor/menueditor-main-window.c:1086
 #: ../menueditor/menueditor-main-window.c:1636
 msgid "--- include ---"
-msgstr "--- obsahuje ---"
+msgstr "--- vložit ---"
 
 #: ../menueditor/menueditor-main-window.c:1087
 #: ../menueditor/menueditor-main-window.c:1653
 msgid "system"
-msgstr "systém"
+msgstr "systémová nabídka"
 
 #: ../menueditor/menueditor-main-window.c:1213
 #: ../menueditor/menueditor-main-window.c:1261
 msgid "Do you want to move the item into the submenu?"
-msgstr "Chcete přesunout položku do podmenu ?"
+msgstr "Chcete přesunout položku do podmenu?"
 
 #: ../menueditor/menueditor-main-window.c:1291
 msgid "A menu editor for Xfce4"
-msgstr "Editor menu pro Xdce4"
+msgstr "Editor menu pro Xfce4"
 
 #. Credits
 #: ../menueditor/menueditor-main-window.c:1296
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "Autor/správce"
 
 #: ../menueditor/menueditor-main-window.c:1297
 #: ../menueditor/menueditor-main-window.c:1298
 #: ../menueditor/menueditor-main-window.c:1299
 msgid "Contributor"
-msgstr "Přispěvovatel (taky díky)"
+msgstr "Přispěvatel"
 
 #: ../menueditor/menueditor-main-window.c:1300
 msgid "Icon designer"
@@ -488,19 +459,18 @@ msgstr "Návrh ikon"
 
 #: ../menueditor/menueditor-main-window.c:1343
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Modifikovali jste menu, chcete jej uložit před ukončením ?"
+msgstr "Upravili jste menu, chcete jej před ukončením uložit?"
 
 #: ../menueditor/menueditor-main-window.c:1345
-#, fuzzy
 msgid "Forget modifications"
-msgstr "Ignorovat modifikace"
+msgstr "Zahodit úpravy"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
 #: ../panel-plugin/desktop-menu-plugin.c:768
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
-msgstr "Menu Xfce4"
+msgstr "Menu Xfce"
 
 #: ../modules/menu/desktop-menu-file.c:118
 #: ../modules/menu/desktop-menu-file.c:133
@@ -508,21 +478,13 @@ msgid "Unable to quit session."
 msgstr "Nelze ukončit sezení."
 
 #: ../modules/menu/desktop-menu-file.c:119
-msgid ""
-"Quitting the session requires that Xfce's session manager (xfce4-session) is "
-"running, but it was not detected.  Please quit Xfce via another means."
-msgstr ""
-"Ukončení sezení vyžaduje, aby byl správce sezení prostředí Xfce (xfce4-"
-"session) spuštěn, nebyl však nalezen. Ukončete prosím Xfce jinak."
+msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
+msgstr "Ukončení sezení vyžaduje, aby byl spuštěn správce sezení prostředí Xfce (xfce4-session), který však nebyl nalezen. Ukončete prosím Xfce jinak."
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
-msgid ""
-"Quitting the session requires the 'xfce4-session-logout' command, but it "
-"could not be found: %s"
-msgstr ""
-"Ukončení sezení vyžaduje příkaz 'xfce4-session-logout', nebyl však nalezen: %"
-"s"
+msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
+msgstr "Ukončení sezení vyžaduje příkaz 'xfce4-session-logout', který  však nebyl nalezen: %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
@@ -534,13 +496,13 @@ msgstr "Vybrat ikonu"
 
 #: ../panel-plugin/desktop-menu-plugin.c:580
 msgid "Select Menu File"
-msgstr "Vybrat souborové menu"
+msgstr "Vybrat soubor s menu"
 
 #: ../panel-plugin/desktop-menu-plugin.c:737
 #: ../settings/behavior-settings.c:217
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "Nelze spustit Xfce4 menu editor : %s"
+msgstr "Nelze spustit xfce4-menueditor: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:760
 msgid "Edit Properties"
@@ -552,11 +514,11 @@ msgstr "Tlačítko"
 
 #: ../panel-plugin/desktop-menu-plugin.c:791
 msgid "Button _title:"
-msgstr "_Tlačítko ikony:"
+msgstr "Popisek _tlačítka:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:804
 msgid "_Show title in button"
-msgstr "Zobrazovat nápis na tlačítku"
+msgstr "_Zobrazovat popisek tlačítka"
 
 #: ../panel-plugin/desktop-menu-plugin.c:811
 msgid "Menu File"
@@ -581,7 +543,7 @@ msgstr "Ikony"
 
 #: ../panel-plugin/desktop-menu-plugin.c:901
 msgid "_Button icon:"
-msgstr "_Tlačítko ikony:"
+msgstr "Ikona _tlačítka:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:925
 msgid "Show _icons in menu"
@@ -589,38 +551,38 @@ msgstr "Zobrazit _ikony v menu"
 
 #: ../panel-plugin/desktop-menu-plugin.c:948
 msgid "There is already a panel menu registered for this screen"
-msgstr ""
+msgstr "Na této obrazovce se již nachází menu panelu."
 
 #: ../panel-plugin/desktop-menu-plugin.c:1056
-#, fuzzy
 msgid "Edit Menu"
-msgstr "_Upravit nabídku"
+msgstr "Upravit nabídku"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
 msgid "Button Label|Desktop"
-msgstr "Popisek tlačítka|Plocha"
+msgstr "Plocha"
 
-#: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
+#: ../settings/appearance-settings.c:187
+#: ../settings/appearance-settings.c:196
 #: ../settings/backdrop-list-manager.c:631
 msgid "backdrops.list"
-msgstr "seznam pozadí"
+msgstr "backdrops.list"
 
 #: ../settings/appearance-settings.c:527
 msgid "Select backdrop image or list file"
-msgstr "Vybrat obrázek pozadí nebo soubor se seznamem"
+msgstr "Vybrat obrázek na pozadí nebo soubor se seznamem"
 
 #: ../settings/appearance-settings.c:545
 msgid "List Files (*.list)"
-msgstr "Seznam souborů (*.list)"
+msgstr "Soubory seznamů (*.list)"
 
 #: ../settings/appearance-settings.c:637
 msgid "_Edit list..."
-msgstr "_Upravit seznam..."
+msgstr "Up_ravit seznam..."
 
 #: ../settings/appearance-settings.c:645
 msgid "_New list..."
-msgstr "_Nový seznam..."
+msgstr "Nový s_eznam..."
 
 #: ../settings/appearance-settings.c:678
 msgid "S_tyle:"
@@ -632,7 +594,7 @@ msgstr "Automaticky"
 
 #: ../settings/appearance-settings.c:686
 msgid "Centered"
-msgstr "Vycentrovat"
+msgstr "Vystředit"
 
 #: ../settings/appearance-settings.c:687
 msgid "Tiled"
@@ -659,7 +621,8 @@ msgstr "Prostředí Xfce nebude schopno spravovat Vaši plochu (%s)."
 msgid "Unknown Error"
 msgstr "Neznámá chyba"
 
-#: ../settings/appearance-settings.c:806 ../src/xfdesktop-file-icon.c:698
+#: ../settings/appearance-settings.c:806
+#: ../src/xfdesktop-file-icon.c:698
 #: ../src/xfdesktop-file-icon.c:756
 msgid "Error"
 msgstr "Chyba"
@@ -673,18 +636,8 @@ msgid "Information"
 msgstr "Informace"
 
 #: ../settings/appearance-settings.c:836
-msgid ""
-"To ensure that Xfce does not manage your desktop the next time you start "
-"Xfce, please be sure to save your session when logging out.  If you are not "
-"using the Xfce Session Manager (xfce4-session), you will need to manually "
-"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-"Pro ujištění, že prostředí Xfce nebude spravovat Vaši plochu po příštím "
-"startu, prosím uložte Vaše sezení při odhlašování. Pokud nepoužíváte správce "
-"sezení prostředí Xfce (xfce4-sesion), musíte upravit ručně soubor ~./.config/"
-"xfce4/xinitrc. Podrobnosti najdete v dokumentaci poskytované na adrese "
-"http://xfce.org/."
+msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "Abyste zabránili prostředí Xfce spravovat Vaši plochu po příštím spuštění, uložte při odhlašování Vaše sezení. Pokud nepoužíváte správce sezení prostředí Xfce (xfce4-session), musíte ručně upravit soubor ~./.config/xfce4/xinitrc. Podrobnosti najdete v dokumentaci poskytované na adrese http://xfce.org/."
 
 #: ../settings/appearance-settings.c:844
 msgid "_Do not show this again"
@@ -692,7 +645,6 @@ msgstr "Příště už tuto zprávu _nezobrazovat"
 
 #. the dialog
 #: ../settings/appearance-settings.c:911
-#, fuzzy
 msgid "Desktop Preferences"
 msgstr "Nastavení plochy"
 
@@ -702,7 +654,7 @@ msgstr "Povolit prostředí Xfce spravovat Vaši plochu"
 
 #: ../settings/appearance-settings.c:969
 msgid "Stretch single backdrop onto _all monitors"
-msgstr "Roztáhnout jednoduchý b_ackdrop na všechny monitory"
+msgstr "Roz_táhnout jednoduchý backdrop na všechny monitory"
 
 #. add the single backdrop settings page to the main notebook
 #: ../settings/appearance-settings.c:983
@@ -717,19 +669,19 @@ msgstr "Barva"
 
 #: ../settings/appearance-settings.c:1023
 msgid "_Color Style:"
-msgstr "Barevný styl:"
+msgstr "_Barevný styl:"
 
 #: ../settings/appearance-settings.c:1030
 msgid "Solid Color"
-msgstr "Plná (solidní) barva"
+msgstr "Jednobarevný"
 
 #: ../settings/appearance-settings.c:1031
 msgid "Horizontal Gradient"
-msgstr "Horizontálně stupňovat"
+msgstr "Horizontální stupňování"
 
 #: ../settings/appearance-settings.c:1032
 msgid "Vertical Gradient"
-msgstr "Vertikálně stupňovat"
+msgstr "Vertikální stupňování"
 
 #: ../settings/appearance-settings.c:1045
 msgid "Fi_rst Color:"
@@ -745,43 +697,43 @@ msgstr "Obrázek"
 
 #: ../settings/appearance-settings.c:1099
 msgid "Show _Image"
-msgstr "Ukázat _obrázek"
+msgstr "Zobrazit _obrázek"
 
 #: ../settings/appearance-settings.c:1121
 msgid "_File:"
-msgstr "_Soubor:"
+msgstr "So_ubor:"
 
 #: ../settings/appearance-settings.c:1176
 #: ../settings/appearance-settings.c:1178
 #, c-format
 msgid "Screen %d"
-msgstr "Obraz %d"
+msgstr "Obrazovka %d"
 
 #. and if we have multiple screens, each with multiple monitors
 #: ../settings/appearance-settings.c:1183
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr "Obraz %d, Monitor %d"
+msgstr "Obrazovka %d, Monitor %d"
 
 #: ../settings/appearance-settings.c:1200
 msgid "_Behavior"
 msgstr "_Chování"
 
-#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#: ../settings/backdrop-list-manager.c:160
+#: ../src/xfce-desktop-settings.c:74
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
+"Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
-"Nemohu uložit soubor %s: %s\n"
+"Nelze uložit soubor %s: %s\n"
 "\n"
-"Prosím vyberte jiné umístění nebo použijte zrušit pro zrušení změn "
+"Vyberte jiné umístění nebo použijte zrušit pro zahození změn "
 
 #: ../settings/backdrop-list-manager.c:430
 msgid "Select backdrop image file"
-msgstr "Vyberte soubor s obrázkem pro pozadí"
+msgstr "Vyberte soubor s obrázkem na pozadí"
 
 #: ../settings/backdrop-list-manager.c:531
 msgid "Choose backdrop list filename"
@@ -793,7 +745,7 @@ msgstr "Seznam souborů"
 
 #: ../settings/backdrop-list-manager.c:603
 msgid "Backdrop List"
-msgstr "Zeznam pozadí"
+msgstr "Seznam pozadí"
 
 #: ../settings/backdrop-list-manager.c:620
 msgid "Image files"
@@ -801,7 +753,7 @@ msgstr "Soubory s obrázky"
 
 #: ../settings/backdrop-list-manager.c:639
 msgid "List file"
-msgstr "Seznam souborů"
+msgstr "Soubor se seznamem"
 
 #: ../settings/backdrop-list-manager.c:661
 msgid "Create backdrop list"
@@ -809,11 +761,11 @@ msgstr "Vytvořit seznam pozadí"
 
 #: ../settings/backdrop-list-manager.c:694
 msgid "Edit backdrop list"
-msgstr "Editovat seznam pozadí"
+msgstr "Upravit seznam pozadí"
 
 #: ../settings/behavior-settings.c:241
 msgid "Menus"
-msgstr "Nabídky"
+msgstr "Menu"
 
 #: ../settings/behavior-settings.c:249
 msgid "Show _window list on middle click"
@@ -830,7 +782,7 @@ msgstr "Ikony na ploše"
 #: ../settings/behavior-settings.c:288
 #: ../src/xfdesktop-file-icon-manager.c:1019
 msgid "None"
-msgstr "Nic"
+msgstr "Žádné"
 
 #: ../settings/behavior-settings.c:289
 msgid "Minimized application icons"
@@ -838,15 +790,15 @@ msgstr "Ikony minimalizovaných aplikací"
 
 #: ../settings/behavior-settings.c:291
 msgid "File/launcher icons"
-msgstr "Ikony souboru/spouštěče"
+msgstr "Ikony souborů a spouštěčů"
 
 #: ../settings/behavior-settings.c:306
 msgid "_Icon size:"
-msgstr "Veliko_st ikon:"
+msgstr "Velikost _ikon:"
 
 #: ../settings/behavior-settings.c:320
 msgid "Use _system font size"
-msgstr "Používat _systémovou velikost písma"
+msgstr "P_oužívat systémovou velikost písma"
 
 #: ../settings/behavior-settings.c:337
 msgid "Custom _font size:"
@@ -860,7 +812,7 @@ msgstr "Toto je program %s verze %s, spuštěný v prostředí Xfce %s.\n"
 #: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Sestaveno s GTK+ %d.%d.%d, slinkovaného s GTK+ %d.%d.%d."
+msgstr "Sestaveno s GTK+ %d.%d.%d, slinkováno s GTK+ %d.%d.%d."
 
 #: ../src/main.c:246
 msgid "Build options:\n"
@@ -871,11 +823,13 @@ msgstr "Volby při sestavování: \n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Nabídka plochy:         %s\n"
 
-#: ../src/main.c:249 ../src/main.c:256
+#: ../src/main.c:249
+#: ../src/main.c:256
 msgid "enabled"
 msgstr "povoleno"
 
-#: ../src/main.c:251 ../src/main.c:258
+#: ../src/main.c:251
+#: ../src/main.c:258
 msgid "disabled"
 msgstr "zakázáno"
 
@@ -895,22 +849,19 @@ msgstr "Možnosti jsou:\n"
 
 #: ../src/main.c:288
 msgid "    -reload      Reload all settings, refresh image list\n"
-msgstr ""
-"   - reload      Nahrát znovu všechny nastavení, obnovit seznam obrázků\n"
+msgstr "   - reload      Znovu načíst všechna nastavení, obnovit seznam obrázků\n"
 
 #: ../src/main.c:289
 msgid "    -menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    menu        Otevřít menu (na aktuální pozici kurzoru myši)\n"
+msgstr "    -menu        Otevřít menu (na aktuální pozici kurzoru myši)\n"
 
 #: ../src/main.c:290
-msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    -windowlist  Otevřít seznam oken (na aktuální pozici kurzoru myši)\n"
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    -windowlist  Otevřít seznam oken (na aktuální pozici kurzoru myši)\n"
 
 #: ../src/main.c:291
 msgid "    -quit        Cause xfdesktop to quit\n"
-msgstr "    -quit        Ukončí xfdesktop\n"
+msgstr "    -quit        Ukončit xfdesktop\n"
 
 #: ../src/windowlist.c:193
 #, c-format
@@ -920,9 +871,10 @@ msgstr "<b>Pracovní plocha %d</b>"
 #: ../src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "<i>Pracovní plocha%d</i>"
+msgstr "<i>Pracovní plocha %d</i>"
 
-#: ../src/windowlist.c:268 ../src/windowlist.c:271
+#: ../src/windowlist.c:268
+#: ../src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "_Přidat pracovní plochu"
 
@@ -934,7 +886,7 @@ msgstr "_Odebrat pracovní plochu %d"
 #: ../src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "_Odebrat pracovní plochu %s"
+msgstr "_Odebrat pracovní plochu '%s'"
 
 #: ../src/xfce-desktop.c:570
 msgid "Desktop"
@@ -942,29 +894,23 @@ msgstr "Plocha"
 
 #: ../src/xfdesktop-file-icon-manager.c:234
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop nebyl schopen vytvořit adresář \"%s\" pro uchování položek plochy:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop nebyl schopen vytvořit adresář \"%s\" pro uchování položek plochy:"
 
 #: ../src/xfdesktop-file-icon-manager.c:236
 #: ../src/xfdesktop-file-icon-manager.c:245
 #: ../src/xfdesktop-file-icon-manager.c:1571
 msgid "Create Folder Failed"
-msgstr "Vytvoření adresáře selhalo"
+msgstr "Nepodařilo se vytvořit adresář"
 
 #: ../src/xfdesktop-file-icon-manager.c:243
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop není schopen použít \"%s\" k uchování položek plochy, protože není "
-"adresářem."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop nemůže použít \"%s\" k uchování položek plochy, protože není adresářem."
 
 #: ../src/xfdesktop-file-icon-manager.c:247
 msgid "Please delete or rename the file."
-msgstr "Prosím smažte nebo přejmenujte soubor."
+msgstr "Smažte nebo přejmenujte soubor."
 
 #: ../src/xfdesktop-file-icon-manager.c:372
 #: ../src/xfdesktop-file-icon-manager.c:885
@@ -975,12 +921,11 @@ msgstr "Nelze připojit \"%s\":"
 #: ../src/xfdesktop-file-icon-manager.c:374
 #: ../src/xfdesktop-file-icon-manager.c:889
 msgid "Mount Failed"
-msgstr "Připojení selhalo"
+msgstr "Připojení se nepodařilo"
 
 #: ../src/xfdesktop-file-icon-manager.c:376
-#, fuzzy
 msgid "Unknown error."
-msgstr "Neznámá chyba"
+msgstr "Neznámá chyba."
 
 #: ../src/xfdesktop-file-icon-manager.c:437
 #: ../src/xfdesktop-file-icon-manager.c:768
@@ -1038,12 +983,8 @@ msgid "Delete Multiple Files"
 msgstr "Smazat více souborů"
 
 #: ../src/xfdesktop-file-icon-manager.c:807
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Tato vlastnost vyžaduje přítomnost služby správce souborů (taková služba je "
-"dodávána aplikací Thunar)."
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Tato vlastnost vyžaduje přítomnost služby správce souborů (například aplikaci Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:886
 #, c-format
@@ -1052,7 +993,7 @@ msgstr "Nelze odpojit \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:889
 msgid "Unmount Failed"
-msgstr "Odpojení selhalo"
+msgstr "Odpojení se napodařilo"
 
 #: ../src/xfdesktop-file-icon-manager.c:918
 #, c-format
@@ -1061,7 +1002,7 @@ msgstr "Nemohu vysunout \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:920
 msgid "Eject Failed"
-msgstr "Vysunutí se nezdařilo"
+msgstr "Vysunutí se nepodařilo"
 
 #: ../src/xfdesktop-file-icon-manager.c:989
 #, c-format
@@ -1090,7 +1031,7 @@ msgstr "Obecné"
 
 #: ../src/xfdesktop-file-icon-manager.c:1093
 msgid "Kind:"
-msgstr "Druh:"
+msgstr "Typ:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1113
 msgid "Link Target:"
@@ -1121,11 +1062,13 @@ msgstr "Volné místo:"
 msgid "Size:"
 msgstr "Velikost:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1292 ../src/xfdesktop-file-icon.c:676
+#: ../src/xfdesktop-file-icon-manager.c:1292
+#: ../src/xfdesktop-file-icon.c:676
 msgid "%s (%"
 msgstr "%s (%"
 
-#: ../src/xfdesktop-file-icon-manager.c:1292 ../src/xfdesktop-file-icon.c:676
+#: ../src/xfdesktop-file-icon-manager.c:1292
+#: ../src/xfdesktop-file-icon.c:676
 msgid " Bytes)"
 msgstr "bajtů)"
 
@@ -1167,10 +1110,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Nelze vytvořit soubor s názvem \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1607
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Nelze spustit \"exo-desktop-item-edit\". Tato aplikace je vyžadována pro vytváření a upravování spouštěčů a odkazů na ploše."
 
 #: ../src/xfdesktop-file-icon-manager.c:1640
 msgid "Create New Folder"
@@ -1193,7 +1134,7 @@ msgstr "Nelze vytvořit soubor s názvem \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1684
 msgid "Create File Failed"
-msgstr "Vytvoření souboru selhalo"
+msgstr "Nepodařilo se vytvořit soubor"
 
 #: ../src/xfdesktop-file-icon-manager.c:1723
 #, c-format
@@ -1209,14 +1150,13 @@ msgid "New Empty File"
 msgstr "Nový prázdný soubor"
 
 #: ../src/xfdesktop-file-icon-manager.c:1779
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file \"%s\":"
-msgstr "Nelze vytvořit soubor s názvem \"%s\":"
+msgstr "Nelze vytvořit soubor \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1780
-#, fuzzy
 msgid "Create Error"
-msgstr "Chyba vlastností"
+msgstr "Chyba při vytváření"
 
 #: ../src/xfdesktop-file-icon-manager.c:2053
 msgid "_Open all"
@@ -1227,9 +1167,8 @@ msgid "_Execute"
 msgstr "_Spustit"
 
 #: ../src/xfdesktop-file-icon-manager.c:2102
-#, fuzzy
 msgid "_Edit Launcher"
-msgstr "Spouštěč"
+msgstr "_Upravit spouštěč"
 
 #: ../src/xfdesktop-file-icon-manager.c:2142
 msgid "Open With"
@@ -1260,44 +1199,41 @@ msgid "_Properties..."
 msgstr "_Vlastnosti..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2336
-#, fuzzy
 msgid "Des_ktop"
-msgstr "Plocha"
+msgstr "_Plocha"
 
 #: ../src/xfdesktop-file-icon-manager.c:2355
-#, fuzzy
 msgid "Create _Launcher..."
-msgstr "Spouštěč"
+msgstr "_Vytvořit spouštěč..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2376
 msgid "Create _URL Link..."
-msgstr ""
+msgstr "Vytvořit odkaz _URL..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2393
-#, fuzzy
 msgid "Create _Folder..."
-msgstr "Vytvořit nový adresář"
+msgstr "Vytvořit _adresář"
 
 #: ../src/xfdesktop-file-icon-manager.c:2436
 msgid "_Empty File"
 msgstr "_Prázdný soubor"
 
 #: ../src/xfdesktop-file-icon-manager.c:2477
-#, fuzzy
 msgid "Desktop _Settings..."
-msgstr "Nastavení plochy"
+msgstr "_Nastavení plochy"
 
 #: ../src/xfdesktop-file-icon-manager.c:2486
-#, fuzzy
 msgid "_Desktop Properties..."
-msgstr "_Vlastnosti..."
+msgstr "_Vlastnosti plochy..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3449 ../src/xfdesktop-file-icon.c:569
+#: ../src/xfdesktop-file-icon-manager.c:3449
+#: ../src/xfdesktop-file-icon.c:569
 #, c-format
 msgid "Failed to run \"%s\":"
-msgstr "Spuštění \"%s\" selhalo:"
+msgstr "Nepodařilo se spustit \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:3451 ../src/xfdesktop-file-icon.c:571
+#: ../src/xfdesktop-file-icon-manager.c:3451
+#: ../src/xfdesktop-file-icon.c:571
 msgid "Run Error"
 msgstr "Chyba při běhu"
 
@@ -1308,23 +1244,26 @@ msgid ""
 "Modified:%s\n"
 "Size: %s"
 msgstr ""
+"Typ: %s\n"
+"Změněno:%s\n"
+"Velikost: %s"
 
 #: ../src/xfdesktop-file-icon.c:753
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr "Přejmenování \"%s\" na \"%s\" selhalo:"
+msgstr "Nepodařilo se přejmenovat \"%s\" na \"%s\":"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Grafický nástroj pro úpravu nabídky prostředí Xfce 4"
+msgstr "Grafický nástroj pro úpravu menu prostředí Xfce 4"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
-msgstr "Editor nabídky"
+msgstr "Editor menu"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
-msgstr "Editor hlavní nabídky prostředí Xfce4"
+msgstr "Editor hlavního menu Xfce 4"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
@@ -1336,37 +1275,30 @@ msgstr "Nastavení plochy"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr "Nastavení správce prostředí Xfce4"
+msgstr "Nastavení správce prostředí Xfce 4"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
-msgstr "Nastavení plochy prostředí Xfce4"
+msgstr "Nastavení plochy prostředí Xfce 4"
 
 #~ msgid "_Copy Files"
 #~ msgstr "_Kopírovat soubory"
-
 #~ msgid "_Copy File"
 #~ msgstr "_Kopírovat soubor"
-
 #~ msgid "Cu_t Files"
 #~ msgstr "Vyj_mout soubory"
-
 #~ msgid "Cu_t File"
 #~ msgstr "Vyjmou_t soubor"
-
 #~ msgid "_Delete Files"
 #~ msgstr "_Smazat soubory"
-
 #~ msgid "_Delete File"
 #~ msgstr "_Smazat soubor"
 
 #, fuzzy
 #~ msgid "_Paste Files"
 #~ msgstr "Seznam souborů"
-
 #~ msgid "broken link"
 #~ msgstr "neplatný odkaz"
-
 #~ msgid "link to %s"
 #~ msgstr "odkaz na %s"
 
@@ -1381,54 +1313,38 @@ msgstr "Nastavení plochy prostředí Xfce4"
 #, fuzzy
 #~ msgid "Are sure you want to quit?"
 #~ msgstr "Opravdu chcete smazat \"%s\"?"
-
 #~ msgid "Core developer"
 #~ msgstr "Hlavní vývojář (patří mu ten největší dík)"
-
 #~ msgid "The command doesn't exist !"
 #~ msgstr "Příkaz neexistuje!"
-
 #~ msgid "All fields must be filled to add an item."
 #~ msgstr "Pro přidání položky musí být všechny pole vyplněné."
-
 #~ msgid "The 'Name' field is required."
 #~ msgstr "Pole Název musí být vyplněné."
-
 #~ msgid "The 'Source' field is required."
 #~ msgstr "Pole Zdroj musí být vyplněné."
-
 #~ msgid "Separators cannot be edited"
 #~ msgstr "Oddělovač nemůže být upravovaný"
-
 #~ msgid "File %s doesn't exist !"
 #~ msgstr "Soubor %s neexistuje !"
-
 #~ msgid "Do you want to move the item into the parent menu?"
 #~ msgstr "Chcete přesunout položku do základního menu ?"
-
 #~ msgid "Edit"
 #~ msgstr "Upravit "
-
 #~ msgid "Add an external menu..."
 #~ msgstr "Přidat externí menu"
-
 #~ msgid "Open an Xfce4 menu file"
 #~ msgstr "Otevřít souborové menu Xfce4 "
-
 #~ msgid "Save current menu"
 #~ msgstr "Uložit aktuální menu"
-
 #~ msgid "Delete the current entry"
 #~ msgstr "Odstranit aktuální položku"
-
 #~ msgid "There was an error moving \"%s\" to \"%s\":"
 #~ msgstr "Chyba při přesunu \"%s\" do \"%s\":"
-
 #~ msgid "There was an error copying \"%s\" to \"%s\":"
 #~ msgstr "Chyba při kopírování \"%s\" do \"%s\":"
-
 #~ msgid "There was an error linking \"%s\" to \"%s\":"
 #~ msgstr "Chyba při vytváření symbolického odkazu \"%s\" na \"%s\":"
-
 #~ msgid "File Error"
 #~ msgstr "Chyba souboru"
+

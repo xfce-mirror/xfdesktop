@@ -37,7 +37,7 @@
 
 <xfce-registered-categories>
 	<category name="Legacy" toplevel="true" builtin-icon="ACCESSORIES" />
-	<category name="Core" toplevel="true" builtin-icon="ACCESSORIES" />
+	<category name="Core" toplevel="true" replace="Hlavní" builtin-icon="ACCESSORIES" />
 	<category name="Development" toplevel="true" replace="Vývoj" builtin-icon="DEVELOPMENT">
 		<subcategory name="Building" />
 		<subcategory name="Debugger" />
@@ -50,13 +50,13 @@
 		<subcategory name="ProjectManagement" />
 		<subcategory name="WebDevelopment" />
 	</category>
-	<category name="Building" builtin-icon="DEVELOPMENT" />
-	<category name="Debugger" replace="Debugging" builtin-icon="DEVELOPMENT" />
-	<category name="IDE" replace="Environments" builtin-icon="DEVELOPMENT" />
-	<category name="GUIDesigner" replace="GUI Designers" builtin-icon="DEVELOPMENT" />
+	<category name="Building" replace="Sestavování" builtin-icon="DEVELOPMENT" />
+	<category name="Debugger" replace="Ladicí nástroje" builtin-icon="DEVELOPMENT" />
+	<category name="IDE" replace="Vývojová prostředí (IDE)" builtin-icon="DEVELOPMENT" />
+	<category name="GUIDesigner" replace="Prostředí pro návrh GUI" builtin-icon="DEVELOPMENT" />
 	<category name="Profiling" builtin-icon="DEVELOPMENT" />
-	<category name="RevisionControl" replace="Revizní Kontrola" builtin-icon="DEVELOPMENT" />
-	<category name="Translation" replace="Překlad" builtin-icon="DEVELOPMENT" />
+	<category name="RevisionControl" replace="Revizní kontrola" builtin-icon="DEVELOPMENT" />
+	<category name="Translation" replace="Překlády a lokalizace" builtin-icon="DEVELOPMENT" />
 	<category name="Office" toplevel="true" replace="Kancelář" builtin-icon="OFFICE">
 		<subcategory name="Calendar" />
 		<subcategory name="ContactManagement" />
@@ -74,12 +74,12 @@
 		<subcategory name="Photograph" />
 		<subcategory name="Viewer" />
 	</category>
-	<category name="Calendar" replace="Kalendář" builtin-icon="OFFICE" />
-	<category name="ContactManagement" replace="Správce adres" builtin-icon="OFFICE" />
+	<category name="Calendar" replace="Kalendáře" builtin-icon="OFFICE" />
+	<category name="ContactManagement" replace="Správci kontaktů" builtin-icon="OFFICE" />
 	<category name="Database" replace="Databáze" builtin-icon="OFFICE" />
 	<category name="Dictionary" replace="Slovníky" builtin-icon="OFFICE" />
-	<category name="Chart" builtin-icon="OFFICE" />
-	<category name="Email" replace="Pošta" builtin-icon="OFFICE" />
+	<category name="Chart" replace="Grafy a tabulky" builtin-icon="OFFICE" />
+	<category name="Email" replace="Elektronická pošta" builtin-icon="OFFICE" />
 	<category name="Finance" replace="Finance" builtin-icon="OFFICE" />
 	<category name="FlowChart" replace="Flow Chart" builtin-icon="OFFICE" />
 	<category name="PDA" builtin-icon="OFFICE" />
@@ -134,15 +134,15 @@
 	</category>
 	<category name="Dialup" builtin-icon="NETWORK" />
 	<category name="InstantMessaging" replace="Instant Messaging" builtin-icon="NETWORK" />
-	<category name="IRCClient" replace="IRC klienti" builtin-icon="NETWORK" />
-	<category name="FileTransfer" replace="Přenos souboru" builtin-icon="NETWORK" />
+	<category name="IRCClient" replace="Klienti sítě IRC" builtin-icon="NETWORK" />
+	<category name="FileTransfer" replace="Přenos souborů" builtin-icon="NETWORK" />
 	<category name="HamRadio" replace="Ham Radio" builtin-icon="NETWORK" />
 	<category name="News" replace="Zprávy" builtin-icon="NETWORK" />
-	<category name="P2P" replace="P2P sítě" builtin-icon="NETWORK" />
+	<category name="P2P" replace="Sítě P2P" builtin-icon="NETWORK" />
 	<category name="RemoteAccess" replace="Vzdálený přístup" builtin-icon="NETWORK" />
 	<category name="Telephony" replace="Telefonie" builtin-icon="NETWORK" />
-	<category name="WebBrowser" replace="Prohlížeče stránek" builtin-icon="NETWORK" />
-	<category name="WebDevelopment" replace="Vývoj stránek" builtin-icon="NETWORK" />
+	<category name="WebBrowser" replace="Webové prohlížeče" builtin-icon="NETWORK" />
+	<category name="WebDevelopment" replace="Vývoj webových stránek" builtin-icon="NETWORK" />
 	<category name="AudioVideo" replace="Multimédia" toplevel="true" builtin-icon="MULTIMEDIA">
 		<subcategory name="Database" />
 		<subcategory name="HamRadio" />
@@ -164,7 +164,7 @@
 	</category>
 	<category name="Midi"  builtin-icon="MULTIMEDIA" />
 	<category name="Mixer" replace="Zvukový mixér" builtin-icon="MULTIMEDIA" />
-	<category name="Sequencer" replace="Sequencers" builtin-icon="MULTIMEDIA" />
+	<category name="Sequencer" replace="Sekvencery" builtin-icon="MULTIMEDIA" />
 	<category name="Tuner" replace="Rádio" builtin-icon="MULTIMEDIA" />
 	<category name="Video" replace="Video" builtin-icon="MULTIMEDIA">
 		<subcategory name="TV" />
@@ -174,9 +174,9 @@
 		<subcategory name="Music" />
 	</category>
 	<category name="TV" replace="Televize" builtin-icon="MULTIMEDIA" />
-	<category name="AudioVideoEditing" replace="Editace videa a zvuku" builtin-icon="MULTIMEDIA" />
+	<category name="AudioVideoEditing" replace="Úpravy videí a zvuků" builtin-icon="MULTIMEDIA" />
 	<category name="Player" replace="Přehrávače" builtin-icon="MULTIMEDIA" />
-	<category name="Recorder" replace="Nahrávání" builtin-icon="MULTIMEDIA" />
+	<category name="Recorder" replace="Pořizování záznamů" builtin-icon="MULTIMEDIA" />
 	<category name="DiscBurning" replace="Vypalování CD a DVD" builtin-icon="MULTIMEDIA" />
 	<category name="Game" toplevel="true" replace="Hry" builtin-icon="GAME">
 		<subcategory name="ActionGame" />
@@ -200,7 +200,7 @@
 	<category name="CardGame" replace="Karetní hry" builtin-icon="GAME" />
 	<category name="KidsGame" replace="Hry pro děti" builtin-icon="GAME" />
 	<category name="LogicGame" replace="Logické hry" builtin-icon="GAME" />
-	<category name="RolePlaying" replace="Role Playing Games" builtin-icon="GAME" />
+	<category name="RolePlaying" replace="Hry RPG (Role Playing Games)" builtin-icon="GAME" />
 	<category name="Simulation" replace="Simulátory" builtin-icon="GAME" />
 	<category name="SportsGame" replace="Sportovní hry" builtin-icon="GAME" />
 	<category name="StrategyGame" replace="Strategické hry" builtin-icon="GAME" />
@@ -232,17 +232,17 @@
 	<category name="MedicalSoftware" replace="Medicína" />
 	<category name="Physics" replace="Fyzika" />
 	<category name="Teaching" replace="Vyučování" />
-	<category name="Amusement" replace="Games" builtin-icon="GAME" />
-	<category name="Applet" replace="Applets" />
+	<category name="Amusement" replace="Zábavné" builtin-icon="GAME" />
+	<category name="Applet" replace="Applety" />
 	<category name="Archiving" replace="Archivace" builtin-icon="SYSTEM"/>
 	<category name="Electronics" replace="Elektronika" builtin-icon="SYSTEM"/>
-	<category name="Emulator" toplevel="true" replace="Emulátor" builtin-icon="SYSTEM" />
+	<category name="Emulator" toplevel="true" replace="Emulátory" builtin-icon="SYSTEM" />
 	<category name="Engineering" />
-	<category name="FileManager" replace="Souborové manažery" />
+	<category name="FileManager" replace="Spravci souborů" />
 	<category name="Shell" replace="Shell" />
-	<category name="Screensaver" replace="Šetřič obrazovky" />
+	<category name="Screensaver" replace="Šetřiče obrazovky" />
 	<category name="TerminalEmulator" replace="Emulátory terminálu" />
-	<category name="TrayIcon" replace="System Tray Icons" />
+	<category name="TrayIcon" replace="Ikony systémové oblasti" />
 	<category name="System" toplevel="true" replace="Systém" builtin-icon="SYSTEM">
 		<subcategory name="FileSystem" />
 		<subcategory name="Monitor" />
@@ -251,7 +251,7 @@
 		<subcategory name="TerminalEmulator" />
 		<subcategory name="Shell" />
 	</category>
-	<category name="Filesystem" replace="Souborový systém" builtin-icon="SYSTEM" />
+	<category name="Filesystem" replace="Systém souborů" builtin-icon="SYSTEM" />
 	<category name="Monitor" replace="Monitorování" builtin-icon="SYSTEM" />
 	<category name="Security" replace="Bezpečnost" builtin-icon="SYSTEM" />
 	<category name="Utility" toplevel="true" replace="Nástroje" builtin-icon="ACCESSORIES">
@@ -265,9 +265,9 @@
 		<subcategory name="Shell" />
 	</category>
 	<category name="Accessibility" builtin-icon="UTILITY" />
-	<category name="Calculator" replace="Kalkulačky" builtin-icon="ACCESSORIES" />
+	<category name="Calculator" replace="Kalkulačka" builtin-icon="ACCESSORIES" />
 	<category name="Clock" replace="Hodiny" builtin-icon="ACCESSORIES" />
-	<category name="TextEditor" replace="Textový editor" builtin-icon="ACCESSORIES" />
+	<category name="TextEditor" replace="Textové editory" builtin-icon="ACCESSORIES" />
 	<category name="KDE" toplevel="true" ignore="true">
 		<subcategory name="Development" />
 		<subcategory name="Office" />
