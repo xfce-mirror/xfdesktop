@@ -1520,12 +1520,12 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
     i = _find_attribute (attribute_names, "name");
     if (i == -1)
       return;
-    name = g_strdup_printf (NAME_FORMAT, attribute_values[i]);
+    name = g_markup_printf_escaped (NAME_FORMAT, attribute_values[i]);
 
     j = _find_attribute (attribute_names, "cmd");
     if (j == -1)
       return;
-    command = g_strdup_printf (COMMAND_FORMAT, attribute_values[j]);
+    command = g_markup_printf_escaped (COMMAND_FORMAT, attribute_values[j]);
 
     k = _find_attribute (attribute_names, "term");
     l = _find_attribute (attribute_names, "snotify");
@@ -1559,7 +1559,7 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
     i = _find_attribute (attribute_names, "name");
     if (i == -1)
       return;
-    name = g_strdup_printf (MENU_FORMAT, attribute_values[i]);
+    name = g_markup_printf_escaped (MENU_FORMAT, attribute_values[i]);
 
     j = _find_attribute (attribute_names, "icon");
     if (j != -1 && *attribute_values[j])
@@ -1579,7 +1579,7 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
     g_queue_push_tail (state->parents, parent);
   }
   else if (!strcmp (element_name, "separator")) {
-    name = g_strdup_printf (SEPARATOR_FORMAT, _("--- separator ---"));
+    name = g_markup_printf_escaped (SEPARATOR_FORMAT, _("--- separator ---"));
 
     gtk_tree_store_append (treestore, &iter, iter_parent);
     gtk_tree_store_set (treestore, &iter,
@@ -1589,12 +1589,12 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
     i = _find_attribute (attribute_names, "name");
     if (i == -1)
       return;
-    name = g_strdup_printf (NAME_FORMAT, attribute_values[i]);
+    name = g_markup_printf_escaped (NAME_FORMAT, attribute_values[i]);
 
     j = _find_attribute (attribute_names, "cmd");
     if (j == -1)
       return;
-    command = g_strdup_printf (COMMAND_FORMAT, attribute_values[j]);
+    command = g_markup_printf_escaped (COMMAND_FORMAT, attribute_values[j]);
 
     k = _find_attribute (attribute_names, "icon");
     if (k != -1 && *attribute_values[k])
@@ -1615,7 +1615,7 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
     i = _find_attribute (attribute_names, "name");
     if (i == -1)
       return;
-    name = g_strdup_printf (TITLE_FORMAT, attribute_values[i]);
+    name = g_markup_printf_escaped (TITLE_FORMAT, attribute_values[i]);
 
     j = _find_attribute (attribute_names, "icon");
     if (j != -1 && *attribute_values[j])
@@ -1633,12 +1633,12 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
     i = _find_attribute (attribute_names, "type");
     if (i == -1)
       return;
-    name = g_strdup_printf (INCLUDE_FORMAT, _("--- include ---"));
+    name = g_markup_printf_escaped (INCLUDE_FORMAT, _("--- include ---"));
 
     if (!strcmp (attribute_values[i], "file")) {
       j = _find_attribute (attribute_names, "src");
       if (j != -1) {
-        command = g_strdup_printf (INCLUDE_PATH_FORMAT, attribute_values[j]);
+        command = g_markup_printf_escaped (INCLUDE_PATH_FORMAT, attribute_values[j]);
 
         gtk_tree_store_append (treestore, &iter, iter_parent);
         gtk_tree_store_set (treestore, &iter,
@@ -1650,7 +1650,7 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
     else if (!strcmp (attribute_values[i], "system")) {
       gboolean do_legacy = TRUE, only_unique = TRUE;
 
-      command = g_strdup_printf (INCLUDE_FORMAT, _("system"));
+      command = g_markup_printf_escaped (INCLUDE_FORMAT, _("system"));
 
       j = _find_attribute (attribute_names, "style");
       k = _find_attribute (attribute_names, "unique");
@@ -1841,10 +1841,11 @@ extract_text_from_markup (const gchar *markup)
   temp_set = set;
   while (*temp_set) {
     if (strlen (*temp_set) > 0 && !g_strrstr (*temp_set, "span")) {
-      text = g_markup_escape_text (*temp_set, strlen (*temp_set) * sizeof (gchar));
+      text = *temp_set; /* already escaped */
     }
     temp_set++;
   }
+  text = strdup (text ? text : "");
   g_strfreev (set);
 
   return text;
@@ -1894,17 +1895,24 @@ save_treeview_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIte
     fprintf (state->file_menu, "%s<title name=\"%s\"", space, name);
     if (hidden)
       fprintf (state->file_menu, " visible=\"no\"");
-    if (option_1 && strlen (option_1) > 0)
-      fprintf (state->file_menu, " icon=\"%s\"", option_1);
-
+    if (option_1 && *option_1)
+    {
+      temp = g_markup_escape_text (option_1, -1);
+      fprintf (state->file_menu, " icon=\"%s\"", temp);
+      free (temp);
+    }
     fprintf (state->file_menu, "/>\n");
     break;
   case MENU:
     fprintf (state->file_menu, "%s<menu name=\"%s\"", space, name);
     if (hidden)
       fprintf (state->file_menu, " visible=\"no\"");
-    if (option_1 && strlen (option_1) > 0)
-      fprintf (state->file_menu, " icon=\"%s\"", option_1);
+    if (option_1 && *option_1)
+    {
+      temp = g_markup_escape_text (option_1, -1);
+      fprintf (state->file_menu, " icon=\"%s\"", temp);
+      free (temp);
+    }
     if (gtk_tree_model_iter_has_child (model, iter))
       fprintf (state->file_menu, ">\n");
     else
@@ -1914,8 +1922,12 @@ save_treeview_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIte
     fprintf (state->file_menu, "%s<app name=\"%s\" cmd=\"%s\"", space, name, command);
     if (hidden)
       fprintf (state->file_menu, " visible=\"no\"");
-    if (option_1 && strlen (option_1) > 0)
-      fprintf (state->file_menu, " icon=\"%s\"", option_1);
+    if (option_1 && *option_1)
+    {
+      temp = g_markup_escape_text (option_1, -1);
+      fprintf (state->file_menu, " icon=\"%s\"", temp);
+      free (temp);
+    }
     if (option_2 && (strcmp (option_2, "true") == 0))
       fprintf (state->file_menu, " term=\"%s\"", option_2);
     if (option_3 && (strcmp (option_3, "true") == 0))
@@ -1926,9 +1938,12 @@ save_treeview_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIte
     fprintf (state->file_menu, "%s<builtin name=\"%s\" cmd=\"%s\"", space, name, command);
     if (hidden)
       fprintf (state->file_menu, " visible=\"no\"");
-    if (strlen (option_1) > 0)
-      fprintf (state->file_menu, " icon=\"%s\"", option_1);
-
+    if (option_1 && *option_1)
+    {
+      temp = g_markup_escape_text (option_1, -1);
+      fprintf (state->file_menu, " icon=\"%s\"", temp);
+      free (temp);
+    }
     fprintf (state->file_menu, "/>\n");
     break;
   case INCLUDE_FILE:
@@ -1939,8 +1954,12 @@ save_treeview_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIte
     break;
   case INCLUDE_SYSTEM:
     fprintf (state->file_menu, "%s<include type=\"system\"", space);
-    if (option_1 && strlen (option_1) > 0)
-      fprintf (state->file_menu, " style=\"%s\"", option_1);
+    if (option_1 && *option_1)
+    {
+      temp = g_markup_escape_text (option_1, -1);
+      fprintf (state->file_menu, " style=\"%s\"", temp);
+      free (temp);
+    }
     if (option_2 && (strcmp (option_2, "true") == 0))
       fprintf (state->file_menu, " unique=\"%s\"", option_2);
     if (option_3 && (strcmp (option_3, "true") == 0))

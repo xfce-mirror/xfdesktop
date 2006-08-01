@@ -374,6 +374,50 @@ cb_radio_button_icon_toggled (GtkToggleButton *button, MenuEditorEditDialog *dia
   }
 }
 
+static gchar *
+unescape_text (const gchar *markup)
+{
+  gchar *text, *ptr, c;
+
+  if (markup == NULL)
+    return NULL;
+
+  ptr = text = g_malloc (strlen (markup) + 1);
+
+  while ((c = *markup++))
+  {
+    if (G_UNLIKELY (c == '&'))
+    {
+      if (!memcmp (markup, "amp;", 4)) {
+        *ptr++ = '&';
+        markup += 4;
+      }
+      else if (!memcmp (markup, "lt;", 3)) {
+        *ptr++ = '<';
+        markup += 3;
+      }
+      else if (!memcmp (markup, "gt;", 3)) {
+        *ptr++ = '>';
+        markup += 3;
+      }
+      else if (!memcmp (markup, "quot;", 5)) {
+        *ptr++ = '"';
+        markup += 5;
+      }
+      else if (!memcmp (markup, "apos;", 5)) {
+        *ptr++ = '\'';
+        markup += 5;
+      }
+    }
+    else
+      *ptr++ = c;
+  }
+  *ptr = 0;
+
+  return text;
+}
+
+
 /******************/
 /* public methods */
 /******************/
@@ -410,8 +454,11 @@ menueditor_edit_dialog_set_entry_name (MenuEditorEditDialog *dialog, const gchar
 {
   MenuEditorEditDialogPrivate *priv = MENUEDITOR_EDIT_DIALOG_GET_PRIVATE (dialog);
   
-  if (name)
-    gtk_entry_set_text (GTK_ENTRY (priv->entry_name), name);
+  if (name) {
+    char *temp = unescape_text (name);
+    gtk_entry_set_text (GTK_ENTRY (priv->entry_name), temp);
+    g_free (temp);
+  }
 }
 
 void 
@@ -419,8 +466,11 @@ menueditor_edit_dialog_set_entry_command (MenuEditorEditDialog *dialog, const gc
 {
   MenuEditorEditDialogPrivate *priv = MENUEDITOR_EDIT_DIALOG_GET_PRIVATE (dialog);
 
-  if (command)
-    gtk_entry_set_text (GTK_ENTRY (priv->entry_command), command);
+  if (command) {
+    char *temp = unescape_text (command);
+    gtk_entry_set_text (GTK_ENTRY (priv->entry_command), temp);
+    g_free (temp);
+  }
 }
 
 void 
@@ -431,8 +481,11 @@ menueditor_edit_dialog_set_entry_icon (MenuEditorEditDialog *dialog, const gchar
   if (icon && strlen (icon) > 0) {
     if (icon[0] != '/') {
       /* themed icon */
+      char *temp;
       gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->radio_button_themed_icon), TRUE);
-      gtk_entry_set_text (GTK_ENTRY (priv->entry_themed_icon), icon);
+      temp = unescape_text (icon);
+      gtk_entry_set_text (GTK_ENTRY (priv->entry_themed_icon), temp);
+      g_free (temp);
     } else {
       /* path to icon */
       gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->radio_button_icon), TRUE);
