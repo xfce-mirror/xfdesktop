@@ -72,9 +72,8 @@ msgstr "Komandoa:"
 #: ../menueditor/menueditor-add-dialog.c:188
 #: ../menueditor/menueditor-edit-dialog.c:163
 #: ../menueditor/menueditor-edit-dialog.c:164
-#, fuzzy
 msgid "Themed icon:"
-msgstr "Ikonoa aukeratu"
+msgstr "Gai Ikonoa:"
 
 #: ../menueditor/menueditor-add-dialog.c:205
 #: ../menueditor/menueditor-add-dialog.c:206
@@ -129,34 +128,32 @@ msgstr "Komandoa aukeratu"
 
 #: ../menueditor/menueditor-add-dialog.c:300
 #: ../menueditor/menueditor-edit-dialog.c:276
-#, fuzzy
 msgid "Executable Files"
-msgstr "Huts Ateratzerakoan"
+msgstr "Fitxategi Abiarazgarriak"
 
 #: ../menueditor/menueditor-add-dialog.c:315
 #: ../menueditor/menueditor-edit-dialog.c:291
 msgid "Perl Scripts"
-msgstr ""
+msgstr "Perl Skript-ak"
 
 #: ../menueditor/menueditor-add-dialog.c:321
 #: ../menueditor/menueditor-edit-dialog.c:297
 msgid "Python Scripts"
-msgstr ""
+msgstr "Python Skript-ak"
 
 #: ../menueditor/menueditor-add-dialog.c:327
 #: ../menueditor/menueditor-edit-dialog.c:303
 msgid "Ruby Scripts"
-msgstr ""
+msgstr "Ruby Skript-ak"
 
 #: ../menueditor/menueditor-add-dialog.c:333
 #: ../menueditor/menueditor-edit-dialog.c:309
 msgid "Shell Scripts"
-msgstr ""
+msgstr "Shell Skript-ak"
 
 #: ../menueditor/menueditor-add-external-dialog.c:100
-#, fuzzy
 msgid "Add external menu entry"
-msgstr "Kanpo menu bat gehitu"
+msgstr "Kanpo menu sarrera bat gehitu"
 
 #: ../menueditor/menueditor-add-external-dialog.c:122
 msgid "File"
@@ -176,15 +173,14 @@ msgstr "Iturburua:"
 
 #: ../menueditor/menueditor-add-external-dialog.c:137
 #: ../menueditor/menueditor-edit-external-dialog.c:117
-#, fuzzy
 msgid "Select external menu"
-msgstr "Kanpo menu bat gehitu"
+msgstr "Kanpo menu bat hautatu"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
 #: ../panel-plugin/desktop-menu-plugin.c:609
 msgid "Menu Files"
-msgstr "Irudi Fitxategia"
+msgstr "Menu Fitxategiak"
 
 #. Style
 #: ../menueditor/menueditor-add-external-dialog.c:155
@@ -215,14 +211,12 @@ msgid "Edit menu entry"
 msgstr "Menu sarrera editatu"
 
 #: ../menueditor/menueditor-edit-external-dialog.c:96
-#, fuzzy
 msgid "Edit external menu entry"
-msgstr "Menu sarrera editatu"
+msgstr "Kanpo menu sarrera editatu"
 
 #: ../menueditor/menueditor-main.c:43
-#, fuzzy
 msgid "Xfce4-MenuEditor"
-msgstr "Xfce 4 Menu Editorea"
+msgstr "Xfce4-MenuEditorea"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -230,12 +224,11 @@ msgstr "_Fitxategia"
 
 #: ../menueditor/menueditor-main-window.c:141
 msgid "_New"
-msgstr ""
+msgstr "_Berria"
 
 #: ../menueditor/menueditor-main-window.c:141
-#, fuzzy
 msgid "Create a new empty menu"
-msgstr "Xfce4 menu fitxategi berri bat sortu"
+msgstr "Menu huts bat sortu"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:2068
@@ -243,14 +236,12 @@ msgid "_Open"
 msgstr "_Ireki"
 
 #: ../menueditor/menueditor-main-window.c:142
-#, fuzzy
 msgid "Open existing menu"
-msgstr "Lehenetsitako menua ireki"
+msgstr "Dagoen menua ireki"
 
 #: ../menueditor/menueditor-main-window.c:143
-#, fuzzy
 msgid "Open _default menu"
-msgstr "Lehenetsitako menua ireki"
+msgstr "_Lehenetsitako menua ireki"
 
 #: ../menueditor/menueditor-main-window.c:143
 msgid "Open default menu"
@@ -258,101 +249,87 @@ msgstr "Lehenetsitako menua ireki"
 
 #: ../menueditor/menueditor-main-window.c:144
 msgid "_Save"
-msgstr ""
+msgstr "_Gorde"
 
 #: ../menueditor/menueditor-main-window.c:144
-#, fuzzy
 msgid "Save modifications"
-msgstr "Ahaztu aldaketak"
+msgstr "Gorde aldaketak"
 
 #: ../menueditor/menueditor-main-window.c:145
-#, fuzzy
 msgid "Save _as..."
-msgstr "Gorde honela..."
+msgstr "Gorde _honela..."
 
 #: ../menueditor/menueditor-main-window.c:145
 msgid "Save menu under a given name"
-msgstr ""
+msgstr "Menua emandako izenaz gorde"
 
 #: ../menueditor/menueditor-main-window.c:146
 msgid "_Close"
-msgstr ""
+msgstr "It_xi"
 
 #: ../menueditor/menueditor-main-window.c:146
-#, fuzzy
 msgid "Close menu"
-msgstr "Itxi uneko menua"
+msgstr "Menua itxi"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "_Quit"
-msgstr "Irten"
+msgstr "_Irten"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "Quit Xfce4-Menueditor"
-msgstr "Xfce 4 Menu Editorea"
+msgstr "Xfce 4 Menu Editorea Itxi"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
 msgstr "_Editatu"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "_Edit entry"
-msgstr "Menu sarrera editatu"
+msgstr "Sarrera _editatu"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "Edit selected entry"
-msgstr "Menu sarrera editatu"
+msgstr "Hautaturiko sarrera editatu"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "_Add entry"
-msgstr "Menu sarrera gehitu"
+msgstr "Sarrera _gehitu"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "Add a new entry in the menu"
-msgstr "Menura sarrera bat gehitu"
+msgstr "Menura sarrera berri bat gehitu"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add _external"
-msgstr "Kanpo menu bat gehitu"
+msgstr "_Kanpo menu bat gehitu"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add an external entry"
 msgstr "Kanpo menu bat gehitu"
 
 #: ../menueditor/menueditor-main-window.c:153
 msgid "_Remove entry"
-msgstr ""
+msgstr "Sa_rrera ezabatu"
 
 #: ../menueditor/menueditor-main-window.c:153
-#, fuzzy
 msgid "Remove entry"
 msgstr "Menu sarrera gehitu"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "_Up"
-msgstr ""
+msgstr "_Gora"
 
 #: ../menueditor/menueditor-main-window.c:154
-#, fuzzy
 msgid "Move entry up"
-msgstr "Uneko sarrera gora mugitu"
+msgstr "Sarrera gora mugitu"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "_Down"
-msgstr ""
+msgstr "_Behera"
 
 #: ../menueditor/menueditor-main-window.c:155
-#, fuzzy
 msgid "Move entry down"
-msgstr "Uneko sarrera behera mugitu"
+msgstr "Sarrera behera mugitu"
 
 #: ../menueditor/menueditor-main-window.c:157
 msgid "_Help"
@@ -363,29 +340,24 @@ msgid "_About..."
 msgstr "H_oni buruz..."
 
 #: ../menueditor/menueditor-main-window.c:158
-#, fuzzy
 msgid "Show informations about xfce4-menueditor"
-msgstr "Ezin da xfce4-menueditor abiarazi: %s"
+msgstr "Xfce4-menueditor a-i buruz argibideak bistarazi"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all"
 msgstr "Zuhaitza itxi"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all menu entries"
-msgstr "Zuhaitza itxi"
+msgstr "Menu sarrera guztuiak itxi"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all"
-msgstr "_Ireki dena"
+msgstr "Dena zabaldu"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all menu entries"
-msgstr "Zuhaitza ireki"
+msgstr "Menu sarrera guztiak zabaldu"
 
 #: ../menueditor/menueditor-main-window.c:341
 msgid "Name"
@@ -433,9 +405,8 @@ msgid "Do you want to save before opening the default menu ?"
 msgstr "Lehenetsitako menua ireki aurretik gorde nahi al duzu?"
 
 #: ../menueditor/menueditor-main-window.c:594
-#, fuzzy
 msgid "Save menu file as"
-msgstr "Menu fitxategia ireki"
+msgstr "Menu fitxategia honela gorde"
 
 #: ../menueditor/menueditor-main-window.c:632
 #: ../menueditor/menueditor-main-window.c:1341
@@ -475,7 +446,7 @@ msgstr "Xfce4 menu editorea"
 #. Credits
 #: ../menueditor/menueditor-main-window.c:1296
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "Egile/Mantentzea"
 
 #: ../menueditor/menueditor-main-window.c:1297
 #: ../menueditor/menueditor-main-window.c:1298
@@ -589,7 +560,7 @@ msgstr "Erakutsi _ikonoak menuan"
 
 #: ../panel-plugin/desktop-menu-plugin.c:948
 msgid "There is already a panel menu registered for this screen"
-msgstr ""
+msgstr "BAdago pantaila honentzat panel menu bat erregistraturik"
 
 #: ../panel-plugin/desktop-menu-plugin.c:1056
 msgid "Edit Menu"
@@ -1256,38 +1227,32 @@ msgid "_Properties..."
 msgstr "_Propietateak..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2336
-#, fuzzy
 msgid "Des_ktop"
-msgstr "Idazmahaia"
+msgstr "Ida_zmahaia"
 
 #: ../src/xfdesktop-file-icon-manager.c:2355
-#, fuzzy
 msgid "Create _Launcher..."
-msgstr "_Abiarazlea..."
+msgstr "Sortu _Abiarazlea..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2376
-#, fuzzy
 msgid "Create _URL Link..."
-msgstr "_URL Lotura..."
+msgstr "Sortu _URL Lotura..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2393
-#, fuzzy
 msgid "Create _Folder..."
-msgstr "Karpeta Berria Sortu"
+msgstr "_Karpeta Sortu"
 
 #: ../src/xfdesktop-file-icon-manager.c:2436
 msgid "_Empty File"
 msgstr "Fitxategi _Hutsa"
 
 #: ../src/xfdesktop-file-icon-manager.c:2477
-#, fuzzy
 msgid "Desktop _Settings..."
-msgstr "Mahaigain birtualen ezarpenak"
+msgstr "Mahaigain _Ezarpenak"
 
 #: ../src/xfdesktop-file-icon-manager.c:2486
-#, fuzzy
 msgid "_Desktop Properties..."
-msgstr "_Propietateak..."
+msgstr "Mahaigain _Propietateak..."
 
 #: ../src/xfdesktop-file-icon-manager.c:3449 ../src/xfdesktop-file-icon.c:569
 #, c-format
@@ -1305,6 +1270,9 @@ msgid ""
 "Modified:%s\n"
 "Size: %s"
 msgstr ""
+"Mota: %s\n"
+"Aldaketa:%s\n"
+"Tamaina: %s"
 
 #: ../src/xfdesktop-file-icon.c:753
 #, c-format
@@ -1357,9 +1325,8 @@ msgstr "Xfce 4 Idazmahai Ezarpenak"
 #~ msgid "_Delete File"
 #~ msgstr "Fitxategia _Ezabatu"
 
-#, fuzzy
 #~ msgid "_Paste Files"
-#~ msgstr "Zerrenda fitxategia"
+#~ msgstr "Fitxategiak itstsi"
 
 #~ msgid "Core developer"
 #~ msgstr "Muin garatzailea"
