@@ -123,7 +123,7 @@ static gboolean cb_treeview_button_pressed (GtkTreeView *, GdkEventButton *, Men
 static void cb_treeview_row_activated (GtkWidget *, GtkTreePath *, GtkTreeViewColumn *, MenuEditorMainWindow *);
 
 static gboolean load_menu_in_treeview (const gchar *, MenuEditorMainWindow *);
-static gboolean save_treeview_in_file (MenuEditorMainWindow *window);
+static void save_treeview_in_file (MenuEditorMainWindow *window);
 
 static void copy_menuelement_to (MenuEditorMainWindowPrivate *priv, GtkTreeIter *src, GtkTreeIter *dest, 
 								 GtkTreeViewDropPosition position);
@@ -1987,14 +1987,14 @@ save_treeview_foreach_func (GtkTreeModel * model, GtkTreePath * path, GtkTreeIte
   return FALSE;
 }
 
-static gboolean
+static void
 save_treeview_in_file (MenuEditorMainWindow *window)
 {
   MenuEditorMainWindowPrivate *priv = MENUEDITOR_MAIN_WINDOW_GET_PRIVATE (window);
   FILE *file_menu;
   GtkAction *action;
   
-  g_return_val_if_fail (window != NULL, FALSE);
+  g_return_if_fail (window != NULL);
 
   file_menu = fopen (priv->menu_file_name, "w+");
 
@@ -2023,14 +2023,15 @@ save_treeview_in_file (MenuEditorMainWindow *window)
     }
 
     fprintf (file_menu, "</xfdesktop-menu>\n");
+    
+    action = gtk_action_group_get_action (priv->action_group, "save-menu");
+    gtk_action_set_sensitive (action, FALSE);
+    priv->menu_modified = FALSE;
+
     fclose (file_menu);
+  } else {
+    xfce_err (_("Unable to open the menu file %s in write mode"), priv->menu_file_name);
   }
-
-  action = gtk_action_group_get_action (priv->action_group, "save-menu");
-  gtk_action_set_sensitive (action, FALSE);
-  priv->menu_modified = FALSE;
-
-  return TRUE;
 }
 
 /* DnD */
