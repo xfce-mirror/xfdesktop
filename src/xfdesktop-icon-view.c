@@ -959,14 +959,10 @@ xfdesktop_icon_view_drag_begin(GtkWidget *widget,
     
     if(xfdesktop_icon_get_extents(icon, &extents)) {
         GdkPixbuf *pix;
-        gint x, y;
         
-        x = icon_view->priv->press_start_x - extents.x + 1;
-        y = icon_view->priv->press_start_y - extents.y + 1;
-    
         pix = xfdesktop_icon_peek_pixbuf(icon, ICON_SIZE);
         if(pix)
-            gtk_drag_set_icon_pixbuf(context, pix, x, y);
+            gtk_drag_set_icon_pixbuf(context, pix, 0, 0);
     }
 }
 
