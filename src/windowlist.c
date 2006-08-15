@@ -149,8 +149,8 @@ menu_item_from_netk_window(NetkWindow *netk_window, gint icon_width,
     netk_workspace = netk_window_get_workspace(netk_window);
 
     if(netk_window_is_active(netk_window)) {
-        g_string_prepend(label, "<b>");
-        g_string_append(label, "</b>");
+        g_string_prepend(label, "<i>");
+        g_string_append(label, "</i>");
     }
     if(netk_window_is_minimized(netk_window)) {
         g_string_prepend(label, "[");
