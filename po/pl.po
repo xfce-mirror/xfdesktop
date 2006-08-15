@@ -404,9 +404,8 @@ msgid "Do you want to save before opening the default menu ?"
 msgstr "Czy chcesz zapisać przed otworzeniem domyślnego menu ?"
 
 #: ../menueditor/menueditor-main-window.c:594
-#, fuzzy
 msgid "Save menu file as"
-msgstr "Otwórz plik menu"
+msgstr "Zapisz plik menu jako"
 
 #: ../menueditor/menueditor-main-window.c:632
 #: ../menueditor/menueditor-main-window.c:1341
@@ -853,9 +852,9 @@ msgid "    Desktop Icons:       %s\n"
 msgstr "   Ikony Pulpitu:       %s\n"
 
 #: ../src/main.c:271
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "   Ikony Pulpitu:       %s\n"
+msgstr "   Ikony Plików Pulpitu:       %s\n"
 
 #: ../src/main.c:298
 #, c-format
@@ -867,31 +866,27 @@ msgid "Options are:\n"
 msgstr "Opcje to:\n"
 
 #: ../src/main.c:300
-#, fuzzy
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
-"    -reload      Przeładuj wszystkie ustawienia, odśwież listę obrazków\n"
+"    --reload      Przeładuj wszystkie ustawienia, odśwież listę obrazków\n"
 
 #: ../src/main.c:301
-#, fuzzy
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    -menu        Pokazuje menu (w miejscu kursora myszki)\n"
+msgstr "    --menu        Pokazuje menu (w miejscu kursora myszki)\n"
 
 #: ../src/main.c:302
-#, fuzzy
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  Pokazuje listę okien (w miejscu kursora myszki)\n"
+msgstr "    --windowlist  Pokazuje listę okien (w miejscu kursora myszki)\n"
 
 #: ../src/main.c:303
-#, fuzzy
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "\t-quit\t\tPowoduje zamknięcie xfdesktop\n"
+msgstr "    --quit        Zamyka xfdesktop\n"
 
 #: ../src/main.c:318
 #, c-format
 msgid "%s is not running.\n"
-msgstr ""
+msgstr "%s nie działa.\n"
 
 #: ../src/windowlist.c:218
 #, c-format
@@ -1111,38 +1106,32 @@ msgid "_Properties..."
 msgstr "_Właściwości..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1637
-#, fuzzy
 msgid "Des_ktop"
-msgstr "Pulpit"
+msgstr "Pu_lpit"
 
 #: ../src/xfdesktop-file-icon-manager.c:1656
-#, fuzzy
 msgid "Create _Launcher..."
-msgstr "_Aktywator..."
+msgstr "Utwórz _Aktywator..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1677
-#, fuzzy
 msgid "Create _URL Link..."
-msgstr "Łącze _URL..."
+msgstr "Utwórz Łącze _URL..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1694
-#, fuzzy
 msgid "Create _Folder..."
-msgstr "Stwórz nowy folder"
+msgstr "Utwórz _Folder"
 
 #: ../src/xfdesktop-file-icon-manager.c:1736
 msgid "_Empty File"
 msgstr "_Pusty Plik"
 
 #: ../src/xfdesktop-file-icon-manager.c:1777
-#, fuzzy
 msgid "Desktop _Settings..."
-msgstr "Ustawienia pulpitu"
+msgstr "Ustawienia _Pulpitu..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1786
-#, fuzzy
 msgid "_Desktop Properties..."
-msgstr "_Właściwości..."
+msgstr "_Właściwości Pulpitu..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2794
 #: ../src/xfdesktop-regular-file-icon.c:349
@@ -1243,7 +1232,7 @@ msgstr "Inne:"
 
 #: ../src/xfdesktop-file-utils.c:71
 msgid "Yes to _all"
-msgstr ""
+msgstr "Tak na _wszystkie"
 
 #: ../src/xfdesktop-file-utils.c:103
 #, c-format
@@ -1281,6 +1270,9 @@ msgid ""
 "Modified:%s\n"
 "Size: %s"
 msgstr ""
+"Typ: %s\n"
+"Modyfikacja:%s\n"
+"Rozmiar: %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:530
 #, c-format
@@ -1289,34 +1281,35 @@ msgstr "Nie można zmienić nazwy \"%s\" na \"%s\":"
 
 #: ../src/xfdesktop-special-file-icon.c:233
 msgid "Home"
-msgstr ""
+msgstr "Katalog Domowy"
 
 #: ../src/xfdesktop-special-file-icon.c:437
-#, fuzzy
 msgid "Unable to open the trash."
-msgstr "Nie można zamontować \"%s\":"
+msgstr "Nie można otworzyć kosza."
 
 #: ../src/xfdesktop-special-file-icon.c:438
 msgid ""
 "Viewing the contents of the trash requires a file manager that supports the "
 "Xfce trash service, such as Thunar."
 msgstr ""
+"Przeglądanie kosza wymaga menadżera plików z jego obsługą, "
+"na przykład Thunara."
 
 #: ../src/xfdesktop-special-file-icon.c:466
-#, fuzzy
 msgid "Unable to empty the trash."
-msgstr "Nie można zakończyć sesji"
+msgstr "Nie można opróżnić kosza"
 
 #: ../src/xfdesktop-special-file-icon.c:467
 msgid ""
 "Emptying the trash requires a file manager that supports the Xfce trash "
 "service, such as Thunar."
 msgstr ""
+"Opróżnianie kosza wymaga menadżera plików z jego obsługą, "
+"na przykład Thunara."
 
 #: ../src/xfdesktop-special-file-icon.c:499
-#, fuzzy
 msgid "_Empty Trash"
-msgstr "_Pusty Plik"
+msgstr "_Pusty Kosz"
 
 #: ../src/xfdesktop-volume-icon.c:438 ../src/xfdesktop-volume-icon.c:496
 #, c-format
