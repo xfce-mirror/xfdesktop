@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-08-15 00:03-0700\n"
-"PO-Revision-Date: 2006-05-22 23:43+0200\n"
+"PO-Revision-Date: 2006-08-15 23:18+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: librezale <librezale@librezale.org>\n"
 "MIME-Version: 1.0\n"
@@ -857,9 +857,9 @@ msgid "    Desktop Icons:       %s\n"
 msgstr "    Idazmahai Ikonoak:       %s\n"
 
 #: ../src/main.c:271
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Idazmahai Ikonoak:       %s\n"
+msgstr "    Idazmahai Fitxategi Ikonoak:  %s\n"
 
 #: ../src/main.c:298
 #, c-format
@@ -871,30 +871,25 @@ msgid "Options are:\n"
 msgstr "Aukerak:\n"
 
 #: ../src/main.c:300
-#, fuzzy
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      Ezarpen guztiak birkargatu, irudi zerrenda freskatu\n"
 
 #: ../src/main.c:301
-#, fuzzy
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Menua bistarazi (saguaren kokalekuan)\n"
 
 #: ../src/main.c:302
-#, fuzzy
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Leiho zerrenda bistarazi (saguaren kokalekuan)\n"
 
 #: ../src/main.c:303
-#, fuzzy
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "    -quit        xfdesktop itxi\n"
+msgstr "    -quit        xfdesktop itxi egiten du\n"
 
 #: ../src/main.c:318
 #, c-format
 msgid "%s is not running.\n"
-msgstr ""
+msgstr "%s ez dago abiaraziriik.\n"
 
 #: ../src/windowlist.c:218
 #, c-format
@@ -926,10 +921,8 @@ msgstr "Idazmahaia"
 
 #: ../src/xfdesktop-file-icon-manager.c:244
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop ez da idazmahai elmentuak gordetzeko \"%s\" karpeta sortzeko gai."
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop ez da idazmahai elmentuak gordetzeko \"%s\" karpeta sortzeko gai."
 
 #: ../src/xfdesktop-file-icon-manager.c:246
 #: ../src/xfdesktop-file-icon-manager.c:255
@@ -1241,7 +1234,7 @@ msgstr "Besteak:"
 
 #: ../src/xfdesktop-file-utils.c:71
 msgid "Yes to _all"
-msgstr ""
+msgstr "Bai D_anari"
 
 #: ../src/xfdesktop-file-utils.c:103
 #, c-format
@@ -1290,34 +1283,35 @@ msgstr "Huts \"%s\"-tik \"%s\"-ra berrizendatzerakoan:"
 
 #: ../src/xfdesktop-special-file-icon.c:233
 msgid "Home"
-msgstr ""
+msgstr "Etxea"
 
 #: ../src/xfdesktop-special-file-icon.c:437
-#, fuzzy
 msgid "Unable to open the trash."
-msgstr "Ezin da \"%s\" muntatu:"
+msgstr "Ezin da zakarrontzia ireki."
 
 #: ../src/xfdesktop-special-file-icon.c:438
 msgid ""
 "Viewing the contents of the trash requires a file manager that supports the "
 "Xfce trash service, such as Thunar."
 msgstr ""
+"Zakarrontziaren edukia bistaratzeko Xfce zakarrontzi zerbitzuarekin bateragarri "
+"den fitxategi kudeatzaile bat erabili behar da."
 
 #: ../src/xfdesktop-special-file-icon.c:466
-#, fuzzy
 msgid "Unable to empty the trash."
-msgstr "Ezinda saioa amaitu."
+msgstr "Ezin da zakarrontzia hustu."
 
 #: ../src/xfdesktop-special-file-icon.c:467
 msgid ""
 "Emptying the trash requires a file manager that supports the Xfce trash "
 "service, such as Thunar."
 msgstr ""
+"Zakarrontziaren hustutzeko  Xfce zakarrontzi zerbitzuarekin bateragarri den "
+"fitxategi kudeatzaile bat erabili behar da, thunar bezalakoa."
 
 #: ../src/xfdesktop-special-file-icon.c:499
-#, fuzzy
 msgid "_Empty Trash"
-msgstr "Fitxategi _Hutsa"
+msgstr "_Zakarrontzia Hustu"
 
 #: ../src/xfdesktop-volume-icon.c:438 ../src/xfdesktop-volume-icon.c:496
 #, c-format
@@ -1390,71 +1384,3 @@ msgstr "Xfce 4 Idazmahai kudeatzaile ezarpenak"
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 Idazmahai Ezarpenak"
 
-#~ msgid " Bytes)"
-#~ msgstr " Byte)"
-
-#~ msgid "_Copy Files"
-#~ msgstr "Fitxategiak _Kopiatu"
-
-#~ msgid "_Copy File"
-#~ msgstr "Fitxategia _Kopiatu"
-
-#~ msgid "Cu_t Files"
-#~ msgstr "Fitxategiak Moz_tu"
-
-#~ msgid "Cu_t File"
-#~ msgstr "Fitxategia Moz_tu"
-
-#~ msgid "_Delete Files"
-#~ msgstr "Fitxategiak _Ezabatu"
-
-#~ msgid "_Delete File"
-#~ msgstr "Fitxategia _Ezabatu"
-
-#~ msgid "_Paste Files"
-#~ msgstr "Fitxategiak itstsi"
-
-#~ msgid "Core developer"
-#~ msgstr "Muin garatzailea"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "Komadoa ez dago!"
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "Eremu guztiak bete behar dira sarrera gehitzeko"
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "'Izena' eremua beharrezkoa da."
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "'Iturburu' eremua beharrezkoa da."
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "Berezileak ezin dira editatu"
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "%s fitxategia ez dago !"
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "Osagai hau goiko menura mugitu nahi al duzu?"
-
-#~ msgid "Edit"
-#~ msgstr "Editatu"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "Kanpo menu bat gehitu..."
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "Xfce4 menu fitxategia ireki"
-
-#~ msgid "Save current menu"
-#~ msgstr "Gorde uneko menua"
-
-#~ msgid "Delete the current entry"
-#~ msgstr "Uneko sarrera ezabatu"
-
-#~ msgid "Create _New"
-#~ msgstr "_Berria Sortu"
-
-#~ msgid "_Folder..."
-#~ msgstr "_Karpeta..."
