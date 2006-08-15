@@ -81,6 +81,7 @@ static XfdesktopIconDragResult xfdesktop_regular_file_icon_do_drop_dest(Xfdeskto
 static G_CONST_RETURN ThunarVfsInfo *xfdesktop_regular_file_icon_peek_info(XfdesktopFileIcon *icon);
 static void xfdesktop_regular_file_icon_update_info(XfdesktopFileIcon *icon,
                                                     ThunarVfsInfo *info);
+static gboolean xfdesktop_regular_file_can_write_file(XfdesktopFileIcon *icon);
 static gboolean xfdesktop_regular_file_icon_rename_file(XfdesktopFileIcon *icon,
                                                         const gchar *new_name);
 static gboolean xfdesktop_regular_file_icon_delete_file(XfdesktopFileIcon *icon);
@@ -125,9 +126,9 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
     
     file_icon_class->peek_info = xfdesktop_regular_file_icon_peek_info;
     file_icon_class->update_info = xfdesktop_regular_file_icon_update_info;
-    file_icon_class->can_rename_file = (gboolean (*)(XfdesktopFileIcon *))gtk_true;
+    file_icon_class->can_rename_file = xfdesktop_regular_file_can_write_file;
     file_icon_class->rename_file = xfdesktop_regular_file_icon_rename_file;
-    file_icon_class->can_delete_file = (gboolean (*)(XfdesktopFileIcon *))gtk_true;
+    file_icon_class->can_delete_file = xfdesktop_regular_file_can_write_file;
     file_icon_class->delete_file = xfdesktop_regular_file_icon_delete_file;
 }
 
@@ -458,6 +459,16 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
     }
     
     return regular_file_icon->priv->tooltip;
+}
+
+static gboolean
+xfdesktop_regular_file_can_write_file(XfdesktopFileIcon *icon)
+{
+    XfdesktopRegularFileIcon *file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
+    
+    g_return_val_if_fail(file_icon && file_icon->priv->info, FALSE);
+    
+    return (file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_WRITABLE);
 }
 
 static void
