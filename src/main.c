@@ -294,7 +294,9 @@ main(int argc, char **argv)
             message = WINDOWLIST_MESSAGE;
         else if(!strcmp("-quit", argument))
             message = QUIT_MESSAGE;
-        else {
+        else if(!strcmp("--sm-client-id", argv[1])) {
+            /* do nothing */
+        } else {
             g_printerr(_("%s: Unknown option: %s\n"), PACKAGE, argv[1]);
             g_printerr(_("Options are:\n"));
             g_printerr(_("    --reload      Reload all settings, refresh image list\n"));
