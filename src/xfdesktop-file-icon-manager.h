@@ -23,9 +23,9 @@
 
 #include <glib.h>
 
-#define EXO_API_SUBJECT_TO_CHANGE
 #include <thunar-vfs/thunar-vfs.h>
 
+#include "xfdesktop-special-file-icon.h"
 #include "xfdesktop-icon-view-manager.h"
 
 G_BEGIN_DECLS
@@ -58,6 +58,12 @@ XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(ThunarVfsPath *folder)
 void xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIconManager *manager,
                                                           gboolean show_removable_media);
 gboolean xfdesktop_file_icon_manager_get_show_removable_media(XfdesktopFileIconManager *manager);
+
+void xfdesktop_file_icon_manager_set_show_special_file(XfdesktopFileIconManager *manager,
+                                                       XfdesktopSpecialFileIconType type,
+                                                       gboolean show_special_file);
+gboolean xfdesktop_file_icon_manager_get_show_special_file(XfdesktopFileIconManager *manager,
+                                                           XfdesktopSpecialFileIconType type);
 
 G_END_DECLS
 

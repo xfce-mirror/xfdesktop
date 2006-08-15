@@ -66,6 +66,7 @@
 #include "xfdesktop-window-icon-manager.h"
 # ifdef HAVE_THUNAR_VFS
 # include "xfdesktop-file-icon-manager.h"
+# include "xfdesktop-special-file-icon.h"
 # endif
 #endif
 
@@ -178,7 +179,7 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
                 path = thunar_vfs_path_new(desktop_path, NULL);
                 if(path) {
                     manager = xfdesktop_file_icon_manager_new(path);
-                    /* FIXME: make a pref */
+                    /* FIXME: make prefs */
                     xfdesktop_file_icon_manager_set_show_removable_media(XFDESKTOP_FILE_ICON_MANAGER(manager),
                                                                          TRUE);
                     thunar_vfs_path_unref(path);
@@ -214,6 +215,19 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
         }
         gtk_widget_show(desktop->priv->icon_view);
         gtk_container_add(GTK_CONTAINER(desktop), desktop->priv->icon_view);
+        
+        /* FIXME: prefs */
+        if(XFDESKTOP_IS_FILE_ICON_MANAGER(manager)) {
+            xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
+                                                              XFDESKTOP_SPECIAL_FILE_ICON_HOME,
+                                                              TRUE);
+            xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
+                                                              XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM,
+                                                              TRUE);
+            xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
+                                                              XFDESKTOP_SPECIAL_FILE_ICON_TRASH,
+                                                              TRUE);
+        }
     }
     
     gtk_widget_queue_draw(GTK_WIDGET(desktop));
@@ -478,11 +492,10 @@ G_DEFINE_TYPE(XfceDesktop, xfce_desktop, GTK_TYPE_WINDOW)
 static void
 xfce_desktop_class_init(XfceDesktopClass *klass)
 {
-    GObjectClass *gobject_class;
-    GtkWidgetClass *widget_class;
+    GObjectClass *gobject_class = (GObjectClass *)klass;
+    GtkWidgetClass *widget_class = (GtkWidgetClass *)klass;
     
-    gobject_class = (GObjectClass *)klass;
-    widget_class = (GtkWidgetClass *)klass;
+    g_type_class_add_private(klass, sizeof(XfceDesktopPriv));
     
     gobject_class->finalize = xfce_desktop_finalize;
     
@@ -495,7 +508,8 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
 static void
 xfce_desktop_init(XfceDesktop *desktop)
 {
-    desktop->priv = g_new0(XfceDesktopPriv, 1);
+    desktop->priv = G_TYPE_INSTANCE_GET_PRIVATE(desktop, XFCE_TYPE_DESKTOP,
+                                                XfceDesktopPriv);
     GTK_WINDOW(desktop)->type = GTK_WINDOW_TOPLEVEL;
 #ifdef ENABLE_DESKTOP_ICONS
     desktop->priv->icons_use_system_font = TRUE;
@@ -511,9 +525,6 @@ xfce_desktop_finalize(GObject *object)
     XfceDesktop *desktop = XFCE_DESKTOP(object);
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-    
-    g_free(desktop->priv);
-    desktop->priv = NULL;
     
     G_OBJECT_CLASS(xfce_desktop_parent_class)->finalize(object);
 }

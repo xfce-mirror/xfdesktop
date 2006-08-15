@@ -36,7 +36,13 @@ desktop_file_icon_sources = \
 	xfdesktop-file-icon-manager.c \
 	xfdesktop-file-icon-manager.h \
 	xfdesktop-file-utils.c \
-	xfdesktop-file-utils.h
+	xfdesktop-file-utils.h \
+	xfdesktop-regular-file-icon.c \
+	xfdesktop-regular-file-icon.h \
+	xfdesktop-special-file-icon.c \
+	xfdesktop-special-file-icon.h \
+	xfdesktop-volume-icon.c \
+	xfdesktop-volume-icon.h
 
 xfdesktop_CFLAGS = \
 	-I$(top_srcdir) \
@@ -46,6 +52,7 @@ xfdesktop_CFLAGS = \
 	-DDATADIR=\"$(datadir)\" \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\" \
+	-DEXO_API_SUBJECT_TO_CHANGE \
 	$(LIBX11_CFLAGS)	\
 	$(GMODULE_CFLAGS) \
 	$(LIBXFCEGUI4_CFLAGS) \

@@ -33,9 +33,17 @@
 #include <gtk/gtk.h>
 
 #include "xfdesktop-file-icon.h"
+#include "xfdesktop-file-icon-manager.h"
+#include "xfdesktop-file-utils.h"
 #include "xfdesktop-clipboard-manager.h"
 
 
+
+enum
+{
+  PROP_0,
+  PROP_CAN_PASTE,
+};
 
 enum
 {
@@ -54,11 +62,21 @@ enum
 static void xfdesktop_clipboard_manager_class_init         (XfdesktopClipboardManagerClass *klass);
 static void xfdesktop_clipboard_manager_init               (XfdesktopClipboardManager      *manager);
 static void xfdesktop_clipboard_manager_finalize           (GObject                        *object);
+static void xfdesktop_clipboard_manager_get_property       (GObject *object,
+                                                            guint prop_id,
+                                                            GValue *value,
+                                                            GParamSpec *pspec);
+
 static void xfdesktop_clipboard_manager_file_destroyed     (XfdesktopClipboardManager      *manager,
                                                             XfdesktopFileIcon              *file);
 static void xfdesktop_clipboard_manager_owner_changed      (GtkClipboard                   *clipboard,
                                                             GdkEventOwnerChange            *event,
                                                             XfdesktopClipboardManager      *manager);
+#if 0
+static void xfdesktop_clipboard_manager_contents_received  (GtkClipboard *clipboard,
+                                                            GtkSelectionData *selection_data,
+                                                            gpointer user_data);
+#endif
 static void xfdesktop_clipboard_manager_targets_received   (GtkClipboard                   *clipboard,
                                                             GtkSelectionData               *selection_data,
                                                             gpointer                        user_data);
@@ -99,6 +117,7 @@ typedef struct
   ThunarVfsPath          *target_path;
   GtkWidget              *widget;
   GClosure               *new_files_closure;
+  XfdesktopFileIconManager *fmanager;
 } XfdesktopClipboardPasteRequest;
 
 
@@ -154,7 +173,20 @@ xfdesktop_clipboard_manager_class_init (XfdesktopClipboardManagerClass *klass)
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = xfdesktop_clipboard_manager_finalize;
+  gobject_class->get_property = xfdesktop_clipboard_manager_get_property;
 
+  /**
+   * XfdesktopClipboardManager:can-paste:
+   *
+   * This property tells whether the current clipboard content of
+   * this #XfdesktopClipboardManager can be pasted into the desktop
+   * displayed by #XfdesktopIconView.
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_CAN_PASTE,
+                                   g_param_spec_boolean ("can-paste", "can-pase", "can-paste",
+                                                         FALSE,
+                                                         EXO_PARAM_READABLE));
   /**
    * XfdesktopClipboardManager::changed:
    * @manager : a #XfdesktopClipboardManager.
@@ -209,6 +241,28 @@ xfdesktop_clipboard_manager_finalize (GObject *object)
 
 
 static void
+xfdesktop_clipboard_manager_get_property (GObject    *object,
+                                          guint       prop_id,
+                                          GValue     *value,
+                                          GParamSpec *pspec)
+{
+  XfdesktopClipboardManager *manager = XFDESKTOP_CLIPBOARD_MANAGER (object);
+
+  switch (prop_id)
+    {
+    case PROP_CAN_PASTE:
+      g_value_set_boolean (value, xfdesktop_clipboard_manager_get_can_paste (manager));
+      break;
+
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      break;
+    }
+}
+
+
+
+static void
 xfdesktop_clipboard_manager_file_destroyed (XfdesktopClipboardManager *manager,
                                             XfdesktopFileIcon             *file)
 {
@@ -247,6 +301,88 @@ xfdesktop_clipboard_manager_owner_changed (GtkClipboard           *clipboard,
 }
 
 
+#if 0
+static void
+xfdesktop_clipboard_manager_contents_received (GtkClipboard     *clipboard,
+                                            GtkSelectionData *selection_data,
+                                            gpointer          user_data)
+{
+  XfdesktopClipboardPasteRequest *request = user_data;
+  XfdesktopClipboardManager      *manager = XFDESKTOP_CLIPBOARD_MANAGER (request->manager);
+  GtkWindow                      *parent = GTK_WINDOW(gtk_widget_get_toplevel(request->widget));
+  gboolean                        path_copy = TRUE;
+  GList                          *path_list = NULL;
+  gchar                          *data;
+
+  /* check whether the retrieval worked */
+  if (G_LIKELY (selection_data->length > 0))
+    {
+      /* be sure the selection data is zero-terminated */
+      data = (gchar *) selection_data->data;
+      data[selection_data->length] = '\0';
+
+      /* check whether to copy or move */
+      if (g_ascii_strncasecmp (data, "copy\n", 5) == 0)
+        {
+          path_copy = TRUE;
+          data += 5;
+        }
+      else if (g_ascii_strncasecmp (data, "cut\n", 4) == 0)
+        {
+          path_copy = FALSE;
+          data += 4;
+        }
+
+      /* determine the path list stored with the selection */
+      path_list = thunar_vfs_path_list_from_string (data, NULL);
+    }
+
+  /* perform the action if possible */
+  if (G_LIKELY (path_list != NULL))
+    {
+      if (G_LIKELY (path_copy))
+        xfdesktop_file_utils_copy_into(parent, path_list, request->target_path);
+        //thunar_application_copy_into (application, request->widget, path_list, request->target_path, request->new_files_closure);
+      else
+        xfdesktop_file_utils_move_into(parent, path_list, request->target_path);
+        //thunar_application_move_into (application, request->widget, path_list, request->target_path, request->new_files_closure);
+      thunar_vfs_path_list_free (path_list);
+
+      /* clear the clipboard if it contained "cutted data"
+       * (gtk_clipboard_clear takes care of not clearing
+       * the selection if we don't own it)
+       */
+      if (G_UNLIKELY (!path_copy))
+        gtk_clipboard_clear (manager->clipboard);
+
+      /* check the contents of the clipboard again
+       * if either the Xserver or our GTK+ version
+       * doesn't support the XFixes extension.
+       */
+#if GTK_CHECK_VERSION(2,6,0)
+      if (!gdk_display_supports_selection_notification (gtk_clipboard_get_display (manager->clipboard)))
+#endif
+        {
+          xfdesktop_clipboard_manager_owner_changed (manager->clipboard, NULL, manager);
+        }
+    }
+  else
+    {
+      /* tell the user that we cannot paste */
+//      thunar_dialogs_show_error (request->widget, NULL, _("There is nothing on the clipboard to paste"));
+    }
+
+  /* free the request */
+  if (G_LIKELY (request->widget != NULL))
+    g_object_remove_weak_pointer (G_OBJECT (request->widget), (gpointer) &request->widget);
+  if (G_LIKELY (request->new_files_closure != NULL))
+    g_closure_unref (request->new_files_closure);
+  g_object_unref (G_OBJECT (request->manager));
+  thunar_vfs_path_unref (request->target_path);
+  g_free (request);
+}
+#endif
+
 
 static void
 xfdesktop_clipboard_manager_targets_received (GtkClipboard     *clipboard,
@@ -254,17 +390,14 @@ xfdesktop_clipboard_manager_targets_received (GtkClipboard     *clipboard,
                                               gpointer          user_data)
 {
   XfdesktopClipboardManager *manager = XFDESKTOP_CLIPBOARD_MANAGER (user_data);
-#if 0
   GdkAtom                *targets;
   gint                    n_targets;
   gint                    n;
-#endif
   
   g_return_if_fail (GTK_IS_CLIPBOARD (clipboard));
   g_return_if_fail (XFDESKTOP_IS_CLIPBOARD_MANAGER (manager));
   g_return_if_fail (manager->clipboard == clipboard);
 
-#if 0
   /* reset the "can-paste" state */
   manager->can_paste = FALSE;
 
@@ -280,13 +413,10 @@ xfdesktop_clipboard_manager_targets_received (GtkClipboard     *clipboard,
 
       g_free (targets);
     }
-#endif
   
   /* notify listeners that we have a new clipboard state */
   g_signal_emit (G_OBJECT (manager), manager_signals[CHANGED], 0);
-#if 0
   g_object_notify (G_OBJECT (manager), "can-paste");
-#endif
 
   /* drop the reference taken for the callback */
   g_object_unref (G_OBJECT (manager));
@@ -309,7 +439,7 @@ xfdesktop_clipboard_manager_get_callback (GtkClipboard     *clipboard,
   g_return_if_fail (manager->clipboard == clipboard);
 
   /* determine the path list from the file list */
-  path_list = xfdesktop_file_icon_list_to_path_list (manager->files);
+  path_list = xfdesktop_file_utils_file_icon_list_to_path_list(manager->files);
 
   /* determine the string representation of the path list */
   string_list = thunar_vfs_path_list_to_string (path_list);
@@ -515,4 +645,11 @@ xfdesktop_clipboard_manager_cut_files (XfdesktopClipboardManager *manager,
 {
   g_return_if_fail (XFDESKTOP_IS_CLIPBOARD_MANAGER (manager));
   xfdesktop_clipboard_manager_transfer_files (manager, FALSE, files);
+}
+
+gboolean
+xfdesktop_clipboard_manager_get_can_paste (XfdesktopClipboardManager *manager)
+{
+    /* FIXME: implement */
+    return FALSE;
 }

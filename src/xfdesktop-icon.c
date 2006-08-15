@@ -274,6 +274,19 @@ xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon)
     return iface->peek_tooltip(icon);
 }
 
+GtkWidget *
+xfdesktop_icon_get_popup_menu(XfdesktopIcon *icon)
+{
+    XfdesktopIconIface *iface;
+    
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    
+    iface = XFDESKTOP_ICON_GET_IFACE(icon);
+    if(!iface->get_popup_menu)
+        return NULL;
+    
+    return iface->get_popup_menu(icon);
+}
 
 /*< signal triggers >*/
 

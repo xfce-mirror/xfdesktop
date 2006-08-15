@@ -21,20 +21,27 @@
 #ifndef __XFDESKTOP_FILE_ICON_H__
 #define __XFDESKTOP_FILE_ICON_H__
 
-#include <glib-object.h>
+#include <gtk/gtk.h>
 
-#define EXO_API_SUBJECT_TO_CHANGE
 #include <thunar-vfs/thunar-vfs.h>
 
 G_BEGIN_DECLS
 
-#define XFDESKTOP_TYPE_FILE_ICON     (xfdesktop_file_icon_get_type())
-#define XFDESKTOP_FILE_ICON(obj)     (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_FILE_ICON, XfdesktopFileIcon))
-#define XFDESKTOP_IS_FILE_ICON(obj)  (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_FILE_ICON))
+#define XFDESKTOP_TYPE_FILE_ICON            (xfdesktop_file_icon_get_type())
+#define XFDESKTOP_FILE_ICON(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_FILE_ICON, XfdesktopFileIcon))
+#define XFDESKTOP_IS_FILE_ICON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_FILE_ICON))
+#define XFDESKTOP_FILE_ICON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), XFDESKTOP_TYPE_FILE_ICON, XfdesktopFileIconClass))
 
-typedef struct _XfdesktopFileIcon         XfdesktopFileIcon;
-typedef struct _XfdesktopFileIconClass    XfdesktopFileIconClass;
-typedef struct _XfdesktopFileIconPrivate  XfdesktopFileIconPrivate;
+typedef enum
+{
+    XFDESKTOP_FILE_ICON_DRAG_FAILED = 0,
+    XFDESKTOP_FILE_ICON_DRAG_SUCCEEDED_MOVE_FILE_ICON,
+    XFDESKTOP_FILE_ICON_DRAG_SUCCEEDED_NO_ACTION,
+} XfdesktopFileIconDragResult;
+
+typedef struct _XfdesktopFileIcon        XfdesktopFileIcon;
+typedef struct _XfdesktopFileIconClass   XfdesktopFileIconClass;
+typedef struct _XfdesktopFileIconPrivate XfdesktopFileIconPrivate;
 
 struct _XfdesktopFileIcon
 {
@@ -50,31 +57,37 @@ struct _XfdesktopFileIconClass
     
     /*< signals >*/
     void (*position_changed)(XfdesktopFileIcon *icon);
+    
+    /*< virtual functions >*/
+    G_CONST_RETURN ThunarVfsInfo *(*peek_info)(XfdesktopFileIcon *icon);
+    void (*update_info)(XfdesktopFileIcon *icon, ThunarVfsInfo *info);
+    
+    gboolean (*can_rename_file)(XfdesktopFileIcon *icon);
+    gboolean (*rename_file)(XfdesktopFileIcon *icon, const gchar *new_name);
+    
+    gboolean (*can_delete_file)(XfdesktopFileIcon *icon);
+    gboolean (*delete_file)(XfdesktopFileIcon *icon);
 };
 
 GType xfdesktop_file_icon_get_type() G_GNUC_CONST;
-
-XfdesktopFileIcon *xfdesktop_file_icon_new(ThunarVfsInfo *info,
-                                           GdkScreen *screen);
-XfdesktopFileIcon *xfdesktop_file_icon_new_for_volume(ThunarVfsVolume *volume,
-                                                      GdkScreen *screen);
-
-void xfdesktop_file_icon_set_pixbuf_opacity(XfdesktopFileIcon *icon,
-                                            guint opacity);
 
 G_CONST_RETURN ThunarVfsInfo *xfdesktop_file_icon_peek_info(XfdesktopFileIcon *icon);
 void xfdesktop_file_icon_update_info(XfdesktopFileIcon *icon,
                                      ThunarVfsInfo *info);
 
-void xfdesktop_file_icon_delete_file(XfdesktopFileIcon *icon);
-gboolean xfdesktop_file_icon_rename_file(XfdesktopFileIcon *icon, 
+gboolean xfdesktop_file_icon_can_rename_file(XfdesktopFileIcon *icon);
+gboolean xfdesktop_file_icon_rename_file(XfdesktopFileIcon *icon,
                                          const gchar *new_name);
 
-ThunarVfsVolume *xfdesktop_file_icon_peek_volume(XfdesktopFileIcon *icon);
+gboolean xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon);
+gboolean xfdesktop_file_icon_delete_file(XfdesktopFileIcon *icon);
 
-/* utility function for the clipboard manager */
-GList *xfdesktop_file_icon_list_to_path_list(GList *icon_list);
+void xfdesktop_file_icon_add_active_job(XfdesktopFileIcon *icon,
+                                        ThunarVfsJob *job);
+gboolean xfdesktop_file_icon_remove_active_job(XfdesktopFileIcon *icon,
+                                               ThunarVfsJob *job);
+
 
 G_END_DECLS
 
-#endif /* __XFDESKTOP_FILE_ICON_H__ */
+#endif  /* __XFDESKTOP_FILE_ICON_H__ */

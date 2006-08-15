@@ -21,8 +21,7 @@
 #ifndef __XFDESKTOP_ICON_H__
 #define __XFDESKTOP_ICON_H__
 
-#include <glib-object.h>
-#include <gdk/gdk.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
@@ -67,6 +66,8 @@ struct _XfdesktopIconIface
     XfdesktopIconDragResult (*do_drop_dest)(XfdesktopIcon *icon, XfdesktopIcon *src_icon, GdkDragAction action);
     
     G_CONST_RETURN gchar *(*peek_tooltip)(XfdesktopIcon *icon);
+    
+    GtkWidget *(*get_popup_menu)(XfdesktopIcon *icon);
 };
 
 GType xfdesktop_icon_get_type() G_GNUC_CONST;
@@ -95,6 +96,7 @@ XfdesktopIconDragResult xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
                                                     XfdesktopIcon *src_icon,
                                                     GdkDragAction action);
 
+GtkWidget *xfdesktop_icon_get_popup_menu(XfdesktopIcon *icon);
 
 /*< signal triggers >*/
 

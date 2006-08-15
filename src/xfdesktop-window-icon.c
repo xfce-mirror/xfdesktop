@@ -88,13 +88,16 @@ xfdesktop_window_icon_class_init(XfdesktopWindowIconClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
     
+    g_type_class_add_private(klass, sizeof(XfdesktopWindowIconPrivate));
+    
     gobject_class->finalize = xfdesktop_window_icon_finalize;
 }
 
 static void
 xfdesktop_window_icon_init(XfdesktopWindowIcon *icon)
 {
-    icon->priv = g_new0(XfdesktopWindowIconPrivate, 1);
+    icon->priv = G_TYPE_INSTANCE_GET_PRIVATE(icon, XFDESKTOP_TYPE_WINDOW_ICON,
+                                             XfdesktopWindowIconPrivate);
 }
 
 static void
@@ -129,7 +132,6 @@ xfdesktop_window_icon_finalize(GObject *obj)
                                          G_CALLBACK(xfdesktop_window_icon_changed_cb),
                                          icon);
     
-    g_free(icon->priv);
     G_OBJECT_CLASS(xfdesktop_window_icon_parent_class)->finalize(obj);
 }
 

@@ -1,3 +1,11 @@
 * not sure how to make these coexist with the desktop menu:
   - "arrange items"/"auto arrange" menu option
 * rubber banding?  probably not.
+* need a way to determine if the *source* file can be dropped onto another
+  icon.  currently we only check to see if the destination icon can accept
+  a drop.  this is needed to determine if we can trash a particular file,
+  and also so we don't try to move things like removable volumes.
+* use a DbusGProxy to determine if there is anything in the trash, so we can
+  grey-out the "Empty Trash" menu item appropriately.
+* make whether to show removable volume icons a pref
+* make whether to show special file icons a pref

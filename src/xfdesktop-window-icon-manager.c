@@ -86,6 +86,8 @@ xfdesktop_window_icon_manager_class_init(XfdesktopWindowIconManagerClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
     
+    g_type_class_add_private(klass, sizeof(XfdesktopWindowIconManagerPrivate));
+    
     gobject_class->set_property = xfdesktop_window_icon_manager_set_property;
     gobject_class->get_property = xfdesktop_window_icon_manager_get_property;
     gobject_class->finalize = xfdesktop_window_icon_manager_finalize;
@@ -101,7 +103,9 @@ xfdesktop_window_icon_manager_class_init(XfdesktopWindowIconManagerClass *klass)
 static void
 xfdesktop_window_icon_manager_init(XfdesktopWindowIconManager *wmanager)
 {
-    wmanager->priv = g_new0(XfdesktopWindowIconManagerPrivate, 1);
+    wmanager->priv = G_TYPE_INSTANCE_GET_PRIVATE(wmanager,
+                                                 XFDESKTOP_TYPE_WINDOW_ICON_MANAGER,
+                                                 XfdesktopWindowIconManagerPrivate);
 }
 
 static void
@@ -155,8 +159,6 @@ xfdesktop_window_icon_manager_finalize(GObject *obj)
         }
         g_free(wmanager->priv->icon_workspaces);
     }
-    
-    g_free(wmanager->priv);
     
     G_OBJECT_CLASS(xfdesktop_window_icon_manager_parent_class)->finalize(obj);
 }

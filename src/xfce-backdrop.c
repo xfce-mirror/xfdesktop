@@ -39,7 +39,6 @@
 
 static void xfce_backdrop_class_init(XfceBackdropClass *klass);
 static void xfce_backdrop_init(XfceBackdrop *backdrop);
-static void xfce_backdrop_dispose(GObject *object);
 static void xfce_backdrop_finalize(GObject *object);
 
 struct _XfceBackdropPriv
@@ -196,11 +195,10 @@ G_DEFINE_TYPE(XfceBackdrop, xfce_backdrop, G_TYPE_OBJECT)
 static void
 xfce_backdrop_class_init(XfceBackdropClass *klass)
 {
-    GObjectClass *gobject_class;
+    GObjectClass *gobject_class = (GObjectClass *)klass;
     
-    gobject_class = (GObjectClass *)klass;
-        
-    gobject_class->dispose = xfce_backdrop_dispose;
+    g_type_class_add_private(klass, sizeof(XfceBackdropPriv));
+    
     gobject_class->finalize = xfce_backdrop_finalize;
     
     backdrop_signals[BACKDROP_CHANGED] = g_signal_new("changed",
@@ -212,23 +210,9 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
 static void
 xfce_backdrop_init(XfceBackdrop *backdrop)
 {
-    backdrop->priv = g_new0(XfceBackdropPriv, 1);
+    backdrop->priv = G_TYPE_INSTANCE_GET_PRIVATE(backdrop, XFCE_TYPE_BACKDROP,
+                                                 XfceBackdropPriv);
     backdrop->priv->show_image = TRUE;
-}
-
-static void
-xfce_backdrop_dispose(GObject *object)
-{
-    XfceBackdrop *backdrop = XFCE_BACKDROP(object);
-    
-    g_return_if_fail(backdrop != NULL);
-    
-    if(backdrop->priv->image_path) {
-        g_free(backdrop->priv->image_path);
-        backdrop->priv->image_path = NULL;
-    }
-    
-    G_OBJECT_CLASS(xfce_backdrop_parent_class)->dispose(object);
 }
 
 static void
@@ -238,8 +222,8 @@ xfce_backdrop_finalize(GObject *object)
     
     g_return_if_fail(backdrop != NULL);
     
-    g_free(backdrop->priv);
-    backdrop->priv = NULL;
+    if(backdrop->priv->image_path)
+        g_free(backdrop->priv->image_path);
     
     G_OBJECT_CLASS(xfce_backdrop_parent_class)->finalize(object);
 }

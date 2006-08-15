@@ -41,6 +41,8 @@ GType                   xfdesktop_clipboard_manager_get_type        (void) G_GNU
 
 XfdesktopClipboardManager *xfdesktop_clipboard_manager_get_for_display (GdkDisplay             *display);
 
+gboolean                xfdesktop_clipboard_manager_get_can_paste   (XfdesktopClipboardManager *manager);
+
 gboolean                xfdesktop_clipboard_manager_has_cutted_file (XfdesktopClipboardManager *manager,
                                                                      const struct _XfdesktopFileIcon       *file);
 
@@ -48,6 +50,10 @@ void                    xfdesktop_clipboard_manager_copy_files      (XfdesktopCl
                                                                      GList                  *files);
 void                    xfdesktop_clipboard_manager_cut_files       (XfdesktopClipboardManager *manager,
                                                                      GList                  *files);
+void                    xfdesktop_clipboard_manager_paste_files     (XfdesktopClipboardManager *manager,
+                                                                     ThunarVfsPath *target_path,
+                                                                     GtkWidget *widget,
+                                                                     GClosure *new_files_closure);
 
 G_END_DECLS;
 

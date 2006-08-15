@@ -34,7 +34,6 @@
 #include <gtk/gtk.h>
 
 #ifdef HAVE_LIBEXO
-#define EXO_API_SUBJECT_TO_CHANGE
 #include <exo/exo.h>
 #endif
 
@@ -234,10 +233,6 @@ static inline void xfdesktop_grid_set_position_free(XfdesktopIconView *icon_view
                                                     guint16 col);
 static inline void xfdesktop_grid_unset_position_free(XfdesktopIconView *icon_view,
                                                       XfdesktopIcon *icon);
-#if 0
-static XfdesktopIcon *xfdesktop_find_icon_below(XfdesktopIconView *icon_view,
-                                                XfdesktopIcon *icon);
-#endif
 static gint xfdesktop_check_icon_clicked(gconstpointer data,
                                          gconstpointer user_data);
 static void xfdesktop_list_foreach_repaint(gpointer data,
@@ -285,6 +280,7 @@ static const gint icon_view_n_targets = 1;
 
 static guint __signals[SIG_N_SIGNALS] = { 0, };
 
+
 G_DEFINE_TYPE(XfdesktopIconView, xfdesktop_icon_view, GTK_TYPE_WIDGET)
 
 
@@ -293,6 +289,8 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
     GtkWidgetClass *widget_class = (GtkWidgetClass *)klass;
+    
+    g_type_class_add_private(klass, sizeof(XfdesktopIconViewPrivate));
     
     gobject_class->finalize = xfdesktop_icon_view_finalize;
     
@@ -336,7 +334,9 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
 static void
 xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
 {
-    icon_view->priv = g_new0(XfdesktopIconViewPrivate, 1);
+    icon_view->priv = G_TYPE_INSTANCE_GET_PRIVATE(icon_view,
+                                                  XFDESKTOP_TYPE_ICON_VIEW,
+                                                  XfdesktopIconViewPrivate);
     
     icon_view->priv->icon_size = DEFAULT_ICON_SIZE;
     icon_view->priv->font_size = DEFAULT_FONT_SIZE;
@@ -382,8 +382,6 @@ xfdesktop_icon_view_finalize(GObject *obj)
         g_source_remove(icon_view->priv->tip_show_id);
     if(icon_view->priv->tip_window)
         gtk_widget_destroy(icon_view->priv->tip_window);
-    
-    g_free(icon_view->priv);
     
     G_OBJECT_CLASS(xfdesktop_icon_view_parent_class)->finalize(obj);
 }
@@ -1569,44 +1567,6 @@ xfdesktop_rootwin_watch_workarea(GdkXEvent *gxevent,
     
     return GDK_FILTER_CONTINUE;
 }
-
-#if 0
-static gint
-xfdesktop_find_icon_below_from_hash(gconstpointer data,
-                                    gconstpointer user_data)
-{
-    XfdesktopIcon *icon_maybe_below = XFDESKTOP_ICON(data);
-    XfdesktopIcon *icon = XFDESKTOP_ICON(user_data);
-    guint16 row, row1, dummy;
-    
-    if(!xfdesktop_icon_get_position(icon, &row, &dummy)
-       || !xfdesktop_icon_get_position(icon_maybe_below, &row1, &dummy)
-       || row1 != row + 1)
-    {
-        return 1;
-    } else
-        return 0;
-}
-
-static XfdesktopIcon *
-xfdesktop_find_icon_below(XfdesktopIconView *icon_view,
-                          XfdesktopIcon *icon)
-{
-    GList *icon_below_l = NULL;
-    guint16 row, col;
-    
-    if(!xfdesktop_icon_get_position(icon, &row, &col)
-       || row == icon_view->priv->nrows - 1)
-    {
-        return NULL;
-    }
-    
-    icon_below_l = g_list_find_custom(icon_view->priv->icons, icon,
-                                      xfdesktop_find_icon_below_from_hash);
-    
-    return icon_below_l ? icon_below_l->data : NULL;
-}
-#endif
 
 static void
 xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
