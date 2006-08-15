@@ -235,6 +235,8 @@ main(int argc, char **argv)
     Window xid;
     McsClient *mcs_client;
     GtkSettings *settings;
+    const gchar *message = NULL;
+    gboolean already_running;
     
     if(argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V"))) {
         g_print(_("This is %s version %s, running on Xfce %s.\n"), PACKAGE, VERSION,
@@ -270,18 +272,16 @@ main(int argc, char **argv)
     g_thread_init(NULL);
 #endif
     gtk_init(&argc, &argv);
-
-    if(xfdesktop_check_is_running(&xid)) {
-        DBG("xfdesktop is running");
-        
-        if(argc <= 1 || strcmp("-reload", argv[1]) == 0)
-            xfdesktop_send_client_message(xid, RELOAD_MESSAGE);
+    
+    if(argc > 1) {
+        if(strcmp("-reload", argv[1]) == 0)
+            message = RELOAD_MESSAGE;
         else if(strcmp("-menu", argv[1]) == 0)
-            xfdesktop_send_client_message(xid, MENU_MESSAGE);
+            message = MENU_MESSAGE;
         else if(strcmp("-windowlist", argv[1]) == 0)
-            xfdesktop_send_client_message(xid, WINDOWLIST_MESSAGE);
+            message = WINDOWLIST_MESSAGE;
         else if(strcmp("-quit", argv[1]) == 0)
-            xfdesktop_send_client_message(xid, QUIT_MESSAGE);
+            message = QUIT_MESSAGE;
         else {
             g_printerr(_("%s: Unknown option: %s\n"), PACKAGE, argv[1]);
             g_printerr(_("Options are:\n"));
@@ -292,8 +292,22 @@ main(int argc, char **argv)
             
             return 1;
         }
-        
-        return 0;
+    }
+    
+    already_running = xfdesktop_check_is_running(&xid);
+    if(already_running) {
+        DBG("xfdesktop is running");
+        if(!message)
+            message = RELOAD_MESSAGE;
+    }
+    
+    if(message) {
+        if(!already_running)
+            g_printerr(_("%s is not running.\n"), PACKAGE);
+        else
+            xfdesktop_send_client_message(xid, message);
+
+        return (already_running ? 0 : 1);
     }
     
     gdpy = gdk_display_get_default();
