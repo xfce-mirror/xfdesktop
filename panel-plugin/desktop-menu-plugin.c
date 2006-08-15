@@ -341,7 +341,7 @@ menu_deactivated(GtkWidget *menu, gpointer user_data)
 }
 
 static void
-menu_activate(DMPlugin *dmp)
+menu_activate(DMPlugin *dmp, gboolean at_pointer)
 {
     GtkWidget *menu;
     GtkWidget *button;
@@ -362,11 +362,12 @@ menu_activate(DMPlugin *dmp)
         id = g_signal_connect(menu, "deactivate", 
                 G_CALLBACK(menu_deactivated), dmp);
         g_object_set_data(G_OBJECT(menu), "sig_id", GUINT_TO_POINTER(id));
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
+        if (!at_pointer)
+          gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
         xfce_panel_plugin_register_menu (dmp->plugin, GTK_MENU(menu));
         gtk_menu_popup(GTK_MENU(menu), NULL, NULL,
-                       (GtkMenuPositionFunc)dmp_position_menu, dmp,
-                       1, gtk_get_current_event_time());
+                       (GtkMenuPositionFunc)(at_pointer ? NULL : dmp_position_menu),
+                       dmp, 1, gtk_get_current_event_time());
     } else
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), FALSE);
 }
@@ -392,7 +393,11 @@ dmp_message_received(GtkWidget *w,
 
     if(evt->data_format == 8) {
         if(strcmp(XFCE_MENU_MESSAGE, evt->data.b) == 0) {
-            menu_activate(dmp);
+            menu_activate(dmp, FALSE);
+            return TRUE;
+        }
+        if(strcmp(XFCE_MENU_AT_POINTER_MESSAGE, evt->data.b) == 0) {
+            menu_activate(dmp, TRUE);
             return TRUE;
         }
     }
@@ -415,7 +420,7 @@ dmp_popup(GtkWidget *w,
         return FALSE;
     }
 
-    menu_activate(dmp);
+    menu_activate(dmp, FALSE);
 
     return TRUE;
 }

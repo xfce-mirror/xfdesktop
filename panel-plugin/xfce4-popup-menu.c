@@ -79,7 +79,10 @@ int main( int   argc,
     gev.send_event = TRUE;
     gev.message_type = gdk_atom_intern("STRING", FALSE);
     gev.data_format = 8;
-    strcpy(gev.data.b, XFCE_MENU_MESSAGE);
+    if (argc > 1 && !strcmp (argv[1], "-pointer"))
+      strcpy(gev.data.b, XFCE_MENU_AT_POINTER_MESSAGE);
+    else
+      strcpy(gev.data.b, XFCE_MENU_MESSAGE);
     
     if (xfce4_check_is_running(win, &id))
         gdk_event_send_client_message((GdkEvent *)&gev, 
