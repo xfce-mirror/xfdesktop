@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-15 00:03-0700\n"
-"PO-Revision-Date: 2005-07-29 13:47+0300\n"
+"POT-Creation-Date: 2006-08-15 18:09+0300\n"
+"PO-Revision-Date: 2005-08-15 18:15+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -464,6 +464,11 @@ msgstr "Olet muokannut valikkoa, haluatko tallentaa sen ennen lopettamista?"
 msgid "Forget modifications"
 msgstr "Hylkää muutokset"
 
+#: ../menueditor/menueditor-main-window.c:2033
+#, c-format
+msgid "Unable to open the menu file %s in write mode"
+msgstr "Valikkotiedostoa %s ei voi avata kirjoitettavaksi"
+
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
 #: ../panel-plugin/desktop-menu-plugin.c:773
@@ -629,8 +634,8 @@ msgid "Unknown Error"
 msgstr "Tuntematon virhe"
 
 #: ../settings/appearance-settings.c:806
-#: ../src/xfdesktop-regular-file-icon.c:472
-#: ../src/xfdesktop-regular-file-icon.c:533
+#: ../src/xfdesktop-regular-file-icon.c:483
+#: ../src/xfdesktop-regular-file-icon.c:544
 msgid "Error"
 msgstr "Virhe"
 
@@ -854,9 +859,9 @@ msgid "    Desktop Icons:       %s\n"
 msgstr "    Työpöytäkuvakkeet:   %s\n"
 
 #: ../src/main.c:271
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Työpöytäkuvakkeet:   %s\n"
+msgstr "    Tiedostokuvakkeet:   %s\n"
 
 #: ../src/main.c:298
 #, c-format
@@ -868,31 +873,27 @@ msgid "Options are:\n"
 msgstr "Valitsimet ovat:\n"
 
 #: ../src/main.c:300
-#, fuzzy
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    -reload     Lataa kaikki asetukset uudelleen, päivittää kuvalistan\n"
+msgstr "    --reload      Lataa asetukset uudelleen, päivitä kuvalista\n"
 
 #: ../src/main.c:301
-#, fuzzy
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    -menu        Näyttää valikon (nykyisessä hiiren kohdassa)\n"
+msgstr "    --menu        Näytä valikko (hiiren nykyisessä sijainnissa)\n"
 
 #: ../src/main.c:302
-#, fuzzy
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  Näyttää ikkunalistan (nykyisessä hiiden kohdassa)\n"
+msgstr ""
+"    --windowlist  Näytä ikkunalista (hiiren nykyisessä sijainnissa)\n"
 
 #: ../src/main.c:303
-#, fuzzy
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "    -quit        Lopeta xfdesktop 4.3.90.2\n"
+msgstr "    --quit        Sulje xfdesktop\n"
 
 #: ../src/main.c:318
 #, c-format
 msgid "%s is not running.\n"
-msgstr ""
+msgstr "%s ei ole käynnissä.\n"
 
 #: ../src/windowlist.c:218
 #, c-format
@@ -1113,7 +1114,7 @@ msgstr "_Ominaisuudet..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1637
 msgid "Des_ktop"
-msgstr "_Työpöytä"
+msgstr "T_yöpöytä"
 
 #: ../src/xfdesktop-file-icon-manager.c:1656
 msgid "Create _Launcher..."
@@ -1140,13 +1141,13 @@ msgid "_Desktop Properties..."
 msgstr "_Työpöydän ominaisuudet..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2794
-#: ../src/xfdesktop-regular-file-icon.c:349
+#: ../src/xfdesktop-regular-file-icon.c:350
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Kohteen \"%s\" suorittaminen epäonnistui:"
 
 #: ../src/xfdesktop-file-icon-manager.c:2796
-#: ../src/xfdesktop-regular-file-icon.c:351
+#: ../src/xfdesktop-regular-file-icon.c:352
 msgid "Run Error"
 msgstr "Suoritusvirhe"
 
@@ -1209,10 +1210,16 @@ msgid "Size:"
 msgstr "Koko:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:412
-#: ../src/xfdesktop-regular-file-icon.c:450
+#: ../src/xfdesktop-regular-file-icon.c:451
 #: ../src/xfdesktop-special-file-icon.c:404 ../src/xfdesktop-volume-icon.c:391
 msgid "%s (%"
 msgstr "%s (%"
+
+#: ../src/xfdesktop-file-properties-dialog.c:412
+#: ../src/xfdesktop-regular-file-icon.c:451
+#: ../src/xfdesktop-special-file-icon.c:404 ../src/xfdesktop-volume-icon.c:391
+msgid " Bytes)"
+msgstr " tavua)"
 
 #. permissions tab
 #: ../src/xfdesktop-file-properties-dialog.c:427
@@ -1238,38 +1245,37 @@ msgstr "Muut:"
 
 #: ../src/xfdesktop-file-utils.c:71
 msgid "Yes to _all"
-msgstr ""
+msgstr "Kyllä k_aikkiin"
 
 #: ../src/xfdesktop-file-utils.c:103
 #, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Virhe siirrettäessä kohdetta \"%s\" kohteeseen \"%s\":"
 
 #: ../src/xfdesktop-file-utils.c:106
 #, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Virhe kopioitaessa kohdetta \"%s\" kohteeseen \"%s\":"
 
 #: ../src/xfdesktop-file-utils.c:109
 #, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Virhe linkitettäessä kohdetta \"%s\" kohteeseen \"%s\":"
 
 #: ../src/xfdesktop-file-utils.c:118
-#, fuzzy
 msgid "File Error"
-msgstr "Virhe"
+msgstr "Tiedostovirhe"
 
 #: ../src/xfdesktop-file-utils.c:134
 msgid "broken link"
-msgstr ""
+msgstr "rikkinäinen linkki"
 
 #: ../src/xfdesktop-file-utils.c:138
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "linkki kohteeseen %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:453
+#: ../src/xfdesktop-regular-file-icon.c:454
 #: ../src/xfdesktop-special-file-icon.c:407 ../src/xfdesktop-volume-icon.c:394
 #, c-format
 msgid ""
@@ -1281,41 +1287,42 @@ msgstr ""
 "Muokattu:%s\n"
 "Koko: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:530
+#: ../src/xfdesktop-regular-file-icon.c:541
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Nimen \"%s\" muuttaminen muotoon \"%s\" epäonnistui:"
 
 #: ../src/xfdesktop-special-file-icon.c:233
 msgid "Home"
-msgstr ""
+msgstr "Kotihakemisto"
 
 #: ../src/xfdesktop-special-file-icon.c:437
-#, fuzzy
 msgid "Unable to open the trash."
-msgstr "Ei voi liittää kohdetta \"%s\":"
+msgstr "Roskakoria ei voi avata."
 
 #: ../src/xfdesktop-special-file-icon.c:438
 msgid ""
 "Viewing the contents of the trash requires a file manager that supports the "
 "Xfce trash service, such as Thunar."
 msgstr ""
+"Roskakorin sisällön näyttämiseen tarvitaan Xfce:n roskakoripalvelua tukeva "
+"tiedostonhallintasovellus, kuten esimerkiksi Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:466
-#, fuzzy
 msgid "Unable to empty the trash."
-msgstr "Istunnon lopettaminen ei onnistu"
+msgstr "Roskakorin tyhjentäminen ei onnistu"
 
 #: ../src/xfdesktop-special-file-icon.c:467
 msgid ""
 "Emptying the trash requires a file manager that supports the Xfce trash "
 "service, such as Thunar."
 msgstr ""
+"Roskakorin tyhjentämiseen tarvitaan Xfce:n roskakoripalvelua tukeva "
+"tiedostonhallintasovellus, kuten esimerkiksi Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:499
-#, fuzzy
 msgid "_Empty Trash"
-msgstr "_Tyhjä tiedosto"
+msgstr "_Tyhjennä roskakori"
 
 #: ../src/xfdesktop-volume-icon.c:438 ../src/xfdesktop-volume-icon.c:496
 #, c-format
@@ -1387,6 +1394,3 @@ msgstr "Xfce 4 työpöydänhallinnan asetukset"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 työpöydän asetukset"
-
-#~ msgid " Bytes)"
-#~ msgstr " tavua)"
