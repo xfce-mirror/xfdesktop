@@ -27,6 +27,8 @@
 
 #include <thunar-vfs/thunar-vfs.h>
 
+#include "xfdesktop-file-icon.h"
+
 ThunarVfsInteractiveJobResponse xfdesktop_file_utils_interactive_job_ask(GtkWindow *parent,
                                                                          const gchar *message,
                                                                          ThunarVfsInteractiveJobResponse choices);
@@ -63,6 +65,9 @@ GdkPixbuf *xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
                                               gint size,
                                               const GdkPixbuf *emblem,
                                               guint opacity);
+
+gboolean xfdesktop_file_utils_launch_external(const ThunarVfsInfo *info,
+                                              GdkScreen *screen);
 
 
 

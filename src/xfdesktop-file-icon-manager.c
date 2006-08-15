@@ -65,6 +65,7 @@
 #include "xfdesktop-special-file-icon.h"
 #include "xfdesktop-volume-icon.h"
 #include "xfdesktop-clipboard-manager.h"
+#include "xfdesktop-file-properties-dialog.h"
 #include "xfdesktop-file-icon-manager.h"
 
 #include <libxfce4util/libxfce4util.h>
@@ -313,59 +314,6 @@ xfdesktop_file_icon_manager_icon_view_manager_init(XfdesktopIconViewManagerIface
 
 /* icon signal handlers */
 
-static gboolean
-xfdesktop_file_icon_launch_external(XfdesktopFileIcon *icon,
-                                    GdkScreen *screen)
-{
-    gboolean ret = FALSE;
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
-    gchar *folder_name = thunar_vfs_path_dup_uri(info->path);
-    gchar *display_name = gdk_screen_make_display_name(screen);
-    gchar *commandline;
-    gint status = 0;
-    
-    if(XFDESKTOP_IS_SPECIAL_FILE_ICON(icon)
-       && XFDESKTOP_SPECIAL_FILE_ICON_TRASH
-          == xfdesktop_special_file_icon_get_icon_type(XFDESKTOP_SPECIAL_FILE_ICON(icon)))
-    {
-        commandline = g_strdup_printf("dbus-send --print-reply --dest=org.xfce.Trash "
-                                      "/org/xfce/Trash org.xfce.Trash.DisplayTrash "
-                                      "string:\"%s\"", display_name);
-    } else {
-        /* try the org.xfce.FileManager D-BUS interface first */
-        commandline = g_strdup_printf("dbus-send --print-reply --dest=org.xfce.FileManager "
-                                      "/org/xfce/FileManager org.xfce.FileManager.Launch "
-                                      "string:\"%s\" string:\"%s\"",
-                                      folder_name, display_name);
-    }
-    
-    ret = (g_spawn_command_line_sync(commandline, NULL, NULL, &status, NULL)
-           && status == 0);
-    g_free(commandline);
-
-    /* hardcoded fallback to a file manager if that didn't work */
-    if(!ret) {
-        gchar *file_manager_app = g_find_program_in_path(FILE_MANAGER_FALLBACK);
-        
-        if(file_manager_app) {
-            commandline = g_strconcat("env DISPLAY=\"", display_name, "\" \"",
-                                      file_manager_app, "\" \"", folder_name,
-                                      "\"", NULL);
-            
-            DBG("executing:\n%s\n", commandline);
-            
-            ret = xfce_exec(commandline, FALSE, TRUE, NULL);
-            g_free(commandline);
-            g_free(file_manager_app);
-        }
-    }
-
-    g_free(display_name);
-    g_free(folder_name);
-    
-    return ret;
-}
-
 static void
 xfdesktop_file_icon_activated(XfdesktopIcon *icon,
                               gpointer user_data)
@@ -374,53 +322,14 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon,
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
     ThunarVfsMimeApplication *mime_app;
     const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(file_icon);
-    
     gboolean succeeded = FALSE;
     
     TRACE("entering");
     
-    if(XFDESKTOP_IS_VOLUME_ICON(icon)) {
-        ThunarVfsVolume *volume = (ThunarVfsVolume *)xfdesktop_volume_icon_peek_volume(XFDESKTOP_VOLUME_ICON(icon));
-        GError *error = NULL;
-        ThunarVfsPath *new_path = NULL;
-        
-        if(!thunar_vfs_volume_is_mounted(volume)) {
-            GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-            if(!thunar_vfs_volume_mount(volume, toplevel, &error)) {
-                gchar *primary = g_markup_printf_escaped(_("Unable to mount \"%s\":"),
-                                                         thunar_vfs_volume_get_name(volume));
-                xfce_message_dialog(GTK_WINDOW(toplevel), _("Mount Failed"),
-                                    GTK_STOCK_DIALOG_ERROR, primary,
-                                    error ? error->message : _("Unknown error."),
-                                    GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-                g_free(primary);
-                g_error_free(error);
-            }
-        }
-        
-        new_path = thunar_vfs_volume_get_mount_point(volume);
-            
-        if(new_path && (!info
-                        || !thunar_vfs_path_equal(info->path, new_path)))
-        {
-            ThunarVfsInfo *new_info = thunar_vfs_info_new_for_path(new_path,
-                                                                   NULL);
-            if(new_info) {
-                xfdesktop_file_icon_update_info(file_icon, new_info);
-                thunar_vfs_info_unref(new_info);
-            }
-        }
-        
-        info = xfdesktop_file_icon_peek_info(file_icon);
-        if(!info || !new_path) {
-            /* if |new_path| is NULL, but |info| isn't, it's possible we have
-             * a stale |info|, and we shouldn't continue */
-            return;
-        }
-    }
+    g_return_if_fail(info);
     
     if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
-        succeeded = xfdesktop_file_icon_launch_external(file_icon,
+        succeeded = xfdesktop_file_utils_launch_external(info,
                                                         fmanager->priv->gscreen);
     } else if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
         succeeded = thunar_vfs_info_execute(info,
@@ -445,8 +354,8 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon,
             g_object_unref(G_OBJECT(mime_app));
             g_list_free(path_list);
         } else {
-            succeeded = xfdesktop_file_icon_launch_external(file_icon,
-                                                            fmanager->priv->gscreen);
+            succeeded = xfdesktop_file_utils_launch_external(info,
+                                                             fmanager->priv->gscreen);
         }
     }    
     
@@ -816,7 +725,7 @@ xfdesktop_file_icon_menu_other_app(GtkWidget *widget,
     
     gscreen = gtk_widget_get_screen(widget);
     
-    if(!xfdesktop_file_icon_launch_external(icon, gscreen)) {
+    if(!xfdesktop_file_utils_launch_external(info, gscreen)) {
         gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
                                                  info->display_name);
         xfce_message_dialog(GTK_WINDOW(toplevel),
@@ -858,639 +767,12 @@ xfdesktop_file_icon_menu_copy(GtkWidget *widget,
     g_list_free(files);
 }
 
-#if 0
-static void
-xfdesktop_file_icon_menu_toggle_mount(GtkWidget *widget,
-                                      gpointer user_data)
-{
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    XfdesktopFileIcon *icon;
-    GList *selected;
-    GtkWidget *toplevel;
-    ThunarVfsVolume *volume;
-    GError *error = NULL;
-    gboolean is_mount;
-    
-    selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
-    g_return_if_fail(g_list_length(selected) == 1);
-    icon = XFDESKTOP_FILE_ICON(selected->data);
-    g_list_free(selected);
-    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-    
-    volume = xfdesktop_file_icon_peek_volume(icon);
-    g_return_if_fail(volume);
-    
-    is_mount = !thunar_vfs_volume_is_mounted(volume);
-    
-    if(!is_mount)
-        thunar_vfs_volume_unmount(volume, toplevel, &error);
-    else {
-        if(thunar_vfs_volume_mount(volume, toplevel, &error)) {
-            const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
-            ThunarVfsPath *new_path = thunar_vfs_volume_get_mount_point(volume);
-            
-            if(!info || !thunar_vfs_path_equal(info->path, new_path)) {
-                ThunarVfsInfo *new_info = thunar_vfs_info_new_for_path(new_path,
-                                                                       NULL);
-                if(new_info) {
-                    xfdesktop_file_icon_update_info(icon, new_info);
-                    thunar_vfs_info_unref(new_info);
-                }
-            }
-        }
-    }
-    
-    if(error) {
-        gchar *primary = g_markup_printf_escaped(is_mount ? _("Unable to mount \"%s\":")
-                                                          : _("Unable to unmount \"%s\":"),
-                                                 thunar_vfs_volume_get_name(volume));
-        xfce_message_dialog(GTK_WINDOW(toplevel),
-                            is_mount ? _("Mount Failed") : _("Unmount Failed"),
-                            GTK_STOCK_DIALOG_ERROR, primary, error->message,
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-        g_free(primary);
-        g_error_free(error);
-    }
-}
-
-static void
-xfdesktop_file_icon_menu_eject(GtkWidget *widget,
-                               gpointer user_data)
-{
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    XfdesktopFileIcon *icon;
-    GList *selected;
-    GtkWidget *toplevel;
-    ThunarVfsVolume *volume;
-    GError *error = NULL;
-    
-    selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
-    g_return_if_fail(g_list_length(selected) == 1);
-    icon = XFDESKTOP_FILE_ICON(selected->data);
-    g_list_free(selected);
-    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-    
-    volume = xfdesktop_file_icon_peek_volume(icon);
-    g_return_if_fail(volume);
-    
-    if(!thunar_vfs_volume_eject(volume, toplevel, &error)) {
-        gchar *primary = g_markup_printf_escaped(_("Unable to eject \"%s\":"),
-                                                 thunar_vfs_volume_get_name(volume));
-        xfce_message_dialog(GTK_WINDOW(toplevel), _("Eject Failed"),
-                            GTK_STOCK_DIALOG_ERROR, primary, error->message,
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-        g_free(primary);
-        g_error_free(error);
-    }
-}
-#endif
-
-enum
-{
-    OPENWITH_COL_PIX = 0,
-    OPENWITH_COL_NAME,
-    OPENWITH_COL_HANDLER,
-    OPENWITH_N_COLS,
-};
-
-static gboolean
-xfdesktop_mime_handlers_free_ls(GtkTreeModel *model,
-                                GtkTreePath *path,
-                                GtkTreeIter *itr,
-                                gpointer data)
-{
-    GObject *handler = NULL;
-    
-    gtk_tree_model_get(model, itr,
-                       OPENWITH_COL_HANDLER, &handler,
-                       -1);
-    if(handler)
-        g_object_unref(handler);
-    
-    return FALSE;
-}
-
-static void
-xfdesktop_file_icon_menu_properties_destroyed(GtkWidget *widget,
-                                              gpointer user_data)
-{
-    GtkTreeModel *model = GTK_TREE_MODEL(user_data);
-    
-    gtk_tree_model_foreach(model, xfdesktop_mime_handlers_free_ls, NULL);
-}
-
-static void
-xfdesktop_file_icon_set_default_mime_handler(GtkComboBox *combo,
-                                             gpointer user_data)
-{
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    XfdesktopFileIcon *icon = g_object_get_data(G_OBJECT(combo),
-                                                "--xfdesktop-icon");
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
-    GtkTreeIter itr;
-    GtkTreeModel *model;
-    ThunarVfsMimeApplication *mime_app = NULL;
-    GError *error = NULL;
-    
-    if(!gtk_combo_box_get_active_iter(combo, &itr))
-        return;
-    
-    model = gtk_combo_box_get_model(combo);
-    gtk_tree_model_get(model, &itr,
-                       OPENWITH_COL_HANDLER, &mime_app,
-                       -1);
-    if(mime_app) {
-        if(!thunar_vfs_mime_database_set_default_application(thunar_mime_database,
-                                                             info->mime_info,
-                                                             mime_app,
-                                                             &error))
-        {
-            GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-            gchar *primary = g_markup_printf_escaped(_("Unable to set default application for \"%s\" to \"%s\":"),
-                                                     xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)),
-                                             thunar_vfs_mime_application_get_name(mime_app));
-            xfce_message_dialog(GTK_WINDOW(toplevel), _("Properties Error"),
-                                GTK_STOCK_DIALOG_ERROR, primary, error->message,
-                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-            g_free(primary);
-            g_error_free(error);
-        }
-    }
-}
-
-static void
-xfdesktop_file_icon_show_properties(XfdesktopFileIconManager *fmanager,
-                                    XfdesktopFileIcon *icon)
-{
-    GtkWidget *dlg, *table, *hbox, *lbl, *img, *spacer, *notebook, *vbox,
-              *entry, *toplevel, *combo;
-    gint row = 0, w, h;
-    PangoFontDescription *pfd = pango_font_description_from_string("bold");
-    gchar *str = NULL, buf[64];
-    gboolean is_link = FALSE;
-    struct tm *tm;
-    const ThunarVfsInfo *info;
-    ThunarVfsUserManager *user_manager;
-    ThunarVfsUser *user;
-    ThunarVfsGroup *group;
-    ThunarVfsFileMode mode;
-    GList *mime_apps, *l;
-    static const gchar *access_types[4] = {
-        N_("None"), N_("Write only"), N_("Read only"), N_("Read & Write")
-    };
-    
-    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-    
-    info = xfdesktop_file_icon_peek_info(icon);
-    
-    gtk_icon_size_lookup(GTK_ICON_SIZE_DIALOG, &w, &h);
-    
-    dlg = gtk_dialog_new_with_buttons(xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)),
-                                      GTK_WINDOW(toplevel),
-                                      GTK_DIALOG_NO_SEPARATOR,
-                                      GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
-                                      NULL);
-    gtk_window_set_icon(GTK_WINDOW(dlg),
-                        xfdesktop_icon_peek_pixbuf(XFDESKTOP_ICON(icon), w));
-    g_signal_connect(GTK_DIALOG(dlg), "response",
-                     G_CALLBACK(gtk_widget_destroy), NULL);
-    
-    notebook = gtk_notebook_new();
-    gtk_widget_show(notebook);
-    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), notebook, TRUE, TRUE, 0);
-    
-    lbl = gtk_label_new(_("General"));
-    gtk_widget_show(lbl);
-    vbox = gtk_vbox_new(FALSE, BORDER);
-    gtk_widget_show(vbox);
-    gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, lbl);
-    
-    table = g_object_new(GTK_TYPE_TABLE,
-                         "border-width", 6,
-                         "column-spacing", 12,
-                         "row-spacing", 6,
-                         NULL);
-    gtk_widget_show(table);
-    gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 0);
-    
-    
-    hbox = gtk_hbox_new(FALSE, BORDER);
-    gtk_widget_show(hbox);
-    gtk_table_attach(GTK_TABLE(table), hbox, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    img = gtk_image_new_from_pixbuf(xfdesktop_icon_peek_pixbuf(XFDESKTOP_ICON(icon),
-                                                               w));
-    gtk_widget_show(img);
-    gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, FALSE, 0);
-    
-    lbl = gtk_label_new(_("Name:"));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
-    gtk_widget_modify_font(lbl, pfd);
-    gtk_widget_show(lbl);
-    gtk_box_pack_start(GTK_BOX(hbox), lbl, TRUE, TRUE, 0);
-    
-    entry = gtk_entry_new();
-    gtk_entry_set_text(GTK_ENTRY(entry),
-                       xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)));
-    gtk_editable_select_region(GTK_EDITABLE(entry), 0, -1);
-    gtk_editable_set_editable(GTK_EDITABLE(entry), FALSE);  /* FIXME */
-    gtk_widget_show(entry);
-    gtk_table_attach(GTK_TABLE(table), entry, 1, 2, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-    gtk_widget_grab_focus(entry);
-    
-    ++row;
-    
-    spacer = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
-    gtk_widget_set_size_request(spacer, -1, 12);
-    gtk_widget_show(spacer);
-    gtk_table_attach(GTK_TABLE(table), spacer, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    ++row;
-    
-    lbl = gtk_label_new(_("Kind:"));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
-    gtk_widget_modify_font(lbl, pfd);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    str = xfdesktop_file_utils_get_file_kind(info, &is_link);
-    lbl = gtk_label_new(str);
-    g_free(str);
-    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-    
-    ++row;
-    
-    if(is_link) {
-        gchar *link_name, *display_name;
-        
-        lbl = gtk_label_new(_("Link Target:"));
-        gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
-        gtk_widget_modify_font(lbl, pfd);
-        gtk_widget_show(lbl);
-        gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                         GTK_FILL, GTK_FILL, 0, 0);
-        
-        link_name = thunar_vfs_info_read_link(info, NULL);
-        if(link_name) {
-            display_name = g_filename_display_name(link_name);
-            lbl = gtk_label_new(display_name);
-            g_object_set(G_OBJECT(lbl),
-                         "ellipsize", EXO_PANGO_ELLIPSIZE_START,
-                         NULL);
-            g_free(display_name);
-            g_free(link_name);
-        } else
-            lbl = gtk_label_new(_("(unknown)"));
-        gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
-        gtk_widget_show(lbl);
-        gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
-                         GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-        
-        ++row;
-    }
-    
-    if(info->type != THUNAR_VFS_FILE_TYPE_DIRECTORY) {
-        mime_apps = thunar_vfs_mime_database_get_applications(thunar_mime_database,
-                                                              info->mime_info);
-        
-        if(mime_apps) {
-            GtkListStore *ls;
-            GtkTreeIter itr;
-            GtkCellRenderer *render;
-            ThunarVfsMimeHandler *handler;
-            const gchar *icon_name;
-            gint w, h;
-            GdkPixbuf *pix;
-            
-            lbl = gtk_label_new(_("Open With:"));
-            gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
-            gtk_widget_modify_font(lbl, pfd);
-            gtk_widget_show(lbl);
-            gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                             GTK_FILL, GTK_FILL, 0, 0);
-            
-            hbox = gtk_hbox_new(FALSE, BORDER);
-            gtk_widget_show(hbox);
-            gtk_table_attach(GTK_TABLE(table), hbox, 1, 2, row, row + 1,
-                             GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-            
-            gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
-            
-            ls = gtk_list_store_new(OPENWITH_N_COLS, GDK_TYPE_PIXBUF,
-                                    G_TYPE_STRING, G_TYPE_POINTER);
-            for(l = mime_apps; l; l = l->next) {
-                handler = THUNAR_VFS_MIME_HANDLER(l->data);
-                pix = NULL;
-                
-                gtk_list_store_append(ls, &itr);
-                
-                icon_name = thunar_vfs_mime_handler_lookup_icon_name(handler,
-                                                                     gtk_icon_theme_get_default());
-                if(icon_name)
-                    pix = xfce_themed_icon_load(icon_name, w);
-                
-                gtk_list_store_set(ls, &itr,
-                                   OPENWITH_COL_PIX, pix,
-                                   OPENWITH_COL_NAME,
-                                   thunar_vfs_mime_handler_get_name(handler),
-                                   OPENWITH_COL_HANDLER, handler,
-                                   -1);
-                
-                if(pix)
-                    g_object_unref(G_OBJECT(pix));
-            }
-            
-            g_signal_connect(G_OBJECT(dlg), "destroy",
-                             G_CALLBACK(xfdesktop_file_icon_menu_properties_destroyed),
-                             ls);
-            
-            g_list_free(mime_apps);
-            
-            combo = gtk_combo_box_new_with_model(GTK_TREE_MODEL(ls));
-            
-            render = gtk_cell_renderer_pixbuf_new();
-            gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo), render, FALSE);
-            gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(combo), render,
-                                          "pixbuf", OPENWITH_COL_PIX);
-            
-            render = gtk_cell_renderer_text_new();
-            gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo), render, FALSE);
-            gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(combo), render,
-                                          "text", OPENWITH_COL_NAME);
-            
-            gtk_combo_box_set_active(GTK_COMBO_BOX(combo), 0);
-            g_object_set_data(G_OBJECT(combo), "--xfdesktop-icon", icon);
-            gtk_widget_show(combo);
-            gtk_table_attach(GTK_TABLE(table), combo, 1, 2, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-            g_signal_connect(G_OBJECT(combo), "changed",
-                             G_CALLBACK(xfdesktop_file_icon_set_default_mime_handler),
-                             fmanager);
-            
-            ++row;
-        }
-    }
-    
-    spacer = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
-    gtk_widget_set_size_request(spacer, -1, 12);
-    gtk_widget_show(spacer);
-    gtk_table_attach(GTK_TABLE(table), spacer, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    ++row;
-    
-    lbl = gtk_label_new(_("Modified:"));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
-    gtk_widget_modify_font(lbl, pfd);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    tm = localtime(&info->mtime);
-    strftime(buf, 64, "%Y-%m-%d %H:%M:%S", tm);
-    
-    lbl = gtk_label_new(buf);
-    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-    
-    ++row;
-    
-    lbl = gtk_label_new(_("Accessed:"));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
-    gtk_widget_modify_font(lbl, pfd);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    tm = localtime(&info->atime);
-    strftime(buf, 64, "%Y-%m-%d %H:%M:%S", tm);
-    
-    lbl = gtk_label_new(buf);
-    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-    
-    ++row;
-    
-    spacer = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
-    gtk_widget_set_size_request(spacer, -1, 12);
-    gtk_widget_show(spacer);
-    gtk_table_attach(GTK_TABLE(table), spacer, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    ++row;
-    
-    if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY)
-        lbl = gtk_label_new(_("Free Space:"));
-    else
-        lbl = gtk_label_new(_("Size:"));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
-    gtk_widget_modify_font(lbl, pfd);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
-        ThunarVfsFileSize free_space;
-        if(thunar_vfs_info_get_free_space(info, &free_space)) {
-            thunar_vfs_humanize_size(free_space, buf, 64);
-            lbl = gtk_label_new(buf);
-        } else
-            lbl = gtk_label_new(_("(unknown)"));
-    } else {
-        thunar_vfs_humanize_size(info->size, buf, 64);
-        str = g_strdup_printf(_("%s (%" G_GINT64_FORMAT " Bytes)"), buf,
-                              (gint64)info->size);
-        lbl = gtk_label_new(str);
-        g_free(str);
-    }
-    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-    
-    ++row;
-    
-    
-    /* permissions tab */
-    
-    lbl = gtk_label_new(_("Permissions"));;
-    gtk_widget_show(lbl);
-    vbox = gtk_vbox_new(FALSE, BORDER);
-    gtk_widget_show(vbox);
-    gtk_notebook_append_page(GTK_NOTEBOOK(notebook), vbox, lbl);
-    
-    row = 0;
-    table = g_object_new(GTK_TYPE_TABLE,
-                         "border-width", 6,
-                         "column-spacing", 12,
-                         "row-spacing", 6,
-                         NULL);
-    gtk_widget_show(table);
-    gtk_box_pack_start(GTK_BOX(vbox), table, TRUE, TRUE, 0);
-    
-    user_manager = thunar_vfs_user_manager_get_default();
-    user = thunar_vfs_user_manager_get_user_by_id(user_manager,
-                                                  info->uid);
-    group = thunar_vfs_user_manager_get_group_by_id(user_manager,
-                                                    info->gid);
-    mode = info->mode;
-    
-    lbl = gtk_label_new(_("Owner:"));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
-    gtk_widget_modify_font(lbl, pfd);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    str = g_strdup_printf("%s (%s)", thunar_vfs_user_get_real_name(user),
-                          thunar_vfs_user_get_name(user));
-    lbl = gtk_label_new(str);
-    g_free(str);
-    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-    
-    ++row;
-    
-    lbl = gtk_label_new(_("Access:"));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
-    gtk_widget_modify_font(lbl, pfd);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    lbl = gtk_label_new(_(access_types[((mode >> (2 * 3)) & 0007) >> 1]));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-    
-    ++row;
-    
-    spacer = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
-    gtk_widget_set_size_request(spacer, -1, 12);
-    gtk_widget_show(spacer);
-    gtk_table_attach(GTK_TABLE(table), spacer, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    ++row;
-    
-    lbl = gtk_label_new(_("Group:"));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
-    gtk_widget_modify_font(lbl, pfd);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    lbl = gtk_label_new(thunar_vfs_group_get_name(group));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-    
-    ++row;
-    
-    lbl = gtk_label_new(_("Access:"));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
-    gtk_widget_modify_font(lbl, pfd);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    lbl = gtk_label_new(_(access_types[((mode >> (1 * 3)) & 0007) >> 1]));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-    
-    ++row;
-    
-    spacer = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
-    gtk_widget_set_size_request(spacer, -1, 12);
-    gtk_widget_show(spacer);
-    gtk_table_attach(GTK_TABLE(table), spacer, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    ++row;
-    
-    lbl = gtk_label_new(_("Others:"));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 1.0, 0.5);
-    gtk_widget_modify_font(lbl, pfd);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
-                     GTK_FILL, GTK_FILL, 0, 0);
-    
-    lbl = gtk_label_new(_(access_types[((mode >> (0 * 3)) & 0007) >> 1]));
-    gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
-    gtk_widget_show(lbl);
-    gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
-                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-    
-    ++row;
-    
-    g_object_unref(G_OBJECT(user_manager));
-    g_object_unref(G_OBJECT(user));
-    g_object_unref(G_OBJECT(group));
-    
-    pango_font_description_free(pfd);
-    
-#ifdef HAVE_THUNARX
-    if(fmanager->priv->thunarx_properties_providers) {
-        GList *l, *pages, *p, *files = g_list_append(NULL, icon);
-        ThunarxPropertyPageProvider *provider;
-        ThunarxPropertyPage *page;
-        GtkWidget *label_widget;
-        const gchar *label;
-        
-        DBG("adding property pages");
-        
-        for(l = fmanager->priv->thunarx_properties_providers; l; l = l->next) {
-            provider = THUNARX_PROPERTY_PAGE_PROVIDER(l->data);
-            pages = thunarx_property_page_provider_get_pages(provider, files);
-            
-            DBG("pages found: %d", pages ? g_list_length(pages) : 0);
-            
-            for(p = pages; p; p = p->next) {
-                page = THUNARX_PROPERTY_PAGE(p->data);
-                label_widget = thunarx_property_page_get_label_widget(page);
-                if(!label_widget) {
-                    label = thunarx_property_page_get_label(page);
-                    label_widget = gtk_label_new(label);
-                }
-                gtk_widget_show(GTK_WIDGET(page));
-                gtk_widget_show(label_widget);
-                gtk_notebook_append_page(GTK_NOTEBOOK(notebook),
-                                         GTK_WIDGET(page), label_widget);
-            }
-            
-            /* each page should be freed when the dialog is destroyed (?) */
-            g_list_free(pages);
-        }
-        
-        g_list_free(files);
-    }
-#endif
-    
-    gtk_widget_show(dlg);
-}
-
 static void
 xfdesktop_file_icon_menu_properties(GtkWidget *widget,
                                     gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    GtkWidget *parent;
     XfdesktopFileIcon *icon;
     GList *selected;
     
@@ -1499,7 +781,15 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
     icon = XFDESKTOP_FILE_ICON(selected->data);
     g_list_free(selected);
     
-    xfdesktop_file_icon_show_properties(fmanager, icon);
+    parent = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    
+    xfdesktop_file_properties_dialog_show(GTK_WINDOW(parent), icon,
+#ifdef HAVE_THUNARX
+                                          fmanager->priv->thunarx_properties_providers
+#else
+                                          NULL
+#endif
+                                          );
 }
 
 static void
@@ -1507,7 +797,16 @@ xfdesktop_file_icon_manager_desktop_properties(GtkWidget *widget,
                                                gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    xfdesktop_file_icon_show_properties(fmanager, fmanager->priv->desktop_icon);
+    GtkWidget *parent = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    
+    xfdesktop_file_properties_dialog_show(GTK_WINDOW(parent),
+                                          fmanager->priv->desktop_icon,
+#ifdef HAVE_THUNARX
+                                          fmanager->priv->thunarx_properties_providers
+#else
+                                          NULL
+#endif
+                                          );
 }
 
 static GtkWidget *

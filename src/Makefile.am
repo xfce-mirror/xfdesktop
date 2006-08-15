@@ -35,6 +35,8 @@ desktop_file_icon_sources = \
 	xfdesktop-file-icon.h \
 	xfdesktop-file-icon-manager.c \
 	xfdesktop-file-icon-manager.h \
+	xfdesktop-file-properties-dialog.c \
+	xfdesktop-file-properties-dialog.h \
 	xfdesktop-file-utils.c \
 	xfdesktop-file-utils.h \
 	xfdesktop-regular-file-icon.c \

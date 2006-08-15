@@ -293,6 +293,56 @@ xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
     return pix;
 }
 
+gboolean
+xfdesktop_file_utils_launch_external(const ThunarVfsInfo *info,
+                                     GdkScreen *screen)
+{
+    gboolean ret = FALSE;
+    gchar *folder_name, *display_name, *commandline;
+    gint status = 0;
+    
+    g_return_val_if_fail(info, FALSE);
+    
+    if(!screen)
+        screen = gdk_display_get_default_screen(gdk_display_get_default());
+    
+    folder_name = thunar_vfs_path_dup_uri(info->path);
+    display_name = gdk_screen_make_display_name(screen);
+    
+    /* try the org.xfce.FileManager D-BUS interface first */
+    commandline = g_strdup_printf("dbus-send --print-reply --dest=org.xfce.FileManager "
+                                  "/org/xfce/FileManager org.xfce.FileManager.Launch "
+                                  "string:\"%s\" string:\"%s\"",
+                                  folder_name, display_name);
+    
+    ret = (g_spawn_command_line_sync(commandline, NULL, NULL, &status, NULL)
+           && status == 0);
+    g_free(commandline);
+
+    /* hardcoded fallback to a file manager if that didn't work */
+    if(!ret) {
+        gchar *file_manager_app = g_find_program_in_path(FILE_MANAGER_FALLBACK);
+        
+        if(file_manager_app) {
+            commandline = g_strconcat("env DISPLAY=\"", display_name, "\" \"",
+                                      file_manager_app, "\" \"", folder_name,
+                                      "\"", NULL);
+            
+            DBG("executing:\n%s\n", commandline);
+            
+            ret = xfce_exec(commandline, FALSE, TRUE, NULL);
+            g_free(commandline);
+            g_free(file_manager_app);
+        }
+    }
+
+    g_free(display_name);
+    g_free(folder_name);
+    
+    return ret;
+}
+
+
 
 
 #ifdef HAVE_THUNARX

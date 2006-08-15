@@ -48,6 +48,7 @@
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-icon.h"
 #include "xfdesktop-file-icon.h"
+#include "xfdesktop-file-properties-dialog.h"
 #include "xfdesktop-volume-icon.h"
 
 struct _XfdesktopVolumeIconPrivate
@@ -469,6 +470,84 @@ xfdesktop_volume_icon_menu_eject(GtkWidget *widget,
     }
 }
 
+static void
+xfdesktop_volume_icon_menu_properties(GtkWidget *widget,
+                                      gpointer user_data)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);        
+    xfdesktop_file_properties_dialog_show(NULL, icon, NULL);
+}
+
+static void
+xfdesktop_volume_icon_menu_open(GtkWidget *widget,
+                                gpointer user_data)
+{
+    XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(user_data);
+    const ThunarVfsInfo *info;
+    ThunarVfsVolume *volume = (ThunarVfsVolume *)xfdesktop_volume_icon_peek_volume(icon);
+    GError *error = NULL;
+    ThunarVfsPath *new_path = NULL;
+    
+    info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
+    
+    if(!thunar_vfs_volume_is_mounted(volume)) {
+        /* FIXME: need toplevel parent here */
+        if(!thunar_vfs_volume_mount(volume, NULL, &error)) {
+            gchar *primary = g_markup_printf_escaped(_("Unable to mount \"%s\":"),
+                                                     thunar_vfs_volume_get_name(volume));
+            GtkWidget *dlg = xfce_message_dialog_new(NULL, _("Mount Failed"),
+                                                     GTK_STOCK_DIALOG_ERROR,
+                                                     primary,
+                                                     error ? error->message
+                                                           : _("Unknown error."),
+                                                     GTK_STOCK_CLOSE,
+                                                     GTK_RESPONSE_ACCEPT, NULL);
+            gtk_window_set_screen(GTK_WINDOW(dlg), icon->priv->gscreen);
+            gtk_dialog_run(GTK_DIALOG(dlg));
+            gtk_widget_destroy(dlg);
+            g_free(primary);
+            g_error_free(error);
+        }
+    }
+    
+    new_path = thunar_vfs_volume_get_mount_point(volume);
+        
+    if(new_path && (!info
+                    || !thunar_vfs_path_equal(info->path, new_path)))
+    {
+        ThunarVfsInfo *new_info = thunar_vfs_info_new_for_path(new_path,
+                                                               NULL);
+        if(new_info) {
+            xfdesktop_file_icon_update_info(XFDESKTOP_FILE_ICON(icon),
+                                            new_info);
+            thunar_vfs_info_unref(new_info);
+        }
+    }
+    
+    info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
+    if(!info || !new_path) {
+        /* if |new_path| is NULL, but |info| isn't, it's possible we have
+         * a stale |info|, and we shouldn't continue */
+        return;
+    }
+    
+    
+    if(!xfdesktop_file_utils_launch_external(info, icon->priv->gscreen)) {
+        gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
+                                                 info->display_name);
+        GtkWidget *dlg = xfce_message_dialog_new(NULL, _("Launch Error"),
+                                                 GTK_STOCK_DIALOG_ERROR,
+                                                 primary,
+                                                 _("The associated application could not be found or executed."),
+                                                 GTK_STOCK_CLOSE,
+                                                 GTK_RESPONSE_ACCEPT, NULL);
+        gtk_window_set_screen(GTK_WINDOW(dlg), icon->priv->gscreen);
+        gtk_dialog_run(GTK_DIALOG(dlg));
+        gtk_widget_destroy(dlg);
+        g_free(primary);
+    }
+}
+
 static GtkWidget *
 xfdesktop_volume_icon_get_popup_menu(XfdesktopIcon *icon)
 {
@@ -484,13 +563,8 @@ xfdesktop_volume_icon_get_popup_menu(XfdesktopIcon *icon)
     gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-#if 0 /* FIXME */
     g_signal_connect(G_OBJECT(mi), "activate",
-                     (volume
-                      ? G_CALLBACK(xfdesktop_file_icon_menu_executed)
-                      : G_CALLBACK(xfdesktop_file_icon_menu_other_app)),
-                     fmanager);
-#endif
+                     G_CALLBACK(xfdesktop_volume_icon_menu_open), icon);
     
     mi = gtk_separator_menu_item_new();
     gtk_widget_show(mi);
@@ -542,11 +616,9 @@ xfdesktop_volume_icon_get_popup_menu(XfdesktopIcon *icon)
     if(!volume_icon->priv->info)
         gtk_widget_set_sensitive(mi, FALSE);
     else {
-#if 0 /* FIXME */
         g_signal_connect(G_OBJECT(mi), "activate",
-                         G_CALLBACK(xfdesktop_file_icon_menu_properties),
-                         fmanager);
-#endif
+                         G_CALLBACK(xfdesktop_volume_icon_menu_properties),
+                         icon);
     }
     
     return menu;
