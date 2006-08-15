@@ -238,9 +238,17 @@ main(int argc, char **argv)
     const gchar *message = NULL;
     gboolean already_running;
     
+    /* bind gettext textdomain */
+    xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+    
+#if defined(ENABLE_DESKTOP_ICONS) && defined(HAVE_THUNAR_VFS)
+    g_thread_init(NULL);
+#endif
+    gtk_init(&argc, &argv);
+        
     if(argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V"))) {
-        g_print(_("This is %s version %s, running on Xfce %s.\n"), PACKAGE, VERSION,
-                xfce_version_string());
+        g_print(_("This is %s version %s, running on Xfce %s.\n"), PACKAGE,
+                VERSION, xfce_version_string());
         g_print(_("Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."),
                 GTK_MAJOR_VERSION,GTK_MINOR_VERSION, GTK_MICRO_VERSION,
                 gtk_major_version, gtk_minor_version, gtk_micro_version);
@@ -260,35 +268,39 @@ main(int argc, char **argv)
                 _("disabled")
 #endif
                 );
+        g_print(_("    Desktop File Icons:  %s\n"),
+#ifdef HAVE_THUNAR_VFS
+                _("enabled")
+#else
+                _("disabled")
+#endif
+                );
         
-        exit(0);
+        return 0;
     }
 
-    /* bind gettext textdomain */
-    xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
-    
-#if defined(ENABLE_DESKTOP_ICONS) && defined(HAVE_THUNAR_VFS)
-    /* move to xfce-desktop.c? */
-    g_thread_init(NULL);
-#endif
-    gtk_init(&argc, &argv);
-    
     if(argc > 1) {
-        if(strcmp("-reload", argv[1]) == 0)
+        const gchar *argument = argv[1];
+        
+        /* allow both --(option) and -(option) */
+        if('-' == argument[0] && '-' == argument[1])
+            ++argument;
+        
+        if(!strcmp("-reload", argument))
             message = RELOAD_MESSAGE;
-        else if(strcmp("-menu", argv[1]) == 0)
+        else if(!strcmp("-menu", argument))
             message = MENU_MESSAGE;
-        else if(strcmp("-windowlist", argv[1]) == 0)
+        else if(!strcmp("-windowlist", argument))
             message = WINDOWLIST_MESSAGE;
-        else if(strcmp("-quit", argv[1]) == 0)
+        else if(!strcmp("-quit", argument))
             message = QUIT_MESSAGE;
         else {
             g_printerr(_("%s: Unknown option: %s\n"), PACKAGE, argv[1]);
             g_printerr(_("Options are:\n"));
-            g_printerr(_("    -reload      Reload all settings, refresh image list\n"));
-            g_printerr(_("    -menu        Pop up the menu (at the current mouse position)\n"));
-            g_printerr(_("    -windowlist  Pop up the window list (at the current mouse position)\n"));
-            g_printerr(_("    -quit        Cause xfdesktop to quit\n"));
+            g_printerr(_("    --reload      Reload all settings, refresh image list\n"));
+            g_printerr(_("    --menu        Pop up the menu (at the current mouse position)\n"));
+            g_printerr(_("    --windowlist  Pop up the window list (at the current mouse position)\n"));
+            g_printerr(_("    --quit        Cause xfdesktop to quit\n"));
             
             return 1;
         }
