@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-14 23:44-0700\n"
+"POT-Creation-Date: 2006-08-15 00:03-0700\n"
 "PO-Revision-Date: 2006-04-15 05:51+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
@@ -851,67 +851,76 @@ msgstr "시스템글꼴 크기사용(_s):"
 msgid "Custom _font size:"
 msgstr "사용자 글꼴크기(_f):"
 
-#: ../src/main.c:242
+#: ../src/main.c:250
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s 버전 %s입니다. Xfce %s에서 동작 중입니다.\n"
 
-#: ../src/main.c:244
+#: ../src/main.c:252
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "GTK+ %d.%d.%d로 만들고, GTK+ %d.%d.%d로 링크했습니다."
 
-#: ../src/main.c:248
+#: ../src/main.c:256
 msgid "Build options:\n"
 msgstr "빌드 옵션:\n"
 
-#: ../src/main.c:249
+#: ../src/main.c:257
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    데스크탑 메뉴:       %s\n"
 
-#: ../src/main.c:251 ../src/main.c:258
+#: ../src/main.c:259 ../src/main.c:266 ../src/main.c:273
 msgid "enabled"
 msgstr "사용함"
 
-#: ../src/main.c:253 ../src/main.c:260
+#: ../src/main.c:261 ../src/main.c:268 ../src/main.c:275
 msgid "disabled"
 msgstr "사용안함"
 
-#: ../src/main.c:256
+#: ../src/main.c:264
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    데스크탑 아이콘:     %s\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:271
+#, fuzzy, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "    데스크탑 아이콘:     %s\n"
+
+#: ../src/main.c:298
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: 모르는 옵션: %s\n"
 
-#: ../src/main.c:287
+#: ../src/main.c:299
 msgid "Options are:\n"
 msgstr "옵션은 다음과 같니다:\n"
 
-#: ../src/main.c:288
-msgid "    -reload      Reload all settings, refresh image list\n"
+#: ../src/main.c:300
+#, fuzzy
+msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload      모든 설정을 새로 읽어 오고, 그림 목록을 새로 고칩니다.\n"
 
-#: ../src/main.c:289
-msgid "    -menu        Pop up the menu (at the current mouse position)\n"
+#: ../src/main.c:301
+#, fuzzy
+msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        메뉴를 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
 
-#: ../src/main.c:290
+#: ../src/main.c:302
+#, fuzzy
 msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+"    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    -windowlist  창 목록을 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
 
-#: ../src/main.c:291
-msgid "    -quit        Cause xfdesktop to quit\n"
+#: ../src/main.c:303
+#, fuzzy
+msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "   -quit        xfdesop을 종료하도록 합니다.\n"
 
-#: ../src/main.c:306
+#: ../src/main.c:318
 #, c-format
 msgid "%s is not running.\n"
 msgstr ""

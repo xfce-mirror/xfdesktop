@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-14 23:44-0700\n"
+"POT-Creation-Date: 2006-08-15 00:03-0700\n"
 "PO-Revision-Date: 2005-08-18 22:52+0900\n"
 "Last-Translator: Edscott Wilson Garcia <edscott@xfce.org>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -860,67 +860,75 @@ msgstr "Abrir un archivo de menú"
 msgid "Custom _font size:"
 msgstr ""
 
-#: ../src/main.c:242
+#: ../src/main.c:250
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr ""
 
-#: ../src/main.c:244
+#: ../src/main.c:252
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr ""
 
-#: ../src/main.c:248
+#: ../src/main.c:256
 msgid "Build options:\n"
 msgstr ""
 
-#: ../src/main.c:249
+#: ../src/main.c:257
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr ""
 
-#: ../src/main.c:251 ../src/main.c:258
+#: ../src/main.c:259 ../src/main.c:266 ../src/main.c:273
 #, fuzzy
 msgid "enabled"
 msgstr "Proporcionado"
 
-#: ../src/main.c:253 ../src/main.c:260
+#: ../src/main.c:261 ../src/main.c:268 ../src/main.c:275
 #, fuzzy
 msgid "disabled"
 msgstr "Mosaico"
 
-#: ../src/main.c:256
+#: ../src/main.c:264
 #, fuzzy, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Menú del escritorio"
 
-#: ../src/main.c:286
+#: ../src/main.c:271
+#, fuzzy, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "Menú del escritorio"
+
+#: ../src/main.c:298
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Opción desconocida: %s\n"
 
-#: ../src/main.c:287
+#: ../src/main.c:299
 msgid "Options are:\n"
 msgstr "Las opciones:\n"
 
-#: ../src/main.c:288
-msgid "    -reload      Reload all settings, refresh image list\n"
+#: ../src/main.c:300
+#, fuzzy
+msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    -recargar    Recargar configuración\n"
 
-#: ../src/main.c:289
-msgid "    -menu        Pop up the menu (at the current mouse position)\n"
+#: ../src/main.c:301
+#, fuzzy
+msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menú        Mostrar el menú\n"
 
-#: ../src/main.c:290
+#: ../src/main.c:302
+#, fuzzy
 msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+"    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Mostrar lista de ventanas\n"
 
-#: ../src/main.c:291
-msgid "    -quit        Cause xfdesktop to quit\n"
+#: ../src/main.c:303
+msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr ""
 
-#: ../src/main.c:306
+#: ../src/main.c:318
 #, c-format
 msgid "%s is not running.\n"
 msgstr ""

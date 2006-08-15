@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-14 23:44-0700\n"
+"POT-Creation-Date: 2006-08-15 00:03-0700\n"
 "PO-Revision-Date: 2006-07-15 17:24+0100\n"
 "Last-Translator: Maximilian Schleiss <maxschleiss@bluewin.ch>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
@@ -823,69 +823,78 @@ msgstr "Utiliser la taille de police du système"
 msgid "Custom _font size:"
 msgstr "Taille de police _personnalisée"
 
-#: ../src/main.c:242
+#: ../src/main.c:250
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Ceci est %s version %s, s'exécutant sur Xfce %s.\n"
 
-#: ../src/main.c:244
+#: ../src/main.c:252
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Compilé avec GTK+ %d.%d.%d, lié à GTK+ %d.%d.%d."
 
-#: ../src/main.c:248
+#: ../src/main.c:256
 msgid "Build options:\n"
 msgstr "Options de compilation:\n"
 
-#: ../src/main.c:249
+#: ../src/main.c:257
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menu du bureau:        %s\n"
 
-#: ../src/main.c:251 ../src/main.c:258
+#: ../src/main.c:259 ../src/main.c:266 ../src/main.c:273
 msgid "enabled"
 msgstr "activé"
 
-#: ../src/main.c:253 ../src/main.c:260
+#: ../src/main.c:261 ../src/main.c:268 ../src/main.c:275
 msgid "disabled"
 msgstr "désactivé"
 
-#: ../src/main.c:256
+#: ../src/main.c:264
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Icônes du bureau:        %s\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:271
+#, fuzzy, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "    Icônes du bureau:        %s\n"
+
+#: ../src/main.c:298
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Option inconnue : %s\n"
 
-#: ../src/main.c:287
+#: ../src/main.c:299
 msgid "Options are:\n"
 msgstr "Les options sont :\n"
 
-#: ../src/main.c:288
-msgid "    -reload      Reload all settings, refresh image list\n"
+#: ../src/main.c:300
+#, fuzzy
+msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
 "····-reload······Recharger tous le paramètres,·rafraîchir la liste d'images\n"
 
-#: ../src/main.c:289
-msgid "    -menu        Pop up the menu (at the current mouse position)\n"
+#: ../src/main.c:301
+#, fuzzy
+msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
 "····-menu········Affiche le menu·(à la position courante de la souris)\n"
 
-#: ../src/main.c:290
+#: ../src/main.c:302
+#, fuzzy
 msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+"    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "····-windowlist··Affiche la liste des fenêtres·(à la·position courante de la "
 "souris)\n"
 
-#: ../src/main.c:291
-msgid "    -quit        Cause xfdesktop to quit\n"
+#: ../src/main.c:303
+#, fuzzy
+msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        Fait quitter xfdesktop\n"
 
-#: ../src/main.c:306
+#: ../src/main.c:318
 #, c-format
 msgid "%s is not running.\n"
 msgstr ""

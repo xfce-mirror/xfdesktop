@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-14 23:44-0700\n"
+"POT-Creation-Date: 2006-08-15 00:03-0700\n"
 "PO-Revision-Date: 2006-07-15 19:25+0100\n"
 "Last-Translator: SZERVÑC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -822,65 +822,74 @@ msgstr "Rendszer betű méret használata"
 msgid "Custom _font size:"
 msgstr "Egyéni betűméret"
 
-#: ../src/main.c:242
+#: ../src/main.c:250
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Ez az alábbi program: %s %s verziója, az Xfce %s verzióján fut.\n"
 
-#: ../src/main.c:244
+#: ../src/main.c:252
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Fordítva az alábbival: GTK+ %d.%d.%d, linkelve: GTK+ %d.%d.%d."
 
-#: ../src/main.c:248
+#: ../src/main.c:256
 msgid "Build options:\n"
 msgstr "Fordítási opciók:\n"
 
-#: ../src/main.c:249
+#: ../src/main.c:257
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Asztali Menü:        %s\n"
 
-#: ../src/main.c:251 ../src/main.c:258
+#: ../src/main.c:259 ../src/main.c:266 ../src/main.c:273
 msgid "enabled"
 msgstr "bekapcsolva"
 
-#: ../src/main.c:253 ../src/main.c:260
+#: ../src/main.c:261 ../src/main.c:268 ../src/main.c:275
 msgid "disabled"
 msgstr "kikapcsolva"
 
-#: ../src/main.c:256
+#: ../src/main.c:264
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Asztali Ikonok:       %s\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:271
+#, fuzzy, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "    Asztali Ikonok:       %s\n"
+
+#: ../src/main.c:298
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Ismeretlen lehetőség: %s\n"
 
-#: ../src/main.c:287
+#: ../src/main.c:299
 msgid "Options are:\n"
 msgstr "Lehetőségek:\n"
 
-#: ../src/main.c:288
-msgid "    -reload      Reload all settings, refresh image list\n"
+#: ../src/main.c:300
+#, fuzzy
+msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      Beállítások visszatöltése, képlista frissítése\n"
 
-#: ../src/main.c:289
-msgid "    -menu        Pop up the menu (at the current mouse position)\n"
+#: ../src/main.c:301
+#, fuzzy
+msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Menü megjelenítése (az egér pozíciójánál)\n"
 
-#: ../src/main.c:290
+#: ../src/main.c:302
+#, fuzzy
 msgid ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+"    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist Ablaklista megjelenítése (az egér pozíciójánál)\n"
 
-#: ../src/main.c:291
-msgid "    -quit        Cause xfdesktop to quit\n"
+#: ../src/main.c:303
+#, fuzzy
+msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        Az xfdesktop kilép\n"
 
-#: ../src/main.c:306
+#: ../src/main.c:318
 #, c-format
 msgid "%s is not running.\n"
 msgstr ""
