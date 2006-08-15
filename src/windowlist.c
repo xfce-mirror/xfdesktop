@@ -106,35 +106,56 @@ mi_destroyed_cb(GtkObject *object, gpointer user_data)
             (GWeakNotify)window_destroyed_cb, object);
 }
 
+static void
+menulist_set_label_flags(GtkWidget *widget, gpointer data)
+{
+    gboolean *done = data;
+    if(*done)
+        return;
+    if(GTK_IS_LABEL(widget)) {
+        GtkLabel *label = GTK_LABEL(widget);
+        gtk_label_set_use_markup(label, TRUE);
+        gtk_label_set_ellipsize(label, PANGO_ELLIPSIZE_MIDDLE);
+        gtk_label_set_max_width_chars(label, 24);
+        *done = TRUE;
+    }
+    else if(GTK_IS_CONTAINER (widget))
+        gtk_container_forall(GTK_CONTAINER (widget), menulist_set_label_flags,
+                              &done);
+}
+
 static GtkWidget *
 menu_item_from_netk_window(NetkWindow *netk_window, gint icon_width,
         gint icon_height)
 {
     GtkWidget *mi, *img = NULL;
-    const gchar *title;
+    gchar *title;
     NetkScreen *netk_screen;
     NetkWorkspace *netk_workspace, *active_workspace;
-    gchar *label;
+    GString *label;
     GdkPixbuf *icon, *tmp;
     gint w, h;
-    
-    title = netk_window_get_name(netk_window);
+    gboolean truncated = FALSE;
+
+    title = g_markup_escape_text(netk_window_get_name(netk_window), -1);
     if(!title)
         return NULL;
-    
+
+    label = g_string_new(title);
+    g_free(title);
+
     netk_screen = netk_window_get_screen(netk_window);
     active_workspace = netk_screen_get_active_workspace(netk_screen);
     netk_workspace = netk_window_get_workspace(netk_window);
-    
-    label = g_malloc0(WLIST_MAXLEN+13);
-    
-    if(netk_window_is_minimized(netk_window))
-        g_strlcat(label, "[", WLIST_MAXLEN+13);
-    g_strlcat(label, title, strlen(label)+WLIST_MAXLEN);
-    if(strlen(title) > WLIST_MAXLEN)
-        g_strlcat(label, "...", WLIST_MAXLEN+13);
-    if(netk_window_is_minimized(netk_window))
-        g_strlcat(label, "]", WLIST_MAXLEN+13);
+
+    if(netk_window_is_active(netk_window)) {
+        g_string_prepend(label, "<b>");
+        g_string_append(label, "</b>");
+    }
+    if(netk_window_is_minimized(netk_window)) {
+        g_string_prepend(label, "[");
+        g_string_append(label, "]");
+    }
     
     if(show_windowlist_icons) {
         icon = netk_window_get_icon(netk_window);
@@ -150,11 +171,15 @@ menu_item_from_netk_window(NetkWindow *netk_window, gint icon_width,
     }
     
     if(img) {
-        mi = gtk_image_menu_item_new_with_label(label);
+        mi = gtk_image_menu_item_new_with_label(label->str);
         gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
     } else
-        mi = gtk_menu_item_new_with_label(label);
-    g_free(label);
+        mi = gtk_menu_item_new_with_label(label->str);
+
+    g_string_free(label, TRUE);
+
+    gtk_container_forall(GTK_CONTAINER(mi), menulist_set_label_flags,
+                         &truncated);
     
     return mi;
 }
