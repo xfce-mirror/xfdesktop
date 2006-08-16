@@ -151,7 +151,7 @@ menuspec_builtin_icon_to_filename(const gchar *name)
 static void
 tree_add_orphans(gpointer key, gpointer data, gpointer user_data)
 {
-    g_node_append_data(menu_tree, key);
+    g_node_append(menu_tree, data);
 }
 
 static gboolean
@@ -285,6 +285,8 @@ menuspec_xml_start(GMarkupParseContext *context, const gchar *element_name,
             if(mtsi.foundnode) {
                 if(state->cur_node != menu_tree) {
                     newnode = g_node_copy(mtsi.foundnode);
+                    newnode->data = g_strdup(newnode->data);
+                    
                     if((toplevel && state->cur_node == menu_tree) ||
                             state->cur_node != menu_tree)
                     {
@@ -293,10 +295,10 @@ menuspec_xml_start(GMarkupParseContext *context, const gchar *element_name,
                     state->cur_node = newnode;
                 } else
                     state->cur_node = mtsi.foundnode;
-                cat_dupe = mtsi.foundnode->data;
+                cat_dupe = g_strdup(mtsi.foundnode->data);
             } else {
                 cat_dupe = g_strdup(state->cur_category);
-                newnode = g_node_new(cat_dupe);
+                newnode = g_node_new(g_strdup(cat_dupe));
                 if(!toplevel && state->cur_node == menu_tree)
                     g_hash_table_insert(cats_orphans, cat_dupe, newnode);
                 else
@@ -355,9 +357,10 @@ menuspec_xml_start(GMarkupParseContext *context, const gchar *element_name,
                 mtsi.foundnode = NULL;
                 g_node_traverse(menu_tree, G_IN_ORDER, G_TRAVERSE_ALL, -1,
                         menu_tree_find_node, &mtsi);
-                if(mtsi.foundnode)
+                if(mtsi.foundnode) {
                     newnode = g_node_copy(mtsi.foundnode);
-                else
+                    newnode->data = g_strdup(newnode->data);
+                } else
                     newnode = g_node_new(g_strdup(attribute_values[0]));
                 g_node_append(state->cur_node, newnode);
                 g_hash_table_remove(cats_orphans, attribute_values[0]);
@@ -435,7 +438,7 @@ desktop_menuspec_parse_categories(const gchar *filename)
     displayname_to_icon = g_hash_table_new_full(g_str_hash, g_str_equal,
             NULL, (GDestroyNotify)g_free);
     cats_orphans = g_hash_table_new(g_str_hash, g_str_equal);
-    menu_tree = g_node_new("/");
+    menu_tree = g_node_new(g_strdup("/"));
     state.cur_node = menu_tree;
     
     gpcontext = g_markup_parse_context_new(&gmparser, 0, &state, NULL);
@@ -578,6 +581,14 @@ desktop_menuspec_displayname_to_icon(const gchar *displayname)
         return NULL;
 }
 
+static gboolean
+menu_tree_free_data(GNode *node,
+                    gpointer data)
+{
+    g_free(node->data);
+    return FALSE;
+}
+
 void
 desktop_menuspec_free() {
     if(cats_hide) {
@@ -597,6 +608,8 @@ desktop_menuspec_free() {
         displayname_to_icon = NULL;
     }
     if(menu_tree) {
+        g_node_traverse(menu_tree, G_IN_ORDER, G_TRAVERSE_ALL, -1,
+                        menu_tree_free_data, NULL);
         g_node_destroy(menu_tree);
         menu_tree = NULL;
     }
@@ -608,5 +621,6 @@ desktop_menuspec_path_free(GPtrArray *paths)
     if(!paths)
         return;
     
+    g_ptr_array_foreach(paths, (GFunc)g_free, NULL);
     g_ptr_array_free(paths, TRUE);
 }
