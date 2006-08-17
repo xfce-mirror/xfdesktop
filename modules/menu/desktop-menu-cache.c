@@ -202,8 +202,10 @@ desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
     
     g_snprintf(filebuf, PATH_MAX, CACHE_CONF_FILE_FMT, cache_file_suffix);
     rcfile = xfce_rc_config_open(XFCE_RESOURCE_CACHE, filebuf, TRUE);
-    if(!rcfile)
+    if(!rcfile) {
+        g_free(cache_file);
         return NULL;
+    }
     
     if(xfce_rc_has_group(rcfile, "settings")) {
         xfce_rc_set_group(rcfile, "settings");
@@ -230,6 +232,8 @@ desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
                     g_hash_table_foreach_remove(menufile_mtimes,
                                                 (GHRFunc)gtk_true, NULL);
                     TRACE("exiting - failed");
+                    g_free(cache_file);
+                    xfce_rc_close(rcfile);
                     return NULL;
                 } else {
                     g_hash_table_insert(menufile_mtimes, g_strdup(location),
@@ -254,6 +258,8 @@ desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
             g_hash_table_foreach_remove(menufile_mtimes,
                                         (GHRFunc)gtk_true, NULL);
             TRACE("exiting - failed");
+            g_free(cache_file);
+            xfce_rc_close(rcfile);
             return NULL;
         }
         
@@ -275,6 +281,8 @@ desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
                     g_hash_table_foreach_remove(dentrydir_mtimes,
                                                 (GHRFunc)gtk_true, NULL);
                     TRACE("exiting - failed");
+                    g_free(cache_file);
+                    xfce_rc_close(rcfile);
                     return NULL;
                 } else {
                     g_hash_table_insert(dentrydir_mtimes, g_strdup(location),
@@ -414,7 +422,7 @@ desktop_menu_cache_flush(const gchar *cache_file_suffix)
     fp = fopen(cache_file, "w");
     if(!fp) {
         g_critical("%s: Unable to write to '%s'.  Desktop menu wil not be cached",
-                PACKAGE, cache_file);
+                   PACKAGE, cache_file);
         g_free(cache_file);
         return;
     }
