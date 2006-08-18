@@ -2487,8 +2487,6 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     
     thunar_vfs_init();
     
-    DBG("Desktop path is '%s'", thunar_vfs_path_dup_string(fmanager->priv->folder));
-    
     fmanager->priv->monitor = thunar_vfs_monitor_get_default();
     
     fmanager->priv->icons = g_hash_table_new_full(thunar_vfs_path_hash,

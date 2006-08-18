@@ -216,6 +216,7 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
         gtk_widget_show(desktop->priv->icon_view);
         gtk_container_add(GTK_CONTAINER(desktop), desktop->priv->icon_view);
         
+#ifdef HAVE_THUNAR_VFS
         /* FIXME: prefs */
         if(XFDESKTOP_IS_FILE_ICON_MANAGER(manager)) {
             xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
@@ -228,6 +229,7 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
                                                               XFDESKTOP_SPECIAL_FILE_ICON_TRASH,
                                                               TRUE);
         }
+#endif
     }
     
     gtk_widget_queue_draw(GTK_WIDGET(desktop));
