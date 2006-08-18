@@ -1998,6 +1998,56 @@ xfdesktop_file_icon_manager_add_special_file_icon(XfdesktopFileIconManager *fman
     }
 }
 
+static void
+xfdesktop_file_icon_manager_refresh_icons(XfdesktopFileIconManager *fmanager)
+{
+    gint i;
+    
+    /* if a save is pending, flush icon positions */
+    if(fmanager->priv->save_icons_id) {
+        g_source_remove(fmanager->priv->save_icons_id);
+        fmanager->priv->save_icons_id = 0;
+        xfdesktop_file_icon_manager_save_icons(fmanager);
+    }
+    
+    /* ditch removable media */
+    if(fmanager->priv->show_removable_media)
+        xfdesktop_file_icon_manager_remove_removable_media(fmanager);
+    
+    /* ditch special icons */
+    for(i = 0; i <= XFDESKTOP_SPECIAL_FILE_ICON_TRASH; ++i) {
+        XfdesktopIcon *icon = g_hash_table_lookup(fmanager->priv->special_icons,
+                                                  GINT_TO_POINTER(i));
+        if(icon) {
+            xfdesktop_icon_view_remove_item(fmanager->priv->icon_view, icon);
+            g_hash_table_remove(fmanager->priv->special_icons,
+                                GINT_TO_POINTER(i));
+        }
+    }
+
+    /* ditch normal icons */
+    if(fmanager->priv->icons) {
+        g_hash_table_foreach_remove(fmanager->priv->icons,
+                                    (GHRFunc)gtk_true, NULL);
+    }
+    
+    /* clear out anything left in the icon view */
+    xfdesktop_icon_view_remove_all(fmanager->priv->icon_view);
+    
+    /* add back the special icons */
+    for(i = 0; i <= XFDESKTOP_SPECIAL_FILE_ICON_TRASH; ++i) {
+        if(fmanager->priv->show_special[i])
+            xfdesktop_file_icon_manager_add_special_file_icon(fmanager, i);
+    }
+    
+    /* add back removable media */
+    if(fmanager->priv->show_removable_media)
+        xfdesktop_file_icon_manager_load_removable_media(fmanager);
+    
+    /* reload and add ~/Desktop/ */
+    xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
+}
+
 static gboolean
 xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
                                       GdkEventKey *evt,
@@ -2051,26 +2101,7 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
             }
             /* fall through */
         case GDK_F5:
-            if(fmanager->priv->save_icons_id) {
-                /* flush icon positions */
-                g_source_remove(fmanager->priv->save_icons_id);
-                fmanager->priv->save_icons_id = 0;
-                xfdesktop_file_icon_manager_save_icons(fmanager);
-            }
-            
-            if(fmanager->priv->show_removable_media) {
-                /* ensure we don't get double signal connects and whatnot */
-                xfdesktop_file_icon_manager_remove_removable_media(fmanager);
-            }
-            xfdesktop_icon_view_remove_all(fmanager->priv->icon_view);
-            if(fmanager->priv->icons) {
-                g_hash_table_foreach_remove(fmanager->priv->icons,
-                                            (GHRFunc)gtk_true, NULL);
-            }
-            
-            if(fmanager->priv->show_removable_media)
-                xfdesktop_file_icon_manager_load_removable_media(fmanager);
-            xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
+            xfdesktop_file_icon_manager_refresh_icons(fmanager);
             return TRUE;
     }
     
