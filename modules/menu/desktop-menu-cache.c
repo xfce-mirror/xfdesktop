@@ -233,7 +233,6 @@ desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
                                                 (GHRFunc)gtk_true, NULL);
                     TRACE("exiting - failed");
                     g_free(cache_file);
-                    xfce_rc_close(rcfile);
                     return NULL;
                 } else {
                     g_hash_table_insert(menufile_mtimes, g_strdup(location),
@@ -259,7 +258,6 @@ desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
                                         (GHRFunc)gtk_true, NULL);
             TRACE("exiting - failed");
             g_free(cache_file);
-            xfce_rc_close(rcfile);
             return NULL;
         }
         
@@ -282,7 +280,6 @@ desktop_menu_cache_is_valid(const gchar *cache_file_suffix,
                                                 (GHRFunc)gtk_true, NULL);
                     TRACE("exiting - failed");
                     g_free(cache_file);
-                    xfce_rc_close(rcfile);
                     return NULL;
                 } else {
                     g_hash_table_insert(dentrydir_mtimes, g_strdup(location),
