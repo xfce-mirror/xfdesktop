@@ -2103,6 +2103,19 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
         case GDK_F5:
             xfdesktop_file_icon_manager_refresh_icons(fmanager);
             return TRUE;
+        
+        case GDK_F2:
+            selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
+            if(g_list_length(selected) == 1) {
+                XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(selected->data);
+                if(xfdesktop_file_icon_can_rename_file(icon)) {
+                    xfdesktop_file_icon_menu_rename(NULL, fmanager);
+                    return TRUE;
+                }
+            }
+            if(selected)
+                g_list_free(selected);
+            break; 
     }
     
     return FALSE;
