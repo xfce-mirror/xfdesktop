@@ -46,6 +46,7 @@ xfceconfdir = $(sysconfdir)/xdg/xfce4/desktop
 xfceconf_DATA = \
 	xfce-registered-categories.xml \
 	xfce-registered-categories.xml.cs \
+	xfce-registered-categories.xml.de \
 	xfce-registered-categories.xml.el \
 	xfce-registered-categories.xml.es \
 	xfce-registered-categories.xml.eu \
