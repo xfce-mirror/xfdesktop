@@ -53,7 +53,7 @@
 
 <xfdesktop-menu>
 
-	<title name="Hlavní menu" icon="xfce4-backdrop"/>
+	<title name="Hlavní nabídka" icon="xfce4-backdrop"/>
 
 	<separator/>
 
