@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-08-15 00:03-0700\n"
-"PO-Revision-Date: 2006-08-12 11:07+0800\n"
+"PO-Revision-Date: 2006-08-20 01:23+0800\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -567,7 +567,7 @@ msgstr "在選單內顯示圖示(_I)"
 
 #: ../panel-plugin/desktop-menu-plugin.c:953
 msgid "There is already a panel menu registered for this screen"
-msgstr ""
+msgstr "這個螢幕已經登記了一面板選單"
 
 #: ../panel-plugin/desktop-menu-plugin.c:1061
 msgid "Edit Menu"
@@ -867,9 +867,9 @@ msgid "    Desktop Icons:       %s\n"
 msgstr "    桌面圖示：     %s\n"
 
 #: ../src/main.c:271
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    桌面圖示：     %s\n"
+msgstr "    桌面檔案圖示：     %s\n"
 
 #: ../src/main.c:298
 #, c-format
@@ -881,30 +881,27 @@ msgid "Options are:\n"
 msgstr "選項如下：\n"
 
 #: ../src/main.c:300
-#, fuzzy
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr "    -reload      刷新所有選項及圖像清單\n"
+msgstr "   --reload      刷新所有選項及圖像清單\n"
 
 #: ../src/main.c:301
-#, fuzzy
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    -menu        (在目滑鼠游標的所在位置) 彈出選單\n"
+msgstr "   --menu        (在目滑鼠游標的所在位置) 彈出選單\n"
 
 #: ../src/main.c:302
-#, fuzzy
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  (在目前滑鼠游標的所在位置) 彈出視窗清單\n"
+msgstr ""
+"    --windowlist  (在目前滑鼠游標的所在位置) 彈出視窗清單\n"
 
 #: ../src/main.c:303
-#, fuzzy
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "    -quit        結束xfdesktopi\n"
+msgstr "    --quit        結束 xfdesktop\n"
 
 #: ../src/main.c:318
 #, c-format
 msgid "%s is not running.\n"
-msgstr ""
+msgstr "%s 沒在執行。\n"
 
 #: ../src/windowlist.c:218
 #, c-format
@@ -1246,36 +1243,35 @@ msgstr "其他"
 
 #: ../src/xfdesktop-file-utils.c:71
 msgid "Yes to _all"
-msgstr ""
+msgstr "全部皆是(_A)"
 
 #: ../src/xfdesktop-file-utils.c:103
 #, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr ""
+msgstr "將 \"%s\" 移至 \"%s\" 時發生錯誤："
 
 #: ../src/xfdesktop-file-utils.c:106
 #, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr ""
+msgstr "將 \"%s\" 複製到 \"%s\" 時發生錯誤："
 
 #: ../src/xfdesktop-file-utils.c:109
 #, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr ""
+msgstr "將 \"%s\" 連結至 \"%s\" 時發生錯誤："
 
 #: ../src/xfdesktop-file-utils.c:118
-#, fuzzy
 msgid "File Error"
-msgstr "錯誤"
+msgstr "檔案錯誤"
 
 #: ../src/xfdesktop-file-utils.c:134
 msgid "broken link"
-msgstr ""
+msgstr "毀損的連結"
 
 #: ../src/xfdesktop-file-utils.c:138
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "連結到 %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:453
 #: ../src/xfdesktop-special-file-icon.c:407 ../src/xfdesktop-volume-icon.c:394
@@ -1296,34 +1292,33 @@ msgstr "無法將 \"%s\" 更名為 \"%s\"："
 
 #: ../src/xfdesktop-special-file-icon.c:233
 msgid "Home"
-msgstr ""
+msgstr "家目錄"
 
 #: ../src/xfdesktop-special-file-icon.c:437
-#, fuzzy
 msgid "Unable to open the trash."
-msgstr "無法執行掛載 \"%s\""
+msgstr "無法開啟垃圾桶"
 
 #: ../src/xfdesktop-special-file-icon.c:438
 msgid ""
 "Viewing the contents of the trash requires a file manager that supports the "
 "Xfce trash service, such as Thunar."
 msgstr ""
+"檢視垃圾桶內容需要一個支援 Xfce 垃圾桶服務的檔案管理程式，像是 Thunar。"
 
 #: ../src/xfdesktop-special-file-icon.c:466
-#, fuzzy
 msgid "Unable to empty the trash."
-msgstr "無法離開程序"
+msgstr "無法清空垃圾桶"
 
 #: ../src/xfdesktop-special-file-icon.c:467
 msgid ""
 "Emptying the trash requires a file manager that supports the Xfce trash "
 "service, such as Thunar."
 msgstr ""
+"清空垃圾桶需要一個支援 Xfce 垃圾桶服務的檔案管理程式，像是 Thunar。"
 
 #: ../src/xfdesktop-special-file-icon.c:499
-#, fuzzy
 msgid "_Empty Trash"
-msgstr "空檔案(_E)"
+msgstr "清空垃圾桶(_E)"
 
 #: ../src/xfdesktop-volume-icon.c:438 ../src/xfdesktop-volume-icon.c:496
 #, c-format
