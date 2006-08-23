@@ -43,11 +43,14 @@
 
 #ifdef HAVE_THUNARX
 #include <thunarx/thunarx.h>
+#include <dbus/dbus-glib.h>
+#include <dbus/dbus-glib-lowlevel.h>
 #endif
 
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-icon.h"
 #include "xfdesktop-file-icon.h"
+#include "xfdesktop-dbus-bindings-trash.h"
 #include "xfdesktop-special-file-icon.h"
 
 struct _XfdesktopSpecialFileIconPrivate
@@ -58,6 +61,10 @@ struct _XfdesktopSpecialFileIconPrivate
     gint cur_pix_size;
     ThunarVfsInfo *info;
     GdkScreen *gscreen;
+    
+    /* only needed for trash */
+    DBusGProxy *dbus_proxy;
+    gboolean trash_full;
 };
 
 static void xfdesktop_special_file_icon_finalize(GObject *obj);
@@ -415,32 +422,68 @@ xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon)
 }
 
 static void
+xfdesktop_special_file_icon_trash_handle_error(GdkScreen *gscreen,
+                                               const gchar *method,
+                                               const gchar *message)
+{
+    GtkWidget *dlg = xfce_message_dialog_new(NULL, _("Trash Error"),
+                                             GTK_STOCK_DIALOG_WARNING,
+                                             _("Unable to contact the Xfce Trash service."),
+                                             _("Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."),
+                                             GTK_STOCK_CLOSE,
+                                             GTK_RESPONSE_ACCEPT, NULL);
+    gtk_window_set_screen(GTK_WINDOW(dlg), gscreen);
+    gtk_dialog_run(GTK_DIALOG(dlg));
+    gtk_widget_destroy(dlg);
+    
+    g_warning("org.xfce.Trash.%s failed: %s", method ? method : "??",
+              message ? message : "??");
+}
+
+static void
+xfdesktop_special_file_icon_trash_open_cb(DBusGProxy *proxy,
+                                          GError *error,
+                                          gpointer user_data)
+{
+    if(error) {
+        xfdesktop_special_file_icon_trash_handle_error(GDK_SCREEN(user_data),
+                                                       "DisplayTrash",
+                                                        error->message);
+    }
+}
+
+static void
+xfdesktop_special_file_icon_trash_empty_cb(DBusGProxy *proxy,
+                                           GError *error,
+                                           gpointer user_data)
+{
+    if(error) {
+        xfdesktop_special_file_icon_trash_handle_error(GDK_SCREEN(user_data),
+                                                       "EmptyTrash",
+                                                        error->message);
+    }
+}
+
+static void
 xfdesktop_special_file_icon_trash_open(GtkWidget *w,
                                        gpointer user_data)
 {
     XfdesktopSpecialFileIcon *file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
-    gchar *display_name, *commandline;
-    gint status = 0;
-    gboolean ret;
     
-    display_name = gdk_screen_make_display_name(file_icon->priv->gscreen);
-    
-    commandline = g_strdup_printf("dbus-send --print-reply --dest=org.xfce.FileManager "
-                                  "/org/xfce/FileManager org.xfce.Trash.DisplayTrash "
-                                  "string:\"%s\"", display_name);
-    
-    ret = (g_spawn_command_line_sync(commandline, NULL, NULL, &status, NULL)
-           && status == 0);
-    
-    if(!ret) {
-        xfce_message_dialog(NULL, _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
-                            _("Unable to open the trash."),
-                            _("Viewing the contents of the trash requires a file manager that supports the Xfce trash service, such as Thunar."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    if(G_LIKELY(file_icon->priv->dbus_proxy)) {
+        gchar *display_name = gdk_screen_make_display_name(file_icon->priv->gscreen);
+        
+        if(!org_xfce_Trash_display_trash_async(file_icon->priv->dbus_proxy,
+                                               display_name,
+                                               xfdesktop_special_file_icon_trash_open_cb,
+                                               file_icon->priv->gscreen))
+        {
+            xfdesktop_special_file_icon_trash_handle_error(file_icon->priv->gscreen,
+                                                           "DisplayTrash",
+                                                            NULL);
+        }
+        g_free(display_name);
     }
-    
-    g_free(display_name);
-    g_free(commandline);
 }
 
 static void
@@ -448,28 +491,21 @@ xfdesktop_special_file_icon_trash_empty(GtkWidget *w,
                                         gpointer user_data)
 {
     XfdesktopSpecialFileIcon *file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
-    gchar *display_name, *commandline;
-    gint status = 0;
-    gboolean ret;
     
-    display_name = gdk_screen_make_display_name(file_icon->priv->gscreen);
-    
-    commandline = g_strdup_printf("dbus-send --print-reply --dest=org.xfce.FileManager "
-                                  "/org/xfce/FileManager org.xfce.Trash.EmptyTrash "
-                                  "string:\"%s\"", display_name);
-    
-    ret = (g_spawn_command_line_sync(commandline, NULL, NULL, &status, NULL)
-           && status == 0);
-    
-    if(!ret) {
-        xfce_message_dialog(NULL, _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
-                            _("Unable to empty the trash."),
-                            _("Emptying the trash requires a file manager that supports the Xfce trash service, such as Thunar."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    if(G_LIKELY(file_icon->priv->dbus_proxy)) {
+        gchar *display_name = gdk_screen_make_display_name(file_icon->priv->gscreen);
+        
+        if(!org_xfce_Trash_empty_trash_async(file_icon->priv->dbus_proxy,
+                                             display_name,
+                                             xfdesktop_special_file_icon_trash_empty_cb,
+                                             file_icon->priv->gscreen))
+        {
+            xfdesktop_special_file_icon_trash_handle_error(file_icon->priv->gscreen,
+                                                           "EmptyTrash",
+                                                            NULL);
+        }
+        g_free(display_name);
     }
-    
-    g_free(display_name);
-    g_free(commandline);
 }
 
 static GtkWidget *
@@ -499,8 +535,12 @@ xfdesktop_special_file_icon_get_popup_menu(XfdesktopIcon *icon)
     mi = gtk_image_menu_item_new_with_mnemonic(_("_Empty Trash"));
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    g_signal_connect(G_OBJECT(mi), "activate",
-                     G_CALLBACK(xfdesktop_special_file_icon_trash_empty), icon);
+    if(special_file_icon->priv->trash_full) {
+        g_signal_connect(G_OBJECT(mi), "activate",
+                         G_CALLBACK(xfdesktop_special_file_icon_trash_empty),
+                         icon);
+    } else
+        gtk_widget_set_sensitive(mi, FALSE);
     
     return menu;
 }
@@ -513,6 +553,32 @@ xfdesktop_special_file_icon_peek_info(XfdesktopFileIcon *icon)
     return XFDESKTOP_SPECIAL_FILE_ICON(icon)->priv->info;
 }
 
+
+static void
+xfdesktop_special_file_icon_trash_changed_cb(DBusGProxy *proxy,
+                                             gboolean trash_full,
+                                             gpointer user_data)
+{
+    XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
+    TRACE("entering (%p, %d, %p)", proxy, trash_full, user_data);
+    special_file_icon->priv->trash_full = trash_full;
+}
+
+static void
+xfdesktop_special_file_icon_query_trash_cb(DBusGProxy *proxy,
+                                           gboolean trash_full,
+                                           GError *error,
+                                           gpointer user_data)
+{
+    XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
+    
+    if(error) {
+        xfdesktop_special_file_icon_trash_handle_error(icon->priv->gscreen,
+                                                       "QueryTrash",
+                                                       error->message);
+    } else
+        icon->priv->trash_full = trash_full;
+}
 
 
 /* public API */
@@ -549,6 +615,47 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
     if(G_UNLIKELY(!special_file_icon->priv->info)) {
         g_object_unref(G_OBJECT(special_file_icon));
         return NULL;
+    }
+    
+    if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH == type) {
+        DBusGConnection *dgconn = dbus_g_bus_get(DBUS_BUS_SESSION, NULL);
+        
+        if(G_LIKELY(dgconn)) {
+            /* dbus's default is brain-dead */
+            DBusConnection *dconn = dbus_g_connection_get_connection(dgconn);
+            dbus_connection_set_exit_on_disconnect(dconn, FALSE);
+            
+            special_file_icon->priv->dbus_proxy = dbus_g_proxy_new_for_name(dgconn,
+                                                                            "org.xfce.FileManager",
+                                                                            "/org/xfce/FileManager",
+                                                                            "org.xfce.Trash");
+            
+            dbus_g_proxy_add_signal(special_file_icon->priv->dbus_proxy,
+                                    "TrashChanged", G_TYPE_BOOLEAN,
+                                    G_TYPE_INVALID);
+            dbus_g_proxy_connect_signal(special_file_icon->priv->dbus_proxy,
+                                        "TrashChanged",
+                                        G_CALLBACK(xfdesktop_special_file_icon_trash_changed_cb),
+                                        special_file_icon, NULL);
+            
+            if(!org_xfce_Trash_query_trash_async(special_file_icon->priv->dbus_proxy,
+                                                 xfdesktop_special_file_icon_query_trash_cb,
+                                                 special_file_icon))
+            {
+                xfdesktop_special_file_icon_trash_handle_error(special_file_icon->priv->gscreen,
+                                                               "QueryTrash",
+                                                               NULL);
+            }
+            
+            /* the DBusGProxy (actually, its associated DBusGProxyManager) holds
+             * a reference to the DBusGConnection during its lifetime, so we
+             * don't have to hold a ref. */
+            dbus_g_connection_unref(dgconn);
+        } else {
+            /* we might as well just bail here */
+            g_object_unref(G_OBJECT(special_file_icon));
+            return NULL;
+        }
     }
     
     g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),

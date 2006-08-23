@@ -49,6 +49,10 @@
 #include <libxfce4mcs/mcs-client.h>
 #include <libxfcegui4/libxfcegui4.h>
 
+#ifdef HAVE_THUNAR_VFS
+#include <dbus/dbus-glib.h>
+#endif
+
 #include "main.h"
 #include "xfdesktop-common.h"
 #include "xfce-backdrop.h"
@@ -243,6 +247,7 @@ main(int argc, char **argv)
     
 #if defined(ENABLE_DESKTOP_ICONS) && defined(HAVE_THUNAR_VFS)
     g_thread_init(NULL);
+    dbus_g_thread_init();
 #endif
     gtk_init(&argc, &argv);
         

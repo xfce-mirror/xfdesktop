@@ -31,6 +31,8 @@ desktop_icon_sources = \
 desktop_file_icon_sources = \
 	xfdesktop-clipboard-manager.c \
 	xfdesktop-clipboard-manager.h \
+	xfdesktop-dbus-bindings-filemanager.h \
+	xfdesktop-dbus-bindings-trash.h \
 	xfdesktop-file-icon.c \
 	xfdesktop-file-icon.h \
 	xfdesktop-file-icon-manager.c \
@@ -54,7 +56,6 @@ xfdesktop_CFLAGS = \
 	-DDATADIR=\"$(datadir)\" \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\" \
-	-DEXO_API_SUBJECT_TO_CHANGE \
 	$(LIBX11_CFLAGS)	\
 	$(GMODULE_CFLAGS) \
 	$(LIBXFCEGUI4_CFLAGS) \
@@ -83,14 +84,37 @@ if HAVE_THUNAR_VFS
 endif
 
 xfdesktop_CFLAGS += \
+	-DEXO_API_SUBJECT_TO_CHANGE \
+	-DDBUS_API_SUBJECT_TO_CHANGE \
 	$(LIBEXO_CFLAGS) \
 	$(THUNAR_VFS_CFLAGS) \
-	$(THUNARX_CFLAGS)
+	$(THUNARX_CFLAGS) \
+	$(DBUS_CFLAGS)
 
 xfdesktop_LDADD += \
 	$(LIBEXO_LIBS) \
 	$(THUNAR_VFS_LIBS) \
-	$(THUNARX_LIBS)
+	$(THUNARX_LIBS) \
+	$(DBUS_LIBS)
+
+if HAVE_THUNAR_VFS
+if MAINTAINER_MODE
+
+BUILT_SOURCES = \
+	xfdesktop-dbus-bindings-filemanager.h \
+	xfdesktop-dbus-bindings-trash.h
+DISTCLEANFILES = \
+	xfdesktop-dbus-bindings-filemanager.h \
+	xfdesktop-dbus-bindings-trash.h
+
+xfdesktop-dbus-bindings-filemanager.h: $(srcdir)/xfdesktop-dbus-bindings-filemanager.xml Makefile
+	dbus-binding-tool --mode=glib-client $(srcdir)/xfdesktop-dbus-bindings-filemanager.xml > xfdesktop-dbus-bindings-filemanager.h
+
+xfdesktop-dbus-bindings-trash.h: $(srcdir)/xfdesktop-dbus-bindings-trash.xml Makefile
+	dbus-binding-tool --mode=glib-client $(srcdir)/xfdesktop-dbus-bindings-trash.xml > xfdesktop-dbus-bindings-trash.h
+
+endif
+endif
 
 endif
 
