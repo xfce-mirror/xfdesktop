@@ -298,6 +298,8 @@ xfdesktop_file_icon_manager_finalize(GObject *obj)
     gtk_target_list_unref(fmanager->priv->drag_targets);
     gtk_target_list_unref(fmanager->priv->drop_targets);
     
+    thunar_vfs_path_unref(fmanager->priv->folder);
+    
     G_OBJECT_CLASS(xfdesktop_file_icon_manager_parent_class)->finalize(obj);
 }
 
@@ -1893,7 +1895,7 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
                                      XfdesktopFileIcon *icon,
                                      gboolean defer_if_missing)
 {
-    gint16 row, col;
+    gint16 row = -1, col = -1;
     gboolean do_add = FALSE;
     const gchar *name;
     
@@ -2484,6 +2486,7 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
     ThunarVfsInfo *desktop_info;
+    gint i;
 #ifdef HAVE_THUNARX
     ThunarxProviderFactory *thunarx_pfac;
 #endif
@@ -2529,8 +2532,6 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
                      G_CALLBACK(xfdesktop_file_icon_manager_key_press),
                      fmanager);
     
-    thunar_vfs_init();
-    
     fmanager->priv->monitor = thunar_vfs_monitor_get_default();
     
     fmanager->priv->icons = g_hash_table_new_full(thunar_vfs_path_hash,
@@ -2543,6 +2544,10 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
                                                           NULL,
                                                           (GDestroyNotify)g_object_unref);
     
+    for(i = 0; i <= XFDESKTOP_SPECIAL_FILE_ICON_TRASH; ++i) {
+        if(fmanager->priv->show_special[i])
+            xfdesktop_file_icon_manager_add_special_file_icon(fmanager, i);
+    }
     if(fmanager->priv->show_removable_media)
         xfdesktop_file_icon_manager_load_removable_media(fmanager);
     xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
@@ -2625,8 +2630,6 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
                    (GFunc)g_object_unref, NULL);
     g_list_free(fmanager->priv->thunarx_properties_providers);
 #endif
-    
-    thunar_vfs_shutdown();
     
     g_hash_table_destroy(fmanager->priv->special_icons);
     fmanager->priv->special_icons = NULL;
@@ -2952,12 +2955,13 @@ xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIconManager *m
     
     manager->priv->show_removable_media = show_removable_media;
     
-    if(manager->priv->inited) {
-        if(show_removable_media)
-            xfdesktop_file_icon_manager_load_removable_media(manager);
-        else
-            xfdesktop_file_icon_manager_remove_removable_media(manager);
-    }
+    if(!manager->priv->inited)
+        return;
+    
+    if(show_removable_media)
+        xfdesktop_file_icon_manager_load_removable_media(manager);
+    else
+        xfdesktop_file_icon_manager_remove_removable_media(manager);
 }
 
 gboolean
@@ -2979,6 +2983,9 @@ xfdesktop_file_icon_manager_set_show_special_file(XfdesktopFileIconManager *mana
         return;
     
     manager->priv->show_special[type] = show_special_file;
+    
+    if(!manager->priv->inited)
+        return;
     
     if(show_special_file) {
         g_return_if_fail(!g_hash_table_lookup(manager->priv->special_icons,

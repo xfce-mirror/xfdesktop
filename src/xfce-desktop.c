@@ -155,11 +155,6 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
 {
     XfdesktopIconViewManager *manager = NULL;
     
-    if(desktop->priv->icon_view) {
-        gtk_widget_destroy(desktop->priv->icon_view);
-        desktop->priv->icon_view = NULL;
-    }
-    
     switch(desktop->priv->icons_style) {
         case XFCE_DESKTOP_ICON_STYLE_NONE:
             /* nada */
@@ -175,18 +170,26 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
                 ThunarVfsPath *path;
                 gchar *desktop_path = xfce_get_homefile("Desktop",
                                                         NULL);
-                thunar_vfs_init();
+                
                 path = thunar_vfs_path_new(desktop_path, NULL);
                 if(path) {
                     manager = xfdesktop_file_icon_manager_new(path);
+                    thunar_vfs_path_unref(path);
                     /* FIXME: make prefs */
                     xfdesktop_file_icon_manager_set_show_removable_media(XFDESKTOP_FILE_ICON_MANAGER(manager),
                                                                          TRUE);
-                    thunar_vfs_path_unref(path);
+                    xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
+                                                                      XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM,
+                                                                      TRUE);
+                    xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
+                                                                      XFDESKTOP_SPECIAL_FILE_ICON_HOME,
+                                                                      TRUE);
+                    xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
+                                                                      XFDESKTOP_SPECIAL_FILE_ICON_TRASH,
+                                                                      TRUE);
                 } else {
                     g_critical("Unable to create ThunarVfsPath for '%s'",
                                desktop_path);
-                    thunar_vfs_shutdown();
                 }
                 g_free(desktop_path);
             }
@@ -215,21 +218,6 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
         }
         gtk_widget_show(desktop->priv->icon_view);
         gtk_container_add(GTK_CONTAINER(desktop), desktop->priv->icon_view);
-        
-#ifdef HAVE_THUNAR_VFS
-        /* FIXME: prefs */
-        if(XFDESKTOP_IS_FILE_ICON_MANAGER(manager)) {
-            xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
-                                                              XFDESKTOP_SPECIAL_FILE_ICON_HOME,
-                                                              TRUE);
-            xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
-                                                              XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM,
-                                                              TRUE);
-            xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
-                                                              XFDESKTOP_SPECIAL_FILE_ICON_TRASH,
-                                                              TRUE);
-        }
-#endif
     }
     
     gtk_widget_queue_draw(GTK_WIDGET(desktop));
@@ -809,6 +797,18 @@ xfce_desktop_set_icon_style(XfceDesktop *desktop,
 #ifdef ENABLE_DESKTOP_ICONS
     if(style == desktop->priv->icons_style)
         return;
+    
+    if(desktop->priv->icon_view) {
+        gtk_widget_destroy(desktop->priv->icon_view);
+        desktop->priv->icon_view = NULL;
+    }
+    
+#ifdef HAVE_THUNAR_VFS
+    if(XFCE_DESKTOP_ICON_STYLE_FILES == desktop->priv->icons_style)
+        thunar_vfs_shutdown();
+    else if(XFCE_DESKTOP_ICON_STYLE_FILES == style)
+        thunar_vfs_init();
+#endif
     
     desktop->priv->icons_style = style;
     xfce_desktop_setup_icon_view(desktop);
