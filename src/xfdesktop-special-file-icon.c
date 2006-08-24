@@ -560,8 +560,16 @@ xfdesktop_special_file_icon_trash_changed_cb(DBusGProxy *proxy,
                                              gpointer user_data)
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
+    
     TRACE("entering (%p, %d, %p)", proxy, trash_full, user_data);
+    
+    if(trash_full == special_file_icon->priv->trash_full)
+        return;
+    
     special_file_icon->priv->trash_full = trash_full;
+    
+    xfdesktop_special_file_icon_invalidate_pixbuf(special_file_icon);
+    xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(special_file_icon));
 }
 
 static void
