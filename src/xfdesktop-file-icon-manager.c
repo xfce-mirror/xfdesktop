@@ -2852,8 +2852,26 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                 GList *dest_path_list = NULL, *l;
                 const gchar *name;
                 ThunarVfsPath *base_dest_path, *dest_path;
+                /* FIXME: icky special-case hacks */
+                gboolean dest_is_volume = (drop_icon
+                                           && XFDESKTOP_IS_VOLUME_ICON(drop_icon));
+                gboolean dest_is_special = (drop_icon
+                                            && XFDESKTOP_IS_SPECIAL_FILE_ICON(drop_icon));
+                gboolean dest_is_trash = (dest_is_special
+                                          && XFDESKTOP_SPECIAL_FILE_ICON_TRASH
+                                             == xfdesktop_special_file_icon_get_icon_type(XFDESKTOP_SPECIAL_FILE_ICON(drop_icon)));
                 
-                if(tinfo && tinfo->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
+                /* if it's a volume, but we don't have |tinfo|, this just isn't
+                 * going to work */
+                if(!tinfo && dest_is_volume) {
+                    thunar_vfs_path_list_free(path_list);
+                    gtk_drag_finish(context, FALSE, FALSE, time);
+                    return;
+                }
+                
+                if(tinfo && (dest_is_special || dest_is_volume))
+                    base_dest_path = thunar_vfs_path_ref(tinfo->path);
+                else if(tinfo && tinfo->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
                     base_dest_path = thunar_vfs_path_relative(fmanager->priv->folder,
                                                               thunar_vfs_path_get_name(tinfo->path));
                 } else
@@ -2868,9 +2886,9 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                 thunar_vfs_path_unref(base_dest_path);
                 dest_path_list = g_list_reverse(dest_path_list);
                 
-                if(context->suggested_action == GDK_ACTION_LINK)
+                if(context->suggested_action == GDK_ACTION_LINK && !dest_is_trash)
                     job = thunar_vfs_link_files(path_list, dest_path_list, NULL);
-                else if(copy_only)
+                else if(copy_only && !dest_is_trash)
                     job = thunar_vfs_copy_files(path_list, dest_path_list, NULL);
                 else
                     job = thunar_vfs_move_files(path_list, dest_path_list, NULL);
