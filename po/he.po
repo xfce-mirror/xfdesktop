@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-08-15 00:03-0700\n"
-"PO-Revision-Date: 2006-07-09 16:42+0300\n"
+"PO-Revision-Date: 2006-09-02 04:42+0300\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -406,9 +406,8 @@ msgid "Do you want to save before opening the default menu ?"
 msgstr "האם ברצונך לשמור לפני פתיחת תפריט ברירת המחדל?"
 
 #: ../menueditor/menueditor-main-window.c:594
-#, fuzzy
 msgid "Save menu file as"
-msgstr "פתח קובץ תפריט"
+msgstr "שמור קובץ תפריט בשם"
 
 #: ../menueditor/menueditor-main-window.c:632
 #: ../menueditor/menueditor-main-window.c:1341
@@ -854,9 +853,9 @@ msgid "    Desktop Icons:       %s\n"
 msgstr "    סמלי שולחן העבודה:       %s\n"
 
 #: ../src/main.c:271
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    סמלי שולחן העבודה:       %s\n"
+msgstr "    סמלי קבצי שולחן העבודה:       %s\n"
 
 #: ../src/main.c:298
 #, c-format
@@ -868,31 +867,25 @@ msgid "Options are:\n"
 msgstr "Options are:\n"
 
 #: ../src/main.c:300
-#, fuzzy
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr "    -reload      Reload all settings, refresh image list\n"
+msgstr "    --reload      Reload all settings, refresh image list\n"
 
 #: ../src/main.c:301
-#, fuzzy
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    -menu        Pop up the menu (at the current mouse position)\n"
+msgstr "    --menu        Pop up the menu (at the current mouse position)\n"
 
 #: ../src/main.c:302
-#, fuzzy
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    -windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    --windowlist  Pop up the window list (at the current mouse position)\n"
 
 #: ../src/main.c:303
-#, fuzzy
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "    -quit        Cause xfdesktop to quit\n"
+msgstr "    --quit        Cause xfdesktop to quit\n"
 
 #: ../src/main.c:318
 #, c-format
 msgid "%s is not running.\n"
-msgstr ""
+msgstr "%s לא פועל.\n"
 
 #: ../src/windowlist.c:218
 #, c-format
@@ -924,8 +917,7 @@ msgstr "שולחן עבודה"
 
 #: ../src/xfdesktop-file-icon-manager.c:244
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "לא ניתן ליצור את התיקייה \"%s\" בשביל לשמור שם את פריטי שולחן העבודה:"
 
 #: ../src/xfdesktop-file-icon-manager.c:246
@@ -1112,38 +1104,32 @@ msgid "_Properties..."
 msgstr "_מאפיינים..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1637
-#, fuzzy
 msgid "Des_ktop"
-msgstr "שולחן עבודה"
+msgstr "שולחן _עבודה"
 
 #: ../src/xfdesktop-file-icon-manager.c:1656
-#, fuzzy
 msgid "Create _Launcher..."
-msgstr "משגר..."
+msgstr "יצירת _משגר..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1677
-#, fuzzy
 msgid "Create _URL Link..."
-msgstr "_קישור URL..."
+msgstr "יצירת _קישור URL..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1694
-#, fuzzy
 msgid "Create _Folder..."
-msgstr "יצירת תיקיה חדשה"
+msgstr "יצירת _תיקיה..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1736
 msgid "_Empty File"
 msgstr "קובץ _ריק"
 
 #: ../src/xfdesktop-file-icon-manager.c:1777
-#, fuzzy
 msgid "Desktop _Settings..."
-msgstr "הגדרות שולחן עבודה"
+msgstr "הגדרות שולחן עבודה..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1786
-#, fuzzy
 msgid "_Desktop Properties..."
-msgstr "_מאפיינים..."
+msgstr "מ_אפייני שולחן עבודה..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2794
 #: ../src/xfdesktop-regular-file-icon.c:349
@@ -1244,27 +1230,26 @@ msgstr "אחרים:"
 
 #: ../src/xfdesktop-file-utils.c:71
 msgid "Yes to _all"
-msgstr ""
+msgstr "כן _לכל"
 
 #: ../src/xfdesktop-file-utils.c:103
 #, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr ""
+msgstr "ארעה שגיאה בהעברת \"%s\" אל \"%s\":"
 
 #: ../src/xfdesktop-file-utils.c:106
 #, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr ""
+msgstr "ארעה שגיאה בהעתקת \"%s\" אל \"%s\":"
 
 #: ../src/xfdesktop-file-utils.c:109
 #, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr ""
+msgstr "ארעה שגיאה בקישור \"%s\" אל \"%s\":"
 
 #: ../src/xfdesktop-file-utils.c:118
-#, fuzzy
 msgid "File Error"
-msgstr "שגיאה"
+msgstr "שגיאה בקובץ"
 
 #: ../src/xfdesktop-file-utils.c:134
 msgid "broken link"
@@ -1283,6 +1268,9 @@ msgid ""
 "Modified:%s\n"
 "Size: %s"
 msgstr ""
+"סוג: %s\n"
+"שונה:%s\n"
+"גודל: %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:530
 #, c-format
@@ -1291,34 +1279,31 @@ msgstr "כשל בשינוי שם \"%s\" ל-\"%s\":"
 
 #: ../src/xfdesktop-special-file-icon.c:233
 msgid "Home"
-msgstr ""
+msgstr "בית"
 
 #: ../src/xfdesktop-special-file-icon.c:437
-#, fuzzy
 msgid "Unable to open the trash."
-msgstr "אין אפשרות לעגן את \"%s\":"
+msgstr "אין אפשרות לפתוח את סל המחזור."
 
 #: ../src/xfdesktop-special-file-icon.c:438
 msgid ""
 "Viewing the contents of the trash requires a file manager that supports the "
 "Xfce trash service, such as Thunar."
-msgstr ""
+msgstr "הצגת תוכן סל המחזור דורשת סייר קבצים אשר תומך בשרותי סל המחזור של Xfce, כמו Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:466
-#, fuzzy
 msgid "Unable to empty the trash."
-msgstr "אין אפשרות לצאת מההפעלה"
+msgstr "אין אפשרות לרוקן את הפח."
 
 #: ../src/xfdesktop-special-file-icon.c:467
 msgid ""
 "Emptying the trash requires a file manager that supports the Xfce trash "
 "service, such as Thunar."
-msgstr ""
+msgstr "ריקון הפח דורש סייר קבצים אשר תומך בשרותי סל המחזור של Xfce, כמו Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:499
-#, fuzzy
 msgid "_Empty Trash"
-msgstr "קובץ _ריק"
+msgstr "סל מחזור _ריק"
 
 #: ../src/xfdesktop-volume-icon.c:438 ../src/xfdesktop-volume-icon.c:496
 #, c-format
@@ -1391,33 +1376,3 @@ msgstr "הגדרות שולחן העבודה של Xfce 4"
 msgid "Xfce 4 Desktop Settings"
 msgstr "הגדרות שולחן העבודה Xfce 4"
 
-#~ msgid " Bytes)"
-#~ msgstr "בתים"
-
-#~ msgid "_Copy Files"
-#~ msgstr "_העתקת קבצים"
-
-#~ msgid "_Copy File"
-#~ msgstr "_העתק קובץ"
-
-#~ msgid "Cu_t Files"
-#~ msgstr "_גזור קבצים"
-
-#~ msgid "Cu_t File"
-#~ msgstr "_גזור קובץ"
-
-#~ msgid "_Delete Files"
-#~ msgstr "_מחק קבצים"
-
-#~ msgid "_Delete File"
-#~ msgstr "_מחק קובץ"
-
-#, fuzzy
-#~ msgid "_Paste Files"
-#~ msgstr "רשימת קבצים"
-
-#~ msgid "Create _New"
-#~ msgstr "צור _חדש"
-
-#~ msgid "_Folder..."
-#~ msgstr "_תיקייה..."
