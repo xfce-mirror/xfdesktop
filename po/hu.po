@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-08-15 00:03-0700\n"
-"PO-Revision-Date: 2006-08-15 10:42+0100\n"
-"Last-Translator: SZERVÑC Attila <sas@321.hu>\n"
+"PO-Revision-Date: 2006-09-02 10:00+0100\n"
+"Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -458,7 +458,7 @@ msgstr "Közreműködő"
 
 #: ../menueditor/menueditor-main-window.c:1300
 msgid "Icon designer"
-msgstr "Ikontervező"
+msgstr "Ikon-tervező"
 
 #: ../menueditor/menueditor-main-window.c:1343
 msgid "You have modified the menu, do you want to save it before quitting ?"
@@ -640,7 +640,7 @@ msgstr "Információ"
 
 #: ../settings/appearance-settings.c:836
 msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
-msgstr "Hogy az Xfce tutira ne kezelje az asztalodat a következő indítástól, mentsd a munkafolyamatot a kijelentkezéskor. Ha nem használod az Xfce folyamatkezelőt (xfce4-session), kézzel kell szerkesztenes a ~/.config/xfce4/xinitrc fájlt.  Részletek a doksiban a http://xfce.org/ -on."
+msgstr "Hogy az Xfce tutira ne kezelje az asztalodat a következő indítástól, mentsd a munkafolyamatot a kijelentkezéskor. Ha nem használod az Xfce folyamatkezelőt (xfce4-session), kézzel kell szerkesztened a ~/.config/xfce4/xinitrc fájlt.  Részletek a doksiban a http://xfce.org/ oldalon."
 
 #: ../settings/appearance-settings.c:844
 msgid "_Do not show this again"
@@ -730,9 +730,9 @@ msgid ""
 "\n"
 "Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
-"A %s fájlt nem sikerült menteni: %s\n"
+"%s fájl mentése meghiúsult: %s\n"
 "\n"
-"Válasszon egy másik helyet, vagy nyomja meg a Mégsem gombot a párbeszédpanelen a változások elvetéséhez."
+"Válassz más helyet, vagy nyomd meg a Mégsem gombot a párbeszéden a változások elvetéséhez"
 
 #: ../settings/backdrop-list-manager.c:430
 msgid "Select backdrop image file"
@@ -963,7 +963,7 @@ msgstr "\"%s\" átnevezése"
 #: ../src/xfdesktop-file-icon-manager.c:1057
 #: ../src/xfdesktop-file-icon-manager.c:1068
 msgid "Enter the new name:"
-msgstr "Add meg az ú nevet:"
+msgstr "Add meg az új nevet:"
 
 #: ../src/xfdesktop-file-icon-manager.c:504
 msgid "Rename"
@@ -1259,11 +1259,11 @@ msgstr ""
 #: ../src/xfdesktop-regular-file-icon.c:530
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr "Nem sikerült ávtnevezni \"%s\"-t erre: \"%s\":"
+msgstr "Nem sikerült átnevezni \"%s\"-t erre: \"%s\":"
 
 #: ../src/xfdesktop-special-file-icon.c:233
 msgid "Home"
-msgstr ""
+msgstr "Saját könyvtár"
 
 #: ../src/xfdesktop-special-file-icon.c:437
 msgid "Unable to open the trash."
