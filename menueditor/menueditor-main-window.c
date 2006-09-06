@@ -822,7 +822,9 @@ action_edit (GtkAction *action, MenuEditorMainWindow *window)
     
       if (selected_icon) {
         new_icon = xfce_themed_icon_load (selected_icon, ICON_SIZE);    
-      }
+      } else {
+		new_icon = xfce_inline_icon_at_size (dummy_icon_data, ICON_SIZE, ICON_SIZE);
+	  }
       new_option_1 = g_strdup (selected_icon);
     
       switch (type) {

@@ -15,9 +15,11 @@ xfce4_menueditor_SOURCES =						\
 	
 
 xfce4_menueditor_CFLAGS = 						\
+	-DEXO_API_SUBJECT_TO_CHANGE					\
 	-I$(top_srcdir)							\
 	-I$(top_srcdir)/common						\
 	-I$(top_srcdir)/pixmaps						\
+	$(LIBEXO_CFLAGS)						\
 	$(LIBX11_CFLAGS)						\
 	$(LIBXFCEGUI4_CFLAGS)						\
 	-DLOCALEDIR=\"$(localedir)\"					\
@@ -29,6 +31,7 @@ xfce4_menueditor_CFLAGS = 						\
 
 xfce4_menueditor_LDADD =						\
 	$(top_builddir)/common/libxfdesktop.la				\
+	$(LIBEXO_LIBS)							\
 	$(LIBX11_LDFLAGS)						\
 	$(LIBX11_LIBS)							\
 	$(LIBXFCE4MCS_CLIENT_LIBS)					\

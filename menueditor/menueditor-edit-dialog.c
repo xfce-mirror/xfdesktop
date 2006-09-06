@@ -1,6 +1,7 @@
 /* $Id$ */
 /*
  * Copyright (c) 2006 Jean-François Wauthy (pollux@xfce.org)
+ * Copyright (c) 2006 Benedikt Meurer (benny@xfce.org)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,6 +29,10 @@
 #include <gtk/gtk.h>
 #include <libxfcegui4/libxfcegui4.h>
 
+#ifdef HAVE_LIBEXO
+#include <exo/exo.h>
+#endif
+
 #include "menueditor-edit-dialog.h"
 
 #define MENUEDITOR_EDIT_DIALOG_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), MENUEDITOR_TYPE_EDIT_DIALOG, MenuEditorEditDialogPrivate))
@@ -38,10 +43,14 @@ typedef struct {
   GtkWidget *label_command;
   GtkWidget *entry_command;
   GtkWidget *hbox_command;
+#ifdef HAVE_LIBEXO
+  GtkWidget *button_icon;
+#else
   GtkWidget *radio_button_themed_icon;
   GtkWidget *entry_themed_icon;
   GtkWidget *radio_button_icon;
   GtkWidget *chooser_icon;
+#endif
   GtkWidget *check_button_snotify;
   GtkWidget *check_button_interm;
 } MenuEditorEditDialogPrivate;
@@ -50,10 +59,14 @@ typedef struct {
 static void menueditor_edit_dialog_class_init (MenuEditorEditDialogClass *);
 static void menueditor_edit_dialog_init (MenuEditorEditDialog *);
 
-static void cb_chooser_icon_update_preview (GtkFileChooser *, GtkImage *);
 static void cb_browse_button_clicked (GtkButton *, MenuEditorEditDialog *);
+#ifdef HAVE_LIBEXO
+static void cb_icon_button_clicked (GtkWidget *, MenuEditorEditDialog *);
+#else
+static void cb_chooser_icon_update_preview (GtkFileChooser *, GtkImage *);
 static void cb_radio_button_themed_icon_toggled (GtkToggleButton *, MenuEditorEditDialog *);
 static void cb_radio_button_icon_toggled (GtkToggleButton *, MenuEditorEditDialog *);
+#endif
 
 /* globals */
 static XfceTitledDialogClass *parent_class = NULL;
@@ -98,14 +111,19 @@ menueditor_edit_dialog_init (MenuEditorEditDialog * dialog)
 {
   MenuEditorEditDialogPrivate *priv = MENUEDITOR_EDIT_DIALOG_GET_PRIVATE (dialog);
 
+#ifdef HAVE_LIBEXO
+  GtkWidget *align;
+#else
+  GtkFileFilter *filter;
+  GtkWidget *preview;
+  GSList *radio_button_group = NULL;
+#endif
   GtkWidget *table;
   GtkWidget *label;
   gchar *label_text = NULL;
   GtkWidget *button_browse;
-  GtkFileFilter *filter;
-  GtkWidget *preview;
-  GSList *radio_button_group = NULL;
   
+  gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
   gtk_window_set_title (GTK_WINDOW (dialog), _("Edit menu entry"));
   gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
   gtk_window_set_icon_name (GTK_WINDOW (dialog), GTK_STOCK_EDIT);
@@ -156,6 +174,25 @@ menueditor_edit_dialog_init (MenuEditorEditDialog * dialog)
   
   gtk_table_attach (GTK_TABLE (table), priv->hbox_command, 1, 2, 2, 3, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 6);
   
+#ifdef HAVE_LIBEXO
+  /* Icon chooser */
+  label = gtk_label_new (_("Icon:"));
+  label_text = g_strdup_printf ("<span weight='bold'>%s</span>", _("Icon:"));
+  gtk_label_set_markup (GTK_LABEL (label), label_text);
+  gtk_misc_set_alignment (GTK_MISC (label), 1.0f, 0.5f);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 3, 4, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (label);
+  g_free (label_text);
+
+  align = gtk_alignment_new (0.0f, 0.5f, 0.0f, 0.0f);
+  gtk_table_attach (GTK_TABLE (table), align, 1, 2, 3, 4, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (align);
+
+  priv->button_icon = gtk_button_new_with_label (_("No icon"));
+  gtk_container_add (GTK_CONTAINER (align), priv->button_icon);
+  g_signal_connect (G_OBJECT (priv->button_icon), "clicked", G_CALLBACK (cb_icon_button_clicked), dialog);
+  gtk_widget_show (priv->button_icon);
+#else
   /* Themed icon */
   priv->radio_button_themed_icon = gtk_radio_button_new (NULL);
   radio_button_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (priv->radio_button_themed_icon));
@@ -218,6 +255,7 @@ menueditor_edit_dialog_init (MenuEditorEditDialog * dialog)
   gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (priv->chooser_icon), DATADIR "/icons");
   gtk_widget_show (priv->chooser_icon);
   gtk_table_attach (GTK_TABLE (table), priv->chooser_icon, 1, 2, 4, 5, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 6);
+#endif
 
   /* Start Notify check button */
   priv->check_button_snotify = gtk_check_button_new_with_mnemonic (_("Use startup _notification"));
@@ -230,31 +268,13 @@ menueditor_edit_dialog_init (MenuEditorEditDialog * dialog)
   gtk_table_attach (GTK_TABLE (table), priv->check_button_interm, 1, 2, 6, 7, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
 
   gtk_dialog_add_buttons (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
+  gtk_dialog_set_alternative_button_order (GTK_DIALOG (dialog), GTK_RESPONSE_OK, GTK_RESPONSE_CANCEL, -1);
   gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 }
 
 /*************/
 /* internals */
 /*************/
-static void
-cb_chooser_icon_update_preview (GtkFileChooser * chooser, GtkImage *preview)
-{
-  gchar *filename;
-  GdkPixbuf *pix = NULL;
-
-  filename = gtk_file_chooser_get_filename (chooser);
-  if (g_file_test (filename, G_FILE_TEST_IS_REGULAR))
-    pix = gdk_pixbuf_new_from_file_at_size (filename, 64, 64, NULL);
-  g_free (filename);
-
-  if (G_IS_OBJECT (pix)) {
-    gtk_image_set_from_pixbuf (preview, pix);
-    g_object_unref (G_OBJECT (pix));
-  }
-  
-  gtk_file_chooser_set_preview_widget_active (chooser, G_IS_OBJECT (pix));
-}
-
 static void
 cb_browse_button_clicked (GtkButton *button, MenuEditorEditDialog *dialog)
 {
@@ -352,6 +372,64 @@ cb_browse_button_clicked (GtkButton *button, MenuEditorEditDialog *dialog)
   gtk_widget_destroy (chooser_dialog);
 }
 
+#ifdef HAVE_LIBEXO
+static void
+cb_icon_button_clicked (GtkWidget *button, MenuEditorEditDialog *dialog)
+{
+  GtkWidget *chooser;
+  gchar *icon;
+  gint response;
+  
+  /* allocate the chooser dialog */
+  chooser = exo_icon_chooser_dialog_new (_("Select icon"), GTK_WINDOW (dialog),
+                                         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+										 GTK_STOCK_CLEAR, GTK_RESPONSE_NO,
+                                         GTK_STOCK_OK, GTK_RESPONSE_ACCEPT,
+                                         NULL);
+  gtk_dialog_set_alternative_button_order (GTK_DIALOG (chooser), GTK_RESPONSE_ACCEPT, GTK_RESPONSE_CANCEL, -1);
+  gtk_dialog_set_default_response (GTK_DIALOG (chooser), GTK_RESPONSE_ACCEPT);
+
+  /* setup the currently selected icon */
+  icon = menueditor_edit_dialog_get_entry_icon (dialog);
+  if (G_LIKELY (icon != NULL)) {
+    exo_icon_chooser_dialog_set_icon (EXO_ICON_CHOOSER_DIALOG (chooser), icon);
+    g_free (icon);
+  }
+
+  /* run the icon chooser dialog */
+  response = gtk_dialog_run (GTK_DIALOG (chooser));
+  if (response == GTK_RESPONSE_ACCEPT) {
+	/* remember the selected icon from the chooser */
+	icon = exo_icon_chooser_dialog_get_icon (EXO_ICON_CHOOSER_DIALOG (chooser));
+	menueditor_edit_dialog_set_entry_icon (dialog, icon);
+	g_free (icon);
+  } else if (response == GTK_RESPONSE_NO) {
+	menueditor_edit_dialog_set_entry_icon (dialog, NULL);
+  }
+
+  /* destroy the chooser */
+  gtk_widget_destroy (chooser);
+}
+#else
+static void
+cb_chooser_icon_update_preview (GtkFileChooser * chooser, GtkImage *preview)
+{
+  gchar *filename;
+  GdkPixbuf *pix = NULL;
+
+  filename = gtk_file_chooser_get_filename (chooser);
+  if (g_file_test (filename, G_FILE_TEST_IS_REGULAR))
+    pix = gdk_pixbuf_new_from_file_at_size (filename, 64, 64, NULL);
+  g_free (filename);
+
+  if (G_IS_OBJECT (pix)) {
+    gtk_image_set_from_pixbuf (preview, pix);
+    g_object_unref (G_OBJECT (pix));
+  }
+  
+  gtk_file_chooser_set_preview_widget_active (chooser, G_IS_OBJECT (pix));
+}
+
 static void
 cb_radio_button_themed_icon_toggled (GtkToggleButton *button, MenuEditorEditDialog *dialog)
 {
@@ -373,6 +451,7 @@ cb_radio_button_icon_toggled (GtkToggleButton *button, MenuEditorEditDialog *dia
     gtk_widget_set_sensitive (priv->chooser_icon, TRUE);
   }
 }
+#endif
 
 static gchar *
 unescape_text (const gchar *markup)
@@ -478,6 +557,40 @@ menueditor_edit_dialog_set_entry_icon (MenuEditorEditDialog *dialog, const gchar
 {
   MenuEditorEditDialogPrivate *priv = MENUEDITOR_EDIT_DIALOG_GET_PRIVATE (dialog);
  
+#ifdef HAVE_LIBEXO
+  GdkPixbuf *pixbuf;
+  GtkWidget *image;
+  GtkWidget *label;
+
+  /* drop the previous button child */
+  if (GTK_BIN (priv->button_icon)->child != NULL)
+    gtk_widget_destroy (GTK_BIN (priv->button_icon)->child);
+
+  /* try to load the icon */
+  if (G_LIKELY (icon != NULL && g_path_is_absolute (icon))) {
+    /* setup the image from the file */
+    pixbuf = exo_gdk_pixbuf_new_from_file_at_max_size (icon, 48, 48, TRUE, NULL);
+    image = gtk_image_new_from_pixbuf (pixbuf);
+    gtk_container_add (GTK_CONTAINER (priv->button_icon), image);
+    g_object_unref (G_OBJECT (pixbuf));
+    gtk_widget_show (image);
+  }
+  else if (icon != NULL && *icon != '\0') {
+    /* setup a themed icon */
+    image = gtk_image_new_from_icon_name (icon, GTK_ICON_SIZE_DIALOG);
+    gtk_container_add (GTK_CONTAINER (priv->button_icon), image);
+    gtk_widget_show (image);
+  }
+  else {
+    /* setup a label to tell that no icon was selected */
+    label = gtk_label_new (_("No icon"));
+    gtk_container_add (GTK_CONTAINER (priv->button_icon), label);
+    gtk_widget_show (label);
+  }
+
+  /* remember the icon */
+  g_object_set_data_full (G_OBJECT (priv->button_icon), "menueditor-edit-dialog-icon", g_strdup (icon), g_free);
+#else
   if (icon && strlen (icon) > 0) {
     if (icon[0] != '/') {
       /* themed icon */
@@ -492,6 +605,7 @@ menueditor_edit_dialog_set_entry_icon (MenuEditorEditDialog *dialog, const gchar
       gtk_file_chooser_select_filename (GTK_FILE_CHOOSER (priv->chooser_icon), icon);
     }
   }
+#endif
 }
 
 void 
@@ -531,10 +645,14 @@ menueditor_edit_dialog_get_entry_icon (MenuEditorEditDialog *dialog)
 {
   MenuEditorEditDialogPrivate *priv = MENUEDITOR_EDIT_DIALOG_GET_PRIVATE (dialog);
   
+#ifdef HAVE_LIBEXO
+  return g_strdup (g_object_get_data (G_OBJECT (priv->button_icon), "menueditor-edit-dialog-icon"));
+#else
   if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->radio_button_icon)))
     return gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (priv->chooser_icon));
   else
     return g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->entry_themed_icon)));
+#endif
 }
 
 gboolean

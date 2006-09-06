@@ -28,6 +28,10 @@
 #include <gtk/gtk.h>
 #include <libxfcegui4/libxfcegui4.h>
 
+#ifdef HAVE_LIBEXO
+#include <exo/exo.h>
+#endif
+
 #include "menueditor-add-dialog.h"
 
 #define MENUEDITOR_ADD_DIALOG_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), MENUEDITOR_TYPE_ADD_DIALOG, MenuEditorAddDialogPrivate))
@@ -39,10 +43,14 @@ typedef struct {
   GtkWidget *entry_name;
   GtkWidget *label_command;
   GtkWidget *entry_command;
+#ifdef HAVE_LIBEXO
+  GtkWidget *button_icon;
+#else
   GtkWidget *radio_button_themed_icon;
   GtkWidget *entry_themed_icon;
   GtkWidget *radio_button_icon;
   GtkWidget *chooser_icon;
+#endif
   GtkWidget *check_button_snotify;
   GtkWidget *check_button_interm;
 } MenuEditorAddDialogPrivate;
@@ -51,11 +59,15 @@ typedef struct {
 static void menueditor_add_dialog_class_init (MenuEditorAddDialogClass *);
 static void menueditor_add_dialog_init (MenuEditorAddDialog *);
 
-static void cb_chooser_icon_update_preview (GtkFileChooser *, GtkImage *);
-static void cb_browse_button_clicked (GtkButton *, MenuEditorAddDialog *);
 static void cb_combo_changed (GtkComboBox *, MenuEditorAddDialog *);
+static void cb_browse_button_clicked (GtkButton *, MenuEditorAddDialog *);
+#ifdef HAVE_LIBEXO
+static void cb_icon_button_clicked (GtkWidget *, MenuEditorAddDialog *);
+#else
+static void cb_chooser_icon_update_preview (GtkFileChooser *, GtkImage *);
 static void cb_radio_button_themed_icon_toggled (GtkToggleButton *, MenuEditorAddDialog *);
 static void cb_radio_button_icon_toggled (GtkToggleButton *, MenuEditorAddDialog *);
+#endif
 
 /* globals */
 static XfceTitledDialogClass *parent_class = NULL;
@@ -101,14 +113,18 @@ menueditor_add_dialog_init (MenuEditorAddDialog * dialog)
 {
   MenuEditorAddDialogPrivate *priv = MENUEDITOR_ADD_DIALOG_GET_PRIVATE (dialog);
 
+#ifdef HAVE_LIBEXO
+  GtkWidget *align;
+#else
+  GtkFileFilter *filter;
+  GtkWidget *preview;
+  GSList *radio_button_group = NULL;
+#endif
   GtkWidget *table;
   GtkWidget *label;
   gchar *label_text = NULL;
   GtkWidget *hbox;
   GtkWidget *button_browse;
-  GtkFileFilter *filter;
-  GtkWidget *preview;
-  GSList *radio_button_group = NULL;
   
   gtk_window_set_title (GTK_WINDOW (dialog), _("Add menu entry"));
   gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
@@ -180,6 +196,25 @@ menueditor_add_dialog_init (MenuEditorAddDialog * dialog)
   
   gtk_table_attach (GTK_TABLE (table), hbox, 1, 2, 2, 3, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 6);
   
+#ifdef HAVE_LIBEXO
+  /* Icon chooser */
+  label = gtk_label_new (_("Icon:"));
+  label_text = g_strdup_printf ("<span weight='bold'>%s</span>", _("Icon:"));
+  gtk_label_set_markup (GTK_LABEL (label), label_text);
+  gtk_misc_set_alignment (GTK_MISC (label), 1.0f, 0.5f);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 3, 4, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (label);
+  g_free (label_text);
+
+  align = gtk_alignment_new (0.0f, 0.5f, 0.0f, 0.0f);
+  gtk_table_attach (GTK_TABLE (table), align, 1, 2, 3, 4, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (align);
+
+  priv->button_icon = gtk_button_new_with_label (_("No icon"));
+  gtk_container_add (GTK_CONTAINER (align), priv->button_icon);
+  g_signal_connect (G_OBJECT (priv->button_icon), "clicked", G_CALLBACK (cb_icon_button_clicked), dialog);
+  gtk_widget_show (priv->button_icon);
+#else
   /* Themed icon */
   priv->radio_button_themed_icon = gtk_radio_button_new (NULL);
   radio_button_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (priv->radio_button_themed_icon));
@@ -242,7 +277,8 @@ menueditor_add_dialog_init (MenuEditorAddDialog * dialog)
   gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (priv->chooser_icon), DATADIR "/icons");
   gtk_widget_show (priv->chooser_icon);
   gtk_table_attach (GTK_TABLE (table), priv->chooser_icon, 1, 2, 4, 5, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 6);
-
+#endif
+  
   /* Start Notify check button */
   priv->check_button_snotify = gtk_check_button_new_with_mnemonic (_("Use startup _notification"));
   gtk_widget_show (priv->check_button_snotify);
@@ -260,6 +296,106 @@ menueditor_add_dialog_init (MenuEditorAddDialog * dialog)
 /*************/
 /* internals */
 /*************/
+#ifdef HAVE_LIBEXO
+static void
+set_entry_icon (MenuEditorAddDialog *dialog, const gchar *icon)
+{
+  MenuEditorAddDialogPrivate *priv = MENUEDITOR_ADD_DIALOG_GET_PRIVATE (dialog);
+ 
+  GdkPixbuf *pixbuf;
+  GtkWidget *image;
+  GtkWidget *label;
+
+  /* drop the previous button child */
+  if (GTK_BIN (priv->button_icon)->child != NULL)
+    gtk_widget_destroy (GTK_BIN (priv->button_icon)->child);
+
+  /* try to load the icon */
+  if (G_LIKELY (icon != NULL && g_path_is_absolute (icon))) {
+    /* setup the image from the file */
+    pixbuf = exo_gdk_pixbuf_new_from_file_at_max_size (icon, 48, 48, TRUE, NULL);
+    image = gtk_image_new_from_pixbuf (pixbuf);
+    gtk_container_add (GTK_CONTAINER (priv->button_icon), image);
+    g_object_unref (G_OBJECT (pixbuf));
+    gtk_widget_show (image);
+  }
+  else if (icon != NULL && *icon != '\0') {
+    /* setup a themed icon */
+    image = gtk_image_new_from_icon_name (icon, GTK_ICON_SIZE_DIALOG);
+    gtk_container_add (GTK_CONTAINER (priv->button_icon), image);
+    gtk_widget_show (image);
+  }
+  else {
+    /* setup a label to tell that no icon was selected */
+    label = gtk_label_new (_("No icon"));
+    gtk_container_add (GTK_CONTAINER (priv->button_icon), label);
+    gtk_widget_show (label);
+  }
+
+  /* remember the icon */
+  g_object_set_data_full (G_OBJECT (priv->button_icon), "menueditor-add-dialog-icon", g_strdup (icon), g_free);
+}
+
+static void
+cb_icon_button_clicked (GtkWidget *button, MenuEditorAddDialog *dialog)
+{
+  GtkWidget *chooser;
+  gchar *icon;
+  gint response;
+  
+  /* allocate the chooser dialog */
+  chooser = exo_icon_chooser_dialog_new (_("Select icon"), GTK_WINDOW (dialog),
+                                         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+										 GTK_STOCK_CLEAR, GTK_RESPONSE_NO,
+                                         GTK_STOCK_OK, GTK_RESPONSE_ACCEPT,
+                                         NULL);
+  gtk_dialog_set_alternative_button_order (GTK_DIALOG (chooser), GTK_RESPONSE_ACCEPT, GTK_RESPONSE_CANCEL, -1);
+  gtk_dialog_set_default_response (GTK_DIALOG (chooser), GTK_RESPONSE_ACCEPT);
+
+  /* setup the currently selected icon */
+  icon = menueditor_add_dialog_get_entry_icon (dialog);
+  if (G_LIKELY (icon != NULL)) {
+    exo_icon_chooser_dialog_set_icon (EXO_ICON_CHOOSER_DIALOG (chooser), icon);
+    g_free (icon);
+  }
+
+  /* run the icon chooser dialog */
+  response = gtk_dialog_run (GTK_DIALOG (chooser));
+  if (response == GTK_RESPONSE_ACCEPT) {
+	/* remember the selected icon from the chooser */
+	icon = exo_icon_chooser_dialog_get_icon (EXO_ICON_CHOOSER_DIALOG (chooser));
+	set_entry_icon (dialog, icon);
+	g_free (icon);
+  } else if (response == GTK_RESPONSE_NO) {
+	set_entry_icon (dialog, NULL);
+  }
+
+  /* destroy the chooser */
+  gtk_widget_destroy (chooser);
+}
+#else
+static void
+cb_radio_button_themed_icon_toggled (GtkToggleButton *button, MenuEditorAddDialog *dialog)
+{
+  MenuEditorAddDialogPrivate *priv = MENUEDITOR_ADD_DIALOG_GET_PRIVATE (dialog);
+  
+  if (gtk_toggle_button_get_active (button)) {
+    gtk_widget_set_sensitive (priv->entry_themed_icon, TRUE);
+    gtk_widget_set_sensitive (priv->chooser_icon, FALSE);
+  }
+}
+
+static void
+cb_radio_button_icon_toggled (GtkToggleButton *button, MenuEditorAddDialog *dialog)
+{
+  MenuEditorAddDialogPrivate *priv = MENUEDITOR_ADD_DIALOG_GET_PRIVATE (dialog);
+  
+  if (gtk_toggle_button_get_active (button)) {
+    gtk_widget_set_sensitive (priv->entry_themed_icon, FALSE);
+    gtk_widget_set_sensitive (priv->chooser_icon, TRUE);
+  }
+}
+
 static void
 cb_chooser_icon_update_preview (GtkFileChooser * chooser, GtkImage *preview)
 {
@@ -278,6 +414,7 @@ cb_chooser_icon_update_preview (GtkFileChooser * chooser, GtkImage *preview)
   
   gtk_file_chooser_set_preview_widget_active (chooser, G_IS_OBJECT (pix));
 }
+#endif
 
 static void
 cb_browse_button_clicked (GtkButton *button, MenuEditorAddDialog *dialog)
@@ -389,10 +526,14 @@ cb_combo_changed (GtkComboBox * combo, MenuEditorAddDialog * dialog)
 	  gtk_widget_set_sensitive (priv->entry_name, TRUE);
 	  gtk_widget_set_sensitive (priv->label_command, FALSE);
 	  gtk_widget_set_sensitive (priv->entry_command, FALSE);
+#ifdef HAVE_LIBEXO
+	  gtk_widget_set_sensitive (priv->button_icon, TRUE);
+#else
       gtk_widget_set_sensitive (priv->radio_button_themed_icon, TRUE);
       gtk_widget_set_sensitive (priv->entry_themed_icon, TRUE);
 	  gtk_widget_set_sensitive (priv->radio_button_icon, TRUE);
 	  gtk_widget_set_sensitive (priv->chooser_icon, TRUE);
+#endif
 	  gtk_widget_set_sensitive (priv->check_button_snotify, FALSE);
 	  gtk_widget_set_sensitive (priv->check_button_interm, FALSE);
 	  break;
@@ -401,10 +542,14 @@ cb_combo_changed (GtkComboBox * combo, MenuEditorAddDialog * dialog)
 	  gtk_widget_set_sensitive (priv->entry_name, TRUE);
 	  gtk_widget_set_sensitive (priv->label_command, TRUE);
 	  gtk_widget_set_sensitive (priv->entry_command, TRUE);
+#ifdef HAVE_LIBEXO
+	  gtk_widget_set_sensitive (priv->button_icon, TRUE);
+#else
       gtk_widget_set_sensitive (priv->radio_button_themed_icon, TRUE);
       gtk_widget_set_sensitive (priv->entry_themed_icon, TRUE);
 	  gtk_widget_set_sensitive (priv->radio_button_icon, TRUE);
 	  gtk_widget_set_sensitive (priv->chooser_icon, TRUE);
+#endif
 	  gtk_widget_set_sensitive (priv->check_button_snotify, TRUE);
 	  gtk_widget_set_sensitive (priv->check_button_interm, TRUE);
 	  break;
@@ -413,35 +558,17 @@ cb_combo_changed (GtkComboBox * combo, MenuEditorAddDialog * dialog)
 	  gtk_widget_set_sensitive (priv->entry_name, FALSE);
 	  gtk_widget_set_sensitive (priv->label_command, FALSE);
 	  gtk_widget_set_sensitive (priv->entry_command, FALSE);
+#ifdef HAVE_LIBEXO
+	  gtk_widget_set_sensitive (priv->button_icon, FALSE);
+#else
       gtk_widget_set_sensitive (priv->radio_button_themed_icon, FALSE);
       gtk_widget_set_sensitive (priv->entry_themed_icon, FALSE);
 	  gtk_widget_set_sensitive (priv->radio_button_icon, FALSE);
 	  gtk_widget_set_sensitive (priv->chooser_icon, FALSE);
+#endif
 	  gtk_widget_set_sensitive (priv->check_button_snotify, FALSE);
 	  gtk_widget_set_sensitive (priv->check_button_interm, FALSE);
 	  break;
-  }
-}
-
-static void
-cb_radio_button_themed_icon_toggled (GtkToggleButton *button, MenuEditorAddDialog *dialog)
-{
-  MenuEditorAddDialogPrivate *priv = MENUEDITOR_ADD_DIALOG_GET_PRIVATE (dialog);
-  
-  if (gtk_toggle_button_get_active (button)) {
-    gtk_widget_set_sensitive (priv->entry_themed_icon, TRUE);
-    gtk_widget_set_sensitive (priv->chooser_icon, FALSE);
-  }
-}
-
-static void
-cb_radio_button_icon_toggled (GtkToggleButton *button, MenuEditorAddDialog *dialog)
-{
-  MenuEditorAddDialogPrivate *priv = MENUEDITOR_ADD_DIALOG_GET_PRIVATE (dialog);
-  
-  if (gtk_toggle_button_get_active (button)) {
-    gtk_widget_set_sensitive (priv->entry_themed_icon, FALSE);
-    gtk_widget_set_sensitive (priv->chooser_icon, TRUE);
   }
 }
 
@@ -492,6 +619,9 @@ menueditor_add_dialog_get_entry_icon (MenuEditorAddDialog *dialog)
 {
   MenuEditorAddDialogPrivate *priv = MENUEDITOR_ADD_DIALOG_GET_PRIVATE (dialog);
   
+#ifdef HAVE_LIBEXO
+  return g_strdup (g_object_get_data (G_OBJECT (priv->button_icon), "menueditor-add-dialog-icon"));
+#else
   if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->radio_button_themed_icon))) {
     if (strlen (gtk_entry_get_text (GTK_ENTRY (priv->entry_themed_icon))) > 0)
       return g_strdup (gtk_entry_get_text (GTK_ENTRY (priv->entry_themed_icon)));
@@ -500,6 +630,7 @@ menueditor_add_dialog_get_entry_icon (MenuEditorAddDialog *dialog)
   } else {
     return gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (priv->chooser_icon));
   }
+#endif
 }
 
 gboolean
