@@ -275,9 +275,9 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
             if(setting)
                 bp->show_image = setting->data.v_int == 0 ? FALSE : TRUE;
             else {
-                bp->show_image = TRUE;
+                bp->show_image = FALSE;
                 mcs_manager_set_int(mcs_plugin->manager, setting_name,
-                        BACKDROP_CHANNEL, 1);
+                        BACKDROP_CHANNEL, 0);
             }
             
             /* the color style */
@@ -287,7 +287,7 @@ backdrop_create_channel (McsPlugin * mcs_plugin)
             if(setting)
                 bp->color_style = setting->data.v_int;
             else {
-                bp->color_style = XFCE_BACKDROP_COLOR_HORIZ_GRADIENT;
+                bp->color_style = XFCE_BACKDROP_COLOR_SOLID;
                 mcs_manager_set_int(mcs_plugin->manager, setting_name,
                         BACKDROP_CHANNEL, bp->color_style);
             }
