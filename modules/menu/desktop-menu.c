@@ -209,7 +209,7 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 }
 
 void
-_desktop_menu_ensure_unknown_icon()
+_desktop_menu_ensure_unknown_icon(void)
 {
     if(!unknown_icon)
         unknown_icon = gdk_pixbuf_new_from_inline(-1, xfce_unknown, TRUE, NULL);
@@ -242,6 +242,7 @@ xfce_desktop_menu_new_impl(const gchar *menu_file, gboolean deferred)
         desktop_menu->using_default_menu = TRUE;
     }
     
+    g_return_val_if_fail (desktop_menu->filename != NULL, NULL);
     desktop_menu->cache_file_suffix = g_strdup(desktop_menu->filename);
     p = desktop_menu->cache_file_suffix;
     while(*p) {

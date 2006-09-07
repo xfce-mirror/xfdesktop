@@ -132,7 +132,7 @@ xfdesktop_check_image_file(const gchar *filename)
 }
 
 gchar *
-xfce_desktop_get_menufile()
+xfce_desktop_get_menufile(void)
 {
     XfceKiosk *kiosk;
     gboolean user_menu;

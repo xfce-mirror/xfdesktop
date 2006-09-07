@@ -86,6 +86,9 @@ popup_desktop_menu(GdkScreen *gscreen, gint button, guint32 time)
         xfce_desktop_menu_force_regen(desktop_menu);
     
     menu_widget = xfce_desktop_menu_get_widget(desktop_menu);
+    if (!menu_widget)
+        return;
+
     gtk_menu_set_screen(GTK_MENU(menu_widget), gscreen);
     
     root = gdk_screen_get_root_window(gscreen);
