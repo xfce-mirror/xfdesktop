@@ -2174,9 +2174,17 @@ cb_treeview_drag_data_rcv (GtkWidget * widget, GdkDragContext * dc,
     }
     
     gtk_tree_model_get_iter (model, &iter_source, path_source);
-    gtk_tree_path_free (path_source);
     gtk_tree_model_get_iter (model, &iter_where_insert, path_where_insert);
-
+    
+    if (gtk_tree_path_is_descendant (path_where_insert, path_source) 
+        || gtk_tree_path_compare (path_where_insert, path_source) == 0) {
+      gtk_tree_path_free (path_source);
+      goto cleanup;
+    }
+    
+    gtk_tree_path_free (path_source);
+    
+    
     gtk_tree_model_get (model, &iter_where_insert, COLUMN_TYPE, &type, -1);
 
     if ((type == MENU) || (position == GTK_TREE_VIEW_DROP_BEFORE) || (position == GTK_TREE_VIEW_DROP_AFTER)) {
