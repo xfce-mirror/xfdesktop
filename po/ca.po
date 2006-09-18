@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-08-15 00:03-0700\n"
-"PO-Revision-Date: 2006-05-13 21:56+0200\n"
+"PO-Revision-Date: 2006-09-18 22:33+0200\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
@@ -71,9 +71,8 @@ msgstr "Ordre:"
 #: ../menueditor/menueditor-add-dialog.c:191
 #: ../menueditor/menueditor-edit-dialog.c:166
 #: ../menueditor/menueditor-edit-dialog.c:167
-#, fuzzy
 msgid "Themed icon:"
-msgstr "Seleccioneu una icona"
+msgstr "Icona amb tema:"
 
 #: ../menueditor/menueditor-add-dialog.c:209
 #: ../menueditor/menueditor-add-dialog.c:210
@@ -128,34 +127,32 @@ msgstr "Esculliu ordre"
 
 #: ../menueditor/menueditor-add-dialog.c:305
 #: ../menueditor/menueditor-edit-dialog.c:281
-#, fuzzy
 msgid "Executable Files"
-msgstr "No s'ha pogut expulsar"
+msgstr "Fitxers executables"
 
 #: ../menueditor/menueditor-add-dialog.c:320
 #: ../menueditor/menueditor-edit-dialog.c:296
 msgid "Perl Scripts"
-msgstr ""
+msgstr "Seqüència de Perl"
 
 #: ../menueditor/menueditor-add-dialog.c:326
 #: ../menueditor/menueditor-edit-dialog.c:302
 msgid "Python Scripts"
-msgstr ""
+msgstr "Seqüència de Python"
 
 #: ../menueditor/menueditor-add-dialog.c:332
 #: ../menueditor/menueditor-edit-dialog.c:308
 msgid "Ruby Scripts"
-msgstr ""
+msgstr "Seqüència de Ruby"
 
 #: ../menueditor/menueditor-add-dialog.c:338
 #: ../menueditor/menueditor-edit-dialog.c:314
 msgid "Shell Scripts"
-msgstr ""
+msgstr "Seqüència d’intèrpret d’ordres"
 
 #: ../menueditor/menueditor-add-external-dialog.c:100
-#, fuzzy
 msgid "Add external menu entry"
-msgstr "Afegeix menú extern"
+msgstr "Afegeix entrada d’un menú extern"
 
 #: ../menueditor/menueditor-add-external-dialog.c:122
 msgid "File"
@@ -175,9 +172,8 @@ msgstr "Font:"
 
 #: ../menueditor/menueditor-add-external-dialog.c:137
 #: ../menueditor/menueditor-edit-external-dialog.c:117
-#, fuzzy
 msgid "Select external menu"
-msgstr "Afegeix menú extern"
+msgstr "Selecciona menú extern"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
@@ -214,14 +210,12 @@ msgid "Edit menu entry"
 msgstr "Edita una entrada del menú"
 
 #: ../menueditor/menueditor-edit-external-dialog.c:96
-#, fuzzy
 msgid "Edit external menu entry"
-msgstr "Afegeix menú extern"
+msgstr "Edita una entrada del menú extern"
 
 #: ../menueditor/menueditor-main.c:43
-#, fuzzy
 msgid "Xfce4-MenuEditor"
-msgstr "Editor del menú Xfce4"
+msgstr "Xfce4-MenuEditor"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -229,10 +223,9 @@ msgstr "_Fitxer"
 
 #: ../menueditor/menueditor-main-window.c:141
 msgid "_New"
-msgstr ""
+msgstr "_Nou"
 
 #: ../menueditor/menueditor-main-window.c:141
-#, fuzzy
 msgid "Create a new empty menu"
 msgstr "Crea un fitxer de menú Xfce4 nou"
 
@@ -243,14 +236,12 @@ msgid "_Open"
 msgstr "_Obre"
 
 #: ../menueditor/menueditor-main-window.c:142
-#, fuzzy
 msgid "Open existing menu"
-msgstr "Obre un menú predeterminat"
+msgstr "Obre un menú existent"
 
 #: ../menueditor/menueditor-main-window.c:143
-#, fuzzy
 msgid "Open _default menu"
-msgstr "Obre un menú predeterminat"
+msgstr "Obre el menú pre_determinat"
 
 #: ../menueditor/menueditor-main-window.c:143
 msgid "Open default menu"
@@ -258,99 +249,85 @@ msgstr "Obre un menú predeterminat"
 
 #: ../menueditor/menueditor-main-window.c:144
 msgid "_Save"
-msgstr ""
+msgstr "De_sa"
 
 #: ../menueditor/menueditor-main-window.c:144
-#, fuzzy
 msgid "Save modifications"
-msgstr "Descarta les modificacions"
+msgstr "Desa les modificacions"
 
 #: ../menueditor/menueditor-main-window.c:145
-#, fuzzy
 msgid "Save _as..."
-msgstr "Anomena i desa..."
+msgstr "_Anomena i desa..."
 
 #: ../menueditor/menueditor-main-window.c:145
 msgid "Save menu under a given name"
-msgstr ""
+msgstr "Desa el menú amb el nom donat"
 
 #: ../menueditor/menueditor-main-window.c:146
 msgid "_Close"
-msgstr ""
+msgstr "Tan_ca"
 
 #: ../menueditor/menueditor-main-window.c:146
-#, fuzzy
 msgid "Close menu"
-msgstr "Tanca el menú actual"
+msgstr "Tanca el menú"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "_Quit"
-msgstr "Surt"
+msgstr "S_urt"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "Quit Xfce4-Menueditor"
-msgstr "Editor del menú Xfce4"
+msgstr "Surt del Xfce4-Menueditor"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
 msgstr "_Edita"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "_Edit entry"
-msgstr "Edita una entrada del menú"
+msgstr "_Edita una entrada"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "Edit selected entry"
-msgstr "Edita una entrada del menú"
+msgstr "Edita l’entrada seleccionada"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "_Add entry"
-msgstr "Afegeix una entrada al menú"
+msgstr "_Afegeix una entrada"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "Add a new entry in the menu"
-msgstr "Afegeix una entrada al menú"
+msgstr "Afegeix una nova entrada al menú"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add _external"
-msgstr "Afegeix menú extern"
+msgstr "Afegeix _externa"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add an external entry"
-msgstr "Afegeix menú extern"
+msgstr "Afegeix una entrada externa"
 
 #: ../menueditor/menueditor-main-window.c:153
 msgid "_Remove entry"
-msgstr ""
+msgstr "Sup_rimeix l’entrada"
 
 #: ../menueditor/menueditor-main-window.c:153
-#, fuzzy
 msgid "Remove entry"
-msgstr "Afegeix una entrada al menú"
+msgstr "Suprimeix una entrada"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "_Up"
-msgstr ""
+msgstr "Am_unt"
 
 #: ../menueditor/menueditor-main-window.c:154
-#, fuzzy
 msgid "Move entry up"
 msgstr "Mou l'entrada actual cap amunt"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "_Down"
-msgstr ""
+msgstr "Aval_l"
 
 #: ../menueditor/menueditor-main-window.c:155
-#, fuzzy
 msgid "Move entry down"
 msgstr "Mou l'entrada actual cap avall"
 
@@ -363,29 +340,24 @@ msgid "_About..."
 msgstr "_Quant a..."
 
 #: ../menueditor/menueditor-main-window.c:158
-#, fuzzy
 msgid "Show informations about xfce4-menueditor"
-msgstr "No s'ha pogut llançar xfce4-menueditor: %s"
+msgstr "Mostra informació quan a xfce4-menueditor"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all"
-msgstr "Redueix l'arbre"
+msgstr "Redueix tot"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all menu entries"
-msgstr "Redueix l'arbre"
+msgstr "Redueix totes les entrades del menú"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all"
-msgstr "_Obre all"
+msgstr "Expandeix tot"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all menu entries"
-msgstr "Expandeix l'arbre"
+msgstr "Expandeix totes les entrades del menú"
 
 #: ../menueditor/menueditor-main-window.c:341
 msgid "Name"
@@ -433,9 +405,8 @@ msgid "Do you want to save before opening the default menu ?"
 msgstr "Voleu desar abans d'obrir el menú predeterminat?"
 
 #: ../menueditor/menueditor-main-window.c:594
-#, fuzzy
 msgid "Save menu file as"
-msgstr "Obre un fitxer de menú"
+msgstr "Desa el fitxer de menú com"
 
 #: ../menueditor/menueditor-main-window.c:632
 #: ../menueditor/menueditor-main-window.c:1341
@@ -475,7 +446,7 @@ msgstr "Un editor de menú per Xfce4"
 #. Credits
 #: ../menueditor/menueditor-main-window.c:1296
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "Autor/Mantenidor"
 
 #: ../menueditor/menueditor-main-window.c:1297
 #: ../menueditor/menueditor-main-window.c:1298
@@ -492,7 +463,6 @@ msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "Heu modificat el menú, Voleu desar-lo abans de tancar?"
 
 #: ../menueditor/menueditor-main-window.c:1345
-#, fuzzy
 msgid "Forget modifications"
 msgstr "Ignora les modificacions"
 
@@ -591,17 +561,16 @@ msgstr "Mostra _icones al menú"
 
 #: ../panel-plugin/desktop-menu-plugin.c:953
 msgid "There is already a panel menu registered for this screen"
-msgstr ""
+msgstr "Ja hi ha un menú pel quadre a aquesta pantalla"
 
 #: ../panel-plugin/desktop-menu-plugin.c:1061
-#, fuzzy
 msgid "Edit Menu"
-msgstr "_Edita Menú"
+msgstr "Edita menú"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
 msgid "Button Label|Desktop"
-msgstr ""
+msgstr "Etiqueta de botó|Escriptori"
 
 #: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
 #: ../settings/backdrop-list-manager.c:631
@@ -695,9 +664,8 @@ msgstr "N_o tornis a mostrar-ho"
 
 #. the dialog
 #: ../settings/appearance-settings.c:911
-#, fuzzy
 msgid "Desktop Preferences"
-msgstr "Paràmetres de l'escriptoris"
+msgstr "Paràmetres de l'escriptori"
 
 #: ../settings/appearance-settings.c:928
 msgid "Allow _Xfce to manage the desktop"
@@ -889,9 +857,9 @@ msgid "    Desktop Icons:       %s\n"
 msgstr "Icones de l'escriptori:      %s\n"
 
 #: ../src/main.c:271
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "Icones de l'escriptori:      %s\n"
+msgstr "    Icones de l'escriptori:      %s\n"
 
 #: ../src/main.c:298
 #, c-format
@@ -903,34 +871,28 @@ msgid "Options are:\n"
 msgstr "Són opcions:\n"
 
 #: ../src/main.c:300
-#, fuzzy
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    -reload      Refresca tots els paràmetres, refresca el llistat "
-"d'imatges\n"
+msgstr "    --reload      Refresca tots els paràmetres, refresca el llistat d'imatges\n"
 
 #: ../src/main.c:301
-#, fuzzy
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    -menu           Alça un menú sobre la posicó del ratolí\n"
+msgstr "    --menu           Alça un menú sobre la posicó del ratolí\n"
 
 #: ../src/main.c:302
-#, fuzzy
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
-"   -windowlist          Alça el llistat de finestres sobre la posició del "
-"ratolí\n"
+"   --windowlist          Alça el llistat de finestres sobre la posició del\n"
+"                         ratolí\n"
 
 #: ../src/main.c:303
-#, fuzzy
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "   -quit        Tanca Xfdesktop\n"
+msgstr "   --quit        Tanca Xfdesktop\n"
 
 #: ../src/main.c:318
 #, c-format
 msgid "%s is not running.\n"
-msgstr ""
+msgstr "No s’està executant %s.\n"
 
 #: ../src/windowlist.c:218
 #, c-format
@@ -964,7 +926,7 @@ msgstr "Escriptori"
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
+msgstr "No s’ha pogut crear el directori «%s» per desar elements de l’escriptori:"
 
 #: ../src/xfdesktop-file-icon-manager.c:246
 #: ../src/xfdesktop-file-icon-manager.c:255
@@ -977,11 +939,11 @@ msgstr "No s'ha pogut crear el directori"
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
-msgstr ""
+msgstr "No s’ha pogut usar «%s» per retenir els elements de l’escriptori perquè no és un directori."
 
 #: ../src/xfdesktop-file-icon-manager.c:257
 msgid "Please delete or rename the file."
-msgstr ""
+msgstr "Si us plau esborri o canvii el nom al fitxer."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:364
@@ -1069,7 +1031,7 @@ msgstr "No s'ha crear el directori anomenat \"%s\":"
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr ""
+msgstr "No s’ha pogut llançar «exo-desktop-item-edit», el qual s’ha de menester per crear i editar els llançadors i enllaços a l’escriptori."
 
 #: ../src/xfdesktop-file-icon-manager.c:963
 msgid "Create New Folder"
@@ -1108,14 +1070,13 @@ msgid "New Empty File"
 msgstr "Fitxer buit nou"
 
 #: ../src/xfdesktop-file-icon-manager.c:1102
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file \"%s\":"
-msgstr "No s'ha pogut crear el fitxer anomenat \"%s\":"
+msgstr "No s'ha pogut crear el fitxer \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1103
-#, fuzzy
 msgid "Create Error"
-msgstr "Error a les propietats"
+msgstr "Error a la creació"
 
 #: ../src/xfdesktop-file-icon-manager.c:1387
 msgid "_Open all"
@@ -1126,9 +1087,8 @@ msgid "_Execute"
 msgstr "_Executa"
 
 #: ../src/xfdesktop-file-icon-manager.c:1434
-#, fuzzy
 msgid "_Edit Launcher"
-msgstr "Llançador"
+msgstr "_Edita llançador"
 
 #: ../src/xfdesktop-file-icon-manager.c:1474
 msgid "Open With"
@@ -1148,37 +1108,32 @@ msgid "_Properties..."
 msgstr "_Propietats..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1637
-#, fuzzy
 msgid "Des_ktop"
-msgstr "Escriptori"
+msgstr "Es_criptori"
 
 #: ../src/xfdesktop-file-icon-manager.c:1656
-#, fuzzy
 msgid "Create _Launcher..."
-msgstr "Llançador"
+msgstr "Crea _llançador"
 
 #: ../src/xfdesktop-file-icon-manager.c:1677
 msgid "Create _URL Link..."
-msgstr ""
+msgstr "Crea enllaç _URL…"
 
 #: ../src/xfdesktop-file-icon-manager.c:1694
-#, fuzzy
 msgid "Create _Folder..."
-msgstr "Crea un directori"
+msgstr "Crea un _directori…"
 
 #: ../src/xfdesktop-file-icon-manager.c:1736
 msgid "_Empty File"
 msgstr "Fitx_er buit"
 
 #: ../src/xfdesktop-file-icon-manager.c:1777
-#, fuzzy
 msgid "Desktop _Settings..."
-msgstr "Paràmetres de l'escriptoris"
+msgstr "Paràmetres de l'e_scriptori…"
 
 #: ../src/xfdesktop-file-icon-manager.c:1786
-#, fuzzy
 msgid "_Desktop Properties..."
-msgstr "_Propietats..."
+msgstr "Propietats _de l’escriptori…"
 
 #: ../src/xfdesktop-file-icon-manager.c:2794
 #: ../src/xfdesktop-regular-file-icon.c:349
@@ -1279,22 +1234,22 @@ msgstr "Altres:"
 
 #: ../src/xfdesktop-file-utils.c:71
 msgid "Yes to _all"
-msgstr ""
+msgstr "Si _a tot"
 
 #: ../src/xfdesktop-file-utils.c:103
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr "Hi ha hagut un error %s \"%s\" a \"%s\""
+msgstr "S’ha produit un error en moure «%s» a «%s»:"
 
 #: ../src/xfdesktop-file-utils.c:106
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr "Hi ha hagut un error %s \"%s\" a \"%s\""
+msgstr "S’ha produit un error en copiar «%s» a «%s»:"
 
 #: ../src/xfdesktop-file-utils.c:109
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr "Hi ha hagut un error %s \"%s\" a \"%s\""
+msgstr "S’ha produit un error en enllaçar «%s» a «%s»:"
 
 #: ../src/xfdesktop-file-utils.c:118
 msgid "File Error"
@@ -1317,6 +1272,9 @@ msgid ""
 "Modified:%s\n"
 "Size: %s"
 msgstr ""
+"Tipus: %s\n"
+"Modificat: %s\n"
+"Tamany: %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:530
 #, c-format
@@ -1325,34 +1283,31 @@ msgstr "No s'ha pogut canviar el nom de \"%s\" a \"%s\":"
 
 #: ../src/xfdesktop-special-file-icon.c:233
 msgid "Home"
-msgstr ""
+msgstr "Inici"
 
 #: ../src/xfdesktop-special-file-icon.c:437
-#, fuzzy
 msgid "Unable to open the trash."
-msgstr "No s'ha pogut muntar \"%s\":"
+msgstr "No s’ha pogut obrir la paperera."
 
 #: ../src/xfdesktop-special-file-icon.c:438
 msgid ""
 "Viewing the contents of the trash requires a file manager that supports the "
 "Xfce trash service, such as Thunar."
-msgstr ""
+msgstr "Per veure el contingut de la paperera es necessita algun gestor de fitxers que suporti la paperara d’Xfce, com per exemple Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:466
-#, fuzzy
 msgid "Unable to empty the trash."
-msgstr "No s'ha pogut tancar la sessió"
+msgstr "No s'ha pogut buidar la paperera."
 
 #: ../src/xfdesktop-special-file-icon.c:467
 msgid ""
 "Emptying the trash requires a file manager that supports the Xfce trash "
 "service, such as Thunar."
-msgstr ""
+msgstr "Per buidar la paperera es necessita algun gestor de fitxers que suporti la paperara d’Xfce, com per exemple Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:499
-#, fuzzy
 msgid "_Empty Trash"
-msgstr "Fitx_er buit"
+msgstr "Buida la pap_erera"
 
 #: ../src/xfdesktop-volume-icon.c:438 ../src/xfdesktop-volume-icon.c:496
 #, c-format
@@ -1382,9 +1337,8 @@ msgid "Eject Failed"
 msgstr "No s'ha pogut expulsar"
 
 #: ../src/xfdesktop-volume-icon.c:502
-#, fuzzy
 msgid "Unknown error."
-msgstr "Error desconegut"
+msgstr "Error desconegut."
 
 #: ../src/xfdesktop-volume-icon.c:573
 msgid "_Mount Volume"
@@ -1395,9 +1349,8 @@ msgid "_Unmount Volume"
 msgstr "Desm_unta el volum"
 
 #: ../src/xfdesktop-volume-icon.c:598
-#, fuzzy
 msgid "E_ject Volume"
-msgstr "_Expulsa Volum"
+msgstr "_Expulsa el volum"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
@@ -1426,79 +1379,3 @@ msgstr "Paràmetres pel gestor d'escriptori Xfce4"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Paràmetres de l'escriptori Xfce4"
-
-#~ msgid " Bytes)"
-#~ msgstr "Bytes)"
-
-#~ msgid "_Copy Files"
-#~ msgstr "_Copia els fitxers"
-
-#~ msgid "_Copy File"
-#~ msgstr "_Copia el fitxer"
-
-#~ msgid "Cu_t Files"
-#~ msgstr "Re_talla els fitxer"
-
-#~ msgid "Cu_t File"
-#~ msgstr "Re_talla el fitxer"
-
-#~ msgid "_Delete Files"
-#~ msgstr "S_uprimeix els fitxers"
-
-#~ msgid "_Delete File"
-#~ msgstr "S_uprimeix el fitxer"
-
-#, fuzzy
-#~ msgid "_Paste Files"
-#~ msgstr "Llista fitxers"
-
-#, fuzzy
-#~ msgid "Create _New"
-#~ msgstr "Crea un directori"
-
-#, fuzzy
-#~ msgid "_Folder..."
-#~ msgstr "Crea d_irectori"
-
-#, fuzzy
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "Esteu segur que voleu suprimir els següents \"%s\" fitxers?"
-
-#~ msgid "Core developer"
-#~ msgstr "Desenvolupador princpial"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "L'ordre no existeix"
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "S'han d'emplenar tots els camps per poder afegir un element."
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "El camp 'Nom' és necessari."
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "El camp 'Font' és necessari."
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "No es poden editar els separadors"
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "El fitxer %s no existeix"
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "Voleu moure aquest element al seu menú pare?"
-
-#~ msgid "Edit"
-#~ msgstr "Edita"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "Afegeix un menú extern..."
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "Obri un fitxer de menú Xfce4"
-
-#~ msgid "Save current menu"
-#~ msgstr "Desa el menú actual"
-
-#~ msgid "Delete the current entry"
-#~ msgstr "Suprimeix l'entrada actual"
