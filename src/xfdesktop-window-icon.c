@@ -360,7 +360,14 @@ xfdesktop_window_icon_menu_popup(XfdesktopIcon *icon)
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
     GtkWidget *menu = netk_create_window_action_menu(window_icon->priv->window);
+    NetkScreen *netk_screen;
+    gint screen_num;
+    GdkScreen *gscreen;
     
+    netk_screen = netk_window_get_screen(window_icon->priv->window);
+    screen_num = netk_screen_get_number(netk_screen);
+    gscreen = gdk_display_get_screen(gdk_display_get_default(), screen_num);
+    gtk_menu_set_screen(GTK_MENU(menu), gscreen);
     gtk_widget_show(menu);
     g_signal_connect(G_OBJECT(menu), "deactivate",
                      G_CALLBACK(xfdesktop_action_menu_deactivate_cb), NULL);
