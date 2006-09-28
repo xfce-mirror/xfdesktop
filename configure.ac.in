@@ -51,25 +51,55 @@ XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.3.99.1])
 XDT_CHECK_PACKAGE([LIBXFCE4MCS_CLIENT],  [libxfce4mcs-client-1.0], [4.3.99.1])
 XDT_XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.3.99.1])
 
-XDT_CHECK_OPTIONAL_PACKAGE([THUNAR_VFS], [thunar-vfs-1], [0.4.0], [thunar-vfs],
-    AC_HELP_STRING([--disable-thunar-vfs],
-                   [Disable the use Thunar's VFS layer to show the desktop folder (default=enabled)]))
-AM_CONDITIONAL([HAVE_THUNAR_VFS], [test "x$THUNAR_VFS_FOUND" = "xyes"])
+dnl do we want desktop icons at all?
+AC_ARG_ENABLE([desktop-icons],
+    [AC_HELP_STRING([--disable-desktop-icons],
+            [Do not compile in support for desktop icons (default=enabled)])],
+        [ac_cv_enable_desktop_icons=$enableval],
+        [ac_cv_enable_desktop_icons=yes])
+if test "x$ac_cv_enable_desktop_icons" = "xno"; then
+    enable_desktop_icons="no"
+else
+    enable_desktop_icons="yes"
+    AC_DEFINE([ENABLE_DESKTOP_ICONS], [1], [Set if desktop icon support is enabled])
+fi
+AM_CONDITIONAL([ENABLE_DESKTOP_ICONS], [test "x$enable_desktop_icons" = "xyes"])
 
-dnl file icons requires dbus as well
-if test "x$THUNAR_VFS_FOUND" = "xyes"; then
-    XDT_CHECK_PACKAGE([DBUS], [dbus-glib-1], [0.34])
+dnl if we want desktop icons, do we also want file icons?
+AC_ARG_ENABLE([file-icons],
+    [AC_HELP_STRING([--disable-file-icons],
+            [Do not compile in support for desktop file icons (default=enabled)])],
+        [ac_cv_enable_file_icons=$enableval],
+        [ac_cv_enable_file_icons=yes])
+if test "x$ac_cv_enable_file_icons" = "xno" -o "x$enable_desktop_icons" != "xyes"; then
+    enable_file_icons="no"
+else
+    enable_file_icons="yes"
 fi
 
+if test "x$enable_desktop_icons" = "xyes" -a "x$enable_file_icons" = "xyes"; then
+    dnl here i shall abuse the XDT_CHECK_PACKAGE macro
+    XDT_CHECK_PACKAGE([THUNAR_VFS], [thunar-vfs-1], [0.4.0], [], [true])
+    XDT_CHECK_PACKAGE([DBUS], [dbus-glib-1], [0.34], [], [true])
+    if test "x$THUNAR_VFS_VERSION" != "x" -a "x$DBUS_VERSION" != "x"; then
+        AC_DEFINE([ENABLE_FILE_ICONS], [1],
+                  [Define if file icons should be enabled])
+    else
+        enable_file_icons="no"
+    fi
+fi
+
+AM_CONDITIONAL([ENABLE_FILE_ICONS], [test "x$enable_file_icons" = "xyes"])
+
+
+dnl i'd rather have these two only checked conditionally, but this macro also
+dnl calls AM_CONDITIONAL(), which cannot be in an 'if' block
+
 XDT_CHECK_OPTIONAL_PACKAGE([THUNARX], [thunarx-1], [0.4.0], [thunarx],
-    AC_HELP_STRING([--disable-thunarx],
-                   [Disable the use of Thunar's extension mechanism to add external features to the desktop icon implementation (default=enabled)]))
-
+    [Whether to use Thunar's extension mechanism to add external features to the desktop icon implementation])
 XDT_CHECK_OPTIONAL_PACKAGE([LIBEXO], [exo-0.3], [0.3.1.10], [exo],
-    AC_HELP_STRING([--disable-exo],
-                   [Disable the use of libexo for nifty icon effects (default=enabled)]))
+    [Whether to use libexo for nifty icon effects])
 
-dnl Build options
 AC_ARG_ENABLE([menu-editor],
         AC_HELP_STRING([--disable-menueditor],
                 [Do not build the menueditor (default=enabled)]),
@@ -110,19 +140,6 @@ else
 fi
 AM_CONDITIONAL([BUILD_PANEL_PLUGIN], [test "x$build_panel_plugin" = "xyes"])
 
-AC_ARG_ENABLE([desktop-icons],
-    [AC_HELP_STRING([--disable-desktop-icons],
-            [Do not compile in support for desktop icons (default=enabled)])],
-        [ac_cv_enable_desktop_icons=$enableval],
-        [ac_cv_enable_desktop_icons=yes])
-if test "x$ac_cv_enable_desktop_icons" = "xno"; then
-    enable_desktop_icons="no"
-else
-    enable_desktop_icons="yes"
-    AC_DEFINE([ENABLE_DESKTOP_ICONS], [1], [Set if desktop icon support is enabled])
-fi
-AM_CONDITIONAL([ENABLE_DESKTOP_ICONS], [test "x$enable_desktop_icons" = "xyes"])
-
 AC_ARG_WITH([file-manager-fallback],
     [AC_HELP_STRING([--with-file-manager-fallback=PATH],
             [Default file manager fallback to handle external folders and applications (default=Thunar)])],
@@ -162,4 +179,5 @@ echo "  Build menu editor:                            $build_menueditor"
 echo "  Build desktop menu module:                    $build_desktop_menu"
 echo "  Build desktop menu panel plugin:              $build_panel_plugin"
 echo "  Build support for desktop icons:              $enable_desktop_icons"
+echo "      Include support for file/launcher icons:  $enable_file_icons"
 echo

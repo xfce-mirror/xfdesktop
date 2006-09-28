@@ -77,27 +77,32 @@ xfdesktop_LDADD += \
 
 
 if ENABLE_DESKTOP_ICONS
-  xfdesktop_SOURCES += $(desktop_icon_sources)
 
-if HAVE_THUNAR_VFS
-    xfdesktop_SOURCES += $(desktop_file_icon_sources)
-endif
+xfdesktop_SOURCES += $(desktop_icon_sources)
 
 xfdesktop_CFLAGS += \
 	-DEXO_API_SUBJECT_TO_CHANGE \
+	$(LIBEXO_CFLAGS)
+
+xfdesktop_LDADD += \
+	$(LIBEXO_LIBS)
+
+
+if ENABLE_FILE_ICONS
+
+xfdesktop_SOURCES += $(desktop_file_icon_sources)
+
+xfdesktop_CFLAGS += \
 	-DDBUS_API_SUBJECT_TO_CHANGE \
-	$(LIBEXO_CFLAGS) \
 	$(THUNAR_VFS_CFLAGS) \
 	$(THUNARX_CFLAGS) \
 	$(DBUS_CFLAGS)
 
 xfdesktop_LDADD += \
-	$(LIBEXO_LIBS) \
 	$(THUNAR_VFS_LIBS) \
 	$(THUNARX_LIBS) \
 	$(DBUS_LIBS)
 
-if HAVE_THUNAR_VFS
 if MAINTAINER_MODE
 
 BUILT_SOURCES = \
@@ -115,7 +120,6 @@ xfdesktop-dbus-bindings-trash.h: $(srcdir)/xfdesktop-dbus-bindings-trash.xml Mak
 
 endif
 endif
-
 endif
 
 EXTRA_DIST = $(desktop_icon_sources) $(desktop_file_icon_sources)
