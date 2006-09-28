@@ -64,7 +64,7 @@
 #ifdef ENABLE_DESKTOP_ICONS
 #include "xfdesktop-icon-view.h"
 #include "xfdesktop-window-icon-manager.h"
-# ifdef HAVE_THUNAR_VFS
+# ifdef ENABLE_FILE_ICONS
 # include "xfdesktop-file-icon-manager.h"
 # include "xfdesktop-special-file-icon.h"
 # endif
@@ -164,7 +164,7 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
             manager = xfdesktop_window_icon_manager_new(desktop->priv->gscreen);
             break;
         
-#ifdef HAVE_THUNAR_VFS
+#ifdef ENABLE_FILE_ICONS
         case XFCE_DESKTOP_ICON_STYLE_FILES:
             {
                 ThunarVfsPath *path;
@@ -803,7 +803,7 @@ xfce_desktop_set_icon_style(XfceDesktop *desktop,
         desktop->priv->icon_view = NULL;
     }
     
-#ifdef HAVE_THUNAR_VFS
+#ifdef ENABLE_FILE_ICONS
     if(XFCE_DESKTOP_ICON_STYLE_FILES == desktop->priv->icons_style)
         thunar_vfs_shutdown();
     else if(XFCE_DESKTOP_ICON_STYLE_FILES == style)

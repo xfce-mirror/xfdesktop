@@ -49,7 +49,7 @@
 #include <libxfce4mcs/mcs-client.h>
 #include <libxfcegui4/libxfcegui4.h>
 
-#ifdef HAVE_THUNAR_VFS
+#ifdef ENABLE_FILE_ICONS
 #include <dbus/dbus-glib.h>
 #endif
 
@@ -245,7 +245,7 @@ main(int argc, char **argv)
     /* bind gettext textdomain */
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     
-#if defined(ENABLE_DESKTOP_ICONS) && defined(HAVE_THUNAR_VFS)
+#ifdef ENABLE_FILE_ICONS
     g_thread_init(NULL);
     dbus_g_thread_init();
 #endif
@@ -274,7 +274,7 @@ main(int argc, char **argv)
 #endif
                 );
         g_print(_("    Desktop File Icons:  %s\n"),
-#ifdef HAVE_THUNAR_VFS
+#ifdef ENABLE_FILE_ICONS
                 _("enabled")
 #else
                 _("disabled")
