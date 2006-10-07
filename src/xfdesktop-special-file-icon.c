@@ -88,6 +88,9 @@ static void xfdesktop_special_file_icon_tfi_init(ThunarxFileInfoIface *iface);
 
 
 static inline void xfdesktop_special_file_icon_invalidate_pixbuf(XfdesktopSpecialFileIcon *icon);
+static void xfdesktop_special_file_icon_trash_changed_cb(DBusGProxy *proxy,
+                                                         gboolean trash_full,
+                                                         gpointer user_data);
 
 
 #ifdef HAVE_THUNARX
@@ -148,6 +151,13 @@ xfdesktop_special_file_icon_finalize(GObject *obj)
     
     if(icon->priv->tooltip)
         g_free(icon->priv->tooltip);
+    
+    if(icon->priv->dbus_proxy) {
+        dbus_g_proxy_disconnect_signal(icon->priv->dbus_proxy, "TrashChanged",
+                                       G_CALLBACK(xfdesktop_special_file_icon_trash_changed_cb),
+                                       icon);
+        g_object_unref(G_OBJECT(icon->priv->dbus_proxy));
+    }
     
     G_OBJECT_CLASS(xfdesktop_special_file_icon_parent_class)->finalize(obj);
 }
