@@ -2878,7 +2878,13 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                     base_dest_path = thunar_vfs_path_ref(fmanager->priv->folder);
                 
                 for(l = path_list; l; l = l->next) {
-                    name = thunar_vfs_path_get_name((ThunarVfsPath *)l->data);
+                    ThunarVfsPath *path = (ThunarVfsPath *)l->data;
+                    
+                    /* only work with file:// URIs here */
+                    if(thunar_vfs_path_get_scheme(path) != THUNAR_VFS_PATH_SCHEME_FILE)
+                        continue;
+                    
+                    name = thunar_vfs_path_get_name(path);
                     dest_path = thunar_vfs_path_relative(base_dest_path,
                                                          name);
                     dest_path_list = g_list_prepend(dest_path_list, dest_path);
@@ -2886,12 +2892,16 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                 thunar_vfs_path_unref(base_dest_path);
                 dest_path_list = g_list_reverse(dest_path_list);
                 
-                if(context->suggested_action == GDK_ACTION_LINK && !dest_is_trash)
-                    job = thunar_vfs_link_files(path_list, dest_path_list, NULL);
-                else if(copy_only && !dest_is_trash)
-                    job = thunar_vfs_copy_files(path_list, dest_path_list, NULL);
-                else
-                    job = thunar_vfs_move_files(path_list, dest_path_list, NULL);
+                if(dest_path_list) {
+                    if(context->suggested_action == GDK_ACTION_LINK && !dest_is_trash)
+                        job = thunar_vfs_link_files(path_list, dest_path_list, NULL);
+                    else if(copy_only && !dest_is_trash)
+                        job = thunar_vfs_copy_files(path_list, dest_path_list, NULL);
+                    else
+                        job = thunar_vfs_move_files(path_list, dest_path_list, NULL);
+                    
+                    thunar_vfs_path_list_free(dest_path_list);
+                }
                 
                 if(job) {
                     drop_ok = TRUE;
@@ -2913,8 +2923,6 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                     g_signal_connect(G_OBJECT(job), "finished",
                                      G_CALLBACK(g_object_unref), NULL);
                 }
-                
-                thunar_vfs_path_list_free(dest_path_list);
             }
             
             thunar_vfs_path_list_free(path_list);
