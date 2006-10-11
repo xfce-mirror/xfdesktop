@@ -607,8 +607,11 @@ xfdesktop_special_file_icon_query_trash_cb(DBusGProxy *proxy,
         xfdesktop_special_file_icon_trash_handle_error(icon->priv->gscreen,
                                                        "QueryTrash",
                                                        error->message);
-    } else
+    } else {
         icon->priv->trash_full = trash_full;
+        xfdesktop_special_file_icon_invalidate_pixbuf(icon);
+        xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
+    }
 }
 
 
