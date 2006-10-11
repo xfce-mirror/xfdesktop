@@ -314,6 +314,73 @@ xfdesktop_file_icon_manager_icon_view_manager_init(XfdesktopIconViewManagerIface
 }
 
 
+/* FIXME: remove this before 4.4.0; leave it for now to migrate older beta
+* installs from the old location */
+static void
+__migrate_old_icon_positions(XfdesktopFileIconManager *fmanager)
+{
+    gchar relpath[PATH_MAX], *old_file;
+    
+    g_snprintf(relpath, PATH_MAX, "xfce4/desktop/icons.screen%d.rc",
+               gdk_screen_get_number(fmanager->priv->gscreen));
+    
+    old_file = xfce_resource_save_location(XFCE_RESOURCE_CACHE, relpath, FALSE);
+    
+    if(G_UNLIKELY(old_file) && g_file_test(old_file, G_FILE_TEST_EXISTS)) {
+        gchar *new_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
+                                                      relpath, FALSE);
+        if(G_LIKELY(new_file)) {
+            if(rename(old_file, new_file)) {
+                /* grumble, have to do this the hard way */
+                gchar *contents = NULL;
+                gsize length = 0;
+                GError *error = NULL;
+                
+                if(g_file_get_contents(old_file, &contents, &length, &error)) {
+#if GLIB_CHECK_VERSION(2, 8, 0)
+                    if(!g_file_set_contents(new_file, contents, length,
+                                            &error))
+                    {
+                        g_critical("Unable to write to %s: %s", new_file,
+                                   error->message);
+                        g_error_free(error);
+                    }
+#else
+                    FILE *fp = fopen(new_file, "w");
+                    gboolean success = FALSE;
+                    if(fp) {
+                        success = (fwrite(contents, 1, length, fp) == length);
+                        success = !fclose(fp);
+                    }
+                    
+                    if(!success) {
+                        g_critical("Unable to write to %s: %s", new_file,
+                                   strerror(errno));
+                    }
+#endif
+                    
+                    g_free(contents);
+                } else {
+                    g_critical("Unable to read from %s: %s", old_file,
+                               error->message);
+                    g_error_free(error);
+                }
+            }
+        } else
+            g_critical("Unable to migrate icon position file to new location.");
+        
+        /* i debate removing the old file even if the migration failed,
+         * but i think this is the best way to avoid bug reports that
+         * aren't my problem. */
+        unlink(old_file);
+        
+        g_free(new_file);
+    }
+    
+    g_free(old_file);
+}
+
+
 /* icon signal handlers */
 
 static void
@@ -1816,7 +1883,7 @@ xfdesktop_file_icon_manager_save_icons(gpointer user_data)
     g_snprintf(relpath, PATH_MAX, "xfce4/desktop/icons.screen%d.rc",
                gdk_screen_get_number(fmanager->priv->gscreen));
     
-    rcfile = xfce_rc_config_open(XFCE_RESOURCE_CACHE, relpath, FALSE);
+    rcfile = xfce_rc_config_open(XFCE_RESOURCE_CONFIG, relpath, FALSE);
     if(!rcfile) {
         g_critical("Unable to determine location of icon position cache file.  " \
                    "Icon positions will not be saved.");
@@ -1850,10 +1917,8 @@ xfdesktop_file_icon_position_changed(XfdesktopFileIcon *icon,
     if(fmanager->priv->save_icons_id)
         g_source_remove(fmanager->priv->save_icons_id);
     
-    DBG("***!!!*** before: icons_to_save = %p", fmanager->priv->icons_to_save);
     fmanager->priv->icons_to_save = g_list_prepend(fmanager->priv->icons_to_save,
                                                    g_object_ref(G_OBJECT(icon)));
-    DBG("***!!!*** after: icons_to_save = %p", fmanager->priv->icons_to_save);
     
     fmanager->priv->save_icons_id = g_timeout_add(SAVE_DELAY,
                                                   xfdesktop_file_icon_manager_save_icons,
@@ -1875,7 +1940,7 @@ xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *f
     
     g_snprintf(relpath, PATH_MAX, "xfce4/desktop/icons.screen%d.rc",
                gdk_screen_get_number(fmanager->priv->gscreen));
-    rcfile = xfce_rc_config_open(XFCE_RESOURCE_CACHE, relpath, TRUE);
+    rcfile = xfce_rc_config_open(XFCE_RESOURCE_CONFIG, relpath, TRUE);
     if(rcfile) {
         if(xfce_rc_has_group(rcfile, name)) {
             xfce_rc_set_group(rcfile, name);
@@ -2496,6 +2561,9 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     fmanager->priv->icon_view = icon_view;
     
     fmanager->priv->gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
+    
+    /* FIXME: remove for 4.4.0 */
+    __migrate_old_icon_positions(fmanager);
     
     if(!clipboard_manager) {
         GdkDisplay *gdpy = gdk_screen_get_display(fmanager->priv->gscreen);
