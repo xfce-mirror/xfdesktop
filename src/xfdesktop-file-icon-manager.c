@@ -2006,6 +2006,7 @@ xfdesktop_file_icon_manager_add_regular_icon(XfdesktopFileIconManager *fmanager,
     
     g_return_val_if_fail(fmanager && info, NULL);
     
+    /* should never return NULL */
     icon = xfdesktop_regular_file_icon_new(info, fmanager->priv->gscreen);
     
     if(xfdesktop_file_icon_manager_add_icon(fmanager,
@@ -2029,6 +2030,7 @@ xfdesktop_file_icon_manager_add_volume_icon(XfdesktopFileIconManager *fmanager,
     
     g_return_val_if_fail(fmanager && volume, NULL);
     
+    /* should never return NULL */
     icon = xfdesktop_volume_icon_new(volume, fmanager->priv->gscreen);
     
     if(xfdesktop_file_icon_manager_add_icon(fmanager,
@@ -2050,6 +2052,7 @@ xfdesktop_file_icon_manager_add_special_file_icon(XfdesktopFileIconManager *fman
 {
     XfdesktopSpecialFileIcon *icon;
     
+    /* can return NULL if it's the trash icon and dbus isn't around */
     icon = xfdesktop_special_file_icon_new(type, fmanager->priv->gscreen);
     if(!icon)
         return NULL;
