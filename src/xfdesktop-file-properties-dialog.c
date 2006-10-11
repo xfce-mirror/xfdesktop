@@ -124,6 +124,7 @@ xfdesktop_file_properties_dialog_show(GtkWindow *parent,
     gint row = 0, w, h;
     PangoFontDescription *pfd;
     gchar *str = NULL, buf[64];
+    const gchar *rname;
     gboolean is_link = FALSE;
     struct tm *tm;
     const ThunarVfsInfo *info;
@@ -453,10 +454,14 @@ xfdesktop_file_properties_dialog_show(GtkWindow *parent,
     gtk_table_attach(GTK_TABLE(table), lbl, 0, 1, row, row + 1,
                      GTK_FILL, GTK_FILL, 0, 0);
     
-    str = g_strdup_printf("%s (%s)", thunar_vfs_user_get_real_name(user),
-                          thunar_vfs_user_get_name(user));
+    rname = thunar_vfs_user_get_real_name(user);
+    if(rname)
+        str = g_strdup_printf("%s (%s)", rname, thunar_vfs_user_get_name(user));
+    else
+        str = (gchar *)thunar_vfs_user_get_name(user);
     lbl = gtk_label_new(str);
-    g_free(str);
+    if(rname)
+        g_free(str);
     gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
     gtk_widget_show(lbl);
     gtk_table_attach(GTK_TABLE(table), lbl, 1, 2, row, row + 1,
