@@ -502,7 +502,9 @@ xfdesktop_volume_icon_menu_open(GtkWidget *widget,
                                                            : _("Unknown error."),
                                                      GTK_STOCK_CLOSE,
                                                      GTK_RESPONSE_ACCEPT, NULL);
-            gtk_window_set_screen(GTK_WINDOW(dlg), icon->priv->gscreen);
+            gtk_widget_unrealize(dlg);
+            xfce_gtk_window_center_on_monitor(GTK_WINDOW(dlg),
+                                              icon->priv->gscreen, 0);
             gtk_dialog_run(GTK_DIALOG(dlg));
             gtk_widget_destroy(dlg);
             g_free(primary);
@@ -541,7 +543,9 @@ xfdesktop_volume_icon_menu_open(GtkWidget *widget,
                                                  _("The associated application could not be found or executed."),
                                                  GTK_STOCK_CLOSE,
                                                  GTK_RESPONSE_ACCEPT, NULL);
-        gtk_window_set_screen(GTK_WINDOW(dlg), icon->priv->gscreen);
+        gtk_widget_unrealize(dlg);
+        xfce_gtk_window_center_on_monitor(GTK_WINDOW(dlg),
+                                          icon->priv->gscreen, 0);
         gtk_dialog_run(GTK_DIALOG(dlg));
         gtk_widget_destroy(dlg);
         g_free(primary);

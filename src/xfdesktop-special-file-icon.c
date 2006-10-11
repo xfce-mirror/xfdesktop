@@ -454,7 +454,8 @@ xfdesktop_special_file_icon_trash_handle_error(GdkScreen *gscreen,
                                              _("Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."),
                                              GTK_STOCK_CLOSE,
                                              GTK_RESPONSE_ACCEPT, NULL);
-    gtk_window_set_screen(GTK_WINDOW(dlg), gscreen);
+    gtk_widget_unrealize(dlg);
+    xfce_gtk_window_center_on_monitor(GTK_WINDOW(dlg), gscreen, 0);
     gtk_dialog_run(GTK_DIALOG(dlg));
     gtk_widget_destroy(dlg);
     
