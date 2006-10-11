@@ -106,6 +106,7 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopSpecialFileIcon, xfdesktop_special_file_icon,
                        XFDESKTOP_TYPE_FILE_ICON, 0,
                        G_IMPLEMENT_INTERFACE(XFDESKTOP_TYPE_ICON,
                                              xfdesktop_special_file_icon_icon_init)
+                       )
 #endif
 
 
