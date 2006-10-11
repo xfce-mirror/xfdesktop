@@ -40,6 +40,7 @@
 #include <thunarx/thunarx.h>
 #endif
 
+#include "xfdesktop-dbus-bindings-filemanager.h"
 #include "xfdesktop-file-icon.h"
 #include "xfdesktop-file-utils.h"
 
@@ -300,8 +301,8 @@ xfdesktop_file_utils_launch_external(const ThunarVfsInfo *info,
                                      GdkScreen *screen)
 {
     gboolean ret = FALSE;
-    gchar *folder_name, *display_name, *commandline;
-    gint status = 0;
+    gchar *folder_name, *display_name;
+    DBusGProxy *fileman_proxy;
     
     g_return_val_if_fail(info, FALSE);
     
@@ -311,24 +312,22 @@ xfdesktop_file_utils_launch_external(const ThunarVfsInfo *info,
     folder_name = thunar_vfs_path_dup_uri(info->path);
     display_name = gdk_screen_make_display_name(screen);
     
-    /* try the org.xfce.FileManager D-BUS interface first */
-    commandline = g_strdup_printf("dbus-send --print-reply --dest=org.xfce.FileManager "
-                                  "/org/xfce/FileManager org.xfce.FileManager.Launch "
-                                  "string:\"%s\" string:\"%s\"",
-                                  folder_name, display_name);
-    
-    ret = (g_spawn_command_line_sync(commandline, NULL, NULL, &status, NULL)
-           && status == 0);
-    g_free(commandline);
+    fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
+    if(fileman_proxy) {
+        /* i don't like doing this sync, but i don't want to break this
+         * function's return value */
+        ret = org_xfce_FileManager_launch(fileman_proxy, folder_name,
+                                          display_name, NULL);
+    }
 
     /* hardcoded fallback to a file manager if that didn't work */
     if(!ret) {
         gchar *file_manager_app = g_find_program_in_path(FILE_MANAGER_FALLBACK);
         
         if(file_manager_app) {
-            commandline = g_strconcat("env DISPLAY=\"", display_name, "\" \"",
-                                      file_manager_app, "\" \"", folder_name,
-                                      "\"", NULL);
+            gchar *commandline = g_strconcat("env DISPLAY=\"", display_name,
+                                             "\" \"", file_manager_app, "\" \"",
+                                             folder_name, "\"", NULL);
             
             DBG("executing:\n%s\n", commandline);
             
