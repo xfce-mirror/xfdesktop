@@ -2051,6 +2051,8 @@ xfdesktop_file_icon_manager_add_special_file_icon(XfdesktopFileIconManager *fman
     XfdesktopSpecialFileIcon *icon;
     
     icon = xfdesktop_special_file_icon_new(type, fmanager->priv->gscreen);
+    if(!icon)
+        return NULL;
     
     if(xfdesktop_file_icon_manager_add_icon(fmanager,
                                             XFDESKTOP_FILE_ICON(icon),
@@ -2612,6 +2614,9 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
                                                           NULL,
                                                           (GDestroyNotify)g_object_unref);
     
+    if(!xfdesktop_file_utils_dbus_init())
+        g_warning("Unable to initialise D-Bus.  Some xfdesktop features may be unavailable.");
+    
     for(i = 0; i <= XFDESKTOP_SPECIAL_FILE_ICON_TRASH; ++i) {
         if(fmanager->priv->show_special[i])
             xfdesktop_file_icon_manager_add_special_file_icon(fmanager, i);
@@ -2704,6 +2709,8 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
     
     g_hash_table_destroy(fmanager->priv->icons);
     fmanager->priv->icons = NULL;
+    
+    xfdesktop_file_utils_dbus_cleanup();
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(xfdesktop_icon_view_get_window_widget(fmanager->priv->icon_view)),
                                          G_CALLBACK(xfdesktop_file_icon_manager_key_press),

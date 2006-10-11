@@ -34,6 +34,8 @@
 
 #include <thunar-vfs/thunar-vfs.h>
 
+#include <dbus/dbus-glib-lowlevel.h>
+
 #ifdef HAVE_THUNARX
 #include <thunarx/thunarx.h>
 #endif
@@ -342,6 +344,74 @@ xfdesktop_file_utils_launch_external(const ThunarVfsInfo *info,
     return ret;
 }
 
+
+static gint dbus_ref_cnt = 0;
+static DBusGProxy *dbus_trash_proxy = NULL;
+static DBusGProxy *dbus_filemanager_proxy = NULL;
+
+gboolean
+xfdesktop_file_utils_dbus_init()
+{
+    DBusGConnection *dgconn;
+    gboolean ret = TRUE;
+    
+    if(dbus_ref_cnt++)
+        return TRUE;
+    
+    dgconn = dbus_g_bus_get(DBUS_BUS_SESSION, NULL);
+    
+    if(G_LIKELY(dgconn)) {
+        /* dbus's default is brain-dead */
+        DBusConnection *dconn = dbus_g_connection_get_connection(dgconn);
+        dbus_connection_set_exit_on_disconnect(dconn, FALSE);
+        
+        dbus_trash_proxy = dbus_g_proxy_new_for_name(dgconn,
+                                                     "org.xfce.FileManager",
+                                                     "/org/xfce/FileManager",
+                                                     "org.xfce.Trash");
+        dbus_g_proxy_add_signal(dbus_trash_proxy, "TrashChanged",
+                                G_TYPE_BOOLEAN, G_TYPE_INVALID);
+        
+        dbus_filemanager_proxy = dbus_g_proxy_new_for_name(dgconn,
+                                                           "org.xfce.FileManager",
+                                                           "/org/xfce/FileManager",
+                                                           "org.xfce.FileManager");
+        
+        /* the DBusGProxy (actually, its associated DBusGProxyManager) holds
+         * a reference to the DBusGConnection during its lifetime, so we
+         * don't have to hold a ref. */
+        dbus_g_connection_unref(dgconn);
+    } else {
+        ret = FALSE;
+        dbus_ref_cnt = 0;
+    }
+    
+    return ret;
+}
+
+DBusGProxy *
+xfdesktop_file_utils_peek_trash_proxy()
+{
+    return dbus_trash_proxy;
+}
+
+DBusGProxy *
+xfdesktop_file_utils_peek_filemanager_proxy()
+{
+    return dbus_filemanager_proxy;
+}
+
+void
+xfdesktop_file_utils_dbus_cleanup()
+{
+    if(dbus_ref_cnt == 0 || --dbus_ref_cnt > 0)
+        return;
+    
+    if(dbus_trash_proxy)
+        g_object_unref(G_OBJECT(dbus_trash_proxy));
+    if(dbus_filemanager_proxy)
+        g_object_unref(G_OBJECT(dbus_filemanager_proxy));
+}
 
 
 

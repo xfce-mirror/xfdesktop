@@ -41,10 +41,10 @@
 
 #include <libxfcegui4/libxfcegui4.h>
 
+#include <dbus/dbus-glib.h>
+
 #ifdef HAVE_THUNARX
 #include <thunarx/thunarx.h>
-#include <dbus/dbus-glib.h>
-#include <dbus/dbus-glib-lowlevel.h>
 #endif
 
 #include "xfdesktop-file-utils.h"
@@ -648,21 +648,10 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
     }
     
     if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH == type) {
-        DBusGConnection *dgconn = dbus_g_bus_get(DBUS_BUS_SESSION, NULL);
-        
-        if(G_LIKELY(dgconn)) {
-            /* dbus's default is brain-dead */
-            DBusConnection *dconn = dbus_g_connection_get_connection(dgconn);
-            dbus_connection_set_exit_on_disconnect(dconn, FALSE);
+        DBusGProxy *trash_proxy = xfdesktop_file_utils_peek_trash_proxy();
             
-            special_file_icon->priv->dbus_proxy = dbus_g_proxy_new_for_name(dgconn,
-                                                                            "org.xfce.FileManager",
-                                                                            "/org/xfce/FileManager",
-                                                                            "org.xfce.Trash");
-            
-            dbus_g_proxy_add_signal(special_file_icon->priv->dbus_proxy,
-                                    "TrashChanged", G_TYPE_BOOLEAN,
-                                    G_TYPE_INVALID);
+        if(G_LIKELY(trash_proxy)) {
+            special_file_icon->priv->dbus_proxy = g_object_ref(G_OBJECT(trash_proxy));
             dbus_g_proxy_connect_signal(special_file_icon->priv->dbus_proxy,
                                         "TrashChanged",
                                         G_CALLBACK(xfdesktop_special_file_icon_trash_changed_cb),
@@ -676,11 +665,6 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
                                                                "QueryTrash",
                                                                NULL);
             }
-            
-            /* the DBusGProxy (actually, its associated DBusGProxyManager) holds
-             * a reference to the DBusGConnection during its lifetime, so we
-             * don't have to hold a ref. */
-            dbus_g_connection_unref(dgconn);
         } else {
             /* we might as well just bail here */
             g_object_unref(G_OBJECT(special_file_icon));

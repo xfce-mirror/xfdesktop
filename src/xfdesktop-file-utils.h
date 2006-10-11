@@ -21,11 +21,12 @@
 #ifndef __XFDESKTOP_FILE_UTILS_H__
 #define __XFDESKTOP_FILE_UTILS_H__
 
+#include <thunar-vfs/thunar-vfs.h>
+#include <dbus/dbus-glib.h>
+
 #ifdef HAVE_THUNARX
 #include <thunarx/thunarx.h>
 #endif
-
-#include <thunar-vfs/thunar-vfs.h>
 
 #include "xfdesktop-file-icon.h"
 
@@ -69,6 +70,11 @@ GdkPixbuf *xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
 gboolean xfdesktop_file_utils_launch_external(const ThunarVfsInfo *info,
                                               GdkScreen *screen);
 
+
+gboolean xfdesktop_file_utils_dbus_init();
+DBusGProxy *xfdesktop_file_utils_peek_trash_proxy();
+DBusGProxy *xfdesktop_file_utils_peek_filemanager_proxy();
+void xfdesktop_file_utils_dbus_cleanup();
 
 
 
