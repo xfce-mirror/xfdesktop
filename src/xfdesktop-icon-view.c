@@ -1033,6 +1033,9 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         }
     }
     
+    if(!icon_on_dest && !xfdesktop_grid_is_free_position(icon_view, row, col))
+        return FALSE;
+    
     if(icon_view->priv->allow_overlapping_drops && !icon_on_dest
        && target == gdk_atom_intern("XFDESKTOP_ICON", FALSE)) {
         /* FIXME: support copy on desktop of file already on desktop?  need
@@ -1143,7 +1146,8 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     
     xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
     if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols
-       || (!icon_view->priv->allow_overlapping_drops
+       || ((!icon_view->priv->allow_overlapping_drops
+            || !xfdesktop_icon_view_icon_in_cell(icon_view, row, col))
            && !xfdesktop_grid_is_free_position(icon_view, row, col)))
     {
         gtk_drag_finish(context, FALSE, FALSE, time);
@@ -1287,6 +1291,8 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
     icon_view->priv->parent_window = gtk_widget_get_toplevel(widget);
     g_return_if_fail(icon_view->priv->parent_window);
     widget->window = icon_view->priv->parent_window->window;
+    
+    widget->style = gtk_style_attach(widget->style, widget->window);
     
     /* there's no reason to start up the manager before we're realized,
      * but we do NOT shut it down if we unrealize, since there may not be
