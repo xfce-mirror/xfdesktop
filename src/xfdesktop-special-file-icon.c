@@ -227,6 +227,18 @@ xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                 custom_icon_name = "user-home";
             else if(gtk_icon_theme_has_icon(icon_theme, "gnome-fs-desktop"))
                 custom_icon_name = "gnome-fs-desktop";
+        } else if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH == file_icon->priv->type) {
+            if(file_icon->priv->trash_full) {
+                if(gtk_icon_theme_has_icon(icon_theme, "user-trash-full"))
+                    custom_icon_name = "user-trash-full";
+                else if(gtk_icon_theme_has_icon(icon_theme, "gnome-fs-trash-full"))
+                    custom_icon_name = "gnome-fs-trash-full";
+            } else {
+                if(gtk_icon_theme_has_icon(icon_theme, "user-trash"))
+                    custom_icon_name = "user-trash";
+                else if(gtk_icon_theme_has_icon(icon_theme, "gnome-fs-trash-empty"))
+                    custom_icon_name = "gnome-fs-trash-empty";
+            }
         }
         
         file_icon->priv->pix = xfdesktop_file_utils_get_file_icon(custom_icon_name,
