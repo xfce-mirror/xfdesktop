@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-08-15 00:03-0700\n"
-"PO-Revision-Date: 2006-04-15 05:51+0900\n"
+"PO-Revision-Date: 2006-10-09 17:27+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
 "net>\n"
@@ -69,9 +69,8 @@ msgstr "명령:"
 #: ../menueditor/menueditor-add-dialog.c:191
 #: ../menueditor/menueditor-edit-dialog.c:166
 #: ../menueditor/menueditor-edit-dialog.c:167
-#, fuzzy
 msgid "Themed icon:"
-msgstr "아이콘 선택"
+msgstr "꾸며진 아이콘:"
 
 #: ../menueditor/menueditor-add-dialog.c:209
 #: ../menueditor/menueditor-add-dialog.c:210
@@ -126,32 +125,30 @@ msgstr "명령 선택"
 
 #: ../menueditor/menueditor-add-dialog.c:305
 #: ../menueditor/menueditor-edit-dialog.c:281
-#, fuzzy
 msgid "Executable Files"
-msgstr "추출 실패"
+msgstr "실행화일"
 
 #: ../menueditor/menueditor-add-dialog.c:320
 #: ../menueditor/menueditor-edit-dialog.c:296
 msgid "Perl Scripts"
-msgstr ""
+msgstr "펄 스크립트"
 
 #: ../menueditor/menueditor-add-dialog.c:326
 #: ../menueditor/menueditor-edit-dialog.c:302
 msgid "Python Scripts"
-msgstr ""
+msgstr "파이썬 스크립트"
 
 #: ../menueditor/menueditor-add-dialog.c:332
 #: ../menueditor/menueditor-edit-dialog.c:308
 msgid "Ruby Scripts"
-msgstr ""
+msgstr "루비 스크립트"
 
 #: ../menueditor/menueditor-add-dialog.c:338
 #: ../menueditor/menueditor-edit-dialog.c:314
 msgid "Shell Scripts"
-msgstr ""
+msgstr "쉘 스크립트"
 
 #: ../menueditor/menueditor-add-external-dialog.c:100
-#, fuzzy
 msgid "Add external menu entry"
 msgstr "외부 메뉴 추가"
 
@@ -173,9 +170,8 @@ msgstr "위치:"
 
 #: ../menueditor/menueditor-add-external-dialog.c:137
 #: ../menueditor/menueditor-edit-external-dialog.c:117
-#, fuzzy
 msgid "Select external menu"
-msgstr "외부 메뉴 추가"
+msgstr "외부 메뉴 선택"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
@@ -212,14 +208,12 @@ msgid "Edit menu entry"
 msgstr "메뉴 항목 수정"
 
 #: ../menueditor/menueditor-edit-external-dialog.c:96
-#, fuzzy
 msgid "Edit external menu entry"
-msgstr "외부 메뉴 추가"
+msgstr "외부 메뉴 편집"
 
 #: ../menueditor/menueditor-main.c:43
-#, fuzzy
 msgid "Xfce4-MenuEditor"
-msgstr "Xfce 메뉴 편집기"
+msgstr "Xfce4 메뉴 편집기"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -227,12 +221,11 @@ msgstr "화일(_F)"
 
 #: ../menueditor/menueditor-main-window.c:141
 msgid "_New"
-msgstr ""
+msgstr "새로운 화일(_N)"
 
 #: ../menueditor/menueditor-main-window.c:141
-#, fuzzy
 msgid "Create a new empty menu"
-msgstr "새로운 Xfce4 메뉴 화일을 만듭니다."
+msgstr "새로운 메뉴를 만듭니다."
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1402
@@ -241,14 +234,12 @@ msgid "_Open"
 msgstr "열기(_O)"
 
 #: ../menueditor/menueditor-main-window.c:142
-#, fuzzy
 msgid "Open existing menu"
-msgstr "기본 메뉴 열기"
+msgstr "메뉴 열기"
 
 #: ../menueditor/menueditor-main-window.c:143
-#, fuzzy
 msgid "Open _default menu"
-msgstr "기본 메뉴 열기"
+msgstr "기본 메뉴 열기(_d)"
 
 #: ../menueditor/menueditor-main-window.c:143
 msgid "Open default menu"
@@ -256,99 +247,85 @@ msgstr "기본 메뉴 열기"
 
 #: ../menueditor/menueditor-main-window.c:144
 msgid "_Save"
-msgstr ""
+msgstr "저장(_S)"
 
 #: ../menueditor/menueditor-main-window.c:144
-#, fuzzy
 msgid "Save modifications"
-msgstr "수정한 것 버리기"
+msgstr "수정한 것 저장"
 
 #: ../menueditor/menueditor-main-window.c:145
-#, fuzzy
 msgid "Save _as..."
-msgstr "다른 이름으로..."
+msgstr "다른 이름으로...(_a)"
 
 #: ../menueditor/menueditor-main-window.c:145
 msgid "Save menu under a given name"
-msgstr ""
+msgstr "현재 이름으로 메뉴 저장"
 
 #: ../menueditor/menueditor-main-window.c:146
 msgid "_Close"
-msgstr ""
+msgstr "닫기(_C)"
 
 #: ../menueditor/menueditor-main-window.c:146
-#, fuzzy
 msgid "Close menu"
-msgstr "현재 메뉴를 닫습니다."
+msgstr "메뉴를 닫습니다."
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "_Quit"
-msgstr "종료"
+msgstr "종료(_Q)"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "Quit Xfce4-Menueditor"
-msgstr "Xfce 메뉴 편집기"
+msgstr "Xfce 4 메뉴 편집기 종료"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
 msgstr "수정(_E)"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "_Edit entry"
-msgstr "메뉴 항목 수정"
+msgstr "메뉴 항목 수정(_E)"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "Edit selected entry"
-msgstr "메뉴 항목 수정"
+msgstr "선택한 메뉴 항목 수정"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "_Add entry"
-msgstr "메뉴 항목 추가"
+msgstr "메뉴 항목 추가(_A)"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "Add a new entry in the menu"
 msgstr "메뉴에 항목을 추가합니다."
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add _external"
-msgstr "외부 메뉴 추가"
+msgstr "외부 메뉴 추가(_e)"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add an external entry"
-msgstr "외부 메뉴 추가"
+msgstr "외부 항목 추가"
 
 #: ../menueditor/menueditor-main-window.c:153
 msgid "_Remove entry"
-msgstr ""
+msgstr "항목 삭제(_R)"
 
 #: ../menueditor/menueditor-main-window.c:153
-#, fuzzy
 msgid "Remove entry"
-msgstr "메뉴 항목 추가"
+msgstr "항목 삭제"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "_Up"
-msgstr ""
+msgstr "위로(_U)"
 
 #: ../menueditor/menueditor-main-window.c:154
-#, fuzzy
 msgid "Move entry up"
 msgstr "현재 항목을 위로 보냅니다."
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "_Down"
-msgstr ""
+msgstr "아래로(_D)"
 
 #: ../menueditor/menueditor-main-window.c:155
-#, fuzzy
 msgid "Move entry down"
 msgstr "현재 항목을 아래로 보냅니다."
 
@@ -361,27 +338,22 @@ msgid "_About..."
 msgstr "메뉴 편집기에 대하여...(_A)"
 
 #: ../menueditor/menueditor-main-window.c:158
-#, fuzzy
 msgid "Show informations about xfce4-menueditor"
-msgstr "Xfce4 메뉴 편집기 기동 실패: %s"
+msgstr "Xfce4 메뉴 편집기 정보" 
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all"
-msgstr "하위 메뉴를 숨깁니다."
+msgstr "모든 메뉴를 숨깁니다."
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all menu entries"
-msgstr "하위 메뉴를 숨깁니다."
+msgstr "모든 하위 메뉴를 숨깁니다."
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all"
-msgstr "모두 열기(_O)"
+msgstr "모두 열기"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all menu entries"
 msgstr "하위 메뉴를 보여 줍니다."
 
@@ -431,9 +403,8 @@ msgid "Do you want to save before opening the default menu ?"
 msgstr "기본 메뉴를 열기 전에 저장하시렵니까?"
 
 #: ../menueditor/menueditor-main-window.c:594
-#, fuzzy
 msgid "Save menu file as"
-msgstr "메뉴 화일 열기"
+msgstr "메뉴 화일 저장"
 
 #: ../menueditor/menueditor-main-window.c:632
 #: ../menueditor/menueditor-main-window.c:1341
@@ -473,7 +444,7 @@ msgstr "Xfce4 메뉴 편집기"
 #. Credits
 #: ../menueditor/menueditor-main-window.c:1296
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "만든이/관리하는이"
 
 #: ../menueditor/menueditor-main-window.c:1297
 #: ../menueditor/menueditor-main-window.c:1298
@@ -490,7 +461,6 @@ msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "메뉴를 수정하셨군요, 종료하기 전에 저장하시렵니까?"
 
 #: ../menueditor/menueditor-main-window.c:1345
-#, fuzzy
 msgid "Forget modifications"
 msgstr "수정한 것 무시"
 
@@ -588,22 +558,21 @@ msgstr "메뉴에 아이콘 보이기(_i)"
 
 #: ../panel-plugin/desktop-menu-plugin.c:953
 msgid "There is already a panel menu registered for this screen"
-msgstr ""
+msgstr "패널 메뉴가 이 화면에 이미 등록되어 있습니다."
 
 #: ../panel-plugin/desktop-menu-plugin.c:1061
-#, fuzzy
 msgid "Edit Menu"
-msgstr "편집 메뉴(_E)"
+msgstr "편집 메뉴"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
 msgid "Button Label|Desktop"
-msgstr ""
+msgstr "데스크탑"
 
 #: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
 #: ../settings/backdrop-list-manager.c:631
 msgid "backdrops.list"
-msgstr "배경화면 목록을 수정합니다."
+msgstr "배경화면 목록"
 
 #: ../settings/appearance-settings.c:527
 msgid "Select backdrop image or list file"
@@ -691,7 +660,6 @@ msgstr "다시 보지 않겠습니다.(_D)"
 
 #. the dialog
 #: ../settings/appearance-settings.c:911
-#, fuzzy
 msgid "Desktop Preferences"
 msgstr "작업공간 설정"
 
@@ -884,9 +852,8 @@ msgid "    Desktop Icons:       %s\n"
 msgstr "    데스크탑 아이콘:     %s\n"
 
 #: ../src/main.c:271
-#, fuzzy, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    데스크탑 아이콘:     %s\n"
+msgstr "    데스크탑 화일 아이콘:  %s\n"
 
 #: ../src/main.c:298
 #, c-format
@@ -898,32 +865,28 @@ msgid "Options are:\n"
 msgstr "옵션은 다음과 같니다:\n"
 
 #: ../src/main.c:300
-#, fuzzy
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload      모든 설정을 새로 읽어 오고, 그림 목록을 새로 고칩니다.\n"
 
 #: ../src/main.c:301
-#, fuzzy
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        메뉴를 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
 
 #: ../src/main.c:302
-#, fuzzy
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    -windowlist  창 목록을 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
 
 #: ../src/main.c:303
-#, fuzzy
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "   -quit        xfdesop을 종료하도록 합니다.\n"
 
 #: ../src/main.c:318
 #, c-format
 msgid "%s is not running.\n"
-msgstr ""
+msgstr "%s는(은) 실행 중이지 않습니다.\n"
 
 #: ../src/windowlist.c:218
 #, c-format
@@ -957,7 +920,7 @@ msgstr "데스크탑"
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
+msgstr "Xfdesktop에서 데스크탑 항목을 저장하는 디렉토리 \"%s\"를(을) 만들지 못 했습니다.:"
 
 #: ../src/xfdesktop-file-icon-manager.c:246
 #: ../src/xfdesktop-file-icon-manager.c:255
@@ -970,11 +933,12 @@ msgstr "디렉토리 생성 실패"
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
-msgstr ""
+msgstr "\"%s\"는 디렉토리가 아니므로 Xfdesktop에서 데스크탑 항목을 저장하는 "
+"디렉토리로 사용할 수 없습니다."
 
 #: ../src/xfdesktop-file-icon-manager.c:257
 msgid "Please delete or rename the file."
-msgstr ""
+msgstr "화일을 삭제하거나 이름을 변경하십시오."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:364
@@ -1017,9 +981,9 @@ msgid "Rename"
 msgstr "이름 변경"
 
 #: ../src/xfdesktop-file-icon-manager.c:570
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "%d개의 화일을 지우시렵니까?"
+msgstr "\"%s\"를(을) 지우시렵니까?"
 
 #: ../src/xfdesktop-file-icon-manager.c:575
 #: ../src/xfdesktop-file-icon-manager.c:595
@@ -1063,6 +1027,8 @@ msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
+"데스크탑에 실행기와 링크를 만들고 수정할 수 있는 "
+"\"exo-desktop-item-edit\"을 기동시키지 못 했습니다."
 
 #: ../src/xfdesktop-file-icon-manager.c:963
 msgid "Create New Folder"
@@ -1101,14 +1067,13 @@ msgid "New Empty File"
 msgstr "새로운 빈 화일"
 
 #: ../src/xfdesktop-file-icon-manager.c:1102
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create file \"%s\":"
-msgstr "화일 \"%s\"을(를) 만들지 못 했습니다."
+msgstr "화일 \"%s\"을(를) 만들지 못 했습니다.:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1103
-#, fuzzy
 msgid "Create Error"
-msgstr "속성 오류"
+msgstr "작성 오류"
 
 #: ../src/xfdesktop-file-icon-manager.c:1387
 msgid "_Open all"
@@ -1119,9 +1084,8 @@ msgid "_Execute"
 msgstr "실행(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1434
-#, fuzzy
 msgid "_Edit Launcher"
-msgstr "실행기"
+msgstr "실행기 편집(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1474
 msgid "Open With"
@@ -1141,37 +1105,32 @@ msgid "_Properties..."
 msgstr "속성(_P)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1637
-#, fuzzy
 msgid "Des_ktop"
-msgstr "데스크탑"
+msgstr "데스크탑(_k)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1656
-#, fuzzy
 msgid "Create _Launcher..."
-msgstr "실행기"
+msgstr "실행기 작성...(_L)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1677
 msgid "Create _URL Link..."
-msgstr ""
+msgstr "URL 링크 생성(_U)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1694
-#, fuzzy
 msgid "Create _Folder..."
-msgstr "새로운 디렉토리 생성"
+msgstr "새로운 디렉토리 생성(_F)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1736
 msgid "_Empty File"
-msgstr "빈 화일(_F)"
+msgstr "빈 화일(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1777
-#, fuzzy
 msgid "Desktop _Settings..."
-msgstr "작업공간 설정"
+msgstr "작업공간 설정(_S)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1786
-#, fuzzy
 msgid "_Desktop Properties..."
-msgstr "속성(_P)"
+msgstr "속성(_D)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2794
 #: ../src/xfdesktop-regular-file-icon.c:349
@@ -1272,22 +1231,21 @@ msgstr "기타:"
 
 #: ../src/xfdesktop-file-utils.c:71
 msgid "Yes to _all"
-msgstr ""
+msgstr "전부 \"예\"(_a)"
 
 #: ../src/xfdesktop-file-utils.c:103
-#, fuzzy, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr "There was an error %s \"%s\" to \"%s\":"
+msgstr "\"%s\"를(을) \"%s\"로 옮기는 중 오류:"
 
 #: ../src/xfdesktop-file-utils.c:106
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr "There was an error %s \"%s\" to \"%s\":"
+msgstr "\"%s\"를(을) \"%s\"로 복사하는 중 오류:"
 
 #: ../src/xfdesktop-file-utils.c:109
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr "There was an error %s \"%s\" to \"%s\":"
+msgstr "\"%s\"를(을) \"%s\"로 연결하는 중 오류:"
 
 #: ../src/xfdesktop-file-utils.c:118
 msgid "File Error"
@@ -1310,6 +1268,9 @@ msgid ""
 "Modified:%s\n"
 "Size: %s"
 msgstr ""
+"종류: %s\n"
+"수정:%s\n"
+"크리: %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:530
 #, c-format
@@ -1318,34 +1279,33 @@ msgstr "\"%s\"을(를) \"%s\"(으)로 변경하시 못 했습니다."
 
 #: ../src/xfdesktop-special-file-icon.c:233
 msgid "Home"
-msgstr ""
+msgstr "홈"
 
 #: ../src/xfdesktop-special-file-icon.c:437
-#, fuzzy
 msgid "Unable to open the trash."
-msgstr "\"%s\" 마운트 실패:"
+msgstr "쓰레기통을 열지 못했습니다."
 
 #: ../src/xfdesktop-special-file-icon.c:438
 msgid ""
 "Viewing the contents of the trash requires a file manager that supports the "
 "Xfce trash service, such as Thunar."
-msgstr ""
+msgstr "쓰레기통의 내용을 보시려면, Thunar처럼 Xfce 쓰레기 서비스를 지원하는 "
+"화일관리자가 있어야합니다."
 
 #: ../src/xfdesktop-special-file-icon.c:466
-#, fuzzy
 msgid "Unable to empty the trash."
-msgstr "세센을 종료하지 못 했습니다."
+msgstr "쓰레기통을 비우지 못했습니다."
 
 #: ../src/xfdesktop-special-file-icon.c:467
 msgid ""
 "Emptying the trash requires a file manager that supports the Xfce trash "
 "service, such as Thunar."
-msgstr ""
+msgstr "쓰레기통을 비우려면, Thunar처럼 Xfce 쓰레기 서비스를 지원하는 "
+"화일관리자가 있어야합니다."
 
 #: ../src/xfdesktop-special-file-icon.c:499
-#, fuzzy
 msgid "_Empty Trash"
-msgstr "빈 화일(_F)"
+msgstr "쓰레기통 비우기(_E)"
 
 #: ../src/xfdesktop-volume-icon.c:438 ../src/xfdesktop-volume-icon.c:496
 #, c-format
@@ -1375,9 +1335,8 @@ msgid "Eject Failed"
 msgstr "추출 실패"
 
 #: ../src/xfdesktop-volume-icon.c:502
-#, fuzzy
 msgid "Unknown error."
-msgstr "모르는 오류"
+msgstr "모르는 오류."
 
 #: ../src/xfdesktop-volume-icon.c:573
 msgid "_Mount Volume"
@@ -1388,9 +1347,8 @@ msgid "_Unmount Volume"
 msgstr "언마운트(_U)"
 
 #: ../src/xfdesktop-volume-icon.c:598
-#, fuzzy
 msgid "E_ject Volume"
-msgstr "추출(_E)"
+msgstr "추출(_j)"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
