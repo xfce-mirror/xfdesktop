@@ -345,41 +345,39 @@ xfdesktop_file_utils_launch_external(const ThunarVfsInfo *info,
 
 
 static gint dbus_ref_cnt = 0;
+static DBusGConnection *dbus_gconn = NULL;
 static DBusGProxy *dbus_trash_proxy = NULL;
 static DBusGProxy *dbus_filemanager_proxy = NULL;
 
 gboolean
 xfdesktop_file_utils_dbus_init()
 {
-    DBusGConnection *dgconn;
     gboolean ret = TRUE;
     
     if(dbus_ref_cnt++)
         return TRUE;
     
-    dgconn = dbus_g_bus_get(DBUS_BUS_SESSION, NULL);
+    if(!dbus_gconn) {
+        dbus_gconn = dbus_g_bus_get(DBUS_BUS_SESSION, NULL);
+        if(G_LIKELY(dbus_gconn)) {
+            /* dbus's default is brain-dead */
+            DBusConnection *dconn = dbus_g_connection_get_connection(dbus_gconn);
+            dbus_connection_set_exit_on_disconnect(dconn, FALSE);
+        }
+    }
     
-    if(G_LIKELY(dgconn)) {
-        /* dbus's default is brain-dead */
-        DBusConnection *dconn = dbus_g_connection_get_connection(dgconn);
-        dbus_connection_set_exit_on_disconnect(dconn, FALSE);
-        
-        dbus_trash_proxy = dbus_g_proxy_new_for_name(dgconn,
+    if(G_LIKELY(dbus_gconn)) {
+        dbus_trash_proxy = dbus_g_proxy_new_for_name(dbus_gconn,
                                                      "org.xfce.FileManager",
                                                      "/org/xfce/FileManager",
                                                      "org.xfce.Trash");
         dbus_g_proxy_add_signal(dbus_trash_proxy, "TrashChanged",
                                 G_TYPE_BOOLEAN, G_TYPE_INVALID);
         
-        dbus_filemanager_proxy = dbus_g_proxy_new_for_name(dgconn,
+        dbus_filemanager_proxy = dbus_g_proxy_new_for_name(dbus_gconn,
                                                            "org.xfce.FileManager",
                                                            "/org/xfce/FileManager",
                                                            "org.xfce.FileManager");
-        
-        /* the DBusGProxy (actually, its associated DBusGProxyManager) holds
-         * a reference to the DBusGConnection during its lifetime, so we
-         * don't have to hold a ref. */
-        dbus_g_connection_unref(dgconn);
     } else {
         ret = FALSE;
         dbus_ref_cnt = 0;
@@ -410,6 +408,10 @@ xfdesktop_file_utils_dbus_cleanup()
         g_object_unref(G_OBJECT(dbus_trash_proxy));
     if(dbus_filemanager_proxy)
         g_object_unref(G_OBJECT(dbus_filemanager_proxy));
+    
+    /* we aren't going to unref dbus_gconn because dbus appears to have a
+     * memleak in dbus_connection_setup_with_g_main().  really; the comments
+     * in dbus-gmain.c admit this. */
 }
 
 

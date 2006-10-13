@@ -2668,6 +2668,7 @@ static void
 xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
+    gint i;
     
     g_return_if_fail(fmanager->priv->inited);
     
@@ -2688,6 +2689,22 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
     
     if(fmanager->priv->show_removable_media)
         xfdesktop_file_icon_manager_remove_removable_media(fmanager);
+    
+    for(i = 0; i <= XFDESKTOP_SPECIAL_FILE_ICON_TRASH; ++i) {
+        XfdesktopIcon *icon = g_hash_table_lookup(fmanager->priv->special_icons,
+                                                  GINT_TO_POINTER(i));
+        if(icon) {
+            xfdesktop_icon_view_remove_item(fmanager->priv->icon_view, icon);
+            g_hash_table_remove(fmanager->priv->special_icons,
+                                GINT_TO_POINTER(i));
+        }
+    }
+
+    if(fmanager->priv->icons) {
+        g_hash_table_foreach_remove(fmanager->priv->icons,
+                                    (GHRFunc)xfdesktop_remove_icons_ht,
+                                    fmanager->priv->icon_view);
+    }
     
     if(fmanager->priv->deferred_icons) {
         g_list_foreach(fmanager->priv->deferred_icons,
