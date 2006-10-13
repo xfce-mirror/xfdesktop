@@ -2070,6 +2070,16 @@ xfdesktop_file_icon_manager_add_special_file_icon(XfdesktopFileIconManager *fman
     }
 }
 
+static gboolean
+xfdesktop_remove_icons_ht(gpointer key,
+                          gpointer value,
+                          gpointer user_data)
+{
+    xfdesktop_icon_view_remove_item(XFDESKTOP_ICON_VIEW(user_data),
+                                    XFDESKTOP_ICON(value));
+    return TRUE;
+}
+
 static void
 xfdesktop_file_icon_manager_refresh_icons(XfdesktopFileIconManager *fmanager)
 {
@@ -2100,7 +2110,8 @@ xfdesktop_file_icon_manager_refresh_icons(XfdesktopFileIconManager *fmanager)
     /* ditch normal icons */
     if(fmanager->priv->icons) {
         g_hash_table_foreach_remove(fmanager->priv->icons,
-                                    (GHRFunc)gtk_true, NULL);
+                                    (GHRFunc)xfdesktop_remove_icons_ht,
+                                    fmanager->priv->icon_view);
     }
     
     /* clear out anything left in the icon view */
