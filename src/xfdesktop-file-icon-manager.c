@@ -2338,8 +2338,7 @@ xfdesktop_file_icon_manager_listdir_finished_cb(ThunarVfsJob *job,
     }
     
     g_object_unref(G_OBJECT(job));
-    if(G_LIKELY(job == fmanager->priv->list_job))
-        fmanager->priv->list_job = NULL;
+    fmanager->priv->list_job = NULL;
 }
 
 static void
@@ -2367,6 +2366,15 @@ xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanag
     
     if(fmanager->priv->list_job) {
         thunar_vfs_job_cancel(fmanager->priv->list_job);
+        g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->list_job),
+                                             G_CALLBACK(xfdesktop_file_icon_manager_listdir_error_cb),
+                                             fmanager);
+        g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->list_job),
+                                             G_CALLBACK(xfdesktop_file_icon_manager_listdir_finished_cb),
+                                             fmanager);
+        g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->list_job),
+                                             G_CALLBACK(xfdesktop_file_icon_manager_listdir_infos_ready_cb),
+                                             fmanager);
         g_object_unref(G_OBJECT(fmanager->priv->list_job));
     }
     
@@ -2673,6 +2681,21 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
     g_return_if_fail(fmanager->priv->inited);
     
     fmanager->priv->inited = FALSE;
+    
+    if(fmanager->priv->list_job) {
+        thunar_vfs_job_cancel(fmanager->priv->list_job);
+        g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->list_job),
+                                             G_CALLBACK(xfdesktop_file_icon_manager_listdir_error_cb),
+                                             fmanager);
+        g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->list_job),
+                                             G_CALLBACK(xfdesktop_file_icon_manager_listdir_finished_cb),
+                                             fmanager);
+        g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->list_job),
+                                             G_CALLBACK(xfdesktop_file_icon_manager_listdir_infos_ready_cb),
+                                             fmanager);
+        g_object_unref(G_OBJECT(fmanager->priv->list_job));
+        fmanager->priv->list_job = NULL;
+    }
     
     if(fmanager->priv->save_icons_id) {
         g_source_remove(fmanager->priv->save_icons_id);

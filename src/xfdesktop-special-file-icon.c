@@ -64,6 +64,7 @@ struct _XfdesktopSpecialFileIconPrivate
     
     /* only needed for trash */
     DBusGProxy *dbus_proxy;
+    DBusGProxyCall *dbus_querytrash_call;
     gboolean trash_full;
 };
 
@@ -144,6 +145,17 @@ xfdesktop_special_file_icon_finalize(GObject *obj)
                                          G_CALLBACK(xfdesktop_special_file_icon_invalidate_pixbuf),
                                          icon);
     
+    if(icon->priv->dbus_proxy) {
+        if(icon->priv->dbus_querytrash_call) {
+            dbus_g_proxy_cancel_call(icon->priv->dbus_proxy,
+                                     icon->priv->dbus_querytrash_call);
+        }
+        dbus_g_proxy_disconnect_signal(icon->priv->dbus_proxy, "TrashChanged",
+                                       G_CALLBACK(xfdesktop_special_file_icon_trash_changed_cb),
+                                       icon);
+        g_object_unref(G_OBJECT(icon->priv->dbus_proxy));
+    }
+    
     if(icon->priv->pix)
         g_object_unref(G_OBJECT(icon->priv->pix));
     
@@ -152,13 +164,6 @@ xfdesktop_special_file_icon_finalize(GObject *obj)
     
     if(icon->priv->tooltip)
         g_free(icon->priv->tooltip);
-    
-    if(icon->priv->dbus_proxy) {
-        dbus_g_proxy_disconnect_signal(icon->priv->dbus_proxy, "TrashChanged",
-                                       G_CALLBACK(xfdesktop_special_file_icon_trash_changed_cb),
-                                       icon);
-        g_object_unref(G_OBJECT(icon->priv->dbus_proxy));
-    }
     
     G_OBJECT_CLASS(xfdesktop_special_file_icon_parent_class)->finalize(obj);
 }
@@ -613,6 +618,8 @@ xfdesktop_special_file_icon_query_trash_cb(DBusGProxy *proxy,
         xfdesktop_special_file_icon_invalidate_pixbuf(icon);
         xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
     }
+    
+    icon->priv->dbus_querytrash_call = NULL;
 }
 
 
@@ -656,20 +663,23 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
         DBusGProxy *trash_proxy = xfdesktop_file_utils_peek_trash_proxy();
             
         if(G_LIKELY(trash_proxy)) {
+            DBusGProxyCall *call;
+            
             special_file_icon->priv->dbus_proxy = g_object_ref(G_OBJECT(trash_proxy));
             dbus_g_proxy_connect_signal(special_file_icon->priv->dbus_proxy,
                                         "TrashChanged",
                                         G_CALLBACK(xfdesktop_special_file_icon_trash_changed_cb),
                                         special_file_icon, NULL);
             
-            if(!org_xfce_Trash_query_trash_async(special_file_icon->priv->dbus_proxy,
-                                                 xfdesktop_special_file_icon_query_trash_cb,
-                                                 special_file_icon))
-            {
+            call = org_xfce_Trash_query_trash_async(special_file_icon->priv->dbus_proxy,
+                                                    xfdesktop_special_file_icon_query_trash_cb,
+                                                    special_file_icon);
+            if(!call) {
                 xfdesktop_special_file_icon_trash_handle_error(special_file_icon->priv->gscreen,
                                                                "QueryTrash",
                                                                NULL);
             }
+            special_file_icon->priv->dbus_querytrash_call = call;
         } else {
             /* we might as well just bail here */
             g_object_unref(G_OBJECT(special_file_icon));
