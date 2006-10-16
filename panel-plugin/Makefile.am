@@ -22,8 +22,7 @@ xfce4_menu_plugin_LDADD = \
 
 if HAVE_CYGWIN
 xfce4_menu_plugin_LDFLAGS = \
-	-no-undefined \
-	-export-symbols $(datadir)/xfce4/devel/panel.def
+	-no-undefined
 endif
 
 

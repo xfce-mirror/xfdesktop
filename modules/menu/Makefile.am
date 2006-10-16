@@ -31,9 +31,8 @@ xfce4_desktop_menu_la_LDFLAGS = \
 	-module
 
 if HAVE_CYGWIN
-  xfce4_desktop_menu_la_LDFLAGS += \
-	-no-undefined \
-	-export-symbols $(top_srcdir)/src/xfdesktop.def
+xfce4_desktop_menu_la_LDFLAGS += \
+	-no-undefined
 endif
 
 xfce4_desktop_menu_la_LIBADD = \
