@@ -1995,8 +1995,8 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     
     /* this little hack is needed to ensure we paint the full text area even
      * if the new text area is larger or smaller than the old */
-    if(xfdesktop_icon_get_extents(icon, &intersection)
-       && text_area.height + CORNER_ROUNDNESS
+    if(!xfdesktop_icon_get_extents(icon, &intersection)
+       || text_area.height + CORNER_ROUNDNESS
           != intersection.height - (pix_area.height + SPACING + 2))
     {
         memcpy(&adj_area, &text_area, sizeof(GdkRectangle));
