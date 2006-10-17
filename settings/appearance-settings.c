@@ -783,6 +783,8 @@ static void
 manage_desktop_chk_toggled_cb(GtkToggleButton *tb, gpointer user_data)
 {
     BackdropDialog *bd = user_data;
+    const gchar *setting_name;
+    McsSetting *setting = NULL;
     
     if(gtk_toggle_button_get_active(tb)) {
         GError *err = NULL;
@@ -810,51 +812,59 @@ manage_desktop_chk_toggled_cb(GtkToggleButton *tb, gpointer user_data)
             g_free(secondary);
         } else
             gtk_widget_set_sensitive(bd->top_notebook, TRUE);
+        
+        setting_name = "managedesktop-show-warning-on";
     } else {
         Window xid;
-        McsSetting *setting;
         
         if(xfdesktop_check_is_running(&xid))
             xfdesktop_send_client_message(xid, QUIT_MESSAGE);
         gtk_widget_set_sensitive(bd->top_notebook, FALSE);
         
-        setting = mcs_manager_setting_lookup(bd->plugin->manager,
-                "managedesktop-show-warning", BACKDROP_CHANNEL);
-        if(!setting || setting->data.v_int) {
-            GtkWidget *dlg, *lbl, *chk, *vbox;
-            
-            dlg = gtk_dialog_new_with_buttons(_("Information"),
-                    GTK_WINDOW(bd->dialog),
-                    GTK_DIALOG_DESTROY_WITH_PARENT|GTK_DIALOG_NO_SEPARATOR,
-                    GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-            
-            vbox = gtk_vbox_new(FALSE, BORDER);
-            gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
-            gtk_widget_show(vbox);
-            gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), vbox, TRUE, TRUE, 0);
-            
+        setting_name = "managedesktop-show-warning";
+    }
+    
+    setting = mcs_manager_setting_lookup(bd->plugin->manager,
+            setting_name, BACKDROP_CHANNEL);
+    if(!setting || setting->data.v_int) {
+        GtkWidget *dlg, *lbl, *chk, *vbox;
+        
+        dlg = gtk_dialog_new_with_buttons(_("Information"),
+                GTK_WINDOW(bd->dialog),
+                GTK_DIALOG_DESTROY_WITH_PARENT|GTK_DIALOG_NO_SEPARATOR,
+                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+        
+        vbox = gtk_vbox_new(FALSE, BORDER);
+        gtk_container_set_border_width(GTK_CONTAINER(vbox), BORDER);
+        gtk_widget_show(vbox);
+        gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), vbox, TRUE, TRUE, 0);
+        
+        /* FIXME: i'm avoiding changing a string here.  after the string is
+         * translated, remove the second string and replace it with the first */
+        if(!strcmp(setting_name, "managedesktp-show-warning-on"))
+            lbl = gtk_label_new(_("To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."));
+        else
             lbl = gtk_label_new(_("To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."));
-            gtk_label_set_line_wrap(GTK_LABEL(lbl), TRUE);
-            gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
-            gtk_widget_show(lbl);
-            gtk_box_pack_start(GTK_BOX(vbox), lbl, FALSE, FALSE, 0);
-            
-            add_spacer(GTK_BOX(vbox));
-            
-            chk = gtk_check_button_new_with_mnemonic(_("_Do not show this again"));
-            gtk_widget_show(chk);
-            gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, 0);
-            
-            gtk_dialog_run(GTK_DIALOG(dlg));
-            
-            if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chk))) {
-                mcs_manager_set_int(bd->plugin->manager,
-                        "managedesktop-show-warning", BACKDROP_CHANNEL, 0);
-                backdrop_write_options(bd->plugin);
-            }
-            
-            gtk_widget_destroy(dlg);
+        gtk_label_set_line_wrap(GTK_LABEL(lbl), TRUE);
+        gtk_misc_set_alignment(GTK_MISC(lbl), 0.0, 0.5);
+        gtk_widget_show(lbl);
+        gtk_box_pack_start(GTK_BOX(vbox), lbl, FALSE, FALSE, 0);
+        
+        add_spacer(GTK_BOX(vbox));
+        
+        chk = gtk_check_button_new_with_mnemonic(_("_Do not show this again"));
+        gtk_widget_show(chk);
+        gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, 0);
+        
+        gtk_dialog_run(GTK_DIALOG(dlg));
+        
+        if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(chk))) {
+            mcs_manager_set_int(bd->plugin->manager, setting_name,
+                                BACKDROP_CHANNEL, 0);
+            backdrop_write_options(bd->plugin);
         }
+        
+        gtk_widget_destroy(dlg);
     }
 }
 
