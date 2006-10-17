@@ -66,6 +66,7 @@
 #include "xfdesktop-volume-icon.h"
 #include "xfdesktop-clipboard-manager.h"
 #include "xfdesktop-file-properties-dialog.h"
+#include "xfdesktop-dbus-bindings-trash.h"
 #include "xfdesktop-file-icon-manager.h"
 
 #include <libxfce4util/libxfce4util.h>
@@ -150,6 +151,8 @@ struct _XfdesktopFileIconManagerPrivate
     GtkTargetList *drag_targets;
     GtkTargetList *drop_targets;
     
+    GList *active_trash_calls;
+    
 #ifdef HAVE_THUNARX
     GList *thunarx_menu_providers;
     GList *thunarx_properties_providers;
@@ -162,6 +165,15 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopFileIconManager,
                        G_TYPE_OBJECT, 0,
                        G_IMPLEMENT_INTERFACE(XFDESKTOP_TYPE_ICON_VIEW_MANAGER,
                                              xfdesktop_file_icon_manager_icon_view_manager_init))
+
+
+typedef struct
+{
+    XfdesktopFileIconManager *fmanager;
+    DBusGProxy *proxy;
+    DBusGProxyCall *call;
+    GList *files;
+} XfdesktopTrashFilesData;
 
 enum
 {
@@ -595,46 +607,17 @@ enum
 };
 
 static void
-xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager)
+xfdesktop_file_icon_manager_delete_files(XfdesktopFileIconManager *fmanager,
+                                         GList *files)
 {
-    GList *selected, *l;
+    GList *l;
     gchar *primary;
     gint ret = GTK_RESPONSE_CANCEL;
     XfdesktopIcon *icon;
     GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
     
-    selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
-    g_return_if_fail(selected);
-    
-    /* remove anybody that's not deletable */
-    for(l = selected; l; ) {
-        if(!xfdesktop_file_icon_can_delete_file(XFDESKTOP_FILE_ICON(l->data))) {
-            GList *next = l->next;
-            
-            if(l->prev)
-                l->prev->next = l->next;
-            else  /* this is the first item; reset |selected| */
-                selected = l->next;
-            
-            if(l->next)
-                l->next->prev = l->prev;
-            
-            l->next = l->prev = NULL;
-            g_list_free_1(l);
-            
-            l = next;
-        } else
-            l = l->next;
-    }
-    
-    if(G_UNLIKELY(!selected))
-        return;
-    
-    /* make sure the icons don't get destroyed while the dialog is open */
-    g_list_foreach(selected, (GFunc)g_object_ref, NULL);
-    
-    if(g_list_length(selected) == 1) {
-        icon = XFDESKTOP_ICON(selected->data);
+    if(g_list_length(files) == 1) {
+        icon = XFDESKTOP_ICON(files->data);
         
         primary = g_markup_printf_escaped(_("Are you sure that you want to delete \"%s\"?"),
                                           xfdesktop_icon_peek_label(icon));
@@ -656,7 +639,7 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager)
         gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
         
         primary = g_strdup_printf(_("Are you sure you want to delete the following %d files?"),
-                                  g_list_length(selected));
+                                  g_list_length(files));
         dlg = xfce_message_dialog_new(GTK_WINDOW(toplevel),
                                       _("Delete Multiple Files"),
                                       GTK_STOCK_DIALOG_QUESTION,
@@ -675,7 +658,7 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager)
         gtk_box_pack_start(GTK_BOX(vbox), sw, TRUE, TRUE, 0);
         
         ls = gtk_list_store_new(N_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING);
-        for(l = selected; l; l = l->next) {
+        for(l = files; l; l = l->next) {
             icon = XFDESKTOP_ICON(l->data);
             gtk_list_store_append(ls, &itr);
             gtk_list_store_set(ls, &itr,
@@ -726,10 +709,124 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager)
     }
         
     if(GTK_RESPONSE_ACCEPT == ret)
-        g_list_foreach(selected, (GFunc)xfdesktop_file_icon_delete_file, NULL);
+        g_list_foreach(files, (GFunc)xfdesktop_file_icon_delete_file, NULL);
+}
+
+static void
+xfdesktop_file_icon_manager_trash_files_cb(DBusGProxy *proxy,
+                                           GError *error,
+                                           gpointer user_data)
+{
+    XfdesktopTrashFilesData *tdata = user_data;
     
-    g_list_foreach(selected, (GFunc)g_object_unref, NULL);
-    g_list_free(selected);
+    if(error) {
+        /* fallback to normal deletion */
+        xfdesktop_file_icon_manager_delete_files(tdata->fmanager, tdata->files);
+    }
+    
+    tdata->fmanager->priv->active_trash_calls = g_list_remove(tdata->fmanager->priv->active_trash_calls,
+                                                              tdata);
+    
+    g_object_unref(G_OBJECT(tdata->proxy));
+    g_list_foreach(tdata->files, (GFunc)g_object_unref, NULL);
+    g_list_free(tdata->files);
+    
+    g_free(tdata);
+}
+
+static gboolean
+xfdesktop_file_icon_manager_trash_files(XfdesktopFileIconManager *fmanager,
+                                        GList *files)
+{
+    DBusGProxy *trash_proxy = xfdesktop_file_utils_peek_trash_proxy();
+    DBusGProxyCall *call;
+    gchar **uris, *display_name;
+    GList *l;
+    gint i, nfiles;
+    const ThunarVfsInfo *info;
+    XfdesktopTrashFilesData *tdata;
+    
+    g_return_val_if_fail(files, TRUE);
+    
+    if(!trash_proxy)
+        return FALSE;
+    
+    nfiles = g_list_length(files);
+    uris = g_new(gchar *, nfiles + 1);
+    
+    for(l = files, i = 0; l; l = l->next, ++i) {
+        info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(l->data));
+        uris[i] = thunar_vfs_path_dup_uri(info->path);
+    }
+    uris[nfiles] = NULL;
+    
+    display_name = gdk_screen_make_display_name(fmanager->priv->gscreen);
+    
+    tdata = g_new(XfdesktopTrashFilesData, 1);
+    call = org_xfce_Trash_move_to_trash_async(trash_proxy, (const char **)uris,
+                                              display_name,
+                                              xfdesktop_file_icon_manager_trash_files_cb,
+                                              tdata);
+    
+    if(call) {
+        tdata->fmanager = fmanager;
+        tdata->proxy = g_object_ref(G_OBJECT(trash_proxy));
+        tdata->call = call;
+        tdata->files = files;
+        fmanager->priv->active_trash_calls = g_list_prepend(fmanager->priv->active_trash_calls,
+                                                            tdata);
+    } else
+        g_free(tdata);
+    
+    g_strfreev(uris);
+    g_free(display_name);
+    
+    return !!call;
+}
+
+static void
+xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager,
+                                            gboolean force_delete)
+{
+    GList *selected, *l;
+    
+    selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
+    g_return_if_fail(selected);
+    
+    /* remove anybody that's not deletable */
+    for(l = selected; l; ) {
+        if(!xfdesktop_file_icon_can_delete_file(XFDESKTOP_FILE_ICON(l->data))) {
+            GList *next = l->next;
+            
+            if(l->prev)
+                l->prev->next = l->next;
+            else  /* this is the first item; reset |selected| */
+                selected = l->next;
+            
+            if(l->next)
+                l->next->prev = l->prev;
+            
+            l->next = l->prev = NULL;
+            g_list_free_1(l);
+            
+            l = next;
+        } else
+            l = l->next;
+    }
+    
+    if(G_UNLIKELY(!selected))
+        return;
+    
+    /* make sure the icons don't get destroyed while we're working */
+    g_list_foreach(selected, (GFunc)g_object_ref, NULL);
+    
+    if(force_delete || !xfdesktop_file_icon_manager_trash_files(fmanager,
+                                                                selected))
+    {
+        xfdesktop_file_icon_manager_delete_files(fmanager, selected);
+        g_list_foreach(selected, (GFunc)g_object_unref, NULL);
+        g_list_free(selected);
+    }
 }
 
 static void
@@ -834,6 +931,20 @@ xfdesktop_file_icon_menu_copy(GtkWidget *widget,
     xfdesktop_clipboard_manager_copy_files(clipboard_manager, files);
     
     g_list_free(files);
+}
+
+static void
+xfdesktop_file_icon_menu_delete(GtkWidget *widget,
+                                gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    GdkModifierType state;
+    gboolean force_delete = FALSE;
+    
+    if(gtk_get_current_event_state(&state) && state & GDK_SHIFT_MASK)
+        force_delete = TRUE;
+    
+    xfdesktop_file_icon_manager_delete_selected(fmanager, force_delete);
 }
 
 static void
@@ -1660,9 +1771,9 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
-            g_signal_connect_swapped(G_OBJECT(mi), "activate",
-                                     G_CALLBACK(xfdesktop_file_icon_manager_delete_selected), 
-                                     fmanager);
+            g_signal_connect(G_OBJECT(mi), "activate",
+                             G_CALLBACK(xfdesktop_file_icon_menu_delete), 
+                             fmanager);
         } else
             gtk_widget_set_sensitive(mi, FALSE);
         
@@ -2138,11 +2249,14 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     GList *selected;
+    gboolean force_delete = FALSE;
     
     switch(evt->keyval) {
         case GDK_Delete:
         case GDK_KP_Delete:
-            xfdesktop_file_icon_manager_delete_selected(fmanager);
+            if(evt->state & GDK_SHIFT_MASK)
+                force_delete = TRUE;
+            xfdesktop_file_icon_manager_delete_selected(fmanager, force_delete);
             break;
         
         case GDK_c:
@@ -2695,6 +2809,23 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
                                              fmanager);
         g_object_unref(G_OBJECT(fmanager->priv->list_job));
         fmanager->priv->list_job = NULL;
+    }
+    
+    if(fmanager->priv->active_trash_calls) {
+        GList *l;
+        XfdesktopTrashFilesData *tdata;
+        
+        for(l = fmanager->priv->active_trash_calls; l; l = l->next) {
+            tdata = l->data;
+            dbus_g_proxy_cancel_call(tdata->proxy, tdata->call);
+            g_object_unref(tdata->proxy);
+            g_list_foreach(tdata->files, (GFunc)g_object_unref, NULL);
+            g_list_free(tdata->files);
+            g_free(tdata);
+        }
+        
+        g_list_free(fmanager->priv->active_trash_calls);
+        fmanager->priv->active_trash_calls = NULL;
     }
     
     if(fmanager->priv->save_icons_id) {
