@@ -77,6 +77,7 @@ static GtkWidget *xfdesktop_volume_icon_get_popup_menu(XfdesktopIcon *icon);
 static G_CONST_RETURN ThunarVfsInfo *xfdesktop_volume_icon_peek_info(XfdesktopFileIcon *icon);
 static void xfdesktop_volume_icon_update_info(XfdesktopFileIcon *icon,
                                               ThunarVfsInfo *info);
+static gboolean xfdesktop_volume_icon_activated(XfdesktopIcon *icon);
 
 #ifdef HAVE_THUNARX
 static void xfdesktop_volume_icon_tfi_init(ThunarxFileInfoIface *iface);
@@ -160,6 +161,7 @@ xfdesktop_volume_icon_icon_init(XfdesktopIconIface *iface)
     iface->is_drop_dest = xfdesktop_volume_icon_is_drop_dest;
     iface->do_drop_dest = xfdesktop_volume_icon_do_drop_dest;
     iface->get_popup_menu = xfdesktop_volume_icon_get_popup_menu;
+    iface->activated = xfdesktop_volume_icon_activated;
 }
 
 #ifdef HAVE_THUNARX
@@ -477,64 +479,6 @@ xfdesktop_volume_icon_menu_properties(GtkWidget *widget,
     xfdesktop_file_properties_dialog_show(NULL, icon, NULL);
 }
 
-static void
-xfdesktop_volume_icon_menu_open(GtkWidget *widget,
-                                gpointer user_data)
-{
-    XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(user_data);
-    const ThunarVfsInfo *info;
-    ThunarVfsVolume *volume = (ThunarVfsVolume *)xfdesktop_volume_icon_peek_volume(icon);
-    GError *error = NULL;
-    ThunarVfsPath *new_path = NULL;
-    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
-    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
-    
-    info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
-    
-    if(!thunar_vfs_volume_is_mounted(volume)) {
-        if(!thunar_vfs_volume_mount(volume, toplevel, &error)) {
-            gchar *primary = g_markup_printf_escaped(_("Unable to mount \"%s\":"),
-                                                     thunar_vfs_volume_get_name(volume));
-            GtkWidget *dlg = xfce_message_dialog_new(GTK_WINDOW(toplevel),
-                                                     _("Mount Failed"),
-                                                     GTK_STOCK_DIALOG_ERROR,
-                                                     primary,
-                                                     error ? error->message
-                                                           : _("Unknown error."),
-                                                     GTK_STOCK_CLOSE,
-                                                     GTK_RESPONSE_ACCEPT, NULL);
-            gtk_dialog_run(GTK_DIALOG(dlg));
-            gtk_widget_destroy(dlg);
-            g_free(primary);
-            g_error_free(error);
-        }
-    }
-    
-    new_path = thunar_vfs_volume_get_mount_point(volume);
-        
-    if(new_path && (!info
-                    || !thunar_vfs_path_equal(info->path, new_path)))
-    {
-        ThunarVfsInfo *new_info = thunar_vfs_info_new_for_path(new_path,
-                                                               NULL);
-        if(new_info) {
-            xfdesktop_file_icon_update_info(XFDESKTOP_FILE_ICON(icon),
-                                            new_info);
-            thunar_vfs_info_unref(new_info);
-        }
-    }
-    
-    info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
-    if(!info || !new_path) {
-        /* if |new_path| is NULL, but |info| isn't, it's possible we have
-         * a stale |info|, and we shouldn't continue */
-        return;
-    }
-    
-    xfdesktop_file_utils_open_folder(info, icon->priv->gscreen,
-                                     GTK_WINDOW(toplevel));
-}
-
 static GtkWidget *
 xfdesktop_volume_icon_get_popup_menu(XfdesktopIcon *icon)
 {
@@ -550,8 +494,8 @@ xfdesktop_volume_icon_get_popup_menu(XfdesktopIcon *icon)
     gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    g_signal_connect(G_OBJECT(mi), "activate",
-                     G_CALLBACK(xfdesktop_volume_icon_menu_open), icon);
+    g_signal_connect_swapped(G_OBJECT(mi), "activate",
+                             G_CALLBACK(xfdesktop_icon_activated), icon);
     
     mi = gtk_separator_menu_item_new();
     gtk_widget_show(mi);
@@ -647,6 +591,64 @@ xfdesktop_volume_icon_update_info(XfdesktopFileIcon *icon,
     xfdesktop_volume_icon_invalidate_pixbuf(volume_icon);
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
 }
+
+static gboolean
+xfdesktop_volume_icon_activated(XfdesktopIcon *icon_p)
+{
+    XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(icon_p);
+    const ThunarVfsInfo *info;
+    ThunarVfsVolume *volume = (ThunarVfsVolume *)xfdesktop_volume_icon_peek_volume(icon);
+    GError *error = NULL;
+    ThunarVfsPath *new_path = NULL;
+    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
+    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
+    
+    info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
+    
+    if(!thunar_vfs_volume_is_mounted(volume)) {
+        if(!thunar_vfs_volume_mount(volume, toplevel, &error)) {
+            gchar *primary = g_markup_printf_escaped(_("Unable to mount \"%s\":"),
+                                                     thunar_vfs_volume_get_name(volume));
+            GtkWidget *dlg = xfce_message_dialog_new(GTK_WINDOW(toplevel),
+                                                     _("Mount Failed"),
+                                                     GTK_STOCK_DIALOG_ERROR,
+                                                     primary,
+                                                     error ? error->message
+                                                           : _("Unknown error."),
+                                                     GTK_STOCK_CLOSE,
+                                                     GTK_RESPONSE_ACCEPT, NULL);
+            gtk_dialog_run(GTK_DIALOG(dlg));
+            gtk_widget_destroy(dlg);
+            g_free(primary);
+            g_error_free(error);
+        }
+    }
+    
+    new_path = thunar_vfs_volume_get_mount_point(volume);
+        
+    if(new_path && (!info
+                    || !thunar_vfs_path_equal(info->path, new_path)))
+    {
+        ThunarVfsInfo *new_info = thunar_vfs_info_new_for_path(new_path,
+                                                               NULL);
+        if(new_info) {
+            xfdesktop_file_icon_update_info(XFDESKTOP_FILE_ICON(icon),
+                                            new_info);
+            thunar_vfs_info_unref(new_info);
+        }
+    }
+    
+    info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
+    if(!info || !new_path) {
+        /* if |new_path| is NULL, but |info| isn't, it's possible we have
+         * a stale |info|, and we shouldn't continue */
+        return TRUE;  /* failed, so halt emission of the signal */
+    }
+    
+    return FALSE;
+}
+
+
 
 XfdesktopVolumeIcon *
 xfdesktop_volume_icon_new(ThunarVfsVolume *volume,

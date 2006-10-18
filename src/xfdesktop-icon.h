@@ -49,7 +49,15 @@ struct _XfdesktopIconIface
     void (*label_changed)(XfdesktopIcon *icon);
     
     void (*selected)(XfdesktopIcon *icon);
-    void (*activated)(XfdesktopIcon *icon);
+    
+    /* XfdektopIcon::activated has weird semantics: you should NEVER connect to
+     * this signal normally: always use g_signal_connect_after(), as the default
+     * signal handler may do some special setup for the icon.  this is lame;
+     * you should be able to use normal g_signal_connect(), but signal handlers
+     * with return values are (for some unknown reason) not allowed to be
+     * G_SIGNAL_RUN_FIRST.  go figure. */
+    gboolean (*activated)(XfdesktopIcon *icon);
+    
     void (*menu_popup)(XfdesktopIcon *icon);
     
     /*< virtual functions >*/
@@ -106,7 +114,7 @@ void xfdesktop_icon_pixbuf_changed(XfdesktopIcon *icon);
 void xfdesktop_icon_label_changed(XfdesktopIcon *icon);
 
 void xfdesktop_icon_selected(XfdesktopIcon *icon);
-void xfdesktop_icon_activated(XfdesktopIcon *icon);
+gboolean xfdesktop_icon_activated(XfdesktopIcon *icon);
 void xfdesktop_icon_menu_popup(XfdesktopIcon *icon);
 
 G_END_DECLS

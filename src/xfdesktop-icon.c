@@ -67,6 +67,38 @@ xfdesktop_icon_get_type()
 }
 
 static void
+xfdesktop_icon_marshal_BOOLEAN__VOID(GClosure *closure,
+                                     GValue *return_value,
+                                     guint n_param_values,
+                                     const GValue *param_values,
+                                     gpointer invocation_hint,
+                                     gpointer marshal_data)
+{
+    typedef gboolean (*GMarshalFunc_BOOLEAN__VOID)(gpointer, gpointer);
+    register GMarshalFunc_BOOLEAN__VOID callback;
+    register GCClosure *cc = (GCClosure *)closure;
+    register gpointer data1, data2;
+    gboolean ret = FALSE;
+    
+    g_return_if_fail(return_value);
+    g_return_if_fail(n_param_values == 1);
+    
+    if(G_CCLOSURE_SWAP_DATA(closure)) {
+        data1 = closure->data;
+        data2 = g_value_peek_pointer(param_values + 0);
+    } else {
+        data1 = g_value_peek_pointer(param_values + 0);
+        data2 = closure->data;
+    }
+
+    callback = (GMarshalFunc_BOOLEAN__VOID)(marshal_data ? marshal_data : cc->callback);
+
+    ret = callback(data1, data2);
+    
+    g_value_set_boolean(return_value, ret);
+}
+
+static void
 xfdesktop_icon_base_init(gpointer g_class)
 {
     static gboolean __inited = FALSE;
@@ -101,12 +133,13 @@ xfdesktop_icon_base_init(gpointer g_class)
         
         __signals[SIG_ACTIVATED] = g_signal_new("activated",
                                                 XFDESKTOP_TYPE_ICON,
-                                                G_SIGNAL_RUN_LAST,
+                                                G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                                 G_STRUCT_OFFSET(XfdesktopIconIface,
                                                                 activated),
-                                                NULL, NULL,
-                                                g_cclosure_marshal_VOID__VOID,
-                                                G_TYPE_NONE, 0);
+                                                g_signal_accumulator_true_handled,
+                                                NULL,
+                                                xfdesktop_icon_marshal_BOOLEAN__VOID,
+                                                G_TYPE_BOOLEAN, 0);
         
         __signals[SIG_MENU_POPUP] = g_signal_new("menu-popup",
                                                  XFDESKTOP_TYPE_ICON,
@@ -318,11 +351,16 @@ xfdesktop_icon_selected(XfdesktopIcon *icon)
     g_signal_emit(G_OBJECT(icon), __signals[SIG_SELECTED], 0, NULL);
 }
 
-void
+gboolean
 xfdesktop_icon_activated(XfdesktopIcon *icon)
 {
-    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
-    g_signal_emit(G_OBJECT(icon), __signals[SIG_ACTIVATED], 0, NULL);
+    gboolean ret = FALSE;
+    
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    
+    g_signal_emit(G_OBJECT(icon), __signals[SIG_ACTIVATED], 0, &ret);
+    
+    return ret;
 }
 
 void

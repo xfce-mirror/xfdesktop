@@ -396,63 +396,60 @@ __migrate_old_icon_positions(XfdesktopFileIconManager *fmanager)
 
 /* icon signal handlers */
 
-static void
+static gboolean
 xfdesktop_file_icon_activated(XfdesktopIcon *icon,
                               gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-    ThunarVfsMimeApplication *mime_app;
     const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(file_icon);
-    gboolean succeeded = FALSE;
     
     TRACE("entering");
     
-    g_return_if_fail(info);
+    g_return_val_if_fail(info, FALSE);
     
-    if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
+    if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY)
         xfdesktop_file_utils_open_folder(info, fmanager->priv->gscreen, NULL);
-        /* above function handles errors */
-        succeeded = TRUE;
-    } else if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
-        succeeded = thunar_vfs_info_execute(info,
-                                            fmanager->priv->gscreen,
-                                            NULL,
-                                            xfce_get_homedir(),
-                                            NULL);
-    }
-    
-    if(!succeeded) {
-        mime_app = thunar_vfs_mime_database_get_default_application(thunar_mime_database,
-                                                                    info->mime_info);
-        if(mime_app) {
-            GList *path_list = g_list_prepend(NULL, info->path);
+    else if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
+        if(!thunar_vfs_info_execute(info, fmanager->priv->gscreen, NULL,
+                                    xfce_get_homedir(), NULL))
+        {
+            ThunarVfsMimeApplication *mime_app;
+            gboolean succeeded = FALSE;
             
-            DBG("executing");
+            mime_app = thunar_vfs_mime_database_get_default_application(thunar_mime_database,
+                                                                        info->mime_info);
+            if(mime_app) {
+                GList *path_list = g_list_prepend(NULL, info->path);
+                
+                DBG("executing");
+                
+                succeeded = thunar_vfs_mime_handler_exec(THUNAR_VFS_MIME_HANDLER(mime_app),
+                                                         fmanager->priv->gscreen,
+                                                         path_list,
+                                                         NULL); 
+                g_object_unref(G_OBJECT(mime_app));
+                g_list_free(path_list);
+            } else {
+                succeeded = xfdesktop_file_utils_launch_fallback(info,
+                                                                 fmanager->priv->gscreen,
+                                                                 NULL);
+            }
             
-            succeeded = thunar_vfs_mime_handler_exec(THUNAR_VFS_MIME_HANDLER(mime_app),
-                                                     fmanager->priv->gscreen,
-                                                     path_list,
-                                                     NULL); 
-            g_object_unref(G_OBJECT(mime_app));
-            g_list_free(path_list);
-        } else {
-            succeeded = xfdesktop_file_utils_launch_fallback(info,
-                                                             fmanager->priv->gscreen,
-                                                             NULL);
+            if(!succeeded) {
+                GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+                gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
+                                                         info->display_name);
+                xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
+                                    GTK_STOCK_DIALOG_ERROR, primary,
+                                    _("The associated application could not be found or executed."),
+                                    GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                g_free(primary);
+            }
         }
-    }    
-    
-    if(!succeeded) {
-        GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-        gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
-                                                 info->display_name);
-        xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
-                            GTK_STOCK_DIALOG_ERROR, primary,
-                            _("The associated application could not be found or executed."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-        g_free(primary);
     }
+    
+    return TRUE;
 }
 
 static void
@@ -468,7 +465,7 @@ xfdesktop_file_icon_menu_executed(GtkWidget *widget,
     icon = XFDESKTOP_ICON(selected->data);
     g_list_free(selected);
     
-    xfdesktop_file_icon_activated(icon, fmanager);
+    xfdesktop_icon_activated(icon);
 }
 
 static void
@@ -481,7 +478,7 @@ xfdesktop_file_icon_menu_open_all(GtkWidget *widget,
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
     g_return_if_fail(selected);
     
-    g_list_foreach(selected, (GFunc)xfdesktop_file_icon_activated, fmanager);
+    g_list_foreach(selected, (GFunc)xfdesktop_icon_activated, NULL);
     g_list_free(selected);
 }
 
@@ -2119,6 +2116,21 @@ xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *f
     return ret;
 }
 
+
+#if defined(DEBUG) && DEBUG > 0
+static GList *_alive_icon_list = NULL;
+
+static void
+_icon_notify_destroy(gpointer data,
+                     GObject *obj)
+{
+    g_assert(g_list_find(_alive_icon_list, obj));
+    _alive_icon_list = g_list_remove(_alive_icon_list, obj);
+    
+    DBG("icon finalized: '%s'", xfdesktop_icon_peek_label(XFDESKTOP_ICON(obj)));
+}
+#endif
+
 static gboolean
 xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
                                      XfdesktopFileIcon *icon,
@@ -2150,13 +2162,21 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
         g_signal_connect(G_OBJECT(icon), "position-changed",
                          G_CALLBACK(xfdesktop_file_icon_position_changed),
                          fmanager);
-        g_signal_connect(G_OBJECT(icon), "activated",
-                         G_CALLBACK(xfdesktop_file_icon_activated), fmanager);
+        g_signal_connect_after(G_OBJECT(icon), "activated",
+                               G_CALLBACK(xfdesktop_file_icon_activated),
+                               fmanager);
         g_signal_connect(G_OBJECT(icon), "menu-popup",
                          G_CALLBACK(xfdesktop_file_icon_menu_popup), fmanager);
         xfdesktop_icon_view_add_item(fmanager->priv->icon_view,
                                      XFDESKTOP_ICON(icon));
     }
+    
+#if defined(DEBUG) && DEBUG > 0
+    if(do_add) {
+        _alive_icon_list = g_list_prepend(_alive_icon_list, icon);
+        g_object_weak_ref(G_OBJECT(icon), _icon_notify_destroy, NULL);
+    }
+#endif
     
     return do_add;
 }
@@ -2244,6 +2264,10 @@ xfdesktop_remove_icons_ht(gpointer key,
     return TRUE;
 }
 
+#if defined(DEBUG) && DEBUG > 0
+guint _xfdesktop_icon_view_n_items(XfdesktopIconView *icon_view);
+#endif
+
 static void
 xfdesktop_file_icon_manager_refresh_icons(XfdesktopFileIconManager *fmanager)
 {
@@ -2277,6 +2301,11 @@ xfdesktop_file_icon_manager_refresh_icons(XfdesktopFileIconManager *fmanager)
                                     (GHRFunc)xfdesktop_remove_icons_ht,
                                     fmanager->priv->icon_view);
     }
+    
+#if defined(DEBUG) && DEBUG > 0
+    g_assert(_xfdesktop_icon_view_n_items(fmanager->priv->icon_view) == 0);
+    g_assert(g_list_length(_alive_icon_list) == 0);
+#endif
     
     /* clear out anything left in the icon view */
     xfdesktop_icon_view_remove_all(fmanager->priv->icon_view);
@@ -2730,6 +2759,8 @@ xfdesktop_file_icon_manager_remove_removable_media(XfdesktopFileIconManager *fma
     g_signal_handlers_disconnect_by_func(G_OBJECT(thunar_volume_manager),
                                          G_CALLBACK(xfdesktop_file_icon_manager_volumes_removed),
                                          fmanager);
+    
+    DBG("refcnt of volmanager: %d", G_OBJECT(thunar_volume_manager)->ref_count);
     g_object_unref(G_OBJECT(thunar_volume_manager));
 }
 

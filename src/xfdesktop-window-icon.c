@@ -69,7 +69,7 @@ static XfdesktopIconDragResult xfdesktop_window_icon_do_drop_dest(XfdesktopIcon 
                                                                   GdkDragAction action);
 
 static void xfdesktop_window_icon_selected(XfdesktopIcon *icon);
-static void xfdesktop_window_icon_activated(XfdesktopIcon *icon);
+static gboolean xfdesktop_window_icon_activated(XfdesktopIcon *icon);
 static void xfdesktop_window_icon_menu_popup(XfdesktopIcon *icon);
 
 static void xfdesktop_window_name_changed_cb(NetkWindow *window,
@@ -332,12 +332,14 @@ xfdesktop_window_icon_selected(XfdesktopIcon *icon)
     /* nada */
 }
 
-static void
+static gboolean
 xfdesktop_window_icon_activated(XfdesktopIcon *icon)
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
     
     netk_window_activate(window_icon->priv->window);
+    
+    return TRUE;
 }
 
 

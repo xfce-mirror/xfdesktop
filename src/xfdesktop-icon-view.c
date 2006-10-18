@@ -2954,3 +2954,11 @@ xfdesktop_icon_view_get_window_widget(XfdesktopIconView *icon_view)
     
     return icon_view->priv->parent_window;
 }
+
+#if defined(DEBUG) && DEBUG > 0
+guint
+_xfdesktop_icon_view_n_items(XfdesktopIconView *icon_view)
+{
+    return g_list_length(icon_view->priv->pending_icons) + g_list_length(icon_view->priv->icons);
+}
+#endif
