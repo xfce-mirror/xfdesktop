@@ -409,12 +409,10 @@ xfdesktop_volume_icon_menu_toggle_mount(GtkWidget *widget,
                                         gpointer user_data)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(user_data);
-    GtkWidget *toplevel = NULL;
+    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
+    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
     GError *error = NULL;
     gboolean is_mount;
-    
-    /* FIXME */
-    /* toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view)); */
     
     is_mount = !thunar_vfs_volume_is_mounted(icon->priv->volume);
     
