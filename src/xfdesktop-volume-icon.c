@@ -255,7 +255,10 @@ xfdesktop_volume_icon_interactive_job_ask(ThunarVfsJob *job,
                                           ThunarVfsInteractiveJobResponse choices,
                                           gpointer user_data)
 {
-    return xfdesktop_file_utils_interactive_job_ask(NULL, message, choices);
+    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(user_data));
+    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
+    return xfdesktop_file_utils_interactive_job_ask(GTK_WINDOW(toplevel),
+                                                    message, choices);
 }
 
 static void
@@ -452,16 +455,14 @@ xfdesktop_volume_icon_menu_eject(GtkWidget *widget,
                                  gpointer user_data)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(user_data);
-    GtkWidget *toplevel = NULL;
     GError *error = NULL;
-    
-    /* FIXME */
-    /* toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view)); */
+    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
+    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
     
     if(!thunar_vfs_volume_eject(icon->priv->volume, toplevel, &error)) {
         gchar *primary = g_markup_printf_escaped(_("Unable to eject \"%s\":"),
                                                  thunar_vfs_volume_get_name(icon->priv->volume));
-        xfce_message_dialog(toplevel ? GTK_WINDOW(toplevel) : NULL,
+        xfce_message_dialog(GTK_WINDOW(toplevel),
                             _("Eject Failed"), GTK_STOCK_DIALOG_ERROR,
                             primary, error->message,
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
@@ -487,24 +488,23 @@ xfdesktop_volume_icon_menu_open(GtkWidget *widget,
     ThunarVfsVolume *volume = (ThunarVfsVolume *)xfdesktop_volume_icon_peek_volume(icon);
     GError *error = NULL;
     ThunarVfsPath *new_path = NULL;
+    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
+    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
     
     info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
     
     if(!thunar_vfs_volume_is_mounted(volume)) {
-        /* FIXME: need toplevel parent here */
-        if(!thunar_vfs_volume_mount(volume, NULL, &error)) {
+        if(!thunar_vfs_volume_mount(volume, toplevel, &error)) {
             gchar *primary = g_markup_printf_escaped(_("Unable to mount \"%s\":"),
                                                      thunar_vfs_volume_get_name(volume));
-            GtkWidget *dlg = xfce_message_dialog_new(NULL, _("Mount Failed"),
+            GtkWidget *dlg = xfce_message_dialog_new(GTK_WINDOW(toplevel),
+                                                     _("Mount Failed"),
                                                      GTK_STOCK_DIALOG_ERROR,
                                                      primary,
                                                      error ? error->message
                                                            : _("Unknown error."),
                                                      GTK_STOCK_CLOSE,
                                                      GTK_RESPONSE_ACCEPT, NULL);
-            gtk_widget_unrealize(dlg);
-            xfce_gtk_window_center_on_monitor(GTK_WINDOW(dlg),
-                                              icon->priv->gscreen, 0);
             gtk_dialog_run(GTK_DIALOG(dlg));
             gtk_widget_destroy(dlg);
             g_free(primary);
@@ -533,7 +533,8 @@ xfdesktop_volume_icon_menu_open(GtkWidget *widget,
         return;
     }
     
-    xfdesktop_file_utils_open_folder(info, icon->priv->gscreen, NULL);
+    xfdesktop_file_utils_open_folder(info, icon->priv->gscreen,
+                                     GTK_WINDOW(toplevel));
 }
 
 static GtkWidget *

@@ -291,7 +291,10 @@ xfdesktop_regular_file_icon_interactive_job_ask(ThunarVfsJob *job,
                                                 ThunarVfsInteractiveJobResponse choices,
                                                 gpointer user_data)
 {
-    return xfdesktop_file_utils_interactive_job_ask(NULL, message, choices);
+    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(user_data));
+    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
+    return xfdesktop_file_utils_interactive_job_ask(GTK_WINDOW(toplevel),
+                                                    message, choices);
 }
 
 static void
@@ -477,10 +480,13 @@ xfdesktop_delete_file_error(ThunarVfsJob *job,
                             gpointer user_data)
 {
     XfdesktopRegularFileIcon *icon = XFDESKTOP_REGULAR_FILE_ICON(user_data);
+    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
+    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
     gchar *primary = g_markup_printf_escaped("There was an error deleting \"%s\":",
                                              icon->priv->info->display_name);
                                      
-    xfce_message_dialog(NULL, _("Error"), GTK_STOCK_DIALOG_ERROR, primary,
+    xfce_message_dialog(GTK_WINDOW(toplevel), _("Error"),
+                        GTK_STOCK_DIALOG_ERROR, primary,
                         error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
                         NULL);
     
@@ -529,7 +535,7 @@ xfdesktop_regular_file_icon_delete_file(XfdesktopFileIcon *icon)
 
 static gboolean
 xfdesktop_regular_file_icon_rename_file(XfdesktopFileIcon *icon,
-                                const gchar *new_name)
+                                        const gchar *new_name)
 {
     XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
     GError *error = NULL;
@@ -538,10 +544,13 @@ xfdesktop_regular_file_icon_rename_file(XfdesktopFileIcon *icon,
                          && *new_name, FALSE);
     
     if(!thunar_vfs_info_rename(regular_file_icon->priv->info, new_name, &error)) {
+        GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
+        GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
         gchar *primary = g_markup_printf_escaped(_("Failed to rename \"%s\" to \"%s\":"),
                                                  regular_file_icon->priv->info->display_name,
                                                  new_name);
-        xfce_message_dialog(NULL, _("Error"), GTK_STOCK_DIALOG_ERROR,
+        xfce_message_dialog(GTK_WINDOW(toplevel), _("Error"),
+                            GTK_STOCK_DIALOG_ERROR,
                             primary, error->message,
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
         g_free(primary);

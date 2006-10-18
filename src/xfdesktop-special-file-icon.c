@@ -303,7 +303,10 @@ xfdesktop_special_file_icon_interactive_job_ask(ThunarVfsJob *job,
                                                 ThunarVfsInteractiveJobResponse choices,
                                                 gpointer user_data)
 {
-    return xfdesktop_file_utils_interactive_job_ask(NULL, message, choices);
+    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(user_data));
+    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
+    return xfdesktop_file_utils_interactive_job_ask(GTK_WINDOW(toplevel),
+                                                    message, choices);
 }
 
 static void
@@ -450,18 +453,19 @@ xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon)
 }
 
 static void
-xfdesktop_special_file_icon_trash_handle_error(GdkScreen *gscreen,
+xfdesktop_special_file_icon_trash_handle_error(XfdesktopSpecialFileIcon *icon,
                                                const gchar *method,
                                                const gchar *message)
 {
-    GtkWidget *dlg = xfce_message_dialog_new(NULL, _("Trash Error"),
+    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
+    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
+    GtkWidget *dlg = xfce_message_dialog_new(GTK_WINDOW(toplevel),
+                                             _("Trash Error"),
                                              GTK_STOCK_DIALOG_WARNING,
                                              _("Unable to contact the Xfce Trash service."),
                                              _("Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."),
                                              GTK_STOCK_CLOSE,
                                              GTK_RESPONSE_ACCEPT, NULL);
-    gtk_widget_unrealize(dlg);
-    xfce_gtk_window_center_on_monitor(GTK_WINDOW(dlg), gscreen, 0);
     gtk_dialog_run(GTK_DIALOG(dlg));
     gtk_widget_destroy(dlg);
     
@@ -475,10 +479,12 @@ xfdesktop_special_file_icon_trash_open_cb(DBusGProxy *proxy,
                                           gpointer user_data)
 {
     if(error) {
-        xfdesktop_special_file_icon_trash_handle_error(GDK_SCREEN(user_data),
+        xfdesktop_special_file_icon_trash_handle_error(XFDESKTOP_SPECIAL_FILE_ICON(user_data),
                                                        "DisplayTrash",
                                                         error->message);
     }
+    
+    g_object_unref(G_OBJECT(user_data));
 }
 
 static void
@@ -487,10 +493,12 @@ xfdesktop_special_file_icon_trash_empty_cb(DBusGProxy *proxy,
                                            gpointer user_data)
 {
     if(error) {
-        xfdesktop_special_file_icon_trash_handle_error(GDK_SCREEN(user_data),
+        xfdesktop_special_file_icon_trash_handle_error(XFDESKTOP_SPECIAL_FILE_ICON(user_data),
                                                        "EmptyTrash",
                                                         error->message);
     }
+    
+    g_object_unref(G_OBJECT(user_data));
 }
 
 static void
@@ -505,12 +513,13 @@ xfdesktop_special_file_icon_trash_open(GtkWidget *w,
         if(!org_xfce_Trash_display_trash_async(file_icon->priv->dbus_proxy,
                                                display_name,
                                                xfdesktop_special_file_icon_trash_open_cb,
-                                               file_icon->priv->gscreen))
+                                               file_icon))
         {
-            xfdesktop_special_file_icon_trash_handle_error(file_icon->priv->gscreen,
+            xfdesktop_special_file_icon_trash_handle_error(file_icon,
                                                            "DisplayTrash",
                                                             NULL);
-        }
+        } else
+            g_object_ref(G_OBJECT(file_icon));
         g_free(display_name);
     }
 }
@@ -527,12 +536,13 @@ xfdesktop_special_file_icon_trash_empty(GtkWidget *w,
         if(!org_xfce_Trash_empty_trash_async(file_icon->priv->dbus_proxy,
                                              display_name,
                                              xfdesktop_special_file_icon_trash_empty_cb,
-                                             file_icon->priv->gscreen))
+                                             file_icon))
         {
-            xfdesktop_special_file_icon_trash_handle_error(file_icon->priv->gscreen,
+            xfdesktop_special_file_icon_trash_handle_error(file_icon,
                                                            "EmptyTrash",
                                                             NULL);
-        }
+        } else
+            g_object_ref(G_OBJECT(file_icon));
         g_free(display_name);
     }
 }
@@ -610,7 +620,7 @@ xfdesktop_special_file_icon_query_trash_cb(DBusGProxy *proxy,
     XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
     
     if(error) {
-        xfdesktop_special_file_icon_trash_handle_error(icon->priv->gscreen,
+        xfdesktop_special_file_icon_trash_handle_error(icon,
                                                        "QueryTrash",
                                                        error->message);
     } else {
@@ -675,7 +685,7 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
                                                     xfdesktop_special_file_icon_query_trash_cb,
                                                     special_file_icon);
             if(!call) {
-                xfdesktop_special_file_icon_trash_handle_error(special_file_icon->priv->gscreen,
+                xfdesktop_special_file_icon_trash_handle_error(special_file_icon,
                                                                "QueryTrash",
                                                                NULL);
             }
