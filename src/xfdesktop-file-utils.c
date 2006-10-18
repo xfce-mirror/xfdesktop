@@ -297,50 +297,112 @@ xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
 }
 
 gboolean
-xfdesktop_file_utils_launch_external(const ThunarVfsInfo *info,
-                                     GdkScreen *screen)
+xfdesktop_file_utils_launch_fallback(const ThunarVfsInfo *info,
+                                     GdkScreen *screen,
+                                     GtkWindow *parent)
 {
     gboolean ret = FALSE;
-    gchar *folder_name, *display_name;
-    DBusGProxy *fileman_proxy;
+    gchar *file_manager_app;
     
     g_return_val_if_fail(info, FALSE);
     
-    if(!screen)
-        screen = gdk_display_get_default_screen(gdk_display_get_default());
+    file_manager_app = g_find_program_in_path(FILE_MANAGER_FALLBACK);
+    if(file_manager_app) {
+        gchar *commandline, *uri, *display_name;
+        
+        if(!screen && parent)
+            screen = gtk_widget_get_screen(GTK_WIDGET(parent));
+        else if(!screen)
+            screen = gdk_display_get_default_screen(gdk_display_get_default());
+        
+        display_name = gdk_screen_make_display_name(screen);
+        uri = thunar_vfs_path_dup_uri(info->path);
+        
+        commandline = g_strconcat("env DISPLAY=\"", display_name,
+                                  "\" \"", file_manager_app, "\" \"",
+                                  uri, "\"", NULL);
+        
+        DBG("executing:\n%s\n", commandline);
+        
+        ret = xfce_exec(commandline, FALSE, TRUE, NULL);
+        
+        g_free(commandline);
+        g_free(file_manager_app);
+        g_free(uri);
+        g_free(display_name);
+    }
     
-    folder_name = thunar_vfs_path_dup_uri(info->path);
-    display_name = gdk_screen_make_display_name(screen);
+    if(!ret) {
+        gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
+                                                 info->display_name);
+        xfce_message_dialog(GTK_WINDOW(parent),
+                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                            primary,
+                            _("This feature requires a file manager service present (such as that supplied by Thunar)."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+        g_free(primary);
+    }
+    
+    return ret;
+}
+
+typedef struct
+{
+    const ThunarVfsInfo *info;
+    GdkScreen *screen;
+    GtkWindow *parent;
+} XfdesktopDisplayFolderData;
+
+static void
+xfdesktop_file_utils_display_folder_cb(DBusGProxy *proxy,
+                                       GError *error,
+                                       gpointer user_data)
+{
+    g_return_if_fail(user_data);
+    
+    if(error) {
+        XfdesktopDisplayFolderData *dfdata = user_data;
+        xfdesktop_file_utils_launch_fallback(dfdata->info, dfdata->screen,
+                                             dfdata->parent);
+    }
+    
+    g_free(user_data);
+}
+
+void
+xfdesktop_file_utils_open_folder(const ThunarVfsInfo *info,
+                                 GdkScreen *screen,
+                                 GtkWindow *parent)
+{
+    DBusGProxy *fileman_proxy;
+    
+    g_return_if_fail(info && (screen || parent));
+    
+    if(!screen)
+        screen = gtk_widget_get_screen(GTK_WIDGET(parent));
     
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
     if(fileman_proxy) {
-        /* i don't like doing this sync, but i don't want to break this
-         * function's return value */
-        ret = org_xfce_FileManager_launch(fileman_proxy, folder_name,
-                                          display_name, NULL);
-    }
-
-    /* hardcoded fallback to a file manager if that didn't work */
-    if(!ret) {
-        gchar *file_manager_app = g_find_program_in_path(FILE_MANAGER_FALLBACK);
+        XfdesktopDisplayFolderData *dfdata = g_new(XfdesktopDisplayFolderData, 1);
+        gchar *uri = thunar_vfs_path_dup_uri(info->path);
+        gchar *display_name = gdk_screen_make_display_name(screen);
         
-        if(file_manager_app) {
-            gchar *commandline = g_strconcat("env DISPLAY=\"", display_name,
-                                             "\" \"", file_manager_app, "\" \"",
-                                             folder_name, "\"", NULL);
-            
-            DBG("executing:\n%s\n", commandline);
-            
-            ret = xfce_exec(commandline, FALSE, TRUE, NULL);
-            g_free(commandline);
-            g_free(file_manager_app);
+        dfdata->info = info;
+        dfdata->screen = screen;
+        dfdata->parent = parent;
+        if(!org_xfce_FileManager_display_folder_async(fileman_proxy,
+                                                      uri, display_name,
+                                                      xfdesktop_file_utils_display_folder_cb,
+                                                      dfdata))
+        {
+            xfdesktop_file_utils_launch_fallback(info, screen, parent);
+            g_free(dfdata);
         }
-    }
-
-    g_free(display_name);
-    g_free(folder_name);
-    
-    return ret;
+        
+        g_free(uri);
+        g_free(display_name);
+    } else
+        xfdesktop_file_utils_launch_fallback(info, screen, parent);
 }
 
 

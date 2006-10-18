@@ -67,8 +67,13 @@ GdkPixbuf *xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
                                               const GdkPixbuf *emblem,
                                               guint opacity);
 
-gboolean xfdesktop_file_utils_launch_external(const ThunarVfsInfo *info,
-                                              GdkScreen *screen);
+gboolean xfdesktop_file_utils_launch_fallback(const ThunarVfsInfo *info,
+                                              GdkScreen *screen,
+                                              GtkWindow *parent);
+
+void xfdesktop_file_utils_open_folder(const ThunarVfsInfo *info,
+                                      GdkScreen *screen,
+                                      GtkWindow *parent);
 
 
 gboolean xfdesktop_file_utils_dbus_init();

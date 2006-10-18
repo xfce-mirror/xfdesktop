@@ -533,23 +533,7 @@ xfdesktop_volume_icon_menu_open(GtkWidget *widget,
         return;
     }
     
-    
-    if(!xfdesktop_file_utils_launch_external(info, icon->priv->gscreen)) {
-        gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
-                                                 info->display_name);
-        GtkWidget *dlg = xfce_message_dialog_new(NULL, _("Launch Error"),
-                                                 GTK_STOCK_DIALOG_ERROR,
-                                                 primary,
-                                                 _("The associated application could not be found or executed."),
-                                                 GTK_STOCK_CLOSE,
-                                                 GTK_RESPONSE_ACCEPT, NULL);
-        gtk_widget_unrealize(dlg);
-        xfce_gtk_window_center_on_monitor(GTK_WINDOW(dlg),
-                                          icon->priv->gscreen, 0);
-        gtk_dialog_run(GTK_DIALOG(dlg));
-        gtk_widget_destroy(dlg);
-        g_free(primary);
-    }
+    xfdesktop_file_utils_open_folder(info, icon->priv->gscreen, NULL);
 }
 
 static GtkWidget *
