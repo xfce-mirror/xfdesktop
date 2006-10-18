@@ -4,9 +4,6 @@ before 4.4.0:
   it and they're mostly the same (and some of them are buggy).  need to
   preserve semantics where volume icon gets mounted before a file is dropped
   on it.
-* fix icon activation so there's a way for the icon itself to "hook" it before
-  the manager actually activates it.  needed so volumes can try to mount
-  themselves before they're open.
 * need a way to determine if the *source* file can be dropped onto another
   icon.  currently we only check to see if the destination icon can accept
   a drop.  this is needed to determine if we can trash a particular file,
