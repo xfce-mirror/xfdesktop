@@ -596,56 +596,15 @@ static gboolean
 xfdesktop_volume_icon_activated(XfdesktopIcon *icon_p)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(icon_p);
-    const ThunarVfsInfo *info;
     ThunarVfsVolume *volume = (ThunarVfsVolume *)xfdesktop_volume_icon_peek_volume(icon);
-    GError *error = NULL;
-    ThunarVfsPath *new_path = NULL;
-    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
-    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
-    
-    info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
     
     if(!thunar_vfs_volume_is_mounted(volume)) {
-        if(!thunar_vfs_volume_mount(volume, toplevel, &error)) {
-            gchar *primary = g_markup_printf_escaped(_("Unable to mount \"%s\":"),
-                                                     thunar_vfs_volume_get_name(volume));
-            GtkWidget *dlg = xfce_message_dialog_new(GTK_WINDOW(toplevel),
-                                                     _("Mount Failed"),
-                                                     GTK_STOCK_DIALOG_ERROR,
-                                                     primary,
-                                                     error ? error->message
-                                                           : _("Unknown error."),
-                                                     GTK_STOCK_CLOSE,
-                                                     GTK_RESPONSE_ACCEPT, NULL);
-            gtk_dialog_run(GTK_DIALOG(dlg));
-            gtk_widget_destroy(dlg);
-            g_free(primary);
-            g_error_free(error);
-        }
+        xfdesktop_volume_icon_menu_toggle_mount(NULL, icon);
+        if(!thunar_vfs_volume_is_mounted(volume))
+            return TRUE;  /* mount failed; halt signal emission */
     }
     
-    new_path = thunar_vfs_volume_get_mount_point(volume);
-        
-    if(new_path && (!info
-                    || !thunar_vfs_path_equal(info->path, new_path)))
-    {
-        ThunarVfsInfo *new_info = thunar_vfs_info_new_for_path(new_path,
-                                                               NULL);
-        if(new_info) {
-            xfdesktop_file_icon_update_info(XFDESKTOP_FILE_ICON(icon),
-                                            new_info);
-            thunar_vfs_info_unref(new_info);
-        }
-    }
-    
-    info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
-    if(!info || !new_path) {
-        /* if |new_path| is NULL, but |info| isn't, it's possible we have
-         * a stale |info|, and we shouldn't continue */
-        return TRUE;  /* failed, so halt emission of the signal */
-    }
-    
-    return FALSE;
+    return FALSE;  /* volume is mounted; continue */
 }
 
 
