@@ -98,6 +98,8 @@ XfdesktopIconDragResult xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
 
 GtkWidget *xfdesktop_icon_get_popup_menu(XfdesktopIcon *icon);
 
+GtkWidget *xfdesktop_icon_peek_icon_view(XfdesktopIcon *icon);
+
 /*< signal triggers >*/
 
 void xfdesktop_icon_pixbuf_changed(XfdesktopIcon *icon);

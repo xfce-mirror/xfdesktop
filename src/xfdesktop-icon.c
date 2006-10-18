@@ -288,6 +288,13 @@ xfdesktop_icon_get_popup_menu(XfdesktopIcon *icon)
     return iface->get_popup_menu(icon);
 }
 
+GtkWidget *
+xfdesktop_icon_peek_icon_view(XfdesktopIcon *icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    return g_object_get_data(G_OBJECT(icon), "--xfdesktop-icon-view");
+}
+
 /*< signal triggers >*/
 
 void
