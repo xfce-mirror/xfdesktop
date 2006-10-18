@@ -1,9 +1,22 @@
-* not sure how to make these coexist with the desktop menu:
-  - "arrange items"/"auto arrange" menu option
-* rubber banding?  probably not.
+before 4.4.0:
+
+* move DnD handling to one place.  right now there are about four copies of
+  it and they're mostly the same (and some of them are buggy).  need to
+  preserve semantics where volume icon gets mounted before a file is dropped
+  on it.
+* fix icon activation so there's a way for the icon itself to "hook" it before
+  the manager actually activates it.  needed so volumes can try to mount
+  themselves before they're open.
 * need a way to determine if the *source* file can be dropped onto another
   icon.  currently we only check to see if the destination icon can accept
   a drop.  this is needed to determine if we can trash a particular file,
   and also so we don't try to move things like removable volumes.
-* make whether to show removable volume icons a pref
-* make whether to show special file icons a pref
+
+eh, if i get to it:
+
+* not sure how to make these coexist with the desktop menu:
+  - "arrange items"/"auto arrange" menu option
+* rubber banding?  probably not.
+* make whether to show removable volume icons a pref (maybe hidden pref)
+* make whether to show special file icons a pref (maybe hidden pref)
+
