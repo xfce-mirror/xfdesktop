@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-15 00:03-0700\n"
+"POT-Creation-Date: 2006-10-17 23:10-0700\n"
 "PO-Revision-Date: 2005-04-06 19:28+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bangla INDIA <LL@li.org>\n"
@@ -16,81 +16,98 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
 
-#: ../menueditor/menueditor-add-dialog.c:113
+#: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
 msgstr "মেনু এন্ট্রি যোগ করুন"
 
 #. Type
-#: ../menueditor/menueditor-add-dialog.c:126
-#: ../menueditor/menueditor-add-dialog.c:127
+#: ../menueditor/menueditor-add-dialog.c:142
+#: ../menueditor/menueditor-add-dialog.c:143
 #: ../menueditor/menueditor-add-external-dialog.c:113
 #: ../menueditor/menueditor-add-external-dialog.c:114
 msgid "Type:"
 msgstr "ধরন:"
 
-#: ../menueditor/menueditor-add-dialog.c:135
+#: ../menueditor/menueditor-add-dialog.c:151
 msgid "Title"
 msgstr "শিরোনাম"
 
-#: ../menueditor/menueditor-add-dialog.c:136
+#: ../menueditor/menueditor-add-dialog.c:152
 msgid "Submenu"
 msgstr "সাব-মেনু"
 
-#: ../menueditor/menueditor-add-dialog.c:137
+#: ../menueditor/menueditor-add-dialog.c:153
 msgid "Launcher"
 msgstr "লঞ্চার"
 
-#: ../menueditor/menueditor-add-dialog.c:138
+#: ../menueditor/menueditor-add-dialog.c:154
 msgid "Separator"
 msgstr "বিভাজক"
 
-#: ../menueditor/menueditor-add-dialog.c:139
+#: ../menueditor/menueditor-add-dialog.c:155
 msgid "Quit"
 msgstr "প্রস্থান"
 
 #. Name
-#: ../menueditor/menueditor-add-dialog.c:146
-#: ../menueditor/menueditor-add-dialog.c:147
-#: ../menueditor/menueditor-edit-dialog.c:122
-#: ../menueditor/menueditor-edit-dialog.c:123
-#: ../src/xfdesktop-file-properties-dialog.c:187
+#: ../menueditor/menueditor-add-dialog.c:162
+#: ../menueditor/menueditor-add-dialog.c:163
+#: ../menueditor/menueditor-edit-dialog.c:140
+#: ../menueditor/menueditor-edit-dialog.c:141
+#: ../src/xfdesktop-file-properties-dialog.c:188
 msgid "Name:"
 msgstr "নাম:"
 
 #. Command
-#: ../menueditor/menueditor-add-dialog.c:160
-#: ../menueditor/menueditor-add-dialog.c:161
-#: ../menueditor/menueditor-edit-dialog.c:136
-#: ../menueditor/menueditor-edit-dialog.c:137
+#: ../menueditor/menueditor-add-dialog.c:176
+#: ../menueditor/menueditor-add-dialog.c:177
+#: ../menueditor/menueditor-edit-dialog.c:154
+#: ../menueditor/menueditor-edit-dialog.c:155
 msgid "Command:"
 msgstr "কমান্ড:"
 
-#: ../menueditor/menueditor-add-dialog.c:190
-#: ../menueditor/menueditor-add-dialog.c:191
-#: ../menueditor/menueditor-edit-dialog.c:166
-#: ../menueditor/menueditor-edit-dialog.c:167
+#. Icon chooser
+#: ../menueditor/menueditor-add-dialog.c:201
+#: ../menueditor/menueditor-add-dialog.c:202
+#: ../menueditor/menueditor-add-dialog.c:244
+#: ../menueditor/menueditor-add-dialog.c:245
+#: ../menueditor/menueditor-edit-dialog.c:179
+#: ../menueditor/menueditor-edit-dialog.c:180
+#: ../menueditor/menueditor-edit-dialog.c:222
+#: ../menueditor/menueditor-edit-dialog.c:223
+msgid "Icon:"
+msgstr "আইকন:"
+
+#. setup a label to tell that no icon was selected
+#: ../menueditor/menueditor-add-dialog.c:213
+#: ../menueditor/menueditor-add-dialog.c:330
+#: ../menueditor/menueditor-edit-dialog.c:191
+#: ../menueditor/menueditor-edit-dialog.c:586
+#, fuzzy
+msgid "No icon"
+msgstr "বাটন আইকন:(_B)"
+
+#: ../menueditor/menueditor-add-dialog.c:225
+#: ../menueditor/menueditor-add-dialog.c:226
+#: ../menueditor/menueditor-edit-dialog.c:203
+#: ../menueditor/menueditor-edit-dialog.c:204
 #, fuzzy
 msgid "Themed icon:"
 msgstr "আইকন নির্বাচন করুন"
 
-#: ../menueditor/menueditor-add-dialog.c:209
-#: ../menueditor/menueditor-add-dialog.c:210
-#: ../menueditor/menueditor-edit-dialog.c:185
-#: ../menueditor/menueditor-edit-dialog.c:186
-msgid "Icon:"
-msgstr "আইকন:"
-
-#: ../menueditor/menueditor-add-dialog.c:217
-#: ../menueditor/menueditor-edit-dialog.c:193
+#. allocate the chooser dialog
+#: ../menueditor/menueditor-add-dialog.c:252
+#: ../menueditor/menueditor-add-dialog.c:347
+#: ../menueditor/menueditor-edit-dialog.c:230
+#: ../menueditor/menueditor-edit-dialog.c:384
 #, fuzzy
 msgid "Select icon"
 msgstr "আইকন নির্বাচন করুন"
 
-#: ../menueditor/menueditor-add-dialog.c:222
-#: ../menueditor/menueditor-add-dialog.c:300
+#: ../menueditor/menueditor-add-dialog.c:257
+#: ../menueditor/menueditor-add-dialog.c:437
 #: ../menueditor/menueditor-add-external-dialog.c:142
-#: ../menueditor/menueditor-edit-dialog.c:198
-#: ../menueditor/menueditor-edit-dialog.c:276
+#: ../menueditor/menueditor-edit-dialog.c:235
+#: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:600
 #: ../settings/appearance-settings.c:532
@@ -99,8 +116,8 @@ msgstr "আইকন নির্বাচন করুন"
 msgid "All Files"
 msgstr "সমস্ত ফাইল"
 
-#: ../menueditor/menueditor-add-dialog.c:226
-#: ../menueditor/menueditor-edit-dialog.c:202
+#: ../menueditor/menueditor-add-dialog.c:261
+#: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:606
 #: ../settings/appearance-settings.c:536
 #: ../settings/backdrop-list-manager.c:439
@@ -108,46 +125,46 @@ msgid "Image Files"
 msgstr "ছবির ফাইল"
 
 #. Start Notify check button
-#: ../menueditor/menueditor-add-dialog.c:247
-#: ../menueditor/menueditor-edit-dialog.c:223
+#: ../menueditor/menueditor-add-dialog.c:283
+#: ../menueditor/menueditor-edit-dialog.c:261
 msgid "Use startup _notification"
 msgstr "প্রারম্ভিক বিজ্ঞপ্তি ব্যবহার করা হবে (_n)"
 
 #. Run in terminal check button
-#: ../menueditor/menueditor-add-dialog.c:252
-#: ../menueditor/menueditor-edit-dialog.c:228
+#: ../menueditor/menueditor-add-dialog.c:288
+#: ../menueditor/menueditor-edit-dialog.c:266
 msgid "Run in _terminal"
 msgstr "টার্মিনালে আরম্ভ করুন (_t)"
 
-#: ../menueditor/menueditor-add-dialog.c:290
-#: ../menueditor/menueditor-edit-dialog.c:266
+#: ../menueditor/menueditor-add-dialog.c:427
+#: ../menueditor/menueditor-edit-dialog.c:286
 #: ../menueditor/menueditor-main-window.c:450
 msgid "Select command"
 msgstr "কমান্ড নির্বাচন করুন"
 
-#: ../menueditor/menueditor-add-dialog.c:305
-#: ../menueditor/menueditor-edit-dialog.c:281
+#: ../menueditor/menueditor-add-dialog.c:442
+#: ../menueditor/menueditor-edit-dialog.c:301
 #, fuzzy
 msgid "Executable Files"
 msgstr "মেনু ফাইল নির্বাচন করুন"
 
-#: ../menueditor/menueditor-add-dialog.c:320
-#: ../menueditor/menueditor-edit-dialog.c:296
+#: ../menueditor/menueditor-add-dialog.c:457
+#: ../menueditor/menueditor-edit-dialog.c:316
 msgid "Perl Scripts"
 msgstr ""
 
-#: ../menueditor/menueditor-add-dialog.c:326
-#: ../menueditor/menueditor-edit-dialog.c:302
+#: ../menueditor/menueditor-add-dialog.c:463
+#: ../menueditor/menueditor-edit-dialog.c:322
 msgid "Python Scripts"
 msgstr ""
 
-#: ../menueditor/menueditor-add-dialog.c:332
-#: ../menueditor/menueditor-edit-dialog.c:308
+#: ../menueditor/menueditor-add-dialog.c:469
+#: ../menueditor/menueditor-edit-dialog.c:328
 msgid "Ruby Scripts"
 msgstr ""
 
-#: ../menueditor/menueditor-add-dialog.c:338
-#: ../menueditor/menueditor-edit-dialog.c:314
+#: ../menueditor/menueditor-add-dialog.c:475
+#: ../menueditor/menueditor-edit-dialog.c:334
 msgid "Shell Scripts"
 msgstr ""
 
@@ -208,7 +225,7 @@ msgstr "মাল্টি-লেভেল"
 msgid "_Unique entries only"
 msgstr "শুধুমাত্র একক মান গ্রহণযোগ্য (_U)"
 
-#: ../menueditor/menueditor-edit-dialog.c:109
+#: ../menueditor/menueditor-edit-dialog.c:127
 msgid "Edit menu entry"
 msgstr "মেনুর এন্ট্রি সম্পাদন করুন"
 
@@ -236,8 +253,8 @@ msgid "Create a new empty menu"
 msgstr "একটি নতুন Xfce4 মেনু ফাইল নির্মাণ করুন"
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1402
-#: ../src/xfdesktop-special-file-icon.c:488 ../src/xfdesktop-volume-icon.c:562
+#: ../src/xfdesktop-file-icon-manager.c:1632
+#: ../src/xfdesktop-special-file-icon.c:563 ../src/xfdesktop-volume-icon.c:493
 msgid "_Open"
 msgstr ""
 
@@ -408,7 +425,7 @@ msgstr "ফাইল বন্ধ করার পূর্বে কি আপ�
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:573 ../src/xfdesktop-file-utils.c:52
+#: ../src/xfdesktop-file-icon-manager.c:625 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "প্রশ্ন"
 
@@ -436,65 +453,70 @@ msgid "Save menu file as"
 msgstr "মেনু ফাইল খুলুন"
 
 #: ../menueditor/menueditor-main-window.c:632
-#: ../menueditor/menueditor-main-window.c:1341
+#: ../menueditor/menueditor-main-window.c:1343
 msgid "Do you want to save before closing the menu ?"
 msgstr "মেনু বন্ধ করার পূর্বে কি আপনি সংরক্ষণ করতে ইচ্ছুক ?"
 
-#: ../menueditor/menueditor-main-window.c:856
-#: ../menueditor/menueditor-main-window.c:986
+#: ../menueditor/menueditor-main-window.c:858
+#: ../menueditor/menueditor-main-window.c:988
 msgid "quit"
 msgstr "প্রস্থান"
 
-#: ../menueditor/menueditor-main-window.c:961
-#: ../menueditor/menueditor-main-window.c:1582
+#: ../menueditor/menueditor-main-window.c:963
+#: ../menueditor/menueditor-main-window.c:1584
 msgid "--- separator ---"
 msgstr "--- বিভাজন রেখা ---"
 
-#: ../menueditor/menueditor-main-window.c:1079
-#: ../menueditor/menueditor-main-window.c:1086
-#: ../menueditor/menueditor-main-window.c:1636
+#: ../menueditor/menueditor-main-window.c:1081
+#: ../menueditor/menueditor-main-window.c:1088
+#: ../menueditor/menueditor-main-window.c:1638
 msgid "--- include ---"
 msgstr "--- অন্তর্ভুক্ত করা হবে ---"
 
-#: ../menueditor/menueditor-main-window.c:1087
-#: ../menueditor/menueditor-main-window.c:1653
+#: ../menueditor/menueditor-main-window.c:1089
+#: ../menueditor/menueditor-main-window.c:1655
 msgid "system"
 msgstr "সিস্টেম"
 
-#: ../menueditor/menueditor-main-window.c:1213
-#: ../menueditor/menueditor-main-window.c:1261
+#: ../menueditor/menueditor-main-window.c:1215
+#: ../menueditor/menueditor-main-window.c:1263
 msgid "Do you want to move the item into the submenu?"
 msgstr "আপনি কি বস্তুটি সাব-মেনুর মধ্যে স্থানান্তর করতে ইচ্ছুক?"
 
-#: ../menueditor/menueditor-main-window.c:1291
+#: ../menueditor/menueditor-main-window.c:1293
 msgid "A menu editor for Xfce4"
 msgstr "Xfce4-র মধ্যে ব্যবহারের জন্য মেনু এডিটার"
 
 #. Credits
-#: ../menueditor/menueditor-main-window.c:1296
+#: ../menueditor/menueditor-main-window.c:1298
 msgid "Author/Maintainer"
 msgstr ""
 
-#: ../menueditor/menueditor-main-window.c:1297
-#: ../menueditor/menueditor-main-window.c:1298
 #: ../menueditor/menueditor-main-window.c:1299
+#: ../menueditor/menueditor-main-window.c:1300
+#: ../menueditor/menueditor-main-window.c:1301
 msgid "Contributor"
 msgstr "অংশগ্রহণকারী"
 
-#: ../menueditor/menueditor-main-window.c:1300
+#: ../menueditor/menueditor-main-window.c:1302
 msgid "Icon designer"
 msgstr "আইকন নির্মাতা"
 
-#: ../menueditor/menueditor-main-window.c:1343
+#: ../menueditor/menueditor-main-window.c:1345
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr ""
 "আপনি মেনুর মধ্যে কিছু পরিবর্তন করেছেন, প্রস্থান করার পূর্বে কি আপনি এই পরিবর্তনগুলি "
 "সংরক্ষণ করতে ইচ্ছুক ?"
 
-#: ../menueditor/menueditor-main-window.c:1345
+#: ../menueditor/menueditor-main-window.c:1347
 #, fuzzy
 msgid "Forget modifications"
 msgstr "পরিবর্তন অগ্রাহ্য করা হবে"
+
+#: ../menueditor/menueditor-main-window.c:2035
+#, c-format
+msgid "Unable to open the menu file %s in write mode"
+msgstr ""
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
@@ -656,31 +678,40 @@ msgstr "মাপানুসারে"
 msgid "A_djust Brightness:"
 msgstr "উজ্জ্বলতা পরিবর্তন করুন: (_B)"
 
-#: ../settings/appearance-settings.c:801
+#: ../settings/appearance-settings.c:803
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr ""
 
-#: ../settings/appearance-settings.c:802
+#: ../settings/appearance-settings.c:804
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:806
-#: ../src/xfdesktop-regular-file-icon.c:472
-#: ../src/xfdesktop-regular-file-icon.c:533
+#: ../settings/appearance-settings.c:808
+#: ../src/xfdesktop-regular-file-icon.c:488
+#: ../src/xfdesktop-regular-file-icon.c:552
 msgid "Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:808
+#: ../settings/appearance-settings.c:810
 msgid "Unable to start xfdesktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:826
+#: ../settings/appearance-settings.c:832
 #, fuzzy
 msgid "Information"
 msgstr "পরিবর্তন অগ্রাহ্য করা হবে"
 
-#: ../settings/appearance-settings.c:836
+#: ../settings/appearance-settings.c:845
+msgid ""
+"To ensure that this setting takes effect the next time you start Xfce, "
+"please be sure to save your session when logging out.  If you are not using "
+"the Xfce Session Manager (xfce4-session), you will need to manually edit "
+"your ~/.config/xfce4/xinitrc file.  Details are available in the "
+"documentation provided on http://xfce.org/."
+msgstr ""
+
+#: ../settings/appearance-settings.c:847
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -689,84 +720,84 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 
-#: ../settings/appearance-settings.c:844
+#: ../settings/appearance-settings.c:855
 msgid "_Do not show this again"
 msgstr ""
 
 #. the dialog
-#: ../settings/appearance-settings.c:911
+#: ../settings/appearance-settings.c:921
 #, fuzzy
 msgid "Desktop Preferences"
 msgstr "ডেস্কটপ সংক্রান্ত বৈশিষ্ট্য"
 
-#: ../settings/appearance-settings.c:928
+#: ../settings/appearance-settings.c:938
 msgid "Allow _Xfce to manage the desktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:969
+#: ../settings/appearance-settings.c:979
 msgid "Stretch single backdrop onto _all monitors"
 msgstr ""
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:983
-#: ../settings/appearance-settings.c:1165
+#: ../settings/appearance-settings.c:993
+#: ../settings/appearance-settings.c:1175
 msgid "_Appearance"
 msgstr ""
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1009
+#: ../settings/appearance-settings.c:1019
 msgid "Color"
 msgstr "রং"
 
-#: ../settings/appearance-settings.c:1023
+#: ../settings/appearance-settings.c:1033
 msgid "_Color Style:"
 msgstr "রং-র ধরন:(_C)"
 
-#: ../settings/appearance-settings.c:1030
+#: ../settings/appearance-settings.c:1040
 msgid "Solid Color"
 msgstr "সুষম রং"
 
-#: ../settings/appearance-settings.c:1031
+#: ../settings/appearance-settings.c:1041
 msgid "Horizontal Gradient"
 msgstr "অনুভুমিক ঢল"
 
-#: ../settings/appearance-settings.c:1032
+#: ../settings/appearance-settings.c:1042
 msgid "Vertical Gradient"
 msgstr "উলম্ব ঢল"
 
-#: ../settings/appearance-settings.c:1045
+#: ../settings/appearance-settings.c:1055
 msgid "Fi_rst Color:"
 msgstr "প্রথম রং: (_r)"
 
-#: ../settings/appearance-settings.c:1066
+#: ../settings/appearance-settings.c:1076
 msgid "_Second Color:"
 msgstr "দ্বিতীয় রং: (_S)"
 
-#: ../settings/appearance-settings.c:1091
+#: ../settings/appearance-settings.c:1101
 msgid "Image"
 msgstr "ছবি"
 
-#: ../settings/appearance-settings.c:1099
+#: ../settings/appearance-settings.c:1109
 msgid "Show _Image"
 msgstr "ছবি প্রদর্শন করুন (_I)"
 
-#: ../settings/appearance-settings.c:1121
+#: ../settings/appearance-settings.c:1131
 msgid "_File:"
 msgstr "ফাইল: (_F)"
 
-#: ../settings/appearance-settings.c:1176
-#: ../settings/appearance-settings.c:1178
+#: ../settings/appearance-settings.c:1186
+#: ../settings/appearance-settings.c:1188
 #, c-format
 msgid "Screen %d"
 msgstr "পর্দা %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1183
+#: ../settings/appearance-settings.c:1193
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "পর্দা %d, মনিটর %d"
 
-#: ../settings/appearance-settings.c:1200
+#: ../settings/appearance-settings.c:1210
 msgid "_Behavior"
 msgstr ""
 
@@ -836,7 +867,7 @@ msgid "Desktop Icons"
 msgstr "ডেস্কটপ মেনু"
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-properties-dialog.c:137
+#: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "None"
 msgstr ""
 
@@ -863,76 +894,76 @@ msgstr "মেনু ফাইল খুলুন"
 msgid "Custom _font size:"
 msgstr ""
 
-#: ../src/main.c:250
+#: ../src/main.c:255
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr ""
 
-#: ../src/main.c:252
+#: ../src/main.c:257
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr ""
 
-#: ../src/main.c:256
+#: ../src/main.c:261
 msgid "Build options:\n"
 msgstr ""
 
-#: ../src/main.c:257
+#: ../src/main.c:262
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr ""
 
-#: ../src/main.c:259 ../src/main.c:266 ../src/main.c:273
+#: ../src/main.c:264 ../src/main.c:271 ../src/main.c:278
 #, fuzzy
 msgid "enabled"
 msgstr "মাপানুসারে"
 
-#: ../src/main.c:261 ../src/main.c:268 ../src/main.c:275
+#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
 #, fuzzy
 msgid "disabled"
 msgstr "টাইলযুক্ত"
 
-#: ../src/main.c:264
+#: ../src/main.c:269
 #, fuzzy, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "ডেস্কটপ মেনু"
 
-#: ../src/main.c:271
+#: ../src/main.c:276
 #, fuzzy, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "ডেস্কটপ মেনু"
 
-#: ../src/main.c:298
+#: ../src/main.c:305
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: অজানা অপশন: %s\n"
 
-#: ../src/main.c:299
+#: ../src/main.c:306
 msgid "Options are:\n"
 msgstr "অপশনগুলি হল:\n"
 
-#: ../src/main.c:300
+#: ../src/main.c:307
 #, fuzzy
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload      সমস্ত বৈশিষ্ট্য পুনরায় লোড করুন, ছবির তালিকা নতুন করে প্রদর্শন করুন\n"
 
-#: ../src/main.c:301
+#: ../src/main.c:308
 #, fuzzy
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        মেনু পপ-আপ করবে (মাউসের বর্তমান অবস্থানে)\n"
 
-#: ../src/main.c:302
+#: ../src/main.c:309
 #, fuzzy
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  উইন্ডোর তালিকা পপ-আপ করবে (মাউসের বর্তমান অবস্থানে)\n"
 
-#: ../src/main.c:303
+#: ../src/main.c:310
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr ""
 
-#: ../src/main.c:318
+#: ../src/main.c:325
 #, c-format
 msgid "%s is not running.\n"
 msgstr ""
@@ -961,242 +992,242 @@ msgstr "কর্মক্ষেত্র %d মুছে ফেলুন (_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "কর্মক্ষেত্র '%s' মুছে ফেলুন (_R)"
 
-#: ../src/xfce-desktop.c:552
+#: ../src/xfce-desktop.c:542
 msgid "Desktop"
 msgstr "ডেস্কটপ"
 
-#: ../src/xfdesktop-file-icon-manager.c:244
+#: ../src/xfdesktop-file-icon-manager.c:257
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:246
-#: ../src/xfdesktop-file-icon-manager.c:255
-#: ../src/xfdesktop-file-icon-manager.c:894
+#: ../src/xfdesktop-file-icon-manager.c:259
+#: ../src/xfdesktop-file-icon-manager.c:268
+#: ../src/xfdesktop-file-icon-manager.c:1124
 msgid "Create Folder Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:253
+#: ../src/xfdesktop-file-icon-manager.c:266
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:257
+#: ../src/xfdesktop-file-icon-manager.c:270
 msgid "Please delete or rename the file."
 msgstr ""
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:364
-#: ../src/xfdesktop-file-icon-manager.c:695
-#: ../src/xfdesktop-file-icon-manager.c:729
-#: ../src/xfdesktop-file-icon-manager.c:1328
-#: ../src/xfdesktop-volume-icon.c:536
+#: ../src/xfdesktop-file-icon-manager.c:441
+#: ../src/xfdesktop-file-icon-manager.c:861
+#: ../src/xfdesktop-file-icon-manager.c:1558 ../src/xfdesktop-file-utils.c:336
 #, fuzzy, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:366
-#: ../src/xfdesktop-file-icon-manager.c:697
-#: ../src/xfdesktop-file-icon-manager.c:732
-#: ../src/xfdesktop-file-icon-manager.c:928
-#: ../src/xfdesktop-file-icon-manager.c:1330
-#: ../src/xfdesktop-special-file-icon.c:436
-#: ../src/xfdesktop-special-file-icon.c:465 ../src/xfdesktop-volume-icon.c:538
+#: ../src/xfdesktop-file-icon-manager.c:443
+#: ../src/xfdesktop-file-icon-manager.c:863
+#: ../src/xfdesktop-file-icon-manager.c:903
+#: ../src/xfdesktop-file-icon-manager.c:1158
+#: ../src/xfdesktop-file-icon-manager.c:1560 ../src/xfdesktop-file-utils.c:339
 #, fuzzy
 msgid "Launch Error"
 msgstr "লঞ্চার"
 
-#: ../src/xfdesktop-file-icon-manager.c:368 ../src/xfdesktop-volume-icon.c:541
+#: ../src/xfdesktop-file-icon-manager.c:445
 msgid "The associated application could not be found or executed."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:495
+#: ../src/xfdesktop-file-icon-manager.c:576
 #, c-format
 msgid "Rename \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:502
-#: ../src/xfdesktop-file-icon-manager.c:966
-#: ../src/xfdesktop-file-icon-manager.c:1057
-#: ../src/xfdesktop-file-icon-manager.c:1068
+#: ../src/xfdesktop-file-icon-manager.c:583
+#: ../src/xfdesktop-file-icon-manager.c:1196
+#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1298
 msgid "Enter the new name:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:504
+#: ../src/xfdesktop-file-icon-manager.c:585
 #, fuzzy
 msgid "Rename"
 msgstr "মাপানুসারে"
 
-#: ../src/xfdesktop-file-icon-manager.c:570
+#: ../src/xfdesktop-file-icon-manager.c:622
 #, fuzzy, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "আপনি কি নিশ্চিতরূপে বর্তমান মেনুটি বন্ধ করতে ইচ্ছুক?"
 
-#: ../src/xfdesktop-file-icon-manager.c:575
-#: ../src/xfdesktop-file-icon-manager.c:595
+#: ../src/xfdesktop-file-icon-manager.c:627
+#: ../src/xfdesktop-file-icon-manager.c:647
 msgid "If you delete a file, it is permanently lost."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:589
+#: ../src/xfdesktop-file-icon-manager.c:641
 #, fuzzy, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "আপনি কি নিশ্চিতরূপে বর্তমান মেনুটি বন্ধ করতে ইচ্ছুক?"
 
-#: ../src/xfdesktop-file-icon-manager.c:592
+#: ../src/xfdesktop-file-icon-manager.c:644
 #, fuzzy
 msgid "Delete Multiple Files"
 msgstr "মেনু ফাইল নির্বাচন করুন"
 
-#: ../src/xfdesktop-file-icon-manager.c:734
+#: ../src/xfdesktop-file-icon-manager.c:904
+msgid "The application chooser could not be opened."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:905 ../src/xfdesktop-file-utils.c:341
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:827
+#: ../src/xfdesktop-file-icon-manager.c:1057
 #, c-format
 msgid "_Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:830
+#: ../src/xfdesktop-file-icon-manager.c:1060
 #, c-format
 msgid "Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:891
+#: ../src/xfdesktop-file-icon-manager.c:1121
 #, fuzzy, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:930
+#: ../src/xfdesktop-file-icon-manager.c:1160
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:963
+#: ../src/xfdesktop-file-icon-manager.c:1193
 msgid "Create New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:967
+#: ../src/xfdesktop-file-icon-manager.c:1197
 msgid "New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:968
-#: ../src/xfdesktop-file-icon-manager.c:1059
-#: ../src/xfdesktop-file-icon-manager.c:1070
+#: ../src/xfdesktop-file-icon-manager.c:1198
+#: ../src/xfdesktop-file-icon-manager.c:1289
+#: ../src/xfdesktop-file-icon-manager.c:1300
 msgid "Create"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1004
+#: ../src/xfdesktop-file-icon-manager.c:1234
 #, fuzzy, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1007
+#: ../src/xfdesktop-file-icon-manager.c:1237
 #, fuzzy
 msgid "Create File Failed"
 msgstr "মেনু ফাইল নির্বাচন করুন"
 
-#: ../src/xfdesktop-file-icon-manager.c:1046
+#: ../src/xfdesktop-file-icon-manager.c:1276
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1065
+#: ../src/xfdesktop-file-icon-manager.c:1295
 msgid "Create Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1069
+#: ../src/xfdesktop-file-icon-manager.c:1299
 msgid "New Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1102
+#: ../src/xfdesktop-file-icon-manager.c:1332
 #, fuzzy, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1103
+#: ../src/xfdesktop-file-icon-manager.c:1333
 #, fuzzy
 msgid "Create Error"
 msgstr "পটভূমির তালিকা সম্পাদন করুন"
 
-#: ../src/xfdesktop-file-icon-manager.c:1387
+#: ../src/xfdesktop-file-icon-manager.c:1617
 msgid "_Open all"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1417
+#: ../src/xfdesktop-file-icon-manager.c:1647
 msgid "_Execute"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1434
+#: ../src/xfdesktop-file-icon-manager.c:1664
 #, fuzzy
 msgid "_Edit Launcher"
 msgstr "লঞ্চার"
 
-#: ../src/xfdesktop-file-icon-manager.c:1474
+#: ../src/xfdesktop-file-icon-manager.c:1704
 msgid "Open With"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1504
+#: ../src/xfdesktop-file-icon-manager.c:1735
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1604
+#: ../src/xfdesktop-file-icon-manager.c:1834
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1620
-#: ../src/xfdesktop-volume-icon.c:612
+#: ../src/xfdesktop-file-icon-manager.c:1850
+#: ../src/xfdesktop-volume-icon.c:543
 #, fuzzy
 msgid "_Properties..."
 msgstr "পটভূমির তালিকা সম্পাদন করুন"
 
-#: ../src/xfdesktop-file-icon-manager.c:1637
+#: ../src/xfdesktop-file-icon-manager.c:1867
 #, fuzzy
 msgid "Des_ktop"
 msgstr "ডেস্কটপ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1656
+#: ../src/xfdesktop-file-icon-manager.c:1886
 #, fuzzy
 msgid "Create _Launcher..."
 msgstr "লঞ্চার"
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
+#: ../src/xfdesktop-file-icon-manager.c:1907
 msgid "Create _URL Link..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1694
+#: ../src/xfdesktop-file-icon-manager.c:1924
 #, fuzzy
 msgid "Create _Folder..."
 msgstr "পটভূমির তালিকা সম্পাদন করুন"
 
-#: ../src/xfdesktop-file-icon-manager.c:1736
+#: ../src/xfdesktop-file-icon-manager.c:1966
 #, fuzzy
 msgid "_Empty File"
 msgstr "ফাইল (_F)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1777
+#: ../src/xfdesktop-file-icon-manager.c:2007
 #, fuzzy
 msgid "Desktop _Settings..."
 msgstr "ডেস্কটপ সংক্রান্ত বৈশিষ্ট্য"
 
-#: ../src/xfdesktop-file-icon-manager.c:1786
+#: ../src/xfdesktop-file-icon-manager.c:2016
 #, fuzzy
 msgid "_Desktop Properties..."
 msgstr "পটভূমির তালিকা সম্পাদন করুন"
 
-#: ../src/xfdesktop-file-icon-manager.c:2794
-#: ../src/xfdesktop-regular-file-icon.c:349
+#: ../src/xfdesktop-file-icon-manager.c:3183
+#: ../src/xfdesktop-regular-file-icon.c:353
 #, fuzzy, c-format
 msgid "Failed to run \"%s\":"
 msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:2796
-#: ../src/xfdesktop-regular-file-icon.c:351
+#: ../src/xfdesktop-file-icon-manager.c:3185
+#: ../src/xfdesktop-regular-file-icon.c:355
 msgid "Run Error"
 msgstr ""
 
@@ -1210,119 +1241,119 @@ msgstr ""
 msgid "Properties Error"
 msgstr "পটভূমির তালিকা সম্পাদন করুন"
 
-#: ../src/xfdesktop-file-properties-dialog.c:137
+#: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Write only"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:137
+#: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read only"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:137
+#: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read & Write"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:162
+#: ../src/xfdesktop-file-properties-dialog.c:163
 msgid "General"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:213
+#: ../src/xfdesktop-file-properties-dialog.c:214
 msgid "Kind:"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:233
+#: ../src/xfdesktop-file-properties-dialog.c:234
 msgid "Link Target:"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:250
-#: ../src/xfdesktop-file-properties-dialog.c:409
+#: ../src/xfdesktop-file-properties-dialog.c:251
+#: ../src/xfdesktop-file-properties-dialog.c:410
 msgid "(unknown)"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:272
+#: ../src/xfdesktop-file-properties-dialog.c:273
 msgid "Open With:"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:349
+#: ../src/xfdesktop-file-properties-dialog.c:350
 msgid "Modified:"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:367
+#: ../src/xfdesktop-file-properties-dialog.c:368
 msgid "Accessed:"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:394
+#: ../src/xfdesktop-file-properties-dialog.c:395
 msgid "Free Space:"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:396
+#: ../src/xfdesktop-file-properties-dialog.c:397
 msgid "Size:"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:412
-#: ../src/xfdesktop-regular-file-icon.c:450
-#: ../src/xfdesktop-special-file-icon.c:404 ../src/xfdesktop-volume-icon.c:391
+#: ../src/xfdesktop-file-properties-dialog.c:413
+#: ../src/xfdesktop-regular-file-icon.c:454
+#: ../src/xfdesktop-special-file-icon.c:442 ../src/xfdesktop-volume-icon.c:396
 msgid "%s (%"
 msgstr ""
 
 #. permissions tab
-#: ../src/xfdesktop-file-properties-dialog.c:427
+#: ../src/xfdesktop-file-properties-dialog.c:428
 msgid "Permissions"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:449
+#: ../src/xfdesktop-file-properties-dialog.c:450
 msgid "Owner:"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:467
-#: ../src/xfdesktop-file-properties-dialog.c:505
+#: ../src/xfdesktop-file-properties-dialog.c:472
+#: ../src/xfdesktop-file-properties-dialog.c:510
 msgid "Access:"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:490
+#: ../src/xfdesktop-file-properties-dialog.c:495
 msgid "Group:"
 msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:528
+#: ../src/xfdesktop-file-properties-dialog.c:533
 #, fuzzy
 msgid "Others:"
 msgstr "/অন্যান্য"
 
-#: ../src/xfdesktop-file-utils.c:71
+#: ../src/xfdesktop-file-utils.c:74
 msgid "Yes to _all"
-msgstr ""
-
-#: ../src/xfdesktop-file-utils.c:103
-#, c-format
-msgid "There was an error moving \"%s\" to \"%s\":"
 msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:106
 #, c-format
-msgid "There was an error copying \"%s\" to \"%s\":"
+msgid "There was an error moving \"%s\" to \"%s\":"
 msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:109
 #, c-format
+msgid "There was an error copying \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:112
+#, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:118
+#: ../src/xfdesktop-file-utils.c:121
 #, fuzzy
 msgid "File Error"
 msgstr "পটভূমির তালিকা সম্পাদন করুন"
 
-#: ../src/xfdesktop-file-utils.c:134
+#: ../src/xfdesktop-file-utils.c:137
 msgid "broken link"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:138
+#: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "link to %s"
 msgstr ""
 
-#: ../src/xfdesktop-regular-file-icon.c:453
-#: ../src/xfdesktop-special-file-icon.c:407 ../src/xfdesktop-volume-icon.c:394
+#: ../src/xfdesktop-regular-file-icon.c:457
+#: ../src/xfdesktop-special-file-icon.c:445 ../src/xfdesktop-volume-icon.c:399
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -1330,84 +1361,74 @@ msgid ""
 "Size: %s"
 msgstr ""
 
-#: ../src/xfdesktop-regular-file-icon.c:530
+#: ../src/xfdesktop-regular-file-icon.c:549
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:233
+#: ../src/xfdesktop-special-file-icon.c:268
 msgid "Home"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:437
+#: ../src/xfdesktop-special-file-icon.c:463
 #, fuzzy
-msgid "Unable to open the trash."
-msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
+msgid "Trash Error"
+msgstr "লঞ্চার"
 
-#: ../src/xfdesktop-special-file-icon.c:438
-msgid ""
-"Viewing the contents of the trash requires a file manager that supports the "
-"Xfce trash service, such as Thunar."
-msgstr ""
+#: ../src/xfdesktop-special-file-icon.c:465
+#, fuzzy
+msgid "Unable to contact the Xfce Trash service."
+msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:466
-#, fuzzy
-msgid "Unable to empty the trash."
-msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
-
-#: ../src/xfdesktop-special-file-icon.c:467
 msgid ""
-"Emptying the trash requires a file manager that supports the Xfce trash "
+"Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:499
+#: ../src/xfdesktop-special-file-icon.c:574
 #, fuzzy
 msgid "_Empty Trash"
 msgstr "ফাইল (_F)"
 
-#: ../src/xfdesktop-volume-icon.c:438 ../src/xfdesktop-volume-icon.c:496
+#: ../src/xfdesktop-volume-icon.c:441
 #, fuzzy, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
 
-#: ../src/xfdesktop-volume-icon.c:439
+#: ../src/xfdesktop-volume-icon.c:442
 #, fuzzy, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
 
-#: ../src/xfdesktop-volume-icon.c:442 ../src/xfdesktop-volume-icon.c:498
+#: ../src/xfdesktop-volume-icon.c:445
 #, fuzzy
 msgid "Mount Failed"
 msgstr "মেনু ফাইল"
 
-#: ../src/xfdesktop-volume-icon.c:442
+#: ../src/xfdesktop-volume-icon.c:445
 #, fuzzy
 msgid "Unmount Failed"
 msgstr "মেনু ফাইল"
 
-#: ../src/xfdesktop-volume-icon.c:462
+#: ../src/xfdesktop-volume-icon.c:463
 #, fuzzy, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
 
-#: ../src/xfdesktop-volume-icon.c:465
+#: ../src/xfdesktop-volume-icon.c:466
 msgid "Eject Failed"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:502
-msgid "Unknown error."
-msgstr ""
-
-#: ../src/xfdesktop-volume-icon.c:573
+#: ../src/xfdesktop-volume-icon.c:504
 msgid "_Mount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:584
+#: ../src/xfdesktop-volume-icon.c:515
 msgid "_Unmount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:598
+#: ../src/xfdesktop-volume-icon.c:529
 msgid "E_ject Volume"
 msgstr ""
 
@@ -1438,6 +1459,10 @@ msgstr "Xfce 4 ডেস্কটপ নিয়ন্ত্রক সংক্র
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 ডেস্কটপের বৈশিষ্ট্য"
+
+#, fuzzy
+#~ msgid "Unable to empty the trash."
+#~ msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
 
 #, fuzzy
 #~ msgid "_Copy Files"

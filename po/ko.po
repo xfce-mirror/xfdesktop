@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-15 00:03-0700\n"
+"POT-Creation-Date: 2006-10-17 23:10-0700\n"
 "PO-Revision-Date: 2006-10-09 17:27+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
@@ -16,79 +16,96 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../menueditor/menueditor-add-dialog.c:113
+#: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
 msgstr "메뉴 항목 추가"
 
 #. Type
-#: ../menueditor/menueditor-add-dialog.c:126
-#: ../menueditor/menueditor-add-dialog.c:127
+#: ../menueditor/menueditor-add-dialog.c:142
+#: ../menueditor/menueditor-add-dialog.c:143
 #: ../menueditor/menueditor-add-external-dialog.c:113
 #: ../menueditor/menueditor-add-external-dialog.c:114
 msgid "Type:"
 msgstr "형태:"
 
-#: ../menueditor/menueditor-add-dialog.c:135
+#: ../menueditor/menueditor-add-dialog.c:151
 msgid "Title"
 msgstr "제목"
 
-#: ../menueditor/menueditor-add-dialog.c:136
+#: ../menueditor/menueditor-add-dialog.c:152
 msgid "Submenu"
 msgstr "하위 메뉴"
 
-#: ../menueditor/menueditor-add-dialog.c:137
+#: ../menueditor/menueditor-add-dialog.c:153
 msgid "Launcher"
 msgstr "실행기"
 
-#: ../menueditor/menueditor-add-dialog.c:138
+#: ../menueditor/menueditor-add-dialog.c:154
 msgid "Separator"
 msgstr "분리 표시"
 
-#: ../menueditor/menueditor-add-dialog.c:139
+#: ../menueditor/menueditor-add-dialog.c:155
 msgid "Quit"
 msgstr "종료"
 
 #. Name
-#: ../menueditor/menueditor-add-dialog.c:146
-#: ../menueditor/menueditor-add-dialog.c:147
-#: ../menueditor/menueditor-edit-dialog.c:122
-#: ../menueditor/menueditor-edit-dialog.c:123
-#: ../src/xfdesktop-file-properties-dialog.c:187
+#: ../menueditor/menueditor-add-dialog.c:162
+#: ../menueditor/menueditor-add-dialog.c:163
+#: ../menueditor/menueditor-edit-dialog.c:140
+#: ../menueditor/menueditor-edit-dialog.c:141
+#: ../src/xfdesktop-file-properties-dialog.c:188
 msgid "Name:"
 msgstr "이름:"
 
 #. Command
-#: ../menueditor/menueditor-add-dialog.c:160
-#: ../menueditor/menueditor-add-dialog.c:161
-#: ../menueditor/menueditor-edit-dialog.c:136
-#: ../menueditor/menueditor-edit-dialog.c:137
+#: ../menueditor/menueditor-add-dialog.c:176
+#: ../menueditor/menueditor-add-dialog.c:177
+#: ../menueditor/menueditor-edit-dialog.c:154
+#: ../menueditor/menueditor-edit-dialog.c:155
 msgid "Command:"
 msgstr "명령:"
 
-#: ../menueditor/menueditor-add-dialog.c:190
-#: ../menueditor/menueditor-add-dialog.c:191
-#: ../menueditor/menueditor-edit-dialog.c:166
-#: ../menueditor/menueditor-edit-dialog.c:167
-msgid "Themed icon:"
-msgstr "꾸며진 아이콘:"
-
-#: ../menueditor/menueditor-add-dialog.c:209
-#: ../menueditor/menueditor-add-dialog.c:210
-#: ../menueditor/menueditor-edit-dialog.c:185
-#: ../menueditor/menueditor-edit-dialog.c:186
+#. Icon chooser
+#: ../menueditor/menueditor-add-dialog.c:201
+#: ../menueditor/menueditor-add-dialog.c:202
+#: ../menueditor/menueditor-add-dialog.c:244
+#: ../menueditor/menueditor-add-dialog.c:245
+#: ../menueditor/menueditor-edit-dialog.c:179
+#: ../menueditor/menueditor-edit-dialog.c:180
+#: ../menueditor/menueditor-edit-dialog.c:222
+#: ../menueditor/menueditor-edit-dialog.c:223
 msgid "Icon:"
 msgstr "아이콘:"
 
-#: ../menueditor/menueditor-add-dialog.c:217
-#: ../menueditor/menueditor-edit-dialog.c:193
+#. setup a label to tell that no icon was selected
+#: ../menueditor/menueditor-add-dialog.c:213
+#: ../menueditor/menueditor-add-dialog.c:330
+#: ../menueditor/menueditor-edit-dialog.c:191
+#: ../menueditor/menueditor-edit-dialog.c:586
+#, fuzzy
+msgid "No icon"
+msgstr "버튼 아이콘(_B):"
+
+#: ../menueditor/menueditor-add-dialog.c:225
+#: ../menueditor/menueditor-add-dialog.c:226
+#: ../menueditor/menueditor-edit-dialog.c:203
+#: ../menueditor/menueditor-edit-dialog.c:204
+msgid "Themed icon:"
+msgstr "꾸며진 아이콘:"
+
+#. allocate the chooser dialog
+#: ../menueditor/menueditor-add-dialog.c:252
+#: ../menueditor/menueditor-add-dialog.c:347
+#: ../menueditor/menueditor-edit-dialog.c:230
+#: ../menueditor/menueditor-edit-dialog.c:384
 msgid "Select icon"
 msgstr "아이콘 선택"
 
-#: ../menueditor/menueditor-add-dialog.c:222
-#: ../menueditor/menueditor-add-dialog.c:300
+#: ../menueditor/menueditor-add-dialog.c:257
+#: ../menueditor/menueditor-add-dialog.c:437
 #: ../menueditor/menueditor-add-external-dialog.c:142
-#: ../menueditor/menueditor-edit-dialog.c:198
-#: ../menueditor/menueditor-edit-dialog.c:276
+#: ../menueditor/menueditor-edit-dialog.c:235
+#: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:600
 #: ../settings/appearance-settings.c:532
@@ -97,8 +114,8 @@ msgstr "아이콘 선택"
 msgid "All Files"
 msgstr "모든 화일"
 
-#: ../menueditor/menueditor-add-dialog.c:226
-#: ../menueditor/menueditor-edit-dialog.c:202
+#: ../menueditor/menueditor-add-dialog.c:261
+#: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:606
 #: ../settings/appearance-settings.c:536
 #: ../settings/backdrop-list-manager.c:439
@@ -106,45 +123,45 @@ msgid "Image Files"
 msgstr "그림 화일"
 
 #. Start Notify check button
-#: ../menueditor/menueditor-add-dialog.c:247
-#: ../menueditor/menueditor-edit-dialog.c:223
+#: ../menueditor/menueditor-add-dialog.c:283
+#: ../menueditor/menueditor-edit-dialog.c:261
 msgid "Use startup _notification"
 msgstr "시작과 동시에 알림(_n)"
 
 #. Run in terminal check button
-#: ../menueditor/menueditor-add-dialog.c:252
-#: ../menueditor/menueditor-edit-dialog.c:228
+#: ../menueditor/menueditor-add-dialog.c:288
+#: ../menueditor/menueditor-edit-dialog.c:266
 msgid "Run in _terminal"
 msgstr "터미널에서 실행하기(_t)"
 
-#: ../menueditor/menueditor-add-dialog.c:290
-#: ../menueditor/menueditor-edit-dialog.c:266
+#: ../menueditor/menueditor-add-dialog.c:427
+#: ../menueditor/menueditor-edit-dialog.c:286
 #: ../menueditor/menueditor-main-window.c:450
 msgid "Select command"
 msgstr "명령 선택"
 
-#: ../menueditor/menueditor-add-dialog.c:305
-#: ../menueditor/menueditor-edit-dialog.c:281
+#: ../menueditor/menueditor-add-dialog.c:442
+#: ../menueditor/menueditor-edit-dialog.c:301
 msgid "Executable Files"
 msgstr "실행화일"
 
-#: ../menueditor/menueditor-add-dialog.c:320
-#: ../menueditor/menueditor-edit-dialog.c:296
+#: ../menueditor/menueditor-add-dialog.c:457
+#: ../menueditor/menueditor-edit-dialog.c:316
 msgid "Perl Scripts"
 msgstr "펄 스크립트"
 
-#: ../menueditor/menueditor-add-dialog.c:326
-#: ../menueditor/menueditor-edit-dialog.c:302
+#: ../menueditor/menueditor-add-dialog.c:463
+#: ../menueditor/menueditor-edit-dialog.c:322
 msgid "Python Scripts"
 msgstr "파이썬 스크립트"
 
-#: ../menueditor/menueditor-add-dialog.c:332
-#: ../menueditor/menueditor-edit-dialog.c:308
+#: ../menueditor/menueditor-add-dialog.c:469
+#: ../menueditor/menueditor-edit-dialog.c:328
 msgid "Ruby Scripts"
 msgstr "루비 스크립트"
 
-#: ../menueditor/menueditor-add-dialog.c:338
-#: ../menueditor/menueditor-edit-dialog.c:314
+#: ../menueditor/menueditor-add-dialog.c:475
+#: ../menueditor/menueditor-edit-dialog.c:334
 msgid "Shell Scripts"
 msgstr "쉘 스크립트"
 
@@ -203,7 +220,7 @@ msgstr "다단계"
 msgid "_Unique entries only"
 msgstr "항목이 중복되지 않도록 함(_U)"
 
-#: ../menueditor/menueditor-edit-dialog.c:109
+#: ../menueditor/menueditor-edit-dialog.c:127
 msgid "Edit menu entry"
 msgstr "메뉴 항목 수정"
 
@@ -228,8 +245,8 @@ msgid "Create a new empty menu"
 msgstr "새로운 메뉴를 만듭니다."
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1402
-#: ../src/xfdesktop-special-file-icon.c:488 ../src/xfdesktop-volume-icon.c:562
+#: ../src/xfdesktop-file-icon-manager.c:1632
+#: ../src/xfdesktop-special-file-icon.c:563 ../src/xfdesktop-volume-icon.c:493
 msgid "_Open"
 msgstr "열기(_O)"
 
@@ -339,7 +356,7 @@ msgstr "메뉴 편집기에 대하여...(_A)"
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "Show informations about xfce4-menueditor"
-msgstr "Xfce4 메뉴 편집기 정보" 
+msgstr "Xfce4 메뉴 편집기 정보"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all"
@@ -380,7 +397,7 @@ msgstr "화일을 닫기 전에 저장하시렵니까?"
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:573 ../src/xfdesktop-file-utils.c:52
+#: ../src/xfdesktop-file-icon-manager.c:625 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "궁금"
 
@@ -407,62 +424,67 @@ msgid "Save menu file as"
 msgstr "메뉴 화일 저장"
 
 #: ../menueditor/menueditor-main-window.c:632
-#: ../menueditor/menueditor-main-window.c:1341
+#: ../menueditor/menueditor-main-window.c:1343
 msgid "Do you want to save before closing the menu ?"
 msgstr "메뉴를 닫기 전에 저장하시렵니까?"
 
-#: ../menueditor/menueditor-main-window.c:856
-#: ../menueditor/menueditor-main-window.c:986
+#: ../menueditor/menueditor-main-window.c:858
+#: ../menueditor/menueditor-main-window.c:988
 msgid "quit"
 msgstr "종료"
 
-#: ../menueditor/menueditor-main-window.c:961
-#: ../menueditor/menueditor-main-window.c:1582
+#: ../menueditor/menueditor-main-window.c:963
+#: ../menueditor/menueditor-main-window.c:1584
 msgid "--- separator ---"
 msgstr "--- 분리 표시 ---"
 
-#: ../menueditor/menueditor-main-window.c:1079
-#: ../menueditor/menueditor-main-window.c:1086
-#: ../menueditor/menueditor-main-window.c:1636
+#: ../menueditor/menueditor-main-window.c:1081
+#: ../menueditor/menueditor-main-window.c:1088
+#: ../menueditor/menueditor-main-window.c:1638
 msgid "--- include ---"
 msgstr "--- 외부 메뉴 ---"
 
-#: ../menueditor/menueditor-main-window.c:1087
-#: ../menueditor/menueditor-main-window.c:1653
+#: ../menueditor/menueditor-main-window.c:1089
+#: ../menueditor/menueditor-main-window.c:1655
 msgid "system"
 msgstr "시스템"
 
-#: ../menueditor/menueditor-main-window.c:1213
-#: ../menueditor/menueditor-main-window.c:1261
+#: ../menueditor/menueditor-main-window.c:1215
+#: ../menueditor/menueditor-main-window.c:1263
 msgid "Do you want to move the item into the submenu?"
 msgstr "항목을 하위 메뉴로 옮기시렵니까?"
 
-#: ../menueditor/menueditor-main-window.c:1291
+#: ../menueditor/menueditor-main-window.c:1293
 msgid "A menu editor for Xfce4"
 msgstr "Xfce4 메뉴 편집기"
 
 #. Credits
-#: ../menueditor/menueditor-main-window.c:1296
+#: ../menueditor/menueditor-main-window.c:1298
 msgid "Author/Maintainer"
 msgstr "만든이/관리하는이"
 
-#: ../menueditor/menueditor-main-window.c:1297
-#: ../menueditor/menueditor-main-window.c:1298
 #: ../menueditor/menueditor-main-window.c:1299
+#: ../menueditor/menueditor-main-window.c:1300
+#: ../menueditor/menueditor-main-window.c:1301
 msgid "Contributor"
 msgstr "도와주신 분들"
 
-#: ../menueditor/menueditor-main-window.c:1300
+#: ../menueditor/menueditor-main-window.c:1302
 msgid "Icon designer"
 msgstr "아이콘 디자인"
 
-#: ../menueditor/menueditor-main-window.c:1343
+#: ../menueditor/menueditor-main-window.c:1345
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "메뉴를 수정하셨군요, 종료하기 전에 저장하시렵니까?"
 
-#: ../menueditor/menueditor-main-window.c:1345
+#: ../menueditor/menueditor-main-window.c:1347
 msgid "Forget modifications"
 msgstr "수정한 것 무시"
+
+#: ../menueditor/menueditor-main-window.c:2035
+#, c-format
+msgid "Unable to open the menu file %s in write mode"
+msgstr ""
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
@@ -618,30 +640,44 @@ msgstr "크기조절"
 msgid "A_djust Brightness:"
 msgstr "밝기 조절(_B):"
 
-#: ../settings/appearance-settings.c:801
+#: ../settings/appearance-settings.c:803
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce로 현재의 데스크탑을 관리할 수 없습니다.(%s)"
 
-#: ../settings/appearance-settings.c:802
+#: ../settings/appearance-settings.c:804
 msgid "Unknown Error"
 msgstr "모르는 오류"
 
-#: ../settings/appearance-settings.c:806
-#: ../src/xfdesktop-regular-file-icon.c:472
-#: ../src/xfdesktop-regular-file-icon.c:533
+#: ../settings/appearance-settings.c:808
+#: ../src/xfdesktop-regular-file-icon.c:488
+#: ../src/xfdesktop-regular-file-icon.c:552
 msgid "Error"
 msgstr "오류"
 
-#: ../settings/appearance-settings.c:808
+#: ../settings/appearance-settings.c:810
 msgid "Unable to start xfdesktop"
 msgstr "xfdesktop을 기동시키지 못 했습니다."
 
-#: ../settings/appearance-settings.c:826
+#: ../settings/appearance-settings.c:832
 msgid "Information"
 msgstr "정보"
 
-#: ../settings/appearance-settings.c:836
+#: ../settings/appearance-settings.c:845
+#, fuzzy
+msgid ""
+"To ensure that this setting takes effect the next time you start Xfce, "
+"please be sure to save your session when logging out.  If you are not using "
+"the Xfce Session Manager (xfce4-session), you will need to manually edit "
+"your ~/.config/xfce4/xinitrc file.  Details are available in the "
+"documentation provided on http://xfce.org/."
+msgstr ""
+"다음 번에 xfce를 기동시키면서 데스크탑을 관리하지 않으려면, 로그 아웃할 때 세"
+"션을 저장하십시오. Xfce 세션 관리자(xfce4-session)을 사용하지 않으면, ~/."
+"config/xfce4/xinitrc 화일을 직접 수정하십시오. 자세한 것은 http://xfce.org/에"
+"서 제공하는 문서를 참고하십시오."
+
+#: ../settings/appearance-settings.c:847
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -654,83 +690,83 @@ msgstr ""
 "config/xfce4/xinitrc 화일을 직접 수정하십시오. 자세한 것은 http://xfce.org/에"
 "서 제공하는 문서를 참고하십시오."
 
-#: ../settings/appearance-settings.c:844
+#: ../settings/appearance-settings.c:855
 msgid "_Do not show this again"
 msgstr "다시 보지 않겠습니다.(_D)"
 
 #. the dialog
-#: ../settings/appearance-settings.c:911
+#: ../settings/appearance-settings.c:921
 msgid "Desktop Preferences"
 msgstr "작업공간 설정"
 
-#: ../settings/appearance-settings.c:928
+#: ../settings/appearance-settings.c:938
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Xfce로 데스크탑을 관리하겠습니다.(_X)"
 
-#: ../settings/appearance-settings.c:969
+#: ../settings/appearance-settings.c:979
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "배경화면을 전체 모니터에 맞게 늘입니다.(_a)"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:983
-#: ../settings/appearance-settings.c:1165
+#: ../settings/appearance-settings.c:993
+#: ../settings/appearance-settings.c:1175
 msgid "_Appearance"
 msgstr "겉 모습(_A)"
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1009
+#: ../settings/appearance-settings.c:1019
 msgid "Color"
 msgstr "색상"
 
-#: ../settings/appearance-settings.c:1023
+#: ../settings/appearance-settings.c:1033
 msgid "_Color Style:"
 msgstr "표현 방식(_C):"
 
-#: ../settings/appearance-settings.c:1030
+#: ../settings/appearance-settings.c:1040
 msgid "Solid Color"
 msgstr "단색"
 
-#: ../settings/appearance-settings.c:1031
+#: ../settings/appearance-settings.c:1041
 msgid "Horizontal Gradient"
 msgstr "수평으로 색 변화"
 
-#: ../settings/appearance-settings.c:1032
+#: ../settings/appearance-settings.c:1042
 msgid "Vertical Gradient"
 msgstr "수직으로 색 변화"
 
-#: ../settings/appearance-settings.c:1045
+#: ../settings/appearance-settings.c:1055
 msgid "Fi_rst Color:"
 msgstr "첫번째 색(_r):"
 
-#: ../settings/appearance-settings.c:1066
+#: ../settings/appearance-settings.c:1076
 msgid "_Second Color:"
 msgstr "두번째 색(_S):"
 
-#: ../settings/appearance-settings.c:1091
+#: ../settings/appearance-settings.c:1101
 msgid "Image"
 msgstr "그림"
 
-#: ../settings/appearance-settings.c:1099
+#: ../settings/appearance-settings.c:1109
 msgid "Show _Image"
 msgstr "그림 보이기(_I)"
 
-#: ../settings/appearance-settings.c:1121
+#: ../settings/appearance-settings.c:1131
 msgid "_File:"
 msgstr "화일(_F):"
 
-#: ../settings/appearance-settings.c:1176
-#: ../settings/appearance-settings.c:1178
+#: ../settings/appearance-settings.c:1186
+#: ../settings/appearance-settings.c:1188
 #, c-format
 msgid "Screen %d"
 msgstr "화면 %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1183
+#: ../settings/appearance-settings.c:1193
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "화면 %d, 모니터 %d"
 
-#: ../settings/appearance-settings.c:1200
+#: ../settings/appearance-settings.c:1210
 msgid "_Behavior"
 msgstr "동작(_B)"
 
@@ -795,7 +831,7 @@ msgid "Desktop Icons"
 msgstr "데스크탑 아이콘"
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-properties-dialog.c:137
+#: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "None"
 msgstr "없음"
 
@@ -819,71 +855,72 @@ msgstr "시스템글꼴 크기사용(_s):"
 msgid "Custom _font size:"
 msgstr "사용자 글꼴크기(_f):"
 
-#: ../src/main.c:250
+#: ../src/main.c:255
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s 버전 %s입니다. Xfce %s에서 동작 중입니다.\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:257
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "GTK+ %d.%d.%d로 만들고, GTK+ %d.%d.%d로 링크했습니다."
 
-#: ../src/main.c:256
+#: ../src/main.c:261
 msgid "Build options:\n"
 msgstr "빌드 옵션:\n"
 
-#: ../src/main.c:257
+#: ../src/main.c:262
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    데스크탑 메뉴:       %s\n"
 
-#: ../src/main.c:259 ../src/main.c:266 ../src/main.c:273
+#: ../src/main.c:264 ../src/main.c:271 ../src/main.c:278
 msgid "enabled"
 msgstr "사용함"
 
-#: ../src/main.c:261 ../src/main.c:268 ../src/main.c:275
+#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
 msgid "disabled"
 msgstr "사용안함"
 
-#: ../src/main.c:264
+#: ../src/main.c:269
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    데스크탑 아이콘:     %s\n"
 
-#: ../src/main.c:271
+#: ../src/main.c:276
+#, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    데스크탑 화일 아이콘:  %s\n"
 
-#: ../src/main.c:298
+#: ../src/main.c:305
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: 모르는 옵션: %s\n"
 
-#: ../src/main.c:299
+#: ../src/main.c:306
 msgid "Options are:\n"
 msgstr "옵션은 다음과 같니다:\n"
 
-#: ../src/main.c:300
+#: ../src/main.c:307
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload      모든 설정을 새로 읽어 오고, 그림 목록을 새로 고칩니다.\n"
 
-#: ../src/main.c:301
+#: ../src/main.c:308
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        메뉴를 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
 
-#: ../src/main.c:302
+#: ../src/main.c:309
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    -windowlist  창 목록을 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
 
-#: ../src/main.c:303
+#: ../src/main.c:310
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "   -quit        xfdesop을 종료하도록 합니다.\n"
 
-#: ../src/main.c:318
+#: ../src/main.c:325
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s는(은) 실행 중이지 않습니다.\n"
@@ -912,94 +949,98 @@ msgstr "작업공간 %d 삭제(_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "작업공간 '%s' 삭제(_R)"
 
-#: ../src/xfce-desktop.c:552
+#: ../src/xfce-desktop.c:542
 msgid "Desktop"
 msgstr "데스크탑"
 
-#: ../src/xfdesktop-file-icon-manager.c:244
+#: ../src/xfdesktop-file-icon-manager.c:257
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "Xfdesktop에서 데스크탑 항목을 저장하는 디렉토리 \"%s\"를(을) 만들지 못 했습니다.:"
+msgstr ""
+"Xfdesktop에서 데스크탑 항목을 저장하는 디렉토리 \"%s\"를(을) 만들지 못 했습니"
+"다.:"
 
-#: ../src/xfdesktop-file-icon-manager.c:246
-#: ../src/xfdesktop-file-icon-manager.c:255
-#: ../src/xfdesktop-file-icon-manager.c:894
+#: ../src/xfdesktop-file-icon-manager.c:259
+#: ../src/xfdesktop-file-icon-manager.c:268
+#: ../src/xfdesktop-file-icon-manager.c:1124
 msgid "Create Folder Failed"
 msgstr "디렉토리 생성 실패"
 
-#: ../src/xfdesktop-file-icon-manager.c:253
+#: ../src/xfdesktop-file-icon-manager.c:266
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
-msgstr "\"%s\"는 디렉토리가 아니므로 Xfdesktop에서 데스크탑 항목을 저장하는 "
-"디렉토리로 사용할 수 없습니다."
+msgstr ""
+"\"%s\"는 디렉토리가 아니므로 Xfdesktop에서 데스크탑 항목을 저장하는 디렉토리"
+"로 사용할 수 없습니다."
 
-#: ../src/xfdesktop-file-icon-manager.c:257
+#: ../src/xfdesktop-file-icon-manager.c:270
 msgid "Please delete or rename the file."
 msgstr "화일을 삭제하거나 이름을 변경하십시오."
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:364
-#: ../src/xfdesktop-file-icon-manager.c:695
-#: ../src/xfdesktop-file-icon-manager.c:729
-#: ../src/xfdesktop-file-icon-manager.c:1328
-#: ../src/xfdesktop-volume-icon.c:536
+#: ../src/xfdesktop-file-icon-manager.c:441
+#: ../src/xfdesktop-file-icon-manager.c:861
+#: ../src/xfdesktop-file-icon-manager.c:1558 ../src/xfdesktop-file-utils.c:336
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "실행 실패 \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:366
-#: ../src/xfdesktop-file-icon-manager.c:697
-#: ../src/xfdesktop-file-icon-manager.c:732
-#: ../src/xfdesktop-file-icon-manager.c:928
-#: ../src/xfdesktop-file-icon-manager.c:1330
-#: ../src/xfdesktop-special-file-icon.c:436
-#: ../src/xfdesktop-special-file-icon.c:465 ../src/xfdesktop-volume-icon.c:538
+#: ../src/xfdesktop-file-icon-manager.c:443
+#: ../src/xfdesktop-file-icon-manager.c:863
+#: ../src/xfdesktop-file-icon-manager.c:903
+#: ../src/xfdesktop-file-icon-manager.c:1158
+#: ../src/xfdesktop-file-icon-manager.c:1560 ../src/xfdesktop-file-utils.c:339
 msgid "Launch Error"
 msgstr "실행 오류"
 
-#: ../src/xfdesktop-file-icon-manager.c:368 ../src/xfdesktop-volume-icon.c:541
+#: ../src/xfdesktop-file-icon-manager.c:445
 msgid "The associated application could not be found or executed."
 msgstr "해당하는 프로그램을 못 찾았거나 실행시키지 못 했습니다."
 
-#: ../src/xfdesktop-file-icon-manager.c:495
+#: ../src/xfdesktop-file-icon-manager.c:576
 #, c-format
 msgid "Rename \"%s\""
 msgstr "\"%s\" 이름 변경"
 
-#: ../src/xfdesktop-file-icon-manager.c:502
-#: ../src/xfdesktop-file-icon-manager.c:966
-#: ../src/xfdesktop-file-icon-manager.c:1057
-#: ../src/xfdesktop-file-icon-manager.c:1068
+#: ../src/xfdesktop-file-icon-manager.c:583
+#: ../src/xfdesktop-file-icon-manager.c:1196
+#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1298
 msgid "Enter the new name:"
 msgstr "새로운 이름:"
 
-#: ../src/xfdesktop-file-icon-manager.c:504
+#: ../src/xfdesktop-file-icon-manager.c:585
 msgid "Rename"
 msgstr "이름 변경"
 
-#: ../src/xfdesktop-file-icon-manager.c:570
+#: ../src/xfdesktop-file-icon-manager.c:622
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "\"%s\"를(을) 지우시렵니까?"
 
-#: ../src/xfdesktop-file-icon-manager.c:575
-#: ../src/xfdesktop-file-icon-manager.c:595
+#: ../src/xfdesktop-file-icon-manager.c:627
+#: ../src/xfdesktop-file-icon-manager.c:647
 msgid "If you delete a file, it is permanently lost."
 msgstr "화일을 지우면, 영영 복구할 수 없습니다."
 
-#: ../src/xfdesktop-file-icon-manager.c:589
+#: ../src/xfdesktop-file-icon-manager.c:641
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "%d개의 화일을 지우시렵니까?"
 
-#: ../src/xfdesktop-file-icon-manager.c:592
+#: ../src/xfdesktop-file-icon-manager.c:644
 msgid "Delete Multiple Files"
 msgstr "여러 화일 삭제"
 
-#: ../src/xfdesktop-file-icon-manager.c:734
+#: ../src/xfdesktop-file-icon-manager.c:904
+#, fuzzy
+msgid "The application chooser could not be opened."
+msgstr "해당하는 프로그램을 못 찾았거나 실행시키지 못 했습니다."
+
+#: ../src/xfdesktop-file-icon-manager.c:905 ../src/xfdesktop-file-utils.c:341
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -1007,139 +1048,139 @@ msgstr ""
 "이 기능을 사용하시려면 Thunar에서 제공하는 화일 관리자 같은 서비스가 필요합니"
 "다."
 
-#: ../src/xfdesktop-file-icon-manager.c:827
+#: ../src/xfdesktop-file-icon-manager.c:1057
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "\"%s\"로 엽니다(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:830
+#: ../src/xfdesktop-file-icon-manager.c:1060
 #, c-format
 msgid "Open With \"%s\""
 msgstr "\"%s\"로 엽니다"
 
-#: ../src/xfdesktop-file-icon-manager.c:891
+#: ../src/xfdesktop-file-icon-manager.c:1121
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "디렉토리 \"%s\"을(를) 만들지 못 했습니다."
 
-#: ../src/xfdesktop-file-icon-manager.c:930
+#: ../src/xfdesktop-file-icon-manager.c:1160
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
-"데스크탑에 실행기와 링크를 만들고 수정할 수 있는 "
-"\"exo-desktop-item-edit\"을 기동시키지 못 했습니다."
+"데스크탑에 실행기와 링크를 만들고 수정할 수 있는 \"exo-desktop-item-edit\"을 "
+"기동시키지 못 했습니다."
 
-#: ../src/xfdesktop-file-icon-manager.c:963
+#: ../src/xfdesktop-file-icon-manager.c:1193
 msgid "Create New Folder"
 msgstr "새로운 디렉토리 생성"
 
-#: ../src/xfdesktop-file-icon-manager.c:967
+#: ../src/xfdesktop-file-icon-manager.c:1197
 msgid "New Folder"
 msgstr "새로운 디렉토리"
 
-#: ../src/xfdesktop-file-icon-manager.c:968
-#: ../src/xfdesktop-file-icon-manager.c:1059
-#: ../src/xfdesktop-file-icon-manager.c:1070
+#: ../src/xfdesktop-file-icon-manager.c:1198
+#: ../src/xfdesktop-file-icon-manager.c:1289
+#: ../src/xfdesktop-file-icon-manager.c:1300
 msgid "Create"
 msgstr "생성"
 
-#: ../src/xfdesktop-file-icon-manager.c:1004
+#: ../src/xfdesktop-file-icon-manager.c:1234
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "화일 \"%s\"을(를) 만들지 못 했습니다."
 
-#: ../src/xfdesktop-file-icon-manager.c:1007
+#: ../src/xfdesktop-file-icon-manager.c:1237
 msgid "Create File Failed"
 msgstr "화일 생성 실패"
 
-#: ../src/xfdesktop-file-icon-manager.c:1046
+#: ../src/xfdesktop-file-icon-manager.c:1276
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "템플릿 \"%s\"로부터 문서 생성"
 
-#: ../src/xfdesktop-file-icon-manager.c:1065
+#: ../src/xfdesktop-file-icon-manager.c:1295
 msgid "Create Empty File"
 msgstr "빈 화일 생성"
 
-#: ../src/xfdesktop-file-icon-manager.c:1069
+#: ../src/xfdesktop-file-icon-manager.c:1299
 msgid "New Empty File"
 msgstr "새로운 빈 화일"
 
-#: ../src/xfdesktop-file-icon-manager.c:1102
+#: ../src/xfdesktop-file-icon-manager.c:1332
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "화일 \"%s\"을(를) 만들지 못 했습니다.:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1103
+#: ../src/xfdesktop-file-icon-manager.c:1333
 msgid "Create Error"
 msgstr "작성 오류"
 
-#: ../src/xfdesktop-file-icon-manager.c:1387
+#: ../src/xfdesktop-file-icon-manager.c:1617
 msgid "_Open all"
 msgstr "모두 열기(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1417
+#: ../src/xfdesktop-file-icon-manager.c:1647
 msgid "_Execute"
 msgstr "실행(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1434
+#: ../src/xfdesktop-file-icon-manager.c:1664
 msgid "_Edit Launcher"
 msgstr "실행기 편집(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1474
+#: ../src/xfdesktop-file-icon-manager.c:1704
 msgid "Open With"
 msgstr "열어볼 프로그램"
 
-#: ../src/xfdesktop-file-icon-manager.c:1504
+#: ../src/xfdesktop-file-icon-manager.c:1735
 msgid "Open With Other _Application..."
 msgstr "다른 프로그램으로 열어 볼까요(_A)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1604
+#: ../src/xfdesktop-file-icon-manager.c:1834
 msgid "_Rename..."
 msgstr "이름 바꾸기(_R)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1620
-#: ../src/xfdesktop-volume-icon.c:612
+#: ../src/xfdesktop-file-icon-manager.c:1850
+#: ../src/xfdesktop-volume-icon.c:543
 msgid "_Properties..."
 msgstr "속성(_P)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1637
+#: ../src/xfdesktop-file-icon-manager.c:1867
 msgid "Des_ktop"
 msgstr "데스크탑(_k)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1656
+#: ../src/xfdesktop-file-icon-manager.c:1886
 msgid "Create _Launcher..."
 msgstr "실행기 작성...(_L)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
+#: ../src/xfdesktop-file-icon-manager.c:1907
 msgid "Create _URL Link..."
 msgstr "URL 링크 생성(_U)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1694
+#: ../src/xfdesktop-file-icon-manager.c:1924
 msgid "Create _Folder..."
 msgstr "새로운 디렉토리 생성(_F)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1736
+#: ../src/xfdesktop-file-icon-manager.c:1966
 msgid "_Empty File"
 msgstr "빈 화일(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1777
+#: ../src/xfdesktop-file-icon-manager.c:2007
 msgid "Desktop _Settings..."
 msgstr "작업공간 설정(_S)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1786
+#: ../src/xfdesktop-file-icon-manager.c:2016
 msgid "_Desktop Properties..."
 msgstr "속성(_D)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2794
-#: ../src/xfdesktop-regular-file-icon.c:349
+#: ../src/xfdesktop-file-icon-manager.c:3183
+#: ../src/xfdesktop-regular-file-icon.c:353
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "\"%s\" 실행 실패"
 
-#: ../src/xfdesktop-file-icon-manager.c:2796
-#: ../src/xfdesktop-regular-file-icon.c:351
+#: ../src/xfdesktop-file-icon-manager.c:3185
+#: ../src/xfdesktop-regular-file-icon.c:355
 msgid "Run Error"
 msgstr "실행 오류"
 
@@ -1152,116 +1193,117 @@ msgstr "\"%s\"에 대한 기본 프로그램으로 \"%s\"를 설정하지 못 �
 msgid "Properties Error"
 msgstr "속성 오류"
 
-#: ../src/xfdesktop-file-properties-dialog.c:137
+#: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Write only"
 msgstr "쓰기 전용"
 
-#: ../src/xfdesktop-file-properties-dialog.c:137
+#: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read only"
 msgstr "일기 전용"
 
-#: ../src/xfdesktop-file-properties-dialog.c:137
+#: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read & Write"
 msgstr "읽고 쓰기"
 
-#: ../src/xfdesktop-file-properties-dialog.c:162
+#: ../src/xfdesktop-file-properties-dialog.c:163
 msgid "General"
 msgstr "일반"
 
-#: ../src/xfdesktop-file-properties-dialog.c:213
+#: ../src/xfdesktop-file-properties-dialog.c:214
 msgid "Kind:"
 msgstr "종류:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:233
+#: ../src/xfdesktop-file-properties-dialog.c:234
 msgid "Link Target:"
 msgstr "링크 타겟:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:250
-#: ../src/xfdesktop-file-properties-dialog.c:409
+#: ../src/xfdesktop-file-properties-dialog.c:251
+#: ../src/xfdesktop-file-properties-dialog.c:410
 msgid "(unknown)"
 msgstr "(모름)"
 
-#: ../src/xfdesktop-file-properties-dialog.c:272
+#: ../src/xfdesktop-file-properties-dialog.c:273
 msgid "Open With:"
 msgstr "무엇으로 열어볼까요:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:349
+#: ../src/xfdesktop-file-properties-dialog.c:350
 msgid "Modified:"
 msgstr "변경:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:367
+#: ../src/xfdesktop-file-properties-dialog.c:368
 msgid "Accessed:"
 msgstr "접근:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:394
+#: ../src/xfdesktop-file-properties-dialog.c:395
 msgid "Free Space:"
 msgstr "남은 공간"
 
-#: ../src/xfdesktop-file-properties-dialog.c:396
+#: ../src/xfdesktop-file-properties-dialog.c:397
 msgid "Size:"
 msgstr "크기"
 
-#: ../src/xfdesktop-file-properties-dialog.c:412
-#: ../src/xfdesktop-regular-file-icon.c:450
-#: ../src/xfdesktop-special-file-icon.c:404 ../src/xfdesktop-volume-icon.c:391
+#: ../src/xfdesktop-file-properties-dialog.c:413
+#: ../src/xfdesktop-regular-file-icon.c:454
+#: ../src/xfdesktop-special-file-icon.c:442 ../src/xfdesktop-volume-icon.c:396
 msgid "%s (%"
 msgstr "%S (%"
 
 #. permissions tab
-#: ../src/xfdesktop-file-properties-dialog.c:427
+#: ../src/xfdesktop-file-properties-dialog.c:428
 msgid "Permissions"
 msgstr "권한"
 
-#: ../src/xfdesktop-file-properties-dialog.c:449
+#: ../src/xfdesktop-file-properties-dialog.c:450
 msgid "Owner:"
 msgstr "소유자:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:467
-#: ../src/xfdesktop-file-properties-dialog.c:505
+#: ../src/xfdesktop-file-properties-dialog.c:472
+#: ../src/xfdesktop-file-properties-dialog.c:510
 msgid "Access:"
 msgstr "접근:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:490
+#: ../src/xfdesktop-file-properties-dialog.c:495
 msgid "Group:"
 msgstr "그룹:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:528
+#: ../src/xfdesktop-file-properties-dialog.c:533
 msgid "Others:"
 msgstr "기타:"
 
-#: ../src/xfdesktop-file-utils.c:71
+#: ../src/xfdesktop-file-utils.c:74
 msgid "Yes to _all"
 msgstr "전부 \"예\"(_a)"
 
-#: ../src/xfdesktop-file-utils.c:103
+#: ../src/xfdesktop-file-utils.c:106
+#, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
 msgstr "\"%s\"를(을) \"%s\"로 옮기는 중 오류:"
 
-#: ../src/xfdesktop-file-utils.c:106
+#: ../src/xfdesktop-file-utils.c:109
 #, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
 msgstr "\"%s\"를(을) \"%s\"로 복사하는 중 오류:"
 
-#: ../src/xfdesktop-file-utils.c:109
+#: ../src/xfdesktop-file-utils.c:112
 #, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
 msgstr "\"%s\"를(을) \"%s\"로 연결하는 중 오류:"
 
-#: ../src/xfdesktop-file-utils.c:118
+#: ../src/xfdesktop-file-utils.c:121
 msgid "File Error"
 msgstr "화일 오류"
 
-#: ../src/xfdesktop-file-utils.c:134
+#: ../src/xfdesktop-file-utils.c:137
 msgid "broken link"
 msgstr "끊어진 링크"
 
-#: ../src/xfdesktop-file-utils.c:138
+#: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "link to %s"
 msgstr "%s로 링크"
 
-#: ../src/xfdesktop-regular-file-icon.c:453
-#: ../src/xfdesktop-special-file-icon.c:407 ../src/xfdesktop-volume-icon.c:394
+#: ../src/xfdesktop-regular-file-icon.c:457
+#: ../src/xfdesktop-special-file-icon.c:445 ../src/xfdesktop-volume-icon.c:399
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -1272,81 +1314,74 @@ msgstr ""
 "수정:%s\n"
 "크리: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:530
+#: ../src/xfdesktop-regular-file-icon.c:549
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "\"%s\"을(를) \"%s\"(으)로 변경하시 못 했습니다."
 
-#: ../src/xfdesktop-special-file-icon.c:233
+#: ../src/xfdesktop-special-file-icon.c:268
 msgid "Home"
 msgstr "홈"
 
-#: ../src/xfdesktop-special-file-icon.c:437
-msgid "Unable to open the trash."
+#: ../src/xfdesktop-special-file-icon.c:463
+#, fuzzy
+msgid "Trash Error"
+msgstr "실행 오류"
+
+#: ../src/xfdesktop-special-file-icon.c:465
+#, fuzzy
+msgid "Unable to contact the Xfce Trash service."
 msgstr "쓰레기통을 열지 못했습니다."
 
-#: ../src/xfdesktop-special-file-icon.c:438
-msgid ""
-"Viewing the contents of the trash requires a file manager that supports the "
-"Xfce trash service, such as Thunar."
-msgstr "쓰레기통의 내용을 보시려면, Thunar처럼 Xfce 쓰레기 서비스를 지원하는 "
-"화일관리자가 있어야합니다."
-
 #: ../src/xfdesktop-special-file-icon.c:466
-msgid "Unable to empty the trash."
-msgstr "쓰레기통을 비우지 못했습니다."
-
-#: ../src/xfdesktop-special-file-icon.c:467
+#, fuzzy
 msgid ""
-"Emptying the trash requires a file manager that supports the Xfce trash "
+"Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
-msgstr "쓰레기통을 비우려면, Thunar처럼 Xfce 쓰레기 서비스를 지원하는 "
-"화일관리자가 있어야합니다."
+msgstr ""
+"쓰레기통을 비우려면, Thunar처럼 Xfce 쓰레기 서비스를 지원하는 화일관리자가 있"
+"어야합니다."
 
-#: ../src/xfdesktop-special-file-icon.c:499
+#: ../src/xfdesktop-special-file-icon.c:574
 msgid "_Empty Trash"
 msgstr "쓰레기통 비우기(_E)"
 
-#: ../src/xfdesktop-volume-icon.c:438 ../src/xfdesktop-volume-icon.c:496
+#: ../src/xfdesktop-volume-icon.c:441
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "\"%s\" 마운트 실패:"
 
-#: ../src/xfdesktop-volume-icon.c:439
+#: ../src/xfdesktop-volume-icon.c:442
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "\"%s\" 마운트 실패:"
 
-#: ../src/xfdesktop-volume-icon.c:442 ../src/xfdesktop-volume-icon.c:498
+#: ../src/xfdesktop-volume-icon.c:445
 msgid "Mount Failed"
 msgstr "마운트 실패"
 
-#: ../src/xfdesktop-volume-icon.c:442
+#: ../src/xfdesktop-volume-icon.c:445
 msgid "Unmount Failed"
 msgstr "언마운트 실패"
 
-#: ../src/xfdesktop-volume-icon.c:462
+#: ../src/xfdesktop-volume-icon.c:463
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "\"%s\" 추출 실패:"
 
-#: ../src/xfdesktop-volume-icon.c:465
+#: ../src/xfdesktop-volume-icon.c:466
 msgid "Eject Failed"
 msgstr "추출 실패"
 
-#: ../src/xfdesktop-volume-icon.c:502
-msgid "Unknown error."
-msgstr "모르는 오류."
-
-#: ../src/xfdesktop-volume-icon.c:573
+#: ../src/xfdesktop-volume-icon.c:504
 msgid "_Mount Volume"
 msgstr "마운트(_M)"
 
-#: ../src/xfdesktop-volume-icon.c:584
+#: ../src/xfdesktop-volume-icon.c:515
 msgid "_Unmount Volume"
 msgstr "언마운트(_U)"
 
-#: ../src/xfdesktop-volume-icon.c:598
+#: ../src/xfdesktop-volume-icon.c:529
 msgid "E_ject Volume"
 msgstr "추출(_j)"
 
@@ -1377,6 +1412,19 @@ msgstr "Xfce 4 데스크탑 관리 도구의 환경 설정"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 데스크탑 설정"
+
+#~ msgid ""
+#~ "Viewing the contents of the trash requires a file manager that supports "
+#~ "the Xfce trash service, such as Thunar."
+#~ msgstr ""
+#~ "쓰레기통의 내용을 보시려면, Thunar처럼 Xfce 쓰레기 서비스를 지원하는 화일"
+#~ "관리자가 있어야합니다."
+
+#~ msgid "Unable to empty the trash."
+#~ msgstr "쓰레기통을 비우지 못했습니다."
+
+#~ msgid "Unknown error."
+#~ msgstr "모르는 오류."
 
 #~ msgid " Bytes)"
 #~ msgstr " 바이트)"
