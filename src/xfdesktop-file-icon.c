@@ -22,53 +22,22 @@
 #include <config.h>
 #endif
 
-#ifdef HAVE_STRING_H
-#include <string.h>
-#endif
-
 #include <glib-object.h>
-#include <gobject/gmarshal.h>
 
-#include "xfdesktop-icon.h"
 #include "xfdesktop-file-icon.h"
 
 struct _XfdesktopFileIconPrivate
 {
-    gint16 row;
-    gint16 col;
-    GdkRectangle extents;
     GList *active_jobs;
-};
-
-enum
-{
-    SIG_POS_CHANGED = 0,
-    N_SIGS,
 };
 
 static void xfdesktop_file_icon_class_init(XfdesktopFileIconClass *klass);
 static void xfdesktop_file_icon_init(XfdesktopFileIcon *icon);
 static void xfdesktop_file_icon_finalize(GObject *obj);
 
-static void xfdesktop_file_icon_icon_init(XfdesktopIconIface *iface);
-static void xfdesktop_file_icon_set_position(XfdesktopIcon *icon,
-                                             gint16 row,
-                                             gint16 col);
-static gboolean xfdesktop_file_icon_get_position(XfdesktopIcon *icon,
-                                                 gint16 *row,
-                                                 gint16 *col);
-static void xfdesktop_file_icon_set_extents(XfdesktopIcon *icon,
-                                            const GdkRectangle *extents);
-static gboolean xfdesktop_file_icon_get_extents(XfdesktopIcon *icon,
-                                                GdkRectangle *extents);
 
-guint __signals[N_SIGS] = { 0, };
-
-
-G_DEFINE_TYPE_EXTENDED(XfdesktopFileIcon, xfdesktop_file_icon, G_TYPE_OBJECT, 0,
-                       G_IMPLEMENT_INTERFACE(XFDESKTOP_TYPE_ICON,
-                                             xfdesktop_file_icon_icon_init)
-                       )
+G_DEFINE_ABSTRACT_TYPE(XfdesktopFileIcon, xfdesktop_file_icon,
+                       XFDESKTOP_TYPE_ICON)
 
 
 static void
@@ -79,15 +48,6 @@ xfdesktop_file_icon_class_init(XfdesktopFileIconClass *klass)
     g_type_class_add_private(klass, sizeof(XfdesktopFileIconPrivate));
     
     gobject_class->finalize = xfdesktop_file_icon_finalize;
-    
-    __signals[SIG_POS_CHANGED] = g_signal_new("position-changed",
-                                              XFDESKTOP_TYPE_FILE_ICON,
-                                              G_SIGNAL_RUN_LAST,
-                                              G_STRUCT_OFFSET(XfdesktopFileIconClass,
-                                                              position_changed),
-                                              NULL, NULL,
-                                              g_cclosure_marshal_VOID__VOID,
-                                              G_TYPE_NONE, 0);
 }
 
 static void
@@ -128,69 +88,6 @@ xfdesktop_file_icon_finalize(GObject *obj)
     
     G_OBJECT_CLASS(xfdesktop_file_icon_parent_class)->finalize(obj);
 }
-
-static void
-xfdesktop_file_icon_icon_init(XfdesktopIconIface *iface)
-{
-    iface->set_position = xfdesktop_file_icon_set_position;
-    iface->get_position = xfdesktop_file_icon_get_position;
-    iface->set_extents = xfdesktop_file_icon_set_extents;
-    iface->get_extents = xfdesktop_file_icon_get_extents;
-}
-
-
-
-static void
-xfdesktop_file_icon_set_position(XfdesktopIcon *icon,
-                                 gint16 row,
-                                 gint16 col)
-{
-    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-    
-    file_icon->priv->row = row;
-    file_icon->priv->col = col;
-    
-    g_signal_emit(G_OBJECT(file_icon), __signals[SIG_POS_CHANGED], 0, NULL);
-}
-
-static gboolean
-xfdesktop_file_icon_get_position(XfdesktopIcon *icon,
-                                 gint16 *row,
-                                 gint16 *col)
-{
-    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-    
-    *row = file_icon->priv->row;
-    *col = file_icon->priv->col;
-    
-    return TRUE;
-}
-
-static void
-xfdesktop_file_icon_set_extents(XfdesktopIcon *icon,
-                                const GdkRectangle *extents)
-{
-    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-    
-    memcpy(&file_icon->priv->extents, extents, sizeof(GdkRectangle));
-}
-
-static gboolean
-xfdesktop_file_icon_get_extents(XfdesktopIcon *icon,
-                                GdkRectangle *extents)
-{
-    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-    
-    if(file_icon->priv->extents.width > 0
-       && file_icon->priv->extents.height > 0)
-    {
-        memcpy(extents, &file_icon->priv->extents, sizeof(GdkRectangle));
-        return TRUE;
-    }
-    
-    return FALSE;
-}
-
 
 
 G_CONST_RETURN ThunarVfsInfo *

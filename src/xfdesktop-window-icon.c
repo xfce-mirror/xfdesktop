@@ -29,39 +29,24 @@
 #include <libxfcegui4/libxfcegui4.h>
 #include <libxfcegui4/netk-window-action-menu.h>
 
-#include "xfdesktop-icon.h"
 #include "xfdesktop-window-icon.h"
 
 struct _XfdesktopWindowIconPrivate
 {
     gint workspace;
-    gint16 row;
-    gint16 col;
     GdkPixbuf *pix;
     gint cur_pix_size;
     gchar *label;
-    GdkRectangle extents;
     NetkWindow *window;
 };
 
-static void xfdesktop_window_icon_icon_init(XfdesktopIconIface *iface);
+static void xfdesktop_window_icon_class_init(XfdesktopWindowIconClass *klass);
+static void xfdesktop_window_icon_init(XfdesktopWindowIcon *icon);
 static void xfdesktop_window_icon_finalize(GObject *obj);
 
 static GdkPixbuf *xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                    gint size);
 static G_CONST_RETURN gchar *xfdesktop_window_icon_peek_label(XfdesktopIcon *icon);
-
-static void xfdesktop_window_icon_set_position(XfdesktopIcon *icon,
-                                               gint16 row,
-                                               gint16 col);
-static gboolean xfdesktop_window_icon_get_position(XfdesktopIcon *icon,
-                                                   gint16 *row,
-                                                   gint16 *col);
-
-static void xfdesktop_window_icon_set_extents(XfdesktopIcon *icon,
-                                              const GdkRectangle *extents);
-static gboolean xfdesktop_window_icon_get_extents(XfdesktopIcon *icon,
-                                                  GdkRectangle *extents);
 
 static gboolean xfdesktop_window_icon_is_drop_dest(XfdesktopIcon *icon);
 static XfdesktopIconDragResult xfdesktop_window_icon_do_drop_dest(XfdesktopIcon *icon,
@@ -78,19 +63,26 @@ static void xfdesktop_window_icon_changed_cb(NetkWindow *window,
                                              gpointer user_data);
 
 
-G_DEFINE_TYPE_EXTENDED(XfdesktopWindowIcon, xfdesktop_window_icon,
-                       G_TYPE_OBJECT, 0,
-                       G_IMPLEMENT_INTERFACE(XFDESKTOP_TYPE_ICON,
-                                             xfdesktop_window_icon_icon_init))
+G_DEFINE_TYPE(XfdesktopWindowIcon, xfdesktop_window_icon, XFDESKTOP_TYPE_ICON)
+
 
 static void
 xfdesktop_window_icon_class_init(XfdesktopWindowIconClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
+    XfdesktopIconClass *icon_class = (XfdesktopIconClass *)klass;
     
     g_type_class_add_private(klass, sizeof(XfdesktopWindowIconPrivate));
     
     gobject_class->finalize = xfdesktop_window_icon_finalize;
+    
+    icon_class->peek_pixbuf = xfdesktop_window_icon_peek_pixbuf;
+    icon_class->peek_label = xfdesktop_window_icon_peek_label;
+    icon_class->is_drop_dest = xfdesktop_window_icon_is_drop_dest;
+    icon_class->do_drop_dest = xfdesktop_window_icon_do_drop_dest;
+    icon_class->selected = xfdesktop_window_icon_selected;
+    icon_class->activated = xfdesktop_window_icon_activated;
+    icon_class->menu_popup = xfdesktop_window_icon_menu_popup;
 }
 
 static void
@@ -105,6 +97,7 @@ xfdesktop_window_icon_finalize(GObject *obj)
 {
     XfdesktopWindowIcon *icon = XFDESKTOP_WINDOW_ICON(obj);
     gchar data_name[256];
+    guint16 row, col;
     
     if(icon->priv->pix)
         g_object_unref(G_OBJECT(icon->priv->pix));
@@ -112,17 +105,15 @@ xfdesktop_window_icon_finalize(GObject *obj)
     g_free(icon->priv->label);
     
     /* save previous position */
-    if(icon->priv->row >= 0 && icon->priv->col >= 0) {
+    if(xfdesktop_icon_get_position(XFDESKTOP_ICON(icon), &row, &col)) {
         g_snprintf(data_name, 256, "--xfdesktop-last-row-%d",
                    icon->priv->workspace);
         g_object_set_data(G_OBJECT(icon->priv->window),
-                          data_name,
-                          GUINT_TO_POINTER(icon->priv->row + 1));
+                          data_name, GUINT_TO_POINTER(row + 1));
         g_snprintf(data_name, 256, "--xfdesktop-last-col-%d",
                    icon->priv->workspace);
         g_object_set_data(G_OBJECT(icon->priv->window),
-                          data_name,
-                          GUINT_TO_POINTER(icon->priv->col + 1));
+                          data_name, GUINT_TO_POINTER(col + 1));
     }
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(icon->priv->window),
@@ -165,22 +156,6 @@ xfdesktop_window_icon_changed_cb(NetkWindow *window,
 
 
 
-static void
-xfdesktop_window_icon_icon_init(XfdesktopIconIface *iface)
-{
-    iface->peek_pixbuf = xfdesktop_window_icon_peek_pixbuf;
-    iface->peek_label = xfdesktop_window_icon_peek_label;
-    iface->set_position = xfdesktop_window_icon_set_position;
-    iface->get_position = xfdesktop_window_icon_get_position;
-    iface->set_extents = xfdesktop_window_icon_set_extents;
-    iface->get_extents = xfdesktop_window_icon_get_extents;
-    iface->is_drop_dest = xfdesktop_window_icon_is_drop_dest;
-    iface->do_drop_dest = xfdesktop_window_icon_do_drop_dest;
-    iface->selected = xfdesktop_window_icon_selected;
-    iface->activated = xfdesktop_window_icon_activated;
-    iface->menu_popup = xfdesktop_window_icon_menu_popup;
-}
-
 XfdesktopWindowIcon *
 xfdesktop_window_icon_new(NetkWindow *window,
                           gint workspace)
@@ -196,18 +171,11 @@ xfdesktop_window_icon_new(NetkWindow *window,
     g_snprintf(data_name, 256, "--xfdesktop-last-row-%d", workspace);
     row = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
                                              data_name));
-    if(row > 0)
-        icon->priv->row = row - 1;
-    else
-        icon->priv->row = -1;
-    
     g_snprintf(data_name, 256, "--xfdesktop-last-col-%d", workspace);
     col = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
                                              data_name));
-    if(col > 0)
-        icon->priv->col = col - 1;
-    else
-        icon->priv->col = -1;
+    if(row > 0 && col > 0)
+        xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row - 1, col - 1);
     
     g_signal_connect(G_OBJECT(window), "name-changed",
                      G_CALLBACK(xfdesktop_window_name_changed_cb),
@@ -261,55 +229,6 @@ xfdesktop_window_icon_peek_label(XfdesktopIcon *icon)
         window_icon->priv->label = g_strdup(netk_window_get_name(window_icon->priv->window));
     
     return window_icon->priv->label;
-}
-
-static void
-xfdesktop_window_icon_set_position(XfdesktopIcon *icon,
-                                   gint16 row,
-                                   gint16 col)
-{
-    XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
-    
-    window_icon->priv->row = row;
-    window_icon->priv->col = col;
-}
-    
-static gboolean
-xfdesktop_window_icon_get_position(XfdesktopIcon *icon,
-                                   gint16 *row,
-                                   gint16 *col)
-{
-    XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
-    
-    *row = window_icon->priv->row;
-    *col = window_icon->priv->col;
-    
-    return TRUE;
-}
-
-static void
-xfdesktop_window_icon_set_extents(XfdesktopIcon *icon,
-                                  const GdkRectangle *extents)
-{
-    XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
-    
-    memcpy(&window_icon->priv->extents, extents, sizeof(GdkRectangle));
-}
-
-static gboolean
-xfdesktop_window_icon_get_extents(XfdesktopIcon *icon,
-                                  GdkRectangle *extents)
-{
-    XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
-    
-    if(window_icon->priv->extents.width > 0
-       && window_icon->priv->extents.height > 0)
-    {
-        memcpy(extents, &window_icon->priv->extents, sizeof(GdkRectangle));
-        return TRUE;
-    }
-    
-    return FALSE;
 }
 
 static gboolean

@@ -22,49 +22,40 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_STRING_H
+#include <string.h>
+#endif
+
 #include <glib-object.h>
 #include <gobject/gmarshal.h>
 
 #include "xfdesktop-icon.h"
 
+struct _XfdesktopIconPrivate
+{
+    gint16 row;
+    gint16 col;
+    GdkRectangle extents;
+};
+
 enum {
     SIG_PIXBUF_CHANGED = 0,
     SIG_LABEL_CHANGED,
+    SIG_POS_CHANGED,
     SIG_SELECTED,
     SIG_ACTIVATED,
     SIG_MENU_POPUP,
     SIG_N_SIGNALS,
 };
 
-static void xfdesktop_icon_base_init(gpointer g_class);
+static void xfdesktop_icon_class_init(XfdesktopIconClass *klass);
+static void xfdesktop_icon_init(XfdesktopIcon *icon);
 
 static guint __signals[SIG_N_SIGNALS] = { 0, };
 
-GType
-xfdesktop_icon_get_type()
-{
-    static GType icon_type = 0;
-    
-    if(!icon_type) {
-        static const GTypeInfo icon_info = {
-            sizeof(XfdesktopIconIface),
-            xfdesktop_icon_base_init,
-            NULL,
-            NULL,
-            NULL,
-            NULL,
-            0,
-            0,
-            NULL,
-        };
-        
-        icon_type = g_type_register_static(G_TYPE_INTERFACE, "XfdesktopIcon",
-                                           &icon_info, 0);
-        g_type_interface_add_prerequisite(icon_type, G_TYPE_OBJECT);
-    }
-    
-    return icon_type;
-}
+
+G_DEFINE_ABSTRACT_TYPE(XfdesktopIcon, xfdesktop_icon, G_TYPE_OBJECT)
+
 
 static void
 xfdesktop_icon_marshal_BOOLEAN__VOID(GClosure *closure,
@@ -99,101 +90,85 @@ xfdesktop_icon_marshal_BOOLEAN__VOID(GClosure *closure,
 }
 
 static void
-xfdesktop_icon_base_init(gpointer g_class)
+xfdesktop_icon_class_init(XfdesktopIconClass *klass)
 {
-    static gboolean __inited = FALSE;
+    g_type_class_add_private(klass, sizeof(XfdesktopIconPrivate));
     
-    if(G_UNLIKELY(!__inited)) {
-        __signals[SIG_PIXBUF_CHANGED] = g_signal_new("pixbuf-changed",
-                                                     XFDESKTOP_TYPE_ICON,
-                                                     G_SIGNAL_RUN_LAST,
-                                                     G_STRUCT_OFFSET(XfdesktopIconIface,
-                                                                     pixbuf_changed),
-                                                     NULL, NULL,
-                                                     g_cclosure_marshal_VOID__VOID,
-                                                     G_TYPE_NONE, 0);
-        
-        __signals[SIG_LABEL_CHANGED] = g_signal_new("label-changed",
-                                                    XFDESKTOP_TYPE_ICON,
-                                                    G_SIGNAL_RUN_LAST,
-                                                    G_STRUCT_OFFSET(XfdesktopIconIface,
-                                                                    label_changed),
-                                                    NULL, NULL,
-                                                    g_cclosure_marshal_VOID__VOID,
-                                                    G_TYPE_NONE, 0);
-        
-        __signals[SIG_SELECTED] = g_signal_new("selected",
-                                               XFDESKTOP_TYPE_ICON,
-                                               G_SIGNAL_RUN_LAST,
-                                               G_STRUCT_OFFSET(XfdesktopIconIface,
-                                                               selected),
-                                               NULL, NULL,
-                                               g_cclosure_marshal_VOID__VOID,
-                                               G_TYPE_NONE, 0);
-        
-        __signals[SIG_ACTIVATED] = g_signal_new("activated",
-                                                XFDESKTOP_TYPE_ICON,
-                                                G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                                                G_STRUCT_OFFSET(XfdesktopIconIface,
-                                                                activated),
-                                                g_signal_accumulator_true_handled,
-                                                NULL,
-                                                xfdesktop_icon_marshal_BOOLEAN__VOID,
-                                                G_TYPE_BOOLEAN, 0);
-        
-        __signals[SIG_MENU_POPUP] = g_signal_new("menu-popup",
+    __signals[SIG_PIXBUF_CHANGED] = g_signal_new("pixbuf-changed",
                                                  XFDESKTOP_TYPE_ICON,
                                                  G_SIGNAL_RUN_LAST,
-                                                 G_STRUCT_OFFSET(XfdesktopIconIface,
-                                                                 menu_popup),
+                                                 G_STRUCT_OFFSET(XfdesktopIconClass,
+                                                                 pixbuf_changed),
                                                  NULL, NULL,
                                                  g_cclosure_marshal_VOID__VOID,
                                                  G_TYPE_NONE, 0);
-        
-        __inited = TRUE;
-    }
+    
+    __signals[SIG_LABEL_CHANGED] = g_signal_new("label-changed",
+                                                XFDESKTOP_TYPE_ICON,
+                                                G_SIGNAL_RUN_LAST,
+                                                G_STRUCT_OFFSET(XfdesktopIconClass,
+                                                                label_changed),
+                                                NULL, NULL,
+                                                g_cclosure_marshal_VOID__VOID,
+                                                G_TYPE_NONE, 0);
+    
+    __signals[SIG_POS_CHANGED] = g_signal_new("position-changed",
+                                              XFDESKTOP_TYPE_ICON,
+                                              G_SIGNAL_RUN_LAST,
+                                              G_STRUCT_OFFSET(XfdesktopIconClass,
+                                                              position_changed),
+                                              NULL, NULL,
+                                              g_cclosure_marshal_VOID__VOID,
+                                              G_TYPE_NONE, 0);
+    
+    __signals[SIG_SELECTED] = g_signal_new("selected",
+                                           XFDESKTOP_TYPE_ICON,
+                                           G_SIGNAL_RUN_LAST,
+                                           G_STRUCT_OFFSET(XfdesktopIconClass,
+                                                           selected),
+                                           NULL, NULL,
+                                           g_cclosure_marshal_VOID__VOID,
+                                           G_TYPE_NONE, 0);
+    
+    __signals[SIG_ACTIVATED] = g_signal_new("activated",
+                                            XFDESKTOP_TYPE_ICON,
+                                            G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+                                            G_STRUCT_OFFSET(XfdesktopIconClass,
+                                                            activated),
+                                            g_signal_accumulator_true_handled,
+                                            NULL,
+                                            xfdesktop_icon_marshal_BOOLEAN__VOID,
+                                            G_TYPE_BOOLEAN, 0);
+    
+    __signals[SIG_MENU_POPUP] = g_signal_new("menu-popup",
+                                             XFDESKTOP_TYPE_ICON,
+                                             G_SIGNAL_RUN_LAST,
+                                             G_STRUCT_OFFSET(XfdesktopIconClass,
+                                                             menu_popup),
+                                             NULL, NULL,
+                                             g_cclosure_marshal_VOID__VOID,
+                                             G_TYPE_NONE, 0);
 }
 
-GdkPixbuf *
-xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
-                           gint size)
+static void
+xfdesktop_icon_init(XfdesktopIcon *icon)
 {
-    XfdesktopIconIface *iface;
-    
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
-    
-    iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    g_return_val_if_fail(iface->peek_pixbuf, NULL);
-    
-    return iface->peek_pixbuf(icon, size);
+    icon->priv = G_TYPE_INSTANCE_GET_PRIVATE(icon, XFDESKTOP_TYPE_ICON,
+                                             XfdesktopIconPrivate);
 }
 
-G_CONST_RETURN gchar *
-xfdesktop_icon_peek_label(XfdesktopIcon *icon)
-{
-    XfdesktopIconIface *iface;
-    
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
-    
-    iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    g_return_val_if_fail(iface->peek_label, NULL);
-    
-    return iface->peek_label(icon);
-}
 
 void
 xfdesktop_icon_set_position(XfdesktopIcon *icon,
                             gint16 row,
                             gint16 col)
 {
-    XfdesktopIconIface *iface;
-    
     g_return_if_fail(XFDESKTOP_IS_ICON(icon));
     
-    iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    g_return_if_fail(iface->set_position);
+    icon->priv->row = row;
+    icon->priv->col = col;
     
-    iface->set_position(icon, row, col);
+    g_signal_emit(G_OBJECT(icon), __signals[SIG_POS_CHANGED], 0, NULL);
 }
 
 gboolean
@@ -201,81 +176,71 @@ xfdesktop_icon_get_position(XfdesktopIcon *icon,
                             guint16 *row,
                             guint16 *col)
 {
-    XfdesktopIconIface *iface;
-    gboolean ret;
-    gint16 _row, _col;
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon) && row && col, FALSE);
     
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
-    g_return_val_if_fail(row && col, FALSE);
+    *row = icon->priv->row;
+    *col = icon->priv->col;
     
-    iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    g_return_val_if_fail(iface->get_position, FALSE);
-    
-    /* this function is somewhat special.  if row or col is < zero after this
-     * call, then the position is invalid and we should return FALSE. */
-    ret = iface->get_position(icon, &_row, &_col);
-    if(ret) {
-        if(_row < 0 || _col < 0)
-            ret = FALSE;
-        else {
-            *row = _row;
-            *col = _col;
-        }
-    }
-    
-    return ret;
+    return TRUE;
 }
 
 void
 xfdesktop_icon_set_extents(XfdesktopIcon *icon,
                            const GdkRectangle *extents)
 {
-    XfdesktopIconIface *iface;
-    
     g_return_if_fail(XFDESKTOP_IS_ICON(icon));
     
-    iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    g_return_if_fail(iface->set_extents);
-    
-    iface->set_extents(icon, extents);
+    memcpy(&icon->priv->extents, extents, sizeof(GdkRectangle));
 }
 
 gboolean
 xfdesktop_icon_get_extents(XfdesktopIcon *icon,
                            GdkRectangle *extents)
 {
-    XfdesktopIconIface *iface;
-    gboolean ret;
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon) && extents, FALSE);
     
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
-    g_return_val_if_fail(extents, FALSE);
-    
-    iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    g_return_val_if_fail(iface->get_extents, FALSE);
-    
-    /* this function is somewhat special.  if extents->width or extents->height
-     * is zero after this call, then the bounding box is invalid and we should
-     * return FALSE. */
-    ret = iface->get_extents(icon, extents);
-    if(ret) {
-        if(extents->width == 0 || extents->height == 0)
-            ret = FALSE;
+    if(icon->priv->extents.width > 0 && icon->priv->extents.height > 0) {
+        memcpy(extents, &icon->priv->extents, sizeof(GdkRectangle));
+        return TRUE;
     }
     
-    return ret;
+    return FALSE;
+}
+
+
+
+GdkPixbuf *
+xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
+                           gint size)
+{
+    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    g_return_val_if_fail(klass->peek_pixbuf, NULL);
+    
+    return klass->peek_pixbuf(icon, size);
+}
+
+G_CONST_RETURN gchar *
+xfdesktop_icon_peek_label(XfdesktopIcon *icon)
+{
+    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    g_return_val_if_fail(klass->peek_label, NULL);
+    
+    return klass->peek_label(icon);
 }
 
 gboolean
 xfdesktop_icon_is_drop_dest(XfdesktopIcon *icon)
 {
-    XfdesktopIconIface *iface;
+    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    g_return_val_if_fail(klass->is_drop_dest, FALSE);
     
-    iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    g_return_val_if_fail(iface->is_drop_dest, FALSE);
-    
-    return iface->is_drop_dest(icon);
+    return klass->is_drop_dest(icon);
 }
 
 XfdesktopIconDragResult
@@ -283,42 +248,38 @@ xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
                             XfdesktopIcon *src_icon,
                             GdkDragAction action)
 {
-    XfdesktopIconIface *iface;
+    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    g_return_val_if_fail(klass->do_drop_dest, FALSE);
     
-    iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    g_return_val_if_fail(iface->do_drop_dest, FALSE);
-    
-    return iface->do_drop_dest(icon, src_icon, action);
+    return klass->do_drop_dest(icon, src_icon, action);
 }
 
 G_CONST_RETURN gchar *
 xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon)
 {
-    XfdesktopIconIface *iface;
+    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
     
-    iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    if(!iface->peek_tooltip)
+    if(!klass->peek_tooltip)
         return NULL;
     
-    return iface->peek_tooltip(icon);
+    return klass->peek_tooltip(icon);
 }
 
 GtkWidget *
 xfdesktop_icon_get_popup_menu(XfdesktopIcon *icon)
 {
-    XfdesktopIconIface *iface;
+    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
     
-    iface = XFDESKTOP_ICON_GET_IFACE(icon);
-    if(!iface->get_popup_menu)
+    if(!klass->get_popup_menu)
         return NULL;
     
-    return iface->get_popup_menu(icon);
+    return klass->get_popup_menu(icon);
 }
 
 GtkWidget *
@@ -343,6 +304,14 @@ xfdesktop_icon_label_changed(XfdesktopIcon *icon)
     g_return_if_fail(XFDESKTOP_IS_ICON(icon));
     g_signal_emit(icon, __signals[SIG_LABEL_CHANGED], 0);
 }
+
+void
+xfdesktop_icon_position_changed(XfdesktopIcon *icon)
+{
+    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+    g_signal_emit(icon, __signals[SIG_POS_CHANGED], 0);
+}
+
 
 void
 xfdesktop_icon_selected(XfdesktopIcon *icon)

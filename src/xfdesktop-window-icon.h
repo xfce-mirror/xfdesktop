@@ -24,6 +24,8 @@
 #include <glib-object.h>
 #include <libxfcegui4/libxfcegui4.h>
 
+#include "xfdesktop-icon.h"
+
 G_BEGIN_DECLS
 
 #define XFDESKTOP_TYPE_WINDOW_ICON     (xfdesktop_window_icon_get_type())
@@ -36,7 +38,7 @@ typedef struct _XfdesktopWindowIconPrivate  XfdesktopWindowIconPrivate;
 
 struct _XfdesktopWindowIcon
 {
-    GObject parent;
+    XfdesktopIcon parent;
     
     /*< private >*/
     XfdesktopWindowIconPrivate *priv;
@@ -44,7 +46,7 @@ struct _XfdesktopWindowIcon
 
 struct _XfdesktopWindowIconClass
 {
-    GObjectClass parent;
+    XfdesktopIconClass parent;
 };
 
 GType xfdesktop_window_icon_get_type() G_GNUC_CONST;

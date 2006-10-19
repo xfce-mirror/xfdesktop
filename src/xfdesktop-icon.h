@@ -28,7 +28,7 @@ G_BEGIN_DECLS
 #define XFDESKTOP_TYPE_ICON            (xfdesktop_icon_get_type())
 #define XFDESKTOP_ICON(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_ICON, XfdesktopIcon))
 #define XFDESKTOP_IS_ICON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_ICON))
-#define XFDESKTOP_ICON_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE((obj), XFDESKTOP_TYPE_ICON, XfdesktopIconIface))
+#define XFDESKTOP_ICON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), XFDESKTOP_TYPE_ICON, XfdesktopIconClass))
 
 typedef enum
 {
@@ -37,19 +37,29 @@ typedef enum
     XFDESKTOP_ICON_DRAG_SUCCEEDED_NO_ACTION,
 } XfdesktopIconDragResult;
 
-typedef struct _XfdesktopIconIface XfdesktopIconIface;
-typedef struct _XfdesktopIcon      XfdesktopIcon;  /* dummy */
+typedef struct _XfdesktopIcon        XfdesktopIcon;
+typedef struct _XfdesktopIconClass   XfdesktopIconClass;
+typedef struct _XfdesktopIconPrivate XfdesktopIconPrivate;
 
-struct _XfdesktopIconIface
+struct _XfdesktopIcon
 {
-    GTypeInterface g_iface;
+    GObject parent;
+    
+    /*< private >*/
+    XfdesktopIconPrivate *priv;
+};
+
+struct _XfdesktopIconClass
+{
+    GObjectClass parent;
     
     /*< signals >*/
     void (*pixbuf_changed)(XfdesktopIcon *icon);
     void (*label_changed)(XfdesktopIcon *icon);
     
-    void (*selected)(XfdesktopIcon *icon);
+    void (*position_changed)(XfdesktopIcon *icon);
     
+    void (*selected)(XfdesktopIcon *icon);
     /* XfdektopIcon::activated has weird semantics: you should NEVER connect to
      * this signal normally: always use g_signal_connect_after(), as the default
      * signal handler may do some special setup for the icon.  this is lame;
@@ -57,7 +67,6 @@ struct _XfdesktopIconIface
      * with return values are (for some unknown reason) not allowed to be
      * G_SIGNAL_RUN_FIRST.  go figure. */
     gboolean (*activated)(XfdesktopIcon *icon);
-    
     void (*menu_popup)(XfdesktopIcon *icon);
     
     /*< virtual functions >*/
@@ -112,6 +121,7 @@ GtkWidget *xfdesktop_icon_peek_icon_view(XfdesktopIcon *icon);
 
 void xfdesktop_icon_pixbuf_changed(XfdesktopIcon *icon);
 void xfdesktop_icon_label_changed(XfdesktopIcon *icon);
+void xfdesktop_icon_position_changed(XfdesktopIcon *icon);
 
 void xfdesktop_icon_selected(XfdesktopIcon *icon);
 gboolean xfdesktop_icon_activated(XfdesktopIcon *icon);

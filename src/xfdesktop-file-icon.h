@@ -25,6 +25,8 @@
 
 #include <thunar-vfs/thunar-vfs.h>
 
+#include "xfdesktop-icon.h"
+
 G_BEGIN_DECLS
 
 #define XFDESKTOP_TYPE_FILE_ICON            (xfdesktop_file_icon_get_type())
@@ -32,20 +34,13 @@ G_BEGIN_DECLS
 #define XFDESKTOP_IS_FILE_ICON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_FILE_ICON))
 #define XFDESKTOP_FILE_ICON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), XFDESKTOP_TYPE_FILE_ICON, XfdesktopFileIconClass))
 
-typedef enum
-{
-    XFDESKTOP_FILE_ICON_DRAG_FAILED = 0,
-    XFDESKTOP_FILE_ICON_DRAG_SUCCEEDED_MOVE_FILE_ICON,
-    XFDESKTOP_FILE_ICON_DRAG_SUCCEEDED_NO_ACTION,
-} XfdesktopFileIconDragResult;
-
 typedef struct _XfdesktopFileIcon        XfdesktopFileIcon;
 typedef struct _XfdesktopFileIconClass   XfdesktopFileIconClass;
 typedef struct _XfdesktopFileIconPrivate XfdesktopFileIconPrivate;
 
 struct _XfdesktopFileIcon
 {
-    GObject parent;
+    XfdesktopIcon parent;
     
     /*< private >*/
     XfdesktopFileIconPrivate *priv;
@@ -53,10 +48,7 @@ struct _XfdesktopFileIcon
 
 struct _XfdesktopFileIconClass
 {
-    GObjectClass parent;
-    
-    /*< signals >*/
-    void (*position_changed)(XfdesktopFileIcon *icon);
+    XfdesktopIconClass parent;
     
     /*< virtual functions >*/
     G_CONST_RETURN ThunarVfsInfo *(*peek_info)(XfdesktopFileIcon *icon);

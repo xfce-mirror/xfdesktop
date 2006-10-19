@@ -46,8 +46,6 @@
 #endif
 
 #include "xfdesktop-file-utils.h"
-#include "xfdesktop-icon.h"
-#include "xfdesktop-file-icon.h"
 #include "xfdesktop-file-properties-dialog.h"
 #include "xfdesktop-volume-icon.h"
 
@@ -63,7 +61,6 @@ struct _XfdesktopVolumeIconPrivate
 
 static void xfdesktop_volume_icon_finalize(GObject *obj);
 
-static void xfdesktop_volume_icon_icon_init(XfdesktopIconIface *iface);
 static GdkPixbuf *xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                     gint size);
 static G_CONST_RETURN gchar *xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon);
@@ -89,17 +86,12 @@ static inline void xfdesktop_volume_icon_invalidate_pixbuf(XfdesktopVolumeIcon *
 #ifdef HAVE_THUNARX
 G_DEFINE_TYPE_EXTENDED(XfdesktopVolumeIcon, xfdesktop_volume_icon,
                        XFDESKTOP_TYPE_FILE_ICON, 0,
-                       G_IMPLEMENT_INTERFACE(XFDESKTOP_TYPE_ICON,
-                                             xfdesktop_volume_icon_icon_init)
                        G_IMPLEMENT_INTERFACE(THUNARX_TYPE_FILE_INFO,
                                              xfdesktop_volume_icon_tfi_init)
                        )
 #else
-G_DEFINE_TYPE_EXTENDED(XfdesktopVolumeIcon, xfdesktop_volume_icon,
-                       XFDESKTOP_TYPE_FILE_ICON, 0,
-                       G_IMPLEMENT_INTERFACE(XFDESKTOP_TYPE_ICON,
-                                             xfdesktop_volume_icon_icon_init)
-                       )
+G_DEFINE_TYPE(XfdesktopVolumeIcon, xfdesktop_volume_icon,
+              XFDESKTOP_TYPE_FILE_ICON)
 #endif
 
 
@@ -108,11 +100,20 @@ static void
 xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
+    XfdesktopIconClass *icon_class = (XfdesktopIconClass *)klass;
     XfdesktopFileIconClass *file_icon_class = (XfdesktopFileIconClass *)klass;
     
     g_type_class_add_private(klass, sizeof(XfdesktopVolumeIconClass));
     
     gobject_class->finalize = xfdesktop_volume_icon_finalize;
+    
+    icon_class->peek_pixbuf = xfdesktop_volume_icon_peek_pixbuf;
+    icon_class->peek_label = xfdesktop_volume_icon_peek_label;
+    icon_class->peek_tooltip = xfdesktop_volume_icon_peek_tooltip;
+    icon_class->is_drop_dest = xfdesktop_volume_icon_is_drop_dest;
+    icon_class->do_drop_dest = xfdesktop_volume_icon_do_drop_dest;
+    icon_class->get_popup_menu = xfdesktop_volume_icon_get_popup_menu;
+    icon_class->activated = xfdesktop_volume_icon_activated;
     
     file_icon_class->peek_info = xfdesktop_volume_icon_peek_info;
     file_icon_class->update_info = xfdesktop_volume_icon_update_info;
@@ -150,18 +151,6 @@ xfdesktop_volume_icon_finalize(GObject *obj)
         g_free(icon->priv->tooltip);
     
     G_OBJECT_CLASS(xfdesktop_volume_icon_parent_class)->finalize(obj);
-}
-
-static void
-xfdesktop_volume_icon_icon_init(XfdesktopIconIface *iface)
-{
-    iface->peek_pixbuf = xfdesktop_volume_icon_peek_pixbuf;
-    iface->peek_label = xfdesktop_volume_icon_peek_label;
-    iface->peek_tooltip = xfdesktop_volume_icon_peek_tooltip;
-    iface->is_drop_dest = xfdesktop_volume_icon_is_drop_dest;
-    iface->do_drop_dest = xfdesktop_volume_icon_do_drop_dest;
-    iface->get_popup_menu = xfdesktop_volume_icon_get_popup_menu;
-    iface->activated = xfdesktop_volume_icon_activated;
 }
 
 #ifdef HAVE_THUNARX

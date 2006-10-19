@@ -48,8 +48,6 @@
 #endif
 
 #include "xfdesktop-file-utils.h"
-#include "xfdesktop-icon.h"
-#include "xfdesktop-file-icon.h"
 #include "xfdesktop-dbus-bindings-trash.h"
 #include "xfdesktop-special-file-icon.h"
 
@@ -70,7 +68,6 @@ struct _XfdesktopSpecialFileIconPrivate
 
 static void xfdesktop_special_file_icon_finalize(GObject *obj);
 
-static void xfdesktop_special_file_icon_icon_init(XfdesktopIconIface *iface);
 static GdkPixbuf *xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                           gint size);
 static G_CONST_RETURN gchar *xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon);
@@ -97,17 +94,12 @@ static void xfdesktop_special_file_icon_trash_changed_cb(DBusGProxy *proxy,
 #ifdef HAVE_THUNARX
 G_DEFINE_TYPE_EXTENDED(XfdesktopSpecialFileIcon, xfdesktop_special_file_icon,
                        XFDESKTOP_TYPE_FILE_ICON, 0,
-                       G_IMPLEMENT_INTERFACE(XFDESKTOP_TYPE_ICON,
-                                             xfdesktop_special_file_icon_icon_init)
                        G_IMPLEMENT_INTERFACE(THUNARX_TYPE_FILE_INFO,
                                              xfdesktop_special_file_icon_tfi_init)
                        )
 #else
-G_DEFINE_TYPE_EXTENDED(XfdesktopSpecialFileIcon, xfdesktop_special_file_icon,
-                       XFDESKTOP_TYPE_FILE_ICON, 0,
-                       G_IMPLEMENT_INTERFACE(XFDESKTOP_TYPE_ICON,
-                                             xfdesktop_special_file_icon_icon_init)
-                       )
+G_DEFINE_TYPE(XfdesktopSpecialFileIcon, xfdesktop_special_file_icon,
+              XFDESKTOP_TYPE_FILE_ICON)
 #endif
 
 
@@ -116,11 +108,19 @@ static void
 xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
+    XfdesktopIconClass *icon_class = (XfdesktopIconClass *)klass;
     XfdesktopFileIconClass *file_icon_class = (XfdesktopFileIconClass *)klass;
     
     g_type_class_add_private(klass, sizeof(XfdesktopSpecialFileIconPrivate));
     
     gobject_class->finalize = xfdesktop_special_file_icon_finalize;
+    
+    icon_class->peek_pixbuf = xfdesktop_special_file_icon_peek_pixbuf;
+    icon_class->peek_label = xfdesktop_special_file_icon_peek_label;
+    icon_class->peek_tooltip = xfdesktop_special_file_icon_peek_tooltip;
+    icon_class->is_drop_dest = xfdesktop_special_file_icon_is_drop_dest;
+    icon_class->do_drop_dest = xfdesktop_special_file_icon_do_drop_dest;
+    icon_class->get_popup_menu = xfdesktop_special_file_icon_get_popup_menu;
     
     file_icon_class->peek_info = xfdesktop_special_file_icon_peek_info;
     file_icon_class->can_rename_file = (gboolean (*)(XfdesktopFileIcon *))gtk_false;
@@ -167,18 +167,6 @@ xfdesktop_special_file_icon_finalize(GObject *obj)
     
     G_OBJECT_CLASS(xfdesktop_special_file_icon_parent_class)->finalize(obj);
 }
-
-static void
-xfdesktop_special_file_icon_icon_init(XfdesktopIconIface *iface)
-{
-    iface->peek_pixbuf = xfdesktop_special_file_icon_peek_pixbuf;
-    iface->peek_label = xfdesktop_special_file_icon_peek_label;
-    iface->peek_tooltip = xfdesktop_special_file_icon_peek_tooltip;
-    iface->is_drop_dest = xfdesktop_special_file_icon_is_drop_dest;
-    iface->do_drop_dest = xfdesktop_special_file_icon_do_drop_dest;
-    iface->get_popup_menu = xfdesktop_special_file_icon_get_popup_menu;
-}
-
 
 #ifdef HAVE_THUNARX
 static gchar *
