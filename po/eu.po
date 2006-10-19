@@ -85,9 +85,8 @@ msgstr "Ikonoa:"
 #: ../menueditor/menueditor-add-dialog.c:330
 #: ../menueditor/menueditor-edit-dialog.c:191
 #: ../menueditor/menueditor-edit-dialog.c:586
-#, fuzzy
 msgid "No icon"
-msgstr "_Botoi ikonoa:"
+msgstr "Ikonorik ez"
 
 #: ../menueditor/menueditor-add-dialog.c:225
 #: ../menueditor/menueditor-add-dialog.c:226
@@ -487,7 +486,7 @@ msgstr "Ahaztu aldaketak"
 #: ../menueditor/menueditor-main-window.c:2035
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
-msgstr ""
+msgstr "Ezin da menu fitxategia %s idazketa moduan ireki"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
@@ -667,7 +666,6 @@ msgid "Information"
 msgstr "Argibideak"
 
 #: ../settings/appearance-settings.c:845
-#, fuzzy
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -675,8 +673,8 @@ msgid ""
 "your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
-"Xfce abiarazten duzun hurrengo aldian Xfce-k zure idazmahaia ez kudeatzea "
-"ziurtatzeko, saio uzterakoan berau gorde egiten duzula ziurtatu.  Ez bazaude "
+"Xfce abiarazten duzun hurrengo aldian ezarpen hauek ezartzea eragiteko, "
+"saio uzterakoan berau gorde egiten duzula ziurtatu.  Ez bazaude "
 "Xfce Saio Kudeatzailea (xfce4-session) erabiltzen ~/.config/xfce4/xinitrc "
 "fitxategia eskuz editatu beharko duzu.  Xehetasunak http://xfce.org/ guneko "
 "dokumentazioan aurki ditzakezu."
@@ -1039,9 +1037,8 @@ msgid "Delete Multiple Files"
 msgstr "Fitxategi Anitz Ezabatu"
 
 #: ../src/xfdesktop-file-icon-manager.c:904
-#, fuzzy
 msgid "The application chooser could not be opened."
-msgstr "Loturiko aplikazioa ezin da aurkitu edo abiarazi."
+msgstr "Aplikazio hautatzailea ezin da ireki."
 
 #: ../src/xfdesktop-file-icon-manager.c:905 ../src/xfdesktop-file-utils.c:341
 msgid ""
@@ -1327,22 +1324,19 @@ msgid "Home"
 msgstr "Etxea"
 
 #: ../src/xfdesktop-special-file-icon.c:463
-#, fuzzy
 msgid "Trash Error"
-msgstr "Errorea Abiaraztean"
+msgstr "Zakarrontzi errorea"
 
 #: ../src/xfdesktop-special-file-icon.c:465
-#, fuzzy
 msgid "Unable to contact the Xfce Trash service."
-msgstr "Ezin da zakarrontzia ireki."
+msgstr "Ezin da Xfce zakarrontzi zerbitzuarekin harremanetan ipini."
 
 #: ../src/xfdesktop-special-file-icon.c:466
-#, fuzzy
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr ""
-"Zakarrontziaren hustutzeko  Xfce zakarrontzi zerbitzuarekin bateragarri den "
+"Ziurtatu Xfce zakarrontzi zerbitzuarekin bateragarri den "
 "fitxategi kudeatzaile bat erabili behar da, thunar bezalakoa."
 
 #: ../src/xfdesktop-special-file-icon.c:574
