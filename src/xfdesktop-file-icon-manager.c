@@ -396,62 +396,6 @@ __migrate_old_icon_positions(XfdesktopFileIconManager *fmanager)
 
 /* icon signal handlers */
 
-static gboolean
-xfdesktop_file_icon_activated(XfdesktopIcon *icon,
-                              gpointer user_data)
-{
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(file_icon);
-    
-    TRACE("entering");
-    
-    g_return_val_if_fail(info, FALSE);
-    
-    if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY)
-        xfdesktop_file_utils_open_folder(info, fmanager->priv->gscreen, NULL);
-    else if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
-        if(!thunar_vfs_info_execute(info, fmanager->priv->gscreen, NULL,
-                                    xfce_get_homedir(), NULL))
-        {
-            ThunarVfsMimeApplication *mime_app;
-            gboolean succeeded = FALSE;
-            
-            mime_app = thunar_vfs_mime_database_get_default_application(thunar_mime_database,
-                                                                        info->mime_info);
-            if(mime_app) {
-                GList *path_list = g_list_prepend(NULL, info->path);
-                
-                DBG("executing");
-                
-                succeeded = thunar_vfs_mime_handler_exec(THUNAR_VFS_MIME_HANDLER(mime_app),
-                                                         fmanager->priv->gscreen,
-                                                         path_list,
-                                                         NULL); 
-                g_object_unref(G_OBJECT(mime_app));
-                g_list_free(path_list);
-            } else {
-                succeeded = xfdesktop_file_utils_launch_fallback(info,
-                                                                 fmanager->priv->gscreen,
-                                                                 NULL);
-            }
-            
-            if(!succeeded) {
-                GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-                gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
-                                                         info->display_name);
-                xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
-                                    GTK_STOCK_DIALOG_ERROR, primary,
-                                    _("The associated application could not be found or executed."),
-                                    GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-                g_free(primary);
-            }
-        }
-    }
-    
-    return TRUE;
-}
-
 static void
 xfdesktop_file_icon_menu_executed(GtkWidget *widget,
                                   gpointer user_data)
@@ -2162,9 +2106,6 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
         g_signal_connect(G_OBJECT(icon), "position-changed",
                          G_CALLBACK(xfdesktop_file_icon_position_changed),
                          fmanager);
-        g_signal_connect_after(G_OBJECT(icon), "activated",
-                               G_CALLBACK(xfdesktop_file_icon_activated),
-                               fmanager);
         g_signal_connect(G_OBJECT(icon), "menu-popup",
                          G_CALLBACK(xfdesktop_file_icon_menu_popup), fmanager);
         xfdesktop_icon_view_add_item(fmanager->priv->icon_view,

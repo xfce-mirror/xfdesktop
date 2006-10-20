@@ -593,7 +593,8 @@ xfdesktop_volume_icon_activated(XfdesktopIcon *icon_p)
             return TRUE;  /* mount failed; halt signal emission */
     }
     
-    return FALSE;  /* volume is mounted; continue */
+    /* chain up */
+    return XFDESKTOP_ICON_CLASS(xfdesktop_volume_icon_parent_class)->activated(icon_p);
 }
 
 
