@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-17 23:10-0700\n"
-"PO-Revision-Date: 2006-09-03 15:20-0300\n"
+"PO-Revision-Date: 2006-10-22 15:17-0200\n"
 "Last-Translator: Rodrigo Coacci <rcoacci@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
@@ -82,9 +82,8 @@ msgstr "Ícone:"
 #: ../menueditor/menueditor-add-dialog.c:330
 #: ../menueditor/menueditor-edit-dialog.c:191
 #: ../menueditor/menueditor-edit-dialog.c:586
-#, fuzzy
 msgid "No icon"
-msgstr "Ícone do _botão:"
+msgstr "Sem ícone"
 
 #: ../menueditor/menueditor-add-dialog.c:225
 #: ../menueditor/menueditor-add-dialog.c:226
@@ -256,7 +255,7 @@ msgstr "Abrir menu existente"
 
 #: ../menueditor/menueditor-main-window.c:143
 msgid "Open _default menu"
-msgstr "Abrir menu padrão"
+msgstr "Abrir menu pa_drão"
 
 #: ../menueditor/menueditor-main-window.c:143
 msgid "Open default menu"
@@ -272,7 +271,7 @@ msgstr "Salvar modificações"
 
 #: ../menueditor/menueditor-main-window.c:145
 msgid "Save _as..."
-msgstr "Salvar como..."
+msgstr "Salv_ar como..."
 
 #: ../menueditor/menueditor-main-window.c:145
 msgid "Save menu under a given name"
@@ -288,7 +287,7 @@ msgstr "Fechar menu"
 
 #: ../menueditor/menueditor-main-window.c:147
 msgid "_Quit"
-msgstr "Sair"
+msgstr "Sai_r"
 
 #: ../menueditor/menueditor-main-window.c:147
 msgid "Quit Xfce4-Menueditor"
@@ -300,7 +299,7 @@ msgstr "_Editar"
 
 #: ../menueditor/menueditor-main-window.c:150
 msgid "_Edit entry"
-msgstr "Editar entrada"
+msgstr "_Editar entrada"
 
 #: ../menueditor/menueditor-main-window.c:150
 msgid "Edit selected entry"
@@ -308,7 +307,7 @@ msgstr "Editar entrada selecionada"
 
 #: ../menueditor/menueditor-main-window.c:151
 msgid "_Add entry"
-msgstr "Adicionar entrada"
+msgstr "_Adicionar entrada"
 
 #: ../menueditor/menueditor-main-window.c:151
 msgid "Add a new entry in the menu"
@@ -316,7 +315,7 @@ msgstr "Adicionar nova entrada ao menu"
 
 #: ../menueditor/menueditor-main-window.c:152
 msgid "Add _external"
-msgstr "Adicionar um menu externo"
+msgstr "Adicionar um menu _externo"
 
 #: ../menueditor/menueditor-main-window.c:152
 msgid "Add an external entry"
@@ -484,7 +483,7 @@ msgstr "Ignorar modificações"
 #: ../menueditor/menueditor-main-window.c:2035
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
-msgstr ""
+msgstr "Não foi possível abrir o arquivo de menu %s em modo de escrita"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
@@ -665,7 +664,6 @@ msgid "Information"
 msgstr "Informações"
 
 #: ../settings/appearance-settings.c:845
-#, fuzzy
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -673,8 +671,8 @@ msgid ""
 "your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
-"Para garantir que o Xfce não gerencie sua área de trabalho a próxima vez que "
-"você iniciá-lo, por favor certifique-se de salvar a sua sessão ao sair. Se "
+"Para garantir que esta configuração tenha efeito a próxima vez que você "
+"iniciar o Xfce, por favor certifique-se de salvar a sua sessão ao sair. Se "
 "você não está usando o Gerenciador de Sessão do Xfce (xfce4-session), você "
 "precisará editar manualmente o arquivo ~/.config/xfce4/xinitrc. Detalhes "
 "estão disponíveis na documentação contida em http://xfce.org/."
@@ -1041,9 +1039,8 @@ msgid "Delete Multiple Files"
 msgstr "Remover Múltiplos Arquivos"
 
 #: ../src/xfdesktop-file-icon-manager.c:904
-#, fuzzy
 msgid "The application chooser could not be opened."
-msgstr "A aplicação associada não pode ser encontrada ou executada."
+msgstr "A escolha de aplicação não pode ser aberta."
 
 #: ../src/xfdesktop-file-icon-manager.c:905 ../src/xfdesktop-file-utils.c:341
 msgid ""
@@ -1152,7 +1149,7 @@ msgstr "_Propriedades..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1867
 msgid "Des_ktop"
-msgstr "Área de Trabalho"
+msgstr "Área de Trabal_ho"
 
 #: ../src/xfdesktop-file-icon-manager.c:1886
 msgid "Create _Launcher..."
@@ -1164,7 +1161,7 @@ msgstr "Cria link _URL..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1924
 msgid "Create _Folder..."
-msgstr "Criar Pasta"
+msgstr "Criar _Pasta..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1966
 msgid "_Empty File"
@@ -1172,7 +1169,7 @@ msgstr "Ar_quivo Vazio"
 
 #: ../src/xfdesktop-file-icon-manager.c:2007
 msgid "Desktop _Settings..."
-msgstr "Configurações da Área de Trabalho"
+msgstr "_Configurações da Área de Trabalho..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2016
 msgid "_Desktop Properties..."
@@ -1329,23 +1326,20 @@ msgid "Home"
 msgstr "Início"
 
 #: ../src/xfdesktop-special-file-icon.c:463
-#, fuzzy
 msgid "Trash Error"
-msgstr "Erro ao Lançar"
+msgstr "Erro da Lixeira"
 
 #: ../src/xfdesktop-special-file-icon.c:465
-#, fuzzy
 msgid "Unable to contact the Xfce Trash service."
-msgstr "Não foi possivel abrir a lixeira."
+msgstr "Não foi possível comunicar-se com o serviço de Lixeira do Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:466
-#, fuzzy
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr ""
-"Esvaziar a lixeira requer um gerenciador de arquivos que suporte o serviço "
-"de lixeira do Xfce, como o Thunar."
+"Certifique-se de que você possui um gerenciador de arquivos instalado que "
+"suporta o serviço de Lixeira do Xfce, como o Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:574
 msgid "_Empty Trash"
@@ -1417,90 +1411,3 @@ msgstr "Configurações para o Gerenciador da Área de Trabalho do Xfce 4"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Configurações da Área de Trabalho Xfce 4"
-
-#~ msgid ""
-#~ "Viewing the contents of the trash requires a file manager that supports "
-#~ "the Xfce trash service, such as Thunar."
-#~ msgstr ""
-#~ "A visualização do conteúdo da lixeira requer um gerenciador de arquivos "
-#~ "que suporte o serviço de lixeira do Xfce, como o Thunar."
-
-#~ msgid "Unable to empty the trash."
-#~ msgstr "Não foi possível esvaziar a lixeira."
-
-#~ msgid "Unknown error."
-#~ msgstr "Erro desconhecido."
-
-#~ msgid " Bytes)"
-#~ msgstr " Bytes)"
-
-#~ msgid "_Copy Files"
-#~ msgstr "_Copiar Arquivos"
-
-#~ msgid "_Copy File"
-#~ msgstr "_Copiar Arquivo"
-
-#~ msgid "Cu_t Files"
-#~ msgstr "Recor_tar Arquivos"
-
-#~ msgid "Cu_t File"
-#~ msgstr "Recor_tar Arquivo"
-
-#~ msgid "_Delete Files"
-#~ msgstr "Remo_ver Arquivos"
-
-#~ msgid "_Delete File"
-#~ msgstr "Remo_ver Arquivo"
-
-#, fuzzy
-#~ msgid "_Paste Files"
-#~ msgstr "Arquivos de Lista"
-
-#~ msgid "Create _New"
-#~ msgstr "Criar _Novo"
-
-#~ msgid "_Folder..."
-#~ msgstr "_Pasta..."
-
-#, fuzzy
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "Você tem certeza que deseja remover \"%s\"?"
-
-#~ msgid "Core developer"
-#~ msgstr "Desenvolvedor principal"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "O comando não existe!"
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "Todos os campos devem ser preenchidos para adicionar um item."
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "O campo 'Nome' é obrigatório."
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "O campo 'Fonte' é obrigatório."
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "Separadores não podem ser editados"
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "O arquivo %s não existe!"
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "Você deseja mover o item para o menu pai?"
-
-#~ msgid "Edit"
-#~ msgstr "Editar"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "Adicionar um menu externo..."
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "Abrir um arquivo de menu do Xfce4"
-
-#~ msgid "Save current menu"
-#~ msgstr "Salvar menu atual"
-
-#~ msgid "Delete the current entry"
-#~ msgstr "Apagar a entrada atual"
