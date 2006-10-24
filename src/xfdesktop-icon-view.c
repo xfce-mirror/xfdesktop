@@ -1610,64 +1610,49 @@ xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
 static void
 xfdesktop_setup_grids(XfdesktopIconView *icon_view)
 {
-    gint xorigin = 0, yorigin = 0, width = 0, height = 0, tmp;
+    gint xorigin = 0, yorigin = 0, width = 0, height = 0;
+    gsize old_size, new_size;
     
-    if(xfdesktop_get_workarea_single(icon_view, 0,
-                                     &xorigin, &yorigin,
-                                     &width, &height))
+    old_size = icon_view->priv->nrows * icon_view->priv->ncols
+               * sizeof(XfdesktopIcon *);
+    
+    if(!xfdesktop_get_workarea_single(icon_view, 0,
+                                      &xorigin, &yorigin,
+                                      &width, &height))
     {
-            
-        icon_view->priv->xorigin = xorigin;
-        icon_view->priv->yorigin = yorigin;
-        icon_view->priv->width = width;
-        icon_view->priv->height = height;
-        
-        icon_view->priv->nrows = (height - SCREEN_MARGIN * 2) / CELL_SIZE;
-        icon_view->priv->ncols = (width - SCREEN_MARGIN * 2) / CELL_SIZE;
-        
-        DBG("CELL_SIZE=%d, TEXT_WIDTH=%d, ICON_SIZE=%d", CELL_SIZE, TEXT_WIDTH, ICON_SIZE);
-        DBG("grid size is %dx%d", icon_view->priv->nrows, icon_view->priv->ncols);
-        
-        tmp = icon_view->priv->nrows * icon_view->priv->ncols
-              * sizeof(XfdesktopIcon *);
-        
-        if(G_UNLIKELY(icon_view->priv->grid_layout)) {
-            icon_view->priv->grid_layout = g_realloc(
-                icon_view->priv->grid_layout,
-                tmp
-            );
-        } else
-            icon_view->priv->grid_layout = g_malloc0(tmp);
-        
-        DBG("created grid_layout with %d positions", tmp);
-        DUMP_GRID_LAYOUT(icon_view);
-    } else {
         GdkScreen *gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
-        gint w = gdk_screen_get_width(gscreen);
-        gint h = gdk_screen_get_height(gscreen);
-        
-        icon_view->priv->xorigin = 0;
-        icon_view->priv->yorigin = 0;
-        icon_view->priv->width = w;
-        icon_view->priv->height = h;
-        
-        icon_view->priv->nrows = (h - SCREEN_MARGIN * 2) / CELL_SIZE;
-        icon_view->priv->ncols = (w - SCREEN_MARGIN * 2) / CELL_SIZE;
-            
-        tmp = icon_view->priv->nrows * icon_view->priv->ncols
-              * sizeof(XfdesktopIcon *);
-        
-        if(G_UNLIKELY(icon_view->priv->grid_layout)) {
-            icon_view->priv->grid_layout = g_realloc(
-                icon_view->priv->grid_layout,
-                tmp
-            );
-        } else
-            icon_view->priv->grid_layout = g_malloc0(tmp);
-        
-        DBG("created grid_layout with %d positions", tmp);
-        DUMP_GRID_LAYOUT(icon_view);
+        width = gdk_screen_get_width(gscreen);
+        height = gdk_screen_get_height(gscreen);
+        xorigin = yorigin = 0;
     }
+    
+    icon_view->priv->xorigin = xorigin;
+    icon_view->priv->yorigin = yorigin;
+    icon_view->priv->width = width;
+    icon_view->priv->height = height;
+        
+    icon_view->priv->nrows = (height - SCREEN_MARGIN * 2) / CELL_SIZE;
+    icon_view->priv->ncols = (width - SCREEN_MARGIN * 2) / CELL_SIZE;
+        
+    DBG("CELL_SIZE=%d, TEXT_WIDTH=%d, ICON_SIZE=%d", CELL_SIZE, TEXT_WIDTH, ICON_SIZE);
+    DBG("grid size is %dx%d", icon_view->priv->nrows, icon_view->priv->ncols);
+    
+    new_size = icon_view->priv->nrows * icon_view->priv->ncols
+               * sizeof(XfdesktopIcon *);
+    
+    if(icon_view->priv->grid_layout) {
+        icon_view->priv->grid_layout = g_realloc(icon_view->priv->grid_layout,
+                                                 new_size);
+        
+        if(new_size > old_size) {
+            memset(((guint8 *)icon_view->priv->grid_layout) + old_size, 0,
+                   new_size - old_size);
+        }
+    } else
+        icon_view->priv->grid_layout = g_malloc0(new_size);
+    
+    DBG("created grid_layout with %d positions", new_size/sizeof(gpointer));
+    DUMP_GRID_LAYOUT(icon_view);
     
     xfdesktop_icon_view_setup_grids_xinerama(icon_view);
 }
@@ -2038,11 +2023,15 @@ xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
     g_list_free(icon_view->priv->icons);
     icon_view->priv->icons = NULL;
     
+    DUMP_GRID_LAYOUT(icon_view);
+    
     memset(icon_view->priv->grid_layout, 0,
            icon_view->priv->nrows * icon_view->priv->ncols
            * sizeof(XfdesktopIcon *));
     
     xfdesktop_setup_grids(icon_view);
+    
+    DUMP_GRID_LAYOUT(icon_view);
     
     /* add all icons back */
     for(l = icon_view->priv->pending_icons; l; l = l->next) {
