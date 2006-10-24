@@ -1708,17 +1708,6 @@ xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
         gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
                                    extents.x, extents.y,
                                    extents.width, extents.height);
-        
-#if 0
-        /* check and make sure we didn't used to be too large for the cell.
-         * if so, repaint the one below it. */
-        if(extents.height + 3 * CELL_PADDING > CELL_SIZE) {
-            XfdesktopIcon *icon_below = xfdesktop_find_icon_below(icon_view,
-                                                                  icon);
-            if(icon_below)
-                xfdesktop_icon_view_clear_icon_extents(icon_view, icon_below);
-        }
-#endif
     } else {
         DBG("Icon '%s' doesn't have extents: need to call paint some other way",
             xfdesktop_icon_peek_label(icon));
@@ -2034,57 +2023,20 @@ xfdesktop_icon_view_repaint_queued_icon(gpointer user_data)
 }
 
 static void
-xfdesktop_icons_set_map(gpointer data,
-                        gpointer user_data)
-{
-    XfdesktopIcon *icon = data;
-    XfdesktopIconView *icon_view = user_data;
-    guint16 row, col;
-    
-    g_return_if_fail(xfdesktop_icon_get_position(icon, &row, &col));
-    
-    if(row < icon_view->priv->nrows && col < icon_view->priv->ncols) {
-        if(xfdesktop_grid_unset_position_free(icon_view, icon))
-            return;
-    }
-    
-    /* old position wasn't valid */
-    xfdesktop_icon_set_position(icon, -1, -1);
-}
-
-static void
-xfdesktop_icon_view_constrain_icons(XfdesktopIconView *icon_view)
-{
-    XfdesktopIcon *icon;
-    guint16 row, col;
-    GList *l, *cur_l;
-    
-    l = icon_view->priv->icons;
-    while(l) {
-        cur_l = l;
-        l = l->next;
-        icon = cur_l->data;
-        
-        if(!xfdesktop_icon_get_position(icon, &row, &col)) {
-            if(xfdesktop_grid_get_next_free_position(icon_view, &row, &col)) {
-                xfdesktop_icon_set_position(icon, row, col);
-                xfdesktop_grid_unset_position_free(icon_view, icon);
-                DBG("icon moved to (%d,%d)", row, col);
-            } else {
-                icon_view->priv->icons = g_list_delete_link(icon_view->priv->icons,
-                                                            cur_l);
-            }
-        }
-    }
-}
-
-static void
 xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
 {
-    gint old_rows, old_cols;
+    GList *l;
     
-    old_rows = icon_view->priv->nrows;
-    old_cols = icon_view->priv->ncols;
+    /* move all icons into the pending_icons list */
+    for(l = icon_view->priv->icons; l; l = l->next) {
+        g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
+                                             G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
+                                             icon_view);
+        icon_view->priv->pending_icons = g_list_prepend(icon_view->priv->pending_icons,
+                                                        l->data);
+    }
+    g_list_free(icon_view->priv->icons);
+    icon_view->priv->icons = NULL;
     
     memset(icon_view->priv->grid_layout, 0,
            icon_view->priv->nrows * icon_view->priv->ncols
@@ -2092,17 +2044,14 @@ xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
     
     xfdesktop_setup_grids(icon_view);
     
-    g_list_foreach(icon_view->priv->icons,
-                   xfdesktop_icons_set_map,
-                   icon_view);
-    DUMP_GRID_LAYOUT(icon_view);
-                         
-    if(icon_view->priv->icons
-       && (old_rows > icon_view->priv->nrows
-           || old_cols> icon_view->priv->ncols))
-    {
-        xfdesktop_icon_view_constrain_icons(icon_view);
+    /* add all icons back */
+    for(l = icon_view->priv->pending_icons; l; l = l->next) {
+        g_object_set_data(G_OBJECT(l->data), "--xfdesktop-icon-view", NULL);
+        xfdesktop_icon_view_add_item(icon_view, XFDESKTOP_ICON(l->data));
+        g_object_unref(G_OBJECT(l->data));
     }
+    g_list_free(icon_view->priv->pending_icons);
+    icon_view->priv->pending_icons = NULL;
     
     gtk_widget_queue_draw(GTK_WIDGET(icon_view));
 }
