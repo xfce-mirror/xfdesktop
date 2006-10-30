@@ -74,12 +74,6 @@ struct _XfdesktopIconClass
     GdkPixbuf *(*peek_pixbuf)(XfdesktopIcon *icon, gint size);
     G_CONST_RETURN gchar *(*peek_label)(XfdesktopIcon *icon);
     
-    void (*set_position)(XfdesktopIcon *icon, gint16 row, gint16 col);
-    gboolean (*get_position)(XfdesktopIcon *icon, gint16 *row, gint16 *col);
-    
-    void (*set_extents)(XfdesktopIcon *icon, const GdkRectangle *extents);
-    gboolean (*get_extents)(XfdesktopIcon *icon, GdkRectangle *extents);
-    
     gboolean (*is_drop_dest)(XfdesktopIcon *icon);
     XfdesktopIconDragResult (*do_drop_dest)(XfdesktopIcon *icon, XfdesktopIcon *src_icon, GdkDragAction action);
     
