@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-17 23:10-0700\n"
-"PO-Revision-Date: 2005-08-18 22:58+0900\n"
-"Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
+"PO-Revision-Date: 2006-11-03 12:13+0100\n"
+"Last-Translator: Stephan Arts <psybsd@gmail.com>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -81,24 +81,21 @@ msgstr "Pictogram:"
 #: ../menueditor/menueditor-add-dialog.c:330
 #: ../menueditor/menueditor-edit-dialog.c:191
 #: ../menueditor/menueditor-edit-dialog.c:586
-#, fuzzy
 msgid "No icon"
-msgstr "_Pictogram:"
+msgstr "Geen pictogram"
 
 #: ../menueditor/menueditor-add-dialog.c:225
 #: ../menueditor/menueditor-add-dialog.c:226
 #: ../menueditor/menueditor-edit-dialog.c:203
 #: ../menueditor/menueditor-edit-dialog.c:204
-#, fuzzy
 msgid "Themed icon:"
-msgstr "Pictogram Selecteren"
+msgstr ""
 
 #. allocate the chooser dialog
 #: ../menueditor/menueditor-add-dialog.c:252
 #: ../menueditor/menueditor-add-dialog.c:347
 #: ../menueditor/menueditor-edit-dialog.c:230
 #: ../menueditor/menueditor-edit-dialog.c:384
-#, fuzzy
 msgid "Select icon"
 msgstr "Pictogram Selecteren"
 
@@ -121,13 +118,13 @@ msgstr "Alle Bestanden"
 #: ../settings/appearance-settings.c:536
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
-msgstr "Plaatjes"
+msgstr "Afbeeldingen"
 
 #. Start Notify check button
 #: ../menueditor/menueditor-add-dialog.c:283
 #: ../menueditor/menueditor-edit-dialog.c:261
 msgid "Use startup _notification"
-msgstr "Opstartnotificatie gebruiken"
+msgstr "Opstart_notificatie gebruiken"
 
 #. Run in terminal check button
 #: ../menueditor/menueditor-add-dialog.c:288
@@ -143,29 +140,28 @@ msgstr "Commando selecteren"
 
 #: ../menueditor/menueditor-add-dialog.c:442
 #: ../menueditor/menueditor-edit-dialog.c:301
-#, fuzzy
 msgid "Executable Files"
-msgstr "Menubestand Selecteren"
+msgstr "Uitvoerbare Bestanden"
 
 #: ../menueditor/menueditor-add-dialog.c:457
 #: ../menueditor/menueditor-edit-dialog.c:316
 msgid "Perl Scripts"
-msgstr ""
+msgstr "Perl Scripts"
 
 #: ../menueditor/menueditor-add-dialog.c:463
 #: ../menueditor/menueditor-edit-dialog.c:322
 msgid "Python Scripts"
-msgstr ""
+msgstr "Python Scripts"
 
 #: ../menueditor/menueditor-add-dialog.c:469
 #: ../menueditor/menueditor-edit-dialog.c:328
 msgid "Ruby Scripts"
-msgstr ""
+msgstr "Ruby Scripts"
 
 #: ../menueditor/menueditor-add-dialog.c:475
 #: ../menueditor/menueditor-edit-dialog.c:334
 msgid "Shell Scripts"
-msgstr ""
+msgstr "Shell Scripts"
 
 #: ../menueditor/menueditor-add-external-dialog.c:100
 #, fuzzy
@@ -192,7 +188,7 @@ msgstr "Bron:"
 #: ../menueditor/menueditor-edit-external-dialog.c:117
 #, fuzzy
 msgid "Select external menu"
-msgstr "Een extern menu toevoegen"
+msgstr "Een extern menu selecteren"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
@@ -231,12 +227,11 @@ msgstr "Menu-optie bewerken"
 #: ../menueditor/menueditor-edit-external-dialog.c:96
 #, fuzzy
 msgid "Edit external menu entry"
-msgstr "Een extern menu toevoegen"
+msgstr "Een extern menu aanpassen"
 
 #: ../menueditor/menueditor-main.c:43
-#, fuzzy
 msgid "Xfce4-MenuEditor"
-msgstr "Xfce 4 Menu Editor"
+msgstr "Xfce4 Menu Aanpassen"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -244,7 +239,7 @@ msgstr "_Bestand"
 
 #: ../menueditor/menueditor-main-window.c:141
 msgid "_New"
-msgstr ""
+msgstr "_Nieuw"
 
 #: ../menueditor/menueditor-main-window.c:141
 #, fuzzy
@@ -255,17 +250,17 @@ msgstr "Nieuw Xfce4 menu"
 #: ../src/xfdesktop-file-icon-manager.c:1632
 #: ../src/xfdesktop-special-file-icon.c:563 ../src/xfdesktop-volume-icon.c:493
 msgid "_Open"
-msgstr ""
+msgstr "_Open"
 
 #: ../menueditor/menueditor-main-window.c:142
 #, fuzzy
 msgid "Open existing menu"
-msgstr "Standaard menu openen"
+msgstr "Bestaand menu openen"
 
 #: ../menueditor/menueditor-main-window.c:143
 #, fuzzy
 msgid "Open _default menu"
-msgstr "Standaard menu openen"
+msgstr "Stan_daard menu openen"
 
 #: ../menueditor/menueditor-main-window.c:143
 msgid "Open default menu"
@@ -273,17 +268,15 @@ msgstr "Standaard menu openen"
 
 #: ../menueditor/menueditor-main-window.c:144
 msgid "_Save"
-msgstr ""
+msgstr "Op_slaan"
 
 #: ../menueditor/menueditor-main-window.c:144
-#, fuzzy
 msgid "Save modifications"
-msgstr "Wijzigingen negeren"
+msgstr "Wijzigingen opslaan"
 
 #: ../menueditor/menueditor-main-window.c:145
-#, fuzzy
 msgid "Save _as..."
-msgstr "Opslaan als..."
+msgstr "Opslaan _als..."
 
 #: ../menueditor/menueditor-main-window.c:145
 msgid "Save menu under a given name"
@@ -291,7 +284,7 @@ msgstr ""
 
 #: ../menueditor/menueditor-main-window.c:146
 msgid "_Close"
-msgstr ""
+msgstr "Sl_uiten"
 
 #: ../menueditor/menueditor-main-window.c:146
 #, fuzzy
@@ -299,9 +292,8 @@ msgid "Close menu"
 msgstr "Huidig menu sluiten"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "_Quit"
-msgstr "Afsluiten"
+msgstr "Af_sluiten"
 
 #: ../menueditor/menueditor-main-window.c:147
 #, fuzzy
@@ -353,7 +345,7 @@ msgstr "Menu optie toevoegen"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "_Up"
-msgstr ""
+msgstr "Om_hoog"
 
 #: ../menueditor/menueditor-main-window.c:154
 #, fuzzy
@@ -362,7 +354,7 @@ msgstr "Huidige menu-optie omhoog verplaatsen"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "_Down"
-msgstr ""
+msgstr "Om_laag"
 
 #: ../menueditor/menueditor-main-window.c:155
 #, fuzzy
@@ -489,13 +481,13 @@ msgstr "Een menu editor voor Xfce4"
 #. Credits
 #: ../menueditor/menueditor-main-window.c:1298
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "Auteur/Onderhouder"
 
 #: ../menueditor/menueditor-main-window.c:1299
 #: ../menueditor/menueditor-main-window.c:1300
 #: ../menueditor/menueditor-main-window.c:1301
 msgid "Contributor"
-msgstr "Contributeur"
+msgstr "Medewerker"
 
 #: ../menueditor/menueditor-main-window.c:1302
 msgid "Icon designer"
@@ -506,7 +498,6 @@ msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "Wilt u de wijzigingen opslaan?"
 
 #: ../menueditor/menueditor-main-window.c:1347
-#, fuzzy
 msgid "Forget modifications"
 msgstr "Wijzigingen negeren"
 
@@ -564,18 +555,16 @@ msgid "Edit Properties"
 msgstr "Lijst van achtergronden aanpassen"
 
 #: ../panel-plugin/desktop-menu-plugin.c:783
-#, fuzzy
 msgid "Button"
-msgstr "_Pictogram:"
+msgstr "Knop"
 
 #: ../panel-plugin/desktop-menu-plugin.c:796
-#, fuzzy
 msgid "Button _title:"
-msgstr "_Pictogram:"
+msgstr "Knop _titel:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:809
 msgid "_Show title in button"
-msgstr ""
+msgstr "_Toon titel in knop"
 
 #: ../panel-plugin/desktop-menu-plugin.c:816
 #, fuzzy
@@ -594,36 +583,33 @@ msgstr "Open menubestand"
 
 #: ../panel-plugin/desktop-menu-plugin.c:888
 #: ../settings/behavior-settings.c:267
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "_menu"
+msgstr "Menu be_werken"
 
 #: ../panel-plugin/desktop-menu-plugin.c:894
-#, fuzzy
 msgid "Icons"
-msgstr "Pictogram:"
+msgstr "Pictogrammen"
 
 #: ../panel-plugin/desktop-menu-plugin.c:906
 msgid "_Button icon:"
-msgstr "_Pictogram:"
+msgstr "_Knop icoon:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:930
 msgid "Show _icons in menu"
-msgstr "Toon pictogrammen in menu"
+msgstr "Toon p_ictogrammen in menu"
 
 #: ../panel-plugin/desktop-menu-plugin.c:953
 msgid "There is already a panel menu registered for this screen"
 msgstr ""
 
 #: ../panel-plugin/desktop-menu-plugin.c:1061
-#, fuzzy
 msgid "Edit Menu"
-msgstr "_menu"
+msgstr "Menu Aanpassen"
 
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
 msgid "Button Label|Desktop"
-msgstr ""
+msgstr "Bureaublad"
 
 #: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
 #: ../settings/backdrop-list-manager.c:631
@@ -671,9 +657,8 @@ msgid "Scaled"
 msgstr "Schalen"
 
 #: ../settings/appearance-settings.c:745
-#, fuzzy
 msgid "A_djust Brightness:"
-msgstr "Helderheid aanpassen:"
+msgstr "Hel_derheid aanpassen:"
 
 #: ../settings/appearance-settings.c:803
 #, c-format
@@ -682,22 +667,21 @@ msgstr ""
 
 #: ../settings/appearance-settings.c:804
 msgid "Unknown Error"
-msgstr ""
+msgstr "Onbekende Fout"
 
 #: ../settings/appearance-settings.c:808
 #: ../src/xfdesktop-regular-file-icon.c:488
 #: ../src/xfdesktop-regular-file-icon.c:552
 msgid "Error"
-msgstr ""
+msgstr "Fout"
 
 #: ../settings/appearance-settings.c:810
 msgid "Unable to start xfdesktop"
 msgstr ""
 
 #: ../settings/appearance-settings.c:832
-#, fuzzy
 msgid "Information"
-msgstr "Wijzigingen negeren"
+msgstr "Informatie"
 
 #: ../settings/appearance-settings.c:845
 msgid ""
@@ -723,9 +707,8 @@ msgstr ""
 
 #. the dialog
 #: ../settings/appearance-settings.c:921
-#, fuzzy
 msgid "Desktop Preferences"
-msgstr "Instellingen Bureaublad"
+msgstr "Bureaublad Instellingen"
 
 #: ../settings/appearance-settings.c:938
 msgid "Allow _Xfce to manage the desktop"
@@ -776,7 +759,7 @@ msgstr "Plaatje"
 
 #: ../settings/appearance-settings.c:1109
 msgid "Show _Image"
-msgstr "Plaatje tonen"
+msgstr "Plaatje _tonen"
 
 #: ../settings/appearance-settings.c:1131
 msgid "_File:"
@@ -796,7 +779,7 @@ msgstr "Scherm %d, Monitor %d"
 
 #: ../settings/appearance-settings.c:1210
 msgid "_Behavior"
-msgstr ""
+msgstr "Ge_drag"
 
 #: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
 #, c-format
@@ -858,19 +841,17 @@ msgid "Show _desktop menu on right click"
 msgstr "Bureaubladmenu tonen"
 
 #: ../settings/behavior-settings.c:279
-#, fuzzy
 msgid "Desktop Icons"
-msgstr "Bureaubladmenu"
+msgstr "Bureaublad Pictogrammen"
 
 #: ../settings/behavior-settings.c:288
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #: ../settings/behavior-settings.c:289
-#, fuzzy
 msgid "Minimized application icons"
-msgstr "P_rogrammapictogrammen tonen"
+msgstr "Geminimalizeerde programma pictogrammen"
 
 #: ../settings/behavior-settings.c:291
 msgid "File/launcher icons"
@@ -879,7 +860,7 @@ msgstr ""
 #: ../settings/behavior-settings.c:306
 #, fuzzy
 msgid "_Icon size:"
-msgstr "Pictogramontwerper"
+msgstr "Pictogram grootte:"
 
 #: ../settings/behavior-settings.c:320
 #, fuzzy
@@ -966,26 +947,26 @@ msgstr ""
 #: ../src/windowlist.c:218
 #, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "<b>Bureaublad %d</b>"
+msgstr "<b>Werkblad %d</b>"
 
 #: ../src/windowlist.c:226
 #, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "<i>Bureaublad %d</i>"
+msgstr "<i>Werkblad %d</i>"
 
 #: ../src/windowlist.c:293 ../src/windowlist.c:296
 msgid "_Add Workspace"
-msgstr "Bureaublad _toevoegen"
+msgstr "Werkblad _toevoegen"
 
 #: ../src/windowlist.c:304
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "Bureaublad %d _verwijderen"
+msgstr "Werkblad %d _verwijderen"
 
 #: ../src/windowlist.c:307
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Bureaublad '%s' _verwijderen"
+msgstr "Werkblad '%s' _verwijderen"
 
 #: ../src/xfce-desktop.c:542
 msgid "Desktop"
@@ -1018,18 +999,17 @@ msgstr ""
 #: ../src/xfdesktop-file-icon-manager.c:441
 #: ../src/xfdesktop-file-icon-manager.c:861
 #: ../src/xfdesktop-file-icon-manager.c:1558 ../src/xfdesktop-file-utils.c:336
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "Kon xfce4-menueditor niet starten: %s"
+msgstr "Kon %s niet uitvoeren: "
 
 #: ../src/xfdesktop-file-icon-manager.c:443
 #: ../src/xfdesktop-file-icon-manager.c:863
 #: ../src/xfdesktop-file-icon-manager.c:903
 #: ../src/xfdesktop-file-icon-manager.c:1158
 #: ../src/xfdesktop-file-icon-manager.c:1560 ../src/xfdesktop-file-utils.c:339
-#, fuzzy
 msgid "Launch Error"
-msgstr "Starter"
+msgstr "Uitvoer Fout"
 
 #: ../src/xfdesktop-file-icon-manager.c:445
 msgid "The associated application could not be found or executed."
@@ -1048,9 +1028,8 @@ msgid "Enter the new name:"
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:585
-#, fuzzy
 msgid "Rename"
-msgstr "Schalen"
+msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:622
 #, fuzzy, c-format
@@ -1105,11 +1084,11 @@ msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:1193
 msgid "Create New Folder"
-msgstr ""
+msgstr "Nieuwe map maken"
 
 #: ../src/xfdesktop-file-icon-manager.c:1197
 msgid "New Folder"
-msgstr ""
+msgstr "Nieuwe Map"
 
 #: ../src/xfdesktop-file-icon-manager.c:1198
 #: ../src/xfdesktop-file-icon-manager.c:1289
@@ -1182,9 +1161,8 @@ msgid "_Properties..."
 msgstr "Lijst van achtergronden aanpassen"
 
 #: ../src/xfdesktop-file-icon-manager.c:1867
-#, fuzzy
 msgid "Des_ktop"
-msgstr "Bureaublad"
+msgstr "Bureau_blad"
 
 #: ../src/xfdesktop-file-icon-manager.c:1886
 #, fuzzy
@@ -1201,25 +1179,22 @@ msgid "Create _Folder..."
 msgstr "Lijst van achtergronden aanpassen"
 
 #: ../src/xfdesktop-file-icon-manager.c:1966
-#, fuzzy
 msgid "_Empty File"
-msgstr "_Bestand"
+msgstr "_Leeg Bestand"
 
 #: ../src/xfdesktop-file-icon-manager.c:2007
-#, fuzzy
 msgid "Desktop _Settings..."
-msgstr "Instellingen Bureaublad"
+msgstr "Bureaublad In_stellingen..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2016
-#, fuzzy
 msgid "_Desktop Properties..."
-msgstr "Lijst van achtergronden aanpassen"
+msgstr "Bureaublad _Eigenschappen..."
 
 #: ../src/xfdesktop-file-icon-manager.c:3183
 #: ../src/xfdesktop-regular-file-icon.c:353
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\":"
-msgstr "Kon xfce4-menueditor niet starten: %s"
+msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:3185
 #: ../src/xfdesktop-regular-file-icon.c:355
@@ -1232,25 +1207,24 @@ msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr ""
 
 #: ../src/xfdesktop-file-properties-dialog.c:106
-#, fuzzy
 msgid "Properties Error"
-msgstr "Lijst van achtergronden aanpassen"
+msgstr ""
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Write only"
-msgstr ""
+msgstr "Alleen schrijven"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read only"
-msgstr ""
+msgstr "Alleen lezen"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read & Write"
-msgstr ""
+msgstr "Lezen en Schrijven"
 
 #: ../src/xfdesktop-file-properties-dialog.c:163
 msgid "General"
-msgstr ""
+msgstr "Algemeen"
 
 #: ../src/xfdesktop-file-properties-dialog.c:214
 msgid "Kind:"
@@ -1366,14 +1340,12 @@ msgid "Home"
 msgstr ""
 
 #: ../src/xfdesktop-special-file-icon.c:463
-#, fuzzy
 msgid "Trash Error"
-msgstr "Starter"
+msgstr ""
 
 #: ../src/xfdesktop-special-file-icon.c:465
-#, fuzzy
 msgid "Unable to contact the Xfce Trash service."
-msgstr "Kon xfce4-menueditor niet starten: %s"
+msgstr ""
 
 #: ../src/xfdesktop-special-file-icon.c:466
 msgid ""
@@ -1382,34 +1354,31 @@ msgid ""
 msgstr ""
 
 #: ../src/xfdesktop-special-file-icon.c:574
-#, fuzzy
 msgid "_Empty Trash"
-msgstr "_Bestand"
+msgstr "Prullenbak L_egen"
 
 #: ../src/xfdesktop-volume-icon.c:441
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "Kon xfce4-menueditor niet starten: %s"
+msgstr ""
 
 #: ../src/xfdesktop-volume-icon.c:442
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "Kon xfce4-menueditor niet starten: %s"
+msgstr ""
 
 #: ../src/xfdesktop-volume-icon.c:445
-#, fuzzy
 msgid "Mount Failed"
-msgstr "Menubestanden"
+msgstr ""
 
 #: ../src/xfdesktop-volume-icon.c:445
-#, fuzzy
 msgid "Unmount Failed"
-msgstr "Menubestanden"
+msgstr ""
 
 #: ../src/xfdesktop-volume-icon.c:463
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "Kon xfce4-menueditor niet starten: %s"
+msgstr ""
 
 #: ../src/xfdesktop-volume-icon.c:466
 msgid "Eject Failed"
@@ -1433,11 +1402,11 @@ msgstr "Bewerk het Xfce menu"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
-msgstr "Menu Editor"
+msgstr "Menu Aanpassen"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
-msgstr "Xfce 4 Menu Editor"
+msgstr "Xfce 4 Menu Aanpassen"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
@@ -1445,7 +1414,7 @@ msgstr ""
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
-msgstr "Instellingen Bureaublad"
+msgstr "Bureaublad Instellingen"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
@@ -1454,78 +1423,3 @@ msgstr "Instellingen van het bureaublad"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Instellingen Xfce 4 Bureaublad"
-
-#, fuzzy
-#~ msgid "Unable to empty the trash."
-#~ msgstr "Kon xfce4-menueditor niet starten: %s"
-
-#, fuzzy
-#~ msgid "_Copy Files"
-#~ msgstr "_Bestand"
-
-#, fuzzy
-#~ msgid "_Copy File"
-#~ msgstr "_Bestand"
-
-#, fuzzy
-#~ msgid "Cu_t Files"
-#~ msgstr "_Bestand"
-
-#, fuzzy
-#~ msgid "Cu_t File"
-#~ msgstr "_Bestand"
-
-#, fuzzy
-#~ msgid "_Delete Files"
-#~ msgstr "Menubestand Selecteren"
-
-#, fuzzy
-#~ msgid "_Delete File"
-#~ msgstr "Menubestand Selecteren"
-
-#, fuzzy
-#~ msgid "_Paste Files"
-#~ msgstr "Lijst-bestanden"
-
-#, fuzzy
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "Huidig menu sluiten?"
-
-#~ msgid "Core developer"
-#~ msgstr "Ontwikkelaar"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "Kon commando niet vinden!"
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "Alle velden moeten worden ingevuld om een optie toe te voegen"
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "Het 'Naam' veld is verplicht."
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "Het 'Bron' veld is verplicht."
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "Scheidingslijnen kunnen niet bewerkt worden"
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "Bestand %s bestaat niet!"
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "Wilt u de menu-optie naar hogergelegen menu verplaatsen?"
-
-#~ msgid "Edit"
-#~ msgstr "Bewerken"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "Extern menu toevoegen..."
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "Open een Xfce4 menubestand"
-
-#~ msgid "Save current menu"
-#~ msgstr "Huidig menu opslaan"
-
-#~ msgid "Delete the current entry"
-#~ msgstr "Huidige menu-optie verwijderen"
