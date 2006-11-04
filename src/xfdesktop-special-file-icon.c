@@ -523,6 +523,13 @@ xfdesktop_special_file_icon_trash_open_cb(DBusGProxy *proxy,
                                           GError *error,
                                           gpointer user_data)
 {
+    GtkWidget *icon_view, *toplevel;
+    
+    icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(user_data));
+    toplevel = gtk_widget_get_toplevel(icon_view);
+    xfdesktop_file_utils_set_window_cursor(GTK_WINDOW(toplevel),
+                                           GDK_LEFT_PTR);
+    
     if(error) {
         xfdesktop_special_file_icon_trash_handle_error(XFDESKTOP_SPECIAL_FILE_ICON(user_data),
                                                        "DisplayTrash",
@@ -563,8 +570,17 @@ xfdesktop_special_file_icon_trash_open(GtkWidget *w,
             xfdesktop_special_file_icon_trash_handle_error(file_icon,
                                                            "DisplayTrash",
                                                             NULL);
-        } else
+        } else {
+            GtkWidget *icon_view, *toplevel;
+            
             g_object_ref(G_OBJECT(file_icon));
+            
+            icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(file_icon));
+            toplevel = gtk_widget_get_toplevel(icon_view);
+            xfdesktop_file_utils_set_window_cursor(GTK_WINDOW(toplevel),
+                                                   GDK_WATCH);
+        }
+            
         g_free(display_name);
     }
 }

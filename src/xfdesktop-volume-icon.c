@@ -631,6 +631,8 @@ xfdesktop_volume_icon_activated(XfdesktopIcon *icon_p)
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(icon_p);
     ThunarVfsVolume *volume = (ThunarVfsVolume *)xfdesktop_volume_icon_peek_volume(icon);
     
+    TRACE("entering");
+    
     if(!thunar_vfs_volume_is_mounted(volume)) {
         xfdesktop_volume_icon_menu_toggle_mount(NULL, icon);
         if(!thunar_vfs_volume_is_mounted(volume))

@@ -855,8 +855,12 @@ xfdesktop_file_icon_manager_display_chooser_cb(DBusGProxy *proxy,
                                                GError *error,
                                                gpointer user_data)
 {
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    
+    xfdesktop_file_utils_set_window_cursor(GTK_WINDOW(toplevel), GDK_LEFT_PTR);
     if(error)
-        xfdesktop_file_icon_manager_display_chooser_error(XFDESKTOP_FILE_ICON_MANAGER(user_data));
+        xfdesktop_file_icon_manager_display_chooser_error(fmanager);
 }
 
 static void
@@ -891,6 +895,10 @@ xfdesktop_file_icon_menu_other_app(GtkWidget *widget,
                                                               fmanager))
         {
             xfdesktop_file_icon_manager_display_chooser_error(fmanager);
+        } else {
+            GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+            xfdesktop_file_utils_set_window_cursor(GTK_WINDOW(toplevel),
+                                                   GDK_WATCH);
         }
         g_free(uri);
         g_free(display_name);

@@ -296,6 +296,22 @@ xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
     return pix;
 }
 
+void
+xfdesktop_file_utils_set_window_cursor(GtkWindow *window,
+                                       GdkCursorType cursor_type)
+{
+    GdkCursor *cursor;
+    
+    if(!window || !GTK_WIDGET(window)->window)
+        return;
+    
+    cursor = gdk_cursor_new(cursor_type);
+    if(G_LIKELY(cursor)) {
+        gdk_window_set_cursor(GTK_WIDGET(window)->window, cursor);
+        gdk_cursor_unref(cursor);
+    }
+}
+
 gboolean
 xfdesktop_file_utils_launch_fallback(const ThunarVfsInfo *info,
                                      GdkScreen *screen,
@@ -358,10 +374,13 @@ xfdesktop_file_utils_display_folder_cb(DBusGProxy *proxy,
                                        GError *error,
                                        gpointer user_data)
 {
+    XfdesktopDisplayFolderData *dfdata = user_data;
+    
     g_return_if_fail(user_data);
     
+    xfdesktop_file_utils_set_window_cursor(dfdata->parent, GDK_LEFT_PTR);
+    
     if(error) {
-        XfdesktopDisplayFolderData *dfdata = user_data;
         xfdesktop_file_utils_launch_fallback(dfdata->info, dfdata->screen,
                                              dfdata->parent);
     }
@@ -397,7 +416,8 @@ xfdesktop_file_utils_open_folder(const ThunarVfsInfo *info,
         {
             xfdesktop_file_utils_launch_fallback(info, screen, parent);
             g_free(dfdata);
-        }
+        } else
+            xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
         
         g_free(uri);
         g_free(display_name);

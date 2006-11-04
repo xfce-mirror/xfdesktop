@@ -67,6 +67,9 @@ GdkPixbuf *xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
                                               const GdkPixbuf *emblem,
                                               guint opacity);
 
+void xfdesktop_file_utils_set_window_cursor(GtkWindow *window,
+                                            GdkCursorType cursor_type);
+
 gboolean xfdesktop_file_utils_launch_fallback(const ThunarVfsInfo *info,
                                               GdkScreen *screen,
                                               GtkWindow *parent);
