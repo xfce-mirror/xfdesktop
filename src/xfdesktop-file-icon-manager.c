@@ -3171,26 +3171,18 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                 
                 for(l = path_list; l; l = l->next) {
                     ThunarVfsPath *path = (ThunarVfsPath *)l->data;
-                    ThunarVfsInfo *dinfo = NULL;
                     
                     /* only work with file:// URIs here */
                     if(thunar_vfs_path_get_scheme(path) != THUNAR_VFS_PATH_SCHEME_FILE)
                         continue;
+                    /* root nodes cause crashes */
+                    if(thunar_vfs_path_is_root(path))
+                        continue;
                     
-                    if(thunar_vfs_path_is_root(path)) {
-                        ThunarVfsInfo *dinfo = thunar_vfs_info_new_for_path(path, NULL);
-                        if(dinfo)
-                            name = dinfo->display_name;
-                        else
-                            continue;
-                    } else
-                        name = thunar_vfs_path_get_name(path);
+                    name = thunar_vfs_path_get_name(path);
                     dest_path = thunar_vfs_path_relative(base_dest_path,
                                                          name);
                     dest_path_list = g_list_prepend(dest_path_list, dest_path);
-                    
-                    if(dinfo)
-                        thunar_vfs_info_unref(dinfo);
                 }
                 thunar_vfs_path_unref(base_dest_path);
                 dest_path_list = g_list_reverse(dest_path_list);

@@ -268,9 +268,9 @@ xfdesktop_special_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
     
     switch(special_file_icon->priv->type) {
         case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
-            /* root dir should always be readable, but move is just impossible,
-             * and copy seems a bit retarded. */
-            actions = GDK_ACTION_LINK;
+            /* move is just impossible, and copy seems a bit retarded.  link
+             * is possible, but thunar-vfs doesn't support it (deliberately). */
+            actions = 0;
             break;
         
         case XFDESKTOP_SPECIAL_FILE_ICON_HOME:
@@ -395,9 +395,9 @@ xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
         return FALSE;
     
     if(thunar_vfs_path_is_root(src_info->path))
-        name = src_info->display_name;
-    else
-        name = thunar_vfs_path_get_name(src_info->path);
+        return FALSE;
+    
+    name = thunar_vfs_path_get_name(src_info->path);
     g_return_val_if_fail(name, FALSE);
     
     dest_path = thunar_vfs_path_relative(special_file_icon->priv->info->path,
