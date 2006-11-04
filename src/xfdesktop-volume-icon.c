@@ -81,6 +81,8 @@ static gboolean xfdesktop_volume_icon_activated(XfdesktopIcon *icon);
 static void xfdesktop_volume_icon_tfi_init(ThunarxFileInfoIface *iface);
 #endif
 
+static void xfdesktop_volume_icon_volume_changed_cb(ThunarVfsVolume *volume,
+                                                    gpointer user_data);
 static inline void xfdesktop_volume_icon_invalidate_pixbuf(XfdesktopVolumeIcon *icon);
 
 
@@ -140,6 +142,10 @@ xfdesktop_volume_icon_finalize(GObject *obj)
                                          G_CALLBACK(xfdesktop_volume_icon_invalidate_pixbuf),
                                          icon);
     
+    g_signal_handlers_disconnect_by_func(G_OBJECT(icon->priv->volume),
+                                         G_CALLBACK(xfdesktop_volume_icon_volume_changed_cb),
+                                         icon);
+    
     if(icon->priv->pix)
         g_object_unref(G_OBJECT(icon->priv->pix));
     
@@ -169,6 +175,31 @@ xfdesktop_volume_icon_tfi_init(ThunarxFileInfoIface *iface)
     iface->get_vfs_info = xfdesktop_thunarx_file_info_get_vfs_info;
 }
 #endif  /* HAVE_THUNARX */
+
+
+static void
+xfdesktop_volume_icon_volume_changed_cb(ThunarVfsVolume *volume,
+                                        gpointer user_data)
+{
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(user_data);
+    ThunarVfsPath *new_path;
+    
+    new_path = thunar_vfs_volume_get_mount_point(volume);
+    if(new_path) {
+        ThunarVfsInfo *new_info = thunar_vfs_info_new_for_path(new_path, NULL);
+        
+        if(new_info) {
+            xfdesktop_file_icon_update_info(file_icon, new_info);
+            thunar_vfs_info_unref(new_info);
+            return;
+        }
+        
+        /* |new_path| is owned by |volume| */
+    }
+    
+    /* both new and old info is NULL or stale */
+    xfdesktop_file_icon_update_info(file_icon, NULL);
+}
 
 static inline void
 xfdesktop_volume_icon_invalidate_pixbuf(XfdesktopVolumeIcon *icon)
@@ -453,22 +484,8 @@ xfdesktop_volume_icon_menu_toggle_mount(GtkWidget *widget,
     
     if(!is_mount)
         thunar_vfs_volume_unmount(icon->priv->volume, toplevel, &error);
-    else {
-        if(thunar_vfs_volume_mount(icon->priv->volume, toplevel, &error)) {
-            const ThunarVfsInfo *info = icon->priv->info;
-            ThunarVfsPath *new_path = thunar_vfs_volume_get_mount_point(icon->priv->volume);
-            
-            if(!info || !thunar_vfs_path_equal(info->path, new_path)) {
-                ThunarVfsInfo *new_info = thunar_vfs_info_new_for_path(new_path,
-                                                                       NULL);
-                if(new_info) {
-                    xfdesktop_file_icon_update_info(XFDESKTOP_FILE_ICON(icon),
-                                                    new_info);
-                    thunar_vfs_info_unref(new_info);
-                }
-            }
-        }
-    }
+    else
+        thunar_vfs_volume_mount(icon->priv->volume, toplevel, &error);
     
     if(error) {
         gchar *primary = g_markup_printf_escaped(is_mount ? _("Unable to mount \"%s\":")
@@ -663,6 +680,10 @@ xfdesktop_volume_icon_new(ThunarVfsVolume *volume,
         volume_icon->priv->info = thunar_vfs_info_new_for_path(path, NULL);
         /* |path| is owned by |volume|, do not free */
     }
+    
+    g_signal_connect(G_OBJECT(volume), "changed",
+                     G_CALLBACK(xfdesktop_volume_icon_volume_changed_cb),
+                     volume_icon);
     
     return volume_icon;
 }
