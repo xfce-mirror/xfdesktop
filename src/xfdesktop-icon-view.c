@@ -1064,7 +1064,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     GdkAtom target = GDK_NONE;
-    guint16 row, col, icon_row = 0, icon_col = 0;
+    guint16 hover_row = 0, hover_col = 0;
     XfdesktopIcon *icon_on_dest = NULL;
     GdkDragAction our_action = 0;
     gboolean is_local_drag;
@@ -1079,25 +1079,18 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
     }
     
     /* can we drop here? */
-    xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
-    if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols)
+    xfdesktop_xy_to_rowcol(icon_view, x, y, &hover_row, &hover_col);
+    if(hover_row >= icon_view->priv->nrows || hover_col >= icon_view->priv->ncols)
         return FALSE;
-    icon_on_dest = xfdesktop_icon_view_icon_in_cell(icon_view, row, col);
+    icon_on_dest = xfdesktop_icon_view_icon_in_cell(icon_view, hover_row,
+                                                    hover_col);
     if(icon_on_dest) {
         if(!xfdesktop_icon_get_allowed_drop_actions(icon_on_dest))
             return FALSE;
-    } else if(!xfdesktop_grid_is_free_position(icon_view, row, col))
+    } else if(!xfdesktop_grid_is_free_position(icon_view, hover_row, hover_col))
         return FALSE;
     
     is_local_drag = (target == gdk_atom_intern("XFDESKTOP_ICON", FALSE));
-    
-    if(is_local_drag
-       && !xfdesktop_icon_get_position(icon_view->priv->last_clicked_item,
-                                        &icon_row, &icon_col))
-    {
-        xfdesktop_icon_view_clear_drag_highlight(icon_view, context);
-        return FALSE;
-    }
     
     /* at this point there are four cases to account for:
      * 1.  local drag, empty space -> MOVE
@@ -1116,14 +1109,23 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         GdkDragAction allowed_actions = (GDK_ACTION_MOVE | GDK_ACTION_COPY
                                          | GDK_ACTION_LINK);
         
-        /* check to make sure we aren't just hovering over ourself */
-        if(row == icon_row && col == icon_col) {
-            xfdesktop_icon_view_clear_drag_highlight(icon_view, context);
-            return FALSE;
-        }
-        
-        if(is_local_drag)  /* #2 */
+        if(is_local_drag) {  /* #2 */
+            /* check to make sure we aren't just hovering over ourself */
+            GList *l;
+            guint16 sel_row, sel_col;
+            
+            for(l = icon_view->priv->selected_icons; l; l = l->next) {
+                XfdesktopIcon *sel_icon = l->data;
+                if(xfdesktop_icon_get_position(sel_icon, &sel_row, &sel_col)
+                   && sel_row == hover_row && sel_col == hover_col)
+                {
+                    xfdesktop_icon_view_clear_drag_highlight(icon_view, context);
+                    return FALSE;
+                }
+            }
+            
             allowed_actions &= xfdesktop_icon_get_allowed_drag_actions(icon_view->priv->last_clicked_item);
+        }
         
         /* #2 or #4 */
         allowed_actions &= xfdesktop_icon_get_allowed_drop_actions(icon_on_dest);
@@ -1150,7 +1152,8 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
     
     gdk_drag_status(context, our_action, time);
     
-    xfdesktop_icon_view_draw_drag_highlight(icon_view, context, row, col);
+    xfdesktop_icon_view_draw_drag_highlight(icon_view, context,
+                                            hover_row, hover_col);
         
     return TRUE;
 }
