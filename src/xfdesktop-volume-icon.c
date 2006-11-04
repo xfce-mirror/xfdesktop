@@ -65,7 +65,8 @@ static GdkPixbuf *xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                     gint size);
 static G_CONST_RETURN gchar *xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon);
 static G_CONST_RETURN gchar *xfdesktop_volume_icon_peek_tooltip(XfdesktopIcon *icon);
-static gboolean xfdesktop_volume_icon_is_drop_dest(XfdesktopIcon *icon);
+static GdkDragAction xfdesktop_volume_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
+static GdkDragAction xfdesktop_volume_icon_get_allowed_drop_actions(XfdesktopIcon *icon);
 static gboolean xfdesktop_volume_icon_do_drop_dest(XfdesktopIcon *icon,
                                                    XfdesktopIcon *src_icon,
                                                    GdkDragAction action);
@@ -110,7 +111,8 @@ xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
     icon_class->peek_pixbuf = xfdesktop_volume_icon_peek_pixbuf;
     icon_class->peek_label = xfdesktop_volume_icon_peek_label;
     icon_class->peek_tooltip = xfdesktop_volume_icon_peek_tooltip;
-    icon_class->is_drop_dest = xfdesktop_volume_icon_is_drop_dest;
+    icon_class->get_allowed_drag_actions = xfdesktop_volume_icon_get_allowed_drag_actions;
+    icon_class->get_allowed_drop_actions = xfdesktop_volume_icon_get_allowed_drop_actions;
     icon_class->do_drop_dest = xfdesktop_volume_icon_do_drop_dest;
     icon_class->get_popup_menu = xfdesktop_volume_icon_get_popup_menu;
     icon_class->activated = xfdesktop_volume_icon_activated;
@@ -213,12 +215,51 @@ xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon)
     return thunar_vfs_volume_get_name(XFDESKTOP_VOLUME_ICON(icon)->priv->volume);
 }
 
-static gboolean
-xfdesktop_volume_icon_is_drop_dest(XfdesktopIcon *icon)
+static GdkDragAction
+xfdesktop_volume_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 {
     XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
-    /* FIXME: return TRUE, and attempt to mount later if it isn't? */
-    return thunar_vfs_volume_is_mounted(volume_icon->priv->volume);
+    
+    /* volume icons more or less represent the volume's mount point, usually
+     * (hopefully) a local path.  so when it's mounted, we certainly can't move
+     * the mount point, but copying and linking should be OK.  when not mounted,
+     * we should just disallow everything, since, even if its ThunarVfsInfo
+     * is valid, we can't guarantee it won't change after mounting. */
+    
+    /* FIXME: should i allow all actions if not mounted as well, and try to
+     * mount and resolve on drop? */
+    
+    if(thunar_vfs_volume_is_mounted(volume_icon->priv->volume)) {
+        const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
+        if(info) {
+            if(info->flags & THUNAR_VFS_FILE_FLAGS_READABLE)
+                return GDK_ACTION_COPY | GDK_ACTION_LINK;
+            else
+                return GDK_ACTION_LINK;
+        }
+    }
+    
+    return 0;
+}
+
+static GdkDragAction
+xfdesktop_volume_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
+{
+    XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
+    
+    /* if not mounted, it doesn't really make sense to allow any operations
+     * here.  if mounted, we should allow everything if it's writable. */
+    
+    /* FIXME: should i allow all actions if not mounted as well, and try to
+     * mount and resolve on drop? */
+    
+    if(thunar_vfs_volume_is_mounted(volume_icon->priv->volume)) {
+        const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
+        if(info && info->flags & THUNAR_VFS_FILE_FLAGS_WRITABLE)
+            return GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
+    }
+    
+    return 0;
 }
 
 static void
@@ -288,7 +329,7 @@ xfdesktop_volume_icon_do_drop_dest(XfdesktopIcon *icon,
     
     g_return_val_if_fail(volume_icon && src_file_icon,
                          FALSE);
-    g_return_val_if_fail(xfdesktop_volume_icon_is_drop_dest(icon),
+    g_return_val_if_fail(xfdesktop_volume_icon_get_allowed_drop_actions(icon),
                          FALSE);
     
     src_info = xfdesktop_file_icon_peek_info(src_file_icon);

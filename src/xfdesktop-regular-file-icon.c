@@ -70,7 +70,8 @@ static GdkPixbuf *xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                           gint size);
 static G_CONST_RETURN gchar *xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon);
 static G_CONST_RETURN gchar *xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon);
-static gboolean xfdesktop_regular_file_icon_is_drop_dest(XfdesktopIcon *icon);
+static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
+static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon);
 static gboolean xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
                                                          XfdesktopIcon *src_icon,
                                                          GdkDragAction action);
@@ -120,7 +121,8 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
     icon_class->peek_pixbuf = xfdesktop_regular_file_icon_peek_pixbuf;
     icon_class->peek_label = xfdesktop_regular_file_icon_peek_label;
     icon_class->peek_tooltip = xfdesktop_regular_file_icon_peek_tooltip;
-    icon_class->is_drop_dest = xfdesktop_regular_file_icon_is_drop_dest;
+    icon_class->get_allowed_drag_actions = xfdesktop_regular_file_icon_get_allowed_drag_actions;
+    icon_class->get_allowed_drop_actions = xfdesktop_regular_file_icon_get_allowed_drop_actions;
     icon_class->do_drop_dest = xfdesktop_regular_file_icon_do_drop_dest;
     
     file_icon_class->peek_info = xfdesktop_regular_file_icon_peek_info;
@@ -246,13 +248,52 @@ xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon)
     return XFDESKTOP_REGULAR_FILE_ICON(icon)->priv->info->display_name;
 }
 
-static gboolean
-xfdesktop_regular_file_icon_is_drop_dest(XfdesktopIcon *icon)
+static GdkDragAction
+xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 {
-    XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
-    return (regular_file_icon->priv->info
-            && (regular_file_icon->priv->info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY
-                || regular_file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE));
+    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
+    GdkDragAction actions = GDK_ACTION_LINK;  /* we can always link */
+    
+    g_return_val_if_fail(info, 0);
+    
+    if(info->flags & THUNAR_VFS_FILE_FLAGS_READABLE) {
+        ThunarVfsPath *parent_path;
+        ThunarVfsInfo *parent_info;
+        
+        actions |= GDK_ACTION_COPY;
+        
+        /* we can only move if the parent is writable */
+        parent_path = thunar_vfs_path_get_parent(info->path);
+        parent_info = thunar_vfs_info_new_for_path(parent_path, NULL);
+        if(parent_info) {
+            if(parent_info->flags & THUNAR_VFS_FILE_FLAGS_WRITABLE)
+                actions |= GDK_ACTION_MOVE;
+            thunar_vfs_info_unref(parent_info);
+        }
+        
+        /* |parent_path| is owned by |info| */
+    }
+    
+    return actions;
+}
+
+static GdkDragAction
+xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
+{
+    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
+    
+    g_return_val_if_fail(info, 0);
+    
+    /* if it's executable we can 'copy'.  if it's a folder we can do anything
+     * if it's writable. */
+    if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE)
+        return GDK_ACTION_COPY;
+    else if(THUNAR_VFS_FILE_TYPE_DIRECTORY == info->type
+            && info->flags & THUNAR_VFS_FILE_FLAGS_WRITABLE)
+    {
+        return GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
+    } else
+        return 0;
 }
 
 static void
@@ -318,7 +359,8 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
     DBG("entering");
     
     g_return_val_if_fail(regular_file_icon && src_file_icon, FALSE);
-    g_return_val_if_fail(xfdesktop_regular_file_icon_is_drop_dest(icon), FALSE);
+    g_return_val_if_fail(xfdesktop_regular_file_icon_get_allowed_drop_actions(icon) != 0,
+                         FALSE);
     
     src_info = xfdesktop_file_icon_peek_info(src_file_icon);
     if(!src_info)

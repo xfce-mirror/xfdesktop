@@ -1084,7 +1084,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         return FALSE;
     icon_on_dest = xfdesktop_icon_view_icon_in_cell(icon_view, row, col);
     if(icon_on_dest) {
-        if(!xfdesktop_icon_is_drop_dest(icon_on_dest))
+        if(!xfdesktop_icon_get_allowed_drop_actions(icon_on_dest))
             return FALSE;
     } else if(!xfdesktop_grid_is_free_position(icon_view, row, col))
         return FALSE;
@@ -1112,7 +1112,9 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         else  /* #3 */
             our_action = context->suggested_action;
     } else {
-        GdkDragAction allowed_actions = 0xffffffff;
+        /* start with everything */
+        GdkDragAction allowed_actions = (GDK_ACTION_MOVE | GDK_ACTION_COPY
+                                         | GDK_ACTION_LINK);
         
         /* check to make sure we aren't just hovering over ourself */
         if(row == icon_row && col == icon_col) {
@@ -1198,7 +1200,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
         
         if(icon_on_dest) {
             gboolean ret = xfdesktop_icon_do_drop_dest(icon_on_dest, icon,
-                                                       context->suggested_action);
+                                                       context->action);
             gtk_drag_finish(context, ret, FALSE, time);
             return ret;
         }

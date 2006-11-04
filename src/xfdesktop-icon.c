@@ -31,8 +31,6 @@
 
 #include "xfdesktop-icon.h"
 
-#define DEFAULT_ACTIONS  (GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK)
-
 struct _XfdesktopIconPrivate
 {
     gint16 row;
@@ -236,7 +234,7 @@ xfdesktop_icon_peek_label(XfdesktopIcon *icon)
     return klass->peek_label(icon);
 }
 
-/*< optional >*/
+/*< optional; drags aren't allowed if not provided >*/
 GdkDragAction
 xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 {
@@ -244,24 +242,12 @@ xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
     if(!klass->get_allowed_drag_actions)
-        return DEFAULT_ACTIONS;
+        return 0;
     
     return klass->get_allowed_drag_actions(icon);
 }
 
-/*< required >*/
-gboolean
-xfdesktop_icon_is_drop_dest(XfdesktopIcon *icon)
-{
-    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
-    
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
-    g_return_val_if_fail(klass->is_drop_dest, FALSE);
-    
-    return klass->is_drop_dest(icon);
-}
-
-/*< optional >*/
+/*< optional; drops aren't allowed if not provided >*/
 GdkDragAction
 xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
 {
@@ -269,12 +255,12 @@ xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
     if(!klass->get_allowed_drop_actions)
-        return DEFAULT_ACTIONS;
+        return 0;
     
     return klass->get_allowed_drop_actions(icon);
 }
 
-/*< optional, required if is_drop_dest() can return TRUE >*/
+/*< optional; required if get_allowed_drop_actions() can return nonzero >*/
 gboolean
 xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
                             XfdesktopIcon *src_icon,

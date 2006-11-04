@@ -72,7 +72,6 @@ xfdesktop_window_icon_class_init(XfdesktopWindowIconClass *klass)
     
     icon_class->peek_pixbuf = xfdesktop_window_icon_peek_pixbuf;
     icon_class->peek_label = xfdesktop_window_icon_peek_label;
-    icon_class->is_drop_dest = (gboolean (*)(XfdesktopIcon *))gtk_false;
     icon_class->activated = xfdesktop_window_icon_activated;
     icon_class->menu_popup = xfdesktop_window_icon_menu_popup;
 }

@@ -72,7 +72,8 @@ static GdkPixbuf *xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                           gint size);
 static G_CONST_RETURN gchar *xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon);
 static G_CONST_RETURN gchar *xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon);
-static gboolean xfdesktop_special_file_icon_is_drop_dest(XfdesktopIcon *icon);
+static GdkDragAction xfdesktop_special_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
+static GdkDragAction xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon);
 static gboolean xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
                                                          XfdesktopIcon *src_icon,
                                                          GdkDragAction action);
@@ -118,7 +119,8 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
     icon_class->peek_pixbuf = xfdesktop_special_file_icon_peek_pixbuf;
     icon_class->peek_label = xfdesktop_special_file_icon_peek_label;
     icon_class->peek_tooltip = xfdesktop_special_file_icon_peek_tooltip;
-    icon_class->is_drop_dest = xfdesktop_special_file_icon_is_drop_dest;
+    icon_class->get_allowed_drag_actions = xfdesktop_special_file_icon_get_allowed_drag_actions;
+    icon_class->get_allowed_drop_actions = xfdesktop_special_file_icon_get_allowed_drop_actions;
     icon_class->do_drop_dest = xfdesktop_special_file_icon_do_drop_dest;
     icon_class->get_popup_menu = xfdesktop_special_file_icon_get_popup_menu;
     
@@ -258,12 +260,64 @@ xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon)
         return special_file_icon->priv->info->display_name;
 }
 
-static gboolean
-xfdesktop_special_file_icon_is_drop_dest(XfdesktopIcon *icon)
+static GdkDragAction
+xfdesktop_special_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
-    /* FIXME: i suppose '/' could be writable if we're foolishly running as root */
-    return (XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM != special_file_icon->priv->type);
+    GdkDragAction actions = 0;
+    
+    switch(special_file_icon->priv->type) {
+        case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
+            /* root dir should always be readable, but move is just impossible,
+             * and copy seems a bit retarded. */
+            actions = GDK_ACTION_LINK;
+            break;
+        
+        case XFDESKTOP_SPECIAL_FILE_ICON_HOME:
+            /* user shouldn't be able to move their own homedir.  copy might
+             * be a little silly, but allow it anyway.  link is fine. */
+            actions = GDK_ACTION_COPY | GDK_ACTION_LINK;
+            break;
+            
+        case XFDESKTOP_SPECIAL_FILE_ICON_TRASH:
+            /* i don't think we can even do a link here; thunar doesn't let
+             * us, anyway. */
+            actions = 0;
+            break;
+    }
+    
+    return actions;
+}
+
+static GdkDragAction
+xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
+{
+    XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
+    const ThunarVfsInfo *info;
+    GdkDragAction actions = 0;
+    
+    switch(special_file_icon->priv->type) {
+        case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
+            /* we should hope the user isn't running as root, but we might as
+             * well let them hang themselves if they are */
+            info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
+            if(info && info->flags & THUNAR_VFS_FILE_FLAGS_WRITABLE)
+                actions = GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
+            else
+                actions = 0;
+            break;
+        
+        case XFDESKTOP_SPECIAL_FILE_ICON_HOME:
+            /* assume the user can write to their own home directory */
+            actions = GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
+            break;
+            
+        case XFDESKTOP_SPECIAL_FILE_ICON_TRASH:
+            actions = GDK_ACTION_MOVE;  /* anything else is just silly */
+            break;
+    }
+    
+    return actions;
 }
 
 static void
@@ -326,23 +380,26 @@ xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
     XfdesktopFileIcon *src_file_icon = XFDESKTOP_FILE_ICON(src_icon);
     const ThunarVfsInfo *src_info;
     ThunarVfsJob *job = NULL;
-    const gchar *name;
+    const gchar *name = NULL;
     ThunarVfsPath *dest_path;
     
     DBG("entering");
     
     g_return_val_if_fail(special_file_icon && src_file_icon,
                          FALSE);
-    g_return_val_if_fail(xfdesktop_special_file_icon_is_drop_dest(icon),
+    g_return_val_if_fail(xfdesktop_special_file_icon_get_allowed_drop_actions(icon),
                          FALSE);
     
     src_info = xfdesktop_file_icon_peek_info(src_file_icon);
     if(!src_info)
         return FALSE;
     
-    name = thunar_vfs_path_get_name(src_info->path);
+    if(thunar_vfs_path_is_root(src_info->path))
+        name = src_info->display_name;
+    else
+        name = thunar_vfs_path_get_name(src_info->path);
     g_return_val_if_fail(name, FALSE);
-        
+    
     dest_path = thunar_vfs_path_relative(special_file_icon->priv->info->path,
                                          name);
     g_return_val_if_fail(dest_path, FALSE);
