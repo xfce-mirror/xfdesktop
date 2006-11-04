@@ -31,6 +31,8 @@
 
 #include "xfdesktop-icon.h"
 
+#define DEFAULT_ACTIONS  (GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK)
+
 struct _XfdesktopIconPrivate
 {
     gint16 row;
@@ -209,6 +211,7 @@ xfdesktop_icon_get_extents(XfdesktopIcon *icon,
 
 
 
+/*< required >*/
 GdkPixbuf *
 xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
                            gint size)
@@ -221,6 +224,7 @@ xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
     return klass->peek_pixbuf(icon, size);
 }
 
+/*< required >*/
 G_CONST_RETURN gchar *
 xfdesktop_icon_peek_label(XfdesktopIcon *icon)
 {
@@ -232,6 +236,20 @@ xfdesktop_icon_peek_label(XfdesktopIcon *icon)
     return klass->peek_label(icon);
 }
 
+/*< optional >*/
+GdkDragAction
+xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
+{
+    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    if(!klass->get_allowed_drag_actions)
+        return DEFAULT_ACTIONS;
+    
+    return klass->get_allowed_drag_actions(icon);
+}
+
+/*< required >*/
 gboolean
 xfdesktop_icon_is_drop_dest(XfdesktopIcon *icon)
 {
@@ -243,7 +261,21 @@ xfdesktop_icon_is_drop_dest(XfdesktopIcon *icon)
     return klass->is_drop_dest(icon);
 }
 
-XfdesktopIconDragResult
+/*< optional >*/
+GdkDragAction
+xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
+{
+    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    if(!klass->get_allowed_drop_actions)
+        return DEFAULT_ACTIONS;
+    
+    return klass->get_allowed_drop_actions(icon);
+}
+
+/*< optional, required if is_drop_dest() can return TRUE >*/
+gboolean
 xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
                             XfdesktopIcon *src_icon,
                             GdkDragAction action)
@@ -256,6 +288,7 @@ xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
     return klass->do_drop_dest(icon, src_icon, action);
 }
 
+/*< optional >*/
 G_CONST_RETURN gchar *
 xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon)
 {
@@ -269,6 +302,7 @@ xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon)
     return klass->peek_tooltip(icon);
 }
 
+/*< optional >*/
 GtkWidget *
 xfdesktop_icon_get_popup_menu(XfdesktopIcon *icon)
 {

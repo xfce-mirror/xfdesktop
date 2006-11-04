@@ -73,9 +73,9 @@ static GdkPixbuf *xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
 static G_CONST_RETURN gchar *xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon);
 static G_CONST_RETURN gchar *xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon);
 static gboolean xfdesktop_special_file_icon_is_drop_dest(XfdesktopIcon *icon);
-static XfdesktopIconDragResult xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
-                                                                        XfdesktopIcon *src_icon,
-                                                                        GdkDragAction action);
+static gboolean xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
+                                                         XfdesktopIcon *src_icon,
+                                                         GdkDragAction action);
 static GtkWidget *xfdesktop_special_file_icon_get_popup_menu(XfdesktopIcon *icon);
 
 static G_CONST_RETURN ThunarVfsInfo *xfdesktop_special_file_icon_peek_info(XfdesktopFileIcon *icon);
@@ -317,7 +317,7 @@ xfdesktop_special_file_icon_drag_job_finished(ThunarVfsJob *job,
     g_object_unref(G_OBJECT(special_file_icon));
 }
 
-static XfdesktopIconDragResult
+static gboolean
 xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
                                          XfdesktopIcon *src_icon,
                                          GdkDragAction action)
@@ -332,20 +332,20 @@ xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
     DBG("entering");
     
     g_return_val_if_fail(special_file_icon && src_file_icon,
-                         XFDESKTOP_ICON_DRAG_FAILED);
+                         FALSE);
     g_return_val_if_fail(xfdesktop_special_file_icon_is_drop_dest(icon),
-                         XFDESKTOP_ICON_DRAG_FAILED);
+                         FALSE);
     
     src_info = xfdesktop_file_icon_peek_info(src_file_icon);
     if(!src_info)
-        return XFDESKTOP_ICON_DRAG_FAILED;
+        return FALSE;
     
     name = thunar_vfs_path_get_name(src_info->path);
-    g_return_val_if_fail(name, XFDESKTOP_ICON_DRAG_FAILED);
+    g_return_val_if_fail(name, FALSE);
         
     dest_path = thunar_vfs_path_relative(special_file_icon->priv->info->path,
                                          name);
-    g_return_val_if_fail(dest_path, XFDESKTOP_ICON_DRAG_FAILED);
+    g_return_val_if_fail(dest_path, FALSE);
     
     if(special_file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH)  {
         /* any drop to the trash is a move */
@@ -406,11 +406,11 @@ xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
                          G_CALLBACK(xfdesktop_special_file_icon_drag_job_finished),
                          special_file_icon);
         
-        return XFDESKTOP_ICON_DRAG_SUCCEEDED_NO_ACTION;
+        return TRUE;
     } else
-        return XFDESKTOP_ICON_DRAG_FAILED;
+        return FALSE;
     
-    return XFDESKTOP_ICON_DRAG_FAILED;
+    return FALSE;
 }
 
 static G_CONST_RETURN gchar *

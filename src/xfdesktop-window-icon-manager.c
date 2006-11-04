@@ -514,7 +514,6 @@ xfdesktop_window_icon_manager_real_init(XfdesktopIconViewManager *manager,
     gint i;
     
     wmanager->priv->icon_view = icon_view;
-    xfdesktop_icon_view_set_allow_overlapping_drops(icon_view, FALSE);
     xfdesktop_icon_view_set_selection_mode(icon_view, GTK_SELECTION_SINGLE);
     g_signal_connect(G_OBJECT(icon_view), "icon-selected",
                      G_CALLBACK(xfdesktop_window_icon_manager_icon_selected_cb),

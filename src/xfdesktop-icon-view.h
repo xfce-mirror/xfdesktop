@@ -71,10 +71,6 @@ void xfdesktop_icon_view_set_selection_mode(XfdesktopIconView *icon_view,
                                             GtkSelectionMode mode);
 GtkSelectionMode xfdesktop_icon_view_get_selection_mode(XfdesktopIconView *icon_view);
 
-void xfdesktop_icon_view_set_allow_overlapping_drops(XfdesktopIconView *icon_view,
-                                                     gboolean allow_overlap);
-gboolean xfdesktop_icon_view_get_allow_overlapping_drops(XfdesktopIconView *icon_view);
-
 void xfdesktop_icon_view_enable_drag_source(XfdesktopIconView *icon_view,
                                             GdkModifierType start_button_mask,
                                             const GtkTargetEntry *targets,

@@ -2747,7 +2747,6 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     } else
         g_object_ref(G_OBJECT(thunar_mime_database));
     
-    xfdesktop_icon_view_set_allow_overlapping_drops(icon_view, TRUE);
     xfdesktop_icon_view_set_selection_mode(icon_view, GTK_SELECTION_MULTIPLE);
     xfdesktop_icon_view_enable_drag_source(icon_view,
                                            GDK_SHIFT_MASK | GDK_CONTROL_MASK,

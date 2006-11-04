@@ -71,9 +71,9 @@ static GdkPixbuf *xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
 static G_CONST_RETURN gchar *xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon);
 static G_CONST_RETURN gchar *xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon);
 static gboolean xfdesktop_regular_file_icon_is_drop_dest(XfdesktopIcon *icon);
-static XfdesktopIconDragResult xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
-                                                                        XfdesktopIcon *src_icon,
-                                                                        GdkDragAction action);
+static gboolean xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
+                                                         XfdesktopIcon *src_icon,
+                                                         GdkDragAction action);
 
 static G_CONST_RETURN ThunarVfsInfo *xfdesktop_regular_file_icon_peek_info(XfdesktopFileIcon *icon);
 static void xfdesktop_regular_file_icon_update_info(XfdesktopFileIcon *icon,
@@ -306,7 +306,7 @@ xfdesktop_regular_file_icon_drag_job_finished(ThunarVfsJob *job,
     g_object_unref(G_OBJECT(regular_file_icon));
 }
 
-static XfdesktopIconDragResult
+gboolean
 xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
                                          XfdesktopIcon *src_icon,
                                          GdkDragAction action)
@@ -317,14 +317,12 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
     
     DBG("entering");
     
-    g_return_val_if_fail(regular_file_icon && src_file_icon,
-                         XFDESKTOP_ICON_DRAG_FAILED);
-    g_return_val_if_fail(xfdesktop_regular_file_icon_is_drop_dest(icon),
-                         XFDESKTOP_ICON_DRAG_FAILED);
+    g_return_val_if_fail(regular_file_icon && src_file_icon, FALSE);
+    g_return_val_if_fail(xfdesktop_regular_file_icon_is_drop_dest(icon), FALSE);
     
     src_info = xfdesktop_file_icon_peek_info(src_file_icon);
     if(!src_info)
-        return XFDESKTOP_ICON_DRAG_FAILED;
+        return FALSE;
     
     if(regular_file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
         GList *path_list = g_list_prepend(NULL, src_info->path);
@@ -347,21 +345,21 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
             g_free(primary);
             g_error_free(error);
             
-            return XFDESKTOP_ICON_DRAG_FAILED;
+            return FALSE;
         }
         
-        return XFDESKTOP_ICON_DRAG_SUCCEEDED_NO_ACTION;
+        return TRUE;
     } else {
         ThunarVfsJob *job = NULL;
         const gchar *name;
         ThunarVfsPath *dest_path;
         
         name = thunar_vfs_path_get_name(src_info->path);
-        g_return_val_if_fail(name, XFDESKTOP_ICON_DRAG_FAILED);
+        g_return_val_if_fail(name, FALSE);
         
         dest_path = thunar_vfs_path_relative(regular_file_icon->priv->info->path,
                                              name);
-        g_return_val_if_fail(dest_path, XFDESKTOP_ICON_DRAG_FAILED);
+        g_return_val_if_fail(dest_path, FALSE);
         
         switch(action) {
             case GDK_ACTION_MOVE:
@@ -417,12 +415,12 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
                              G_CALLBACK(xfdesktop_regular_file_icon_drag_job_finished),
                              regular_file_icon);
             
-            return XFDESKTOP_ICON_DRAG_SUCCEEDED_NO_ACTION;
+            return TRUE;
         } else
-            return XFDESKTOP_ICON_DRAG_FAILED;
+            return FALSE;
     }
     
-    return XFDESKTOP_ICON_DRAG_FAILED;
+    return FALSE;
 }
 
 static G_CONST_RETURN gchar *

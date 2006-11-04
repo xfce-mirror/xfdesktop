@@ -31,13 +31,6 @@ G_BEGIN_DECLS
 #define XFDESKTOP_IS_ICON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_ICON))
 #define XFDESKTOP_ICON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), XFDESKTOP_TYPE_ICON, XfdesktopIconClass))
 
-typedef enum
-{
-    XFDESKTOP_ICON_DRAG_FAILED = 0,
-    XFDESKTOP_ICON_DRAG_SUCCEEDED_MOVE_ICON,
-    XFDESKTOP_ICON_DRAG_SUCCEEDED_NO_ACTION,
-} XfdesktopIconDragResult;
-
 typedef struct _XfdesktopIcon        XfdesktopIcon;
 typedef struct _XfdesktopIconClass   XfdesktopIconClass;
 typedef struct _XfdesktopIconPrivate XfdesktopIconPrivate;
@@ -74,8 +67,11 @@ struct _XfdesktopIconClass
     GdkPixbuf *(*peek_pixbuf)(XfdesktopIcon *icon, gint size);
     G_CONST_RETURN gchar *(*peek_label)(XfdesktopIcon *icon);
     
+    GdkDragAction (*get_allowed_drag_actions)(XfdesktopIcon *icon);
+    
     gboolean (*is_drop_dest)(XfdesktopIcon *icon);
-    XfdesktopIconDragResult (*do_drop_dest)(XfdesktopIcon *icon, XfdesktopIcon *src_icon, GdkDragAction action);
+    GdkDragAction (*get_allowed_drop_actions)(XfdesktopIcon *icon);
+    gboolean (*do_drop_dest)(XfdesktopIcon *icon, XfdesktopIcon *src_icon, GdkDragAction action);
     
     G_CONST_RETURN gchar *(*peek_tooltip)(XfdesktopIcon *icon);
     
@@ -103,10 +99,13 @@ void xfdesktop_icon_set_extents(XfdesktopIcon *icon,
 gboolean xfdesktop_icon_get_extents(XfdesktopIcon *icon,
                                     GdkRectangle *extents);
 
+GdkDragAction xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
+
 gboolean xfdesktop_icon_is_drop_dest(XfdesktopIcon *icon);
-XfdesktopIconDragResult xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
-                                                    XfdesktopIcon *src_icon,
-                                                    GdkDragAction action);
+GdkDragAction xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon);
+gboolean xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
+                                     XfdesktopIcon *src_icon,
+                                     GdkDragAction action);
 
 GtkWidget *xfdesktop_icon_get_popup_menu(XfdesktopIcon *icon);
 

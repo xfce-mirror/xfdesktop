@@ -48,12 +48,6 @@ static GdkPixbuf *xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                    gint size);
 static G_CONST_RETURN gchar *xfdesktop_window_icon_peek_label(XfdesktopIcon *icon);
 
-static gboolean xfdesktop_window_icon_is_drop_dest(XfdesktopIcon *icon);
-static XfdesktopIconDragResult xfdesktop_window_icon_do_drop_dest(XfdesktopIcon *icon,
-                                                                  XfdesktopIcon *src_icon,
-                                                                  GdkDragAction action);
-
-static void xfdesktop_window_icon_selected(XfdesktopIcon *icon);
 static gboolean xfdesktop_window_icon_activated(XfdesktopIcon *icon);
 static void xfdesktop_window_icon_menu_popup(XfdesktopIcon *icon);
 
@@ -78,9 +72,7 @@ xfdesktop_window_icon_class_init(XfdesktopWindowIconClass *klass)
     
     icon_class->peek_pixbuf = xfdesktop_window_icon_peek_pixbuf;
     icon_class->peek_label = xfdesktop_window_icon_peek_label;
-    icon_class->is_drop_dest = xfdesktop_window_icon_is_drop_dest;
-    icon_class->do_drop_dest = xfdesktop_window_icon_do_drop_dest;
-    icon_class->selected = xfdesktop_window_icon_selected;
+    icon_class->is_drop_dest = (gboolean (*)(XfdesktopIcon *))gtk_false;
     icon_class->activated = xfdesktop_window_icon_activated;
     icon_class->menu_popup = xfdesktop_window_icon_menu_popup;
 }
@@ -156,43 +148,7 @@ xfdesktop_window_icon_changed_cb(NetkWindow *window,
 
 
 
-XfdesktopWindowIcon *
-xfdesktop_window_icon_new(NetkWindow *window,
-                          gint workspace)
-{
-    XfdesktopWindowIcon *icon = g_object_new(XFDESKTOP_TYPE_WINDOW_ICON, NULL);
-    gchar data_name[256];
-    gint row, col;
-    
-    icon->priv->window = window;
-    icon->priv->workspace = workspace;
-    
-    /* check for availability of old position (if any) */
-    g_snprintf(data_name, 256, "--xfdesktop-last-row-%d", workspace);
-    row = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
-                                             data_name));
-    g_snprintf(data_name, 256, "--xfdesktop-last-col-%d", workspace);
-    col = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
-                                             data_name));
-    if(row > 0 && col > 0)
-        xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row - 1, col - 1);
-    
-    g_signal_connect(G_OBJECT(window), "name-changed",
-                     G_CALLBACK(xfdesktop_window_name_changed_cb),
-                     icon);
-    g_signal_connect(G_OBJECT(window), "icon-changed",
-                     G_CALLBACK(xfdesktop_window_icon_changed_cb),
-                     icon);
-    
-    return icon;
-}
 
-gint
-xfdesktop_window_icon_get_workspace(XfdesktopWindowIcon *window_icon)
-{
-    g_return_val_if_fail(XFDESKTOP_IS_WINDOW_ICON(window_icon), -1);
-    return window_icon->priv->workspace;
-}
 
 static GdkPixbuf *
 xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,
@@ -232,26 +188,6 @@ xfdesktop_window_icon_peek_label(XfdesktopIcon *icon)
 }
 
 static gboolean
-xfdesktop_window_icon_is_drop_dest(XfdesktopIcon *icon)
-{
-    return FALSE;
-}
-
-static XfdesktopIconDragResult
-xfdesktop_window_icon_do_drop_dest(XfdesktopIcon *icon,
-                                   XfdesktopIcon *src_icon,
-                                   GdkDragAction action)
-{
-    return XFDESKTOP_ICON_DRAG_FAILED;
-}
-
-static void
-xfdesktop_window_icon_selected(XfdesktopIcon *icon)
-{
-    /* nada */
-}
-
-static gboolean
 xfdesktop_window_icon_activated(XfdesktopIcon *icon)
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
@@ -260,7 +196,6 @@ xfdesktop_window_icon_activated(XfdesktopIcon *icon)
     
     return TRUE;
 }
-
 
 static gboolean
 xfdesktop_action_menu_destroy_idled(gpointer data)
@@ -294,4 +229,44 @@ xfdesktop_window_icon_menu_popup(XfdesktopIcon *icon)
                      G_CALLBACK(xfdesktop_action_menu_deactivate_cb), NULL);
     gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
                    3, gtk_get_current_event_time());
+}
+
+
+
+XfdesktopWindowIcon *
+xfdesktop_window_icon_new(NetkWindow *window,
+                          gint workspace)
+{
+    XfdesktopWindowIcon *icon = g_object_new(XFDESKTOP_TYPE_WINDOW_ICON, NULL);
+    gchar data_name[256];
+    gint row, col;
+    
+    icon->priv->window = window;
+    icon->priv->workspace = workspace;
+    
+    /* check for availability of old position (if any) */
+    g_snprintf(data_name, 256, "--xfdesktop-last-row-%d", workspace);
+    row = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
+                                             data_name));
+    g_snprintf(data_name, 256, "--xfdesktop-last-col-%d", workspace);
+    col = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
+                                             data_name));
+    if(row > 0 && col > 0)
+        xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row - 1, col - 1);
+    
+    g_signal_connect(G_OBJECT(window), "name-changed",
+                     G_CALLBACK(xfdesktop_window_name_changed_cb),
+                     icon);
+    g_signal_connect(G_OBJECT(window), "icon-changed",
+                     G_CALLBACK(xfdesktop_window_icon_changed_cb),
+                     icon);
+    
+    return icon;
+}
+
+gint
+xfdesktop_window_icon_get_workspace(XfdesktopWindowIcon *window_icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_WINDOW_ICON(window_icon), -1);
+    return window_icon->priv->workspace;
 }
