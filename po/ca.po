@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 05:11-0800\n"
-"PO-Revision-Date: 2006-09-18 22:33+0200\n"
+"PO-Revision-Date: 2006-11-04 14:44+0100\n"
 "Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
@@ -84,9 +84,8 @@ msgstr "Icona:"
 #: ../menueditor/menueditor-add-dialog.c:330
 #: ../menueditor/menueditor-edit-dialog.c:191
 #: ../menueditor/menueditor-edit-dialog.c:586
-#, fuzzy
 msgid "No icon"
-msgstr "_Botó d'icona:"
+msgstr "Sense icona"
 
 #: ../menueditor/menueditor-add-dialog.c:225
 #: ../menueditor/menueditor-add-dialog.c:226
@@ -486,7 +485,7 @@ msgstr "Ignora les modificacions"
 #: ../menueditor/menueditor-main-window.c:2035
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
-msgstr ""
+msgstr "No s’ha pogut obrir el fitxer de menú %s en mode escriptura"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
@@ -667,19 +666,13 @@ msgid "Information"
 msgstr "Informació"
 
 #: ../settings/appearance-settings.c:845
-#, fuzzy
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
 "the Xfce Session Manager (xfce4-session), you will need to manually edit "
 "your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
-msgstr ""
-"Per assegurar que Xfce no gestiona el seu escriptori la següent vegada que "
-"inicieu Xfce, si us plau deseu la sessió en sortir. Si no esteu usant el "
-"gestor de sessions Xfce (xfce4-session) haureu d'editar manualment el vostre "
-"fitxer  ~/.config/xfce4/xinitrc . Podeu trobar més detalls a la documentació "
-"a http://xfce.org/. "
+msgstr "Per assegurar que Xfce no gestiona el seu escriptori la següent vegada que inicieu Xfce, si us plau deseu la sessió en sortir. Si no esteu usant el gestor de sessions Xfce (xfce4-session) haureu d'editar manualment el vostre fitxer  ~/.config/xfce4/xinitrc . Podeu trobar més detalls a la documentació a http://xfce.org/. "
 
 #: ../settings/appearance-settings.c:847
 msgid ""
@@ -1039,9 +1032,8 @@ msgid "Launch Error"
 msgstr "Error durant el llançament"
 
 #: ../src/xfdesktop-file-icon-manager.c:866
-#, fuzzy
 msgid "The application chooser could not be opened."
-msgstr "No s'ha pogut trobar o executar l'aplicació associada."
+msgstr "No s'ha pogut obrir l’escollidor d’aplicacions."
 
 #: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
 msgid ""
@@ -1331,23 +1323,18 @@ msgid "Home"
 msgstr "Inici"
 
 #: ../src/xfdesktop-special-file-icon.c:508
-#, fuzzy
 msgid "Trash Error"
-msgstr "Error durant el llançament"
+msgstr "Error a la paperera"
 
 #: ../src/xfdesktop-special-file-icon.c:510
-#, fuzzy
 msgid "Unable to contact the Xfce Trash service."
-msgstr "No s’ha pogut obrir la paperera."
+msgstr "No s’ha pogut contactar amb el servei de paperera Xfce"
 
 #: ../src/xfdesktop-special-file-icon.c:511
-#, fuzzy
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
-msgstr ""
-"Per buidar la paperera es necessita algun gestor de fitxers que suporti la "
-"paperara d’Xfce, com per exemple Thunar."
+msgstr "Assegureu-vos que teniu instaŀlada una aplicació que suporti la paperera Xfce, com per exemple Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
@@ -1419,16 +1406,3 @@ msgstr "Paràmetres pel gestor d'escriptori Xfce4"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Paràmetres de l'escriptori Xfce4"
-
-#~ msgid ""
-#~ "Viewing the contents of the trash requires a file manager that supports "
-#~ "the Xfce trash service, such as Thunar."
-#~ msgstr ""
-#~ "Per veure el contingut de la paperera es necessita algun gestor de "
-#~ "fitxers que suporti la paperara d’Xfce, com per exemple Thunar."
-
-#~ msgid "Unable to empty the trash."
-#~ msgstr "No s'ha pogut buidar la paperera."
-
-#~ msgid "Unknown error."
-#~ msgstr "Error desconegut."
