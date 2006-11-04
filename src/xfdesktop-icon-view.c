@@ -1198,15 +1198,13 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     icon_on_dest = xfdesktop_icon_view_icon_in_cell(icon_view, row, col);
     
     if(target == gdk_atom_intern("XFDESKTOP_ICON", FALSE)) {
-        icon = icon_view->priv->last_clicked_item;
-        g_return_val_if_fail(icon, FALSE);
-        
         if(icon_on_dest) {
             GList *l;
             gboolean ret = FALSE;
             
             for(l = icon_view->priv->selected_icons; l; l = l->next) {
-                if(xfdesktop_icon_do_drop_dest(icon_on_dest, icon,
+                if(xfdesktop_icon_do_drop_dest(icon_on_dest,
+                                               XFDESKTOP_ICON(l->data),
                                                context->action))
                 {
                     ret = TRUE;
@@ -1217,6 +1215,9 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
             
             return ret;
         }
+        
+        icon = icon_view->priv->last_clicked_item;
+        g_return_val_if_fail(icon, FALSE);
         
         /* clear out old position */
         xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
