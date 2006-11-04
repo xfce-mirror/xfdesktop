@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-17 23:10-0700\n"
+"POT-Creation-Date: 2006-11-04 05:11-0800\n"
 "PO-Revision-Date: 2006-08-27 02:35+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg2002@freemail.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -247,8 +247,8 @@ msgid "Create a new empty menu"
 msgstr "Δημιουργία νέου κενού μενού"
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1632
-#: ../src/xfdesktop-special-file-icon.c:563 ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-file-icon-manager.c:1602
+#: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
 msgid "_Open"
 msgstr "_Άνοιγμα"
 
@@ -399,7 +399,7 @@ msgstr "Θέλετε να αποθηκεύσετε πριν κλείσετε τ�
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:625 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:587 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Ερώτηση"
 
@@ -655,8 +655,8 @@ msgid "Unknown Error"
 msgstr "Άγνωστο σφάλμα"
 
 #: ../settings/appearance-settings.c:808
-#: ../src/xfdesktop-regular-file-icon.c:488
-#: ../src/xfdesktop-regular-file-icon.c:552
+#: ../src/xfdesktop-regular-file-icon.c:520
+#: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr "Σφάλμα"
 
@@ -965,7 +965,7 @@ msgstr "_Αφαίρεση χώρου εργασίας '%s'"
 msgid "Desktop"
 msgstr "Επιφάνεια εργασίας"
 
-#: ../src/xfdesktop-file-icon-manager.c:257
+#: ../src/xfdesktop-file-icon-manager.c:386
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
@@ -973,13 +973,13 @@ msgstr ""
 "Δεν ήταν δυνατή η δημιουργία του φακέλου \"%s\" για τα αντικείμενα της "
 "επιφάνειας εργασίας:"
 
-#: ../src/xfdesktop-file-icon-manager.c:259
-#: ../src/xfdesktop-file-icon-manager.c:268
-#: ../src/xfdesktop-file-icon-manager.c:1124
+#: ../src/xfdesktop-file-icon-manager.c:388
+#: ../src/xfdesktop-file-icon-manager.c:399
+#: ../src/xfdesktop-file-icon-manager.c:1094
 msgid "Create Folder Failed"
 msgstr "Η δημιουργία του φακέλου απέτυχε"
 
-#: ../src/xfdesktop-file-icon-manager.c:266
+#: ../src/xfdesktop-file-icon-manager.c:397
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
@@ -988,72 +988,68 @@ msgstr ""
 "Δεν είναι δυνατή η χρήση του \"%s\" για τα αντικείμενα της επιφάνεια "
 "εργασίας επειδή δεν είναι φάκελος."
 
-#: ../src/xfdesktop-file-icon-manager.c:270
+#: ../src/xfdesktop-file-icon-manager.c:401
 msgid "Please delete or rename the file."
 msgstr "Παρακαλώ διαγράψτε ή μετονομάστε το αρχείο."
 
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:441
-#: ../src/xfdesktop-file-icon-manager.c:861
-#: ../src/xfdesktop-file-icon-manager.c:1558 ../src/xfdesktop-file-utils.c:336
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "Η εκκίνηση του \"%s\" απέτυχε:"
-
-#: ../src/xfdesktop-file-icon-manager.c:443
-#: ../src/xfdesktop-file-icon-manager.c:863
-#: ../src/xfdesktop-file-icon-manager.c:903
-#: ../src/xfdesktop-file-icon-manager.c:1158
-#: ../src/xfdesktop-file-icon-manager.c:1560 ../src/xfdesktop-file-utils.c:339
-msgid "Launch Error"
-msgstr "Σφάλμα εκτέλεσης"
-
-#: ../src/xfdesktop-file-icon-manager.c:445
-msgid "The associated application could not be found or executed."
-msgstr "Η σχετιζόμενη εφαρμογή δεν ήταν δυνατό να βρεθεί ή να εκτελεστεί."
-
-#: ../src/xfdesktop-file-icon-manager.c:576
+#: ../src/xfdesktop-file-icon-manager.c:538
 #, c-format
 msgid "Rename \"%s\""
 msgstr "Μετονομασία του \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:583
-#: ../src/xfdesktop-file-icon-manager.c:1196
-#: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1298
+#: ../src/xfdesktop-file-icon-manager.c:545
+#: ../src/xfdesktop-file-icon-manager.c:1166
+#: ../src/xfdesktop-file-icon-manager.c:1257
+#: ../src/xfdesktop-file-icon-manager.c:1268
 msgid "Enter the new name:"
 msgstr "Εισάγετε το νέο όνομα:"
 
-#: ../src/xfdesktop-file-icon-manager.c:585
+#: ../src/xfdesktop-file-icon-manager.c:547
 msgid "Rename"
 msgstr "Μετονομασία"
 
-#: ../src/xfdesktop-file-icon-manager.c:622
+#: ../src/xfdesktop-file-icon-manager.c:584
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά το \"%s\";"
 
-#: ../src/xfdesktop-file-icon-manager.c:627
-#: ../src/xfdesktop-file-icon-manager.c:647
+#: ../src/xfdesktop-file-icon-manager.c:589
+#: ../src/xfdesktop-file-icon-manager.c:609
 msgid "If you delete a file, it is permanently lost."
 msgstr "Εάν διαγράψετε ένα αρχείο, χάνεται για πάντα."
 
-#: ../src/xfdesktop-file-icon-manager.c:641
+#: ../src/xfdesktop-file-icon-manager.c:603
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr ""
 "Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά τα  %d επιλεγμένα αρχεία;"
 
-#: ../src/xfdesktop-file-icon-manager.c:644
+#: ../src/xfdesktop-file-icon-manager.c:606
 msgid "Delete Multiple Files"
 msgstr "Διαγραφή πολλαπλών αρχείων"
 
-#: ../src/xfdesktop-file-icon-manager.c:904
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:823
+#: ../src/xfdesktop-file-icon-manager.c:1528 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-utils.c:352
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Η εκκίνηση του \"%s\" απέτυχε:"
+
+#: ../src/xfdesktop-file-icon-manager.c:825
+#: ../src/xfdesktop-file-icon-manager.c:865
+#: ../src/xfdesktop-file-icon-manager.c:1128
+#: ../src/xfdesktop-file-icon-manager.c:1530 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-utils.c:355
+msgid "Launch Error"
+msgstr "Σφάλμα εκτέλεσης"
+
+#: ../src/xfdesktop-file-icon-manager.c:866
 #, fuzzy
 msgid "The application chooser could not be opened."
 msgstr "Η σχετιζόμενη εφαρμογή δεν ήταν δυνατό να βρεθεί ή να εκτελεστεί."
 
-#: ../src/xfdesktop-file-icon-manager.c:905 ../src/xfdesktop-file-utils.c:341
+#: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -1061,22 +1057,22 @@ msgstr ""
 "Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή αρχείων (όπως αυτή "
 "που παρέχει ο Thunar)."
 
-#: ../src/xfdesktop-file-icon-manager.c:1057
+#: ../src/xfdesktop-file-icon-manager.c:1027
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "Άνοιγμα _με \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1060
+#: ../src/xfdesktop-file-icon-manager.c:1030
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Άνοιγμα με \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1121
+#: ../src/xfdesktop-file-icon-manager.c:1091
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Δεν ήταν δυνατή η δημιουργία φακέλου με όνομα \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1160
+#: ../src/xfdesktop-file-icon-manager.c:1130
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -1085,118 +1081,122 @@ msgstr ""
 "τη δημιουργία και την επεξεργασία εκκινητών και συνδέσμων στην επιφάνεια "
 "εργασίας."
 
-#: ../src/xfdesktop-file-icon-manager.c:1193
+#: ../src/xfdesktop-file-icon-manager.c:1163
 msgid "Create New Folder"
 msgstr "Δημιουργία νέου φακέλου"
 
-#: ../src/xfdesktop-file-icon-manager.c:1197
+#: ../src/xfdesktop-file-icon-manager.c:1167
 msgid "New Folder"
 msgstr "Νέος φάκελος"
 
-#: ../src/xfdesktop-file-icon-manager.c:1198
-#: ../src/xfdesktop-file-icon-manager.c:1289
-#: ../src/xfdesktop-file-icon-manager.c:1300
+#: ../src/xfdesktop-file-icon-manager.c:1168
+#: ../src/xfdesktop-file-icon-manager.c:1259
+#: ../src/xfdesktop-file-icon-manager.c:1270
 msgid "Create"
 msgstr "Δημιουργία"
 
-#: ../src/xfdesktop-file-icon-manager.c:1234
+#: ../src/xfdesktop-file-icon-manager.c:1204
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Δεν ήταν δυνατή η δημιουργία αρχείου με όνομα \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1237
+#: ../src/xfdesktop-file-icon-manager.c:1207
 msgid "Create File Failed"
 msgstr "Η δημιουργία του αρχείου απέτυχε"
 
-#: ../src/xfdesktop-file-icon-manager.c:1276
+#: ../src/xfdesktop-file-icon-manager.c:1246
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Δημιουργία εγγράφου από πρότυπο \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1295
+#: ../src/xfdesktop-file-icon-manager.c:1265
 msgid "Create Empty File"
 msgstr "Δημιουργία κενού αρχείου"
 
-#: ../src/xfdesktop-file-icon-manager.c:1299
+#: ../src/xfdesktop-file-icon-manager.c:1269
 msgid "New Empty File"
 msgstr "Νέο κενό αρχείο"
 
-#: ../src/xfdesktop-file-icon-manager.c:1332
+#: ../src/xfdesktop-file-icon-manager.c:1302
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "Δεν ήταν δυνατή η δημιουργία του αρχείου \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1333
+#: ../src/xfdesktop-file-icon-manager.c:1303
 msgid "Create Error"
 msgstr "Σφάλμα δημιουργίας"
 
-#: ../src/xfdesktop-file-icon-manager.c:1617
+#: ../src/xfdesktop-file-icon-manager.c:1587
 msgid "_Open all"
 msgstr "_Άνοιγμα όλων"
 
-#: ../src/xfdesktop-file-icon-manager.c:1647
+#: ../src/xfdesktop-file-icon-manager.c:1617
 msgid "_Execute"
 msgstr "_Εκτέλεση"
 
-#: ../src/xfdesktop-file-icon-manager.c:1664
+#: ../src/xfdesktop-file-icon-manager.c:1634
 msgid "_Edit Launcher"
 msgstr "Ε_πεξεργασία εκκινητή"
 
-#: ../src/xfdesktop-file-icon-manager.c:1704
+#: ../src/xfdesktop-file-icon-manager.c:1674
 msgid "Open With"
 msgstr "Άνοιγμα με"
 
-#: ../src/xfdesktop-file-icon-manager.c:1735
+#: ../src/xfdesktop-file-icon-manager.c:1705
 msgid "Open With Other _Application..."
 msgstr "Άνοιγμα με άλλη ε_φαρμογή..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1834
+#: ../src/xfdesktop-file-icon-manager.c:1804
 msgid "_Rename..."
 msgstr "_Μετονομασία..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1850
-#: ../src/xfdesktop-volume-icon.c:543
+#: ../src/xfdesktop-file-icon-manager.c:1820
+#: ../src/xfdesktop-volume-icon.c:593
 msgid "_Properties..."
 msgstr "_Ιδιότητες..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1867
+#: ../src/xfdesktop-file-icon-manager.c:1837
 msgid "Des_ktop"
 msgstr "Ε_πιφάνεια εργασίας"
 
-#: ../src/xfdesktop-file-icon-manager.c:1886
+#: ../src/xfdesktop-file-icon-manager.c:1856
 msgid "Create _Launcher..."
 msgstr "Δημιουργία _εκκινητή..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1907
+#: ../src/xfdesktop-file-icon-manager.c:1877
 msgid "Create _URL Link..."
 msgstr "Δημιουργία _συνδέσμου..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1924
+#: ../src/xfdesktop-file-icon-manager.c:1894
 msgid "Create _Folder..."
 msgstr "Δημιουργία _φακέλου..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1966
+#: ../src/xfdesktop-file-icon-manager.c:1936
 msgid "_Empty File"
 msgstr "_Κενό αρχείο"
 
-#: ../src/xfdesktop-file-icon-manager.c:2007
+#: ../src/xfdesktop-file-icon-manager.c:1977
 msgid "Desktop _Settings..."
 msgstr "_Ρυθμίσεις επιφάνειας εργασίας..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2016
+#: ../src/xfdesktop-file-icon-manager.c:1986
 msgid "_Desktop Properties..."
 msgstr "_Ιδιότητες επιφάνειας εργασίας..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3183
-#: ../src/xfdesktop-regular-file-icon.c:353
+#: ../src/xfdesktop-file-icon-manager.c:3158
+#: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Η εκτέλεση του \"%s\" απέτυχε:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3185
-#: ../src/xfdesktop-regular-file-icon.c:355
+#: ../src/xfdesktop-file-icon-manager.c:3160
+#: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr "Σφάλμα Εκτέλεσης"
+
+#: ../src/xfdesktop-file-icon.c:146
+msgid "The associated application could not be found or executed."
+msgstr "Η σχετιζόμενη εφαρμογή δεν ήταν δυνατό να βρεθεί ή να εκτελεστεί."
 
 #: ../src/xfdesktop-file-properties-dialog.c:103
 #, c-format
@@ -1258,8 +1258,8 @@ msgid "Size:"
 msgstr "Μέγεθος:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:413
-#: ../src/xfdesktop-regular-file-icon.c:454
-#: ../src/xfdesktop-special-file-icon.c:442 ../src/xfdesktop-volume-icon.c:396
+#: ../src/xfdesktop-regular-file-icon.c:486
+#: ../src/xfdesktop-special-file-icon.c:487 ../src/xfdesktop-volume-icon.c:460
 msgid "%s (%"
 msgstr "%s (%"
 
@@ -1317,8 +1317,8 @@ msgstr "σπασμένος δεσμός"
 msgid "link to %s"
 msgstr "σύνδεσμος στο %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:457
-#: ../src/xfdesktop-special-file-icon.c:445 ../src/xfdesktop-volume-icon.c:399
+#: ../src/xfdesktop-regular-file-icon.c:489
+#: ../src/xfdesktop-special-file-icon.c:490 ../src/xfdesktop-volume-icon.c:463
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -1329,24 +1329,24 @@ msgstr ""
 "Τροποποιήθηκε: %s\n"
 "Μέγεθος: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:549
+#: ../src/xfdesktop-regular-file-icon.c:581
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Η μετονομασία του \"%s\" σε \"%s\" απέτυχε:"
 
-#: ../src/xfdesktop-special-file-icon.c:268
+#: ../src/xfdesktop-special-file-icon.c:258
 msgid "Home"
 msgstr "Αρχικός κατάλογος"
 
-#: ../src/xfdesktop-special-file-icon.c:463
+#: ../src/xfdesktop-special-file-icon.c:508
 msgid "Trash Error"
 msgstr "Σφάλμα απορριμμάτων"
 
-#: ../src/xfdesktop-special-file-icon.c:465
+#: ../src/xfdesktop-special-file-icon.c:510
 msgid "Unable to contact the Xfce Trash service."
 msgstr "Δεν ήταν δυνατή η επικοινωνία με την υπηρεσία απορριμμάτων του Xfce."
 
-#: ../src/xfdesktop-special-file-icon.c:466
+#: ../src/xfdesktop-special-file-icon.c:511
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
@@ -1354,46 +1354,46 @@ msgstr ""
 "Σιγουρευτείτε ότι υπάρχει εγκατεστημένος ένας διαχειριστής αρχείων που "
 "υποστηρίζει την υπηρεσία απορριμμάτων του Xfce, όπως το Thunar."
 
-#: ../src/xfdesktop-special-file-icon.c:574
+#: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
 msgstr "Ά_δειασμα απορριμμάτων"
 
-#: ../src/xfdesktop-volume-icon.c:441
+#: ../src/xfdesktop-volume-icon.c:491
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "Δεν ήταν δυνατή η προσάρτηση του \"%s\":"
 
-#: ../src/xfdesktop-volume-icon.c:442
+#: ../src/xfdesktop-volume-icon.c:492
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "Δεν ήταν δυνατή η αποπροσάρτηση του \"%s\":"
 
-#: ../src/xfdesktop-volume-icon.c:445
+#: ../src/xfdesktop-volume-icon.c:495
 msgid "Mount Failed"
 msgstr "Η προσάρτηση απέτυχε"
 
-#: ../src/xfdesktop-volume-icon.c:445
+#: ../src/xfdesktop-volume-icon.c:495
 msgid "Unmount Failed"
 msgstr "Η αποπροσάρτηση απέτυχε"
 
-#: ../src/xfdesktop-volume-icon.c:463
+#: ../src/xfdesktop-volume-icon.c:513
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "Δεν ήταν δυνατή η αποβολή του \"%s\":"
 
-#: ../src/xfdesktop-volume-icon.c:466
+#: ../src/xfdesktop-volume-icon.c:516
 msgid "Eject Failed"
 msgstr "Η αποβολή απέτυχε"
 
-#: ../src/xfdesktop-volume-icon.c:504
+#: ../src/xfdesktop-volume-icon.c:554
 msgid "_Mount Volume"
 msgstr "Προ_σάρτηση τόμου"
 
-#: ../src/xfdesktop-volume-icon.c:515
+#: ../src/xfdesktop-volume-icon.c:565
 msgid "_Unmount Volume"
 msgstr "Αποπρο_σάρτηση τόμου"
 
-#: ../src/xfdesktop-volume-icon.c:529
+#: ../src/xfdesktop-volume-icon.c:579
 msgid "E_ject Volume"
 msgstr "Απο_βολή τόμου"
 

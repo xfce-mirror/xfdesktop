@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-17 23:10-0700\n"
+"POT-Creation-Date: 2006-11-04 05:11-0800\n"
 "PO-Revision-Date: 2006-09-02 04:42+0300\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
@@ -248,8 +248,8 @@ msgid "Create a new empty menu"
 msgstr "צור תפריט חדש וריק"
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1632
-#: ../src/xfdesktop-special-file-icon.c:563 ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-file-icon-manager.c:1602
+#: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
 msgid "_Open"
 msgstr "_פתיחה"
 
@@ -400,7 +400,7 @@ msgstr "האם ברצונך לשמור לפני סגירת הקובץ?"
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:625 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:587 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "שאלה"
 
@@ -651,8 +651,8 @@ msgid "Unknown Error"
 msgstr "שגיאה לא מוכרת"
 
 #: ../settings/appearance-settings.c:808
-#: ../src/xfdesktop-regular-file-icon.c:488
-#: ../src/xfdesktop-regular-file-icon.c:552
+#: ../src/xfdesktop-regular-file-icon.c:520
+#: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr "שגיאה"
 
@@ -953,19 +953,19 @@ msgstr "_הסר סביבת עבודה %s"
 msgid "Desktop"
 msgstr "שולחן עבודה"
 
-#: ../src/xfdesktop-file-icon-manager.c:257
+#: ../src/xfdesktop-file-icon-manager.c:386
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "לא ניתן ליצור את התיקייה \"%s\" בשביל לשמור שם את פריטי שולחן העבודה:"
 
-#: ../src/xfdesktop-file-icon-manager.c:259
-#: ../src/xfdesktop-file-icon-manager.c:268
-#: ../src/xfdesktop-file-icon-manager.c:1124
+#: ../src/xfdesktop-file-icon-manager.c:388
+#: ../src/xfdesktop-file-icon-manager.c:399
+#: ../src/xfdesktop-file-icon-manager.c:1094
 msgid "Create Folder Failed"
 msgstr "יצירת תיקיה נכשלה"
 
-#: ../src/xfdesktop-file-icon-manager.c:266
+#: ../src/xfdesktop-file-icon-manager.c:397
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
@@ -974,71 +974,67 @@ msgstr ""
 "לא ניתן להשתמש ב\"%s\" בשביל לשמור שם את פריטי שולחן העבודה משום זה לא "
 "תיקייה."
 
-#: ../src/xfdesktop-file-icon-manager.c:270
+#: ../src/xfdesktop-file-icon-manager.c:401
 msgid "Please delete or rename the file."
 msgstr "אנא מחק או שנה את שם הקובץ."
 
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:441
-#: ../src/xfdesktop-file-icon-manager.c:861
-#: ../src/xfdesktop-file-icon-manager.c:1558 ../src/xfdesktop-file-utils.c:336
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "אין אפשרות לשגר \"%s\":"
-
-#: ../src/xfdesktop-file-icon-manager.c:443
-#: ../src/xfdesktop-file-icon-manager.c:863
-#: ../src/xfdesktop-file-icon-manager.c:903
-#: ../src/xfdesktop-file-icon-manager.c:1158
-#: ../src/xfdesktop-file-icon-manager.c:1560 ../src/xfdesktop-file-utils.c:339
-msgid "Launch Error"
-msgstr "שגיאת הפעלה"
-
-#: ../src/xfdesktop-file-icon-manager.c:445
-msgid "The associated application could not be found or executed."
-msgstr "לא הייתה אפשרות למצוא או להפעיל את היישום המקושר."
-
-#: ../src/xfdesktop-file-icon-manager.c:576
+#: ../src/xfdesktop-file-icon-manager.c:538
 #, c-format
 msgid "Rename \"%s\""
 msgstr "שנה שם \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:583
-#: ../src/xfdesktop-file-icon-manager.c:1196
-#: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1298
+#: ../src/xfdesktop-file-icon-manager.c:545
+#: ../src/xfdesktop-file-icon-manager.c:1166
+#: ../src/xfdesktop-file-icon-manager.c:1257
+#: ../src/xfdesktop-file-icon-manager.c:1268
 msgid "Enter the new name:"
 msgstr "הכנס את השם החדש:"
 
-#: ../src/xfdesktop-file-icon-manager.c:585
+#: ../src/xfdesktop-file-icon-manager.c:547
 msgid "Rename"
 msgstr "שנה שם"
 
-#: ../src/xfdesktop-file-icon-manager.c:622
+#: ../src/xfdesktop-file-icon-manager.c:584
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "האם אתה בטוח שברצונך למחוק את \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:627
-#: ../src/xfdesktop-file-icon-manager.c:647
+#: ../src/xfdesktop-file-icon-manager.c:589
+#: ../src/xfdesktop-file-icon-manager.c:609
 msgid "If you delete a file, it is permanently lost."
 msgstr "אם תמחק את הקובץ הוא ימחק לצמיתות."
 
-#: ../src/xfdesktop-file-icon-manager.c:641
+#: ../src/xfdesktop-file-icon-manager.c:603
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "האם אתה בטוח שברצונך למחוק את %d הקבצים הבאים?"
 
-#: ../src/xfdesktop-file-icon-manager.c:644
+#: ../src/xfdesktop-file-icon-manager.c:606
 msgid "Delete Multiple Files"
 msgstr "מחיקת מספר קבצים"
 
-#: ../src/xfdesktop-file-icon-manager.c:904
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:823
+#: ../src/xfdesktop-file-icon-manager.c:1528 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-utils.c:352
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "אין אפשרות לשגר \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:825
+#: ../src/xfdesktop-file-icon-manager.c:865
+#: ../src/xfdesktop-file-icon-manager.c:1128
+#: ../src/xfdesktop-file-icon-manager.c:1530 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-utils.c:355
+msgid "Launch Error"
+msgstr "שגיאת הפעלה"
+
+#: ../src/xfdesktop-file-icon-manager.c:866
 #, fuzzy
 msgid "The application chooser could not be opened."
 msgstr "לא הייתה אפשרות למצוא או להפעיל את היישום המקושר."
 
-#: ../src/xfdesktop-file-icon-manager.c:905 ../src/xfdesktop-file-utils.c:341
+#: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -1046,22 +1042,22 @@ msgstr ""
 "אפשרות זו דורשת נוכחות של שירות מנהל קבצים (כמו לדוגמה זה המסופק על ידי "
 "Thunar)."
 
-#: ../src/xfdesktop-file-icon-manager.c:1057
+#: ../src/xfdesktop-file-icon-manager.c:1027
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "פתח באמצעות \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1060
+#: ../src/xfdesktop-file-icon-manager.c:1030
 #, c-format
 msgid "Open With \"%s\""
 msgstr "פתח באמצעות \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1121
+#: ../src/xfdesktop-file-icon-manager.c:1091
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "אין אפשרות ליצור תיקיה בשם \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1160
+#: ../src/xfdesktop-file-icon-manager.c:1130
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -1069,118 +1065,122 @@ msgstr ""
 "איו אפשרות להפעיל את \"exo-desktop-item-edit\", אשר נחוץ כדי ליצור ולערוך "
 "משגרים וקיצורי דרך על שולחן העבודה."
 
-#: ../src/xfdesktop-file-icon-manager.c:1193
+#: ../src/xfdesktop-file-icon-manager.c:1163
 msgid "Create New Folder"
 msgstr "יצירת תיקיה חדשה"
 
-#: ../src/xfdesktop-file-icon-manager.c:1197
+#: ../src/xfdesktop-file-icon-manager.c:1167
 msgid "New Folder"
 msgstr "תיקייה חדשה"
 
-#: ../src/xfdesktop-file-icon-manager.c:1198
-#: ../src/xfdesktop-file-icon-manager.c:1289
-#: ../src/xfdesktop-file-icon-manager.c:1300
+#: ../src/xfdesktop-file-icon-manager.c:1168
+#: ../src/xfdesktop-file-icon-manager.c:1259
+#: ../src/xfdesktop-file-icon-manager.c:1270
 msgid "Create"
 msgstr "צור"
 
-#: ../src/xfdesktop-file-icon-manager.c:1234
+#: ../src/xfdesktop-file-icon-manager.c:1204
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "אין אפשרות ליצור קובץ בשם \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1237
+#: ../src/xfdesktop-file-icon-manager.c:1207
 msgid "Create File Failed"
 msgstr "יצירת קובץ נכשלה"
 
-#: ../src/xfdesktop-file-icon-manager.c:1276
+#: ../src/xfdesktop-file-icon-manager.c:1246
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "יצירת מסמך מתבנית \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1295
+#: ../src/xfdesktop-file-icon-manager.c:1265
 msgid "Create Empty File"
 msgstr "יצירת קובץ ריק"
 
-#: ../src/xfdesktop-file-icon-manager.c:1299
+#: ../src/xfdesktop-file-icon-manager.c:1269
 msgid "New Empty File"
 msgstr "קובץ ריק חדש"
 
-#: ../src/xfdesktop-file-icon-manager.c:1332
+#: ../src/xfdesktop-file-icon-manager.c:1302
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "אין אפשרות ליצור קובץ \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1333
+#: ../src/xfdesktop-file-icon-manager.c:1303
 msgid "Create Error"
 msgstr "שגיאת יצירה"
 
-#: ../src/xfdesktop-file-icon-manager.c:1617
+#: ../src/xfdesktop-file-icon-manager.c:1587
 msgid "_Open all"
 msgstr "_פתח הכל"
 
-#: ../src/xfdesktop-file-icon-manager.c:1647
+#: ../src/xfdesktop-file-icon-manager.c:1617
 msgid "_Execute"
 msgstr "_הפעלה"
 
-#: ../src/xfdesktop-file-icon-manager.c:1664
+#: ../src/xfdesktop-file-icon-manager.c:1634
 msgid "_Edit Launcher"
 msgstr "_ערוך משגר"
 
-#: ../src/xfdesktop-file-icon-manager.c:1704
+#: ../src/xfdesktop-file-icon-manager.c:1674
 msgid "Open With"
 msgstr "פתיחה באמצעות"
 
-#: ../src/xfdesktop-file-icon-manager.c:1735
+#: ../src/xfdesktop-file-icon-manager.c:1705
 msgid "Open With Other _Application..."
 msgstr "פתיחה באמצעות יישום _אחר..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1834
+#: ../src/xfdesktop-file-icon-manager.c:1804
 msgid "_Rename..."
 msgstr "_שנה שם..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1850
-#: ../src/xfdesktop-volume-icon.c:543
+#: ../src/xfdesktop-file-icon-manager.c:1820
+#: ../src/xfdesktop-volume-icon.c:593
 msgid "_Properties..."
 msgstr "_מאפיינים..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1867
+#: ../src/xfdesktop-file-icon-manager.c:1837
 msgid "Des_ktop"
 msgstr "שולחן _עבודה"
 
-#: ../src/xfdesktop-file-icon-manager.c:1886
+#: ../src/xfdesktop-file-icon-manager.c:1856
 msgid "Create _Launcher..."
 msgstr "יצירת _משגר..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1907
+#: ../src/xfdesktop-file-icon-manager.c:1877
 msgid "Create _URL Link..."
 msgstr "יצירת _קישור URL..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1924
+#: ../src/xfdesktop-file-icon-manager.c:1894
 msgid "Create _Folder..."
 msgstr "יצירת _תיקיה..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1966
+#: ../src/xfdesktop-file-icon-manager.c:1936
 msgid "_Empty File"
 msgstr "קובץ _ריק"
 
-#: ../src/xfdesktop-file-icon-manager.c:2007
+#: ../src/xfdesktop-file-icon-manager.c:1977
 msgid "Desktop _Settings..."
 msgstr "הגדרות שולחן עבודה..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2016
+#: ../src/xfdesktop-file-icon-manager.c:1986
 msgid "_Desktop Properties..."
 msgstr "מ_אפייני שולחן עבודה..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3183
-#: ../src/xfdesktop-regular-file-icon.c:353
+#: ../src/xfdesktop-file-icon-manager.c:3158
+#: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "אין אפשרות להריץ את \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:3185
-#: ../src/xfdesktop-regular-file-icon.c:355
+#: ../src/xfdesktop-file-icon-manager.c:3160
+#: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr "שגיאת הרצה"
+
+#: ../src/xfdesktop-file-icon.c:146
+msgid "The associated application could not be found or executed."
+msgstr "לא הייתה אפשרות למצוא או להפעיל את היישום המקושר."
 
 #: ../src/xfdesktop-file-properties-dialog.c:103
 #, c-format
@@ -1241,8 +1241,8 @@ msgid "Size:"
 msgstr "גודל:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:413
-#: ../src/xfdesktop-regular-file-icon.c:454
-#: ../src/xfdesktop-special-file-icon.c:442 ../src/xfdesktop-volume-icon.c:396
+#: ../src/xfdesktop-regular-file-icon.c:486
+#: ../src/xfdesktop-special-file-icon.c:487 ../src/xfdesktop-volume-icon.c:460
 msgid "%s (%"
 msgstr "%s (%"
 
@@ -1300,8 +1300,8 @@ msgstr "קישור שבור"
 msgid "link to %s"
 msgstr "קיצור דרך אל %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:457
-#: ../src/xfdesktop-special-file-icon.c:445 ../src/xfdesktop-volume-icon.c:399
+#: ../src/xfdesktop-regular-file-icon.c:489
+#: ../src/xfdesktop-special-file-icon.c:490 ../src/xfdesktop-volume-icon.c:463
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -1312,26 +1312,26 @@ msgstr ""
 "שונה:%s\n"
 "גודל: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:549
+#: ../src/xfdesktop-regular-file-icon.c:581
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "כשל בשינוי שם \"%s\" ל-\"%s\":"
 
-#: ../src/xfdesktop-special-file-icon.c:268
+#: ../src/xfdesktop-special-file-icon.c:258
 msgid "Home"
 msgstr "בית"
 
-#: ../src/xfdesktop-special-file-icon.c:463
+#: ../src/xfdesktop-special-file-icon.c:508
 #, fuzzy
 msgid "Trash Error"
 msgstr "שגיאת הפעלה"
 
-#: ../src/xfdesktop-special-file-icon.c:465
+#: ../src/xfdesktop-special-file-icon.c:510
 #, fuzzy
 msgid "Unable to contact the Xfce Trash service."
 msgstr "אין אפשרות לפתוח את סל המחזור."
 
-#: ../src/xfdesktop-special-file-icon.c:466
+#: ../src/xfdesktop-special-file-icon.c:511
 #, fuzzy
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
@@ -1339,46 +1339,46 @@ msgid ""
 msgstr ""
 "ריקון הפח דורש סייר קבצים אשר תומך בשרותי סל המחזור של Xfce, כמו Thunar."
 
-#: ../src/xfdesktop-special-file-icon.c:574
+#: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
 msgstr "סל מחזור _ריק"
 
-#: ../src/xfdesktop-volume-icon.c:441
+#: ../src/xfdesktop-volume-icon.c:491
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "אין אפשרות לעגן את \"%s\":"
 
-#: ../src/xfdesktop-volume-icon.c:442
+#: ../src/xfdesktop-volume-icon.c:492
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "אין אפשרות לנתק את עיגון \"%s\":"
 
-#: ../src/xfdesktop-volume-icon.c:445
+#: ../src/xfdesktop-volume-icon.c:495
 msgid "Mount Failed"
 msgstr "העיגון כשל"
 
-#: ../src/xfdesktop-volume-icon.c:445
+#: ../src/xfdesktop-volume-icon.c:495
 msgid "Unmount Failed"
 msgstr "ניתוק העיגון כשל"
 
-#: ../src/xfdesktop-volume-icon.c:463
+#: ../src/xfdesktop-volume-icon.c:513
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "אין אפשרות להוציא את \"%s\":"
 
-#: ../src/xfdesktop-volume-icon.c:466
+#: ../src/xfdesktop-volume-icon.c:516
 msgid "Eject Failed"
 msgstr "הוצאה כשלה"
 
-#: ../src/xfdesktop-volume-icon.c:504
+#: ../src/xfdesktop-volume-icon.c:554
 msgid "_Mount Volume"
 msgstr "_חבר כרך"
 
-#: ../src/xfdesktop-volume-icon.c:515
+#: ../src/xfdesktop-volume-icon.c:565
 msgid "_Unmount Volume"
 msgstr "_נתק כרך"
 
-#: ../src/xfdesktop-volume-icon.c:529
+#: ../src/xfdesktop-volume-icon.c:579
 msgid "E_ject Volume"
 msgstr "_הוצא כרך"
 
