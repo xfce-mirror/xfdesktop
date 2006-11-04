@@ -77,46 +77,6 @@
 #define BORDER     8
 
 
-static void xfdesktop_file_icon_manager_set_property(GObject *object,
-                                                     guint property_id,
-                                                     const GValue *value,
-                                                     GParamSpec *pspec);
-static void xfdesktop_file_icon_manager_get_property(GObject *object,
-                                                     guint property_id,
-                                                     GValue *value,
-                                                     GParamSpec *pspec);
-static void xfdesktop_file_icon_manager_finalize(GObject *obj);
-static void xfdesktop_file_icon_manager_icon_view_manager_init(XfdesktopIconViewManagerIface *iface);
-
-static gboolean xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
-                                                      XfdesktopIconView *icon_view);
-static void xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager);
-
-static gboolean xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *manager,
-                                                      XfdesktopIcon *drop_icon,
-                                                      GdkDragContext *context,
-                                                      guint16 row,
-                                                      guint16 col,
-                                                      guint time);
-static void xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager,
-                                                           XfdesktopIcon *drop_icon,
-                                                           GdkDragContext *context,
-                                                           guint16 row,
-                                                           guint16 col,
-                                                           GtkSelectionData *data,
-                                                           guint info,
-                                                           guint time);
-static void xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *manager,
-                                                      GList *drag_icons,
-                                                      GdkDragContext *context,
-                                                      GtkSelectionData *data,
-                                                      guint info,
-                                                      guint time);
-
-static void xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanager);
-static void xfdesktop_file_icon_manager_load_removable_media(XfdesktopFileIconManager *fmanager);
-static void xfdesktop_file_icon_manager_remove_removable_media(XfdesktopFileIconManager *fmanager);
-
 enum
 {
     PROP0 = 0,
@@ -159,6 +119,47 @@ struct _XfdesktopFileIconManagerPrivate
     GList *thunarx_properties_providers;
 #endif
 };
+
+static void xfdesktop_file_icon_manager_set_property(GObject *object,
+                                                     guint property_id,
+                                                     const GValue *value,
+                                                     GParamSpec *pspec);
+static void xfdesktop_file_icon_manager_get_property(GObject *object,
+                                                     guint property_id,
+                                                     GValue *value,
+                                                     GParamSpec *pspec);
+static void xfdesktop_file_icon_manager_finalize(GObject *obj);
+static void xfdesktop_file_icon_manager_icon_view_manager_init(XfdesktopIconViewManagerIface *iface);
+
+static gboolean xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
+                                                      XfdesktopIconView *icon_view);
+static void xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager);
+
+static gboolean xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *manager,
+                                                      XfdesktopIcon *drop_icon,
+                                                      GdkDragContext *context,
+                                                      guint16 row,
+                                                      guint16 col,
+                                                      guint time);
+static void xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager,
+                                                           XfdesktopIcon *drop_icon,
+                                                           GdkDragContext *context,
+                                                           guint16 row,
+                                                           guint16 col,
+                                                           GtkSelectionData *data,
+                                                           guint info,
+                                                           guint time);
+static void xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *manager,
+                                                      GList *drag_icons,
+                                                      GdkDragContext *context,
+                                                      GtkSelectionData *data,
+                                                      guint info,
+                                                      guint time);
+
+static gboolean xfdesktop_file_icon_manager_check_create_desktop_folder(ThunarVfsPath *path);
+static void xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanager);
+static void xfdesktop_file_icon_manager_load_removable_media(XfdesktopFileIconManager *fmanager);
+static void xfdesktop_file_icon_manager_remove_removable_media(XfdesktopFileIconManager *fmanager);
 
 
 G_DEFINE_TYPE_EXTENDED(XfdesktopFileIconManager,
@@ -248,33 +249,8 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
     switch(property_id) {
         case PROP_FOLDER:
             fmanager->priv->folder = thunar_vfs_path_ref((ThunarVfsPath *)g_value_get_boxed(value));
-            if(fmanager->priv->folder) {
-                gchar *pathname = thunar_vfs_path_dup_string(fmanager->priv->folder);
-                if(!g_file_test(pathname, G_FILE_TEST_EXISTS)) {
-                    /* would prefer to use thunar_vfs_make_directory() here,
-                     * but i don't want to use an async operation */
-                    if(mkdir(pathname, 0700)) {
-                        gchar *primary = g_markup_printf_escaped(_("Xfdesktop was unable to create the folder \"%s\" to store desktop items:"),
-                                                                 pathname);
-                        xfce_message_dialog(NULL, _("Create Folder Failed"),
-                                            GTK_STOCK_DIALOG_WARNING, primary,
-                                            strerror(errno), GTK_STOCK_CLOSE,
-                                            GTK_RESPONSE_ACCEPT, NULL);
-                        g_free(primary);
-                    }
-                } else if(!g_file_test(pathname, G_FILE_TEST_IS_DIR)) {
-                    gchar *primary = g_markup_printf_escaped(_("Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."),
-                                                             pathname);
-                    xfce_message_dialog(NULL, _("Create Folder Failed"),
-                                        GTK_STOCK_DIALOG_WARNING, primary,
-                                        _("Please delete or rename the file."),
-                                        GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
-                                        NULL);
-                    g_free(primary);
-                }
-                
-                g_free(pathname);
-            }
+            if(fmanager->priv->folder)
+                xfdesktop_file_icon_manager_check_create_desktop_folder(fmanager->priv->folder);
             break;
         
         default:
@@ -325,6 +301,7 @@ xfdesktop_file_icon_manager_icon_view_manager_init(XfdesktopIconViewManagerIface
     iface->drag_data_received = xfdesktop_file_icon_manager_drag_data_received;
     iface->drag_data_get = xfdesktop_file_icon_manager_drag_data_get;
 }
+
 
 
 /* FIXME: remove this before 4.4.0; leave it for now to migrate older beta
@@ -391,6 +368,47 @@ __migrate_old_icon_positions(XfdesktopFileIconManager *fmanager)
     }
     
     g_free(old_file);
+}
+
+static gboolean
+xfdesktop_file_icon_manager_check_create_desktop_folder(ThunarVfsPath *path)
+{
+    gboolean ret = TRUE;
+    gchar *pathname;
+    
+    g_return_val_if_fail(path, FALSE);
+    
+    pathname = thunar_vfs_path_dup_string(path);
+    if(!g_file_test(pathname, G_FILE_TEST_EXISTS)) {
+        /* would prefer to use thunar_vfs_make_directory() here,
+         * but i don't want to use an async operation */
+        if(mkdir(pathname, 0700)) {
+            gchar *primary = g_markup_printf_escaped(_("Xfdesktop was unable to create the folder \"%s\" to store desktop items:"),
+                                                     pathname);
+            xfce_message_dialog(NULL, _("Create Folder Failed"),
+                                GTK_STOCK_DIALOG_WARNING, primary,
+                                strerror(errno), GTK_STOCK_CLOSE,
+                                GTK_RESPONSE_ACCEPT, NULL);
+            g_free(primary);
+            
+            ret = FALSE;
+        }
+    } else if(!g_file_test(pathname, G_FILE_TEST_IS_DIR)) {
+        gchar *primary = g_markup_printf_escaped(_("Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."),
+                                                 pathname);
+        xfce_message_dialog(NULL, _("Create Folder Failed"),
+                            GTK_STOCK_DIALOG_WARNING, primary,
+                            _("Please delete or rename the file."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                            NULL);
+        g_free(primary);
+        
+        ret = FALSE;
+    }
+    
+    g_free(pathname);
+    
+    return ret;
 }
 
 
@@ -2417,6 +2435,15 @@ xfdesktop_file_icon_manager_vfs_monitor_cb(ThunarVfsMonitor *monitor,
                 xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
                                                 XFDESKTOP_ICON(icon));
                 g_hash_table_remove(fmanager->priv->icons, event_path);
+            } else {
+                const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(fmanager->priv->desktop_icon);
+                if(!info || thunar_vfs_path_equal(event_path, info->path)) {
+                    DBG("~/Desktop disappeared!");
+                    /* yes, refresh before and after is correct */
+                    xfdesktop_file_icon_manager_refresh_icons(fmanager);
+                    xfdesktop_file_icon_manager_check_create_desktop_folder(fmanager->priv->folder);
+                    xfdesktop_file_icon_manager_refresh_icons(fmanager);
+                }
             }
             break;
         
