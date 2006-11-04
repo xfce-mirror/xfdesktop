@@ -1202,9 +1202,19 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
         g_return_val_if_fail(icon, FALSE);
         
         if(icon_on_dest) {
-            gboolean ret = xfdesktop_icon_do_drop_dest(icon_on_dest, icon,
-                                                       context->action);
+            GList *l;
+            gboolean ret = FALSE;
+            
+            for(l = icon_view->priv->selected_icons; l; l = l->next) {
+                if(xfdesktop_icon_do_drop_dest(icon_on_dest, icon,
+                                               context->action))
+                {
+                    ret = TRUE;
+                }
+            }
+            
             gtk_drag_finish(context, ret, FALSE, time);
+            
             return ret;
         }
         
