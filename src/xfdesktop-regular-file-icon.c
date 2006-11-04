@@ -396,7 +396,10 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
         const gchar *name;
         ThunarVfsPath *dest_path;
         
-        name = thunar_vfs_path_get_name(src_info->path);
+        if(thunar_vfs_path_is_root(src_info->path))
+            name = src_info->display_name;
+        else
+            name = thunar_vfs_path_get_name(src_info->path);
         g_return_val_if_fail(name, FALSE);
         
         dest_path = thunar_vfs_path_relative(regular_file_icon->priv->info->path,

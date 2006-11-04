@@ -3105,7 +3105,7 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
             tinfo = xfdesktop_file_icon_peek_info(file_icon);
         }
         
-        copy_only = (context->suggested_action != GDK_ACTION_MOVE);
+        copy_only = (context->action != GDK_ACTION_MOVE);
         
         path_list = thunar_vfs_path_list_from_string((gchar *)data->data, NULL);
     
@@ -3163,21 +3163,32 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                 
                 for(l = path_list; l; l = l->next) {
                     ThunarVfsPath *path = (ThunarVfsPath *)l->data;
+                    ThunarVfsInfo *dinfo = NULL;
                     
                     /* only work with file:// URIs here */
                     if(thunar_vfs_path_get_scheme(path) != THUNAR_VFS_PATH_SCHEME_FILE)
                         continue;
                     
-                    name = thunar_vfs_path_get_name(path);
+                    if(thunar_vfs_path_is_root(path)) {
+                        ThunarVfsInfo *dinfo = thunar_vfs_info_new_for_path(path, NULL);
+                        if(dinfo)
+                            name = dinfo->display_name;
+                        else
+                            continue;
+                    } else
+                        name = thunar_vfs_path_get_name(path);
                     dest_path = thunar_vfs_path_relative(base_dest_path,
                                                          name);
                     dest_path_list = g_list_prepend(dest_path_list, dest_path);
+                    
+                    if(dinfo)
+                        thunar_vfs_info_unref(dinfo);
                 }
                 thunar_vfs_path_unref(base_dest_path);
                 dest_path_list = g_list_reverse(dest_path_list);
                 
                 if(dest_path_list) {
-                    if(context->suggested_action == GDK_ACTION_LINK && !dest_is_trash)
+                    if(context->action == GDK_ACTION_LINK && !dest_is_trash)
                         job = thunar_vfs_link_files(path_list, dest_path_list, NULL);
                     else if(copy_only && !dest_is_trash)
                         job = thunar_vfs_copy_files(path_list, dest_path_list, NULL);
