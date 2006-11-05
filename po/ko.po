@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.99.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 05:11-0800\n"
-"PO-Revision-Date: 2006-10-09 17:27+0900\n"
-"Last-Translator: ByungHyun Choi <byunghyun.choi@gmail.com>\n"
+"PO-Revision-Date: 2006-11-05 03:13+0900\n"
+"Last-Translator: ByungHyun Choi <byunghyun.choi@debianusers.org>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
 "net>\n"
 "MIME-Version: 1.0\n"
@@ -82,9 +82,8 @@ msgstr "아이콘:"
 #: ../menueditor/menueditor-add-dialog.c:330
 #: ../menueditor/menueditor-edit-dialog.c:191
 #: ../menueditor/menueditor-edit-dialog.c:586
-#, fuzzy
 msgid "No icon"
-msgstr "버튼 아이콘(_B):"
+msgstr "아이콘 없음"
 
 #: ../menueditor/menueditor-add-dialog.c:225
 #: ../menueditor/menueditor-add-dialog.c:226
@@ -484,7 +483,7 @@ msgstr "수정한 것 무시"
 #: ../menueditor/menueditor-main-window.c:2035
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
-msgstr ""
+msgstr "메뉴화일 %s를(을) \"쓰기 모드\"로 열지 못했습니다."
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
@@ -664,7 +663,6 @@ msgid "Information"
 msgstr "정보"
 
 #: ../settings/appearance-settings.c:845
-#, fuzzy
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -672,7 +670,7 @@ msgid ""
 "your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
-"다음 번에 xfce를 기동시키면서 데스크탑을 관리하지 않으려면, 로그 아웃할 때 세"
+"다음 번에 xfce를 기동시키면서 설정을 적용하시려면, 로그 아웃할 때 세"
 "션을 저장하십시오. Xfce 세션 관리자(xfce4-session)을 사용하지 않으면, ~/."
 "config/xfce4/xinitrc 화일을 직접 수정하십시오. 자세한 것은 http://xfce.org/에"
 "서 제공하는 문서를 참고하십시오."
@@ -1032,9 +1030,8 @@ msgid "Launch Error"
 msgstr "실행 오류"
 
 #: ../src/xfdesktop-file-icon-manager.c:866
-#, fuzzy
 msgid "The application chooser could not be opened."
-msgstr "해당하는 프로그램을 못 찾았거나 실행시키지 못 했습니다."
+msgstr "응용프로그램 선택기를 열지 못했습니다."
 
 #: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
 msgid ""
@@ -1324,23 +1321,19 @@ msgid "Home"
 msgstr "홈"
 
 #: ../src/xfdesktop-special-file-icon.c:508
-#, fuzzy
 msgid "Trash Error"
-msgstr "실행 오류"
+msgstr "쓰레기통 오류"
 
 #: ../src/xfdesktop-special-file-icon.c:510
-#, fuzzy
 msgid "Unable to contact the Xfce Trash service."
-msgstr "쓰레기통을 열지 못했습니다."
+msgstr "쓰레기통 서비스에 연결하지 못했습니다."
 
 #: ../src/xfdesktop-special-file-icon.c:511
-#, fuzzy
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr ""
-"쓰레기통을 비우려면, Thunar처럼 Xfce 쓰레기 서비스를 지원하는 화일관리자가 있"
-"어야합니다."
+"Thunar처럼 Xfce 쓰레기 서비스를 지원하는 화일관리자가 있는지 확인하십시오."
 
 #: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
@@ -1412,92 +1405,3 @@ msgstr "Xfce 4 데스크탑 관리 도구의 환경 설정"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 데스크탑 설정"
-
-#~ msgid ""
-#~ "Viewing the contents of the trash requires a file manager that supports "
-#~ "the Xfce trash service, such as Thunar."
-#~ msgstr ""
-#~ "쓰레기통의 내용을 보시려면, Thunar처럼 Xfce 쓰레기 서비스를 지원하는 화일"
-#~ "관리자가 있어야합니다."
-
-#~ msgid "Unable to empty the trash."
-#~ msgstr "쓰레기통을 비우지 못했습니다."
-
-#~ msgid "Unknown error."
-#~ msgstr "모르는 오류."
-
-#~ msgid " Bytes)"
-#~ msgstr " 바이트)"
-
-#~ msgid "_Copy Files"
-#~ msgstr "여러 화일 복사(_C)"
-
-#~ msgid "_Copy File"
-#~ msgstr "화일 복사(_C)"
-
-#~ msgid "Cu_t Files"
-#~ msgstr "여러 화일 잘라내기(_t)"
-
-#~ msgid "Cu_t File"
-#~ msgstr "화일 잘라내기(_t)"
-
-#~ msgid "_Delete Files"
-#~ msgstr "여러 화일 삭제(_D)"
-
-#~ msgid "_Delete File"
-#~ msgstr "화일 삭제(_D)"
-
-#, fuzzy
-#~ msgid "_Paste Files"
-#~ msgstr "목록 화일"
-
-#, fuzzy
-#~ msgid "Create _New"
-#~ msgstr "새로운 디렉토리 생성"
-
-#, fuzzy
-#~ msgid "_Folder..."
-#~ msgstr "디렉토리 만들기(_F)..."
-
-#, fuzzy
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "%d개의 화일을 지우시렵니까?"
-
-#~ msgid "Core developer"
-#~ msgstr "만든 이"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "명령어가 없네요!"
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "모든 항목을 입력해야 합니다."
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "'이름'을 입력하세요."
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "'위치'를 설정해 주어야 합니다."
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "분리표시는 수정할 수 없습니다."
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "%s가 없습니다."
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "항목을 상위 메뉴로 옮기시렵니까?"
-
-#~ msgid "Edit"
-#~ msgstr "목록 수정"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "외부 메뉴 추가..."
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "Xfce4 메뉴 화일을 엽니다."
-
-#~ msgid "Save current menu"
-#~ msgstr "현재 메뉴를 저장합니다."
-
-#~ msgid "Delete the current entry"
-#~ msgstr "현재 항목을 삭제합니다."
