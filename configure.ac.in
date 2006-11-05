@@ -46,10 +46,10 @@ dnl required
 XDT_CHECK_PACKAGE([GMODULE], [gmodule-2.0], [2.6.0])
 XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [2.6.0])
 XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.6.0])
-XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.3.99.1])
-XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.3.99.1])
-XDT_CHECK_PACKAGE([LIBXFCE4MCS_CLIENT],  [libxfce4mcs-client-1.0], [4.3.99.1])
-XDT_XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.3.99.1])
+XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.3.99.2])
+XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.3.99.2])
+XDT_CHECK_PACKAGE([LIBXFCE4MCS_CLIENT],  [libxfce4mcs-client-1.0], [4.3.99.2])
+XDT_XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [4.3.99.2])
 
 dnl do we want desktop icons at all?
 AC_ARG_ENABLE([desktop-icons],
@@ -79,7 +79,7 @@ fi
 
 if test "x$enable_desktop_icons" = "xyes" -a "x$enable_file_icons" = "xyes"; then
     dnl here i shall abuse the XDT_CHECK_PACKAGE macro
-    XDT_CHECK_PACKAGE([THUNAR_VFS], [thunar-vfs-1], [0.4.0], [], [true])
+    XDT_CHECK_PACKAGE([THUNAR_VFS], [thunar-vfs-1], [0.5.0], [], [true])
     XDT_CHECK_PACKAGE([DBUS], [dbus-glib-1], [0.34], [], [true])
     if test "x$THUNAR_VFS_VERSION" != "x" -a "x$DBUS_VERSION" != "x"; then
         AC_DEFINE([ENABLE_FILE_ICONS], [1],
@@ -95,9 +95,9 @@ AM_CONDITIONAL([ENABLE_FILE_ICONS], [test "x$enable_file_icons" = "xyes"])
 dnl i'd rather have these two only checked conditionally, but this macro also
 dnl calls AM_CONDITIONAL(), which cannot be in an 'if' block
 
-XDT_CHECK_OPTIONAL_PACKAGE([THUNARX], [thunarx-1], [0.4.0], [thunarx],
+XDT_CHECK_OPTIONAL_PACKAGE([THUNARX], [thunarx-1], [0.5.0], [thunarx],
     [Whether to use Thunar's extension mechanism to add external features to the desktop icon implementation])
-XDT_CHECK_OPTIONAL_PACKAGE([LIBEXO], [exo-0.3], [0.3.1.10], [exo],
+XDT_CHECK_OPTIONAL_PACKAGE([LIBEXO], [exo-0.3], [0.3.1.12], [exo],
     [Whether to use libexo for nifty icon effects])
 
 AC_ARG_ENABLE([menu-editor],
@@ -136,7 +136,7 @@ if test "x$ac_cv_enable_panel_plugin" = "xno" -o "x$build_desktop_menu" = "xno";
         build_panel_plugin="no"
 else
         build_panel_plugin="yes"
-        XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.3.99.1])
+        XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.3.99.2])
 fi
 AM_CONDITIONAL([BUILD_PANEL_PLUGIN], [test "x$build_panel_plugin" = "xyes"])
 
