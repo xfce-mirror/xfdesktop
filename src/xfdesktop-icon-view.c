@@ -45,8 +45,8 @@
 #define DEFAULT_ICON_SIZE  32
 
 #define ICON_SIZE         (icon_view->priv->icon_size)
-#define TEXT_WIDTH        (icon_view->priv->font_size * 9)
-#define CELL_PADDING      4
+#define TEXT_WIDTH        ((ICON_SIZE << 1) + (ICON_SIZE >> 1))  /* aka 2.5x */
+#define CELL_PADDING      6
 #define CELL_SIZE         (TEXT_WIDTH + CELL_PADDING * 2)
 #define SPACING           6
 #define SCREEN_MARGIN     8
