@@ -2176,7 +2176,7 @@ xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
                                 guint16 col)
 {
     if(row >= icon_view->priv->nrows
-       && col < icon_view->priv->ncols)
+       || col >= icon_view->priv->ncols)
     {
         return FALSE;
     }
