@@ -330,6 +330,9 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     set_imgfile_root_property(desktop,
                               xfce_backdrop_get_image_filename(backdrop),
                               monitor);
+    
+    /* do this again so apps watching the root win notice the update */
+    set_real_root_window_pixmap(gscreen, pmap);
 }
 
 static void
