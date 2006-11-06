@@ -2,7 +2,7 @@
  *  
  *  Copyright (C) 2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
  *  Copyright (C) 2003,2006 Benedikt Meurer <benny@xfce.org>
- *  Copyright (c) 2004 Brian Tarricone <bjt23@cornell.edu>
+ *  Copyright (c) 2004-2006 Brian Tarricone <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
