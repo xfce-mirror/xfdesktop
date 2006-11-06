@@ -277,6 +277,11 @@ static inline gboolean xfdesktop_rectangle_contains_point(GdkRectangle *rect,
 static void xfdesktop_icon_view_modify_font_size(XfdesktopIconView *icon_view,
                                                  gint size);
 static void xfdesktop_ird_free(XfdesktopIdleRepaintData *ird);
+static void xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
+                                                  XfdesktopIcon *icon);
+static gboolean xfdesktop_icon_view_icon_find_position(XfdesktopIconView *icon_view,
+                                                       XfdesktopIcon *icon);
+
 
 enum
 {
@@ -1323,7 +1328,7 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
     PangoContext *pctx;
     GdkScreen *gscreen;
     GdkWindow *groot;
-    GList *l;
+    GList *l, *leftovers = NULL;
     
     icon_view->priv->parent_window = gtk_widget_get_toplevel(widget);
     g_return_if_fail(icon_view->priv->parent_window);
@@ -1399,12 +1404,14 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
                            icon_view);
     
     for(l = icon_view->priv->pending_icons; l; l = l->next) {
-        g_object_set_data(G_OBJECT(l->data), "--xfdesktop-icon-view", NULL);
-        xfdesktop_icon_view_add_item(icon_view, XFDESKTOP_ICON(l->data));
-        g_object_unref(G_OBJECT(l->data));
+        XfdesktopIcon *icon = XFDESKTOP_ICON(l->data);
+        if(xfdesktop_icon_view_icon_find_position(icon_view, icon))
+            xfdesktop_icon_view_add_item_internal(icon_view, icon);
+        else
+            leftovers = g_list_prepend(leftovers, icon);
     }
     g_list_free(icon_view->priv->pending_icons);
-    icon_view->priv->pending_icons = NULL;
+    icon_view->priv->pending_icons = g_list_reverse(leftovers);
 }
 
 static void
@@ -1458,10 +1465,9 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
         g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
                                              G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
                                              icon_view);
-        icon_view->priv->pending_icons = g_list_prepend(icon_view->priv->pending_icons,
-                                                        l->data);
     }
-    g_list_free(icon_view->priv->icons);
+    icon_view->priv->pending_icons = g_list_concat(icon_view->priv->icons,
+                                                   icon_view->priv->pending_icons);
     icon_view->priv->icons = NULL;
     
     g_free(icon_view->priv->grid_layout);
@@ -2046,17 +2052,16 @@ xfdesktop_icon_view_repaint_queued_icon(gpointer user_data)
 static void
 xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
 {
-    GList *l;
+    GList *l, *leftovers = NULL;
     
     /* move all icons into the pending_icons list */
     for(l = icon_view->priv->icons; l; l = l->next) {
         g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
                                              G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
                                              icon_view);
-        icon_view->priv->pending_icons = g_list_prepend(icon_view->priv->pending_icons,
-                                                        l->data);
     }
-    g_list_free(icon_view->priv->icons);
+    icon_view->priv->pending_icons = g_list_concat(icon_view->priv->icons,
+                                                   icon_view->priv->pending_icons);
     icon_view->priv->icons = NULL;
     
     DUMP_GRID_LAYOUT(icon_view);
@@ -2071,12 +2076,14 @@ xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
     
     /* add all icons back */
     for(l = icon_view->priv->pending_icons; l; l = l->next) {
-        g_object_set_data(G_OBJECT(l->data), "--xfdesktop-icon-view", NULL);
-        xfdesktop_icon_view_add_item(icon_view, XFDESKTOP_ICON(l->data));
-        g_object_unref(G_OBJECT(l->data));
+        XfdesktopIcon *icon = XFDESKTOP_ICON(l->data);
+        if(xfdesktop_icon_view_icon_find_position(icon_view, icon))
+            xfdesktop_icon_view_add_item_internal(icon_view, icon);
+        else
+            leftovers = g_list_prepend(leftovers, icon);
     }
     g_list_free(icon_view->priv->pending_icons);
-    icon_view->priv->pending_icons = NULL;
+    icon_view->priv->pending_icons = g_list_reverse(leftovers);
     
     gtk_widget_queue_draw(GTK_WIDGET(icon_view));
 }
@@ -2168,8 +2175,11 @@ xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
                                 guint16 row,
                                 guint16 col)
 {
-    g_return_val_if_fail(row < icon_view->priv->nrows
-                         && col < icon_view->priv->ncols, FALSE);
+    if(row >= icon_view->priv->nrows
+       && col < icon_view->priv->ncols)
+    {
+        return FALSE;
+    }
     
     return !icon_view->priv->grid_layout[col * icon_view->priv->nrows + row];
 }
@@ -2484,51 +2494,19 @@ xfdesktop_icon_view_new(XfdesktopIconViewManager *manager)
     return GTK_WIDGET(icon_view);
 }
 
-void
-xfdesktop_icon_view_add_item(XfdesktopIconView *icon_view,
-                             XfdesktopIcon *icon)
+static void
+xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
+                                      XfdesktopIcon *icon)
 {
-    gboolean icon_has_pos;
     guint16 row, col;
     GdkRectangle fake_area;
     
-    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view)
-                     && XFDESKTOP_IS_ICON(icon));
-    
-    icon_has_pos = xfdesktop_icon_get_position(icon, &row, &col);
-    
-    /* ensure the icon isn't already in an icon view */
-    g_return_if_fail(!g_object_get_data(G_OBJECT(icon),
-                                        "--xfdesktop-icon-view"));
-    
-    g_object_set_data(G_OBJECT(icon), "--xfdesktop-icon-view", icon_view);
-    
-    if(!GTK_WIDGET_REALIZED(GTK_WIDGET(icon_view))) {
-        if(icon_has_pos) {
-            icon_view->priv->pending_icons = g_list_prepend(icon_view->priv->pending_icons,
-                                                            g_object_ref(G_OBJECT(icon)));
-        } else {
-            icon_view->priv->pending_icons = g_list_append(icon_view->priv->pending_icons,
-                                                           g_object_ref(G_OBJECT(icon)));
-        }
-        return;
-    }
-    
-    if(!icon_has_pos || !xfdesktop_grid_is_free_position(icon_view, row, col)) {
-        if(xfdesktop_grid_get_next_free_position(icon_view, &row, &col)) {
-            DBG("old position didn't exist or isn't free, got (%d,%d) instead",
-                row, col);
-            xfdesktop_icon_set_position(icon, row, col);
-        } else {
-            DBG("can't fit icon on screen");
-            return;
-        }
-    } 
+    /* sanity check: at this point this should be taken care of */
+    g_return_if_fail(xfdesktop_icon_get_position(icon, &row, &col));
     
     xfdesktop_grid_unset_position_free(icon_view, icon);
     
-    icon_view->priv->icons = g_list_prepend(icon_view->priv->icons,
-                                            g_object_ref(G_OBJECT(icon)));
+    icon_view->priv->icons = g_list_prepend(icon_view->priv->icons, icon);
     
     g_signal_connect_swapped(G_OBJECT(icon), "pixbuf-changed",
                              G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
@@ -2541,6 +2519,64 @@ xfdesktop_icon_view_add_item(XfdesktopIconView *icon_view,
     fake_area.y = SCREEN_MARGIN + icon_view->priv->yorigin + row * CELL_SIZE;
     fake_area.width = fake_area.height = CELL_SIZE;
     xfdesktop_icon_view_paint_icon(icon_view, icon, &fake_area);
+}
+
+static gboolean
+xfdesktop_icon_view_icon_find_position(XfdesktopIconView *icon_view,
+                                       XfdesktopIcon *icon)
+{
+    guint16 row, col;
+    
+    if(!xfdesktop_icon_get_position(icon, &row, &col)
+       || !xfdesktop_grid_is_free_position(icon_view, row, col))
+    {
+        if(xfdesktop_grid_get_next_free_position(icon_view, &row, &col)) {
+            DBG("old position didn't exist or isn't free, got (%d,%d) instead",
+                row, col);
+            xfdesktop_icon_set_position(icon, row, col);
+        } else {
+            DBG("can't fit icon on screen");
+            return FALSE;
+        }
+    }
+    
+    return TRUE;
+}
+
+void
+xfdesktop_icon_view_add_item(XfdesktopIconView *icon_view,
+                             XfdesktopIcon *icon)
+{
+    guint16 row, col;
+    
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view)
+                     && XFDESKTOP_IS_ICON(icon));
+    
+    /* ensure the icon isn't already in an icon view */
+    g_return_if_fail(!g_object_get_data(G_OBJECT(icon),
+                                        "--xfdesktop-icon-view"));
+    
+    g_object_set_data(G_OBJECT(icon), "--xfdesktop-icon-view", icon_view);
+    g_object_ref(G_OBJECT(icon));
+    
+    if(!GTK_WIDGET_REALIZED(GTK_WIDGET(icon_view))) {
+        /* if we aren't realized, we don't know what our grid looks like, so
+         * just hang onto the icon for later */
+        if(xfdesktop_icon_get_position(icon, &row, &col)) {
+            icon_view->priv->pending_icons = g_list_prepend(icon_view->priv->pending_icons,
+                                                            icon);
+        } else {
+            icon_view->priv->pending_icons = g_list_append(icon_view->priv->pending_icons,
+                                                           icon);
+        }
+    } else {
+        if(xfdesktop_icon_view_icon_find_position(icon_view, icon))
+            xfdesktop_icon_view_add_item_internal(icon_view, icon);
+        else {
+            icon_view->priv->pending_icons = g_list_append(icon_view->priv->pending_icons,
+                                                           icon);
+        }
+    }
 }
 
 void
@@ -2592,7 +2628,6 @@ void
 xfdesktop_icon_view_remove_all(XfdesktopIconView *icon_view)
 {
     GList *l;
-    gboolean realized;
     guint16 row, col;
     
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
@@ -2607,12 +2642,9 @@ xfdesktop_icon_view_remove_all(XfdesktopIconView *icon_view)
         icon_view->priv->pending_icons = NULL;
     }
     
-    realized = GTK_WIDGET_REALIZED(GTK_WIDGET(icon_view));
     for(l = icon_view->priv->icons; l; l = l->next) {
-        if(realized) {
-            if(xfdesktop_icon_get_position(XFDESKTOP_ICON(l->data), &row, &col))
-                xfdesktop_grid_set_position_free(icon_view, row, col);
-        }
+        if(xfdesktop_icon_get_position(XFDESKTOP_ICON(l->data), &row, &col))
+            xfdesktop_grid_set_position_free(icon_view, row, col);
         
         g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
                                              G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
@@ -2635,7 +2667,7 @@ xfdesktop_icon_view_remove_all(XfdesktopIconView *icon_view)
     icon_view->priv->last_clicked_item = NULL;
     icon_view->priv->first_clicked_item = NULL;
     
-    if(realized)
+    if(GTK_WIDGET_REALIZED(icon_view))
         gtk_widget_queue_draw(GTK_WIDGET(icon_view));
 }
 
