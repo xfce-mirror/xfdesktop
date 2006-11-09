@@ -173,20 +173,48 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
                 
                 path = thunar_vfs_path_new(desktop_path, NULL);
                 if(path) {
+                    XfceRc *rcfile;
+                    /* defaults */
+                    gboolean show_removable = TRUE, show_filesystem = TRUE;
+                    gboolean show_home = TRUE, show_trash = TRUE;
+                    
                     manager = xfdesktop_file_icon_manager_new(path);
                     thunar_vfs_path_unref(path);
-                    /* FIXME: make prefs */
-                    xfdesktop_file_icon_manager_set_show_removable_media(XFDESKTOP_FILE_ICON_MANAGER(manager),
-                                                                         TRUE);
+                    
+                    rcfile = xfce_rc_config_open(XFCE_RESOURCE_CONFIG,
+                                                 "xfce4/desktop/xfdesktoprc",
+                                                 TRUE);
+                    if(rcfile) {
+                        if(xfce_rc_has_group(rcfile, "file-icons")) {
+                            xfce_rc_set_group(rcfile, "file-icons");
+                            show_filesystem = xfce_rc_read_bool_entry(rcfile,
+                                                                      "show-filesystem",
+                                                                      show_filesystem);
+                            show_home = xfce_rc_read_bool_entry(rcfile,
+                                                                "show-home",
+                                                                show_home);
+                            show_trash = xfce_rc_read_bool_entry(rcfile,
+                                                                 "show-trash",
+                                                                 show_trash);
+                            show_removable = xfce_rc_read_bool_entry(rcfile,
+                                                                     "show-removable",
+                                                                     show_removable);
+                        }
+                        
+                        xfce_rc_close(rcfile);
+                    }
+                    
                     xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
                                                                       XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM,
-                                                                      TRUE);
+                                                                      show_filesystem);
                     xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
                                                                       XFDESKTOP_SPECIAL_FILE_ICON_HOME,
-                                                                      TRUE);
+                                                                      show_home);
                     xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
                                                                       XFDESKTOP_SPECIAL_FILE_ICON_TRASH,
-                                                                      TRUE);
+                                                                      show_trash);
+                    xfdesktop_file_icon_manager_set_show_removable_media(XFDESKTOP_FILE_ICON_MANAGER(manager),
+                                                                         show_removable);
                 } else {
                     g_critical("Unable to create ThunarVfsPath for '%s'",
                                desktop_path);

@@ -63,3 +63,21 @@ widget_class "*" style "menu-images"
 Unfortunately, this will act on all gtk menus, not just on the desktop or
 window menu.  There is currently no way to set this property just for these
 two menus.
+
+.:.
+
+The file icon view by default shows 'special' icons for the root of your
+filesystem, your home directory, and the trash.  Removable volumes (such as
+USB flash drives) are also shown when they are plugged in.  If you'd like to
+configure which of these are shown, edit (or create) the file
+~/.config/xfce4/desktop/xfdesktoprc to look something like this:
+
+[file-icons]
+show-filesystem=true
+show-home=true
+show-trash=true
+show-removable=true
+
+The defaults are all 'true', but you can set ones you want hidden to 'false'.
+If an entry is omitted, it defaults to 'true'.  You will need to restart
+xfdesktop to make the settings take effect.
