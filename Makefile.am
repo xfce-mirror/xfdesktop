@@ -1,14 +1,7 @@
 @SET_MAKE@
 
 DIST_SUBDIRS = \
-	backdrops \
-	common \
-	doc \
-	po \
-	settings \
-	src \
-	modules \
-	pixmaps \
+	$(SUBDIRS) \
 	panel-plugin \
 	menueditor
 
@@ -17,6 +10,7 @@ SUBDIRS = \
 	common \
 	doc \
 	po \
+	po-doc \
 	settings \
 	src \
 	modules \
@@ -85,6 +79,9 @@ DISTCLEANFILES = \
 	intltool-extract \
 	intltool-merge \
 	intltool-update
+
+DISTCHECK_CONFIGURE_FLAGS = \
+	--enable-xml2po
 
 AUTOMAKE_OPTIONS =							\
 	1.8								\

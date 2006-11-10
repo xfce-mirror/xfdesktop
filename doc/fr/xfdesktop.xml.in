@@ -2,8 +2,8 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY date "November 2004"> 
-  <!ENTITY appversion "4.2"> 
-  <!ENTITY app "<application>xfdesktop</application>"> 
+  <!ENTITY appversion "@PACKAGE_VERSION@"> 
+  <!ENTITY app "<application>@PACKAGE_NAME@</application>"> 
 ]>
 
 <article id="xfdesktop" lang="fr">
