@@ -1,28 +1,25 @@
 @SET_MAKE@
 
-DIST_SUBDIRS = \
-	$(SUBDIRS) \
-	panel-plugin \
-	menueditor
+if BUILD_PANEL_PLUGIN
+panel_plugin_dir = panel-plugin
+endif
+
+if BUILD_MENUEDITOR
+menueditor_dir = menueditor
+endif
 
 SUBDIRS = \
 	backdrops \
 	common \
 	doc \
+	$(panel_plugin_dir) \
 	po \
 	po-doc \
 	settings \
 	src \
+	$(menueditor_dir) \
 	modules \
 	pixmaps
-
-if BUILD_PANEL_PLUGIN
-SUBDIRS += panel-plugin
-endif
-
-if BUILD_MENUEDITOR
-SUBDIRS += menueditor
-endif
 
 confdir = $(sysconfdir)/xdg/xfce4/desktop
 
