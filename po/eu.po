@@ -7,17 +7,17 @@
 # Piarres Beobide  <pi@beobide.net>, 2004, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.3.99.2\n"
+"Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 05:11-0800\n"
-"PO-Revision-Date: 2006-08-15 23:18+0200\n"
+"PO-Revision-Date: 2006-11-10 22:07+0100\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: librezale <librezale@librezale.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
@@ -358,7 +358,7 @@ msgstr "H_oni buruz..."
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "Show informations about xfce4-menueditor"
-msgstr "Xfce4-menueditor a-i buruz argibideak bistarazi"
+msgstr "Xfce4-menueditor -ri buruz argibideak bistarazi"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all"
@@ -366,7 +366,7 @@ msgstr "Zuhaitza itxi"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all menu entries"
-msgstr "Menu sarrera guztuiak itxi"
+msgstr "Menu sarrera guztiak itxi"
 
 #: ../menueditor/menueditor-main-window.c:161
 msgid "Expand all"
@@ -394,7 +394,7 @@ msgstr "Ziur al zaude menu hau itxi nahi duzula?"
 
 #: ../menueditor/menueditor-main-window.c:441
 msgid "Do you want to save before closing the file?"
-msgstr "Fitxatgia itxi aurretik grabatu nahi al duzu?"
+msgstr "Fitxategia itxi aurretik grabatu nahi al duzu?"
 
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
@@ -405,7 +405,7 @@ msgstr "Galdera"
 
 #: ../menueditor/menueditor-main-window.c:481
 msgid "Do you want to save before opening an other menu ?"
-msgstr "Beste menu bat iraki aurretik gorde nahi al duzu?"
+msgstr "Beste menu bat ireki aurretik gorde nahi al duzu?"
 
 #: ../menueditor/menueditor-main-window.c:483
 #: ../menueditor/menueditor-main-window.c:536
@@ -582,7 +582,7 @@ msgstr "Erakutsi _ikonoak menuan"
 
 #: ../panel-plugin/desktop-menu-plugin.c:953
 msgid "There is already a panel menu registered for this screen"
-msgstr "BAdago pantaila honentzat panel menu bat erregistraturik"
+msgstr "Badago pantaila honentzat panel menu bat erregistraturik"
 
 #: ../panel-plugin/desktop-menu-plugin.c:1061
 msgid "Edit Menu"
@@ -783,7 +783,7 @@ msgid ""
 msgstr ""
 "Ezin da %s fitxategia gorde: %s\n"
 "\n"
-"Mesedez, beste kokapen bat aukeratu edo sakatu \"cancelar\" aldaketak ez "
+"Mesedez, beste kokapen bat aukeratu edo sakatu \"utzi\" aldaketak ez "
 "gordetzeko"
 
 #: ../settings/backdrop-list-manager.c:430
@@ -914,8 +914,7 @@ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Menua bistarazi (saguaren kokalekuan)\n"
 
 #: ../src/main.c:309
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Leiho zerrenda bistarazi (saguaren kokalekuan)\n"
 
 #: ../src/main.c:310
@@ -930,26 +929,26 @@ msgstr "%s ez dago abiaraziriik.\n"
 #: ../src/windowlist.c:218
 #, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "<b>Idazmahi Birtuala %d</b>"
+msgstr "<b>Idazmahai Birtuala %d</b>"
 
 #: ../src/windowlist.c:226
 #, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "<i>Idazmahi Birtuala %d</i>"
+msgstr "<i>Idazmahai Birtuala %d</i>"
 
 #: ../src/windowlist.c:293 ../src/windowlist.c:296
 msgid "_Add Workspace"
-msgstr "Idazmahi birtuala _gehitu"
+msgstr "Idazmahai birtuala _gehitu"
 
 #: ../src/windowlist.c:304
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "_Ezabatu %d Idazmahi Birtuala"
+msgstr "_Ezabatu %d Idazmahai Birtuala"
 
 #: ../src/windowlist.c:307
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "_Ezabatu '%s' Idazmahi Birtuala"
+msgstr "_Ezabatu '%s' Idazmahai Birtuala"
 
 #: ../src/xfce-desktop.c:542
 msgid "Desktop"
@@ -957,10 +956,8 @@ msgstr "Idazmahaia"
 
 #: ../src/xfdesktop-file-icon-manager.c:386
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop ez da idazmahai elmentuak gordetzeko \"%s\" karpeta sortzeko gai."
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop ez da idazmahai elementuak gordetzeko \"%s\" karpeta sortzeko gai."
 
 #: ../src/xfdesktop-file-icon-manager.c:388
 #: ../src/xfdesktop-file-icon-manager.c:399
@@ -1041,7 +1038,7 @@ msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
-"Ezaugarri honek fitxategi kudeaketa zerbitzu bat instaturik egotea behar du "
+"Ezaugarri honek fitxategi kudeaketa zerbitzu bat instalaturik egotea behar du "
 "(Thunar-ek duena bezalakoa)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1027
@@ -1065,7 +1062,7 @@ msgid ""
 "edit launchers and links on the desktop."
 msgstr ""
 "Ezin da \"exo-desktop-item-edit\" abiarazi zein beharrezkoa da abiarazleak "
-"eta idazmahai loturak sortu eta ediatzteko."
+"eta idazmahai loturak sortu eta editatzeko."
 
 #: ../src/xfdesktop-file-icon-manager.c:1163
 msgid "Create New Folder"
@@ -1093,7 +1090,7 @@ msgstr "Huts Fitxategia Sortzerakoan"
 #: ../src/xfdesktop-file-icon-manager.c:1246
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr "Sortu dokumentua \"%s\" txantilloietik"
+msgstr "Sortu dokumentua \"%s\" txantiloietik"
 
 #: ../src/xfdesktop-file-icon-manager.c:1265
 msgid "Create Empty File"
@@ -1110,7 +1107,7 @@ msgstr "Ezin da \"%s\" izeneko fitxategi bat sortu:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1303
 msgid "Create Error"
-msgstr "Sorzte Errorea"
+msgstr "Sortze Errorea"
 
 #: ../src/xfdesktop-file-icon-manager.c:1587
 msgid "_Open all"
@@ -1191,11 +1188,11 @@ msgstr "Ezin da \"%s\"-ren lehenetsiriko aplikazio bezala \"%s\" ezarri:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:106
 msgid "Properties Error"
-msgstr "Propietatea Errorea"
+msgstr "Propietate Errorea"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Write only"
-msgstr "IDazketa bakarrik"
+msgstr "Idazketa bakarrik"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read only"
@@ -1236,7 +1233,7 @@ msgstr "Irakurketa:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:395
 msgid "Free Space:"
-msgstr "LEku Librea:"
+msgstr "Leku Librea:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:397
 msgid "Size:"
@@ -1291,7 +1288,7 @@ msgstr "Errore bat egon da \"%s\" \"%s\"-ra lotzerakoan:"
 
 #: ../src/xfdesktop-file-utils.c:121
 msgid "File Error"
-msgstr "Fixtategi Errorea"
+msgstr "Fitxategi Errorea"
 
 #: ../src/xfdesktop-file-utils.c:137
 msgid "broken link"
@@ -1396,7 +1393,7 @@ msgstr "Xfce 4 Menu Editorea"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr "Instalatutako aplikazioaen kategoriak dituen menua bistarazi"
+msgstr "Instalatutako aplikazioen kategoriak dituen menua bistarazi"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
@@ -1410,15 +1407,3 @@ msgstr "Xfce 4 Idazmahai kudeatzaile ezarpenak"
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 Idazmahai Ezarpenak"
 
-#~ msgid ""
-#~ "Viewing the contents of the trash requires a file manager that supports "
-#~ "the Xfce trash service, such as Thunar."
-#~ msgstr ""
-#~ "Zakarrontziaren edukia bistaratzeko Xfce zakarrontzi zerbitzuarekin "
-#~ "bateragarri den fitxategi kudeatzaile bat erabili behar da."
-
-#~ msgid "Unable to empty the trash."
-#~ msgstr "Ezin da zakarrontzia hustu."
-
-#~ msgid "Unknown error."
-#~ msgstr "Errore ezezaguna."
