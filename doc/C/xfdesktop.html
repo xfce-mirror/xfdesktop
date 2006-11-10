@@ -1,119 +1,296 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Xfce 4 Desktop Manager</title><link rel="stylesheet" href="../xfce.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="#xfdesktop" title="Xfce 4 Desktop Manager"><link rel="next" href="#xfdesktop-intro" title="Introduction"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="xfdesktop"></a>Xfce 4 Desktop Manager</h1></div><div><div class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">Jasper</span> <span class="surname">Huijsmans</span></h3><div class="affiliation"><div class="address"><p><code class="email">&lt;<a href="mailto:jasper@xfce.org">jasper@xfce.org</a>&gt;</code></p></div></div></div><div class="author"><h3 class="author"><span class="firstname">François</span> <span class="surname">Le Clainche</span></h3><div class="affiliation"><div class="address"><p><code class="email">&lt;<a href="mailto:fleclainche@wanadoo.fr">fleclainche@wanadoo.fr</a>&gt;</code></p></div></div></div><div class="author"><h3 class="author"><span class="firstname">Brian</span> <span class="surname">Tarricone</span></h3><div class="affiliation"><div class="address"><p><code class="email">&lt;<a href="mailto:kelnos@xfce.org">kelnos@xfce.org</a>&gt;</code></p></div></div></div></div></div><div><span xmlns="http://www.w3.org/TR/xhtml1/transitional" class="releaseinfo">This manual describes <strong xmlns="" class="application"><code>xfdesktop</code></strong> version 4.2.
-  <br></br></span></div><div><p class="copyright">Copyright © 2004 Jasper Huijsmans</p></div><div><p class="copyright">Copyright © 2004 François Le Clainche</p></div><div><p class="copyright">Copyright © 2004 Brian Tarricone</p></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="#xfdesktop-intro">Introduction</a></span></dt><dt><span class="sect1"><a href="#xfdesktop-background">Backdrops</a></span></dt><dt><span class="sect1"><a href="#xfdesktop-menu"><strong class="application"><code>xfdesktop</code></strong> root menu</a></span></dt><dt><span class="sect1"><a href="#xfdesktop-copyright">About xfdesktop</a></span></dt></dl></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-intro"></a>Introduction</h2></div></div></div><p>The <strong class="application"><code>xfdesktop</code></strong> application manages the desktop backdrop. It sets a
-    backdrop image and/or color and it can pop up an applications
-    menu and a list of all running applications when you click on the desktop
-    with the right or middle mouse button respectively.
-  </p><p>
-    The <strong class="application"><code>xfdesktop</code></strong> package installs a settings dialog for use with 
-    the <span class="emphasis"><em>Xfce 4 Settings Manager</em></span>. From this dialog you 
-    can change the backdrop image and color and change settings for the menu
-    and the window list.
-  </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-background"></a>Backdrops</h2></div></div></div><p>You can start the Desktop settings dialog by clicking on the
-    "Desktop" button in the 
-    <a href="xfce-mcs-manager.html#manager-dialog" target="_top">Xfce Settings Manager</a>.
-  </p><div class="figure"><a name="xfdesktop-background-fig"></a><p class="title"><b>Figure 1. Backdrop Settings</b></p><div class="screenshot"><div class="mediaobject"><img src="images/xfdesktop-background.png" alt="Shows backdrop settings dialog.
-	  "></div></div></div><div class="variablelist"><dl><dt><span class="term">Color</span></dt><dd><p>This dialog allows you to select a color style for your desktop 
-	  backdrop: solid color, horizontal gradient or vertical gradient. 
-	  Depending on your choice, you will be able to choose one or two 
-	  colors, using "First Color" and "Second Color" buttons. These 
-	  buttons open a color chooser dialog:</p><div class="figure"><a name="select_bg_color-fig"></a><p class="title"><b>Figure 2. Select backdrop color</b></p><div class="screenshot"><div class="mediaobject"><img src="images/select_bg_color.png" alt="Shows the Select backdrop color dialog"></div></div></div><p> </p><div class="itemizedlist"><ul type="disc"><li>You can use the colored ring with a triangle inside:
-	    select the color you want from the outer ring, then select the
-	    darkness or lightness of that color using the inner triangle.
-	    Corresponding values of brightness, deepness, and amount of red,
-	    green and blue light in the color appear through the entries on
-	    the right side of the window.
-	  </li><li>You can click the eyedropper, then click anywhere on your
-	    screen to select the color.
-	  </li><li>You can enter an HTML-style hexadecimal color value, or
-	    simply a color name, in the "Color Name" entry.
-	  </li></ul></div><p>The selected colors will fill the entire root window, and will 
-	  remain visible through a transparent backdrop image.</p></dd><dt><span class="term">Image</span></dt><dd><p>Unselect the "Show Image" option if you want <strong class="application"><code>xfdesktop</code></strong> to ignore 
-	  the backdrop image and only use the previously selected colors.
-	</p><p>The "File" entry shows the path to the currently selected
-	  backdrop image. If you want to change it, just drop and image 
-	  on the path field, or edit the path, or click the browse button, 
-	  and a classic file-browsing dialog will appear.
-	</p><p>You can create a list of backdrop images that will be randomly
-	  used at startup. Click the "New list" button to open the list 
-	  editing dialog:
-	</p><div class="figure"><a name="xfdesktop-list-fig"></a><p class="title"><b>Figure 3. Backdrop List</b></p><div class="screenshot"><div class="mediaobject"><img src="images/xfdesktop-list.png" alt="Shows backdrop list manager."></div></div></div><p>You may want to change the default path and name of your
-	  custom list of backdrops in the "List file" entry.
-	</p><p>You can easily add an image file by clicking the "plus" button.
-	  That action will open a file-browsing window. You can remove a file,
-	  if you select it in the list and click the "minus" button. When your
-	  list is complete, click the "Save" button to save it. If you want to
-	  modify its content later, use the "Edit list" button of the
-	  Backdrop settings manager.
-	</p><p>You can recover an older list by dropping its name.list file on 
-	the backdrop settings dialog from a file manager.</p><p>To refresh the backdrop with a new random image from the list
-	  just run the <strong class="application"><code>xfdesktop</code></strong> command again, e.g. from a terminal or the run 
-	  dialog, or <strong class="application"><code>xfdesktop</code></strong>  [-reload].
-	</p><p>Four Style options (Tiled, Scaled, Centered and Stretched) are
-	  available to specify the fitting of the backdrop image on the 
-	  screen, depending on its size. You can also select the "Auto" item 
-	  if you want to let <strong class="application"><code>xfdesktop</code></strong> take care of this setting.
-	</p><p>The slider at the bottom of the dialog allows you to adjust the 
-	  brightness of the backdrop image and/or color.
-	</p><p>xfdesktop supports xinerama and multiscreen modes. In 
-	  multiscreen mode, the "Backdrops" dialog shows one tab per screen.
-	</p></dd></dl></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-menu"></a><strong class="application"><code>xfdesktop</code></strong> root menu</h2></div></div></div><p><strong class="application"><code>xfdesktop</code></strong> provides an applications menu and a windowlist menu that appear
-    when you click on the desktop with your right or middle mouse button.
-  </p><p>The Menu tab of the Desktop settings dialog allows you to configure 
-    the menu behaviour.
-  </p><div class="figure"><a name="xfdesktop-menu-tab-fig"></a><p class="title"><b>Figure 4. Menu tab</b></p><div class="screenshot"><div class="mediaobject"><img src="images/xfdesktop-menu-tab.png" alt="Shows the menu tab of the Desktop settings dialog."></div></div></div><p>If you want to use the root menu and/or the window list, the 
-    corresponding options have to be selected in the settings dialog.
-  </p><p>A right-click on the desktop backdrop opens a menu that allows you to
-    start some applications. Its configuration file,
-    <code class="filename">menu.xml</code>, can be found under the path
-    <code class="filename">$sysconfdir/xdg/xfce4/menu.xml</code>.  For binary packages,
-    $sysconfdir is often <code class="filename">/etc</code> and for source compiles, it
-    defaults to <code class="filename">/usr/local/etc</code>.
-  </p><p>While it is possible to edit the file manually, the recommended method
-    for editing the <code class="filename">menu.xml</code> file is via the Xfce 4 Menu
-    Editor, which can be started by running
-    <strong class="application"><code>xfce4-menueditor</code></strong>, or using 
-    the "Edit desktop menu" button available from the Menu tab of the Desktop 
-    settings dialog. The menu editor also supports drag'n'drop from a file 
-    manager.
-  </p><p>If you've edited the menu via
-    <strong class="application"><code>xfce4-menueditor</code></strong>, the user-customized menu file
-    will be saved to
-    <code class="filename">$XDG_CONFIG_HOME/xfce4/desktop/menu.xml</code>.
-	$XDG_CONFIG_HOME usually defaults to <code class="filename">~/.config</code>.  If
-    editing the file manually, copying it to this location first is the
-    preferred method.
-  </p><div class="figure"><a name="xfdesktop-editor-fig"></a><p class="title"><b>Figure 5. <code class="application">xfdesktop</code> menu editor</b></p><div class="screenshot"><div class="mediaobject"><img src="images/xfdesktop-editor.png" alt="Shows xfdesktop menu editor.
-	  "></div></div></div><p>NOTE: If you choose to edit the file manually,
-    <code class="filename">menu.xml</code> has to be in UTF-8 encoding for the toolkit to
-	be able to display accented or other non-ASCII characters. Therefore, you
-    need an editor that supports UTF-8, like <strong class="application"><code>gedit</code></strong>.
-  </p><div class="figure"><a name="root-menu-fig"></a><p class="title"><b>Figure 6. <code class="application">xfdesktop</code> right-click mouse menu</b></p><div class="screenshot"><div class="mediaobject"><img src="images/root_menu.png" alt="Shows xfdesktop right-click mouse menu.
-	  "></div></div></div><p>A middle-click on the desktop backdrop shows a list of all opened 
-    windows ordered by workspace. It also allows you to add or remove 
-    a workspace.
-  </p><div class="figure"><a name="root-menu2-fig"></a><p class="title"><b>Figure 7. <code class="application">xfdesktop</code> middle-click mouse menu</b></p><div class="screenshot"><div class="mediaobject"><img src="images/root_menu2.png" alt="Shows xfdesktop middle-click mouse menu.
-	  "></div></div></div><p>In order to lower the hardware requirements to run xfdesktop, you can 
-    disable the usage of icons in the desktop menu and the window list menu 
-    from the settings dialog.
-  </p><p>You can open the menu or window list from the commandline as well.
-    This can be useful for keyboard shortcuts. To open the menu run the
-    command <strong class="application"><code>xfdesktop</code></strong> <strong class="application"><code>-menu</code></strong>, and for the windowlist 
-    use <strong class="application"><code>xfdesktop</code></strong> <strong class="application"><code>-windowlist</code></strong>.
-  </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-copyright"></a>About xfdesktop</h2></div></div></div><p><strong class="application"><code>xfdesktop</code></strong> was written by 
-    Brian Tarricone (<code class="email">&lt;<a href="mailto:kelnos@xfce.org">kelnos@xfce.org</a>&gt;</code>) and 
-    Jasper Huijsmans (<code class="email">&lt;<a href="mailto:jasper@xfce.org">jasper@xfce.org</a>&gt;</code>), 
-    Benedikt Meurer (<code class="email">&lt;<a href="mailto:benny@xfce.org">benny@xfce.org</a>&gt;</code>).
-    For more information, please visit the 
-    <a href="http://www.xfce.org" target="_top">Xfce website</a>. 
-  </p><p>To report a bug or make a suggestion regarding this application or
-    this manual, use the bug tracking system at <a href="http://bugzilla.xfce.org/" target="_top">http://bugzilla.xfce.org/</a>. 
-  </p><p>If you have questions about the use or installation of this package,
-    please ask on the <a href="http://lunar-linux.org/mailman/listinfo/xfce" target="_top">xfce</a> mailing list. Development discussion takes
-    place on the <a href="http://lunar-linux.org/mailman/listinfo/xfce4-dev" target="_top">xfce4-dev</a> mailing list.
-  </p><p> This program is distributed under the terms of the
-    GNU General Public License as published by the Free Software Foundation; 
-    either version 2 of the License, or (at your option) any later version.
-  </p><p>You should have received a copy of the GNU General Public License 
-    along with this program; if not, write to the Free Software 
-    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
-    USA.</p></div></div></body></html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Xfce 4 Desktop Manager</title><link rel="stylesheet" href="../xfce.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.70.1"><link rel="start" href="#xfdesktop" title="Xfce 4 Desktop Manager"><link rel="next" href="#xfdesktop-intro" title="Introduction"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="xfdesktop"></a>Xfce 4 Desktop Manager</h1></div><div><div class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">Jasper</span> <span class="surname">Huijsmans</span></h3><div class="affiliation"><div class="address"><p><code class="email">&lt;<a href="mailto:jasper@xfce.org">jasper@xfce.org</a>&gt;</code></p></div></div></div><div class="author"><h3 class="author"><span class="firstname">François</span> <span class="surname">Le Clainche</span></h3><div class="affiliation"><div class="address"><p><code class="email">&lt;<a href="mailto:fleclainche@wanadoo.fr">fleclainche@wanadoo.fr</a>&gt;</code></p></div></div></div><div class="author"><h3 class="author"><span class="firstname">Brian</span> <span class="surname">Tarricone</span></h3><div class="affiliation"><div class="address"><p><code class="email">&lt;<a href="mailto:kelnos@xfce.org">kelnos@xfce.org</a>&gt;</code></p></div></div></div></div></div><div><span xmlns="http://www.w3.org/TR/xhtml1/transitional" class="releaseinfo">
+      This manual describes <strong xmlns="" class="application"><code>xfdesktop</code></strong> version 4.3.99.2.
+    <br></br></span></div><div><p class="copyright">Copyright © 2004 Jasper Huijsmans</p></div><div><p class="copyright">Copyright © 2004 François Le Clainche</p></div><div><p class="copyright">Copyright © 2004-2006 Brian Tarricone</p></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="#xfdesktop-intro">Introduction</a></span></dt><dt><span class="sect1"><a href="#xfdesktop-backdrop">Backdrop</a></span></dt><dt><span class="sect1"><a href="#xfdesktop-icons">Icons</a></span></dt><dd><dl><dt><span class="sect2"><a href="#xfdesktop-window-icons">Minimized Window Icons</a></span></dt><dt><span class="sect2"><a href="#xfdesktop-file-icons">File/Launcher Icons</a></span></dt></dl></dd><dt><span class="sect1"><a href="#xfdesktop-menu">The Applications Menu</a></span></dt><dt><span class="sect1"><a href="#xfdesktop-window-list">The Window List Menu</a></span></dt><dt><span class="sect1"><a href="#xfdesktop-settings">Desktop Settings</a></span></dt><dd><dl><dt><span class="sect2"><a href="#xfdesktop-settings-appearance">Appearance Tab</a></span></dt><dt><span class="sect2"><a href="#xfdesktop-settings-behavior">Behavior Tab</a></span></dt></dl></dd><dt><span class="sect1"><a href="#xfdesktop-menu-editor">Xfce Menu Editor</a></span></dt><dt><span class="sect1"><a href="#xfdesktop-hidden-options">Hidden Options</a></span></dt><dt><span class="sect1"><a href="#xfdesktop-misc">Miscellaneous</a></span></dt><dt><span class="sect1"><a href="#xfdesktop-copyright">About <strong class="application"><code>xfdesktop</code></strong></a></span></dt></dl></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-intro"></a>Introduction</h2></div></div></div><p>
+      The <strong class="application"><code>xfdesktop</code></strong> application manages the desktop backdrop. It sets a
+      backdrop image and/or color and it can pop up an applications
+      menu and a list of all running applications when you click on the desktop
+      with the right or middle mouse button respectively.  As of Xfce 4.4,
+      <strong class="application"><code>xfdesktop</code></strong> also draws icons on the desktop.
+    </p><p>
+      The <strong class="application"><code>xfdesktop</code></strong> package installs a settings dialog for use with 
+      the <span class="emphasis"><em>Xfce 4 Settings Manager</em></span>. From this dialog you 
+      can change the backdrop image and color and change settings for the menu
+      and the window list.
+    </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-backdrop"></a>Backdrop</h2></div></div></div><p>
+      <strong class="application"><code>xfdesktop</code></strong> is responsible for drawing the desktop's backdrop (sometimes called
+      "wallpaper") image.  There are various options for setting a backdrop
+      image.  The final picture seen on the monitor is composed of a solid
+      color or gradient, with an image or photo (with optional transparency)
+      composited on top of the color or gradient.  This allows for some
+      interesting effects using semi-transparent images on top of various
+      color arrangements.
+    </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-icons"></a>Icons</h2></div></div></div><p>
+      In addition to drawing the backdrop image, <strong class="application"><code>xfdesktop</code></strong> can draw icons on the
+      desktop.
+    </p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="xfdesktop-window-icons"></a>Minimized Window Icons</h3></div></div></div><p>
+        One mode of operation displays minimized applications as icons on the
+        desktop, which can be rearranged, and will remember their positions
+        when the window is unhidden and then later minimized again.  The icons
+        also provide a right-click menu similar to the window's control menu
+        accessed by clicking the button in the top-left corner of the window.
+      </p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="xfdesktop-file-icons"></a>File/Launcher Icons</h3></div></div></div><p>
+        <strong class="application"><code>xfdesktop</code></strong> can also display the contents of the
+        <code class="filename">~/Desktop/</code> on the desktop, similar to the icon
+        views found in many other desktop environments and operating systems.
+        Files can be arranged, copied, moved, and linked to and from a file
+        manager, and opened using preferred applications.  Application and URL
+        launchers can also be created on the desktop.  The file icon view is
+        modeled to have a similar look and feel as the
+        <a href="http://thunar.xfce.org/" target="_top">Thunar</a> file
+        manager.
+      </p></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-menu"></a>The Applications Menu</h2></div></div></div><p>
+      A right-click on the desktop backdrop opens a menu that allows you to
+      start many of the applications found on your system.
+    </p><div class="figure"><a name="root-menu-fig"></a><p class="title"><b>Figure 1. Applications Menu</b></p><div class="figure-contents"><div class="screenshot"><div class="mediaobject"><img src="images/root_menu.png" alt="Shows xfdesktop right-click mouse menu."></div></div></div></div><br class="figure-break"><p>
+      The menu's configuration file,
+      <code class="filename">menu.xml</code>, can be found under the path
+      <code class="filename">$sysconfdir/xdg/xfce4/menu.xml</code>.  For binary
+      packages, <code class="filename">$sysconfdir</code> is often
+      <code class="filename">/etc</code> and for source compiles, it defaults to
+      <code class="filename">/usr/local/etc</code>.
+    </p><p>
+      While it is possible to edit the file manually, the recommended
+      method for editing the <code class="filename">menu.xml</code> file is via
+      the Xfce Menu Editor, which can be started by running
+      <strong class="application"><code>xfce4-menueditor</code></strong>, or using the "Edit
+      desktop menu" button available from the Behavior tab ofthe Desktop 
+      Settings dialog. The menu editor also supports drag'n'drop from a file 
+      manager.
+    </p><p>
+      If you've edited the menu via <strong class="application"><code>xfce4-menueditor</code></strong>,
+      the user-customized menu file will be saved to
+      <code class="filename">$XDG_CONFIG_HOME/xfce4/desktop/menu.xml</code>.
+      <code class="filename">$XDG_CONFIG_HOME</code> usually defaults to
+      <code class="filename">~/.config</code>.  If editing the file manually, copying
+      it to this location first is the preferred method.
+    </p><p>
+      NB: If you choose to edit the file manually,
+      <code class="filename">menu.xml</code> must to be in UTF-8 encoding for the
+      toolkit to be able to display accented or other non-ASCII characters.
+      Therefore, you need an editor that supports UTF-8, like
+      <strong class="application"><code>mousepad</code></strong> or <strong class="application"><code>gedit</code></strong>.
+    </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-window-list"></a>The Window List Menu</h2></div></div></div><p>
+      A middle-click on the desktop backdrop shows a list of all opened 
+      windows ordered by workspace. It also allows you to add or remove 
+      a workspace.
+    </p><div class="figure"><a name="root-menu2-fig"></a><p class="title"><b>Figure 2. Window List Menu</b></p><div class="figure-contents"><div class="screenshot"><div class="mediaobject"><img src="images/root_menu2.png" alt="Shows xfdesktop middle-click mouse menu."></div></div></div></div><br class="figure-break"></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-settings"></a>Desktop Settings</h2></div></div></div><p>
+      You can start the Desktop settings dialog by clicking on the
+      "Desktop" button in the 
+      <a href="xfce-mcs-manager.html#manager-dialog" target="_top">Xfce Settings Manager</a>.
+    </p><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="xfdesktop-settings-appearance"></a>Appearance Tab</h3></div></div></div><p>
+        The Appearance tab allows you to set various options related to
+        drawing the desktop backdrop picture.
+      </p><div class="figure"><a name="xfdesktop-appearance-fig"></a><p class="title"><b>Figure 3. Desktop Settings, Appearance Tab</b></p><div class="figure-contents"><div class="screenshot"><div class="mediaobject"><img src="images/xfdesktop-appearance-tab.png" alt="Shows the Appearance tab of the Backdrop Settings dialog"></div></div></div></div><br class="figure-break"><div class="variablelist"><dl><dt><span class="term">Color Style</span></dt><dd><p>
+              The color style is one of three options: a solid color,
+              horizontal gradient, or vertical gradient.
+            </p></dd><dt><span class="term">First Color and Second Color</span></dt><dd><p>
+              When the solid color option is selected, only the first color
+              is available.  When either of the gradient options are selected,
+              both the first and second colors are available.  Both of the
+              color buttons open a color chooser dialog:
+            </p><div class="figure"><a name="select_bg_color-fig"></a><p class="title"><b>Figure 4. Select Backdrop Color</b></p><div class="figure-contents"><div class="screenshot"><div class="mediaobject"><img src="images/select_bg_color.png" alt="Shows the color selection dialog"></div></div></div></div><br class="figure-break"><div class="itemizedlist"><ul type="disc"><li>
+                You can use the colored ring with a triangle inside to
+                select the color you want from the outer ring, then select the
+                darkness or lightness of that color using the inner triangle.
+                Corresponding values of brightness, deepness, and amount of red,
+                green and blue light in the color appear through the entries on
+                the right side of the window.
+              </li><li>
+                You can click the eyedropper, then click anywhere on your
+                screen to select the color.
+              </li><li>
+                You can enter an HTML-style hexadecimal color value, or
+                simply a color name, in the "Color Name" entry.
+              </li></ul></div><p>
+              The selected colors will fill the entire root window, and will 
+              remain visible through a transparent backdrop image.
+            </p></dd><dt><span class="term">Image</span></dt><dd><p>
+              Unselect the "Show Image" option if you want <strong class="application"><code>xfdesktop</code></strong> to ignore 
+              the backdrop image and only use the previously selected colors.
+            </p><p>
+              The "File" entry shows the path to the currently selected
+              backdrop image. If you want to change it, just drop and image 
+              on the path field, or edit the path, or click the browse button, 
+              and a classic file-browsing dialog will appear.
+            </p><p>
+              You can create a list of backdrop images that will be randomly
+              used at startup. Click the "New list" button to open the list 
+              editing dialog:
+            </p><div class="figure"><a name="xfdesktop-list-fig"></a><p class="title"><b>Figure 5. Backdrop List Editor</b></p><div class="figure-contents"><div class="screenshot"><div class="mediaobject"><img src="images/xfdesktop-list.png" alt="Shows backdrop list manager"></div></div></div></div><br class="figure-break"><p>
+              You may want to change the default path and name of your
+              custom list of backdrops in the "List file" entry.
+            </p><p>
+              You can easily add an image file by clicking the "plus" button.
+              That action will open a file-browsing window. You can remove a
+              file, if you select it in the list and click the "minus" button.
+              When your list is complete, click the "Save" button to save it.
+              If you want to modify its content later, use the "Edit list"
+              button in the Desktop Settings dialog.
+            </p><p>
+              You can recover an older list by dropping its name.list file on 
+              the backdrop settings dialog from a file manager.
+            </p><p>
+              To refresh the backdrop with a new random image from the list
+              just run the <strong class="application"><code>xfdesktop</code></strong> command again, e.g. from a terminal or the run 
+              dialog, or <strong class="application"><code>xfdesktop</code></strong>  [-reload].
+            </p><p>
+              Four Style options (Tiled, Scaled, Centered and Stretched) are
+              available to specify the fitting of the backdrop image on the 
+              screen, depending on its size. You can also select the "Auto"
+              item if you want to let <strong class="application"><code>xfdesktop</code></strong> take care of this setting.
+            </p><p>
+              The slider at the bottom of the dialog allows you to adjust the 
+              brightness of the backdrop image and/or color.
+            </p><p>
+              xfdesktop supports xinerama and multiscreen modes. In 
+              multiscreen mode, the Appearance tab shows one tab per screen.
+            </p></dd></dl></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="xfdesktop-settings-behavior"></a>Behavior Tab</h3></div></div></div><div class="figure"><a name="xfdesktop-behavior-tab-fig"></a><p class="title"><b>Figure 6. Desktop Settings, Appearance Tab</b></p><div class="figure-contents"><div class="screenshot"><div class="mediaobject"><img src="images/xfdesktop-behavior-tab.png" alt="Shows the Behavior tab of the Desktop Settings dialog"></div></div></div></div><br class="figure-break"><p>
+        The first two options allow you to enable or disable the Window List
+        Menu and the Applications Menu.  There is also a button that launches
+        the Xfce Menu Editor, which is used to edit the Applications Menu.
+      </p><p>
+        The behavior of the desktop icons can be set here as well.  There are
+        three options: None, to disable desktop icons entirely; Minimized
+        application icons, to show icons for minimized/hidden applications on
+        the desktop; and File/launcher icons, to show the contents of your
+        <code class="filename">~/Desktop</code> directory on the desktop.
+      </p><p>
+        If desktop icons are enabled, you can control the size of the icon
+        itself (in pixels), and the font size used to display the icon text
+        (in points).  Selecting the "Use system font size" checkbox will tell
+        <strong class="application"><code>xfdesktop</code></strong> to use the font size selected in the User Interface Settings
+        dialog.
+      </p></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-menu-editor"></a>Xfce Menu Editor</h2></div></div></div><p>
+      The recommended way to edit the Applications Menu is via the Xfce Menu
+      Editor.
+    </p><div class="figure"><a name="xfdesktop-editor-fig"></a><p class="title"><b>Figure 7. Xfce Menu Editor</b></p><div class="figure-contents"><div class="screenshot"><div class="mediaobject"><img src="images/xfdesktop-editor.png" alt="Shows the menu editor."></div></div></div></div><br class="figure-break"><p>
+      The Xfce Menu Editor shows the menu as a tree of items.  Existing items
+      can be edited by selecting the item and using the toolbar buttons or
+      context menu.  Items can be moved around by dragging them with the mouse.
+      New items can be used with the Add button or menu item.
+    </p><p>
+      There are five kinds of menu items:
+      
+      </p><div class="variablelist"><dl><dt><span class="term">Title</span></dt><dd><p>
+              A Title item has no function; it just serves as a way to insert
+              text and/or an icon into the menu.
+            </p></dd><dt><span class="term">Submenu</span></dt><dd><p>
+              A submenu item allows you to attach a submenu to the menu.
+            </p></dd><dt><span class="term">Launcher</span></dt><dd><p>
+              Launchers run an application when clicked.
+            </p></dd><dt><span class="term">Separator</span></dt><dd><p>
+              A separator item draws a line across the menu.
+            </p></dd><dt><span class="term">Quit</span></dt><dd><p>
+              The Quit menu item brings up a dialog that allows you to log
+              out, or shutdown or reboot your computer.
+            </p></dd></dl></div><p>
+    </p><p>
+      If the application supports Startup Notification, you may check the
+      box, and the mouse cursor will turn into an hourglass while the
+      application is loading.  If you are not sure if the application
+      supports Startup Notification, leave the box unchecked.
+    </p><p>
+      If the application is a console application and requires a terminal
+      to run, check the "Run in teriminal" box.
+    </p><p>
+      In addition to menu items, there are two types of "speical" items
+      that can be added to the menu via the "Add external" option in the
+      Edit menu.  The system menu searches for
+      <code class="filename">.desktop</code> files in some predetermined locations
+      on your hard disk and creates a menu tree of the applications found.
+      The "file" external allows you to store other menus in other menu
+      files and merge them together with the current menu.
+    </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-hidden-options"></a>Hidden Options</h2></div></div></div><p>
+      There are a number of hidden options that cannot be set by the Xfce
+      Settings Manager.  These require use of a text editor.
+    </p><div class="variablelist"><dl><dt><span class="term">Icon View Text Appearance</span></dt><dd><p>
+            The colors of the icon text and the icon text background, as well
+            as the opacity of the icon text background, can be customized
+            by putting directives simiar to the following in your
+            <code class="filename">~/.gtkrc-2.0</code> file:
+          </p><pre class="programlisting">
+style "xfdesktop-icon-view" {
+    XfdesktopIconView::label-alpha = 75
+
+    base[NORMAL] = "#00ff00"
+    base[SELECTED] = "#5050ff"
+    base[ACTIVE] = "#0000ff"
+
+    fg[NORMAL] = "#ff0000"
+    fg[SELECTED] = "#ff0000"
+    fg[ACTIVE] = "#ff0000"
+}
+widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"
+          </pre><p>
+            The first entry sets the opacity of the rounded text background.
+            The three "base" entries set the text background color, and the
+            three "fg" entries set the text color.
+          </p><p>
+            The "NORMAL" entries set the color for the regular, unselected
+            state.  The "SELECTED" entreis set the color for when the icon
+            is selected, and the desktop has keyboard focus.  The "ACTIVE"
+            entries set the color for when the icon is selected, but the
+            desktop does not have keyboard focus.
+          </p></dd><dt><span class="term">Extra File Icons</span></dt><dd><p>
+            In addition to file and launcher icons, <strong class="application"><code>xfdesktop</code></strong> can also display
+            icons for removable volumes plugged into your computer.  It
+            can also display an icon for your filesystem root, home directory,
+            and trash can.  By default, these are all enabled, but can be
+            disabled via hidden options.  Create or edit the file
+            <code class="filename">$XDG_CONFIG_HOME/xfce4/desktop/xfdesktoprc</code>
+            and add something similar to the following:
+          </p><pre class="programlisting">
+[file-icons]
+show-filesystem=true
+show-home=true
+show-trash=true
+show-removable=true
+          </pre><p>
+            To disable that particular feature, change the "true" to "false"
+            and save the file.  If an entry is omitted, it defaults to "true".
+            Restart <strong class="application"><code>xfdesktop</code></strong> for the changes to take effect.
+          </p></dd><dt><span class="term">Icons In the Applications and Window List Menus</span></dt><dd><p>
+            If you wish that icons are not shown in the Applications Menu
+            and the Window List Menu, add the following to your
+            <code class="filename">~/.gtkrc-2.0</code>:
+          </p><pre class="programlisting">
+style "menu-images" {
+    gtk-menu-images = false
+}
+widget_class "*" style "menu-images"
+          </pre><p>
+            Unfortunately, this will act on all gtk menus, not just on the
+            Applications and Window List menus.  There is currently no way
+            to set this property for just these two menus.
+          </p></dd></dl></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-misc"></a>Miscellaneous</h2></div></div></div><p>
+      You can open the menu or window list from the commandline as well.
+      This can be useful for keyboard shortcuts. To open the menu run the
+      command <strong class="application"><code>xfdesktop</code></strong> <strong class="application"><code>-menu</code></strong>, and for the windowlist 
+      use <strong class="application"><code>xfdesktop</code></strong> <strong class="application"><code>-windowlist</code></strong>.
+    </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-copyright"></a>About <strong class="application"><code>xfdesktop</code></strong></h2></div></div></div><p>
+      <strong class="application"><code>xfdesktop</code></strong> was written by
+      Brian Tarricone (<code class="email">&lt;<a href="mailto:kelnos@xfce.org">kelnos@xfce.org</a>&gt;</code>),
+      Jasper Huijsmans (<code class="email">&lt;<a href="mailto:jasper@xfce.org">jasper@xfce.org</a>&gt;</code>), and 
+      Benedikt Meurer (<code class="email">&lt;<a href="mailto:benny@xfce.org">benny@xfce.org</a>&gt;</code>).
+      For more information, please visit the 
+      <a href="http://www.xfce.org" target="_top">Xfce website</a>. 
+    </p><p>
+      To report a bug or make a suggestion regarding this application or
+      this manual, use the bug tracking system at
+      <a href="http://bugzilla.xfce.org/" target="_top">http://bugzilla.xfce.org/</a>. 
+    </p><p>
+      If you have questions about the use or installation of this package,
+      please ask on the
+      <a href="http://foo-projects.org/mailman/listinfo/xfce" target="_top">xfce</a> mailing list. Development
+      discussion takes place on the
+      <a href="http://foo-projects.org/mailman/listinfo/xfce4-dev" target="_top">xfce4-dev</a> mailing list.
+    </p><p>
+      This program is distributed under the terms of the
+      GNU General Public License as published by the Free Software Foundation; 
+      either version 2 of the License, or (at your option) any later version.
+    </p><p>
+      You should have received a copy of the GNU General Public License 
+      along with this program; if not, write to the Free Software 
+      Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
+      USA.
+    </p></div></div></body></html>
