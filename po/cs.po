@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.3.99.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-04 05:11-0800\n"
-"PO-Revision-Date: 2006-08-18 23:29+0100\n"
+"POT-Creation-Date: 2006-11-10 21:02+0100\n"
+"PO-Revision-Date: 2006-11-10 21:10+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -84,9 +84,8 @@ msgstr "Ikona:"
 #: ../menueditor/menueditor-add-dialog.c:330
 #: ../menueditor/menueditor-edit-dialog.c:191
 #: ../menueditor/menueditor-edit-dialog.c:586
-#, fuzzy
 msgid "No icon"
-msgstr "Ikona _tlačítka:"
+msgstr "Bez ikony"
 
 #: ../menueditor/menueditor-add-dialog.c:225
 #: ../menueditor/menueditor-add-dialog.c:226
@@ -248,7 +247,8 @@ msgstr "Vytvořit novou prázdnou nabídku"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1602
-#: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
+#: ../src/xfdesktop-special-file-icon.c:624
+#: ../src/xfdesktop-volume-icon.c:543
 msgid "_Open"
 msgstr "_Otevřít"
 
@@ -399,7 +399,8 @@ msgstr "Chcete soubor před zavřením uložit?"
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:587 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:587
+#: ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Otázka"
 
@@ -486,7 +487,7 @@ msgstr "Zahodit úpravy"
 #: ../menueditor/menueditor-main-window.c:2035
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
-msgstr ""
+msgstr "Nelze otevřít soubor nabídky %s pro zápis"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
@@ -501,21 +502,13 @@ msgid "Unable to quit session."
 msgstr "Nelze ukončit sezení."
 
 #: ../modules/menu/desktop-menu-file.c:119
-msgid ""
-"Quitting the session requires that Xfce's session manager (xfce4-session) is "
-"running, but it was not detected.  Please quit Xfce via another means."
-msgstr ""
-"Ukončení sezení vyžaduje, aby byl spuštěn správce sezení prostředí Xfce "
-"(xfce4-session), který však nebyl nalezen. Ukončete Xfce jiným způsobem."
+msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
+msgstr "Ukončení sezení vyžaduje, aby byl spuštěn správce sezení prostředí Xfce (xfce4-session), který však nebyl nalezen. Ukončete Xfce jiným způsobem."
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
-msgid ""
-"Quitting the session requires the 'xfce4-session-logout' command, but it "
-"could not be found: %s"
-msgstr ""
-"Ukončení sezení vyžaduje příkaz 'xfce4-session-logout', který  však nebyl "
-"nalezen: %s"
+msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
+msgstr "Ukončení sezení vyžaduje příkaz 'xfce4-session-logout', který  však nebyl nalezen: %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
@@ -593,7 +586,8 @@ msgstr "Upravit nabídku"
 msgid "Button Label|Desktop"
 msgstr "Plocha"
 
-#: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
+#: ../settings/appearance-settings.c:187
+#: ../settings/appearance-settings.c:196
 #: ../settings/backdrop-list-manager.c:631
 msgid "backdrops.list"
 msgstr "backdrops.list"
@@ -666,31 +660,12 @@ msgid "Information"
 msgstr "Informace"
 
 #: ../settings/appearance-settings.c:845
-#, fuzzy
-msgid ""
-"To ensure that this setting takes effect the next time you start Xfce, "
-"please be sure to save your session when logging out.  If you are not using "
-"the Xfce Session Manager (xfce4-session), you will need to manually edit "
-"your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-"Abyste prostředí Xfce zabránili správě Vaší plochy po příštím spuštění, "
-"uložte při odhlašování Vaše sezení. Nepoužíváte-li správce sezení prostředí "
-"Xfce (xfce4-session), musíte ručně upravit soubor ~./.config/xfce4/xinitrc. "
-"Podrobnosti najdete v dokumentaci poskytované na adrese http://xfce.org/."
+msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "Ujistěte se, že jste při ukončení Vašeho sezení uložili současné sezení, aby toto nastavení bylo dostupné po příštím spuštění Xfce. Nepoužíváte-li Správce sezení Xfce (xfce4-session), upravte ručně soubor ~/.config/xfce4/xinitrc file. Podrobnosti naleznete v dokementaci poskytované na adrese http://xfce.org/."
 
 #: ../settings/appearance-settings.c:847
-msgid ""
-"To ensure that Xfce does not manage your desktop the next time you start "
-"Xfce, please be sure to save your session when logging out.  If you are not "
-"using the Xfce Session Manager (xfce4-session), you will need to manually "
-"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-"Abyste prostředí Xfce zabránili správě Vaší plochy po příštím spuštění, "
-"uložte při odhlašování Vaše sezení. Nepoužíváte-li správce sezení prostředí "
-"Xfce (xfce4-session), musíte ručně upravit soubor ~./.config/xfce4/xinitrc. "
-"Podrobnosti najdete v dokumentaci poskytované na adrese http://xfce.org/."
+msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "Abyste prostředí Xfce zabránili správě Vaší plochy po příštím spuštění, uložte při odhlašování Vaše sezení. Nepoužíváte-li správce sezení prostředí Xfce (xfce4-session), musíte ručně upravit soubor ~./.config/xfce4/xinitrc. Podrobnosti najdete v dokumentaci poskytované na adrese http://xfce.org/."
 
 #: ../settings/appearance-settings.c:855
 msgid "_Do not show this again"
@@ -772,13 +747,13 @@ msgstr "Obrazovka %d, Monitor %d"
 msgid "_Behavior"
 msgstr "_Chování"
 
-#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#: ../settings/backdrop-list-manager.c:160
+#: ../src/xfce-desktop-settings.c:74
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
+"Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
 "Nelze uložit soubor %s: %s\n"
 "\n"
@@ -876,11 +851,15 @@ msgstr "Volby při sestavování: \n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Hlavní nabídka:         %s\n"
 
-#: ../src/main.c:264 ../src/main.c:271 ../src/main.c:278
+#: ../src/main.c:264
+#: ../src/main.c:271
+#: ../src/main.c:278
 msgid "enabled"
 msgstr "povoleno"
 
-#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
+#: ../src/main.c:266
+#: ../src/main.c:273
+#: ../src/main.c:280
 msgid "disabled"
 msgstr "zakázáno"
 
@@ -905,18 +884,15 @@ msgstr "Možnosti jsou:\n"
 
 #: ../src/main.c:307
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"   --reload      Znovu načíst všechna nastavení, obnovit seznam obrázků\n"
+msgstr "   --reload      Znovu načíst všechna nastavení, obnovit seznam obrázků\n"
 
 #: ../src/main.c:308
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu        Otevřít nabídku (na aktuální pozici kurzoru myši)\n"
 
 #: ../src/main.c:309
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    --windowlist Otevřít seznam oken (na aktuální pozici kurzoru myši)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    --windowlist Otevřít seznam oken (na aktuální pozici kurzoru myši)\n"
 
 #: ../src/main.c:310
 msgid "    --quit        Cause xfdesktop to quit\n"
@@ -937,7 +913,8 @@ msgstr "<b>Pracovní plocha %d</b>"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Pracovní plocha %d</i>"
 
-#: ../src/windowlist.c:293 ../src/windowlist.c:296
+#: ../src/windowlist.c:293
+#: ../src/windowlist.c:296
 msgid "_Add Workspace"
 msgstr "_Přidat pracovní plochu"
 
@@ -951,16 +928,14 @@ msgstr "_Odebrat pracovní plochu %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Odebrat pracovní plochu '%s'"
 
-#: ../src/xfce-desktop.c:542
+#: ../src/xfce-desktop.c:573
 msgid "Desktop"
 msgstr "Plocha"
 
 #: ../src/xfdesktop-file-icon-manager.c:386
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop nebyl schopen vytvořit adresář \"%s\" pro uložení položek plochy:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop nebyl schopen vytvořit adresář \"%s\" pro uložení položek plochy:"
 
 #: ../src/xfdesktop-file-icon-manager.c:388
 #: ../src/xfdesktop-file-icon-manager.c:399
@@ -970,12 +945,8 @@ msgstr "Nepodařilo se vytvořit adresář"
 
 #: ../src/xfdesktop-file-icon-manager.c:397
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop nemůže použít \"%s\" pro uložení položek plochy, protože není "
-"adresářem."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop nemůže použít \"%s\" pro uložení položek plochy, protože není adresářem."
 
 #: ../src/xfdesktop-file-icon-manager.c:401
 msgid "Please delete or rename the file."
@@ -1018,7 +989,8 @@ msgstr "Smazat více souborů"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:823
-#: ../src/xfdesktop-file-icon-manager.c:1528 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1528
+#: ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:352
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -1027,23 +999,20 @@ msgstr "Nelze spustit \"%s\":"
 #: ../src/xfdesktop-file-icon-manager.c:825
 #: ../src/xfdesktop-file-icon-manager.c:865
 #: ../src/xfdesktop-file-icon-manager.c:1128
-#: ../src/xfdesktop-file-icon-manager.c:1530 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon-manager.c:1530
+#: ../src/xfdesktop-file-icon.c:144
 #: ../src/xfdesktop-file-utils.c:355
 msgid "Launch Error"
 msgstr "Chyba při spuštění"
 
 #: ../src/xfdesktop-file-icon-manager.c:866
-#, fuzzy
 msgid "The application chooser could not be opened."
-msgstr "Asociovanou aplikaci nelze nalézt nebo spustit."
+msgstr "Výběr aplikace nebylo možné otevřít."
 
-#: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Tato vlastnost vyžaduje přítomnost služby správce souborů (například "
-"aplikaci Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:867
+#: ../src/xfdesktop-file-utils.c:357
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Tato vlastnost vyžaduje přítomnost služby správce souborů (například aplikaci Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1027
 #, c-format
@@ -1061,12 +1030,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Nelze vytvořit soubor s názvem \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1130
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Nelze spustit \"exo-desktop-item-edit\". Tato aplikace je vyžadována pro "
-"vytváření a úpravu spouštěčů a odkazů na ploše."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Nelze spustit \"exo-desktop-item-edit\". Tato aplikace je vyžadována pro vytváření a úpravu spouštěčů a odkazů na ploše."
 
 #: ../src/xfdesktop-file-icon-manager.c:1163
 msgid "Create New Folder"
@@ -1245,7 +1210,8 @@ msgstr "Velikost:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:413
 #: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:487 ../src/xfdesktop-volume-icon.c:460
+#: ../src/xfdesktop-special-file-icon.c:487
+#: ../src/xfdesktop-volume-icon.c:460
 msgid "%s (%"
 msgstr "%s (%"
 
@@ -1304,7 +1270,8 @@ msgid "link to %s"
 msgstr "odkaz na %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:489
-#: ../src/xfdesktop-special-file-icon.c:490 ../src/xfdesktop-volume-icon.c:463
+#: ../src/xfdesktop-special-file-icon.c:490
+#: ../src/xfdesktop-volume-icon.c:463
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -1325,23 +1292,16 @@ msgid "Home"
 msgstr "Domů"
 
 #: ../src/xfdesktop-special-file-icon.c:508
-#, fuzzy
 msgid "Trash Error"
-msgstr "Chyba při spuštění"
+msgstr "Chyba koše"
 
 #: ../src/xfdesktop-special-file-icon.c:510
-#, fuzzy
 msgid "Unable to contact the Xfce Trash service."
-msgstr "Nelze otevřít koš."
+msgstr "Nelze otevřít službu Koš Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:511
-#, fuzzy
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Vyprázdnění koše vyžaduje správce souborů, který podporuje službu koš "
-"prostředí Xfce, například aplikaci Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Ujistěte se, že máte nainstalován správce souborů podporující službu Koš Xfce, například aplikaci Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
@@ -1420,31 +1380,22 @@ msgstr "Nastavení plochy prostředí Xfce 4"
 #~ msgstr ""
 #~ "Prohlížení obsahu koše vyžaduje správce souborů, který podporuje službu "
 #~ "koš prostředí Xfce, například aplikaci Thunar."
-
 #~ msgid "Unable to empty the trash."
 #~ msgstr "Nelze vysypat koš."
-
 #~ msgid "Unknown error."
 #~ msgstr "Neznámá chyba."
-
 #~ msgid " Bytes)"
 #~ msgstr "bajtů)"
-
 #~ msgid "_Copy Files"
 #~ msgstr "_Kopírovat soubory"
-
 #~ msgid "_Copy File"
 #~ msgstr "_Kopírovat soubor"
-
 #~ msgid "Cu_t Files"
 #~ msgstr "Vyj_mout soubory"
-
 #~ msgid "Cu_t File"
 #~ msgstr "Vyjmou_t soubor"
-
 #~ msgid "_Delete Files"
 #~ msgstr "_Smazat soubory"
-
 #~ msgid "_Delete File"
 #~ msgstr "_Smazat soubor"
 
@@ -1463,42 +1414,30 @@ msgstr "Nastavení plochy prostředí Xfce 4"
 #, fuzzy
 #~ msgid "Are sure you want to quit?"
 #~ msgstr "Opravdu chcete smazat \"%s\"?"
-
 #~ msgid "Core developer"
 #~ msgstr "Hlavní vývojář (patří mu ten největší dík)"
-
 #~ msgid "The command doesn't exist !"
 #~ msgstr "Příkaz neexistuje!"
-
 #~ msgid "All fields must be filled to add an item."
 #~ msgstr "Pro přidání položky musí být všechny pole vyplněné."
-
 #~ msgid "The 'Name' field is required."
 #~ msgstr "Pole Název musí být vyplněné."
-
 #~ msgid "The 'Source' field is required."
 #~ msgstr "Pole Zdroj musí být vyplněné."
-
 #~ msgid "Separators cannot be edited"
 #~ msgstr "Oddělovač nemůže být upravovaný"
-
 #~ msgid "File %s doesn't exist !"
 #~ msgstr "Soubor %s neexistuje !"
-
 #~ msgid "Do you want to move the item into the parent menu?"
 #~ msgstr "Chcete přesunout položku do základního menu ?"
-
 #~ msgid "Edit"
 #~ msgstr "Upravit "
-
 #~ msgid "Add an external menu..."
 #~ msgstr "Přidat externí menu"
-
 #~ msgid "Open an Xfce4 menu file"
 #~ msgstr "Otevřít souborové menu Xfce4 "
-
 #~ msgid "Save current menu"
 #~ msgstr "Uložit aktuální menu"
-
 #~ msgid "Delete the current entry"
 #~ msgstr "Odstranit aktuální položku"
+
