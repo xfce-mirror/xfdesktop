@@ -78,6 +78,7 @@ DISTCLEANFILES = \
 	intltool-update
 
 DISTCHECK_CONFIGURE_FLAGS = \
+	--enable-xsltproc \
 	--enable-xml2po
 
 AUTOMAKE_OPTIONS =							\
@@ -87,10 +88,6 @@ AUTOMAKE_OPTIONS =							\
 distclean-local:
 	-rm -rf *.cache *~
 
-rpm: dist
+rpm: distcheck
 	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
 	@rm -f $(PACKAGE)-$(VERSION).tar.gz
-
-html: Makefile
-	(cd docs && $(MAKE) $(AM_MAKEFLAGS) html)
-
