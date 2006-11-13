@@ -12,10 +12,12 @@ m4_define([xfce_minimum_version], [4.3.99.2])
 m4_define([exo_minimum_version], [0.3.1.12])
 m4_define([thunar_minimum_version], [0.5.0])
 m4_define([dbus_minimum_version], [0.34])
+m4_define([intltool_minimum_version], [0.31])
+m4_define([autoconf_minimum_version], [2.50])
 
 dnl init autoconf
-AC_INIT([xfdesktop], [xfdesktop_version], [bjt23@cornell.edu])
-AC_PREREQ([2.50])
+AC_INIT([xfdesktop], [xfdesktop_version], [http://bugzilla.xfce.org/])
+AC_PREREQ([autoconf_minimum_version])
 
 dnl init automake
 XFDESKTOP_VERSION=xfdesktop_version
@@ -33,7 +35,7 @@ dnl check for basic programs
 AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_LIBTOOL
-AC_PROG_INTLTOOL([0.31], [no-xml])
+AC_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 
 dnl check for standard header files
 AC_HEADER_STDC
