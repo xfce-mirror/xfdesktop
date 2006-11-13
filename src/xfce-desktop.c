@@ -414,8 +414,8 @@ handle_xinerama_stretch(XfceDesktop *desktop)
         g_object_unref(G_OBJECT(desktop->priv->backdrops[i]));
     
     backdrop0 = desktop->priv->backdrops[0];
-    g_free(desktop->priv->backdrops);
-    desktop->priv->backdrops = g_new(XfceBackdrop *, 1);
+    desktop->priv->backdrops = g_realloc(desktop->priv->backdrops,
+                                         sizeof(XfceBackdrop *));
     desktop->priv->backdrops[0] = backdrop0;
     desktop->priv->nbackdrops = 1;
     
@@ -436,8 +436,8 @@ handle_xinerama_unstretch(XfceDesktop *desktop)
         return;
     
     desktop->priv->nbackdrops = gdk_screen_get_n_monitors(desktop->priv->gscreen);
-    g_free(desktop->priv->backdrops);
-    desktop->priv->backdrops = g_new(XfceBackdrop *, desktop->priv->nbackdrops);
+    desktop->priv->backdrops = g_realloc(desktop->priv->backdrops,
+                                         sizeof(XfceBackdrop *) * desktop->priv->nbackdrops);
     
     desktop->priv->backdrops[0] = backdrop0;
     gdk_screen_get_monitor_geometry(desktop->priv->gscreen, 0, &rect);
@@ -616,6 +616,10 @@ xfce_desktop_realize(GtkWidget *widget)
     gdk_window_set_back_pixmap(GTK_WIDGET(desktop)->window,
                                desktop->priv->bg_pixmap, FALSE);
     
+    /* doing this here is a little wasteful, but easier */
+    if(desktop->priv->xinerama_stretch)
+        handle_xinerama_stretch(desktop);
+    
     g_signal_connect(G_OBJECT(desktop), "style-set",
                      G_CALLBACK(style_set_cb), NULL);
     
@@ -793,11 +797,8 @@ xfce_desktop_set_xinerama_stretch(XfceDesktop *desktop,
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
-    if(stretch == desktop->priv->xinerama_stretch
-       || desktop->priv->nbackdrops <= 1)
-    {
+    if(stretch == desktop->priv->xinerama_stretch)
         return;
-    }
     
     desktop->priv->xinerama_stretch = stretch;
     
