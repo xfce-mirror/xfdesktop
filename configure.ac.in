@@ -174,7 +174,7 @@ AC_DEFINE_UNQUOTED([FILE_MANAGER_FALLBACK], ["$ac_cv_file_manager_fallback"],
 dnl xsltproc support (to generate html docs)
 AC_ARG_ENABLE([xsltproc],
               [AC_HELP_STRING([--enable-xsltproc],
-                              [Use xsltrpoc to generate HTML documentation @<:@default=no@:>@])],
+                              [Use xsltproc to generate HTML documentation @<:@default=no@:>@])],
                               , [enable_xsltproc=no])
 if test "x$enable_xsltproc" = "xyes"; then
     AC_PATH_PROG([XSLTPROC], [xsltproc], [no])
