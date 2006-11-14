@@ -113,10 +113,10 @@ DISTCLEANFILES = \
 	xfdesktop-dbus-bindings-trash.h
 
 xfdesktop-dbus-bindings-filemanager.h: $(srcdir)/xfdesktop-dbus-bindings-filemanager.xml Makefile
-	dbus-binding-tool --mode=glib-client $(srcdir)/xfdesktop-dbus-bindings-filemanager.xml > xfdesktop-dbus-bindings-filemanager.h
+	dbus-binding-tool --mode=glib-client --prefix=org_xfce_FileManager $(srcdir)/xfdesktop-dbus-bindings-filemanager.xml > xfdesktop-dbus-bindings-filemanager.h
 
 xfdesktop-dbus-bindings-trash.h: $(srcdir)/xfdesktop-dbus-bindings-trash.xml Makefile
-	dbus-binding-tool --mode=glib-client $(srcdir)/xfdesktop-dbus-bindings-trash.xml > xfdesktop-dbus-bindings-trash.h
+	dbus-binding-tool --mode=glib-client --prefix=org_xfce_Trash $(srcdir)/xfdesktop-dbus-bindings-trash.xml > xfdesktop-dbus-bindings-trash.h
 
 endif
 endif
