@@ -8,16 +8,16 @@
 # Yuval Tanny <tanai@int.gov.il>, 2004, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.3.99.2\n"
+"Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 05:11-0800\n"
-"PO-Revision-Date: 2006-09-02 04:42+0300\n"
+"PO-Revision-Date: 2006-11-11 21:39+0200\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.2\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
@@ -85,9 +85,8 @@ msgstr "סמל:"
 #: ../menueditor/menueditor-add-dialog.c:330
 #: ../menueditor/menueditor-edit-dialog.c:191
 #: ../menueditor/menueditor-edit-dialog.c:586
-#, fuzzy
 msgid "No icon"
-msgstr "סמל ה_לחצן:"
+msgstr "ללא סמל"
 
 #: ../menueditor/menueditor-add-dialog.c:225
 #: ../menueditor/menueditor-add-dialog.c:226
@@ -487,7 +486,7 @@ msgstr "התעלם משינויים"
 #: ../menueditor/menueditor-main-window.c:2035
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
-msgstr ""
+msgstr "אין אפשרות פתוח את קובץ התפריט %s במצב כתיבה"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
@@ -665,7 +664,6 @@ msgid "Information"
 msgstr "מידע"
 
 #: ../settings/appearance-settings.c:845
-#, fuzzy
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -673,10 +671,11 @@ msgid ""
 "your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
-"כדי לוודא ש- Xfce אינו מנהל את שולחן העבודה שלך בפעם הבאה שיותחל Xfce, נא "
-"לוודא שמירת ההפעלה ביציאה. אם אינך עושה שימוש במנהלך ההפעלה של Xfce (xfce4-"
-"session) יהיה עליך לערוך ידנית את הקובץ  ~/.config/xfce4/xinitrc. פרטים "
-"זמינים בתיעוד הנמצא ב- http://xfce.org/."
+"כדי לוודא שהגדרות אלה יישומו בפעם הבאה שתפעיל את Xfce, "
+"אנא דאג לשמור את ההפעלה ביציאה. אם אינך עושה שימוש במנהלך ההפעלה של Xfce (xfce4-session),"
+"יהיה עליך לערוך ידנית את הקובץ "
+"~/.config/xfce4/xinitrc. "
+"פרטים נוספים זמינים בתיעוד הנמצא ב- http://xfce.org/."
 
 #: ../settings/appearance-settings.c:847
 msgid ""
@@ -911,10 +910,8 @@ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu        Pop up the menu (at the current mouse position)\n"
 
 #: ../src/main.c:309
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    --windowlist  Pop up the window list (at the current mouse position)\n"
 
 #: ../src/main.c:310
 msgid "    --quit        Cause xfdesktop to quit\n"
@@ -955,8 +952,7 @@ msgstr "שולחן עבודה"
 
 #: ../src/xfdesktop-file-icon-manager.c:386
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "לא ניתן ליצור את התיקייה \"%s\" בשביל לשמור שם את פריטי שולחן העבודה:"
 
 #: ../src/xfdesktop-file-icon-manager.c:388
@@ -1030,9 +1026,8 @@ msgid "Launch Error"
 msgstr "שגיאת הפעלה"
 
 #: ../src/xfdesktop-file-icon-manager.c:866
-#, fuzzy
 msgid "The application chooser could not be opened."
-msgstr "לא הייתה אפשרות למצוא או להפעיל את היישום המקושר."
+msgstr "לא ניתן לפתוח את בוחר היישומים."
 
 #: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
 msgid ""
@@ -1322,22 +1317,18 @@ msgid "Home"
 msgstr "בית"
 
 #: ../src/xfdesktop-special-file-icon.c:508
-#, fuzzy
 msgid "Trash Error"
-msgstr "שגיאת הפעלה"
+msgstr "שגיאת בסל מחזור"
 
 #: ../src/xfdesktop-special-file-icon.c:510
-#, fuzzy
 msgid "Unable to contact the Xfce Trash service."
-msgstr "אין אפשרות לפתוח את סל המחזור."
+msgstr "אין אפשרות ליצור קשר עם שירות סל המחזור של Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:511
-#, fuzzy
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
-msgstr ""
-"ריקון הפח דורש סייר קבצים אשר תומך בשרותי סל המחזור של Xfce, כמו Thunar."
+msgstr "יש לוודא שמותקן סייר קבצים אשר תומך בשרותי סל המחזור של Xfce, כמו Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
@@ -1410,15 +1401,3 @@ msgstr "הגדרות שולחן העבודה של Xfce 4"
 msgid "Xfce 4 Desktop Settings"
 msgstr "הגדרות שולחן העבודה Xfce 4"
 
-#~ msgid ""
-#~ "Viewing the contents of the trash requires a file manager that supports "
-#~ "the Xfce trash service, such as Thunar."
-#~ msgstr ""
-#~ "הצגת תוכן סל המחזור דורשת סייר קבצים אשר תומך בשרותי סל המחזור של Xfce, "
-#~ "כמו Thunar."
-
-#~ msgid "Unable to empty the trash."
-#~ msgstr "אין אפשרות לרוקן את הפח."
-
-#~ msgid "Unknown error."
-#~ msgstr "שגיאה לא ידועה."
