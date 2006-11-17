@@ -177,11 +177,11 @@ dmp_set_size(XfcePanelPlugin *plugin, gint wsize, DMPlugin *dmp)
         
         gtk_widget_size_request(dmp->label, &req);
         if(orientation == GTK_ORIENTATION_HORIZONTAL)
-            width += req.width + BORDER/2;
+            width += req.width + BORDER / 2;
         else {
             width = (width > req.width ? width : req.width
                      + GTK_WIDGET(dmp->label)->style->xthickness);
-            height += req.height + BORDER/2;
+            height += req.height + BORDER / 2;
         }
     }
     
@@ -213,9 +213,9 @@ dmp_set_orientation(XfcePanelPlugin *plugin,
             gtk_bin_get_child(GTK_BIN(dmp->button)));
     
     if(xfce_panel_plugin_get_orientation(plugin) == GTK_ORIENTATION_HORIZONTAL)
-        dmp->box = gtk_hbox_new(FALSE, BORDER/2);
+        dmp->box = gtk_hbox_new(FALSE, BORDER / 2);
     else
-        dmp->box = gtk_vbox_new(FALSE, BORDER/2);
+        dmp->box = gtk_vbox_new(FALSE, BORDER / 2);
     gtk_container_set_border_width(GTK_CONTAINER(dmp->box), 0);
     gtk_widget_show(dmp->box);
     gtk_container_add(GTK_CONTAINER(dmp->button), dmp->box);
@@ -755,28 +755,22 @@ dmp_options_dlg_response_cb(GtkDialog *dialog, gint response, DMPlugin *dmp)
 static void
 dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
 {
-    GtkWidget *dlg, *header,*topvbox, *vbox, *hbox, *frame, *frame_bin, *spacer;
+    GtkWidget *dlg, *topvbox, *vbox, *hbox, *frame, *frame_bin, *spacer;
     GtkWidget *label, *image, *filebutton, *chk, *radio, *entry, *btn;
     
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     
     xfce_panel_plugin_block_menu(plugin);
     
-    dlg = gtk_dialog_new_with_buttons(_("Edit Properties"),
+    dlg = xfce_titled_dialog_new_with_buttons(_("Xfce Menu"),
                         GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(plugin))),
                         GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_NO_SEPARATOR,
                         GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-    gtk_container_set_border_width(GTK_CONTAINER(dlg), BORDER);
+    gtk_container_set_border_width(GTK_CONTAINER(dlg), 0);
     g_signal_connect(G_OBJECT(dlg), "response",
                      G_CALLBACK(dmp_options_dlg_response_cb), dmp);
     
-    header = xfce_create_header(NULL, _("Xfce Menu"));
-    gtk_widget_set_size_request(GTK_BIN(header)->child, -1, 32);  /* iconless size hack */
-    gtk_container_set_border_width(GTK_CONTAINER(header), BORDER/2);
-    gtk_widget_show(header);
-    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), header, FALSE, TRUE, 0);
-    
-    topvbox = gtk_vbox_new(FALSE, BORDER/2);
+    topvbox = gtk_vbox_new(FALSE, BORDER / 2);
     gtk_widget_show(topvbox);
     gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), topvbox, TRUE, TRUE, 0);
     
@@ -784,12 +778,12 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(topvbox), frame, FALSE, FALSE, 0);
     
-    vbox = gtk_vbox_new(FALSE, BORDER/2);
+    vbox = gtk_vbox_new(FALSE, BORDER / 2);
     gtk_widget_show(vbox);
     gtk_container_add(GTK_CONTAINER(frame_bin), vbox);
     
-    hbox = gtk_hbox_new(FALSE, BORDER/2);
-    gtk_container_set_border_width(GTK_CONTAINER(hbox), BORDER/2);
+    hbox = gtk_hbox_new(FALSE, BORDER / 2);
+    gtk_container_set_border_width(GTK_CONTAINER(hbox), BORDER / 2);
     gtk_widget_show(hbox);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
     
@@ -817,12 +811,12 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(topvbox), frame, FALSE, FALSE, 0);
     
-    vbox = gtk_vbox_new(FALSE, BORDER/2);
+    vbox = gtk_vbox_new(FALSE, BORDER / 2);
     gtk_widget_show(vbox);
     gtk_container_add(GTK_CONTAINER(frame_bin), vbox);
     
     /* 2nd radio button's child hbox */
-    hbox = gtk_hbox_new(FALSE, BORDER/2);
+    hbox = gtk_hbox_new(FALSE, BORDER / 2);
     gtk_widget_show(hbox);
     
     radio = gtk_radio_button_new_with_mnemonic(NULL, _("Use default _desktop menu file"));
@@ -881,7 +875,7 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
     gtk_box_pack_start(GTK_BOX(vbox), spacer, FALSE, FALSE, 0);
     gtk_widget_set_size_request(spacer, -1, 4);
     
-    hbox = gtk_hbox_new(FALSE, BORDER/2);
+    hbox = gtk_hbox_new(FALSE, BORDER / 2);
     gtk_widget_show(hbox);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
     
@@ -895,11 +889,11 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(topvbox), frame, FALSE, FALSE, 0);
     
-    vbox = gtk_vbox_new(FALSE, BORDER/2);
+    vbox = gtk_vbox_new(FALSE, BORDER / 2);
     gtk_widget_show(vbox);
     gtk_container_add(GTK_CONTAINER(frame_bin), vbox);
     
-    hbox = gtk_hbox_new(FALSE, BORDER/2);
+    hbox = gtk_hbox_new(FALSE, BORDER / 2);
     gtk_widget_show(hbox);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
     
@@ -930,7 +924,7 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
     dmp->icons_chk = chk = gtk_check_button_new_with_mnemonic(_("Show _icons in menu"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), dmp->show_menu_icons);
     gtk_widget_show(chk);
-    gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, BORDER/2);
+    gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, BORDER / 2);
     g_signal_connect(G_OBJECT(chk), "toggled", G_CALLBACK(icon_chk_cb), dmp);
     
     gtk_widget_show(dlg);
@@ -1008,9 +1002,9 @@ dmp_new(XfcePanelPlugin *plugin)
     gtk_tooltips_set_tip(dmp->tooltip, dmp->button, dmp->button_title, NULL);
     
     if(xfce_panel_plugin_get_orientation(plugin) == GTK_ORIENTATION_HORIZONTAL)
-        dmp->box = gtk_hbox_new(FALSE, BORDER/2);
+        dmp->box = gtk_hbox_new(FALSE, BORDER / 2);
     else
-        dmp->box = gtk_vbox_new(FALSE, BORDER/2);
+        dmp->box = gtk_vbox_new(FALSE, BORDER / 2);
     gtk_container_set_border_width(GTK_CONTAINER(dmp->box), 0);
     gtk_widget_show(dmp->box);
     gtk_container_add(GTK_CONTAINER(dmp->button), dmp->box);
