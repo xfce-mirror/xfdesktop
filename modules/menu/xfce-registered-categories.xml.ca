@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xfce-registered-categories>
 
-<!-- Nota: Podeu copiar aquest fitxer a ~/.config/xfce4/desktop/ per adaptar-lo a les
+<!-- Note: Podeu copiar aquest fitxer a ~/.config/xfce4/desktop/ per adaptar-lo a les 
 	vostres necessitats -->
 
 <!--
-	Aquí es mostra com funciona aquest fitxer:
+	AquÃ­ es mostra com funciona aquest fitxer:
 
 	<xfce-registered-categories> - element arrel, requerit.
 
 	<category>
-		name: Requerit.  Correspon a una categoria oficial de l'especificació
-		  de menús de freedesktop.org.
-		replace: Opcional.  Nom que es mostrarà com el nom de menú pels
-		  elements de la categoria (útil per e.g.: traduccions).
-		icon: Icona a mostrar en aquesta categoria (actualment, per l'element
-		  del menú referenciar per l'atribut «replace» d'aquesta categoria).
-		toplevel: Opcional.  Marca la categoria com «permesa» per ser un menú
-		  de nivell superior.  Nota: si una categoria no és arrel, se la
-		  considerarà com de nivell superior independentment del valor
+		name: Requerit.  Correspon a una categoria oficial de l'especificaciÃ³
+		  de menÃºs de freedesktop.org.
+		replace: Opcional.  Nom que es mostrarÃ  com el nom de menÃº pels 
+		  elements de la categoria (Ãºtil per e.g.: traduccions).
+		icon: Icona a mostrar en aquesta categoria (actualment, per l'element 
+		  del menÃº referenciar per l'atribut Â«replaceÂ» d'aquesta categoria).
+		toplevel: Opcional.  Marca la categoria com Â«permesaÂ» per ser un menÃº 
+		  de nivell superior.  Nota: si una categoria no Ã©s arrel, se la 
+		  considerarÃ  com de nivell superior independentment del valor 
 		  d'aquesta categoria.  (Valor per defecte: false).
-		ignore: Opcional.  Aquesta categoria serà ignorada quanm s'organitzin
-		  els elements del menú.  (Valor per defecte: false).
+		ignore: Opcional.  Aquesta categoria serÃ  ignorada quanm s'organitzin 
+		  els elements del menÃº.  (Valor per defecte: false).
 		hide: Opcional.  Els elements que referenciin aquesta categoria no es
-		  mostraran a cap menú.  (Valor per defecte: false).
+		  mostraran a cap menÃº.  (Valor per defecte: false).
 
-	<subcategory> - subelement de <category>, especifica una relació de
-	  subcategoria
-		name: Requerit.  Correspon a una categoria oficial de les
-		  especificacions de menú de freedesktop.org.
+	<subcategory> - subelement de <category>, especifica una relaciÃ³ de 
+	  subcategoria 
+		name: Requerit.  Correspon a una categoria oficial de les 
+		  especificacions de menÃº de freedesktop.org.
 	  Example:
 	  <category name="Graphics">
 		  <subcategory name="RasterGraphics">
 	  </category>
-	  Noteu que encara que les subcategories estiguin definides, és posible
-	  co?lapsar-les totes en un menú d'un únic nivell si s'especifica
-	  «style="simple"» en l'etiqueta <include> del vostre fitxer «menu.xml».
+	  Noteu que encara que les subcategories estiguin definides, Ã©s posible 
+	  co?lapsar-les totes en un menÃº d'un Ãºnic nivell si s'especifica
+	  Â«style="simple"Â» en l'etiqueta <include> del vostre fitxer Â«menu.xmlÂ».
 -->
 
 <xfce-registered-categories>
@@ -54,13 +54,13 @@
 		<subcategory name="WebDevelopment" />
 	</category>
 	<category name="Building" replace="Mintatge" builtin-icon="DEVELOPMENT" />
-	<category name="Debugger" replace="Depuració" builtin-icon="DEVELOPMENT" />
+	<category name="Debugger" replace="DepuraciÃ³" builtin-icon="DEVELOPMENT" />
 	<category name="IDE" replace="Entorns" builtin-icon="DEVELOPMENT" />
 	<category name="GUIDesigner" replace="Disseny de GUI" builtin-icon="DEVELOPMENT" />
 	<category name="Profiling" replace="Ferramentes de perfils" builtin-icon="DEVELOPMENT" />
 	<category name="RevisionControl" replace="Control de versions" builtin-icon="DEVELOPMENT" />
-	<category name="Translation" replace="Traducció" builtin-icon="DEVELOPMENT" />
-	<category name="Office" toplevel="true" replace="Ofimàtica" builtin-icon="OFFICE">
+	<category name="Translation" replace="TraducciÃ³" builtin-icon="DEVELOPMENT" />
+	<category name="Office" toplevel="true" replace="OfimÃ tica" builtin-icon="OFFICE">
 		<subcategory name="Calendar" />
 		<subcategory name="ContactManagement" />
 		<subcategory name="Database" />
@@ -88,23 +88,23 @@
 	<category name="PDA" replace="PDA" builtin-icon="OFFICE" />
 	<category name="ProjectManagement" replace="Gestors de projectes" builtin-icon="OFFICE" />
 	<category name="Presentation" replace="Presentacions" builtin-icon="OFFICE" />
-	<category name="Spreadsheet" replace="Fulls de càlcul" builtin-icon="OFFICE" />
+	<category name="Spreadsheet" replace="Fulls de cÃ lcul" builtin-icon="OFFICE" />
 	<category name="WordProcessor" replace="Processadors de textos" builtin-icon="OFFICE" />
-	<category name="Graphics" toplevel="true" replace="Representació gràfica" builtin-icon="GRAPHICS">
+	<category name="Graphics" toplevel="true" replace="RepresentaciÃ³ grÃ fica" builtin-icon="GRAPHICS">
 		<subcategory name="2DGraphics" />
 		<subcategory name="3DGraphics" />
 		<subcategory name="Scanning" />
 		<subcategory name="Photograph" />
 		<subcategory name="Viewer" />
 	</category>
-	<category name="2DGraphics" replace="Gràfics 2D" builtin-icon="GRAPHICS">
+	<category name="2DGraphics" replace="GrÃ fics 2D" builtin-icon="GRAPHICS">
 		<subcategory name="VectorGraphics" />
 		<subcategory name="RasterGraphics" />
 	</category>
-	<category name="VectorGraphics" replace="Gràfics Vectorials" builtin-icon="GRAPHICS" />
-	<category name="RasterGraphics" replace="Maped de bits" builtin-icon="GRAPHICS" />
-	<category name="3DGraphics" replace="Gràfics 3D" builtin-icon="GRAPHICS" />
-	<category name="Scanning" replace="Escàners" builtin-icon="GRAPHICS">
+	<category name="VectorGraphics" replace="GrÃ fics Vectorials" builtin-icon="GRAPHICS" />
+	<category name="RasterGraphics" replace="Mapes de bits" builtin-icon="GRAPHICS" />
+	<category name="3DGraphics" replace="GrÃ fics 3D" builtin-icon="GRAPHICS" />
+	<category name="Scanning" replace="EscÃ ners" builtin-icon="GRAPHICS">
 		<subcategory name="OCR" />
 	</category>
 	<category name="OCR" replace="ROC" builtin-icon="GRAPHICS" />
@@ -120,7 +120,7 @@
 	</category>
 	<category name="DesktopSettings" replace="Ajustaments de l'escriptori" builtin-icon="SETTINGS" />
 	<category name="HardwareSettings" replace="Ajustaments del maquinari" builtin-icon="SETTINGS" />
-	<category name="PackageSettings" replace="Paràmetres dels paquets" builtin-icon="SETTINGS" />
+	<category name="PackageSettings" replace="ParÃ metres dels paquets" builtin-icon="SETTINGS" />
 	<category name="Network" toplevel="true" replace="Xarxes" builtin-icon="NETWORK">
 		<subcategory name="Email" />
 		<subcategory name="Dialup" />
@@ -136,17 +136,17 @@
 		<subcategory name="WebDevelopment" />
 	</category>
 	<category name="Dialup" replace="Marcatge directe" builtin-icon="NETWORK" />
-	<category name="InstantMessaging" replace="Missatgeria instantànea" builtin-icon="NETWORK" />
+	<category name="InstantMessaging" replace="Missatgeria instantÃ nea" builtin-icon="NETWORK" />
 	<category name="IRCClient" replace="Clients d'IRC" builtin-icon="NETWORK" />
-	<category name="FileTransfer" replace="Transferències de fitxers" builtin-icon="NETWORK" />
+	<category name="FileTransfer" replace="TransferÃ¨ncies de fitxers" builtin-icon="NETWORK" />
 	<category name="HamRadio" replace="Radioaficionats" builtin-icon="NETWORK" />
-	<category name="News" replace="Notícies" builtin-icon="NETWORK" />
-	<category name="P2P" replace="Comunicació punt a punt" builtin-icon="NETWORK" />
-	<category name="RemoteAccess" replace="Accès remot" builtin-icon="NETWORK" />
+	<category name="News" replace="NotÃ­cies" builtin-icon="NETWORK" />
+	<category name="P2P" replace="ComunicaciÃ³ punt a punt" builtin-icon="NETWORK" />
+	<category name="RemoteAccess" replace="AccÃ¨s remot" builtin-icon="NETWORK" />
 	<category name="Telephony" replace="Telefonia" builtin-icon="NETWORK" />
 	<category name="WebBrowser" replace="Exploradors web" builtin-icon="NETWORK" />
 	<category name="WebDevelopment" replace="Desenvolupament ded webs" builtin-icon="NETWORK" />
-	<category name="AudioVideo" replace="Multimèdia" toplevel="true" builtin-icon="MULTIMEDIA">
+	<category name="AudioVideo" replace="MultimÃ¨dia" toplevel="true" builtin-icon="MULTIMEDIA">
 		<subcategory name="Database" />
 		<subcategory name="HamRadio" />
 		<subcategory name="Audio" />
@@ -156,7 +156,7 @@
 		<subcategory name="Recorder" />
 		<subcategory name="DiscBurning" />
 	</category>
-	<category name="Audio" replace="Àudio" builtin-icon="MULTIMEDIA">
+	<category name="Audio" replace="Ã€udio" builtin-icon="MULTIMEDIA">
 		<subcategory name="Midi" />
 		<subcategory name="Mixer" />
 		<subcategory name="Sequencer" />
@@ -167,20 +167,20 @@
 	</category>
 	<category name="Midi" replace="MIDI" builtin-icon="MULTIMEDIA" />
 	<category name="Mixer" replace="Mescladors" builtin-icon="MULTIMEDIA" />
-	<category name="Sequencer" replace="Seqüenciadors" builtin-icon="MULTIMEDIA" />
+	<category name="Sequencer" replace="SeqÃ¼enciadors" builtin-icon="MULTIMEDIA" />
 	<category name="Tuner" replace="Sintonitzados" builtin-icon="MULTIMEDIA" />
-	<category name="Video" replace="Vídeo" builtin-icon="MULTIMEDIA">
+	<category name="Video" replace="VÃ­deo" builtin-icon="MULTIMEDIA">
 		<subcategory name="TV" />
 		<subcategory name="AudioVideoEditing" />
 		<subcategory name="Player" />
 		<subcategory name="Recorder" />
 		<subcategory name="Music" />
 	</category>
-	<category name="TV" replace="Televisió" builtin-icon="MULTIMEDIA" />
-	<category name="AudioVideoEditing" replace="Edició" builtin-icon="MULTIMEDIA" />
-	<category name="Player" replace="Reproducció" builtin-icon="MULTIMEDIA" />
+	<category name="TV" replace="TelevisiÃ³" builtin-icon="MULTIMEDIA" />
+	<category name="AudioVideoEditing" replace="EdiciÃ³" builtin-icon="MULTIMEDIA" />
+	<category name="Player" replace="ReproducciÃ³" builtin-icon="MULTIMEDIA" />
 	<category name="Recorder" replace="Enregistrament" builtin-icon="MULTIMEDIA" />
-	<category name="DiscBurning" replace="Grabació de discs" builtin-icon="MULTIMEDIA" />
+	<category name="DiscBurning" replace="GrabaciÃ³ de discs" builtin-icon="MULTIMEDIA" />
 	<category name="Game" toplevel="true" replace="Jocs" builtin-icon="GAME">
 		<subcategory name="ActionGame" />
 		<subcategory name="AdventureGame" />
@@ -195,18 +195,18 @@
 		<subcategory name="SportsGame" />
 		<subcategory name="StrategyGame" />
 	</category>
-	<category name="ActionGame" replace="Jocs d'acció" builtin-icon="GAME" />
+	<category name="ActionGame" replace="Jocs d'acciÃ³" builtin-icon="GAME" />
 	<category name="AdventureGame" replace="Jocs d'aventures" builtin-icon="GAME" />
-	<category name="ArcadeGame" replace="Jocs electrònics" builtin-icon="GAME" />
+	<category name="ArcadeGame" replace="Jocs electrÃ²nics" builtin-icon="GAME" />
 	<category name="BoardGame" replace="Jocs de taulell" builtin-icon="GAME" />
 	<category name="BlocksGame" replace="Trenclacosques" builtin-icon="GAME" />
 	<category name="CardGame" replace="Jocs de cartes" builtin-icon="GAME" />
 	<category name="KidsGame" replace="Jocs per nens" builtin-icon="GAME" />
-	<category name="LogicGame" replace="Jocs de lògica" builtin-icon="GAME" />
+	<category name="LogicGame" replace="Jocs de lÃ²gica" builtin-icon="GAME" />
 	<category name="RolePlaying" replace="Jocs de rol" builtin-icon="GAME" />
 	<category name="Simulation" replace="Simuladors" builtin-icon="GAME" />
 	<category name="SportsGame" replace="Jocs d'esports" builtin-icon="GAME" />
-	<category name="StrategyGame" replace="Jocs d'estratègia" builtin-icon="GAME" />
+	<category name="StrategyGame" replace="Jocs d'estratÃ¨gia" builtin-icon="GAME" />
 	<category name="Education" toplevel="true">
 		<subcategory name="Art" />
 		<subcategory name="Construction" />
@@ -215,10 +215,10 @@
 		<subcategory name="Teaching" />
 	</category>
 	<category name="Art" replace="Art" />
-	<category name="Construction" replace="Construcció" />
-	<category name="Music" replace="Música" />
+	<category name="Construction" replace="ConstrucciÃ³" />
+	<category name="Music" replace="MÃºsica" />
 	<category name="Languages" replace="Llenguatge" />
-	<category name="Science" toplevel="true" replace="Ciència" >
+	<category name="Science" toplevel="true" replace="CiÃ¨ncia" >
 		<subcategory name="Astronomy" />
 		<subcategory name="Biology" />
 		<subcategory name="Chemistry" />
@@ -229,22 +229,22 @@
 	</category>
 	<category name="Astronomy" replace="Astronomia" />
 	<category name="Biology" replace="Biologia" />
-	<category name="Chemistry" replace="Química" />
+	<category name="Chemistry" replace="QuÃ­mica" />
 	<category name="Geology" replace="Geologia" />
-	<category name="Math" replace="Matemàtiques" />
+	<category name="Math" replace="MatemÃ tiques" />
 	<category name="MedicalSoftware" replace="Medicina" />
-	<category name="Physics" replace="Física" />
+	<category name="Physics" replace="FÃ­sica" />
 	<category name="Teaching" replace="Ensenyament" />
 	<category name="Amusement" replace="Entreteniment" builtin-icon="GAME" />
 	<category name="Applet" replace="Miniaplicacions" />
-	<category name="Archiving" replace="Arxivació" />
-	<category name="Electronics" replace="Electrònica" />
-	<category name="Emulator" toplevel="true" replace="Emulació" builtin-icon="SYSTEM" />
+	<category name="Archiving" replace="ArxivaciÃ³" />
+	<category name="Electronics" replace="ElectrÃ²nica" />
+	<category name="Emulator" toplevel="true" replace="EmulaciÃ³" builtin-icon="SYSTEM" />
 	<category name="Engineering" />
-	<category name="FileManager" replace="Gestió de fitxers" />
+	<category name="FileManager" replace="GestiÃ³ de fitxers" />
 	<category name="Shell" replace="Interprets d'ordres" />
-	<category name="Screensaver" replace="Protecció de la pantalla" />
-	<category name="TerminalEmulator" replace="Emulació de terminals" />
+	<category name="Screensaver" replace="ProtecciÃ³ de la pantalla" />
+	<category name="TerminalEmulator" replace="EmulaciÃ³ de terminals" />
 	<category name="TrayIcon" replace="Safata d'icones" />
 	<category name="System" toplevel="true" replace="Aplicacions del sistema" builtin-icon="SYSTEM">
 		<subcategory name="FileSystem" />
@@ -255,7 +255,7 @@
 		<subcategory name="Shell" />
 	</category>
 	<category name="Filesystem" replace="Sistema de fitxers" builtin-icon="SYSTEM" />
-	<category name="Monitor" replace="Monitorització" builtin-icon="SYSTEM" />
+	<category name="Monitor" replace="MonitoritzaciÃ³" builtin-icon="SYSTEM" />
 	<category name="Security" replace="Seguretat" builtin-icon="SYSTEM" />
 	<category name="Utility" toplevel="true" replace="Ferramentes" builtin-icon="ACCESSORIES">
 		<subcategory name="Accessibility" />
@@ -270,7 +270,7 @@
 	<category name="Accessibility" replace="Accessibilitat" builtin-icon="UTILITY" />
 	<category name="Calculator" replace="Calculadores" builtin-icon="ACCESSORIES" />
 	<category name="Clock" replace="Rellotges" builtin-icon="ACCESSORIES" />
-	<category name="TextEditor" replace="Edició de texts" builtin-icon="ACCESSORIES" />
+	<category name="TextEditor" replace="EdiciÃ³ de texts" builtin-icon="ACCESSORIES" />
 	<category name="KDE" toplevel="true" ignore="true">
 		<subcategory name="Development" />
 		<subcategory name="Office" />
@@ -336,4 +336,3 @@
 	<category name="WineX" replace="Wine" toplevel="true" builtin-icon="WINE" />
 	<category name="CrossOver" replace="Wine" toplevel="true" builtin-icon="WINE" />
 </xfce-registered-categories>
-
