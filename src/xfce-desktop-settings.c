@@ -99,6 +99,9 @@ count_elements(const gchar **list)
 {
     gint i, c = 0;
     
+    if(!list)
+        return 0;
+    
     for(i = 0; list[i]; i++) {
         if(*list[i] && *list[i] != '\n')
             c++;
