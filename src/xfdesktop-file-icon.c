@@ -167,9 +167,11 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon)
 G_CONST_RETURN ThunarVfsInfo *
 xfdesktop_file_icon_peek_info(XfdesktopFileIcon *icon)
 {
-    XfdesktopFileIconClass *klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
+    XfdesktopFileIconClass *klass;
     
     g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), NULL);
+    
+    klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
     
     if(klass->peek_info)
        return klass->peek_info(icon);
@@ -181,9 +183,11 @@ void
 xfdesktop_file_icon_update_info(XfdesktopFileIcon *icon,
                                 ThunarVfsInfo *info)
 {
-    XfdesktopFileIconClass *klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
+    XfdesktopFileIconClass *klass;
     
     g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
+    
+    klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
     
     if(klass->update_info)
        klass->update_info(icon, info);
@@ -192,9 +196,11 @@ xfdesktop_file_icon_update_info(XfdesktopFileIcon *icon,
 gboolean
 xfdesktop_file_icon_can_rename_file(XfdesktopFileIcon *icon)
 {
-    XfdesktopFileIconClass *klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
+    XfdesktopFileIconClass *klass;
     
     g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), FALSE);
+    
+    klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
     
     if(klass->can_rename_file)
        return klass->can_rename_file(icon);
@@ -206,10 +212,12 @@ gboolean
 xfdesktop_file_icon_rename_file(XfdesktopFileIcon *icon,
                                 const gchar *new_name)
 {
-    XfdesktopFileIconClass *klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
+    XfdesktopFileIconClass *klass;
     
     g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), FALSE);
     g_return_val_if_fail(new_name && *new_name, FALSE);
+    
+    klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
     
     if(klass->rename_file)
        return klass->rename_file(icon, new_name);
@@ -220,9 +228,11 @@ xfdesktop_file_icon_rename_file(XfdesktopFileIcon *icon,
 gboolean
 xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon)
 {
-    XfdesktopFileIconClass *klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
+    XfdesktopFileIconClass *klass;
     
     g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), FALSE);
+    
+    klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
     
     if(klass->can_delete_file)
        return klass->can_delete_file(icon);
@@ -233,9 +243,11 @@ xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon)
 gboolean
 xfdesktop_file_icon_delete_file(XfdesktopFileIcon *icon)
 {
-    XfdesktopFileIconClass *klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
+    XfdesktopFileIconClass *klass;
     
     g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), FALSE);
+    
+    klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
     
     if(klass->delete_file)
        return klass->delete_file(icon);
