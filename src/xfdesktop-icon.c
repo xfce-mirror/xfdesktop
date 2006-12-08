@@ -214,9 +214,10 @@ GdkPixbuf *
 xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
                            gint size)
 {
-    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    XfdesktopIconClass *klass;
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    klass = XFDESKTOP_ICON_GET_CLASS(icon);
     g_return_val_if_fail(klass->peek_pixbuf, NULL);
     
     return klass->peek_pixbuf(icon, size);
@@ -226,9 +227,10 @@ xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
 G_CONST_RETURN gchar *
 xfdesktop_icon_peek_label(XfdesktopIcon *icon)
 {
-    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    XfdesktopIconClass *klass;
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    klass = XFDESKTOP_ICON_GET_CLASS(icon);
     g_return_val_if_fail(klass->peek_label, NULL);
     
     return klass->peek_label(icon);
@@ -238,9 +240,12 @@ xfdesktop_icon_peek_label(XfdesktopIcon *icon)
 GdkDragAction
 xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 {
-    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    XfdesktopIconClass *klass;
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    
+    klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    
     if(!klass->get_allowed_drag_actions)
         return 0;
     
@@ -251,9 +256,12 @@ xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 GdkDragAction
 xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
 {
-    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    XfdesktopIconClass *klass;
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    
+    klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    
     if(!klass->get_allowed_drop_actions)
         return 0;
     
@@ -266,9 +274,10 @@ xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
                             XfdesktopIcon *src_icon,
                             GdkDragAction action)
 {
-    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    XfdesktopIconClass *klass;
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    klass = XFDESKTOP_ICON_GET_CLASS(icon);    
     g_return_val_if_fail(klass->do_drop_dest, FALSE);
     
     return klass->do_drop_dest(icon, src_icon, action);
@@ -278,9 +287,11 @@ xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
 G_CONST_RETURN gchar *
 xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon)
 {
-    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    XfdesktopIconClass *klass;
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    
+    klass = XFDESKTOP_ICON_GET_CLASS(icon);
     
     if(!klass->peek_tooltip)
         return NULL;
@@ -292,9 +303,11 @@ xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon)
 GtkWidget *
 xfdesktop_icon_get_popup_menu(XfdesktopIcon *icon)
 {
-    XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    XfdesktopIconClass *klass;
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    
+    klass = XFDESKTOP_ICON_GET_CLASS(icon);
     
     if(!klass->get_popup_menu)
         return NULL;
