@@ -431,9 +431,8 @@ xfce_desktop_settings_changed(McsClient *client,
     g_free(sname);
     
     gscreen = gtk_widget_get_screen(GTK_WIDGET(desktop));
-    if(screen == -1 || monitor == -1
-            || screen != gdk_screen_get_number(gscreen)
-            || monitor >= gdk_screen_get_n_monitors(gscreen))
+    if(monitor < 0 || screen != gdk_screen_get_number(gscreen)
+       || monitor >= gdk_screen_get_n_monitors(gscreen))
     {
         /* not ours */
         return FALSE;
