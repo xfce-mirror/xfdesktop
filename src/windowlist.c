@@ -199,6 +199,8 @@ windowlist_create(GdkScreen *gscreen)
     gint w, h;
     PangoFontDescription *italic_font_desc = pango_font_description_from_string("italic");
     
+    g_return_val_if_fail(GDK_IS_SCREEN(gscreen), NULL);
+    
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
     
     menu = gtk_menu_new();
@@ -340,18 +342,23 @@ popup_windowlist(GdkScreen *gscreen, gint button, guint32 time)
     if(!show_windowlist)
         return;
     
+    g_return_if_fail(GDK_IS_SCREEN(gscreen));
+    
     root = gdk_screen_get_root_window(gscreen);
-    if (xfdesktop_popup_grab_available(root, time)) {
+    if(xfdesktop_popup_grab_available(root, time)) {
         GtkWidget *windowlist;
 
         windowlist = windowlist_create(gscreen);
-        gtk_menu_set_screen(GTK_MENU(windowlist), gscreen);
-        g_signal_connect_swapped(G_OBJECT(windowlist), "deactivate",
-                G_CALLBACK(g_idle_add), (gpointer)windowlist_deactivate_idled);
-        gtk_menu_popup(GTK_MENU(windowlist), NULL, NULL, NULL, NULL, button, time);
-    }
-    else
-        g_critical("Unable to get keyboard/mouse grab. Unable to popup windowlist");
+        if(windowlist) {
+            gtk_menu_set_screen(GTK_MENU(windowlist), gscreen);
+            g_signal_connect_swapped(G_OBJECT(windowlist), "deactivate",
+                                     G_CALLBACK(g_idle_add),
+                                     (gpointer)windowlist_deactivate_idled);
+            gtk_menu_popup(GTK_MENU(windowlist), NULL, NULL, NULL, NULL,
+                           button, time);
+        }
+    } else
+        g_critical("Unable to get keyboard/mouse grab. Unable to pop up windowlist");
 }
 
 void
