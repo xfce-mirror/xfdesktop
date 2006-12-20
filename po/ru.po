@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.3.99.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 05:11-0800\n"
-"PO-Revision-Date: 2006-10-02 22:55+0200\n"
+"PO-Revision-Date: 2006-09-24 21:00+0600\n"
 "Last-Translator: Andrey Fedoseev <andrey.fedoseev@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -85,16 +85,15 @@ msgstr "Значок:"
 #: ../menueditor/menueditor-add-dialog.c:330
 #: ../menueditor/menueditor-edit-dialog.c:191
 #: ../menueditor/menueditor-edit-dialog.c:586
-#, fuzzy
 msgid "No icon"
-msgstr "З_начок:"
+msgstr "Нет значка"
 
 #: ../menueditor/menueditor-add-dialog.c:225
 #: ../menueditor/menueditor-add-dialog.c:226
 #: ../menueditor/menueditor-edit-dialog.c:203
 #: ../menueditor/menueditor-edit-dialog.c:204
 msgid "Themed icon:"
-msgstr ""
+msgstr "Значок из темы:"
 
 #. allocate the chooser dialog
 #: ../menueditor/menueditor-add-dialog.c:252
@@ -667,7 +666,6 @@ msgid "Information"
 msgstr "Информация"
 
 #: ../settings/appearance-settings.c:845
-#, fuzzy
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -702,7 +700,7 @@ msgstr "Больше _не показывать"
 #. the dialog
 #: ../settings/appearance-settings.c:921
 msgid "Desktop Preferences"
-msgstr "Настройка раюочего стола"
+msgstr "Настройка рабочего стола"
 
 #: ../settings/appearance-settings.c:938
 msgid "Allow _Xfce to manage the desktop"
@@ -1035,9 +1033,8 @@ msgid "Launch Error"
 msgstr "Ошибка запуска"
 
 #: ../src/xfdesktop-file-icon-manager.c:866
-#, fuzzy
 msgid "The application chooser could not be opened."
-msgstr "Связанное с этим файлом приложение не может быть найдено или запущено."
+msgstr "Не удаётся открыть диалог выбора приложений."
 
 #: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
 msgid ""
@@ -1412,6 +1409,3 @@ msgstr "Настройки программы управления рабочи�
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Настройки рабочего стола Xfce 4"
-
-#~ msgid "Unknown error."
-#~ msgstr "Неизвестная ошибка."
