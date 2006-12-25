@@ -1,0 +1,1386 @@
+# translation of xfdesktop.po to Macedonian
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Tome Boshevski <tome@lugola.net>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-11-04 05:11-0800\n"
+"PO-Revision-Date: 2006-12-24 02:49+0100\n"
+"Last-Translator: Tome Boshevski <tome@lugola.net>\n"
+"Language-Team: Macedonian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.2\n"
+
+#: ../menueditor/menueditor-add-dialog.c:129
+msgid "Add menu entry"
+msgstr "Додади запис во менито"
+
+#. Type
+#: ../menueditor/menueditor-add-dialog.c:142
+#: ../menueditor/menueditor-add-dialog.c:143
+#: ../menueditor/menueditor-add-external-dialog.c:113
+#: ../menueditor/menueditor-add-external-dialog.c:114
+msgid "Type:"
+msgstr "Тип:"
+
+#: ../menueditor/menueditor-add-dialog.c:151
+msgid "Title"
+msgstr "Наслов"
+
+#: ../menueditor/menueditor-add-dialog.c:152
+msgid "Submenu"
+msgstr "Поднаслов"
+
+#: ../menueditor/menueditor-add-dialog.c:153
+msgid "Launcher"
+msgstr "Пуштач"
+
+#: ../menueditor/menueditor-add-dialog.c:154
+msgid "Separator"
+msgstr "Разделник"
+
+#: ../menueditor/menueditor-add-dialog.c:155
+msgid "Quit"
+msgstr "Излез"
+
+#. Name
+#: ../menueditor/menueditor-add-dialog.c:162
+#: ../menueditor/menueditor-add-dialog.c:163
+#: ../menueditor/menueditor-edit-dialog.c:140
+#: ../menueditor/menueditor-edit-dialog.c:141
+#: ../src/xfdesktop-file-properties-dialog.c:188
+msgid "Name:"
+msgstr "Име:"
+
+#. Command
+#: ../menueditor/menueditor-add-dialog.c:176
+#: ../menueditor/menueditor-add-dialog.c:177
+#: ../menueditor/menueditor-edit-dialog.c:154
+#: ../menueditor/menueditor-edit-dialog.c:155
+msgid "Command:"
+msgstr "Наредба:"
+
+#. Icon chooser
+#: ../menueditor/menueditor-add-dialog.c:201
+#: ../menueditor/menueditor-add-dialog.c:202
+#: ../menueditor/menueditor-add-dialog.c:244
+#: ../menueditor/menueditor-add-dialog.c:245
+#: ../menueditor/menueditor-edit-dialog.c:179
+#: ../menueditor/menueditor-edit-dialog.c:180
+#: ../menueditor/menueditor-edit-dialog.c:222
+#: ../menueditor/menueditor-edit-dialog.c:223
+msgid "Icon:"
+msgstr "Икона:"
+
+#. setup a label to tell that no icon was selected
+#: ../menueditor/menueditor-add-dialog.c:213
+#: ../menueditor/menueditor-add-dialog.c:330
+#: ../menueditor/menueditor-edit-dialog.c:191
+#: ../menueditor/menueditor-edit-dialog.c:586
+msgid "No icon"
+msgstr "Без икона"
+
+#: ../menueditor/menueditor-add-dialog.c:225
+#: ../menueditor/menueditor-add-dialog.c:226
+#: ../menueditor/menueditor-edit-dialog.c:203
+#: ../menueditor/menueditor-edit-dialog.c:204
+msgid "Themed icon:"
+msgstr "Икона со тема:"
+
+#. allocate the chooser dialog
+#: ../menueditor/menueditor-add-dialog.c:252
+#: ../menueditor/menueditor-add-dialog.c:347
+#: ../menueditor/menueditor-edit-dialog.c:230
+#: ../menueditor/menueditor-edit-dialog.c:384
+msgid "Select icon"
+msgstr "Избери икона"
+
+#: ../menueditor/menueditor-add-dialog.c:257
+#: ../menueditor/menueditor-add-dialog.c:437
+#: ../menueditor/menueditor-add-external-dialog.c:142
+#: ../menueditor/menueditor-edit-dialog.c:235
+#: ../menueditor/menueditor-edit-dialog.c:296
+#: ../menueditor/menueditor-edit-external-dialog.c:122
+#: ../panel-plugin/desktop-menu-plugin.c:600
+#: ../settings/appearance-settings.c:532
+#: ../settings/backdrop-list-manager.c:435
+#: ../settings/backdrop-list-manager.c:536
+msgid "All Files"
+msgstr "Сите датотеки"
+
+#: ../menueditor/menueditor-add-dialog.c:261
+#: ../menueditor/menueditor-edit-dialog.c:239
+#: ../panel-plugin/desktop-menu-plugin.c:606
+#: ../settings/appearance-settings.c:536
+#: ../settings/backdrop-list-manager.c:439
+msgid "Image Files"
+msgstr "Датотеки со слики"
+
+#. Start Notify check button
+#: ../menueditor/menueditor-add-dialog.c:283
+#: ../menueditor/menueditor-edit-dialog.c:261
+msgid "Use startup _notification"
+msgstr "Користи известување при _подигнување"
+
+#. Run in terminal check button
+#: ../menueditor/menueditor-add-dialog.c:288
+#: ../menueditor/menueditor-edit-dialog.c:266
+msgid "Run in _terminal"
+msgstr "Изврши во терминал"
+
+#: ../menueditor/menueditor-add-dialog.c:427
+#: ../menueditor/menueditor-edit-dialog.c:286
+#: ../menueditor/menueditor-main-window.c:450
+msgid "Select command"
+msgstr "Избери наредба"
+
+#: ../menueditor/menueditor-add-dialog.c:442
+#: ../menueditor/menueditor-edit-dialog.c:301
+msgid "Executable Files"
+msgstr "Извршни датотеки"
+
+#: ../menueditor/menueditor-add-dialog.c:457
+#: ../menueditor/menueditor-edit-dialog.c:316
+msgid "Perl Scripts"
+msgstr "Perl скрипти"
+
+#: ../menueditor/menueditor-add-dialog.c:463
+#: ../menueditor/menueditor-edit-dialog.c:322
+msgid "Python Scripts"
+msgstr "Python скрипти"
+
+#: ../menueditor/menueditor-add-dialog.c:469
+#: ../menueditor/menueditor-edit-dialog.c:328
+msgid "Ruby Scripts"
+msgstr "Ruby скрипти"
+
+#: ../menueditor/menueditor-add-dialog.c:475
+#: ../menueditor/menueditor-edit-dialog.c:334
+msgid "Shell Scripts"
+msgstr "Shell скрипти"
+
+#: ../menueditor/menueditor-add-external-dialog.c:100
+msgid "Add external menu entry"
+msgstr "Додади надворешен запис во мени"
+
+#: ../menueditor/menueditor-add-external-dialog.c:122
+msgid "File"
+msgstr "Датотека"
+
+#: ../menueditor/menueditor-add-external-dialog.c:123
+msgid "System"
+msgstr "Систем"
+
+#. Source
+#: ../menueditor/menueditor-add-external-dialog.c:129
+#: ../menueditor/menueditor-add-external-dialog.c:130
+#: ../menueditor/menueditor-edit-external-dialog.c:109
+#: ../menueditor/menueditor-edit-external-dialog.c:110
+msgid "Source:"
+msgstr "Извор"
+
+#: ../menueditor/menueditor-add-external-dialog.c:137
+#: ../menueditor/menueditor-edit-external-dialog.c:117
+msgid "Select external menu"
+msgstr "Избери надворешно мени"
+
+#: ../menueditor/menueditor-add-external-dialog.c:146
+#: ../menueditor/menueditor-edit-external-dialog.c:126
+#: ../panel-plugin/desktop-menu-plugin.c:614
+msgid "Menu Files"
+msgstr "Датотеки во менито"
+
+#. Style
+#: ../menueditor/menueditor-add-external-dialog.c:155
+#: ../menueditor/menueditor-add-external-dialog.c:156
+#: ../menueditor/menueditor-edit-external-dialog.c:135
+#: ../menueditor/menueditor-edit-external-dialog.c:136
+msgid "Style:"
+msgstr "Стил:"
+
+#: ../menueditor/menueditor-add-external-dialog.c:165
+#: ../menueditor/menueditor-edit-external-dialog.c:145
+msgid "Simple"
+msgstr "Едноставен"
+
+#: ../menueditor/menueditor-add-external-dialog.c:166
+#: ../menueditor/menueditor-edit-external-dialog.c:146
+msgid "Multilevel"
+msgstr "Со повеќе нивоа"
+
+#. Unique check button
+#: ../menueditor/menueditor-add-external-dialog.c:171
+#: ../menueditor/menueditor-edit-external-dialog.c:151
+msgid "_Unique entries only"
+msgstr "_Само единствени записи"
+
+#: ../menueditor/menueditor-edit-dialog.c:127
+msgid "Edit menu entry"
+msgstr "Уреди запис во мени"
+
+#: ../menueditor/menueditor-edit-external-dialog.c:96
+#, fuzzy
+msgid "Edit external menu entry"
+msgstr "Уреди надворешен запис во мени"
+
+#: ../menueditor/menueditor-main.c:43
+msgid "Xfce4-MenuEditor"
+msgstr "Xfce4 уредувач за мени"
+
+#: ../menueditor/menueditor-main-window.c:140
+msgid "_File"
+msgstr "_Датотека"
+
+#: ../menueditor/menueditor-main-window.c:141
+msgid "_New"
+msgstr "_Нова"
+
+#: ../menueditor/menueditor-main-window.c:141
+msgid "Create a new empty menu"
+msgstr "Креирај ново празно мени"
+
+#: ../menueditor/menueditor-main-window.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1602
+#: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
+msgid "_Open"
+msgstr "_Отвори"
+
+#: ../menueditor/menueditor-main-window.c:142
+msgid "Open existing menu"
+msgstr "Отвори постоечко мени"
+
+#: ../menueditor/menueditor-main-window.c:143
+msgid "Open _default menu"
+msgstr "Отвори _стандардно мени"
+
+#: ../menueditor/menueditor-main-window.c:143
+msgid "Open default menu"
+msgstr "Отвори стандардно мени"
+
+#: ../menueditor/menueditor-main-window.c:144
+msgid "_Save"
+msgstr "_Зачувај"
+
+#: ../menueditor/menueditor-main-window.c:144
+msgid "Save modifications"
+msgstr "Зачувај ги измените"
+
+#: ../menueditor/menueditor-main-window.c:145
+msgid "Save _as..."
+msgstr "Зачувај _како..."
+
+#: ../menueditor/menueditor-main-window.c:145
+msgid "Save menu under a given name"
+msgstr "Зачувај го менито под дадено име"
+
+#: ../menueditor/menueditor-main-window.c:146
+msgid "_Close"
+msgstr "_Затвори"
+
+#: ../menueditor/menueditor-main-window.c:146
+msgid "Close menu"
+msgstr "Затвори мени"
+
+#: ../menueditor/menueditor-main-window.c:147
+msgid "_Quit"
+msgstr "_Излези"
+
+#: ../menueditor/menueditor-main-window.c:147
+msgid "Quit Xfce4-Menueditor"
+msgstr "Излези од уредувач за мени на Xfce4"
+
+#: ../menueditor/menueditor-main-window.c:149
+msgid "_Edit"
+msgstr "_Уреди"
+
+#: ../menueditor/menueditor-main-window.c:150
+msgid "_Edit entry"
+msgstr "_Уреди запис"
+
+#: ../menueditor/menueditor-main-window.c:150
+msgid "Edit selected entry"
+msgstr "Уреди го избраниот запис"
+
+#: ../menueditor/menueditor-main-window.c:151
+msgid "_Add entry"
+msgstr "_Додај запис"
+
+#: ../menueditor/menueditor-main-window.c:151
+msgid "Add a new entry in the menu"
+msgstr "Додај нов запис во менито"
+
+#: ../menueditor/menueditor-main-window.c:152
+msgid "Add _external"
+msgstr "Додај _надворешен"
+
+#: ../menueditor/menueditor-main-window.c:152
+msgid "Add an external entry"
+msgstr "Додај надвореш запис"
+
+#: ../menueditor/menueditor-main-window.c:153
+msgid "_Remove entry"
+msgstr "_Отстрани запис"
+
+#: ../menueditor/menueditor-main-window.c:153
+msgid "Remove entry"
+msgstr "Отстрани запис"
+
+#: ../menueditor/menueditor-main-window.c:154
+msgid "_Up"
+msgstr "_Нагоре"
+
+#: ../menueditor/menueditor-main-window.c:154
+msgid "Move entry up"
+msgstr "Помести запис нагоре"
+
+#: ../menueditor/menueditor-main-window.c:155
+msgid "_Down"
+msgstr "_Надолу"
+
+#: ../menueditor/menueditor-main-window.c:155
+msgid "Move entry down"
+msgstr "Помести запис надолу"
+
+#: ../menueditor/menueditor-main-window.c:157
+msgid "_Help"
+msgstr "_Помош"
+
+#: ../menueditor/menueditor-main-window.c:158
+msgid "_About..."
+msgstr "_За..."
+
+#: ../menueditor/menueditor-main-window.c:158
+msgid "Show informations about xfce4-menueditor"
+msgstr "Прикажи информации за уредувач за менија на Xfce4"
+
+#: ../menueditor/menueditor-main-window.c:160
+msgid "Collapse all"
+msgstr "Собери ги сите"
+
+#: ../menueditor/menueditor-main-window.c:160
+msgid "Collapse all menu entries"
+msgstr "Собери ги сите записи од менито"
+
+#: ../menueditor/menueditor-main-window.c:161
+msgid "Expand all"
+msgstr "Отпушти ги сите"
+
+#: ../menueditor/menueditor-main-window.c:161
+msgid "Expand all menu entries"
+msgstr "Отпушти ги сите записи од менито"
+
+#: ../menueditor/menueditor-main-window.c:341
+msgid "Name"
+msgstr "Име"
+
+#: ../menueditor/menueditor-main-window.c:344
+msgid "Command"
+msgstr "Команда"
+
+#: ../menueditor/menueditor-main-window.c:345
+msgid "Hidden"
+msgstr "Скриено"
+
+#: ../menueditor/menueditor-main-window.c:427
+msgid "Are you sure you want to close the current menu?"
+msgstr "Дали сте сигурни дека сакате да го затворите тековното мени?"
+
+#: ../menueditor/menueditor-main-window.c:441
+msgid "Do you want to save before closing the file?"
+msgstr "Дали сакате да ги зачувате измените пред да ја затворите датотеката?"
+
+#: ../menueditor/menueditor-main-window.c:479
+#: ../menueditor/menueditor-main-window.c:532
+#: ../menueditor/menueditor-main-window.c:630
+#: ../src/xfdesktop-file-icon-manager.c:587 ../src/xfdesktop-file-utils.c:55
+msgid "Question"
+msgstr "Прашање"
+
+#: ../menueditor/menueditor-main-window.c:481
+msgid "Do you want to save before opening an other menu ?"
+msgstr "Дали сакате да ги зачувате измените пред да отворите друго мени?"
+
+#: ../menueditor/menueditor-main-window.c:483
+#: ../menueditor/menueditor-main-window.c:536
+#: ../menueditor/menueditor-main-window.c:634
+msgid "Ignore modifications"
+msgstr "Игнорирај ги измените"
+
+#: ../menueditor/menueditor-main-window.c:494
+msgid "Open menu file"
+msgstr "Отвори ја датотеката на менито"
+
+#: ../menueditor/menueditor-main-window.c:534
+msgid "Do you want to save before opening the default menu ?"
+msgstr "Дали сакате да ги зачувате измените пред да го отворите стандардното мени?"
+
+#: ../menueditor/menueditor-main-window.c:594
+msgid "Save menu file as"
+msgstr "Зачувај ја датотеката на менито како"
+
+#: ../menueditor/menueditor-main-window.c:632
+#: ../menueditor/menueditor-main-window.c:1343
+msgid "Do you want to save before closing the menu ?"
+msgstr "Дали сакате да ги зачувате измените пред затворањето на менито?"
+
+#: ../menueditor/menueditor-main-window.c:858
+#: ../menueditor/menueditor-main-window.c:988
+msgid "quit"
+msgstr "излези"
+
+#: ../menueditor/menueditor-main-window.c:963
+#: ../menueditor/menueditor-main-window.c:1584
+msgid "--- separator ---"
+msgstr "--- разделувач ---"
+
+#: ../menueditor/menueditor-main-window.c:1081
+#: ../menueditor/menueditor-main-window.c:1088
+#: ../menueditor/menueditor-main-window.c:1638
+msgid "--- include ---"
+msgstr "--- вклучи ---"
+
+#: ../menueditor/menueditor-main-window.c:1089
+#: ../menueditor/menueditor-main-window.c:1655
+msgid "system"
+msgstr "систем"
+
+#: ../menueditor/menueditor-main-window.c:1215
+#: ../menueditor/menueditor-main-window.c:1263
+msgid "Do you want to move the item into the submenu?"
+msgstr "Дали сакате да го преместите предметот во ново подмени?"
+
+#: ../menueditor/menueditor-main-window.c:1293
+msgid "A menu editor for Xfce4"
+msgstr "Уредувач на мени за Xfce4"
+
+#. Credits
+#: ../menueditor/menueditor-main-window.c:1298
+msgid "Author/Maintainer"
+msgstr "Автор/Одржувач"
+
+#: ../menueditor/menueditor-main-window.c:1299
+#: ../menueditor/menueditor-main-window.c:1300
+#: ../menueditor/menueditor-main-window.c:1301
+msgid "Contributor"
+msgstr "Придонесувач"
+
+#: ../menueditor/menueditor-main-window.c:1302
+msgid "Icon designer"
+msgstr "Дизајнер за икони"
+
+#: ../menueditor/menueditor-main-window.c:1345
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr "Го изменавте менито, дали сакате да ги зачувате измените пред да излезите?"
+
+#: ../menueditor/menueditor-main-window.c:1347
+msgid "Forget modifications"
+msgstr "Игнорирај ги измените"
+
+#: ../menueditor/menueditor-main-window.c:2035
+#, c-format
+msgid "Unable to open the menu file %s in write mode"
+msgstr "Не е возможно да се отвори %s датотеката за менито во режим на запишување"
+
+#: ../modules/menu/desktop-menu-file.c:116
+#: ../modules/menu/desktop-menu-file.c:131
+#: ../panel-plugin/desktop-menu-plugin.c:773
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
+msgid "Xfce Menu"
+msgstr "Xfce мени"
+
+#: ../modules/menu/desktop-menu-file.c:118
+#: ../modules/menu/desktop-menu-file.c:133
+msgid "Unable to quit session."
+msgstr "Не е можно да се напушти сесијата."
+
+#: ../modules/menu/desktop-menu-file.c:119
+msgid ""
+"Quitting the session requires that Xfce's session manager (xfce4-session) is "
+"running, but it was not detected.  Please quit Xfce via another means."
+msgstr "Напуштањето на сесијата бара да е активен справувачот за сесии на Xfce (xfce4-session), но не е забележан.  Напуштете го Xfce на друг начин."
+
+#: ../modules/menu/desktop-menu-file.c:129
+#, c-format
+msgid ""
+"Quitting the session requires the 'xfce4-session-logout' command, but it "
+"could not be found: %s"
+msgstr "За напуштањето на сесијата потребна е командата 'xfce4-session-logout', но не е пронајдена: %s"
+
+#: ../modules/menu/desktop-menuspec.c:61
+msgid "/Other"
+msgstr "/Друго"
+
+#: ../panel-plugin/desktop-menu-plugin.c:583
+msgid "Select Icon"
+msgstr "Изберете икона"
+
+#: ../panel-plugin/desktop-menu-plugin.c:585
+msgid "Select Menu File"
+msgstr "Изберете датотека за мени"
+
+#: ../panel-plugin/desktop-menu-plugin.c:742
+#: ../settings/behavior-settings.c:217
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "Не е можно активирањето на уредувачот за мени за Xfce4: %s"
+
+#: ../panel-plugin/desktop-menu-plugin.c:765
+msgid "Edit Properties"
+msgstr "Уреди ги својствата"
+
+#: ../panel-plugin/desktop-menu-plugin.c:783
+msgid "Button"
+msgstr "Копче"
+
+#: ../panel-plugin/desktop-menu-plugin.c:796
+msgid "Button _title:"
+msgstr "_Наслов на копче:"
+
+#: ../panel-plugin/desktop-menu-plugin.c:809
+msgid "_Show title in button"
+msgstr "_Прикажи наслов на копче"
+
+#: ../panel-plugin/desktop-menu-plugin.c:816
+msgid "Menu File"
+msgstr "Датотека за мени"
+
+#: ../panel-plugin/desktop-menu-plugin.c:828
+msgid "Use default _desktop menu file"
+msgstr "Користи ја стандардната датотека за мени за _работната околина"
+
+#: ../panel-plugin/desktop-menu-plugin.c:837
+msgid "Use _custom menu file:"
+msgstr "Користење на _сопствена датотека за мени:"
+
+#: ../panel-plugin/desktop-menu-plugin.c:888
+#: ../settings/behavior-settings.c:267
+msgid "_Edit Menu"
+msgstr "_Уреди мени"
+
+#: ../panel-plugin/desktop-menu-plugin.c:894
+msgid "Icons"
+msgstr "Икони"
+
+#: ../panel-plugin/desktop-menu-plugin.c:906
+msgid "_Button icon:"
+msgstr "_Икони за копче:"
+
+#: ../panel-plugin/desktop-menu-plugin.c:930
+msgid "Show _icons in menu"
+msgstr "Прикажи _икони во мени"
+
+#: ../panel-plugin/desktop-menu-plugin.c:953
+msgid "There is already a panel menu registered for this screen"
+msgstr "За оваа сесија веќе е регистриран панел"
+
+#: ../panel-plugin/desktop-menu-plugin.c:1061
+msgid "Edit Menu"
+msgstr "Уреди мени"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../settings/appearance-settings.c:134
+msgid "Button Label|Desktop"
+msgstr "Ознака на копче|работна околина"
+
+#: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
+#: ../settings/backdrop-list-manager.c:631
+msgid "backdrops.list"
+msgstr "backdrops.list"
+
+#: ../settings/appearance-settings.c:527
+msgid "Select backdrop image or list file"
+msgstr ""
+
+#: ../settings/appearance-settings.c:545
+msgid "List Files (*.list)"
+msgstr "Датотеки со листа (*.list)"
+
+#: ../settings/appearance-settings.c:637
+msgid "_Edit list..."
+msgstr "_Уреди листа..."
+
+#: ../settings/appearance-settings.c:645
+msgid "_New list..."
+msgstr "_Нова листа..."
+
+#: ../settings/appearance-settings.c:678
+msgid "S_tyle:"
+msgstr "С_тил:"
+
+#: ../settings/appearance-settings.c:685
+msgid "Auto"
+msgstr "Автоматски"
+
+#: ../settings/appearance-settings.c:686
+msgid "Centered"
+msgstr "Центрирано"
+
+#: ../settings/appearance-settings.c:687
+msgid "Tiled"
+msgstr "Ситно"
+
+#: ../settings/appearance-settings.c:688
+msgid "Stretched"
+msgstr "Затегнато"
+
+#: ../settings/appearance-settings.c:689
+msgid "Scaled"
+msgstr "Во размер"
+
+#: ../settings/appearance-settings.c:745
+msgid "A_djust Brightness:"
+msgstr "П_рилагоди светлост:"
+
+#: ../settings/appearance-settings.c:803
+#, c-format
+msgid "Xfce will be unable to manage your desktop (%s)."
+msgstr "Xfce не успеа да се справи со вашата работна околина (%s)."
+
+#: ../settings/appearance-settings.c:804
+msgid "Unknown Error"
+msgstr "Непозната грешка"
+
+#: ../settings/appearance-settings.c:808
+#: ../src/xfdesktop-regular-file-icon.c:520
+#: ../src/xfdesktop-regular-file-icon.c:584
+msgid "Error"
+msgstr "Грешка"
+
+#: ../settings/appearance-settings.c:810
+msgid "Unable to start xfdesktop"
+msgstr "Неуспешно пуштање на xfdesktop"
+
+#: ../settings/appearance-settings.c:832
+msgid "Information"
+msgstr "Информации"
+
+#: ../settings/appearance-settings.c:845
+msgid ""
+"To ensure that this setting takes effect the next time you start Xfce, "
+"please be sure to save your session when logging out.  If you are not using "
+"the Xfce Session Manager (xfce4-session), you will need to manually edit "
+"your ~/.config/xfce4/xinitrc file.  Details are available in the "
+"documentation provided on http://xfce.org/."
+msgstr "За да се осигурате дека подесувањата ќе се употребат на следното пуштање на Xfce, осигурајте се дека ја зачувавте сесијата кога ќе се одлогирате.  Ако не го користите менаџерот за сесии на Xfce (xfce4-session), треба рачно да ја уредите датотеката ~/.config/xfce4/xinitrc.  Детали можете да видите во документацијата на http://xfce.org. "
+
+#: ../settings/appearance-settings.c:847
+msgid ""
+"To ensure that Xfce does not manage your desktop the next time you start "
+"Xfce, please be sure to save your session when logging out.  If you are not "
+"using the Xfce Session Manager (xfce4-session), you will need to manually "
+"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
+"documentation provided on http://xfce.org/."
+msgstr ""
+"За да се осигурате дека Xfce не управува со вашата работна површина следниот пат кога го подигнувате "
+"Xfce, зачувајте ја вашата сесија кога ке се одјавувате.  ако не го користите Xfce Session Manager (xfce4-session), потребно е рачно да ја уредите вашата ~/.config/xfce4/xinitrc датотека.  Деталите се секогаш достапни во докуменацијата на http://xfce.org/."
+
+#: ../settings/appearance-settings.c:855
+msgid "_Do not show this again"
+msgstr "_Не го покажувај ова повторно"
+
+#. the dialog
+#: ../settings/appearance-settings.c:921
+msgid "Desktop Preferences"
+msgstr "Преференции на работната површина"
+
+#: ../settings/appearance-settings.c:938
+msgid "Allow _Xfce to manage the desktop"
+msgstr "Дозволи _Xfce да управува со работната површина"
+
+#: ../settings/appearance-settings.c:979
+msgid "Stretch single backdrop onto _all monitors"
+msgstr ""
+
+#. add the single backdrop settings page to the main notebook
+#: ../settings/appearance-settings.c:993
+#: ../settings/appearance-settings.c:1175
+msgid "_Appearance"
+msgstr "И_зглед"
+
+#. color settings frame
+#: ../settings/appearance-settings.c:1019
+msgid "Color"
+msgstr "Боја"
+
+#: ../settings/appearance-settings.c:1033
+msgid "_Color Style:"
+msgstr "Сти_л на боја:"
+
+#: ../settings/appearance-settings.c:1040
+msgid "Solid Color"
+msgstr "Чиста боја"
+
+#: ../settings/appearance-settings.c:1041
+msgid "Horizontal Gradient"
+msgstr "Хоризонтален прелив"
+
+#: ../settings/appearance-settings.c:1042
+msgid "Vertical Gradient"
+msgstr "Вертикален прелив"
+
+#: ../settings/appearance-settings.c:1055
+msgid "Fi_rst Color:"
+msgstr "П_рва боја:"
+
+#: ../settings/appearance-settings.c:1076
+msgid "_Second Color:"
+msgstr "_Втора боја:"
+
+#: ../settings/appearance-settings.c:1101
+msgid "Image"
+msgstr "Слика"
+
+#: ../settings/appearance-settings.c:1109
+msgid "Show _Image"
+msgstr "Прикажи _слика"
+
+#: ../settings/appearance-settings.c:1131
+msgid "_File:"
+msgstr "_Датотека:"
+
+#: ../settings/appearance-settings.c:1186
+#: ../settings/appearance-settings.c:1188
+#, c-format
+msgid "Screen %d"
+msgstr "Екран %d"
+
+#. and if we have multiple screens, each with multiple monitors
+#: ../settings/appearance-settings.c:1193
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Екран %d, Монитор %d"
+
+#: ../settings/appearance-settings.c:1210
+msgid "_Behavior"
+msgstr "_Однесување"
+
+#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+"Неможам да ја зачувам датотеката %s: %s\n"
+"\n"
+"Изберете друга локација или притиснете Откажи во дијалогот за да ги откажете промените"
+
+#: ../settings/backdrop-list-manager.c:430
+msgid "Select backdrop image file"
+msgstr ""
+
+#: ../settings/backdrop-list-manager.c:531
+msgid "Choose backdrop list filename"
+msgstr ""
+
+#: ../settings/backdrop-list-manager.c:540
+msgid "List Files"
+msgstr "Датотеки со листа"
+
+#: ../settings/backdrop-list-manager.c:603
+msgid "Backdrop List"
+msgstr ""
+
+#: ../settings/backdrop-list-manager.c:620
+msgid "Image files"
+msgstr "Датотеки со слики"
+
+#: ../settings/backdrop-list-manager.c:639
+msgid "List file"
+msgstr "Датотека со листа"
+
+#: ../settings/backdrop-list-manager.c:661
+msgid "Create backdrop list"
+msgstr ""
+
+#: ../settings/backdrop-list-manager.c:694
+msgid "Edit backdrop list"
+msgstr ""
+
+#: ../settings/behavior-settings.c:241
+msgid "Menus"
+msgstr "Менија"
+
+#: ../settings/behavior-settings.c:249
+msgid "Show _window list on middle click"
+msgstr "Прикажи листа со прозорци на среден клик"
+
+#: ../settings/behavior-settings.c:260
+msgid "Show _desktop menu on right click"
+msgstr "Прикажи мени на работната површина на десен клик"
+
+#: ../settings/behavior-settings.c:279
+msgid "Desktop Icons"
+msgstr "Икони на работната површина"
+
+#: ../settings/behavior-settings.c:288
+#: ../src/xfdesktop-file-properties-dialog.c:138
+msgid "None"
+msgstr "Ништо"
+
+#: ../settings/behavior-settings.c:289
+msgid "Minimized application icons"
+msgstr "Икони на минимизираните апликации"
+
+#: ../settings/behavior-settings.c:291
+msgid "File/launcher icons"
+msgstr "Икони на датотека/пуштач"
+
+#: ../settings/behavior-settings.c:306
+msgid "_Icon size:"
+msgstr "_Големина на икона:"
+
+#: ../settings/behavior-settings.c:320
+msgid "Use _system font size"
+msgstr "Ко_ристи ја системската големина на фонт"
+
+#: ../settings/behavior-settings.c:337
+msgid "Custom _font size:"
+msgstr "Сопстве_на големина на фонт:"
+
+#: ../src/main.c:255
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Ова е %s верзија %s, која што се извршува на Xfce %s.\n"
+
+#: ../src/main.c:257
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Изградено со GTK+ %d.%d.%d, поврзано со GTK+ %d.%d.%d."
+
+#: ../src/main.c:261
+msgid "Build options:\n"
+msgstr "Опции за градење:\n"
+
+#: ../src/main.c:262
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "    Мени на работната околина:        %s\n"
+
+#: ../src/main.c:264 ../src/main.c:271 ../src/main.c:278
+msgid "enabled"
+msgstr "овозможено"
+
+#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
+msgid "disabled"
+msgstr "оневозможено"
+
+#: ../src/main.c:269
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "    Икони на работната околина:       %s\n"
+
+#: ../src/main.c:276
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "   Икони за датотеки на работната околина:  %s\n"
+
+#: ../src/main.c:305
+#, c-format
+msgid "%s: Unknown option: %s\n"
+msgstr "%s: Непозната опција: %s\n"
+
+#: ../src/main.c:306
+msgid "Options are:\n"
+msgstr "Опциите се:\n"
+
+#: ../src/main.c:307
+msgid "    --reload      Reload all settings, refresh image list\n"
+msgstr "    --превчитај      Превчитај ги сите поставувања, освежи ја листата со слики\n"
+
+#: ../src/main.c:308
+msgid "    --menu        Pop up the menu (at the current mouse position)\n"
+msgstr "    --мени        Прикажи го менито (на тековната позиција на глувчето)\n"
+
+#: ../src/main.c:309
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    --листа на прозорци  Прикажи ја листата на прозорци (на тековната позиција на глувчето)\n"
+
+#: ../src/main.c:310
+msgid "    --quit        Cause xfdesktop to quit\n"
+msgstr "    --напушти        Предизвикај напуштање на xfdesktop\n"
+
+#: ../src/main.c:325
+#, c-format
+msgid "%s is not running.\n"
+msgstr "%s не работи.\n"
+
+#: ../src/windowlist.c:218
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>Работна површина %d</b>"
+
+#: ../src/windowlist.c:226
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr "<i>Работна површина %d</i>"
+
+#: ../src/windowlist.c:293 ../src/windowlist.c:296
+msgid "_Add Workspace"
+msgstr "_Додај работна површина"
+
+#: ../src/windowlist.c:304
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "_Отстрани работна површина %d"
+
+#: ../src/windowlist.c:307
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "_Отстрани работна површина '%s'"
+
+#: ../src/xfce-desktop.c:542
+msgid "Desktop"
+msgstr "Работна површина"
+
+#: ../src/xfdesktop-file-icon-manager.c:386
+#, c-format
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop не беше во можност да ја креира папката \"%s\" за зачувување на предмети на работната површина:"
+
+#: ../src/xfdesktop-file-icon-manager.c:388
+#: ../src/xfdesktop-file-icon-manager.c:399
+#: ../src/xfdesktop-file-icon-manager.c:1094
+msgid "Create Folder Failed"
+msgstr "Неуспешно креирање на фолдер"
+
+#: ../src/xfdesktop-file-icon-manager.c:397
+#, c-format
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr "Xfdesktop не беше во можност да го користи \"%s\" за чување на предмети од работната површина затоа што не е папка."
+
+#: ../src/xfdesktop-file-icon-manager.c:401
+msgid "Please delete or rename the file."
+msgstr "Избришете ја или преименувајте ја датотеката."
+
+#: ../src/xfdesktop-file-icon-manager.c:538
+#, c-format
+msgid "Rename \"%s\""
+msgstr "Преименувај \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:545
+#: ../src/xfdesktop-file-icon-manager.c:1166
+#: ../src/xfdesktop-file-icon-manager.c:1257
+#: ../src/xfdesktop-file-icon-manager.c:1268
+msgid "Enter the new name:"
+msgstr "Внесете го новото име:"
+
+#: ../src/xfdesktop-file-icon-manager.c:547
+msgid "Rename"
+msgstr "Преименувај"
+
+#: ../src/xfdesktop-file-icon-manager.c:584
+#, c-format
+msgid "Are you sure that you want to delete \"%s\"?"
+msgstr "Дали сте сигурни дека сакате да ја избришете \"%s\" ?"
+
+#: ../src/xfdesktop-file-icon-manager.c:589
+#: ../src/xfdesktop-file-icon-manager.c:609
+msgid "If you delete a file, it is permanently lost."
+msgstr "Ако ја избришете датотеката, ќе биде трајно загубена."
+
+#: ../src/xfdesktop-file-icon-manager.c:603
+#, c-format
+msgid "Are you sure you want to delete the following %d files?"
+msgstr "Дали сте сигурни дека сакате да ги избришете следниве %d датотеки?"
+
+#: ../src/xfdesktop-file-icon-manager.c:606
+msgid "Delete Multiple Files"
+msgstr "Повеќе-кратно бришење на датотеки"
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:823
+#: ../src/xfdesktop-file-icon-manager.c:1528 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-utils.c:352
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Не е можно пуштањето на \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:825
+#: ../src/xfdesktop-file-icon-manager.c:865
+#: ../src/xfdesktop-file-icon-manager.c:1128
+#: ../src/xfdesktop-file-icon-manager.c:1530 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-utils.c:355
+msgid "Launch Error"
+msgstr "Грешка при пуштање"
+
+#: ../src/xfdesktop-file-icon-manager.c:866
+msgid "The application chooser could not be opened."
+msgstr "Не е можно отворање на избирачот на апликации"
+
+#: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
+msgstr "Оваа можност бара сервис за менаџер за датотеки (каков што е Thunar)."
+
+#: ../src/xfdesktop-file-icon-manager.c:1027
+#, c-format
+msgid "_Open With \"%s\""
+msgstr "_Отвори со \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1030
+#, c-format
+msgid "Open With \"%s\""
+msgstr "Отвори со \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1091
+#, c-format
+msgid "Unable to create folder named \"%s\":"
+msgstr "Не е можно да се креира фолдер со ова име \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:1130
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr "Не е можно да се стартува \"exo-desktop-item-edit\", кој е потребен за да се креираат и уредат пуштачи и врски за на десктоп."
+
+#: ../src/xfdesktop-file-icon-manager.c:1163
+msgid "Create New Folder"
+msgstr "Креирај нова папка"
+
+#: ../src/xfdesktop-file-icon-manager.c:1167
+msgid "New Folder"
+msgstr "Нова папка"
+
+#: ../src/xfdesktop-file-icon-manager.c:1168
+#: ../src/xfdesktop-file-icon-manager.c:1259
+#: ../src/xfdesktop-file-icon-manager.c:1270
+msgid "Create"
+msgstr "Креирај"
+
+#: ../src/xfdesktop-file-icon-manager.c:1204
+#, c-format
+msgid "Unable to create file named \"%s\":"
+msgstr "Не е можно да се креира датотека со ова име \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:1207
+msgid "Create File Failed"
+msgstr "Креирањето на датотеката е неуспешно"
+
+#: ../src/xfdesktop-file-icon-manager.c:1246
+#, c-format
+msgid "Create Document from template \"%s\""
+msgstr "Креирај документ од шаблон \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1265
+msgid "Create Empty File"
+msgstr "Креирај празна датотека"
+
+#: ../src/xfdesktop-file-icon-manager.c:1269
+msgid "New Empty File"
+msgstr "Нова празна датотека"
+
+#: ../src/xfdesktop-file-icon-manager.c:1302
+#, c-format
+msgid "Unable to create file \"%s\":"
+msgstr "Не е можно да се креира датотеката \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:1303
+msgid "Create Error"
+msgstr "Грешка во креирањето"
+
+#: ../src/xfdesktop-file-icon-manager.c:1587
+msgid "_Open all"
+msgstr "_Отвори ги сите"
+
+#: ../src/xfdesktop-file-icon-manager.c:1617
+msgid "_Execute"
+msgstr "_Изврши"
+
+#: ../src/xfdesktop-file-icon-manager.c:1634
+msgid "_Edit Launcher"
+msgstr "_Уреди пуштачи"
+
+#: ../src/xfdesktop-file-icon-manager.c:1674
+msgid "Open With"
+msgstr "Отвори со"
+
+#: ../src/xfdesktop-file-icon-manager.c:1705
+msgid "Open With Other _Application..."
+msgstr "Отвори со друга _Апликација"
+
+#: ../src/xfdesktop-file-icon-manager.c:1804
+msgid "_Rename..."
+msgstr "_Преименувај..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1820
+#: ../src/xfdesktop-volume-icon.c:593
+msgid "_Properties..."
+msgstr "_Својства..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1837
+msgid "Des_ktop"
+msgstr "Дес_ктоп"
+
+#: ../src/xfdesktop-file-icon-manager.c:1856
+msgid "Create _Launcher..."
+msgstr "Креирај_Пуштачи..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1877
+msgid "Create _URL Link..."
+msgstr "Креирај _URL врска..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1894
+msgid "Create _Folder..."
+msgstr "Креирај_Папка..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1936
+msgid "_Empty File"
+msgstr "_Празна датотека"
+
+#: ../src/xfdesktop-file-icon-manager.c:1977
+msgid "Desktop _Settings..."
+msgstr "Десктоп_поставувања..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1986
+msgid "_Desktop Properties..."
+msgstr "_Десктоп својства.."
+
+#: ../src/xfdesktop-file-icon-manager.c:3158
+#: ../src/xfdesktop-regular-file-icon.c:382
+#, c-format
+msgid "Failed to run \"%s\":"
+msgstr "Стартувањето е неуспешно \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:3160
+#: ../src/xfdesktop-regular-file-icon.c:384
+msgid "Run Error"
+msgstr "Грешка при стартувањето"
+
+#: ../src/xfdesktop-file-icon.c:146
+msgid "The associated application could not be found or executed."
+msgstr "Назначената апликација не може да биде пронајдена или извршена "
+
+#: ../src/xfdesktop-file-properties-dialog.c:103
+#, c-format
+msgid "Unable to set default application for \"%s\" to \"%s\":"
+msgstr "Не е можно да се поставаат  \"%s\" to \"%s\":"
+
+#: ../src/xfdesktop-file-properties-dialog.c:106
+msgid "Properties Error"
+msgstr "Грешка во својствата"
+
+#: ../src/xfdesktop-file-properties-dialog.c:138
+msgid "Write only"
+msgstr "Само за пишување"
+
+#: ../src/xfdesktop-file-properties-dialog.c:138
+msgid "Read only"
+msgstr "Само за читање"
+
+#: ../src/xfdesktop-file-properties-dialog.c:138
+msgid "Read & Write"
+msgstr "Читање & пишување"
+
+#: ../src/xfdesktop-file-properties-dialog.c:163
+msgid "General"
+msgstr "Основно"
+
+#: ../src/xfdesktop-file-properties-dialog.c:214
+msgid "Kind:"
+msgstr "Вид:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:234
+msgid "Link Target:"
+msgstr "Цел на врската:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:251
+#: ../src/xfdesktop-file-properties-dialog.c:410
+msgid "(unknown)"
+msgstr "(непознато)"
+
+#: ../src/xfdesktop-file-properties-dialog.c:273
+msgid "Open With:"
+msgstr "Отвори со:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:350
+msgid "Modified:"
+msgstr "Променето:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:368
+msgid "Accessed:"
+msgstr "Пристапено:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:395
+msgid "Free Space:"
+msgstr "Слободен простор:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:397
+msgid "Size:"
+msgstr "Величина:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:413
+#: ../src/xfdesktop-regular-file-icon.c:486
+#: ../src/xfdesktop-special-file-icon.c:487 ../src/xfdesktop-volume-icon.c:460
+msgid "%s (%"
+msgstr "%s (%"
+
+#. permissions tab
+#: ../src/xfdesktop-file-properties-dialog.c:428
+msgid "Permissions"
+msgstr "Пермисии"
+
+#: ../src/xfdesktop-file-properties-dialog.c:450
+msgid "Owner:"
+msgstr "Сопственик:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:472
+#: ../src/xfdesktop-file-properties-dialog.c:510
+msgid "Access:"
+msgstr "Пристап:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:495
+msgid "Group:"
+msgstr "Група:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:533
+msgid "Others:"
+msgstr "Друго:"
+
+#: ../src/xfdesktop-file-utils.c:74
+msgid "Yes to _all"
+msgstr "Да за _сите"
+
+#: ../src/xfdesktop-file-utils.c:106
+#, c-format
+msgid "There was an error moving \"%s\" to \"%s\":"
+msgstr "Постои грешка при преместувањето \"%s\" во \"%s\":"
+
+#: ../src/xfdesktop-file-utils.c:109
+#, c-format
+msgid "There was an error copying \"%s\" to \"%s\":"
+msgstr "Постои грешка при копирањето \"%s\" во \"%s\":"
+
+#: ../src/xfdesktop-file-utils.c:112
+#, c-format
+msgid "There was an error linking \"%s\" to \"%s\":"
+msgstr "Постои грешка при врската \"%s\" до \"%s\":"
+
+#: ../src/xfdesktop-file-utils.c:121
+msgid "File Error"
+msgstr "Грешка во датотеката"
+
+#: ../src/xfdesktop-file-utils.c:137
+msgid "broken link"
+msgstr "Прекината врска"
+
+#: ../src/xfdesktop-file-utils.c:141
+#, c-format
+msgid "link to %s"
+msgstr "Врска до %s"
+
+#: ../src/xfdesktop-regular-file-icon.c:489
+#: ../src/xfdesktop-special-file-icon.c:490 ../src/xfdesktop-volume-icon.c:463
+#, c-format
+msgid ""
+"Kind: %s\n"
+"Modified:%s\n"
+"Size: %s"
+msgstr ""
+"Вид: %s\n"
+"Променето:%s\n"
+"Величина: %s"
+
+#: ../src/xfdesktop-regular-file-icon.c:581
+#, c-format
+msgid "Failed to rename \"%s\" to \"%s\":"
+msgstr "Преименувањето е неуспешно \"%s\" во \"%s\":"
+
+#: ../src/xfdesktop-special-file-icon.c:258
+msgid "Home"
+msgstr "Дома"
+
+#: ../src/xfdesktop-special-file-icon.c:508
+msgid "Trash Error"
+msgstr "Грешка во кантата за отпадоци"
+
+#: ../src/xfdesktop-special-file-icon.c:510
+msgid "Unable to contact the Xfce Trash service."
+msgstr "Не е можно да се стапи во контакт со Xfce сервисот за кантата за отпадоци."
+
+#: ../src/xfdesktop-special-file-icon.c:511
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr "Дали си сигурен дека имаш инсталирано менаџер за датотеки кој го поддржува Xfce сервисот за кантата за отпадоци, како Thunar."
+
+#: ../src/xfdesktop-special-file-icon.c:635
+msgid "_Empty Trash"
+msgstr "Кантата за отпадоци е _празна"
+
+#: ../src/xfdesktop-volume-icon.c:491
+#, c-format
+msgid "Unable to mount \"%s\":"
+msgstr "Не е можно да се монтира \"%s\":"
+
+#: ../src/xfdesktop-volume-icon.c:492
+#, c-format
+msgid "Unable to unmount \"%s\":"
+msgstr "Не е можно да се одмонтира \"%s\":"
+
+#: ../src/xfdesktop-volume-icon.c:495
+msgid "Mount Failed"
+msgstr "Монтирањето е неуспешно"
+
+#: ../src/xfdesktop-volume-icon.c:495
+msgid "Unmount Failed"
+msgstr "Одмонтирањето е неуспешно"
+
+#: ../src/xfdesktop-volume-icon.c:513
+#, c-format
+msgid "Unable to eject \"%s\":"
+msgstr "Не можам да извадам \"%s\":"
+
+#: ../src/xfdesktop-volume-icon.c:516
+msgid "Eject Failed"
+msgstr "Вадењето е неуспешно"
+
+#: ../src/xfdesktop-volume-icon.c:554
+msgid "_Mount Volume"
+msgstr "_Монтирај партиција"
+
+#: ../src/xfdesktop-volume-icon.c:565
+msgid "_Unmount Volume"
+msgstr "_Одмонтирај партиција"
+
+#: ../src/xfdesktop-volume-icon.c:579
+msgid "E_ject Volume"
+msgstr "_Вади партиција"
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:1
+msgid "Graphical tool for editing the Xfce 4 menu"
+msgstr "Графички алатки за уредување на Xfce 4 менито"
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:2
+msgid "Menu Editor"
+msgstr "Уредување на менито"
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:3
+msgid "Xfce 4 Menu Editor"
+msgstr "Уредувач на менито за Xfce 4"
+
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+msgid "Shows a menu containing categories of installed applications"
+msgstr "Покажува мени кое содржи категории со инсталираните апликации"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop Settings"
+msgstr "Десктоп поставувања"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Settings for the Xfce 4 Desktop Manager"
+msgstr "Поставувања за Xfce 4 десктоп менаџерот"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:3
+msgid "Xfce 4 Desktop Settings"
+msgstr "Десктоп поставувања за Xfce 4"
+
