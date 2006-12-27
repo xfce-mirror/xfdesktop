@@ -1,0 +1,141 @@
+This file is inspired by Jasper's HACKING file for xfce4-panel, and gives a
+decent idea of the coding style I prefer for xfdesktop, as well as random
+hacking guidelines.  If you submit a patch, please be sure to conform to 
+these 'rules'.  If anything isn't clear, just ask (private mail is fine).
+     -brian (bjt23@cornell.edu)
+
+last modified: 2006/12/27
+
+* Coding style:
+  - Line length: I try to keep to a rough 80 characters, as I do sometimes
+    edit code in a terminal.  If it gets a little longer, that's fine, but
+    excessively long lines (>100 chars) should be broken up.  Break up
+    function calls on parameter boundaries if possible, by lining up the
+    parameters on the next line with the first parameter on the previous
+    line.
+  - Braces: on the same line as the if/while/etc. statement.  Braces should
+    be omitted for one-line blocks.  As an exception, the opening brace after
+    a function declaration goes on its own line.
+  - Parentheses: Never put a space before the opening parentheses for
+    if/while/etc. statements or function calls.  No space on the inside of the
+    parentheses either.  No space between the closing parenthesis of a
+    type cast and the variable name.
+  - Function declarations: return type goes on the first line, function name
+    and first parameter on the second line.  Second and further parameters
+    each get their own line, and they should be aligned with the start of
+    the first parameter.  Please do not add spaces between the type and
+    variable name to line up the variable names.  As specified before, the
+    opening brace also gets its own line.
+  - Indentation: four spaces.  No tab characters.
+  - Variable declarations: don't line up the variable names by padding shorter
+    type names with spaces.  Feel free to combine multiple same-type
+    declarations to the same line.
+
+NB: Some parts of the code don't conform to the above style.  That just means
+that it's *really* old code that existed before I took over as maintainer,
+or it's stuff that I wrote using a slightly different style (I do change my
+mind sometimes).  When in doubt, follow the style outlined above.
+
+* Other stuff:
+  - Regardless of what gcc supports, all variable declarations should appear
+    at the top of the function, without any normal statements in between
+    (though it's ok to initialise variables where they're declared).
+  - I generally try to declare variables in the rough order they'll be used
+    in the function.  This makes it easier if I have to go back later and
+    figure out what's going on and what's getting used where.
+  - I won't check in code that doesn't compile when you pass
+    --enable-debug=full to configure.  This means it must not cause compiler
+    warnings.
+  - Comments are useful to explain stuff that's complicated or to enumerate
+    why the various branches of an 'if' tree are being taken if the logic
+    is somewhat complex.  Otherwise I tend not to comment my code all that
+    much (not saying this is good or bad; just fact).
+
+* Sample:
+
+static void
+example_foo_function(FooObject *cheese,
+                     gboolean bar,
+                     gint baz)
+{
+    gint i, j;
+    BarObject *monkey = BAR_OBJECT(monkey);
+    const gchar *happy_string;
+    
+    if(bar)
+        do_something();
+    else {
+        really_long_function_call(cheese, "I like to eat cheese all the time",
+                                  baz, monkey);
+        do_something_else();
+    }
+    
+    /* ... */
+}
+
+* Code layout:
+  - /common/
+    + Stuff that's used in multiple places (possibly the MCS plugin, panel
+      plugin, menu module, or xfdesktop itself)
+  - /menueditor/
+    + The menu editor app.  Jean-Francois Wauthy wrote and maintains this,
+      so everything I said above may or may not apply there
+  - /modules/menu/
+    + The menu implementation.  Please don't touch this.  It should hopefully
+      be replaced in Xfce 4.6, and it's somewhat fragile and touchy at times.
+      I don't really remember how some parts of it work.
+  - /panel-plugin/
+    + This is just a simple panel plugin that loads the menu module and
+      displays the menu when you click on a button.  It's relatively
+      uncomplicated, though getting the icon sizing correct is a constant
+      chore.
+  - /settings/
+    + This implements the settings plugin for the MCS settings manager.  If
+      you add a pref to xfdesktop, you'll have to edit this.  It's a mess.
+      I'm sorry.  I tried to rewrite it once, but I found the process so
+      tedious, I gave up.
+  - /src/main.c
+    + This basically just starts everything up and does a few tasks like
+      handle shunting button presses where they need to go, and handling
+      the simple remote control function.
+  - /src/menu.c
+    + This actually contains very little menu code.  It just accepts the mouse
+      button press and pops up the menu, along with some other random stuff.
+  - /src/windowlist.c
+    + This guy assembles a list of open windows on each workspace and
+      constructs a nifty menu to display them all.
+  - /src/xfce-backdrop.c
+    + This (XfceBackdrop) represents a backdrop image.  It handles scaling and
+      compositing as well.
+  - /src/xfce-desktop.c
+    + This is a GtkWindow subclass which is the actuall desktop window.
+      xfdesktop displays one XfceDesktop window for each X screen, and may
+      have several XfceBackdrop objects associated with it if the X screen
+      contains multiple Xinerama monitors.
+  - /src/xfdesktop-icon-view.c
+    + XfdesktopIconView is a relatively simple (at least it started out that
+      way) icon view widget for the desktop.  It only supports a fixed grid
+      of icons, which can be rearranged via drag-and-drop.  It does not
+      support arbitrary positioning.  The grid resizes automatically if the
+      screen size changes or if the icon/font size changes.  There are a
+      bunch of annoying things in here to support arbitrary desktop icon
+      types.  You should *never* assume that the user is viewing normal file
+      icons here.  So the icon view can't know about files, or about dropping
+      things onto icons, or what happens when a DnD event occurs from
+      another application, etc.  The icon view doesn't even know where the
+      icons come from or what they represent.
+  - /src/xfdesktop-icon.c
+    + XfdesktopIcon is an abstract icon object.  You can add them to or
+      remove them from an XfdesktopIconView.  You can set their positions,
+      and figure out the icon's rectangular bounding box after it's been
+      placed in the icon view.  The icon also reports what kinds of drag
+      and drop actions it supports, and if it can display a tooltip.  It
+      can also have its own special popup menu.
+  - /src/xfdesktop-icon-view-manager.c
+    + XfdesktopIconViewManager is an abstract controller for the icon view.
+      It's responsible for creating the XfdesktopIcon objects and adding them
+      to the XfdesktopIconView.  It handles drag and drop events for certain
+      situations (like dropping data from another app onto an empty area of
+      the desktop).  Most of the heavy lifting should go here.
+
+TODO: document the actual window icon and file icon implementations.
