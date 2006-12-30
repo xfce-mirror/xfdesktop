@@ -4,7 +4,7 @@ hacking guidelines.  If you submit a patch, please be sure to conform to
 these 'rules'.  If anything isn't clear, just ask (private mail is fine).
      -brian (bjt23@cornell.edu)
 
-last modified: 2006/12/27
+last modified: 2006/12/30
 
 * Coding style:
   - Line length: I try to keep to a rough 80 characters, as I do sometimes
@@ -50,8 +50,17 @@ mind sometimes).  When in doubt, follow the style outlined above.
     why the various branches of an 'if' tree are being taken if the logic
     is somewhat complex.  Otherwise I tend not to comment my code all that
     much (not saying this is good or bad; just fact).
-
-* Sample:
+  - ChangeLog: don't bother modifying the toplevel ChangeLog.  It gets
+    automatically generated using the 'svn2cl' script before releases.
+  - Other committers with access to the xfdesktop tree should feel free to
+    make small commits related to minor one-line bugfixes and fixes for
+    compiler warnings.  The release manager may make whatever changes needed
+    during the release process to make xfdesktop release-ready.  I do
+    appreciate a quick note via email if you make any changes, though I'll
+    probably notice it via the xfce4-commits mailing list.  The po/ and
+    po-doc/ directories are under control of the xfce-i18n team.
+    
+* Code sample:
 
 static void
 example_foo_function(FooObject *cheese,
@@ -76,10 +85,10 @@ example_foo_function(FooObject *cheese,
 * Code layout:
   - /common/
     + Stuff that's used in multiple places (possibly the MCS plugin, panel
-      plugin, menu module, or xfdesktop itself)
+      plugin, menu module, or xfdesktop itself).
   - /menueditor/
     + The menu editor app.  Jean-Francois Wauthy wrote and maintains this,
-      so everything I said above may or may not apply there
+      so everything I said above may or may not apply there.
   - /modules/menu/
     + The menu implementation.  Please don't touch this.  It should hopefully
       be replaced in Xfce 4.6, and it's somewhat fragile and touchy at times.
