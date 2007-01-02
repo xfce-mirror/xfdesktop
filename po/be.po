@@ -1,523 +1,352 @@
-# Belarusian translations for xfdesktop package.
+# Belarusian translation of the xfdesktop package.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
-# Ales Nyakhaychyk <nab@mail.by>, 2004.
+# Ales Nyakhaychyk <nab@mail.by>, 2004-2007.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.3.99.2\n"
+"Project-Id-Version: xfdesktop 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-04 05:11-0800\n"
-"PO-Revision-Date: 2005-10-09 22:10+0900\n"
-"Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
-"Language-Team: Belarusian <i18n@mova.org>\n"
+"POT-Creation-Date: 2006-06-15 18:01+0000\n"
+"PO-Revision-Date: 2007-01-02 14:00+0300\n"
+"Last-Translator: Alexander Nyakhaychyk <nyakhaychyk@gmail.com>\n"
+"Language-Team: Belarusian <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Rosetta-Export-Date: 2007-01-02 00:08+0000\n"
 
-#: ../menueditor/menueditor-add-dialog.c:129
+#: ../menueditor/about_dialog.c:39
+msgid "A menu editor for Xfce4"
+msgstr "Рэдактар мэню Xfce4"
+
+#: ../menueditor/about_dialog.c:43
+msgid "Core developer"
+msgstr "Асноўны распрацоўнік"
+
+#: ../menueditor/about_dialog.c:44
+#: ../menueditor/about_dialog.c:45
+#: ../menueditor/about_dialog.c:46
+msgid "Contributor"
+msgstr "Укладальнік"
+
+#: ../menueditor/about_dialog.c:47
+msgid "Icon designer"
+msgstr "Распрацоўка значак"
+
+#: ../menueditor/add_dialog.c:157
+#: ../menueditor/add_dialog.c:167
 msgid "Add menu entry"
 msgstr "Дадаць элемэнт мэню"
 
-#. Type
-#: ../menueditor/menueditor-add-dialog.c:142
-#: ../menueditor/menueditor-add-dialog.c:143
-#: ../menueditor/menueditor-add-external-dialog.c:113
-#: ../menueditor/menueditor-add-external-dialog.c:114
+#: ../menueditor/add_dialog.c:171
+#: ../menueditor/add_menu_dialog.c:110
 msgid "Type:"
 msgstr "Тып:"
 
-#: ../menueditor/menueditor-add-dialog.c:151
-msgid "Title"
-msgstr "Загаловак"
-
-#: ../menueditor/menueditor-add-dialog.c:152
-msgid "Submenu"
-msgstr "Падмэню"
-
-#: ../menueditor/menueditor-add-dialog.c:153
+#: ../menueditor/add_dialog.c:174
 msgid "Launcher"
 msgstr "Запускальнік"
 
-#: ../menueditor/menueditor-add-dialog.c:154
+#: ../menueditor/add_dialog.c:178
+msgid "Submenu"
+msgstr "Субмэню"
+
+#: ../menueditor/add_dialog.c:182
 msgid "Separator"
 msgstr "Падзяляльнік"
 
-#: ../menueditor/menueditor-add-dialog.c:155
-msgid "Quit"
-msgstr "Выйсьці"
+#: ../menueditor/add_dialog.c:186
+msgid "Title"
+msgstr "Загаловак"
 
-#. Name
-#: ../menueditor/menueditor-add-dialog.c:162
-#: ../menueditor/menueditor-add-dialog.c:163
-#: ../menueditor/menueditor-edit-dialog.c:140
-#: ../menueditor/menueditor-edit-dialog.c:141
-#: ../src/xfdesktop-file-properties-dialog.c:188
+#: ../menueditor/add_dialog.c:190
+msgid "Quit"
+msgstr "Выхад"
+
+#: ../menueditor/add_dialog.c:204
+#: ../menueditor/edit_dialog.c:145
+#: ../menueditor/edit_dialog.c:205
+#: ../src/xfdesktop-file-icon-manager.c:1073
 msgid "Name:"
 msgstr "Назва:"
 
-#. Command
-#: ../menueditor/menueditor-add-dialog.c:176
-#: ../menueditor/menueditor-add-dialog.c:177
-#: ../menueditor/menueditor-edit-dialog.c:154
-#: ../menueditor/menueditor-edit-dialog.c:155
+#: ../menueditor/add_dialog.c:212
+#: ../menueditor/edit_dialog.c:150
 msgid "Command:"
 msgstr "Загад:"
 
-#. Icon chooser
-#: ../menueditor/menueditor-add-dialog.c:201
-#: ../menueditor/menueditor-add-dialog.c:202
-#: ../menueditor/menueditor-add-dialog.c:244
-#: ../menueditor/menueditor-add-dialog.c:245
-#: ../menueditor/menueditor-edit-dialog.c:179
-#: ../menueditor/menueditor-edit-dialog.c:180
-#: ../menueditor/menueditor-edit-dialog.c:222
-#: ../menueditor/menueditor-edit-dialog.c:223
+#: ../menueditor/add_dialog.c:224
+#: ../menueditor/edit_dialog.c:137
+#: ../menueditor/edit_dialog.c:197
 msgid "Icon:"
 msgstr "Значка:"
 
-#. setup a label to tell that no icon was selected
-#: ../menueditor/menueditor-add-dialog.c:213
-#: ../menueditor/menueditor-add-dialog.c:330
-#: ../menueditor/menueditor-edit-dialog.c:191
-#: ../menueditor/menueditor-edit-dialog.c:586
-#, fuzzy
-msgid "No icon"
-msgstr "Значка _кнопкі:"
+#. Start Notify check button
+#: ../menueditor/add_dialog.c:235
+#: ../menueditor/edit_dialog.c:158
+msgid "Use startup _notification"
+msgstr "Нагадваньне аб _запуску"
 
-#: ../menueditor/menueditor-add-dialog.c:225
-#: ../menueditor/menueditor-add-dialog.c:226
-#: ../menueditor/menueditor-edit-dialog.c:203
-#: ../menueditor/menueditor-edit-dialog.c:204
-#, fuzzy
-msgid "Themed icon:"
-msgstr "Вылучыце значку"
+#. Run in terminal check button
+#: ../menueditor/add_dialog.c:239
+#: ../menueditor/edit_dialog.c:161
+msgid "Run in _terminal"
+msgstr "Выконваць у _тэрмінале"
 
-#. allocate the chooser dialog
-#: ../menueditor/menueditor-add-dialog.c:252
-#: ../menueditor/menueditor-add-dialog.c:347
-#: ../menueditor/menueditor-edit-dialog.c:230
-#: ../menueditor/menueditor-edit-dialog.c:384
-#, fuzzy
+#: ../menueditor/add_dialog.c:270
+#: ../menueditor/edit_dialog.c:240
+msgid "The command doesn't exist !"
+msgstr "Загад не йснуе!"
+
+#: ../menueditor/add_dialog.c:276
+#: ../menueditor/edit_dialog.c:246
+msgid "All fields must be filled to add an item."
+msgstr "Каб дадаць элемэн, павінны быць запоўнены ўсе палі."
+
+#: ../menueditor/add_dialog.c:285
+#: ../menueditor/edit_dialog.c:255
+msgid "The 'Name' field is required."
+msgstr "Поле \"Назва\" зьяўляецца абавязковым."
+
+#: ../menueditor/add_dialog.c:329
+#: ../menueditor/utils.c:318
+msgid "--- separator ---"
+msgstr "--- падзяляльнік ---"
+
+#: ../menueditor/add_dialog.c:355
+#: ../menueditor/edit_dialog.c:314
+msgid "quit"
+msgstr "выйсьці"
+
+#: ../menueditor/add_menu_dialog.c:97
+#: ../menueditor/add_menu_dialog.c:103
+#: ../menueditor/menueditor.c:841
+msgid "Add an external menu"
+msgstr "Дадаць вонкавае мэню"
+
+#: ../menueditor/add_menu_dialog.c:115
+msgid "File"
+msgstr "Файл"
+
+#: ../menueditor/add_menu_dialog.c:119
+msgid "System"
+msgstr "Сыстэма"
+
+#: ../menueditor/add_menu_dialog.c:133
+msgid "Source:"
+msgstr "Крыніца:"
+
+#: ../menueditor/add_menu_dialog.c:145
+msgid "Style:"
+msgstr "Стыль:"
+
+#: ../menueditor/add_menu_dialog.c:148
+msgid "Simple"
+msgstr "Простае"
+
+#: ../menueditor/add_menu_dialog.c:150
+msgid "Multilevel"
+msgstr "Шматузроўневае"
+
+#: ../menueditor/add_menu_dialog.c:162
+msgid "_Unique entries only"
+msgstr "Толькі не_паўторныя запісы"
+
+#: ../menueditor/add_menu_dialog.c:198
+msgid "The 'Source' field is required."
+msgstr "Поле \"Крыніца\" зьяўляецца абавязковым."
+
+#: ../menueditor/add_menu_dialog.c:202
+#: ../menueditor/add_menu_dialog.c:212
+#: ../menueditor/utils.c:372
+msgid "--- include ---"
+msgstr "--- падстаноўка ---"
+
+#: ../menueditor/add_menu_dialog.c:213
+#: ../menueditor/utils.c:389
+msgid "system"
+msgstr "сыстэма"
+
+#: ../menueditor/edit_dialog.c:114
+#: ../menueditor/edit_dialog.c:121
+msgid "Edit menu entry"
+msgstr "Рэдагаваць элемэнт мэню"
+
+#: ../menueditor/edit_dialog.c:126
+msgid "Separators cannot be edited"
+msgstr "Падзяляльнікі немагчыма рэдагаваць"
+
+#: ../menueditor/menueditor.c:81
+#, c-format
+msgid "File %s doesn't exist !"
+msgstr "Файл %s не йснуе!"
+
+#: ../menueditor/menueditor.c:121
+#: ../menueditor/menueditor.c:537
+msgid "Do you want to save before closing the menu ?"
+msgstr "Мо жадаеце захаваць перш чымся зачыніць мэню?"
+
+#: ../menueditor/menueditor.c:123
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr "Вы зьмянілі мэню; можа жадаеце захаваць зьмены перад выхадам?"
+
+#: ../menueditor/menueditor.c:125
+msgid "Forget modifications"
+msgstr "Забыць зьмены"
+
+#: ../menueditor/menueditor.c:314
+msgid "Are you sure you want to close the current menu?"
+msgstr "Вы насамрэч жадаеце зачыніць бягучае мэню?"
+
+#: ../menueditor/menueditor.c:329
+msgid "Do you want to save before closing the file?"
+msgstr "Мо жадаеце захаваць зьмены перш чым зачыніць файл?"
+
+#: ../menueditor/menueditor.c:338
+#: ../menueditor/utils.c:586
+msgid "Select command"
+msgstr "Вылучыце загад"
+
+#: ../menueditor/menueditor.c:370
+#: ../menueditor/menueditor.c:427
+#: ../menueditor/menueditor.c:535
+#: ../src/xfdesktop-file-icon-manager.c:645
+msgid "Question"
+msgstr "Пытаньне"
+
+#: ../menueditor/menueditor.c:372
+msgid "Do you want to save before opening an other menu ?"
+msgstr "Мо жадаеце захаваць зьмены перш чым адчыняць іншае мэню?"
+
+#: ../menueditor/menueditor.c:374
+#: ../menueditor/menueditor.c:431
+#: ../menueditor/menueditor.c:539
+msgid "Ignore modifications"
+msgstr "Ігнараваць зьмены"
+
+#: ../menueditor/menueditor.c:385
+msgid "Open menu file"
+msgstr "Адчыніць файл мэню"
+
+#: ../menueditor/menueditor.c:429
+msgid "Do you want to save before opening the default menu ?"
+msgstr "Мо жадаеце захаваць зьмены перш чым адчыняць дапомнае мэню?"
+
+#: ../menueditor/menueditor.c:487
+msgid "Save as..."
+msgstr "Захаваць як..."
+
+#: ../menueditor/menueditor.c:649
+msgid "Do you want to move the item into the parent menu?"
+msgstr "Жадаеце перамясьціць элемэнт у бацькоўскае мэню?"
+
+#: ../menueditor/menueditor.c:695
+msgid "Do you want to move the item into the submenu?"
+msgstr "Жадаеце перамясьціць элемэнт у падмэню?"
+
+#: ../menueditor/menueditor.c:835
+msgid "Edit"
+msgstr "Рэдагаваць"
+
+#: ../menueditor/menueditor.c:859
+msgid "_File"
+msgstr "_Файл"
+
+#: ../menueditor/menueditor.c:868
+msgid "Open default menu"
+msgstr "Адчыніць дапомнае мэню"
+
+#: ../menueditor/menueditor.c:882
+msgid "_Edit"
+msgstr "_Рэдагаваць"
+
+#: ../menueditor/menueditor.c:888
+msgid "Add an external menu..."
+msgstr "Дадаць вонкавае мэню..."
+
+#: ../menueditor/menueditor.c:900
+msgid "_Help"
+msgstr "_Даведка"
+
+#: ../menueditor/menueditor.c:904
+msgid "_About..."
+msgstr "_Аб..."
+
+#: ../menueditor/menueditor.c:916
+msgid "Create a new Xfce4 menu file"
+msgstr "Стварыць новы файл з мэню Xfce4"
+
+#: ../menueditor/menueditor.c:921
+msgid "Open an Xfce4 menu file"
+msgstr "Адчыніць файл з мэню Xfce4"
+
+#: ../menueditor/menueditor.c:926
+msgid "Save current menu"
+msgstr "Захаваць бягучае мэню"
+
+#: ../menueditor/menueditor.c:931
+msgid "Close current menu"
+msgstr "Зачыніць бягучае мэню"
+
+#: ../menueditor/menueditor.c:937
+msgid "Add an entry to the menu"
+msgstr "Дадаць новы элемэнт мэню"
+
+#: ../menueditor/menueditor.c:941
+msgid "Delete the current entry"
+msgstr "Выдаліць бягучы элемэнт мэню"
+
+#: ../menueditor/menueditor.c:947
+msgid "Move the current entry up"
+msgstr "Узьняць вышэй бягучы элемэнт мэню"
+
+#: ../menueditor/menueditor.c:952
+msgid "Move the current entry down"
+msgstr "Апусьціць ніжэй бягучы элемэнт мэню"
+
+#: ../menueditor/menueditor.c:958
+msgid "Collapse the tree"
+msgstr "Згарнуць дрэва"
+
+#: ../menueditor/menueditor.c:963
+msgid "Expand the tree"
+msgstr "Разгарнуць дрэва"
+
+#: ../menueditor/menueditor.c:991
+msgid "Name"
+msgstr "Назва"
+
+#: ../menueditor/menueditor.c:994
+msgid "Command"
+msgstr "Загад"
+
+#: ../menueditor/menueditor.c:995
+msgid "Hidden"
+msgstr "Схаваны"
+
+#: ../menueditor/utils.c:648
 msgid "Select icon"
 msgstr "Вылучыце значку"
 
-#: ../menueditor/menueditor-add-dialog.c:257
-#: ../menueditor/menueditor-add-dialog.c:437
-#: ../menueditor/menueditor-add-external-dialog.c:142
-#: ../menueditor/menueditor-edit-dialog.c:235
-#: ../menueditor/menueditor-edit-dialog.c:296
-#: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:600
+#: ../menueditor/utils.c:654
+#: ../panel-plugin/desktop-menu-plugin.c:546
 #: ../settings/appearance-settings.c:532
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Усе файлы"
 
-#: ../menueditor/menueditor-add-dialog.c:261
-#: ../menueditor/menueditor-edit-dialog.c:239
-#: ../panel-plugin/desktop-menu-plugin.c:606
+#: ../menueditor/utils.c:658
+#: ../panel-plugin/desktop-menu-plugin.c:552
 #: ../settings/appearance-settings.c:536
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Файлы з відарысамі"
 
-#. Start Notify check button
-#: ../menueditor/menueditor-add-dialog.c:283
-#: ../menueditor/menueditor-edit-dialog.c:261
-msgid "Use startup _notification"
-msgstr "Нагадваньне аб _запуску"
-
-#. Run in terminal check button
-#: ../menueditor/menueditor-add-dialog.c:288
-#: ../menueditor/menueditor-edit-dialog.c:266
-msgid "Run in _terminal"
-msgstr "Выконваць у _тэрмінале"
-
-#: ../menueditor/menueditor-add-dialog.c:427
-#: ../menueditor/menueditor-edit-dialog.c:286
-#: ../menueditor/menueditor-main-window.c:450
-msgid "Select command"
-msgstr "Вылучыце загад"
-
-#: ../menueditor/menueditor-add-dialog.c:442
-#: ../menueditor/menueditor-edit-dialog.c:301
-#, fuzzy
-msgid "Executable Files"
-msgstr "Вылучыце файл мэню"
-
-#: ../menueditor/menueditor-add-dialog.c:457
-#: ../menueditor/menueditor-edit-dialog.c:316
-msgid "Perl Scripts"
-msgstr ""
-
-#: ../menueditor/menueditor-add-dialog.c:463
-#: ../menueditor/menueditor-edit-dialog.c:322
-msgid "Python Scripts"
-msgstr ""
-
-#: ../menueditor/menueditor-add-dialog.c:469
-#: ../menueditor/menueditor-edit-dialog.c:328
-msgid "Ruby Scripts"
-msgstr ""
-
-#: ../menueditor/menueditor-add-dialog.c:475
-#: ../menueditor/menueditor-edit-dialog.c:334
-msgid "Shell Scripts"
-msgstr ""
-
-#: ../menueditor/menueditor-add-external-dialog.c:100
-#, fuzzy
-msgid "Add external menu entry"
-msgstr "Дадаць вонкавае мэню"
-
-#: ../menueditor/menueditor-add-external-dialog.c:122
-msgid "File"
-msgstr "Файл"
-
-#: ../menueditor/menueditor-add-external-dialog.c:123
-msgid "System"
-msgstr "Сыстэма"
-
-#. Source
-#: ../menueditor/menueditor-add-external-dialog.c:129
-#: ../menueditor/menueditor-add-external-dialog.c:130
-#: ../menueditor/menueditor-edit-external-dialog.c:109
-#: ../menueditor/menueditor-edit-external-dialog.c:110
-msgid "Source:"
-msgstr "Крыніца:"
-
-#: ../menueditor/menueditor-add-external-dialog.c:137
-#: ../menueditor/menueditor-edit-external-dialog.c:117
-#, fuzzy
-msgid "Select external menu"
-msgstr "Дадаць вонкавае мэню"
-
-#: ../menueditor/menueditor-add-external-dialog.c:146
-#: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:614
-msgid "Menu Files"
-msgstr "Файлы мэню"
-
-#. Style
-#: ../menueditor/menueditor-add-external-dialog.c:155
-#: ../menueditor/menueditor-add-external-dialog.c:156
-#: ../menueditor/menueditor-edit-external-dialog.c:135
-#: ../menueditor/menueditor-edit-external-dialog.c:136
-msgid "Style:"
-msgstr "Стыль:"
-
-#: ../menueditor/menueditor-add-external-dialog.c:165
-#: ../menueditor/menueditor-edit-external-dialog.c:145
-msgid "Simple"
-msgstr "Простае"
-
-#: ../menueditor/menueditor-add-external-dialog.c:166
-#: ../menueditor/menueditor-edit-external-dialog.c:146
-msgid "Multilevel"
-msgstr "Шматузроўневае"
-
-#. Unique check button
-#: ../menueditor/menueditor-add-external-dialog.c:171
-#: ../menueditor/menueditor-edit-external-dialog.c:151
-msgid "_Unique entries only"
-msgstr "Толькі не_паўторныя запісы"
-
-#: ../menueditor/menueditor-edit-dialog.c:127
-msgid "Edit menu entry"
-msgstr "Рэдагаваць элемэнт мэню"
-
-#: ../menueditor/menueditor-edit-external-dialog.c:96
-#, fuzzy
-msgid "Edit external menu entry"
-msgstr "Дадаць вонкавае мэню"
-
-#: ../menueditor/menueditor-main.c:43
-#, fuzzy
-msgid "Xfce4-MenuEditor"
-msgstr "Мэню Xfce"
-
-#: ../menueditor/menueditor-main-window.c:140
-msgid "_File"
-msgstr "_Файл"
-
-#: ../menueditor/menueditor-main-window.c:141
-msgid "_New"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:141
-#, fuzzy
-msgid "Create a new empty menu"
-msgstr "Стварыць новы файл з мэню Xfce4"
-
-#: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1602
-#: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
-msgid "_Open"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:142
-#, fuzzy
-msgid "Open existing menu"
-msgstr "Адчыніць дапомнае мэню"
-
-#: ../menueditor/menueditor-main-window.c:143
-#, fuzzy
-msgid "Open _default menu"
-msgstr "Адчыніць дапомнае мэню"
-
-#: ../menueditor/menueditor-main-window.c:143
-msgid "Open default menu"
-msgstr "Адчыніць дапомнае мэню"
-
-#: ../menueditor/menueditor-main-window.c:144
-msgid "_Save"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:144
-#, fuzzy
-msgid "Save modifications"
-msgstr "Забыць зьмены"
-
-#: ../menueditor/menueditor-main-window.c:145
-#, fuzzy
-msgid "Save _as..."
-msgstr "Захаваць як..."
-
-#: ../menueditor/menueditor-main-window.c:145
-msgid "Save menu under a given name"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:146
-msgid "_Close"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:146
-#, fuzzy
-msgid "Close menu"
-msgstr "Зачыніць бягучае мэню"
-
-#: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
-msgid "_Quit"
-msgstr "Выйсьці"
-
-#: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
-msgid "Quit Xfce4-Menueditor"
-msgstr "Мэню Xfce"
-
-#: ../menueditor/menueditor-main-window.c:149
-msgid "_Edit"
-msgstr "_Рэдагаваць"
-
-#: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
-msgid "_Edit entry"
-msgstr "Рэдагаваць элемэнт мэню"
-
-#: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
-msgid "Edit selected entry"
-msgstr "Рэдагаваць элемэнт мэню"
-
-#: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
-msgid "_Add entry"
-msgstr "Дадаць элемэнт мэню"
-
-#: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
-msgid "Add a new entry in the menu"
-msgstr "Дадаць новы элемэнт мэню"
-
-#: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
-msgid "Add _external"
-msgstr "Дадаць вонкавае мэню"
-
-#: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
-msgid "Add an external entry"
-msgstr "Дадаць вонкавае мэню"
-
-#: ../menueditor/menueditor-main-window.c:153
-msgid "_Remove entry"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:153
-#, fuzzy
-msgid "Remove entry"
-msgstr "Дадаць элемэнт мэню"
-
-#: ../menueditor/menueditor-main-window.c:154
-msgid "_Up"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:154
-#, fuzzy
-msgid "Move entry up"
-msgstr "Узьняць вышэй бягучы элемэнт мэню"
-
-#: ../menueditor/menueditor-main-window.c:155
-msgid "_Down"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:155
-#, fuzzy
-msgid "Move entry down"
-msgstr "Апусьціць ніжэй бягучы элемэнт мэню"
-
-#: ../menueditor/menueditor-main-window.c:157
-msgid "_Help"
-msgstr "_Даведка"
-
-#: ../menueditor/menueditor-main-window.c:158
-msgid "_About..."
-msgstr "_Аб..."
-
-#: ../menueditor/menueditor-main-window.c:158
-#, fuzzy
-msgid "Show informations about xfce4-menueditor"
-msgstr "Немагчыма запусьціць aunch xfce4-menueditor: %s"
-
-#: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
-msgid "Collapse all"
-msgstr "Згарнуць дрэва"
-
-#: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
-msgid "Collapse all menu entries"
-msgstr "Згарнуць дрэва"
-
-#: ../menueditor/menueditor-main-window.c:161
-msgid "Expand all"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
-msgid "Expand all menu entries"
-msgstr "Разгарнуць дрэва"
-
-#: ../menueditor/menueditor-main-window.c:341
-msgid "Name"
-msgstr "Назва"
-
-#: ../menueditor/menueditor-main-window.c:344
-msgid "Command"
-msgstr "Загад"
-
-#: ../menueditor/menueditor-main-window.c:345
-msgid "Hidden"
-msgstr "Схаваны"
-
-#: ../menueditor/menueditor-main-window.c:427
-msgid "Are you sure you want to close the current menu?"
-msgstr "Вы насамрэч жадаеце зачыніць бягучае мэню?"
-
-#: ../menueditor/menueditor-main-window.c:441
-msgid "Do you want to save before closing the file?"
-msgstr "Мо жадаеце захаваць зьмены перш чым зачыніць файл?"
-
-#: ../menueditor/menueditor-main-window.c:479
-#: ../menueditor/menueditor-main-window.c:532
-#: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:587 ../src/xfdesktop-file-utils.c:55
-msgid "Question"
-msgstr "Пытаньне"
-
-#: ../menueditor/menueditor-main-window.c:481
-msgid "Do you want to save before opening an other menu ?"
-msgstr "Мо жадаеце захаваць зьмены перш чым адчыняць іншае мэню?"
-
-#: ../menueditor/menueditor-main-window.c:483
-#: ../menueditor/menueditor-main-window.c:536
-#: ../menueditor/menueditor-main-window.c:634
-msgid "Ignore modifications"
-msgstr "Ігнараваць зьмены"
-
-#: ../menueditor/menueditor-main-window.c:494
-msgid "Open menu file"
-msgstr "Адчыніць файл мэню"
-
-#: ../menueditor/menueditor-main-window.c:534
-msgid "Do you want to save before opening the default menu ?"
-msgstr "Мо жадаеце захаваць зьмены перш чым адчыняць дапомнае мэню?"
-
-#: ../menueditor/menueditor-main-window.c:594
-#, fuzzy
-msgid "Save menu file as"
-msgstr "Адчыніць файл мэню"
-
-#: ../menueditor/menueditor-main-window.c:632
-#: ../menueditor/menueditor-main-window.c:1343
-msgid "Do you want to save before closing the menu ?"
-msgstr "Мо жадаеце захаваць перш чымся зачыніць мэню?"
-
-#: ../menueditor/menueditor-main-window.c:858
-#: ../menueditor/menueditor-main-window.c:988
-msgid "quit"
-msgstr "выйсьці"
-
-#: ../menueditor/menueditor-main-window.c:963
-#: ../menueditor/menueditor-main-window.c:1584
-msgid "--- separator ---"
-msgstr "--- падзяляльнік ---"
-
-#: ../menueditor/menueditor-main-window.c:1081
-#: ../menueditor/menueditor-main-window.c:1088
-#: ../menueditor/menueditor-main-window.c:1638
-msgid "--- include ---"
-msgstr "--- падстаноўка ---"
-
-#: ../menueditor/menueditor-main-window.c:1089
-#: ../menueditor/menueditor-main-window.c:1655
-msgid "system"
-msgstr "сыстэма"
-
-#: ../menueditor/menueditor-main-window.c:1215
-#: ../menueditor/menueditor-main-window.c:1263
-msgid "Do you want to move the item into the submenu?"
-msgstr "Жадаеце перамясьціць элемэнт у падмэню?"
-
-#: ../menueditor/menueditor-main-window.c:1293
-msgid "A menu editor for Xfce4"
-msgstr "Рэдактар мэню Xfce4"
-
-#. Credits
-#: ../menueditor/menueditor-main-window.c:1298
-msgid "Author/Maintainer"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:1299
-#: ../menueditor/menueditor-main-window.c:1300
-#: ../menueditor/menueditor-main-window.c:1301
-msgid "Contributor"
-msgstr "Укладальнік"
-
-#: ../menueditor/menueditor-main-window.c:1302
-msgid "Icon designer"
-msgstr "Распрацоўка значак"
-
-#: ../menueditor/menueditor-main-window.c:1345
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Вы зьмянілі мэню; можа жадаеце захаваць зьмены перад выхадам?"
-
-#: ../menueditor/menueditor-main-window.c:1347
-#, fuzzy
-msgid "Forget modifications"
-msgstr "Ігнараваць зьмены"
-
-#: ../menueditor/menueditor-main-window.c:2035
-#, c-format
-msgid "Unable to open the menu file %s in write mode"
-msgstr ""
-
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:773
+#: ../panel-plugin/desktop-menu-plugin.c:709
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Мэню Xfce"
@@ -525,107 +354,94 @@ msgstr "Мэню Xfce"
 #: ../modules/menu/desktop-menu-file.c:118
 #: ../modules/menu/desktop-menu-file.c:133
 msgid "Unable to quit session."
-msgstr ""
+msgstr "Немагчыма завяршыць сэанс."
 
 #: ../modules/menu/desktop-menu-file.c:119
-msgid ""
-"Quitting the session requires that Xfce's session manager (xfce4-session) is "
-"running, but it was not detected.  Please quit Xfce via another means."
-msgstr ""
+msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
+msgstr "Завяршэньне сэансу патрабуе каб Кіраўнік сэансаў Xfce (xfce4-session) працаваў, але ён ня знойдзены. Калі ласка, завяршыце працу Xfce іншым чынам."
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
-msgid ""
-"Quitting the session requires the 'xfce4-session-logout' command, but it "
-"could not be found: %s"
-msgstr ""
+msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
+msgstr "Завяршэньне сэансу патрабуе загад \"xfce4-session-logout\", але яго немагчыма знайсьці: %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
 msgstr "/Іншае"
 
-#: ../panel-plugin/desktop-menu-plugin.c:583
+#: ../panel-plugin/desktop-menu-plugin.c:529
 msgid "Select Icon"
 msgstr "Вылучыце значку"
 
-#: ../panel-plugin/desktop-menu-plugin.c:585
+#: ../panel-plugin/desktop-menu-plugin.c:531
 msgid "Select Menu File"
 msgstr "Вылучыце файл мэню"
 
-#: ../panel-plugin/desktop-menu-plugin.c:742
+#: ../panel-plugin/desktop-menu-plugin.c:560
+msgid "Menu Files"
+msgstr "Файлы мэню"
+
+#: ../panel-plugin/desktop-menu-plugin.c:678
 #: ../settings/behavior-settings.c:217
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Немагчыма запусьціць aunch xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
-#, fuzzy
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "Edit Properties"
-msgstr "Рэдагаваць сьпіс тла"
+msgstr "Рэдагавньне ўласьцівасьцяў"
 
-#: ../panel-plugin/desktop-menu-plugin.c:783
-#, fuzzy
+#: ../panel-plugin/desktop-menu-plugin.c:719
 msgid "Button"
-msgstr "Значка _кнопкі:"
+msgstr "Кнопка"
 
-#: ../panel-plugin/desktop-menu-plugin.c:796
-#, fuzzy
+#: ../panel-plugin/desktop-menu-plugin.c:732
 msgid "Button _title:"
-msgstr "Значка _кнопкі:"
+msgstr "За_галовак кнопкі:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:809
+#: ../panel-plugin/desktop-menu-plugin.c:745
 msgid "_Show title in button"
-msgstr ""
+msgstr "_Паказваць загалоўкі на кнопках"
 
-#: ../panel-plugin/desktop-menu-plugin.c:816
-#, fuzzy
+#: ../panel-plugin/desktop-menu-plugin.c:752
 msgid "Menu File"
-msgstr "Файлы мэню"
+msgstr "Файл мэню"
 
-#: ../panel-plugin/desktop-menu-plugin.c:828
-#, fuzzy
+#: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "Use default _desktop menu file"
-msgstr "_Рэдагаваць мэню стальца"
+msgstr "Прад_вызначаны файл мэню"
 
-#: ../panel-plugin/desktop-menu-plugin.c:837
-#, fuzzy
+#: ../panel-plugin/desktop-menu-plugin.c:773
 msgid "Use _custom menu file:"
-msgstr "Адчыніць файл мэню"
+msgstr "Ад_мысловы файл мэню:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:888
+#: ../panel-plugin/desktop-menu-plugin.c:824
 #: ../settings/behavior-settings.c:267
-#, fuzzy
 msgid "_Edit Menu"
-msgstr "_Мэню"
+msgstr "_Рэдагаваць мэню"
 
-#: ../panel-plugin/desktop-menu-plugin.c:894
-#, fuzzy
+#: ../panel-plugin/desktop-menu-plugin.c:830
 msgid "Icons"
-msgstr "Значка:"
+msgstr "Значкі"
 
-#: ../panel-plugin/desktop-menu-plugin.c:906
+#: ../panel-plugin/desktop-menu-plugin.c:842
 msgid "_Button icon:"
 msgstr "Значка _кнопкі:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:930
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
 msgstr "Паказваць _значкі ў мэню"
 
-#: ../panel-plugin/desktop-menu-plugin.c:953
-msgid "There is already a panel menu registered for this screen"
-msgstr ""
-
-#: ../panel-plugin/desktop-menu-plugin.c:1061
-#, fuzzy
+#: ../panel-plugin/desktop-menu-plugin.c:939
 msgid "Edit Menu"
-msgstr "_Мэню"
+msgstr "Рэдагаваньне мэню"
 
-#. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:134
 msgid "Button Label|Desktop"
-msgstr ""
+msgstr "Сталец"
 
-#: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
+#: ../settings/appearance-settings.c:187
+#: ../settings/appearance-settings.c:196
 #: ../settings/backdrop-list-manager.c:631
 msgid "backdrops.list"
 msgstr "backgrounds.list"
@@ -671,145 +487,123 @@ msgid "Scaled"
 msgstr "Маштабаваны"
 
 #: ../settings/appearance-settings.c:745
-#, fuzzy
 msgid "A_djust Brightness:"
 msgstr "Наладка _зыркасьці:"
 
-#: ../settings/appearance-settings.c:803
+#: ../settings/appearance-settings.c:801
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr ""
+msgstr "Xfce ня можа кіраваць вашым Стальцом (%s)."
 
-#: ../settings/appearance-settings.c:804
+#: ../settings/appearance-settings.c:802
 msgid "Unknown Error"
-msgstr ""
+msgstr "Невядомая памылка"
+
+#: ../settings/appearance-settings.c:806
+#: ../src/xfdesktop-file-icon.c:650
+#: ../src/xfdesktop-file-icon.c:708
+msgid "Error"
+msgstr "Памылка"
 
 #: ../settings/appearance-settings.c:808
-#: ../src/xfdesktop-regular-file-icon.c:520
-#: ../src/xfdesktop-regular-file-icon.c:584
-msgid "Error"
-msgstr ""
-
-#: ../settings/appearance-settings.c:810
 msgid "Unable to start xfdesktop"
-msgstr ""
+msgstr "Немагчыма запусьціць xfdesktop"
 
-#: ../settings/appearance-settings.c:832
-#, fuzzy
+#: ../settings/appearance-settings.c:826
 msgid "Information"
-msgstr "Ігнараваць зьмены"
+msgstr "Зьвесткі"
 
-#: ../settings/appearance-settings.c:845
-msgid ""
-"To ensure that this setting takes effect the next time you start Xfce, "
-"please be sure to save your session when logging out.  If you are not using "
-"the Xfce Session Manager (xfce4-session), you will need to manually edit "
-"your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
+#: ../settings/appearance-settings.c:836
+msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "Каб упэўніцца, што Xfce не будзе кіраваць Стальцом у наступны раз, калі вы яго запусьціце, калі ласка, упэўніцеся, што захавалі сэанс перад выхадам. Калі вы не выкарыстоўваеце Кіраўнік сэансаў Xfce (xfce4-session), вам неабходна самастойна адрэдагаваць файл ~/.config/xfce4/xinitrc. Падрабязнасьці даступныя ў дакумэнтацыі на http://xfce.org/."
 
-#: ../settings/appearance-settings.c:847
-msgid ""
-"To ensure that Xfce does not manage your desktop the next time you start "
-"Xfce, please be sure to save your session when logging out.  If you are not "
-"using the Xfce Session Manager (xfce4-session), you will need to manually "
-"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-
-#: ../settings/appearance-settings.c:855
+#: ../settings/appearance-settings.c:844
 msgid "_Do not show this again"
-msgstr ""
+msgstr "Больш _не паказваць гэта"
 
-#. the dialog
-#: ../settings/appearance-settings.c:921
-#, fuzzy
+#: ../settings/appearance-settings.c:911
 msgid "Desktop Preferences"
-msgstr "Наладкі стальца"
+msgstr "Перавагі Стальца"
 
-#: ../settings/appearance-settings.c:938
+#: ../settings/appearance-settings.c:928
 msgid "Allow _Xfce to manage the desktop"
-msgstr ""
+msgstr "Дазволіць Xfce _кіраваць Стальцом"
 
-#: ../settings/appearance-settings.c:979
+#: ../settings/appearance-settings.c:969
 msgid "Stretch single backdrop onto _all monitors"
-msgstr ""
+msgstr "Расьгянуць адзін відарыс на _ўсе маніторы"
 
-#. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:993
-#: ../settings/appearance-settings.c:1175
+#: ../settings/appearance-settings.c:983
+#: ../settings/appearance-settings.c:1165
 msgid "_Appearance"
-msgstr ""
+msgstr "В_онкавы выгляд"
 
-#. color settings frame
-#: ../settings/appearance-settings.c:1019
+#: ../settings/appearance-settings.c:1009
 msgid "Color"
 msgstr "Колер"
 
-#: ../settings/appearance-settings.c:1033
+#: ../settings/appearance-settings.c:1023
 msgid "_Color Style:"
 msgstr "Стыль _колераў:"
 
-#: ../settings/appearance-settings.c:1040
+#: ../settings/appearance-settings.c:1030
 msgid "Solid Color"
 msgstr "Суцэльны колер"
 
-#: ../settings/appearance-settings.c:1041
+#: ../settings/appearance-settings.c:1031
 msgid "Horizontal Gradient"
 msgstr "Гарызантальны градыент"
 
-#: ../settings/appearance-settings.c:1042
+#: ../settings/appearance-settings.c:1032
 msgid "Vertical Gradient"
 msgstr "Вэртыкальны градыент"
 
-#: ../settings/appearance-settings.c:1055
+#: ../settings/appearance-settings.c:1045
 msgid "Fi_rst Color:"
 msgstr "П_ершы колер:"
 
-#: ../settings/appearance-settings.c:1076
+#: ../settings/appearance-settings.c:1066
 msgid "_Second Color:"
 msgstr "Др_угі колер:"
 
-#: ../settings/appearance-settings.c:1101
+#: ../settings/appearance-settings.c:1091
 msgid "Image"
 msgstr "Вірадыс"
 
-#: ../settings/appearance-settings.c:1109
+#: ../settings/appearance-settings.c:1099
 msgid "Show _Image"
 msgstr "Паказаць _вірадыс"
 
-#: ../settings/appearance-settings.c:1131
+#: ../settings/appearance-settings.c:1121
 msgid "_File:"
 msgstr "_Файл:"
 
-#: ../settings/appearance-settings.c:1186
-#: ../settings/appearance-settings.c:1188
+#: ../settings/appearance-settings.c:1176
+#: ../settings/appearance-settings.c:1178
 #, c-format
 msgid "Screen %d"
 msgstr "Экран %d"
 
-#. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1193
+#: ../settings/appearance-settings.c:1183
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Экран %d, манітор %d"
 
-#: ../settings/appearance-settings.c:1210
+#: ../settings/appearance-settings.c:1200
 msgid "_Behavior"
-msgstr ""
+msgstr "Па_водзіны"
 
-#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#: ../settings/backdrop-list-manager.c:160
+#: ../src/xfce-desktop-settings.c:74
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
+"Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
 "Немагчыма захаваць файл %s: %s\n"
 "\n"
-"Калі ласка, абярыце іншае знаходжаньне альбо націсьніце адмену ў дыялёге, "
-"каб скасаваць зьмены, якія вы зрабілі"
+"Калі ласка, абярыце іншае знаходжаньне альбо націсьніце адмену ў дыялёге, каб скасаваць зьмены, якія вы зрабілі"
 
 #: ../settings/backdrop-list-manager.c:430
 msgid "Select backdrop image file"
@@ -844,606 +638,523 @@ msgid "Edit backdrop list"
 msgstr "Рэдагаваць сьпіс тла"
 
 #: ../settings/behavior-settings.c:241
-#, fuzzy
 msgid "Menus"
-msgstr "Файлы мэню"
+msgstr "Мэню"
 
 #: ../settings/behavior-settings.c:249
-#, fuzzy
 msgid "Show _window list on middle click"
-msgstr "Паказаць _сьпіс вокнаў"
+msgstr "Паказаць сьпіс _вокнаў па сярэднй кнопке мышы"
 
 #: ../settings/behavior-settings.c:260
-#, fuzzy
 msgid "Show _desktop menu on right click"
-msgstr "Паказваць _мэню стальца"
+msgstr "Паказваць мэню с_тальца па правай кнопке мышы"
 
 #: ../settings/behavior-settings.c:279
-#, fuzzy
 msgid "Desktop Icons"
-msgstr "Мэню Стальца"
+msgstr "Значкі Стальца"
 
 #: ../settings/behavior-settings.c:288
-#: ../src/xfdesktop-file-properties-dialog.c:138
+#: ../src/xfdesktop-file-icon-manager.c:1021
 msgid "None"
-msgstr ""
+msgstr "Няма"
 
 #: ../settings/behavior-settings.c:289
-#, fuzzy
 msgid "Minimized application icons"
-msgstr "Паказваць значкі д_астасаваньняў"
+msgstr "Паказваць значкі дастасаваньняў"
 
 #: ../settings/behavior-settings.c:291
 msgid "File/launcher icons"
-msgstr ""
+msgstr "Значкі файла/запускалькіка"
 
 #: ../settings/behavior-settings.c:306
-#, fuzzy
 msgid "_Icon size:"
-msgstr "Распрацоўка значак"
+msgstr "Па_мер значак:"
 
 #: ../settings/behavior-settings.c:320
-#, fuzzy
 msgid "Use _system font size"
-msgstr "Адчыніць файл мэню"
+msgstr "Выкарыстоўваць _сыстэмны шрыфт"
 
 #: ../settings/behavior-settings.c:337
 msgid "Custom _font size:"
-msgstr ""
+msgstr "Памер _шрыфту:"
 
-#: ../src/main.c:255
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "Гэта %s вэрсіі %s, працуе ў Xfce %s.\n"
 
-#: ../src/main.c:257
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Пабудаваны з GTK+ %d.%d.%d, зьвязаны з GTK+ %d.%d.%d."
 
-#: ../src/main.c:261
+#: ../src/main.c:246
 msgid "Build options:\n"
-msgstr ""
+msgstr "Опцыі сборкі:\n"
 
-#: ../src/main.c:262
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "    Мэню Стальца: %s\n"
 
-#: ../src/main.c:264 ../src/main.c:271 ../src/main.c:278
-#, fuzzy
+#: ../src/main.c:249
+#: ../src/main.c:256
 msgid "enabled"
-msgstr "Маштабаваны"
+msgstr "уключана"
 
-#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
-#, fuzzy
+#: ../src/main.c:251
+#: ../src/main.c:258
 msgid "disabled"
-msgstr "Пліткамі"
+msgstr "выключаны"
 
-#: ../src/main.c:269
-#, fuzzy, c-format
+#: ../src/main.c:254
+#, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "Мэню Стальца"
+msgstr "    Значкі Стальца: %s\n"
 
-#: ../src/main.c:276
-#, fuzzy, c-format
-msgid "    Desktop File Icons:  %s\n"
-msgstr "Мэню Стальца"
-
-#: ../src/main.c:305
+#: ../src/main.c:286
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: невядомы выбар: %s\n"
 
-#: ../src/main.c:306
+#: ../src/main.c:287
 msgid "Options are:\n"
 msgstr "Выбары:\n"
 
-#: ../src/main.c:307
-#, fuzzy
-msgid "    --reload      Reload all settings, refresh image list\n"
+#: ../src/main.c:288
+msgid "    -reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      Перачытаць усе наладкі, абнавіць сьпіс відарысаў\n"
 
-#: ../src/main.c:308
-#, fuzzy
-msgid "    --menu        Pop up the menu (at the current mouse position)\n"
+#: ../src/main.c:289
+msgid "    -menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Паказаць мэню (побач з мышой)\n"
 
-#: ../src/main.c:309
-#, fuzzy
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
+#: ../src/main.c:290
+msgid "    -windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Паказаць сьпіс вокнаў (побач з мышой)\n"
 
-#: ../src/main.c:310
-msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr ""
+#: ../src/main.c:291
+msgid "    -quit        Cause xfdesktop to quit\n"
+msgstr "    -quit Завяршыць працу xfdesktop\n"
 
-#: ../src/main.c:325
-#, c-format
-msgid "%s is not running.\n"
-msgstr ""
-
-#: ../src/windowlist.c:218
+#: ../src/windowlist.c:193
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Працоўная прастора %d</b>"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:201
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Працоўная прастора %d</i>"
 
-#: ../src/windowlist.c:293 ../src/windowlist.c:296
+#: ../src/windowlist.c:268
+#: ../src/windowlist.c:271
 msgid "_Add Workspace"
 msgstr "Д_адаць працоўную прастору"
 
-#: ../src/windowlist.c:304
+#: ../src/windowlist.c:279
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "Вы_даліць працоўную прастору %d"
 
-#: ../src/windowlist.c:307
+#: ../src/windowlist.c:282
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Вы_даліць працоўную прастору \"%s\""
 
-#: ../src/xfce-desktop.c:542
+#: ../src/xfce-desktop.c:571
 msgid "Desktop"
 msgstr "Сталец"
 
-#: ../src/xfdesktop-file-icon-manager.c:386
+#: ../src/xfdesktop-file-icon-manager.c:233
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop ня можа стварыць тэчку \"%s\" каб захоўваць элемэнты Стальца:"
 
-#: ../src/xfdesktop-file-icon-manager.c:388
-#: ../src/xfdesktop-file-icon-manager.c:399
-#: ../src/xfdesktop-file-icon-manager.c:1094
+#: ../src/xfdesktop-file-icon-manager.c:235
+#: ../src/xfdesktop-file-icon-manager.c:244
+#: ../src/xfdesktop-file-icon-manager.c:1564
 msgid "Create Folder Failed"
-msgstr ""
+msgstr "Збой стварэньня тэчкі"
 
-#: ../src/xfdesktop-file-icon-manager.c:397
+#: ../src/xfdesktop-file-icon-manager.c:242
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop ня можа выкарыстоўваць \"%s\" каб захоўваць элемэнты Стальца, бо гэта ня тэчка."
 
-#: ../src/xfdesktop-file-icon-manager.c:401
+#: ../src/xfdesktop-file-icon-manager.c:246
 msgid "Please delete or rename the file."
-msgstr ""
+msgstr "Калі ласка, выдаліце ці зьмяніце назву файла."
 
-#: ../src/xfdesktop-file-icon-manager.c:538
+#: ../src/xfdesktop-file-icon-manager.c:371
+#: ../src/xfdesktop-file-icon-manager.c:884
+#, c-format
+msgid "Unable to mount \"%s\":"
+msgstr "Немагчыма адмантаваць \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:373
+#: ../src/xfdesktop-file-icon-manager.c:888
+msgid "Mount Failed"
+msgstr "Збой мантаваньня"
+
+#: ../src/xfdesktop-file-icon-manager.c:375
+msgid "Unknown error."
+msgstr "Невядомая памылка."
+
+#: ../src/xfdesktop-file-icon-manager.c:436
+#: ../src/xfdesktop-file-icon-manager.c:767
+#: ../src/xfdesktop-file-icon-manager.c:801
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Немагчыма запусьціць \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:438
+#: ../src/xfdesktop-file-icon-manager.c:769
+#: ../src/xfdesktop-file-icon-manager.c:804
+#: ../src/xfdesktop-file-icon-manager.c:1598
+msgid "Launch Error"
+msgstr "Памылка запуску"
+
+#: ../src/xfdesktop-file-icon-manager.c:440
+msgid "The associated application could not be found or executed."
+msgstr "Немагчыма адшукаць звязанае дастасаваньне."
+
+#: ../src/xfdesktop-file-icon-manager.c:567
 #, c-format
 msgid "Rename \"%s\""
-msgstr ""
+msgstr "Перайменаваньне \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:545
-#: ../src/xfdesktop-file-icon-manager.c:1166
-#: ../src/xfdesktop-file-icon-manager.c:1257
-#: ../src/xfdesktop-file-icon-manager.c:1268
+#: ../src/xfdesktop-file-icon-manager.c:574
+#: ../src/xfdesktop-file-icon-manager.c:1636
+#: ../src/xfdesktop-file-icon-manager.c:1727
+#: ../src/xfdesktop-file-icon-manager.c:1738
 msgid "Enter the new name:"
-msgstr ""
+msgstr "Увядзіце новую назву:"
 
-#: ../src/xfdesktop-file-icon-manager.c:547
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:576
 msgid "Rename"
-msgstr "Маштабаваны"
+msgstr "Перайменаваньне"
 
-#: ../src/xfdesktop-file-icon-manager.c:584
-#, fuzzy, c-format
+#: ../src/xfdesktop-file-icon-manager.c:642
+#, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "Вы насамрэч жадаеце зачыніць бягучае мэню?"
+msgstr "Вы насамрэч жадаеце выдаліць \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:589
-#: ../src/xfdesktop-file-icon-manager.c:609
+#: ../src/xfdesktop-file-icon-manager.c:647
+#: ../src/xfdesktop-file-icon-manager.c:667
 msgid "If you delete a file, it is permanently lost."
-msgstr ""
+msgstr "Калі вы выдаліце файл, ён будзе згублены назаўсёды."
 
-#: ../src/xfdesktop-file-icon-manager.c:603
-#, fuzzy, c-format
+#: ../src/xfdesktop-file-icon-manager.c:661
+#, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "Вы насамрэч жадаеце зачыніць бягучае мэню?"
+msgstr "Вы насамрэч жадаеце выдаліць гэтыя %d файлаў?"
 
-#: ../src/xfdesktop-file-icon-manager.c:606
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:664
 msgid "Delete Multiple Files"
-msgstr "Вылучыце файл мэню"
+msgstr "Выдаленьне некалькіх файлаў"
 
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:823
-#: ../src/xfdesktop-file-icon-manager.c:1528 ../src/xfdesktop-file-icon.c:142
-#: ../src/xfdesktop-file-utils.c:352
-#, fuzzy, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "Немагчыма запусьціць aunch xfce4-menueditor: %s"
+#: ../src/xfdesktop-file-icon-manager.c:806
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Гэтая функцыя патрабуе прысутнасьці кіраўніка файлаў (напрыклад, Thunar)."
 
-#: ../src/xfdesktop-file-icon-manager.c:825
-#: ../src/xfdesktop-file-icon-manager.c:865
-#: ../src/xfdesktop-file-icon-manager.c:1128
-#: ../src/xfdesktop-file-icon-manager.c:1530 ../src/xfdesktop-file-icon.c:144
-#: ../src/xfdesktop-file-utils.c:355
-#, fuzzy
-msgid "Launch Error"
-msgstr "Запускальнік"
-
-#: ../src/xfdesktop-file-icon-manager.c:866
-msgid "The application chooser could not be opened."
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1027
+#: ../src/xfdesktop-file-icon-manager.c:885
 #, c-format
-msgid "_Open With \"%s\""
-msgstr ""
+msgid "Unable to unmount \"%s\":"
+msgstr "Немагчыма адмантаваць \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1030
+#: ../src/xfdesktop-file-icon-manager.c:888
+msgid "Unmount Failed"
+msgstr "Збой адмантаваньня"
+
+#: ../src/xfdesktop-file-icon-manager.c:917
 #, c-format
-msgid "Open With \"%s\""
-msgstr ""
+msgid "Unable to eject \"%s\":"
+msgstr "Немагчыма вызваліць \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1091
-#, fuzzy, c-format
-msgid "Unable to create folder named \"%s\":"
-msgstr "Немагчыма запусьціць aunch xfce4-menueditor: %s"
+#: ../src/xfdesktop-file-icon-manager.c:919
+msgid "Eject Failed"
+msgstr "Збой вызваленьня"
 
-#: ../src/xfdesktop-file-icon-manager.c:1130
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1163
-msgid "Create New Folder"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1167
-msgid "New Folder"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1168
-#: ../src/xfdesktop-file-icon-manager.c:1259
-#: ../src/xfdesktop-file-icon-manager.c:1270
-msgid "Create"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1204
-#, fuzzy, c-format
-msgid "Unable to create file named \"%s\":"
-msgstr "Немагчыма запусьціць aunch xfce4-menueditor: %s"
-
-#: ../src/xfdesktop-file-icon-manager.c:1207
-#, fuzzy
-msgid "Create File Failed"
-msgstr "Вылучыце файл мэню"
-
-#: ../src/xfdesktop-file-icon-manager.c:1246
-#, c-format
-msgid "Create Document from template \"%s\""
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1265
-msgid "Create Empty File"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1269
-msgid "New Empty File"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1302
-#, fuzzy, c-format
-msgid "Unable to create file \"%s\":"
-msgstr "Немагчыма запусьціць aunch xfce4-menueditor: %s"
-
-#: ../src/xfdesktop-file-icon-manager.c:1303
-#, fuzzy
-msgid "Create Error"
-msgstr "Рэдагаваць сьпіс тла"
-
-#: ../src/xfdesktop-file-icon-manager.c:1587
-msgid "_Open all"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1617
-msgid "_Execute"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1634
-#, fuzzy
-msgid "_Edit Launcher"
-msgstr "Запускальнік"
-
-#: ../src/xfdesktop-file-icon-manager.c:1674
-msgid "Open With"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1705
-msgid "Open With Other _Application..."
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1804
-msgid "_Rename..."
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1820
-#: ../src/xfdesktop-volume-icon.c:593
-#, fuzzy
-msgid "_Properties..."
-msgstr "Рэдагаваць сьпіс тла"
-
-#: ../src/xfdesktop-file-icon-manager.c:1837
-#, fuzzy
-msgid "Des_ktop"
-msgstr "Сталец"
-
-#: ../src/xfdesktop-file-icon-manager.c:1856
-#, fuzzy
-msgid "Create _Launcher..."
-msgstr "Запускальнік"
-
-#: ../src/xfdesktop-file-icon-manager.c:1877
-msgid "Create _URL Link..."
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1894
-#, fuzzy
-msgid "Create _Folder..."
-msgstr "Рэдагаваць сьпіс тла"
-
-#: ../src/xfdesktop-file-icon-manager.c:1936
-#, fuzzy
-msgid "_Empty File"
-msgstr "_Файл"
-
-#: ../src/xfdesktop-file-icon-manager.c:1977
-#, fuzzy
-msgid "Desktop _Settings..."
-msgstr "Наладкі стальца"
-
-#: ../src/xfdesktop-file-icon-manager.c:1986
-#, fuzzy
-msgid "_Desktop Properties..."
-msgstr "Рэдагаваць сьпіс тла"
-
-#: ../src/xfdesktop-file-icon-manager.c:3158
-#: ../src/xfdesktop-regular-file-icon.c:382
-#, fuzzy, c-format
-msgid "Failed to run \"%s\":"
-msgstr "Немагчыма запусьціць aunch xfce4-menueditor: %s"
-
-#: ../src/xfdesktop-file-icon-manager.c:3160
-#: ../src/xfdesktop-regular-file-icon.c:384
-msgid "Run Error"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:146
-msgid "The associated application could not be found or executed."
-msgstr ""
-
-#: ../src/xfdesktop-file-properties-dialog.c:103
+#: ../src/xfdesktop-file-icon-manager.c:988
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Немагчыма задаць прадвызначанае дастасаваньне для \"%s\" для \"%s\":"
 
-#: ../src/xfdesktop-file-properties-dialog.c:106
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:991
 msgid "Properties Error"
-msgstr "Рэдагаваць сьпіс тла"
+msgstr "Памылкі ўласьцівасьцяў"
 
-#: ../src/xfdesktop-file-properties-dialog.c:138
+#: ../src/xfdesktop-file-icon-manager.c:1021
 msgid "Write only"
-msgstr ""
+msgstr "Толькі запіс"
 
-#: ../src/xfdesktop-file-properties-dialog.c:138
+#: ../src/xfdesktop-file-icon-manager.c:1021
 msgid "Read only"
-msgstr ""
+msgstr "Толькі чытаньне"
 
-#: ../src/xfdesktop-file-properties-dialog.c:138
+#: ../src/xfdesktop-file-icon-manager.c:1021
 msgid "Read & Write"
-msgstr ""
+msgstr "Чытаньне і запіс"
 
-#: ../src/xfdesktop-file-properties-dialog.c:163
+#: ../src/xfdesktop-file-icon-manager.c:1048
 msgid "General"
-msgstr ""
+msgstr "Агульныя"
 
-#: ../src/xfdesktop-file-properties-dialog.c:214
+#: ../src/xfdesktop-file-icon-manager.c:1099
 msgid "Kind:"
-msgstr ""
+msgstr "Від:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:234
-msgid "Link Target:"
-msgstr ""
-
-#: ../src/xfdesktop-file-properties-dialog.c:251
-#: ../src/xfdesktop-file-properties-dialog.c:410
-msgid "(unknown)"
-msgstr ""
-
-#: ../src/xfdesktop-file-properties-dialog.c:273
-msgid "Open With:"
-msgstr ""
-
-#: ../src/xfdesktop-file-properties-dialog.c:350
-msgid "Modified:"
-msgstr ""
-
-#: ../src/xfdesktop-file-properties-dialog.c:368
-msgid "Accessed:"
-msgstr ""
-
-#: ../src/xfdesktop-file-properties-dialog.c:395
-msgid "Free Space:"
-msgstr ""
-
-#: ../src/xfdesktop-file-properties-dialog.c:397
-msgid "Size:"
-msgstr ""
-
-#: ../src/xfdesktop-file-properties-dialog.c:413
-#: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:487 ../src/xfdesktop-volume-icon.c:460
-msgid "%s (%"
-msgstr ""
-
-#. permissions tab
-#: ../src/xfdesktop-file-properties-dialog.c:428
-msgid "Permissions"
-msgstr ""
-
-#: ../src/xfdesktop-file-properties-dialog.c:450
-msgid "Owner:"
-msgstr ""
-
-#: ../src/xfdesktop-file-properties-dialog.c:472
-#: ../src/xfdesktop-file-properties-dialog.c:510
-msgid "Access:"
-msgstr ""
-
-#: ../src/xfdesktop-file-properties-dialog.c:495
-msgid "Group:"
-msgstr ""
-
-#: ../src/xfdesktop-file-properties-dialog.c:533
-#, fuzzy
-msgid "Others:"
-msgstr "/Іншае"
-
-#: ../src/xfdesktop-file-utils.c:74
-msgid "Yes to _all"
-msgstr ""
-
-#: ../src/xfdesktop-file-utils.c:106
-#, c-format
-msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr ""
-
-#: ../src/xfdesktop-file-utils.c:109
-#, c-format
-msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr ""
-
-#: ../src/xfdesktop-file-utils.c:112
-#, c-format
-msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr ""
-
-#: ../src/xfdesktop-file-utils.c:121
-#, fuzzy
-msgid "File Error"
-msgstr "Рэдагаваць сьпіс тла"
-
-#: ../src/xfdesktop-file-utils.c:137
+#: ../src/xfdesktop-file-icon-manager.c:1109
 msgid "broken link"
-msgstr ""
+msgstr "зламаная спасылка"
 
-#: ../src/xfdesktop-file-utils.c:141
+#: ../src/xfdesktop-file-icon-manager.c:1112
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "спасылка на %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:489
-#: ../src/xfdesktop-special-file-icon.c:490 ../src/xfdesktop-volume-icon.c:463
+#: ../src/xfdesktop-file-icon-manager.c:1129
+msgid "Link Target:"
+msgstr "Мэта спасылкі:"
+
+#: ../src/xfdesktop-file-icon-manager.c:1146
+#: ../src/xfdesktop-file-icon-manager.c:1305
+msgid "(unknown)"
+msgstr "(невядома)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1168
+msgid "Open With:"
+msgstr "Адчыніць у:"
+
+#: ../src/xfdesktop-file-icon-manager.c:1245
+msgid "Modified:"
+msgstr "Зьменены:"
+
+#: ../src/xfdesktop-file-icon-manager.c:1263
+msgid "Accessed:"
+msgstr "Апошні доступ:"
+
+#: ../src/xfdesktop-file-icon-manager.c:1290
+msgid "Free Space:"
+msgstr "Вольная прастора:"
+
+#: ../src/xfdesktop-file-icon-manager.c:1292
+msgid "Size:"
+msgstr "Памер:"
+
+#: ../src/xfdesktop-file-icon-manager.c:1308
+msgid "%s (%"
+msgstr "%s (%"
+
+#: ../src/xfdesktop-file-icon-manager.c:1308
+msgid " Bytes)"
+msgstr " байтаў)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1323
+msgid "Permissions"
+msgstr "Правы доступу"
+
+#: ../src/xfdesktop-file-icon-manager.c:1345
+msgid "Owner:"
+msgstr "Уладальнік:"
+
+#: ../src/xfdesktop-file-icon-manager.c:1363
+#: ../src/xfdesktop-file-icon-manager.c:1401
+msgid "Access:"
+msgstr "Доступ:"
+
+#: ../src/xfdesktop-file-icon-manager.c:1386
+msgid "Group:"
+msgstr "Група:"
+
+#: ../src/xfdesktop-file-icon-manager.c:1424
+msgid "Others:"
+msgstr "Іншыя:"
+
+#: ../src/xfdesktop-file-icon-manager.c:1497
 #, c-format
-msgid ""
-"Kind: %s\n"
-"Modified:%s\n"
-"Size: %s"
-msgstr ""
+msgid "_Open With \"%s\""
+msgstr "_Адчыніць у \"%s\""
 
-#: ../src/xfdesktop-regular-file-icon.c:581
+#: ../src/xfdesktop-file-icon-manager.c:1500
+#, c-format
+msgid "Open With \"%s\""
+msgstr "Адчыніць у \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1561
+#, c-format
+msgid "Unable to create folder named \"%s\":"
+msgstr "Немагчыма стварыць тэчку пад назвай \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:1600
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Немагчыма запусьціць праграму \"exo-desktop-item-edit\", якая патрабуецца для стварэньня й рэдагаваньня запускальнікаў і спасылкан на Стальцэ."
+
+#: ../src/xfdesktop-file-icon-manager.c:1633
+msgid "Create New Folder"
+msgstr "Стварыць новую тэчку"
+
+#: ../src/xfdesktop-file-icon-manager.c:1637
+msgid "New Folder"
+msgstr "Новая тэчка"
+
+#: ../src/xfdesktop-file-icon-manager.c:1638
+#: ../src/xfdesktop-file-icon-manager.c:1729
+#: ../src/xfdesktop-file-icon-manager.c:1740
+msgid "Create"
+msgstr "Стварыць"
+
+#: ../src/xfdesktop-file-icon-manager.c:1674
+#, c-format
+msgid "Unable to create file named \"%s\":"
+msgstr "Немагчыма стварыць файл пад назвай \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:1677
+msgid "Create File Failed"
+msgstr "Збой стварэньня файла"
+
+#: ../src/xfdesktop-file-icon-manager.c:1716
+#, c-format
+msgid "Create Document from template \"%s\""
+msgstr "Стварыць дакумэнт з шаблёна \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1735
+msgid "Create Empty File"
+msgstr "Стварыць пусты файл"
+
+#: ../src/xfdesktop-file-icon-manager.c:1739
+msgid "New Empty File"
+msgstr "Новы пусты файл"
+
+#: ../src/xfdesktop-file-icon-manager.c:1772
+#, c-format
+msgid "Unable to create file \"%s\":"
+msgstr "Немагчыма стварыць файл \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:1773
+msgid "Create Error"
+msgstr "Памылка стварэньня"
+
+#: ../src/xfdesktop-file-icon-manager.c:2013
+msgid "_Open all"
+msgstr "Адчыніць _усе"
+
+#: ../src/xfdesktop-file-icon-manager.c:2028
+msgid "_Open"
+msgstr "_Адчыніць"
+
+#: ../src/xfdesktop-file-icon-manager.c:2045
+msgid "_Execute"
+msgstr "Вы_кананьне"
+
+#: ../src/xfdesktop-file-icon-manager.c:2062
+msgid "_Edit Launcher"
+msgstr "_Рэдагаваць запускальнік"
+
+#: ../src/xfdesktop-file-icon-manager.c:2102
+msgid "Open With"
+msgstr "Адчыніць у"
+
+#: ../src/xfdesktop-file-icon-manager.c:2136
+msgid "Open With Other _Application..."
+msgstr "Адчыніць у іншым д_астасаваньні..."
+
+#: ../src/xfdesktop-file-icon-manager.c:2207
+msgid "_Mount Volume"
+msgstr "Пры_мантаваць падзел"
+
+#: ../src/xfdesktop-file-icon-manager.c:2218
+msgid "_Unmount Volume"
+msgstr "Ад_мантаваць падзел"
+
+#: ../src/xfdesktop-file-icon-manager.c:2232
+msgid "E_ject Volume"
+msgstr "Вы_зваліць падзел"
+
+#: ../src/xfdesktop-file-icon-manager.c:2242
+msgid "_Copy Files"
+msgstr "С_капіяваць файлы"
+
+#: ../src/xfdesktop-file-icon-manager.c:2243
+msgid "_Copy File"
+msgstr "С_капіяваць файл"
+
+#: ../src/xfdesktop-file-icon-manager.c:2252
+msgid "Cu_t Files"
+msgstr "Вы_разаць файлы"
+
+#: ../src/xfdesktop-file-icon-manager.c:2253
+msgid "Cu_t File"
+msgstr "Вы_разаць файл"
+
+#: ../src/xfdesktop-file-icon-manager.c:2262
+msgid "_Delete Files"
+msgstr "Вы_даліць файлы"
+
+#: ../src/xfdesktop-file-icon-manager.c:2263
+msgid "_Delete File"
+msgstr "Вы_даліць файл"
+
+#: ../src/xfdesktop-file-icon-manager.c:2275
+msgid "_Rename..."
+msgstr "Перай_менаваньне..."
+
+#: ../src/xfdesktop-file-icon-manager.c:2293
+msgid "_Properties..."
+msgstr "_Уласьцівасьці..."
+
+#: ../src/xfdesktop-file-icon-manager.c:2311
+msgid "Create _New"
+msgstr "Стварыць н_овы элемэнт"
+
+#: ../src/xfdesktop-file-icon-manager.c:2320
+msgid "_Launcher..."
+msgstr "За_пускальнік"
+
+#: ../src/xfdesktop-file-icon-manager.c:2341
+msgid "_URL Link..."
+msgstr "_URL спасылку..."
+
+#: ../src/xfdesktop-file-icon-manager.c:2356
+msgid "_Folder..."
+msgstr "_Тэчку..."
+
+#: ../src/xfdesktop-file-icon-manager.c:2395
+msgid "_Empty File"
+msgstr "Пу_сты файл"
+
+#: ../src/xfdesktop-file-icon-manager.c:3347
+#: ../src/xfdesktop-file-icon.c:549
+#, c-format
+msgid "Failed to run \"%s\":"
+msgstr "Немагчыма выканаць: \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:3349
+#: ../src/xfdesktop-file-icon.c:551
+msgid "Run Error"
+msgstr "Памылка запуску"
+
+#: ../src/xfdesktop-file-icon.c:705
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr ""
-
-#: ../src/xfdesktop-special-file-icon.c:258
-msgid "Home"
-msgstr ""
-
-#: ../src/xfdesktop-special-file-icon.c:508
-#, fuzzy
-msgid "Trash Error"
-msgstr "Запускальнік"
-
-#: ../src/xfdesktop-special-file-icon.c:510
-#, fuzzy
-msgid "Unable to contact the Xfce Trash service."
-msgstr "Немагчыма запусьціць aunch xfce4-menueditor: %s"
-
-#: ../src/xfdesktop-special-file-icon.c:511
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-
-#: ../src/xfdesktop-special-file-icon.c:635
-#, fuzzy
-msgid "_Empty Trash"
-msgstr "_Файл"
-
-#: ../src/xfdesktop-volume-icon.c:491
-#, fuzzy, c-format
-msgid "Unable to mount \"%s\":"
-msgstr "Немагчыма запусьціць aunch xfce4-menueditor: %s"
-
-#: ../src/xfdesktop-volume-icon.c:492
-#, fuzzy, c-format
-msgid "Unable to unmount \"%s\":"
-msgstr "Немагчыма запусьціць aunch xfce4-menueditor: %s"
-
-#: ../src/xfdesktop-volume-icon.c:495
-#, fuzzy
-msgid "Mount Failed"
-msgstr "Файлы мэню"
-
-#: ../src/xfdesktop-volume-icon.c:495
-#, fuzzy
-msgid "Unmount Failed"
-msgstr "Файлы мэню"
-
-#: ../src/xfdesktop-volume-icon.c:513
-#, fuzzy, c-format
-msgid "Unable to eject \"%s\":"
-msgstr "Немагчыма запусьціць aunch xfce4-menueditor: %s"
-
-#: ../src/xfdesktop-volume-icon.c:516
-msgid "Eject Failed"
-msgstr ""
-
-#: ../src/xfdesktop-volume-icon.c:554
-msgid "_Mount Volume"
-msgstr ""
-
-#: ../src/xfdesktop-volume-icon.c:565
-msgid "_Unmount Volume"
-msgstr ""
-
-#: ../src/xfdesktop-volume-icon.c:579
-msgid "E_ject Volume"
-msgstr ""
+msgstr "Немагчыма перайменаваць \"%s\" у \"%s\":"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr ""
+msgstr "Графічны сродак для рэдагаваньня мэню Xfce 4"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
-msgstr ""
+msgstr "Рэдактар мэню"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Menu Editor"
-msgstr "Мэню Xfce"
+msgstr "Рэдактар Мэню Xfce 4"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr ""
+msgstr "Паказвае мэню, якое ўтрымлівае катэгорыі ўсталяваных дастасаваньняў"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
@@ -1451,84 +1162,9 @@ msgstr "Наладкі стальца"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr ""
+msgstr "Настаўленьні для Кіраўніка стальца Xfce 4"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
-#, fuzzy
 msgid "Xfce 4 Desktop Settings"
-msgstr "Наладкі стальца"
+msgstr "Настаўленьні Стальца Xfce 4"
 
-#, fuzzy
-#~ msgid "Unable to empty the trash."
-#~ msgstr "Немагчыма запусьціць aunch xfce4-menueditor: %s"
-
-#, fuzzy
-#~ msgid "_Copy Files"
-#~ msgstr "_Файл"
-
-#, fuzzy
-#~ msgid "_Copy File"
-#~ msgstr "_Файл"
-
-#, fuzzy
-#~ msgid "Cu_t Files"
-#~ msgstr "_Файл"
-
-#, fuzzy
-#~ msgid "Cu_t File"
-#~ msgstr "_Файл"
-
-#, fuzzy
-#~ msgid "_Delete Files"
-#~ msgstr "Вылучыце файл мэню"
-
-#, fuzzy
-#~ msgid "_Delete File"
-#~ msgstr "Вылучыце файл мэню"
-
-#, fuzzy
-#~ msgid "_Paste Files"
-#~ msgstr "Сьпіс файлаў"
-
-#, fuzzy
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "Вы насамрэч жадаеце зачыніць бягучае мэню?"
-
-#~ msgid "Core developer"
-#~ msgstr "Асноўны распрацоўнік"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "Загад не йснуе!"
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "Каб дадаць элемэн, павінны быць запоўнены ўсе палі."
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "Поле \"Назва\" зьяўляецца абавязковым."
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "Поле \"Крыніца\" зьяўляецца абавязковым."
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "Падзяляльнікі немагчыма рэдагаваць"
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "Файл %s не йснуе!"
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "Жадаеце перамясьціць элемэнт у бацькоўскае мэню?"
-
-#~ msgid "Edit"
-#~ msgstr "Рэдагаваць"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "Дадаць вонкавае мэню..."
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "Адчыніць файл з мэню Xfce4"
-
-#~ msgid "Save current menu"
-#~ msgstr "Захаваць бягучае мэню"
-
-#~ msgid "Delete the current entry"
-#~ msgstr "Выдаліць бягучы элемэнт мэню"
