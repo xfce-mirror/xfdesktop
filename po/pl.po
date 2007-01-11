@@ -83,9 +83,8 @@ msgstr "Ikona:"
 #: ../menueditor/menueditor-add-dialog.c:330
 #: ../menueditor/menueditor-edit-dialog.c:191
 #: ../menueditor/menueditor-edit-dialog.c:586
-#, fuzzy
 msgid "No icon"
-msgstr "_Ikona przycisku:"
+msgstr "Brak ikony"
 
 #: ../menueditor/menueditor-add-dialog.c:225
 #: ../menueditor/menueditor-add-dialog.c:226
@@ -485,7 +484,7 @@ msgstr "Zapomnij zmiany"
 #: ../menueditor/menueditor-main-window.c:2035
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
-msgstr ""
+msgstr "Nie mogę otworzyć pliku menu %s w trybie do zapisu"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
@@ -665,7 +664,6 @@ msgid "Information"
 msgstr "Informacje"
 
 #: ../settings/appearance-settings.c:845
-#, fuzzy
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -673,9 +671,8 @@ msgid ""
 "your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
-"By upewnić się że Xfce nie zarządza twoim pulpitem zapisz sesję przy "
-"następnym wylogowaniu się. Możesz też ręcznie edytować ~/.config/xfce4/"
-"xinitrc file."
+"By upewnić się że podane ustawienia zostaną uwzglądnione po ponownym uruchomionu Xfce "
+"zapisz sesję przy wylogowaniu. Jeżeli nie używasz xfce4-session będziesz musiał ręcznie edytować ~/.config/xfce4/xinitrc."
 
 #: ../settings/appearance-settings.c:847
 msgid ""
@@ -1029,10 +1026,8 @@ msgid "Launch Error"
 msgstr "Błąd uruchamiania"
 
 #: ../src/xfdesktop-file-icon-manager.c:866
-#, fuzzy
 msgid "The application chooser could not be opened."
-msgstr ""
-"Przypisana aplikacja nie została znaleziona lub nie można jej uruchomić."
+msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
 
 #: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
 msgid ""
@@ -1321,23 +1316,20 @@ msgid "Home"
 msgstr "Katalog Domowy"
 
 #: ../src/xfdesktop-special-file-icon.c:508
-#, fuzzy
 msgid "Trash Error"
-msgstr "Błąd uruchamiania"
+msgstr "Błąd Śmietnika"
 
 #: ../src/xfdesktop-special-file-icon.c:510
-#, fuzzy
 msgid "Unable to contact the Xfce Trash service."
-msgstr "Nie można otworzyć kosza."
+msgstr "Nie można połączyć się z usługą Kosza Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:511
-#, fuzzy
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr ""
-"Opróżnianie kosza wymaga menadżera plików z jego obsługą, na przykład "
-"Thunara."
+"Upewnij się czy masz zainstalowanego menedżera plików wspierającego usługę "
+"Kosza Xfce - takiego jak Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
