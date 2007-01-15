@@ -30,14 +30,17 @@ backdrop_settings_la_SOURCES = \
 backdrop_settings_la_CFLAGS =						\
 	-I$(top_srcdir)							\
 	-I$(top_srcdir)/common						\
-	-I$(top_srcdir)/src \
+	-I$(top_srcdir)/src 						\
+	$(LIBEXO_CFLAGS)						\
 	$(XFCE_MCS_MANAGER_CFLAGS)					\
+	-DEXO_API_SUBJECT_TO_CHANGE					\
 	-DLOCALEDIR=\"$(localedir)\"					\
 	-DDATADIR=\"$(datadir)\"					\
 	-DBINDIR=\"$(bindir)\"
 
 backdrop_settings_la_LIBADD =						\
-	$(top_builddir)/common/libxfdesktop.la
+	$(top_builddir)/common/libxfdesktop.la				\
+	$(LIBEXO_LIBS)
 
 if HAVE_CYGWIN
   backdrop_settings_la_LIBADD += \

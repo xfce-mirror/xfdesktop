@@ -57,6 +57,10 @@
 #endif
 #include <gtk/gtk.h>
 
+#ifdef HAVE_LIBEXO
+#include <exo/exo.h>
+#endif
+
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 #include <xfce-mcs-manager/manager-plugin.h>
@@ -496,6 +500,7 @@ file_entry_lost_focus (GtkWidget * entry, GdkEventFocus * ev,
     return FALSE;
 }
 
+#ifndef HAVE_LIBEXO
 static void
 update_preview_cb(GtkFileChooser *chooser, gpointer data)
 {
@@ -516,11 +521,15 @@ update_preview_cb(GtkFileChooser *chooser, gpointer data)
     }
     gtk_file_chooser_set_preview_widget_active(chooser, (pix != NULL));
 }
+#endif
 
 static void
 browse_cb(GtkWidget *b, BackdropPanel *bp)
 {
-    GtkWidget *chooser, *preview;
+    GtkWidget *chooser;
+#ifndef HAVE_LIBEXO
+    GtkWidget *preview;
+#endif
     GtkFileFilter *filter;
     gchar *confdir;
     
@@ -565,12 +574,16 @@ browse_cb(GtkWidget *b, BackdropPanel *bp)
         g_free(tmppath);
     }
     
+#ifdef HAVE_LIBEXO
+    exo_gtk_file_chooser_add_thumbnail_preview(GTK_FILE_CHOOSER(chooser));
+#else
     preview = gtk_image_new();
     gtk_widget_show(preview);
     gtk_file_chooser_set_preview_widget(GTK_FILE_CHOOSER(chooser), preview);
     gtk_file_chooser_set_preview_widget_active(GTK_FILE_CHOOSER(chooser), FALSE);
     g_signal_connect(G_OBJECT(chooser), "update-preview",
                      G_CALLBACK(update_preview_cb), preview);
+#endif
     
     gtk_widget_show(chooser);
     if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
