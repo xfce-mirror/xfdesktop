@@ -52,19 +52,26 @@ set_num_workspaces(GtkWidget *w, gpointer num)
 {
     static Atom xa_NET_NUMBER_OF_DESKTOPS = 0;
     XClientMessageEvent sev;
+    GdkScreen *gscreen;
+    GdkDisplay *gdisplay;
+    GdkWindow *groot;
+    Display *xdpy;
     gint n;
-    GdkScreen *gscreen = gtk_widget_get_screen(w);
-    GdkWindow *groot = gdk_screen_get_root_window(gscreen);
+
+    gscreen = gtk_widget_get_screen(w);
+    gdisplay = gdk_screen_get_display (gscreen);
+    groot = gdk_screen_get_root_window(gscreen);
+    xdpy = (Display *) gdk_x11_display_get_xdisplay (gdisplay);
 
     if(!xa_NET_NUMBER_OF_DESKTOPS) {
-        xa_NET_NUMBER_OF_DESKTOPS = XInternAtom(GDK_DISPLAY(),
+        xa_NET_NUMBER_OF_DESKTOPS = XInternAtom(xdpy,
                 "_NET_NUMBER_OF_DESKTOPS", False);
     }
 
     n = GPOINTER_TO_INT(num);
 
     sev.type = ClientMessage;
-    sev.display = GDK_DISPLAY();
+    sev.display = xdpy;
     sev.format = 32;
     sev.window = GDK_WINDOW_XID(groot);
     sev.message_type = xa_NET_NUMBER_OF_DESKTOPS;
@@ -72,7 +79,7 @@ set_num_workspaces(GtkWidget *w, gpointer num)
 
     gdk_error_trap_push();
 
-    XSendEvent(GDK_DISPLAY(), GDK_WINDOW_XID(groot), False,
+    XSendEvent(xdpy, GDK_WINDOW_XID(groot), False,
             SubstructureNotifyMask | SubstructureRedirectMask,
             (XEvent *)&sev);
 

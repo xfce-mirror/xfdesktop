@@ -89,13 +89,15 @@ notify_cb(const char *name, const char *channel_name, McsAction action,
 McsClient *
 settings_init()
 {
+    GdkDisplay *gdisplay; 
     Display *xdpy;
     gint xscreen;
     
     g_return_val_if_fail(mcs_client == NULL, mcs_client);
-    
-    xdpy = GDK_DISPLAY();
-    xscreen = gdk_screen_get_number(gdk_display_get_default_screen(gdk_display_get_default()));
+
+    gdisplay = gdk_display_get_default ();
+    xdpy = (Display *) gdk_x11_display_get_xdisplay (gdisplay);
+    xscreen = gdk_screen_get_number(gdk_display_get_default_screen(gdisplay));
     
     if(!mcs_client_check_manager(xdpy, xscreen, "xfce-mcs-manager")) {
         g_critical("%s: Unable to start settings manager", PACKAGE);
