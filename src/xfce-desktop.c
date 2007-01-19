@@ -465,24 +465,16 @@ screen_set_selection(XfceDesktop *desktop)
     gint xscreen;
     gchar selection_name[100];
     Atom selection_atom, manager_atom;
-    GdkScreen *gscreen;
-    GdkDisplay *gdisplay;
-    GdkWindow *groot;
-    Display *xdpy;
-
-    gscreen = desktop->priv->gscreen;
+    
     xwin = GDK_WINDOW_XID(GTK_WIDGET(desktop)->window);
-    xscreen = gdk_screen_get_number(gscreen);
-    gdisplay = gdk_screen_get_display (gscreen);
-    groot = gdk_screen_get_root_window(gscreen);
-    xdpy = (Display *) gdk_x11_display_get_xdisplay (gdisplay);
+    xscreen = gdk_screen_get_number(desktop->priv->gscreen);
     
     g_snprintf(selection_name, 100, XFDESKTOP_SELECTION_FMT, xscreen);
-    selection_atom = XInternAtom(xdpy, selection_name, False);
-    manager_atom = XInternAtom(xdpy, "MANAGER", False);
+    selection_atom = XInternAtom(GDK_DISPLAY(), selection_name, False);
+    manager_atom = XInternAtom(GDK_DISPLAY(), "MANAGER", False);
 
-    XSelectInput(xdpy, xwin, PropertyChangeMask | ButtonPressMask);
-    XSetSelectionOwner(xdpy, selection_atom, xwin, GDK_CURRENT_TIME);
+    XSelectInput(GDK_DISPLAY(), xwin, PropertyChangeMask | ButtonPressMask);
+    XSetSelectionOwner(GDK_DISPLAY(), selection_atom, xwin, GDK_CURRENT_TIME);
 
     /* listen for client messages */
     g_signal_connect(G_OBJECT(desktop), "client-event",
@@ -490,9 +482,9 @@ screen_set_selection(XfceDesktop *desktop)
 
     /* Check to see if we managed to claim the selection. If not,
      * we treat it as if we got it then immediately lost it */
-    if(XGetSelectionOwner(xdpy, selection_atom) == xwin) {
+    if(XGetSelectionOwner(GDK_DISPLAY(), selection_atom) == xwin) {
         XClientMessageEvent xev;
-        Window xroot = GDK_WINDOW_XID(groot);
+        Window xroot = GDK_WINDOW_XID(gdk_screen_get_root_window(desktop->priv->gscreen));
         
         xev.type = ClientMessage;
         xev.window = xroot;
@@ -504,7 +496,7 @@ screen_set_selection(XfceDesktop *desktop)
         xev.data.l[3] = 0;    /* manager specific data */
         xev.data.l[4] = 0;    /* manager specific data */
 
-        XSendEvent(xdpy, xroot, False, StructureNotifyMask, (XEvent *)&xev);
+        XSendEvent(GDK_DISPLAY(), xroot, False, StructureNotifyMask, (XEvent *)&xev);
     } else {
         g_error("%s: could not set selection ownership", PACKAGE);
         exit(1);
