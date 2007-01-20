@@ -592,7 +592,7 @@ static void
 list_mgr_dialog_new(const gchar *title, GtkWidget *parent, const gchar *path,
     GtkWidget **dialog, GtkWidget **entry, GtkTreeView **tv)
 {
-    GtkWidget *mainvbox, *frame, *frame_bin, *vbox, *header;
+    GtkWidget *mainvbox, *frame, *frame_bin, *vbox;
 
     g_return_if_fail(dialog != NULL && entry != NULL && tv != NULL);
     
@@ -600,22 +600,19 @@ list_mgr_dialog_new(const gchar *title, GtkWidget *parent, const gchar *path,
         _listdlg_last_dir = g_build_path(G_DIR_SEPARATOR_S, DATADIR, "xfce4",
                 "backdrops", NULL);
 
-    *dialog = gtk_dialog_new_with_buttons(_("Backdrop List"), GTK_WINDOW(parent),
-            GTK_DIALOG_NO_SEPARATOR, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-            GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT, NULL);
+    *dialog = xfce_titled_dialog_new_with_buttons(title, GTK_WINDOW(parent),
+                                                  GTK_DIALOG_NO_SEPARATOR,
+                                                  GTK_STOCK_CANCEL,
+                                                  GTK_RESPONSE_CANCEL,
+                                                  GTK_STOCK_SAVE,
+                                                  GTK_RESPONSE_ACCEPT,
+                                                  NULL);
 
     gtk_window_set_position(GTK_WINDOW(*dialog), GTK_WIN_POS_MOUSE);
     gtk_window_set_resizable(GTK_WINDOW(*dialog), FALSE);
     gtk_widget_set_size_request(*dialog, -1, 400);
 
     mainvbox = GTK_DIALOG(*dialog)->vbox;
-
-    header = xfce_create_header(NULL, title);
-    gtk_widget_show(header);
-    gtk_box_pack_start(GTK_BOX(mainvbox), header, FALSE, TRUE, 0);
-    gtk_widget_set_size_request(header, -1, 50);
-
-    add_spacer(GTK_BOX(mainvbox));
 
     frame = xfce_create_framebox(_("Image files"), &frame_bin);
     gtk_widget_show(frame);
