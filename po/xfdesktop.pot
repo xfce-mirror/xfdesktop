@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-04 05:11-0800\n"
+"POT-Creation-Date: 2007-01-20 22:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,7 +107,7 @@ msgstr ""
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:600
-#: ../settings/appearance-settings.c:532
+#: ../settings/appearance-settings.c:541
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
@@ -116,7 +116,7 @@ msgstr ""
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:606
-#: ../settings/appearance-settings.c:536
+#: ../settings/appearance-settings.c:545
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr ""
@@ -487,7 +487,7 @@ msgstr ""
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:773
+#: ../panel-plugin/desktop-menu-plugin.c:765
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr ""
@@ -528,137 +528,133 @@ msgstr ""
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
-msgid "Edit Properties"
-msgstr ""
-
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:777
 msgid "Button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:796
+#: ../panel-plugin/desktop-menu-plugin.c:790
 msgid "Button _title:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:809
+#: ../panel-plugin/desktop-menu-plugin.c:803
 msgid "_Show title in button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:816
+#: ../panel-plugin/desktop-menu-plugin.c:810
 msgid "Menu File"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:828
+#: ../panel-plugin/desktop-menu-plugin.c:822
 msgid "Use default _desktop menu file"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:837
+#: ../panel-plugin/desktop-menu-plugin.c:831
 msgid "Use _custom menu file:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:888
+#: ../panel-plugin/desktop-menu-plugin.c:882
 #: ../settings/behavior-settings.c:267
 msgid "_Edit Menu"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:894
+#: ../panel-plugin/desktop-menu-plugin.c:888
 msgid "Icons"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:906
+#: ../panel-plugin/desktop-menu-plugin.c:900
 msgid "_Button icon:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:930
+#: ../panel-plugin/desktop-menu-plugin.c:924
 msgid "Show _icons in menu"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:953
+#: ../panel-plugin/desktop-menu-plugin.c:947
 msgid "There is already a panel menu registered for this screen"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:1061
+#: ../panel-plugin/desktop-menu-plugin.c:1055
 msgid "Edit Menu"
 msgstr ""
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../settings/appearance-settings.c:134
+#: ../settings/appearance-settings.c:138
 msgid "Button Label|Desktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
-#: ../settings/backdrop-list-manager.c:631
+#: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
+#: ../settings/backdrop-list-manager.c:628
 msgid "backdrops.list"
 msgstr ""
 
-#: ../settings/appearance-settings.c:527
+#: ../settings/appearance-settings.c:536
 msgid "Select backdrop image or list file"
 msgstr ""
 
-#: ../settings/appearance-settings.c:545
+#: ../settings/appearance-settings.c:554
 msgid "List Files (*.list)"
 msgstr ""
 
-#: ../settings/appearance-settings.c:637
+#: ../settings/appearance-settings.c:650
 msgid "_Edit list..."
 msgstr ""
 
-#: ../settings/appearance-settings.c:645
+#: ../settings/appearance-settings.c:658
 msgid "_New list..."
 msgstr ""
 
-#: ../settings/appearance-settings.c:678
+#: ../settings/appearance-settings.c:691
 msgid "S_tyle:"
 msgstr ""
 
-#: ../settings/appearance-settings.c:685
+#: ../settings/appearance-settings.c:698
 msgid "Auto"
 msgstr ""
 
-#: ../settings/appearance-settings.c:686
+#: ../settings/appearance-settings.c:699
 msgid "Centered"
 msgstr ""
 
-#: ../settings/appearance-settings.c:687
+#: ../settings/appearance-settings.c:700
 msgid "Tiled"
 msgstr ""
 
-#: ../settings/appearance-settings.c:688
+#: ../settings/appearance-settings.c:701
 msgid "Stretched"
 msgstr ""
 
-#: ../settings/appearance-settings.c:689
+#: ../settings/appearance-settings.c:702
 msgid "Scaled"
 msgstr ""
 
-#: ../settings/appearance-settings.c:745
+#: ../settings/appearance-settings.c:758
 msgid "A_djust Brightness:"
 msgstr ""
 
-#: ../settings/appearance-settings.c:803
+#: ../settings/appearance-settings.c:816
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr ""
 
-#: ../settings/appearance-settings.c:804
+#: ../settings/appearance-settings.c:817
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:808
+#: ../settings/appearance-settings.c:821
 #: ../src/xfdesktop-regular-file-icon.c:520
 #: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:810
+#: ../settings/appearance-settings.c:823
 msgid "Unable to start xfdesktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:832
+#: ../settings/appearance-settings.c:845
 msgid "Information"
 msgstr ""
 
-#: ../settings/appearance-settings.c:845
+#: ../settings/appearance-settings.c:858
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -667,7 +663,7 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 
-#: ../settings/appearance-settings.c:847
+#: ../settings/appearance-settings.c:860
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -676,83 +672,83 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 
-#: ../settings/appearance-settings.c:855
+#: ../settings/appearance-settings.c:868
 msgid "_Do not show this again"
 msgstr ""
 
 #. the dialog
-#: ../settings/appearance-settings.c:921
+#: ../settings/appearance-settings.c:934
 msgid "Desktop Preferences"
 msgstr ""
 
-#: ../settings/appearance-settings.c:938
+#: ../settings/appearance-settings.c:951
 msgid "Allow _Xfce to manage the desktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:979
+#: ../settings/appearance-settings.c:992
 msgid "Stretch single backdrop onto _all monitors"
 msgstr ""
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:993
-#: ../settings/appearance-settings.c:1175
+#: ../settings/appearance-settings.c:1006
+#: ../settings/appearance-settings.c:1188
 msgid "_Appearance"
 msgstr ""
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1019
+#: ../settings/appearance-settings.c:1032
 msgid "Color"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1033
+#: ../settings/appearance-settings.c:1046
 msgid "_Color Style:"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1040
+#: ../settings/appearance-settings.c:1053
 msgid "Solid Color"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1041
+#: ../settings/appearance-settings.c:1054
 msgid "Horizontal Gradient"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1042
+#: ../settings/appearance-settings.c:1055
 msgid "Vertical Gradient"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1055
+#: ../settings/appearance-settings.c:1068
 msgid "Fi_rst Color:"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1076
+#: ../settings/appearance-settings.c:1089
 msgid "_Second Color:"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1101
+#: ../settings/appearance-settings.c:1114
 msgid "Image"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1109
+#: ../settings/appearance-settings.c:1122
 msgid "Show _Image"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1131
+#: ../settings/appearance-settings.c:1144
 msgid "_File:"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1186
-#: ../settings/appearance-settings.c:1188
+#: ../settings/appearance-settings.c:1199
+#: ../settings/appearance-settings.c:1201
 #, c-format
 msgid "Screen %d"
 msgstr ""
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1193
+#: ../settings/appearance-settings.c:1206
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr ""
 
-#: ../settings/appearance-settings.c:1210
+#: ../settings/appearance-settings.c:1223
 msgid "_Behavior"
 msgstr ""
 
@@ -777,23 +773,19 @@ msgstr ""
 msgid "List Files"
 msgstr ""
 
-#: ../settings/backdrop-list-manager.c:603
-msgid "Backdrop List"
-msgstr ""
-
-#: ../settings/backdrop-list-manager.c:620
+#: ../settings/backdrop-list-manager.c:617
 msgid "Image files"
 msgstr ""
 
-#: ../settings/backdrop-list-manager.c:639
+#: ../settings/backdrop-list-manager.c:636
 msgid "List file"
 msgstr ""
 
-#: ../settings/backdrop-list-manager.c:661
+#: ../settings/backdrop-list-manager.c:658
 msgid "Create backdrop list"
 msgstr ""
 
-#: ../settings/backdrop-list-manager.c:694
+#: ../settings/backdrop-list-manager.c:691
 msgid "Edit backdrop list"
 msgstr ""
 
@@ -906,31 +898,31 @@ msgstr ""
 msgid "%s is not running.\n"
 msgstr ""
 
-#: ../src/windowlist.c:218
+#: ../src/windowlist.c:220
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr ""
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:228
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr ""
 
-#: ../src/windowlist.c:293 ../src/windowlist.c:296
+#: ../src/windowlist.c:295 ../src/windowlist.c:298
 msgid "_Add Workspace"
 msgstr ""
 
-#: ../src/windowlist.c:304
+#: ../src/windowlist.c:306
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr ""
 
-#: ../src/windowlist.c:307
+#: ../src/windowlist.c:309
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr ""
 
-#: ../src/xfce-desktop.c:542
+#: ../src/xfce-desktop.c:573
 msgid "Desktop"
 msgstr ""
 
@@ -1218,6 +1210,12 @@ msgstr ""
 #: ../src/xfdesktop-regular-file-icon.c:486
 #: ../src/xfdesktop-special-file-icon.c:487 ../src/xfdesktop-volume-icon.c:460
 msgid "%s (%"
+msgstr ""
+
+#: ../src/xfdesktop-file-properties-dialog.c:413
+#: ../src/xfdesktop-regular-file-icon.c:486
+#: ../src/xfdesktop-special-file-icon.c:487 ../src/xfdesktop-volume-icon.c:460
+msgid " Bytes)"
 msgstr ""
 
 #. permissions tab
