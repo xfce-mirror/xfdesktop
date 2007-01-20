@@ -374,7 +374,7 @@
             <para>
               To refresh the backdrop with a new random image from the list
               just run the &app; command again, e.g. from a terminal or the run 
-              dialog, or &app; <arg>-reload</arg>.
+              dialog, or &app; <arg>--reload</arg>.
             </para>
             
             <para>
@@ -644,7 +644,7 @@ widget_class "*" style "menu-images"]]>
           </programlisting>
           
           <para>
-            Unfortunately, this will act on all gtk menus, not just on the
+            Unfortunately, this will act on all Gtk menus, not just on the
             Applications and Window List menus.  There is currently no way
             to set this property for just these two menus.
           </para>
@@ -659,8 +659,10 @@ widget_class "*" style "menu-images"]]>
     <para>
       You can open the menu or window list from the commandline as well.
       This can be useful for keyboard shortcuts. To open the menu run the
-      command &app; <application>-menu</application>, and for the windowlist 
-      use &app; <application>-windowlist</application>.
+      command &app; <application>--menu</application>, and for the windowlist 
+      use &app; <application>--windowlist</application>.  To cause the
+      current running instance to quit, run &app;
+      <application>--quit</application>.
     </para>
   </sect1>
   

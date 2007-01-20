@@ -132,7 +132,7 @@
             </p><p>
               To refresh the backdrop with a new random image from the list
               just run the <strong class="application"><code>xfdesktop</code></strong> command again, e.g. from a terminal or the run 
-              dialog, or <strong class="application"><code>xfdesktop</code></strong>  [-reload].
+              dialog, or <strong class="application"><code>xfdesktop</code></strong>  [--reload].
             </p><p>
               Four Style options (Tiled, Scaled, Centered and Stretched) are
               available to specify the fitting of the backdrop image on the 
@@ -259,14 +259,16 @@ style "menu-images" {
 }
 widget_class "*" style "menu-images"
           </pre><p>
-            Unfortunately, this will act on all gtk menus, not just on the
+            Unfortunately, this will act on all Gtk menus, not just on the
             Applications and Window List menus.  There is currently no way
             to set this property for just these two menus.
           </p></dd></dl></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-misc"></a>Miscellaneous</h2></div></div></div><p>
       You can open the menu or window list from the commandline as well.
       This can be useful for keyboard shortcuts. To open the menu run the
-      command <strong class="application"><code>xfdesktop</code></strong> <strong class="application"><code>-menu</code></strong>, and for the windowlist 
-      use <strong class="application"><code>xfdesktop</code></strong> <strong class="application"><code>-windowlist</code></strong>.
+      command <strong class="application"><code>xfdesktop</code></strong> <strong class="application"><code>--menu</code></strong>, and for the windowlist 
+      use <strong class="application"><code>xfdesktop</code></strong> <strong class="application"><code>--windowlist</code></strong>.  To cause the
+      current running instance to quit, run <strong class="application"><code>xfdesktop</code></strong>
+      <strong class="application"><code>--quit</code></strong>.
     </p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xfdesktop-copyright"></a>About <strong class="application"><code>xfdesktop</code></strong></h2></div></div></div><p>
       <strong class="application"><code>xfdesktop</code></strong> was written by
       Brian Tarricone (<code class="email">&lt;<a href="mailto:kelnos@xfce.org">kelnos@xfce.org</a>&gt;</code>),
