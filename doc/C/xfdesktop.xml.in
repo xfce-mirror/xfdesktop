@@ -1,7 +1,7 @@
 <?xml version='1.0'?> 
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "November 2004"> 
+  <!ENTITY date "January 2007"> 
   <!ENTITY appversion "@PACKAGE_VERSION@"> 
   <!ENTITY app "<application>@PACKAGE_NAME@</application>"> 
 ]>
@@ -12,15 +12,15 @@
     <title>Xfce 4 Desktop Manager</title>
     
     <copyright>
+      <year>2004-2007</year> <holder>Brian Tarricone</holder>
+    </copyright>
+    
+    <copyright>
       <year>2004</year> <holder>Jasper Huijsmans</holder>
     </copyright>
     
     <copyright>
       <year>2004</year> <holder>François Le Clainche</holder>
-    </copyright>
-    
-    <copyright>
-      <year>2004-2006</year> <holder>Brian Tarricone</holder>
     </copyright>
     
 <!-- documentation translators: uncomment this and fill in your information.
@@ -40,6 +40,12 @@
     
     <authorgroup>
       <author>
+        <firstname>Brian</firstname> <surname>Tarricone</surname>
+        <affiliation>
+          <address><email>kelnos@xfce.org</email></address>
+        </affiliation>
+      </author>
+      <author>
         <firstname>Jasper</firstname> <surname>Huijsmans</surname>
         <affiliation>
           <address><email>jasper@xfce.org</email></address>
@@ -52,13 +58,6 @@
           <address><email>fleclainche@wanadoo.fr</email></address>
         </affiliation>
       </author>        
-      
-      <author>
-        <firstname>Brian</firstname> <surname>Tarricone</surname>
-        <affiliation>
-          <address><email>kelnos@xfce.org</email></address>
-        </affiliation>
-      </author>
     </authorgroup>
     
     <releaseinfo>
