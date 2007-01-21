@@ -62,13 +62,13 @@
 	<separator/>
 
 	<app name="Terminal" cmd="xfterm4" icon="gnome-terminal"/>
-	<app name="Administrator fişiere" cmd="thunar" icon="file-manager"/>
+	<app name="Administrator de fişiere" cmd="thunar" icon="file-manager"/>
 	<app name="Navigator Internet" cmd="xfbrowser4" icon="gnome-globe"/>
 
 	<separator/>
 
-	<menu name="Setări" icon="gnome-settings">
-		<app name="Administrator setări" cmd="xfce-setting-show" snotify="true" icon="gnome-settings"/>
+	<menu name="Preferinţe" icon="gnome-settings">
+		<app name="Administratorul preferinţelor Xfce" cmd="xfce-setting-show" snotify="true" icon="gnome-settings"/>
 	</menu>
 
 	<separator/>
