@@ -1,3 +1,84 @@
+20070121 (Xfce 4.4.0):
+----------------------
+
+    We're just about ready to release Xfce 4.4.0!  Hooray!  There have been
+    many changes since my last entry.
+    
+    Change since 4.4rc2:
+    
+      * Fix support for applications that do pseudo-transparency (bug 2508).
+      * Change how icon cell size is calculated to avoid weirdness at large
+        sizes (bug 1546).
+      * Fix icons disappearing when the icon/text size is set too large, and
+        then not reappearing when the size is lowered again (bug 1546).
+      * Add hidden options to disable showing any or all of the 'File System',
+        'Home', or 'Trash' icons.
+      * Partially fix backdrop setting problems when unsetting Xinerama
+        stretch mode (bug 2573).
+      * Fix some possible (but unliklely) NULL pointer dereferences.
+      * Update documentation.
+    
+    Changes since 4.4rc1:
+    
+      * Fix crash when non-file:// URIs are dropped on the desktop (bug 2229).
+      * Handle Xinerama-enabled setups correctly so icons aren't placed in
+        "dead areas" or on the boundary between monitors (bug 1538).
+      * Fix crash when reloading the desktop several times quickly (bug 2426).
+      * Trash files by default, add binding for shift+delete to force
+        deletion (bug 2185).
+      * Fix crash when screen size changes (bug 2457).
+      * Fix problems with activating icons (bug 2452, 2206).
+      * Allow the icons to provide better information about what drag/drop
+        actions are allowed, so user feedback about drags/drops is much
+        better.
+      * Fix broken drop of multiple files onto the desktop (bug 2437).
+      * Be sure to notice if a removable volume's mount point changes
+        (bug 2489).
+      * Fix 100% CPU problem when the desktop folder is deleted (bug 2160).
+
+    Changes since 4.4beta2:
+    
+      * Fix backdrop image tearing during expose (bug 1944).
+      * Show icon tooltips where appropriate (bug 1526).
+      * Use thunarx extensions for the icon context menus and properties
+        dialogs.
+      * Fix ugly gradients in the desktop wallpaper on 16-bit displays
+        (bug 1819).
+      * Don't show a folder for the desktop directory itself (bug 1916).
+      * Fix problems with markup in text labels (bug 2082).
+      * Add 'File System', 'Home', and 'Trash' icons.
+      * Fix compositing emblems on icons (1875).
+      * Use native Pango ellipsising support for the windowlist menu, which
+        looks way better (bug 2127).
+      * Allow panel plugin's menu to be opened at the pointer position
+        (bug 2103).
+      * Don't allow cut or delete if the file/dir isn't writeable (buf 2081).
+      * Memory leak fixes (bug 1910).
+      * Put the icon context menu on the proper screen (bug 2351).
+    
+    Changes since 4.4beta1:
+    
+      * Attempt to create ~/Desktop/ if it doesn't exist (bug 1691).
+      * Fix non-ejectable media showing as ejectable.
+      * Fix removable media not appearing when its mount point has not yet
+        been created.
+      * Don't have the desktop automatically take focus when it's mapped.
+      * Fix crash when removable volume has no mount point (bug 1763).
+      * Add support for creating launchers and URL launchers.
+      * Allow changing transparency of the icon label text background.
+      * Many icon drawing performance improvements, and fixes for some
+        drawing glitches.
+      * Fix menu positioning for floating panels in the Xfce Menu panel
+        plugin (bug 1660).
+      * Have the 'log out' dialog pop up if the user 'closes' the desktop
+        window (bug 1776).
+      * Handle more thunar-vfs errors and prompts.
+      * Add XDirectSave support for dropping data on the desktop.
+      * Add support for dropping URLs from a browser on the desktop.
+      * Fix crash when mounting some removable volumes (bug 1897).
+
+(Brian)
+
 20060418 (Xfce 4.4beta1):
 -------------------------
 
