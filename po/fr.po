@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the xfdesktop package.
 # Olivier Fourdan <fourdan@xfce.org>, 2003.
 # Jean-Francois Wauthy <pollux@xfce.org>, 2004.
-# Maximilian Schleiss <maxschleiss@bluewin.ch>, 2006.
+# Maximilian Schleiss <maxschleiss@bluewin.ch>, 2006, 2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 05:11-0800\n"
-"PO-Revision-Date: 2006-10-29 17:18+0100\n"
+"PO-Revision-Date: 2007-02-07 14:30+0100\n"
 "Last-Translator: Maximilian Schleiss <maxschleiss@bluewin.ch>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -246,7 +246,8 @@ msgstr "Créer un nouveau fichier de menu vide"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1602
-#: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
+#: ../src/xfdesktop-special-file-icon.c:624
+#: ../src/xfdesktop-volume-icon.c:543
 msgid "_Open"
 msgstr "_Ouvrir"
 
@@ -397,7 +398,8 @@ msgstr "Voulez-vous enregistrer avant de fermer le fichier ?"
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:587 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:587
+#: ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Question"
 
@@ -499,22 +501,13 @@ msgid "Unable to quit session."
 msgstr "Impossible de quitter la session"
 
 #: ../modules/menu/desktop-menu-file.c:119
-msgid ""
-"Quitting the session requires that Xfce's session manager (xfce4-session) is "
-"running, but it was not detected.  Please quit Xfce via another means."
-msgstr ""
-"Quitter la session requiert que le gestionnaire de session Xfce (xfce4-"
-"session) soit actif, or il n'a pas été détecté. Veuillez quitter Xfce d'une "
-"autre manière."
+msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
+msgstr "Quitter la session requiert que le gestionnaire de session Xfce (xfce4-session) soit actif, or il n'a pas été détecté. Veuillez quitter Xfce d'une autre manière."
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
-msgid ""
-"Quitting the session requires the 'xfce4-session-logout' command, but it "
-"could not be found: %s"
-msgstr ""
-"Quitter la session requiert la commande 'xfce4-session-logout' mais elle n'a "
-"pas été trouvée: %s"
+msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
+msgstr "Quitter la session requiert la commande 'xfce4-session-logout' mais elle n'a pas été trouvée: %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
@@ -592,7 +585,8 @@ msgstr "Éditer le menu"
 msgid "Button Label|Desktop"
 msgstr "Bureau"
 
-#: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
+#: ../settings/appearance-settings.c:187
+#: ../settings/appearance-settings.c:196
 #: ../settings/backdrop-list-manager.c:631
 msgid "backdrops.list"
 msgstr "fonds.list"
@@ -665,33 +659,12 @@ msgid "Information"
 msgstr "Information"
 
 #: ../settings/appearance-settings.c:845
-msgid ""
-"To ensure that this setting takes effect the next time you start Xfce, "
-"please be sure to save your session when logging out.  If you are not using "
-"the Xfce Session Manager (xfce4-session), you will need to manually edit "
-"your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-"Pour vous assurer que Xfce ne gérera pas votre bureau lors de votre "
-"prochaine session, assurez-vous de bien sauvegarder votre session en la "
-"quittant. Si vous ne faites pas usage du gestionnaire de sessions Xfce "
-"(xfce4-session), éditez votre fichier ~/.config/xfce4/xinitrc manuellement. "
-"Plus de détails dans la documentation en ligne http://www.xfce.org/."
+msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "Pour vous assurer que Xfce ne gérera pas votre bureau lors de votre prochaine session, assurez-vous de bien sauvegarder votre session en la quittant. Si vous ne faites pas usage du gestionnaire de sessions Xfce (xfce4-session), éditez votre fichier ~/.config/xfce4/xinitrc manuellement. Plus de détails dans la documentation en ligne http://www.xfce.org/."
 
 #: ../settings/appearance-settings.c:847
-msgid ""
-"To ensure that Xfce does not manage your desktop the next time you start "
-"Xfce, please be sure to save your session when logging out.  If you are not "
-"using the Xfce Session Manager (xfce4-session), you will need to manually "
-"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-"Pour vous assurer que Xfce ne gérera pas votre bureau lors de votre "
-"prochaine session, assurez-vous de bien sauvegarder votre session en la "
-"quittant. Si vous ne faites pas usage du Xfce session manager (xfce4-"
-"session) vous devrez éditer votre fichier ~/.config/xfce4/xinitrc "
-"manuellement. Plus de détails dans la documentation en ligne http://www.xfce."
-"org/."
+msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "Pour vous assurer que Xfce ne gérera pas votre bureau lors de votre prochaine session, assurez-vous de bien sauvegarder votre session en la quittant. Si vous ne faites pas usage du Xfce session manager (xfce4-session) vous devrez éditer votre fichier ~/.config/xfce4/xinitrc manuellement. Plus de détails dans la documentation en ligne http://www.xfce.org/."
 
 #: ../settings/appearance-settings.c:855
 msgid "_Do not show this again"
@@ -773,18 +746,17 @@ msgstr "Écran %d, Moniteur %d"
 msgid "_Behavior"
 msgstr "_Comportement"
 
-#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#: ../settings/backdrop-list-manager.c:160
+#: ../src/xfce-desktop-settings.c:74
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
+"Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
 "Impossible de sauvegarder le fichier %s: %s\n"
 "\n"
-"Veuillez choisir une autre destination ou appuyer sur annuler dans la boite "
-"de dialogue pour annuler vos changements "
+"Veuillez choisir une autre destination ou appuyer sur annuler dans la boite de dialogue pour annuler vos changements "
 
 #: ../settings/backdrop-list-manager.c:430
 msgid "Select backdrop image file"
@@ -849,11 +821,11 @@ msgstr "Fichier/icônes lanceurs"
 
 #: ../settings/behavior-settings.c:306
 msgid "_Icon size:"
-msgstr "Taille de l'icône :"
+msgstr "Taille de l'_icône :"
 
 #: ../settings/behavior-settings.c:320
 msgid "Use _system font size"
-msgstr "Utiliser la taille de police du système"
+msgstr "Utiliser la taille de police du _système"
 
 #: ../settings/behavior-settings.c:337
 msgid "Custom _font size:"
@@ -878,11 +850,15 @@ msgstr "Options de compilation :\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menu du bureau:        %s\n"
 
-#: ../src/main.c:264 ../src/main.c:271 ../src/main.c:278
+#: ../src/main.c:264
+#: ../src/main.c:271
+#: ../src/main.c:278
 msgid "enabled"
 msgstr "activé"
 
-#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
+#: ../src/main.c:266
+#: ../src/main.c:273
+#: ../src/main.c:280
 msgid "disabled"
 msgstr "désactivé"
 
@@ -907,21 +883,15 @@ msgstr "Les options sont :\n"
 
 #: ../src/main.c:307
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    --reload      Recharger tous le paramètres, rafraîchir la liste "
-"d'images\n"
+msgstr "    --reload      Recharger tous le paramètres, rafraîchir la liste d'images\n"
 
 #: ../src/main.c:308
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr ""
-"    --menu        Affiche le menu (à la position courante de la souris)\n"
+msgstr "    --menu        Affiche le menu (à la position courante de la souris)\n"
 
 #: ../src/main.c:309
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    --windowlist  Affiche la liste des fenêtres (à la position courante de "
-"la souris)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    --windowlist  Affiche la liste des fenêtres (à la position courante de la souris)\n"
 
 #: ../src/main.c:310
 msgid "    --quit        Cause xfdesktop to quit\n"
@@ -942,7 +912,8 @@ msgstr "<b>Espace de travail %d</b>"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Espace de travail %d</i>"
 
-#: ../src/windowlist.c:293 ../src/windowlist.c:296
+#: ../src/windowlist.c:293
+#: ../src/windowlist.c:296
 msgid "_Add Workspace"
 msgstr "_Ajouter un espace de travail"
 
@@ -962,11 +933,8 @@ msgstr "Bureau"
 
 #: ../src/xfdesktop-file-icon-manager.c:386
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop n'a pas pu créer le dossier \"%s\" pour stocker les éléments du "
-"bureau:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop n'a pas pu créer le dossier \"%s\" pour stocker les éléments du bureau:"
 
 #: ../src/xfdesktop-file-icon-manager.c:388
 #: ../src/xfdesktop-file-icon-manager.c:399
@@ -976,12 +944,8 @@ msgstr "Échec à la création du dossier"
 
 #: ../src/xfdesktop-file-icon-manager.c:397
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop ne peut pas utilliser \"%s\" pour contenir les éléments du bureau "
-"car ce n'est pas un dossier."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop ne peut pas utilliser \"%s\" pour contenir les éléments du bureau car ce n'est pas un dossier."
 
 #: ../src/xfdesktop-file-icon-manager.c:401
 msgid "Please delete or rename the file."
@@ -1024,7 +988,8 @@ msgstr "Effacer plusieurs fichiers"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:823
-#: ../src/xfdesktop-file-icon-manager.c:1528 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1528
+#: ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:352
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -1033,7 +998,8 @@ msgstr "Impossible d'exécuter \"%s\" :"
 #: ../src/xfdesktop-file-icon-manager.c:825
 #: ../src/xfdesktop-file-icon-manager.c:865
 #: ../src/xfdesktop-file-icon-manager.c:1128
-#: ../src/xfdesktop-file-icon-manager.c:1530 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon-manager.c:1530
+#: ../src/xfdesktop-file-icon.c:144
 #: ../src/xfdesktop-file-utils.c:355
 msgid "Launch Error"
 msgstr "Erreur d'exécution"
@@ -1042,13 +1008,10 @@ msgstr "Erreur d'exécution"
 msgid "The application chooser could not be opened."
 msgstr "Le sélecteur d'applications n'a pas pu être ouvert."
 
-#: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Cette option requiert qu'un service d'un gestionnaire de fichier soit "
-"présent (comme celui fourni par Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:867
+#: ../src/xfdesktop-file-utils.c:357
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Cette option requiert qu'un service d'un gestionnaire de fichier soit présent (comme celui fourni par Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1027
 #, c-format
@@ -1066,12 +1029,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Impossible de créer le dossier nommé \"%s\" :"
 
 #: ../src/xfdesktop-file-icon-manager.c:1130
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Impossible d'exécuter \"exo-desktop-item-edit\" lequel est nécessaire à la "
-"création et l'édition de lanceurs et liens sur le bureau."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Impossible d'exécuter \"exo-desktop-item-edit\" lequel est nécessaire à la création et l'édition de lanceurs et liens sur le bureau."
 
 #: ../src/xfdesktop-file-icon-manager.c:1163
 msgid "Create New Folder"
@@ -1250,7 +1209,8 @@ msgstr "Taille :"
 
 #: ../src/xfdesktop-file-properties-dialog.c:413
 #: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:487 ../src/xfdesktop-volume-icon.c:460
+#: ../src/xfdesktop-special-file-icon.c:487
+#: ../src/xfdesktop-volume-icon.c:460
 msgid "%s (%"
 msgstr "%s (%"
 
@@ -1309,7 +1269,8 @@ msgid "link to %s"
 msgstr "Lien vers %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:489
-#: ../src/xfdesktop-special-file-icon.c:490 ../src/xfdesktop-volume-icon.c:463
+#: ../src/xfdesktop-special-file-icon.c:490
+#: ../src/xfdesktop-volume-icon.c:463
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -1338,12 +1299,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Échec de connexion au service corbeille de Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:511
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Assurez-vous d'avoir un gestionnaire de fichiers, tel que thunar, supportant "
-"le service corbeille Xfce."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Assurez-vous d'avoir un gestionnaire de fichiers, tel que thunar, supportant le service corbeille Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
@@ -1422,83 +1379,60 @@ msgstr "Paramètres du bureau de Xfce 4"
 #~ msgstr ""
 #~ "Il faut, pour voir le contenu de la corbeille, un gestionnaire de "
 #~ "fichiers tel que Thunar, qui supporte le service Xfce trash."
-
 #~ msgid "Unable to empty the trash."
 #~ msgstr "Impossible de vider la corbeille."
-
 #~ msgid "Unknown error."
 #~ msgstr "Erreur inconnue."
-
 #~ msgid " Bytes)"
 #~ msgstr " Octets)"
-
 #~ msgid "_Copy Files"
 #~ msgstr "_Copier les fichiers"
-
 #~ msgid "_Copy File"
 #~ msgstr "_Copier le fichier"
-
 #~ msgid "Cu_t Files"
 #~ msgstr "Co_uper les fichiers"
-
 #~ msgid "Cu_t File"
 #~ msgstr "Co_uper le fichier"
-
 #~ msgid "_Delete Files"
 #~ msgstr "_Effacer les fichiers"
-
 #~ msgid "_Delete File"
 #~ msgstr "_Effacer le fichier"
 
 #, fuzzy
 #~ msgid "_Paste Files"
 #~ msgstr "Liste des fichiers"
-
 #~ msgid "Create _New"
 #~ msgstr "Créer _nouveau"
-
 #~ msgid "_Folder..."
 #~ msgstr "_Dossier..."
 
 #, fuzzy
 #~ msgid "Are sure you want to quit?"
 #~ msgstr "Êtes-vous certain de vouloir fermer le menu en cours d'édition ?"
-
 #~ msgid "Core developer"
 #~ msgstr "Développeur principal"
-
 #~ msgid "The command doesn't exist !"
 #~ msgstr "La commande n'existe pas !"
-
 #~ msgid "All fields must be filled to add an item."
 #~ msgstr "Tous les champs doivent être remplis pour ajouter une entrée"
-
 #~ msgid "The 'Name' field is required."
 #~ msgstr "Le champ 'Nom' est requis."
-
 #~ msgid "The 'Source' field is required."
 #~ msgstr "Le champ 'Source' est requis."
-
 #~ msgid "Separators cannot be edited"
 #~ msgstr "Les séparateurs ne peuvent être édités"
-
 #~ msgid "File %s doesn't exist !"
 #~ msgstr "Le fichier %s n'existe pas !"
-
 #~ msgid "Do you want to move the item into the parent menu?"
 #~ msgstr "Voulez-vous déplacer l'entrée dans le menu parent ?"
-
 #~ msgid "Edit"
 #~ msgstr "Édition"
-
 #~ msgid "Add an external menu..."
 #~ msgstr "Ajouter un menu externe"
-
 #~ msgid "Open an Xfce4 menu file"
 #~ msgstr "Ouvre un fichier de menu Xfce4"
-
 #~ msgid "Save current menu"
 #~ msgstr "Enregistre le menu en cours d'édition"
-
 #~ msgid "Delete the current entry"
 #~ msgstr "Supprime l'entrée sélectionnée"
+
