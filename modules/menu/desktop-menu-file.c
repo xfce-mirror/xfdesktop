@@ -155,7 +155,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
     gchar tmppath[2048], *cmd_locale;
     struct MenuFileParserState *state = user_data;
     
-    BD("cur_path: %s, hidelevel=%d", state->cur_path, state->hidelevel);
+    DBG("cur_path: %s, hidelevel=%d", state->cur_path, state->hidelevel);
     
     if(!state->started && !strcmp(element_name, "xfdesktop-menu"))
         state->started = TRUE;
@@ -501,7 +501,7 @@ menu_file_xml_start(GMarkupParseContext *context, const gchar *element_name,
                 do_legacy = FALSE;
             
             state->desktop_menu->dentry_basepath = state->cur_path;
-            BD("cur_path: %s", state->cur_path);
+            DBG("cur_path: %s", state->cur_path);
             state->desktop_menu->dentry_basemenu = state->cur_branch;
 
             if(j != -1 && !strcmp(attribute_values[j], "multilevel")) {
