@@ -59,7 +59,7 @@
 {\
     gint my_i, my_maxi;\
     \
-    g_printerr("\nDBG[%s:%d] %s\n", __FILE__, __LINE__, __FUNCTION__);\
+    DBG("grid layout dump:"); \
     my_maxi = icon_view->priv->nrows * icon_view->priv->ncols;\
     for(my_i = 0; my_i < my_maxi; my_i++)\
         g_printerr("%c ", icon_view->priv->grid_layout[my_i] ? '1' : '0');\

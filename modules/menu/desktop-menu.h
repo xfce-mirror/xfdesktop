@@ -40,17 +40,6 @@ void xfce_desktop_menu_destroy_impl(XfceDesktopMenu *desktop_menu);
 extern GdkPixbuf *dummy_icon;
 extern GdkPixbuf *unknown_icon;
 
-#ifdef BDEBUG
-#define BD(fmt, args...) \
-    do { \
-        fprintf(stderr, "[%s():%d] ", __FUNCTION__, __LINE__); \
-        fprintf(stderr, fmt, ## args); \
-        fprintf(stderr, "\n"); \
-    } while(0)
-#else
-#define BD(fmt, args...)
-#endif
-
 G_END_DECLS
 
 #endif /* !def __DESKTOP_MENU_H__ */

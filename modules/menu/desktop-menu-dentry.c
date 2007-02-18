@@ -46,7 +46,6 @@
 #include <libxfcegui4/xfce-appmenuitem.h>
 #include <libxfcegui4/icons.h>
 
-//#define BDEBUG
 #include "desktop-menu-dentry.h"
 #include "desktop-menu-private.h"
 #include "desktop-menu.h"
@@ -139,7 +138,7 @@ static gchar *
 _build_path(const gchar *basepath, const gchar *path, const gchar *name)
 {
     gchar *newpath = NULL;
-    BD("%s, %s, %s", basepath, path, name);
+    DBG("%s, %s, %s", basepath, path, name);
     if(basepath && *basepath == '/')
         newpath = g_build_path("/", basepath, path, name, NULL);
     else if(basepath)
@@ -153,7 +152,7 @@ _build_path(const gchar *basepath, const gchar *path, const gchar *name)
     else if(name)
         newpath = g_strconcat("/", name, NULL);
     
-    BD("  newpath=%s", newpath);
+    DBG("  newpath=%s", newpath);
     
     return newpath;
 }
@@ -190,7 +189,7 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
     const gchar *icon = NULL;
     gint menu_pos;
     
-    BD("%s", path);
+    DBG("%s", path);
     
     if(desktop_menu->menu_branches && 
            (submenu = g_hash_table_lookup(desktop_menu->menu_branches, path)))
@@ -203,7 +202,7 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
             parent = _ensure_path(desktop_menu, tmppath);
         if(!parent)
             parent = desktop_menu->dentry_basemenu;
-        BD("  parent=%p", parent);
+        DBG("  parent=%p", parent);
         g_free(tmppath);
     }
     
@@ -268,7 +267,7 @@ _ensure_path(XfceDesktopMenu *desktop_menu, const gchar *path)
     desktop_menu_cache_add_entry(DM_TYPE_MENU, q, NULL, icon,
             FALSE, FALSE, parent, menu_pos, submenu);
     
-    BD("for the hell of it: basepath=%s", desktop_menu->dentry_basepath);
+    DBG("for the hell of it: basepath=%s", desktop_menu->dentry_basepath);
     
     return submenu;
 }
@@ -388,7 +387,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
     
     if(pathtype == MPATH_SIMPLE_UNIQUE) {
         /* grab first of the most general */
-        BD("before ensuring - basepath=%s", desktop_menu->dentry_basepath);
+        DBG("before ensuring - basepath=%s", desktop_menu->dentry_basepath);
         path = _build_path(desktop_menu->dentry_basepath,
                 g_ptr_array_index(newpaths, 0), NULL);
         menu = _ensure_path(desktop_menu, path);
@@ -413,7 +412,7 @@ menu_dentry_parse_dentry(XfceDesktopMenu *desktop_menu, XfceDesktopEntry *de,
         g_object_set_data(G_OBJECT(mi), "item-name", (gpointer)name);
         gtk_widget_show(mi);
         menu_pos = _menu_shell_insert_sorted(GTK_MENU_SHELL(menu), mi, name);
-        BD("before hashtable: path=%s, name=%s", path, name);
+        DBG("before hashtable: path=%s, name=%s", path, name);
         g_hash_table_insert(desktop_menu->menu_entry_hash, _build_path(NULL,
                 path, name), GINT_TO_POINTER(1));
         desktop_menu_cache_add_entry(DM_TYPE_APP, name,
