@@ -40,6 +40,7 @@ conf_DATA =		\
 	menu.xml.ja	\
 	menu.xml.ko	\
 	menu.xml.nl  	\
+	menu.xml.pa \
 	menu.xml.pl	\
 	menu.xml.pt_BR	\
 	menu.xml.ro	\
