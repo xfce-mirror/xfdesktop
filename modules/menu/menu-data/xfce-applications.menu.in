@@ -107,11 +107,9 @@
     
     <Menu>
         <Name>Other</Name>
+        <OnlyUnallocated/>
         <Include>
-            <And>
-                <All/>
-                <OnlyUnallocated/>
-            </And>
+            <All/>
         </Include>
     </Menu>
     
