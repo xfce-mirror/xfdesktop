@@ -21,33 +21,23 @@
 #ifndef __DESKTOP_MENU_PRIVATE_H__
 #define __DESKTOP_MENU_PRIVATE_H__
 
-#include <time.h>
+#include <gtk/gtk.h>
 
-#include <gtk/gtkwidget.h>
-#include <gtk/gtkdnd.h>
-
-#include <libxfcegui4/xfce-icontheme.h>
+#include "libfrapmenu.h"
 
 struct _XfceDesktopMenu {
+	FrapMenu *frap_menu;
+	GtkWidget *menu;  /* the menu widget itself */
+	
     gchar *filename;  /* file the menu is currently using */
     gboolean using_default_menu;
-    gchar *cache_file_suffix;
-    GtkWidget *menu;  /* the menu widget itself */
+    
     gboolean use_menu_icons;  /* show menu icons? */
-    gboolean using_system_menu;   /* is there an autogenned menu in this DM? */
+	
     gint tim; /* timeout id for regeneration */
     gint idle_id;  /* source id for idled generation */
+	
     time_t last_menu_gen;  /* last time this menu was generated */
-    GHashTable *menu_entry_hash;  /* list of entries in the menu */
-    GHashTable *menu_branches;  /* hash of GtkMenu children */
-    
-    /* stuff related to checking if we need to regenerate the menu */
-    GHashTable *menufile_mtimes;
-    GHashTable *dentrydir_mtimes;
-    
-    /* tells the system menu generator about its root menu */
-    gchar *dentry_basepath;
-    GtkWidget *dentry_basemenu;
     
     gboolean modified;
 };

@@ -245,8 +245,10 @@ main(int argc, char **argv)
     /* bind gettext textdomain */
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     
-#ifdef ENABLE_FILE_ICONS
+#if defined(ENABLE_FILE_ICONS) || defined(USE_DESKTOP_MENU)
     g_thread_init(NULL);
+#endif
+#ifdef ENABLE_FILE_ICONS
     dbus_g_thread_init();
 #endif
     gtk_init(&argc, &argv);

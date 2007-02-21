@@ -39,10 +39,35 @@ AC_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 
 dnl check for standard header files
 AC_HEADER_STDC
-AC_CHECK_HEADERS([errno.h fcntl.h math.h signal.h stddef.h \
-                  string.h sys/stat.h sys/types.h sys/wait.h time.h \
+AC_CHECK_HEADERS([ctype.h errno.h fcntl.h math.h signal.h stddef.h \
+                  string.h sys/mman.h sys/stat.h sys/types.h sys/wait.h time.h \
                   unistd.h])
 AC_CHECK_FUNCS([mmap sigaction srandom])
+
+dnl ***********************************************
+dnl *** Determine the u32 type required for tdb ***
+dnl ***********************************************
+AC_CHECK_SIZEOF([int])
+AC_CHECK_SIZEOF([long])
+AC_CHECK_SIZEOF([short])
+AC_MSG_CHECKING([for 32bit unsigned integer])
+case 4 in
+    $ac_cv_sizeof_int)   TDB_U32_TYPE="unsigned int" ;;
+    $ac_cv_sizeof_long)  TDB_U32_TYPE="unsigned long" ;;
+    $ac_cv_sizeof_short) TDB_U32_TYPE="unsigned short" ;;
+esac
+AC_SUBST([TDB_U32_TYPE])
+AC_MSG_RESULT([$TDB_U32_TYPE])
+
+dnl figure out extra menu data dir
+if test "x$datadir" = "x\${datarootdir}"; then
+    datadir="$datarootdir"
+fi
+if test "x$datadir" = "x\${prefix}/share"; then
+    datadir="$prefix/share"
+fi
+EXTRA_MENU_DATA_DIR="$datadir/xfce4/xfdesktop/extra-menu-data"
+AC_SUBST(EXTRA_MENU_DATA_DIR)
 
 dnl Check for i18n support
 XDT_I18N([@LINGUAS@])
@@ -54,6 +79,7 @@ XDT_CHECK_LIBSM
 dnl required
 XDT_CHECK_PACKAGE([GMODULE], [gmodule-2.0], [gtk_minimum_version])
 XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [gtk_minimum_version])
+XDT_CHECK_PACKAGE([GTHREAD], [gthread-2.0], [gtk_minimum_version])
 XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [gtk_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [xfce_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [xfce_minimum_version])
@@ -216,6 +242,11 @@ doc/fr/images/Makefile
 menueditor/Makefile
 modules/Makefile
 modules/menu/Makefile
+modules/menu/frapmenu/Makefile
+modules/menu/frapmenu/tdb/Makefile
+modules/menu/frapmenu/tdb/tdbconfig.h
+modules/menu/menu-data/Makefile
+modules/menu/menu-data/xfce-applications.menu
 panel-plugin/Makefile
 pixmaps/Makefile
 po/Makefile.in

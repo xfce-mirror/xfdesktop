@@ -1,0 +1,124 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+  "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+
+<Menu>
+    <Name>Xfce</Name>
+    
+    <AppDir>@EXTRA_MENU_DATA_DIR@</AppDir>
+    <DefaultAppDirs/>
+    <DefaultDirectoryDirs/>
+    
+    <Include><Filename>run-program.desktop</Filename></Include>
+    
+    <Separator/>
+    
+    <Include><Filename>terminal.desktop</Filename></Include>
+    <Include><Filename>file-manager.desktop</Filename></Include>
+    <Include><Filename>web-browser.desktop</Filename></Include>
+    
+    <Separator/>
+    
+    <Menu>
+        <Name>Settings</Name>
+        <Include>
+            <Category>Settings</Category>
+        </Include>
+    </Menu>
+    
+    <Separator/>
+    
+    <Menu>
+        <Name>Accessories</Name>
+        <Include>
+            <Or>
+                <Category>Accessibility</Category>
+                <Category>Core</Category>
+                <Category>Legacy</Category>
+                <Category>Utility</Category>
+            </Or>
+        </Include>
+    </Menu>
+    
+    <Menu>
+        <Name>Development</Name>
+        <Include>
+            <Category>Development</Category>
+        </Include>
+    </Menu>
+    
+    <Menu>
+        <Name>Education</Name>
+        <Include>
+            <Category>Education</Category>
+        </Include>
+    </Menu>
+    
+    <Menu>
+        <Name>Games</Name>
+        <Include>
+            <Category>Game</Category>
+        </Include>
+    </Menu>
+    
+    <Menu>
+        <Name>Graphics</Name>
+        <Include>
+            <Category>Graphics</Category>
+        </Include>
+    </Menu>
+    
+    <Menu>
+        <Name>Multimedia</Name>
+        <Include>
+            <Category>AudioVideo</Category>
+        </Include>
+    </Menu>
+    
+    <Menu>
+        <Name>Network</Name>
+        <Include>
+            <Category>Network</Category>
+        </Include>
+    </Menu>
+    
+    <Menu>
+        <Name>Office</Name>
+        <Include>
+            <Category>Office</Category>
+        </Include>
+    </Menu>
+    
+    <Menu>
+        <Name>Science</Name>
+        <Include>
+            <Category>Science</Category>
+        </Include>
+    </Menu>
+    
+    <Menu>
+        <Name>System</Name>
+        <Include>
+            <Or>
+                <Category>Emulator</Category>
+                <Category>System</Category>
+            </Or>
+        </Include>
+    </Menu>
+    
+    <Menu>
+        <Name>Other</Name>
+        <Include>
+            <And>
+                <All/>
+                <OnlyUnallocated/>
+            </And>
+        </Include>
+    </Menu>
+    
+    <Separator/>
+    
+    <Include><Filename>help.desktop</Filename></Include>
+    <Include><Filename>about-xfce.desktop</Filename></Include>
+    <Include><Filename>logout.desktop</Filename></Include>
+    
+</Menu>

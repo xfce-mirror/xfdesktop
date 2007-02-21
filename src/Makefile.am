@@ -57,6 +57,7 @@ xfdesktop_CFLAGS = \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\" \
 	$(LIBX11_CFLAGS)	\
+	$(GTHREAD_CFLAGS) \
 	$(GMODULE_CFLAGS) \
 	$(LIBXFCEGUI4_CFLAGS) \
 	$(LIBXFCE4MCS_CLIENT_CFLAGS)
@@ -72,6 +73,7 @@ endif
 xfdesktop_LDADD += \
 	$(LIBX11_LDFLAGS) \
 	$(LIBX11_LIBS) \
+	$(GTHREAD_LIBS) \
 	$(LIBXFCEGUI4_LIBS) \
 	$(LIBXFCE4MCS_CLIENT_LIBS)
 
