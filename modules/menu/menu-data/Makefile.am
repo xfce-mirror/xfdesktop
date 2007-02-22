@@ -1,4 +1,4 @@
-desktopdir = $(datadir)/xfce4/xfdesktop/extra-menu-data
+desktopdir = @XFCE_MENU_DATA_DIR@
 desktop_DATA = \
 	about-xfce.desktop \
 	file-manager.desktop \

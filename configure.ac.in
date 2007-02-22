@@ -59,15 +59,25 @@ esac
 AC_SUBST([TDB_U32_TYPE])
 AC_MSG_RESULT([$TDB_U32_TYPE])
 
+AC_DEFUN([BT_EXPAND_VAR], [
+var_cur="$2"
+while test "x${var_cur}" != "x${var_last}"; do
+    var_last="${var_cur}"
+    var_cur=`eval "echo ${var_cur}"`
+done
+
+# autoconf, you suck (though with dubiously-good reason)
+if echo "${var_cur}" | grep -q NONE; then
+    var_cur=`echo ${var_cur} | sed -e 's:NONE:/usr/local:'`
+fi
+
+$1="${var_cur}"
+])
+
 dnl figure out extra menu data dir
-if test "x$datadir" = "x\${datarootdir}"; then
-    datadir="$datarootdir"
-fi
-if test "x$datadir" = "x\${prefix}/share"; then
-    datadir="$prefix/share"
-fi
-EXTRA_MENU_DATA_DIR="$datadir/xfce4/xfdesktop/extra-menu-data"
-AC_SUBST(EXTRA_MENU_DATA_DIR)
+BT_EXPAND_VAR(real_datadir, $datadir)
+XFCE_MENU_DATA_DIR="$real_datadir/xfce4/menu-data"
+AC_SUBST(XFCE_MENU_DATA_DIR)
 
 dnl Check for i18n support
 XDT_I18N([@LINGUAS@])
