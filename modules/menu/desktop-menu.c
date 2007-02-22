@@ -3,7 +3,7 @@
  *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
  *                     2003 Biju Chacko (botsie@users.sourceforge.net)
  *                     2004 Danny Milosavljevic <danny.milo@gmx.net>
- *                     2004 Brian Tarricone <bjt23@cornell.edu>
+ *                     2004-2007 Brian Tarricone <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -119,6 +119,11 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
         gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
         
         desktop_menu_add_items(desktop_menu, frap_submenu, submenu);
+        
+        /* we have to check emptiness down here instead of at the top of the
+         * loop because there may be further submenus that are empty */
+        if(!gtk_container_get_children(GTK_CONTAINER(submenu)))
+            gtk_widget_destroy(mi);
     }
     
     items = g_slist_sort(frap_menu_get_items(frap_menu), compare_items);
