@@ -575,10 +575,26 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     } else
         istyle = backdrop->priv->image_style;
     
-    if(backdrop->priv->bpp < 24)
-        interp = GDK_INTERP_HYPER;
-    else
-        interp = GDK_INTERP_BILINEAR;
+    /* if the image is the same as the screen size, there's no reason to do
+     * any scaling at all */
+    if(w == iw && h == ih)
+        istyle = XFCE_BACKDROP_IMAGE_CENTERED;
+    
+    /* if we don't need to do any scaling, don't do any interpolation.  this
+     * fixes a problem where hyper/bilinear filtering causes blurriness in
+     * some images.  http://bugzilla.xfce.org/show_bug.cgi?id=2939 */
+    if(XFCE_BACKDROP_IMAGE_TILED == istyle
+       || XFCE_BACKDROP_IMAGE_CENTERED == istyle)
+    {
+        interp = GDK_INTERP_NEAREST;
+    } else {
+        /* if the screen has a bit depth of less than 24bpp, using bilinear
+         * filtering looks crappy (mainly with gradients). */
+        if(backdrop->priv->bpp < 24)
+            interp = GDK_INTERP_HYPER;
+        else
+            interp = GDK_INTERP_BILINEAR;
+    }
     
     switch(istyle) {
         case XFCE_BACKDROP_IMAGE_CENTERED:
