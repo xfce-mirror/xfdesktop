@@ -398,50 +398,6 @@ showimage_toggle(GtkWidget *b, BackdropPanel *bp)
 }
 
 /* dnd box */
-void
-on_drag_data_received (GtkWidget * w, GdkDragContext * context,
-               int x, int y, GtkSelectionData * data,
-               guint info, guint time, BackdropPanel *bp)
-{
-    char buf[1024];
-    char *file = NULL;
-    char *end;
-
-    /* copy data to buffer */
-    strncpy (buf, (char *) data->data, 1023);
-    buf[1023] = '\0';
-
-    if ((end = strchr (buf, '\n')))
-    *end = '\0';
-
-    if ((end = strchr (buf, '\r')))
-    *end = '\0';
-
-    if (buf[0])
-    {
-    file = buf;
-
-    if (strncmp ("file:", file, 5) == 0)
-    {
-        file += 5;
-
-        if (strncmp ("///", file, 3) == 0)
-        file += 2;
-    }
-
-    if(bp->image_path)
-        g_free (bp->image_path);
-    bp->image_path = g_strdup (file);
-
-    gtk_entry_set_text (GTK_ENTRY (bp->file_entry), bp->image_path);
-    gtk_editable_set_position (GTK_EDITABLE (bp->file_entry), -1);
-
-    update_path (bp);
-    }
-
-    gtk_drag_finish (context, (file != NULL),
-             (context->action == GDK_ACTION_MOVE), time);
-}
 
 /* Don't use 'text/plain' as target.
  * Otherwise backdrop lists can not be dropped
@@ -456,6 +412,88 @@ static GtkTargetEntry target_table[] = {
     {"STRING", 0, TARGET_STRING},
     {"text/uri-list", 0, TARGET_URL},
 };
+
+#define VALID_HEXDIGIT(d) ( ((d) >= '0' &&  (d) <= '9') \
+                            || ((d) >= 'a' && (d) <= 'f') \
+                            || ((d) >= 'A' && (d) <= 'F') )
+
+void
+on_drag_data_received (GtkWidget * w, GdkDragContext * context,
+               int x, int y, GtkSelectionData * data,
+               guint info, guint time, BackdropPanel *bp)
+{
+    gchar *file = NULL, *p, *q, hexdigit[3] = { 0, 0, 0 };
+    
+    if(TARGET_STRING == info) {
+        /* it should NOT be a uri: just assume the string is a filename */
+        file = g_strndup((gchar *)data->data, data->length);
+        while(file[strlen(file)-1] == '\n' || file[strlen(file)-1] == '\r')
+            file[strlen(file)-1] = 0;
+    } else if(TARGET_URL == info) {
+        if(data->length > PATH_MAX - 1) {
+            g_critical("File name longer than %d chars dropped.", PATH_MAX);
+            gtk_drag_finish(context, FALSE, FALSE, time);
+            return;
+        }
+        
+        /* this assumes that the converted version of data->data will be at most
+         * equal to the original length of data. */
+        file = g_malloc0(data->length+1);
+        
+        p = (gchar *)data->data;
+        if(!strncmp(p, "file:", 5)) {
+            p += 5;
+            if(!strncmp(p, "///", 3))
+                p += 2;
+        }
+        
+        for(q = file; p && *p; ++q) {
+            switch(*p) {
+                case '%':
+                    if(!VALID_HEXDIGIT(*(p+1)) || !VALID_HEXDIGIT(*(p+2))) {
+                        g_critical("Dropped text/uri-list filename is an invalid URI.");
+                        gtk_drag_finish(context, FALSE, FALSE, time);
+                        return;
+                    }
+                    
+                    hexdigit[0] = *(p+1);
+                    hexdigit[1] = *(p+2);
+                    *q = strtol(hexdigit, NULL, 16);
+                    
+                    p += 3;
+                    break;
+                
+                case '\r':
+                case '\n':
+                    /* this uri list might have more than one element.  for now,
+                     * just take the first element and be done with it. */
+                    p = NULL;
+                    break;
+                
+                default:
+                    *q = *p;
+                    ++p;
+                    break;
+            }
+        }
+        
+        /* FIXME: does |file| need to be passed through
+         * g_filename_from_utf8()? */
+    }
+    
+    if(file) {
+        g_free(bp->image_path);
+        bp->image_path = file;
+        
+        gtk_entry_set_text(GTK_ENTRY(bp->file_entry), bp->image_path);
+        gtk_editable_set_position(GTK_EDITABLE(bp->file_entry), -1);
+
+        update_path(bp);
+    }
+    
+    gtk_drag_finish(context, (file != NULL),
+                    (context->action == GDK_ACTION_MOVE), time);
+}
 
 static void
 set_dnd_dest (BackdropPanel * bp)
