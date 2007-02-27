@@ -62,6 +62,7 @@ xfceconf_DATA = \
 	xfce-registered-categories.xml.ru \
 	xfce-registered-categories.xml.sk \
 	xfce-registered-categories.xml.sv \
+	xfce-registered-categories.xml.tr \
 	xfce-registered-categories.xml.zh_CN \
 	xfce-registered-categories.xml.zh_TW
 
