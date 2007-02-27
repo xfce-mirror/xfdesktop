@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xfce-registered-categories>
+<!-- 
+Translator Name: Eren Türkay
+Contact: turkay.eren@gmail.com
+Date: 2007-02-27
+-->
+
+<!-- Note: You can copy this file to ~/.config/xfce4/desktop/ for customisation. -->
+
+<!--
+	Here is how this file works:
+
+	<xfce-registered-categories> - root element, required.
+
+	<category>
+		name:  Required.  Corresponds to an official category from the
+		  freedesktop.org menu spec.
+		replace: Optional.  Name that is displayed as the menu name for items
+		  in the category (useful, e.g., for translations).
+		icon: icon to be displayed for this category (actually, for the menu
+		  item referenced by this category's 'replace' attribute)
+		toplevel: Optional.  Marks categories as being "allowed" to be toplevel
+		  menus.  Note: if a category is unrooted, it will be promoted to
+		  toplevel regardless of the value of this attribute. (default: false)
+		ignore: Optional.  This category will be ignored when organising menu
+		  items. (default: false)
+		hide: Optional.  Items referencing this category will not appear in any
+			menu. (default: false)
+
+	<subcategory> - sub-element of <category>, specifies a subcategory relation
+		name: Required.  Corresponds to an official category from the
+		  freedesktop.org menu spec.
+	  Example:
+	  <category name="Graphics">
+		  <subcategory name="RasterGraphics">
+	  </category>
+	  Note that even if subcategories are definied, it is possible to collapse
+	  all subcategories into a flat one-level menu by specifying style="simple"
+	  in the <include> tag in your menu.xml file.
+-->
+
+<xfce-registered-categories>
+	<category name="Legacy" toplevel="true" replace="Donatılar" builtin-icon="ACCESSORIES" />
+	<category name="Core" toplevel="true" replace="Donatılar" builtin-icon="ACCESSORIES" />
+	<category name="Development" toplevel="true" replace="Geliştirme" builtin-icon="DEVELOPMENT">
+		<subcategory name="Building" />
+		<subcategory name="Debugger" />
+		<subcategory name="IDE" />
+		<subcategory name="GUIDesigner" />
+		<subcategory name="Profiling" />
+		<subcategory name="RevisionControl" />
+		<subcategory name="Translation" />
+		<subcategory name="Database" />
+		<subcategory name="ProjectManagement" />
+		<subcategory name="WebDevelopment" />
+	</category>
+	<category name="Building" builtin-icon="DEVELOPMENT" replace="Oluşturma"/>
+	<category name="Debugger" replace="Hata Ayıklama" builtin-icon="DEVELOPMENT" />
+	<category name="IDE" replace="Geliştirme Ortamları" builtin-icon="DEVELOPMENT" />
+	<category name="GUIDesigner" replace="Arayüz Tasarlayıcılar" builtin-icon="DEVELOPMENT" />
+	<category name="Profiling" builtin-icon="DEVELOPMENT" />
+	<category name="RevisionControl" replace="Sürüm Kontrol" builtin-icon="DEVELOPMENT" />
+	<category name="Translation" builtin-icon="DEVELOPMENT" replace="Çeviri" />
+	<category name="Office" replace="Ofis" toplevel="true" builtin-icon="OFFICE">
+		<subcategory name="Calendar" />
+		<subcategory name="ContactManagement" />
+		<subcategory name="Database" />
+		<subcategory name="Dictionary" />
+		<subcategory name="Chart" />
+		<subcategory name="Email" />
+		<subcategory name="Finance" />
+		<subcategory name="FlowChart" />
+		<subcategory name="PDA" />
+		<subcategory name="ProjectManagement" />
+		<subcategory name="Presentation" />
+		<subcategory name="Spreadsheet" />
+		<subcategory name="WordProcessor" />
+		<subcategory name="Photograph" />
+		<subcategory name="Viewer" />
+	</category>
+	<category name="Calendar" replace="Takvim" builtin-icon="OFFICE" />
+	<category name="ContactManagement" replace="Hesap Yönetimi" builtin-icon="OFFICE" />
+	<category name="Database" replace="Veritabanı" builtin-icon="OFFICE" />
+	<category name="Dictionary" replace="Sözlük" builtin-icon="OFFICE" />
+	<category name="Chart" replace="Grafik" builtin-icon="OFFICE" />
+	<category name="Email" replace="E-Posta" builtin-icon="OFFICE" />
+	<category name="Finance" replace="Finans" builtin-icon="OFFICE" />
+	<category name="FlowChart" replace="Akış Grafiği" builtin-icon="OFFICE" />
+	<category name="PDA" builtin-icon="OFFICE" />
+	<category name="ProjectManagement" replace="Proje Yönetimi" builtin-icon="OFFICE" />
+	<category name="Presentation" replace="Sunum" builtin-icon="OFFICE" />
+	<category name="Spreadsheet" replace="Çizelge" builtin-icon="OFFICE" />
+	<category name="WordProcessor" replace="Kelime İşlemci" builtin-icon="OFFICE" />
+	<category name="Graphics" replace="Grafikler" toplevel="true" builtin-icon="GRAPHICS">
+		<subcategory name="2DGraphics" />
+		<subcategory name="3DGraphics" />
+		<subcategory name="Scanning" />
+		<subcategory name="Photograph" />
+		<subcategory name="Viewer" />
+	</category>
+	<category name="2DGraphics" replace="2-B Grafikler" builtin-icon="GRAPHICS">
+		<subcategory name="VectorGraphics" />
+		<subcategory name="RasterGraphics" />
+	</category>
+	<category name="VectorGraphics" replace="Vektör Grafikleri" builtin-icon="GRAPHICS" />
+	<category name="RasterGraphics" replace="Hücresel Grafikler" builtin-icon="GRAPHICS" />
+	<category name="3DGraphics" replace="3-B Grafikler" builtin-icon="GRAPHICS" />
+	<category name="Scanning" replace="Tarama" builtin-icon="GRAPHICS">
+		<subcategory name="OCR" />
+	</category>
+	<category name="OCR" builtin-icon="GRAPHICS" />
+	<category name="Photograph" replace="Fotoğraf" builtin-icon="GRAPHICS" />
+	<category name="Viewer" replace="Görüntüleyiciler" builtin-icon="GRAPHICS" />
+	<category name="Settings" replace="Ayarlar" toplevel="true" builtin-icon="SETTINGS">
+		<subcategory name="DesktopSettings" />
+		<subcategory name="HardwareSettings" />
+		<subcategory name="PackageSettings" />
+		<subcategory name="Security" />
+		<subcategory name="Accessibility" />
+		<subcategory name="Screensaver" />
+	</category>
+	<category name="DesktopSettings" replace="Masaüstü Seçenekleri" builtin-icon="SETTINGS" />
+	<category name="HardwareSettings" replace="Donanım Seçenekleri" builtin-icon="SETTINGS" />
+	<category name="PackageSettings" replace="Paket Seçenekleri" builtin-icon="SETTINGS" />
+	<category name="Network" replace="Ağ" toplevel="true" builtin-icon="NETWORK">
+		<subcategory name="Email" />
+		<subcategory name="Dialup" />
+		<subcategory name="InstantMessaging" />
+		<subcategory name="IRCClient" />
+		<subcategory name="FileTransfer" />
+		<subcategory name="HamRadio" />
+		<subcategory name="News" />
+		<subcategory name="P2P" />
+		<subcategory name="RemoteAccess" />
+		<subcategory name="Telephony" />
+		<subcategory name="WebBrowser" />
+		<subcategory name="WebDevelopment" />
+	</category>
+	<category name="Dialup" builtin-icon="NETWORK" />
+	<category name="InstantMessaging" replace="Anında Mesajlaşma" builtin-icon="NETWORK" />
+	<category name="IRCClient" replace="IRC İstemcileri" builtin-icon="NETWORK" />
+	<category name="FileTransfer" replace="Dosya Transferi" builtin-icon="NETWORK" />
+	<category name="HamRadio" replace="Ham Radyo" builtin-icon="NETWORK" />
+	<category name="News" replace="Haberler" builtin-icon="NETWORK" />
+	<category name="P2P" replace="P2P" builtin-icon="NETWORK" />
+	<category name="RemoteAccess" replace="Uzaktan Erişim" builtin-icon="NETWORK" />
+	<category name="Telephony" replace="Telefon" builtin-icon="NETWORK" />
+	<category name="WebBrowser" replace="Web Görüntüleme" builtin-icon="NETWORK" />
+	<category name="WebDevelopment" replace="Web Geliştirme" builtin-icon="NETWORK" />
+	<category name="AudioVideo" replace="Çoklu Ortam" toplevel="true" builtin-icon="MULTIMEDIA">
+		<subcategory name="Database" />
+		<subcategory name="HamRadio" />
+		<subcategory name="Audio" />
+		<subcategory name="Video" />
+		<subcategory name="AudioVideoEditing" />
+		<subcategory name="Player" />
+		<subcategory name="Recorder" />
+		<subcategory name="DiscBurning" />
+	</category>
+	<category name="Audio" builtin-icon="MULTIMEDIA">
+		<subcategory name="Midi" />
+		<subcategory name="Mixer" />
+		<subcategory name="Sequencer" />
+		<subcategory name="Tuner" />
+		<subcategory name="AudioVideoEditing" />
+		<subcategory name="Player" />
+		<subcategory name="Recorder" />
+	</category>
+	<category name="Midi"  builtin-icon="MULTIMEDIA" />
+	<category name="Mixer" replace="Ses Karıştırıcıları" builtin-icon="MULTIMEDIA" />
+	<category name="Sequencer" replace="Sequencers" builtin-icon="MULTIMEDIA" />
+	<category name="Tuner" replace="Ayarlayıcılar" builtin-icon="MULTIMEDIA" />
+	<category name="Video" builtin-icon="MULTIMEDIA">
+		<subcategory name="TV" />
+		<subcategory name="AudioVideoEditing" />
+		<subcategory name="Player" />
+		<subcategory name="Recorder" />
+		<subcategory name="Music" />
+	</category>
+	<category name="TV" replace="Televizyon" builtin-icon="MULTIMEDIA" />
+	<category name="AudioVideoEditing" replace="Düzenleme" builtin-icon="MULTIMEDIA" />
+	<category name="Player" replace="Ortam Çalıcıları" builtin-icon="MULTIMEDIA" />
+	<category name="Recorder" replace="Kayıt" builtin-icon="MULTIMEDIA" />
+	<category name="DiscBurning" replace="CD ve DVD Yazma" builtin-icon="MULTIMEDIA" />
+	<category name="Game" toplevel="true" replace="Oyunlar" builtin-icon="GAME">
+		<subcategory name="ActionGame" />
+		<subcategory name="AdventureGame" />
+		<subcategory name="ArcadeGame" />
+		<subcategory name="BoardGame" />
+		<subcategory name="BlocksGame" />
+		<subcategory name="CardGame" />
+		<subcategory name="KidsGame" />
+		<subcategory name="LogicGame" />
+		<subcategory name="RolePlaying" />
+		<subcategory name="Simulation" />
+		<subcategory name="SportsGame" />
+		<subcategory name="StrategyGame" />
+	</category>
+	<category name="ActionGame" replace="Action Games" builtin-icon="GAME" />
+	<category name="AdventureGame" replace="Macera Oyunları" builtin-icon="GAME" />
+	<category name="ArcadeGame" replace="Arcade Games" builtin-icon="GAME" />
+	<category name="BoardGame" replace="Board Games" builtin-icon="GAME" />
+	<category name="BlocksGame" replace="Puzzle Games" builtin-icon="GAME" />
+	<category name="CardGame" replace="Kart Oyunları" builtin-icon="GAME" />
+	<category name="KidsGame" replace="Çocuk Oyunları" builtin-icon="GAME" />
+	<category name="LogicGame" replace="Logic Games" builtin-icon="GAME" />
+	<category name="RolePlaying" replace="Role Playing Games" builtin-icon="GAME" />
+	<category name="Simulation" replace="Simulasyon" builtin-icon="GAME" />
+	<category name="SportsGame" replace="Spor Oyunları" builtin-icon="GAME" />
+	<category name="StrategyGame" replace="Strateji Oyunları" builtin-icon="GAME" />
+	<category name="Education" replace="Eğitim" toplevel="true">
+		<subcategory name="Art" />
+		<subcategory name="Construction" />
+		<subcategory name="Music" />
+		<subcategory name="Languages" />
+		<subcategory name="Teaching" />
+	</category>
+	<category name="Art" replace="Sanat" />
+	<category name="Construction" replace="Yapı" />
+	<category name="Music" replace="Müzik" />
+	<category name="Languages" replace="Diller" />
+	<category name="Science" replace="Bilim" toplevel="true">
+		<subcategory name="Astronomy" />
+		<subcategory name="Biology" />
+		<subcategory name="Chemistry" />
+		<subcategory name="Geology" />
+		<subcategory name="Math" />
+		<subcategory name="MedicalSoftware" />
+		<subcategory name="Physics" />
+	</category>
+	<category name="Astronomy" replace="Astronomi" />
+	<category name="Biology" replace="Biyoloji" />
+	<category name="Chemistry" replace="Kimya" />
+	<category name="Geology" replace="Coğrafya" />
+	<category name="Math" replace="Matematik" />
+	<category name="MedicalSoftware" replace="Sağlık" />
+	<category name="Physics" replace="Fizik" />
+	<category name="Teaching" replace="Öğretim" />
+	<category name="Amusement" replace="Oyunlar" builtin-icon="GAME" />
+	<category name="Applet" replace="Eklentiler" />
+	<category name="Archiving" replace="Arşivleme" />
+	<category name="Electronics" replace="Elektronik" />
+	<category name="Emulator" toplevel="true" replace="Sistem" builtin-icon="SYSTEM" />
+	<category name="Engineering" replace="Mühendislik" />
+	<category name="FileManager" replace="Dosya Yönetimi" />
+	<category name="Shell" replace="Kabuklar" />
+	<category name="Screensaver" replace="Ekran Koruyucusu" />
+	<category name="TerminalEmulator" replace="Terminal Uygulamaları" />
+	<category name="TrayIcon" replace="Görev Çubuğu Simgeleri" />
+	<category name="System" replace="Sistem" toplevel="true" builtin-icon="SYSTEM">
+		<subcategory name="FileSystem" />
+		<subcategory name="Monitor" />
+		<subcategory name="Security" />
+		<subcategory name="Accessibility" />
+		<subcategory name="TerminalEmulator" />
+		<subcategory name="Shell" />
+	</category>
+	<category name="Filesystem" replace="Dosya Sistemi" builtin-icon="SYSTEM" />
+	<category name="Monitor" replace="Görüntüleme" builtin-icon="SYSTEM" />
+	<category name="Security" replace="Güvenlik" builtin-icon="SYSTEM" />
+	<category name="Utility" toplevel="true" replace="Donatılar" builtin-icon="ACCESSORIES">
+		<subcategory name="Accessibility" />
+		<subcategory name="Calculator" />
+		<subcategory name="Clock" />
+		<subcategory name="TextEditor" />
+		<subcategory name="Archiving" />
+		<subcategory name="TerminalEmulator" />
+		<subcategory name="FileManager" />
+		<subcategory name="Shell" />
+	</category>
+	<category name="Accessibility" replace="Erişilebilirlik" builtin-icon="UTILITY" />
+	<category name="Calculator" replace="Hesaplayıcılar" builtin-icon="ACCESSORIES" />
+	<category name="Clock" replace="Saatler" builtin-icon="ACCESSORIES" />
+	<category name="TextEditor" replace="Metin Düzenleme" builtin-icon="ACCESSORIES" />
+	<category name="KDE" toplevel="true" ignore="true">
+		<subcategory name="Development" />
+		<subcategory name="Office" />
+		<subcategory name="Graphics" />
+		<subcategory name="Settings" />
+		<subcategory name="Network" />
+		<subcategory name="AudioVideo" />
+		<subcategory name="Game" />
+		<subcategory name="Education" />
+		<subcategory name="Science" />
+		<subcategory name="System" />
+		<subcategory name="Utility" />
+	</category>
+	<category name="GNOME" toplevel="true" ignore="true">
+		<subcategory name="Development" />
+		<subcategory name="Office" />
+		<subcategory name="Graphics" />
+		<subcategory name="Settings" />
+		<subcategory name="Network" />
+		<subcategory name="AudioVideo" />
+		<subcategory name="Game" />
+		<subcategory name="Education" />
+		<subcategory name="Science" />
+		<subcategory name="System" />
+		<subcategory name="Utility" />
+	</category>
+	<category name="GTK" toplevel="true" ignore="true">
+		<subcategory name="GNOME" />
+	</category>
+	<category name="Qt" toplevel="true" ignore="true">
+		<subcategory name="KDE" />
+	</category>
+	<category name="Motif" toplevel="true" ignore="true">
+		<subcategory name="Development" />
+		<subcategory name="Office" />
+		<subcategory name="Graphics" />
+		<subcategory name="Settings" />
+		<subcategory name="Network" />
+		<subcategory name="AudioVideo" />
+		<subcategory name="Game" />
+		<subcategory name="Education" />
+		<subcategory name="Science" />
+		<subcategory name="System" />
+		<subcategory name="Utility" />
+	</category>
+	<category name="Java" toplevel="true" ignore="true">
+		<subcategory name="Applet" />
+	</category>
+	<category name="ConsoleOnly" toplevel="true" replace="Konsol" ignore="true">
+		<subcategory name="Development" />
+		<subcategory name="Office" />
+		<subcategory name="Graphics" />
+		<subcategory name="Settings" />
+		<subcategory name="Network" />
+		<subcategory name="AudioVideo" />
+		<subcategory name="Game" />
+		<subcategory name="Education" />
+		<subcategory name="Science" />
+		<subcategory name="System" />
+		<subcategory name="Utility" />
+	</category>
+	<category name="Wine" toplevel="true" builtin-icon="WINE" />
+	<category name="WineX" replace="Wine" toplevel="true" builtin-icon="WINE" />
+	<category name="CrossOver" replace="Wine" toplevel="true" builtin-icon="WINE" />
+</xfce-registered-categories>
