@@ -4,19 +4,28 @@
 <Menu>
     <Name>Xfce</Name>
     
-    <AppDir>@XFCE_MENU_DATA_DIR@</AppDir>
     <DefaultAppDirs/>
     <DefaultDirectoryDirs/>
     
-    <Include><Filename>run-program.desktop</Filename></Include>
-    
-    <Separator/>
-    
-    <Include><Filename>terminal.desktop</Filename></Include>
-    <Include><Filename>file-manager.desktop</Filename></Include>
-    <Include><Filename>web-browser.desktop</Filename></Include>
-    
-    <Separator/>
+    <Include>
+        <Category>X-Xfce-Toplevel</Category>
+    </Include>
+
+    <Layout>
+        <Filename>run-program.desktop</Filename>
+        <Separator/>
+        <Filename>terminal.desktop</Filename>
+        <Filename>file-manager.desktop</Filename>
+        <Filename>web-browser.desktop</Filename>
+        <Separator/>
+        <Menuname>Settings</Menuname>
+        <Separator/>
+        <Merge type="all"/>
+        <Separator/>
+        <Filename>help.desktop</Filename>
+        <Filename>about-xfce.desktop</Filename>
+        <Filename>logout.desktop</Filename>
+    </Layout>
     
     <Menu>
         <Name>Settings</Name>
@@ -24,8 +33,6 @@
             <Category>Settings</Category>
         </Include>
     </Menu>
-    
-    <Separator/>
     
     <Menu>
         <Name>Accessories</Name>
@@ -112,11 +119,5 @@
             <All/>
         </Include>
     </Menu>
-    
-    <Separator/>
-    
-    <Include><Filename>help.desktop</Filename></Include>
-    <Include><Filename>about-xfce.desktop</Filename></Include>
-    <Include><Filename>logout.desktop</Filename></Include>
     
 </Menu>
