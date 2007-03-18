@@ -11,4 +11,4 @@ desktop_DATA = \
 menudir = $(sysconfdir)/xdg/menus
 menu_DATA = xfce-applications.menu
 
-EXTRA_DIST = $(desktop_DATA) $(menu_DATA).in
+EXTRA_DIST = $(desktop_DATA) $(menu_DATA)

@@ -74,11 +74,6 @@ fi
 $1="${var_cur}"
 ])
 
-dnl figure out extra menu data dir
-BT_EXPAND_VAR(real_datadir, $datadir)
-XFCE_MENU_DATA_DIR="$real_datadir/xfce4/menu-data"
-AC_SUBST(XFCE_MENU_DATA_DIR)
-
 dnl Check for i18n support
 XDT_I18N([@LINGUAS@])
 
@@ -256,7 +251,6 @@ modules/menu/frapmenu/Makefile
 modules/menu/frapmenu/tdb/Makefile
 modules/menu/frapmenu/tdb/tdbconfig.h
 modules/menu/menu-data/Makefile
-modules/menu/menu-data/xfce-applications.menu
 panel-plugin/Makefile
 pixmaps/Makefile
 po/Makefile.in
