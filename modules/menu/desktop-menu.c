@@ -86,6 +86,7 @@ itheme_changed_cb(GtkIconTheme *itheme, gpointer user_data)
     last_settings_change = time(NULL);
 }
 
+#if 0
 static gint
 compare_items(gconstpointer a,
               gconstpointer b)
@@ -93,6 +94,7 @@ compare_items(gconstpointer a,
   return g_utf8_collate(frap_menu_item_get_name((FrapMenuItem *)a),
                         frap_menu_item_get_name((FrapMenuItem *)b));
 }
+#endif
 
 static void
 desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
@@ -145,50 +147,7 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         }
     }
-    
-#if 0
-    /* note: |menus| is owned by the FrapMenu, |items| is owned by us */
-    
-    menus = frap_menu_get_menus(frap_menu);
-    for(l = menus; l; l = l->next) {
-        frap_submenu = l->data;
-        
-        submenu = gtk_menu_new();
-        gtk_widget_show(submenu);
-        
-        mi = gtk_menu_item_new_with_label(frap_menu_get_name(frap_submenu));
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
-        
-        desktop_menu_add_items(desktop_menu, frap_submenu, submenu);
-        
-        /* we have to check emptiness down here instead of at the top of the
-         * loop because there may be further submenus that are empty */
-        if(!gtk_container_get_children(GTK_CONTAINER(submenu)))
-            gtk_widget_destroy(mi);
-    }
-    
-    items = g_slist_sort(frap_menu_get_items(frap_menu), compare_items);
-    for(l = items; l; l = l->next) {
-        frap_item = l->data;
-        
-        if(frap_menu_item_get_no_display(frap_item)
-           || !frap_menu_item_show_in_environment(frap_item))
-        {
-            continue;
-        }
-        
-        mi = xfce_app_menu_item_new_full(frap_menu_item_get_name(frap_item),
-                                         frap_menu_item_get_command(frap_item),
-                                         frap_menu_item_get_icon_name(frap_item),
-                                         frap_menu_item_requires_terminal(frap_item),
-                                         frap_menu_item_supports_startup_notification(frap_item));
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    }
-    g_slist_free(items);
-#endif
+    g_slist_free(layout_items);
 }
 
 static gboolean
