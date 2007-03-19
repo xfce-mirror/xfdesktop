@@ -2,7 +2,7 @@ directorydir = $(datadir)/desktop-directories
 directory_in_files = \
 	xfce-accessories.directory.in \
 	xfce-development.directory.in \
-	xfce-education.directory.in \ 
+	xfce-education.directory.in \
 	xfce-games.directory.in \
 	xfce-graphics.directory.in \
 	xfce-multimedia.directory.in \
