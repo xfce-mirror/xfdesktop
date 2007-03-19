@@ -2,11 +2,11 @@
 Version=1.0
 Type=Application
 Encoding=UTF-8
-Name=Help
-Comment=Help using Xfce
-Exec=xfhelp4
-Icon=gnome-help
-StartupNotify=false
+Exec=Thunar
+Icon=file-manager
+StartupNotify=true
 Terminal=false
 Categories=X-XFCE;X-Xfce-Toplevel;
 OnlyShowIn=XFCE;
+_Name=File Manager
+_Comment=Thunar file manager
