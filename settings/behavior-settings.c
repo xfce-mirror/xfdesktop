@@ -38,13 +38,21 @@ enum {
     OPT_ICONSICONSIZE,
     OPT_ICONSFONTSIZE,
 #endif
+    OPT_WL_SHOW_WS_NAMES,
+    OPT_WL_SUBMENUS,
+    OPT_WL_STICKY_ONCE,
 };
 
 /* globals */
 static gboolean show_windowlist = TRUE;
+static gboolean wl_show_ws_names = TRUE;
+static gboolean wl_submenus = FALSE;
+static gboolean wl_sticky_once = FALSE;
+
 #ifdef USE_DESKTOP_MENU
 static gboolean show_desktopmenu = TRUE;
 #endif
+
 #ifdef ENABLE_DESKTOP_ICONS
 # ifdef ENABLE_FILE_ICONS
 static XfceDesktopIconStyle desktop_icon_style = XFCE_DESKTOP_ICON_STYLE_FILES;
@@ -68,7 +76,9 @@ set_chk_option(GtkWidget *w, gpointer user_data)
             show_windowlist = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w));
             mcs_manager_set_int(bd->plugin->manager, "showwl", BACKDROP_CHANNEL,
                     show_windowlist ? 1 : 0);
+            gtk_widget_set_sensitive(bd->frame_wl_options, show_windowlist);
             break;
+            
 #ifdef USE_DESKTOP_MENU
         case OPT_SHOWDM:
             show_desktopmenu = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w));
@@ -76,6 +86,7 @@ set_chk_option(GtkWidget *w, gpointer user_data)
                     show_desktopmenu ? 1 : 0);
             break;
 #endif
+        
 #ifdef ENABLE_DESKTOP_ICONS
         case OPT_ICONSSYSTEMFONT:
             desktop_icons_use_system_font = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w));
@@ -86,6 +97,26 @@ set_chk_option(GtkWidget *w, gpointer user_data)
                                      !desktop_icons_use_system_font);
             break;
 #endif
+        
+        case OPT_WL_SHOW_WS_NAMES:
+            wl_show_ws_names = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w));
+            mcs_manager_set_int(bd->plugin->manager, "wl_show_ws_names",
+                                BACKDROP_CHANNEL, wl_show_ws_names ? 1 : 0);
+            gtk_widget_set_sensitive(bd->frame_wl_submenus, wl_show_ws_names);
+            break;
+        
+        case OPT_WL_SUBMENUS:
+            wl_submenus = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w));
+            mcs_manager_set_int(bd->plugin->manager, "wl_submenus",
+                                BACKDROP_CHANNEL, wl_submenus ? 1 : 0);
+            break;
+        
+        case OPT_WL_STICKY_ONCE:
+            wl_sticky_once = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w));
+            mcs_manager_set_int(bd->plugin->manager, "wl_sticky_once",
+                                BACKDROP_CHANNEL, wl_sticky_once ? 1 : 0);
+            break;
+        
         default:
             g_warning("xfdesktop menu: got invalid checkbox ID");
             return;
@@ -157,6 +188,33 @@ behavior_settings_load(McsPlugin *plugin)
         show_windowlist = setting->data.v_int == 0 ? FALSE : TRUE;
     else
         mcs_manager_set_int(plugin->manager, "showwl", BACKDROP_CHANNEL, 1);
+    
+    setting = mcs_manager_setting_lookup(plugin->manager, "wl_show_ws_names",
+                                         BACKDROP_CHANNEL);
+    if(setting)
+        wl_show_ws_names = setting->data.v_int == 0 ? FALSE : TRUE;
+    else {
+        mcs_manager_set_int(plugin->manager, "wl_show_ws_names",
+                            BACKDROP_CHANNEL, wl_show_ws_names);
+    }
+    
+    setting = mcs_manager_setting_lookup(plugin->manager, "wl_submenus",
+                                         BACKDROP_CHANNEL);
+    if(setting)
+        wl_submenus = setting->data.v_int == 0 ? FALSE : TRUE;
+    else {
+        mcs_manager_set_int(plugin->manager, "wl_submenus",
+                            BACKDROP_CHANNEL, wl_submenus);
+    }
+    
+    setting = mcs_manager_setting_lookup(plugin->manager, "wl_sticky_once",
+                                         BACKDROP_CHANNEL);
+    if(setting)
+        wl_sticky_once = setting->data.v_int == 0 ? FALSE : TRUE;
+    else {
+        mcs_manager_set_int(plugin->manager, "wl_sticky_once",
+                            BACKDROP_CHANNEL, wl_sticky_once);
+    }
 
 #ifdef USE_DESKTOP_MENU
     setting = mcs_manager_setting_lookup(plugin->manager, "showdm",
@@ -224,15 +282,17 @@ GtkWidget *
 behavior_page_create(BackdropDialog *bd)
 {
     XfceKiosk *kiosk;
-    GtkWidget *page, *vbox, *frame, *frame_bin, *chk;
+    GtkWidget *page, *vbox, *vbox1, *frame, *frame_bin, *frame_bin1, *chk;
 #ifdef USE_DESKTOP_MENU
     GtkWidget *btn;
 #endif
 #ifdef ENABLE_DESKTOP_ICONS
     GtkWidget *combo, *sbtn, *lbl, *hbox;
 #endif
+    gboolean allow_custom_wl = TRUE;
     
     kiosk = xfce_kiosk_new("xfdesktop");
+    allow_custom_wl = xfce_kiosk_query(kiosk, "CustomizeWindowlist");
     
     page = gtk_vbox_new(FALSE, BORDER);
     
@@ -242,7 +302,7 @@ behavior_page_create(BackdropDialog *bd)
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(page), frame, FALSE, FALSE, 0);
     
-    vbox = gtk_vbox_new(FALSE, BORDER);
+    vbox = gtk_vbox_new(FALSE, BORDER/2);
     gtk_widget_show(vbox);
     gtk_container_add(GTK_CONTAINER(frame_bin), vbox);
     
@@ -252,8 +312,50 @@ behavior_page_create(BackdropDialog *bd)
     gtk_widget_show(chk);
     gtk_box_pack_start(GTK_BOX(vbox), chk, FALSE, FALSE, 0);
     g_signal_connect(G_OBJECT(chk), "toggled", G_CALLBACK(set_chk_option), bd);
+    if(!allow_custom_wl)
+        gtk_widget_set_sensitive(chk, FALSE);
     
-    if(!xfce_kiosk_query(kiosk, "CustomizeWindowlist"))
+    bd->frame_wl_options = xfce_create_framebox(NULL, &frame_bin);
+    gtk_widget_show(bd->frame_wl_options);
+    gtk_box_pack_start(GTK_BOX(vbox), bd->frame_wl_options, FALSE, FALSE, 0);
+    
+    vbox1 = gtk_vbox_new(FALSE, 0);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox1), 0);
+    gtk_widget_show(vbox1);
+    gtk_container_add(GTK_CONTAINER(frame_bin), vbox1);
+    
+    chk = gtk_check_button_new_with_mnemonic(_("Show workspace _names in list"));
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), wl_show_ws_names);
+    g_object_set_data(G_OBJECT(chk), "xfce-chknum",
+                      GUINT_TO_POINTER(OPT_WL_SHOW_WS_NAMES));
+    gtk_widget_show(chk);
+    gtk_box_pack_start(GTK_BOX(vbox1), chk, FALSE, FALSE, 0);
+    g_signal_connect(G_OBJECT(chk), "toggled", G_CALLBACK(set_chk_option), bd);
+    if(!allow_custom_wl)
+        gtk_widget_set_sensitive(chk, FALSE);
+    
+    bd->frame_wl_submenus = xfce_create_framebox(NULL, &frame_bin1);
+    gtk_widget_show(bd->frame_wl_submenus);
+    gtk_box_pack_start(GTK_BOX(vbox1), bd->frame_wl_submenus, FALSE, FALSE, 0);
+    
+    chk = gtk_check_button_new_with_mnemonic(_("Show windows on each workspace in sub_menus"));
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), wl_submenus);
+    g_object_set_data(G_OBJECT(chk), "xfce-chknum",
+                      GUINT_TO_POINTER(OPT_WL_SUBMENUS));
+    gtk_widget_show(chk);
+    gtk_container_add(GTK_CONTAINER(frame_bin1), chk);
+    g_signal_connect(G_OBJECT(chk), "toggled", G_CALLBACK(set_chk_option), bd);
+    if(!allow_custom_wl)
+        gtk_widget_set_sensitive(chk, FALSE);
+    
+    chk = gtk_check_button_new_with_mnemonic(_("Show sticky windows only in _active workspace"));
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), wl_sticky_once);
+    g_object_set_data(G_OBJECT(chk), "xfce-chknum",
+                      GUINT_TO_POINTER(OPT_WL_STICKY_ONCE));
+    gtk_widget_show(chk);
+    gtk_box_pack_start(GTK_BOX(vbox1), chk, FALSE, FALSE, 0);
+    g_signal_connect(G_OBJECT(chk), "toggled", G_CALLBACK(set_chk_option), bd);
+    if(!allow_custom_wl)
         gtk_widget_set_sensitive(chk, FALSE);
     
 #ifdef USE_DESKTOP_MENU    

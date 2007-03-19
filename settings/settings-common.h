@@ -41,6 +41,10 @@ typedef struct {
     GtkWidget *top_notebook;
     GtkWidget *screens_notebook;
     
+    /* windowlist options */
+    GtkWidget *frame_wl_options;
+    GtkWidget *frame_wl_submenus;
+    
     /* menu options */
 #ifdef ENABLE_DESKTOP_ICONS
     GtkWidget *vbox_icon_settings;

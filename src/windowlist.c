@@ -46,6 +46,9 @@
 
 static gboolean show_windowlist = TRUE;
 static gboolean show_windowlist_icons = TRUE;
+static gboolean wl_show_ws_names = TRUE;
+static gboolean wl_submenus = FALSE;
+static gboolean wl_sticky_once = FALSE;
 
 static void
 set_num_workspaces(GtkWidget *w, gpointer num)
@@ -187,7 +190,7 @@ menu_item_from_netk_window(NetkWindow *netk_window, gint icon_width,
 static GtkWidget *
 windowlist_create(GdkScreen *gscreen)
 {
-    GtkWidget *menu, *mi, *label, *img;
+    GtkWidget *menu, *submenu, *mi, *label, *img;
     GtkStyle *style;
     NetkScreen *netk_screen;
     gint nworkspaces, i;
@@ -213,44 +216,67 @@ windowlist_create(GdkScreen *gscreen)
     
     for(i = 0; i < nworkspaces; i++) {
         netk_workspace = netk_screen_get_workspace(netk_screen, i);
-        ws_name = netk_workspace_get_name(netk_workspace);
+        submenu = menu;
         
-        if(netk_workspace == active_workspace) {
-            if(!ws_name || atoi(ws_name) == i+1)
-                ws_label = g_strdup_printf(_("<b>Workspace %d</b>"), i+1);
-            else {
-                gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
-                ws_label = g_strdup_printf("<b>%s</b>", ws_name_esc);
-                g_free(ws_name_esc);
+        if(wl_show_ws_names || wl_submenus) {
+            ws_name = netk_workspace_get_name(netk_workspace);
+            
+            if(netk_workspace == active_workspace) {
+                if(!ws_name || atoi(ws_name) == i+1)
+                    ws_label = g_strdup_printf(_("<b>Workspace %d</b>"), i+1);
+                else {
+                    gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
+                    ws_label = g_strdup_printf("<b>%s</b>", ws_name_esc);
+                    g_free(ws_name_esc);
+                }
+            } else {  /* don't italicise if we're showing stuff in submenus */
+                if(!ws_name || atoi(ws_name) == i+1) {
+                    if(wl_submenus)
+                        ws_label = g_strdup_printf(_("Workspace %d"), i+1);
+                    else
+                        ws_label = g_strdup_printf(_("<i>Workspace %d</i>"), i+1);
+                } else {
+                    gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
+                    if(wl_submenus)
+                        ws_label = ws_name_esc;
+                    else {
+                        ws_label = g_strdup_printf("<i>%s</i>", ws_name_esc);
+                        g_free(ws_name_esc);
+                    }
+                }
             }
-        } else {
-            if(!ws_name || atoi(ws_name) == i+1)
-                ws_label = g_strdup_printf(_("<i>Workspace %d</i>"), i+1);
-            else {
-                gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
-                ws_label = g_strdup_printf("<i>%s</i>", ws_name_esc);
-                g_free(ws_name_esc);
+            
+            mi = gtk_menu_item_new_with_label(ws_label);
+            g_free(ws_label);
+            label = gtk_bin_get_child(GTK_BIN(mi));
+            gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            if(!wl_submenus) {
+                g_signal_connect_swapped(G_OBJECT(mi), "activate",
+                                         G_CALLBACK(netk_workspace_activate),
+                                         netk_workspace);
+            }
+            
+            if(wl_submenus) {
+                submenu = gtk_menu_new();
+                gtk_widget_show(submenu);
+                gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
+            } else {
+                mi = gtk_separator_menu_item_new();
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             }
         }
-        mi = gtk_menu_item_new_with_label(ws_label);
-        g_free(ws_label);
-        label = gtk_bin_get_child(GTK_BIN(mi));
-        gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        g_signal_connect_swapped(G_OBJECT(mi), "activate",
-                G_CALLBACK(netk_workspace_activate), netk_workspace);
-        
-        mi = gtk_separator_menu_item_new();
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         
         windows = netk_screen_get_windows_stacked(netk_screen);
         for(l = windows; l; l = l->next) {
             netk_window = l->data;
             
             if((netk_window_get_workspace(netk_window) != netk_workspace
-                        && !netk_window_is_sticky(netk_window))
+                        && (!netk_window_is_sticky(netk_window)
+                            || (wl_sticky_once
+                                && netk_workspace != active_workspace)))
                     || netk_window_is_skip_pager(netk_window)
                     || netk_window_is_skip_tasklist(netk_window))
             {
@@ -273,7 +299,7 @@ windowlist_create(GdkScreen *gscreen)
                 gtk_widget_modify_font(lbl, italic_font_desc);
             }
             gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(submenu), mi);
             g_object_weak_ref(G_OBJECT(netk_window),
                     (GWeakNotify)window_destroyed_cb, mi);
             g_signal_connect(G_OBJECT(mi), "activate",
@@ -282,12 +308,20 @@ windowlist_create(GdkScreen *gscreen)
                     G_CALLBACK(mi_destroyed_cb), netk_window);
         }
         
+        if(!wl_submenus) {
+            mi = gtk_separator_menu_item_new();
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(submenu), mi);
+        }
+    }
+    
+    pango_font_description_free(italic_font_desc);
+    
+    if(wl_submenus) {
         mi = gtk_separator_menu_item_new();
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     }
-    
-    pango_font_description_free(italic_font_desc);
     
     /* 'add workspace' item */
     if(show_windowlist_icons) {
@@ -374,6 +408,33 @@ windowlist_init(McsClient *mcs_client)
             mcs_setting_free(setting);
             setting = NULL;
         }
+        
+        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client,
+                                                 "wl_show_ws_names",
+                                                 BACKDROP_CHANNEL, &setting))
+        {
+            wl_show_ws_names = setting->data.v_int;
+            mcs_setting_free(setting);
+            setting = NULL;
+        }
+        
+        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client,
+                                                 "wl_submenus",
+                                                 BACKDROP_CHANNEL, &setting))
+        {
+            wl_submenus = setting->data.v_int;
+            mcs_setting_free(setting);
+            setting = NULL;
+        }
+        
+        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client,
+                                                 "wl_sticky_once",
+                                                 BACKDROP_CHANNEL, &setting))
+        {
+            wl_sticky_once = setting->data.v_int;
+            mcs_setting_free(setting);
+            setting = NULL;
+        }
     }
 }
 
@@ -387,7 +448,17 @@ windowlist_settings_changed(McsClient *client, McsAction action,
             if(!strcmp(setting->name, "showwl")) {
                 show_windowlist = setting->data.v_int;
                 return TRUE;
+            } else if(!strcmp(setting->name, "wl_show_ws_names")) {
+                wl_show_ws_names = setting->data.v_int;
+                return TRUE;
+            } else if(!strcmp(setting->name, "wl_submenus")) {
+                wl_submenus = setting->data.v_int;
+                return TRUE;
+            } else if(!strcmp(setting->name, "wl_sticky_once")) {
+                wl_sticky_once = setting->data.v_int;
+                return TRUE;
             }
+            
             break;
         
         case MCS_ACTION_DELETED:
