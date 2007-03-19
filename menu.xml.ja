@@ -100,13 +100,13 @@
     <app name="ターミナル" cmd="xfterm4" icon="gnome-terminal"/>
     <!--
       訳者注: メニューで余白を確保するためにスペースを入れています。
-      また、冗長だと思われる '(xffm)' を削除しました。
+      また、冗長だと思われる '(thunar)' を削除しました。
     -->
     <app name="ファイルマネージャー " cmd="thunar" icon="file-manager"/>
     <!--
       訳者注: 元のファイルでは mozilla になっています。
      -->
-    <app name="ウェブブラウザー" cmd="firefox" icon="gnome-globe"/>
+    <app name="ウェブブラウザー" cmd="xfbrowser4" icon="gnome-globe"/>
 
     <separator/>
 

@@ -4,9 +4,9 @@
 	<separator/>
 	<app name="Çalıştır..." cmd="xfrun4" icon="gnome-fs-executable"/>
 	<separator/>
-	<app name="Kabuk" cmd="Terminal" icon="terminal"/>
-	<app name="Dosya Yöneticisi (xffm)" cmd="xffm" icon="file-manager"/>
-	<app name="Web Tarayıcı" cmd="firefox" icon="gnome-globe"/>
+	<app name="Kabuk" cmd="xfterm4" icon="terminal"/>
+	<app name="Dosya Yöneticisi (thunar)" cmd="thunar" icon="file-manager"/>
+	<app name="Web Tarayıcı" cmd="xfbrowser4" icon="gnome-globe"/>
 	<separator/>
 	<menu name="Ayarlar" icon="gnome-settings">
 		<app name="Xfce4 ayarları" cmd="xfce-setting-show" icon="gnome-settings"/>

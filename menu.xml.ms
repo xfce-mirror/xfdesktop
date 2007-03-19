@@ -61,7 +61,7 @@
 <!--
         <app name="Latarbelakang" cmd="xfce-setting-show backdrop"/>
 	<app name="Ruangkerja" cmd="xfce-setting-show workspaces"/>
-	<app name="Pengurus Fail (xffm)" cmd="xfce-setting-show xffm"/>
+	<app name="Pengurus Fail (thunar)" cmd="xfce-setting-show thunar"/>
 	<app name="Antaramuka pengguna (gtk+)" cmd="xfce-setting-show ui"/>
 	<app name="Kotak ikon" cmd="xfce-setting-show xfibx"/>
         <app name="Tetikus" cmd="xfce-setting-show mouse"/>
