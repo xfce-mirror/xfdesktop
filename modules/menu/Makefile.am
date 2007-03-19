@@ -1,6 +1,7 @@
 SUBDIRS = \
-	menu-data \
-	frapmenu
+	directory-data \
+	frapmenu \
+	menu-data
 
 plugindir = $(libdir)/xfce4/modules
 

@@ -102,19 +102,43 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                        GtkWidget *menu)
 {
     GSList *layout_items, *l;
-    GtkWidget *submenu, *mi;
+    GtkWidget *submenu, *mi, *img;
     FrapMenu *frap_submenu;
+    FrapMenuDirectory *frap_directory;
     FrapMenuItem *frap_item;
+    const gchar *name, *icon_name;
     
     layout_items = frap_menu_get_layout_items(frap_menu);
     for(l = layout_items; l; l = l->next) {
         if(FRAP_IS_MENU(l->data)) {
             frap_submenu = l->data;
+            frap_directory = frap_menu_get_directory(frap_submenu);
+            
+            if(frap_directory
+               && (frap_menu_directory_get_no_display(frap_directory)
+               || !frap_menu_directory_show_in_environment(frap_directory)))
+            {
+                continue;
+            }
             
             submenu = gtk_menu_new();
             gtk_widget_show(submenu);
             
-            mi = gtk_menu_item_new_with_label(frap_menu_get_name(frap_submenu));
+            if(frap_directory) {
+                name = frap_menu_directory_get_name(frap_directory);
+                icon_name = frap_menu_directory_get_icon(frap_directory);
+            } else {
+                name = frap_menu_get_name(frap_menu);
+                icon_name = NULL;
+            }
+            
+            mi = gtk_image_menu_item_new_with_label(name);
+            if(icon_name) {
+                img = gtk_image_new_from_icon_name(icon_name,
+                                                   GTK_ICON_SIZE_MENU);
+                gtk_widget_show(img);
+                gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+            }
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
