@@ -9,6 +9,7 @@ xfce4_menu_plugin_CFLAGS = \
 	$(LIBX11_CFLAGS) \
 	$(LIBXFCEGUI4_CFLAGS) \
 	$(LIBXFCE4PANEL_CFLAGS) \
+	$(THUNAR_VFS_CFLAGS) \
 	-DDATADIR=\"$(datadir)\" \
 	-DLOCALEDIR=\"$(localedir)\" \
 	-DBINDIR=\"$(bindir)\"
@@ -18,7 +19,8 @@ xfce4_menu_plugin_LDADD = \
 	$(top_builddir)/common/libxfdesktop.la \
 	$(LIBX11_LIBS) \
 	$(LIBXFCEGUI4_LIBS) \
-	$(LIBXFCE4PANEL_LIBS)
+	$(LIBXFCE4PANEL_LIBS) \
+	$(THUNAR_VFS_LIBS)
 
 if HAVE_CYGWIN
 xfce4_menu_plugin_LDFLAGS = \

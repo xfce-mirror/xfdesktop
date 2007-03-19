@@ -53,6 +53,10 @@
 #include <libxfce4panel/xfce-panel-plugin.h>
 #include <libxfce4panel/xfce-panel-convenience.h>
 
+#ifdef HAVE_THUNAR_VFS
+#include <thunar-vfs/thunar-vfs.h>
+#endif
+
 #include "desktop-menu-stub.h"
 #include "xfdesktop-common.h"
 #include "xfce4-popup-menu.h"
@@ -1042,6 +1046,10 @@ desktop_menu_plugin_construct(XfcePanelPlugin *plugin)
     GtkWidget *mi, *img;
     
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+    
+#ifdef HAVE_THUNAR_VFS
+    thunar_vfs_init();
+#endif
     
     if(!(dmp = dmp_new(plugin)))
         exit(1);
