@@ -835,13 +835,6 @@ xfce_desktop_set_icon_style(XfceDesktop *desktop,
         desktop->priv->icon_view = NULL;
     }
     
-#ifdef ENABLE_FILE_ICONS
-    if(XFCE_DESKTOP_ICON_STYLE_FILES == desktop->priv->icons_style)
-        thunar_vfs_shutdown();
-    else if(XFCE_DESKTOP_ICON_STYLE_FILES == style)
-        thunar_vfs_init();
-#endif
-    
     desktop->priv->icons_style = style;
     xfce_desktop_setup_icon_view(desktop);
 #endif

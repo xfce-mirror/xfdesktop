@@ -53,7 +53,7 @@
 #include <dbus/dbus-glib.h>
 #endif
 
-#ifdef HAVE_THUNAR_VFS
+#if defined(ENABLE_FILE_ICONS) || defined(HAVE_THUNAR_VFS)
 #include <thunar-vfs/thunar-vfs.h>
 #endif
 
@@ -335,7 +335,7 @@ main(int argc, char **argv)
         return (already_running ? 0 : 1);
     }
     
-#ifdef HAVE_THUNAR_VFS
+#if defined(ENABLE_FILE_ICONS) || defined(HAVE_THUNAR_VFS)
     thunar_vfs_init();
 #endif
     
@@ -412,7 +412,7 @@ main(int argc, char **argv)
     
     settings_cleanup();
     
-#ifdef HAVE_THUNAR_VFS
+#if defined(ENABLE_FILE_ICONS) || defined(HAVE_THUNAR_VFS)
     thunar_vfs_shutdown();
 #endif
     
