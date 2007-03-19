@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-18 22:01+0100\n"
+"POT-Creation-Date: 2007-03-18 20:49-0700\n"
 "PO-Revision-Date: 2005-08-18 23:01+0900\n"
 "Last-Translator: Alexander Toresson <alexander.toresson@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -107,7 +107,7 @@ msgstr "Välj ikon"
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:600
-#: ../settings/appearance-settings.c:541
+#: ../settings/appearance-settings.c:579
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
@@ -116,7 +116,7 @@ msgstr "Alla filer"
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:606
-#: ../settings/appearance-settings.c:545
+#: ../settings/appearance-settings.c:583
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Bildfiler"
@@ -173,6 +173,7 @@ msgid "File"
 msgstr "Fil:"
 
 #: ../menueditor/menueditor-add-external-dialog.c:123
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
 msgid "System"
 msgstr "System"
 
@@ -485,39 +486,6 @@ msgstr "Glöm ändringar"
 msgid "Unable to open the menu file %s in write mode"
 msgstr "Kunda inte öppna menyfilen %s för skrivning"
 
-#: ../modules/menu/desktop-menu-file.c:116
-#: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:765
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Xfce-menyn"
-
-#: ../modules/menu/desktop-menu-file.c:118
-#: ../modules/menu/desktop-menu-file.c:133
-msgid "Unable to quit session."
-msgstr "Kunde inte avsluta sessionen."
-
-#: ../modules/menu/desktop-menu-file.c:119
-msgid ""
-"Quitting the session requires that Xfce's session manager (xfce4-session) is "
-"running, but it was not detected.  Please quit Xfce via another means."
-msgstr ""
-"För att avsluta sessionen krävs att du kör Xfce's sessionshanterare (xfce4-"
-"session), men den hittades inte. Var god avsluta Xfce på något annat sätt."
-
-#: ../modules/menu/desktop-menu-file.c:129
-#, c-format
-msgid ""
-"Quitting the session requires the 'xfce4-session-logout' command, but it "
-"could not be found: %s"
-msgstr ""
-"För att avsluta sessionen krävs kommandot xfce4-session-logout, men det "
-"hittades inte: %s"
-
-#: ../modules/menu/desktop-menuspec.c:61
-msgid "/Other"
-msgstr "/Andra"
-
 #: ../panel-plugin/desktop-menu-plugin.c:583
 msgid "Select Icon"
 msgstr "Välj ikon"
@@ -531,6 +499,11 @@ msgstr "Välj menyfil"
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Kunde inte starta xfce4-menueditor: %s"
+
+#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/xfce4-menu.desktop.in.h:2
+msgid "Xfce Menu"
+msgstr "Xfce-menyn"
 
 #: ../panel-plugin/desktop-menu-plugin.c:777
 msgid "Button"
@@ -587,78 +560,78 @@ msgid "Button Label|Desktop"
 msgstr "Skrivbord"
 
 #: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
-#: ../settings/backdrop-list-manager.c:631
+#: ../settings/backdrop-list-manager.c:628
 msgid "backdrops.list"
 msgstr ""
 
-#: ../settings/appearance-settings.c:536
+#: ../settings/appearance-settings.c:574
 msgid "Select backdrop image or list file"
 msgstr "Välj bakgrundsbild eller listfil"
 
-#: ../settings/appearance-settings.c:554
+#: ../settings/appearance-settings.c:592
 msgid "List Files (*.list)"
 msgstr "Listfiler (*.list)"
 
-#: ../settings/appearance-settings.c:650
+#: ../settings/appearance-settings.c:688
 msgid "_Edit list..."
 msgstr "_Redigera lista..."
 
-#: ../settings/appearance-settings.c:658
+#: ../settings/appearance-settings.c:696
 msgid "_New list..."
 msgstr "_Ny lista..."
 
-#: ../settings/appearance-settings.c:691
+#: ../settings/appearance-settings.c:729
 msgid "S_tyle:"
 msgstr "S_til:"
 
-#: ../settings/appearance-settings.c:698
+#: ../settings/appearance-settings.c:736
 msgid "Auto"
 msgstr "Automatisk"
 
-#: ../settings/appearance-settings.c:699
+#: ../settings/appearance-settings.c:737
 msgid "Centered"
 msgstr "Centrerad"
 
-#: ../settings/appearance-settings.c:700
+#: ../settings/appearance-settings.c:738
 msgid "Tiled"
 msgstr "Uppradad"
 
-#: ../settings/appearance-settings.c:701
+#: ../settings/appearance-settings.c:739
 msgid "Stretched"
 msgstr "Utsträckt"
 
-#: ../settings/appearance-settings.c:702
+#: ../settings/appearance-settings.c:740
 msgid "Scaled"
 msgstr "Skalad"
 
-#: ../settings/appearance-settings.c:758
+#: ../settings/appearance-settings.c:796
 msgid "A_djust Brightness:"
 msgstr "_Justera ljus:"
 
-#: ../settings/appearance-settings.c:816
+#: ../settings/appearance-settings.c:854
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce kommer inte kunna hantera ditt skrivbort (%s)."
 
-#: ../settings/appearance-settings.c:817
+#: ../settings/appearance-settings.c:855
 msgid "Unknown Error"
 msgstr "Okänt fel"
 
-#: ../settings/appearance-settings.c:821
+#: ../settings/appearance-settings.c:859
 #: ../src/xfdesktop-regular-file-icon.c:520
 #: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr "Fel"
 
-#: ../settings/appearance-settings.c:823
+#: ../settings/appearance-settings.c:861
 msgid "Unable to start xfdesktop"
 msgstr "Kunde inte starta xfdesktop"
 
-#: ../settings/appearance-settings.c:845
+#: ../settings/appearance-settings.c:883
 msgid "Information"
 msgstr "Information"
 
-#: ../settings/appearance-settings.c:858
+#: ../settings/appearance-settings.c:896
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -672,7 +645,7 @@ msgstr ""
 "behöva att redigera din ~/.config/xfce4/xinitrc fil manuellt. Detaljer finns "
 "i dokumentationen på http://xfce.org/."
 
-#: ../settings/appearance-settings.c:860
+#: ../settings/appearance-settings.c:898
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -686,83 +659,83 @@ msgstr ""
 "kommer du behöva att redigera din ~/.config/xfce4/xinitrc fil manuellt. "
 "Detaljer finns i dokumentationen på http://xfce.org/."
 
-#: ../settings/appearance-settings.c:868
+#: ../settings/appearance-settings.c:906
 msgid "_Do not show this again"
 msgstr "_Visa inte detta igen"
 
 #. the dialog
-#: ../settings/appearance-settings.c:934
+#: ../settings/appearance-settings.c:972
 msgid "Desktop Preferences"
 msgstr "Skrivbordsinställningar"
 
-#: ../settings/appearance-settings.c:951
+#: ../settings/appearance-settings.c:989
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Tillåt _Xfce att hantera ditt skrivbord"
 
-#: ../settings/appearance-settings.c:992
+#: ../settings/appearance-settings.c:1030
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "Sträck ut en enda bakgrund över _alla monitorer"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:1006
-#: ../settings/appearance-settings.c:1188
+#: ../settings/appearance-settings.c:1044
+#: ../settings/appearance-settings.c:1226
 msgid "_Appearance"
 msgstr "_Utseende"
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1032
+#: ../settings/appearance-settings.c:1070
 msgid "Color"
 msgstr "Färg"
 
-#: ../settings/appearance-settings.c:1046
+#: ../settings/appearance-settings.c:1084
 msgid "_Color Style:"
 msgstr "_Färgstil:"
 
-#: ../settings/appearance-settings.c:1053
+#: ../settings/appearance-settings.c:1091
 msgid "Solid Color"
 msgstr "Solid färg"
 
-#: ../settings/appearance-settings.c:1054
+#: ../settings/appearance-settings.c:1092
 msgid "Horizontal Gradient"
 msgstr "Horizontell övergång"
 
-#: ../settings/appearance-settings.c:1055
+#: ../settings/appearance-settings.c:1093
 msgid "Vertical Gradient"
 msgstr "Vertical övergång"
 
-#: ../settings/appearance-settings.c:1068
+#: ../settings/appearance-settings.c:1106
 msgid "Fi_rst Color:"
 msgstr "_Första färgen:"
 
-#: ../settings/appearance-settings.c:1089
+#: ../settings/appearance-settings.c:1127
 msgid "_Second Color:"
 msgstr "_Andra färgen::"
 
-#: ../settings/appearance-settings.c:1114
+#: ../settings/appearance-settings.c:1152
 msgid "Image"
 msgstr "Bild"
 
-#: ../settings/appearance-settings.c:1122
+#: ../settings/appearance-settings.c:1160
 msgid "Show _Image"
 msgstr "Visa _bild"
 
-#: ../settings/appearance-settings.c:1144
+#: ../settings/appearance-settings.c:1182
 msgid "_File:"
 msgstr "_Fil:"
 
-#: ../settings/appearance-settings.c:1199
-#: ../settings/appearance-settings.c:1201
+#: ../settings/appearance-settings.c:1237
+#: ../settings/appearance-settings.c:1239
 #, c-format
 msgid "Screen %d"
 msgstr "Skärm %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1206
+#: ../settings/appearance-settings.c:1244
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Skärm %d, Monitor %d"
 
-#: ../settings/appearance-settings.c:1223
+#: ../settings/appearance-settings.c:1261
 msgid "_Behavior"
 msgstr "_Beteende"
 
@@ -791,23 +764,19 @@ msgstr "Välj filnamn för bakgrundslista"
 msgid "List Files"
 msgstr "Listfiler"
 
-#: ../settings/backdrop-list-manager.c:603
-msgid "Backdrop List"
-msgstr "Bakgrundslista"
-
-#: ../settings/backdrop-list-manager.c:620
+#: ../settings/backdrop-list-manager.c:617
 msgid "Image files"
 msgstr "Bildfiler"
 
-#: ../settings/backdrop-list-manager.c:639
+#: ../settings/backdrop-list-manager.c:636
 msgid "List file"
 msgstr "Listfil"
 
-#: ../settings/backdrop-list-manager.c:661
+#: ../settings/backdrop-list-manager.c:658
 msgid "Create backdrop list"
 msgstr "Skapa bakgrundslista"
 
-#: ../settings/backdrop-list-manager.c:694
+#: ../settings/backdrop-list-manager.c:691
 msgid "Edit backdrop list"
 msgstr "Redigera bakgrundslista"
 
@@ -852,71 +821,71 @@ msgstr "Använd _systemets standardstorlek för typsnitt"
 msgid "Custom _font size:"
 msgstr "Annan storlek på _typsnittet:"
 
-#: ../src/main.c:255
+#: ../src/main.c:257
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Det här är %s version %s, som körs i Xfce %s.\n"
 
-#: ../src/main.c:257
+#: ../src/main.c:259
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Kompilerat mot GTK+ %d.%d.%d, länkat med GTK+ %d.%d,%d"
 
-#: ../src/main.c:261
+#: ../src/main.c:263
 msgid "Build options:\n"
 msgstr "Kompileringsinställningar:\n"
 
-#: ../src/main.c:262
+#: ../src/main.c:264
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Skrivbordsmeny:        %s\n"
 
-#: ../src/main.c:264 ../src/main.c:271 ../src/main.c:278
+#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
 msgid "enabled"
 msgstr "aktiverad"
 
-#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
+#: ../src/main.c:268 ../src/main.c:275 ../src/main.c:282
 msgid "disabled"
 msgstr "inte aktiverad"
 
-#: ../src/main.c:269
+#: ../src/main.c:271
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Skrivbordsikoner:       %s\n"
 
-#: ../src/main.c:276
+#: ../src/main.c:278
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Filikoner:       %s\n"
 
-#: ../src/main.c:305
+#: ../src/main.c:307
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Okänd inställning: %s\n"
 
-#: ../src/main.c:306
+#: ../src/main.c:308
 msgid "Options are:\n"
 msgstr "Dessa kommandoradsinställningar finns:\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:309
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    --reload      Läs om alla inställningar, uppdatera bildlistan\n"
 
-#: ../src/main.c:308
+#: ../src/main.c:310
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
 "    --menu        Öppna upp skrivbordsmenyn (vid muspekarens position)\n"
 
-#: ../src/main.c:309
+#: ../src/main.c:311
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    --windowlist  Öppna fönsterlistan (vid muspekarens position)\n"
 
-#: ../src/main.c:310
+#: ../src/main.c:312
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    --quit        Stäng ned xfdesktop\n"
 
-#: ../src/main.c:325
+#: ../src/main.c:327
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s körs inte.\n"
@@ -945,7 +914,7 @@ msgstr "_Ta bort arbetsyta %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Ta bort arbetsytan '%s'"
 
-#: ../src/xfce-desktop.c:573
+#: ../src/xfce-desktop.c:578
 msgid "Desktop"
 msgstr "Skrivbord"
 
@@ -1389,7 +1358,165 @@ msgstr "Menyredigeraren"
 msgid "Xfce 4 Menu Editor"
 msgstr "Xfce 4 Menyredigerare"
 
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
+#, fuzzy
+msgid "Accessories"
+msgstr "Åtkommen:"
+
+#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
+msgid "Common desktop tools and applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-development.directory.in.h:1
+msgid "Development"
+msgstr "Utveckling"
+
+#: ../modules/menu/directory-data/xfce-development.directory.in.h:2
+msgid "Software development tools"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-education.directory.in.h:1
+msgid "Education"
+msgstr "Utbildning"
+
+#: ../modules/menu/directory-data/xfce-education.directory.in.h:2
+msgid "Educational software"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-games.directory.in.h:1
+#, fuzzy
+msgid "Games"
+msgstr "Namn"
+
+#: ../modules/menu/directory-data/xfce-games.directory.in.h:2
+msgid "Games, puzzles, and other fun software"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "Grafik"
+
+#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
+msgid "Graphics creation and manipulation applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
+msgid "Audio and video players and editors"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
+#, fuzzy
+msgid "Multimedia"
+msgstr "Flernivås"
+
+#: ../modules/menu/directory-data/xfce-network.directory.in.h:1
+msgid "Network"
+msgstr "Nätverk"
+
+#: ../modules/menu/directory-data/xfce-network.directory.in.h:2
+msgid "Network applications and utilities"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-office.directory.in.h:1
+msgid "Office"
+msgstr "Kontor"
+
+#: ../modules/menu/directory-data/xfce-office.directory.in.h:2
+msgid "Office and productivity applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-other.directory.in.h:1
+msgid "Applications that don't fit into other categories"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-other.directory.in.h:2
+#, fuzzy
+msgid "Other"
+msgstr "/Andra"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr "Vetenskap"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific applications and tools"
+msgstr "Ikoner för minimerade program"
+
+#: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
+msgid "Desktop and system settings applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
+#, fuzzy
+msgid "Settings"
+msgstr "Inställningar för Skrivbordet"
+
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:2
+msgid "System tools and utilities"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
+msgid "About Xfce"
+msgstr "Om Xfce"
+
+#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
+msgid "Information about the Xfce Desktop Environment"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
+msgid "File Manager"
+msgstr "Filhanterare"
+
+#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
+msgid "Thunar file manager"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
+#, fuzzy
+msgid "Help"
+msgstr "_Hjälp"
+
+#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
+msgid "Help using Xfce"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
+msgid "Log Out"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
+#, fuzzy
+msgid "Log out of the Xfce Desktop"
+msgstr "Inställningar för Xfce's skrivbordshanterare"
+
+#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
+#, fuzzy
+msgid "Run Program..."
+msgstr "Körfel"
+
+#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
+#, fuzzy
+msgid "Run a program"
+msgstr "Körfel"
+
+#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
+msgid "Terminal"
+msgstr "Terminal"
+
+#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
+msgid "Terminal emulator"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
+msgid "Browse the web"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
+msgid "Web Browser"
+msgstr "Webbläsare"
+
+#: ../panel-plugin/xfce4-menu.desktop.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr "Visar en meny som innehåller kategorier av installerade program"
 
@@ -1404,6 +1531,27 @@ msgstr "Inställningar för Xfce's skrivbordshanterare"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 Inställningar för Skrivbordet"
+
+#~ msgid "Unable to quit session."
+#~ msgstr "Kunde inte avsluta sessionen."
+
+#~ msgid ""
+#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
+#~ "is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr ""
+#~ "För att avsluta sessionen krävs att du kör Xfce's sessionshanterare "
+#~ "(xfce4-session), men den hittades inte. Var god avsluta Xfce på något "
+#~ "annat sätt."
+
+#~ msgid ""
+#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
+#~ "could not be found: %s"
+#~ msgstr ""
+#~ "För att avsluta sessionen krävs kommandot xfce4-session-logout, men det "
+#~ "hittades inte: %s"
+
+#~ msgid "Backdrop List"
+#~ msgstr "Bakgrundslista"
 
 #~ msgid "Edit Properties"
 #~ msgstr "Redigera egenskaper"

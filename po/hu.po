@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-04 05:11-0800\n"
+"POT-Creation-Date: 2007-03-18 20:49-0700\n"
 "PO-Revision-Date: 2006-10-28 07:47+0100\n"
 "Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -111,7 +111,7 @@ msgstr "Válassz ikont"
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:600
-#: ../settings/appearance-settings.c:532
+#: ../settings/appearance-settings.c:579
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
@@ -120,7 +120,7 @@ msgstr "Minden fájl"
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:606
-#: ../settings/appearance-settings.c:536
+#: ../settings/appearance-settings.c:583
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Képfájlok"
@@ -177,6 +177,7 @@ msgid "File"
 msgstr "Fájl"
 
 #: ../menueditor/menueditor-add-external-dialog.c:123
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
 msgid "System"
 msgstr "Rendszer"
 
@@ -489,39 +490,6 @@ msgstr "Változások elvetése"
 msgid "Unable to open the menu file %s in write mode"
 msgstr "Nem tudom megnyitni %s menü fájlt írás módban"
 
-#: ../modules/menu/desktop-menu-file.c:116
-#: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:773
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Xfce menü"
-
-#: ../modules/menu/desktop-menu-file.c:118
-#: ../modules/menu/desktop-menu-file.c:133
-msgid "Unable to quit session."
-msgstr "Nem tudok kilépni a folyamatból"
-
-#: ../modules/menu/desktop-menu-file.c:119
-msgid ""
-"Quitting the session requires that Xfce's session manager (xfce4-session) is "
-"running, but it was not detected.  Please quit Xfce via another means."
-msgstr ""
-"A folyamatból való kilépés az Xfce folyamatkezelő futását igényli, de az nem "
-"fut. Lépj ki más módon."
-
-#: ../modules/menu/desktop-menu-file.c:129
-#, c-format
-msgid ""
-"Quitting the session requires the 'xfce4-session-logout' command, but it "
-"could not be found: %s"
-msgstr ""
-"A folyamatból való kilépés az 'xfce4-session-logout' parancsot igényli, de "
-"az nem található: %s"
-
-#: ../modules/menu/desktop-menuspec.c:61
-msgid "/Other"
-msgstr "/Más"
-
 #: ../panel-plugin/desktop-menu-plugin.c:583
 msgid "Select Icon"
 msgstr "Válassz ikont"
@@ -537,136 +505,137 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Nem indítható az xfce4-menueditor: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:765
-msgid "Edit Properties"
-msgstr "Tulajdonságok szerkesztése"
+#: ../panel-plugin/xfce4-menu.desktop.in.h:2
+msgid "Xfce Menu"
+msgstr "Xfce menü"
 
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:777
 msgid "Button"
 msgstr "Gomb"
 
-#: ../panel-plugin/desktop-menu-plugin.c:796
+#: ../panel-plugin/desktop-menu-plugin.c:790
 msgid "Button _title:"
 msgstr "Gomb né_v:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:809
+#: ../panel-plugin/desktop-menu-plugin.c:803
 msgid "_Show title in button"
 msgstr "Cím mutatá_sa a gombon"
 
-#: ../panel-plugin/desktop-menu-plugin.c:816
+#: ../panel-plugin/desktop-menu-plugin.c:810
 msgid "Menu File"
 msgstr "Menüfájl"
 
-#: ../panel-plugin/desktop-menu-plugin.c:828
+#: ../panel-plugin/desktop-menu-plugin.c:822
 msgid "Use default _desktop menu file"
 msgstr "_Alap asztali menüfájl használata"
 
-#: ../panel-plugin/desktop-menu-plugin.c:837
+#: ../panel-plugin/desktop-menu-plugin.c:831
 msgid "Use _custom menu file:"
 msgstr "E_gyéni menüfájl használata"
 
-#: ../panel-plugin/desktop-menu-plugin.c:888
+#: ../panel-plugin/desktop-menu-plugin.c:882
 #: ../settings/behavior-settings.c:267
 msgid "_Edit Menu"
 msgstr "Menü sz_erkesztése"
 
-#: ../panel-plugin/desktop-menu-plugin.c:894
+#: ../panel-plugin/desktop-menu-plugin.c:888
 msgid "Icons"
 msgstr "Ikonok"
 
-#: ../panel-plugin/desktop-menu-plugin.c:906
+#: ../panel-plugin/desktop-menu-plugin.c:900
 msgid "_Button icon:"
 msgstr "Gomb iko_n:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:930
+#: ../panel-plugin/desktop-menu-plugin.c:924
 msgid "Show _icons in menu"
 msgstr "Legyenek _ikonok a menüben"
 
-#: ../panel-plugin/desktop-menu-plugin.c:953
+#: ../panel-plugin/desktop-menu-plugin.c:947
 msgid "There is already a panel menu registered for this screen"
 msgstr "Már van egy panel menü a képernyőhöz"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1061
+#: ../panel-plugin/desktop-menu-plugin.c:1055
 msgid "Edit Menu"
 msgstr "Menü szerkesztése"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../settings/appearance-settings.c:134
+#: ../settings/appearance-settings.c:138
 msgid "Button Label|Desktop"
 msgstr "Asztal"
 
-#: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
-#: ../settings/backdrop-list-manager.c:631
+#: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
+#: ../settings/backdrop-list-manager.c:628
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: ../settings/appearance-settings.c:527
+#: ../settings/appearance-settings.c:574
 msgid "Select backdrop image or list file"
 msgstr "Háttérkép vagy listafájl kiválasztása"
 
-#: ../settings/appearance-settings.c:545
+#: ../settings/appearance-settings.c:592
 msgid "List Files (*.list)"
 msgstr "Listafájlok (*.list)"
 
-#: ../settings/appearance-settings.c:637
+#: ../settings/appearance-settings.c:688
 msgid "_Edit list..."
 msgstr "Lista szerkesztése"
 
-#: ../settings/appearance-settings.c:645
+#: ../settings/appearance-settings.c:696
 msgid "_New list..."
 msgstr "Új lista"
 
-#: ../settings/appearance-settings.c:678
+#: ../settings/appearance-settings.c:729
 msgid "S_tyle:"
 msgstr "S_tílus:"
 
-#: ../settings/appearance-settings.c:685
+#: ../settings/appearance-settings.c:736
 msgid "Auto"
 msgstr "Automatikus"
 
-#: ../settings/appearance-settings.c:686
+#: ../settings/appearance-settings.c:737
 msgid "Centered"
 msgstr "Középre"
 
-#: ../settings/appearance-settings.c:687
+#: ../settings/appearance-settings.c:738
 msgid "Tiled"
 msgstr "Csempe"
 
-#: ../settings/appearance-settings.c:688
+#: ../settings/appearance-settings.c:739
 msgid "Stretched"
 msgstr "Nyújtott"
 
-#: ../settings/appearance-settings.c:689
+#: ../settings/appearance-settings.c:740
 msgid "Scaled"
 msgstr "Átméretezve"
 
-#: ../settings/appearance-settings.c:745
+#: ../settings/appearance-settings.c:796
 msgid "A_djust Brightness:"
 msgstr "Fényerő beállítása:"
 
-#: ../settings/appearance-settings.c:803
+#: ../settings/appearance-settings.c:854
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Az Xfce nem tudja majd kezelni az asztalt (%s)."
 
-#: ../settings/appearance-settings.c:804
+#: ../settings/appearance-settings.c:855
 msgid "Unknown Error"
 msgstr "ismeretlen hiba"
 
-#: ../settings/appearance-settings.c:808
+#: ../settings/appearance-settings.c:859
 #: ../src/xfdesktop-regular-file-icon.c:520
 #: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr "hiba"
 
-#: ../settings/appearance-settings.c:810
+#: ../settings/appearance-settings.c:861
 msgid "Unable to start xfdesktop"
 msgstr "Az xfdesktop nem indítható"
 
-#: ../settings/appearance-settings.c:832
+#: ../settings/appearance-settings.c:883
 msgid "Information"
 msgstr "Információ"
 
-#: ../settings/appearance-settings.c:845
+#: ../settings/appearance-settings.c:896
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -679,7 +648,7 @@ msgstr ""
 "session), kézzel kell szerkesztened a ~/.config/xfce4/xinitrc fájlt.  "
 "Részletek a doksiban a http://xfce.org/ oldalon."
 
-#: ../settings/appearance-settings.c:847
+#: ../settings/appearance-settings.c:898
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -692,83 +661,83 @@ msgstr ""
 "folyamatkezelőt (xfce4-session), kézzel kell szerkesztened a ~/.config/xfce4/"
 "xinitrc fájlt.  Részletek a doksiban a http://xfce.org/ oldalon."
 
-#: ../settings/appearance-settings.c:855
+#: ../settings/appearance-settings.c:906
 msgid "_Do not show this again"
 msgstr "Ne mutas_d legközelebb"
 
 #. the dialog
-#: ../settings/appearance-settings.c:921
+#: ../settings/appearance-settings.c:972
 msgid "Desktop Preferences"
 msgstr "Asztal beállításai"
 
-#: ../settings/appearance-settings.c:938
+#: ../settings/appearance-settings.c:989
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Az _Xfce kezelje az asztalt"
 
-#: ../settings/appearance-settings.c:979
+#: ../settings/appearance-settings.c:1030
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "Nyújts egy hátteret v_alamennyi monitorra"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:993
-#: ../settings/appearance-settings.c:1175
+#: ../settings/appearance-settings.c:1044
+#: ../settings/appearance-settings.c:1226
 msgid "_Appearance"
 msgstr "Megjelenés"
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1019
+#: ../settings/appearance-settings.c:1070
 msgid "Color"
 msgstr "Szín"
 
-#: ../settings/appearance-settings.c:1033
+#: ../settings/appearance-settings.c:1084
 msgid "_Color Style:"
 msgstr "Szí_nstílus:"
 
-#: ../settings/appearance-settings.c:1040
+#: ../settings/appearance-settings.c:1091
 msgid "Solid Color"
 msgstr "Sima szín"
 
-#: ../settings/appearance-settings.c:1041
+#: ../settings/appearance-settings.c:1092
 msgid "Horizontal Gradient"
 msgstr "Vízszintes színátmenet"
 
-#: ../settings/appearance-settings.c:1042
+#: ../settings/appearance-settings.c:1093
 msgid "Vertical Gradient"
 msgstr "Függőleges színátmenet"
 
-#: ../settings/appearance-settings.c:1055
+#: ../settings/appearance-settings.c:1106
 msgid "Fi_rst Color:"
 msgstr "_1. szín:"
 
-#: ../settings/appearance-settings.c:1076
+#: ../settings/appearance-settings.c:1127
 msgid "_Second Color:"
 msgstr "_2. szín:"
 
-#: ../settings/appearance-settings.c:1101
+#: ../settings/appearance-settings.c:1152
 msgid "Image"
 msgstr "Kép"
 
-#: ../settings/appearance-settings.c:1109
+#: ../settings/appearance-settings.c:1160
 msgid "Show _Image"
 msgstr "_Kép mutatása"
 
-#: ../settings/appearance-settings.c:1131
+#: ../settings/appearance-settings.c:1182
 msgid "_File:"
 msgstr "Fájl:"
 
-#: ../settings/appearance-settings.c:1186
-#: ../settings/appearance-settings.c:1188
+#: ../settings/appearance-settings.c:1237
+#: ../settings/appearance-settings.c:1239
 #, c-format
 msgid "Screen %d"
 msgstr "Képernyő %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1193
+#: ../settings/appearance-settings.c:1244
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Képernyő %d, Monitor %d"
 
-#: ../settings/appearance-settings.c:1210
+#: ../settings/appearance-settings.c:1261
 msgid "_Behavior"
 msgstr "Viselkedés"
 
@@ -797,23 +766,19 @@ msgstr "Háttérlista-fájlnév kiválasztása"
 msgid "List Files"
 msgstr "Listafájlok"
 
-#: ../settings/backdrop-list-manager.c:603
-msgid "Backdrop List"
-msgstr "Háttérlista"
-
-#: ../settings/backdrop-list-manager.c:620
+#: ../settings/backdrop-list-manager.c:617
 msgid "Image files"
 msgstr "Képfájlok"
 
-#: ../settings/backdrop-list-manager.c:639
+#: ../settings/backdrop-list-manager.c:636
 msgid "List file"
 msgstr "Listafájl"
 
-#: ../settings/backdrop-list-manager.c:661
+#: ../settings/backdrop-list-manager.c:658
 msgid "Create backdrop list"
 msgstr "Háttérlista létrehozása"
 
-#: ../settings/backdrop-list-manager.c:694
+#: ../settings/backdrop-list-manager.c:691
 msgid "Edit backdrop list"
 msgstr "Háttérlista szerkesztése"
 
@@ -858,99 +823,99 @@ msgstr "Rendszer betű méret használata"
 msgid "Custom _font size:"
 msgstr "Egyéni betűméret"
 
-#: ../src/main.c:255
+#: ../src/main.c:257
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Ez az alábbi program: %s %s verziója, az Xfce %s verzióján fut.\n"
 
-#: ../src/main.c:257
+#: ../src/main.c:259
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Fordítva az alábbival: GTK+ %d.%d.%d, linkelve: GTK+ %d.%d.%d."
 
-#: ../src/main.c:261
+#: ../src/main.c:263
 msgid "Build options:\n"
 msgstr "Fordítási opciók:\n"
 
-#: ../src/main.c:262
+#: ../src/main.c:264
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Asztali Menü:        %s\n"
 
-#: ../src/main.c:264 ../src/main.c:271 ../src/main.c:278
+#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
 msgid "enabled"
 msgstr "bekapcsolva"
 
-#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
+#: ../src/main.c:268 ../src/main.c:275 ../src/main.c:282
 msgid "disabled"
 msgstr "kikapcsolva"
 
-#: ../src/main.c:269
+#: ../src/main.c:271
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Asztali Ikonok:       %s\n"
 
-#: ../src/main.c:276
+#: ../src/main.c:278
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Asztal fájl ikonok:  %s\n"
 
-#: ../src/main.c:305
+#: ../src/main.c:307
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Ismeretlen lehetőség: %s\n"
 
-#: ../src/main.c:306
+#: ../src/main.c:308
 msgid "Options are:\n"
 msgstr "Lehetőségek:\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:309
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    --reload      Beállítások visszatöltése, képlista frissítése\n"
 
-#: ../src/main.c:308
+#: ../src/main.c:310
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu        Menü megjelenítése (az egér pozíciójánál)\n"
 
-#: ../src/main.c:309
+#: ../src/main.c:311
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    --windowlist  Ablaklista megjelenítése (az egér pozíciójánál)\n"
 
-#: ../src/main.c:310
+#: ../src/main.c:312
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    --quit        Az xfdesktop kilép\n"
 
-#: ../src/main.c:325
+#: ../src/main.c:327
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s nem fut.\n"
 
-#: ../src/windowlist.c:218
+#: ../src/windowlist.c:220
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>%d. munkaterület</b>"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:228
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>%d. munkaterület</i>"
 
-#: ../src/windowlist.c:293 ../src/windowlist.c:296
+#: ../src/windowlist.c:295 ../src/windowlist.c:298
 msgid "_Add Workspace"
 msgstr "Munkaterület hozzá_adása"
 
-#: ../src/windowlist.c:304
+#: ../src/windowlist.c:306
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "%d. munkaterület tö_rlése"
 
-#: ../src/windowlist.c:307
+#: ../src/windowlist.c:309
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "E munkaterület tö_rlése: '%s'"
 
-#: ../src/xfce-desktop.c:542
+#: ../src/xfce-desktop.c:578
 msgid "Desktop"
 msgstr "Munkaasztal"
 
@@ -1391,7 +1356,166 @@ msgstr "Menüszerkesztő"
 msgid "Xfce 4 Menu Editor"
 msgstr "Xfce 4 menüszerkesztő"
 
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
+#, fuzzy
+msgid "Accessories"
+msgstr "Megnyitva:"
+
+#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
+msgid "Common desktop tools and applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-development.directory.in.h:1
+msgid "Development"
+msgstr "Fejlesztés"
+
+#: ../modules/menu/directory-data/xfce-development.directory.in.h:2
+#, fuzzy
+msgid "Software development tools"
+msgstr "Fő fejlesztő"
+
+#: ../modules/menu/directory-data/xfce-education.directory.in.h:1
+msgid "Education"
+msgstr "Oktatás"
+
+#: ../modules/menu/directory-data/xfce-education.directory.in.h:2
+msgid "Educational software"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-games.directory.in.h:1
+#, fuzzy
+msgid "Games"
+msgstr "Név"
+
+#: ../modules/menu/directory-data/xfce-games.directory.in.h:2
+msgid "Games, puzzles, and other fun software"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "Grafika"
+
+#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
+msgid "Graphics creation and manipulation applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
+msgid "Audio and video players and editors"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
+#, fuzzy
+msgid "Multimedia"
+msgstr "Többszintű"
+
+#: ../modules/menu/directory-data/xfce-network.directory.in.h:1
+msgid "Network"
+msgstr "Hálózat"
+
+#: ../modules/menu/directory-data/xfce-network.directory.in.h:2
+msgid "Network applications and utilities"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-office.directory.in.h:1
+msgid "Office"
+msgstr "Iroda"
+
+#: ../modules/menu/directory-data/xfce-office.directory.in.h:2
+msgid "Office and productivity applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-other.directory.in.h:1
+msgid "Applications that don't fit into other categories"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-other.directory.in.h:2
+#, fuzzy
+msgid "Other"
+msgstr "/Más"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr "Tudomány"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific applications and tools"
+msgstr "Minimalizált alkalmazás ikonok"
+
+#: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
+msgid "Desktop and system settings applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
+#, fuzzy
+msgid "Settings"
+msgstr "Asztal beállításai"
+
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:2
+msgid "System tools and utilities"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
+msgid "About Xfce"
+msgstr "Xfce Névjegy"
+
+#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
+msgid "Information about the Xfce Desktop Environment"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
+msgid "File Manager"
+msgstr "Fájlkezelő"
+
+#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
+msgid "Thunar file manager"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
+#, fuzzy
+msgid "Help"
+msgstr "_Súgó"
+
+#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
+msgid "Help using Xfce"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
+msgid "Log Out"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
+#, fuzzy
+msgid "Log out of the Xfce Desktop"
+msgstr "Xfce 4 asztalkezelő beállítások"
+
+#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
+#, fuzzy
+msgid "Run Program..."
+msgstr "Futtatási hiba"
+
+#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
+#, fuzzy
+msgid "Run a program"
+msgstr "Futtatási hiba"
+
+#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
+msgid "Terminal"
+msgstr "Terminál"
+
+#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
+msgid "Terminal emulator"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
+msgid "Browse the web"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
+msgid "Web Browser"
+msgstr "Webböngésző"
+
+#: ../panel-plugin/xfce4-menu.desktop.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr "A telepített programok kategóriáinak menüjét mutatja"
 
@@ -1406,6 +1530,29 @@ msgstr "Xfce 4 asztalkezelő beállítások"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 Asztal Beállítások"
+
+#~ msgid "Unable to quit session."
+#~ msgstr "Nem tudok kilépni a folyamatból"
+
+#~ msgid ""
+#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
+#~ "is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr ""
+#~ "A folyamatból való kilépés az Xfce folyamatkezelő futását igényli, de az "
+#~ "nem fut. Lépj ki más módon."
+
+#~ msgid ""
+#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
+#~ "could not be found: %s"
+#~ msgstr ""
+#~ "A folyamatból való kilépés az 'xfce4-session-logout' parancsot igényli, "
+#~ "de az nem található: %s"
+
+#~ msgid "Edit Properties"
+#~ msgstr "Tulajdonságok szerkesztése"
+
+#~ msgid "Backdrop List"
+#~ msgstr "Háttérlista"
 
 #~ msgid ""
 #~ "Viewing the contents of the trash requires a file manager that supports "
@@ -1454,9 +1601,6 @@ msgstr "Xfce 4 Asztal Beállítások"
 #, fuzzy
 #~ msgid "Are sure you want to quit?"
 #~ msgstr "Biztos törlöd az alábbit: \"%s\"?"
-
-#~ msgid "Core developer"
-#~ msgstr "Fő fejlesztő"
 
 #~ msgid "The command doesn't exist !"
 #~ msgstr "Nincs ilyen parancs!"

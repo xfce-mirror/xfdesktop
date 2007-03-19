@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-04 05:11-0800\n"
+"POT-Creation-Date: 2007-03-18 20:49-0700\n"
 "PO-Revision-Date: 2006-05-21 11:51+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -111,7 +111,7 @@ msgstr "アイコンを選択してください"
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:600
-#: ../settings/appearance-settings.c:532
+#: ../settings/appearance-settings.c:579
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
@@ -120,7 +120,7 @@ msgstr "全てのファイル"
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:606
-#: ../settings/appearance-settings.c:536
+#: ../settings/appearance-settings.c:583
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "画像ファイル"
@@ -179,6 +179,7 @@ msgid "File"
 msgstr "ファイル"
 
 #: ../menueditor/menueditor-add-external-dialog.c:123
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
 msgid "System"
 msgstr "システム"
 
@@ -518,40 +519,6 @@ msgstr "変更を無視する"
 msgid "Unable to open the menu file %s in write mode"
 msgstr ""
 
-#: ../modules/menu/desktop-menu-file.c:116
-#: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:773
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Xfce メニュー"
-
-#: ../modules/menu/desktop-menu-file.c:118
-#: ../modules/menu/desktop-menu-file.c:133
-msgid "Unable to quit session."
-msgstr "セッションを終了できません。"
-
-#: ../modules/menu/desktop-menu-file.c:119
-msgid ""
-"Quitting the session requires that Xfce's session manager (xfce4-session) is "
-"running, but it was not detected.  Please quit Xfce via another means."
-msgstr ""
-"セッションを終了するには Xfce のセッションマネージャー (xfce4-session) が動作"
-"している必要がありますが、これを検出できませんでした。別の方法で Xfce を終了"
-"してください。"
-
-#: ../modules/menu/desktop-menu-file.c:129
-#, c-format
-msgid ""
-"Quitting the session requires the 'xfce4-session-logout' command, but it "
-"could not be found: %s"
-msgstr ""
-"セッションを終了するにはコマンド 'xfce4-session-logout' が必要ですが、見つけ"
-"られませんでした: %s"
-
-#: ../modules/menu/desktop-menuspec.c:61
-msgid "/Other"
-msgstr "/その他"
-
 #: ../panel-plugin/desktop-menu-plugin.c:583
 msgid "Select Icon"
 msgstr "アイコンを選択してください"
@@ -567,136 +534,137 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor を実行できません: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:765
-msgid "Edit Properties"
-msgstr "プロパティの編集"
+#: ../panel-plugin/xfce4-menu.desktop.in.h:2
+msgid "Xfce Menu"
+msgstr "Xfce メニュー"
 
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:777
 msgid "Button"
 msgstr "ボタン"
 
-#: ../panel-plugin/desktop-menu-plugin.c:796
+#: ../panel-plugin/desktop-menu-plugin.c:790
 msgid "Button _title:"
 msgstr "ボタンタイトル(_T):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:809
+#: ../panel-plugin/desktop-menu-plugin.c:803
 msgid "_Show title in button"
 msgstr "ボタンにタイトルを表示する(_S)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:816
+#: ../panel-plugin/desktop-menu-plugin.c:810
 msgid "Menu File"
 msgstr "メニューファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:828
+#: ../panel-plugin/desktop-menu-plugin.c:822
 msgid "Use default _desktop menu file"
 msgstr "標準のデスクトップメニューを使用する(_D)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:837
+#: ../panel-plugin/desktop-menu-plugin.c:831
 msgid "Use _custom menu file:"
 msgstr "指定したメニューファイルを使用する(_C):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:888
+#: ../panel-plugin/desktop-menu-plugin.c:882
 #: ../settings/behavior-settings.c:267
 msgid "_Edit Menu"
 msgstr "メニューの編集(_E)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:894
+#: ../panel-plugin/desktop-menu-plugin.c:888
 msgid "Icons"
 msgstr "アイコン"
 
-#: ../panel-plugin/desktop-menu-plugin.c:906
+#: ../panel-plugin/desktop-menu-plugin.c:900
 msgid "_Button icon:"
 msgstr "ボタンアイコン(_B):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:930
+#: ../panel-plugin/desktop-menu-plugin.c:924
 msgid "Show _icons in menu"
 msgstr "メニューでアイコンを表示する(_I):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:953
+#: ../panel-plugin/desktop-menu-plugin.c:947
 msgid "There is already a panel menu registered for this screen"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:1061
+#: ../panel-plugin/desktop-menu-plugin.c:1055
 msgid "Edit Menu"
 msgstr "メニューの編集"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../settings/appearance-settings.c:134
+#: ../settings/appearance-settings.c:138
 msgid "Button Label|Desktop"
 msgstr "デスクトップ"
 
-#: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
-#: ../settings/backdrop-list-manager.c:631
+#: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
+#: ../settings/backdrop-list-manager.c:628
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: ../settings/appearance-settings.c:527
+#: ../settings/appearance-settings.c:574
 msgid "Select backdrop image or list file"
 msgstr "背景画像かリストファイルを選択してください"
 
-#: ../settings/appearance-settings.c:545
+#: ../settings/appearance-settings.c:592
 msgid "List Files (*.list)"
 msgstr "リストファイル (*.list)"
 
-#: ../settings/appearance-settings.c:637
+#: ../settings/appearance-settings.c:688
 msgid "_Edit list..."
 msgstr "リストの編集(_E)..."
 
-#: ../settings/appearance-settings.c:645
+#: ../settings/appearance-settings.c:696
 msgid "_New list..."
 msgstr "新規リスト(_N)..."
 
-#: ../settings/appearance-settings.c:678
+#: ../settings/appearance-settings.c:729
 msgid "S_tyle:"
 msgstr "スタイル(_T):"
 
-#: ../settings/appearance-settings.c:685
+#: ../settings/appearance-settings.c:736
 msgid "Auto"
 msgstr "自動"
 
-#: ../settings/appearance-settings.c:686
+#: ../settings/appearance-settings.c:737
 msgid "Centered"
 msgstr "中央揃え"
 
-#: ../settings/appearance-settings.c:687
+#: ../settings/appearance-settings.c:738
 msgid "Tiled"
 msgstr "タイル状"
 
-#: ../settings/appearance-settings.c:688
+#: ../settings/appearance-settings.c:739
 msgid "Stretched"
 msgstr "伸縮あり"
 
-#: ../settings/appearance-settings.c:689
+#: ../settings/appearance-settings.c:740
 msgid "Scaled"
 msgstr "拡大縮小"
 
-#: ../settings/appearance-settings.c:745
+#: ../settings/appearance-settings.c:796
 msgid "A_djust Brightness:"
 msgstr "明度の調節(_D):"
 
-#: ../settings/appearance-settings.c:803
+#: ../settings/appearance-settings.c:854
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce はあなたのデスクトップ (%s) を管理できません。"
 
-#: ../settings/appearance-settings.c:804
+#: ../settings/appearance-settings.c:855
 msgid "Unknown Error"
 msgstr "不明なエラー"
 
-#: ../settings/appearance-settings.c:808
+#: ../settings/appearance-settings.c:859
 #: ../src/xfdesktop-regular-file-icon.c:520
 #: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr "エラー"
 
-#: ../settings/appearance-settings.c:810
+#: ../settings/appearance-settings.c:861
 msgid "Unable to start xfdesktop"
 msgstr "xfdesktop を起動できません"
 
-#: ../settings/appearance-settings.c:832
+#: ../settings/appearance-settings.c:883
 msgid "Information"
 msgstr "情報"
 
-#: ../settings/appearance-settings.c:845
+#: ../settings/appearance-settings.c:896
 #, fuzzy
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
@@ -711,7 +679,7 @@ msgstr ""
 "xinitrc ファイルを自分で編集する必要があります。さらに細かいことは http://"
 "xfce.org/ にある文書を御覧ください。"
 
-#: ../settings/appearance-settings.c:847
+#: ../settings/appearance-settings.c:898
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -725,83 +693,83 @@ msgstr ""
 "xinitrc ファイルを自分で編集する必要があります。さらに細かいことは http://"
 "xfce.org/ にある文書を御覧ください。"
 
-#: ../settings/appearance-settings.c:855
+#: ../settings/appearance-settings.c:906
 msgid "_Do not show this again"
 msgstr "二度と表示しない(_D)"
 
 #. the dialog
-#: ../settings/appearance-settings.c:921
+#: ../settings/appearance-settings.c:972
 msgid "Desktop Preferences"
 msgstr "デスクトップ環境設定"
 
-#: ../settings/appearance-settings.c:938
+#: ../settings/appearance-settings.c:989
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Xfce にデスクトップを管理させる(_X)"
 
-#: ../settings/appearance-settings.c:979
+#: ../settings/appearance-settings.c:1030
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "一枚の背景を全てのモニターに伸ばす(_A)"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:993
-#: ../settings/appearance-settings.c:1175
+#: ../settings/appearance-settings.c:1044
+#: ../settings/appearance-settings.c:1226
 msgid "_Appearance"
 msgstr "外観(_A)"
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1019
+#: ../settings/appearance-settings.c:1070
 msgid "Color"
 msgstr "配色"
 
-#: ../settings/appearance-settings.c:1033
+#: ../settings/appearance-settings.c:1084
 msgid "_Color Style:"
 msgstr "配色のスタイル(_C):"
 
-#: ../settings/appearance-settings.c:1040
+#: ../settings/appearance-settings.c:1091
 msgid "Solid Color"
 msgstr "単色"
 
-#: ../settings/appearance-settings.c:1041
+#: ../settings/appearance-settings.c:1092
 msgid "Horizontal Gradient"
 msgstr "水平グラデーション"
 
-#: ../settings/appearance-settings.c:1042
+#: ../settings/appearance-settings.c:1093
 msgid "Vertical Gradient"
 msgstr "垂直グラデーション"
 
-#: ../settings/appearance-settings.c:1055
+#: ../settings/appearance-settings.c:1106
 msgid "Fi_rst Color:"
 msgstr "最初の色(_R):"
 
-#: ../settings/appearance-settings.c:1076
+#: ../settings/appearance-settings.c:1127
 msgid "_Second Color:"
 msgstr "二番目の色(_S):"
 
-#: ../settings/appearance-settings.c:1101
+#: ../settings/appearance-settings.c:1152
 msgid "Image"
 msgstr "画像"
 
-#: ../settings/appearance-settings.c:1109
+#: ../settings/appearance-settings.c:1160
 msgid "Show _Image"
 msgstr "画像を表示する(_I)"
 
-#: ../settings/appearance-settings.c:1131
+#: ../settings/appearance-settings.c:1182
 msgid "_File:"
 msgstr "ファイル(_F):"
 
-#: ../settings/appearance-settings.c:1186
-#: ../settings/appearance-settings.c:1188
+#: ../settings/appearance-settings.c:1237
+#: ../settings/appearance-settings.c:1239
 #, c-format
 msgid "Screen %d"
 msgstr "画面 %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1193
+#: ../settings/appearance-settings.c:1244
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "画面 %d, モニター %d"
 
-#: ../settings/appearance-settings.c:1210
+#: ../settings/appearance-settings.c:1261
 msgid "_Behavior"
 msgstr "振る舞い(_B)"
 
@@ -830,23 +798,19 @@ msgstr "背景リストのファイル名を選択してください"
 msgid "List Files"
 msgstr "ファイル一覧"
 
-#: ../settings/backdrop-list-manager.c:603
-msgid "Backdrop List"
-msgstr "背景リスト"
-
-#: ../settings/backdrop-list-manager.c:620
+#: ../settings/backdrop-list-manager.c:617
 msgid "Image files"
 msgstr "画像ファイル"
 
-#: ../settings/backdrop-list-manager.c:639
+#: ../settings/backdrop-list-manager.c:636
 msgid "List file"
 msgstr "リストファイル"
 
-#: ../settings/backdrop-list-manager.c:661
+#: ../settings/backdrop-list-manager.c:658
 msgid "Create backdrop list"
 msgstr "背景リストを作成"
 
-#: ../settings/backdrop-list-manager.c:694
+#: ../settings/backdrop-list-manager.c:691
 msgid "Edit backdrop list"
 msgstr "背景リストの編集"
 
@@ -891,104 +855,104 @@ msgstr "システムのフォントサイズを使用する(_S)"
 msgid "Custom _font size:"
 msgstr "指定フォントサイズを使用する(_F):"
 
-#: ../src/main.c:255
+#: ../src/main.c:257
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s バージョン %s, Xfce %s で実行されています。\n"
 
-#: ../src/main.c:257
+#: ../src/main.c:259
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Gtk+ %d.%d.%d でビルド、Gtk+ %d.%d.%d で実行しています。"
 
-#: ../src/main.c:261
+#: ../src/main.c:263
 msgid "Build options:\n"
 msgstr "ビルドオプション:\n"
 
-#: ../src/main.c:262
+#: ../src/main.c:264
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    メニュー:            %s\n"
 
-#: ../src/main.c:264 ../src/main.c:271 ../src/main.c:278
+#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
 msgid "enabled"
 msgstr "有効"
 
-#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
+#: ../src/main.c:268 ../src/main.c:275 ../src/main.c:282
 msgid "disabled"
 msgstr "無効"
 
-#: ../src/main.c:269
+#: ../src/main.c:271
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    アイコン:            %s\n"
 
-#: ../src/main.c:276
+#: ../src/main.c:278
 #, fuzzy, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    アイコン:            %s\n"
 
-#: ../src/main.c:305
+#: ../src/main.c:307
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: 不明なオプション: %s\n"
 
-#: ../src/main.c:306
+#: ../src/main.c:308
 msgid "Options are:\n"
 msgstr "オプションは:\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:309
 #, fuzzy
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      全ての設定を再読込みして画像リストを更新します\n"
 
-#: ../src/main.c:308
+#: ../src/main.c:310
 #, fuzzy
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        現在のマウス位置でメニューをポップアップします\n"
 
-#: ../src/main.c:309
+#: ../src/main.c:311
 #, fuzzy
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    -windowlist  現在のマウス位置でウィンドウリストをポップアップします\n"
 
-#: ../src/main.c:310
+#: ../src/main.c:312
 #, fuzzy
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        xfdesktop を終了させます\n"
 
-#: ../src/main.c:325
+#: ../src/main.c:327
 #, c-format
 msgid "%s is not running.\n"
 msgstr ""
 
-#: ../src/windowlist.c:218
+#: ../src/windowlist.c:220
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>ワークスペース %d</b>"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:228
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>ワークスペース %d</i>"
 
-#: ../src/windowlist.c:293 ../src/windowlist.c:296
+#: ../src/windowlist.c:295 ../src/windowlist.c:298
 msgid "_Add Workspace"
 msgstr "ワークスペースを追加(_A)"
 
-#: ../src/windowlist.c:304
+#: ../src/windowlist.c:306
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "ワークスペース %d を削除(_R)"
 
-#: ../src/windowlist.c:307
+#: ../src/windowlist.c:309
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース「%s」を削除(_R)"
 
-#: ../src/xfce-desktop.c:542
+#: ../src/xfce-desktop.c:578
 msgid "Desktop"
 msgstr "デスクトップ"
 
@@ -1439,7 +1403,166 @@ msgstr "メニューエディター"
 msgid "Xfce 4 Menu Editor"
 msgstr "Xfce 4 メニューエディター"
 
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
+#, fuzzy
+msgid "Accessories"
+msgstr "アクセス日時:"
+
+#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
+msgid "Common desktop tools and applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-development.directory.in.h:1
+msgid "Development"
+msgstr "開発"
+
+#: ../modules/menu/directory-data/xfce-development.directory.in.h:2
+#, fuzzy
+msgid "Software development tools"
+msgstr "中心開発者"
+
+#: ../modules/menu/directory-data/xfce-education.directory.in.h:1
+msgid "Education"
+msgstr "教育"
+
+#: ../modules/menu/directory-data/xfce-education.directory.in.h:2
+msgid "Educational software"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-games.directory.in.h:1
+#, fuzzy
+msgid "Games"
+msgstr "名前"
+
+#: ../modules/menu/directory-data/xfce-games.directory.in.h:2
+msgid "Games, puzzles, and other fun software"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "グラフィックス"
+
+#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
+msgid "Graphics creation and manipulation applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
+msgid "Audio and video players and editors"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
+#, fuzzy
+msgid "Multimedia"
+msgstr "マルチレベル"
+
+#: ../modules/menu/directory-data/xfce-network.directory.in.h:1
+msgid "Network"
+msgstr "ネットワーク"
+
+#: ../modules/menu/directory-data/xfce-network.directory.in.h:2
+msgid "Network applications and utilities"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-office.directory.in.h:1
+msgid "Office"
+msgstr "オフィス"
+
+#: ../modules/menu/directory-data/xfce-office.directory.in.h:2
+msgid "Office and productivity applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-other.directory.in.h:1
+msgid "Applications that don't fit into other categories"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-other.directory.in.h:2
+#, fuzzy
+msgid "Other"
+msgstr "/その他"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr "科学"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific applications and tools"
+msgstr "最小化されたアプリアイコン"
+
+#: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
+msgid "Desktop and system settings applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
+#, fuzzy
+msgid "Settings"
+msgstr "デスクトップ"
+
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:2
+msgid "System tools and utilities"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
+msgid "About Xfce"
+msgstr "Xfce について"
+
+#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
+msgid "Information about the Xfce Desktop Environment"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
+msgid "File Manager"
+msgstr "ファイルマネージャー "
+
+#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
+msgid "Thunar file manager"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
+#, fuzzy
+msgid "Help"
+msgstr "ヘルプ(_H)"
+
+#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
+msgid "Help using Xfce"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
+msgid "Log Out"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
+#, fuzzy
+msgid "Log out of the Xfce Desktop"
+msgstr "Xfce 4 デスクトップマネージャーの設定"
+
+#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
+#, fuzzy
+msgid "Run Program..."
+msgstr "実行エラー"
+
+#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
+#, fuzzy
+msgid "Run a program"
+msgstr "実行エラー"
+
+#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
+msgid "Terminal"
+msgstr "ターミナル"
+
+#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
+msgid "Terminal emulator"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
+msgid "Browse the web"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
+msgid "Web Browser"
+msgstr "ウェブブラウザー"
+
+#: ../panel-plugin/xfce4-menu.desktop.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr "インストール済アプリのカテゴリーを含むメニューを表示します"
 
@@ -1454,6 +1577,30 @@ msgstr "Xfce 4 デスクトップマネージャーの設定"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 デスクトップの設定"
+
+#~ msgid "Unable to quit session."
+#~ msgstr "セッションを終了できません。"
+
+#~ msgid ""
+#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
+#~ "is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr ""
+#~ "セッションを終了するには Xfce のセッションマネージャー (xfce4-session) が"
+#~ "動作している必要がありますが、これを検出できませんでした。別の方法で Xfce "
+#~ "を終了してください。"
+
+#~ msgid ""
+#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
+#~ "could not be found: %s"
+#~ msgstr ""
+#~ "セッションを終了するにはコマンド 'xfce4-session-logout' が必要ですが、見つ"
+#~ "けられませんでした: %s"
+
+#~ msgid "Edit Properties"
+#~ msgstr "プロパティの編集"
+
+#~ msgid "Backdrop List"
+#~ msgstr "背景リスト"
 
 #, fuzzy
 #~ msgid "Unable to empty the trash."
@@ -1503,9 +1650,6 @@ msgstr "Xfce 4 デスクトップの設定"
 #, fuzzy
 #~ msgid "Are sure you want to quit?"
 #~ msgstr "「%s」を削除してもよろしいですか？"
-
-#~ msgid "Core developer"
-#~ msgstr "中心開発者"
 
 #~ msgid "The command doesn't exist !"
 #~ msgstr "コマンドは存在しません！"

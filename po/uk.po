@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-20 22:14+0100\n"
+"POT-Creation-Date: 2007-03-18 20:49-0700\n"
 "PO-Revision-Date: 2007-03-03 22:25+0900\n"
 "Last-Translator: Maxim Dziumanenko <dziumanenko@gmail.com>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -106,7 +106,7 @@ msgstr "Виберіть значок"
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:600
-#: ../settings/appearance-settings.c:541
+#: ../settings/appearance-settings.c:579
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
@@ -115,7 +115,7 @@ msgstr "Усі файли"
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:606
-#: ../settings/appearance-settings.c:545
+#: ../settings/appearance-settings.c:583
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Файли зображень"
@@ -172,6 +172,7 @@ msgid "File"
 msgstr "Файл"
 
 #: ../menueditor/menueditor-add-external-dialog.c:123
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
 msgid "System"
 msgstr "Система"
 
@@ -484,39 +485,6 @@ msgstr "Скасувати внесені зміни"
 msgid "Unable to open the menu file %s in write mode"
 msgstr "Не вдається відкрити файл меню %s у режимі запису"
 
-#: ../modules/menu/desktop-menu-file.c:116
-#: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:765
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Меню Xfce"
-
-#: ../modules/menu/desktop-menu-file.c:118
-#: ../modules/menu/desktop-menu-file.c:133
-msgid "Unable to quit session."
-msgstr "Не вдається вийти з сеансу."
-
-#: ../modules/menu/desktop-menu-file.c:119
-msgid ""
-"Quitting the session requires that Xfce's session manager (xfce4-session) is "
-"running, but it was not detected.  Please quit Xfce via another means."
-msgstr ""
-"Щоб завершити сеанс треба, щоб був запущений диспетчер сеансів Xfce (xfce4-"
-"session), але його не виявлено. Будь-ласка, вийдіть з Xfce іншим шляхом."
-
-#: ../modules/menu/desktop-menu-file.c:129
-#, c-format
-msgid ""
-"Quitting the session requires the 'xfce4-session-logout' command, but it "
-"could not be found: %s"
-msgstr ""
-"Щоб завершити сеанс потрібна команда 'xfce4-session-logout', але вона не "
-"знайдена: %s"
-
-#: ../modules/menu/desktop-menuspec.c:61
-msgid "/Other"
-msgstr "/Інше"
-
 #: ../panel-plugin/desktop-menu-plugin.c:583
 msgid "Select Icon"
 msgstr "Вибір значка"
@@ -530,6 +498,11 @@ msgstr "Вибір файла меню"
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Не вдається запустити редактор меню xfce4-menueditor: %s"
+
+#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/xfce4-menu.desktop.in.h:2
+msgid "Xfce Menu"
+msgstr "Меню Xfce"
 
 #: ../panel-plugin/desktop-menu-plugin.c:777
 msgid "Button"
@@ -590,74 +563,74 @@ msgstr "Робочий стіл"
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: ../settings/appearance-settings.c:536
+#: ../settings/appearance-settings.c:574
 msgid "Select backdrop image or list file"
 msgstr "Виберіть зображення або список зображень"
 
-#: ../settings/appearance-settings.c:554
+#: ../settings/appearance-settings.c:592
 msgid "List Files (*.list)"
 msgstr "Файли списку (*.list)"
 
-#: ../settings/appearance-settings.c:650
+#: ../settings/appearance-settings.c:688
 msgid "_Edit list..."
 msgstr "_Правка списку..."
 
-#: ../settings/appearance-settings.c:658
+#: ../settings/appearance-settings.c:696
 msgid "_New list..."
 msgstr "_Створити список..."
 
-#: ../settings/appearance-settings.c:691
+#: ../settings/appearance-settings.c:729
 msgid "S_tyle:"
 msgstr "С_тиль:"
 
-#: ../settings/appearance-settings.c:698
+#: ../settings/appearance-settings.c:736
 msgid "Auto"
 msgstr "Автоматично"
 
-#: ../settings/appearance-settings.c:699
+#: ../settings/appearance-settings.c:737
 msgid "Centered"
 msgstr "По центру"
 
-#: ../settings/appearance-settings.c:700
+#: ../settings/appearance-settings.c:738
 msgid "Tiled"
 msgstr "Мозаїка"
 
-#: ../settings/appearance-settings.c:701
+#: ../settings/appearance-settings.c:739
 msgid "Stretched"
 msgstr "Розтягнуте"
 
-#: ../settings/appearance-settings.c:702
+#: ../settings/appearance-settings.c:740
 msgid "Scaled"
 msgstr "Масштабувати"
 
-#: ../settings/appearance-settings.c:758
+#: ../settings/appearance-settings.c:796
 msgid "A_djust Brightness:"
 msgstr "Регулювати _яскравість:"
 
-#: ../settings/appearance-settings.c:816
+#: ../settings/appearance-settings.c:854
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce не зможе керувати вашою робочим столом (%s)."
 
-#: ../settings/appearance-settings.c:817
+#: ../settings/appearance-settings.c:855
 msgid "Unknown Error"
 msgstr "Невідома помилка"
 
-#: ../settings/appearance-settings.c:821
+#: ../settings/appearance-settings.c:859
 #: ../src/xfdesktop-regular-file-icon.c:520
 #: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr "Помилка"
 
-#: ../settings/appearance-settings.c:823
+#: ../settings/appearance-settings.c:861
 msgid "Unable to start xfdesktop"
 msgstr "Не вдається запустити xfdesktop"
 
-#: ../settings/appearance-settings.c:845
+#: ../settings/appearance-settings.c:883
 msgid "Information"
 msgstr "Інформація"
 
-#: ../settings/appearance-settings.c:858
+#: ../settings/appearance-settings.c:896
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -671,7 +644,7 @@ msgstr ""
 "змінити файл ~/.config/xfce4/xinitrc.  Докладніша документація доступна на "
 "сайті http://xfce.org/."
 
-#: ../settings/appearance-settings.c:860
+#: ../settings/appearance-settings.c:898
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -685,83 +658,83 @@ msgstr ""
 "змінити файл ~/.config/xfce4/xinitrc.  Докладніша документація доступна на "
 "сайті http://xfce.org/."
 
-#: ../settings/appearance-settings.c:868
+#: ../settings/appearance-settings.c:906
 msgid "_Do not show this again"
 msgstr "Надалі _не показувати"
 
 #. the dialog
-#: ../settings/appearance-settings.c:934
+#: ../settings/appearance-settings.c:972
 msgid "Desktop Preferences"
 msgstr "Параметри робочого столу"
 
-#: ../settings/appearance-settings.c:951
+#: ../settings/appearance-settings.c:989
 msgid "Allow _Xfce to manage the desktop"
 msgstr "_Дозволити керування робочим столом Xfce"
 
-#: ../settings/appearance-settings.c:992
+#: ../settings/appearance-settings.c:1030
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "Розтягувати робочий стіл на _усі монітори"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:1006
-#: ../settings/appearance-settings.c:1188
+#: ../settings/appearance-settings.c:1044
+#: ../settings/appearance-settings.c:1226
 msgid "_Appearance"
 msgstr "_Зовнішній вигляд"
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1032
+#: ../settings/appearance-settings.c:1070
 msgid "Color"
 msgstr "Колір"
 
-#: ../settings/appearance-settings.c:1046
+#: ../settings/appearance-settings.c:1084
 msgid "_Color Style:"
 msgstr "Стиль заповнення _кольором:"
 
-#: ../settings/appearance-settings.c:1053
+#: ../settings/appearance-settings.c:1091
 msgid "Solid Color"
 msgstr "Однотонний"
 
-#: ../settings/appearance-settings.c:1054
+#: ../settings/appearance-settings.c:1092
 msgid "Horizontal Gradient"
 msgstr "Горизонтальний градієнт"
 
-#: ../settings/appearance-settings.c:1055
+#: ../settings/appearance-settings.c:1093
 msgid "Vertical Gradient"
 msgstr "Вертикальний градієнт"
 
-#: ../settings/appearance-settings.c:1068
+#: ../settings/appearance-settings.c:1106
 msgid "Fi_rst Color:"
 msgstr "_Перший колір:"
 
-#: ../settings/appearance-settings.c:1089
+#: ../settings/appearance-settings.c:1127
 msgid "_Second Color:"
 msgstr "_Другий колір:"
 
-#: ../settings/appearance-settings.c:1114
+#: ../settings/appearance-settings.c:1152
 msgid "Image"
 msgstr "Зображення"
 
-#: ../settings/appearance-settings.c:1122
+#: ../settings/appearance-settings.c:1160
 msgid "Show _Image"
 msgstr "Показувати _зображення"
 
-#: ../settings/appearance-settings.c:1144
+#: ../settings/appearance-settings.c:1182
 msgid "_File:"
 msgstr "_Файл:"
 
-#: ../settings/appearance-settings.c:1199
-#: ../settings/appearance-settings.c:1201
+#: ../settings/appearance-settings.c:1237
+#: ../settings/appearance-settings.c:1239
 #, c-format
 msgid "Screen %d"
 msgstr "Екран %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1206
+#: ../settings/appearance-settings.c:1244
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Екран %d, монітор %d"
 
-#: ../settings/appearance-settings.c:1223
+#: ../settings/appearance-settings.c:1261
 msgid "_Behavior"
 msgstr "_Поведінка"
 
@@ -846,74 +819,74 @@ msgstr "Використовувати _системний розмір шриф
 msgid "Custom _font size:"
 msgstr "Розмір _шрифту:"
 
-#: ../src/main.c:255
+#: ../src/main.c:257
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Це %s версії %s, що виконується у Xfce %s.\n"
 
-#: ../src/main.c:257
+#: ../src/main.c:259
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Зібрано з GTK+ %d.%d.%d, зв'язано з GTK+ %d.%d.%d."
 
-#: ../src/main.c:261
+#: ../src/main.c:263
 msgid "Build options:\n"
 msgstr "Параметри збирання:\n"
 
-#: ../src/main.c:262
+#: ../src/main.c:264
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Меню робочого столу:        %s\n"
 
-#: ../src/main.c:264 ../src/main.c:271 ../src/main.c:278
+#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
 msgid "enabled"
 msgstr "увімкнено"
 
-#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
+#: ../src/main.c:268 ../src/main.c:275 ../src/main.c:282
 msgid "disabled"
 msgstr "вимкнено"
 
-#: ../src/main.c:269
+#: ../src/main.c:271
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Значки на робочому столі:       %s\n"
 
-#: ../src/main.c:276
+#: ../src/main.c:278
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Значки на робочому столі: %s\n"
 
-#: ../src/main.c:305
+#: ../src/main.c:307
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Невідомий параметр: %s\n"
 
-#: ../src/main.c:306
+#: ../src/main.c:308
 msgid "Options are:\n"
 msgstr "Параметри:\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:309
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    --reload      Перезавантажити усі параметри, оновити перелік зображень\n"
 
-#: ../src/main.c:308
+#: ../src/main.c:310
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
 "    --menu        Показати меню (у місці, де знаходиться курсор миші)\n"
 
-#: ../src/main.c:309
+#: ../src/main.c:311
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    --windowlist  Показати перелік вікон (у місці, де знаходиться курсор "
 "миші)\n"
 
-#: ../src/main.c:310
+#: ../src/main.c:312
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    --quit        Вийти з xfdesktop\n"
 
-#: ../src/main.c:325
+#: ../src/main.c:327
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s не запущений.\n"
@@ -942,7 +915,7 @@ msgstr "В_идалити робочу область %d"
 msgid "_Remove Workspace '%s'"
 msgstr "В_идалити робочу область \"%s\""
 
-#: ../src/xfce-desktop.c:573
+#: ../src/xfce-desktop.c:578
 msgid "Desktop"
 msgstr "Робочий стіл"
 
@@ -1240,12 +1213,6 @@ msgstr "Розмір:"
 msgid "%s (%"
 msgstr "%s (%"
 
-#: ../src/xfdesktop-file-properties-dialog.c:413
-#: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:487 ../src/xfdesktop-volume-icon.c:460
-msgid " Bytes)"
-msgstr " байтів)"
-
 #. permissions tab
 #: ../src/xfdesktop-file-properties-dialog.c:428
 msgid "Permissions"
@@ -1392,7 +1359,165 @@ msgstr "Редактор меню"
 msgid "Xfce 4 Menu Editor"
 msgstr "Редактор меню Xfce 4"
 
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
+#, fuzzy
+msgid "Accessories"
+msgstr "Доступ:"
+
+#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
+msgid "Common desktop tools and applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-development.directory.in.h:1
+msgid "Development"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-development.directory.in.h:2
+msgid "Software development tools"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-education.directory.in.h:1
+msgid "Education"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-education.directory.in.h:2
+msgid "Educational software"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-games.directory.in.h:1
+#, fuzzy
+msgid "Games"
+msgstr "Назва"
+
+#: ../modules/menu/directory-data/xfce-games.directory.in.h:2
+msgid "Games, puzzles, and other fun software"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
+msgid "Graphics"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
+msgid "Graphics creation and manipulation applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
+msgid "Audio and video players and editors"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
+#, fuzzy
+msgid "Multimedia"
+msgstr "Багаторівневе"
+
+#: ../modules/menu/directory-data/xfce-network.directory.in.h:1
+msgid "Network"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-network.directory.in.h:2
+msgid "Network applications and utilities"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-office.directory.in.h:1
+msgid "Office"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-office.directory.in.h:2
+msgid "Office and productivity applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-other.directory.in.h:1
+msgid "Applications that don't fit into other categories"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-other.directory.in.h:2
+#, fuzzy
+msgid "Other"
+msgstr "/Інше"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific applications and tools"
+msgstr "Значки згорнутих вікон"
+
+#: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
+msgid "Desktop and system settings applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
+#, fuzzy
+msgid "Settings"
+msgstr "Параметри робочого столу"
+
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:2
+msgid "System tools and utilities"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
+msgid "About Xfce"
+msgstr "Про Xfce"
+
+#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
+msgid "Information about the Xfce Desktop Environment"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
+msgid "File Manager"
+msgstr "Менеджер файлів"
+
+#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
+msgid "Thunar file manager"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
+#, fuzzy
+msgid "Help"
+msgstr "_Довідка"
+
+#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
+msgid "Help using Xfce"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
+msgid "Log Out"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
+#, fuzzy
+msgid "Log out of the Xfce Desktop"
+msgstr "Параметри керування робочим столом Xfce 4"
+
+#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
+#, fuzzy
+msgid "Run Program..."
+msgstr "Помилка при виконанні"
+
+#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
+#, fuzzy
+msgid "Run a program"
+msgstr "Помилка при виконанні"
+
+#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
+msgid "Terminal"
+msgstr "Термінал"
+
+#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
+msgid "Terminal emulator"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
+msgid "Browse the web"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
+msgid "Web Browser"
+msgstr "Веб-переглядач"
+
+#: ../panel-plugin/xfce4-menu.desktop.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr "Відображає меню, що містить категорії встановлених програм"
 
@@ -1407,6 +1532,27 @@ msgstr "Параметри керування робочим столом Xfce 4
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Параметри робочого столу Xfce 4"
+
+#~ msgid "Unable to quit session."
+#~ msgstr "Не вдається вийти з сеансу."
+
+#~ msgid ""
+#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
+#~ "is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr ""
+#~ "Щоб завершити сеанс треба, щоб був запущений диспетчер сеансів Xfce "
+#~ "(xfce4-session), але його не виявлено. Будь-ласка, вийдіть з Xfce іншим "
+#~ "шляхом."
+
+#~ msgid ""
+#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
+#~ "could not be found: %s"
+#~ msgstr ""
+#~ "Щоб завершити сеанс потрібна команда 'xfce4-session-logout', але вона не "
+#~ "знайдена: %s"
+
+#~ msgid " Bytes)"
+#~ msgstr " байтів)"
 
 #~ msgid "Edit Properties"
 #~ msgstr "Змінити параметри"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-04 05:11-0800\n"
+"POT-Creation-Date: 2007-03-18 20:49-0700\n"
 "PO-Revision-Date: 2007-02-07 20:02+0800\n"
 "Last-Translator: wuli <wurisky@gmail.com>\n"
 "Language-Team: Simplified Chinese <risky@linuxsir.org>\n"
@@ -82,7 +82,6 @@ msgstr "图标："
 #: ../menueditor/menueditor-add-dialog.c:330
 #: ../menueditor/menueditor-edit-dialog.c:191
 #: ../menueditor/menueditor-edit-dialog.c:586
-#, 
 msgid "No icon"
 msgstr "无图标"
 
@@ -90,7 +89,6 @@ msgstr "无图标"
 #: ../menueditor/menueditor-add-dialog.c:226
 #: ../menueditor/menueditor-edit-dialog.c:203
 #: ../menueditor/menueditor-edit-dialog.c:204
-#, 
 msgid "Themed icon:"
 msgstr "主题图标："
 
@@ -99,7 +97,6 @@ msgstr "主题图标："
 #: ../menueditor/menueditor-add-dialog.c:347
 #: ../menueditor/menueditor-edit-dialog.c:230
 #: ../menueditor/menueditor-edit-dialog.c:384
-#, 
 msgid "Select icon"
 msgstr "选择图标"
 
@@ -110,7 +107,7 @@ msgstr "选择图标"
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:600
-#: ../settings/appearance-settings.c:532
+#: ../settings/appearance-settings.c:579
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
@@ -119,7 +116,7 @@ msgstr "所有文件"
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:606
-#: ../settings/appearance-settings.c:536
+#: ../settings/appearance-settings.c:583
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "图像文件"
@@ -144,7 +141,6 @@ msgstr "选择命令"
 
 #: ../menueditor/menueditor-add-dialog.c:442
 #: ../menueditor/menueditor-edit-dialog.c:301
-#, 
 msgid "Executable Files"
 msgstr "可执行文件"
 
@@ -169,7 +165,6 @@ msgid "Shell Scripts"
 msgstr "Shell Scripts"
 
 #: ../menueditor/menueditor-add-external-dialog.c:100
-#, 
 msgid "Add external menu entry"
 msgstr "插入外部菜单"
 
@@ -178,6 +173,7 @@ msgid "File"
 msgstr "文件"
 
 #: ../menueditor/menueditor-add-external-dialog.c:123
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
 msgid "System"
 msgstr "系统"
 
@@ -191,7 +187,6 @@ msgstr "源："
 
 #: ../menueditor/menueditor-add-external-dialog.c:137
 #: ../menueditor/menueditor-edit-external-dialog.c:117
-#, 
 msgid "Select external menu"
 msgstr "选择外部菜单"
 
@@ -230,12 +225,10 @@ msgid "Edit menu entry"
 msgstr "编辑菜单条目"
 
 #: ../menueditor/menueditor-edit-external-dialog.c:96
-#, 
 msgid "Edit external menu entry"
 msgstr "编辑外部菜单"
 
 #: ../menueditor/menueditor-main.c:43
-#, 
 msgid "Xfce4-MenuEditor"
 msgstr "Xfce 菜单编辑器"
 
@@ -248,7 +241,6 @@ msgid "_New"
 msgstr "新建(_N)"
 
 #: ../menueditor/menueditor-main-window.c:141
-#, 
 msgid "Create a new empty menu"
 msgstr "创建一个新的 Xfce 空菜单文件"
 
@@ -259,12 +251,10 @@ msgid "_Open"
 msgstr "打开(_O)"
 
 #: ../menueditor/menueditor-main-window.c:142
-#, 
 msgid "Open existing menu"
 msgstr "打开已存在菜单"
 
 #: ../menueditor/menueditor-main-window.c:143
-#, 
 msgid "Open _default menu"
 msgstr "打开默认菜单(_D)"
 
@@ -277,12 +267,10 @@ msgid "_Save"
 msgstr "保存(_S)"
 
 #: ../menueditor/menueditor-main-window.c:144
-#, 
 msgid "Save modifications"
 msgstr "保存修改"
 
 #: ../menueditor/menueditor-main-window.c:145
-#, 
 msgid "Save _as..."
 msgstr "另存为(_A)..."
 
@@ -295,17 +283,14 @@ msgid "_Close"
 msgstr "关闭(_C)"
 
 #: ../menueditor/menueditor-main-window.c:146
-#, 
 msgid "Close menu"
 msgstr "关闭菜单"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, 
 msgid "_Quit"
 msgstr "退出(_Q)"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, 
 msgid "Quit Xfce4-Menueditor"
 msgstr "退出Xfce4 菜单编辑器"
 
@@ -314,32 +299,26 @@ msgid "_Edit"
 msgstr "编辑(_E)"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, 
 msgid "_Edit entry"
 msgstr "编辑菜单条目(_E)"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, 
 msgid "Edit selected entry"
 msgstr "编辑所选菜单条目"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, 
 msgid "_Add entry"
 msgstr "添加菜单条目(_A)"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, 
 msgid "Add a new entry in the menu"
 msgstr "向菜单中增加一个条目"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, 
 msgid "Add _external"
 msgstr "插入外部菜单(_E)"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, 
 msgid "Add an external entry"
 msgstr "插入一个外部菜单条目"
 
@@ -348,7 +327,6 @@ msgid "_Remove entry"
 msgstr "移除菜单条目(_R)"
 
 #: ../menueditor/menueditor-main-window.c:153
-#, 
 msgid "Remove entry"
 msgstr "移除条目"
 
@@ -357,7 +335,6 @@ msgid "_Up"
 msgstr "上移(_U)"
 
 #: ../menueditor/menueditor-main-window.c:154
-#, 
 msgid "Move entry up"
 msgstr "上移当前条目"
 
@@ -366,7 +343,6 @@ msgid "_Down"
 msgstr "下移(_D)"
 
 #: ../menueditor/menueditor-main-window.c:155
-#, 
 msgid "Move entry down"
 msgstr "下移当前条目"
 
@@ -379,17 +355,14 @@ msgid "_About..."
 msgstr "关于(_A)..."
 
 #: ../menueditor/menueditor-main-window.c:158
-#, 
 msgid "Show informations about xfce4-menueditor"
 msgstr "显示 xfce4 菜单编辑器信息"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, 
 msgid "Collapse all"
 msgstr "折叠所有"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, 
 msgid "Collapse all menu entries"
 msgstr "折叠所有菜单条目"
 
@@ -398,7 +371,6 @@ msgid "Expand all"
 msgstr "展开所有"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, 
 msgid "Expand all menu entries"
 msgstr "展开所有菜单条目"
 
@@ -448,7 +420,6 @@ msgid "Do you want to save before opening the default menu ?"
 msgstr "您希望在打开默认菜单前保存吗？"
 
 #: ../menueditor/menueditor-main-window.c:594
-#, 
 msgid "Save menu file as"
 msgstr "保存菜单文件为"
 
@@ -507,7 +478,6 @@ msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "您修改了菜单，您要在退出前保存吗？"
 
 #: ../menueditor/menueditor-main-window.c:1347
-#, 
 msgid "Forget modifications"
 msgstr "忽略修改"
 
@@ -515,36 +485,6 @@ msgstr "忽略修改"
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
 msgstr "写入模式下无法打开菜单文件 %s"
-
-#: ../modules/menu/desktop-menu-file.c:116
-#: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:773
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Xfce 菜单"
-
-#: ../modules/menu/desktop-menu-file.c:118
-#: ../modules/menu/desktop-menu-file.c:133
-msgid "Unable to quit session."
-msgstr "无法退出会话。"
-
-#: ../modules/menu/desktop-menu-file.c:119
-msgid ""
-"Quitting the session requires that Xfce's session manager (xfce4-session) is "
-"running, but it was not detected.  Please quit Xfce via another means."
-msgstr "退出会话需要xfce的会话管理器(xfce4-session)正在进行，目前没有检测到，"
-"请用其它方式退出xfce"
-
-#: ../modules/menu/desktop-menu-file.c:129
-#, c-format
-msgid ""
-"Quitting the session requires the 'xfce4-session-logout' command, but it "
-"could not be found: %s"
-msgstr "退出当前会话需要 'xfce4-session-logout' 命令，但是无法找到：%s"
-
-#: ../modules/menu/desktop-menuspec.c:61
-msgid "/Other"
-msgstr "/其它"
 
 #: ../panel-plugin/desktop-menu-plugin.c:583
 msgid "Select Icon"
@@ -561,147 +501,137 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "无法启动 xfce4 菜单编辑器：%s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:765
-#, 
-msgid "Edit Properties"
-msgstr "编辑属性"
+#: ../panel-plugin/xfce4-menu.desktop.in.h:2
+msgid "Xfce Menu"
+msgstr "Xfce 菜单"
 
-#: ../panel-plugin/desktop-menu-plugin.c:783
-#, 
+#: ../panel-plugin/desktop-menu-plugin.c:777
 msgid "Button"
 msgstr "按钮"
 
-#: ../panel-plugin/desktop-menu-plugin.c:796
-#, 
+#: ../panel-plugin/desktop-menu-plugin.c:790
 msgid "Button _title:"
 msgstr "按钮标题(_T)："
 
-#: ../panel-plugin/desktop-menu-plugin.c:809
+#: ../panel-plugin/desktop-menu-plugin.c:803
 msgid "_Show title in button"
 msgstr "在按钮中显示标题(_S)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:816
-#, 
+#: ../panel-plugin/desktop-menu-plugin.c:810
 msgid "Menu File"
 msgstr "菜单文件"
 
-#: ../panel-plugin/desktop-menu-plugin.c:828
-#, 
+#: ../panel-plugin/desktop-menu-plugin.c:822
 msgid "Use default _desktop menu file"
 msgstr "使用默认桌面菜单文件(_D)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:837
-#, 
+#: ../panel-plugin/desktop-menu-plugin.c:831
 msgid "Use _custom menu file:"
 msgstr "使用自定义菜单文件(_C)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:888
+#: ../panel-plugin/desktop-menu-plugin.c:882
 #: ../settings/behavior-settings.c:267
-#, 
 msgid "_Edit Menu"
 msgstr "编辑菜单(_M)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:894
-#, 
+#: ../panel-plugin/desktop-menu-plugin.c:888
 msgid "Icons"
 msgstr "图标"
 
-#: ../panel-plugin/desktop-menu-plugin.c:906
+#: ../panel-plugin/desktop-menu-plugin.c:900
 msgid "_Button icon:"
 msgstr "按钮图标(_B)："
 
-#: ../panel-plugin/desktop-menu-plugin.c:930
+#: ../panel-plugin/desktop-menu-plugin.c:924
 msgid "Show _icons in menu"
 msgstr "在菜单中显示图标(_i)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:953
+#: ../panel-plugin/desktop-menu-plugin.c:947
 msgid "There is already a panel menu registered for this screen"
 msgstr "这个屏幕已经注册了一个面板菜单"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1061
-#, 
+#: ../panel-plugin/desktop-menu-plugin.c:1055
 msgid "Edit Menu"
 msgstr "编辑菜单"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../settings/appearance-settings.c:134
+#: ../settings/appearance-settings.c:138
 msgid "Button Label|Desktop"
 msgstr "桌面"
 
-#: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
-#: ../settings/backdrop-list-manager.c:631
+#: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
+#: ../settings/backdrop-list-manager.c:628
 msgid "backdrops.list"
 msgstr "背景列表"
 
-#: ../settings/appearance-settings.c:527
+#: ../settings/appearance-settings.c:574
 msgid "Select backdrop image or list file"
 msgstr "选择背景图像或者列表文件"
 
-#: ../settings/appearance-settings.c:545
+#: ../settings/appearance-settings.c:592
 msgid "List Files (*.list)"
 msgstr "列表文件 (*.list) "
 
-#: ../settings/appearance-settings.c:637
+#: ../settings/appearance-settings.c:688
 msgid "_Edit list..."
 msgstr "编辑列表(_E)"
 
-#: ../settings/appearance-settings.c:645
+#: ../settings/appearance-settings.c:696
 msgid "_New list..."
 msgstr "新列表(_N)"
 
-#: ../settings/appearance-settings.c:678
+#: ../settings/appearance-settings.c:729
 msgid "S_tyle:"
 msgstr "风格(_t):"
 
-#: ../settings/appearance-settings.c:685
+#: ../settings/appearance-settings.c:736
 msgid "Auto"
 msgstr "自动"
 
-#: ../settings/appearance-settings.c:686
+#: ../settings/appearance-settings.c:737
 msgid "Centered"
 msgstr "居中"
 
-#: ../settings/appearance-settings.c:687
+#: ../settings/appearance-settings.c:738
 msgid "Tiled"
 msgstr "平铺"
 
-#: ../settings/appearance-settings.c:688
+#: ../settings/appearance-settings.c:739
 msgid "Stretched"
 msgstr "拉伸"
 
-#: ../settings/appearance-settings.c:689
+#: ../settings/appearance-settings.c:740
 msgid "Scaled"
 msgstr "缩放"
 
-#: ../settings/appearance-settings.c:745
-#, 
+#: ../settings/appearance-settings.c:796
 msgid "A_djust Brightness:"
 msgstr "调整亮度(_D)："
 
-#: ../settings/appearance-settings.c:803
+#: ../settings/appearance-settings.c:854
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "xfce 将无法管理你的桌面 (%s) "
 
-#: ../settings/appearance-settings.c:804
+#: ../settings/appearance-settings.c:855
 msgid "Unknown Error"
 msgstr "未知错误"
 
-#: ../settings/appearance-settings.c:808
+#: ../settings/appearance-settings.c:859
 #: ../src/xfdesktop-regular-file-icon.c:520
 #: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr "错误"
 
-#: ../settings/appearance-settings.c:810
+#: ../settings/appearance-settings.c:861
 msgid "Unable to start xfdesktop"
 msgstr "无法启动xfdesktop"
 
-#: ../settings/appearance-settings.c:832
-#, 
+#: ../settings/appearance-settings.c:883
 msgid "Information"
 msgstr "信息"
 
-#: ../settings/appearance-settings.c:845
+#: ../settings/appearance-settings.c:896
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -709,11 +639,11 @@ msgid ""
 "your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
-"为使在下次启动xfce时此次设置生效，退出时请确认保存你的会话。"
-"如果你现在不是使用会话管理器，需要手动编辑你的 ~/.config/xfce4/xinitrc文件"
-"详细说明可在 http://xfce.org/  提供的文档中找到。"
+"为使在下次启动xfce时此次设置生效，退出时请确认保存你的会话。如果你现在不是使"
+"用会话管理器，需要手动编辑你的 ~/.config/xfce4/xinitrc文件详细说明可在 "
+"http://xfce.org/  提供的文档中找到。"
 
-#: ../settings/appearance-settings.c:847
+#: ../settings/appearance-settings.c:898
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -721,88 +651,87 @@ msgid ""
 "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
-"为使在下次启动xfce时此次设置生效，退出时请确认保存你的会话。"
-"如果你现在不是使用会话管理器，需要手动编辑你的 ~/.config/xfce4/xinitrc文件"
-"详细说明可在 http://xfce.org/  提供的文档中找到。"
+"为使在下次启动xfce时此次设置生效，退出时请确认保存你的会话。如果你现在不是使"
+"用会话管理器，需要手动编辑你的 ~/.config/xfce4/xinitrc文件详细说明可在 "
+"http://xfce.org/  提供的文档中找到。"
 
-#: ../settings/appearance-settings.c:855
+#: ../settings/appearance-settings.c:906
 msgid "_Do not show this again"
 msgstr "下次不再显示(_D)"
 
 #. the dialog
-#: ../settings/appearance-settings.c:921
-#, 
+#: ../settings/appearance-settings.c:972
 msgid "Desktop Preferences"
 msgstr "桌面设置"
 
-#: ../settings/appearance-settings.c:938
+#: ../settings/appearance-settings.c:989
 msgid "Allow _Xfce to manage the desktop"
 msgstr "允许xfce管理桌面(_X)"
 
-#: ../settings/appearance-settings.c:979
+#: ../settings/appearance-settings.c:1030
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "将单一背景伸展至所有显示器(_A)"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:993
-#: ../settings/appearance-settings.c:1175
+#: ../settings/appearance-settings.c:1044
+#: ../settings/appearance-settings.c:1226
 msgid "_Appearance"
 msgstr "外观(_A)"
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1019
+#: ../settings/appearance-settings.c:1070
 msgid "Color"
 msgstr "颜色"
 
-#: ../settings/appearance-settings.c:1033
+#: ../settings/appearance-settings.c:1084
 msgid "_Color Style:"
 msgstr "颜色风格(_C):"
 
-#: ../settings/appearance-settings.c:1040
+#: ../settings/appearance-settings.c:1091
 msgid "Solid Color"
 msgstr "纯色"
 
-#: ../settings/appearance-settings.c:1041
+#: ../settings/appearance-settings.c:1092
 msgid "Horizontal Gradient"
 msgstr "水平梯度"
 
-#: ../settings/appearance-settings.c:1042
+#: ../settings/appearance-settings.c:1093
 msgid "Vertical Gradient"
 msgstr "垂直梯度"
 
-#: ../settings/appearance-settings.c:1055
+#: ../settings/appearance-settings.c:1106
 msgid "Fi_rst Color:"
 msgstr "第一颜色(_r)："
 
-#: ../settings/appearance-settings.c:1076
+#: ../settings/appearance-settings.c:1127
 msgid "_Second Color:"
 msgstr "第二颜色(_S):"
 
-#: ../settings/appearance-settings.c:1101
+#: ../settings/appearance-settings.c:1152
 msgid "Image"
 msgstr "图像"
 
-#: ../settings/appearance-settings.c:1109
+#: ../settings/appearance-settings.c:1160
 msgid "Show _Image"
 msgstr "显示图像(_I)"
 
-#: ../settings/appearance-settings.c:1131
+#: ../settings/appearance-settings.c:1182
 msgid "_File:"
 msgstr "文件(_F)："
 
-#: ../settings/appearance-settings.c:1186
-#: ../settings/appearance-settings.c:1188
+#: ../settings/appearance-settings.c:1237
+#: ../settings/appearance-settings.c:1239
 #, c-format
 msgid "Screen %d"
 msgstr "屏幕 %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1193
+#: ../settings/appearance-settings.c:1244
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "屏幕 %d，显示器 %d"
 
-#: ../settings/appearance-settings.c:1210
+#: ../settings/appearance-settings.c:1261
 msgid "_Behavior"
 msgstr "行为(_B)"
 
@@ -830,43 +759,35 @@ msgstr "选择背景列表文件名"
 msgid "List Files"
 msgstr "列表文件"
 
-#: ../settings/backdrop-list-manager.c:603
-msgid "Backdrop List"
-msgstr "背景列表"
-
-#: ../settings/backdrop-list-manager.c:620
+#: ../settings/backdrop-list-manager.c:617
 msgid "Image files"
 msgstr "图像文件"
 
-#: ../settings/backdrop-list-manager.c:639
+#: ../settings/backdrop-list-manager.c:636
 msgid "List file"
 msgstr "列出文件"
 
-#: ../settings/backdrop-list-manager.c:661
+#: ../settings/backdrop-list-manager.c:658
 msgid "Create backdrop list"
 msgstr "创建背景列表"
 
-#: ../settings/backdrop-list-manager.c:694
+#: ../settings/backdrop-list-manager.c:691
 msgid "Edit backdrop list"
 msgstr "编辑背景列表"
 
 #: ../settings/behavior-settings.c:241
-#, 
 msgid "Menus"
 msgstr "菜单"
 
 #: ../settings/behavior-settings.c:249
-#, 
 msgid "Show _window list on middle click"
 msgstr "按下中键显示窗口列表(_W)"
 
 #: ../settings/behavior-settings.c:260
-#, 
 msgid "Show _desktop menu on right click"
 msgstr "按下右键显示桌面菜单(_D)"
 
 #: ../settings/behavior-settings.c:279
-#, 
 msgid "Desktop Icons"
 msgstr "桌面图标"
 
@@ -876,7 +797,6 @@ msgid "None"
 msgstr "无"
 
 #: ../settings/behavior-settings.c:289
-#, 
 msgid "Minimized application icons"
 msgstr "显示最小化应用程序图标"
 
@@ -885,12 +805,10 @@ msgid "File/launcher icons"
 msgstr "文件/启动选项图标"
 
 #: ../settings/behavior-settings.c:306
-#, 
 msgid "_Icon size:"
 msgstr "图标大小(_I)"
 
 #: ../settings/behavior-settings.c:320
-#, 
 msgid "Use _system font size"
 msgstr "使用系统字体大小(_S)"
 
@@ -898,105 +816,99 @@ msgstr "使用系统字体大小(_S)"
 msgid "Custom _font size:"
 msgstr "调整字体大小(_F)"
 
-#: ../src/main.c:255
+#: ../src/main.c:257
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "这是 %s版本 %s， 运行于 Xfce %s。\n"
 
-#: ../src/main.c:257
+#: ../src/main.c:259
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "依 GTK+ %d.%d.%d 编译, 链接到 GTK+ %d.%d.%d。"
 
-#: ../src/main.c:261
+#: ../src/main.c:263
 msgid "Build options:\n"
 msgstr "编译选项：\n"
 
-#: ../src/main.c:262
+#: ../src/main.c:264
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "桌面菜单：     %s\n"
 
-#: ../src/main.c:264 ../src/main.c:271 ../src/main.c:278
-#, 
+#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
 msgid "enabled"
 msgstr "启用"
 
-#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
-#, 
+#: ../src/main.c:268 ../src/main.c:275 ../src/main.c:282
 msgid "disabled"
 msgstr "禁用"
 
-#: ../src/main.c:269
-#, , c-format
+#: ../src/main.c:271
+#, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "桌面图标：      %s\n"
 
-#: ../src/main.c:276
-#, , c-format
+#: ../src/main.c:278
+#, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "桌面文件图标：   %s\n"
 
-#: ../src/main.c:305
+#: ../src/main.c:307
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s：未知选项： %s\n"
 
-#: ../src/main.c:306
+#: ../src/main.c:308
 msgid "Options are:\n"
 msgstr "选项为：\n"
 
-#: ../src/main.c:307
-#, 
+#: ../src/main.c:309
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "  --relod    重新载入全部设置，刷新图像列表\n"
 
-#: ../src/main.c:308
-#, 
+#: ../src/main.c:310
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "  --menu    弹出菜单 (在鼠标当前位置)\n"
 
-#: ../src/main.c:309
-#, 
+#: ../src/main.c:311
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "  --windowlist    弹出窗口列表 (在鼠标当前位置)\n"
 
-#: ../src/main.c:310
+#: ../src/main.c:312
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "   --quit        退出 xfdesktop\n"
 
-#: ../src/main.c:325
+#: ../src/main.c:327
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s 没有运行。\n"
 
-
-#: ../src/windowlist.c:218
+#: ../src/windowlist.c:220
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>工作区 %d</b>"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:228
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>工作区 %d</i>"
 
-#: ../src/windowlist.c:293 ../src/windowlist.c:296
+#: ../src/windowlist.c:295 ../src/windowlist.c:298
 msgid "_Add Workspace"
 msgstr "添加工作区(_A)"
 
-#: ../src/windowlist.c:304
+#: ../src/windowlist.c:306
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "移除工作区(_R) %d"
 
-#: ../src/windowlist.c:307
+#: ../src/windowlist.c:309
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "移除工作区(_R) “%s”"
 
-#: ../src/xfce-desktop.c:542
+#: ../src/xfce-desktop.c:578
 msgid "Desktop"
 msgstr "桌面"
 
@@ -1036,12 +948,11 @@ msgid "Enter the new name:"
 msgstr "输入新名称："
 
 #: ../src/xfdesktop-file-icon-manager.c:547
-#, 
 msgid "Rename"
 msgstr "重命名"
 
 #: ../src/xfdesktop-file-icon-manager.c:584
-#, , c-format
+#, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "你确定要删除 \"%s\" 吗？"
 
@@ -1051,13 +962,11 @@ msgid "If you delete a file, it is permanently lost."
 msgstr "如果你将一个文件删除，它将永远消失。"
 
 #: ../src/xfdesktop-file-icon-manager.c:603
-#, , c-format
+#, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "你确定要删除下面 %d 个文件吗？"
 
-
 #: ../src/xfdesktop-file-icon-manager.c:606
-#, 
 msgid "Delete Multiple Files"
 msgstr "删除多个文件"
 
@@ -1065,7 +974,7 @@ msgstr "删除多个文件"
 #: ../src/xfdesktop-file-icon-manager.c:823
 #: ../src/xfdesktop-file-icon-manager.c:1528 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:352
-#, , c-format
+#, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "无法启动 \"%s\"："
 
@@ -1074,7 +983,6 @@ msgstr "无法启动 \"%s\"："
 #: ../src/xfdesktop-file-icon-manager.c:1128
 #: ../src/xfdesktop-file-icon-manager.c:1530 ../src/xfdesktop-file-icon.c:144
 #: ../src/xfdesktop-file-utils.c:355
-#, 
 msgid "Launch Error"
 msgstr "启动错误"
 
@@ -1099,7 +1007,7 @@ msgid "Open With \"%s\""
 msgstr "用 \"%s\" 打开"
 
 #: ../src/xfdesktop-file-icon-manager.c:1091
-#, , c-format
+#, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "无法创建名为 \"%s\" 的文件夹："
 
@@ -1124,12 +1032,11 @@ msgid "Create"
 msgstr "创建"
 
 #: ../src/xfdesktop-file-icon-manager.c:1204
-#, , c-format
+#, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "无法创建名为 \"%s\" 的文件夹"
 
 #: ../src/xfdesktop-file-icon-manager.c:1207
-#, 
 msgid "Create File Failed"
 msgstr "创建文件失败"
 
@@ -1147,12 +1054,11 @@ msgid "New Empty File"
 msgstr "新空文件"
 
 #: ../src/xfdesktop-file-icon-manager.c:1302
-#, , c-format
+#, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "无法创建文件 \"%s\" ："
 
 #: ../src/xfdesktop-file-icon-manager.c:1303
-#, 
 msgid "Create Error"
 msgstr "创建错误"
 
@@ -1165,7 +1071,6 @@ msgid "_Execute"
 msgstr "执行(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1634
-#, 
 msgid "_Edit Launcher"
 msgstr "编辑启动器(_E)"
 
@@ -1183,17 +1088,14 @@ msgstr "重命名(_R)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1820
 #: ../src/xfdesktop-volume-icon.c:593
-#, 
 msgid "_Properties..."
 msgstr "属性(_P)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1837
-#, 
 msgid "Des_ktop"
 msgstr "桌面(_K)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1856
-#, 
 msgid "Create _Launcher..."
 msgstr "创建启动器(_L)"
 
@@ -1202,28 +1104,24 @@ msgid "Create _URL Link..."
 msgstr "创建 URL 链接(_U)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1894
-#, 
 msgid "Create _Folder..."
 msgstr "创建文件夹(_F)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1936
-#, 
 msgid "_Empty File"
 msgstr "空文件(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1977
-#, 
 msgid "Desktop _Settings..."
 msgstr "桌面设置(_S)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1986
-#, 
 msgid "_Desktop Properties..."
 msgstr "桌面属性(_D)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:3158
 #: ../src/xfdesktop-regular-file-icon.c:382
-#, , c-format
+#, c-format
 msgid "Failed to run \"%s\":"
 msgstr "无法运行 \"%s\" "
 
@@ -1242,7 +1140,6 @@ msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr " 无法将 \"%s\" 默认应用程序设为 \"%s\""
 
 #: ../src/xfdesktop-file-properties-dialog.c:106
-#, 
 msgid "Properties Error"
 msgstr "属性错误"
 
@@ -1320,7 +1217,6 @@ msgid "Group:"
 msgstr "群组"
 
 #: ../src/xfdesktop-file-properties-dialog.c:533
-#, 
 msgid "Others:"
 msgstr "其它"
 
@@ -1338,15 +1234,12 @@ msgstr "移动 \"%s\" 到 \"%s\" 失败。"
 msgid "There was an error copying \"%s\" to \"%s\":"
 msgstr "复制 \"%s\" 到 \"%s\" 失败。"
 
-
 #: ../src/xfdesktop-file-utils.c:112
 #, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
 msgstr "链接 \"%s\" 到 \"%s\" 失败。"
 
-
 #: ../src/xfdesktop-file-utils.c:121
-#, 
 msgid "File Error"
 msgstr "文件错误"
 
@@ -1381,12 +1274,10 @@ msgid "Home"
 msgstr "Home"
 
 #: ../src/xfdesktop-special-file-icon.c:508
-#, 
 msgid "Trash Error"
 msgstr "垃圾箱错误"
 
 #: ../src/xfdesktop-special-file-icon.c:510
-#, 
 msgid "Unable to contact the Xfce Trash service."
 msgstr "无法启动垃圾箱"
 
@@ -1397,33 +1288,29 @@ msgid ""
 msgstr "清空垃圾箱需要安装支持xfce垃圾箱服务的文件管理器，比如Thunar"
 
 #: ../src/xfdesktop-special-file-icon.c:635
-#, 
 msgid "_Empty Trash"
 msgstr "清空垃圾箱(_E)"
 
 #: ../src/xfdesktop-volume-icon.c:491
-#, , c-format
+#, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "无法挂载 \"%s\" ："
 
 #: ../src/xfdesktop-volume-icon.c:492
-#, , c-format
+#, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "无法卸载 \"%s\" ："
 
-
 #: ../src/xfdesktop-volume-icon.c:495
-#, 
 msgid "Mount Failed"
 msgstr "挂载失败"
 
 #: ../src/xfdesktop-volume-icon.c:495
-#, 
 msgid "Unmount Failed"
 msgstr "卸载失败"
 
 #: ../src/xfdesktop-volume-icon.c:513
-#, , c-format
+#, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "无法弹出 \"%s\"："
 
@@ -1452,11 +1339,168 @@ msgid "Menu Editor"
 msgstr "菜单编辑器"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
-#, 
 msgid "Xfce 4 Menu Editor"
 msgstr "Xfce 4 菜单编辑器"
 
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
+#, fuzzy
+msgid "Accessories"
+msgstr "访问："
+
+#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
+msgid "Common desktop tools and applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-development.directory.in.h:1
+msgid "Development"
+msgstr "开发"
+
+#: ../modules/menu/directory-data/xfce-development.directory.in.h:2
+msgid "Software development tools"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-education.directory.in.h:1
+msgid "Education"
+msgstr "教育"
+
+#: ../modules/menu/directory-data/xfce-education.directory.in.h:2
+msgid "Educational software"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-games.directory.in.h:1
+#, fuzzy
+msgid "Games"
+msgstr "名称"
+
+#: ../modules/menu/directory-data/xfce-games.directory.in.h:2
+msgid "Games, puzzles, and other fun software"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
+msgid "Graphics"
+msgstr "图形"
+
+#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
+msgid "Graphics creation and manipulation applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
+msgid "Audio and video players and editors"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
+#, fuzzy
+msgid "Multimedia"
+msgstr "多层次"
+
+#: ../modules/menu/directory-data/xfce-network.directory.in.h:1
+msgid "Network"
+msgstr "网络"
+
+#: ../modules/menu/directory-data/xfce-network.directory.in.h:2
+msgid "Network applications and utilities"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-office.directory.in.h:1
+msgid "Office"
+msgstr "办公"
+
+#: ../modules/menu/directory-data/xfce-office.directory.in.h:2
+msgid "Office and productivity applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-other.directory.in.h:1
+msgid "Applications that don't fit into other categories"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-other.directory.in.h:2
+#, fuzzy
+msgid "Other"
+msgstr "/其它"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr "科学"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific applications and tools"
+msgstr "显示最小化应用程序图标"
+
+#: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
+msgid "Desktop and system settings applications"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
+#, fuzzy
+msgid "Settings"
+msgstr "桌面设置"
+
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:2
+msgid "System tools and utilities"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
+msgid "About Xfce"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
+msgid "Information about the Xfce Desktop Environment"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
+msgid "File Manager"
+msgstr "文件管理器"
+
+#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
+msgid "Thunar file manager"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
+#, fuzzy
+msgid "Help"
+msgstr "帮助(_H)"
+
+#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
+msgid "Help using Xfce"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
+msgid "Log Out"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
+#, fuzzy
+msgid "Log out of the Xfce Desktop"
+msgstr "桌面设置管理器"
+
+#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
+#, fuzzy
+msgid "Run Program..."
+msgstr "运行错误"
+
+#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
+#, fuzzy
+msgid "Run a program"
+msgstr "运行错误"
+
+#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
+msgid "Terminal"
+msgstr "终端"
+
+#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
+msgid "Terminal emulator"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
+msgid "Browse the web"
+msgstr ""
+
+#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
+msgid "Web Browser"
+msgstr "网络浏览器"
+
+#: ../panel-plugin/xfce4-menu.desktop.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr "显示包含已安装程序分类目录的菜单"
 
@@ -1469,7 +1513,26 @@ msgid "Settings for the Xfce 4 Desktop Manager"
 msgstr "桌面设置管理器"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
-#, 
 msgid "Xfce 4 Desktop Settings"
 msgstr "xfce4 桌面设置"
 
+#~ msgid "Unable to quit session."
+#~ msgstr "无法退出会话。"
+
+#~ msgid ""
+#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
+#~ "is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr ""
+#~ "退出会话需要xfce的会话管理器(xfce4-session)正在进行，目前没有检测到，请用"
+#~ "其它方式退出xfce"
+
+#~ msgid ""
+#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
+#~ "could not be found: %s"
+#~ msgstr "退出当前会话需要 'xfce4-session-logout' 命令，但是无法找到：%s"
+
+#~ msgid "Edit Properties"
+#~ msgstr "编辑属性"
+
+#~ msgid "Backdrop List"
+#~ msgstr "背景列表"
