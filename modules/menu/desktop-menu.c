@@ -200,7 +200,7 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
     FrapMenuItem *frap_item;
     const gchar *name, *icon_name;
     
-    if (frap_menu_has_layout(frap_menu))
+    if(frap_menu_has_layout(frap_menu))
         items = frap_menu_get_layout_items(frap_menu);
     else {
         items = frap_menu_get_menus(frap_menu);
