@@ -20,6 +20,7 @@ xfce4_desktop_menu_la_CFLAGS = \
 	$(GTHREAD_CFLAGS) \
 	$(LIBX11_CFLAGS) \
 	$(LIBXFCEGUI4_CFLAGS) \
+	$(THUNAR_VFS_CFLAGS) \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DDATADIR=\"$(datadir)\" \
 	-DBINDIR=\"$(bindir)\"
@@ -41,4 +42,5 @@ xfce4_desktop_menu_la_LIBADD = \
 	$(GTHREAD_LIBS) \
 	$(LIBX11_LDFLAGS) \
 	$(LIBX11_LIBS) \
-	$(LIBXFCEGUI4_LIBS)
+	$(LIBXFCEGUI4_LIBS) \
+	$(THUNAR_VFS_LIBS)

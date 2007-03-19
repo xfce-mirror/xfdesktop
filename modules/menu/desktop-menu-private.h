@@ -34,12 +34,13 @@ struct _XfceDesktopMenu {
     
     gboolean use_menu_icons;  /* show menu icons? */
 	
-    gint tim; /* timeout id for regeneration */
     gint idle_id;  /* source id for idled generation */
-	
-    time_t last_menu_gen;  /* last time this menu was generated */
     
     gboolean modified;
+    
+#ifdef HAVE_THUNAR_VFS
+    GList *monitors;
+#endif
 };
 
 /*< private >*/

@@ -62,6 +62,10 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
+#ifdef HAVE_THUNAR_VFS
+#include <thunar-vfs/thunar-vfs.h>
+#endif
+
 #include "xfdesktop-common.h"
 
 #include "desktop-menu-private.h"
@@ -73,17 +77,18 @@ GdkPixbuf *dummy_icon = NULL;
 GdkPixbuf *unknown_icon = NULL;
 gint _xfce_desktop_menu_icon_size = 24;
 static GtkIconTheme *_deskmenu_icon_theme = NULL;
-static GList *timeout_handles = NULL;
-static time_t last_settings_change = 0;
 
+static gboolean _generate_menu(XfceDesktopMenu *desktop_menu,
+                               gboolean deferred);
 static void desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                                    FrapMenu *frap_menu,
-                                   GtkWidget *menu);
+                                   GtkWidget *menu,
+                                   GHashTable *watch_dirs);
 
 static void
 itheme_changed_cb(GtkIconTheme *itheme, gpointer user_data)
 {
-    last_settings_change = time(NULL);
+    _generate_menu((XfceDesktopMenu *)user_data, FALSE);
 }
 
 #if 0
@@ -97,9 +102,96 @@ compare_items(gconstpointer a,
 #endif
 
 static void
+desktop_menu_monitors_destroy(XfceDesktopMenu *desktop_menu)
+{
+#ifdef HAVE_THUNAR_VFS
+    ThunarVfsMonitor *monitor = thunar_vfs_monitor_get_default();
+    GList *l;
+    
+    for(l = desktop_menu->monitors; l; l = l->next) {
+        ThunarVfsMonitorHandle *mhandle = l->data;
+        thunar_vfs_monitor_remove(monitor, mhandle);
+    }
+    g_list_free(desktop_menu->monitors);
+    desktop_menu->monitors = NULL;
+    
+    g_object_unref(G_OBJECT(monitor));
+#endif
+}
+
+#ifdef HAVE_THUNAR_VFS
+static void
+desktop_menu_directory_changed(ThunarVfsMonitor *monitor,
+                               ThunarVfsMonitorHandle *handle,
+                               ThunarVfsMonitorEvent event,
+                               ThunarVfsPath *handle_path,
+                               ThunarVfsPath *event_path,
+                               gpointer user_data)
+{
+    XfceDesktopMenu *desktop_menu = user_data;
+    _generate_menu(desktop_menu, FALSE);
+}
+
+static void
+desktop_menu_monitor_add(gpointer key,
+                         gpointer value,
+                         gpointer user_data)
+{
+    XfceDesktopMenu *desktop_menu = user_data;
+    const gchar *pathstr = key;
+    ThunarVfsPath *path;
+    ThunarVfsMonitor *monitor = thunar_vfs_monitor_get_default();
+    ThunarVfsMonitorHandle *mhandle;
+    
+    path = thunar_vfs_path_new(pathstr, NULL);
+    if(path) {
+        mhandle = thunar_vfs_monitor_add_directory(monitor, path,
+                                                   desktop_menu_directory_changed,
+                                                   desktop_menu);
+        desktop_menu->monitors = g_list_prepend(desktop_menu->monitors,
+                                                mhandle);
+        thunar_vfs_path_unref(path);
+    }
+    
+    g_object_unref(G_OBJECT(monitor));
+}
+#endif
+
+static void
+desktop_menu_monitors_create(XfceDesktopMenu *desktop_menu,
+                            GHashTable *watch_dirs)
+{
+#ifdef HAVE_THUNAR_VFS
+    if(desktop_menu->monitors) {
+        g_warning("Attempt to create new monitors without destroying the old.");
+        desktop_menu_monitors_destroy(desktop_menu);
+    }
+    
+    g_hash_table_foreach(watch_dirs, desktop_menu_monitor_add, desktop_menu);
+#endif
+}
+
+static void
+desktop_menu_watch_dirs_add(GHashTable *watch_dirs,
+                            const gchar *filename)
+{
+    gchar *dirname = g_strdup(filename), *p;
+    
+    p = g_strrstr(dirname, G_DIR_SEPARATOR_S);
+    if(!p) {
+        g_warning("Can't add \"%s\" to watch dirs: no dir separator", dirname);
+        return;
+    }
+    
+    *p = 0;    
+    g_hash_table_replace(watch_dirs, dirname, GINT_TO_POINTER(1));
+}
+
+static void
 desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                        FrapMenu *frap_menu,
-                       GtkWidget *menu)
+                       GtkWidget *menu,
+                       GHashTable *watch_dirs)
 {
     GSList *layout_items, *l;
     GtkWidget *submenu, *mi, *img;
@@ -127,6 +219,8 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             if(frap_directory) {
                 name = frap_menu_directory_get_name(frap_directory);
                 icon_name = frap_menu_directory_get_icon(frap_directory);
+                desktop_menu_watch_dirs_add(watch_dirs,
+                                            frap_menu_directory_get_filename(frap_directory));
             } else {
                 name = frap_menu_get_name(frap_menu);
                 icon_name = NULL;
@@ -143,7 +237,8 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
             
-            desktop_menu_add_items(desktop_menu, frap_submenu, submenu);
+            desktop_menu_add_items(desktop_menu, frap_submenu, submenu,
+                                   watch_dirs);
             
             /* we have to check emptiness down here instead of at the top of the
              * loop because there may be further submenus that are empty */
@@ -169,6 +264,9 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                                              frap_menu_item_supports_startup_notification(frap_item));
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            
+            desktop_menu_watch_dirs_add(watch_dirs,
+                                        frap_menu_item_get_filename(frap_item));
         }
     }
     g_slist_free(layout_items);
@@ -182,8 +280,12 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
     XfceKiosk *kiosk;
     gboolean user_menu;
     GError *error = NULL;
+    GHashTable *watch_dirs;
     
     _xfce_desktop_menu_free_menudata(desktop_menu);
+    
+    watch_dirs = g_hash_table_new_full(g_str_hash, g_str_equal,
+                                       (GDestroyNotify)g_free, NULL);
     
     /* FIXME: do something with this */
     kiosk = xfce_kiosk_new("xfdesktop");
@@ -205,46 +307,34 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
     desktop_menu->menu = gtk_menu_new();
 	gtk_widget_show(desktop_menu->menu);
     
+    desktop_menu_watch_dirs_add(watch_dirs,
+                                frap_menu_get_filename(desktop_menu->frap_menu));
     desktop_menu_add_items(desktop_menu, desktop_menu->frap_menu,
-                           desktop_menu->menu);
+                           desktop_menu->menu, watch_dirs);
+    desktop_menu_monitors_create(desktop_menu, watch_dirs);
     
-    desktop_menu->last_menu_gen = time(NULL);
+    /* really don't need to keep this around */
+    g_object_unref(G_OBJECT(desktop_menu->frap_menu));
+    desktop_menu->frap_menu = NULL;
+    
+   g_hash_table_destroy(watch_dirs);
     
     return ret;
-}
-
-/* g_timeout handler */
-static gboolean
-_menu_check_update(gpointer data)
-{
-    XfceDesktopMenu *desktop_menu = data;
-    gboolean modified = FALSE;
-    
-    TRACE("desktop_menu: %p", desktop_menu);
-    
-    g_return_val_if_fail(desktop_menu != NULL, FALSE);
-    
-    modified = xfce_desktop_menu_need_update_impl(desktop_menu);
-    
-    if(desktop_menu->using_default_menu) {
-		g_free(desktop_menu->filename);
-        desktop_menu->filename = xfce_desktop_get_menufile();
-    }
-    
-    if(modified)
-        _generate_menu(desktop_menu, TRUE);
-    
-    return TRUE;
 }
 
 /*< private >*/
 void
 _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 {
+    desktop_menu_monitors_destroy(desktop_menu);
+    
     if(desktop_menu->menu)
         gtk_widget_destroy(desktop_menu->menu);
+    if(desktop_menu->frap_menu)
+        g_object_unref(G_OBJECT(desktop_menu->frap_menu));
     
     desktop_menu->menu = NULL;
+    desktop_menu->frap_menu = NULL;
 }
 
 void
@@ -290,6 +380,9 @@ xfce_desktop_menu_new_impl(const gchar *menu_file,
         }
     }
     
+    g_signal_connect(G_OBJECT(_deskmenu_icon_theme), "changed",
+                     G_CALLBACK(itheme_changed_cb), desktop_menu);
+    
     return desktop_menu;
 }
 
@@ -309,28 +402,9 @@ xfce_desktop_menu_get_menu_file_impl(XfceDesktopMenu *desktop_menu)
     return desktop_menu->filename;
 }
 
-static gboolean
-desktop_menu_file_need_update(XfceDesktopMenu *desktop_menu)
-{
-    return FALSE;
-}
-
 G_MODULE_EXPORT gboolean
 xfce_desktop_menu_need_update_impl(XfceDesktopMenu *desktop_menu)
 {
-    g_return_val_if_fail(desktop_menu != NULL, FALSE);
-    
-    TRACE("desktop_menu: %p", desktop_menu);
-    
-    if(desktop_menu_file_need_update(desktop_menu)
-       || last_settings_change > desktop_menu->last_menu_gen
-       || !desktop_menu->menu)
-    {
-        TRACE("\n\nreturning TRUE, last_settings_change=%d, last_menu_gen=%d, desktop_menu->menu=%p",
-              (gint)last_settings_change, (gint)desktop_menu->last_menu_gen, desktop_menu->menu);
-        return TRUE;
-    }
-    
     return FALSE;
 }
 
@@ -338,26 +412,13 @@ G_MODULE_EXPORT void
 xfce_desktop_menu_start_autoregen_impl(XfceDesktopMenu *desktop_menu,
                                        guint delay)
 {
-    g_return_if_fail(desktop_menu != NULL && desktop_menu->tim == 0);
-    
-    desktop_menu_file_need_update(desktop_menu);
-    desktop_menu->tim = g_timeout_add(delay*1000, _menu_check_update,
-                                      desktop_menu);
-    timeout_handles = g_list_prepend(timeout_handles,
-                                     GUINT_TO_POINTER(desktop_menu->tim));
+    /* noop */
 }
 
 G_MODULE_EXPORT void
 xfce_desktop_menu_stop_autoregen_impl(XfceDesktopMenu *desktop_menu)
 {
-    g_return_if_fail(desktop_menu != NULL);
-    
-    if(desktop_menu->tim) {
-        g_source_remove(desktop_menu->tim);
-        timeout_handles = g_list_remove(timeout_handles,
-                                        GUINT_TO_POINTER(desktop_menu->tim));
-    }
-    desktop_menu->tim = 0;
+    /* noop */
 }
 
 G_MODULE_EXPORT void
@@ -392,7 +453,9 @@ xfce_desktop_menu_destroy_impl(XfceDesktopMenu *desktop_menu)
         desktop_menu->idle_id = 0;
     }
     
-    xfce_desktop_menu_stop_autoregen_impl(desktop_menu);
+    g_signal_handlers_disconnect_by_func(_deskmenu_icon_theme,
+                                         G_CALLBACK(itheme_changed_cb),
+                                         desktop_menu);
     
     _xfce_desktop_menu_free_menudata(desktop_menu);
     g_free(desktop_menu->filename);
@@ -418,8 +481,6 @@ g_module_check_init(GModule *module)
                                           _xfce_desktop_menu_icon_size);
     
     _deskmenu_icon_theme = gtk_icon_theme_get_default();
-    g_signal_connect(G_OBJECT(_deskmenu_icon_theme), "changed",
-                     G_CALLBACK(itheme_changed_cb), NULL);
     
     return NULL;
 }
