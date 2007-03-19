@@ -193,15 +193,20 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                        GtkWidget *menu,
                        GHashTable *watch_dirs)
 {
-    GSList *layout_items, *l;
+    GSList *items, *l;
     GtkWidget *submenu, *mi, *img;
     FrapMenu *frap_submenu;
     FrapMenuDirectory *frap_directory;
     FrapMenuItem *frap_item;
     const gchar *name, *icon_name;
     
-    layout_items = frap_menu_get_layout_items(frap_menu);
-    for(l = layout_items; l; l = l->next) {
+    if (frap_menu_has_layout(frap_menu))
+        items = frap_menu_get_layout_items(frap_menu);
+    else {
+        items = frap_menu_get_menus(frap_menu);
+        items = g_slist_concat(items, frap_menu_get_items(frap_menu));
+    }
+    for(l = items; l; l = l->next) {
         if(FRAP_IS_MENU(l->data)) {
             frap_submenu = l->data;
             frap_directory = frap_menu_get_directory(frap_submenu);
@@ -222,7 +227,7 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                 desktop_menu_watch_dirs_add(watch_dirs,
                                             frap_menu_directory_get_filename(frap_directory));
             } else {
-                name = frap_menu_get_name(frap_menu);
+                name = frap_menu_get_name(frap_submenu);
                 icon_name = NULL;
             }
             
@@ -269,7 +274,7 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                                         frap_menu_item_get_filename(frap_item));
         }
     }
-    g_slist_free(layout_items);
+    g_slist_free(items);
 }
 
 static gboolean

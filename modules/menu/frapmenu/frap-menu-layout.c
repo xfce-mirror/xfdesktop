@@ -1,4 +1,4 @@
-/* $Id: frap-menu-layout.c 25194 2007-03-18 15:16:39Z jannis $ */
+/* $Id: frap-menu-layout.c 25219 2007-03-19 12:52:26Z jannis $ */
 /* vi:set expandtab sw=2 sts=2: */
 /*-
  * Copyright (c) 2007 Jannis Pohlmann <jannis@xfce.org>
@@ -230,8 +230,6 @@ frap_menu_layout_add_filename (FrapMenuLayout *layout,
   node->type = FRAP_MENU_LAYOUT_NODE_FILENAME;
   node->data.filename = g_strdup (filename);
 
-  g_debug ("frap_menu_layout_add_filename ('%s')", filename);
-
   /* Append node to the list */
   layout->priv->nodes = g_slist_append (layout->priv->nodes, node);
 }
@@ -250,8 +248,6 @@ frap_menu_layout_add_menuname (FrapMenuLayout *layout,
   node->type = FRAP_MENU_LAYOUT_NODE_MENUNAME;
   node->data.menuname = g_strdup (menuname);
 
-  g_debug ("frap_menu_layout_add_menuname ('%s')", menuname);
-
   /* Append node to the list */
   layout->priv->nodes = g_slist_append (layout->priv->nodes, node);
 }
@@ -266,8 +262,6 @@ frap_menu_layout_add_separator (FrapMenuLayout *layout)
   /* Build separator node */
   FrapMenuLayoutNode *node = g_new0 (FrapMenuLayoutNode, 1);
   node->type = FRAP_MENU_LAYOUT_NODE_SEPARATOR;
-
-  g_debug ("frap_menu_layout_add_separator ()");
 
   /* Append node to the list */
   layout->priv->nodes = g_slist_append (layout->priv->nodes, node);
@@ -285,8 +279,6 @@ frap_menu_layout_add_merge (FrapMenuLayout         *layout,
   FrapMenuLayoutNode *node = g_new0 (FrapMenuLayoutNode, 1);
   node->type = FRAP_MENU_LAYOUT_NODE_MERGE;
   node->data.merge_type = type;
-
-  g_debug ("frap_menu_layout_add_merge (%d)", type);
 
   /* Append node to the list */
   layout->priv->nodes = g_slist_append (layout->priv->nodes, node);
