@@ -1,4 +1,4 @@
-/* $Id: frap-menu.c 25219 2007-03-19 12:52:26Z jannis $ */
+/* $Id: frap-menu.c 25221 2007-03-19 13:19:09Z jannis $ */
 /* vi:set expandtab sw=2 sts=2 et: */
 /*-
  * Copyright (c) 2006-2007 Jannis Pohlmann <jannis@xfce.org>
@@ -2904,9 +2904,6 @@ frap_menu_get_layout_items (FrapMenu *menu)
               /* Get all menu items of this menu */
               menu_items = frap_menu_get_items (menu);
 
-              /* Sort menu items */
-              menu_items = g_slist_sort (menu_items, (GCompareFunc) frap_menu_compare_items);
-
               /* Append menu items to the returned item list */
               layout_items_collect (&items, menu_items, menu->priv->layout);
             }
@@ -2914,9 +2911,6 @@ frap_menu_get_layout_items (FrapMenu *menu)
             {
               /* Get all submenus */
               menu_items = frap_menu_get_menus (menu);
-
-              /* Sort menu items */
-              menu_items = g_slist_sort (menu_items, (GCompareFunc) frap_menu_compare_items);
 
               /* Append submenus to the returned item list */
               layout_items_collect (&items, menu_items, menu->priv->layout);
