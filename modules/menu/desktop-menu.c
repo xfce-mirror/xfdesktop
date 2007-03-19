@@ -281,11 +281,9 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
     gboolean user_menu;
     GError *error = NULL;
     GHashTable *watch_dirs;
+    gchar *local_menus_dir;
     
     _xfce_desktop_menu_free_menudata(desktop_menu);
-    
-    watch_dirs = g_hash_table_new_full(g_str_hash, g_str_equal,
-                                       (GDestroyNotify)g_free, NULL);
     
     /* FIXME: do something with this */
     kiosk = xfce_kiosk_new("xfdesktop");
@@ -305,10 +303,22 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
     }
     
     desktop_menu->menu = gtk_menu_new();
-	gtk_widget_show(desktop_menu->menu);
+    gtk_widget_show(desktop_menu->menu);
     
+    watch_dirs = g_hash_table_new_full(g_str_hash, g_str_equal,
+                                       (GDestroyNotify)g_free, NULL);
     desktop_menu_watch_dirs_add(watch_dirs,
                                 frap_menu_get_filename(desktop_menu->frap_menu));
+    
+    if(user_menu) {
+        local_menus_dir = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
+                                                     "menus/", TRUE);
+        if(local_menus_dir) {
+            desktop_menu_watch_dirs_add(watch_dirs, local_menus_dir);
+            g_free(local_menus_dir);
+        }
+    }
+    
     desktop_menu_add_items(desktop_menu, desktop_menu->frap_menu,
                            desktop_menu->menu, watch_dirs);
     desktop_menu_monitors_create(desktop_menu, watch_dirs);
