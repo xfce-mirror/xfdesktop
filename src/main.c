@@ -53,6 +53,10 @@
 #include <dbus/dbus-glib.h>
 #endif
 
+#ifdef HAVE_THUNAR_VFS
+#include <thunar-vfs/thunar-vfs.h>
+#endif
+
 #include "main.h"
 #include "xfdesktop-common.h"
 #include "xfce-backdrop.h"
@@ -331,6 +335,10 @@ main(int argc, char **argv)
         return (already_running ? 0 : 1);
     }
     
+#ifdef HAVE_THUNAR_VFS
+    thunar_vfs_init();
+#endif
+    
     gdpy = gdk_display_get_default();
     mcs_client = settings_init();
     
@@ -403,6 +411,10 @@ main(int argc, char **argv)
     g_free(desktops);
     
     settings_cleanup();
+    
+#ifdef HAVE_THUNAR_VFS
+    thunar_vfs_shutdown();
+#endif
     
     return 0;
 }
