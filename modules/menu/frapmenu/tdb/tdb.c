@@ -80,8 +80,8 @@
 #include <unistd.h>
 #endif
 
-#include "spinlock.h"
-#include "tdb.h"
+#include <tdb/spinlock.h>
+#include <tdb/tdb.h>
 
 #define TDB_MAGIC_FOOD "TDB file\n"
 #define TDB_VERSION (0x26011967 + 6)

@@ -1,4 +1,4 @@
-/* $Id: frap-menu-item.c 24974 2007-02-14 10:49:23Z jannis $ */
+/* $Id: frap-menu-item.c 25197 2007-03-18 17:54:52Z jannis $ */
 /* vi:set expandtab sw=2 sts=2: */
 /*-
  * Copyright (c) 2006-2007 Jannis Pohlmann <jannis@xfce.org>
@@ -421,13 +421,14 @@ frap_menu_item_new (const gchar *filename)
   gboolean      startup_notify;
   gboolean      show;
 
-  g_return_val_if_fail (g_path_is_absolute (filename), NULL);
-  g_return_val_if_fail (g_file_test (filename, G_FILE_TEST_EXISTS), NULL);
+  /* Return NULL if the filename is not an absolute path or if the file does not exists */
+  if (G_UNLIKELY (!g_path_is_absolute (filename) || !g_file_test (filename, G_FILE_TEST_EXISTS)))
+    return NULL;
 
   /* Try to open the .desktop file */
   rc = xfce_rc_simple_open (filename, TRUE);
   if (G_UNLIKELY (rc == NULL))
-    return;
+    return NULL;
 
   /* Use the Desktop Entry section of the desktop file */
   xfce_rc_set_group (rc, "Desktop Entry");

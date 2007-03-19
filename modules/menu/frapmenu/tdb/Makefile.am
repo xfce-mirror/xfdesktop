@@ -2,7 +2,7 @@
 
 INCLUDES =								\
 	$(PLATFORM_CFLAGS)						\
-	-I$(top_srcdir)/libfrap/menu/
+	-I$(top_srcdir)/modules/menu/frapmenu
 
 noinst_LTLIBRARIES =							\
 	libtdb.la

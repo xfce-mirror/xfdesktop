@@ -1,4 +1,4 @@
-# $Id: Makefile.am 24857 2007-02-05 17:23:53Z jannis $ 
+# $Id: Makefile.am 25185 2007-03-18 02:23:12Z jannis $ 
 
 INCLUDES = 								\
 	-DG_LOG_DOMAIN=\"FrapMenu\"					\
@@ -13,6 +13,8 @@ noinst_LTLIBRARIES = 							\
 
 libfrapmenu_la_SOURCES =						\
 	frap-menu.c							\
+	frap-menu-separator.c						\
+	frap-menu-layout.c						\
 	frap-menu-directory.c						\
 	frap-menu-rules.c						\
 	frap-menu-standard-rules.c					\
@@ -31,6 +33,8 @@ libfrapmenu_la_DEPENDENCIES = 						\
 noinst_HEADERS =							\
 	libfrapmenu.h							\
 	frap-menu.h							\
+	frap-menu-separator.h						\
+	frap-menu-layout.h						\
 	frap-menu-directory.h						\
 	frap-menu-rules.h						\
 	frap-menu-standard-rules.h					\
@@ -58,8 +62,5 @@ libfrapmenu_la_LIBADD = 						\
 	$(GTHREAD_LIBS)							\
 	$(LIBXFCE4UTIL_LIBS)						\
 	$(top_builddir)/modules/menu/frapmenu/tdb/libtdb.la
-
-EXTRA_DIST =								\
-	README
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:

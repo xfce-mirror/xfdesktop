@@ -25,7 +25,7 @@
 #ifndef __SPINLOCK_H__
 #define __SPINLOCK_H__
 
-#include "tdb.h"
+#include <tdb/tdb.h>
 
 #ifdef __cplusplus
 extern "C" {

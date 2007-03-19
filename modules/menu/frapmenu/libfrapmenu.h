@@ -1,4 +1,4 @@
-/* $Id: libfrapmenu.h 24502 2007-01-16 10:08:36Z jannis $ */
+/* $Id: libfrapmenu.h 25185 2007-03-18 02:23:12Z jannis $ */
 /* vi:set expandtab sw=2 sts=2: */
 /*-
  * Copyright (c) 2006-2007 Jannis Pohlmann <jannis@xfce.org>
@@ -33,6 +33,8 @@
 #include <frap-menu-and-rules.h>
 #include <frap-menu-not-rules.h>
 #include <frap-menu-directory.h>
+#include <frap-menu-layout.h>
+#include <frap-menu-separator.h>
 #include <frap-menu.h>
 
 #define LIBFRAPMENU_INSIDE_LIBFRAPMENU_H

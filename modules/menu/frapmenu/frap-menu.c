@@ -1,4 +1,4 @@
-/* $Id: frap-menu.c 24974 2007-02-14 10:49:23Z jannis $ */
+/* $Id: frap-menu.c 25195 2007-03-18 16:38:41Z jannis $ */
 /* vi:set expandtab sw=2 sts=2 et: */
 /*-
  * Copyright (c) 2006-2007 Jannis Pohlmann <jannis@xfce.org>
@@ -40,6 +40,8 @@
 #include <frap-menu-item-pool.h>
 #include <frap-menu-item-cache.h>
 #include <frap-menu-move.h>
+#include <frap-menu-layout.h>
+#include <frap-menu-separator.h>
 #include <frap-menu.h>
 
 
@@ -95,6 +97,9 @@ frap_menu_init (const gchar *env)
 
       /* Initialize the directory module */
       _frap_menu_directory_init ();
+
+      /* Creates the menu separator */
+      _frap_menu_separator_init ();
     }
 }
 
@@ -112,6 +117,9 @@ frap_menu_shutdown (void)
     {
       /* Unset desktop environment */
       frap_menu_set_environment (NULL);
+
+      /* Destroys the menu separator */
+      _frap_menu_separator_shutdown ();
 
       /* Shutdown the directory module */
       _frap_menu_directory_shutdown ();
@@ -136,6 +144,7 @@ typedef enum
   FRAP_MENU_PARSE_STATE_RULE,
   FRAP_MENU_PARSE_STATE_END,
   FRAP_MENU_PARSE_STATE_MOVE,
+  FRAP_MENU_PARSE_STATE_LAYOUT,
 
 } FrapMenuParseState;
 
@@ -152,6 +161,7 @@ typedef enum
   FRAP_MENU_PARSE_NODE_TYPE_CATEGORY,
   FRAP_MENU_PARSE_NODE_TYPE_OLD,
   FRAP_MENU_PARSE_NODE_TYPE_NEW,
+  FRAP_MENU_PARSE_NODE_TYPE_MENUNAME,
 
 } FrapMenuParseNodeType;
 
@@ -295,6 +305,8 @@ static void               frap_menu_resolve_item_by_rule                   (cons
                                                                             FrapMenuPair          *data);
 static void               frap_menu_resolve_deleted                        (FrapMenu              *menu);
 static void               frap_menu_resolve_moves                          (FrapMenu              *menu);
+static gint               frap_menu_compare_items                          (gconstpointer         *a,
+                                                                            gconstpointer         *b);
 
 
 
@@ -341,6 +353,9 @@ struct _FrapMenuPrivate
 
   /* Shared menu item cache */
   FrapMenuItemCache *cache;
+
+  /* Menu layout */
+  FrapMenuLayout    *layout;
 
   /* Parse information (used for resolving) */
   FrapMenuParseInfo *parse_info;
@@ -495,6 +510,7 @@ frap_menu_instance_init (FrapMenu *menu)
   menu->priv->rules = NULL;
   menu->priv->moves = NULL;
   menu->priv->pool = frap_menu_item_pool_new ();
+  menu->priv->layout = frap_menu_layout_new ();
 
   /* Take reference on the menu item cache */
   menu->priv->cache = frap_menu_item_cache_get_default ();
@@ -547,6 +563,9 @@ frap_menu_finalize (GObject *object)
 
   /* Free item pool */
   g_object_unref (G_OBJECT (menu->priv->pool));
+
+  /* Free menu layout */
+  g_object_unref (G_OBJECT (menu->priv->layout));
 
   /* Release item cache reference */
   g_object_unref (G_OBJECT (menu->priv->cache));
@@ -711,7 +730,7 @@ frap_menu_new (const gchar *filename,
 {
   FrapMenu *menu;
 
-  g_return_val_if_fail (g_path_is_absolute (filename), NULL);
+  g_return_val_if_fail (filename != NULL && g_path_is_absolute (filename), NULL);
 
   /* Create new menu */
   menu = g_object_new (FRAP_TYPE_MENU, "filename", filename, NULL);
@@ -1216,6 +1235,11 @@ frap_menu_start_element (GMarkupParseContext *context,
           /* Set parse state */
           menu_context->state = FRAP_MENU_PARSE_STATE_MOVE;
         }
+      else if (g_utf8_collate (element_name, "Layout") == 0)
+        {
+          /* Set parse state */
+          menu_context->state = FRAP_MENU_PARSE_STATE_LAYOUT;
+        }
       
       break;
 
@@ -1289,6 +1313,60 @@ frap_menu_start_element (GMarkupParseContext *context,
         menu_context->node_type = FRAP_MENU_PARSE_NODE_TYPE_NEW;
 
       break;
+
+    case FRAP_MENU_PARSE_STATE_LAYOUT:
+      /* Fetch current menu from stack */
+      current_menu = g_list_first (menu_context->menu_stack)->data;
+
+      if (g_utf8_collate (element_name, "Filename") == 0)
+        {
+          /* Set node type */
+          menu_context->node_type = FRAP_MENU_PARSE_NODE_TYPE_FILENAME;
+        }
+      else if (g_utf8_collate (element_name, "Menuname") == 0)
+        {
+          /* TODO Parse attributes */
+          
+          /* Set node type */
+          menu_context->node_type = FRAP_MENU_PARSE_NODE_TYPE_MENUNAME;
+        }
+      else if (g_utf8_collate (element_name, "Separator") == 0)
+        {
+          /* Add separator to the menu layout */
+          frap_menu_layout_add_separator (current_menu->priv->layout);
+        }
+      else if (g_utf8_collate (element_name, "Merge") == 0)
+        {
+          FrapMenuLayoutMergeType type = FRAP_MENU_LAYOUT_MERGE_ALL;
+
+          gboolean type_found = FALSE;
+          gint     i;
+
+          /* Find 'type' attribute */
+          for (i = 0; i < g_strv_length (attribute_names); ++i) 
+            {
+              if (g_utf8_collate (attribute_names[i], "type") == 0)
+                {
+                  /* Determine merge type */
+                  if (g_utf8_collate (attribute_values[i], "menus") == 0)
+                    type = FRAP_MENU_LAYOUT_MERGE_MENUS;
+                  else if (g_utf8_collate (attribute_values[i], "files") == 0)
+                    type = FRAP_MENU_LAYOUT_MERGE_FILES;
+                  else if (g_utf8_collate (attribute_values[i], "all") == 0)
+                    type = FRAP_MENU_LAYOUT_MERGE_ALL;
+                  else 
+                    g_warning ("Unsupported layout merge type <Merge type='%s'/> detected. Using type 'all'.", attribute_values[i]);
+
+                  type_found = TRUE;
+                }
+            }
+
+          if (G_UNLIKELY (!type_found))
+            g_warning ("Type attribute missing for <Merge> element. Using type 'all'.");
+
+          /* Add merge to the menu layout */
+          frap_menu_layout_add_merge (current_menu->priv->layout, type);
+        }
     }
 }
 
@@ -1370,6 +1448,16 @@ frap_menu_end_element (GMarkupParseContext *context,
       else if (g_utf8_collate (element_name, "New") == 0)
         menu_context->move = NULL;
       break;
+
+    case FRAP_MENU_PARSE_STATE_LAYOUT:
+      if (g_utf8_collate (element_name, "Layout") == 0)
+        {
+          if (g_list_length (menu_context->menu_stack) > 1)
+            menu_context->state = FRAP_MENU_PARSE_STATE_MENU;
+          else
+            menu_context->state = FRAP_MENU_PARSE_STATE_ROOT;
+        }
+      break;
     }
 }
 
@@ -1416,8 +1504,13 @@ frap_menu_characters (GMarkupParseContext *context,
       break;
 
     case FRAP_MENU_PARSE_NODE_TYPE_FILENAME:
-      if (G_LIKELY (current_rule != NULL))
-        frap_menu_rules_add_filename (current_rule, content);
+      if (menu_context->state == FRAP_MENU_PARSE_STATE_RULE) 
+        {
+          if (G_LIKELY (current_rule != NULL))
+            frap_menu_rules_add_filename (current_rule, content);
+        }
+      else if (menu_context->state == FRAP_MENU_PARSE_STATE_LAYOUT)
+        frap_menu_layout_add_filename (current_menu->priv->layout, content);
       break;
 
     case FRAP_MENU_PARSE_NODE_TYPE_CATEGORY:
@@ -1434,6 +1527,10 @@ frap_menu_characters (GMarkupParseContext *context,
         frap_menu_move_set_new (menu_context->move, content);
       else
         g_warning ("Ignoring <New>%s</New>", content);
+      break;
+
+    case FRAP_MENU_PARSE_NODE_TYPE_MENUNAME:
+      frap_menu_layout_add_menuname (current_menu->priv->layout, content);
       break;
     }
 
@@ -1790,7 +1887,7 @@ GSList*
 frap_menu_get_menus (FrapMenu *menu)
 {
   g_return_val_if_fail (FRAP_IS_MENU (menu), NULL);
-  return menu->priv->submenus;
+  return g_slist_copy (menu->priv->submenus);
 }
 
 
@@ -2473,6 +2570,53 @@ frap_menu_resolve_deleted (FrapMenu *menu)
 static void
 frap_menu_resolve_moves (FrapMenu *menu)
 {
+  FrapMenuMove *move;
+  FrapMenu     *source;
+  FrapMenu     *destination;
+  GSList       *iter;
+
+  g_return_if_fail (FRAP_IS_MENU (menu));
+
+  /* Recurse into the submenus which need to perform move actions first */
+  for (iter = menu->priv->submenus; iter != NULL; iter = g_slist_next (iter))
+    {
+      source = FRAP_MENU (iter->data);
+
+      /* Resolve moves of the child menu */
+      frap_menu_resolve_moves (source);
+    }
+
+  /* Iterate over move instructions */
+  for (iter = menu->priv->moves; iter != NULL; iter = g_slist_next (iter))
+    {
+      move = FRAP_MENU_MOVE (iter->data);
+      
+      g_critical ("Moving %s to %s ...", frap_menu_move_get_old (move), frap_menu_move_get_new (move));
+
+      /* Determine submenu with the old name */
+      source = frap_menu_get_menu_with_name (menu, frap_menu_move_get_old (move));
+
+      g_critical ("source = 0x%x", source);
+
+      /* Skip if there is no such submenu */
+      if (G_LIKELY (source == NULL))
+        continue;
+
+      /* Determine destination submenu */
+      destination = frap_menu_get_menu_with_name (menu, frap_menu_move_get_new (move));
+
+      g_critical ("destination = 0x%x", destination);
+
+      /* If destination does not exist, simply reset the name of the source menu */
+      if (G_LIKELY (destination == NULL))
+        frap_menu_set_name (source, frap_menu_move_get_new (move));
+      else
+        {
+          /* TODO: See section "Merging" in the menu specification. */
+        }
+    }
+
+#if 0
   FrapMenu     *submenu;
   FrapMenu     *target_submenu;
   FrapMenuMove *move;
@@ -2532,6 +2676,7 @@ frap_menu_resolve_moves (FrapMenu *menu)
             }
         }
     }
+#endif
 }
 
 
@@ -2612,8 +2757,185 @@ frap_menu_get_items (FrapMenu *menu)
 
   g_return_val_if_fail (FRAP_IS_MENU (menu), NULL);
 
-  /* collect the items in the pool */
+  /* Collect the items in the pool */
   frap_menu_item_pool_foreach (menu->priv->pool, (GHFunc) items_collect, &items);
 
   return items;
+}
+
+
+
+static void
+layout_items_collect (GSList        **dest_list,
+                      GSList         *src_list,
+                      FrapMenuLayout *layout)
+{
+  FrapMenuItem *item;
+  FrapMenu     *menu;
+  GSList       *iter;
+
+  for (iter = src_list; iter != NULL; iter = g_slist_next (iter))
+    {
+      if (FRAP_IS_MENU (iter->data))
+        {
+          menu = FRAP_MENU (iter->data);
+
+          if (G_LIKELY (!frap_menu_layout_get_menuname_used (layout, frap_menu_get_name (menu))))
+            *dest_list = g_slist_append (*dest_list, iter->data);
+        }
+      else if (FRAP_IS_MENU_ITEM (iter->data))
+        {
+          item = FRAP_MENU_ITEM (iter->data);
+
+          if (G_LIKELY (!frap_menu_layout_get_filename_used (layout, frap_menu_item_get_desktop_id (item))))
+            *dest_list = g_slist_append (*dest_list, iter->data);
+        }
+    }
+}
+
+
+GSList*
+frap_menu_get_layout_items (FrapMenu *menu)
+{
+  GSList *items = NULL;
+  GSList *menu_items;
+  GSList *nodes;
+  GSList *iter;
+
+  g_return_val_if_fail (FRAP_IS_MENU (menu), NULL);
+
+  /* Fetch layout nodes */
+  nodes = frap_menu_layout_get_nodes (menu->priv->layout);
+
+  /* Only process layout if there are any layout information at all */
+  if (G_UNLIKELY (nodes != NULL && g_slist_length (nodes) != 0))
+    {
+      g_debug ("Menu has layout");
+
+      /* Process layout nodes in order */
+      for (iter = nodes; iter != NULL; iter = g_slist_next (iter))
+        {
+          FrapMenuLayoutNode     *node = (FrapMenuLayoutNode *)iter->data;
+          FrapMenuLayoutNodeType  type;
+          FrapMenuLayoutMergeType merge_type;
+          FrapMenuItem           *item;
+          FrapMenu               *submenu;
+          FrapMenuSeparator      *separator;
+
+          /* Determine layout node type */
+          type = frap_menu_layout_node_get_type (node);
+
+          if (type == FRAP_MENU_LAYOUT_NODE_FILENAME)
+            {
+              /* Search for desktop ID in the item pool */
+              item = frap_menu_item_pool_lookup (menu->priv->pool, frap_menu_layout_node_get_filename (node));
+
+              /* If the item with this desktop ID is included in the menu, append it to the list */
+              if (G_LIKELY (item != NULL))
+                items = g_slist_append (items, item);
+            }
+          if (type == FRAP_MENU_LAYOUT_NODE_MENUNAME)
+            {
+              /* Search submenu with this name */
+              submenu = frap_menu_get_menu_with_name (menu, frap_menu_layout_node_get_menuname (node));
+
+              /* If there is such a menu, append it to the list */
+              if (G_LIKELY (submenu != NULL))
+                items = g_slist_append (items, submenu);
+            }
+          else if (type == FRAP_MENU_LAYOUT_NODE_SEPARATOR)
+            {
+              /* Append separator to the list */
+              items = g_slist_append (items, frap_menu_separator_get_default ());
+            }
+          else if (type == FRAP_MENU_LAYOUT_NODE_MERGE)
+            {
+              /* Determine merge type */
+              merge_type = frap_menu_layout_node_get_merge_type (node);
+
+              if (merge_type == FRAP_MENU_LAYOUT_MERGE_ALL)
+                {
+                  /* Get all menu items of this menu */
+                  menu_items = frap_menu_get_items (menu);
+                  
+                  /* Append submenus */
+                  menu_items = g_slist_concat (menu_items, frap_menu_get_menus (menu));
+
+                  /* Sort menu items */
+                  menu_items = g_slist_sort (menu_items, (GCompareFunc) frap_menu_compare_items);
+
+                  /* Append menu items to the returned item list */
+                  layout_items_collect (&items, menu_items, menu->priv->layout);
+                }
+              else if (merge_type == FRAP_MENU_LAYOUT_MERGE_FILES)
+                {
+                  /* Get all menu items of this menu */
+                  menu_items = frap_menu_get_items (menu);
+
+                  /* Sort menu items */
+                  menu_items = g_slist_sort (menu_items, (GCompareFunc) frap_menu_compare_items);
+
+                  /* Append menu items to the returned item list */
+                  layout_items_collect (&items, menu_items, menu->priv->layout);
+                }
+              else if (merge_type == FRAP_MENU_LAYOUT_MERGE_MENUS)
+                {
+                  /* Get all submenus */
+                  menu_items = frap_menu_get_menus (menu);
+
+                  /* Sort menu items */
+                  menu_items = g_slist_sort (menu_items, (GCompareFunc) frap_menu_compare_items);
+
+                  /* Append submenus to the returned item list */
+                  layout_items_collect (&items, menu_items, menu->priv->layout);
+                }
+            }
+        }
+    }
+  else
+    {
+      /* No layout used. Fetch items, menus and sort them */
+      items = frap_menu_get_items (menu);
+      items = g_slist_concat (items, frap_menu_get_menus (menu));
+      items = g_slist_sort (items, (GCompareFunc) frap_menu_compare_items);
+    }
+
+  g_debug ("%s: %d layout items", frap_menu_get_name (menu), g_slist_length (items));
+
+  return items;
+}
+
+
+
+static gint
+frap_menu_compare_items (gconstpointer *a,
+                         gconstpointer *b)
+{
+  const gchar *name1;
+  const gchar *name2;
+
+  /* Determining display name of a */
+  if (FRAP_IS_MENU (a))
+    {
+      if (G_LIKELY (frap_menu_get_directory (FRAP_MENU (a)) != NULL))
+        name1 = frap_menu_directory_get_name (frap_menu_get_directory (FRAP_MENU (a)));
+      else
+        name1 = frap_menu_get_name (FRAP_MENU (a));
+    }
+  else
+    name1 = frap_menu_item_get_name (FRAP_MENU_ITEM (a));
+
+  /* Determining display name of b */
+  if (FRAP_IS_MENU (b))
+    {
+      if (G_LIKELY (frap_menu_get_directory (FRAP_MENU (b)) != NULL))
+        name2 = frap_menu_directory_get_name (frap_menu_get_directory (FRAP_MENU (b)));
+      else
+        name2 = frap_menu_get_name (FRAP_MENU (b));
+    }
+  else
+    name2 = frap_menu_item_get_name (FRAP_MENU_ITEM (b));
+
+  /* Compare display names and return the result */
+  return g_utf8_collate (name1, name2);
 }

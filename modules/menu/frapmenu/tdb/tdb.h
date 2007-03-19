@@ -25,7 +25,7 @@
 #ifndef __TDB_H__
 #define __TDB_H__
 
-#include "tdbconfig.h"
+#include <tdb/tdbconfig.h>
 
 #include <signal.h>
 #include <unistd.h>

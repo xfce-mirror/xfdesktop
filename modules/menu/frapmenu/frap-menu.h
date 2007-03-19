@@ -1,4 +1,4 @@
-/* $Id: frap-menu.h 24502 2007-01-16 10:08:36Z jannis $ */
+/* $Id: frap-menu.h 25185 2007-03-18 02:23:12Z jannis $ */
 /* vi:set expandtab sw=2 sts=2: */
 /*-
  * Copyright (c) 2006-2007 Jannis Pohlmann <jannis@xfce.org>
@@ -77,6 +77,7 @@ FrapMenu          *frap_menu_get_menu_with_name    (FrapMenu          *menu,
 FrapMenu          *frap_menu_get_parent            (FrapMenu          *menu);
 FrapMenuItemPool  *frap_menu_get_item_pool         (FrapMenu          *menu);
 GSList            *frap_menu_get_items             (FrapMenu          *menu);
+GSList            *frap_menu_get_layout_items      (FrapMenu          *menu);
 
 G_END_DECLS;
 

@@ -56,7 +56,7 @@
 #include <unistd.h>
 #endif
 
-#include "spinlock.h"
+#include <tdb/spinlock.h>
 
 #ifdef USE_SPINLOCKS
 

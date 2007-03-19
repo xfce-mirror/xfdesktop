@@ -68,7 +68,7 @@
 #include <unistd.h>
 #endif
 
-#include "tdb.h"
+#include <tdb/tdb.h>
 
 /* a tdb tool for manipulating a tdb database */
 
