@@ -285,32 +285,41 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
     
     _xfce_desktop_menu_free_menudata(desktop_menu);
     
+    watch_dirs = g_hash_table_new_full(g_str_hash, g_str_equal,
+                                       (GDestroyNotify)g_free, NULL);
+    
     /* FIXME: do something with this */
     kiosk = xfce_kiosk_new("xfdesktop");
     user_menu = xfce_kiosk_query(kiosk, "UserMenu");
     xfce_kiosk_free(kiosk);
     
-    if(!desktop_menu->filename)
-        desktop_menu->filename = xfce_desktop_get_menufile();
-    
     DBG("menu file name is %s", desktop_menu->filename);
-    desktop_menu->frap_menu = frap_menu_new(desktop_menu->filename, &error);
-    if(!desktop_menu->frap_menu) {
-        g_critical("Unable to create FrapMenu from file '%s': %s",
-                   desktop_menu->filename, error->message);
-        g_error_free(error);
-        return FALSE;
+    
+    if(g_file_test(desktop_menu->filename, G_FILE_TEST_EXISTS)) {
+        desktop_menu->frap_menu = frap_menu_new(desktop_menu->filename, &error);
+        if(!desktop_menu->frap_menu) {
+            g_critical("Unable to create FrapMenu from file '%s': %s",
+                       desktop_menu->filename, error->message);
+            g_error_free(error);
+            return FALSE;
+        }
+    
+        desktop_menu->menu = gtk_menu_new();
+        gtk_widget_show(desktop_menu->menu);
+    
+        desktop_menu_watch_dirs_add(watch_dirs,
+                                    frap_menu_get_filename(desktop_menu->frap_menu));
+    
+    
+        desktop_menu_add_items(desktop_menu, desktop_menu->frap_menu,
+                               desktop_menu->menu, watch_dirs);
+        
+        /* really don't need to keep this around */
+        g_object_unref(G_OBJECT(desktop_menu->frap_menu));
+        desktop_menu->frap_menu = NULL;
     }
     
-    desktop_menu->menu = gtk_menu_new();
-    gtk_widget_show(desktop_menu->menu);
-    
-    watch_dirs = g_hash_table_new_full(g_str_hash, g_str_equal,
-                                       (GDestroyNotify)g_free, NULL);
-    desktop_menu_watch_dirs_add(watch_dirs,
-                                frap_menu_get_filename(desktop_menu->frap_menu));
-    
-    if(user_menu) {
+    if(user_menu && desktop_menu->using_default_menu) {
         local_menus_dir = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
                                                      "menus/", TRUE);
         if(local_menus_dir) {
@@ -319,15 +328,9 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
         }
     }
     
-    desktop_menu_add_items(desktop_menu, desktop_menu->frap_menu,
-                           desktop_menu->menu, watch_dirs);
     desktop_menu_monitors_create(desktop_menu, watch_dirs);
     
-    /* really don't need to keep this around */
-    g_object_unref(G_OBJECT(desktop_menu->frap_menu));
-    desktop_menu->frap_menu = NULL;
-    
-   g_hash_table_destroy(watch_dirs);
+    g_hash_table_destroy(watch_dirs);
     
     return ret;
 }
