@@ -9,6 +9,7 @@ directory_in_files = \
 	xfce-network.directory.in \
 	xfce-office.directory.in \
 	xfce-other.directory.in \
+	xfce-screensavers.directory.in \
 	xfce-settings.directory.in \
 	xfce-system.directory.in
 directory_DATA = $(directory_in_files:.directory.in=.directory)
