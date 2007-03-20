@@ -1,4 +1,4 @@
-# $Id: Makefile.am 25185 2007-03-18 02:23:12Z jannis $ 
+# $Id: Makefile.am 25226 2007-03-19 16:38:06Z jannis $ 
 
 INCLUDES = 								\
 	-DG_LOG_DOMAIN=\"FrapMenu\"					\
@@ -62,5 +62,11 @@ libfrapmenu_la_LIBADD = 						\
 	$(GTHREAD_LIBS)							\
 	$(LIBXFCE4UTIL_LIBS)						\
 	$(top_builddir)/modules/menu/frapmenu/tdb/libtdb.la
+
+
+DISTCHECK_CONFIGURE_FLAGS =						\
+	--enable-gtk-doc						\
+	--enable-xml2po							\
+	--enable-xsltproc
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:

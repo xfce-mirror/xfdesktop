@@ -1,4 +1,4 @@
-/* $Id: frap-menu.c 25221 2007-03-19 13:19:09Z jannis $ */
+/* $Id: frap-menu.c 25233 2007-03-19 23:16:11Z jannis $ */
 /* vi:set expandtab sw=2 sts=2 et: */
 /*-
  * Copyright (c) 2006-2007 Jannis Pohlmann <jannis@xfce.org>
@@ -82,12 +82,12 @@ frap_menu_init (const gchar *env)
 {
   if (g_atomic_int_exchange_and_add (&frap_menu_ref_count, 1) == 0)
     {
-      /* Initialize the GObject type system */
-      g_type_init ();
-
       /* Initialize the GThread system */
       if (!g_thread_supported ())
         g_thread_init (NULL);
+
+      /* Initialize the GObject type system */
+      g_type_init ();
 
       /* Set desktop environment */
       frap_menu_set_environment (env);
@@ -657,15 +657,18 @@ frap_menu_set_property (GObject      *object,
  * frap_menu_get_root:
  * @error : Return location for errors or %NULL.
  *
- * Returns a pointer to the system root menu. If the root menu is not in memory
- * already, it is loaded from disk, which may take some time as it involves
+ * Loads the system's root menu. This may take some time as it involves
  * parsing and merging a lot of files. So if you call this function from a GUI
  * program it should be done in a way that won't block the user interface (e.g.
  * by using a worker thread).
- * The returned pointer needs to be unref'd when it is not used anymore.
+ * The returned pointer needs to be released using
+ * <informalexample><programlisting>
+ * g_object_unref (menu);
+ * </programlisting></informalexample>
+ * when no longer needed.
  *
- * Return value: Pointer to the system root menu. This pointer needs to be
- *               unref'd later.
+ * Return value: The system root menu. The menu has to be released when no 
+ *               longer needed.
  **/
 FrapMenu*
 frap_menu_get_root (GError **error)
@@ -720,7 +723,11 @@ frap_menu_get_root (GError **error)
  * may involve parsing and merging of a lot of other files. So if you call this
  * function from a GUI program it should be done in a way that won't block the
  * user interface (e.g. by using a worker thread).
- * The returned pointer needs to be unref'd when it is not used anymore.
+ * The returned pointer needs to be released using
+ * <informalexample><programlisting>
+ * g_object_unref (menu);
+ * </programlisting></informalexample>
+ * when it is not used anymore.
  *
  * Return value: Menu structure found in @filename.
  **/
@@ -747,6 +754,14 @@ frap_menu_new (const gchar *filename,
 
 
 
+/**
+ * frap_menu_get_filename:
+ * @menu : a #FrapMenu.
+ *
+ * Returns the filename from which @menu was loaded.
+ * 
+ * Return value: filename from which @menu was loaded.
+ */
 const gchar*
 frap_menu_get_filename (FrapMenu *menu)
 {
@@ -756,6 +771,14 @@ frap_menu_get_filename (FrapMenu *menu)
 
 
 
+/**
+ * frap_menu_set_filename:
+ * @menu     : a #FrapMenu.
+ * @filename : new filename of the menu.
+ *
+ * Sets the menu filename. It should not be necessary to call this
+ * function anywhere - it's only of internal use.
+ */
 void
 frap_menu_set_filename (FrapMenu *menu, const gchar *filename)
 {
@@ -780,6 +803,17 @@ frap_menu_set_filename (FrapMenu *menu, const gchar *filename)
 
 
 
+/**
+ * frap_menu_get_name:
+ * @menu : a #FrapMenu.
+ *
+ * Returns the name of @menu. In most cases this will be the 
+ * contents of the &lt;Menu&gt; element. It may be useful for providing
+ * a display name for the menu if it does not have a menu
+ * directory.
+ *
+ * Return value: name of @menu.
+ */
 const gchar*
 frap_menu_get_name (FrapMenu *menu)
 {
@@ -789,6 +823,15 @@ frap_menu_get_name (FrapMenu *menu)
 
 
 
+/**
+ * frap_menu_set_name:
+ * @menu : a #FrapMenu
+ * @name : new name of the menu.
+ *
+ * Sets the name of @menu. This might come in handy if you want
+ * to replace certain menu names with your own names. However, in
+ * most cases this function won't be useful.
+ */
 void
 frap_menu_set_name (FrapMenu    *menu, 
                     const gchar *name)
@@ -815,6 +858,17 @@ frap_menu_set_name (FrapMenu    *menu,
 
 
 
+/**
+ * frap_menu_get_directory:
+ * @menu : a #FrapMenu.
+ *
+ * Returns the #FrapMenuDirectory of @menu or %NULL. The menu
+ * directory may contain a lot of useful information about 
+ * the menu, like display name, desktop environments it should
+ * show up in etc.
+ *
+ * Return value: #FrapMenuDirectory of @menu or %NULL.
+ */
 FrapMenuDirectory*
 frap_menu_get_directory (FrapMenu *menu)
 {
@@ -824,6 +878,16 @@ frap_menu_get_directory (FrapMenu *menu)
 
 
 
+/**
+ * frap_menu_set_directory:
+ * @menu      : a #FrapMenu.
+ * @directory : a #FrapMenuDirectory.
+ *
+ * Replaces the #FrapMenuDirectory of @menu with @directory. This
+ * may be useful if @menu has no directory or if you want to 
+ * define your own directory for menus. Usually, there's no need
+ * to call this function.
+ */
 void
 frap_menu_set_directory (FrapMenu          *menu,
                          FrapMenuDirectory *directory)
@@ -855,6 +919,16 @@ frap_menu_set_directory (FrapMenu          *menu,
 
 
 
+/**
+ * frap_menu_get_only_unallocated:
+ * @menu : a #FrapMenu.
+ *
+ * Returns whether @menu only contains #FrapMenuItem<!---->s which
+ * are not already included in other menus.
+ *
+ * Return value: Whether the menu contains only items not used already
+ *               included in other menus.
+ */
 gboolean
 frap_menu_get_only_unallocated (FrapMenu *menu)
 {
@@ -864,6 +938,15 @@ frap_menu_get_only_unallocated (FrapMenu *menu)
 
 
 
+/**
+ * frap_menu_set_only_unallocated:
+ * @menu             : a #FrapMenu.
+ * @only_unallocated : Whether to include only unused 
+ *                     #FrapMenuItem<!---->s
+ *
+ * Since all items are resolved directly after parsing the
+ * menu file, this won't be useful other than internally.
+ */
 void
 frap_menu_set_only_unallocated (FrapMenu *menu,
                                 gboolean  only_unallocated)
@@ -1077,7 +1160,7 @@ frap_menu_load (FrapMenu *menu, GError **error)
   /* Define menu parse context */
   menu_context.root_menu = menu;
   menu_context.state = FRAP_MENU_PARSE_STATE_START;
-  menu_context.state = FRAP_MENU_PARSE_NODE_TYPE_NONE;
+  menu_context.node_type = FRAP_MENU_PARSE_NODE_TYPE_NONE;
   menu_context.menu_stack = NULL;
   menu_context.rule_stack = NULL;
   menu_context.move = NULL;
@@ -1223,6 +1306,9 @@ frap_menu_start_element (GMarkupParseContext *context,
           /* Add menu as submenu to the current menu */
           frap_menu_add_menu (current_menu, menu); 
 
+          /* Menu is now owned by the current menu, so we can release it */
+          g_object_unref (menu);
+
           /* Set parse state */
           menu_context->state = FRAP_MENU_PARSE_STATE_MENU;
 
@@ -1267,6 +1353,9 @@ frap_menu_start_element (GMarkupParseContext *context,
           /* Add rule to the current rule */
           frap_menu_rules_add_rules (current_rule, FRAP_MENU_RULES (rule));
 
+          /* Rule is now owned by current rule, so we can release it */
+          g_object_unref (rule);
+
           /* Put rule to the stack */
           menu_context->rule_stack = g_list_prepend (menu_context->rule_stack, rule);
         }
@@ -1278,6 +1367,9 @@ frap_menu_start_element (GMarkupParseContext *context,
           /* Add rule to the current rule */
           frap_menu_rules_add_rules (current_rule, FRAP_MENU_RULES (rule));
 
+          /* Rule is now owned by current rule, so we can release it */
+          g_object_unref (rule);
+
           /* Put rule to the stack */
           menu_context->rule_stack = g_list_prepend (menu_context->rule_stack, rule);
         }
@@ -1288,6 +1380,9 @@ frap_menu_start_element (GMarkupParseContext *context,
 
           /* Add rule to the current rule */
           frap_menu_rules_add_rules (current_rule, FRAP_MENU_RULES (rule));
+
+          /* Rule is now owned by current rule, so we can release it */
+          g_object_unref (rule);
 
           /* Put rule to the stack */
           menu_context->rule_stack = g_list_prepend (menu_context->rule_stack, rule);
@@ -2271,14 +2366,14 @@ frap_menu_resolve_directory (FrapMenu *menu)
   if (G_LIKELY (directory != NULL)) 
     {
       /* Set the directory (assuming that we found at least one valid name) */
-      frap_menu_set_directory (menu, directory);
+      menu->priv->directory = directory;
     }
 
   /* Free reverse list copy */
   g_slist_free (directory_names);
 
   /* ... and all submenus (recursively) */
-  for (iter = frap_menu_get_menus (menu); iter != NULL; iter = g_slist_next (iter))
+  for (iter = menu->priv->submenus; iter != NULL; iter = g_slist_next (iter))
     frap_menu_resolve_directory (iter->data);
 }
 
@@ -2303,7 +2398,7 @@ frap_menu_lookup_directory (FrapMenu    *menu,
   for (current = menu; current != NULL; current = frap_menu_get_parent (current))
     {
       /* Allocate a reverse copy of the menu's directory dirs */
-      dirs = g_slist_reverse (g_slist_copy (frap_menu_get_directory_dirs (current)));
+      dirs = g_slist_reverse (frap_menu_get_directory_dirs (current));
 
       /* Iterate through all directories */
       for (iter = dirs; iter != NULL; iter = g_slist_next (iter))
@@ -2356,13 +2451,20 @@ frap_menu_lookup_directory (FrapMenu    *menu,
 static void
 frap_menu_collect_files (FrapMenu *menu)
 {
+  GSList *app_dirs;
   GSList *iter;
 
   g_return_if_fail (FRAP_IS_MENU (menu));
 
+  /* Fetch all application directories */
+  app_dirs = g_slist_reverse (frap_menu_get_app_dirs (menu));
+
   /* Collect desktop entry filenames */
-  for (iter = g_slist_reverse (frap_menu_get_app_dirs (menu)); iter != NULL; iter = g_slist_next (iter))
+  for (iter = app_dirs; iter != NULL; iter = g_slist_next (iter))
     frap_menu_collect_files_from_path (menu, iter->data, NULL);
+
+  /* Free directory list */
+  g_slist_free (app_dirs);
 
   /* Collect filenames for submenus */
   for (iter = menu->priv->submenus; iter != NULL; iter = g_slist_next (iter))
@@ -2440,6 +2542,9 @@ frap_menu_collect_files_from_path (FrapMenu    *menu,
       /* Free absolute path */
       g_free (absolute_path);
     }
+
+  /* Close directory handle */
+  g_dir_close (dir);
 }
 
 

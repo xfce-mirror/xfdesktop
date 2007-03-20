@@ -1,4 +1,4 @@
-/* $Id: frap-menu-item-cache.c 24869 2007-02-06 19:50:55Z jannis $ */
+/* $Id: frap-menu-item-cache.c 25232 2007-03-19 22:03:09Z jannis $ */
 /* vi:set expandtab sw=2 sts=2 et: */
 /*-
  * Copyright (c) 2006-2007 Jannis Pohlmann <jannis@xfce.org>
@@ -300,7 +300,9 @@ frap_menu_item_cache_lookup (FrapMenuItemCache *cache,
 
           /* Grab a reference on the item, but don't increase the allocation
            * counter */
+#if 0
           g_object_ref (G_OBJECT (item));
+#endif
 
           /* Release item cache lock */
           g_mutex_unlock (cache->priv->lock);
@@ -324,7 +326,9 @@ frap_menu_item_cache_lookup (FrapMenuItemCache *cache,
       g_hash_table_replace (cache->priv->items, g_strdup (filename), item);
 
       /* Grab a reference on it but don't increase the allocation counter */
-      g_object_ref (G_OBJECT (item));
+#if 0
+      g_object_ref (G_OBJECT (item)); 
+#endif
     }
 
   /* Release item cache lock */
