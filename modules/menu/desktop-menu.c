@@ -300,6 +300,10 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
     
     DBG("menu file name is %s", desktop_menu->filename);
     
+    /* this is kinda lame, but frapmenu currently caches too much */
+    frap_menu_shutdown();
+    frap_menu_init("XFCE");
+    
     if(g_file_test(desktop_menu->filename, G_FILE_TEST_EXISTS)) {
         desktop_menu->frap_menu = frap_menu_new(desktop_menu->filename, &error);
         if(!desktop_menu->frap_menu) {
@@ -487,6 +491,8 @@ g_module_check_init(GModule *module)
     
 	/* libfrapmenu registers gobject types, so we can't be removed */
 	g_module_make_resident(module);
+	
+	frap_menu_init("XFCE");
 	
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
     _xfce_desktop_menu_icon_size = w;
