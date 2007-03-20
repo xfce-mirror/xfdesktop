@@ -111,21 +111,10 @@
     </Menu>
     
     <Menu>
-        <Name>Science</Name>
-        <Directory>xfce-science.directory</Directory>
-        <Include>
-            <Category>Science</Category>
-        </Include>
-    </Menu>
-    
-    <Menu>
         <Name>System</Name>
         <Directory>xfce-system.directory</Directory>
         <Include>
-            <Or>
-                <Category>Emulator</Category>
-                <Category>System</Category>
-            </Or>
+            <Category>System</Category>
         </Include>
     </Menu>
     
