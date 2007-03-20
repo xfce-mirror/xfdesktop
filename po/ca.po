@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-18 20:49-0700\n"
+"POT-Creation-Date: 2007-03-20 12:36-0700\n"
 "PO-Revision-Date: 2006-11-25 11:31+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
@@ -111,7 +111,7 @@ msgstr "Seleccioneu una icona"
 #: ../menueditor/menueditor-edit-dialog.c:235
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:600
+#: ../panel-plugin/desktop-menu-plugin.c:604
 #: ../settings/appearance-settings.c:579
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
@@ -120,7 +120,7 @@ msgstr "Tots els fitxers"
 
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
-#: ../panel-plugin/desktop-menu-plugin.c:606
+#: ../panel-plugin/desktop-menu-plugin.c:610
 #: ../settings/appearance-settings.c:583
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
@@ -197,7 +197,7 @@ msgstr "Selecciona menú extern"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:614
+#: ../panel-plugin/desktop-menu-plugin.c:618
 msgid "Menu Files"
 msgstr "Fitxers de menú"
 
@@ -491,71 +491,71 @@ msgstr "Ignora les modificacions"
 msgid "Unable to open the menu file %s in write mode"
 msgstr "No s’ha pogut obrir el fitxer de menú %s en mode escriptura"
 
-#: ../panel-plugin/desktop-menu-plugin.c:583
+#: ../panel-plugin/desktop-menu-plugin.c:587
 msgid "Select Icon"
 msgstr "Seleccioneu icona"
 
-#: ../panel-plugin/desktop-menu-plugin.c:585
+#: ../panel-plugin/desktop-menu-plugin.c:589
 msgid "Select Menu File"
 msgstr "Seleccioneu un fitxer de menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:742
-#: ../settings/behavior-settings.c:217
+#: ../panel-plugin/desktop-menu-plugin.c:746
+#: ../settings/behavior-settings.c:275
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "No s'ha pogut llançar xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/desktop-menu-plugin.c:769
 #: ../panel-plugin/xfce4-menu.desktop.in.h:2
 msgid "Xfce Menu"
 msgstr "Menú Xfce"
 
-#: ../panel-plugin/desktop-menu-plugin.c:777
+#: ../panel-plugin/desktop-menu-plugin.c:781
 msgid "Button"
 msgstr "Botó"
 
-#: ../panel-plugin/desktop-menu-plugin.c:790
+#: ../panel-plugin/desktop-menu-plugin.c:794
 msgid "Button _title:"
 msgstr "Títol del bo_tó:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:803
+#: ../panel-plugin/desktop-menu-plugin.c:807
 msgid "_Show title in button"
 msgstr "Mo_stra títol dins el botó"
 
-#: ../panel-plugin/desktop-menu-plugin.c:810
+#: ../panel-plugin/desktop-menu-plugin.c:814
 msgid "Menu File"
 msgstr "Fitxer de menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:822
+#: ../panel-plugin/desktop-menu-plugin.c:826
 msgid "Use default _desktop menu file"
 msgstr "Utilitzar el fitxer _d'escriptori predeterminat"
 
-#: ../panel-plugin/desktop-menu-plugin.c:831
+#: ../panel-plugin/desktop-menu-plugin.c:835
 msgid "Use _custom menu file:"
 msgstr "Utilitza un _fitxer de menú personalitzat:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:882
-#: ../settings/behavior-settings.c:267
+#: ../panel-plugin/desktop-menu-plugin.c:886
+#: ../settings/behavior-settings.c:369
 msgid "_Edit Menu"
 msgstr "_Edita Menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:888
+#: ../panel-plugin/desktop-menu-plugin.c:892
 msgid "Icons"
 msgstr "Icones"
 
-#: ../panel-plugin/desktop-menu-plugin.c:900
+#: ../panel-plugin/desktop-menu-plugin.c:904
 msgid "_Button icon:"
 msgstr "_Botó d'icona:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:924
+#: ../panel-plugin/desktop-menu-plugin.c:928
 msgid "Show _icons in menu"
 msgstr "Mostra _icones al menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:947
+#: ../panel-plugin/desktop-menu-plugin.c:951
 msgid "There is already a panel menu registered for this screen"
 msgstr "Ja hi ha un menú pel quadre a aquesta pantalla"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1055
+#: ../panel-plugin/desktop-menu-plugin.c:1063
 msgid "Edit Menu"
 msgstr "Edita menú"
 
@@ -785,144 +785,161 @@ msgstr "Crea un llistat de rerefons"
 msgid "Edit backdrop list"
 msgstr "Edita un llistat de rerefons"
 
-#: ../settings/behavior-settings.c:241
+#: ../settings/behavior-settings.c:301
 msgid "Menus"
 msgstr "Menús"
 
-#: ../settings/behavior-settings.c:249
+#: ../settings/behavior-settings.c:309
 msgid "Show _window list on middle click"
 msgstr "Mostra el llistat de _finestres amb clic central"
 
-#: ../settings/behavior-settings.c:260
+#: ../settings/behavior-settings.c:327
+msgid "Show workspace _names in list"
+msgstr ""
+
+#: ../settings/behavior-settings.c:341
+msgid "Show windows on each workspace in sub_menus"
+msgstr ""
+
+#: ../settings/behavior-settings.c:351
+msgid "Show sticky windows only in _active workspace"
+msgstr ""
+
+#: ../settings/behavior-settings.c:362
 msgid "Show _desktop menu on right click"
 msgstr "Mostra el menú _de l'escriptori amb clic dret"
 
-#: ../settings/behavior-settings.c:279
+#: ../settings/behavior-settings.c:381
 msgid "Desktop Icons"
 msgstr "Icones d'escriptori"
 
-#: ../settings/behavior-settings.c:288
+#: ../settings/behavior-settings.c:390
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "None"
 msgstr "Cap"
 
-#: ../settings/behavior-settings.c:289
+#: ../settings/behavior-settings.c:391
 msgid "Minimized application icons"
 msgstr "Mostra com icones les aplicacions minimitzades"
 
-#: ../settings/behavior-settings.c:291
+#: ../settings/behavior-settings.c:393
 msgid "File/launcher icons"
 msgstr "Icones de llançadors i fitxers"
 
-#: ../settings/behavior-settings.c:306
+#: ../settings/behavior-settings.c:408
 msgid "_Icon size:"
 msgstr "Mida de les _icones:"
 
-#: ../settings/behavior-settings.c:320
+#: ../settings/behavior-settings.c:422
 msgid "Use _system font size"
 msgstr "Usa la mida de la font de _sistema"
 
-#: ../settings/behavior-settings.c:337
+#: ../settings/behavior-settings.c:439
 msgid "Custom _font size:"
 msgstr "Mida de _font personalitzada:"
 
-#: ../src/main.c:257
+#: ../src/main.c:261
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Això és %s versió %s, executant-se sobre Xfce %s.\n"
 
-#: ../src/main.c:259
+#: ../src/main.c:263
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Construit sobre GTK+ %d.%d.%d, enllaçat amb GTK+ %d.%d.%d."
 
-#: ../src/main.c:263
+#: ../src/main.c:267
 msgid "Build options:\n"
 msgstr "Opcions de construcció:\n"
 
-#: ../src/main.c:264
+#: ../src/main.c:268
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "Menú de l'escriptori:           %s\n"
 
-#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
+#: ../src/main.c:270 ../src/main.c:277 ../src/main.c:284
 msgid "enabled"
 msgstr "habilitat"
 
-#: ../src/main.c:268 ../src/main.c:275 ../src/main.c:282
+#: ../src/main.c:272 ../src/main.c:279 ../src/main.c:286
 msgid "disabled"
 msgstr "inhabilitat"
 
-#: ../src/main.c:271
+#: ../src/main.c:275
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Icones de l'escriptori:      %s\n"
 
-#: ../src/main.c:278
+#: ../src/main.c:282
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Icones de l'escriptori:      %s\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:311
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: opció desconeguda: %s\n"
 
-#: ../src/main.c:308
+#: ../src/main.c:312
 msgid "Options are:\n"
 msgstr "Són opcions:\n"
 
-#: ../src/main.c:309
+#: ../src/main.c:313
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    --reload      Refresca tots els paràmetres, refresca el llistat "
 "d'imatges\n"
 
-#: ../src/main.c:310
+#: ../src/main.c:314
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu           Alça un menú sobre la posicó del ratolí\n"
 
-#: ../src/main.c:311
+#: ../src/main.c:315
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "   --windowlist          Alça el llistat de finestres sobre la posició del\n"
 "                         ratolí\n"
 
-#: ../src/main.c:312
+#: ../src/main.c:316
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "   --quit        Tanca Xfdesktop\n"
 
-#: ../src/main.c:327
+#: ../src/main.c:331
 #, c-format
 msgid "%s is not running.\n"
 msgstr "No s’està executant %s.\n"
 
-#: ../src/windowlist.c:220
+#: ../src/windowlist.c:226
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Àrea de treball %d</b>"
 
-#: ../src/windowlist.c:228
+#: ../src/windowlist.c:235
+#, fuzzy, c-format
+msgid "Workspace %d"
+msgstr "<b>Àrea de treball %d</b>"
+
+#: ../src/windowlist.c:237
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i> Àrea de treball %d</i>"
 
-#: ../src/windowlist.c:295 ../src/windowlist.c:298
+#: ../src/windowlist.c:329 ../src/windowlist.c:332
 msgid "_Add Workspace"
 msgstr "_Afegeix àrea de treball"
 
-#: ../src/windowlist.c:306
+#: ../src/windowlist.c:340
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "Suprimeix l'à_rea de treball %d"
 
-#: ../src/windowlist.c:309
+#: ../src/windowlist.c:343
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Suprimeix l'à_rea de treball '%s'"
 
-#: ../src/xfce-desktop.c:578
+#: ../src/xfce-desktop.c:573
 msgid "Desktop"
 msgstr "Escriptori"
 
@@ -1441,14 +1458,13 @@ msgstr ""
 msgid "Other"
 msgstr "/Altres"
 
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
-msgid "Science"
-msgstr "Ciència"
+#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
+msgid "Screensaver applets"
+msgstr ""
 
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
-#, fuzzy
-msgid "Scientific applications and tools"
-msgstr "Mostra com icones les aplicacions minimitzades"
+#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
+msgid "Screensavers"
+msgstr ""
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
@@ -1538,6 +1554,13 @@ msgstr "Paràmetres pel gestor d'escriptori Xfce4"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Paràmetres de l'escriptori Xfce4"
+
+#~ msgid "Science"
+#~ msgstr "Ciència"
+
+#, fuzzy
+#~ msgid "Scientific applications and tools"
+#~ msgstr "Mostra com icones les aplicacions minimitzades"
 
 #~ msgid "Unable to quit session."
 #~ msgstr "No s'ha pogut tancar la sessió"

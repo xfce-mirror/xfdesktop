@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-18 20:49-0700\n"
+"POT-Creation-Date: 2007-03-20 12:36-0700\n"
 "PO-Revision-Date: 2006-05-27 13:02+0200\n"
 "Last-Translator: Piotr Maliński <admin@rk.edu.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -107,7 +107,7 @@ msgstr "Wybierz ikonę"
 #: ../menueditor/menueditor-edit-dialog.c:235
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:600
+#: ../panel-plugin/desktop-menu-plugin.c:604
 #: ../settings/appearance-settings.c:579
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
@@ -116,7 +116,7 @@ msgstr "Wszystkie pliki"
 
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
-#: ../panel-plugin/desktop-menu-plugin.c:606
+#: ../panel-plugin/desktop-menu-plugin.c:610
 #: ../settings/appearance-settings.c:583
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
@@ -193,7 +193,7 @@ msgstr "Wybierz zewnętrzne menu"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:614
+#: ../panel-plugin/desktop-menu-plugin.c:618
 msgid "Menu Files"
 msgstr "Pliki menu"
 
@@ -487,71 +487,71 @@ msgstr "Zapomnij zmiany"
 msgid "Unable to open the menu file %s in write mode"
 msgstr "Nie mogę otworzyć pliku menu %s w trybie do zapisu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:583
+#: ../panel-plugin/desktop-menu-plugin.c:587
 msgid "Select Icon"
 msgstr "Wybierz ikonę"
 
-#: ../panel-plugin/desktop-menu-plugin.c:585
+#: ../panel-plugin/desktop-menu-plugin.c:589
 msgid "Select Menu File"
 msgstr "Wybierz plik menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:742
-#: ../settings/behavior-settings.c:217
+#: ../panel-plugin/desktop-menu-plugin.c:746
+#: ../settings/behavior-settings.c:275
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Nie można było uruchomić xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/desktop-menu-plugin.c:769
 #: ../panel-plugin/xfce4-menu.desktop.in.h:2
 msgid "Xfce Menu"
 msgstr "Menu Xfce"
 
-#: ../panel-plugin/desktop-menu-plugin.c:777
+#: ../panel-plugin/desktop-menu-plugin.c:781
 msgid "Button"
 msgstr "Przycisk"
 
-#: ../panel-plugin/desktop-menu-plugin.c:790
+#: ../panel-plugin/desktop-menu-plugin.c:794
 msgid "Button _title:"
 msgstr "_Tytuł przycisku:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:803
+#: ../panel-plugin/desktop-menu-plugin.c:807
 msgid "_Show title in button"
 msgstr "_Pokaż tytuł na przycisku"
 
-#: ../panel-plugin/desktop-menu-plugin.c:810
+#: ../panel-plugin/desktop-menu-plugin.c:814
 msgid "Menu File"
 msgstr "Plik menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:822
+#: ../panel-plugin/desktop-menu-plugin.c:826
 msgid "Use default _desktop menu file"
 msgstr "Użyj _domyślnego pliku menu pulpitu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:831
+#: ../panel-plugin/desktop-menu-plugin.c:835
 msgid "Use _custom menu file:"
 msgstr "Użyj _własnego pliku menu:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:882
-#: ../settings/behavior-settings.c:267
+#: ../panel-plugin/desktop-menu-plugin.c:886
+#: ../settings/behavior-settings.c:369
 msgid "_Edit Menu"
 msgstr "_Edytuj menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:888
+#: ../panel-plugin/desktop-menu-plugin.c:892
 msgid "Icons"
 msgstr "Ikony"
 
-#: ../panel-plugin/desktop-menu-plugin.c:900
+#: ../panel-plugin/desktop-menu-plugin.c:904
 msgid "_Button icon:"
 msgstr "_Ikona przycisku:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:924
+#: ../panel-plugin/desktop-menu-plugin.c:928
 msgid "Show _icons in menu"
 msgstr "Pokazuj _ikony w menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:947
+#: ../panel-plugin/desktop-menu-plugin.c:951
 msgid "There is already a panel menu registered for this screen"
 msgstr "Już jest przypisane menu panelu dla tego ekranu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1055
+#: ../panel-plugin/desktop-menu-plugin.c:1063
 msgid "Edit Menu"
 msgstr "Edytuj menu"
 
@@ -776,141 +776,158 @@ msgstr "Utwórz listę z tłami"
 msgid "Edit backdrop list"
 msgstr "Edytuj listę z tłami"
 
-#: ../settings/behavior-settings.c:241
+#: ../settings/behavior-settings.c:301
 msgid "Menus"
 msgstr "Menu"
 
-#: ../settings/behavior-settings.c:249
+#: ../settings/behavior-settings.c:309
 msgid "Show _window list on middle click"
 msgstr "Pokazuj _listę okien przy środkowym kliknięciu"
 
-#: ../settings/behavior-settings.c:260
+#: ../settings/behavior-settings.c:327
+msgid "Show workspace _names in list"
+msgstr ""
+
+#: ../settings/behavior-settings.c:341
+msgid "Show windows on each workspace in sub_menus"
+msgstr ""
+
+#: ../settings/behavior-settings.c:351
+msgid "Show sticky windows only in _active workspace"
+msgstr ""
+
+#: ../settings/behavior-settings.c:362
 msgid "Show _desktop menu on right click"
 msgstr "Pokazuj _menu pulpitu przy prawym kliknięciu"
 
-#: ../settings/behavior-settings.c:279
+#: ../settings/behavior-settings.c:381
 msgid "Desktop Icons"
 msgstr "Ikony pulpitu"
 
-#: ../settings/behavior-settings.c:288
+#: ../settings/behavior-settings.c:390
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "None"
 msgstr "Brak"
 
-#: ../settings/behavior-settings.c:289
+#: ../settings/behavior-settings.c:391
 msgid "Minimized application icons"
 msgstr "Ikony zminimalizowanych aplikacji"
 
-#: ../settings/behavior-settings.c:291
+#: ../settings/behavior-settings.c:393
 msgid "File/launcher icons"
 msgstr "Pliki/ikony aktywatorów"
 
-#: ../settings/behavior-settings.c:306
+#: ../settings/behavior-settings.c:408
 msgid "_Icon size:"
 msgstr "_Rozmiar ikon:"
 
-#: ../settings/behavior-settings.c:320
+#: ../settings/behavior-settings.c:422
 msgid "Use _system font size"
 msgstr "Użyj _systemowego rozmiaru czcionki"
 
-#: ../settings/behavior-settings.c:337
+#: ../settings/behavior-settings.c:439
 msgid "Custom _font size:"
 msgstr "Własny _rozmiar czcionki:"
 
-#: ../src/main.c:257
+#: ../src/main.c:261
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "To jest %s wersja %s, działająca pod Xfce %s.\n"
 
-#: ../src/main.c:259
+#: ../src/main.c:263
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Skompilowane pod GTK+ %d.%d.%d, linkowane z GTK+ %d.%d.%d."
 
-#: ../src/main.c:263
+#: ../src/main.c:267
 msgid "Build options:\n"
 msgstr "Opcje kompilacji:\n"
 
-#: ../src/main.c:264
+#: ../src/main.c:268
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menu Pulpitu:        %s\n"
 
-#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
+#: ../src/main.c:270 ../src/main.c:277 ../src/main.c:284
 msgid "enabled"
 msgstr "włączone"
 
-#: ../src/main.c:268 ../src/main.c:275 ../src/main.c:282
+#: ../src/main.c:272 ../src/main.c:279 ../src/main.c:286
 msgid "disabled"
 msgstr "wyłączone"
 
-#: ../src/main.c:271
+#: ../src/main.c:275
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "   Ikony Pulpitu:       %s\n"
 
-#: ../src/main.c:278
+#: ../src/main.c:282
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "   Ikony Plików Pulpitu:       %s\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:311
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Nieznana opcja: %s\n"
 
-#: ../src/main.c:308
+#: ../src/main.c:312
 msgid "Options are:\n"
 msgstr "Opcje to:\n"
 
-#: ../src/main.c:309
+#: ../src/main.c:313
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    --reload      Przeładuj wszystkie ustawienia, odśwież listę obrazków\n"
 
-#: ../src/main.c:310
+#: ../src/main.c:314
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu        Pokazuje menu (w miejscu kursora myszki)\n"
 
-#: ../src/main.c:311
+#: ../src/main.c:315
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    --windowlist  Pokazuje listę okien (w miejscu kursora myszki)\n"
 
-#: ../src/main.c:312
+#: ../src/main.c:316
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    --quit        Zamyka xfdesktop\n"
 
-#: ../src/main.c:327
+#: ../src/main.c:331
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s nie działa.\n"
 
-#: ../src/windowlist.c:220
+#: ../src/windowlist.c:226
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Obszar roboczy %d</b>"
 
-#: ../src/windowlist.c:228
+#: ../src/windowlist.c:235
+#, fuzzy, c-format
+msgid "Workspace %d"
+msgstr "<b>Obszar roboczy %d</b>"
+
+#: ../src/windowlist.c:237
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Obszar roboczy %d</i>"
 
-#: ../src/windowlist.c:295 ../src/windowlist.c:298
+#: ../src/windowlist.c:329 ../src/windowlist.c:332
 msgid "_Add Workspace"
 msgstr "_Dodaj obszar roboczy"
 
-#: ../src/windowlist.c:306
+#: ../src/windowlist.c:340
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Usuń obszar roboczy %d"
 
-#: ../src/windowlist.c:309
+#: ../src/windowlist.c:343
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Usuń obszar roboczy '%s'"
 
-#: ../src/xfce-desktop.c:578
+#: ../src/xfce-desktop.c:573
 msgid "Desktop"
 msgstr "Pulpit"
 
@@ -1429,14 +1446,13 @@ msgstr ""
 msgid "Other"
 msgstr "/Inne"
 
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
-msgid "Science"
-msgstr "Nauka"
+#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
+msgid "Screensaver applets"
+msgstr ""
 
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
-#, fuzzy
-msgid "Scientific applications and tools"
-msgstr "Ikony zminimalizowanych aplikacji"
+#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
+msgid "Screensavers"
+msgstr ""
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
@@ -1526,6 +1542,13 @@ msgstr "Ustawienia XFCE 4 Menadżera Pulpitów"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Ustawienia pulpitu Xfce 4"
+
+#~ msgid "Science"
+#~ msgstr "Nauka"
+
+#, fuzzy
+#~ msgid "Scientific applications and tools"
+#~ msgstr "Ikony zminimalizowanych aplikacji"
 
 #~ msgid "Unable to quit session."
 #~ msgstr "Nie można zakończyć sesji"

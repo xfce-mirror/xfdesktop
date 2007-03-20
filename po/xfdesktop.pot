@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-18 20:49-0700\n"
+"POT-Creation-Date: 2007-03-20 12:36-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,7 +106,7 @@ msgstr ""
 #: ../menueditor/menueditor-edit-dialog.c:235
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:600
+#: ../panel-plugin/desktop-menu-plugin.c:604
 #: ../settings/appearance-settings.c:579
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
@@ -115,7 +115,7 @@ msgstr ""
 
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
-#: ../panel-plugin/desktop-menu-plugin.c:606
+#: ../panel-plugin/desktop-menu-plugin.c:610
 #: ../settings/appearance-settings.c:583
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
@@ -192,7 +192,7 @@ msgstr ""
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:614
+#: ../panel-plugin/desktop-menu-plugin.c:618
 msgid "Menu Files"
 msgstr ""
 
@@ -486,71 +486,71 @@ msgstr ""
 msgid "Unable to open the menu file %s in write mode"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:583
+#: ../panel-plugin/desktop-menu-plugin.c:587
 msgid "Select Icon"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:585
+#: ../panel-plugin/desktop-menu-plugin.c:589
 msgid "Select Menu File"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:742
-#: ../settings/behavior-settings.c:217
+#: ../panel-plugin/desktop-menu-plugin.c:746
+#: ../settings/behavior-settings.c:275
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/desktop-menu-plugin.c:769
 #: ../panel-plugin/xfce4-menu.desktop.in.h:2
 msgid "Xfce Menu"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:777
+#: ../panel-plugin/desktop-menu-plugin.c:781
 msgid "Button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:790
+#: ../panel-plugin/desktop-menu-plugin.c:794
 msgid "Button _title:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:803
+#: ../panel-plugin/desktop-menu-plugin.c:807
 msgid "_Show title in button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:810
+#: ../panel-plugin/desktop-menu-plugin.c:814
 msgid "Menu File"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:822
+#: ../panel-plugin/desktop-menu-plugin.c:826
 msgid "Use default _desktop menu file"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:831
+#: ../panel-plugin/desktop-menu-plugin.c:835
 msgid "Use _custom menu file:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:882
-#: ../settings/behavior-settings.c:267
+#: ../panel-plugin/desktop-menu-plugin.c:886
+#: ../settings/behavior-settings.c:369
 msgid "_Edit Menu"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:888
+#: ../panel-plugin/desktop-menu-plugin.c:892
 msgid "Icons"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:900
+#: ../panel-plugin/desktop-menu-plugin.c:904
 msgid "_Button icon:"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:924
+#: ../panel-plugin/desktop-menu-plugin.c:928
 msgid "Show _icons in menu"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:947
+#: ../panel-plugin/desktop-menu-plugin.c:951
 msgid "There is already a panel menu registered for this screen"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:1055
+#: ../panel-plugin/desktop-menu-plugin.c:1063
 msgid "Edit Menu"
 msgstr ""
 
@@ -766,140 +766,157 @@ msgstr ""
 msgid "Edit backdrop list"
 msgstr ""
 
-#: ../settings/behavior-settings.c:241
+#: ../settings/behavior-settings.c:301
 msgid "Menus"
 msgstr ""
 
-#: ../settings/behavior-settings.c:249
+#: ../settings/behavior-settings.c:309
 msgid "Show _window list on middle click"
 msgstr ""
 
-#: ../settings/behavior-settings.c:260
+#: ../settings/behavior-settings.c:327
+msgid "Show workspace _names in list"
+msgstr ""
+
+#: ../settings/behavior-settings.c:341
+msgid "Show windows on each workspace in sub_menus"
+msgstr ""
+
+#: ../settings/behavior-settings.c:351
+msgid "Show sticky windows only in _active workspace"
+msgstr ""
+
+#: ../settings/behavior-settings.c:362
 msgid "Show _desktop menu on right click"
 msgstr ""
 
-#: ../settings/behavior-settings.c:279
+#: ../settings/behavior-settings.c:381
 msgid "Desktop Icons"
 msgstr ""
 
-#: ../settings/behavior-settings.c:288
+#: ../settings/behavior-settings.c:390
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "None"
 msgstr ""
 
-#: ../settings/behavior-settings.c:289
+#: ../settings/behavior-settings.c:391
 msgid "Minimized application icons"
 msgstr ""
 
-#: ../settings/behavior-settings.c:291
+#: ../settings/behavior-settings.c:393
 msgid "File/launcher icons"
 msgstr ""
 
-#: ../settings/behavior-settings.c:306
+#: ../settings/behavior-settings.c:408
 msgid "_Icon size:"
 msgstr ""
 
-#: ../settings/behavior-settings.c:320
+#: ../settings/behavior-settings.c:422
 msgid "Use _system font size"
 msgstr ""
 
-#: ../settings/behavior-settings.c:337
+#: ../settings/behavior-settings.c:439
 msgid "Custom _font size:"
 msgstr ""
 
-#: ../src/main.c:257
+#: ../src/main.c:261
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr ""
 
-#: ../src/main.c:259
+#: ../src/main.c:263
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr ""
 
-#: ../src/main.c:263
+#: ../src/main.c:267
 msgid "Build options:\n"
 msgstr ""
 
-#: ../src/main.c:264
+#: ../src/main.c:268
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr ""
 
-#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
+#: ../src/main.c:270 ../src/main.c:277 ../src/main.c:284
 msgid "enabled"
 msgstr ""
 
-#: ../src/main.c:268 ../src/main.c:275 ../src/main.c:282
+#: ../src/main.c:272 ../src/main.c:279 ../src/main.c:286
 msgid "disabled"
 msgstr ""
 
-#: ../src/main.c:271
+#: ../src/main.c:275
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr ""
 
-#: ../src/main.c:278
+#: ../src/main.c:282
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr ""
 
-#: ../src/main.c:307
+#: ../src/main.c:311
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr ""
 
-#: ../src/main.c:308
+#: ../src/main.c:312
 msgid "Options are:\n"
 msgstr ""
 
-#: ../src/main.c:309
+#: ../src/main.c:313
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
 
-#: ../src/main.c:310
+#: ../src/main.c:314
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
 
-#: ../src/main.c:311
+#: ../src/main.c:315
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 
-#: ../src/main.c:312
+#: ../src/main.c:316
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr ""
 
-#: ../src/main.c:327
+#: ../src/main.c:331
 #, c-format
 msgid "%s is not running.\n"
 msgstr ""
 
-#: ../src/windowlist.c:220
+#: ../src/windowlist.c:226
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr ""
 
-#: ../src/windowlist.c:228
+#: ../src/windowlist.c:235
+#, c-format
+msgid "Workspace %d"
+msgstr ""
+
+#: ../src/windowlist.c:237
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr ""
 
-#: ../src/windowlist.c:295 ../src/windowlist.c:298
+#: ../src/windowlist.c:329 ../src/windowlist.c:332
 msgid "_Add Workspace"
 msgstr ""
 
-#: ../src/windowlist.c:306
+#: ../src/windowlist.c:340
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr ""
 
-#: ../src/windowlist.c:309
+#: ../src/windowlist.c:343
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr ""
 
-#: ../src/xfce-desktop.c:578
+#: ../src/xfce-desktop.c:573
 msgid "Desktop"
 msgstr ""
 
@@ -1402,12 +1419,12 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
-msgid "Science"
+#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
+msgid "Screensaver applets"
 msgstr ""
 
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
-msgid "Scientific applications and tools"
+#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
+msgid "Screensavers"
 msgstr ""
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
