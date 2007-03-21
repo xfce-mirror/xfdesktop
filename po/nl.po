@@ -9,8 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 05:11-0800\n"
 "PO-Revision-Date: 2006-11-03 12:13+0100\n"
-"Last-Translator: Stephan Arts <psybsd@gmail.com>\n"
-"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
+"Last-Translator: Stephan Arts <stephan@xfce.org>\n"
+"Language-Team: Dutch <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -89,7 +89,7 @@ msgstr "Geen pictogram"
 #: ../menueditor/menueditor-edit-dialog.c:203
 #: ../menueditor/menueditor-edit-dialog.c:204
 msgid "Themed icon:"
-msgstr ""
+msgstr "Thema icoon:"
 
 #. allocate the chooser dialog
 #: ../menueditor/menueditor-add-dialog.c:252
@@ -164,7 +164,6 @@ msgid "Shell Scripts"
 msgstr "Shell Scripts"
 
 #: ../menueditor/menueditor-add-external-dialog.c:100
-#, fuzzy
 msgid "Add external menu entry"
 msgstr "Een extern menu toevoegen"
 
@@ -186,7 +185,6 @@ msgstr "Bron:"
 
 #: ../menueditor/menueditor-add-external-dialog.c:137
 #: ../menueditor/menueditor-edit-external-dialog.c:117
-#, fuzzy
 msgid "Select external menu"
 msgstr "Een extern menu selecteren"
 
@@ -225,7 +223,6 @@ msgid "Edit menu entry"
 msgstr "Menu-optie bewerken"
 
 #: ../menueditor/menueditor-edit-external-dialog.c:96
-#, fuzzy
 msgid "Edit external menu entry"
 msgstr "Een extern menu aanpassen"
 
@@ -242,9 +239,8 @@ msgid "_New"
 msgstr "_Nieuw"
 
 #: ../menueditor/menueditor-main-window.c:141
-#, fuzzy
 msgid "Create a new empty menu"
-msgstr "Nieuw Xfce4 menu"
+msgstr "Een nieuw leeg menu maken"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1602
@@ -253,12 +249,10 @@ msgid "_Open"
 msgstr "_Open"
 
 #: ../menueditor/menueditor-main-window.c:142
-#, fuzzy
 msgid "Open existing menu"
 msgstr "Bestaand menu openen"
 
 #: ../menueditor/menueditor-main-window.c:143
-#, fuzzy
 msgid "Open _default menu"
 msgstr "Stan_daard menu openen"
 
@@ -287,7 +281,6 @@ msgid "_Close"
 msgstr "Sl_uiten"
 
 #: ../menueditor/menueditor-main-window.c:146
-#, fuzzy
 msgid "Close menu"
 msgstr "Huidig menu sluiten"
 
@@ -296,70 +289,60 @@ msgid "_Quit"
 msgstr "Af_sluiten"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "Quit Xfce4-Menueditor"
-msgstr "Xfce 4 Menu Editor"
+msgstr "Xfce4-Menueditor Afsluiten"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
 msgstr "Be_werken"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "_Edit entry"
-msgstr "Menu-optie bewerken"
+msgstr "Menu optie bewerken"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "Edit selected entry"
-msgstr "Menu-optie bewerken"
+msgstr "Geselecteerde menu optie bewerken"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "_Add entry"
-msgstr "Menu optie toevoegen"
+msgstr "Menu optie _toevoegen"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "Add a new entry in the menu"
-msgstr "Menu-optie toevoegen"
+msgstr "Een nieuwe menu optie toevoegen"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add _external"
-msgstr "Een extern menu toevoegen"
+msgstr "Extern m_enu toevoegen"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add an external entry"
-msgstr "Een extern menu toevoegen"
+msgstr "Een externe menu optie toevoegen"
 
 #: ../menueditor/menueditor-main-window.c:153
 msgid "_Remove entry"
-msgstr ""
+msgstr "Menu optie ve_rwijderen"
 
 #: ../menueditor/menueditor-main-window.c:153
-#, fuzzy
 msgid "Remove entry"
-msgstr "Menu optie toevoegen"
+msgstr "Menu optie verwijderen"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "_Up"
 msgstr "Om_hoog"
 
 #: ../menueditor/menueditor-main-window.c:154
-#, fuzzy
 msgid "Move entry up"
-msgstr "Huidige menu-optie omhoog verplaatsen"
+msgstr "Omhoog verplaatsen"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "_Down"
 msgstr "Om_laag"
 
 #: ../menueditor/menueditor-main-window.c:155
-#, fuzzy
 msgid "Move entry down"
-msgstr "Huidige menu-optie omlaag verplaatsen"
+msgstr "Omlaag verplaatsen"
 
 #: ../menueditor/menueditor-main-window.c:157
 msgid "_Help"
@@ -370,9 +353,8 @@ msgid "_About..."
 msgstr "_Info..."
 
 #: ../menueditor/menueditor-main-window.c:158
-#, fuzzy
 msgid "Show informations about xfce4-menueditor"
-msgstr "Kon xfce4-menueditor niet starten: %s"
+msgstr "Toon informatie over xfce4-menueditor"
 
 #: ../menueditor/menueditor-main-window.c:160
 #, fuzzy
@@ -439,9 +421,8 @@ msgid "Do you want to save before opening the default menu ?"
 msgstr "Wilt u de wijzigingen opslaan voor het openen van het standaard menu?"
 
 #: ../menueditor/menueditor-main-window.c:594
-#, fuzzy
 msgid "Save menu file as"
-msgstr "Open menubestand"
+msgstr "Menu bestand opslaan als"
 
 #: ../menueditor/menueditor-main-window.c:632
 #: ../menueditor/menueditor-main-window.c:1343
@@ -504,7 +485,7 @@ msgstr "Wijzigingen negeren"
 #: ../menueditor/menueditor-main-window.c:2035
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
-msgstr ""
+msgstr "Kan het menu bestand %s niet openen voor schrijven"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
@@ -550,9 +531,8 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Kon xfce4-menueditor niet starten: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:765
-#, fuzzy
 msgid "Edit Properties"
-msgstr "Lijst van achtergronden aanpassen"
+msgstr "Eigenschappen aanpassen"
 
 #: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Button"
@@ -567,9 +547,8 @@ msgid "_Show title in button"
 msgstr "_Toon titel in knop"
 
 #: ../panel-plugin/desktop-menu-plugin.c:816
-#, fuzzy
 msgid "Menu File"
-msgstr "Menubestanden"
+msgstr "Menu Bestand"
 
 #: ../panel-plugin/desktop-menu-plugin.c:828
 #, fuzzy
@@ -577,9 +556,8 @@ msgid "Use default _desktop menu file"
 msgstr "Bureaubladmenu be_werken"
 
 #: ../panel-plugin/desktop-menu-plugin.c:837
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "Open menubestand"
+msgstr "Gebruik _aangepast menu bestand:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:888
 #: ../settings/behavior-settings.c:267
@@ -600,7 +578,7 @@ msgstr "Toon p_ictogrammen in menu"
 
 #: ../panel-plugin/desktop-menu-plugin.c:953
 msgid "There is already a panel menu registered for this screen"
-msgstr ""
+msgstr "Er is al een paneel menu geregistreerd voor dit scherm"
 
 #: ../panel-plugin/desktop-menu-plugin.c:1061
 msgid "Edit Menu"
@@ -703,7 +681,7 @@ msgstr ""
 
 #: ../settings/appearance-settings.c:855
 msgid "_Do not show this again"
-msgstr ""
+msgstr "_Niet weer tonen"
 
 #. the dialog
 #: ../settings/appearance-settings.c:921
@@ -716,7 +694,7 @@ msgstr "Laat _Xfce het bureaublad beheren"
 
 #: ../settings/appearance-settings.c:979
 msgid "Stretch single backdrop onto _all monitors"
-msgstr ""
+msgstr "Enkele achtergrond oprekken over alle beeldschermen"
 
 #. add the single backdrop settings page to the main notebook
 #: ../settings/appearance-settings.c:993
@@ -739,7 +717,7 @@ msgstr "Vaste Kleur"
 
 #: ../settings/appearance-settings.c:1041
 msgid "Horizontal Gradient"
-msgstr "Horizontake Gradiënt"
+msgstr "Horizontale Gradiënt"
 
 #: ../settings/appearance-settings.c:1042
 msgid "Vertical Gradient"
