@@ -201,6 +201,7 @@ windowlist_create(GdkScreen *gscreen)
     NetkWindow *netk_window;
     gint w, h;
     PangoFontDescription *italic_font_desc = pango_font_description_from_string("italic");
+    gint is_empty_workspace;
     
     g_return_val_if_fail(GDK_IS_SCREEN(gscreen), NULL);
     
@@ -270,6 +271,7 @@ windowlist_create(GdkScreen *gscreen)
         }
         
         windows = netk_screen_get_windows_stacked(netk_screen);
+        is_empty_workspace = 1;
         for(l = windows; l; l = l->next) {
             netk_window = l->data;
             
@@ -292,6 +294,7 @@ windowlist_create(GdkScreen *gscreen)
             mi = menu_item_from_netk_window(netk_window, w, h);
             if(!mi)
                 continue;
+            is_empty_workspace = 0;
             if(netk_workspace != active_workspace) {
                 GtkWidget *lbl = gtk_bin_get_child(GTK_BIN(mi));
                 gtk_widget_modify_fg(lbl, GTK_STATE_NORMAL,
@@ -308,7 +311,7 @@ windowlist_create(GdkScreen *gscreen)
                     G_CALLBACK(mi_destroyed_cb), netk_window);
         }
         
-        if(!wl_submenus) {
+        if(!wl_submenus && !is_empty_workspace) {
             mi = gtk_separator_menu_item_new();
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(submenu), mi);
