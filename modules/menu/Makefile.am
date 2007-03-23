@@ -1,6 +1,5 @@
 SUBDIRS = \
 	directory-data \
-	frapmenu \
 	menu-data
 
 plugindir = $(libdir)/xfce4/modules
@@ -15,9 +14,9 @@ xfce4_desktop_menu_la_SOURCES = \
 
 xfce4_desktop_menu_la_CFLAGS = \
 	-I$(top_srcdir)/common \
-	-I$(srcdir)/frapmenu \
 	$(GMODULE_CFLAGS) \
 	$(GTHREAD_CFLAGS) \
+	$(LIBXFCE4MENU_CFLAGS) \
 	$(LIBX11_CFLAGS) \
 	$(LIBXFCEGUI4_CFLAGS) \
 	$(THUNAR_VFS_CFLAGS) \
@@ -25,8 +24,10 @@ xfce4_desktop_menu_la_CFLAGS = \
 	-DDATADIR=\"$(datadir)\" \
 	-DBINDIR=\"$(bindir)\"
 
+xfce4_desktop_menu_la_DEPENDENCIES = \
+	$(top_builddir)/common/libxfdesktop.la
+
 xfce4_desktop_menu_la_LDFLAGS = \
-	$(top_builddir)/common/libxfdesktop.la \
 	-export-dynamic \
 	-avoid-version \
 	-module
@@ -37,9 +38,10 @@ xfce4_desktop_menu_la_LDFLAGS += \
 endif
 
 xfce4_desktop_menu_la_LIBADD = \
-	$(top_builddir)/modules/menu/frapmenu/libfrapmenu.la \
+	$(top_builddir)/common/libxfdesktop.la \
 	$(GMODULE_LIBS) \
 	$(GTHREAD_LIBS) \
+	$(LIBXFCE4MENU_LIBS) \
 	$(LIBX11_LDFLAGS) \
 	$(LIBX11_LIBS) \
 	$(LIBXFCEGUI4_LIBS) \

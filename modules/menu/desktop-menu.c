@@ -81,7 +81,7 @@ static GtkIconTheme *_deskmenu_icon_theme = NULL;
 static gboolean _generate_menu(XfceDesktopMenu *desktop_menu,
                                gboolean deferred);
 static void desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
-                                   FrapMenu *frap_menu,
+                                   XfceMenu *xfce_menu,
                                    GtkWidget *menu,
                                    GHashTable *watch_dirs);
 
@@ -96,8 +96,8 @@ static gint
 compare_items(gconstpointer a,
               gconstpointer b)
 {
-  return g_utf8_collate(frap_menu_item_get_name((FrapMenuItem *)a),
-                        frap_menu_item_get_name((FrapMenuItem *)b));
+  return g_utf8_collate(xfce_menu_item_get_name((XfceMenuItem *)a),
+                        xfce_menu_item_get_name((XfceMenuItem *)b));
 }
 #endif
 
@@ -189,31 +189,31 @@ desktop_menu_watch_dirs_add(GHashTable *watch_dirs,
 
 static void
 desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
-                       FrapMenu *frap_menu,
+                       XfceMenu *xfce_menu,
                        GtkWidget *menu,
                        GHashTable *watch_dirs)
 {
     GSList *items, *l;
     GtkWidget *submenu, *mi, *img;
-    FrapMenu *frap_submenu;
-    FrapMenuDirectory *frap_directory;
-    FrapMenuItem *frap_item;
+    XfceMenu *xfce_submenu;
+    XfceMenuDirectory *xfce_directory;
+    XfceMenuItem *xfce_item;
     const gchar *name, *icon_name;
     
-    if(frap_menu_has_layout(frap_menu))
-        items = frap_menu_get_layout_items(frap_menu);
+    if(xfce_menu_has_layout(xfce_menu))
+        items = xfce_menu_get_layout_items(xfce_menu);
     else {
-        items = frap_menu_get_menus(frap_menu);
-        items = g_slist_concat(items, frap_menu_get_items(frap_menu));
+        items = xfce_menu_get_menus(xfce_menu);
+        items = g_slist_concat(items, xfce_menu_get_items(xfce_menu));
     }
     for(l = items; l; l = l->next) {
-        if(FRAP_IS_MENU(l->data)) {
-            frap_submenu = l->data;
-            frap_directory = frap_menu_get_directory(frap_submenu);
+        if(XFCE_IS_MENU(l->data)) {
+            xfce_submenu = l->data;
+            xfce_directory = xfce_menu_get_directory(xfce_submenu);
             
-            if(frap_directory
-               && (frap_menu_directory_get_no_display(frap_directory)
-               || !frap_menu_directory_show_in_environment(frap_directory)))
+            if(xfce_directory
+               && (xfce_menu_directory_get_no_display(xfce_directory)
+               || !xfce_menu_directory_show_in_environment(xfce_directory)))
             {
                 continue;
             }
@@ -221,13 +221,13 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             submenu = gtk_menu_new();
             gtk_widget_show(submenu);
             
-            if(frap_directory) {
-                name = frap_menu_directory_get_name(frap_directory);
-                icon_name = frap_menu_directory_get_icon(frap_directory);
+            if(xfce_directory) {
+                name = xfce_menu_directory_get_name(xfce_directory);
+                icon_name = xfce_menu_directory_get_icon(xfce_directory);
                 desktop_menu_watch_dirs_add(watch_dirs,
-                                            frap_menu_directory_get_filename(frap_directory));
+                                            xfce_menu_directory_get_filename(xfce_directory));
             } else {
-                name = frap_menu_get_name(frap_submenu);
+                name = xfce_menu_get_name(xfce_submenu);
                 icon_name = NULL;
             }
             
@@ -242,36 +242,36 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
             
-            desktop_menu_add_items(desktop_menu, frap_submenu, submenu,
+            desktop_menu_add_items(desktop_menu, xfce_submenu, submenu,
                                    watch_dirs);
             
             /* we have to check emptiness down here instead of at the top of the
              * loop because there may be further submenus that are empty */
             if(!gtk_container_get_children(GTK_CONTAINER(submenu)))
                 gtk_widget_destroy(mi);
-        } else if(FRAP_IS_MENU_SEPARATOR(l->data)) {
+        } else if(XFCE_IS_MENU_SEPARATOR(l->data)) {
             mi = gtk_separator_menu_item_new();
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        } else if(FRAP_IS_MENU_ITEM(l->data)) {
-            frap_item = l->data;
+        } else if(XFCE_IS_MENU_ITEM(l->data)) {
+            xfce_item = l->data;
             
-            if(frap_menu_item_get_no_display(frap_item)
-               || !frap_menu_item_show_in_environment(frap_item))
+            if(xfce_menu_item_get_no_display(xfce_item)
+               || !xfce_menu_item_show_in_environment(xfce_item))
             {
                 continue;
             }
             
-            mi = xfce_app_menu_item_new_full(frap_menu_item_get_name(frap_item),
-                                             frap_menu_item_get_command(frap_item),
-                                             frap_menu_item_get_icon_name(frap_item),
-                                             frap_menu_item_requires_terminal(frap_item),
-                                             frap_menu_item_supports_startup_notification(frap_item));
+            mi = xfce_app_menu_item_new_full(xfce_menu_item_get_name(xfce_item),
+                                             xfce_menu_item_get_command(xfce_item),
+                                             xfce_menu_item_get_icon_name(xfce_item),
+                                             xfce_menu_item_requires_terminal(xfce_item),
+                                             xfce_menu_item_supports_startup_notification(xfce_item));
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             
             desktop_menu_watch_dirs_add(watch_dirs,
-                                        frap_menu_item_get_filename(frap_item));
+                                        xfce_menu_item_get_filename(xfce_item));
         }
     }
     g_slist_free(items);
@@ -300,14 +300,14 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
     
     DBG("menu file name is %s", desktop_menu->filename);
     
-    /* this is kinda lame, but frapmenu currently caches too much */
-    frap_menu_shutdown();
-    frap_menu_init("XFCE");
+    /* this is kinda lame, but xfcemenu currently caches too much */
+    xfce_menu_shutdown();
+    xfce_menu_init("XFCE");
     
     if(g_file_test(desktop_menu->filename, G_FILE_TEST_EXISTS)) {
-        desktop_menu->frap_menu = frap_menu_new(desktop_menu->filename, &error);
-        if(!desktop_menu->frap_menu) {
-            g_critical("Unable to create FrapMenu from file '%s': %s",
+        desktop_menu->xfce_menu = xfce_menu_new(desktop_menu->filename, &error);
+        if(!desktop_menu->xfce_menu) {
+            g_critical("Unable to create XfceMenu from file '%s': %s",
                        desktop_menu->filename, error->message);
             g_error_free(error);
             return FALSE;
@@ -317,15 +317,15 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
         gtk_widget_show(desktop_menu->menu);
     
         desktop_menu_watch_dirs_add(watch_dirs,
-                                    frap_menu_get_filename(desktop_menu->frap_menu));
+                                    xfce_menu_get_filename(desktop_menu->xfce_menu));
     
     
-        desktop_menu_add_items(desktop_menu, desktop_menu->frap_menu,
+        desktop_menu_add_items(desktop_menu, desktop_menu->xfce_menu,
                                desktop_menu->menu, watch_dirs);
         
         /* really don't need to keep this around */
-        g_object_unref(G_OBJECT(desktop_menu->frap_menu));
-        desktop_menu->frap_menu = NULL;
+        g_object_unref(G_OBJECT(desktop_menu->xfce_menu));
+        desktop_menu->xfce_menu = NULL;
     }
     
     if(user_menu && desktop_menu->using_default_menu) {
@@ -352,11 +352,11 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
     
     if(desktop_menu->menu)
         gtk_widget_destroy(desktop_menu->menu);
-    if(desktop_menu->frap_menu)
-        g_object_unref(G_OBJECT(desktop_menu->frap_menu));
+    if(desktop_menu->xfce_menu)
+        g_object_unref(G_OBJECT(desktop_menu->xfce_menu));
     
     desktop_menu->menu = NULL;
-    desktop_menu->frap_menu = NULL;
+    desktop_menu->xfce_menu = NULL;
 }
 
 void
@@ -489,10 +489,10 @@ g_module_check_init(GModule *module)
 {
     gint w, h;
     
-	/* libfrapmenu registers gobject types, so we can't be removed */
+	/* libxfcemenu registers gobject types, so we can't be removed */
 	g_module_make_resident(module);
 	
-	frap_menu_init("XFCE");
+	xfce_menu_init("XFCE");
 	
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
     _xfce_desktop_menu_icon_size = w;

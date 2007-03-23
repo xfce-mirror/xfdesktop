@@ -14,6 +14,10 @@ xfce4_menu_plugin_CFLAGS = \
 	-DLOCALEDIR=\"$(localedir)\" \
 	-DBINDIR=\"$(bindir)\"
 
+xfce4_menu_plugin_DEPENDENCIES = \
+	$(top_builddir)/common/libxfdesktop-menu.la \
+	$(top_builddir)/common/libxfdesktop.la
+
 xfce4_menu_plugin_LDADD = \
 	$(top_builddir)/common/libxfdesktop-menu.la \
 	$(top_builddir)/common/libxfdesktop.la \

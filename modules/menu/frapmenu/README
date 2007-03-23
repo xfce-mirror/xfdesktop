@@ -1,6 +1,0 @@
-Copied from /xfce/libfrap/trunk/libfrap/menu, revision 24977
-
-Fixes to make it work after importing:
-* Edit Makefile.am to add proper paths and remove STATUS
-* Edit tdb/*.[ch] to point includes to the right place
-* -Werror will fail in this dir and in tdb/

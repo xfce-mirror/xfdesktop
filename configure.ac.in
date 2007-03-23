@@ -9,6 +9,7 @@ m4_define([xfdesktop_version], [4.4.0])
 dnl minimum required versions
 m4_define([gtk_minimum_version], [2.6.0])
 m4_define([xfce_minimum_version], [4.4.0])
+m4_define([xfce4menu_minimum_version], [0.1.0])
 m4_define([exo_minimum_version], [0.3.2])
 m4_define([thunar_minimum_version], [0.8.0])
 m4_define([dbus_minimum_version], [0.34])
@@ -178,13 +179,24 @@ AC_ARG_ENABLE([desktop-menu],
         [ac_cv_enable_desktop_menu=$enableval],
         [ac_cv_enable_desktop_menu=yes])
 if test "x$ac_cv_enable_desktop_menu" = "xno"; then
-        build_desktop_menu="no"
+    build_desktop_menu="no"
 else
-        build_desktop_menu="yes"
+    dnl time for more abuse!
+    XDT_CHECK_PACKAGE([LIBXFCE4MENU], [libxfce4menu-0.1],
+                      [xfce4menu_minimum_version], [build_desktop_menu="yes"],
+                      [
+echo "*** Optional package libxfce4menu-0.1 was either not found on your system"
+echo "*** or is too old.  Please install or upgrade to at least version"
+echo "*** xfce4menu_minimum_version, or adjust the PKG_CONFIG_PATH environment variable"
+echo "*** if you installed the new version of the package in a nonstandard"
+echo "*** prefix.  Desktop menu will be disabled."
+build_desktop_menu="no"
+])
+    if test "x$build_desktop_menu" = "xyes"; then
         AC_DEFINE([USE_DESKTOP_MENU], [1],
-                [Define if we should build the desktop menu module])
+                  [Define if we should build the desktop menu module])
+    fi
 fi
-AC_SUBST(DESKTOP_MENU_DIR)
 AM_CONDITIONAL([BUILD_DESKTOP_MENU], [test "x$build_desktop_menu" = "xyes"])
 
 dnl time for more abuse.  if we don't yet have thunar-vfs, we still might want
@@ -279,9 +291,6 @@ menueditor/Makefile
 modules/Makefile
 modules/menu/Makefile
 modules/menu/directory-data/Makefile
-modules/menu/frapmenu/Makefile
-modules/menu/frapmenu/tdb/Makefile
-modules/menu/frapmenu/tdb/tdbconfig.h
 modules/menu/menu-data/Makefile
 panel-plugin/Makefile
 pixmaps/Makefile

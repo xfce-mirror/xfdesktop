@@ -23,10 +23,10 @@
 
 #include <gtk/gtk.h>
 
-#include "libfrapmenu.h"
+#include <libxfce4menu/libxfce4menu.h>
 
 struct _XfceDesktopMenu {
-	FrapMenu *frap_menu;
+	XfceMenu *xfce_menu;
 	GtkWidget *menu;  /* the menu widget itself */
 	
     gchar *filename;  /* file the menu is currently using */

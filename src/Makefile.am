@@ -62,6 +62,7 @@ xfdesktop_CFLAGS = \
 	$(LIBXFCEGUI4_CFLAGS) \
 	$(LIBXFCE4MCS_CLIENT_CFLAGS)
 
+
 xfdesktop_LDFLAGS = \
 	-export-dynamic
 
@@ -69,6 +70,7 @@ xfdesktop_LDFLAGS = \
 xfdesktop_LDADD = $(top_builddir)/common/libxfdesktop.la
 if BUILD_DESKTOP_MENU
   xfdesktop_LDADD += $(top_builddir)/common/libxfdesktop-menu.la
+  xfdesktop_DEPENDENCIES = $(top_builddir)/common/libxfdesktop-menu.la
 endif
 xfdesktop_LDADD += \
 	$(LIBX11_LDFLAGS) \
