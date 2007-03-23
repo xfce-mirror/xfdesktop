@@ -201,7 +201,7 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
     const gchar *name, *icon_name;
     
     if(xfce_menu_has_layout(xfce_menu))
-        items = xfce_menu_get_layout_items(xfce_menu);
+        items = xfce_menu_get_layout_elements(xfce_menu);
     else {
         items = xfce_menu_get_menus(xfce_menu);
         items = g_slist_concat(items, xfce_menu_get_items(xfce_menu));
