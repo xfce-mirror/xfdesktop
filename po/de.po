@@ -4,6 +4,7 @@
 # Benedikt Meurer <benny@xfce.org>, 2003.
 # Moritz Heiber <moe@xfce.org>, 2004.
 # Fabian Nowak <timystery@arcor.de>, 2005-2007.
+# Nico Schümann <nico@prog.nico22.de>, 2007.
 #
 msgid ""
 msgstr ""
@@ -11,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-03-20 12:36-0700\n"
 "PO-Revision-Date: 22007-01-04 00:02+0100\n"
-"Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
+"Last-Translator: Nico Schümann <nico@prog.nico22.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -243,7 +244,7 @@ msgstr "_Neu"
 
 #: ../menueditor/menueditor-main-window.c:141
 msgid "Create a new empty menu"
-msgstr "Neues leeres Menü erstellen"
+msgstr "Neues, leeres Menü erstellen"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1602
@@ -293,7 +294,7 @@ msgstr "_Beenden"
 
 #: ../menueditor/menueditor-main-window.c:147
 msgid "Quit Xfce4-Menueditor"
-msgstr "Xfce Menüeditor beenden"
+msgstr "Xfce-Menüeditor beenden"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
@@ -357,7 +358,7 @@ msgstr "Ü_ber..."
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "Show informations about xfce4-menueditor"
-msgstr "Informationen über Xfce4 Menüeditor anzeigen"
+msgstr "Informationen über Xfce4-Menüeditor anzeigen"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all"
@@ -418,7 +419,7 @@ msgstr "Xfce4-Menüdatei öffnen"
 
 #: ../menueditor/menueditor-main-window.c:534
 msgid "Do you want to save before opening the default menu ?"
-msgstr "Wollen Sie vor dem Öffnen des Default Menüs speichern?"
+msgstr "Wollen Sie vor dem Öffnen des Standardmenüs speichern?"
 
 #: ../menueditor/menueditor-main-window.c:594
 msgid "Save menu file as"
@@ -472,7 +473,7 @@ msgstr "Mitentwickler"
 
 #: ../menueditor/menueditor-main-window.c:1302
 msgid "Icon designer"
-msgstr "Icon-Designer"
+msgstr "Symbol-Designer"
 
 #: ../menueditor/menueditor-main-window.c:1345
 msgid "You have modified the menu, do you want to save it before quitting ?"
@@ -505,7 +506,7 @@ msgstr "Konnte »xfce4-menueditor« nicht starten: %s"
 #: ../panel-plugin/desktop-menu-plugin.c:769
 #: ../panel-plugin/xfce4-menu.desktop.in.h:2
 msgid "Xfce Menu"
-msgstr "Xfce Menü"
+msgstr "Xfce-Menü"
 
 #: ../panel-plugin/desktop-menu-plugin.c:781
 msgid "Button"
@@ -643,7 +644,7 @@ msgid ""
 msgstr ""
 "Um sicherzustellen, dass diese Einstellungen dauerhaft sind, wenn Xfce das "
 "nächste Mal gestartet wird, speichern Sie bitte die Sitzung beim Abmelden. "
-"Falls der Xfce Sitzungs-Manager (xfce4-session) nicht verwendet wird, muss "
+"Falls der Xfce-Sitzungsverwalter (xfce4-session) nicht verwendet wird, muss "
 "die Datei ~/.config/xfce4/xinitrc manuell geändert werden. Details dazu sind "
 "in der Dokumentation unter http://xfce.org/ verfügbar."
 
@@ -657,7 +658,7 @@ msgid ""
 msgstr ""
 "Um sicherzustellen, dass Xfce die Arbeitsoberfläche nicht verwaltet, wenn "
 "Xfce das nächste Mal gestartet wird, speichern Sie bitte die Sitzung beim "
-"Abmelden. Falls der Xfce Sitzungs-Manager (xfce4-session) nicht verwendet "
+"Abmelden. Falls der Xfce-Sitzungsverwalter (xfce4-session) nicht verwendet "
 "wird, muss die Datei ~/.config/xfce4/xinitrc manuell geändert werden. "
 "Details dazu sind in der Dokumentation unter http://xfce.org/ verfügbar."
 
@@ -749,9 +750,9 @@ msgid ""
 "Please choose another location or press cancel in the dialog to discard your "
 "changes"
 msgstr ""
-"Konnte Datei %s nicht abspeichern: %s\n"
+"Konnte Datei »%s« nicht abspeichern: %s\n"
 "\n"
-"Bitte anderen Speicherplatz wählen oder abbrechen, um die Änderungen zu "
+"Bitte einen anderen Speicherplatz wählen oder abbrechen, um die Änderungen zu "
 "verwerfen."
 
 #: ../settings/backdrop-list-manager.c:430
@@ -792,15 +793,15 @@ msgstr "Zeige _Fensterliste bei Mittelklick"
 
 #: ../settings/behavior-settings.c:327
 msgid "Show workspace _names in list"
-msgstr ""
+msgstr "_Namen der Arbeitsflächen in der Liste anzeigen"
 
 #: ../settings/behavior-settings.c:341
 msgid "Show windows on each workspace in sub_menus"
-msgstr ""
+msgstr "Fenster jeder Abeitsfläche in Unter_menüs zeigen"
 
 #: ../settings/behavior-settings.c:351
 msgid "Show sticky windows only in _active workspace"
-msgstr ""
+msgstr "Klebrige Fenster nur auf der _aktiven Arbeitserfläche zeigen"
 
 #: ../settings/behavior-settings.c:362
 msgid "Show _desktop menu on right click"
@@ -897,7 +898,7 @@ msgstr ""
 
 #: ../src/main.c:316
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "    --quit        Xfdesktop zur Beendigung bringen\n"
+msgstr "    --quit        Xfdesktop beenden\n"
 
 #: ../src/main.c:331
 #, c-format
@@ -910,7 +911,7 @@ msgid "<b>Workspace %d</b>"
 msgstr "<b>Arbeitsfläche %d</b>"
 
 #: ../src/windowlist.c:235
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
 msgstr "<b>Arbeitsfläche %d</b>"
 
@@ -931,7 +932,7 @@ msgstr "A_rbeitsfläche %d entfernen"
 #: ../src/windowlist.c:343
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "A_rbeitsfläche '%s' entfernen"
+msgstr "A_rbeitsfläche »%s« entfernen"
 
 #: ../src/xfce-desktop.c:573
 msgid "Desktop"
@@ -942,7 +943,7 @@ msgstr "Arbeitsoberfläche"
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
-"Xfdesktop konnte den Ordner »%s« zur Speicherung von Elementen der "
+"Xfdesktop konnte den Ordner »%s« zum Speichern von Elementen der "
 "Arbeitsoberfläche nicht erstellen:"
 
 #: ../src/xfdesktop-file-icon-manager.c:388
@@ -1134,7 +1135,7 @@ msgstr "_Starter erstellen..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1877
 msgid "Create _URL Link..."
-msgstr "_URL-Verknüpfung erstellen..."
+msgstr "_URL erstellen..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1894
 msgid "Create _Folder..."
@@ -1375,42 +1376,39 @@ msgstr "Menüeditor"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
-msgstr "Xfce 4 Menüeditor"
+msgstr "Xfce-4-Menüeditor"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-#, fuzzy
 msgid "Accessories"
-msgstr "Zugegriffen:"
+msgstr "Zubehör"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
-msgstr ""
+msgstr "Allgemeine Werkzeuge und Anwendungen"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:1
 msgid "Development"
 msgstr "Entwicklung"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:2
-#, fuzzy
 msgid "Software development tools"
-msgstr "Hauptentwickler"
+msgstr "Softwareentwicklungswekzeuge"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:1
 msgid "Education"
-msgstr ""
+msgstr "Bildung"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:2
 msgid "Educational software"
-msgstr ""
+msgstr "Bildungsprogramme"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-#, fuzzy
 msgid "Games"
-msgstr "Name:"
+msgstr "Spiele"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
-msgstr ""
+msgstr "Puzzle und Spiele"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
@@ -1418,16 +1416,15 @@ msgstr "Grafik"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr ""
+msgstr "Grafikbearbeitungsprogramme"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
-msgstr ""
+msgstr "Abspiel- und Bearbeitungsprogramme für Bild und Ton"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-#, fuzzy
 msgid "Multimedia"
-msgstr "Mehrere Ebenen"
+msgstr "Multimedia"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
@@ -1435,7 +1432,7 @@ msgstr "Netzwerk"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:2
 msgid "Network applications and utilities"
-msgstr ""
+msgstr "Netzwerkprogramme"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:1
 msgid "Office"
@@ -1443,45 +1440,43 @@ msgstr "Büro"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:2
 msgid "Office and productivity applications"
-msgstr ""
+msgstr "Büroanwendungen"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:1
 msgid "Applications that don't fit into other categories"
-msgstr ""
+msgstr "Sonstige Anwendungen"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-#, fuzzy
 msgid "Other"
-msgstr "/Andere"
+msgstr "Andere"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr ""
+msgstr "Bildschirmschoner-Applets"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
-msgstr ""
+msgstr "Bildschirmschoner"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr ""
+msgstr "Programme für System- und Desktopeinstellungen"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-#, fuzzy
 msgid "Settings"
-msgstr "Hintergrundeinstellungen"
+msgstr "Einstellungen"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
-msgstr ""
+msgstr "Systemprogramme"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
-msgstr ""
+msgstr "Über Xfce"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr ""
+msgstr "Informationen zur Xfce-Desktop-Umgebung"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
@@ -1489,35 +1484,31 @@ msgstr "Dateimanager"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
 msgid "Thunar file manager"
-msgstr ""
+msgstr "Thunar-Dateimanager"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-#, fuzzy
 msgid "Help"
 msgstr "_Hilfe"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr ""
+msgstr "Benutzungshinweise zu Xfce"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
-msgstr ""
+msgstr "Abmelden"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-#, fuzzy
 msgid "Log out of the Xfce Desktop"
-msgstr "Einstellungen für den Xfce 4 Arbeitsoberflächen-Manager"
+msgstr "Vom Xfce-Desktop abmelden"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-#, fuzzy
 msgid "Run Program..."
-msgstr "Fehler beim Ausführen"
+msgstr "Programm ausführen..."
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-#, fuzzy
 msgid "Run a program"
-msgstr "Fehler beim Ausführen"
+msgstr "Ein Programm ausführen"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
@@ -1525,11 +1516,11 @@ msgstr "Terminal"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
 msgid "Terminal emulator"
-msgstr ""
+msgstr "Terminalemulator"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
 msgid "Browse the web"
-msgstr ""
+msgstr "Im Internet surfen"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
@@ -1545,18 +1536,17 @@ msgstr "Hintergrundeinstellungen"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr "Einstellungen für den Xfce 4 Arbeitsoberflächen-Manager"
+msgstr "Einstellungen für den Xfce-4-Arbeitsoberflächen-Manager"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
-msgstr "Xfce 4 Arbeitsoberflächen-Einstellungen"
+msgstr "Xfce-4-Arbeitsoberflächen-Einstellungen"
 
 #~ msgid "Science"
 #~ msgstr "Wissenschaft"
 
-#, fuzzy
 #~ msgid "Scientific applications and tools"
-#~ msgstr "Symbole für minimierte Anwendungen"
+#~ msgstr "Wissenschaftliche Anwendungen"
 
 #~ msgid "Unable to quit session."
 #~ msgstr "Kann Sitzung nicht beenden"
