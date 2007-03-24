@@ -292,7 +292,7 @@ msgstr "_Beenden"
 
 #: ../menueditor/menueditor-main-window.c:147
 msgid "Quit Xfce4-Menueditor"
-msgstr "Xfce Menüeditor beenden"
+msgstr "Xfce-Menüeditor beenden"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
@@ -356,7 +356,7 @@ msgstr "Ü_ber..."
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "Show informations about xfce4-menueditor"
-msgstr "Informationen über Xfce4 Menüeditor anzeigen"
+msgstr "Informationen über Xfce4-Menüeditor anzeigen"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all"
@@ -471,7 +471,7 @@ msgstr "Mitentwickler"
 
 #: ../menueditor/menueditor-main-window.c:1302
 msgid "Icon designer"
-msgstr "Icon-Designer"
+msgstr "Symboldesigner"
 
 #: ../menueditor/menueditor-main-window.c:1345
 msgid "You have modified the menu, do you want to save it before quitting ?"
@@ -492,7 +492,7 @@ msgstr "Kann die Menüdatei »%s« nicht zum Schreiben öffnen"
 #: ../panel-plugin/desktop-menu-plugin.c:773
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
-msgstr "Xfce Menü"
+msgstr "Xfce-Menü"
 
 #: ../modules/menu/desktop-menu-file.c:118
 #: ../modules/menu/desktop-menu-file.c:133
@@ -504,7 +504,7 @@ msgid ""
 "Quitting the session requires that Xfce's session manager (xfce4-session) is "
 "running, but it was not detected.  Please quit Xfce via another means."
 msgstr ""
-"Um die Sitzung zu beenden, muss der Xfce Sitzungsmanager (xfce4-session) "
+"Um die Sitzung zu beenden, muss der Xfce-Sitzungsverwalter (xfce4-session) "
 "laufen, er wurde jedoch nicht gefunden. Bitte beenden Sie Xfce auf andere "
 "Weise."
 
@@ -675,7 +675,7 @@ msgid ""
 msgstr ""
 "Um sicherzustellen, dass diese Einstellungen dauerhaft sind, wenn Xfce das "
 "nächste Mal gestartet wird, speichern Sie bitte die Sitzung beim Abmelden. "
-"Falls der Xfce Sitzungs-Manager (xfce4-session) nicht verwendet wird, muss "
+"Falls der Xfce-Sitzungsverwalter (xfce4-session) nicht verwendet wird, muss "
 "die Datei ~/.config/xfce4/xinitrc manuell geändert werden. Details dazu sind "
 "in der Dokumentation unter http://xfce.org/ verfügbar."
 
@@ -689,7 +689,7 @@ msgid ""
 msgstr ""
 "Um sicherzustellen, dass Xfce die Arbeitsoberfläche nicht verwaltet, wenn "
 "Xfce das nächste Mal gestartet wird, speichern Sie bitte die Sitzung beim "
-"Abmelden. Falls der Xfce Sitzungs-Manager (xfce4-session) nicht verwendet "
+"Abmelden. Falls der Xfce-Sitzungsverwalter (xfce4-session) nicht verwendet "
 "wird, muss die Datei ~/.config/xfce4/xinitrc manuell geändert werden. "
 "Details dazu sind in der Dokumentation unter http://xfce.org/ verfügbar."
 
@@ -781,7 +781,7 @@ msgid ""
 "Please choose another location or press cancel in the dialog to discard your "
 "changes"
 msgstr ""
-"Konnte Datei %s nicht abspeichern: %s\n"
+"Konnte Datei »%s« nicht abspeichern: %s\n"
 "\n"
 "Bitte anderen Speicherplatz wählen oder abbrechen, um die Änderungen zu "
 "verwerfen."
@@ -950,7 +950,7 @@ msgstr "A_rbeitsfläche %d entfernen"
 #: ../src/windowlist.c:307
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "A_rbeitsfläche '%s' entfernen"
+msgstr "A_rbeitsfläche »%s« entfernen"
 
 #: ../src/xfce-desktop.c:542
 msgid "Desktop"
@@ -1386,7 +1386,7 @@ msgstr "Gerät aus_werfen"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Grafisches Werkzeug zum Bearbeiten des Xfce4 Menüs"
+msgstr "Grafisches Werkzeug zum Bearbeiten des Xfce4-Menüs"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
@@ -1394,7 +1394,7 @@ msgstr "Menüeditor"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
-msgstr "Xfce 4 Menüeditor"
+msgstr "Xfce-4-Menüeditor"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
@@ -1406,11 +1406,11 @@ msgstr "Hintergrundeinstellungen"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr "Einstellungen für den Xfce 4 Arbeitsoberflächen-Manager"
+msgstr "Einstellungen für den Xfce-4-Arbeitsoberflächen-Manager"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
-msgstr "Xfce 4 Arbeitsoberflächen-Einstellungen"
+msgstr "Xfce-4-Arbeitsoberflächen-Einstellungen"
 
 #~ msgid " Bytes)"
 #~ msgstr " Bytes)"
@@ -1423,7 +1423,7 @@ msgstr "Xfce 4 Arbeitsoberflächen-Einstellungen"
 #~ "the Xfce trash service, such as Thunar."
 #~ msgstr ""
 #~ "Um den Inhalt des Papierkorbs zu betrachten, braucht man einen "
-#~ "Dateimanager, der den Xfce Papierkobdienst unterstützt, wie z.B. Thunar."
+#~ "Dateimanager, der den Xfce-Papierkobdienst unterstützt, wie z.B. Thunar."
 
 #~ msgid "Unable to empty the trash."
 #~ msgstr "Kann Papierkorb nicht leeren."
