@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 05:11-0800\n"
-"PO-Revision-Date: 2007-02-07 14:30+0100\n"
+"PO-Revision-Date: 2007-03-24 21:41+0100\n"
 "Last-Translator: Maximilian Schleiss <maxschleiss@bluewin.ch>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
-msgstr "Ajouter une entrée de menu"
+msgstr "Ajouter un élément"
 
 #. Type
 #: ../menueditor/menueditor-add-dialog.c:142
@@ -91,7 +91,7 @@ msgstr "Pas d'icône"
 #: ../menueditor/menueditor-edit-dialog.c:203
 #: ../menueditor/menueditor-edit-dialog.c:204
 msgid "Themed icon:"
-msgstr "Icône selon thème:"
+msgstr "Icône selon thème :"
 
 #. allocate the chooser dialog
 #: ../menueditor/menueditor-add-dialog.c:252
@@ -108,7 +108,7 @@ msgstr "Sélectionner l'icône"
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:600
-#: ../settings/appearance-settings.c:532
+#: ../settings/appearance-settings.c:541
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
@@ -117,7 +117,7 @@ msgstr "Tous les fichiers"
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:606
-#: ../settings/appearance-settings.c:536
+#: ../settings/appearance-settings.c:545
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Fichiers images"
@@ -218,11 +218,11 @@ msgstr "Multi-niveaux"
 #: ../menueditor/menueditor-add-external-dialog.c:171
 #: ../menueditor/menueditor-edit-external-dialog.c:151
 msgid "_Unique entries only"
-msgstr "Entrée _unique seulement"
+msgstr "Éléments _uniques seulement"
 
 #: ../menueditor/menueditor-edit-dialog.c:127
 msgid "Edit menu entry"
-msgstr "Editer l'entrée de menu"
+msgstr "Éditer l'élément"
 
 #: ../menueditor/menueditor-edit-external-dialog.c:96
 msgid "Edit external menu entry"
@@ -301,19 +301,19 @@ msgstr "_Éditer"
 
 #: ../menueditor/menueditor-main-window.c:150
 msgid "_Edit entry"
-msgstr "_Éditer l'entrée"
+msgstr "_Éditer l'élément"
 
 #: ../menueditor/menueditor-main-window.c:150
 msgid "Edit selected entry"
-msgstr "Éditer l'entrée sélectionnée"
+msgstr "Éditer l'élément sélectionné"
 
 #: ../menueditor/menueditor-main-window.c:151
 msgid "_Add entry"
-msgstr "_Ajouter une entrée"
+msgstr "_Ajouter un élément"
 
 #: ../menueditor/menueditor-main-window.c:151
 msgid "Add a new entry in the menu"
-msgstr "Ajouter une entrée dans le menu"
+msgstr "Ajouter un élément au menu"
 
 #: ../menueditor/menueditor-main-window.c:152
 msgid "Add _external"
@@ -321,15 +321,15 @@ msgstr "Ajouter un menu _externe"
 
 #: ../menueditor/menueditor-main-window.c:152
 msgid "Add an external entry"
-msgstr "Ajouter une entrée externe"
+msgstr "Ajouter un élément externe"
 
 #: ../menueditor/menueditor-main-window.c:153
 msgid "_Remove entry"
-msgstr "_Supprimer l'entrée"
+msgstr "_Supprimer l'élément"
 
 #: ../menueditor/menueditor-main-window.c:153
 msgid "Remove entry"
-msgstr "Supprimer une entrée"
+msgstr "Supprimer un élément"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "_Up"
@@ -337,7 +337,7 @@ msgstr "_Haut"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "Move entry up"
-msgstr "Remonte l'entrée"
+msgstr "Monter l'élément"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "_Down"
@@ -345,7 +345,7 @@ msgstr "_Bas"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "Move entry down"
-msgstr "Descendre l'entrée"
+msgstr "Descendre l'élément"
 
 #: ../menueditor/menueditor-main-window.c:157
 msgid "_Help"
@@ -357,7 +357,7 @@ msgstr "_À propos ..."
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "Show informations about xfce4-menueditor"
-msgstr "Afficher des informations à-propos de xfce4-menueditor"
+msgstr "Afficher des informations à propos de xfce4-menueditor"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all"
@@ -365,7 +365,7 @@ msgstr "Refermer tout"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all menu entries"
-msgstr "Refermer toutes les entrées du menu"
+msgstr "Refermer tous les éléments du menu"
 
 #: ../menueditor/menueditor-main-window.c:161
 msgid "Expand all"
@@ -373,7 +373,7 @@ msgstr "Éclater tout"
 
 #: ../menueditor/menueditor-main-window.c:161
 msgid "Expand all menu entries"
-msgstr "Éclater toutes les entrées du menu"
+msgstr "Éclater tous les éléments du menu"
 
 #: ../menueditor/menueditor-main-window.c:341
 msgid "Name"
@@ -454,7 +454,7 @@ msgstr "système"
 #: ../menueditor/menueditor-main-window.c:1215
 #: ../menueditor/menueditor-main-window.c:1263
 msgid "Do you want to move the item into the submenu?"
-msgstr "Voulez-vous déplacer l'entrée dans le sous-menu ?"
+msgstr "Voulez-vous déplacer l'élément dans le sous-menu ?"
 
 #: ../menueditor/menueditor-main-window.c:1293
 msgid "A menu editor for Xfce4"
@@ -490,7 +490,7 @@ msgstr "Échec à l'ouverture du fichier de menu %s en mode écriture"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:773
+#: ../panel-plugin/desktop-menu-plugin.c:765
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Menu Xfce"
@@ -527,222 +527,218 @@ msgstr "Sélection du fichier de menu"
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Impossible de lancer xfce4-menueditor : %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
-msgid "Edit Properties"
-msgstr "Éditer les propriétés"
-
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:777
 msgid "Button"
 msgstr "Bouton"
 
-#: ../panel-plugin/desktop-menu-plugin.c:796
+#: ../panel-plugin/desktop-menu-plugin.c:790
 msgid "Button _title:"
 msgstr "_Titre du bouton :"
 
-#: ../panel-plugin/desktop-menu-plugin.c:809
+#: ../panel-plugin/desktop-menu-plugin.c:803
 msgid "_Show title in button"
 msgstr "_Afficher le titre dans le bouton"
 
-#: ../panel-plugin/desktop-menu-plugin.c:816
+#: ../panel-plugin/desktop-menu-plugin.c:810
 msgid "Menu File"
 msgstr "Fichier du menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:828
+#: ../panel-plugin/desktop-menu-plugin.c:822
 msgid "Use default _desktop menu file"
 msgstr "Utiliser le fichier de menu bureau par _défaut"
 
-#: ../panel-plugin/desktop-menu-plugin.c:837
+#: ../panel-plugin/desktop-menu-plugin.c:831
 msgid "Use _custom menu file:"
 msgstr "Utiliser un fichier de menu _personnalisé :"
 
-#: ../panel-plugin/desktop-menu-plugin.c:888
+#: ../panel-plugin/desktop-menu-plugin.c:882
 #: ../settings/behavior-settings.c:267
 msgid "_Edit Menu"
 msgstr "_Éditer le Menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:894
+#: ../panel-plugin/desktop-menu-plugin.c:888
 msgid "Icons"
 msgstr "Icônes"
 
-#: ../panel-plugin/desktop-menu-plugin.c:906
+#: ../panel-plugin/desktop-menu-plugin.c:900
 msgid "_Button icon:"
 msgstr "Icône de _bouton :"
 
-#: ../panel-plugin/desktop-menu-plugin.c:930
+#: ../panel-plugin/desktop-menu-plugin.c:924
 msgid "Show _icons in menu"
 msgstr "Afficher les _icônes dans le menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:953
+#: ../panel-plugin/desktop-menu-plugin.c:947
 msgid "There is already a panel menu registered for this screen"
 msgstr "Il existe déjà un menu du panneau pour cet écran"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1061
+#: ../panel-plugin/desktop-menu-plugin.c:1055
 msgid "Edit Menu"
 msgstr "Éditer le menu"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../settings/appearance-settings.c:134
+#: ../settings/appearance-settings.c:138
 msgid "Button Label|Desktop"
 msgstr "Bureau"
 
-#: ../settings/appearance-settings.c:187
-#: ../settings/appearance-settings.c:196
-#: ../settings/backdrop-list-manager.c:631
+#: ../settings/appearance-settings.c:191
+#: ../settings/appearance-settings.c:200
+#: ../settings/backdrop-list-manager.c:628
 msgid "backdrops.list"
 msgstr "fonds.list"
 
-#: ../settings/appearance-settings.c:527
+#: ../settings/appearance-settings.c:536
 msgid "Select backdrop image or list file"
 msgstr "Sélection d'une image de fond ou d'un fichier de liste"
 
-#: ../settings/appearance-settings.c:545
+#: ../settings/appearance-settings.c:554
 msgid "List Files (*.list)"
 msgstr "Fichiers de liste (*.list)"
 
-#: ../settings/appearance-settings.c:637
+#: ../settings/appearance-settings.c:650
 msgid "_Edit list..."
 msgstr "_Édition de la liste..."
 
-#: ../settings/appearance-settings.c:645
+#: ../settings/appearance-settings.c:658
 msgid "_New list..."
 msgstr "_Nouvelle liste..."
 
-#: ../settings/appearance-settings.c:678
+#: ../settings/appearance-settings.c:691
 msgid "S_tyle:"
 msgstr "St_yle :"
 
-#: ../settings/appearance-settings.c:685
+#: ../settings/appearance-settings.c:698
 msgid "Auto"
 msgstr "Automatique"
 
-#: ../settings/appearance-settings.c:686
+#: ../settings/appearance-settings.c:699
 msgid "Centered"
 msgstr "Centré"
 
-#: ../settings/appearance-settings.c:687
+#: ../settings/appearance-settings.c:700
 msgid "Tiled"
 msgstr "Mosaïque"
 
-#: ../settings/appearance-settings.c:688
+#: ../settings/appearance-settings.c:701
 msgid "Stretched"
 msgstr "Étiré"
 
-#: ../settings/appearance-settings.c:689
+#: ../settings/appearance-settings.c:702
 msgid "Scaled"
 msgstr "À l'échelle"
 
-#: ../settings/appearance-settings.c:745
+#: ../settings/appearance-settings.c:758
 msgid "A_djust Brightness:"
 msgstr "Ajuster la _luminosité:"
 
-#: ../settings/appearance-settings.c:803
+#: ../settings/appearance-settings.c:816
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce ne sera pas en mesure de gérer votre bureau (%s)."
 
-#: ../settings/appearance-settings.c:804
+#: ../settings/appearance-settings.c:817
 msgid "Unknown Error"
 msgstr "Erreur inconnue"
 
-#: ../settings/appearance-settings.c:808
+#: ../settings/appearance-settings.c:821
 #: ../src/xfdesktop-regular-file-icon.c:520
 #: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr "Erreur"
 
-#: ../settings/appearance-settings.c:810
+#: ../settings/appearance-settings.c:823
 msgid "Unable to start xfdesktop"
 msgstr "Impossible de démarrer xfdesktop"
 
-#: ../settings/appearance-settings.c:832
+#: ../settings/appearance-settings.c:845
 msgid "Information"
 msgstr "Information"
 
-#: ../settings/appearance-settings.c:845
+#: ../settings/appearance-settings.c:858
 msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
 msgstr "Pour vous assurer que Xfce ne gérera pas votre bureau lors de votre prochaine session, assurez-vous de bien sauvegarder votre session en la quittant. Si vous ne faites pas usage du gestionnaire de sessions Xfce (xfce4-session), éditez votre fichier ~/.config/xfce4/xinitrc manuellement. Plus de détails dans la documentation en ligne http://www.xfce.org/."
 
-#: ../settings/appearance-settings.c:847
+#: ../settings/appearance-settings.c:860
 msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
 msgstr "Pour vous assurer que Xfce ne gérera pas votre bureau lors de votre prochaine session, assurez-vous de bien sauvegarder votre session en la quittant. Si vous ne faites pas usage du Xfce session manager (xfce4-session) vous devrez éditer votre fichier ~/.config/xfce4/xinitrc manuellement. Plus de détails dans la documentation en ligne http://www.xfce.org/."
 
-#: ../settings/appearance-settings.c:855
+#: ../settings/appearance-settings.c:868
 msgid "_Do not show this again"
 msgstr "_Ne plus afficher ceci à nouveau"
 
 #. the dialog
-#: ../settings/appearance-settings.c:921
+#: ../settings/appearance-settings.c:934
 msgid "Desktop Preferences"
 msgstr "Paramètres de bureau"
 
-#: ../settings/appearance-settings.c:938
+#: ../settings/appearance-settings.c:951
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Permettre à _Xfce de gérer le bureau"
 
-#: ../settings/appearance-settings.c:979
+#: ../settings/appearance-settings.c:992
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "Étirer fond d'écran sur _tous les moniteurs"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:993
-#: ../settings/appearance-settings.c:1175
+#: ../settings/appearance-settings.c:1006
+#: ../settings/appearance-settings.c:1188
 msgid "_Appearance"
 msgstr "_Apparence"
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1019
+#: ../settings/appearance-settings.c:1032
 msgid "Color"
 msgstr "Couleur"
 
-#: ../settings/appearance-settings.c:1033
+#: ../settings/appearance-settings.c:1046
 msgid "_Color Style:"
 msgstr "Style de _couleur :"
 
-#: ../settings/appearance-settings.c:1040
+#: ../settings/appearance-settings.c:1053
 msgid "Solid Color"
 msgstr "Couleur unie"
 
-#: ../settings/appearance-settings.c:1041
+#: ../settings/appearance-settings.c:1054
 msgid "Horizontal Gradient"
 msgstr "Dégradé horizontal"
 
-#: ../settings/appearance-settings.c:1042
+#: ../settings/appearance-settings.c:1055
 msgid "Vertical Gradient"
 msgstr "Dégradé vertical"
 
-#: ../settings/appearance-settings.c:1055
+#: ../settings/appearance-settings.c:1068
 msgid "Fi_rst Color:"
 msgstr "P_remière couleur :"
 
-#: ../settings/appearance-settings.c:1076
+#: ../settings/appearance-settings.c:1089
 msgid "_Second Color:"
 msgstr "_Seconde couleur :"
 
-#: ../settings/appearance-settings.c:1101
+#: ../settings/appearance-settings.c:1114
 msgid "Image"
 msgstr "Image"
 
-#: ../settings/appearance-settings.c:1109
+#: ../settings/appearance-settings.c:1122
 msgid "Show _Image"
 msgstr "Afficher l'_image"
 
-#: ../settings/appearance-settings.c:1131
+#: ../settings/appearance-settings.c:1144
 msgid "_File:"
 msgstr "_Fichier :"
 
-#: ../settings/appearance-settings.c:1186
-#: ../settings/appearance-settings.c:1188
+#: ../settings/appearance-settings.c:1199
+#: ../settings/appearance-settings.c:1201
 #, c-format
 msgid "Screen %d"
 msgstr "Écran %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1193
+#: ../settings/appearance-settings.c:1206
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Écran %d, Moniteur %d"
 
-#: ../settings/appearance-settings.c:1210
+#: ../settings/appearance-settings.c:1223
 msgid "_Behavior"
 msgstr "_Comportement"
 
@@ -770,23 +766,19 @@ msgstr "Choix du fichier contenant la liste des fonds d'écran"
 msgid "List Files"
 msgstr "Liste des fichiers"
 
-#: ../settings/backdrop-list-manager.c:603
-msgid "Backdrop List"
-msgstr "Liste de fonds d'écran"
-
-#: ../settings/backdrop-list-manager.c:620
+#: ../settings/backdrop-list-manager.c:617
 msgid "Image files"
 msgstr "Fichiers images"
 
-#: ../settings/backdrop-list-manager.c:639
+#: ../settings/backdrop-list-manager.c:636
 msgid "List file"
 msgstr "Fichier liste"
 
-#: ../settings/backdrop-list-manager.c:661
+#: ../settings/backdrop-list-manager.c:658
 msgid "Create backdrop list"
 msgstr "Création d'une liste de fonds d'écran"
 
-#: ../settings/backdrop-list-manager.c:694
+#: ../settings/backdrop-list-manager.c:691
 msgid "Edit backdrop list"
 msgstr "Édition de la liste de fonds d'écran"
 
@@ -796,11 +788,11 @@ msgstr "Menus"
 
 #: ../settings/behavior-settings.c:249
 msgid "Show _window list on middle click"
-msgstr "Afficher la _liste des fenêtres avec un clique du milieu"
+msgstr "Afficher la _liste des fenêtres (clic-milieu)"
 
 #: ../settings/behavior-settings.c:260
 msgid "Show _desktop menu on right click"
-msgstr "Afficher le _menu de bureau avec un clique droit"
+msgstr "Afficher le _menu de bureau (clic-droit)"
 
 #: ../settings/behavior-settings.c:279
 msgid "Desktop Icons"
@@ -809,7 +801,7 @@ msgstr "Icônes du bureau"
 #: ../settings/behavior-settings.c:288
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "None"
-msgstr "Aucun"
+msgstr "Aucune"
 
 #: ../settings/behavior-settings.c:289
 msgid "Minimized application icons"
@@ -817,7 +809,7 @@ msgstr "Icônes des applications minimisées"
 
 #: ../settings/behavior-settings.c:291
 msgid "File/launcher icons"
-msgstr "Fichier/icônes lanceurs"
+msgstr "Icônes de fichiers/lanceurs"
 
 #: ../settings/behavior-settings.c:306
 msgid "_Icon size:"
@@ -870,7 +862,7 @@ msgstr "    Icônes du bureau :        %s\n"
 #: ../src/main.c:276
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Icônes du Fichier de Bureau :  %s\n"
+msgstr "    Icônes de fichiers du bureau :  %s\n"
 
 #: ../src/main.c:305
 #, c-format
@@ -902,32 +894,32 @@ msgstr "    --quit        Fait quitter xfdesktop\n"
 msgid "%s is not running.\n"
 msgstr "%s n'est pas en cours d'exécution.\n"
 
-#: ../src/windowlist.c:218
+#: ../src/windowlist.c:220
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Espace de travail %d</b>"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:228
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Espace de travail %d</i>"
 
-#: ../src/windowlist.c:293
-#: ../src/windowlist.c:296
+#: ../src/windowlist.c:295
+#: ../src/windowlist.c:298
 msgid "_Add Workspace"
 msgstr "_Ajouter un espace de travail"
 
-#: ../src/windowlist.c:304
+#: ../src/windowlist.c:306
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Supprimer l'espace de travail %d"
 
-#: ../src/windowlist.c:307
+#: ../src/windowlist.c:309
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Supprimer l'espace de travail '%s'"
 
-#: ../src/xfce-desktop.c:542
+#: ../src/xfce-desktop.c:573
 msgid "Desktop"
 msgstr "Bureau"
 
@@ -1214,6 +1206,13 @@ msgstr "Taille :"
 msgid "%s (%"
 msgstr "%s (%"
 
+#: ../src/xfdesktop-file-properties-dialog.c:413
+#: ../src/xfdesktop-regular-file-icon.c:486
+#: ../src/xfdesktop-special-file-icon.c:487
+#: ../src/xfdesktop-volume-icon.c:460
+msgid " Bytes)"
+msgstr " Octets)"
+
 #. permissions tab
 #: ../src/xfdesktop-file-properties-dialog.c:428
 msgid "Permissions"
@@ -1372,67 +1371,4 @@ msgstr "Paramétrage du gestionnaire de bureau"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Paramètres du bureau de Xfce 4"
-
-#~ msgid ""
-#~ "Viewing the contents of the trash requires a file manager that supports "
-#~ "the Xfce trash service, such as Thunar."
-#~ msgstr ""
-#~ "Il faut, pour voir le contenu de la corbeille, un gestionnaire de "
-#~ "fichiers tel que Thunar, qui supporte le service Xfce trash."
-#~ msgid "Unable to empty the trash."
-#~ msgstr "Impossible de vider la corbeille."
-#~ msgid "Unknown error."
-#~ msgstr "Erreur inconnue."
-#~ msgid " Bytes)"
-#~ msgstr " Octets)"
-#~ msgid "_Copy Files"
-#~ msgstr "_Copier les fichiers"
-#~ msgid "_Copy File"
-#~ msgstr "_Copier le fichier"
-#~ msgid "Cu_t Files"
-#~ msgstr "Co_uper les fichiers"
-#~ msgid "Cu_t File"
-#~ msgstr "Co_uper le fichier"
-#~ msgid "_Delete Files"
-#~ msgstr "_Effacer les fichiers"
-#~ msgid "_Delete File"
-#~ msgstr "_Effacer le fichier"
-
-#, fuzzy
-#~ msgid "_Paste Files"
-#~ msgstr "Liste des fichiers"
-#~ msgid "Create _New"
-#~ msgstr "Créer _nouveau"
-#~ msgid "_Folder..."
-#~ msgstr "_Dossier..."
-
-#, fuzzy
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "Êtes-vous certain de vouloir fermer le menu en cours d'édition ?"
-#~ msgid "Core developer"
-#~ msgstr "Développeur principal"
-#~ msgid "The command doesn't exist !"
-#~ msgstr "La commande n'existe pas !"
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "Tous les champs doivent être remplis pour ajouter une entrée"
-#~ msgid "The 'Name' field is required."
-#~ msgstr "Le champ 'Nom' est requis."
-#~ msgid "The 'Source' field is required."
-#~ msgstr "Le champ 'Source' est requis."
-#~ msgid "Separators cannot be edited"
-#~ msgstr "Les séparateurs ne peuvent être édités"
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "Le fichier %s n'existe pas !"
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "Voulez-vous déplacer l'entrée dans le menu parent ?"
-#~ msgid "Edit"
-#~ msgstr "Édition"
-#~ msgid "Add an external menu..."
-#~ msgstr "Ajouter un menu externe"
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "Ouvre un fichier de menu Xfce4"
-#~ msgid "Save current menu"
-#~ msgstr "Enregistre le menu en cours d'édition"
-#~ msgid "Delete the current entry"
-#~ msgstr "Supprime l'entrée sélectionnée"
 
