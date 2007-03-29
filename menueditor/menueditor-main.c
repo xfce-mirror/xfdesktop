@@ -54,7 +54,10 @@ main (int argc, char **argv)
 
   xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
-  mainwin = menueditor_main_window_new ();
+  if (argc > 1 && argv[1] != NULL)
+    mainwin = menueditor_main_window_new_with_menufile (argv[1]);
+  else
+    mainwin = menueditor_main_window_new ();
 
   gtk_widget_show (mainwin);
 

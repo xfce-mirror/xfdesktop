@@ -64,6 +64,7 @@ typedef enum {
 
 GtkType menueditor_main_window_get_type (void);
 GtkWidget *menueditor_main_window_new (void);
+GtkWidget *menueditor_main_window_new_with_menufile (const gchar *);
 
 void menueditor_main_window_set_menu_modified (MenuEditorMainWindow *win);
 

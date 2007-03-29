@@ -396,8 +396,6 @@ menueditor_main_window_init (MenuEditorMainWindow * mainwin)
   gtk_action_set_sensitive (action, FALSE);
  
   gtk_widget_set_sensitive (priv->treeview, FALSE);
-  
-  action_open_default_menu (NULL, mainwin);
 }
 
 /*************/
@@ -2336,6 +2334,24 @@ menueditor_main_window_new (void)
   
   obj = g_object_new (menueditor_main_window_get_type (), NULL);
   
+  if (obj)
+    action_open_default_menu (NULL, MENUEDITOR_MAIN_WINDOW (obj));
+  
+  return obj;
+}
+
+GtkWidget *
+menueditor_main_window_new_with_menufile (const gchar *menufile)
+{
+  GtkWidget *obj = NULL;
+
+  g_return_val_if_fail (menufile != NULL, NULL);
+
+  obj = g_object_new (menueditor_main_window_get_type (), NULL);
+
+  if (obj)
+    load_menu_in_treeview (menufile, MENUEDITOR_MAIN_WINDOW (obj));
+
   return obj;
 }
 
