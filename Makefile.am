@@ -25,6 +25,7 @@ confdir = $(sysconfdir)/xdg/xfce4/desktop
 
 conf_DATA =		\
 	menu.xml	\
+	menu.xml.be	\
 	menu.xml.ca	\
 	menu.xml.cs	\
 	menu.xml.da	\
