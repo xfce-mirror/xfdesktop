@@ -1,17 +1,17 @@
-# #-#-#-#-#  zh_CN.po (xfdesktop 4.3.90.2)  #-#-#-#-#
-# Simplified Chinese translations for xfdesktop package.
+# Simplified Chinese translation of the xfdesktop package.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Yongtao Yang <yongtao.yang@telia.com>, 2004.
 # wuli <wurisky@gmail.com>,2007
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-03-20 12:36-0700\n"
-"PO-Revision-Date: 2007-02-07 20:02+0800\n"
+"PO-Revision-Date: 2007-03-29 05:25+0800\n"
 "Last-Translator: wuli <wurisky@gmail.com>\n"
-"Language-Team: Simplified Chinese <risky@linuxsir.org>\n"
+"Language-Team: Simplified Chinese <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -403,7 +403,7 @@ msgstr "问题"
 
 #: ../menueditor/menueditor-main-window.c:481
 msgid "Do you want to save before opening an other menu ?"
-msgstr "您希望在打开另一个菜单前保存吗？"
+msgstr "你希望在打开另一个菜单前保存吗？"
 
 #: ../menueditor/menueditor-main-window.c:483
 #: ../menueditor/menueditor-main-window.c:536
@@ -417,7 +417,7 @@ msgstr "打开菜单文件"
 
 #: ../menueditor/menueditor-main-window.c:534
 msgid "Do you want to save before opening the default menu ?"
-msgstr "您希望在打开默认菜单前保存吗？"
+msgstr "你希望在打开默认菜单前保存吗？"
 
 #: ../menueditor/menueditor-main-window.c:594
 msgid "Save menu file as"
@@ -426,7 +426,7 @@ msgstr "保存菜单文件为"
 #: ../menueditor/menueditor-main-window.c:632
 #: ../menueditor/menueditor-main-window.c:1343
 msgid "Do you want to save before closing the menu ?"
-msgstr "您希望在关闭菜单前保存吗？"
+msgstr "你希望在关闭菜单前保存吗？"
 
 #: ../menueditor/menueditor-main-window.c:858
 #: ../menueditor/menueditor-main-window.c:988
@@ -452,7 +452,7 @@ msgstr "系统"
 #: ../menueditor/menueditor-main-window.c:1215
 #: ../menueditor/menueditor-main-window.c:1263
 msgid "Do you want to move the item into the submenu?"
-msgstr "您希望把该条目移到子菜单中吗？"
+msgstr "你希望把该条目移到子菜单中吗？"
 
 #: ../menueditor/menueditor-main-window.c:1293
 msgid "A menu editor for Xfce4"
@@ -475,7 +475,7 @@ msgstr "图标设计者"
 
 #: ../menueditor/menueditor-main-window.c:1345
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "您修改了菜单，您要在退出前保存吗？"
+msgstr "你修改了菜单，你要在退出前保存吗？"
 
 #: ../menueditor/menueditor-main-window.c:1347
 msgid "Forget modifications"
@@ -789,11 +789,11 @@ msgstr ""
 
 #: ../settings/behavior-settings.c:341
 msgid "Show windows on each workspace in sub_menus"
-msgstr ""
+msgstr "在各个工作区子菜单中显示窗口(_M)"
 
 #: ../settings/behavior-settings.c:351
 msgid "Show sticky windows only in _active workspace"
-msgstr ""
+msgstr "只在激活工作区显示粘附窗口(_A)"
 
 #: ../settings/behavior-settings.c:362
 msgid "Show _desktop menu on right click"
@@ -902,9 +902,9 @@ msgid "<b>Workspace %d</b>"
 msgstr "<b>工作区 %d</b>"
 
 #: ../src/windowlist.c:235
-#, fuzzy, c-format
+#, , c-format
 msgid "Workspace %d"
-msgstr "<b>工作区 %d</b>"
+msgstr "工作区 %d"
 
 #: ../src/windowlist.c:237
 #, c-format
@@ -1360,13 +1360,13 @@ msgid "Xfce 4 Menu Editor"
 msgstr "Xfce 4 菜单编辑器"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-#, fuzzy
+#, 
 msgid "Accessories"
-msgstr "访问："
+msgstr "附件"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
-msgstr ""
+msgstr "通用桌面工具和应用程序"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:1
 msgid "Development"
@@ -1374,7 +1374,7 @@ msgstr "开发"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:2
 msgid "Software development tools"
-msgstr ""
+msgstr "软件开发工具"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:1
 msgid "Education"
@@ -1382,16 +1382,16 @@ msgstr "教育"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:2
 msgid "Educational software"
-msgstr ""
+msgstr "教育软件"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-#, fuzzy
+#, 
 msgid "Games"
-msgstr "名称"
+msgstr "游戏"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
-msgstr ""
+msgstr "游戏，益智和其它有趣软件"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
@@ -1399,16 +1399,16 @@ msgstr "图形"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr ""
+msgstr "图形设计和处理应用程序"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
-msgstr ""
+msgstr "音频、视频播放器和编辑器"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-#, fuzzy
+#, 
 msgid "Multimedia"
-msgstr "多层次"
+msgstr "多媒体"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
@@ -1416,7 +1416,7 @@ msgstr "网络"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:2
 msgid "Network applications and utilities"
-msgstr ""
+msgstr "网络应用程序和实用工具"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:1
 msgid "Office"
@@ -1424,45 +1424,45 @@ msgstr "办公"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:2
 msgid "Office and productivity applications"
-msgstr ""
+msgstr "办公和生产力应用程序"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:1
 msgid "Applications that don't fit into other categories"
-msgstr ""
+msgstr "未分类应用程序"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-#, fuzzy
+#, 
 msgid "Other"
-msgstr "/其它"
+msgstr "其它"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr ""
+msgstr "屏保程序"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
-msgstr ""
+msgstr "屏保"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr ""
+msgstr "桌面和系统设置应用程序"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-#, fuzzy
+#, 
 msgid "Settings"
-msgstr "桌面设置"
+msgstr "设置"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
-msgstr ""
+msgstr "系统工具和实用程序"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
-msgstr ""
+msgstr "关于 Xfce"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr ""
+msgstr "关于xfce桌面环境的信息"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
@@ -1470,35 +1470,35 @@ msgstr "文件管理器"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
 msgid "Thunar file manager"
-msgstr ""
+msgstr "Thunar文件管理器"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-#, fuzzy
+#, 
 msgid "Help"
-msgstr "帮助(_H)"
+msgstr "帮助"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr ""
+msgstr "帮助使用Xfce"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
-msgstr ""
+msgstr "注销"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-#, fuzzy
+#, 
 msgid "Log out of the Xfce Desktop"
-msgstr "桌面设置管理器"
+msgstr "退出Xfce桌面"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-#, fuzzy
+#, 
 msgid "Run Program..."
-msgstr "运行错误"
+msgstr "运行程序..."
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-#, fuzzy
+#, 
 msgid "Run a program"
-msgstr "运行错误"
+msgstr "运行一个程序"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
@@ -1506,11 +1506,11 @@ msgstr "终端"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
 msgid "Terminal emulator"
-msgstr ""
+msgstr "终端模拟器"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
 msgid "Browse the web"
-msgstr ""
+msgstr "浏览网页"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
@@ -1535,7 +1535,7 @@ msgstr "xfce4 桌面设置"
 #~ msgid "Science"
 #~ msgstr "科学"
 
-#, fuzzy
+#, 
 #~ msgid "Scientific applications and tools"
 #~ msgstr "显示最小化应用程序图标"
 
