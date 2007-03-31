@@ -162,7 +162,7 @@ xfce_desktop_get_menufile(void)
                                         "menus/xfce-applications.menu");
     for(i = 0; all_dirs[i]; i++) {
         DBG("checking %s", all_dirs[i]);
-        if(strstr(all_dirs[i], userhome) != all_dirs[i]) {
+        if(user_menu || strstr(all_dirs[i], userhome) != all_dirs[i]) {
             if(g_file_test(all_dirs[i], G_FILE_TEST_IS_REGULAR)) {
                 menu_file = g_strdup(all_dirs[i]);
                 break;
