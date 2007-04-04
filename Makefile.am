@@ -38,9 +38,10 @@ conf_DATA =		\
 	menu.xml.fr	\
 	menu.xml.he	\
 	menu.xml.hu	\
+	menu.xml.it	\
 	menu.xml.ja	\
 	menu.xml.ko	\
-	menu.xml.nl  	\
+	menu.xml.nl	\
 	menu.xml.pa	\
 	menu.xml.pl	\
 	menu.xml.pt_BR	\
