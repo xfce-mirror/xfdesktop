@@ -4,14 +4,14 @@
 # This file is distributed under the same license as the xfdesktop package.
 #
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2003-2004, 2006.
-# Pau Rul·lan Ferragut <paurullan@bulma.net> 2005, 2006.
+# Pau Ruŀlan Ferragut <paurullan@bulma.net> 2005-07
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-03-20 12:36-0700\n"
-"PO-Revision-Date: 2006-11-25 11:31+0100\n"
-"Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
+"PO-Revision-Date: 2007-04-05 15:26+0200\n"
+"Last-Translator: Pau Ruŀlan Ferragut <paurullan@bulma.net>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -277,7 +277,7 @@ msgstr "Desa les modificacions"
 
 #: ../menueditor/menueditor-main-window.c:145
 msgid "Save _as..."
-msgstr "_Anomena i desa..."
+msgstr "_Anomena i desa"
 
 #: ../menueditor/menueditor-main-window.c:145
 msgid "Save menu under a given name"
@@ -357,7 +357,7 @@ msgstr "A_juda"
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "_About..."
-msgstr "_Quant a..."
+msgstr "_Quant a"
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "Show informations about xfce4-menueditor"
@@ -579,11 +579,11 @@ msgstr "Llista fitxers (*.list)"
 
 #: ../settings/appearance-settings.c:688
 msgid "_Edit list..."
-msgstr "_Edita llistat..."
+msgstr "_Edita llistat"
 
 #: ../settings/appearance-settings.c:696
 msgid "_New list..."
-msgstr "Llista _nova..."
+msgstr "Llista _nova"
 
 #: ../settings/appearance-settings.c:729
 msgid "S_tyle:"
@@ -795,15 +795,15 @@ msgstr "Mostra el llistat de _finestres amb clic central"
 
 #: ../settings/behavior-settings.c:327
 msgid "Show workspace _names in list"
-msgstr ""
+msgstr "Mostra els _noms de les àrees de treball en la llista"
 
 #: ../settings/behavior-settings.c:341
 msgid "Show windows on each workspace in sub_menus"
-msgstr ""
+msgstr "Mostra les finestres de les àrees de treball als sub_menús"
 
 #: ../settings/behavior-settings.c:351
 msgid "Show sticky windows only in _active workspace"
-msgstr ""
+msgstr "Mostr_a les finestres omnipresents sols a l’àrea de treball activa"
 
 #: ../settings/behavior-settings.c:362
 msgid "Show _desktop menu on right click"
@@ -916,9 +916,9 @@ msgid "<b>Workspace %d</b>"
 msgstr "<b>Àrea de treball %d</b>"
 
 #: ../src/windowlist.c:235
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
-msgstr "<b>Àrea de treball %d</b>"
+msgstr "Àrea de treball %d"
 
 #: ../src/windowlist.c:237
 #, c-format
@@ -972,7 +972,7 @@ msgstr "Si us plau esborri o canvii el nom al fitxer."
 #: ../src/xfdesktop-file-icon-manager.c:538
 #, c-format
 msgid "Rename \"%s\""
-msgstr "Reanomena \"%s\""
+msgstr "Reanomena «%s»"
 
 #: ../src/xfdesktop-file-icon-manager.c:545
 #: ../src/xfdesktop-file-icon-manager.c:1166
@@ -988,7 +988,7 @@ msgstr "Canvia el nom"
 #: ../src/xfdesktop-file-icon-manager.c:584
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "Esteu segur que voleu suprimir els següents \"%s\" fitxers?"
+msgstr "Esteu segur que voleu suprimir els següents «%s» fitxers?"
 
 #: ../src/xfdesktop-file-icon-manager.c:589
 #: ../src/xfdesktop-file-icon-manager.c:609
@@ -1010,7 +1010,7 @@ msgstr "Suprimeix multiple fitxers"
 #: ../src/xfdesktop-file-utils.c:352
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "No s'ha pogut executar \"%s\":"
+msgstr "No s'ha pogut executar «%s»:"
 
 #: ../src/xfdesktop-file-icon-manager.c:825
 #: ../src/xfdesktop-file-icon-manager.c:865
@@ -1035,17 +1035,17 @@ msgstr ""
 #: ../src/xfdesktop-file-icon-manager.c:1027
 #, c-format
 msgid "_Open With \"%s\""
-msgstr "_Obre amb \"%s\""
+msgstr "_Obre amb «%s»"
 
 #: ../src/xfdesktop-file-icon-manager.c:1030
 #, c-format
 msgid "Open With \"%s\""
-msgstr "Obre amb \"%s\""
+msgstr "Obre amb «%s»"
 
 #: ../src/xfdesktop-file-icon-manager.c:1091
 #, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "No s'ha crear el directori anomenat \"%s\":"
+msgstr "No s'ha crear el directori anomenat «%s»:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1130
 msgid ""
@@ -1072,7 +1072,7 @@ msgstr "Crea"
 #: ../src/xfdesktop-file-icon-manager.c:1204
 #, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "No s'ha pogut crear el fitxer anomenat \"%s\":"
+msgstr "No s'ha pogut crear el fitxer anomenat «%s»:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1207
 msgid "Create File Failed"
@@ -1081,7 +1081,7 @@ msgstr "No s'ha pogut crear el fitxer"
 #: ../src/xfdesktop-file-icon-manager.c:1246
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr "Crea un document des de la plantilla \"%s\""
+msgstr "Crea un document des de la plantilla «%s»"
 
 #: ../src/xfdesktop-file-icon-manager.c:1265
 msgid "Create Empty File"
@@ -1094,7 +1094,7 @@ msgstr "Fitxer buit nou"
 #: ../src/xfdesktop-file-icon-manager.c:1302
 #, c-format
 msgid "Unable to create file \"%s\":"
-msgstr "No s'ha pogut crear el fitxer \"%s\":"
+msgstr "No s'ha pogut crear el fitxer «%s»:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1303
 msgid "Create Error"
@@ -1127,7 +1127,7 @@ msgstr "Canv_ia el nom"
 #: ../src/xfdesktop-file-icon-manager.c:1820
 #: ../src/xfdesktop-volume-icon.c:593
 msgid "_Properties..."
-msgstr "_Propietats..."
+msgstr "_Propietats"
 
 #: ../src/xfdesktop-file-icon-manager.c:1837
 msgid "Des_ktop"
@@ -1139,11 +1139,11 @@ msgstr "Crea _llançador"
 
 #: ../src/xfdesktop-file-icon-manager.c:1877
 msgid "Create _URL Link..."
-msgstr "Crea enllaç _URL…"
+msgstr "Crea enllaç _URL"
 
 #: ../src/xfdesktop-file-icon-manager.c:1894
 msgid "Create _Folder..."
-msgstr "Crea un _directori…"
+msgstr "Crea un _directori"
 
 #: ../src/xfdesktop-file-icon-manager.c:1936
 msgid "_Empty File"
@@ -1151,17 +1151,17 @@ msgstr "Fitx_er buit"
 
 #: ../src/xfdesktop-file-icon-manager.c:1977
 msgid "Desktop _Settings..."
-msgstr "Paràmetres de l'e_scriptori…"
+msgstr "Paràmetres de l'e_scriptori"
 
 #: ../src/xfdesktop-file-icon-manager.c:1986
 msgid "_Desktop Properties..."
-msgstr "Propietats _de l’escriptori…"
+msgstr "Propietats _de l’escriptori"
 
 #: ../src/xfdesktop-file-icon-manager.c:3158
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
-msgstr "No s'ha pogut executar \"%s\":"
+msgstr "No s'ha pogut executar «%s»:"
 
 #: ../src/xfdesktop-file-icon-manager.c:3160
 #: ../src/xfdesktop-regular-file-icon.c:384
@@ -1175,7 +1175,7 @@ msgstr "No s'ha pogut trobar o executar l'aplicació associada."
 #: ../src/xfdesktop-file-properties-dialog.c:103
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr "No s'ha pogut definir l'aplicació de \"%s\" per \"%s\":"
+msgstr "No s'ha pogut definir l'aplicació de «%s» per «%s»:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:106
 msgid "Properties Error"
@@ -1305,7 +1305,7 @@ msgstr ""
 #: ../src/xfdesktop-regular-file-icon.c:581
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr "No s'ha pogut canviar el nom de \"%s\" a \"%s\":"
+msgstr "No s'ha pogut canviar el nom de «%s» a «%s»:"
 
 #: ../src/xfdesktop-special-file-icon.c:258
 msgid "Home"
@@ -1334,12 +1334,12 @@ msgstr "Buida la pap_erera"
 #: ../src/xfdesktop-volume-icon.c:491
 #, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "No s'ha pogut muntar \"%s\":"
+msgstr "No s'ha pogut muntar «%s»:"
 
 #: ../src/xfdesktop-volume-icon.c:492
 #, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "No s'ha pogut desmuntar \"%s\":"
+msgstr "No s'ha pogut desmuntar «%s»:"
 
 #: ../src/xfdesktop-volume-icon.c:495
 msgid "Mount Failed"
@@ -1352,7 +1352,7 @@ msgstr "No s'ha pogut desmuntar"
 #: ../src/xfdesktop-volume-icon.c:513
 #, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "No s'ha pogut expulsar \"%s\":"
+msgstr "No s'ha pogut expulsar «%s»:"
 
 #: ../src/xfdesktop-volume-icon.c:516
 msgid "Eject Failed"
@@ -1383,13 +1383,12 @@ msgid "Xfce 4 Menu Editor"
 msgstr "Editor del menú Xfce4"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-#, fuzzy
 msgid "Accessories"
-msgstr "Accedit:"
+msgstr "Accessoris"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
-msgstr ""
+msgstr "Eines i aplicacions comuns de l’escriptori"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:1
 msgid "Development"
@@ -1397,41 +1396,39 @@ msgstr "Desenvolupament"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:2
 msgid "Software development tools"
-msgstr ""
+msgstr "Eines de desenvolupament de programari"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:1
 msgid "Education"
-msgstr ""
+msgstr "Educació"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:2
 msgid "Educational software"
-msgstr ""
+msgstr "Programari educatiu"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-#, fuzzy
 msgid "Games"
-msgstr "Nom"
+msgstr "Jocs"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
-msgstr ""
+msgstr "Jocs, puzzles i altres programes divertits"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
-msgstr "Representació gràfica"
+msgstr "Gràfics"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr ""
+msgstr "Aplicacions de creació i manipulació de gràfics"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
-msgstr ""
+msgstr "Editors i reproductors de vídeo i audio"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-#, fuzzy
 msgid "Multimedia"
-msgstr "Multinivell"
+msgstr "Multimèdia"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
@@ -1439,7 +1436,7 @@ msgstr "Xarxes"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:2
 msgid "Network applications and utilities"
-msgstr ""
+msgstr "Aplicacions i utilitats de xarxa"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:1
 msgid "Office"
@@ -1447,37 +1444,35 @@ msgstr "Ofimàtica"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:2
 msgid "Office and productivity applications"
-msgstr ""
+msgstr "Aplicacions d’ofimàtica i productivitat"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:1
 msgid "Applications that don't fit into other categories"
-msgstr ""
+msgstr "Aplicacions que no cauen a les altres categories"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-#, fuzzy
 msgid "Other"
-msgstr "/Altres"
+msgstr "Altres"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr ""
+msgstr "Miniaplicacions de salvapantalles"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
-msgstr ""
+msgstr "Salvapantalles"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr ""
+msgstr "Aplicacions d’escriptori i sistemes"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-#, fuzzy
 msgid "Settings"
-msgstr "Paràmetres de l'escriptoris"
+msgstr "Paràmetres"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
-msgstr ""
+msgstr "Utilitats i eines de sistemes"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
@@ -1485,7 +1480,7 @@ msgstr "Quant a XFce"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr ""
+msgstr "Informació sobre l’entorn d’escriptori Xfce"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
@@ -1493,35 +1488,31 @@ msgstr "Gestor de fitxers"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
 msgid "Thunar file manager"
-msgstr ""
+msgstr "Gestor de fitxers Thunar"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-#, fuzzy
 msgid "Help"
 msgstr "A_juda"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr ""
+msgstr "Ajuda usant Xfce"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
-msgstr ""
+msgstr "Sortir"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-#, fuzzy
 msgid "Log out of the Xfce Desktop"
-msgstr "Paràmetres pel gestor d'escriptori Xfce4"
+msgstr "Surt de l’escriptori Xfce"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-#, fuzzy
 msgid "Run Program..."
-msgstr "Error d'execució"
+msgstr "Executa"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-#, fuzzy
 msgid "Run a program"
-msgstr "Error d'execució"
+msgstr "Executa un programa"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
@@ -1529,11 +1520,11 @@ msgstr "Terminal"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
 msgid "Terminal emulator"
-msgstr ""
+msgstr "Emulador de terminal"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
 msgid "Browse the web"
-msgstr ""
+msgstr "Navegador web"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
@@ -1554,34 +1545,3 @@ msgstr "Paràmetres pel gestor d'escriptori Xfce4"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Paràmetres de l'escriptori Xfce4"
-
-#~ msgid "Science"
-#~ msgstr "Ciència"
-
-#, fuzzy
-#~ msgid "Scientific applications and tools"
-#~ msgstr "Mostra com icones les aplicacions minimitzades"
-
-#~ msgid "Unable to quit session."
-#~ msgstr "No s'ha pogut tancar la sessió"
-
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "Per tancar la sessió s'ha de menester el gestor de sessions d'Xfce, xfce4-"
-#~ "session, en execució. Malgrat això no s'ha pogut trobar el gestor. Si us "
-#~ "plau, sortiu d'Xfce d'alguna altra manera."
-
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "Per tancar la sessió s'ha de menester l'ordre 'xfce4-session-logout' però "
-#~ "no s'ha pogut trobar: %s"
-
-#~ msgid "Backdrop List"
-#~ msgstr "Llista de rerefons"
-
-#~ msgid "Edit Properties"
-#~ msgstr "Edita propietats"
