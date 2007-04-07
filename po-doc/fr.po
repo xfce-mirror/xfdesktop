@@ -1,291 +1,511 @@
+# French translation of the manual from the xfdesktop package.
+# Copyright (C) 2004-2007 Brian J. Tarricone.
+# This file is distributed under the same license as the xfdesktop package.
+# Maximilian Schleiss <maxschleiss@bluewin.ch>, 2007.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2006-11-09 21:08-0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: xfdesktop 4.4.0\n"
+"POT-Creation-Date: 2007-02-28 11:15+0100\n"
+"PO-Revision-Date: 2007-03-04 22:26+0100\n"
+"Last-Translator: Maximilian Schleiss <maxschleiss@bluewin.ch>\n"
+"Language-Team: French <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../doc/C/xfdesktop.xml.in:14(title) 
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: ../doc/C/xfdesktop.xml.in:151(None)
+msgid "@@image: 'images/root_menu.png'; md5=989216cb94de22e9819179a10d4ead37"
+msgstr "@@image: 'images/root_menu.png'; md5=989216cb94de22e9819179a10d4ead37"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: ../doc/C/xfdesktop.xml.in:211(None)
+msgid "@@image: 'images/root_menu2.png'; md5=1a442b4c1866c677cf2c023fa1be0b68"
+msgstr "@@image: 'images/root_menu2.png'; md5=1a442b4c1866c677cf2c023fa1be0b68"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: ../doc/C/xfdesktop.xml.in:245(None)
+msgid "@@image: 'images/xfdesktop-appearance-tab.png'; md5=21d2f031d5a15f2e43272d2ef1441f6c"
+msgstr "@@image: 'images/xfdesktop-appearance-tab.png'; md5=21d2f031d5a15f2e43272d2ef1441f6c"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: ../doc/C/xfdesktop.xml.in:283(None)
+msgid "@@image: 'images/select_bg_color.png'; md5=6f7023b842ebcfd1d9e412b0b4a831e5"
+msgstr "@@image: 'images/select_bg_color.png'; md5=6f7023b842ebcfd1d9e412b0b4a831e5"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: ../doc/C/xfdesktop.xml.in:346(None)
+msgid "@@image: 'images/xfdesktop-list.png'; md5=6d5068269398aa0ea05246d25ddf6571"
+msgstr "@@image: 'images/xfdesktop-list.png'; md5=6d5068269398aa0ea05246d25ddf6571"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: ../doc/C/xfdesktop.xml.in:411(None)
+msgid "@@image: 'images/xfdesktop-behavior-tab.png'; md5=3941eabdeb05fb2e3a2217d1ebcb9428"
+msgstr "@@image: 'images/xfdesktop-behavior-tab.png'; md5=3941eabdeb05fb2e3a2217d1ebcb9428"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: ../doc/C/xfdesktop.xml.in:459(None)
+msgid "@@image: 'images/xfdesktop-editor.png'; md5=ba6d104e82c09094a90375006727b975"
+msgstr "@@image: 'images/xfdesktop-editor.png'; md5=ba6d104e82c09094a90375006727b975"
+
+#: ../doc/C/xfdesktop.xml.in:12(title)
 msgid "Xfce 4 Desktop Manager"
-msgstr "Gestionnaire de bureau de XFce 4"
+msgstr "Gestionnaire de bureau Xfce 4"
 
-#: ../doc/C/xfdesktop.xml.in:18(year) ../doc/C/xfdesktop.xml.in:23(year) ../doc/C/xfdesktop.xml.in:28(year) 
-msgid "2004"
-msgstr "2004"
+#: ../doc/C/xfdesktop.xml.in:15(year)
+msgid "2004-2007"
+msgstr "2004-2007"
 
-#: ../doc/C/xfdesktop.xml.in:18(holder) 
-msgid "Jasper Huijsmans"
-msgstr "Jasper Huijsmans"
-
-#: ../doc/C/xfdesktop.xml.in:18(year) ../doc/C/xfdesktop.xml.in:23(year) ../doc/C/xfdesktop.xml.in:28(year) 
-msgid "2004"
-msgstr "2004"
-
-#: ../doc/C/xfdesktop.xml.in:23(holder) 
-msgid "François Le Clainche"
-msgstr "François Le Clainche"
-
-#: ../doc/C/xfdesktop.xml.in:18(year) ../doc/C/xfdesktop.xml.in:23(year) ../doc/C/xfdesktop.xml.in:28(year) 
-msgid "2004"
-msgstr "2004"
-
-#: ../doc/C/xfdesktop.xml.in:28(holder) 
+#: ../doc/C/xfdesktop.xml.in:15(holder)
 msgid "Brian Tarricone"
 msgstr "Brian Tarricone"
 
-#: ../doc/C/xfdesktop.xml.in:53(firstname) 
-msgid "Jasper"
-msgstr "2005"
+#: ../doc/C/xfdesktop.xml.in:19(year)
+#: ../doc/C/xfdesktop.xml.in:23(year)
+msgid "2004"
+msgstr "2004"
 
-#: ../doc/C/xfdesktop.xml.in:53(surname) 
-msgid "Huijsmans"
-msgstr "M.C. Collilieux (French translation)"
+#: ../doc/C/xfdesktop.xml.in:19(holder)
+msgid "Jasper Huijsmans"
+msgstr "Jasper Huijsmans"
 
-#: ../doc/C/xfdesktop.xml.in:55(email) 
-msgid "jasper@xfce.org"
-msgstr "Jasper"
+#: ../doc/C/xfdesktop.xml.in:23(holder)
+msgid "François Le Clainche"
+msgstr "François Le Clainche"
 
-#: ../doc/C/xfdesktop.xml.in:61(firstname) 
-msgid "François"
-msgstr "Huijsmans"
-
-#: ../doc/C/xfdesktop.xml.in:61(surname) 
-msgid "Le Clainche"
-msgstr "jasper@xfce.org"
-
-#: ../doc/C/xfdesktop.xml.in:63(email) 
-msgid "fleclainche@wanadoo.fr"
-msgstr "François"
-
-#: ../doc/C/xfdesktop.xml.in:69(firstname) 
+#: ../doc/C/xfdesktop.xml.in:43(firstname)
 msgid "Brian"
-msgstr "Le Clainche"
-
-#: ../doc/C/xfdesktop.xml.in:69(surname) 
-msgid "Tarricone"
-msgstr "fleclainche@wanadoo.fr"
-
-#: ../doc/C/xfdesktop.xml.in:71(email) 
-msgid "kelnos@xfce.org"
 msgstr "Brian"
 
-#: ../doc/C/xfdesktop.xml.in:100(releaseinfo) 
-msgid "This manual describes <application>@PACKAGE_NAME@</application> version @PACKAGE_VERSION@."
+#: ../doc/C/xfdesktop.xml.in:43(surname)
+msgid "Tarricone"
 msgstr "Tarricone"
 
-#: ../doc/C/xfdesktop.xml.in:106(title) 
-msgid "Introduction"
+#: ../doc/C/xfdesktop.xml.in:45(email)
+msgid "kelnos@xfce.org"
 msgstr "kelnos@xfce.org"
 
-#: ../doc/C/xfdesktop.xml.in:108(para) 
-msgid "The <application>@PACKAGE_NAME@</application> application manages the desktop backdrop. It sets a backdrop image and/or color and it can pop up an applications menu and a list of all running applications when you click on the desktop with the right or middle mouse button respectively."
-msgstr "Marie--Claude"
+#: ../doc/C/xfdesktop.xml.in:49(firstname)
+msgid "Jasper"
+msgstr "Jasper"
 
-#: ../doc/C/xfdesktop.xml.in:114(para) 
-msgid "The <application>@PACKAGE_NAME@</application> package installs a settings dialog for use with the <emphasis>Xfce 4 Settings Manager</emphasis>. From this dialog you can change the backdrop image and color and change settings for the menu and the window list."
-msgstr "Collilieux"
+#: ../doc/C/xfdesktop.xml.in:49(surname)
+msgid "Huijsmans"
+msgstr "Huijsmans"
 
-#: ../doc/C/xfdesktop.xml.in:124(title) 
-msgid "Backdrops"
-msgstr "French Translation Team"
+#: ../doc/C/xfdesktop.xml.in:51(email)
+msgid "jasper@xfce.org"
+msgstr "jasper@xfce.org"
 
-#: ../doc/C/xfdesktop.xml.in:126(para) 
-msgid "You can start the Desktop settings dialog by clicking on the \"Desktop\" button in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">Xfce Settings Manager</ulink>."
-msgstr "m.collilieux@free.fr"
+#: ../doc/C/xfdesktop.xml.in:56(firstname)
+msgid "François"
+msgstr "François"
 
-#: ../doc/C/xfdesktop.xml.in:133(title) 
-msgid "Backdrop Settings"
-msgstr "French translation"
+#: ../doc/C/xfdesktop.xml.in:56(surname)
+msgid "Le Clainche"
+msgstr "Le Clainche"
 
-#: ../doc/C/xfdesktop.xml.in:140(phrase) 
-msgid "Shows backdrop settings dialog."
-msgstr "Ce manuel décrit <application>@PACKAGE_NAME@</application> version @PACKAGE_VERSION@."
+#: ../doc/C/xfdesktop.xml.in:58(email)
+msgid "fleclainche@wanadoo.fr"
+msgstr "fleclainche@wanadoo.fr"
 
-#: ../doc/C/xfdesktop.xml.in:149(term) 
-msgid "Color"
+#: ../doc/C/xfdesktop.xml.in:63(releaseinfo)
+msgid "This manual describes <application>@PACKAGE_NAME@</application> version @PACKAGE_VERSION@."
+msgstr "Ce manuel décrit la version @PACKAGE_VERSION@ de <application>@PACKAGE_NAME@</application>."
+
+#: ../doc/C/xfdesktop.xml.in:69(title)
+msgid "Introduction"
 msgstr "Introduction"
 
-#: ../doc/C/xfdesktop.xml.in:152(para) 
-msgid "This dialog allows you to select a color style for your desktop backdrop: solid color, horizontal gradient or vertical gradient. Depending on your choice, you will be able to choose one or two colors, using \"First Color\" and \"Second Color\" buttons. These buttons open a color chooser dialog:"
-msgstr "L'application <application>@PACKAGE_NAME@</application> gère le fond du bureau. Elle installe une image et/ou une couleur de fond et fournit un menu popup ou une liste des applications ouvertes quand vous cliquez respectivement avec le bouton droit ou central de la souris."
+#: ../doc/C/xfdesktop.xml.in:71(para)
+msgid "The <application>@PACKAGE_NAME@</application> application manages the desktop backdrop. It sets a backdrop image and/or color and it can pop up an applications menu and a list of all running applications when you click on the desktop with the right or middle mouse button respectively. As of Xfce 4.4, <application>@PACKAGE_NAME@</application> also draws icons on the desktop."
+msgstr "Le gestionnaire de bureau <application>@PACKAGE_NAME@</application> gère le fond du bureau. Il s'occupe aussi de fournir une image de fond d'écran ou une couleur, d'afficher un menu des applications installées sur le système "
 
-#: ../doc/C/xfdesktop.xml.in:159(title) 
-msgid "Select backdrop color"
-msgstr "Le module <application>@PACKAGE_NAME@</application> installe une fenêtre de dialogue de paramètrage utilisant le <emphasis>gestionnaire de paramètres Xfce 4</emphasis>. Dans cette fenêtre, vous pouvez changer l'image de fond et la couleur du bureau ; ainsi que les paramètres du menu et de la liste des bureaux."
+#: ../doc/C/xfdesktop.xml.in:79(para)
+msgid "The <application>@PACKAGE_NAME@</application> package installs a settings dialog for use with the <emphasis>Xfce 4 Settings Manager</emphasis>. From this dialog you can change the backdrop image and color and change settings for the menu and the window list."
+msgstr "Le paquet <application>@PACKAGE_NAME@</application> installe aussi un menu dans le <emphasis>Gestionnaire de paramètres de Xfce 4</emphasis>. À partir de ce menu peuvent être modifiés la couleur de fond d'écran ou son image, certains aspects du menu d'applications ainsi que de la liste de fenêtres."
 
-#: ../doc/C/xfdesktop.xml.in:166(phrase) 
-msgid "Shows the Select backdrop color dialog"
+#: ../doc/C/xfdesktop.xml.in:88(title)
+msgid "Backdrop"
 msgstr "Fond d'écran"
 
-#: ../doc/C/xfdesktop.xml.in:175(listitem) 
-msgid "You can use the colored ring with a triangle inside: select the color you want from the outer ring, then select the darkness or lightness of that color using the inner triangle. Corresponding values of brightness, deepness, and amount of red, green and blue light in the color appear through the entries on the right side of the window."
-msgstr "Vous pouvez lancer le dialogue de gestion des paramètres du bureau en cliquant sur le bouton \"Bureau\" dans le <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">gestionnaire de paramètres Xfce</ulink>."
+#: ../doc/C/xfdesktop.xml.in:90(para)
+msgid "<application>@PACKAGE_NAME@</application> is responsible for drawing the desktop's backdrop (sometimes called \"wallpaper\") image. There are various options for setting a backdrop image. The final picture seen on the monitor is composed of a solid color or gradient, with an image or photo (with optional transparency) composited on top of the color or gradient. This allows for some interesting effects using semi-transparent images on top of various color arrangements."
+msgstr "<application>@PACKAGE_NAME@</application> s'occupe de gérer et d'afficher l'image de fond d'écran. Plusieurs options et paramètres peuvent être définis pour afficher l'image de fond d'écran. L'image définitive affichée sur le moniteur est composée d'une couleur unie ou dégradée, avec une image ou une photo (avec option de transparence) affichée par dessus la couleur ou dégradé. Ceci permet d'avoir des effets intéressants en utilisant des images semi-transparentes et divers arrangements de couleurs."
 
-#: ../doc/C/xfdesktop.xml.in:182(listitem) 
+#: ../doc/C/xfdesktop.xml.in:102(title)
+msgid "Icons"
+msgstr "Icônes"
+
+#: ../doc/C/xfdesktop.xml.in:104(para)
+msgid "In addition to drawing the backdrop image, <application>@PACKAGE_NAME@</application> can draw icons on the desktop."
+msgstr "En plus de la gestion du fond d'écran et des menus, <application>@PACKAGE_NAME@</application> est aussi capable d'afficher des icônes sur le bureau."
+
+#: ../doc/C/xfdesktop.xml.in:110(title)
+msgid "Minimized Window Icons"
+msgstr "Icônes des applications minimisées"
+
+#: ../doc/C/xfdesktop.xml.in:112(para)
+msgid "One mode of operation displays minimized applications as icons on the desktop, which can be rearranged, and will remember their positions when the window is unhidden and then later minimized again. The icons also provide a right-click menu similar to the window's control menu accessed by clicking the button in the top-left corner of the window."
+msgstr "Un des modes d'affichage consiste à afficher sur le bureau les icônes des applications minimisées. Les icônes peuvent être arrangées à souhait et reprennent la même place une fois l'application maximisée et minimisée à nouveau. Un clic droit sur l'icône permet d'accéder au même menu contextuel que celui se trouvant dans la partie gauche de la barre de titre de chaque fenêtre."
+
+#: ../doc/C/xfdesktop.xml.in:122(title)
+msgid "File/Launcher Icons"
+msgstr "Fichiers/Icônes lanceurs"
+
+#: ../doc/C/xfdesktop.xml.in:124(para)
+msgid "<application>@PACKAGE_NAME@</application> can also display the contents of the <filename>~/Desktop/</filename> on the desktop, similar to the icon views found in many other desktop environments and operating systems. Files can be arranged, copied, moved, and linked to and from a file manager, and opened using preferred applications. Application and URL launchers can also be created on the desktop. The file icon view is modeled to have a similar look and feel as the <ulink url=\"http://thunar.xfce.org/\" type=\"http\">Thunar</ulink> file manager."
+msgstr "<application>@PACKAGE_NAME@</application> peut aussi afficher le contenu du <filename>~/Bureau/</filename> sur le bureau, tout comme d'autres environnement de bureau et systèmes d'opération. Les fichiers peuvent être arrangés, copiés, déplacés, des liens peuvent être créés vers les fichiers depuis un gestionnaire de fichiers ou depuis le bureau lui-même et ouverts en utilisant les applications favorites. La vue en icônes a été conçue pour avoir le même comportement que le gestionnaire de fichiers <ulink url=\"http://thunar.xfce.org/\" type=\"http\">Thunar</ulink>."
+
+#: ../doc/C/xfdesktop.xml.in:139(title)
+msgid "The Applications Menu"
+msgstr "Le menu d'applications"
+
+#: ../doc/C/xfdesktop.xml.in:141(para)
+msgid "A right-click on the desktop backdrop opens a menu that allows you to start many of the applications found on your system."
+msgstr "Un clic droit de la souris permet d'afficher un menu contenant la plupart des applications installées sur le système."
+
+#: ../doc/C/xfdesktop.xml.in:147(title)
+msgid "Applications Menu"
+msgstr "Menu d'applications"
+
+#: ../doc/C/xfdesktop.xml.in:154(phrase)
+msgid "Shows <application>@PACKAGE_NAME@</application> right-click mouse menu."
+msgstr "Affiche le menu <application>@PACKAGE_NAME@</application> d'un clic droit de la souris"
+
+#: ../doc/C/xfdesktop.xml.in:160(para)
+msgid "The menu's configuration file, <filename>menu.xml</filename>, can be found under the path <filename>$sysconfdir/xdg/xfce4/menu.xml</filename>. For binary packages, <filename>$sysconfdir</filename> is often <filename>/etc</filename> and for source compiles, it defaults to <filename>/usr/local/etc</filename>."
+msgstr "Fichier de configuration du menu, <filename>menu.xml</filename>, se trouve dans le dossier <filename>$sysconfdir/xdg/xfce4/menu.xml</filename>. Pour les paquets binaires, <filename>$sysconfdir</filename> est souvent <filename>/etc</filename> et pour les fichiers compilés cela se trouvera être <filename>/usr/local/etc</filename>."
+
+#: ../doc/C/xfdesktop.xml.in:169(para)
+msgid "While it is possible to edit the file manually, the recommended method for editing the <filename>menu.xml</filename> file is via the Xfce Menu Editor, which can be started by running <application>xfce4-menueditor</application>, or using the \"Edit desktop menu\" button available from the Behavior tab ofthe Desktop Settings dialog. The menu editor also supports drag'n'drop from a file manager."
+msgstr "Bien qu'il soit possible d'éditer le fichier <filename>menu.xml</filename> du menu manuellement, il est plutôt conseillé de le faire en utilisant l'<application>Éditeur de menu</application> de Xfce, ce en exécutant la commande <application>xfce4-menueditor</application>, en cliquant sur le bouton \"Éditer le menu\" de l'onglet Comportement de la fenêtre des paramètres du bureau ou en cliquant sur <application>Éditeur de menu</application> dans la section paramètres du menu du bureau. L'éditeur de menu supporte le glisser/déposer depuis un gestionnaire de fichiers."
+
+#: ../doc/C/xfdesktop.xml.in:179(para)
+msgid "If you've edited the menu via <application>xfce4-menueditor</application>, the user-customized menu file will be saved to <filename>$XDG_CONFIG_HOME/xfce4/desktop/menu.xml</filename>. <filename>$XDG_CONFIG_HOME</filename> usually defaults to <filename>~/.config</filename>. If editing the file manually, copying it to this location first is the preferred method."
+msgstr "En éditant le menu avec l'application <application>xfce4-menueditor</application>, le menu est enregistré dans <filename>$XDG_CONFIG_HOME/xfce4/desktop/menu.xml</filename>. <filename>$XDG_CONFIG_HOME</filename> se trouve souvent être le dossier <filename>~/.config</filename>. Lors de l'édition manuelle du fichier, il est préférable de l'enregistrer directement dans ce dossier."
+
+#: ../doc/C/xfdesktop.xml.in:188(para)
+msgid "NB: If you choose to edit the file manually, <filename>menu.xml</filename> must to be in UTF-8 encoding for the toolkit to be able to display accented or other non-ASCII characters. Therefore, you need an editor that supports UTF-8, like <application>mousepad</application> or <application>gedit</application>."
+msgstr "NB : Si vous choisissez d'éditer le fichier manuellement, <filename>menu.xml</filename> doit être encodé au format UTF-8 pour que les accents et tout autres caractères non-ASCII soient affichés correctement. Vous aurez besoin pour cela d'un éditeur de texte supportant le format UTF-8, comme <application>mousepad</application> ou <application>gedit</application>."
+
+#: ../doc/C/xfdesktop.xml.in:198(title)
+msgid "The Window List Menu"
+msgstr "Le menu de liste des fenêtres"
+
+#: ../doc/C/xfdesktop.xml.in:200(para)
+msgid "A middle-click on the desktop backdrop shows a list of all opened windows ordered by workspace. It also allows you to add or remove a workspace."
+msgstr "Un clic avec le bouton du milieu de la souris sur le bureau affiche un menu contenant toutes les fenêtres ouvertes, triées par espace de travail. Ce menu permet aussi d'ajouter et supprimer les espaces de travail."
+
+#: ../doc/C/xfdesktop.xml.in:207(title)
+msgid "Window List Menu"
+msgstr "Menu de liste des fenêtres"
+
+#: ../doc/C/xfdesktop.xml.in:214(phrase)
+msgid "Shows <application>@PACKAGE_NAME@</application> middle-click mouse menu."
+msgstr "Affiche le menu de liste des fenêtres de <application>@PACKAGE_NAME@</application> d'un clic du bouton du milieu de la souris"
+
+#: ../doc/C/xfdesktop.xml.in:222(title)
+msgid "Desktop Settings"
+msgstr "Paramètres du bureau"
+
+#: ../doc/C/xfdesktop.xml.in:224(para)
+msgid "You can start the Desktop settings dialog by clicking on the \"Desktop\" button in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">Xfce Settings Manager</ulink>."
+msgstr "Vous pouvez accéder aux paramètres du bureau en cliquant sur l'icône \"Paramètres du bureau\" dans le <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">Gestionnaire de paramètres</ulink> de Xfce."
+
+#: ../doc/C/xfdesktop.xml.in:232(title)
+msgid "Appearance Tab"
+msgstr "Onglet Apparence"
+
+#: ../doc/C/xfdesktop.xml.in:234(para)
+msgid "The Appearance tab allows you to set various options related to drawing the desktop backdrop picture."
+msgstr "L'onglet apparence permet de définir plusieurs options pour l'affichage de l'image de fond d'écran ou la couleur de ce dernier."
+
+#: ../doc/C/xfdesktop.xml.in:240(title)
+#: ../doc/C/xfdesktop.xml.in:405(title)
+msgid "Desktop Settings, Appearance Tab"
+msgstr "Paramètres du bureau, onglet apparence"
+
+#: ../doc/C/xfdesktop.xml.in:248(phrase)
+msgid "Shows the Appearance tab of the Backdrop Settings dialog"
+msgstr "Affiche l'onglet apparence de la fenêtre de dialogue des paramètres du bureau"
+
+#: ../doc/C/xfdesktop.xml.in:258(term)
+msgid "Color Style"
+msgstr "Style de couleur"
+
+#: ../doc/C/xfdesktop.xml.in:260(para)
+msgid "The color style is one of three options: a solid color, horizontal gradient, or vertical gradient."
+msgstr "Le style de couleur peut être l'un des trois suivants : couleur unie, dégradé horizontal ou dégradé vertical."
+
+#: ../doc/C/xfdesktop.xml.in:268(term)
+msgid "First Color and Second Color"
+msgstr "Première couleur et seconde couleur"
+
+#: ../doc/C/xfdesktop.xml.in:270(para)
+msgid "When the solid color option is selected, only the first color is available. When either of the gradient options are selected, both the first and second colors are available. Both of the color buttons open a color chooser dialog:"
+msgstr "Lorsque la couleur unie est choisie, seule l'option de première couleur est disponible. Lorsque le choix se porte dur l'une des deux options de dégradés, la seconde couleur devient elle aussi active. Chacun des deux boutons de couleurs ouvrent un dialogue de choix de la couleur :"
+
+#: ../doc/C/xfdesktop.xml.in:278(title)
+msgid "Select Backdrop Color"
+msgstr "Choisir la couleur de fond d'écran"
+
+#: ../doc/C/xfdesktop.xml.in:286(phrase)
+msgid "Shows the color selection dialog"
+msgstr "Affiche la sélection d'une couleur de fond d'écran"
+
+#: ../doc/C/xfdesktop.xml.in:293(listitem)
+msgid "You can use the colored ring with a triangle inside to select the color you want from the outer ring, then select the darkness or lightness of that color using the inner triangle. Corresponding values of brightness, deepness, and amount of red, green and blue light in the color appear through the entries on the right side of the window."
+msgstr "Sélectionnez la couleur en utilisant l'anneau extérieur, vous pouvez ensuite définir le degré d'obscurité et de luminosité de la couleur avec le pointeur dans le triangle intérieur. La case \"Teinte\" vous donne la position du triangle par rapport à la couleur, en dessous, dans la case \"Saturation\" s'affiche le niveau d'obscurité de la couleur et dans la case \"Valeur\" sa luminosité. Les valeurs correspondant à la couleur définie s'affichent dans les différentes cases de la droite de la fenêtre, tel la quantité de rouge, vert ou bleu. Le code de couleur hexadécimal s'affiche dans la case \"Nom de la couleur\" sur la droite du cercle."
+
+#: ../doc/C/xfdesktop.xml.in:301(listitem)
 msgid "You can click the eyedropper, then click anywhere on your screen to select the color."
-msgstr "Paramètres de fond d'écran"
+msgstr "Vous pouvez cliquer sur la pipette et ensuite sur n'importe quelle partie de l'écran pour en prendre sa couleur."
 
-#: ../doc/C/xfdesktop.xml.in:185(listitem) 
+#: ../doc/C/xfdesktop.xml.in:305(listitem)
 msgid "You can enter an HTML-style hexadecimal color value, or simply a color name, in the \"Color Name\" entry."
-msgstr "Montre les paramètres du fond d'écran."
+msgstr "La case \"Nom de la couleur\" permet d'afficher la couleur actuelle au format hexadécimal, d'insérer le nom d'une couleur ou d'entrer soi-même le code hexadécimal d'une couleur."
 
-#: ../doc/C/xfdesktop.xml.in:190(para) 
+#: ../doc/C/xfdesktop.xml.in:311(para)
 msgid "The selected colors will fill the entire root window, and will remain visible through a transparent backdrop image."
-msgstr "Couleur"
+msgstr "Les couleurs définies remplissent l'écran et sont visibles à travers une image de fond d'écran transparente."
 
-#: ../doc/C/xfdesktop.xml.in:197(term) 
+#: ../doc/C/xfdesktop.xml.in:319(term)
 msgid "Image"
-msgstr "Ce dialogue vous permet de choisir un style de couleur pour le fond d'écran : couleur unie, dégradé horizontal ou vertical. Selon votre choix, vous pouvez sélectionner une ou deux couleurs avec les boutons \"première couleur\" et \"seconde couleur\". Ces boutons ouvrent une fenêtre de dialogue de choix de couleurs :"
-
-#: ../doc/C/xfdesktop.xml.in:201(para) 
-msgid "Unselect the \"Show Image\" option if you want <application>@PACKAGE_NAME@</application> to ignore the backdrop image and only use the previously selected colors."
-msgstr "Sélection de la couleur de fond"
-
-#: ../doc/C/xfdesktop.xml.in:205(para) 
-msgid "The \"File\" entry shows the path to the currently selected backdrop image. If you want to change it, just drop and image on the path field, or edit the path, or click the browse button, and a classic file-browsing dialog will appear."
-msgstr "Montre la sélection de la couleur de fond"
-
-#: ../doc/C/xfdesktop.xml.in:211(para) 
-msgid "You can create a list of backdrop images that will be randomly used at startup. Click the \"New list\" button to open the list editing dialog:"
-msgstr "Vous pouvez utiliser l'anneau des couleurs avec un triangle interne : sélectionnez la couleur souhaitée dans l'anneau externe puis utilisez le triangle interne pour ajuster la luminosité de cette couleur. Les valeurs correspondantes de luminosité, saturation et les valeurs de rouge, vert, bleu s'affichent dans les zones de droite de la fenêtre."
-
-#: ../doc/C/xfdesktop.xml.in:217(title) 
-msgid "Backdrop List"
-msgstr "Vous pouvez utiliser la pipette en cliquant dessus, puis cliquez n'importe où dans votre écran pour copier une couleur."
-
-#: ../doc/C/xfdesktop.xml.in:224(phrase) 
-msgid "Shows backdrop list manager."
-msgstr "Vous pouvez saisir directement les valeurs de la couleur, type HTML, en héxadécimal ou en tapant simplement le nom de la couleur dans la zone \"Nom de la couleur\"."
-
-#: ../doc/C/xfdesktop.xml.in:230(para) 
-msgid "You may want to change the default path and name of your custom list of backdrops in the \"List file\" entry."
-msgstr "Les couleurs sélectionnées rempliront entièrement l'écran et resteront visible à travers une image de fond transparente."
-
-#: ../doc/C/xfdesktop.xml.in:234(para) 
-msgid "You can easily add an image file by clicking the \"plus\" button. That action will open a file-browsing window. You can remove a file, if you select it in the list and click the \"minus\" button. When your list is complete, click the \"Save\" button to save it. If you want to modify its content later, use the \"Edit list\" button of the Backdrop settings manager."
 msgstr "Image"
 
-#: ../doc/C/xfdesktop.xml.in:242(para) 
+#: ../doc/C/xfdesktop.xml.in:322(para)
+msgid "Unselect the \"Show Image\" option if you want <application>@PACKAGE_NAME@</application> to ignore the backdrop image and only use the previously selected colors."
+msgstr "Décochez la case \"Afficher l'image\" si vous ne voulez pas laisser <application>@PACKAGE_NAME@</application> afficher l'image de fond d'écran mais seulement la ou les couleurs sélectionnées précédemment."
+
+#: ../doc/C/xfdesktop.xml.in:327(para)
+msgid "The \"File\" entry shows the path to the currently selected backdrop image. If you want to change it, just drop and image on the path field, or edit the path, or click the browse button, and a classic file-browsing dialog will appear."
+msgstr "Vous pouvez définir l'image à afficher en entrant le chemin d'accès jusqu'au fichier dans le champ \"Fichier\", en déposant une image à l'intérieur du champ ou en cliquant sur l'icône dossier pour faire apparaître un menu classique de recherche de fichiers."
+
+#: ../doc/C/xfdesktop.xml.in:334(para)
+msgid "You can create a list of backdrop images that will be randomly used at startup. Click the \"New list\" button to open the list editing dialog:"
+msgstr "Il est aussi possible de créer une liste d'images de fond d'écran choisis au hasard à chaque démarrage de Xfce. Cliquez sur le bouton  \"Nouvelle liste...\" pour faire apparaître la fenêtre d'édition de liste :"
+
+#: ../doc/C/xfdesktop.xml.in:341(title)
+msgid "Backdrop List Editor"
+msgstr "Éditeur de liste de fonds d'écran"
+
+#: ../doc/C/xfdesktop.xml.in:349(phrase)
+msgid "Shows backdrop list manager"
+msgstr "Affiche le gestionnaire d'édition de liste de fonds d'écran"
+
+#: ../doc/C/xfdesktop.xml.in:355(para)
+msgid "You may want to change the default path and name of your custom list of backdrops in the \"List file\" entry."
+msgstr "Vous pouvez définir vous-même le fichier contenant la liste d'images de fond d'écran dans le champ \"Fichier liste\"."
+
+#: ../doc/C/xfdesktop.xml.in:360(para)
+msgid "You can easily add an image file by clicking the \"plus\" button. That action will open a file-browsing window. You can remove a file, if you select it in the list and click the \"minus\" button. When your list is complete, click the \"Save\" button to save it. If you want to modify its content later, use the \"Edit list\" button in the Desktop Settings dialog."
+msgstr "Les images peuvent être ajoutée grâce au bouton \"plus\", ce qui ouvrira une fenêtre de navigation de fichiers. Supprimer des images se fait à l'aide du bouton \"moins\" après avoir sélectionné la ou les images dans la fenêtre \"Fichiers images\". Lorsque votre liste est terminée, cliquez sur le bouton \"Enregistrer\" pour... l'enregistrer. Cette liste pourra être modifiée ultérieurement en cliquant sur le bouton \"Édition de la liste...\" de la fenêtre des paramètres du bureau."
+
+#: ../doc/C/xfdesktop.xml.in:369(para)
 msgid "You can recover an older list by dropping its name.list file on the backdrop settings dialog from a file manager."
-msgstr "Décochez le choix \"Montrer l'image\" si vous voulez que <application>@PACKAGE_NAME@</application> ignore l'image de fond et n'utilise que les couleurs choisies."
+msgstr "Vous pouvez récupérer une ancienne liste en déposant le fichier nom.liste dans la fenêtre des paramètres du bureau depuis un gestionnaire de fichiers."
 
-#: ../doc/C/xfdesktop.xml.in:245(para) 
-msgid "To refresh the backdrop with a new random image from the list just run the <application>@PACKAGE_NAME@</application> command again, e.g. from a terminal or the run dialog, or <application>@PACKAGE_NAME@</application><arg>-reload</arg>."
-msgstr "L'entrée \"fichier\" montre le chemin de l'image actuellement sélectionnée. Si vous souhaitez la changer, déposez simplement une image sur la zone de saisie du chemin, modifiez le chemin ou cliquez sur le bouton \"Parcourir\", et utilisez la fenêtre de recherche habituelle du système de fichiers."
+#: ../doc/C/xfdesktop.xml.in:374(para)
+msgid "To refresh the backdrop with a new random image from the list just run the <application>@PACKAGE_NAME@</application> command again, e.g. from a terminal or the run dialog, or <application>@PACKAGE_NAME@</application><arg>--reload</arg>."
+msgstr "Pour afficher une autre image de fond d'écran de la liste, il suffit d'exécuter à nouveau la commande <application>@PACKAGE_NAME@</application>, e.g. depuis une fenêtre de terminal ou de la fenêtre \"exécuter\", ou la commande <application>@PACKAGE_NAME@</application><arg>--reload</arg>."
 
-#: ../doc/C/xfdesktop.xml.in:250(para) 
+#: ../doc/C/xfdesktop.xml.in:380(para)
 msgid "Four Style options (Tiled, Scaled, Centered and Stretched) are available to specify the fitting of the backdrop image on the screen, depending on its size. You can also select the \"Auto\" item if you want to let <application>@PACKAGE_NAME@</application> take care of this setting."
-msgstr "Vous pouvez créer une liste d'images de fond qui seront utilisées au hasard au démarrage. Cliquez sur \"Nouvelle liste\" pour ouvrir la fenêtre de dialogue de création de cette liste :"
+msgstr "Quatre styles d'affichage de l'image à l'écran sont disponibles. Dépendant de la taille de l'image, l'on optera de préférence pour le style centré, mosaïque, étiré ou à l'échelle. Il est aussi possible de laisser <application>@PACKAGE_NAME@</application> choisir le format d'affichage en optant pour le style \"Automatique\"."
 
-#: ../doc/C/xfdesktop.xml.in:256(para) 
+#: ../doc/C/xfdesktop.xml.in:387(para)
 msgid "The slider at the bottom of the dialog allows you to adjust the brightness of the backdrop image and/or color."
-msgstr "Liste de fonds d'écran"
+msgstr "La barre du bas de la fenêtre des paramètres permet d'ajuster le degré de luminosité de l'image ou de la couleur définie."
 
-#: ../doc/C/xfdesktop.xml.in:260(para) 
-msgid "xfdesktop supports xinerama and multiscreen modes. In multiscreen mode, the \"Backdrops\" dialog shows one tab per screen."
-msgstr "Montre la liste de fonds d'écran."
+#: ../doc/C/xfdesktop.xml.in:392(para)
+msgid "xfdesktop supports xinerama and multiscreen modes. In multiscreen mode, the Appearance tab shows one tab per screen."
+msgstr "<application>@PACKAGE_NAME@</application> supporte le mode multi-écrans et xinérama. En mode multi-écrans, chaque écran se voit assigné un onglet Apparence."
 
-#: ../doc/C/xfdesktop.xml.in:273(title) 
-msgid "<application>@PACKAGE_NAME@</application> root menu"
-msgstr "Vous pouvez modifier le nom et le chemin par défaut de votre liste de fonds d'écran dans la zone \"Fichier liste\"."
+#: ../doc/C/xfdesktop.xml.in:402(title)
+msgid "Behavior Tab"
+msgstr "Onglet Comportement"
 
-#: ../doc/C/xfdesktop.xml.in:275(para) 
-msgid "<application>@PACKAGE_NAME@</application> provides an applications menu and a windowlist menu that appear when you click on the desktop with your right or middle mouse button."
-msgstr "Vous pouvez facilement ajouter une image en cliquant sur le bouton \"plus\". Cette action ouvre une fenêtre pour naviguer dans votre système. Vous pouvez retirer un fichier en le sélectionnant dans la liste et en cliquant sur le bouton \"moins\". Quand votre liste est complète, cliquez sur le bouton \"sauver\". Si vous souhaitez la modifier par la suite, utilisez le bouton \"Edition de la liste\" du gestionnaire de fond d'écran."
+#: ../doc/C/xfdesktop.xml.in:414(phrase)
+msgid "Shows the Behavior tab of the Desktop Settings dialog"
+msgstr "Affiche l'onglet comportement de la fenêtre de paramètres du bureau"
 
-#: ../doc/C/xfdesktop.xml.in:279(para) 
-msgid "The Menu tab of the Desktop settings dialog allows you to configure the menu behaviour."
-msgstr "Vous pouver réutiliser une ancienne liste en déposant son nom, à partir d'un gestionnaire de fichier, dans la fenêtre du gestionnaire de fonds d'écran."
+#: ../doc/C/xfdesktop.xml.in:422(para)
+msgid "The first two options allow you to enable or disable the Window List Menu and the Applications Menu. There is also a button that launches the Xfce Menu Editor, which is used to edit the Applications Menu."
+msgstr "Les deux premières cases à cocher permettent l'activation des menus d'applications et des fenêtres. Vous y trouverez aussi un bouton pour exécuter l'éditeur de menu de Xfce que vous pourrez utiliser pour éditer le menu d'applications."
 
-#: ../doc/C/xfdesktop.xml.in:284(title) 
-msgid "Menu tab"
-msgstr "Pour actualiser le fond d'écran avec une nouvelle image, prise au hasard dans la liste, relancer simplement <application>@PACKAGE_NAME@</application>, à partir d'un terminal ou à partir de la fenêtre exécuter, ou en tapant <application>@PACKAGE_NAME@</application><arg>-reload</arg>."
+#: ../doc/C/xfdesktop.xml.in:428(para)
+msgid "The behavior of the desktop icons can be set here as well. There are three options: None, to disable desktop icons entirely; Minimized application icons, to show icons for minimized/hidden applications on the desktop; and File/launcher icons, to show the contents of your <filename>~/Desktop</filename> directory on the desktop."
+msgstr "Le comportement des icônes sur le bureau peut être défini dans cet onglet. Trois options vous sont offertes : Aucune, pour désactiver complètement les icônes sur le bureau; Icônes des applications minimisées, pour afficher sur le bureau les icônes des applications cachées ou minimisées; et Icônes de fichiers/lanceurs, pour afficher sur le bureau le contenu de votre dossier <filename>~/Bureau</filename>."
 
-#: ../doc/C/xfdesktop.xml.in:291(phrase) 
-msgid "Shows the menu tab of the Desktop settings dialog."
-msgstr "Quatre options de style (Mosaïque, À l'échelle, Centré, Étiré) permettent de préciser l'ajustement de l'image de fond à l'écran selon sa taille. Vous pouvez aussi choisir \"Auto\" si vous préférez laisser <application>@PACKAGE_NAME@</application> gérer ce paramètre."
+#: ../doc/C/xfdesktop.xml.in:436(para)
+msgid "If desktop icons are enabled, you can control the size of the icon itself (in pixels), and the font size used to display the icon text (in points). Selecting the \"Use system font size\" checkbox will tell <application>@PACKAGE_NAME@</application> to use the font size selected in the User Interface Settings dialog."
+msgstr "Si les icônes de bureau sont activées, vous pouvez en contrôler la taille en pixels ainsi que la taille de la police d'écriture, utilisée pour afficher le texte de l'icône, en points. En cochant l'option \"Utiliser la taille de police du système\" vous forcerez <application>@PACKAGE_NAME@</application> à utiliser la taille de police d'écriture définie dans la fenêtre des paramètres de l'interface utilisateur de Xfce."
 
-#: ../doc/C/xfdesktop.xml.in:297(para) 
-msgid "If you want to use the root menu and/or the window list, the corresponding options have to be selected in the settings dialog."
-msgstr "Le curseur au bas de la fenêtre vous permet d'ajuster la brillance de l'image et/ou sa couleur."
+#: ../doc/C/xfdesktop.xml.in:447(title)
+#: ../doc/C/xfdesktop.xml.in:455(title)
+msgid "Xfce Menu Editor"
+msgstr "Éditeur de menu Xfce"
 
-#: ../doc/C/xfdesktop.xml.in:301(para) 
-msgid "A right-click on the desktop backdrop opens a menu that allows you to start some applications. Its configuration file, <filename>menu.xml</filename>, can be found under the path <filename>$sysconfdir/xdg/xfce4/menu.xml</filename>. For binary packages, $sysconfdir is often <filename>/etc</filename> and for source compiles, it defaults to <filename>/usr/local/etc</filename>."
-msgstr "xfdesktop reconnait xinerama et les modes multi-écrans. En mode multi-écrans, le paramétrage \"Fonds d'écran\" propose un onglet par écran."
+#: ../doc/C/xfdesktop.xml.in:449(para)
+msgid "The recommended way to edit the Applications Menu is via the Xfce Menu Editor."
+msgstr "La manière recommandée d'éditer le menu d'applications se fait via l'éditeur de menu Xfce."
 
-#: ../doc/C/xfdesktop.xml.in:309(para) 
-msgid "While it is possible to edit the file manually, the recommended method for editing the <filename>menu.xml</filename> file is via the Xfce 4 Menu Editor, which can be started by running <application>xfce4-menueditor</application>, or using the \"Edit desktop menu\" button available from the Menu tab of the Desktop settings dialog. The menu editor also supports drag'n'drop from a file manager."
-msgstr "<application>@PACKAGE_NAME@</application> menu du bureau"
+#: ../doc/C/xfdesktop.xml.in:462(phrase)
+msgid "Shows the menu editor."
+msgstr "Affiche l'éditeur de menu"
 
-#: ../doc/C/xfdesktop.xml.in:318(para) 
-msgid "If you've edited the menu via <application>xfce4-menueditor</application>, the user-customized menu file will be saved to <filename>$XDG_CONFIG_HOME/xfce4/desktop/menu.xml</filename>. $XDG_CONFIG_HOME usually defaults to <filename>~/.config</filename>. If editing the file manually, copying it to this location first is the preferred method."
-msgstr "<application>@PACKAGE_NAME@</application> fournit un menu et une liste des fenêtres qui apparaît lorsque vous cliquez sur le fond du bureau avec, soit le bouton droit, soit le bouton du milieu de la souris."
+#: ../doc/C/xfdesktop.xml.in:468(para)
+msgid "The Xfce Menu Editor shows the menu as a tree of items. Existing items can be edited by selecting the item and using the toolbar buttons or context menu. Items can be moved around by dragging them with the mouse. New items can be used with the Add button or menu item."
+msgstr "l'éditeur de menu Xfce affiche le menu en vue arborescente. Les éléments du menu peuvent être édités en double-cliquant dessus, en choisissant \"Éditer l'élément\" du menu contextuel ou du menu principal Éditer. Les éléments du menu peuvent être déplacés vers le haut ou vers le bas avec les boutons flèches haut et bas ou en prenant l'élément et en le déplaçant vers la position souhaitée. Des éléments peuvent être ajoutés ou supprimés avec les boutons \"plus\" ou \"moins\"."
 
-#: ../doc/C/xfdesktop.xml.in:328(title) 
-msgid "<application>@PACKAGE_NAME@</application> menu editor"
-msgstr "L'onglet Menu de la fenêtre de dialogue des paramètres du bureau vous permet de configurer le comportement du menu."
+#: ../doc/C/xfdesktop.xml.in:480(term)
+msgid "Title"
+msgstr "Titre"
 
-#: ../doc/C/xfdesktop.xml.in:335(phrase) 
-msgid "Shows <application>@PACKAGE_NAME@</application> menu editor."
-msgstr "Onglet Menu"
+#: ../doc/C/xfdesktop.xml.in:482(para)
+msgid "A Title item has no function; it just serves as a way to insert text and/or an icon into the menu."
+msgstr "L'élément titre n'a pas d'autres fonction que celle de donner un titre et/ou une icône au menu."
 
-#: ../doc/C/xfdesktop.xml.in:342(para) 
-msgid "NOTE: If you choose to edit the file manually, <filename>menu.xml</filename> has to be in UTF-8 encoding for the toolkit to be able to display accented or other non-ASCII characters. Therefore, you need an editor that supports UTF-8, like <application>gedit</application>."
-msgstr "Montre l'onglet menu des paramètres du bureau"
+#: ../doc/C/xfdesktop.xml.in:490(term)
+msgid "Submenu"
+msgstr "Sous-menu"
 
-#: ../doc/C/xfdesktop.xml.in:349(title) 
-msgid "<application>@PACKAGE_NAME@</application> right-click mouse menu"
-msgstr "Si vous souhaitez utiliser le menu de bureau et/ou la liste des fenêtres les options correspondantes doivent être sélectionnées dans la fenêtre des paramètres."
+#: ../doc/C/xfdesktop.xml.in:492(para)
+msgid "A submenu item allows you to attach a submenu to the menu."
+msgstr "Un sous-menu permet de créer une certaine arborescence dans le menu."
 
-#: ../doc/C/xfdesktop.xml.in:356(phrase) 
-msgid "Shows <application>@PACKAGE_NAME@</application> right-click mouse menu."
-msgstr "Un clic droit sur le bureau ouvre un menu qui vous permet de lancer des applications. Son fichier de configuration, <filename>menu.xml</filename>, est placé dans le chemin <filename>$sysconfdir/xdg/xfce4/menu.xml</filename>. $sysconfdir est, par défaut, souvent <filename>/etc</filename> pour les paquetages binaires et <filename>/usr/local/etc</filename> pour les sources."
+#: ../doc/C/xfdesktop.xml.in:499(term)
+msgid "Launcher"
+msgstr "Lanceur"
 
-#: ../doc/C/xfdesktop.xml.in:363(para) 
-msgid "A middle-click on the desktop backdrop shows a list of all opened windows ordered by workspace. It also allows you to add or remove a workspace."
-msgstr "Quoiqu'il soit possible de le faire manuellement, la méthode recommandée pour éditer le fichier <filename>menu.xml</filename> est d'utiliser l'éditeur de menu de Xfce 4 qui peut être lancé par la commande <application>xfce4-menueditor</application> ou en utilisant le bouton \"Édition du menu de bureau\" disponible dans l'onglet Menu de la fenêtre de dialogue. L'éditeur de menu accepte aussi le glisser-déposer du gestionnaire de fichiers."
+#: ../doc/C/xfdesktop.xml.in:501(para)
+msgid "Launchers run an application when clicked."
+msgstr "Les lanceurs exécutent une application une fois cliqués."
 
-#: ../doc/C/xfdesktop.xml.in:369(title) 
-msgid "<application>@PACKAGE_NAME@</application> middle-click mouse menu"
-msgstr "Si vous avez modifié le menu via <application>xfce4-menueditor</application>, le fichier de vos préférences pour le menu est sauvegardé sous <filename>$XDG_CONFIG_HOME/xfce4/desktop/menu.xml</filename>. $XDG_CONFIG_HOME est par défaut <filename>~/.config</filename>. Si vous modifiez ce fichier manuellement, le copier d'abord à cet endroit est préférable."
+#: ../doc/C/xfdesktop.xml.in:508(term)
+msgid "Separator"
+msgstr "Séparateur"
 
-#: ../doc/C/xfdesktop.xml.in:376(phrase) 
-msgid "Shows <application>@PACKAGE_NAME@</application> middle-click mouse menu."
-msgstr "<application>@PACKAGE_NAME@</application> éditeur de menu"
+#: ../doc/C/xfdesktop.xml.in:510(para)
+msgid "A separator item draws a line across the menu."
+msgstr "Un séparateur dessine une ligne de séparation dans le menu."
 
-#: ../doc/C/xfdesktop.xml.in:383(para) 
-msgid "In order to lower the hardware requirements to run xfdesktop, you can disable the usage of icons in the desktop menu and the window list menu from the settings dialog."
-msgstr "Montre l'éditeur de menu <application>@PACKAGE_NAME@</application>."
+#: ../doc/C/xfdesktop.xml.in:517(term)
+msgid "Quit"
+msgstr "Quitter"
 
-#: ../doc/C/xfdesktop.xml.in:388(para) 
-msgid "You can open the menu or window list from the commandline as well. This can be useful for keyboard shortcuts. To open the menu run the command <application>@PACKAGE_NAME@</application><application>-menu</application>, and for the windowlist use <application>@PACKAGE_NAME@</application><application>-windowlist</application>."
-msgstr "NOTE : si vous choisissez de le modifier manuellement, le fichier <filename>menu.xml</filename> doit être codé en UTF-8 pour pouvoir afficher les caractères accentués ou autres caractères non-ASCII. Donc vous avez besoin d'un éditeur qui permet l'UTF-8, tel <application>gedit</application>."
+#: ../doc/C/xfdesktop.xml.in:519(para)
+msgid "The Quit menu item brings up a dialog that allows you to log out, or shutdown or reboot your computer."
+msgstr "L'élément quitter affiche une fenêtre de dialogue vous permettant de vous déconnecter, éteindre ou redémarrer l'ordinateur."
 
-#: ../doc/C/xfdesktop.xml.in:397(title) 
-msgid "About xfdesktop"
-msgstr "<application>@PACKAGE_NAME@</application> menu clic droit"
+#: ../doc/C/xfdesktop.xml.in:475(para)
+msgid "There are five kinds of menu items: <placeholder-1/>"
+msgstr "Il existe cinq types d'éléments de menu : <placeholder-1/>"
 
-#: ../doc/C/xfdesktop.xml.in:399(para) 
-msgid "<application>@PACKAGE_NAME@</application> was written by Brian Tarricone (<email>kelnos@xfce.org</email>) and Jasper Huijsmans (<email>jasper@xfce.org</email>), Benedikt Meurer (<email>benny@xfce.org</email>). For more information, please visit the <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce website</ulink>."
-msgstr "Montre le menu clic droit de <application>@PACKAGE_NAME@</application>."
+#: ../doc/C/xfdesktop.xml.in:528(para)
+msgid "If the application supports Startup Notification, you may check the box, and the mouse cursor will turn into an hourglass while the application is loading. If you are not sure if the application supports Startup Notification, leave the box unchecked."
+msgstr "Si l'application supporte la notification de démarrage, vous pouvez cocher la case et le pointeur de la souris se changera en sablier au moment du chargement de l'application. Si vous n'êtes pas sûr du support de notification de démarrage de l'application, laissez la case décochée."
 
-#: ../doc/C/xfdesktop.xml.in:407(para) 
+#: ../doc/C/xfdesktop.xml.in:535(para)
+msgid "If the application is a console application and requires a terminal to run, check the \"Run in teriminal\" box."
+msgstr "Si l'application ne fonctionne qu'en mode console, cochez la case \"Exécuter dans un terminal\"."
+
+#: ../doc/C/xfdesktop.xml.in:540(para)
+msgid "In addition to menu items, there are two types of \"speical\" items that can be added to the menu via the \"Add external\" option in the Edit menu. The system menu searches for <filename>.desktop</filename> files in some predetermined locations on your hard disk and creates a menu tree of the applications found. The \"file\" external allows you to store other menus in other menu files and merge them together with the current menu."
+msgstr "En plus des éléments de menu, il existe deux types d'éléments \"spéciaux\" que vous pouvez ajouter à votre menu en utilisant l'option \"Ajouter un menu externe\" du menu Éditer ou du menu contextuel. Le menu système cherche dans certaines parties de l'ordianteur pour toutes les applications ayant installé un fichier <filename>.desktop</filename> et crée un menu en arborescence de toutes les applications trouvées. Le menu \"Fichier\" permet de stocker d'autres menus dans des menus que vous pourrez par la suite fondre à l'intérieur du menu actuel."
+
+#: ../doc/C/xfdesktop.xml.in:552(title)
+msgid "Hidden Options"
+msgstr "Options cachées"
+
+#: ../doc/C/xfdesktop.xml.in:554(para)
+msgid "There are a number of hidden options that cannot be set by the Xfce Settings Manager. These require use of a text editor."
+msgstr "Certaines options ne peuvent pas être définies à l'aide du gestionnaire de bureau de Xfce. Ces options ne peuvent être changées qu'avec un éditeur de texte."
+
+#: ../doc/C/xfdesktop.xml.in:561(term)
+msgid "Icon View Text Appearance"
+msgstr "Apparence du texte en vue d'icône"
+
+#: ../doc/C/xfdesktop.xml.in:563(para)
+msgid "The colors of the icon text and the icon text background, as well as the opacity of the icon text background, can be customized by putting directives simiar to the following in your <filename>~/.gtkrc-2.0</filename> file:"
+msgstr "La couleur du texte de l'cône et la couleur de fond du texte ainsi que son opacité peuvent être personnalisés en ajoutant les lignes suivantes dans le fichier <filename>~/.gtkrc-2.0</filename> :"
+
+#: ../doc/C/xfdesktop.xml.in:585(para)
+msgid "The first entry sets the opacity of the rounded text background. The three \"base\" entries set the text background color, and the three \"fg\" entries set the text color."
+msgstr "L'opacité du fond du texte se définit dans la commande \"label-alpha\". Les commandes \"base\" définissent la couleur de fond du texte et les trois commandes \"fg\" sa couleur."
+
+#: ../doc/C/xfdesktop.xml.in:591(para)
+msgid "The \"NORMAL\" entries set the color for the regular, unselected state. The \"SELECTED\" entries set the color for when the icon is selected, and the desktop has keyboard focus. The \"ACTIVE\" entries set the color for when the icon is selected, but the desktop does not have keyboard focus."
+msgstr "Les entrées \"NORMAL\" définissent la couleur pour les icônes non sélectionnées. Les entrées \"SELECTED\" définissent leur couleur lorsqu'elles sont sélectionnées et que le clavier est focalisé sur le bureau. Les entrées \"ACTIVE\" définissent la couleur de l'icône sélectionnée mais uniquement lorsque le clavier ne focalise pas sur le bureau."
+
+#: ../doc/C/xfdesktop.xml.in:602(term)
+msgid "Extra File Icons"
+msgstr "Icônes spéciales supplémentaires"
+
+#: ../doc/C/xfdesktop.xml.in:604(para)
+msgid "In addition to file and launcher icons, <application>@PACKAGE_NAME@</application> can also display icons for removable volumes plugged into your computer. It can also display an icon for your filesystem root, home directory, and trash can. By default, these are all enabled, but can be disabled via hidden options. Create or edit the file <filename>$XDG_CONFIG_HOME/xfce4/desktop/xfdesktoprc</filename> and add something similar to the following:"
+msgstr "En plus des fichiers et lanceurs que <application>@PACKAGE_NAME@</application> peut afficher, il peut aussi faire apparaître sur le bureau les icônes des volumes amovibles insérés dans l'ordinateur. Il peut aussi afficher une icône pour le système de fichiers root, le dossier home et la corbeille. Par défaut, ces icônes sont toutes activées mais vous pouvez les désactiver en ajoutant les lignes suivantes au fichier <filename>$XDG_CONFIG_HOME/xfce4/desktop/xfdesktoprc</filename> (s'il n'existe pas, créez le) :"
+
+#: ../doc/C/xfdesktop.xml.in:622(para)
+msgid "To disable that particular feature, change the \"true\" to \"false\" and save the file. If an entry is omitted, it defaults to \"true\". Restart <application>@PACKAGE_NAME@</application> for the changes to take effect."
+msgstr "Pour désactiver cette fonction  changez le \"true\" en \"false\" et enregistrez le fichier. Si un élément venait à manquer, il serait considéré comme \"true\". Redémarrez <application>@PACKAGE_NAME@</application> pour rendre les changements effectifs."
+
+#: ../doc/C/xfdesktop.xml.in:631(term)
+msgid "Icons In the Applications and Window List Menus"
+msgstr "Icônes dans les menus d'applications et des fenêtres"
+
+#: ../doc/C/xfdesktop.xml.in:633(para)
+msgid "If you wish that icons are not shown in the Applications Menu and the Window List Menu, add the following to your <filename>~/.gtkrc-2.0</filename>:"
+msgstr "Pour désactiver les icônes des menus d'applications et des fenêtres, ajoutez les lignes suivantes au fichier <filename>~/.gtkrc-2.0</filename> :"
+
+#: ../doc/C/xfdesktop.xml.in:646(para)
+msgid "Unfortunately, this will act on all Gtk menus, not just on the Applications and Window List menus. There is currently no way to set this property for just these two menus."
+msgstr "Malheureusement cette dernière option affectera tous les menus GTK et pas seulement les menus d'applications et des fenêtres. Il n'existe, pour l'instant, pas de moyen de définir ces options uniquement pour ces deux menus."
+
+#: ../doc/C/xfdesktop.xml.in:657(title)
+msgid "Miscellaneous"
+msgstr "Divers"
+
+#: ../doc/C/xfdesktop.xml.in:659(para)
+msgid "You can open the menu or window list from the commandline as well. This can be useful for keyboard shortcuts. To open the menu run the command <application>@PACKAGE_NAME@</application><application>--menu</application>, and for the windowlist use <application>@PACKAGE_NAME@</application><application>--windowlist</application>. To cause the current running instance to quit, run <application>@PACKAGE_NAME@</application><application>--quit</application>."
+msgstr "Vous pouvez aussi ouvrir le menu des applications et des fenêtres depuis la ligne de commande en utilisant la commande <application>@PACKAGE_NAME@</application><application>--menu</application> pour le menu d'applications et <application>@PACKAGE_NAME@</application><application>--windowlist</application> pour celui des fenêtres. Pour quitter la session actuelle exécutez la commande <application>@PACKAGE_NAME@</application><application>--quit</application>."
+
+#: ../doc/C/xfdesktop.xml.in:670(title)
+msgid "About <application>@PACKAGE_NAME@</application>"
+msgstr "À propos de <application>@PACKAGE_NAME@</application>"
+
+#: ../doc/C/xfdesktop.xml.in:672(para)
+msgid "<application>@PACKAGE_NAME@</application> was written by Brian Tarricone (<email>kelnos@xfce.org</email>), Jasper Huijsmans (<email>jasper@xfce.org</email>), and Benedikt Meurer (<email>benny@xfce.org</email>). For more information, please visit the <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce website</ulink>."
+msgstr "<application>@PACKAGE_NAME@</application> a été écrit par Brian Tarricone (<email>kelnos@xfce.org</email>), Jasper Huijsmans (<email>jasper@xfce.org</email>), et Benedikt Meurer (<email>benny@xfce.org</email>). Pour plus d'informations, visitez le <ulink url=\"http://www.xfce.org\" type=\"http\">site web Xfce</ulink>."
+
+#: ../doc/C/xfdesktop.xml.in:681(para)
 msgid "To report a bug or make a suggestion regarding this application or this manual, use the bug tracking system at <ulink url=\"http://bugzilla.xfce.org/\" type=\"http\">http://bugzilla.xfce.org/</ulink>."
-msgstr "Cliquer avec le bouton du milieu sur le bureau affiche la liste des applications ouvertes, classées par ordre des espaces de travail. Cela vous permet aussi d'ajouter ou de supprimer un espace virtuel."
+msgstr "Pour signaler un bogue ou si vous avez une suggestion au sujet de cette application ou ce manuel, utilisez le système de bogues <ulink url=\"http://bugzilla.xfce.org/\" type=\"http\">http://bugzilla.xfce.org/</ulink>."
 
-#: ../doc/C/xfdesktop.xml.in:413(para) 
-msgid "If you have questions about the use or installation of this package, please ask on the <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce\" type=\"http\">xfce</ulink> mailing list. Development discussion takes place on the <ulink url=\"http://lunar-linux.org/mailman/listinfo/xfce4-dev\" type=\"http\">xfce4-dev</ulink> mailing list."
-msgstr "<application>@PACKAGE_NAME@</application> menu clic du milieu"
+#: ../doc/C/xfdesktop.xml.in:688(para)
+msgid "If you have questions about the use or installation of this package, please ask on the <ulink url=\"http://foo-projects.org/mailman/listinfo/xfce\" type=\"http\">xfce</ulink> mailing list. Development discussion takes place on the <ulink url=\"http://foo-projects.org/mailman/listinfo/xfce4-dev\" type=\"http\">xfce4-dev</ulink> mailing list."
+msgstr "Si vous avez des questions à propos de l'utilisation ou l'installation de ce paquet, posez les sur la liste de distribution <ulink url=\"http://foo-projects.org/mailman/listinfo/xfce\" type=\"http\">xfce</ulink>. Les discussions au sujet du développement se trouvent sur la liste de disribution  <ulink url=\"http://foo-projects.org/mailman/listinfo/xfce4-dev\" type=\"http\">xfce4-dev</ulink>."
 
-#: ../doc/C/xfdesktop.xml.in:422(para) 
+#: ../doc/C/xfdesktop.xml.in:698(para)
 msgid "This program is distributed under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
-msgstr "Montre le menu clic du milieu de <application>@PACKAGE_NAME@</application>."
+msgstr "This program is distributed under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
 
-#: ../doc/C/xfdesktop.xml.in:427(para) 
+#: ../doc/C/xfdesktop.xml.in:704(para)
 msgid "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
-msgstr "Pour diminuer le niveau matériel requis pour utiliser xfdesktop, vous pouvez supprimer l'utilisation des icônes dans le menu de bureau et dans la liste des fenêtres depuis la fenêtre de paramètrage."
+msgstr "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
+#: ../doc/C/xfdesktop.xml.in:0(None)
+msgid "translator-credits"
+msgstr "Maximilian Schleiss <maxschleiss@bluewin.ch>, 2007."
 
