@@ -298,7 +298,7 @@ msgstr "Be_werken"
 
 #: ../menueditor/menueditor-main-window.c:150
 msgid "_Edit entry"
-msgstr "_Menu optie bewerken"
+msgstr "Menu optie be_werken"
 
 #: ../menueditor/menueditor-main-window.c:150
 msgid "Edit selected entry"
@@ -357,23 +357,20 @@ msgid "Show informations about xfce4-menueditor"
 msgstr "Toon informatie over xfce4-menueditor"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all"
-msgstr "Boomstructuur inklappen"
+msgstr "Alles inklappen"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all menu entries"
-msgstr "Boomstructuur inklappen"
+msgstr "Alle menu onderdelen inklappen"
 
 #: ../menueditor/menueditor-main-window.c:161
 msgid "Expand all"
-msgstr ""
+msgstr "Alles uitklappen"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all menu entries"
-msgstr "Boomstructuur uitklappen"
+msgstr "Alle menu onderdelen uitklappen"
 
 #: ../menueditor/menueditor-main-window.c:341
 msgid "Name"
@@ -504,6 +501,9 @@ msgid ""
 "Quitting the session requires that Xfce's session manager (xfce4-session) is "
 "running, but it was not detected.  Please quit Xfce via another means."
 msgstr ""
+"Het afsluiten van de sessie vereist dat de Xfce sessie beheerder "
+"(xfce4-session) draait, maar deze kon niet worden gedetecteerd. Sluit Xfce "
+"alsjeblieft op een andere manier."
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
@@ -511,6 +511,8 @@ msgid ""
 "Quitting the session requires the 'xfce4-session-logout' command, but it "
 "could not be found: %s"
 msgstr ""
+"Het afsluiten van de sessie vereist het 'xfce4-session-logout' commando, "
+"maar het kon niet worden gevonden: %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
@@ -551,9 +553,8 @@ msgid "Menu File"
 msgstr "Menu Bestand"
 
 #: ../panel-plugin/desktop-menu-plugin.c:828
-#, fuzzy
 msgid "Use default _desktop menu file"
-msgstr "Bureaubladmenu be_werken"
+msgstr "Gebruik het stan_daard menu bestand"
 
 #: ../panel-plugin/desktop-menu-plugin.c:837
 msgid "Use _custom menu file:"
@@ -669,6 +670,11 @@ msgid ""
 "your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
+"Om zeker te zijn dat deze instellingen worden gebruikt na de volgende "
+"keer dat je Xfce start, zorg er voor dat je de sessie opslaat bij het "
+"afsluiten. Als je de Xfce Sessie Beheerder (xfce4-session) niet gebruikt, "
+"dan zul je het bestand ~/.config/xfce4/xinitrc handmatig moeten bewerken. "
+"Details zijn beschikbaar in de documentatie op http://www.xfce.org/."
 
 #: ../settings/appearance-settings.c:847
 msgid ""
@@ -678,6 +684,11 @@ msgid ""
 "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
+"Om zeker te zijn dat Xfce het bureaublad niet beheert na de volgende "
+"keer dat je Xfce start, zorg er voor dat je de sessie opslaat bij het "
+"afsluiten. Als je de Xfce Sessie Beheerder (xfce4-session) niet gebruikt, "
+"dan zul je het bestand ~/.config/xfce4/xinitrc handmatig moeten bewerken. "
+"Details zijn beschikbaar in de documentatie op http://www.xfce.org/."
 
 #: ../settings/appearance-settings.c:855
 msgid "_Do not show this again"
@@ -804,19 +815,16 @@ msgid "Edit backdrop list"
 msgstr "Lijst van achtergronden aanpassen"
 
 #: ../settings/behavior-settings.c:241
-#, fuzzy
 msgid "Menus"
-msgstr "Menubestanden"
+msgstr "Menu's"
 
 #: ../settings/behavior-settings.c:249
-#, fuzzy
 msgid "Show _window list on middle click"
-msgstr "Vensterlijst _tonen"
+msgstr "Toon _venster lijst met middelste muisknop"
 
 #: ../settings/behavior-settings.c:260
-#, fuzzy
 msgid "Show _desktop menu on right click"
-msgstr "Bureaubladmenu tonen"
+msgstr "Toon bureaubla_d menu met rechter muisknop"
 
 #: ../settings/behavior-settings.c:279
 msgid "Desktop Icons"
@@ -855,16 +863,16 @@ msgstr "Dit is %s versie %s, draaiend op Xfce %s.\n"
 #: ../src/main.c:257
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Gebouwd met GTK+ %d.%d.%d, gelinked met GTK+ %d.%d.%d."
 
 #: ../src/main.c:261
 msgid "Build options:\n"
-msgstr ""
+msgstr "Bouw opties:\n"
 
 #: ../src/main.c:262
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "    Bureaublad Menu:                 %s\n"
 
 #: ../src/main.c:264 ../src/main.c:271 ../src/main.c:278
 msgid "enabled"
@@ -894,20 +902,19 @@ msgid "Options are:\n"
 msgstr "Mogelijk opties:\n"
 
 #: ../src/main.c:307
-#, fuzzy
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr "    -reload\tInstellingen opnieuw laden, bestandenlijst verversen\n"
+msgstr "    --reload   Instellingen opnieuw laden, bestandenlijst "
+"verversen\n"
 
 #: ../src/main.c:308
-#, fuzzy
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    -menu\tBuereaubladmenu tonen (op huidige muispositie)\n"
+msgstr "    --menu     Bureaubladmenu tonen (op huidige muispositie)\n"
 
 #: ../src/main.c:309
-#, fuzzy
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist\tVensterlijst tonen (op huidige muispositie)\n"
+msgstr ""
+"    --windowlist  Vensterlijst tonen (op huidige muispositie)\n"
 
 #: ../src/main.c:310
 msgid "    --quit        Cause xfdesktop to quit\n"
@@ -951,6 +958,7 @@ msgstr "Bureaublad"
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
+"Xfdesktop kon de map \"%s\" voor bureaublad pictogrammen niet aanmaken:"
 
 #: ../src/xfdesktop-file-icon-manager.c:388
 #: ../src/xfdesktop-file-icon-manager.c:399
@@ -964,6 +972,8 @@ msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
+"Xfdesktop kan \"%s\" niet gebruiken voor bureaublad pictogrammen, want "
+"het is geen map"
 
 #: ../src/xfdesktop-file-icon-manager.c:401
 msgid "Please delete or rename the file."
@@ -1029,6 +1039,8 @@ msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
+"Deze functie vereist dat er een bestands beheer service aanwezig is (zoals "
+"wordt verzorgd door Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1027
 #, c-format
@@ -1041,15 +1053,17 @@ msgid "Open With \"%s\""
 msgstr "Openen Met \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1091
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "Kon xfce4-menueditor niet starten: %s"
+msgstr "Kan de map genaamd \"%s\" moet maken:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1130
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
+"Kan \"exo-desktop-item-edit\" niet starten, dit is nodig voor het maken en "
+"bewerken van Snelstarters en -koppelingen op het bureaublad."
 
 #: ../src/xfdesktop-file-icon-manager.c:1163
 msgid "Create New Folder"
@@ -1066,18 +1080,18 @@ msgid "Create"
 msgstr "Maken"
 
 #: ../src/xfdesktop-file-icon-manager.c:1204
-#, fuzzy, c-format
+#,  c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "Kon xfce4-menueditor niet starten: %s"
+msgstr "Kan het bestand genaamd \"%s\" niet maken:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1207
 msgid "Create File Failed"
 msgstr "Kan geen Bestand maken"
 
 #: ../src/xfdesktop-file-icon-manager.c:1246
-#, fuzzy,  c-format
+#, c-format
 msgid "Create Document from template \"%s\""
-msgstr "Maak Document van voorbeeld \"%s\""
+msgstr "Maak Document van sjabloon \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1265
 msgid "Create Empty File"
@@ -1166,12 +1180,12 @@ msgstr "Uitvoer Fout"
 
 #: ../src/xfdesktop-file-icon.c:146
 msgid "The associated application could not be found or executed."
-msgstr ""
+msgstr "Het geassocieerde programma kan niet worden gevonden of uitgevoerd."
 
 #: ../src/xfdesktop-file-properties-dialog.c:103
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Kan het standaard programma voor \"%s\" niet op \"%s\" zetten:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:106
 msgid "Properties Error"
@@ -1199,7 +1213,7 @@ msgstr "Soort:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:234
 msgid "Link Target:"
-msgstr ""
+msgstr "Snelkoppelings bestemming:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
@@ -1261,17 +1275,17 @@ msgstr "Ja op _alles"
 #: ../src/xfdesktop-file-utils.c:106
 #, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Er was een fout bij het verplaatsen van \"%s\" naar \"%s\":"
 
 #: ../src/xfdesktop-file-utils.c:109
 #, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Er was een fout bij het kopiëren van \"%s\" naar \"%s\":"
 
 #: ../src/xfdesktop-file-utils.c:112
 #, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Er was een fout bij het maken van snelkoppeling \"%s\" aan \"%s\":"
 
 #: ../src/xfdesktop-file-utils.c:121
 msgid "File Error"
@@ -1279,12 +1293,12 @@ msgstr "Bestands Fout"
 
 #: ../src/xfdesktop-file-utils.c:137
 msgid "broken link"
-msgstr "kapotte koppeling"
+msgstr "kapotte sneloppeling"
 
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "link to %s"
-msgstr "koppeling naar %s"
+msgstr "snelkoppeling naar %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:489
 #: ../src/xfdesktop-special-file-icon.c:490 ../src/xfdesktop-volume-icon.c:463
@@ -1320,6 +1334,8 @@ msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr ""
+"Zorg ervoor dat je een bestands beheerder geinstalleerd hebt die de Xfce "
+"Prullenbak service ondersteund, zoals Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
@@ -1377,9 +1393,8 @@ msgid "Xfce 4 Menu Editor"
 msgstr "Xfce 4 Menu Aanpassen"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
-#, fuzzy
 msgid "Shows a menu containing categories of installed applications"
-msgstr "Toont een menu met cateforien van geinstalleerde programma's"
+msgstr "Toont een menu met categorien van geinstalleerde programma's"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
