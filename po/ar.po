@@ -2,7 +2,7 @@
 # Arabic translations for xfdesktop package.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
-# 
+#
 # Saleh Alhathal <hathalsal@hotmail.com>, 2004.
 # Khaled Hosny <khaledhosny@eglug.org>, 2007.
 # Ahmed Mansour <911freak@gmail.com>,  2007.
@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-20 12:36-0700\n"
+"POT-Creation-Date: 2007-04-08 19:03+0900\n"
 "PO-Revision-Date: 2007-02-04 22:48+0000\n"
 "Last-Translator: Ahmed Mansour <911freak@gmail.com>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -506,7 +506,7 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "تعذّر اطلاق xfce4-menueditor: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:769
-#: ../panel-plugin/xfce4-menu.desktop.in.h:2
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "قائمة Xfce"
 
@@ -750,7 +750,7 @@ msgid ""
 "Please choose another location or press cancel in the dialog to discard your "
 "changes"
 msgstr ""
-"فشل في حفظ الملف s% : %s\n"
+"فشل في حفظ الملف %s : %s\n"
 "قم بإختيار مكان اخر لحفظ الملف او اضغط زر إلغاء "
 
 #: ../settings/backdrop-list-manager.c:430
@@ -903,31 +903,31 @@ msgstr "····--خروج········خروج من·xfdesktop \n"
 msgid "%s is not running.\n"
 msgstr "%s لاتعمل.\n"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:227
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>ساحة العمل·%d</b>"
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:236
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "<b>ساحة العمل·%d</b>"
 
-#: ../src/windowlist.c:237
+#: ../src/windowlist.c:238
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>ساحة·العمل·%d</i>"
 
-#: ../src/windowlist.c:329 ../src/windowlist.c:332
+#: ../src/windowlist.c:332 ../src/windowlist.c:335
 msgid "_Add Workspace"
 msgstr "_ضف مساحة عمل"
 
-#: ../src/windowlist.c:340
-#, c-format
+#: ../src/windowlist.c:343
+#, fuzzy, c-format
 msgid "_Remove Workspace %d"
 msgstr "_حذف مساحة العمل"
 
-#: ../src/windowlist.c:343
+#: ../src/windowlist.c:346
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_حذف ساحة العمل '%s'"
@@ -940,7 +940,7 @@ msgstr "سطح المكتب"
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "فشل في انشاء المجلد \"s%\" لتسجيل عناصر المكتب"
+msgstr "فشل في انشاء المجلد \"%s\" لتسجيل عناصر المكتب"
 
 #: ../src/xfdesktop-file-icon-manager.c:388
 #: ../src/xfdesktop-file-icon-manager.c:399
@@ -953,7 +953,7 @@ msgstr "فشل في انشاء المجلد"
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
-msgstr "فشل في استعمال \"s%\" لتسجيل عناصر المكتب لأنه ليس مجلد"
+msgstr "فشل في استعمال \"%s\" لتسجيل عناصر المكتب لأنه ليس مجلد"
 
 #: ../src/xfdesktop-file-icon-manager.c:401
 msgid "Please delete or rename the file."
@@ -976,7 +976,7 @@ msgid "Rename"
 msgstr "_غير اسم"
 
 #: ../src/xfdesktop-file-icon-manager.c:584
-#, c-format
+#, fuzzy, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "هل أنت متأكد أنك تريد إغلاق القائمة التالية؟"
 
@@ -988,7 +988,7 @@ msgstr "اذا حذفت الملف، سيمسح نهائيا "
 #: ../src/xfdesktop-file-icon-manager.c:603
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "هل أنت متأكد أنك تريد حذف الملفات التالية d%؟"
+msgstr "هل أنت متأكد أنك تريد حذف الملفات التالية %d؟"
 
 #: ../src/xfdesktop-file-icon-manager.c:606
 msgid "Delete Multiple Files"
@@ -1000,7 +1000,7 @@ msgstr "حذف عدة ملفات"
 #: ../src/xfdesktop-file-utils.c:352
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "فشل في اقلاع \"s%\":"
+msgstr "فشل في اقلاع \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:825
 #: ../src/xfdesktop-file-icon-manager.c:865
@@ -1163,7 +1163,7 @@ msgstr "البرنامج المرتبط بالملف غير موجود او غي
 #: ../src/xfdesktop-file-properties-dialog.c:103
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr "فشل في تغيير البرنامج الإفتراضي لـ \"s%\" الى ·\"s%\":"
+msgstr "فشل في تغيير البرنامج الإفتراضي لـ \"%s\" الى ·\"%s\":"
 
 #: ../src/xfdesktop-file-properties-dialog.c:106
 msgid "Properties Error"
@@ -1253,17 +1253,17 @@ msgstr "نعم _للجميع"
 #: ../src/xfdesktop-file-utils.c:106
 #, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr "وقع خطأ في نقل \"s%\" الى \"s%\":"
+msgstr "وقع خطأ في نقل \"%s\" الى \"%s\":"
 
 #: ../src/xfdesktop-file-utils.c:109
 #, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr "وقع خطأ في نسخ الملف من \"s%\" الى \"s%\""
+msgstr "وقع خطأ في نسخ الملف من \"%s\" الى \"%s\""
 
 #: ../src/xfdesktop-file-utils.c:112
 #, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr "وقع خطأ في انشاء وصلة \"s%\" الى \"s%\":"
+msgstr "وقع خطأ في انشاء وصلة \"%s\" الى \"%s\":"
 
 #: ../src/xfdesktop-file-utils.c:121
 msgid "File Error"
@@ -1276,7 +1276,7 @@ msgstr "وصلة معطوبة"
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "link to %s"
-msgstr "وصلة الى s%"
+msgstr "وصلة الى %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:489
 #: ../src/xfdesktop-special-file-icon.c:490 ../src/xfdesktop-volume-icon.c:463
@@ -1285,12 +1285,12 @@ msgid ""
 "Kind: %s\n"
 "Modified:%s\n"
 "Size: %s"
-msgstr "8"
+msgstr ""
 
 #: ../src/xfdesktop-regular-file-icon.c:581
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr "فشل في تغيير اسم \"s%\" الى \"s%\":"
+msgstr "فشل في تغيير اسم \"%s\" الى \"%s\":"
 
 #: ../src/xfdesktop-special-file-icon.c:258
 msgid "Home"
@@ -1317,7 +1317,7 @@ msgstr "_سلة المهملات فارغة"
 #: ../src/xfdesktop-volume-icon.c:491
 #, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "فشل في ضم ·\"s%\""
+msgstr "فشل في ضم ·\"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:492
 #, c-format
@@ -1335,7 +1335,7 @@ msgstr ""
 #: ../src/xfdesktop-volume-icon.c:513
 #, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "فشل في إخراج \"s%\":"
+msgstr "فشل في إخراج \"%s\":"
 
 #: ../src/xfdesktop-volume-icon.c:516
 msgid "Eject Failed"
@@ -1522,7 +1522,7 @@ msgstr ""
 msgid "Web Browser"
 msgstr ""
 
-#: ../panel-plugin/xfce4-menu.desktop.in.h:1
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr "أظهر قائمة بأنواع التطبيقات المثبتة بالجهاز"
 

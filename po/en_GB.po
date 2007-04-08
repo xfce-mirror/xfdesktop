@@ -9,14 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-20 12:36-0700\n"
+"POT-Creation-Date: 2007-04-08 19:03+0900\n"
 "PO-Revision-Date: 2007-03-28 17:51+1000\n"
 "Last-Translator: Jeff Bailes <thepizzaking@gmail.com>\n"
 "Language-Team: English/GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
@@ -503,7 +503,7 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Unable to launch xfce4-menueditor: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:769
-#: ../panel-plugin/xfce4-menu.desktop.in.h:2
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce Menu"
 
@@ -904,31 +904,31 @@ msgstr "    --quit        Cause xfdesktop to quit\n"
 msgid "%s is not running.\n"
 msgstr "%s is not running.\n"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:227
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Workspace %d</b>"
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "Workspace %d"
 
-#: ../src/windowlist.c:237
+#: ../src/windowlist.c:238
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Workspace %d</i>"
 
-#: ../src/windowlist.c:329 ../src/windowlist.c:332
+#: ../src/windowlist.c:332 ../src/windowlist.c:335
 msgid "_Add Workspace"
 msgstr "_Add Workspace"
 
-#: ../src/windowlist.c:340
+#: ../src/windowlist.c:343
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Remove Workspace %d"
 
-#: ../src/windowlist.c:343
+#: ../src/windowlist.c:346
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Remove Workspace '%s'"
@@ -1524,7 +1524,7 @@ msgstr "Browse the Web"
 msgid "Web Browser"
 msgstr "Web Browser"
 
-#: ../panel-plugin/xfce4-menu.desktop.in.h:1
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr "Shows a menu containing categories of installed applications"
 

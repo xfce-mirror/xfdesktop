@@ -8,13 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-20 12:36-0700\n"
+"POT-Creation-Date: 2007-04-08 19:03+0900\n"
 "PO-Revision-Date: 2007-03-29 21:30+0300\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
@@ -502,7 +502,7 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor başlatılamıyor: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:769
-#: ../panel-plugin/xfce4-menu.desktop.in.h:2
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce Menüsü"
 
@@ -902,31 +902,31 @@ msgstr "    --quit        Xfdesktop'ın kapanasına sebep olur\n"
 msgid "%s is not running.\n"
 msgstr "%s çalışmıyor.\n"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:227
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Çalışma alanı %d</b>"
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "Çalışma Alanı %d"
 
-#: ../src/windowlist.c:237
+#: ../src/windowlist.c:238
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Çalışma alanı %d</i>"
 
-#: ../src/windowlist.c:329 ../src/windowlist.c:332
+#: ../src/windowlist.c:332 ../src/windowlist.c:335
 msgid "_Add Workspace"
 msgstr "Çalışma Alanı _Ekle"
 
-#: ../src/windowlist.c:340
+#: ../src/windowlist.c:343
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "Çalışma alanı %d'yi _Kaldır"
 
-#: ../src/windowlist.c:343
+#: ../src/windowlist.c:346
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Çalışma alanı '%s'i _Kaldır"
@@ -988,7 +988,7 @@ msgid "If you delete a file, it is permanently lost."
 msgstr "Dosyayı silerseniz, kalıcı olarak kaybedilecektir"
 
 #: ../src/xfdesktop-file-icon-manager.c:603
-#, c-format
+#, fuzzy, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "\"%s\" dosyalarını silmek istediğinizden emin misiniz?"
 
@@ -1520,7 +1520,7 @@ msgstr "Web'de gez"
 msgid "Web Browser"
 msgstr "Web Tarayıcı"
 
-#: ../panel-plugin/xfce4-menu.desktop.in.h:1
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr "Yüklenen uygulamalarının kategorilerini içeren menüyü göster"
 

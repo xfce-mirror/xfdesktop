@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-20 12:36-0700\n"
+"POT-Creation-Date: 2007-04-08 19:03+0900\n"
 "PO-Revision-Date: 2005-10-19 21:33+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -501,7 +501,7 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-valikkoeditoria ei voitu käynnistää: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:769
-#: ../panel-plugin/xfce4-menu.desktop.in.h:2
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce-valikko"
 
@@ -900,31 +900,31 @@ msgstr "    --quit        Sulje xfdesktop\n"
 msgid "%s is not running.\n"
 msgstr "%s ei ole käynnissä.\n"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:227
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Työtila %d</b>"
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:236
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "<b>Työtila %d</b>"
 
-#: ../src/windowlist.c:237
+#: ../src/windowlist.c:238
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Työtila %d</i>"
 
-#: ../src/windowlist.c:329 ../src/windowlist.c:332
+#: ../src/windowlist.c:332 ../src/windowlist.c:335
 msgid "_Add Workspace"
 msgstr "_Lisää työtila"
 
-#: ../src/windowlist.c:340
+#: ../src/windowlist.c:343
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Poista työtila %d"
 
-#: ../src/windowlist.c:343
+#: ../src/windowlist.c:346
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Poista työtila '%s'"
@@ -1528,7 +1528,7 @@ msgstr ""
 msgid "Web Browser"
 msgstr "Web-selain"
 
-#: ../panel-plugin/xfce4-menu.desktop.in.h:1
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr "Näyttää asennetut ohjelmat valikossa kategorioihin järjestettynä"
 

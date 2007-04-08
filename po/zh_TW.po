@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-20 12:36-0700\n"
+"POT-Creation-Date: 2007-04-08 19:03+0900\n"
 "PO-Revision-Date: 2006-08-20 01:23+0800\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -513,7 +513,7 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "無法執行 xfce4-menueditor：%s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:769
-#: ../panel-plugin/xfce4-menu.desktop.in.h:2
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce 選單"
 
@@ -917,32 +917,32 @@ msgstr "    --quit        結束 xfdesktop\n"
 msgid "%s is not running.\n"
 msgstr "%s 沒在執行。\n"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:227
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>工作區 %d</b>"
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:236
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "<b>工作區 %d</b>"
 
 # NOTE 中文用 <i></i> 會很難看，改用 <b></b>
-#: ../src/windowlist.c:237
+#: ../src/windowlist.c:238
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<b>工作區 %d</b>"
 
-#: ../src/windowlist.c:329 ../src/windowlist.c:332
+#: ../src/windowlist.c:332 ../src/windowlist.c:335
 msgid "_Add Workspace"
 msgstr "新增工作區(_A)"
 
-#: ../src/windowlist.c:340
+#: ../src/windowlist.c:343
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "移除工作區 %d (_R)"
 
-#: ../src/windowlist.c:343
+#: ../src/windowlist.c:346
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "移除工作區「%s」(_R)"
@@ -1543,7 +1543,7 @@ msgstr ""
 msgid "Web Browser"
 msgstr "網頁瀏覽器"
 
-#: ../panel-plugin/xfce4-menu.desktop.in.h:1
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr "顯示包含已安裝程式分類目錄的選單"
 

@@ -1,17 +1,17 @@
 # $Id$
 #
 # Japanese translations for xfdesktop package.
-# Copyright (C) 2003-2006 The Xfce development team.
+# Copyright (C) 2003-2007 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Zhao Ji <zhao-ji@awz.ne.jp>, 2003.
-# Daichi Kawahata <daichi@xfce.org>, 2005-2006.
+# Daichi Kawahata <daichi@xfce.org>, 2005-2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-20 12:36-0700\n"
-"PO-Revision-Date: 2006-05-21 11:51+0900\n"
+"POT-Creation-Date: 2007-04-08 19:03+0900\n"
+"PO-Revision-Date: 2007-04-08 18:59+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgstr "ランチャー"
 
 #: ../menueditor/menueditor-add-dialog.c:154
 msgid "Separator"
-msgstr "セパレーター"
+msgstr "仕切り"
 
 #: ../menueditor/menueditor-add-dialog.c:155
 msgid "Quit"
@@ -84,17 +84,15 @@ msgstr "アイコン:"
 #: ../menueditor/menueditor-add-dialog.c:330
 #: ../menueditor/menueditor-edit-dialog.c:191
 #: ../menueditor/menueditor-edit-dialog.c:586
-#, fuzzy
 msgid "No icon"
-msgstr "ボタンアイコン(_B):"
+msgstr "アイコンがありません"
 
 #: ../menueditor/menueditor-add-dialog.c:225
 #: ../menueditor/menueditor-add-dialog.c:226
 #: ../menueditor/menueditor-edit-dialog.c:203
 #: ../menueditor/menueditor-edit-dialog.c:204
-#, fuzzy
 msgid "Themed icon:"
-msgstr "アイコンを選択してください"
+msgstr "テーマアイコン:"
 
 #. allocate the chooser dialog
 #: ../menueditor/menueditor-add-dialog.c:252
@@ -129,7 +127,7 @@ msgstr "画像ファイル"
 #: ../menueditor/menueditor-add-dialog.c:283
 #: ../menueditor/menueditor-edit-dialog.c:261
 msgid "Use startup _notification"
-msgstr "起動通知を使用する(_N)"
+msgstr "起動通知を行う(_N)"
 
 #. Run in terminal check button
 #: ../menueditor/menueditor-add-dialog.c:288
@@ -145,34 +143,32 @@ msgstr "コマンドを選択してください"
 
 #: ../menueditor/menueditor-add-dialog.c:442
 #: ../menueditor/menueditor-edit-dialog.c:301
-#, fuzzy
 msgid "Executable Files"
-msgstr "取り出しに失敗しました"
+msgstr "実行可能ファイル"
 
 #: ../menueditor/menueditor-add-dialog.c:457
 #: ../menueditor/menueditor-edit-dialog.c:316
 msgid "Perl Scripts"
-msgstr ""
+msgstr "Perlスクリプト"
 
 #: ../menueditor/menueditor-add-dialog.c:463
 #: ../menueditor/menueditor-edit-dialog.c:322
 msgid "Python Scripts"
-msgstr ""
+msgstr "Pythonスクリプト"
 
 #: ../menueditor/menueditor-add-dialog.c:469
 #: ../menueditor/menueditor-edit-dialog.c:328
 msgid "Ruby Scripts"
-msgstr ""
+msgstr "Rubyスクリプト"
 
 #: ../menueditor/menueditor-add-dialog.c:475
 #: ../menueditor/menueditor-edit-dialog.c:334
 msgid "Shell Scripts"
-msgstr ""
+msgstr "シェルスクリプト"
 
 #: ../menueditor/menueditor-add-external-dialog.c:100
-#, fuzzy
 msgid "Add external menu entry"
-msgstr "外部メニューの追加"
+msgstr "外部メニュー項目の追加"
 
 #: ../menueditor/menueditor-add-external-dialog.c:122
 msgid "File"
@@ -193,9 +189,8 @@ msgstr "ソース:"
 
 #: ../menueditor/menueditor-add-external-dialog.c:137
 #: ../menueditor/menueditor-edit-external-dialog.c:117
-#, fuzzy
 msgid "Select external menu"
-msgstr "外部メニューの追加"
+msgstr "外部メニューを選択してください"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
@@ -232,12 +227,10 @@ msgid "Edit menu entry"
 msgstr "メニュー項目の編集"
 
 #: ../menueditor/menueditor-edit-external-dialog.c:96
-#, fuzzy
 msgid "Edit external menu entry"
-msgstr "外部メニューの追加"
+msgstr "外部メニュー項目の編集"
 
 #: ../menueditor/menueditor-main.c:43
-#, fuzzy
 msgid "Xfce4-MenuEditor"
 msgstr "Xfce 4 メニューエディター"
 
@@ -247,12 +240,11 @@ msgstr "ファイル(_F)"
 
 #: ../menueditor/menueditor-main-window.c:141
 msgid "_New"
-msgstr ""
+msgstr "新規(_N)"
 
 #: ../menueditor/menueditor-main-window.c:141
-#, fuzzy
 msgid "Create a new empty menu"
-msgstr "新規 Xfce4 メニューファイルを作成します"
+msgstr "新規メニューファイルを作成します"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1602
@@ -261,114 +253,98 @@ msgid "_Open"
 msgstr "開く(_O)"
 
 #: ../menueditor/menueditor-main-window.c:142
-#, fuzzy
 msgid "Open existing menu"
-msgstr "標準のメニューを開く"
+msgstr "既存のメニューを開きます"
 
 #: ../menueditor/menueditor-main-window.c:143
-#, fuzzy
 msgid "Open _default menu"
-msgstr "標準のメニューを開く"
+msgstr "標準のメニューを開く(_D)"
 
 #: ../menueditor/menueditor-main-window.c:143
 msgid "Open default menu"
-msgstr "標準のメニューを開く"
+msgstr "標準のメニューを開きます"
 
 #: ../menueditor/menueditor-main-window.c:144
 msgid "_Save"
-msgstr ""
+msgstr "保存(_S)"
 
 #: ../menueditor/menueditor-main-window.c:144
-#, fuzzy
 msgid "Save modifications"
-msgstr "変更を破棄する"
+msgstr "変更を保存します"
 
 #: ../menueditor/menueditor-main-window.c:145
-#, fuzzy
 msgid "Save _as..."
-msgstr "名前を付けて保存..."
+msgstr "名前を付けて保存(_A)..."
 
 #: ../menueditor/menueditor-main-window.c:145
 msgid "Save menu under a given name"
-msgstr ""
+msgstr "指定した名前でメニューを保存します"
 
 #: ../menueditor/menueditor-main-window.c:146
 msgid "_Close"
-msgstr ""
+msgstr "閉じる(_C)"
 
 #: ../menueditor/menueditor-main-window.c:146
-#, fuzzy
 msgid "Close menu"
-msgstr "現在のメニューを閉じます"
+msgstr "メニューを閉じます"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "_Quit"
-msgstr "終了"
+msgstr "終了(_Q)"
 
 #: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
 msgid "Quit Xfce4-Menueditor"
-msgstr "Xfce 4 メニューエディター"
+msgstr "Xfce 4 メニューエディターを終了します"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
 msgstr "編集(_E)"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "_Edit entry"
-msgstr "メニュー項目の編集"
+msgstr "メニュー項目の編集(_E)"
 
 #: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
 msgid "Edit selected entry"
-msgstr "メニュー項目の編集"
+msgstr "メニュー項目を編集します"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "_Add entry"
-msgstr "メニュー項目の追加"
+msgstr "メニュー項目の追加(_A)"
 
 #: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
 msgid "Add a new entry in the menu"
-msgstr "メニューに項目を追加します"
+msgstr "メニューに新規項目を追加します"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add _external"
-msgstr "外部メニューの追加"
+msgstr "外部メニューの追加(_E)"
 
 #: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
 msgid "Add an external entry"
-msgstr "外部メニューの追加"
+msgstr "外部メニューを追加します"
 
 #: ../menueditor/menueditor-main-window.c:153
 msgid "_Remove entry"
-msgstr ""
+msgstr "メニュー項目を削除(_R)"
 
 #: ../menueditor/menueditor-main-window.c:153
-#, fuzzy
 msgid "Remove entry"
-msgstr "メニュー項目の追加"
+msgstr "メニュー項目を削除します"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "_Up"
-msgstr ""
+msgstr "上へ(_U)"
 
 #: ../menueditor/menueditor-main-window.c:154
-#, fuzzy
 msgid "Move entry up"
 msgstr "現在の項目を上に移動します"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "_Down"
-msgstr ""
+msgstr "下へ(_D)"
 
 #: ../menueditor/menueditor-main-window.c:155
-#, fuzzy
 msgid "Move entry down"
 msgstr "現在の項目を下に移動します"
 
@@ -381,29 +357,24 @@ msgid "_About..."
 msgstr "このプログラムについて(_A)..."
 
 #: ../menueditor/menueditor-main-window.c:158
-#, fuzzy
 msgid "Show informations about xfce4-menueditor"
-msgstr "xfce4-menueditor を実行できません: %s"
+msgstr "Xfce4 メニューエディターについての情報を表示します"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all"
-msgstr "このツリーを畳みます"
+msgstr "全て畳む"
 
 #: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
 msgid "Collapse all menu entries"
-msgstr "このツリーを畳みます"
+msgstr "全てのメニュー項目を畳みます"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all"
-msgstr "全て開く(_O)"
+msgstr "全て展開する"
 
 #: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
 msgid "Expand all menu entries"
-msgstr "このツリーを拡げます"
+msgstr "全てのメニュー項目を展開します"
 
 #: ../menueditor/menueditor-main-window.c:341
 msgid "Name"
@@ -425,12 +396,13 @@ msgstr "現在のメニューを閉じても構いませんか？"
 msgid "Do you want to save before closing the file?"
 msgstr "ファイルを閉じる前に保存しますか？"
 
+# INFO: it's 'Confirmation'
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
 #: ../src/xfdesktop-file-icon-manager.c:587 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
-msgstr "質問"
+msgstr "確認"
 
 #: ../menueditor/menueditor-main-window.c:481
 msgid "Do you want to save before opening an other menu ?"
@@ -451,9 +423,8 @@ msgid "Do you want to save before opening the default menu ?"
 msgstr "標準のメニューを開く前に保存しますか？"
 
 #: ../menueditor/menueditor-main-window.c:594
-#, fuzzy
 msgid "Save menu file as"
-msgstr "メニューファイルを開く"
+msgstr "名前を付けてメニューファイルを保存"
 
 #: ../menueditor/menueditor-main-window.c:632
 #: ../menueditor/menueditor-main-window.c:1343
@@ -468,7 +439,7 @@ msgstr "終了"
 #: ../menueditor/menueditor-main-window.c:963
 #: ../menueditor/menueditor-main-window.c:1584
 msgid "--- separator ---"
-msgstr "--- セパレーター ---"
+msgstr "--- 仕切り ---"
 
 #: ../menueditor/menueditor-main-window.c:1081
 #: ../menueditor/menueditor-main-window.c:1088
@@ -493,7 +464,7 @@ msgstr "Xfce4 メニューエディター"
 #. Credits
 #: ../menueditor/menueditor-main-window.c:1298
 msgid "Author/Maintainer"
-msgstr ""
+msgstr "著作者/メインテナー"
 
 #: ../menueditor/menueditor-main-window.c:1299
 #: ../menueditor/menueditor-main-window.c:1300
@@ -510,14 +481,13 @@ msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "メニューが変更されています、終了する前に保存しますか？"
 
 #: ../menueditor/menueditor-main-window.c:1347
-#, fuzzy
 msgid "Forget modifications"
-msgstr "変更を無視する"
+msgstr "変更を破棄する"
 
 #: ../menueditor/menueditor-main-window.c:2035
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
-msgstr ""
+msgstr "メニューファイル「%s」を書き込みモードで開けません"
 
 #: ../panel-plugin/desktop-menu-plugin.c:587
 msgid "Select Icon"
@@ -534,7 +504,7 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor を実行できません: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:769
-#: ../panel-plugin/xfce4-menu.desktop.in.h:2
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce メニュー"
 
@@ -581,7 +551,7 @@ msgstr "メニューでアイコンを表示する(_I):"
 
 #: ../panel-plugin/desktop-menu-plugin.c:951
 msgid "There is already a panel menu registered for this screen"
-msgstr ""
+msgstr "この画面には既にパネルメニューが登録されています"
 
 #: ../panel-plugin/desktop-menu-plugin.c:1063
 msgid "Edit Menu"
@@ -592,6 +562,7 @@ msgstr "メニューの編集"
 msgid "Button Label|Desktop"
 msgstr "デスクトップ"
 
+# INFO: leave it as is
 #: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
 #: ../settings/backdrop-list-manager.c:628
 msgid "backdrops.list"
@@ -665,7 +636,6 @@ msgid "Information"
 msgstr "情報"
 
 #: ../settings/appearance-settings.c:896
-#, fuzzy
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -673,11 +643,11 @@ msgid ""
 "your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
-"次回に Xfce を起動する時に Xfce にあなたのデスクトップを管理させないために、"
-"ログアウトする際にセッションを保存するのを忘れないでください。Xfce セッショ"
-"ン・マネージャ (xfce4-session) を使用していない場合は、~/.config/xfce4/"
-"xinitrc ファイルを自分で編集する必要があります。さらに細かいことは http://"
-"xfce.org/ にある文書を御覧ください。"
+"この設定は次回の Xfce 起動時に有効になりますので、ログアウトの際にはあなたの"
+"セッションを保存するのを忘れないようにしてください。Xfce セッション・マネー"
+"ジャー (xfce4-session) を使用していない場合は、~/.config/xfce4/xinitrc ファイ"
+"ルを自分で編集する必要があります。詳細は http://xfce.org/ にある文書でご確認"
+"ください。"
 
 #: ../settings/appearance-settings.c:898
 msgid ""
@@ -687,11 +657,11 @@ msgid ""
 "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
-"次回に Xfce を起動する時に Xfce にあなたのデスクトップを管理させないために、"
-"ログアウトする際にセッションを保存するのを忘れないでください。Xfce セッショ"
-"ン・マネージャ (xfce4-session) を使用していない場合は、~/.config/xfce4/"
-"xinitrc ファイルを自分で編集する必要があります。さらに細かいことは http://"
-"xfce.org/ にある文書を御覧ください。"
+"次回の Xfce 起動時には Xfce はデスクトップを管理しませんので、ログアウトの際"
+"にはセッションを保存するのを忘れないでください。Xfce セッション・マネー"
+"ジャー (xfce4-session) を使用していない場合は、~/.config/xfce4/xinitrc ファイ"
+"ルを自分で編集する必要があります。詳細は http://xfce.org/ にある文書でご確認"
+"ください。"
 
 #: ../settings/appearance-settings.c:906
 msgid "_Do not show this again"
@@ -824,15 +794,15 @@ msgstr "ミドルクリックでウィンドウリストを表示する(_W)"
 
 #: ../settings/behavior-settings.c:327
 msgid "Show workspace _names in list"
-msgstr ""
+msgstr "リストにワークスペースを表示する(_N)"
 
 #: ../settings/behavior-settings.c:341
 msgid "Show windows on each workspace in sub_menus"
-msgstr ""
+msgstr "サブメニューにワークスペースのウィンドウを表示する(_M)"
 
 #: ../settings/behavior-settings.c:351
 msgid "Show sticky windows only in _active workspace"
-msgstr ""
+msgstr "現在のワークスペースのみにスティッキーウィンドウを表示する(_A)"
 
 #: ../settings/behavior-settings.c:362
 msgid "Show _desktop menu on right click"
@@ -900,9 +870,9 @@ msgid "    Desktop Icons:       %s\n"
 msgstr "    アイコン:            %s\n"
 
 #: ../src/main.c:282
-#, fuzzy, c-format
+#, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    アイコン:            %s\n"
+msgstr "    ファイルアイコン:    %s\n"
 
 #: ../src/main.c:311
 #, c-format
@@ -914,57 +884,53 @@ msgid "Options are:\n"
 msgstr "オプションは:\n"
 
 #: ../src/main.c:313
-#, fuzzy
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr "    -reload      全ての設定を再読込みして画像リストを更新します\n"
+msgstr "    --reload      全ての設定を再読込みして画像リストを更新します\n"
 
 #: ../src/main.c:314
-#, fuzzy
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    -menu        現在のマウス位置でメニューをポップアップします\n"
+msgstr "    --menu        現在のマウス位置でメニューをポップアップします\n"
 
 #: ../src/main.c:315
-#, fuzzy
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
-"    -windowlist  現在のマウス位置でウィンドウリストをポップアップします\n"
+"    --windowlist  現在のマウス位置でウィンドウリストをポップアップします\n"
 
 #: ../src/main.c:316
-#, fuzzy
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "    -quit        xfdesktop を終了させます\n"
+msgstr "    --quit        xfdesktop を終了させます\n"
 
 #: ../src/main.c:331
 #, c-format
 msgid "%s is not running.\n"
-msgstr ""
+msgstr "%s は実行されていません。\n"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:227
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>ワークスペース %d</b>"
 
-#: ../src/windowlist.c:235
-#, fuzzy, c-format
+#: ../src/windowlist.c:236
+#, c-format
 msgid "Workspace %d"
-msgstr "<b>ワークスペース %d</b>"
+msgstr "ワークスペース %d"
 
-#: ../src/windowlist.c:237
+#: ../src/windowlist.c:238
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>ワークスペース %d</i>"
 
-#: ../src/windowlist.c:329 ../src/windowlist.c:332
+#: ../src/windowlist.c:332 ../src/windowlist.c:335
 msgid "_Add Workspace"
 msgstr "ワークスペースを追加(_A)"
 
-#: ../src/windowlist.c:340
+#: ../src/windowlist.c:343
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "ワークスペース %d を削除(_R)"
 
-#: ../src/windowlist.c:343
+#: ../src/windowlist.c:346
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース「%s」を削除(_R)"
@@ -1049,11 +1015,8 @@ msgid "Launch Error"
 msgstr "実行エラー"
 
 #: ../src/xfdesktop-file-icon-manager.c:866
-#, fuzzy
 msgid "The application chooser could not be opened."
-msgstr ""
-"関連付けられているアプリケーションが見つからない、あるいは実行できませんでし"
-"た。"
+msgstr "アプリケーション選択ウィンドウを開けませんでした。"
 
 #: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
 msgid ""
@@ -1161,38 +1124,32 @@ msgid "_Properties..."
 msgstr "プロパティ(_P)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1837
-#, fuzzy
 msgid "Des_ktop"
-msgstr "デスクトップ"
+msgstr "デスクトップ(_K)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1856
-#, fuzzy
 msgid "Create _Launcher..."
-msgstr "ランチャー(_L)..."
+msgstr "ランチャーを作成(_L)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1877
-#, fuzzy
 msgid "Create _URL Link..."
-msgstr "URLリンク(_U)..."
+msgstr "URLリンクを作成(_U)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1894
-#, fuzzy
 msgid "Create _Folder..."
-msgstr "新規フォルダを作成"
+msgstr "フォルダを作成(_F)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1936
 msgid "_Empty File"
 msgstr "空のファイル(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1977
-#, fuzzy
 msgid "Desktop _Settings..."
-msgstr "デスクトップ"
+msgstr "デスクトップの設定(_S)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1986
-#, fuzzy
 msgid "_Desktop Properties..."
-msgstr "プロパティ(_P)..."
+msgstr "デスクトップのプロパティ(_D)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:3158
 #: ../src/xfdesktop-regular-file-icon.c:382
@@ -1300,7 +1257,7 @@ msgstr "その他の人達:"
 
 #: ../src/xfdesktop-file-utils.c:74
 msgid "Yes to _all"
-msgstr ""
+msgstr "全てはい(_A)"
 
 #: ../src/xfdesktop-file-utils.c:106
 #, c-format
@@ -1338,36 +1295,40 @@ msgid ""
 "Modified:%s\n"
 "Size: %s"
 msgstr ""
+"タイプ: %s\n"
+"変更日: %s\n"
+"サイズ: %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:581
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr "「%s」の名前を「%s」に変更するのに失敗しました:"
+msgstr "「%s」の名前を「%s」に変更できませんでした:"
 
 #: ../src/xfdesktop-special-file-icon.c:258
 msgid "Home"
-msgstr ""
+msgstr "ホーム"
 
+# FIXME: wtf
 #: ../src/xfdesktop-special-file-icon.c:508
-#, fuzzy
 msgid "Trash Error"
-msgstr "実行エラー"
+msgstr "ゴミ収集エラー"
 
+# FIXME: wtf
 #: ../src/xfdesktop-special-file-icon.c:510
-#, fuzzy
 msgid "Unable to contact the Xfce Trash service."
-msgstr "「%s」をマウントできません:"
+msgstr "Xfce ゴミ収集サービスにコンタクトできません。"
 
 #: ../src/xfdesktop-special-file-icon.c:511
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr ""
+"Thunar のような Xfce ゴミ収集サービスをサポートしたファイルマネージャーがイン"
+"ストールされているか確認してください。"
 
 #: ../src/xfdesktop-special-file-icon.c:635
-#, fuzzy
 msgid "_Empty Trash"
-msgstr "空のファイル(_E)"
+msgstr "ゴミ箱を空にする(_E)"
 
 #: ../src/xfdesktop-volume-icon.c:491
 #, c-format
@@ -1421,22 +1382,20 @@ msgid "Xfce 4 Menu Editor"
 msgstr "Xfce 4 メニューエディター"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-#, fuzzy
 msgid "Accessories"
-msgstr "アクセス日時:"
+msgstr "アクセサリー"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
-msgstr ""
+msgstr "デスクトップの共通ツールやアプリケーション"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:1
 msgid "Development"
 msgstr "開発"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:2
-#, fuzzy
 msgid "Software development tools"
-msgstr "中心開発者"
+msgstr "ソフトウェア開発ツール"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:1
 msgid "Education"
@@ -1444,16 +1403,15 @@ msgstr "教育"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:2
 msgid "Educational software"
-msgstr ""
+msgstr "教育ソフトウェア"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-#, fuzzy
 msgid "Games"
-msgstr "名前"
+msgstr "ゲーム"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
-msgstr ""
+msgstr "ゲーム、パズルや他の遊戯用ソフトウェア"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
@@ -1461,16 +1419,15 @@ msgstr "グラフィックス"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr ""
+msgstr "グラフィックスの作成やアプリケーションの操作"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
-msgstr ""
+msgstr "オーディオ、ビデオプレイヤーや編集ソフトウェア"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-#, fuzzy
 msgid "Multimedia"
-msgstr "マルチレベル"
+msgstr "マルチメディア"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
@@ -1478,7 +1435,7 @@ msgstr "ネットワーク"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:2
 msgid "Network applications and utilities"
-msgstr ""
+msgstr "ネットワークアプリケーションやユーティリティ"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:1
 msgid "Office"
@@ -1486,81 +1443,75 @@ msgstr "オフィス"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:2
 msgid "Office and productivity applications"
-msgstr ""
+msgstr "事務用アプリケーション"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:1
 msgid "Applications that don't fit into other categories"
-msgstr ""
+msgstr "他の分類に該当しないアプリケーション"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-#, fuzzy
 msgid "Other"
-msgstr "/その他"
+msgstr "その他"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr ""
+msgstr "スクリーンセーバー・アプレット"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
-msgstr ""
+msgstr "スクリーンセーバー"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr ""
+msgstr "デスクトップやシステムを設定するアプリケーション"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-#, fuzzy
 msgid "Settings"
-msgstr "デスクトップ"
+msgstr "設定"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
-msgstr ""
+msgstr "システムツールおよびユーティリティ"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
-msgstr "Xfce について"
+msgstr "Xfceについて"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr ""
+msgstr "Xfceデスクトップ環境についての情報"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
-msgstr "ファイルマネージャー "
+msgstr "ファイルマネージャー"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
 msgid "Thunar file manager"
-msgstr ""
+msgstr "Thuanr ファイルマネージャー"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-#, fuzzy
 msgid "Help"
-msgstr "ヘルプ(_H)"
+msgstr "ヘルプ"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr ""
+msgstr "Xfceのマニュアルを表示します"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
-msgstr ""
+msgstr "ログアウト"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-#, fuzzy
 msgid "Log out of the Xfce Desktop"
-msgstr "Xfce 4 デスクトップマネージャーの設定"
+msgstr "Xfceデスクトップからログアウトします"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-#, fuzzy
 msgid "Run Program..."
-msgstr "実行エラー"
+msgstr "プログラムの実行..."
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-#, fuzzy
 msgid "Run a program"
-msgstr "実行エラー"
+msgstr "プログラムを実行します"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
@@ -1568,19 +1519,19 @@ msgstr "ターミナル"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
 msgid "Terminal emulator"
-msgstr ""
+msgstr "ターミナルエミュレーター"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
 msgid "Browse the web"
-msgstr ""
+msgstr "ウェブを閲覧します"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
 msgstr "ウェブブラウザー"
 
-#: ../panel-plugin/xfce4-menu.desktop.in.h:1
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr "インストール済アプリのカテゴリーを含むメニューを表示します"
+msgstr "インストール済みアプリの分類を含むメニューを表示します"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
@@ -1593,119 +1544,3 @@ msgstr "Xfce 4 デスクトップマネージャーの設定"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 デスクトップの設定"
-
-#~ msgid "Science"
-#~ msgstr "科学"
-
-#, fuzzy
-#~ msgid "Scientific applications and tools"
-#~ msgstr "最小化されたアプリアイコン"
-
-#~ msgid "Unable to quit session."
-#~ msgstr "セッションを終了できません。"
-
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "セッションを終了するには Xfce のセッションマネージャー (xfce4-session) が"
-#~ "動作している必要がありますが、これを検出できませんでした。別の方法で Xfce "
-#~ "を終了してください。"
-
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "セッションを終了するにはコマンド 'xfce4-session-logout' が必要ですが、見つ"
-#~ "けられませんでした: %s"
-
-#~ msgid "Edit Properties"
-#~ msgstr "プロパティの編集"
-
-#~ msgid "Backdrop List"
-#~ msgstr "背景リスト"
-
-#, fuzzy
-#~ msgid "Unable to empty the trash."
-#~ msgstr "セッションを終了できません。"
-
-#~ msgid "Unknown error."
-#~ msgstr "不明なエラーが発生しました。"
-
-# FIXME: ditto
-#~ msgid " Bytes)"
-#~ msgstr " バイト)"
-
-# FIXME: ngettext()
-#~ msgid "_Copy Files"
-#~ msgstr "コピー(_C)"
-
-# FIXME: ngettext()
-#~ msgid "_Copy File"
-#~ msgstr "コピー(_C)"
-
-# FIXME: ngettext()
-#~ msgid "Cu_t Files"
-#~ msgstr "切り取り(_T)"
-
-# FIXME: ngettext()
-#~ msgid "Cu_t File"
-#~ msgstr "切り取り(_T)"
-
-# FIXME: ngettext()
-#~ msgid "_Delete Files"
-#~ msgstr "削除(_D)"
-
-# FIXME: ngettext()
-#~ msgid "_Delete File"
-#~ msgstr "削除(_D)"
-
-#, fuzzy
-#~ msgid "_Paste Files"
-#~ msgstr "ファイル一覧"
-
-#~ msgid "Create _New"
-#~ msgstr "新規作成(_N)"
-
-#~ msgid "_Folder..."
-#~ msgstr "フォルダ(_F)..."
-
-#, fuzzy
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "「%s」を削除してもよろしいですか？"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "コマンドは存在しません！"
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "アイテムを追加するには全ての箇所に記入してください。"
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "'名前' の箇所は必須です。"
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "「ソース」の箇所は必須です。"
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "セパレーターは編集できません"
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "ファイル %s は存在しません！"
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "このアイテムを親メニューに移動しますか？"
-
-#~ msgid "Edit"
-#~ msgstr "編集"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "外部メニューを追加する..."
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "Xfce4 メニューファイルを開きます"
-
-#~ msgid "Save current menu"
-#~ msgstr "現在のメニューを保存します"
-
-#~ msgid "Delete the current entry"
-#~ msgstr "現在の項目を削除します"

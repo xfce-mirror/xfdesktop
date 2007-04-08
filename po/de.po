@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-20 12:36-0700\n"
+"POT-Creation-Date: 2007-04-08 19:03+0900\n"
 "PO-Revision-Date: 22007-01-04 00:02+0100\n"
 "Last-Translator: Nico Schümann <nico@prog.nico22.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -504,7 +504,7 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Konnte »xfce4-menueditor« nicht starten: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:769
-#: ../panel-plugin/xfce4-menu.desktop.in.h:2
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce-Menü"
 
@@ -752,8 +752,8 @@ msgid ""
 msgstr ""
 "Konnte Datei »%s« nicht abspeichern: %s\n"
 "\n"
-"Bitte einen anderen Speicherplatz wählen oder abbrechen, um die Änderungen zu "
-"verwerfen."
+"Bitte einen anderen Speicherplatz wählen oder abbrechen, um die Änderungen "
+"zu verwerfen."
 
 #: ../settings/backdrop-list-manager.c:430
 msgid "Select backdrop image file"
@@ -905,31 +905,31 @@ msgstr "    --quit        Xfdesktop beenden\n"
 msgid "%s is not running.\n"
 msgstr "%s läuft nicht.\n"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:227
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Arbeitsfläche %d</b>"
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "<b>Arbeitsfläche %d</b>"
 
-#: ../src/windowlist.c:237
+#: ../src/windowlist.c:238
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Arbeitsfläche %d</i>"
 
-#: ../src/windowlist.c:329 ../src/windowlist.c:332
+#: ../src/windowlist.c:332 ../src/windowlist.c:335
 msgid "_Add Workspace"
 msgstr "_Arbeitsfläche hinzufügen"
 
-#: ../src/windowlist.c:340
+#: ../src/windowlist.c:343
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "A_rbeitsfläche %d entfernen"
 
-#: ../src/windowlist.c:343
+#: ../src/windowlist.c:346
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "A_rbeitsfläche »%s« entfernen"
@@ -1526,7 +1526,7 @@ msgstr "Im Internet surfen"
 msgid "Web Browser"
 msgstr "Mozilla (Web-Browser)"
 
-#: ../panel-plugin/xfce4-menu.desktop.in.h:1
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr "Zeigt ein Menü mit den Kategorien der installierten Anwendungen"
 
@@ -1555,9 +1555,9 @@ msgstr "Xfce4-Arbeitsoberflächen-Einstellungen"
 #~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
 #~ "is running, but it was not detected.  Please quit Xfce via another means."
 #~ msgstr ""
-#~ "Um die Sitzung zu beenden, muss der Xfce-Sitzungsverwalter (xfce4-session) "
-#~ "laufen, er wurde jedoch nicht gefunden. Bitte beenden Sie Xfce auf andere "
-#~ "Weise."
+#~ "Um die Sitzung zu beenden, muss der Xfce-Sitzungsverwalter (xfce4-"
+#~ "session) laufen, er wurde jedoch nicht gefunden. Bitte beenden Sie Xfce "
+#~ "auf andere Weise."
 
 #~ msgid ""
 #~ "Quitting the session requires the 'xfce4-session-logout' command, but it "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-20 12:36-0700\n"
+"POT-Creation-Date: 2007-04-08 19:03+0900\n"
 "PO-Revision-Date: 2007-03-30 23:30+0800\n"
 "Last-Translator: wuli <wurisky@gmail.com>\n"
 "Language-Team: Simplified Chinese <xfce-i18n@xfce.org>\n"
@@ -501,7 +501,7 @@ msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "无法启动 xfce4 菜单编辑器：%s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:769
-#: ../panel-plugin/xfce4-menu.desktop.in.h:2
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce 菜单"
 
@@ -896,31 +896,31 @@ msgstr "   --quit        退出 xfdesktop\n"
 msgid "%s is not running.\n"
 msgstr "%s 没有运行。\n"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:227
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>工作区 %d</b>"
 
-#: ../src/windowlist.c:235
-#, , c-format
+#: ../src/windowlist.c:236
+#, c-format
 msgid "Workspace %d"
 msgstr "工作区 %d"
 
-#: ../src/windowlist.c:237
+#: ../src/windowlist.c:238
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>工作区 %d</i>"
 
-#: ../src/windowlist.c:329 ../src/windowlist.c:332
+#: ../src/windowlist.c:332 ../src/windowlist.c:335
 msgid "_Add Workspace"
 msgstr "添加工作区(_A)"
 
-#: ../src/windowlist.c:340
+#: ../src/windowlist.c:343
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "移除工作区(_R) %d"
 
-#: ../src/windowlist.c:343
+#: ../src/windowlist.c:346
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "移除工作区(_R) “%s”"
@@ -1360,7 +1360,6 @@ msgid "Xfce 4 Menu Editor"
 msgstr "Xfce 4 菜单编辑器"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-#, 
 msgid "Accessories"
 msgstr "附件"
 
@@ -1385,7 +1384,6 @@ msgid "Educational software"
 msgstr "教育软件"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-#, 
 msgid "Games"
 msgstr "游戏"
 
@@ -1406,7 +1404,6 @@ msgid "Audio and video players and editors"
 msgstr "音频、视频播放器和编辑器"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-#, 
 msgid "Multimedia"
 msgstr "多媒体"
 
@@ -1431,7 +1428,6 @@ msgid "Applications that don't fit into other categories"
 msgstr "未分类应用程序"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-#, 
 msgid "Other"
 msgstr "其它"
 
@@ -1448,7 +1444,6 @@ msgid "Desktop and system settings applications"
 msgstr "桌面和系统设置应用程序"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-#, 
 msgid "Settings"
 msgstr "设置"
 
@@ -1473,7 +1468,6 @@ msgid "Thunar file manager"
 msgstr "Thunar文件管理器"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-#, 
 msgid "Help"
 msgstr "帮助"
 
@@ -1486,17 +1480,14 @@ msgid "Log Out"
 msgstr "注销"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-#, 
 msgid "Log out of the Xfce Desktop"
 msgstr "退出Xfce桌面"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-#, 
 msgid "Run Program..."
 msgstr "运行程序..."
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-#, 
 msgid "Run a program"
 msgstr "运行一个程序"
 
@@ -1516,7 +1507,7 @@ msgstr "浏览网页"
 msgid "Web Browser"
 msgstr "网络浏览器"
 
-#: ../panel-plugin/xfce4-menu.desktop.in.h:1
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr "显示包含已安装程序分类目录的菜单"
 
@@ -1535,7 +1526,6 @@ msgstr "xfce4 桌面设置"
 #~ msgid "Science"
 #~ msgstr "科学"
 
-#, 
 #~ msgid "Scientific applications and tools"
 #~ msgstr "显示最小化应用程序图标"
 
