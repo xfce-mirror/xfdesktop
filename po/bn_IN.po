@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-04 05:11-0800\n"
+"POT-Creation-Date: 2007-04-09 14:22+0200\n"
 "PO-Revision-Date: 2005-04-06 19:28+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bangla INDIA <LL@li.org>\n"
@@ -110,7 +110,7 @@ msgstr "আইকন নির্বাচন করুন"
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:600
-#: ../settings/appearance-settings.c:532
+#: ../settings/appearance-settings.c:579
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
@@ -119,7 +119,7 @@ msgstr "সমস্ত ফাইল"
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:606
-#: ../settings/appearance-settings.c:536
+#: ../settings/appearance-settings.c:583
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "ছবির ফাইল"
@@ -138,7 +138,7 @@ msgstr "টার্মিনালে আরম্ভ করুন (_t)"
 
 #: ../menueditor/menueditor-add-dialog.c:427
 #: ../menueditor/menueditor-edit-dialog.c:286
-#: ../menueditor/menueditor-main-window.c:450
+#: ../menueditor/menueditor-main-window.c:448
 msgid "Select command"
 msgstr "কমান্ড নির্বাচন করুন"
 
@@ -414,113 +414,113 @@ msgstr "কমান্ড"
 msgid "Hidden"
 msgstr "লুকোনো"
 
-#: ../menueditor/menueditor-main-window.c:427
+#: ../menueditor/menueditor-main-window.c:425
 msgid "Are you sure you want to close the current menu?"
 msgstr "আপনি কি নিশ্চিতরূপে বর্তমান মেনুটি বন্ধ করতে ইচ্ছুক?"
 
-#: ../menueditor/menueditor-main-window.c:441
+#: ../menueditor/menueditor-main-window.c:439
 msgid "Do you want to save before closing the file?"
 msgstr "ফাইল বন্ধ করার পূর্বে কি আপনি সংরক্ষণ করতে ইচ্ছুক?"
 
-#: ../menueditor/menueditor-main-window.c:479
-#: ../menueditor/menueditor-main-window.c:532
-#: ../menueditor/menueditor-main-window.c:630
+#: ../menueditor/menueditor-main-window.c:477
+#: ../menueditor/menueditor-main-window.c:530
+#: ../menueditor/menueditor-main-window.c:628
 #: ../src/xfdesktop-file-icon-manager.c:587 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "প্রশ্ন"
 
-#: ../menueditor/menueditor-main-window.c:481
+#: ../menueditor/menueditor-main-window.c:479
 msgid "Do you want to save before opening an other menu ?"
 msgstr "একটি পৃথক মেনু খোলার পূর্বে কি আপনি সংরক্ষণ করতে ইচ্ছুক ?"
 
-#: ../menueditor/menueditor-main-window.c:483
-#: ../menueditor/menueditor-main-window.c:536
-#: ../menueditor/menueditor-main-window.c:634
+#: ../menueditor/menueditor-main-window.c:481
+#: ../menueditor/menueditor-main-window.c:534
+#: ../menueditor/menueditor-main-window.c:632
 msgid "Ignore modifications"
 msgstr "পরিবর্তন অগ্রাহ্য করা হবে"
 
-#: ../menueditor/menueditor-main-window.c:494
+#: ../menueditor/menueditor-main-window.c:492
 msgid "Open menu file"
 msgstr "মেনু ফাইল খুলুন"
 
-#: ../menueditor/menueditor-main-window.c:534
+#: ../menueditor/menueditor-main-window.c:532
 msgid "Do you want to save before opening the default menu ?"
 msgstr "ডিফল্ট মেনু খোলার পূর্বে আপনি কি সংরক্ষণ করতে ইচ্ছুক ?"
 
-#: ../menueditor/menueditor-main-window.c:594
+#: ../menueditor/menueditor-main-window.c:592
 #, fuzzy
 msgid "Save menu file as"
 msgstr "মেনু ফাইল খুলুন"
 
-#: ../menueditor/menueditor-main-window.c:632
-#: ../menueditor/menueditor-main-window.c:1343
+#: ../menueditor/menueditor-main-window.c:630
+#: ../menueditor/menueditor-main-window.c:1341
 msgid "Do you want to save before closing the menu ?"
 msgstr "মেনু বন্ধ করার পূর্বে কি আপনি সংরক্ষণ করতে ইচ্ছুক ?"
 
-#: ../menueditor/menueditor-main-window.c:858
-#: ../menueditor/menueditor-main-window.c:988
+#: ../menueditor/menueditor-main-window.c:856
+#: ../menueditor/menueditor-main-window.c:986
 msgid "quit"
 msgstr "প্রস্থান"
 
-#: ../menueditor/menueditor-main-window.c:963
-#: ../menueditor/menueditor-main-window.c:1584
+#: ../menueditor/menueditor-main-window.c:961
+#: ../menueditor/menueditor-main-window.c:1582
 msgid "--- separator ---"
 msgstr "--- বিভাজন রেখা ---"
 
-#: ../menueditor/menueditor-main-window.c:1081
-#: ../menueditor/menueditor-main-window.c:1088
-#: ../menueditor/menueditor-main-window.c:1638
+#: ../menueditor/menueditor-main-window.c:1079
+#: ../menueditor/menueditor-main-window.c:1086
+#: ../menueditor/menueditor-main-window.c:1636
 msgid "--- include ---"
 msgstr "--- অন্তর্ভুক্ত করা হবে ---"
 
-#: ../menueditor/menueditor-main-window.c:1089
-#: ../menueditor/menueditor-main-window.c:1655
+#: ../menueditor/menueditor-main-window.c:1087
+#: ../menueditor/menueditor-main-window.c:1653
 msgid "system"
 msgstr "সিস্টেম"
 
-#: ../menueditor/menueditor-main-window.c:1215
-#: ../menueditor/menueditor-main-window.c:1263
+#: ../menueditor/menueditor-main-window.c:1213
+#: ../menueditor/menueditor-main-window.c:1261
 msgid "Do you want to move the item into the submenu?"
 msgstr "আপনি কি বস্তুটি সাব-মেনুর মধ্যে স্থানান্তর করতে ইচ্ছুক?"
 
-#: ../menueditor/menueditor-main-window.c:1293
+#: ../menueditor/menueditor-main-window.c:1291
 msgid "A menu editor for Xfce4"
 msgstr "Xfce4-র মধ্যে ব্যবহারের জন্য মেনু এডিটার"
 
 #. Credits
-#: ../menueditor/menueditor-main-window.c:1298
+#: ../menueditor/menueditor-main-window.c:1296
 msgid "Author/Maintainer"
 msgstr ""
 
+#: ../menueditor/menueditor-main-window.c:1297
+#: ../menueditor/menueditor-main-window.c:1298
 #: ../menueditor/menueditor-main-window.c:1299
-#: ../menueditor/menueditor-main-window.c:1300
-#: ../menueditor/menueditor-main-window.c:1301
 msgid "Contributor"
 msgstr "অংশগ্রহণকারী"
 
-#: ../menueditor/menueditor-main-window.c:1302
+#: ../menueditor/menueditor-main-window.c:1300
 msgid "Icon designer"
 msgstr "আইকন নির্মাতা"
 
-#: ../menueditor/menueditor-main-window.c:1345
+#: ../menueditor/menueditor-main-window.c:1343
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr ""
 "আপনি মেনুর মধ্যে কিছু পরিবর্তন করেছেন, প্রস্থান করার পূর্বে কি আপনি এই পরিবর্তনগুলি "
 "সংরক্ষণ করতে ইচ্ছুক ?"
 
-#: ../menueditor/menueditor-main-window.c:1347
+#: ../menueditor/menueditor-main-window.c:1345
 #, fuzzy
 msgid "Forget modifications"
 msgstr "পরিবর্তন অগ্রাহ্য করা হবে"
 
-#: ../menueditor/menueditor-main-window.c:2035
+#: ../menueditor/menueditor-main-window.c:2033
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
 msgstr ""
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:773
+#: ../panel-plugin/desktop-menu-plugin.c:765
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce মেনু"
@@ -561,148 +561,143 @@ msgstr "মেনু ফাইল নির্বাচন করুন"
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor আরম্ভ করা যায়নি: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
-#, fuzzy
-msgid "Edit Properties"
-msgstr "পটভূমির তালিকা সম্পাদন করুন"
-
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:777
 #, fuzzy
 msgid "Button"
 msgstr "বাটন আইকন:(_B)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:796
+#: ../panel-plugin/desktop-menu-plugin.c:790
 #, fuzzy
 msgid "Button _title:"
 msgstr "বাটন আইকন:(_B)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:809
+#: ../panel-plugin/desktop-menu-plugin.c:803
 msgid "_Show title in button"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:816
+#: ../panel-plugin/desktop-menu-plugin.c:810
 #, fuzzy
 msgid "Menu File"
 msgstr "মেনু ফাইল"
 
-#: ../panel-plugin/desktop-menu-plugin.c:828
+#: ../panel-plugin/desktop-menu-plugin.c:822
 #, fuzzy
 msgid "Use default _desktop menu file"
 msgstr "ডেস্কটপ মেনু সম্পাদন করুন (_E)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:837
+#: ../panel-plugin/desktop-menu-plugin.c:831
 #, fuzzy
 msgid "Use _custom menu file:"
 msgstr "মেনু ফাইল খুলুন"
 
-#: ../panel-plugin/desktop-menu-plugin.c:888
+#: ../panel-plugin/desktop-menu-plugin.c:882
 #: ../settings/behavior-settings.c:267
 #, fuzzy
 msgid "_Edit Menu"
 msgstr "মেনু (_M)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:894
+#: ../panel-plugin/desktop-menu-plugin.c:888
 #, fuzzy
 msgid "Icons"
 msgstr "আইকন:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:906
+#: ../panel-plugin/desktop-menu-plugin.c:900
 msgid "_Button icon:"
 msgstr "বাটন আইকন:(_B)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:930
+#: ../panel-plugin/desktop-menu-plugin.c:924
 msgid "Show _icons in menu"
 msgstr "মেনুর মধ্যে আইকন প্রদর্শন করা হবে (_i)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:953
+#: ../panel-plugin/desktop-menu-plugin.c:947
 msgid "There is already a panel menu registered for this screen"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:1061
+#: ../panel-plugin/desktop-menu-plugin.c:1055
 #, fuzzy
 msgid "Edit Menu"
 msgstr "মেনু (_M)"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../settings/appearance-settings.c:134
+#: ../settings/appearance-settings.c:138
 msgid "Button Label|Desktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
-#: ../settings/backdrop-list-manager.c:631
+#: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
+#: ../settings/backdrop-list-manager.c:628
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: ../settings/appearance-settings.c:527
+#: ../settings/appearance-settings.c:574
 msgid "Select backdrop image or list file"
 msgstr "পটভূমির ছবি অথবা তালিকার ফাইল নির্বাচন করুন"
 
-#: ../settings/appearance-settings.c:545
+#: ../settings/appearance-settings.c:592
 msgid "List Files (*.list)"
 msgstr "তালিকার ফাইল (*.list)"
 
-#: ../settings/appearance-settings.c:637
+#: ../settings/appearance-settings.c:688
 msgid "_Edit list..."
 msgstr "তালিকা সম্পাদন করুন (_E)..."
 
-#: ../settings/appearance-settings.c:645
+#: ../settings/appearance-settings.c:696
 msgid "_New list..."
 msgstr "নতুন তালিকা (_N)..."
 
-#: ../settings/appearance-settings.c:678
+#: ../settings/appearance-settings.c:729
 msgid "S_tyle:"
 msgstr "বিন্যাশ (_t):"
 
-#: ../settings/appearance-settings.c:685
+#: ../settings/appearance-settings.c:736
 msgid "Auto"
 msgstr "অটো"
 
-#: ../settings/appearance-settings.c:686
+#: ../settings/appearance-settings.c:737
 msgid "Centered"
 msgstr "কেন্দ্রস্থিত"
 
-#: ../settings/appearance-settings.c:687
+#: ../settings/appearance-settings.c:738
 msgid "Tiled"
 msgstr "টাইলযুক্ত"
 
-#: ../settings/appearance-settings.c:688
+#: ../settings/appearance-settings.c:739
 msgid "Stretched"
 msgstr "পর্দা জুড়ে প্রদর্শন"
 
-#: ../settings/appearance-settings.c:689
+#: ../settings/appearance-settings.c:740
 msgid "Scaled"
 msgstr "মাপানুসারে"
 
-#: ../settings/appearance-settings.c:745
+#: ../settings/appearance-settings.c:796
 #, fuzzy
 msgid "A_djust Brightness:"
 msgstr "উজ্জ্বলতা পরিবর্তন করুন: (_B)"
 
-#: ../settings/appearance-settings.c:803
+#: ../settings/appearance-settings.c:854
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr ""
 
-#: ../settings/appearance-settings.c:804
+#: ../settings/appearance-settings.c:855
 msgid "Unknown Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:808
+#: ../settings/appearance-settings.c:859
 #: ../src/xfdesktop-regular-file-icon.c:520
 #: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr ""
 
-#: ../settings/appearance-settings.c:810
+#: ../settings/appearance-settings.c:861
 msgid "Unable to start xfdesktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:832
+#: ../settings/appearance-settings.c:883
 #, fuzzy
 msgid "Information"
 msgstr "পরিবর্তন অগ্রাহ্য করা হবে"
 
-#: ../settings/appearance-settings.c:845
+#: ../settings/appearance-settings.c:896
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -711,7 +706,7 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 
-#: ../settings/appearance-settings.c:847
+#: ../settings/appearance-settings.c:898
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -720,84 +715,84 @@ msgid ""
 "documentation provided on http://xfce.org/."
 msgstr ""
 
-#: ../settings/appearance-settings.c:855
+#: ../settings/appearance-settings.c:906
 msgid "_Do not show this again"
 msgstr ""
 
 #. the dialog
-#: ../settings/appearance-settings.c:921
+#: ../settings/appearance-settings.c:972
 #, fuzzy
 msgid "Desktop Preferences"
 msgstr "ডেস্কটপ সংক্রান্ত বৈশিষ্ট্য"
 
-#: ../settings/appearance-settings.c:938
+#: ../settings/appearance-settings.c:989
 msgid "Allow _Xfce to manage the desktop"
 msgstr ""
 
-#: ../settings/appearance-settings.c:979
+#: ../settings/appearance-settings.c:1030
 msgid "Stretch single backdrop onto _all monitors"
 msgstr ""
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:993
-#: ../settings/appearance-settings.c:1175
+#: ../settings/appearance-settings.c:1044
+#: ../settings/appearance-settings.c:1226
 msgid "_Appearance"
 msgstr ""
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1019
+#: ../settings/appearance-settings.c:1070
 msgid "Color"
 msgstr "রং"
 
-#: ../settings/appearance-settings.c:1033
+#: ../settings/appearance-settings.c:1084
 msgid "_Color Style:"
 msgstr "রং-র ধরন:(_C)"
 
-#: ../settings/appearance-settings.c:1040
+#: ../settings/appearance-settings.c:1091
 msgid "Solid Color"
 msgstr "সুষম রং"
 
-#: ../settings/appearance-settings.c:1041
+#: ../settings/appearance-settings.c:1092
 msgid "Horizontal Gradient"
 msgstr "অনুভুমিক ঢল"
 
-#: ../settings/appearance-settings.c:1042
+#: ../settings/appearance-settings.c:1093
 msgid "Vertical Gradient"
 msgstr "উলম্ব ঢল"
 
-#: ../settings/appearance-settings.c:1055
+#: ../settings/appearance-settings.c:1106
 msgid "Fi_rst Color:"
 msgstr "প্রথম রং: (_r)"
 
-#: ../settings/appearance-settings.c:1076
+#: ../settings/appearance-settings.c:1127
 msgid "_Second Color:"
 msgstr "দ্বিতীয় রং: (_S)"
 
-#: ../settings/appearance-settings.c:1101
+#: ../settings/appearance-settings.c:1152
 msgid "Image"
 msgstr "ছবি"
 
-#: ../settings/appearance-settings.c:1109
+#: ../settings/appearance-settings.c:1160
 msgid "Show _Image"
 msgstr "ছবি প্রদর্শন করুন (_I)"
 
-#: ../settings/appearance-settings.c:1131
+#: ../settings/appearance-settings.c:1182
 msgid "_File:"
 msgstr "ফাইল: (_F)"
 
-#: ../settings/appearance-settings.c:1186
-#: ../settings/appearance-settings.c:1188
+#: ../settings/appearance-settings.c:1237
+#: ../settings/appearance-settings.c:1239
 #, c-format
 msgid "Screen %d"
 msgstr "পর্দা %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1193
+#: ../settings/appearance-settings.c:1244
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "পর্দা %d, মনিটর %d"
 
-#: ../settings/appearance-settings.c:1210
+#: ../settings/appearance-settings.c:1261
 msgid "_Behavior"
 msgstr ""
 
@@ -826,23 +821,19 @@ msgstr "পটভুমির তালিকায় ফাইলের নাম
 msgid "List Files"
 msgstr "ফাইল তালিকাভুক্ত করুন"
 
-#: ../settings/backdrop-list-manager.c:603
-msgid "Backdrop List"
-msgstr "পটভূমির তালিকা"
-
-#: ../settings/backdrop-list-manager.c:620
+#: ../settings/backdrop-list-manager.c:617
 msgid "Image files"
 msgstr "ছবির ফাইল"
 
-#: ../settings/backdrop-list-manager.c:639
+#: ../settings/backdrop-list-manager.c:636
 msgid "List file"
 msgstr "তালিকার ফাইল"
 
-#: ../settings/backdrop-list-manager.c:661
+#: ../settings/backdrop-list-manager.c:658
 msgid "Create backdrop list"
 msgstr "পটভূমির তালিকা নির্বাচন করুন"
 
-#: ../settings/backdrop-list-manager.c:694
+#: ../settings/backdrop-list-manager.c:691
 msgid "Edit backdrop list"
 msgstr "পটভূমির তালিকা সম্পাদন করুন"
 
@@ -968,31 +959,31 @@ msgstr ""
 msgid "%s is not running.\n"
 msgstr ""
 
-#: ../src/windowlist.c:218
+#: ../src/windowlist.c:220
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>কর্মক্ষেত্র %d</b>"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:228
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>কর্মক্ষেত্র %d</i>"
 
-#: ../src/windowlist.c:293 ../src/windowlist.c:296
+#: ../src/windowlist.c:295 ../src/windowlist.c:298
 msgid "_Add Workspace"
 msgstr "কর্মক্ষেত্র যোগ করুন (_A)"
 
-#: ../src/windowlist.c:304
+#: ../src/windowlist.c:306
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "কর্মক্ষেত্র %d মুছে ফেলুন (_R)"
 
-#: ../src/windowlist.c:307
+#: ../src/windowlist.c:309
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "কর্মক্ষেত্র '%s' মুছে ফেলুন (_R)"
 
-#: ../src/xfce-desktop.c:542
+#: ../src/xfce-desktop.c:573
 msgid "Desktop"
 msgstr "ডেস্কটপ"
 
@@ -1459,6 +1450,13 @@ msgstr "Xfce 4 ডেস্কটপ নিয়ন্ত্রক সংক্র
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 ডেস্কটপের বৈশিষ্ট্য"
+
+#, fuzzy
+#~ msgid "Edit Properties"
+#~ msgstr "পটভূমির তালিকা সম্পাদন করুন"
+
+#~ msgid "Backdrop List"
+#~ msgstr "পটভূমির তালিকা"
 
 #, fuzzy
 #~ msgid "Unable to empty the trash."

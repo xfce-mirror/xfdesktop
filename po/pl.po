@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-04 05:11-0800\n"
+"POT-Creation-Date: 2007-04-09 14:22+0200\n"
 "PO-Revision-Date: 2006-05-27 13:02+0200\n"
 "Last-Translator: Piotr Maliński <admin@rk.edu.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -108,7 +108,7 @@ msgstr "Wybierz ikonę"
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:600
-#: ../settings/appearance-settings.c:532
+#: ../settings/appearance-settings.c:579
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
@@ -117,7 +117,7 @@ msgstr "Wszystkie pliki"
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:606
-#: ../settings/appearance-settings.c:536
+#: ../settings/appearance-settings.c:583
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Pliki graficzne"
@@ -136,7 +136,7 @@ msgstr "Uruchom w _terminalu"
 
 #: ../menueditor/menueditor-add-dialog.c:427
 #: ../menueditor/menueditor-edit-dialog.c:286
-#: ../menueditor/menueditor-main-window.c:450
+#: ../menueditor/menueditor-main-window.c:448
 msgid "Select command"
 msgstr "Wybierz polecenie"
 
@@ -386,109 +386,109 @@ msgstr "Polecenie"
 msgid "Hidden"
 msgstr "Ukryty"
 
-#: ../menueditor/menueditor-main-window.c:427
+#: ../menueditor/menueditor-main-window.c:425
 msgid "Are you sure you want to close the current menu?"
 msgstr "Czy jesteś pewny/a, że chcesz zamknąć bieżące menu?"
 
-#: ../menueditor/menueditor-main-window.c:441
+#: ../menueditor/menueditor-main-window.c:439
 msgid "Do you want to save before closing the file?"
 msgstr "Czy chcesz zapisać przed zamknięciem pliku?"
 
-#: ../menueditor/menueditor-main-window.c:479
-#: ../menueditor/menueditor-main-window.c:532
-#: ../menueditor/menueditor-main-window.c:630
+#: ../menueditor/menueditor-main-window.c:477
+#: ../menueditor/menueditor-main-window.c:530
+#: ../menueditor/menueditor-main-window.c:628
 #: ../src/xfdesktop-file-icon-manager.c:587 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Pytanie"
 
-#: ../menueditor/menueditor-main-window.c:481
+#: ../menueditor/menueditor-main-window.c:479
 msgid "Do you want to save before opening an other menu ?"
 msgstr "Czy chcesz zapisać przed otworzeniem innego menu ?"
 
-#: ../menueditor/menueditor-main-window.c:483
-#: ../menueditor/menueditor-main-window.c:536
-#: ../menueditor/menueditor-main-window.c:634
+#: ../menueditor/menueditor-main-window.c:481
+#: ../menueditor/menueditor-main-window.c:534
+#: ../menueditor/menueditor-main-window.c:632
 msgid "Ignore modifications"
 msgstr "Ignoruj zmiany"
 
-#: ../menueditor/menueditor-main-window.c:494
+#: ../menueditor/menueditor-main-window.c:492
 msgid "Open menu file"
 msgstr "Otwórz plik menu"
 
-#: ../menueditor/menueditor-main-window.c:534
+#: ../menueditor/menueditor-main-window.c:532
 msgid "Do you want to save before opening the default menu ?"
 msgstr "Czy chcesz zapisać przed otworzeniem domyślnego menu ?"
 
-#: ../menueditor/menueditor-main-window.c:594
+#: ../menueditor/menueditor-main-window.c:592
 msgid "Save menu file as"
 msgstr "Zapisz plik menu jako"
 
-#: ../menueditor/menueditor-main-window.c:632
-#: ../menueditor/menueditor-main-window.c:1343
+#: ../menueditor/menueditor-main-window.c:630
+#: ../menueditor/menueditor-main-window.c:1341
 msgid "Do you want to save before closing the menu ?"
 msgstr "Czy chcesz zapisać zmiany przed wyjściem z menu ?"
 
-#: ../menueditor/menueditor-main-window.c:858
-#: ../menueditor/menueditor-main-window.c:988
+#: ../menueditor/menueditor-main-window.c:856
+#: ../menueditor/menueditor-main-window.c:986
 msgid "quit"
 msgstr "wyjdź"
 
-#: ../menueditor/menueditor-main-window.c:963
-#: ../menueditor/menueditor-main-window.c:1584
+#: ../menueditor/menueditor-main-window.c:961
+#: ../menueditor/menueditor-main-window.c:1582
 msgid "--- separator ---"
 msgstr "--- separator ---"
 
-#: ../menueditor/menueditor-main-window.c:1081
-#: ../menueditor/menueditor-main-window.c:1088
-#: ../menueditor/menueditor-main-window.c:1638
+#: ../menueditor/menueditor-main-window.c:1079
+#: ../menueditor/menueditor-main-window.c:1086
+#: ../menueditor/menueditor-main-window.c:1636
 msgid "--- include ---"
 msgstr "--- dołącz ---"
 
-#: ../menueditor/menueditor-main-window.c:1089
-#: ../menueditor/menueditor-main-window.c:1655
+#: ../menueditor/menueditor-main-window.c:1087
+#: ../menueditor/menueditor-main-window.c:1653
 msgid "system"
 msgstr "system"
 
-#: ../menueditor/menueditor-main-window.c:1215
-#: ../menueditor/menueditor-main-window.c:1263
+#: ../menueditor/menueditor-main-window.c:1213
+#: ../menueditor/menueditor-main-window.c:1261
 msgid "Do you want to move the item into the submenu?"
 msgstr "Czy chcesz przesunąć element do podmenu?"
 
-#: ../menueditor/menueditor-main-window.c:1293
+#: ../menueditor/menueditor-main-window.c:1291
 msgid "A menu editor for Xfce4"
 msgstr "Edytor menu dla Xfce4"
 
 #. Credits
-#: ../menueditor/menueditor-main-window.c:1298
+#: ../menueditor/menueditor-main-window.c:1296
 msgid "Author/Maintainer"
 msgstr "Autor/Kierownik Projektu"
 
+#: ../menueditor/menueditor-main-window.c:1297
+#: ../menueditor/menueditor-main-window.c:1298
 #: ../menueditor/menueditor-main-window.c:1299
-#: ../menueditor/menueditor-main-window.c:1300
-#: ../menueditor/menueditor-main-window.c:1301
 msgid "Contributor"
 msgstr "Współpraca"
 
-#: ../menueditor/menueditor-main-window.c:1302
+#: ../menueditor/menueditor-main-window.c:1300
 msgid "Icon designer"
 msgstr "Projektant ikon"
 
-#: ../menueditor/menueditor-main-window.c:1345
+#: ../menueditor/menueditor-main-window.c:1343
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "Zmodyfikowałeś/aś menu, czy chcesz je zapisać przed wyjściem ?"
 
-#: ../menueditor/menueditor-main-window.c:1347
+#: ../menueditor/menueditor-main-window.c:1345
 msgid "Forget modifications"
 msgstr "Zapomnij zmiany"
 
-#: ../menueditor/menueditor-main-window.c:2035
+#: ../menueditor/menueditor-main-window.c:2033
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
 msgstr "Nie mogę otworzyć pliku menu %s w trybie do zapisu"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
-#: ../panel-plugin/desktop-menu-plugin.c:773
+#: ../panel-plugin/desktop-menu-plugin.c:765
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Menu Xfce"
@@ -533,137 +533,133 @@ msgstr "Wybierz plik menu"
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Nie można było uruchomić xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
-msgid "Edit Properties"
-msgstr "Edytuj Właściwości"
-
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:777
 msgid "Button"
 msgstr "Przycisk"
 
-#: ../panel-plugin/desktop-menu-plugin.c:796
+#: ../panel-plugin/desktop-menu-plugin.c:790
 msgid "Button _title:"
 msgstr "_Tytuł przycisku:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:809
+#: ../panel-plugin/desktop-menu-plugin.c:803
 msgid "_Show title in button"
 msgstr "_Pokaż tytuł na przycisku"
 
-#: ../panel-plugin/desktop-menu-plugin.c:816
+#: ../panel-plugin/desktop-menu-plugin.c:810
 msgid "Menu File"
 msgstr "Plik menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:828
+#: ../panel-plugin/desktop-menu-plugin.c:822
 msgid "Use default _desktop menu file"
 msgstr "Użyj _domyślnego pliku menu pulpitu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:837
+#: ../panel-plugin/desktop-menu-plugin.c:831
 msgid "Use _custom menu file:"
 msgstr "Użyj _własnego pliku menu:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:888
+#: ../panel-plugin/desktop-menu-plugin.c:882
 #: ../settings/behavior-settings.c:267
 msgid "_Edit Menu"
 msgstr "_Edytuj menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:894
+#: ../panel-plugin/desktop-menu-plugin.c:888
 msgid "Icons"
 msgstr "Ikony"
 
-#: ../panel-plugin/desktop-menu-plugin.c:906
+#: ../panel-plugin/desktop-menu-plugin.c:900
 msgid "_Button icon:"
 msgstr "_Ikona przycisku:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:930
+#: ../panel-plugin/desktop-menu-plugin.c:924
 msgid "Show _icons in menu"
 msgstr "Pokazuj _ikony w menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:953
+#: ../panel-plugin/desktop-menu-plugin.c:947
 msgid "There is already a panel menu registered for this screen"
 msgstr "Już jest przypisane menu panelu dla tego ekranu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1061
+#: ../panel-plugin/desktop-menu-plugin.c:1055
 msgid "Edit Menu"
 msgstr "Edytuj menu"
 
 #. the button label in the xfce-mcs-manager dialog
-#: ../settings/appearance-settings.c:134
+#: ../settings/appearance-settings.c:138
 msgid "Button Label|Desktop"
 msgstr "Pulpit"
 
-#: ../settings/appearance-settings.c:187 ../settings/appearance-settings.c:196
-#: ../settings/backdrop-list-manager.c:631
+#: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
+#: ../settings/backdrop-list-manager.c:628
 msgid "backdrops.list"
 msgstr "backdrops.list"
 
-#: ../settings/appearance-settings.c:527
+#: ../settings/appearance-settings.c:574
 msgid "Select backdrop image or list file"
 msgstr "Wybierz obrazek tła lub plik listy"
 
-#: ../settings/appearance-settings.c:545
+#: ../settings/appearance-settings.c:592
 msgid "List Files (*.list)"
 msgstr "Pliki list (*.list)"
 
-#: ../settings/appearance-settings.c:637
+#: ../settings/appearance-settings.c:688
 msgid "_Edit list..."
 msgstr "_Edytuj listę..."
 
-#: ../settings/appearance-settings.c:645
+#: ../settings/appearance-settings.c:696
 msgid "_New list..."
 msgstr "_Nowa lista..."
 
-#: ../settings/appearance-settings.c:678
+#: ../settings/appearance-settings.c:729
 msgid "S_tyle:"
 msgstr "_Styl:"
 
-#: ../settings/appearance-settings.c:685
+#: ../settings/appearance-settings.c:736
 msgid "Auto"
 msgstr "Automatyczny"
 
-#: ../settings/appearance-settings.c:686
+#: ../settings/appearance-settings.c:737
 msgid "Centered"
 msgstr "Wyśrodkuj"
 
-#: ../settings/appearance-settings.c:687
+#: ../settings/appearance-settings.c:738
 msgid "Tiled"
 msgstr "Kafelki"
 
-#: ../settings/appearance-settings.c:688
+#: ../settings/appearance-settings.c:739
 msgid "Stretched"
 msgstr "Rozciągnięty"
 
-#: ../settings/appearance-settings.c:689
+#: ../settings/appearance-settings.c:740
 msgid "Scaled"
 msgstr "Skaluj"
 
-#: ../settings/appearance-settings.c:745
+#: ../settings/appearance-settings.c:796
 msgid "A_djust Brightness:"
 msgstr "Dostosuj _jasność:"
 
-#: ../settings/appearance-settings.c:803
+#: ../settings/appearance-settings.c:854
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce nie będzie w stanie zarządzać pulpitem (%s)"
 
-#: ../settings/appearance-settings.c:804
+#: ../settings/appearance-settings.c:855
 msgid "Unknown Error"
 msgstr "Nieznany Błąd"
 
-#: ../settings/appearance-settings.c:808
+#: ../settings/appearance-settings.c:859
 #: ../src/xfdesktop-regular-file-icon.c:520
 #: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr "Błąd"
 
-#: ../settings/appearance-settings.c:810
+#: ../settings/appearance-settings.c:861
 msgid "Unable to start xfdesktop"
 msgstr "Nie można uruchomić xfdesktop"
 
-#: ../settings/appearance-settings.c:832
+#: ../settings/appearance-settings.c:883
 msgid "Information"
 msgstr "Informacje"
 
-#: ../settings/appearance-settings.c:845
+#: ../settings/appearance-settings.c:896
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -671,10 +667,11 @@ msgid ""
 "your ~/.config/xfce4/xinitrc file.  Details are available in the "
 "documentation provided on http://xfce.org/."
 msgstr ""
-"By upewnić się że podane ustawienia zostaną uwzglądnione po ponownym uruchomionu Xfce "
-"zapisz sesję przy wylogowaniu. Jeżeli nie używasz xfce4-session będziesz musiał ręcznie edytować ~/.config/xfce4/xinitrc."
+"By upewnić się że podane ustawienia zostaną uwzglądnione po ponownym "
+"uruchomionu Xfce zapisz sesję przy wylogowaniu. Jeżeli nie używasz xfce4-"
+"session będziesz musiał ręcznie edytować ~/.config/xfce4/xinitrc."
 
-#: ../settings/appearance-settings.c:847
+#: ../settings/appearance-settings.c:898
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -686,83 +683,83 @@ msgstr ""
 "następnym wylogowaniu się. Możesz też ręcznie edytować ~/.config/xfce4/"
 "xinitrc file."
 
-#: ../settings/appearance-settings.c:855
+#: ../settings/appearance-settings.c:906
 msgid "_Do not show this again"
 msgstr "_Nie pokazuj ponownie"
 
 #. the dialog
-#: ../settings/appearance-settings.c:921
+#: ../settings/appearance-settings.c:972
 msgid "Desktop Preferences"
 msgstr "Preferencje pulpitu"
 
-#: ../settings/appearance-settings.c:938
+#: ../settings/appearance-settings.c:989
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Zezwól _Xfce na zarządzanie pulpitem"
 
-#: ../settings/appearance-settings.c:979
+#: ../settings/appearance-settings.c:1030
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "Rozciągnij jedno tło na _wszystkie monitory"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:993
-#: ../settings/appearance-settings.c:1175
+#: ../settings/appearance-settings.c:1044
+#: ../settings/appearance-settings.c:1226
 msgid "_Appearance"
 msgstr "_Wygląd"
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1019
+#: ../settings/appearance-settings.c:1070
 msgid "Color"
 msgstr "Kolor"
 
-#: ../settings/appearance-settings.c:1033
+#: ../settings/appearance-settings.c:1084
 msgid "_Color Style:"
 msgstr "Styl _koloru:"
 
-#: ../settings/appearance-settings.c:1040
+#: ../settings/appearance-settings.c:1091
 msgid "Solid Color"
 msgstr "Jednolity"
 
-#: ../settings/appearance-settings.c:1041
+#: ../settings/appearance-settings.c:1092
 msgid "Horizontal Gradient"
 msgstr "Gradient poziomy"
 
-#: ../settings/appearance-settings.c:1042
+#: ../settings/appearance-settings.c:1093
 msgid "Vertical Gradient"
 msgstr "Gradient pionowy"
 
-#: ../settings/appearance-settings.c:1055
+#: ../settings/appearance-settings.c:1106
 msgid "Fi_rst Color:"
 msgstr "P_ierwszy kolor"
 
-#: ../settings/appearance-settings.c:1076
+#: ../settings/appearance-settings.c:1127
 msgid "_Second Color:"
 msgstr "_Drugi kolor:"
 
-#: ../settings/appearance-settings.c:1101
+#: ../settings/appearance-settings.c:1152
 msgid "Image"
 msgstr "Obrazek"
 
-#: ../settings/appearance-settings.c:1109
+#: ../settings/appearance-settings.c:1160
 msgid "Show _Image"
 msgstr "Pokaż _obrazek"
 
-#: ../settings/appearance-settings.c:1131
+#: ../settings/appearance-settings.c:1182
 msgid "_File:"
 msgstr "_Plik:"
 
-#: ../settings/appearance-settings.c:1186
-#: ../settings/appearance-settings.c:1188
+#: ../settings/appearance-settings.c:1237
+#: ../settings/appearance-settings.c:1239
 #, c-format
 msgid "Screen %d"
 msgstr "Ekran %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1193
+#: ../settings/appearance-settings.c:1244
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Ekran %d, Monitor %d"
 
-#: ../settings/appearance-settings.c:1210
+#: ../settings/appearance-settings.c:1261
 msgid "_Behavior"
 msgstr "_Zachowanie"
 
@@ -790,23 +787,19 @@ msgstr "Wybierz nazwę pliku dla listy"
 msgid "List Files"
 msgstr "Pliki list"
 
-#: ../settings/backdrop-list-manager.c:603
-msgid "Backdrop List"
-msgstr "Lista z tłami"
-
-#: ../settings/backdrop-list-manager.c:620
+#: ../settings/backdrop-list-manager.c:617
 msgid "Image files"
 msgstr "Pliki graficzne"
 
-#: ../settings/backdrop-list-manager.c:639
+#: ../settings/backdrop-list-manager.c:636
 msgid "List file"
 msgstr "Plik z listą"
 
-#: ../settings/backdrop-list-manager.c:661
+#: ../settings/backdrop-list-manager.c:658
 msgid "Create backdrop list"
 msgstr "Utwórz listę z tłami"
 
-#: ../settings/backdrop-list-manager.c:694
+#: ../settings/backdrop-list-manager.c:691
 msgid "Edit backdrop list"
 msgstr "Edytuj listę z tłami"
 
@@ -920,31 +913,31 @@ msgstr "    --quit        Zamyka xfdesktop\n"
 msgid "%s is not running.\n"
 msgstr "%s nie działa.\n"
 
-#: ../src/windowlist.c:218
+#: ../src/windowlist.c:220
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Obszar roboczy %d</b>"
 
-#: ../src/windowlist.c:226
+#: ../src/windowlist.c:228
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Obszar roboczy %d</i>"
 
-#: ../src/windowlist.c:293 ../src/windowlist.c:296
+#: ../src/windowlist.c:295 ../src/windowlist.c:298
 msgid "_Add Workspace"
 msgstr "_Dodaj obszar roboczy"
 
-#: ../src/windowlist.c:304
+#: ../src/windowlist.c:306
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Usuń obszar roboczy %d"
 
-#: ../src/windowlist.c:307
+#: ../src/windowlist.c:309
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Usuń obszar roboczy '%s'"
 
-#: ../src/xfce-desktop.c:542
+#: ../src/xfce-desktop.c:573
 msgid "Desktop"
 msgstr "Pulpit"
 
@@ -1401,6 +1394,12 @@ msgstr "Ustawienia XFCE 4 Menedżera Pulpitów"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Ustawienia pulpitu Xfce 4"
+
+#~ msgid "Edit Properties"
+#~ msgstr "Edytuj Właściwości"
+
+#~ msgid "Backdrop List"
+#~ msgstr "Lista z tłami"
 
 #~ msgid ""
 #~ "Viewing the contents of the trash requires a file manager that supports "

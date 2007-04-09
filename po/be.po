@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: be\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-20 22:14+0100\n"
+"POT-Creation-Date: 2007-04-09 14:22+0200\n"
 "PO-Revision-Date: 2007-03-29 01:09+0300\n"
 "Last-Translator: Alexander Nyakhaychyk <nyakhaychyk@gmail.com>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -18,7 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Rosetta-Export-Date: 2007-01-02 00:08+0000\n"
 "X-Generator: KBabel 1.10.2\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Belarusian\n"
 "X-Poedit-Country: BELARUS\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -114,7 +115,7 @@ msgstr "Вылучыце значку"
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:600
-#: ../settings/appearance-settings.c:541
+#: ../settings/appearance-settings.c:579
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
@@ -123,7 +124,7 @@ msgstr "Усе файлы"
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:606
-#: ../settings/appearance-settings.c:545
+#: ../settings/appearance-settings.c:583
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Файлы з відарысамі"
@@ -142,7 +143,7 @@ msgstr "Выконваць у _тэрмінале"
 
 #: ../menueditor/menueditor-add-dialog.c:427
 #: ../menueditor/menueditor-edit-dialog.c:286
-#: ../menueditor/menueditor-main-window.c:450
+#: ../menueditor/menueditor-main-window.c:448
 msgid "Select command"
 msgstr "Вылучыце загад"
 
@@ -252,8 +253,7 @@ msgstr "Стварыць новае мэню"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1602
-#: ../src/xfdesktop-special-file-icon.c:624
-#: ../src/xfdesktop-volume-icon.c:543
+#: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
 msgid "_Open"
 msgstr "_Адчыніць"
 
@@ -393,103 +393,102 @@ msgstr "Загад"
 msgid "Hidden"
 msgstr "Схаваны"
 
-#: ../menueditor/menueditor-main-window.c:427
+#: ../menueditor/menueditor-main-window.c:425
 msgid "Are you sure you want to close the current menu?"
 msgstr "Вы насамрэч жадаеце зачыніць бягучае мэню?"
 
-#: ../menueditor/menueditor-main-window.c:441
+#: ../menueditor/menueditor-main-window.c:439
 msgid "Do you want to save before closing the file?"
 msgstr "Мо жадаеце захаваць зьмены перш чым зачыніць файл?"
 
-#: ../menueditor/menueditor-main-window.c:479
-#: ../menueditor/menueditor-main-window.c:532
-#: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:587
-#: ../src/xfdesktop-file-utils.c:55
+#: ../menueditor/menueditor-main-window.c:477
+#: ../menueditor/menueditor-main-window.c:530
+#: ../menueditor/menueditor-main-window.c:628
+#: ../src/xfdesktop-file-icon-manager.c:587 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Пытаньне"
 
-#: ../menueditor/menueditor-main-window.c:481
+#: ../menueditor/menueditor-main-window.c:479
 msgid "Do you want to save before opening an other menu ?"
 msgstr "Мо жадаеце захаваць зьмены перш чым адчыняць іншае мэню?"
 
-#: ../menueditor/menueditor-main-window.c:483
-#: ../menueditor/menueditor-main-window.c:536
-#: ../menueditor/menueditor-main-window.c:634
+#: ../menueditor/menueditor-main-window.c:481
+#: ../menueditor/menueditor-main-window.c:534
+#: ../menueditor/menueditor-main-window.c:632
 msgid "Ignore modifications"
 msgstr "Ігнараваць зьмены"
 
-#: ../menueditor/menueditor-main-window.c:494
+#: ../menueditor/menueditor-main-window.c:492
 msgid "Open menu file"
 msgstr "Адчыніць файл мэню"
 
-#: ../menueditor/menueditor-main-window.c:534
+#: ../menueditor/menueditor-main-window.c:532
 msgid "Do you want to save before opening the default menu ?"
 msgstr "Мо жадаеце захаваць зьмены перш чым адчыняць дапомнае мэню?"
 
-#: ../menueditor/menueditor-main-window.c:594
+#: ../menueditor/menueditor-main-window.c:592
 msgid "Save menu file as"
 msgstr "Захаваць мэню як файл"
 
-#: ../menueditor/menueditor-main-window.c:632
-#: ../menueditor/menueditor-main-window.c:1343
+#: ../menueditor/menueditor-main-window.c:630
+#: ../menueditor/menueditor-main-window.c:1341
 msgid "Do you want to save before closing the menu ?"
 msgstr "Мо жадаеце захаваць перш чымся зачыніць мэню?"
 
-#: ../menueditor/menueditor-main-window.c:858
-#: ../menueditor/menueditor-main-window.c:988
+#: ../menueditor/menueditor-main-window.c:856
+#: ../menueditor/menueditor-main-window.c:986
 msgid "quit"
 msgstr "выйсьці"
 
-#: ../menueditor/menueditor-main-window.c:963
-#: ../menueditor/menueditor-main-window.c:1584
+#: ../menueditor/menueditor-main-window.c:961
+#: ../menueditor/menueditor-main-window.c:1582
 msgid "--- separator ---"
 msgstr "--- падзяляльнік ---"
 
-#: ../menueditor/menueditor-main-window.c:1081
-#: ../menueditor/menueditor-main-window.c:1088
-#: ../menueditor/menueditor-main-window.c:1638
+#: ../menueditor/menueditor-main-window.c:1079
+#: ../menueditor/menueditor-main-window.c:1086
+#: ../menueditor/menueditor-main-window.c:1636
 msgid "--- include ---"
 msgstr "--- падстаноўка ---"
 
-#: ../menueditor/menueditor-main-window.c:1089
-#: ../menueditor/menueditor-main-window.c:1655
+#: ../menueditor/menueditor-main-window.c:1087
+#: ../menueditor/menueditor-main-window.c:1653
 msgid "system"
 msgstr "сыстэма"
 
-#: ../menueditor/menueditor-main-window.c:1215
-#: ../menueditor/menueditor-main-window.c:1263
+#: ../menueditor/menueditor-main-window.c:1213
+#: ../menueditor/menueditor-main-window.c:1261
 msgid "Do you want to move the item into the submenu?"
 msgstr "Жадаеце перамясьціць элемэнт у падмэню?"
 
-#: ../menueditor/menueditor-main-window.c:1293
+#: ../menueditor/menueditor-main-window.c:1291
 msgid "A menu editor for Xfce4"
 msgstr "Рэдактар мэню Xfce4"
 
 #. Credits
-#: ../menueditor/menueditor-main-window.c:1298
+#: ../menueditor/menueditor-main-window.c:1296
 msgid "Author/Maintainer"
 msgstr "Аўтар/суправаджальнік"
 
+#: ../menueditor/menueditor-main-window.c:1297
+#: ../menueditor/menueditor-main-window.c:1298
 #: ../menueditor/menueditor-main-window.c:1299
-#: ../menueditor/menueditor-main-window.c:1300
-#: ../menueditor/menueditor-main-window.c:1301
 msgid "Contributor"
 msgstr "Укладальнік"
 
-#: ../menueditor/menueditor-main-window.c:1302
+#: ../menueditor/menueditor-main-window.c:1300
 msgid "Icon designer"
 msgstr "Распрацоўка значак"
 
-#: ../menueditor/menueditor-main-window.c:1345
+#: ../menueditor/menueditor-main-window.c:1343
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr "Вы зьмянілі мэню; можа жадаеце захаваць зьмены перад выхадам?"
 
-#: ../menueditor/menueditor-main-window.c:1347
+#: ../menueditor/menueditor-main-window.c:1345
 msgid "Forget modifications"
 msgstr "Забыць зьмены"
 
-#: ../menueditor/menueditor-main-window.c:2035
+#: ../menueditor/menueditor-main-window.c:2033
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
 msgstr "Немагчыма адкрыць для запісу файл мэню %s"
@@ -507,13 +506,21 @@ msgid "Unable to quit session."
 msgstr "Немагчыма завяршыць сэанс."
 
 #: ../modules/menu/desktop-menu-file.c:119
-msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
-msgstr "Завяршэньне сэансу патрабуе каб Кіраўнік сэансаў Xfce (xfce4-session) працаваў, але ён ня знойдзены. Калі ласка, завяршыце працу Xfce іншым чынам."
+msgid ""
+"Quitting the session requires that Xfce's session manager (xfce4-session) is "
+"running, but it was not detected.  Please quit Xfce via another means."
+msgstr ""
+"Завяршэньне сэансу патрабуе каб Кіраўнік сэансаў Xfce (xfce4-session) "
+"працаваў, але ён ня знойдзены. Калі ласка, завяршыце працу Xfce іншым чынам."
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
-msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
-msgstr "Завяршэньне сэансу патрабуе загад \"xfce4-session-logout\", але яго немагчыма знайсьці: %s"
+msgid ""
+"Quitting the session requires the 'xfce4-session-logout' command, but it "
+"could not be found: %s"
+msgstr ""
+"Завяршэньне сэансу патрабуе загад \"xfce4-session-logout\", але яго "
+"немагчыма знайсьці: %s"
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
@@ -587,178 +594,198 @@ msgstr "Рэдагаваньне мэню"
 msgid "Button Label|Desktop"
 msgstr "Сталец"
 
-#: ../settings/appearance-settings.c:191
-#: ../settings/appearance-settings.c:200
+#: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
 #: ../settings/backdrop-list-manager.c:628
 msgid "backdrops.list"
 msgstr "backgrounds.list"
 
-#: ../settings/appearance-settings.c:536
+#: ../settings/appearance-settings.c:574
 msgid "Select backdrop image or list file"
 msgstr "Вылучыце відарыс тла альбо файл са сьпісам"
 
-#: ../settings/appearance-settings.c:554
+#: ../settings/appearance-settings.c:592
 msgid "List Files (*.list)"
 msgstr "Сьпіс файлаў (*.list)"
 
-#: ../settings/appearance-settings.c:650
+#: ../settings/appearance-settings.c:688
 msgid "_Edit list..."
 msgstr "Р_эдагаваць сьпіс..."
 
-#: ../settings/appearance-settings.c:658
+#: ../settings/appearance-settings.c:696
 msgid "_New list..."
 msgstr "_Стварыць сьпіс..."
 
-#: ../settings/appearance-settings.c:691
+#: ../settings/appearance-settings.c:729
 msgid "S_tyle:"
 msgstr "Ст_ыль:"
 
-#: ../settings/appearance-settings.c:698
+#: ../settings/appearance-settings.c:736
 msgid "Auto"
 msgstr "Аўтаматычна"
 
-#: ../settings/appearance-settings.c:699
+#: ../settings/appearance-settings.c:737
 msgid "Centered"
 msgstr "Цэнтраваны"
 
-#: ../settings/appearance-settings.c:700
+#: ../settings/appearance-settings.c:738
 msgid "Tiled"
 msgstr "Пліткамі"
 
-#: ../settings/appearance-settings.c:701
+#: ../settings/appearance-settings.c:739
 msgid "Stretched"
 msgstr "Расьцягнуты"
 
-#: ../settings/appearance-settings.c:702
+#: ../settings/appearance-settings.c:740
 msgid "Scaled"
 msgstr "Маштабаваны"
 
-#: ../settings/appearance-settings.c:758
+#: ../settings/appearance-settings.c:796
 msgid "A_djust Brightness:"
 msgstr "Наладка _зыркасьці:"
 
-#: ../settings/appearance-settings.c:816
+#: ../settings/appearance-settings.c:854
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce ня можа кіраваць вашым Стальцом (%s)."
 
-#: ../settings/appearance-settings.c:817
+#: ../settings/appearance-settings.c:855
 msgid "Unknown Error"
 msgstr "Невядомая памылка"
 
-#: ../settings/appearance-settings.c:821
+#: ../settings/appearance-settings.c:859
 #: ../src/xfdesktop-regular-file-icon.c:520
 #: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr "Памылка"
 
-#: ../settings/appearance-settings.c:823
+#: ../settings/appearance-settings.c:861
 msgid "Unable to start xfdesktop"
 msgstr "Немагчыма запусьціць xfdesktop"
 
-#: ../settings/appearance-settings.c:845
+#: ../settings/appearance-settings.c:883
 msgid "Information"
 msgstr "Зьвесткі"
 
-#: ../settings/appearance-settings.c:858
-msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
-msgstr "Каб упэўніцца, што Xfce не будзе кіраваць Стальцом у наступны раз, калі вы яго запусьціце, калі ласка, упэўніцеся, што захавалі сэанс перад выхадам. Калі вы не выкарыстоўваеце Кіраўнік сэансаў Xfce (xfce4-session), вам неабходна самастойна адрэдагаваць файл ~/.config/xfce4/xinitrc. Падрабязнасьці даступныя ў дакумэнтацыі на http://xfce.org/."
+#: ../settings/appearance-settings.c:896
+msgid ""
+"To ensure that this setting takes effect the next time you start Xfce, "
+"please be sure to save your session when logging out.  If you are not using "
+"the Xfce Session Manager (xfce4-session), you will need to manually edit "
+"your ~/.config/xfce4/xinitrc file.  Details are available in the "
+"documentation provided on http://xfce.org/."
+msgstr ""
+"Каб упэўніцца, што Xfce не будзе кіраваць Стальцом у наступны раз, калі вы "
+"яго запусьціце, калі ласка, упэўніцеся, што захавалі сэанс перад выхадам. "
+"Калі вы не выкарыстоўваеце Кіраўнік сэансаў Xfce (xfce4-session), вам "
+"неабходна самастойна адрэдагаваць файл ~/.config/xfce4/xinitrc. "
+"Падрабязнасьці даступныя ў дакумэнтацыі на http://xfce.org/."
 
-#: ../settings/appearance-settings.c:860
-msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
-msgstr "Каб упэўніцца, што Xfce не будзе кіраваць Стальцом у наступны раз, калі вы яго запусьціце, калі ласка, упэўніцеся, што захавалі сэанс перад выхадам. Калі вы не выкарыстоўваеце Кіраўнік сэансаў Xfce (xfce4-session), вам неабходна самастойна адрэдагаваць файл ~/.config/xfce4/xinitrc. Падрабязнасьці даступныя ў дакумэнтацыі на http://xfce.org/."
+#: ../settings/appearance-settings.c:898
+msgid ""
+"To ensure that Xfce does not manage your desktop the next time you start "
+"Xfce, please be sure to save your session when logging out.  If you are not "
+"using the Xfce Session Manager (xfce4-session), you will need to manually "
+"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
+"documentation provided on http://xfce.org/."
+msgstr ""
+"Каб упэўніцца, што Xfce не будзе кіраваць Стальцом у наступны раз, калі вы "
+"яго запусьціце, калі ласка, упэўніцеся, што захавалі сэанс перад выхадам. "
+"Калі вы не выкарыстоўваеце Кіраўнік сэансаў Xfce (xfce4-session), вам "
+"неабходна самастойна адрэдагаваць файл ~/.config/xfce4/xinitrc. "
+"Падрабязнасьці даступныя ў дакумэнтацыі на http://xfce.org/."
 
-#: ../settings/appearance-settings.c:868
+#: ../settings/appearance-settings.c:906
 msgid "_Do not show this again"
 msgstr "Больш _не паказваць гэта"
 
 #. the dialog
-#: ../settings/appearance-settings.c:934
+#: ../settings/appearance-settings.c:972
 msgid "Desktop Preferences"
 msgstr "Перавагі Стальца"
 
-#: ../settings/appearance-settings.c:951
+#: ../settings/appearance-settings.c:989
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Дазволіць Xfce _кіраваць Стальцом"
 
-#: ../settings/appearance-settings.c:992
+#: ../settings/appearance-settings.c:1030
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "Расьгянуць адзін відарыс на _ўсе маніторы"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:1006
-#: ../settings/appearance-settings.c:1188
+#: ../settings/appearance-settings.c:1044
+#: ../settings/appearance-settings.c:1226
 msgid "_Appearance"
 msgstr "В_онкавы выгляд"
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1032
+#: ../settings/appearance-settings.c:1070
 msgid "Color"
 msgstr "Колер"
 
-#: ../settings/appearance-settings.c:1046
+#: ../settings/appearance-settings.c:1084
 msgid "_Color Style:"
 msgstr "Стыль _колераў:"
 
-#: ../settings/appearance-settings.c:1053
+#: ../settings/appearance-settings.c:1091
 msgid "Solid Color"
 msgstr "Суцэльны колер"
 
-#: ../settings/appearance-settings.c:1054
+#: ../settings/appearance-settings.c:1092
 msgid "Horizontal Gradient"
 msgstr "Гарызантальны градыент"
 
-#: ../settings/appearance-settings.c:1055
+#: ../settings/appearance-settings.c:1093
 msgid "Vertical Gradient"
 msgstr "Вэртыкальны градыент"
 
-#: ../settings/appearance-settings.c:1068
+#: ../settings/appearance-settings.c:1106
 msgid "Fi_rst Color:"
 msgstr "П_ершы колер:"
 
-#: ../settings/appearance-settings.c:1089
+#: ../settings/appearance-settings.c:1127
 msgid "_Second Color:"
 msgstr "Др_угі колер:"
 
-#: ../settings/appearance-settings.c:1114
+#: ../settings/appearance-settings.c:1152
 msgid "Image"
 msgstr "Вірадыс"
 
-#: ../settings/appearance-settings.c:1122
+#: ../settings/appearance-settings.c:1160
 msgid "Show _Image"
 msgstr "Паказаць _вірадыс"
 
-#: ../settings/appearance-settings.c:1144
+#: ../settings/appearance-settings.c:1182
 msgid "_File:"
 msgstr "_Файл:"
 
-#: ../settings/appearance-settings.c:1199
-#: ../settings/appearance-settings.c:1201
+#: ../settings/appearance-settings.c:1237
+#: ../settings/appearance-settings.c:1239
 #, c-format
 msgid "Screen %d"
 msgstr "Экран %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1206
+#: ../settings/appearance-settings.c:1244
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Экран %d, манітор %d"
 
-#: ../settings/appearance-settings.c:1223
+#: ../settings/appearance-settings.c:1261
 msgid "_Behavior"
 msgstr "Па_водзіны"
 
-#: ../settings/backdrop-list-manager.c:160
-#: ../src/xfce-desktop-settings.c:74
+#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your changes"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
 msgstr ""
 "Немагчыма захаваць файл %s: %s\n"
 "\n"
-"Калі ласка, абярыце іншае знаходжаньне альбо націсьніце адмену ў дыялёге, каб скасаваць зьмены, якія вы зрабілі"
+"Калі ласка, абярыце іншае знаходжаньне альбо націсьніце адмену ў дыялёге, "
+"каб скасаваць зьмены, якія вы зрабілі"
 
 #: ../settings/backdrop-list-manager.c:430
 msgid "Select backdrop image file"
@@ -848,15 +875,11 @@ msgstr "Опцыі сборкі:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Мэню Стальца: %s\n"
 
-#: ../src/main.c:264
-#: ../src/main.c:271
-#: ../src/main.c:278
+#: ../src/main.c:264 ../src/main.c:271 ../src/main.c:278
 msgid "enabled"
 msgstr "уключана"
 
-#: ../src/main.c:266
-#: ../src/main.c:273
-#: ../src/main.c:280
+#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
 msgid "disabled"
 msgstr "выключаны"
 
@@ -888,7 +911,8 @@ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Паказаць мэню (побач з мышой)\n"
 
 #: ../src/main.c:309
-msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgid ""
+"    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Паказаць сьпіс вокнаў (побач з мышой)\n"
 
 #: ../src/main.c:310
@@ -910,8 +934,7 @@ msgstr "<b>Працоўная прастора %d</b>"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Працоўная прастора %d</i>"
 
-#: ../src/windowlist.c:295
-#: ../src/windowlist.c:298
+#: ../src/windowlist.c:295 ../src/windowlist.c:298
 msgid "_Add Workspace"
 msgstr "Д_адаць працоўную прастору"
 
@@ -931,8 +954,10 @@ msgstr "Сталец"
 
 #: ../src/xfdesktop-file-icon-manager.c:386
 #, c-format
-msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "Xfdesktop ня можа стварыць тэчку \"%s\" каб захоўваць элемэнты Стальца:"
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr ""
+"Xfdesktop ня можа стварыць тэчку \"%s\" каб захоўваць элемэнты Стальца:"
 
 #: ../src/xfdesktop-file-icon-manager.c:388
 #: ../src/xfdesktop-file-icon-manager.c:399
@@ -942,8 +967,12 @@ msgstr "Збой стварэньня тэчкі"
 
 #: ../src/xfdesktop-file-icon-manager.c:397
 #, c-format
-msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr "Xfdesktop ня можа выкарыстоўваць \"%s\" каб захоўваць элемэнты Стальца, бо гэта ня тэчка."
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr ""
+"Xfdesktop ня можа выкарыстоўваць \"%s\" каб захоўваць элемэнты Стальца, бо "
+"гэта ня тэчка."
 
 #: ../src/xfdesktop-file-icon-manager.c:401
 msgid "Please delete or rename the file."
@@ -986,8 +1015,7 @@ msgstr "Выдаленьне некалькіх файлаў"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:823
-#: ../src/xfdesktop-file-icon-manager.c:1528
-#: ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1528 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:352
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -996,8 +1024,7 @@ msgstr "Немагчыма запусьціць \"%s\":"
 #: ../src/xfdesktop-file-icon-manager.c:825
 #: ../src/xfdesktop-file-icon-manager.c:865
 #: ../src/xfdesktop-file-icon-manager.c:1128
-#: ../src/xfdesktop-file-icon-manager.c:1530
-#: ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon-manager.c:1530 ../src/xfdesktop-file-icon.c:144
 #: ../src/xfdesktop-file-utils.c:355
 msgid "Launch Error"
 msgstr "Памылка запуску"
@@ -1006,10 +1033,12 @@ msgstr "Памылка запуску"
 msgid "The application chooser could not be opened."
 msgstr "Немагчыма адкрыць абіральнік дастасаваньняў."
 
-#: ../src/xfdesktop-file-icon-manager.c:867
-#: ../src/xfdesktop-file-utils.c:357
-msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-msgstr "Гэтая функцыя патрабуе прысутнасьці кіраўніка файлаў (напрыклад, Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
+msgstr ""
+"Гэтая функцыя патрабуе прысутнасьці кіраўніка файлаў (напрыклад, Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1027
 #, c-format
@@ -1027,8 +1056,12 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Немагчыма стварыць тэчку пад назвай \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1130
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Немагчыма запусьціць праграму \"exo-desktop-item-edit\", якая патрабуецца для стварэньня й рэдагаваньня запускальнікаў і спасылкан на Стальцэ."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Немагчыма запусьціць праграму \"exo-desktop-item-edit\", якая патрабуецца "
+"для стварэньня й рэдагаваньня запускальнікаў і спасылкан на Стальцэ."
 
 #: ../src/xfdesktop-file-icon-manager.c:1163
 msgid "Create New Folder"
@@ -1207,17 +1240,9 @@ msgstr "Памер:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:413
 #: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:487
-#: ../src/xfdesktop-volume-icon.c:460
+#: ../src/xfdesktop-special-file-icon.c:487 ../src/xfdesktop-volume-icon.c:460
 msgid "%s (%"
 msgstr "%s (%"
-
-#: ../src/xfdesktop-file-properties-dialog.c:413
-#: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:487
-#: ../src/xfdesktop-volume-icon.c:460
-msgid " Bytes)"
-msgstr " байтаў)"
 
 #. permissions tab
 #: ../src/xfdesktop-file-properties-dialog.c:428
@@ -1274,8 +1299,7 @@ msgid "link to %s"
 msgstr "спасылка на %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:489
-#: ../src/xfdesktop-special-file-icon.c:490
-#: ../src/xfdesktop-volume-icon.c:463
+#: ../src/xfdesktop-special-file-icon.c:490 ../src/xfdesktop-volume-icon.c:463
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -1304,8 +1328,12 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Немагчыма далучыцца да службы сьмецьця Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:511
-msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr "Упэўніцеся, што маеце ўсталяваны кіраўнік файлаў, які падтрымлівае службу сьмецьця Xfce (напрыклад, Thunar)."
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr ""
+"Упэўніцеся, што маеце ўсталяваны кіраўнік файлаў, які падтрымлівае службу "
+"сьмецьця Xfce (напрыклад, Thunar)."
 
 #: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
@@ -1378,3 +1406,5 @@ msgstr "Настаўленьні для Кіраўніка стальца Xfce 4
 msgid "Xfce 4 Desktop Settings"
 msgstr "Настаўленьні Стальца Xfce 4"
 
+#~ msgid " Bytes)"
+#~ msgstr " байтаў)"
