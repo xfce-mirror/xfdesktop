@@ -490,6 +490,8 @@ dmp_read_config(XfcePanelPlugin *plugin, DMPlugin *dmp)
     dmp->show_button_title = xfce_rc_read_bool_entry(rcfile,
                                                      "show_button_title",
                                                      TRUE);
+    
+    xfce_rc_close(rcfile);
 }
 
 static void
