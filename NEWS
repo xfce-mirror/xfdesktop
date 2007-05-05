@@ -2,6 +2,8 @@
 =====
 
 - Fixed the Italian xfdesktop menu causing a crash.
+- Fix missing xfce_rc_close() causing memleak and too many open file
+  descriptors (bug 3065)
 
 4.4.1
 =====
