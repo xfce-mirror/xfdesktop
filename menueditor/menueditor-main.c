@@ -53,6 +53,18 @@ main (int argc, char **argv)
   gtk_init (&argc, &argv);
 
   xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+  
+  if (xfce_message_dialog (NULL, _("Menueditor Warning"),
+                           GTK_STOCK_DIALOG_WARNING,
+                           _("xfce4-menueditor is deprecated"),
+                           _("Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."),
+                           XFCE_CUSTOM_STOCK_BUTTON, _("Continue"),
+                             GTK_STOCK_EXECUTE, GTK_RESPONSE_CANCEL,
+                           GTK_STOCK_QUIT, GTK_RESPONSE_ACCEPT,
+                           NULL) == GTK_RESPONSE_ACCEPT)
+  {
+    return 0;
+  }
 
   mainwin = menueditor_main_window_new ();
 
