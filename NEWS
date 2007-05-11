@@ -1,3 +1,25 @@
+???????? (Xfce 4.5.x):
+----------------------
+
+    I'm going to attempt to keep a log of features added and major bugs
+    fixed as we go through the 4.5 development cycle.  I'm not entirely
+    optimistic in my ability to actually do this, but I'm gonna do my
+    best.
+    
+      * Ditch my custom semi-fd.o-compliant menu system in favor of
+        XfceMenu, our new fd.o-compliant menu implementation written by
+        Jannis Pohlmann.
+      * Fix URI parsing in .desktop files when launching an application so
+        that the "field codes" (%-codes) are either properly ignored or
+        are substituted properly.  This should fix a lot of problems where
+        some apps were expecting some command-line arguments but the menu
+        was just throwing them all away (bug 2942).
+      * Add support for 'zoomed' backdrop mode: fill the screen with the
+        backdrop edge-to-edge by scaling and/or cropping as necessary.
+        This doesn't mess with the aspect ratio and is pretty nifty.  Patch
+        is from <trondsg@gmail.com> (bug 3138).
+
+
 20070121 (Xfce 4.4.0):
 ----------------------
 
