@@ -738,6 +738,7 @@ add_style_options (GtkWidget *vbox, GtkSizeGroup * sg, BackdropPanel *bp)
     gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Tiled"));
     gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Stretched"));
     gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Scaled"));
+    gtk_combo_box_append_text(GTK_COMBO_BOX(combo), _("Zoomed"));
     gtk_combo_box_set_active(GTK_COMBO_BOX(combo), bp->style);
     gtk_label_set_mnemonic_widget(GTK_LABEL(label), combo);
     gtk_widget_show(combo);

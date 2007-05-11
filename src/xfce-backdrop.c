@@ -571,7 +571,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
         if(ih <= h / 2 && iw <= w / 2)
             istyle = XFCE_BACKDROP_IMAGE_TILED;
         else
-            istyle = XFCE_BACKDROP_IMAGE_SCALED;
+            istyle = XFCE_BACKDROP_IMAGE_ZOOMED;
     } else
         istyle = backdrop->priv->image_style;
     
@@ -654,6 +654,22 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             gdk_pixbuf_composite(image, final_image, dx, dy,
                     iw * xscale, ih * yscale, xo, yo, xscale, yscale,
                     interp, 255);
+            break;
+        
+        case XFCE_BACKDROP_IMAGE_ZOOMED:
+            xscale = (gdouble)w / iw;
+            yscale = (gdouble)h / ih;
+            if(xscale < yscale) {
+                xscale = yscale;
+                xo = (w - (iw * xscale)) * 0.5;
+                yo = 0;
+            } else {
+                yscale = xscale;
+                xo = 0;
+                yo = (h - (ih * yscale)) * 0.5;
+            }
+            gdk_pixbuf_composite(image, final_image, 0, 0,
+                    w, h, xo, yo, xscale, yscale, interp, 255);
             break;
         
         default:
