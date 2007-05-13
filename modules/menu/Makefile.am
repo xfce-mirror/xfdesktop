@@ -57,6 +57,7 @@ xfceconf_DATA = \
 	xfce-registered-categories.xml.it \
 	xfce-registered-categories.xml.ja \
 	xfce-registered-categories.xml.nl \
+	xfce-registered-categories.xml.nb_NO \
 	xfce-registered-categories.xml.pl \
 	xfce-registered-categories.xml.pt_BR \
 	xfce-registered-categories.xml.ro \

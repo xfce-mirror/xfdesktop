@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xfce-registered-categories>
+
+<!-- Note: You can copy this file to ~/.config/xfce4/desktop/ for customisation. -->
+
+<!--
+	Here is how this file works:
+
+	<xfce-registered-categories> - root element, required.
+
+	<category>
+		name:  Required.  Corresponds to an official category from the
+		  freedesktop.org menu spec.
+		replace: Optional.  Name that is displayed as the menu name for items
+		  in the category (useful, e.g., for translations).
+		icon: icon to be displayed for this category (actually, for the menu
+		  item referenced by this category's 'replace' attribute)
+		toplevel: Optional.  Marks categories as being "allowed" to be toplevel
+		  menus.  Note: if a category is unrooted, it will be promoted to
+		  toplevel regardless of the value of this attribute. (default: false)
+		ignore: Optional.  This category will be ignored when organising menu
+		  items. (default: false)
+		hide: Optional.  Items referencing this category will not appear in any
+			menu. (default: false)
+
+	<subcategory> - sub-element of <category>, specifies a subcategory relation
+		name: Required.  Corresponds to an official category from the
+		  freedesktop.org menu spec.
+	  Example:
+	  <category name="Graphics">
+		  <subcategory name="RasterGraphics">
+	  </category>
+	  Note that even if subcategories are definied, it is possible to collapse
+	  all subcategories into a flat one-level menu by specifying style="simple"
+	  in the <include> tag in your menu.xml file.
+-->
+
+<xfce-registered-categories>
+	<category name="Legacy" toplevel="true" replace="Tilbehør" builtin-icon="ACCESSORIES" />
+	<category name="Core" toplevel="true" replace="Tilbehør" builtin-icon="ACCESSORIES" />
+	<category name="Development" toplevel="true" replace="Utvikling" builtin-icon="DEVELOPMENT">
+		<subcategory name="Building" />
+		<subcategory name="Debugger"  replace="Feilsøking" />
+		<subcategory name="IDE" replace="Utvillingsmiljøer" />
+		<subcategory name="GUIDesigner" replace="Brukergrensesnitt" />
+		<subcategory name="Profiling" replace="Profilering" />
+		<subcategory name="RevisionControl" replace="Versjonskontroll" />
+		<subcategory name="Translation" replace="Oversetting" />
+		<subcategory name="Database" replace="Database" />
+		<subcategory name="ProjectManagement" replace="Prosjektstyring" />
+		<subcategory name="WebDevelopment" replace="Webutvikling" />
+	</category>
+	<category name="Building" builtin-icon="DEVELOPMENT" />
+	<category name="Debugger" replace="Feilsøking" builtin-icon="DEVELOPMENT" />
+	<category name="IDE" replace="Utviklingsmiljøer" builtin-icon="DEVELOPMENT" />
+	<category name="GUIDesigner" replace="Brukergrensesnitt" builtin-icon="DEVELOPMENT" />
+	<category name="Profiling" replace="Profilering" builtin-icon="DEVELOPMENT" />
+	<category name="RevisionControl" replace="Versjonskontroll" builtin-icon="DEVELOPMENT" />
+	<category name="Translation" replace="Oversetting" builtin-icon="DEVELOPMENT" />
+	<category name="Office" toplevel="true" replace="Kontor" builtin-icon="OFFICE">
+		<subcategory name="Calendar" replace="Kalender" />
+		<subcategory name="ContactManagement" replace="Kontaktverktøy" />
+		<subcategory name="Database" replace="Database" />
+		<subcategory name="Dictionary" replace="Ordlister" />
+		<subcategory name="Chart" replace="Diagram" />
+		<subcategory name="Email" replace="Epost" />
+		<subcategory name="Finance" replace="Finans" />
+		<subcategory name="FlowChart" replace="Flytdiagram" />
+		<subcategory name="PDA" />
+		<subcategory name="ProjectManagement" replace="Prosjektstyring" />
+		<subcategory name="Presentation" replace="Presentasjon" />
+		<subcategory name="Spreadsheet" replace="Regneark" />
+		<subcategory name="WordProcessor" replace="Ordbehandler" />
+		<subcategory name="Photograph" replace="Fotografier" />
+		<subcategory name="Viewer" replace="Fremviser" />
+	</category>
+	<category name="Calendar" replace="Kalender" builtin-icon="OFFICE" />
+	<category name="ContactManagement" replace="Kontaktverktøy" builtin-icon="OFFICE" />
+	<category name="Database" replace="Database" builtin-icon="OFFICE" />
+	<category name="Dictionary" replace="Ordlister" builtin-icon="OFFICE" />
+	<category name="Chart" builtin-icon="OFFICE" />
+	<category name="Email" replace="Epost" builtin-icon="OFFICE" />
+	<category name="Finance" replace="Finans" builtin-icon="OFFICE" />
+	<category name="FlowChart" replace="Flytdiagram" builtin-icon="OFFICE" />
+	<category name="PDA" builtin-icon="OFFICE" />
+	<category name="ProjectManagement" replace="Projekstyring" builtin-icon="OFFICE" />
+	<category name="Presentation" builtin-icon="OFFICE" />
+	<category name="Spreadsheet" replace="Regneark" builtin-icon="OFFICE" />
+	<category name="WordProcessor" replace="Tekstbehandler" builtin-icon="OFFICE" />
+	<category name="Graphics" toplevel="true" replace="Bilde" builtin-icon="GRAPHICS">
+		<subcategory name="2DGraphics" replace="2d-grafikk" />
+		<subcategory name="3DGraphics" replace="3d-grafikk" />
+		<subcategory name="Scanning" replace="Skanning" />
+		<subcategory name="Photograph" replace="Fotografier" />
+		<subcategory name="Viewer" replace="Fremviser" />
+	</category>
+	<category name="2DGraphics" replace="2d-grafikk" builtin-icon="GRAPHICS">
+		<subcategory name="VectorGraphics" replace="Vektorgrafikk" />
+		<subcategory name="RasterGraphics" replace="Punktgrafikk" />
+	</category>
+	<category name="VectorGraphics" replace="Vektorgrafik" builtin-icon="GRAPHICS" />
+	<category name="RasterGraphics" replace="Bitmappsgrafik" builtin-icon="GRAPHICS" />
+	<category name="3DGraphics" replace="3d-grafikk" builtin-icon="GRAPHICS" />
+	<category name="Scanning" replace="Skanning" builtin-icon="GRAPHICS">
+		<subcategory name="OCR" />
+	</category>
+	<category name="OCR" builtin-icon="GRAPHICS" />
+	<category name="Photograph" replace="Fotografier" builtin-icon="GRAPHICS" />
+	<category name="Viewer" replace="Fremviser" builtin-icon="GRAPHICS" />
+	<category name="Settings" replace="Innstillinger" toplevel="true" builtin-icon="SETTINGS">
+		<subcategory name="DesktopSettings" replace="Innstillinger for skrivebordet" />
+		<subcategory name="HardwareSettings" replace="Innstillinger for maskinvare" />
+		<subcategory name="PackageSettings" replace="Instillinger for pakker" />
+		<subcategory name="Security" replace="Sikkerhet" />
+		<subcategory name="Accessibility" replace="Hjelpemiddelfunksjoner" />
+		<subcategory name="Screensaver" replace="Skjermsparer" />
+	</category>
+	<category name="DesktopSettings" replace="Innstillinger for skriverbordet" builtin-icon="SETTINGS" />
+	<category name="HardwareSettings" replace="Innstillinger for maskinvare" builtin-icon="SETTINGS" />
+	<category name="PackageSettings" replace="Innstillinger for pakker" builtin-icon="SETTINGS" />
+	<category name="Network" toplevel="true" replace="Nettverk" builtin-icon="NETWORK">
+		<subcategory name="Email" replace="Epost" />
+		<subcategory name="Dialup" replace="Oppringt internett" />
+		<subcategory name="InstantMessaging" />
+		<subcategory name="IRCClient" replace="IRC-klienter" />
+		<subcategory name="FileTransfer" replace="Filoverføring" />
+		<subcategory name="HamRadio" />
+		<subcategory name="News" replace="Nyheter" />
+		<subcategory name="P2P" replace="Peer-to-peer" />
+		<subcategory name="RemoteAccess" replace="Fjerntilgang" />
+		<subcategory name="Telephony" replace="Telefoni" />
+		<subcategory name="WebBrowser" replace="Nettleser" />
+		<subcategory name="WebDevelopment" replace="Webutvikling" />
+	</category>
+	<category name="Dialup" replace="Oppringt internett" builtin-icon="NETWORK" />
+	<category name="InstantMessaging" replace="Instant Messaging" builtin-icon="NETWORK" />
+	<category name="IRCClient" replace="IRC-klienter" builtin-icon="NETWORK" />
+	<category name="FileTransfer" replace="Filoverføring" builtin-icon="NETWORK" />
+	<category name="HamRadio" replace="Ham Radio" builtin-icon="NETWORK" />
+	<category name="News" replace="Nyheter" builtin-icon="NETWORK" />
+	<category name="P2P" replace="Peer-to-Peer" builtin-icon="NETWORK" />
+	<category name="RemoteAccess" replace="Fjerntilgang" builtin-icon="NETWORK" />
+	<category name="Telephony" replace="Telefoni" builtin-icon="NETWORK" />
+	<category name="WebBrowser" replace="Nettleser" builtin-icon="NETWORK" />
+	<category name="WebDevelopment" replace="Webutvikling" builtin-icon="NETWORK" />
+	<category name="AudioVideo" replace="Multimedia" toplevel="true" builtin-icon="MULTIMEDIA">
+		<subcategory name="Database" replace="Database" />
+		<subcategory name="HamRadio" replace="Ham Radio" />
+		<subcategory name="Audio" replace="Lyd" />
+		<subcategory name="Video" replace="Video" />
+		<subcategory name="AudioVideoEditing" replace="Lyd- og videoredigering" />
+		<subcategory name="Player" replace="Mediaavspiller" />
+		<subcategory name="Recorder" replace="Innspilling" />
+		<subcategory name="DiscBurning" replace="Brenn CD og DVD" />
+	</category>
+	<category name="Audio" builtin-icon="MULTIMEDIA">
+		<subcategory name="Midi" />
+		<subcategory name="Mixer" replace="Mikser" />
+		<subcategory name="Sequencer" />
+		<subcategory name="Tuner" />
+		<subcategory name="AudioVideoEditing" replace="Lyd- og videoredigering" />
+		<subcategory name="Player" replace="Mediaavspiller" />
+		<subcategory name="Recorder" replace="Innspilling" />
+	</category>
+	<category name="Midi"  builtin-icon="MULTIMEDIA" />
+	<category name="Mixer" replace="Lydmiksere" builtin-icon="MULTIMEDIA" />
+	<category name="Sequencer" replace="Sequencers" builtin-icon="MULTIMEDIA" />
+	<category name="Tuner" replace="Tuners" builtin-icon="MULTIMEDIA" />
+	<category name="Video" builtin-icon="MULTIMEDIA">
+		<subcategory name="TV" />
+		<subcategory name="AudioVideoEditing" replace="Lyd- og videoredigering" />
+		<subcategory name="Player" replace="Avspiller" />
+		<subcategory name="Recorder" replace="Innspilling" />
+		<subcategory name="Music" replace="Musikk" />
+	</category>
+	<category name="TV" builtin-icon="MULTIMEDIA" />
+	<category name="AudioVideoEditing" replace="Lyd- og videoredigering" builtin-icon="MULTIMEDIA" />
+	<category name="Player" replace="Mediaavspillere" builtin-icon="MULTIMEDIA" />
+	<category name="Recorder" replace="Innspilling" builtin-icon="MULTIMEDIA" />
+	<category name="DiscBurning" replace="Brenn CD og DVD" builtin-icon="MULTIMEDIA" />
+	<category name="Game" toplevel="true" replace="Spill" builtin-icon="GAME">
+		<subcategory name="ActionGame" replace="Actionspill" />
+		<subcategory name="AdventureGame" replace="Eventyrspill" />
+		<subcategory name="ArcadeGame" replace="Arkadespill" />
+		<subcategory name="BoardGame" replace="Brettspill" />
+		<subcategory name="BlocksGame" replace="Puslespill" />
+		<subcategory name="CardGame" replace="Kortspill" />
+		<subcategory name="KidsGame" replace="Barnespill" />
+		<subcategory name="LogicGame" replace="Logikkspill" />
+		<subcategory name="RolePlaying" replace="Rollespill" />
+		<subcategory name="Simulation" replace="Simulatorer" />
+		<subcategory name="SportsGame" replace="Sportsspill" />
+		<subcategory name="StrategyGame" replace="Strategispill" />
+	</category>
+	<category name="ActionGame" replace="Actionspill" builtin-icon="GAME" />
+	<category name="AdventureGame" replace="Eventyrspill" builtin-icon="GAME" />
+	<category name="ArcadeGame" replace="Arkadespill" builtin-icon="GAME" />
+	<category name="BoardGame" replace="Brettspill" builtin-icon="GAME" />
+	<category name="BlocksGame" replace="Puslespill" builtin-icon="GAME" />
+	<category name="CardGame" replace="Kortspill" builtin-icon="GAME" />
+	<category name="KidsGame" replace="Barnespill" builtin-icon="GAME" />
+	<category name="LogicGame" replace="Logikkspill" builtin-icon="GAME" />
+	<category name="RolePlaying" replace="Rollespill" builtin-icon="GAME" />
+	<category name="Simulation" replace="Simulatorer" builtin-icon="GAME" />
+	<category name="SportsGame" replace="Sportsspill" builtin-icon="GAME" />
+	<category name="StrategyGame" replace="Strategispill" builtin-icon="GAME" />
+	<category name="Education" replace="Utdanning" toplevel="true">
+		<subcategory name="Art" replace="Kunst" />
+		<subcategory name="Construction" replace="Konstruksjon" />
+		<subcategory name="Music" replace="Musikk" />
+		<subcategory name="Languages" replace="Språk" />
+		<subcategory name="Teaching" replace="Undervisning" />
+	</category>
+	<category name="Art" replace="Kunst" />
+	<category name="Construction" replace="Konstruksjon" />
+	<category name="Music" replace="Musikk" />
+	<category name="Languages" replace="Språk" />
+	<category name="Science" replace="Vitenskap" toplevel="true">
+		<subcategory name="Astronomy" replace="Astronomi" />
+		<subcategory name="Biology" replace="Biologi" />
+		<subcategory name="Chemistry" replace="Kjemi" />
+		<subcategory name="Geology" replace="Geologi" />
+		<subcategory name="Math" replace="Matematikk" />
+		<subcategory name="MedicalSoftware" replace="Medisin" />
+		<subcategory name="Physics" replace="Fysikk" />
+	</category>
+	<category name="Astronomy" replace="Astronomi" />
+	<category name="Biology" replace="Biologi" />
+	<category name="Chemistry" replace="Kjemi" />
+	<category name="Geology" replace="Geologi" />
+	<category name="Math" replace="Matematikk" />
+	<category name="MedicalSoftware" replace="Medisin" />
+	<category name="Physics" replace="Fysikk" />
+	<category name="Teaching" replace="Undervisning" />
+	<category name="Amusement" replace="Spill" builtin-icon="GAME" />
+	<category name="Applet" replace="Miniprogram" />
+	<category name="Archiving" replace="Arkivering" />
+	<category name="Electronics" replace="Elektronikk" />
+	<category name="Emulator" toplevel="true" replace="Emulatorer" builtin-icon="SYSTEM" />
+	<category name="Engineering" replace="Ingeniør" />
+	<category name="FileManager" replace="Filbehandling" />
+	<category name="Shell" replace="Skall" />
+	<category name="Screensaver" replace="Skjermsparer" />
+	<category name="TerminalEmulator" replace="Terminalemulatorer" />
+	<category name="TrayIcon" replace="Ikoner i systemkurv" />
+	<category name="System" toplevel="true" builtin-icon="SYSTEM">
+		<subcategory name="FileSystem" replace="Filsystem" />
+		<subcategory name="Monitor" />
+		<subcategory name="Security" replace="Sikkerhet" />
+		<subcategory name="Accessibility" replace="Hjelpemiddelfunksjoner" />
+		<subcategory name="TerminalEmulator" replace="Terminalemulator" />
+		<subcategory name="Shell" replace="Skall" />
+	</category>
+	<category name="Filesystem" replace="Filsystem" builtin-icon="SYSTEM" />
+	<category name="Monitor" replace="Monitor" builtin-icon="SYSTEM" />
+	<category name="Security" replace="Sikkerhet" builtin-icon="SYSTEM" />
+	<category name="Utility" replace="Tilbehør" toplevel="true" builtin-icon="ACCESSORIES">
+		<subcategory name="Accessibility" replace="Hjelpemiddelfunksjoner" />
+		<subcategory name="Calculator" replace="Kalkulator" />
+		<subcategory name="Clock" replace="Klokke" />
+		<subcategory name="TextEditor" replace="Textredigerer" />
+		<subcategory name="Archiving" replace="Arkivering" />
+		<subcategory name="TerminalEmulator" replace="Terminalemulator" />
+		<subcategory name="FileManager" replace="Filbehandling" />
+		<subcategory name="Shell" replace="Skall" />
+	</category>
+	<category name="Accessibility" replace="Hjelpemiddelfunksjoner" builtin-icon="UTILITY" />
+	<category name="Calculator" replace="Kalkulator" builtin-icon="ACCESSORIES" />
+	<category name="Clock" replace="Klokke" builtin-icon="ACCESSORIES" />
+	<category name="TextEditor" replace="Textredigerer" builtin-icon="ACCESSORIES" />
+	<category name="KDE" toplevel="true" ignore="true">
+		<subcategory name="Development" replace="Utvikling" />
+		<subcategory name="Office" replace="Kontor" />
+		<subcategory name="Graphics" replace="Bilde" />
+		<subcategory name="Settings" replace="Innstillinger" />
+		<subcategory name="Network" replace="Nettverk" />
+		<subcategory name="AudioVideo" replace="Multimedia" />
+		<subcategory name="Game" replace="Spill" />
+		<subcategory name="Education" replace="Utdanning" />
+		<subcategory name="Science" replace="Vitenskap" />
+		<subcategory name="System" replace="System" />
+		<subcategory name="Utility" replace="Tilbehør" />
+	</category>
+	<category name="GNOME" toplevel="true" ignore="true">
+		<subcategory name="Development" replace="Utvikling" />
+		<subcategory name="Office" replace="Kontor" />
+		<subcategory name="Graphics" replace="Bilde" />
+		<subcategory name="Settings" replace="Innstillinger" />
+		<subcategory name="Network" replace="Nettverk" />
+		<subcategory name="AudioVideo" replace="Multimedia" />
+		<subcategory name="Game" replace="Spill" />
+		<subcategory name="Education" replace="Utdanning" />
+		<subcategory name="Science" replace="Vitenskap" />
+		<subcategory name="System" replace="System" />
+		<subcategory name="Utility" replace="Tilbehør" />
+	</category>
+	<category name="GTK" toplevel="true" ignore="true">
+		<subcategory name="GNOME" />
+	</category>
+	<category name="Qt" toplevel="true" ignore="true">
+		<subcategory name="KDE" />
+	</category>
+	<category name="Motif" toplevel="true" ignore="true">
+		<subcategory name="Development" replace="Utvikling" />
+		<subcategory name="Office" replace="Kontor" />
+		<subcategory name="Graphics" replace="Bilde" />
+		<subcategory name="Settings"  replace="Innstillinger" />
+		<subcategory name="Network" replace="Nettverk" />
+		<subcategory name="AudioVideo" replace="Multimedia" />
+		<subcategory name="Game" replace="Spill" />
+		<subcategory name="Education" replace="Utdanning" />
+		<subcategory name="Science" replace="Vitenskap" />
+		<subcategory name="System" replace="System" />
+		<subcategory name="Utility" replace="Tilbehør" />
+	</category>
+	<category name="Java" toplevel="true" ignore="true">
+		<subcategory name="Applet" />
+	</category>
+	<category name="ConsoleOnly" toplevel="true" replace="Konsoll" ignore="true">
+		<subcategory name="Development" replace="Utvikling" />
+		<subcategory name="Office" replace="Kontor" />
+		<subcategory name="Graphics" replace="Bilde" />
+		<subcategory name="Settings" replace="Innstillinger" />
+		<subcategory name="Network" replace="Nettverk" />
+		<subcategory name="AudioVideo" replace="Multimedia" />
+		<subcategory name="Game" replace="Spill" />
+		<subcategory name="Education" replace="Utdanning" />
+		<subcategory name="Science" replace="Vitenskap" />
+		<subcategory name="System" replace="System" />
+		<subcategory name="Utility" replace="Tilbehør" />
+	</category>
+	<category name="Wine" toplevel="true" builtin-icon="WINE" />
+	<category name="WineX" replace="Wine" toplevel="true" builtin-icon="WINE" />
+	<category name="CrossOver" replace="Wine" toplevel="true" builtin-icon="WINE" />
+</xfce-registered-categories>
