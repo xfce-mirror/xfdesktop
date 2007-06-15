@@ -1,0 +1,1481 @@
+# Amharic translation to xfdesktop.
+# Copyright (C) 2002-2007 The Xfce development team.
+# This file is distributed under the same license as the xfdesktop package.
+# Tegegne Tefera <tefera@mekuria.com>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop 4.4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-06-16 02:29+0900\n"
+"PO-Revision-Date: 2007-06-05 12:28+0100\n"
+"Last-Translator: Tegegne Tefera <tefera@mekuria.com>\n"
+"Language-Team: Amharic <l10n-am@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../menueditor/menueditor-add-dialog.c:129
+#, fuzzy
+msgid "Add menu entry"
+msgstr "ባዶ ገቢን ምረጥ"
+
+#. Type
+#: ../menueditor/menueditor-add-dialog.c:142
+#: ../menueditor/menueditor-add-dialog.c:143
+#: ../menueditor/menueditor-add-external-dialog.c:113
+#: ../menueditor/menueditor-add-external-dialog.c:114
+#, fuzzy
+msgid "Type:"
+msgstr "የፊደል ገበታ አይነት"
+
+#: ../menueditor/menueditor-add-dialog.c:151
+msgid "Title"
+msgstr "ርዕስ"
+
+#: ../menueditor/menueditor-add-dialog.c:152
+msgid "Submenu"
+msgstr "ንዑስ_ምናሌ"
+
+#: ../menueditor/menueditor-add-dialog.c:153
+msgid "Launcher"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:154
+msgid "Separator"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:155
+msgid "Quit"
+msgstr "ውጣ"
+
+#. Name
+#: ../menueditor/menueditor-add-dialog.c:162
+#: ../menueditor/menueditor-add-dialog.c:163
+#: ../menueditor/menueditor-edit-dialog.c:140
+#: ../menueditor/menueditor-edit-dialog.c:141
+#: ../src/xfdesktop-file-properties-dialog.c:188
+msgid "Name:"
+msgstr "ስም፦"
+
+#. Command
+#: ../menueditor/menueditor-add-dialog.c:176
+#: ../menueditor/menueditor-add-dialog.c:177
+#: ../menueditor/menueditor-edit-dialog.c:154
+#: ../menueditor/menueditor-edit-dialog.c:155
+msgid "Command:"
+msgstr "ትዕዛዝ፦"
+
+#. Icon chooser
+#: ../menueditor/menueditor-add-dialog.c:201
+#: ../menueditor/menueditor-add-dialog.c:202
+#: ../menueditor/menueditor-add-dialog.c:244
+#: ../menueditor/menueditor-add-dialog.c:245
+#: ../menueditor/menueditor-edit-dialog.c:179
+#: ../menueditor/menueditor-edit-dialog.c:180
+#: ../menueditor/menueditor-edit-dialog.c:222
+#: ../menueditor/menueditor-edit-dialog.c:223
+msgid "Icon:"
+msgstr ""
+
+#. setup a label to tell that no icon was selected
+#: ../menueditor/menueditor-add-dialog.c:213
+#: ../menueditor/menueditor-add-dialog.c:330
+#: ../menueditor/menueditor-edit-dialog.c:191
+#: ../menueditor/menueditor-edit-dialog.c:586
+#, fuzzy
+msgid "No icon"
+msgstr "ኤተርኔት ካርድ አልተገኘም"
+
+#: ../menueditor/menueditor-add-dialog.c:225
+#: ../menueditor/menueditor-add-dialog.c:226
+#: ../menueditor/menueditor-edit-dialog.c:203
+#: ../menueditor/menueditor-edit-dialog.c:204
+msgid "Themed icon:"
+msgstr ""
+
+#. allocate the chooser dialog
+#: ../menueditor/menueditor-add-dialog.c:252
+#: ../menueditor/menueditor-add-dialog.c:347
+#: ../menueditor/menueditor-edit-dialog.c:230
+#: ../menueditor/menueditor-edit-dialog.c:384
+#, fuzzy
+msgid "Select icon"
+msgstr "ክፋይ ምረጥ"
+
+#: ../menueditor/menueditor-add-dialog.c:257
+#: ../menueditor/menueditor-add-dialog.c:437
+#: ../menueditor/menueditor-add-external-dialog.c:142
+#: ../menueditor/menueditor-edit-dialog.c:235
+#: ../menueditor/menueditor-edit-dialog.c:296
+#: ../menueditor/menueditor-edit-external-dialog.c:122
+#: ../panel-plugin/desktop-menu-plugin.c:602
+#: ../settings/appearance-settings.c:579
+#: ../settings/backdrop-list-manager.c:435
+#: ../settings/backdrop-list-manager.c:536
+#, fuzzy
+msgid "All Files"
+msgstr "/tmp - ጊዜያዊ ፋይሎች"
+
+#: ../menueditor/menueditor-add-dialog.c:261
+#: ../menueditor/menueditor-edit-dialog.c:239
+#: ../panel-plugin/desktop-menu-plugin.c:608
+#: ../settings/appearance-settings.c:583
+#: ../settings/backdrop-list-manager.c:439
+#, fuzzy
+msgid "Image Files"
+msgstr "/tmp - ጊዜያዊ ፋይሎች"
+
+#. Start Notify check button
+#: ../menueditor/menueditor-add-dialog.c:283
+#: ../menueditor/menueditor-edit-dialog.c:261
+#, fuzzy
+msgid "Use startup _notification"
+msgstr "ቁስ በስራ ላይ"
+
+#. Run in terminal check button
+#: ../menueditor/menueditor-add-dialog.c:288
+#: ../menueditor/menueditor-edit-dialog.c:266
+#, fuzzy
+msgid "Run in _terminal"
+msgstr "IPv6-በ-IPv4 (ኢፕ_ዝ6-በ-ኢፕ_ዝ4)"
+
+#: ../menueditor/menueditor-add-dialog.c:427
+#: ../menueditor/menueditor-edit-dialog.c:286
+#: ../menueditor/menueditor-main-window.c:448
+#, fuzzy
+msgid "Select command"
+msgstr "ክፋይ ምረጥ"
+
+#: ../menueditor/menueditor-add-dialog.c:442
+#: ../menueditor/menueditor-edit-dialog.c:301
+#, fuzzy
+msgid "Executable Files"
+msgstr "/tmp - ጊዜያዊ ፋይሎች"
+
+#: ../menueditor/menueditor-add-dialog.c:457
+#: ../menueditor/menueditor-edit-dialog.c:316
+msgid "Perl Scripts"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:463
+#: ../menueditor/menueditor-edit-dialog.c:322
+msgid "Python Scripts"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:469
+#: ../menueditor/menueditor-edit-dialog.c:328
+msgid "Ruby Scripts"
+msgstr ""
+
+#: ../menueditor/menueditor-add-dialog.c:475
+#: ../menueditor/menueditor-edit-dialog.c:334
+#, fuzzy
+msgid "Shell Scripts"
+msgstr "እንካሰላንቲያ ቀፎ"
+
+#: ../menueditor/menueditor-add-external-dialog.c:100
+msgid "Add external menu entry"
+msgstr ""
+
+#: ../menueditor/menueditor-add-external-dialog.c:122
+msgid "File"
+msgstr "ፋይል"
+
+#: ../menueditor/menueditor-add-external-dialog.c:123
+#, fuzzy
+msgid "System"
+msgstr "ስርዓቱን እንደገና አስነሳ"
+
+#. Source
+#: ../menueditor/menueditor-add-external-dialog.c:129
+#: ../menueditor/menueditor-add-external-dialog.c:130
+#: ../menueditor/menueditor-edit-external-dialog.c:109
+#: ../menueditor/menueditor-edit-external-dialog.c:110
+#, fuzzy
+msgid "Source:"
+msgstr "ምንጭ ክፋይ፦"
+
+#: ../menueditor/menueditor-add-external-dialog.c:137
+#: ../menueditor/menueditor-edit-external-dialog.c:117
+#, fuzzy
+msgid "Select external menu"
+msgstr "ይህንን ምናሌ አጥፋ"
+
+#: ../menueditor/menueditor-add-external-dialog.c:146
+#: ../menueditor/menueditor-edit-external-dialog.c:126
+#: ../panel-plugin/desktop-menu-plugin.c:616
+#, fuzzy
+msgid "Menu Files"
+msgstr "የመነሻ ምናሌ"
+
+#. Style
+#: ../menueditor/menueditor-add-external-dialog.c:155
+#: ../menueditor/menueditor-add-external-dialog.c:156
+#: ../menueditor/menueditor-edit-external-dialog.c:135
+#: ../menueditor/menueditor-edit-external-dialog.c:136
+msgid "Style:"
+msgstr ""
+
+#: ../menueditor/menueditor-add-external-dialog.c:165
+#: ../menueditor/menueditor-edit-external-dialog.c:145
+msgid "Simple"
+msgstr ""
+
+#: ../menueditor/menueditor-add-external-dialog.c:166
+#: ../menueditor/menueditor-edit-external-dialog.c:146
+msgid "Multilevel"
+msgstr ""
+
+#. Unique check button
+#: ../menueditor/menueditor-add-external-dialog.c:171
+#: ../menueditor/menueditor-edit-external-dialog.c:151
+msgid "_Unique entries only"
+msgstr ""
+
+#: ../menueditor/menueditor-edit-dialog.c:127
+#, fuzzy
+msgid "Edit menu entry"
+msgstr "ባዶ ገቢን ምረጥ"
+
+#: ../menueditor/menueditor-edit-external-dialog.c:96
+msgid "Edit external menu entry"
+msgstr ""
+
+#: ../menueditor/menueditor-main.c:43
+msgid "Xfce4-MenuEditor"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:140
+#, fuzzy
+msgid "_File"
+msgstr "የሚመረመረው ፋይል፦ ${FILE}"
+
+#: ../menueditor/menueditor-main-window.c:141
+#, fuzzy
+msgid "_New"
+msgstr "አዲሱን ክፋይ በማስላት ላይ..."
+
+#: ../menueditor/menueditor-main-window.c:141
+#, fuzzy
+msgid "Create a new empty menu"
+msgstr "አዲስ ባዶ የክፋይ ሠንጠረዥ ይጻፍ?"
+
+#: ../menueditor/menueditor-main-window.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1602
+#: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
+msgid "_Open"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:142
+#, fuzzy
+msgid "Open existing menu"
+msgstr "ይህንን ምናሌ አጥፋ"
+
+#: ../menueditor/menueditor-main-window.c:143
+#, fuzzy
+msgid "Open _default menu"
+msgstr "ይህንን ምናሌ አጥፋ"
+
+#: ../menueditor/menueditor-main-window.c:143
+#, fuzzy
+msgid "Open default menu"
+msgstr "ይህንን ምናሌ አጥፋ"
+
+#: ../menueditor/menueditor-main-window.c:144
+#, fuzzy
+msgid "_Save"
+msgstr "የጸረ-ተውሳክ መዝገብን አስቀምጥ"
+
+#: ../menueditor/menueditor-main-window.c:144
+#, fuzzy
+msgid "Save modifications"
+msgstr "የጸረ-ተውሳክ መዝገብን አስቀምጥ"
+
+#: ../menueditor/menueditor-main-window.c:145
+#, fuzzy
+msgid "Save _as..."
+msgstr "ተጠቀም እንደ፦"
+
+#: ../menueditor/menueditor-main-window.c:145
+msgid "Save menu under a given name"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:146
+msgid "_Close"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:146
+#, fuzzy
+msgid "Close menu"
+msgstr "የመነሻ ምናሌ"
+
+#: ../menueditor/menueditor-main-window.c:147
+#, fuzzy
+msgid "_Quit"
+msgstr "ውጣ"
+
+#: ../menueditor/menueditor-main-window.c:147
+msgid "Quit Xfce4-Menueditor"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:149
+msgid "_Edit"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:150
+#, fuzzy
+msgid "_Edit entry"
+msgstr "ባዶ ገቢን ምረጥ"
+
+#: ../menueditor/menueditor-main-window.c:150
+#, fuzzy
+msgid "Edit selected entry"
+msgstr "ባዶ ገቢን ምረጥ"
+
+#: ../menueditor/menueditor-main-window.c:151
+#, fuzzy
+msgid "_Add entry"
+msgstr "ባዶ ገቢን ምረጥ"
+
+#: ../menueditor/menueditor-main-window.c:151
+msgid "Add a new entry in the menu"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:152
+msgid "Add _external"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:152
+#, fuzzy
+msgid "Add an external entry"
+msgstr "ባዶ ገቢን ምረጥ"
+
+#: ../menueditor/menueditor-main-window.c:153
+#, fuzzy
+msgid "_Remove entry"
+msgstr "ባዶ ገቢን ምረጥ"
+
+#: ../menueditor/menueditor-main-window.c:153
+#, fuzzy
+msgid "Remove entry"
+msgstr "ባዶ ገቢን ምረጥ"
+
+#: ../menueditor/menueditor-main-window.c:154
+#, fuzzy
+msgid "_Up"
+msgstr "በመትከል ላይ..."
+
+#: ../menueditor/menueditor-main-window.c:154
+#, fuzzy
+msgid "Move entry up"
+msgstr "ከፋይ ስልትን በማስነሳት ላይ"
+
+#: ../menueditor/menueditor-main-window.c:155
+msgid "_Down"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:155
+#, fuzzy
+msgid "Move entry down"
+msgstr "ባዶ ገቢን ምረጥ"
+
+#: ../menueditor/menueditor-main-window.c:157
+#, fuzzy
+msgid "_Help"
+msgstr "የመክፈል መመሪያ"
+
+#: ../menueditor/menueditor-main-window.c:158
+msgid "_About..."
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:158
+msgid "Show informations about xfce4-menueditor"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:160
+msgid "Collapse all"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:160
+msgid "Collapse all menu entries"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:161
+msgid "Expand all"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:161
+msgid "Expand all menu entries"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:341
+#, fuzzy
+msgid "Name"
+msgstr "ስም፦"
+
+#: ../menueditor/menueditor-main-window.c:344
+msgid "Command"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:345
+msgid "Hidden"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:425
+msgid "Are you sure you want to close the current menu?"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:439
+msgid "Do you want to save before closing the file?"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:477
+#: ../menueditor/menueditor-main-window.c:530
+#: ../menueditor/menueditor-main-window.c:628
+#: ../src/xfdesktop-file-icon-manager.c:587 ../src/xfdesktop-file-utils.c:55
+msgid "Question"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:479
+msgid "Do you want to save before opening an other menu ?"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:481
+#: ../menueditor/menueditor-main-window.c:534
+#: ../menueditor/menueditor-main-window.c:632
+msgid "Ignore modifications"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:492
+#, fuzzy
+msgid "Open menu file"
+msgstr "ቆጣሪቼክሰም ፋይልን መክፈት አልተቻለም"
+
+#: ../menueditor/menueditor-main-window.c:532
+msgid "Do you want to save before opening the default menu ?"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:592
+msgid "Save menu file as"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:630
+#: ../menueditor/menueditor-main-window.c:1341
+msgid "Do you want to save before closing the menu ?"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:856
+#: ../menueditor/menueditor-main-window.c:986
+msgid "quit"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:961
+#: ../menueditor/menueditor-main-window.c:1582
+msgid "--- separator ---"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:1079
+#: ../menueditor/menueditor-main-window.c:1086
+#: ../menueditor/menueditor-main-window.c:1636
+msgid "--- include ---"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:1087
+#: ../menueditor/menueditor-main-window.c:1653
+#, fuzzy
+msgid "system"
+msgstr "ስርዓቱን እንደገና አስነሳ"
+
+#: ../menueditor/menueditor-main-window.c:1213
+#: ../menueditor/menueditor-main-window.c:1261
+msgid "Do you want to move the item into the submenu?"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:1291
+msgid "A menu editor for Xfce4"
+msgstr ""
+
+#. Credits
+#: ../menueditor/menueditor-main-window.c:1296
+msgid "Author/Maintainer"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:1297
+#: ../menueditor/menueditor-main-window.c:1298
+#: ../menueditor/menueditor-main-window.c:1299
+msgid "Contributor"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:1300
+msgid "Icon designer"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:1343
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:1345
+msgid "Forget modifications"
+msgstr ""
+
+#: ../menueditor/menueditor-main-window.c:2033
+#, c-format
+msgid "Unable to open the menu file %s in write mode"
+msgstr ""
+
+#: ../modules/menu/desktop-menu-file.c:116
+#: ../modules/menu/desktop-menu-file.c:131
+#: ../panel-plugin/desktop-menu-plugin.c:767
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
+#, fuzzy
+msgid "Xfce Menu"
+msgstr "የመነሻ ምናሌ"
+
+#: ../modules/menu/desktop-menu-file.c:118
+#: ../modules/menu/desktop-menu-file.c:133
+#, fuzzy
+msgid "Unable to quit session."
+msgstr "${PACKAGE}ን  መትከል አልተቻለም"
+
+#: ../modules/menu/desktop-menu-file.c:119
+msgid ""
+"Quitting the session requires that Xfce's session manager (xfce4-session) is "
+"running, but it was not detected.  Please quit Xfce via another means."
+msgstr ""
+
+#: ../modules/menu/desktop-menu-file.c:129
+#, c-format
+msgid ""
+"Quitting the session requires the 'xfce4-session-logout' command, but it "
+"could not be found: %s"
+msgstr ""
+
+#: ../modules/menu/desktop-menuspec.c:61
+#, fuzzy
+msgid "/Other"
+msgstr "ሌላ"
+
+#: ../panel-plugin/desktop-menu-plugin.c:585
+#, fuzzy
+msgid "Select Icon"
+msgstr "ክፋይ ምረጥ"
+
+#: ../panel-plugin/desktop-menu-plugin.c:587
+#, fuzzy
+msgid "Select Menu File"
+msgstr "የመልቀቂያ ፋይልን በማምጣት ላይ..."
+
+#: ../panel-plugin/desktop-menu-plugin.c:744
+#: ../settings/behavior-settings.c:217
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr ""
+
+#: ../panel-plugin/desktop-menu-plugin.c:779
+msgid "Button"
+msgstr ""
+
+#: ../panel-plugin/desktop-menu-plugin.c:792
+msgid "Button _title:"
+msgstr ""
+
+#: ../panel-plugin/desktop-menu-plugin.c:805
+msgid "_Show title in button"
+msgstr ""
+
+#: ../panel-plugin/desktop-menu-plugin.c:812
+#, fuzzy
+msgid "Menu File"
+msgstr "የሚመረመረው ፋይል፦ ${FILE}"
+
+#: ../panel-plugin/desktop-menu-plugin.c:824
+msgid "Use default _desktop menu file"
+msgstr ""
+
+#: ../panel-plugin/desktop-menu-plugin.c:833
+#, fuzzy
+msgid "Use _custom menu file:"
+msgstr "ያልተረጋገጠ የJFS ስር ፋይል ስርዓትን ልጠቀም?"
+
+#: ../panel-plugin/desktop-menu-plugin.c:884
+#: ../settings/behavior-settings.c:267
+#, fuzzy
+msgid "_Edit Menu"
+msgstr "የመነሻ ምናሌ"
+
+#: ../panel-plugin/desktop-menu-plugin.c:890
+msgid "Icons"
+msgstr ""
+
+#: ../panel-plugin/desktop-menu-plugin.c:902
+msgid "_Button icon:"
+msgstr ""
+
+#: ../panel-plugin/desktop-menu-plugin.c:926
+msgid "Show _icons in menu"
+msgstr ""
+
+#: ../panel-plugin/desktop-menu-plugin.c:949
+msgid "There is already a panel menu registered for this screen"
+msgstr ""
+
+#: ../panel-plugin/desktop-menu-plugin.c:1057
+#, fuzzy
+msgid "Edit Menu"
+msgstr "የመነሻ ምናሌ"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../settings/appearance-settings.c:138
+msgid "Button Label|Desktop"
+msgstr ""
+
+#: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
+#: ../settings/backdrop-list-manager.c:628
+msgid "backdrops.list"
+msgstr ""
+
+#: ../settings/appearance-settings.c:574
+msgid "Select backdrop image or list file"
+msgstr ""
+
+#: ../settings/appearance-settings.c:592
+#, fuzzy
+msgid "List Files (*.list)"
+msgstr "/tmp - ጊዜያዊ ፋይሎች"
+
+#: ../settings/appearance-settings.c:688
+msgid "_Edit list..."
+msgstr ""
+
+#: ../settings/appearance-settings.c:696
+#, fuzzy
+msgid "_New list..."
+msgstr "አዲሱን ክፋይ በማስላት ላይ..."
+
+#: ../settings/appearance-settings.c:729
+msgid "S_tyle:"
+msgstr ""
+
+#: ../settings/appearance-settings.c:736
+msgid "Auto"
+msgstr ""
+
+#: ../settings/appearance-settings.c:737
+msgid "Centered"
+msgstr ""
+
+#: ../settings/appearance-settings.c:738
+msgid "Tiled"
+msgstr ""
+
+#: ../settings/appearance-settings.c:739
+msgid "Stretched"
+msgstr ""
+
+#: ../settings/appearance-settings.c:740
+msgid "Scaled"
+msgstr ""
+
+#: ../settings/appearance-settings.c:796
+msgid "A_djust Brightness:"
+msgstr ""
+
+#: ../settings/appearance-settings.c:854
+#, c-format
+msgid "Xfce will be unable to manage your desktop (%s)."
+msgstr ""
+
+#: ../settings/appearance-settings.c:855
+#, fuzzy
+msgid "Unknown Error"
+msgstr "Debootstrap ስህተት"
+
+#: ../settings/appearance-settings.c:859
+#: ../src/xfdesktop-regular-file-icon.c:520
+#: ../src/xfdesktop-regular-file-icon.c:584
+#, fuzzy
+msgid "Error"
+msgstr "ስህተት"
+
+#: ../settings/appearance-settings.c:861
+#, fuzzy
+msgid "Unable to start xfdesktop"
+msgstr "${PACKAGE}ን  መትከል አልተቻለም"
+
+#: ../settings/appearance-settings.c:883
+#, fuzzy
+msgid "Information"
+msgstr "መረጃን በእጅ አስገባ"
+
+#: ../settings/appearance-settings.c:896
+msgid ""
+"To ensure that this setting takes effect the next time you start Xfce, "
+"please be sure to save your session when logging out.  If you are not using "
+"the Xfce Session Manager (xfce4-session), you will need to manually edit "
+"your ~/.config/xfce4/xinitrc file.  Details are available in the "
+"documentation provided on http://xfce.org/."
+msgstr ""
+
+#: ../settings/appearance-settings.c:898
+msgid ""
+"To ensure that Xfce does not manage your desktop the next time you start "
+"Xfce, please be sure to save your session when logging out.  If you are not "
+"using the Xfce Session Manager (xfce4-session), you will need to manually "
+"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
+"documentation provided on http://xfce.org/."
+msgstr ""
+
+#: ../settings/appearance-settings.c:906
+#, fuzzy
+msgid "_Do not show this again"
+msgstr "አውታርን በአሁኑ ጊዜ አታስተካክለው"
+
+#. the dialog
+#: ../settings/appearance-settings.c:972
+msgid "Desktop Preferences"
+msgstr ""
+
+#: ../settings/appearance-settings.c:989
+msgid "Allow _Xfce to manage the desktop"
+msgstr ""
+
+#: ../settings/appearance-settings.c:1030
+msgid "Stretch single backdrop onto _all monitors"
+msgstr ""
+
+#. add the single backdrop settings page to the main notebook
+#: ../settings/appearance-settings.c:1044
+#: ../settings/appearance-settings.c:1226
+msgid "_Appearance"
+msgstr ""
+
+#. color settings frame
+#: ../settings/appearance-settings.c:1070
+msgid "Color"
+msgstr ""
+
+#: ../settings/appearance-settings.c:1084
+msgid "_Color Style:"
+msgstr ""
+
+#: ../settings/appearance-settings.c:1091
+msgid "Solid Color"
+msgstr ""
+
+#: ../settings/appearance-settings.c:1092
+msgid "Horizontal Gradient"
+msgstr ""
+
+#: ../settings/appearance-settings.c:1093
+msgid "Vertical Gradient"
+msgstr ""
+
+#: ../settings/appearance-settings.c:1106
+msgid "Fi_rst Color:"
+msgstr ""
+
+#: ../settings/appearance-settings.c:1127
+msgid "_Second Color:"
+msgstr ""
+
+#: ../settings/appearance-settings.c:1152
+msgid "Image"
+msgstr ""
+
+#: ../settings/appearance-settings.c:1160
+msgid "Show _Image"
+msgstr ""
+
+#: ../settings/appearance-settings.c:1182
+#, fuzzy
+msgid "_File:"
+msgstr "የሚመረመረው ፋይል፦ ${FILE}"
+
+#: ../settings/appearance-settings.c:1237
+#: ../settings/appearance-settings.c:1239
+#, c-format
+msgid "Screen %d"
+msgstr ""
+
+#. and if we have multiple screens, each with multiple monitors
+#: ../settings/appearance-settings.c:1244
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr ""
+
+#: ../settings/appearance-settings.c:1261
+msgid "_Behavior"
+msgstr ""
+
+#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your "
+"changes"
+msgstr ""
+
+#: ../settings/backdrop-list-manager.c:430
+msgid "Select backdrop image file"
+msgstr ""
+
+#: ../settings/backdrop-list-manager.c:531
+msgid "Choose backdrop list filename"
+msgstr ""
+
+#: ../settings/backdrop-list-manager.c:540
+#, fuzzy
+msgid "List Files"
+msgstr "/tmp - ጊዜያዊ ፋይሎች"
+
+#: ../settings/backdrop-list-manager.c:617
+#, fuzzy
+msgid "Image files"
+msgstr "/tmp - ጊዜያዊ ፋይሎች"
+
+#: ../settings/backdrop-list-manager.c:636
+#, fuzzy
+msgid "List file"
+msgstr "የሚመረመረው ፋይል፦ ${FILE}"
+
+#: ../settings/backdrop-list-manager.c:658
+#, fuzzy
+msgid "Create backdrop list"
+msgstr "አዲስ ክፋይ ፍጠር"
+
+#: ../settings/backdrop-list-manager.c:691
+msgid "Edit backdrop list"
+msgstr ""
+
+#: ../settings/behavior-settings.c:241
+msgid "Menus"
+msgstr ""
+
+#: ../settings/behavior-settings.c:249
+msgid "Show _window list on middle click"
+msgstr ""
+
+#: ../settings/behavior-settings.c:260
+msgid "Show _desktop menu on right click"
+msgstr ""
+
+#: ../settings/behavior-settings.c:279
+msgid "Desktop Icons"
+msgstr ""
+
+#: ../settings/behavior-settings.c:288
+#: ../src/xfdesktop-file-properties-dialog.c:138
+#, fuzzy
+msgid "None"
+msgstr "<ምንም>"
+
+#: ../settings/behavior-settings.c:289
+msgid "Minimized application icons"
+msgstr ""
+
+#: ../settings/behavior-settings.c:291
+#, fuzzy
+msgid "File/launcher icons"
+msgstr "የመልቀቂያ ፋይልን በማምጣት ላይ..."
+
+#: ../settings/behavior-settings.c:306
+#, fuzzy
+msgid "_Icon size:"
+msgstr "የተሳሳተ መጠን"
+
+#: ../settings/behavior-settings.c:320
+#, fuzzy
+msgid "Use _system font size"
+msgstr "ያልተረጋገጠ የJFS ስር ፋይል ስርዓትን ልጠቀም?"
+
+#: ../settings/behavior-settings.c:337
+#, fuzzy
+msgid "Custom _font size:"
+msgstr "ከመጠን የበለጠ መጠን"
+
+#: ../src/main.c:255
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr ""
+
+#: ../src/main.c:257
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr ""
+
+#: ../src/main.c:261
+#, fuzzy
+msgid "Build options:\n"
+msgstr "የመጫኛ ምርጫዎች"
+
+#: ../src/main.c:262
+#, fuzzy, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "የመነሻ ምናሌ"
+
+#: ../src/main.c:264 ../src/main.c:271 ../src/main.c:278
+msgid "enabled"
+msgstr ""
+
+#: ../src/main.c:266 ../src/main.c:273 ../src/main.c:280
+msgid "disabled"
+msgstr ""
+
+#: ../src/main.c:269
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr ""
+
+#: ../src/main.c:276
+#, fuzzy, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "የመልቀቂያ ፋይልን በማምጣት ላይ..."
+
+#: ../src/main.c:305
+#, fuzzy, c-format
+msgid "%s: Unknown option: %s\n"
+msgstr "የማይታወቅ በይነገጽ"
+
+#: ../src/main.c:306
+#, fuzzy
+msgid "Options are:\n"
+msgstr "የመጫኛ ምርጫዎች"
+
+#: ../src/main.c:307
+msgid "    --reload      Reload all settings, refresh image list\n"
+msgstr ""
+
+#: ../src/main.c:308
+msgid "    --menu        Pop up the menu (at the current mouse position)\n"
+msgstr ""
+
+#: ../src/main.c:309
+msgid ""
+"    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+
+#: ../src/main.c:310
+msgid "    --quit        Cause xfdesktop to quit\n"
+msgstr ""
+
+#: ../src/main.c:325
+#, fuzzy, c-format
+msgid "%s is not running.\n"
+msgstr "\"update-grub\" በማስኬድ ላይ..."
+
+#: ../src/windowlist.c:220
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr ""
+
+#: ../src/windowlist.c:228
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr ""
+
+#: ../src/windowlist.c:295 ../src/windowlist.c:298
+msgid "_Add Workspace"
+msgstr ""
+
+#: ../src/windowlist.c:306
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr ""
+
+#: ../src/windowlist.c:309
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr ""
+
+#: ../src/xfce-desktop.c:573
+msgid "Desktop"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:386
+#, c-format
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:388
+#: ../src/xfdesktop-file-icon-manager.c:399
+#: ../src/xfdesktop-file-icon-manager.c:1094
+#, fuzzy
+msgid "Create Folder Failed"
+msgstr "የፋይል ስርዓትን መፍጠር አልተቻለም"
+
+#: ../src/xfdesktop-file-icon-manager.c:397
+#, c-format
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:401
+msgid "Please delete or rename the file."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:538
+#, c-format
+msgid "Rename \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:545
+#: ../src/xfdesktop-file-icon-manager.c:1166
+#: ../src/xfdesktop-file-icon-manager.c:1257
+#: ../src/xfdesktop-file-icon-manager.c:1268
+#, fuzzy
+msgid "Enter the new name:"
+msgstr "የአዲሱ ተጠቃሚ ሙሉ ስም፦"
+
+#: ../src/xfdesktop-file-icon-manager.c:547
+msgid "Rename"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:584
+#, fuzzy, c-format
+msgid "Are you sure that you want to delete \"%s\"?"
+msgstr "አሁን ለመውጣት እንደሚፈልጉ እርግጠኛ ነዎት?"
+
+#: ../src/xfdesktop-file-icon-manager.c:589
+#: ../src/xfdesktop-file-icon-manager.c:609
+msgid "If you delete a file, it is permanently lost."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:603
+#, c-format
+msgid "Are you sure you want to delete the following %d files?"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:606
+#, fuzzy
+msgid "Delete Multiple Files"
+msgstr "/tmp - ጊዜያዊ ፋይሎች"
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:823
+#: ../src/xfdesktop-file-icon-manager.c:1528 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-utils.c:352
+#, fuzzy, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "${PACKAGE}ን  መትከል አልተቻለም"
+
+#: ../src/xfdesktop-file-icon-manager.c:825
+#: ../src/xfdesktop-file-icon-manager.c:865
+#: ../src/xfdesktop-file-icon-manager.c:1128
+#: ../src/xfdesktop-file-icon-manager.c:1530 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-utils.c:355
+#, fuzzy
+msgid "Launch Error"
+msgstr "Debootstrap ስህተት"
+
+#: ../src/xfdesktop-file-icon-manager.c:866
+msgid "The application chooser could not be opened."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1027
+#, fuzzy, c-format
+msgid "_Open With \"%s\""
+msgstr "ካዝናውን ምክፈል ይቀጥል?"
+
+#: ../src/xfdesktop-file-icon-manager.c:1030
+#, fuzzy, c-format
+msgid "Open With \"%s\""
+msgstr "ካዝናውን ምክፈል ይቀጥል?"
+
+#: ../src/xfdesktop-file-icon-manager.c:1091
+#, c-format
+msgid "Unable to create folder named \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1130
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1163
+#, fuzzy
+msgid "Create New Folder"
+msgstr "አዲስ ክፋይ ፍጠር"
+
+#: ../src/xfdesktop-file-icon-manager.c:1167
+#, fuzzy
+msgid "New Folder"
+msgstr "አዲሱን ክፋይ በማስላት ላይ..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1168
+#: ../src/xfdesktop-file-icon-manager.c:1259
+#: ../src/xfdesktop-file-icon-manager.c:1270
+#, fuzzy
+msgid "Create"
+msgstr "አዲስ ክፋይ ፍጠር"
+
+#: ../src/xfdesktop-file-icon-manager.c:1204
+#, fuzzy, c-format
+msgid "Unable to create file named \"%s\":"
+msgstr "የፋይል ስርዓትን መፍጠር አልተቻለም"
+
+#: ../src/xfdesktop-file-icon-manager.c:1207
+#, fuzzy
+msgid "Create File Failed"
+msgstr "የፋይል ስርዓትን መፍጠር አልተቻለም"
+
+#: ../src/xfdesktop-file-icon-manager.c:1246
+#, c-format
+msgid "Create Document from template \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1265
+#, fuzzy
+msgid "Create Empty File"
+msgstr "%s ፋይል ሥርዓትን ፍጠር"
+
+#: ../src/xfdesktop-file-icon-manager.c:1269
+#, fuzzy
+msgid "New Empty File"
+msgstr "የአዲሱ ክፋይ ፋይል ስርዓት፦"
+
+#: ../src/xfdesktop-file-icon-manager.c:1302
+#, fuzzy, c-format
+msgid "Unable to create file \"%s\":"
+msgstr "የፋይል ስርዓትን መፍጠር አልተቻለም"
+
+#: ../src/xfdesktop-file-icon-manager.c:1303
+#, fuzzy
+msgid "Create Error"
+msgstr "Debootstrap ስህተት"
+
+#: ../src/xfdesktop-file-icon-manager.c:1587
+msgid "_Open all"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1617
+#, fuzzy
+msgid "_Execute"
+msgstr "ሰሌዳ አስነሳ"
+
+#: ../src/xfdesktop-file-icon-manager.c:1634
+msgid "_Edit Launcher"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1674
+#, fuzzy
+msgid "Open With"
+msgstr "ካዝናውን ምክፈል ይቀጥል?"
+
+#: ../src/xfdesktop-file-icon-manager.c:1705
+msgid "Open With Other _Application..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1804
+msgid "_Rename..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1820
+#: ../src/xfdesktop-volume-icon.c:593
+msgid "_Properties..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1837
+msgid "Des_ktop"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1856
+#, fuzzy
+msgid "Create _Launcher..."
+msgstr "አዲስ ክፋይ ፍጠር"
+
+#: ../src/xfdesktop-file-icon-manager.c:1877
+#, fuzzy
+msgid "Create _URL Link..."
+msgstr "አዲስ ክፋይ ፍጠር"
+
+#: ../src/xfdesktop-file-icon-manager.c:1894
+#, fuzzy
+msgid "Create _Folder..."
+msgstr "አዲስ ክፋይ ፍጠር"
+
+#: ../src/xfdesktop-file-icon-manager.c:1936
+#, fuzzy
+msgid "_Empty File"
+msgstr "የሚመረመረው ፋይል፦ ${FILE}"
+
+#: ../src/xfdesktop-file-icon-manager.c:1977
+#, fuzzy
+msgid "Desktop _Settings..."
+msgstr "ክፋይ ስየማዎች፦"
+
+#: ../src/xfdesktop-file-icon-manager.c:1986
+msgid "_Desktop Properties..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:3158
+#: ../src/xfdesktop-regular-file-icon.c:382
+#, fuzzy, c-format
+msgid "Failed to run \"%s\":"
+msgstr "preseeded ትዕዛዞችን መጫን አልተቻለም"
+
+#: ../src/xfdesktop-file-icon-manager.c:3160
+#: ../src/xfdesktop-regular-file-icon.c:384
+#, fuzzy
+msgid "Run Error"
+msgstr "Debootstrap ስህተት"
+
+#: ../src/xfdesktop-file-icon.c:146
+msgid "The associated application could not be found or executed."
+msgstr ""
+
+#: ../src/xfdesktop-file-properties-dialog.c:103
+#, c-format
+msgid "Unable to set default application for \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-properties-dialog.c:106
+#, fuzzy
+msgid "Properties Error"
+msgstr "Debootstrap ስህተት"
+
+#: ../src/xfdesktop-file-properties-dialog.c:138
+#, fuzzy
+msgid "Write only"
+msgstr "CTC መጻፍ የሚቻልበት አካል፦"
+
+#: ../src/xfdesktop-file-properties-dialog.c:138
+#, fuzzy
+msgid "Read only"
+msgstr "CTC ማንበብ የሚቻልበት አካል፦"
+
+#: ../src/xfdesktop-file-properties-dialog.c:138
+#, fuzzy
+msgid "Read & Write"
+msgstr "CTC መጻፍ የሚቻልበት አካል፦"
+
+#: ../src/xfdesktop-file-properties-dialog.c:163
+msgid "General"
+msgstr ""
+
+#: ../src/xfdesktop-file-properties-dialog.c:214
+msgid "Kind:"
+msgstr ""
+
+#: ../src/xfdesktop-file-properties-dialog.c:234
+#, fuzzy
+msgid "Link Target:"
+msgstr "ሊሎን ለመትከል የታቀደበት"
+
+#: ../src/xfdesktop-file-properties-dialog.c:251
+#: ../src/xfdesktop-file-properties-dialog.c:410
+#, fuzzy
+msgid "(unknown)"
+msgstr "የማይታወቅ በይነገጽ"
+
+#: ../src/xfdesktop-file-properties-dialog.c:273
+#, fuzzy
+msgid "Open With:"
+msgstr "ካዝናውን ምክፈል ይቀጥል?"
+
+#: ../src/xfdesktop-file-properties-dialog.c:350
+msgid "Modified:"
+msgstr ""
+
+#: ../src/xfdesktop-file-properties-dialog.c:368
+msgid "Accessed:"
+msgstr ""
+
+#: ../src/xfdesktop-file-properties-dialog.c:395
+#, fuzzy
+msgid "Free Space:"
+msgstr "ባዶ ቦታ"
+
+#: ../src/xfdesktop-file-properties-dialog.c:397
+#, fuzzy
+msgid "Size:"
+msgstr "የተሳሳተ መጠን"
+
+#: ../src/xfdesktop-file-properties-dialog.c:413
+#: ../src/xfdesktop-regular-file-icon.c:486
+#: ../src/xfdesktop-special-file-icon.c:487 ../src/xfdesktop-volume-icon.c:460
+msgid "%s (%"
+msgstr ""
+
+#. permissions tab
+#: ../src/xfdesktop-file-properties-dialog.c:428
+msgid "Permissions"
+msgstr ""
+
+#: ../src/xfdesktop-file-properties-dialog.c:450
+msgid "Owner:"
+msgstr ""
+
+#: ../src/xfdesktop-file-properties-dialog.c:472
+#: ../src/xfdesktop-file-properties-dialog.c:510
+msgid "Access:"
+msgstr ""
+
+#: ../src/xfdesktop-file-properties-dialog.c:495
+#, fuzzy
+msgid "Group:"
+msgstr "የይዘት ግሩፕ፦"
+
+#: ../src/xfdesktop-file-properties-dialog.c:533
+msgid "Others:"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:74
+#, fuzzy
+msgid "Yes to _all"
+msgstr "የሚጫኑ ክፍሎች፦"
+
+#: ../src/xfdesktop-file-utils.c:106
+#, c-format
+msgid "There was an error moving \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:109
+#, c-format
+msgid "There was an error copying \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:112
+#, c-format
+msgid "There was an error linking \"%s\" to \"%s\":"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:121
+#, fuzzy
+msgid "File Error"
+msgstr "የመልቀቂያ ፋይልን የማንበብ ስህተት"
+
+#: ../src/xfdesktop-file-utils.c:137
+msgid "broken link"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:141
+#, fuzzy, c-format
+msgid "link to %s"
+msgstr "ከቦይ-ቦይ"
+
+#: ../src/xfdesktop-regular-file-icon.c:489
+#: ../src/xfdesktop-special-file-icon.c:490 ../src/xfdesktop-volume-icon.c:463
+#, c-format
+msgid ""
+"Kind: %s\n"
+"Modified:%s\n"
+"Size: %s"
+msgstr ""
+
+#: ../src/xfdesktop-regular-file-icon.c:581
+#, fuzzy, c-format
+msgid "Failed to rename \"%s\" to \"%s\":"
+msgstr "ፍሎፒ ዲስክ መጫን አልተቻለም"
+
+#: ../src/xfdesktop-special-file-icon.c:258
+#, fuzzy
+msgid "Home"
+msgstr "የ /home ክፋይ ይለይ፦"
+
+#: ../src/xfdesktop-special-file-icon.c:508
+#, fuzzy
+msgid "Trash Error"
+msgstr "Debootstrap ስህተት"
+
+#: ../src/xfdesktop-special-file-icon.c:510
+msgid "Unable to contact the Xfce Trash service."
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:511
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:635
+#, fuzzy
+msgid "_Empty Trash"
+msgstr "ባዶ የሚስጢር ቃል"
+
+#: ../src/xfdesktop-volume-icon.c:491
+#, fuzzy, c-format
+msgid "Unable to mount \"%s\":"
+msgstr "ፍሎፒ ዲስክ መጫን አልተቻለም"
+
+#: ../src/xfdesktop-volume-icon.c:492
+#, fuzzy, c-format
+msgid "Unable to unmount \"%s\":"
+msgstr "ክፋዮችን ማውረድ አልተቻለም"
+
+#: ../src/xfdesktop-volume-icon.c:495
+#, fuzzy
+msgid "Mount Failed"
+msgstr "መጫን አልተቻለም"
+
+#: ../src/xfdesktop-volume-icon.c:495
+#, fuzzy
+msgid "Unmount Failed"
+msgstr "ክፋዮችን ማውረድ አልተቻለም"
+
+#: ../src/xfdesktop-volume-icon.c:513
+#, fuzzy, c-format
+msgid "Unable to eject \"%s\":"
+msgstr "${PACKAGE}ን  መትከል አልተቻለም"
+
+#: ../src/xfdesktop-volume-icon.c:516
+#, fuzzy
+msgid "Eject Failed"
+msgstr "መጫን አልተቻለም"
+
+#: ../src/xfdesktop-volume-icon.c:554
+#, fuzzy
+msgid "_Mount Volume"
+msgstr "የተመሰጠረ ይዘት (%s)"
+
+#: ../src/xfdesktop-volume-icon.c:565
+#, fuzzy
+msgid "_Unmount Volume"
+msgstr "የተመሰጠረ ይዘት (%s)"
+
+#: ../src/xfdesktop-volume-icon.c:579
+#, fuzzy
+msgid "E_ject Volume"
+msgstr "የተመሰጠረ ይዘት (%s)"
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:1
+msgid "Graphical tool for editing the Xfce 4 menu"
+msgstr ""
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:2
+#, fuzzy
+msgid "Menu Editor"
+msgstr "የመነሻ ምናሌ"
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:3
+#, fuzzy
+msgid "Xfce 4 Menu Editor"
+msgstr "ይህንን ምናሌ አጥፋ"
+
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+msgid "Shows a menu containing categories of installed applications"
+msgstr ""
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+#, fuzzy
+msgid "Desktop Settings"
+msgstr "ክፋይ ስየማዎች፦"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Settings for the Xfce 4 Desktop Manager"
+msgstr ""
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:3
+#, fuzzy
+msgid "Xfce 4 Desktop Settings"
+msgstr "የአውታር ምርጫዎችን በማስቀመጥ ላይ"
