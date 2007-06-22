@@ -85,7 +85,8 @@ activate_window(GtkWidget *w, gpointer user_data)
 {
     NetkWindow *netk_window = user_data;
     
-    netk_workspace_activate(netk_window_get_workspace(netk_window));
+    if(!netk_window_is_sticky(netk_window))
+        netk_workspace_activate(netk_window_get_workspace(netk_window));
     netk_window_activate(netk_window);
 }
 
@@ -266,7 +267,10 @@ windowlist_create(GdkScreen *gscreen)
             mi = menu_item_from_netk_window(netk_window, w, h);
             if(!mi)
                 continue;
-            if(netk_workspace != active_workspace) {
+            if(netk_workspace != active_workspace 
+                    && (!netk_window_is_sticky(netk_window)
+                        || netk_workspace != active_workspace))
+            {
                 GtkWidget *lbl = gtk_bin_get_child(GTK_BIN(mi));
                 gtk_widget_modify_fg(lbl, GTK_STATE_NORMAL,
                         &(style->fg[GTK_STATE_INSENSITIVE]));
