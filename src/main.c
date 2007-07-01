@@ -161,7 +161,7 @@ button_cb(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
 	{
 		popup_windowlist(gscreen, button, evt->time);
 	} else if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK)))
-		popup_desktop_menu(gscreen, button, evt->time);
+		popup_desktop_menu(gscreen, 0, evt->time);
     else {
         /* forward unused events to the root window, i.e. the window manager */
         event_forward_to_rootwin(gtk_widget_get_screen(w), (GdkEvent*)evt);
