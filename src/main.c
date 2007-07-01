@@ -182,7 +182,7 @@ button_cb(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
             popup_windowlist(gscreen, button, evt->time);
             return TRUE;
         } else if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK))) {
-            popup_desktop_menu(gscreen, button, evt->time);
+            popup_desktop_menu(gscreen, 0, evt->time);
             return TRUE;
         }
     }
