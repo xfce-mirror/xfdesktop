@@ -4,6 +4,8 @@
 - Fixed the Italian xfdesktop menu causing a crash.
 - Fix missing xfce_rc_close() causing memleak and too many open file
   descriptors (bug 3065)
+- Always use button 0 in gtk_menu_popup() as GTK+ 2.11+ expects the 
+  same button to be pressed or it doesn't activate the entry (Bug #3359)
 
 4.4.1
 =====
