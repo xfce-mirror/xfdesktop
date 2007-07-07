@@ -65,9 +65,9 @@
 #define DEFAULT_BUTTON_ICON  DATADIR "/pixmaps/xfce4_xicon1.png"
 #define DEFAULT_BUTTON_TITLE "Xfce Menu"
 
-#ifndef CHECK_RUNNING_PLUGIN
-#define CHECK_RUNNING_PLUGIN 0
-#endif
+/* this'll only allow one copy of the plugin; useful for forcing the
+ * xfce4-popup-menu keybind to work with only one plugin */
+/* #define CHECK_RUNNING_PLUGIN */
 
 typedef struct _DMPlugin {
     XfcePanelPlugin *plugin;
@@ -936,10 +936,20 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
     gtk_widget_show(dlg);
 }
 
-#if CHECK_RUNNING_PLUGIN
-static gboolean 
-desktop_menu_plugin_check (GdkScreen *gscreen)
+#ifdef XFCE_PANEL_PLUGIN_REGISTER_EXTERNAL_FULL
+static gboolean
+desktop_menu_plugin_preinit(int argc,
+                            char **argv)
 {
+    g_thread_init(NULL);
+    return TRUE;
+}
+#endif
+
+static gboolean 
+desktop_menu_plugin_check(GdkScreen *gscreen)
+{
+#ifdef CHECK_RUNNING_PLUGIN
     gchar selection_name[32];
     Atom selection_atom;
     
@@ -950,13 +960,13 @@ desktop_menu_plugin_check (GdkScreen *gscreen)
     selection_atom = XInternAtom(GDK_DISPLAY(), selection_name, False);
 
     if(XGetSelectionOwner(GDK_DISPLAY(), selection_atom)) {
-        xfce_info (_("There is already a panel menu registered for this screen"));
+        xfce_info(_("There is already a panel menu registered for this screen"));
         return FALSE;
     }
+#endif
 
     return TRUE;
 }
-#endif
 
 static gboolean
 dmp_set_selection(DMPlugin *dmp)
@@ -1085,9 +1095,11 @@ desktop_menu_plugin_construct(XfcePanelPlugin *plugin)
     dmp_set_size(plugin, xfce_panel_plugin_get_size(plugin), dmp);
 }
 
-#if CHECK_RUNNING_PLUGIN
-XFCE_PANEL_PLUGIN_REGISTER_EXTERNAL_WITH_CHECK (desktop_menu_plugin_construct,
-                                                desktop_menu_plugin_check)
+#ifdef XFCE_PANEL_PLUGIN_REGISTER_EXTERNAL_FULL
+XFCE_PANEL_PLUGIN_REGISTER_EXTERNAL_FULL(desktop_menu_plugin_construct,
+                                         desktop_menu_plugin_preinit,
+                                         desktop_menu_plugin_check)
 #else
-XFCE_PANEL_PLUGIN_REGISTER_EXTERNAL(desktop_menu_plugin_construct)
+XFCE_PANEL_PLUGIN_REGISTER_EXTERNAL_WITH_CHECK(desktop_menu_plugin_construct,
+                                               desktop_menu_plugin_check)
 #endif
