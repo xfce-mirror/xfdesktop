@@ -162,8 +162,8 @@ XDT_CHECK_OPTIONAL_PACKAGE([LIBEXO], [exo-0.3], [exo_minimum_version], [exo],
 
 
 AC_ARG_ENABLE([menu-editor],
-        AC_HELP_STRING([--disable-menueditor],
-                [Do not build the menueditor (default=enabled)]),
+        AC_HELP_STRING([--disable-menu-editor],
+                [Do not build the menu editor (default=enabled)]),
         [ac_cv_enable_menueditor=$enableval],
         [ac_cv_enable_menueditor=yes])
 if test "x$ac_cv_enable_menueditor" = "xno"; then
