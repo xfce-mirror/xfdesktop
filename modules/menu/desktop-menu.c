@@ -162,6 +162,8 @@ desktop_menu_monitors_create(XfceDesktopMenu *desktop_menu,
                             GHashTable *watch_dirs)
 {
 #ifdef HAVE_THUNAR_VFS
+    thunar_vfs_init();
+    
     if(desktop_menu->monitors) {
         g_warning("Attempt to create new monitors without destroying the old.");
         desktop_menu_monitors_destroy(desktop_menu);
