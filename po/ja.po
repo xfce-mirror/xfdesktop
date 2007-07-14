@@ -8,10 +8,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.4.0\n"
+"Project-Id-Version: xfdesktop 4.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-08 19:03+0900\n"
-"PO-Revision-Date: 2007-04-08 18:59+0900\n"
+"POT-Creation-Date: 2007-07-10 20:56+0900\n"
+"PO-Revision-Date: 2007-07-10 21:02+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -108,7 +108,7 @@ msgstr "アイコンを選択してください"
 #: ../menueditor/menueditor-edit-dialog.c:235
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:604
+#: ../panel-plugin/desktop-menu-plugin.c:606
 #: ../settings/appearance-settings.c:579
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
@@ -117,7 +117,7 @@ msgstr "全てのファイル"
 
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
-#: ../panel-plugin/desktop-menu-plugin.c:610
+#: ../panel-plugin/desktop-menu-plugin.c:612
 #: ../settings/appearance-settings.c:583
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
@@ -194,7 +194,7 @@ msgstr "外部メニューを選択してください"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:618
+#: ../panel-plugin/desktop-menu-plugin.c:620
 msgid "Menu Files"
 msgstr "メニューファイル"
 
@@ -233,6 +233,28 @@ msgstr "外部メニュー項目の編集"
 #: ../menueditor/menueditor-main.c:43
 msgid "Xfce4-MenuEditor"
 msgstr "Xfce 4 メニューエディター"
+
+#: ../menueditor/menueditor-main.c:57
+msgid "Menueditor Warning"
+msgstr "メニューエディターの警告"
+
+#: ../menueditor/menueditor-main.c:59
+msgid "xfce4-menueditor is deprecated"
+msgstr "xfce4-menueditor は廃止されます"
+
+#: ../menueditor/menueditor-main.c:60
+msgid ""
+"Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
+"edit the new menu file format.  You may continue and edit an old-style menu "
+"file, or quit."
+msgstr ""
+"Xfceのメニューシステムは置き換えられており、xfce4-menueditorでは新しいメ"
+"ニューファイルの形式を編集することができません。以前のスタイルのメニューファ"
+"イルを編集するか、xfce4-menueditorを終了してください。"
+
+#: ../menueditor/menueditor-main.c:61
+msgid "Continue"
+msgstr "続行"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -489,71 +511,71 @@ msgstr "変更を破棄する"
 msgid "Unable to open the menu file %s in write mode"
 msgstr "メニューファイル「%s」を書き込みモードで開けません"
 
-#: ../panel-plugin/desktop-menu-plugin.c:587
+#: ../panel-plugin/desktop-menu-plugin.c:589
 msgid "Select Icon"
 msgstr "アイコンを選択してください"
 
-#: ../panel-plugin/desktop-menu-plugin.c:589
+#: ../panel-plugin/desktop-menu-plugin.c:591
 msgid "Select Menu File"
 msgstr "メニューファイルを選択してください"
 
-#: ../panel-plugin/desktop-menu-plugin.c:746
+#: ../panel-plugin/desktop-menu-plugin.c:748
 #: ../settings/behavior-settings.c:275
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor を実行できません: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:769
+#: ../panel-plugin/desktop-menu-plugin.c:771
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce メニュー"
 
-#: ../panel-plugin/desktop-menu-plugin.c:781
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Button"
 msgstr "ボタン"
 
-#: ../panel-plugin/desktop-menu-plugin.c:794
+#: ../panel-plugin/desktop-menu-plugin.c:796
 msgid "Button _title:"
 msgstr "ボタンタイトル(_T):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:807
+#: ../panel-plugin/desktop-menu-plugin.c:809
 msgid "_Show title in button"
 msgstr "ボタンにタイトルを表示する(_S)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:814
+#: ../panel-plugin/desktop-menu-plugin.c:816
 msgid "Menu File"
 msgstr "メニューファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:826
+#: ../panel-plugin/desktop-menu-plugin.c:828
 msgid "Use default _desktop menu file"
 msgstr "標準のデスクトップメニューを使用する(_D)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:835
+#: ../panel-plugin/desktop-menu-plugin.c:837
 msgid "Use _custom menu file:"
 msgstr "指定したメニューファイルを使用する(_C):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:886
+#: ../panel-plugin/desktop-menu-plugin.c:888
 #: ../settings/behavior-settings.c:369
 msgid "_Edit Menu"
 msgstr "メニューの編集(_E)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:892
+#: ../panel-plugin/desktop-menu-plugin.c:894
 msgid "Icons"
 msgstr "アイコン"
 
-#: ../panel-plugin/desktop-menu-plugin.c:904
+#: ../panel-plugin/desktop-menu-plugin.c:906
 msgid "_Button icon:"
 msgstr "ボタンアイコン(_B):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:928
+#: ../panel-plugin/desktop-menu-plugin.c:930
 msgid "Show _icons in menu"
 msgstr "メニューでアイコンを表示する(_I):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:951
+#: ../panel-plugin/desktop-menu-plugin.c:963
 msgid "There is already a panel menu registered for this screen"
 msgstr "この画面には既にパネルメニューが登録されています"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1063
+#: ../panel-plugin/desktop-menu-plugin.c:1075
 msgid "Edit Menu"
 msgstr "メニューの編集"
 
@@ -608,34 +630,38 @@ msgstr "伸縮あり"
 msgid "Scaled"
 msgstr "拡大縮小"
 
-#: ../settings/appearance-settings.c:796
+#: ../settings/appearance-settings.c:741
+msgid "Zoomed"
+msgstr "拡大"
+
+#: ../settings/appearance-settings.c:797
 msgid "A_djust Brightness:"
 msgstr "明度の調節(_D):"
 
-#: ../settings/appearance-settings.c:854
+#: ../settings/appearance-settings.c:855
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce はあなたのデスクトップ (%s) を管理できません。"
 
-#: ../settings/appearance-settings.c:855
+#: ../settings/appearance-settings.c:856
 msgid "Unknown Error"
 msgstr "不明なエラー"
 
-#: ../settings/appearance-settings.c:859
+#: ../settings/appearance-settings.c:860
 #: ../src/xfdesktop-regular-file-icon.c:520
 #: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr "エラー"
 
-#: ../settings/appearance-settings.c:861
+#: ../settings/appearance-settings.c:862
 msgid "Unable to start xfdesktop"
 msgstr "xfdesktop を起動できません"
 
-#: ../settings/appearance-settings.c:883
+#: ../settings/appearance-settings.c:884
 msgid "Information"
 msgstr "情報"
 
-#: ../settings/appearance-settings.c:896
+#: ../settings/appearance-settings.c:897
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -649,7 +675,7 @@ msgstr ""
 "ルを自分で編集する必要があります。詳細は http://xfce.org/ にある文書でご確認"
 "ください。"
 
-#: ../settings/appearance-settings.c:898
+#: ../settings/appearance-settings.c:899
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -663,83 +689,83 @@ msgstr ""
 "ルを自分で編集する必要があります。詳細は http://xfce.org/ にある文書でご確認"
 "ください。"
 
-#: ../settings/appearance-settings.c:906
+#: ../settings/appearance-settings.c:907
 msgid "_Do not show this again"
 msgstr "二度と表示しない(_D)"
 
 #. the dialog
-#: ../settings/appearance-settings.c:972
+#: ../settings/appearance-settings.c:973
 msgid "Desktop Preferences"
 msgstr "デスクトップ環境設定"
 
-#: ../settings/appearance-settings.c:989
+#: ../settings/appearance-settings.c:990
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Xfce にデスクトップを管理させる(_X)"
 
-#: ../settings/appearance-settings.c:1030
+#: ../settings/appearance-settings.c:1031
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "一枚の背景を全てのモニターに伸ばす(_A)"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:1044
-#: ../settings/appearance-settings.c:1226
+#: ../settings/appearance-settings.c:1045
+#: ../settings/appearance-settings.c:1227
 msgid "_Appearance"
 msgstr "外観(_A)"
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1070
+#: ../settings/appearance-settings.c:1071
 msgid "Color"
 msgstr "配色"
 
-#: ../settings/appearance-settings.c:1084
+#: ../settings/appearance-settings.c:1085
 msgid "_Color Style:"
 msgstr "配色のスタイル(_C):"
 
-#: ../settings/appearance-settings.c:1091
+#: ../settings/appearance-settings.c:1092
 msgid "Solid Color"
 msgstr "単色"
 
-#: ../settings/appearance-settings.c:1092
+#: ../settings/appearance-settings.c:1093
 msgid "Horizontal Gradient"
 msgstr "水平グラデーション"
 
-#: ../settings/appearance-settings.c:1093
+#: ../settings/appearance-settings.c:1094
 msgid "Vertical Gradient"
 msgstr "垂直グラデーション"
 
-#: ../settings/appearance-settings.c:1106
+#: ../settings/appearance-settings.c:1107
 msgid "Fi_rst Color:"
 msgstr "最初の色(_R):"
 
-#: ../settings/appearance-settings.c:1127
+#: ../settings/appearance-settings.c:1128
 msgid "_Second Color:"
 msgstr "二番目の色(_S):"
 
-#: ../settings/appearance-settings.c:1152
+#: ../settings/appearance-settings.c:1153
 msgid "Image"
 msgstr "画像"
 
-#: ../settings/appearance-settings.c:1160
+#: ../settings/appearance-settings.c:1161
 msgid "Show _Image"
 msgstr "画像を表示する(_I)"
 
-#: ../settings/appearance-settings.c:1182
+#: ../settings/appearance-settings.c:1183
 msgid "_File:"
 msgstr "ファイル(_F):"
 
-#: ../settings/appearance-settings.c:1237
-#: ../settings/appearance-settings.c:1239
+#: ../settings/appearance-settings.c:1238
+#: ../settings/appearance-settings.c:1240
 #, c-format
 msgid "Screen %d"
 msgstr "画面 %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1244
+#: ../settings/appearance-settings.c:1245
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "画面 %d, モニター %d"
 
-#: ../settings/appearance-settings.c:1261
+#: ../settings/appearance-settings.c:1262
 msgid "_Behavior"
 msgstr "振る舞い(_B)"
 
@@ -837,100 +863,100 @@ msgstr "システムのフォントサイズを使用する(_S)"
 msgid "Custom _font size:"
 msgstr "指定フォントサイズを使用する(_F):"
 
-#: ../src/main.c:261
+#: ../src/main.c:262
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s バージョン %s, Xfce %s で実行されています。\n"
 
-#: ../src/main.c:263
+#: ../src/main.c:264
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Gtk+ %d.%d.%d でビルド、Gtk+ %d.%d.%d で実行しています。"
 
-#: ../src/main.c:267
+#: ../src/main.c:268
 msgid "Build options:\n"
 msgstr "ビルドオプション:\n"
 
-#: ../src/main.c:268
+#: ../src/main.c:269
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    メニュー:            %s\n"
 
-#: ../src/main.c:270 ../src/main.c:277 ../src/main.c:284
+#: ../src/main.c:271 ../src/main.c:278 ../src/main.c:285
 msgid "enabled"
 msgstr "有効"
 
-#: ../src/main.c:272 ../src/main.c:279 ../src/main.c:286
+#: ../src/main.c:273 ../src/main.c:280 ../src/main.c:287
 msgid "disabled"
 msgstr "無効"
 
-#: ../src/main.c:275
+#: ../src/main.c:276
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    アイコン:            %s\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:283
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    ファイルアイコン:    %s\n"
 
-#: ../src/main.c:311
+#: ../src/main.c:312
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: 不明なオプション: %s\n"
 
-#: ../src/main.c:312
+#: ../src/main.c:313
 msgid "Options are:\n"
 msgstr "オプションは:\n"
 
-#: ../src/main.c:313
+#: ../src/main.c:314
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    --reload      全ての設定を再読込みして画像リストを更新します\n"
 
-#: ../src/main.c:314
+#: ../src/main.c:315
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu        現在のマウス位置でメニューをポップアップします\n"
 
-#: ../src/main.c:315
+#: ../src/main.c:316
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    --windowlist  現在のマウス位置でウィンドウリストをポップアップします\n"
 
-#: ../src/main.c:316
+#: ../src/main.c:317
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    --quit        xfdesktop を終了させます\n"
 
-#: ../src/main.c:331
+#: ../src/main.c:332
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s は実行されていません。\n"
 
-#: ../src/windowlist.c:227
+#: ../src/windowlist.c:228
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>ワークスペース %d</b>"
 
-#: ../src/windowlist.c:236
+#: ../src/windowlist.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "ワークスペース %d"
 
-#: ../src/windowlist.c:238
+#: ../src/windowlist.c:239
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>ワークスペース %d</i>"
 
-#: ../src/windowlist.c:332 ../src/windowlist.c:335
+#: ../src/windowlist.c:336 ../src/windowlist.c:339
 msgid "_Add Workspace"
 msgstr "ワークスペースを追加(_A)"
 
-#: ../src/windowlist.c:343
+#: ../src/windowlist.c:347
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "ワークスペース %d を削除(_R)"
 
-#: ../src/windowlist.c:346
+#: ../src/windowlist.c:350
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース「%s」を削除(_R)"
