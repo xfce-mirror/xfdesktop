@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-04 05:11-0800\n"
-"PO-Revision-Date: 2007-06-29 22:35+0100\n"
+"PO-Revision-Date: 2007-09-03 17:28+0100\n"
 "Last-Translator: Maximilian Schleiss <maximilian@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -131,7 +131,7 @@ msgstr "Usar _notificação de arranque"
 #: ../menueditor/menueditor-add-dialog.c:288
 #: ../menueditor/menueditor-edit-dialog.c:266
 msgid "Run in _terminal"
-msgstr "Correr num _terminal"
+msgstr "Correr no _terminal"
 
 #: ../menueditor/menueditor-add-dialog.c:427
 #: ../menueditor/menueditor-edit-dialog.c:286
@@ -187,7 +187,7 @@ msgstr "Fonte:"
 #: ../menueditor/menueditor-add-external-dialog.c:137
 #: ../menueditor/menueditor-edit-external-dialog.c:117
 msgid "Select external menu"
-msgstr "Seleccione um menu externo"
+msgstr "Seleccionar um menu externo"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
@@ -217,7 +217,7 @@ msgstr "Multinivelado"
 #: ../menueditor/menueditor-add-external-dialog.c:171
 #: ../menueditor/menueditor-edit-external-dialog.c:151
 msgid "_Unique entries only"
-msgstr "Apenas entradas _únicas"
+msgstr "Apenas _entradas únicas"
 
 #: ../menueditor/menueditor-edit-dialog.c:127
 msgid "Edit menu entry"
@@ -332,7 +332,7 @@ msgstr "Remover entrada"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "_Up"
-msgstr "_Cima"
+msgstr "_Acima"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "Move entry up"
@@ -340,7 +340,7 @@ msgstr "Deslocar a entrada para cima"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "_Down"
-msgstr "_Baixo"
+msgstr "A_baixo"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "Move entry down"
@@ -360,11 +360,11 @@ msgstr "Mostrar informação sobre xfce4-menueditor"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all"
-msgstr "Fechar tudo"
+msgstr "Comprimir tudo"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all menu entries"
-msgstr "Fechar todas as entradas de menu"
+msgstr "Comprimir todas as entradas de menu"
 
 #: ../menueditor/menueditor-main-window.c:161
 msgid "Expand all"
@@ -418,7 +418,7 @@ msgstr "Abrir ficheiro de menu"
 
 #: ../menueditor/menueditor-main-window.c:532
 msgid "Do you want to save before opening the default menu ?"
-msgstr "Deseja gravar antes de abrir o menu por omissão?"
+msgstr "Deseja gravar antes de abrir o menu padrão ?"
 
 #: ../menueditor/menueditor-main-window.c:592
 msgid "Save menu file as"
@@ -427,7 +427,7 @@ msgstr "Gravar ficheiro de menu como"
 #: ../menueditor/menueditor-main-window.c:630
 #: ../menueditor/menueditor-main-window.c:1341
 msgid "Do you want to save before closing the menu ?"
-msgstr "Deseja gravar antes de fechar o menu?"
+msgstr "Deseja gravar antes de fechar o menu ?"
 
 #: ../menueditor/menueditor-main-window.c:856
 #: ../menueditor/menueditor-main-window.c:986
@@ -476,7 +476,7 @@ msgstr "Designer de ícones"
 
 #: ../menueditor/menueditor-main-window.c:1343
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Foram feitas alterações ao menu, deseja gravar antes de sair?"
+msgstr "Foram feitas alterações ao menu, deseja gravar antes de sair ?"
 
 #: ../menueditor/menueditor-main-window.c:1345
 msgid "Forget modifications"
@@ -524,7 +524,7 @@ msgstr "Seleccionar Ficheiro de Menu"
 #: ../settings/behavior-settings.c:217
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "Náo foi possível abrir o xfce4-menueditor: %s"
+msgstr "Não foi possível abrir o xfce4-menueditor: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:777
 msgid "Button"
@@ -548,7 +548,7 @@ msgstr "Usar ficheiro padrão de menu para o _ambiente de trabalho"
 
 #: ../panel-plugin/desktop-menu-plugin.c:831
 msgid "Use _custom menu file:"
-msgstr "Usar ficheiro de menu _personalizado"
+msgstr "Usar ficheiro de menu _personalizado:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:882
 #: ../settings/behavior-settings.c:267
@@ -565,7 +565,7 @@ msgstr "Ícone do _botão:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:924
 msgid "Show _icons in menu"
-msgstr "Mostrar _ícones no menu"
+msgstr "Mostrar í_cones no menu"
 
 #: ../panel-plugin/desktop-menu-plugin.c:947
 msgid "There is already a panel menu registered for this screen"
@@ -596,11 +596,11 @@ msgstr "Ficheiros de Lista (*.list)"
 
 #: ../settings/appearance-settings.c:688
 msgid "_Edit list..."
-msgstr "_Editar lista"
+msgstr "_Editar lista..."
 
 #: ../settings/appearance-settings.c:696
 msgid "_New list..."
-msgstr "_Nova lista"
+msgstr "_Nova lista..."
 
 #: ../settings/appearance-settings.c:729
 msgid "S_tyle:"
@@ -624,7 +624,7 @@ msgstr "Esticado"
 
 #: ../settings/appearance-settings.c:740
 msgid "Scaled"
-msgstr "_Escalado"
+msgstr "Escalado"
 
 #: ../settings/appearance-settings.c:796
 msgid "A_djust Brightness:"
@@ -723,7 +723,7 @@ msgstr "Mostrar _Imagem"
 
 #: ../settings/appearance-settings.c:1182
 msgid "_File:"
-msgstr "_Ficheiro"
+msgstr "_Ficheiro:"
 
 #: ../settings/appearance-settings.c:1237
 #: ../settings/appearance-settings.c:1239
@@ -751,7 +751,7 @@ msgid ""
 msgstr ""
 "Não foi possível gravar o ficheiro %s: %s\n"
 "\n"
-"Por favor escolha outra pasta ou pressione cancelar na janela de diálogo para desfazer as suas alterações"
+"Por favor escolha outra pasta ou pressione cancelar no diálogo para desfazer as suas alterações"
 
 #: ../settings/backdrop-list-manager.c:430
 msgid "Select backdrop image file"
@@ -812,7 +812,7 @@ msgstr "Ficheiro/Ícones de lançador"
 
 #: ../settings/behavior-settings.c:306
 msgid "_Icon size:"
-msgstr "_Tamanho de ícone"
+msgstr "_Tamanho de ícone:"
 
 #: ../settings/behavior-settings.c:320
 msgid "Use _system font size"
@@ -1086,7 +1086,7 @@ msgstr "Abrir com"
 
 #: ../src/xfdesktop-file-icon-manager.c:1705
 msgid "Open With Other _Application..."
-msgstr "Abrir Com Outra _Aplicação"
+msgstr "Abrir Com Outra _Aplicação..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1804
 msgid "_Rename..."
@@ -1119,7 +1119,7 @@ msgstr "_Ficheiro Vazio"
 
 #: ../src/xfdesktop-file-icon-manager.c:1977
 msgid "Desktop _Settings..."
-msgstr "_Definições da Área de Trabalho"
+msgstr "_Definições da Área de Trabalho..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1986
 msgid "_Desktop Properties..."
