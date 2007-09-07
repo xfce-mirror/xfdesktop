@@ -2,14 +2,14 @@
 # Copyright (C) 2003-2006 The Xfce Development Team.
 # This file is distributed under the same license as the xfdesktop package.
 # Ilkka Ollakka <ilkka.ollakka@iki.fi>, 2004.
-# Jari Rahkonen <jari.rahkonen@pp1.inet.fi>, 2005-2006.
+# Jari Rahkonen <jari.rahkonen@pp1.inet.fi>, 2005-2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-08 19:03+0900\n"
-"PO-Revision-Date: 2005-10-19 21:33+0300\n"
+"POT-Creation-Date: 2007-09-07 21:00+0300\n"
+"PO-Revision-Date: 2007-09-07 21:33+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -106,7 +106,7 @@ msgstr "Valitse kuvake"
 #: ../menueditor/menueditor-edit-dialog.c:235
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:604
+#: ../panel-plugin/desktop-menu-plugin.c:606
 #: ../settings/appearance-settings.c:579
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
@@ -115,7 +115,7 @@ msgstr "Kaikki tiedostot"
 
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
-#: ../panel-plugin/desktop-menu-plugin.c:610
+#: ../panel-plugin/desktop-menu-plugin.c:612
 #: ../settings/appearance-settings.c:583
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
@@ -192,7 +192,7 @@ msgstr "Valitse ulkoinen valikko"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:618
+#: ../panel-plugin/desktop-menu-plugin.c:620
 msgid "Menu Files"
 msgstr "Valikkotiedostot"
 
@@ -231,6 +231,28 @@ msgstr "Muokkaa ulkoista valikkokohdetta"
 #: ../menueditor/menueditor-main.c:43
 msgid "Xfce4-MenuEditor"
 msgstr "Xfce4-valikkoeditori"
+
+#: ../menueditor/menueditor-main.c:57
+msgid "Menueditor Warning"
+msgstr "Valikkoeditorin varoitus"
+
+#: ../menueditor/menueditor-main.c:59
+msgid "xfce4-menueditor is deprecated"
+msgstr "xfce4-menueditor on vanhentunut"
+
+#: ../menueditor/menueditor-main.c:60
+msgid ""
+"Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
+"edit the new menu file format.  You may continue and edit an old-style menu "
+"file, or quit."
+msgstr ""
+"Xfce:n valikko on korvattu uudella, eikä xfce4-menueditor tue uutta "
+"valikkotiedostomuotoa. Voit jatkaa muokkaamaan vanhanmuotoista "
+"valikkotiedostoa tai lopettaa."
+
+#: ../menueditor/menueditor-main.c:61
+msgid "Continue"
+msgstr "Jatka"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -486,71 +508,71 @@ msgstr "Hylkää muutokset"
 msgid "Unable to open the menu file %s in write mode"
 msgstr "Valikkotiedostoa %s ei voi avata kirjoitettavaksi"
 
-#: ../panel-plugin/desktop-menu-plugin.c:587
+#: ../panel-plugin/desktop-menu-plugin.c:589
 msgid "Select Icon"
 msgstr "Valitse kuvake"
 
-#: ../panel-plugin/desktop-menu-plugin.c:589
+#: ../panel-plugin/desktop-menu-plugin.c:591
 msgid "Select Menu File"
 msgstr "Valitse valikkotiedosto"
 
-#: ../panel-plugin/desktop-menu-plugin.c:746
+#: ../panel-plugin/desktop-menu-plugin.c:748
 #: ../settings/behavior-settings.c:275
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-valikkoeditoria ei voitu käynnistää: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:769
+#: ../panel-plugin/desktop-menu-plugin.c:771
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce-valikko"
 
-#: ../panel-plugin/desktop-menu-plugin.c:781
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Button"
 msgstr "Painike"
 
-#: ../panel-plugin/desktop-menu-plugin.c:794
+#: ../panel-plugin/desktop-menu-plugin.c:796
 msgid "Button _title:"
 msgstr "_Painikkeen otsake:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:807
+#: ../panel-plugin/desktop-menu-plugin.c:809
 msgid "_Show title in button"
 msgstr "_Näytä painikkeen otsake"
 
-#: ../panel-plugin/desktop-menu-plugin.c:814
+#: ../panel-plugin/desktop-menu-plugin.c:816
 msgid "Menu File"
 msgstr "Valikkotiedosto"
 
-#: ../panel-plugin/desktop-menu-plugin.c:826
+#: ../panel-plugin/desktop-menu-plugin.c:828
 msgid "Use default _desktop menu file"
 msgstr "Käytä _oletusvalikkotiedostoa"
 
-#: ../panel-plugin/desktop-menu-plugin.c:835
+#: ../panel-plugin/desktop-menu-plugin.c:837
 msgid "Use _custom menu file:"
 msgstr "_Avaa mukautettu valikkotiedosto:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:886
+#: ../panel-plugin/desktop-menu-plugin.c:888
 #: ../settings/behavior-settings.c:369
 msgid "_Edit Menu"
 msgstr "_Muokkaa valikkoa"
 
-#: ../panel-plugin/desktop-menu-plugin.c:892
+#: ../panel-plugin/desktop-menu-plugin.c:894
 msgid "Icons"
 msgstr "Kuvakkeet"
 
-#: ../panel-plugin/desktop-menu-plugin.c:904
+#: ../panel-plugin/desktop-menu-plugin.c:906
 msgid "_Button icon:"
 msgstr "Painikkeen _kuvake:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:928
+#: ../panel-plugin/desktop-menu-plugin.c:930
 msgid "Show _icons in menu"
 msgstr "Näytä k_uvakkeet valikossa"
 
-#: ../panel-plugin/desktop-menu-plugin.c:951
+#: ../panel-plugin/desktop-menu-plugin.c:963
 msgid "There is already a panel menu registered for this screen"
 msgstr "Tälle näytölle on jo rekisteröity paneelivalikko"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1063
+#: ../panel-plugin/desktop-menu-plugin.c:1075
 msgid "Edit Menu"
 msgstr "Muokkaa valikkoa"
 
@@ -604,34 +626,38 @@ msgstr "Venytetty"
 msgid "Scaled"
 msgstr "Skaalattu"
 
-#: ../settings/appearance-settings.c:796
+#: ../settings/appearance-settings.c:741
+msgid "Zoomed"
+msgstr "Suurennettu"
+
+#: ../settings/appearance-settings.c:797
 msgid "A_djust Brightness:"
 msgstr "Säädä ki_rkkautta:"
 
-#: ../settings/appearance-settings.c:854
+#: ../settings/appearance-settings.c:855
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce ei voi hallita työpöytääsi (%s)."
 
-#: ../settings/appearance-settings.c:855
+#: ../settings/appearance-settings.c:856
 msgid "Unknown Error"
 msgstr "Tuntematon virhe"
 
-#: ../settings/appearance-settings.c:859
+#: ../settings/appearance-settings.c:860
 #: ../src/xfdesktop-regular-file-icon.c:520
 #: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr "Virhe"
 
-#: ../settings/appearance-settings.c:861
+#: ../settings/appearance-settings.c:862
 msgid "Unable to start xfdesktop"
 msgstr "Ei voi käynnistää xfdesktopia"
 
-#: ../settings/appearance-settings.c:883
+#: ../settings/appearance-settings.c:884
 msgid "Information"
 msgstr "Tietoja"
 
-#: ../settings/appearance-settings.c:896
+#: ../settings/appearance-settings.c:897
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
 "please be sure to save your session when logging out.  If you are not using "
@@ -645,7 +671,7 @@ msgstr ""
 "xfce4/xinitrc käsin. Lisätietoja löydät ohjeista osoitteessa http://xfce."
 "org/."
 
-#: ../settings/appearance-settings.c:898
+#: ../settings/appearance-settings.c:899
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -659,83 +685,83 @@ msgstr ""
 "config/xfce4/xinitrc käsin. Lisätietoja löydät ohjeistuksesta osoitteessa "
 "http://xfce.org/."
 
-#: ../settings/appearance-settings.c:906
+#: ../settings/appearance-settings.c:907
 msgid "_Do not show this again"
 msgstr "_Älä näytä tätä uudelleen"
 
 #. the dialog
-#: ../settings/appearance-settings.c:972
+#: ../settings/appearance-settings.c:973
 msgid "Desktop Preferences"
 msgstr "Työpöydän asetukset"
 
-#: ../settings/appearance-settings.c:989
+#: ../settings/appearance-settings.c:990
 msgid "Allow _Xfce to manage the desktop"
 msgstr "Salli _Xfce:n hallita työpöytää"
 
-#: ../settings/appearance-settings.c:1030
+#: ../settings/appearance-settings.c:1031
 msgid "Stretch single backdrop onto _all monitors"
 msgstr "Venytä yksi taustakuva _kaikille näytöille"
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:1044
-#: ../settings/appearance-settings.c:1226
+#: ../settings/appearance-settings.c:1045
+#: ../settings/appearance-settings.c:1227
 msgid "_Appearance"
 msgstr "_Ulkoasu"
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1070
+#: ../settings/appearance-settings.c:1071
 msgid "Color"
 msgstr "Väri"
 
-#: ../settings/appearance-settings.c:1084
+#: ../settings/appearance-settings.c:1085
 msgid "_Color Style:"
 msgstr "_Väritystapa:"
 
-#: ../settings/appearance-settings.c:1091
+#: ../settings/appearance-settings.c:1092
 msgid "Solid Color"
 msgstr "Yksivärinen"
 
-#: ../settings/appearance-settings.c:1092
+#: ../settings/appearance-settings.c:1093
 msgid "Horizontal Gradient"
 msgstr "Vaakaväriliuku"
 
-#: ../settings/appearance-settings.c:1093
+#: ../settings/appearance-settings.c:1094
 msgid "Vertical Gradient"
 msgstr "Pystyväriliuku"
 
-#: ../settings/appearance-settings.c:1106
+#: ../settings/appearance-settings.c:1107
 msgid "Fi_rst Color:"
 msgstr "_Ensimmäinen väri:"
 
-#: ../settings/appearance-settings.c:1127
+#: ../settings/appearance-settings.c:1128
 msgid "_Second Color:"
 msgstr "_Toinen väri"
 
-#: ../settings/appearance-settings.c:1152
+#: ../settings/appearance-settings.c:1153
 msgid "Image"
 msgstr "Kuva"
 
-#: ../settings/appearance-settings.c:1160
+#: ../settings/appearance-settings.c:1161
 msgid "Show _Image"
 msgstr "_Näytä kuva"
 
-#: ../settings/appearance-settings.c:1182
+#: ../settings/appearance-settings.c:1183
 msgid "_File:"
 msgstr "Tie_dosto:"
 
-#: ../settings/appearance-settings.c:1237
-#: ../settings/appearance-settings.c:1239
+#: ../settings/appearance-settings.c:1238
+#: ../settings/appearance-settings.c:1240
 #, c-format
 msgid "Screen %d"
 msgstr "Näyttö %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1244
+#: ../settings/appearance-settings.c:1245
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Näyttö %d, Monitori %d"
 
-#: ../settings/appearance-settings.c:1261
+#: ../settings/appearance-settings.c:1262
 msgid "_Behavior"
 msgstr "_Käytös"
 
@@ -789,15 +815,15 @@ msgstr "Näytä ikku_nalista keskipainikeella"
 
 #: ../settings/behavior-settings.c:327
 msgid "Show workspace _names in list"
-msgstr ""
+msgstr "Listaa työtilojen _nimet"
 
 #: ../settings/behavior-settings.c:341
 msgid "Show windows on each workspace in sub_menus"
-msgstr ""
+msgstr "Näytä työtilojen ikkunat ala_valikoissa"
 
 #: ../settings/behavior-settings.c:351
 msgid "Show sticky windows only in _active workspace"
-msgstr ""
+msgstr "Näytä vain _aktiivisen työtilan kiinnitetyt ikkunat"
 
 #: ../settings/behavior-settings.c:362
 msgid "Show _desktop menu on right click"
@@ -900,31 +926,31 @@ msgstr "    --quit        Sulje xfdesktop\n"
 msgid "%s is not running.\n"
 msgstr "%s ei ole käynnissä.\n"
 
-#: ../src/windowlist.c:227
+#: ../src/windowlist.c:228
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Työtila %d</b>"
 
-#: ../src/windowlist.c:236
-#, fuzzy, c-format
+#: ../src/windowlist.c:237
+#, c-format
 msgid "Workspace %d"
-msgstr "<b>Työtila %d</b>"
+msgstr "Työtila %d"
 
-#: ../src/windowlist.c:238
+#: ../src/windowlist.c:239
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Työtila %d</i>"
 
-#: ../src/windowlist.c:332 ../src/windowlist.c:335
+#: ../src/windowlist.c:336 ../src/windowlist.c:339
 msgid "_Add Workspace"
 msgstr "_Lisää työtila"
 
-#: ../src/windowlist.c:343
+#: ../src/windowlist.c:347
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Poista työtila %d"
 
-#: ../src/windowlist.c:346
+#: ../src/windowlist.c:350
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Poista työtila '%s'"
@@ -1372,13 +1398,12 @@ msgid "Xfce 4 Menu Editor"
 msgstr "Xfce 4 valikkoeditori"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-#, fuzzy
 msgid "Accessories"
-msgstr "Käytetty:"
+msgstr "Apuohjelmat"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
-msgstr ""
+msgstr "Yleiset työpöytätyökalut ja -sovellukset"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:1
 msgid "Development"
@@ -1386,7 +1411,7 @@ msgstr "Sovelluskehitys"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:2
 msgid "Software development tools"
-msgstr ""
+msgstr "Sovellusten kehitystyökalut"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:1
 msgid "Education"
@@ -1394,16 +1419,15 @@ msgstr "Opetus"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:2
 msgid "Educational software"
-msgstr ""
+msgstr "Opetusohjelmistot"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-#, fuzzy
 msgid "Games"
-msgstr "Nimi"
+msgstr "Pelit"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
-msgstr ""
+msgstr "Pelit ja muut ajanvietesovellukset"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
@@ -1411,16 +1435,15 @@ msgstr "Grafiikka"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr ""
+msgstr "Kuvien luomiseen ja käsittelyyn tarkoitetut ohjelmat"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
-msgstr ""
+msgstr "Äänen ja videon toisto- ja muokkaussovellukset"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-#, fuzzy
 msgid "Multimedia"
-msgstr "Monitasoinen"
+msgstr "Ääni ja kuva"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
@@ -1428,7 +1451,7 @@ msgstr "Verkko"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:2
 msgid "Network applications and utilities"
-msgstr ""
+msgstr "Verkkotyökalut ja -ohjelmistot"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:1
 msgid "Office"
@@ -1436,37 +1459,35 @@ msgstr "Toimisto"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:2
 msgid "Office and productivity applications"
-msgstr ""
+msgstr "Toimisto- ja tuottavuussovellukset"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:1
 msgid "Applications that don't fit into other categories"
-msgstr ""
+msgstr "Sovellukset, jotka jäävät muiden ryhmien ulkopuolelle"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-#, fuzzy
 msgid "Other"
-msgstr "/Muut"
+msgstr "Muut"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr ""
+msgstr "Näytönsäästäjäsovelmat"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
-msgstr ""
+msgstr "Näytönsäästäjät"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr ""
+msgstr "Työpöydän ja järjestelmän asetustyökalut"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-#, fuzzy
 msgid "Settings"
-msgstr "Työpöydän asetukset"
+msgstr "Asetukset"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
-msgstr ""
+msgstr "Järjestelmätyökalut ja -sovellukset"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
@@ -1474,7 +1495,7 @@ msgstr "Tietoja Xfce:stä"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr ""
+msgstr "Tietoja Xfce-työpöytäympäristöstä"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
@@ -1482,35 +1503,31 @@ msgstr "Tiedostonhallinta"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
 msgid "Thunar file manager"
-msgstr ""
+msgstr "Thunar-tiedostonhallinta"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-#, fuzzy
 msgid "Help"
-msgstr "_Ohje"
+msgstr "Ohje"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr ""
+msgstr "Xfce:n käyttöohje"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
-msgstr ""
+msgstr "Lopeta"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-#, fuzzy
 msgid "Log out of the Xfce Desktop"
-msgstr "Xfce 4 työpöydänhallinnan asetukset"
+msgstr "Kirjaudu ulos Xfce-työpöydältä"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-#, fuzzy
 msgid "Run Program..."
-msgstr "Suoritusvirhe"
+msgstr "Suorita..."
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-#, fuzzy
 msgid "Run a program"
-msgstr "Suoritusvirhe"
+msgstr "Suorita ohjelma"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
@@ -1518,11 +1535,11 @@ msgstr "Pääte"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
 msgid "Terminal emulator"
-msgstr ""
+msgstr "Pääte-emulaattori"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
 msgid "Browse the web"
-msgstr ""
+msgstr "Selaa web-sivuja"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
@@ -1543,34 +1560,3 @@ msgstr "Xfce 4 työpöydänhallinnan asetukset"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 työpöydän asetukset"
-
-#~ msgid "Science"
-#~ msgstr "Tiede"
-
-#, fuzzy
-#~ msgid "Scientific applications and tools"
-#~ msgstr "Pienennettyjen sovellusten kuvakkeet"
-
-#~ msgid "Unable to quit session."
-#~ msgstr "Istunnon lopettaminen ei onnistu"
-
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "Istunnon lopettaminen edellyttää, että Xfce:n istunnonhallintasovellus "
-#~ "(xfce4-session) on käytössä, mutta sitä ei havaittu. Poistu Xfce:stä "
-#~ "käyttäen jotain muuta tapaa."
-
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "Istunnon lopettamiseen tarvitaan komentoa \"xfce4-session-logout\", mutta "
-#~ "sitä ei löytynyt: %s"
-
-#~ msgid "Edit Properties"
-#~ msgstr "Muokkaa ominaisuuksia"
-
-#~ msgid "Backdrop List"
-#~ msgstr "Taustakuvalista"
