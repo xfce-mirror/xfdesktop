@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-04-08 19:03+0900\n"
-"PO-Revision-Date: 2006-11-05 03:13+0900\n"
+"PO-Revision-Date: 2007-09-24 15:13+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@debianusers.org>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
 "net>\n"
@@ -787,15 +787,15 @@ msgstr "가운데 버튼 클릭으로 창 목록 보이기(_w)"
 
 #: ../settings/behavior-settings.c:327
 msgid "Show workspace _names in list"
-msgstr ""
+msgstr "리스트에 작업 공간 이름 보이기(_n)"
 
 #: ../settings/behavior-settings.c:341
 msgid "Show windows on each workspace in sub_menus"
-msgstr ""
+msgstr "부메뉴에 각 작업공간의 창 보이기(_m)"
 
 #: ../settings/behavior-settings.c:351
 msgid "Show sticky windows only in _active workspace"
-msgstr ""
+msgstr "끈끈이 창을 활성화된 작업공간에만 보이기(_a)"
 
 #: ../settings/behavior-settings.c:362
 msgid "Show _desktop menu on right click"
@@ -906,9 +906,8 @@ msgid "<b>Workspace %d</b>"
 msgstr "<b>작업공간 %d</b>"
 
 #: ../src/windowlist.c:236
-#, fuzzy, c-format
 msgid "Workspace %d"
-msgstr "<b>작업공간 %d</b>"
+msgstr "작업공간 %d"
 
 #: ../src/windowlist.c:238
 #, c-format
@@ -1373,101 +1372,96 @@ msgid "Xfce 4 Menu Editor"
 msgstr "Xfce 메뉴 편집기"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-#, fuzzy
 msgid "Accessories"
-msgstr "접근:"
+msgstr "보조 도구:"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
-msgstr ""
+msgstr "데스크탑 도구와 응용프로그램"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:1
 msgid "Development"
-msgstr ""
+msgstr "개발"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:2
 msgid "Software development tools"
-msgstr ""
+msgstr "소프트웨어 개발 도구"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:1
 msgid "Education"
-msgstr ""
+msgstr "교육용"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:2
 msgid "Educational software"
-msgstr ""
+msgstr "교육용 소프트웨어"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-#, fuzzy
 msgid "Games"
-msgstr "이름:"
+msgstr "놀이"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
-msgstr ""
+msgstr "놀이, 퍼즐 및 기타 재미있는 소프트웨어"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
-msgstr ""
+msgstr "그림"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr ""
+msgstr "그림에 관련된 프로그램"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
-msgstr ""
+msgstr "오디오와 비디오 재생 및 편집기"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-#, fuzzy
 msgid "Multimedia"
-msgstr "다단계"
+msgstr "멀티미디어"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
-msgstr ""
+msgstr "네트워크"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:2
 msgid "Network applications and utilities"
-msgstr ""
+msgstr "네트워크용 프로그램"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:1
 msgid "Office"
-msgstr ""
+msgstr "사무용"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:2
 msgid "Office and productivity applications"
-msgstr ""
+msgstr "사무용 프로그램"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:1
 msgid "Applications that don't fit into other categories"
-msgstr ""
+msgstr "분류되지 않은 프로그램"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-#, fuzzy
 msgid "Other"
-msgstr "/기타"
+msgstr "기타"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr ""
+msgstr "스크린세이버"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
-msgstr ""
+msgstr "스크린세이버"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr ""
+msgstr "데스크탑 및 시스템 설정 프로그램"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-#, fuzzy
 msgid "Settings"
-msgstr "작업공간 설정"
+msgstr "설정"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
-msgstr ""
+msgstr "시스템 도구"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
@@ -1475,7 +1469,7 @@ msgstr "Xfce란"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr ""
+msgstr "Xfce 데스크탑 환경에 대한 정보"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
@@ -1483,35 +1477,31 @@ msgstr "화일 관리자"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
 msgid "Thunar file manager"
-msgstr ""
+msgstr "Thunar 화일관리자"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-#, fuzzy
 msgid "Help"
-msgstr "도움말(_H)"
+msgstr "도움말"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr ""
+msgstr "Xfce 도움말"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
-msgstr ""
+msgstr "종료"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-#, fuzzy
 msgid "Log out of the Xfce Desktop"
-msgstr "Xfce 4 데스크탑 관리 도구의 환경 설정"
+msgstr "Xfce 4 데스크탑 종료"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-#, fuzzy
 msgid "Run Program..."
-msgstr "실행 오류"
+msgstr "프로그램 실행..."
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-#, fuzzy
 msgid "Run a program"
-msgstr "실행 오류"
+msgstr "프로그램 실행"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
@@ -1519,11 +1509,11 @@ msgstr "터미널"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
 msgid "Terminal emulator"
-msgstr ""
+msgstr "터미널 에뮬레이터"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
 msgid "Browse the web"
-msgstr ""
+msgstr "인터넷의 바다로"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
