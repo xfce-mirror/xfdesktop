@@ -245,7 +245,7 @@ xfdesktop_popup_grab_available (GdkWindow *win, guint32 timestamp)
     g1 = gdk_pointer_grab (win, TRUE, mask, NULL, NULL, timestamp);
     g2 = gdk_keyboard_grab (win, TRUE, timestamp);
 
-    while ((i++ < 100) && (grab_failed = ((g1 != GDK_GRAB_SUCCESS)
+    while ((i++ < 300) && (grab_failed = ((g1 != GDK_GRAB_SUCCESS)
                 || (g2 != GDK_GRAB_SUCCESS))))
     {
         TRACE ("grab not available yet, waiting... (%i)", i);
