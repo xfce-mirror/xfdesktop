@@ -88,6 +88,7 @@ struct _XfdesktopFileIconManagerPrivate
 {
     gboolean inited;
     
+    GtkWidget *desktop;
     XfdesktopIconView *icon_view;
     
     GdkScreen *gscreen;
@@ -2732,7 +2733,6 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
     ThunarVfsInfo *desktop_info;
     gint i;
-    GtkWidget *toplevel;
 #ifdef HAVE_THUNARX
     ThunarxProviderFactory *thunarx_pfac;
 #endif
@@ -2741,8 +2741,8 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     
     fmanager->priv->icon_view = icon_view;
     
-    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
-    g_signal_connect(G_OBJECT(toplevel), "populate-root-menu",
+    fmanager->priv->desktop = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
+    g_signal_connect(G_OBJECT(fmanager->priv->desktop), "populate-root-menu",
                      G_CALLBACK(xfdesktop_file_icon_manager_populate_context_menu),
                      fmanager);
     
@@ -2838,7 +2838,6 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
     gint i;
-    GtkWidget *toplevel;
     
     g_return_if_fail(fmanager->priv->inited);
     
@@ -2876,8 +2875,7 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
         fmanager->priv->active_trash_calls = NULL;
     }
     
-    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-    g_signal_handlers_disconnect_by_func(G_OBJECT(toplevel),
+    g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->desktop),
                                          G_CALLBACK(xfdesktop_file_icon_manager_populate_context_menu),
                                          fmanager);
     

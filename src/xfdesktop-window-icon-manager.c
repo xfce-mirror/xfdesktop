@@ -65,6 +65,9 @@ typedef struct
 
 struct _XfdesktopWindowIconManagerPrivate
 {
+    gboolean inited;
+    
+    GtkWidget *desktop;
     XfdesktopIconView *icon_view;
     
     GdkScreen *gscreen;
@@ -150,16 +153,11 @@ static void
 xfdesktop_window_icon_manager_finalize(GObject *obj)
 {
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(obj);
-    gint i;
     
-    if(wmanager->priv->icon_workspaces) {
-        for(i = 0; i < wmanager->priv->nworkspaces; ++i) {
-            if(wmanager->priv->icon_workspaces[i]->icons)
-                g_hash_table_destroy(wmanager->priv->icon_workspaces[i]->icons);
-            g_free(wmanager->priv->icon_workspaces[i]);
-        }
-        g_free(wmanager->priv->icon_workspaces);
-    }
+    TRACE("entering");
+    
+    if(wmanager->priv->inited)
+        xfdesktop_window_icon_manager_fini(XFDESKTOP_ICON_VIEW_MANAGER(wmanager));
     
     G_OBJECT_CLASS(xfdesktop_window_icon_manager_parent_class)->finalize(obj);
 }
@@ -528,7 +526,6 @@ xfdesktop_window_icon_manager_real_init(XfdesktopIconViewManager *manager,
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
     GList *windows, *l;
     gint i;
-    GtkWidget *toplevel;
     
     wmanager->priv->icon_view = icon_view;
     xfdesktop_icon_view_set_selection_mode(icon_view, GTK_SELECTION_SINGLE);
@@ -536,8 +533,8 @@ xfdesktop_window_icon_manager_real_init(XfdesktopIconViewManager *manager,
                      G_CALLBACK(xfdesktop_window_icon_manager_icon_selected_cb),
                      wmanager);
     
-    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
-    g_signal_connect(G_OBJECT(toplevel), "populate-root-menu",
+    wmanager->priv->desktop = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
+    g_signal_connect(G_OBJECT(wmanager->priv->desktop), "populate-root-menu",
                      G_CALLBACK(xfdesktop_window_icon_manager_populate_context_menu),
                      wmanager);
     
@@ -575,6 +572,8 @@ xfdesktop_window_icon_manager_real_init(XfdesktopIconViewManager *manager,
     
     workspace_changed_cb(wmanager->priv->netk_screen, wmanager);
     
+    wmanager->priv->inited = TRUE;
+    
     return TRUE;
 }
 
@@ -584,7 +583,10 @@ xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager)
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
     gint i;
     GList *windows, *l;
-    GtkWidget *toplevel;
+    
+    TRACE("entering");
+    
+    wmanager->priv->inited = FALSE;
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(wmanager->priv->netk_screen),
                                          G_CALLBACK(workspace_changed_cb),
@@ -599,8 +601,7 @@ xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager)
                                          G_CALLBACK(workspace_destroyed_cb),
                                          wmanager);
     
-    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(wmanager->priv->icon_view));
-    g_signal_handlers_disconnect_by_func(G_OBJECT(toplevel),
+    g_signal_handlers_disconnect_by_func(G_OBJECT(wmanager->priv->desktop),
                                          G_CALLBACK(xfdesktop_window_icon_manager_populate_context_menu),
                                          wmanager);
     
