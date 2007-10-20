@@ -14,7 +14,9 @@ xfdesktop_SOURCES = \
 	xfce-desktop.c \
 	xfce-desktop.h \
 	xfce-desktop-settings.c \
-	xfce-desktop-settings.h
+	xfce-desktop-settings.h \
+	xfdesktop-marshal.c \
+	xfdesktop-marshal.h
 
 desktop_icon_sources = \
 	xfdesktop-icon.c \
@@ -107,9 +109,28 @@ xfdesktop_LDADD += \
 	$(THUNARX_LIBS) \
 	$(DBUS_LIBS)
 
+endif
+endif
+
 if MAINTAINER_MODE
 
 BUILT_SOURCES = \
+	xfdesktop-marshal.c \
+	xfdesktop-marshal.h
+
+xfdesktop-marshal.h: stamp-xfdesktop-marshal.h
+	@true
+stamp-xfdesktop-marshal.h: xfdesktop-marshal.list Makefile
+	glib-genmarshal --prefix=xfdesktop_marshal xfdesktop-marshal.list --header > xfdesktop-marshal.h
+	echo timestamp > $(@F)
+xfdesktop-marshal.c: xfdesktop-marshal.list Makefile
+	echo '#include "xfdesktop-marshal.h"' > xfdesktop-marshal.c
+	glib-genmarshal --prefix=xfdesktop_marshal xfdesktop-marshal.list --body >> xfdesktop-marshal.c
+
+
+if ENABLE_FILE_ICONS
+
+BUILT_SOURCES += \
 	xfdesktop-dbus-bindings-filemanager.h \
 	xfdesktop-dbus-bindings-trash.h
 DISTCLEANFILES = \
@@ -123,7 +144,10 @@ xfdesktop-dbus-bindings-trash.h: $(srcdir)/xfdesktop-dbus-bindings-trash.xml Mak
 	dbus-binding-tool --mode=glib-client --prefix=org_xfce_Trash $(srcdir)/xfdesktop-dbus-bindings-trash.xml > xfdesktop-dbus-bindings-trash.h
 
 endif
-endif
+
 endif
 
-EXTRA_DIST = $(desktop_icon_sources) $(desktop_file_icon_sources)
+EXTRA_DIST = \
+	$(desktop_icon_sources) \
+	$(desktop_file_icon_sources) \
+	xfdesktop-marshal.list

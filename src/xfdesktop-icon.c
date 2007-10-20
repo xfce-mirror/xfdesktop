@@ -1,7 +1,7 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright (c) 2006 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (c) 2006-2007 Brian Tarricone, <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -30,6 +30,7 @@
 #include <gobject/gmarshal.h>
 
 #include "xfdesktop-icon.h"
+#include "xfdesktop-marshal.h"
 
 struct _XfdesktopIconPrivate
 {
@@ -56,38 +57,6 @@ static guint __signals[SIG_N_SIGNALS] = { 0, };
 
 G_DEFINE_ABSTRACT_TYPE(XfdesktopIcon, xfdesktop_icon, G_TYPE_OBJECT)
 
-
-static void
-xfdesktop_icon_marshal_BOOLEAN__VOID(GClosure *closure,
-                                     GValue *return_value,
-                                     guint n_param_values,
-                                     const GValue *param_values,
-                                     gpointer invocation_hint,
-                                     gpointer marshal_data)
-{
-    typedef gboolean (*GMarshalFunc_BOOLEAN__VOID)(gpointer, gpointer);
-    register GMarshalFunc_BOOLEAN__VOID callback;
-    register GCClosure *cc = (GCClosure *)closure;
-    register gpointer data1, data2;
-    gboolean ret = FALSE;
-    
-    g_return_if_fail(return_value);
-    g_return_if_fail(n_param_values == 1);
-    
-    if(G_CCLOSURE_SWAP_DATA(closure)) {
-        data1 = closure->data;
-        data2 = g_value_peek_pointer(param_values + 0);
-    } else {
-        data1 = g_value_peek_pointer(param_values + 0);
-        data2 = closure->data;
-    }
-
-    callback = (GMarshalFunc_BOOLEAN__VOID)(marshal_data ? marshal_data : cc->callback);
-
-    ret = callback(data1, data2);
-    
-    g_value_set_boolean(return_value, ret);
-}
 
 static void
 xfdesktop_icon_class_init(XfdesktopIconClass *klass)
@@ -137,7 +106,7 @@ xfdesktop_icon_class_init(XfdesktopIconClass *klass)
                                                             activated),
                                             g_signal_accumulator_true_handled,
                                             NULL,
-                                            xfdesktop_icon_marshal_BOOLEAN__VOID,
+                                            xfdesktop_marshal_BOOLEAN__VOID,
                                             G_TYPE_BOOLEAN, 0);
     
     __signals[SIG_MENU_POPUP] = g_signal_new("menu-popup",
