@@ -75,7 +75,8 @@ _start_menu_module()
 #if USE_DESKTOP_MENU
 static void
 menu_populate(XfceDesktop *desktop,
-              GtkMenuShell *menu)
+              GtkMenuShell *menu,
+              gpointer user_data)
 {
     GtkWidget *desktop_menu_widget;
     GList *menu_children;

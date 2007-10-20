@@ -190,7 +190,8 @@ menu_item_from_netk_window(NetkWindow *netk_window, gint icon_width,
 
 static void
 windowlist_populate(XfceDesktop *desktop,
-                    GtkMenuShell *menu)
+                    GtkMenuShell *menu,
+                    gpointer user_data)
 {
     GtkWidget *submenu, *mi, *label, *img;
     GdkScreen *gscreen;
