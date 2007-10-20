@@ -476,23 +476,29 @@ xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon)
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
     
-    /* FIXME: implement trash stuff */
-    
     if(!special_file_icon->priv->tooltip) {
-        gchar mod[64], *kind, sizebuf[64], *size;
-        struct tm *tm = localtime(&special_file_icon->priv->info->mtime);
+        if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH == special_file_icon->priv->type) {
+            /* FIXME: also display # of items in trash */
+            special_file_icon->priv->tooltip = g_strdup(_("Kind: Trash"));
+        } else {
+            gchar mod[64], *kind, sizebuf[64], *size;
+            struct tm *tm = localtime(&special_file_icon->priv->info->mtime);
 
-        strftime(mod, 64, "%Y-%m-%d %H:%M:%S", tm);
-        kind = xfdesktop_file_utils_get_file_kind(special_file_icon->priv->info, NULL);
-        thunar_vfs_humanize_size(special_file_icon->priv->info->size, sizebuf, 64);
-        size = g_strdup_printf(_("%s (%" G_GINT64_FORMAT " Bytes)"), sizebuf,
-                              (gint64)special_file_icon->priv->info->size);
-        
-        special_file_icon->priv->tooltip = g_strdup_printf(_("Kind: %s\nModified:%s\nSize: %s"),
-                                                   kind, mod, size);
-        
-        g_free(kind);
-        g_free(size);
+            strftime(mod, 64, "%Y-%m-%d %H:%M:%S", tm);
+            kind = xfdesktop_file_utils_get_file_kind(special_file_icon->priv->info,
+                                                      NULL);
+            thunar_vfs_humanize_size(special_file_icon->priv->info->size,
+                                     sizebuf, 64);
+            size = g_strdup_printf(_("%s (%" G_GINT64_FORMAT " Bytes)"),
+                                   sizebuf,
+                                  (gint64)special_file_icon->priv->info->size);
+            
+            special_file_icon->priv->tooltip = g_strdup_printf(_("Kind: %s\nModified:%s\nSize: %s"),
+                                                               kind, mod, size);
+            
+            g_free(kind);
+            g_free(size);
+        }
     }
     
     return special_file_icon->priv->tooltip;
@@ -615,9 +621,12 @@ xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
     GtkWidget *mi, *img;
+    GtkIconTheme *icon_theme;
     
     if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH != special_file_icon->priv->type)
         return FALSE;
+    
+    icon_theme = gtk_icon_theme_get_default();
     
     img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
     gtk_widget_show(img);
@@ -632,7 +641,16 @@ xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     
+    if(gtk_icon_theme_has_icon(icon_theme, "user-trash"))
+        img = gtk_image_new_from_icon_name("user-trash", GTK_ICON_SIZE_MENU);
+    else if(gtk_icon_theme_has_icon(icon_theme, "gnome-fs-trash-empty"))
+        img = gtk_image_new_from_icon_name("gnome-fs-trash-empty", GTK_ICON_SIZE_MENU);
+    else
+        img = NULL;
+    
     mi = gtk_image_menu_item_new_with_mnemonic(_("_Empty Trash"));
+    if(img)
+        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     if(special_file_icon->priv->trash_full) {

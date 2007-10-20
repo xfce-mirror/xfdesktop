@@ -35,6 +35,10 @@
 #include <time.h>
 #endif
 
+#ifdef HAVE_SYS_STATVFS_H
+#include <sys/statvfs.h>
+#endif
+
 #ifndef PATH_MAX
 #define PATH_MAX 4096
 #endif
@@ -452,20 +456,33 @@ xfdesktop_volume_icon_peek_tooltip(XfdesktopIcon *icon)
     /* FIXME: something different? */
     
     if(!volume_icon->priv->tooltip) {
-        gchar mod[64], *kind, sizebuf[64], *size;
-        struct tm *tm = localtime(&volume_icon->priv->info->mtime);
-
-        strftime(mod, 64, "%Y-%m-%d %H:%M:%S", tm);
-        kind = xfdesktop_file_utils_get_file_kind(volume_icon->priv->info, NULL);
-        thunar_vfs_humanize_size(volume_icon->priv->info->size, sizebuf, 64);
-        size = g_strdup_printf(_("%s (%" G_GINT64_FORMAT " Bytes)"), sizebuf,
-                              (gint64)volume_icon->priv->info->size);
+        gchar freebuf[128], totbuf[128], *space;
+        ThunarVfsPath *path;
+        gchar mntpnt[THUNAR_VFS_PATH_MAXSTRLEN] = { 0, };
+        ThunarVfsFileSize size;
+        struct statvfs stfs;
         
-        volume_icon->priv->tooltip = g_strdup_printf(_("Kind: %s\nModified:%s\nSize: %s"),
-                                                   kind, mod, size);
+        path = thunar_vfs_volume_get_mount_point(volume_icon->priv->volume);
+        if(path
+           && thunar_vfs_path_to_string(path, mntpnt, sizeof(mntpnt), NULL) > 0
+           && thunar_vfs_info_get_free_space(volume_icon->priv->info, &size)
+           && !statvfs(mntpnt, &stfs))
+        {
+            thunar_vfs_humanize_size(size, freebuf, sizeof(freebuf));
+            thunar_vfs_humanize_size((ThunarVfsFileSize)(stfs.f_blocks * stfs.f_bsize),
+                                     totbuf, sizeof(totbuf));
+            space = g_strdup_printf(_("%s (%s total)"), freebuf, totbuf);
+        } else
+            space = g_strdup(_("(unknown)"));
         
-        g_free(kind);
-        g_free(size);
+        volume_icon->priv->tooltip = g_strdup_printf(_("Kind: Removable Volume\n"
+                                                       "Mount Point: %s\n"
+                                                       "Free Space: %s"),
+                                                     *mntpnt ? mntpnt
+                                                             : _("(unknown)"),
+                                                     space);
+        
+        g_free(space);
     }
     
     return volume_icon->priv->tooltip;

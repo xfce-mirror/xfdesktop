@@ -41,7 +41,8 @@ AC_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 dnl check for standard header files
 AC_HEADER_STDC
 AC_CHECK_HEADERS([ctype.h errno.h fcntl.h math.h signal.h stddef.h \
-                  string.h sys/mman.h sys/stat.h sys/types.h sys/wait.h time.h \
+                  string.h sys/mman.h sys/stat.h sys/statvfs.h \
+                  sys/types.h sys/wait.h time.h \
                   unistd.h])
 AC_CHECK_FUNCS([mmap sigaction srandom])
 
