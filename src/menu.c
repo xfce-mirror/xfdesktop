@@ -72,12 +72,13 @@ _start_menu_module()
 }
 #endif
 
-void
-popup_desktop_menu(GdkScreen *gscreen, gint button, guint32 time)
-{
 #if USE_DESKTOP_MENU
-    GtkWidget *menu_widget;
-    GdkWindow *root;
+static void
+menu_populate(XfceDesktop *desktop,
+              GtkMenuShell *menu)
+{
+    GtkWidget *desktop_menu_widget;
+    GList *menu_children;
     
     if(!desktop_menu)
         return;
@@ -85,21 +86,34 @@ popup_desktop_menu(GdkScreen *gscreen, gint button, guint32 time)
     if(xfce_desktop_menu_need_update(desktop_menu))
         xfce_desktop_menu_force_regen(desktop_menu);
     
-    menu_widget = xfce_desktop_menu_get_widget(desktop_menu);
-    if (!menu_widget)
-        return;
-
-    gtk_menu_set_screen(GTK_MENU(menu_widget), gscreen);
-    
-    root = gdk_screen_get_root_window(gscreen);
-    if(!xfdesktop_popup_grab_available(root, time))
-        g_critical("Unable to get keyboard/mouse grab.  Unable to popup desktop menu");
-    else {
-        gtk_menu_popup(GTK_MENU(menu_widget), NULL, NULL, NULL, NULL,
-                button, time);
+    /* check to see if the menu is empty.  if not, add the desktop menu
+     * to a submenu */
+    menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
+    if(menu_children) {
+        GtkWidget *mi;
+        
+        g_list_free(menu_children);
+        
+        desktop_menu_widget = xfce_desktop_menu_get_widget(desktop_menu);
+        if(desktop_menu_widget) {
+            mi = gtk_separator_menu_item_new();
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            
+            mi = gtk_menu_item_new_with_label(_("Applications"));
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            
+            gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), desktop_menu_widget);
+            gtk_widget_show(desktop_menu_widget);
+        }
+    } else {
+        /* just get the menu as a list of toplevel GtkMenuItems instead of
+         * a toplevel menu */
+        xfce_desktop_menu_populate_menu(desktop_menu, GTK_WIDGET(menu));
     }
-#endif
 }
+#endif
 
 void
 menu_init(McsClient *mcs_client)
@@ -122,6 +136,15 @@ menu_init(McsClient *mcs_client)
         } else
             _start_menu_module();
     }
+#endif
+}
+
+void
+menu_attach(XfceDesktop *desktop)
+{
+#if USE_DESKTOP_MENU
+    g_signal_connect_after(G_OBJECT(desktop), "populate-root-menu",
+                           G_CALLBACK(menu_populate), NULL);
 #endif
 }
 

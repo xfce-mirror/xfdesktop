@@ -56,7 +56,7 @@
 #include "menueditor-edit-external-dialog.h"
 #include "menueditor-main-window.h"
 
-#include "../modules/menu/dummy_icon.h"
+#include "dummy_icon.h"
 
 #define MENUEDITOR_MAIN_WINDOW_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), MENUEDITOR_TYPE_MAIN_WINDOW, MenuEditorMainWindowPrivate))
 

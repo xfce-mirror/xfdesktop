@@ -1,6 +1,7 @@
 bin_PROGRAMS = xfce4-menueditor
 
 xfce4_menueditor_SOURCES =						\
+	dummy_icon.h							\
 	menueditor-add-dialog.h						\
 	menueditor-add-dialog.c						\
 	menueditor-add-external-dialog.h				\

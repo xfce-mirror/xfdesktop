@@ -30,6 +30,7 @@ static gint _menu_module_refcnt = 0;
 
 static XfceDesktopMenu *(*xfce_desktop_menu_new_p)(const gchar *menu_file, gboolean deferred) = NULL;
 GtkWidget *(*xfce_desktop_menu_get_widget)(XfceDesktopMenu *desktop_menu) = NULL;
+void (*xfce_desktop_menu_populate_menu)(XfceDesktopMenu *desktop_menu, GtkWidget *menu) = NULL;
 G_CONST_RETURN gchar *(*xfce_desktop_menu_get_menu_file)(XfceDesktopMenu *desktop_menu) = NULL;
 gboolean (*xfce_desktop_menu_need_update)(XfceDesktopMenu *desktop_menu) = NULL;
 void (*xfce_desktop_menu_start_autoregen)(XfceDesktopMenu *desktop_menu, guint delay) = NULL;
@@ -60,6 +61,9 @@ _setup_functions(GModule *module)
         return FALSE;
     if(!g_module_symbol(module, "xfce_desktop_menu_get_widget_impl",
             (gpointer)&xfce_desktop_menu_get_widget))
+        return FALSE;
+    if(!g_module_symbol(module, "xfce_desktop_menu_populate_menu_impl",
+            (gpointer)&xfce_desktop_menu_populate_menu))
         return FALSE;
     if(!g_module_symbol(module, "xfce_desktop_menu_get_menu_file_impl",
             (gpointer)&xfce_desktop_menu_get_menu_file))

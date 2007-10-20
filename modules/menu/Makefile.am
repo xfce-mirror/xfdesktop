@@ -6,11 +6,7 @@ plugindir = $(libdir)/xfce4/modules
 
 plugin_LTLIBRARIES = xfce4_desktop_menu.la
 
-xfce4_desktop_menu_la_SOURCES = \
-	desktop-menu.c \
-	desktop-menu.h
-	desktop-menu-private.h \
-	dummy_icon.h
+xfce4_desktop_menu_la_SOURCES = desktop-menu.c
 
 xfce4_desktop_menu_la_CFLAGS = \
 	-I$(top_srcdir)/common \

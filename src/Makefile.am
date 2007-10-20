@@ -2,7 +2,6 @@ bin_PROGRAMS = xfdesktop
 
 xfdesktop_SOURCES = \
 	main.c \
-	main.h \
 	menu.c \
 	menu.h \
 	settings.c \

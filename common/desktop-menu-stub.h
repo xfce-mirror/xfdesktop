@@ -20,7 +20,7 @@
 #ifndef __DESKTOP_MENU_STUB_H__
 #define __DESKTOP_MENU_STUB_H__
 
-#include <gtk/gtkwidget.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
@@ -28,6 +28,7 @@ typedef struct _XfceDesktopMenu XfceDesktopMenu;
 
 XfceDesktopMenu *xfce_desktop_menu_new(const gchar *menu_file, gboolean deferred);
 extern GtkWidget *(*xfce_desktop_menu_get_widget)(XfceDesktopMenu *desktop_menu);
+extern void (*xfce_desktop_menu_populate_menu)(XfceDesktopMenu *desktop_menu, GtkWidget *menu);
 extern G_CONST_RETURN gchar *(*xfce_desktop_menu_get_menu_file)(XfceDesktopMenu *desktop_menu);
 extern gboolean (*xfce_desktop_menu_need_update)(XfceDesktopMenu *desktop_menu);
 extern void (*xfce_desktop_menu_start_autoregen)(XfceDesktopMenu *desktop_menu, guint delay);

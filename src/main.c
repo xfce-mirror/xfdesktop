@@ -57,7 +57,6 @@
 #if defined(ENABLE_FILE_ICONS) || defined(HAVE_THUNAR_VFS)
 #endif
 
-#include "main.h"
 #include "xfdesktop-common.h"
 #include "xfce-backdrop.h"
 #include "xfce-desktop.h"
@@ -168,28 +167,6 @@ scroll_cb(GtkWidget *w, GdkEventScroll *evt, gpointer user_data)
     return TRUE;
 }
 
-static gboolean
-button_cb(GtkWidget *w, GdkEventButton *evt, gpointer user_data)
-{
-    GdkScreen *gscreen = gtk_widget_get_screen(w);
-    gint button = evt->button;
-    gint state = evt->state;
-    
-    if(evt->type == GDK_BUTTON_PRESS) {
-        if(button == 2 || (button == 1 && (state & GDK_SHIFT_MASK)
-                           && (state & GDK_CONTROL_MASK)))
-        {
-            popup_windowlist(gscreen, button, evt->time);
-            return TRUE;
-        } else if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK))) {
-            popup_desktop_menu(gscreen, 0, evt->time);
-            return TRUE;
-        }
-    }
-    
-    return FALSE;
-}
-
 static gboolean 
 reload_idle_cb(gpointer data)
 {
@@ -198,7 +175,7 @@ reload_idle_cb(gpointer data)
     return FALSE;
 }
 
-gboolean
+static gboolean
 client_message_received(GtkWidget *w, GdkEventClient *evt, gpointer user_data)
 {
     if(evt->data_format == 8) {
@@ -206,10 +183,12 @@ client_message_received(GtkWidget *w, GdkEventClient *evt, gpointer user_data)
             g_idle_add ((GSourceFunc)reload_idle_cb, NULL);
             return TRUE;
         } else if(!strcmp(MENU_MESSAGE, evt->data.b)) {
-            popup_desktop_menu(gtk_widget_get_screen(w), 0, GDK_CURRENT_TIME);
+            xfce_desktop_popup_root_menu(XFCE_DESKTOP(w), 0,
+                                         GDK_CURRENT_TIME);
             return TRUE;
         } else if(!strcmp(WINDOWLIST_MESSAGE, evt->data.b)) {
-            popup_windowlist(gtk_widget_get_screen(w), 0, GDK_CURRENT_TIME);
+            xfce_desktop_popup_secondary_root_menu(XFCE_DESKTOP(w), 0,
+                                                   GDK_CURRENT_TIME);
             return TRUE;
         } else if(!strcmp(QUIT_MESSAGE, evt->data.b)) {
             gtk_main_quit();
@@ -361,8 +340,10 @@ main(int argc, char **argv)
                               | GDK_BUTTON_RELEASE_MASK | GDK_SCROLL_MASK);
         g_signal_connect(G_OBJECT(desktops[i]), "scroll-event",
                          G_CALLBACK(scroll_cb), NULL);
-        g_signal_connect_after(G_OBJECT(desktops[i]), "button-press-event",
-                               G_CALLBACK(button_cb), NULL);
+        g_signal_connect(G_OBJECT(desktops[i]), "client-event",
+                         G_CALLBACK(client_message_received), NULL);
+        menu_attach(XFCE_DESKTOP(desktops[i]));
+        windowlist_attach(XFCE_DESKTOP(desktops[i]));
         if(mcs_client) {
             settings_register_callback(xfce_desktop_settings_changed, desktops[i]);
             xfce_desktop_settings_load_initial(XFCE_DESKTOP(desktops[i]),

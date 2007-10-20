@@ -61,6 +61,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4menu/libxfce4menu.h>
 
 #ifdef HAVE_THUNAR_VFS
 #include <thunar-vfs/thunar-vfs.h>
@@ -68,14 +69,27 @@
 
 #include "xfdesktop-common.h"
 
-#include "desktop-menu-private.h"
-#include "desktop-menu.h"
-#include "dummy_icon.h"
+typedef struct
+{
+	XfceMenu *xfce_menu;
+	
+    gchar *filename;  /* file the menu is currently using */
+    gboolean using_default_menu;
+    
+    gboolean use_menu_icons;  /* show menu icons? */
+	
+    gint idle_id;  /* source id for idled generation */
+    
+    gboolean modified;
+    
+#ifdef HAVE_THUNAR_VFS
+    GList *monitors;
+#endif
+} XfceDesktopMenu;
 
-/*< private >*/
-GdkPixbuf *dummy_icon = NULL;
-GdkPixbuf *unknown_icon = NULL;
-gint _xfce_desktop_menu_icon_size = 24;
+static void _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu);
+
+static gint _xfce_desktop_menu_icon_size = 24;
 static GtkIconTheme *_deskmenu_icon_theme = NULL;
 
 static gboolean _generate_menu(XfceDesktopMenu *desktop_menu,
@@ -284,35 +298,18 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
             g_error_free(error);
             return FALSE;
         }
-    
-        desktop_menu->menu = gtk_menu_new();
-        gtk_widget_show(desktop_menu->menu);
-    
-        desktop_menu_add_items(desktop_menu, desktop_menu->xfce_menu,
-                               desktop_menu->menu);
     }
     
     return ret;
 }
 
-/*< private >*/
-void
+static void
 _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 {
-    if(desktop_menu->menu)
-        gtk_widget_destroy(desktop_menu->menu);
     if(desktop_menu->xfce_menu)
         g_object_unref(G_OBJECT(desktop_menu->xfce_menu));
     
-    desktop_menu->menu = NULL;
     desktop_menu->xfce_menu = NULL;
-}
-
-void
-_desktop_menu_ensure_unknown_icon(void)
-{
-    if(!unknown_icon)
-        unknown_icon = gdk_pixbuf_new_from_inline(-1, xfce_unknown, TRUE, NULL);
 }
 
 static gboolean
@@ -368,12 +365,39 @@ xfce_desktop_menu_new_impl(const gchar *menu_file,
     return desktop_menu;
 }
 
+G_MODULE_EXPORT void
+xfce_desktop_menu_populate_menu_impl(XfceDesktopMenu *desktop_menu,
+                                     GtkWidget *menu)
+{
+    g_return_if_fail(desktop_menu && menu);
+    
+    if(!desktop_menu->xfce_menu) {
+        _generate_menu(desktop_menu, FALSE);
+        if(!desktop_menu->xfce_menu)
+            return;
+    }
+    
+    desktop_menu_add_items(desktop_menu, desktop_menu->xfce_menu,
+                           GTK_WIDGET(menu));
+}
+
 G_MODULE_EXPORT GtkWidget *
 xfce_desktop_menu_get_widget_impl(XfceDesktopMenu *desktop_menu)
 {
+    GtkWidget *menu;
+    
     g_return_val_if_fail(desktop_menu != NULL, NULL);
     
-    return desktop_menu->menu;
+    menu = gtk_menu_new();
+    
+    xfce_desktop_menu_populate_menu_impl(desktop_menu, menu);
+    
+    if(!desktop_menu->xfce_menu) {
+        gtk_widget_destroy(menu);
+        return NULL;
+    }
+    
+    return menu;
 }
 
 G_MODULE_EXPORT G_CONST_RETURN gchar *
@@ -460,12 +484,6 @@ g_module_check_init(GModule *module)
 	
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
     _xfce_desktop_menu_icon_size = w;
-    
-    if(dummy_icon)
-        g_object_unref(G_OBJECT(dummy_icon));
-    dummy_icon = xfce_inline_icon_at_size(dummy_icon_data,
-                                           _xfce_desktop_menu_icon_size,
-                                          _xfce_desktop_menu_icon_size);
     
     _deskmenu_icon_theme = gtk_icon_theme_get_default();
     

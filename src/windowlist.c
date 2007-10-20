@@ -188,10 +188,13 @@ menu_item_from_netk_window(NetkWindow *netk_window, gint icon_width,
     return mi;
 }
 
-static GtkWidget *
-windowlist_create(GdkScreen *gscreen)
+static void
+windowlist_populate(XfceDesktop *desktop,
+                    GtkMenuShell *menu)
 {
-    GtkWidget *menu, *submenu, *mi, *label, *img;
+    GtkWidget *submenu, *mi, *label, *img;
+    GdkScreen *gscreen;
+    GList *menu_children;
     GtkStyle *style;
     NetkScreen *netk_screen;
     gint nworkspaces, i;
@@ -201,16 +204,42 @@ windowlist_create(GdkScreen *gscreen)
     GList *windows, *l;
     NetkWindow *netk_window;
     gint w, h;
-    PangoFontDescription *italic_font_desc = pango_font_description_from_string("italic");
+    PangoFontDescription *italic_font_desc;
     gboolean is_empty_workspace;
     
-    g_return_val_if_fail(GDK_IS_SCREEN(gscreen), NULL);
+    if(!show_windowlist)
+        return;
+    
+    italic_font_desc = pango_font_description_from_string("italic");
+    
+    if(gtk_widget_has_screen(GTK_WIDGET(menu)))
+        gscreen = gtk_widget_get_screen(GTK_WIDGET(menu));
+    else
+        gscreen = gdk_display_get_default_screen(gdk_display_get_default());
+    
+    /* check to see if the menu is empty.  if not, add the windowlist to a
+     * submenu */
+    menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
+    if(menu_children) {
+        GtkWidget *tmpmenu = gtk_menu_new();
+        gtk_menu_set_screen(GTK_MENU(tmpmenu), gscreen);
+        gtk_widget_show(tmpmenu);
+        
+        mi = gtk_separator_menu_item_new();
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        
+        mi = gtk_menu_item_new_with_label(_("Window List"));
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        
+        gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), tmpmenu);
+        menu = (GtkMenuShell *)tmpmenu;
+        g_list_free(menu_children);
+    }
     
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
-    
-    menu = gtk_menu_new();
-    gtk_widget_show(menu);
-    style = gtk_widget_get_style(menu);
+    style = gtk_widget_get_style(GTK_WIDGET(menu));
     
     netk_screen = netk_screen_get(gdk_screen_get_number(gscreen));
     nworkspaces = netk_screen_get_workspace_count(netk_screen);
@@ -218,7 +247,7 @@ windowlist_create(GdkScreen *gscreen)
     
     for(i = 0; i < nworkspaces; i++) {
         netk_workspace = netk_screen_get_workspace(netk_screen, i);
-        submenu = menu;
+        submenu = (GtkWidget *)menu;
         
         if(wl_show_ws_names || wl_submenus) {
             ws_name = netk_workspace_get_name(netk_workspace);
@@ -363,43 +392,6 @@ windowlist_create(GdkScreen *gscreen)
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     g_signal_connect(G_OBJECT(mi), "activate",
             G_CALLBACK(set_num_workspaces), GINT_TO_POINTER(nworkspaces-1));
-    
-    return menu;
-}
-
-static gboolean
-windowlist_deactivate_idled(gpointer user_data)
-{
-    gtk_widget_destroy(GTK_WIDGET(user_data));
-    
-    return FALSE;
-}
-
-void
-popup_windowlist(GdkScreen *gscreen, gint button, guint32 time)
-{
-    GdkWindow *root;
-    
-    if(!show_windowlist)
-        return;
-    
-    g_return_if_fail(GDK_IS_SCREEN(gscreen));
-    
-    root = gdk_screen_get_root_window(gscreen);
-    if(xfdesktop_popup_grab_available(root, time)) {
-        GtkWidget *windowlist;
-
-        windowlist = windowlist_create(gscreen);
-        if(windowlist) {
-            gtk_menu_set_screen(GTK_MENU(windowlist), gscreen);
-            g_signal_connect_swapped(G_OBJECT(windowlist), "deactivate",
-                                     G_CALLBACK(g_idle_add),
-                                     (gpointer)windowlist_deactivate_idled);
-            gtk_menu_popup(GTK_MENU(windowlist), NULL, NULL, NULL, NULL,
-                           button, time);
-        }
-    } else
-        g_critical("Unable to get keyboard/mouse grab. Unable to pop up windowlist");
 }
 
 void
@@ -443,6 +435,13 @@ windowlist_init(McsClient *mcs_client)
             setting = NULL;
         }
     }
+}
+
+void
+windowlist_attach(XfceDesktop *desktop)
+{
+    g_signal_connect_after(G_OBJECT(desktop), "populate-secondary-root-menu",
+                           G_CALLBACK(windowlist_populate), NULL);
 }
 
 gboolean

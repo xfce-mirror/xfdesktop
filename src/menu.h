@@ -25,16 +25,15 @@
 #ifndef _XFDESKTOP__MENU_H_
 #define _XFDESKTOP__MENU_H_
 
-#include <gdk/gdkscreen.h>
-#include <gtk/gtkwidget.h>
+#include "xfce-desktop.h"
 
 #include <libxfce4mcs/mcs-client.h>
 
 G_BEGIN_DECLS
 
 void menu_init(McsClient *mcs_client);
+void menu_attach(XfceDesktop *desktop);
 gboolean menu_settings_changed(McsClient *client, McsAction action, McsSetting *setting, gpointer user_data);
-void popup_desktop_menu(GdkScreen *gscreen, gint button, guint32 time);
 void menu_set_show_icons(gboolean show_icons);
 void menu_reload();
 void menu_cleanup();

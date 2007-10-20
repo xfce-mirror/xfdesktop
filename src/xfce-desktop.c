@@ -1,7 +1,7 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright (c) 2004-2006 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (c) 2004-2007 Brian Tarricone, <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -74,7 +74,6 @@
 #include <libxfcegui4/libxfcegui4.h>
 
 #include "xfdesktop-common.h"
-#include "main.h"
 #include "xfce-desktop.h"
 
 struct _XfceDesktopPriv
@@ -101,12 +100,22 @@ struct _XfceDesktopPriv
 #endif
 };
 
+enum
+{
+    SIG_POPULATE_ROOT_MENU = 0,
+    SIG_POPULATE_SECONDARY_ROOT_MENU,
+    N_SIGNALS
+};
+
 
 static void xfce_desktop_class_init(XfceDesktopClass *klass);
 static void xfce_desktop_init(XfceDesktop *desktop);
 static void xfce_desktop_finalize(GObject *object);
 static void xfce_desktop_realize(GtkWidget *widget);
 static void xfce_desktop_unrealize(GtkWidget *widget);
+static gboolean xfce_desktop_button_press_event(GtkWidget *widget,
+                                                GdkEventButton *evt);
+static gboolean xfce_desktop_popup_menu(GtkWidget *widget);
 
 static gboolean xfce_desktop_expose(GtkWidget *w,
                                     GdkEventExpose *evt);
@@ -115,6 +124,8 @@ static gboolean xfce_desktop_delete_event(GtkWidget *w,
 static void style_set_cb(GtkWidget *w,
                          GtkStyle *old_style,
                          gpointer user_data);
+
+static guint signals[N_SIGNALS] = { 0, };
 
 /* private functions */
 
@@ -476,10 +487,6 @@ screen_set_selection(XfceDesktop *desktop)
     XSelectInput(GDK_DISPLAY(), xwin, PropertyChangeMask | ButtonPressMask);
     XSetSelectionOwner(GDK_DISPLAY(), selection_atom, xwin, GDK_CURRENT_TIME);
 
-    /* listen for client messages */
-    g_signal_connect(G_OBJECT(desktop), "client-event",
-            G_CALLBACK(client_message_received), NULL);
-
     /* Check to see if we managed to claim the selection. If not,
      * we treat it as if we got it then immediately lost it */
     if(XGetSelectionOwner(GDK_DISPLAY(), selection_atom) == xwin) {
@@ -504,6 +511,7 @@ screen_set_selection(XfceDesktop *desktop)
 }
 
 
+
 /* gobject-related functions */
 
 
@@ -522,8 +530,30 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     
     widget_class->realize = xfce_desktop_realize;
     widget_class->unrealize = xfce_desktop_unrealize;
+    widget_class->button_press_event = xfce_desktop_button_press_event;
     widget_class->expose_event = xfce_desktop_expose;
     widget_class->delete_event = xfce_desktop_delete_event;
+    widget_class->popup_menu = xfce_desktop_popup_menu;
+    
+    signals[SIG_POPULATE_ROOT_MENU] = g_signal_new("populate-root-menu",
+                                                   XFCE_TYPE_DESKTOP,
+                                                   G_SIGNAL_RUN_LAST,
+                                                   G_STRUCT_OFFSET(XfceDesktopClass,
+                                                                   populate_root_menu),
+                                                   NULL, NULL,
+                                                   g_cclosure_marshal_VOID__OBJECT,
+                                                   G_TYPE_NONE, 1,
+                                                   GTK_TYPE_MENU_SHELL);
+    
+    signals[SIG_POPULATE_SECONDARY_ROOT_MENU] = g_signal_new("populate-secondary-root-menu",
+                                                             XFCE_TYPE_DESKTOP,
+                                                             G_SIGNAL_RUN_LAST,
+                                                             G_STRUCT_OFFSET(XfceDesktopClass,
+                                                                             populate_secondary_root_menu),
+                                                             NULL, NULL,
+                                                             g_cclosure_marshal_VOID__OBJECT,
+                                                             G_TYPE_NONE, 1,
+                                                             GTK_TYPE_MENU_SHELL);
 }
 
 static void
@@ -690,6 +720,50 @@ xfce_desktop_unrealize(GtkWidget *widget)
     gtk_selection_remove_all(widget);
     
     GTK_WIDGET_UNSET_FLAGS(widget, GTK_REALIZED);
+}
+
+static gboolean
+xfce_desktop_button_press_event(GtkWidget *w,
+                                GdkEventButton *evt)
+{
+    guint button = evt->button;
+    guint state = evt->state;
+    
+    if(evt->type == GDK_BUTTON_PRESS) {
+        if(button == 2 || (button == 1 && (state & GDK_SHIFT_MASK)
+                           && (state & GDK_CONTROL_MASK)))
+        {
+            xfce_desktop_popup_secondary_root_menu(XFCE_DESKTOP(w),
+                                                   button, evt->time);
+            return TRUE;
+        } else if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK))) {
+            xfce_desktop_popup_root_menu(XFCE_DESKTOP(w),
+                                         button, evt->time);
+            return TRUE;
+        }
+    }
+    
+    return FALSE;
+}
+
+static gboolean
+xfce_desktop_popup_menu(GtkWidget *w)
+{
+    GdkEventButton *evt;
+    guint button, etime;
+    
+    evt = (GdkEventButton *)gtk_get_current_event();
+    if(evt && GDK_BUTTON_PRESS == evt->type) {
+        button = evt->button;
+        etime = evt->time;
+    } else {
+        button = 0;
+        etime = gtk_get_current_event_time();
+    }
+    
+    xfce_desktop_popup_root_menu(XFCE_DESKTOP(w), button, etime);
+    
+    return TRUE;
 }
 
 static gboolean
@@ -963,4 +1037,75 @@ xfce_desktop_peek_backdrop(XfceDesktop *desktop,
                          && GTK_WIDGET_REALIZED(GTK_WIDGET(desktop))
                          && monitor < desktop->priv->nbackdrops, NULL);
     return desktop->priv->backdrops[monitor];
+}
+
+static gboolean
+xfce_desktop_menu_destroy_idled(gpointer data)
+{
+    gtk_widget_destroy(GTK_WIDGET(data));
+    return FALSE;
+}
+
+static void
+xfce_desktop_do_menu_popup(XfceDesktop *desktop,
+                           guint button,
+                           guint activate_time,
+                           guint populate_signal)
+{
+    GdkScreen *screen;
+    GtkWidget *menu;
+    GList *menu_children;
+    
+    TRACE("entering");
+    
+    if(gtk_widget_has_screen(GTK_WIDGET(desktop)))
+        screen = gtk_widget_get_screen(GTK_WIDGET(desktop));
+    else
+        screen = gdk_display_get_default_screen(gdk_display_get_default());
+    
+    menu = gtk_menu_new();
+    gtk_menu_set_screen(GTK_MENU(menu), screen);
+    gtk_widget_show(menu);
+    g_signal_connect_swapped(G_OBJECT(menu), "deactivate",
+                             G_CALLBACK(g_idle_add),
+                             (gpointer)xfce_desktop_menu_destroy_idled);
+    
+    g_signal_emit(G_OBJECT(desktop), populate_signal, 0, menu);
+    
+    /* if nobody populated the menu, don't do anything */
+    menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
+    if(!menu_children) {
+        gtk_widget_destroy(menu);
+        return;
+    }
+    
+    g_list_free(menu_children);
+    
+    gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(desktop), NULL);
+    
+    if(xfdesktop_popup_grab_available(gdk_screen_get_root_window(screen),
+                                      activate_time))
+    {
+        gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, button,
+                       activate_time);
+    } else
+        g_critical("Unable to get keyboard/mouse grab. Unable to pop up menu");
+}
+
+void
+xfce_desktop_popup_root_menu(XfceDesktop *desktop,
+                             guint button,
+                             guint activate_time)
+{
+    xfce_desktop_do_menu_popup(desktop, button, activate_time,
+                               signals[SIG_POPULATE_ROOT_MENU]);
+}
+
+void
+xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
+                                       guint button,
+                                       guint activate_time)
+{
+    xfce_desktop_do_menu_popup(desktop, button, activate_time,
+                               signals[SIG_POPULATE_SECONDARY_ROOT_MENU]);
 }

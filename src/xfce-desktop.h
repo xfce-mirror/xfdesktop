@@ -1,7 +1,7 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright (c) 2004 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (c) 2004-2007 Brian Tarricone, <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,9 +21,7 @@
 #ifndef _XFCE_DESKTOP_H_
 #define _XFCE_DESKTOP_H_
 
-#include <glib.h>
-#include <glib-object.h>
-#include <gtk/gtkwindow.h>
+#include <gtk/gtk.h>
 
 #include "xfce-backdrop.h"
 
@@ -60,6 +58,16 @@ struct _XfceDesktop
 struct _XfceDesktopClass
 {
     GtkWindowClass parent_class;
+    
+    /*< signals >*/
+    
+    /* for the app menu/file context menu */
+    void (*populate_root_menu)(XfceDesktop *desktop,
+                               GtkMenuShell *menu);
+    
+    /* for the windowlist menu */
+    void (*populate_secondary_root_menu)(XfceDesktop *desktop,
+                                         GtkMenuShell *menu);
 };
 
 GType xfce_desktop_get_type                     () G_GNUC_CONST;
@@ -95,6 +103,13 @@ void xfce_desktop_thaw_updates(XfceDesktop *desktop);
 
 XfceBackdrop *xfce_desktop_peek_backdrop(XfceDesktop *desktop,
                                          guint monitor);
+
+void xfce_desktop_popup_root_menu(XfceDesktop *desktop,
+                                  guint button,
+                                  guint activate_time);
+void xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
+                                            guint button,
+                                            guint activate_time);
 
 G_END_DECLS
 

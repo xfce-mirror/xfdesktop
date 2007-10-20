@@ -1,3 +1,1053 @@
+2007-05-11 01:42  kelnos
+
+	* xfdesktop/trunk/settings/appearance-settings.c,
+	  xfdesktop/trunk/src/xfce-backdrop.c,
+	  xfdesktop/trunk/src/xfce-backdrop.h: add 'zoomed' option to
+	  backdrop styles. this is a combination scaling/cropping mode
+	  that ensures the backdrop image extends to every edge of the
+	  screen without messing with the aspect ratio. patch from
+	  trondsg@gmail.com (bug 3138)
+
+2007-05-05 18:10  kelnos
+
+	* xfdesktop/branches/xfce_4_4/NEWS,
+	  xfdesktop/branches/xfce_4_4/panel-plugin/desktop-menu-plugin.c,
+	  xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c: fix memleak
+	  and 'too many open file descriptors' (missing xfce_rc_close())
+	  (bug 3065)
+
+2007-05-05 14:55  majkl
+
+	* libexo/trunk/po/cs.po, squeeze/trunk/po/cs.po,
+	  terminal/trunk/po/cs.po, xfburn/trunk/po/cs.po,
+	  xfdesktop/trunk/po/cs.po: Updated Czech translations
+
+2007-04-11 19:55  erenturkay
+
+	* xfdesktop/branches/xfce_4_4/po/tr.po, xfdesktop/trunk/po/tr.po:
+	  fix a very little mistake :(((
+
+2007-04-09 10:05  maximilian
+
+	* libexo/trunk/po-doc/fr.po, libexo/trunk/po/fr.po,
+	  libxfce4util/branches/xfce_4_4/po/fr.po,
+	  libxfce4util/trunk/po/fr.po,
+	  libxfcegui4/branches/xfce_4_4/po/fr.po,
+	  libxfcegui4/trunk/po/fr.po, mousepad/branches/xfce_4_4/po/fr.po,
+	  mousepad/trunk/po/fr.po, squeeze/trunk/po/fr.po,
+	  terminal/trunk/po-doc/ChangeLog, terminal/trunk/po-doc/fr.po,
+	  terminal/trunk/po/fr.po, thunar/trunk/po-doc/fr.po,
+	  thunar/trunk/po/fr.po, xarchiver/trunk/po/fr.po,
+	  xfburn/trunk/po/fr.po, xfcalendar/branches/xfce_4_4/po/fr.po,
+	  xfcalendar/trunk/po/fr.po,
+	  xfce-mcs-manager/branches/xfce_4_4/po/fr.po,
+	  xfce-mcs-manager/trunk/po/fr.po,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/fr.po,
+	  xfce-mcs-plugins/trunk/po/fr.po,
+	  xfce-utils/branches/xfce_4_4/po/fr.po,
+	  xfce-utils/trunk/po/fr.po,
+	  xfce4-appfinder/branches/xfce_4_4/po/fr.po,
+	  xfce4-icon-theme/branches/xfce_4_4/po/fr.po,
+	  xfce4-icon-theme/trunk/po/fr.po,
+	  xfce4-panel/branches/xfce_4_4/po/fr.po,
+	  xfce4-panel/trunk/po/fr.po,
+	  xfce4-session/branches/xfce_4_4/po/fr.po,
+	  xfce4-session/trunk/po/fr.po,
+	  xfce4-trigger-launcher/trunk/po/fr.po,
+	  xfdesktop/branches/xfce_4_4/po-doc/fr.po,
+	  xfdesktop/branches/xfce_4_4/po/fr.po,
+	  xfdesktop/trunk/po-doc/fr.po, xfdesktop/trunk/po/fr.po,
+	  xfmedia/trunk/po/fr.po, xfprint/branches/xfce_4_4/po/fr.po,
+	  xfprint/trunk/po/fr.po, xfwm4/branches/xfce_4_4/po/fr.po,
+	  xfwm4/trunk/po/fr.po: * fr.po: Fixed typos and style in the
+	  French translation of Terminal's manual * Changed my email
+	  address in all the fr.po files in trunk and 4.4
+
+2007-04-08 10:40  daichi
+
+	* xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/POTFILES.in,
+	  xfdesktop/trunk/po/POTFILES.skip, xfdesktop/trunk/po/ar.po,
+	  xfdesktop/trunk/po/az.po, xfdesktop/trunk/po/be.po,
+	  xfdesktop/trunk/po/bg.po, xfdesktop/trunk/po/bn_IN.po,
+	  xfdesktop/trunk/po/ca.po, xfdesktop/trunk/po/cs.po,
+	  xfdesktop/trunk/po/de.po, xfdesktop/trunk/po/dz.po,
+	  xfdesktop/trunk/po/el.po, xfdesktop/trunk/po/en_GB.po,
+	  xfdesktop/trunk/po/eo.po, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.po, xfdesktop/trunk/po/et.po,
+	  xfdesktop/trunk/po/eu.po, xfdesktop/trunk/po/fa.po,
+	  xfdesktop/trunk/po/fi.po, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/gl.po, xfdesktop/trunk/po/gu.po,
+	  xfdesktop/trunk/po/he.po, xfdesktop/trunk/po/hi.po,
+	  xfdesktop/trunk/po/hu.po, xfdesktop/trunk/po/hy.po,
+	  xfdesktop/trunk/po/it.po, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ka.po, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.po, xfdesktop/trunk/po/mk.po,
+	  xfdesktop/trunk/po/mr.po, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nb_NO.po, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pa.po, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/pt_BR.po, xfdesktop/trunk/po/pt_PT.po,
+	  xfdesktop/trunk/po/ro.po, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/sk.po, xfdesktop/trunk/po/sq.po,
+	  xfdesktop/trunk/po/sv.po, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.po, xfdesktop/trunk/po/uk.po,
+	  xfdesktop/trunk/po/vi.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.po: *
+	  POTFILES.in: Removed panel-plugin/xfce4-menu.desktop.in, added
+	  panel-plugin/xfce4-menu.desktop.in.in. * POTFILES.skip: Added. *
+	  ar.po: Fixed errors. * ja.po: Updated Japanese translations. *
+	  *.po: Updated.
+
+2007-04-07 22:07  maximilian
+
+	* squeeze/trunk/po/ChangeLog, squeeze/trunk/po/fr.po,
+	  xfce4-panel/trunk/po/ChangeLog, xfce4-panel/trunk/po/fr.po,
+	  xfdesktop/branches/xfce_4_4/doc/fr/images/Makefile.am,
+	  xfdesktop/branches/xfce_4_4/doc/fr/images/root_menu.png,
+	  xfdesktop/branches/xfce_4_4/doc/fr/images/root_menu2.png,
+	  xfdesktop/branches/xfce_4_4/doc/fr/images/select_bg_color.png,
+	  xfdesktop/branches/xfce_4_4/doc/fr/images/xfdesktop-appearance-tab.png,
+	  xfdesktop/branches/xfce_4_4/doc/fr/images/xfdesktop-background.png,
+	  xfdesktop/branches/xfce_4_4/doc/fr/images/xfdesktop-behavior-tab.png,
+	  xfdesktop/branches/xfce_4_4/doc/fr/images/xfdesktop-editor.png,
+	  xfdesktop/branches/xfce_4_4/doc/fr/images/xfdesktop-list.png,
+	  xfdesktop/branches/xfce_4_4/doc/fr/images/xfdesktop-menu-tab.png,
+	  xfdesktop/branches/xfce_4_4/doc/fr/xfdesktop.html,
+	  xfdesktop/branches/xfce_4_4/doc/fr/xfdesktop.xml.in,
+	  xfdesktop/branches/xfce_4_4/po-doc/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po-doc/fr.po,
+	  xfdesktop/branches/xfce_4_4/po-doc/xfdesktop.pot,
+	  xfdesktop/trunk/doc/fr/images/Makefile.am,
+	  xfdesktop/trunk/doc/fr/images/root_menu.png,
+	  xfdesktop/trunk/doc/fr/images/root_menu2.png,
+	  xfdesktop/trunk/doc/fr/images/select_bg_color.png,
+	  xfdesktop/trunk/doc/fr/images/xfdesktop-appearance-tab.png,
+	  xfdesktop/trunk/doc/fr/images/xfdesktop-background.png,
+	  xfdesktop/trunk/doc/fr/images/xfdesktop-behavior-tab.png,
+	  xfdesktop/trunk/doc/fr/images/xfdesktop-editor.png,
+	  xfdesktop/trunk/doc/fr/images/xfdesktop-list.png,
+	  xfdesktop/trunk/doc/fr/images/xfdesktop-menu-tab.png,
+	  xfdesktop/trunk/doc/fr/xfdesktop.html,
+	  xfdesktop/trunk/doc/fr/xfdesktop.xml.in,
+	  xfdesktop/trunk/po-doc/ChangeLog, xfdesktop/trunk/po-doc/fr.po,
+	  xfdesktop/trunk/po-doc/xfdesktop.pot, xfwm4/trunk/po/ChangeLog,
+	  xfwm4/trunk/po/fr.po: Complete rewrite with updated images of
+	  the French translation for Xfdesktop's manual, trunk and 4.4.
+	  Updated some translations in trunk.
+
+2007-04-05 13:41  paurullan
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/ca.po,
+	  libxfcegui4/trunk/po/ChangeLog, libxfcegui4/trunk/po/ca.po,
+	  mousepad/trunk/po/ChangeLog, mousepad/trunk/po/ca.po,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/ca.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/ca.po,
+	  xarchiver/trunk/po/ChangeLog, xarchiver/trunk/po/ca.po,
+	  xfburn/trunk/po/ChangeLog, xfburn/trunk/po/ca.po,
+	  xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/ca.po,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/ca.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/ca.po, xfce-utils/trunk/po/ChangeLog,
+	  xfce-utils/trunk/po/ca.po, xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/ca.po, xfce4-mixer/trunk/po/ChangeLog,
+	  xfce4-mixer/trunk/po/ca.po, xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-panel/trunk/po/ca.po, xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/ca.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/ca.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/ca.po,
+	  xfmedia/trunk/po/ChangeLog, xfmedia/trunk/po/ca.po,
+	  xfwm4/trunk/po/ChangeLog, xfwm4/trunk/po/ca.po: i18n catalan
+	  update
+
+2007-04-01 09:15  maximilian
+
+	* xfce4-panel/trunk/po/ChangeLog, xfce4-panel/trunk/po/zh_CN.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/zh_CN.po:
+	  Updated the Simplified Chinese translations for trunk.
+
+2007-03-31 07:43  kelnos
+
+	* xfdesktop/trunk/common/xfdesktop-common.c: most likely fix
+	  problem with menu file not being found when it's in a prefix
+	  that includes the user's homedir
+
+2007-03-30 08:54  maximilian
+
+	* xfce4-panel/trunk/po/ChangeLog, xfce4-panel/trunk/po/zh_CN.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/zh_CN.po: Updated the Simplified Chinese
+	  translations for Xfce 4.4
+
+2007-03-29 18:30  erenturkay
+
+	* xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/tr.po: update
+
+2007-03-28 20:51  maximilian
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/de.po,
+	  libxfce4util/trunk/po/LINGUAS, mousepad/trunk/po/LINGUAS,
+	  thunar/trunk/po/LINGUAS, xarchiver/trunk/po/ChangeLog,
+	  xarchiver/trunk/po/LINGUAS, xarchiver/trunk/po/en_GB.po,
+	  xfburn/trunk/po/ChangeLog, xfburn/trunk/po/LINGUAS,
+	  xfburn/trunk/po/en_GB.po, xfcalendar/trunk/po/ChangeLog,
+	  xfcalendar/trunk/po/de.po, xfcalendar/trunk/po/en_GB.po,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/de.po,
+	  xfce-mcs-manager/trunk/po/en_GB.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/de.po,
+	  xfce-mcs-plugins/trunk/po/en_GB.po,
+	  xfce-utils/trunk/po/ChangeLog, xfce-utils/trunk/po/de.po,
+	  xfce-utils/trunk/po/en_GB.po,
+	  xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/de.po,
+	  xfce4-appfinder/trunk/po/en_GB.po,
+	  xfce4-icon-theme/trunk/po/ChangeLog,
+	  xfce4-icon-theme/trunk/po/LINGUAS,
+	  xfce4-icon-theme/trunk/po/de.po,
+	  xfce4-icon-theme/trunk/po/en_GB.po,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-mixer/trunk/po/de.po,
+	  xfce4-mixer/trunk/po/en_GB.po, xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-panel/trunk/po/de.po, xfce4-panel/trunk/po/en_GB.po,
+	  xfce4-session/trunk/po/ChangeLog, xfce4-session/trunk/po/de.po,
+	  xfce4-session/trunk/po/en_GB.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/en_GB.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/en_GB.po, xfmedia/trunk/po/ChangeLog,
+	  xfmedia/trunk/po/LINGUAS, xfmedia/trunk/po/de.po,
+	  xfmedia/trunk/po/en_GB.po, xfprint/trunk/po/ChangeLog,
+	  xfprint/trunk/po/de.po, xfprint/trunk/po/en_GB.po,
+	  xfwm4/trunk/po/ChangeLog, xfwm4/trunk/po/de.po,
+	  xfwm4/trunk/po/en_GB.po: * de.po: Nico Schümann minor fixes to
+	  the German translations * en_GB.po: Jeff Bailes updated the
+	  British English translations for trunk and branches
+
+2007-03-27 21:46  sas
+
+	* xfce4-panel/trunk/po/hu.po, xfdesktop/trunk/po/hu.po: hu trunk:
+	  desktop & panel updates
+
+2007-03-25 11:04  daichi
+
+	* libxfce4util/trunk/po/ChangeLog, libxfce4util/trunk/po/mk.po,
+	  libxfcegui4/trunk/po/ChangeLog, libxfcegui4/trunk/po/mk.po,
+	  mousepad/trunk/po/ChangeLog, mousepad/trunk/po/mk.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/mk.po,
+	  xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/mk.po,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/mk.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/mk.po, xfce-utils/trunk/po/ChangeLog,
+	  xfce-utils/trunk/po/mk.po, xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/mk.po,
+	  xfce4-icon-theme/trunk/po/ChangeLog,
+	  xfce4-icon-theme/trunk/po/mk.po, xfce4-mixer/trunk/po/ChangeLog,
+	  xfce4-mixer/trunk/po/mk.po, xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-panel/trunk/po/mk.po, xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/mk.po, xfdesktop/trunk/po/ChangeLog,
+	  xfdesktop/trunk/po/mk.po, xfmedia/trunk/po/ChangeLog,
+	  xfmedia/trunk/po/mk.po, xfprint/trunk/po/ChangeLog,
+	  xfprint/trunk/po/mk.po, xfwm4/trunk/po/ChangeLog,
+	  xfwm4/trunk/po/mk.po: Removed executable attribute.
+
+2007-03-24 20:26  maximilian
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/de.po,
+	  squeeze/trunk/po/ChangeLog, squeeze/trunk/po/fr.po,
+	  xfburn/trunk/po/ChangeLog, xfburn/trunk/po/de.po,
+	  xfcalendar/trunk/po/de.po, xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-panel/trunk/po/de.po, xfce4-panel/trunk/po/fr.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/de.po,
+	  xfdesktop/trunk/po/fr.po: * de.po: Nico Schümann updated the
+	  following German translations libexo; xfburn; xfce4-panel and
+	  xfdesktop * fr.po: Updated the following French translations
+	  squeeze; xfce4-panel and xfdesktop
+
+2007-03-23 20:26  jannis
+
+	* xfdesktop/trunk/configure.ac.in,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c: Synchronize with
+	  libxfce4menu API. Make sure to have the correct libxfce4menu
+	  version installed before enabling the menu plugin.
+
+2007-03-23 16:56  kelnos
+
+	* xfdesktop/trunk/common/desktop-menu-stub.c,
+	  xfdesktop/trunk/configure.ac.in,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/desktop-menu-private.h,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/modules/menu/frapmenu,
+	  xfdesktop/trunk/modules/menu/merge-frapmenu-svn.sh,
+	  xfdesktop/trunk/panel-plugin/Makefile.am,
+	  xfdesktop/trunk/src/Makefile.am: ditch frapmenu and use
+	  libxfce4menu instead. awesome.
+
+2007-03-23 00:11  kelnos
+
+	* xfdesktop/trunk/src/windowlist.c: ok, i should actually read
+	  patches before i apply them. change datatype from gint to
+	  gboolean, because i'm anal
+
+2007-03-23 00:09  kelnos
+
+	* xfdesktop/trunk/src/windowlist.c: fix multiple separators in
+	  windowlist menu when showing workspace names is disabled and
+	  some workspaces are empty
+
+2007-03-20 19:41  kelnos
+
+	* xfdesktop/trunk/panel-plugin: update svn:ignore
+
+2007-03-20 19:40  kelnos
+
+	* xfdesktop/trunk: update svn:ignore
+
+2007-03-20 19:37  kelnos
+
+	* xfdesktop/trunk/po/POTFILES.in, xfdesktop/trunk/po/ar.po,
+	  xfdesktop/trunk/po/az.po, xfdesktop/trunk/po/be.po,
+	  xfdesktop/trunk/po/bg.po, xfdesktop/trunk/po/bn_IN.po,
+	  xfdesktop/trunk/po/ca.po, xfdesktop/trunk/po/cs.po,
+	  xfdesktop/trunk/po/de.po, xfdesktop/trunk/po/dz.po,
+	  xfdesktop/trunk/po/el.po, xfdesktop/trunk/po/en_GB.po,
+	  xfdesktop/trunk/po/eo.po, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.po, xfdesktop/trunk/po/et.po,
+	  xfdesktop/trunk/po/eu.po, xfdesktop/trunk/po/fa.po,
+	  xfdesktop/trunk/po/fi.po, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/gl.po, xfdesktop/trunk/po/gu.po,
+	  xfdesktop/trunk/po/he.po, xfdesktop/trunk/po/hi.po,
+	  xfdesktop/trunk/po/hu.po, xfdesktop/trunk/po/hy.po,
+	  xfdesktop/trunk/po/it.po, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ka.po, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.po, xfdesktop/trunk/po/mk.po,
+	  xfdesktop/trunk/po/mr.po, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nb_NO.po, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pa.po, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/pt_BR.po, xfdesktop/trunk/po/pt_PT.po,
+	  xfdesktop/trunk/po/ro.po, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/sk.po, xfdesktop/trunk/po/sq.po,
+	  xfdesktop/trunk/po/sv.po, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.po, xfdesktop/trunk/po/uk.po,
+	  xfdesktop/trunk/po/vi.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.po:
+	  POTFILES.in: add xfce-screensavers.directory.in and remove
+	  xfce-science.directory.in update-po
+
+2007-03-20 19:28  kelnos
+
+	* xfdesktop/trunk/modules/menu/frapmenu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-item-cache.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu.c,
+	  xfdesktop/trunk/modules/menu/merge-frapmenu-svn.sh: update
+	  frapmenu from libfrap svn, add script to make all this easier
+
+2007-03-20 19:08  kelnos
+
+	* xfdesktop/trunk/modules/menu/desktop-menu.c: shutdown and reinit
+	  FrapMenu every time we regen the menu, because FrapMenu caches
+	  too much
+
+2007-03-20 18:57  kelnos
+
+	* xfdesktop/trunk/modules/menu/directory-data/Makefile.am,
+	  xfdesktop/trunk/modules/menu/directory-data/xfce-screensavers.directory.in,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce-applications.menu:
+	  dump screensavers in a submenu of 'Settings'
+
+2007-03-20 18:48  kelnos
+
+	* xfdesktop/trunk/modules/menu/directory-data/Makefile.am,
+	  xfdesktop/trunk/modules/menu/directory-data/xfce-science.directory.in,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce-applications.menu:
+	  remove 'Science' from the toplevel categories (it should get
+	  sorted under 'Education' anyway).
+
+2007-03-19 23:57  kelnos
+
+	* xfdesktop/trunk/settings/behavior-settings.c,
+	  xfdesktop/trunk/settings/settings-common.h,
+	  xfdesktop/trunk/src/windowlist.c: add windowlist prefs: - toggle
+	  showing workspace names in list - toggle showing windows in a
+	  submenu per workspace - toggle showing sticky windows only in
+	  the active workspace (bug 3024) need to clean up extra
+	  whitespace in dialog; later
+
+2007-03-19 18:15  kelnos
+
+	* xfdesktop/trunk/modules/menu/desktop-menu.c: no, jannis, i don't
+	  mind you updating xfdesktop, but at least use my coding style
+	  next time ^_~
+
+2007-03-19 14:47  erenturkay
+
+	* xfdesktop/trunk/po/tr.po: update po
+
+2007-03-19 13:32  jannis
+
+	* xfdesktop/trunk/modules/menu/frapmenu/frap-menu.c: Update
+	  frap-menu.c again.
+
+2007-03-19 13:15  jannis
+
+	* xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-layout.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu.h: Brian, I hope
+	  you don't mind me updating xfdesktop to be in sync with the
+	  latest changes. I just wanted to see if it works and now that
+	  the code is written down already - why not use it?
+	  modules/menu/frapmenu/: * Update frap-menu.c, frap-menu.h,
+	  frap-menu-layout.c. modules/menu/desktop-menu.c: * Check if the
+	  menu has a layout and if not, concat submenus and items properly
+	  before generating the widgets for them. * Properly set the
+	  submenu name by using frap_menu_get_name(submenu) rather than
+	  frap_menu_get_name(menu).
+
+2007-03-19 08:31  kelnos
+
+	* xfdesktop/trunk/modules/menu/desktop-menu.c: check that the menu
+	  file exists before feeding it to FrapMenu
+
+2007-03-19 08:17  kelnos
+
+	* xfdesktop/trunk/modules/menu/desktop-menu.c: watch
+	  $XDG_CONFIG_HOME/menus for changes if UserMenu is true (this
+	  catches the case where the user doesn't have their own menu, but
+	  creates one while xfdesktop is running)
+
+2007-03-19 07:56  kelnos
+
+	* xfdesktop/trunk/panel-plugin/Makefile.am,
+	  xfdesktop/trunk/panel-plugin/desktop-menu-plugin.c: make the
+	  menu plugin not crash. not crashing is good.
+
+2007-03-19 07:36  kelnos
+
+	* xfdesktop/trunk/src/main.c, xfdesktop/trunk/src/xfce-desktop.c:
+	  always init/shutdown thunar-vfs if either file icons are enabled
+	  or we're using thunar-vfs for desktop menu regen monitoring.
+	  don't init and shutdown when switching icon styles; just leave it
+
+2007-03-19 07:32  kelnos
+
+	* xfdesktop/trunk/src/main.c: make sure thunar-vfs gets inited if
+	  we need it for the desktop menu
+
+2007-03-19 07:28  kelnos
+
+	* xfdesktop/trunk/configure.ac.in,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/desktop-menu-private.h,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c: use thunar-vfs for
+	  directory change notification so we know when we should
+	  regenerate the desktop menu
+
+2007-03-19 07:05  sas
+
+	* xfdesktop/trunk/po/hu.po: hu trunk: dt updates
+
+2007-03-19 07:03  kelnos
+
+	* xfdesktop/trunk/modules/menu/directory-data/Makefile.am: remove
+	  trailing whitespace after \
+
+2007-03-19 05:57  kelnos
+
+	* xfdesktop/trunk/4.4-i18n-migration/README: explain what's in
+	  this dir
+
+2007-03-19 05:56  kelnos
+
+	* xfdesktop/trunk/4.4-i18n-migration,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/az.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/ca.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/cs.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/da.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/de.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/el.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/es.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/et.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/eu.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/fa_IR.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/fi.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/fr.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/he.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/hu.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/ja.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/ko.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/menuxml-i18n-create-pot.pl,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/menuxml-i18n-extract-all.pl,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/menuxml-i18n-merge-all.pl,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/menuxml.pot,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/ms.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/nl.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/pa.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/pl.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/pt_BR.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/ro.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/ru.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/sk.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/sv.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/ta.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/tr.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/uk.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/vi.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/zh_CN.po,
+	  xfdesktop/trunk/4.4-i18n-migration/menuxml/zh_TW.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/ca.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/cs.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/de.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/el.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/es.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/eu.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/fi.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/fr.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/he.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/hu.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/ja.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/nl.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/pl.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/pt_BR.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/regcat-i18n-create-pot.pl,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/regcat-i18n-extract-all.pl,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/regcat-i18n-merge-all.pl,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/regcat.pot,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/ro.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/ru.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/sk.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/sv.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/tr.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/zh_CN.po,
+	  xfdesktop/trunk/4.4-i18n-migration/regcat/zh_TW.po: might as
+	  well save the work i did to migrate all the old menu system
+	  translated strings to the new menu system. might be useful again
+	  later.
+
+2007-03-19 05:54  kelnos
+
+	* xfdesktop/trunk/po/POTFILES.in, xfdesktop/trunk/po/ar.po,
+	  xfdesktop/trunk/po/az.po, xfdesktop/trunk/po/be.po,
+	  xfdesktop/trunk/po/bg.po, xfdesktop/trunk/po/bn_IN.po,
+	  xfdesktop/trunk/po/ca.po, xfdesktop/trunk/po/cs.po,
+	  xfdesktop/trunk/po/de.po, xfdesktop/trunk/po/dz.po,
+	  xfdesktop/trunk/po/el.po, xfdesktop/trunk/po/en_GB.po,
+	  xfdesktop/trunk/po/eo.po, xfdesktop/trunk/po/es.po,
+	  xfdesktop/trunk/po/es_MX.po, xfdesktop/trunk/po/et.po,
+	  xfdesktop/trunk/po/eu.po, xfdesktop/trunk/po/fa.po,
+	  xfdesktop/trunk/po/fi.po, xfdesktop/trunk/po/fr.po,
+	  xfdesktop/trunk/po/gl.po, xfdesktop/trunk/po/gu.po,
+	  xfdesktop/trunk/po/he.po, xfdesktop/trunk/po/hi.po,
+	  xfdesktop/trunk/po/hu.po, xfdesktop/trunk/po/hy.po,
+	  xfdesktop/trunk/po/it.po, xfdesktop/trunk/po/ja.po,
+	  xfdesktop/trunk/po/ka.po, xfdesktop/trunk/po/ko.po,
+	  xfdesktop/trunk/po/lt.po, xfdesktop/trunk/po/mk.po,
+	  xfdesktop/trunk/po/mr.po, xfdesktop/trunk/po/ms.po,
+	  xfdesktop/trunk/po/nb_NO.po, xfdesktop/trunk/po/nl.po,
+	  xfdesktop/trunk/po/pa.po, xfdesktop/trunk/po/pl.po,
+	  xfdesktop/trunk/po/pt_BR.po, xfdesktop/trunk/po/pt_PT.po,
+	  xfdesktop/trunk/po/ro.po, xfdesktop/trunk/po/ru.po,
+	  xfdesktop/trunk/po/sk.po, xfdesktop/trunk/po/sq.po,
+	  xfdesktop/trunk/po/sv.po, xfdesktop/trunk/po/ta.po,
+	  xfdesktop/trunk/po/tr.po, xfdesktop/trunk/po/uk.po,
+	  xfdesktop/trunk/po/vi.po, xfdesktop/trunk/po/xfdesktop.pot,
+	  xfdesktop/trunk/po/zh_CN.po, xfdesktop/trunk/po/zh_TW.po: well,
+	  this was fun. first, we use intltool to pull all the strings out
+	  of the new.desktop and .directory files and update-po. then, we
+	  write a bunch of perl scripts to extract any useful translated
+	  strings from all the translated menu.xml.* and
+	  xfce-registered-categories.xml.* files from the 4.4 branch, and
+	  then merge them into the trunk .po files.
+
+2007-03-19 03:44  kelnos
+
+	* xfdesktop/trunk/modules/menu/menu-data: update svn:ignore
+
+2007-03-19 03:43  kelnos
+
+	* xfdesktop/trunk/modules/menu/menu-data/Makefile.am,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-about-xfce.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-about-xfce.desktop.in,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-file-manager.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-file-manager.desktop.in,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-help.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-help.desktop.in,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-logout.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-logout.desktop.in,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-run-program.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-run-program.desktop.in,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-terminal.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-terminal.desktop.in,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-web-browser.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-web-browser.desktop.in:
+	  make .desktop files for default root menu i18n-able
+
+2007-03-19 03:41  kelnos
+
+	* xfdesktop/trunk/modules/menu/directory-data/Makefile.am: fix
+	  typo in makefile.am
+
+2007-03-19 03:36  kelnos
+
+	* xfdesktop/trunk/configure.ac.in,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/modules/menu/directory-data,
+	  xfdesktop/trunk/modules/menu/directory-data/Makefile.am,
+	  xfdesktop/trunk/modules/menu/directory-data/xfce-accessories.directory.in,
+	  xfdesktop/trunk/modules/menu/directory-data/xfce-development.directory.in,
+	  xfdesktop/trunk/modules/menu/directory-data/xfce-education.directory.in,
+	  xfdesktop/trunk/modules/menu/directory-data/xfce-games.directory.in,
+	  xfdesktop/trunk/modules/menu/directory-data/xfce-graphics.directory.in,
+	  xfdesktop/trunk/modules/menu/directory-data/xfce-multimedia.directory.in,
+	  xfdesktop/trunk/modules/menu/directory-data/xfce-network.directory.in,
+	  xfdesktop/trunk/modules/menu/directory-data/xfce-office.directory.in,
+	  xfdesktop/trunk/modules/menu/directory-data/xfce-other.directory.in,
+	  xfdesktop/trunk/modules/menu/directory-data/xfce-science.directory.in,
+	  xfdesktop/trunk/modules/menu/directory-data/xfce-settings.directory.in,
+	  xfdesktop/trunk/modules/menu/directory-data/xfce-system.directory.in,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce-applications.menu:
+	  add and implement .directory stuff. we have category icons now!
+
+2007-03-19 02:46  kelnos
+
+	* xfdesktop/trunk/modules/menu/desktop-menu.c: fix memleak; remove
+	  dead code
+
+2007-03-19 02:33  kelnos
+
+	* xfdesktop/trunk, xfdesktop/trunk/modules/menu/frapmenu,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb,
+	  xfdesktop/trunk/modules/menu/menu-data: update svn:ignore
+
+2007-03-19 02:29  kelnos
+
+	* xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-item.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-layout.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-layout.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-separator.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-separator.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/libfrapmenu.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/Makefile.am,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/README,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/spinlock.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/spinlock.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/tdb.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/tdb.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/tdbtool.c,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce-applications.menu:
+	  update my local copy of frapmenu - layout works now! (mostly)
+
+2007-03-18 17:45  jannis
+
+	* xfdesktop/trunk/modules/menu/menu-data/xfce-applications.menu:
+	  Fix desktop file IDs included in the layout
+
+2007-03-18 10:38  erenturkay
+
+	* libxfce4util/branches/xfce_4_4/po/ChangeLog,
+	  libxfce4util/trunk/po/ChangeLog,
+	  libxfcegui4/branches/xfce_4_4/po/ChangeLog,
+	  libxfcegui4/trunk/po/ChangeLog,
+	  mousepad/branches/xfce_4_4/po/ChangeLog,
+	  mousepad/trunk/po/ChangeLog, terminal/trunk/po/ChangeLog,
+	  thunar/trunk/po/ChangeLog,
+	  xfcalendar/branches/xfce_4_4/po/ChangeLog,
+	  xfcalendar/trunk/po/ChangeLog,
+	  xfce-mcs-manager/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/branches/xfce_4_4/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-utils/branches/xfce_4_4/po/ChangeLog,
+	  xfce-utils/trunk/po/ChangeLog,
+	  xfce4-appfinder/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-icon-theme/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-icon-theme/trunk/po/ChangeLog,
+	  xfce4-mixer/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-mixer/trunk/po/ChangeLog,
+	  xfce4-panel/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-session/branches/xfce_4_4/po/ChangeLog,
+	  xfce4-session/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfdesktop/branches/xfce_4_4/po/ChangeLog,
+	  xfdesktop/trunk/po/ChangeLog,
+	  xfprint/branches/xfce_4_4/po/ChangeLog,
+	  xfprint/trunk/po/ChangeLog,
+	  xfwm4/branches/xfce_4_4/po/ChangeLog, xfwm4/trunk/po/ChangeLog:
+	  update ChangeLog
+
+2007-03-18 02:44  kelnos
+
+	* xfdesktop/trunk/INSTALL, xfdesktop/trunk/configure.ac.in,
+	  xfdesktop/trunk/modules/menu/menu-data/Makefile.am,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce-applications.menu,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce-applications.menu.in:
+	  * remove INSTALL since automake/conf or whomever appears to
+	  supply it now * move xfce-applications.menu.in to
+	  xfce-applications.menu since configure doesn't need to generate
+	  it anymore (thanks jannis!)
+
+2007-03-17 21:12  jannis
+
+	* xfdesktop/trunk/modules/menu/menu-data/Makefile.am,
+	  xfdesktop/trunk/modules/menu/menu-data/about-xfce.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/file-manager.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/help.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/logout.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/run-program.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/terminal.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/web-browser.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce-applications.menu.in,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-about-xfce.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-file-manager.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-help.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-logout.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-run-program.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-terminal.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce4-web-browser.desktop:
+	  All .desktop files now have a "xfce4-" prefix, are part of the
+	  "X-Xfce-Toplevel" category and OnlyShowIn=XFCE. They're not
+	  installed into /usr/share/applications/menu-data/ anymore. Added
+	  a <Layout> element to xfce-applications.menu.in. Also cleaned up
+	  the file a little and added an <Include> rule for the
+	  "X-Xfce-Toplevel" category in the root menu element.
+
+2007-03-04 07:18  erenturkay
+
+	* xfdesktop/trunk/po/tr.po: update Turkish translation
+
+2007-03-03 10:06  mvd
+
+	* xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/uk.po:
+	  2007-03-03 Maxim Dziumanenko <dziumanenko@gmail.com> * Update
+	  Ukrainian translation.
+
+2007-02-25 02:28  kelnos
+
+	* xfdesktop/branches/xfce_4_4/settings/appearance-settings.c,
+	  xfdesktop/trunk/settings/appearance-settings.c: fix uri parsing
+	  to unescape '%##' stuff in the uri (bug 2942)
+
+2007-02-25 01:37  kelnos
+
+	* xfdesktop/trunk/src/xfce-backdrop.c: use nearest-neighbor
+	  interpolation when compositing a backdrop image when the image
+	  src is just centered or tiled onto dest. using bilinear or hyper
+	  interp causes blurriness in those cases. (patch mostly from Henk
+	  Boom, bug 2939). also, a minor optimisation: if the src and dest
+	  image sizes are equal, pretend the image style is 'centered'
+	  regardless of whatever it is to avoid extra scaling or pixbuf
+	  copying.
+
+2007-02-22 17:51  kelnos
+
+	* xfdesktop/trunk/configure.ac.in,
+	  xfdesktop/trunk/modules/menu/menu-data/Makefile.am,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce-applications.menu.in:
+	  fix weirdness with $prefix and expand $datadir properly
+
+2007-02-22 07:47  kelnos
+
+	* xfdesktop/trunk/modules/menu/desktop-menu.c: ditch empty submenus
+
+2007-02-22 07:46  kelnos
+
+	* xfdesktop/trunk/modules/menu/frapmenu/tdb/Makefile.in: remove
+	  generated file (how'd that get there? bad svn!)
+
+2007-02-21 20:31  kelnos
+
+	* xfdesktop/trunk/modules/menu/menu-data/xfce-applications.menu.in:
+	  make the 'Other' menu work properly. thanks to jannis for the tip
+
+2007-02-21 01:47  kelnos
+
+	* xfdesktop/trunk/Makefile.am, xfdesktop/trunk/menu.xml,
+	  xfdesktop/trunk/menu.xml.az, xfdesktop/trunk/menu.xml.ca,
+	  xfdesktop/trunk/menu.xml.cs, xfdesktop/trunk/menu.xml.da,
+	  xfdesktop/trunk/menu.xml.de, xfdesktop/trunk/menu.xml.el,
+	  xfdesktop/trunk/menu.xml.es, xfdesktop/trunk/menu.xml.et,
+	  xfdesktop/trunk/menu.xml.eu, xfdesktop/trunk/menu.xml.fa_IR,
+	  xfdesktop/trunk/menu.xml.fi, xfdesktop/trunk/menu.xml.fr,
+	  xfdesktop/trunk/menu.xml.he, xfdesktop/trunk/menu.xml.hu,
+	  xfdesktop/trunk/menu.xml.ja, xfdesktop/trunk/menu.xml.ko,
+	  xfdesktop/trunk/menu.xml.ms, xfdesktop/trunk/menu.xml.nl,
+	  xfdesktop/trunk/menu.xml.pa, xfdesktop/trunk/menu.xml.pl,
+	  xfdesktop/trunk/menu.xml.pt_BR, xfdesktop/trunk/menu.xml.ro,
+	  xfdesktop/trunk/menu.xml.ru, xfdesktop/trunk/menu.xml.sk,
+	  xfdesktop/trunk/menu.xml.sv, xfdesktop/trunk/menu.xml.ta,
+	  xfdesktop/trunk/menu.xml.tr, xfdesktop/trunk/menu.xml.uk,
+	  xfdesktop/trunk/menu.xml.vi, xfdesktop/trunk/menu.xml.zh_CN,
+	  xfdesktop/trunk/menu.xml.zh_TW: remove all the menu.xml.* files
+
+2007-02-21 01:45  kelnos
+
+	* xfdesktop/trunk/INSTALL,
+	  xfdesktop/trunk/common/desktop-menu-stub.c,
+	  xfdesktop/trunk/common/xfdesktop-common.c,
+	  xfdesktop/trunk/configure.ac.in,
+	  xfdesktop/trunk/modules/menu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/desktop-menu-cache.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-cache.h,
+	  xfdesktop/trunk/modules/menu/desktop-menu-dentry.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-dentry.h,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.h,
+	  xfdesktop/trunk/modules/menu/desktop-menu-private.h,
+	  xfdesktop/trunk/modules/menu/desktop-menu.c,
+	  xfdesktop/trunk/modules/menu/desktop-menuspec.c,
+	  xfdesktop/trunk/modules/menu/desktop-menuspec.h,
+	  xfdesktop/trunk/modules/menu/frapmenu,
+	  xfdesktop/trunk/modules/menu/frapmenu/Makefile.am,
+	  xfdesktop/trunk/modules/menu/frapmenu/README,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-and-rules.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-and-rules.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-directory.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-directory.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-environment.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-environment.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-item-cache.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-item-cache.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-item-pool.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-item-pool.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-item.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-item.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-move.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-move.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-not-rules.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-not-rules.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-or-rules.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-or-rules.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-rules.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-rules.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-standard-rules.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu-standard-rules.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/frap-menu.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/libfrapmenu.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/Makefile.am,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/Makefile.in,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/spinlock.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/spinlock.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/tdb.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/tdb.h,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/tdbconfig.h.in,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/tdbspeed.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/tdbtool.c,
+	  xfdesktop/trunk/modules/menu/frapmenu/tdb/tdbtorture.c,
+	  xfdesktop/trunk/modules/menu/menu-data,
+	  xfdesktop/trunk/modules/menu/menu-data/Makefile.am,
+	  xfdesktop/trunk/modules/menu/menu-data/about-xfce.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/file-manager.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/help.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/logout.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/run-program.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/terminal.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/web-browser.desktop,
+	  xfdesktop/trunk/modules/menu/menu-data/xfce-applications.menu.in,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.ca,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.cs,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.de,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.el,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.es,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.eu,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.fi,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.fr,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.he,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.hu,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.ja,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.nl,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.pl,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.pt_BR,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.ro,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.ru,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.sk,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.sv,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.zh_CN,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.zh_TW,
+	  xfdesktop/trunk/src/Makefile.am, xfdesktop/trunk/src/main.c:
+	  import a snapshot of jannis' FrapMenu and rework the desktop
+	  menu to use that instead of the current implementation. it's
+	  nowhere near finished. TODO: * figure out how to create an
+	  ordering between items and submenus * write a script to pull all
+	  the translated strings out of all the menu.xml.* and
+	  xfce-registered-categories.xml.* files and merge them into the
+	  appropriate .desktop and .directory files * filter out the %F,
+	  %f, %u, etc. crap from the commands in the menu items * make the
+	  'Other' menu work * ...?
+
+2007-02-20 19:48  kelnos
+
+	* xfdesktop/branches/xfce_4_4/Makefile.am,
+	  xfdesktop/branches/xfce_4_4/menu.xml.pa,
+	  xfdesktop/trunk/Makefile.am: add punjabi menu.xml to 4.4 branch,
+	  and add to makefile for trunk
+
+2007-02-19 03:36  aalam
+
+	* xfdesktop/trunk/menu.xml.pa: adding Punjabi translation file here
+
+2007-02-18 22:21  kelnos
+
+	* xfdesktop/branches/xfce_4_4/modules/menu/desktop-menu-dentry.c,
+	  xfdesktop/branches/xfce_4_4/modules/menu/desktop-menu-file.c,
+	  xfdesktop/branches/xfce_4_4/modules/menu/desktop-menu.h,
+	  xfdesktop/branches/xfce_4_4/src/xfdesktop-icon-view.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-dentry.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu-file.c,
+	  xfdesktop/trunk/modules/menu/desktop-menu.h,
+	  xfdesktop/trunk/src/xfdesktop-icon-view.c: remove use of
+	  __FUNCTION__ as it breaks sun's compiler (bug 2924)
+
+2007-02-10 18:56  maximilian
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/LINGUAS,
+	  libxfce4util/trunk/po/ChangeLog, libxfce4util/trunk/po/LINGUAS,
+	  libxfcegui4/trunk/po/ChangeLog, libxfcegui4/trunk/po/LINGUAS,
+	  mousepad/trunk/po/ChangeLog, mousepad/trunk/po/LINGUAS,
+	  squeeze/trunk/po/ChangeLog, squeeze/trunk/po/LINGUAS,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/LINGUAS,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/LINGUAS,
+	  xarchiver/trunk/po/ChangeLog, xfburn/trunk/po/ChangeLog,
+	  xfburn/trunk/po/LINGUAS, xfcalendar/trunk/po/ChangeLog,
+	  xfcalendar/trunk/po/LINGUAS,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/LINGUAS,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/LINGUAS,
+	  xfce-utils/trunk/po/ChangeLog, xfce-utils/trunk/po/LINGUAS,
+	  xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/LINGUAS,
+	  xfce4-icon-theme/trunk/po/ChangeLog,
+	  xfce4-icon-theme/trunk/po/LINGUAS,
+	  xfce4-mixer/trunk/po/ChangeLog, xfce4-mixer/trunk/po/LINGUAS,
+	  xfce4-panel/trunk/po/ChangeLog, xfce4-panel/trunk/po/LINGUAS,
+	  xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/LINGUAS,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/LINGUAS,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/LINGUAS,
+	  xfmedia/trunk/po/ChangeLog, xfmedia/trunk/po/LINGUAS,
+	  xfprint/trunk/po/ChangeLog, xfprint/trunk/po/LINGUAS,
+	  xfwm4/trunk/po/ChangeLog, xfwm4/trunk/po/LINGUAS: Verified all
+	  LINGUAS files and added Albanian language to it.
+
+2007-02-10 00:44  kelnos
+
+	* xfdesktop/branches/xfce_4_4/doc/C/xfdesktop.html,
+	  xfdesktop/branches/xfce_4_4/doc/C/xfdesktop.xml.in,
+	  xfdesktop/trunk/doc/C/xfdesktop.html,
+	  xfdesktop/trunk/doc/C/xfdesktop.xml.in: fix typo in docs
+
+2007-02-08 22:33  alnokta
+
+	* xfdesktop/trunk/po/ChangeLog: Adding information to the ChangeLog
+
+2007-02-08 22:32  alnokta
+
+	* xfdesktop/trunk/po/ar.po: 289 strings, 1 fuzzy, 11 not
+	  translated. initial commit.
+
+2007-02-07 14:28  maximilian
+
+	* xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/fr.po,
+	  xfcalendar/trunk/po/zh_CN.po, xfce-utils/trunk/po/ChangeLog,
+	  xfce-utils/trunk/po/zh_CN.po, xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-panel/trunk/po/fr.po, xfce4-panel/trunk/po/zh_CN.po,
+	  xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/zh_CN.po, xfdesktop/trunk/po/ChangeLog,
+	  xfdesktop/trunk/po/fr.po, xfdesktop/trunk/po/zh_CN.po,
+	  xfprint/trunk/po/ChangeLog, xfprint/trunk/po/zh_CN.po,
+	  xfwm4/trunk/po/ChangeLog, xfwm4/trunk/po/zh_CN.po: Same as
+	  before but in trunk now.
+
+2007-02-03 11:07  piarres
+
+	* xfdesktop/trunk/menu.xml.eu: Basque translation update
+
+2007-01-25 19:07  maximilian
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/sq.po,
+	  libxfce4util/trunk/po/ChangeLog, libxfce4util/trunk/po/sq.po,
+	  libxfcegui4/trunk/po/ChangeLog, libxfcegui4/trunk/po/sq.po,
+	  mousepad/trunk/po/ChangeLog, mousepad/trunk/po/sq.po,
+	  squeeze/trunk/po/ChangeLog, squeeze/trunk/po/sq.po,
+	  terminal/trunk/po/ChangeLog, terminal/trunk/po/sq.po,
+	  thunar/trunk/po/ChangeLog, thunar/trunk/po/fr.po,
+	  thunar/trunk/po/sq.po, xarchiver/trunk/po/ChangeLog,
+	  xarchiver/trunk/po/sq.po, xfburn/trunk/po/ChangeLog,
+	  xfburn/trunk/po/fr.po, xfburn/trunk/po/sq.po,
+	  xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/sq.po,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/sq.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/sq.po, xfce-utils/trunk/po/ChangeLog,
+	  xfce-utils/trunk/po/sq.po, xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/sq.po,
+	  xfce4-icon-theme/trunk/po/ChangeLog,
+	  xfce4-icon-theme/trunk/po/sq.po, xfce4-mixer/trunk/po/ChangeLog,
+	  xfce4-mixer/trunk/po/sq.po, xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-panel/trunk/po/sq.po, xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/sq.po, xfce4-terminal/trunk/po/ChangeLog,
+	  xfce4-terminal/trunk/po/sq.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/sq.po,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/sq.po,
+	  xfmedia/trunk/po/ChangeLog, xfmedia/trunk/po/sq.po,
+	  xfprint/trunk/po/ChangeLog, xfprint/trunk/po/sq.po,
+	  xfwm4/trunk/po/ChangeLog, xfwm4/trunk/po/sq.po: Added the
+	  Albanian translations by Besnik Bleta for the core packages.
+	  Updated some French translations
+
+2007-01-21 14:08  maximilian
+
+	* libexo/trunk/po/ChangeLog, libexo/trunk/po/ro.po,
+	  libxfce4util/trunk/po/ChangeLog, libxfce4util/trunk/po/fr.po,
+	  libxfcegui4/trunk/po/ChangeLog, libxfcegui4/trunk/po/ro.po,
+	  mousepad/trunk/po/ChangeLog, mousepad/trunk/po/fr.po,
+	  mousepad/trunk/po/pl.po, terminal/trunk/po/ChangeLog,
+	  terminal/trunk/po/ro.po, thunar/trunk/po/ChangeLog,
+	  thunar/trunk/po/pl.po, thunar/trunk/po/ro.po,
+	  xfcalendar/trunk/po/ChangeLog, xfcalendar/trunk/po/ro.po,
+	  xfce-mcs-manager/trunk/po/ChangeLog,
+	  xfce-mcs-manager/trunk/po/ro.po,
+	  xfce-mcs-plugins/trunk/po/ChangeLog,
+	  xfce-mcs-plugins/trunk/po/ro.po, xfce-utils/trunk/po/ChangeLog,
+	  xfce-utils/trunk/po/fr.po, xfce-utils/trunk/po/ro.po,
+	  xfce4-appfinder/trunk/po/ChangeLog,
+	  xfce4-appfinder/trunk/po/ro.po, xfce4-mixer/trunk/po/ChangeLog,
+	  xfce4-mixer/trunk/po/ro.po, xfce4-panel/trunk/po/ChangeLog,
+	  xfce4-panel/trunk/po/ro.po, xfce4-session/trunk/po/ChangeLog,
+	  xfce4-session/trunk/po/ro.po,
+	  xfce4-trigger-launcher/trunk/po/ChangeLog,
+	  xfce4-trigger-launcher/trunk/po/ro.po,
+	  xfdesktop/trunk/menu.xml.ro,
+	  xfdesktop/trunk/modules/menu/xfce-registered-categories.xml.ro,
+	  xfdesktop/trunk/po/ChangeLog, xfdesktop/trunk/po/ro.po,
+	  xfprint/trunk/po/ChangeLog, xfprint/trunk/po/ro.po,
+	  xfwm4/trunk/po/ChangeLog, xfwm4/trunk/po/ro.po: * fr.po: Minor
+	  changes to the French translations in xfce-utils, libxfce4util
+	  and mousepad * pl.po: Updated the Polish translation by Szymon
+	  Ka&#322;asz <szymon_maestro@gazeta.pl> in thunar and mousepad. *
+	  ro.po: Updated the Romanian translation by Mi&#351;u Moldovan
+	  <dumol@gnome.ro> in most core packages.
+
+2007-01-21 11:53  kelnos
+
+	* xfdesktop/trunk/ChangeLog: update cl
+
 2007-01-21 11:51  kelnos
 
 	* xfdesktop/trunk/NEWS: update NEWS for 4.4.0
