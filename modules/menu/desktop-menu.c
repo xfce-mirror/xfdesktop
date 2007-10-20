@@ -328,11 +328,13 @@ G_MODULE_EXPORT XfceDesktopMenu *
 xfce_desktop_menu_new_impl(const gchar *menu_file,
                            gboolean deferred)
 {
+#ifdef HAVE_THUNAR_VFS
     static XfceMenuMonitorVTable monitor_vtable = {
         desktop_menu_xfce_menu_monitor_file,
         desktop_menu_xfce_menu_monitor_directory,
         desktop_menu_xfce_menu_remove_monitor
     };
+#endif
     XfceDesktopMenu *desktop_menu = g_new0(XfceDesktopMenu, 1);
     
     desktop_menu->use_menu_icons = TRUE;
@@ -353,7 +355,6 @@ xfce_desktop_menu_new_impl(const gchar *menu_file,
         desktop_menu->idle_id = g_idle_add(_generate_menu_initial, desktop_menu);
     else {
         if(!_generate_menu(desktop_menu, FALSE)) {
-            xfce_menu_monitor_set_vtable(NULL, NULL);
             g_free(desktop_menu);
             desktop_menu = NULL;
         }
@@ -458,10 +459,6 @@ xfce_desktop_menu_destroy_impl(XfceDesktopMenu *desktop_menu)
         g_source_remove(desktop_menu->idle_id);
         desktop_menu->idle_id = 0;
     }
-    
-#ifdef HAVE_THUNAR_VFS
-    xfce_menu_monitor_set_vtable(NULL, NULL);
-#endif
     
     g_signal_handlers_disconnect_by_func(_deskmenu_icon_theme,
                                          G_CALLBACK(itheme_changed_cb),
