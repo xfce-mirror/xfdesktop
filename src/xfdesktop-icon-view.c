@@ -544,8 +544,9 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 /* avoid repaint delay */
                 while(gtk_events_pending())
                     gtk_main_iteration();
-                /* if we're a right click, emit signal on the icon */
-                xfdesktop_icon_menu_popup(icon);
+                /* XfceDesktop will handle signalling the icon view manager
+                 * to show the context menu */
+                return FALSE;
             }
             
             return TRUE;

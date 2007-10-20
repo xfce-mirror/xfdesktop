@@ -77,7 +77,8 @@ static GdkDragAction xfdesktop_special_file_icon_get_allowed_drop_actions(Xfdesk
 static gboolean xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
                                                          XfdesktopIcon *src_icon,
                                                          GdkDragAction action);
-static GtkWidget *xfdesktop_special_file_icon_get_popup_menu(XfdesktopIcon *icon);
+static gboolean xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
+                                                                  GtkWidget *menu);
 
 static G_CONST_RETURN ThunarVfsInfo *xfdesktop_special_file_icon_peek_info(XfdesktopFileIcon *icon);
 
@@ -122,7 +123,7 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
     icon_class->get_allowed_drag_actions = xfdesktop_special_file_icon_get_allowed_drag_actions;
     icon_class->get_allowed_drop_actions = xfdesktop_special_file_icon_get_allowed_drop_actions;
     icon_class->do_drop_dest = xfdesktop_special_file_icon_do_drop_dest;
-    icon_class->get_popup_menu = xfdesktop_special_file_icon_get_popup_menu;
+    icon_class->populate_context_menu = xfdesktop_special_file_icon_populate_context_menu;
     
     file_icon_class->peek_info = xfdesktop_special_file_icon_peek_info;
     file_icon_class->can_rename_file = (gboolean (*)(XfdesktopFileIcon *))gtk_false;
@@ -608,16 +609,15 @@ xfdesktop_special_file_icon_trash_empty(GtkWidget *w,
     }
 }
 
-static GtkWidget *
-xfdesktop_special_file_icon_get_popup_menu(XfdesktopIcon *icon)
+static gboolean
+xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
+                                                  GtkWidget *menu)
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
-    GtkWidget *menu, *mi, *img;
+    GtkWidget *mi, *img;
     
     if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH != special_file_icon->priv->type)
-        return NULL;
-    
-    menu = gtk_menu_new();
+        return FALSE;
     
     img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
     gtk_widget_show(img);
@@ -642,7 +642,7 @@ xfdesktop_special_file_icon_get_popup_menu(XfdesktopIcon *icon)
     } else
         gtk_widget_set_sensitive(mi, FALSE);
     
-    return menu;
+    return TRUE;
 }
 
 

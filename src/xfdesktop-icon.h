@@ -61,7 +61,6 @@ struct _XfdesktopIconClass
      * with return values are (for some unknown reason) not allowed to be
      * G_SIGNAL_RUN_FIRST.  go figure. */
     gboolean (*activated)(XfdesktopIcon *icon);
-    void (*menu_popup)(XfdesktopIcon *icon);
     
     /*< virtual functions >*/
     GdkPixbuf *(*peek_pixbuf)(XfdesktopIcon *icon, gint size);
@@ -74,12 +73,13 @@ struct _XfdesktopIconClass
     
     G_CONST_RETURN gchar *(*peek_tooltip)(XfdesktopIcon *icon);
     
-    GtkWidget *(*get_popup_menu)(XfdesktopIcon *icon);
+    gboolean (*populate_context_menu)(XfdesktopIcon *icon,
+                                      GtkWidget *menu);
 };
 
 GType xfdesktop_icon_get_type() G_GNUC_CONST;
 
-/* virtual function accessors */
+/* xfdesktop virtual function accessors */
 
 GdkPixbuf *xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
                                      gint size);
@@ -105,7 +105,8 @@ gboolean xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
                                      XfdesktopIcon *src_icon,
                                      GdkDragAction action);
 
-GtkWidget *xfdesktop_icon_get_popup_menu(XfdesktopIcon *icon);
+gboolean xfdesktop_icon_populate_context_menu(XfdesktopIcon *icon,
+                                              GtkWidget *menu);
 
 GtkWidget *xfdesktop_icon_peek_icon_view(XfdesktopIcon *icon);
 
@@ -117,7 +118,6 @@ void xfdesktop_icon_position_changed(XfdesktopIcon *icon);
 
 void xfdesktop_icon_selected(XfdesktopIcon *icon);
 gboolean xfdesktop_icon_activated(XfdesktopIcon *icon);
-void xfdesktop_icon_menu_popup(XfdesktopIcon *icon);
 
 G_END_DECLS
 

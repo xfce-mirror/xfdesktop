@@ -33,6 +33,7 @@
 #include "xfdesktop-icon-view.h"
 #include "xfdesktop-window-icon.h"
 #include "xfdesktop-window-icon-manager.h"
+#include "xfce-desktop.h"
 
 
 static void xfdesktop_window_icon_manager_set_property(GObject *object,
@@ -490,6 +491,21 @@ window_created_cb(NetkScreen *netk_screen,
     g_object_weak_ref(G_OBJECT(window), window_destroyed_cb, wmanager);
 }
 
+static void
+xfdesktop_window_icon_manager_populate_context_menu(XfceDesktop *desktop,
+                                                    GtkMenuShell *menu,
+                                                    gpointer user_data)
+{
+    XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(user_data);
+    XfdesktopWindowIconWorkspace *wiws = wmanager->priv->icon_workspaces[wmanager->priv->active_ws_num];
+    
+    if(!wiws->selected_icon)
+        return;
+    
+    xfdesktop_icon_populate_context_menu(XFDESKTOP_ICON(wiws->selected_icon),
+                                         GTK_WIDGET(menu));
+}
+
 
 /* public api */
 
@@ -512,11 +528,17 @@ xfdesktop_window_icon_manager_real_init(XfdesktopIconViewManager *manager,
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
     GList *windows, *l;
     gint i;
+    GtkWidget *toplevel;
     
     wmanager->priv->icon_view = icon_view;
     xfdesktop_icon_view_set_selection_mode(icon_view, GTK_SELECTION_SINGLE);
     g_signal_connect(G_OBJECT(icon_view), "icon-selected",
                      G_CALLBACK(xfdesktop_window_icon_manager_icon_selected_cb),
+                     wmanager);
+    
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
+    g_signal_connect(G_OBJECT(toplevel), "populate-root-menu",
+                     G_CALLBACK(xfdesktop_window_icon_manager_populate_context_menu),
                      wmanager);
     
     netk_screen_force_update(wmanager->priv->netk_screen);
@@ -562,6 +584,7 @@ xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager)
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
     gint i;
     GList *windows, *l;
+    GtkWidget *toplevel;
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(wmanager->priv->netk_screen),
                                          G_CALLBACK(workspace_changed_cb),
@@ -574,6 +597,11 @@ xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager)
                                          wmanager);
     g_signal_handlers_disconnect_by_func(G_OBJECT(wmanager->priv->netk_screen),
                                          G_CALLBACK(workspace_destroyed_cb),
+                                         wmanager);
+    
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(wmanager->priv->icon_view));
+    g_signal_handlers_disconnect_by_func(G_OBJECT(toplevel),
+                                         G_CALLBACK(xfdesktop_window_icon_manager_populate_context_menu),
                                          wmanager);
     
     windows = netk_screen_get_windows(wmanager->priv->netk_screen);

@@ -45,7 +45,6 @@ enum {
     SIG_POS_CHANGED,
     SIG_SELECTED,
     SIG_ACTIVATED,
-    SIG_MENU_POPUP,
     SIG_N_SIGNALS,
 };
 
@@ -108,15 +107,6 @@ xfdesktop_icon_class_init(XfdesktopIconClass *klass)
                                             NULL,
                                             xfdesktop_marshal_BOOLEAN__VOID,
                                             G_TYPE_BOOLEAN, 0);
-    
-    __signals[SIG_MENU_POPUP] = g_signal_new("menu-popup",
-                                             XFDESKTOP_TYPE_ICON,
-                                             G_SIGNAL_RUN_LAST,
-                                             G_STRUCT_OFFSET(XfdesktopIconClass,
-                                                             menu_popup),
-                                             NULL, NULL,
-                                             g_cclosure_marshal_VOID__VOID,
-                                             G_TYPE_NONE, 0);
 }
 
 static void
@@ -269,19 +259,20 @@ xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon)
 }
 
 /*< optional >*/
-GtkWidget *
-xfdesktop_icon_get_popup_menu(XfdesktopIcon *icon)
+gboolean
+xfdesktop_icon_populate_context_menu(XfdesktopIcon *icon,
+                                     GtkWidget *menu)
 {
     XfdesktopIconClass *klass;
     
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
     
     klass = XFDESKTOP_ICON_GET_CLASS(icon);
     
-    if(!klass->get_popup_menu)
-        return NULL;
+    if(!klass->populate_context_menu)
+        return FALSE;
     
-    return klass->get_popup_menu(icon);
+    return klass->populate_context_menu(icon, menu);
 }
 
 GtkWidget *
@@ -332,11 +323,4 @@ xfdesktop_icon_activated(XfdesktopIcon *icon)
     g_signal_emit(G_OBJECT(icon), __signals[SIG_ACTIVATED], 0, &ret);
     
     return ret;
-}
-
-void
-xfdesktop_icon_menu_popup(XfdesktopIcon *icon)
-{
-    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
-    g_signal_emit(G_OBJECT(icon), __signals[SIG_MENU_POPUP], 0, NULL);
 }

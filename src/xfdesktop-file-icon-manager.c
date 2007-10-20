@@ -69,6 +69,7 @@
 #include "xfdesktop-dbus-bindings-trash.h"
 #include "xfdesktop-dbus-bindings-filemanager.h"
 #include "xfdesktop-file-icon-manager.h"
+#include "xfce-desktop.h"
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
@@ -857,6 +858,24 @@ xfdesktop_file_icon_menu_open_folder(GtkWidget *widget,
 }
 
 static void
+xfdesktop_file_icon_menu_open_desktop(GtkWidget *widget,
+                                      gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopFileIcon *icon = fmanager->priv->desktop_icon;
+    const ThunarVfsInfo *info;
+    GtkWidget *toplevel;
+    
+    info = xfdesktop_file_icon_peek_info(icon);
+    g_return_if_fail(info);
+    
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    
+    xfdesktop_file_utils_open_folder(info, fmanager->priv->gscreen,
+                                     GTK_WINDOW(toplevel));
+}
+
+static void
 xfdesktop_file_icon_manager_display_chooser_error(XfdesktopFileIconManager *fmanager)
 {
     GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
@@ -1064,19 +1083,21 @@ xfdesktop_menu_item_from_mime_handler(XfdesktopFileIconManager *fmanager,
 }
 
 static gboolean
-xfdesktop_file_icon_menu_deactivate_idled(gpointer user_data)
+xfdesktop_file_icon_menu_free_icon_list_idled(gpointer user_data)
 {
-    GList *icon_list = g_object_get_data(G_OBJECT(user_data),
-                                         "--xfdesktop-icon-list");
+    GList *icon_list = user_data;
     
-    gtk_widget_destroy(GTK_WIDGET(user_data));
-    
-    if(icon_list) {
-        g_list_foreach(icon_list, (GFunc)g_object_unref, NULL);
-        g_list_free(icon_list);
-    }
+    g_list_foreach(icon_list, (GFunc)g_object_unref, NULL);
+    g_list_free(icon_list);
     
     return FALSE;
+}
+
+static void
+xfdesktop_file_icon_menu_free_icon_list(GtkMenu *menu,
+                                        gpointer user_data)
+{
+    g_idle_add(xfdesktop_file_icon_menu_free_icon_list_idled, user_data);
 }
 
 static void
@@ -1535,15 +1556,16 @@ xfdesktop_mcs_settings_launch(GtkWidget *w,
 }
 
 static void
-xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
-                               gpointer user_data)
+xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
+                                                  GtkMenuShell *menu,
+                                                  gpointer user_data)
 {
-    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(file_icon);
-    ThunarVfsMimeInfo *mime_info = info ? info->mime_info : NULL;
+    XfdesktopFileIcon *file_icon = NULL;
+    const ThunarVfsInfo *info = NULL;
+    ThunarVfsMimeInfo *mime_info = NULL;
     GList *selected, *mime_apps, *l, *mime_actions = NULL;
-    GtkWidget *menu, *mi, *img, *menu2, *menu3;
+    GtkWidget *mi, *img, *tmpl_menu;
     gboolean multi_sel, have_templates = FALSE, got_custom_menu = FALSE;
     gint w = 0, h = 0;
     GdkPixbuf *pix;
@@ -1554,31 +1576,35 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
 #endif
     
+    TRACE("ENTERING");
+    
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
-    g_return_if_fail(selected);
+    if(selected)
+        file_icon = selected->data;
+    else {
+        /* assume click on the desktop itself */
+        selected = g_list_append(selected, fmanager->priv->desktop_icon);
+        file_icon = fmanager->priv->desktop_icon;
+    }
+    info = xfdesktop_file_icon_peek_info(file_icon);
+    if(info)
+        mime_info = info->mime_info;
+    
     multi_sel = (g_list_length(selected) > 1);
     
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
     
     if(!multi_sel) {
-        menu = xfdesktop_icon_get_popup_menu(XFDESKTOP_ICON(selected->data));
-        if(menu)
-            got_custom_menu = TRUE;
+        got_custom_menu = xfdesktop_icon_populate_context_menu(XFDESKTOP_ICON(selected->data),
+                                                               GTK_WIDGET(menu));
     }
-    
-    if(!got_custom_menu)
-        menu = gtk_menu_new();
-    
-    gtk_menu_set_screen(GTK_MENU(menu), fmanager->priv->gscreen);
-    gtk_widget_show(menu);
-    
-    g_signal_connect_swapped(G_OBJECT(menu), "deactivate",
-                             G_CALLBACK(g_idle_add),
-                             xfdesktop_file_icon_menu_deactivate_idled);
     
     /* make sure icons don't get destroyed while menu is open */
     g_list_foreach(selected, (GFunc)g_object_ref, NULL);
     g_object_set_data(G_OBJECT(menu), "--xfdesktop-icon-list", selected);
+    g_signal_connect(G_OBJECT(menu), "deactivate",
+                     G_CALLBACK(xfdesktop_file_icon_menu_free_icon_list),
+                     selected);
     
     if(!got_custom_menu) {
         if(multi_sel) {
@@ -1599,17 +1625,116 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
             if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
                 img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
                 gtk_widget_show(img);
-                mi = gtk_image_menu_item_new_with_mnemonic(_("_Open"));
+                if(file_icon == fmanager->priv->desktop_icon)
+                    mi = gtk_image_menu_item_new_with_mnemonic(_("_Open in New Window"));
+                else
+                    mi = gtk_image_menu_item_new_with_mnemonic(_("_Open"));
                 gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
                 gtk_widget_show(mi);
                 gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                 g_signal_connect(G_OBJECT(mi), "activate",
-                                 G_CALLBACK(xfdesktop_file_icon_menu_open_folder),
+                                 file_icon == fmanager->priv->desktop_icon
+                                 ? G_CALLBACK(xfdesktop_file_icon_menu_open_desktop)
+                                 : G_CALLBACK(xfdesktop_file_icon_menu_open_folder),
                                  fmanager);
                 
                 mi = gtk_separator_menu_item_new();
                 gtk_widget_show(mi);
                 gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                
+                if(file_icon == fmanager->priv->desktop_icon) {
+                    mi = gtk_image_menu_item_new_with_mnemonic(_("Create _Launcher..."));
+                    minfo = thunar_vfs_mime_database_get_info(thunar_mime_database,
+                                                              "application/x-desktop");
+                    if(minfo) {
+                        const gchar *icon_name = thunar_vfs_mime_info_lookup_icon_name(minfo,
+                                                                                       gtk_icon_theme_get_default());
+                        pix = xfce_themed_icon_load(icon_name, w);
+                        if(pix) {
+                            img = gtk_image_new_from_pixbuf(pix);
+                            gtk_widget_show(img);
+                            g_object_unref(G_OBJECT(pix));
+                            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                        }
+                    }
+                    g_object_set_data(G_OBJECT(mi), "xfdesktop-launcher-type", "Application");
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    g_signal_connect(G_OBJECT(mi), "activate",
+                                     G_CALLBACK(xfdesktop_file_icon_menu_create_launcher),
+                                     fmanager);
+                    
+                    mi = gtk_image_menu_item_new_with_mnemonic(_("Create _URL Link..."));
+                    pix = xfce_themed_icon_load("gnome-fs-bookmark", w);
+                    if(!pix)
+                        pix = xfce_themed_icon_load("emblem-favorite", w);
+                    if(pix) {
+                        img = gtk_image_new_from_pixbuf(pix);
+                        gtk_widget_show(img);
+                        g_object_unref(G_OBJECT(pix));
+                        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                    }
+                    g_object_set_data(G_OBJECT(mi), "xfdesktop-launcher-type", "Link");
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    g_signal_connect(G_OBJECT(mi), "activate",
+                                     G_CALLBACK(xfdesktop_file_icon_menu_create_launcher),
+                                     fmanager);
+                    
+                    mi = gtk_image_menu_item_new_with_mnemonic(_("Create _Folder..."));
+                    minfo = thunar_vfs_mime_database_get_info(thunar_mime_database,
+                                                              "inode/directory");
+                    if(minfo) {
+                        const gchar *icon_name = thunar_vfs_mime_info_lookup_icon_name(minfo,
+                                                                                       gtk_icon_theme_get_default());
+                        pix = xfce_themed_icon_load(icon_name, w);
+                        if(pix) {
+                            img = gtk_image_new_from_pixbuf(pix);
+                            gtk_widget_show(img);
+                            g_object_unref(G_OBJECT(pix));
+                            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                        }
+                    }
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    g_signal_connect(G_OBJECT(mi), "activate",
+                                     G_CALLBACK(xfdesktop_file_icon_menu_create_folder),
+                                     fmanager);
+                    
+                    mi = gtk_menu_item_new_with_mnemonic("Create From _Template");
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    
+                    tmpl_menu = gtk_menu_new();
+                    gtk_widget_show(tmpl_menu);
+                    gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), tmpl_menu);
+                    
+                    templates_path_str = g_build_filename(xfce_get_homedir(),
+                                                          "Templates",
+                                                          NULL);
+                    templates_path = thunar_vfs_path_new(templates_path_str, NULL);
+                    g_free(templates_path_str);
+                    if(templates_path) {
+                        have_templates = xfdesktop_file_icon_menu_fill_template_menu(tmpl_menu,
+                                                                                     templates_path,
+                                                                                     fmanager);
+                        thunar_vfs_path_unref(templates_path);
+                    }
+                    
+                    img = gtk_image_new_from_stock(GTK_STOCK_NEW, GTK_ICON_SIZE_MENU);
+                    gtk_widget_show(img);
+                    mi = gtk_image_menu_item_new_with_mnemonic(_("_Empty File"));
+                    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(tmpl_menu), mi);
+                    g_signal_connect(G_OBJECT(mi), "activate",
+                                     G_CALLBACK(xfdesktop_file_icon_template_item_activated),
+                                     fmanager);
+                    
+                    mi = gtk_separator_menu_item_new();
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                }
             } else {
                 if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
                     img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
@@ -1681,7 +1806,7 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                             gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi),
                                                       mime_apps_menu);
                         } else
-                            mime_apps_menu = menu;
+                            mime_apps_menu = (GtkWidget *)menu;
                         
                         for(l = mime_apps->next; l; l = l->next) {
                             mime_handler = THUNAR_VFS_MIME_HANDLER(l->data);
@@ -1772,49 +1897,69 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
         }
 #endif
         
-        mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_COPY, NULL);
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        g_signal_connect(G_OBJECT(mi), "activate",
-                         G_CALLBACK(xfdesktop_file_icon_menu_copy), fmanager);
-        
-        mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_CUT, NULL);
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
-            g_signal_connect(G_OBJECT(mi), "activate",
-                             G_CALLBACK(xfdesktop_file_icon_menu_cut),
-                             fmanager);
-        } else
+        if(file_icon == fmanager->priv->desktop_icon) {
+            mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_PASTE, NULL);
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            /* FIXME: implement */
             gtk_widget_set_sensitive(mi, FALSE);
-        
-        mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_DELETE, NULL);
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
+        } else {
+            mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_COPY, NULL);
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             g_signal_connect(G_OBJECT(mi), "activate",
-                             G_CALLBACK(xfdesktop_file_icon_menu_delete), 
+                             G_CALLBACK(xfdesktop_file_icon_menu_copy),
                              fmanager);
-        } else
-            gtk_widget_set_sensitive(mi, FALSE);
+            
+            mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_CUT, NULL);
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
+                g_signal_connect(G_OBJECT(mi), "activate",
+                                 G_CALLBACK(xfdesktop_file_icon_menu_cut),
+                                 fmanager);
+            } else
+                gtk_widget_set_sensitive(mi, FALSE);
+            
+            mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_DELETE, NULL);
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
+                g_signal_connect(G_OBJECT(mi), "activate",
+                                 G_CALLBACK(xfdesktop_file_icon_menu_delete), 
+                                 fmanager);
+            } else
+                gtk_widget_set_sensitive(mi, FALSE);
+            
+            mi = gtk_separator_menu_item_new();
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            
+            mi = gtk_image_menu_item_new_with_mnemonic(_("_Rename..."));
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            if(!multi_sel && xfdesktop_file_icon_can_rename_file(file_icon)) {
+                g_signal_connect(G_OBJECT(mi), "activate",
+                                 G_CALLBACK(xfdesktop_file_icon_menu_rename),
+                                 fmanager);
+            } else
+                gtk_widget_set_sensitive(mi, FALSE);
+        }
         
         mi = gtk_separator_menu_item_new();
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         
-        mi = gtk_image_menu_item_new_with_mnemonic(_("_Rename..."));
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        if(!multi_sel && xfdesktop_file_icon_can_rename_file(file_icon)) {
+        if(file_icon == fmanager->priv->desktop_icon) {
+            img = gtk_image_new_from_stock(GTK_STOCK_PREFERENCES, GTK_ICON_SIZE_MENU);
+            gtk_widget_show(img);
+            mi = gtk_image_menu_item_new_with_mnemonic(_("Desktop _Settings..."));
+            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             g_signal_connect(G_OBJECT(mi), "activate",
-                             G_CALLBACK(xfdesktop_file_icon_menu_rename),
-                             fmanager);
-        } else
-            gtk_widget_set_sensitive(mi, FALSE);
-    
-        mi = gtk_separator_menu_item_new();
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                             G_CALLBACK(xfdesktop_mcs_settings_launch), fmanager);
+        }
         
         img = gtk_image_new_from_stock(GTK_STOCK_PROPERTIES, GTK_ICON_SIZE_MENU);
         gtk_widget_show(img);
@@ -1826,174 +1971,12 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
             gtk_widget_set_sensitive(mi, FALSE);
         else {
             g_signal_connect(G_OBJECT(mi), "activate",
-                             G_CALLBACK(xfdesktop_file_icon_menu_properties),
+                             file_icon == fmanager->priv->desktop_icon
+                             ? G_CALLBACK(xfdesktop_file_icon_manager_desktop_properties)
+                             : G_CALLBACK(xfdesktop_file_icon_menu_properties),
                              fmanager);
         }
     }
-    
-    mi = gtk_separator_menu_item_new();
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    
-    mi = gtk_image_menu_item_new_with_mnemonic(_("Des_ktop"));
-    pix = xfce_themed_icon_load("user-desktop", w);
-    if(!pix)
-        pix = xfce_themed_icon_load("gnome-fs-desktop", w);
-    if(!pix)
-        pix = xfce_themed_icon_load("xfce4-backdrop", w);
-    if(pix) {
-        img = gtk_image_new_from_pixbuf(pix);
-        gtk_widget_show(img);
-        g_object_unref(G_OBJECT(pix));
-        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-    }
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    
-    menu2 = gtk_menu_new();
-    gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), menu2);
-    gtk_widget_show(menu2);
-    
-    mi = gtk_image_menu_item_new_with_mnemonic(_("Create _Launcher..."));
-    minfo = thunar_vfs_mime_database_get_info(thunar_mime_database,
-                                              "application/x-desktop");
-    if(minfo) {
-        const gchar *icon_name = thunar_vfs_mime_info_lookup_icon_name(minfo,
-                                                                       gtk_icon_theme_get_default());
-        pix = xfce_themed_icon_load(icon_name, w);
-        if(pix) {
-            img = gtk_image_new_from_pixbuf(pix);
-            gtk_widget_show(img);
-            g_object_unref(G_OBJECT(pix));
-            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-        }
-    }
-    g_object_set_data(G_OBJECT(mi), "xfdesktop-launcher-type", "Application");
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu2), mi);
-    g_signal_connect(G_OBJECT(mi), "activate",
-                     G_CALLBACK(xfdesktop_file_icon_menu_create_launcher),
-                     fmanager);
-    
-    mi = gtk_image_menu_item_new_with_mnemonic(_("Create _URL Link..."));
-    pix = xfce_themed_icon_load("gnome-fs-bookmark", w);
-    if(!pix)
-        pix = xfce_themed_icon_load("emblem-favorite", w);
-    if(pix) {
-        img = gtk_image_new_from_pixbuf(pix);
-        gtk_widget_show(img);
-        g_object_unref(G_OBJECT(pix));
-        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-    }
-    g_object_set_data(G_OBJECT(mi), "xfdesktop-launcher-type", "Link");
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu2), mi);
-    g_signal_connect(G_OBJECT(mi), "activate",
-                     G_CALLBACK(xfdesktop_file_icon_menu_create_launcher),
-                     fmanager);
-    
-    mi = gtk_image_menu_item_new_with_mnemonic(_("Create _Folder..."));
-    minfo = thunar_vfs_mime_database_get_info(thunar_mime_database,
-                                              "inode/directory");
-    if(minfo) {
-        const gchar *icon_name = thunar_vfs_mime_info_lookup_icon_name(minfo,
-                                                                       gtk_icon_theme_get_default());
-        pix = xfce_themed_icon_load(icon_name, w);
-        if(pix) {
-            img = gtk_image_new_from_pixbuf(pix);
-            gtk_widget_show(img);
-            g_object_unref(G_OBJECT(pix));
-            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-        }
-    }
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu2), mi);
-    g_signal_connect(G_OBJECT(mi), "activate",
-                     G_CALLBACK(xfdesktop_file_icon_menu_create_folder),
-                     fmanager);
-    
-    mi = gtk_menu_item_new_with_mnemonic("Create From _Template");
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu2), mi);
-    
-    menu3 = gtk_menu_new();
-    gtk_widget_show(menu3);
-    gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), menu3);
-    
-    templates_path_str = g_build_filename(xfce_get_homedir(),
-                                          "Templates",
-                                          NULL);
-    templates_path = thunar_vfs_path_new(templates_path_str, NULL);
-    g_free(templates_path_str);
-    if(templates_path) {
-        have_templates = xfdesktop_file_icon_menu_fill_template_menu(menu3,
-                                                                     templates_path,
-                                                                     fmanager);
-        thunar_vfs_path_unref(templates_path);
-    }
-    
-    img = gtk_image_new_from_stock(GTK_STOCK_NEW, GTK_ICON_SIZE_MENU);
-    gtk_widget_show(img);
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_Empty File"));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu3), mi);
-    g_signal_connect(G_OBJECT(mi), "activate",
-                     G_CALLBACK(xfdesktop_file_icon_template_item_activated),
-                     fmanager);
-    
-    mi = gtk_separator_menu_item_new();
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu2), mi);
-        
-    mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_PASTE, NULL);
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu2), mi);
-    /* FIXME: implement */
-    gtk_widget_set_sensitive(mi, FALSE);
-
-    mi = gtk_separator_menu_item_new();
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu2), mi);
-        
-#ifdef HAVE_THUNARX
-    for(l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
-        ThunarxMenuProvider *provider = THUNARX_MENU_PROVIDER(l->data);
-        GList *menu_actions = thunarx_menu_provider_get_folder_actions(provider,
-                                                                       toplevel,
-                                                                       THUNARX_FILE_INFO(fmanager->priv->desktop_icon));
-        xfdesktop_menu_shell_append_action_list(GTK_MENU_SHELL(menu2),
-                                                menu_actions);
-        g_list_foreach(menu_actions, (GFunc)g_object_unref, NULL);
-        g_list_free(menu_actions);
-    }
-    
-    mi = gtk_separator_menu_item_new();
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu2), mi);
-    gtk_widget_show(mi);
-#endif
-    
-    img = gtk_image_new_from_stock(GTK_STOCK_PREFERENCES, GTK_ICON_SIZE_MENU);
-    gtk_widget_show(img);
-    mi = gtk_image_menu_item_new_with_mnemonic(_("Desktop _Settings..."));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu2), mi);
-    g_signal_connect(G_OBJECT(mi), "activate",
-                     G_CALLBACK(xfdesktop_mcs_settings_launch), fmanager);
-    
-    img = gtk_image_new_from_stock(GTK_STOCK_PROPERTIES, GTK_ICON_SIZE_MENU);
-    gtk_widget_show(img);
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_Desktop Properties..."));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu2), mi);
-    g_signal_connect(G_OBJECT(mi), "activate",
-                     G_CALLBACK(xfdesktop_file_icon_manager_desktop_properties),
-                     fmanager);
-    
-    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0,
-                   gtk_get_current_event_time());
     
     /* don't free |selected|.  the menu deactivated handler does that */
 }
@@ -2133,8 +2116,6 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
         g_signal_connect(G_OBJECT(icon), "position-changed",
                          G_CALLBACK(xfdesktop_file_icon_position_changed),
                          fmanager);
-        g_signal_connect(G_OBJECT(icon), "menu-popup",
-                         G_CALLBACK(xfdesktop_file_icon_menu_popup), fmanager);
         xfdesktop_icon_view_add_item(fmanager->priv->icon_view,
                                      XFDESKTOP_ICON(icon));
     }
@@ -2751,6 +2732,7 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
     ThunarVfsInfo *desktop_info;
     gint i;
+    GtkWidget *toplevel;
 #ifdef HAVE_THUNARX
     ThunarxProviderFactory *thunarx_pfac;
 #endif
@@ -2758,6 +2740,11 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     g_return_val_if_fail(!fmanager->priv->inited, FALSE);
     
     fmanager->priv->icon_view = icon_view;
+    
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
+    g_signal_connect(G_OBJECT(toplevel), "populate-root-menu",
+                     G_CALLBACK(xfdesktop_file_icon_manager_populate_context_menu),
+                     fmanager);
     
     fmanager->priv->gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
     
@@ -2851,6 +2838,7 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
     gint i;
+    GtkWidget *toplevel;
     
     g_return_if_fail(fmanager->priv->inited);
     
@@ -2887,6 +2875,11 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
         g_list_free(fmanager->priv->active_trash_calls);
         fmanager->priv->active_trash_calls = NULL;
     }
+    
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    g_signal_handlers_disconnect_by_func(G_OBJECT(toplevel),
+                                         G_CALLBACK(xfdesktop_file_icon_manager_populate_context_menu),
+                                         fmanager);
     
     if(fmanager->priv->save_icons_id) {
         g_source_remove(fmanager->priv->save_icons_id);

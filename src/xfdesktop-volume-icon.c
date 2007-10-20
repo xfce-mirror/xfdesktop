@@ -70,7 +70,8 @@ static GdkDragAction xfdesktop_volume_icon_get_allowed_drop_actions(XfdesktopIco
 static gboolean xfdesktop_volume_icon_do_drop_dest(XfdesktopIcon *icon,
                                                    XfdesktopIcon *src_icon,
                                                    GdkDragAction action);
-static GtkWidget *xfdesktop_volume_icon_get_popup_menu(XfdesktopIcon *icon);
+static gboolean xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
+                                                            GtkWidget *menu);
 
 static G_CONST_RETURN ThunarVfsInfo *xfdesktop_volume_icon_peek_info(XfdesktopFileIcon *icon);
 static void xfdesktop_volume_icon_update_info(XfdesktopFileIcon *icon,
@@ -116,7 +117,7 @@ xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
     icon_class->get_allowed_drag_actions = xfdesktop_volume_icon_get_allowed_drag_actions;
     icon_class->get_allowed_drop_actions = xfdesktop_volume_icon_get_allowed_drop_actions;
     icon_class->do_drop_dest = xfdesktop_volume_icon_do_drop_dest;
-    icon_class->get_popup_menu = xfdesktop_volume_icon_get_popup_menu;
+    icon_class->populate_context_menu = xfdesktop_volume_icon_populate_context_menu;
     icon_class->activated = xfdesktop_volume_icon_activated;
     
     file_icon_class->peek_info = xfdesktop_volume_icon_peek_info;
@@ -529,14 +530,13 @@ xfdesktop_volume_icon_menu_properties(GtkWidget *widget,
     xfdesktop_file_properties_dialog_show(NULL, icon, NULL);
 }
 
-static GtkWidget *
-xfdesktop_volume_icon_get_popup_menu(XfdesktopIcon *icon)
+static gboolean
+xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
+                                            GtkWidget *menu)
 {
     XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
     ThunarVfsVolume *volume = volume_icon->priv->volume;
-    GtkWidget *menu, *mi, *img;
-    
-    menu = gtk_menu_new();
+    GtkWidget *mi, *img;
     
     img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
     gtk_widget_show(img);
@@ -602,7 +602,7 @@ xfdesktop_volume_icon_get_popup_menu(XfdesktopIcon *icon)
                          icon);
     }
     
-    return menu;
+    return TRUE;
 }
 
 

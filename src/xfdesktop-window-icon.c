@@ -49,7 +49,8 @@ static GdkPixbuf *xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,
 static G_CONST_RETURN gchar *xfdesktop_window_icon_peek_label(XfdesktopIcon *icon);
 
 static gboolean xfdesktop_window_icon_activated(XfdesktopIcon *icon);
-static void xfdesktop_window_icon_menu_popup(XfdesktopIcon *icon);
+static gboolean xfdesktop_window_icon_populate_context_menu(XfdesktopIcon *icon,
+                                                            GtkWidget *menu);
 
 static void xfdesktop_window_name_changed_cb(NetkWindow *window,
                                              gpointer user_data);
@@ -73,7 +74,7 @@ xfdesktop_window_icon_class_init(XfdesktopWindowIconClass *klass)
     icon_class->peek_pixbuf = xfdesktop_window_icon_peek_pixbuf;
     icon_class->peek_label = xfdesktop_window_icon_peek_label;
     icon_class->activated = xfdesktop_window_icon_activated;
-    icon_class->menu_popup = xfdesktop_window_icon_menu_popup;
+    icon_class->populate_context_menu = xfdesktop_window_icon_populate_context_menu;
 }
 
 static void
@@ -197,37 +198,29 @@ xfdesktop_window_icon_activated(XfdesktopIcon *icon)
 }
 
 static gboolean
-xfdesktop_action_menu_destroy_idled(gpointer data)
-{
-    gtk_widget_destroy(GTK_WIDGET(data));
-    return FALSE;
-}
-
-static void
-xfdesktop_action_menu_deactivate_cb(GtkMenu *menu,
-                          gpointer user_data)
-{
-    g_idle_add(xfdesktop_action_menu_destroy_idled, menu);
-}
-
-static void
-xfdesktop_window_icon_menu_popup(XfdesktopIcon *icon)
+xfdesktop_window_icon_populate_context_menu(XfdesktopIcon *icon,
+                                            GtkWidget *menu)
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
-    GtkWidget *menu = netk_create_window_action_menu(window_icon->priv->window);
-    NetkScreen *netk_screen;
-    gint screen_num;
-    GdkScreen *gscreen;
+    GtkWidget *amenu = netk_create_window_action_menu(window_icon->priv->window);
+    GList *items, *l;
     
-    netk_screen = netk_window_get_screen(window_icon->priv->window);
-    screen_num = netk_screen_get_number(netk_screen);
-    gscreen = gdk_display_get_screen(gdk_display_get_default(), screen_num);
-    gtk_menu_set_screen(GTK_MENU(menu), gscreen);
-    gtk_widget_show(menu);
-    g_signal_connect(G_OBJECT(menu), "deactivate",
-                     G_CALLBACK(xfdesktop_action_menu_deactivate_cb), NULL);
-    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL,
-                   3, gtk_get_current_event_time());
+    /* this is unfortunately slightly retarded */
+    items = gtk_container_get_children(GTK_CONTAINER(amenu));
+    for(l = items; l; l = l->next) {
+        GtkWidget *mi = l->data;
+        g_object_ref(G_OBJECT(mi));
+        gtk_container_remove(GTK_CONTAINER(amenu), mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        g_object_unref(G_OBJECT(mi));
+    }
+    g_list_free(items);
+    gtk_widget_destroy(amenu);
+    
+    if(!items)
+        return FALSE;
+    
+    return TRUE;
 }
 
 

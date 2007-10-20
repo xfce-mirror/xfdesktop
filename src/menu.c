@@ -81,6 +81,8 @@ menu_populate(XfceDesktop *desktop,
     GtkWidget *desktop_menu_widget;
     GList *menu_children;
     
+    TRACE("ENTERING");
+    
     if(!desktop_menu)
         return;
     
@@ -91,17 +93,25 @@ menu_populate(XfceDesktop *desktop,
      * to a submenu */
     menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
     if(menu_children) {
-        GtkWidget *mi;
-        
         g_list_free(menu_children);
         
         desktop_menu_widget = xfce_desktop_menu_get_widget(desktop_menu);
         if(desktop_menu_widget) {
+            GtkWidget *mi, *img = NULL;
+            GtkIconTheme *itheme = gtk_icon_theme_get_default();
+            
             mi = gtk_separator_menu_item_new();
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             
-            mi = gtk_menu_item_new_with_label(_("Applications"));
+            if(gtk_icon_theme_has_icon(itheme, "applications-accessories")) {
+                img = gtk_image_new_from_icon_name("applications-accessories",
+                                                   GTK_ICON_SIZE_MENU);
+                gtk_widget_show(img);
+            }
+            
+            mi = gtk_image_menu_item_new_with_mnemonic(_("_Applications"));
+            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             
@@ -144,6 +154,7 @@ void
 menu_attach(XfceDesktop *desktop)
 {
 #if USE_DESKTOP_MENU
+    DBG("attached default menu");
     g_signal_connect_after(G_OBJECT(desktop), "populate-root-menu",
                            G_CALLBACK(menu_populate), NULL);
 #endif
