@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-08 19:03+0900\n"
+"POT-Creation-Date: 2007-10-20 14:36-0700\n"
 "PO-Revision-Date: 2005-10-09 22:16+0900\n"
 "Last-Translator: Ankit Patel <ankit644@yahoo.com>\n"
 "Language-Team: Gujarati <indianoss-gujarati@lists.sourceforge.net>\n"
@@ -110,7 +110,7 @@ msgstr "ચિહ્ન પસંદ કરો"
 #: ../menueditor/menueditor-edit-dialog.c:235
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:604
+#: ../panel-plugin/desktop-menu-plugin.c:606
 #: ../settings/appearance-settings.c:579
 #: ../settings/backdrop-list-manager.c:435
 #: ../settings/backdrop-list-manager.c:536
@@ -119,7 +119,7 @@ msgstr "બધી ફાઈલો"
 
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
-#: ../panel-plugin/desktop-menu-plugin.c:610
+#: ../panel-plugin/desktop-menu-plugin.c:612
 #: ../settings/appearance-settings.c:583
 #: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
@@ -199,7 +199,7 @@ msgstr "બાહ્ય મેનુ ઉમેરો"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:618
+#: ../panel-plugin/desktop-menu-plugin.c:620
 msgid "Menu Files"
 msgstr "મેનુ ફાઈલો"
 
@@ -241,6 +241,27 @@ msgstr "બાહ્ય મેનુ ઉમેરો"
 msgid "Xfce4-MenuEditor"
 msgstr "Xfce મેનુ સંપાદક"
 
+#: ../menueditor/menueditor-main.c:57
+#, fuzzy
+msgid "Menueditor Warning"
+msgstr "મેનુ સંપાદક"
+
+#: ../menueditor/menueditor-main.c:59
+msgid "xfce4-menueditor is deprecated"
+msgstr ""
+
+#: ../menueditor/menueditor-main.c:60
+msgid ""
+"Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
+"edit the new menu file format.  You may continue and edit an old-style menu "
+"file, or quit."
+msgstr ""
+
+#: ../menueditor/menueditor-main.c:61
+#, fuzzy
+msgid "Continue"
+msgstr "ફાળો આપનાર"
+
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
 msgstr "ફાઈલ (_F)"
@@ -255,7 +276,7 @@ msgid "Create a new empty menu"
 msgstr "નવી Xfce4 મેનુ ફાઈલ બનાવો"
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1602
+#: ../src/xfdesktop-file-icon-manager.c:1631
 #: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
 msgid "_Open"
 msgstr ""
@@ -427,7 +448,7 @@ msgstr "શું તમે ફાઈલ બંધ કર્યા પહેલ�
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:587 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:588 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "પ્રશ્ન"
 
@@ -518,71 +539,71 @@ msgstr "સુધારાઓ અવગણો"
 msgid "Unable to open the menu file %s in write mode"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:587
+#: ../panel-plugin/desktop-menu-plugin.c:589
 msgid "Select Icon"
 msgstr "ચિહ્ન પસંદ કરો"
 
-#: ../panel-plugin/desktop-menu-plugin.c:589
+#: ../panel-plugin/desktop-menu-plugin.c:591
 msgid "Select Menu File"
 msgstr "મેનુ ફાઈલ પસંદ કરો"
 
-#: ../panel-plugin/desktop-menu-plugin.c:746
+#: ../panel-plugin/desktop-menu-plugin.c:748
 #: ../settings/behavior-settings.c:275
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor લોન્ચ કરવામાં નિષ્ફળ: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:769
+#: ../panel-plugin/desktop-menu-plugin.c:771
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce મેનુ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:781
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Button"
 msgstr "બટન"
 
-#: ../panel-plugin/desktop-menu-plugin.c:794
+#: ../panel-plugin/desktop-menu-plugin.c:796
 msgid "Button _title:"
 msgstr "બટન શીર્ષક (_t):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:807
+#: ../panel-plugin/desktop-menu-plugin.c:809
 msgid "_Show title in button"
 msgstr "બટનમાં શીર્ષક બતાવો (_S)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:814
+#: ../panel-plugin/desktop-menu-plugin.c:816
 msgid "Menu File"
 msgstr "મેનુ ફાઈલ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:826
+#: ../panel-plugin/desktop-menu-plugin.c:828
 msgid "Use default _desktop menu file"
 msgstr "મૂળભુત ડેસ્કટોપ મેનુ ફાઈલ વાપરો (_d)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:835
+#: ../panel-plugin/desktop-menu-plugin.c:837
 msgid "Use _custom menu file:"
 msgstr "વૈવિધ્યપૂર્ણ મેનુ ફાઈલ વાપરો (_c):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:886
+#: ../panel-plugin/desktop-menu-plugin.c:888
 #: ../settings/behavior-settings.c:369
 msgid "_Edit Menu"
 msgstr "ફેરફાર મેનુ (_E)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:892
+#: ../panel-plugin/desktop-menu-plugin.c:894
 msgid "Icons"
 msgstr "ચિહ્નો"
 
-#: ../panel-plugin/desktop-menu-plugin.c:904
+#: ../panel-plugin/desktop-menu-plugin.c:906
 msgid "_Button icon:"
 msgstr "બટન ચિહ્ન (_B):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:928
+#: ../panel-plugin/desktop-menu-plugin.c:930
 msgid "Show _icons in menu"
 msgstr "મેનુમાં ચિહ્નો બતાવો (_i)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:951
+#: ../panel-plugin/desktop-menu-plugin.c:963
 msgid "There is already a panel menu registered for this screen"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:1063
+#: ../panel-plugin/desktop-menu-plugin.c:1075
 #, fuzzy
 msgid "Edit Menu"
 msgstr "ફેરફાર મેનુ (_E)"
@@ -637,35 +658,39 @@ msgstr "ખેંચાયેલ"
 msgid "Scaled"
 msgstr "માપબદલાયેલ"
 
-#: ../settings/appearance-settings.c:796
+#: ../settings/appearance-settings.c:741
+msgid "Zoomed"
+msgstr ""
+
+#: ../settings/appearance-settings.c:797
 #, fuzzy
 msgid "A_djust Brightness:"
 msgstr "તેજસ્વીતા સમતોલ કરો (_B):"
 
-#: ../settings/appearance-settings.c:854
+#: ../settings/appearance-settings.c:855
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
 msgstr "Xfce એ તમારી ડેસ્કટોપની વ્યવસ્થા કરવામાં અસમર્થ હશે (%s)."
 
-#: ../settings/appearance-settings.c:855
+#: ../settings/appearance-settings.c:856
 msgid "Unknown Error"
 msgstr "અજ્ઞાત ભૂલ"
 
-#: ../settings/appearance-settings.c:859
+#: ../settings/appearance-settings.c:860
 #: ../src/xfdesktop-regular-file-icon.c:520
 #: ../src/xfdesktop-regular-file-icon.c:584
 msgid "Error"
 msgstr "ભૂલ"
 
-#: ../settings/appearance-settings.c:861
+#: ../settings/appearance-settings.c:862
 msgid "Unable to start xfdesktop"
 msgstr "xfdesktop શરુ કરવામાં અસમર્થ"
 
-#: ../settings/appearance-settings.c:883
+#: ../settings/appearance-settings.c:884
 msgid "Information"
 msgstr "જાણકારી"
 
-#: ../settings/appearance-settings.c:896
+#: ../settings/appearance-settings.c:897
 #, fuzzy
 msgid ""
 "To ensure that this setting takes effect the next time you start Xfce, "
@@ -680,7 +705,7 @@ msgstr ""
 "config/xfce4/xinitrc ફાઈલમાં જાતે ફેરફાર કરવાની જરૂર રહેશે.  વિગતો http://xfce."
 "org/ પર દસ્તાવેજીકરણમાં પૂરી પાડવામાં આવેલ છે."
 
-#: ../settings/appearance-settings.c:898
+#: ../settings/appearance-settings.c:899
 msgid ""
 "To ensure that Xfce does not manage your desktop the next time you start "
 "Xfce, please be sure to save your session when logging out.  If you are not "
@@ -694,84 +719,84 @@ msgstr ""
 "config/xfce4/xinitrc ફાઈલમાં જાતે ફેરફાર કરવાની જરૂર રહેશે.  વિગતો http://xfce."
 "org/ પર દસ્તાવેજીકરણમાં પૂરી પાડવામાં આવેલ છે."
 
-#: ../settings/appearance-settings.c:906
+#: ../settings/appearance-settings.c:907
 msgid "_Do not show this again"
 msgstr "આ ફરીથી બતાવશો નહિં (_D)"
 
 #. the dialog
-#: ../settings/appearance-settings.c:972
+#: ../settings/appearance-settings.c:973
 #, fuzzy
 msgid "Desktop Preferences"
 msgstr "ડેસ્કટોપ સુયોજનો"
 
-#: ../settings/appearance-settings.c:989
+#: ../settings/appearance-settings.c:990
 msgid "Allow _Xfce to manage the desktop"
 msgstr "_Xfce ને ડેસ્કટોપની વ્યવસ્થા કરવા માટે પરવાનગી આપો"
 
-#: ../settings/appearance-settings.c:1030
+#: ../settings/appearance-settings.c:1031
 msgid "Stretch single backdrop onto _all monitors"
 msgstr ""
 
 #. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:1044
-#: ../settings/appearance-settings.c:1226
+#: ../settings/appearance-settings.c:1045
+#: ../settings/appearance-settings.c:1227
 msgid "_Appearance"
 msgstr ""
 
 #. color settings frame
-#: ../settings/appearance-settings.c:1070
+#: ../settings/appearance-settings.c:1071
 msgid "Color"
 msgstr "રંગ"
 
-#: ../settings/appearance-settings.c:1084
+#: ../settings/appearance-settings.c:1085
 msgid "_Color Style:"
 msgstr "રંગની શૈલી (_C):"
 
-#: ../settings/appearance-settings.c:1091
+#: ../settings/appearance-settings.c:1092
 msgid "Solid Color"
 msgstr "ઘાટો રંગ"
 
-#: ../settings/appearance-settings.c:1092
+#: ../settings/appearance-settings.c:1093
 msgid "Horizontal Gradient"
 msgstr "આડો ઢાળ"
 
-#: ../settings/appearance-settings.c:1093
+#: ../settings/appearance-settings.c:1094
 msgid "Vertical Gradient"
 msgstr "ઊભો ઢાળ"
 
-#: ../settings/appearance-settings.c:1106
+#: ../settings/appearance-settings.c:1107
 msgid "Fi_rst Color:"
 msgstr "પ્રથમ રંગ (_r):"
 
-#: ../settings/appearance-settings.c:1127
+#: ../settings/appearance-settings.c:1128
 msgid "_Second Color:"
 msgstr "બીજો રંગ (_S):"
 
-#: ../settings/appearance-settings.c:1152
+#: ../settings/appearance-settings.c:1153
 msgid "Image"
 msgstr "ઈમેજ"
 
-#: ../settings/appearance-settings.c:1160
+#: ../settings/appearance-settings.c:1161
 msgid "Show _Image"
 msgstr "ઈમેજ બતાવો (_I)"
 
-#: ../settings/appearance-settings.c:1182
+#: ../settings/appearance-settings.c:1183
 msgid "_File:"
 msgstr "ફાઈલ (_F):"
 
-#: ../settings/appearance-settings.c:1237
-#: ../settings/appearance-settings.c:1239
+#: ../settings/appearance-settings.c:1238
+#: ../settings/appearance-settings.c:1240
 #, c-format
 msgid "Screen %d"
 msgstr "સ્ક્રીન %d"
 
 #. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1244
+#: ../settings/appearance-settings.c:1245
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "સ્ક્રીન %d, મોનિટર %d"
 
-#: ../settings/appearance-settings.c:1261
+#: ../settings/appearance-settings.c:1262
 msgid "_Behavior"
 msgstr ""
 
@@ -876,340 +901,338 @@ msgstr "વૈવિધ્યપૂર્ણ મેનુ ફાઈલ વાપ
 msgid "Custom _font size:"
 msgstr ""
 
-#: ../src/main.c:261
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr ""
 
-#: ../src/main.c:263
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr ""
 
-#: ../src/main.c:267
+#: ../src/main.c:246
 msgid "Build options:\n"
 msgstr ""
 
-#: ../src/main.c:268
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr ""
 
-#: ../src/main.c:270 ../src/main.c:277 ../src/main.c:284
+#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 #, fuzzy
 msgid "enabled"
 msgstr "માપબદલાયેલ"
 
-#: ../src/main.c:272 ../src/main.c:279 ../src/main.c:286
+#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 #, fuzzy
 msgid "disabled"
 msgstr "તકતીવાળુ"
 
-#: ../src/main.c:275
+#: ../src/main.c:254
 #, fuzzy, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "ડેસ્કટોપ મેનુ"
 
-#: ../src/main.c:282
+#: ../src/main.c:261
 #, fuzzy, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "ડેસ્કટોપ મેનુ"
 
-#: ../src/main.c:311
+#: ../src/main.c:290
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: અજ્ઞાત વિકલ્પ: %s\n"
 
-#: ../src/main.c:312
+#: ../src/main.c:291
 msgid "Options are:\n"
 msgstr "વિકલ્પો છે:\n"
 
-#: ../src/main.c:313
+#: ../src/main.c:292
 #, fuzzy
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    -reload      બધા સુયોજનો ફરીથી લાવો, ઈમેજ યાદી ફરીથી તાજી કરો\n"
 
-#: ../src/main.c:314
+#: ../src/main.c:293
 #, fuzzy
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        મેનુને પોપઅપ કરે છે (માઉસની વર્તમાન જગ્યાએ)\n"
 
-#: ../src/main.c:315
+#: ../src/main.c:294
 #, fuzzy
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -menu        વિન્ડો યાદીને પોપઅપ કરે છે (માઉસની વર્તમાન જગ્યાએ)\n"
 
-#: ../src/main.c:316
+#: ../src/main.c:295
 #, fuzzy
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    -quit        xfdesktop ને બંધ કરવાનું કારણ બને છે\n"
 
-#: ../src/main.c:331
+#: ../src/main.c:310
 #, c-format
 msgid "%s is not running.\n"
 msgstr ""
 
-#: ../src/windowlist.c:227
+#: ../src/windowlist.c:233
+msgid "Window List"
+msgstr ""
+
+#: ../src/windowlist.c:258
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>કામ કરવાની જગ્યા %d</b>"
 
-#: ../src/windowlist.c:236
+#: ../src/windowlist.c:267
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "<b>કામ કરવાની જગ્યા %d</b>"
 
-#: ../src/windowlist.c:238
+#: ../src/windowlist.c:269
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>કામ કરવાની જગ્યા %d</i>"
 
-#: ../src/windowlist.c:332 ../src/windowlist.c:335
+#: ../src/windowlist.c:366 ../src/windowlist.c:369
 msgid "_Add Workspace"
 msgstr "કામ કરવાની જગ્યા ઉમેરો (_A)"
 
-#: ../src/windowlist.c:343
+#: ../src/windowlist.c:377
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "કામ કરવાની જગ્યા %d દૂર કરો (_R)"
 
-#: ../src/windowlist.c:346
+#: ../src/windowlist.c:380
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "કામ કરવાની જગ્યા %s દૂર કરો (_R)"
 
-#: ../src/xfce-desktop.c:573
+#: ../src/xfce-desktop.c:603
 msgid "Desktop"
 msgstr "ડેસ્કટોપ"
 
-#: ../src/xfdesktop-file-icon-manager.c:386
+#: ../src/xfdesktop-file-icon-manager.c:387
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:388
-#: ../src/xfdesktop-file-icon-manager.c:399
-#: ../src/xfdesktop-file-icon-manager.c:1094
+#: ../src/xfdesktop-file-icon-manager.c:389
+#: ../src/xfdesktop-file-icon-manager.c:400
+#: ../src/xfdesktop-file-icon-manager.c:1115
 msgid "Create Folder Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:397
+#: ../src/xfdesktop-file-icon-manager.c:398
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:401
+#: ../src/xfdesktop-file-icon-manager.c:402
 msgid "Please delete or rename the file."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:538
+#: ../src/xfdesktop-file-icon-manager.c:539
 #, c-format
 msgid "Rename \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:545
-#: ../src/xfdesktop-file-icon-manager.c:1166
-#: ../src/xfdesktop-file-icon-manager.c:1257
-#: ../src/xfdesktop-file-icon-manager.c:1268
+#: ../src/xfdesktop-file-icon-manager.c:546
+#: ../src/xfdesktop-file-icon-manager.c:1187
+#: ../src/xfdesktop-file-icon-manager.c:1278
+#: ../src/xfdesktop-file-icon-manager.c:1289
 msgid "Enter the new name:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:547
+#: ../src/xfdesktop-file-icon-manager.c:548
 #, fuzzy
 msgid "Rename"
 msgstr "માપબદલાયેલ"
 
-#: ../src/xfdesktop-file-icon-manager.c:584
+#: ../src/xfdesktop-file-icon-manager.c:585
 #, fuzzy, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "શું તમે ખરેખર વર્તમાન મેનુ બંધ કરવા માંગો છો?"
 
-#: ../src/xfdesktop-file-icon-manager.c:589
-#: ../src/xfdesktop-file-icon-manager.c:609
+#: ../src/xfdesktop-file-icon-manager.c:590
+#: ../src/xfdesktop-file-icon-manager.c:610
 msgid "If you delete a file, it is permanently lost."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:603
+#: ../src/xfdesktop-file-icon-manager.c:604
 #, fuzzy, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "શું તમે ખરેખર વર્તમાન મેનુ બંધ કરવા માંગો છો?"
 
-#: ../src/xfdesktop-file-icon-manager.c:606
+#: ../src/xfdesktop-file-icon-manager.c:607
 #, fuzzy
 msgid "Delete Multiple Files"
 msgstr "મેનુ ફાઈલ પસંદ કરો"
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:823
-#: ../src/xfdesktop-file-icon-manager.c:1528 ../src/xfdesktop-file-icon.c:142
-#: ../src/xfdesktop-file-utils.c:352
+#: ../src/xfdesktop-file-icon-manager.c:824
+#: ../src/xfdesktop-file-icon-manager.c:1549 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-utils.c:353
 #, fuzzy, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "xfce4-menueditor લોન્ચ કરવામાં નિષ્ફળ: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:825
-#: ../src/xfdesktop-file-icon-manager.c:865
-#: ../src/xfdesktop-file-icon-manager.c:1128
-#: ../src/xfdesktop-file-icon-manager.c:1530 ../src/xfdesktop-file-icon.c:144
-#: ../src/xfdesktop-file-utils.c:355
+#: ../src/xfdesktop-file-icon-manager.c:826
+#: ../src/xfdesktop-file-icon-manager.c:884
+#: ../src/xfdesktop-file-icon-manager.c:1149
+#: ../src/xfdesktop-file-icon-manager.c:1551 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-utils.c:356
 #, fuzzy
 msgid "Launch Error"
 msgstr "ભૂલ"
 
-#: ../src/xfdesktop-file-icon-manager.c:866
+#: ../src/xfdesktop-file-icon-manager.c:885
 msgid "The application chooser could not be opened."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
+#: ../src/xfdesktop-file-icon-manager.c:886 ../src/xfdesktop-file-utils.c:358
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1027
+#: ../src/xfdesktop-file-icon-manager.c:1046
 #, c-format
 msgid "_Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1030
+#: ../src/xfdesktop-file-icon-manager.c:1049
 #, c-format
 msgid "Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1091
+#: ../src/xfdesktop-file-icon-manager.c:1112
 #, fuzzy, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "xfce4-menueditor લોન્ચ કરવામાં નિષ્ફળ: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1130
+#: ../src/xfdesktop-file-icon-manager.c:1151
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1163
+#: ../src/xfdesktop-file-icon-manager.c:1184
 msgid "Create New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1167
+#: ../src/xfdesktop-file-icon-manager.c:1188
 msgid "New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1168
-#: ../src/xfdesktop-file-icon-manager.c:1259
-#: ../src/xfdesktop-file-icon-manager.c:1270
+#: ../src/xfdesktop-file-icon-manager.c:1189
+#: ../src/xfdesktop-file-icon-manager.c:1280
+#: ../src/xfdesktop-file-icon-manager.c:1291
 msgid "Create"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1204
+#: ../src/xfdesktop-file-icon-manager.c:1225
 #, fuzzy, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "xfce4-menueditor લોન્ચ કરવામાં નિષ્ફળ: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1207
+#: ../src/xfdesktop-file-icon-manager.c:1228
 #, fuzzy
 msgid "Create File Failed"
 msgstr "મેનુ ફાઈલ પસંદ કરો"
 
-#: ../src/xfdesktop-file-icon-manager.c:1246
+#: ../src/xfdesktop-file-icon-manager.c:1267
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1265
+#: ../src/xfdesktop-file-icon-manager.c:1286
 msgid "Create Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1269
+#: ../src/xfdesktop-file-icon-manager.c:1290
 msgid "New Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1302
+#: ../src/xfdesktop-file-icon-manager.c:1323
 #, fuzzy, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "xfce4-menueditor લોન્ચ કરવામાં નિષ્ફળ: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1303
+#: ../src/xfdesktop-file-icon-manager.c:1324
 #, fuzzy
 msgid "Create Error"
 msgstr "બેકડ્રોપ યાદીમાં ફેરફાર કરો"
 
-#: ../src/xfdesktop-file-icon-manager.c:1587
+#: ../src/xfdesktop-file-icon-manager.c:1613
 msgid "_Open all"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1617
+#: ../src/xfdesktop-file-icon-manager.c:1629
+msgid "_Open in New Window"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1646
+#, fuzzy
+msgid "Create _Launcher..."
+msgstr "લોન્ચર"
+
+#: ../src/xfdesktop-file-icon-manager.c:1667
+msgid "Create _URL Link..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1684
+#, fuzzy
+msgid "Create _Folder..."
+msgstr "બેકડ્રોપ યાદીમાં ફેરફાર કરો"
+
+#: ../src/xfdesktop-file-icon-manager.c:1726
+#, fuzzy
+msgid "_Empty File"
+msgstr "ફાઈલ (_F)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1742
 msgid "_Execute"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1634
+#: ../src/xfdesktop-file-icon-manager.c:1760
 #, fuzzy
 msgid "_Edit Launcher"
 msgstr "લોન્ચર"
 
-#: ../src/xfdesktop-file-icon-manager.c:1674
+#: ../src/xfdesktop-file-icon-manager.c:1800
 msgid "Open With"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1705
+#: ../src/xfdesktop-file-icon-manager.c:1831
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1804
+#: ../src/xfdesktop-file-icon-manager.c:1938
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1820
+#: ../src/xfdesktop-file-icon-manager.c:1956
+#, fuzzy
+msgid "Desktop _Settings..."
+msgstr "ડેસ્કટોપ સુયોજનો"
+
+#: ../src/xfdesktop-file-icon-manager.c:1966
 #: ../src/xfdesktop-volume-icon.c:593
 #, fuzzy
 msgid "_Properties..."
 msgstr "બેકડ્રોપ યાદીમાં ફેરફાર કરો"
 
-#: ../src/xfdesktop-file-icon-manager.c:1837
-#, fuzzy
-msgid "Des_ktop"
-msgstr "ડેસ્કટોપ"
-
-#: ../src/xfdesktop-file-icon-manager.c:1856
-#, fuzzy
-msgid "Create _Launcher..."
-msgstr "લોન્ચર"
-
-#: ../src/xfdesktop-file-icon-manager.c:1877
-msgid "Create _URL Link..."
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:1894
-#, fuzzy
-msgid "Create _Folder..."
-msgstr "બેકડ્રોપ યાદીમાં ફેરફાર કરો"
-
-#: ../src/xfdesktop-file-icon-manager.c:1936
-#, fuzzy
-msgid "_Empty File"
-msgstr "ફાઈલ (_F)"
-
-#: ../src/xfdesktop-file-icon-manager.c:1977
-#, fuzzy
-msgid "Desktop _Settings..."
-msgstr "ડેસ્કટોપ સુયોજનો"
-
-#: ../src/xfdesktop-file-icon-manager.c:1986
-#, fuzzy
-msgid "_Desktop Properties..."
-msgstr "બેકડ્રોપ યાદીમાં ફેરફાર કરો"
-
-#: ../src/xfdesktop-file-icon-manager.c:3158
+#: ../src/xfdesktop-file-icon-manager.c:3152
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, fuzzy, c-format
 msgid "Failed to run \"%s\":"
 msgstr "xfce4-menueditor લોન્ચ કરવામાં નિષ્ફળ: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:3160
+#: ../src/xfdesktop-file-icon-manager.c:3154
 #: ../src/xfdesktop-regular-file-icon.c:384
 #, fuzzy
 msgid "Run Error"
@@ -1280,7 +1303,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-properties-dialog.c:413
 #: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:487 ../src/xfdesktop-volume-icon.c:460
+#: ../src/xfdesktop-special-file-icon.c:488 ../src/xfdesktop-volume-icon.c:461
 msgid "%s (%"
 msgstr ""
 
@@ -1341,7 +1364,7 @@ msgid "link to %s"
 msgstr ""
 
 #: ../src/xfdesktop-regular-file-icon.c:489
-#: ../src/xfdesktop-special-file-icon.c:490 ../src/xfdesktop-volume-icon.c:463
+#: ../src/xfdesktop-special-file-icon.c:491 ../src/xfdesktop-volume-icon.c:464
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -1354,21 +1377,21 @@ msgstr ""
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:258
+#: ../src/xfdesktop-special-file-icon.c:259
 msgid "Home"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:508
+#: ../src/xfdesktop-special-file-icon.c:509
 #, fuzzy
 msgid "Trash Error"
 msgstr "ભૂલ"
 
-#: ../src/xfdesktop-special-file-icon.c:510
+#: ../src/xfdesktop-special-file-icon.c:511
 #, fuzzy
 msgid "Unable to contact the Xfce Trash service."
 msgstr "xfce4-menueditor લોન્ચ કરવામાં નિષ્ફળ: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:511
+#: ../src/xfdesktop-special-file-icon.c:512
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
@@ -1379,32 +1402,32 @@ msgstr ""
 msgid "_Empty Trash"
 msgstr "ફાઈલ (_F)"
 
-#: ../src/xfdesktop-volume-icon.c:491
+#: ../src/xfdesktop-volume-icon.c:492
 #, fuzzy, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "xfce4-menueditor લોન્ચ કરવામાં નિષ્ફળ: %s"
 
-#: ../src/xfdesktop-volume-icon.c:492
+#: ../src/xfdesktop-volume-icon.c:493
 #, fuzzy, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "xfce4-menueditor લોન્ચ કરવામાં નિષ્ફળ: %s"
 
-#: ../src/xfdesktop-volume-icon.c:495
+#: ../src/xfdesktop-volume-icon.c:496
 #, fuzzy
 msgid "Mount Failed"
 msgstr "મેનુ ફાઈલ"
 
-#: ../src/xfdesktop-volume-icon.c:495
+#: ../src/xfdesktop-volume-icon.c:496
 #, fuzzy
 msgid "Unmount Failed"
 msgstr "મેનુ ફાઈલ"
 
-#: ../src/xfdesktop-volume-icon.c:513
+#: ../src/xfdesktop-volume-icon.c:514
 #, fuzzy, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "xfce4-menueditor લોન્ચ કરવામાં નિષ્ફળ: %s"
 
-#: ../src/xfdesktop-volume-icon.c:516
+#: ../src/xfdesktop-volume-icon.c:517
 msgid "Eject Failed"
 msgstr ""
 
@@ -1604,6 +1627,14 @@ msgstr "Xfce 4 ડેસ્કટોપ વ્યવસ્થાપક માટ
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 ડેસ્કટોપ સુયોજનો"
+
+#, fuzzy
+#~ msgid "Des_ktop"
+#~ msgstr "ડેસ્કટોપ"
+
+#, fuzzy
+#~ msgid "_Desktop Properties..."
+#~ msgstr "બેકડ્રોપ યાદીમાં ફેરફાર કરો"
 
 #, fuzzy
 #~ msgid "Scientific applications and tools"
