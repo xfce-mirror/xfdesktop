@@ -355,6 +355,9 @@ xfce_desktop_menu_new_impl(const gchar *menu_file,
         desktop_menu->idle_id = g_idle_add(_generate_menu_initial, desktop_menu);
     else {
         if(!_generate_menu(desktop_menu, FALSE)) {
+#ifdef HAVE_THUNAR_VFS
+            xfce_menu_monitor_set_vtable(NULL, NULL);
+#endif
             g_free(desktop_menu);
             desktop_menu = NULL;
         }
@@ -454,6 +457,10 @@ xfce_desktop_menu_destroy_impl(XfceDesktopMenu *desktop_menu)
 {
     g_return_if_fail(desktop_menu != NULL);
     TRACE("dummy");
+    
+#ifdef HAVE_THUNAR_VFS
+    xfce_menu_monitor_set_vtable(NULL, NULL);
+#endif
     
     if(desktop_menu->idle_id) {
         g_source_remove(desktop_menu->idle_id);
