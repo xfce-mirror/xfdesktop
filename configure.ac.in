@@ -4,7 +4,12 @@ dnl xfdesktop - xfce4's desktop manager
 dnl
 
 dnl version info
-m4_define([xfdesktop_version], [4.5.0])
+m4_define([xfdesktop_version_major], [4])
+m4_define([xfdesktop_version_minor], [5])
+m4_define([xfdesktop_version_micro], [0])
+m4_define([xfdesktop_version_build], [r@REVISION@])
+m4_define([xfdesktop_version_tag],[svn])
+m4_define([xfdesktop_version], [xfdesktop_version_major().xfdesktop_version_minor().xfdesktop_version_micro()ifelse(xfdesktop_version_tag(), [svn], [xfdesktop_version_tag()-xfdesktop_version_build()], [xfdesktop_version_tag()])])
 
 dnl minimum required versions
 m4_define([gtk_minimum_version], [2.6.0])
@@ -45,36 +50,6 @@ AC_CHECK_HEADERS([ctype.h errno.h fcntl.h math.h signal.h stddef.h \
                   sys/types.h sys/wait.h time.h \
                   unistd.h])
 AC_CHECK_FUNCS([mmap sigaction srandom])
-
-dnl ***********************************************
-dnl *** Determine the u32 type required for tdb ***
-dnl ***********************************************
-AC_CHECK_SIZEOF([int])
-AC_CHECK_SIZEOF([long])
-AC_CHECK_SIZEOF([short])
-AC_MSG_CHECKING([for 32bit unsigned integer])
-case 4 in
-    $ac_cv_sizeof_int)   TDB_U32_TYPE="unsigned int" ;;
-    $ac_cv_sizeof_long)  TDB_U32_TYPE="unsigned long" ;;
-    $ac_cv_sizeof_short) TDB_U32_TYPE="unsigned short" ;;
-esac
-AC_SUBST([TDB_U32_TYPE])
-AC_MSG_RESULT([$TDB_U32_TYPE])
-
-AC_DEFUN([BT_EXPAND_VAR], [
-var_cur="$2"
-while test "x${var_cur}" != "x${var_last}"; do
-    var_last="${var_cur}"
-    var_cur=`eval "echo ${var_cur}"`
-done
-
-# autoconf, you suck (though with dubiously-good reason)
-if echo "${var_cur}" | grep -q NONE; then
-    var_cur=`echo ${var_cur} | sed -e 's:NONE:/usr/local:'`
-fi
-
-$1="${var_cur}"
-])
 
 dnl Check for i18n support
 XDT_I18N([@LINGUAS@])
