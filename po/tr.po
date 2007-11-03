@@ -1,15 +1,15 @@
 # Turkish translations for xfdesktop package.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
-# Erçin EKER <erc.caldera@gmx.net>, 2003.
-# Eren Türkay <turkay.eren@gmail.com>, 2007
 #
+# Erçin EKER <erc.caldera@gmx.net>, 2003.
+# Eren Türkay <turkay.eren@gmail.com>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-10-20 14:36-0700\n"
-"PO-Revision-Date: 2007-03-29 21:30+0300\n"
+"PO-Revision-Date: 2007-11-03 07:23+0200\n"
 "Last-Translator: Eren Türkay <turkay.eren@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
 "MIME-Version: 1.0\n"
@@ -233,25 +233,23 @@ msgid "Xfce4-MenuEditor"
 msgstr "Xfce4-Menü Düzenleyicisi"
 
 #: ../menueditor/menueditor-main.c:57
-#, fuzzy
 msgid "Menueditor Warning"
-msgstr "Menü Düzenleyici"
+msgstr "Menü Düzenleyici Uyarısı"
 
 #: ../menueditor/menueditor-main.c:59
 msgid "xfce4-menueditor is deprecated"
-msgstr ""
+msgstr "xfce4-menueditor artık kullanılmıyor"
 
 #: ../menueditor/menueditor-main.c:60
 msgid ""
 "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
 "edit the new menu file format.  You may continue and edit an old-style menu "
 "file, or quit."
-msgstr ""
+msgstr "Xfce'in menü sistemi yenilendi ve xfce4-menueditor yeni menü biçimini düzenleyemiyor.  Devam edebilir ve eski menü dosyasını düzenleyebilirsiniz, veya çıkabilirsiniz."
 
 #: ../menueditor/menueditor-main.c:61
-#, fuzzy
 msgid "Continue"
-msgstr "Katkıcı"
+msgstr "Devam"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -496,8 +494,7 @@ msgstr "Simge tasarımcısı"
 
 #: ../menueditor/menueditor-main-window.c:1345
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr ""
-"Menüyü değiştirdiniz, çıkmadan önce değişiklikleri kaydetmek ister misiniz?"
+msgstr "Menüyü değiştirdiniz, çıkmadan önce değişiklikleri kaydetmek ister misiniz?"
 
 #: ../menueditor/menueditor-main-window.c:1347
 msgid "Forget modifications"
@@ -627,9 +624,8 @@ msgid "Scaled"
 msgstr "Ölçekle"
 
 #: ../settings/appearance-settings.c:741
-#, fuzzy
 msgid "Zoomed"
-msgstr "Ev"
+msgstr "Yakınlaştırılmış."
 
 #: ../settings/appearance-settings.c:797
 msgid "A_djust Brightness:"
@@ -915,8 +911,7 @@ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        Menüyü aç (fare imleci konumunda)\n"
 
 #: ../src/main.c:294
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist  Pencere listesini aç (fare imleci konumunda)\n"
 
 #: ../src/main.c:295
@@ -930,7 +925,7 @@ msgstr "%s çalışmıyor.\n"
 
 #: ../src/windowlist.c:233
 msgid "Window List"
-msgstr ""
+msgstr "Pencere Listesi"
 
 #: ../src/windowlist.c:258
 #, c-format
@@ -967,10 +962,8 @@ msgstr "Masaüstü"
 
 #: ../src/xfdesktop-file-icon-manager.c:387
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop, masaüstü öğrelerini saklamak için \"%s\" klasörünü oluşturamıyor:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop, masaüstü öğrelerini saklamak için \"%s\" klasörünü oluşturamıyor:"
 
 #: ../src/xfdesktop-file-icon-manager.c:389
 #: ../src/xfdesktop-file-icon-manager.c:400
@@ -1018,7 +1011,7 @@ msgid "If you delete a file, it is permanently lost."
 msgstr "Dosya silerseniz, kalıcı olarak kaybedilir."
 
 #: ../src/xfdesktop-file-icon-manager.c:604
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Aşağıdaki %d dosyayı silmek istediğinizden emin misiniz?"
 
@@ -1126,7 +1119,7 @@ msgstr "_Hepsini aç"
 
 #: ../src/xfdesktop-file-icon-manager.c:1629
 msgid "_Open in New Window"
-msgstr ""
+msgstr "Y_eni Pencerede Aç"
 
 #: ../src/xfdesktop-file-icon-manager.c:1646
 msgid "Create _Launcher..."
@@ -1562,110 +1555,3 @@ msgstr "Xfce 4 Masaüstü Yöneticisi için Ayarlar"
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 Masaüstü Ayarları"
 
-#~ msgid "Des_ktop"
-#~ msgstr "_Masaüstü"
-
-#~ msgid "_Desktop Properties..."
-#~ msgstr "Masaüstü _Seçenekleri..."
-
-#~ msgid "Science"
-#~ msgstr "Bilim"
-
-#~ msgid "Scientific applications and tools"
-#~ msgstr "Bilimsel uygulamalar ve araçlar"
-
-#~ msgid "Unable to quit session."
-#~ msgstr "Oturumdan çıkılamıyor"
-
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "Oturumdan çıkmak Xfce'in oturum yöneticisinin (xfce4-sessions) çalışıyor "
-#~ "olmasını gerektirir, ancak tespit edilemedi.  Lütfen Xfce'den başka "
-#~ "yollarla çıkın."
-
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "Xfce oturumundan çıkmak 'xfce4-session-logout\" komutunu gerektirir, "
-#~ "ancak bulunamadı: %s"
-
-#~ msgid "Edit Properties"
-#~ msgstr "Seçenekleri Düzenle"
-
-#~ msgid "Backdrop List"
-#~ msgstr "Arka Plan Listesi"
-
-#, fuzzy
-#~ msgid "Unable to empty the trash."
-#~ msgstr "xfce4-menueditor başlatılamıyor: %s"
-
-#, fuzzy
-#~ msgid "_Copy Files"
-#~ msgstr "_Dosya"
-
-#, fuzzy
-#~ msgid "_Copy File"
-#~ msgstr "_Dosya"
-
-#, fuzzy
-#~ msgid "Cu_t Files"
-#~ msgstr "_Dosya"
-
-#, fuzzy
-#~ msgid "Cu_t File"
-#~ msgstr "_Dosya"
-
-#, fuzzy
-#~ msgid "_Delete Files"
-#~ msgstr "Menü Dosyası Seç"
-
-#, fuzzy
-#~ msgid "_Delete File"
-#~ msgstr "Menü Dosyası Seç"
-
-#, fuzzy
-#~ msgid "_Paste Files"
-#~ msgstr "Liste Dosyaları"
-
-#, fuzzy
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "Şu an ki menüyü kapatmak istediğinizden emin misiniz?"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "Komut mevcut değil!"
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "Ekleme yapabilmek için tüm alanları doldurmalısınız."
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "'İsim' alanı dolu olmalı."
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "'Kaynak' bölümü gerekli."
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "Ayırıcılar düzenlenemez"
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "%s dosyası mevcut değil!"
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "Bileşeni ana menüye taşımak ister misiniz?"
-
-#~ msgid "Edit"
-#~ msgstr "Düzenle"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "Hârici bir menü ekle..."
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "Bir Xfce4 menü dosyası aç"
-
-#~ msgid "Save current menu"
-#~ msgstr "Mevcut menüyü kaydet"
-
-#~ msgid "Delete the current entry"
-#~ msgstr "Mevcut girdiyi sil"
