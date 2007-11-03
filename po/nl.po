@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-04-09 14:22+0200\n"
 "PO-Revision-Date: 2007-06-16 14:20+0100\n"
-"Last-Translator: Vincent Tunru <imnotb@gmail.com>\n"
+"Last-Translator: Stephan Arts <stephan@xfce.org>\n"
 "Language-Team: Dutch <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
-msgstr "Menu optie toevoegen"
+msgstr "Menuoptie toevoegen"
 
 #. Type
 #: ../menueditor/menueditor-add-dialog.c:142
@@ -37,7 +37,7 @@ msgstr "Submenu"
 
 #: ../menueditor/menueditor-add-dialog.c:153
 msgid "Launcher"
-msgstr "Starter"
+msgstr "Snelstarter"
 
 #: ../menueditor/menueditor-add-dialog.c:154
 msgid "Separator"
@@ -89,7 +89,7 @@ msgstr "Geen pictogram"
 #: ../menueditor/menueditor-edit-dialog.c:203
 #: ../menueditor/menueditor-edit-dialog.c:204
 msgid "Themed icon:"
-msgstr "Thema pictogram:"
+msgstr "Pictogram met thema:"
 
 #. allocate the chooser dialog
 #: ../menueditor/menueditor-add-dialog.c:252
@@ -97,7 +97,7 @@ msgstr "Thema pictogram:"
 #: ../menueditor/menueditor-edit-dialog.c:230
 #: ../menueditor/menueditor-edit-dialog.c:384
 msgid "Select icon"
-msgstr "Pictogram selecteren"
+msgstr "Kies pictogram"
 
 #: ../menueditor/menueditor-add-dialog.c:257
 #: ../menueditor/menueditor-add-dialog.c:437
@@ -124,19 +124,19 @@ msgstr "Afbeeldingen"
 #: ../menueditor/menueditor-add-dialog.c:283
 #: ../menueditor/menueditor-edit-dialog.c:261
 msgid "Use startup _notification"
-msgstr "Opstart-_notificatie gebruiken"
+msgstr "Opstart_notificatie gebruiken"
 
 #. Run in terminal check button
 #: ../menueditor/menueditor-add-dialog.c:288
 #: ../menueditor/menueditor-edit-dialog.c:266
 msgid "Run in _terminal"
-msgstr "Uitvoeren in _terminal"
+msgstr "In _terminal uitvoeren"
 
 #: ../menueditor/menueditor-add-dialog.c:427
 #: ../menueditor/menueditor-edit-dialog.c:286
 #: ../menueditor/menueditor-main-window.c:448
 msgid "Select command"
-msgstr "Commando selecteren"
+msgstr "Commando kiezen"
 
 #: ../menueditor/menueditor-add-dialog.c:442
 #: ../menueditor/menueditor-edit-dialog.c:301
@@ -186,7 +186,7 @@ msgstr "Bron:"
 #: ../menueditor/menueditor-add-external-dialog.c:137
 #: ../menueditor/menueditor-edit-external-dialog.c:117
 msgid "Select external menu"
-msgstr "Een extern menu selecteren"
+msgstr "Extern menu kiezen"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
@@ -205,7 +205,7 @@ msgstr "Stijl:"
 #: ../menueditor/menueditor-add-external-dialog.c:165
 #: ../menueditor/menueditor-edit-external-dialog.c:145
 msgid "Simple"
-msgstr "Simpel"
+msgstr "Eenvoudig"
 
 #: ../menueditor/menueditor-add-external-dialog.c:166
 #: ../menueditor/menueditor-edit-external-dialog.c:146
@@ -216,7 +216,7 @@ msgstr "Multilevel"
 #: ../menueditor/menueditor-add-external-dialog.c:171
 #: ../menueditor/menueditor-edit-external-dialog.c:151
 msgid "_Unique entries only"
-msgstr "Enkel _unieke opties"
+msgstr "Alleen _unieke opties"
 
 #: ../menueditor/menueditor-edit-dialog.c:127
 msgid "Edit menu entry"
@@ -224,11 +224,11 @@ msgstr "Menu-optie bewerken"
 
 #: ../menueditor/menueditor-edit-external-dialog.c:96
 msgid "Edit external menu entry"
-msgstr "Een extern menu aanpassen"
+msgstr "Extern menu-item bewerken"
 
 #: ../menueditor/menueditor-main.c:43
 msgid "Xfce4-MenuEditor"
-msgstr "Menu aanpassen"
+msgstr "Xfce4-menubewerker"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -240,14 +240,14 @@ msgstr "_Nieuw"
 
 #: ../menueditor/menueditor-main-window.c:141
 msgid "Create a new empty menu"
-msgstr "Een nieuw leeg menu maken"
+msgstr "Nieuw leeg menu maken"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1602
 #: ../src/xfdesktop-special-file-icon.c:624
 #: ../src/xfdesktop-volume-icon.c:543
 msgid "_Open"
-msgstr "_Open"
+msgstr "_Openen"
 
 #: ../menueditor/menueditor-main-window.c:142
 msgid "Open existing menu"
@@ -283,7 +283,7 @@ msgstr "Sl_uiten"
 
 #: ../menueditor/menueditor-main-window.c:146
 msgid "Close menu"
-msgstr "Huidig menu sluiten"
+msgstr "Menu sluiten"
 
 #: ../menueditor/menueditor-main-window.c:147
 msgid "_Quit"
@@ -291,43 +291,43 @@ msgstr "Af_sluiten"
 
 #: ../menueditor/menueditor-main-window.c:147
 msgid "Quit Xfce4-Menueditor"
-msgstr "Xfce4 menu-editor afsluiten"
+msgstr "Xfce4-menubewerker afsluiten"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
-msgstr "Be_werken"
+msgstr "B_ewerken"
 
 #: ../menueditor/menueditor-main-window.c:150
 msgid "_Edit entry"
-msgstr "Menu optie be_werken"
+msgstr "Menuoptie b_ewerken"
 
 #: ../menueditor/menueditor-main-window.c:150
 msgid "Edit selected entry"
-msgstr "Geselecteerde menu optie bewerken"
+msgstr "Geselecteerde menuoptie bewerken"
 
 #: ../menueditor/menueditor-main-window.c:151
 msgid "_Add entry"
-msgstr "Menu optie _toevoegen"
+msgstr "Menuoptie _toevoegen"
 
 #: ../menueditor/menueditor-main-window.c:151
 msgid "Add a new entry in the menu"
-msgstr "Een nieuwe menu optie toevoegen"
+msgstr "Een nieuwe menuoptie toevoegen"
 
 #: ../menueditor/menueditor-main-window.c:152
 msgid "Add _external"
-msgstr "_Extern menu toevoegen"
+msgstr "_Externe toevoegen"
 
 #: ../menueditor/menueditor-main-window.c:152
 msgid "Add an external entry"
-msgstr "Een externe menu optie toevoegen"
+msgstr "Een externe menuoptie toevoegen"
 
 #: ../menueditor/menueditor-main-window.c:153
 msgid "_Remove entry"
-msgstr "Menu optie ve_rwijderen"
+msgstr "Menuoptie ve_rwijderen"
 
 #: ../menueditor/menueditor-main-window.c:153
 msgid "Remove entry"
-msgstr "Menu optie verwijderen"
+msgstr "Menuoptie verwijderen"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "_Up"
@@ -335,7 +335,7 @@ msgstr "Om_hoog"
 
 #: ../menueditor/menueditor-main-window.c:154
 msgid "Move entry up"
-msgstr "Omhoog verplaatsen"
+msgstr "Menuoptie omhoog verplaatsen"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "_Down"
@@ -343,7 +343,7 @@ msgstr "Om_laag"
 
 #: ../menueditor/menueditor-main-window.c:155
 msgid "Move entry down"
-msgstr "Omlaag verplaatsen"
+msgstr "Menuoptie omlaag verplaatsen"
 
 #: ../menueditor/menueditor-main-window.c:157
 msgid "_Help"
@@ -355,7 +355,7 @@ msgstr "_Info..."
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "Show informations about xfce4-menueditor"
-msgstr "Toon informatie over de xfce4 menu-editor"
+msgstr "Toon informatie over xfce4-menubewerker"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all"
@@ -363,7 +363,7 @@ msgstr "Alles inklappen"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all menu entries"
-msgstr "Alle menu onderdelen inklappen"
+msgstr "Alle menuonderdelen inklappen"
 
 #: ../menueditor/menueditor-main-window.c:161
 msgid "Expand all"
@@ -371,7 +371,7 @@ msgstr "Alles uitklappen"
 
 #: ../menueditor/menueditor-main-window.c:161
 msgid "Expand all menu entries"
-msgstr "Alle menu onderdelen uitklappen"
+msgstr "Alle menuonderdelen uitklappen"
 
 #: ../menueditor/menueditor-main-window.c:341
 msgid "Name"
@@ -387,11 +387,11 @@ msgstr "Verborgen"
 
 #: ../menueditor/menueditor-main-window.c:425
 msgid "Are you sure you want to close the current menu?"
-msgstr "Huidig menu sluiten?"
+msgstr "Weet u zeker dat u het huidige menu wilt sluiten?"
 
 #: ../menueditor/menueditor-main-window.c:439
 msgid "Do you want to save before closing the file?"
-msgstr "Wijzigingen opslaan?"
+msgstr "Wilt u opslaan voordat u afsluit?"
 
 #: ../menueditor/menueditor-main-window.c:477
 #: ../menueditor/menueditor-main-window.c:530
@@ -403,7 +403,7 @@ msgstr "Vraag"
 
 #: ../menueditor/menueditor-main-window.c:479
 msgid "Do you want to save before opening an other menu ?"
-msgstr "Wilt u de wijzigingen opslaan?"
+msgstr "Wilt u opslaan voordat u een ander menu opent?"
 
 #: ../menueditor/menueditor-main-window.c:481
 #: ../menueditor/menueditor-main-window.c:534
@@ -417,16 +417,16 @@ msgstr "Open menubestand"
 
 #: ../menueditor/menueditor-main-window.c:532
 msgid "Do you want to save before opening the default menu ?"
-msgstr "Wilt u de wijzigingen opslaan voor het openen van het standaard menu?"
+msgstr "Wilt u opslaan voordat het standaardmenu wordt geopend?"
 
 #: ../menueditor/menueditor-main-window.c:592
 msgid "Save menu file as"
-msgstr "Menu bestand opslaan als"
+msgstr "Menubestand opslaan als"
 
 #: ../menueditor/menueditor-main-window.c:630
 #: ../menueditor/menueditor-main-window.c:1341
 msgid "Do you want to save before closing the menu ?"
-msgstr "Wilt u de wijzigingen opslaan?"
+msgstr "Wilt u opslaan voordat het menu wordt gesloten?"
 
 #: ../menueditor/menueditor-main-window.c:856
 #: ../menueditor/menueditor-main-window.c:986
@@ -442,7 +442,7 @@ msgstr "--- scheidingslijn ---"
 #: ../menueditor/menueditor-main-window.c:1086
 #: ../menueditor/menueditor-main-window.c:1636
 msgid "--- include ---"
-msgstr "--- extern menu ---"
+msgstr "--- bijvoegen ---"
 
 #: ../menueditor/menueditor-main-window.c:1087
 #: ../menueditor/menueditor-main-window.c:1653
@@ -452,11 +452,11 @@ msgstr "systeem"
 #: ../menueditor/menueditor-main-window.c:1213
 #: ../menueditor/menueditor-main-window.c:1261
 msgid "Do you want to move the item into the submenu?"
-msgstr "Wilt u de de menu-optie naar het submenu verplaatsen?"
+msgstr "Wilt u het item naar het submenu verplaatsen?"
 
 #: ../menueditor/menueditor-main-window.c:1291
 msgid "A menu editor for Xfce4"
-msgstr "Een menu-editor voor Xfce4"
+msgstr "Een menubewerker voor Xfce4"
 
 #. Credits
 #: ../menueditor/menueditor-main-window.c:1296
@@ -475,7 +475,7 @@ msgstr "Pictogramontwerper"
 
 #: ../menueditor/menueditor-main-window.c:1343
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Wilt u de wijzigingen opslaan?"
+msgstr "U hebt het menu gewijzigd, wilt u het opslaan voordat u afsluit?"
 
 #: ../menueditor/menueditor-main-window.c:1345
 msgid "Forget modifications"
@@ -484,14 +484,14 @@ msgstr "Wijzigingen negeren"
 #: ../menueditor/menueditor-main-window.c:2033
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
-msgstr "Kan het menu bestand %s niet openen voor schrijven"
+msgstr "Kan het menubestand %s niet openen in schrijf-modus"
 
 #: ../modules/menu/desktop-menu-file.c:116
 #: ../modules/menu/desktop-menu-file.c:131
 #: ../panel-plugin/desktop-menu-plugin.c:765
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
-msgstr "Xfce Menu"
+msgstr "Xfce-menu"
 
 #: ../modules/menu/desktop-menu-file.c:118
 #: ../modules/menu/desktop-menu-file.c:133
@@ -509,21 +509,21 @@ msgstr "Het afsluiten van de sessie vereist het 'xfce4-session-logout' commando,
 
 #: ../modules/menu/desktop-menuspec.c:61
 msgid "/Other"
-msgstr "/Overig"
+msgstr "/Overige"
 
 #: ../panel-plugin/desktop-menu-plugin.c:583
 msgid "Select Icon"
-msgstr "Pictogram selecteren"
+msgstr "Kies pictogram"
 
 #: ../panel-plugin/desktop-menu-plugin.c:585
 msgid "Select Menu File"
-msgstr "Menubestand selecteren"
+msgstr "Menubestand kiezen"
 
 #: ../panel-plugin/desktop-menu-plugin.c:742
 #: ../settings/behavior-settings.c:217
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "Kon xfce4 menu-editor niet starten: %s"
+msgstr "Kon de xfce4-menubewerker niet starten: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:777
 msgid "Button"
@@ -531,7 +531,7 @@ msgstr "Knop"
 
 #: ../panel-plugin/desktop-menu-plugin.c:790
 msgid "Button _title:"
-msgstr "Knop _titel:"
+msgstr "Knop_titel:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:803
 msgid "_Show title in button"
@@ -539,20 +539,20 @@ msgstr "_Toon titel in knop"
 
 #: ../panel-plugin/desktop-menu-plugin.c:810
 msgid "Menu File"
-msgstr "Menu bestand"
+msgstr "Menubestand"
 
 #: ../panel-plugin/desktop-menu-plugin.c:822
 msgid "Use default _desktop menu file"
-msgstr "Gebruik het stan_daard menu bestand"
+msgstr "Gebruik het stan_daard bureaubladmenubestand"
 
 #: ../panel-plugin/desktop-menu-plugin.c:831
 msgid "Use _custom menu file:"
-msgstr "Gebruik _aangepast menu bestand:"
+msgstr "Gebruik _aangepast menubestand:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:882
 #: ../settings/behavior-settings.c:267
 msgid "_Edit Menu"
-msgstr "Menu be_werken"
+msgstr "Menu b_ewerken"
 
 #: ../panel-plugin/desktop-menu-plugin.c:888
 msgid "Icons"
@@ -560,7 +560,7 @@ msgstr "Pictogrammen"
 
 #: ../panel-plugin/desktop-menu-plugin.c:900
 msgid "_Button icon:"
-msgstr "_Knop icoon:"
+msgstr "_Knoppictogram:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:924
 msgid "Show _icons in menu"
@@ -568,7 +568,7 @@ msgstr "Toon p_ictogrammen in menu"
 
 #: ../panel-plugin/desktop-menu-plugin.c:947
 msgid "There is already a panel menu registered for this screen"
-msgstr "Er is al een paneel menu geregistreerd voor dit scherm"
+msgstr "Er is voor dit scherm al een paneelmenu geregistreerd"
 
 #: ../panel-plugin/desktop-menu-plugin.c:1055
 msgid "Edit Menu"
@@ -583,19 +583,19 @@ msgstr "Bureaublad"
 #: ../settings/appearance-settings.c:200
 #: ../settings/backdrop-list-manager.c:628
 msgid "backdrops.list"
-msgstr "achtergronden.list"
+msgstr "backdrops.list"
 
 #: ../settings/appearance-settings.c:574
 msgid "Select backdrop image or list file"
-msgstr "Achtergrondafbeelding of lijst selecteren"
+msgstr "Kies achtergrondafbeelding of lijstbestand"
 
 #: ../settings/appearance-settings.c:592
 msgid "List Files (*.list)"
-msgstr "Lijsten (*.list)"
+msgstr "Lijstbestanden (*.list)"
 
 #: ../settings/appearance-settings.c:688
 msgid "_Edit list..."
-msgstr "Lijst _aanpassen..."
+msgstr "Lijst b_ewerken..."
 
 #: ../settings/appearance-settings.c:696
 msgid "_New list..."
@@ -611,19 +611,19 @@ msgstr "Automatisch"
 
 #: ../settings/appearance-settings.c:737
 msgid "Centered"
-msgstr "Centreren"
+msgstr "Gecentreerd"
 
 #: ../settings/appearance-settings.c:738
 msgid "Tiled"
-msgstr "Naast elkaar"
+msgstr "Getegeld"
 
 #: ../settings/appearance-settings.c:739
 msgid "Stretched"
-msgstr "Uitrekken"
+msgstr "Gespreid"
 
 #: ../settings/appearance-settings.c:740
 msgid "Scaled"
-msgstr "Schalen"
+msgstr "Geschaald"
 
 #: ../settings/appearance-settings.c:796
 msgid "A_djust Brightness:"
@@ -632,7 +632,7 @@ msgstr "Hel_derheid aanpassen:"
 #: ../settings/appearance-settings.c:854
 #, c-format
 msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr "Xfce zal het bureaublad niet kunnen beheren (%s)."
+msgstr "Xfce zal uw bureaublad niet kunnen beheren (%s)."
 
 #: ../settings/appearance-settings.c:855
 msgid "Unknown Error"
@@ -654,11 +654,21 @@ msgstr "Informatie"
 
 #: ../settings/appearance-settings.c:896
 msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
-msgstr "Zorg er voor dat u de sessie opslaat bij het afsluiten om zeker te zijn dat deze instellingen worden gebruikt na de volgende keer dat Xfce wordt gestart. Als u de Xfce sessie beheerder (xfce4-session) niet gebruikt, dan zult u het bestand ~/.config/xfce4/xinitrc handmatig moeten bewerken. Details zijn beschikbaar in de documentatie op http://www.xfce.org/."
+msgstr ""
+"Zorg dat uw sessie wordt opgelagen zodra u uitlogt om er zeker van te zijn "
+"dat deze instelling wordt toegepast de volgende keer dat u Xfce start. Als u "
+"de Xfce-sessiebeheerder (xfce4-session) niet gebruikt, zult u handmatig uw  "
+"~/.config/xfce4/xinitrc bestand moeten aanpassen. Details zijn beschikbaar "
+"in de documentation die op http://xfce.org/ beschikbaar is gesteld."
 
 #: ../settings/appearance-settings.c:898
 msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
-msgstr "Zorg er voor dat u de sessie opslaat bij het afsluiten om zeker te zijn dat Xfce uw bureaublad de volgende keer dat u Xfce opstart niet beheert. Als u de Xfce sessie beheerder (xfce4-session) niet gebruikt, dan zult u het bestand ~/.config/xfce4/xinitrc handmatig moeten bewerken. Details zijn beschikbaar in de documentatie op http://www.xfce.org/."
+msgstr ""
+"Zorg dat uw sessie wordt opgelagen zodra u uitlogt om er zeker van te zijn "
+"dat de volgende keer dat u Xfce start, Xfce uw bureaublad niet beheert.Als u "
+"de Xfce-sessiebeheerder (xfce4-session) niet gebruikt, zult u handmatig uw  "
+"~/.config/xfce4/xinitrc bestand moeten aanpassen. Details zijn beschikbaar "
+"in de documentation die op http://xfce.org/ beschikbaar is gesteld."
 
 #: ../settings/appearance-settings.c:906
 msgid "_Do not show this again"
@@ -667,7 +677,7 @@ msgstr "_Niet weer tonen"
 #. the dialog
 #: ../settings/appearance-settings.c:972
 msgid "Desktop Preferences"
-msgstr "Bureaublad instellen"
+msgstr "Bureaubladvoorkeuren"
 
 #: ../settings/appearance-settings.c:989
 msgid "Allow _Xfce to manage the desktop"
@@ -675,7 +685,7 @@ msgstr "Laat _Xfce het bureaublad beheren"
 
 #: ../settings/appearance-settings.c:1030
 msgid "Stretch single backdrop onto _all monitors"
-msgstr "Enkele achtergrond oprekken over _alle beeldschermen"
+msgstr "Enkelvoudige achtergrond over _alle monitors spreiden"
 
 #. add the single backdrop settings page to the main notebook
 #: ../settings/appearance-settings.c:1044
@@ -690,19 +700,19 @@ msgstr "Kleur"
 
 #: ../settings/appearance-settings.c:1084
 msgid "_Color Style:"
-msgstr "_Kleurverloop:"
+msgstr "_Kleurstijl:"
 
 #: ../settings/appearance-settings.c:1091
 msgid "Solid Color"
-msgstr "Vaste kleur"
+msgstr "Egale kleur"
 
 #: ../settings/appearance-settings.c:1092
 msgid "Horizontal Gradient"
-msgstr "Horizontale overgang"
+msgstr "Horizontale gradiënt"
 
 #: ../settings/appearance-settings.c:1093
 msgid "Vertical Gradient"
-msgstr "Verticale overgang"
+msgstr "Verticale gradiënt"
 
 #: ../settings/appearance-settings.c:1106
 msgid "Fi_rst Color:"
@@ -718,7 +728,7 @@ msgstr "Afbeelding"
 
 #: ../settings/appearance-settings.c:1160
 msgid "Show _Image"
-msgstr "Afbeelding _tonen"
+msgstr "Afbeeld_ing weergeven"
 
 #: ../settings/appearance-settings.c:1182
 msgid "_File:"
@@ -750,23 +760,24 @@ msgid ""
 msgstr ""
 "Kon bestand %s niet opslaan: %s\n"
 "\n"
-"Kies een andere locatie of druk op annuleren in het dialoogvenster"
+"Kies een andere locatie of klik in het dialoogvenster op annuleren om uw "
+"wijzigingen teniet te doen"
 
 #: ../settings/backdrop-list-manager.c:430
 msgid "Select backdrop image file"
-msgstr "Afbeelding selecteren voor achtergrond"
+msgstr "Selecteer een afbeelding voor de achtergrond"
 
 #: ../settings/backdrop-list-manager.c:531
 msgid "Choose backdrop list filename"
-msgstr "Kies bestandsnaam voor afbeeldingenlijst"
+msgstr "Kies bestandsnaam voor achtergrondenlijst"
 
 #: ../settings/backdrop-list-manager.c:540
 msgid "List Files"
-msgstr "Lijst-bestanden"
+msgstr "Lijstbestanden"
 
 #: ../settings/backdrop-list-manager.c:617
 msgid "Image files"
-msgstr "Afbeeldingen"
+msgstr "Afbeeldingsbestanden"
 
 #: ../settings/backdrop-list-manager.c:636
 msgid "List file"
@@ -774,11 +785,11 @@ msgstr "Lijstbestand"
 
 #: ../settings/backdrop-list-manager.c:658
 msgid "Create backdrop list"
-msgstr "Lijst van achtergronden maken"
+msgstr "Lijst met achtergronden maken"
 
 #: ../settings/backdrop-list-manager.c:691
 msgid "Edit backdrop list"
-msgstr "Lijst van achtergronden aanpassen"
+msgstr "Lijst met achtergronden aanpassen"
 
 #: ../settings/behavior-settings.c:241
 msgid "Menus"
@@ -790,7 +801,7 @@ msgstr "Toon _vensterlijst met middelste muisknop"
 
 #: ../settings/behavior-settings.c:260
 msgid "Show _desktop menu on right click"
-msgstr "Toon bureaubla_d menu met rechter muisknop"
+msgstr "Toon bureaubla_dmenu met rechter muisklik"
 
 #: ../settings/behavior-settings.c:279
 msgid "Desktop Icons"
@@ -803,23 +814,23 @@ msgstr "Geen"
 
 #: ../settings/behavior-settings.c:289
 msgid "Minimized application icons"
-msgstr "Geminimaliseerde programma pictogrammen"
+msgstr "Pictogrammen van geminimaliseerde programma's"
 
 #: ../settings/behavior-settings.c:291
 msgid "File/launcher icons"
-msgstr "Bestand/starter pictogrammen"
+msgstr "Bestand/snelstarter pictogrammen"
 
 #: ../settings/behavior-settings.c:306
 msgid "_Icon size:"
-msgstr "_Pictogramgrootte:"
+msgstr "P_ictogramgrootte:"
 
 #: ../settings/behavior-settings.c:320
 msgid "Use _system font size"
-msgstr "Gebruik _systeem lettergrootte"
+msgstr "Gebruik _systeem fontgrootte"
 
 #: ../settings/behavior-settings.c:337
 msgid "Custom _font size:"
-msgstr "Aangepaste _lettergrootte:"
+msgstr "Aangepaste _fontgrootte:"
 
 #: ../src/main.c:255
 #, c-format
@@ -829,16 +840,16 @@ msgstr "Dit is %s versie %s, draaiend op Xfce %s.\n"
 #: ../src/main.c:257
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Gebouwd met GTK+ %d.%d.%d, gekoppeld met GTK+ %d.%d.%d."
+msgstr "Gebouwd met GTK+ %d.%d.%d, gelinked met GTK+ %d.%d.%d."
 
 #: ../src/main.c:261
 msgid "Build options:\n"
-msgstr "Bouw opties:\n"
+msgstr "Bouwopties:\n"
 
 #: ../src/main.c:262
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "    Bureaublad menu:                 %s\n"
+msgstr "    Bureaubladmenu:        %s\n"
 
 #: ../src/main.c:264
 #: ../src/main.c:271
@@ -855,12 +866,12 @@ msgstr "uitgeschakeld"
 #: ../src/main.c:269
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "    Bureaublad pictogrammen:         %s\n"
+msgstr "    Bureaubladpictogrammen:       %s\n"
 
 #: ../src/main.c:276
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Bureaublad bestandspictogrammen: %s\n"
+msgstr "    Bureaubladbestandspictogrammen:  %s\n"
 
 #: ../src/main.c:305
 #, c-format
@@ -873,15 +884,15 @@ msgstr "Mogelijke opties:\n"
 
 #: ../src/main.c:307
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr "    --reload   Instellingen opnieuw laden, bestandenlijst verversen\n"
+msgstr "    --reload   Instellingen opnieuw laden, ververs afbeeldingenlijst\n"
 
 #: ../src/main.c:308
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    --menu     Bureaubladmenu tonen (op huidige cursorpositie)\n"
+msgstr "    --menu     Menu tonen (op huidige muispositie)\n"
 
 #: ../src/main.c:309
 msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    --windowlist  Vensterlijst tonen (op huidige cursorpositie)\n"
+msgstr "    --windowlist  Vensterlijst tonen (op huidige muispositie)\n"
 
 #: ../src/main.c:310
 msgid "    --quit        Cause xfdesktop to quit\n"
@@ -905,17 +916,17 @@ msgstr "<i>Werkblad %d</i>"
 #: ../src/windowlist.c:295
 #: ../src/windowlist.c:298
 msgid "_Add Workspace"
-msgstr "Werkblad _toevoegen"
+msgstr "Werkbl_ad toevoegen"
 
 #: ../src/windowlist.c:306
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "Werkblad %d _verwijderen"
+msgstr "Werkblad %d ve_rwijderen"
 
 #: ../src/windowlist.c:309
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Werkblad '%s' _verwijderen"
+msgstr "Werkblad '%s' ve_rwijderen"
 
 #: ../src/xfce-desktop.c:573
 msgid "Desktop"
@@ -924,27 +935,29 @@ msgstr "Bureaublad"
 #: ../src/xfdesktop-file-icon-manager.c:386
 #, c-format
 msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "Xfdesktop kon de map \"%s\" voor bureaublad pictogrammen niet aanmaken:"
+msgstr ""
+"Xfdesktop kon map \"%s\" niet aanmaken om de bureaubladitems in op te slaan:"
 
 #: ../src/xfdesktop-file-icon-manager.c:388
 #: ../src/xfdesktop-file-icon-manager.c:399
 #: ../src/xfdesktop-file-icon-manager.c:1094
 msgid "Create Folder Failed"
-msgstr "Kan geen map maken"
+msgstr "Kon map niet maken"
 
 #: ../src/xfdesktop-file-icon-manager.c:397
 #, c-format
 msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr "Xfdesktop kan \"%s\" niet gebruiken voor bureaublad pictogrammen, want het is geen map."
+msgstr ""
+"Xfdesktop kan geen bureaubladitems in \"%s\" opslaan omdat dit geen map is."
 
 #: ../src/xfdesktop-file-icon-manager.c:401
 msgid "Please delete or rename the file."
-msgstr "Wijzig de naam van het bestand of verwijder het."
+msgstr "Verwijder of hernoem het bestand."
 
 #: ../src/xfdesktop-file-icon-manager.c:538
 #, c-format
 msgid "Rename \"%s\""
-msgstr "Naam van \"%s\" wijzigen"
+msgstr "Hernoem \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:545
 #: ../src/xfdesktop-file-icon-manager.c:1166
@@ -955,7 +968,7 @@ msgstr "Voer een nieuwe naam in:"
 
 #: ../src/xfdesktop-file-icon-manager.c:547
 msgid "Rename"
-msgstr "Naam wijzigen"
+msgstr "Hernoem"
 
 #: ../src/xfdesktop-file-icon-manager.c:584
 #, c-format
@@ -965,7 +978,7 @@ msgstr "Weet u zeker dat u \"%s\" wilt verwijderen?"
 #: ../src/xfdesktop-file-icon-manager.c:589
 #: ../src/xfdesktop-file-icon-manager.c:609
 msgid "If you delete a file, it is permanently lost."
-msgstr "Als u een bestand verwijdert is het voorgoed verloren."
+msgstr "Als u een bestand verwijdert is het permanent verloren."
 
 #: ../src/xfdesktop-file-icon-manager.c:603
 #, c-format
@@ -983,7 +996,7 @@ msgstr "Meerdere bestanden verwijderen"
 #: ../src/xfdesktop-file-utils.c:352
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "Kan \"%s\" niet starten:"
+msgstr "Kon \"%s\" niet starten:"
 
 #: ../src/xfdesktop-file-icon-manager.c:825
 #: ../src/xfdesktop-file-icon-manager.c:865
@@ -992,7 +1005,7 @@ msgstr "Kan \"%s\" niet starten:"
 #: ../src/xfdesktop-file-icon.c:144
 #: ../src/xfdesktop-file-utils.c:355
 msgid "Launch Error"
-msgstr "Uitvoerfout"
+msgstr "Opstartfout"
 
 #: ../src/xfdesktop-file-icon-manager.c:866
 msgid "The application chooser could not be opened."
@@ -1001,7 +1014,9 @@ msgstr "De programmakiezer kan niet worden geopend."
 #: ../src/xfdesktop-file-icon-manager.c:867
 #: ../src/xfdesktop-file-utils.c:357
 msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-msgstr "Deze functie vereist dat er een bestandsbeheerder is geïnstalleerd (zoals bijvoorbeeld wordt verzorgd door Thunar)."
+msgstr ""
+"Deze functie vereist dat er een bestandsbeheer-service aanwezig is (zoals "
+"wordt verzorgd door Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1027
 #, c-format
@@ -1016,11 +1031,11 @@ msgstr "Openen met \"%s\""
 #: ../src/xfdesktop-file-icon-manager.c:1091
 #, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "Kan de map \"%s\" niet maken:"
+msgstr "Kon de map, genaamd \"%s\" niet maken:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1130
 msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Kan \"exo-desktop-item-edit\" niet starten, dit is nodig voor het maken en bewerken van starters en snelkoppelingen op het bureaublad."
+msgstr "Kan \"exo-desktop-item-edit\" niet starten, dit is nodig voor het maken en bewerken van snelstarters en -koppelingen op het bureaublad."
 
 #: ../src/xfdesktop-file-icon-manager.c:1163
 msgid "Create New Folder"
@@ -1039,20 +1054,20 @@ msgstr "Maken"
 #: ../src/xfdesktop-file-icon-manager.c:1204
 #, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "Kan het bestand \"%s\" niet maken:"
+msgstr "Kon bestand, genaamd \"%s\", niet maken:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1207
 msgid "Create File Failed"
-msgstr "Kan geen bestand maken"
+msgstr "Kon bestand niet maken"
 
 #: ../src/xfdesktop-file-icon-manager.c:1246
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr "Maak document van sjabloon \"%s\""
+msgstr "Document maken volgens sjabloon \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1265
 msgid "Create Empty File"
-msgstr "Leeg bestand maken"
+msgstr "Maak leeg bestand"
 
 #: ../src/xfdesktop-file-icon-manager.c:1269
 msgid "New Empty File"
@@ -1061,11 +1076,11 @@ msgstr "Nieuw leeg bestand"
 #: ../src/xfdesktop-file-icon-manager.c:1302
 #, c-format
 msgid "Unable to create file \"%s\":"
-msgstr "Kan bestand \"%s\" niet maken:"
+msgstr "Kon bestand \"%s\" niet maken:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1303
 msgid "Create Error"
-msgstr "Maakfout"
+msgstr "Aanmaak-fout"
 
 #: ../src/xfdesktop-file-icon-manager.c:1587
 msgid "_Open all"
@@ -1073,11 +1088,11 @@ msgstr "Alles _openen"
 
 #: ../src/xfdesktop-file-icon-manager.c:1617
 msgid "_Execute"
-msgstr "_Uitvoeren"
+msgstr "Uitvoer_en"
 
 #: ../src/xfdesktop-file-icon-manager.c:1634
 msgid "_Edit Launcher"
-msgstr "Starter _aanpassen"
+msgstr "Snelstarter b_ewerken"
 
 #: ../src/xfdesktop-file-icon-manager.c:1674
 msgid "Open With"
@@ -1085,11 +1100,11 @@ msgstr "Openen met"
 
 #: ../src/xfdesktop-file-icon-manager.c:1705
 msgid "Open With Other _Application..."
-msgstr "Openen met ander _programma..."
+msgstr "Met _ander programma openen..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1804
 msgid "_Rename..."
-msgstr "Naam _wijzigen..."
+msgstr "He_rnoemen..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1820
 #: ../src/xfdesktop-volume-icon.c:593
@@ -1122,22 +1137,22 @@ msgstr "Bureaublad in_stellen..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1986
 msgid "_Desktop Properties..."
-msgstr "Bureaublad _eigenschappen..."
+msgstr "Bureaublad_eigenschappen..."
 
 #: ../src/xfdesktop-file-icon-manager.c:3158
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
-msgstr "Kan \"%s\" niet uitvoeren:"
+msgstr "Kon \"%s\" niet uitvoeren:"
 
 #: ../src/xfdesktop-file-icon-manager.c:3160
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
-msgstr "Uitvoerfout"
+msgstr "Uitvoer-fout"
 
 #: ../src/xfdesktop-file-icon.c:146
 msgid "The associated application could not be found or executed."
-msgstr "Het geassocieerde programma kan niet worden gevonden of uitgevoerd."
+msgstr "Het bijbehorende programma kon niet worden gevonden of uitgevoerd."
 
 #: ../src/xfdesktop-file-properties-dialog.c:103
 #, c-format
@@ -1150,11 +1165,11 @@ msgstr "Eigenschappen fout"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Write only"
-msgstr "Alleen schrijven"
+msgstr "Alleen-schrijven"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read only"
-msgstr "Alleen lezen"
+msgstr "Alleen-lezen"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read & Write"
@@ -1170,7 +1185,7 @@ msgstr "Soort:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:234
 msgid "Link Target:"
-msgstr "Snelkoppelings bestemming:"
+msgstr "Doel van snelkoppeling:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
@@ -1183,7 +1198,7 @@ msgstr "Openen met:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:350
 msgid "Modified:"
-msgstr "Aangepast:"
+msgstr "Gewijzigd:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:368
 msgid "Accessed:"
@@ -1224,7 +1239,7 @@ msgstr "Groep:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:533
 msgid "Others:"
-msgstr "Iedereen:"
+msgstr "Anderen:"
 
 #: ../src/xfdesktop-file-utils.c:74
 msgid "Yes to _all"
@@ -1251,12 +1266,12 @@ msgstr "Bestandsfout"
 
 #: ../src/xfdesktop-file-utils.c:137
 msgid "broken link"
-msgstr "snelkoppeling gebroken"
+msgstr "defecte link"
 
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "link to %s"
-msgstr "snelkoppeling naar %s"
+msgstr "koppeling naar %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:489
 #: ../src/xfdesktop-special-file-icon.c:490
@@ -1268,13 +1283,13 @@ msgid ""
 "Size: %s"
 msgstr ""
 "Soort: %s\n"
-"Aangepast:%s\n"
+"Gewijzigd:%s\n"
 "Grootte: %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:581
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr "Kan naam van \"%s\" niet wijzigen naar \"%s\":"
+msgstr "Kon \"%s\" niet naar \"%s\" hernoemen:"
 
 #: ../src/xfdesktop-special-file-icon.c:258
 msgid "Home"
@@ -1286,11 +1301,13 @@ msgstr "Prullenbakfout"
 
 #: ../src/xfdesktop-special-file-icon.c:510
 msgid "Unable to contact the Xfce Trash service."
-msgstr "Kan geen contact leggen met de Xfce prullenbak."
+msgstr "Kan geen verbinding maken met de Xfce-prullenbakservice."
 
 #: ../src/xfdesktop-special-file-icon.c:511
 msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr "Zorg ervoor dat er een bestandsbeheerder is geinstalleerd die de Xfce prullenbak service ondersteunt, zoals Thunar."
+msgstr ""
+"Zorg ervoor dat u een bestandsbeheerder hebt geinstalleerd die de Xfce-"
+"prullenbakservice ondersteunt, zoals Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
@@ -1299,20 +1316,20 @@ msgstr "Prullenbak l_egen"
 #: ../src/xfdesktop-volume-icon.c:491
 #, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "Kan \"%s\" niet aansluiten:"
+msgstr "Kan \"%s\" niet aankoppelen:"
 
 #: ../src/xfdesktop-volume-icon.c:492
 #, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "Kan \"%s\" niet loskoppelen:"
+msgstr "Kan \"%s\" niet ontkoppelen:"
 
 #: ../src/xfdesktop-volume-icon.c:495
 msgid "Mount Failed"
-msgstr "Aansluiten is mislukt"
+msgstr "Aankoppelen mislukt"
 
 #: ../src/xfdesktop-volume-icon.c:495
 msgid "Unmount Failed"
-msgstr "Loskoppelen is mislukt"
+msgstr "Ontkoppelen mislukt"
 
 #: ../src/xfdesktop-volume-icon.c:513
 #, c-format
@@ -1321,47 +1338,47 @@ msgstr "Kan \"%s\" niet uitwerpen:"
 
 #: ../src/xfdesktop-volume-icon.c:516
 msgid "Eject Failed"
-msgstr "Uitwerpen is mislukt"
+msgstr "Uitwerpen mislukt"
 
 #: ../src/xfdesktop-volume-icon.c:554
 msgid "_Mount Volume"
-msgstr "Volume aans_luiten"
+msgstr "_Medium aankoppelen"
 
 #: ../src/xfdesktop-volume-icon.c:565
 msgid "_Unmount Volume"
-msgstr "Volume _ontkoppelen"
+msgstr "Medium _ontkoppelen"
 
 #: ../src/xfdesktop-volume-icon.c:579
 msgid "E_ject Volume"
-msgstr "Volume Uit_werpen"
+msgstr "M_edium uitwerpen"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Bewerk het Xfce menu"
+msgstr "Grafisch programma om het Xfce 4 menu te bewerken"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
-msgstr "Menu bewerken"
+msgstr "Menubewerker"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
-msgstr "Menu bewerken"
+msgstr "Xfce 4 menubewerker"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr "Toont een menu met categorieën van geïnstalleerde programma's"
+msgstr "Toont een menu dat categorieën van geïnstalleerde programma's bevat"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
-msgstr "Bureaublad instellen"
+msgstr "Bureaubladinstellingen"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr "Bureaublad instellen"
+msgstr "Instellingen van de Xfce 4 bureaubladbeheerder"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
-msgstr "Bureaublad instellen"
+msgstr "Xfce 4 Bureaubladinstellingen"
 
 #~ msgid "Edit Properties"
 #~ msgstr "Eigenschappen aanpassen"
