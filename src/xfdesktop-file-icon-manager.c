@@ -162,6 +162,9 @@ static void xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconMan
 static void xfdesktop_file_icon_manager_load_removable_media(XfdesktopFileIconManager *fmanager);
 static void xfdesktop_file_icon_manager_remove_removable_media(XfdesktopFileIconManager *fmanager);
 
+static void xfdesktop_file_icon_position_changed(XfdesktopFileIcon *icon,
+                                                 gpointer user_data);
+
 
 G_DEFINE_TYPE_EXTENDED(XfdesktopFileIconManager,
                        xfdesktop_file_icon_manager,
