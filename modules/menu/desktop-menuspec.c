@@ -242,6 +242,15 @@ menu_tree_find_node(GNode *node, gpointer data)
 }
 
 static void
+orphan_ht_free_data(gpointer key,
+                    gpointer value,
+                    gpointer data)
+{
+    g_free((gchar *)key);
+    g_node_destroy((GNode *)value);
+}
+
+static void
 menuspec_xml_start(GMarkupParseContext *context, const gchar *element_name,
         const gchar **attribute_names, const gchar **attribute_values,
         gpointer user_data, GError **error)
@@ -460,7 +469,11 @@ desktop_menuspec_parse_categories(const gchar *filename)
     g_hash_table_destroy(cats_orphans);
     cats_orphans = NULL;
     
-    cleanup:
+cleanup:
+    if(cats_orphans) {
+        g_hash_table_foreach(cats_orphans, orphan_ht_free_data, NULL);
+        g_hash_table_destroy(cats_orphans);
+    }
     
     if(gpcontext)
         g_markup_parse_context_free(gpcontext);
