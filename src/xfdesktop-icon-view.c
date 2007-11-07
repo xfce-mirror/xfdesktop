@@ -410,6 +410,32 @@ xfdesktop_icon_view_finalize(GObject *obj)
 }
 
 static gboolean
+xfdesktop_icon_view_icon_selected_idled(gpointer data)
+{
+    XfdesktopIcon *icon = data;
+    
+    g_signal_emit(G_OBJECT(xfdesktop_icon_peek_icon_view(icon)),
+                  __signals[SIG_ICON_SELECTED], 0, NULL);
+    xfdesktop_icon_selected(icon);
+    g_object_unref(G_OBJECT(icon));
+    
+    return FALSE;
+}
+
+static gboolean
+xfdesktop_icon_view_icon_activated_idled(gpointer data)
+{
+    XfdesktopIcon *icon = data;
+    
+    g_signal_emit(G_OBJECT(xfdesktop_icon_peek_icon_view(icon)),
+                  __signals[SIG_ICON_ACTIVATED], 0, NULL);
+    xfdesktop_icon_activated(icon);
+    g_object_unref(G_OBJECT(icon));
+    
+    return FALSE;
+}
+
+static gboolean
 xfdesktop_icon_view_button_press(GtkWidget *widget,
                                  GdkEventButton *evt,
                                  gpointer user_data)
@@ -513,10 +539,8 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                                                                                      icon1);
                                     xfdesktop_icon_view_clear_icon_extents(icon_view,
                                                                            icon1);
-                                    g_signal_emit(G_OBJECT(icon_view),
-                                                  __signals[SIG_ICON_SELECTED],
-                                                  0, NULL);
-                                    xfdesktop_icon_selected(icon1);
+                                    g_idle_add(xfdesktop_icon_view_icon_selected_idled,
+                                               g_object_ref(G_OBJECT(icon1)));
                                 }
                             }
                         }
@@ -525,11 +549,8 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                     icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
                                                                      icon);
                     xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
-                    
-                    g_signal_emit(G_OBJECT(icon_view),
-                                  __signals[SIG_ICON_SELECTED],
-                                  0, NULL);
-                    xfdesktop_icon_selected(icon);
+                    g_idle_add(xfdesktop_icon_view_icon_selected_idled,
+                               g_object_ref(G_OBJECT(icon)));
                 }
             }
             
@@ -569,9 +590,8 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                                                (GCompareFunc)xfdesktop_check_icon_clicked);
             if(icon_l && (icon = icon_l->data)) {
                 icon_view->priv->last_clicked_item = icon;
-                g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED],
-                              0, NULL);
-                xfdesktop_icon_activated(icon);
+                g_idle_add(xfdesktop_icon_view_icon_activated_idled,
+                           g_object_ref(G_OBJECT(icon)));
             }
         }
         
