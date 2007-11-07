@@ -104,7 +104,6 @@ struct _XfdesktopFileIconManagerPrivate
     gboolean show_removable_media;
     gboolean show_special[XFDESKTOP_SPECIAL_FILE_ICON_TRASH+1];
     
-    GList *icons_to_save;
     guint save_icons_id;
     
     GList *deferred_icons;
@@ -160,6 +159,9 @@ static gboolean xfdesktop_file_icon_manager_check_create_desktop_folder(ThunarVf
 static void xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanager);
 static void xfdesktop_file_icon_manager_load_removable_media(XfdesktopFileIconManager *fmanager);
 static void xfdesktop_file_icon_manager_remove_removable_media(XfdesktopFileIconManager *fmanager);
+
+static void xfdesktop_file_icon_position_changed(XfdesktopFileIcon *icon,
+                                                 gpointer user_data);
 
 
 G_DEFINE_TYPE_EXTENDED(XfdesktopFileIconManager,
@@ -789,6 +791,8 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager,
         g_list_foreach(selected, (GFunc)g_object_unref, NULL);
         g_list_free(selected);
     }
+    
+    xfdesktop_file_icon_position_changed(NULL, fmanager);
 }
 
 static void
@@ -1629,12 +1633,13 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
                     if(!g_ascii_strcasecmp("application/x-desktop",
                                            thunar_vfs_mime_info_get_name(info->mime_info)))
                     {
+                        ThunarVfsInfo *info1 = (ThunarVfsInfo *)info;  /* why? */
                         img = gtk_image_new_from_stock(GTK_STOCK_EDIT, GTK_ICON_SIZE_MENU);
                         gtk_widget_show(img);
                         mi = gtk_image_menu_item_new_with_mnemonic(_("_Edit Launcher"));
                         gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
                         g_object_set_data_full(G_OBJECT(mi), "thunar-vfs-info",
-                                               thunar_vfs_info_ref((ThunarVfsInfo *)info),
+                                               thunar_vfs_info_ref(info1),
                                                (GDestroyNotify)thunar_vfs_info_unref);
                         gtk_widget_show(mi);
                         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -1997,44 +2002,66 @@ xfdesktop_file_icon_menu_popup(XfdesktopIcon *icon,
     /* don't free |selected|.  the menu deactivated handler does that */
 }
 
+static void
+file_icon_hash_write_icons(gpointer key,
+                           gpointer value,
+                           gpointer data)
+{
+    XfceRc *rcfile = data;
+    XfdesktopIcon *icon = value;
+    guint16 row, col;
+    
+    if(xfdesktop_icon_get_position(icon, &row, &col)) {
+        xfce_rc_set_group(rcfile, xfdesktop_icon_peek_label(icon));
+        xfce_rc_write_int_entry(rcfile, "row", row);
+        xfce_rc_write_int_entry(rcfile, "col", col);
+    }
+}
+
 static gboolean
 xfdesktop_file_icon_manager_save_icons(gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    gchar relpath[PATH_MAX];
+    gchar relpath[PATH_MAX], *tmppath, *path;
     XfceRc *rcfile;
-    GList *l;
-    XfdesktopIcon *icon;
-    guint16 row, col;
     
     fmanager->priv->save_icons_id = 0;
     
-    g_return_val_if_fail(fmanager->priv->icons_to_save, FALSE);
-    
     g_snprintf(relpath, PATH_MAX, "xfce4/desktop/icons.screen%d.rc",
                gdk_screen_get_number(fmanager->priv->gscreen));
+    path = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, relpath, TRUE);
+    if(!path)
+        return FALSE;
     
-    rcfile = xfce_rc_config_open(XFCE_RESOURCE_CONFIG, relpath, FALSE);
+    tmppath = g_strconcat(path, ".new", NULL);
+    
+    rcfile = xfce_rc_simple_open(tmppath, FALSE);
     if(!rcfile) {
-        g_critical("Unable to determine location of icon position cache file.  " \
-                   "Icon positions will not be saved.");
+        g_warning("Unable to determine location of icon position cache file.  " \
+                  "Icon positions will not be saved.");
+        g_free(path);
+        g_free(tmppath);
         return FALSE;
     }
     
-    for(l = fmanager->priv->icons_to_save; l; l = l->next) {
-        icon = XFDESKTOP_ICON(l->data);
-        if(xfdesktop_icon_get_position(icon, &row, &col)) {
-            xfce_rc_set_group(rcfile, xfdesktop_icon_peek_label(icon));
-            xfce_rc_write_int_entry(rcfile, "row", row);
-            xfce_rc_write_int_entry(rcfile, "col", col);
-        }
-        g_object_unref(G_OBJECT(icon));
-    }
-    g_list_free(fmanager->priv->icons_to_save);
-    fmanager->priv->icons_to_save = NULL;
+    g_hash_table_foreach(fmanager->priv->icons,
+                         file_icon_hash_write_icons, rcfile);
+    g_hash_table_foreach(fmanager->priv->removable_icons,
+                         file_icon_hash_write_icons, rcfile);
+    g_hash_table_foreach(fmanager->priv->special_icons,
+                         file_icon_hash_write_icons, rcfile);
     
     xfce_rc_flush(rcfile);
     xfce_rc_close(rcfile);
+    
+    if(rename(tmppath, path)) {
+        g_warning("Unable to rename temp file to %s: %s", path,
+                  strerror(errno));
+        unlink(tmppath);
+    }
+    
+    g_free(path);
+    g_free(tmppath);
     
     return FALSE;
 }
@@ -2047,9 +2074,6 @@ xfdesktop_file_icon_position_changed(XfdesktopFileIcon *icon,
     
     if(fmanager->priv->save_icons_id)
         g_source_remove(fmanager->priv->save_icons_id);
-    
-    fmanager->priv->icons_to_save = g_list_prepend(fmanager->priv->icons_to_save,
-                                                   g_object_ref(G_OBJECT(icon)));
     
     fmanager->priv->save_icons_id = g_timeout_add(SAVE_DELAY,
                                                   xfdesktop_file_icon_manager_save_icons,
