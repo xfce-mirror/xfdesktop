@@ -1086,7 +1086,9 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
     if(xfdesktop_popup_grab_available(gdk_screen_get_root_window(screen),
                                       activate_time))
     {
-        gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, button,
+        /* bug #3652: for some reason passing the correct button here breaks
+         * on some systems but not others.  always pass 0 for now. */
+        gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0,
                        activate_time);
     } else
         g_critical("Unable to get keyboard/mouse grab. Unable to pop up menu");
