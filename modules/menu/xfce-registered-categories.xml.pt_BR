@@ -2,6 +2,7 @@
 <!DOCTYPE xfce-registered-categories>
 
 <!-- Translated by Rodrigo Coacci (rcoacci@gmail.com) -->
+<!-- Translated by Og Maciel (ogmaciel@gnome.org), 2007. -->
 
 <!-- Note: You can copy this file to ~/.config/xfce4/desktop/ for customisation. -->
 
@@ -40,7 +41,7 @@
 <xfce-registered-categories>
 	<category name="Legacy" toplevel="true" replace="Acessórios" builtin-icon="ACCESSORIES" />
 	<category name="Core" toplevel="true" replace="Acessórios" builtin-icon="ACCESSORIES" />
-	<category name="Development" toplevel="true" builtin-icon="DEVELOPMENT">
+	<category name="Development" replace="Desenvolvimento" toplevel="true" builtin-icon="DEVELOPMENT">
 		<subcategory name="Building" />
 		<subcategory name="Debugger" />
 		<subcategory name="IDE" />
@@ -52,10 +53,10 @@
 		<subcategory name="ProjectManagement" />
 		<subcategory name="WebDevelopment" />
 	</category>
-	<category name="Building" replace="Construtores" builtin-icon="DEVELOPMENT" />
-	<category name="Debugger" replace="Debuggers" builtis-icon="DEVELOPMENT" />
-	<category name="IDE" replace="Ambientes de desenvolvimento" builtin-icon="DEVELOPMENT" />
-	<category name="GUIDesigner" replace="Desenvolvedores de GUI" builtin-icon="DEVELOPMENT" />
+	<category name="Building" replace="Compiladores" builtin-icon="DEVELOPMENT" />
+	<category name="Debugger" replace="Depuradores" builtis-icon="DEVELOPMENT" />
+	<category name="IDE" replace="Ambientes de Desenvolvimento" builtin-icon="DEVELOPMENT" />
+	<category name="GUIDesigner" replace="Desenvolvedores de Interface Gráfica" builtin-icon="DEVELOPMENT" />
 	<category name="Profiling" replace="Perfil" builtin-icon="DEVELOPMENT" />
 	<category name="RevisionControl" replace="Controle de Versão" builtin-icon="DEVELOPMENT" />
 	<category name="Translation" replace="Tradução" builtin-icon="DEVELOPMENT" />
@@ -81,10 +82,10 @@
 	<category name="Database" replace="Banco de Dados" builtin-icon="OFFICE" />
 	<category name="Dictionary" replace="Dicionário" builtin-icon="OFFICE" />
 	<category name="Chart" replace="Fluxograma" builtin-icon="OFFICE" />
-	<category name="Email" replace="Correio Eletrônico" builtin-icon="OFFICE" />
+	<category name="Email" replace="E-Mail" builtin-icon="OFFICE" />
 	<category name="Finance" replace="Finanças" builtin-icon="OFFICE" />
 	<category name="FlowChart" replace="Fluxograma" builtin-icon="OFFICE" />
-	<category name="PDA" builtin-icon="OFFICE" />
+	<category name="PDA" replace="PDA" builtin-icon="OFFICE" />
 	<category name="ProjectManagement" replace="Gerência de Projeto" builtin-icon="OFFICE" />
 	<category name="Presentation" replace="Apresentações" builtin-icon="OFFICE" />
 	<category name="Spreadsheet" replace="Planilhas" builtin-icon="OFFICE" />
@@ -119,7 +120,7 @@
 	</category>
 	<category name="DesktopSettings" replace="Configurações da Área de Trabalho" builtin-icon="SETTINGS" />
 	<category name="HardwareSettings" replace="Configurações de Hardware" builtin-icon="SETTINGS" />
-	<category name="PackageSettings" replace="Configuração de Pacotes" builtin-icon="SETTINGS" />
+	<category name="PackageSettings" replace="Configurações de Pacotes" builtin-icon="SETTINGS" />
 	<category name="Network" replace="Rede" toplevel="true" builtin-icon="NETWORK">
 		<subcategory name="Email" />
 		<subcategory name="Dialup" />
@@ -136,11 +137,11 @@
 	</category>
 	<category name="Dialup" builtin-icon="NETWORK" />
 	<category name="InstantMessaging" replace="Mensagem Instantânea" builtin-icon="NETWORK" />
-	<category name="IRCClient" replace="Clientes IRC" builtin-icon="NETWORK" />
+	<category name="IRCClient" replace="Clientes de IRC" builtin-icon="NETWORK" />
 	<category name="FileTransfer" replace="Transferência de arquivos" builtin-icon="NETWORK" />
 	<category name="HamRadio" replace="Rádio HAM" builtin-icon="NETWORK" />
 	<category name="News" replace="Notícias" builtin-icon="NETWORK" />
-	<category name="P2P" replace="Compartilhamento de arquivos" builtin-icon="NETWORK" />
+	<category name="P2P" replace="Compartilhamento de Arquivos" builtin-icon="NETWORK" />
 	<category name="RemoteAccess" replace="Acesso Remoto" builtin-icon="NETWORK" />
 	<category name="Telephony" replace="Telefonia" builtin-icon="NETWORK" />
 	<category name="WebBrowser" replace="Navegação Web" builtin-icon="NETWORK" />
@@ -165,7 +166,7 @@
 		<subcategory name="Recorder" />
 	</category>
 	<category name="Midi"  builtin-icon="MULTIMEDIA" />
-	<category name="Mixer" replace="Mixers de som" builtin-icon="MULTIMEDIA" />
+	<category name="Mixer" replace="Mixers" builtin-icon="MULTIMEDIA" />
 	<category name="Sequencer" replace="Sequenciadores" builtin-icon="MULTIMEDIA" />
 	<category name="Tuner" replace="Sintonizadores" builtin-icon="MULTIMEDIA" />
 	<category name="Video" replace="Vídeo" builtin-icon="MULTIMEDIA">
@@ -235,16 +236,16 @@
 	<category name="Physics" replace="Física"/>
 	<category name="Teaching" replace="Ensino"/>
 	<category name="Amusement" replace="Jogos" builtin-icon="GAME" />
-	<category name="Applet" replace="Applets" />
+	<category name="Applet" replace="Miniaplicativos" />
 	<category name="Archiving" replace="Arquivamento"/>
 	<category name="Electronics" replace="Eletrônica"/>
 	<category name="Emulator" toplevel="true" replace="Emuladores" builtin-icon="SYSTEM" />
 	<category name="Engineering" replace="Engenharia"/>
-	<category name="FileManager" replace="Gerenciador de Arquivos" />
+	<category name="FileManager" replace="Gerente de Arquivos" />
 	<category name="Shell" replace="Consoles" />
 	<category name="Screensaver" replace="Protetor de tela" />
 	<category name="TerminalEmulator" replace="Emulador de Terminal" />
-	<category name="TrayIcon" replace="Icones de sistema" />
+	<category name="TrayIcon" replace="Área de Notificação" />
 	<category name="System" toplevel="true" replace="Sistema" builtin-icon="SYSTEM">
 		<subcategory name="FileSystem" />
 		<subcategory name="Monitor" />
@@ -253,10 +254,10 @@
 		<subcategory name="TerminalEmulator" />
 		<subcategory name="Shell" />
 	</category>
-	<category name="Filesystem" replace="Sistemas de arquivo" builtin-icon="SYSTEM" />
+	<category name="Filesystem" replace="Sistemas de Arquivos" builtin-icon="SYSTEM" />
 	<category name="Monitor" replace="Monitoramento" builtin-icon="SYSTEM" />
 	<category name="Security" replace="Segurança" builtin-icon="SYSTEM" />
-	<category name="Utility" toplevel="true" replace="Acessórios" builtin-icon="ACCESSORIES">
+	<category name="Utility" toplevel="true" replace="Utilidades" builtin-icon="ACCESSORIES">
 		<subcategory name="Accessibility" />
 		<subcategory name="Calculator" />
 		<subcategory name="Clock" />
@@ -332,6 +333,6 @@
 		<subcategory name="Utility" />
 	</category>
 	<category name="Wine" toplevel="true" builtin-icon="WINE" />
-	<category name="WineX" replace="Wine" toplevel="true" builtin-icon="WINE" />
-	<category name="CrossOver" replace="Wine" toplevel="true" builtin-icon="WINE" />
+	<category name="WineX" replace="WineX" toplevel="true" builtin-icon="WINE" />
+	<category name="CrossOver" replace="CrossOver" toplevel="true" builtin-icon="WINE" />
 </xfce-registered-categories>
