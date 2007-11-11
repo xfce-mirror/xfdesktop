@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-10-20 14:36-0700\n"
-"PO-Revision-Date: 2007-10-06 16:57+0300\n"
+"PO-Revision-Date: 2007-10-28 17:12+0300\n"
 "Last-Translator: Rihards Priedītis <rprieditis@inbox.lv>\n"
 "Language-Team: Latvian <rprieditis@inbox.lv>\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgstr "Nosaukums:"
 #: ../menueditor/menueditor-edit-dialog.c:154
 #: ../menueditor/menueditor-edit-dialog.c:155
 msgid "Command:"
-msgstr "Kommanda:"
+msgstr "Komanda:"
 
 #. Icon chooser
 #: ../menueditor/menueditor-add-dialog.c:201
@@ -136,7 +136,7 @@ msgstr "Izpildīt _terminālī"
 #: ../menueditor/menueditor-edit-dialog.c:286
 #: ../menueditor/menueditor-main-window.c:450
 msgid "Select command"
-msgstr "Norādiet kommandu"
+msgstr "Norādiet komandu"
 
 #: ../menueditor/menueditor-add-dialog.c:442
 #: ../menueditor/menueditor-edit-dialog.c:301
@@ -232,25 +232,20 @@ msgid "Xfce4-MenuEditor"
 msgstr "Xfce4-IzvēlnesRedaktors"
 
 #: ../menueditor/menueditor-main.c:57
-#, fuzzy
 msgid "Menueditor Warning"
-msgstr "Izvēļņu redaktors"
+msgstr "Izvēļņu Redaktora Brīdinājums"
 
 #: ../menueditor/menueditor-main.c:59
 msgid "xfce4-menueditor is deprecated"
-msgstr ""
+msgstr "xfce4-menueditor neiesaka izmantot"
 
 #: ../menueditor/menueditor-main.c:60
-msgid ""
-"Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-"edit the new menu file format.  You may continue and edit an old-style menu "
-"file, or quit."
-msgstr ""
+msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+msgstr "Xfce izvēlnes sistēma ir aizvietota, un xfce4-menueditor vairs nespēj rediģēt jauno izvēlņu formātu. Jūs varat izmantot šo programmu, lai rediģētu vecās izvēlnes, vai arī iziet."
 
 #: ../menueditor/menueditor-main.c:61
-#, fuzzy
 msgid "Continue"
-msgstr "Atbalstītāji"
+msgstr "Turpināt"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -266,7 +261,8 @@ msgstr "Izveidot jaunu tukšu izvēlni"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1631
-#: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
+#: ../src/xfdesktop-special-file-icon.c:624
+#: ../src/xfdesktop-volume-icon.c:543
 msgid "_Open"
 msgstr "_Atvērt"
 
@@ -312,7 +308,7 @@ msgstr "_Iziet"
 
 #: ../menueditor/menueditor-main-window.c:147
 msgid "Quit Xfce4-Menueditor"
-msgstr "Iziet no Xfce4-Izvēļņuredaktora"
+msgstr "Iziet no Xfce4-IzvēļņuRedaktora"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
@@ -368,7 +364,7 @@ msgstr "Pārvieto ierakstu uz leju"
 
 #: ../menueditor/menueditor-main-window.c:157
 msgid "_Help"
-msgstr "_Palīdziba"
+msgstr "_Palīdzība"
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "_About..."
@@ -376,7 +372,7 @@ msgstr "_Par..."
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "Show informations about xfce4-menueditor"
-msgstr "Rādīt visu informāciju par xfce4-izvēļnuredaktoru"
+msgstr "Rādīt visu informāciju par xfce4-menueditor"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all"
@@ -400,7 +396,7 @@ msgstr "Nosaukums"
 
 #: ../menueditor/menueditor-main-window.c:344
 msgid "Command"
-msgstr "Kommanda"
+msgstr "Komanda"
 
 #: ../menueditor/menueditor-main-window.c:345
 msgid "Hidden"
@@ -417,7 +413,8 @@ msgstr "Vai vēlaties saglabāt pirms faila aizvēršanas?"
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:588 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:588
+#: ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Jautājums"
 
@@ -579,7 +576,8 @@ msgstr "Rediģēt Izvēlni"
 msgid "Button Label|Desktop"
 msgstr "Darbavirsma"
 
-#: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
+#: ../settings/appearance-settings.c:191
+#: ../settings/appearance-settings.c:200
 #: ../settings/backdrop-list-manager.c:628
 msgid "backdrops.list"
 msgstr "aizmugures.saraksts"
@@ -625,9 +623,8 @@ msgid "Scaled"
 msgstr "Pielāgots"
 
 #: ../settings/appearance-settings.c:741
-#, fuzzy
 msgid "Zoomed"
-msgstr "Mājas"
+msgstr "Palielināts"
 
 #: ../settings/appearance-settings.c:797
 msgid "A_djust Brightness:"
@@ -657,35 +654,16 @@ msgid "Information"
 msgstr "Informācija"
 
 #: ../settings/appearance-settings.c:897
-msgid ""
-"To ensure that this setting takes effect the next time you start Xfce, "
-"please be sure to save your session when logging out.  If you are not using "
-"the Xfce Session Manager (xfce4-session), you will need to manually edit "
-"your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-"Lai nodrošinātu, ka uzstādījumi stājas spēkā, lūdzu pārliecinaties, ka "
-"saglabājat sesija pie atteikšanās. Ja Jūs neizmantojas Xfce Sesijas "
-"Pārvaldnieku (xfce4-session), Jums būs jārediģē ~/.config/xfce4/xinitrc "
-"fails.  Detaļas ir pieejamas dokumentācijā http://xfce.org/."
+msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "Lai nodrošinātu, ka uzstādījumi stājas spēkā, lūdzu pārliecinaties, ka saglabājat sesiju pie atteikšanās. Ja Jūs neizmantojat Xfce Sesijas Pārvaldnieku (xfce4-session), Jums būs jārediģē ~/.config/xfce4/xinitrc fails.  Detaļas ir pieejamas dokumentācijā http://xfce.org/."
 
 #: ../settings/appearance-settings.c:899
-msgid ""
-"To ensure that Xfce does not manage your desktop the next time you start "
-"Xfce, please be sure to save your session when logging out.  If you are not "
-"using the Xfce Session Manager (xfce4-session), you will need to manually "
-"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-"Lai nodrošinātu Xfce darbavirsmas pārvaldību, nākamo reizi, kad Jūs sāknējat "
-"Xfce, lūdzu, pārliecinaties, ka Jūs saglabājat sesiju, kad attsakaties. Ja "
-"Jūs neizmantojat Xfce Sesijas Pārvaldnieku (xfce4-session), Jums jārediģē ~/."
-"config/xfce4/xinitrc fails.  Detaļas ir pieejamas dokumentācijā http://xfce."
-"org/."
+msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "Lai nodrošinātu Xfce darbavirsmas pārvaldību, nākamo reizi, kad Jūs sāknējat Xfce, lūdzu, pārliecinaties, ka Jūs saglabājat sesiju, kad atsakaties. Ja Jūs neizmantojat Xfce Sesijas Pārvaldnieku (xfce4-session), Jums jārediģē ~/.config/xfce4/xinitrc fails.  Detaļas ir pieejamas dokumentācijā http://xfce.org/."
 
 #: ../settings/appearance-settings.c:907
 msgid "_Do not show this again"
-msgstr "_Vairs nekad nerādīt"
+msgstr "Neka_d vairs nerādīt"
 
 #. the dialog
 #: ../settings/appearance-settings.c:973
@@ -698,7 +676,7 @@ msgstr "Atļaut _Xfce pārvaldīt darbavirsmu"
 
 #: ../settings/appearance-settings.c:1031
 msgid "Stretch single backdrop onto _all monitors"
-msgstr "Izstiept vienu azmugures "
+msgstr "I_zstiept uz visiem monitoriem"
 
 #. add the single backdrop settings page to the main notebook
 #: ../settings/appearance-settings.c:1045
@@ -717,15 +695,15 @@ msgstr "_Krāsas Stils:"
 
 #: ../settings/appearance-settings.c:1092
 msgid "Solid Color"
-msgstr "Vienmēriga Krāsa"
+msgstr "Vienmērīga Krāsa"
 
 #: ../settings/appearance-settings.c:1093
 msgid "Horizontal Gradient"
-msgstr "Horizontālais gradients"
+msgstr "Horizontālais Gradients"
 
 #: ../settings/appearance-settings.c:1094
 msgid "Vertical Gradient"
-msgstr "Vertikālais gradients"
+msgstr "Vertikālais Gradients"
 
 #: ../settings/appearance-settings.c:1107
 msgid "Fi_rst Color:"
@@ -733,7 +711,7 @@ msgstr "Pi_rmā Krāsa:"
 
 #: ../settings/appearance-settings.c:1128
 msgid "_Second Color:"
-msgstr "_Otra Krāsa:"
+msgstr "_Otrā Krāsa:"
 
 #: ../settings/appearance-settings.c:1153
 msgid "Image"
@@ -741,7 +719,7 @@ msgstr "Attēls"
 
 #: ../settings/appearance-settings.c:1161
 msgid "Show _Image"
-msgstr "Rādit _Attēlu"
+msgstr "Rādīt _Attēlu"
 
 #: ../settings/appearance-settings.c:1183
 msgid "_File:"
@@ -763,25 +741,25 @@ msgstr "Ekrāns %d, Monitors %d"
 msgid "_Behavior"
 msgstr "_Uzvedība"
 
-#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#: ../settings/backdrop-list-manager.c:160
+#: ../src/xfce-desktop-settings.c:74
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
+"Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
 "Neizdevās saglabāt failu %s: %s\n"
 "\n"
-"Lūdzu, norādiet citu vietu vai nospiežiet atcelt, lai aizvertu logu"
+"Lūdzu, norādiet citu vietu vai nospiežiet atcelt, lai aizvērtu logu"
 
 #: ../settings/backdrop-list-manager.c:430
 msgid "Select backdrop image file"
-msgstr "Izvēlaties aizmugures attēlu"
+msgstr "Izvēlaties attēlu"
 
 #: ../settings/backdrop-list-manager.c:531
 msgid "Choose backdrop list filename"
-msgstr "Izvēlaties aizmugures saraksta faila nosaukumu"
+msgstr "Izvēlaties saraksta faila nosaukumu"
 
 #: ../settings/backdrop-list-manager.c:540
 msgid "List Files"
@@ -797,11 +775,11 @@ msgstr "Saraksta fails"
 
 #: ../settings/backdrop-list-manager.c:658
 msgid "Create backdrop list"
-msgstr "Izveidot aizmgures sarakstu"
+msgstr "Izveidot sarakstu"
 
 #: ../settings/backdrop-list-manager.c:691
 msgid "Edit backdrop list"
-msgstr "Rediģēt aizmugures sarakstu"
+msgstr "Rediģēt sarakstu"
 
 #: ../settings/behavior-settings.c:301
 msgid "Menus"
@@ -809,7 +787,7 @@ msgstr "Izvēlnes"
 
 #: ../settings/behavior-settings.c:309
 msgid "Show _window list on middle click"
-msgstr "Rādit _logu sarakstu uz vidējo klikšķi"
+msgstr "Rādīt _logu sarakstu uz vidējo klikšķi"
 
 #: ../settings/behavior-settings.c:327
 msgid "Show workspace _names in list"
@@ -817,7 +795,7 @@ msgstr "Rādīt darbavietas _nosaukumus sarakstā"
 
 #: ../settings/behavior-settings.c:341
 msgid "Show windows on each workspace in sub_menus"
-msgstr "Rādit logus uz katras darbavietas a_pakšizvēlnēs"
+msgstr "Rādīt logus uz katras darbavietas a_pakšizvēlnēs"
 
 #: ../settings/behavior-settings.c:351
 msgid "Show sticky windows only in _active workspace"
@@ -864,22 +842,26 @@ msgstr "Šī ir %s versija %s, kura skrien uz Xfce %s.\n"
 #: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Veidots ar GTK+ %d.%d.%d, saistīts ar GTK+ %d.%d.%d."
+msgstr "Celts ar GTK+ %d.%d.%d, saistīts ar GTK+ %d.%d.%d."
 
 #: ../src/main.c:246
 msgid "Build options:\n"
-msgstr "Veidošanas opcijas:\n"
+msgstr "Celšanas opcijas:\n"
 
 #: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Darbavirsmas Izvēlne:        %s\n"
 
-#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
+#: ../src/main.c:249
+#: ../src/main.c:256
+#: ../src/main.c:263
 msgid "enabled"
 msgstr "iespējots"
 
-#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
+#: ../src/main.c:251
+#: ../src/main.c:258
+#: ../src/main.c:265
 msgid "disabled"
 msgstr "atspējots"
 
@@ -904,18 +886,15 @@ msgstr "Pieejamās opcijas:\n"
 
 #: ../src/main.c:292
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    --reload      Pārlādē visus uzstādījumus, atsvaidzina atvēlu sarakstu\n"
+msgstr "    --reload      Pārlādē visus uzstādījumus, atsvaidzina attēlu sarakstu\n"
 
 #: ../src/main.c:293
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    --menu        Atver izvēlni pie patreizējās peles kursora\n"
+msgstr "    --menu        Atver izvēlni pie patreizējā peles kursora\n"
 
 #: ../src/main.c:294
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    --windowlist  Atver izlecošu logu ar logu sarakstu pie peles kursora\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    --windowlist  Atver izlecošu logu ar logu sarakstu pie peles kursora\n"
 
 #: ../src/main.c:295
 msgid "    --quit        Cause xfdesktop to quit\n"
@@ -928,7 +907,7 @@ msgstr "%s nav palaists.\n"
 
 #: ../src/windowlist.c:233
 msgid "Window List"
-msgstr ""
+msgstr "Logu Saraksts"
 
 #: ../src/windowlist.c:258
 #, c-format
@@ -945,7 +924,8 @@ msgstr "Darbavieta %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Darbavieta %d</i>"
 
-#: ../src/windowlist.c:366 ../src/windowlist.c:369
+#: ../src/windowlist.c:366
+#: ../src/windowlist.c:369
 msgid "_Add Workspace"
 msgstr "_Pievienot Darbavietu"
 
@@ -965,10 +945,8 @@ msgstr "Darbavirsma"
 
 #: ../src/xfdesktop-file-icon-manager.c:387
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop nevarēja izveidot mapi \"%s\", lai glabātu darbavirsmas vienumus:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop nevarēja izveidot mapi \"%s\", lai glabātu darbavirsmas vienumus:"
 
 #: ../src/xfdesktop-file-icon-manager.c:389
 #: ../src/xfdesktop-file-icon-manager.c:400
@@ -978,12 +956,8 @@ msgstr "Izveidot  Mapi Neizdevās"
 
 #: ../src/xfdesktop-file-icon-manager.c:398
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop nevar izmantot \"%s\", lai saturētu darbavirsmas vienumus, jo tā "
-"nav mape."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop nevar izmantot \"%s\", lai saturētu darbavirsmas vienumus, jo tā nav mape."
 
 #: ../src/xfdesktop-file-icon-manager.c:402
 msgid "Please delete or rename the file."
@@ -999,7 +973,7 @@ msgstr "Pārdēvēt \"%s\""
 #: ../src/xfdesktop-file-icon-manager.c:1278
 #: ../src/xfdesktop-file-icon-manager.c:1289
 msgid "Enter the new name:"
-msgstr "Ievadiet jauno vārdu:"
+msgstr "Ievadiet jaunu vārdu:"
 
 #: ../src/xfdesktop-file-icon-manager.c:548
 msgid "Rename"
@@ -1008,7 +982,7 @@ msgstr "Pārdēvēt"
 #: ../src/xfdesktop-file-icon-manager.c:585
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "Esat drošs, ka vēlaties dzest \"%s\"?"
+msgstr "Esat drošs, ka vēlaties dzēst \"%s\"?"
 
 #: ../src/xfdesktop-file-icon-manager.c:590
 #: ../src/xfdesktop-file-icon-manager.c:610
@@ -1026,7 +1000,8 @@ msgstr "Dzēst Vairākus Failus"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:824
-#: ../src/xfdesktop-file-icon-manager.c:1549 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1549
+#: ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -1035,7 +1010,8 @@ msgstr "Neizdevās palaist \"%s\":"
 #: ../src/xfdesktop-file-icon-manager.c:826
 #: ../src/xfdesktop-file-icon-manager.c:884
 #: ../src/xfdesktop-file-icon-manager.c:1149
-#: ../src/xfdesktop-file-icon-manager.c:1551 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon-manager.c:1551
+#: ../src/xfdesktop-file-icon.c:144
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Palaišanas Kļūda"
@@ -1044,11 +1020,10 @@ msgstr "Palaišanas Kļūda"
 msgid "The application chooser could not be opened."
 msgstr "Neizdevās atvērt lietotņu izvēlētāju."
 
-#: ../src/xfdesktop-file-icon-manager.c:886 ../src/xfdesktop-file-utils.c:358
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr "Šai iespējai ir nepieciešamas faila pārvaldnieks, piemēram, kā Thunar."
+#: ../src/xfdesktop-file-icon-manager.c:886
+#: ../src/xfdesktop-file-utils.c:358
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Šai iespējai ir nepieciešams faila pārvaldnieks, piemēram, kā Thunar."
 
 #: ../src/xfdesktop-file-icon-manager.c:1046
 #, c-format
@@ -1066,12 +1041,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Neizdevās izveidot mapi ar nosaukumu \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1151
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Neizdevās palaist \"exo-desktop-item-edit\", kas ir nepieciešams, lai "
-"izveidotu un rediģētu palaidējus un saites uz darbavirsmas."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Neizdevās palaist \"exo-desktop-item-edit\", kas ir nepieciešams, lai izveidotu un rediģētu palaidējus un saites uz darbavirsmas."
 
 #: ../src/xfdesktop-file-icon-manager.c:1184
 msgid "Create New Folder"
@@ -1124,7 +1095,7 @@ msgstr "_Atvērt visu"
 
 #: ../src/xfdesktop-file-icon-manager.c:1629
 msgid "_Open in New Window"
-msgstr ""
+msgstr "_Atvērt Jaunā Logā"
 
 #: ../src/xfdesktop-file-icon-manager.c:1646
 msgid "Create _Launcher..."
@@ -1184,12 +1155,12 @@ msgstr "Izpildes Kļūda"
 
 #: ../src/xfdesktop-file-icon.c:146
 msgid "The associated application could not be found or executed."
-msgstr "Piesaistītā aplikācija netika atrasta vai izpildīta"
+msgstr "Piesaistītā lietotne netika atrasta vai izpildīta"
 
 #: ../src/xfdesktop-file-properties-dialog.c:103
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr "Nevarēju noklusēto aplikāciju priekš \"%s\" uzstādīt uz  \"%s\":"
+msgstr "Nevarēju noklusēto lietotni priekš \"%s\" uzstādīt uz  \"%s\":"
 
 #: ../src/xfdesktop-file-properties-dialog.c:106
 msgid "Properties Error"
@@ -1246,7 +1217,8 @@ msgstr "Izmērs:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:413
 #: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:488 ../src/xfdesktop-volume-icon.c:461
+#: ../src/xfdesktop-special-file-icon.c:488
+#: ../src/xfdesktop-volume-icon.c:461
 msgid "%s (%"
 msgstr "%s (%"
 
@@ -1305,7 +1277,8 @@ msgid "link to %s"
 msgstr "saite uz %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:489
-#: ../src/xfdesktop-special-file-icon.c:491 ../src/xfdesktop-volume-icon.c:464
+#: ../src/xfdesktop-special-file-icon.c:491
+#: ../src/xfdesktop-volume-icon.c:464
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -1334,12 +1307,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Neizdevās sazināties ar Xfce Atkritnes pakalpojumu."
 
 #: ../src/xfdesktop-special-file-icon.c:512
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Pārliecinieties, ka esat instalējuši Xfce Atkritnes pakalpojuma atbalstošu "
-"faila pārvaldnieku, piemērām, Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Pārliecinieties, ka esat instalējuši Xfce Atkritnes pakalpojuma atbalstošu faila pārvaldnieku, piemērām, Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
@@ -1348,7 +1317,7 @@ msgstr "_Iztukšot Atkritni"
 #: ../src/xfdesktop-volume-icon.c:492
 #, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "Neizevās montēt \"%s\":"
+msgstr "Neizdevās nomontēt \"%s\":"
 
 #: ../src/xfdesktop-volume-icon.c:493
 #, c-format
@@ -1366,11 +1335,11 @@ msgstr "Atmontēšana Neizdevās"
 #: ../src/xfdesktop-volume-icon.c:514
 #, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "Nevarēju izstumt \"%s\":"
+msgstr "Nevarēju izgrūst \"%s\":"
 
 #: ../src/xfdesktop-volume-icon.c:517
 msgid "Eject Failed"
-msgstr "Izstumšana Neizdevās"
+msgstr "Izgrūšana Neizdevās"
 
 #: ../src/xfdesktop-volume-icon.c:554
 msgid "_Mount Volume"
@@ -1382,15 +1351,15 @@ msgstr "_Atmontēt Sējumu"
 
 #: ../src/xfdesktop-volume-icon.c:579
 msgid "E_ject Volume"
-msgstr "I_zstumt Sējumu"
+msgstr "I_zgrūst Sējumu"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Grafisks rīks, priekš Xfce 4 izvēļnu rediģēšanas"
+msgstr "Grafisks rīks, priekš Xfce 4 izvēlnes rediģēšanas"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
-msgstr "Izvēļņu redaktors"
+msgstr "Izvēlnes redaktors"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
@@ -1434,7 +1403,7 @@ msgstr "Grafika"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr "Grafikas veidošanas un maniplēšanas lietotnes"
+msgstr "Grafikas veidošanas un manipulēšanas lietotnes"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
@@ -1478,7 +1447,7 @@ msgstr "Ekrānsaudzētāji"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr "Darbavirsmas un sistēmas lietotņu uzstādijumi"
+msgstr "Darbavirsmas un sistēmas lietotņu uzstādījumi"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
 msgid "Settings"
@@ -1494,7 +1463,7 @@ msgstr "Par Xfce"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr "Informācija par Xfce Darvavirsmas Vidi"
+msgstr "Informācija par Xfce Darbavirsmas Vidi"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
@@ -1510,7 +1479,7 @@ msgstr "Palīdzība"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr "Xfce izmantošanas palīdziba"
+msgstr "Xfce izmantošanas palīdzība"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
@@ -1542,7 +1511,7 @@ msgstr "Pārlūkot tīmekli"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
-msgstr "Tīkla Pārlūks"
+msgstr "Tīmekļa Pārlūks"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
@@ -1550,7 +1519,7 @@ msgstr "Rāda izvēlni, kura satur instalēto lietotņu kategorijas"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
-msgstr "Darbavirsmas Uzstādijumi"
+msgstr "Darbavirsmas Uzstādījumi"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
@@ -1560,8 +1529,3 @@ msgstr "Xfce 4 Darbavirsmas Pārvaldnieka Uzstādījumi"
 msgid "Xfce 4 Desktop Settings"
 msgstr "Xfce 4 Darbavirsmas Uzstādījumi"
 
-#~ msgid "Des_ktop"
-#~ msgstr "Darba_virsma"
-
-#~ msgid "_Desktop Properties..."
-#~ msgstr "_Darbavirsmas Rekvizīti..."
