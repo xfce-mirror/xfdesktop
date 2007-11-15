@@ -6,6 +6,12 @@
     optimistic in my ability to actually do this, but I'm gonna do my
     best.
     
+      * Redo how the menu system works so menus can be embedded in other
+        menus.  This makes it possible for the right-click context menu
+        to be the 'normal' applications menu when icons are disabled,
+        but set to the desktop's own context menu when file icons are
+        enabled.  In this latter case, the applications menu becomes a
+        submenu of the desktop context menu (bug 2531).
       * Ditch my custom semi-fd.o-compliant menu system in favor of
         XfceMenu, our new fd.o-compliant menu implementation written by
         Jannis Pohlmann.
@@ -18,6 +24,37 @@
         backdrop edge-to-edge by scaling and/or cropping as necessary.
         This doesn't mess with the aspect ratio and is pretty nifty.  Patch
         is from <trondsg@gmail.com> (bug 3138).
+
+
+4.4.2
+=====
+
+- Fix menu sometimes not popping up when using the keyboard shortcut,
+  again.  Timeout waiting for grab is now 0.25s (bug 441).
+- Fix desktop settings only getting applied to the first screen in
+  non-Xinerama dualhead setups (but 3467).
+- Fix spurious drag when double-clicking a volume icon that fails to
+  mount (bug 3426).
+- Clean out stale entries in file icon position file (bug 3267).
+- Some minor memory leak fixes (some still remain, likely).
+- Fix --disable-menu-editor configure option.
+- Always use button 0 in gtk_menu_popup() as GTK+ 2.11+ expects the 
+  same button to be pressed or it doesn't activate the entry (bug 3359).
+- Don't set workspace for sticky windows in windowlist (bug 3317).
+- Fix missing xfce_rc_close() causing memleak and too many open file
+  descriptors (bug 3065).
+- Fix the Italian xfdesktop menu causing a crash.
+
+
+4.4.1
+=====
+
+- Fix entries in the menu.xml files that should not have been translated.
+- Add support for menu file as argument (Bug #2876).
+- Remove use of __FUNCTION__ as it breaks sun's compiler (Bug #2924).
+- Blurry rendering of unscaled backgrounds (Bug #2939).
+- Fix uri parsing to unescape '%##' stuff in the uri (Bug #2942).
+- Many translation updates.
 
 
 20070121 (Xfce 4.4.0):
