@@ -565,6 +565,11 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             icon_view->priv->first_clicked_item = NULL;
         }
     } else if(evt->type == GDK_2BUTTON_PRESS) {
+        /* be sure to cancel any pending drags that might have snuck through.
+         * this shouldn't happen.  */
+        icon_view->priv->definitely_dragging = FALSE;
+        icon_view->priv->maybe_begin_drag = FALSE;
+        
         if(evt->button == 1) {
             GList *icon_l = g_list_find_custom(icon_view->priv->icons, evt,
                                                (GCompareFunc)xfdesktop_check_icon_clicked);
