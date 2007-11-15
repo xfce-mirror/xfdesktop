@@ -1,11 +1,22 @@
 4.4.2
 =====
 
-- Fixed the Italian xfdesktop menu causing a crash.
-- Fix missing xfce_rc_close() causing memleak and too many open file
-  descriptors (bug 3065)
+- Fix menu sometimes not popping up when using the keyboard shortcut,
+  again.  Timeout waiting for grab is now 0.25s (bug 441).
+- Fix desktop settings only getting applied to the first screen in
+  non-Xinerama dualhead setups (but 3467).
+- Fix spurious drag when double-clicking a volume icon that fails to
+  mount (bug 3426).
+- Clean out stale entries in file icon position file (bug 3267).
+- Some minor memory leak fixes (some still remain, likely).
+- Fix --disable-menu-editor configure option.
 - Always use button 0 in gtk_menu_popup() as GTK+ 2.11+ expects the 
-  same button to be pressed or it doesn't activate the entry (Bug #3359)
+  same button to be pressed or it doesn't activate the entry (bug 3359).
+- Don't set workspace for sticky windows in windowlist (bug 3317).
+- Fix missing xfce_rc_close() causing memleak and too many open file
+  descriptors (bug 3065).
+- Fix the Italian xfdesktop menu causing a crash.
+
 
 4.4.1
 =====
