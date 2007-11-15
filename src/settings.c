@@ -41,8 +41,8 @@
 
 typedef struct _SettingsCBData
 {
-    SettingsCallback cb;
     gpointer user_data;
+    GList *callbacks;
 } SettingsCBData;
 
 static McsClient *mcs_client = NULL;
@@ -74,15 +74,18 @@ static void
 notify_cb(const char *name, const char *channel_name, McsAction action,
         McsSetting *setting, void *data)
 {
-    GList *l;
+    GList *l, *m;
     
     g_return_if_fail(!strcmp(channel_name, BACKDROP_CHANNEL));
     
     for(l = callbacks; l; l = l->next) {
-        SettingsCBData *cbd = l->data;
+        SettingsCBData *cbdata = l->data;
         
-        if((*cbd->cb)(mcs_client, action, setting, cbd->user_data))
-            break;
+        for(m = cbdata->callbacks; m; m = m->next) {
+            SettingsCallback cb = m->data;
+            if(cb(mcs_client, action, setting, cbdata->user_data))
+                break;
+        }
     }
 }
 
@@ -112,18 +115,36 @@ settings_init()
     return mcs_client;
 }
 
+static gint
+settings_compare_cbdata(gconstpointer a,
+                        gconstpointer b)
+{
+    const SettingsCBData *ca = a, *cb = b;
+    return ca->user_data - cb->user_data;
+}
+
+/* callbacks are keyed to the user_data parameter, which can't be NULL.
+ * for each user_data parameter registered, each callback registered (there
+ * can be more than one) for that user_data pointer will be called until
+ * one of them returns TRUE. */
 void
 settings_register_callback(SettingsCallback cb, gpointer user_data)
 {
+    GList *l;
     SettingsCBData *cbdata;
     
-    g_return_if_fail(cb != NULL && mcs_client != NULL);
+    g_return_if_fail(cb && user_data && mcs_client);
     
-    cbdata = g_new0(SettingsCBData, 1);
-    cbdata->cb = cb;
-    cbdata->user_data = user_data;
+    l = g_list_find_custom(callbacks, user_data, settings_compare_cbdata);
+    if(l)
+        cbdata = l->data;
+    else {
+        cbdata = g_new0(SettingsCBData, 1);
+        cbdata->user_data = user_data;
+        callbacks = g_list_append(callbacks, cbdata);
+    }
     
-    callbacks = g_list_append(callbacks, cbdata);
+    cbdata->callbacks = g_list_append(cbdata->callbacks, cb);
 }
 
 void
@@ -145,10 +166,10 @@ settings_cleanup()
         mcs_client = NULL;
     }
     
-    for(l = callbacks; l; l = l->next)
+    for(l = callbacks; l; l = l->next) {
+        g_list_free(((SettingsCBData *)l->data)->callbacks);
         g_free(l->data);
-    if(callbacks) {
-        g_list_free(callbacks);
-        callbacks = NULL;
     }
+    g_list_free(callbacks);
+    callbacks = NULL;
 }
