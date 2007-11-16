@@ -1,14 +1,14 @@
 # Romanian translation of xfdesktop.
-# Copyright (C) 2003-2006 The Xfce development team.
+# Copyright (C) 2003-2007 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Mişu Moldovan <dumol@gnome.ro>, 2004-2007.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.4.0\n"
+"Project-Id-Version: xfdesktop 4.4.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-04-09 14:22+0200\n"
-"PO-Revision-Date: 2007-01-20 22:33+0200\n"
+"PO-Revision-Date: 2007-11-16 21:29+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@gnome.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -292,7 +292,7 @@ msgstr "_Ieşi"
 
 #: ../menueditor/menueditor-main-window.c:147
 msgid "Quit Xfce4-Menueditor"
-msgstr "Ieşire din Editorul de meniu Xfce"
+msgstr "Ieşire din editorul de meniu Xfce"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
@@ -312,7 +312,7 @@ msgstr "Adăugare _intrare"
 
 #: ../menueditor/menueditor-main-window.c:151
 msgid "Add a new entry in the menu"
-msgstr "Adaugă o nouă intrare în meniu"
+msgstr "Adăugare intrare nouă în meniu"
 
 #: ../menueditor/menueditor-main-window.c:152
 msgid "Add _external"
@@ -421,7 +421,7 @@ msgstr "Doriţi să salvaţi înainte de a deschide meniul implicit?"
 
 #: ../menueditor/menueditor-main-window.c:592
 msgid "Save menu file as"
-msgstr "Salvare fişier meniu cu un alt nume"
+msgstr "Salvare fişier meniu cu nume nou"
 
 #: ../menueditor/menueditor-main-window.c:630
 #: ../menueditor/menueditor-main-window.c:1341
@@ -467,7 +467,7 @@ msgstr "Autor/Responsabil"
 #: ../menueditor/menueditor-main-window.c:1298
 #: ../menueditor/menueditor-main-window.c:1299
 msgid "Contributor"
-msgstr "Contributor"
+msgstr "Colaborator"
 
 #: ../menueditor/menueditor-main-window.c:1300
 msgid "Icon designer"
@@ -814,7 +814,7 @@ msgstr "Meniuri"
 
 #: ../settings/behavior-settings.c:249
 msgid "Show _window list on middle click"
-msgstr "Arată _lista ferestrelor la clic median"
+msgstr "Arată _lista ferestrelor la clic cu butonul din mijloc"
 
 #: ../settings/behavior-settings.c:260
 msgid "Show _desktop menu on right click"
@@ -857,7 +857,7 @@ msgstr "Acesta este %s versiunea %s, pornit în Xfce %s.\n"
 #: ../src/main.c:257
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Compilat cu GTK+ %d.%d.%d, linkat cu GTK+ %d.%d.%d."
+msgstr "Compilat cu GTK+ %d.%d.%d, pornit cu GTK+ %d.%d.%d."
 
 #: ../src/main.c:261
 msgid "Build options:\n"
@@ -953,7 +953,7 @@ msgstr "Desktop"
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
-"Nu s-a putut crea directorul „%s” pentru stocarea itemilor desktopului:"
+"Nu s-a putut crea directorul „%s” pentru stocarea elementelor desktopului:"
 
 #: ../src/xfdesktop-file-icon-manager.c:388
 #: ../src/xfdesktop-file-icon-manager.c:399
@@ -967,7 +967,7 @@ msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
-"Nu se poate utiliza „%s” pentru stocarea itemilor desktopului pentru că nu "
+"Nu se poate utiliza „%s” pentru stocarea elementelor desktopului pentru că nu "
 "este un director"
 
 #: ../src/xfdesktop-file-icon-manager.c:401
@@ -1027,7 +1027,7 @@ msgstr "Eroare la lansare"
 
 #: ../src/xfdesktop-file-icon-manager.c:866
 msgid "The application chooser could not be opened."
-msgstr "Selectorul aplicaţiei nu a putut fi deschis."
+msgstr "Selectorul aplicaţiei nu a putut fi pornit."
 
 #: ../src/xfdesktop-file-icon-manager.c:867 ../src/xfdesktop-file-utils.c:357
 msgid ""
@@ -1086,7 +1086,7 @@ msgstr "Crearea fişierului a eşuat"
 #: ../src/xfdesktop-file-icon-manager.c:1246
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr "Creează un document din şablonul „%s”"
+msgstr "Creează un document utilizând şablonul „%s”"
 
 #: ../src/xfdesktop-file-icon-manager.c:1265
 msgid "Create Empty File"
@@ -1393,7 +1393,7 @@ msgstr "Arată un meniu conţinând categorii de aplicaţii instalate"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
-msgstr "Preferinţe Desktop"
+msgstr "Preferinţe desktop"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
@@ -1403,8 +1403,3 @@ msgstr "Preferinţe pentru administratorul desktopului Xfce 4"
 msgid "Xfce 4 Desktop Settings"
 msgstr "Preferinţe desktop Xfce 4"
 
-#~ msgid "Edit Properties"
-#~ msgstr "Editare proprietăţi"
-
-#~ msgid "Backdrop List"
-#~ msgstr "Listă fundal"
