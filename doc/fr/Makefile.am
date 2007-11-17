@@ -12,6 +12,6 @@ doc_DATA= \
 EXTRA_DIST = $(noinst_DATA) $(doc_DATA)
 
 if HAVE_XSLTPROC
-xfdesktop.html: xfdesktop.xml
+xfdesktop.html: $(srcdir)/xfdesktop.xml
 	$(XSLTPROC) $(top_srcdir)/doc/xfce-nochunk.xsl $(srcdir)/xfdesktop.xml
 endif
