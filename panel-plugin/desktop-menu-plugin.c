@@ -941,7 +941,9 @@ static gboolean
 desktop_menu_plugin_preinit(int argc,
                             char **argv)
 {
+#ifdef HAVE_THUNAR_VFS
     g_thread_init(NULL);
+#endif
     return TRUE;
 }
 #endif
