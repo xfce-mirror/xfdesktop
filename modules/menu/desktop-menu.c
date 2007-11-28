@@ -426,6 +426,7 @@ g_module_check_init(GModule *module)
     
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
     _xfce_desktop_menu_icon_size = w;
+    xfce_app_menu_item_set_icon_size(_xfce_desktop_menu_icon_size);
     
     if(dummy_icon)
         g_object_unref(G_OBJECT(dummy_icon));
