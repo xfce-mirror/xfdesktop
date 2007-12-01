@@ -566,7 +566,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
         }
     } else if(evt->type == GDK_2BUTTON_PRESS) {
         /* be sure to cancel any pending drags that might have snuck through.
-         * this shouldn't happen.  */
+         * this shouldn't happen, but it does sometimes (bug 3426).  */
         icon_view->priv->definitely_dragging = FALSE;
         icon_view->priv->maybe_begin_drag = FALSE;
         
