@@ -1,4 +1,4 @@
-.TH XFDESKTOP 1 "Version 4.1.90" "October 25, 2004"
+.TH XFDESKTOP 1 "Version 4.5.x" "2 December 2007"
 
 .SH NAME
 xfdesktop \- The Xfce 4 Desktop Environment's desktop manager
@@ -13,21 +13,21 @@ xfdesktop \- The Xfce 4 Desktop Environment's desktop manager
 .SH DESCRIPTION
 \fBxfdesktop\fP manages the desktop itself in the Xfce 4 Desktop Environment.
 This includes drawing the desktop backdrop and providing a right-click
-applications menu and middle-click window list menu.  Only one instance
-of xfdesktop can be running at a time, and should be started by running
-\fBxfdesktop\fP without any arguments.
+applications menu and middle-click window list menu, as well as drawing
+icons on the desktop.  Only one instance of xfdesktop can be running at
+a time, and should be started by running \fBxfdesktop\fP without any arguments.
 
 .SH OPTIONS
 .TP
-.B \-reload
+.B \--reload
 Causes an already-running instance of \fBxfdesktop\fP to reload all its
 settings, including loading a new random backdrop if using a backdrop list.
 .TP
-.B \-menu
+.B \--menu
 Causes an already-running instance of \fBxfdesktop\fP to pop up the
 applications menu at the current position of the mouse cursor.
 .TP
-.B \-windowlist
+.B \--windowlist
 Causes an already-running instance of \fBxfdesktop\fP to pop up the window
 list menu at the current position of the mouse cursor.
 
@@ -40,17 +40,17 @@ Specifies the root for all user-specific configuration files.  If this
 environment variable is not present, it defaults to
 .I ~/.config
 .TP
-.B XDG_CACHE_HOME
-Specifies the root for all user-specific cache data.  If this environment
-variable is not present, it defaults to
-.I ~/.cache
+.B XDG_CONFIG_DIRS
+Specifies a colon-separated list of system directories in which to search
+for configuration data.
+If this environment variable is not present, it defaults to
+.I /etc/xdg
 
 .SH FILES
-\fBxfdesktop\fP reads the contents of the applications menu from the
-file
-.IR $XDG_CONFIG_HOME/xfce4/desktop/menu.xml .
-\fBxfdesktop\fP also keeps some menu cache data in
-.IR $XDG_CACHE_HOME/xfce4/desktop/ .
+\fBxfdesktop\fP searches for a menu description file in
+.IR $XDG_CONFIG_DIRS/menus/xfce-applications.menu .
+\fBxfdesktop\fP can also use a user-customized menu in
+.IR $XDG_CONFIG_HOME/menus/ .
 
 .SH BUGS
 Please report any bugs to
