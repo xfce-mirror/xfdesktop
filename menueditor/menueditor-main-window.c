@@ -213,7 +213,7 @@ menueditor_main_window_finalize (GObject * object)
 
   g_free (priv->menu_file_name);
   
-  if (G_LIKELY (dummy_icon != NULL)) {
+  if (G_LIKELY (G_IS_OBJECT (dummy_icon))) {
 	g_object_unref (dummy_icon);
 	dummy_icon = NULL;
   }
@@ -255,8 +255,10 @@ menueditor_main_window_init (MenuEditorMainWindow * mainwin)
   
   /* Set default icon */
   icon = xfce_themed_icon_load ("xfce4-menueditor", 48);
-  gtk_window_set_icon (GTK_WINDOW (mainwin), icon);
-  g_object_unref (icon);
+  if (G_LIKELY (G_IS_OBJECT (icon))) {
+    gtk_window_set_icon (GTK_WINDOW (mainwin), icon);
+    g_object_unref (icon);
+  }
 
   /* create ui manager */
   priv->action_group = gtk_action_group_new ("menueditor-main-window");
@@ -871,7 +873,7 @@ action_edit (GtkAction *action, MenuEditorMainWindow *window)
       
       menueditor_main_window_set_menu_modified (window);
     
-      if (G_LIKELY (G_IS_OBJECT (new_icon)))
+      if (G_IS_OBJECT (new_icon))
         g_object_unref (new_icon);
       g_free (new_name);
       g_free (new_command);
@@ -1305,7 +1307,7 @@ action_about (GtkAction *action, MenuEditorMainWindow *window)
   gtk_widget_destroy (dialog);
 
   xfce_about_info_free (info);
-  if (G_LIKELY (icon != NULL))
+  if (G_LIKELY (G_IS_OBJECT (icon)))
     g_object_unref (G_OBJECT (icon));
 }
 
@@ -1550,7 +1552,7 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
                         COLUMN_OPTION_1, icon ? attribute_values[m] : "",
                         COLUMN_OPTION_2, in_terminal ? "true" : "false",
                         COLUMN_OPTION_3, start_notify ? "true" : "false", -1);
-    if (icon)
+    if (G_IS_OBJECT (icon))
       g_object_unref (icon);
   }
   else if (!strcmp (element_name, "menu")) {
@@ -1571,7 +1573,7 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
                         COLUMN_NAME, name,
                         COLUMN_COMMAND, "",
                         COLUMN_HIDDEN, hidden, COLUMN_OPTION_1, icon ? attribute_values[j] : "", COLUMN_TYPE, MENU, -1);
-    if (icon)
+    if (G_IS_OBJECT (icon))
       g_object_unref (icon);
 
 	parent = g_new0 (GtkTreeIter, 1);
@@ -1608,7 +1610,7 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
                         COLUMN_HIDDEN, hidden,
                         COLUMN_TYPE, BUILTIN,
                         COLUMN_OPTION_1, icon ? attribute_values[k] : "", COLUMN_OPTION_2, "builtin", -1);
-    if (icon)
+    if (G_IS_OBJECT (icon))
       g_object_unref (icon);
   }
   else if (!strcmp (element_name, "title")) {
@@ -1626,7 +1628,7 @@ menu_file_xml_start (GMarkupParseContext * context, const gchar * element_name,
                         COLUMN_ICON, icon ? icon : dummy_icon,
                         COLUMN_NAME, name, COLUMN_HIDDEN, hidden, COLUMN_TYPE, TITLE, COLUMN_OPTION_1,
                         icon ? attribute_values[j] : "", -1);
-    if (icon)
+    if (G_IS_OBJECT (icon))
       g_object_unref (icon);
   }
   else if (!strcmp (element_name, "include")) {
