@@ -312,6 +312,9 @@ menueditor_main_window_init (MenuEditorMainWindow * mainwin)
   treestore =
     gtk_tree_store_new (COLUMNS, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_BOOLEAN, G_TYPE_INT,
                         G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+  if (G_UNLIKELY (!G_IS_OBJECT (treestore))) {
+    g_error ("Could not initialize the treestore");
+  }
   scrolledwindow = gtk_scrolled_window_new (NULL, NULL);
   gtk_widget_show (scrolledwindow);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolledwindow), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
