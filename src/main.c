@@ -200,17 +200,21 @@ client_message_received(GtkWidget *w, GdkEventClient *evt, gpointer user_data)
 }
 
 static void
-sighandler_cb(int sig)
+xfdesktop_handle_SIGUSR1(gint signal,
+                         gpointer user_data)
 {
-    switch(sig) {
-        case SIGUSR1:
-            g_idle_add ((GSourceFunc)reload_idle_cb, NULL);
-            break;
-        
-        default:
-            gtk_main_quit();
-            break;
-    }
+    settings_reload_all();
+    menu_reload();
+}
+
+static void
+xfdesktop_handle_quit_signals(gint signal,
+                              gpointer user_data)
+{
+    gint main_level;
+    
+    for(main_level = gtk_main_level(); main_level > 0; --main_level)
+        gtk_main_quit();
 }
 
 int
@@ -224,6 +228,7 @@ main(int argc, char **argv)
     GtkSettings *settings;
     const gchar *message = NULL;
     gboolean already_running;
+    GError *error = NULL;
     
     /* bind gettext textdomain */
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
@@ -373,14 +378,27 @@ main(int argc, char **argv)
     windowlist_set_show_icons(desktop_gtk_menu_images);
     
     if(mcs_client) {
-        settings_register_callback(menu_settings_changed, NULL);
-        settings_register_callback(windowlist_settings_changed, NULL);
+        settings_register_callback(menu_settings_changed, desktops[0]);
+        settings_register_callback(windowlist_settings_changed, desktops[0]);
     }
     
-    signal(SIGHUP, sighandler_cb);
-    signal(SIGINT, sighandler_cb);
-    signal(SIGTERM, sighandler_cb);
-    signal(SIGUSR1, sighandler_cb);
+    if(xfce_posix_signal_handler_init(&error)) {
+        xfce_posix_signal_handler_set_handler(SIGHUP,
+                                              xfdesktop_handle_quit_signals,
+                                              desktops, NULL);
+        xfce_posix_signal_handler_set_handler(SIGINT,
+                                              xfdesktop_handle_quit_signals,
+                                              desktops, NULL);
+        xfce_posix_signal_handler_set_handler(SIGTERM,
+                                              xfdesktop_handle_quit_signals,
+                                              desktops, NULL);
+        xfce_posix_signal_handler_set_handler(SIGUSR1,
+                                              xfdesktop_handle_SIGUSR1,
+                                              desktops, NULL);
+    } else {
+        g_warning("Unable to set up POSIX signal handlers: %s", error->message);
+        g_error_free(error);
+    }
     
     gtk_main();
     
