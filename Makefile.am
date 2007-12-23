@@ -46,6 +46,7 @@ conf_DATA =		\
 	menu.xml.pa	\
 	menu.xml.pl	\
 	menu.xml.pt_BR	\
+	menu.xml.pt_PT  \
 	menu.xml.ro	\
 	menu.xml.ru	\
 	menu.xml.sk	\
