@@ -9,12 +9,14 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-10-20 14:36-0700\n"
-"PO-Revision-Date: 2007-06-29 11:57+0100\n"
+"PO-Revision-Date: 2007-12-18 21:19+0100\n"
 "Last-Translator: Nuno Miguel <nunis@netcabo.pt>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: PORTUGAL\n"
 
 #: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
@@ -233,25 +235,20 @@ msgid "Xfce4-MenuEditor"
 msgstr "Xfce4-MenuEditor"
 
 #: ../menueditor/menueditor-main.c:57
-#, fuzzy
 msgid "Menueditor Warning"
-msgstr "Editor de Menu"
+msgstr "Aviso do Editor de Menu"
 
 #: ../menueditor/menueditor-main.c:59
 msgid "xfce4-menueditor is deprecated"
-msgstr ""
+msgstr "xfce4-menueditor está obsoleto"
 
 #: ../menueditor/menueditor-main.c:60
-msgid ""
-"Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-"edit the new menu file format.  You may continue and edit an old-style menu "
-"file, or quit."
-msgstr ""
+msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+msgstr "O sistema de menu do Xfce foi substituído e o xfce4-menueditor é incapaz de editar o novo formato de ficheiro do menu. Pode continuar e editar no antigo estilo de ficheiro de menu, ou sair."
 
 #: ../menueditor/menueditor-main.c:61
-#, fuzzy
 msgid "Continue"
-msgstr "Contribuidor"
+msgstr "Continuar"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -267,7 +264,8 @@ msgstr "Criar novo ficheiro de menu"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1631
-#: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
+#: ../src/xfdesktop-special-file-icon.c:624
+#: ../src/xfdesktop-volume-icon.c:543
 msgid "_Open"
 msgstr "_Abrir"
 
@@ -418,7 +416,8 @@ msgstr "Deseja gravar antes de fechar o ficheiro?"
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:588 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:588
+#: ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Questão"
 
@@ -548,7 +547,7 @@ msgstr "Usar ficheiro padrão de menu para o _ambiente de trabalho"
 
 #: ../panel-plugin/desktop-menu-plugin.c:837
 msgid "Use _custom menu file:"
-msgstr "Usar ficheiro de menu _personalizado"
+msgstr "Usar ficheiro de menu _personalizado:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:888
 #: ../settings/behavior-settings.c:369
@@ -578,9 +577,10 @@ msgstr "Editar Menu"
 #. the button label in the xfce-mcs-manager dialog
 #: ../settings/appearance-settings.c:138
 msgid "Button Label|Desktop"
-msgstr "Etiqueta de Botão|Ambiente de trabalho"
+msgstr "Ambiente de trabalho"
 
-#: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
+#: ../settings/appearance-settings.c:191
+#: ../settings/appearance-settings.c:200
 #: ../settings/backdrop-list-manager.c:628
 msgid "backdrops.list"
 msgstr "backdrops.list"
@@ -626,13 +626,12 @@ msgid "Scaled"
 msgstr "Escalado"
 
 #: ../settings/appearance-settings.c:741
-#, fuzzy
 msgid "Zoomed"
-msgstr "Home"
+msgstr "Zoom"
 
 #: ../settings/appearance-settings.c:797
 msgid "A_djust Brightness:"
-msgstr "A_justar brilho"
+msgstr "A_justar Brilho:"
 
 #: ../settings/appearance-settings.c:855
 #, c-format
@@ -658,30 +657,12 @@ msgid "Information"
 msgstr "Informação"
 
 #: ../settings/appearance-settings.c:897
-msgid ""
-"To ensure that this setting takes effect the next time you start Xfce, "
-"please be sure to save your session when logging out.  If you are not using "
-"the Xfce Session Manager (xfce4-session), you will need to manually edit "
-"your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-"Para assegurar que esta definição tenha efeito da próxima vez que iniciar, "
-"guarde a sessão ao terminar a sessão. Se não usar o Gestor de Sessão do Xfce "
-"(xfce4- session), precisa de editar o ficheiro ~/.config/xfce/xinitrc. "
-"Detalhes na documentação em htttp://xfce.org/."
+msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "Para assegurar que esta definição tenha efeito da próxima vez que iniciar, guarde a sessão ao terminar a sessão. Se não usar o Gestor de Sessão do Xfce (xfce4-session), precisa de editar o ficheiro ~/.config/xfce/xinitrc. Detalhes na documentação em htttp://xfce.org/."
 
 #: ../settings/appearance-settings.c:899
-msgid ""
-"To ensure that Xfce does not manage your desktop the next time you start "
-"Xfce, please be sure to save your session when logging out.  If you are not "
-"using the Xfce Session Manager (xfce4-session), you will need to manually "
-"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-"Para assegurar que o Xfce não gere o ambiente de trabalho a próxima vez que "
-"iniciar, guarde a sessão ao terminar a sessão. Se não usar o Gestor de "
-"Sessão do Xfce (xfce4- session), precisa de editar o ficheiro ~/.config/xfce/"
-"xinitrc. Detalhes na documentação em htttp://xfce.org/."
+msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "Para assegurar que o Xfce não gere o ambiente de trabalho a próxima vez que iniciar, guarde a sessão ao terminar a sessão. Se não usar o Gestor de Sessão do Xfce (xfce4- session), precisa de editar o ficheiro ~/.config/xfce/xinitrc. Detalhes na documentação em htttp://xfce.org/."
 
 #: ../settings/appearance-settings.c:907
 msgid "_Do not show this again"
@@ -704,7 +685,7 @@ msgstr "Expandir único contexto em _todos os monitores"
 #: ../settings/appearance-settings.c:1045
 #: ../settings/appearance-settings.c:1227
 msgid "_Appearance"
-msgstr "_Aparência"
+msgstr "Apa_rência"
 
 #. color settings frame
 #: ../settings/appearance-settings.c:1071
@@ -761,20 +742,19 @@ msgstr "Ecrã %d, Monitor %d"
 
 #: ../settings/appearance-settings.c:1262
 msgid "_Behavior"
-msgstr "_Comportamento"
+msgstr "C_omportamento"
 
-#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#: ../settings/backdrop-list-manager.c:160
+#: ../src/xfce-desktop-settings.c:74
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
+"Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
 "Não foi possível gravar o ficheiro %s: %s\n"
 "\n"
-"Por favor escolha outro directório ou pressione Cancelar na janela de "
-"dialogo para desfazer as suas alterações"
+"Por favor escolha outro directório ou pressione Cancelar na janela de dialogo para desfazer as suas alterações"
 
 #: ../settings/backdrop-list-manager.c:430
 msgid "Select backdrop image file"
@@ -810,7 +790,7 @@ msgstr "Menus"
 
 #: ../settings/behavior-settings.c:309
 msgid "Show _window list on middle click"
-msgstr "Mostrar _lista de janelas com botão do meio"
+msgstr "Mostrar lista de ja_nelas com botão do meio"
 
 #: ../settings/behavior-settings.c:327
 msgid "Show workspace _names in list"
@@ -826,7 +806,7 @@ msgstr "Mostrar janelas encolhidas apenas na área _activa"
 
 #: ../settings/behavior-settings.c:362
 msgid "Show _desktop menu on right click"
-msgstr "Mostrar _menu do ambiente de trabalho com botão direito"
+msgstr "Mostrar menu do a_mbiente de trabalho com botão direito"
 
 #: ../settings/behavior-settings.c:381
 msgid "Desktop Icons"
@@ -847,7 +827,7 @@ msgstr "Ficheiro/Ícones de lançador"
 
 #: ../settings/behavior-settings.c:408
 msgid "_Icon size:"
-msgstr "_Tamanho de ícone"
+msgstr "_Tamanho de ícone:"
 
 #: ../settings/behavior-settings.c:422
 msgid "Use _system font size"
@@ -855,7 +835,7 @@ msgstr "Usar tamanho de fonte de _sistema"
 
 #: ../settings/behavior-settings.c:439
 msgid "Custom _font size:"
-msgstr "Escolher tamanho da _fonte:"
+msgstr "Tamanho da _fonte personalizado:"
 
 #: ../src/main.c:240
 #, c-format
@@ -865,7 +845,7 @@ msgstr "Esta é a %s versão %s, a correr no Xfce %s.\n"
 #: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Criado com GTK+ %d.%d.%d, lincado com GTK+ %d.%d.%d."
+msgstr "Criado com GTK+ %d.%d.%d, ligado com GTK+ %d.%d.%d."
 
 #: ../src/main.c:246
 msgid "Build options:\n"
@@ -874,20 +854,24 @@ msgstr "Opções de construção:\n"
 #: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "      Menu do Ambiente de Trabalho:        %s\n"
+msgstr "    Menu do Ambiente de Trabalho:        %s\n"
 
-#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
+#: ../src/main.c:249
+#: ../src/main.c:256
+#: ../src/main.c:263
 msgid "enabled"
 msgstr "ligado"
 
-#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
+#: ../src/main.c:251
+#: ../src/main.c:258
+#: ../src/main.c:265
 msgid "disabled"
 msgstr "desligado"
 
 #: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "   Ícones do Ambiente de Trabalho:       %s\n"
+msgstr "    Ícones do Ambiente de Trabalho:       %s\n"
 
 #: ../src/main.c:261
 #, c-format
@@ -905,23 +889,19 @@ msgstr "As opções são:\n"
 
 #: ../src/main.c:292
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    --reload      Recarregar todas as definições, actualizar a lista de "
-"imagens\n"
+msgstr "    --reload      Recarregar todas as definições, actualizar a lista de imagens\n"
 
 #: ../src/main.c:293
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu        Mostra o menu (na posição actual do rato)\n"
 
 #: ../src/main.c:294
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    --windowlist  Mostra a lista das janelas (na posição actual do rato)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    --windowlist  Mostra a lista das janelas (na posição actual do rato)\n"
 
 #: ../src/main.c:295
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "   --quit        Leva o xfdesktop a terminar\n"
+msgstr "    --quit        Leva o xfdesktop a terminar\n"
 
 #: ../src/main.c:310
 #, c-format
@@ -930,7 +910,7 @@ msgstr "%s não está em execução.\n"
 
 #: ../src/windowlist.c:233
 msgid "Window List"
-msgstr ""
+msgstr "Lista de Janelas"
 
 #: ../src/windowlist.c:258
 #, c-format
@@ -947,7 +927,8 @@ msgstr "Área de Trabalho %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Área de Trabalho %d</i>"
 
-#: ../src/windowlist.c:366 ../src/windowlist.c:369
+#: ../src/windowlist.c:366
+#: ../src/windowlist.c:369
 msgid "_Add Workspace"
 msgstr "_Adicionar Área de Trabalho"
 
@@ -967,11 +948,8 @@ msgstr "Ambiente de Trabalho"
 
 #: ../src/xfdesktop-file-icon-manager.c:387
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop é incapaz de criar a pasta \"%s\" para restaurar os itens do "
-"Ambiente de Trabalho:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop é incapaz de criar a pasta \"%s\" para restaurar os itens do Ambiente de Trabalho:"
 
 #: ../src/xfdesktop-file-icon-manager.c:389
 #: ../src/xfdesktop-file-icon-manager.c:400
@@ -981,16 +959,12 @@ msgstr "Criação de Pasta Falhou"
 
 #: ../src/xfdesktop-file-icon-manager.c:398
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop é incapaz de usar \"%s\" para lidar com itens do Ambiente de "
-"Trabalho por não ser uma pasta."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop é incapaz de usar \"%s\" para lidar com itens do Ambiente de Trabalho por não ser uma pasta."
 
 #: ../src/xfdesktop-file-icon-manager.c:402
 msgid "Please delete or rename the file."
-msgstr "Apague ou renomeie o ficheiro."
+msgstr "Por favor apague ou renomeie o ficheiro."
 
 #: ../src/xfdesktop-file-icon-manager.c:539
 #, c-format
@@ -1002,7 +976,7 @@ msgstr "Renomear \"%s\""
 #: ../src/xfdesktop-file-icon-manager.c:1278
 #: ../src/xfdesktop-file-icon-manager.c:1289
 msgid "Enter the new name:"
-msgstr "Novo nome:"
+msgstr "Coloque o novo nome:"
 
 #: ../src/xfdesktop-file-icon-manager.c:548
 msgid "Rename"
@@ -1016,12 +990,12 @@ msgstr "Tem a certeza que quer apagar \"%s\"?"
 #: ../src/xfdesktop-file-icon-manager.c:590
 #: ../src/xfdesktop-file-icon-manager.c:610
 msgid "If you delete a file, it is permanently lost."
-msgstr "Se apagar o ficheiro, perde-o para sempre."
+msgstr "Se apagar um ficheiro, perde-o para sempre."
 
 #: ../src/xfdesktop-file-icon-manager.c:604
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "Deseja apagar os seguintes %d ficheiros?"
+msgstr "Tem a certeza que deseja apagar os seguintes %d ficheiros?"
 
 #: ../src/xfdesktop-file-icon-manager.c:607
 msgid "Delete Multiple Files"
@@ -1029,7 +1003,8 @@ msgstr "Apagar múltiplos ficheiros"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:824
-#: ../src/xfdesktop-file-icon-manager.c:1549 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1549
+#: ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -1038,19 +1013,19 @@ msgstr "Incapaz de lançar \"%s\":"
 #: ../src/xfdesktop-file-icon-manager.c:826
 #: ../src/xfdesktop-file-icon-manager.c:884
 #: ../src/xfdesktop-file-icon-manager.c:1149
-#: ../src/xfdesktop-file-icon-manager.c:1551 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon-manager.c:1551
+#: ../src/xfdesktop-file-icon.c:144
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Erro do Lançador"
 
 #: ../src/xfdesktop-file-icon-manager.c:885
 msgid "The application chooser could not be opened."
-msgstr "Selector de aplicação não foi aberto."
+msgstr "Selector de aplicação não foi capaz de abrir."
 
-#: ../src/xfdesktop-file-icon-manager.c:886 ../src/xfdesktop-file-utils.c:358
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:886
+#: ../src/xfdesktop-file-utils.c:358
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
 msgstr "Esta funcionalidade requer um gestor de ficheiros (como o Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1046
@@ -1066,15 +1041,11 @@ msgstr "Abrir Com \"%s\""
 #: ../src/xfdesktop-file-icon-manager.c:1112
 #, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "Incapaz de criar pasta de nome \" %s\":"
+msgstr "Incapaz de criar pasta de nome \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1151
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Incapaz de lançar \"exo-desktop-item-edit\", necessário para criar e editar "
-"lançadores e atalhos no Ambiente de Trabalho."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Incapaz de lançar \"exo-desktop-item-edit\", necessário para criar e editar lançadores e atalhos no Ambiente de Trabalho."
 
 #: ../src/xfdesktop-file-icon-manager.c:1184
 msgid "Create New Folder"
@@ -1110,7 +1081,7 @@ msgstr "Criar Ficheiro Vazio"
 
 #: ../src/xfdesktop-file-icon-manager.c:1290
 msgid "New Empty File"
-msgstr "_Novo Ficheiro Vazio"
+msgstr "Novo Ficheiro Vazio"
 
 #: ../src/xfdesktop-file-icon-manager.c:1323
 #, c-format
@@ -1127,11 +1098,11 @@ msgstr "_Abrir tudo"
 
 #: ../src/xfdesktop-file-icon-manager.c:1629
 msgid "_Open in New Window"
-msgstr ""
+msgstr "_Abrir em Nova Janela"
 
 #: ../src/xfdesktop-file-icon-manager.c:1646
 msgid "Create _Launcher..."
-msgstr "Criar _Lançador"
+msgstr "Criar _Lançador..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1667
 msgid "Create _URL Link..."
@@ -1139,7 +1110,7 @@ msgstr "Criar Link _URL..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1684
 msgid "Create _Folder..."
-msgstr "Criar _Pasta"
+msgstr "Criar _Pasta..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1726
 msgid "_Empty File"
@@ -1159,7 +1130,7 @@ msgstr "Abrir com"
 
 #: ../src/xfdesktop-file-icon-manager.c:1831
 msgid "Open With Other _Application..."
-msgstr "Abrir com outra _aplicação"
+msgstr "Abrir Com Outra _Aplicação..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1938
 msgid "_Rename..."
@@ -1167,7 +1138,7 @@ msgstr "_Renomear..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1956
 msgid "Desktop _Settings..."
-msgstr "Definiçõe_s das Áreas de Trabalho"
+msgstr "Definiçõe_s do Ambiente de Trabalho..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1966
 #: ../src/xfdesktop-volume-icon.c:593
@@ -1229,7 +1200,7 @@ msgstr "(desconhecido)"
 
 #: ../src/xfdesktop-file-properties-dialog.c:273
 msgid "Open With:"
-msgstr "Abrir com:"
+msgstr "Abrir Com:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:350
 msgid "Modified:"
@@ -1249,7 +1220,8 @@ msgstr "Tamanho:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:413
 #: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:488 ../src/xfdesktop-volume-icon.c:461
+#: ../src/xfdesktop-special-file-icon.c:488
+#: ../src/xfdesktop-volume-icon.c:461
 msgid "%s (%"
 msgstr "%s (%"
 
@@ -1296,7 +1268,7 @@ msgstr "Ocorreu um erro ao criar atalho de \"%s\" para \"%s\":"
 
 #: ../src/xfdesktop-file-utils.c:121
 msgid "File Error"
-msgstr "Erro de ficheiro"
+msgstr "Erro de Ficheiro"
 
 #: ../src/xfdesktop-file-utils.c:137
 msgid "broken link"
@@ -1308,7 +1280,8 @@ msgid "link to %s"
 msgstr "atalho para %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:489
-#: ../src/xfdesktop-special-file-icon.c:491 ../src/xfdesktop-volume-icon.c:464
+#: ../src/xfdesktop-special-file-icon.c:491
+#: ../src/xfdesktop-volume-icon.c:464
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -1322,7 +1295,7 @@ msgstr ""
 #: ../src/xfdesktop-regular-file-icon.c:581
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr "Falha ao renomear \"%s\" to \"%s\":"
+msgstr "Falha ao renomear \"%s\" para \"%s\":"
 
 #: ../src/xfdesktop-special-file-icon.c:259
 msgid "Home"
@@ -1337,12 +1310,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Incapaz de contactar o serviço de Lixo Xfce"
 
 #: ../src/xfdesktop-special-file-icon.c:512
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Verifique se tem tem um gestor de ficheiros instalado que suporte o serviço "
-"de Lixo do Xfce, como o Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Verifique se tem tem um gestor de ficheiros instalado que suporte o serviço de Lixo do Xfce, como o Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
@@ -1356,7 +1325,7 @@ msgstr "Impossível montar \" %s\":"
 #: ../src/xfdesktop-volume-icon.c:493
 #, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "Impossível desmontar \" %s\":"
+msgstr "Impossível desmontar \"%s\":"
 
 #: ../src/xfdesktop-volume-icon.c:496
 msgid "Mount Failed"
@@ -1397,7 +1366,7 @@ msgstr "Editor de Menu"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
-msgstr "Menu Xfce"
+msgstr "Editor de Menu Xfce 4"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
@@ -1493,7 +1462,7 @@ msgstr "Ferramentas de sistema"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
-msgstr "Sobre o XFce 4"
+msgstr "Sobre o XFce"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
@@ -1549,11 +1518,11 @@ msgstr "Browser Web"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr "Mostrar um menu contendo as categorias das aplicações instaladas"
+msgstr "Mostra um menu contendo as categorias das aplicações instaladas"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop Settings"
-msgstr "Definições das Áreas de Trabalho"
+msgstr "Definições do Ambiente de Trabalho"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Settings for the Xfce 4 Desktop Manager"
@@ -1561,10 +1530,10 @@ msgstr "Definições para o Gestor do Ambiente de Trabalho Xfce 4"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
-msgstr "Definições do Ambiente de Trabalho"
+msgstr "Definições do Ambiente de Trabalho Xfce 4"
 
 #~ msgid "Des_ktop"
 #~ msgstr "Ambiente de _Trabalho"
-
 #~ msgid "_Desktop Properties..."
 #~ msgstr "_Propriedades do Ambiente de Trabalho..."
+
