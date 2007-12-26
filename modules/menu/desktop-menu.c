@@ -115,10 +115,15 @@ desktop_menu_something_changed(ThunarVfsMonitor *monitor,
                                gpointer user_data)
 {
     XfceDesktopMenu *desktop_menu = user_data;
+    XfceMenuItemCache *cache = xfce_menu_item_cache_get_default();
+    
     TRACE("entering (%s)", thunar_vfs_path_get_name(event_path));
+    
+    xfce_menu_item_cache_invalidate(cache);
     _generate_menu(desktop_menu, FALSE);
 }
 
+#if 0
 static gpointer
 desktop_menu_xfce_menu_monitor_file(XfceMenu *menu,
                                     const gchar *filename,
@@ -143,6 +148,7 @@ desktop_menu_xfce_menu_monitor_file(XfceMenu *menu,
     
     return mhandle;
 }
+#endif
 
 static gpointer
 desktop_menu_xfce_menu_monitor_directory(XfceMenu *menu,
@@ -330,7 +336,7 @@ xfce_desktop_menu_new_impl(const gchar *menu_file,
 {
 #ifdef HAVE_THUNAR_VFS
     static XfceMenuMonitorVTable monitor_vtable = {
-        desktop_menu_xfce_menu_monitor_file,
+        NULL, //desktop_menu_xfce_menu_monitor_file,
         desktop_menu_xfce_menu_monitor_directory,
         desktop_menu_xfce_menu_remove_monitor
     };
