@@ -117,7 +117,13 @@ desktop_menu_something_changed(ThunarVfsMonitor *monitor,
     XfceDesktopMenu *desktop_menu = user_data;
     XfceMenuItemCache *cache = xfce_menu_item_cache_get_default();
     
-    TRACE("entering (%s)", thunar_vfs_path_get_name(event_path));
+#ifdef DEBUG
+    {
+        gchar buf[1024];
+        thunar_vfs_path_to_string(event_path, buf, sizeof(buf), NULL);
+        TRACE("entering (%d,%s)", event, buf);
+    }
+#endif
     
     xfce_menu_item_cache_invalidate(cache);
     _generate_menu(desktop_menu, FALSE);
@@ -157,18 +163,20 @@ desktop_menu_xfce_menu_monitor_directory(XfceMenu *menu,
 {
     XfceDesktopMenu *desktop_menu = user_data;
     ThunarVfsPath *path;
-    ThunarVfsMonitor *monitor = thunar_vfs_monitor_get_default();
     ThunarVfsMonitorHandle *mhandle = NULL;
+    
+    if(!g_file_test(filename, G_FILE_TEST_IS_DIR))
+        return NULL;
     
     path = thunar_vfs_path_new(filename, NULL);
     if(path) {
+        ThunarVfsMonitor *monitor = thunar_vfs_monitor_get_default();
         mhandle = thunar_vfs_monitor_add_directory(monitor, path,
                                                    desktop_menu_something_changed,
                                                    desktop_menu);
         thunar_vfs_path_unref(path);
+        g_object_unref(G_OBJECT(monitor));
     }
-    
-    g_object_unref(G_OBJECT(monitor));
     
     TRACE("exiting (%s), returning 0x%p", filename, mhandle);
     
@@ -296,14 +304,12 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
     xfce_menu_init("XFCE");
 #endif
     
-    if(g_file_test(desktop_menu->filename, G_FILE_TEST_EXISTS)) {
-        desktop_menu->xfce_menu = xfce_menu_new(desktop_menu->filename, &error);
-        if(!desktop_menu->xfce_menu) {
-            g_critical("Unable to create XfceMenu from file '%s': %s",
-                       desktop_menu->filename, error->message);
-            g_error_free(error);
-            return FALSE;
-        }
+    desktop_menu->xfce_menu = xfce_menu_new(desktop_menu->filename, &error);
+    if(!desktop_menu->xfce_menu) {
+        g_critical("Unable to create XfceMenu from file '%s': %s",
+                   desktop_menu->filename, error->message);
+        g_error_free(error);
+        return FALSE;
     }
     
     return ret;
@@ -312,8 +318,10 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
 static void
 _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 {
-    if(desktop_menu->xfce_menu)
+    if(desktop_menu->xfce_menu) {
         g_object_unref(G_OBJECT(desktop_menu->xfce_menu));
+        desktop_menu->xfce_menu = NULL;
+    }
     
     desktop_menu->xfce_menu = NULL;
 }
@@ -336,7 +344,7 @@ xfce_desktop_menu_new_impl(const gchar *menu_file,
 {
 #ifdef HAVE_THUNAR_VFS
     static XfceMenuMonitorVTable monitor_vtable = {
-        NULL, //desktop_menu_xfce_menu_monitor_file,
+        NULL, /*desktop_menu_xfce_menu_monitor_file,*/
         desktop_menu_xfce_menu_monitor_directory,
         desktop_menu_xfce_menu_remove_monitor
     };
