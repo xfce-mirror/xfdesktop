@@ -261,6 +261,8 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         } else if(XFCE_IS_MENU_ITEM(l->data)) {
+            const gchar *name = NULL;
+            
             xfce_item = l->data;
             
             if(xfce_menu_item_get_no_display(xfce_item)
@@ -269,7 +271,12 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                 continue;
             }
             
-            mi = xfce_app_menu_item_new_full(xfce_menu_item_get_name(xfce_item),
+            if(xfce_menu_item_has_category(xfce_item, "X-XFCE"))
+                name = xfce_menu_item_get_generic_name(xfce_item);
+            if(!name)
+                name = xfce_menu_item_get_name(xfce_item);
+            
+            mi = xfce_app_menu_item_new_full(name,
                                              xfce_menu_item_get_command(xfce_item),
                                              xfce_menu_item_get_icon_name(xfce_item),
                                              xfce_menu_item_requires_terminal(xfce_item),
