@@ -29,7 +29,11 @@ EOF
 
 # substitute revision and linguas
 linguas=`sed -e '/^#/d' po/LINGUAS`
-revision=`LC_ALL=C svn info $0 | awk '/^Revision: / {printf "%05d\n", $2}'`
+if [ -d .git/svn ]; then
+  revision=`LC_ALL=C git-svn find-rev HEAD`
+else
+  revision=`LC_ALL=C svn info $0 | awk '/^Revision: / {printf "%05d\n", $2}'`
+fi
 sed -e "s/@LINGUAS@/${linguas}/g" \
     -e "s/@REVISION@/${revision}/g" \
     < "configure.ac.in" > "configure.ac"
