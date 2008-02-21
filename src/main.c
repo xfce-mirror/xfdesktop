@@ -382,8 +382,8 @@ main(int argc, char **argv)
     windowlist_set_show_icons(desktop_gtk_menu_images);
     
     if(mcs_client) {
-        settings_register_callback(menu_settings_changed, NULL);
-        settings_register_callback(windowlist_settings_changed, NULL);
+        settings_register_callback(menu_settings_changed, desktops[0]);
+        settings_register_callback(windowlist_settings_changed, desktops[0]);
     }
     
     signal(SIGHUP, sighandler_cb);
