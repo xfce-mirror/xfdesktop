@@ -173,6 +173,7 @@ _menu_shell_insert_sorted(GtkMenuShell *menu_shell, GtkWidget *mi,
         if(cmpname && g_ascii_strcasecmp(name, cmpname) < 0)
             break;
     }
+    g_list_free(items);
     
     gtk_menu_shell_insert(menu_shell, mi, i);
     
