@@ -203,7 +203,7 @@ get_paths_multilevel(GNode *node, gpointer data)
                 else
                     foundcat = NULL;
                 if(!foundcat) {
-                    g_ptr_array_free(revpath, FALSE);
+                    g_ptr_array_free(revpath, TRUE);
                     revpath = NULL;
                     break;
                 }
@@ -220,7 +220,7 @@ get_paths_multilevel(GNode *node, gpointer data)
                 newpath[totlen] = 0;
                 
                 g_ptr_array_add(mtfpi->paths, newpath);
-                g_ptr_array_free(revpath, FALSE);
+                g_ptr_array_free(revpath, TRUE);
             }
         }
     }
