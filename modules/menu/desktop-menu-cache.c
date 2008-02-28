@@ -453,17 +453,11 @@ desktop_menu_cache_cleanup()
         menu_tree = NULL;
     }
     
-    for(l = menu_files; l; l = l->next)
-        g_free(l->data);
-    if(menu_files) {
-        g_list_free(menu_files);
-        menu_files = NULL;
-    }
+    g_list_foreach(menu_files, (GFunc)g_free, NULL);
+    g_list_free(menu_files);
+    menu_files = NULL;
     
-    for(l = dentry_dirs; l; l = l->next)
-        g_free(l->data);
-    if(dentry_dirs) {
-        g_list_free(dentry_dirs);
-        dentry_dirs = NULL;
-    }
+    g_list_foreach(dentry_dirs, (GFunc)g_free, NULL);
+    g_list_free(dentry_dirs);
+    dentry_dirs = NULL;
 }
