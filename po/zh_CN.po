@@ -2,14 +2,14 @@
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Yongtao Yang <yongtao.yang@telia.com>, 2004.
-# wuli <wurisky@gmail.com>,2007
+# wuli <wurisky@gmail.com>,2007,2008
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-10-20 14:36-0700\n"
-"PO-Revision-Date: 2007-03-30 23:30+0800\n"
+"PO-Revision-Date: 2008-02-12 09:35+0800\n"
 "Last-Translator: wuli <wurisky@gmail.com>\n"
 "Language-Team: Simplified Chinese <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.1\n"
@@ -233,25 +233,25 @@ msgid "Xfce4-MenuEditor"
 msgstr "Xfce 菜单编辑器"
 
 #: ../menueditor/menueditor-main.c:57
-#, fuzzy
+#, 
 msgid "Menueditor Warning"
-msgstr "菜单编辑器"
+msgstr "菜单编辑器警告"
 
 #: ../menueditor/menueditor-main.c:59
 msgid "xfce4-menueditor is deprecated"
-msgstr ""
+msgstr "xfce4菜单编辑器无法编辑此文件"
 
 #: ../menueditor/menueditor-main.c:60
 msgid ""
 "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
 "edit the new menu file format.  You may continue and edit an old-style menu "
 "file, or quit."
-msgstr ""
+msgstr "Xfce 菜单系统被替换，Xfce4-菜单编辑器无法编辑此菜单文件格式，你可以继续编辑旧风格菜单文件或退出。"
 
 #: ../menueditor/menueditor-main.c:61
-#, fuzzy
+#, 
 msgid "Continue"
-msgstr "其他作出贡献人员"
+msgstr "继续"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -313,7 +313,7 @@ msgstr "退出(_Q)"
 
 #: ../menueditor/menueditor-main-window.c:147
 msgid "Quit Xfce4-Menueditor"
-msgstr "退出Xfce4 菜单编辑器"
+msgstr "退出Xfce4菜单编辑器"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
@@ -623,12 +623,12 @@ msgstr "拉伸"
 
 #: ../settings/appearance-settings.c:740
 msgid "Scaled"
-msgstr "缩放"
+msgstr "比例"
 
 #: ../settings/appearance-settings.c:741
-#, fuzzy
+#, 
 msgid "Zoomed"
-msgstr "Home"
+msgstr "缩放"
 
 #: ../settings/appearance-settings.c:797
 msgid "A_djust Brightness:"
@@ -692,7 +692,7 @@ msgstr "桌面设置"
 
 #: ../settings/appearance-settings.c:990
 msgid "Allow _Xfce to manage the desktop"
-msgstr "允许xfce管理桌面(_X)"
+msgstr "允许Xfce管理桌面(_X)"
 
 #: ../settings/appearance-settings.c:1031
 msgid "Stretch single backdrop onto _all monitors"
@@ -924,7 +924,7 @@ msgstr "%s 没有运行。\n"
 
 #: ../src/windowlist.c:233
 msgid "Window List"
-msgstr ""
+msgstr "窗口列表"
 
 #: ../src/windowlist.c:258
 #, c-format
@@ -1115,7 +1115,7 @@ msgstr "打开所有(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1629
 msgid "_Open in New Window"
-msgstr ""
+msgstr "从新窗口中打开(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1646
 msgid "Create _Launcher..."
@@ -1314,7 +1314,7 @@ msgstr "重命名 \"%s\" 为 \"%s\" 失败。"
 
 #: ../src/xfdesktop-special-file-icon.c:259
 msgid "Home"
-msgstr "Home"
+msgstr "主目录"
 
 #: ../src/xfdesktop-special-file-icon.c:509
 msgid "Trash Error"
@@ -1375,7 +1375,7 @@ msgstr "弹出卷(_J)"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "编辑 xfce4 菜单图形工具"
+msgstr "编辑 xfce4 菜单的图形化工具"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
@@ -1383,7 +1383,7 @@ msgstr "菜单编辑器"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
-msgstr "Xfce 4 菜单编辑器"
+msgstr "Xfce4 菜单编辑器"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
@@ -1419,7 +1419,7 @@ msgstr "游戏，益智和其它有趣软件"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
-msgstr "图形"
+msgstr "图形图像"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
