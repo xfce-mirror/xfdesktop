@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-10-20 14:36-0700\n"
-"PO-Revision-Date: 2006-09-24 21:00+0600\n"
+"PO-Revision-Date: 2007-11-29 14:15+0600\n"
 "Last-Translator: Andrey Fedoseev <andrey.fedoseev@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -236,13 +236,12 @@ msgid "Xfce4-MenuEditor"
 msgstr "Редактор меню Xfce 4"
 
 #: ../menueditor/menueditor-main.c:57
-#, fuzzy
 msgid "Menueditor Warning"
-msgstr "Редактор меню"
+msgstr "Предупреждение редактора меню"
 
 #: ../menueditor/menueditor-main.c:59
 msgid "xfce4-menueditor is deprecated"
-msgstr ""
+msgstr "xfce4-menueditor признан устаревшим"
 
 #: ../menueditor/menueditor-main.c:60
 msgid ""
@@ -250,11 +249,13 @@ msgid ""
 "edit the new menu file format.  You may continue and edit an old-style menu "
 "file, or quit."
 msgstr ""
+"Система меню Xfce была изменена. xfce4-menueditor не поддерживает новый "
+"формат файла меню. Вы можете продолжить и отредактировать файл меню в старом "
+"формате или выйти."
 
 #: ../menueditor/menueditor-main.c:61
-#, fuzzy
 msgid "Continue"
-msgstr "Внёс вклад"
+msgstr "Продолжить"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -629,9 +630,8 @@ msgid "Scaled"
 msgstr "Масштабировать"
 
 #: ../settings/appearance-settings.c:741
-#, fuzzy
 msgid "Zoomed"
-msgstr "Домашний каталог"
+msgstr "Увеличить"
 
 #: ../settings/appearance-settings.c:797
 msgid "A_djust Brightness:"
@@ -818,15 +818,15 @@ msgstr "Показывать _список окон по щелчку средн
 
 #: ../settings/behavior-settings.c:327
 msgid "Show workspace _names in list"
-msgstr ""
+msgstr "Показывать _названия рабочих мест в списке"
 
 #: ../settings/behavior-settings.c:341
 msgid "Show windows on each workspace in sub_menus"
-msgstr ""
+msgstr "Отображать окна каждого рабочего места в виде под_меню"
 
 #: ../settings/behavior-settings.c:351
 msgid "Show sticky windows only in _active workspace"
-msgstr ""
+msgstr "Показывать закреплённые окна только на _активном рабочем месте"
 
 #: ../settings/behavior-settings.c:362
 msgid "Show _desktop menu on right click"
@@ -891,12 +891,12 @@ msgstr "отключено"
 #: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "    Значки на рабочем столе:       %s\n"
+msgstr "    Значки на рабочем столе: %s\n"
 
 #: ../src/main.c:261
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr ""
+msgstr "    Значки файлов на рабочем столе: %s\n"
 
 #: ../src/main.c:290
 #, c-format
@@ -933,7 +933,7 @@ msgstr "%s не запущен.\n"
 
 #: ../src/windowlist.c:233
 msgid "Window List"
-msgstr ""
+msgstr "Список окон"
 
 #: ../src/windowlist.c:258
 #, c-format
@@ -941,9 +941,9 @@ msgid "<b>Workspace %d</b>"
 msgstr "<b>Рабочее место %d</b>"
 
 #: ../src/windowlist.c:267
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
-msgstr "<b>Рабочее место %d</b>"
+msgstr "Рабочее место %d"
 
 #: ../src/windowlist.c:269
 #, c-format
@@ -1130,7 +1130,7 @@ msgstr "Открыть _все"
 
 #: ../src/xfdesktop-file-icon-manager.c:1629
 msgid "_Open in New Window"
-msgstr ""
+msgstr "Открыть в _новом окне"
 
 #: ../src/xfdesktop-file-icon-manager.c:1646
 msgid "Create _Launcher..."
@@ -1403,13 +1403,12 @@ msgid "Xfce 4 Menu Editor"
 msgstr "Редактор меню Xfce 4"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-#, fuzzy
 msgid "Accessories"
-msgstr "Доступ:"
+msgstr "Инструменты"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
-msgstr ""
+msgstr "Служебные программы"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:1
 msgid "Development"
@@ -1417,24 +1416,23 @@ msgstr "Разработка"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:2
 msgid "Software development tools"
-msgstr ""
+msgstr "Инструменты для разработки программного обеспечения"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:1
 msgid "Education"
-msgstr "Обучающие"
+msgstr "Обучение"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:2
 msgid "Educational software"
-msgstr ""
+msgstr "Образовательное программное обеспечение"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-#, fuzzy
 msgid "Games"
-msgstr "Название"
+msgstr "Игры"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
-msgstr ""
+msgstr "Игры, головоломки и другие забавные программы"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
@@ -1442,24 +1440,23 @@ msgstr "Графика"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr ""
+msgstr "Программы для создания и редактирования изображений"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
-msgstr ""
+msgstr "Музыкальные и видеопроигрыватели и редакторы"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-#, fuzzy
 msgid "Multimedia"
-msgstr "Многоуровневое"
+msgstr "Аудио и видео"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
-msgstr "Интернет"
+msgstr "Сеть и Интернет"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:2
 msgid "Network applications and utilities"
-msgstr ""
+msgstr "Программы для работы с сетью"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:1
 msgid "Office"
@@ -1467,45 +1464,43 @@ msgstr "Офис"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:2
 msgid "Office and productivity applications"
-msgstr ""
+msgstr "Офисные приложения"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:1
 msgid "Applications that don't fit into other categories"
-msgstr ""
+msgstr "Приложения, которые не подходят к другим категориям"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-#, fuzzy
 msgid "Other"
-msgstr "/Другое"
+msgstr "Прочие"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr ""
+msgstr "Хранители экрана"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
-msgstr ""
+msgstr "Хранители экрана"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr ""
+msgstr "Настройки системы и рабочего стола"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-#, fuzzy
 msgid "Settings"
-msgstr "Рабочий стол"
+msgstr "Настройки"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
-msgstr ""
+msgstr "Системные утилиты"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
-msgstr "Об Xfce"
+msgstr "О Xfce"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr ""
+msgstr "Информация о рабочей среде Xfce"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
@@ -1513,35 +1508,31 @@ msgstr "Файловый менеджер"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
 msgid "Thunar file manager"
-msgstr ""
+msgstr "Файловый менеджер Thunar"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-#, fuzzy
 msgid "Help"
-msgstr "_Справка"
+msgstr "Справка"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr ""
+msgstr "Справка по использованию Xfce"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
-msgstr ""
+msgstr "Выйти"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-#, fuzzy
 msgid "Log out of the Xfce Desktop"
-msgstr "Настройки программы управления рабочим столом Xfce 4"
+msgstr "Выйти из Xfce"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-#, fuzzy
 msgid "Run Program..."
-msgstr "Ошибка при выполнении"
+msgstr "Выполнить..."
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-#, fuzzy
 msgid "Run a program"
-msgstr "Ошибка при выполнении"
+msgstr "Запуск программы"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
@@ -1549,15 +1540,15 @@ msgstr "Терминал"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
 msgid "Terminal emulator"
-msgstr ""
+msgstr "Эмулятор терминал"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
 msgid "Browse the web"
-msgstr ""
+msgstr "Веб-браузер"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
-msgstr "Интернет-браузер"
+msgstr "Веб-браузер"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
@@ -1580,34 +1571,3 @@ msgstr "Настройки рабочего стола Xfce 4"
 
 #~ msgid "_Desktop Properties..."
 #~ msgstr "_Свойства рабочего стола..."
-
-#~ msgid "Science"
-#~ msgstr "Науки"
-
-#, fuzzy
-#~ msgid "Scientific applications and tools"
-#~ msgstr "Значки свернутых окон"
-
-#~ msgid "Unable to quit session."
-#~ msgstr "Невозможно завершить сеанс."
-
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "Чтобы завершить сеанс нужно, чтобы был запущен диспетчер сеансов Xfce "
-#~ "(xfce4-session), но он не обнаружен. Пожалуйста, выйдите из Xfce по-"
-#~ "другому."
-
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "Чтобы завершить сеанс необходимо наличие команды 'xfce4-session-logout', "
-#~ "но она не найдена: %s"
-
-#~ msgid "Edit Properties"
-#~ msgstr "Изменить параметры"
-
-#~ msgid "Backdrop List"
-#~ msgstr "Список фоновых изображений"
