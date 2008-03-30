@@ -1,17 +1,17 @@
-# Simplified Chinese translation of the xfdesktop package.
+# #-#-#-#-#  zh_CN.po (xfdesktop 4.3.90.2)  #-#-#-#-#
+# Simplified Chinese translations for xfdesktop package.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Yongtao Yang <yongtao.yang@telia.com>, 2004.
-# wuli <wurisky@gmail.com>,2007,2008
-#
+# wuli <wurisky@gmail.com>,2007
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-10-20 14:36-0700\n"
-"PO-Revision-Date: 2008-02-12 09:35+0800\n"
+"PO-Revision-Date: 2007-02-07 20:02+0800\n"
 "Last-Translator: wuli <wurisky@gmail.com>\n"
-"Language-Team: Simplified Chinese <xfce-i18n@xfce.org>\n"
+"Language-Team: Chinese <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -125,13 +125,13 @@ msgstr "图像文件"
 #: ../menueditor/menueditor-add-dialog.c:283
 #: ../menueditor/menueditor-edit-dialog.c:261
 msgid "Use startup _notification"
-msgstr "使用启动提示(_n)"
+msgstr "使用启动提示(_N)"
 
 #. Run in terminal check button
 #: ../menueditor/menueditor-add-dialog.c:288
 #: ../menueditor/menueditor-edit-dialog.c:266
 msgid "Run in _terminal"
-msgstr "在终端中运行(_t)"
+msgstr "在终端中运行(_T)"
 
 #: ../menueditor/menueditor-add-dialog.c:427
 #: ../menueditor/menueditor-edit-dialog.c:286
@@ -233,9 +233,9 @@ msgid "Xfce4-MenuEditor"
 msgstr "Xfce 菜单编辑器"
 
 #: ../menueditor/menueditor-main.c:57
-#, 
+#, fuzzy
 msgid "Menueditor Warning"
-msgstr "菜单编辑器警告"
+msgstr "菜单编辑器"
 
 #: ../menueditor/menueditor-main.c:59
 msgid "xfce4-menueditor is deprecated"
@@ -246,12 +246,14 @@ msgid ""
 "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
 "edit the new menu file format.  You may continue and edit an old-style menu "
 "file, or quit."
-msgstr "Xfce 菜单系统被替换，Xfce4-菜单编辑器无法编辑此菜单文件格式，你可以继续编辑旧风格菜单文件或退出。"
+msgstr ""
+"Xfce 菜单系统被替换，Xfce4-菜单编辑器无法编辑此菜单文件格式，你可以继续编辑旧"
+"风格菜单文件或退出。"
 
 #: ../menueditor/menueditor-main.c:61
-#, 
+#, fuzzy
 msgid "Continue"
-msgstr "继续"
+msgstr "其他作出贡献人员"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -313,7 +315,7 @@ msgstr "退出(_Q)"
 
 #: ../menueditor/menueditor-main-window.c:147
 msgid "Quit Xfce4-Menueditor"
-msgstr "退出Xfce4菜单编辑器"
+msgstr "退出 Xfce4 菜单编辑器"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
@@ -424,7 +426,7 @@ msgstr "问题"
 
 #: ../menueditor/menueditor-main-window.c:481
 msgid "Do you want to save before opening an other menu ?"
-msgstr "你希望在打开另一个菜单前保存吗？"
+msgstr "您希望在打开另一个菜单前保存吗？"
 
 #: ../menueditor/menueditor-main-window.c:483
 #: ../menueditor/menueditor-main-window.c:536
@@ -438,7 +440,7 @@ msgstr "打开菜单文件"
 
 #: ../menueditor/menueditor-main-window.c:534
 msgid "Do you want to save before opening the default menu ?"
-msgstr "你希望在打开默认菜单前保存吗？"
+msgstr "您希望在打开默认菜单前保存吗？"
 
 #: ../menueditor/menueditor-main-window.c:594
 msgid "Save menu file as"
@@ -447,7 +449,7 @@ msgstr "保存菜单文件为"
 #: ../menueditor/menueditor-main-window.c:632
 #: ../menueditor/menueditor-main-window.c:1343
 msgid "Do you want to save before closing the menu ?"
-msgstr "你希望在关闭菜单前保存吗？"
+msgstr "您希望在关闭菜单前保存吗？"
 
 #: ../menueditor/menueditor-main-window.c:858
 #: ../menueditor/menueditor-main-window.c:988
@@ -473,7 +475,7 @@ msgstr "系统"
 #: ../menueditor/menueditor-main-window.c:1215
 #: ../menueditor/menueditor-main-window.c:1263
 msgid "Do you want to move the item into the submenu?"
-msgstr "你希望把该条目移到子菜单中吗？"
+msgstr "您希望把该条目移到子菜单中吗？"
 
 #: ../menueditor/menueditor-main-window.c:1293
 msgid "A menu editor for Xfce4"
@@ -496,7 +498,7 @@ msgstr "图标设计者"
 
 #: ../menueditor/menueditor-main-window.c:1345
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "你修改了菜单，你要在退出前保存吗？"
+msgstr "您修改了菜单，您要在退出前保存吗？"
 
 #: ../menueditor/menueditor-main-window.c:1347
 msgid "Forget modifications"
@@ -565,7 +567,7 @@ msgstr "按钮图标(_B)："
 
 #: ../panel-plugin/desktop-menu-plugin.c:930
 msgid "Show _icons in menu"
-msgstr "在菜单中显示图标(_i)"
+msgstr "在菜单中显示图标(_I)"
 
 #: ../panel-plugin/desktop-menu-plugin.c:963
 msgid "There is already a panel menu registered for this screen"
@@ -603,7 +605,7 @@ msgstr "新列表(_N)"
 
 #: ../settings/appearance-settings.c:729
 msgid "S_tyle:"
-msgstr "风格(_t):"
+msgstr "风格(_T):"
 
 #: ../settings/appearance-settings.c:736
 msgid "Auto"
@@ -623,12 +625,12 @@ msgstr "拉伸"
 
 #: ../settings/appearance-settings.c:740
 msgid "Scaled"
-msgstr "比例"
+msgstr "缩放"
 
 #: ../settings/appearance-settings.c:741
-#, 
+#, fuzzy
 msgid "Zoomed"
-msgstr "缩放"
+msgstr "Home"
 
 #: ../settings/appearance-settings.c:797
 msgid "A_djust Brightness:"
@@ -692,7 +694,7 @@ msgstr "桌面设置"
 
 #: ../settings/appearance-settings.c:990
 msgid "Allow _Xfce to manage the desktop"
-msgstr "允许Xfce管理桌面(_X)"
+msgstr "允许xfce管理桌面(_X)"
 
 #: ../settings/appearance-settings.c:1031
 msgid "Stretch single backdrop onto _all monitors"
@@ -932,9 +934,9 @@ msgid "<b>Workspace %d</b>"
 msgstr "<b>工作区 %d</b>"
 
 #: ../src/windowlist.c:267
-#, c-format
+#, fuzzy, c-format
 msgid "Workspace %d"
-msgstr "工作区 %d"
+msgstr "<b>工作区 %d</b>"
 
 #: ../src/windowlist.c:269
 #, c-format
@@ -1041,7 +1043,7 @@ msgstr "相关应用程序找不到或无法打开"
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
-msgstr "这项特性需要文件管理器提供相关服务(比如Thunar提供的)。"
+msgstr "这项特性需要文件管理器提供相关服务(比如 Thunar 提供的)。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1046
 #, c-format
@@ -1314,7 +1316,7 @@ msgstr "重命名 \"%s\" 为 \"%s\" 失败。"
 
 #: ../src/xfdesktop-special-file-icon.c:259
 msgid "Home"
-msgstr "主目录"
+msgstr "Home"
 
 #: ../src/xfdesktop-special-file-icon.c:509
 msgid "Trash Error"
@@ -1328,7 +1330,7 @@ msgstr "无法启动垃圾箱"
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
-msgstr "清空垃圾箱需要安装支持xfce垃圾箱服务的文件管理器，比如Thunar"
+msgstr "清空垃圾箱需要安装支持xfce垃圾箱服务的文件管理器，比如 Thunar"
 
 #: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
@@ -1375,7 +1377,7 @@ msgstr "弹出卷(_J)"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "编辑 xfce4 菜单的图形化工具"
+msgstr "编辑 xfce 4 菜单图形工具"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
@@ -1383,11 +1385,12 @@ msgstr "菜单编辑器"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
-msgstr "Xfce4 菜单编辑器"
+msgstr "Xfce 4 菜单编辑器"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
+#, fuzzy
 msgid "Accessories"
-msgstr "附件"
+msgstr "访问："
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
@@ -1410,8 +1413,9 @@ msgid "Educational software"
 msgstr "教育软件"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
+#, fuzzy
 msgid "Games"
-msgstr "游戏"
+msgstr "名称"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
@@ -1430,8 +1434,9 @@ msgid "Audio and video players and editors"
 msgstr "音频、视频播放器和编辑器"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
+#, fuzzy
 msgid "Multimedia"
-msgstr "多媒体"
+msgstr "多层次"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
@@ -1454,8 +1459,9 @@ msgid "Applications that don't fit into other categories"
 msgstr "未分类应用程序"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
+#, fuzzy
 msgid "Other"
-msgstr "其它"
+msgstr "/其它"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
@@ -1470,8 +1476,9 @@ msgid "Desktop and system settings applications"
 msgstr "桌面和系统设置应用程序"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
+#, fuzzy
 msgid "Settings"
-msgstr "设置"
+msgstr "桌面设置"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
@@ -1494,8 +1501,9 @@ msgid "Thunar file manager"
 msgstr "Thunar文件管理器"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
+#, fuzzy
 msgid "Help"
-msgstr "帮助"
+msgstr "帮助(_H)"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
@@ -1506,16 +1514,19 @@ msgid "Log Out"
 msgstr "注销"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
+#, fuzzy
 msgid "Log out of the Xfce Desktop"
-msgstr "退出Xfce桌面"
+msgstr "桌面设置管理器"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
+#, fuzzy
 msgid "Run Program..."
-msgstr "运行程序..."
+msgstr "运行错误"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
+#, fuzzy
 msgid "Run a program"
-msgstr "运行一个程序"
+msgstr "运行错误"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
@@ -1547,7 +1558,10 @@ msgstr "桌面设置管理器"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
-msgstr "xfce4 桌面设置"
+msgstr "xfce 4 桌面设置"
+
+msgid "Science"
+msgstr "科学"
 
 #~ msgid "Des_ktop"
 #~ msgstr "桌面(_K)"
@@ -1555,9 +1569,7 @@ msgstr "xfce4 桌面设置"
 #~ msgid "_Desktop Properties..."
 #~ msgstr "桌面属性(_D)..."
 
-#~ msgid "Science"
-#~ msgstr "科学"
-
+#, fuzzy
 #~ msgid "Scientific applications and tools"
 #~ msgstr "显示最小化应用程序图标"
 
@@ -1568,16 +1580,18 @@ msgstr "xfce4 桌面设置"
 #~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
 #~ "is running, but it was not detected.  Please quit Xfce via another means."
 #~ msgstr ""
-#~ "退出会话需要xfce的会话管理器(xfce4-session)正在进行，目前没有检测到，请用"
-#~ "其它方式退出xfce"
+#~ "退出会话需要 xfce 的会话管理器(xfce4-session)正在进行，目前没有检测到，请"
+#~ "用其它方式退出 xfce"
 
 #~ msgid ""
 #~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
 #~ "could not be found: %s"
 #~ msgstr "退出当前会话需要 'xfce4-session-logout' 命令，但是无法找到：%s"
 
+#, fuzzy
 #~ msgid "Edit Properties"
-#~ msgstr "编辑属性"
+#~ msgstr "属性(_P)..."
 
+#, fuzzy
 #~ msgid "Backdrop List"
 #~ msgstr "背景列表"
