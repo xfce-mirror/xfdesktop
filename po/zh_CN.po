@@ -11,7 +11,7 @@ msgstr ""
 "POT-Creation-Date: 2007-04-09 14:22+0200\n"
 "PO-Revision-Date: 2007-02-07 20:02+0800\n"
 "Last-Translator: wuli <wurisky@gmail.com>\n"
-"Language-Team: Simplified Chinese <risky@linuxsir.org>\n"
+"Language-Team: Chinese <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -125,13 +125,13 @@ msgstr "图像文件"
 #: ../menueditor/menueditor-add-dialog.c:283
 #: ../menueditor/menueditor-edit-dialog.c:261
 msgid "Use startup _notification"
-msgstr "使用启动提示(_n)"
+msgstr "使用启动提示(_N)"
 
 #. Run in terminal check button
 #: ../menueditor/menueditor-add-dialog.c:288
 #: ../menueditor/menueditor-edit-dialog.c:266
 msgid "Run in _terminal"
-msgstr "在终端中运行(_t)"
+msgstr "在终端中运行(_T)"
 
 #: ../menueditor/menueditor-add-dialog.c:427
 #: ../menueditor/menueditor-edit-dialog.c:286
@@ -291,7 +291,7 @@ msgstr "退出(_Q)"
 
 #: ../menueditor/menueditor-main-window.c:147
 msgid "Quit Xfce4-Menueditor"
-msgstr "退出Xfce4 菜单编辑器"
+msgstr "退出 Xfce4 菜单编辑器"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
@@ -502,8 +502,8 @@ msgid ""
 "Quitting the session requires that Xfce's session manager (xfce4-session) is "
 "running, but it was not detected.  Please quit Xfce via another means."
 msgstr ""
-"退出会话需要xfce的会话管理器(xfce4-session)正在进行，目前没有检测到，请用其它"
-"方式退出xfce"
+"退出会话需要 xfce 的会话管理器(xfce4-session)正在进行，目前没有检测到，请用其它"
+"方式退出 xfce"
 
 #: ../modules/menu/desktop-menu-file.c:129
 #, c-format
@@ -569,7 +569,7 @@ msgstr "按钮图标(_B)："
 
 #: ../panel-plugin/desktop-menu-plugin.c:924
 msgid "Show _icons in menu"
-msgstr "在菜单中显示图标(_i)"
+msgstr "在菜单中显示图标(_I)"
 
 #: ../panel-plugin/desktop-menu-plugin.c:947
 msgid "There is already a panel menu registered for this screen"
@@ -607,7 +607,7 @@ msgstr "新列表(_N)"
 
 #: ../settings/appearance-settings.c:729
 msgid "S_tyle:"
-msgstr "风格(_t):"
+msgstr "风格(_T):"
 
 #: ../settings/appearance-settings.c:736
 msgid "Auto"
@@ -1019,7 +1019,7 @@ msgstr "相关应用程序找不到或无法打开"
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
-msgstr "这项特性需要文件管理器提供相关服务(比如Thunar提供的)。"
+msgstr "这项特性需要文件管理器提供相关服务(比如 Thunar 提供的)。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1027
 #, c-format
@@ -1310,7 +1310,7 @@ msgstr "无法启动垃圾箱"
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
-msgstr "清空垃圾箱需要安装支持xfce垃圾箱服务的文件管理器，比如Thunar"
+msgstr "清空垃圾箱需要安装支持xfce垃圾箱服务的文件管理器，比如 Thunar"
 
 #: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
@@ -1357,7 +1357,7 @@ msgstr "弹出卷(_J)"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "编辑 xfce4 菜单图形工具"
+msgstr "编辑 xfce 4 菜单图形工具"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
@@ -1381,10 +1381,4 @@ msgstr "桌面设置管理器"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Xfce 4 Desktop Settings"
-msgstr "xfce4 桌面设置"
-
-#~ msgid "Edit Properties"
-#~ msgstr "编辑属性"
-
-#~ msgid "Backdrop List"
-#~ msgstr "背景列表"
+msgstr "xfce 4 桌面设置"
