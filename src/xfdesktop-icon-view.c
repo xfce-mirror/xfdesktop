@@ -28,6 +28,9 @@
 
 #include <glib-object.h>
 
+#include <X11/Xlib.h>
+#include <X11/Xatom.h>
+
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
@@ -39,6 +42,7 @@
 
 #include "xfdesktop-icon-view.h"
 
+#include <libwnck/libwnck.h>
 #include <libxfcegui4/libxfcegui4.h>
 
 #define DEFAULT_FONT_SIZE  12
@@ -101,7 +105,7 @@ struct _XfdesktopIconViewPrivate
     guint icon_size;
     guint font_size;
     
-    NetkScreen *netk_screen;
+    WnckScreen *wnck_screen;
     PangoLayout *playout;
     
     GList *pending_icons;

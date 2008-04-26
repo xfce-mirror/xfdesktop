@@ -52,6 +52,7 @@ desktop_file_icon_sources = \
 xfdesktop_CFLAGS = \
 	-I$(top_srcdir) \
 	-I$(top_srcdir)/common	\
+	-DWNCK_I_KNOW_THIS_IS_UNSTABLE \
 	-DBINDIR=\"$(bindir)\" \
 	-DLOCALEDIR=\"$(localedir)\" \
 	-DDATADIR=\"$(datadir)\" \
@@ -61,8 +62,8 @@ xfdesktop_CFLAGS = \
 	$(GTHREAD_CFLAGS) \
 	$(GMODULE_CFLAGS) \
 	$(LIBXFCEGUI4_CFLAGS) \
-	$(LIBXFCE4MCS_CLIENT_CFLAGS)
-
+	$(LIBXFCE4MCS_CLIENT_CFLAGS) \
+	$(LIBWNCK_CFLAGS)
 
 xfdesktop_LDFLAGS = \
 	-export-dynamic
@@ -78,7 +79,8 @@ xfdesktop_LDADD += \
 	$(LIBX11_LIBS) \
 	$(GTHREAD_LIBS) \
 	$(LIBXFCEGUI4_LIBS) \
-	$(LIBXFCE4MCS_CLIENT_LIBS)
+	$(LIBXFCE4MCS_CLIENT_LIBS) \
+	$(LIBWNCK_LIBS)
 
 
 if ENABLE_DESKTOP_ICONS

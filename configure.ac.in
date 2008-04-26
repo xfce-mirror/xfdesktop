@@ -19,6 +19,7 @@ m4_define([xfce4menu_minimum_version], [0.1.0svn-r26507])
 m4_define([exo_minimum_version], [0.3.2])
 m4_define([thunar_minimum_version], [0.8.0])
 m4_define([dbus_minimum_version], [0.34])
+m4_define([wnck_minimum_version], [2.12])
 m4_define([intltool_minimum_version], [0.31])
 m4_define([autoconf_minimum_version], [2.50])
 
@@ -69,6 +70,7 @@ XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0],
 XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [xfce_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4MCS_CLIENT],  [libxfce4mcs-client-1.0],
                   [xfce_minimum_version])
+XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-1.0], [wnck_minimum_version])
 XDT_XFCE_MCS_PLUGIN([XFCE_MCS_MANAGER], [xfce_minimum_version])
 
 dnl do we want desktop icons at all?

@@ -34,8 +34,9 @@
 #include <string.h>
 #endif
 
+#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-
+#include <libwnck/libwnck.h>
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
@@ -86,11 +87,13 @@ set_num_workspaces(GtkWidget *w, gpointer num)
 static void
 activate_window(GtkWidget *w, gpointer user_data)
 {
-    NetkWindow *netk_window = user_data;
+    WnckWindow *wnck_window = user_data;
     
-    if(!netk_window_is_sticky(netk_window))
-        netk_workspace_activate(netk_window_get_workspace(netk_window));
-    netk_window_activate(netk_window);
+    if(!wnck_window_is_sticky(wnck_window)) {
+        wnck_workspace_activate(wnck_window_get_workspace(wnck_window),
+                                gtk_get_current_event_time());
+    }
+    wnck_window_activate(wnck_window, gtk_get_current_event_time());
 }
 
 static void
@@ -129,40 +132,40 @@ menulist_set_label_flags(GtkWidget *widget, gpointer data)
 }
 
 static GtkWidget *
-menu_item_from_netk_window(NetkWindow *netk_window, gint icon_width,
+menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
         gint icon_height)
 {
     GtkWidget *mi, *img = NULL;
     gchar *title;
-    NetkScreen *netk_screen;
-    NetkWorkspace *netk_workspace, *active_workspace;
+    WnckScreen *wnck_screen;
+    WnckWorkspace *wnck_workspace, *active_workspace;
     GString *label;
     GdkPixbuf *icon, *tmp;
     gint w, h;
     gboolean truncated = FALSE;
 
-    title = g_markup_escape_text(netk_window_get_name(netk_window), -1);
+    title = g_markup_escape_text(wnck_window_get_name(wnck_window), -1);
     if(!title)
         return NULL;
 
     label = g_string_new(title);
     g_free(title);
 
-    netk_screen = netk_window_get_screen(netk_window);
-    active_workspace = netk_screen_get_active_workspace(netk_screen);
-    netk_workspace = netk_window_get_workspace(netk_window);
+    wnck_screen = wnck_window_get_screen(wnck_window);
+    active_workspace = wnck_screen_get_active_workspace(wnck_screen);
+    wnck_workspace = wnck_window_get_workspace(wnck_window);
 
-    if(netk_window_is_active(netk_window)) {
+    if(wnck_window_is_active(wnck_window)) {
         g_string_prepend(label, "<i>");
         g_string_append(label, "</i>");
     }
-    if(netk_window_is_minimized(netk_window)) {
+    if(wnck_window_is_minimized(wnck_window)) {
         g_string_prepend(label, "[");
         g_string_append(label, "]");
     }
     
     if(show_windowlist_icons) {
-        icon = netk_window_get_icon(netk_window);
+        icon = wnck_window_get_icon(wnck_window);
         w = gdk_pixbuf_get_width(icon);
         h = gdk_pixbuf_get_height(icon);
         if(w != icon_width || h != icon_height) {
@@ -197,13 +200,13 @@ windowlist_populate(XfceDesktop *desktop,
     GdkScreen *gscreen;
     GList *menu_children;
     GtkStyle *style;
-    NetkScreen *netk_screen;
+    WnckScreen *wnck_screen;
     gint nworkspaces, i;
-    NetkWorkspace *active_workspace, *netk_workspace;
+    WnckWorkspace *active_workspace, *wnck_workspace;
     gchar *ws_label, *rm_label;
     const gchar *ws_name = NULL;
     GList *windows, *l;
-    NetkWindow *netk_window;
+    WnckWindow *wnck_window;
     gint w, h;
     PangoFontDescription *italic_font_desc;
     gboolean is_empty_workspace;
@@ -242,18 +245,19 @@ windowlist_populate(XfceDesktop *desktop,
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
     style = gtk_widget_get_style(GTK_WIDGET(menu));
     
-    netk_screen = netk_screen_get(gdk_screen_get_number(gscreen));
-    nworkspaces = netk_screen_get_workspace_count(netk_screen);
-    active_workspace = netk_screen_get_active_workspace(netk_screen);
+    wnck_screen = wnck_screen_get(gdk_screen_get_number(gscreen));
+    wnck_screen_force_update (wnck_screen);
+    nworkspaces = wnck_screen_get_workspace_count(wnck_screen);
+    active_workspace = wnck_screen_get_active_workspace(wnck_screen);
     
     for(i = 0; i < nworkspaces; i++) {
-        netk_workspace = netk_screen_get_workspace(netk_screen, i);
+        wnck_workspace = wnck_screen_get_workspace(wnck_screen, i);
         submenu = (GtkWidget *)menu;
         
         if(wl_show_ws_names || wl_submenus) {
-            ws_name = netk_workspace_get_name(netk_workspace);
+            ws_name = wnck_workspace_get_name(wnck_workspace);
             
-            if(netk_workspace == active_workspace) {
+            if(wnck_workspace == active_workspace) {
                 if(!ws_name || atoi(ws_name) == i+1)
                     ws_label = g_strdup_printf(_("<b>Workspace %d</b>"), i+1);
                 else {
@@ -286,8 +290,8 @@ windowlist_populate(XfceDesktop *desktop,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             if(!wl_submenus) {
                 g_signal_connect_swapped(G_OBJECT(mi), "activate",
-                                         G_CALLBACK(netk_workspace_activate),
-                                         netk_workspace);
+                                         G_CALLBACK(wnck_workspace_activate),
+                                         wnck_workspace);
             }
             
             if(wl_submenus) {
@@ -301,17 +305,17 @@ windowlist_populate(XfceDesktop *desktop,
             }
         }
         
-        windows = netk_screen_get_windows_stacked(netk_screen);
+        windows = wnck_screen_get_windows_stacked(wnck_screen);
         is_empty_workspace = TRUE;
         for(l = windows; l; l = l->next) {
-            netk_window = l->data;
+            wnck_window = l->data;
             
-            if((netk_window_get_workspace(netk_window) != netk_workspace
-                        && (!netk_window_is_sticky(netk_window)
+            if((wnck_window_get_workspace(wnck_window) != wnck_workspace
+                        && (!wnck_window_is_sticky(wnck_window)
                             || (wl_sticky_once
-                                && netk_workspace != active_workspace)))
-                    || netk_window_is_skip_pager(netk_window)
-                    || netk_window_is_skip_tasklist(netk_window))
+                                && wnck_workspace != active_workspace)))
+                    || wnck_window_is_skip_pager(wnck_window)
+                    || wnck_window_is_skip_tasklist(wnck_window))
             {
                 /* the window isn't on the current WS AND isn't sticky,
                  * OR,
@@ -322,13 +326,13 @@ windowlist_populate(XfceDesktop *desktop,
                 continue;
             }
             
-            mi = menu_item_from_netk_window(netk_window, w, h);
+            mi = menu_item_from_wnck_window(wnck_window, w, h);
             if(!mi)
                 continue;
             is_empty_workspace = FALSE;
-            if(netk_workspace != active_workspace 
-                    && (!netk_window_is_sticky(netk_window)
-                        || netk_workspace != active_workspace))
+            if(wnck_workspace != active_workspace
+                    && (!wnck_window_is_sticky(wnck_window)
+                        || wnck_workspace != active_workspace))
             {
                 GtkWidget *lbl = gtk_bin_get_child(GTK_BIN(mi));
                 gtk_widget_modify_fg(lbl, GTK_STATE_NORMAL,
@@ -337,12 +341,12 @@ windowlist_populate(XfceDesktop *desktop,
             }
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(submenu), mi);
-            g_object_weak_ref(G_OBJECT(netk_window),
+            g_object_weak_ref(G_OBJECT(wnck_window),
                     (GWeakNotify)window_destroyed_cb, mi);
             g_signal_connect(G_OBJECT(mi), "activate",
-                    G_CALLBACK(activate_window), netk_window);
+                    G_CALLBACK(activate_window), wnck_window);
             g_signal_connect(G_OBJECT(mi), "destroy",
-                    G_CALLBACK(mi_destroyed_cb), netk_window);
+                    G_CALLBACK(mi_destroyed_cb), wnck_window);
         }
         
         if(!wl_submenus && !is_empty_workspace) {
