@@ -24,6 +24,9 @@
         backdrop edge-to-edge by scaling and/or cropping as necessary.
         This doesn't mess with the aspect ratio and is pretty nifty.  Patch
         is from <trondsg@gmail.com> (bug 3138).
+      * Stop using our forked libnetk from libxfcegui4, and use the much
+        better supported original libwnck.  Patch is from Nick Schermer
+        (bug 3487).
 
 
 4.4.2
