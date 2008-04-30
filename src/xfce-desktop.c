@@ -381,8 +381,7 @@ static void
 screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
 {
     XfceDesktop *desktop = user_data;
-    gint w, h, i;
-    GdkRectangle rect;
+    gint w, h;
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
@@ -391,7 +390,8 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
     gtk_widget_set_size_request(GTK_WIDGET(desktop), w, h);
     gtk_window_resize(GTK_WINDOW(desktop), w, h);
     
-    g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
+    if(desktop->priv->bg_pixmap)
+        g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
     desktop->priv->bg_pixmap = gdk_pixmap_new(GDK_DRAWABLE(GTK_WIDGET(desktop)->window),
                                               w, h, -1);
     set_real_root_window_pixmap(desktop->priv->gscreen,
@@ -399,13 +399,14 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
     gdk_window_set_back_pixmap(GTK_WIDGET(desktop)->window,
                                desktop->priv->bg_pixmap, FALSE);
     
-    /* special case for 1 backdrop to handle xinerama stretching properly.
-     * this is broken if it ever becomes possible to change the number of
-     * monitors on the fly. */
-    if(desktop->priv->nbackdrops == 1) {
+    /* special case for 1 backdrop to handle xinerama stretching */
+    if(desktop->priv->xinerama_stretch) {
         xfce_backdrop_set_size(desktop->priv->backdrops[0], w, h);
         backdrop_changed_cb(desktop->priv->backdrops[0], desktop);
     } else {
+        GdkRectangle rect;
+        gint i;
+
         for(i = 0; i < desktop->priv->nbackdrops; i++) {
             gdk_screen_get_monitor_geometry(gscreen, i, &rect);
             xfce_backdrop_set_size(desktop->priv->backdrops[i], rect.width,
@@ -420,84 +421,53 @@ xfce_desktop_monitors_changed(GdkScreen *gscreen,
                               gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
-    guint n_monitors, i;
+    gint i;
 
-    n_monitors = gdk_screen_get_n_monitors(gscreen);
-    if(n_monitors < desktop->priv->nbackdrops) {
-        for(i = n_monitors; i < desktop->priv->nbackdrops; ++i)
-            g_object_unref(G_OBJECT(desktop->priv->backdrops[i]));
-    }
-
-    if(n_monitors != desktop->priv->nbackdrops) {
-        desktop->priv->backdrops = g_realloc(desktop->priv->backdrops,
-                                             sizeof(XfceBackdrop *) * n_monitors);
-        if(n_monitors > desktop->priv->nbackdrops) {
-            GdkVisual *vis = gtk_widget_get_visual(GTK_WIDGET(desktop));
-            for(i = desktop->priv->nbackdrops; i < n_monitors; ++i)
-                desktop->priv->backdrops[i] = xfce_backdrop_new(vis);
+    if(desktop->priv->xinerama_stretch) {
+        if(desktop->priv->nbackdrops > 1) {
+            for(i = 1; i < desktop->priv->nbackdrops; ++i)
+                g_object_unref(G_OBJECT(desktop->priv->backdrops[i]));
         }
-        desktop->priv->nbackdrops = n_monitors;
+
+        if(desktop->priv->nbackdrops != 1) {
+            desktop->priv->backdrops = g_realloc(desktop->priv->backdrops,
+                                                 sizeof(XfceBackdrop *));
+            if(!desktop->priv->nbackdrops) {
+                GdkVisual *vis = gtk_widget_get_visual(GTK_WIDGET(desktop));
+                desktop->priv->backdrops[0] = xfce_backdrop_new(vis);
+                g_signal_connect(G_OBJECT(desktop->priv->backdrops[0]),
+                                 "changed",
+                                 G_CALLBACK(backdrop_changed_cb), desktop);
+            }
+            desktop->priv->nbackdrops = 1;
+        }
+    } else {
+        gint n_monitors = gdk_screen_get_n_monitors(gscreen);
+
+        if(n_monitors < desktop->priv->nbackdrops) {
+            for(i = n_monitors; i < desktop->priv->nbackdrops; ++i)
+                g_object_unref(G_OBJECT(desktop->priv->backdrops[i]));
+        }
+
+        if(n_monitors != desktop->priv->nbackdrops) {
+            desktop->priv->backdrops = g_realloc(desktop->priv->backdrops,
+                                                 sizeof(XfceBackdrop *) * n_monitors);
+            if(n_monitors > desktop->priv->nbackdrops) {
+                GdkVisual *vis = gtk_widget_get_visual(GTK_WIDGET(desktop));
+                for(i = desktop->priv->nbackdrops; i < n_monitors; ++i) {
+                    desktop->priv->backdrops[i] = xfce_backdrop_new(vis);
+                    g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]),
+                                     "changed",
+                                     G_CALLBACK(backdrop_changed_cb),
+                                     desktop);
+                }
+            }
+            desktop->priv->nbackdrops = n_monitors;
+        }
     }
 
     /* update the total size of the screen and the size of each backdrop */
     screen_size_changed_cb(gscreen, desktop);
-}
-
-static void
-handle_xinerama_stretch(XfceDesktop *desktop)
-{
-    XfceBackdrop *backdrop0;
-    gint i;
-    
-    if(desktop->priv->nbackdrops <= 1)
-        return;
-    
-    for(i = 1; i < desktop->priv->nbackdrops; i++)
-        g_object_unref(G_OBJECT(desktop->priv->backdrops[i]));
-    
-    backdrop0 = desktop->priv->backdrops[0];
-    desktop->priv->backdrops = g_realloc(desktop->priv->backdrops,
-                                         sizeof(XfceBackdrop *));
-    desktop->priv->backdrops[0] = backdrop0;
-    desktop->priv->nbackdrops = 1;
-    
-    xfce_backdrop_set_size(backdrop0,
-            gdk_screen_get_width(desktop->priv->gscreen),
-            gdk_screen_get_height(desktop->priv->gscreen));
-}
-
-static void
-handle_xinerama_unstretch(XfceDesktop *desktop)
-{
-    XfceBackdrop *backdrop0 = desktop->priv->backdrops[0];
-    GdkRectangle rect;
-    GdkVisual *visual;
-    gint i;
-    
-    if(desktop->priv->nbackdrops > 1)
-        return;
-    
-    desktop->priv->nbackdrops = gdk_screen_get_n_monitors(desktop->priv->gscreen);
-    desktop->priv->backdrops = g_realloc(desktop->priv->backdrops,
-                                         sizeof(XfceBackdrop *) * desktop->priv->nbackdrops);
-    
-    desktop->priv->backdrops[0] = backdrop0;
-    gdk_screen_get_monitor_geometry(desktop->priv->gscreen, 0, &rect);
-    xfce_backdrop_set_size(backdrop0, rect.width, rect.height);
-    
-    visual = gtk_widget_get_visual(GTK_WIDGET(desktop));
-    for(i = 1; i < desktop->priv->nbackdrops; i++) {
-        gdk_screen_get_monitor_geometry(desktop->priv->gscreen, i, &rect);
-        desktop->priv->backdrops[i] = xfce_backdrop_new_with_size(visual,
-                rect.width, rect.height);
-    }
-    
-    backdrop_changed_cb(backdrop0, desktop);
-    for(i = 1; i < desktop->priv->nbackdrops; i++) {
-        g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]), "changed",
-                G_CALLBACK(backdrop_changed_cb), desktop);
-        backdrop_changed_cb(desktop->priv->backdrops[i], desktop);
-    }
 }
 
 static void
@@ -616,11 +586,10 @@ xfce_desktop_realize(GtkWidget *widget)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
     GdkAtom atom;
-    gint i, sw, sh;
+    gint sw, sh;
     Window xid;
     GdkDisplay *gdpy;
     GdkWindow *groot;
-    GdkVisual *visual;
     
     TRACE("entering");
     
@@ -667,37 +636,11 @@ xfce_desktop_realize(GtkWidget *widget)
             GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
     
     screen_set_selection(desktop);
-    
-    visual = gtk_widget_get_visual(GTK_WIDGET(desktop));
-    desktop->priv->nbackdrops = gdk_screen_get_n_monitors(desktop->priv->gscreen);
-    desktop->priv->backdrops = g_new(XfceBackdrop *, desktop->priv->nbackdrops);
-    for(i = 0; i < desktop->priv->nbackdrops; i++) {
-        GdkRectangle rect;
-        gdk_screen_get_monitor_geometry(desktop->priv->gscreen, i, &rect);
-        desktop->priv->backdrops[i] = xfce_backdrop_new_with_size(visual,
-                rect.width, rect.height);
-    }
-    
-    desktop->priv->bg_pixmap = gdk_pixmap_new(GDK_DRAWABLE(GTK_WIDGET(desktop)->window),
-                                              sw, sh, -1);
-    set_real_root_window_pixmap(desktop->priv->gscreen,
-                                desktop->priv->bg_pixmap);
-    gdk_window_set_back_pixmap(GTK_WIDGET(desktop)->window,
-                               desktop->priv->bg_pixmap, FALSE);
-    
-    /* doing this here is a little wasteful, but easier */
-    if(desktop->priv->xinerama_stretch)
-        handle_xinerama_stretch(desktop);
+
+    xfce_desktop_monitors_changed(desktop->priv->gscreen, desktop);
     
     g_signal_connect(G_OBJECT(desktop), "style-set",
                      G_CALLBACK(style_set_cb), NULL);
-    
-    for(i = 0; i < desktop->priv->nbackdrops; i++) {
-        g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]), "changed",
-                G_CALLBACK(backdrop_changed_cb), desktop);
-        backdrop_changed_cb(desktop->priv->backdrops[i], desktop);
-    }
-    
     g_signal_connect(G_OBJECT(desktop->priv->gscreen), "size-changed",
             G_CALLBACK(screen_size_changed_cb), desktop);
     
@@ -922,14 +865,8 @@ xfce_desktop_set_xinerama_stretch(XfceDesktop *desktop,
     
     desktop->priv->xinerama_stretch = stretch;
     
-    if(!desktop->priv->updates_frozen) {
-        if(stretch)
-            handle_xinerama_stretch(desktop);
-        else
-            handle_xinerama_unstretch(desktop);
-        
-        backdrop_changed_cb(desktop->priv->backdrops[0], desktop);
-    }
+    if(!desktop->priv->updates_frozen)
+        xfce_desktop_monitors_changed(desktop->priv->gscreen, desktop);
 }
 
 gboolean
@@ -1059,20 +996,7 @@ xfce_desktop_thaw_updates(XfceDesktop *desktop)
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
     desktop->priv->updates_frozen = FALSE;
-    
-    if(desktop->priv->xinerama_stretch) {
-        if(desktop->priv->nbackdrops > 1)
-            handle_xinerama_stretch(desktop);
-        backdrop_changed_cb(desktop->priv->backdrops[0], desktop);
-    } else {
-        if(desktop->priv->nbackdrops == 1)
-            handle_xinerama_unstretch(desktop);
-        else {
-            gint i;
-            for(i = 0; i < desktop->priv->nbackdrops; ++i)
-                backdrop_changed_cb(desktop->priv->backdrops[i], desktop);
-        }
-    }
+    xfce_desktop_monitors_changed(desktop->priv->gscreen, desktop);
 }
 
 XfceBackdrop *
