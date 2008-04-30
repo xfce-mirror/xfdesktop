@@ -416,6 +416,34 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
 }
 
 static void
+xfce_desktop_monitors_changed(GdkScreen *gscreen,
+                              gpointer user_data)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(user_data);
+    guint n_monitors, i;
+
+    n_monitors = gdk_screen_get_n_monitors(gscreen);
+    if(n_monitors < desktop->priv->nbackdrops) {
+        for(i = n_monitors; i < desktop->priv->nbackdrops; ++i)
+            g_object_unref(G_OBJECT(desktop->priv->backdrops[i]));
+    }
+
+    if(n_monitors != desktop->priv->nbackdrops) {
+        desktop->priv->backdrops = g_realloc(desktop->priv->backdrops,
+                                             sizeof(XfceBackdrop *) * n_monitors);
+        if(n_monitors > desktop->priv->nbackdrops) {
+            GdkVisual *vis = gtk_widget_get_visual(GTK_WIDGET(desktop));
+            for(i = desktop->priv->nbackdrops; i < n_monitors; ++i)
+                desktop->priv->backdrops[i] = xfce_backdrop_new(vis);
+        }
+        desktop->priv->nbackdrops = n_monitors;
+    }
+
+    /* update the total size of the screen and the size of each backdrop */
+    screen_size_changed_cb(gscreen, desktop);
+}
+
+static void
 handle_xinerama_stretch(XfceDesktop *desktop)
 {
     XfceBackdrop *backdrop0;
@@ -599,6 +627,14 @@ xfce_desktop_realize(GtkWidget *widget)
     gtk_window_set_screen(GTK_WINDOW(desktop), desktop->priv->gscreen);
     sw = gdk_screen_get_width(desktop->priv->gscreen);
     sh = gdk_screen_get_height(desktop->priv->gscreen);
+    if(gtk_major_version > 2
+       || (gtk_major_version == 2 && gtk_minor_version >= 13))
+    {
+        g_signal_connect(G_OBJECT(desktop->priv->gscreen),
+                         "monitors-changed",
+                         G_CALLBACK(xfce_desktop_monitors_changed),
+                         desktop);
+    }
     
     /* chain up */
     GTK_WIDGET_CLASS(xfce_desktop_parent_class)->realize(widget);
@@ -682,6 +718,13 @@ xfce_desktop_unrealize(GtkWidget *widget)
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
                                          G_CALLBACK(style_set_cb), NULL);
+    if(gtk_major_version > 2
+       || (gtk_major_version == 2 && gtk_minor_version >= 13))
+    {
+        g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),
+                                             G_CALLBACK(xfce_desktop_monitors_changed),
+                                             desktop);
+    }
     
     if(GTK_WIDGET_MAPPED(widget))
         gtk_widget_unmap(widget);
