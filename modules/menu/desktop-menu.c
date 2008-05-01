@@ -72,6 +72,9 @@
 typedef struct
 {
 	XfceMenu *xfce_menu;
+
+    gboolean cache_menu_items;
+    GList *menu_item_cache;
 	
     gchar *filename;  /* file the menu is currently using */
     gboolean using_default_menu;
@@ -96,7 +99,8 @@ static gboolean _generate_menu(XfceDesktopMenu *desktop_menu,
                                gboolean deferred);
 static void desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                                    XfceMenu *xfce_menu,
-                                   GtkWidget *menu);
+                                   GtkWidget *menu,
+                                   GList **menu_items_return);
 
 static void
 itheme_changed_cb(GtkIconTheme *itheme, gpointer user_data)
@@ -198,10 +202,17 @@ desktop_menu_xfce_menu_remove_monitor(XfceMenu *menu,
 
 #endif
 
+/*
+ * this is a bit of a kludge.  in order to support the cache and be a bit
+ * faster, we either want to build a GtkMenu, or we want to just build
+ * the GtkMenuItems and store them in a GList for later.  only one
+ * of |menu| or |menu_items_return| should be non-NULL
+ */
 static void
 desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                        XfceMenu *xfce_menu,
-                       GtkWidget *menu)
+                       GtkWidget *menu,
+                       GList **menu_items_return)
 {
     GSList *items, *l;
     GtkWidget *submenu, *mi, *img;
@@ -209,6 +220,9 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
     XfceMenuDirectory *xfce_directory;
     XfceMenuItem *xfce_item;
     const gchar *name, *icon_name;
+
+    g_return_if_fail((menu && !menu_items_return)
+                     || (!menu && menu_items_return));
     
     if(xfce_menu_has_layout(xfce_menu))
         items = xfce_menu_get_layout_elements(xfce_menu);
@@ -247,10 +261,15 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                 gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
             }
             gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
+
+            if(menu)
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            else
+                *menu_items_return = g_list_prepend(*menu_items_return, mi);
             
-            desktop_menu_add_items(desktop_menu, xfce_submenu, submenu);
+            desktop_menu_add_items(desktop_menu, xfce_submenu,
+                                   submenu, NULL);
             
             /* we have to check emptiness down here instead of at the top of the
              * loop because there may be further submenus that are empty */
@@ -259,7 +278,11 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
         } else if(XFCE_IS_MENU_SEPARATOR(l->data)) {
             mi = gtk_separator_menu_item_new();
             gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+
+            if(menu)
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            else
+                *menu_items_return = g_list_prepend(*menu_items_return, mi);
         } else if(XFCE_IS_MENU_ITEM(l->data)) {
             const gchar *name = NULL;
             
@@ -282,10 +305,17 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                                              xfce_menu_item_requires_terminal(xfce_item),
                                              xfce_menu_item_supports_startup_notification(xfce_item));
             gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+
+            if(menu)
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            else
+                *menu_items_return = g_list_prepend(*menu_items_return, mi);
         }
     }
     g_slist_free(items);
+
+    if(menu_items_return)
+        *menu_items_return = g_list_reverse(*menu_items_return);
 }
 
 static gboolean
@@ -318,6 +348,11 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
         g_error_free(error);
         return FALSE;
     }
+
+    if(desktop_menu->cache_menu_items) {
+        desktop_menu_add_items(desktop_menu, desktop_menu->xfce_menu,
+                               NULL, &desktop_menu->menu_item_cache);
+    }
     
     return ret;
 }
@@ -325,6 +360,13 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
 static void
 _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 {
+    if(desktop_menu->menu_item_cache) {
+        g_list_foreach(desktop_menu->menu_item_cache,
+                       (GFunc)gtk_widget_destroy, NULL);
+        g_list_free(desktop_menu->menu_item_cache);
+        desktop_menu->menu_item_cache = NULL;
+    }
+
     if(desktop_menu->xfce_menu) {
         g_object_unref(G_OBJECT(desktop_menu->xfce_menu));
         desktop_menu->xfce_menu = NULL;
@@ -345,6 +387,17 @@ _generate_menu_initial(gpointer data) {
     return FALSE;
 }
 
+static void
+desktop_menu_recache(gpointer data,
+                     GObject *where_the_object_was)
+{
+    XfceDesktopMenu *desktop_menu = data;
+    if(!desktop_menu->menu_item_cache) {
+        desktop_menu_add_items(desktop_menu, desktop_menu->xfce_menu,
+                               NULL, &desktop_menu->menu_item_cache);
+    }
+}
+
 G_MODULE_EXPORT XfceDesktopMenu *
 xfce_desktop_menu_new_impl(const gchar *menu_file,
                            gboolean deferred)
@@ -359,6 +412,7 @@ xfce_desktop_menu_new_impl(const gchar *menu_file,
     XfceDesktopMenu *desktop_menu = g_new0(XfceDesktopMenu, 1);
     
     desktop_menu->use_menu_icons = TRUE;
+    desktop_menu->cache_menu_items = TRUE;  /* FIXME: hidden pref? */
     
     if(menu_file)
         desktop_menu->filename = g_strdup(menu_file);
@@ -401,9 +455,19 @@ xfce_desktop_menu_populate_menu_impl(XfceDesktopMenu *desktop_menu,
         if(!desktop_menu->xfce_menu)
             return;
     }
-    
-    desktop_menu_add_items(desktop_menu, desktop_menu->xfce_menu,
-                           GTK_WIDGET(menu));
+
+    if(desktop_menu->menu_item_cache) {
+        GList *l;
+        for(l = desktop_menu->menu_item_cache; l; l = l->next)
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), l->data);
+        g_list_free(desktop_menu->menu_item_cache);
+        desktop_menu->menu_item_cache = NULL;
+        g_object_weak_ref(G_OBJECT(menu), desktop_menu_recache,
+                          desktop_menu);
+    } else {
+        desktop_menu_add_items(desktop_menu, desktop_menu->xfce_menu,
+                               GTK_WIDGET(menu), NULL);
+    }
 }
 
 G_MODULE_EXPORT GtkWidget *
