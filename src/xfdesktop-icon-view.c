@@ -852,8 +852,8 @@ xfdesktop_icon_view_show_tooltip(gpointer user_data)
     
     /* don't put the box directly under the mouse pointer, as this makes
        dragging difficult */
-    ++x;
-    ++y;
+    x += 12;
+    y += 12;
     
     if(x + w > geom.x + geom.width)
         x -= x + w - (geom.x + geom.width);
