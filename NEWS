@@ -27,6 +27,10 @@
       * Stop using our forked libnetk from libxfcegui4, and use the much
         better supported original libwnck.  Patch is from Nick Schermer
         (bug 3487).
+      * Support the GdkScreen::monitors-changed signal present in gtk+ 2.13
+        and above.  This allows xfdesktop to notice if the user plugs or
+        unplugs a monitor when using an xrandr1.2-capable X server and video
+        driver.
 
 
 4.4.2
