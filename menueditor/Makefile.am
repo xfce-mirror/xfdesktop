@@ -31,7 +31,7 @@ xfce4_menueditor_CFLAGS = 						\
 	
 
 xfce4_menueditor_LDADD =						\
-	$(top_builddir)/common/libxfdesktop.la				\
+	$(top_builddir)/common/libxfdesktop-menu-utils.la		\
 	$(LIBEXO_LIBS)							\
 	$(LIBX11_LDFLAGS)						\
 	$(LIBX11_LIBS)							\

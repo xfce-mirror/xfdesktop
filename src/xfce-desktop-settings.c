@@ -192,12 +192,12 @@ get_path_from_listfile(const gchar *listfile)
                 break;
         } while(1);
         
-        g_print("picked i=%d, %s\n", i, files[i]);
+        DBG("picked i=%d, %s\n", i, files[i]);
         /* validate the image; if it's good, return it */
         if(xfdesktop_check_image_file(files[i]))
             break;
         
-        g_print("file not valid, ditching\n");
+        DBG("file not valid, ditching\n");
         
         /* bad image: remove it from the list and write it out */
         save_list_file_minus_one(listfile, files, i);

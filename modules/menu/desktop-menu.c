@@ -67,7 +67,7 @@
 #include <thunar-vfs/thunar-vfs.h>
 #endif
 
-#include "xfdesktop-common.h"
+#include "desktop-menu-utils.h"
 
 typedef struct
 {

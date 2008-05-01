@@ -21,7 +21,7 @@ xfce4_desktop_menu_la_CFLAGS = \
 	-DBINDIR=\"$(bindir)\"
 
 xfce4_desktop_menu_la_DEPENDENCIES = \
-	$(top_builddir)/common/libxfdesktop.la
+	$(top_builddir)/common/libxfdesktop-menu-utils.la
 
 xfce4_desktop_menu_la_LDFLAGS = \
 	-export-dynamic \
@@ -34,7 +34,7 @@ xfce4_desktop_menu_la_LDFLAGS += \
 endif
 
 xfce4_desktop_menu_la_LIBADD = \
-	$(top_builddir)/common/libxfdesktop.la \
+	$(top_builddir)/common/libxfdesktop-menu-utils.la \
 	$(GMODULE_LIBS) \
 	$(GTHREAD_LIBS) \
 	$(LIBXFCE4MENU_LIBS) \

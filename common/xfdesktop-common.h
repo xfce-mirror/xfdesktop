@@ -46,7 +46,6 @@ G_BEGIN_DECLS
 gchar **get_list_from_file(const gchar *);
 gboolean is_backdrop_list(const gchar *path);
 gboolean xfdesktop_check_image_file(const gchar *filename);
-gchar *xfce_desktop_get_menufile(void);
 gboolean xfdesktop_check_is_running(Window *xid);
 void xfdesktop_send_client_message(Window xid, const gchar *msg);
 gboolean xfdesktop_popup_grab_available(GdkWindow *win, guint32 timestamp);

@@ -48,7 +48,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
-#include <xfdesktop-common.h>
+#include <desktop-menu-utils.h>
 
 #include "menueditor-add-dialog.h"
 #include "menueditor-add-external-dialog.h"
