@@ -2,16 +2,17 @@
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Antonio S. de A. Terceiro <asaterceiro@inf.ufrgs.br>, 2004.
-# Adriano Winter Bess <awbess@gmail.com>, 2006
+# Adriano Winter Bess <awbess@gmail.com>, 2006.
+# Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-10-20 14:36-0700\n"
-"PO-Revision-Date: 2006-10-22 15:17-0200\n"
-"Last-Translator: Rodrigo Coacci <rcoacci@gmail.com>\n"
-"Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
+"PO-Revision-Date: 2008-05-03 21:49-0300\n"
+"Last-Translator: Fábio Nogueira <deb-user-ba@ubuntu.com>\n"
+"Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -90,7 +91,7 @@ msgstr "Sem ícone"
 #: ../menueditor/menueditor-edit-dialog.c:203
 #: ../menueditor/menueditor-edit-dialog.c:204
 msgid "Themed icon:"
-msgstr "Selecionar ícone"
+msgstr "Ícone do tema:"
 
 #. allocate the chooser dialog
 #: ../menueditor/menueditor-add-dialog.c:252
@@ -218,7 +219,7 @@ msgstr "Multinível"
 #: ../menueditor/menueditor-add-external-dialog.c:171
 #: ../menueditor/menueditor-edit-external-dialog.c:151
 msgid "_Unique entries only"
-msgstr "Apenas entradas _únicas"
+msgstr "Apena_s entradas únicas"
 
 #: ../menueditor/menueditor-edit-dialog.c:127
 msgid "Edit menu entry"
@@ -230,16 +231,15 @@ msgstr "Editar menu externo"
 
 #: ../menueditor/menueditor-main.c:43
 msgid "Xfce4-MenuEditor"
-msgstr "Editor de Menu do Xfce 4"
+msgstr "Editor de Menus do Xfce 4"
 
 #: ../menueditor/menueditor-main.c:57
-#, fuzzy
 msgid "Menueditor Warning"
-msgstr "Editor de Menu"
+msgstr "Aviso do Editor de Menus"
 
 #: ../menueditor/menueditor-main.c:59
 msgid "xfce4-menueditor is deprecated"
-msgstr ""
+msgstr "O editor de menus do xfce 4 está obsoleto"
 
 #: ../menueditor/menueditor-main.c:60
 msgid ""
@@ -247,11 +247,13 @@ msgid ""
 "edit the new menu file format.  You may continue and edit an old-style menu "
 "file, or quit."
 msgstr ""
+"O menu do sistema do Xfce foi substituído e o editor de menus do Xfce 4 não "
+"é capaz de editar o novo formato do arquivo. Você pode continuar e editar um "
+"arquivo de menu do estilo antigo ou sair."
 
 #: ../menueditor/menueditor-main.c:61
-#, fuzzy
 msgid "Continue"
-msgstr "Contribuidor"
+msgstr "Continuar"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -377,7 +379,7 @@ msgstr "_Sobre..."
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "Show informations about xfce4-menueditor"
-msgstr "Mostrar informações sobre o Editor de Menus do XFCE4"
+msgstr "Mostrar informações sobre o Editor de Menus do Xfce 4"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all"
@@ -626,9 +628,8 @@ msgid "Scaled"
 msgstr "Ajustado"
 
 #: ../settings/appearance-settings.c:741
-#, fuzzy
 msgid "Zoomed"
-msgstr "Início"
+msgstr "Ampliado"
 
 #: ../settings/appearance-settings.c:797
 msgid "A_djust Brightness:"
@@ -816,15 +817,15 @@ msgstr "Mostrar lista de _janelas com clique do meio"
 
 #: ../settings/behavior-settings.c:327
 msgid "Show workspace _names in list"
-msgstr ""
+msgstr "Mostrar os _nomes dos espaços de trabalho na lista"
 
 #: ../settings/behavior-settings.c:341
 msgid "Show windows on each workspace in sub_menus"
-msgstr ""
+msgstr "Mostrar janelas em cada espaço de trabalho nos sub-_menus"
 
 #: ../settings/behavior-settings.c:351
 msgid "Show sticky windows only in _active workspace"
-msgstr ""
+msgstr "Mostrar janelas fixas somente no espaço de trabalho _ativo"
 
 #: ../settings/behavior-settings.c:362
 msgid "Show _desktop menu on right click"
@@ -932,36 +933,36 @@ msgstr "%s não está executando.\n"
 
 #: ../src/windowlist.c:233
 msgid "Window List"
-msgstr ""
+msgstr "Lista de Janelas"
 
 #: ../src/windowlist.c:258
 #, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "<b>Área de Trabalho %d</b>"
+msgstr "<b>Espaço de Trabalho %d</b>"
 
 #: ../src/windowlist.c:267
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
-msgstr "<b>Área de Trabalho %d</b>"
+msgstr "Espaço de Trabalho %d"
 
 #: ../src/windowlist.c:269
 #, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "<i>Área de Trabalho %d</i>"
+msgstr "<i>Espaço de Trabalho %d</i>"
 
 #: ../src/windowlist.c:366 ../src/windowlist.c:369
 msgid "_Add Workspace"
-msgstr "_Adicionar Área de Trabalho"
+msgstr "_Adicionar Espaço de Trabalho"
 
 #: ../src/windowlist.c:377
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "_Remover Área de Trabalho %d"
+msgstr "_Remover Espaço de Trabalho %d"
 
 #: ../src/windowlist.c:380
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "_Remover Área de Trabalho '%s'"
+msgstr "_Remover Espaço de Trabalho '%s'"
 
 #: ../src/xfce-desktop.c:603
 msgid "Desktop"
@@ -1131,7 +1132,7 @@ msgstr "A_brir todos"
 
 #: ../src/xfdesktop-file-icon-manager.c:1629
 msgid "_Open in New Window"
-msgstr ""
+msgstr "Ab_rir em Nova Janela"
 
 #: ../src/xfdesktop-file-icon-manager.c:1646
 msgid "Create _Launcher..."
@@ -1404,21 +1405,20 @@ msgid "Xfce 4 Menu Editor"
 msgstr "Editor de Menu do Xfce 4"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-#, fuzzy
 msgid "Accessories"
-msgstr "Acessado:"
+msgstr "Acessórios"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
-msgstr ""
+msgstr "Aplicativos e ferramentas comuns da área de trabalho"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:1
 msgid "Development"
-msgstr ""
+msgstr "Desenvolvimento"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:2
 msgid "Software development tools"
-msgstr ""
+msgstr "Ferramentas de desenvolvimento de software"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:1
 msgid "Education"
@@ -1426,16 +1426,15 @@ msgstr "Educativo"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:2
 msgid "Educational software"
-msgstr ""
+msgstr "Programas educativos"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-#, fuzzy
 msgid "Games"
-msgstr "Nome"
+msgstr "Jogos"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
-msgstr ""
+msgstr "Jogos, quebra-cabeça e outros programas divertidos"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
@@ -1443,16 +1442,15 @@ msgstr "Gráficos"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr ""
+msgstr "Aplicativos de criação e manipulação de gráficos"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
-msgstr ""
+msgstr "Editores e reprodutores de áudio e vídeo"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-#, fuzzy
 msgid "Multimedia"
-msgstr "Multinível"
+msgstr "Multimídia"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
@@ -1460,7 +1458,7 @@ msgstr "Rede"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:2
 msgid "Network applications and utilities"
-msgstr ""
+msgstr "Utilitários e aplicativos de rede"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:1
 msgid "Office"
@@ -1468,37 +1466,35 @@ msgstr "Escritório"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:2
 msgid "Office and productivity applications"
-msgstr ""
+msgstr "Aplicativos de escritório e produtividade"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:1
 msgid "Applications that don't fit into other categories"
-msgstr ""
+msgstr "Aplicativos que não se encaixam em outras categorias"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-#, fuzzy
 msgid "Other"
-msgstr "/Outros"
+msgstr "Outros"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr ""
+msgstr "Miniaplicativos de proteção de tela"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
-msgstr ""
+msgstr "Protetores de tela"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr ""
+msgstr "Aplicativos de configurações do sistema e da área de trabalho"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-#, fuzzy
 msgid "Settings"
-msgstr "Configurações da Área de Trabalho"
+msgstr "Configurações"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
-msgstr ""
+msgstr "Utilitários e ferramentas do sistema"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
@@ -1506,7 +1502,7 @@ msgstr "Sobre o Xfce"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr ""
+msgstr "Informações sobre o Ambiente da Área de Trabalho do Xfce"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
@@ -1514,35 +1510,31 @@ msgstr "Gerenciador de Arquivos"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
 msgid "Thunar file manager"
-msgstr ""
+msgstr "Thunar gerente de arquivo"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-#, fuzzy
 msgid "Help"
-msgstr "A_juda"
+msgstr "Ajuda"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr ""
+msgstr "Ajuda usando o Xfce"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
-msgstr ""
+msgstr "Sair"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-#, fuzzy
 msgid "Log out of the Xfce Desktop"
-msgstr "Configurações para o Gerenciador da Área de Trabalho do Xfce 4"
+msgstr "Sair do Xfce"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-#, fuzzy
 msgid "Run Program..."
-msgstr "Erro de Execução"
+msgstr "Executar Programa..."
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-#, fuzzy
 msgid "Run a program"
-msgstr "Erro de Execução"
+msgstr "Executar um programa"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
@@ -1550,15 +1542,15 @@ msgstr "Terminal"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
 msgid "Terminal emulator"
-msgstr ""
+msgstr "Emulador do terminal"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
 msgid "Browse the web"
-msgstr ""
+msgstr "Navegar na internet"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
-msgstr "Navegador Web"
+msgstr "Navegador de internet"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
