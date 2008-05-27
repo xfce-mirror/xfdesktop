@@ -5,14 +5,15 @@
 # This file is distributed under the same license as the xfdesktop package.
 # Zhao Ji <zhao-ji@awz.ne.jp>, 2003.
 # Daichi Kawahata <daichi@xfce.org>, 2005-2007.
+# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.5.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-10-20 14:36-0700\n"
-"PO-Revision-Date: 2007-07-10 21:02+0900\n"
-"Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
+"PO-Revision-Date: 2008-05-20 06:18+0900\n"
+"Last-Translator: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -243,14 +244,8 @@ msgid "xfce4-menueditor is deprecated"
 msgstr "xfce4-menueditor は廃止されます"
 
 #: ../menueditor/menueditor-main.c:60
-msgid ""
-"Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-"edit the new menu file format.  You may continue and edit an old-style menu "
-"file, or quit."
-msgstr ""
-"Xfceのメニューシステムは置き換えられており、xfce4-menueditorでは新しいメ"
-"ニューファイルの形式を編集することができません。以前のスタイルのメニューファ"
-"イルを編集するか、xfce4-menueditorを終了してください。"
+msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+msgstr "Xfceのメニューシステムは置き換えられており、xfce4-menueditorでは新しいメニューファイルの形式を編集することができません。以前のスタイルのメニューファイルを編集するか、xfce4-menueditorを終了してください。"
 
 #: ../menueditor/menueditor-main.c:61
 msgid "Continue"
@@ -270,7 +265,8 @@ msgstr "新規メニューファイルを作成します"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1631
-#: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
+#: ../src/xfdesktop-special-file-icon.c:624
+#: ../src/xfdesktop-volume-icon.c:543
 msgid "_Open"
 msgstr "開く(_O)"
 
@@ -422,7 +418,8 @@ msgstr "ファイルを閉じる前に保存しますか？"
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:588 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:588
+#: ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "確認"
 
@@ -585,7 +582,8 @@ msgid "Button Label|Desktop"
 msgstr "デスクトップ"
 
 # INFO: leave it as is
-#: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
+#: ../settings/appearance-settings.c:191
+#: ../settings/appearance-settings.c:200
 #: ../settings/backdrop-list-manager.c:628
 msgid "backdrops.list"
 msgstr "backdrops.list"
@@ -662,32 +660,12 @@ msgid "Information"
 msgstr "情報"
 
 #: ../settings/appearance-settings.c:897
-msgid ""
-"To ensure that this setting takes effect the next time you start Xfce, "
-"please be sure to save your session when logging out.  If you are not using "
-"the Xfce Session Manager (xfce4-session), you will need to manually edit "
-"your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-"この設定は次回の Xfce 起動時に有効になりますので、ログアウトの際にはあなたの"
-"セッションを保存するのを忘れないようにしてください。Xfce セッション・マネー"
-"ジャー (xfce4-session) を使用していない場合は、~/.config/xfce4/xinitrc ファイ"
-"ルを自分で編集する必要があります。詳細は http://xfce.org/ にある文書でご確認"
-"ください。"
+msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "この設定は次回の Xfce 起動時に有効になりますので、ログアウトの際にはあなたのセッションを保存するのを忘れないようにしてください。Xfce セッション・マネージャー (xfce4-session) を使用していない場合は、~/.config/xfce4/xinitrc ファイルを自分で編集する必要があります。詳細は http://xfce.org/ にある文書でご確認ください。"
 
 #: ../settings/appearance-settings.c:899
-msgid ""
-"To ensure that Xfce does not manage your desktop the next time you start "
-"Xfce, please be sure to save your session when logging out.  If you are not "
-"using the Xfce Session Manager (xfce4-session), you will need to manually "
-"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-"次回の Xfce 起動時には Xfce はデスクトップを管理しませんので、ログアウトの際"
-"にはセッションを保存するのを忘れないでください。Xfce セッション・マネー"
-"ジャー (xfce4-session) を使用していない場合は、~/.config/xfce4/xinitrc ファイ"
-"ルを自分で編集する必要があります。詳細は http://xfce.org/ にある文書でご確認"
-"ください。"
+msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "次回の Xfce 起動時には Xfce はデスクトップを管理しませんので、ログアウトの際にはセッションを保存するのを忘れないでください。Xfce セッション・マネージャー (xfce4-session) を使用していない場合は、~/.config/xfce4/xinitrc ファイルを自分で編集する必要があります。詳細は http://xfce.org/ にある文書でご確認ください。"
 
 #: ../settings/appearance-settings.c:907
 msgid "_Do not show this again"
@@ -769,18 +747,17 @@ msgstr "画面 %d, モニター %d"
 msgid "_Behavior"
 msgstr "振る舞い(_B)"
 
-#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#: ../settings/backdrop-list-manager.c:160
+#: ../src/xfce-desktop-settings.c:74
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
 "\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
+"Please choose another location or press cancel in the dialog to discard your changes"
 msgstr ""
 "ファイル %s を保存できませんでした: %s\n"
 "\n"
-"他の場所を選択するか、変更を破棄するためにダイアログのキャンセルボタンを押し"
-"てください"
+"他の場所を選択するか、変更を破棄するためにダイアログのキャンセルボタンを押してください"
 
 #: ../settings/backdrop-list-manager.c:430
 msgid "Select backdrop image file"
@@ -882,11 +859,15 @@ msgstr "ビルドオプション:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    メニュー:            %s\n"
 
-#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
+#: ../src/main.c:249
+#: ../src/main.c:256
+#: ../src/main.c:263
 msgid "enabled"
 msgstr "有効"
 
-#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
+#: ../src/main.c:251
+#: ../src/main.c:258
+#: ../src/main.c:265
 msgid "disabled"
 msgstr "無効"
 
@@ -918,10 +899,8 @@ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu        現在のマウス位置でメニューをポップアップします\n"
 
 #: ../src/main.c:294
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    --windowlist  現在のマウス位置でウィンドウリストをポップアップします\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    --windowlist  現在のマウス位置でウィンドウリストをポップアップします\n"
 
 #: ../src/main.c:295
 msgid "    --quit        Cause xfdesktop to quit\n"
@@ -934,7 +913,7 @@ msgstr "%s は実行されていません。\n"
 
 #: ../src/windowlist.c:233
 msgid "Window List"
-msgstr ""
+msgstr "ウィンドウリスト"
 
 #: ../src/windowlist.c:258
 #, c-format
@@ -951,7 +930,8 @@ msgstr "ワークスペース %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>ワークスペース %d</i>"
 
-#: ../src/windowlist.c:366 ../src/windowlist.c:369
+#: ../src/windowlist.c:366
+#: ../src/windowlist.c:369
 msgid "_Add Workspace"
 msgstr "ワークスペースを追加(_A)"
 
@@ -971,8 +951,7 @@ msgstr "デスクトップ"
 
 #: ../src/xfdesktop-file-icon-manager.c:387
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "デスクトップのアイテムを保存するフォルダ「%s」を作成できませんでした:"
 
 #: ../src/xfdesktop-file-icon-manager.c:389
@@ -983,11 +962,8 @@ msgstr "フォルダの作成に失敗しました"
 
 #: ../src/xfdesktop-file-icon-manager.c:398
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"「%s」はフォルダではありませんので、デスクトップのアイテムを保存できません。"
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "「%s」はフォルダではありませんので、デスクトップのアイテムを保存できません。"
 
 #: ../src/xfdesktop-file-icon-manager.c:402
 msgid "Please delete or rename the file."
@@ -1030,7 +1006,8 @@ msgstr "複数のファイルを削除"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:824
-#: ../src/xfdesktop-file-icon-manager.c:1549 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1549
+#: ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -1039,7 +1016,8 @@ msgstr "「%s」を実行できません:"
 #: ../src/xfdesktop-file-icon-manager.c:826
 #: ../src/xfdesktop-file-icon-manager.c:884
 #: ../src/xfdesktop-file-icon-manager.c:1149
-#: ../src/xfdesktop-file-icon-manager.c:1551 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon-manager.c:1551
+#: ../src/xfdesktop-file-icon.c:144
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "実行エラー"
@@ -1048,12 +1026,10 @@ msgstr "実行エラー"
 msgid "The application chooser could not be opened."
 msgstr "アプリケーション選択ウィンドウを開けませんでした。"
 
-#: ../src/xfdesktop-file-icon-manager.c:886 ../src/xfdesktop-file-utils.c:358
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"この機能には (Thunar が提供するような) ファイルマネージャーが必要です。"
+#: ../src/xfdesktop-file-icon-manager.c:886
+#: ../src/xfdesktop-file-utils.c:358
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "この機能には (Thunar が提供するような) ファイルマネージャーが必要です。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1046
 #, c-format
@@ -1071,12 +1047,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "フォルダ「%s」を作成できません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1151
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"「exo-desktop-item-edit」を実行できません、これはデスクトップにランチャーやリ"
-"ンクを作成したり編集するのに必要です。"
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "「exo-desktop-item-edit」を実行できません、これはデスクトップにランチャーやリンクを作成したり編集するのに必要です。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1184
 msgid "Create New Folder"
@@ -1129,7 +1101,7 @@ msgstr "全て開く(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1629
 msgid "_Open in New Window"
-msgstr ""
+msgstr "新しいウィンドウで開く(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1646
 msgid "Create _Launcher..."
@@ -1190,9 +1162,7 @@ msgstr "実行エラー"
 
 #: ../src/xfdesktop-file-icon.c:146
 msgid "The associated application could not be found or executed."
-msgstr ""
-"関連付けられているアプリケーションが見つからない、あるいは実行できませんでし"
-"た。"
+msgstr "関連付けられているアプリケーションが見つからない、あるいは実行できませんでした。"
 
 #: ../src/xfdesktop-file-properties-dialog.c:103
 #, c-format
@@ -1255,7 +1225,8 @@ msgstr "サイズ:"
 # FIXME: a macro breaks the string!
 #: ../src/xfdesktop-file-properties-dialog.c:413
 #: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:488 ../src/xfdesktop-volume-icon.c:461
+#: ../src/xfdesktop-special-file-icon.c:488
+#: ../src/xfdesktop-volume-icon.c:461
 msgid "%s (%"
 msgstr "%s (%"
 
@@ -1314,7 +1285,8 @@ msgid "link to %s"
 msgstr "%sへのリンク"
 
 #: ../src/xfdesktop-regular-file-icon.c:489
-#: ../src/xfdesktop-special-file-icon.c:491 ../src/xfdesktop-volume-icon.c:464
+#: ../src/xfdesktop-special-file-icon.c:491
+#: ../src/xfdesktop-volume-icon.c:464
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -1345,12 +1317,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Xfce ゴミ収集サービスにコンタクトできません。"
 
 #: ../src/xfdesktop-special-file-icon.c:512
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Thunar のような Xfce ゴミ収集サービスをサポートしたファイルマネージャーがイン"
-"ストールされているか確認してください。"
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Thunar のような Xfce ゴミ収集サービスをサポートしたファイルマネージャーがインストールされているか確認してください。"
 
 #: ../src/xfdesktop-special-file-icon.c:635
 msgid "_Empty Trash"
@@ -1573,6 +1541,6 @@ msgstr "Xfce 4 デスクトップの設定"
 
 #~ msgid "Des_ktop"
 #~ msgstr "デスクトップ(_K)"
-
 #~ msgid "_Desktop Properties..."
 #~ msgstr "デスクトップのプロパティ(_D)..."
+
