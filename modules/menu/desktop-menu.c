@@ -234,6 +234,7 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
         if(XFCE_IS_MENU(l->data)) {
             xfce_submenu = l->data;
             xfce_directory = xfce_menu_get_directory(xfce_submenu);
+            icon_name = NULL;
             
             if(xfce_directory
                && (xfce_menu_directory_get_no_display(xfce_directory)
@@ -247,11 +248,10 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             
             if(xfce_directory) {
                 name = xfce_menu_directory_get_name(xfce_directory);
-                icon_name = xfce_menu_directory_get_icon(xfce_directory);
-            } else {
+                if(desktop_menu->use_menu_icons)
+                    icon_name = xfce_menu_directory_get_icon(xfce_directory);
+            } else
                 name = xfce_menu_get_name(xfce_submenu);
-                icon_name = NULL;
-            }
             
             mi = gtk_image_menu_item_new_with_label(name);
             if(icon_name) {
@@ -301,7 +301,9 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             
             mi = xfce_app_menu_item_new_full(name,
                                              xfce_menu_item_get_command(xfce_item),
-                                             xfce_menu_item_get_icon_name(xfce_item),
+                                             desktop_menu->use_menu_icons
+                                             ? xfce_menu_item_get_icon_name(xfce_item)
+                                             : NULL,
                                              xfce_menu_item_requires_terminal(xfce_item),
                                              xfce_menu_item_supports_startup_notification(xfce_item));
             gtk_widget_show(mi);
