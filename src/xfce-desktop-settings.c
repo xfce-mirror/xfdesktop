@@ -252,9 +252,9 @@ xfce_desktop_settings_load_initial(XfceDesktop *desktop,
                                                             DEFAULT_ICON_FONT_SIZE));
 
     xfce_desktop_set_icon_use_system_font_size(desktop,
-                                               xfconf_channel_get_bool(channel,
-                                                                       "/desktop-icons/use-system-font-size",
-                                                                       TRUE));
+                                               !xfconf_channel_get_bool(channel,
+                                                                        "/desktop-icons/use-custom-font-size",
+                                                                        FALSE));
     
     xfce_desktop_set_icon_size(desktop,
                                xfconf_channel_get_uint(channel,
@@ -327,6 +327,12 @@ xfce_desktop_settings_load_initial(XfceDesktop *desktop,
         xfce_backdrop_set_brightness(backdrop,
                                      xfconf_channel_get_int(channel, prop,
                                                             0));
+
+        g_snprintf(prop, sizeof(prop),
+                   "/backdrop/screen%d/monitor%d/saturation", screen, i);
+        xfce_backdrop_set_saturation(backdrop,
+                                     xfconf_channel_get_double(channel, prop,
+                                                               1.0));
     }
     
     xfce_desktop_thaw_updates(desktop);
@@ -366,11 +372,11 @@ xfce_desktop_settings_changed(XfconfChannel *channel,
                                             ? g_value_get_uint(value)
                                             : DEFAULT_ICON_SIZE);
         return;
-    } else if(!strcmp(property, "/desktop-icons/use-system-font-size")) {
+    } else if(!strcmp(property, "/desktop-icons/use-custom-font-size")) {
         xfce_desktop_set_icon_use_system_font_size(desktop,
                                                    G_VALUE_TYPE(value)
-                                                   ? g_value_get_boolean(value)
-                                                   : TRUE);
+                                                   ? !g_value_get_boolean(value)
+                                                   : FALSE);
         return;
     } else if(!strcmp(property, "/desktop-icons/font-size")) {
         xfce_desktop_set_icon_font_size(desktop, G_VALUE_TYPE(value)
@@ -504,5 +510,9 @@ xfce_desktop_settings_changed(XfconfChannel *channel,
         xfce_backdrop_set_brightness(backdrop,
                                      G_VALUE_TYPE(value)
                                      ? g_value_get_int(value) : 0);
+    } else if(strstr(property, "/saturation")) {
+        xfce_backdrop_set_saturation(backdrop,
+                                     G_VALUE_TYPE(value)
+                                     ? g_value_get_double(value) : 1.0);
     }
 }

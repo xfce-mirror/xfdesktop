@@ -37,6 +37,10 @@
 
 #include "xfce-backdrop.h"
 
+#ifndef abs
+#define abs(x)  ( (x) < 0 ? -(x) : (x) )
+#endif
+
 static void xfce_backdrop_class_init(XfceBackdropClass *klass);
 static void xfce_backdrop_init(XfceBackdrop *backdrop);
 static void xfce_backdrop_finalize(GObject *object);
@@ -55,14 +59,15 @@ struct _XfceBackdropPriv
     gchar *image_path;
     
     gint brightness;
+    gdouble saturation;
 };
 
 enum {
     BACKDROP_CHANGED,
-    LAST_SIGNAL
+    LAST_SIGNAL,
 };
 
-static guint backdrop_signals[LAST_SIGNAL] = { 0 };
+static guint backdrop_signals[LAST_SIGNAL] = { 0, };
 
 /* helper functions */
 
@@ -113,15 +118,19 @@ adjust_brightness(GdkPixbuf *src, gint amount)
 }
 
 static GdkPixbuf *
-create_solid(GdkColor *color, gint width, gint height)
+create_solid(GdkColor *color,
+             gint width,
+             gint height,
+             gboolean has_alpha,
+             gint alpha)
 {
     GdkPixbuf *pix;
     guint32 rgba;
     
-    pix = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, width, height);
+    pix = gdk_pixbuf_new(GDK_COLORSPACE_RGB, has_alpha, 8, width, height);
     
-    rgba = (((color->red & 0xff00) << 8) | ((color->green & 0xff00))
-            | ((color->blue & 0xff00) >> 8)) << 8;
+    rgba = ((((color->red & 0xff00) << 8) | ((color->green & 0xff00))
+            | ((color->blue & 0xff00) >> 8)) << 8) | alpha;
     
     gdk_pixbuf_fill(pix, rgba);
     
@@ -511,6 +520,24 @@ xfce_backdrop_get_brightness(XfceBackdrop *backdrop)
     return backdrop->priv->brightness;
 }
 
+void
+xfce_backdrop_set_saturation(XfceBackdrop *backdrop,
+                             gdouble saturation)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+    if(abs(saturation - backdrop->priv->saturation) > 0.05) {
+        backdrop->priv->saturation = saturation;
+        g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
+    }
+}
+
+gdouble
+xfce_backdrop_get_saturation(XfceBackdrop *backdrop)
+{
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), 1.0);
+    return backdrop->priv->saturation;
+}
+
 /**
  * xfce_backdrop_get_pixbuf:
  * @backdrop: An #XfceBackdrop.
@@ -552,12 +579,15 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     }
     
     if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_SOLID)
-        final_image = create_solid(&backdrop->priv->color1, w, h);
-    else {
+        final_image = create_solid(&backdrop->priv->color1, w, h, FALSE, 0xff);
+    else if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_NONE) {
+        GdkColor c = { 0, 0xffff, 0xffff, 0xffff };
+        final_image = create_solid(&c, w, h, TRUE, 0x00);
+    } else {
         final_image = create_gradient(&backdrop->priv->color1,
                 &backdrop->priv->color2, w, h, backdrop->priv->color_style);
         if(!final_image)
-            final_image = create_solid(&backdrop->priv->color1, w, h);
+            final_image = create_solid(&backdrop->priv->color1, w, h, FALSE, 0xff);
     }
     
     if(!image) {
@@ -681,6 +711,13 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     
     if(backdrop->priv->brightness != 0)
         final_image = adjust_brightness(final_image, backdrop->priv->brightness);
+
+    g_debug("saturation is %.4f", backdrop->priv->saturation);
+    if(backdrop->priv->saturation > 1.01 || backdrop->priv->saturation < 0.99) {
+        gdk_pixbuf_saturate_and_pixelate(final_image, final_image,
+                                         (gfloat)backdrop->priv->saturation,
+                                         FALSE);
+    }
     
     return final_image;
 }

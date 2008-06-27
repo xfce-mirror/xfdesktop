@@ -49,14 +49,15 @@ typedef enum
     XFCE_BACKDROP_IMAGE_TILED,
     XFCE_BACKDROP_IMAGE_STRETCHED,
     XFCE_BACKDROP_IMAGE_SCALED,
-    XFCE_BACKDROP_IMAGE_ZOOMED
+    XFCE_BACKDROP_IMAGE_ZOOMED,
 } XfceBackdropImageStyle;
 
 typedef enum
 {
     XFCE_BACKDROP_COLOR_SOLID = 0,
     XFCE_BACKDROP_COLOR_HORIZ_GRADIENT,
-    XFCE_BACKDROP_COLOR_VERT_GRADIENT
+    XFCE_BACKDROP_COLOR_VERT_GRADIENT,
+    XFCE_BACKDROP_COLOR_NONE,
 } XfceBackdropColorStyle;
 
 struct _XfceBackdrop
@@ -119,6 +120,10 @@ G_CONST_RETURN gchar *xfce_backdrop_get_image_filename
 void xfce_backdrop_set_brightness        (XfceBackdrop *backdrop,
                                           gint brightness);
 gint xfce_backdrop_get_brightness        (XfceBackdrop *backdrop);
+
+void xfce_backdrop_set_saturation        (XfceBackdrop *backdrop,
+                                          gdouble saturation);
+gdouble xfce_backdrop_get_saturation     (XfceBackdrop *backdrop);
 
 GdkPixbuf *xfce_backdrop_get_pixbuf      (XfceBackdrop *backdrop);
 

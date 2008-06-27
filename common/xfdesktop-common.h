@@ -30,8 +30,11 @@
 
 #include <X11/Xlib.h>
 
-#define BACKDROP_CHANNEL         "BACKDROP"
+#define XFDESKTOP_CHANNEL        "xfce4-desktop"
 #define DEFAULT_BACKDROP         DATADIR "/xfce4/backdrops/xfce-smoke.png"
+#define DEFAULT_ICON_FONT_SIZE   12
+#define DEFAULT_ICON_SIZE        32
+
 #define LIST_TEXT                "# xfce backdrop list"
 #define XFDESKTOP_SELECTION_FMT  "XFDESKTOP_SELECTION_%d"
 #define XFDESKTOP_IMAGE_FILE_FMT "XFDESKTOP_IMAGE_FILE_%d"

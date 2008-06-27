@@ -4,7 +4,7 @@ use XML::Parser;
 use strict;
 
 my $xfconf_channel = 'xfce4-desktop';
-my $mcs_channel = 'backdrop';
+my $mcs_channel = 'desktop';
 my $autostart_file = 'xfconf-xfdesktop-migration-4.6.desktop';
 
 sub xfconf_set {
@@ -41,7 +41,7 @@ if(!defined($ENV{'XDG_CONFIG_HOME'})) {
 }
 
 my $p = XML::Parser->new(Style => 'Tree');
-my $mcs = $p->parsefile($ENV{'XDG_CONFIG_HOME'}.'/xfce4/mcs_settings/$mcs_channel.xml') or do {
+my $mcs = $p->parsefile($ENV{'XDG_CONFIG_HOME'}."/xfce4/mcs_settings/$mcs_channel.xml") or do {
     print STDERR "No $mcs_channel.xml; nothing to migrate\n";
     exit(0);
 };
@@ -93,9 +93,10 @@ if(defined($options{'icons_icon_size'})) {
 }
 
 if(defined($options{'icons_use_system_font_size'})) {
-    xfconf_set('/desktop-icons/use-system-font-size',
+    xfconf_set('/desktop-icons/use-custom-font-size',
                'bool',
-               tobool($options{'icons_use_system_font_size'}->{'value'}));
+               tobool($options{'icons_use_system_font_size'}->{'value'}) eq 'true'
+               ? 'false' : 'true');
 }
 
 if(defined($options{'showdm'})) {
@@ -205,6 +206,11 @@ open(RCFILE, '<'.$ENV{'XDG_CONFIG_HOME'}.'/xfce4/desktop/xfdesktoprc') and do {
 };
 
 # do it this way so as not to require File::Copy
-open(D, '>>@sysconfdir@/xdg/autostart/'.$autostart_file) or die("Unable to open @sysconfdir@/xdg/autostart/$autostart_file in append mode");
-print D "Hidden=true\n";
-close(D);
+open(DIN, '<@sysconfdir@/xdg/autostart/'.$autostart_file) or die("Unable to open @sysconfdir@/xdg/autostart/$autostart_file: $!");
+open(DOUT, '>'.$ENV{'XDG_CONFIG_HOME'}.'/autostart/'.$autostart_file) or die("Unable to open local autostart file: $!");
+while(<DIN>) {
+    print DOUT;
+}
+print DOUT "Hidden=true\n";
+close(DIN);
+close(DOUT);

@@ -2,57 +2,58 @@
 #
 
 #
-# backdrop settings
+# xfdesktop settings
 #
-backdropdir = @XFCE_MCS_MANAGER_PLUGINSDIR@
 
-backdrop_LTLIBRARIES = backdrop_settings.la
+bin_PROGRAMS = xfdesktop-settings
 
-backdrop_settings_la_LDFLAGS = \
-	-avoid-version \
-	-module
+xfdesktop_settings_SOURCES = \
+	xfdesktop_settings_glade.h \
+	main.c
 
-if HAVE_CYGWIN
-  backdrop_settings_la_LDFLAGS += \
-	-no-undefined \
-	-export-symbols $(datadir)/xfce4/devel/mcs-manager.def
-endif
-
-backdrop_settings_la_SOURCES = \
-	appearance-settings.c						\
-	backdrop-list-manager.c						\
-	backdrop-list-manager.h						\
-	settings-common.c						\
-	settings-common.h						\
-	behavior-settings.c						\
-	behavior-settings.h
-
-backdrop_settings_la_CFLAGS =						\
-	-I$(top_srcdir)							\
+xfdesktop_settings_CFLAGS =						\
+	-I$(top_srcdir)								\
 	-I$(top_srcdir)/common						\
 	-I$(top_srcdir)/src 						\
-	$(LIBEXO_CFLAGS)						\
-	$(XFCE_MCS_MANAGER_CFLAGS)					\
+	$(LIBEXO_CFLAGS)							\
+	$(LIBXFCEGUI4_CFLAGS)						\
+	$(XFCONF_CFLAGS)							\
+	$(LIBGLADE_CFLAGS)							\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
-	-DLOCALEDIR=\"$(localedir)\"					\
+	-DLOCALEDIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
 	-DBINDIR=\"$(bindir)\"
 
-backdrop_settings_la_LIBADD =						\
-	$(top_builddir)/common/libxfdesktop.la				\
+xfdesktop_settings_LDADD =						\
+	$(top_builddir)/common/libxfdesktop.la		\
+	$(XFCONF_LIBS)								\
+	$(LIBXFCEGUI4_LIBS)							\
+	$(LIBGLADE_LIBS)							\
 	$(LIBEXO_LIBS)
 
 if HAVE_CYGWIN
-  backdrop_settings_la_LIBADD += \
-	$(XFCE_MCS_MANAGER_LIBS) \
+  xfdesktop_settings_LDADD += \
+	$(XFCONF_LIBS) \
 	$(LIBX11_LIBS)
 endif
 
-desktopdir = $(datadir)/applications
 desktop_in_files = xfce-backdrop-settings.desktop.in
+desktopdir = $(datadir)/applications
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+dialogdir = $(datadir)/xfce4/settings-dialogs
+dialog_DATA = $(desktop_DATA)
 @INTLTOOL_DESKTOP_RULE@
 
-EXTRA_DIST = $(desktop_in_files)
+BUILT_SOURCES = \
+xfdesktop-settings_glade.h
 
-DISTCLEANFILES = $(desktop_DATA)
+xfdesktop-settings_glade.h: $(srcdir)/xfdesktop-settings.glade
+	exo-csource --static --name=xfdesktop_settings_glade $< >$@
+
+EXTRA_DIST = \
+	xfdesktop_settings.glade \
+	$(desktop_in_files)
+
+CLEANFILES =  \
+$(BUILT_SOURCES) \
+$(desktop_DATA)
