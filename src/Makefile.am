@@ -4,8 +4,6 @@ xfdesktop_SOURCES = \
 	main.c \
 	menu.c \
 	menu.h \
-	settings.c \
-	settings.h \
 	windowlist.c \
 	windowlist.h \
 	xfce-backdrop.c \
@@ -62,8 +60,8 @@ xfdesktop_CFLAGS = \
 	$(GTHREAD_CFLAGS) \
 	$(GMODULE_CFLAGS) \
 	$(LIBXFCEGUI4_CFLAGS) \
-	$(LIBXFCE4MCS_CLIENT_CFLAGS) \
-	$(LIBWNCK_CFLAGS)
+	$(LIBWNCK_CFLAGS) \
+	$(XFCONF_CFLAGS)
 
 xfdesktop_LDFLAGS = \
 	-export-dynamic
@@ -79,9 +77,8 @@ xfdesktop_LDADD += \
 	$(LIBX11_LIBS) \
 	$(GTHREAD_LIBS) \
 	$(LIBXFCEGUI4_LIBS) \
-	$(LIBXFCE4MCS_CLIENT_LIBS) \
-	$(LIBWNCK_LIBS)
-
+	$(LIBWNCK_LIBS) \
+	$(XFCONF_LIBS)
 
 if ENABLE_DESKTOP_ICONS
 

@@ -21,18 +21,18 @@
 #ifndef __XFCE_DESKTOP_SETTINGS_H__
 #define __XFCE_DESKTOP_SETTINGS_H__
 
-#include <libxfce4mcs/mcs-client.h>
+#include <xfconf/xfconf.h>
 
 #include "xfce-desktop.h"
 
 G_BEGIN_DECLS
 
 void xfce_desktop_settings_load_initial(XfceDesktop *desktop,
-                                        McsClient *mcs_client);
-gboolean xfce_desktop_settings_changed(McsClient *client,
-                                       McsAction action,
-                                       McsSetting *setting,
-                                       gpointer user_data);
+                                        XfconfChannel *channel);
+void xfce_desktop_settings_changed(XfconfChannel *channel,
+                                   const gchar *property,
+                                   GValue *value,
+                                   gpointer user_data);
 
 G_END_DECLS
 

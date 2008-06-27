@@ -1,7 +1,7 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright (c) 2004 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (c) 2004-2008 Brian Tarricone, <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -46,15 +46,12 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 
-#include <libxfce4mcs/mcs-client.h>
+#include <xfconf/xfconf.h>
 #include <libxfcegui4/libxfcegui4.h>
 
 #ifdef ENABLE_FILE_ICONS
 #include <dbus/dbus-glib.h>
 #include <thunar-vfs/thunar-vfs.h>
-#endif
-
-#if defined(ENABLE_FILE_ICONS) || defined(HAVE_THUNAR_VFS)
 #endif
 
 #include "xfdesktop-common.h"
@@ -63,11 +60,9 @@
 #include "xfce-desktop-settings.h"
 #include "menu.h"
 #include "windowlist.h"
-#include "settings.h"
 
 static SessionClient *client_session = NULL;
 static gboolean is_session_managed = FALSE;
-static gboolean desktop_gtk_menu_images = TRUE;
 
 static void
 session_logout()
@@ -80,18 +75,6 @@ static void
 session_die(gpointer user_data)
 {
     gtk_main_quit();
-}
-
-static void
-desktop_settings_menu_images_notify(GObject *gobject,
-                                    GParamSpec *arg1,
-                                    gpointer user_data)
-{
-    g_object_get(G_OBJECT(gobject),
-                 "gtk-menu-images", &desktop_gtk_menu_images,
-                 NULL);
-    windowlist_set_show_icons(desktop_gtk_menu_images);
-    menu_set_show_icons(desktop_gtk_menu_images);
 }
 
 static void
@@ -170,7 +153,7 @@ scroll_cb(GtkWidget *w, GdkEventScroll *evt, gpointer user_data)
 static gboolean 
 reload_idle_cb(gpointer data)
 {
-    settings_reload_all();
+    //settings_reload_all();  /* FIXME */
     menu_reload();
     return FALSE;
 }
@@ -203,7 +186,7 @@ static void
 xfdesktop_handle_SIGUSR1(gint signal,
                          gpointer user_data)
 {
-    settings_reload_all();
+    //settings_reload_all();  /* FIXME */
     menu_reload();
 }
 
@@ -221,11 +204,10 @@ int
 main(int argc, char **argv)
 {
     GdkDisplay *gdpy;
-    GtkWidget **desktops, *dummy;
+    GtkWidget **desktops;
     gint i, nscreens;
     Window xid;
-    McsClient *mcs_client;
-    GtkSettings *settings;
+    XfconfChannel *channel = NULL;
     const gchar *message = NULL;
     gboolean already_running;
     GError *error = NULL;
@@ -324,19 +306,15 @@ main(int argc, char **argv)
 #endif
     
     gdpy = gdk_display_get_default();
-    mcs_client = settings_init();
-    
-    /* need GtkImageMenuItem to install the property */
-    dummy = gtk_image_menu_item_new();
-    gtk_widget_destroy(dummy);
-    
-    settings = gtk_settings_get_for_screen(gdk_display_get_default_screen(gdpy));
-    g_object_get(G_OBJECT(settings),
-                 "gtk-menu-images", &desktop_gtk_menu_images,
-                 NULL);
-    g_signal_connect(G_OBJECT(settings), "notify::gtk-menu-images",
-                     G_CALLBACK(desktop_settings_menu_images_notify), NULL);
-    
+
+    if(!xfconf_init(&error)) {
+        g_warning("%s: unable to connect to settings daemon: %s.  Defaults will be used",
+                  PACKAGE, error->message);
+        g_error_free(error);
+        error = NULL;
+    } else
+        channel = xfconf_channel_new(XFDESKTOP_CHANNEL);
+
     nscreens = gdk_display_get_n_screens(gdpy);
     desktops = g_new(GtkWidget *, nscreens);
     for(i = 0; i < nscreens; i++) {
@@ -349,10 +327,12 @@ main(int argc, char **argv)
                          G_CALLBACK(client_message_received), NULL);
         menu_attach(XFCE_DESKTOP(desktops[i]));
         windowlist_attach(XFCE_DESKTOP(desktops[i]));
-        if(mcs_client) {
-            settings_register_callback(xfce_desktop_settings_changed, desktops[i]);
+        if(channel) {
+            g_signal_connect(G_OBJECT(channel), "property-changed",
+                             G_CALLBACK(xfce_desktop_settings_changed),
+                             desktops[i]);
             xfce_desktop_settings_load_initial(XFCE_DESKTOP(desktops[i]),
-                                               mcs_client);
+                                               channel);
         }
         gtk_widget_show(desktops[i]);
         gdk_window_lower(desktops[i]->window);
@@ -371,16 +351,8 @@ main(int argc, char **argv)
                                                  session_logout);
     }
     
-    menu_init(mcs_client);
-    menu_set_show_icons(desktop_gtk_menu_images);
-    
-    windowlist_init(mcs_client);
-    windowlist_set_show_icons(desktop_gtk_menu_images);
-    
-    if(mcs_client) {
-        settings_register_callback(menu_settings_changed, desktops[0]);
-        settings_register_callback(windowlist_settings_changed, desktops[0]);
-    }
+    menu_init(channel);
+    windowlist_init(channel);
     
     if(xfce_posix_signal_handler_init(&error)) {
         xfce_posix_signal_handler_set_handler(SIGHUP,
@@ -409,7 +381,7 @@ main(int argc, char **argv)
         gtk_widget_destroy(desktops[i]);
     g_free(desktops);
     
-    settings_cleanup();
+    xfconf_shutdown();
     
 #ifdef ENABLE_FILE_ICONS
     thunar_vfs_shutdown();

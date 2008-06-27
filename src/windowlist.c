@@ -1,7 +1,7 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright (c) 2004 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (c) 2004-2008 Brian Tarricone <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -399,46 +399,44 @@ windowlist_populate(XfceDesktop *desktop,
             G_CALLBACK(set_num_workspaces), GINT_TO_POINTER(nworkspaces-1));
 }
 
-void
-windowlist_init(McsClient *mcs_client)
+static void
+windowlist_settings_changed(XfconfChannel *channel,
+                            const gchar *property,
+                            const GValue *value,
+                            gpointer user_data)
 {
-    McsSetting *setting = NULL;
-    
-    if(mcs_client) {
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "showwl",
-                BACKDROP_CHANNEL, &setting))
-        {
-            show_windowlist = setting->data.v_int;
-            mcs_setting_free(setting);
-            setting = NULL;
-        }
+    if(!strcmp(property, "/windowlist-menu/show"))
+        show_windowlist = G_VALUE_TYPE(value) ? g_value_get_boolean(value) : TRUE;
+    else if(!strcmp(property, "/windowlist-menu/show-workspace-names"))
+        wl_show_ws_names = G_VALUE_TYPE(value) ? g_value_get_boolean(value) : TRUE;
+    else if(!strcmp(property, "/windowlist-menu/show-submenus"))
+        wl_submenus = G_VALUE_TYPE(value) ? g_value_get_boolean(value) : FALSE;
+    else if(!strcmp(property, "/windowlist-menu/show-sticky-once"))
+        wl_sticky_once = G_VALUE_TYPE(value) ? g_value_get_boolean(value) : FALSE;
+}
+
+void
+windowlist_init(XfconfChannel *channel)
+{
+    if(channel) {
+        show_windowlist = xfconf_channel_get_bool(channel,
+                                                  "/windowlist-menu/show",
+                                                  TRUE);
         
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client,
-                                                 "wl_show_ws_names",
-                                                 BACKDROP_CHANNEL, &setting))
-        {
-            wl_show_ws_names = setting->data.v_int;
-            mcs_setting_free(setting);
-            setting = NULL;
-        }
+        wl_show_ws_names = xfconf_channel_get_bool(channel,
+                                                   "/windowlist-menu/show-workspace-names",
+                                                   TRUE);
         
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client,
-                                                 "wl_submenus",
-                                                 BACKDROP_CHANNEL, &setting))
-        {
-            wl_submenus = setting->data.v_int;
-            mcs_setting_free(setting);
-            setting = NULL;
-        }
-        
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client,
-                                                 "wl_sticky_once",
-                                                 BACKDROP_CHANNEL, &setting))
-        {
-            wl_sticky_once = setting->data.v_int;
-            mcs_setting_free(setting);
-            setting = NULL;
-        }
+        wl_submenus = xfconf_channel_get_bool(channel,
+                                              "/windowlist-menu/show-submenus",
+                                              FALSE);
+
+        wl_sticky_once = xfconf_channel_get_bool(channel,
+                                                 "/windowlist-menu/show-sticky-once",
+                                                 FALSE);
+
+        g_signal_connect(G_OBJECT(channel), "property-changed",
+                         G_CALLBACK(windowlist_settings_changed), NULL);
     }
 }
 
@@ -447,42 +445,6 @@ windowlist_attach(XfceDesktop *desktop)
 {
     g_signal_connect_after(G_OBJECT(desktop), "populate-secondary-root-menu",
                            G_CALLBACK(windowlist_populate), NULL);
-}
-
-gboolean
-windowlist_settings_changed(McsClient *client, McsAction action,
-        McsSetting *setting, gpointer user_data)
-{
-    switch(action) {
-        case MCS_ACTION_NEW:
-        case MCS_ACTION_CHANGED:
-            if(!strcmp(setting->name, "showwl")) {
-                show_windowlist = setting->data.v_int;
-                return TRUE;
-            } else if(!strcmp(setting->name, "wl_show_ws_names")) {
-                wl_show_ws_names = setting->data.v_int;
-                return TRUE;
-            } else if(!strcmp(setting->name, "wl_submenus")) {
-                wl_submenus = setting->data.v_int;
-                return TRUE;
-            } else if(!strcmp(setting->name, "wl_sticky_once")) {
-                wl_sticky_once = setting->data.v_int;
-                return TRUE;
-            }
-            
-            break;
-        
-        case MCS_ACTION_DELETED:
-            break;
-    }
-    
-    return FALSE;
-}
-
-void
-windowlist_set_show_icons(gboolean show_icons)
-{
-    show_windowlist_icons = show_icons;
 }
 
 void

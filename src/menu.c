@@ -1,7 +1,7 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright (c) 2004 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (c) 2004-2008 Brian J. Tarricone <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -126,26 +126,50 @@ menu_populate(XfceDesktop *desktop,
 }
 #endif
 
+#ifdef USE_DESKTOP_MENU
+static void
+menu_settings_changed(XfconfChannel *channel,
+                      const gchar *property,
+                      const GValue *value,
+                      gpointer user_data)
+{
+    if(!strcmp(property, "/desktop-menu/show")) {
+        if(!G_VALUE_TYPE(value) || g_value_get_boolean(value)) {
+            if(!desktop_menu)
+                _start_menu_module();
+        } else {
+            if(desktop_menu)
+                _stop_menu_module();
+        }
+    } else if(!strcmp(property, "/desktop-menu/show-icons")) {
+        show_desktop_menu_icons = G_VALUE_TYPE(value)
+                                  ? g_value_get_boolean(value)
+                                  : TRUE;
+        if(desktop_menu)
+            xfce_desktop_menu_set_show_icons(desktop_menu, FALSE);
+    }
+}
+#endif
+
 void
-menu_init(McsClient *mcs_client)
+menu_init(XfconfChannel *channel)
 {    
 #ifdef USE_DESKTOP_MENU
-    McsSetting *setting = NULL;
-    
-    if(!mcs_client)
+    if(!channel
+       || xfconf_channel_get_bool(channel, "/desktop-menu/show", TRUE))
+    {
+        if(channel) {
+            show_desktop_menu_icons = xfconf_channel_get_bool(channel,
+                                                              "/desktop-menu/show-icons",
+                                                              TRUE);
+        }
         _start_menu_module();
-    else {
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "showdm",
-                BACKDROP_CHANNEL, &setting))
-        {
-            if(setting->data.v_int)
-                _start_menu_module();
-            else
-                _stop_menu_module();
-            mcs_setting_free(setting);
-            setting = NULL;
-        } else
-            _start_menu_module();
+    } else
+        _stop_menu_module();
+
+    if(channel) {
+        g_signal_connect(G_OBJECT(channel), "property-changed",
+                         G_CALLBACK(menu_settings_changed), NULL);
     }
 #endif
 }
@@ -157,52 +181,6 @@ menu_attach(XfceDesktop *desktop)
     DBG("attached default menu");
     g_signal_connect_after(G_OBJECT(desktop), "populate-root-menu",
                            G_CALLBACK(menu_populate), NULL);
-#endif
-}
-
-gboolean
-menu_settings_changed(McsClient *client, McsAction action, McsSetting *setting,
-        gpointer user_data)
-{
-#ifdef USE_DESKTOP_MENU
-    McsSetting *setting1 = NULL;
-    
-    switch(action) {
-        case MCS_ACTION_NEW:
-        case MCS_ACTION_CHANGED:
-            if(!strcmp(setting->name, "showdm")) {
-                if(setting->data.v_int && !desktop_menu) {
-                    _start_menu_module();
-                    if(desktop_menu
-                            && MCS_SUCCESS == mcs_client_get_setting(client,
-                                "showdmi", BACKDROP_CHANNEL, &setting1))
-                    {
-                        if(!setting1->data.v_int)
-                            xfce_desktop_menu_set_show_icons(desktop_menu, FALSE);
-                        mcs_setting_free(setting1);
-                        setting1 = NULL;
-                    }
-                } else if(!setting->data.v_int && desktop_menu)
-                    _stop_menu_module();
-                return TRUE;
-            }
-            break;
-        
-        case MCS_ACTION_DELETED:
-            break;
-    }
-#endif
-    
-    return FALSE;    
-}
-
-void
-menu_set_show_icons(gboolean show_icons)
-{
-#ifdef USE_DESKTOP_MENU
-    show_desktop_menu_icons = show_icons;
-    if(desktop_menu)
-        xfce_desktop_menu_set_show_icons(desktop_menu, show_icons);
 #endif
 }
 

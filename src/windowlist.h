@@ -27,14 +27,12 @@
 
 #include "xfce-desktop.h"
 
-#include <libxfce4mcs/mcs-client.h>
+#include <xfconf/xfconf.h>
 
 G_BEGIN_DECLS
 
-void windowlist_init(McsClient *mcs_client);
+void windowlist_init(XfconfChannel *channel);
 void windowlist_attach(XfceDesktop *desktop);
-gboolean windowlist_settings_changed(McsClient *client, McsAction action, McsSetting *setting, gpointer user_data);
-void windowlist_set_show_icons(gboolean show_icons);
 void windowlist_cleanup();
 
 G_END_DECLS

@@ -15,6 +15,7 @@ SUBDIRS = \
 	$(panel_plugin_dir) \
 	po \
 	po-doc \
+	scripts \
 	settings \
 	src \
 	$(menueditor_dir) \

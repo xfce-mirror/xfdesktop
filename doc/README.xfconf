@@ -1,0 +1,46 @@
+Xfdesktop now uses Xfconf to store its configuration.  Xfconf is a
+hierarchical configuration system.  The channel name that xfdesktop uses
+is 'xfce4-desktop'.  Property names below should be referred to with each
+component separated by a slash ('/') character.  The data type of each
+property is listd after the name.
+
+<manage-desktop>
+  <show-warning-off bool>
+  <show-warning-on bool>
+</manage-desktop>
+<backdrop>
+  <screen0>
+    <xinerama-stretch bool>
+    <monitor0>
+      <brightness int>
+      <color1 array:uint16,uint16,uint16>
+      <color2 array:uint16,uint16,uint16>
+      <color-style int>
+      <image-path string>
+      <image-style int>
+      <image-show bool>
+    </monitor0>
+  </screen0>
+</backdrop>
+<windowlist-menu>
+    <show bool>
+    <show-workspace-names bool>
+    <show-sticky-once bool>
+    <show-submenus bool>
+</windowlist>
+<desktop-menu>
+    <show bool>
+    <show-menu-icons bool>
+</desktop-menu>
+<desktop-icons>
+    <style int>
+    <use-system-font-size bool>
+    <font-size uint>
+    <icon-size uint>
+    <file-icons>
+        <show-filesystem bool>
+        <show-home bool>
+        <show-trash bool>
+        <show-removable bool>
+    </file-icons>
+</desktop-icons>

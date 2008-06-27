@@ -1,7 +1,7 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright (c) 2004 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (c) 2004-2008 Brian J. Tarricone <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -56,6 +56,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
+#include <dbus/dbus-gtype-specialized.h>
 
 #include "xfdesktop-common.h"
 #include "xfce-desktop-settings.h"
@@ -210,16 +211,16 @@ get_path_from_listfile(const gchar *listfile)
 
 void
 xfce_desktop_settings_load_initial(XfceDesktop *desktop,
-                                   McsClient *mcs_client)
+                                   XfconfChannel *channel)
 {
-    gchar setting_name[64];
-    McsSetting *setting = NULL;
     GdkScreen *gscreen = GTK_WINDOW(desktop)->screen;
     gint screen, i, nmonitors;
     XfceBackdrop *backdrop;
-    GdkColor color;
+    gchar prop[256];
     
     TRACE("entering");
+
+    g_return_if_fail(XFCONF_IS_CHANNEL(channel));
     
     xfce_desktop_freeze_updates(desktop);
     
@@ -227,143 +228,105 @@ xfce_desktop_settings_load_initial(XfceDesktop *desktop,
     screen = gdk_screen_get_number(gscreen);
     nmonitors = xfce_desktop_get_n_monitors(desktop);
     
-    if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "xineramastretch",
-            BACKDROP_CHANNEL, &setting))
-    {
-        xfce_desktop_set_xinerama_stretch(desktop, setting->data.v_int);
-        mcs_setting_free(setting);
-        setting = NULL;
-    }
-    
+    g_snprintf(prop, sizeof(prop), "/backdrop/screen%d/xinerama-stretch",
+               screen);
+    xfce_desktop_set_xinerama_stretch(desktop,
+                                      xfconf_channel_get_bool(channel,
+                                                              prop,
+                                                              FALSE));
+
 #ifdef ENABLE_DESKTOP_ICONS
-    if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "desktopiconstyle",
-                                                 BACKDROP_CHANNEL, &setting))
-    {
-        xfce_desktop_set_icon_style(desktop, setting->data.v_int);
-        mcs_setting_free(setting);
-        setting = NULL;
-    } else
-        xfce_desktop_set_icon_style(desktop, XFCE_DESKTOP_ICON_STYLE_WINDOWS);
+    xfce_desktop_set_icon_style(desktop,
+                                xfconf_channel_get_int(channel,
+                                                       "/desktop-icons/style",
+#ifdef ENABLE_FILE_ICONS
+                                                       XFCE_DESKTOP_ICON_STYLE_FILES
+#else
+                                                       XFCE_DESKTOP_ICON_STYLE_WINDOWS
+#endif
+                                                       ));
+
+    xfce_desktop_set_icon_font_size(desktop,
+                                    xfconf_channel_get_uint(channel,
+                                                            "/desktop-icons/font-size",
+                                                            DEFAULT_ICON_FONT_SIZE));
+
+    xfce_desktop_set_icon_use_system_font_size(desktop,
+                                               xfconf_channel_get_bool(channel,
+                                                                       "/desktop-icons/use-system-font-size",
+                                                                       TRUE));
     
-    if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "icons_font_size",
-                                             BACKDROP_CHANNEL, &setting))
-    {
-        xfce_desktop_set_icon_font_size(desktop, setting->data.v_int);
-        mcs_setting_free(setting);
-        setting = NULL;
-    }
-    
-    if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, 
-                                             "icons_use_system_font_size",
-                                             BACKDROP_CHANNEL, &setting))
-    {
-        xfce_desktop_set_icon_use_system_font_size(desktop, setting->data.v_int);
-        mcs_setting_free(setting);
-        setting = NULL;
-    }
-    
-    if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, "icons_icon_size",
-                                             BACKDROP_CHANNEL, &setting))
-    {
-        xfce_desktop_set_icon_size(desktop, setting->data.v_int);
-        mcs_setting_free(setting);
-        setting = NULL;
-    }
+    xfce_desktop_set_icon_size(desktop,
+                               xfconf_channel_get_uint(channel,
+                                                       "/desktop-icons/icon-size",
+                                                       DEFAULT_ICON_SIZE));
 #endif
     
     for(i = 0; i < nmonitors; i++) {
+        gchar *v_str;
+        GdkColor color;
+
         backdrop = xfce_desktop_peek_backdrop(desktop, i); 
         
-        g_snprintf(setting_name, 64, "showimage_%d_%d", screen, i);
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
-                BACKDROP_CHANNEL, &setting))
-        {
-            xfce_backdrop_set_show_image(backdrop, setting->data.v_int);
-            mcs_setting_free(setting);
-            setting = NULL;
-        }
-        
-        g_snprintf(setting_name, 64, "imagepath_%d_%d", screen, i);
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
-                BACKDROP_CHANNEL, &setting))
-        {
-            if(is_backdrop_list(setting->data.v_string)) {
-                const gchar *imgfile = get_path_from_listfile(setting->data.v_string);
-                xfce_backdrop_set_image_filename(backdrop, imgfile);
-            } else {
-                xfce_backdrop_set_image_filename(backdrop,
-                                                 setting->data.v_string);
-            }
-            mcs_setting_free(setting);
-            setting = NULL;
+        g_snprintf(prop, sizeof(prop),
+                   "/backdrop/screen%d/monitor%d/image-show", screen, i);
+        xfce_backdrop_set_show_image(backdrop,
+                                     xfconf_channel_get_bool(channel, prop,
+                                                             TRUE));
+
+        g_snprintf(prop, sizeof(prop),
+                   "/backdrop/screen%d/monitor%d/image-path", screen, i);
+        v_str = xfconf_channel_get_string(channel, prop, DEFAULT_BACKDROP);
+        if(is_backdrop_list(v_str)) {
+            const gchar *imgfile = get_path_from_listfile(v_str);
+            xfce_backdrop_set_image_filename(backdrop, imgfile);
         } else
-            xfce_backdrop_set_image_filename(backdrop, DEFAULT_BACKDROP);
+            xfce_backdrop_set_image_filename(backdrop, v_str);
+        g_free(v_str);
         
-        g_snprintf(setting_name, 64, "imagestyle_%d_%d", screen, i);
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
-                BACKDROP_CHANNEL, &setting))
-        {
-            xfce_backdrop_set_image_style(backdrop, setting->data.v_int);
-            mcs_setting_free(setting);
-            setting = NULL;
-        } else
-            xfce_backdrop_set_image_style(backdrop, XFCE_BACKDROP_IMAGE_STRETCHED);
+        g_snprintf(prop, sizeof(prop),
+                   "/backdrop/screen%d/monitor%d/image-style", screen, i);
+        xfce_backdrop_set_image_style(backdrop,
+                                      xfconf_channel_get_int(channel, prop,
+                                                             XFCE_BACKDROP_IMAGE_AUTO));
         
-        g_snprintf(setting_name, 64, "color1_%d_%d", screen, i);
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
-                BACKDROP_CHANNEL, &setting))
-        {
-            color.red = setting->data.v_color.red;
-            color.green = setting->data.v_color.green;
-            color.blue = setting->data.v_color.blue;
-            xfce_backdrop_set_first_color(backdrop, &color);
-            mcs_setting_free(setting);
-            setting = NULL;
-        } else {
-            /* default color1 is #3b5b89 */
-            color.red = (guint16)0x3b00;
-            color.green = (guint16)0x5b00;
-            color.blue = (guint16)0x8900;
-            xfce_backdrop_set_first_color(backdrop, &color);
-        }
+        g_snprintf(prop, sizeof(prop),
+                   "/backdrop/screen%d/monitor%d/color1", screen, i);
+        /* default color1 is #3b5b89 */
+        color.red = (guint16)0x3b00;
+        color.green = (guint16)0x5b00;
+        color.blue = (guint16)0x8900;
+        xfconf_channel_get_struct(channel, prop, &(color.red),
+                                  XFCONF_TYPE_UINT16,
+                                  XFCONF_TYPE_UINT16,
+                                  XFCONF_TYPE_UINT16,
+                                  G_TYPE_INVALID);
+        xfce_backdrop_set_first_color(backdrop, &color);
+
+        g_snprintf(prop, sizeof(prop),
+                   "/backdrop/screen%d/monitor%d/color1", screen, i);
+        /* default color2 is #3e689e */
+        color.red = (guint16)0x3e00;
+        color.green = (guint16)0x6800;
+        color.blue = (guint16)0x9e00;
+        xfconf_channel_get_struct(channel, prop, &(color.red),
+                                  XFCONF_TYPE_UINT16,
+                                  XFCONF_TYPE_UINT16,
+                                  XFCONF_TYPE_UINT16,
+                                  G_TYPE_INVALID);
+        xfce_backdrop_set_second_color(backdrop, &color);
         
-        g_snprintf(setting_name, 64, "color2_%d_%d", screen, i);
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
-                BACKDROP_CHANNEL, &setting))
-        {
-            color.red = setting->data.v_color.red;
-            color.green = setting->data.v_color.green;
-            color.blue = setting->data.v_color.blue;
-            xfce_backdrop_set_second_color(backdrop, &color);
-            mcs_setting_free(setting);
-            setting = NULL;
-        } else {
-            /* default color2 is #3e689e */
-            color.red = (guint16)0x3e00;
-            color.green = (guint16)0x6800;
-            color.blue = (guint16)0x9e00;
-            xfce_backdrop_set_second_color(backdrop, &color);
-        }
-        
-        g_snprintf(setting_name, 64, "colorstyle_%d_%d", screen, i);
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
-                BACKDROP_CHANNEL, &setting))
-        {
-            xfce_backdrop_set_color_style(backdrop, setting->data.v_int);
-            mcs_setting_free(setting);
-            setting = NULL;
-        } else
-            xfce_backdrop_set_color_style(backdrop, XFCE_BACKDROP_COLOR_VERT_GRADIENT);
-        
-        g_snprintf(setting_name, 64, "brightness_%d_%d", screen, i);
-        if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, setting_name,
-                BACKDROP_CHANNEL, &setting))
-        {
-            xfce_backdrop_set_brightness(backdrop, setting->data.v_int);
-            mcs_setting_free(setting);
-            setting = NULL;
-        } else
-            xfce_backdrop_set_brightness(backdrop, 0);
+        g_snprintf(prop, sizeof(prop),
+                   "/backdrop/screen%d/monitor%d/color-style", screen, i);
+        xfce_backdrop_set_color_style(backdrop,
+                                      xfconf_channel_get_int(channel, prop,
+                                                             XFCE_BACKDROP_COLOR_VERT_GRADIENT));
+                                      
+        g_snprintf(prop, sizeof(prop),
+                   "/backdrop/screen%d/monitor%d/brightness", screen, i);
+        xfce_backdrop_set_brightness(backdrop,
+                                     xfconf_channel_get_int(channel, prop,
+                                                            0));
     }
     
     xfce_desktop_thaw_updates(desktop);
@@ -371,123 +334,175 @@ xfce_desktop_settings_load_initial(XfceDesktop *desktop,
     TRACE("exiting");
 }
 
-gboolean
-xfce_desktop_settings_changed(McsClient *client,
-                              McsAction action,
-                              McsSetting *setting,
+void
+xfce_desktop_settings_changed(XfconfChannel *channel,
+                              const gchar *property,
+                              GValue *value,
                               gpointer user_data)
 {
     XfceDesktop *desktop = user_data;
     XfceBackdrop *backdrop;
     gchar *sname, *p, *q;
-    gint screen, monitor;
+    gint screen = -1, monitor = -1;
     GdkColor color;
-    gboolean handled = FALSE;
     GdkScreen *gscreen;
     
     TRACE("dummy");
     
-    g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), FALSE);
-    
-    if(!strcmp(setting->name, "xineramastretch")) {
-        xfce_desktop_set_xinerama_stretch(desktop, setting->data.v_int); 
-        return TRUE;
-    }
-    
 #ifdef ENABLE_DESKTOP_ICONS
-    if(!strcmp(setting->name, "desktopiconstyle")) {
-        xfce_desktop_set_icon_style(desktop, setting->data.v_int);
-        return TRUE;
-    }
-    
-    if(!strcmp(setting->name, "icons_icon_size")) {
-        xfce_desktop_set_icon_size(desktop, setting->data.v_int);
-        return TRUE;
-    }
-    
-    if(!strcmp(setting->name, "icons_use_system_font_size")) {
-        xfce_desktop_set_icon_use_system_font_size(desktop, setting->data.v_int);
-        return TRUE;
-    }
-    
-    if(!strcmp(setting->name, "icons_font_size")) {
-        xfce_desktop_set_icon_font_size(desktop, setting->data.v_int);
-        return TRUE;
+    if(!strcmp(property, "/desktop-icons/style")) {
+        xfce_desktop_set_icon_style(desktop, G_VALUE_TYPE(value)
+                                             ? g_value_get_int(value)
+                                             : 
+#ifdef ENABLE_FILE_ICONS
+                                               XFCE_DESKTOP_ICON_STYLE_FILES
+#else
+                                               XFCE_DESKTOP_ICON_STYLE_WINDOWS
+#endif
+                                    );
+        return;
+    } else if(!strcmp(property, "/desktop-icons/icon-size")) {
+        xfce_desktop_set_icon_size(desktop, G_VALUE_TYPE(value)
+                                            ? g_value_get_uint(value)
+                                            : DEFAULT_ICON_SIZE);
+        return;
+    } else if(!strcmp(property, "/desktop-icons/use-system-font-size")) {
+        xfce_desktop_set_icon_use_system_font_size(desktop,
+                                                   G_VALUE_TYPE(value)
+                                                   ? g_value_get_boolean(value)
+                                                   : TRUE);
+        return;
+    } else if(!strcmp(property, "/desktop-icons/font-size")) {
+        xfce_desktop_set_icon_font_size(desktop, G_VALUE_TYPE(value)
+                                                 ? g_value_get_uint(value)
+                                                 : DEFAULT_ICON_FONT_SIZE);
+        return;
     }
 #endif
+
+    /* from here on we only handle /backdrop/ properties */
+    if(strncmp(property, "/backdrop/screen", 16))
+        return;
     
     /* get the screen and monitor number */
-    sname = g_strdup(setting->name);
-    q = g_strrstr(sname, "_");
-    if(!q || q == sname) {
-        g_free(sname);
-        return FALSE;
+    sname = g_strdup(property);
+
+    p = strstr(sname, "/screen");
+    if(p) {
+        q = strstr(p+7, "/");
+        if(q) {
+            gchar *endptr = NULL;
+
+            *q = 0;
+            errno = 0;
+            screen = strtoul(p+7, &endptr, 10);
+            if((screen == ULONG_MAX && errno == ERANGE) || errno == EINVAL
+               || (!endptr || *endptr))
+            {
+                screen = -1;
+            }
+            *q = '/';
+        }
     }
-    p = strstr(sname, "_");
-    if(!p || p == q) {
+
+    if(screen == -1) {
         g_free(sname);
-        return FALSE;
+        return;
     }
-    *q = 0;
-    screen = atoi(p+1);
-    monitor = atoi(q+1);
-    g_free(sname);
-    
+
     gscreen = gtk_widget_get_screen(GTK_WIDGET(desktop));
-    if(monitor < 0 || screen != gdk_screen_get_number(gscreen)
-       || monitor >= gdk_screen_get_n_monitors(gscreen))
-    {
-        /* not ours */
-        return FALSE;
+    if(screen != gdk_screen_get_number(gscreen)) {
+        g_free(sname);
+        return;
     }
+
+    /* this guy is per-screen, no per-monitor variant */
+    if(strstr(property, "/xinerama-stretch")) {
+        xfce_desktop_set_xinerama_stretch(desktop, G_VALUE_TYPE(value)
+                                                   ? g_value_get_boolean(value)
+                                                   : FALSE);
+        g_free(sname);
+        return;
+    }
+
+    p = strstr(sname, "/monitor");
+    if(p) {
+        q = strstr(p+8, "/");
+        if(q) {
+            gchar *endptr = NULL;
+
+            *q = 0;
+            errno = 0;
+            monitor = strtoul(p+8, &endptr, 10);
+            if((monitor == ULONG_MAX && errno == ERANGE) || errno == EINVAL
+               || (!endptr || *endptr))
+            {
+                monitor = -1;
+            }
+            *q = '/';
+        }
+    }
+
+    g_free(sname);
+
+    if(monitor == -1 || monitor >= gdk_screen_get_n_monitors(gscreen))
+        return;
     
     backdrop = xfce_desktop_peek_backdrop(desktop, monitor);
     if(!backdrop)
-        return FALSE;
+        return;
     
-    switch(action) {
-        case MCS_ACTION_NEW:
-        case MCS_ACTION_CHANGED:
-            if(strstr(setting->name, "showimage") == setting->name) {
-                xfce_backdrop_set_show_image(backdrop, setting->data.v_int);
-                handled = TRUE;
-            } else if(strstr(setting->name, "imagepath") == setting->name) {
-                if(is_backdrop_list(setting->data.v_string)) {
-                    const gchar *imgfile = get_path_from_listfile(setting->data.v_string);
-                    xfce_backdrop_set_image_filename(backdrop, imgfile);
-                } else {
-                    xfce_backdrop_set_image_filename(backdrop,
-                            setting->data.v_string);
-                }
-                handled = TRUE;
-            } else if(strstr(setting->name, "imagestyle") == setting->name) {
-                xfce_backdrop_set_image_style(backdrop, setting->data.v_int);
-                handled = TRUE;
-            } else if(strstr(setting->name, "color1") == setting->name) {
-                color.red = setting->data.v_color.red;
-                color.blue = setting->data.v_color.blue;
-                color.green = setting->data.v_color.green;
-                xfce_backdrop_set_first_color(backdrop, &color);
-                handled = TRUE;
-            } else if(strstr(setting->name, "color2") == setting->name) {
-                color.red = setting->data.v_color.red;
-                color.blue = setting->data.v_color.blue;
-                color.green = setting->data.v_color.green;
-                xfce_backdrop_set_second_color(backdrop, &color);
-                handled = TRUE;
-            } else if(strstr(setting->name, "colorstyle") == setting->name) {
-                xfce_backdrop_set_color_style(backdrop, setting->data.v_int);
-                handled = TRUE;
-            } else if(strstr(setting->name, "brightness") == setting->name) {
-                xfce_backdrop_set_brightness(backdrop, setting->data.v_int);
-                handled = TRUE;
-            }
-            
-            break;
-        
-        case MCS_ACTION_DELETED:
-            break;
+    if(strstr(property, "/image-show")) {
+        xfce_backdrop_set_show_image(backdrop, G_VALUE_TYPE(value)
+                                               ? g_value_get_boolean(value)
+                                               : TRUE);
+    } else if(strstr(property, "/image-path")) {
+        const gchar *v_str = G_VALUE_TYPE(value) ? g_value_get_string(value)
+                                                 : DEFAULT_BACKDROP;
+        if(is_backdrop_list(v_str)) {
+            const gchar *imgfile = get_path_from_listfile(v_str);
+            xfce_backdrop_set_image_filename(backdrop, imgfile);
+        } else
+            xfce_backdrop_set_image_filename(backdrop, v_str);
+    } else if(strstr(property, "/image-style")) {
+        xfce_backdrop_set_image_style(backdrop, G_VALUE_TYPE(value)
+                                                ? g_value_get_int(value)
+                                                : XFCE_BACKDROP_IMAGE_AUTO);
+    } else if(strstr(property, "/color1")) {
+        /* FIXME: use |value| */
+        /* default color1 is #3b5b89 */
+        color.red = (guint16)0x3b00;
+        color.green = (guint16)0x5b00;
+        color.blue = (guint16)0x8900;
+        if(G_VALUE_TYPE(value)) {
+            dbus_g_type_struct_get(value,
+                                   0, &color.red,
+                                   1, &color.green,
+                                   2, &color.blue,
+                                   G_MAXUINT);
+        }
+        xfce_backdrop_set_first_color(backdrop, &color);
+    } else if(strstr(property, "/color2")) {
+        /* FIXME: use |value| */
+        /* default color2 is #3e689e */
+        color.red = (guint16)0x3e00;
+        color.green = (guint16)0x6800;
+        color.blue = (guint16)0x9e00;
+        if(G_VALUE_TYPE(value)) {
+            dbus_g_type_struct_get(value,
+                                   0, &color.red,
+                                   1, &color.green,
+                                   2, &color.blue,
+                                   G_MAXUINT);
+        }
+        xfce_backdrop_set_second_color(backdrop, &color);
+    } else if(strstr(property, "/color-style")) {
+        xfce_backdrop_set_color_style(backdrop, G_VALUE_TYPE(value)
+                                                ? g_value_get_int(value)
+                                                : XFCE_BACKDROP_COLOR_VERT_GRADIENT);
+    } else if(strstr(property, "/brightness")) {
+        xfce_backdrop_set_brightness(backdrop,
+                                     G_VALUE_TYPE(value)
+                                     ? g_value_get_int(value) : 0);
     }
-    
-    return handled;
 }
