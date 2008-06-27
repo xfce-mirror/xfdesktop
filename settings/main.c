@@ -140,9 +140,6 @@ setup_special_icon_list(GladeXML *gxml,
 
     gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), GTK_TREE_MODEL(ls));
     g_object_unref(G_OBJECT(ls));
-
-    /* not hooked up yet */
-    gtk_widget_set_sensitive(treeview, FALSE);
 }
 
 static gint
