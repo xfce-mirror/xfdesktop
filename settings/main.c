@@ -433,7 +433,7 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
     gint i, j, nmonitors, nscreens;
     GladeXML *main_gxml;
     GtkWidget *dialog, *appearance_container, *chk_custom_font_size,
-              *spin_font_size, *color_style_widget;
+              *spin_font_size, *color_style_widget, *w;
 
     main_gxml = glade_xml_new_from_buffer(xfdesktop_settings_glade,
                                           xfdesktop_settings_glade_length,
@@ -506,15 +506,16 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
                                                                                                     "slider_saturation")))),
                                    "value");
 
+            w = glade_xml_get_widget(appearance_gxml, "combo_style");
+            gtk_combo_box_set_active(GTK_COMBO_BOX(w), 0);
             g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/image-style",
                        i, j);
             xfconf_g_property_bind(channel, buf, G_TYPE_INT,
-                                   G_OBJECT(glade_xml_get_widget(appearance_gxml,
-                                                                 "combo_style")),
-                                   "active");
+                                   G_OBJECT(w), "active");
 
             color_style_widget = glade_xml_get_widget(appearance_gxml,
                                                       "combo_colors");
+            gtk_combo_box_set_active(GTK_COMBO_BOX(color_style_widget), 0);
             g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/color-style",
                        i, j);
             xfconf_g_property_bind(channel, buf, G_TYPE_INT,
@@ -569,10 +570,10 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
                            G_OBJECT(glade_xml_get_widget(main_gxml,
                                                          "chk_show_winlist_ws_submenus")),
                            "active");
+    w = glade_xml_get_widget(main_gxml, "combo_icons");
+    gtk_combo_box_set_active(GTK_COMBO_BOX(w), 0);
     xfconf_g_property_bind(channel, DESKTOP_ICONS_STYLE_PROP, G_TYPE_INT,
-                           G_OBJECT(glade_xml_get_widget(main_gxml,
-                                                         "combo_icons")),
-                           "active");
+                           G_OBJECT(w), "active");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_ICON_SIZE_PROP, G_TYPE_UINT,
                            G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(glade_xml_get_widget(main_gxml,
                                                                                                         "spin_icon_size")))),

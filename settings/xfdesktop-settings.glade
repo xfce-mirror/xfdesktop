@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.4 on Sat Jun 28 14:33:58 2008 -->
+<!--Generated with glade3 3.4.4 on Sat Jun 28 15:15:05 2008 -->
 <glade-interface>
   <requires lib="xfce4"/>
   <widget class="XfceTitledDialog" id="prefs_dialog">
@@ -81,7 +81,6 @@
                                           <widget class="GtkComboBox" id="combo_colors">
                                             <property name="visible">True</property>
                                             <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                            <property name="active">1</property>
                                             <property name="items" translatable="yes">Solid color
 Horizontal gradient
 Vertical gradient
@@ -321,7 +320,6 @@ None</property>
                                               <widget class="GtkComboBox" id="combo_style">
                                                 <property name="visible">True</property>
                                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                                <property name="active">0</property>
                                                 <property name="items" translatable="yes">Auto
 Centered
 Tiled
@@ -526,7 +524,7 @@ Zoomed</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                    <property name="label" translatable="yes">Show _desktop menu</property>
+                                    <property name="label" translatable="yes">Show _desktop menu on desktop click</property>
                                     <property name="use_underline">True</property>
                                     <property name="response_id">0</property>
                                     <property name="active">True</property>
@@ -563,7 +561,6 @@ Zoomed</property>
                                               <widget class="GtkComboBox" id="combobox1">
                                                 <property name="visible">True</property>
                                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                                <property name="active">2</property>
                                                 <property name="items" translatable="yes">Left
 Middle
 Right</property>
@@ -590,7 +587,6 @@ Right</property>
                                               <widget class="GtkComboBox" id="combobox2">
                                                 <property name="visible">True</property>
                                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                                <property name="active">0</property>
                                                 <property name="items" translatable="yes">None
 Shift
 Alt
@@ -690,7 +686,7 @@ Control</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                    <property name="label" translatable="yes">Show _window list menu</property>
+                                    <property name="label" translatable="yes">Show _window list menu on desktop click</property>
                                     <property name="use_underline">True</property>
                                     <property name="response_id">0</property>
                                     <property name="active">True</property>
@@ -727,7 +723,6 @@ Control</property>
                                               <widget class="GtkComboBox" id="combobox8">
                                                 <property name="visible">True</property>
                                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                                <property name="active">1</property>
                                                 <property name="items" translatable="yes">Left
 Middle
 Right</property>
@@ -754,7 +749,6 @@ Right</property>
                                               <widget class="GtkComboBox" id="combobox9">
                                                 <property name="visible">True</property>
                                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                                <property name="active">0</property>
                                                 <property name="items" translatable="yes">None
 Shift
 Alt
@@ -920,7 +914,6 @@ Control</property>
                                       <widget class="GtkComboBox" id="combo_icons">
                                         <property name="visible">True</property>
                                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                        <property name="active">2</property>
                                         <property name="items" translatable="yes">None
 Minimized application icons
 File/launcher icons</property>
