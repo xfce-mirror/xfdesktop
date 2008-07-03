@@ -82,6 +82,6 @@ G_CONST_RETURN gchar *desktop_menuspec_displayname_to_icon(const gchar *displayn
  * @param paths A GPtrArray obtained from either menuspec_get_path_simple() or
  *              menuspec_get_path_multilevel().
  */
-G_INLINE_FUNC void desktop_menuspec_path_free(GPtrArray *paths);
+void desktop_menuspec_path_free(GPtrArray *paths);
 
 #endif /* ifdef __MENUSPEC_H__ */

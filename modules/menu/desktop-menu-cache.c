@@ -444,8 +444,6 @@ desktop_menu_cache_flush(const gchar *cache_file_suffix)
 void
 desktop_menu_cache_cleanup()
 {
-    GList *l;
-    
     if(menu_tree) {
         g_node_traverse(menu_tree, G_IN_ORDER, G_TRAVERSE_ALL, -1,
                 (GNodeTraverseFunc)dmc_free_tree_data, NULL);
