@@ -1,19 +1,21 @@
 # Ukrainian translation of xfdesktop.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
-# Maxim Dziumanenko <dziumanenko@gmail.com>, 2003-2006.
 #
+# Maxim Dziumanenko <dziumanenko@gmail.com>, 2003-2006.
+# Dmitry Nikitin <luckas_fb@mail.ru>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.4.0\n"
+"Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-10-20 14:36-0700\n"
-"PO-Revision-Date: 2007-03-03 22:25+0900\n"
-"Last-Translator: Maxim Dziumanenko <dziumanenko@gmail.com>\n"
-"Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
+"PO-Revision-Date: 2008-07-02 11:05+0300\n"
+"Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
+"Language-Team: Ukrainian <xfce4-dev@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
@@ -232,13 +234,12 @@ msgid "Xfce4-MenuEditor"
 msgstr "Редактор меню Xfce 4"
 
 #: ../menueditor/menueditor-main.c:57
-#, fuzzy
 msgid "Menueditor Warning"
-msgstr "Редактор меню"
+msgstr "Попередження Редактора меню"
 
 #: ../menueditor/menueditor-main.c:59
 msgid "xfce4-menueditor is deprecated"
-msgstr ""
+msgstr "Редактор меню xfce4 не рекомендується"
 
 #: ../menueditor/menueditor-main.c:60
 msgid ""
@@ -246,11 +247,13 @@ msgid ""
 "edit the new menu file format.  You may continue and edit an old-style menu "
 "file, or quit."
 msgstr ""
+"Система меню Xfce була замінена, і редактор меню xfce4 більше не дієвий   "
+"для редагування нового формату меню. Ви можете продовжити редагування файлу "
+"меню, або вийти."
 
 #: ../menueditor/menueditor-main.c:61
-#, fuzzy
 msgid "Continue"
-msgstr "Помічник"
+msgstr "Продовжити"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -614,7 +617,7 @@ msgstr "По центру"
 
 #: ../settings/appearance-settings.c:738
 msgid "Tiled"
-msgstr "Мозаїка"
+msgstr "Мозаїкою"
 
 #: ../settings/appearance-settings.c:739
 msgid "Stretched"
@@ -622,12 +625,11 @@ msgstr "Розтягнуте"
 
 #: ../settings/appearance-settings.c:740
 msgid "Scaled"
-msgstr "Масштабувати"
+msgstr "Масштабоване"
 
 #: ../settings/appearance-settings.c:741
-#, fuzzy
 msgid "Zoomed"
-msgstr "Домашній каталог"
+msgstr "Збільшене"
 
 #: ../settings/appearance-settings.c:797
 msgid "A_djust Brightness:"
@@ -814,15 +816,15 @@ msgstr "Показувати _список вікон при клацанні с
 
 #: ../settings/behavior-settings.c:327
 msgid "Show workspace _names in list"
-msgstr ""
+msgstr "Показувати _імена робочих областей у списку"
 
 #: ../settings/behavior-settings.c:341
 msgid "Show windows on each workspace in sub_menus"
-msgstr ""
+msgstr "Показувати вікна в кожній робочій області в _підменю"
 
 #: ../settings/behavior-settings.c:351
 msgid "Show sticky windows only in _active workspace"
-msgstr ""
+msgstr "Показувати приліплені вікна тільки в _активних робочих областях"
 
 #: ../settings/behavior-settings.c:362
 msgid "Show _desktop menu on right click"
@@ -905,17 +907,14 @@ msgstr "Параметри:\n"
 
 #: ../src/main.c:292
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    --reload      Перезавантажити усі параметри, оновити перелік зображень\n"
+msgstr "    --reload      Перезавантажити усі параметри, оновити перелік зображень\n"
 
 #: ../src/main.c:293
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr ""
-"    --menu        Показати меню (у місці, де знаходиться курсор миші)\n"
+msgstr "    --menu        Показати меню (у місці, де знаходиться курсор миші)\n"
 
 #: ../src/main.c:294
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    --windowlist  Показати перелік вікон (у місці, де знаходиться курсор "
 "миші)\n"
@@ -931,7 +930,7 @@ msgstr "%s не запущений.\n"
 
 #: ../src/windowlist.c:233
 msgid "Window List"
-msgstr ""
+msgstr "Список вікон"
 
 #: ../src/windowlist.c:258
 #, c-format
@@ -939,9 +938,9 @@ msgid "<b>Workspace %d</b>"
 msgstr "<b>Робоча область %d</b>"
 
 #: ../src/windowlist.c:267
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
-msgstr "<b>Робоча область %d</b>"
+msgstr "Робоча область %d"
 
 #: ../src/windowlist.c:269
 #, c-format
@@ -968,8 +967,7 @@ msgstr "Робочий стіл"
 
 #: ../src/xfdesktop-file-icon-manager.c:387
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
 "Xfdesktop не може створити теку \"%s\" для зберігання об'єктів робочого "
 "столу:"
@@ -1130,7 +1128,7 @@ msgstr "_Відкрити усе"
 
 #: ../src/xfdesktop-file-icon-manager.c:1629
 msgid "_Open in New Window"
-msgstr ""
+msgstr "Відкрити в _новому вікні"
 
 #: ../src/xfdesktop-file-icon-manager.c:1646
 msgid "Create _Launcher..."
@@ -1166,7 +1164,7 @@ msgstr "Відкрити у іншій п_рограмі..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1938
 msgid "_Rename..."
-msgstr "Перей_менувати..."
+msgstr "Переймен_увати..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1956
 msgid "Desktop _Settings..."
@@ -1403,101 +1401,96 @@ msgid "Xfce 4 Menu Editor"
 msgstr "Редактор меню Xfce 4"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-#, fuzzy
 msgid "Accessories"
-msgstr "Доступ:"
+msgstr "Допоміжні"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
-msgstr ""
+msgstr "Загальні інструменти і програми робочого столу"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:1
 msgid "Development"
-msgstr ""
+msgstr "Розробка"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:2
 msgid "Software development tools"
-msgstr ""
+msgstr "Інструменти для розробки ПЗ"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:1
 msgid "Education"
-msgstr ""
+msgstr "Навчання"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:2
 msgid "Educational software"
-msgstr ""
+msgstr "Програми для навчання"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-#, fuzzy
 msgid "Games"
-msgstr "Назва"
+msgstr "Ігри"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
-msgstr ""
+msgstr "Ігри, пазли, інші програми для розваг"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
-msgstr ""
+msgstr "Графіка"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr ""
+msgstr "Програми для створення та маніпуляцій з графікою"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
-msgstr ""
+msgstr "Аудіо та відео програвачі та редактори"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-#, fuzzy
 msgid "Multimedia"
-msgstr "Багаторівневе"
+msgstr "Мультимедія"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
-msgstr ""
+msgstr "Мережеві"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:2
 msgid "Network applications and utilities"
-msgstr ""
+msgstr "Програми та інструменти для мережі"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:1
 msgid "Office"
-msgstr ""
+msgstr "Офісні"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:2
 msgid "Office and productivity applications"
-msgstr ""
+msgstr "Офісні та продуктивні програми"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:1
 msgid "Applications that don't fit into other categories"
-msgstr ""
+msgstr "Програми, що не увійшли до інших категорій"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-#, fuzzy
 msgid "Other"
-msgstr "/Інше"
+msgstr "Інші"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr ""
+msgstr "Аплети зберігача екрану"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
-msgstr ""
+msgstr "Зберігачі екрану"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr ""
+msgstr "Програми для налаштування Робочої стільниці та системи"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-#, fuzzy
 msgid "Settings"
-msgstr "Параметри робочого столу"
+msgstr "Параметри"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
-msgstr ""
+msgstr "Системні програми та інструменти"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
@@ -1505,7 +1498,7 @@ msgstr "Про Xfce"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr ""
+msgstr "Інформація про середовище Робочого столу Xfce"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
@@ -1513,35 +1506,31 @@ msgstr "Менеджер файлів"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
 msgid "Thunar file manager"
-msgstr ""
+msgstr "Файловий менеджер Thunar"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-#, fuzzy
 msgid "Help"
-msgstr "_Довідка"
+msgstr "Допомога"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr ""
+msgstr "Довідка про використання Xfce"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
-msgstr ""
+msgstr "Завершити сеанс"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-#, fuzzy
 msgid "Log out of the Xfce Desktop"
-msgstr "Параметри керування робочим столом Xfce 4"
+msgstr "Завершити сеанс Xfce"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-#, fuzzy
 msgid "Run Program..."
-msgstr "Помилка при виконанні"
+msgstr "Виконати програму..."
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-#, fuzzy
 msgid "Run a program"
-msgstr "Помилка при виконанні"
+msgstr "Запуск програми"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
@@ -1549,15 +1538,15 @@ msgstr "Термінал"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
 msgid "Terminal emulator"
-msgstr ""
+msgstr "Емулятор терміналу"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
 msgid "Browse the web"
-msgstr ""
+msgstr "Перегляд WEB"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
-msgstr "Веб-переглядач"
+msgstr "Переглядач WEB"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
@@ -1575,39 +1564,3 @@ msgstr "Параметри керування робочим столом Xfce 4
 msgid "Xfce 4 Desktop Settings"
 msgstr "Параметри робочого столу Xfce 4"
 
-#~ msgid "Des_ktop"
-#~ msgstr "_Робочий стіл"
-
-#~ msgid "_Desktop Properties..."
-#~ msgstr "В_ластивості робочого столу..."
-
-#, fuzzy
-#~ msgid "Scientific applications and tools"
-#~ msgstr "Значки згорнутих вікон"
-
-#~ msgid "Unable to quit session."
-#~ msgstr "Не вдається вийти з сеансу."
-
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "Щоб завершити сеанс треба, щоб був запущений диспетчер сеансів Xfce "
-#~ "(xfce4-session), але його не виявлено. Будь-ласка, вийдіть з Xfce іншим "
-#~ "шляхом."
-
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "Щоб завершити сеанс потрібна команда 'xfce4-session-logout', але вона не "
-#~ "знайдена: %s"
-
-#~ msgid " Bytes)"
-#~ msgstr " байтів)"
-
-#~ msgid "Edit Properties"
-#~ msgstr "Змінити параметри"
-
-#~ msgid "Backdrop List"
-#~ msgstr "Список зображень для тла"
