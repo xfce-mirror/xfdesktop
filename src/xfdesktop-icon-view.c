@@ -56,7 +56,9 @@
 #define SCREEN_MARGIN     8
 #define CORNER_ROUNDNESS  4
 
+#if !GTK_CHECK_VERSION(2, 12, 0)
 #define DEFAULT_TIP_TIMEOUT 500
+#endif
 
 #if defined(DEBUG) && DEBUG > 0
 #define DUMP_GRID_LAYOUT(icon_view) \
@@ -149,10 +151,12 @@ struct _XfdesktopIconViewPrivate
     GdkPixbuf *rounded_frame;
     gint label_alpha;
     
+#if !GTK_CHECK_VERSION(2, 12, 0)
     guint tip_show_id;
     gint tip_timeout;
     GtkWidget *tip_window;
     GtkWidget *tip_label;
+#endif
 };
 
 static gboolean xfdesktop_icon_view_button_press(GtkWidget *widget,
@@ -285,6 +289,14 @@ static void xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
                                                   XfdesktopIcon *icon);
 static gboolean xfdesktop_icon_view_icon_find_position(XfdesktopIconView *icon_view,
                                                        XfdesktopIcon *icon);
+#if GTK_CHECK_VERSION(2, 12, 0)
+static gboolean xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
+                                                 gint x,
+                                                 gint y,
+                                                 gboolean keyboard_tooltip,
+                                                 GtkTooltip *tooltip,
+                                                 gpointer user_data);
+#endif
 
 
 enum
@@ -380,7 +392,13 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
                                                         icon_view_n_targets);
     gtk_drag_dest_set(GTK_WIDGET(icon_view), 0, NULL, 0, GDK_ACTION_MOVE);
     
+#if GTK_CHECK_VERSION(2, 12, 0)
+    g_object_set(G_OBJECT(icon_view), "has-tooltip", TRUE, NULL);
+    g_signal_connect(G_OBJECT(icon_view), "query-tooltip",
+                     G_CALLBACK(xfdesktop_icon_view_show_tooltip), NULL);
+#else
     icon_view->priv->tip_timeout = DEFAULT_TIP_TIMEOUT;
+#endif
     
     GTK_WIDGET_SET_FLAGS(GTK_WIDGET(icon_view), GTK_NO_WINDOW);
 }
@@ -395,10 +413,12 @@ xfdesktop_icon_view_finalize(GObject *obj)
         g_object_unref(G_OBJECT(icon_view->priv->manager));
     }
     
+#if !GTK_CHECK_VERSION(2, 12, 0)
     if(icon_view->priv->tip_show_id)
         g_source_remove(icon_view->priv->tip_show_id);
     if(icon_view->priv->tip_window)
         gtk_widget_destroy(icon_view->priv->tip_window);
+#endif
     
     gtk_target_list_unref(icon_view->priv->native_targets);
     gtk_target_list_unref(icon_view->priv->source_targets);
@@ -424,6 +444,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
     if(evt->type == GDK_BUTTON_PRESS) {
         GList *icon_l;
         
+#if !GTK_CHECK_VERSION(2, 12, 0)
         /* always hide the tooltip on button press */
         if(icon_view->priv->tip_window
            && GTK_WIDGET_VISIBLE(icon_view->priv->tip_window))
@@ -434,6 +455,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             g_source_remove(icon_view->priv->tip_show_id);
             icon_view->priv->tip_show_id = 0;
         }
+#endif
         
         icon_l = g_list_find_custom(icon_view->priv->icons, evt,
                                     (GCompareFunc)xfdesktop_check_icon_clicked);
@@ -730,6 +752,7 @@ xfdesktop_icon_view_maybe_begin_drag(XfdesktopIconView *icon_view,
     return TRUE;
 }
 
+#if !GTK_CHECK_VERSION(2, 12, 0)
 static gboolean
 xfdesktop_icon_view_tip_window_leave(GtkWidget *w,
                                      GdkEventCrossing *evt,
@@ -813,18 +836,33 @@ xfdesktop_icon_view_ensure_tip_window(XfdesktopIconView *icon_view)
     gtk_container_add(GTK_CONTAINER(icon_view->priv->tip_window),
                       icon_view->priv->tip_label);
 }
+#endif
 
 static gboolean
-xfdesktop_icon_view_show_tooltip(gpointer user_data)
+xfdesktop_icon_view_show_tooltip(
+#if GTK_CHECK_VERSION(2, 12, 0)
+                                 GtkWidget *widget,
+                                 gint x,
+                                 gint y,
+                                 gboolean keyboard_tooltip,
+                                 GtkTooltip *tooltip,
+#endif
+                                 gpointer user_data)
 {
+#if GTK_CHECK_VERSION(2, 12, 0)
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
+#else
     XfdesktopIconView *icon_view = user_data;
-    const gchar *tip_text;
     GdkScreen *gscreen;
     gint x, y, w, h, monitor_num;
     GtkRequisition req;
     GdkRectangle geom;
+#endif
+    const gchar *tip_text;
     
+#if !GTK_CHECK_VERSION(2, 12, 0)
     icon_view->priv->tip_show_id = 0;
+#endif
     
     if(!icon_view->priv->item_under_pointer
        || icon_view->priv->definitely_dragging)
@@ -836,6 +874,10 @@ xfdesktop_icon_view_show_tooltip(gpointer user_data)
     if(!tip_text)
         return FALSE;
     
+#if GTK_CHECK_VERSION(2, 12, 0)
+    gtk_tooltip_set_text(tooltip, tip_text);
+    return TRUE;
+#else
     xfdesktop_icon_view_ensure_tip_window(icon_view);
     
     gtk_label_set_text(GTK_LABEL(icon_view->priv->tip_label), tip_text);
@@ -867,6 +909,7 @@ xfdesktop_icon_view_show_tooltip(gpointer user_data)
     gtk_widget_show(icon_view->priv->tip_window);
     
     return FALSE;
+#endif
 }
 
 static gboolean
@@ -883,11 +926,13 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
         icon_view->priv->definitely_dragging = xfdesktop_icon_view_maybe_begin_drag(icon_view,
                                                                                     evt);
         if(icon_view->priv->definitely_dragging) {
+#if !GTK_CHECK_VERSION(2, 12, 0)
             if(icon_view->priv->tip_window
                && GTK_WIDGET_VISIBLE(icon_view->priv->tip_window))
             {
                 gtk_widget_hide(icon_view->priv->tip_window);
             }
+#endif
             ret = TRUE;
         }
     } else {
@@ -899,6 +944,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                                            &extents)
                || !xfdesktop_rectangle_contains_point(&extents, evt->x, evt->y))
             {
+#if !GTK_CHECK_VERSION(2, 12, 0)
                 /* we're not over the icon anymore */
                 if(icon_view->priv->tip_window
                    && GTK_WIDGET_VISIBLE(icon_view->priv->tip_window))
@@ -909,6 +955,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                     g_source_remove(icon_view->priv->tip_show_id);
                     icon_view->priv->tip_show_id = 0;
                 }
+#endif
                 
                 icon = icon_view->priv->item_under_pointer;
                 icon_view->priv->item_under_pointer = NULL;
@@ -923,6 +970,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
             if(icon && xfdesktop_icon_get_extents(icon, &extents)
                && xfdesktop_rectangle_contains_point(&extents, evt->x, evt->y))
             {
+#if !GTK_CHECK_VERSION(2, 12, 0)
                 if(icon != icon_view->priv->item_under_pointer
                    && !icon_view->priv->maybe_begin_drag)
                 {
@@ -931,6 +979,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                                                                  xfdesktop_icon_view_show_tooltip,
                                                                  icon_view);
                 }
+#endif
                 
                 icon_view->priv->item_under_pointer = icon;
 #ifdef HAVE_LIBEXO
@@ -952,6 +1001,7 @@ xfdesktop_icon_view_leave_notify(GtkWidget *widget,
     gboolean clear_icon = FALSE;
     
     if(icon_view->priv->item_under_pointer) {
+#if !GTK_CHECK_VERSION(2, 12, 0)
         if(icon_view->priv->tip_window
            && GTK_WIDGET_VISIBLE(icon_view->priv->tip_window))
         {
@@ -963,6 +1013,7 @@ xfdesktop_icon_view_leave_notify(GtkWidget *widget,
                 clear_icon = TRUE;
             }
         } else
+#endif
             clear_icon = TRUE;
         
         if(clear_icon) {
