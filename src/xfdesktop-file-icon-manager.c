@@ -1530,34 +1530,29 @@ xfdesktop_menu_shell_append_action_list(GtkMenuShell *menu_shell,
 #endif
 
 static void
-xfdesktop_mcs_settings_launch(GtkWidget *w,
-                              gpointer user_data)
+xfdesktop_settings_launch(GtkWidget *w,
+                          gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    gchar *display_name, *cmd;
-    gchar buf[PATH_MAX];
+    gchar *cmd;
     GError *error = NULL;
     
-    display_name = gdk_screen_make_display_name(fmanager->priv->gscreen);
-    
-    cmd = g_find_program_in_path("xfce-setting-show");
+    cmd = g_find_program_in_path("xfdesktop-settings");
     if(!cmd)
-        cmd = g_strdup(BINDIR "/xfce-setting-show");
+        cmd = g_strdup(BINDIR "/xfdesktop-settings");
     
-    g_snprintf(buf, PATH_MAX, "env DISPLAY=\"%s\" \"%s\" backdrop", display_name, cmd);
-    g_free(display_name);
-    g_free(cmd);
-    
-    if(!xfce_exec(buf, FALSE, TRUE, &error)) {
+    if(!xfce_exec_on_screen(fmanager->priv->gscreen, cmd, FALSE, TRUE, &error)) {
         GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
         /* printf is to be translator-friendly */
-        gchar *primary = g_strdup_printf(_("Unable to launch \"%s\":"),
-                                         "xfce-setting-show");
+        gchar *primary = g_strdup_printf(_("Unable to launch \"%s\":"), cmd);
         xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
                             GTK_STOCK_DIALOG_ERROR, primary, error->message,
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
         g_free(primary);
+        g_error_free(error);
     }
+
+    g_free(cmd);
 }
 
 static void
@@ -1963,7 +1958,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             g_signal_connect(G_OBJECT(mi), "activate",
-                             G_CALLBACK(xfdesktop_mcs_settings_launch), fmanager);
+                             G_CALLBACK(xfdesktop_settings_launch), fmanager);
         }
         
         img = gtk_image_new_from_stock(GTK_STOCK_PROPERTIES, GTK_ICON_SIZE_MENU);
