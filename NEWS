@@ -31,6 +31,10 @@
         and above.  This allows xfdesktop to notice if the user plugs or
         unplugs a monitor when using an xrandr1.2-capable X server and video
         driver.
+      * Support the new tooltips framework present in gtk 2.12 for
+        XfdesktopIconView.  This is mostly user-invisible, but does decrease
+        code size and memory usage ever so slightly, and removes a possible
+        source of bugs.
 
 
 4.4.2
