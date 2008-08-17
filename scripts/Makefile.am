@@ -16,4 +16,5 @@ EXTRA_DIST = \
 	$(migrationscript_in_files)
 
 DISTCLEANFILES = \
-	$(migrationscript_DATA)
+	$(migrationscript_DATA) \
+	$(autostart_DATA)

@@ -7,9 +7,7 @@ menueditor/menueditor-edit-external-dialog.c
 menueditor/menueditor-main.c
 menueditor/menueditor-main-window.c
 panel-plugin/desktop-menu-plugin.c
-settings/appearance-settings.c
-settings/backdrop-list-manager.c
-settings/behavior-settings.c
+panel-plugin/xfce4-menu.desktop.in.in
 src/main.c
 src/menu.c
 src/windowlist.c
@@ -45,5 +43,6 @@ modules/menu/menu-data/xfce4-logout.desktop.in
 modules/menu/menu-data/xfce4-run-program.desktop.in
 modules/menu/menu-data/xfce4-terminal.desktop.in
 modules/menu/menu-data/xfce4-web-browser.desktop.in
-panel-plugin/xfce4-menu.desktop.in.in
+settings/main.c
 settings/xfce-backdrop-settings.desktop.in
+settings/xfdesktop-settings.glade

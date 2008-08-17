@@ -8,7 +8,7 @@
 bin_PROGRAMS = xfdesktop-settings
 
 xfdesktop_settings_SOURCES = \
-	xfdesktop_settings_glade.h \
+	xfdesktop-settings_glade.h \
 	main.c
 
 xfdesktop_settings_CFLAGS =						\
@@ -44,14 +44,18 @@ dialogdir = $(datadir)/xfce4/settings-dialogs
 dialog_DATA = $(desktop_DATA)
 @INTLTOOL_DESKTOP_RULE@
 
+if MAINTAINER_MODE
+
 BUILT_SOURCES = \
 xfdesktop-settings_glade.h
 
 xfdesktop-settings_glade.h: $(srcdir)/xfdesktop-settings.glade
 	exo-csource --static --name=xfdesktop_settings_glade $< >$@
 
+endif
+
 EXTRA_DIST = \
-	xfdesktop_settings.glade \
+	xfdesktop-settings.glade \
 	$(desktop_in_files)
 
 CLEANFILES =  \
