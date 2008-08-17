@@ -6,9 +6,9 @@ dnl
 dnl version info
 m4_define([xfdesktop_version_major], [4])
 m4_define([xfdesktop_version_minor], [5])
-m4_define([xfdesktop_version_micro], [80])
+m4_define([xfdesktop_version_micro], [90])
 m4_define([xfdesktop_version_build], [r@REVISION@])
-m4_define([xfdesktop_version_tag],[])
+m4_define([xfdesktop_version_tag],[svn])
 m4_define([xfdesktop_version], [xfdesktop_version_major().xfdesktop_version_minor().xfdesktop_version_micro()ifelse(xfdesktop_version_tag(), [svn], [xfdesktop_version_tag()-xfdesktop_version_build()], [xfdesktop_version_tag()])])
 
 dnl minimum required versions
