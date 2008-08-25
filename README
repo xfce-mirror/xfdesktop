@@ -1,15 +1,30 @@
-README for xfdesktop version 4.4
+README for xfdesktop version 4.5
 ================================
 
 WHAT IS IT?
 ~~~~~~~~~~~
+
 Xfdesktop is a desktop manager for the Xfce Desktop Environment. Desktop 
-in this respect means the root window. The manager handles the following 
-tasks:
+in this respect means the root window (or, rather, a window that sits on top
+of the root window). The manager handles the following tasks:
 - background image / color
 - root menu, window list
 - minimized app icons
 - file icons on the desktop (using Thunar libs)
+
+
+MINIMUM REQUIREMENTS
+~~~~~~~~~~~~~~~~~~~~
+
+* intltool 0.34
+* GTK+ 2.10.0
+* libxfce4util 4.5.0svn-r26490
+* libxfcegui4 4.5.2svn-r27035
+* libwnck 2.12.0
+* libxfce4menu 0.1.0svn-r26507 (optional; required for apps menu)
+* libthunar-vfs 0.8.0  (optional; required for file icons)
+* dbus-glib 0.34  (optional; required for file icons)
+* libexo 0.3.2 (optional)
 
 
 HIDDEN CUSTOMISATIONS
