@@ -42,6 +42,10 @@
 #include <xfconf/xfconf.h>
 #include <libxfcegui4/libxfcegui4.h>
 
+#ifdef HAVE_LIBEXO
+#include <exo/exo.h>
+#endif
+
 #include "xfdesktop-common.h"
 #include "xfdesktop-settings_glade.h"
 
@@ -58,6 +62,25 @@
 #define DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP  "/desktop-icons/use-custom-font-size"
 
 #define PER_SCREEN_PROP_FORMAT               "/backdrop/screen%d/monitor%d"
+
+typedef struct
+{
+    XfconfChannel *channel;
+    gint screen;
+    gint monitor;
+
+    GtkWidget *color_style_combo;
+    GtkWidget *color1_btn;
+    GtkWidget *color2_btn;
+    GtkWidget *single_image_radio;
+    GtkWidget *image_list_radio;
+    GtkWidget *image_treeview;
+    GtkWidget *plus_btn;
+    GtkWidget *minus_btn;
+    GtkWidget *image_style_combo;
+    GtkWidget *brightness_slider;
+    GtkWidget *saturation_slider;
+} AppearancePanel;
 
 enum
 {
@@ -227,15 +250,10 @@ static void
 cb_image_selection_changed(GtkTreeSelection *sel,
                            gpointer user_data)
 {
-    GtkWidget *treeview = user_data;
-    XfconfChannel *channel = g_object_get_data(G_OBJECT(treeview),
-                                               "xfconf-channel");
-    guint32 scmo_mask = (guint32)GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(treeview),
-                                                                    "screen-monitor-mask"));
+    AppearancePanel *panel = user_data;
     GtkTreeModel *model = NULL;
     GtkTreeIter iter;
     gchar *filename = NULL;
-    gint screen = scmo_mask >> 16, monitor = scmo_mask & 0xffff;
     gchar buf[1024];
 
     TRACE("entering");
@@ -245,35 +263,31 @@ cb_image_selection_changed(GtkTreeSelection *sel,
 
     gtk_tree_model_get(model, &iter, COL_FILENAME, &filename, -1);
 
-    DBG("got %s, applying to screen %d monitor %d", filename, screen, monitor);
+    DBG("got %s, applying to screen %d monitor %d", filename, panel->screen, panel->monitor);
 
     g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/image-path",
-               screen, monitor);
-    xfconf_channel_set_string(channel, buf, filename);
+               panel->screen, panel->monitor);
+    xfconf_channel_set_string(panel->channel, buf, filename);
     g_free(filename);
 }
 
 static void
 xfdesktop_settings_dialog_populate_image_list(GladeXML *gxml,
-                                              XfconfChannel *channel,
-                                              gint screen,
-                                              gint monitor)
+                                              AppearancePanel *panel)
 {
     gchar buf[PATH_MAX], *image_file;
-    GtkWidget *treeview;
     GtkListStore *ls;
     GtkTreeIter iter, *image_file_iter = NULL;
     gboolean do_sort = TRUE, connect_changed_signal = FALSE;
     GtkTreeSelection *sel;
 
-    treeview = glade_xml_get_widget(gxml, "treeview_imagelist");
-    sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview));
+    sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(panel->image_treeview));
     ls = gtk_list_store_new(N_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
                             G_TYPE_STRING, G_TYPE_STRING);
 
     g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/image-path",
-               screen, monitor);
-    image_file = xfconf_channel_get_string(channel, buf, NULL);
+               panel->screen, panel->monitor);
+    image_file = xfconf_channel_get_string(panel->channel, buf, NULL);
 
     if(image_file && is_backdrop_list(image_file)) {
         gchar **images;
@@ -314,41 +328,21 @@ xfdesktop_settings_dialog_populate_image_list(GladeXML *gxml,
         }
     } else {
         GtkTreeIter *tmp;
-        gchar *d;
+        gchar **backdrop_dirs;
+        gint i;
 
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget(gxml,
                                                                             "radio_singleimage")),
                                      TRUE);
         gtk_widget_hide(glade_xml_get_widget(gxml, "btn_image_remove"));
 
-        tmp = xfdesktop_image_list_add_dir(ls,
-                                           DATADIR "/xfce4/backdrops",
-                                           image_file);
-        if(tmp)
-            image_file_iter = tmp;
-
-        g_snprintf(buf, sizeof(buf), "%s/.local/share/xfce4/backdrops",
-                   xfce_get_homedir());
-        tmp = xfdesktop_image_list_add_dir(ls, buf, image_file);
-        if(tmp)
-            image_file_iter = tmp;
-
-        d = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
-                                        "xfce4/desktop/backdrops/", FALSE);
-        if(d) {
-            tmp = xfdesktop_image_list_add_dir(ls, d, image_file);
+        backdrop_dirs = xfce_resource_lookup_all(XFCE_RESOURCE_DATA,
+                                                 "xfce4/backdrops/");
+        for(i = 0; backdrop_dirs[i]; ++i) {
+            tmp = xfdesktop_image_list_add_dir(ls, backdrop_dirs[i],
+                                               image_file);
             if(tmp)
                 image_file_iter = tmp;
-            g_free(d);
-        }
-
-        d = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, "xfce4/desktop/",
-                                        FALSE);
-        if(d) {
-            tmp = xfdesktop_image_list_add_dir(ls, d, image_file);
-            if(tmp)
-                image_file_iter = tmp;
-            g_free(d);
         }
 
         if(image_file && !image_file_iter) {
@@ -391,7 +385,8 @@ xfdesktop_settings_dialog_populate_image_list(GladeXML *gxml,
                                              GTK_SORT_ASCENDING);
     }
 
-    gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), GTK_TREE_MODEL(ls));
+    gtk_tree_view_set_model(GTK_TREE_VIEW(panel->image_treeview),
+                            GTK_TREE_MODEL(ls));
     if(image_file_iter) {
         gtk_tree_selection_select_iter(sel, image_file_iter);
         gtk_tree_iter_free(image_file_iter);
@@ -400,7 +395,7 @@ xfdesktop_settings_dialog_populate_image_list(GladeXML *gxml,
 
     if(connect_changed_signal) {
         g_signal_connect(G_OBJECT(sel), "changed",
-                         G_CALLBACK(cb_image_selection_changed), treeview);
+                         G_CALLBACK(cb_image_selection_changed), panel);
     }
 
     g_free(image_file);
@@ -413,6 +408,59 @@ cb_xfdesktop_chk_custom_font_size_toggled(GtkCheckButton *button,
     GtkWidget *spin_button = GTK_WIDGET(user_data);
     gtk_widget_set_sensitive(spin_button,
                              gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)));
+}
+
+static void
+add_file_button_clicked(GtkWidget *button,
+                        gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+    GtkWidget *chooser;
+    GtkFileFilter *filter;
+
+    chooser = gtk_file_chooser_dialog_new(_("Add Image File(s)"),
+                                          GTK_WINDOW(gtk_widget_get_toplevel(button)),
+                                          GTK_FILE_CHOOSER_ACTION_OPEN,
+                                          GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+                                          GTK_STOCK_ADD, GTK_RESPONSE_ACCEPT,
+                                          NULL);
+    gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(chooser), TRUE);
+
+    filter = gtk_file_filter_new();
+    gtk_file_filter_set_name(filter, _("Image files"));
+    gtk_file_filter_add_pixbuf_formats(filter);
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+
+    filter = gtk_file_filter_new();
+    gtk_file_filter_set_name(filter, _("All files"));
+    gtk_file_filter_add_custom(filter, GTK_FILE_FILTER_FILENAME,
+                               (GtkFileFilterFunc)gtk_true, NULL, NULL);
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+
+#ifdef HAVE_LIBEXO
+    exo_gtk_file_chooser_add_thumbnail_preview(GTK_FILE_CHOOSER(chooser));
+#endif
+
+    if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
+        gchar *filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(chooser));
+        GtkTreeModel *model = gtk_tree_view_get_model(GTK_TREE_VIEW(panel->image_treeview));
+        GtkTreeIter iter;
+        gchar *name = g_path_get_basename(filename);
+        gchar *name_utf8 = g_filename_to_utf8(name, strlen(name),
+                                              NULL, NULL, NULL);
+
+        gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+        gtk_list_store_set(GTK_LIST_STORE(model), &iter,
+                           COL_NAME, name_utf8,
+                           COL_FILENAME, filename,
+                           -1);
+
+        g_free(filename);
+        g_free(name);
+        g_free(name_utf8);
+    }
+
+    gtk_widget_destroy(chooser);
 }
 
 static void
@@ -465,10 +513,14 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
         for(j = 0; j < nmonitors; ++j) {
             gchar buf[1024];
             GladeXML *appearance_gxml;
-            GtkWidget *appearance_settings, *appearance_label,
-                      *colorbtn_second, *treeview;
+            AppearancePanel *panel = g_new0(AppearancePanel, 1);
+            GtkWidget *appearance_settings, *appearance_label, *btn;
             GtkCellRenderer *render;
             GtkTreeViewColumn *col;
+
+            panel->channel = channel;
+            panel->screen = i;
+            panel->monitor = j;
 
             if(nscreens > 1 && nmonitors > 1) {
                 g_snprintf(buf, sizeof(buf), _("Screen %d, Monitor %d"),
@@ -494,9 +546,10 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
             /* Connect xfconf bindings */
             g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/brightness",
                        i, j);
+            panel->brightness_slider =glade_xml_get_widget(appearance_gxml,
+                                                           "slider_brightness");
             xfconf_g_property_bind(channel, buf, G_TYPE_INT,
-                                   G_OBJECT(gtk_range_get_adjustment(GTK_RANGE(glade_xml_get_widget(appearance_gxml,
-                                                                                                    "slider_brightness")))),
+                                   G_OBJECT(gtk_range_get_adjustment(GTK_RANGE(panel->brightness_slider))),
                                    "value");
 
             g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/saturation",
@@ -521,29 +574,33 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
             xfconf_g_property_bind(channel, buf, G_TYPE_INT,
                                    G_OBJECT(color_style_widget), "active");
 
-            colorbtn_second = glade_xml_get_widget(appearance_gxml,
-                                                   "colorbtn_second");
+            panel->color2_btn = glade_xml_get_widget(appearance_gxml,
+                                                          "color2_btn");
             g_signal_connect(G_OBJECT(color_style_widget), "changed",
                              G_CALLBACK(cb_xfdesktop_combo_color_changed),
-                             colorbtn_second);
+                             panel->color2_btn);
 
-            treeview = glade_xml_get_widget(appearance_gxml,
-                                            "treeview_imagelist");
+            panel->image_treeview = glade_xml_get_widget(appearance_gxml,
+                                                         "treeview_imagelist");
             render = gtk_cell_renderer_pixbuf_new();
             col = gtk_tree_view_column_new_with_attributes("thumbnail", render,
                                                            "pixbuf", COL_PIX, NULL);
-            gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
+            gtk_tree_view_append_column(GTK_TREE_VIEW(panel->image_treeview),
+                                        col);
             render = gtk_cell_renderer_text_new();
             col = gtk_tree_view_column_new_with_attributes("name", render,
                                                            "text", COL_NAME, NULL);
-            gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
+            gtk_tree_view_append_column(GTK_TREE_VIEW(panel->image_treeview),
+                                        col);
 
             xfdesktop_settings_dialog_populate_image_list(appearance_gxml,
-                                                          channel, i, j);
+                                                          panel);
 
-            g_object_set_data(G_OBJECT(treeview), "xfconf-channel", channel);
-            g_object_set_data(G_OBJECT(treeview), "screen-monitor-mask",
-                              GUINT_TO_POINTER((i << 16) | (j)));
+            btn = glade_xml_get_widget(appearance_gxml, "btn_plus");
+            g_signal_connect(G_OBJECT(btn), "clicked",
+                             G_CALLBACK(add_file_button_clicked), panel);
+
+            g_object_unref(G_OBJECT(appearance_gxml));
         }
     }
 
@@ -586,6 +643,8 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
                            "active");
 
     setup_special_icon_list(main_gxml, channel);
+
+    g_object_unref(G_OBJECT(main_gxml));
     
     return dialog;
 }
