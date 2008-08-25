@@ -76,8 +76,17 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfcegui4/libxfcegui4.h>
 
+#include <xfconf/xfconf.h>
+
 #include "xfdesktop-common.h"
 #include "xfce-desktop.h"
+
+#ifdef ENABLE_FILE_ICONS
+#define SETTING_SHOW_FILESYSTEM  "/desktop-icons/file-icons/show-filesystem"
+#define SETTING_SHOW_HOME        "/desktop-icons/file-icons/show-home"
+#define SETTING_SHOW_TRASH       "/desktop-icons/file-icons/show-trash"
+#define SETTING_SHOW_REMOVABLE   "/desktop-icons/file-icons/show-removable"
+#endif
 
 struct _XfceDesktopPriv
 {
@@ -164,6 +173,34 @@ xfce_desktop_ensure_system_font_size(XfceDesktop *desktop)
     return desktop->priv->system_font_size;
 }
 
+#ifdef ENABLE_FILE_ICONS
+static void
+xfce_desktop_icon_settings_changed(XfconfChannel *channel,
+                                   const gchar *property,
+                                   const GValue *value,
+                                   gpointer user_data)
+{
+    XfdesktopFileIconManager *manager = user_data;
+
+    if(!strcmp(property, SETTING_SHOW_FILESYSTEM)) {
+        xfdesktop_file_icon_manager_set_show_special_file(manager,
+                                                          XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM,
+                                                          g_value_get_boolean(value));
+    } else if(!strcmp(property, SETTING_SHOW_HOME)) {
+        xfdesktop_file_icon_manager_set_show_special_file(manager,
+                                                          XFDESKTOP_SPECIAL_FILE_ICON_HOME,
+                                                          g_value_get_boolean(value));
+    } else if(!strcmp(property, SETTING_SHOW_TRASH)) {
+        xfdesktop_file_icon_manager_set_show_special_file(manager,
+                                                          XFDESKTOP_SPECIAL_FILE_ICON_TRASH,
+                                                          g_value_get_boolean(value));
+    } else if(!strcmp(property, SETTING_SHOW_REMOVABLE)) {
+        xfdesktop_file_icon_manager_set_show_removable_media(manager,
+                                                             g_value_get_boolean(value));
+    }
+}
+#endif
+
 static void
 xfce_desktop_setup_icon_view(XfceDesktop *desktop)
 {
@@ -184,39 +221,51 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
                 ThunarVfsPath *path;
                 gchar *desktop_path = xfce_get_homefile("Desktop",
                                                         NULL);
-                
+
                 path = thunar_vfs_path_new(desktop_path, NULL);
                 if(path) {
-                    XfceRc *rcfile;
+                    XfconfChannel *channel = xfconf_channel_new("xfce4-desktop");
                     /* defaults */
                     gboolean show_removable = TRUE, show_filesystem = TRUE;
                     gboolean show_home = TRUE, show_trash = TRUE;
-                    
+
                     manager = xfdesktop_file_icon_manager_new(path);
                     thunar_vfs_path_unref(path);
-                    
-                    rcfile = xfce_rc_config_open(XFCE_RESOURCE_CONFIG,
-                                                 "xfce4/desktop/xfdesktoprc",
-                                                 TRUE);
-                    if(rcfile) {
-                        if(xfce_rc_has_group(rcfile, "file-icons")) {
-                            xfce_rc_set_group(rcfile, "file-icons");
-                            show_filesystem = xfce_rc_read_bool_entry(rcfile,
-                                                                      "show-filesystem",
-                                                                      show_filesystem);
-                            show_home = xfce_rc_read_bool_entry(rcfile,
-                                                                "show-home",
-                                                                show_home);
-                            show_trash = xfce_rc_read_bool_entry(rcfile,
-                                                                 "show-trash",
-                                                                 show_trash);
-                            show_removable = xfce_rc_read_bool_entry(rcfile,
-                                                                     "show-removable",
-                                                                     show_removable);
-                        }
-                        
-                        xfce_rc_close(rcfile);
-                    }
+
+                    g_signal_connect(G_OBJECT(channel),
+                                     "property-changed::" SETTING_SHOW_FILESYSTEM,
+                                     G_CALLBACK(xfce_desktop_icon_settings_changed),
+                                     manager);
+                    g_signal_connect(G_OBJECT(channel),
+                                     "property-changed::" SETTING_SHOW_HOME,
+                                     G_CALLBACK(xfce_desktop_icon_settings_changed),
+                                     manager);
+                    g_signal_connect(G_OBJECT(channel),
+                                     "property-changed::" SETTING_SHOW_TRASH,
+                                     G_CALLBACK(xfce_desktop_icon_settings_changed),
+                                     manager);
+                    g_signal_connect(G_OBJECT(channel),
+                                     "property-changed::" SETTING_SHOW_REMOVABLE,
+                                     G_CALLBACK(xfce_desktop_icon_settings_changed),
+                                     manager);
+                    /* let channel (and the signals above) get destroyed
+                     * when the manager gets destroyed */
+                    g_object_set_data_full(G_OBJECT(manager),
+                                           "xfconf-channel", channel,
+                                           (GDestroyNotify)g_object_unref);
+
+                    show_filesystem = xfconf_channel_get_bool(channel,
+                                                              SETTING_SHOW_FILESYSTEM,
+                                                              show_filesystem);
+                    show_home = xfconf_channel_get_bool(channel,
+                                                        SETTING_SHOW_HOME,
+                                                        show_home);
+                    show_trash = xfconf_channel_get_bool(channel,
+                                                         SETTING_SHOW_TRASH,
+                                                         show_trash);
+                    show_removable = xfconf_channel_get_bool(channel,
+                                                             SETTING_SHOW_REMOVABLE,
+                                                             show_removable);
                     
                     xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
                                                                       XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM,
