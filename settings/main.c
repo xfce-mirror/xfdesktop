@@ -3,6 +3,7 @@
  *
  *  Copyright (c) 2008 Stephan Arts <stephan@xfce.org>
  *  Copyright (c) 2008 Brian Tarricone <bjt23@cornell.edu>
+ *  Copyright (c) 2008 Jérôme Guelfucci <jerome.guelfucci@gmail.com>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -60,6 +61,10 @@
 #define DESKTOP_ICONS_ICON_SIZE_PROP         "/desktop-icons/icon-size"
 #define DESKTOP_ICONS_FONT_SIZE_PROP         "/desktop-icons/font-size"
 #define DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP  "/desktop-icons/use-custom-font-size"
+#define DESKTOP_ICONS_SHOW_HOME              "/desktop-icons/file-icons/show-home"
+#define DESKTOP_ICONS_SHOW_TRASH             "/desktop-icons/file-icons/show-trash"
+#define DESKTOP_ICONS_SHOW_FILESYSTEM        "/desktop-icons/file-icons/show-filesystem"
+#define DESKTOP_ICONS_SHOW_REMOVABLE         "/desktop-icons/file-icons/show-removable"
 
 #define PER_SCREEN_PROP_FORMAT               "/backdrop/screen%d/monitor%d"
 
@@ -96,8 +101,35 @@ enum
     COL_ICON_PIX = 0,
     COL_ICON_NAME,
     COL_ICON_ENABLED,
+    COL_ICON_PROPERTY,
     N_ICON_COLS,
 };
+
+static void
+cb_special_icon_toggled(GtkCellRendererToggle *render, gchar *path, gpointer user_data)
+{
+    XfconfChannel *channel = g_object_get_data(G_OBJECT(user_data),
+                                               "xfconf-channel");
+    GtkTreePath *tree_path = gtk_tree_path_new_from_string(path);
+    GtkTreeModel *model = gtk_tree_view_get_model(GTK_TREE_VIEW(user_data));
+    GtkTreeIter iter;
+    gboolean show_icon;
+    gchar *icon_property = NULL;
+
+    gtk_tree_model_get_iter(model, &iter, tree_path);
+    gtk_tree_model_get(model, &iter, COL_ICON_ENABLED, &show_icon,
+                       COL_ICON_PROPERTY, &icon_property, -1);
+
+    show_icon = !show_icon;
+
+    xfconf_channel_set_bool(channel, icon_property, show_icon);
+
+    gtk_list_store_set(GTK_LIST_STORE(model), &iter,
+                       COL_ICON_ENABLED, show_icon, -1);
+
+    gtk_tree_path_free(tree_path);
+    g_free(icon_property);
+}
 
 static void
 setup_special_icon_list(GladeXML *gxml,
@@ -112,13 +144,18 @@ setup_special_icon_list(GladeXML *gxml,
         gchar *name;
         gchar *icon;
         gchar *icon_fallback;
+        gchar *xfconf_property;
         gboolean state;
     } icons[] = {
-        { N_("Home"), "user-home", "gnome-fs-desktop", TRUE },
-        { N_("Filesystem"), "drive-harddisk", "gnome-dev-harddisk", TRUE },
-        { N_("Trash"), "user-trash", "gnome-fs-trash-empty", TRUE },
-        { N_("Removable Devices"), "drive-removable-media", "gnome-dev-removable", TRUE },
-        { NULL, NULL, NULL, FALSE },
+        { N_("Home"), "user-home", "gnome-fs-desktop",
+          DESKTOP_ICONS_SHOW_HOME, TRUE },
+        { N_("Filesystem"), "drive-harddisk", "gnome-dev-harddisk",
+          DESKTOP_ICONS_SHOW_FILESYSTEM, TRUE },
+        { N_("Trash"), "user-trash", "gnome-fs-trash-empty",
+          DESKTOP_ICONS_SHOW_TRASH, TRUE },
+        { N_("Removable Devices"), "drive-removable-media", "gnome-dev-removable",
+          DESKTOP_ICONS_SHOW_REMOVABLE, TRUE },
+        { NULL, NULL, NULL, NULL, FALSE },
     };
     int i, w;
     GtkIconTheme *itheme = gtk_icon_theme_get_default();
@@ -126,7 +163,7 @@ setup_special_icon_list(GladeXML *gxml,
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, NULL);
 
     ls = gtk_list_store_new(N_ICON_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
-                            G_TYPE_BOOLEAN);
+                            G_TYPE_BOOLEAN, G_TYPE_STRING);
     for(i = 0; icons[i].name; ++i) {
         GdkPixbuf *pix = NULL;
 
@@ -139,19 +176,27 @@ setup_special_icon_list(GladeXML *gxml,
         gtk_list_store_set(ls, &iter,
                            COL_ICON_NAME, icons[i].name,
                            COL_ICON_PIX, pix,
-                           COL_ICON_ENABLED, icons[i].state,
+                           COL_ICON_PROPERTY, icons[i].xfconf_property,
+                           COL_ICON_ENABLED,
+                           xfconf_channel_get_bool(channel,
+                                                   icons[i].xfconf_property,
+                                                   icons[i].state),
                            -1);
         if(pix)
             g_object_unref(G_OBJECT(pix));
     }
 
     treeview = glade_xml_get_widget(gxml, "treeview_default_icons");
+    g_object_set_data(G_OBJECT(treeview), "xfconf-channel", channel);
     col = gtk_tree_view_column_new();
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
 
     render = gtk_cell_renderer_toggle_new();
     gtk_tree_view_column_pack_start(col, render, FALSE);
     gtk_tree_view_column_add_attribute(col, render, "active", COL_ICON_ENABLED);
+
+    g_signal_connect(G_OBJECT(render), "toggled",
+                     G_CALLBACK(cb_special_icon_toggled), treeview);
 
     render = gtk_cell_renderer_pixbuf_new();
     gtk_tree_view_column_pack_start(col, render, FALSE);
