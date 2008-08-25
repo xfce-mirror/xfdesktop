@@ -82,7 +82,7 @@ if(defined($options{'desktopiconstyle'})) {
 
 if(defined($options{'icons_font_size'})) {
     xfconf_set('/desktop-icons/font-size',
-               'uint',
+               'double',
                $options{'icons_font_size'}->{'value'});
 }
 

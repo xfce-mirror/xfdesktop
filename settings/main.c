@@ -680,7 +680,7 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
                            G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(glade_xml_get_widget(main_gxml,
                                                                                                         "spin_icon_size")))),
                            "value");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_FONT_SIZE_PROP, G_TYPE_UINT,
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_FONT_SIZE_PROP, G_TYPE_DOUBLE,
                            G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin_font_size))),
                            "value");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP,
