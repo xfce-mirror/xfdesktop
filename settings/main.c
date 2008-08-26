@@ -572,9 +572,9 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
                            nscreens, nmonitors);
             } else {
                 if(nscreens > 1)
-                    g_snprintf(buf, sizeof(buf), _("Screen %d"), nscreens);
+                    g_snprintf(buf, sizeof(buf), _("Screen %d"), i);
                 else
-                    g_snprintf(buf, sizeof(buf), _("Monitor %d"), nmonitors);
+                    g_snprintf(buf, sizeof(buf), _("Monitor %d"), j);
             }
 
             appearance_gxml = glade_xml_new_from_buffer(xfdesktop_settings_glade,
