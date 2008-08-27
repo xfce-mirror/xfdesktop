@@ -21,8 +21,8 @@ sub xfconf_set_color {
         my ($r,$g,$b) = ($1,$2,$3);
 
         my $cmd = "xfconf-query -n -c $xfconf_channel -p $prop ";
-        $cmd .= "-t uint16 -t uint16 -t uint16 ";
-        $cmd .= "-s $r -s $g -s $b";
+        $cmd .= "-t uint16 -t uint16 -t uint16 -t uint16";
+        $cmd .= "-s $r -s $g -s $b -s 65535";
 
         print $cmd."\n";
         system($cmd);

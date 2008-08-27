@@ -71,7 +71,7 @@ XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0],
 XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0],
                   [libxfcegui4_minimum_version])
 XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-1.0], [wnck_minimum_version])
-XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [0.1.0svn-r26876])
+XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [4.5.90svn-r27590])
 XDT_CHECK_PACKAGE([LIBGLADE], [libglade-2.0], [2.0.0])
 
 dnl do we want desktop icons at all?

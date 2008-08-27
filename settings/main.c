@@ -512,12 +512,24 @@ static void
 cb_xfdesktop_combo_color_changed(GtkComboBox *combo,
                                  gpointer user_data)
 {
-    GtkWidget *color_button = GTK_WIDGET(user_data);
+    enum {
+        COLORS_SOLID = 0,
+        COLORS_HGRADIENT,
+        COLORS_VGRADIENT,
+        COLORS_NONE,
+    };
+    AppearancePanel *panel = user_data;
 
-    if(gtk_combo_box_get_active(combo) > 1)
-        gtk_widget_set_sensitive(color_button, TRUE);
-    else
-        gtk_widget_set_sensitive(color_button, FALSE);
+    if(gtk_combo_box_get_active(combo) == COLORS_SOLID) {
+        gtk_widget_set_sensitive(panel->color1_btn, TRUE);
+        gtk_widget_set_sensitive(panel->color2_btn, FALSE);
+    } else if(gtk_combo_box_get_active(combo) == COLORS_NONE) {
+        gtk_widget_set_sensitive(panel->color1_btn, FALSE);
+        gtk_widget_set_sensitive(panel->color2_btn, FALSE);
+    } else {
+        gtk_widget_set_sensitive(panel->color1_btn, TRUE);
+        gtk_widget_set_sensitive(panel->color2_btn, TRUE);
+    }
 }
 
 static GtkWidget *
@@ -639,12 +651,28 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
                        i, j);
             xfconf_g_property_bind(channel, buf, G_TYPE_INT,
                                    G_OBJECT(color_style_widget), "active");
-
-            panel->color2_btn = glade_xml_get_widget(appearance_gxml,
-                                                          "color2_btn");
             g_signal_connect(G_OBJECT(color_style_widget), "changed",
                              G_CALLBACK(cb_xfdesktop_combo_color_changed),
-                             panel->color2_btn);
+                             panel);
+
+            panel->color1_btn = glade_xml_get_widget(appearance_gxml,
+                                                     "color1_btn");
+            g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/color1",
+                       i, j);
+            xfconf_g_property_bind_gdkcolor(channel, buf,
+                                            G_OBJECT(panel->color1_btn),
+                                            "color");
+
+            panel->color2_btn = glade_xml_get_widget(appearance_gxml,
+                                                     "color2_btn");
+            g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/color2",
+                       i, j);
+            xfconf_g_property_bind_gdkcolor(channel, buf,
+                                            G_OBJECT(panel->color2_btn),
+                                            "color");
+
+            cb_xfdesktop_combo_color_changed(GTK_COMBO_BOX(color_style_widget),
+                                             panel);
 
             panel->image_treeview = glade_xml_get_widget(appearance_gxml,
                                                          "treeview_imagelist");
