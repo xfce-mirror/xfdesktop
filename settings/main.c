@@ -550,10 +550,13 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
 
     for(i = 0; i < nscreens; ++i) {
         GdkDisplay *gdpy = gdk_display_get_default();
-        nmonitors = gdk_screen_get_n_monitors(gdk_display_get_screen(gdpy, i));
+        GdkScreen *screen = gdk_display_get_screen(gdpy, i);
+        nmonitors = gdk_screen_get_n_monitors(screen);
 
-        if(nscreens > 1 || nmonitors > 1)
+        if(nscreens > 1 || nmonitors > 1) {
             gtk_notebook_set_show_tabs(GTK_NOTEBOOK(appearance_container), TRUE);
+            gtk_container_set_border_width(GTK_CONTAINER(appearance_container), 12);
+        }
 
         for(j = 0; j < nmonitors; ++j) {
             gchar buf[1024];
@@ -568,13 +571,31 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
             panel->monitor = j;
 
             if(nscreens > 1 && nmonitors > 1) {
-                g_snprintf(buf, sizeof(buf), _("Screen %d, Monitor %d"),
-                           nscreens, nmonitors);
-            } else {
-                if(nscreens > 1)
-                    g_snprintf(buf, sizeof(buf), _("Screen %d"), i);
-                else
-                    g_snprintf(buf, sizeof(buf), _("Monitor %d"), j);
+#if GTK_CHECK_VERSION(2, 13, 0)
+                gchar *monitor_name = gdk_screen_get_monitor_plug_name(screen,
+                                                                       j);
+                if(monitor_name) {
+                    g_snprintf(buf, sizeof(buf),
+                               _("Screen %d, Monitor %d (%s)"), i+1, j+1,
+                               monitor_name);
+                    g_free(monitor_name);
+                } else
+#endif
+                    g_snprintf(buf, sizeof(buf), _("Screen %d, Monitor %d"),
+                               i+1, j+1);
+            } else if(nscreens > 1)
+                g_snprintf(buf, sizeof(buf), _("Screen %d"), i+1);
+            else {
+#if GTK_CHECK_VERSION(2, 13, 0)
+                gchar *monitor_name = gdk_screen_get_monitor_plug_name(screen,
+                                                                       j);
+                if(monitor_name) {
+                    g_snprintf(buf, sizeof(buf), _("Monitor %d (%s)"),
+                               j+1, monitor_name);
+                    g_free(monitor_name);
+                } else
+#endif
+                    g_snprintf(buf, sizeof(buf), _("Monitor %d"), j+1);
             }
 
             appearance_gxml = glade_xml_new_from_buffer(xfdesktop_settings_glade,
