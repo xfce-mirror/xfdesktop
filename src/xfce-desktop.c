@@ -80,6 +80,7 @@
 
 #include "xfdesktop-common.h"
 #include "xfce-desktop.h"
+#include "xfce-desktop-enum-types.h"
 
 #ifdef ENABLE_FILE_ICONS
 #define SETTING_SHOW_FILESYSTEM  "/desktop-icons/file-icons/show-filesystem"
@@ -104,7 +105,7 @@ struct _XfceDesktopPriv
     
 #ifdef ENABLE_DESKTOP_ICONS
     XfceDesktopIconStyle icons_style;
-    gboolean icons_use_system_font;
+    gboolean icons_font_size_set;
     guint icons_font_size;
     guint icons_size;
     GtkWidget *icon_view;
@@ -119,10 +120,32 @@ enum
     N_SIGNALS
 };
 
+enum
+{
+    PROP_0 = 0,
+    PROP_XINERAMA_STRETCH,
+#ifdef ENABLE_DESKTOP_ICONS
+    PROP_ICON_STYLE,
+    PROP_ICON_SIZE,
+    PROP_ICON_FONT_SIZE,
+    PROP_ICON_FONT_SIZE_SET,
+#endif
+};
+
 
 static void xfce_desktop_class_init(XfceDesktopClass *klass);
+
 static void xfce_desktop_init(XfceDesktop *desktop);
 static void xfce_desktop_finalize(GObject *object);
+static void xfce_desktop_set_property(GObject *object,
+                                      guint property_id,
+                                      const GValue *value,
+                                      GParamSpec *pspec);
+static void xfce_desktop_get_property(GObject *object,
+                                      guint property_id,
+                                      GValue *value,
+                                      GParamSpec *pspec);
+
 static void xfce_desktop_realize(GtkWidget *widget);
 static void xfce_desktop_unrealize(GtkWidget *widget);
 static gboolean xfce_desktop_button_press_event(GtkWidget *widget,
@@ -299,7 +322,7 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
         
         desktop->priv->icon_view = xfdesktop_icon_view_new(manager);
         xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
-                                          (desktop->priv->icons_use_system_font
+                                          (!desktop->priv->icons_font_size_set
                                            || !desktop->priv->icons_font_size)
                                           ? desktop->priv->system_font_size
                                           : desktop->priv->icons_font_size);
@@ -577,6 +600,8 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     g_type_class_add_private(klass, sizeof(XfceDesktopPriv));
     
     gobject_class->finalize = xfce_desktop_finalize;
+    gobject_class->set_property = xfce_desktop_set_property;
+    gobject_class->get_property = xfce_desktop_get_property;
     
     widget_class->realize = xfce_desktop_realize;
     widget_class->unrealize = xfce_desktop_unrealize;
@@ -604,6 +629,55 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                                              g_cclosure_marshal_VOID__OBJECT,
                                                              G_TYPE_NONE, 1,
                                                              GTK_TYPE_MENU_SHELL);
+
+#define XFDESKTOP_PARAM_FLAGS  (G_PARAM_READWRITE \
+                                | G_PARAM_CONSTRUCT \
+                                | G_PARAM_STATIC_NAME \
+                                | G_PARAM_STATIC_NICK \
+                                | G_PARAM_STATIC_BLURB)
+
+    g_object_class_install_property(gobject_class, PROP_XINERAMA_STRETCH,
+                                    g_param_spec_boolean("xinerama-stretch",
+                                                         "xinerama stretch",
+                                                         "xinerama stretch",
+                                                         FALSE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+
+#ifdef ENABLE_DESKTOP_ICONS
+    g_object_class_install_property(gobject_class, PROP_ICON_STYLE,
+                                    g_param_spec_enum("icon-style",
+                                                      "icon style",
+                                                      "icon style",
+                                                      XFCE_TYPE_DESKTOP_ICON_STYLE,
+#ifdef ENABLE_FILE_ICONS
+                                                      XFCE_DESKTOP_ICON_STYLE_FILES,
+#else
+                                                      XFCE_DESKTOP_ICON_STLYE_WINDOWS,
+#endif
+                                                      XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_ICON_SIZE,
+                                    g_param_spec_uint("icon-size",
+                                                      "icon size",
+                                                      "icon size",
+                                                      8, 192, 36,
+                                                      XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_ICON_FONT_SIZE,
+                                    g_param_spec_uint("icon-font-size",
+                                                      "icon font size",
+                                                      "icon font size",
+                                                      4, 144, 12,
+                                                      XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_ICON_FONT_SIZE_SET,
+                                    g_param_spec_boolean("icon-font-size-set",
+                                                         "icon font size set",
+                                                         "icon font size set",
+                                                         FALSE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+#endif
+#undef XFDESKTOP_PARAM_FLAGS
 }
 
 static void
@@ -612,9 +686,6 @@ xfce_desktop_init(XfceDesktop *desktop)
     desktop->priv = G_TYPE_INSTANCE_GET_PRIVATE(desktop, XFCE_TYPE_DESKTOP,
                                                 XfceDesktopPriv);
     GTK_WINDOW(desktop)->type = GTK_WINDOW_TOPLEVEL;
-#ifdef ENABLE_DESKTOP_ICONS
-    desktop->priv->icons_use_system_font = TRUE;
-#endif
     
     gtk_window_set_type_hint(GTK_WINDOW(desktop), GDK_WINDOW_TYPE_HINT_DESKTOP);
     gtk_window_set_accept_focus(GTK_WINDOW(desktop), FALSE);
@@ -628,6 +699,85 @@ xfce_desktop_finalize(GObject *object)
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
     G_OBJECT_CLASS(xfce_desktop_parent_class)->finalize(object);
+}
+
+static void
+xfce_desktop_set_property(GObject *object,
+                          guint property_id,
+                          const GValue *value,
+                          GParamSpec *pspec)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(object);
+
+    switch(property_id) {
+        case PROP_XINERAMA_STRETCH:
+            xfce_desktop_set_xinerama_stretch(desktop,
+                                              g_value_get_boolean(value));
+            break;
+
+#ifdef ENABLE_DESKTOP_ICONS
+        case PROP_ICON_STYLE:
+            xfce_desktop_set_icon_style(desktop,
+                                        g_value_get_enum(value));
+            break;
+
+        case PROP_ICON_SIZE:
+            xfce_desktop_set_icon_size(desktop,
+                                       g_value_get_uint(value));
+            break;
+
+        case PROP_ICON_FONT_SIZE:
+            xfce_desktop_set_icon_font_size(desktop,
+                                            g_value_get_uint(value));
+            break;
+
+        case PROP_ICON_FONT_SIZE_SET:
+            xfce_desktop_set_use_icon_font_size(desktop,
+                                                g_value_get_boolean(value));
+            break;
+
+#endif
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+            break;
+    }
+}
+
+static void
+xfce_desktop_get_property(GObject *object,
+                          guint property_id,
+                          GValue *value,
+                          GParamSpec *pspec)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(object);
+
+    switch(property_id) {
+        case PROP_XINERAMA_STRETCH:
+            g_value_set_boolean(value, desktop->priv->xinerama_stretch);
+            break;
+
+#ifdef ENABLE_DESKTOP_ICONS
+        case PROP_ICON_STYLE:
+            g_value_set_enum(value, desktop->priv->icons_style);
+            break;
+
+        case PROP_ICON_SIZE:
+            g_value_set_uint(value, desktop->priv->icons_size);
+            break;
+
+        case PROP_ICON_FONT_SIZE:
+            g_value_set_uint(value, desktop->priv->icons_font_size);
+            break;
+
+        case PROP_ICON_FONT_SIZE_SET:
+            g_value_set_boolean(value, desktop->priv->icons_font_size_set);
+            break;
+
+#endif
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+            break;
+    }
 }
 
 static void
@@ -989,30 +1139,27 @@ xfce_desktop_set_icon_font_size(XfceDesktop *desktop,
     
     desktop->priv->icons_font_size = font_size_points;
     
-    if(desktop->priv->icons_use_system_font)
-        return;
-    
-    if(desktop->priv->icon_view) {
+    if(desktop->priv->icons_font_size_set && desktop->priv->icon_view) {
         xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
-                                           font_size_points);
+                                          font_size_points);
     }
 #endif
 }
 
 void
-xfce_desktop_set_icon_use_system_font_size(XfceDesktop *desktop,
-                                           gboolean use_system)
+xfce_desktop_set_use_icon_font_size(XfceDesktop *desktop,
+                                    gboolean use_icon_font_size)
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
 #ifdef ENABLE_DESKTOP_ICONS
-    if(use_system == desktop->priv->icons_use_system_font)
+    if(use_icon_font_size == desktop->priv->icons_font_size_set)
         return;
     
-    desktop->priv->icons_use_system_font = use_system;
+    desktop->priv->icons_font_size_set = use_icon_font_size;
     
     if(desktop->priv->icon_view) {
-        if(use_system) {
+        if(!use_icon_font_size) {
             xfce_desktop_ensure_system_font_size(desktop);
             xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
                                               desktop->priv->system_font_size);

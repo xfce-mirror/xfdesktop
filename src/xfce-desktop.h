@@ -90,8 +90,8 @@ XfceDesktopIconStyle xfce_desktop_get_icon_style(XfceDesktop *desktop);
 void xfce_desktop_set_icon_size(XfceDesktop *desktop,
                                 guint icon_size);
 
-void xfce_desktop_set_icon_use_system_font_size(XfceDesktop *desktop,
-                                                gboolean use_system);
+void xfce_desktop_set_use_icon_font_size(XfceDesktop *desktop,
+                                         gboolean use_system);
 void xfce_desktop_set_icon_font_size(XfceDesktop *desktop,
                                      guint font_size_points);
 
