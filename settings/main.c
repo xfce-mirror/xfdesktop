@@ -260,7 +260,7 @@ xfdesktop_image_list_add_dir(GtkListStore *ls,
                    path, file);
 
         /* FIXME: this is probably too slow */
-        if(xfdesktop_check_image_file(buf)) {
+        if(xfdesktop_image_file_is_valid(buf)) {
             gchar *name, *key = NULL;
 
             name = g_filename_to_utf8(file, strlen(file), NULL, NULL, NULL);
@@ -334,7 +334,7 @@ xfdesktop_settings_dialog_populate_image_list(GladeXML *gxml,
                panel->screen, panel->monitor);
     image_file = xfconf_channel_get_string(panel->channel, buf, NULL);
 
-    if(image_file && is_backdrop_list(image_file)) {
+    if(image_file && xfdesktop_backdrop_list_is_valid(image_file)) {
         gchar **images;
 
         do_sort = FALSE;
@@ -344,7 +344,7 @@ xfdesktop_settings_dialog_populate_image_list(GladeXML *gxml,
                                      TRUE);
         gtk_widget_show(glade_xml_get_widget(gxml, "btn_image_remove"));
 
-        images = get_list_from_file(image_file);
+        images = xfdesktop_backdrop_list_load(image_file, NULL, NULL);
         if(images) {
             gint i;
 
