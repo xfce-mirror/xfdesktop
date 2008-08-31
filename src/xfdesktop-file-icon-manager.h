@@ -22,7 +22,7 @@
 #define __XFDESKTOP_FILE_ICON_MANAGER_H__
 
 #include <glib.h>
-
+#include <xfconf/xfconf.h>
 #include <thunar-vfs/thunar-vfs.h>
 
 #include "xfdesktop-special-file-icon.h"
@@ -53,7 +53,8 @@ struct _XfdesktopFileIconManagerClass
 
 GType xfdesktop_file_icon_manager_get_type() G_GNUC_CONST;
 
-XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(ThunarVfsPath *folder);
+XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(ThunarVfsPath *folder,
+                                                          XfconfChannel *channel);
 
 void xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIconManager *manager,
                                                           gboolean show_removable_media);

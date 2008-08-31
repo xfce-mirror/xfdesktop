@@ -12,8 +12,6 @@ xfdesktop_SOURCES = \
 	xfce-desktop.h \
 	xfce-desktop-enum-types.c \
 	xfce-desktop-enum-types.h \
-	xfce-desktop-settings.c \
-	xfce-desktop-settings.h \
 	xfdesktop-marshal.c \
 	xfdesktop-marshal.h
 

@@ -82,17 +82,13 @@
 #include "xfce-desktop.h"
 #include "xfce-desktop-enum-types.h"
 
-#ifdef ENABLE_FILE_ICONS
-#define SETTING_SHOW_FILESYSTEM  "/desktop-icons/file-icons/show-filesystem"
-#define SETTING_SHOW_HOME        "/desktop-icons/file-icons/show-home"
-#define SETTING_SHOW_TRASH       "/desktop-icons/file-icons/show-trash"
-#define SETTING_SHOW_REMOVABLE   "/desktop-icons/file-icons/show-removable"
-#endif
-
 struct _XfceDesktopPriv
 {
     GdkScreen *gscreen;
     gboolean updates_frozen;
+
+    XfconfChannel *channel;
+    gchar *property_prefix;
     
     GdkPixmap *bg_pixmap;
     
@@ -160,6 +156,10 @@ static void style_set_cb(GtkWidget *w,
                          GtkStyle *old_style,
                          gpointer user_data);
 
+static void xfce_desktop_connect_backdrop_settings(XfceDesktop *desktop,
+                                                   XfceBackdrop *backdrop,
+                                                   guint monitor);
+
 static guint signals[N_SIGNALS] = { 0, };
 
 /* private functions */
@@ -196,34 +196,6 @@ xfce_desktop_ensure_system_font_size(XfceDesktop *desktop)
     return desktop->priv->system_font_size;
 }
 
-#ifdef ENABLE_FILE_ICONS
-static void
-xfce_desktop_icon_settings_changed(XfconfChannel *channel,
-                                   const gchar *property,
-                                   const GValue *value,
-                                   gpointer user_data)
-{
-    XfdesktopFileIconManager *manager = user_data;
-
-    if(!strcmp(property, SETTING_SHOW_FILESYSTEM)) {
-        xfdesktop_file_icon_manager_set_show_special_file(manager,
-                                                          XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM,
-                                                          g_value_get_boolean(value));
-    } else if(!strcmp(property, SETTING_SHOW_HOME)) {
-        xfdesktop_file_icon_manager_set_show_special_file(manager,
-                                                          XFDESKTOP_SPECIAL_FILE_ICON_HOME,
-                                                          g_value_get_boolean(value));
-    } else if(!strcmp(property, SETTING_SHOW_TRASH)) {
-        xfdesktop_file_icon_manager_set_show_special_file(manager,
-                                                          XFDESKTOP_SPECIAL_FILE_ICON_TRASH,
-                                                          g_value_get_boolean(value));
-    } else if(!strcmp(property, SETTING_SHOW_REMOVABLE)) {
-        xfdesktop_file_icon_manager_set_show_removable_media(manager,
-                                                             g_value_get_boolean(value));
-    }
-}
-#endif
-
 static void
 xfce_desktop_setup_icon_view(XfceDesktop *desktop)
 {
@@ -247,60 +219,9 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
 
                 path = thunar_vfs_path_new(desktop_path, NULL);
                 if(path) {
-                    XfconfChannel *channel = xfconf_channel_new("xfce4-desktop");
-                    /* defaults */
-                    gboolean show_removable = TRUE, show_filesystem = TRUE;
-                    gboolean show_home = TRUE, show_trash = TRUE;
-
-                    manager = xfdesktop_file_icon_manager_new(path);
+                    manager = xfdesktop_file_icon_manager_new(path, 
+                                                              desktop->priv->channel);
                     thunar_vfs_path_unref(path);
-
-                    g_signal_connect(G_OBJECT(channel),
-                                     "property-changed::" SETTING_SHOW_FILESYSTEM,
-                                     G_CALLBACK(xfce_desktop_icon_settings_changed),
-                                     manager);
-                    g_signal_connect(G_OBJECT(channel),
-                                     "property-changed::" SETTING_SHOW_HOME,
-                                     G_CALLBACK(xfce_desktop_icon_settings_changed),
-                                     manager);
-                    g_signal_connect(G_OBJECT(channel),
-                                     "property-changed::" SETTING_SHOW_TRASH,
-                                     G_CALLBACK(xfce_desktop_icon_settings_changed),
-                                     manager);
-                    g_signal_connect(G_OBJECT(channel),
-                                     "property-changed::" SETTING_SHOW_REMOVABLE,
-                                     G_CALLBACK(xfce_desktop_icon_settings_changed),
-                                     manager);
-                    /* let channel (and the signals above) get destroyed
-                     * when the manager gets destroyed */
-                    g_object_set_data_full(G_OBJECT(manager),
-                                           "xfconf-channel", channel,
-                                           (GDestroyNotify)g_object_unref);
-
-                    show_filesystem = xfconf_channel_get_bool(channel,
-                                                              SETTING_SHOW_FILESYSTEM,
-                                                              show_filesystem);
-                    show_home = xfconf_channel_get_bool(channel,
-                                                        SETTING_SHOW_HOME,
-                                                        show_home);
-                    show_trash = xfconf_channel_get_bool(channel,
-                                                         SETTING_SHOW_TRASH,
-                                                         show_trash);
-                    show_removable = xfconf_channel_get_bool(channel,
-                                                             SETTING_SHOW_REMOVABLE,
-                                                             show_removable);
-                    
-                    xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
-                                                                      XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM,
-                                                                      show_filesystem);
-                    xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
-                                                                      XFDESKTOP_SPECIAL_FILE_ICON_HOME,
-                                                                      show_home);
-                    xfdesktop_file_icon_manager_set_show_special_file(XFDESKTOP_FILE_ICON_MANAGER(manager),
-                                                                      XFDESKTOP_SPECIAL_FILE_ICON_TRASH,
-                                                                      show_trash);
-                    xfdesktop_file_icon_manager_set_show_removable_media(XFDESKTOP_FILE_ICON_MANAGER(manager),
-                                                                         show_removable);
                 } else {
                     g_critical("Unable to create ThunarVfsPath for '%s'",
                                desktop_path);
@@ -507,6 +428,9 @@ xfce_desktop_monitors_changed(GdkScreen *gscreen,
             if(!desktop->priv->nbackdrops) {
                 GdkVisual *vis = gtk_widget_get_visual(GTK_WIDGET(desktop));
                 desktop->priv->backdrops[0] = xfce_backdrop_new(vis);
+                xfce_desktop_connect_backdrop_settings(desktop,
+                                                       desktop->priv->backdrops[0],
+                                                       0);
                 g_signal_connect(G_OBJECT(desktop->priv->backdrops[0]),
                                  "changed",
                                  G_CALLBACK(backdrop_changed_cb), desktop);
@@ -528,6 +452,9 @@ xfce_desktop_monitors_changed(GdkScreen *gscreen,
                 GdkVisual *vis = gtk_widget_get_visual(GTK_WIDGET(desktop));
                 for(i = desktop->priv->nbackdrops; i < n_monitors; ++i) {
                     desktop->priv->backdrops[i] = xfce_backdrop_new(vis);
+                    xfce_desktop_connect_backdrop_settings(desktop,
+                                                           desktop->priv->backdrops[i],
+                                                           i);
                     g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]),
                                      "changed",
                                      G_CALLBACK(backdrop_changed_cb),
@@ -696,7 +623,8 @@ xfce_desktop_finalize(GObject *object)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(object);
     
-    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+    g_object_unref(G_OBJECT(desktop->priv->channel));
+    g_free(desktop->priv->property_prefix);
     
     G_OBJECT_CLASS(xfce_desktop_parent_class)->finalize(object);
 }
@@ -791,6 +719,8 @@ xfce_desktop_realize(GtkWidget *widget)
     GdkWindow *groot;
     
     TRACE("entering");
+
+    xfce_desktop_setup_icon_view(desktop);
     
     gtk_window_set_screen(GTK_WINDOW(desktop), desktop->priv->gscreen);
     sw = gdk_screen_get_width(desktop->priv->gscreen);
@@ -1003,6 +933,152 @@ style_set_cb(GtkWidget *w,
     gtk_widget_queue_draw(w);
 }
 
+static void
+xfce_desktop_connect_settings(XfceDesktop *desktop)
+{
+    XfconfChannel *channel = desktop->priv->channel;
+    gchar buf[1024];
+
+    xfce_desktop_freeze_updates(desktop);
+
+    g_strlcpy(buf, desktop->priv->property_prefix, sizeof(buf));
+    g_strlcat(buf, "xinerama-stretch", sizeof(buf));
+    xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
+                           G_OBJECT(desktop), "xinerama-stretch");
+
+#ifdef ENABLE_DESKTOP_ICONS
+#define ICONS_PREFIX "/desktop-icons/"
+
+    xfconf_g_property_bind(channel, ICONS_PREFIX "style",
+                           XFCE_TYPE_DESKTOP_ICON_STYLE,
+                           G_OBJECT(desktop), "icon-style");
+    xfconf_g_property_bind(channel, ICONS_PREFIX "icon-size", G_TYPE_UINT,
+                           G_OBJECT(desktop), "icon-size");
+    xfconf_g_property_bind(channel, ICONS_PREFIX "font-size", G_TYPE_UINT,
+                           G_OBJECT(desktop), "icon-font-size");
+    xfconf_g_property_bind(channel, ICONS_PREFIX "use-custom-font-size",
+                           G_TYPE_BOOLEAN,
+                           G_OBJECT(desktop), "icon-font-size-set");
+#undef ICONS_PREFIX
+#endif
+
+    xfce_desktop_thaw_updates(desktop);
+}
+
+static void
+xfce_desktop_image_filename_changed(XfconfChannel *channel,
+                                    const gchar *property,
+                                    const GValue *value,
+                                    gpointer user_data)
+{
+    XfceDesktop *desktop = user_data;
+    gchar *p;
+    const gchar *filename;
+    gint monitor;
+    XfceBackdrop *backdrop;
+
+    p = strstr(property, "/monitor");
+    if(!p)
+        return;
+
+    monitor = atoi(p + 8);
+    if(monitor < 0 || monitor >= gdk_screen_get_n_monitors(desktop->priv->gscreen))
+        return;
+
+    if(desktop->priv->xinerama_stretch && monitor != 0)
+        return;
+    backdrop = desktop->priv->backdrops[monitor];
+
+    filename = g_value_get_string(value);
+    if(G_LIKELY(filename && *filename)) {
+        if(xfdesktop_backdrop_list_is_valid(filename)) {
+            gchar *backdrop_file;
+            GError *error = NULL;
+            
+            backdrop_file = xfdesktop_backdrop_list_choose_random(filename,
+                                                                  &error);
+            if(!backdrop_file) {
+                gchar *primary = g_strdup_printf(_("Unable to load image from backdrop list file \"%s\""),
+                                                 filename);
+                xfce_message_dialog(GTK_WINDOW(desktop), _("Desktop Error"),
+                                    GTK_STOCK_DIALOG_ERROR, primary,
+                                    error->message,
+                                    GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                                    NULL);
+                g_error_free(error);
+                g_free(primary);
+                return;
+            }
+
+            xfce_backdrop_set_image_filename(backdrop, backdrop_file);
+            g_free(backdrop_file);
+        } else
+            xfce_backdrop_set_image_filename(backdrop, filename);
+    }
+}
+
+static void
+xfce_desktop_connect_backdrop_settings(XfceDesktop *desktop,
+                                       XfceBackdrop *backdrop,
+                                       guint monitor)
+{
+    XfconfChannel *channel = desktop->priv->channel;
+    char buf[1024], buf1[1024];
+    gint pp_len;
+    GValue value = { 0, };
+
+    g_snprintf(buf, sizeof(buf), "%smonitor%d/",
+               desktop->priv->property_prefix, monitor);
+    pp_len = strlen(buf);
+
+    g_strlcat(buf, "color-style", sizeof(buf));
+    xfconf_g_property_bind(channel, buf, XFCE_TYPE_BACKDROP_COLOR_STYLE,
+                           G_OBJECT(backdrop), "color-style");
+
+    buf[pp_len] = 0;
+    g_strlcat(buf, "color1", sizeof(buf));
+    xfconf_g_property_bind_gdkcolor(channel, buf,
+                                    G_OBJECT(backdrop), "first-color");
+
+    buf[pp_len] = 0;
+    g_strlcat(buf, "color2", sizeof(buf));
+    xfconf_g_property_bind_gdkcolor(channel, buf,
+                                    G_OBJECT(backdrop), "second-color");
+
+    buf[pp_len] = 0;
+    g_strlcat(buf, "image-show", sizeof(buf));
+    xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
+                           G_OBJECT(backdrop), "show-image");
+
+    buf[pp_len] = 0;
+    g_strlcat(buf, "image-style", sizeof(buf));
+    xfconf_g_property_bind(channel, buf, XFCE_TYPE_BACKDROP_IMAGE_STYLE,
+                           G_OBJECT(backdrop), "image-style");
+
+    buf[pp_len] = 0;
+    g_strlcat(buf, "brightness", sizeof(buf));
+    xfconf_g_property_bind(channel, buf, G_TYPE_INT,
+                           G_OBJECT(backdrop), "brightness");
+
+    buf[pp_len] = 0;
+    g_strlcat(buf, "saturation", sizeof(buf));
+    xfconf_g_property_bind(channel, buf, G_TYPE_DOUBLE,
+                           G_OBJECT(backdrop), "saturation");
+
+    /* the image filename could be an image or a backdrop list, so we
+     * can't just bind the property directly */
+    buf[pp_len] = 0;
+    g_strlcat(buf, "image-path", sizeof(buf));
+    g_strlcpy(buf1, "property-changed::", sizeof(buf1));
+    g_strlcat(buf1, buf, sizeof(buf1));
+    g_signal_connect(G_OBJECT(channel), buf1,
+                     G_CALLBACK(xfce_desktop_image_filename_changed), desktop);
+    if(xfconf_channel_get_property(channel, buf, &value)) {
+        xfce_desktop_image_filename_changed(channel, buf, &value, desktop);
+        g_value_unset(&value);
+    }
+}
+
 
 
 /* public api */
@@ -1010,6 +1086,8 @@ style_set_cb(GtkWidget *w,
 /**
  * xfce_desktop_new:
  * @gscreen: The current #GdkScreen.
+ * @channel: An #XfconfChannel to use for settings.
+ * @property_prefix: String prefix for per-screen properties.
  *
  * Creates a new #XfceDesktop for the specified #GdkScreen.  If @gscreen is
  * %NULL, the default screen will be used.
@@ -1017,14 +1095,25 @@ style_set_cb(GtkWidget *w,
  * Return value: A new #XfceDesktop.
  **/
 GtkWidget *
-xfce_desktop_new(GdkScreen *gscreen)
+xfce_desktop_new(GdkScreen *gscreen,
+                 XfconfChannel *channel,
+                 const gchar *property_prefix)
 {
-    XfceDesktop *desktop = g_object_new(XFCE_TYPE_DESKTOP, NULL);
+    XfceDesktop *desktop;
     
+    g_return_val_if_fail(channel && property_prefix, NULL);
+
+    desktop = g_object_new(XFCE_TYPE_DESKTOP, NULL);
+
     if(!gscreen)
         gscreen = gdk_display_get_default_screen(gdk_display_get_default());
-    GTK_WINDOW(desktop)->screen = gscreen;
+    gtk_window_set_screen(GTK_WINDOW(desktop), gscreen);
     desktop->priv->gscreen = gscreen;
+    
+    desktop->priv->channel = g_object_ref(G_OBJECT(channel));
+    desktop->priv->property_prefix = g_strdup(property_prefix);
+
+    xfce_desktop_connect_settings(desktop);
     
     return GTK_WIDGET(desktop);
 }
@@ -1092,7 +1181,8 @@ xfce_desktop_set_icon_style(XfceDesktop *desktop,
     }
     
     desktop->priv->icons_style = style;
-    xfce_desktop_setup_icon_view(desktop);
+    if(GTK_WIDGET_REALIZED(desktop))
+        xfce_desktop_setup_icon_view(desktop);
 #endif
 }
 
@@ -1192,7 +1282,8 @@ xfce_desktop_thaw_updates(XfceDesktop *desktop)
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
     desktop->priv->updates_frozen = FALSE;
-    xfce_desktop_monitors_changed(desktop->priv->gscreen, desktop);
+    if(GTK_WIDGET_REALIZED(desktop))
+        xfce_desktop_monitors_changed(desktop->priv->gscreen, desktop);
 }
 
 XfceBackdrop *

@@ -22,6 +22,7 @@
 #define _XFCE_DESKTOP_H_
 
 #include <gtk/gtk.h>
+#include <xfconf/xfconf.h>
 
 #include "xfce-backdrop.h"
 
@@ -72,7 +73,9 @@ struct _XfceDesktopClass
 
 GType xfce_desktop_get_type                     () G_GNUC_CONST;
 
-GtkWidget *xfce_desktop_new(GdkScreen *gscreen);
+GtkWidget *xfce_desktop_new(GdkScreen *gscreen,
+                            XfconfChannel *channel,
+                            const gchar *property_prefix);
 
 guint xfce_desktop_get_n_monitors(XfceDesktop *desktop);
 

@@ -77,16 +77,26 @@
 #define SAVE_DELAY 7000
 #define BORDER     8
 
+#define SETTING_SHOW_FILESYSTEM  "/desktop-icons/file-icons/show-filesystem"
+#define SETTING_SHOW_HOME        "/desktop-icons/file-icons/show-home"
+#define SETTING_SHOW_TRASH       "/desktop-icons/file-icons/show-trash"
+#define SETTING_SHOW_REMOVABLE   "/desktop-icons/file-icons/show-removable"
 
 enum
 {
     PROP0 = 0,
     PROP_FOLDER,
+    PROP_SHOW_FILESYSTEM,
+    PROP_SHOW_HOME,
+    PROP_SHOW_TRASH,
+    PROP_SHOW_REMOVABLE,
 };
 
 struct _XfdesktopFileIconManagerPrivate
 {
     gboolean inited;
+
+    XfconfChannel *channel;
     
     GtkWidget *desktop;
     XfdesktopIconView *icon_view;
@@ -222,8 +232,42 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
                                                        "Folder this icon manager manages",
                                                        THUNAR_VFS_TYPE_PATH,
                                                        G_PARAM_READWRITE
-                                                       | G_PARAM_CONSTRUCT_ONLY));
-    
+                                                       | G_PARAM_CONSTRUCT_ONLY
+                                                       | G_PARAM_STATIC_NAME
+                                                       | G_PARAM_STATIC_NICK
+                                                       | G_PARAM_STATIC_BLURB));
+
+#define XFDESKTOP_PARAM_FLAGS  (G_PARAM_READWRITE \
+                                | G_PARAM_CONSTRUCT \
+                                | G_PARAM_STATIC_NAME \
+                                | G_PARAM_STATIC_NICK \
+                                | G_PARAM_STATIC_BLURB)
+    g_object_class_install_property(gobject_class, PROP_SHOW_FILESYSTEM,
+                                    g_param_spec_boolean("show-filesystem",
+                                                         "show filesystem",
+                                                         "show filesystem",
+                                                         TRUE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+    g_object_class_install_property(gobject_class, PROP_SHOW_HOME,
+                                    g_param_spec_boolean("show-home",
+                                                         "show home",
+                                                         "show home",
+                                                         TRUE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+    g_object_class_install_property(gobject_class, PROP_SHOW_TRASH,
+                                    g_param_spec_boolean("show-trash",
+                                                         "show trash",
+                                                         "show trash",
+                                                         TRUE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+    g_object_class_install_property(gobject_class, PROP_SHOW_REMOVABLE,
+                                    g_param_spec_boolean("show-removable",
+                                                         "show removable",
+                                                         "show removable",
+                                                         TRUE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+#undef XFDESKTOP_PARAM_FLAGS
+
     xfdesktop_mime_app_quark = g_quark_from_static_string("xfdesktop-mime-app-quark");
 }
 
@@ -256,7 +300,30 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
             if(fmanager->priv->folder)
                 xfdesktop_file_icon_manager_check_create_desktop_folder(fmanager->priv->folder);
             break;
-        
+
+        case PROP_SHOW_FILESYSTEM:
+            xfdesktop_file_icon_manager_set_show_special_file(fmanager,
+                                                              XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM,
+                                                              g_value_get_boolean(value));
+            break;
+
+        case PROP_SHOW_HOME:
+            xfdesktop_file_icon_manager_set_show_special_file(fmanager,
+                                                              XFDESKTOP_SPECIAL_FILE_ICON_HOME,
+                                                              g_value_get_boolean(value));
+            break;
+
+        case PROP_SHOW_TRASH:
+            xfdesktop_file_icon_manager_set_show_special_file(fmanager,
+                                                              XFDESKTOP_SPECIAL_FILE_ICON_TRASH,
+                                                              g_value_get_boolean(value));
+            break;
+
+        case PROP_SHOW_REMOVABLE:
+            xfdesktop_file_icon_manager_set_show_removable_media(fmanager,
+                                                                 g_value_get_boolean(value));
+            break;
+
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
     }
@@ -274,6 +341,25 @@ xfdesktop_file_icon_manager_get_property(GObject *object,
         case PROP_FOLDER:
             g_value_set_boxed(value, fmanager->priv->folder);
             break;
+
+        case PROP_SHOW_FILESYSTEM:
+            g_value_set_boolean(value,
+                                fmanager->priv->show_special[XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM]);
+            break;
+
+        case PROP_SHOW_HOME:
+            g_value_set_boolean(value,
+                                fmanager->priv->show_special[XFDESKTOP_SPECIAL_FILE_ICON_HOME]);
+            break;
+
+        case PROP_SHOW_TRASH:
+            g_value_set_boolean(value,
+                                fmanager->priv->show_special[XFDESKTOP_SPECIAL_FILE_ICON_TRASH]);
+            break;
+
+        case PROP_SHOW_REMOVABLE:
+            g_value_set_boolean(value, fmanager->priv->show_removable_media);
+            break;
         
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -288,6 +374,8 @@ xfdesktop_file_icon_manager_finalize(GObject *obj)
     if(fmanager->priv->inited)
         xfdesktop_file_icon_manager_fini(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
     
+    g_object_unref(G_OBJECT(fmanager->priv->channel));
+
     gtk_target_list_unref(fmanager->priv->drag_targets);
     gtk_target_list_unref(fmanager->priv->drop_targets);
     
@@ -3295,11 +3383,28 @@ xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *manager,
 /* public api */
 
 XfdesktopIconViewManager *
-xfdesktop_file_icon_manager_new(ThunarVfsPath *folder)
+xfdesktop_file_icon_manager_new(ThunarVfsPath *folder,
+                                XfconfChannel *channel)
 {
-    return g_object_new(XFDESKTOP_TYPE_FILE_ICON_MANAGER,
-                        "folder", folder,
-                        NULL);
+    XfdesktopFileIconManager *fmanager;
+    
+    g_return_val_if_fail(folder && channel, NULL);
+
+    fmanager = g_object_new(XFDESKTOP_TYPE_FILE_ICON_MANAGER,
+                            "folder", folder,
+                            NULL);
+    fmanager->priv->channel = g_object_ref(G_OBJECT(channel));
+
+    xfconf_g_property_bind(channel, SETTING_SHOW_FILESYSTEM, G_TYPE_BOOLEAN,
+                           G_OBJECT(fmanager), "show-filesystem");
+    xfconf_g_property_bind(channel, SETTING_SHOW_HOME, G_TYPE_BOOLEAN,
+                           G_OBJECT(fmanager), "show-home");
+    xfconf_g_property_bind(channel, SETTING_SHOW_TRASH, G_TYPE_BOOLEAN,
+                           G_OBJECT(fmanager), "show-trash");
+    xfconf_g_property_bind(channel, SETTING_SHOW_REMOVABLE, G_TYPE_BOOLEAN,
+                           G_OBJECT(fmanager), "show-removable");
+
+    return XFDESKTOP_ICON_VIEW_MANAGER(fmanager);
 }
 
 void

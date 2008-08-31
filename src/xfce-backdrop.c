@@ -37,6 +37,7 @@
 
 #include "xfce-backdrop.h"
 #include "xfce-desktop-enum-types.h"
+#include "xfdesktop-common.h"  /* for DEFAULT_BACKDROP */
 
 #ifndef abs
 #define abs(x)  ( (x) < 0 ? -(x) : (x) )
@@ -338,6 +339,7 @@ xfce_backdrop_set_property(GObject *object,
                            GParamSpec *pspec)
 {
     XfceBackdrop *backdrop = XFCE_BACKDROP(object);
+    GdkColor *color;
 
     switch(property_id) {
         case PROP_COLOR_STYLE:
@@ -345,16 +347,21 @@ xfce_backdrop_set_property(GObject *object,
             break;
 
         case PROP_COLOR1:
-            xfce_backdrop_set_first_color(backdrop, g_value_get_boxed(value));
+            color = g_value_get_boxed(value);
+            if(color)
+                xfce_backdrop_set_first_color(backdrop, color);
             break;
 
         case PROP_COLOR2:
-            xfce_backdrop_set_second_color(backdrop, g_value_get_boxed(value));
+            color = g_value_get_boxed(value);
+            if(color)
+                xfce_backdrop_set_second_color(backdrop, color);
             break;
 
         case PROP_SHOW_IMAGE:
             xfce_backdrop_set_show_image(backdrop, g_value_get_boolean(value));
             break;
+
         case PROP_IMAGE_STYLE:
             xfce_backdrop_set_image_style(backdrop, g_value_get_enum(value));
             break;
@@ -462,7 +469,9 @@ xfce_backdrop_new(GdkVisual *visual)
  * Return value: A new #XfceBackdrop.
  **/
 XfceBackdrop *
-xfce_backdrop_new_with_size(GdkVisual *visual, gint width, gint height)
+xfce_backdrop_new_with_size(GdkVisual *visual,
+                            gint width,
+                            gint height)
 {
     XfceBackdrop *backdrop;
     
@@ -473,7 +482,7 @@ xfce_backdrop_new_with_size(GdkVisual *visual, gint width, gint height)
     backdrop->priv->bpp = visual->depth;
     backdrop->priv->width = width;
     backdrop->priv->height = height;
-    
+
     return backdrop;
 }
 

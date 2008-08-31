@@ -21,13 +21,9 @@
 #ifndef _XFCE_BACKDROP_H_
 #define _XFCE_BACKDROP_H_
 
-#include <glib.h>
 #include <glib-object.h>
-#include <gdk/gdkscreen.h>
-#include <gdk/gdkcolor.h>
+#include <gdk/gdk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-
-#include "xfdesktop-common.h"  /* for style enums */
 
 G_BEGIN_DECLS
 
