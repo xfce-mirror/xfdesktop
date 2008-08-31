@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-20 14:36-0700\n"
+"POT-Creation-Date: 2008-08-30 14:01-0700\n"
 "PO-Revision-Date: 2008-06-23 15:38+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -106,17 +106,12 @@ msgstr "Pilih ikon"
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:606
-#: ../settings/appearance-settings.c:579
-#: ../settings/backdrop-list-manager.c:435
-#: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Semua Berkas"
 
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:612
-#: ../settings/appearance-settings.c:583
-#: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Berkas Gambar"
 
@@ -267,7 +262,7 @@ msgstr "Buat menu kosong baru"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1631
-#: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
 msgid "_Open"
 msgstr "Buka (_O)"
 
@@ -418,7 +413,7 @@ msgstr "Anda ingin menyimpan sebelum menutup berkas?"
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:588 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:591 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Pertanyaan"
 
@@ -516,7 +511,6 @@ msgid "Select Menu File"
 msgstr "Pilih Berkas Menu"
 
 #: ../panel-plugin/desktop-menu-plugin.c:748
-#: ../settings/behavior-settings.c:275
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Tak dapat menjalankan xfce4-menueditor: %s"
@@ -551,7 +545,6 @@ msgid "Use _custom menu file:"
 msgstr "Gunakan berkas menu suai: (_c)"
 
 #: ../panel-plugin/desktop-menu-plugin.c:888
-#: ../settings/behavior-settings.c:369
 msgid "_Edit Menu"
 msgstr "Sunting Menu (_E)"
 
@@ -567,204 +560,132 @@ msgstr "Ikon Tombol: (_B)"
 msgid "Show _icons in menu"
 msgstr "Tampilkan _ikon di menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:963
+#: ../panel-plugin/desktop-menu-plugin.c:965
 msgid "There is already a panel menu registered for this screen"
 msgstr "Telah ada menu panel yang terdaftar untuk layar ini"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1075
+#: ../panel-plugin/desktop-menu-plugin.c:1077
 msgid "Edit Menu"
 msgstr "Sunting Menu"
 
-#. the button label in the xfce-mcs-manager dialog
-#: ../settings/appearance-settings.c:138
-msgid "Button Label|Desktop"
-msgstr "Destop"
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+msgid "Shows a menu containing categories of installed applications"
+msgstr "Tampilkan menu yang berisi kategori aplikasi terinstal"
 
-#: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
-#: ../settings/backdrop-list-manager.c:628
-msgid "backdrops.list"
-msgstr "latarbelakang.list"
-
-#: ../settings/appearance-settings.c:574
-msgid "Select backdrop image or list file"
-msgstr "Pilih gambar latar belakang atau berkas senarai "
-
-#: ../settings/appearance-settings.c:592
-msgid "List Files (*.list)"
-msgstr "Berkas Senarai (*.list)"
-
-#: ../settings/appearance-settings.c:688
-msgid "_Edit list..."
-msgstr "Sunting senarai... (_E)"
-
-#: ../settings/appearance-settings.c:696
-msgid "_New list..."
-msgstr "Senarai baru... (_N)"
-
-#: ../settings/appearance-settings.c:729
-msgid "S_tyle:"
-msgstr "Gaya: (_t)"
-
-#: ../settings/appearance-settings.c:736
-msgid "Auto"
-msgstr "Otomatis"
-
-#: ../settings/appearance-settings.c:737
-msgid "Centered"
-msgstr "Tengah"
-
-#: ../settings/appearance-settings.c:738
-msgid "Tiled"
-msgstr "Ubin"
-
-#: ../settings/appearance-settings.c:739
-msgid "Stretched"
-msgstr "Rentang"
-
-#: ../settings/appearance-settings.c:740
-msgid "Scaled"
-msgstr "Skala"
-
-#: ../settings/appearance-settings.c:741
-msgid "Zoomed"
-msgstr "Perbesar"
-
-#: ../settings/appearance-settings.c:797
-msgid "A_djust Brightness:"
-msgstr "Sesuaikan Kecerahan: (_d)"
-
-#: ../settings/appearance-settings.c:855
+#: ../src/main.c:227
 #, c-format
-msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr "Xfce tak akan dapat mengatur destop anda (%s)"
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Ini adalah %s versi %s, berjalan pada Xfce %s.\n"
 
-#: ../settings/appearance-settings.c:856
-msgid "Unknown Error"
-msgstr "Galat tak diketahui"
+#: ../src/main.c:229
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Dibangun dengan GTK+ %d.%d.%d, ditautkan dengan GTK+ %d.%d.%d."
 
-#: ../settings/appearance-settings.c:860
-#: ../src/xfdesktop-regular-file-icon.c:520
-#: ../src/xfdesktop-regular-file-icon.c:584
-msgid "Error"
-msgstr "Galat"
+#: ../src/main.c:233
+#, c-format
+msgid "Build options:\n"
+msgstr "Opsi bangun:\n"
 
-#: ../settings/appearance-settings.c:862
-msgid "Unable to start xfdesktop"
-msgstr "Tak dapat menjalankan xfdesktop"
+#: ../src/main.c:234
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "    Menu Destop:        %s\n"
 
-#: ../settings/appearance-settings.c:884
-msgid "Information"
-msgstr "Informasi"
+#: ../src/main.c:236 ../src/main.c:243 ../src/main.c:250
+msgid "enabled"
+msgstr "diaktifkan"
 
-#: ../settings/appearance-settings.c:897
-msgid ""
-"To ensure that this setting takes effect the next time you start Xfce, "
-"please be sure to save your session when logging out.  If you are not using "
-"the Xfce Session Manager (xfce4-session), you will need to manually edit "
-"your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
+#: ../src/main.c:238 ../src/main.c:245 ../src/main.c:252
+msgid "disabled"
+msgstr "dinonaktifkan"
+
+#: ../src/main.c:241
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "    Ikon Destop:        %s\n"
+
+#: ../src/main.c:248
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "    Ikon Berkas Destop:  %s\n"
+
+#: ../src/main.c:277
+#, c-format
+msgid "%s: Unknown option: %s\n"
+msgstr "%s: Opsi tak diketahui: %s\n"
+
+#: ../src/main.c:278
+#, c-format
+msgid "Options are:\n"
+msgstr "Opsinya adalah:\n"
+
+#: ../src/main.c:279
+#, c-format
+msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
-"Untuk memastikan bahwa pengaturan ini akan berjalan ketika lain kali anda "
-"menjalankan Xfce, pastikan untuk menyimpan sesi anda ketika log keluar.  "
-"Jika anda tidak menggunakan Manajer Sesi Xfce (xfce4-session), anda perlu "
-"menyunting secara manual berkas ~/.config/xfce4/xinitrc.  Keterangan lebih "
-"lanjut tersedia pada dokumentasi yang ada di http://xfce.org/."
+"    --reload      Muat ulang semua pengaturan, segarkan senarai gambar\n"
 
-#: ../settings/appearance-settings.c:899
+#: ../src/main.c:280
+#, c-format
+msgid "    --menu        Pop up the menu (at the current mouse position)\n"
+msgstr "    --menu        Munculkan menu (di posisi tetikus sekarang)\n"
+
+#: ../src/main.c:281
+#, c-format
 msgid ""
-"To ensure that Xfce does not manage your desktop the next time you start "
-"Xfce, please be sure to save your session when logging out.  If you are not "
-"using the Xfce Session Manager (xfce4-session), you will need to manually "
-"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
+"    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
-"Untuk memastikan bahwa Xfce tidak mengatur destop anda ketika lain kali anda "
-"menjalankan Xfce, pastikan untuk menyimpan sesi anda ketika log keluar.  "
-"Jika anda tidak menggunakan Manajer Sesi Xfce (xfce4-session), anda perlu "
-"menyunting secara manual berkas ~/.config/xfce4/xinitrc.  Keterangan lebih "
-"lanjut tersedia pada dokumentasi yang ada di http://xfce.org/."
+"    --windowlist  Munculkan senarai jendela (di posisi tetikus sekarang)\n"
 
-#: ../settings/appearance-settings.c:907
-msgid "_Do not show this again"
-msgstr "Jangan tampilkan ini lagi (_D)"
-
-#. the dialog
-#: ../settings/appearance-settings.c:973
-msgid "Desktop Preferences"
-msgstr "Pengaturan Destop"
-
-#: ../settings/appearance-settings.c:990
-msgid "Allow _Xfce to manage the desktop"
-msgstr "Izinkan _Xfce untuk mengatur destop"
-
-#: ../settings/appearance-settings.c:1031
-msgid "Stretch single backdrop onto _all monitors"
-msgstr "Tarik latar belakang tunggal ke semu_a monitor"
-
-#. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:1045
-#: ../settings/appearance-settings.c:1227
-msgid "_Appearance"
-msgstr "Tampilan (_A)"
-
-#. color settings frame
-#: ../settings/appearance-settings.c:1071
-msgid "Color"
-msgstr "Warna"
-
-#: ../settings/appearance-settings.c:1085
-msgid "_Color Style:"
-msgstr "Gaya Warna: (_C)"
-
-#: ../settings/appearance-settings.c:1092
-msgid "Solid Color"
-msgstr "Warna Solid"
-
-#: ../settings/appearance-settings.c:1093
-msgid "Horizontal Gradient"
-msgstr "Gradasi Horisontal"
-
-#: ../settings/appearance-settings.c:1094
-msgid "Vertical Gradient"
-msgstr "Gradasi Vertikal"
-
-#: ../settings/appearance-settings.c:1107
-msgid "Fi_rst Color:"
-msgstr "Warna Pe_rtama:"
-
-#: ../settings/appearance-settings.c:1128
-msgid "_Second Color:"
-msgstr "Warna Kedua: (_S)"
-
-#: ../settings/appearance-settings.c:1153
-msgid "Image"
-msgstr "Gambar"
-
-#: ../settings/appearance-settings.c:1161
-msgid "Show _Image"
-msgstr "Tampilkan Gambar (_I)"
-
-#: ../settings/appearance-settings.c:1183
-msgid "_File:"
-msgstr "Berkas: (_F)"
-
-#: ../settings/appearance-settings.c:1238
-#: ../settings/appearance-settings.c:1240
+#: ../src/main.c:282
 #, c-format
-msgid "Screen %d"
-msgstr "Layar %d"
+msgid "    --quit        Cause xfdesktop to quit\n"
+msgstr "    --quit        Menyebabkan xfdesktop untuk berhenti\n"
 
-#. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1245
+#: ../src/main.c:297
 #, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "Layar %d, Monitor %d"
+msgid "%s is not running.\n"
+msgstr "%s tak berjalan.\n"
 
-#: ../settings/appearance-settings.c:1262
-msgid "_Behavior"
-msgstr "Perilaku (_B)"
+#: ../src/menu.c:113
+msgid "_Applications"
+msgstr ""
 
-#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
+#: ../src/windowlist.c:236
+msgid "Window List"
+msgstr "Senarai Jendela"
+
+#: ../src/windowlist.c:262
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>Ruang kerja %d</b>"
+
+#: ../src/windowlist.c:271
+#, c-format
+msgid "Workspace %d"
+msgstr "Ruang kerja %d"
+
+#: ../src/windowlist.c:273
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr "<i>Ruang kerja %d</i>"
+
+#: ../src/windowlist.c:370 ../src/windowlist.c:373
+msgid "_Add Workspace"
+msgstr "Tambah Ruang Kerja (_A)"
+
+#: ../src/windowlist.c:381
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "Hapus _Ruang Kerja %d"
+
+#: ../src/windowlist.c:384
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "Hapus _Ruang Kerja '%s'"
+
+#: ../src/xfce-desktop-settings.c:75
 #, c-format
 msgid ""
 "Could not save file %s: %s\n"
@@ -777,208 +698,24 @@ msgstr ""
 "Silakan pilih lokasi lain atau tekan batal pada dialog untuk membatalkan "
 "perubahan anda"
 
-#: ../settings/backdrop-list-manager.c:430
-msgid "Select backdrop image file"
-msgstr "Pilih berkas gambar latar belakang"
-
-#: ../settings/backdrop-list-manager.c:531
-msgid "Choose backdrop list filename"
-msgstr "Pilih nama berkas senarai latar belakang"
-
-#: ../settings/backdrop-list-manager.c:540
-msgid "List Files"
-msgstr "Berkas Senarai"
-
-#: ../settings/backdrop-list-manager.c:617
-msgid "Image files"
-msgstr "Berkas gambar"
-
-#: ../settings/backdrop-list-manager.c:636
-msgid "List file"
-msgstr "Berkas senarai"
-
-#: ../settings/backdrop-list-manager.c:658
-msgid "Create backdrop list"
-msgstr "Buat senarai latar belakang"
-
-#: ../settings/backdrop-list-manager.c:691
-msgid "Edit backdrop list"
-msgstr "Sunting senarai latar belakang"
-
-#: ../settings/behavior-settings.c:301
-msgid "Menus"
-msgstr "Menu"
-
-#: ../settings/behavior-settings.c:309
-msgid "Show _window list on middle click"
-msgstr "Tampilkan senarai jendela dengan klik tengah (_w)"
-
-#: ../settings/behavior-settings.c:327
-msgid "Show workspace _names in list"
-msgstr "Tampilkan _nama ruang kerja dalam senarai"
-
-#: ../settings/behavior-settings.c:341
-msgid "Show windows on each workspace in sub_menus"
-msgstr "Tampilkan jendela pada tiap ruang kerja dalam sub_menu"
-
-#: ../settings/behavior-settings.c:351
-msgid "Show sticky windows only in _active workspace"
-msgstr "Tampilkan hanya jendela melekat di ruang kerja _aktif"
-
-#: ../settings/behavior-settings.c:362
-msgid "Show _desktop menu on right click"
-msgstr "Tampilkan menu _destop dengan klik kanan"
-
-#: ../settings/behavior-settings.c:381
-msgid "Desktop Icons"
-msgstr "Ikon Destop"
-
-#: ../settings/behavior-settings.c:390
-#: ../src/xfdesktop-file-properties-dialog.c:138
-msgid "None"
-msgstr "Tak ada"
-
-#: ../settings/behavior-settings.c:391
-msgid "Minimized application icons"
-msgstr "Ikon aplikasi diminimalkan"
-
-#: ../settings/behavior-settings.c:393
-msgid "File/launcher icons"
-msgstr "Ikon berkas/peluncur"
-
-#: ../settings/behavior-settings.c:408
-msgid "_Icon size:"
-msgstr "Ukuran ikon: (_I)"
-
-#: ../settings/behavior-settings.c:422
-msgid "Use _system font size"
-msgstr "Gunakan ukuran fonta _sistem"
-
-#: ../settings/behavior-settings.c:439
-msgid "Custom _font size:"
-msgstr "Ukuran _fonta suai:"
-
-#: ../src/main.c:240
-#, c-format
-msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "Ini adalah %s versi %s, berjalan pada Xfce %s.\n"
-
-#: ../src/main.c:242
-#, c-format
-msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Dibangun dengan GTK+ %d.%d.%d, ditautkan dengan GTK+ %d.%d.%d."
-
-#: ../src/main.c:246
-msgid "Build options:\n"
-msgstr "Opsi bangun:\n"
-
-#: ../src/main.c:247
-#, c-format
-msgid "    Desktop Menu:        %s\n"
-msgstr "    Menu Destop:        %s\n"
-
-#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
-msgid "enabled"
-msgstr "diaktifkan"
-
-#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
-msgid "disabled"
-msgstr "dinonaktifkan"
-
-#: ../src/main.c:254
-#, c-format
-msgid "    Desktop Icons:       %s\n"
-msgstr "    Ikon Destop:        %s\n"
-
-#: ../src/main.c:261
-#, c-format
-msgid "    Desktop File Icons:  %s\n"
-msgstr "    Ikon Berkas Destop:  %s\n"
-
-#: ../src/main.c:290
-#, c-format
-msgid "%s: Unknown option: %s\n"
-msgstr "%s: Opsi tak diketahui: %s\n"
-
-#: ../src/main.c:291
-msgid "Options are:\n"
-msgstr "Opsinya adalah:\n"
-
-#: ../src/main.c:292
-msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    --reload      Muat ulang semua pengaturan, segarkan senarai gambar\n"
-
-#: ../src/main.c:293
-msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    --menu        Munculkan menu (di posisi tetikus sekarang)\n"
-
-#: ../src/main.c:294
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    --windowlist  Munculkan senarai jendela (di posisi tetikus sekarang)\n"
-
-#: ../src/main.c:295
-msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "    --quit        Menyebabkan xfdesktop untuk berhenti\n"
-
-#: ../src/main.c:310
-#, c-format
-msgid "%s is not running.\n"
-msgstr "%s tak berjalan.\n"
-
-#: ../src/windowlist.c:233
-msgid "Window List"
-msgstr "Senarai Jendela"
-
-#: ../src/windowlist.c:258
-#, c-format
-msgid "<b>Workspace %d</b>"
-msgstr "<b>Ruang kerja %d</b>"
-
-#: ../src/windowlist.c:267
-#, c-format
-msgid "Workspace %d"
-msgstr "Ruang kerja %d"
-
-#: ../src/windowlist.c:269
-#, c-format
-msgid "<i>Workspace %d</i>"
-msgstr "<i>Ruang kerja %d</i>"
-
-#: ../src/windowlist.c:366 ../src/windowlist.c:369
-msgid "_Add Workspace"
-msgstr "Tambah Ruang Kerja (_A)"
-
-#: ../src/windowlist.c:377
-#, c-format
-msgid "_Remove Workspace %d"
-msgstr "Hapus _Ruang Kerja %d"
-
-#: ../src/windowlist.c:380
-#, c-format
-msgid "_Remove Workspace '%s'"
-msgstr "Hapus _Ruang Kerja '%s'"
-
-#: ../src/xfce-desktop.c:603
+#: ../src/xfce-desktop.c:660 ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop"
 msgstr "Destop"
 
-#: ../src/xfdesktop-file-icon-manager.c:387
+#: ../src/xfdesktop-file-icon-manager.c:390
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
 "Xfdesktop tak dapat membuat folder \"%s\" tempat menyimpan item destop:"
 
-#: ../src/xfdesktop-file-icon-manager.c:389
-#: ../src/xfdesktop-file-icon-manager.c:400
-#: ../src/xfdesktop-file-icon-manager.c:1115
+#: ../src/xfdesktop-file-icon-manager.c:392
+#: ../src/xfdesktop-file-icon-manager.c:403
+#: ../src/xfdesktop-file-icon-manager.c:1120
 msgid "Create Folder Failed"
 msgstr "Gagal Membuat Folder"
 
-#: ../src/xfdesktop-file-icon-manager.c:398
+#: ../src/xfdesktop-file-icon-manager.c:401
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
@@ -987,66 +724,66 @@ msgstr ""
 "Xfdesktop tak dapat menggunakan \"%s\" untuk menahan item destop karena itu "
 "bukan folder."
 
-#: ../src/xfdesktop-file-icon-manager.c:402
+#: ../src/xfdesktop-file-icon-manager.c:405
 msgid "Please delete or rename the file."
 msgstr "Silakan hapus atau namai ulang berkas."
 
-#: ../src/xfdesktop-file-icon-manager.c:539
+#: ../src/xfdesktop-file-icon-manager.c:542
 #, c-format
 msgid "Rename \"%s\""
 msgstr "Namai ulang \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:546
-#: ../src/xfdesktop-file-icon-manager.c:1187
-#: ../src/xfdesktop-file-icon-manager.c:1278
-#: ../src/xfdesktop-file-icon-manager.c:1289
+#: ../src/xfdesktop-file-icon-manager.c:549
+#: ../src/xfdesktop-file-icon-manager.c:1192
+#: ../src/xfdesktop-file-icon-manager.c:1283
+#: ../src/xfdesktop-file-icon-manager.c:1294
 msgid "Enter the new name:"
 msgstr "Masukkan nama baru:"
 
-#: ../src/xfdesktop-file-icon-manager.c:548
+#: ../src/xfdesktop-file-icon-manager.c:551
 msgid "Rename"
 msgstr "Namai Ulang"
 
-#: ../src/xfdesktop-file-icon-manager.c:585
+#: ../src/xfdesktop-file-icon-manager.c:588
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Anda yakin ingin menghapus \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:590
-#: ../src/xfdesktop-file-icon-manager.c:610
+#: ../src/xfdesktop-file-icon-manager.c:593
+#: ../src/xfdesktop-file-icon-manager.c:613
 msgid "If you delete a file, it is permanently lost."
 msgstr "Jika anda menghapus berkas, maka selamanya akan hilang."
 
-#: ../src/xfdesktop-file-icon-manager.c:604
+#: ../src/xfdesktop-file-icon-manager.c:607
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Anda yakin ingin menghapus berkas %d berikut?"
 
-#: ../src/xfdesktop-file-icon-manager.c:607
+#: ../src/xfdesktop-file-icon-manager.c:610
 msgid "Delete Multiple Files"
 msgstr "Hapus Banyak Berkas"
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:824
-#: ../src/xfdesktop-file-icon-manager.c:1549 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:829
+#: ../src/xfdesktop-file-icon-manager.c:1547 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Tak dapat menjalankan \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:826
-#: ../src/xfdesktop-file-icon-manager.c:884
-#: ../src/xfdesktop-file-icon-manager.c:1149
-#: ../src/xfdesktop-file-icon-manager.c:1551 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon-manager.c:831
+#: ../src/xfdesktop-file-icon-manager.c:889
+#: ../src/xfdesktop-file-icon-manager.c:1154
+#: ../src/xfdesktop-file-icon-manager.c:1548 ../src/xfdesktop-file-icon.c:144
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Galat Peluncur"
 
-#: ../src/xfdesktop-file-icon-manager.c:885
+#: ../src/xfdesktop-file-icon-manager.c:890
 msgid "The application chooser could not be opened."
 msgstr "Pemilih aplikasi tak dapat dibuka."
 
-#: ../src/xfdesktop-file-icon-manager.c:886 ../src/xfdesktop-file-utils.c:358
+#: ../src/xfdesktop-file-icon-manager.c:891 ../src/xfdesktop-file-utils.c:358
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -1054,22 +791,22 @@ msgstr ""
 "Fitur ini memerlukan adanya layanan manajer berkas (seperti yang disediakan "
 "oleh Thunar)."
 
-#: ../src/xfdesktop-file-icon-manager.c:1046
+#: ../src/xfdesktop-file-icon-manager.c:1051
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "Buka Dengan \"%s\" (_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1049
+#: ../src/xfdesktop-file-icon-manager.c:1054
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Buka Dengan \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1112
+#: ../src/xfdesktop-file-icon-manager.c:1117
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Tak dapat membuat folder yang bernama \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1151
+#: ../src/xfdesktop-file-icon-manager.c:1156
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -1077,48 +814,48 @@ msgstr ""
 "Tak dapat menjalankan \"exo-desktop-item-edit\", yang diperlukan untuk "
 "membuat dan menyunting peluncur serta tautan di destop."
 
-#: ../src/xfdesktop-file-icon-manager.c:1184
+#: ../src/xfdesktop-file-icon-manager.c:1189
 msgid "Create New Folder"
 msgstr "Buat Folder Baru"
 
-#: ../src/xfdesktop-file-icon-manager.c:1188
+#: ../src/xfdesktop-file-icon-manager.c:1193
 msgid "New Folder"
 msgstr "Folder Baru"
 
-#: ../src/xfdesktop-file-icon-manager.c:1189
-#: ../src/xfdesktop-file-icon-manager.c:1280
-#: ../src/xfdesktop-file-icon-manager.c:1291
+#: ../src/xfdesktop-file-icon-manager.c:1194
+#: ../src/xfdesktop-file-icon-manager.c:1285
+#: ../src/xfdesktop-file-icon-manager.c:1296
 msgid "Create"
 msgstr "Buat"
 
-#: ../src/xfdesktop-file-icon-manager.c:1225
+#: ../src/xfdesktop-file-icon-manager.c:1230
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Tak dapat membuat berkas baru yang bernama \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1228
+#: ../src/xfdesktop-file-icon-manager.c:1233
 msgid "Create File Failed"
 msgstr "Buat Berkas Gagal"
 
-#: ../src/xfdesktop-file-icon-manager.c:1267
+#: ../src/xfdesktop-file-icon-manager.c:1272
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Buat Dokumen dari templat \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1286
+#: ../src/xfdesktop-file-icon-manager.c:1291
 msgid "Create Empty File"
 msgstr "Buat Berkas Kosong"
 
-#: ../src/xfdesktop-file-icon-manager.c:1290
+#: ../src/xfdesktop-file-icon-manager.c:1295
 msgid "New Empty File"
 msgstr "Berkas Kosong Baru"
 
-#: ../src/xfdesktop-file-icon-manager.c:1323
+#: ../src/xfdesktop-file-icon-manager.c:1328
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "Tak dapat membuat berkas \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1324
+#: ../src/xfdesktop-file-icon-manager.c:1329
 msgid "Create Error"
 msgstr "Galat Buat"
 
@@ -1171,17 +908,17 @@ msgid "Desktop _Settings..."
 msgstr "Pengaturan Destop... (_S)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1966
-#: ../src/xfdesktop-volume-icon.c:593
+#: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "_Properti..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3152
+#: ../src/xfdesktop-file-icon-manager.c:3168
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Gagal menjalankan \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:3154
+#: ../src/xfdesktop-file-icon-manager.c:3170
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr "Galat Jalan"
@@ -1198,6 +935,10 @@ msgstr "Tak dapat mengatur aplikasi standar untuk \"%s\" ke \"%s\":"
 #: ../src/xfdesktop-file-properties-dialog.c:106
 msgid "Properties Error"
 msgstr "Galat Properti"
+
+#: ../src/xfdesktop-file-properties-dialog.c:138
+msgid "None"
+msgstr "Tak ada"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Write only"
@@ -1225,6 +966,7 @@ msgstr "Target Taut:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
+#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
 msgid "(unknown)"
 msgstr "(tak diketahui)"
 
@@ -1250,7 +992,7 @@ msgstr "Ukuran:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:413
 #: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:488 ../src/xfdesktop-volume-icon.c:461
+#: ../src/xfdesktop-special-file-icon.c:492
 msgid "%s (%"
 msgstr "%s (%"
 
@@ -1309,7 +1051,7 @@ msgid "link to %s"
 msgstr "taut ke %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:489
-#: ../src/xfdesktop-special-file-icon.c:491 ../src/xfdesktop-volume-icon.c:464
+#: ../src/xfdesktop-special-file-icon.c:496
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -1320,24 +1062,35 @@ msgstr ""
 "Dimodifikasi:%s\n"
 "Ukuran: %s"
 
+#: ../src/xfdesktop-regular-file-icon.c:520
+#: ../src/xfdesktop-regular-file-icon.c:584
+msgid "Error"
+msgstr "Galat"
+
 #: ../src/xfdesktop-regular-file-icon.c:581
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Gagal menamai ulang \"%s\" ke \"%s\":"
 
-#: ../src/xfdesktop-special-file-icon.c:259
+#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:150
 msgid "Home"
 msgstr "Rumah"
 
-#: ../src/xfdesktop-special-file-icon.c:509
+#. FIXME: also display # of items in trash
+#: ../src/xfdesktop-special-file-icon.c:482
+#, fuzzy
+msgid "Kind: Trash"
+msgstr "Jenis:"
+
+#: ../src/xfdesktop-special-file-icon.c:515
 msgid "Trash Error"
 msgstr "Galat Tempat Sampah"
 
-#: ../src/xfdesktop-special-file-icon.c:511
+#: ../src/xfdesktop-special-file-icon.c:517
 msgid "Unable to contact the Xfce Trash service."
 msgstr "Tak dapat menghubungi layanan Tempat Sampah Xfce."
 
-#: ../src/xfdesktop-special-file-icon.c:512
+#: ../src/xfdesktop-special-file-icon.c:518
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
@@ -1345,46 +1098,59 @@ msgstr ""
 "Pastikan bahwa anda telah menginstal manajer berkas yang mendukung layanan "
 "Tempat Sampah Xfce, seperti Thunar."
 
-#: ../src/xfdesktop-special-file-icon.c:635
+#: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
 msgstr "Kosongkan Tempat Sampah (_E)"
 
-#: ../src/xfdesktop-volume-icon.c:492
+#: ../src/xfdesktop-volume-icon.c:474
+#, c-format
+msgid "%s (%s total)"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:478
+#, c-format
+msgid ""
+"Kind: Removable Volume\n"
+"Mount Point: %s\n"
+"Free Space: %s"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:509
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "Tak dapat mount \"%s\":"
 
-#: ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:510
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "Tak dapat melepas mount \"%s\":"
 
-#: ../src/xfdesktop-volume-icon.c:496
+#: ../src/xfdesktop-volume-icon.c:513
 msgid "Mount Failed"
 msgstr "Mount Gagal"
 
-#: ../src/xfdesktop-volume-icon.c:496
+#: ../src/xfdesktop-volume-icon.c:513
 msgid "Unmount Failed"
 msgstr "Lepas Mount Gagal"
 
-#: ../src/xfdesktop-volume-icon.c:514
+#: ../src/xfdesktop-volume-icon.c:531
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "Tak dapat mengeluarkan \"%s\":"
 
-#: ../src/xfdesktop-volume-icon.c:517
+#: ../src/xfdesktop-volume-icon.c:534
 msgid "Eject Failed"
 msgstr "Keluarkan Gagal"
 
-#: ../src/xfdesktop-volume-icon.c:554
+#: ../src/xfdesktop-volume-icon.c:571
 msgid "_Mount Volume"
 msgstr "_Mount Volume"
 
-#: ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-volume-icon.c:582
 msgid "_Unmount Volume"
 msgstr "Lepas Mount Volume (_U)"
 
-#: ../src/xfdesktop-volume-icon.c:579
+#: ../src/xfdesktop-volume-icon.c:596
 msgid "E_ject Volume"
 msgstr "Keluarkan Volume (_j)"
 
@@ -1548,18 +1314,453 @@ msgstr "Ramban web"
 msgid "Web Browser"
 msgstr "Peramban Web"
 
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
-msgid "Shows a menu containing categories of installed applications"
-msgstr "Tampilkan menu yang berisi kategori aplikasi terinstal"
+#: ../settings/main.c:152
+#, fuzzy
+msgid "Filesystem"
+msgstr "sistem"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+#: ../settings/main.c:154
+#, fuzzy
+msgid "Trash"
+msgstr "Galat Tempat Sampah"
+
+#: ../settings/main.c:156
+msgid "Removable Devices"
+msgstr ""
+
+#: ../settings/main.c:466
+#, fuzzy
+msgid "Add Image File(s)"
+msgstr "Berkas Gambar"
+
+#: ../settings/main.c:475
+msgid "Image files"
+msgstr "Berkas gambar"
+
+#: ../settings/main.c:480
+#, fuzzy
+msgid "All files"
+msgstr "Semua Berkas"
+
+#: ../settings/main.c:591
+#, fuzzy, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "Layar %d, Monitor %d"
+
+#: ../settings/main.c:596
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Layar %d, Monitor %d"
+
+#: ../settings/main.c:599
+#, c-format
+msgid "Screen %d"
+msgstr "Layar %d"
+
+#: ../settings/main.c:605
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr ""
+
+#: ../settings/main.c:610
+#, fuzzy, c-format
+msgid "Monitor %d"
+msgstr "Layar %d, Monitor %d"
+
+#: ../settings/main.c:758 ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Desktop Settings"
 msgstr "Pengaturan Destop"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+#: ../settings/main.c:760
+#, fuzzy
+msgid "Unable to contact settings server"
+msgstr "Tak dapat menghubungi layanan Tempat Sampah Xfce."
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Settings for the Xfce 4 Desktop Manager"
 msgstr "Pengaturan untuk Manajer Destop Xfce 4"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:3
+#: ../settings/xfce-backdrop-settings.desktop.in.h:4
 msgid "Xfce 4 Desktop Settings"
 msgstr "Pengaturan Destop Xfce 4"
+
+#: ../settings/xfdesktop-settings.glade.h:1
+msgid "<b>Adjustments</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:2
+#, fuzzy
+msgid "<b>Appearance</b>"
+msgstr "Tampilan (_A)"
+
+#: ../settings/xfdesktop-settings.glade.h:3
+#, fuzzy
+msgid "<b>Colors</b>"
+msgstr "<b>Ruang kerja %d</b>"
+
+#: ../settings/xfdesktop-settings.glade.h:4
+msgid "<b>Default Icons</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:5
+msgid "<b>Desktop Menu</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:6
+msgid "<b>Image</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:7
+msgid "<b>Images</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:8
+#, fuzzy
+msgid "<b>Window List Menu</b>"
+msgstr "Senarai Jendela"
+
+#: ../settings/xfdesktop-settings.glade.h:9
+msgid "Add an image to the list"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:10
+msgid ""
+"Auto\n"
+"Centered\n"
+"Tiled\n"
+"Stretched\n"
+"Scaled\n"
+"Zoomed"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:16
+#, fuzzy
+msgid "B_rightness:"
+msgstr "Sesuaikan Kecerahan: (_d)"
+
+#: ../settings/xfdesktop-settings.glade.h:17
+#, fuzzy
+msgid "B_utton:"
+msgstr "Tombol"
+
+#: ../settings/xfdesktop-settings.glade.h:18
+#, fuzzy
+msgid "Icon _size:"
+msgstr "Ukuran ikon: (_I)"
+
+#: ../settings/xfdesktop-settings.glade.h:19
+#, fuzzy
+msgid "Icon _type:"
+msgstr "Ukuran ikon: (_I)"
+
+#: ../settings/xfdesktop-settings.glade.h:20
+#, fuzzy
+msgid "Image _list"
+msgstr "Berkas Gambar"
+
+#: ../settings/xfdesktop-settings.glade.h:21
+msgid "Label trans_parency:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:22
+msgid ""
+"Left\n"
+"Middle\n"
+"Right"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:25
+#, fuzzy
+msgid "Mo_difier:"
+msgstr "Dimodifikasi:"
+
+#: ../settings/xfdesktop-settings.glade.h:26
+#, fuzzy
+msgid "Modi_fier:"
+msgstr "Dimodifikasi:"
+
+#: ../settings/xfdesktop-settings.glade.h:27
+#, fuzzy
+msgid ""
+"None\n"
+"Minimized application icons\n"
+"File/launcher icons"
+msgstr "Ikon aplikasi diminimalkan"
+
+#: ../settings/xfdesktop-settings.glade.h:30
+msgid ""
+"None\n"
+"Shift\n"
+"Alt\n"
+"Control"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:34
+msgid "Remove the selected image from the list"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:35
+msgid "Sa_turation:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:36
+#, fuzzy
+msgid "Select First Color"
+msgstr "Warna Pe_rtama:"
+
+#: ../settings/xfdesktop-settings.glade.h:37
+#, fuzzy
+msgid "Select Second Color"
+msgstr "Warna Kedua: (_S)"
+
+#: ../settings/xfdesktop-settings.glade.h:38
+msgid "Set desktop background and menu and icon behavior"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:39
+#, fuzzy
+msgid "Sh_ow application icons in menu"
+msgstr "Tampilkan _ikon di menu"
+
+#: ../settings/xfdesktop-settings.glade.h:40
+#, fuzzy
+msgid "Show _application icons in menu"
+msgstr "Tampilkan _ikon di menu"
+
+#: ../settings/xfdesktop-settings.glade.h:41
+#, fuzzy
+msgid "Show _desktop menu on desktop click"
+msgstr "Tampilkan menu _destop dengan klik kanan"
+
+#: ../settings/xfdesktop-settings.glade.h:42
+#, fuzzy
+msgid "Show _window list menu on desktop click"
+msgstr "Tampilkan senarai jendela dengan klik tengah (_w)"
+
+#: ../settings/xfdesktop-settings.glade.h:43
+#, fuzzy
+msgid "Show s_ticky windows only in active workspace"
+msgstr "Tampilkan hanya jendela melekat di ruang kerja _aktif"
+
+#: ../settings/xfdesktop-settings.glade.h:44
+#, fuzzy
+msgid "Show windows on each workspace in _submenus"
+msgstr "Tampilkan jendela pada tiap ruang kerja dalam sub_menu"
+
+#: ../settings/xfdesktop-settings.glade.h:45
+msgid "Show workspace _names in list"
+msgstr "Tampilkan _nama ruang kerja dalam senarai"
+
+#: ../settings/xfdesktop-settings.glade.h:46
+msgid ""
+"Solid color\n"
+"Horizontal gradient\n"
+"Vertical gradient\n"
+"Transparent"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:50
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:51
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:52
+#, fuzzy
+msgid "St_yle:"
+msgstr "Gaya:"
+
+#: ../settings/xfdesktop-settings.glade.h:53
+#, fuzzy
+msgid "Use _Xfce to manage the desktop"
+msgstr "Izinkan _Xfce untuk mengatur destop"
+
+#: ../settings/xfdesktop-settings.glade.h:54
+#, fuzzy
+msgid "Use custom _font size:"
+msgstr "Ukuran _fonta suai:"
+
+#: ../settings/xfdesktop-settings.glade.h:55
+msgid "_Background"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:56
+#, fuzzy
+msgid "_Button:"
+msgstr "Tombol"
+
+#: ../settings/xfdesktop-settings.glade.h:57
+#, fuzzy
+msgid "_Edit desktop menu"
+msgstr "Sunting Menu (_E)"
+
+#: ../settings/xfdesktop-settings.glade.h:58
+#, fuzzy
+msgid "_Icons"
+msgstr "Ikon"
+
+#: ../settings/xfdesktop-settings.glade.h:59
+#, fuzzy
+msgid "_Menus"
+msgstr "Menu"
+
+#: ../settings/xfdesktop-settings.glade.h:60
+#, fuzzy
+msgid "_None"
+msgstr "Tak ada"
+
+#: ../settings/xfdesktop-settings.glade.h:61
+msgid "_Single image"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:62
+msgid "gtk-close"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:63
+msgid "gtk-help"
+msgstr ""
+
+#~ msgid "Button Label|Desktop"
+#~ msgstr "Destop"
+
+#~ msgid "backdrops.list"
+#~ msgstr "latarbelakang.list"
+
+#~ msgid "Select backdrop image or list file"
+#~ msgstr "Pilih gambar latar belakang atau berkas senarai "
+
+#~ msgid "List Files (*.list)"
+#~ msgstr "Berkas Senarai (*.list)"
+
+#~ msgid "_Edit list..."
+#~ msgstr "Sunting senarai... (_E)"
+
+#~ msgid "_New list..."
+#~ msgstr "Senarai baru... (_N)"
+
+#~ msgid "S_tyle:"
+#~ msgstr "Gaya: (_t)"
+
+#~ msgid "Auto"
+#~ msgstr "Otomatis"
+
+#~ msgid "Centered"
+#~ msgstr "Tengah"
+
+#~ msgid "Tiled"
+#~ msgstr "Ubin"
+
+#~ msgid "Stretched"
+#~ msgstr "Rentang"
+
+#~ msgid "Scaled"
+#~ msgstr "Skala"
+
+#~ msgid "Zoomed"
+#~ msgstr "Perbesar"
+
+#~ msgid "Xfce will be unable to manage your desktop (%s)."
+#~ msgstr "Xfce tak akan dapat mengatur destop anda (%s)"
+
+#~ msgid "Unknown Error"
+#~ msgstr "Galat tak diketahui"
+
+#~ msgid "Unable to start xfdesktop"
+#~ msgstr "Tak dapat menjalankan xfdesktop"
+
+#~ msgid "Information"
+#~ msgstr "Informasi"
+
+#~ msgid ""
+#~ "To ensure that this setting takes effect the next time you start Xfce, "
+#~ "please be sure to save your session when logging out.  If you are not "
+#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
+#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
+#~ "documentation provided on http://xfce.org/."
+#~ msgstr ""
+#~ "Untuk memastikan bahwa pengaturan ini akan berjalan ketika lain kali anda "
+#~ "menjalankan Xfce, pastikan untuk menyimpan sesi anda ketika log keluar.  "
+#~ "Jika anda tidak menggunakan Manajer Sesi Xfce (xfce4-session), anda perlu "
+#~ "menyunting secara manual berkas ~/.config/xfce4/xinitrc.  Keterangan "
+#~ "lebih lanjut tersedia pada dokumentasi yang ada di http://xfce.org/."
+
+#~ msgid ""
+#~ "To ensure that Xfce does not manage your desktop the next time you start "
+#~ "Xfce, please be sure to save your session when logging out.  If you are "
+#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
+#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
+#~ "in the documentation provided on http://xfce.org/."
+#~ msgstr ""
+#~ "Untuk memastikan bahwa Xfce tidak mengatur destop anda ketika lain kali "
+#~ "anda menjalankan Xfce, pastikan untuk menyimpan sesi anda ketika log "
+#~ "keluar.  Jika anda tidak menggunakan Manajer Sesi Xfce (xfce4-session), "
+#~ "anda perlu menyunting secara manual berkas ~/.config/xfce4/xinitrc.  "
+#~ "Keterangan lebih lanjut tersedia pada dokumentasi yang ada di http://xfce."
+#~ "org/."
+
+#~ msgid "_Do not show this again"
+#~ msgstr "Jangan tampilkan ini lagi (_D)"
+
+#~ msgid "Desktop Preferences"
+#~ msgstr "Pengaturan Destop"
+
+#~ msgid "Stretch single backdrop onto _all monitors"
+#~ msgstr "Tarik latar belakang tunggal ke semu_a monitor"
+
+#~ msgid "Color"
+#~ msgstr "Warna"
+
+#~ msgid "_Color Style:"
+#~ msgstr "Gaya Warna: (_C)"
+
+#~ msgid "Solid Color"
+#~ msgstr "Warna Solid"
+
+#~ msgid "Horizontal Gradient"
+#~ msgstr "Gradasi Horisontal"
+
+#~ msgid "Vertical Gradient"
+#~ msgstr "Gradasi Vertikal"
+
+#~ msgid "Image"
+#~ msgstr "Gambar"
+
+#~ msgid "Show _Image"
+#~ msgstr "Tampilkan Gambar (_I)"
+
+#~ msgid "_File:"
+#~ msgstr "Berkas: (_F)"
+
+#~ msgid "_Behavior"
+#~ msgstr "Perilaku (_B)"
+
+#~ msgid "Select backdrop image file"
+#~ msgstr "Pilih berkas gambar latar belakang"
+
+#~ msgid "Choose backdrop list filename"
+#~ msgstr "Pilih nama berkas senarai latar belakang"
+
+#~ msgid "List Files"
+#~ msgstr "Berkas Senarai"
+
+#~ msgid "List file"
+#~ msgstr "Berkas senarai"
+
+#~ msgid "Create backdrop list"
+#~ msgstr "Buat senarai latar belakang"
+
+#~ msgid "Edit backdrop list"
+#~ msgstr "Sunting senarai latar belakang"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Ikon Destop"
+
+#~ msgid "File/launcher icons"
+#~ msgstr "Ikon berkas/peluncur"
+
+#~ msgid "Use _system font size"
+#~ msgstr "Gunakan ukuran fonta _sistem"

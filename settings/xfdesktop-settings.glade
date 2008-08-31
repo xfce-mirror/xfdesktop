@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Wed Aug 27 02:58:43 2008 -->
+<!--Generated with glade3 3.4.5 on Sat Aug 30 14:00:57 2008 -->
 <glade-interface>
   <requires lib="xfce4"/>
   <widget class="XfceTitledDialog" id="prefs_dialog">
@@ -328,7 +328,7 @@ Zoomed</property>
                                                 <property name="items" translatable="yes">Solid color
 Horizontal gradient
 Vertical gradient
-None</property>
+Transparent</property>
                                                 <signal name="changed" handler="color_style_changed"/>
                                               </widget>
                                               <packing>

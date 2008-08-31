@@ -173,7 +173,9 @@ create_gradient(GdkColor *color1, GdkColor *color2, gint width, gint height,
             memcpy(pixdata.pixel_data+(i*pixdata.rowstride),
                     pixdata.pixel_data, pixdata.rowstride);
         }
-    } else {
+    } else if(XFCE_BACKDROP_COLOR_TRANSPARENT == style)
+        memset(pixdata.pixel_data, 0x0, width * height * 3);
+    else {
         for(i = 0; i < height; i++) {
             rgb[0] = (color1->red + (i * (color2->red - color1->red) / height)) >> 8;
             rgb[1] = (color1->green + (i * (color2->green - color1->green) / height)) >> 8;
@@ -318,6 +320,7 @@ xfce_backdrop_set_color_style(XfceBackdrop *backdrop,
         XfceBackdropColorStyle style)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+    g_return_if_fail(style >= 0 && style <= XFCE_BACKDROP_COLOR_TRANSPARENT);
     
     if(style != backdrop->priv->color_style) {
         backdrop->priv->color_style = style;
@@ -580,7 +583,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     
     if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_SOLID)
         final_image = create_solid(&backdrop->priv->color1, w, h, FALSE, 0xff);
-    else if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_NONE) {
+    else if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_TRANSPARENT) {
         GdkColor c = { 0, 0xffff, 0xffff, 0xffff };
         final_image = create_solid(&c, w, h, TRUE, 0x00);
     } else {
