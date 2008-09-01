@@ -146,7 +146,7 @@ stamp-xfce-desktop-enum-types.h: $(enum_headers) Makefile
 	      && ( cmp -s xgen-xdeth xfce-desktop-enum-types.h || cp xgen-xdeth xfce-desktop-enum-types.h ) \
 	      && rm -f xgen-xdeth \
 		  && echo timestamp > $(@F)
-xfce-desktop-enum-types.c: $(libthunar_vfs_headers) Makefile
+xfce-desktop-enum-types.c: $(enum_headers) Makefile
 	( cd $(srcdir) && glib-mkenums \
 	      --fhead "#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include \"xfce-desktop.h\"\n#include \"xfce-backdrop.h\"" \
 	      --fprod "\n/* enumerations from \"@filename@\" */" \
