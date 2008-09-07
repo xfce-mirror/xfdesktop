@@ -720,10 +720,6 @@ xfce_desktop_realize(GtkWidget *widget)
     
     TRACE("entering");
 
-#ifdef ENABLE_DESKTOP_ICONS
-    xfce_desktop_setup_icon_view(desktop);
-#endif
-    
     gtk_window_set_screen(GTK_WINDOW(desktop), desktop->priv->gscreen);
     sw = gdk_screen_get_width(desktop->priv->gscreen);
     sh = gdk_screen_get_height(desktop->priv->gscreen);
@@ -777,6 +773,10 @@ xfce_desktop_realize(GtkWidget *widget)
     
     gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSURE_MASK);
     
+#ifdef ENABLE_DESKTOP_ICONS
+    xfce_desktop_setup_icon_view(desktop);
+#endif
+
     TRACE("exiting");
 }
 
