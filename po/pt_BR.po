@@ -640,7 +640,7 @@ msgstr "    --menu        Abrir o menu (na posição atual do mouse)\n"
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
-"    --windowlist  Abrir a lista de janelas (na posição atual do mouse)\n"
+"    --windowlist  Abre a lista de janelas (na posição atual do mouse)\n"
 
 #: ../src/main.c:282
 #, c-format
@@ -1223,7 +1223,7 @@ msgstr "Multimídia"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
-msgstr "Rede"
+msgstr "Internet"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:2
 msgid "Network applications and utilities"
@@ -1520,8 +1520,8 @@ msgstr "Selecionar segunda cor"
 
 #: ../settings/xfdesktop-settings.glade.h:38
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Definir o comportamento do segundo plano da área "
-"de trabalho, menu e ícones"
+msgstr ""
+"Definir o comportamento do segundo plano da área de trabalho, menu e ícones"
 
 #: ../settings/xfdesktop-settings.glade.h:39
 msgid "Sh_ow application icons in menu"
@@ -1620,6 +1620,14 @@ msgstr "gtk-close"
 #: ../settings/xfdesktop-settings.glade.h:63
 msgid "gtk-help"
 msgstr "gtk-help"
+
+#~ msgid "Unable to load image from backdrop list file \"%s\""
+#~ msgstr ""
+#~ "Não foi possível carregar a imagem do arquivo de lista de imagens de "
+#~ "fundo \"%s\":"
+
+#~ msgid "Desktop Error"
+#~ msgstr "Erro de área de trabalho"
 
 #~ msgid "Button Label|Desktop"
 #~ msgstr "Área de Trabalho"
