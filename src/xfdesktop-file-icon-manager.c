@@ -2113,8 +2113,10 @@ xfdesktop_file_icon_manager_save_icons(gpointer user_data)
     
     g_hash_table_foreach(fmanager->priv->icons,
                          file_icon_hash_write_icons, rcfile);
-    g_hash_table_foreach(fmanager->priv->removable_icons,
-                         file_icon_hash_write_icons, rcfile);
+    if(fmanager->priv->show_removable_media) {
+        g_hash_table_foreach(fmanager->priv->removable_icons,
+                             file_icon_hash_write_icons, rcfile);
+    }
     g_hash_table_foreach(fmanager->priv->special_icons,
                          file_icon_hash_write_icons, rcfile);
     
