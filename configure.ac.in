@@ -254,25 +254,6 @@ if test "x$enable_xml2po" = "xyes"; then
 fi
 AM_CONDITIONAL([ENABLE_XML2PO], [test "x$enable_xml2po" = "xyes"])
 
-dnl the xfconf migration requires perl with XML::Parser
-AC_ARG_ENABLE([xfconf-migration],
-              [AC_HELP_STRING([--disable-xfconf-migration],
-                              [Don't require perl/XML::Parser for Xfconf settings migration @<:@default=required@:>@])],
-              [do_xfconf_migration=$enableval], [do_xfconf_migration=yes])
-if test "x$do_xfconf_migration" = "xyes"; then
-    AC_PATH_PROGS([PERL], [perl5 perl])
-    if test -z "$PERL"; then
-        AC_MSG_ERROR([perl not found; required for Xfconf migration. Pass --disable-xfconf-migration to ignore this.])
-    fi
-    AC_MSG_CHECKING([for XML::Parser])
-    if `$PERL -e 'require XML::Parser;' >/dev/null 2>&1`; then
-        AC_MSG_RESULT([found])
-    else
-        AC_MSG_RESULT([not found])
-        AC_MSG_ERROR([perl module XML::Parser not found; required for Xfconf migration. Pass --disable-xfconf-migration to ignore this.])
-    fi
-fi
-
 dnl check for debugging support
 XDT_FEATURE_DEBUG
 
@@ -296,7 +277,6 @@ panel-plugin/Makefile
 pixmaps/Makefile
 po/Makefile.in
 po-doc/Makefile
-scripts/Makefile
 settings/Makefile
 src/Makefile
 xfdesktop.spec
