@@ -999,7 +999,8 @@ xfce_desktop_image_filename_changed(XfconfChannel *channel,
             
             backdrop_file = xfdesktop_backdrop_list_choose_random(filename,
                                                                   &error);
-            if(!backdrop_file) {
+#if 0
+            if(!backdrop_file && !xfdesktop_backdrop_list_is_valid(filename)) {
                 gchar *primary = g_strdup_printf(_("Unable to load image from backdrop list file \"%s\""),
                                                  filename);
                 xfce_message_dialog(GTK_WINDOW(desktop), _("Desktop Error"),
@@ -1009,8 +1010,8 @@ xfce_desktop_image_filename_changed(XfconfChannel *channel,
                                     NULL);
                 g_error_free(error);
                 g_free(primary);
-                return;
             }
+#endif
 
             xfce_backdrop_set_image_filename(backdrop, backdrop_file);
             g_free(backdrop_file);

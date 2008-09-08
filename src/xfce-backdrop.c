@@ -678,10 +678,12 @@ xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
     
-    if(backdrop->priv->image_path)
-        g_free(backdrop->priv->image_path);
+    g_free(backdrop->priv->image_path);
     
-    backdrop->priv->image_path = g_strdup(filename);
+    if(filename)
+        backdrop->priv->image_path = g_strdup(filename);
+    else
+        backdrop->priv->image_path = NULL;
     
     g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
 }
