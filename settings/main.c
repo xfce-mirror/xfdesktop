@@ -35,6 +35,10 @@
 #include <string.h>
 #endif
 
+#ifdef HAVE_ERRNO_H
+#include <errno.h>
+#endif
+
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gtk/gtk.h>
 #include <glade/glade.h>
@@ -73,16 +77,25 @@ typedef struct
     XfconfChannel *channel;
     gint screen;
     gint monitor;
+    gulong show_image:1,
+           image_selector_loaded:1,
+           image_list_loaded:1;
+
+    GtkWidget *frame_image_list;
+    GtkWidget *image_treeview;
+    GtkWidget *btn_plus;
+    GtkWidget *btn_minus;
+    GtkWidget *btn_newlist;
+    GtkWidget *image_style_combo;
+
+    GtkWidget *radio_singleimage;
+    GtkWidget *radio_imagelist;
+    GtkWidget *radio_none;
 
     GtkWidget *color_style_combo;
     GtkWidget *color1_btn;
     GtkWidget *color2_btn;
-    GtkWidget *single_image_radio;
-    GtkWidget *image_list_radio;
-    GtkWidget *image_treeview;
-    GtkWidget *plus_btn;
-    GtkWidget *minus_btn;
-    GtkWidget *image_style_combo;
+
     GtkWidget *brightness_slider;
     GtkWidget *saturation_slider;
 } AppearancePanel;
@@ -291,6 +304,110 @@ xfdesktop_image_list_add_dir(GtkListStore *ls,
     return iter_ret;
 }
 
+static gboolean
+xfdesktop_settings_ensure_backdrop_list(gchar *filename,
+                                        GtkWindow *parent)
+{
+    FILE *fp;
+
+    g_return_val_if_fail(filename && *filename, FALSE);
+
+    if(xfdesktop_backdrop_list_is_valid(filename))
+        return TRUE;
+
+    fp = fopen(filename, "w");
+    if(!fp) {
+        gchar *shortfile = g_path_get_basename(filename);
+        gchar *primary = g_strdup_printf(_("Cannot create backdrop list \"%s\""),
+                                         shortfile);
+
+        xfce_message_dialog(parent,
+                            _("Backdrop List Error"),
+                            GTK_STOCK_DIALOG_ERROR,
+                            primary, strerror(errno),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                            NULL);
+        g_free(primary);
+        g_free(shortfile);
+
+        return FALSE;
+    }
+
+    fprintf(fp, "%s\n", LIST_TEXT);
+    fclose(fp);
+
+    return TRUE;
+}
+
+static gchar *
+xfdesktop_settings_dialog_create_load_list(AppearancePanel *panel)
+{
+    gchar *list_file = NULL;
+    GtkWindow *parent = GTK_WINDOW(gtk_widget_get_toplevel(panel->image_treeview));
+    GtkWidget *chooser;
+    gchar *path;
+
+    chooser = gtk_file_chooser_dialog_new(_("Create/Load Backdrop List"),
+                                          parent, GTK_FILE_CHOOSER_ACTION_SAVE,
+                                          GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+                                          GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+                                          NULL);
+    path = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
+                                       "xfce4/desktop/", TRUE);
+    if(path) {
+        gtk_file_chooser_add_shortcut_folder(GTK_FILE_CHOOSER(chooser),
+                                             path, NULL);
+        g_free(path);
+    }
+
+    for(;;) {
+        if(GTK_RESPONSE_ACCEPT != gtk_dialog_run(GTK_DIALOG(chooser))) {
+            gtk_widget_destroy(chooser);
+            return NULL;
+        }
+
+        list_file = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(chooser));
+        if(g_file_test(list_file, G_FILE_TEST_EXISTS)
+           && !xfdesktop_backdrop_list_is_valid(list_file))
+        {
+            gchar *shortfile = g_path_get_basename(list_file);
+            gchar *primary = g_strdup_printf(_("File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"),
+                                             shortfile);
+            gint resp;
+
+            resp = xfce_message_dialog(GTK_WINDOW(chooser),
+                                       _("Invalid List File"),
+                                       GTK_STOCK_DIALOG_ERROR,
+                                       primary,
+                                       _("Overwriting the file will cause its contents to be lost."),
+                                       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+                                       XFCE_CUSTOM_STOCK_BUTTON, _("Replace"), GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT,
+                                       NULL);
+            g_free(primary);
+            g_free(shortfile);
+
+            if(GTK_RESPONSE_ACCEPT == resp)
+                break;
+            else {
+                g_free(list_file);
+                list_file = NULL;
+            }
+        } else
+            break;
+    }
+
+    gtk_widget_destroy(chooser);
+    while(gtk_events_pending())
+        gtk_main_iteration();
+
+    if(!xfdesktop_settings_ensure_backdrop_list(list_file, parent)) {
+        g_free(list_file);
+        return NULL;
+    }
+
+    return list_file;
+}
+
 static void
 cb_image_selection_changed(GtkTreeSelection *sel,
                            gpointer user_data)
@@ -303,6 +420,9 @@ cb_image_selection_changed(GtkTreeSelection *sel,
 
     TRACE("entering");
 
+    if(panel->image_list_loaded)
+        return;
+
     if(!gtk_tree_selection_get_selected(sel, &model, &iter))
         return;
 
@@ -313,40 +433,63 @@ cb_image_selection_changed(GtkTreeSelection *sel,
     g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/image-path",
                panel->screen, panel->monitor);
     xfconf_channel_set_string(panel->channel, buf, filename);
-    g_free(filename);
+    g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/last-single-image",
+               panel->screen, panel->monitor);
+    xfconf_channel_set_string(panel->channel, buf, filename);
 }
 
-static void
-xfdesktop_settings_dialog_populate_image_list(GladeXML *gxml,
-                                              AppearancePanel *panel)
+static gboolean
+xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
 {
-    gchar buf[PATH_MAX], *image_file;
+    gchar prop_image[1024], prop_last[1024], *image_file;
     GtkListStore *ls;
     GtkTreeIter iter, *image_file_iter = NULL;
-    gboolean do_sort = TRUE, connect_changed_signal = FALSE;
+    gboolean do_sort = TRUE;
     GtkTreeSelection *sel;
 
     sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(panel->image_treeview));
     ls = gtk_list_store_new(N_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
                             G_TYPE_STRING, G_TYPE_STRING);
 
-    g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/image-path",
+    g_snprintf(prop_image, sizeof(prop_image),
+               PER_SCREEN_PROP_FORMAT "/image-path",
                panel->screen, panel->monitor);
-    image_file = xfconf_channel_get_string(panel->channel, buf, NULL);
+    image_file = xfconf_channel_get_string(panel->channel, prop_image, NULL);
 
-    if(image_file && xfdesktop_backdrop_list_is_valid(image_file)) {
+    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->radio_imagelist))) {
         gchar **images;
 
-        do_sort = FALSE;
+        g_snprintf(prop_last, sizeof(prop_last),
+                   PER_SCREEN_PROP_FORMAT "/last-image-list",
+                   panel->screen, panel->monitor);
 
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget(gxml,
-                                                                            "radio_imagelist")),
-                                     TRUE);
-        gtk_widget_show(glade_xml_get_widget(gxml, "btn_image_remove"));
+        if(!image_file || !xfdesktop_backdrop_list_is_valid(image_file)) {
+            g_free(image_file);
+            image_file = xfconf_channel_get_string(panel->channel, prop_last,
+                                                   NULL);
+            if(!image_file || !xfdesktop_backdrop_list_is_valid(image_file)) {
+                g_free(image_file);
+                image_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
+                                                         DEFAULT_BACKDROP_LIST,
+                                                         TRUE);
+                if(!xfdesktop_settings_ensure_backdrop_list(image_file,
+                                                            GTK_WINDOW(gtk_widget_get_toplevel(panel->image_treeview))))
+                {
+                    /* FIXME: go back to single image mode or something */
+                    g_free(image_file);
+                    return FALSE;
+                }
+            }
+        }
+
+        do_sort = FALSE;
 
         images = xfdesktop_backdrop_list_load(image_file, NULL, NULL);
         if(images) {
             gint i;
+
+            xfconf_channel_set_string(panel->channel, prop_image, image_file);
+            xfconf_channel_set_string(panel->channel, prop_last, image_file);
 
             for(i = 0; images[i]; ++i) {
                 gchar *name;
@@ -370,16 +513,31 @@ xfdesktop_settings_dialog_populate_image_list(GladeXML *gxml,
             }
 
             g_strfreev(images);
+            panel->image_list_loaded = TRUE;
+            panel->image_selector_loaded = FALSE;
+            gtk_tree_selection_set_mode(sel, GTK_SELECTION_MULTIPLE);
         }
-    } else {
+    } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->radio_singleimage))) {
         GtkTreeIter *tmp;
         gchar **backdrop_dirs;
         gint i;
 
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(glade_xml_get_widget(gxml,
-                                                                            "radio_singleimage")),
-                                     TRUE);
-        gtk_widget_hide(glade_xml_get_widget(gxml, "btn_image_remove"));
+        g_snprintf(prop_last, sizeof(prop_last),
+                   PER_SCREEN_PROP_FORMAT "/last-image",
+                   panel->screen, panel->monitor);
+
+        if(!image_file || !xfdesktop_image_file_is_valid(image_file)) {
+            g_free(image_file);
+            image_file = xfconf_channel_get_string(panel->channel, prop_last,
+                                                   NULL);
+            if(!image_file || !xfdesktop_image_file_is_valid(image_file)) {
+                g_free(image_file);
+                image_file = g_strdup(DEFAULT_BACKDROP);
+            }
+        }
+
+        xfconf_channel_set_string(panel->channel, prop_image, image_file);
+        xfconf_channel_set_string(panel->channel, prop_last, image_file);
 
         backdrop_dirs = xfce_resource_lookup_all(XFCE_RESOURCE_DATA,
                                                  "xfce4/backdrops/");
@@ -390,7 +548,7 @@ xfdesktop_settings_dialog_populate_image_list(GladeXML *gxml,
                 image_file_iter = tmp;
         }
 
-        if(image_file && !image_file_iter) {
+        if(!image_file_iter) {
             gchar *name, *key = NULL;
 
             /* FIXME: set image thumbnail */
@@ -420,7 +578,12 @@ xfdesktop_settings_dialog_populate_image_list(GladeXML *gxml,
             g_free(key);
         }
 
-        connect_changed_signal = TRUE;
+        panel->image_list_loaded = FALSE;
+        panel->image_selector_loaded = TRUE;
+        gtk_tree_selection_set_mode(sel, GTK_SELECTION_SINGLE);
+    } else {
+        g_warning("xfdesktop_settings_populate_image_list() called when image style set to 'none'");
+        return FALSE;
     }
 
     if(do_sort) {
@@ -438,12 +601,28 @@ xfdesktop_settings_dialog_populate_image_list(GladeXML *gxml,
     }
     g_object_unref(G_OBJECT(ls));
 
-    if(connect_changed_signal) {
-        g_signal_connect(G_OBJECT(sel), "changed",
-                         G_CALLBACK(cb_image_selection_changed), panel);
-    }
-
     g_free(image_file);
+
+    return TRUE;
+}
+
+static void
+newlist_button_clicked(GtkWidget *button,
+                       gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+    gchar *list_file, propname[1024];
+
+    list_file = xfdesktop_settings_dialog_create_load_list(panel);
+    if(!list_file)
+        return;
+
+    g_snprintf(propname, sizeof(propname), PER_SCREEN_PROP_FORMAT "/image-path",
+               panel->screen, panel->monitor);
+    xfconf_channel_set_string(panel->channel, propname, list_file);
+    g_free(list_file);
+
+    xfdesktop_settings_dialog_populate_image_list(panel);
 }
 
 static void
@@ -453,6 +632,62 @@ cb_xfdesktop_chk_custom_font_size_toggled(GtkCheckButton *button,
     GtkWidget *spin_button = GTK_WIDGET(user_data);
     gtk_widget_set_sensitive(spin_button,
                              gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)));
+}
+
+static gboolean
+xfdesktop_settings_save_backdrop_list(AppearancePanel *panel,
+                                      GtkTreeModel *model)
+{
+    gboolean ret = TRUE;
+    gint n_images;
+    gchar **images = NULL, *list_file;
+    GtkTreeIter iter;
+    gchar propname[1024];
+    GError *error = NULL;
+
+    n_images = gtk_tree_model_iter_n_children(model, NULL);
+    images = g_new(gchar *, n_images + 1);
+    images[n_images] = NULL;
+
+    if(gtk_tree_model_get_iter_first(model, &iter)) {
+        gint i = 0;
+
+        do {
+            gtk_tree_model_get(model, &iter,
+                               COL_FILENAME, &(images[i++]),
+                               -1);
+        } while(gtk_tree_model_iter_next(model, &iter));
+    }
+
+    g_snprintf(propname, sizeof(propname),
+               PER_SCREEN_PROP_FORMAT "/last-image-list",
+               panel->screen, panel->monitor);
+    list_file = xfconf_channel_get_string(panel->channel, propname, NULL);
+    if(!list_file) {
+        list_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
+                                                DEFAULT_BACKDROP_LIST, TRUE);
+        g_warning("Didn't find prop %s when saving backdrop list; using default %s",
+                  propname, list_file);
+    }
+
+    if(!xfdesktop_backdrop_list_save(list_file, images, &error)) {
+        gchar *primary = g_strdup_printf(_("Failed to write backdrop list to \"%s\""),
+                                         list_file);
+
+        xfce_message_dialog(GTK_WINDOW(gtk_widget_get_toplevel(panel->frame_image_list)),
+                            _("Backdrop List Error"), GTK_STOCK_DIALOG_ERROR,
+                            primary, error->message,
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+
+        g_free(primary);
+        g_error_free(error);
+        ret = FALSE;
+    }
+
+    g_free(list_file);
+    g_strfreev(images);
+
+    return ret;
 }
 
 static void
@@ -503,9 +738,49 @@ add_file_button_clicked(GtkWidget *button,
         g_free(filename);
         g_free(name);
         g_free(name_utf8);
+
+        if(panel->image_list_loaded)
+            xfdesktop_settings_save_backdrop_list(panel, model);
     }
 
     gtk_widget_destroy(chooser);
+}
+
+static void
+remove_file_button_clicked(GtkWidget *button,
+                           gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+    GtkTreeSelection *sel;
+    GtkTreeModel *model = NULL;
+    GList *rows, *l;
+
+    sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(panel->image_treeview));
+    rows = gtk_tree_selection_get_selected_rows(sel, &model);
+    if(rows) {
+        GSList *rrefs = NULL, *m;
+        GtkTreeIter iter;
+
+        for(l = rows; l; l = l->next) {
+            rrefs = g_slist_prepend(rrefs, gtk_tree_row_reference_new(model,
+                                                                      l->data));
+            gtk_tree_path_free(l->data);
+        }
+        g_list_free(rows);
+
+        for(m = rrefs; m; m = m->next) {
+            GtkTreePath *path = gtk_tree_row_reference_get_path(m->data);
+
+            if(gtk_tree_model_get_iter(model, &iter, path))
+                gtk_list_store_remove(GTK_LIST_STORE(model), &iter);
+
+            gtk_tree_path_free(path);
+            gtk_tree_row_reference_free(m->data);
+        }
+        g_slist_free(rrefs);
+
+        xfdesktop_settings_save_backdrop_list(panel, model);
+    }
 }
 
 static void
@@ -529,6 +804,119 @@ cb_xfdesktop_combo_color_changed(GtkComboBox *combo,
     } else {
         gtk_widget_set_sensitive(panel->color1_btn, TRUE);
         gtk_widget_set_sensitive(panel->color2_btn, TRUE);
+    }
+}
+
+static void
+cb_image_type_radio_clicked(GtkWidget *w,
+                            gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+    gchar prop_image_show[1024], prop_image_path[1024];
+    
+    if(!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w)))
+        return;
+
+    g_snprintf(prop_image_show, sizeof(prop_image_show),
+               PER_SCREEN_PROP_FORMAT "/image-show", panel->screen,
+               panel->monitor);
+    g_snprintf(prop_image_path, sizeof(prop_image_path),
+               PER_SCREEN_PROP_FORMAT "/image-path", panel->screen,
+               panel->monitor);
+
+    if(w == panel->radio_singleimage) {
+        DBG("widget is singleimage");
+        if(!panel->image_selector_loaded) {
+            DBG("about to populate image list with avail backdrops");
+            if(!xfdesktop_settings_dialog_populate_image_list(panel)) {
+                DBG("show_image=%s", panel->show_image?"true":"false");
+                if(panel->show_image) {
+                    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_imagelist),
+                                                 TRUE);
+                } else {
+                    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_none),
+                                                 TRUE);
+                }
+                return;
+            }
+        }
+
+        gtk_widget_set_sensitive(panel->btn_minus, FALSE);
+        gtk_widget_set_sensitive(panel->btn_newlist, FALSE);
+        gtk_widget_set_sensitive(panel->frame_image_list, TRUE);
+        DBG("show_image=%s", panel->show_image?"true":"false");
+        if(!panel->show_image) {
+            panel->show_image = TRUE;
+            xfconf_channel_set_bool(panel->channel, prop_image_show, TRUE);
+        }
+    } else if(w == panel->radio_imagelist) {
+        DBG("widget is imagelist");
+        if(!panel->image_list_loaded) {
+            DBG("about to populate image list with backdrop list file");
+            if(!xfdesktop_settings_dialog_populate_image_list(panel)) {
+                DBG("show_image=%s", panel->show_image?"true":"false");
+                if(panel->show_image) {
+                    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_singleimage),
+                                                 TRUE);
+                } else {
+                    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_none),
+                                                 TRUE);
+                }
+                return;
+            }
+        }
+
+        gtk_widget_set_sensitive(panel->btn_minus, TRUE);
+        gtk_widget_set_sensitive(panel->btn_newlist, TRUE);
+        gtk_widget_set_sensitive(panel->frame_image_list, TRUE);
+        DBG("show_image=%s", panel->show_image?"true":"false");
+        if(!panel->show_image) {
+            panel->show_image = TRUE;
+            xfconf_channel_set_bool(panel->channel, prop_image_show, TRUE);
+        }
+    } else if(w == panel->radio_none) {
+        DBG("widget is none");
+        gtk_widget_set_sensitive(panel->frame_image_list, FALSE);
+        DBG("show_image=%s", panel->show_image?"true":"false");
+        if(panel->show_image) {
+            panel->show_image = FALSE;
+            xfconf_channel_set_bool(panel->channel, prop_image_show, FALSE);
+        }
+    }
+}
+
+static void
+cb_show_image_changed(XfconfChannel *channel,
+                      const gchar *property,
+                      const GValue *value,
+                      gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+
+    TRACE("entering, value=%s, panel->show_image=%s",
+          g_value_get_boolean(value)?"true":"false",
+          panel->show_image?"true":"false");
+    if(g_value_get_boolean(value) == panel->show_image)
+        return;
+
+    if(g_value_get_boolean(value)) {
+        gchar propname[1024], *filename;
+
+        g_snprintf(propname, sizeof(propname),
+                   PER_SCREEN_PROP_FORMAT "/image-path",
+                   panel->screen, panel->monitor);
+        filename = xfconf_channel_get_string(channel, propname, NULL);
+        if(filename && xfdesktop_backdrop_list_is_valid(filename)) {
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_imagelist),
+                                         TRUE);
+        } else {
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_singleimage),
+                                         TRUE);
+        }
+        g_free(filename);
+    } else {
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_none),
+                                     TRUE);
     }
 }
 
@@ -574,7 +962,7 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
             gchar buf[1024];
             GladeXML *appearance_gxml;
             AppearancePanel *panel = g_new0(AppearancePanel, 1);
-            GtkWidget *appearance_settings, *appearance_label, *btn;
+            GtkWidget *appearance_settings, *appearance_label;
             GtkCellRenderer *render;
             GtkTreeViewColumn *col;
 
@@ -624,17 +1012,18 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
             /* Connect xfconf bindings */
             g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/brightness",
                        i, j);
-            panel->brightness_slider =glade_xml_get_widget(appearance_gxml,
-                                                           "slider_brightness");
+            panel->brightness_slider = glade_xml_get_widget(appearance_gxml,
+                                                            "slider_brightness");
             xfconf_g_property_bind(channel, buf, G_TYPE_INT,
                                    G_OBJECT(gtk_range_get_adjustment(GTK_RANGE(panel->brightness_slider))),
                                    "value");
 
             g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/saturation",
                        i, j);
+            panel->saturation_slider = glade_xml_get_widget(appearance_gxml,
+                                                            "slider_saturation");
             xfconf_g_property_bind(channel, buf, G_TYPE_DOUBLE,
-                                   G_OBJECT(gtk_range_get_adjustment(GTK_RANGE(glade_xml_get_widget(appearance_gxml,
-                                                                                                    "slider_saturation")))),
+                                   G_OBJECT(gtk_range_get_adjustment(GTK_RANGE(panel->saturation_slider))),
                                    "value");
 
             w = glade_xml_get_widget(appearance_gxml, "combo_style");
@@ -674,6 +1063,9 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
             cb_xfdesktop_combo_color_changed(GTK_COMBO_BOX(color_style_widget),
                                              panel);
 
+            panel->frame_image_list = glade_xml_get_widget(appearance_gxml,
+                                                           "frame_image_list");
+
             panel->image_treeview = glade_xml_get_widget(appearance_gxml,
                                                          "treeview_imagelist");
             render = gtk_cell_renderer_pixbuf_new();
@@ -687,12 +1079,62 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
             gtk_tree_view_append_column(GTK_TREE_VIEW(panel->image_treeview),
                                         col);
 
-            xfdesktop_settings_dialog_populate_image_list(appearance_gxml,
-                                                          panel);
+            g_signal_connect(G_OBJECT(gtk_tree_view_get_selection(GTK_TREE_VIEW(panel->image_treeview))),
+                             "changed",
+                             G_CALLBACK(cb_image_selection_changed), panel);
 
-            btn = glade_xml_get_widget(appearance_gxml, "btn_plus");
-            g_signal_connect(G_OBJECT(btn), "clicked",
+            panel->btn_plus = glade_xml_get_widget(appearance_gxml, "btn_plus");
+            g_signal_connect(G_OBJECT(panel->btn_plus), "clicked",
                              G_CALLBACK(add_file_button_clicked), panel);
+
+            panel->btn_minus = glade_xml_get_widget(appearance_gxml,
+                                                    "btn_minus");
+            g_signal_connect(G_OBJECT(panel->btn_minus), "clicked",
+                             G_CALLBACK(remove_file_button_clicked), panel);
+
+            panel->btn_newlist = glade_xml_get_widget(appearance_gxml,
+                                                      "btn_newlist");
+            g_signal_connect(G_OBJECT(panel->btn_newlist), "clicked",
+                             G_CALLBACK(newlist_button_clicked), panel);
+
+            panel->radio_singleimage = glade_xml_get_widget(appearance_gxml,
+                                                            "radio_singleimage");
+            g_signal_connect(G_OBJECT(panel->radio_singleimage), "toggled",
+                             G_CALLBACK(cb_image_type_radio_clicked), panel);
+            panel->radio_imagelist = glade_xml_get_widget(appearance_gxml,
+                                                          "radio_imagelist");
+            g_signal_connect(G_OBJECT(panel->radio_imagelist), "toggled",
+                             G_CALLBACK(cb_image_type_radio_clicked), panel);
+            panel->radio_none = glade_xml_get_widget(appearance_gxml,
+                                                     "radio_none");
+            g_signal_connect(G_OBJECT(panel->radio_none), "toggled",
+                             G_CALLBACK(cb_image_type_radio_clicked), panel);
+            g_snprintf(buf, sizeof(buf),
+                       "property-changed::" PER_SCREEN_PROP_FORMAT "/image-show",
+                       i, j);
+            g_signal_connect(G_OBJECT(channel), buf,
+                             G_CALLBACK(cb_show_image_changed), panel);
+
+            if(!xfconf_channel_get_bool(channel, buf+18, TRUE)) {
+                panel->show_image = FALSE;
+                gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_none),
+                                             TRUE);
+            } else {
+                gchar *image_path = NULL;
+
+                panel->show_image = TRUE;
+
+                g_snprintf(buf, sizeof(buf),
+                           PER_SCREEN_PROP_FORMAT "/image-path", i, j);
+                image_path = xfconf_channel_get_string(channel, buf, NULL);
+                if(image_path && xfdesktop_backdrop_list_is_valid(image_path)) {
+                    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_imagelist),
+                                                 TRUE);
+                } else
+                    xfdesktop_settings_dialog_populate_image_list(panel);
+                g_free(image_path);
+
+            }
 
             g_object_unref(G_OBJECT(appearance_gxml));
         }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Sat Aug 30 21:21:59 2008 -->
+<!--Generated with glade3 3.4.5 on Mon Sep  8 00:43:53 2008 -->
 <glade-interface>
   <requires lib="xfce4"/>
   <widget class="XfceTitledDialog" id="prefs_dialog">
@@ -25,6 +25,7 @@
             <child>
               <widget class="GtkCheckButton" id="chk_managedesktop">
                 <property name="visible">True</property>
+                <property name="sensitive">False</property>
                 <property name="can_focus">True</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                 <property name="label" translatable="yes">Use _Xfce to manage the desktop</property>
@@ -62,8 +63,9 @@
                             <child>
                               <widget class="GtkHBox" id="hbox1">
                                 <property name="visible">True</property>
+                                <property name="spacing">12</property>
                                 <child>
-                                  <widget class="GtkFrame" id="frame8">
+                                  <widget class="GtkFrame" id="frame_image_list">
                                     <property name="visible">True</property>
                                     <property name="label_xalign">0</property>
                                     <property name="shadow_type">GTK_SHADOW_NONE</property>
@@ -122,12 +124,13 @@
                                                   </packing>
                                                 </child>
                                                 <child>
-                                                  <widget class="GtkButton" id="btn_image_remove">
+                                                  <widget class="GtkButton" id="btn_minus">
                                                     <property name="visible">True</property>
+                                                    <property name="sensitive">False</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">True</property>
                                                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                                    <property name="tooltip" translatable="yes">Remove the selected image from the list</property>
+                                                    <property name="tooltip" translatable="yes">Remove the selected image(s) from the list</property>
                                                     <property name="response_id">0</property>
                                                     <signal name="clicked" handler="remove_clicked"/>
                                                     <child>
@@ -146,16 +149,19 @@
                                                   </packing>
                                                 </child>
                                                 <child>
-                                                  <widget class="GtkButton" id="button6">
+                                                  <widget class="GtkButton" id="btn_newlist">
+                                                    <property name="visible">True</property>
+                                                    <property name="sensitive">False</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="receives_default">True</property>
                                                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                                    <property name="tooltip" translatable="yes">Create a new list, or load an existing one</property>
                                                     <property name="response_id">0</property>
                                                     <child>
                                                       <widget class="GtkImage" id="image3">
                                                         <property name="visible">True</property>
                                                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                                        <property name="stock">gtk-edit</property>
+                                                        <property name="stock">gtk-new</property>
                                                         <property name="icon_size">1</property>
                                                       </widget>
                                                     </child>
@@ -175,6 +181,7 @@
                                                   </widget>
                                                   <packing>
                                                     <property name="expand">False</property>
+                                                    <property name="padding">3</property>
                                                     <property name="pack_type">GTK_PACK_END</property>
                                                     <property name="position">3</property>
                                                   </packing>
@@ -241,9 +248,9 @@ Zoomed</property>
                                                 <child>
                                                   <widget class="GtkRadioButton" id="radio_singleimage">
                                                     <property name="visible">True</property>
-                                                    <property name="sensitive">False</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                                    <property name="tooltip" translatable="yes">Select a single image as the backdrop</property>
                                                     <property name="label" translatable="yes">_Single image</property>
                                                     <property name="use_underline">True</property>
                                                     <property name="response_id">0</property>
@@ -258,9 +265,9 @@ Zoomed</property>
                                                 <child>
                                                   <widget class="GtkRadioButton" id="radio_imagelist">
                                                     <property name="visible">True</property>
-                                                    <property name="sensitive">False</property>
                                                     <property name="can_focus">True</property>
                                                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                                    <property name="tooltip" translatable="yes">Automatically pick a random image from a list file</property>
                                                     <property name="label" translatable="yes">Image _list</property>
                                                     <property name="use_underline">True</property>
                                                     <property name="response_id">0</property>
@@ -276,8 +283,8 @@ Zoomed</property>
                                                 <child>
                                                   <widget class="GtkRadioButton" id="radio_none">
                                                     <property name="visible">True</property>
-                                                    <property name="sensitive">False</property>
                                                     <property name="can_focus">True</property>
+                                                    <property name="tooltip" translatable="yes">Don't display an image at all</property>
                                                     <property name="label" translatable="yes">_None</property>
                                                     <property name="use_underline">True</property>
                                                     <property name="response_id">0</property>
@@ -449,6 +456,7 @@ Transparent</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
                                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                                <property name="tooltip" translatable="yes">Increase or decrease the brightness of the final image</property>
                                                 <property name="update_policy">GTK_UPDATE_DISCONTINUOUS</property>
                                                 <property name="adjustment">0 -128 127 1 10 0</property>
                                                 <property name="digits">0</property>
@@ -486,6 +494,7 @@ Transparent</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
                                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                                <property name="tooltip" translatable="yes">Increase or decrease the color saturation of the final image</property>
                                                 <property name="update_policy">GTK_UPDATE_DISCONTINUOUS</property>
                                                 <property name="adjustment">1 -10 10 0.10000000000000001 10 0</property>
                                                 <property name="value_pos">GTK_POS_RIGHT</property>
