@@ -57,7 +57,6 @@
 #include "xfdesktop-common.h"
 #include "xfce-backdrop.h"
 #include "xfce-desktop.h"
-#include "xfce-desktop-settings.h"
 #include "menu.h"
 #include "windowlist.h"
 
@@ -210,6 +209,7 @@ main(int argc, char **argv)
     XfconfChannel *channel = NULL;
     const gchar *message = NULL;
     gboolean already_running;
+    gchar buf[1024];
     GError *error = NULL;
     
     /* bind gettext textdomain */
@@ -318,7 +318,9 @@ main(int argc, char **argv)
     nscreens = gdk_display_get_n_screens(gdpy);
     desktops = g_new(GtkWidget *, nscreens);
     for(i = 0; i < nscreens; i++) {
-        desktops[i] = xfce_desktop_new(gdk_display_get_screen(gdpy, i));
+        g_snprintf(buf, sizeof(buf), "/backdrop/screen%d/", i);
+        desktops[i] = xfce_desktop_new(gdk_display_get_screen(gdpy, i),
+                                       channel, buf);
         gtk_widget_add_events(desktops[i], GDK_BUTTON_PRESS_MASK
                               | GDK_BUTTON_RELEASE_MASK | GDK_SCROLL_MASK);
         g_signal_connect(G_OBJECT(desktops[i]), "scroll-event",
@@ -327,13 +329,6 @@ main(int argc, char **argv)
                          G_CALLBACK(client_message_received), NULL);
         menu_attach(XFCE_DESKTOP(desktops[i]));
         windowlist_attach(XFCE_DESKTOP(desktops[i]));
-        if(channel) {
-            g_signal_connect(G_OBJECT(channel), "property-changed",
-                             G_CALLBACK(xfce_desktop_settings_changed),
-                             desktops[i]);
-            xfce_desktop_settings_load_initial(XFCE_DESKTOP(desktops[i]),
-                                               channel);
-        }
         gtk_widget_show(desktops[i]);
         gdk_window_lower(desktops[i]->window);
     }

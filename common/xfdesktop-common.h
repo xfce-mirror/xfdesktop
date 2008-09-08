@@ -32,6 +32,7 @@
 
 #define XFDESKTOP_CHANNEL        "xfce4-desktop"
 #define DEFAULT_BACKDROP         DATADIR "/xfce4/backdrops/xfce-smoke.png"
+#define DEFAULT_BACKDROP_LIST    "xfce4/desktop/backdrop.list"
 #define DEFAULT_ICON_FONT_SIZE   12
 #define DEFAULT_ICON_SIZE        32
 
@@ -46,11 +47,21 @@
 
 G_BEGIN_DECLS
 
-gchar **get_list_from_file(const gchar *);
-gboolean is_backdrop_list(const gchar *path);
-gboolean xfdesktop_check_image_file(const gchar *filename);
+gchar **xfdesktop_backdrop_list_load(const gchar *filename,
+                                     gint *n_items,
+                                     GError **error);
+gboolean xfdesktop_backdrop_list_save(const gchar *filename,
+                                      gchar * const *files,
+                                      GError **error);
+gchar *xfdesktop_backdrop_list_choose_random(const gchar *filename,
+                                             GError **error);
+gboolean xfdesktop_backdrop_list_is_valid(const gchar *filename);
+
+gboolean xfdesktop_image_file_is_valid(const gchar *filename);
+
 gboolean xfdesktop_check_is_running(Window *xid);
 void xfdesktop_send_client_message(Window xid, const gchar *msg);
+
 gboolean xfdesktop_popup_grab_available(GdkWindow *win, guint32 timestamp);
 
 G_END_DECLS

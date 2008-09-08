@@ -1,10 +1,3 @@
-# settings/Makefile.am
-#
-
-#
-# xfdesktop settings
-#
-
 bin_PROGRAMS = xfdesktop-settings
 
 xfdesktop_settings_SOURCES = \
@@ -40,8 +33,6 @@ endif
 desktop_in_files = xfce-backdrop-settings.desktop.in
 desktopdir = $(datadir)/applications
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
-dialogdir = $(datadir)/xfce4/settings-dialogs
-dialog_DATA = $(desktop_DATA)
 @INTLTOOL_DESKTOP_RULE@
 
 if MAINTAINER_MODE

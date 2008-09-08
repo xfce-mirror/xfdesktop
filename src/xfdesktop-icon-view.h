@@ -100,8 +100,8 @@ void xfdesktop_icon_view_set_icon_size(XfdesktopIconView *icon_view,
 guint xfdesktop_icon_view_get_icon_size(XfdesktopIconView *icon_view);
 
 void xfdesktop_icon_view_set_font_size(XfdesktopIconView *icon_view,
-                                       gint font_size_points);
-guint xfdesktop_icon_view_get_font_size(XfdesktopIconView *icon_view);
+                                       gdouble font_size_points);
+gdouble xfdesktop_icon_view_get_font_size(XfdesktopIconView *icon_view);
 
 GtkWidget *xfdesktop_icon_view_get_window_widget(XfdesktopIconView *icon_view);
 

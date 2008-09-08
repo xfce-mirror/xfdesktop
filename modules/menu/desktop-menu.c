@@ -330,7 +330,12 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
     GError *error = NULL;
     
     _xfce_desktop_menu_free_menudata(desktop_menu);
-    
+
+    if(!desktop_menu->filename) {
+        g_critical("%s: can't load menu: no menu file found", PACKAGE);
+        return FALSE;
+    }
+
     kiosk = xfce_kiosk_new("xfdesktop");
     user_menu = xfce_kiosk_query(kiosk, "UserMenu");
     xfce_kiosk_free(kiosk);

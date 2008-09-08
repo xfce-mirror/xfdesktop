@@ -21,13 +21,9 @@
 #ifndef _XFCE_BACKDROP_H_
 #define _XFCE_BACKDROP_H_
 
-#include <glib.h>
 #include <glib-object.h>
-#include <gdk/gdkscreen.h>
-#include <gdk/gdkcolor.h>
+#include <gdk/gdk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-
-#include "xfdesktop-common.h"  /* for style enums */
 
 G_BEGIN_DECLS
 
@@ -57,7 +53,7 @@ typedef enum
     XFCE_BACKDROP_COLOR_SOLID = 0,
     XFCE_BACKDROP_COLOR_HORIZ_GRADIENT,
     XFCE_BACKDROP_COLOR_VERT_GRADIENT,
-    XFCE_BACKDROP_COLOR_NONE,
+    XFCE_BACKDROP_COLOR_TRANSPARENT,
 } XfceBackdropColorStyle;
 
 struct _XfceBackdrop

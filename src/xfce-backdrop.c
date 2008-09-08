@@ -36,14 +36,25 @@
 #include <gdk-pixbuf/gdk-pixdata.h>
 
 #include "xfce-backdrop.h"
+#include "xfce-desktop-enum-types.h"
+#include "xfdesktop-common.h"  /* for DEFAULT_BACKDROP */
 
 #ifndef abs
 #define abs(x)  ( (x) < 0 ? -(x) : (x) )
 #endif
 
 static void xfce_backdrop_class_init(XfceBackdropClass *klass);
+
 static void xfce_backdrop_init(XfceBackdrop *backdrop);
 static void xfce_backdrop_finalize(GObject *object);
+static void xfce_backdrop_set_property(GObject *object,
+                                       guint property_id,
+                                       const GValue *value,
+                                       GParamSpec *pspec);
+static void xfce_backdrop_get_property(GObject *object,
+                                       guint property_id,
+                                       GValue *value,
+                                       GParamSpec *pspec);
 
 struct _XfceBackdropPriv
 {
@@ -62,9 +73,23 @@ struct _XfceBackdropPriv
     gdouble saturation;
 };
 
-enum {
+enum
+{
     BACKDROP_CHANGED,
     LAST_SIGNAL,
+};
+
+enum
+{
+    PROP_0 = 0,
+    PROP_COLOR_STYLE,
+    PROP_COLOR1,
+    PROP_COLOR2,
+    PROP_SHOW_IMAGE,
+    PROP_IMAGE_STYLE,
+    PROP_IMAGE_FILENAME,
+    PROP_BRIGHTNESS,
+    PROP_SATURATION,
 };
 
 static guint backdrop_signals[LAST_SIGNAL] = { 0, };
@@ -173,7 +198,9 @@ create_gradient(GdkColor *color1, GdkColor *color2, gint width, gint height,
             memcpy(pixdata.pixel_data+(i*pixdata.rowstride),
                     pixdata.pixel_data, pixdata.rowstride);
         }
-    } else {
+    } else if(XFCE_BACKDROP_COLOR_TRANSPARENT == style)
+        memset(pixdata.pixel_data, 0x0, width * height * 3);
+    else {
         for(i = 0; i < height; i++) {
             rgb[0] = (color1->red + (i * (color2->red - color1->red) / height)) >> 8;
             rgb[1] = (color1->green + (i * (color2->green - color1->green) / height)) >> 8;
@@ -209,11 +236,79 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
     g_type_class_add_private(klass, sizeof(XfceBackdropPriv));
     
     gobject_class->finalize = xfce_backdrop_finalize;
+    gobject_class->set_property = xfce_backdrop_set_property;
+    gobject_class->get_property = xfce_backdrop_get_property;
     
     backdrop_signals[BACKDROP_CHANGED] = g_signal_new("changed",
             G_OBJECT_CLASS_TYPE(gobject_class), G_SIGNAL_RUN_FIRST,
             G_STRUCT_OFFSET(XfceBackdropClass, changed), NULL, NULL,
             g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
+
+#define XFDESKTOP_PARAM_FLAGS  (G_PARAM_READWRITE \
+                                | G_PARAM_CONSTRUCT \
+                                | G_PARAM_STATIC_NAME \
+                                | G_PARAM_STATIC_NICK \
+                                | G_PARAM_STATIC_BLURB)
+
+    g_object_class_install_property(gobject_class, PROP_COLOR_STYLE,
+                                    g_param_spec_enum("color-style",
+                                                      "color style",
+                                                      "color style",
+                                                      XFCE_TYPE_BACKDROP_COLOR_STYLE,
+                                                      XFCE_BACKDROP_COLOR_SOLID,
+                                                      XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_COLOR1,
+                                    g_param_spec_boxed("first-color",
+                                                       "first color",
+                                                       "first color",
+                                                       GDK_TYPE_COLOR,
+                                                       XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_COLOR2,
+                                    g_param_spec_boxed("second-color",
+                                                       "second color",
+                                                       "second color",
+                                                       GDK_TYPE_COLOR,
+                                                       XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_SHOW_IMAGE,
+                                    g_param_spec_boolean("show-image",
+                                                         "show image",
+                                                         "show image",
+                                                         TRUE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_IMAGE_STYLE,
+                                    g_param_spec_enum("image-style",
+                                                      "image style",
+                                                      "image style",
+                                                      XFCE_TYPE_BACKDROP_IMAGE_STYLE,
+                                                      XFCE_BACKDROP_IMAGE_AUTO,
+                                                      XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_IMAGE_FILENAME,
+                                    g_param_spec_string("image-filename",
+                                                        "image filename",
+                                                        "image filename",
+                                                        DEFAULT_BACKDROP,
+                                                        XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_BRIGHTNESS,
+                                    g_param_spec_int("brightness",
+                                                     "brightness",
+                                                     "brightness",
+                                                     -128, 127, 0,
+                                                     XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_SATURATION,
+                                    g_param_spec_double("saturation",
+                                                        "saturation",
+                                                        "saturation",
+                                                        -10.0, 10.0, 1.0,
+                                                        XFDESKTOP_PARAM_FLAGS));
+
+#undef XFDESKTOP_PARAM_FLAGS
 }
 
 static void
@@ -236,6 +331,108 @@ xfce_backdrop_finalize(GObject *object)
     
     G_OBJECT_CLASS(xfce_backdrop_parent_class)->finalize(object);
 }
+
+static void
+xfce_backdrop_set_property(GObject *object,
+                           guint property_id,
+                           const GValue *value,
+                           GParamSpec *pspec)
+{
+    XfceBackdrop *backdrop = XFCE_BACKDROP(object);
+    GdkColor *color;
+
+    switch(property_id) {
+        case PROP_COLOR_STYLE:
+            xfce_backdrop_set_color_style(backdrop, g_value_get_enum(value));
+            break;
+
+        case PROP_COLOR1:
+            color = g_value_get_boxed(value);
+            if(color)
+                xfce_backdrop_set_first_color(backdrop, color);
+            break;
+
+        case PROP_COLOR2:
+            color = g_value_get_boxed(value);
+            if(color)
+                xfce_backdrop_set_second_color(backdrop, color);
+            break;
+
+        case PROP_SHOW_IMAGE:
+            xfce_backdrop_set_show_image(backdrop, g_value_get_boolean(value));
+            break;
+
+        case PROP_IMAGE_STYLE:
+            xfce_backdrop_set_image_style(backdrop, g_value_get_enum(value));
+            break;
+
+        case PROP_IMAGE_FILENAME:
+            xfce_backdrop_set_image_filename(backdrop,
+                                             g_value_get_string(value));
+            break;
+
+        case PROP_BRIGHTNESS:
+            xfce_backdrop_set_brightness(backdrop, g_value_get_int(value));
+            break;
+
+        case PROP_SATURATION:
+            xfce_backdrop_set_saturation(backdrop, g_value_get_double(value));
+            break;
+
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+            break;
+    }
+}
+
+static void
+xfce_backdrop_get_property(GObject *object,
+                           guint property_id,
+                           GValue *value,
+                           GParamSpec *pspec)
+{
+    XfceBackdrop *backdrop = XFCE_BACKDROP(object);
+
+    switch(property_id) {
+        case PROP_COLOR_STYLE:
+            g_value_set_enum(value, xfce_backdrop_get_color_style(backdrop));
+            break;
+
+        case PROP_COLOR1:
+            g_value_set_boxed(value, &backdrop->priv->color1);
+            break;
+
+        case PROP_COLOR2:
+            g_value_set_boxed(value, &backdrop->priv->color2);
+            break;
+
+        case PROP_SHOW_IMAGE:
+            g_value_set_boolean(value, xfce_backdrop_get_show_image(backdrop));
+            break;
+
+        case PROP_IMAGE_STYLE:
+            g_value_set_enum(value, xfce_backdrop_get_image_style(backdrop));
+            break;
+
+        case PROP_IMAGE_FILENAME:
+            g_value_set_string(value,
+                               xfce_backdrop_get_image_filename(backdrop));
+            break;
+
+        case PROP_BRIGHTNESS:
+            g_value_set_int(value, xfce_backdrop_get_brightness(backdrop));
+            break;
+
+        case PROP_SATURATION:
+            g_value_set_double(value, xfce_backdrop_get_saturation(backdrop));
+            break;
+
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+            break;
+    }
+}
+
 
 
 /* public api */
@@ -272,7 +469,9 @@ xfce_backdrop_new(GdkVisual *visual)
  * Return value: A new #XfceBackdrop.
  **/
 XfceBackdrop *
-xfce_backdrop_new_with_size(GdkVisual *visual, gint width, gint height)
+xfce_backdrop_new_with_size(GdkVisual *visual,
+                            gint width,
+                            gint height)
 {
     XfceBackdrop *backdrop;
     
@@ -283,7 +482,7 @@ xfce_backdrop_new_with_size(GdkVisual *visual, gint width, gint height)
     backdrop->priv->bpp = visual->depth;
     backdrop->priv->width = width;
     backdrop->priv->height = height;
-    
+
     return backdrop;
 }
 
@@ -318,6 +517,7 @@ xfce_backdrop_set_color_style(XfceBackdrop *backdrop,
         XfceBackdropColorStyle style)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+    g_return_if_fail(style >= 0 && style <= XFCE_BACKDROP_COLOR_TRANSPARENT);
     
     if(style != backdrop->priv->color_style) {
         backdrop->priv->color_style = style;
@@ -478,10 +678,12 @@ xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
     
-    if(backdrop->priv->image_path)
-        g_free(backdrop->priv->image_path);
+    g_free(backdrop->priv->image_path);
     
-    backdrop->priv->image_path = g_strdup(filename);
+    if(filename)
+        backdrop->priv->image_path = g_strdup(filename);
+    else
+        backdrop->priv->image_path = NULL;
     
     g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
 }
@@ -580,7 +782,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     
     if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_SOLID)
         final_image = create_solid(&backdrop->priv->color1, w, h, FALSE, 0xff);
-    else if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_NONE) {
+    else if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_TRANSPARENT) {
         GdkColor c = { 0, 0xffff, 0xffff, 0xffff };
         final_image = create_solid(&c, w, h, TRUE, 0x00);
     } else {

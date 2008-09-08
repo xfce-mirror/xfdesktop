@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-20 14:36-0700\n"
+"POT-Creation-Date: 2008-09-08 09:57+0200\n"
 "PO-Revision-Date: 2005-08-18 22:49+0900\n"
 "Last-Translator: Miroslav Yordanov <miordanov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -107,17 +107,12 @@ msgstr ""
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:606
-#: ../settings/appearance-settings.c:579
-#: ../settings/backdrop-list-manager.c:435
-#: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr ""
 
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:612
-#: ../settings/appearance-settings.c:583
-#: ../settings/backdrop-list-manager.c:439
 #, fuzzy
 msgid "Image Files"
 msgstr "Файлове с картинки"
@@ -269,8 +264,8 @@ msgid "Create a new empty menu"
 msgstr ""
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1631
-#: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
+#: ../src/xfdesktop-file-icon-manager.c:1719
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
 msgid "_Open"
 msgstr ""
 
@@ -423,7 +418,7 @@ msgstr ""
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:588 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr ""
 
@@ -521,7 +516,6 @@ msgid "Select Menu File"
 msgstr ""
 
 #: ../panel-plugin/desktop-menu-plugin.c:748
-#: ../settings/behavior-settings.c:275
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr ""
@@ -558,7 +552,6 @@ msgid "Use _custom menu file:"
 msgstr ""
 
 #: ../panel-plugin/desktop-menu-plugin.c:888
-#: ../settings/behavior-settings.c:369
 msgid "_Edit Menu"
 msgstr ""
 
@@ -574,630 +567,363 @@ msgstr ""
 msgid "Show _icons in menu"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:963
+#: ../panel-plugin/desktop-menu-plugin.c:965
 msgid "There is already a panel menu registered for this screen"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:1075
+#: ../panel-plugin/desktop-menu-plugin.c:1077
 #, fuzzy
 msgid "Edit Menu"
 msgstr "Редактира списък"
 
-#. the button label in the xfce-mcs-manager dialog
-#: ../settings/appearance-settings.c:138
-msgid "Button Label|Desktop"
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+msgid "Shows a menu containing categories of installed applications"
 msgstr ""
 
-#: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
-#: ../settings/backdrop-list-manager.c:628
-#, fuzzy
-msgid "backdrops.list"
-msgstr "Редактира списъка с фонове"
-
-#: ../settings/appearance-settings.c:574
-#, fuzzy
-msgid "Select backdrop image or list file"
-msgstr "Избор на изображение или списък"
-
-#: ../settings/appearance-settings.c:592
-msgid "List Files (*.list)"
-msgstr ""
-
-#: ../settings/appearance-settings.c:688
-#, fuzzy
-msgid "_Edit list..."
-msgstr "Редактира списък"
-
-#: ../settings/appearance-settings.c:696
-#, fuzzy
-msgid "_New list..."
-msgstr "Нов списък"
-
-#: ../settings/appearance-settings.c:729
-#, fuzzy
-msgid "S_tyle:"
-msgstr "Стил:"
-
-#: ../settings/appearance-settings.c:736
-#, fuzzy
-msgid "Auto"
-msgstr "Автоматичен"
-
-#: ../settings/appearance-settings.c:737
-#, fuzzy
-msgid "Centered"
-msgstr "Центриран"
-
-#: ../settings/appearance-settings.c:738
-#, fuzzy
-msgid "Tiled"
-msgstr "Керемиден"
-
-#: ../settings/appearance-settings.c:739
-msgid "Stretched"
-msgstr ""
-
-#: ../settings/appearance-settings.c:740
-#, fuzzy
-msgid "Scaled"
-msgstr "Пропорционален"
-
-#: ../settings/appearance-settings.c:741
-msgid "Zoomed"
-msgstr ""
-
-#: ../settings/appearance-settings.c:797
-msgid "A_djust Brightness:"
-msgstr ""
-
-#: ../settings/appearance-settings.c:855
-#, c-format
-msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr ""
-
-#: ../settings/appearance-settings.c:856
-msgid "Unknown Error"
-msgstr ""
-
-#: ../settings/appearance-settings.c:860
-#: ../src/xfdesktop-regular-file-icon.c:520
-#: ../src/xfdesktop-regular-file-icon.c:584
-msgid "Error"
-msgstr ""
-
-#: ../settings/appearance-settings.c:862
-msgid "Unable to start xfdesktop"
-msgstr ""
-
-#: ../settings/appearance-settings.c:884
-msgid "Information"
-msgstr ""
-
-#: ../settings/appearance-settings.c:897
-msgid ""
-"To ensure that this setting takes effect the next time you start Xfce, "
-"please be sure to save your session when logging out.  If you are not using "
-"the Xfce Session Manager (xfce4-session), you will need to manually edit "
-"your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-
-#: ../settings/appearance-settings.c:899
-msgid ""
-"To ensure that Xfce does not manage your desktop the next time you start "
-"Xfce, please be sure to save your session when logging out.  If you are not "
-"using the Xfce Session Manager (xfce4-session), you will need to manually "
-"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-
-#: ../settings/appearance-settings.c:907
-msgid "_Do not show this again"
-msgstr ""
-
-#. the dialog
-#: ../settings/appearance-settings.c:973
-#, fuzzy
-msgid "Desktop Preferences"
-msgstr "Настройки на работните места"
-
-#: ../settings/appearance-settings.c:990
-msgid "Allow _Xfce to manage the desktop"
-msgstr ""
-
-#: ../settings/appearance-settings.c:1031
-msgid "Stretch single backdrop onto _all monitors"
-msgstr ""
-
-#. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:1045
-#: ../settings/appearance-settings.c:1227
-msgid "_Appearance"
-msgstr ""
-
-#. color settings frame
-#: ../settings/appearance-settings.c:1071
-msgid "Color"
-msgstr "Цвят"
-
-#: ../settings/appearance-settings.c:1085
-#, fuzzy
-msgid "_Color Style:"
-msgstr "Стил:"
-
-#: ../settings/appearance-settings.c:1092
-#, fuzzy
-msgid "Solid Color"
-msgstr "Цвят"
-
-#: ../settings/appearance-settings.c:1093
-msgid "Horizontal Gradient"
-msgstr ""
-
-#: ../settings/appearance-settings.c:1094
-msgid "Vertical Gradient"
-msgstr ""
-
-#: ../settings/appearance-settings.c:1107
-msgid "Fi_rst Color:"
-msgstr ""
-
-#: ../settings/appearance-settings.c:1128
-#, fuzzy
-msgid "_Second Color:"
-msgstr "Цвят на фона:"
-
-#: ../settings/appearance-settings.c:1153
-msgid "Image"
-msgstr "Изображение"
-
-#: ../settings/appearance-settings.c:1161
-#, fuzzy
-msgid "Show _Image"
-msgstr "Изображение"
-
-#: ../settings/appearance-settings.c:1183
-#, fuzzy
-msgid "_File:"
-msgstr "Файл:"
-
-#: ../settings/appearance-settings.c:1238
-#: ../settings/appearance-settings.c:1240
-#, c-format
-msgid "Screen %d"
-msgstr ""
-
-#. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1245
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr ""
-
-#: ../settings/appearance-settings.c:1262
-msgid "_Behavior"
-msgstr ""
-
-#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
-#, c-format
-msgid ""
-"Could not save file %s: %s\n"
-"\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
-msgstr ""
-"Не мога да запазя файл·%s:·%s\n"
-"\n"
-"Моля изберете друго място или отказ в диалога за да откажете вашите промени"
-
-#: ../settings/backdrop-list-manager.c:430
-#, fuzzy
-msgid "Select backdrop image file"
-msgstr "Изберте файл с картинка"
-
-#: ../settings/backdrop-list-manager.c:531
-msgid "Choose backdrop list filename"
-msgstr "Избира име на файл с фонове"
-
-#: ../settings/backdrop-list-manager.c:540
-#, fuzzy
-msgid "List Files"
-msgstr "Списък"
-
-#: ../settings/backdrop-list-manager.c:617
-msgid "Image files"
-msgstr "Файлове с картинки"
-
-#: ../settings/backdrop-list-manager.c:636
-msgid "List file"
-msgstr "Списък"
-
-#: ../settings/backdrop-list-manager.c:658
-msgid "Create backdrop list"
-msgstr "Създава списък с фонове"
-
-#: ../settings/backdrop-list-manager.c:691
-msgid "Edit backdrop list"
-msgstr "Редактира списъка с фонове"
-
-#: ../settings/behavior-settings.c:301
-#, fuzzy
-msgid "Menus"
-msgstr "Файлове с картинки"
-
-#: ../settings/behavior-settings.c:309
-msgid "Show _window list on middle click"
-msgstr ""
-
-#: ../settings/behavior-settings.c:327
-msgid "Show workspace _names in list"
-msgstr ""
-
-#: ../settings/behavior-settings.c:341
-msgid "Show windows on each workspace in sub_menus"
-msgstr ""
-
-#: ../settings/behavior-settings.c:351
-msgid "Show sticky windows only in _active workspace"
-msgstr ""
-
-#: ../settings/behavior-settings.c:362
-msgid "Show _desktop menu on right click"
-msgstr ""
-
-#: ../settings/behavior-settings.c:381
-#, fuzzy
-msgid "Desktop Icons"
-msgstr "Работно Място"
-
-#: ../settings/behavior-settings.c:390
-#: ../src/xfdesktop-file-properties-dialog.c:138
-msgid "None"
-msgstr ""
-
-#: ../settings/behavior-settings.c:391
-msgid "Minimized application icons"
-msgstr ""
-
-#: ../settings/behavior-settings.c:393
-msgid "File/launcher icons"
-msgstr ""
-
-#: ../settings/behavior-settings.c:408
-msgid "_Icon size:"
-msgstr ""
-
-#: ../settings/behavior-settings.c:422
-msgid "Use _system font size"
-msgstr ""
-
-#: ../settings/behavior-settings.c:439
-msgid "Custom _font size:"
-msgstr ""
-
-#: ../src/main.c:240
+#: ../src/main.c:227
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr ""
 
-#: ../src/main.c:242
+#: ../src/main.c:229
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr ""
 
-#: ../src/main.c:246
+#: ../src/main.c:233
+#, c-format
 msgid "Build options:\n"
 msgstr ""
 
-#: ../src/main.c:247
+#: ../src/main.c:234
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr ""
 
-#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
+#: ../src/main.c:236 ../src/main.c:243 ../src/main.c:250
 #, fuzzy
 msgid "enabled"
 msgstr "Пропорционален"
 
-#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
+#: ../src/main.c:238 ../src/main.c:245 ../src/main.c:252
 #, fuzzy
 msgid "disabled"
 msgstr "Керемиден"
 
-#: ../src/main.c:254
+#: ../src/main.c:241
 #, fuzzy, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Работно Място"
 
-#: ../src/main.c:261
+#: ../src/main.c:248
 #, fuzzy, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Работно Място"
 
-#: ../src/main.c:290
+#: ../src/main.c:277
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr ""
 
-#: ../src/main.c:291
+#: ../src/main.c:278
+#, c-format
 msgid "Options are:\n"
 msgstr ""
 
-#: ../src/main.c:292
+#: ../src/main.c:279
+#, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
 
-#: ../src/main.c:293
+#: ../src/main.c:280
+#, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
 
-#: ../src/main.c:294
+#: ../src/main.c:281
+#, c-format
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 
-#: ../src/main.c:295
+#: ../src/main.c:282
+#, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr ""
 
-#: ../src/main.c:310
+#: ../src/main.c:297
 #, c-format
 msgid "%s is not running.\n"
 msgstr ""
 
-#: ../src/windowlist.c:233
+#: ../src/menu.c:113
+msgid "_Applications"
+msgstr ""
+
+#: ../src/windowlist.c:236
 msgid "Window List"
 msgstr ""
 
-#: ../src/windowlist.c:258
+#: ../src/windowlist.c:262
 #, fuzzy, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "Работно място %d"
 
-#: ../src/windowlist.c:267
+#: ../src/windowlist.c:271
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "Работно място %d"
 
-#: ../src/windowlist.c:269
+#: ../src/windowlist.c:273
 #, fuzzy, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "Работно място %d"
 
-#: ../src/windowlist.c:366 ../src/windowlist.c:369
+#: ../src/windowlist.c:370 ../src/windowlist.c:373
 #, fuzzy
 msgid "_Add Workspace"
 msgstr "Добавяне на работно място"
 
-#: ../src/windowlist.c:377
+#: ../src/windowlist.c:381
 #, fuzzy, c-format
 msgid "_Remove Workspace %d"
 msgstr "Работно място %d"
 
-#: ../src/windowlist.c:380
+#: ../src/windowlist.c:384
 #, fuzzy, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Работно място %d"
 
-#: ../src/xfce-desktop.c:603
+#: ../src/xfce-desktop.c:738 ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop"
 msgstr "Работно Място"
 
-#: ../src/xfdesktop-file-icon-manager.c:387
+#: ../src/xfce-desktop.c:1004
+#, fuzzy, c-format
+msgid "Unable to load image from backdrop list file \"%s\""
+msgstr "Избор на изображение или списък"
+
+#: ../src/xfce-desktop.c:1006
+#, fuzzy
+msgid "Desktop Error"
+msgstr "Работно Място"
+
+#: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:389
-#: ../src/xfdesktop-file-icon-manager.c:400
-#: ../src/xfdesktop-file-icon-manager.c:1115
+#: ../src/xfdesktop-file-icon-manager.c:480
+#: ../src/xfdesktop-file-icon-manager.c:491
+#: ../src/xfdesktop-file-icon-manager.c:1208
 msgid "Create Folder Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:398
+#: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:402
+#: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:539
+#: ../src/xfdesktop-file-icon-manager.c:630
 #, c-format
 msgid "Rename \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:546
-#: ../src/xfdesktop-file-icon-manager.c:1187
-#: ../src/xfdesktop-file-icon-manager.c:1278
-#: ../src/xfdesktop-file-icon-manager.c:1289
+#: ../src/xfdesktop-file-icon-manager.c:637
+#: ../src/xfdesktop-file-icon-manager.c:1280
+#: ../src/xfdesktop-file-icon-manager.c:1371
+#: ../src/xfdesktop-file-icon-manager.c:1382
 msgid "Enter the new name:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:548
+#: ../src/xfdesktop-file-icon-manager.c:639
 #, fuzzy
 msgid "Rename"
 msgstr "Пропорционален"
 
-#: ../src/xfdesktop-file-icon-manager.c:585
+#: ../src/xfdesktop-file-icon-manager.c:676
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:590
-#: ../src/xfdesktop-file-icon-manager.c:610
+#: ../src/xfdesktop-file-icon-manager.c:681
+#: ../src/xfdesktop-file-icon-manager.c:701
 msgid "If you delete a file, it is permanently lost."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:604
+#: ../src/xfdesktop-file-icon-manager.c:695
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:607
+#: ../src/xfdesktop-file-icon-manager.c:698
 msgid "Delete Multiple Files"
 msgstr ""
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:824
-#: ../src/xfdesktop-file-icon-manager.c:1549 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:917
+#: ../src/xfdesktop-file-icon-manager.c:1635 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:826
-#: ../src/xfdesktop-file-icon-manager.c:884
-#: ../src/xfdesktop-file-icon-manager.c:1149
-#: ../src/xfdesktop-file-icon-manager.c:1551 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon-manager.c:919
+#: ../src/xfdesktop-file-icon-manager.c:977
+#: ../src/xfdesktop-file-icon-manager.c:1242
+#: ../src/xfdesktop-file-icon-manager.c:1636 ../src/xfdesktop-file-icon.c:144
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:885
+#: ../src/xfdesktop-file-icon-manager.c:978
 msgid "The application chooser could not be opened."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:886 ../src/xfdesktop-file-utils.c:358
+#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1046
+#: ../src/xfdesktop-file-icon-manager.c:1139
 #, c-format
 msgid "_Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1049
+#: ../src/xfdesktop-file-icon-manager.c:1142
 #, c-format
 msgid "Open With \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1112
+#: ../src/xfdesktop-file-icon-manager.c:1205
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1151
+#: ../src/xfdesktop-file-icon-manager.c:1244
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1184
+#: ../src/xfdesktop-file-icon-manager.c:1277
 msgid "Create New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1188
+#: ../src/xfdesktop-file-icon-manager.c:1281
 msgid "New Folder"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1189
-#: ../src/xfdesktop-file-icon-manager.c:1280
-#: ../src/xfdesktop-file-icon-manager.c:1291
+#: ../src/xfdesktop-file-icon-manager.c:1282
+#: ../src/xfdesktop-file-icon-manager.c:1373
+#: ../src/xfdesktop-file-icon-manager.c:1384
 msgid "Create"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1225
+#: ../src/xfdesktop-file-icon-manager.c:1318
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1228
+#: ../src/xfdesktop-file-icon-manager.c:1321
 msgid "Create File Failed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1267
+#: ../src/xfdesktop-file-icon-manager.c:1360
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1286
+#: ../src/xfdesktop-file-icon-manager.c:1379
 msgid "Create Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1290
+#: ../src/xfdesktop-file-icon-manager.c:1383
 msgid "New Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1323
+#: ../src/xfdesktop-file-icon-manager.c:1416
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1324
+#: ../src/xfdesktop-file-icon-manager.c:1417
 #, fuzzy
 msgid "Create Error"
 msgstr "Редактира списъка с фонове"
 
-#: ../src/xfdesktop-file-icon-manager.c:1613
+#: ../src/xfdesktop-file-icon-manager.c:1701
 msgid "_Open all"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1629
+#: ../src/xfdesktop-file-icon-manager.c:1717
 msgid "_Open in New Window"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1646
+#: ../src/xfdesktop-file-icon-manager.c:1734
 msgid "Create _Launcher..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1755
 msgid "Create _URL Link..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1684
+#: ../src/xfdesktop-file-icon-manager.c:1772
 #, fuzzy
 msgid "Create _Folder..."
 msgstr "Редактира списъка с фонове"
 
-#: ../src/xfdesktop-file-icon-manager.c:1726
+#: ../src/xfdesktop-file-icon-manager.c:1814
 #, fuzzy
 msgid "_Empty File"
 msgstr "Файл:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1742
+#: ../src/xfdesktop-file-icon-manager.c:1830
 msgid "_Execute"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1760
+#: ../src/xfdesktop-file-icon-manager.c:1848
 msgid "_Edit Launcher"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1800
+#: ../src/xfdesktop-file-icon-manager.c:1888
 msgid "Open With"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1831
+#: ../src/xfdesktop-file-icon-manager.c:1919
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1938
+#: ../src/xfdesktop-file-icon-manager.c:2026
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1956
+#: ../src/xfdesktop-file-icon-manager.c:2044
 #, fuzzy
 msgid "Desktop _Settings..."
 msgstr "Настройки на работните места"
 
-#: ../src/xfdesktop-file-icon-manager.c:1966
-#: ../src/xfdesktop-volume-icon.c:593
+#: ../src/xfdesktop-file-icon-manager.c:2054
+#: ../src/xfdesktop-volume-icon.c:610
 #, fuzzy
 msgid "_Properties..."
 msgstr "Редактира списъка с фонове"
 
-#: ../src/xfdesktop-file-icon-manager.c:3152
+#: ../src/xfdesktop-file-icon-manager.c:3258
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:3154
+#: ../src/xfdesktop-file-icon-manager.c:3260
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr ""
@@ -1215,6 +941,10 @@ msgstr ""
 #, fuzzy
 msgid "Properties Error"
 msgstr "Редактира списъка с фонове"
+
+#: ../src/xfdesktop-file-properties-dialog.c:138
+msgid "None"
+msgstr ""
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Write only"
@@ -1242,6 +972,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
+#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
 msgid "(unknown)"
 msgstr ""
 
@@ -1267,7 +998,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-properties-dialog.c:413
 #: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:488 ../src/xfdesktop-volume-icon.c:461
+#: ../src/xfdesktop-special-file-icon.c:492
 msgid "%s (%"
 msgstr ""
 
@@ -1327,7 +1058,7 @@ msgid "link to %s"
 msgstr ""
 
 #: ../src/xfdesktop-regular-file-icon.c:489
-#: ../src/xfdesktop-special-file-icon.c:491 ../src/xfdesktop-volume-icon.c:464
+#: ../src/xfdesktop-special-file-icon.c:496
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -1335,73 +1066,96 @@ msgid ""
 "Size: %s"
 msgstr ""
 
+#: ../src/xfdesktop-regular-file-icon.c:520
+#: ../src/xfdesktop-regular-file-icon.c:584
+msgid "Error"
+msgstr ""
+
 #: ../src/xfdesktop-regular-file-icon.c:581
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:259
+#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:163
 msgid "Home"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:509
+#. FIXME: also display # of items in trash
+#: ../src/xfdesktop-special-file-icon.c:482
+msgid "Kind: Trash"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:515
 #, fuzzy
 msgid "Trash Error"
 msgstr "Редактира списъка с фонове"
 
-#: ../src/xfdesktop-special-file-icon.c:511
+#: ../src/xfdesktop-special-file-icon.c:517
 msgid "Unable to contact the Xfce Trash service."
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:512
+#: ../src/xfdesktop-special-file-icon.c:518
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:635
+#: ../src/xfdesktop-special-file-icon.c:651
 #, fuzzy
 msgid "_Empty Trash"
 msgstr "Файл:"
 
-#: ../src/xfdesktop-volume-icon.c:492
+#: ../src/xfdesktop-volume-icon.c:474
+#, c-format
+msgid "%s (%s total)"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:478
+#, c-format
+msgid ""
+"Kind: Removable Volume\n"
+"Mount Point: %s\n"
+"Free Space: %s"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:509
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:510
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:496
+#: ../src/xfdesktop-volume-icon.c:513
 #, fuzzy
 msgid "Mount Failed"
 msgstr "Файлове с картинки"
 
-#: ../src/xfdesktop-volume-icon.c:496
+#: ../src/xfdesktop-volume-icon.c:513
 #, fuzzy
 msgid "Unmount Failed"
 msgstr "Файлове с картинки"
 
-#: ../src/xfdesktop-volume-icon.c:514
+#: ../src/xfdesktop-volume-icon.c:531
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:517
+#: ../src/xfdesktop-volume-icon.c:534
 msgid "Eject Failed"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:554
+#: ../src/xfdesktop-volume-icon.c:571
 msgid "_Mount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-volume-icon.c:582
 msgid "_Unmount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:579
+#: ../src/xfdesktop-volume-icon.c:596
 msgid "E_ject Volume"
 msgstr ""
 
@@ -1567,23 +1321,440 @@ msgstr ""
 msgid "Web Browser"
 msgstr ""
 
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
-msgid "Shows a menu containing categories of installed applications"
+#: ../settings/main.c:165
+msgid "Filesystem"
 msgstr ""
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+#: ../settings/main.c:167
+#, fuzzy
+msgid "Trash"
+msgstr "Редактира списъка с фонове"
+
+#: ../settings/main.c:169
+msgid "Removable Devices"
+msgstr ""
+
+#: ../settings/main.c:321
+#, fuzzy, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "Създава списък с фонове"
+
+#: ../settings/main.c:325 ../settings/main.c:678
+#, fuzzy
+msgid "Backdrop List Error"
+msgstr "Списък с фонове"
+
+#: ../settings/main.c:350
+#, fuzzy
+msgid "Create/Load Backdrop List"
+msgstr "Създава списък с фонове"
+
+#: ../settings/main.c:374
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+
+#: ../settings/main.c:379
+#, fuzzy
+msgid "Invalid List File"
+msgstr "Списък"
+
+#: ../settings/main.c:382
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr ""
+
+#: ../settings/main.c:384
+#, fuzzy
+msgid "Replace"
+msgstr "Пропорционален"
+
+#: ../settings/main.c:674
+#, fuzzy, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "Редактира списъка с фонове"
+
+#: ../settings/main.c:701
+#, fuzzy
+msgid "Add Image File(s)"
+msgstr "Файлове с картинки"
+
+#: ../settings/main.c:710
+msgid "Image files"
+msgstr "Файлове с картинки"
+
+#: ../settings/main.c:715
+#, fuzzy
+msgid "All files"
+msgstr "Файлове с картинки"
+
+#: ../settings/main.c:979
+#, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr ""
+
+#: ../settings/main.c:984
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr ""
+
+#: ../settings/main.c:987
+#, c-format
+msgid "Screen %d"
+msgstr ""
+
+#: ../settings/main.c:993
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr ""
+
+#: ../settings/main.c:998
+#, c-format
+msgid "Monitor %d"
+msgstr ""
+
+#: ../settings/main.c:1200 ../settings/xfce-backdrop-settings.desktop.in.h:2
 #, fuzzy
 msgid "Desktop Settings"
 msgstr "Настройки на работните места"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Settings for the Xfce 4 Desktop Manager"
+#: ../settings/main.c:1202
+msgid "Unable to contact settings server"
 msgstr ""
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
+msgid "Settings for the Xfce 4 Desktop Manager"
+msgstr ""
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:4
 #, fuzzy
 msgid "Xfce 4 Desktop Settings"
 msgstr "Настройки на работните места"
+
+#: ../settings/xfdesktop-settings.glade.h:1
+msgid "<b>Adjustments</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:2
+#, fuzzy
+msgid "<b>Appearance</b>"
+msgstr "Работно място %d"
+
+#: ../settings/xfdesktop-settings.glade.h:3
+#, fuzzy
+msgid "<b>Colors</b>"
+msgstr "Работно място %d"
+
+#: ../settings/xfdesktop-settings.glade.h:4
+msgid "<b>Default Icons</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:5
+msgid "<b>Desktop Menu</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:6
+msgid "<b>Image</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:7
+msgid "<b>Images</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:8
+msgid "<b>Window List Menu</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:9
+msgid "Add an image to the list"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:10
+msgid ""
+"Auto\n"
+"Centered\n"
+"Tiled\n"
+"Stretched\n"
+"Scaled\n"
+"Zoomed"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:16
+msgid "Automatically pick a random image from a list file"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:17
+msgid "B_rightness:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:18
+#, fuzzy
+msgid "B_utton:"
+msgstr "Автоматичен"
+
+#: ../settings/xfdesktop-settings.glade.h:19
+msgid "Create a new list, or load an existing one"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:20
+msgid "Don't display an image at all"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:21
+msgid "Icon _size:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:22
+msgid "Icon _type:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:23
+#, fuzzy
+msgid "Image _list"
+msgstr "Файлове с картинки"
+
+#: ../settings/xfdesktop-settings.glade.h:24
+msgid "Increase or decrease the brightness of the final image"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:25
+msgid "Increase or decrease the color saturation of the final image"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:26
+msgid "Label trans_parency:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:27
+msgid ""
+"Left\n"
+"Middle\n"
+"Right"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:30
+msgid "Mo_difier:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:31
+msgid "Modi_fier:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:32
+msgid ""
+"None\n"
+"Minimized application icons\n"
+"File/launcher icons"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:35
+msgid ""
+"None\n"
+"Shift\n"
+"Alt\n"
+"Control"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:39
+msgid "Remove the selected image(s) from the list"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:40
+msgid "Sa_turation:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:41
+#, fuzzy
+msgid "Select First Color"
+msgstr "Цвят"
+
+#: ../settings/xfdesktop-settings.glade.h:42
+#, fuzzy
+msgid "Select Second Color"
+msgstr "Цвят на фона:"
+
+#: ../settings/xfdesktop-settings.glade.h:43
+msgid "Select a single image as the backdrop"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:44
+msgid "Set desktop background and menu and icon behavior"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:45
+msgid "Sh_ow application icons in menu"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:46
+msgid "Show _application icons in menu"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:47
+msgid "Show _desktop menu on desktop click"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:48
+msgid "Show _window list menu on desktop click"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:49
+msgid "Show s_ticky windows only in active workspace"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:50
+msgid "Show windows on each workspace in _submenus"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:51
+msgid "Show workspace _names in list"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:52
+msgid ""
+"Solid color\n"
+"Horizontal gradient\n"
+"Vertical gradient\n"
+"Transparent"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:56
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:57
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:58
+#, fuzzy
+msgid "St_yle:"
+msgstr "Стил:"
+
+#: ../settings/xfdesktop-settings.glade.h:59
+msgid "Use _Xfce to manage the desktop"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:60
+msgid "Use custom _font size:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:61
+msgid "_Background"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:62
+#, fuzzy
+msgid "_Button:"
+msgstr "Автоматичен"
+
+#: ../settings/xfdesktop-settings.glade.h:63
+msgid "_Edit desktop menu"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:64
+msgid "_Icons"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:65
+#, fuzzy
+msgid "_Menus"
+msgstr "Файлове с картинки"
+
+#: ../settings/xfdesktop-settings.glade.h:66
+msgid "_None"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:67
+msgid "_Single image"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:68
+msgid "gtk-close"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:69
+msgid "gtk-help"
+msgstr ""
+
+#~ msgid ""
+#~ "Could not save file %s: %s\n"
+#~ "\n"
+#~ "Please choose another location or press cancel in the dialog to discard "
+#~ "your changes"
+#~ msgstr ""
+#~ "Не мога да запазя файл·%s:·%s\n"
+#~ "\n"
+#~ "Моля изберете друго място или отказ в диалога за да откажете вашите "
+#~ "промени"
+
+#, fuzzy
+#~ msgid "backdrops.list"
+#~ msgstr "Редактира списъка с фонове"
+
+#, fuzzy
+#~ msgid "_Edit list..."
+#~ msgstr "Редактира списък"
+
+#, fuzzy
+#~ msgid "_New list..."
+#~ msgstr "Нов списък"
+
+#, fuzzy
+#~ msgid "S_tyle:"
+#~ msgstr "Стил:"
+
+#, fuzzy
+#~ msgid "Auto"
+#~ msgstr "Автоматичен"
+
+#, fuzzy
+#~ msgid "Centered"
+#~ msgstr "Центриран"
+
+#, fuzzy
+#~ msgid "Tiled"
+#~ msgstr "Керемиден"
+
+#, fuzzy
+#~ msgid "Scaled"
+#~ msgstr "Пропорционален"
+
+#, fuzzy
+#~ msgid "Desktop Preferences"
+#~ msgstr "Настройки на работните места"
+
+#~ msgid "Color"
+#~ msgstr "Цвят"
+
+#, fuzzy
+#~ msgid "_Color Style:"
+#~ msgstr "Стил:"
+
+#~ msgid "Image"
+#~ msgstr "Изображение"
+
+#, fuzzy
+#~ msgid "Show _Image"
+#~ msgstr "Изображение"
+
+#, fuzzy
+#~ msgid "_File:"
+#~ msgstr "Файл:"
+
+#, fuzzy
+#~ msgid "Select backdrop image file"
+#~ msgstr "Изберте файл с картинка"
+
+#~ msgid "Choose backdrop list filename"
+#~ msgstr "Избира име на файл с фонове"
+
+#~ msgid "List file"
+#~ msgstr "Списък"
+
+#, fuzzy
+#~ msgid "Desktop Icons"
+#~ msgstr "Работно Място"
 
 #, fuzzy
 #~ msgid "Des_ktop"
@@ -1596,9 +1767,6 @@ msgstr "Настройки на работните места"
 #, fuzzy
 #~ msgid "Edit Properties"
 #~ msgstr "Редактира списъка с фонове"
-
-#~ msgid "Backdrop List"
-#~ msgstr "Списък с фонове"
 
 #, fuzzy
 #~ msgid "_Copy Files"

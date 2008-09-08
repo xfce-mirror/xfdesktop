@@ -10,8 +10,8 @@ xfdesktop_SOURCES = \
 	xfce-backdrop.h \
 	xfce-desktop.c \
 	xfce-desktop.h \
-	xfce-desktop-settings.c \
-	xfce-desktop-settings.h \
+	xfce-desktop-enum-types.c \
+	xfce-desktop-enum-types.h \
 	xfdesktop-marshal.c \
 	xfdesktop-marshal.h
 
@@ -114,7 +114,12 @@ if MAINTAINER_MODE
 
 BUILT_SOURCES = \
 	xfdesktop-marshal.c \
-	xfdesktop-marshal.h
+	xfdesktop-marshal.h \
+	stamp-xfce-desktop-enum-types.h \
+	xfce-desktop-enum-types.c \
+	xfce-desktop-enum-types.h
+
+DISTCLEANFILES = $(BUILT_SOURCES)
 
 xfdesktop-marshal.h: stamp-xfdesktop-marshal.h
 	@true
@@ -125,13 +130,40 @@ xfdesktop-marshal.c: xfdesktop-marshal.list Makefile
 	echo '#include "xfdesktop-marshal.h"' > xfdesktop-marshal.c
 	glib-genmarshal --prefix=xfdesktop_marshal xfdesktop-marshal.list --body >> xfdesktop-marshal.c
 
+enum_headers = \
+	xfce-backdrop.h \
+	xfce-desktop.h
+
+xfce-desktop-enum-types.h: stamp-xfce-desktop-enum-types.h
+	@true
+stamp-xfce-desktop-enum-types.h: $(enum_headers) Makefile
+	( cd $(srcdir) && glib-mkenums \
+	      --fhead "#ifndef __XFCE_DESKTOP_ENUM_TYPES_H__\n#define __XFCE_DESKTOP_ENUM_TYPES_H__\nG_BEGIN_DECLS\n" \
+	      --fprod "/* enumerations from \"@filename@\" */\n" \
+	      --vhead "GType @enum_name@_get_type (void) G_GNUC_CONST;\n#define XFCE_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
+	      --ftail "G_END_DECLS\n\n#endif /* !__XFCE_DESKTOP_ENUM_TYPES_H__ */" \
+	      $(enum_headers) ) >> xgen-xdeth \
+	      && ( cmp -s xgen-xdeth xfce-desktop-enum-types.h || cp xgen-xdeth xfce-desktop-enum-types.h ) \
+	      && rm -f xgen-xdeth \
+		  && echo timestamp > $(@F)
+xfce-desktop-enum-types.c: $(enum_headers) Makefile
+	( cd $(srcdir) && glib-mkenums \
+	      --fhead "#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include \"xfce-desktop.h\"\n#include \"xfce-backdrop.h\"" \
+	      --fprod "\n/* enumerations from \"@filename@\" */" \
+	      --vhead "GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {"\
+	      --vprod "\t{ @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
+	      --vtail "\t{ 0, NULL, NULL }\n\t};\n\ttype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n\treturn type;\n}\n" \
+	      $(enum_headers) ) >> xgen-xdetc \
+	      && cp xgen-xdetc xfce-desktop-enum-types.c \
+	      && rm -f xgen-xdetc
+
 
 if ENABLE_FILE_ICONS
 
 BUILT_SOURCES += \
 	xfdesktop-dbus-bindings-filemanager.h \
 	xfdesktop-dbus-bindings-trash.h
-DISTCLEANFILES = \
+DISTCLEANFILES += \
 	xfdesktop-dbus-bindings-filemanager.h \
 	xfdesktop-dbus-bindings-trash.h
 

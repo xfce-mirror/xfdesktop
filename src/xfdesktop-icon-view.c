@@ -105,7 +105,7 @@ struct _XfdesktopIconViewPrivate
     GtkWidget *parent_window;
     
     guint icon_size;
-    guint font_size;
+    gdouble font_size;
     
     WnckScreen *wnck_screen;
     PangoLayout *playout;
@@ -283,7 +283,7 @@ static inline gboolean xfdesktop_rectangle_contains_point(GdkRectangle *rect,
                                                           gint x,
                                                           gint y);
 static void xfdesktop_icon_view_modify_font_size(XfdesktopIconView *icon_view,
-                                                 gint size);
+                                                 gdouble size);
 static void xfdesktop_ird_free(XfdesktopIdleRepaintData *ird);
 static void xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
                                                   XfdesktopIcon *icon);
@@ -2519,7 +2519,7 @@ xfdesktop_list_foreach_invalidate(gpointer data,
 
 static void
 xfdesktop_icon_view_modify_font_size(XfdesktopIconView *icon_view,
-                                     gint size)
+                                     gdouble size)
 {
     const PangoFontDescription *pfd;
     PangoFontDescription *pfd_new;
@@ -2530,7 +2530,7 @@ xfdesktop_icon_view_modify_font_size(XfdesktopIconView *icon_view,
     else
         pfd_new = pango_font_description_new();
     
-    pango_font_description_set_size(pfd_new, size * PANGO_SCALE);
+    pango_font_description_set_size(pfd_new, (gint)(size * PANGO_SCALE));
     
     pango_layout_set_font_description(icon_view->priv->playout, pfd_new);
     
@@ -2979,7 +2979,7 @@ xfdesktop_icon_view_get_icon_size(XfdesktopIconView *icon_view)
 
 void
 xfdesktop_icon_view_set_font_size(XfdesktopIconView *icon_view,
-                                  gint font_size_points)
+                                  gdouble font_size_points)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
     
@@ -2995,10 +2995,10 @@ xfdesktop_icon_view_set_font_size(XfdesktopIconView *icon_view,
     }
 }
 
-guint
+gdouble
 xfdesktop_icon_view_get_font_size(XfdesktopIconView *icon_view)
 {
-    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), 0);
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), 0.0);
     return icon_view->priv->font_size;
 }
 

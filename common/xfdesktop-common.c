@@ -32,6 +32,14 @@
 #include <stdlib.h>
 #endif
 
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+
+#ifdef HAVE_ERRNO_H
+#include <errno.h>
+#endif
+
 #include <glib.h>
 #include <gdk/gdkx.h>
 #include <libxfce4util/libxfce4util.h>
@@ -40,7 +48,7 @@
 #include "xfdesktop-common.h"
 
 gboolean
-is_backdrop_list(const gchar *path)
+xfdesktop_backdrop_list_is_valid(const gchar *path)
 {
     FILE *fp;
     gchar buf[512];
@@ -52,7 +60,7 @@ is_backdrop_list(const gchar *path)
     if(!(fp = fopen (path, "r")))
         return FALSE;
     
-    if(fgets(buf, size, fp) > 0 && !strncmp(LIST_TEXT, buf, size - 1))
+    if(fgets(buf, size, fp) && !strncmp(LIST_TEXT, buf, size - 1))
         is_list = TRUE;
     fclose(fp);
     
@@ -60,33 +68,171 @@ is_backdrop_list(const gchar *path)
 }
 
 gchar **
-get_list_from_file(const gchar *filename)
+xfdesktop_backdrop_list_load(const gchar *filename,
+                             gint *n_items,
+                             GError **error)
 {
-    gchar *contents;
-    GError *error = NULL;
-    gchar **files = NULL;
-    gsize length;
-    
-    files = NULL;
-    
-    if(!g_file_get_contents(filename, &contents, &length, &error)) {
-        xfce_err("Unable to get backdrop image list from file %s: %s",
-                filename, error->message);
-        g_error_free(error);
+    gchar *contents = NULL, **files = NULL, *p, *q;
+    gsize length = 0;
+    gint arr_size = 10, count = 0;
+
+    g_return_val_if_fail(filename && (!error || !*error), NULL);
+
+    if(!g_file_get_contents(filename, &contents, &length, error))
+        return NULL;
+
+    if(strncmp(LIST_TEXT, contents, sizeof(LIST_TEXT) - 1)) {
+        if(error) {
+            g_set_error(error, G_FILE_ERROR, G_FILE_ERROR_FAILED,
+                        _("Backdrop list file is not valid"));
+        }
+        g_free(contents);
         return NULL;
     }
-    
-    if(strncmp(LIST_TEXT, contents, sizeof(LIST_TEXT) - 1)) {
-        xfce_err("Not a backdrop image list file: %s", filename);
-        goto finished;
+
+    /* i'd use g_strsplit() here, but then counting is slower.  we can
+     * also filter out blank lines */
+    files = g_malloc(sizeof(gchar *) * (arr_size+1));
+    p = contents + sizeof(LIST_TEXT);
+    while(p && *p) {
+        q = strstr(p, "\n");
+        if(q) {
+            if(p == q)  /* blank line */
+                continue;
+            *q = 0;
+        } else
+            q = contents + length;  /* assume no trailing '\n' at EOF */
+
+        if(count == arr_size) {
+            arr_size += 10;
+            files = g_realloc(files, sizeof(gchar *) * (arr_size+1));
+        }
+
+        files[count++] = g_strdup(p);
+        if(q != contents + length)
+            p = q + 1;
+    }
+    files[count] = NULL;
+    files = g_realloc(files, sizeof(gchar *) * (count+1));
+
+    if(n_items)
+        *n_items = count;
+
+    g_free(contents);
+
+    return files;
+}
+
+gboolean
+xfdesktop_backdrop_list_save(const gchar *filename,
+                             gchar * const *files,
+                             GError **error)
+{
+    gboolean ret = FALSE;
+    gchar *filename_new;
+    FILE *fp;
+    gint i;
+
+    g_return_val_if_fail(filename && (!error || !*error), FALSE);
+
+    filename_new = g_strconcat(filename, ".new", NULL);
+    fp = fopen(filename_new, "w");
+    if(fp) {
+        fprintf(fp, "%s\n", LIST_TEXT);
+        if(files) {
+            for(i = 0; files[i]; ++i)
+                fprintf(fp, "%s\n", files[i]);
+        }
+        if(!fclose(fp)) {
+            if(!rename(filename_new, filename))
+                ret = TRUE;
+            else  {
+                if(error) {
+                    g_set_error(error, G_FILE_ERROR,
+                                g_file_error_from_errno(errno),
+                                g_strerror(errno));
+                }
+                unlink(filename_new);
+            }
+        } else {
+            if(error) {
+                g_set_error(error, G_FILE_ERROR, g_file_error_from_errno(errno),
+                            g_strerror(errno));
+            }
+            unlink(filename_new);
+        }
+    } else if(error) {
+        g_set_error(error, G_FILE_ERROR, g_file_error_from_errno(errno),
+                    g_strerror(errno));
+    }
+
+    g_free(filename_new);
+
+    return ret;
+}
+
+gchar *
+xfdesktop_backdrop_list_choose_random(const gchar *filename,
+                                      GError **error)
+{
+    static gboolean __initialized = FALSE;
+    static gint previndex = -1;
+    gchar **files, *file = NULL;
+    gint n_items = 0, cur_file, i;
+
+    g_return_val_if_fail(filename && (!error || !*error), NULL);
+
+    files = xfdesktop_backdrop_list_load(filename, &n_items, error);
+    if(!files)
+        return NULL;
+    if(!n_items) {
+        if(error) {
+            g_set_error(error, G_FILE_ERROR, G_FILE_ERROR_FAILED,
+                        _("Backdrop list file is not valid"));
+        }
+        g_strfreev(files);
+        return NULL;
+    }
+
+    if(1 == n_items) {
+        file = g_strdup(files[0]);
+        g_strfreev(files);
+        return file;
+    }
+
+    /* NOTE: 4.3BSD random()/srandom() are a) stronger and b) faster than
+    * ANSI-C rand()/srand(). So we use random() if available */
+    if(G_UNLIKELY(!__initialized))    {
+        guint seed = time(NULL) ^ (getpid() + (getpid() << 15));
+#ifdef HAVE_SRANDOM
+        srandom(seed);
+#else
+        srand(seed);
+#endif
+        __initialized = TRUE;
     }
     
-    files = g_strsplit(contents + sizeof(LIST_TEXT), "\n", -1);
-    
-    finished:
-    g_free(contents);
-    
-    return files;
+    do {
+        do {
+#ifdef HAVE_SRANDOM
+            cur_file = random() % n_items;
+#else
+            cur_file = rand() % n_items;
+#endif
+        } while(cur_file == previndex && G_LIKELY(previndex != -1));
+    } while(!xfdesktop_image_file_is_valid(files[cur_file]));
+
+    previndex = cur_file;
+    file = files[cur_file];
+
+    /* don't use strfreev() and avoid an extra alloc */
+    for(i = 0; files[i]; ++i) {
+        if(i != cur_file)
+            g_free(files[i]);
+    }
+    g_free(files);
+
+    return file;
 }
 
 static void
@@ -100,13 +246,15 @@ pixbuf_loader_size_cb(GdkPixbufLoader *loader, gint width, gint height,
 }
 
 gboolean
-xfdesktop_check_image_file(const gchar *filename)
+xfdesktop_image_file_is_valid(const gchar *filename)
 {
     GdkPixbufLoader *loader;
     FILE *fp;
     gboolean size_read = FALSE;
     guchar buf[4096];
     gint len;
+
+    g_return_val_if_fail(filename, FALSE);
     
     fp = fopen(filename, "rb");
     if(!fp)

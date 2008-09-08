@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-20 14:36-0700\n"
+"POT-Creation-Date: 2008-09-08 09:57+0200\n"
 "PO-Revision-Date: 2006-11-03 12:13+0100\n"
 "Last-Translator: Stephan Arts <psybsd@gmail.com>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -106,17 +106,12 @@ msgstr "Pictogram Selecteren"
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
 #: ../panel-plugin/desktop-menu-plugin.c:606
-#: ../settings/appearance-settings.c:579
-#: ../settings/backdrop-list-manager.c:435
-#: ../settings/backdrop-list-manager.c:536
 msgid "All Files"
 msgstr "Alle Bestanden"
 
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
 #: ../panel-plugin/desktop-menu-plugin.c:612
-#: ../settings/appearance-settings.c:583
-#: ../settings/backdrop-list-manager.c:439
 msgid "Image Files"
 msgstr "Afbeeldingen"
 
@@ -269,8 +264,8 @@ msgid "Create a new empty menu"
 msgstr "Nieuw Xfce4 menu"
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1631
-#: ../src/xfdesktop-special-file-icon.c:624 ../src/xfdesktop-volume-icon.c:543
+#: ../src/xfdesktop-file-icon-manager.c:1719
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
 msgid "_Open"
 msgstr "_Open"
 
@@ -438,7 +433,7 @@ msgstr "Wijzigingen opslaan?"
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:588 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Vraag"
 
@@ -537,7 +532,6 @@ msgid "Select Menu File"
 msgstr "Menubestand Selecteren"
 
 #: ../panel-plugin/desktop-menu-plugin.c:748
-#: ../settings/behavior-settings.c:275
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Kon xfce4-menueditor niet starten: %s"
@@ -575,7 +569,6 @@ msgid "Use _custom menu file:"
 msgstr "Open menubestand"
 
 #: ../panel-plugin/desktop-menu-plugin.c:888
-#: ../settings/behavior-settings.c:369
 msgid "_Edit Menu"
 msgstr "Menu be_werken"
 
@@ -591,608 +584,354 @@ msgstr "_Knop icoon:"
 msgid "Show _icons in menu"
 msgstr "Toon p_ictogrammen in menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:963
+#: ../panel-plugin/desktop-menu-plugin.c:965
 msgid "There is already a panel menu registered for this screen"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:1075
+#: ../panel-plugin/desktop-menu-plugin.c:1077
 msgid "Edit Menu"
 msgstr "Menu Aanpassen"
 
-#. the button label in the xfce-mcs-manager dialog
-#: ../settings/appearance-settings.c:138
-msgid "Button Label|Desktop"
-msgstr "Bureaublad"
-
-#: ../settings/appearance-settings.c:191 ../settings/appearance-settings.c:200
-#: ../settings/backdrop-list-manager.c:628
-msgid "backdrops.list"
-msgstr "achtergronden.list"
-
-#: ../settings/appearance-settings.c:574
-msgid "Select backdrop image or list file"
-msgstr "Achtergrondplaatje of lijst selecteren"
-
-#: ../settings/appearance-settings.c:592
-msgid "List Files (*.list)"
-msgstr "Lijsten (*.list)"
-
-#: ../settings/appearance-settings.c:688
-msgid "_Edit list..."
-msgstr "Lijst _aanpassen..."
-
-#: ../settings/appearance-settings.c:696
-msgid "_New list..."
-msgstr "_Nieuwe lijst..."
-
-#: ../settings/appearance-settings.c:729
-msgid "S_tyle:"
-msgstr "S_tijl:"
-
-#: ../settings/appearance-settings.c:736
-msgid "Auto"
-msgstr "Automatisch"
-
-#: ../settings/appearance-settings.c:737
-msgid "Centered"
-msgstr "Centreren"
-
-#: ../settings/appearance-settings.c:738
-msgid "Tiled"
-msgstr "Naast elkaar"
-
-#: ../settings/appearance-settings.c:739
-msgid "Stretched"
-msgstr "Uitrekken"
-
-#: ../settings/appearance-settings.c:740
-msgid "Scaled"
-msgstr "Schalen"
-
-#: ../settings/appearance-settings.c:741
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 #, fuzzy
-msgid "Zoomed"
-msgstr "Persoonlijke Map"
+msgid "Shows a menu containing categories of installed applications"
+msgstr "Toont een menu met cateforien van geinstalleerde programma's"
 
-#: ../settings/appearance-settings.c:797
-msgid "A_djust Brightness:"
-msgstr "Hel_derheid aanpassen:"
-
-#: ../settings/appearance-settings.c:855
-#, c-format
-msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr "Xfce zal het bureaublad niet kunnen beheren (%s)."
-
-#: ../settings/appearance-settings.c:856
-msgid "Unknown Error"
-msgstr "Onbekende Fout"
-
-#: ../settings/appearance-settings.c:860
-#: ../src/xfdesktop-regular-file-icon.c:520
-#: ../src/xfdesktop-regular-file-icon.c:584
-msgid "Error"
-msgstr "Fout"
-
-#: ../settings/appearance-settings.c:862
-msgid "Unable to start xfdesktop"
-msgstr "Kan xfdesktop niet starten"
-
-#: ../settings/appearance-settings.c:884
-msgid "Information"
-msgstr "Informatie"
-
-#: ../settings/appearance-settings.c:897
-msgid ""
-"To ensure that this setting takes effect the next time you start Xfce, "
-"please be sure to save your session when logging out.  If you are not using "
-"the Xfce Session Manager (xfce4-session), you will need to manually edit "
-"your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-
-#: ../settings/appearance-settings.c:899
-msgid ""
-"To ensure that Xfce does not manage your desktop the next time you start "
-"Xfce, please be sure to save your session when logging out.  If you are not "
-"using the Xfce Session Manager (xfce4-session), you will need to manually "
-"edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-"documentation provided on http://xfce.org/."
-msgstr ""
-
-#: ../settings/appearance-settings.c:907
-msgid "_Do not show this again"
-msgstr ""
-
-#. the dialog
-#: ../settings/appearance-settings.c:973
-msgid "Desktop Preferences"
-msgstr "Bureaublad Instellingen"
-
-#: ../settings/appearance-settings.c:990
-msgid "Allow _Xfce to manage the desktop"
-msgstr "Laat _Xfce het bureaublad beheren"
-
-#: ../settings/appearance-settings.c:1031
-msgid "Stretch single backdrop onto _all monitors"
-msgstr ""
-
-#. add the single backdrop settings page to the main notebook
-#: ../settings/appearance-settings.c:1045
-#: ../settings/appearance-settings.c:1227
-msgid "_Appearance"
-msgstr "_Weergave"
-
-#. color settings frame
-#: ../settings/appearance-settings.c:1071
-msgid "Color"
-msgstr "Kleur"
-
-#: ../settings/appearance-settings.c:1085
-msgid "_Color Style:"
-msgstr "_Kleur Stijl:"
-
-#: ../settings/appearance-settings.c:1092
-msgid "Solid Color"
-msgstr "Vaste Kleur"
-
-#: ../settings/appearance-settings.c:1093
-msgid "Horizontal Gradient"
-msgstr "Horizontake Gradiënt"
-
-#: ../settings/appearance-settings.c:1094
-msgid "Vertical Gradient"
-msgstr "Verticale Gradiënt"
-
-#: ../settings/appearance-settings.c:1107
-msgid "Fi_rst Color:"
-msgstr "_Eerste Kleur:"
-
-#: ../settings/appearance-settings.c:1128
-msgid "_Second Color:"
-msgstr "_Tweede Kleur:"
-
-#: ../settings/appearance-settings.c:1153
-msgid "Image"
-msgstr "Plaatje"
-
-#: ../settings/appearance-settings.c:1161
-msgid "Show _Image"
-msgstr "Plaatje _tonen"
-
-#: ../settings/appearance-settings.c:1183
-msgid "_File:"
-msgstr "_Bestand:"
-
-#: ../settings/appearance-settings.c:1238
-#: ../settings/appearance-settings.c:1240
-#, c-format
-msgid "Screen %d"
-msgstr "Scherm %d"
-
-#. and if we have multiple screens, each with multiple monitors
-#: ../settings/appearance-settings.c:1245
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "Scherm %d, Monitor %d"
-
-#: ../settings/appearance-settings.c:1262
-msgid "_Behavior"
-msgstr "Ge_drag"
-
-#: ../settings/backdrop-list-manager.c:160 ../src/xfce-desktop-settings.c:74
-#, c-format
-msgid ""
-"Could not save file %s: %s\n"
-"\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
-msgstr ""
-"Kon bestand %s niet opslaan: %s\n"
-"\n"
-"Kies een andere locatie of druk op annuleren in het dialoogvenster"
-
-#: ../settings/backdrop-list-manager.c:430
-msgid "Select backdrop image file"
-msgstr "Plaatje selecteren voor achtergrond"
-
-#: ../settings/backdrop-list-manager.c:531
-msgid "Choose backdrop list filename"
-msgstr "Kies bestandsnaam voor achtergrondenlijst"
-
-#: ../settings/backdrop-list-manager.c:540
-msgid "List Files"
-msgstr "Lijst-bestanden"
-
-#: ../settings/backdrop-list-manager.c:617
-msgid "Image files"
-msgstr "Plaatjes"
-
-#: ../settings/backdrop-list-manager.c:636
-msgid "List file"
-msgstr "Bestand"
-
-#: ../settings/backdrop-list-manager.c:658
-msgid "Create backdrop list"
-msgstr "Lijst van achtergronden maken"
-
-#: ../settings/backdrop-list-manager.c:691
-msgid "Edit backdrop list"
-msgstr "Lijst van achtergronden aanpassen"
-
-#: ../settings/behavior-settings.c:301
-#, fuzzy
-msgid "Menus"
-msgstr "Menubestanden"
-
-#: ../settings/behavior-settings.c:309
-#, fuzzy
-msgid "Show _window list on middle click"
-msgstr "Vensterlijst _tonen"
-
-#: ../settings/behavior-settings.c:327
-msgid "Show workspace _names in list"
-msgstr ""
-
-#: ../settings/behavior-settings.c:341
-msgid "Show windows on each workspace in sub_menus"
-msgstr ""
-
-#: ../settings/behavior-settings.c:351
-msgid "Show sticky windows only in _active workspace"
-msgstr ""
-
-#: ../settings/behavior-settings.c:362
-#, fuzzy
-msgid "Show _desktop menu on right click"
-msgstr "Bureaubladmenu tonen"
-
-#: ../settings/behavior-settings.c:381
-msgid "Desktop Icons"
-msgstr "Bureaublad Pictogrammen"
-
-#: ../settings/behavior-settings.c:390
-#: ../src/xfdesktop-file-properties-dialog.c:138
-msgid "None"
-msgstr "Geen"
-
-#: ../settings/behavior-settings.c:391
-msgid "Minimized application icons"
-msgstr "Geminimalizeerde programma pictogrammen"
-
-#: ../settings/behavior-settings.c:393
-msgid "File/launcher icons"
-msgstr "Bestand/Starter pictogrammen"
-
-#: ../settings/behavior-settings.c:408
-msgid "_Icon size:"
-msgstr "_Pictogram grootte:"
-
-#: ../settings/behavior-settings.c:422
-msgid "Use _system font size"
-msgstr "Gebruik _systeem font grootte"
-
-#: ../settings/behavior-settings.c:439
-msgid "Custom _font size:"
-msgstr "Aangepaste _font grootte:"
-
-#: ../src/main.c:240
+#: ../src/main.c:227
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Dit is %s versie %s, draaiend op Xfce %s.\n"
 
-#: ../src/main.c:242
+#: ../src/main.c:229
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr ""
 
-#: ../src/main.c:246
+#: ../src/main.c:233
+#, c-format
 msgid "Build options:\n"
 msgstr ""
 
-#: ../src/main.c:247
+#: ../src/main.c:234
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr ""
 
-#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
+#: ../src/main.c:236 ../src/main.c:243 ../src/main.c:250
 msgid "enabled"
 msgstr "ingeschakeld"
 
-#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
+#: ../src/main.c:238 ../src/main.c:245 ../src/main.c:252
 msgid "disabled"
 msgstr "uitgeschakeld"
 
-#: ../src/main.c:254
+#: ../src/main.c:241
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Bureaublad Pictogrammen:         %s\n"
 
-#: ../src/main.c:261
+#: ../src/main.c:248
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Bureaublad Bestandspictogrammen: %s\n"
 
-#: ../src/main.c:290
+#: ../src/main.c:277
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Onbekende optie: %s\n"
 
-#: ../src/main.c:291
+#: ../src/main.c:278
+#, c-format
 msgid "Options are:\n"
 msgstr "Mogelijk opties:\n"
 
-#: ../src/main.c:292
-#, fuzzy
+#: ../src/main.c:279
+#, fuzzy, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    -reload\tInstellingen opnieuw laden, bestandenlijst verversen\n"
 
-#: ../src/main.c:293
-#, fuzzy
+#: ../src/main.c:280
+#, fuzzy, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu\tBuereaubladmenu tonen (op huidige muispositie)\n"
 
-#: ../src/main.c:294
-#, fuzzy
+#: ../src/main.c:281
+#, fuzzy, c-format
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    -windowlist\tVensterlijst tonen (op huidige muispositie)\n"
 
-#: ../src/main.c:295
+#: ../src/main.c:282
+#, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    --quit       Xfdesktop afsluiten\n"
 
-#: ../src/main.c:310
+#: ../src/main.c:297
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s draait niet.\n"
 
-#: ../src/windowlist.c:233
+#: ../src/menu.c:113
+msgid "_Applications"
+msgstr ""
+
+#: ../src/windowlist.c:236
 msgid "Window List"
 msgstr ""
 
-#: ../src/windowlist.c:258
+#: ../src/windowlist.c:262
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Werkblad %d</b>"
 
-#: ../src/windowlist.c:267
+#: ../src/windowlist.c:271
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "<b>Werkblad %d</b>"
 
-#: ../src/windowlist.c:269
+#: ../src/windowlist.c:273
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Werkblad %d</i>"
 
-#: ../src/windowlist.c:366 ../src/windowlist.c:369
+#: ../src/windowlist.c:370 ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "Werkblad _toevoegen"
 
-#: ../src/windowlist.c:377
+#: ../src/windowlist.c:381
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "Werkblad %d _verwijderen"
 
-#: ../src/windowlist.c:380
+#: ../src/windowlist.c:384
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Werkblad '%s' _verwijderen"
 
-#: ../src/xfce-desktop.c:603
+#: ../src/xfce-desktop.c:738 ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop"
 msgstr "Bureaublad"
 
-#: ../src/xfdesktop-file-icon-manager.c:387
+#: ../src/xfce-desktop.c:1004
+#, fuzzy, c-format
+msgid "Unable to load image from backdrop list file \"%s\""
+msgstr "Kan bestand \"%s\" niet maken:"
+
+#: ../src/xfce-desktop.c:1006
+#, fuzzy
+msgid "Desktop Error"
+msgstr "Bureaublad"
+
+#: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:389
-#: ../src/xfdesktop-file-icon-manager.c:400
-#: ../src/xfdesktop-file-icon-manager.c:1115
+#: ../src/xfdesktop-file-icon-manager.c:480
+#: ../src/xfdesktop-file-icon-manager.c:491
+#: ../src/xfdesktop-file-icon-manager.c:1208
 msgid "Create Folder Failed"
 msgstr "Kan geen Map maken"
 
-#: ../src/xfdesktop-file-icon-manager.c:398
+#: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:402
+#: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
 msgstr "Hernoem of verwijder het bestand aub."
 
-#: ../src/xfdesktop-file-icon-manager.c:539
+#: ../src/xfdesktop-file-icon-manager.c:630
 #, c-format
 msgid "Rename \"%s\""
 msgstr "Hernoem \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:546
-#: ../src/xfdesktop-file-icon-manager.c:1187
-#: ../src/xfdesktop-file-icon-manager.c:1278
-#: ../src/xfdesktop-file-icon-manager.c:1289
+#: ../src/xfdesktop-file-icon-manager.c:637
+#: ../src/xfdesktop-file-icon-manager.c:1280
+#: ../src/xfdesktop-file-icon-manager.c:1371
+#: ../src/xfdesktop-file-icon-manager.c:1382
 msgid "Enter the new name:"
 msgstr "Voer een nieuwe naam in:"
 
-#: ../src/xfdesktop-file-icon-manager.c:548
+#: ../src/xfdesktop-file-icon-manager.c:639
 msgid "Rename"
 msgstr "Hernoem"
 
-#: ../src/xfdesktop-file-icon-manager.c:585
+#: ../src/xfdesktop-file-icon-manager.c:676
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Weet u zeker dat u \"%s\" wilt verwijderen?"
 
-#: ../src/xfdesktop-file-icon-manager.c:590
-#: ../src/xfdesktop-file-icon-manager.c:610
+#: ../src/xfdesktop-file-icon-manager.c:681
+#: ../src/xfdesktop-file-icon-manager.c:701
 msgid "If you delete a file, it is permanently lost."
 msgstr "Als u een bestand verwijderd is het permanent verloren."
 
-#: ../src/xfdesktop-file-icon-manager.c:604
+#: ../src/xfdesktop-file-icon-manager.c:695
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Weet u zeker dat u de volgende %d bestanden wilt verwijderen?"
 
-#: ../src/xfdesktop-file-icon-manager.c:607
+#: ../src/xfdesktop-file-icon-manager.c:698
 msgid "Delete Multiple Files"
 msgstr "Meerdere bestanden verwijderen"
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:824
-#: ../src/xfdesktop-file-icon-manager.c:1549 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:917
+#: ../src/xfdesktop-file-icon-manager.c:1635 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Kan \"%s\" niet starten:"
 
-#: ../src/xfdesktop-file-icon-manager.c:826
-#: ../src/xfdesktop-file-icon-manager.c:884
-#: ../src/xfdesktop-file-icon-manager.c:1149
-#: ../src/xfdesktop-file-icon-manager.c:1551 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon-manager.c:919
+#: ../src/xfdesktop-file-icon-manager.c:977
+#: ../src/xfdesktop-file-icon-manager.c:1242
+#: ../src/xfdesktop-file-icon-manager.c:1636 ../src/xfdesktop-file-icon.c:144
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Uitvoer Fout"
 
-#: ../src/xfdesktop-file-icon-manager.c:885
+#: ../src/xfdesktop-file-icon-manager.c:978
 msgid "The application chooser could not be opened."
 msgstr "De programma kiezer kan niet worden geopend."
 
-#: ../src/xfdesktop-file-icon-manager.c:886 ../src/xfdesktop-file-utils.c:358
+#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1046
+#: ../src/xfdesktop-file-icon-manager.c:1139
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Openen Met \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1049
+#: ../src/xfdesktop-file-icon-manager.c:1142
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Openen Met \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1112
+#: ../src/xfdesktop-file-icon-manager.c:1205
 #, fuzzy, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Kon xfce4-menueditor niet starten: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1151
+#: ../src/xfdesktop-file-icon-manager.c:1244
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1184
+#: ../src/xfdesktop-file-icon-manager.c:1277
 msgid "Create New Folder"
 msgstr "Nieuwe map maken"
 
-#: ../src/xfdesktop-file-icon-manager.c:1188
+#: ../src/xfdesktop-file-icon-manager.c:1281
 msgid "New Folder"
 msgstr "Nieuwe Map"
 
-#: ../src/xfdesktop-file-icon-manager.c:1189
-#: ../src/xfdesktop-file-icon-manager.c:1280
-#: ../src/xfdesktop-file-icon-manager.c:1291
+#: ../src/xfdesktop-file-icon-manager.c:1282
+#: ../src/xfdesktop-file-icon-manager.c:1373
+#: ../src/xfdesktop-file-icon-manager.c:1384
 msgid "Create"
 msgstr "Maken"
 
-#: ../src/xfdesktop-file-icon-manager.c:1225
+#: ../src/xfdesktop-file-icon-manager.c:1318
 #, fuzzy, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Kon xfce4-menueditor niet starten: %s"
 
-#: ../src/xfdesktop-file-icon-manager.c:1228
+#: ../src/xfdesktop-file-icon-manager.c:1321
 msgid "Create File Failed"
 msgstr "Kan geen Bestand maken"
 
-#: ../src/xfdesktop-file-icon-manager.c:1267
+#: ../src/xfdesktop-file-icon-manager.c:1360
 #, fuzzy, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Maak Document van voorbeeld \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1286
+#: ../src/xfdesktop-file-icon-manager.c:1379
 msgid "Create Empty File"
 msgstr "Leeg Bestand Maken"
 
-#: ../src/xfdesktop-file-icon-manager.c:1290
+#: ../src/xfdesktop-file-icon-manager.c:1383
 msgid "New Empty File"
 msgstr "Nieuw Leeg Bestand"
 
-#: ../src/xfdesktop-file-icon-manager.c:1323
+#: ../src/xfdesktop-file-icon-manager.c:1416
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "Kan bestand \"%s\" niet maken:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1324
+#: ../src/xfdesktop-file-icon-manager.c:1417
 msgid "Create Error"
 msgstr "Maak Fout"
 
-#: ../src/xfdesktop-file-icon-manager.c:1613
+#: ../src/xfdesktop-file-icon-manager.c:1701
 msgid "_Open all"
 msgstr "Alles _Openen"
 
-#: ../src/xfdesktop-file-icon-manager.c:1629
+#: ../src/xfdesktop-file-icon-manager.c:1717
 msgid "_Open in New Window"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1646
+#: ../src/xfdesktop-file-icon-manager.c:1734
 msgid "Create _Launcher..."
 msgstr "_Starter Maken..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1755
 msgid "Create _URL Link..."
 msgstr "_URL Link Maken..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1684
+#: ../src/xfdesktop-file-icon-manager.c:1772
 msgid "Create _Folder..."
 msgstr "_Map Maken..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1726
+#: ../src/xfdesktop-file-icon-manager.c:1814
 msgid "_Empty File"
 msgstr "_Leeg Bestand"
 
-#: ../src/xfdesktop-file-icon-manager.c:1742
+#: ../src/xfdesktop-file-icon-manager.c:1830
 msgid "_Execute"
 msgstr "_Uitvoeren"
 
-#: ../src/xfdesktop-file-icon-manager.c:1760
+#: ../src/xfdesktop-file-icon-manager.c:1848
 msgid "_Edit Launcher"
 msgstr "Starter _Aanpassen"
 
-#: ../src/xfdesktop-file-icon-manager.c:1800
+#: ../src/xfdesktop-file-icon-manager.c:1888
 msgid "Open With"
 msgstr "Openen Met"
 
-#: ../src/xfdesktop-file-icon-manager.c:1831
+#: ../src/xfdesktop-file-icon-manager.c:1919
 msgid "Open With Other _Application..."
 msgstr "Openen met ander _Programma..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1938
+#: ../src/xfdesktop-file-icon-manager.c:2026
 msgid "_Rename..."
 msgstr "He_rnoemen..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1956
+#: ../src/xfdesktop-file-icon-manager.c:2044
 msgid "Desktop _Settings..."
 msgstr "Bureaublad In_stellingen..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1966
-#: ../src/xfdesktop-volume-icon.c:593
+#: ../src/xfdesktop-file-icon-manager.c:2054
+#: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "_Eigenschappen..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3152
+#: ../src/xfdesktop-file-icon-manager.c:3258
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Kan \"%s\" niet uitvoeren:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3154
+#: ../src/xfdesktop-file-icon-manager.c:3260
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr "Uitvoer Fout"
@@ -1209,6 +948,10 @@ msgstr ""
 #: ../src/xfdesktop-file-properties-dialog.c:106
 msgid "Properties Error"
 msgstr "Eigenschappen Fout"
+
+#: ../src/xfdesktop-file-properties-dialog.c:138
+msgid "None"
+msgstr "Geen"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Write only"
@@ -1236,6 +979,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
+#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
 msgid "(unknown)"
 msgstr "(onbekend)"
 
@@ -1261,7 +1005,7 @@ msgstr "Grootte:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:413
 #: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:488 ../src/xfdesktop-volume-icon.c:461
+#: ../src/xfdesktop-special-file-icon.c:492
 msgid "%s (%"
 msgstr "%s (%"
 
@@ -1320,7 +1064,7 @@ msgid "link to %s"
 msgstr "koppeling naar %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:489
-#: ../src/xfdesktop-special-file-icon.c:491 ../src/xfdesktop-volume-icon.c:464
+#: ../src/xfdesktop-special-file-icon.c:496
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -1331,69 +1075,93 @@ msgstr ""
 "Aangepast:%s\n"
 "Grootte: %s"
 
+#: ../src/xfdesktop-regular-file-icon.c:520
+#: ../src/xfdesktop-regular-file-icon.c:584
+msgid "Error"
+msgstr "Fout"
+
 #: ../src/xfdesktop-regular-file-icon.c:581
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Kan \"%s\" niet hernoemen naar \"%s\":"
 
-#: ../src/xfdesktop-special-file-icon.c:259
+#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:163
 msgid "Home"
 msgstr "Persoonlijke Map"
 
-#: ../src/xfdesktop-special-file-icon.c:509
+#. FIXME: also display # of items in trash
+#: ../src/xfdesktop-special-file-icon.c:482
+#, fuzzy
+msgid "Kind: Trash"
+msgstr "Soort:"
+
+#: ../src/xfdesktop-special-file-icon.c:515
 msgid "Trash Error"
 msgstr "Prullenbak fout"
 
-#: ../src/xfdesktop-special-file-icon.c:511
+#: ../src/xfdesktop-special-file-icon.c:517
 msgid "Unable to contact the Xfce Trash service."
 msgstr "Kan geen contact leggen met Xfce Prullenbak dienst."
 
-#: ../src/xfdesktop-special-file-icon.c:512
+#: ../src/xfdesktop-special-file-icon.c:518
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:635
+#: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
 msgstr "Prullenbak L_egen"
 
-#: ../src/xfdesktop-volume-icon.c:492
+#: ../src/xfdesktop-volume-icon.c:474
+#, c-format
+msgid "%s (%s total)"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:478
+#, c-format
+msgid ""
+"Kind: Removable Volume\n"
+"Mount Point: %s\n"
+"Free Space: %s"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:509
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "Kan \"%s\" niet aankoppelen:"
 
-#: ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:510
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "Kan \"%s\" niet loskoppelen:"
 
-#: ../src/xfdesktop-volume-icon.c:496
+#: ../src/xfdesktop-volume-icon.c:513
 msgid "Mount Failed"
 msgstr "Aankoppelen is mislukt"
 
-#: ../src/xfdesktop-volume-icon.c:496
+#: ../src/xfdesktop-volume-icon.c:513
 msgid "Unmount Failed"
 msgstr "Ontkoppelen is mislukt"
 
-#: ../src/xfdesktop-volume-icon.c:514
+#: ../src/xfdesktop-volume-icon.c:531
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "Kan \"%s\" niet uitwerpen:"
 
-#: ../src/xfdesktop-volume-icon.c:517
+#: ../src/xfdesktop-volume-icon.c:534
 msgid "Eject Failed"
 msgstr "Uitwerpen is mislukt"
 
-#: ../src/xfdesktop-volume-icon.c:554
+#: ../src/xfdesktop-volume-icon.c:571
 msgid "_Mount Volume"
 msgstr "Volume Aan_koppelen"
 
-#: ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-volume-icon.c:582
 msgid "_Unmount Volume"
 msgstr "Volume _Ontkoppelen"
 
-#: ../src/xfdesktop-volume-icon.c:579
+#: ../src/xfdesktop-volume-icon.c:596
 msgid "E_ject Volume"
 msgstr "Volume Uit_werpen"
 
@@ -1566,22 +1334,489 @@ msgstr ""
 msgid "Web Browser"
 msgstr "Web Browser"
 
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+#: ../settings/main.c:165
 #, fuzzy
-msgid "Shows a menu containing categories of installed applications"
-msgstr "Toont een menu met cateforien van geinstalleerde programma's"
+msgid "Filesystem"
+msgstr "systeem"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+#: ../settings/main.c:167
+#, fuzzy
+msgid "Trash"
+msgstr "Prullenbak fout"
+
+#: ../settings/main.c:169
+msgid "Removable Devices"
+msgstr ""
+
+#: ../settings/main.c:321
+#, fuzzy, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "Lijst van achtergronden maken"
+
+#: ../settings/main.c:325 ../settings/main.c:678
+#, fuzzy
+msgid "Backdrop List Error"
+msgstr "Achtergrondenlijst"
+
+#: ../settings/main.c:350
+#, fuzzy
+msgid "Create/Load Backdrop List"
+msgstr "Lijst van achtergronden maken"
+
+#: ../settings/main.c:374
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+
+#: ../settings/main.c:379
+#, fuzzy
+msgid "Invalid List File"
+msgstr "Lijst-bestanden"
+
+#: ../settings/main.c:382
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr ""
+
+#: ../settings/main.c:384
+#, fuzzy
+msgid "Replace"
+msgstr "Hernoem"
+
+#: ../settings/main.c:674
+#, fuzzy, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "Kan \"%s\" niet hernoemen naar \"%s\":"
+
+#: ../settings/main.c:701
+#, fuzzy
+msgid "Add Image File(s)"
+msgstr "Afbeeldingen"
+
+#: ../settings/main.c:710
+msgid "Image files"
+msgstr "Plaatjes"
+
+#: ../settings/main.c:715
+#, fuzzy
+msgid "All files"
+msgstr "Alle Bestanden"
+
+#: ../settings/main.c:979
+#, fuzzy, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "Scherm %d, Monitor %d"
+
+#: ../settings/main.c:984
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Scherm %d, Monitor %d"
+
+#: ../settings/main.c:987
+#, c-format
+msgid "Screen %d"
+msgstr "Scherm %d"
+
+#: ../settings/main.c:993
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr ""
+
+#: ../settings/main.c:998
+#, fuzzy, c-format
+msgid "Monitor %d"
+msgstr "Scherm %d, Monitor %d"
+
+#: ../settings/main.c:1200 ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Desktop Settings"
 msgstr "Bureaublad Instellingen"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+#: ../settings/main.c:1202
+#, fuzzy
+msgid "Unable to contact settings server"
+msgstr "Kan geen contact leggen met Xfce Prullenbak dienst."
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Settings for the Xfce 4 Desktop Manager"
 msgstr "Instellingen van het bureaublad"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:3
+#: ../settings/xfce-backdrop-settings.desktop.in.h:4
 msgid "Xfce 4 Desktop Settings"
 msgstr "Instellingen Xfce 4 Bureaublad"
+
+#: ../settings/xfdesktop-settings.glade.h:1
+msgid "<b>Adjustments</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:2
+#, fuzzy
+msgid "<b>Appearance</b>"
+msgstr "_Weergave"
+
+#: ../settings/xfdesktop-settings.glade.h:3
+#, fuzzy
+msgid "<b>Colors</b>"
+msgstr "<b>Werkblad %d</b>"
+
+#: ../settings/xfdesktop-settings.glade.h:4
+msgid "<b>Default Icons</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:5
+msgid "<b>Desktop Menu</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:6
+msgid "<b>Image</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:7
+msgid "<b>Images</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:8
+msgid "<b>Window List Menu</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:9
+msgid "Add an image to the list"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:10
+msgid ""
+"Auto\n"
+"Centered\n"
+"Tiled\n"
+"Stretched\n"
+"Scaled\n"
+"Zoomed"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:16
+msgid "Automatically pick a random image from a list file"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:17
+#, fuzzy
+msgid "B_rightness:"
+msgstr "Hel_derheid aanpassen:"
+
+#: ../settings/xfdesktop-settings.glade.h:18
+#, fuzzy
+msgid "B_utton:"
+msgstr "Knop"
+
+#: ../settings/xfdesktop-settings.glade.h:19
+msgid "Create a new list, or load an existing one"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:20
+msgid "Don't display an image at all"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:21
+#, fuzzy
+msgid "Icon _size:"
+msgstr "_Pictogram grootte:"
+
+#: ../settings/xfdesktop-settings.glade.h:22
+#, fuzzy
+msgid "Icon _type:"
+msgstr "_Pictogram grootte:"
+
+#: ../settings/xfdesktop-settings.glade.h:23
+#, fuzzy
+msgid "Image _list"
+msgstr "Afbeeldingen"
+
+#: ../settings/xfdesktop-settings.glade.h:24
+msgid "Increase or decrease the brightness of the final image"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:25
+msgid "Increase or decrease the color saturation of the final image"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:26
+msgid "Label trans_parency:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:27
+msgid ""
+"Left\n"
+"Middle\n"
+"Right"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:30
+#, fuzzy
+msgid "Mo_difier:"
+msgstr "Aangepast:"
+
+#: ../settings/xfdesktop-settings.glade.h:31
+#, fuzzy
+msgid "Modi_fier:"
+msgstr "Aangepast:"
+
+#: ../settings/xfdesktop-settings.glade.h:32
+#, fuzzy
+msgid ""
+"None\n"
+"Minimized application icons\n"
+"File/launcher icons"
+msgstr "Geminimalizeerde programma pictogrammen"
+
+#: ../settings/xfdesktop-settings.glade.h:35
+msgid ""
+"None\n"
+"Shift\n"
+"Alt\n"
+"Control"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:39
+msgid "Remove the selected image(s) from the list"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:40
+msgid "Sa_turation:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:41
+#, fuzzy
+msgid "Select First Color"
+msgstr "_Eerste Kleur:"
+
+#: ../settings/xfdesktop-settings.glade.h:42
+#, fuzzy
+msgid "Select Second Color"
+msgstr "_Tweede Kleur:"
+
+#: ../settings/xfdesktop-settings.glade.h:43
+msgid "Select a single image as the backdrop"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:44
+msgid "Set desktop background and menu and icon behavior"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:45
+#, fuzzy
+msgid "Sh_ow application icons in menu"
+msgstr "Toon p_ictogrammen in menu"
+
+#: ../settings/xfdesktop-settings.glade.h:46
+#, fuzzy
+msgid "Show _application icons in menu"
+msgstr "Toon p_ictogrammen in menu"
+
+#: ../settings/xfdesktop-settings.glade.h:47
+#, fuzzy
+msgid "Show _desktop menu on desktop click"
+msgstr "Bureaubladmenu tonen"
+
+#: ../settings/xfdesktop-settings.glade.h:48
+#, fuzzy
+msgid "Show _window list menu on desktop click"
+msgstr "Vensterlijst _tonen"
+
+#: ../settings/xfdesktop-settings.glade.h:49
+msgid "Show s_ticky windows only in active workspace"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:50
+msgid "Show windows on each workspace in _submenus"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:51
+msgid "Show workspace _names in list"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:52
+msgid ""
+"Solid color\n"
+"Horizontal gradient\n"
+"Vertical gradient\n"
+"Transparent"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:56
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:57
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:58
+#, fuzzy
+msgid "St_yle:"
+msgstr "Stijl:"
+
+#: ../settings/xfdesktop-settings.glade.h:59
+#, fuzzy
+msgid "Use _Xfce to manage the desktop"
+msgstr "Laat _Xfce het bureaublad beheren"
+
+#: ../settings/xfdesktop-settings.glade.h:60
+#, fuzzy
+msgid "Use custom _font size:"
+msgstr "Aangepaste _font grootte:"
+
+#: ../settings/xfdesktop-settings.glade.h:61
+msgid "_Background"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:62
+#, fuzzy
+msgid "_Button:"
+msgstr "Knop"
+
+#: ../settings/xfdesktop-settings.glade.h:63
+#, fuzzy
+msgid "_Edit desktop menu"
+msgstr "Menu be_werken"
+
+#: ../settings/xfdesktop-settings.glade.h:64
+#, fuzzy
+msgid "_Icons"
+msgstr "Pictogrammen"
+
+#: ../settings/xfdesktop-settings.glade.h:65
+#, fuzzy
+msgid "_Menus"
+msgstr "Menubestanden"
+
+#: ../settings/xfdesktop-settings.glade.h:66
+#, fuzzy
+msgid "_None"
+msgstr "Geen"
+
+#: ../settings/xfdesktop-settings.glade.h:67
+msgid "_Single image"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:68
+msgid "gtk-close"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:69
+msgid "gtk-help"
+msgstr ""
+
+#~ msgid ""
+#~ "Could not save file %s: %s\n"
+#~ "\n"
+#~ "Please choose another location or press cancel in the dialog to discard "
+#~ "your changes"
+#~ msgstr ""
+#~ "Kon bestand %s niet opslaan: %s\n"
+#~ "\n"
+#~ "Kies een andere locatie of druk op annuleren in het dialoogvenster"
+
+#~ msgid "Button Label|Desktop"
+#~ msgstr "Bureaublad"
+
+#~ msgid "backdrops.list"
+#~ msgstr "achtergronden.list"
+
+#~ msgid "Select backdrop image or list file"
+#~ msgstr "Achtergrondplaatje of lijst selecteren"
+
+#~ msgid "List Files (*.list)"
+#~ msgstr "Lijsten (*.list)"
+
+#~ msgid "_Edit list..."
+#~ msgstr "Lijst _aanpassen..."
+
+#~ msgid "_New list..."
+#~ msgstr "_Nieuwe lijst..."
+
+#~ msgid "S_tyle:"
+#~ msgstr "S_tijl:"
+
+#~ msgid "Auto"
+#~ msgstr "Automatisch"
+
+#~ msgid "Centered"
+#~ msgstr "Centreren"
+
+#~ msgid "Tiled"
+#~ msgstr "Naast elkaar"
+
+#~ msgid "Stretched"
+#~ msgstr "Uitrekken"
+
+#~ msgid "Scaled"
+#~ msgstr "Schalen"
+
+#, fuzzy
+#~ msgid "Zoomed"
+#~ msgstr "Persoonlijke Map"
+
+#~ msgid "Xfce will be unable to manage your desktop (%s)."
+#~ msgstr "Xfce zal het bureaublad niet kunnen beheren (%s)."
+
+#~ msgid "Unknown Error"
+#~ msgstr "Onbekende Fout"
+
+#~ msgid "Unable to start xfdesktop"
+#~ msgstr "Kan xfdesktop niet starten"
+
+#~ msgid "Information"
+#~ msgstr "Informatie"
+
+#~ msgid "Desktop Preferences"
+#~ msgstr "Bureaublad Instellingen"
+
+#~ msgid "Color"
+#~ msgstr "Kleur"
+
+#~ msgid "_Color Style:"
+#~ msgstr "_Kleur Stijl:"
+
+#~ msgid "Solid Color"
+#~ msgstr "Vaste Kleur"
+
+#~ msgid "Horizontal Gradient"
+#~ msgstr "Horizontake Gradiënt"
+
+#~ msgid "Vertical Gradient"
+#~ msgstr "Verticale Gradiënt"
+
+#~ msgid "Image"
+#~ msgstr "Plaatje"
+
+#~ msgid "Show _Image"
+#~ msgstr "Plaatje _tonen"
+
+#~ msgid "_File:"
+#~ msgstr "_Bestand:"
+
+#~ msgid "_Behavior"
+#~ msgstr "Ge_drag"
+
+#~ msgid "Select backdrop image file"
+#~ msgstr "Plaatje selecteren voor achtergrond"
+
+#~ msgid "Choose backdrop list filename"
+#~ msgstr "Kies bestandsnaam voor achtergrondenlijst"
+
+#~ msgid "List file"
+#~ msgstr "Bestand"
+
+#~ msgid "Edit backdrop list"
+#~ msgstr "Lijst van achtergronden aanpassen"
+
+#~ msgid "Desktop Icons"
+#~ msgstr "Bureaublad Pictogrammen"
+
+#~ msgid "File/launcher icons"
+#~ msgstr "Bestand/Starter pictogrammen"
+
+#~ msgid "Use _system font size"
+#~ msgstr "Gebruik _systeem font grootte"
 
 #~ msgid "Des_ktop"
 #~ msgstr "Bureau_blad"
@@ -1602,6 +1837,3 @@ msgstr "Instellingen Xfce 4 Bureaublad"
 #, fuzzy
 #~ msgid "Edit Properties"
 #~ msgstr "Lijst van achtergronden aanpassen"
-
-#~ msgid "Backdrop List"
-#~ msgstr "Achtergrondenlijst"
