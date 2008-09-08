@@ -32,6 +32,7 @@
 
 #define XFDESKTOP_CHANNEL        "xfce4-desktop"
 #define DEFAULT_BACKDROP         DATADIR "/xfce4/backdrops/xfce-smoke.png"
+#define DEFAULT_BACKDROP_LIST    "xfce4/desktop/backdrop.list"
 #define DEFAULT_ICON_FONT_SIZE   12
 #define DEFAULT_ICON_SIZE        32
 
@@ -50,7 +51,7 @@ gchar **xfdesktop_backdrop_list_load(const gchar *filename,
                                      gint *n_items,
                                      GError **error);
 gboolean xfdesktop_backdrop_list_save(const gchar *filename,
-                                      const gchar **files,
+                                      gchar * const *files,
                                       GError **error);
 gchar *xfdesktop_backdrop_list_choose_random(const gchar *filename,
                                              GError **error);

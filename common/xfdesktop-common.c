@@ -113,6 +113,7 @@ xfdesktop_backdrop_list_load(const gchar *filename,
             p = q + 1;
     }
     files[count] = NULL;
+    files = g_realloc(files, sizeof(gchar *) * (count+1));
 
     if(n_items)
         *n_items = count;
@@ -124,7 +125,7 @@ xfdesktop_backdrop_list_load(const gchar *filename,
 
 gboolean
 xfdesktop_backdrop_list_save(const gchar *filename,
-                             const gchar **files,
+                             gchar * const *files,
                              GError **error)
 {
     gboolean ret = FALSE;
@@ -132,14 +133,16 @@ xfdesktop_backdrop_list_save(const gchar *filename,
     FILE *fp;
     gint i;
 
-    g_return_val_if_fail(filename && files && (!error || !*error), FALSE);
+    g_return_val_if_fail(filename && (!error || !*error), FALSE);
 
     filename_new = g_strconcat(filename, ".new", NULL);
     fp = fopen(filename_new, "w");
     if(fp) {
         fprintf(fp, "%s\n", LIST_TEXT);
-        for(i = 0; files[i]; ++i)
-            fprintf(fp, "%s\n", files[i]);
+        if(files) {
+            for(i = 0; files[i]; ++i)
+                fprintf(fp, "%s\n", files[i]);
+        }
         if(!fclose(fp)) {
             if(!rename(filename_new, filename))
                 ret = TRUE;
