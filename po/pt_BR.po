@@ -5,12 +5,12 @@
 # Adriano Winter Bess <awbess@gmail.com>, 2006.
 # Og Maciel <ogmaciel@gnome.org>, 2008.
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-30 14:01-0700\n"
+"POT-Creation-Date: 2008-09-08 09:57+0200\n"
 "PO-Revision-Date: 2008-09-02 21:53-0300\n"
 "Last-Translator: Fábio Nogueira <deb-user-ba@ubuntu.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
@@ -264,7 +264,7 @@ msgid "Create a new empty menu"
 msgstr "Criar um novo arquivo de menu do Xfce4"
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1631
+#: ../src/xfdesktop-file-icon-manager.c:1719
 #: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
 msgid "_Open"
 msgstr "A_brir"
@@ -416,7 +416,7 @@ msgstr "Você quer salvar antes de fechar o arquivo?"
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:591 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Pergunta"
 
@@ -689,24 +689,22 @@ msgstr "_Remover Espaço de Trabalho %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Remover Espaço de Trabalho '%s'"
 
-#: ../src/xfce-desktop-settings.c:75
-#, c-format
-msgid ""
-"Could not save file %s: %s\n"
-"\n"
-"Please choose another location or press cancel in the dialog to discard your "
-"changes"
-msgstr ""
-"Não foi possível salvar o arquivo %s: %s\n"
-"\n"
-"Por favor escolha outro local ou pressione cancelar no diálogo para "
-"descartar suas alterações"
-
-#: ../src/xfce-desktop.c:660 ../settings/xfce-backdrop-settings.desktop.in.h:1
+#: ../src/xfce-desktop.c:738 ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop"
 msgstr "Área de Trabalho"
 
-#: ../src/xfdesktop-file-icon-manager.c:390
+#: ../src/xfce-desktop.c:1004
+#, c-format
+msgid "Unable to load image from backdrop list file \"%s\""
+msgstr ""
+"Não foi possível carregar a imagem do arquivo de lista de imagens de fundo "
+"\"%s\":"
+
+#: ../src/xfce-desktop.c:1006
+msgid "Desktop Error"
+msgstr "Erro de área de trabalho"
+
+#: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
@@ -714,13 +712,13 @@ msgstr ""
 "Xfdesktop não foi capaz de criar a pasta \"%s\" para armazenar itens da área "
 "de trabalho:"
 
-#: ../src/xfdesktop-file-icon-manager.c:392
-#: ../src/xfdesktop-file-icon-manager.c:403
-#: ../src/xfdesktop-file-icon-manager.c:1120
+#: ../src/xfdesktop-file-icon-manager.c:480
+#: ../src/xfdesktop-file-icon-manager.c:491
+#: ../src/xfdesktop-file-icon-manager.c:1208
 msgid "Create Folder Failed"
 msgstr "Falha na Criação de Pasta"
 
-#: ../src/xfdesktop-file-icon-manager.c:401
+#: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
@@ -729,66 +727,66 @@ msgstr ""
 "Xfdesktop não é capaz de usar \"%s\" para armazenar itens da área de "
 "trabalho porque não é uma pasta."
 
-#: ../src/xfdesktop-file-icon-manager.c:405
+#: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
 msgstr "Por favor remova ou renomeie o arquivo."
 
-#: ../src/xfdesktop-file-icon-manager.c:542
+#: ../src/xfdesktop-file-icon-manager.c:630
 #, c-format
 msgid "Rename \"%s\""
 msgstr "Renomear \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:549
-#: ../src/xfdesktop-file-icon-manager.c:1192
-#: ../src/xfdesktop-file-icon-manager.c:1283
-#: ../src/xfdesktop-file-icon-manager.c:1294
+#: ../src/xfdesktop-file-icon-manager.c:637
+#: ../src/xfdesktop-file-icon-manager.c:1280
+#: ../src/xfdesktop-file-icon-manager.c:1371
+#: ../src/xfdesktop-file-icon-manager.c:1382
 msgid "Enter the new name:"
 msgstr "Entre com o novo nome:"
 
-#: ../src/xfdesktop-file-icon-manager.c:551
+#: ../src/xfdesktop-file-icon-manager.c:639
 msgid "Rename"
 msgstr "Renomear"
 
-#: ../src/xfdesktop-file-icon-manager.c:588
+#: ../src/xfdesktop-file-icon-manager.c:676
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Você tem certeza que deseja remover \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:593
-#: ../src/xfdesktop-file-icon-manager.c:613
+#: ../src/xfdesktop-file-icon-manager.c:681
+#: ../src/xfdesktop-file-icon-manager.c:701
 msgid "If you delete a file, it is permanently lost."
 msgstr "Se você remover um arquivo, ele será perdido permanentemente."
 
-#: ../src/xfdesktop-file-icon-manager.c:607
+#: ../src/xfdesktop-file-icon-manager.c:695
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Você tem certeza que deseja remover os %d seguintes arquivos?"
 
-#: ../src/xfdesktop-file-icon-manager.c:610
+#: ../src/xfdesktop-file-icon-manager.c:698
 msgid "Delete Multiple Files"
 msgstr "Remover Múltiplos Arquivos"
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:829
-#: ../src/xfdesktop-file-icon-manager.c:1547 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:917
+#: ../src/xfdesktop-file-icon-manager.c:1635 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Impossível lançar \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:831
-#: ../src/xfdesktop-file-icon-manager.c:889
-#: ../src/xfdesktop-file-icon-manager.c:1154
-#: ../src/xfdesktop-file-icon-manager.c:1548 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon-manager.c:919
+#: ../src/xfdesktop-file-icon-manager.c:977
+#: ../src/xfdesktop-file-icon-manager.c:1242
+#: ../src/xfdesktop-file-icon-manager.c:1636 ../src/xfdesktop-file-icon.c:144
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Erro ao Lançar"
 
-#: ../src/xfdesktop-file-icon-manager.c:890
+#: ../src/xfdesktop-file-icon-manager.c:978
 msgid "The application chooser could not be opened."
 msgstr "A escolha de aplicação não pode ser aberta."
 
-#: ../src/xfdesktop-file-icon-manager.c:891 ../src/xfdesktop-file-utils.c:358
+#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -796,22 +794,22 @@ msgstr ""
 "Este recurso requer um serviço de gerenciador de arquivos presente (como o "
 "provido pelo Thunar)."
 
-#: ../src/xfdesktop-file-icon-manager.c:1051
+#: ../src/xfdesktop-file-icon-manager.c:1139
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "Abrir C_om \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1054
+#: ../src/xfdesktop-file-icon-manager.c:1142
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Abrir Com \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1117
+#: ../src/xfdesktop-file-icon-manager.c:1205
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Impossível criar pasta com nome \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1156
+#: ../src/xfdesktop-file-icon-manager.c:1244
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -819,111 +817,111 @@ msgstr ""
 "Não é possível executar \"exo-desktop-item-edit\", que é necessário para "
 "criar e editar lançadores e ligações na área de trabalho."
 
-#: ../src/xfdesktop-file-icon-manager.c:1189
+#: ../src/xfdesktop-file-icon-manager.c:1277
 msgid "Create New Folder"
 msgstr "Criar Nova Pasta"
 
-#: ../src/xfdesktop-file-icon-manager.c:1193
+#: ../src/xfdesktop-file-icon-manager.c:1281
 msgid "New Folder"
 msgstr "Nova Pasta"
 
-#: ../src/xfdesktop-file-icon-manager.c:1194
-#: ../src/xfdesktop-file-icon-manager.c:1285
-#: ../src/xfdesktop-file-icon-manager.c:1296
+#: ../src/xfdesktop-file-icon-manager.c:1282
+#: ../src/xfdesktop-file-icon-manager.c:1373
+#: ../src/xfdesktop-file-icon-manager.c:1384
 msgid "Create"
 msgstr "Criar"
 
-#: ../src/xfdesktop-file-icon-manager.c:1230
+#: ../src/xfdesktop-file-icon-manager.c:1318
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Impossível criar arquivo com nome \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1233
+#: ../src/xfdesktop-file-icon-manager.c:1321
 msgid "Create File Failed"
 msgstr "Falha ao Criar Arquivo"
 
-#: ../src/xfdesktop-file-icon-manager.c:1272
+#: ../src/xfdesktop-file-icon-manager.c:1360
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Criar Documento a partir do modelo \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1291
+#: ../src/xfdesktop-file-icon-manager.c:1379
 msgid "Create Empty File"
 msgstr "Criar Arquivo Vazio"
 
-#: ../src/xfdesktop-file-icon-manager.c:1295
+#: ../src/xfdesktop-file-icon-manager.c:1383
 msgid "New Empty File"
 msgstr "Novo Arquivo Vazio"
 
-#: ../src/xfdesktop-file-icon-manager.c:1328
+#: ../src/xfdesktop-file-icon-manager.c:1416
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "Impossível criar arquivo \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1329
+#: ../src/xfdesktop-file-icon-manager.c:1417
 msgid "Create Error"
 msgstr "Erro ao Criar"
 
-#: ../src/xfdesktop-file-icon-manager.c:1613
+#: ../src/xfdesktop-file-icon-manager.c:1701
 msgid "_Open all"
 msgstr "A_brir todos"
 
-#: ../src/xfdesktop-file-icon-manager.c:1629
+#: ../src/xfdesktop-file-icon-manager.c:1717
 msgid "_Open in New Window"
 msgstr "Ab_rir em Nova Janela"
 
-#: ../src/xfdesktop-file-icon-manager.c:1646
+#: ../src/xfdesktop-file-icon-manager.c:1734
 msgid "Create _Launcher..."
 msgstr "Cria _Lançador..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1755
 msgid "Create _URL Link..."
 msgstr "Cria link _URL..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1684
+#: ../src/xfdesktop-file-icon-manager.c:1772
 msgid "Create _Folder..."
 msgstr "Criar _Pasta..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1726
+#: ../src/xfdesktop-file-icon-manager.c:1814
 msgid "_Empty File"
 msgstr "Ar_quivo Vazio"
 
-#: ../src/xfdesktop-file-icon-manager.c:1742
+#: ../src/xfdesktop-file-icon-manager.c:1830
 msgid "_Execute"
 msgstr "_Executar"
 
-#: ../src/xfdesktop-file-icon-manager.c:1760
+#: ../src/xfdesktop-file-icon-manager.c:1848
 msgid "_Edit Launcher"
 msgstr "_Editar Lançador"
 
-#: ../src/xfdesktop-file-icon-manager.c:1800
+#: ../src/xfdesktop-file-icon-manager.c:1888
 msgid "Open With"
 msgstr "Abrir Com"
 
-#: ../src/xfdesktop-file-icon-manager.c:1831
+#: ../src/xfdesktop-file-icon-manager.c:1919
 msgid "Open With Other _Application..."
 msgstr "Abrir Com Outra _Aplicação..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1938
+#: ../src/xfdesktop-file-icon-manager.c:2026
 msgid "_Rename..."
 msgstr "_Renomear..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1956
+#: ../src/xfdesktop-file-icon-manager.c:2044
 msgid "Desktop _Settings..."
 msgstr "_Configurações da Área de Trabalho..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1966
+#: ../src/xfdesktop-file-icon-manager.c:2054
 #: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "_Propriedades..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3168
+#: ../src/xfdesktop-file-icon-manager.c:3258
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Falhou ao executar \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:3170
+#: ../src/xfdesktop-file-icon-manager.c:3260
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr "Erro de Execução"
@@ -1077,7 +1075,7 @@ msgstr "Erro"
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Falhou ao renomear \"%s\" para \"%s\":"
 
-#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:150
+#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:163
 msgid "Home"
 msgstr "Início"
 
@@ -1321,60 +1319,100 @@ msgstr "Navegar na internet"
 msgid "Web Browser"
 msgstr "Navegador de internet"
 
-#: ../settings/main.c:152
+#: ../settings/main.c:165
 msgid "Filesystem"
 msgstr "Sistema de arquivos"
 
-#: ../settings/main.c:154
+#: ../settings/main.c:167
 msgid "Trash"
 msgstr "Lixeira"
 
-#: ../settings/main.c:156
+#: ../settings/main.c:169
 msgid "Removable Devices"
 msgstr "Dispositivos removíveis"
 
-#: ../settings/main.c:466
+#: ../settings/main.c:321
+#, fuzzy, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "Criar lista de fundos"
+
+#: ../settings/main.c:325 ../settings/main.c:678
+#, fuzzy
+msgid "Backdrop List Error"
+msgstr "Lista de Fundos"
+
+#: ../settings/main.c:350
+#, fuzzy
+msgid "Create/Load Backdrop List"
+msgstr "Criar lista de fundos"
+
+#: ../settings/main.c:374
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+
+#: ../settings/main.c:379
+#, fuzzy
+msgid "Invalid List File"
+msgstr "Arquivos de Lista"
+
+#: ../settings/main.c:382
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr ""
+
+#: ../settings/main.c:384
+#, fuzzy
+msgid "Replace"
+msgstr "Renomear"
+
+#: ../settings/main.c:674
+#, fuzzy, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "Falhou ao renomear \"%s\" para \"%s\":"
+
+#: ../settings/main.c:701
 msgid "Add Image File(s)"
 msgstr "Adicionar arquivo(s) de imagem"
 
-#: ../settings/main.c:475
+#: ../settings/main.c:710
 msgid "Image files"
 msgstr "Arquivos de imagem"
 
-#: ../settings/main.c:480
+#: ../settings/main.c:715
 msgid "All files"
 msgstr "Todos os arquivos"
 
-#: ../settings/main.c:591
+#: ../settings/main.c:979
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "Tela %d, Monitor %d (%s)"
 
-#: ../settings/main.c:596
+#: ../settings/main.c:984
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Tela %d, monitor %d"
 
-#: ../settings/main.c:599
+#: ../settings/main.c:987
 #, c-format
 msgid "Screen %d"
 msgstr "Tela %d"
 
-#: ../settings/main.c:605
+#: ../settings/main.c:993
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "Monitor %d (%s)"
 
-#: ../settings/main.c:610
+#: ../settings/main.c:998
 #, c-format
 msgid "Monitor %d"
 msgstr "Monitor %d"
 
-#: ../settings/main.c:758 ../settings/xfce-backdrop-settings.desktop.in.h:2
+#: ../settings/main.c:1200 ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Desktop Settings"
 msgstr "Configurações da Área de Trabalho"
 
-#: ../settings/main.c:760
+#: ../settings/main.c:1202
 msgid "Unable to contact settings server"
 msgstr "Não foi possível contactar com o servidor de configurações"
 
@@ -1439,30 +1477,50 @@ msgstr ""
 "Ampliado"
 
 #: ../settings/xfdesktop-settings.glade.h:16
+msgid "Automatically pick a random image from a list file"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:17
 msgid "B_rightness:"
 msgstr "B_rilho:"
 
-#: ../settings/xfdesktop-settings.glade.h:17
+#: ../settings/xfdesktop-settings.glade.h:18
 msgid "B_utton:"
 msgstr "B_otão:"
 
-#: ../settings/xfdesktop-settings.glade.h:18
+#: ../settings/xfdesktop-settings.glade.h:19
+msgid "Create a new list, or load an existing one"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:20
+msgid "Don't display an image at all"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:21
 msgid "Icon _size:"
 msgstr "Tamanho de í_cone:"
 
-#: ../settings/xfdesktop-settings.glade.h:19
+#: ../settings/xfdesktop-settings.glade.h:22
 msgid "Icon _type:"
 msgstr "Tipo de íc_one:"
 
-#: ../settings/xfdesktop-settings.glade.h:20
+#: ../settings/xfdesktop-settings.glade.h:23
 msgid "Image _list"
 msgstr "_Lista de imagens"
 
-#: ../settings/xfdesktop-settings.glade.h:21
+#: ../settings/xfdesktop-settings.glade.h:24
+msgid "Increase or decrease the brightness of the final image"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:25
+msgid "Increase or decrease the color saturation of the final image"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:26
 msgid "Label trans_parency:"
 msgstr "Trans_parência de rótulos:"
 
-#: ../settings/xfdesktop-settings.glade.h:22
+#: ../settings/xfdesktop-settings.glade.h:27
 msgid ""
 "Left\n"
 "Middle\n"
@@ -1472,15 +1530,15 @@ msgstr ""
 "Meio\n"
 "Direito"
 
-#: ../settings/xfdesktop-settings.glade.h:25
+#: ../settings/xfdesktop-settings.glade.h:30
 msgid "Mo_difier:"
 msgstr "Mo_dificador:"
 
-#: ../settings/xfdesktop-settings.glade.h:26
+#: ../settings/xfdesktop-settings.glade.h:31
 msgid "Modi_fier:"
 msgstr "Modi_ficador:"
 
-#: ../settings/xfdesktop-settings.glade.h:27
+#: ../settings/xfdesktop-settings.glade.h:32
 msgid ""
 "None\n"
 "Minimized application icons\n"
@@ -1490,7 +1548,7 @@ msgstr ""
 "Ícones de aplicativos minimizadas\n"
 "Ícones de arquivo ou lançador"
 
-#: ../settings/xfdesktop-settings.glade.h:30
+#: ../settings/xfdesktop-settings.glade.h:35
 msgid ""
 "None\n"
 "Shift\n"
@@ -1502,56 +1560,61 @@ msgstr ""
 "Alt\n"
 "Control"
 
-#: ../settings/xfdesktop-settings.glade.h:34
-msgid "Remove the selected image from the list"
+#: ../settings/xfdesktop-settings.glade.h:39
+#, fuzzy
+msgid "Remove the selected image(s) from the list"
 msgstr "Remover a imagem selecionada da lista"
 
-#: ../settings/xfdesktop-settings.glade.h:35
+#: ../settings/xfdesktop-settings.glade.h:40
 msgid "Sa_turation:"
 msgstr "Sa_turação:"
 
-#: ../settings/xfdesktop-settings.glade.h:36
+#: ../settings/xfdesktop-settings.glade.h:41
 msgid "Select First Color"
 msgstr "Selecionar primeira cor"
 
-#: ../settings/xfdesktop-settings.glade.h:37
+#: ../settings/xfdesktop-settings.glade.h:42
 msgid "Select Second Color"
 msgstr "Selecionar segunda cor"
 
-#: ../settings/xfdesktop-settings.glade.h:38
+#: ../settings/xfdesktop-settings.glade.h:43
+msgid "Select a single image as the backdrop"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:44
 msgid "Set desktop background and menu and icon behavior"
 msgstr ""
 "Definir o comportamento do segundo plano da área de trabalho, menu e ícones"
 
-#: ../settings/xfdesktop-settings.glade.h:39
+#: ../settings/xfdesktop-settings.glade.h:45
 msgid "Sh_ow application icons in menu"
 msgstr "M_ostrar ícones de aplicativos no menu"
 
-#: ../settings/xfdesktop-settings.glade.h:40
+#: ../settings/xfdesktop-settings.glade.h:46
 msgid "Show _application icons in menu"
 msgstr "Mostra ícones de _aplicativos no menu"
 
-#: ../settings/xfdesktop-settings.glade.h:41
+#: ../settings/xfdesktop-settings.glade.h:47
 msgid "Show _desktop menu on desktop click"
 msgstr "Mostrar _menu da área de trabalho ao clicar na área de trabalho"
 
-#: ../settings/xfdesktop-settings.glade.h:42
+#: ../settings/xfdesktop-settings.glade.h:48
 msgid "Show _window list menu on desktop click"
 msgstr "Mostrar o menu da lista de _janelas ao clicar na área de trabalho"
 
-#: ../settings/xfdesktop-settings.glade.h:43
+#: ../settings/xfdesktop-settings.glade.h:49
 msgid "Show s_ticky windows only in active workspace"
 msgstr "Mostrar janelas fixas somen_te no espaço de trabalho atual"
 
-#: ../settings/xfdesktop-settings.glade.h:44
+#: ../settings/xfdesktop-settings.glade.h:50
 msgid "Show windows on each workspace in _submenus"
 msgstr "Mostrar janelas em cada espaço de trabalho nos _sub-menus"
 
-#: ../settings/xfdesktop-settings.glade.h:45
+#: ../settings/xfdesktop-settings.glade.h:51
 msgid "Show workspace _names in list"
 msgstr "Mostrar os _nomes dos espaços de trabalho na lista"
 
-#: ../settings/xfdesktop-settings.glade.h:46
+#: ../settings/xfdesktop-settings.glade.h:52
 msgid ""
 "Solid color\n"
 "Horizontal gradient\n"
@@ -1563,71 +1626,74 @@ msgstr ""
 "Degradê vertical\n"
 "Transparente"
 
-#: ../settings/xfdesktop-settings.glade.h:50
+#: ../settings/xfdesktop-settings.glade.h:56
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Especifica a cor \"direita\" ou \"inferior\" do degradê"
 
-#: ../settings/xfdesktop-settings.glade.h:51
+#: ../settings/xfdesktop-settings.glade.h:57
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
 "Especifica a cor sólida, ou a cor \"esquerda\" or \"supeior\" do degradê"
 
-#: ../settings/xfdesktop-settings.glade.h:52
+#: ../settings/xfdesktop-settings.glade.h:58
 msgid "St_yle:"
 msgstr "Est_ilo:"
 
-#: ../settings/xfdesktop-settings.glade.h:53
+#: ../settings/xfdesktop-settings.glade.h:59
 msgid "Use _Xfce to manage the desktop"
 msgstr "Usar o _Xfce para gerenciar a área de trabalho"
 
-#: ../settings/xfdesktop-settings.glade.h:54
+#: ../settings/xfdesktop-settings.glade.h:60
 msgid "Use custom _font size:"
 msgstr "Usar um tamanho de _fonte personalizado:"
 
-#: ../settings/xfdesktop-settings.glade.h:55
+#: ../settings/xfdesktop-settings.glade.h:61
 msgid "_Background"
 msgstr "_Segundo plano"
 
-#: ../settings/xfdesktop-settings.glade.h:56
+#: ../settings/xfdesktop-settings.glade.h:62
 msgid "_Button:"
 msgstr "_Botão:"
 
-#: ../settings/xfdesktop-settings.glade.h:57
+#: ../settings/xfdesktop-settings.glade.h:63
 msgid "_Edit desktop menu"
 msgstr "_Editar o menu da área de trabalho"
 
-#: ../settings/xfdesktop-settings.glade.h:58
+#: ../settings/xfdesktop-settings.glade.h:64
 msgid "_Icons"
 msgstr "_Ícones"
 
-#: ../settings/xfdesktop-settings.glade.h:59
+#: ../settings/xfdesktop-settings.glade.h:65
 msgid "_Menus"
 msgstr "_Menus"
 
-#: ../settings/xfdesktop-settings.glade.h:60
+#: ../settings/xfdesktop-settings.glade.h:66
 msgid "_None"
 msgstr "_Nenhum"
 
-#: ../settings/xfdesktop-settings.glade.h:61
+#: ../settings/xfdesktop-settings.glade.h:67
 msgid "_Single image"
 msgstr "_Imagem simples"
 
-#: ../settings/xfdesktop-settings.glade.h:62
+#: ../settings/xfdesktop-settings.glade.h:68
 msgid "gtk-close"
 msgstr "gtk-close"
 
-#: ../settings/xfdesktop-settings.glade.h:63
+#: ../settings/xfdesktop-settings.glade.h:69
 msgid "gtk-help"
 msgstr "gtk-help"
 
-#~ msgid "Unable to load image from backdrop list file \"%s\""
+#~ msgid ""
+#~ "Could not save file %s: %s\n"
+#~ "\n"
+#~ "Please choose another location or press cancel in the dialog to discard "
+#~ "your changes"
 #~ msgstr ""
-#~ "Não foi possível carregar a imagem do arquivo de lista de imagens de "
-#~ "fundo \"%s\":"
-
-#~ msgid "Desktop Error"
-#~ msgstr "Erro de área de trabalho"
+#~ "Não foi possível salvar o arquivo %s: %s\n"
+#~ "\n"
+#~ "Por favor escolha outro local ou pressione cancelar no diálogo para "
+#~ "descartar suas alterações"
 
 #~ msgid "Button Label|Desktop"
 #~ msgstr "Área de Trabalho"
@@ -1749,14 +1815,8 @@ msgstr "gtk-help"
 #~ msgid "Choose backdrop list filename"
 #~ msgstr "Escolha a lista de arquivos de fundo"
 
-#~ msgid "List Files"
-#~ msgstr "Arquivos de Lista"
-
 #~ msgid "List file"
 #~ msgstr "Arquivo de Lista"
-
-#~ msgid "Create backdrop list"
-#~ msgstr "Criar lista de fundos"
 
 #~ msgid "Edit backdrop list"
 #~ msgstr "Editar lista de fundos"
@@ -1803,6 +1863,3 @@ msgstr "gtk-help"
 
 #~ msgid "Edit Properties"
 #~ msgstr "Editar Propriedades"
-
-#~ msgid "Backdrop List"
-#~ msgstr "Lista de Fundos"
