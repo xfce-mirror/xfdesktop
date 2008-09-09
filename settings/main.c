@@ -55,6 +55,7 @@
 #include "xfdesktop-settings_glade.h"
 
 #define SHOW_DESKTOP_MENU_PROP               "/desktop-menu/show"
+#define DESKTOP_MENU_SHOW_ICONS_PROP         "/desktop-menu/show-icons"
 
 #define WINLIST_SHOW_WINDOWS_MENU_PROP       "/windowlist-menu/show"
 #define WINLIST_SHOW_APP_ICONS_PROP          "/windowlist-menu/show-icons"
@@ -1156,6 +1157,12 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
     g_signal_connect(G_OBJECT(w), "toggled",
                      G_CALLBACK(suboptions_set_sensitive), box);
     suboptions_set_sensitive(GTK_TOGGLE_BUTTON(w), box);
+
+    xfconf_g_property_bind(channel, DESKTOP_MENU_SHOW_ICONS_PROP,
+                           G_TYPE_BOOLEAN,
+                           G_OBJECT(glade_xml_get_widget(main_gxml,
+                                                         "chk_menu_show_app_icons")),
+                           "active");
 
     w = glade_xml_get_widget(main_gxml, "chk_show_winlist_menu");
     xfconf_g_property_bind(channel, WINLIST_SHOW_WINDOWS_MENU_PROP,
