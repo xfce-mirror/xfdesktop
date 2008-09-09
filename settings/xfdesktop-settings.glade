@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Mon Sep  8 00:43:53 2008 -->
+<!--Generated with glade3 3.4.5 on Mon Sep  8 20:16:04 2008 -->
 <glade-interface>
   <requires lib="xfce4"/>
   <widget class="XfceTitledDialog" id="prefs_dialog">
@@ -591,7 +591,7 @@ Transparent</property>
                                   </widget>
                                 </child>
                                 <child>
-                                  <widget class="GtkAlignment" id="alignment6">
+                                  <widget class="GtkAlignment" id="box_menu_subopts">
                                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                                     <property name="bottom_padding">6</property>
                                     <property name="left_padding">12</property>
@@ -755,7 +755,7 @@ Control</property>
                                   </widget>
                                 </child>
                                 <child>
-                                  <widget class="GtkAlignment" id="alignment13">
+                                  <widget class="GtkAlignment" id="box_winlist_subopts">
                                     <property name="visible">True</property>
                                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                                     <property name="bottom_padding">6</property>
@@ -853,7 +853,7 @@ Control</property>
                                           </packing>
                                         </child>
                                         <child>
-                                          <widget class="GtkAlignment" id="alignment9">
+                                          <widget class="GtkAlignment" id="box_winlist_names_subopts">
                                             <property name="visible">True</property>
                                             <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                                             <property name="left_padding">12</property>

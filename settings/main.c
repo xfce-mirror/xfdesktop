@@ -920,13 +920,21 @@ cb_show_image_changed(XfconfChannel *channel,
     }
 }
 
+static void
+suboptions_set_sensitive(GtkToggleButton *btn,
+                         gpointer user_data)
+{
+    GtkWidget *box = user_data;
+    gtk_widget_set_sensitive(box, gtk_toggle_button_get_active(btn));
+}
+
 static GtkWidget *
 xfdesktop_settings_dialog_new(XfconfChannel *channel)
 {
     gint i, j, nmonitors, nscreens;
     GladeXML *main_gxml;
     GtkWidget *dialog, *appearance_container, *chk_custom_font_size,
-              *spin_font_size, *color_style_widget, *w;
+              *spin_font_size, *color_style_widget, *w, *box;
 
     main_gxml = glade_xml_new_from_buffer(xfdesktop_settings_glade,
                                           xfdesktop_settings_glade_length,
@@ -1140,24 +1148,36 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
         }
     }
 
+    w = glade_xml_get_widget(main_gxml, "chk_show_desktop_menu");
     xfconf_g_property_bind(channel, SHOW_DESKTOP_MENU_PROP, G_TYPE_BOOLEAN,
-                           G_OBJECT(glade_xml_get_widget(main_gxml,
-                                                         "chk_show_desktop_menu")),
-                           "active");
+                           G_OBJECT(w), "active");
+    box = glade_xml_get_widget(main_gxml, "box_menu_subopts");
+    g_signal_connect(G_OBJECT(w), "toggled",
+                     G_CALLBACK(suboptions_set_sensitive), box);
+    suboptions_set_sensitive(GTK_TOGGLE_BUTTON(w), box);
+
+    w = glade_xml_get_widget(main_gxml, "chk_show_winlist_menu");
     xfconf_g_property_bind(channel, WINLIST_SHOW_WINDOWS_MENU_PROP,
-                           G_TYPE_BOOLEAN,
-                           G_OBJECT(glade_xml_get_widget(main_gxml,
-                                                         "chk_show_winlist_menu")),
-                           "active");
+                           G_TYPE_BOOLEAN, G_OBJECT(w), "active");
+    box = glade_xml_get_widget(main_gxml, "box_winlist_subopts");
+    g_signal_connect(G_OBJECT(w), "toggled",
+                     G_CALLBACK(suboptions_set_sensitive), box);
+    suboptions_set_sensitive(GTK_TOGGLE_BUTTON(w), box);
+
     xfconf_g_property_bind(channel, WINLIST_SHOW_STICKY_WIN_ONCE_PROP,
                            G_TYPE_BOOLEAN,
                            G_OBJECT(glade_xml_get_widget(main_gxml,
                                                          "chk_show_winlist_sticky_once")),
                            "active");
+
+    w = glade_xml_get_widget(main_gxml, "chk_show_winlist_ws_names");
     xfconf_g_property_bind(channel, WINLIST_SHOW_WS_NAMES_PROP, G_TYPE_BOOLEAN,
-                           G_OBJECT(glade_xml_get_widget(main_gxml,
-                                                         "chk_show_winlist_ws_names")),
-                           "active");
+                           G_OBJECT(w), "active");
+    box = glade_xml_get_widget(main_gxml, "box_winlist_names_subopts");
+    g_signal_connect(G_OBJECT(w), "toggled",
+                     G_CALLBACK(suboptions_set_sensitive), box);
+    suboptions_set_sensitive(GTK_TOGGLE_BUTTON(w), box);
+
     xfconf_g_property_bind(channel, WINLIST_SHOW_WS_SUBMENUS_PROP,
                            G_TYPE_BOOLEAN,
                            G_OBJECT(glade_xml_get_widget(main_gxml,
