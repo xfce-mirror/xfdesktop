@@ -135,8 +135,11 @@ menu_settings_changed(XfconfChannel *channel,
 {
     if(!strcmp(property, "/desktop-menu/show")) {
         if(!G_VALUE_TYPE(value) || g_value_get_boolean(value)) {
-            if(!desktop_menu)
+            if(!desktop_menu) {
                 _start_menu_module();
+                if(desktop_menu && !show_desktop_menu_icons)
+                    xfce_desktop_menu_set_show_icons(desktop_menu, FALSE);
+            }
         } else {
             if(desktop_menu)
                 _stop_menu_module();
@@ -145,8 +148,10 @@ menu_settings_changed(XfconfChannel *channel,
         show_desktop_menu_icons = G_VALUE_TYPE(value)
                                   ? g_value_get_boolean(value)
                                   : TRUE;
-        if(desktop_menu)
-            xfce_desktop_menu_set_show_icons(desktop_menu, FALSE);
+        if(desktop_menu) {
+            xfce_desktop_menu_set_show_icons(desktop_menu,
+                                             show_desktop_menu_icons);
+        }
     }
 }
 #endif

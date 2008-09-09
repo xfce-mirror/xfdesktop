@@ -46,7 +46,7 @@
 #define WLIST_MAXLEN 30
 
 static gboolean show_windowlist = TRUE;
-static gboolean show_windowlist_icons = TRUE;
+static gboolean wl_show_icons = TRUE;
 static gboolean wl_show_ws_names = TRUE;
 static gboolean wl_submenus = FALSE;
 static gboolean wl_sticky_once = FALSE;
@@ -164,7 +164,7 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
         g_string_append(label, "]");
     }
     
-    if(show_windowlist_icons) {
+    if(wl_show_icons) {
         icon = wnck_window_get_icon(wnck_window);
         w = gdk_pixbuf_get_width(icon);
         h = gdk_pixbuf_get_height(icon);
@@ -365,7 +365,7 @@ windowlist_populate(XfceDesktop *desktop,
     }
     
     /* 'add workspace' item */
-    if(show_windowlist_icons) {
+    if(wl_show_icons) {
         img = gtk_image_new_from_stock(GTK_STOCK_ADD, GTK_ICON_SIZE_MENU);
         mi = gtk_image_menu_item_new_with_mnemonic(_("_Add Workspace"));
         gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
@@ -384,7 +384,7 @@ windowlist_populate(XfceDesktop *desktop,
         rm_label = g_strdup_printf(_("_Remove Workspace '%s'"), ws_name_esc);
         g_free(ws_name_esc);
     }
-    if(show_windowlist_icons) {
+    if(wl_show_icons) {
         img = gtk_image_new_from_stock(GTK_STOCK_REMOVE, GTK_ICON_SIZE_MENU);
         mi = gtk_image_menu_item_new_with_mnemonic(rm_label);
         gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
@@ -407,6 +407,8 @@ windowlist_settings_changed(XfconfChannel *channel,
 {
     if(!strcmp(property, "/windowlist-menu/show"))
         show_windowlist = G_VALUE_TYPE(value) ? g_value_get_boolean(value) : TRUE;
+    else if(!strcmp(property, "/windowlist-menu/show-icons"))
+        wl_show_icons = G_VALUE_TYPE(value) ? g_value_get_boolean(value) : TRUE;
     else if(!strcmp(property, "/windowlist-menu/show-workspace-names"))
         wl_show_ws_names = G_VALUE_TYPE(value) ? g_value_get_boolean(value) : TRUE;
     else if(!strcmp(property, "/windowlist-menu/show-submenus"))
@@ -423,6 +425,10 @@ windowlist_init(XfconfChannel *channel)
                                                   "/windowlist-menu/show",
                                                   TRUE);
         
+        wl_show_icons = xfconf_channel_get_bool(channel,
+                                                "/windowlist-menu/show-icons",
+                                                TRUE);
+
         wl_show_ws_names = xfconf_channel_get_bool(channel,
                                                    "/windowlist-menu/show-workspace-names",
                                                    TRUE);

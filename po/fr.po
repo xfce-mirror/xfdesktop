@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-09-08 09:57+0200\n"
-"PO-Revision-Date: 2008-02-18 02:03+0100\n"
-"Last-Translator: Mike Massonnet <mmassonnet@gmail.com>\n"
+"PO-Revision-Date: 2008-09-08 14:00+0100\n"
+"Last-Translator: Maximilian Schleiss <maximilian@xfce.org>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -238,14 +238,8 @@ msgid "xfce4-menueditor is deprecated"
 msgstr "xfce4-menueditor est obsolète"
 
 #: ../menueditor/menueditor-main.c:60
-msgid ""
-"Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-"edit the new menu file format.  You may continue and edit an old-style menu "
-"file, or quit."
-msgstr ""
-"Le système du menu Xfce à été remplacé, et xfce4-menueditor n'est pas "
-"capable d'éditer le nouveau format du menu. Vous pouvez continuer et éditer "
-"un ancien menu, ou quitter."
+msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+msgstr "Le système du menu Xfce à été remplacé, et xfce4-menueditor n'est pas capable d'éditer le nouveau format du menu. Vous pouvez continuer et éditer un ancien menu, ou quitter."
 
 #: ../menueditor/menueditor-main.c:61
 msgid "Continue"
@@ -265,7 +259,8 @@ msgstr "Créer un nouveau fichier de menu vide"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1719
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-special-file-icon.c:633
+#: ../src/xfdesktop-volume-icon.c:560
 msgid "_Open"
 msgstr "_Ouvrir"
 
@@ -416,7 +411,8 @@ msgstr "Voulez-vous enregistrer avant de fermer le fichier ?"
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:679
+#: ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Question"
 
@@ -595,11 +591,15 @@ msgstr "Options de compilation :\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menu du bureau:        %s\n"
 
-#: ../src/main.c:236 ../src/main.c:243 ../src/main.c:250
+#: ../src/main.c:236
+#: ../src/main.c:243
+#: ../src/main.c:250
 msgid "enabled"
 msgstr "activé"
 
-#: ../src/main.c:238 ../src/main.c:245 ../src/main.c:252
+#: ../src/main.c:238
+#: ../src/main.c:245
+#: ../src/main.c:252
 msgid "disabled"
 msgstr "désactivé"
 
@@ -626,23 +626,17 @@ msgstr "Les options sont :\n"
 #: ../src/main.c:279
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    --reload      Recharger tous le paramètres, rafraîchir la liste "
-"d'images\n"
+msgstr "    --reload      Recharger tous le paramètres, rafraîchir la liste d'images\n"
 
 #: ../src/main.c:280
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr ""
-"    --menu        Affiche le menu (à la position courante de la souris)\n"
+msgstr "    --menu        Affiche le menu (à la position courante de la souris)\n"
 
 #: ../src/main.c:281
 #, c-format
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    --windowlist  Affiche la liste des fenêtres (à la position courante de "
-"la souris)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    --windowlist  Affiche la liste des fenêtres (à la position courante de la souris)\n"
 
 #: ../src/main.c:282
 #, c-format
@@ -656,7 +650,7 @@ msgstr "%s n'est pas en cours d'exécution.\n"
 
 #: ../src/menu.c:113
 msgid "_Applications"
-msgstr ""
+msgstr "_Applications"
 
 #: ../src/windowlist.c:236
 msgid "Window List"
@@ -677,7 +671,8 @@ msgstr "Espace de travail %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Espace de travail %d</i>"
 
-#: ../src/windowlist.c:370 ../src/windowlist.c:373
+#: ../src/windowlist.c:370
+#: ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "_Ajouter un espace de travail"
 
@@ -691,27 +686,24 @@ msgstr "_Supprimer l'espace de travail %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Supprimer l'espace de travail '%s'"
 
-#: ../src/xfce-desktop.c:738 ../settings/xfce-backdrop-settings.desktop.in.h:1
+#: ../src/xfce-desktop.c:738
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop"
 msgstr "Bureau"
 
 #: ../src/xfce-desktop.c:1004
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Impossible de créer de fichier \"%s\" :"
+msgstr "Échec au chargement d'une image de fond d'écran de la liste \"%s\""
 
 #: ../src/xfce-desktop.c:1006
-#, fuzzy
 msgid "Desktop Error"
-msgstr "Bureau"
+msgstr "Erreur du bureau"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop n'a pas pu créer le dossier \"%s\" pour stocker les éléments du "
-"bureau:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop n'a pas pu créer le dossier \"%s\" pour stocker les éléments du bureau:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
@@ -721,12 +713,8 @@ msgstr "Échec à la création du dossier"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop ne peut pas utilliser \"%s\" pour contenir les éléments du bureau "
-"car ce n'est pas un dossier."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop ne peut pas utilliser \"%s\" pour contenir les éléments du bureau car ce n'est pas un dossier."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -769,7 +757,8 @@ msgstr "Effacer plusieurs fichiers"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1635 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1635
+#: ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -778,7 +767,8 @@ msgstr "Impossible d'exécuter \"%s\" :"
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
 #: ../src/xfdesktop-file-icon-manager.c:1242
-#: ../src/xfdesktop-file-icon-manager.c:1636 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon-manager.c:1636
+#: ../src/xfdesktop-file-icon.c:144
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Erreur d'exécution"
@@ -787,13 +777,10 @@ msgstr "Erreur d'exécution"
 msgid "The application chooser could not be opened."
 msgstr "Le sélecteur d'applications n'a pas pu être ouvert."
 
-#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Cette option requiert qu'un service d'un gestionnaire de fichier soit "
-"présent (comme celui fourni par Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:979
+#: ../src/xfdesktop-file-utils.c:358
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Cette option requiert qu'un service d'un gestionnaire de fichier soit présent (comme celui fourni par Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1139
 #, c-format
@@ -811,12 +798,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Impossible de créer le dossier nommé \"%s\" :"
 
 #: ../src/xfdesktop-file-icon-manager.c:1244
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Impossible d'exécuter \"exo-desktop-item-edit\" lequel est nécessaire à la "
-"création et l'édition de lanceurs et liens sur le bureau."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Impossible d'exécuter \"exo-desktop-item-edit\" lequel est nécessaire à la création et l'édition de lanceurs et liens sur le bureau."
 
 #: ../src/xfdesktop-file-icon-manager.c:1277
 msgid "Create New Folder"
@@ -970,7 +953,8 @@ msgstr "Destinataire du lien:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
-#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
+#: ../src/xfdesktop-volume-icon.c:476
+#: ../src/xfdesktop-volume-icon.c:482
 msgid "(unknown)"
 msgstr "(inconnu)"
 
@@ -1076,15 +1060,15 @@ msgstr "Erreur"
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Échec à renommer \"%s\" en \"%s\":"
 
-#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:163
+#: ../src/xfdesktop-special-file-icon.c:259
+#: ../settings/main.c:163
 msgid "Home"
 msgstr "Home"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
-#, fuzzy
 msgid "Kind: Trash"
-msgstr "Genre :"
+msgstr "Type : Corbeille"
 
 #: ../src/xfdesktop-special-file-icon.c:515
 msgid "Trash Error"
@@ -1095,12 +1079,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Échec de connexion au service corbeille de Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:518
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Assurez-vous d'avoir un gestionnaire de fichiers, tel que thunar, supportant "
-"le service corbeille Xfce."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Assurez-vous d'avoir un gestionnaire de fichiers, tel que thunar, supportant le service corbeille Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
@@ -1109,7 +1089,7 @@ msgstr "_Vider la corbeille"
 #: ../src/xfdesktop-volume-icon.c:474
 #, c-format
 msgid "%s (%s total)"
-msgstr ""
+msgstr "%s (%s total)"
 
 #: ../src/xfdesktop-volume-icon.c:478
 #, c-format
@@ -1118,6 +1098,9 @@ msgid ""
 "Mount Point: %s\n"
 "Free Space: %s"
 msgstr ""
+"Type : Volume amovible\n"
+"Point de montage : %s\n"
+"Espace libre : %s"
 
 #: ../src/xfdesktop-volume-icon.c:509
 #, c-format
@@ -1319,77 +1302,69 @@ msgid "Web Browser"
 msgstr "Navigateur Web"
 
 #: ../settings/main.c:165
-#, fuzzy
 msgid "Filesystem"
-msgstr "système"
+msgstr "Système de fichiers"
 
 #: ../settings/main.c:167
-#, fuzzy
 msgid "Trash"
-msgstr "Erreur de la corbeille"
+msgstr "Corbeille"
 
 #: ../settings/main.c:169
 msgid "Removable Devices"
-msgstr ""
+msgstr "Périphériques amovibles"
 
 #: ../settings/main.c:321
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Création d'une liste de fonds d'écran"
+msgstr "La création de la liste de fonds d'écrans \"%s\" a échoué"
 
-#: ../settings/main.c:325 ../settings/main.c:678
-#, fuzzy
+#: ../settings/main.c:325
+#: ../settings/main.c:678
 msgid "Backdrop List Error"
-msgstr "Liste de fonds d'écran"
+msgstr "Éditeur de liste de fonds d'écran"
 
 #: ../settings/main.c:350
-#, fuzzy
 msgid "Create/Load Backdrop List"
-msgstr "Création d'une liste de fonds d'écran"
+msgstr "Créer/Charger la liste de fonds d'écrans"
 
 #: ../settings/main.c:374
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Le fichier de liste de fonds d'écran \"%s\" n'est pas correct. Voulez-vous l'écraser ?"
 
 #: ../settings/main.c:379
-#, fuzzy
 msgid "Invalid List File"
-msgstr "Liste des fichiers"
+msgstr "Liste de fichiers incorrecte"
 
 #: ../settings/main.c:382
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
+msgstr "Écraser le fichier en effacera toutes les données."
 
 #: ../settings/main.c:384
-#, fuzzy
 msgid "Replace"
-msgstr "renommer"
+msgstr "Remplacer"
 
 #: ../settings/main.c:674
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Échec à renommer \"%s\" en \"%s\":"
+msgstr "Échec à l'écriture dans \"%s\" de la liste de fonds d'écran"
 
 #: ../settings/main.c:701
-#, fuzzy
 msgid "Add Image File(s)"
-msgstr "Fichiers images"
+msgstr "Ajouter un/des fichier(s) image"
 
 #: ../settings/main.c:710
 msgid "Image files"
 msgstr "Fichiers images"
 
 #: ../settings/main.c:715
-#, fuzzy
 msgid "All files"
 msgstr "Tous les fichiers"
 
 #: ../settings/main.c:979
-#, fuzzy, c-format
+#, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "Écran %d, Moniteur %d"
+msgstr "Écran %d, moniteur %d (%s)"
 
 #: ../settings/main.c:984
 #, c-format
@@ -1404,21 +1379,21 @@ msgstr "Écran %d"
 #: ../settings/main.c:993
 #, c-format
 msgid "Monitor %d (%s)"
-msgstr ""
+msgstr "Moniteur %d (%s)"
 
 #: ../settings/main.c:998
-#, fuzzy, c-format
+#, c-format
 msgid "Monitor %d"
-msgstr "Écran %d, Moniteur %d"
+msgstr "Moniteur %d"
 
-#: ../settings/main.c:1200 ../settings/xfce-backdrop-settings.desktop.in.h:2
+#: ../settings/main.c:1200
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Desktop Settings"
 msgstr "Paramètres du Bureau"
 
 #: ../settings/main.c:1202
-#, fuzzy
 msgid "Unable to contact settings server"
-msgstr "Échec de connexion au service corbeille de Xfce."
+msgstr "Le serveur de paramètres n'a pas pu être contacté"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Settings for the Xfce 4 Desktop Manager"
@@ -1430,42 +1405,39 @@ msgstr "Xfce 4 Gestionnaire de bureau"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
-msgstr ""
+msgstr "<b>Ajustements</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:2
-#, fuzzy
 msgid "<b>Appearance</b>"
-msgstr "_Apparence"
+msgstr "<b>Apparence</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:3
-#, fuzzy
 msgid "<b>Colors</b>"
-msgstr "<b>Espace de travail %d</b>"
+msgstr "<b>Couleurs</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:4
 msgid "<b>Default Icons</b>"
-msgstr ""
+msgstr "<b>Icônes par défaut</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:5
 msgid "<b>Desktop Menu</b>"
-msgstr ""
+msgstr "<b>Menu du bureau</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:6
 msgid "<b>Image</b>"
-msgstr ""
+msgstr "<b>Image</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:7
 msgid "<b>Images</b>"
-msgstr ""
+msgstr "<b>Images</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:8
-#, fuzzy
 msgid "<b>Window List Menu</b>"
-msgstr "Liste des fenêtres"
+msgstr "<b>Menu de liste des fenêtres</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:9
 msgid "Add an image to the list"
-msgstr ""
+msgstr "Ajouter une image à la liste"
 
 #: ../settings/xfdesktop-settings.glade.h:10
 msgid ""
@@ -1476,55 +1448,56 @@ msgid ""
 "Scaled\n"
 "Zoomed"
 msgstr ""
+"Auto\n"
+"Centré\n"
+"Mosaïque\n"
+"Étiré\n"
+"À l'échelle\n"
+"Zoomé"
 
 #: ../settings/xfdesktop-settings.glade.h:16
 msgid "Automatically pick a random image from a list file"
-msgstr ""
+msgstr "Choisir une image au hasard dans une liste"
 
 #: ../settings/xfdesktop-settings.glade.h:17
-#, fuzzy
 msgid "B_rightness:"
-msgstr "Ajuster la _luminosité :"
+msgstr "_Luminosité :"
 
 #: ../settings/xfdesktop-settings.glade.h:18
-#, fuzzy
 msgid "B_utton:"
-msgstr "Bouton"
+msgstr "Bo_uton :"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
-msgstr ""
+msgstr "Créer une nouvelle liste ou en charger une existente"
 
 #: ../settings/xfdesktop-settings.glade.h:20
 msgid "Don't display an image at all"
-msgstr ""
+msgstr "Ne pas afficher d'image"
 
 #: ../settings/xfdesktop-settings.glade.h:21
-#, fuzzy
 msgid "Icon _size:"
 msgstr "Taille de l'_icône :"
 
 #: ../settings/xfdesktop-settings.glade.h:22
-#, fuzzy
 msgid "Icon _type:"
-msgstr "Taille de l'_icône :"
+msgstr "_Type d'icône :"
 
 #: ../settings/xfdesktop-settings.glade.h:23
-#, fuzzy
 msgid "Image _list"
-msgstr "Fichiers images"
+msgstr "_Liste d'images"
 
 #: ../settings/xfdesktop-settings.glade.h:24
 msgid "Increase or decrease the brightness of the final image"
-msgstr ""
+msgstr "Éclaircir ou foncer l'image finale"
 
 #: ../settings/xfdesktop-settings.glade.h:25
 msgid "Increase or decrease the color saturation of the final image"
-msgstr ""
+msgstr "Augmenter ou diminuer la saturation de la couleur de l'image finale"
 
 #: ../settings/xfdesktop-settings.glade.h:26
 msgid "Label trans_parency:"
-msgstr ""
+msgstr "Trans_parence des étiquettes :"
 
 #: ../settings/xfdesktop-settings.glade.h:27
 msgid ""
@@ -1532,24 +1505,27 @@ msgid ""
 "Middle\n"
 "Right"
 msgstr ""
+"Gauche\n"
+"Milieu\n"
+"Droite"
 
 #: ../settings/xfdesktop-settings.glade.h:30
-#, fuzzy
 msgid "Mo_difier:"
-msgstr "Modifié :"
+msgstr "Mo_difier :"
 
 #: ../settings/xfdesktop-settings.glade.h:31
-#, fuzzy
 msgid "Modi_fier:"
-msgstr "Modifié :"
+msgstr "Modi_fier :"
 
 #: ../settings/xfdesktop-settings.glade.h:32
-#, fuzzy
 msgid ""
 "None\n"
 "Minimized application icons\n"
 "File/launcher icons"
-msgstr "Icônes des applications minimisées"
+msgstr ""
+"Aucune\n"
+"Icônes des applications minimisées\n"
+"Fichiers/icônes lanceurs"
 
 #: ../settings/xfdesktop-settings.glade.h:35
 msgid ""
@@ -1558,62 +1534,58 @@ msgid ""
 "Alt\n"
 "Control"
 msgstr ""
+"Aucune\n"
+"Maj\n"
+"Alt\n"
+"Contrôle"
 
 #: ../settings/xfdesktop-settings.glade.h:39
 msgid "Remove the selected image(s) from the list"
-msgstr ""
+msgstr "Supprimer de la liste la ou les images sélectionnées"
 
 #: ../settings/xfdesktop-settings.glade.h:40
 msgid "Sa_turation:"
-msgstr ""
+msgstr "Sa_turation :"
 
 #: ../settings/xfdesktop-settings.glade.h:41
-#, fuzzy
 msgid "Select First Color"
-msgstr "P_remière couleur :"
+msgstr "Choisir la première couleur"
 
 #: ../settings/xfdesktop-settings.glade.h:42
-#, fuzzy
 msgid "Select Second Color"
-msgstr "_Seconde couleur :"
+msgstr "Choisir la deuxième couleur"
 
 #: ../settings/xfdesktop-settings.glade.h:43
 msgid "Select a single image as the backdrop"
-msgstr ""
+msgstr "Sélection d'une image unique comme fond d'écran"
 
 #: ../settings/xfdesktop-settings.glade.h:44
 msgid "Set desktop background and menu and icon behavior"
-msgstr ""
+msgstr "Définir le fond d'écran, le menu et le comportement des icônes"
 
 #: ../settings/xfdesktop-settings.glade.h:45
-#, fuzzy
 msgid "Sh_ow application icons in menu"
 msgstr "Afficher les _icônes dans le menu"
 
 #: ../settings/xfdesktop-settings.glade.h:46
-#, fuzzy
 msgid "Show _application icons in menu"
-msgstr "Afficher les _icônes dans le menu"
+msgstr "Afficher les icô_nes dans le menu"
 
 #: ../settings/xfdesktop-settings.glade.h:47
-#, fuzzy
 msgid "Show _desktop menu on desktop click"
-msgstr "Afficher le menu de _bureau (clic-droit)"
+msgstr "Afficher le _menu du bureau lors d'un clic sur le bureau"
 
 #: ../settings/xfdesktop-settings.glade.h:48
-#, fuzzy
 msgid "Show _window list menu on desktop click"
-msgstr "Afficher la _liste des fenêtres (clic-milieu)"
+msgstr "Afficher le _menu de la liste de fenêtres d'un clic sur le bureau"
 
 #: ../settings/xfdesktop-settings.glade.h:49
-#, fuzzy
 msgid "Show s_ticky windows only in active workspace"
-msgstr "Afficher les fenêtres collées dans l'espace de travail _actif"
+msgstr "Afficher les fenêtres _collantes uniquement dans l'espace de travail actif"
 
 #: ../settings/xfdesktop-settings.glade.h:50
-#, fuzzy
 msgid "Show windows on each workspace in _submenus"
-msgstr "Afficher les fenêtres d'un espace de travail dans un sous-_menu"
+msgstr "Afficher les fenêtres de chaque espace de travail dans des _sous-menus"
 
 #: ../settings/xfdesktop-settings.glade.h:51
 msgid "Show workspace _names in list"
@@ -1626,71 +1598,66 @@ msgid ""
 "Vertical gradient\n"
 "Transparent"
 msgstr ""
+"Couleur pleine\n"
+"Dégradé horizontal\n"
+"Dégradé vertical\n"
+"Transparent"
 
 #: ../settings/xfdesktop-settings.glade.h:56
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
+msgstr "Défini le dégradé \"droit\" ou \"bas\" de la couleur"
 
 #: ../settings/xfdesktop-settings.glade.h:57
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Défini la couleur pleine ou le dégradé \"gauche\" ou \"haut\" de la couleur"
 
 #: ../settings/xfdesktop-settings.glade.h:58
-#, fuzzy
 msgid "St_yle:"
-msgstr "Style :"
+msgstr "St_yle :"
 
 #: ../settings/xfdesktop-settings.glade.h:59
-#, fuzzy
 msgid "Use _Xfce to manage the desktop"
 msgstr "Permettre à _Xfce de gérer le bureau"
 
 #: ../settings/xfdesktop-settings.glade.h:60
-#, fuzzy
 msgid "Use custom _font size:"
-msgstr "Taille de police _personnalisée :"
+msgstr "Utiliser une taille de _police personnalisée :"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "_Background"
-msgstr ""
+msgstr "_Arrière-plan"
 
 #: ../settings/xfdesktop-settings.glade.h:62
-#, fuzzy
 msgid "_Button:"
-msgstr "Bouton"
+msgstr "_Bouton :"
 
 #: ../settings/xfdesktop-settings.glade.h:63
-#, fuzzy
 msgid "_Edit desktop menu"
-msgstr "_Éditer le Menu"
+msgstr "Éditer le _menu du bureau"
 
 #: ../settings/xfdesktop-settings.glade.h:64
-#, fuzzy
 msgid "_Icons"
-msgstr "Icônes"
+msgstr "_Icônes"
 
 #: ../settings/xfdesktop-settings.glade.h:65
-#, fuzzy
 msgid "_Menus"
-msgstr "Menus"
+msgstr "_Menus"
 
 #: ../settings/xfdesktop-settings.glade.h:66
-#, fuzzy
 msgid "_None"
-msgstr "Aucune"
+msgstr "_Aucune"
 
 #: ../settings/xfdesktop-settings.glade.h:67
 msgid "_Single image"
-msgstr ""
+msgstr "_Image unique"
 
 #: ../settings/xfdesktop-settings.glade.h:68
 msgid "gtk-close"
-msgstr ""
+msgstr "Fermer"
 
 #: ../settings/xfdesktop-settings.glade.h:69
 msgid "gtk-help"
-msgstr ""
+msgstr "Aide"
 
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
@@ -1702,58 +1669,40 @@ msgstr ""
 #~ "\n"
 #~ "Veuillez choisir une autre destination ou appuyer sur annuler dans la "
 #~ "boite de dialogue pour annuler vos changements "
-
 #~ msgid "Button Label|Desktop"
 #~ msgstr "Bureau"
-
 #~ msgid "backdrops.list"
 #~ msgstr "fonds.list"
-
 #~ msgid "Select backdrop image or list file"
 #~ msgstr "Sélection d'une image de fond ou d'un fichier de liste"
-
 #~ msgid "List Files (*.list)"
 #~ msgstr "Fichiers de liste (*.list)"
-
 #~ msgid "_Edit list..."
 #~ msgstr "_Édition de la liste..."
-
 #~ msgid "_New list..."
 #~ msgstr "_Nouvelle liste..."
-
 #~ msgid "S_tyle:"
 #~ msgstr "St_yle :"
-
 #~ msgid "Auto"
 #~ msgstr "Automatique"
-
 #~ msgid "Centered"
 #~ msgstr "Centré"
-
 #~ msgid "Tiled"
 #~ msgstr "Mosaïque"
-
 #~ msgid "Stretched"
 #~ msgstr "Étiré"
-
 #~ msgid "Scaled"
 #~ msgstr "À l'échelle"
-
 #~ msgid "Zoomed"
 #~ msgstr "Zoomé"
-
 #~ msgid "Xfce will be unable to manage your desktop (%s)."
 #~ msgstr "Xfce ne sera pas en mesure de gérer votre bureau (%s)."
-
 #~ msgid "Unknown Error"
 #~ msgstr "Erreur inconnue"
-
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "Impossible de démarrer xfdesktop"
-
 #~ msgid "Information"
 #~ msgstr "Information"
-
 #~ msgid ""
 #~ "To ensure that this setting takes effect the next time you start Xfce, "
 #~ "please be sure to save your session when logging out.  If you are not "
@@ -1767,7 +1716,6 @@ msgstr ""
 #~ "(xfce4-session), éditez votre fichier ~/.config/xfce4/xinitrc "
 #~ "manuellement. Plus de détails dans la documentation en ligne http://www."
 #~ "xfce.org/."
-
 #~ msgid ""
 #~ "To ensure that Xfce does not manage your desktop the next time you start "
 #~ "Xfce, please be sure to save your session when logging out.  If you are "
@@ -1781,80 +1729,56 @@ msgstr ""
 #~ "session) vous devrez éditer votre fichier ~/.config/xfce4/xinitrc "
 #~ "manuellement. Plus de détails dans la documentation en ligne http://www."
 #~ "xfce.org/."
-
 #~ msgid "_Do not show this again"
 #~ msgstr "_Ne plus afficher ceci à nouveau"
-
 #~ msgid "Desktop Preferences"
 #~ msgstr "Paramètres de bureau"
-
 #~ msgid "Stretch single backdrop onto _all monitors"
 #~ msgstr "Étirer le fond d'écran sur _tous les moniteurs"
-
 #~ msgid "Color"
 #~ msgstr "Couleur"
-
 #~ msgid "_Color Style:"
 #~ msgstr "Style de _couleur :"
-
 #~ msgid "Solid Color"
 #~ msgstr "Couleur unie"
-
 #~ msgid "Horizontal Gradient"
 #~ msgstr "Dégradé horizontal"
-
 #~ msgid "Vertical Gradient"
 #~ msgstr "Dégradé vertical"
-
 #~ msgid "Image"
 #~ msgstr "Image"
-
 #~ msgid "Show _Image"
 #~ msgstr "Afficher l'_image"
-
 #~ msgid "_File:"
 #~ msgstr "_Fichier :"
-
 #~ msgid "_Behavior"
 #~ msgstr "_Comportement"
-
 #~ msgid "Select backdrop image file"
 #~ msgstr "Sélection d'une image pour le fond d'écran"
-
 #~ msgid "Choose backdrop list filename"
 #~ msgstr "Choix du fichier contenant la liste des fonds d'écran"
-
 #~ msgid "List file"
 #~ msgstr "Fichier liste"
-
 #~ msgid "Edit backdrop list"
 #~ msgstr "Édition de la liste de fonds d'écran"
-
 #~ msgid "Desktop Icons"
 #~ msgstr "Icônes du bureau"
-
 #~ msgid "File/launcher icons"
 #~ msgstr "Icônes de fichiers/lanceurs"
-
 #~ msgid "Use _system font size"
 #~ msgstr "Utiliser la taille de police du _système"
-
 #~ msgid "Des_ktop"
 #~ msgstr "Bu_reau"
-
 #~ msgid "_Desktop Properties..."
 #~ msgstr "Propriétés _du bureau..."
-
 #~ msgid "Science"
 #~ msgstr "Sciences"
 
 #, fuzzy
 #~ msgid "Scientific applications and tools"
 #~ msgstr "Icônes des applications minimisées"
-
 #~ msgid "Unable to quit session."
 #~ msgstr "Impossible de quitter la session"
-
 #~ msgid ""
 #~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
 #~ "is running, but it was not detected.  Please quit Xfce via another means."
@@ -1862,97 +1786,72 @@ msgstr ""
 #~ "Quitter la session requiert que le gestionnaire de session Xfce (xfce4-"
 #~ "session) soit actif, or il n'a pas été détecté. Veuillez quitter Xfce "
 #~ "d'une autre manière."
-
 #~ msgid ""
 #~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
 #~ "could not be found: %s"
 #~ msgstr ""
 #~ "Quitter la session requiert la commande 'xfce4-session-logout' mais elle "
 #~ "n'a pas été trouvée: %s"
-
 #~ msgid "Edit Properties"
 #~ msgstr "Éditer les propriétés"
-
 #~ msgid ""
 #~ "Viewing the contents of the trash requires a file manager that supports "
 #~ "the Xfce trash service, such as Thunar."
 #~ msgstr ""
 #~ "Il faut, pour voir le contenu de la corbeille, un gestionnaire de "
 #~ "fichiers tel que Thunar, qui supporte le service Xfce trash."
-
 #~ msgid "Unable to empty the trash."
 #~ msgstr "Impossible de vider la corbeille."
-
 #~ msgid "Unknown error."
 #~ msgstr "Erreur inconnue."
-
 #~ msgid " Bytes)"
 #~ msgstr " Octets)"
-
 #~ msgid "_Copy Files"
 #~ msgstr "_Copier les fichiers"
-
 #~ msgid "_Copy File"
 #~ msgstr "_Copier le fichier"
-
 #~ msgid "Cu_t Files"
 #~ msgstr "Co_uper les fichiers"
-
 #~ msgid "Cu_t File"
 #~ msgstr "Co_uper le fichier"
-
 #~ msgid "_Delete Files"
 #~ msgstr "_Effacer les fichiers"
-
 #~ msgid "_Delete File"
 #~ msgstr "_Effacer le fichier"
 
 #, fuzzy
 #~ msgid "_Paste Files"
 #~ msgstr "Liste des fichiers"
-
 #~ msgid "Create _New"
 #~ msgstr "Créer _nouveau"
-
 #~ msgid "_Folder..."
 #~ msgstr "_Dossier..."
 
 #, fuzzy
 #~ msgid "Are sure you want to quit?"
 #~ msgstr "Êtes-vous certain de vouloir fermer le menu en cours d'édition ?"
-
 #~ msgid "The command doesn't exist !"
 #~ msgstr "La commande n'existe pas !"
-
 #~ msgid "All fields must be filled to add an item."
 #~ msgstr "Tous les champs doivent être remplis pour ajouter une entrée"
-
 #~ msgid "The 'Name' field is required."
 #~ msgstr "Le champ 'Nom' est requis."
-
 #~ msgid "The 'Source' field is required."
 #~ msgstr "Le champ 'Source' est requis."
-
 #~ msgid "Separators cannot be edited"
 #~ msgstr "Les séparateurs ne peuvent être édités"
-
 #~ msgid "File %s doesn't exist !"
 #~ msgstr "Le fichier %s n'existe pas !"
-
 #~ msgid "Do you want to move the item into the parent menu?"
 #~ msgstr "Voulez-vous déplacer l'entrée dans le menu parent ?"
-
 #~ msgid "Edit"
 #~ msgstr "Édition"
-
 #~ msgid "Add an external menu..."
 #~ msgstr "Ajouter un menu externe"
-
 #~ msgid "Open an Xfce4 menu file"
 #~ msgstr "Ouvre un fichier de menu Xfce4"
-
 #~ msgid "Save current menu"
 #~ msgstr "Enregistre le menu en cours d'édition"
-
 #~ msgid "Delete the current entry"
 #~ msgstr "Supprime l'entrée sélectionnée"
+
