@@ -1,40 +1,55 @@
-???????? (Xfce 4.5.x):
-----------------------
+Xfce 4.6beta1 (Xfce 4.5.91):
+----------------------------
 
-    I'm going to attempt to keep a log of features added and major bugs
-    fixed as we go through the 4.5 development cycle.  I'm not entirely
-    optimistic in my ability to actually do this, but I'm gonna do my
-    best.
-    
-      * Redo how the menu system works so menus can be embedded in other
-        menus.  This makes it possible for the right-click context menu
-        to be the 'normal' applications menu when icons are disabled,
-        but set to the desktop's own context menu when file icons are
-        enabled.  In this latter case, the applications menu becomes a
-        submenu of the desktop context menu (bug 2531).
-      * Ditch my custom semi-fd.o-compliant menu system in favor of
-        XfceMenu, our new fd.o-compliant menu implementation written by
-        Jannis Pohlmann.
-      * Fix URI parsing in .desktop files when launching an application so
-        that the "field codes" (%-codes) are either properly ignored or
-        are substituted properly.  This should fix a lot of problems where
-        some apps were expecting some command-line arguments but the menu
-        was just throwing them all away (bug 2942).
-      * Add support for 'zoomed' backdrop mode: fill the screen with the
-        backdrop edge-to-edge by scaling and/or cropping as necessary.
-        This doesn't mess with the aspect ratio and is pretty nifty.  Patch
-        is from <trondsg@gmail.com> (bug 3138).
-      * Stop using our forked libnetk from libxfcegui4, and use the much
-        better supported original libwnck.  Patch is from Nick Schermer
-        (bug 3487).
-      * Support the GdkScreen::monitors-changed signal present in gtk+ 2.13
-        and above.  This allows xfdesktop to notice if the user plugs or
-        unplugs a monitor when using an xrandr1.2-capable X server and video
-        driver.
-      * Support the new tooltips framework present in gtk 2.12 for
-        XfdesktopIconView.  This is mostly user-invisible, but does decrease
-        code size and memory usage ever so slightly, and removes a possible
-        source of bugs.
+  * Bring back the "show icons in menu" preferences for the desktop
+    menu and window list menu.
+
+
+Xfce 4.6alpha (Xfce 4.5.90):
+----------------------------
+
+  * Redo how the menu system works so menus can be embedded in other
+    menus.  This makes it possible for the right-click context menu
+    to be the 'normal' applications menu when icons are disabled,
+    but set to the desktop's own context menu when file icons are
+    enabled.  In this latter case, the applications menu becomes a
+    submenu of the desktop context menu (bug 2531).
+  * Ditch my custom semi-fd.o-compliant menu system in favor of
+    XfceMenu, our new fd.o-compliant menu implementation written by
+    Jannis Pohlmann.
+  * Fix URI parsing in .desktop files when launching an application so
+    that the "field codes" (%-codes) are either properly ignored or
+    are substituted properly.  This should fix a lot of problems where
+    some apps were expecting some command-line arguments but the menu
+    was just throwing them all away (bug 2942).
+  * Add support for 'zoomed' backdrop mode: fill the screen with the
+    backdrop edge-to-edge by scaling and/or cropping as necessary.
+    This doesn't mess with the aspect ratio and is pretty nifty.  Patch
+    is from <trondsg@gmail.com> (bug 3138).
+  * Stop using our forked libnetk from libxfcegui4, and use the much
+    better supported original libwnck.  Patch is from Nick Schermer
+    (bug 3487).
+  * Support the GdkScreen::monitors-changed signal present in gtk+ 2.13
+    and above.  This allows xfdesktop to notice if the user plugs or
+    unplugs a monitor when using an xrandr1.2-capable X server and video
+    driver.
+  * Support the new tooltips framework present in gtk 2.12 for
+    XfdesktopIconView.  This is mostly user-invisible, but does decrease
+    code size and memory usage ever so slightly, and removes a possible
+    source of bugs.
+  * Remove all old MCS settings manager code and start using Xfconf,
+    Xfce's new configuration system.
+  * New redesigned settings dialog, with hopefully some better usability.
+  * Move hidden options for showing special icons on the desktop into
+    the settings dialog GUI.
+  * Add a color saturation adjustment to the backdrop image settings.
+  * Add "transparent" color style for the backdrop; if you already have
+    another application drawing the backdrop, you can disable xfdesktop's
+    image drawing and color drawing and "see through" to the window
+    beneath it while still having desktop icons and the desktop menu
+    available.  Requires ARGB windows (bug 4061).
+  * Fix font size used to draw desktop icons when the size isn't an
+    integer point size (bug 4295).
 
 
 4.4.2
