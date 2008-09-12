@@ -8,13 +8,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-08 09:57+0200\n"
-"PO-Revision-Date: 2008-08-12 13:45+0300\n"
+"POT-Creation-Date: 2008-09-12 19:57+0300\n"
+"PO-Revision-Date: 2008-09-12 20:10+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
+#, c-format
+msgid "Backdrop list file is not valid"
+msgstr "Tiedosto ei ole kelvollinen taustakuvalista"
 
 #: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
@@ -689,14 +694,13 @@ msgid "Desktop"
 msgstr "Työpöytä"
 
 #: ../src/xfce-desktop.c:1004
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Tiedostoa \"%s\" ei voi luoda:"
+msgstr "Taustakuvalistan kuvaa ei voi ladata tiedostosta \"%s\""
 
 #: ../src/xfce-desktop.c:1006
-#, fuzzy
 msgid "Desktop Error"
-msgstr "Työpöytä"
+msgstr "Työpöytävirhe"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
@@ -1067,7 +1071,7 @@ msgstr "Virhe"
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Nimen \"%s\" muuttaminen muotoon \"%s\" epäonnistui:"
 
-#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:163
+#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:165
 msgid "Home"
 msgstr "Kotihakemisto"
 
@@ -1311,107 +1315,99 @@ msgstr "Selaa web-sivuja"
 msgid "Web Browser"
 msgstr "Web-selain"
 
-#: ../settings/main.c:165
-#, fuzzy
-msgid "Filesystem"
-msgstr "järjestelmä"
-
 #: ../settings/main.c:167
-#, fuzzy
-msgid "Trash"
-msgstr "Tyyppi: Roskakori"
+msgid "Filesystem"
+msgstr "Tiedostojärjestelmä"
 
 #: ../settings/main.c:169
+msgid "Trash"
+msgstr "Roskakori"
+
+#: ../settings/main.c:171
 msgid "Removable Devices"
-msgstr ""
+msgstr "Irrotettavat taltiot"
 
-#: ../settings/main.c:321
-#, fuzzy, c-format
+#: ../settings/main.c:323
+#, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Luo taustakuvalista"
+msgstr "Ei voi luoda taustakuvalistaa \"%s\""
 
-#: ../settings/main.c:325 ../settings/main.c:678
-#, fuzzy
+#: ../settings/main.c:327 ../settings/main.c:680
 msgid "Backdrop List Error"
-msgstr "Ominaisuusvirhe"
+msgstr "Taustakuvalistavirhe"
 
-#: ../settings/main.c:350
-#, fuzzy
+#: ../settings/main.c:352
 msgid "Create/Load Backdrop List"
-msgstr "Luo taustakuvalista"
+msgstr "Luo/lataa taustakuvalista"
 
-#: ../settings/main.c:374
+#: ../settings/main.c:376
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
+"Tiedosto \"%s\" ei ole kelvollinen taustakuvalista. Korvataanko se?"
 
-#: ../settings/main.c:379
-#, fuzzy
+#: ../settings/main.c:381
 msgid "Invalid List File"
-msgstr "Listatiedostot"
-
-#: ../settings/main.c:382
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
+msgstr "Taustakuvalista ei kelpaa"
 
 #: ../settings/main.c:384
-#, fuzzy
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr "Jos korvaat tiedoston, sen sisältö menetetään"
+
+#: ../settings/main.c:386
 msgid "Replace"
-msgstr "Nimeä uudelleen"
+msgstr "Korvaa"
 
-#: ../settings/main.c:674
-#, fuzzy, c-format
+#: ../settings/main.c:676
+#, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Nimen \"%s\" muuttaminen muotoon \"%s\" epäonnistui:"
+msgstr "Taustakuvalistan kirjoitus epäonnistui kohteeseen \"%s\""
 
-#: ../settings/main.c:701
-#, fuzzy
+#: ../settings/main.c:703
 msgid "Add Image File(s)"
-msgstr "Kuvatiedostot"
+msgstr "Lisää kuvatiedosto(ja)"
 
-#: ../settings/main.c:710
+#: ../settings/main.c:712
 msgid "Image files"
 msgstr "Kuvatiedostot"
 
-#: ../settings/main.c:715
-#, fuzzy
+#: ../settings/main.c:717
 msgid "All files"
 msgstr "Kaikki tiedostot"
 
-#: ../settings/main.c:979
-#, fuzzy, c-format
+#: ../settings/main.c:989
+#, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "Näyttö %d, Monitori %d"
+msgstr "Näyttö %d, Monitori %d (%s)"
 
-#: ../settings/main.c:984
+#: ../settings/main.c:994
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Näyttö %d, Monitori %d"
 
-#: ../settings/main.c:987
+#: ../settings/main.c:997
 #, c-format
 msgid "Screen %d"
 msgstr "Näyttö %d"
 
-#: ../settings/main.c:993
+#: ../settings/main.c:1003
 #, c-format
 msgid "Monitor %d (%s)"
-msgstr ""
+msgstr "Monitori %d (%s)"
 
-#: ../settings/main.c:998
-#, fuzzy, c-format
+#: ../settings/main.c:1008
+#, c-format
 msgid "Monitor %d"
-msgstr "Näyttö %d, Monitori %d"
+msgstr "Monitori %d"
 
-#: ../settings/main.c:1200 ../settings/xfce-backdrop-settings.desktop.in.h:2
+#: ../settings/main.c:1234 ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Desktop Settings"
 msgstr "Työpöydän asetukset"
 
-#: ../settings/main.c:1202
-#, fuzzy
+#: ../settings/main.c:1236
 msgid "Unable to contact settings server"
-msgstr "Roskakoripalveluun ei voi yhdistää."
+msgstr "Asetuspalvelimeen ei voi yhdistää."
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:3
 msgid "Settings for the Xfce 4 Desktop Manager"
@@ -1423,42 +1419,39 @@ msgstr "Xfce 4 työpöydän asetukset"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
-msgstr ""
+msgstr "<b>Säädöt</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:2
-#, fuzzy
 msgid "<b>Appearance</b>"
-msgstr "_Ulkoasu"
+msgstr "<b>Ulkoasu</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:3
-#, fuzzy
 msgid "<b>Colors</b>"
-msgstr "<b>Työtila %d</b>"
+msgstr "<b>Värit</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:4
 msgid "<b>Default Icons</b>"
-msgstr ""
+msgstr "<b>Oletuskuvakkeet</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:5
 msgid "<b>Desktop Menu</b>"
-msgstr ""
+msgstr "<b>Työpöytävalikko</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:6
 msgid "<b>Image</b>"
-msgstr ""
+msgstr "<b>Kuva</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:7
 msgid "<b>Images</b>"
-msgstr ""
+msgstr "<b>Kuvat</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:8
-#, fuzzy
 msgid "<b>Window List Menu</b>"
-msgstr "Ikkunalista"
+msgstr "<b>Ikkunalistavalikko</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:9
 msgid "Add an image to the list"
-msgstr ""
+msgstr "Lisää kuva listaan"
 
 #: ../settings/xfdesktop-settings.glade.h:10
 msgid ""
@@ -1469,55 +1462,56 @@ msgid ""
 "Scaled\n"
 "Zoomed"
 msgstr ""
+"Automaattinen\n"
+"Keskitetty\n"
+"Rinnakkain\n"
+"Venytetty\n"
+"Skaalattu\n"
+"Suurennettu"
 
 #: ../settings/xfdesktop-settings.glade.h:16
 msgid "Automatically pick a random image from a list file"
-msgstr ""
+msgstr "Valitse satunnainen kuva listatiedostosta"
 
 #: ../settings/xfdesktop-settings.glade.h:17
-#, fuzzy
 msgid "B_rightness:"
-msgstr "Säädä ki_rkkautta:"
+msgstr "Ki_rkkaus:"
 
 #: ../settings/xfdesktop-settings.glade.h:18
-#, fuzzy
 msgid "B_utton:"
-msgstr "Painike"
+msgstr "_Painike:"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
-msgstr ""
+msgstr "Luo uusi lista tai lataa olemassaoleva"
 
 #: ../settings/xfdesktop-settings.glade.h:20
 msgid "Don't display an image at all"
-msgstr ""
+msgstr "Älä näytä kuvaa"
 
 #: ../settings/xfdesktop-settings.glade.h:21
-#, fuzzy
 msgid "Icon _size:"
-msgstr "Ku_vakkeen koko:"
+msgstr "Kuvakkeen _koko:"
 
 #: ../settings/xfdesktop-settings.glade.h:22
-#, fuzzy
 msgid "Icon _type:"
-msgstr "Ku_vakkeen koko:"
+msgstr "Kuvakkeen _tyyppi:"
 
 #: ../settings/xfdesktop-settings.glade.h:23
-#, fuzzy
 msgid "Image _list"
-msgstr "Kuvatiedostot"
+msgstr "K_uvalista"
 
 #: ../settings/xfdesktop-settings.glade.h:24
 msgid "Increase or decrease the brightness of the final image"
-msgstr ""
+msgstr "Lisää tai vähennä kuvan kirkkautta"
 
 #: ../settings/xfdesktop-settings.glade.h:25
 msgid "Increase or decrease the color saturation of the final image"
-msgstr ""
+msgstr "Lisää tai vähennä kuvan värikylläisyyttä"
 
 #: ../settings/xfdesktop-settings.glade.h:26
 msgid "Label trans_parency:"
-msgstr ""
+msgstr "Nimikkeen läpi_näkyvyys:"
 
 #: ../settings/xfdesktop-settings.glade.h:27
 msgid ""
@@ -1525,24 +1519,27 @@ msgid ""
 "Middle\n"
 "Right"
 msgstr ""
+"Vasemmalle\n"
+"Keskelle\n"
+"Oikealle"
 
 #: ../settings/xfdesktop-settings.glade.h:30
-#, fuzzy
 msgid "Mo_difier:"
-msgstr "Muokattu:"
+msgstr "_Muuntonäppäin:"
 
 #: ../settings/xfdesktop-settings.glade.h:31
-#, fuzzy
 msgid "Modi_fier:"
-msgstr "Muokattu:"
+msgstr "_Muuntonäppäin:"
 
 #: ../settings/xfdesktop-settings.glade.h:32
-#, fuzzy
 msgid ""
 "None\n"
 "Minimized application icons\n"
 "File/launcher icons"
-msgstr "Pienennettyjen sovellusten kuvakkeet"
+msgstr ""
+"Ei mitään\n"
+"Pienennettyjen sovellusten kuvakkeet\n"
+"Tiedostojen/Käynnistimien kuvakkeet"
 
 #: ../settings/xfdesktop-settings.glade.h:35
 msgid ""
@@ -1551,60 +1548,56 @@ msgid ""
 "Alt\n"
 "Control"
 msgstr ""
+"Ei mitään\n"
+"Vaihto\n"
+"Alt\n"
+"Ctrl"
 
 #: ../settings/xfdesktop-settings.glade.h:39
 msgid "Remove the selected image(s) from the list"
-msgstr ""
+msgstr "Poista valittu kuva tai kuvat listalta"
 
 #: ../settings/xfdesktop-settings.glade.h:40
 msgid "Sa_turation:"
-msgstr ""
+msgstr "_Värikylläisyys:"
 
 #: ../settings/xfdesktop-settings.glade.h:41
-#, fuzzy
 msgid "Select First Color"
-msgstr "_Ensimmäinen väri:"
+msgstr "Valitse ensimmäinen väri"
 
 #: ../settings/xfdesktop-settings.glade.h:42
-#, fuzzy
 msgid "Select Second Color"
-msgstr "_Toinen väri"
+msgstr "Valitse toinen väri"
 
 #: ../settings/xfdesktop-settings.glade.h:43
 msgid "Select a single image as the backdrop"
-msgstr ""
+msgstr "Valitse yksittäinen taustakuva"
 
 #: ../settings/xfdesktop-settings.glade.h:44
 msgid "Set desktop background and menu and icon behavior"
-msgstr ""
+msgstr "Säädä työpöydän taustakuvaa, valikkoa ja kuvakkeita"
 
 #: ../settings/xfdesktop-settings.glade.h:45
-#, fuzzy
 msgid "Sh_ow application icons in menu"
-msgstr "Näytä k_uvakkeet valikossa"
+msgstr "Näytä kuv_akkeet valikossa"
 
 #: ../settings/xfdesktop-settings.glade.h:46
-#, fuzzy
 msgid "Show _application icons in menu"
-msgstr "Näytä k_uvakkeet valikossa"
+msgstr "Näytä kuv_akkeet valikossa"
 
 #: ../settings/xfdesktop-settings.glade.h:47
-#, fuzzy
 msgid "Show _desktop menu on desktop click"
-msgstr "Näytä _työpöytävalikko oikeanpuoleisella painikkeella"
+msgstr "Näytä t_yöpöytävalikko napsauttamalla"
 
 #: ../settings/xfdesktop-settings.glade.h:48
-#, fuzzy
 msgid "Show _window list menu on desktop click"
-msgstr "Näytä ikku_nalista keskipainikeella"
+msgstr "Näytä i_kkunalista napsauttamalla"
 
 #: ../settings/xfdesktop-settings.glade.h:49
-#, fuzzy
 msgid "Show s_ticky windows only in active workspace"
-msgstr "Näytä vain _aktiivisen työtilan kiinnitetyt ikkunat"
+msgstr "Näytä kiinnitetyt ikkunat vain _aktiivisessa työtilassa"
 
 #: ../settings/xfdesktop-settings.glade.h:50
-#, fuzzy
 msgid "Show windows on each workspace in _submenus"
 msgstr "Näytä työtilojen ikkunat ala_valikoissa"
 
@@ -1619,63 +1612,60 @@ msgid ""
 "Vertical gradient\n"
 "Transparent"
 msgstr ""
+"Yksi väri\n"
+"Vaakasuuntainen väriliuku\n"
+"Pystysuuntainen väriliuku\n"
+"Läpinäkyvä"
 
 #: ../settings/xfdesktop-settings.glade.h:56
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
+msgstr "Määrittää väriliu'un \"oikean\" tai \"alemman\" värin"
 
 #: ../settings/xfdesktop-settings.glade.h:57
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
+"Määrittää ainoan värin, tai väriliu'un \"vasemman\" tai \"ylemmän\" värin"
 
 #: ../settings/xfdesktop-settings.glade.h:58
-#, fuzzy
 msgid "St_yle:"
-msgstr "Tyyli:"
+msgstr "T_yyli:"
 
 #: ../settings/xfdesktop-settings.glade.h:59
-#, fuzzy
 msgid "Use _Xfce to manage the desktop"
 msgstr "Salli _Xfce:n hallita työpöytää"
 
 #: ../settings/xfdesktop-settings.glade.h:60
-#, fuzzy
 msgid "Use custom _font size:"
-msgstr "Mukautettu ki_rjasinkoko"
+msgstr "Mukautettu ki_rjasinkoko:"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "_Background"
-msgstr ""
+msgstr "_Tausta"
 
 #: ../settings/xfdesktop-settings.glade.h:62
-#, fuzzy
 msgid "_Button:"
-msgstr "Painike"
+msgstr "_Painike:"
 
 #: ../settings/xfdesktop-settings.glade.h:63
-#, fuzzy
 msgid "_Edit desktop menu"
 msgstr "_Muokkaa valikkoa"
 
 #: ../settings/xfdesktop-settings.glade.h:64
-#, fuzzy
 msgid "_Icons"
-msgstr "Kuvakkeet"
+msgstr "K_uvakkeet"
 
 #: ../settings/xfdesktop-settings.glade.h:65
-#, fuzzy
 msgid "_Menus"
-msgstr "Valikot"
+msgstr "_Valikot"
 
 #: ../settings/xfdesktop-settings.glade.h:66
-#, fuzzy
 msgid "_None"
-msgstr "Ei mitään"
+msgstr "_Ei mitään"
 
 #: ../settings/xfdesktop-settings.glade.h:67
 msgid "_Single image"
-msgstr ""
+msgstr "_Yksi kuva"
 
 #: ../settings/xfdesktop-settings.glade.h:68
 msgid "gtk-close"
@@ -1684,154 +1674,3 @@ msgstr ""
 #: ../settings/xfdesktop-settings.glade.h:69
 msgid "gtk-help"
 msgstr ""
-
-#~ msgid ""
-#~ "Could not save file %s: %s\n"
-#~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
-#~ msgstr ""
-#~ "Tiedostoa %s ei voitu tallentaa: %s\n"
-#~ "\n"
-#~ "Valitse toinen sijainti tai paina peruuta-painiketta hylätäksesti "
-#~ "muutokset"
-
-#~ msgid "Select backdrop image file"
-#~ msgstr "Valitse taustakuvatiedosto"
-
-#~ msgid "Choose backdrop list filename"
-#~ msgstr "Valitse taustakuvalistan tiedostonimi"
-
-#~ msgid "backdrops.list"
-#~ msgstr "backdrops.list"
-
-#~ msgid "List file"
-#~ msgstr "Listatiedosto"
-
-#~ msgid "Edit backdrop list"
-#~ msgstr "Muokkaa taustakuvalistaa"
-
-#~ msgid "Button Label|Desktop"
-#~ msgstr "Työpöytä"
-
-#~ msgid "Select backdrop image or list file"
-#~ msgstr "Valitse taustakuva tai listatiedosto"
-
-#~ msgid "List Files (*.list)"
-#~ msgstr "Listatiedostot (*.list)"
-
-#~ msgid "_Edit list..."
-#~ msgstr "_Muokkaa listaa..."
-
-#~ msgid "_New list..."
-#~ msgstr "_Luo lista..."
-
-#~ msgid "S_tyle:"
-#~ msgstr "T_yyli:"
-
-#~ msgid "Auto"
-#~ msgstr "Automaattinen"
-
-#~ msgid "Centered"
-#~ msgstr "Keskitetty"
-
-#~ msgid "Tiled"
-#~ msgstr "Rinnakkain"
-
-#~ msgid "Stretched"
-#~ msgstr "Venytetty"
-
-#~ msgid "Scaled"
-#~ msgstr "Skaalattu"
-
-#~ msgid "Zoomed"
-#~ msgstr "Suurennettu"
-
-#~ msgid "Xfce will be unable to manage your desktop (%s)."
-#~ msgstr "Xfce ei voi hallita työpöytääsi (%s)."
-
-#~ msgid "Unknown Error"
-#~ msgstr "Tuntematon virhe"
-
-#~ msgid "Unable to start xfdesktop"
-#~ msgstr "Ei voi käynnistää xfdesktopia"
-
-#~ msgid "Information"
-#~ msgstr "Tietoja"
-
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Varmistaaksesi, että asetus otetaan käyttöön seuraavan Xfce:n "
-#~ "käynnistyksen yhteydessä, tallennathan istuntosi kirjautuessasi ulos. Jos "
-#~ "et käytä Xfce istunnonhallintaa (xfce4-session), sinun täytyy muokata "
-#~ "tiedostoa ~/.config/xfce4/xinitrc käsin. Lisätietoja löydät ohjeista "
-#~ "osoitteessa http://xfce.org/."
-
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Varmistaaksesi, että Xfce ei hallitse työpöytääsi seuraavan kerran kun "
-#~ "käynnistät Xfce:n, tallennathan istuntosi kirjautuessasi ulos. Jos et "
-#~ "käytä Xfce istunnonhallintaa (xfce4-session), sinun täytyy muokata "
-#~ "tiedostoa ~/.config/xfce4/xinitrc käsin. Lisätietoja löydät "
-#~ "ohjeistuksesta osoitteessa http://xfce.org/."
-
-#~ msgid "_Do not show this again"
-#~ msgstr "_Älä näytä tätä uudelleen"
-
-#~ msgid "Desktop Preferences"
-#~ msgstr "Työpöydän asetukset"
-
-#~ msgid "Stretch single backdrop onto _all monitors"
-#~ msgstr "Venytä yksi taustakuva _kaikille näytöille"
-
-#~ msgid "Color"
-#~ msgstr "Väri"
-
-#~ msgid "_Color Style:"
-#~ msgstr "_Väritystapa:"
-
-#~ msgid "Solid Color"
-#~ msgstr "Yksivärinen"
-
-#~ msgid "Horizontal Gradient"
-#~ msgstr "Vaakaväriliuku"
-
-#~ msgid "Vertical Gradient"
-#~ msgstr "Pystyväriliuku"
-
-#~ msgid "Image"
-#~ msgstr "Kuva"
-
-#~ msgid "Show _Image"
-#~ msgstr "_Näytä kuva"
-
-#~ msgid "_File:"
-#~ msgstr "Tie_dosto:"
-
-#~ msgid "_Behavior"
-#~ msgstr "_Käytös"
-
-#~ msgid "Desktop Icons"
-#~ msgstr "Työpöytäkuvakkeet"
-
-#~ msgid "File/launcher icons"
-#~ msgstr "Tiedostojen/käynnistimien kuvakkeet"
-
-#~ msgid "Use _system font size"
-#~ msgstr "Käytä _järjestelmän kirjasinkokoa"
-
-#~ msgid "Des_ktop"
-#~ msgstr "T_yöpöytä"
-
-#~ msgid "_Desktop Properties..."
-#~ msgstr "_Työpöydän ominaisuudet..."
