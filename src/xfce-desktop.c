@@ -214,8 +214,14 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
         case XFCE_DESKTOP_ICON_STYLE_FILES:
             {
                 ThunarVfsPath *path;
-                gchar *desktop_path = xfce_get_homefile("Desktop",
-                                                        NULL);
+                gchar *desktop_path;
+                
+#if GLIB_CHECK_VERSION(2, 14, 0)
+                /* glib always returns non-NULL for _DESKTOP */
+                desktop_path = g_strdup(g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP));
+#else
+                desktop_path = xfce_get_homefile("Desktop", NULL);
+#endif
 
                 path = thunar_vfs_path_new(desktop_path, NULL);
                 if(path) {
