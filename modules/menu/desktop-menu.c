@@ -3,7 +3,7 @@
  *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
  *                     2003 Biju Chacko (botsie@users.sourceforge.net)
  *                     2004 Danny Milosavljevic <danny.milo@gmx.net>
- *                2004-2007 Brian Tarricone <bjt23@cornell.edu>
+ *                2004-2008 Brian Tarricone <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -77,13 +77,10 @@ typedef struct
     GList *menu_item_cache;
 	
     gchar *filename;  /* file the menu is currently using */
-    gboolean using_default_menu;
     
     gboolean use_menu_icons;  /* show menu icons? */
 	
     gint idle_id;  /* source id for idled generation */
-    
-    gboolean modified;
     
 #ifdef HAVE_THUNAR_VFS
     GList *monitors;
@@ -96,8 +93,7 @@ static gint _xfce_desktop_menu_icon_size = 24;
 static GtkIconTheme *_deskmenu_icon_theme = NULL;
 
 static gboolean _generate_menu_idled(gpointer data);
-static gboolean _generate_menu(XfceDesktopMenu *desktop_menu,
-                               gboolean deferred);
+static gboolean _generate_menu(XfceDesktopMenu *desktop_menu);
 static void desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                                    XfceMenu *xfce_menu,
                                    GtkWidget *menu,
@@ -333,8 +329,7 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
 }
 
 static gboolean
-_generate_menu(XfceDesktopMenu *desktop_menu,
-               gboolean force)
+_generate_menu(XfceDesktopMenu *desktop_menu)
 {
     gboolean ret = TRUE;
     XfceKiosk *kiosk;
@@ -395,12 +390,13 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 }
 
 static gboolean
-_generate_menu_idled(gpointer data) {
+_generate_menu_idled(gpointer data)
+{
     XfceDesktopMenu *desktop_menu = data;
     
     g_return_val_if_fail(data != NULL, FALSE);
     
-    _generate_menu(desktop_menu, FALSE);
+    _generate_menu(desktop_menu);
     desktop_menu->idle_id = 0;
     
     return FALSE;
@@ -435,10 +431,8 @@ xfce_desktop_menu_new_impl(const gchar *menu_file,
     
     if(menu_file)
         desktop_menu->filename = g_strdup(menu_file);
-    else {
+    else
         desktop_menu->filename = xfce_desktop_get_menufile();
-        desktop_menu->using_default_menu = TRUE;
-    }
     
 #ifdef HAVE_THUNAR_VFS
     thunar_vfs_init();
@@ -448,7 +442,7 @@ xfce_desktop_menu_new_impl(const gchar *menu_file,
     if(deferred)
         desktop_menu->idle_id = g_idle_add(_generate_menu_idled, desktop_menu);
     else {
-        if(!_generate_menu(desktop_menu, FALSE)) {
+        if(!_generate_menu(desktop_menu)) {
 #ifdef HAVE_THUNAR_VFS
             xfce_menu_monitor_set_vtable(NULL, NULL);
 #endif
@@ -474,7 +468,7 @@ xfce_desktop_menu_populate_menu_impl(XfceDesktopMenu *desktop_menu,
             g_source_remove(desktop_menu->idle_id);
             desktop_menu->idle_id = 0;
         }
-        _generate_menu(desktop_menu, FALSE);
+        _generate_menu(desktop_menu);
         if(!desktop_menu->xfce_menu)
             return;
     }
@@ -550,7 +544,7 @@ xfce_desktop_menu_force_regen_impl(XfceDesktopMenu *desktop_menu)
         desktop_menu->idle_id = 0;
     }
 
-    _generate_menu(desktop_menu, TRUE);
+    _generate_menu(desktop_menu);
 }
 
 G_MODULE_EXPORT void
@@ -565,7 +559,7 @@ xfce_desktop_menu_set_show_icons_impl(XfceDesktopMenu *desktop_menu,
             g_source_remove(desktop_menu->idle_id);
             desktop_menu->idle_id = 0;
         }
-        _generate_menu(desktop_menu, TRUE);
+        _generate_menu(desktop_menu);
     }
 }
 
