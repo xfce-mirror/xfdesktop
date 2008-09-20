@@ -22,12 +22,11 @@ m4_define([thunar_minimum_version], [0.8.0])
 m4_define([dbus_minimum_version], [0.34])
 m4_define([wnck_minimum_version], [2.12])
 m4_define([intltool_minimum_version], [0.31])
-m4_define([autoconf_minimum_version], [2.50])
 m4_define([xfconf_minimum_version], [4.5.90])
 
 dnl init autoconf
 AC_INIT([xfdesktop], [xfdesktop_version], [http://bugzilla.xfce.org/])
-AC_PREREQ([autoconf_minimum_version])
+AC_PREREQ([2.50])
 
 dnl init automake
 XFDESKTOP_VERSION=xfdesktop_version
