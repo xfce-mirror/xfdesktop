@@ -95,6 +95,7 @@ static void _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu);
 static gint _xfce_desktop_menu_icon_size = 24;
 static GtkIconTheme *_deskmenu_icon_theme = NULL;
 
+static gboolean _generate_menu_idled(gpointer data);
 static gboolean _generate_menu(XfceDesktopMenu *desktop_menu,
                                gboolean deferred);
 static void desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
@@ -105,7 +106,17 @@ static void desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
 static void
 itheme_changed_cb(GtkIconTheme *itheme, gpointer user_data)
 {
-    _generate_menu((XfceDesktopMenu *)user_data, FALSE);
+    XfceDesktopMenu *desktop_menu = user_data;
+
+    /* this fixes bugs 3615 and 4342.  if both the .desktop files
+     * and icon theme change very quickly after each other, we'll
+     * get a crash when the icon theme gets regenerated when calling
+     * gtk_icon_theme_lookup_icon(), which triggers a recursive regen.
+     * so we'll idle the regen, and make sure we don't enter it
+     * recursively.  same deal for _something_changed(). */
+
+    if(!desktop_menu->idle_id)
+        desktop_menu->idle_id = g_idle_add(_generate_menu_idled, desktop_menu);
 }
 
 #ifdef HAVE_THUNAR_VFS
@@ -130,7 +141,8 @@ desktop_menu_something_changed(ThunarVfsMonitor *monitor,
 #endif
     
     xfce_menu_item_cache_invalidate(cache);
-    _generate_menu(desktop_menu, FALSE);
+    if(!desktop_menu->idle_id)
+        desktop_menu->idle_id = g_idle_add(_generate_menu_idled, desktop_menu);
 }
 
 #if 0
@@ -360,7 +372,7 @@ _generate_menu(XfceDesktopMenu *desktop_menu,
         desktop_menu_add_items(desktop_menu, desktop_menu->xfce_menu,
                                NULL, &desktop_menu->menu_item_cache);
     }
-    
+
     return ret;
 }
 
@@ -383,7 +395,7 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 }
 
 static gboolean
-_generate_menu_initial(gpointer data) {
+_generate_menu_idled(gpointer data) {
     XfceDesktopMenu *desktop_menu = data;
     
     g_return_val_if_fail(data != NULL, FALSE);
@@ -434,7 +446,7 @@ xfce_desktop_menu_new_impl(const gchar *menu_file,
 #endif
     
     if(deferred)
-        desktop_menu->idle_id = g_idle_add(_generate_menu_initial, desktop_menu);
+        desktop_menu->idle_id = g_idle_add(_generate_menu_idled, desktop_menu);
     else {
         if(!_generate_menu(desktop_menu, FALSE)) {
 #ifdef HAVE_THUNAR_VFS
@@ -458,6 +470,10 @@ xfce_desktop_menu_populate_menu_impl(XfceDesktopMenu *desktop_menu,
     g_return_if_fail(desktop_menu && menu);
     
     if(!desktop_menu->xfce_menu) {
+        if(desktop_menu->idle_id) {
+            g_source_remove(desktop_menu->idle_id);
+            desktop_menu->idle_id = 0;
+        }
         _generate_menu(desktop_menu, FALSE);
         if(!desktop_menu->xfce_menu)
             return;
@@ -529,6 +545,11 @@ xfce_desktop_menu_force_regen_impl(XfceDesktopMenu *desktop_menu)
     TRACE("dummy");
     g_return_if_fail(desktop_menu != NULL);
     
+    if(desktop_menu->idle_id) {
+        g_source_remove(desktop_menu->idle_id);
+        desktop_menu->idle_id = 0;
+    }
+
     _generate_menu(desktop_menu, TRUE);
 }
 
@@ -540,6 +561,10 @@ xfce_desktop_menu_set_show_icons_impl(XfceDesktopMenu *desktop_menu,
     
     if(desktop_menu->use_menu_icons != show_icons) {
         desktop_menu->use_menu_icons = show_icons;
+        if(desktop_menu->idle_id) {
+            g_source_remove(desktop_menu->idle_id);
+            desktop_menu->idle_id = 0;
+        }
         _generate_menu(desktop_menu, TRUE);
     }
 }
