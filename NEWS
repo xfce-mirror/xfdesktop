@@ -5,6 +5,10 @@ Xfce 4.6beta1 (Xfce 4.5.91):
     menu and window list menu.
   * Add support for XDG user dirs for the Desktop and Templates
     directories.  Patch from Andrea Santilli <yawara@quipo.it> (bug 4365).
+  * Fix xfdesktop/xfce menu crashing when installing new applications that
+    install .desktop files and icons (bug 3615).
+  * Fix occasional "double menu" after menu/icon files change on disk
+    (bug 4342).
 
 
 Xfce 4.6alpha (Xfce 4.5.90):
