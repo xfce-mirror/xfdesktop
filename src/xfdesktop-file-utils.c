@@ -228,6 +228,12 @@ xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
     if(custom_icon_name)
         pix_theme = xfce_themed_icon_load(custom_icon_name, size);
     
+    if(!pix_theme && info) {
+        icon_name = thunar_vfs_info_get_custom_icon(info);
+        if(icon_name)
+            pix_theme = xfce_themed_icon_load(icon_name, size);
+    }
+
     if(!pix_theme && info && info->mime_info) {
         icon_name = thunar_vfs_mime_info_lookup_icon_name(info->mime_info,
                                                           gtk_icon_theme_get_default());
@@ -235,13 +241,7 @@ xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
         if(icon_name)
             pix_theme = xfce_themed_icon_load(icon_name, size);
     }
-    
-    if(!pix_theme && info) {
-        icon_name = thunar_vfs_info_get_custom_icon(info);
-        if(icon_name)
-            pix_theme = xfce_themed_icon_load(icon_name, size);
-    }
-            
+
     if(G_LIKELY(pix_theme)) {
         /* we can't edit thsese icons */
         pix = gdk_pixbuf_copy(pix_theme);
