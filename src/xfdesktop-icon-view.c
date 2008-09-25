@@ -82,7 +82,7 @@ typedef enum
 
 enum
 {
-    SIG_ICON_SELECTED = 0,
+    SIG_ICON_SELECTION_CHANGED = 0,
     SIG_ICON_ACTIVATED,
     SIG_N_SIGNALS,
 };
@@ -332,14 +332,14 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     widget_class->drag_data_get = xfdesktop_icon_view_drag_data_get;
     widget_class->drag_data_received = xfdesktop_icon_view_drag_data_received;
     
-    __signals[SIG_ICON_SELECTED] = g_signal_new("icon-selected",
-                                                XFDESKTOP_TYPE_ICON_VIEW,
-                                                G_SIGNAL_RUN_LAST,
-                                                G_STRUCT_OFFSET(XfdesktopIconViewClass,
-                                                                icon_selected),
-                                                NULL, NULL,
-                                                g_cclosure_marshal_VOID__VOID,
-                                                G_TYPE_NONE, 0);
+    __signals[SIG_ICON_SELECTION_CHANGED] = g_signal_new("icon-selection-changed",
+                                                         XFDESKTOP_TYPE_ICON_VIEW,
+                                                         G_SIGNAL_RUN_LAST,
+                                                         G_STRUCT_OFFSET(XfdesktopIconViewClass,
+                                                                         icon_selection_changed),
+                                                         NULL, NULL,
+                                                         g_cclosure_marshal_VOID__VOID,
+                                                         G_TYPE_NONE, 0);
     
     __signals[SIG_ICON_ACTIVATED] = g_signal_new("icon-activated",
                                                  XFDESKTOP_TYPE_ICON_VIEW,
@@ -515,7 +515,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                                     xfdesktop_icon_view_clear_icon_extents(icon_view,
                                                                            icon1);
                                     g_signal_emit(G_OBJECT(icon_view),
-                                                  __signals[SIG_ICON_SELECTED],
+                                                  __signals[SIG_ICON_SELECTION_CHANGED],
                                                   0, NULL);
                                     xfdesktop_icon_selected(icon1);
                                 }
@@ -528,7 +528,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                     xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
                     
                     g_signal_emit(G_OBJECT(icon_view),
-                                  __signals[SIG_ICON_SELECTED],
+                                  __signals[SIG_ICON_SELECTION_CHANGED],
                                   0, NULL);
                     xfdesktop_icon_selected(icon);
                 }
@@ -562,6 +562,10 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 g_list_foreach(repaint_icons, xfdesktop_list_foreach_invalidate,
                                icon_view);
                 g_list_free(repaint_icons);
+
+                g_signal_emit(G_OBJECT(icon_view),
+                              __signals[SIG_ICON_SELECTION_CHANGED],
+                              0, NULL);
             }
             
             icon_view->priv->last_clicked_item = NULL;

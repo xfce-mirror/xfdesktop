@@ -52,7 +52,7 @@ struct _XfdesktopIconViewClass
     GtkWidgetClass parent;
     
     /*< signals >*/
-    void (*icon_selected)(XfdesktopIconView *icon_view);
+    void (*icon_selection_changed)(XfdesktopIconView *icon_view);
     void (*icon_activated)(XfdesktopIconView *icon_view);
 };
 

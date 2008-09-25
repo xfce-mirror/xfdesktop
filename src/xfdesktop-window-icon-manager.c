@@ -172,8 +172,8 @@ xfdesktop_window_icon_manager_icon_view_manager_init(XfdesktopIconViewManagerIfa
 
 
 static void
-xfdesktop_window_icon_manager_icon_selected_cb(XfdesktopIconView *icon_view,
-                                               gpointer user_data)
+xfdesktop_window_icon_manager_icon_selection_changed_cb(XfdesktopIconView *icon_view,
+                                                        gpointer user_data)
 {
     XfdesktopWindowIconManager *wmanager = user_data;
     GList *selected;
@@ -184,7 +184,8 @@ xfdesktop_window_icon_manager_icon_selected_cb(XfdesktopIconView *icon_view,
         gint ws = xfdesktop_window_icon_get_workspace(window_icon);
         wmanager->priv->icon_workspaces[ws]->selected_icon = window_icon;
         g_list_free(selected);
-    }
+    } else
+        wmanager->priv->icon_workspaces[wmanager->priv->active_ws_num]->selected_icon = NULL;
 }
 
 static XfdesktopWindowIcon *
@@ -531,8 +532,8 @@ xfdesktop_window_icon_manager_real_init(XfdesktopIconViewManager *manager,
     
     wmanager->priv->icon_view = icon_view;
     xfdesktop_icon_view_set_selection_mode(icon_view, GTK_SELECTION_SINGLE);
-    g_signal_connect(G_OBJECT(icon_view), "icon-selected",
-                     G_CALLBACK(xfdesktop_window_icon_manager_icon_selected_cb),
+    g_signal_connect(G_OBJECT(icon_view), "icon-selection-changed",
+                     G_CALLBACK(xfdesktop_window_icon_manager_icon_selection_changed_cb),
                      wmanager);
     
     wmanager->priv->desktop = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
@@ -620,7 +621,7 @@ xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager)
     
     xfdesktop_icon_view_remove_all(wmanager->priv->icon_view);
     g_signal_handlers_disconnect_by_func(G_OBJECT(wmanager->priv->icon_view),
-                                         G_CALLBACK(xfdesktop_window_icon_manager_icon_selected_cb),
+                                         G_CALLBACK(xfdesktop_window_icon_manager_icon_selection_changed_cb),
                                          wmanager);
     
     for(i = 0; i < wmanager->priv->nworkspaces; ++i) {
