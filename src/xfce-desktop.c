@@ -897,7 +897,7 @@ xfce_desktop_expose(GtkWidget *w,
     XfceDesktop *desktop;
     GList *children, *l;
     
-    TRACE("entering");
+    /*TRACE("entering");*/
     
     if(evt->count != 0)
         return FALSE;

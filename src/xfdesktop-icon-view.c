@@ -55,6 +55,7 @@
 #define SPACING           6
 #define SCREEN_MARGIN     8
 #define CORNER_ROUNDNESS  4
+#define DEFAULT_RUBBERBAND_ALPHA  64
 
 #if defined(DEBUG) && DEBUG > 0
 #define DUMP_GRID_LAYOUT(icon_view) \
@@ -124,10 +125,16 @@ struct _XfdesktopIconViewPrivate
     GHashTable *repaint_queue;
     
     GtkSelectionMode sel_mode;
-    gboolean maybe_begin_drag;
-    gboolean definitely_dragging;
+    guint maybe_begin_drag:1,
+          definitely_dragging:1,
+          allow_rubber_banding:1,
+          definitely_rubber_banding:1;
     gint press_start_x;
     gint press_start_y;
+    GdkRectangle band_rect;
+
+    GdkColor *selection_box_color;
+    guchar selection_box_alpha;
     
     XfdesktopIcon *last_clicked_item;
     XfdesktopIcon *first_clicked_item;
@@ -367,6 +374,9 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     
     icon_view->priv->icon_size = DEFAULT_ICON_SIZE;
     icon_view->priv->font_size = DEFAULT_FONT_SIZE;
+
+    icon_view->priv->allow_rubber_banding = TRUE;
+    icon_view->priv->selection_box_alpha = DEFAULT_RUBBERBAND_ALPHA;
     
     icon_view->priv->native_targets = gtk_target_list_new(icon_view_targets,
                                                           icon_view_n_targets);
@@ -529,10 +539,11 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 DBG("setting stuff");
                 icon_view->priv->maybe_begin_drag = TRUE;
                 icon_view->priv->definitely_dragging = FALSE;
+                icon_view->priv->definitely_rubber_banding = FALSE;
                 icon_view->priv->press_start_x = evt->x;
                 icon_view->priv->press_start_y = evt->y;
             } else if(evt->button == 3) {
-                /* avoid repaint delay */
+                /* avoid repaint delay -- why the hell is this here? */
                 while(gtk_events_pending())
                     gtk_main_iteration();
                 /* XfceDesktop will handle signalling the icon view manager
@@ -544,7 +555,8 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
         } else {
             /* unselect previously selected icons if we didn't click one */
             if(icon_view->priv->sel_mode != GTK_SELECTION_MULTIPLE
-               || !(evt->state & GDK_CONTROL_MASK)) {
+               || !(evt->state & GDK_CONTROL_MASK))
+            {
                 GList *repaint_icons = icon_view->priv->selected_icons;
                 icon_view->priv->selected_icons = NULL;
                 g_list_foreach(repaint_icons, xfdesktop_list_foreach_invalidate,
@@ -554,12 +566,20 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             
             icon_view->priv->last_clicked_item = NULL;
             icon_view->priv->first_clicked_item = NULL;
+
+            if(icon_view->priv->allow_rubber_banding) {
+                icon_view->priv->maybe_begin_drag = TRUE;
+                icon_view->priv->definitely_dragging = FALSE;
+                icon_view->priv->press_start_x = evt->x;
+                icon_view->priv->press_start_y = evt->y;
+            }
         }
     } else if(evt->type == GDK_2BUTTON_PRESS) {
         /* be sure to cancel any pending drags that might have snuck through.
          * this shouldn't happen, but it does sometimes (bug 3426).  */
         icon_view->priv->definitely_dragging = FALSE;
         icon_view->priv->maybe_begin_drag = FALSE;
+        icon_view->priv->definitely_rubber_banding = FALSE;
         
         if(evt->button == 1) {
             GList *icon_l = g_list_find_custom(icon_view->priv->icons, evt,
@@ -591,6 +611,14 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
         DBG("unsetting stuff");
         icon_view->priv->definitely_dragging = FALSE;
         icon_view->priv->maybe_begin_drag = FALSE;
+        if(icon_view->priv->definitely_rubber_banding) {
+            icon_view->priv->definitely_rubber_banding = FALSE;
+            gtk_grab_remove(widget);
+            gtk_widget_queue_draw_area(widget, icon_view->priv->band_rect.x,
+                                       icon_view->priv->band_rect.y,
+                                       icon_view->priv->band_rect.width,
+                                       icon_view->priv->band_rect.height);
+        }
     }
     
     return FALSE;
@@ -754,15 +782,87 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
     gboolean ret = FALSE;
     
     if(icon_view->priv->maybe_begin_drag
+       && icon_view->priv->item_under_pointer
        && !icon_view->priv->definitely_dragging)
     {
+        /* we might have the start of an icon click + drag here */
         icon_view->priv->definitely_dragging = xfdesktop_icon_view_maybe_begin_drag(icon_view,
                                                                                     evt);
         if(icon_view->priv->definitely_dragging)
             ret = TRUE;
+    } else if(icon_view->priv->maybe_begin_drag
+              && ((!icon_view->priv->item_under_pointer
+                   && !icon_view->priv->definitely_rubber_banding)
+                  || icon_view->priv->definitely_rubber_banding))
+    {
+        GdkRectangle old_rect, intersect;
+        GdkRegion *region;
+        GList *l;
+
+        /* we're dragging with no icon under the cursor -> rubber band start
+         * OR, we're already doin' the band -> update it */
+
+        if(!icon_view->priv->definitely_rubber_banding) {
+            icon_view->priv->definitely_rubber_banding = TRUE;
+            old_rect.x = icon_view->priv->press_start_x;
+            old_rect.y = icon_view->priv->press_start_y;
+            old_rect.width = old_rect.height = 1;
+            gtk_grab_add(widget);
+        } else
+            memcpy(&old_rect, &icon_view->priv->band_rect, sizeof(old_rect));
+
+        icon_view->priv->band_rect.x = MIN(icon_view->priv->press_start_x, evt->x);
+        icon_view->priv->band_rect.y = MIN(icon_view->priv->press_start_y, evt->y);
+        icon_view->priv->band_rect.width = ABS(evt->x - icon_view->priv->press_start_x) + 1;
+        icon_view->priv->band_rect.height = ABS(evt->y - icon_view->priv->press_start_y) + 1;
+
+        region = gdk_region_rectangle(&old_rect);
+        gdk_region_union_with_rect(region, &icon_view->priv->band_rect);
+
+        if(gdk_rectangle_intersect(&old_rect, &icon_view->priv->band_rect, &intersect)
+           && intersect.width > 2 && intersect.height > 2)
+        {
+            GdkRegion *region_intersect;
+
+            /* invalidate border too */
+            intersect.x += 1;
+            intersect.width -= 2;
+            intersect.y += 1;
+            intersect.height -= 2;
+
+            region_intersect = gdk_region_rectangle(&intersect);
+            gdk_region_subtract(region, region_intersect);
+            gdk_region_destroy(region_intersect);
+        }
+
+        gdk_window_invalidate_region(widget->window, region, TRUE);;
+        gdk_region_destroy(region);
+
+        /* update list of selected icons -- this is a little wasteful
+         * and can be optimised */
+        for(l = icon_view->priv->selected_icons; l; l = l->next)
+            xfdesktop_icon_view_clear_icon_extents(icon_view, l->data);
+        g_list_free(icon_view->priv->selected_icons);
+        icon_view->priv->selected_icons = NULL;
+        for(l = icon_view->priv->icons; l; l = l->next) {
+            GdkRectangle extents, dummy;
+            XfdesktopIcon *icon = l->data;
+
+            if(xfdesktop_icon_get_extents(icon, &extents)
+               && gdk_rectangle_intersect(&extents,
+                                          &icon_view->priv->band_rect,
+                                          &dummy))
+            {
+                icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
+                                                                 icon);
+                xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+            }
+        }
     } else {
         XfdesktopIcon *icon;
         GdkRectangle extents;
+
+        /* normal movement; highlight icons as they go under the pointer */
         
         if(icon_view->priv->item_under_pointer) {
             if(!xfdesktop_icon_get_extents(icon_view->priv->item_under_pointer,
@@ -1155,14 +1255,36 @@ xfdesktop_icon_view_style_set(GtkWidget *widget,
                               GtkStyle *previous_style)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
+    GtkWidget *dummy;
     
     gtk_widget_style_get(GTK_WIDGET(icon_view),
                          "label-alpha", &icon_view->priv->label_alpha,
                          NULL);
     DBG("label alpha is %d", icon_view->priv->label_alpha);
-    
+
+    if(icon_view->priv->selection_box_color) {
+        gdk_color_free(icon_view->priv->selection_box_color);
+        icon_view->priv->selection_box_color = NULL;
+    }
+    icon_view->priv->selection_box_alpha = DEFAULT_RUBBERBAND_ALPHA;
+
+    /* this is super lame */
+    dummy = gtk_icon_view_new();
+    gtk_widget_ensure_style(dummy);
+    gtk_widget_style_get(dummy,
+                         "selection-box-color", &icon_view->priv->selection_box_color,
+                         "selection-box-alpha", &icon_view->priv->selection_box_alpha,
+                         NULL);
+    gtk_widget_destroy(dummy);
+
     GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->style_set(widget,
                                                                   previous_style);
+
+    /* do this after we're sure we have a style set */
+    if(!icon_view->priv->selection_box_color) {
+        GtkStyle *style = gtk_widget_get_style(widget);
+        icon_view->priv->selection_box_color = gdk_color_copy(&style->base[GTK_STATE_SELECTED]);
+    }
 }
 
 static void
@@ -1324,6 +1446,11 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
         g_object_unref(G_OBJECT(icon_view->priv->rounded_frame));
         icon_view->priv->rounded_frame = NULL;
     }
+
+    if(icon_view->priv->selection_box_color) {
+        gdk_color_free(icon_view->priv->selection_box_color);
+        icon_view->priv->selection_box_color = NULL;
+    }
     
     widget->window = NULL;
     GTK_WIDGET_UNSET_FLAGS(widget, GTK_REALIZED);
@@ -1333,13 +1460,61 @@ static gboolean
 xfdesktop_icon_view_expose(GtkWidget *widget,
                            GdkEventExpose *evt)
 {
-    TRACE("entering");
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
+    GdkRectangle *rects = NULL;
+    gint n_rects = 0, i;
+
+    /*TRACE("entering");*/
     
     if(evt->count != 0)
         return FALSE;
-    
-    xfdesktop_icon_view_repaint_icons(XFDESKTOP_ICON_VIEW(widget), &evt->area);
-    
+
+    gdk_region_get_rectangles(evt->region, &rects, &n_rects);
+
+    for(i = 0; i < n_rects; ++i)
+        xfdesktop_icon_view_repaint_icons(icon_view, &rects[i]);
+
+    if(icon_view->priv->definitely_rubber_banding) {
+        GdkRectangle intersect;
+        cairo_t *cr;
+
+        cr = gdk_cairo_create(GDK_DRAWABLE(widget->window));
+        cairo_set_line_width(cr, 1);
+        cairo_set_operator(cr, CAIRO_OPERATOR_OVER);
+        cairo_set_source_rgba(cr,
+                              icon_view->priv->selection_box_color->red / 65535.,
+                              icon_view->priv->selection_box_color->green / 65535.,
+                              icon_view->priv->selection_box_color->blue / 65535.,
+                              icon_view->priv->selection_box_alpha / 255.);
+
+        /* paint each rectangle in the expose region with the rubber
+         * band color, semi-transparently */
+        for(i = 0; i < n_rects; ++i) {
+            if(!gdk_rectangle_intersect(&rects[i],
+                                        &icon_view->priv->band_rect,
+                                        &intersect))
+            {
+                continue;
+            }
+
+            gdk_cairo_rectangle(cr, &intersect);
+            cairo_fill(cr);
+        }
+
+        /* paint the border with full opacity; to avoid annoying calculations,
+         * we'll just paint the entire border even if it's not in the exposed
+         * region */
+        gdk_cairo_set_source_color(cr, icon_view->priv->selection_box_color);
+        cairo_rectangle(cr, icon_view->priv->band_rect.x + 0.5,
+                        icon_view->priv->band_rect.y + 0.5,
+                        icon_view->priv->band_rect.width - 1,
+                        icon_view->priv->band_rect.height - 1);
+        cairo_stroke(cr);
+        cairo_destroy(cr);
+    }
+
+    g_free(rects);
+
     return FALSE;
 }
 
@@ -1381,7 +1556,11 @@ xfdesktop_check_icon_needs_repaint(gpointer data,
         XfdesktopIconView *icon_view = g_object_get_data(G_OBJECT(icon),
                                                          "--xfdesktop-icon-view");
         g_return_if_fail(icon_view);
-        if(g_list_find(icon_view->priv->selected_icons, icon)) {
+        /* we can't idle repaint icons while we're rubber banding, or
+         * we get nasty artifacts */
+        if(!icon_view->priv->definitely_rubber_banding
+           && g_list_find(icon_view->priv->selected_icons, icon))
+        {
             /* save it for last to avoid painting another icon over top of
              * part of this one if it has an overly-large label */
             guint source_id;
@@ -1565,7 +1744,7 @@ xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
     
     g_return_if_fail(icon);
     
-    TRACE("entering");
+    /*TRACE("entering");*/
     
     if(xfdesktop_icon_get_extents(icon, &extents)) {
         gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
@@ -1774,7 +1953,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     const gchar *label;
     guint16 row, col;
     
-    TRACE("entering (%s)", xfdesktop_icon_peek_label(icon));
+    /*TRACE("entering (%s)", xfdesktop_icon_peek_label(icon));*/
     
     g_return_if_fail(xfdesktop_icon_get_position(icon, &row, &col));
     
@@ -2528,6 +2707,7 @@ xfdesktop_icon_view_set_selection_mode(XfdesktopIconView *icon_view,
                 }
                 /*gdk_window_thaw_updates(GTK_WIDGET(icon_view)->window);*/
             }
+            icon_view->priv->allow_rubber_banding = FALSE;
             break;
         
         case GTK_SELECTION_BROWSE:
@@ -2535,9 +2715,9 @@ xfdesktop_icon_view_set_selection_mode(XfdesktopIconView *icon_view,
                   "XfdesktopIconView.  Falling back to " \
                   "GTK_SELECTION_MULTIPLE.");
             icon_view->priv->sel_mode = GTK_SELECTION_MULTIPLE;
-            break;
-        
+            /* fall through */
         default:
+            icon_view->priv->allow_rubber_banding = TRUE;
             break;
     }
 }
