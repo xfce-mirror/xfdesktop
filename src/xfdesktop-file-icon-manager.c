@@ -2251,6 +2251,44 @@ xfdesktop_file_icon_manager_add_regular_icon(XfdesktopFileIconManager *fmanager,
     XfdesktopRegularFileIcon *icon = NULL;
     
     g_return_val_if_fail(fmanager && info, NULL);
+
+    /* if it's a .desktop file, and it has Hidden=true, or an
+     * OnlyShowIn Or NeverShowIn that would hide it from Xfce, don't
+     * show it on the desktop (bug #4022) */
+    if((info->mime_info
+        && !strcmp(thunar_vfs_mime_info_get_name(info->mime_info),
+                                                 "application/x-desktop"))
+       || g_str_has_suffix(thunar_vfs_path_get_name(info->path), ".desktop"))
+    {
+        gchar *path = thunar_vfs_path_dup_string(info->path);
+        XfceRc *rcfile = xfce_rc_simple_open(path, TRUE);
+
+        g_free(path);
+
+        if(rcfile) {
+            const gchar *value;
+
+            xfce_rc_set_group(rcfile, "Desktop Entry");
+            if(xfce_rc_read_bool_entry(rcfile, "Hidden", FALSE)) {
+                xfce_rc_close(rcfile);
+                return NULL;
+            }
+
+            value = xfce_rc_read_entry(rcfile, "OnlyShowIn", NULL);
+            if(value && strncmp(value, "XFCE;", 5) && !strstr(value, ";XFCE;")) {
+                xfce_rc_close(rcfile);
+                return NULL;
+            }
+
+            value = xfce_rc_read_entry(rcfile, "NeverShowIn", NULL);
+            if(value && (!strncmp(value, "XFCE;", 5) || strstr(value, ";XFCE;"))) {
+                xfce_rc_close(rcfile);
+                return NULL;
+            }
+
+            xfce_rc_close(rcfile);
+        }
+    }
     
     /* should never return NULL */
     icon = xfdesktop_regular_file_icon_new(info, fmanager->priv->gscreen);
