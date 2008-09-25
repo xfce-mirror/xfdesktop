@@ -567,7 +567,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             icon_view->priv->last_clicked_item = NULL;
             icon_view->priv->first_clicked_item = NULL;
 
-            if(icon_view->priv->allow_rubber_banding) {
+            if(icon_view->priv->allow_rubber_banding && evt->button == 1) {
                 icon_view->priv->maybe_begin_drag = TRUE;
                 icon_view->priv->definitely_dragging = FALSE;
                 icon_view->priv->press_start_x = evt->x;
