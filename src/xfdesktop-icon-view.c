@@ -241,8 +241,6 @@ static inline XfdesktopIcon *xfdesktop_icon_view_icon_in_cell(XfdesktopIconView 
                                                               guint16 col);
 static gint xfdesktop_check_icon_clicked(gconstpointer data,
                                          gconstpointer user_data);
-static void xfdesktop_list_foreach_repaint(gpointer data,
-                                           gpointer user_data);
 static void xfdesktop_list_foreach_invalidate(gpointer data,
                                               gpointer user_data);
 static void xfdesktop_grid_find_nearest(XfdesktopIconView *icon_view,
@@ -668,7 +666,7 @@ xfdesktop_icon_view_focus_in(GtkWidget *widget,
     DBG("GOT FOCUS");
     
     g_list_foreach(icon_view->priv->selected_icons,
-                   xfdesktop_list_foreach_repaint, icon_view);
+                   xfdesktop_list_foreach_invalidate, icon_view);
     
     return FALSE;
 }
@@ -684,7 +682,7 @@ xfdesktop_icon_view_focus_out(GtkWidget *widget,
     DBG("LOST FOCUS");
     
     g_list_foreach(icon_view->priv->selected_icons,
-                   xfdesktop_list_foreach_repaint, icon_view);
+                   xfdesktop_list_foreach_invalidate, icon_view);
     
     return FALSE;
 }
@@ -2274,15 +2272,6 @@ xfdesktop_check_icon_clicked(gconstpointer data,
         return 0;
     } else
         return 1;
-}
-
-static void
-xfdesktop_list_foreach_repaint(gpointer data,
-                               gpointer user_data)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
-    XfdesktopIcon *icon = XFDESKTOP_ICON(data);
-    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
 }
 
 static void
