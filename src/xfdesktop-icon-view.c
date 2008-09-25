@@ -1367,11 +1367,7 @@ xfdesktop_ird_free(XfdesktopIdleRepaintData *ird)
     if(ird->source_id)
         g_source_remove(ird->source_id);
     
-#if GLIB_CHECK_VERSION(2, 10, 0)
     g_slice_free(XfdesktopIdleRepaintData, ird);
-#else
-    g_free(ird);
-#endif
 }
 
 static void
@@ -1393,11 +1389,7 @@ xfdesktop_check_icon_needs_repaint(gpointer data,
             guint source_id;
             XfdesktopIdleRepaintData *ird;
             
-#if GLIB_CHECK_VERSION(2, 10, 0)
             ird = g_slice_new0(XfdesktopIdleRepaintData);
-#else
-            ird = g_new0(XfdesktopIdleRepaintData, 1);
-#endif
             ird->icon_view = icon_view;
             ird->icon = icon;
             memcpy(&ird->area, area, sizeof(GdkRectangle));
