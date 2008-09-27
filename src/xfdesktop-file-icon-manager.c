@@ -2253,7 +2253,7 @@ xfdesktop_file_icon_manager_add_regular_icon(XfdesktopFileIconManager *fmanager,
     g_return_val_if_fail(fmanager && info, NULL);
 
     /* if it's a .desktop file, and it has Hidden=true, or an
-     * OnlyShowIn Or NeverShowIn that would hide it from Xfce, don't
+     * OnlyShowIn Or NotShowIn that would hide it from Xfce, don't
      * show it on the desktop (bug #4022) */
     if((info->mime_info
         && !strcmp(thunar_vfs_mime_info_get_name(info->mime_info),
@@ -2280,7 +2280,7 @@ xfdesktop_file_icon_manager_add_regular_icon(XfdesktopFileIconManager *fmanager,
                 return NULL;
             }
 
-            value = xfce_rc_read_entry(rcfile, "NeverShowIn", NULL);
+            value = xfce_rc_read_entry(rcfile, "NotShowIn", NULL);
             if(value && (!strncmp(value, "XFCE;", 5) || strstr(value, ";XFCE;"))) {
                 xfce_rc_close(rcfile);
                 return NULL;
