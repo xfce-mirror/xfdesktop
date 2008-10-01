@@ -996,8 +996,6 @@ xfdesktop_icon_view_clear_drag_highlight(XfdesktopIconView *icon_view,
                                cell_highlight->y,
                                cell_highlight->width + 1,
                                cell_highlight->height + 1);
-    /* is this necessary? */
-    /*xfdesktop_icon_view_repaint_icons(icon_view, cell_highlight);*/
     
     cell_highlight->width = cell_highlight->height = 0;
 }
@@ -1577,51 +1575,42 @@ xfdesktop_ird_free(XfdesktopIdleRepaintData *ird)
 }
 
 static void
-xfdesktop_check_icon_needs_repaint(gpointer data,
-                                   gpointer user_data)
-{
-    XfdesktopIcon *icon = XFDESKTOP_ICON(data);
-    GdkRectangle *area = user_data, extents, dummy;
-    
-    if(!xfdesktop_icon_get_extents(icon, &extents)
-       || gdk_rectangle_intersect(area, &extents, &dummy))
-    {
-        XfdesktopIconView *icon_view = g_object_get_data(G_OBJECT(icon),
-                                                         "--xfdesktop-icon-view");
-        g_return_if_fail(icon_view);
-        /* we can't idle repaint icons while we're rubber banding, or
-         * we get nasty artifacts */
-        if(!icon_view->priv->definitely_rubber_banding
-           && g_list_find(icon_view->priv->selected_icons, icon))
-        {
-            /* save it for last to avoid painting another icon over top of
-             * part of this one if it has an overly-large label */
-            guint source_id;
-            XfdesktopIdleRepaintData *ird;
-            
-            ird = g_slice_new0(XfdesktopIdleRepaintData);
-            ird->icon_view = icon_view;
-            ird->icon = icon;
-            memcpy(&ird->area, area, sizeof(GdkRectangle));
-            
-            source_id = g_idle_add(xfdesktop_icon_view_repaint_queued_icon,
-                                   ird);
-            ird->source_id = source_id;
-            
-            g_hash_table_replace(icon_view->priv->repaint_queue, icon, ird);
-        } else
-            xfdesktop_icon_view_paint_icon(icon_view, icon, area);
-    }
-}
-
-static void
 xfdesktop_icon_view_repaint_icons(XfdesktopIconView *icon_view,
-                                GdkRectangle *area)
+                                  GdkRectangle *area)
 {
-    if(icon_view->priv->icons) {    
-        g_list_foreach(icon_view->priv->icons,
-                       xfdesktop_check_icon_needs_repaint,
-                       area);
+    GdkRectangle extents, dummy;
+    GList *l;
+    XfdesktopIcon *icon;
+
+    for(l = icon_view->priv->icons; l; l = l->next) {
+        icon = (XfdesktopIcon *)l->data;
+
+        if(!xfdesktop_icon_get_extents(icon, &extents)
+           || gdk_rectangle_intersect(area, &extents, &dummy))
+        {
+            /* we can't idle repaint icons while we're rubber banding, or
+             * we get nasty artifacts */
+            if(!icon_view->priv->definitely_rubber_banding
+               && g_list_find(icon_view->priv->selected_icons, icon))
+            {
+                /* save it for last to avoid painting another icon over top of
+                 * part of this one if it has an overly-large label */
+                guint source_id;
+                XfdesktopIdleRepaintData *ird;
+
+                ird = g_slice_new0(XfdesktopIdleRepaintData);
+                ird->icon_view = icon_view;
+                ird->icon = icon;
+                memcpy(&ird->area, area, sizeof(GdkRectangle));
+
+                source_id = g_idle_add(xfdesktop_icon_view_repaint_queued_icon,
+                                       ird);
+                ird->source_id = source_id;
+
+                g_hash_table_replace(icon_view->priv->repaint_queue, icon, ird);
+            } else
+                xfdesktop_icon_view_paint_icon(icon_view, icon, area);
+        }
     }
 }
 
