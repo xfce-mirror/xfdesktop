@@ -213,11 +213,11 @@ static void xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
 static void xfdesktop_icon_view_finalize(GObject *obj);
 
 
-static void xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
-                                                   XfdesktopIcon *icon);
+static void xfdesktop_icon_view_invalidate_icon(XfdesktopIconView *icon_view,
+                                                XfdesktopIcon *icon);
 #ifdef HAVE_LIBEXO
-static void xfdesktop_icon_view_clear_icon_pixbuf_extents(XfdesktopIconView *icon_view,
-                                                          XfdesktopIcon *icon);
+static void xfdesktop_icon_view_invalidate_icon_pixbuf(XfdesktopIconView *icon_view,
+                                                       XfdesktopIcon *icon);
 #endif
 static void xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
                                            XfdesktopIcon *icon,
@@ -442,15 +442,15 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                     /* unselect */
                     icon_view->priv->selected_icons = g_list_remove(icon_view->priv->selected_icons,
                                                                     icon);
-                    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+                    xfdesktop_icon_view_invalidate_icon(icon_view, icon);
                 } else if(icon != icon_view->priv->last_clicked_item) {
                     /* expand the text */
                     XfdesktopIcon *old_sel = icon_view->priv->last_clicked_item;
                     
                     icon_view->priv->last_clicked_item = icon;
                     if(old_sel)
-                        xfdesktop_icon_view_clear_icon_extents(icon_view, old_sel);
-                    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+                        xfdesktop_icon_view_invalidate_icon(icon_view, old_sel);
+                    xfdesktop_icon_view_invalidate_icon(icon_view, icon);
                 }
             } else {
                 /* clicked a non-selected icon */
@@ -476,7 +476,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 old_sel = icon_view->priv->last_clicked_item;
                 icon_view->priv->last_clicked_item = icon;
                 if(old_sel)
-                    xfdesktop_icon_view_clear_icon_extents(icon_view, old_sel);
+                    xfdesktop_icon_view_invalidate_icon(icon_view, old_sel);
                 
                 if(!icon_view->priv->first_clicked_item)
                     icon_view->priv->first_clicked_item = icon;
@@ -512,7 +512,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                                 {
                                     icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
                                                                                      icon1);
-                                    xfdesktop_icon_view_clear_icon_extents(icon_view,
+                                    xfdesktop_icon_view_invalidate_icon(icon_view,
                                                                            icon1);
                                     g_signal_emit(G_OBJECT(icon_view),
                                                   __signals[SIG_ICON_SELECTION_CHANGED],
@@ -525,7 +525,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 } else {
                     icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
                                                                      icon);
-                    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+                    xfdesktop_icon_view_invalidate_icon(icon_view, icon);
                     
                     g_signal_emit(G_OBJECT(icon_view),
                                   __signals[SIG_ICON_SELECTION_CHANGED],
@@ -866,7 +866,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                     l = l->next;
                     icon_view->priv->selected_icons = g_list_delete_link(icon_view->priv->selected_icons,
                                                                          to_remove);
-                    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+                    xfdesktop_icon_view_invalidate_icon(icon_view, icon);
                 } else
                     l = l->next;
             }
@@ -887,7 +887,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                 {
                     icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
                                                                      icon);
-                    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+                    xfdesktop_icon_view_invalidate_icon(icon_view, icon);
                 }
             }
         }
@@ -905,7 +905,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                 icon = icon_view->priv->item_under_pointer;
                 icon_view->priv->item_under_pointer = NULL;
 #ifdef HAVE_LIBEXO
-                xfdesktop_icon_view_clear_icon_pixbuf_extents(icon_view, icon);
+                xfdesktop_icon_view_invalidate_icon_pixbuf(icon_view, icon);
 #endif
             }
         } else {
@@ -917,7 +917,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
             {
                 icon_view->priv->item_under_pointer = icon;
 #ifdef HAVE_LIBEXO
-                xfdesktop_icon_view_clear_icon_pixbuf_extents(icon_view, icon);
+                xfdesktop_icon_view_invalidate_icon_pixbuf(icon_view, icon);
 #endif
             }
         }
@@ -937,7 +937,7 @@ xfdesktop_icon_view_leave_notify(GtkWidget *widget,
         XfdesktopIcon *icon = icon_view->priv->item_under_pointer;
         icon_view->priv->item_under_pointer = NULL;
 #ifdef HAVE_LIBEXO
-        xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+        xfdesktop_icon_view_invalidate_icon(icon_view, icon);
 #endif
     }
     
@@ -1200,7 +1200,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
         g_return_val_if_fail(icon, FALSE);
         
         /* clear out old position */
-        xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+        xfdesktop_icon_view_invalidate_icon(icon_view, icon);
         if(xfdesktop_icon_get_position(icon, &old_row, &old_col))
             xfdesktop_grid_set_position_free(icon_view, old_row, old_col);
         /* set new position */
@@ -1460,7 +1460,7 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
     /* move all icons into the pending_icons list */
     for(l = icon_view->priv->icons; l; l = l->next) {
         g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
-                                             G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
+                                             G_CALLBACK(xfdesktop_icon_view_invalidate_icon),
                                              icon_view);
     }
     icon_view->priv->pending_icons = g_list_concat(icon_view->priv->icons,
@@ -1759,8 +1759,8 @@ xfdesktop_rootwin_watch_workarea(GdkXEvent *gxevent,
 }
 
 static void
-xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
-                                       XfdesktopIcon *icon)
+xfdesktop_icon_view_invalidate_icon(XfdesktopIconView *icon_view,
+                                    XfdesktopIcon *icon)
 {
     GdkRectangle extents;
     
@@ -1780,8 +1780,8 @@ xfdesktop_icon_view_clear_icon_extents(XfdesktopIconView *icon_view,
 
 #ifdef HAVE_LIBEXO
 static void
-xfdesktop_icon_view_clear_icon_pixbuf_extents(XfdesktopIconView *icon_view,
-                                              XfdesktopIcon *icon)
+xfdesktop_icon_view_invalidate_icon_pixbuf(XfdesktopIconView *icon_view,
+                                           XfdesktopIcon *icon)
 {
     guint16 row, col;
     GdkPixbuf *pix;
@@ -2094,7 +2094,7 @@ xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
     /* move all icons into the pending_icons list */
     for(l = icon_view->priv->icons; l; l = l->next) {
         g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
-                                             G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
+                                             G_CALLBACK(xfdesktop_icon_view_invalidate_icon),
                                              icon_view);
     }
     icon_view->priv->pending_icons = g_list_concat(icon_view->priv->icons,
@@ -2343,7 +2343,7 @@ xfdesktop_grid_find_nearest(XfdesktopIconView *icon_view,
             if(grid_icon) {
                 icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
                                                                  grid_icon);
-                xfdesktop_icon_view_clear_icon_extents(icon_view,
+                xfdesktop_icon_view_invalidate_icon(icon_view,
                                                        grid_icon);
                 return;
             }
@@ -2438,8 +2438,8 @@ xfdesktop_grid_find_nearest(XfdesktopIconView *icon_view,
             
             icon_view->priv->last_clicked_item = new_sel_icon;
             
-            xfdesktop_icon_view_clear_icon_extents(icon_view, new_sel_icon);
-            xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+            xfdesktop_icon_view_invalidate_icon(icon_view, new_sel_icon);
+            xfdesktop_icon_view_invalidate_icon(icon_view, icon);
         }
     }
 }
@@ -2481,7 +2481,7 @@ xfdesktop_list_foreach_invalidate(gpointer data,
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
     XfdesktopIcon *icon = XFDESKTOP_ICON(data);
-    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+    xfdesktop_icon_view_invalidate_icon(icon_view, icon);
 }
 
 static void
@@ -2537,10 +2537,10 @@ xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
     icon_view->priv->icons = g_list_prepend(icon_view->priv->icons, icon);
     
     g_signal_connect_swapped(G_OBJECT(icon), "pixbuf-changed",
-                             G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
+                             G_CALLBACK(xfdesktop_icon_view_invalidate_icon),
                              icon_view);
     g_signal_connect_swapped(G_OBJECT(icon), "label-changed",
-                             G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
+                             G_CALLBACK(xfdesktop_icon_view_invalidate_icon),
                              icon_view);
     
     fake_area.x = SCREEN_MARGIN + icon_view->priv->xorigin + col * CELL_SIZE;
@@ -2620,11 +2620,11 @@ xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
         g_hash_table_remove(icon_view->priv->repaint_queue, icon);
         
         g_signal_handlers_disconnect_by_func(G_OBJECT(icon),
-                                             G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
+                                             G_CALLBACK(xfdesktop_icon_view_invalidate_icon),
                                              icon_view);
         
         if(xfdesktop_icon_get_position(icon, &row, &col)) {
-            xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+            xfdesktop_icon_view_invalidate_icon(icon_view, icon);
             xfdesktop_grid_set_position_free(icon_view, row, col);
         }
         icon_view->priv->icons = g_list_remove(icon_view->priv->icons, icon);
@@ -2675,7 +2675,7 @@ xfdesktop_icon_view_remove_all(XfdesktopIconView *icon_view)
             xfdesktop_grid_set_position_free(icon_view, row, col);
         
         g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
-                                             G_CALLBACK(xfdesktop_icon_view_clear_icon_extents),
+                                             G_CALLBACK(xfdesktop_icon_view_invalidate_icon),
                                              icon_view);
         g_object_set_data(G_OBJECT(l->data), "--xfdesktop-icon-view", NULL);
         g_object_unref(G_OBJECT(l->data));
@@ -2890,7 +2890,7 @@ xfdesktop_icon_view_select_item(XfdesktopIconView *icon_view,
     
     icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
                                                      icon);
-    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+    xfdesktop_icon_view_invalidate_icon(icon_view, icon);
 }
 
 void
@@ -2903,7 +2903,7 @@ xfdesktop_icon_view_unselect_item(XfdesktopIconView *icon_view,
     if(g_list_find(icon_view->priv->selected_icons, icon)) {
         icon_view->priv->selected_icons = g_list_remove(icon_view->priv->selected_icons,
                                                         icon);
-        xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+        xfdesktop_icon_view_invalidate_icon(icon_view, icon);
     }
 }
 
