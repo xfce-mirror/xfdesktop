@@ -844,22 +844,51 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
         gdk_window_invalidate_region(widget->window, region, TRUE);;
         gdk_region_destroy(region);
 
-        /* update list of selected icons -- this is a little wasteful
-         * and can be optimised */
-        for(l = icon_view->priv->selected_icons; l; l = l->next)
-            xfdesktop_icon_view_clear_icon_extents(icon_view, l->data);
-        g_list_free(icon_view->priv->selected_icons);
-        icon_view->priv->selected_icons = NULL;
-        for(l = icon_view->priv->icons; l; l = l->next) {
-            GdkRectangle extents, dummy;
-            XfdesktopIcon *icon = l->data;
+        /* update list of selected icons */
 
-            if(xfdesktop_icon_get_extents(icon, &extents)
-               && gdk_rectangle_intersect(&extents, new_rect, &dummy))
-            {
-                icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
-                                                                 icon);
-                xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+        /* first pass: if the rubber band area got smaller at least in
+         * one dimension, we can try first to just remove icons that
+         * aren't in the band anymore */
+        if(old_rect.width > new_rect->width
+           || old_rect.height > new_rect->height)
+        {
+            l = icon_view->priv->selected_icons;
+            while(l) {
+                GdkRectangle extents, dummy;
+                XfdesktopIcon *icon = l->data;
+
+                if(xfdesktop_icon_get_extents(icon, &extents)
+                   && !gdk_rectangle_intersect(&extents, new_rect, &dummy))
+                {
+                    /* remove the icon from the selected list */
+                    GList *to_remove = l;
+
+                    l = l->next;
+                    icon_view->priv->selected_icons = g_list_delete_link(icon_view->priv->selected_icons,
+                                                                         to_remove);
+                    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+                } else
+                    l = l->next;
+            }
+        }
+
+        /* second pass: if at least one dimension got larger, unfortunately
+         * we have to figure out what icons to add to the selected list */
+        if(old_rect.width < new_rect->width
+           || old_rect.height < new_rect->height)
+        {
+            for(l = icon_view->priv->icons; l; l = l->next) {
+                GdkRectangle extents, dummy;
+                XfdesktopIcon *icon = l->data;
+
+                if(xfdesktop_icon_get_extents(icon, &extents)
+                   && gdk_rectangle_intersect(&extents, new_rect, &dummy)
+                   && !g_list_find(icon_view->priv->selected_icons, icon))
+                {
+                    icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
+                                                                     icon);
+                    xfdesktop_icon_view_clear_icon_extents(icon_view, icon);
+                }
             }
         }
     } else {
