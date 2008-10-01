@@ -799,12 +799,14 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                    && !icon_view->priv->definitely_rubber_banding)
                   || icon_view->priv->definitely_rubber_banding))
     {
-        GdkRectangle old_rect, intersect;
+        GdkRectangle old_rect, *new_rect, intersect;
         GdkRegion *region;
         GList *l;
 
         /* we're dragging with no icon under the cursor -> rubber band start
          * OR, we're already doin' the band -> update it */
+
+        new_rect = &icon_view->priv->band_rect;
 
         if(!icon_view->priv->definitely_rubber_banding) {
             icon_view->priv->definitely_rubber_banding = TRUE;
@@ -813,17 +815,17 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
             old_rect.width = old_rect.height = 1;
             gtk_grab_add(widget);
         } else
-            memcpy(&old_rect, &icon_view->priv->band_rect, sizeof(old_rect));
+            memcpy(&old_rect, new_rect, sizeof(old_rect));
 
-        icon_view->priv->band_rect.x = MIN(icon_view->priv->press_start_x, evt->x);
-        icon_view->priv->band_rect.y = MIN(icon_view->priv->press_start_y, evt->y);
-        icon_view->priv->band_rect.width = ABS(evt->x - icon_view->priv->press_start_x) + 1;
-        icon_view->priv->band_rect.height = ABS(evt->y - icon_view->priv->press_start_y) + 1;
+        new_rect->x = MIN(icon_view->priv->press_start_x, evt->x);
+        new_rect->y = MIN(icon_view->priv->press_start_y, evt->y);
+        new_rect->width = ABS(evt->x - icon_view->priv->press_start_x) + 1;
+        new_rect->height = ABS(evt->y - icon_view->priv->press_start_y) + 1;
 
         region = gdk_region_rectangle(&old_rect);
-        gdk_region_union_with_rect(region, &icon_view->priv->band_rect);
+        gdk_region_union_with_rect(region, new_rect);
 
-        if(gdk_rectangle_intersect(&old_rect, &icon_view->priv->band_rect, &intersect)
+        if(gdk_rectangle_intersect(&old_rect, new_rect, &intersect)
            && intersect.width > 2 && intersect.height > 2)
         {
             GdkRegion *region_intersect;
@@ -853,9 +855,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
             XfdesktopIcon *icon = l->data;
 
             if(xfdesktop_icon_get_extents(icon, &extents)
-               && gdk_rectangle_intersect(&extents,
-                                          &icon_view->priv->band_rect,
-                                          &dummy))
+               && gdk_rectangle_intersect(&extents, new_rect, &dummy))
             {
                 icon_view->priv->selected_icons = g_list_prepend(icon_view->priv->selected_icons,
                                                                  icon);
