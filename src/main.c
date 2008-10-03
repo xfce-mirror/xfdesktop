@@ -285,6 +285,8 @@ main(int argc, char **argv)
         }
     }
     
+    signal(SIGPIPE, SIG_IGN);
+
     already_running = xfdesktop_check_is_running(&xid);
     if(already_running) {
         DBG("xfdesktop is running");
@@ -301,6 +303,11 @@ main(int argc, char **argv)
         return (already_running ? 0 : 1);
     }
     
+    client_session = client_session_new(argc, argv, NULL,
+                                        SESSION_RESTART_IMMEDIATELY, 40);
+    client_session->die = session_die;
+    is_session_managed = session_init(client_session);
+
 #ifdef ENABLE_FILE_ICONS
     thunar_vfs_init();
 #endif
@@ -332,13 +339,6 @@ main(int argc, char **argv)
         gtk_widget_show(desktops[i]);
         gdk_window_lower(desktops[i]->window);
     }
-    
-    signal(SIGPIPE, SIG_IGN);
-    
-    client_session = client_session_new(argc, argv, NULL,
-                                        SESSION_RESTART_IF_RUNNING, 35);
-    client_session->die = session_die;
-    is_session_managed = session_init(client_session);
     
     if(is_session_managed) {
         for(i = 0; i < nscreens; ++i)
