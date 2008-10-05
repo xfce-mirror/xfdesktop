@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-09-08 09:57+0200\n"
-"PO-Revision-Date: 2008-09-08 17:50+0100\n"
-"Last-Translator: Maximilian Schleiss <maximilian@xfce.org>\n"
+"PO-Revision-Date: 2008-09-10 22:43+0700\n"
+"Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -689,14 +689,13 @@ msgid "Desktop"
 msgstr "Destop"
 
 #: ../src/xfce-desktop.c:1004
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Tak dapat membuat berkas \"%s\":"
+msgstr "Tak dapat memuat citra dari berkas senarai latar belakang\"%s\""
 
 #: ../src/xfce-desktop.c:1006
-#, fuzzy
 msgid "Desktop Error"
-msgstr "Destop"
+msgstr "Galat Destop"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
@@ -1312,44 +1311,40 @@ msgid "Removable Devices"
 msgstr "Divais Bisa Pindah"
 
 #: ../settings/main.c:321
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Buat senarai latar belakang"
+msgstr "Tak dapat membuat senarai latar belakang \"%s\""
 
 #: ../settings/main.c:325
 #: ../settings/main.c:678
-#, fuzzy
 msgid "Backdrop List Error"
-msgstr "Galat Properti"
+msgstr "Galat Senarai Latar Belakang"
 
 #: ../settings/main.c:350
-#, fuzzy
 msgid "Create/Load Backdrop List"
-msgstr "Buat senarai latar belakang"
+msgstr "Buat/Muat Senarai Latar Belakang"
 
 #: ../settings/main.c:374
 #, c-format
 msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
+msgstr "Berkas \"%s\" bukan berkas senarai latar belakang yang sah. Anda ingin menimpanya?"
 
 #: ../settings/main.c:379
-#, fuzzy
 msgid "Invalid List File"
-msgstr "Berkas Senarai"
+msgstr "Senarai Berkas Tidak Sah"
 
 #: ../settings/main.c:382
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
+msgstr "Menimpa berkas akan menyebabkan isinya hilang."
 
 #: ../settings/main.c:384
-#, fuzzy
 msgid "Replace"
-msgstr "Namai Ulang"
+msgstr "Ganti"
 
 #: ../settings/main.c:674
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Gagal menamai ulang \"%s\" ke \"%s\":"
+msgstr "Gagal menulis senarai latar belakang ke \"%s\""
 
 #: ../settings/main.c:701
 msgid "Add Image File(s)"
@@ -1459,7 +1454,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings.glade.h:16
 msgid "Automatically pick a random image from a list file"
-msgstr ""
+msgstr "Otomatis memilih citra secara acak dari senarai berkas"
 
 #: ../settings/xfdesktop-settings.glade.h:17
 msgid "B_rightness:"
@@ -1471,11 +1466,11 @@ msgstr "T_ombol:"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
-msgstr ""
+msgstr "Buat senarai baru, atau muat yang telah ada"
 
 #: ../settings/xfdesktop-settings.glade.h:20
 msgid "Don't display an image at all"
-msgstr ""
+msgstr "Jangan tampilkan citra sama sekali"
 
 #: ../settings/xfdesktop-settings.glade.h:21
 msgid "Icon _size:"
@@ -1491,11 +1486,11 @@ msgstr "Senarai _citra"
 
 #: ../settings/xfdesktop-settings.glade.h:24
 msgid "Increase or decrease the brightness of the final image"
-msgstr ""
+msgstr "Naikkan atau turunkan kecerahan citra akhir"
 
 #: ../settings/xfdesktop-settings.glade.h:25
 msgid "Increase or decrease the color saturation of the final image"
-msgstr ""
+msgstr "Naikkan atau turunkan saturasi warna citra akhir"
 
 #: ../settings/xfdesktop-settings.glade.h:26
 msgid "Label trans_parency:"
@@ -1542,7 +1537,6 @@ msgstr ""
 "Control"
 
 #: ../settings/xfdesktop-settings.glade.h:39
-#, fuzzy
 msgid "Remove the selected image(s) from the list"
 msgstr "Hapus citra terpilih dari senarai"
 
@@ -1560,7 +1554,7 @@ msgstr "Pilih Warna Kedua"
 
 #: ../settings/xfdesktop-settings.glade.h:43
 msgid "Select a single image as the backdrop"
-msgstr ""
+msgstr "Pilih citra tunggal sebagai latar belakang"
 
 #: ../settings/xfdesktop-settings.glade.h:44
 msgid "Set desktop background and menu and icon behavior"
