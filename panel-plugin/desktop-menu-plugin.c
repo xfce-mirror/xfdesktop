@@ -85,9 +85,7 @@ typedef struct _DMPlugin {
     gboolean show_button_title;
     
     GtkWidget *file_entry;
-    GtkWidget *file_fb;
     GtkWidget *icon_entry;
-    GtkWidget *icon_fb;
     GtkWidget *icons_chk;
     GtkTooltips *tooltip;  /* needed? */
 } DMPlugin;
@@ -516,136 +514,42 @@ dmp_write_config(XfcePanelPlugin *plugin, DMPlugin *dmp)
     xfce_rc_close(rcfile);
 }
 
-static gboolean
-entry_focus_out_cb(GtkWidget *w, GdkEventFocus *evt, gpointer user_data)
+static void
+dmp_menu_file_set(GtkFileChooser *fc,
+                  gpointer user_data)
 {
     DMPlugin *dmp = user_data;
-    const gchar *cur_file;
-    
-    if(w == dmp->icon_entry) {
-        g_free(dmp->icon_file);
-        dmp->icon_file = gtk_editable_get_chars(GTK_EDITABLE(w), 0, -1);
-        if(dmp->icon_file && *dmp->icon_file)
-            dmp_set_size(dmp->plugin, xfce_panel_plugin_get_size(dmp->plugin), dmp);
-        else
-            gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), NULL);            
-    } else if(w == dmp->file_entry) {
-        if(dmp->menu_file)
-            g_free(dmp->menu_file);
-        
-        dmp->menu_file = gtk_editable_get_chars(GTK_EDITABLE(w), 0, -1);
-        if(dmp->desktop_menu) {
-            cur_file = xfce_desktop_menu_get_menu_file(dmp->desktop_menu);
-            if(strcmp(dmp->menu_file, cur_file)) {
-                gchar *path;
-                xfce_desktop_menu_destroy(dmp->desktop_menu);
-                path = dmp_get_real_path(dmp->menu_file);
-                dmp->desktop_menu = xfce_desktop_menu_new(path, TRUE);
-                g_free(path);
-                if(!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(dmp->icons_chk)))
-                    xfce_desktop_menu_set_show_icons(dmp->desktop_menu, FALSE);
-            }
+
+    g_free(dmp->menu_file);
+    dmp->menu_file = gtk_file_chooser_get_filename(fc);
+
+    if(dmp->desktop_menu) {
+        const gchar *cur_file = xfce_desktop_menu_get_menu_file(dmp->desktop_menu);
+        if(strcmp(dmp->menu_file, cur_file)) {
+            gchar *path;
+            xfce_desktop_menu_destroy(dmp->desktop_menu);
+            path = dmp_get_real_path(dmp->menu_file);
+            dmp->desktop_menu = xfce_desktop_menu_new(path, TRUE);
+            g_free(path);
+            if(!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(dmp->icons_chk)))
+                xfce_desktop_menu_set_show_icons(dmp->desktop_menu, FALSE);
         }
     }
-    
-    return FALSE;
 }
 
 static void
-filebutton_update_preview_cb(GtkFileChooser *chooser, gpointer user_data)
-{
-    GtkImage *preview;
-    gchar *filename;
-    GdkPixbuf *pix = NULL;
-    
-    preview = GTK_IMAGE(user_data);
-    filename = gtk_file_chooser_get_filename(chooser);
-    
-    if(g_file_test(filename, G_FILE_TEST_IS_REGULAR))
-        pix = gdk_pixbuf_new_from_file_at_size(filename, 250, 250, NULL);
-    g_free(filename);
-    
-    if(pix) {
-        gtk_image_set_from_pixbuf(preview, pix);
-        g_object_unref(G_OBJECT(pix));
-    }
-    gtk_file_chooser_set_preview_widget_active(chooser, (pix != NULL));
-}
-
-static void
-filebutton_click_cb(GtkWidget *w, gpointer user_data)
+dmp_icon_file_set(GtkFileChooser *fc,
+                  gpointer user_data)
 {
     DMPlugin *dmp = user_data;
-    GtkWidget *chooser, *image;
-    gchar *filename;
-    GtkFileFilter *filter;
-    const gchar *title;
-    gboolean is_icon = FALSE;
-    
-    if(w == dmp->icon_fb)
-        is_icon = TRUE;
-    
-    if(is_icon)
-        title = _("Select Icon");
-    else
-        title = _("Select Menu File");
-    
-    chooser = gtk_file_chooser_dialog_new(title,
-            GTK_WINDOW(gtk_widget_get_toplevel(w)),
-            GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL,
-            GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
-    if(is_icon)
-        gtk_file_chooser_add_shortcut_folder(GTK_FILE_CHOOSER(chooser),
-                DATADIR "/pixmaps", NULL);
-    else
-        gtk_file_chooser_add_shortcut_folder(GTK_FILE_CHOOSER(chooser),
-                xfce_get_userdir(), NULL);
-    gtk_dialog_set_default_response(GTK_DIALOG(chooser), GTK_RESPONSE_ACCEPT);
-    
-    filter = gtk_file_filter_new();
-    gtk_file_filter_set_name(filter, _("All Files"));
-    gtk_file_filter_add_pattern(filter, "*");
-    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
-    gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(chooser), filter);
-    filter = gtk_file_filter_new();
-    if(is_icon) {
-        gtk_file_filter_set_name(filter, _("Image Files"));
-        gtk_file_filter_add_pattern(filter, "*.png");
-        gtk_file_filter_add_pattern(filter, "*.jpg");
-        gtk_file_filter_add_pattern(filter, "*.bmp");
-        gtk_file_filter_add_pattern(filter, "*.svg");
-        gtk_file_filter_add_pattern(filter, "*.xpm");
-        gtk_file_filter_add_pattern(filter, "*.gif");
-    } else {
-        gtk_file_filter_set_name(filter, _("Menu Files"));
-        gtk_file_filter_add_pattern(filter, "*.xml");
-    }
-    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
-    
-    if(is_icon) {
-        image = gtk_image_new();
-        gtk_widget_show(image);
-        gtk_file_chooser_set_preview_widget(GTK_FILE_CHOOSER(chooser), image);
-        g_signal_connect(G_OBJECT(chooser), "update-preview",
-                         G_CALLBACK(filebutton_update_preview_cb), image);
-        gtk_file_chooser_set_preview_widget_active(GTK_FILE_CHOOSER(chooser), FALSE);
-    }
 
-    gtk_widget_show(chooser);
-    if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
-        filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(chooser));
-        if(filename) {
-            if(is_icon) {
-                gtk_entry_set_text(GTK_ENTRY(dmp->icon_entry), filename);
-                entry_focus_out_cb(dmp->icon_entry, NULL, dmp);
-            } else {
-                gtk_entry_set_text(GTK_ENTRY(dmp->file_entry), filename);
-                entry_focus_out_cb(dmp->file_entry, NULL, dmp);
-            }
-            g_free(filename);
-        }
-    }
-    gtk_widget_destroy(chooser);
+    g_free(dmp->icon_file);
+    dmp->icon_file = gtk_file_chooser_get_filename(fc);
+
+    if(dmp->icon_file && *dmp->icon_file)
+        dmp_set_size(dmp->plugin, xfce_panel_plugin_get_size(dmp->plugin), dmp);
+    else
+        gtk_image_set_from_pixbuf(GTK_IMAGE(dmp->image), NULL);            
 }
 
 static void
@@ -715,6 +619,7 @@ dmp_button_title_focus_out_cb(GtkWidget *w, GdkEventFocus *evt,
     return FALSE;
 }
 
+#if 0
 static void
 dmp_edit_menu_clicked_cb(GtkWidget *w, gpointer user_data)
 {
@@ -749,6 +654,7 @@ dmp_edit_menu_clicked_cb(GtkWidget *w, gpointer user_data)
         g_error_free(err);
     }
 }
+#endif
 
 static void
 dmp_options_dlg_response_cb(GtkDialog *dialog, gint response, DMPlugin *dmp)
@@ -758,12 +664,75 @@ dmp_options_dlg_response_cb(GtkDialog *dialog, gint response, DMPlugin *dmp)
     dmp_write_config(dmp->plugin, dmp);
 }
 
+static GtkWidget *
+dmp_create_file_chooser_button(DMPlugin *dmp,
+                               gboolean is_icon)
+{
+    GtkWidget *chooser;
+    GtkFileFilter *filter;
+    const gchar *title;
+    
+    if(is_icon)
+        title = _("Select Icon");
+    else
+        title = _("Select Menu File");
+    
+    chooser = gtk_file_chooser_button_new(title, GTK_FILE_CHOOSER_ACTION_OPEN);
+
+    if(is_icon) {
+        gtk_file_chooser_add_shortcut_folder(GTK_FILE_CHOOSER(chooser),
+                DATADIR "/pixmaps", NULL);
+    } else {
+        gchar *dir;
+
+        dir = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, "menus/",
+                                          FALSE);
+        if(dir) {
+            gtk_file_chooser_add_shortcut_folder(GTK_FILE_CHOOSER(chooser),
+                                                 dir, NULL);
+            g_free(dir);
+        }
+
+        dir = xfce_resource_lookup(XFCE_RESOURCE_CONFIG, "menus/");
+        if(dir) {
+            gtk_file_chooser_add_shortcut_folder(GTK_FILE_CHOOSER(chooser),
+                                                 dir, NULL);
+            g_free(dir);
+        }
+    }
+
+    filter = gtk_file_filter_new();
+    gtk_file_filter_set_name(filter, _("All Files"));
+    gtk_file_filter_add_pattern(filter, "*");
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+    gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(chooser), filter);
+
+    filter = gtk_file_filter_new();
+    if(is_icon) {
+        gtk_file_filter_set_name(filter, _("Image Files"));
+        gtk_file_filter_add_pixbuf_formats(filter);
+    } else {
+        gtk_file_filter_set_name(filter, _("Menu Files"));
+        gtk_file_filter_add_pattern(filter, "*.menu");
+    }
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+    
+#ifdef HAVE_LIBEXO
+    if(is_icon)
+        exo_gtk_file_chooser_add_thumbnail_preview(GTK_FILE_CHOOSER(chooser));
+#endif
+
+    gtk_widget_show(chooser);
+
+    return chooser;
+}
+
 static void
 dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
 {
     GtkWidget *dlg, *topvbox, *vbox, *hbox, *frame, *frame_bin, *spacer;
-    GtkWidget *label, *image, *filebutton, *chk, *radio, *entry, *btn;
-    
+    GtkWidget *label, *chk, *radio, *entry;
+
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     
     xfce_panel_plugin_block_menu(plugin);
@@ -850,32 +819,22 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
     gtk_box_pack_start(GTK_BOX(hbox), spacer, FALSE, FALSE, 0);
     gtk_widget_set_size_request(spacer, 16, -1);
     
-    dmp->file_entry = gtk_entry_new();
+    dmp->file_entry = dmp_create_file_chooser_button(dmp, FALSE);
     if(dmp->menu_file)
-        gtk_entry_set_text(GTK_ENTRY(dmp->file_entry), dmp->menu_file);
+        gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(dmp->file_entry), dmp->menu_file);
     else if(dmp->desktop_menu) {
         dmp->menu_file = g_strdup(xfce_desktop_menu_get_menu_file(dmp->desktop_menu));
-        gtk_entry_set_text(GTK_ENTRY(dmp->file_entry), dmp->menu_file);
+        gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(dmp->file_entry), dmp->menu_file);
     }
     gtk_label_set_mnemonic_widget(GTK_LABEL(label), dmp->file_entry);
-    gtk_widget_set_size_request(dmp->file_entry, 325, -1);  /* FIXME */
     gtk_widget_show(dmp->file_entry);
     gtk_box_pack_start(GTK_BOX(hbox), dmp->file_entry, TRUE, TRUE, 3);
-    g_signal_connect(G_OBJECT(dmp->file_entry), "focus-out-event",
-            G_CALLBACK(entry_focus_out_cb), dmp);
-    
-    image = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_BUTTON);
-    gtk_widget_show(image);
-    
-    dmp->file_fb = filebutton = gtk_button_new();
-    gtk_container_add(GTK_CONTAINER(filebutton), image);
-    gtk_widget_show(filebutton);
-    gtk_box_pack_end(GTK_BOX(hbox), filebutton, FALSE, FALSE, 0);
-    g_signal_connect(G_OBJECT(filebutton), "clicked",
-            G_CALLBACK(filebutton_click_cb), dmp);
+    g_signal_connect(G_OBJECT(dmp->file_entry), "file-set",
+                     G_CALLBACK(dmp_menu_file_set), dmp);
     
     gtk_widget_set_sensitive(hbox, !dmp->use_default_menu);
     
+#if 0  /* we don't have a menu editor anymore... */
     spacer = gtk_alignment_new(0.5, 0.5, 1, 1);
     gtk_widget_show(spacer);
     gtk_box_pack_start(GTK_BOX(vbox), spacer, FALSE, FALSE, 0);
@@ -890,6 +849,7 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
     gtk_box_pack_end(GTK_BOX(hbox), btn, FALSE, FALSE, 0);
     g_signal_connect(G_OBJECT(btn), "clicked",
             G_CALLBACK(dmp_edit_menu_clicked_cb), dmp);
+#endif
     
     frame = xfce_create_framebox(_("Icons"), &frame_bin);
     gtk_widget_show(frame);
@@ -908,24 +868,14 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
     gtk_widget_show(label);
     gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
     
-    dmp->icon_entry = gtk_entry_new();
+    dmp->icon_entry = dmp_create_file_chooser_button(dmp, TRUE);
     if(dmp->icon_file)
-        gtk_entry_set_text(GTK_ENTRY(dmp->icon_entry), dmp->icon_file);
+        gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(dmp->icon_entry), dmp->icon_file);
     gtk_label_set_mnemonic_widget(GTK_LABEL(label), dmp->icon_entry);
     gtk_widget_show(dmp->icon_entry);
     gtk_box_pack_start(GTK_BOX(hbox), dmp->icon_entry, TRUE, TRUE, 3);
-    g_signal_connect(G_OBJECT(dmp->icon_entry), "focus-out-event",
-            G_CALLBACK(entry_focus_out_cb), dmp);
-    
-    image = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_BUTTON);
-    gtk_widget_show(image);
-    
-    dmp->icon_fb = filebutton = gtk_button_new();
-    gtk_container_add(GTK_CONTAINER(filebutton), image);
-    gtk_widget_show(filebutton);
-    gtk_box_pack_end(GTK_BOX(hbox), filebutton, FALSE, FALSE, 0);
-    g_signal_connect(G_OBJECT(filebutton), "clicked",
-            G_CALLBACK(filebutton_click_cb), dmp);
+    g_signal_connect(G_OBJECT(dmp->icon_entry), "file-set",
+                     G_CALLBACK(dmp_icon_file_set), dmp);
     
     dmp->icons_chk = chk = gtk_check_button_new_with_mnemonic(_("Show _icons in menu"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk), dmp->show_menu_icons);
@@ -1057,7 +1007,9 @@ static void
 desktop_menu_plugin_construct(XfcePanelPlugin *plugin)
 {
     DMPlugin *dmp;
+#if 0
     GtkWidget *mi, *img;
+#endif
     
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     
@@ -1071,6 +1023,7 @@ desktop_menu_plugin_construct(XfcePanelPlugin *plugin)
     xfce_panel_plugin_add_action_widget(plugin, dmp->button);
     gtk_container_add(GTK_CONTAINER(plugin), dmp->button);
     
+#if 0
     /* Add edit menu option to right click menu */
     img = gtk_image_new_from_stock(GTK_STOCK_EDIT, GTK_ICON_SIZE_MENU);
     gtk_widget_show(img);
@@ -1080,6 +1033,7 @@ desktop_menu_plugin_construct(XfcePanelPlugin *plugin)
     xfce_panel_plugin_menu_insert_item(plugin, GTK_MENU_ITEM(mi));
     g_signal_connect(G_OBJECT(mi), "activate", 
                      G_CALLBACK(dmp_edit_menu_clicked_cb), dmp);
+#endif
     
     g_signal_connect(plugin, "free-data",
                      G_CALLBACK(dmp_free), dmp);

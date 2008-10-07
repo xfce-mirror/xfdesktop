@@ -20,6 +20,9 @@ Xfce 4.6beta1 (Xfce 4.5.91):
     in the desktop menu code).
   * Fix memory/X window leak (not destroying menu in panel plugin after
     it's closed; old menu didn't require it, but new one does).
+  * Use GtkFileChooserButtons in the panel plugin config dialog instead
+    of entry box + button, and remove the 'Edit menu' button/menu item
+    since we don't have a menu editor anymore.
 
 
 Xfce 4.6alpha (Xfce 4.5.90):
