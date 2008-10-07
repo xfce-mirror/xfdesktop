@@ -18,6 +18,8 @@ Xfce 4.6beta1 (Xfce 4.5.91):
     support eject, not just optical discs (bug 3738).
   * Fix memory leak (not freeing result of gtk_container_get_children()
     in the desktop menu code).
+  * Fix memory/X window leak (not destroying menu in panel plugin after
+    it's closed; old menu didn't require it, but new one does).
 
 
 Xfce 4.6alpha (Xfce 4.5.90):

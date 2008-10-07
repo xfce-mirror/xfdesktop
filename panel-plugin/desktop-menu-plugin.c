@@ -331,17 +331,20 @@ dmp_position_menu (GtkMenu *menu, int *x, int *y, gboolean *push_in,
     *push_in = FALSE;
 }
 
+static gboolean
+menu_destroy_idled(gpointer data)
+{
+    gtk_widget_destroy(GTK_WIDGET(data));
+    return FALSE;
+}
+
 static void
 menu_deactivated(GtkWidget *menu, gpointer user_data)
 {
-    int id;
     DMPlugin *dmp = user_data;
 
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dmp->button), FALSE);
-
-    id = GPOINTER_TO_INT(g_object_get_data (G_OBJECT(menu), "sig_id"));
-
-    g_signal_handler_disconnect(menu, id);
+    g_idle_add(menu_destroy_idled, menu);
 }
 
 static void
@@ -361,11 +364,8 @@ menu_activate(DMPlugin *dmp, gboolean at_pointer)
 
     menu = xfce_desktop_menu_get_widget(dmp->desktop_menu);
     if(menu) {
-        guint id;
-        
-        id = g_signal_connect(menu, "deactivate", 
-                G_CALLBACK(menu_deactivated), dmp);
-        g_object_set_data(G_OBJECT(menu), "sig_id", GUINT_TO_POINTER(id));
+        g_signal_connect(menu, "deactivate", 
+                         G_CALLBACK(menu_deactivated), dmp);
         if (!at_pointer)
           gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
         xfce_panel_plugin_register_menu (dmp->plugin, GTK_MENU(menu));
