@@ -240,6 +240,7 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
     }
     for(l = items; l; l = l->next) {
         if(XFCE_IS_MENU(l->data)) {
+            GList *tmpl;
             xfce_submenu = l->data;
             xfce_directory = xfce_menu_get_directory(xfce_submenu);
             icon_name = NULL;
@@ -281,8 +282,10 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             
             /* we have to check emptiness down here instead of at the top of the
              * loop because there may be further submenus that are empty */
-            if(!gtk_container_get_children(GTK_CONTAINER(submenu)))
+            if(!(tmpl = gtk_container_get_children(GTK_CONTAINER(submenu))))
                 gtk_widget_destroy(mi);
+            else
+                g_list_free(tmpl);
         } else if(XFCE_IS_MENU_SEPARATOR(l->data)) {
             mi = gtk_separator_menu_item_new();
             gtk_widget_show(mi);

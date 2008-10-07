@@ -16,6 +16,8 @@ Xfce 4.6beta1 (Xfce 4.5.91):
     de-selected when using minimized app icons.
   * Display 'Eject' in the context menu for removable drives that
     support eject, not just optical discs (bug 3738).
+  * Fix memory leak (not freeing result of gtk_container_get_children()
+    in the desktop menu code).
 
 
 Xfce 4.6alpha (Xfce 4.5.90):
