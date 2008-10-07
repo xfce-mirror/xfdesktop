@@ -585,7 +585,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
 #ifdef ENABLE_FILE_ICONS
                                                       XFCE_DESKTOP_ICON_STYLE_FILES,
 #else
-                                                      XFCE_DESKTOP_ICON_STLYE_WINDOWS,
+                                                      XFCE_DESKTOP_ICON_STYLE_WINDOWS,
 #endif
                                                       XFDESKTOP_PARAM_FLAGS));
 
