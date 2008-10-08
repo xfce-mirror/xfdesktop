@@ -2950,13 +2950,14 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     if(!xfdesktop_file_utils_dbus_init())
         g_warning("Unable to initialise D-Bus.  Some xfdesktop features may be unavailable.");
     
-    for(i = 0; i <= XFDESKTOP_SPECIAL_FILE_ICON_TRASH; ++i) {
+    /* do this in the reverse order stuff should be displayed */
+    xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
+    if(fmanager->priv->show_removable_media)
+        xfdesktop_file_icon_manager_load_removable_media(fmanager);
+    for(i = XFDESKTOP_SPECIAL_FILE_ICON_TRASH; i >= 0; --i) {
         if(fmanager->priv->show_special[i])
             xfdesktop_file_icon_manager_add_special_file_icon(fmanager, i);
     }
-    if(fmanager->priv->show_removable_media)
-        xfdesktop_file_icon_manager_load_removable_media(fmanager);
-    xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
     
 #ifdef HAVE_THUNARX
     thunarx_pfac = thunarx_provider_factory_get_default();
