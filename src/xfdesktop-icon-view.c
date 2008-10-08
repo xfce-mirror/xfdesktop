@@ -1172,7 +1172,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
         if(target == GDK_NONE)
             return FALSE;
     }
-    DBG("target=%d (%s)", (gint)target, gdk_atom_name(target));
+    DBG("target=%ld (%s)", (glong)target, gdk_atom_name(target));
     
     xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
     icon_on_dest = xfdesktop_icon_view_icon_in_cell(icon_view, row, col);
@@ -1730,7 +1730,7 @@ xfdesktop_setup_grids(XfdesktopIconView *icon_view)
     } else
         icon_view->priv->grid_layout = g_malloc0(new_size);
     
-    DBG("created grid_layout with %d positions", new_size/sizeof(gpointer));
+    DBG("created grid_layout with %lu positions", (gulong)(new_size/sizeof(gpointer)));
     DUMP_GRID_LAYOUT(icon_view);
     
     xfdesktop_icon_view_setup_grids_xinerama(icon_view);
