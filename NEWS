@@ -26,6 +26,9 @@ Xfce 4.6beta1 (Xfce 4.5.91):
   * Add cell-spacing, cell-padding, and cell-text-width-proportion
     stlye properties to XfdesktopIconView to control spacing/sizing of
     the icon grid (bug 2886).  Patch from Giacomo Lozito.
+  * Add the ellipsize-icon-labels style property  to control whether
+    or not unselected icons get their labels truncated (bug 2886).
+    Patch from Daniel Gibson.
 
 
 Xfce 4.6alpha (Xfce 4.5.90):

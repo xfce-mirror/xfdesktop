@@ -156,6 +156,8 @@ struct _XfdesktopIconViewPrivate
     gint cell_padding;
     gint cell_spacing;
     gdouble cell_text_width_proportion;
+
+    gboolean ellipsize_icon_labels;
 };
 
 static gboolean xfdesktop_icon_view_button_press(GtkWidget *widget,
@@ -381,6 +383,12 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                                 "calculated as multiplier of the icon size",
                                                                 1.0, 10.0, 2.5,
                                                                 G_PARAM_READABLE));
+    gtk_widget_class_install_style_property(widget_class,
+                                            g_param_spec_boolean("ellipsize-icon-labels",
+                                                                 "Ellipsize Icon Labels",
+                                                                 "Ellipzize labels of unselected icons on desktop",
+                                                                 TRUE,
+                                                                 G_PARAM_READABLE));
 
     xfdesktop_cell_highlight_quark = g_quark_from_static_string("xfdesktop-icon-view-cell-highlight");
 }
@@ -1313,22 +1321,19 @@ xfdesktop_icon_view_style_set(GtkWidget *widget,
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     GtkWidget *dummy;
     
-    gtk_widget_style_get(GTK_WIDGET(icon_view),
+    gtk_widget_style_get(widget,
                          "label-alpha", &icon_view->priv->label_alpha,
-                         NULL);
-    DBG("label alpha is %d", icon_view->priv->label_alpha);
-    gtk_widget_style_get(GTK_WIDGET(icon_view),
                          "cell-spacing", &icon_view->priv->cell_spacing,
-                         NULL);
-    DBG("cell spacing is %d", icon_view->priv->cell_spacing);
-    gtk_widget_style_get(GTK_WIDGET(icon_view),
                          "cell-padding", &icon_view->priv->cell_padding,
-                         NULL);
-    DBG("cell padding is %d", icon_view->priv->cell_padding);
-    gtk_widget_style_get(GTK_WIDGET(icon_view),
                          "cell-text-width-proportion", &icon_view->priv->cell_text_width_proportion,
+                         "ellipsize-icon-labels", &icon_view->priv->ellipsize_icon_labels,
                          NULL);
+
+    DBG("label alpha is %d", icon_view->priv->label_alpha);
+    DBG("cell spacing is %d", icon_view->priv->cell_spacing);
+    DBG("cell padding is %d", icon_view->priv->cell_padding);
     DBG("cell text width proportion is %f", icon_view->priv->cell_text_width_proportion);
+    DBG("ellipsize icon label is %s", icon_view->priv->ellipsize_icon_labels?"true":"false");
 
     if(icon_view->priv->selection_box_color) {
         gdk_color_free(icon_view->priv->selection_box_color);
@@ -2034,7 +2039,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     pango_layout_set_text(playout, label, -1);
     pango_layout_get_size(playout, &text_area.width, &text_area.height);
     if(text_area.width > TEXT_WIDTH * PANGO_SCALE) {
-        if(icon != icon_view->priv->last_clicked_item)
+        if(icon != icon_view->priv->last_clicked_item && icon_view->priv->ellipsize_icon_labels)
             pango_layout_set_ellipsize(playout, PANGO_ELLIPSIZE_END);
         else {
             pango_layout_set_wrap(playout, PANGO_WRAP_WORD_CHAR);

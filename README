@@ -39,6 +39,7 @@ You'd want to add something like this to your ~/.gtkrc-2.0 file:
 
 style "xfdesktop-icon-view" {
     XfdesktopIconView::label-alpha = 75
+    XfdesktopIconVIew::ellipsize-icon-labels = 1
 
     XfdesktopIconVIew::cell-spacing = 6
     XfdesktopIconView::cell-padding = 6
@@ -54,10 +55,12 @@ style "xfdesktop-icon-view" {
 }
 widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"
 
-The first entry sets the opacity of the rounded text background.  The allowed
-values are from 0 (totally transparent) to 255 (totally opaque).
+The first two entries set the opacity of the rounded text background
+(allowed values are from 0 (totally transparent) to 255 (totally opaque),
+and whether or not unselected icons get their labels ellipsized
+(truncated) to fit on one line.
 
-The second three entries set spacing and sizing for individual icons on
+The second four entries set spacing and sizing for individual icons on
 the grid.  The 'cell-spacing' property specifies the spacing between each
 'cell' in the grid of icons.  The 'cell-padding' property sets extra
 padding placed around each icon+text.  The units for these two are in
