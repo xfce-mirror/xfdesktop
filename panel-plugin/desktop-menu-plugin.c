@@ -89,6 +89,24 @@ typedef struct _DMPlugin {
 } DMPlugin;
 
 
+static gboolean
+dmp_allow_menu_customization(void)
+{
+    static gboolean allow_customization = FALSE;
+    static gboolean checked = FALSE;
+
+    if(G_UNLIKELY(!checked)) {
+        XfceKiosk *kiosk;
+        
+        kiosk = xfce_kiosk_new("xfdesktop");
+        allow_customization = xfce_kiosk_query(kiosk, "CustomizeDesktopMenu");
+        xfce_kiosk_free(kiosk);
+        checked = TRUE;
+    }
+
+    return allow_customization;
+}
+
 static gchar *
 dmp_get_real_path(const gchar *raw_path)
 {
@@ -881,11 +899,13 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
     gtk_widget_show(hbox);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
     
-    btn = xfce_create_mixed_button(GTK_STOCK_EDIT, _("_Edit Menu"));
-    gtk_widget_show(btn);
-    gtk_box_pack_end(GTK_BOX(hbox), btn, FALSE, FALSE, 0);
-    g_signal_connect(G_OBJECT(btn), "clicked",
-            G_CALLBACK(dmp_edit_menu_clicked_cb), dmp);
+    if(G_LIKELY(dmp_allow_menu_customization() == TRUE)) {
+        btn = xfce_create_mixed_button(GTK_STOCK_EDIT, _("_Edit Menu"));
+        gtk_widget_show(btn);
+        gtk_box_pack_end(GTK_BOX(hbox), btn, FALSE, FALSE, 0);
+        g_signal_connect(G_OBJECT(btn), "clicked",
+                G_CALLBACK(dmp_edit_menu_clicked_cb), dmp);
+    }
     
     frame = xfce_create_framebox(_("Icons"), &frame_bin);
     gtk_widget_show(frame);
@@ -1052,14 +1072,16 @@ desktop_menu_plugin_construct(XfcePanelPlugin *plugin)
     gtk_container_add(GTK_CONTAINER(plugin), dmp->button);
     
     /* Add edit menu option to right click menu */
-    img = gtk_image_new_from_stock(GTK_STOCK_EDIT, GTK_ICON_SIZE_MENU);
-    gtk_widget_show(img);
-    mi = gtk_image_menu_item_new_with_label(_("Edit Menu"));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-    gtk_widget_show(mi);
-    xfce_panel_plugin_menu_insert_item(plugin, GTK_MENU_ITEM(mi));
-    g_signal_connect(G_OBJECT(mi), "activate", 
-                     G_CALLBACK(dmp_edit_menu_clicked_cb), dmp);
+    if(G_LIKELY(dmp_allow_menu_customization() == TRUE)) {
+        img = gtk_image_new_from_stock(GTK_STOCK_EDIT, GTK_ICON_SIZE_MENU);
+        gtk_widget_show(img);
+        mi = gtk_image_menu_item_new_with_label(_("Edit Menu"));
+        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+        gtk_widget_show(mi);
+        xfce_panel_plugin_menu_insert_item(plugin, GTK_MENU_ITEM(mi));
+        g_signal_connect(G_OBJECT(mi), "activate", 
+                         G_CALLBACK(dmp_edit_menu_clicked_cb), dmp);
+    }
     
     g_signal_connect(plugin, "free-data",
                      G_CALLBACK(dmp_free), dmp);
