@@ -23,6 +23,9 @@ Xfce 4.6beta1 (Xfce 4.5.91):
   * Use GtkFileChooserButtons in the panel plugin config dialog instead
     of entry box + button, and remove the 'Edit menu' button/menu item
     since we don't have a menu editor anymore.
+  * Add cell-spacing, cell-padding, and cell-text-width-proportion
+    stlye properties to XfdesktopIconView to control spacing/sizing of
+    the icon grid (bug 2886).  Patch from Giacomo Lozito.
 
 
 Xfce 4.6alpha (Xfce 4.5.90):

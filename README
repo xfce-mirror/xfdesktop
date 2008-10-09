@@ -40,6 +40,10 @@ You'd want to add something like this to your ~/.gtkrc-2.0 file:
 style "xfdesktop-icon-view" {
     XfdesktopIconView::label-alpha = 75
 
+    XfdesktopIconVIew::cell-spacing = 6
+    XfdesktopIconView::cell-padding = 6
+    XfdesktopIconView::cell-text-width-proportion = 2.5
+
     base[NORMAL] = "#00ff00"
     base[SELECTED] = "#5050ff"
     base[ACTIVE] = "#0000ff"
@@ -53,7 +57,16 @@ widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"
 The first entry sets the opacity of the rounded text background.  The allowed
 values are from 0 (totally transparent) to 255 (totally opaque).
 
-The second three entries set the color of the rounded text background.
+The second three entries set spacing and sizing for individual icons on
+the grid.  The 'cell-spacing' property specifies the spacing between each
+'cell' in the grid of icons.  The 'cell-padding' property sets extra
+padding placed around each icon+text.  The units for these two are in
+pixels.  The 'cell-text-width-proportion' property specifies the maximum
+width of the text label underneat the icon, as a multiplier of the icon
+width (so for 30px icons, '2.5' would leave a 75px wide area underneath
+for the text).
+
+The third three entries set the color of the rounded text background.
 * NORMAL sets the color for the regular, unselected state.
 * SELECTED sets the color for when the icon is selected, and the desktop has
   keyboard/mouse focus.

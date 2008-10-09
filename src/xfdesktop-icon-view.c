@@ -49,10 +49,10 @@
 #define DEFAULT_ICON_SIZE  32
 
 #define ICON_SIZE         (icon_view->priv->icon_size)
-#define TEXT_WIDTH        ((ICON_SIZE << 1) + (ICON_SIZE >> 1))  /* aka 2.5x */
-#define CELL_PADDING      6
+#define TEXT_WIDTH        ((icon_view->priv->cell_text_width_proportion) * ICON_SIZE)
+#define CELL_PADDING      (icon_view->priv->cell_padding)
 #define CELL_SIZE         (TEXT_WIDTH + CELL_PADDING * 2)
-#define SPACING           6
+#define SPACING           (icon_view->priv->cell_spacing)
 #define SCREEN_MARGIN     8
 #define CORNER_ROUNDNESS  4
 #define DEFAULT_RUBBERBAND_ALPHA  64
@@ -153,6 +153,9 @@ struct _XfdesktopIconViewPrivate
     
     GdkPixbuf *rounded_frame;
     gint label_alpha;
+    gint cell_padding;
+    gint cell_spacing;
+    gdouble cell_text_width_proportion;
 };
 
 static gboolean xfdesktop_icon_view_button_press(GtkWidget *widget,
@@ -357,6 +360,28 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                              0, 255, 155,
                                                              G_PARAM_READABLE));
     
+    gtk_widget_class_install_style_property(widget_class,
+                                            g_param_spec_int("cell-spacing",
+                                                             "Cell spacing",
+                                                             "Spacing between desktop icon cells",
+                                                             0, 255, 6,
+                                                             G_PARAM_READABLE));
+    
+    gtk_widget_class_install_style_property(widget_class,
+                                            g_param_spec_int("cell-padding",
+                                                             "Cell padding",
+                                                             "Padding in desktop icon cell",
+                                                             0, 255, 6,
+                                                             G_PARAM_READABLE));
+    
+    gtk_widget_class_install_style_property(widget_class,
+                                            g_param_spec_double("cell-text-width-proportion",
+                                                                "Cell text width proportion",
+                                                                "Width of text in desktop icon cell, "
+                                                                "calculated as multiplier of the icon size",
+                                                                1.0, 10.0, 2.5,
+                                                                G_PARAM_READABLE));
+
     xfdesktop_cell_highlight_quark = g_quark_from_static_string("xfdesktop-icon-view-cell-highlight");
 }
 
@@ -1292,6 +1317,18 @@ xfdesktop_icon_view_style_set(GtkWidget *widget,
                          "label-alpha", &icon_view->priv->label_alpha,
                          NULL);
     DBG("label alpha is %d", icon_view->priv->label_alpha);
+    gtk_widget_style_get(GTK_WIDGET(icon_view),
+                         "cell-spacing", &icon_view->priv->cell_spacing,
+                         NULL);
+    DBG("cell spacing is %d", icon_view->priv->cell_spacing);
+    gtk_widget_style_get(GTK_WIDGET(icon_view),
+                         "cell-padding", &icon_view->priv->cell_padding,
+                         NULL);
+    DBG("cell padding is %d", icon_view->priv->cell_padding);
+    gtk_widget_style_get(GTK_WIDGET(icon_view),
+                         "cell-text-width-proportion", &icon_view->priv->cell_text_width_proportion,
+                         NULL);
+    DBG("cell text width proportion is %f", icon_view->priv->cell_text_width_proportion);
 
     if(icon_view->priv->selection_box_color) {
         gdk_color_free(icon_view->priv->selection_box_color);
@@ -1713,7 +1750,7 @@ xfdesktop_setup_grids(XfdesktopIconView *icon_view)
     icon_view->priv->nrows = (height - SCREEN_MARGIN * 2) / CELL_SIZE;
     icon_view->priv->ncols = (width - SCREEN_MARGIN * 2) / CELL_SIZE;
         
-    DBG("CELL_SIZE=%d, TEXT_WIDTH=%d, ICON_SIZE=%d", CELL_SIZE, TEXT_WIDTH, ICON_SIZE);
+    DBG("CELL_SIZE=%0.3f, TEXT_WIDTH=%0.3f, ICON_SIZE=%u", CELL_SIZE, TEXT_WIDTH, ICON_SIZE);
     DBG("grid size is %dx%d", icon_view->priv->nrows, icon_view->priv->ncols);
     
     new_size = icon_view->priv->nrows * icon_view->priv->ncols
