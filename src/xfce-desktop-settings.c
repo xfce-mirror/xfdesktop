@@ -251,6 +251,9 @@ xfce_desktop_settings_load_initial(XfceDesktop *desktop,
         xfce_desktop_set_icon_font_size(desktop, setting->data.v_int);
         mcs_setting_free(setting);
         setting = NULL;
+    } else {
+        /* Using 12px as the default icon font size: */
+        xfce_desktop_set_icon_font_size(desktop, 12);
     }
     
     if(MCS_SUCCESS == mcs_client_get_setting(mcs_client, 
