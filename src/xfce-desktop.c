@@ -995,7 +995,10 @@ xfce_desktop_image_filename_changed(XfconfChannel *channel,
         return;
     backdrop = desktop->priv->backdrops[monitor];
 
-    filename = g_value_get_string(value);
+    if(!G_VALUE_HOLDS_STRING(value))
+        filename = DEFAULT_BACKDROP;
+    else
+        filename = g_value_get_string(value);
     if(G_LIKELY(filename && *filename)) {
         if(xfdesktop_backdrop_list_is_valid(filename)) {
             gchar *backdrop_file;
