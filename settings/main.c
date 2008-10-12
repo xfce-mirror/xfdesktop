@@ -1397,9 +1397,9 @@ main(int argc, char **argv)
     dialog = xfdesktop_settings_dialog_new(gxml, channel);
     if(opt_socket_id == 0) {
         g_object_unref(G_OBJECT(gxml));
-        while(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_HELP) {
-            /* show help... */
-        }
+
+        while(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_HELP)
+            g_spawn_command_line_async("xfhelp4 xfdesktop.html", NULL);
     } else {
         GtkWidget *plug, *plug_child;
 
