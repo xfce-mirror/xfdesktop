@@ -12,6 +12,7 @@ xfdesktop_settings_CFLAGS =						\
 	$(LIBXFCEGUI4_CFLAGS)						\
 	$(XFCONF_CFLAGS)							\
 	$(LIBGLADE_CFLAGS)							\
+	$(GTHREAD_CFLAGS)							\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
 	-DLOCALEDIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
@@ -22,7 +23,8 @@ xfdesktop_settings_LDADD =						\
 	$(XFCONF_LIBS)								\
 	$(LIBXFCEGUI4_LIBS)							\
 	$(LIBGLADE_LIBS)							\
-	$(LIBEXO_LIBS)
+	$(LIBEXO_LIBS)								\
+	$(GTHREAD_LIBS)
 
 if HAVE_CYGWIN
   xfdesktop_settings_LDADD += \

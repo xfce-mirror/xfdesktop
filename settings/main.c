@@ -54,6 +54,8 @@
 #include "xfdesktop-common.h"
 #include "xfdesktop-settings_glade.h"
 
+#define PREVIEW_HEIGHT  48
+
 #define SHOW_DESKTOP_MENU_PROP               "/desktop-menu/show"
 #define DESKTOP_MENU_SHOW_ICONS_PROP         "/desktop-menu/show-icons"
 
@@ -102,6 +104,12 @@ typedef struct
     GtkWidget *saturation_slider;
 } AppearancePanel;
 
+typedef struct
+{
+    GtkTreeModel *model;
+    GtkTreeIter *iter;
+} PreviewData;
+
 enum
 {
     COL_PIX = 0,
@@ -119,6 +127,97 @@ enum
     COL_ICON_PROPERTY,
     N_ICON_COLS,
 };
+
+
+/* assumes gdk lock is held on function enter, and should be held
+ * on function exit */
+static void
+xfdesktop_settings_do_single_preview(GtkTreeModel *model,
+                                     GtkTreeIter *iter)
+{
+    gchar *name = NULL, *new_name = NULL, *filename = NULL;
+    GdkPixbuf *pix, *pix_scaled = NULL;
+
+    gtk_tree_model_get(model, iter,
+                       COL_NAME, &name,
+                       COL_FILENAME, &filename,
+                       -1);
+
+    gdk_threads_leave();
+
+    pix = gdk_pixbuf_new_from_file(filename, NULL);
+    g_free(filename);
+    if(pix) {
+        gint width, height;
+        gdouble aspect;
+
+        width = gdk_pixbuf_get_width(pix);
+        height = gdk_pixbuf_get_height(pix);
+        /* no need to escape markup; it's already done for us */
+        new_name = g_strdup_printf(_("%s\n<i>Size: %dx%d</i>"),
+                                   name, width, height);
+
+        aspect = (gdouble)width / height;
+        width = PREVIEW_HEIGHT * aspect;
+        height = PREVIEW_HEIGHT;
+        pix_scaled = gdk_pixbuf_scale_simple(pix, width, height,
+                                             GDK_INTERP_BILINEAR);
+
+        g_object_unref(G_OBJECT(pix));
+    }
+    g_free(name);
+
+    gdk_threads_enter();
+
+    if(new_name) {
+        gtk_list_store_set(GTK_LIST_STORE(model), iter,
+                           COL_NAME, new_name,
+                           -1);
+        g_free(new_name);
+    }
+
+    if(pix_scaled) {
+        gtk_list_store_set(GTK_LIST_STORE(model), iter,
+                           COL_PIX, pix_scaled,
+                           -1);
+        g_object_unref(G_OBJECT(pix_scaled));
+    }
+}
+
+static gpointer
+xfdesktop_settings_create_single_preview(gpointer data)
+{
+    PreviewData *pdata = data;
+
+    gdk_threads_enter();
+    xfdesktop_settings_do_single_preview(pdata->model, pdata->iter);
+    gdk_threads_leave();
+
+    g_object_unref(G_OBJECT(pdata->model));
+    gtk_tree_iter_free(pdata->iter);
+    g_free(pdata);
+
+    return NULL;
+}
+
+static gpointer
+xfdesktop_settings_create_all_previews(gpointer data)
+{
+    GtkTreeModel *model = data;
+    GtkTreeIter iter;
+
+    gdk_threads_enter();
+    if(gtk_tree_model_get_iter_first(model, &iter)) {
+        do {
+            xfdesktop_settings_do_single_preview(model, &iter);
+        } while(gtk_tree_model_iter_next(model, &iter));
+    }
+    gdk_threads_leave();
+
+    g_object_unref(G_OBJECT(model));
+
+    return NULL;
+}
 
 static void
 cb_special_icon_toggled(GtkCellRendererToggle *render, gchar *path, gpointer user_data)
@@ -276,19 +375,19 @@ xfdesktop_image_list_add_dir(GtkListStore *ls,
 
         /* FIXME: this is probably too slow */
         if(xfdesktop_image_file_is_valid(buf)) {
-            gchar *name, *key = NULL;
+            gchar *name, *name_markup, *key = NULL;
 
             name = g_filename_to_utf8(file, strlen(file), NULL, NULL, NULL);
+            name_markup = g_markup_printf_escaped("<b>%s</b>", name);
             if(name) {
                 gchar *lower = g_utf8_strdown(name, -1);
                 key = g_utf8_collate_key(lower, -1);
                 g_free(lower);
             }
 
-            /* FIXME: set image thumbnail */
             gtk_list_store_append(ls, &iter);
             gtk_list_store_set(ls, &iter,
-                               COL_NAME, name,
+                               COL_NAME, name_markup,
                                COL_FILENAME, buf,
                                COL_COLLATE_KEY, key,
                                -1);
@@ -297,6 +396,7 @@ xfdesktop_image_list_add_dir(GtkListStore *ls,
                 iter_ret = gtk_tree_iter_copy(&iter);
 
             g_free(name);
+            g_free(name_markup);
             g_free(key);
         }
     }
@@ -494,9 +594,7 @@ xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
             xfconf_channel_set_string(panel->channel, prop_last, image_file);
 
             for(i = 0; images[i]; ++i) {
-                gchar *name;
-
-                /* FIXME: add image thumbnail */
+                gchar *name, *name_markup;
 
                 name = g_strrstr(images[i], G_DIR_SEPARATOR_S);
                 if(name)
@@ -504,14 +602,16 @@ xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
                 else
                     name = images[i];
                 name = g_filename_to_utf8(name, strlen(name), NULL, NULL, NULL);
+                name_markup = g_markup_printf_escaped("<b>%s</b>", name);
 
                 gtk_list_store_append(ls, &iter);
                 gtk_list_store_set(ls, &iter,
-                                   COL_NAME, name,
+                                   COL_NAME, name_markup,
                                    COL_FILENAME, images[i],
                                    -1);
 
                 g_free(name);
+                g_free(name_markup);
             }
 
             g_strfreev(images);
@@ -551,9 +651,7 @@ xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
         }
 
         if(!image_file_iter) {
-            gchar *name, *key = NULL;
-
-            /* FIXME: set image thumbnail */
+            gchar *name, *name_markup, *key = NULL;
 
             name = g_strrstr(image_file, G_DIR_SEPARATOR_S);
             if(name)
@@ -561,6 +659,7 @@ xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
             else
                 name = image_file;
             name = g_filename_to_utf8(name, strlen(name), NULL, NULL, NULL);
+            name_markup = g_markup_printf_escaped("<b>%s</b>", name);
 
             if(name) {
                 gchar *lower = g_utf8_strdown(name, -1);
@@ -570,13 +669,14 @@ xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
 
             gtk_list_store_append(ls, &iter);
             gtk_list_store_set(ls, &iter,
-                               COL_NAME, name,
+                               COL_NAME, name_markup,
                                COL_FILENAME, image_file,
                                COL_COLLATE_KEY, key,
                                -1);
             image_file_iter = gtk_tree_iter_copy(&iter);
 
             g_free(name);
+            g_free(name_markup);
             g_free(key);
         }
 
@@ -601,7 +701,13 @@ xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
         gtk_tree_selection_select_iter(sel, image_file_iter);
         gtk_tree_iter_free(image_file_iter);
     }
-    g_object_unref(G_OBJECT(ls));
+
+    /* generate previews of each image -- the new thread will own
+     * the reference on the list store, so let's not unref it here */
+    if(!g_thread_create(xfdesktop_settings_create_all_previews, ls, FALSE, NULL)) {
+        g_critical("Failed to spawn thread; backdrop previews will be unavailable.");
+        g_object_unref(G_OBJECT(ls));
+    }
 
     g_free(image_file);
 
@@ -727,19 +833,32 @@ add_file_button_clicked(GtkWidget *button,
         gchar *filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(chooser));
         GtkTreeModel *model = gtk_tree_view_get_model(GTK_TREE_VIEW(panel->image_treeview));
         GtkTreeIter iter;
+        /* all these copies are gross */
         gchar *name = g_path_get_basename(filename);
         gchar *name_utf8 = g_filename_to_utf8(name, strlen(name),
                                               NULL, NULL, NULL);
+        gchar *name_markup = g_markup_printf_escaped("<b>%s</b>", name_utf8);
+        PreviewData *pdata = g_new(PreviewData, 1);
 
         gtk_list_store_append(GTK_LIST_STORE(model), &iter);
         gtk_list_store_set(GTK_LIST_STORE(model), &iter,
-                           COL_NAME, name_utf8,
+                           COL_NAME, name_markup,
                            COL_FILENAME, filename,
                            -1);
+
+        pdata->model = g_object_ref(G_OBJECT(model));
+        pdata->iter = gtk_tree_iter_copy(&iter);
+        if(!g_thread_create(xfdesktop_settings_create_single_preview, pdata, FALSE, NULL)) {
+            g_critical("Unable to create thread for single image preview.");
+            g_object_unref(G_OBJECT(pdata->model));
+            gtk_tree_iter_free(pdata->iter);
+            g_free(pdata);
+        }
 
         g_free(filename);
         g_free(name);
         g_free(name_utf8);
+        g_free(name_markup);
 
         if(panel->image_list_loaded)
             xfdesktop_settings_save_backdrop_list(panel, model);
@@ -1085,7 +1204,7 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
                                         col);
             render = gtk_cell_renderer_text_new();
             col = gtk_tree_view_column_new_with_attributes("name", render,
-                                                           "text", COL_NAME, NULL);
+                                                           "markup", COL_NAME, NULL);
             gtk_tree_view_append_column(GTK_TREE_VIEW(panel->image_treeview),
                                         col);
 
@@ -1226,6 +1345,8 @@ main(int argc, char **argv)
     GtkWidget *dialog;
     GError *error = NULL;
 
+    g_thread_init(NULL);
+    gdk_threads_init();
     gtk_init(&argc, &argv);
 
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
@@ -1242,11 +1363,14 @@ main(int argc, char **argv)
     }
 
     channel = xfconf_channel_new(XFDESKTOP_CHANNEL);
+
+    gdk_threads_enter();
     dialog = xfdesktop_settings_dialog_new(channel);
 
     while(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_HELP) {
         /* show help... */
     }
+    gdk_threads_leave();
     
     xfconf_shutdown();
 
