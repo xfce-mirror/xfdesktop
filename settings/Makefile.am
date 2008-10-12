@@ -13,6 +13,7 @@ xfdesktop_settings_CFLAGS =						\
 	$(XFCONF_CFLAGS)							\
 	$(LIBGLADE_CFLAGS)							\
 	$(GTHREAD_CFLAGS)							\
+	-DG_LOG_DOMAIN=\"xfdesktop-settings\"		\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
 	-DLOCALEDIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\

@@ -1050,16 +1050,12 @@ suboptions_set_sensitive(GtkToggleButton *btn,
 }
 
 static GtkWidget *
-xfdesktop_settings_dialog_new(XfconfChannel *channel)
+xfdesktop_settings_dialog_new(GladeXML *main_gxml,
+                              XfconfChannel *channel)
 {
     gint i, j, nmonitors, nscreens;
-    GladeXML *main_gxml;
     GtkWidget *dialog, *appearance_container, *chk_custom_font_size,
               *spin_font_size, *color_style_widget, *w, *box;
-
-    main_gxml = glade_xml_new_from_buffer(xfdesktop_settings_glade,
-                                          xfdesktop_settings_glade_length,
-                                          "prefs_dialog", NULL);
 
     dialog = glade_xml_get_widget(main_gxml, "prefs_dialog");
     appearance_container = glade_xml_get_widget(main_gxml,
@@ -1333,23 +1329,51 @@ xfdesktop_settings_dialog_new(XfconfChannel *channel)
 
     setup_special_icon_list(main_gxml, channel);
 
-    g_object_unref(G_OBJECT(main_gxml));
-    
     return dialog;
 }
+
+static GdkNativeWindow opt_socket_id = 0;
+static gboolean opt_version = FALSE;
+static GOptionEntry option_entries[] = {
+    { "socket-id", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_INT, &opt_socket_id, N_("Settings manager socket"), N_("SOCKET ID") },
+    { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_version, N_("Version information"), NULL },
+    { NULL, },
+};
 
 int
 main(int argc, char **argv)
 {
     XfconfChannel *channel;
+    GladeXML *gxml;
     GtkWidget *dialog;
     GError *error = NULL;
 
     g_thread_init(NULL);
     gdk_threads_init();
-    gtk_init(&argc, &argv);
 
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+
+    if(!gtk_init_with_args(&argc, &argv, "", option_entries, PACKAGE, &error)) {
+        if(G_LIKELY(error)) {
+            g_printerr("%s: %s.\n", G_LOG_DOMAIN, error->message);
+            g_printerr(_("Type '%s --help' for usage."), G_LOG_DOMAIN);
+            g_printerr("\n");
+            g_error_free(error);
+        } else
+            g_error("Unable to open display.");
+
+        return EXIT_FAILURE;
+    }
+
+    if(G_UNLIKELY(opt_version)) {
+        g_print("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, VERSION, xfce_version_string());
+        g_print("%s\n", "Copyright (c) 2004-2008");
+        g_print("\t%s\n\n", _("The Xfce development team. All rights reserved."));
+        g_print(_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
+        g_print("\n");
+
+        return EXIT_SUCCESS;
+    }
 
     if(!xfconf_init(&error)) {
         xfce_message_dialog(NULL, _("Desktop Settings"),
@@ -1362,14 +1386,37 @@ main(int argc, char **argv)
         return 1;
     }
 
+
+    gxml = glade_xml_new_from_buffer(xfdesktop_settings_glade,
+                                     xfdesktop_settings_glade_length,
+                                     "prefs_dialog", NULL);
     channel = xfconf_channel_new(XFDESKTOP_CHANNEL);
 
     gdk_threads_enter();
-    dialog = xfdesktop_settings_dialog_new(channel);
 
-    while(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_HELP) {
-        /* show help... */
+    dialog = xfdesktop_settings_dialog_new(gxml, channel);
+    if(opt_socket_id == 0) {
+        g_object_unref(G_OBJECT(gxml));
+        while(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_HELP) {
+            /* show help... */
+        }
+    } else {
+        GtkWidget *plug, *plug_child;
+
+        plug = gtk_plug_new(opt_socket_id);
+        gtk_widget_show(plug);
+        g_signal_connect(G_OBJECT(plug), "delete-event",
+                         G_CALLBACK(gtk_main_quit), NULL);
+
+        plug_child = glade_xml_get_widget(gxml, "alignment1");
+        gtk_widget_reparent(plug_child, plug);
+        gtk_widget_show(plug_child);
+
+        g_object_unref(G_OBJECT(gxml));
+
+        gtk_main();
     }
+
     gdk_threads_leave();
     
     xfconf_shutdown();
