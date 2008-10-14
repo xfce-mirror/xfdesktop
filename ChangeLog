@@ -1,3 +1,345 @@
+2008-10-12 13:02  kelnos
+
+	* NEWS, settings/main.c,
+	  settings/xfce-backdrop-settings.desktop.in: hook up settings
+	  dialog help
+
+2008-10-12 12:53  kelnos
+
+	* NEWS, settings/Makefile.am, settings/main.c,
+	  settings/xfce-backdrop-settings.desktop.in: add pluggable bits
+	  for the settings manager
+
+2008-10-12 12:53  kelnos
+
+	* NEWS, settings/Makefile.am, settings/main.c: add backdrop preview
+	  image thumbnail to settings dialog
+
+2008-10-12 10:05  kelnos
+
+	* NEWS, README, src/xfdesktop-icon-view.c: add style props for icon
+	  text label shadow (bug 4412).
+	  
+	  patch from andrea santilli <yawara quipo it>
+
+2008-10-10 07:22  maximilian
+
+	* po/ChangeLog, po/ja.po: Translations updated and added in
+	  Japanese and French for the squeeze, mixer, libxfce4ui, thunar,
+	  xfcalendar, settings and xfdesktop modules
+
+2008-10-09 15:06  kelnos
+
+	* src/xfce-desktop.c: fix g_warning when property chaing is
+	  actually a remove
+
+2008-10-09 05:01  sas
+
+	* po/hu.po: [intl:hu] little fixes
+
+2008-10-09 01:22  kelnos
+
+	* NEWS, README, src/xfdesktop-icon-view.c: add
+	  ellipsize-icon-labels to control whether or not icon labels get
+	  shortened down to 1 line when not selected (bug 2886). patch from
+	  daniel gibson.
+
+2008-10-09 01:10  kelnos
+
+	* NEWS, README, src/xfdesktop-icon-view.c: add cell-padding,
+	  cell-spacing, and cell-text-width-proportion style
+	  properties to control spacing/sizing of the icon view (bug 2886).
+	  patch
+	  from giacomo lozito
+
+2008-10-08 23:25  kelnos
+
+	* src/xfdesktop-file-icon-manager.c,
+	  src/xfdesktop-special-file-icon.h: make icons come up in a
+	  reasonable order for the first time
+	  Home, File System, Trash, then removable icons, then everything
+	  else
+
+2008-10-08 23:23  kelnos
+
+	* src/xfdesktop-icon-view.c: amd64 warning fixes
+
+2008-10-07 19:55  maximilian
+
+	* po/ChangeLog, po/ja.po: Translation updates:
+	  - xfce4-appfinder: ja, si
+	  - xfce-utils: ja, si
+	  - xfce4-mixer: si
+	  - xfce4-panel: ja, si
+	  - xfdesktop: ja
+	  - terminal: ja
+
+2008-10-07 11:07  kelnos
+
+	* NEWS, panel-plugin/desktop-menu-plugin.c: use GtkFileButton in
+	  panel plugin config dialog; remove 'edit menu' buttons
+
+2008-10-07 10:38  kelnos
+
+	* NEWS, panel-plugin/desktop-menu-plugin.c: fix memleak: free menu
+	  in panel plugin after it's closed
+	  
+	  the old menu didn't require this, but it's required now.
+
+2008-10-07 10:27  kelnos
+
+	* NEWS, modules/menu/desktop-menu.c: fix memleak: free result of
+	  gtk_container_get_children()
+
+2008-10-07 03:16  kelnos
+
+	* src/xfce-desktop.c: fix typo in non-file-icons build
+
+2008-10-07 03:16  kelnos
+
+	* common/xfdesktop-common.h, src/xfce-backdrop.c: set default
+	  backdrop to xfce-stripes.png and color to #030508 per Olivier
+
+2008-10-05 17:52  maximilian
+
+	* po/ChangeLog, po/es.po, po/id.po: Updated and added Estonian
+	  translations for the libxfcegui4, terminal and mousepad trunk
+	  modules and libxfce4util branch 4.4 module
+	  Updated Indonesian translations for the xfce-utils, xfce4-mixer,
+	  xarchiver, xfwm4, xfcalendar and xfdesktop trunk modules
+	  Updated and added Spanish translations for the xfce4-appfinder,
+	  squeeze, libexo, xfce-utils, libxfce4menu, xfce4-session,
+	  xfce4-mixer, libxfce4util, libxfce4ui, xfce4-icon-theme, thunar,
+	  libxfcegui4, xfce4-panel, xfdesktop, xfce4-trigger-launcher,
+	  terminal, mousepad and xfmedia trunk modules
+	  Updated Russian translation for the xarchiver, libexo and
+	  libxfcegui4 trunk modules
+	  Updated and added German translation of the xfce4-settings and
+	  xfwm4 trunk modules
+	  Updated Japanese translation for the thunar module
+	  Updated Sinhalese translation for the libxfcegui4 trunk module
+
+2008-10-03 09:08  kelnos
+
+	* src/main.c: move SM init earlier, make prio same as the panel,
+	  use SmRestartImmediately
+
+2008-10-01 07:40  kelnos
+
+	* src/xfdesktop-icon-view.c: rename a couple functions to better
+	  reflect what they do
+
+2008-10-01 07:40  kelnos
+
+	* src/xfdesktop-icon-view.c: minor cleanups -- don't need a
+	  separate function there
+
+2008-10-01 05:17  kelnos
+
+	* src/xfdesktop-icon-view.c: optimise adding/removing icons from
+	  the selected list while rubberbanding
+
+2008-10-01 05:17  kelnos
+
+	* src/xfdesktop-icon-view.c: make things a bit more readable
+
+2008-09-27 05:39  kelnos
+
+	* src/xfdesktop-file-icon-manager.c: er, it's NotShowIn, not
+	  NeverShowIn
+
+2008-09-25 20:11  kelnos
+
+	* src/xfdesktop-window-icon-manager.c: add workaround for change in
+	  libwnck signal API for
+	  WnckScreen::active-workspace-changed (bug 4395)
+
+2008-09-25 11:25  kelnos
+
+	* NEWS: update NEWS
+
+2008-09-25 11:23  kelnos
+
+	* src/xfdesktop-volume-icon.c: show eject for removable volumes
+	  (not just discs) that support it (bug 3738)
+	  
+	  also hide mount/umount for those volumes, and add icons to the
+	  menu
+
+2008-09-25 11:08  kelnos
+
+	* NEWS: update NEWS
+
+2008-09-25 11:06  kelnos
+
+	* src/xfdesktop-icon-view.c, src/xfdesktop-icon-view.h,
+	  src/xfdesktop-window-icon-manager.c: fix window menu still
+	  popping up after window icon de-selected
+
+2008-09-25 10:51  kelnos
+
+	* src/xfdesktop-file-utils.c: get the custom icon and use the mime
+	  type icon as a fallback
+	  
+	  not the other way around... this reverts a bad decision made in
+	  revision 26154 (bug 4275).
+
+2008-09-25 10:51  kelnos
+
+	* src/xfdesktop-icon-view.c: only start rubber banding for button 1
+
+2008-09-25 10:36  kelnos
+
+	* NEWS, src/xfdesktop-file-icon-manager.c: obey Hidden=true,
+	  OnlyShowIn=, and NeverShowIn= for files on desktop (bug 4022)
+
+2008-09-25 10:36  kelnos
+
+	* settings/xfdesktop-settings.glade: get rid of 'allow xfce to
+	  manage desktop' chkbox, since it's lame
+
+2008-09-25 10:36  kelnos
+
+	* settings/backdrop-list-manager.c,
+	  settings/backdrop-list-manager.h: ditch old backdrop list manager
+	  dialog files
+
+2008-09-25 06:28  kelnos
+
+	* NEWS, src/xfce-desktop.c, src/xfdesktop-icon-view.c: implement
+	  rubber band selection for XfdesktopIconView (bug 3245)
+
+2008-09-25 06:27  kelnos
+
+	* src/xfdesktop-icon-view.c: remove redundant function
+
+2008-09-25 06:27  kelnos
+
+	* src/xfdesktop-icon-view.c: remove unneeded glib 2.10 check since
+	  we depend on 2.12 now
+
+2008-09-25 06:27  kelnos
+
+	* src/xfce-desktop.c: double-buffer the desktop window again.
+	  
+	  i'm not entirely sure why we turned this off years and years ago.
+	  it
+	  doesn't really impact performance (well, except for positively)
+	  or
+	  memory usage, and fixes a bunch of flicker issues i never got
+	  around to
+	  fixing.
+
+2008-09-25 06:27  kelnos
+
+	* src/xfdesktop-icon-view.c: remove custom desktop tooltip code. it
+	  was always slightly buggy, and
+	  working on the icon view code was made much more difficult
+	  because of
+	  it. gtk 2.12 is required for desktop icon tooltips.
+
+2008-09-20 18:45  kelnos
+
+	* configure.ac.in: autoconf sucks. specifically, new versions that
+	  change behavior suck.
+
+2008-09-20 05:47  kelnos
+
+	* NEWS: update NEWS
+
+2008-09-20 05:43  kelnos
+
+	* modules/menu/desktop-menu.c: various coding style fixes and
+	  little code cleanups
+
+2008-09-20 05:43  kelnos
+
+	* modules/menu/desktop-menu.c: fix menu module crash on .desktop
+	  file change or icon theme change (bug 3615)
+	  
+	  this also fixes the weird "double menu" problem (bug 4342). what
+	  was
+	  happening was that thunar-vfs was firing off a dir change
+	  notification,
+	  and then the menu would start to regenerate. then it would call
+	  into
+	  GtkIconTheme, which then noticed that the icon cache was stale
+	  and
+	  needed to be re-read. so then it would fire
+	  GtkIconTheme::changed,
+	  which causes a recursive menu regeneration. since the menu
+	  generation
+	  function isn't reentrant, now we use g_idle_add() to schedule a
+	  menu
+	  regen, and we don't schedule one if there's one already scheduled
+	  or
+	  in progress.
+
+2008-09-16 05:07  kelnos
+
+	* NEWS, src/xfce-desktop.c, src/xfdesktop-file-icon-manager.c: add
+	  XDG userdir support for desktop and templates folders
+	  
+	  patch somewhat from Andrea Santilli <yawara@quipo.it> (bug 4365)
+
+2008-09-12 20:24  kelnos
+
+	* NEWS: update NEWS
+
+2008-09-12 17:30  jari
+
+	* po/ChangeLog, po/fi.po: Update Finnish translation
+
+2008-09-11 14:30  piarres
+
+	* po/eu.po: Fixing some error in last commit
+
+2008-09-10 13:51  piarres
+
+	* po/ChangeLog, po/eu.po: xfdesktop Basque translation update
+
+2008-09-09 07:38  maximilian
+
+	* po/ChangeLog, po/fr.po, po/id.po: Translations updates and new
+	  ones for trunk in es,fr,id
+
+2008-09-09 03:49  kelnos
+
+	* settings/main.c, settings/xfdesktop-settings.glade, src/menu.c:
+	  hook up desktop menu show app icons pref
+
+2008-09-09 03:49  kelnos
+
+	* settings/main.c, settings/xfdesktop-settings.glade,
+	  src/windowlist.c: hook up 'show app icons in windowlist' pref
+
+2008-09-09 03:48  kelnos
+
+	* settings/main.c, settings/xfdesktop-settings.glade: disable some
+	  suboptions when the main option isn't active
+
+2008-09-08 10:56  majkl
+
+	* po/ChangeLog, po/cs.po: Updated Czech translation
+
+2008-09-08 09:00  stephan
+
+	* ChangeLog, configure.ac.in, po/POTFILES.in, po/am.po, po/ar.po,
+	  po/az.po, po/be.po, po/bg.po, po/bn_IN.po, po/ca.po, po/cs.po,
+	  po/de.po, po/dz.po, po/el.po, po/en_GB.po, po/eo.po, po/es.po,
+	  po/es_MX.po, po/et.po, po/eu.po, po/fa.po, po/fi.po, po/fr.po,
+	  po/gl.po, po/gu.po, po/he.po, po/hi.po, po/hu.po, po/hy.po,
+	  po/id.po, po/it.po, po/ja.po, po/ka.po, po/ko.po, po/lt.po,
+	  po/lv.po, po/mk.po, po/mr.po, po/ms.po, po/nb_NO.po, po/nl.po,
+	  po/pa.po, po/pl.po, po/pt_BR.po, po/pt_PT.po, po/ro.po, po/ru.po,
+	  po/sk.po, po/sq.po, po/sv.po, po/ta.po, po/tr.po, po/uk.po,
+	  po/ur.po, po/vi.po, po/xfdesktop.pot, po/zh_CN.po, po/zh_TW.po:
+	  Update ChangeLog
+	  Update .po files
+	  Update POTFILES.in
+	  Remove -svn tag
+	  Update dependency-requirements
+
 2008-09-08 07:46  kelnos
 
 	* settings/main.c, settings/xfdesktop-settings.glade: backdrop
