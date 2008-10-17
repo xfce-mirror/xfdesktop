@@ -922,7 +922,6 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     if(backdrop->priv->brightness != 0)
         final_image = adjust_brightness(final_image, backdrop->priv->brightness);
 
-    g_debug("saturation is %.4f", backdrop->priv->saturation);
     if(backdrop->priv->saturation > 1.01 || backdrop->priv->saturation < 0.99) {
         gdk_pixbuf_saturate_and_pixelate(final_image, final_image,
                                          (gfloat)backdrop->priv->saturation,

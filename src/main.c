@@ -173,6 +173,10 @@ client_message_received(GtkWidget *w, GdkEventClient *evt, gpointer user_data)
                                                    GDK_CURRENT_TIME);
             return TRUE;
         } else if(!strcmp(QUIT_MESSAGE, evt->data.b)) {
+            if(is_session_managed) {
+                client_session_set_restart_style(client_session,
+                                                 SESSION_RESTART_IF_RUNNING);
+            }
             gtk_main_quit();
             return TRUE;
         }
@@ -289,10 +293,14 @@ main(int argc, char **argv)
 
     already_running = xfdesktop_check_is_running(&xid);
     if(already_running) {
-        DBG("xfdesktop is running");
-        if(!message)
+        if(!message) {
+            g_printerr("%s[%d] is already running; assuming --reload\n",
+                       PACKAGE, (int)getpid());
             message = RELOAD_MESSAGE;
+        }
     }
+
+    g_print("%s[%d]: starting up\n", PACKAGE, getpid());
     
     if(message) {
         if(!already_running)
