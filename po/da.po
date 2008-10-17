@@ -1,0 +1,1367 @@
+# Danish translations for xfdesktop package.
+# Copyright (C) 2003-2005 The Xfce development team.
+# This file is distributed under the same license as the xfdesktop package.
+# Jesper Berth <bigsanta@berthit.dk>, 2005.
+# Per Kongstad <p_kongstad@op.pl>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop 4.4.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-04-09 14:22+0200\n"
+"PO-Revision-Date: 2008-10-15 23:09+0100\n"
+"Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: ../menueditor/menueditor-add-dialog.c:129
+msgid "Add menu entry"
+msgstr "Tilføj menupunkt"
+
+#. Type
+#: ../menueditor/menueditor-add-dialog.c:142
+#: ../menueditor/menueditor-add-dialog.c:143
+#: ../menueditor/menueditor-add-external-dialog.c:113
+#: ../menueditor/menueditor-add-external-dialog.c:114
+msgid "Type:"
+msgstr "Type:"
+
+#: ../menueditor/menueditor-add-dialog.c:151
+msgid "Title"
+msgstr "Titel"
+
+#: ../menueditor/menueditor-add-dialog.c:152
+msgid "Submenu"
+msgstr "Undermenu"
+
+#: ../menueditor/menueditor-add-dialog.c:153
+msgid "Launcher"
+msgstr "Starter"
+
+#: ../menueditor/menueditor-add-dialog.c:154
+msgid "Separator"
+msgstr "Separator"
+
+#: ../menueditor/menueditor-add-dialog.c:155
+msgid "Quit"
+msgstr "Afslut"
+
+#. Name
+#: ../menueditor/menueditor-add-dialog.c:162
+#: ../menueditor/menueditor-add-dialog.c:163
+#: ../menueditor/menueditor-edit-dialog.c:140
+#: ../menueditor/menueditor-edit-dialog.c:141
+#: ../src/xfdesktop-file-properties-dialog.c:188
+msgid "Name:"
+msgstr "Navn:"
+
+#. Command
+#: ../menueditor/menueditor-add-dialog.c:176
+#: ../menueditor/menueditor-add-dialog.c:177
+#: ../menueditor/menueditor-edit-dialog.c:154
+#: ../menueditor/menueditor-edit-dialog.c:155
+msgid "Command:"
+msgstr "Kommando:"
+
+#. Icon chooser
+#: ../menueditor/menueditor-add-dialog.c:201
+#: ../menueditor/menueditor-add-dialog.c:202
+#: ../menueditor/menueditor-add-dialog.c:244
+#: ../menueditor/menueditor-add-dialog.c:245
+#: ../menueditor/menueditor-edit-dialog.c:179
+#: ../menueditor/menueditor-edit-dialog.c:180
+#: ../menueditor/menueditor-edit-dialog.c:222
+#: ../menueditor/menueditor-edit-dialog.c:223
+msgid "Icon:"
+msgstr "Ikon:"
+
+#. setup a label to tell that no icon was selected
+#: ../menueditor/menueditor-add-dialog.c:213
+#: ../menueditor/menueditor-add-dialog.c:330
+#: ../menueditor/menueditor-edit-dialog.c:191
+#: ../menueditor/menueditor-edit-dialog.c:586
+msgid "No icon"
+msgstr "Intet ikon"
+
+#: ../menueditor/menueditor-add-dialog.c:225
+#: ../menueditor/menueditor-add-dialog.c:226
+#: ../menueditor/menueditor-edit-dialog.c:203
+#: ../menueditor/menueditor-edit-dialog.c:204
+msgid "Themed icon:"
+msgstr "Temaikon:"
+
+#. allocate the chooser dialog
+#: ../menueditor/menueditor-add-dialog.c:252
+#: ../menueditor/menueditor-add-dialog.c:347
+#: ../menueditor/menueditor-edit-dialog.c:230
+#: ../menueditor/menueditor-edit-dialog.c:384
+msgid "Select icon"
+msgstr "Vælg ikon"
+
+#: ../menueditor/menueditor-add-dialog.c:257
+#: ../menueditor/menueditor-add-dialog.c:437
+#: ../menueditor/menueditor-add-external-dialog.c:142
+#: ../menueditor/menueditor-edit-dialog.c:235
+#: ../menueditor/menueditor-edit-dialog.c:296
+#: ../menueditor/menueditor-edit-external-dialog.c:122
+#: ../panel-plugin/desktop-menu-plugin.c:600
+#: ../settings/appearance-settings.c:579
+#: ../settings/backdrop-list-manager.c:435
+#: ../settings/backdrop-list-manager.c:536
+msgid "All Files"
+msgstr "Alle filer"
+
+#: ../menueditor/menueditor-add-dialog.c:261
+#: ../menueditor/menueditor-edit-dialog.c:239
+#: ../panel-plugin/desktop-menu-plugin.c:606
+#: ../settings/appearance-settings.c:583
+#: ../settings/backdrop-list-manager.c:439
+msgid "Image Files"
+msgstr "Billedfiler"
+
+#. Start Notify check button
+#: ../menueditor/menueditor-add-dialog.c:283
+#: ../menueditor/menueditor-edit-dialog.c:261
+msgid "Use startup _notification"
+msgstr "Brug _opstartpåmindelse"
+
+#. Run in terminal check button
+#: ../menueditor/menueditor-add-dialog.c:288
+#: ../menueditor/menueditor-edit-dialog.c:266
+msgid "Run in _terminal"
+msgstr "Kør i _terminal"
+
+#: ../menueditor/menueditor-add-dialog.c:427
+#: ../menueditor/menueditor-edit-dialog.c:286
+#: ../menueditor/menueditor-main-window.c:448
+msgid "Select command"
+msgstr "Vælg kommando"
+
+#: ../menueditor/menueditor-add-dialog.c:442
+#: ../menueditor/menueditor-edit-dialog.c:301
+msgid "Executable Files"
+msgstr "Kørbare filer"
+
+#: ../menueditor/menueditor-add-dialog.c:457
+#: ../menueditor/menueditor-edit-dialog.c:316
+msgid "Perl Scripts"
+msgstr "Perl-skripter"
+
+#: ../menueditor/menueditor-add-dialog.c:463
+#: ../menueditor/menueditor-edit-dialog.c:322
+msgid "Python Scripts"
+msgstr "Python-skripter"
+
+#: ../menueditor/menueditor-add-dialog.c:469
+#: ../menueditor/menueditor-edit-dialog.c:328
+msgid "Ruby Scripts"
+msgstr "Ruby-skripter"
+
+#: ../menueditor/menueditor-add-dialog.c:475
+#: ../menueditor/menueditor-edit-dialog.c:334
+msgid "Shell Scripts"
+msgstr "Skalskripter"
+
+#: ../menueditor/menueditor-add-external-dialog.c:100
+msgid "Add external menu entry"
+msgstr "Tilføj et eksternt menupunkt"
+
+#: ../menueditor/menueditor-add-external-dialog.c:122
+msgid "File"
+msgstr "Fil"
+
+#: ../menueditor/menueditor-add-external-dialog.c:123
+msgid "System"
+msgstr "System"
+
+#. Source
+#: ../menueditor/menueditor-add-external-dialog.c:129
+#: ../menueditor/menueditor-add-external-dialog.c:130
+#: ../menueditor/menueditor-edit-external-dialog.c:109
+#: ../menueditor/menueditor-edit-external-dialog.c:110
+msgid "Source:"
+msgstr "Kilde:"
+
+#: ../menueditor/menueditor-add-external-dialog.c:137
+#: ../menueditor/menueditor-edit-external-dialog.c:117
+msgid "Select external menu"
+msgstr "Vælg en ekstern menu"
+
+#: ../menueditor/menueditor-add-external-dialog.c:146
+#: ../menueditor/menueditor-edit-external-dialog.c:126
+#: ../panel-plugin/desktop-menu-plugin.c:614
+msgid "Menu Files"
+msgstr "Menufiler"
+
+#. Style
+#: ../menueditor/menueditor-add-external-dialog.c:155
+#: ../menueditor/menueditor-add-external-dialog.c:156
+#: ../menueditor/menueditor-edit-external-dialog.c:135
+#: ../menueditor/menueditor-edit-external-dialog.c:136
+msgid "Style:"
+msgstr "Stil:"
+
+#: ../menueditor/menueditor-add-external-dialog.c:165
+#: ../menueditor/menueditor-edit-external-dialog.c:145
+msgid "Simple"
+msgstr "Simpel"
+
+#: ../menueditor/menueditor-add-external-dialog.c:166
+#: ../menueditor/menueditor-edit-external-dialog.c:146
+msgid "Multilevel"
+msgstr "Flerniveau"
+
+#. Unique check button
+#: ../menueditor/menueditor-add-external-dialog.c:171
+#: ../menueditor/menueditor-edit-external-dialog.c:151
+msgid "_Unique entries only"
+msgstr "Kun _unikke menupunkter"
+
+#: ../menueditor/menueditor-edit-dialog.c:127
+msgid "Edit menu entry"
+msgstr "Redigér menupunkt"
+
+#: ../menueditor/menueditor-edit-external-dialog.c:96
+msgid "Edit external menu entry"
+msgstr "Redigér eksternt menupunkt"
+
+#: ../menueditor/menueditor-main.c:43
+msgid "Xfce4-MenuEditor"
+msgstr "Xfce4-menuredigering"
+
+#: ../menueditor/menueditor-main-window.c:140
+msgid "_File"
+msgstr "_Fil"
+
+#: ../menueditor/menueditor-main-window.c:141
+msgid "_New"
+msgstr "_Ny"
+
+#: ../menueditor/menueditor-main-window.c:141
+msgid "Create a new empty menu"
+msgstr "Opret en ny tom menu"
+
+#: ../menueditor/menueditor-main-window.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1602
+#: ../src/xfdesktop-special-file-icon.c:624
+#: ../src/xfdesktop-volume-icon.c:543
+msgid "_Open"
+msgstr "_Åben"
+
+#: ../menueditor/menueditor-main-window.c:142
+msgid "Open existing menu"
+msgstr "Åben eksisterende menu"
+
+#: ../menueditor/menueditor-main-window.c:143
+msgid "Open _default menu"
+msgstr "Åben _standardmenu"
+
+#: ../menueditor/menueditor-main-window.c:143
+msgid "Open default menu"
+msgstr "Åben standardmenu"
+
+#: ../menueditor/menueditor-main-window.c:144
+msgid "_Save"
+msgstr "_Gem"
+
+#: ../menueditor/menueditor-main-window.c:144
+msgid "Save modifications"
+msgstr "Gem ændringer"
+
+#: ../menueditor/menueditor-main-window.c:145
+msgid "Save _as..."
+msgstr "Gem _som..."
+
+#: ../menueditor/menueditor-main-window.c:145
+msgid "Save menu under a given name"
+msgstr "Gem menu med angivne navn"
+
+#: ../menueditor/menueditor-main-window.c:146
+msgid "_Close"
+msgstr "_Afslut"
+
+#: ../menueditor/menueditor-main-window.c:146
+msgid "Close menu"
+msgstr "Afslut menu"
+
+#: ../menueditor/menueditor-main-window.c:147
+msgid "_Quit"
+msgstr "_Afslut"
+
+#: ../menueditor/menueditor-main-window.c:147
+msgid "Quit Xfce4-Menueditor"
+msgstr "Afslut Xfce4-menuredigering"
+
+#: ../menueditor/menueditor-main-window.c:149
+msgid "_Edit"
+msgstr "_Redigér"
+
+#: ../menueditor/menueditor-main-window.c:150
+msgid "_Edit entry"
+msgstr "_Redigér menupunkt"
+
+#: ../menueditor/menueditor-main-window.c:150
+msgid "Edit selected entry"
+msgstr "Redigér valgte menupunkt"
+
+#: ../menueditor/menueditor-main-window.c:151
+msgid "_Add entry"
+msgstr "_Tilføj menupunkt"
+
+#: ../menueditor/menueditor-main-window.c:151
+msgid "Add a new entry in the menu"
+msgstr "Tilføj et nyt punkt til menuen"
+
+#: ../menueditor/menueditor-main-window.c:152
+msgid "Add _external"
+msgstr "Tilføj en _ekstern menu"
+
+#: ../menueditor/menueditor-main-window.c:152
+msgid "Add an external entry"
+msgstr "Tilføj et eksternt menupunkt"
+
+#: ../menueditor/menueditor-main-window.c:153
+msgid "_Remove entry"
+msgstr "_Fjern menupunktet"
+
+#: ../menueditor/menueditor-main-window.c:153
+msgid "Remove entry"
+msgstr "Fjern menupunkt"
+
+#: ../menueditor/menueditor-main-window.c:154
+msgid "_Up"
+msgstr "_Op"
+
+#: ../menueditor/menueditor-main-window.c:154
+msgid "Move entry up"
+msgstr "Flyt punktet op"
+
+#: ../menueditor/menueditor-main-window.c:155
+msgid "_Down"
+msgstr "_Ned"
+
+#: ../menueditor/menueditor-main-window.c:155
+msgid "Move entry down"
+msgstr "Flyt punktet ned"
+
+#: ../menueditor/menueditor-main-window.c:157
+msgid "_Help"
+msgstr "_Hjælp"
+
+#: ../menueditor/menueditor-main-window.c:158
+msgid "_About..."
+msgstr "_Om..."
+
+#: ../menueditor/menueditor-main-window.c:158
+msgid "Show informations about xfce4-menueditor"
+msgstr "Vis informationer om Xfce4-menuredigering"
+
+#: ../menueditor/menueditor-main-window.c:160
+msgid "Collapse all"
+msgstr "Sammenfold alle"
+
+#: ../menueditor/menueditor-main-window.c:160
+msgid "Collapse all menu entries"
+msgstr "Sammenfold alle menupunkter"
+
+#: ../menueditor/menueditor-main-window.c:161
+msgid "Expand all"
+msgstr "Udfold alle"
+
+#: ../menueditor/menueditor-main-window.c:161
+msgid "Expand all menu entries"
+msgstr "Udfold alle menupunkter"
+
+#: ../menueditor/menueditor-main-window.c:341
+msgid "Name"
+msgstr "Navn"
+
+#: ../menueditor/menueditor-main-window.c:344
+msgid "Command"
+msgstr "Kommando"
+
+#: ../menueditor/menueditor-main-window.c:345
+msgid "Hidden"
+msgstr "Skjult"
+
+#: ../menueditor/menueditor-main-window.c:425
+msgid "Are you sure you want to close the current menu?"
+msgstr "Er du sikker på, at du vil lukke den nuværende menu?"
+
+#: ../menueditor/menueditor-main-window.c:439
+msgid "Do you want to save before closing the file?"
+msgstr "Vil du gemme før du lukker filen?"
+
+#: ../menueditor/menueditor-main-window.c:477
+#: ../menueditor/menueditor-main-window.c:530
+#: ../menueditor/menueditor-main-window.c:628
+#: ../src/xfdesktop-file-icon-manager.c:587
+#: ../src/xfdesktop-file-utils.c:55
+msgid "Question"
+msgstr "Spørgsmål"
+
+#: ../menueditor/menueditor-main-window.c:479
+msgid "Do you want to save before opening an other menu ?"
+msgstr "Vil du gemme, før du åbner en anden menu ?"
+
+#: ../menueditor/menueditor-main-window.c:481
+#: ../menueditor/menueditor-main-window.c:534
+#: ../menueditor/menueditor-main-window.c:632
+msgid "Ignore modifications"
+msgstr "Ignorér ændringer"
+
+#: ../menueditor/menueditor-main-window.c:492
+msgid "Open menu file"
+msgstr "Åben menufil"
+
+#: ../menueditor/menueditor-main-window.c:532
+msgid "Do you want to save before opening the default menu ?"
+msgstr "Vil du gemme, før du åbner standardmenuen ?"
+
+#: ../menueditor/menueditor-main-window.c:592
+msgid "Save menu file as"
+msgstr "Gem menufil som"
+
+#: ../menueditor/menueditor-main-window.c:630
+#: ../menueditor/menueditor-main-window.c:1341
+msgid "Do you want to save before closing the menu ?"
+msgstr "Vil du gemme, før du lukker menuen ?"
+
+#: ../menueditor/menueditor-main-window.c:856
+#: ../menueditor/menueditor-main-window.c:986
+msgid "quit"
+msgstr "afslut"
+
+#: ../menueditor/menueditor-main-window.c:961
+#: ../menueditor/menueditor-main-window.c:1582
+msgid "--- separator ---"
+msgstr "--- separator ---"
+
+#: ../menueditor/menueditor-main-window.c:1079
+#: ../menueditor/menueditor-main-window.c:1086
+#: ../menueditor/menueditor-main-window.c:1636
+msgid "--- include ---"
+msgstr "--- inkludere ---"
+
+#: ../menueditor/menueditor-main-window.c:1087
+#: ../menueditor/menueditor-main-window.c:1653
+msgid "system"
+msgstr "system"
+
+#: ../menueditor/menueditor-main-window.c:1213
+#: ../menueditor/menueditor-main-window.c:1261
+msgid "Do you want to move the item into the submenu?"
+msgstr "Vil du flytte punktet til undermenuen?"
+
+#: ../menueditor/menueditor-main-window.c:1291
+msgid "A menu editor for Xfce4"
+msgstr "Menuredigering til Xfce4"
+
+#. Credits
+#: ../menueditor/menueditor-main-window.c:1296
+msgid "Author/Maintainer"
+msgstr "Forfatter/vedligeholder"
+
+#: ../menueditor/menueditor-main-window.c:1297
+#: ../menueditor/menueditor-main-window.c:1298
+#: ../menueditor/menueditor-main-window.c:1299
+msgid "Contributor"
+msgstr "Bidragsyder"
+
+#: ../menueditor/menueditor-main-window.c:1300
+msgid "Icon designer"
+msgstr "Ikondesigner"
+
+#: ../menueditor/menueditor-main-window.c:1343
+msgid "You have modified the menu, do you want to save it before quitting ?"
+msgstr "Du har ændret menuen, vil du gemme inden du afslutter ?"
+
+#: ../menueditor/menueditor-main-window.c:1345
+msgid "Forget modifications"
+msgstr "Glem ændringer"
+
+#: ../menueditor/menueditor-main-window.c:2033
+#, c-format
+msgid "Unable to open the menu file %s in write mode"
+msgstr "Kunne ikke åbne menufilen %s i skrivetilstand"
+
+#: ../modules/menu/desktop-menu-file.c:116
+#: ../modules/menu/desktop-menu-file.c:131
+#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
+msgid "Xfce Menu"
+msgstr "Xfce-menu"
+
+#: ../modules/menu/desktop-menu-file.c:118
+#: ../modules/menu/desktop-menu-file.c:133
+msgid "Unable to quit session."
+msgstr "Kunne ikke afslutte session."
+
+#: ../modules/menu/desktop-menu-file.c:119
+msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
+msgstr "Afslutning af sessionen kræver at Xfce's sessionhåndtering (xfce4-session) kører, men denne blev ikke fundet. Afslut venligst Xfce på anden måde."
+
+#: ../modules/menu/desktop-menu-file.c:129
+#, c-format
+msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
+msgstr "Afslutning af denne session kræver \"xfce4-session-logout\" kommandoen, men denne blev ikke fundet:%s"
+
+#: ../modules/menu/desktop-menuspec.c:61
+msgid "/Other"
+msgstr "/Anden"
+
+#: ../panel-plugin/desktop-menu-plugin.c:583
+msgid "Select Icon"
+msgstr "Vælg ikon"
+
+#: ../panel-plugin/desktop-menu-plugin.c:585
+msgid "Select Menu File"
+msgstr "Vælg menufil"
+
+#: ../panel-plugin/desktop-menu-plugin.c:742
+#: ../settings/behavior-settings.c:217
+#, c-format
+msgid "Unable to launch xfce4-menueditor: %s"
+msgstr "Kunne ikke starte Xfce4-menuredigering: %s"
+
+#: ../panel-plugin/desktop-menu-plugin.c:777
+msgid "Button"
+msgstr "Knap"
+
+#: ../panel-plugin/desktop-menu-plugin.c:790
+msgid "Button _title:"
+msgstr "Knap_titel:"
+
+#: ../panel-plugin/desktop-menu-plugin.c:803
+msgid "_Show title in button"
+msgstr "_Vis titel på knap"
+
+#: ../panel-plugin/desktop-menu-plugin.c:810
+msgid "Menu File"
+msgstr "Menufil"
+
+#: ../panel-plugin/desktop-menu-plugin.c:822
+msgid "Use default _desktop menu file"
+msgstr "Brug _standardskrivebords-menufil"
+
+#: ../panel-plugin/desktop-menu-plugin.c:831
+msgid "Use _custom menu file:"
+msgstr "Brug _tilpasset menufil:"
+
+#: ../panel-plugin/desktop-menu-plugin.c:882
+#: ../settings/behavior-settings.c:267
+msgid "_Edit Menu"
+msgstr "_Redigér menu"
+
+#: ../panel-plugin/desktop-menu-plugin.c:888
+msgid "Icons"
+msgstr "Ikoner"
+
+#: ../panel-plugin/desktop-menu-plugin.c:900
+msgid "_Button icon:"
+msgstr "_Knapikon:"
+
+#: ../panel-plugin/desktop-menu-plugin.c:924
+msgid "Show _icons in menu"
+msgstr "Vis _ikoner på menuen"
+
+#: ../panel-plugin/desktop-menu-plugin.c:947
+msgid "There is already a panel menu registered for this screen"
+msgstr "Der er allerede en panelmenu registreret for denne skærm"
+
+#: ../panel-plugin/desktop-menu-plugin.c:1055
+msgid "Edit Menu"
+msgstr "Redigér menu"
+
+#. the button label in the xfce-mcs-manager dialog
+#: ../settings/appearance-settings.c:138
+msgid "Button Label|Desktop"
+msgstr "Skrivebord"
+
+#: ../settings/appearance-settings.c:191
+#: ../settings/appearance-settings.c:200
+#: ../settings/backdrop-list-manager.c:628
+msgid "backdrops.list"
+msgstr "baggrunds.liste"
+
+#: ../settings/appearance-settings.c:574
+msgid "Select backdrop image or list file"
+msgstr "Vælg baggrunds-billede eller -filliste"
+
+#: ../settings/appearance-settings.c:592
+msgid "List Files (*.list)"
+msgstr "List filer (*.list)"
+
+#: ../settings/appearance-settings.c:688
+msgid "_Edit list..."
+msgstr "_Redigér liste..."
+
+#: ../settings/appearance-settings.c:696
+msgid "_New list..."
+msgstr "_Ny liste..."
+
+#: ../settings/appearance-settings.c:729
+msgid "S_tyle:"
+msgstr "S_til:"
+
+#: ../settings/appearance-settings.c:736
+msgid "Auto"
+msgstr "Auto"
+
+#: ../settings/appearance-settings.c:737
+msgid "Centered"
+msgstr "Centreret"
+
+#: ../settings/appearance-settings.c:738
+msgid "Tiled"
+msgstr "Flise"
+
+#: ../settings/appearance-settings.c:739
+msgid "Stretched"
+msgstr "Udstrukket"
+
+#: ../settings/appearance-settings.c:740
+msgid "Scaled"
+msgstr "Skaleret"
+
+#: ../settings/appearance-settings.c:796
+msgid "A_djust Brightness:"
+msgstr "J_ustér lysstyrke:"
+
+#: ../settings/appearance-settings.c:854
+#, c-format
+msgid "Xfce will be unable to manage your desktop (%s)."
+msgstr "Xfce vil ikke være istand til at håndtere dit skrivebord (%s)."
+
+#: ../settings/appearance-settings.c:855
+msgid "Unknown Error"
+msgstr "Ukendt fejl"
+
+#: ../settings/appearance-settings.c:859
+#: ../src/xfdesktop-regular-file-icon.c:520
+#: ../src/xfdesktop-regular-file-icon.c:584
+msgid "Error"
+msgstr "Fejl"
+
+#: ../settings/appearance-settings.c:861
+msgid "Unable to start xfdesktop"
+msgstr "Kunne ikke starte xfdesktop"
+
+#: ../settings/appearance-settings.c:883
+msgid "Information"
+msgstr "Information"
+
+#: ../settings/appearance-settings.c:896
+msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "For at sikre at denne indstilling er aktiv ved din næste opstart af Xfce, sikrer dig venligst at gemme din session, når du logger ud. Hvis du ikke bruger Xfce-sessionshåndteringen (xfce4-session), vil du blive nødt til manuelt at redigere din ~/.config/xfce4/xinitrc fil. Detaljer er tilgængelige i dokumentationen som findes på http://xfce.org/."
+
+#: ../settings/appearance-settings.c:898
+msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+msgstr "For at sikre at Xfce ikke håndterer dit skrivebord  ved din næste opstart af Xfce, sikrer dig venligst at gemme din session, når du logger ud. Hvis du ikke bruger Xfce-sessionshåndteringen (xfce4-session), vil du blive nødt til manuelt at redigere din ~/.config/xfce4/xinitrc fil. Detaljer er tilgænglige i dokumentation som findes på http://xfce.org/."
+
+#: ../settings/appearance-settings.c:906
+msgid "_Do not show this again"
+msgstr "_Vis ikke dette igen"
+
+#. the dialog
+#: ../settings/appearance-settings.c:972
+msgid "Desktop Preferences"
+msgstr "Skrivebordsindstillinger"
+
+#: ../settings/appearance-settings.c:989
+msgid "Allow _Xfce to manage the desktop"
+msgstr "Tillad _Xfce at håndtere skrivebordet"
+
+#: ../settings/appearance-settings.c:1030
+msgid "Stretch single backdrop onto _all monitors"
+msgstr "Stræk enkelt baggrund til _alle skærme"
+
+#. add the single backdrop settings page to the main notebook
+#: ../settings/appearance-settings.c:1044
+#: ../settings/appearance-settings.c:1226
+msgid "_Appearance"
+msgstr "_Udseende"
+
+#. color settings frame
+#: ../settings/appearance-settings.c:1070
+msgid "Color"
+msgstr "Farve"
+
+#: ../settings/appearance-settings.c:1084
+msgid "_Color Style:"
+msgstr "_Farvestil:"
+
+#: ../settings/appearance-settings.c:1091
+msgid "Solid Color"
+msgstr "Ensfarve"
+
+#: ../settings/appearance-settings.c:1092
+msgid "Horizontal Gradient"
+msgstr "Horisontal aftagning"
+
+#: ../settings/appearance-settings.c:1093
+msgid "Vertical Gradient"
+msgstr "Vertical aftagning"
+
+#: ../settings/appearance-settings.c:1106
+msgid "Fi_rst Color:"
+msgstr "Fø_rste farve:"
+
+#: ../settings/appearance-settings.c:1127
+msgid "_Second Color:"
+msgstr "A_nden farve:"
+
+#: ../settings/appearance-settings.c:1152
+msgid "Image"
+msgstr "Billede"
+
+#: ../settings/appearance-settings.c:1160
+msgid "Show _Image"
+msgstr "Vis _billede"
+
+#: ../settings/appearance-settings.c:1182
+msgid "_File:"
+msgstr "_Fil:"
+
+#: ../settings/appearance-settings.c:1237
+#: ../settings/appearance-settings.c:1239
+#, c-format
+msgid "Screen %d"
+msgstr "Skærm %d"
+
+#. and if we have multiple screens, each with multiple monitors
+#: ../settings/appearance-settings.c:1244
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Skærm %d, monitor %d"
+
+#: ../settings/appearance-settings.c:1261
+msgid "_Behavior"
+msgstr "_Adfærd"
+
+#: ../settings/backdrop-list-manager.c:160
+#: ../src/xfce-desktop-settings.c:74
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your changes"
+msgstr ""
+"Kunne ikke gemme fil %s: %s\n"
+"\n"
+"Vælg venligst et andet sted eller tryk fortryd i vinduet for at kassere dine ændringer"
+
+#: ../settings/backdrop-list-manager.c:430
+msgid "Select backdrop image file"
+msgstr "Vælg baggrundsbilledfil"
+
+#: ../settings/backdrop-list-manager.c:531
+msgid "Choose backdrop list filename"
+msgstr "Vælg filnavn fra baggrundsliste"
+
+#: ../settings/backdrop-list-manager.c:540
+msgid "List Files"
+msgstr "Vis filer"
+
+#: ../settings/backdrop-list-manager.c:617
+msgid "Image files"
+msgstr "Billedfiler"
+
+#: ../settings/backdrop-list-manager.c:636
+msgid "List file"
+msgstr "Vis fil"
+
+#: ../settings/backdrop-list-manager.c:658
+msgid "Create backdrop list"
+msgstr "Opret baggrundsliste"
+
+#: ../settings/backdrop-list-manager.c:691
+msgid "Edit backdrop list"
+msgstr "Redigér baggrundsliste"
+
+#: ../settings/behavior-settings.c:241
+msgid "Menus"
+msgstr "Menuer"
+
+#: ../settings/behavior-settings.c:249
+msgid "Show _window list on middle click"
+msgstr "Vis _vindueslistemenu ved centerklik"
+
+#: ../settings/behavior-settings.c:260
+msgid "Show _desktop menu on right click"
+msgstr "Vis skrivebords_menu ved højreklik"
+
+#: ../settings/behavior-settings.c:279
+msgid "Desktop Icons"
+msgstr "Skrivebordsikoner"
+
+#: ../settings/behavior-settings.c:288
+#: ../src/xfdesktop-file-properties-dialog.c:138
+msgid "None"
+msgstr "Ingen"
+
+#: ../settings/behavior-settings.c:289
+msgid "Minimized application icons"
+msgstr "Miniatureprogramikoner"
+
+#: ../settings/behavior-settings.c:291
+msgid "File/launcher icons"
+msgstr "Fil-/starterikoner"
+
+#: ../settings/behavior-settings.c:306
+msgid "_Icon size:"
+msgstr "Ikon_størrelse:"
+
+#: ../settings/behavior-settings.c:320
+msgid "Use _system font size"
+msgstr "Brug _systemskriftstørrelse"
+
+#: ../settings/behavior-settings.c:337
+msgid "Custom _font size:"
+msgstr "_Tilpasset skriftstørrelse:"
+
+#: ../src/main.c:255
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Dette er %s version %s, som kører på Xfce %s.\n"
+
+#: ../src/main.c:257
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Kompileret med  GTK+ %d.%d.%d, lænket med GTK+ %d.%d.%d."
+
+#: ../src/main.c:261
+msgid "Build options:\n"
+msgstr "Kompileringstilvalg:\n"
+
+#: ../src/main.c:262
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "    Skrivebordsmenu:        %s\n"
+
+#: ../src/main.c:264
+#: ../src/main.c:271
+#: ../src/main.c:278
+msgid "enabled"
+msgstr "slået til"
+
+#: ../src/main.c:266
+#: ../src/main.c:273
+#: ../src/main.c:280
+msgid "disabled"
+msgstr "slået fra"
+
+#: ../src/main.c:269
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "    Skrivebordsikoner:       %s\n"
+
+#: ../src/main.c:276
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "    Skrivebordsfilikoner:  %s\n"
+
+#: ../src/main.c:305
+#, c-format
+msgid "%s: Unknown option: %s\n"
+msgstr "%s: Ukendt tilvalg: %s\n"
+
+#: ../src/main.c:306
+msgid "Options are:\n"
+msgstr "Tilvalgmuligheder er:\n"
+
+#: ../src/main.c:307
+msgid "    --reload      Reload all settings, refresh image list\n"
+msgstr "    --reload      Genindlæs alle indstillinger, og genopfrisk billledliste\n"
+
+#: ../src/main.c:308
+msgid "    --menu        Pop up the menu (at the current mouse position)\n"
+msgstr "    --menu        Åben menuen (på musens nuværende position)\n"
+
+#: ../src/main.c:309
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    --windowlist  Åben vindueslisten (på musens nuværende position)\n"
+
+#: ../src/main.c:310
+msgid "    --quit        Cause xfdesktop to quit\n"
+msgstr "    --quit        Vil afslutte xfdesktop\n"
+
+#: ../src/main.c:325
+#, c-format
+msgid "%s is not running.\n"
+msgstr "%s kører ikke.\n"
+
+#: ../src/windowlist.c:220
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>Arbejdsområde %d</b>"
+
+#: ../src/windowlist.c:228
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr "<i>Arbejdsområde %d</i>"
+
+#: ../src/windowlist.c:295
+#: ../src/windowlist.c:298
+msgid "_Add Workspace"
+msgstr "Tilføj _arbejdsområde"
+
+#: ../src/windowlist.c:306
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "_Fjern arbejdsområde %d"
+
+#: ../src/windowlist.c:309
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "F_jern arbejdsområde '%s'"
+
+#: ../src/xfce-desktop.c:573
+msgid "Desktop"
+msgstr "Skrivebord"
+
+#: ../src/xfdesktop-file-icon-manager.c:386
+#, c-format
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop kunne ikke oprette mappen \"%s\" til at gemme skrivebordselementer:"
+
+#: ../src/xfdesktop-file-icon-manager.c:388
+#: ../src/xfdesktop-file-icon-manager.c:399
+#: ../src/xfdesktop-file-icon-manager.c:1094
+msgid "Create Folder Failed"
+msgstr "Kunne ikke oprette mappe"
+
+#: ../src/xfdesktop-file-icon-manager.c:397
+#, c-format
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop kan ikke bruge \"%s\" til at gemme skrivebordselementer, da det ikke er en mappe."
+
+#: ../src/xfdesktop-file-icon-manager.c:401
+msgid "Please delete or rename the file."
+msgstr "Slet venligst eller omdøb filen."
+
+#: ../src/xfdesktop-file-icon-manager.c:538
+#, c-format
+msgid "Rename \"%s\""
+msgstr "Omdøb \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:545
+#: ../src/xfdesktop-file-icon-manager.c:1166
+#: ../src/xfdesktop-file-icon-manager.c:1257
+#: ../src/xfdesktop-file-icon-manager.c:1268
+msgid "Enter the new name:"
+msgstr "Angiv det nye navn:"
+
+#: ../src/xfdesktop-file-icon-manager.c:547
+msgid "Rename"
+msgstr "Omdøb"
+
+#: ../src/xfdesktop-file-icon-manager.c:584
+#, c-format
+msgid "Are you sure that you want to delete \"%s\"?"
+msgstr "Er du sikker på, at du vil slette \"%s\"?"
+
+#: ../src/xfdesktop-file-icon-manager.c:589
+#: ../src/xfdesktop-file-icon-manager.c:609
+msgid "If you delete a file, it is permanently lost."
+msgstr "Hvis du sletter en fil, vil denne være tabt for bestandigt."
+
+#: ../src/xfdesktop-file-icon-manager.c:603
+#, c-format
+msgid "Are you sure you want to delete the following %d files?"
+msgstr "Er du sikker på, at du vil slette følgende %d filer?"
+
+#: ../src/xfdesktop-file-icon-manager.c:606
+msgid "Delete Multiple Files"
+msgstr "Slet flere filer"
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:823
+#: ../src/xfdesktop-file-icon-manager.c:1528
+#: ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-utils.c:352
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Kunne ikke starte \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:825
+#: ../src/xfdesktop-file-icon-manager.c:865
+#: ../src/xfdesktop-file-icon-manager.c:1128
+#: ../src/xfdesktop-file-icon-manager.c:1530
+#: ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-utils.c:355
+msgid "Launch Error"
+msgstr "Starterfejl"
+
+#: ../src/xfdesktop-file-icon-manager.c:866
+msgid "The application chooser could not be opened."
+msgstr "Programvælgeren kunne ikke startes."
+
+#: ../src/xfdesktop-file-icon-manager.c:867
+#: ../src/xfdesktop-file-utils.c:357
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Denne egenskab kræver at en filhåndteringsservice er tilstede (som den Thunar levererer)."
+
+#: ../src/xfdesktop-file-icon-manager.c:1027
+#, c-format
+msgid "_Open With \"%s\""
+msgstr "_Åben med \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1030
+#, c-format
+msgid "Open With \"%s\""
+msgstr "Åben med \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1091
+#, c-format
+msgid "Unable to create folder named \"%s\":"
+msgstr "Kunne ikke oprette mappe navngivet \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:1130
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Kunne ikke starte \"exo-desktop-item-edit\", som er nødvendigt for oprettelse eller redigering af startere og henvisninger på skrivebordet."
+
+#: ../src/xfdesktop-file-icon-manager.c:1163
+msgid "Create New Folder"
+msgstr "Opret ny mappe"
+
+#: ../src/xfdesktop-file-icon-manager.c:1167
+msgid "New Folder"
+msgstr "Ny mappe"
+
+#: ../src/xfdesktop-file-icon-manager.c:1168
+#: ../src/xfdesktop-file-icon-manager.c:1259
+#: ../src/xfdesktop-file-icon-manager.c:1270
+msgid "Create"
+msgstr "Opret"
+
+#: ../src/xfdesktop-file-icon-manager.c:1204
+#, c-format
+msgid "Unable to create file named \"%s\":"
+msgstr "Kunne ikke oprette fil navngivet \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:1207
+msgid "Create File Failed"
+msgstr "Kunne ikke oprette fil"
+
+#: ../src/xfdesktop-file-icon-manager.c:1246
+#, c-format
+msgid "Create Document from template \"%s\""
+msgstr "Opret dokument fra skabelon \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1265
+msgid "Create Empty File"
+msgstr "Opret tom fil"
+
+#: ../src/xfdesktop-file-icon-manager.c:1269
+msgid "New Empty File"
+msgstr "Ny tom fil"
+
+#: ../src/xfdesktop-file-icon-manager.c:1302
+#, c-format
+msgid "Unable to create file \"%s\":"
+msgstr "Kunne ikke oprette fil \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:1303
+msgid "Create Error"
+msgstr "Oprettelsesfejl"
+
+#: ../src/xfdesktop-file-icon-manager.c:1587
+msgid "_Open all"
+msgstr "_Åben alle"
+
+#: ../src/xfdesktop-file-icon-manager.c:1617
+msgid "_Execute"
+msgstr "_Kør"
+
+#: ../src/xfdesktop-file-icon-manager.c:1634
+msgid "_Edit Launcher"
+msgstr "_Redigér starter"
+
+#: ../src/xfdesktop-file-icon-manager.c:1674
+msgid "Open With"
+msgstr "Åben med"
+
+#: ../src/xfdesktop-file-icon-manager.c:1705
+msgid "Open With Other _Application..."
+msgstr "Åben med et andet _program..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1804
+msgid "_Rename..."
+msgstr "_Omdøb..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1820
+#: ../src/xfdesktop-volume-icon.c:593
+msgid "_Properties..."
+msgstr "_Egenskaber..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1837
+msgid "Des_ktop"
+msgstr "Skrive_bord"
+
+#: ../src/xfdesktop-file-icon-manager.c:1856
+msgid "Create _Launcher..."
+msgstr "Opret _starter..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1877
+msgid "Create _URL Link..."
+msgstr "Opret _URL-henvisning..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1894
+msgid "Create _Folder..."
+msgstr "Opret _mappe..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1936
+msgid "_Empty File"
+msgstr "_Tom fil"
+
+#: ../src/xfdesktop-file-icon-manager.c:1977
+msgid "Desktop _Settings..."
+msgstr "Skrivebords_indstillinger..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1986
+msgid "_Desktop Properties..."
+msgstr "_Skrivebordsegenskaber..."
+
+#: ../src/xfdesktop-file-icon-manager.c:3158
+#: ../src/xfdesktop-regular-file-icon.c:382
+#, c-format
+msgid "Failed to run \"%s\":"
+msgstr "Kunne ikke køre \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:3160
+#: ../src/xfdesktop-regular-file-icon.c:384
+msgid "Run Error"
+msgstr "Kørselsfejl"
+
+#: ../src/xfdesktop-file-icon.c:146
+msgid "The associated application could not be found or executed."
+msgstr "Det tilknyttede program kunne ikke findes eller køres."
+
+#: ../src/xfdesktop-file-properties-dialog.c:103
+#, c-format
+msgid "Unable to set default application for \"%s\" to \"%s\":"
+msgstr "Kunne ikke indstille standardprogram for \"%s\" til \"%s\":"
+
+#: ../src/xfdesktop-file-properties-dialog.c:106
+msgid "Properties Error"
+msgstr "Egenskabsfejl"
+
+#: ../src/xfdesktop-file-properties-dialog.c:138
+msgid "Write only"
+msgstr "Skriv kun"
+
+#: ../src/xfdesktop-file-properties-dialog.c:138
+msgid "Read only"
+msgstr "Læs kun"
+
+#: ../src/xfdesktop-file-properties-dialog.c:138
+msgid "Read & Write"
+msgstr "Læs og skriv"
+
+#: ../src/xfdesktop-file-properties-dialog.c:163
+msgid "General"
+msgstr "Generel"
+
+#: ../src/xfdesktop-file-properties-dialog.c:214
+msgid "Kind:"
+msgstr "Type:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:234
+msgid "Link Target:"
+msgstr "Henvisningmål:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:251
+#: ../src/xfdesktop-file-properties-dialog.c:410
+msgid "(unknown)"
+msgstr "(ukendt)"
+
+#: ../src/xfdesktop-file-properties-dialog.c:273
+msgid "Open With:"
+msgstr "Åben med:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:350
+msgid "Modified:"
+msgstr "Ændret:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:368
+msgid "Accessed:"
+msgstr "Tilgået:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:395
+msgid "Free Space:"
+msgstr "Fri plads:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:397
+msgid "Size:"
+msgstr "Størrelse:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:413
+#: ../src/xfdesktop-regular-file-icon.c:486
+#: ../src/xfdesktop-special-file-icon.c:487
+#: ../src/xfdesktop-volume-icon.c:460
+msgid "%s (%"
+msgstr "%s (%"
+
+#. permissions tab
+#: ../src/xfdesktop-file-properties-dialog.c:428
+msgid "Permissions"
+msgstr "Rettigheder"
+
+#: ../src/xfdesktop-file-properties-dialog.c:450
+msgid "Owner:"
+msgstr "Ejer:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:472
+#: ../src/xfdesktop-file-properties-dialog.c:510
+msgid "Access:"
+msgstr "Tilgang:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:495
+msgid "Group:"
+msgstr "Gruppe:"
+
+#: ../src/xfdesktop-file-properties-dialog.c:533
+msgid "Others:"
+msgstr "Andre:"
+
+#: ../src/xfdesktop-file-utils.c:74
+msgid "Yes to _all"
+msgstr "Ja til _alt"
+
+#: ../src/xfdesktop-file-utils.c:106
+#, c-format
+msgid "There was an error moving \"%s\" to \"%s\":"
+msgstr "Der opstod en fejl under flytning af \"%s\" til \"%s\":"
+
+#: ../src/xfdesktop-file-utils.c:109
+#, c-format
+msgid "There was an error copying \"%s\" to \"%s\":"
+msgstr "Der opstod en fejl under kopiering af \"%s\" til \"%s\":"
+
+#: ../src/xfdesktop-file-utils.c:112
+#, c-format
+msgid "There was an error linking \"%s\" to \"%s\":"
+msgstr "Der opstod en fejl under henvisning af \"%s\" til \"%s\":"
+
+#: ../src/xfdesktop-file-utils.c:121
+msgid "File Error"
+msgstr "Filfejl"
+
+#: ../src/xfdesktop-file-utils.c:137
+msgid "broken link"
+msgstr "ugyldig henvisning"
+
+#: ../src/xfdesktop-file-utils.c:141
+#, c-format
+msgid "link to %s"
+msgstr "henvis til %s"
+
+#: ../src/xfdesktop-regular-file-icon.c:489
+#: ../src/xfdesktop-special-file-icon.c:490
+#: ../src/xfdesktop-volume-icon.c:463
+#, c-format
+msgid ""
+"Kind: %s\n"
+"Modified:%s\n"
+"Size: %s"
+msgstr ""
+"Type: %s\n"
+"Ændret:%s\n"
+"Størrelse: %s"
+
+#: ../src/xfdesktop-regular-file-icon.c:581
+#, c-format
+msgid "Failed to rename \"%s\" to \"%s\":"
+msgstr "Kunne ikke omdøbe \"%s\" til \"%s\":"
+
+#: ../src/xfdesktop-special-file-icon.c:258
+msgid "Home"
+msgstr "Hjem"
+
+#: ../src/xfdesktop-special-file-icon.c:508
+msgid "Trash Error"
+msgstr "Papirkurvsfejl"
+
+#: ../src/xfdesktop-special-file-icon.c:510
+msgid "Unable to contact the Xfce Trash service."
+msgstr "Kunne ikke forbinde til Xfce-papirkurvservicen."
+
+#: ../src/xfdesktop-special-file-icon.c:511
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Kontrollér, at du har en filhåndtering som understøtter Xfce-papirkurvservicen, eksempelvis Thunar."
+
+#: ../src/xfdesktop-special-file-icon.c:635
+msgid "_Empty Trash"
+msgstr "_Tøm papirskurven"
+
+#: ../src/xfdesktop-volume-icon.c:491
+#, c-format
+msgid "Unable to mount \"%s\":"
+msgstr "Kunne ikke montere \"%s\":"
+
+#: ../src/xfdesktop-volume-icon.c:492
+#, c-format
+msgid "Unable to unmount \"%s\":"
+msgstr "Kunne ikke afmontere \"%s\":"
+
+#: ../src/xfdesktop-volume-icon.c:495
+msgid "Mount Failed"
+msgstr "Monteringsfejl"
+
+#: ../src/xfdesktop-volume-icon.c:495
+msgid "Unmount Failed"
+msgstr "Afmonteringsfejl"
+
+#: ../src/xfdesktop-volume-icon.c:513
+#, c-format
+msgid "Unable to eject \"%s\":"
+msgstr "Kunne ikke skubbe \"%s\" ud:"
+
+#: ../src/xfdesktop-volume-icon.c:516
+msgid "Eject Failed"
+msgstr "Udskubning fejlede"
+
+#: ../src/xfdesktop-volume-icon.c:554
+msgid "_Mount Volume"
+msgstr "_Montér arkiv"
+
+#: ../src/xfdesktop-volume-icon.c:565
+msgid "_Unmount Volume"
+msgstr "_Afmontér arkiv"
+
+#: ../src/xfdesktop-volume-icon.c:579
+msgid "E_ject Volume"
+msgstr "_Udskub arkiv"
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:1
+msgid "Graphical tool for editing the Xfce 4 menu"
+msgstr "Grafisk værktøj til redigering af Xfce4-menuen"
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:2
+msgid "Menu Editor"
+msgstr "Menuredigering"
+
+#: ../menueditor/xfce-menueditor.desktop.in.h:3
+msgid "Xfce 4 Menu Editor"
+msgstr "Xfce4-menuredigering"
+
+#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
+msgid "Shows a menu containing categories of installed applications"
+msgstr "Viser en menu indeholdende kategorier af installerede programmer"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop Settings"
+msgstr "Skrivebordsindstillinger"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Settings for the Xfce 4 Desktop Manager"
+msgstr "Indstillinger for Xfce4's skrivebordshåndtering"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:3
+msgid "Xfce 4 Desktop Settings"
+msgstr "Xfce4's skrivebordsindstillinger"
