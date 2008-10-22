@@ -1,0 +1,200 @@
+# Danish translations for xfdesktop package.
+# Copyright (C) 2003-2005 The Xfce development team.
+# This file is distributed under the same license as the xfdesktop package.
+# Jesper Berth <bigsanta@berthit.dk>, 2005.
+# Per Kongstad <p_kongstad@op.pl>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop 4.0.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-07-09 09:58+0200\n"
+"PO-Revision-Date: 2008-10-17 17:06+0100\n"
+"Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: settings/backdrop-mgr.c:175
+#, c-format
+msgid ""
+"Could not save file %s: %s\n"
+"\n"
+"Please choose another location or press cancel in the dialog to discard your changes"
+msgstr ""
+"Kunne ikke gemme fil %s: %s\n"
+"\n"
+"Vælg venligst et andet sted eller tryk annullér i dialogboksen for at kassere dine ændringer"
+
+#: settings/backdrop-mgr.c:510
+msgid "Select image file"
+msgstr "Vælg billedfil"
+
+#: settings/backdrop-mgr.c:622
+msgid "Choose backdrop list filename"
+msgstr "Vælg en baggrundslistefilnavne"
+
+#: settings/backdrop-mgr.c:694
+msgid "New.list"
+msgstr "Ny.list"
+
+#: settings/backdrop-mgr.c:698
+msgid "Backdrop List"
+msgstr "Baggrundsliste"
+
+#: settings/backdrop-mgr.c:734
+msgid "Image files"
+msgstr "Billedfiler"
+
+#: settings/backdrop-mgr.c:749
+msgid "List file"
+msgstr "Vis fil"
+
+#: settings/backdrop-mgr.c:767
+msgid "Create backdrop list"
+msgstr "Opret baggrundsliste"
+
+#: settings/backdrop-mgr.c:774
+msgid "Edit backdrop list"
+msgstr "Redigér baggrundsliste"
+
+#: settings/backdrop_settings.c:156
+msgid "Desktop: backdrop"
+msgstr "Skrivebord: Baggrund"
+
+#: settings/backdrop_settings.c:357
+msgid "Select background color"
+msgstr "Vælg baggrundsfarve"
+
+#: settings/backdrop_settings.c:407
+msgid "Background color:"
+msgstr "Baggrundsfarve:"
+
+#: settings/backdrop_settings.c:437
+msgid "Use color only:"
+msgstr "Brug kun farver:"
+
+#: settings/backdrop_settings.c:563
+msgid "File:"
+msgstr "Fil:"
+
+#: settings/backdrop_settings.c:624
+msgid "Select background image or list file"
+msgstr "Vælg baggrundsbillede eller -listefil"
+
+#: settings/backdrop_settings.c:701
+msgid "_Browse..."
+msgstr "_Navigér..."
+
+#: settings/backdrop_settings.c:705
+msgid "New list"
+msgstr "Ny liste"
+
+#: settings/backdrop_settings.c:709
+msgid "Edit list"
+msgstr "Redigér liste"
+
+#: settings/backdrop_settings.c:747
+msgid "Style:"
+msgstr "Stil:"
+
+#: settings/backdrop_settings.c:755
+msgid "_Tiled"
+msgstr "_Flise"
+
+#: settings/backdrop_settings.c:761
+msgid "_Scaled"
+msgstr "_Skaleret"
+
+#: settings/backdrop_settings.c:768
+msgid "_Centered"
+msgstr "_Centreret"
+
+#: settings/backdrop_settings.c:775
+msgid "_Auto"
+msgstr "_Automatisk"
+
+#. the dialog
+#: settings/backdrop_settings.c:801
+msgid "Background"
+msgstr "Baggrund"
+
+#. header
+#: settings/backdrop_settings.c:819
+msgid "Background Settings"
+msgstr "Baggrundsindstillinger"
+
+#. color
+#: settings/backdrop_settings.c:825
+msgid "Color"
+msgstr "Farve"
+
+#. image vbox
+#: settings/backdrop_settings.c:837
+msgid "Image"
+msgstr "Billede"
+
+#: settings/workspaces_settings.c:86
+msgid "Desktop: workspaces"
+msgstr "Skrivebord: Arbejdsområder"
+
+#: settings/workspaces_settings.c:340
+msgid "Change name"
+msgstr "Ændre navn"
+
+#: settings/workspaces_settings.c:351
+#, c-format
+msgid "Workspace %d"
+msgstr "Arbejdsområde %d"
+
+#: settings/workspaces_settings.c:361
+msgid "Name:"
+msgstr "Navn:"
+
+#: settings/workspaces_settings.c:472
+msgid "Click on a workspace name to edit it"
+msgstr "Klik på et arbejdsområdenavn for at redigere dette"
+
+#: settings/workspaces_settings.c:503
+msgid "Number of workspaces:"
+msgstr "Antal arbejdsområder:"
+
+#. Number of workspaces
+#: settings/workspaces_settings.c:539
+#: settings/workspaces_settings.c:569
+msgid "Workspaces"
+msgstr "Arbejdsområder"
+
+#: settings/workspaces_settings.c:562
+msgid "Workspace Settings"
+msgstr "Arbejdsområdeindstillinger"
+
+#. Workspace names
+#: settings/workspaces_settings.c:581
+msgid "Workspace names"
+msgstr "Arbejdsområdenavne"
+
+#: src/backdrop.c:497
+#, c-format
+msgid "xfdesktop error: loading backdrop image: %s\n"
+msgstr "xfdesktopfejl: indlæsning af baggrundsbillede:%s\n"
+
+#: src/main.c:250
+msgid "Desktop"
+msgstr "Skrivebord"
+
+#: src/menu.c:742
+msgid "Add workspace"
+msgstr "Tilføj arbejdsområde"
+
+#: src/menu.c:749
+msgid "Delete workspace"
+msgstr "Fjern arbejdsområde"
+
+#: src/settings.c:186
+msgid "xfdesktop: could not connect to settings manager!Please check your installation."
+msgstr "xfdesktop: kunne ikke forbinde til indstillingshåndtering! Kontrollér venligst din installation."
+
