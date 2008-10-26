@@ -107,7 +107,7 @@ typedef struct
 typedef struct
 {
     GtkTreeModel *model;
-    GtkTreeIter *iter;
+    GSList *iters;
 } PreviewData;
 
 enum
@@ -185,16 +185,19 @@ xfdesktop_settings_do_single_preview(GtkTreeModel *model,
 }
 
 static gpointer
-xfdesktop_settings_create_single_preview(gpointer data)
+xfdesktop_settings_create_some_previews(gpointer data)
 {
     PreviewData *pdata = data;
+    GSList *l;
 
     gdk_threads_enter();
-    xfdesktop_settings_do_single_preview(pdata->model, pdata->iter);
+    for(l = pdata->iters; l; l = l->next)
+        xfdesktop_settings_do_single_preview(pdata->model, l->data);
     gdk_threads_leave();
 
     g_object_unref(G_OBJECT(pdata->model));
-    gtk_tree_iter_free(pdata->iter);
+    g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
+    g_slist_free(pdata->iters);
     g_free(pdata);
 
     return NULL;
@@ -830,35 +833,48 @@ add_file_button_clicked(GtkWidget *button,
 #endif
 
     if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
-        gchar *filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(chooser));
+        GSList *filenames = gtk_file_chooser_get_filenames(GTK_FILE_CHOOSER(chooser));
         GtkTreeModel *model = gtk_tree_view_get_model(GTK_TREE_VIEW(panel->image_treeview));
-        GtkTreeIter iter;
-        /* all these copies are gross */
-        gchar *name = g_path_get_basename(filename);
-        gchar *name_utf8 = g_filename_to_utf8(name, strlen(name),
-                                              NULL, NULL, NULL);
-        gchar *name_markup = g_markup_printf_escaped("<b>%s</b>", name_utf8);
-        PreviewData *pdata = g_new(PreviewData, 1);
-
-        gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-        gtk_list_store_set(GTK_LIST_STORE(model), &iter,
-                           COL_NAME, name_markup,
-                           COL_FILENAME, filename,
-                           -1);
-
+        GSList *l;
+        PreviewData *pdata = g_new0(PreviewData, 1);
         pdata->model = g_object_ref(G_OBJECT(model));
-        pdata->iter = gtk_tree_iter_copy(&iter);
-        if(!g_thread_create(xfdesktop_settings_create_single_preview, pdata, FALSE, NULL)) {
-            g_critical("Unable to create thread for single image preview.");
+
+        for(l = filenames; l; l = l->next) {
+            /* all these copies are gross */
+            char *filename = l->data;
+            char *name = g_path_get_basename(filename);
+            gchar *name_utf8 = g_filename_to_utf8(name, strlen(name),
+                                                  NULL, NULL, NULL);
+            gchar *name_markup = g_markup_printf_escaped("<b>%s</b>",
+                                                         name_utf8);
+            GtkTreeIter iter;
+
+            gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+            gtk_list_store_set(GTK_LIST_STORE(model), &iter,
+                               COL_NAME, name_markup,
+                               COL_FILENAME, filename,
+                               -1);
+
+            pdata->iters = g_slist_prepend(pdata->iters, gtk_tree_iter_copy(&iter));
+
+            g_free(filename);
+            g_free(name);
+            g_free(name_utf8);
+            g_free(name_markup);
+        }
+        g_slist_free(filenames);
+
+        if(!pdata->iters
+           || !g_thread_create(xfdesktop_settings_create_some_previews,
+                               pdata, FALSE, NULL))
+        {
+            if(pdata->iters)
+                g_critical("Unable to create thread for single image preview.");
             g_object_unref(G_OBJECT(pdata->model));
-            gtk_tree_iter_free(pdata->iter);
+            g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
+            g_slist_free(pdata->iters);
             g_free(pdata);
         }
-
-        g_free(filename);
-        g_free(name);
-        g_free(name_utf8);
-        g_free(name_markup);
 
         if(panel->image_list_loaded)
             xfdesktop_settings_save_backdrop_list(panel, model);
