@@ -1660,6 +1660,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
     ThunarVfsMimeInfo *minfo;
     ThunarVfsPath *templates_path;
     gchar *templates_path_str = NULL;
+    gboolean templates_dir_is_home = FALSE;
 #ifdef HAVE_THUNARX
     GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
 #endif
@@ -1805,13 +1806,21 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                                                                NULL);
                     }
                     templates_path = thunar_vfs_path_new(templates_path_str, NULL);
-                    g_free(templates_path_str);
-                    if(templates_path) {
+                    templates_dir_is_home = exo_str_is_equal(templates_path_str, xfce_get_homedir());
+                    if(templates_path
+#if GLIB_CHECK_VERSION(2, 14, 0)
+                       && !templates_dir_is_home
+#endif
+                       )
+                    {
                         have_templates = xfdesktop_file_icon_menu_fill_template_menu(tmpl_menu,
                                                                                      templates_path,
                                                                                      fmanager);
-                        thunar_vfs_path_unref(templates_path);
                     }
+
+                    if(templates_path)
+                        thunar_vfs_path_unref(templates_path);
+                    g_free(templates_path_str);
                     
                     img = gtk_image_new_from_stock(GTK_STOCK_NEW, GTK_ICON_SIZE_MENU);
                     gtk_widget_show(img);
