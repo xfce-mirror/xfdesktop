@@ -1424,6 +1424,8 @@ main(int argc, char **argv)
         g_signal_connect(G_OBJECT(plug), "delete-event",
                          G_CALLBACK(gtk_main_quit), NULL);
 
+        gdk_notify_startup_complete();
+
         plug_child = glade_xml_get_widget(gxml, "alignment1");
         gtk_widget_reparent(plug_child, plug);
         gtk_widget_show(plug_child);
