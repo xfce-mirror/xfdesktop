@@ -9,14 +9,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-08 09:57+0200\n"
-"PO-Revision-Date: 2008-11-02 14:27+0100\n"
+"POT-Creation-Date: 2008-11-15 18:13+0100\n"
+"PO-Revision-Date: 2008-11-15 19:58+0100\n"
 "Last-Translator: Abel Martín <abel.martin.ruiz@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../common/xfdesktop-common.c:87
+#: ../common/xfdesktop-common.c:191
+#, c-format
+msgid "Backdrop list file is not valid"
+msgstr "El archivo de lista de fondos no es válido"
 
 #: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
@@ -108,13 +114,13 @@ msgstr "Seleccionar icono"
 #: ../menueditor/menueditor-edit-dialog.c:235
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:606
+#: ../panel-plugin/desktop-menu-plugin.c:705
 msgid "All Files"
 msgstr "Todos los archivos"
 
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
-#: ../panel-plugin/desktop-menu-plugin.c:612
+#: ../panel-plugin/desktop-menu-plugin.c:712
 msgid "Image Files"
 msgstr "Archivos de imagen"
 
@@ -189,7 +195,7 @@ msgstr "Seleccionar menú externo"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:620
+#: ../panel-plugin/desktop-menu-plugin.c:715
 msgid "Menu Files"
 msgstr "Archivos de menú"
 
@@ -258,7 +264,7 @@ msgid "Create a new empty menu"
 msgstr "Crear un nuevo menú vacío"
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1719
+#: ../src/xfdesktop-file-icon-manager.c:1720
 #: ../src/xfdesktop-special-file-icon.c:633
 #: ../src/xfdesktop-volume-icon.c:560
 msgid "_Open"
@@ -501,69 +507,69 @@ msgstr "Descartar modificaciones"
 msgid "Unable to open the menu file %s in write mode"
 msgstr "No se pudo abrir el archivo de menú %s en modo escritura"
 
-#: ../panel-plugin/desktop-menu-plugin.c:589
-msgid "Select Icon"
-msgstr "Seleccionar icono"
-
-#: ../panel-plugin/desktop-menu-plugin.c:591
-msgid "Select Menu File"
-msgstr "Seleccionar archivo de menú"
-
-#: ../panel-plugin/desktop-menu-plugin.c:748
+#: ../panel-plugin/desktop-menu-plugin.c:653
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "No se pudo iniciar xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:771
+#: ../panel-plugin/desktop-menu-plugin.c:676
+msgid "Select Icon"
+msgstr "Seleccionar icono"
+
+#: ../panel-plugin/desktop-menu-plugin.c:678
+msgid "Select Menu File"
+msgstr "Seleccionar archivo de menú"
+
+#: ../panel-plugin/desktop-menu-plugin.c:740
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Menú de Xfce"
 
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:752
 msgid "Button"
 msgstr "Botón"
 
-#: ../panel-plugin/desktop-menu-plugin.c:796
+#: ../panel-plugin/desktop-menu-plugin.c:765
 msgid "Button _title:"
 msgstr "_Título de botón"
 
-#: ../panel-plugin/desktop-menu-plugin.c:809
+#: ../panel-plugin/desktop-menu-plugin.c:778
 msgid "_Show title in button"
 msgstr "Mo_strar título en botón"
 
-#: ../panel-plugin/desktop-menu-plugin.c:816
+#: ../panel-plugin/desktop-menu-plugin.c:785
 msgid "Menu File"
 msgstr "Archivo de menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:828
+#: ../panel-plugin/desktop-menu-plugin.c:797
 msgid "Use default _desktop menu file"
 msgstr "Usar menú _de escritorio predeterminado"
 
-#: ../panel-plugin/desktop-menu-plugin.c:837
+#: ../panel-plugin/desktop-menu-plugin.c:806
 msgid "Use _custom menu file:"
 msgstr "Usar fi_chero de menú personalizado"
 
-#: ../panel-plugin/desktop-menu-plugin.c:888
+#: ../panel-plugin/desktop-menu-plugin.c:847
 msgid "_Edit Menu"
 msgstr "_Editar menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:894
+#: ../panel-plugin/desktop-menu-plugin.c:854
 msgid "Icons"
 msgstr "Iconos"
 
-#: ../panel-plugin/desktop-menu-plugin.c:906
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "_Button icon:"
 msgstr "Icono del _botón:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:930
+#: ../panel-plugin/desktop-menu-plugin.c:880
 msgid "Show _icons in menu"
 msgstr "Mostrar _iconos en el menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:965
+#: ../panel-plugin/desktop-menu-plugin.c:915
 msgid "There is already a panel menu registered for this screen"
 msgstr "Ya hay un panel de menú registrado para esta pantalla"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1077
+#: ../panel-plugin/desktop-menu-plugin.c:1030
 msgid "Edit Menu"
 msgstr "Editar menú"
 
@@ -571,79 +577,79 @@ msgstr "Editar menú"
 msgid "Shows a menu containing categories of installed applications"
 msgstr "Muestra un menú con las categorías de las aplicaciones instaladas"
 
-#: ../src/main.c:227
+#: ../src/main.c:231
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Esto es %s version %s, ejecutándose en Xfce %s.\n"
 
-#: ../src/main.c:229
+#: ../src/main.c:233
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Compilado con GTK+ %d.%d.%d. Enlazado con GTK+ %d.%d.%d."
 
-#: ../src/main.c:233
+#: ../src/main.c:237
 #, c-format
 msgid "Build options:\n"
 msgstr "Opciones de compilación:\n"
 
-#: ../src/main.c:234
+#: ../src/main.c:238
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menú de escritorio:        %s\n"
 
-#: ../src/main.c:236
-#: ../src/main.c:243
-#: ../src/main.c:250
+#: ../src/main.c:240
+#: ../src/main.c:247
+#: ../src/main.c:254
 msgid "enabled"
 msgstr "habilitado"
 
-#: ../src/main.c:238
-#: ../src/main.c:245
-#: ../src/main.c:252
+#: ../src/main.c:242
+#: ../src/main.c:249
+#: ../src/main.c:256
 msgid "disabled"
 msgstr "deshabilitado"
 
-#: ../src/main.c:241
+#: ../src/main.c:245
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Iconos de escritorio:       %s\n"
 
-#: ../src/main.c:248
+#: ../src/main.c:252
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Iconos de archivo de escritorio:  %s\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:281
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Opción desconocida: %s\n"
 
-#: ../src/main.c:278
+#: ../src/main.c:282
 #, c-format
 msgid "Options are:\n"
 msgstr "Las opciones son:\n"
 
-#: ../src/main.c:279
+#: ../src/main.c:283
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    --reload      Recargar toda la configuración. Actualizar lista de imágenes\n"
 
-#: ../src/main.c:280
+#: ../src/main.c:284
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu        Muestra el menú (bajo la posición actual del ratón)\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:285
 #, c-format
 msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    --windowlist  Muestra lista de ventanas (bajo la posición actual del ratón)\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:286
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    --quit        Termina xfdesktop\n"
 
-#: ../src/main.c:297
+#: ../src/main.c:307
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s no se está ejecutando.\n"
@@ -686,17 +692,16 @@ msgstr "Elimina_r área de trabajo %d"
 msgid "_Remove Workspace '%s'"
 msgstr "Elimina_r área de trabajo %s"
 
-#: ../src/xfce-desktop.c:738
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+#: ../src/xfce-desktop.c:744
 msgid "Desktop"
 msgstr "Escritorio"
 
-#: ../src/xfce-desktop.c:1004
+#: ../src/xfce-desktop.c:1011
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "No se pudo cargar la imagen del archivo con la lista de fondos \"%s\""
 
-#: ../src/xfce-desktop.c:1006
+#: ../src/xfce-desktop.c:1013
 msgid "Desktop Error"
 msgstr "Error de escritorio"
 
@@ -846,66 +851,66 @@ msgstr "No se pudo crear archivo \"%s\":"
 msgid "Create Error"
 msgstr "Error de creación"
 
-#: ../src/xfdesktop-file-icon-manager.c:1701
+#: ../src/xfdesktop-file-icon-manager.c:1702
 msgid "_Open all"
 msgstr "_Abrir todo"
 
-#: ../src/xfdesktop-file-icon-manager.c:1717
+#: ../src/xfdesktop-file-icon-manager.c:1718
 msgid "_Open in New Window"
 msgstr "_Abrir en ventana nueva"
 
-#: ../src/xfdesktop-file-icon-manager.c:1734
+#: ../src/xfdesktop-file-icon-manager.c:1735
 msgid "Create _Launcher..."
 msgstr "Crear _lanzador..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1755
+#: ../src/xfdesktop-file-icon-manager.c:1756
 msgid "Create _URL Link..."
 msgstr "Crear enlace _URL..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1772
+#: ../src/xfdesktop-file-icon-manager.c:1773
 msgid "Create _Folder..."
 msgstr "Crear _directorio..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1814
+#: ../src/xfdesktop-file-icon-manager.c:1827
 msgid "_Empty File"
 msgstr "Archivo _vacío"
 
-#: ../src/xfdesktop-file-icon-manager.c:1830
+#: ../src/xfdesktop-file-icon-manager.c:1843
 msgid "_Execute"
 msgstr "_Ejecutar"
 
-#: ../src/xfdesktop-file-icon-manager.c:1848
+#: ../src/xfdesktop-file-icon-manager.c:1861
 msgid "_Edit Launcher"
 msgstr "_Editar lanzador"
 
-#: ../src/xfdesktop-file-icon-manager.c:1888
+#: ../src/xfdesktop-file-icon-manager.c:1901
 msgid "Open With"
 msgstr "Abrir con"
 
-#: ../src/xfdesktop-file-icon-manager.c:1919
+#: ../src/xfdesktop-file-icon-manager.c:1932
 msgid "Open With Other _Application..."
 msgstr "Abrir con otra _aplicación"
 
-#: ../src/xfdesktop-file-icon-manager.c:2026
+#: ../src/xfdesktop-file-icon-manager.c:2039
 msgid "_Rename..."
 msgstr "_Renombrar..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2044
+#: ../src/xfdesktop-file-icon-manager.c:2057
 msgid "Desktop _Settings..."
 msgstr "_Configuración de escritorio..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2054
-#: ../src/xfdesktop-volume-icon.c:610
+#: ../src/xfdesktop-file-icon-manager.c:2067
+#: ../src/xfdesktop-volume-icon.c:606
 msgid "_Properties..."
 msgstr "_Propiedades..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3258
+#: ../src/xfdesktop-file-icon-manager.c:3310
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Fallo al ejecutar \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:3260
+#: ../src/xfdesktop-file-icon-manager.c:3312
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr "Error de ejecución"
@@ -917,7 +922,7 @@ msgstr "La aplicación asociada no pudo ser encontrada ni ejecutada."
 #: ../src/xfdesktop-file-properties-dialog.c:103
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr "No se pudo configurar \"$2%s\" como aplicación por defecto para \"$1%s\":"
+msgstr "No se pudo configurar \"%2$s\" como aplicación por defecto para \"%1$s\":"
 
 #: ../src/xfdesktop-file-properties-dialog.c:106
 msgid "Properties Error"
@@ -1061,7 +1066,7 @@ msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Fallo al renombrar \"%s\" por \"%s\":"
 
 #: ../src/xfdesktop-special-file-icon.c:259
-#: ../settings/main.c:163
+#: ../settings/main.c:267
 msgid "Home"
 msgstr "Carpeta personal"
 
@@ -1129,17 +1134,17 @@ msgstr "No se pudo expulsar \"%s\":"
 msgid "Eject Failed"
 msgstr "Fallo al expulsar"
 
-#: ../src/xfdesktop-volume-icon.c:571
-msgid "_Mount Volume"
-msgstr "_Montar volumen"
+#: ../src/xfdesktop-volume-icon.c:576
+msgid "E_ject Volume"
+msgstr "E_xpulsar volumen"
 
-#: ../src/xfdesktop-volume-icon.c:582
+#: ../src/xfdesktop-volume-icon.c:586
 msgid "_Unmount Volume"
 msgstr "_Desmontar volumen"
 
-#: ../src/xfdesktop-volume-icon.c:596
-msgid "E_ject Volume"
-msgstr "E_xpulsar volumen"
+#: ../src/xfdesktop-volume-icon.c:589
+msgid "_Mount Volume"
+msgstr "_Montar volumen"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
@@ -1301,107 +1306,142 @@ msgstr "Navegue por la web"
 msgid "Web Browser"
 msgstr "Navegador web"
 
-#: ../settings/main.c:165
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:157
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr ""
+"%s\n"
+"<i>Tamaño: %dx%d</i>"
+
+#: ../settings/main.c:269
 msgid "Filesystem"
 msgstr "Sistema de archivos"
 
-#: ../settings/main.c:167
+#: ../settings/main.c:271
 msgid "Trash"
 msgstr "Papelera"
 
-#: ../settings/main.c:169
+#: ../settings/main.c:273
 msgid "Removable Devices"
 msgstr "Dispositivos extraíbles"
 
-#: ../settings/main.c:321
+#: ../settings/main.c:426
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr "No se puede crear lista de fondos \"%s\""
 
-#: ../settings/main.c:325
-#: ../settings/main.c:678
+#: ../settings/main.c:430
+#: ../settings/main.c:789
 msgid "Backdrop List Error"
 msgstr "Error de lista de fondos"
 
-#: ../settings/main.c:350
+#: ../settings/main.c:455
 msgid "Create/Load Backdrop List"
 msgstr "Crear/cargar lista de fondos"
 
-#: ../settings/main.c:374
+#: ../settings/main.c:479
 #, c-format
 msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr "El archivo \"%s\" no es un archivo de lista de fondos válido. ¿Desea sobreescribirlo?"
 
-#: ../settings/main.c:379
+#: ../settings/main.c:484
 msgid "Invalid List File"
 msgstr "Archivo de lista no válido"
 
-#: ../settings/main.c:382
+#: ../settings/main.c:487
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr "Sobreescribir el archivo provocará la pérdida de sus contenidos."
 
-#: ../settings/main.c:384
+#: ../settings/main.c:489
 msgid "Replace"
 msgstr "Sustituir"
 
-#: ../settings/main.c:674
+#: ../settings/main.c:785
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "Fallo al escribir la lista de fondos en \"%s\""
 
-#: ../settings/main.c:701
+#: ../settings/main.c:812
 msgid "Add Image File(s)"
 msgstr "Añadir archivo(s) de imagen"
 
-#: ../settings/main.c:710
+#: ../settings/main.c:821
 msgid "Image files"
 msgstr "Archivos de imagen"
 
-#: ../settings/main.c:715
+#: ../settings/main.c:826
 msgid "All files"
 msgstr "Todos los archivos"
 
-#: ../settings/main.c:979
+#: ../settings/main.c:1120
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "Pantalla %d, monitor %d (%s)"
 
-#: ../settings/main.c:984
+#: ../settings/main.c:1125
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Pantalla %d, monitor %d"
 
-#: ../settings/main.c:987
+#: ../settings/main.c:1128
 #, c-format
 msgid "Screen %d"
 msgstr "Pantalla %d"
 
-#: ../settings/main.c:993
+#: ../settings/main.c:1134
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "Monitor %d (%s)"
 
-#: ../settings/main.c:998
+#: ../settings/main.c:1139
 #, c-format
 msgid "Monitor %d"
 msgstr "Monitor %d"
 
-#: ../settings/main.c:1200
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+#: ../settings/main.c:1354
+msgid "Settings manager socket"
+msgstr "Socket del gestor de configuración"
+
+#: ../settings/main.c:1354
+msgid "SOCKET ID"
+msgstr "SOCKET ID"
+
+#: ../settings/main.c:1355
+msgid "Version information"
+msgstr "Información de versión"
+
+#: ../settings/main.c:1375
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Escriba '%s --help' para ver opciones de uso."
+
+#: ../settings/main.c:1387
+msgid "The Xfce development team. All rights reserved."
+msgstr "El equipo de desarrollo de Xfce. Todos los derechos reservados."
+
+#: ../settings/main.c:1388
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Por favor, informe de fallos a <%s>."
+
+#: ../settings/main.c:1395
 msgid "Desktop Settings"
 msgstr "Configuración del escritorio"
 
-#: ../settings/main.c:1202
+#: ../settings/main.c:1397
 msgid "Unable to contact settings server"
 msgstr "No se pudo contactar con el servidor de configuración"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:3
-msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr "Configuración para el escritorio Xfce4"
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop "
+msgstr "Escritorio"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:4
-msgid "Xfce 4 Desktop Settings"
-msgstr "Configuración del escritorio Xfce4"
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr "Configure el fondo de escritorio y el comportamiento de menús e iconos"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
@@ -1561,7 +1601,7 @@ msgstr "Seleccionar una sola imagen como fondo"
 
 #: ../settings/xfdesktop-settings.glade.h:44
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Configurar el fondo de escritorio y el comportamiento de menús e iconos"
+msgstr "Configure el fondo de escritorio y el comportamiento de menús e iconos"
 
 #: ../settings/xfdesktop-settings.glade.h:45
 msgid "Sh_ow application icons in menu"
@@ -1616,49 +1656,51 @@ msgid "St_yle:"
 msgstr "Est_ilo:"
 
 #: ../settings/xfdesktop-settings.glade.h:59
-msgid "Use _Xfce to manage the desktop"
-msgstr "Utilizar _Xfce para gestionar el escritorio"
+msgid "Use custom _font size:"
+msgstr "Usar tamaño de _letra personalizado:"
 
 #: ../settings/xfdesktop-settings.glade.h:60
-msgid "Use custom _font size:"
-msgstr "Usar tamaño de _fuente personalizado:"
-
-#: ../settings/xfdesktop-settings.glade.h:61
 msgid "_Background"
 msgstr "_Fondo"
 
-#: ../settings/xfdesktop-settings.glade.h:62
+#: ../settings/xfdesktop-settings.glade.h:61
 msgid "_Button:"
 msgstr "_Botón:"
 
-#: ../settings/xfdesktop-settings.glade.h:63
+#: ../settings/xfdesktop-settings.glade.h:62
 msgid "_Edit desktop menu"
 msgstr "_Editar menú de escritorio"
 
-#: ../settings/xfdesktop-settings.glade.h:64
+#: ../settings/xfdesktop-settings.glade.h:63
 msgid "_Icons"
 msgstr "_Iconos"
 
-#: ../settings/xfdesktop-settings.glade.h:65
+#: ../settings/xfdesktop-settings.glade.h:64
 msgid "_Menus"
 msgstr "_Menús"
 
-#: ../settings/xfdesktop-settings.glade.h:66
+#: ../settings/xfdesktop-settings.glade.h:65
 msgid "_None"
 msgstr "_Ninguno"
 
-#: ../settings/xfdesktop-settings.glade.h:67
+#: ../settings/xfdesktop-settings.glade.h:66
 msgid "_Single image"
 msgstr "Imagen _sencilla"
 
-#: ../settings/xfdesktop-settings.glade.h:68
+#: ../settings/xfdesktop-settings.glade.h:67
 msgid "gtk-close"
 msgstr "gtk-close"
 
-#: ../settings/xfdesktop-settings.glade.h:69
+#: ../settings/xfdesktop-settings.glade.h:68
 msgid "gtk-help"
 msgstr "gtk-help"
 
+#~ msgid "Settings for the Xfce 4 Desktop Manager"
+#~ msgstr "Configuración para el escritorio Xfce4"
+#~ msgid "Xfce 4 Desktop Settings"
+#~ msgstr "Configuración del escritorio Xfce4"
+#~ msgid "Use _Xfce to manage the desktop"
+#~ msgstr "Utilizar _Xfce para gestionar el escritorio"
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
@@ -1698,8 +1740,6 @@ msgstr "gtk-help"
 #~ msgstr "Error desconocido"
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "No se pudo iniciar xfdesktop"
-#~ msgid "Information"
-#~ msgstr "Información"
 
 #, fuzzy
 #~ msgid ""
@@ -1752,8 +1792,6 @@ msgstr "gtk-help"
 #~ msgstr "_Archivo:"
 #~ msgid "Select backdrop image file"
 #~ msgstr "Seleccione archivo de imagen de fondo"
-#~ msgid "Choose backdrop list filename"
-#~ msgstr "Seleccione archivo con lista de fondos"
 #~ msgid "List file"
 #~ msgstr "Archivo de Lista"
 
