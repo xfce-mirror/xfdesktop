@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE glade-interface SYSTEM "glade-2.0.dtd">
-<!--Generated with glade3 3.4.5 on Sat Nov  1 13:24:04 2008 -->
+<!--Generated with glade3 3.4.5 on Sun Nov 16 16:39:43 2008 -->
 <glade-interface>
   <requires lib="xfce4"/>
   <widget class="XfceTitledDialog" id="prefs_dialog">
@@ -171,6 +171,7 @@
                                                   <widget class="GtkComboBox" id="combo_style">
                                                     <property name="visible">True</property>
                                                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                                    <property name="tooltip" translatable="yes">Specify how the image will be resized to fit the screen</property>
                                                     <property name="items" translatable="yes">Auto
 Centered
 Tiled
@@ -317,6 +318,7 @@ Zoomed</property>
                                                   <widget class="GtkComboBox" id="combo_colors">
                                                     <property name="visible">True</property>
                                                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                                    <property name="tooltip" translatable="yes">Specify the style of the color drawn behind the backdrop image</property>
                                                     <property name="items" translatable="yes">Solid color
 Horizontal gradient
 Vertical gradient
@@ -564,7 +566,7 @@ Transparent</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                    <property name="label" translatable="yes">Show _desktop menu on desktop click</property>
+                                    <property name="label" translatable="yes">Show applications menu on _desktop right click</property>
                                     <property name="use_underline">True</property>
                                     <property name="response_id">0</property>
                                     <property name="active">True</property>
@@ -727,7 +729,7 @@ Control</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                    <property name="label" translatable="yes">Show _window list menu on desktop click</property>
+                                    <property name="label" translatable="yes">Show _window list menu on desktop middle click</property>
                                     <property name="use_underline">True</property>
                                     <property name="response_id">0</property>
                                     <property name="active">True</property>
@@ -843,7 +845,7 @@ Control</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">True</property>
                                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                                <property name="label" translatable="yes">Show windows on each workspace in _submenus</property>
+                                                <property name="label" translatable="yes">Use _submenus for the windows in each workspace</property>
                                                 <property name="use_underline">True</property>
                                                 <property name="response_id">0</property>
                                                 <property name="draw_indicator">True</property>
@@ -1063,6 +1065,7 @@ File/launcher icons</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                        <property name="tooltip" translatable="yes">Specify the transparency level for the rounded label drawn behind the icon text</property>
                                         <property name="adjustment">40 0 100 1 10 0</property>
                                         <property name="digits">0</property>
                                         <property name="value_pos">GTK_POS_RIGHT</property>
@@ -1122,7 +1125,6 @@ File/launcher icons</property>
                                     <property name="can_focus">True</property>
                                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                                     <property name="headers_visible">False</property>
-                                    <property name="headers_clickable">True</property>
                                   </widget>
                                 </child>
                               </widget>
