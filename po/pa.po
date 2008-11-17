@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-08 09:57+0200\n"
+"POT-Creation-Date: 2008-11-16 18:10-0800\n"
 "PO-Revision-Date: 2007-07-05 07:17+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi <punjabi-l10n@lists.sf.net>\n"
@@ -19,6 +19,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
+#, fuzzy, c-format
+msgid "Backdrop list file is not valid"
+msgstr "ਬੈਕ-ਡਰਾਪ ਲਿਸਟ ਫਾਇਲ ਨਾਂ ਚੁਣੋ"
 
 #: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
@@ -110,13 +115,13 @@ msgstr "ਆਈਕਾਨ ਚੁਣੋ"
 #: ../menueditor/menueditor-edit-dialog.c:235
 #: ../menueditor/menueditor-edit-dialog.c:296
 #: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:606
+#: ../panel-plugin/desktop-menu-plugin.c:705
 msgid "All Files"
 msgstr "ਸਭ ਫਾਇਲਾਂ"
 
 #: ../menueditor/menueditor-add-dialog.c:261
 #: ../menueditor/menueditor-edit-dialog.c:239
-#: ../panel-plugin/desktop-menu-plugin.c:612
+#: ../panel-plugin/desktop-menu-plugin.c:712
 msgid "Image Files"
 msgstr "ਚਿੱਤਰ ਫਾਇਲਾਂ"
 
@@ -191,7 +196,7 @@ msgstr "ਬਾਹਰੀ ਮੇਨੂ ਚੁਣੋ"
 
 #: ../menueditor/menueditor-add-external-dialog.c:146
 #: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:620
+#: ../panel-plugin/desktop-menu-plugin.c:715
 msgid "Menu Files"
 msgstr "ਮੇਨੂ ਫਾਇਲਾਂ"
 
@@ -265,7 +270,7 @@ msgid "Create a new empty menu"
 msgstr "ਨਵਾਂ ਖਾਲੀ ਮੇਨੂ ਬਣਾਓ"
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1719
+#: ../src/xfdesktop-file-icon-manager.c:1720
 #: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
 msgid "_Open"
 msgstr "ਖੋਲ੍ਹੋ(_O)"
@@ -506,69 +511,69 @@ msgstr "ਸੋਧਾਂ ਭੁੱਲ ਜਾਓ"
 msgid "Unable to open the menu file %s in write mode"
 msgstr "ਮੇਨੂ ਫਾਇਲ %s ਨੂੰ ਲਿਖਣ ਢੰਗ ਨਾਲ ਖੋਲ੍ਹਣ ਲਈ ਅਸਫ਼ਲ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:589
-msgid "Select Icon"
-msgstr "ਆਈਕਾਨ ਚੁਣੋ"
-
-#: ../panel-plugin/desktop-menu-plugin.c:591
-msgid "Select Menu File"
-msgstr "ਮੇਨੂ ਫਾਇਲ ਚੁਣੋ"
-
-#: ../panel-plugin/desktop-menu-plugin.c:748
+#: ../panel-plugin/desktop-menu-plugin.c:653
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4- ਮੇਨੂ ਸੰਪਾਦਕ ਜਾਰੀ ਕਰਨ ਵਿੱਚ ਅਸਫਲ: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:771
+#: ../panel-plugin/desktop-menu-plugin.c:676
+msgid "Select Icon"
+msgstr "ਆਈਕਾਨ ਚੁਣੋ"
+
+#: ../panel-plugin/desktop-menu-plugin.c:678
+msgid "Select Menu File"
+msgstr "ਮੇਨੂ ਫਾਇਲ ਚੁਣੋ"
+
+#: ../panel-plugin/desktop-menu-plugin.c:740
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce ਮੇਨੂ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:752
 msgid "Button"
 msgstr "ਬਟਨ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:796
+#: ../panel-plugin/desktop-menu-plugin.c:765
 msgid "Button _title:"
 msgstr "ਬਟਨ ਟਾਇਟਲ(_t):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:809
+#: ../panel-plugin/desktop-menu-plugin.c:778
 msgid "_Show title in button"
 msgstr "ਬਟਨ 'ਚ ਟਾਇਟਲ ਵੇਖਾਓ(_S)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:816
+#: ../panel-plugin/desktop-menu-plugin.c:785
 msgid "Menu File"
 msgstr "ਮੇਨੂ ਫਾਇਲ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:828
+#: ../panel-plugin/desktop-menu-plugin.c:797
 msgid "Use default _desktop menu file"
 msgstr "ਮੂਲ ਡੈਸਕਟਾਪ ਮੇਨੂ ਫਾਇਲ ਵਰਤੋਂ(_d)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:837
+#: ../panel-plugin/desktop-menu-plugin.c:806
 msgid "Use _custom menu file:"
 msgstr "ਕਸਟਮ ਮੇਨੂ ਫਾਇਲ ਵਰਤੋਂ(_c):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:888
+#: ../panel-plugin/desktop-menu-plugin.c:847
 msgid "_Edit Menu"
 msgstr "ਮੇਨੂ ਸੋਧ(_E)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:894
+#: ../panel-plugin/desktop-menu-plugin.c:854
 msgid "Icons"
 msgstr "ਆਈਕਾਨ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:906
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "_Button icon:"
 msgstr "ਬਟਨ ਆਈਕਾਨ(_B):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:930
+#: ../panel-plugin/desktop-menu-plugin.c:880
 msgid "Show _icons in menu"
 msgstr "ਮੇਨੂ 'ਚ ਆਈਕਾਨ ਵੇਖਾਓ(_i)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:965
+#: ../panel-plugin/desktop-menu-plugin.c:915
 msgid "There is already a panel menu registered for this screen"
 msgstr "ਇਹ ਸਕਰੀਨ ਲਈ ਪਹਿਲਾਂ ਹੀ ਇੱਕ ਪੈਨਲ ਮੇਨੂ ਰਜਿਸਟਰ ਹੈ"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1077
+#: ../panel-plugin/desktop-menu-plugin.c:1030
 msgid "Edit Menu"
 msgstr "ਮੇਨੂ ਸੋਧ"
 
@@ -576,77 +581,77 @@ msgstr "ਮੇਨੂ ਸੋਧ"
 msgid "Shows a menu containing categories of installed applications"
 msgstr "ਇੰਸਟਾਲ ਹੋਏ ਕਾਰਜਾਂ ਦੇ ਵਰਗਾਂ ਲਈ ਇੱਕ ਮੇਨੂ ਵੇਖੋ"
 
-#: ../src/main.c:227
+#: ../src/main.c:231
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "ਇਹ %s ਵਰਜਨ %s ਹੈ, ਜੋ Xfce %s ਉੱਤੇ ਚੱਲ ਰਿਹਾ ਹੈ।\n"
 
-#: ../src/main.c:229
+#: ../src/main.c:233
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "GTK+ %d.%d.%d ਨਾਲ ਬਿਲਡ ਕੀਤਾ, GTK+ %d.%d.%d ਨਾਲ ਲਿੰਕ ਕੀਤਾ"
 
-#: ../src/main.c:233
+#: ../src/main.c:237
 #, c-format
 msgid "Build options:\n"
 msgstr "ਬਿਲਡ ਚੋਣਾਂ:\n"
 
-#: ../src/main.c:234
+#: ../src/main.c:238
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    ਡੈਸਕਟਾਪ ਮੇਨੂ:        %s\n"
 
-#: ../src/main.c:236 ../src/main.c:243 ../src/main.c:250
+#: ../src/main.c:240 ../src/main.c:247 ../src/main.c:254
 msgid "enabled"
 msgstr "ਯੋਗ ਕੀਤਾ"
 
-#: ../src/main.c:238 ../src/main.c:245 ../src/main.c:252
+#: ../src/main.c:242 ../src/main.c:249 ../src/main.c:256
 msgid "disabled"
 msgstr "ਆਯੋਗ ਕੀਤਾ"
 
-#: ../src/main.c:241
+#: ../src/main.c:245
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    ਡੈਸਕਟਾਪ ਆਈਕਾਨ:       %s\n"
 
-#: ../src/main.c:248
+#: ../src/main.c:252
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    ਡੈਸਕਟਾਪ ਫਾਇਲ ਆਈਕਾਨ:  %s\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:281
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: ਅਣਜਾਣ ਚੋਣ: %s\n"
 
-#: ../src/main.c:278
+#: ../src/main.c:282
 #, c-format
 msgid "Options are:\n"
 msgstr "ਚੋਣਾਂ ਹਨ:\n"
 
-#: ../src/main.c:279
+#: ../src/main.c:283
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    --reload      Reload all settings, refresh image list\n"
 
-#: ../src/main.c:280
+#: ../src/main.c:284
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu        Pop up the menu (at the current mouse position)\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:285
 #, c-format
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:286
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    --quit        Cause xfdesktop to quit\n"
 
-#: ../src/main.c:297
+#: ../src/main.c:307
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s ਚੱਲ ਨਹੀਂ ਰਿਹਾ ਹੈ।\n"
@@ -688,16 +693,16 @@ msgstr "ਵਰਕਸਪੇਸ %d ਹਟਾਓ(_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "ਵਰਕਸਪੇਸ '%s' ਹਟਾਓ(_R)"
 
-#: ../src/xfce-desktop.c:738 ../settings/xfce-backdrop-settings.desktop.in.h:1
+#: ../src/xfce-desktop.c:744
 msgid "Desktop"
 msgstr "ਡੈਸਕਟਾਪ"
 
-#: ../src/xfce-desktop.c:1004
+#: ../src/xfce-desktop.c:1011
 #, fuzzy, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "ਫਾਇਲ \"%s\" ਬਣਾਉਣ ਲਈ ਅਸਫ਼ਲ:"
 
-#: ../src/xfce-desktop.c:1006
+#: ../src/xfce-desktop.c:1013
 #, fuzzy
 msgid "Desktop Error"
 msgstr "ਡੈਸਕਟਾਪ"
@@ -855,66 +860,66 @@ msgstr "ਫਾਇਲ \"%s\" ਬਣਾਉਣ ਲਈ ਅਸਫ਼ਲ:"
 msgid "Create Error"
 msgstr "ਬਣਾਉਣ ਗਲਤੀ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1701
+#: ../src/xfdesktop-file-icon-manager.c:1702
 msgid "_Open all"
 msgstr "ਸਭ ਖੋਲ੍ਹੋ(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1717
+#: ../src/xfdesktop-file-icon-manager.c:1718
 msgid "_Open in New Window"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1734
+#: ../src/xfdesktop-file-icon-manager.c:1735
 msgid "Create _Launcher..."
 msgstr "ਲਾਂਚਰ ਬਣਾਓ(_L)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1755
+#: ../src/xfdesktop-file-icon-manager.c:1756
 msgid "Create _URL Link..."
 msgstr "_URL ਲਿੰਕ ਬਣਾਓ..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1772
+#: ../src/xfdesktop-file-icon-manager.c:1773
 msgid "Create _Folder..."
 msgstr "ਫੋਲਡਰ ਬਣਾਓ(_F)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1814
+#: ../src/xfdesktop-file-icon-manager.c:1827
 msgid "_Empty File"
 msgstr "ਖਾਲੀ ਫਾਇਲ(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1830
+#: ../src/xfdesktop-file-icon-manager.c:1843
 msgid "_Execute"
 msgstr "ਚਲਾਓ(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1848
+#: ../src/xfdesktop-file-icon-manager.c:1861
 msgid "_Edit Launcher"
 msgstr "ਲਾਂਚਰ ਸੋਧ(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1888
+#: ../src/xfdesktop-file-icon-manager.c:1901
 msgid "Open With"
 msgstr "ਇਸ ਨਾਲ ਖੋਲ੍ਹੋ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1919
+#: ../src/xfdesktop-file-icon-manager.c:1932
 msgid "Open With Other _Application..."
 msgstr "ਹੋਰ ਕਾਰਜ ਨਾਲ ਖੋਲ੍ਹੋ(_A)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2026
+#: ../src/xfdesktop-file-icon-manager.c:2039
 msgid "_Rename..."
 msgstr "ਨਾਂ ਬਦਲੋ(_R)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2044
+#: ../src/xfdesktop-file-icon-manager.c:2057
 msgid "Desktop _Settings..."
 msgstr "ਡੈਸਕਟਾਪ ਸੈਟਿੰਗ(_S)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2054
-#: ../src/xfdesktop-volume-icon.c:610
+#: ../src/xfdesktop-file-icon-manager.c:2067
+#: ../src/xfdesktop-volume-icon.c:606
 msgid "_Properties..."
 msgstr "ਵਿਸ਼ੇਸ਼ਤਾ(_P)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3258
+#: ../src/xfdesktop-file-icon-manager.c:3310
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "\"%s\" ਚਲਾਉਣ ਲਈ ਅਸਫ਼ਲ:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3260
+#: ../src/xfdesktop-file-icon-manager.c:3312
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr "ਚਲਾਉਣ ਗਲਤੀ"
@@ -1068,7 +1073,7 @@ msgstr "ਗਲਤੀ"
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "\"%s\" ਦਾ ਨਾਂ \"%s\" ਬਦਲਣ ਲਈ ਫੇਲ੍ਹ:"
 
-#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:163
+#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
 msgid "Home"
 msgstr "ਹੋਮ"
 
@@ -1138,17 +1143,17 @@ msgstr "\"%s\" ਨੂੰ ਕੱਢਣ ਲਈ ਅਸਫ਼ਲ:"
 msgid "Eject Failed"
 msgstr "ਬਾਹਰ ਕੱਢਣੀ ਫੇਲ੍ਹ"
 
-#: ../src/xfdesktop-volume-icon.c:571
-msgid "_Mount Volume"
-msgstr "ਵਾਲੀਅਮ ਮਾਊਟ(_M)"
+#: ../src/xfdesktop-volume-icon.c:576
+msgid "E_ject Volume"
+msgstr "ਵਾਲੀਅਮ ਬਾਹਰ ਕੱਢੋ(_j)"
 
-#: ../src/xfdesktop-volume-icon.c:582
+#: ../src/xfdesktop-volume-icon.c:586
 msgid "_Unmount Volume"
 msgstr "ਵਾਲੀਅਮ ਅਣ-ਮਾਊਂਟ(_U)"
 
-#: ../src/xfdesktop-volume-icon.c:596
-msgid "E_ject Volume"
-msgstr "ਵਾਲੀਅਮ ਬਾਹਰ ਕੱਢੋ(_j)"
+#: ../src/xfdesktop-volume-icon.c:589
+msgid "_Mount Volume"
+msgstr "ਵਾਲੀਅਮ ਮਾਊਟ(_M)"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
@@ -1310,115 +1315,151 @@ msgstr "ਵੈੱਬ ਬਰਾਊਜ਼ ਕਰੋ"
 msgid "Web Browser"
 msgstr "ਵੈੱਬ ਬਰਾਊਜ਼ਰ"
 
-#: ../settings/main.c:165
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:157
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr ""
+
+#: ../settings/main.c:269
 #, fuzzy
 msgid "Filesystem"
 msgstr "ਸਿਸਟਮ"
 
-#: ../settings/main.c:167
+#: ../settings/main.c:271
 #, fuzzy
 msgid "Trash"
 msgstr "ਰੱਦੀ ਗਲਤੀ"
 
-#: ../settings/main.c:169
+#: ../settings/main.c:273
 msgid "Removable Devices"
 msgstr ""
 
-#: ../settings/main.c:321
+#: ../settings/main.c:426
 #, fuzzy, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr "ਬੈਕ-ਡਰਾਪ ਲਿਸਟ ਬਣਾਓ"
 
-#: ../settings/main.c:325 ../settings/main.c:678
+#: ../settings/main.c:430 ../settings/main.c:789
 #, fuzzy
 msgid "Backdrop List Error"
 msgstr "ਵਿਸ਼ੇਸ਼ਤਾ ਗਲਤੀ"
 
-#: ../settings/main.c:350
+#: ../settings/main.c:455
 #, fuzzy
 msgid "Create/Load Backdrop List"
 msgstr "ਬੈਕ-ਡਰਾਪ ਲਿਸਟ ਬਣਾਓ"
 
-#: ../settings/main.c:374
+#: ../settings/main.c:479
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
 
-#: ../settings/main.c:379
+#: ../settings/main.c:484
 #, fuzzy
 msgid "Invalid List File"
 msgstr "ਫਾਇਲਾਂ ਲਿਸਟ"
 
-#: ../settings/main.c:382
+#: ../settings/main.c:487
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr ""
 
-#: ../settings/main.c:384
+#: ../settings/main.c:489
 #, fuzzy
 msgid "Replace"
 msgstr "ਨਾਂ ਬਦਲੋ"
 
-#: ../settings/main.c:674
+#: ../settings/main.c:785
 #, fuzzy, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "\"%s\" ਦਾ ਨਾਂ \"%s\" ਬਦਲਣ ਲਈ ਫੇਲ੍ਹ:"
 
-#: ../settings/main.c:701
+#: ../settings/main.c:812
 #, fuzzy
 msgid "Add Image File(s)"
 msgstr "ਚਿੱਤਰ ਫਾਇਲਾਂ"
 
-#: ../settings/main.c:710
+#: ../settings/main.c:821
 msgid "Image files"
 msgstr "ਚਿੱਤਰ ਫਾਇਲਾਂ"
 
-#: ../settings/main.c:715
+#: ../settings/main.c:826
 #, fuzzy
 msgid "All files"
 msgstr "ਸਭ ਫਾਇਲਾਂ"
 
-#: ../settings/main.c:979
+#: ../settings/main.c:1120
 #, fuzzy, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "ਸਕਰੀਨ %d, ਮਾਨੀਟਰ %d"
 
-#: ../settings/main.c:984
+#: ../settings/main.c:1125
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "ਸਕਰੀਨ %d, ਮਾਨੀਟਰ %d"
 
-#: ../settings/main.c:987
+#: ../settings/main.c:1128
 #, c-format
 msgid "Screen %d"
 msgstr "ਸਕਰੀਨ %d"
 
-#: ../settings/main.c:993
+#: ../settings/main.c:1134
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr ""
 
-#: ../settings/main.c:998
+#: ../settings/main.c:1139
 #, fuzzy, c-format
 msgid "Monitor %d"
 msgstr "ਸਕਰੀਨ %d, ਮਾਨੀਟਰ %d"
 
-#: ../settings/main.c:1200 ../settings/xfce-backdrop-settings.desktop.in.h:2
+#: ../settings/main.c:1354
+msgid "Settings manager socket"
+msgstr ""
+
+#: ../settings/main.c:1354
+msgid "SOCKET ID"
+msgstr ""
+
+#: ../settings/main.c:1355
+#, fuzzy
+msgid "Version information"
+msgstr "ਜਾਣਕਾਰੀ"
+
+#: ../settings/main.c:1375
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr ""
+
+#: ../settings/main.c:1387
+msgid "The Xfce development team. All rights reserved."
+msgstr ""
+
+#: ../settings/main.c:1388
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr ""
+
+#: ../settings/main.c:1395
 msgid "Desktop Settings"
 msgstr "ਡੈਸਕਟਾਪ ਸੈਟਿੰਗ"
 
-#: ../settings/main.c:1202
+#: ../settings/main.c:1397
 #, fuzzy
 msgid "Unable to contact settings server"
 msgstr "Xfce ਰੱਦੀ ਸੇਵਾ ਨਾਲ ਸੰਪਰਕ ਲਈ ਅਸਫ਼ਲ ਹੈ।"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:3
-msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr "Xfce 4 ਡੈਸਕਟਾਪ ਮੈਨੇਜਰ ਲਈ ਸੈਟਿੰਗ"
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+#, fuzzy
+msgid "Desktop "
+msgstr "ਡੈਸਕਟਾਪ"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:4
-msgid "Xfce 4 Desktop Settings"
-msgstr "Xfce 4 ਡੈਸਕਟਾਪ ਸੈਟਿੰਗ"
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr ""
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
@@ -1588,13 +1629,13 @@ msgstr "ਮੇਨੂ 'ਚ ਆਈਕਾਨ ਵੇਖਾਓ(_i)"
 
 #: ../settings/xfdesktop-settings.glade.h:47
 #, fuzzy
-msgid "Show _desktop menu on desktop click"
-msgstr "ਸੱਜੇ ਦਬਾਉਣ ਉੱਤੇ ਡਿਸਕਫਾਪ ਮੇਨੂ ਵੇਖਾਓ(_d)"
+msgid "Show _window list menu on desktop middle click"
+msgstr "ਮਿਡਲ ਕਲਿੱਕ ਉੱਤੇ ਵਿੰਡੋ ਲਿਸਟ ਵੇਖਾਓ(_w)"
 
 #: ../settings/xfdesktop-settings.glade.h:48
 #, fuzzy
-msgid "Show _window list menu on desktop click"
-msgstr "ਮਿਡਲ ਕਲਿੱਕ ਉੱਤੇ ਵਿੰਡੋ ਲਿਸਟ ਵੇਖਾਓ(_w)"
+msgid "Show applications menu on _desktop right click"
+msgstr "ਸੱਜੇ ਦਬਾਉਣ ਉੱਤੇ ਡਿਸਕਫਾਪ ਮੇਨੂ ਵੇਖਾਓ(_d)"
 
 #: ../settings/xfdesktop-settings.glade.h:49
 #, fuzzy
@@ -1602,15 +1643,10 @@ msgid "Show s_ticky windows only in active workspace"
 msgstr "ਸਟਿੱਕੀ ਵਿੰਡੋ ਕੇਵਲ ਸਰਗਰਮ ਵਰਕਸਪੇਸ 'ਚ ਹੀ ਵੇਖਾਓ(_a)"
 
 #: ../settings/xfdesktop-settings.glade.h:50
-#, fuzzy
-msgid "Show windows on each workspace in _submenus"
-msgstr "ਸਟਿੱਕੀ ਵਿੰਡੋ ਹਰੇਕ ਸਰਗਰਮ ਵਰਕਸਪੇਸ ਸਬ-ਮੇਨੂ ਵਿੱਚ ਵੇਖਾਓ(_m)"
-
-#: ../settings/xfdesktop-settings.glade.h:51
 msgid "Show workspace _names in list"
 msgstr "ਲਿਸਟ ਵਿੱਚ ਵਰਕਸਪੇਸ ਨਾਂ ਵਿੱਚ ਵੇਖਾਓ(_n)"
 
-#: ../settings/xfdesktop-settings.glade.h:52
+#: ../settings/xfdesktop-settings.glade.h:51
 msgid ""
 "Solid color\n"
 "Horizontal gradient\n"
@@ -1618,70 +1654,97 @@ msgid ""
 "Transparent"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:56
+#: ../settings/xfdesktop-settings.glade.h:55
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:57
+#: ../settings/xfdesktop-settings.glade.h:56
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
 
+#: ../settings/xfdesktop-settings.glade.h:57
+msgid "Specify how the image will be resized to fit the screen"
+msgstr ""
+
 #: ../settings/xfdesktop-settings.glade.h:58
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:59
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:60
 #, fuzzy
 msgid "St_yle:"
 msgstr "ਸ਼ੈਲੀ:"
 
-#: ../settings/xfdesktop-settings.glade.h:59
-#, fuzzy
-msgid "Use _Xfce to manage the desktop"
-msgstr "_Xfce ਨੂੰ ਡੈਸਕਟਾਪ ਦਾ ਪਰਬੰਧ ਕਰਨ ਦਿਓ"
-
-#: ../settings/xfdesktop-settings.glade.h:60
-#, fuzzy
-msgid "Use custom _font size:"
-msgstr "ਕਸਟਮ ਫੋਂਟ ਆਕਾਰ(_f):"
-
 #: ../settings/xfdesktop-settings.glade.h:61
-msgid "_Background"
+msgid "Use _submenus for the windows in each workspace"
 msgstr ""
 
 #: ../settings/xfdesktop-settings.glade.h:62
 #, fuzzy
+msgid "Use custom _font size:"
+msgstr "ਕਸਟਮ ਫੋਂਟ ਆਕਾਰ(_f):"
+
+#: ../settings/xfdesktop-settings.glade.h:63
+msgid "_Background"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:64
+#, fuzzy
 msgid "_Button:"
 msgstr "ਬਟਨ"
 
-#: ../settings/xfdesktop-settings.glade.h:63
+#: ../settings/xfdesktop-settings.glade.h:65
 #, fuzzy
 msgid "_Edit desktop menu"
 msgstr "ਮੇਨੂ ਸੋਧ(_E)"
 
-#: ../settings/xfdesktop-settings.glade.h:64
+#: ../settings/xfdesktop-settings.glade.h:66
 #, fuzzy
 msgid "_Icons"
 msgstr "ਆਈਕਾਨ"
 
-#: ../settings/xfdesktop-settings.glade.h:65
+#: ../settings/xfdesktop-settings.glade.h:67
 #, fuzzy
 msgid "_Menus"
 msgstr "ਮੇਨੂ"
 
-#: ../settings/xfdesktop-settings.glade.h:66
+#: ../settings/xfdesktop-settings.glade.h:68
 #, fuzzy
 msgid "_None"
 msgstr "ਕੋਈ ਨਹੀਂ"
 
-#: ../settings/xfdesktop-settings.glade.h:67
+#: ../settings/xfdesktop-settings.glade.h:69
 msgid "_Single image"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:68
+#: ../settings/xfdesktop-settings.glade.h:70
 msgid "gtk-close"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:69
+#: ../settings/xfdesktop-settings.glade.h:71
 msgid "gtk-help"
 msgstr ""
+
+#~ msgid "Settings for the Xfce 4 Desktop Manager"
+#~ msgstr "Xfce 4 ਡੈਸਕਟਾਪ ਮੈਨੇਜਰ ਲਈ ਸੈਟਿੰਗ"
+
+#~ msgid "Xfce 4 Desktop Settings"
+#~ msgstr "Xfce 4 ਡੈਸਕਟਾਪ ਸੈਟਿੰਗ"
+
+#, fuzzy
+#~ msgid "Show windows on each workspace in _submenus"
+#~ msgstr "ਸਟਿੱਕੀ ਵਿੰਡੋ ਹਰੇਕ ਸਰਗਰਮ ਵਰਕਸਪੇਸ ਸਬ-ਮੇਨੂ ਵਿੱਚ ਵੇਖਾਓ(_m)"
+
+#, fuzzy
+#~ msgid "Use _Xfce to manage the desktop"
+#~ msgstr "_Xfce ਨੂੰ ਡੈਸਕਟਾਪ ਦਾ ਪਰਬੰਧ ਕਰਨ ਦਿਓ"
 
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
@@ -1742,9 +1805,6 @@ msgstr ""
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "xfdesktop ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਫ਼ਲ"
 
-#~ msgid "Information"
-#~ msgstr "ਜਾਣਕਾਰੀ"
-
 #~ msgid "_Do not show this again"
 #~ msgstr "ਇਹ ਮੁੜ ਨਾ ਵੇਖਾਓ(_D)"
 
@@ -1783,9 +1843,6 @@ msgstr ""
 
 #~ msgid "Select backdrop image file"
 #~ msgstr "ਬੈਕ-ਡਰਾਪ ਚਿੱਤਰ ਫਾਇਲ ਚੁਣੋ"
-
-#~ msgid "Choose backdrop list filename"
-#~ msgstr "ਬੈਕ-ਡਰਾਪ ਲਿਸਟ ਫਾਇਲ ਨਾਂ ਚੁਣੋ"
 
 #~ msgid "List file"
 #~ msgstr "ਸੂਚੀ ਫਾਇਲ"

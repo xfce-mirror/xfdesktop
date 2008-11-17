@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-13 22:03+0100\n"
+"POT-Creation-Date: 2008-11-16 18:10-0800\n"
 "PO-Revision-Date: 2008-10-18 14:00+0100\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -501,7 +501,8 @@ msgstr "Symbol-Designer"
 #: ../menueditor/menueditor-main-window.c:1345
 msgid "You have modified the menu, do you want to save it before quitting ?"
 msgstr ""
-"Sie haben Änderungen am Menü vorgenommen. Wollen Sie es vor dem Schließen speichern?"
+"Sie haben Änderungen am Menü vorgenommen. Wollen Sie es vor dem Schließen "
+"speichern?"
 
 #: ../menueditor/menueditor-main-window.c:1347
 msgid "Forget modifications"
@@ -577,408 +578,6 @@ msgstr "Ein Leistenmenü ist für diesen Bildschirm bereits registriert."
 #: ../panel-plugin/desktop-menu-plugin.c:1030
 msgid "Edit Menu"
 msgstr "Menü bearbeiten"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
-msgid "Desktop "
-msgstr "Arbeitsoberfläche "
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
-"Stellen Sie den Hintergrund der Arbeitsoberfläche sowie das Menü- und "
-"Symbolverhalten ein"
-
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:157
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>Größe: %dx%d</i>"
-
-#: ../settings/main.c:267 ../src/xfdesktop-special-file-icon.c:259
-msgid "Home"
-msgstr "Persönliches Verzeichnis"
-
-#: ../settings/main.c:269
-msgid "Filesystem"
-msgstr "Dateiystem"
-
-#: ../settings/main.c:271
-msgid "Trash"
-msgstr "Papierkorb"
-
-#: ../settings/main.c:273
-msgid "Removable Devices"
-msgstr "Entfernbare Datenträger"
-
-#: ../settings/main.c:426
-#, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr "Liste »%s« mit Hintergrundbildern nicht erstellbar"
-
-#: ../settings/main.c:430 ../settings/main.c:789
-msgid "Backdrop List Error"
-msgstr "Fehler bei der Liste mit Hintergrundbildern"
-
-#: ../settings/main.c:455
-msgid "Create/Load Backdrop List"
-msgstr "Liste mit Hintergrundbildern erstellen/laden"
-
-#: ../settings/main.c:479
-#, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Die Datei »%s« ist keine gültige Liste mit Hintergrundbildern. Soll sie "
-"überschrieben werden?"
-
-#: ../settings/main.c:484
-msgid "Invalid List File"
-msgstr "Ungültige Listendatei"
-
-#: ../settings/main.c:487
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr "Beim Überschreiben der Datei gehen die Inhalte verloren."
-
-#: ../settings/main.c:489
-msgid "Replace"
-msgstr "Ersetzen"
-
-#: ../settings/main.c:785
-#, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr "Konnte Liste mit Hintergrundbildern nicht in »%s« schreiben"
-
-#: ../settings/main.c:812
-msgid "Add Image File(s)"
-msgstr "Bilddatei(en) hinzufügen"
-
-#: ../settings/main.c:821
-msgid "Image files"
-msgstr "Bilddateien"
-
-#: ../settings/main.c:826
-msgid "All files"
-msgstr "Alle Dateien"
-
-#: ../settings/main.c:1120
-#, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "Bildschirm %d, Monitor %d (%s)"
-
-#: ../settings/main.c:1125
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "Bildschirm %d, Monitor %d"
-
-#: ../settings/main.c:1128
-#, c-format
-msgid "Screen %d"
-msgstr "Bildschirm %d"
-
-#: ../settings/main.c:1134
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr "Bildschirm %d (%s)"
-
-#: ../settings/main.c:1139
-#, c-format
-msgid "Monitor %d"
-msgstr "Bildschirm %d"
-
-#: ../settings/main.c:1354
-msgid "Settings manager socket"
-msgstr "Socket für die Sitzungsverwaltung"
-
-#: ../settings/main.c:1354
-msgid "SOCKET ID"
-msgstr "SOCKET-NUMMER"
-
-#: ../settings/main.c:1355
-msgid "Version information"
-msgstr "Versionsinformation"
-
-#: ../settings/main.c:1375
-#, c-format
-msgid "Type '%s --help' for usage."
-msgstr "Geben Sie »%s --help« ein, um Hinweise zur Verwendung zu erhalten."
-
-#: ../settings/main.c:1387
-msgid "The Xfce development team. All rights reserved."
-msgstr "Das Entwicklungsteam von Xfce. Alle Rechte vorbehalten."
-
-#: ../settings/main.c:1388
-#, c-format
-msgid "Please report bugs to <%s>."
-msgstr "Bitte melden Sie Fehler an <%s>"
-
-#: ../settings/main.c:1395
-msgid "Desktop Settings"
-msgstr "Hintergrundeinstellungen"
-
-#: ../settings/main.c:1397
-msgid "Unable to contact settings server"
-msgstr "Konnte den Einstellungsdienst nicht kontaktieren."
-
-#: ../settings/xfdesktop-settings.glade.h:1
-msgid "<b>Adjustments</b>"
-msgstr "<b>Anpassungen</b>"
-
-#: ../settings/xfdesktop-settings.glade.h:2
-msgid "<b>Appearance</b>"
-msgstr "<b>Aussehen</b>"
-
-#: ../settings/xfdesktop-settings.glade.h:3
-msgid "<b>Colors</b>"
-msgstr "<b>Farben</b>"
-
-#: ../settings/xfdesktop-settings.glade.h:4
-msgid "<b>Default Icons</b>"
-msgstr "<b>Standardsymbole</b>"
-
-#: ../settings/xfdesktop-settings.glade.h:5
-msgid "<b>Desktop Menu</b>"
-msgstr "<b>Desktopmenü</b>"
-
-#: ../settings/xfdesktop-settings.glade.h:6
-msgid "<b>Image</b>"
-msgstr "<b>Bild</b>"
-
-#: ../settings/xfdesktop-settings.glade.h:7
-msgid "<b>Images</b>"
-msgstr "<b>Bilder</b>"
-
-#: ../settings/xfdesktop-settings.glade.h:8
-msgid "<b>Window List Menu</b>"
-msgstr "<b>Fensterliste</b>"
-
-#: ../settings/xfdesktop-settings.glade.h:9
-msgid "Add an image to the list"
-msgstr "Ein Bild zur Liste hinzufügen"
-
-#: ../settings/xfdesktop-settings.glade.h:10
-msgid ""
-"Auto\n"
-"Centered\n"
-"Tiled\n"
-"Stretched\n"
-"Scaled\n"
-"Zoomed"
-msgstr ""
-"Automatisch\n"
-"Zentriert\n"
-"Gekachelt\n"
-"Gestreckt\n"
-"Skaliert\n"
-"Vergrößert"
-
-#: ../settings/xfdesktop-settings.glade.h:16
-msgid "Automatically pick a random image from a list file"
-msgstr "Automatisch ein zufällig gewähltes Bild aus der Listendatei wählen"
-
-#: ../settings/xfdesktop-settings.glade.h:17
-msgid "B_rightness:"
-msgstr "He_lligkeit:"
-
-#: ../settings/xfdesktop-settings.glade.h:18
-msgid "B_utton:"
-msgstr "_Knopf:"
-
-#: ../settings/xfdesktop-settings.glade.h:19
-msgid "Create a new list, or load an existing one"
-msgstr "Eine neue Liste erstellen oder eine vorhandene laden"
-
-#: ../settings/xfdesktop-settings.glade.h:20
-msgid "Don't display an image at all"
-msgstr "Überhaupt kein Bild anzeigen"
-
-#: ../settings/xfdesktop-settings.glade.h:21
-msgid "Icon _size:"
-msgstr "Sym_bolgröße:"
-
-#: ../settings/xfdesktop-settings.glade.h:22
-msgid "Icon _type:"
-msgstr "S_ymboltyp:"
-
-#: ../settings/xfdesktop-settings.glade.h:23
-msgid "Image _list"
-msgstr "_Bilderliste"
-
-#: ../settings/xfdesktop-settings.glade.h:24
-msgid "Increase or decrease the brightness of the final image"
-msgstr "Helligkeit des endgültigen Bilds erhöhen oder verringern"
-
-#: ../settings/xfdesktop-settings.glade.h:25
-msgid "Increase or decrease the color saturation of the final image"
-msgstr "Farbsättigung des endgültigen Bilds erhöhen oder verringern"
-
-#: ../settings/xfdesktop-settings.glade.h:26
-msgid "Label trans_parency:"
-msgstr "_Durchsichtigkeit der Beschriftung"
-
-#: ../settings/xfdesktop-settings.glade.h:27
-msgid ""
-"Left\n"
-"Middle\n"
-"Right"
-msgstr ""
-"Links\n"
-"Mitte\n"
-"Rechts"
-
-#: ../settings/xfdesktop-settings.glade.h:30
-msgid "Mo_difier:"
-msgstr "_Modifikator:"
-
-#: ../settings/xfdesktop-settings.glade.h:31
-msgid "Modi_fier:"
-msgstr "_Modifikator:"
-
-#: ../settings/xfdesktop-settings.glade.h:32
-msgid ""
-"None\n"
-"Minimized application icons\n"
-"File/launcher icons"
-msgstr ""
-"Keine\n"
-"Minimierte Anwendungssymbole\n"
-"Datei-/Startersymbole"
-
-#: ../settings/xfdesktop-settings.glade.h:35
-msgid ""
-"None\n"
-"Shift\n"
-"Alt\n"
-"Control"
-msgstr ""
-"Keiner\n"
-"Umschalt\n"
-"Alt\n"
-"Steuerung"
-
-#: ../settings/xfdesktop-settings.glade.h:39
-msgid "Remove the selected image(s) from the list"
-msgstr "Das/die ausgewählte(n) Bild(er) aus der Liste entfernen"
-
-#: ../settings/xfdesktop-settings.glade.h:40
-msgid "Sa_turation:"
-msgstr "Sätt_igung:"
-
-#: ../settings/xfdesktop-settings.glade.h:41
-msgid "Select First Color"
-msgstr "Erste Farbe wählen"
-
-#: ../settings/xfdesktop-settings.glade.h:42
-msgid "Select Second Color"
-msgstr "Zweite Farbe wählen"
-
-#: ../settings/xfdesktop-settings.glade.h:43
-msgid "Select a single image as the backdrop"
-msgstr "Ein einzelnes Bild als Hintergrundbild wählen"
-
-#: ../settings/xfdesktop-settings.glade.h:44
-msgid "Set desktop background and menu and icon behavior"
-msgstr ""
-"Stellen Sie den Hintergrund der Arbeitsoberfläche sowie das Menü- und Symbolverhalten "
-"ein"
-
-#: ../settings/xfdesktop-settings.glade.h:45
-msgid "Sh_ow application icons in menu"
-msgstr "_Anwendungssymbole im Menü anzeigen"
-
-#: ../settings/xfdesktop-settings.glade.h:46
-msgid "Show _application icons in menu"
-msgstr "_Anwendungssymbole im Menü anzeigen"
-
-#: ../settings/xfdesktop-settings.glade.h:47
-msgid "Show _desktop menu on desktop click"
-msgstr "_Programm-Menü bei Rechtsklick anzeigen"
-
-#: ../settings/xfdesktop-settings.glade.h:48
-msgid "Show _window list menu on desktop click"
-msgstr "_Fensterliste bei Mittelklick anzeigen"
-
-#: ../settings/xfdesktop-settings.glade.h:49
-msgid "Show s_ticky windows only in active workspace"
-msgstr "_Klebrige Fenster nur auf der aktiven Arbeitsfläche zeigen"
-
-#: ../settings/xfdesktop-settings.glade.h:50
-msgid "Show windows on each workspace in _submenus"
-msgstr "F_enster jeder Abeitsfläche in Untermenüs zeigen"
-
-#: ../settings/xfdesktop-settings.glade.h:51
-msgid "Show workspace _names in list"
-msgstr "_Namen der Arbeitsflächen in der Liste anzeigen"
-
-#: ../settings/xfdesktop-settings.glade.h:52
-msgid ""
-"Solid color\n"
-"Horizontal gradient\n"
-"Vertical gradient\n"
-"Transparent"
-msgstr ""
-"Durchgehend eine Farbe\n"
-"Horizontaler Verlauf\n"
-"Vertikaler Verlauf\n"
-"Durchsichtig"
-
-#: ../settings/xfdesktop-settings.glade.h:56
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Gibt die \"rechte\" oder \"untere\" Farbe des Verlaufs an"
-
-#: ../settings/xfdesktop-settings.glade.h:57
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-"Gibt die durchgehend zu verwendende Farbe an oder die \"linke\" "
-"beziehungsweise \"obere\" Farbe des Verlaufs"
-
-#: ../settings/xfdesktop-settings.glade.h:58
-msgid "St_yle:"
-msgstr "S_til:"
-
-#: ../settings/xfdesktop-settings.glade.h:59
-msgid "Use custom _font size:"
-msgstr "_Benutzerdefinierte Schriftgröße:"
-
-#: ../settings/xfdesktop-settings.glade.h:60
-msgid "_Background"
-msgstr "_Hintergrund"
-
-#: ../settings/xfdesktop-settings.glade.h:61
-msgid "_Button:"
-msgstr "_Knopf:"
-
-#: ../settings/xfdesktop-settings.glade.h:62
-msgid "_Edit desktop menu"
-msgstr "_Menü bearbeiten"
-
-#: ../settings/xfdesktop-settings.glade.h:63
-msgid "_Icons"
-msgstr "_Symbole"
-
-#: ../settings/xfdesktop-settings.glade.h:64
-msgid "_Menus"
-msgstr "_Menüs"
-
-#: ../settings/xfdesktop-settings.glade.h:65
-msgid "_None"
-msgstr "_Keines"
-
-#: ../settings/xfdesktop-settings.glade.h:66
-msgid "_Single image"
-msgstr "_Einzelnes Bild"
-
-#: ../settings/xfdesktop-settings.glade.h:67
-msgid "gtk-close"
-msgstr "gtk-close"
-
-#: ../settings/xfdesktop-settings.glade.h:68
-msgid "gtk-help"
-msgstr "gtk-help"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
@@ -1480,6 +1079,10 @@ msgstr "Fehler"
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Konnte »%s« nicht in »%s« umbenennen:"
 
+#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
+msgid "Home"
+msgstr "Persönliches Verzeichnis"
+
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
 msgid "Kind: Trash"
@@ -1719,6 +1322,423 @@ msgstr "Im Internet surfen"
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
 msgstr "Webbrowser"
+
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:157
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr ""
+"%s\n"
+"<i>Größe: %dx%d</i>"
+
+#: ../settings/main.c:269
+msgid "Filesystem"
+msgstr "Dateiystem"
+
+#: ../settings/main.c:271
+msgid "Trash"
+msgstr "Papierkorb"
+
+#: ../settings/main.c:273
+msgid "Removable Devices"
+msgstr "Entfernbare Datenträger"
+
+#: ../settings/main.c:426
+#, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "Liste »%s« mit Hintergrundbildern nicht erstellbar"
+
+#: ../settings/main.c:430 ../settings/main.c:789
+msgid "Backdrop List Error"
+msgstr "Fehler bei der Liste mit Hintergrundbildern"
+
+#: ../settings/main.c:455
+msgid "Create/Load Backdrop List"
+msgstr "Liste mit Hintergrundbildern erstellen/laden"
+
+#: ../settings/main.c:479
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"Die Datei »%s« ist keine gültige Liste mit Hintergrundbildern. Soll sie "
+"überschrieben werden?"
+
+#: ../settings/main.c:484
+msgid "Invalid List File"
+msgstr "Ungültige Listendatei"
+
+#: ../settings/main.c:487
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr "Beim Überschreiben der Datei gehen die Inhalte verloren."
+
+#: ../settings/main.c:489
+msgid "Replace"
+msgstr "Ersetzen"
+
+#: ../settings/main.c:785
+#, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "Konnte Liste mit Hintergrundbildern nicht in »%s« schreiben"
+
+#: ../settings/main.c:812
+msgid "Add Image File(s)"
+msgstr "Bilddatei(en) hinzufügen"
+
+#: ../settings/main.c:821
+msgid "Image files"
+msgstr "Bilddateien"
+
+#: ../settings/main.c:826
+msgid "All files"
+msgstr "Alle Dateien"
+
+#: ../settings/main.c:1120
+#, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "Bildschirm %d, Monitor %d (%s)"
+
+#: ../settings/main.c:1125
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Bildschirm %d, Monitor %d"
+
+#: ../settings/main.c:1128
+#, c-format
+msgid "Screen %d"
+msgstr "Bildschirm %d"
+
+#: ../settings/main.c:1134
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr "Bildschirm %d (%s)"
+
+#: ../settings/main.c:1139
+#, c-format
+msgid "Monitor %d"
+msgstr "Bildschirm %d"
+
+#: ../settings/main.c:1354
+msgid "Settings manager socket"
+msgstr "Socket für die Sitzungsverwaltung"
+
+#: ../settings/main.c:1354
+msgid "SOCKET ID"
+msgstr "SOCKET-NUMMER"
+
+#: ../settings/main.c:1355
+msgid "Version information"
+msgstr "Versionsinformation"
+
+#: ../settings/main.c:1375
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Geben Sie »%s --help« ein, um Hinweise zur Verwendung zu erhalten."
+
+#: ../settings/main.c:1387
+msgid "The Xfce development team. All rights reserved."
+msgstr "Das Entwicklungsteam von Xfce. Alle Rechte vorbehalten."
+
+#: ../settings/main.c:1388
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Bitte melden Sie Fehler an <%s>"
+
+#: ../settings/main.c:1395
+msgid "Desktop Settings"
+msgstr "Hintergrundeinstellungen"
+
+#: ../settings/main.c:1397
+msgid "Unable to contact settings server"
+msgstr "Konnte den Einstellungsdienst nicht kontaktieren."
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop "
+msgstr "Arbeitsoberfläche "
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr ""
+"Stellen Sie den Hintergrund der Arbeitsoberfläche sowie das Menü- und "
+"Symbolverhalten ein"
+
+#: ../settings/xfdesktop-settings.glade.h:1
+msgid "<b>Adjustments</b>"
+msgstr "<b>Anpassungen</b>"
+
+#: ../settings/xfdesktop-settings.glade.h:2
+msgid "<b>Appearance</b>"
+msgstr "<b>Aussehen</b>"
+
+#: ../settings/xfdesktop-settings.glade.h:3
+msgid "<b>Colors</b>"
+msgstr "<b>Farben</b>"
+
+#: ../settings/xfdesktop-settings.glade.h:4
+msgid "<b>Default Icons</b>"
+msgstr "<b>Standardsymbole</b>"
+
+#: ../settings/xfdesktop-settings.glade.h:5
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Desktopmenü</b>"
+
+#: ../settings/xfdesktop-settings.glade.h:6
+msgid "<b>Image</b>"
+msgstr "<b>Bild</b>"
+
+#: ../settings/xfdesktop-settings.glade.h:7
+msgid "<b>Images</b>"
+msgstr "<b>Bilder</b>"
+
+#: ../settings/xfdesktop-settings.glade.h:8
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Fensterliste</b>"
+
+#: ../settings/xfdesktop-settings.glade.h:9
+msgid "Add an image to the list"
+msgstr "Ein Bild zur Liste hinzufügen"
+
+#: ../settings/xfdesktop-settings.glade.h:10
+msgid ""
+"Auto\n"
+"Centered\n"
+"Tiled\n"
+"Stretched\n"
+"Scaled\n"
+"Zoomed"
+msgstr ""
+"Automatisch\n"
+"Zentriert\n"
+"Gekachelt\n"
+"Gestreckt\n"
+"Skaliert\n"
+"Vergrößert"
+
+#: ../settings/xfdesktop-settings.glade.h:16
+msgid "Automatically pick a random image from a list file"
+msgstr "Automatisch ein zufällig gewähltes Bild aus der Listendatei wählen"
+
+#: ../settings/xfdesktop-settings.glade.h:17
+msgid "B_rightness:"
+msgstr "He_lligkeit:"
+
+#: ../settings/xfdesktop-settings.glade.h:18
+msgid "B_utton:"
+msgstr "_Knopf:"
+
+#: ../settings/xfdesktop-settings.glade.h:19
+msgid "Create a new list, or load an existing one"
+msgstr "Eine neue Liste erstellen oder eine vorhandene laden"
+
+#: ../settings/xfdesktop-settings.glade.h:20
+msgid "Don't display an image at all"
+msgstr "Überhaupt kein Bild anzeigen"
+
+#: ../settings/xfdesktop-settings.glade.h:21
+msgid "Icon _size:"
+msgstr "Sym_bolgröße:"
+
+#: ../settings/xfdesktop-settings.glade.h:22
+msgid "Icon _type:"
+msgstr "S_ymboltyp:"
+
+#: ../settings/xfdesktop-settings.glade.h:23
+msgid "Image _list"
+msgstr "_Bilderliste"
+
+#: ../settings/xfdesktop-settings.glade.h:24
+msgid "Increase or decrease the brightness of the final image"
+msgstr "Helligkeit des endgültigen Bilds erhöhen oder verringern"
+
+#: ../settings/xfdesktop-settings.glade.h:25
+msgid "Increase or decrease the color saturation of the final image"
+msgstr "Farbsättigung des endgültigen Bilds erhöhen oder verringern"
+
+#: ../settings/xfdesktop-settings.glade.h:26
+msgid "Label trans_parency:"
+msgstr "_Durchsichtigkeit der Beschriftung"
+
+#: ../settings/xfdesktop-settings.glade.h:27
+msgid ""
+"Left\n"
+"Middle\n"
+"Right"
+msgstr ""
+"Links\n"
+"Mitte\n"
+"Rechts"
+
+#: ../settings/xfdesktop-settings.glade.h:30
+msgid "Mo_difier:"
+msgstr "_Modifikator:"
+
+#: ../settings/xfdesktop-settings.glade.h:31
+msgid "Modi_fier:"
+msgstr "_Modifikator:"
+
+#: ../settings/xfdesktop-settings.glade.h:32
+msgid ""
+"None\n"
+"Minimized application icons\n"
+"File/launcher icons"
+msgstr ""
+"Keine\n"
+"Minimierte Anwendungssymbole\n"
+"Datei-/Startersymbole"
+
+#: ../settings/xfdesktop-settings.glade.h:35
+msgid ""
+"None\n"
+"Shift\n"
+"Alt\n"
+"Control"
+msgstr ""
+"Keiner\n"
+"Umschalt\n"
+"Alt\n"
+"Steuerung"
+
+#: ../settings/xfdesktop-settings.glade.h:39
+msgid "Remove the selected image(s) from the list"
+msgstr "Das/die ausgewählte(n) Bild(er) aus der Liste entfernen"
+
+#: ../settings/xfdesktop-settings.glade.h:40
+msgid "Sa_turation:"
+msgstr "Sätt_igung:"
+
+#: ../settings/xfdesktop-settings.glade.h:41
+msgid "Select First Color"
+msgstr "Erste Farbe wählen"
+
+#: ../settings/xfdesktop-settings.glade.h:42
+msgid "Select Second Color"
+msgstr "Zweite Farbe wählen"
+
+#: ../settings/xfdesktop-settings.glade.h:43
+msgid "Select a single image as the backdrop"
+msgstr "Ein einzelnes Bild als Hintergrundbild wählen"
+
+#: ../settings/xfdesktop-settings.glade.h:44
+msgid "Set desktop background and menu and icon behavior"
+msgstr ""
+"Stellen Sie den Hintergrund der Arbeitsoberfläche sowie das Menü- und "
+"Symbolverhalten ein"
+
+#: ../settings/xfdesktop-settings.glade.h:45
+msgid "Sh_ow application icons in menu"
+msgstr "_Anwendungssymbole im Menü anzeigen"
+
+#: ../settings/xfdesktop-settings.glade.h:46
+msgid "Show _application icons in menu"
+msgstr "_Anwendungssymbole im Menü anzeigen"
+
+#: ../settings/xfdesktop-settings.glade.h:47
+#, fuzzy
+msgid "Show _window list menu on desktop middle click"
+msgstr "_Fensterliste bei Mittelklick anzeigen"
+
+#: ../settings/xfdesktop-settings.glade.h:48
+#, fuzzy
+msgid "Show applications menu on _desktop right click"
+msgstr "_Programm-Menü bei Rechtsklick anzeigen"
+
+#: ../settings/xfdesktop-settings.glade.h:49
+msgid "Show s_ticky windows only in active workspace"
+msgstr "_Klebrige Fenster nur auf der aktiven Arbeitsfläche zeigen"
+
+#: ../settings/xfdesktop-settings.glade.h:50
+msgid "Show workspace _names in list"
+msgstr "_Namen der Arbeitsflächen in der Liste anzeigen"
+
+#: ../settings/xfdesktop-settings.glade.h:51
+msgid ""
+"Solid color\n"
+"Horizontal gradient\n"
+"Vertical gradient\n"
+"Transparent"
+msgstr ""
+"Durchgehend eine Farbe\n"
+"Horizontaler Verlauf\n"
+"Vertikaler Verlauf\n"
+"Durchsichtig"
+
+#: ../settings/xfdesktop-settings.glade.h:55
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "Gibt die \"rechte\" oder \"untere\" Farbe des Verlaufs an"
+
+#: ../settings/xfdesktop-settings.glade.h:56
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr ""
+"Gibt die durchgehend zu verwendende Farbe an oder die \"linke\" "
+"beziehungsweise \"obere\" Farbe des Verlaufs"
+
+#: ../settings/xfdesktop-settings.glade.h:57
+msgid "Specify how the image will be resized to fit the screen"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:58
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:59
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:60
+msgid "St_yle:"
+msgstr "S_til:"
+
+#: ../settings/xfdesktop-settings.glade.h:61
+msgid "Use _submenus for the windows in each workspace"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:62
+msgid "Use custom _font size:"
+msgstr "_Benutzerdefinierte Schriftgröße:"
+
+#: ../settings/xfdesktop-settings.glade.h:63
+msgid "_Background"
+msgstr "_Hintergrund"
+
+#: ../settings/xfdesktop-settings.glade.h:64
+msgid "_Button:"
+msgstr "_Knopf:"
+
+#: ../settings/xfdesktop-settings.glade.h:65
+msgid "_Edit desktop menu"
+msgstr "_Menü bearbeiten"
+
+#: ../settings/xfdesktop-settings.glade.h:66
+msgid "_Icons"
+msgstr "_Symbole"
+
+#: ../settings/xfdesktop-settings.glade.h:67
+msgid "_Menus"
+msgstr "_Menüs"
+
+#: ../settings/xfdesktop-settings.glade.h:68
+msgid "_None"
+msgstr "_Keines"
+
+#: ../settings/xfdesktop-settings.glade.h:69
+msgid "_Single image"
+msgstr "_Einzelnes Bild"
+
+#: ../settings/xfdesktop-settings.glade.h:70
+msgid "gtk-close"
+msgstr "gtk-close"
+
+#: ../settings/xfdesktop-settings.glade.h:71
+msgid "gtk-help"
+msgstr "gtk-help"
+
+#~ msgid "Show windows on each workspace in _submenus"
+#~ msgstr "F_enster jeder Abeitsfläche in Untermenüs zeigen"
 
 #~ msgid "Settings for the Xfce 4 Desktop Manager"
 #~ msgstr "Einstellungen für die Xfce4-Arbeitsplatzverwaltung"

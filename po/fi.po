@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-31 14:14+0200\n"
+"POT-Creation-Date: 2008-11-16 18:10-0800\n"
 "PO-Revision-Date: 2008-10-31 14:18+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -689,7 +689,7 @@ msgstr "_Poista työtila %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Poista työtila '%s'"
 
-#: ../src/xfce-desktop.c:744 ../settings/xfce-backdrop-settings.desktop.in.h:1
+#: ../src/xfce-desktop.c:744
 msgid "Desktop"
 msgstr "Työpöytä"
 
@@ -1436,7 +1436,7 @@ msgstr "Xfce:n kehitystiimi. Kaikki oikeudet pidätetään."
 msgid "Please report bugs to <%s>."
 msgstr "Ilmoita ohjelmavirheistä osoitteeseen <%s>."
 
-#: ../settings/main.c:1395 ../settings/xfce-backdrop-settings.desktop.in.h:2
+#: ../settings/main.c:1395
 msgid "Desktop Settings"
 msgstr "Työpöydän asetukset"
 
@@ -1444,13 +1444,15 @@ msgstr "Työpöydän asetukset"
 msgid "Unable to contact settings server"
 msgstr "Asetuspalvelimeen ei voi yhdistää."
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:3
-msgid "Settings for the Xfce 4 Desktop Manager"
-msgstr "Xfce 4 työpöydänhallinnan asetukset"
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+#, fuzzy
+msgid "Desktop "
+msgstr "Työpöytä"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:4
-msgid "Xfce 4 Desktop Settings"
-msgstr "Xfce 4 työpöydän asetukset"
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+#, fuzzy
+msgid "Set desktop background and menu and icon behaviour"
+msgstr "Säädä työpöydän taustakuvaa, valikkoa ja kuvakkeita"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
@@ -1621,26 +1623,24 @@ msgid "Show _application icons in menu"
 msgstr "Näytä kuv_akkeet valikossa"
 
 #: ../settings/xfdesktop-settings.glade.h:47
-msgid "Show _desktop menu on desktop click"
-msgstr "Näytä t_yöpöytävalikko napsauttamalla"
+#, fuzzy
+msgid "Show _window list menu on desktop middle click"
+msgstr "Näytä i_kkunalista napsauttamalla"
 
 #: ../settings/xfdesktop-settings.glade.h:48
-msgid "Show _window list menu on desktop click"
-msgstr "Näytä i_kkunalista napsauttamalla"
+#, fuzzy
+msgid "Show applications menu on _desktop right click"
+msgstr "Näytä t_yöpöytävalikko napsauttamalla"
 
 #: ../settings/xfdesktop-settings.glade.h:49
 msgid "Show s_ticky windows only in active workspace"
 msgstr "Näytä kiinnitetyt ikkunat vain _aktiivisessa työtilassa"
 
 #: ../settings/xfdesktop-settings.glade.h:50
-msgid "Show windows on each workspace in _submenus"
-msgstr "Näytä työtilojen ikkunat ala_valikoissa"
-
-#: ../settings/xfdesktop-settings.glade.h:51
 msgid "Show workspace _names in list"
 msgstr "Listaa työtilojen _nimet"
 
-#: ../settings/xfdesktop-settings.glade.h:52
+#: ../settings/xfdesktop-settings.glade.h:51
 msgid ""
 "Solid color\n"
 "Horizontal gradient\n"
@@ -1652,56 +1652,83 @@ msgstr ""
 "Pystysuuntainen väriliuku\n"
 "Läpinäkyvä"
 
-#: ../settings/xfdesktop-settings.glade.h:56
+#: ../settings/xfdesktop-settings.glade.h:55
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Määrittää väriliu'un \"oikean\" tai \"alemman\" värin"
 
-#: ../settings/xfdesktop-settings.glade.h:57
+#: ../settings/xfdesktop-settings.glade.h:56
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
 "Määrittää ainoan värin, tai väriliu'un \"vasemman\" tai \"ylemmän\" värin"
 
+#: ../settings/xfdesktop-settings.glade.h:57
+msgid "Specify how the image will be resized to fit the screen"
+msgstr ""
+
 #: ../settings/xfdesktop-settings.glade.h:58
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:59
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:60
 msgid "St_yle:"
 msgstr "T_yyli:"
 
-#: ../settings/xfdesktop-settings.glade.h:59
+#: ../settings/xfdesktop-settings.glade.h:61
+msgid "Use _submenus for the windows in each workspace"
+msgstr ""
+
+#: ../settings/xfdesktop-settings.glade.h:62
 msgid "Use custom _font size:"
 msgstr "Mukautettu ki_rjasinkoko:"
 
-#: ../settings/xfdesktop-settings.glade.h:60
+#: ../settings/xfdesktop-settings.glade.h:63
 msgid "_Background"
 msgstr "_Tausta"
 
-#: ../settings/xfdesktop-settings.glade.h:61
+#: ../settings/xfdesktop-settings.glade.h:64
 msgid "_Button:"
 msgstr "_Painike:"
 
-#: ../settings/xfdesktop-settings.glade.h:62
+#: ../settings/xfdesktop-settings.glade.h:65
 msgid "_Edit desktop menu"
 msgstr "_Muokkaa valikkoa"
 
-#: ../settings/xfdesktop-settings.glade.h:63
+#: ../settings/xfdesktop-settings.glade.h:66
 msgid "_Icons"
 msgstr "K_uvakkeet"
 
-#: ../settings/xfdesktop-settings.glade.h:64
+#: ../settings/xfdesktop-settings.glade.h:67
 msgid "_Menus"
 msgstr "_Valikot"
 
-#: ../settings/xfdesktop-settings.glade.h:65
+#: ../settings/xfdesktop-settings.glade.h:68
 msgid "_None"
 msgstr "_Ei mitään"
 
-#: ../settings/xfdesktop-settings.glade.h:66
+#: ../settings/xfdesktop-settings.glade.h:69
 msgid "_Single image"
 msgstr "_Yksi kuva"
 
-#: ../settings/xfdesktop-settings.glade.h:67
+#: ../settings/xfdesktop-settings.glade.h:70
 msgid "gtk-close"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:68
+#: ../settings/xfdesktop-settings.glade.h:71
 msgid "gtk-help"
 msgstr ""
+
+#~ msgid "Settings for the Xfce 4 Desktop Manager"
+#~ msgstr "Xfce 4 työpöydänhallinnan asetukset"
+
+#~ msgid "Xfce 4 Desktop Settings"
+#~ msgstr "Xfce 4 työpöydän asetukset"
+
+#~ msgid "Show windows on each workspace in _submenus"
+#~ msgstr "Näytä työtilojen ikkunat ala_valikoissa"
