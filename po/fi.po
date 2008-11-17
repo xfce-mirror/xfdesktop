@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-16 18:10-0800\n"
-"PO-Revision-Date: 2008-10-31 14:18+0200\n"
+"POT-Creation-Date: 2008-11-17 19:54+0200\n"
+"PO-Revision-Date: 2008-11-17 20:02+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -1445,12 +1445,10 @@ msgid "Unable to contact settings server"
 msgstr "Asetuspalvelimeen ei voi yhdistää."
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop "
-msgstr "Työpöytä"
+msgstr "Työpöytä "
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
-#, fuzzy
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "Säädä työpöydän taustakuvaa, valikkoa ja kuvakkeita"
 
@@ -1623,14 +1621,12 @@ msgid "Show _application icons in menu"
 msgstr "Näytä kuv_akkeet valikossa"
 
 #: ../settings/xfdesktop-settings.glade.h:47
-#, fuzzy
 msgid "Show _window list menu on desktop middle click"
-msgstr "Näytä i_kkunalista napsauttamalla"
+msgstr "Näytä i_kkunalista keskipainikkeella"
 
 #: ../settings/xfdesktop-settings.glade.h:48
-#, fuzzy
 msgid "Show applications menu on _desktop right click"
-msgstr "Näytä t_yöpöytävalikko napsauttamalla"
+msgstr "Näytä t_yöpöytävalikko oikealla painikkeella"
 
 #: ../settings/xfdesktop-settings.glade.h:49
 msgid "Show s_ticky windows only in active workspace"
@@ -1664,17 +1660,18 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings.glade.h:57
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
+msgstr "Määritä, kuinka kuvan koko sovitetaan näytölle"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
+msgstr "Määritä taustakuvan alle jäävän työpöydän värityyli"
 
 #: ../settings/xfdesktop-settings.glade.h:59
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr ""
+"Määritä kuvaketekstin alle piirrettävän pyöristetyn taustan läpinäkyvyys."
 
 #: ../settings/xfdesktop-settings.glade.h:60
 msgid "St_yle:"
@@ -1682,7 +1679,7 @@ msgstr "T_yyli:"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "Näytä jokaisen työtilan ikkunat ala_valikoissa"
 
 #: ../settings/xfdesktop-settings.glade.h:62
 msgid "Use custom _font size:"
@@ -1723,12 +1720,3 @@ msgstr ""
 #: ../settings/xfdesktop-settings.glade.h:71
 msgid "gtk-help"
 msgstr ""
-
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "Xfce 4 työpöydänhallinnan asetukset"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "Xfce 4 työpöydän asetukset"
-
-#~ msgid "Show windows on each workspace in _submenus"
-#~ msgstr "Näytä työtilojen ikkunat ala_valikoissa"
