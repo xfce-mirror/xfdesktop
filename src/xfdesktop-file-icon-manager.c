@@ -1790,7 +1790,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                                      G_CALLBACK(xfdesktop_file_icon_menu_create_folder),
                                      fmanager);
                     
-                    mi = gtk_menu_item_new_with_mnemonic("Create From _Template");
+                    mi = gtk_menu_item_new_with_mnemonic(_("Create From _Template"));
                     gtk_widget_show(mi);
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                     
