@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-21 00:03-0800\n"
-"PO-Revision-Date: 2008-07-02 11:05+0300\n"
+"PO-Revision-Date: 2008-11-24 12:20+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce4-dev@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,9 +18,9 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 
 #: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
-#, fuzzy, c-format
+#, c-format
 msgid "Backdrop list file is not valid"
-msgstr "Виберіть файл списку з зображеннями для тла"
+msgstr "Неправильний файл списку фонових зображень"
 
 #: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
@@ -630,19 +630,16 @@ msgstr "Параметри:\n"
 #: ../src/main.c:283
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    --reload      Перезавантажити усі параметри, оновити перелік зображень\n"
+msgstr "    --reload      Перезавантажити усі параметри, оновити перелік зображень\n"
 
 #: ../src/main.c:284
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr ""
-"    --menu        Показати меню (у місці, де знаходиться курсор миші)\n"
+msgstr "    --menu        Показати меню (у місці, де знаходиться курсор миші)\n"
 
 #: ../src/main.c:285
 #, c-format
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    --windowlist  Показати перелік вікон (у місці, де знаходиться курсор "
 "миші)\n"
@@ -659,7 +656,7 @@ msgstr "%s не запущений.\n"
 
 #: ../src/menu.c:113
 msgid "_Applications"
-msgstr ""
+msgstr "_Програми"
 
 #: ../src/windowlist.c:236
 msgid "Window List"
@@ -699,19 +696,17 @@ msgid "Desktop"
 msgstr "Робочий стіл"
 
 #: ../src/xfce-desktop.c:1011
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Не вдається створити файл \"%s\":"
+msgstr "Неможливо завантажити зображення із файлу списку фонових зображень \"%s\""
 
 #: ../src/xfce-desktop.c:1013
-#, fuzzy
 msgid "Desktop Error"
-msgstr "Робочий стіл"
+msgstr "Помилка стільниці"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
 "Xfdesktop не може створити теку \"%s\" для зберігання об'єктів робочого "
 "столу:"
@@ -1090,9 +1085,8 @@ msgstr "Домашній каталог"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
-#, fuzzy
 msgid "Kind: Trash"
-msgstr "Тип:"
+msgstr "Вигляд: Смітник"
 
 #: ../src/xfdesktop-special-file-icon.c:515
 msgid "Trash Error"
@@ -1117,7 +1111,7 @@ msgstr "О_чистити смітник"
 #: ../src/xfdesktop-volume-icon.c:474
 #, c-format
 msgid "%s (%s total)"
-msgstr ""
+msgstr "%s (%s всього)"
 
 #: ../src/xfdesktop-volume-icon.c:478
 #, c-format
@@ -1126,6 +1120,9 @@ msgid ""
 "Mount Point: %s\n"
 "Free Space: %s"
 msgstr ""
+"Вигляд: З'ємний розділ\n"
+"Точка монтування: %s\n"
+"Вільне місце: %s"
 
 #: ../src/xfdesktop-volume-icon.c:509
 #, c-format
@@ -1333,79 +1330,74 @@ msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
 msgstr ""
+"%s\n"
+"<i>Розмір: %dx%d</i>"
 
 #: ../settings/main.c:269
-#, fuzzy
 msgid "Filesystem"
-msgstr "система"
+msgstr "Файлова система"
 
 #: ../settings/main.c:271
-#, fuzzy
 msgid "Trash"
-msgstr "Помилка смітника"
+msgstr "Смітник"
 
 #: ../settings/main.c:273
 msgid "Removable Devices"
-msgstr ""
+msgstr "З'ємні пристрої"
 
 #: ../settings/main.c:426
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Створити список зображень для тла"
+msgstr "Неможливо створити список фонових зображень \"%s\""
 
 #: ../settings/main.c:430 ../settings/main.c:789
-#, fuzzy
 msgid "Backdrop List Error"
-msgstr "Помилка у властивостях"
+msgstr "Помилка списку фонових зображень"
 
 #: ../settings/main.c:455
-#, fuzzy
 msgid "Create/Load Backdrop List"
-msgstr "Створити список зображень для тла"
+msgstr "Створити/завантажити список фонових зображень"
 
 #: ../settings/main.c:479
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
+"Файл \"%s\" не є правильним файлом списку фонових зображень.  Бажаєте "
+"перезаписати його?"
 
 #: ../settings/main.c:484
-#, fuzzy
 msgid "Invalid List File"
-msgstr "Файл зі списком"
+msgstr "Неправильний файл списку"
 
 #: ../settings/main.c:487
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
+msgstr "Перезапис файлу призведе до втрати його змісту."
 
 #: ../settings/main.c:489
-#, fuzzy
 msgid "Replace"
-msgstr "Перейменувати"
+msgstr "Замінити"
 
 #: ../settings/main.c:785
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Не вдається перейменувати \"%s\" у \"%s\":"
+msgstr "Невдача запису файлу фонових зображень в \"%s\""
 
 #: ../settings/main.c:812
-#, fuzzy
 msgid "Add Image File(s)"
-msgstr "Файли зображень"
+msgstr "Додати файл(и) зображення"
 
 #: ../settings/main.c:821
 msgid "Image files"
 msgstr "Файли зображень"
 
 #: ../settings/main.c:826
-#, fuzzy
 msgid "All files"
-msgstr "Усі файли"
+msgstr "Всі файли"
 
 #: ../settings/main.c:1120
-#, fuzzy, c-format
+#, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "Екран %d, монітор %d"
+msgstr "Екран %d, Монітор %d (%s)"
 
 #: ../settings/main.c:1125
 #, c-format
@@ -1420,96 +1412,90 @@ msgstr "Екран %d"
 #: ../settings/main.c:1134
 #, c-format
 msgid "Monitor %d (%s)"
-msgstr ""
+msgstr "Монітор %d (%s)"
 
 #: ../settings/main.c:1139
-#, fuzzy, c-format
+#, c-format
 msgid "Monitor %d"
-msgstr "Екран %d, монітор %d"
+msgstr "Монітор %d"
 
 #: ../settings/main.c:1354
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Сокет менеджера властивостей"
 
 #: ../settings/main.c:1354
 msgid "SOCKET ID"
-msgstr ""
+msgstr "ID сокета"
 
 #: ../settings/main.c:1355
-#, fuzzy
 msgid "Version information"
-msgstr "Інформація"
+msgstr "Інформація про версію"
 
 #: ../settings/main.c:1375
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr ""
+msgstr "Наберіть '%s --help' для використання."
 
 #: ../settings/main.c:1387
 msgid "The Xfce development team. All rights reserved."
-msgstr ""
+msgstr "Команда розробників Xfce. Всі права застережено."
 
 #: ../settings/main.c:1388
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "По помилки повідомляйте для <%s>."
 
 #: ../settings/main.c:1395
 msgid "Desktop Settings"
 msgstr "Параметри робочого столу"
 
 #: ../settings/main.c:1397
-#, fuzzy
 msgid "Unable to contact settings server"
-msgstr "Не вдається підключитися до служби смітника Xfce."
+msgstr "Не вдається зв'язатися з сервером властивостей."
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop "
-msgstr "Робочий стіл"
+msgstr "Стільниця"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
+msgstr "Призначити фонове зображення стільниці, меню і значок заголовку"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
-msgstr ""
+msgstr "<b>Коректування</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:2
-#, fuzzy
 msgid "<b>Appearance</b>"
-msgstr "_Зовнішній вигляд"
+msgstr "<b>Зовнішній вигляд</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:3
-#, fuzzy
 msgid "<b>Colors</b>"
-msgstr "<b>Робоча область %d</b>"
+msgstr "<b>Кольори</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:4
 msgid "<b>Default Icons</b>"
-msgstr ""
+msgstr "<b>Типові значки</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:5
 msgid "<b>Desktop Menu</b>"
-msgstr ""
+msgstr "<b>Меню стільниці</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:6
 msgid "<b>Image</b>"
-msgstr ""
+msgstr "<b>Зображення</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:7
 msgid "<b>Images</b>"
-msgstr ""
+msgstr "<b>Зображення</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:8
-#, fuzzy
 msgid "<b>Window List Menu</b>"
-msgstr "Список вікон"
+msgstr "<b>Меню списку вікон</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:9
 msgid "Add an image to the list"
-msgstr ""
+msgstr "Додати зображення до списку"
 
 #: ../settings/xfdesktop-settings.glade.h:10
 msgid ""
@@ -1520,55 +1506,56 @@ msgid ""
 "Scaled\n"
 "Zoomed"
 msgstr ""
+"Автоматично\n"
+"Центроване\n"
+"Тиражоване\n"
+"Розтягнуте\n"
+"Масштабоване\n"
+"Збільшене"
 
 #: ../settings/xfdesktop-settings.glade.h:16
 msgid "Automatically pick a random image from a list file"
-msgstr ""
+msgstr "Автоматично вставити довільне зображення з файлу списку"
 
 #: ../settings/xfdesktop-settings.glade.h:17
-#, fuzzy
 msgid "B_rightness:"
-msgstr "Регулювати _яскравість:"
+msgstr "_Яскравість:"
 
 #: ../settings/xfdesktop-settings.glade.h:18
-#, fuzzy
 msgid "B_utton:"
-msgstr "Кнопка"
+msgstr "_Кнопка"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
-msgstr ""
+msgstr "Створити новий список, або завантажити один з існуючих"
 
 #: ../settings/xfdesktop-settings.glade.h:20
 msgid "Don't display an image at all"
-msgstr ""
+msgstr "Не відображати зображення як інші"
 
 #: ../settings/xfdesktop-settings.glade.h:21
-#, fuzzy
 msgid "Icon _size:"
-msgstr "Розмір _значків:"
+msgstr "Розм_ір значка:"
 
 #: ../settings/xfdesktop-settings.glade.h:22
-#, fuzzy
 msgid "Icon _type:"
-msgstr "Розмір _значків:"
+msgstr "Т_ип значка:"
 
 #: ../settings/xfdesktop-settings.glade.h:23
-#, fuzzy
 msgid "Image _list"
-msgstr "Файли зображень"
+msgstr "_Список зображень"
 
 #: ../settings/xfdesktop-settings.glade.h:24
 msgid "Increase or decrease the brightness of the final image"
-msgstr ""
+msgstr "Збільшувати або зменшувати яскравість останнього зображення"
 
 #: ../settings/xfdesktop-settings.glade.h:25
 msgid "Increase or decrease the color saturation of the final image"
-msgstr ""
+msgstr "Збільшувати або зменшувати насиченість кольорів останнього зображення"
 
 #: ../settings/xfdesktop-settings.glade.h:26
 msgid "Label trans_parency:"
-msgstr ""
+msgstr "Про_зора мітка:"
 
 #: ../settings/xfdesktop-settings.glade.h:27
 msgid ""
@@ -1576,24 +1563,27 @@ msgid ""
 "Middle\n"
 "Right"
 msgstr ""
+"Зліва\n"
+"Посередині\n"
+"Справа"
 
 #: ../settings/xfdesktop-settings.glade.h:30
-#, fuzzy
 msgid "Mo_difier:"
-msgstr "Змінено:"
+msgstr "Зм_інено:"
 
 #: ../settings/xfdesktop-settings.glade.h:31
-#, fuzzy
 msgid "Modi_fier:"
-msgstr "Змінено:"
+msgstr "Змін_ено:"
 
 #: ../settings/xfdesktop-settings.glade.h:32
-#, fuzzy
 msgid ""
 "None\n"
 "Minimized application icons\n"
 "File/launcher icons"
-msgstr "Значки згорнутих вікон"
+msgstr ""
+"Нічого\n"
+"Значки згорнутих програм\n"
+"Файл/значки запуску"
 
 #: ../settings/xfdesktop-settings.glade.h:35
 msgid ""
@@ -1602,57 +1592,54 @@ msgid ""
 "Alt\n"
 "Control"
 msgstr ""
+"Нічого\n"
+"Shift\n"
+"Alt\n"
+"Control"
 
 #: ../settings/xfdesktop-settings.glade.h:39
 msgid "Remove the selected image(s) from the list"
-msgstr ""
+msgstr "Видалити вибране(і) зображення зі списку"
 
 #: ../settings/xfdesktop-settings.glade.h:40
 msgid "Sa_turation:"
-msgstr ""
+msgstr "Насич_еність:"
 
 #: ../settings/xfdesktop-settings.glade.h:41
-#, fuzzy
 msgid "Select First Color"
-msgstr "_Перший колір:"
+msgstr "Виберіть Перший колір"
 
 #: ../settings/xfdesktop-settings.glade.h:42
-#, fuzzy
 msgid "Select Second Color"
-msgstr "_Другий колір:"
+msgstr "Виберіть Другий колір"
 
 #: ../settings/xfdesktop-settings.glade.h:43
 msgid "Select a single image as the backdrop"
-msgstr ""
+msgstr "Виберіть одне зображення яке буде фоновим"
 
 #: ../settings/xfdesktop-settings.glade.h:44
 msgid "Set desktop background and menu and icon behavior"
-msgstr ""
+msgstr "Призначити фонове зображення стільниці, меню і значок заголовку"
 
 #: ../settings/xfdesktop-settings.glade.h:45
-#, fuzzy
 msgid "Sh_ow application icons in menu"
-msgstr "Показувати з_начки у меню"
+msgstr "Від_ображати значки програм у меню"
 
 #: ../settings/xfdesktop-settings.glade.h:46
-#, fuzzy
 msgid "Show _application icons in menu"
-msgstr "Показувати з_начки у меню"
+msgstr "Відобр_ажати значки програм у меню"
 
 #: ../settings/xfdesktop-settings.glade.h:47
-#, fuzzy
 msgid "Show _window list menu on desktop middle click"
-msgstr "Показувати _список вікон при клацанні середньою кнопкою"
+msgstr "Показувати меню _списку вікон на стільниці при клацанні середньою кнопкою"
 
 #: ../settings/xfdesktop-settings.glade.h:48
-#, fuzzy
 msgid "Show applications menu on _desktop right click"
-msgstr "Показувати _меню робочого столу при клацанні середньою кнопкою"
+msgstr "Показувати _меню програм на стільниці при клацанні правою кнопкою"
 
 #: ../settings/xfdesktop-settings.glade.h:49
-#, fuzzy
 msgid "Show s_ticky windows only in active workspace"
-msgstr "Показувати приліплені вікна тільки в _активних робочих областях"
+msgstr "Показувати приліпл_ені вікна тільки в активних робочих областях"
 
 #: ../settings/xfdesktop-settings.glade.h:50
 msgid "Show workspace _names in list"
@@ -1665,233 +1652,80 @@ msgid ""
 "Vertical gradient\n"
 "Transparent"
 msgstr ""
+"Суцільний колір\n"
+"Горизонтальний градієнт\n"
+"Вертикальний градієнт\n"
+"Прозорість"
 
 #: ../settings/xfdesktop-settings.glade.h:55
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
+msgstr "Призначити \"правий\" чи \"нижній\" колір градієнту"
 
 #: ../settings/xfdesktop-settings.glade.h:56
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Призначити суцільний колір, або \"лівий\" чи \"верхній\" колір градієнту"
 
 #: ../settings/xfdesktop-settings.glade.h:57
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
+msgstr "Призначити як зображення буде змінювати розмір до розмірів екрану"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
+msgstr "Призначити стиль кольору, що буде відображатись під фоновим зображенням"
 
 #: ../settings/xfdesktop-settings.glade.h:59
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr ""
+"Призначити рівень прозорості круглих міток, що відображається під текстом "
+"значка"
 
 #: ../settings/xfdesktop-settings.glade.h:60
-#, fuzzy
 msgid "St_yle:"
-msgstr "Стиль:"
+msgstr "Ст_иль:"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "Використовувати п_ідменю для вікон в кожній робочій області"
 
 #: ../settings/xfdesktop-settings.glade.h:62
-#, fuzzy
 msgid "Use custom _font size:"
-msgstr "Розмір _шрифту:"
+msgstr "Використовув_ати вибраний розмір шрифта:"
 
 #: ../settings/xfdesktop-settings.glade.h:63
 msgid "_Background"
-msgstr ""
+msgstr "_Фонове зображення"
 
 #: ../settings/xfdesktop-settings.glade.h:64
-#, fuzzy
 msgid "_Button:"
-msgstr "Кнопка"
+msgstr "_Кнопка:"
 
 #: ../settings/xfdesktop-settings.glade.h:65
-#, fuzzy
 msgid "_Edit desktop menu"
-msgstr "_Правка меню"
+msgstr "_Правка меню стільниці"
 
 #: ../settings/xfdesktop-settings.glade.h:66
-#, fuzzy
 msgid "_Icons"
-msgstr "Значки"
+msgstr "_Значки"
 
 #: ../settings/xfdesktop-settings.glade.h:67
-#, fuzzy
 msgid "_Menus"
-msgstr "Меню"
+msgstr "_Меню"
 
 #: ../settings/xfdesktop-settings.glade.h:68
-#, fuzzy
 msgid "_None"
-msgstr "Немає"
+msgstr "_Нічого"
 
 #: ../settings/xfdesktop-settings.glade.h:69
 msgid "_Single image"
-msgstr ""
+msgstr "_Одне зображення"
 
 #: ../settings/xfdesktop-settings.glade.h:70
 msgid "gtk-close"
-msgstr ""
+msgstr "gtk-закрити"
 
 #: ../settings/xfdesktop-settings.glade.h:71
 msgid "gtk-help"
-msgstr ""
+msgstr "gtk-допомога"
 
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "Параметри керування робочим столом Xfce 4"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "Параметри робочого столу Xfce 4"
-
-#, fuzzy
-#~ msgid "Show windows on each workspace in _submenus"
-#~ msgstr "Показувати вікна в кожній робочій області в _підменю"
-
-#, fuzzy
-#~ msgid "Use _Xfce to manage the desktop"
-#~ msgstr "_Дозволити керування робочим столом Xfce"
-
-#~ msgid ""
-#~ "Could not save file %s: %s\n"
-#~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
-#~ msgstr ""
-#~ "Помилка при збереженні файлу%s: %s\n"
-#~ "\n"
-#~ "Виберіть інший каталог або натисніть \"Скасувати\""
-
-#~ msgid "Button Label|Desktop"
-#~ msgstr "Робочий стіл"
-
-#~ msgid "backdrops.list"
-#~ msgstr "backdrops.list"
-
-#~ msgid "Select backdrop image or list file"
-#~ msgstr "Виберіть зображення або список зображень"
-
-#~ msgid "List Files (*.list)"
-#~ msgstr "Файли списку (*.list)"
-
-#~ msgid "_Edit list..."
-#~ msgstr "_Правка списку..."
-
-#~ msgid "_New list..."
-#~ msgstr "_Створити список..."
-
-#~ msgid "S_tyle:"
-#~ msgstr "С_тиль:"
-
-#~ msgid "Auto"
-#~ msgstr "Автоматично"
-
-#~ msgid "Centered"
-#~ msgstr "По центру"
-
-#~ msgid "Tiled"
-#~ msgstr "Мозаїкою"
-
-#~ msgid "Stretched"
-#~ msgstr "Розтягнуте"
-
-#~ msgid "Scaled"
-#~ msgstr "Масштабоване"
-
-#~ msgid "Zoomed"
-#~ msgstr "Збільшене"
-
-#~ msgid "Xfce will be unable to manage your desktop (%s)."
-#~ msgstr "Xfce не зможе керувати вашою робочим столом (%s)."
-
-#~ msgid "Unknown Error"
-#~ msgstr "Невідома помилка"
-
-#~ msgid "Unable to start xfdesktop"
-#~ msgstr "Не вдається запустити xfdesktop"
-
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Щоб переконатись, що Xfce не буде керувати вашим робочим столом під час "
-#~ "наступного запуску, перевірте, що ви зберегли сеанс при виході.  Якщо ви "
-#~ "не використовуєте диспетчер сеансів Xfce (xfce4-session), потрібно вручну "
-#~ "змінити файл ~/.config/xfce4/xinitrc.  Докладніша документація доступна "
-#~ "на сайті http://xfce.org/."
-
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Щоб переконатись, що Xfce не буде керувати вашим робочим столом під час "
-#~ "наступного запуску, перевірте, що ви зберегли сеанс при виході.  Якщо ви "
-#~ "не використовуєте диспетчер сеансів Xfce (xfce4-session), потрібно вручну "
-#~ "змінити файл ~/.config/xfce4/xinitrc.  Докладніша документація доступна "
-#~ "на сайті http://xfce.org/."
-
-#~ msgid "_Do not show this again"
-#~ msgstr "Надалі _не показувати"
-
-#~ msgid "Desktop Preferences"
-#~ msgstr "Параметри робочого столу"
-
-#~ msgid "Stretch single backdrop onto _all monitors"
-#~ msgstr "Розтягувати робочий стіл на _усі монітори"
-
-#~ msgid "Color"
-#~ msgstr "Колір"
-
-#~ msgid "_Color Style:"
-#~ msgstr "Стиль заповнення _кольором:"
-
-#~ msgid "Solid Color"
-#~ msgstr "Однотонний"
-
-#~ msgid "Horizontal Gradient"
-#~ msgstr "Горизонтальний градієнт"
-
-#~ msgid "Vertical Gradient"
-#~ msgstr "Вертикальний градієнт"
-
-#~ msgid "Image"
-#~ msgstr "Зображення"
-
-#~ msgid "Show _Image"
-#~ msgstr "Показувати _зображення"
-
-#~ msgid "_File:"
-#~ msgstr "_Файл:"
-
-#~ msgid "_Behavior"
-#~ msgstr "_Поведінка"
-
-#~ msgid "Select backdrop image file"
-#~ msgstr "Виберіть зображення для тла"
-
-#~ msgid "List file"
-#~ msgstr "Файл зі списком"
-
-#~ msgid "Edit backdrop list"
-#~ msgstr "Редагувати список зображень для тла"
-
-#~ msgid "Desktop Icons"
-#~ msgstr "Значки на робочому столі"
-
-#~ msgid "File/launcher icons"
-#~ msgstr "Значки файлів або запуску"
-
-#~ msgid "Use _system font size"
-#~ msgstr "Використовувати _системний розмір шрифту"
