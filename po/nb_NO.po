@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-19 22:06+0100\n"
+"POT-Creation-Date: 2008-11-21 00:03-0800\n"
 "PO-Revision-Date: 2005-08-18 22:57+0900\n"
 "Last-Translator: Terje Uriansrud <terje@uriansrud.net>>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
@@ -710,8 +710,7 @@ msgstr "Skrivebordsfeil"
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
-"Xfdesktop kunne ikke opprette mappen «%s» til å lagre skrivebordsobjekter "
-"i:"
+"Xfdesktop kunne ikke opprette mappen «%s» til å lagre skrivebordsobjekter i:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
@@ -725,8 +724,8 @@ msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
-"Xfdesktop klarte ikke å bruke «%s» til å  lagre skrivebordsobjekter siden "
-"det ikke er en mappe."
+"Xfdesktop klarte ikke å bruke «%s» til å  lagre skrivebordsobjekter siden det "
+"ikke er en mappe."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -882,6 +881,11 @@ msgstr "Lag ny _nettlenke..."
 #: ../src/xfdesktop-file-icon-manager.c:1773
 msgid "Create _Folder..."
 msgstr "Lag ny _mappe..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1793
+#, fuzzy
+msgid "Create From _Template"
+msgstr "Lag dokument fra malen «%s»"
 
 #: ../src/xfdesktop-file-icon-manager.c:1827
 msgid "_Empty File"
@@ -1360,8 +1364,8 @@ msgstr "Lag/les inn bakgrunnsbildeliste"
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
-"Filen «%s» er ikke en gyldig bakgrunnsbildelistefil. Ønsker du å "
-"overskive den?"
+"Filen «%s» er ikke en gyldig bakgrunnsbildelistefil. Ønsker du å overskive "
+"den?"
 
 #: ../settings/main.c:484
 msgid "Invalid List File"
