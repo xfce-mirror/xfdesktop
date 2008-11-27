@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-21 00:03-0800\n"
-"PO-Revision-Date: 2008-10-23 12:12-0400\n"
+"PO-Revision-Date: 2008-11-26 18:44-0500\n"
 "Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
@@ -888,9 +888,8 @@ msgid "Create _Folder..."
 msgstr "Criar _pasta..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1793
-#, fuzzy
 msgid "Create From _Template"
-msgstr "Criar documento a partir do modelo \"%s\""
+msgstr "Criar a partir do _modelo"
 
 #: ../src/xfdesktop-file-icon-manager.c:1827
 msgid "_Empty File"
@@ -1461,15 +1460,13 @@ msgid "Unable to contact settings server"
 msgstr "Não foi possível contactar o servidor de configurações"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop "
-msgstr "Área de trabalho"
+msgstr "Área de trabalho "
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
-#, fuzzy
 msgid "Set desktop background and menu and icon behaviour"
 msgstr ""
-"Definir o comportamento do segundo plano da área de trabalho, menu e ícones"
+"Definir o comportamento do segundo plano, menu e ícones"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
@@ -1641,14 +1638,14 @@ msgid "Show _application icons in menu"
 msgstr "Mostra ícones de _aplicativos no menu"
 
 #: ../settings/xfdesktop-settings.glade.h:47
-#, fuzzy
 msgid "Show _window list menu on desktop middle click"
-msgstr "Mostrar o menu da lista de _janelas ao clicar na área de trabalho"
+msgstr "Mostrar o menu da lista de _janelas ao clicar na área de trabalho "
+"com o botão do meio do mouse"
 
 #: ../settings/xfdesktop-settings.glade.h:48
-#, fuzzy
 msgid "Show applications menu on _desktop right click"
-msgstr "Mostrar _menu da área de trabalho ao clicar na área de trabalho"
+msgstr "Mostrar o menu de aplicativos ao clicar na área _de trabalho "
+"com o botão direito"
 
 #: ../settings/xfdesktop-settings.glade.h:49
 msgid "Show s_ticky windows only in active workspace"
@@ -1682,17 +1679,19 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings.glade.h:57
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
+msgstr "Especificar como a imagem será redimensionada para caber na tela"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
+msgstr "Especificar o estilo da cor desenhada por trás da imagem de fundo"
 
 #: ../settings/xfdesktop-settings.glade.h:59
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr ""
+"Especificar o nível de transparência para rótulos arredondados desenhados por "
+"trás do ícone "
 
 #: ../settings/xfdesktop-settings.glade.h:60
 msgid "St_yle:"
@@ -1700,7 +1699,7 @@ msgstr "Est_ilo:"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "Usar _submenus para janelas em cada espaço de trabalho"
 
 #: ../settings/xfdesktop-settings.glade.h:62
 msgid "Use custom _font size:"
