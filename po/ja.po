@@ -12,17 +12,18 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.5.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-21 00:03-0800\n"
-"PO-Revision-Date: 2008-10-19 15:15+0900\n"
+"PO-Revision-Date: 2008-11-30 16:27+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
+#: ../common/xfdesktop-common.c:87
+#: ../common/xfdesktop-common.c:191
 #, c-format
 msgid "Backdrop list file is not valid"
-msgstr "背景リストファイルが正しくありません"
+msgstr "壁紙リストファイルが正しくありません"
 
 #: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
@@ -46,11 +47,11 @@ msgstr "サブメニュー"
 
 #: ../menueditor/menueditor-add-dialog.c:153
 msgid "Launcher"
-msgstr "ランチャー"
+msgstr "ランチャ"
 
 #: ../menueditor/menueditor-add-dialog.c:154
 msgid "Separator"
-msgstr "仕切り"
+msgstr "区切り"
 
 #: ../menueditor/menueditor-add-dialog.c:155
 msgid "Quit"
@@ -150,17 +151,17 @@ msgstr "実行可能ファイル"
 #: ../menueditor/menueditor-add-dialog.c:457
 #: ../menueditor/menueditor-edit-dialog.c:316
 msgid "Perl Scripts"
-msgstr "Perlスクリプト"
+msgstr "Perl スクリプト"
 
 #: ../menueditor/menueditor-add-dialog.c:463
 #: ../menueditor/menueditor-edit-dialog.c:322
 msgid "Python Scripts"
-msgstr "Pythonスクリプト"
+msgstr "Python スクリプト"
 
 #: ../menueditor/menueditor-add-dialog.c:469
 #: ../menueditor/menueditor-edit-dialog.c:328
 msgid "Ruby Scripts"
-msgstr "Rubyスクリプト"
+msgstr "Ruby スクリプト"
 
 #: ../menueditor/menueditor-add-dialog.c:475
 #: ../menueditor/menueditor-edit-dialog.c:334
@@ -233,25 +234,19 @@ msgstr "外部メニュー項目の編集"
 
 #: ../menueditor/menueditor-main.c:43
 msgid "Xfce4-MenuEditor"
-msgstr "Xfce 4 メニューエディター"
+msgstr "Xfce 4 メニューエディタ"
 
 #: ../menueditor/menueditor-main.c:57
 msgid "Menueditor Warning"
-msgstr "メニューエディターの警告"
+msgstr "メニューエディタ警告"
 
 #: ../menueditor/menueditor-main.c:59
 msgid "xfce4-menueditor is deprecated"
 msgstr "xfce4-menueditor は廃止されます"
 
 #: ../menueditor/menueditor-main.c:60
-msgid ""
-"Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-"edit the new menu file format.  You may continue and edit an old-style menu "
-"file, or quit."
-msgstr ""
-"Xfceのメニューシステムは置き換えられており、xfce4-menueditorでは新しいメ"
-"ニューファイルの形式を編集することができません。以前のスタイルのメニューファ"
-"イルを編集するか、xfce4-menueditorを終了してください。"
+msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+msgstr "Xfce のメニューシステムは置き換えられており、xfce4-menueditor では新しいメニューファイルの形式を編集することができません。以前のスタイルのメニューファイルを編集するか、xfce4-menueditor を終了してください。"
 
 #: ../menueditor/menueditor-main.c:61
 msgid "Continue"
@@ -271,7 +266,8 @@ msgstr "新規メニューファイルを作成します"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1720
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-special-file-icon.c:633
+#: ../src/xfdesktop-volume-icon.c:560
 msgid "_Open"
 msgstr "開く(_O)"
 
@@ -281,11 +277,11 @@ msgstr "既存のメニューを開きます"
 
 #: ../menueditor/menueditor-main-window.c:143
 msgid "Open _default menu"
-msgstr "標準のメニューを開く(_D)"
+msgstr "デフォルトのメニューを開く(_D)"
 
 #: ../menueditor/menueditor-main-window.c:143
 msgid "Open default menu"
-msgstr "標準のメニューを開きます"
+msgstr "デフォルトのメニューを開きます"
 
 #: ../menueditor/menueditor-main-window.c:144
 msgid "_Save"
@@ -317,7 +313,7 @@ msgstr "終了(_Q)"
 
 #: ../menueditor/menueditor-main-window.c:147
 msgid "Quit Xfce4-Menueditor"
-msgstr "Xfce 4 メニューエディターを終了します"
+msgstr "Xfce 4 メニューエディタを終了します"
 
 #: ../menueditor/menueditor-main-window.c:149
 msgid "_Edit"
@@ -381,7 +377,7 @@ msgstr "このプログラムについて(_A)..."
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "Show informations about xfce4-menueditor"
-msgstr "Xfce4 メニューエディターについての情報を表示します"
+msgstr "Xfce4 メニューエディタについての情報を表示します"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all"
@@ -423,7 +419,8 @@ msgstr "ファイルを閉じる前に保存しますか?"
 #: ../menueditor/menueditor-main-window.c:479
 #: ../menueditor/menueditor-main-window.c:532
 #: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:679
+#: ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "確認"
 
@@ -443,7 +440,7 @@ msgstr "メニューファイルを開く"
 
 #: ../menueditor/menueditor-main-window.c:534
 msgid "Do you want to save before opening the default menu ?"
-msgstr "標準のメニューを開く前に保存しますか?"
+msgstr "デフォルトのメニューを開く前に保存しますか?"
 
 #: ../menueditor/menueditor-main-window.c:594
 msgid "Save menu file as"
@@ -462,7 +459,7 @@ msgstr "終了"
 #: ../menueditor/menueditor-main-window.c:963
 #: ../menueditor/menueditor-main-window.c:1584
 msgid "--- separator ---"
-msgstr "--- 仕切り ---"
+msgstr "--- 区切り ---"
 
 #: ../menueditor/menueditor-main-window.c:1081
 #: ../menueditor/menueditor-main-window.c:1088
@@ -482,12 +479,12 @@ msgstr "このアイテムをサブメニューに移動しますか?"
 
 #: ../menueditor/menueditor-main-window.c:1293
 msgid "A menu editor for Xfce4"
-msgstr "Xfce4 メニューエディター"
+msgstr "Xfce4 メニューエディタ"
 
 #. Credits
 #: ../menueditor/menueditor-main-window.c:1298
 msgid "Author/Maintainer"
-msgstr "著作者/メインテナ"
+msgstr "著作者/メンテナ"
 
 #: ../menueditor/menueditor-main-window.c:1299
 #: ../menueditor/menueditor-main-window.c:1300
@@ -501,7 +498,7 @@ msgstr "アイコンデザイナ"
 
 #: ../menueditor/menueditor-main-window.c:1345
 msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "メニューが変更されています、終了する前に保存しますか?"
+msgstr "メニューが変更されています。終了する前に保存しますか?"
 
 #: ../menueditor/menueditor-main-window.c:1347
 msgid "Forget modifications"
@@ -510,7 +507,7 @@ msgstr "変更を破棄する"
 #: ../menueditor/menueditor-main-window.c:2035
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
-msgstr "メニューファイル「%s」を書き込みモードで開けません"
+msgstr "メニューファイル \"%s\" を書き込みモードで開けません"
 
 #: ../panel-plugin/desktop-menu-plugin.c:653
 #, c-format
@@ -548,7 +545,7 @@ msgstr "メニューファイル"
 
 #: ../panel-plugin/desktop-menu-plugin.c:797
 msgid "Use default _desktop menu file"
-msgstr "標準のデスクトップメニューを使用する(_D)"
+msgstr "デフォルトのデスクトップメニューを使用する(_D)"
 
 #: ../panel-plugin/desktop-menu-plugin.c:806
 msgid "Use _custom menu file:"
@@ -580,7 +577,7 @@ msgstr "メニューの編集"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr "インストール済みアプリの分類を含むメニューを表示します"
+msgstr "インストール済みアプリケーションのカテゴリを含むメニューを表示します"
 
 #: ../src/main.c:231
 #, c-format
@@ -602,11 +599,15 @@ msgstr "ビルドオプション:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    メニュー:            %s\n"
 
-#: ../src/main.c:240 ../src/main.c:247 ../src/main.c:254
+#: ../src/main.c:240
+#: ../src/main.c:247
+#: ../src/main.c:254
 msgid "enabled"
 msgstr "有効"
 
-#: ../src/main.c:242 ../src/main.c:249 ../src/main.c:256
+#: ../src/main.c:242
+#: ../src/main.c:249
+#: ../src/main.c:256
 msgid "disabled"
 msgstr "無効"
 
@@ -633,24 +634,22 @@ msgstr "オプションは:\n"
 #: ../src/main.c:283
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr "    --reload      全ての設定を再読込みして画像リストを更新します\n"
+msgstr "    --reload      全ての設定を再読込みして画像リストを更新する\n"
 
 #: ../src/main.c:284
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    --menu        現在のマウス位置でメニューをポップアップします\n"
+msgstr "    --menu        現在のマウス位置でメニューをポップアップする\n"
 
 #: ../src/main.c:285
 #, c-format
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    --windowlist  現在のマウス位置でウィンドウリストをポップアップします\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    --windowlist  現在のマウス位置でウィンドウリストをポップアップする\n"
 
 #: ../src/main.c:286
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "    --quit        xfdesktop を終了させます\n"
+msgstr "    --quit        xfdesktop を終了させる\n"
 
 #: ../src/main.c:307
 #, c-format
@@ -680,7 +679,8 @@ msgstr "ワークスペース %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>ワークスペース %d</i>"
 
-#: ../src/windowlist.c:370 ../src/windowlist.c:373
+#: ../src/windowlist.c:370
+#: ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "ワークスペースを追加(_A)"
 
@@ -692,7 +692,7 @@ msgstr "ワークスペース %d を削除(_R)"
 #: ../src/windowlist.c:384
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "ワークスペース「%s」を削除(_R)"
+msgstr "ワークスペース '%s' を削除(_R)"
 
 #: ../src/xfce-desktop.c:744
 msgid "Desktop"
@@ -701,7 +701,7 @@ msgstr "デスクトップ"
 #: ../src/xfce-desktop.c:1011
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "壁紙リストファイルからファイル「%s」を読み込めません"
+msgstr "壁紙リストファイルからファイル \"%s\" を読み込めません"
 
 #: ../src/xfce-desktop.c:1013
 msgid "Desktop Error"
@@ -709,9 +709,8 @@ msgstr "デスクトップエラー"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "デスクトップのアイテムを保存するフォルダ「%s」を作成できませんでした:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "デスクトップのアイテムを保存するフォルダ \"%s\" を作成できませんでした:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
@@ -721,11 +720,8 @@ msgstr "フォルダの作成に失敗しました"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"「%s」はフォルダではありませんので、デスクトップのアイテムを保存できません。"
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "\"%s\" はフォルダではありませんので、デスクトップのアイテムを保存できません。"
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -734,7 +730,7 @@ msgstr "ファイルを削除するか名前を変えてください。"
 #: ../src/xfdesktop-file-icon-manager.c:630
 #, c-format
 msgid "Rename \"%s\""
-msgstr "「%s」の名前変更"
+msgstr "\"%s\" の名前の変更"
 
 #: ../src/xfdesktop-file-icon-manager.c:637
 #: ../src/xfdesktop-file-icon-manager.c:1280
@@ -745,12 +741,12 @@ msgstr "新しい名前を入力してください:"
 
 #: ../src/xfdesktop-file-icon-manager.c:639
 msgid "Rename"
-msgstr "名前変更"
+msgstr "名前の変更"
 
 #: ../src/xfdesktop-file-icon-manager.c:676
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "「%s」を削除してもよろしいですか?"
+msgstr "\"%s\" を削除してもよろしいですか?"
 
 #: ../src/xfdesktop-file-icon-manager.c:681
 #: ../src/xfdesktop-file-icon-manager.c:701
@@ -768,16 +764,18 @@ msgstr "複数のファイルを削除"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1635 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1635
+#: ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "「%s」を実行できません:"
+msgstr "\"%s\" を実行できません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
 #: ../src/xfdesktop-file-icon-manager.c:1242
-#: ../src/xfdesktop-file-icon-manager.c:1636 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon-manager.c:1636
+#: ../src/xfdesktop-file-icon.c:144
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "実行エラー"
@@ -786,44 +784,39 @@ msgstr "実行エラー"
 msgid "The application chooser could not be opened."
 msgstr "アプリケーション選択ウィンドウを開けませんでした。"
 
-#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"この機能には (Thunar が提供するような) ファイルマネージャーサービスが必要で"
-"す。"
+#: ../src/xfdesktop-file-icon-manager.c:979
+#: ../src/xfdesktop-file-utils.c:358
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "この機能には (Thunar が提供するような) ファイルマネージャサービスが必要です。"
 
+# In ja translation: follow the thunar's style (Do not bracket off)
 #: ../src/xfdesktop-file-icon-manager.c:1139
 #, c-format
 msgid "_Open With \"%s\""
-msgstr "「%s」で開く(_O)"
+msgstr "%s で開く(_O)"
 
+# In ja translation: following the thunar's style (Do not bracket off)
 #: ../src/xfdesktop-file-icon-manager.c:1142
 #, c-format
 msgid "Open With \"%s\""
-msgstr "「%s」で開く"
+msgstr "%s で開く"
 
 #: ../src/xfdesktop-file-icon-manager.c:1205
 #, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "フォルダ「%s」を作成できません:"
+msgstr "フォルダ \"%s\" を作成できません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1244
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"「exo-desktop-item-edit」を実行できません、これはデスクトップにランチャーやリ"
-"ンクを作成したり編集するのに必要です。"
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "\"exo-desktop-item-edit\" を実行できません、これはデスクトップにランチャやリンクを作成したり編集するのに必要です。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1277
 msgid "Create New Folder"
-msgstr "新規フォルダを作成"
+msgstr "新しいフォルダを作成"
 
 #: ../src/xfdesktop-file-icon-manager.c:1281
 msgid "New Folder"
-msgstr "新規フォルダ"
+msgstr "新しいフォルダ"
 
 #: ../src/xfdesktop-file-icon-manager.c:1282
 #: ../src/xfdesktop-file-icon-manager.c:1373
@@ -834,7 +827,7 @@ msgstr "作成"
 #: ../src/xfdesktop-file-icon-manager.c:1318
 #, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "ファイル「%s」を作成できません:"
+msgstr "ファイル \"%s\" を作成できません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1321
 msgid "Create File Failed"
@@ -843,20 +836,20 @@ msgstr "ファイルの作成に失敗しました"
 #: ../src/xfdesktop-file-icon-manager.c:1360
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr "テンプレート「%s」から文書を作成"
+msgstr "テンプレート \"%s\" からドキュメントを作成"
 
 #: ../src/xfdesktop-file-icon-manager.c:1379
 msgid "Create Empty File"
-msgstr "空ファイルを作成"
+msgstr "空のファイルを作成"
 
 #: ../src/xfdesktop-file-icon-manager.c:1383
 msgid "New Empty File"
-msgstr "新規の空ファイル"
+msgstr "新しい空ファイル"
 
 #: ../src/xfdesktop-file-icon-manager.c:1416
 #, c-format
 msgid "Unable to create file \"%s\":"
-msgstr "ファイル「%s」を作成できません:"
+msgstr "ファイル \"%s\" を作成できません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1417
 msgid "Create Error"
@@ -872,20 +865,19 @@ msgstr "新しいウィンドウで開く(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1735
 msgid "Create _Launcher..."
-msgstr "ランチャーを作成(_L)..."
+msgstr "ランチャを作成(_L)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1756
 msgid "Create _URL Link..."
-msgstr "URLリンクを作成(_U)..."
+msgstr "URL リンクを作成(_U)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1773
 msgid "Create _Folder..."
 msgstr "フォルダを作成(_F)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1793
-#, fuzzy
 msgid "Create From _Template"
-msgstr "テンプレート「%s」から文書を作成"
+msgstr "テンプレートから作成(_T)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1827
 msgid "_Empty File"
@@ -897,7 +889,7 @@ msgstr "実行(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1861
 msgid "_Edit Launcher"
-msgstr "ランチャーを編集(_E)"
+msgstr "ランチャを編集(_E)"
 
 # FIXME: format string
 #: ../src/xfdesktop-file-icon-manager.c:1901
@@ -910,7 +902,7 @@ msgstr "他のアプリケーションで開く(_A)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2039
 msgid "_Rename..."
-msgstr "名前変更(_R)..."
+msgstr "名前の変更(_R)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2057
 msgid "Desktop _Settings..."
@@ -925,7 +917,7 @@ msgstr "プロパティ(_P)..."
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
-msgstr "「%s」の実行に失敗しました:"
+msgstr "\"%s\" の実行に失敗しました:"
 
 #: ../src/xfdesktop-file-icon-manager.c:3312
 #: ../src/xfdesktop-regular-file-icon.c:384
@@ -934,14 +926,12 @@ msgstr "実行エラー"
 
 #: ../src/xfdesktop-file-icon.c:146
 msgid "The associated application could not be found or executed."
-msgstr ""
-"関連付けられているアプリケーションが見つからないか、または実行できませんでし"
-"た。"
+msgstr "関連付けられているアプリケーションが見つからないか、または実行できませんでした。"
 
 #: ../src/xfdesktop-file-properties-dialog.c:103
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr "「%s」の標準アプリケーションを「%s」にできません:"
+msgstr "\"%s\" の標準アプリケーションを \"%s\" にできません:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:106
 msgid "Properties Error"
@@ -977,7 +967,8 @@ msgstr "リンク先:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
-#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
+#: ../src/xfdesktop-volume-icon.c:476
+#: ../src/xfdesktop-volume-icon.c:482
 msgid "(unknown)"
 msgstr "(不明)"
 
@@ -1037,17 +1028,17 @@ msgstr "全てはい(_A)"
 #: ../src/xfdesktop-file-utils.c:106
 #, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr "「%s」を「%s」へ移動中にエラーが発生しました:"
+msgstr "\"%s\" を \"%s\" へ移動中にエラーが発生しました:"
 
 #: ../src/xfdesktop-file-utils.c:109
 #, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr "「%s」を「%s」にコピー中にエラーが発生しました:"
+msgstr "\"%s\" を \"%s\" へコピー中にエラーが発生しました:"
 
 #: ../src/xfdesktop-file-utils.c:112
 #, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr "「%s」を「%s」へリンク中にエラーが発生しました:"
+msgstr "\"%s\" を \"%s\" へリンク中にエラーが発生しました:"
 
 #: ../src/xfdesktop-file-utils.c:121
 msgid "File Error"
@@ -1060,7 +1051,7 @@ msgstr "壊れたリンク"
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "link to %s"
-msgstr "%sへのリンク"
+msgstr "%s へのリンク"
 
 #: ../src/xfdesktop-regular-file-icon.c:489
 #: ../src/xfdesktop-special-file-icon.c:496
@@ -1071,7 +1062,7 @@ msgid ""
 "Size: %s"
 msgstr ""
 "タイプ: %s\n"
-"変更日: %s\n"
+"変更日時: %s\n"
 "サイズ: %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:520
@@ -1082,9 +1073,10 @@ msgstr "エラー"
 #: ../src/xfdesktop-regular-file-icon.c:581
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr "「%s」の名前を「%s」に変更できませんでした:"
+msgstr "\"%s\" の名前を \"%s\" に変更できませんでした:"
 
-#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
+#: ../src/xfdesktop-special-file-icon.c:259
+#: ../settings/main.c:267
 msgid "Home"
 msgstr "ホーム"
 
@@ -1104,12 +1096,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Xfce ゴミ収集サービスにコンタクトできません。"
 
 #: ../src/xfdesktop-special-file-icon.c:518
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Thunar のような Xfce ゴミ収集サービスをサポートしたファイルマネージャーがイン"
-"ストールされているか確認してください。"
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Thunar のような Xfce ゴミ収集サービスをサポートしたファイルマネージャがインストールされているか確認してください。"
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
@@ -1118,7 +1106,7 @@ msgstr "ゴミ箱を空にする(_E)"
 #: ../src/xfdesktop-volume-icon.c:474
 #, c-format
 msgid "%s (%s total)"
-msgstr "%s (%s total)"
+msgstr "%s (合計 %s)"
 
 #: ../src/xfdesktop-volume-icon.c:478
 #, c-format
@@ -1134,12 +1122,12 @@ msgstr ""
 #: ../src/xfdesktop-volume-icon.c:509
 #, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "「%s」をマウントできません:"
+msgstr "\"%s\" をマウントできません:"
 
 #: ../src/xfdesktop-volume-icon.c:510
 #, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "「%s」をマウント解除できません:"
+msgstr "\"%s\" をマウント解除できません:"
 
 #: ../src/xfdesktop-volume-icon.c:513
 msgid "Mount Failed"
@@ -1152,7 +1140,7 @@ msgstr "マウント解除に失敗しました"
 #: ../src/xfdesktop-volume-icon.c:531
 #, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "「%s」を取り出せません:"
+msgstr "\"%s\" を取り出せません:"
 
 #: ../src/xfdesktop-volume-icon.c:534
 msgid "Eject Failed"
@@ -1176,15 +1164,15 @@ msgstr "Xfce 4 メニューを編集するグラフィカルなツールです"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
-msgstr "メニューエディター"
+msgstr "メニューエディタ"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:3
 msgid "Xfce 4 Menu Editor"
-msgstr "Xfce 4 メニューエディター"
+msgstr "Xfce 4 メニューエディタ"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
-msgstr "アクセサリー"
+msgstr "アクセサリ"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
@@ -1256,7 +1244,7 @@ msgstr "その他"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr "スクリーンセーバー・アプレット"
+msgstr "スクリーンセーバーアプレット"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
@@ -1276,19 +1264,19 @@ msgstr "システムツールおよびユーティリティ"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
-msgstr "Xfceについて"
+msgstr "Xfce について"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr "Xfceデスクトップ環境についての情報"
+msgstr "Xfce デスクトップ環境についての情報"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
-msgstr "ファイルマネージャー"
+msgstr "ファイルマネージャ"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
 msgid "Thunar file manager"
-msgstr "Thuanr ファイルマネージャー"
+msgstr "Thuanr ファイルマネージャ"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
 msgid "Help"
@@ -1296,7 +1284,7 @@ msgstr "ヘルプ"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr "Xfceのマニュアルを表示します"
+msgstr "Xfce のマニュアルを表示します"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
@@ -1304,7 +1292,7 @@ msgstr "ログアウト"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
 msgid "Log out of the Xfce Desktop"
-msgstr "Xfceデスクトップからログアウトします"
+msgstr "Xfce デスクトップからログアウトします"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
 msgid "Run Program..."
@@ -1320,7 +1308,7 @@ msgstr "ターミナル"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
 msgid "Terminal emulator"
-msgstr "ターミナルエミュレーター"
+msgstr "ターミナルエミュレータ"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
 msgid "Browse the web"
@@ -1356,22 +1344,21 @@ msgstr "リムーバブルデバイス"
 #: ../settings/main.c:426
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "背景リスト「%s」を作成できません"
+msgstr "壁紙リスト \"%s\" を作成できません"
 
-#: ../settings/main.c:430 ../settings/main.c:789
+#: ../settings/main.c:430
+#: ../settings/main.c:789
 msgid "Backdrop List Error"
-msgstr "背景リストエラー"
+msgstr "壁紙リストエラー"
 
 #: ../settings/main.c:455
 msgid "Create/Load Backdrop List"
-msgstr "背景リストを作成/読み込み"
+msgstr "壁紙リストの作成/読み込み"
 
 #: ../settings/main.c:479
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"ファイル「%s」は正常な背景リストファイルではありません。上書きしますか?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "ファイル \"%s\" は正常な壁紙リストファイルではありません。上書きしますか?"
 
 #: ../settings/main.c:484
 msgid "Invalid List File"
@@ -1388,7 +1375,7 @@ msgstr "置換"
 #: ../settings/main.c:785
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "背景リスト「%s」に書き込めませんでした"
+msgstr "壁紙リスト \"%s\" に書き込めませんでした"
 
 #: ../settings/main.c:812
 msgid "Add Image File(s)"
@@ -1405,12 +1392,12 @@ msgstr "全てのファイル"
 #: ../settings/main.c:1120
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "画面 %d, モニター %d (%s)"
+msgstr "画面 %d, モニタ %d (%s)"
 
 #: ../settings/main.c:1125
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr "画面 %d, モニター %d"
+msgstr "画面 %d, モニタ %d"
 
 #: ../settings/main.c:1128
 #, c-format
@@ -1420,12 +1407,12 @@ msgstr "画面 %d"
 #: ../settings/main.c:1134
 #, c-format
 msgid "Monitor %d (%s)"
-msgstr "モニター %d (%s)"
+msgstr "モニタ %d (%s)"
 
 #: ../settings/main.c:1139
 #, c-format
 msgid "Monitor %d"
-msgstr "モニター %d"
+msgstr "モニタ %d"
 
 #: ../settings/main.c:1354
 msgid "Settings manager socket"
@@ -1463,12 +1450,10 @@ msgid "Unable to contact settings server"
 msgstr "設定サーバに接続できません"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop "
-msgstr "デスクトップ"
+msgstr "デスクトップ "
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
-#, fuzzy
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "デスクトップの背景およびメニューとアイコンの振る舞いを設定します"
 
@@ -1506,7 +1491,7 @@ msgstr "<b>ウィンドウリストメニュー</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:9
 msgid "Add an image to the list"
-msgstr "画像をリストに追加"
+msgstr "画像をリストに追加します"
 
 #: ../settings/xfdesktop-settings.glade.h:10
 msgid ""
@@ -1526,7 +1511,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings.glade.h:16
 msgid "Automatically pick a random image from a list file"
-msgstr "リストファイルから自動的にランダムで画像を選ぶ"
+msgstr "リストファイルから自動的にランダムで画像を選びます"
 
 #: ../settings/xfdesktop-settings.glade.h:17
 msgid "B_rightness:"
@@ -1538,11 +1523,11 @@ msgstr "ボタン(_U):"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
-msgstr "新規リストの作成または既存リストの読み込み"
+msgstr "新規リストの作成または既存のリストを読み込みます"
 
 #: ../settings/xfdesktop-settings.glade.h:20
 msgid "Don't display an image at all"
-msgstr "全ての画像を表示しない"
+msgstr "全ての画像を表示しません"
 
 #: ../settings/xfdesktop-settings.glade.h:21
 msgid "Icon _size:"
@@ -1580,11 +1565,11 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings.glade.h:30
 msgid "Mo_difier:"
-msgstr "変更日時(_d):"
+msgstr "変更日時(_D):"
 
 #: ../settings/xfdesktop-settings.glade.h:31
 msgid "Modi_fier:"
-msgstr "変更日時(_f):"
+msgstr "変更日時(_F):"
 
 #: ../settings/xfdesktop-settings.glade.h:32
 msgid ""
@@ -1626,7 +1611,7 @@ msgstr "二番目の色の選択"
 
 #: ../settings/xfdesktop-settings.glade.h:43
 msgid "Select a single image as the backdrop"
-msgstr "背景にする画像を選択してください"
+msgstr "壁紙にする画像を選択してください"
 
 #: ../settings/xfdesktop-settings.glade.h:44
 msgid "Set desktop background and menu and icon behavior"
@@ -1634,25 +1619,23 @@ msgstr "デスクトップの背景およびメニューとアイコンの振る
 
 #: ../settings/xfdesktop-settings.glade.h:45
 msgid "Sh_ow application icons in menu"
-msgstr "メニューでアイコンを表示する(_O):"
+msgstr "メニューでアイコンを表示する(_O)"
 
 #: ../settings/xfdesktop-settings.glade.h:46
 msgid "Show _application icons in menu"
-msgstr "メニューでアイコンを表示する(_A):"
+msgstr "メニューでアイコンを表示する(_A)"
 
 #: ../settings/xfdesktop-settings.glade.h:47
-#, fuzzy
 msgid "Show _window list menu on desktop middle click"
-msgstr "ミドルクリックでウィンドウリストを表示する(_W)"
+msgstr "デスクトップ上でのミドルクリックでウィンドウリストを表示する(_W)"
 
 #: ../settings/xfdesktop-settings.glade.h:48
-#, fuzzy
 msgid "Show applications menu on _desktop right click"
-msgstr "右クリックでデスクトップメニューを表示する(_D)"
+msgstr "デスクトップ上での右クリックでアプリケーションメニューを表示する(_D)"
 
 #: ../settings/xfdesktop-settings.glade.h:49
 msgid "Show s_ticky windows only in active workspace"
-msgstr "現在のワークスペースのみにスティッキーウィンドウを表示する(_T)"
+msgstr "アクティブワークスペースにのみスティッキーウィンドウを表示する(_T)"
 
 #: ../settings/xfdesktop-settings.glade.h:50
 msgid "Show workspace _names in list"
@@ -1672,26 +1655,23 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings.glade.h:55
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "グラデーションの\"右側\"または\"下側\"の色の指定"
+msgstr "グラデーションの \"右側\" または \"下側\" の色を指定します"
 
 #: ../settings/xfdesktop-settings.glade.h:56
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "グラデーションの\"左側\"または\"上側\"の色の指定"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "グラデーションの \"左側\" または \"上側\" の色を指定します"
 
 #: ../settings/xfdesktop-settings.glade.h:57
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
+msgstr "画像を画面に合わせるスタイルを指定します"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
+msgstr "背景の描画スタイルを指定します"
 
 #: ../settings/xfdesktop-settings.glade.h:59
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgstr "アイコンの文字の背景の透明度を指定してください"
 
 #: ../settings/xfdesktop-settings.glade.h:60
 msgid "St_yle:"
@@ -1699,7 +1679,7 @@ msgstr "スタイル(_Y):"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "各ワークスペースのウィンドウをサブメニューで表示する(_U)"
 
 #: ../settings/xfdesktop-settings.glade.h:62
 msgid "Use custom _font size:"
@@ -1741,11 +1721,3 @@ msgstr "閉じる"
 msgid "gtk-help"
 msgstr "ヘルプ"
 
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "Xfce 4 デスクトップマネージャーの設定"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "Xfce 4 デスクトップの設定"
-
-#~ msgid "Show windows on each workspace in _submenus"
-#~ msgstr "サブメニューに各ワークスペースのウィンドウを表示する(_S)"
