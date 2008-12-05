@@ -178,7 +178,7 @@ xfdesktop_backdrop_list_choose_random(const gchar *filename,
     static gboolean __initialized = FALSE;
     static gint previndex = -1;
     gchar **files, *file = NULL;
-    gint n_items = 0, cur_file, i;
+    gint n_items = 0, cur_file, i, tries = 0;
 
     g_return_val_if_fail(filename && (!error || !*error), NULL);
 
@@ -213,6 +213,14 @@ xfdesktop_backdrop_list_choose_random(const gchar *filename,
     }
     
     do {
+        if(tries++ == n_items) {
+            /* this isn't precise, but if we've failed to get a good
+             * image after all this time, let's just give up */
+            g_warning("Unable to find good image from list; giving up");
+            g_strfreev(files);
+            return NULL;
+        }
+
         do {
 #ifdef HAVE_SRANDOM
             cur_file = random() % n_items;
@@ -220,6 +228,7 @@ xfdesktop_backdrop_list_choose_random(const gchar *filename,
             cur_file = rand() % n_items;
 #endif
         } while(cur_file == previndex && G_LIKELY(previndex != -1));
+
     } while(!xfdesktop_image_file_is_valid(files[cur_file]));
 
     previndex = cur_file;
