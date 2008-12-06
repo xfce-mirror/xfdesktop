@@ -9,6 +9,9 @@ Xfce 4.6beta2 (Xfce 4.5.92):
 
   * Display 'Audio' and 'Video' categories in the multimedia submenu.
   * Fix multiple image selection in settings dialog file chooser (bug 4522).
+  * Always use the XfceMenuElement interface for reading the display names 
+    of menu items and menus. This ensures that items appear sorted in 
+    alphabetic order.
 
 
 Xfce 4.6beta1 (Xfce 4.5.91):

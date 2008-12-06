@@ -256,12 +256,12 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             gtk_widget_show(submenu);
             
             if(xfce_directory) {
-                name = xfce_menu_directory_get_name(xfce_directory);
                 if(desktop_menu->use_menu_icons)
                     icon_name = xfce_menu_directory_get_icon(xfce_directory);
-            } else
-                name = xfce_menu_get_name(xfce_submenu);
+            }
             
+            name = xfce_menu_element_get_name(XFCE_MENU_ELEMENT(xfce_submenu));
+
             mi = gtk_image_menu_item_new_with_label(name);
             if(icon_name) {
                 img = gtk_image_new_from_icon_name(icon_name,
@@ -295,8 +295,6 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             else
                 *menu_items_return = g_list_prepend(*menu_items_return, mi);
         } else if(XFCE_IS_MENU_ITEM(l->data)) {
-            const gchar *name = NULL;
-            
             xfce_item = l->data;
             
             if(xfce_menu_item_get_no_display(xfce_item)
@@ -305,12 +303,7 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                 continue;
             }
             
-            if(xfce_menu_item_has_category(xfce_item, "X-XFCE"))
-                name = xfce_menu_item_get_generic_name(xfce_item);
-            if(!name)
-                name = xfce_menu_item_get_name(xfce_item);
-            
-            mi = xfce_app_menu_item_new_full(name,
+            mi = xfce_app_menu_item_new_full(xfce_menu_element_get_name(XFCE_MENU_ELEMENT(xfce_item)),
                                              xfce_menu_item_get_command(xfce_item),
                                              desktop_menu->use_menu_icons
                                              ? xfce_menu_item_get_icon_name(xfce_item)
