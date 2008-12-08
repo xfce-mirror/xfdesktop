@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-21 00:03-0800\n"
-"PO-Revision-Date: 2008-11-24 21:24+0100\n"
+"PO-Revision-Date: 2008-12-08 23:58+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -376,7 +376,7 @@ msgstr "_O aplikaci..."
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "Show informations about xfce4-menueditor"
-msgstr "Zobrazit informace o xfce4-menueditor"
+msgstr "Zobrazit informace o aplikaci xfce4-menueditor"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all"
@@ -408,7 +408,7 @@ msgstr "Skrytý"
 
 #: ../menueditor/menueditor-main-window.c:427
 msgid "Are you sure you want to close the current menu?"
-msgstr "Jste si jisti, že chcete zavřít aktuální nabídku?"
+msgstr "Opravdu chcete zavřít aktuální nabídku?"
 
 #: ../menueditor/menueditor-main-window.c:441
 msgid "Do you want to save before closing the file?"
@@ -505,7 +505,7 @@ msgstr "Zahodit úpravy"
 #: ../menueditor/menueditor-main-window.c:2035
 #, c-format
 msgid "Unable to open the menu file %s in write mode"
-msgstr "Nelze otevřít soubor nabídky %s pro zápis"
+msgstr "Soubor nabídky %s nelze otevřít v režimu pro zápis"
 
 #: ../panel-plugin/desktop-menu-plugin.c:653
 #, c-format
@@ -590,7 +590,7 @@ msgstr "Sestaveno s GTK+ %d.%d.%d, slinkováno s GTK+ %d.%d.%d."
 #: ../src/main.c:237
 #, c-format
 msgid "Build options:\n"
-msgstr "Volby při sestavování: \n"
+msgstr "Volby při sestavování:\n"
 
 #: ../src/main.c:238
 #, c-format
@@ -699,7 +699,7 @@ msgstr "Plocha"
 #: ../src/xfce-desktop.c:1011
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "nelze načíst obrázek ze souboru seznamu pozadí \"%s\""
+msgstr "Nelze načíst obrázek ze souboru seznamu pozadí \"%s\""
 
 #: ../src/xfce-desktop.c:1013
 msgid "Desktop Error"
@@ -708,18 +708,18 @@ msgstr "Chyba pracovní plochy"
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
 msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "Xfdesktop nebyl schopen vytvořit adresář \"%s\" pro uložení položek plochy:"
+msgstr "Aplikace Xfdesktop nemůže vytvořit složku \"%s\" pro uložení položek plochy:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
 #: ../src/xfdesktop-file-icon-manager.c:1208
 msgid "Create Folder Failed"
-msgstr "Nepodařilo se vytvořit adresář"
+msgstr "Vytvoření složky se nezdařilo"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
 msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr "Xfdesktop nemůže použít \"%s\" pro uložení položek plochy, protože není adresářem."
+msgstr "Xfdesktop nemůže použít \"%s\" pro uložení položek plochy, protože není složkou."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -808,11 +808,11 @@ msgstr "Nelze spustit \"exo-desktop-item-edit\". Tato aplikace je vyžadována p
 
 #: ../src/xfdesktop-file-icon-manager.c:1277
 msgid "Create New Folder"
-msgstr "Vytvořit nový adresář"
+msgstr "Vytvořit novou složku"
 
 #: ../src/xfdesktop-file-icon-manager.c:1281
 msgid "New Folder"
-msgstr "Nový adresář"
+msgstr "Nová složka"
 
 #: ../src/xfdesktop-file-icon-manager.c:1282
 #: ../src/xfdesktop-file-icon-manager.c:1373
@@ -827,7 +827,7 @@ msgstr "Nelze vytvořit soubor s názvem \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1321
 msgid "Create File Failed"
-msgstr "Nepodařilo se vytvořit soubor"
+msgstr "Vytvoření souboru se nezdařilo"
 
 #: ../src/xfdesktop-file-icon-manager.c:1360
 #, c-format
@@ -869,7 +869,7 @@ msgstr "Vytvořit odkaz _URL..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1773
 msgid "Create _Folder..."
-msgstr "Vytvořit _adresář"
+msgstr "Vytvořit _složku..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1793
 msgid "Create From _Template"
@@ -912,7 +912,7 @@ msgstr "_Vlastnosti..."
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
-msgstr "Nepodařilo se spustit \"%s\":"
+msgstr "Spuštění \"%s\" se nezdařilo:"
 
 #: ../src/xfdesktop-file-icon-manager.c:3312
 #: ../src/xfdesktop-regular-file-icon.c:384
@@ -996,7 +996,7 @@ msgstr "%s (%"
 #. permissions tab
 #: ../src/xfdesktop-file-properties-dialog.c:428
 msgid "Permissions"
-msgstr "Přístupová práva"
+msgstr "Oprávnění"
 
 #: ../src/xfdesktop-file-properties-dialog.c:450
 msgid "Owner:"
@@ -1123,24 +1123,24 @@ msgstr "Nelze odpojit \"%s\":"
 
 #: ../src/xfdesktop-volume-icon.c:513
 msgid "Mount Failed"
-msgstr "Připojení se nepodařilo"
+msgstr "Připojení se nezdařilo"
 
 #: ../src/xfdesktop-volume-icon.c:513
 msgid "Unmount Failed"
-msgstr "Odpojení se nepodařilo"
+msgstr "Odpojení se nezdařilo"
 
 #: ../src/xfdesktop-volume-icon.c:531
 #, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "Nemohu vysunout \"%s\":"
+msgstr "Nelze vysunout \"%s\":"
 
 #: ../src/xfdesktop-volume-icon.c:534
 msgid "Eject Failed"
-msgstr "Vysunutí se nepodařilo"
+msgstr "Vysunutí se nezdařilo"
 
 #: ../src/xfdesktop-volume-icon.c:576
 msgid "E_ject Volume"
-msgstr "_Vysunout médium"
+msgstr "_Vysunout svazek"
 
 #: ../src/xfdesktop-volume-icon.c:586
 msgid "_Unmount Volume"
@@ -1420,7 +1420,7 @@ msgstr "Informace o verzi"
 #: ../settings/main.c:1375
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Pro použití napište '%s --help'."
+msgstr "Informace o použití získáte příkazem '%s --help'."
 
 #: ../settings/main.c:1387
 msgid "The Xfce development team. All rights reserved."
@@ -1509,7 +1509,7 @@ msgstr "_Jas:"
 
 #: ../settings/xfdesktop-settings.glade.h:18
 msgid "B_utton:"
-msgstr "_Tlačítko"
+msgstr "_Tlačítko:"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
@@ -1559,7 +1559,7 @@ msgstr "Mo_difikátor:"
 
 #: ../settings/xfdesktop-settings.glade.h:31
 msgid "Modi_fier:"
-msgstr "_Modifikátor"
+msgstr "_Modifikátor:"
 
 #: ../settings/xfdesktop-settings.glade.h:32
 msgid ""
