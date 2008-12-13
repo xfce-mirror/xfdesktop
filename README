@@ -92,19 +92,3 @@ The fourth three entries set the color of the rounded text background.
 
 The final three entries set the color of the label text.  See above for the
 differences between NORMAL, SELECTED, and ACTIVE.
-
-.:.
-
-You may also want to show or hide the icons in the desktop menu (right-click)
-and the window menu (middle-click).  This is controlled by the global gtk
-"gtk-menu-images" style property, which can be set by adding something like
-the following to your ~/.gtkrc-2.0 file:
-
-style "menu-images" {
-    gtk-menu-images = false
-}
-widget_class "*" style "menu-images"
-
-Unfortunately, this will act on all gtk menus, not just on the desktop or
-window menu.  There is currently no way to set this property just for these
-two menus.
