@@ -64,7 +64,7 @@ static SessionClient *client_session = NULL;
 static gboolean is_session_managed = FALSE;
 
 static void
-session_logout()
+session_logout(void)
 {
     g_return_if_fail(is_session_managed);
     logout_session(client_session);
@@ -186,7 +186,7 @@ client_message_received(GtkWidget *w, GdkEventClient *evt, gpointer user_data)
 }
 
 static void
-xfdesktop_handle_SIGUSR1(gint signal,
+xfdesktop_handle_SIGUSR1(gint sig,
                          gpointer user_data)
 {
     //settings_reload_all();  /* FIXME */
@@ -194,7 +194,7 @@ xfdesktop_handle_SIGUSR1(gint signal,
 }
 
 static void
-xfdesktop_handle_quit_signals(gint signal,
+xfdesktop_handle_quit_signals(gint sig,
                               gpointer user_data)
 {
     gint main_level;

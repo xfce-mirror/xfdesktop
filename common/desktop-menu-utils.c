@@ -29,7 +29,7 @@
 #include "desktop-menu-utils.h"
 
 gchar *
-xfce_desktop_get_menufile()
+xfce_desktop_get_menufile(void)
 {
     XfceKiosk *kiosk;
     gboolean user_menu;

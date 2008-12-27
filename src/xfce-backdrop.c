@@ -43,9 +43,6 @@
 #define abs(x)  ( (x) < 0 ? -(x) : (x) )
 #endif
 
-static void xfce_backdrop_class_init(XfceBackdropClass *klass);
-
-static void xfce_backdrop_init(XfceBackdrop *backdrop);
 static void xfce_backdrop_finalize(GObject *object);
 static void xfce_backdrop_set_property(GObject *object,
                                        guint property_id,
@@ -525,7 +522,7 @@ xfce_backdrop_set_color_style(XfceBackdrop *backdrop,
         XfceBackdropColorStyle style)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
-    g_return_if_fail(style >= 0 && style <= XFCE_BACKDROP_COLOR_TRANSPARENT);
+    g_return_if_fail((int)style >= 0 && style <= XFCE_BACKDROP_COLOR_TRANSPARENT);
     
     if(style != backdrop->priv->color_style) {
         backdrop->priv->color_style = style;

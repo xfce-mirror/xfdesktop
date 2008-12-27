@@ -43,7 +43,7 @@ static void (*my_xfce_menu_init)(const gchar *env) = NULL;
 static void (*my_xfce_menu_shutdown)() = NULL;
 
 static GQuark
-desktop_menu_error_quark()
+desktop_menu_error_quark(void)
 {
     static GQuark q = 0;
     

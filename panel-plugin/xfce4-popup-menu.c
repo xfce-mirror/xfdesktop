@@ -42,7 +42,7 @@
  * gcc -Wall -g xfce4-popup-menu.c -o xfce4-popup-menu `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0`
  */
 
-gboolean
+static gboolean
 xfce4_check_is_running(GtkWidget *widget, Window *xid)
 {
     GdkScreen *gscreen;

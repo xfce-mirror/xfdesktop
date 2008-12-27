@@ -34,8 +34,6 @@ struct _XfdesktopFileIconPrivate
     GList *active_jobs;
 };
 
-static void xfdesktop_file_icon_class_init(XfdesktopFileIconClass *klass);
-static void xfdesktop_file_icon_init(XfdesktopFileIcon *icon);
 static void xfdesktop_file_icon_finalize(GObject *obj);
 
 static gboolean xfdesktop_file_icon_activated(XfdesktopIcon *icon);

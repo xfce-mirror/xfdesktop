@@ -41,8 +41,6 @@ struct _XfdesktopWindowIconPrivate
     WnckWindow *window;
 };
 
-static void xfdesktop_window_icon_class_init(XfdesktopWindowIconClass *klass);
-static void xfdesktop_window_icon_init(XfdesktopWindowIcon *icon);
 static void xfdesktop_window_icon_finalize(GObject *obj);
 
 static GdkPixbuf *xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,

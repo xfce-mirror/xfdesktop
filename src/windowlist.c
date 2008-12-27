@@ -454,7 +454,7 @@ windowlist_attach(XfceDesktop *desktop)
 }
 
 void
-windowlist_cleanup()
+windowlist_cleanup(void)
 {
     /* notused */
 }

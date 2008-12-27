@@ -28,7 +28,7 @@
 #include "xfdesktop-icon-view.h"
 
 GType
-xfdesktop_icon_view_manager_get_type()
+xfdesktop_icon_view_manager_get_type(void)
 {
     static GType manager_type = 0;
     
@@ -88,7 +88,7 @@ xfdesktop_icon_view_manager_drag_drop(XfdesktopIconViewManager *manager,
                                       GdkDragContext *context,
                                       guint16 row,
                                       guint16 col,
-                                      guint time)
+                                      guint time_)
 {
     XfdesktopIconViewManagerIface *iface;
     
@@ -97,7 +97,7 @@ xfdesktop_icon_view_manager_drag_drop(XfdesktopIconViewManager *manager,
     iface = XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(manager);
     g_return_val_if_fail(iface->drag_drop, FALSE);
     
-    return iface->drag_drop(manager, drop_icon, context, row, col, time);
+    return iface->drag_drop(manager, drop_icon, context, row, col, time_);
 }
 
 void
@@ -108,7 +108,7 @@ xfdesktop_icon_view_manager_drag_data_received(XfdesktopIconViewManager *manager
                                                guint16 col,
                                                GtkSelectionData *data,
                                                guint info,
-                                               guint time)
+                                               guint time_)
 {
     XfdesktopIconViewManagerIface *iface;
     
@@ -118,7 +118,7 @@ xfdesktop_icon_view_manager_drag_data_received(XfdesktopIconViewManager *manager
     g_return_if_fail(iface->drag_data_received);
     
     iface->drag_data_received(manager, drop_icon, context, row, col, data, info,
-                              time);
+                              time_);
 }
 
 void
@@ -127,7 +127,7 @@ xfdesktop_icon_view_manager_drag_data_get(XfdesktopIconViewManager *manager,
                                           GdkDragContext *context,
                                           GtkSelectionData *data,
                                           guint info,
-                                          guint time)
+                                          guint time_)
 {
     XfdesktopIconViewManagerIface *iface;
     
@@ -136,5 +136,5 @@ xfdesktop_icon_view_manager_drag_data_get(XfdesktopIconViewManager *manager,
     iface = XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(manager);
     g_return_if_fail(iface->drag_data_get);
     
-    iface->drag_data_get(manager, drag_icons, context, data, info, time);
+    iface->drag_data_get(manager, drag_icons, context, data, info, time_);
 }

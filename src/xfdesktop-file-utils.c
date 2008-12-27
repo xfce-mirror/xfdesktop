@@ -254,7 +254,7 @@ xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
         pix = xfdesktop_file_utils_get_fallback_icon(size);
     
     /* sanity check */
-    g_return_val_if_fail(G_LIKELY(pix), NULL);
+    g_return_val_if_fail(pix, NULL);
     
     if(emblem) {
         gint emblem_pix_size = gdk_pixbuf_get_width(emblem);
@@ -433,7 +433,7 @@ static DBusGProxy *dbus_trash_proxy = NULL;
 static DBusGProxy *dbus_filemanager_proxy = NULL;
 
 gboolean
-xfdesktop_file_utils_dbus_init()
+xfdesktop_file_utils_dbus_init(void)
 {
     gboolean ret = TRUE;
     
@@ -470,19 +470,19 @@ xfdesktop_file_utils_dbus_init()
 }
 
 DBusGProxy *
-xfdesktop_file_utils_peek_trash_proxy()
+xfdesktop_file_utils_peek_trash_proxy(void)
 {
     return dbus_trash_proxy;
 }
 
 DBusGProxy *
-xfdesktop_file_utils_peek_filemanager_proxy()
+xfdesktop_file_utils_peek_filemanager_proxy(void)
 {
     return dbus_filemanager_proxy;
 }
 
 void
-xfdesktop_file_utils_dbus_cleanup()
+xfdesktop_file_utils_dbus_cleanup(void)
 {
     if(dbus_ref_cnt == 0 || --dbus_ref_cnt > 0)
         return;

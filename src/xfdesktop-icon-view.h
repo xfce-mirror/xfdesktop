@@ -105,6 +105,10 @@ gdouble xfdesktop_icon_view_get_font_size(XfdesktopIconView *icon_view);
 
 GtkWidget *xfdesktop_icon_view_get_window_widget(XfdesktopIconView *icon_view);
 
+#if defined(DEBUG) && DEBUG > 0
+guint _xfdesktop_icon_view_n_items(XfdesktopIconView *icon_view);
+#endif
+
 G_END_DECLS
 
 #endif  /* __XFDESKTOP_ICON_VIEW_H__ */

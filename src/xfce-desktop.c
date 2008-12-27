@@ -129,9 +129,6 @@ enum
 };
 
 
-static void xfce_desktop_class_init(XfceDesktopClass *klass);
-
-static void xfce_desktop_init(XfceDesktop *desktop);
 static void xfce_desktop_finalize(GObject *object);
 static void xfce_desktop_set_property(GObject *object,
                                       guint property_id,
@@ -325,7 +322,8 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     GdkScreen *gscreen = desktop->priv->gscreen;
     GdkPixbuf *pix;
     GdkRectangle rect;
-    gint i, monitor = -1;
+    guint i;
+    gint monitor = -1;
     
     TRACE("entering");
     
@@ -404,7 +402,7 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
         backdrop_changed_cb(desktop->priv->backdrops[0], desktop);
     } else {
         GdkRectangle rect;
-        gint i;
+        guint i;
 
         for(i = 0; i < desktop->priv->nbackdrops; i++) {
             gdk_screen_get_monitor_geometry(gscreen, i, &rect);
@@ -420,7 +418,7 @@ xfce_desktop_monitors_changed(GdkScreen *gscreen,
                               gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
-    gint i;
+    guint i;
 
     if(desktop->priv->xinerama_stretch) {
         if(desktop->priv->nbackdrops > 1) {
@@ -444,7 +442,7 @@ xfce_desktop_monitors_changed(GdkScreen *gscreen,
             desktop->priv->nbackdrops = 1;
         }
     } else {
-        gint n_monitors = gdk_screen_get_n_monitors(gscreen);
+        guint n_monitors = gdk_screen_get_n_monitors(gscreen);
 
         if(n_monitors < desktop->priv->nbackdrops) {
             for(i = n_monitors; i < desktop->priv->nbackdrops; ++i)
@@ -788,7 +786,7 @@ static void
 xfce_desktop_unrealize(GtkWidget *widget)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
-    gint i;
+    guint i;
     GdkWindow *groot;
     gchar property_name[128];
     

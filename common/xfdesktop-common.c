@@ -150,20 +150,20 @@ xfdesktop_backdrop_list_save(const gchar *filename,
                 if(error) {
                     g_set_error(error, G_FILE_ERROR,
                                 g_file_error_from_errno(errno),
-                                g_strerror(errno));
+                                "%s", g_strerror(errno));
                 }
                 unlink(filename_new);
             }
         } else {
             if(error) {
                 g_set_error(error, G_FILE_ERROR, g_file_error_from_errno(errno),
-                            g_strerror(errno));
+                            "%s", g_strerror(errno));
             }
             unlink(filename_new);
         }
     } else if(error) {
         g_set_error(error, G_FILE_ERROR, g_file_error_from_errno(errno),
-                    g_strerror(errno));
+                    "%s", g_strerror(errno));
     }
 
     g_free(filename_new);

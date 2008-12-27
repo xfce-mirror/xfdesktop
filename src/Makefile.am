@@ -148,7 +148,7 @@ stamp-xfce-desktop-enum-types.h: $(enum_headers) Makefile
 		  && echo timestamp > $(@F)
 xfce-desktop-enum-types.c: $(enum_headers) Makefile
 	( cd $(srcdir) && glib-mkenums \
-	      --fhead "#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include \"xfce-desktop.h\"\n#include \"xfce-backdrop.h\"" \
+	      --fhead "#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include \"xfce-desktop.h\"\n#include \"xfce-backdrop.h\"\n#include \"xfce-desktop-enum-types.h\"" \
 	      --fprod "\n/* enumerations from \"@filename@\" */" \
 	      --vhead "GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {"\
 	      --vprod "\t{ @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \

@@ -121,7 +121,7 @@ xfdesktop_file_properties_dialog_show(GtkWindow *parent,
 {
     GtkWidget *dlg, *table, *hbox, *lbl, *img, *spacer, *notebook, *vbox,
               *entry, *combo;
-    gint row = 0, w, h;
+    gint row = 0, dw, dh;
     PangoFontDescription *pfd;
     gchar *str = NULL, buf[64];
     const gchar *rname;
@@ -143,7 +143,7 @@ xfdesktop_file_properties_dialog_show(GtkWindow *parent,
     g_return_if_fail(info);
     
     pfd = pango_font_description_from_string("bold");
-    gtk_icon_size_lookup(GTK_ICON_SIZE_DIALOG, &w, &h);
+    gtk_icon_size_lookup(GTK_ICON_SIZE_DIALOG, &dw, &dh);
     mime_database = thunar_vfs_mime_database_get_default();
     
     dlg = gtk_dialog_new_with_buttons(xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)),
@@ -152,7 +152,7 @@ xfdesktop_file_properties_dialog_show(GtkWindow *parent,
                                       GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
                                       NULL);
     gtk_window_set_icon(GTK_WINDOW(dlg),
-                        xfdesktop_icon_peek_pixbuf(XFDESKTOP_ICON(icon), w));
+                        xfdesktop_icon_peek_pixbuf(XFDESKTOP_ICON(icon), dw));
     g_signal_connect(GTK_DIALOG(dlg), "response",
                      G_CALLBACK(gtk_widget_destroy), NULL);
     
@@ -181,7 +181,7 @@ xfdesktop_file_properties_dialog_show(GtkWindow *parent,
                      GTK_FILL, GTK_FILL, 0, 0);
     
     img = gtk_image_new_from_pixbuf(xfdesktop_icon_peek_pixbuf(XFDESKTOP_ICON(icon),
-                                                               w));
+                                                               dw));
     gtk_widget_show(img);
     gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, FALSE, 0);
     
@@ -267,7 +267,7 @@ xfdesktop_file_properties_dialog_show(GtkWindow *parent,
             GtkCellRenderer *render;
             ThunarVfsMimeHandler *handler;
             const gchar *icon_name;
-            gint w, h;
+            gint mw, mh;
             GdkPixbuf *pix;
             
             lbl = gtk_label_new(_("Open With:"));
@@ -282,7 +282,7 @@ xfdesktop_file_properties_dialog_show(GtkWindow *parent,
             gtk_table_attach(GTK_TABLE(table), hbox, 1, 2, row, row + 1,
                              GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
             
-            gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
+            gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &mw, &mh);
             
             ls = gtk_list_store_new(OPENWITH_N_COLS, GDK_TYPE_PIXBUF,
                                     G_TYPE_STRING, G_TYPE_POINTER);
@@ -295,7 +295,7 @@ xfdesktop_file_properties_dialog_show(GtkWindow *parent,
                 icon_name = thunar_vfs_mime_handler_lookup_icon_name(handler,
                                                                      gtk_icon_theme_get_default());
                 if(icon_name)
-                    pix = xfce_themed_icon_load(icon_name, w);
+                    pix = xfce_themed_icon_load(icon_name, mw);
                 
                 gtk_list_store_set(ls, &itr,
                                    OPENWITH_COL_PIX, pix,
@@ -555,7 +555,7 @@ xfdesktop_file_properties_dialog_show(GtkWindow *parent,
     
 #ifdef HAVE_THUNARX
     if(thunarx_properties_providers) {
-        GList *l, *pages, *p, *files = g_list_append(NULL, icon);
+        GList *pages, *p, *files = g_list_append(NULL, icon);
         ThunarxPropertyPageProvider *provider;
         ThunarxPropertyPage *page;
         GtkWidget *label_widget;

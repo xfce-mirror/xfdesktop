@@ -53,7 +53,7 @@ struct _XfdesktopIconViewManagerIface
                           GdkDragContext *context,
                           guint16 row,
                           guint16 col,
-                          guint time);
+                          guint time_);
     void (*drag_data_received)(XfdesktopIconViewManager *manager,
                                XfdesktopIcon *drop_icon,
                                GdkDragContext *context,
@@ -61,13 +61,13 @@ struct _XfdesktopIconViewManagerIface
                                guint16 col,
                                GtkSelectionData *data,
                                guint info,
-                               guint time);
+                               guint time_);
     void (*drag_data_get)(XfdesktopIconViewManager *manager,
                           GList *drag_icons,
                           GdkDragContext *context,
                           GtkSelectionData *data,
                           guint info,
-                          guint time);
+                          guint time_);
 };
 
 GType xfdesktop_icon_view_manager_get_type() G_GNUC_CONST;
@@ -83,7 +83,7 @@ gboolean xfdesktop_icon_view_manager_drag_drop(XfdesktopIconViewManager *manager
                                                GdkDragContext *context,
                                                guint16 row,
                                                guint16 col,
-                                               guint time);
+                                               guint time_);
 void xfdesktop_icon_view_manager_drag_data_received(XfdesktopIconViewManager *manager,
                                                     XfdesktopIcon *drop_icon,
                                                     GdkDragContext *context,
@@ -91,13 +91,13 @@ void xfdesktop_icon_view_manager_drag_data_received(XfdesktopIconViewManager *ma
                                                     guint16 col,
                                                     GtkSelectionData *data,
                                                     guint info,
-                                                    guint time);
+                                                    guint time_);
 void xfdesktop_icon_view_manager_drag_data_get(XfdesktopIconViewManager *manager,
                                                GList *drag_icons,
                                                GdkDragContext *context,
                                                GtkSelectionData *data,
                                                guint info,
-                                               guint time);
+                                               guint time_);
 
 
 

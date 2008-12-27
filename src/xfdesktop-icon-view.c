@@ -203,27 +203,27 @@ static gboolean xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                                                 GdkDragContext *context,
                                                 gint x,
                                                 gint y,
-                                                guint time);
+                                                guint time_);
 static void xfdesktop_icon_view_drag_leave(GtkWidget *widget,
                                            GdkDragContext *context,
-                                           guint time);
+                                           guint time_);
 static gboolean xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                                               GdkDragContext *context,
                                               gint x,
                                               gint y,
-                                              guint time);
+                                              guint time_);
 static void xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
                                               GdkDragContext *context,
                                               GtkSelectionData *data,
                                               guint info,
-                                              guint time);
+                                              guint time_);
 static void xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
                                                    GdkDragContext *context,
                                                    gint x,
                                                    gint y,
                                                    GtkSelectionData *data,
                                                    guint info,
-                                                   guint time);
+                                                   guint time_);
                                                       
 static void xfdesktop_icon_view_finalize(GObject *obj);
 
@@ -1132,7 +1132,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                                 GdkDragContext *context,
                                 gint x,
                                 gint y,
-                                guint time)
+                                guint time_)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     GdkAtom target = GDK_NONE;
@@ -1222,7 +1222,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
     
     /* at this point we can be reasonably sure that a drop is possible */
     
-    gdk_drag_status(context, our_action, time);
+    gdk_drag_status(context, our_action, time_);
     
     xfdesktop_icon_view_draw_drag_highlight(icon_view, context,
                                             hover_row, hover_col);
@@ -1233,7 +1233,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
 static void
 xfdesktop_icon_view_drag_leave(GtkWidget *widget,
                                GdkDragContext *context,
-                               guint time)
+                               guint time_)
 {
     xfdesktop_icon_view_clear_drag_highlight(XFDESKTOP_ICON_VIEW(widget),
                                              context);
@@ -1245,7 +1245,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                               GdkDragContext *context,
                               gint x,
                               gint y,
-                              guint time)
+                              guint time_)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     GdkAtom target = GDK_NONE;
@@ -1283,7 +1283,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                 }
             }
             
-            gtk_drag_finish(context, ret, FALSE, time);
+            gtk_drag_finish(context, ret, FALSE, time_);
             
             return ret;
         }
@@ -1307,14 +1307,14 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
         
         DBG("drag succeeded");
         
-        gtk_drag_finish(context, TRUE, FALSE, time);
+        gtk_drag_finish(context, TRUE, FALSE, time_);
     } else {
         g_object_set_data(G_OBJECT(context), "--xfdesktop-icon-view-drop-icon",
                           icon_on_dest);
         return xfdesktop_icon_view_manager_drag_drop(icon_view->priv->manager,
                                                      icon_on_dest,
                                                      context,
-                                                     row, col, time);
+                                                     row, col, time_);
     }
     
     return TRUE;
@@ -1325,7 +1325,7 @@ xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
                                   GdkDragContext *context,
                                   GtkSelectionData *data,
                                   guint info,
-                                  guint time)
+                                  guint time_)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     
@@ -1335,7 +1335,7 @@ xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
     
     xfdesktop_icon_view_manager_drag_data_get(icon_view->priv->manager,
                                               icon_view->priv->selected_icons,
-                                              context, data, info, time);
+                                              context, data, info, time_);
 }
 
 static void
@@ -1345,7 +1345,7 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
                                        gint y,
                                        GtkSelectionData *data,
                                        guint info,
-                                       guint time)
+                                       guint time_)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     guint16 row, col;
@@ -1363,7 +1363,7 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
     xfdesktop_icon_view_manager_drag_data_received(icon_view->priv->manager,
                                                    icon_on_dest,
                                                    context, row, col, data,
-                                                   info, time);
+                                                   info, time_);
 }
 
 static void
@@ -2393,13 +2393,13 @@ xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
             i = offset / 32;  /* first element id in this batch */
             
             /* there's probably a better way to do this. */
-            if(i + nitems >= first_id && first_id - offset >= 0)
+            if(i + (glong)nitems >= first_id && first_id - (glong)offset >= 0)
                 *xorigin = data[first_id - offset] + SCREEN_MARGIN;
-            if(i + nitems >= first_id + 1 && first_id - offset + 1 >= 0)
+            if(i + (glong)nitems >= first_id + 1 && first_id - (glong)offset + 1 >= 0)
                 *yorigin = data[first_id - offset + 1] + SCREEN_MARGIN;
-            if(i + nitems >= first_id + 2 && first_id - offset + 2 >= 0)
+            if(i + (glong)nitems >= first_id + 2 && first_id - (glong)offset + 2 >= 0)
                 *width = data[first_id - offset + 2] - 2 * SCREEN_MARGIN;
-            if(i + nitems >= first_id + 3 && first_id - offset + 3 >= 0) {
+            if(i + (glong)nitems >= first_id + 3 && first_id - (glong)offset + 3 >= 0) {
                 *height = data[first_id - offset + 3] - 2 * SCREEN_MARGIN;
                 ret = TRUE;
                 XFree(data_p);

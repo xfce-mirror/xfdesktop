@@ -49,7 +49,7 @@ static gboolean show_desktop_menu_icons = TRUE;
 
 #ifdef USE_DESKTOP_MENU
 static void
-_stop_menu_module() {
+_stop_menu_module(void) {
     if(desktop_menu) {
         xfce_desktop_menu_stop_autoregen(desktop_menu);
         xfce_desktop_menu_destroy(desktop_menu);
@@ -58,7 +58,7 @@ _stop_menu_module() {
 }
 
 static gboolean
-_start_menu_module()
+_start_menu_module(void)
 {
     desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
     if(desktop_menu) {
@@ -190,7 +190,7 @@ menu_attach(XfceDesktop *desktop)
 }
 
 void
-menu_reload()
+menu_reload(void)
 {
 #ifdef USE_DESKTOP_MENU
     if(desktop_menu)
@@ -199,7 +199,7 @@ menu_reload()
 }
 
 void
-menu_cleanup()
+menu_cleanup(void)
 {
 #ifdef USE_DESKTOP_MENU
     _stop_menu_module();

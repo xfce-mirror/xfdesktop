@@ -48,8 +48,6 @@ enum {
     SIG_N_SIGNALS,
 };
 
-static void xfdesktop_icon_class_init(XfdesktopIconClass *klass);
-static void xfdesktop_icon_init(XfdesktopIcon *icon);
 
 static guint __signals[SIG_N_SIGNALS] = { 0, };
 

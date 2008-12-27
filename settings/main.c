@@ -258,10 +258,10 @@ setup_special_icon_list(GladeXML *gxml,
     GtkCellRenderer *render;
     GtkTreeIter iter;
     const struct {
-        gchar *name;
-        gchar *icon;
-        gchar *icon_fallback;
-        gchar *xfconf_property;
+        const gchar *name;
+        const gchar *icon;
+        const gchar *icon_fallback;
+        const gchar *xfconf_property;
         gboolean state;
     } icons[] = {
         { N_("Home"), "user-home", "gnome-fs-desktop",

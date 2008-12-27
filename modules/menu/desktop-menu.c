@@ -87,6 +87,25 @@ typedef struct
 #endif
 } XfceDesktopMenu;
 
+
+/* silence some warnings... */
+G_MODULE_EXPORT XfceDesktopMenu *xfce_desktop_menu_new_impl(const gchar *menu_file,
+                                                            gboolean deferred);
+G_MODULE_EXPORT void xfce_desktop_menu_populate_menu_impl(XfceDesktopMenu *desktop_menu,
+                                                          GtkWidget *menu);
+G_MODULE_EXPORT GtkWidget *xfce_desktop_menu_get_widget_impl(XfceDesktopMenu *desktop_menu);
+G_MODULE_EXPORT G_CONST_RETURN gchar *xfce_desktop_menu_get_menu_file_impl(XfceDesktopMenu *desktop_menu);
+G_MODULE_EXPORT gboolean xfce_desktop_menu_need_update_impl(XfceDesktopMenu *desktop_menu);
+G_MODULE_EXPORT void xfce_desktop_menu_start_autoregen_impl(XfceDesktopMenu *desktop_menu,
+                                                            guint delay);
+G_MODULE_EXPORT void xfce_desktop_menu_stop_autoregen_impl(XfceDesktopMenu *desktop_menu);
+G_MODULE_EXPORT void xfce_desktop_menu_force_regen_impl(XfceDesktopMenu *desktop_menu);
+G_MODULE_EXPORT void xfce_desktop_menu_set_show_icons_impl(XfceDesktopMenu *desktop_menu,
+                                                           gboolean show_icons);
+G_MODULE_EXPORT void xfce_desktop_menu_destroy_impl(XfceDesktopMenu *desktop_menu);
+G_MODULE_EXPORT gchar *g_module_check_init(GModule *module);
+
+
 static void _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu);
 
 static gint _xfce_desktop_menu_icon_size = 24;
