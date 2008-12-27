@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-21 00:03-0800\n"
+"POT-Creation-Date: 2008-12-27 04:40-0800\n"
 "PO-Revision-Date: 2007-09-24 15:13+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@debianusers.org>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
@@ -267,7 +267,7 @@ msgid "Create a new empty menu"
 msgstr "새로운 메뉴를 만듭니다."
 
 #: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1720
+#: ../src/xfdesktop-file-icon-manager.c:1718
 #: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
 msgid "_Open"
 msgstr "열기(_O)"
@@ -691,16 +691,16 @@ msgstr "작업공간 %d 삭제(_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "작업공간 '%s' 삭제(_R)"
 
-#: ../src/xfce-desktop.c:744
+#: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
 msgstr "데스크탑"
 
-#: ../src/xfce-desktop.c:1011
+#: ../src/xfce-desktop.c:1009
 #, fuzzy, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "화일 \"%s\"을(를) 만들지 못 했습니다.:"
 
-#: ../src/xfce-desktop.c:1013
+#: ../src/xfce-desktop.c:1011
 #, fuzzy
 msgid "Desktop Error"
 msgstr "데스크탑"
@@ -715,7 +715,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
-#: ../src/xfdesktop-file-icon-manager.c:1208
+#: ../src/xfdesktop-file-icon-manager.c:1206
 msgid "Create Folder Failed"
 msgstr "디렉토리 생성 실패"
 
@@ -738,9 +738,9 @@ msgid "Rename \"%s\""
 msgstr "\"%s\" 이름 변경"
 
 #: ../src/xfdesktop-file-icon-manager.c:637
-#: ../src/xfdesktop-file-icon-manager.c:1280
-#: ../src/xfdesktop-file-icon-manager.c:1371
-#: ../src/xfdesktop-file-icon-manager.c:1382
+#: ../src/xfdesktop-file-icon-manager.c:1278
+#: ../src/xfdesktop-file-icon-manager.c:1369
+#: ../src/xfdesktop-file-icon-manager.c:1380
 msgid "Enter the new name:"
 msgstr "새로운 이름:"
 
@@ -769,7 +769,7 @@ msgstr "여러 화일 삭제"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1635 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1633 ../src/xfdesktop-file-icon.c:140
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -777,8 +777,8 @@ msgstr "실행 실패 \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
-#: ../src/xfdesktop-file-icon-manager.c:1242
-#: ../src/xfdesktop-file-icon-manager.c:1636 ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon-manager.c:1240
+#: ../src/xfdesktop-file-icon-manager.c:1634 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "실행 오류"
@@ -795,22 +795,22 @@ msgstr ""
 "이 기능을 사용하시려면 Thunar에서 제공하는 화일 관리자 같은 서비스가 필요합니"
 "다."
 
-#: ../src/xfdesktop-file-icon-manager.c:1139
+#: ../src/xfdesktop-file-icon-manager.c:1137
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "\"%s\"로 엽니다(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1142
+#: ../src/xfdesktop-file-icon-manager.c:1140
 #, c-format
 msgid "Open With \"%s\""
 msgstr "\"%s\"로 엽니다"
 
-#: ../src/xfdesktop-file-icon-manager.c:1205
+#: ../src/xfdesktop-file-icon-manager.c:1203
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "디렉토리 \"%s\"을(를) 만들지 못 했습니다."
 
-#: ../src/xfdesktop-file-icon-manager.c:1244
+#: ../src/xfdesktop-file-icon-manager.c:1242
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -818,121 +818,121 @@ msgstr ""
 "데스크탑에 실행기와 링크를 만들고 수정할 수 있는 \"exo-desktop-item-edit\"을 "
 "기동시키지 못 했습니다."
 
-#: ../src/xfdesktop-file-icon-manager.c:1277
+#: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
 msgstr "새로운 디렉토리 생성"
 
-#: ../src/xfdesktop-file-icon-manager.c:1281
+#: ../src/xfdesktop-file-icon-manager.c:1279
 msgid "New Folder"
 msgstr "새로운 디렉토리"
 
-#: ../src/xfdesktop-file-icon-manager.c:1282
-#: ../src/xfdesktop-file-icon-manager.c:1373
-#: ../src/xfdesktop-file-icon-manager.c:1384
+#: ../src/xfdesktop-file-icon-manager.c:1280
+#: ../src/xfdesktop-file-icon-manager.c:1371
+#: ../src/xfdesktop-file-icon-manager.c:1382
 msgid "Create"
 msgstr "생성"
 
-#: ../src/xfdesktop-file-icon-manager.c:1318
+#: ../src/xfdesktop-file-icon-manager.c:1316
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "화일 \"%s\"을(를) 만들지 못 했습니다."
 
-#: ../src/xfdesktop-file-icon-manager.c:1321
+#: ../src/xfdesktop-file-icon-manager.c:1319
 msgid "Create File Failed"
 msgstr "화일 생성 실패"
 
-#: ../src/xfdesktop-file-icon-manager.c:1360
+#: ../src/xfdesktop-file-icon-manager.c:1358
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "템플릿 \"%s\"로부터 문서 생성"
 
-#: ../src/xfdesktop-file-icon-manager.c:1379
+#: ../src/xfdesktop-file-icon-manager.c:1377
 msgid "Create Empty File"
 msgstr "빈 화일 생성"
 
-#: ../src/xfdesktop-file-icon-manager.c:1383
+#: ../src/xfdesktop-file-icon-manager.c:1381
 msgid "New Empty File"
 msgstr "새로운 빈 화일"
 
-#: ../src/xfdesktop-file-icon-manager.c:1416
+#: ../src/xfdesktop-file-icon-manager.c:1414
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "화일 \"%s\"을(를) 만들지 못 했습니다.:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1417
+#: ../src/xfdesktop-file-icon-manager.c:1415
 msgid "Create Error"
 msgstr "작성 오류"
 
-#: ../src/xfdesktop-file-icon-manager.c:1702
+#: ../src/xfdesktop-file-icon-manager.c:1700
 msgid "_Open all"
 msgstr "모두 열기(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1718
+#: ../src/xfdesktop-file-icon-manager.c:1716
 msgid "_Open in New Window"
 msgstr "새로운 창 열기(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1735
+#: ../src/xfdesktop-file-icon-manager.c:1733
 msgid "Create _Launcher..."
 msgstr "실행기 작성...(_L)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1756
+#: ../src/xfdesktop-file-icon-manager.c:1754
 msgid "Create _URL Link..."
 msgstr "URL 링크 생성(_U)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1773
+#: ../src/xfdesktop-file-icon-manager.c:1771
 msgid "Create _Folder..."
 msgstr "새로운 디렉토리 생성(_F)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1793
+#: ../src/xfdesktop-file-icon-manager.c:1791
 #, fuzzy
 msgid "Create From _Template"
 msgstr "템플릿 \"%s\"로부터 문서 생성"
 
-#: ../src/xfdesktop-file-icon-manager.c:1827
+#: ../src/xfdesktop-file-icon-manager.c:1825
 msgid "_Empty File"
 msgstr "빈 화일(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1843
+#: ../src/xfdesktop-file-icon-manager.c:1841
 msgid "_Execute"
 msgstr "실행(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1861
+#: ../src/xfdesktop-file-icon-manager.c:1859
 msgid "_Edit Launcher"
 msgstr "실행기 편집(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1901
+#: ../src/xfdesktop-file-icon-manager.c:1899
 msgid "Open With"
 msgstr "열어볼 프로그램"
 
-#: ../src/xfdesktop-file-icon-manager.c:1932
+#: ../src/xfdesktop-file-icon-manager.c:1930
 msgid "Open With Other _Application..."
 msgstr "다른 프로그램으로 열어 볼까요(_A)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2039
+#: ../src/xfdesktop-file-icon-manager.c:2037
 msgid "_Rename..."
 msgstr "이름 바꾸기(_R)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2057
+#: ../src/xfdesktop-file-icon-manager.c:2055
 msgid "Desktop _Settings..."
 msgstr "작업공간 설정(_S)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2067
+#: ../src/xfdesktop-file-icon-manager.c:2065
 #: ../src/xfdesktop-volume-icon.c:606
 msgid "_Properties..."
 msgstr "속성(_P)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3310
+#: ../src/xfdesktop-file-icon-manager.c:3304
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "\"%s\" 실행 실패"
 
-#: ../src/xfdesktop-file-icon-manager.c:3312
+#: ../src/xfdesktop-file-icon-manager.c:3306
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr "실행 오류"
 
-#: ../src/xfdesktop-file-icon.c:146
+#: ../src/xfdesktop-file-icon.c:144
 msgid "The associated application could not be found or executed."
 msgstr "해당하는 프로그램을 못 찾았거나 실행시키지 못 했습니다."
 
@@ -1535,55 +1535,55 @@ msgstr "버튼"
 msgid "Create a new list, or load an existing one"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:20
+#: ../settings/xfdesktop-settings.glade.h:21
 msgid "Don't display an image at all"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:21
+#: ../settings/xfdesktop-settings.glade.h:22
 #, fuzzy
 msgid "Icon _size:"
 msgstr "아이콘 크기(_I):"
 
-#: ../settings/xfdesktop-settings.glade.h:22
+#: ../settings/xfdesktop-settings.glade.h:23
 #, fuzzy
 msgid "Icon _type:"
 msgstr "아이콘 크기(_I):"
 
-#: ../settings/xfdesktop-settings.glade.h:23
+#: ../settings/xfdesktop-settings.glade.h:24
 #, fuzzy
 msgid "Image _list"
 msgstr "그림 화일"
 
-#: ../settings/xfdesktop-settings.glade.h:24
+#: ../settings/xfdesktop-settings.glade.h:25
 msgid "Increase or decrease the brightness of the final image"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:25
+#: ../settings/xfdesktop-settings.glade.h:26
 msgid "Increase or decrease the color saturation of the final image"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:26
+#: ../settings/xfdesktop-settings.glade.h:27
 msgid "Label trans_parency:"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:27
+#: ../settings/xfdesktop-settings.glade.h:28
 msgid ""
 "Left\n"
 "Middle\n"
 "Right"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:30
+#: ../settings/xfdesktop-settings.glade.h:31
 #, fuzzy
 msgid "Mo_difier:"
 msgstr "변경:"
 
-#: ../settings/xfdesktop-settings.glade.h:31
+#: ../settings/xfdesktop-settings.glade.h:32
 #, fuzzy
 msgid "Modi_fier:"
 msgstr "변경:"
 
-#: ../settings/xfdesktop-settings.glade.h:32
+#: ../settings/xfdesktop-settings.glade.h:33
 #, fuzzy
 msgid ""
 "None\n"
@@ -1591,7 +1591,7 @@ msgid ""
 "File/launcher icons"
 msgstr "프로그램 아이콘 최소화"
 
-#: ../settings/xfdesktop-settings.glade.h:35
+#: ../settings/xfdesktop-settings.glade.h:36
 msgid ""
 "None\n"
 "Shift\n"
@@ -1599,62 +1599,62 @@ msgid ""
 "Control"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:39
+#: ../settings/xfdesktop-settings.glade.h:40
 msgid "Remove the selected image(s) from the list"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:40
+#: ../settings/xfdesktop-settings.glade.h:41
 msgid "Sa_turation:"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:41
+#: ../settings/xfdesktop-settings.glade.h:42
 #, fuzzy
 msgid "Select First Color"
 msgstr "첫번째 색(_r):"
 
-#: ../settings/xfdesktop-settings.glade.h:42
+#: ../settings/xfdesktop-settings.glade.h:43
 #, fuzzy
 msgid "Select Second Color"
 msgstr "두번째 색(_S):"
 
-#: ../settings/xfdesktop-settings.glade.h:43
+#: ../settings/xfdesktop-settings.glade.h:44
 msgid "Select a single image as the backdrop"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:44
+#: ../settings/xfdesktop-settings.glade.h:45
 msgid "Set desktop background and menu and icon behavior"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:45
+#: ../settings/xfdesktop-settings.glade.h:46
 #, fuzzy
 msgid "Sh_ow application icons in menu"
 msgstr "메뉴에 아이콘 보이기(_i)"
 
-#: ../settings/xfdesktop-settings.glade.h:46
+#: ../settings/xfdesktop-settings.glade.h:47
 #, fuzzy
 msgid "Show _application icons in menu"
 msgstr "메뉴에 아이콘 보이기(_i)"
 
-#: ../settings/xfdesktop-settings.glade.h:47
+#: ../settings/xfdesktop-settings.glade.h:48
 #, fuzzy
 msgid "Show _window list menu on desktop middle click"
 msgstr "가운데 버튼 클릭으로 창 목록 보이기(_w)"
 
-#: ../settings/xfdesktop-settings.glade.h:48
+#: ../settings/xfdesktop-settings.glade.h:49
 #, fuzzy
 msgid "Show applications menu on _desktop right click"
 msgstr "오른쪽 버튼 클릭으로 데스크탑 메뉴 보이기(_d)"
 
-#: ../settings/xfdesktop-settings.glade.h:49
+#: ../settings/xfdesktop-settings.glade.h:50
 #, fuzzy
 msgid "Show s_ticky windows only in active workspace"
 msgstr "끈끈이 창을 활성화된 작업공간에만 보이기(_a)"
 
-#: ../settings/xfdesktop-settings.glade.h:50
+#: ../settings/xfdesktop-settings.glade.h:51
 msgid "Show workspace _names in list"
 msgstr "리스트에 작업 공간 이름 보이기(_n)"
 
-#: ../settings/xfdesktop-settings.glade.h:51
+#: ../settings/xfdesktop-settings.glade.h:52
 msgid ""
 "Solid color\n"
 "Horizontal gradient\n"
@@ -1662,81 +1662,81 @@ msgid ""
 "Transparent"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:55
+#: ../settings/xfdesktop-settings.glade.h:56
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:56
+#: ../settings/xfdesktop-settings.glade.h:57
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:57
+#: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify how the image will be resized to fit the screen"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:58
+#: ../settings/xfdesktop-settings.glade.h:59
 msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:59
+#: ../settings/xfdesktop-settings.glade.h:60
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:60
+#: ../settings/xfdesktop-settings.glade.h:61
 #, fuzzy
 msgid "St_yle:"
 msgstr "표현 방식:"
 
-#: ../settings/xfdesktop-settings.glade.h:61
+#: ../settings/xfdesktop-settings.glade.h:62
 msgid "Use _submenus for the windows in each workspace"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:62
+#: ../settings/xfdesktop-settings.glade.h:63
 #, fuzzy
 msgid "Use custom _font size:"
 msgstr "사용자 글꼴크기(_f):"
 
-#: ../settings/xfdesktop-settings.glade.h:63
+#: ../settings/xfdesktop-settings.glade.h:64
 msgid "_Background"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:64
+#: ../settings/xfdesktop-settings.glade.h:65
 #, fuzzy
 msgid "_Button:"
 msgstr "버튼"
 
-#: ../settings/xfdesktop-settings.glade.h:65
+#: ../settings/xfdesktop-settings.glade.h:66
 #, fuzzy
 msgid "_Edit desktop menu"
 msgstr "편집 메뉴(_E)"
 
-#: ../settings/xfdesktop-settings.glade.h:66
+#: ../settings/xfdesktop-settings.glade.h:67
 #, fuzzy
 msgid "_Icons"
 msgstr "아이콘"
 
-#: ../settings/xfdesktop-settings.glade.h:67
+#: ../settings/xfdesktop-settings.glade.h:68
 #, fuzzy
 msgid "_Menus"
 msgstr "메뉴"
 
-#: ../settings/xfdesktop-settings.glade.h:68
+#: ../settings/xfdesktop-settings.glade.h:69
 #, fuzzy
 msgid "_None"
 msgstr "없음"
 
-#: ../settings/xfdesktop-settings.glade.h:69
+#: ../settings/xfdesktop-settings.glade.h:70
 msgid "_Single image"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:70
+#: ../settings/xfdesktop-settings.glade.h:71
 msgid "gtk-close"
 msgstr ""
 
-#: ../settings/xfdesktop-settings.glade.h:71
+#: ../settings/xfdesktop-settings.glade.h:72
 msgid "gtk-help"
 msgstr ""
 

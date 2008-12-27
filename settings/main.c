@@ -291,7 +291,7 @@ setup_special_icon_list(GladeXML *gxml,
 
         gtk_list_store_append(ls, &iter);
         gtk_list_store_set(ls, &iter,
-                           COL_ICON_NAME, icons[i].name,
+                           COL_ICON_NAME, _(icons[i].name),
                            COL_ICON_PIX, pix,
                            COL_ICON_PROPERTY, icons[i].xfconf_property,
                            COL_ICON_ENABLED,
