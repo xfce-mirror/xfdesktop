@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-27 04:40-0800\n"
-"PO-Revision-Date: 2008-11-18 23:52+0200\n"
+"PO-Revision-Date: 2008-11-22 20:42+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg@hellug.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -1130,6 +1130,9 @@ msgid ""
 "Mount Point: %s\n"
 "Free Space: %s"
 msgstr ""
+"Είδος: Αφαιρούμενο μέσο\n"
+"Σημείο προσάρτησης: %s\n"
+"Ελεύθερος χώρος: %s"
 
 #: ../src/xfdesktop-volume-icon.c:509
 #, c-format
@@ -1188,7 +1191,7 @@ msgstr "Βοηθήματα"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
-msgstr ""
+msgstr "Κοινές εφαρμογές και εργαλεία επιφ.εργασίας"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:1
 msgid "Development"
@@ -1196,7 +1199,7 @@ msgstr "Ανάπτυξη"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:2
 msgid "Software development tools"
-msgstr ""
+msgstr "Εργαλεία ανάπτυξης λογισμικού"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:1
 msgid "Education"
@@ -1204,7 +1207,7 @@ msgstr "Εκπαίδευση"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:2
 msgid "Educational software"
-msgstr ""
+msgstr "Εκπαιδευτικό λογισμικό"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
 msgid "Games"
@@ -1212,7 +1215,7 @@ msgstr "Παιχνίδια"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
-msgstr ""
+msgstr "Παιχνίδια, παζλ, και άλλο διασκεδαστικό λογισμικό"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
@@ -1220,11 +1223,11 @@ msgstr "Γραφικά"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr ""
+msgstr "Εφαρμογές δημιουργίας και επεξεργασίας γραφικών"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
-msgstr ""
+msgstr "Εφαρμογές αναπαραγωγής και επεξεργασίας μουσικής και βίντεο"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
 msgid "Multimedia"
@@ -1236,7 +1239,7 @@ msgstr "Δίκτυο"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:2
 msgid "Network applications and utilities"
-msgstr ""
+msgstr "Εφαρμογές και εργαλεία δικτύου"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:1
 msgid "Office"
@@ -1244,11 +1247,11 @@ msgstr "Γραφείο"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:2
 msgid "Office and productivity applications"
-msgstr ""
+msgstr "Εφαρμογές γραφείου"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:1
 msgid "Applications that don't fit into other categories"
-msgstr ""
+msgstr "Εφαρμογές που δεν ταιριάζουν σε άλλες κατηγορίες"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
 msgid "Other"
@@ -1260,11 +1263,11 @@ msgstr "Εφαρμογίδια προφύλαξης οθόνης"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
-msgstr ""
+msgstr "Προφύλαξη οθόνης"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr ""
+msgstr "Εφαρμογές ρυθμίσεων"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
 msgid "Settings"
@@ -1272,16 +1275,15 @@ msgstr "Ρυθμίσεις"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
-msgstr ""
+msgstr "Εργαλεία συστήματος"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
 msgstr "Περί του Xfce"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
-#, fuzzy
 msgid "Information about the Xfce Desktop Environment"
-msgstr "Προκαθορισμένο θέμα εικονιδίων για το περιβάλλον εργασίας Xfce"
+msgstr "Πληροφορίες σχετικά με το περιβάλλον εργασίας Xfce"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
@@ -1296,18 +1298,16 @@ msgid "Help"
 msgstr "Βοήθεια"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
-#, fuzzy
 msgid "Help using Xfce"
-msgstr "Άρθρωμα σημειώσεων xfce 4"
+msgstr "Βοήθεια για το Xfce"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
 msgstr "Αποσύνδεση"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-#, fuzzy
 msgid "Log out of the Xfce Desktop"
-msgstr "Προσαρμόστε το περιβάλλον εργασίας σας"
+msgstr "Αποσυνδεθείτε από το Xfce"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
 msgid "Run Program..."
@@ -1322,12 +1322,10 @@ msgid "Terminal"
 msgstr "Τερματικό"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
-#, fuzzy
 msgid "Terminal emulator"
-msgstr "Προσομοίωτής τερματικού X"
+msgstr "Προσομοίωτής τερματικού"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
-#, fuzzy
 msgid "Browse the web"
 msgstr "Περιηγητής ιστοσελίδων"
 
@@ -1337,11 +1335,13 @@ msgstr "Περιηγητής Ιστού"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:157
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
-msgstr "%dx%d εικονοστοιχείο"
+msgstr ""
+"%s\n"
+"<i>Μέγεθος %dx%d</i>"
 
 #: ../settings/main.c:269
 msgid "Filesystem"
@@ -1352,14 +1352,13 @@ msgid "Trash"
 msgstr "Απορρίμματα"
 
 #: ../settings/main.c:273
-#, fuzzy
 msgid "Removable Devices"
-msgstr "Προσάρτηση συσκευών"
+msgstr "Αφαιρούμενα μέσα"
 
 #: ../settings/main.c:426
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Επιλέξτε ένα όνομα αρχείου για την λίστα εικόνων παρασκηνίου"
+msgstr "Δεν ήταν δυνατή η δημιουργία του αρχείου λίστας \"%s\""
 
 #: ../settings/main.c:430 ../settings/main.c:789
 msgid "Backdrop List Error"
@@ -1388,9 +1387,9 @@ msgid "Replace"
 msgstr "Αντικατάσταση"
 
 #: ../settings/main.c:785
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Αποτυχία λήψης λίστας φακέλων"
+msgstr "Η εγγραφή της λίστας στο \"%s\" απέτυχε"
 
 #: ../settings/main.c:812
 msgid "Add Image File(s)"
@@ -1430,9 +1429,8 @@ msgid "Monitor %d"
 msgstr "Monitor %d"
 
 #: ../settings/main.c:1354
-#, fuzzy
 msgid "Settings manager socket"
-msgstr "Διαχειριστής παραθύρων"
+msgstr "Υποδοχή διαχειριστή ρυθμίσεων"
 
 #: ../settings/main.c:1354
 msgid "SOCKET ID"
@@ -1445,14 +1443,14 @@ msgstr "Πληροφορίες έκδοσης"
 #: ../settings/main.c:1375
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr ""
+msgstr "Πληκτρολογήστε '%s --help' για βοήθεια σχετικά με τη χρήση του."
 
 #: ../settings/main.c:1387
 msgid "The Xfce development team. All rights reserved."
 msgstr "Η ομάδα ανάπτυξης του Xfce. All rights reserved."
 
 #: ../settings/main.c:1388
-#, fuzzy, c-format
+#, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Παρακαλώ αναφέρετε τυχόν σφάλματα στο <%s>."
 
@@ -1461,9 +1459,8 @@ msgid "Desktop Settings"
 msgstr "Επιφάνεια εργασίας"
 
 #: ../settings/main.c:1397
-#, fuzzy
 msgid "Unable to contact settings server"
-msgstr "Ρυθμίσεις ποντικιού: Δεν ήταν δυνατή η δημιουργία του %s"
+msgstr "Δεν ήταν δυνατή η επικοινωνία με τον εξυπηρετητή ρυθμίσεων"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -1471,11 +1468,11 @@ msgstr "Επιφάνεια εργασίας"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
+msgstr "Ρύθμιση φόντου και συμπεριφοράς μενού και εικονιδίων"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
-msgstr ""
+msgstr "<b>Προσαρμογή</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:2
 msgid "<b>Appearance</b>"
@@ -1486,14 +1483,12 @@ msgid "<b>Colors</b>"
 msgstr "<b>Χρώματα</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:4
-#, fuzzy
 msgid "<b>Default Icons</b>"
-msgstr "Εικονίδια δράσεων"
+msgstr "<b>Προεπιλεγμένα εικονίδια</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:5
-#, fuzzy
 msgid "<b>Desktop Menu</b>"
-msgstr "    Μενού επιφάνειας εργασίας:         %s\n"
+msgstr "<b>Μενού επιφάνειας εργασίας</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:6
 msgid "<b>Image</b>"
@@ -1504,9 +1499,8 @@ msgid "<b>Images</b>"
 msgstr "<b>Εικόνες</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:8
-#, fuzzy
 msgid "<b>Window List Menu</b>"
-msgstr "Λειτουργίες παραθύρων"
+msgstr "<b>Μενού λίστας παραθύρων</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:9
 #, fuzzy
@@ -1522,10 +1516,16 @@ msgid ""
 "Scaled\n"
 "Zoomed"
 msgstr ""
+"Αυτόματο\n"
+"Κεντραρισμένο\n"
+"Σε παράθεση\n"
+"Τέντωμα\n"
+"Μεγέθυνση\n"
+"Σμίκρυνση"
 
 #: ../settings/xfdesktop-settings.glade.h:16
 msgid "Automatically pick a random image from a list file"
-msgstr ""
+msgstr "Αυτόματη επιλογή μιας τυχαίας εικόνας από μια λίστα"
 
 #: ../settings/xfdesktop-settings.glade.h:17
 msgid "B_rightness:"
@@ -1537,11 +1537,11 @@ msgstr "Κο_υμπί"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
-msgstr ""
+msgstr "Δημιουργία μιας νέας λίστας ή άνοιγμα υπάρχουσας"
 
 #: ../settings/xfdesktop-settings.glade.h:21
 msgid "Don't display an image at all"
-msgstr ""
+msgstr "Χωρίς εικόνα"
 
 #: ../settings/xfdesktop-settings.glade.h:22
 msgid "Icon _size:"
@@ -1569,12 +1569,14 @@ msgid "Label trans_parency:"
 msgstr "Εικονίδιο και ετικέτα"
 
 #: ../settings/xfdesktop-settings.glade.h:28
-#, fuzzy
 msgid ""
 "Left\n"
 "Middle\n"
 "Right"
-msgstr "Χρόνος που απομένει σε %d δευτερόλεπτα"
+msgstr ""
+"Αριστερά\n"
+"Κέντρο\n"
+"Δεξιά"
 
 #: ../settings/xfdesktop-settings.glade.h:31
 #, fuzzy
@@ -1587,12 +1589,14 @@ msgid "Modi_fier:"
 msgstr "Τροποποιήθηκε:"
 
 #: ../settings/xfdesktop-settings.glade.h:33
-#, fuzzy
 msgid ""
 "None\n"
 "Minimized application icons\n"
 "File/launcher icons"
-msgstr "Ελαχιστοποιημένες εφαρμογές"
+msgstr ""
+"Καθόλου\n"
+"Ελαχιστοποιημένες εφαρμογές\n"
+"Αρχεία και συντομεύσεις"
 
 #: ../settings/xfdesktop-settings.glade.h:36
 msgid ""
@@ -1601,15 +1605,18 @@ msgid ""
 "Alt\n"
 "Control"
 msgstr ""
+"Κανένα\n"
+"Shift\n"
+"Alt\n"
+"Control"
 
 #: ../settings/xfdesktop-settings.glade.h:40
-#, fuzzy
 msgid "Remove the selected image(s) from the list"
-msgstr "Διαγραφή των επιλεγμένων αρχείων από τη σύνθεση"
+msgstr "Διαγραφή των επιλεγμένων αρχείων από τη λίστα"
 
 #: ../settings/xfdesktop-settings.glade.h:41
 msgid "Sa_turation:"
-msgstr ""
+msgstr "Κορεσ_μός:"
 
 #: ../settings/xfdesktop-settings.glade.h:42
 msgid "Select First Color"
@@ -1620,9 +1627,8 @@ msgid "Select Second Color"
 msgstr "Επιλογή δεύτερου χρώματος"
 
 #: ../settings/xfdesktop-settings.glade.h:44
-#, fuzzy
 msgid "Select a single image as the backdrop"
-msgstr "Επιλέξτε εικόνα παρασκηνίου ή αρχείο λίστας εικόνων παρασκηνίου"
+msgstr "Επιλογή μίας εικόνας για παρασκήνιο"
 
 #: ../settings/xfdesktop-settings.glade.h:45
 msgid "Set desktop background and menu and icon behavior"
@@ -1696,9 +1702,8 @@ msgid "Use custom _font size:"
 msgstr "ΘΠροσαρμοσμένο μέγεθος _γραμματοσειράς:"
 
 #: ../settings/xfdesktop-settings.glade.h:64
-#, fuzzy
 msgid "_Background"
-msgstr "<b>Παρασκήνιο</b>"
+msgstr "_Παρασκήνιο"
 
 #: ../settings/xfdesktop-settings.glade.h:65
 msgid "_Button:"
@@ -1721,9 +1726,8 @@ msgid "_None"
 msgstr "Κα_θόλου"
 
 #: ../settings/xfdesktop-settings.glade.h:70
-#, fuzzy
 msgid "_Single image"
-msgstr "Προσωρινή μνήμη εικόνας"
+msgstr "_Μία εικόνα"
 
 #: ../settings/xfdesktop-settings.glade.h:71
 msgid "gtk-close"
