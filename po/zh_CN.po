@@ -4,12 +4,13 @@
 # This file is distributed under the same license as the xfdesktop package.
 # Yongtao Yang <yongtao.yang@telia.com>, 2004.
 # wuli <wurisky@gmail.com>,2007
+# Chris K. Zhang <plutino@gmail.com>, 2009
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-27 04:40-0800\n"
-"PO-Revision-Date: 2007-02-07 20:02+0800\n"
+"PO-Revision-Date: 2009-01-12 20:39-0800\n"
 "Last-Translator: wuli <wurisky@gmail.com>\n"
 "Language-Team: Chinese <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.1\n"
@@ -17,9 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
-#, fuzzy, c-format
 msgid "Backdrop list file is not valid"
-msgstr "选择背景列表文件名"
+msgstr "背景列表文件名无效"
 
 #: ../menueditor/menueditor-add-dialog.c:129
 msgid "Add menu entry"
@@ -147,26 +147,26 @@ msgstr "可执行文件"
 #: ../menueditor/menueditor-add-dialog.c:457
 #: ../menueditor/menueditor-edit-dialog.c:316
 msgid "Perl Scripts"
-msgstr "Perl Scripts"
+msgstr "Perl 脚本文件"
 
 #: ../menueditor/menueditor-add-dialog.c:463
 #: ../menueditor/menueditor-edit-dialog.c:322
 msgid "Python Scripts"
-msgstr "Python Scripts"
+msgstr "Python 脚本文件"
 
 #: ../menueditor/menueditor-add-dialog.c:469
 #: ../menueditor/menueditor-edit-dialog.c:328
 msgid "Ruby Scripts"
-msgstr "Ruby Scripts"
+msgstr "Ruby 脚本文件"
 
 #: ../menueditor/menueditor-add-dialog.c:475
 #: ../menueditor/menueditor-edit-dialog.c:334
 msgid "Shell Scripts"
-msgstr "Shell Scripts"
+msgstr "Shell 脚本文件"
 
 #: ../menueditor/menueditor-add-external-dialog.c:100
 msgid "Add external menu entry"
-msgstr "插入外部菜单"
+msgstr "插入外部菜单项"
 
 #: ../menueditor/menueditor-add-external-dialog.c:122
 msgid "File"
@@ -233,13 +233,12 @@ msgid "Xfce4-MenuEditor"
 msgstr "Xfce 菜单编辑器"
 
 #: ../menueditor/menueditor-main.c:57
-#, fuzzy
 msgid "Menueditor Warning"
-msgstr "菜单编辑器"
+msgstr "菜单编辑器警告"
 
 #: ../menueditor/menueditor-main.c:59
 msgid "xfce4-menueditor is deprecated"
-msgstr "xfce4菜单编辑器无法编辑此文件"
+msgstr "xfce4-menueditor已过时，请不要再使用"
 
 #: ../menueditor/menueditor-main.c:60
 msgid ""
@@ -247,13 +246,12 @@ msgid ""
 "edit the new menu file format.  You may continue and edit an old-style menu "
 "file, or quit."
 msgstr ""
-"Xfce 菜单系统被替换，Xfce4-菜单编辑器无法编辑此菜单文件格式，你可以继续编辑旧"
-"风格菜单文件或退出。"
+"Xfce 菜单系统做过更改，xfce4-menueditor无法编辑新菜单文件格式，你可以继续"
+"编辑旧风格菜单文件或退出。"
 
 #: ../menueditor/menueditor-main.c:61
-#, fuzzy
 msgid "Continue"
-msgstr "其他作出贡献人员"
+msgstr "继续"
 
 #: ../menueditor/menueditor-main-window.c:140
 msgid "_File"
@@ -265,7 +263,7 @@ msgstr "新建(_N)"
 
 #: ../menueditor/menueditor-main-window.c:141
 msgid "Create a new empty menu"
-msgstr "创建一个新的 Xfce 空菜单文件"
+msgstr "创建新 Xfce 空菜单文件"
 
 #: ../menueditor/menueditor-main-window.c:142
 #: ../src/xfdesktop-file-icon-manager.c:1718
@@ -275,7 +273,7 @@ msgstr "打开(_O)"
 
 #: ../menueditor/menueditor-main-window.c:142
 msgid "Open existing menu"
-msgstr "打开已存在菜单"
+msgstr "打开已有菜单"
 
 #: ../menueditor/menueditor-main-window.c:143
 msgid "Open _default menu"
@@ -379,7 +377,7 @@ msgstr "关于(_A)..."
 
 #: ../menueditor/menueditor-main-window.c:158
 msgid "Show informations about xfce4-menueditor"
-msgstr "显示 xfce4 菜单编辑器信息"
+msgstr "显示 xfce4-menueditor 信息"
 
 #: ../menueditor/menueditor-main-window.c:160
 msgid "Collapse all"
@@ -479,7 +477,7 @@ msgstr "您希望把该条目移到子菜单中吗？"
 
 #: ../menueditor/menueditor-main-window.c:1293
 msgid "A menu editor for Xfce4"
-msgstr "一个 Xfce4 菜单编辑器"
+msgstr "Xfce4 菜单编辑器"
 
 #. Credits
 #: ../menueditor/menueditor-main-window.c:1298
@@ -582,7 +580,7 @@ msgstr "显示包含已安装程序分类目录的菜单"
 #: ../src/main.c:231
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "这是 %s版本 %s， 运行于 Xfce %s。\n"
+msgstr "这是 %s 版本 %s， 运行于 Xfce %s。\n"
 
 #: ../src/main.c:233
 #, c-format
@@ -597,7 +595,7 @@ msgstr "编译选项：\n"
 #: ../src/main.c:238
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "桌面菜单：     %s\n"
+msgstr "    桌面菜单：     %s\n"
 
 #: ../src/main.c:240 ../src/main.c:247 ../src/main.c:254
 msgid "enabled"
@@ -610,12 +608,12 @@ msgstr "禁用"
 #: ../src/main.c:245
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "桌面图标：      %s\n"
+msgstr "    桌面图标：      %s\n"
 
 #: ../src/main.c:252
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "桌面文件图标：   %s\n"
+msgstr "    桌面文件图标：   %s\n"
 
 #: ../src/main.c:281
 #, c-format
@@ -630,23 +628,23 @@ msgstr "选项为：\n"
 #: ../src/main.c:283
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr "  --relod    重新载入全部设置，刷新图像列表\n"
+msgstr "    --reload    重新载入全部设置，刷新图像列表\n"
 
 #: ../src/main.c:284
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "  --menu    弹出菜单 (在鼠标当前位置)\n"
+msgstr "    --menu    弹出菜单 (在鼠标当前位置)\n"
 
 #: ../src/main.c:285
 #, c-format
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "  --windowlist    弹出窗口列表 (在鼠标当前位置)\n"
+msgstr "    --windowlist    弹出窗口列表 (在鼠标当前位置)\n"
 
 #: ../src/main.c:286
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "   --quit        退出 xfdesktop\n"
+msgstr "     --quit        退出 xfdesktop\n"
 
 #: ../src/main.c:307
 #, c-format
@@ -655,7 +653,7 @@ msgstr "%s 没有运行。\n"
 
 #: ../src/menu.c:113
 msgid "_Applications"
-msgstr ""
+msgstr " 应用程序(_A)"
 
 #: ../src/windowlist.c:236
 msgid "Window List"
@@ -667,9 +665,8 @@ msgid "<b>Workspace %d</b>"
 msgstr "<b>工作区 %d</b>"
 
 #: ../src/windowlist.c:271
-#, fuzzy, c-format
 msgid "Workspace %d"
-msgstr "<b>工作区 %d</b>"
+msgstr "工作区 %d"
 
 #: ../src/windowlist.c:273
 #, c-format
@@ -695,33 +692,33 @@ msgid "Desktop"
 msgstr "桌面"
 
 #: ../src/xfce-desktop.c:1009
-#, fuzzy, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "无法创建文件 \"%s\" ："
+msgstr "无法从背景列表文件 \"%s\" 中加载图片"
 
 #: ../src/xfce-desktop.c:1011
-#, fuzzy
 msgid "Desktop Error"
-msgstr "桌面"
+msgstr "桌面错误"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "Xfdesktop 无法创建文件夹 \"%s\" 来存放桌面项目："
+msgstr ""
+"Xfdesktop 无法创建文件夹 \"%s\" 来存放桌面项目："
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
 #: ../src/xfdesktop-file-icon-manager.c:1206
 msgid "Create Folder Failed"
-msgstr "创建文件夹失败"
+msgstr "无法创建文件夹"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
-msgstr "Xfdesktop 无法使用 \"%s\" 放置桌面项目，因为它不是一个文件夹。"
+msgstr ""
+"\"%s\" 不是文件夹，Xfdesktop 无法用其放置桌面项目。"
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -751,7 +748,7 @@ msgstr "你确定要删除 \"%s\" 吗？"
 #: ../src/xfdesktop-file-icon-manager.c:681
 #: ../src/xfdesktop-file-icon-manager.c:701
 msgid "If you delete a file, it is permanently lost."
-msgstr "如果你将一个文件删除，它将永远消失。"
+msgstr "如果你删除一个文件，它将永远消失。"
 
 #: ../src/xfdesktop-file-icon-manager.c:695
 #, c-format
@@ -786,7 +783,8 @@ msgstr "相关应用程序找不到或无法打开"
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
-msgstr "这项特性需要文件管理器提供相关服务(比如 Thunar 提供的)。"
+msgstr ""
+"这项功能需要文件管理器提供相关服务(比如 Thunar 所提供的)。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1137
 #, c-format
@@ -801,13 +799,14 @@ msgstr "用 \"%s\" 打开"
 #: ../src/xfdesktop-file-icon-manager.c:1203
 #, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "无法创建名为 \"%s\" 的文件夹："
+msgstr "无法创建文件夹 \"%s\"："
 
 #: ../src/xfdesktop-file-icon-manager.c:1242
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "无法启动 \"exo-desktop-item-edit\"，此为创建及编辑启动器和链接所必需。"
+msgstr ""
+"无法启动创建及编辑启动器和链接所必需的 \"exo-desktop-item-edit\"。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
@@ -826,7 +825,7 @@ msgstr "创建"
 #: ../src/xfdesktop-file-icon-manager.c:1316
 #, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "无法创建名为 \"%s\" 的文件夹"
+msgstr "无法创建文件夹 \"%s\"："
 
 #: ../src/xfdesktop-file-icon-manager.c:1319
 msgid "Create File Failed"
@@ -843,7 +842,7 @@ msgstr "创建空文件"
 
 #: ../src/xfdesktop-file-icon-manager.c:1381
 msgid "New Empty File"
-msgstr "新空文件"
+msgstr "新建空文件"
 
 #: ../src/xfdesktop-file-icon-manager.c:1414
 #, c-format
@@ -864,7 +863,7 @@ msgstr "从新窗口中打开(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1733
 msgid "Create _Launcher..."
-msgstr "创建启动器(_L)"
+msgstr "创建启动器(_L)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1754
 msgid "Create _URL Link..."
@@ -875,9 +874,8 @@ msgid "Create _Folder..."
 msgstr "创建文件夹(_F)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1791
-#, fuzzy
 msgid "Create From _Template"
-msgstr "从模板 \"%s\" 创建文档"
+msgstr "从模板创建文档(_T)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1825
 msgid "_Empty File"
@@ -897,7 +895,7 @@ msgstr "打开方式"
 
 #: ../src/xfdesktop-file-icon-manager.c:1930
 msgid "Open With Other _Application..."
-msgstr "以其它应用程序打开(_A)..."
+msgstr "用其它应用程序打开(_A)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2037
 msgid "_Rename..."
@@ -925,7 +923,7 @@ msgstr "运行错误"
 
 #: ../src/xfdesktop-file-icon.c:144
 msgid "The associated application could not be found or executed."
-msgstr "相关应用程序无法找到或执行。"
+msgstr "无法找到或执行相关应用程序。"
 
 #: ../src/xfdesktop-file-properties-dialog.c:103
 #, c-format
@@ -962,7 +960,7 @@ msgstr "类型："
 
 #: ../src/xfdesktop-file-properties-dialog.c:234
 msgid "Link Target:"
-msgstr "符号："
+msgstr "链接对象："
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
@@ -1003,20 +1001,20 @@ msgstr "权限"
 
 #: ../src/xfdesktop-file-properties-dialog.c:450
 msgid "Owner:"
-msgstr "所有者"
+msgstr "所有者："
 
 #: ../src/xfdesktop-file-properties-dialog.c:472
 #: ../src/xfdesktop-file-properties-dialog.c:510
 msgid "Access:"
-msgstr "访问"
+msgstr "访问："
 
 #: ../src/xfdesktop-file-properties-dialog.c:495
 msgid "Group:"
-msgstr "群组"
+msgstr "群组："
 
 #: ../src/xfdesktop-file-properties-dialog.c:533
 msgid "Others:"
-msgstr "其它"
+msgstr "其它："
 
 #: ../src/xfdesktop-file-utils.c:74
 msgid "Yes to _all"
@@ -1078,32 +1076,32 @@ msgstr "Home"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
-#, fuzzy
 msgid "Kind: Trash"
-msgstr "类型："
+msgstr "类型：回收站"
 
 #: ../src/xfdesktop-special-file-icon.c:515
 msgid "Trash Error"
-msgstr "垃圾箱错误"
+msgstr "回收站错误"
 
 #: ../src/xfdesktop-special-file-icon.c:517
 msgid "Unable to contact the Xfce Trash service."
-msgstr "无法启动垃圾箱"
+msgstr "无法启动回收站"
 
 #: ../src/xfdesktop-special-file-icon.c:518
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
-msgstr "清空垃圾箱需要安装支持xfce垃圾箱服务的文件管理器，比如 Thunar"
+msgstr ""
+"清空回收站需要安装支持xfce回收站服务的文件管理器，比如 Thunar"
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
-msgstr "清空垃圾箱(_E)"
+msgstr "清空回收站(_E)"
 
 #: ../src/xfdesktop-volume-icon.c:474
 #, c-format
 msgid "%s (%s total)"
-msgstr ""
+msgstr "%s （总共 %s）"
 
 #: ../src/xfdesktop-volume-icon.c:478
 #, c-format
@@ -1112,6 +1110,9 @@ msgid ""
 "Mount Point: %s\n"
 "Free Space: %s"
 msgstr ""
+"类型：可移动存储设备\n"
+"挂载点： %s\n"
+"可用容量： %s"
 
 #: ../src/xfdesktop-volume-icon.c:509
 #, c-format
@@ -1154,7 +1155,7 @@ msgstr "挂载卷(_M)"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:1
 msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "编辑 xfce 4 菜单图形工具"
+msgstr "编辑 Xfce 4 菜单的图形工具"
 
 #: ../menueditor/xfce-menueditor.desktop.in.h:2
 msgid "Menu Editor"
@@ -1165,9 +1166,8 @@ msgid "Xfce 4 Menu Editor"
 msgstr "Xfce 4 菜单编辑器"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-#, fuzzy
 msgid "Accessories"
-msgstr "访问："
+msgstr "附件："
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
@@ -1190,9 +1190,8 @@ msgid "Educational software"
 msgstr "教育软件"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-#, fuzzy
 msgid "Games"
-msgstr "名称"
+msgstr "游戏"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
@@ -1204,16 +1203,15 @@ msgstr "图形图像"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr "图形设计和处理应用程序"
+msgstr "图形创建及处理程序"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
 msgstr "音频、视频播放器和编辑器"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-#, fuzzy
 msgid "Multimedia"
-msgstr "多层次"
+msgstr "多媒体"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
@@ -1229,20 +1227,19 @@ msgstr "办公"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:2
 msgid "Office and productivity applications"
-msgstr "办公和生产力应用程序"
+msgstr "办公及创作应用程序"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:1
 msgid "Applications that don't fit into other categories"
 msgstr "未分类应用程序"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-#, fuzzy
 msgid "Other"
-msgstr "/其它"
+msgstr "其它"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr "屏保程序"
+msgstr "屏保插件"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
@@ -1253,9 +1250,8 @@ msgid "Desktop and system settings applications"
 msgstr "桌面和系统设置应用程序"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-#, fuzzy
 msgid "Settings"
-msgstr "桌面设置"
+msgstr "设置"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
@@ -1267,7 +1263,7 @@ msgstr "关于 Xfce"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr "关于xfce桌面环境的信息"
+msgstr "关于 Xfce 桌面环境的信息"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
@@ -1275,12 +1271,11 @@ msgstr "文件管理器"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
 msgid "Thunar file manager"
-msgstr "Thunar文件管理器"
+msgstr "Thunar 文件管理器"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-#, fuzzy
 msgid "Help"
-msgstr "帮助(_H)"
+msgstr "帮助"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
@@ -1291,19 +1286,16 @@ msgid "Log Out"
 msgstr "注销"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-#, fuzzy
 msgid "Log out of the Xfce Desktop"
-msgstr "桌面设置管理器"
+msgstr "注销 Xfce"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-#, fuzzy
 msgid "Run Program..."
-msgstr "运行错误"
+msgstr "启动程序..."
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-#, fuzzy
 msgid "Run a program"
-msgstr "运行错误"
+msgstr "启动程序"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
@@ -1328,79 +1320,71 @@ msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
 msgstr ""
+"%s\n"
+"<i>尺寸： %dx%d</i>"
 
 #: ../settings/main.c:269
-#, fuzzy
 msgid "Filesystem"
-msgstr "系统"
+msgstr "文件系统"
 
 #: ../settings/main.c:271
-#, fuzzy
 msgid "Trash"
-msgstr "垃圾箱错误"
+msgstr "回收站"
 
 #: ../settings/main.c:273
 msgid "Removable Devices"
-msgstr ""
+msgstr "可移动设备"
 
 #: ../settings/main.c:426
-#, fuzzy, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "创建背景列表"
+msgstr "无法创建背景列表 \"%s\""
 
 #: ../settings/main.c:430 ../settings/main.c:789
-#, fuzzy
 msgid "Backdrop List Error"
-msgstr "背景列表"
+msgstr "背景列表错误"
 
 #: ../settings/main.c:455
-#, fuzzy
 msgid "Create/Load Backdrop List"
-msgstr "创建背景列表"
+msgstr "创建／加载背景列表"
 
 #: ../settings/main.c:479
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
+"\"%s\" 是无效背景列表文件，要覆盖吗？"
 
 #: ../settings/main.c:484
-#, fuzzy
 msgid "Invalid List File"
-msgstr "列表文件"
+msgstr "无效列表文件"
 
 #: ../settings/main.c:487
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
+msgstr "覆盖后以前文件的内容将丢失。"
 
 #: ../settings/main.c:489
-#, fuzzy
 msgid "Replace"
-msgstr "重命名"
+msgstr "替换"
 
 #: ../settings/main.c:785
-#, fuzzy, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "重命名 \"%s\" 为 \"%s\" 失败。"
+msgstr "无法将背景列表写入 \"%s\"。"
 
 #: ../settings/main.c:812
-#, fuzzy
 msgid "Add Image File(s)"
-msgstr "图像文件"
+msgstr "添加图像文件(s)"
 
 #: ../settings/main.c:821
 msgid "Image files"
 msgstr "图像文件"
 
 #: ../settings/main.c:826
-#, fuzzy
 msgid "All files"
 msgstr "所有文件"
 
 #: ../settings/main.c:1120
-#, fuzzy, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "屏幕 %d，显示器 %d"
+msgstr "屏幕 %d，显示器 %d (%s)"
 
 #: ../settings/main.c:1125
 #, c-format
@@ -1415,96 +1399,89 @@ msgstr "屏幕 %d"
 #: ../settings/main.c:1134
 #, c-format
 msgid "Monitor %d (%s)"
-msgstr ""
+msgstr "显示器 %d (%s)"
 
 #: ../settings/main.c:1139
-#, fuzzy, c-format
 msgid "Monitor %d"
-msgstr "屏幕 %d，显示器 %d"
+msgstr "显示器 %d"
 
 #: ../settings/main.c:1354
 msgid "Settings manager socket"
-msgstr ""
+msgstr "设置管理器套接"
 
 #: ../settings/main.c:1354
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET ID"
 
 #: ../settings/main.c:1355
-#, fuzzy
 msgid "Version information"
-msgstr "信息"
+msgstr "版本信息"
 
 #: ../settings/main.c:1375
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr ""
+msgstr "'%s --help' 可列出使用方法。"
 
 #: ../settings/main.c:1387
 msgid "The Xfce development team. All rights reserved."
-msgstr ""
+msgstr "Xfce 开发组，版权所有。"
 
 #: ../settings/main.c:1388
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "请向 <%s> 报告程序错误。"
 
 #: ../settings/main.c:1395
 msgid "Desktop Settings"
 msgstr "桌面设置"
 
 #: ../settings/main.c:1397
-#, fuzzy
 msgid "Unable to contact settings server"
-msgstr "无法启动垃圾箱"
+msgstr "无法连到设置服务器"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop "
-msgstr "桌面"
+msgstr "桌面 "
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
+msgstr "设置桌面背景，菜单，及图标属性"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
-msgstr ""
+msgstr "<b>调整</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:2
-#, fuzzy
 msgid "<b>Appearance</b>"
-msgstr "外观(_A)"
+msgstr "<b>外观</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:3
-#, fuzzy
 msgid "<b>Colors</b>"
-msgstr "<b>工作区 %d</b>"
+msgstr "<b>颜色</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:4
 msgid "<b>Default Icons</b>"
-msgstr ""
+msgstr "<b>缺省图标</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:5
 msgid "<b>Desktop Menu</b>"
-msgstr ""
+msgstr "<b>桌面菜单</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:6
 msgid "<b>Image</b>"
-msgstr ""
+msgstr "<b>图像</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:7
 msgid "<b>Images</b>"
-msgstr ""
+msgstr "<b>图像</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:8
-#, fuzzy
 msgid "<b>Window List Menu</b>"
-msgstr "窗口列表"
+msgstr "<b>窗口列表菜单</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:9
 msgid "Add an image to the list"
-msgstr ""
+msgstr "给列表添加图像"
 
 #: ../settings/xfdesktop-settings.glade.h:10
 msgid ""
@@ -1515,55 +1492,56 @@ msgid ""
 "Scaled\n"
 "Zoomed"
 msgstr ""
+"自动\n"
+"居中\n"
+"平铺\n"
+"放大到桌面\n"
+"按比例放大\n"
+"按比例放大到满桌面"
 
 #: ../settings/xfdesktop-settings.glade.h:16
 msgid "Automatically pick a random image from a list file"
-msgstr ""
+msgstr "从列表文件中随机选择图片"
 
 #: ../settings/xfdesktop-settings.glade.h:17
-#, fuzzy
 msgid "B_rightness:"
-msgstr "调整亮度(_D)："
+msgstr "亮度(_R)："
 
 #: ../settings/xfdesktop-settings.glade.h:18
-#, fuzzy
 msgid "B_utton:"
-msgstr "按钮"
+msgstr "按钮(_U)"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
-msgstr ""
+msgstr "新建或打开列表"
 
 #: ../settings/xfdesktop-settings.glade.h:21
 msgid "Don't display an image at all"
-msgstr ""
+msgstr "不显示图片"
 
 #: ../settings/xfdesktop-settings.glade.h:22
-#, fuzzy
 msgid "Icon _size:"
-msgstr "图标大小(_I)"
+msgstr "图标大小(_S)"
 
 #: ../settings/xfdesktop-settings.glade.h:23
-#, fuzzy
 msgid "Icon _type:"
-msgstr "图标大小(_I)"
+msgstr "图标类型(_T)"
 
 #: ../settings/xfdesktop-settings.glade.h:24
-#, fuzzy
 msgid "Image _list"
-msgstr "图像文件"
+msgstr "图片列表(_L)"
 
 #: ../settings/xfdesktop-settings.glade.h:25
 msgid "Increase or decrease the brightness of the final image"
-msgstr ""
+msgstr "增大或减小图片亮度"
 
 #: ../settings/xfdesktop-settings.glade.h:26
 msgid "Increase or decrease the color saturation of the final image"
-msgstr ""
+msgstr "增大或减小图片的色饱和度"
 
 #: ../settings/xfdesktop-settings.glade.h:27
 msgid "Label trans_parency:"
-msgstr ""
+msgstr "透明标签(_P)："
 
 #: ../settings/xfdesktop-settings.glade.h:28
 msgid ""
@@ -1571,24 +1549,27 @@ msgid ""
 "Middle\n"
 "Right"
 msgstr ""
+"左\n"
+"中\n"
+"右"
 
 #: ../settings/xfdesktop-settings.glade.h:31
-#, fuzzy
 msgid "Mo_difier:"
-msgstr "修改："
+msgstr "修正键(_D)："
 
 #: ../settings/xfdesktop-settings.glade.h:32
-#, fuzzy
 msgid "Modi_fier:"
-msgstr "修改："
+msgstr "修正键(_F)："
 
 #: ../settings/xfdesktop-settings.glade.h:33
-#, fuzzy
 msgid ""
 "None\n"
 "Minimized application icons\n"
 "File/launcher icons"
-msgstr "显示最小化应用程序图标"
+msgstr ""
+"无\n"
+"最小化应用程序图标\n"
+"文件／启动器图标"
 
 #: ../settings/xfdesktop-settings.glade.h:36
 msgid ""
@@ -1597,57 +1578,54 @@ msgid ""
 "Alt\n"
 "Control"
 msgstr ""
+"无\n"
+"Shift\n"
+"Alt\n"
+"Ctrl"
 
 #: ../settings/xfdesktop-settings.glade.h:40
 msgid "Remove the selected image(s) from the list"
-msgstr ""
+msgstr "从列表中去除选中的图片"
 
 #: ../settings/xfdesktop-settings.glade.h:41
 msgid "Sa_turation:"
-msgstr ""
+msgstr "饱和度(_T)"
 
 #: ../settings/xfdesktop-settings.glade.h:42
-#, fuzzy
 msgid "Select First Color"
-msgstr "第一颜色(_r)："
+msgstr "选择第一种颜色"
 
 #: ../settings/xfdesktop-settings.glade.h:43
-#, fuzzy
 msgid "Select Second Color"
-msgstr "第二颜色(_S):"
+msgstr "选择第二种颜色"
 
 #: ../settings/xfdesktop-settings.glade.h:44
 msgid "Select a single image as the backdrop"
-msgstr ""
+msgstr "用特定图片做背景"
 
 #: ../settings/xfdesktop-settings.glade.h:45
 msgid "Set desktop background and menu and icon behavior"
-msgstr ""
+msgstr "设置桌面背景，菜单，及图标属性"
 
 #: ../settings/xfdesktop-settings.glade.h:46
-#, fuzzy
 msgid "Sh_ow application icons in menu"
-msgstr "在菜单中显示图标(_I)"
+msgstr "在菜单中显示图标(_O)"
 
 #: ../settings/xfdesktop-settings.glade.h:47
-#, fuzzy
 msgid "Show _application icons in menu"
-msgstr "在菜单中显示图标(_I)"
+msgstr "在菜单中显示图标(_A)"
 
 #: ../settings/xfdesktop-settings.glade.h:48
-#, fuzzy
 msgid "Show _window list menu on desktop middle click"
-msgstr "按下中键显示窗口列表(_W)"
+msgstr "按中键显示窗口列表菜单(_W)"
 
 #: ../settings/xfdesktop-settings.glade.h:49
-#, fuzzy
 msgid "Show applications menu on _desktop right click"
-msgstr "按下右键显示桌面菜单(_D)"
+msgstr "按右键显示应用程序菜单(_D)"
 
 #: ../settings/xfdesktop-settings.glade.h:50
-#, fuzzy
 msgid "Show s_ticky windows only in active workspace"
-msgstr "只在激活工作区显示粘附窗口(_A)"
+msgstr "只在显示活动工作区中的粘附窗口(_T)"
 
 #: ../settings/xfdesktop-settings.glade.h:51
 msgid "Show workspace _names in list"
@@ -1660,84 +1638,83 @@ msgid ""
 "Vertical gradient\n"
 "Transparent"
 msgstr ""
+"单色\n"
+"水平渐变\n"
+"竖直渐变\n"
+"透明"
 
 #: ../settings/xfdesktop-settings.glade.h:56
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
+msgstr "指定渐变区右边或下边的颜色"
 
 #: ../settings/xfdesktop-settings.glade.h:57
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
+"指定单一色，或者渐变区左边或上边的颜色"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
+msgstr "指定如何在屏幕摆放图片"
 
 #: ../settings/xfdesktop-settings.glade.h:59
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
+msgstr "指定背景图片后的颜色风格"
 
 #: ../settings/xfdesktop-settings.glade.h:60
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr ""
+"指定图标文本后的园角标签的透明度"
 
 #: ../settings/xfdesktop-settings.glade.h:61
-#, fuzzy
 msgid "St_yle:"
-msgstr "风格:"
+msgstr "风格(_Y)："
 
 #: ../settings/xfdesktop-settings.glade.h:62
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "在每个工作区中使用窗口的子菜单(_S)"
 
 #: ../settings/xfdesktop-settings.glade.h:63
-#, fuzzy
 msgid "Use custom _font size:"
-msgstr "调整字体大小(_F)"
+msgstr "使用自定义字体大小(_F)"
 
 #: ../settings/xfdesktop-settings.glade.h:64
 msgid "_Background"
-msgstr ""
+msgstr "背景(_B)"
 
 #: ../settings/xfdesktop-settings.glade.h:65
-#, fuzzy
 msgid "_Button:"
-msgstr "按钮"
+msgstr "按钮(_B)："
 
 #: ../settings/xfdesktop-settings.glade.h:66
-#, fuzzy
 msgid "_Edit desktop menu"
-msgstr "编辑菜单(_M)"
+msgstr "编辑桌面菜单(_E)"
 
 #: ../settings/xfdesktop-settings.glade.h:67
-#, fuzzy
 msgid "_Icons"
-msgstr "图标"
+msgstr "图标(_I)"
 
 #: ../settings/xfdesktop-settings.glade.h:68
-#, fuzzy
 msgid "_Menus"
-msgstr "菜单"
+msgstr "菜单(_M)"
 
 #: ../settings/xfdesktop-settings.glade.h:69
-#, fuzzy
 msgid "_None"
-msgstr "无"
+msgstr "无(_N)"
 
 #: ../settings/xfdesktop-settings.glade.h:70
 msgid "_Single image"
-msgstr ""
+msgstr "单个图片(_S)"
 
 #: ../settings/xfdesktop-settings.glade.h:71
 msgid "gtk-close"
-msgstr ""
+msgstr "gtk-close"
 
 #: ../settings/xfdesktop-settings.glade.h:72
 msgid "gtk-help"
-msgstr ""
+msgstr "gtk-help"
 
 #~ msgid "Settings for the Xfce 4 Desktop Manager"
 #~ msgstr "桌面设置管理器"
