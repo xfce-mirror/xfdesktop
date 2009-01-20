@@ -4,10 +4,6 @@ if BUILD_PANEL_PLUGIN
 panel_plugin_dir = panel-plugin
 endif
 
-if BUILD_MENUEDITOR
-menueditor_dir = menueditor
-endif
-
 SUBDIRS = \
 	backdrops \
 	common \
@@ -17,7 +13,6 @@ SUBDIRS = \
 	po-doc \
 	settings \
 	src \
-	$(menueditor_dir) \
 	modules \
 	pixmaps
 

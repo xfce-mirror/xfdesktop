@@ -1,6 +1,0 @@
--gnu
--br
--nut
--nbfda
--nbbo
--l120
