@@ -2,8 +2,8 @@
 Version=1.0
 Type=Application
 Encoding=UTF-8
-Exec=xfbrowser4
-Icon=gnome-globe
+Exec=exo-open --launch WebBrowser %u
+Icon=web-browser
 StartupNotify=false
 Terminal=false
 Categories=X-XFCE;X-Xfce-Toplevel;
