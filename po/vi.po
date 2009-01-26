@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 04:40-0800\n"
+"POT-Creation-Date: 2009-01-26 01:15+0100\n"
 "PO-Revision-Date: 2006-09-05 03:05+0400\n"
 "Last-Translator: Phan Vĩnh Thịnh <teppi82@gmail.com>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -24,493 +24,6 @@ msgstr ""
 msgid "Backdrop list file is not valid"
 msgstr "Chọn tên tập tin danh sách phông nền"
 
-#: ../menueditor/menueditor-add-dialog.c:129
-msgid "Add menu entry"
-msgstr "Thêm mục trình đơn"
-
-#. Type
-#: ../menueditor/menueditor-add-dialog.c:142
-#: ../menueditor/menueditor-add-dialog.c:143
-#: ../menueditor/menueditor-add-external-dialog.c:113
-#: ../menueditor/menueditor-add-external-dialog.c:114
-msgid "Type:"
-msgstr "Loại:"
-
-#: ../menueditor/menueditor-add-dialog.c:151
-msgid "Title"
-msgstr "Tiêu đề"
-
-#: ../menueditor/menueditor-add-dialog.c:152
-msgid "Submenu"
-msgstr "Thực đơn phụ"
-
-#: ../menueditor/menueditor-add-dialog.c:153
-msgid "Launcher"
-msgstr "Trình gọi"
-
-#: ../menueditor/menueditor-add-dialog.c:154
-msgid "Separator"
-msgstr "Dấu cách"
-
-#: ../menueditor/menueditor-add-dialog.c:155
-msgid "Quit"
-msgstr "Thoát"
-
-#. Name
-#: ../menueditor/menueditor-add-dialog.c:162
-#: ../menueditor/menueditor-add-dialog.c:163
-#: ../menueditor/menueditor-edit-dialog.c:140
-#: ../menueditor/menueditor-edit-dialog.c:141
-#: ../src/xfdesktop-file-properties-dialog.c:188
-msgid "Name:"
-msgstr "Tên:"
-
-#. Command
-#: ../menueditor/menueditor-add-dialog.c:176
-#: ../menueditor/menueditor-add-dialog.c:177
-#: ../menueditor/menueditor-edit-dialog.c:154
-#: ../menueditor/menueditor-edit-dialog.c:155
-msgid "Command:"
-msgstr "Lệnh:"
-
-#. Icon chooser
-#: ../menueditor/menueditor-add-dialog.c:201
-#: ../menueditor/menueditor-add-dialog.c:202
-#: ../menueditor/menueditor-add-dialog.c:244
-#: ../menueditor/menueditor-add-dialog.c:245
-#: ../menueditor/menueditor-edit-dialog.c:179
-#: ../menueditor/menueditor-edit-dialog.c:180
-#: ../menueditor/menueditor-edit-dialog.c:222
-#: ../menueditor/menueditor-edit-dialog.c:223
-msgid "Icon:"
-msgstr "Biểu tượng:"
-
-#. setup a label to tell that no icon was selected
-#: ../menueditor/menueditor-add-dialog.c:213
-#: ../menueditor/menueditor-add-dialog.c:330
-#: ../menueditor/menueditor-edit-dialog.c:191
-#: ../menueditor/menueditor-edit-dialog.c:586
-#, fuzzy
-msgid "No icon"
-msgstr "Biểu tượng _nút:"
-
-#: ../menueditor/menueditor-add-dialog.c:225
-#: ../menueditor/menueditor-add-dialog.c:226
-#: ../menueditor/menueditor-edit-dialog.c:203
-#: ../menueditor/menueditor-edit-dialog.c:204
-msgid "Themed icon:"
-msgstr "Biểu tượng sắc thái:"
-
-#. allocate the chooser dialog
-#: ../menueditor/menueditor-add-dialog.c:252
-#: ../menueditor/menueditor-add-dialog.c:347
-#: ../menueditor/menueditor-edit-dialog.c:230
-#: ../menueditor/menueditor-edit-dialog.c:384
-msgid "Select icon"
-msgstr "Chọn biểu tượng"
-
-#: ../menueditor/menueditor-add-dialog.c:257
-#: ../menueditor/menueditor-add-dialog.c:437
-#: ../menueditor/menueditor-add-external-dialog.c:142
-#: ../menueditor/menueditor-edit-dialog.c:235
-#: ../menueditor/menueditor-edit-dialog.c:296
-#: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:705
-msgid "All Files"
-msgstr "Mọi tập tin"
-
-#: ../menueditor/menueditor-add-dialog.c:261
-#: ../menueditor/menueditor-edit-dialog.c:239
-#: ../panel-plugin/desktop-menu-plugin.c:712
-msgid "Image Files"
-msgstr "Các tập tin hình ảnh"
-
-#. Start Notify check button
-#: ../menueditor/menueditor-add-dialog.c:283
-#: ../menueditor/menueditor-edit-dialog.c:261
-msgid "Use startup _notification"
-msgstr "Dùng thông _báo khởi động"
-
-#. Run in terminal check button
-#: ../menueditor/menueditor-add-dialog.c:288
-#: ../menueditor/menueditor-edit-dialog.c:266
-msgid "Run in _terminal"
-msgstr "Chạy ở _trạm cuối"
-
-#: ../menueditor/menueditor-add-dialog.c:427
-#: ../menueditor/menueditor-edit-dialog.c:286
-#: ../menueditor/menueditor-main-window.c:450
-msgid "Select command"
-msgstr "Chọn lệnh"
-
-#: ../menueditor/menueditor-add-dialog.c:442
-#: ../menueditor/menueditor-edit-dialog.c:301
-msgid "Executable Files"
-msgstr "Tập tin chương trình"
-
-#: ../menueditor/menueditor-add-dialog.c:457
-#: ../menueditor/menueditor-edit-dialog.c:316
-msgid "Perl Scripts"
-msgstr "Perl Script"
-
-#: ../menueditor/menueditor-add-dialog.c:463
-#: ../menueditor/menueditor-edit-dialog.c:322
-msgid "Python Scripts"
-msgstr "Python Script"
-
-#: ../menueditor/menueditor-add-dialog.c:469
-#: ../menueditor/menueditor-edit-dialog.c:328
-msgid "Ruby Scripts"
-msgstr "Ruby Script"
-
-#: ../menueditor/menueditor-add-dialog.c:475
-#: ../menueditor/menueditor-edit-dialog.c:334
-msgid "Shell Scripts"
-msgstr "Shell Script"
-
-#: ../menueditor/menueditor-add-external-dialog.c:100
-msgid "Add external menu entry"
-msgstr "Thêm trình đơn ngoài"
-
-#: ../menueditor/menueditor-add-external-dialog.c:122
-msgid "File"
-msgstr "Tập tin"
-
-#: ../menueditor/menueditor-add-external-dialog.c:123
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
-msgid "System"
-msgstr "Hệ thống"
-
-#. Source
-#: ../menueditor/menueditor-add-external-dialog.c:129
-#: ../menueditor/menueditor-add-external-dialog.c:130
-#: ../menueditor/menueditor-edit-external-dialog.c:109
-#: ../menueditor/menueditor-edit-external-dialog.c:110
-msgid "Source:"
-msgstr "Nguồn:"
-
-#: ../menueditor/menueditor-add-external-dialog.c:137
-#: ../menueditor/menueditor-edit-external-dialog.c:117
-msgid "Select external menu"
-msgstr "Chọn trình đơn ngoài"
-
-#: ../menueditor/menueditor-add-external-dialog.c:146
-#: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:715
-msgid "Menu Files"
-msgstr "Tập tin trình đơn"
-
-#. Style
-#: ../menueditor/menueditor-add-external-dialog.c:155
-#: ../menueditor/menueditor-add-external-dialog.c:156
-#: ../menueditor/menueditor-edit-external-dialog.c:135
-#: ../menueditor/menueditor-edit-external-dialog.c:136
-msgid "Style:"
-msgstr "Phong cách:"
-
-#: ../menueditor/menueditor-add-external-dialog.c:165
-#: ../menueditor/menueditor-edit-external-dialog.c:145
-msgid "Simple"
-msgstr "Đơn giản"
-
-#: ../menueditor/menueditor-add-external-dialog.c:166
-#: ../menueditor/menueditor-edit-external-dialog.c:146
-msgid "Multilevel"
-msgstr "Đa cấp"
-
-#. Unique check button
-#: ../menueditor/menueditor-add-external-dialog.c:171
-#: ../menueditor/menueditor-edit-external-dialog.c:151
-msgid "_Unique entries only"
-msgstr "Chỉ các đề mục đơn _nhất"
-
-#: ../menueditor/menueditor-edit-dialog.c:127
-msgid "Edit menu entry"
-msgstr "Biên tập đề mục thực đon"
-
-#: ../menueditor/menueditor-edit-external-dialog.c:96
-msgid "Edit external menu entry"
-msgstr "Sửa mục trình đơn ngoài."
-
-#: ../menueditor/menueditor-main.c:43
-msgid "Xfce4-MenuEditor"
-msgstr "Trình soạn Xfce4-Menu"
-
-#: ../menueditor/menueditor-main.c:57
-#, fuzzy
-msgid "Menueditor Warning"
-msgstr "Trình soạn thảo trình đơn"
-
-#: ../menueditor/menueditor-main.c:59
-msgid "xfce4-menueditor is deprecated"
-msgstr ""
-
-#: ../menueditor/menueditor-main.c:60
-msgid ""
-"Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-"edit the new menu file format.  You may continue and edit an old-style menu "
-"file, or quit."
-msgstr ""
-
-#: ../menueditor/menueditor-main.c:61
-#, fuzzy
-msgid "Continue"
-msgstr "Người đóng góp"
-
-#: ../menueditor/menueditor-main-window.c:140
-msgid "_File"
-msgstr "_Tập tin"
-
-#: ../menueditor/menueditor-main-window.c:141
-msgid "_New"
-msgstr "_Mới"
-
-#: ../menueditor/menueditor-main-window.c:141
-msgid "Create a new empty menu"
-msgstr "Tạo trình đơn rỗng mới"
-
-#: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
-msgid "_Open"
-msgstr "_Mở"
-
-#: ../menueditor/menueditor-main-window.c:142
-msgid "Open existing menu"
-msgstr "Mở trình đơn đã có"
-
-#: ../menueditor/menueditor-main-window.c:143
-msgid "Open _default menu"
-msgstr "Mở _trình đơn mặc định"
-
-#: ../menueditor/menueditor-main-window.c:143
-msgid "Open default menu"
-msgstr "Mở trình đơn mặc định"
-
-#: ../menueditor/menueditor-main-window.c:144
-msgid "_Save"
-msgstr "_Lưu"
-
-#: ../menueditor/menueditor-main-window.c:144
-msgid "Save modifications"
-msgstr "Lưu thay đổi"
-
-#: ../menueditor/menueditor-main-window.c:145
-msgid "Save _as..."
-msgstr "Lưu _là..."
-
-#: ../menueditor/menueditor-main-window.c:145
-msgid "Save menu under a given name"
-msgstr "Lưu trình đơn dưới tên đưa ra"
-
-#: ../menueditor/menueditor-main-window.c:146
-msgid "_Close"
-msgstr "Đón_g"
-
-#: ../menueditor/menueditor-main-window.c:146
-msgid "Close menu"
-msgstr "Đóng trình đơn"
-
-#: ../menueditor/menueditor-main-window.c:147
-msgid "_Quit"
-msgstr "_Thoát"
-
-#: ../menueditor/menueditor-main-window.c:147
-msgid "Quit Xfce4-Menueditor"
-msgstr "Thoát Xfce4-Menueditor"
-
-#: ../menueditor/menueditor-main-window.c:149
-msgid "_Edit"
-msgstr "_Biên tập"
-
-#: ../menueditor/menueditor-main-window.c:150
-msgid "_Edit entry"
-msgstr "_Sửa mục"
-
-#: ../menueditor/menueditor-main-window.c:150
-msgid "Edit selected entry"
-msgstr "Sửa mục đã chọn"
-
-#: ../menueditor/menueditor-main-window.c:151
-msgid "_Add entry"
-msgstr "_Thêm mục"
-
-#: ../menueditor/menueditor-main-window.c:151
-msgid "Add a new entry in the menu"
-msgstr "Thêm một mục mới vào trình đơn"
-
-#: ../menueditor/menueditor-main-window.c:152
-msgid "Add _external"
-msgstr "Thêm từ _ngoài"
-
-#: ../menueditor/menueditor-main-window.c:152
-msgid "Add an external entry"
-msgstr "Thêm mục từ ngoài"
-
-#: ../menueditor/menueditor-main-window.c:153
-msgid "_Remove entry"
-msgstr "_Xóa mục"
-
-#: ../menueditor/menueditor-main-window.c:153
-msgid "Remove entry"
-msgstr "Xóa mục"
-
-#: ../menueditor/menueditor-main-window.c:154
-msgid "_Up"
-msgstr "_Lên"
-
-#: ../menueditor/menueditor-main-window.c:154
-msgid "Move entry up"
-msgstr "Chuyển mục lên trên"
-
-#: ../menueditor/menueditor-main-window.c:155
-msgid "_Down"
-msgstr "_Xuống"
-
-#: ../menueditor/menueditor-main-window.c:155
-msgid "Move entry down"
-msgstr "Chuyển mục xuống dưới"
-
-#: ../menueditor/menueditor-main-window.c:157
-msgid "_Help"
-msgstr "_Giúp đỡ"
-
-#: ../menueditor/menueditor-main-window.c:158
-msgid "_About..."
-msgstr "_Về..."
-
-#: ../menueditor/menueditor-main-window.c:158
-msgid "Show informations about xfce4-menueditor"
-msgstr "Hiển thị thông tin về xfce4-menueditor"
-
-#: ../menueditor/menueditor-main-window.c:160
-msgid "Collapse all"
-msgstr "Khép tất cả"
-
-#: ../menueditor/menueditor-main-window.c:160
-msgid "Collapse all menu entries"
-msgstr "Khép tất cả mục trình đơn"
-
-#: ../menueditor/menueditor-main-window.c:161
-msgid "Expand all"
-msgstr "Mở hết"
-
-#: ../menueditor/menueditor-main-window.c:161
-msgid "Expand all menu entries"
-msgstr "Mở hết mục trình đơn"
-
-#: ../menueditor/menueditor-main-window.c:341
-msgid "Name"
-msgstr "Tên"
-
-#: ../menueditor/menueditor-main-window.c:344
-msgid "Command"
-msgstr "Lệnh"
-
-#: ../menueditor/menueditor-main-window.c:345
-msgid "Hidden"
-msgstr "Ẩn"
-
-#: ../menueditor/menueditor-main-window.c:427
-msgid "Are you sure you want to close the current menu?"
-msgstr "Bạn có chắc bạn muốn đóng trình đơn hiện tại?"
-
-#: ../menueditor/menueditor-main-window.c:441
-msgid "Do you want to save before closing the file?"
-msgstr "Bạn có muốn lưu trước khi đóng tập tin?"
-
-#: ../menueditor/menueditor-main-window.c:479
-#: ../menueditor/menueditor-main-window.c:532
-#: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
-msgid "Question"
-msgstr "Câu hỏi"
-
-#: ../menueditor/menueditor-main-window.c:481
-msgid "Do you want to save before opening an other menu ?"
-msgstr "Bạn có muốn lưu trước khi mở trình đơn khác ?"
-
-#: ../menueditor/menueditor-main-window.c:483
-#: ../menueditor/menueditor-main-window.c:536
-#: ../menueditor/menueditor-main-window.c:634
-msgid "Ignore modifications"
-msgstr "Bỏ qua các thay đổi"
-
-#: ../menueditor/menueditor-main-window.c:494
-msgid "Open menu file"
-msgstr "Mở tập tin trình đơn"
-
-#: ../menueditor/menueditor-main-window.c:534
-msgid "Do you want to save before opening the default menu ?"
-msgstr "Bạn có muốn lưu trước khi mở thư mục mặc định ?"
-
-#: ../menueditor/menueditor-main-window.c:594
-msgid "Save menu file as"
-msgstr "Lưu tập tin trình đơn vào"
-
-#: ../menueditor/menueditor-main-window.c:632
-#: ../menueditor/menueditor-main-window.c:1343
-msgid "Do you want to save before closing the menu ?"
-msgstr "Bạn có muốn lưu trước khi đóng trình đơn ?"
-
-#: ../menueditor/menueditor-main-window.c:858
-#: ../menueditor/menueditor-main-window.c:988
-msgid "quit"
-msgstr "thoát"
-
-#: ../menueditor/menueditor-main-window.c:963
-#: ../menueditor/menueditor-main-window.c:1584
-msgid "--- separator ---"
-msgstr "--- dấu cách ---"
-
-#: ../menueditor/menueditor-main-window.c:1081
-#: ../menueditor/menueditor-main-window.c:1088
-#: ../menueditor/menueditor-main-window.c:1638
-msgid "--- include ---"
-msgstr "--- gồm ---"
-
-#: ../menueditor/menueditor-main-window.c:1089
-#: ../menueditor/menueditor-main-window.c:1655
-msgid "system"
-msgstr "hệ thống"
-
-#: ../menueditor/menueditor-main-window.c:1215
-#: ../menueditor/menueditor-main-window.c:1263
-msgid "Do you want to move the item into the submenu?"
-msgstr "Bạn có muốn di chuyển mục vào trình đơn phụ?"
-
-#: ../menueditor/menueditor-main-window.c:1293
-msgid "A menu editor for Xfce4"
-msgstr "Trình biên tập trình đơn cho Xfce4"
-
-#. Credits
-#: ../menueditor/menueditor-main-window.c:1298
-msgid "Author/Maintainer"
-msgstr "Tác giả/Nhà duy trì"
-
-#: ../menueditor/menueditor-main-window.c:1299
-#: ../menueditor/menueditor-main-window.c:1300
-#: ../menueditor/menueditor-main-window.c:1301
-msgid "Contributor"
-msgstr "Người đóng góp"
-
-#: ../menueditor/menueditor-main-window.c:1302
-msgid "Icon designer"
-msgstr "Người thiết kế biểu tượng"
-
-#: ../menueditor/menueditor-main-window.c:1345
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Bạn đã thay đổi trình đơn, bạn có muốn lưu trước khi thoát ?"
-
-#: ../menueditor/menueditor-main-window.c:1347
-msgid "Forget modifications"
-msgstr "Bỏ qua các thay đổi"
-
-#: ../menueditor/menueditor-main-window.c:2035
-#, c-format
-msgid "Unable to open the menu file %s in write mode"
-msgstr ""
-
 #: ../panel-plugin/desktop-menu-plugin.c:653
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
@@ -523,6 +36,18 @@ msgstr "Chọn biểu tượng"
 #: ../panel-plugin/desktop-menu-plugin.c:678
 msgid "Select Menu File"
 msgstr "Chọn tập tin trình đơn"
+
+#: ../panel-plugin/desktop-menu-plugin.c:705
+msgid "All Files"
+msgstr "Mọi tập tin"
+
+#: ../panel-plugin/desktop-menu-plugin.c:712
+msgid "Image Files"
+msgstr "Các tập tin hình ảnh"
+
+#: ../panel-plugin/desktop-menu-plugin.c:715
+msgid "Menu Files"
+msgstr "Tập tin trình đơn"
 
 #: ../panel-plugin/desktop-menu-plugin.c:740
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
@@ -753,6 +278,10 @@ msgstr "Đổi tên"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Bạn có chắc bạn muốn xóa \"%s\"?"
 
+#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
+msgid "Question"
+msgstr "Câu hỏi"
+
 #: ../src/xfdesktop-file-icon-manager.c:681
 #: ../src/xfdesktop-file-icon-manager.c:701
 msgid "If you delete a file, it is permanently lost."
@@ -872,6 +401,11 @@ msgstr "_Mở hết"
 msgid "_Open in New Window"
 msgstr ""
 
+#: ../src/xfdesktop-file-icon-manager.c:1718
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+msgid "_Open"
+msgstr "_Mở"
+
 #: ../src/xfdesktop-file-icon-manager.c:1733
 msgid "Create _Launcher..."
 msgstr "Tạo trình _gọi..."
@@ -965,6 +499,10 @@ msgstr "Ghi & đọc"
 #: ../src/xfdesktop-file-properties-dialog.c:163
 msgid "General"
 msgstr "Chung"
+
+#: ../src/xfdesktop-file-properties-dialog.c:188
+msgid "Name:"
+msgstr "Tên:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:214
 msgid "Kind:"
@@ -1167,18 +705,6 @@ msgstr "_Bỏ gắn"
 msgid "_Mount Volume"
 msgstr "_Gắn ổ"
 
-#: ../menueditor/xfce-menueditor.desktop.in.h:1
-msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Công cụ soạn thảo trình đơn đồ họa"
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:2
-msgid "Menu Editor"
-msgstr "Trình soạn thảo trình đơn"
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:3
-msgid "Xfce 4 Menu Editor"
-msgstr "Trình soạn thảo trình đơn Xfce 4"
-
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 #, fuzzy
 msgid "Accessories"
@@ -1271,6 +797,10 @@ msgstr ""
 #, fuzzy
 msgid "Settings"
 msgstr "Các thiết lập desktop"
+
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
+msgid "System"
+msgstr "Hệ thống"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
@@ -1751,6 +1281,285 @@ msgstr ""
 #: ../settings/xfdesktop-settings.glade.h:72
 msgid "gtk-help"
 msgstr ""
+
+#~ msgid "Add menu entry"
+#~ msgstr "Thêm mục trình đơn"
+
+#~ msgid "Type:"
+#~ msgstr "Loại:"
+
+#~ msgid "Title"
+#~ msgstr "Tiêu đề"
+
+#~ msgid "Submenu"
+#~ msgstr "Thực đơn phụ"
+
+#~ msgid "Launcher"
+#~ msgstr "Trình gọi"
+
+#~ msgid "Separator"
+#~ msgstr "Dấu cách"
+
+#~ msgid "Quit"
+#~ msgstr "Thoát"
+
+#~ msgid "Command:"
+#~ msgstr "Lệnh:"
+
+#~ msgid "Icon:"
+#~ msgstr "Biểu tượng:"
+
+#, fuzzy
+#~ msgid "No icon"
+#~ msgstr "Biểu tượng _nút:"
+
+#~ msgid "Themed icon:"
+#~ msgstr "Biểu tượng sắc thái:"
+
+#~ msgid "Select icon"
+#~ msgstr "Chọn biểu tượng"
+
+#~ msgid "Use startup _notification"
+#~ msgstr "Dùng thông _báo khởi động"
+
+#~ msgid "Run in _terminal"
+#~ msgstr "Chạy ở _trạm cuối"
+
+#~ msgid "Select command"
+#~ msgstr "Chọn lệnh"
+
+#~ msgid "Executable Files"
+#~ msgstr "Tập tin chương trình"
+
+#~ msgid "Perl Scripts"
+#~ msgstr "Perl Script"
+
+#~ msgid "Python Scripts"
+#~ msgstr "Python Script"
+
+#~ msgid "Ruby Scripts"
+#~ msgstr "Ruby Script"
+
+#~ msgid "Shell Scripts"
+#~ msgstr "Shell Script"
+
+#~ msgid "Add external menu entry"
+#~ msgstr "Thêm trình đơn ngoài"
+
+#~ msgid "File"
+#~ msgstr "Tập tin"
+
+#~ msgid "Source:"
+#~ msgstr "Nguồn:"
+
+#~ msgid "Select external menu"
+#~ msgstr "Chọn trình đơn ngoài"
+
+#~ msgid "Style:"
+#~ msgstr "Phong cách:"
+
+#~ msgid "Simple"
+#~ msgstr "Đơn giản"
+
+#~ msgid "Multilevel"
+#~ msgstr "Đa cấp"
+
+#~ msgid "_Unique entries only"
+#~ msgstr "Chỉ các đề mục đơn _nhất"
+
+#~ msgid "Edit menu entry"
+#~ msgstr "Biên tập đề mục thực đon"
+
+#~ msgid "Edit external menu entry"
+#~ msgstr "Sửa mục trình đơn ngoài."
+
+#~ msgid "Xfce4-MenuEditor"
+#~ msgstr "Trình soạn Xfce4-Menu"
+
+#, fuzzy
+#~ msgid "Menueditor Warning"
+#~ msgstr "Trình soạn thảo trình đơn"
+
+#, fuzzy
+#~ msgid "Continue"
+#~ msgstr "Người đóng góp"
+
+#~ msgid "_File"
+#~ msgstr "_Tập tin"
+
+#~ msgid "_New"
+#~ msgstr "_Mới"
+
+#~ msgid "Create a new empty menu"
+#~ msgstr "Tạo trình đơn rỗng mới"
+
+#~ msgid "Open existing menu"
+#~ msgstr "Mở trình đơn đã có"
+
+#~ msgid "Open _default menu"
+#~ msgstr "Mở _trình đơn mặc định"
+
+#~ msgid "Open default menu"
+#~ msgstr "Mở trình đơn mặc định"
+
+#~ msgid "_Save"
+#~ msgstr "_Lưu"
+
+#~ msgid "Save modifications"
+#~ msgstr "Lưu thay đổi"
+
+#~ msgid "Save _as..."
+#~ msgstr "Lưu _là..."
+
+#~ msgid "Save menu under a given name"
+#~ msgstr "Lưu trình đơn dưới tên đưa ra"
+
+#~ msgid "_Close"
+#~ msgstr "Đón_g"
+
+#~ msgid "Close menu"
+#~ msgstr "Đóng trình đơn"
+
+#~ msgid "_Quit"
+#~ msgstr "_Thoát"
+
+#~ msgid "Quit Xfce4-Menueditor"
+#~ msgstr "Thoát Xfce4-Menueditor"
+
+#~ msgid "_Edit"
+#~ msgstr "_Biên tập"
+
+#~ msgid "_Edit entry"
+#~ msgstr "_Sửa mục"
+
+#~ msgid "Edit selected entry"
+#~ msgstr "Sửa mục đã chọn"
+
+#~ msgid "_Add entry"
+#~ msgstr "_Thêm mục"
+
+#~ msgid "Add a new entry in the menu"
+#~ msgstr "Thêm một mục mới vào trình đơn"
+
+#~ msgid "Add _external"
+#~ msgstr "Thêm từ _ngoài"
+
+#~ msgid "Add an external entry"
+#~ msgstr "Thêm mục từ ngoài"
+
+#~ msgid "_Remove entry"
+#~ msgstr "_Xóa mục"
+
+#~ msgid "Remove entry"
+#~ msgstr "Xóa mục"
+
+#~ msgid "_Up"
+#~ msgstr "_Lên"
+
+#~ msgid "Move entry up"
+#~ msgstr "Chuyển mục lên trên"
+
+#~ msgid "_Down"
+#~ msgstr "_Xuống"
+
+#~ msgid "Move entry down"
+#~ msgstr "Chuyển mục xuống dưới"
+
+#~ msgid "_Help"
+#~ msgstr "_Giúp đỡ"
+
+#~ msgid "_About..."
+#~ msgstr "_Về..."
+
+#~ msgid "Show informations about xfce4-menueditor"
+#~ msgstr "Hiển thị thông tin về xfce4-menueditor"
+
+#~ msgid "Collapse all"
+#~ msgstr "Khép tất cả"
+
+#~ msgid "Collapse all menu entries"
+#~ msgstr "Khép tất cả mục trình đơn"
+
+#~ msgid "Expand all"
+#~ msgstr "Mở hết"
+
+#~ msgid "Expand all menu entries"
+#~ msgstr "Mở hết mục trình đơn"
+
+#~ msgid "Name"
+#~ msgstr "Tên"
+
+#~ msgid "Command"
+#~ msgstr "Lệnh"
+
+#~ msgid "Hidden"
+#~ msgstr "Ẩn"
+
+#~ msgid "Are you sure you want to close the current menu?"
+#~ msgstr "Bạn có chắc bạn muốn đóng trình đơn hiện tại?"
+
+#~ msgid "Do you want to save before closing the file?"
+#~ msgstr "Bạn có muốn lưu trước khi đóng tập tin?"
+
+#~ msgid "Do you want to save before opening an other menu ?"
+#~ msgstr "Bạn có muốn lưu trước khi mở trình đơn khác ?"
+
+#~ msgid "Ignore modifications"
+#~ msgstr "Bỏ qua các thay đổi"
+
+#~ msgid "Open menu file"
+#~ msgstr "Mở tập tin trình đơn"
+
+#~ msgid "Do you want to save before opening the default menu ?"
+#~ msgstr "Bạn có muốn lưu trước khi mở thư mục mặc định ?"
+
+#~ msgid "Save menu file as"
+#~ msgstr "Lưu tập tin trình đơn vào"
+
+#~ msgid "Do you want to save before closing the menu ?"
+#~ msgstr "Bạn có muốn lưu trước khi đóng trình đơn ?"
+
+#~ msgid "quit"
+#~ msgstr "thoát"
+
+#~ msgid "--- separator ---"
+#~ msgstr "--- dấu cách ---"
+
+#~ msgid "--- include ---"
+#~ msgstr "--- gồm ---"
+
+#~ msgid "system"
+#~ msgstr "hệ thống"
+
+#~ msgid "Do you want to move the item into the submenu?"
+#~ msgstr "Bạn có muốn di chuyển mục vào trình đơn phụ?"
+
+#~ msgid "A menu editor for Xfce4"
+#~ msgstr "Trình biên tập trình đơn cho Xfce4"
+
+#~ msgid "Author/Maintainer"
+#~ msgstr "Tác giả/Nhà duy trì"
+
+#~ msgid "Contributor"
+#~ msgstr "Người đóng góp"
+
+#~ msgid "Icon designer"
+#~ msgstr "Người thiết kế biểu tượng"
+
+#~ msgid "You have modified the menu, do you want to save it before quitting ?"
+#~ msgstr "Bạn đã thay đổi trình đơn, bạn có muốn lưu trước khi thoát ?"
+
+#~ msgid "Forget modifications"
+#~ msgstr "Bỏ qua các thay đổi"
+
+#~ msgid "Graphical tool for editing the Xfce 4 menu"
+#~ msgstr "Công cụ soạn thảo trình đơn đồ họa"
+
+#~ msgid "Menu Editor"
+#~ msgstr "Trình soạn thảo trình đơn"
+
+#~ msgid "Xfce 4 Menu Editor"
+#~ msgstr "Trình soạn thảo trình đơn Xfce 4"
 
 #~ msgid "Settings for the Xfce 4 Desktop Manager"
 #~ msgstr "Thiết lập cho trình quản lý nền Xfce 4"

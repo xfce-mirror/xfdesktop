@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 04:40-0800\n"
+"POT-Creation-Date: 2009-01-26 01:15+0100\n"
 "PO-Revision-Date: 2005-10-09 22:19+0900\n"
 "Last-Translator: Mantas Zapolskas <mantaz@users.sf.net>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -19,522 +19,6 @@ msgstr ""
 #, fuzzy, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Pasirinkite fonų sąrašo failo vardą"
-
-#: ../menueditor/menueditor-add-dialog.c:129
-msgid "Add menu entry"
-msgstr "Pridėti meniu įrašą"
-
-#. Type
-#: ../menueditor/menueditor-add-dialog.c:142
-#: ../menueditor/menueditor-add-dialog.c:143
-#: ../menueditor/menueditor-add-external-dialog.c:113
-#: ../menueditor/menueditor-add-external-dialog.c:114
-msgid "Type:"
-msgstr "Tipas:"
-
-#: ../menueditor/menueditor-add-dialog.c:151
-msgid "Title"
-msgstr "Antraštė"
-
-#: ../menueditor/menueditor-add-dialog.c:152
-msgid "Submenu"
-msgstr "Vidinis meniu"
-
-#: ../menueditor/menueditor-add-dialog.c:153
-msgid "Launcher"
-msgstr "Leistukas"
-
-#: ../menueditor/menueditor-add-dialog.c:154
-msgid "Separator"
-msgstr "Skyriklis"
-
-#: ../menueditor/menueditor-add-dialog.c:155
-msgid "Quit"
-msgstr "Išeiti"
-
-#. Name
-#: ../menueditor/menueditor-add-dialog.c:162
-#: ../menueditor/menueditor-add-dialog.c:163
-#: ../menueditor/menueditor-edit-dialog.c:140
-#: ../menueditor/menueditor-edit-dialog.c:141
-#: ../src/xfdesktop-file-properties-dialog.c:188
-msgid "Name:"
-msgstr "Vardas:"
-
-#. Command
-#: ../menueditor/menueditor-add-dialog.c:176
-#: ../menueditor/menueditor-add-dialog.c:177
-#: ../menueditor/menueditor-edit-dialog.c:154
-#: ../menueditor/menueditor-edit-dialog.c:155
-msgid "Command:"
-msgstr "Komanda:"
-
-#. Icon chooser
-#: ../menueditor/menueditor-add-dialog.c:201
-#: ../menueditor/menueditor-add-dialog.c:202
-#: ../menueditor/menueditor-add-dialog.c:244
-#: ../menueditor/menueditor-add-dialog.c:245
-#: ../menueditor/menueditor-edit-dialog.c:179
-#: ../menueditor/menueditor-edit-dialog.c:180
-#: ../menueditor/menueditor-edit-dialog.c:222
-#: ../menueditor/menueditor-edit-dialog.c:223
-msgid "Icon:"
-msgstr "Ikona:"
-
-#. setup a label to tell that no icon was selected
-#: ../menueditor/menueditor-add-dialog.c:213
-#: ../menueditor/menueditor-add-dialog.c:330
-#: ../menueditor/menueditor-edit-dialog.c:191
-#: ../menueditor/menueditor-edit-dialog.c:586
-#, fuzzy
-msgid "No icon"
-msgstr "_Mygtuko ikona:"
-
-#: ../menueditor/menueditor-add-dialog.c:225
-#: ../menueditor/menueditor-add-dialog.c:226
-#: ../menueditor/menueditor-edit-dialog.c:203
-#: ../menueditor/menueditor-edit-dialog.c:204
-#, fuzzy
-msgid "Themed icon:"
-msgstr "Pasirinkti Ikoną"
-
-#. allocate the chooser dialog
-#: ../menueditor/menueditor-add-dialog.c:252
-#: ../menueditor/menueditor-add-dialog.c:347
-#: ../menueditor/menueditor-edit-dialog.c:230
-#: ../menueditor/menueditor-edit-dialog.c:384
-#, fuzzy
-msgid "Select icon"
-msgstr "Pasirinkti Ikoną"
-
-#: ../menueditor/menueditor-add-dialog.c:257
-#: ../menueditor/menueditor-add-dialog.c:437
-#: ../menueditor/menueditor-add-external-dialog.c:142
-#: ../menueditor/menueditor-edit-dialog.c:235
-#: ../menueditor/menueditor-edit-dialog.c:296
-#: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:705
-msgid "All Files"
-msgstr "Visi Failai"
-
-#: ../menueditor/menueditor-add-dialog.c:261
-#: ../menueditor/menueditor-edit-dialog.c:239
-#: ../panel-plugin/desktop-menu-plugin.c:712
-msgid "Image Files"
-msgstr "Paveikslų Failai"
-
-#. Start Notify check button
-#: ../menueditor/menueditor-add-dialog.c:283
-#: ../menueditor/menueditor-edit-dialog.c:261
-msgid "Use startup _notification"
-msgstr "Naudoti paleisties per_spėjimą"
-
-#. Run in terminal check button
-#: ../menueditor/menueditor-add-dialog.c:288
-#: ../menueditor/menueditor-edit-dialog.c:266
-msgid "Run in _terminal"
-msgstr "Paleisti _terminale"
-
-#: ../menueditor/menueditor-add-dialog.c:427
-#: ../menueditor/menueditor-edit-dialog.c:286
-#: ../menueditor/menueditor-main-window.c:450
-msgid "Select command"
-msgstr "Pasirinkite komandą"
-
-#: ../menueditor/menueditor-add-dialog.c:442
-#: ../menueditor/menueditor-edit-dialog.c:301
-#, fuzzy
-msgid "Executable Files"
-msgstr "Pasirinkti Meniu Failą"
-
-#: ../menueditor/menueditor-add-dialog.c:457
-#: ../menueditor/menueditor-edit-dialog.c:316
-msgid "Perl Scripts"
-msgstr ""
-
-#: ../menueditor/menueditor-add-dialog.c:463
-#: ../menueditor/menueditor-edit-dialog.c:322
-msgid "Python Scripts"
-msgstr ""
-
-#: ../menueditor/menueditor-add-dialog.c:469
-#: ../menueditor/menueditor-edit-dialog.c:328
-msgid "Ruby Scripts"
-msgstr ""
-
-#: ../menueditor/menueditor-add-dialog.c:475
-#: ../menueditor/menueditor-edit-dialog.c:334
-msgid "Shell Scripts"
-msgstr ""
-
-#: ../menueditor/menueditor-add-external-dialog.c:100
-#, fuzzy
-msgid "Add external menu entry"
-msgstr "Pridėti išorinį meniu"
-
-#: ../menueditor/menueditor-add-external-dialog.c:122
-msgid "File"
-msgstr "Failas"
-
-#: ../menueditor/menueditor-add-external-dialog.c:123
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
-msgid "System"
-msgstr "Sistemos"
-
-#. Source
-#: ../menueditor/menueditor-add-external-dialog.c:129
-#: ../menueditor/menueditor-add-external-dialog.c:130
-#: ../menueditor/menueditor-edit-external-dialog.c:109
-#: ../menueditor/menueditor-edit-external-dialog.c:110
-msgid "Source:"
-msgstr "Šaltinis:"
-
-#: ../menueditor/menueditor-add-external-dialog.c:137
-#: ../menueditor/menueditor-edit-external-dialog.c:117
-#, fuzzy
-msgid "Select external menu"
-msgstr "Pridėti išorinį meniu"
-
-#: ../menueditor/menueditor-add-external-dialog.c:146
-#: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:715
-msgid "Menu Files"
-msgstr "Meniu failai"
-
-#. Style
-#: ../menueditor/menueditor-add-external-dialog.c:155
-#: ../menueditor/menueditor-add-external-dialog.c:156
-#: ../menueditor/menueditor-edit-external-dialog.c:135
-#: ../menueditor/menueditor-edit-external-dialog.c:136
-msgid "Style:"
-msgstr "Stilius:"
-
-#: ../menueditor/menueditor-add-external-dialog.c:165
-#: ../menueditor/menueditor-edit-external-dialog.c:145
-msgid "Simple"
-msgstr "Paprastas"
-
-#: ../menueditor/menueditor-add-external-dialog.c:166
-#: ../menueditor/menueditor-edit-external-dialog.c:146
-msgid "Multilevel"
-msgstr "Daug lygių"
-
-#. Unique check button
-#: ../menueditor/menueditor-add-external-dialog.c:171
-#: ../menueditor/menueditor-edit-external-dialog.c:151
-msgid "_Unique entries only"
-msgstr "Tiktai _unikalūs įrašai"
-
-#: ../menueditor/menueditor-edit-dialog.c:127
-msgid "Edit menu entry"
-msgstr "Redaguoti meniu įrašą"
-
-#: ../menueditor/menueditor-edit-external-dialog.c:96
-#, fuzzy
-msgid "Edit external menu entry"
-msgstr "Pridėti išorinį meniu"
-
-#: ../menueditor/menueditor-main.c:43
-#, fuzzy
-msgid "Xfce4-MenuEditor"
-msgstr "Xfce Meniu"
-
-#: ../menueditor/menueditor-main.c:57
-msgid "Menueditor Warning"
-msgstr ""
-
-#: ../menueditor/menueditor-main.c:59
-msgid "xfce4-menueditor is deprecated"
-msgstr ""
-
-#: ../menueditor/menueditor-main.c:60
-msgid ""
-"Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-"edit the new menu file format.  You may continue and edit an old-style menu "
-"file, or quit."
-msgstr ""
-
-#: ../menueditor/menueditor-main.c:61
-#, fuzzy
-msgid "Continue"
-msgstr "Bendradarbis"
-
-#: ../menueditor/menueditor-main-window.c:140
-msgid "_File"
-msgstr "_Failas"
-
-#: ../menueditor/menueditor-main-window.c:141
-msgid "_New"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:141
-#, fuzzy
-msgid "Create a new empty menu"
-msgstr "Sukurti naują Xfce4 meniu failą"
-
-#: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
-msgid "_Open"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:142
-#, fuzzy
-msgid "Open existing menu"
-msgstr "Atidaryti pagrindinį meniu"
-
-#: ../menueditor/menueditor-main-window.c:143
-#, fuzzy
-msgid "Open _default menu"
-msgstr "Atidaryti pagrindinį meniu"
-
-#: ../menueditor/menueditor-main-window.c:143
-msgid "Open default menu"
-msgstr "Atidaryti pagrindinį meniu"
-
-#: ../menueditor/menueditor-main-window.c:144
-msgid "_Save"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:144
-#, fuzzy
-msgid "Save modifications"
-msgstr "Pamiršti modifikacijas"
-
-#: ../menueditor/menueditor-main-window.c:145
-#, fuzzy
-msgid "Save _as..."
-msgstr "Saugoti kaip..."
-
-#: ../menueditor/menueditor-main-window.c:145
-msgid "Save menu under a given name"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:146
-msgid "_Close"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:146
-#, fuzzy
-msgid "Close menu"
-msgstr "Uždaryti dabartinį meniu"
-
-#: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
-msgid "_Quit"
-msgstr "Išeiti"
-
-#: ../menueditor/menueditor-main-window.c:147
-#, fuzzy
-msgid "Quit Xfce4-Menueditor"
-msgstr "Xfce Meniu"
-
-#: ../menueditor/menueditor-main-window.c:149
-msgid "_Edit"
-msgstr "_Redaguoti"
-
-#: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
-msgid "_Edit entry"
-msgstr "Redaguoti meniu įrašą"
-
-#: ../menueditor/menueditor-main-window.c:150
-#, fuzzy
-msgid "Edit selected entry"
-msgstr "Redaguoti meniu įrašą"
-
-#: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
-msgid "_Add entry"
-msgstr "Pridėti meniu įrašą"
-
-#: ../menueditor/menueditor-main-window.c:151
-#, fuzzy
-msgid "Add a new entry in the menu"
-msgstr "Pridėti įrašą į meniu"
-
-#: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
-msgid "Add _external"
-msgstr "Pridėti išorinį meniu"
-
-#: ../menueditor/menueditor-main-window.c:152
-#, fuzzy
-msgid "Add an external entry"
-msgstr "Pridėti išorinį meniu"
-
-#: ../menueditor/menueditor-main-window.c:153
-msgid "_Remove entry"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:153
-#, fuzzy
-msgid "Remove entry"
-msgstr "Pridėti meniu įrašą"
-
-#: ../menueditor/menueditor-main-window.c:154
-msgid "_Up"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:154
-#, fuzzy
-msgid "Move entry up"
-msgstr "Perkelti šį įrašą aukštyn"
-
-#: ../menueditor/menueditor-main-window.c:155
-msgid "_Down"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:155
-#, fuzzy
-msgid "Move entry down"
-msgstr "Perkelti šį įrašą žemyn"
-
-#: ../menueditor/menueditor-main-window.c:157
-msgid "_Help"
-msgstr "_Pagalba"
-
-#: ../menueditor/menueditor-main-window.c:158
-msgid "_About..."
-msgstr "_Apie..."
-
-#: ../menueditor/menueditor-main-window.c:158
-#, fuzzy
-msgid "Show informations about xfce4-menueditor"
-msgstr "Neįmanoma paleisti xfce4-menueditor:·%s"
-
-#: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
-msgid "Collapse all"
-msgstr "Sutraukti medį"
-
-#: ../menueditor/menueditor-main-window.c:160
-#, fuzzy
-msgid "Collapse all menu entries"
-msgstr "Sutraukti medį"
-
-#: ../menueditor/menueditor-main-window.c:161
-msgid "Expand all"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:161
-#, fuzzy
-msgid "Expand all menu entries"
-msgstr "Išskleisti medį"
-
-#: ../menueditor/menueditor-main-window.c:341
-msgid "Name"
-msgstr "Vardas"
-
-#: ../menueditor/menueditor-main-window.c:344
-msgid "Command"
-msgstr "Komanda"
-
-#: ../menueditor/menueditor-main-window.c:345
-msgid "Hidden"
-msgstr "Paslėptas"
-
-#: ../menueditor/menueditor-main-window.c:427
-msgid "Are you sure you want to close the current menu?"
-msgstr "Ar tikrai norite uždaryti šį meniu?"
-
-#: ../menueditor/menueditor-main-window.c:441
-msgid "Do you want to save before closing the file?"
-msgstr "Norėtumėte išsaugoti pries uždarydami failą?"
-
-#: ../menueditor/menueditor-main-window.c:479
-#: ../menueditor/menueditor-main-window.c:532
-#: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
-msgid "Question"
-msgstr "Klausimas"
-
-#: ../menueditor/menueditor-main-window.c:481
-msgid "Do you want to save before opening an other menu ?"
-msgstr "Ar norite išsaugoti prieš atidarydami kitą meniu?"
-
-#: ../menueditor/menueditor-main-window.c:483
-#: ../menueditor/menueditor-main-window.c:536
-#: ../menueditor/menueditor-main-window.c:634
-msgid "Ignore modifications"
-msgstr "Atmesti modifikacijas"
-
-#: ../menueditor/menueditor-main-window.c:494
-msgid "Open menu file"
-msgstr "Atidaryti meniu failą"
-
-#: ../menueditor/menueditor-main-window.c:534
-msgid "Do you want to save before opening the default menu ?"
-msgstr "Ar norite išsaugoti prieš atidarydami pagrindinį meniu ?"
-
-#: ../menueditor/menueditor-main-window.c:594
-#, fuzzy
-msgid "Save menu file as"
-msgstr "Atidaryti meniu failą"
-
-#: ../menueditor/menueditor-main-window.c:632
-#: ../menueditor/menueditor-main-window.c:1343
-msgid "Do you want to save before closing the menu ?"
-msgstr "Ar norite išsaugoti prieš udarydami meniu ?"
-
-#: ../menueditor/menueditor-main-window.c:858
-#: ../menueditor/menueditor-main-window.c:988
-msgid "quit"
-msgstr "išeiti"
-
-#: ../menueditor/menueditor-main-window.c:963
-#: ../menueditor/menueditor-main-window.c:1584
-msgid "--- separator ---"
-msgstr "--- skyriklis ---"
-
-#: ../menueditor/menueditor-main-window.c:1081
-#: ../menueditor/menueditor-main-window.c:1088
-#: ../menueditor/menueditor-main-window.c:1638
-msgid "--- include ---"
-msgstr "--- įterpti ---"
-
-#: ../menueditor/menueditor-main-window.c:1089
-#: ../menueditor/menueditor-main-window.c:1655
-msgid "system"
-msgstr "sistema"
-
-#: ../menueditor/menueditor-main-window.c:1215
-#: ../menueditor/menueditor-main-window.c:1263
-msgid "Do you want to move the item into the submenu?"
-msgstr "Ar norite perkelti elementą į vidinį meniu?"
-
-#: ../menueditor/menueditor-main-window.c:1293
-msgid "A menu editor for Xfce4"
-msgstr "Xfce4 Meniu redaktorius"
-
-#. Credits
-#: ../menueditor/menueditor-main-window.c:1298
-msgid "Author/Maintainer"
-msgstr ""
-
-#: ../menueditor/menueditor-main-window.c:1299
-#: ../menueditor/menueditor-main-window.c:1300
-#: ../menueditor/menueditor-main-window.c:1301
-msgid "Contributor"
-msgstr "Bendradarbis"
-
-#: ../menueditor/menueditor-main-window.c:1302
-msgid "Icon designer"
-msgstr "Ikonų dizaineris"
-
-#: ../menueditor/menueditor-main-window.c:1345
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Jūs pakeitėte meniu. Ar norėtumėte išsaugoti prieš išeidami ?"
-
-#: ../menueditor/menueditor-main-window.c:1347
-#, fuzzy
-msgid "Forget modifications"
-msgstr "Atmesti modifikacijas"
-
-#: ../menueditor/menueditor-main-window.c:2035
-#, c-format
-msgid "Unable to open the menu file %s in write mode"
-msgstr ""
 
 #: ../panel-plugin/desktop-menu-plugin.c:653
 #, c-format
@@ -548,6 +32,18 @@ msgstr "Pasirinkti Ikoną"
 #: ../panel-plugin/desktop-menu-plugin.c:678
 msgid "Select Menu File"
 msgstr "Pasirinkti Meniu Failą"
+
+#: ../panel-plugin/desktop-menu-plugin.c:705
+msgid "All Files"
+msgstr "Visi Failai"
+
+#: ../panel-plugin/desktop-menu-plugin.c:712
+msgid "Image Files"
+msgstr "Paveikslų Failai"
+
+#: ../panel-plugin/desktop-menu-plugin.c:715
+msgid "Menu Files"
+msgstr "Meniu failai"
 
 #: ../panel-plugin/desktop-menu-plugin.c:740
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
@@ -788,6 +284,10 @@ msgstr "Mastelis"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Ar tikrai norite uždaryti šį meniu?"
 
+#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
+msgid "Question"
+msgstr "Klausimas"
+
 #: ../src/xfdesktop-file-icon-manager.c:681
 #: ../src/xfdesktop-file-icon-manager.c:701
 msgid "If you delete a file, it is permanently lost."
@@ -906,6 +406,11 @@ msgstr ""
 msgid "_Open in New Window"
 msgstr ""
 
+#: ../src/xfdesktop-file-icon-manager.c:1718
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+msgid "_Open"
+msgstr ""
+
 #: ../src/xfdesktop-file-icon-manager.c:1733
 #, fuzzy
 msgid "Create _Launcher..."
@@ -1005,6 +510,10 @@ msgstr ""
 #: ../src/xfdesktop-file-properties-dialog.c:163
 msgid "General"
 msgstr ""
+
+#: ../src/xfdesktop-file-properties-dialog.c:188
+msgid "Name:"
+msgstr "Vardas:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:214
 msgid "Kind:"
@@ -1205,19 +714,6 @@ msgstr ""
 msgid "_Mount Volume"
 msgstr ""
 
-#: ../menueditor/xfce-menueditor.desktop.in.h:1
-msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr ""
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:2
-msgid "Menu Editor"
-msgstr ""
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:3
-#, fuzzy
-msgid "Xfce 4 Menu Editor"
-msgstr "Xfce Meniu"
-
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
 msgstr ""
@@ -1310,6 +806,10 @@ msgstr ""
 #, fuzzy
 msgid "Settings"
 msgstr "Darbastalio nuostatos"
+
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
+msgid "System"
+msgstr "Sistemos"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
@@ -1784,6 +1284,267 @@ msgstr ""
 #: ../settings/xfdesktop-settings.glade.h:72
 msgid "gtk-help"
 msgstr ""
+
+#~ msgid "Add menu entry"
+#~ msgstr "Pridėti meniu įrašą"
+
+#~ msgid "Type:"
+#~ msgstr "Tipas:"
+
+#~ msgid "Title"
+#~ msgstr "Antraštė"
+
+#~ msgid "Submenu"
+#~ msgstr "Vidinis meniu"
+
+#~ msgid "Launcher"
+#~ msgstr "Leistukas"
+
+#~ msgid "Separator"
+#~ msgstr "Skyriklis"
+
+#~ msgid "Quit"
+#~ msgstr "Išeiti"
+
+#~ msgid "Command:"
+#~ msgstr "Komanda:"
+
+#~ msgid "Icon:"
+#~ msgstr "Ikona:"
+
+#, fuzzy
+#~ msgid "No icon"
+#~ msgstr "_Mygtuko ikona:"
+
+#, fuzzy
+#~ msgid "Themed icon:"
+#~ msgstr "Pasirinkti Ikoną"
+
+#, fuzzy
+#~ msgid "Select icon"
+#~ msgstr "Pasirinkti Ikoną"
+
+#~ msgid "Use startup _notification"
+#~ msgstr "Naudoti paleisties per_spėjimą"
+
+#~ msgid "Run in _terminal"
+#~ msgstr "Paleisti _terminale"
+
+#~ msgid "Select command"
+#~ msgstr "Pasirinkite komandą"
+
+#, fuzzy
+#~ msgid "Executable Files"
+#~ msgstr "Pasirinkti Meniu Failą"
+
+#, fuzzy
+#~ msgid "Add external menu entry"
+#~ msgstr "Pridėti išorinį meniu"
+
+#~ msgid "File"
+#~ msgstr "Failas"
+
+#~ msgid "Source:"
+#~ msgstr "Šaltinis:"
+
+#, fuzzy
+#~ msgid "Select external menu"
+#~ msgstr "Pridėti išorinį meniu"
+
+#~ msgid "Style:"
+#~ msgstr "Stilius:"
+
+#~ msgid "Simple"
+#~ msgstr "Paprastas"
+
+#~ msgid "Multilevel"
+#~ msgstr "Daug lygių"
+
+#~ msgid "_Unique entries only"
+#~ msgstr "Tiktai _unikalūs įrašai"
+
+#~ msgid "Edit menu entry"
+#~ msgstr "Redaguoti meniu įrašą"
+
+#, fuzzy
+#~ msgid "Edit external menu entry"
+#~ msgstr "Pridėti išorinį meniu"
+
+#, fuzzy
+#~ msgid "Xfce4-MenuEditor"
+#~ msgstr "Xfce Meniu"
+
+#, fuzzy
+#~ msgid "Continue"
+#~ msgstr "Bendradarbis"
+
+#~ msgid "_File"
+#~ msgstr "_Failas"
+
+#, fuzzy
+#~ msgid "Create a new empty menu"
+#~ msgstr "Sukurti naują Xfce4 meniu failą"
+
+#, fuzzy
+#~ msgid "Open existing menu"
+#~ msgstr "Atidaryti pagrindinį meniu"
+
+#, fuzzy
+#~ msgid "Open _default menu"
+#~ msgstr "Atidaryti pagrindinį meniu"
+
+#~ msgid "Open default menu"
+#~ msgstr "Atidaryti pagrindinį meniu"
+
+#, fuzzy
+#~ msgid "Save modifications"
+#~ msgstr "Pamiršti modifikacijas"
+
+#, fuzzy
+#~ msgid "Save _as..."
+#~ msgstr "Saugoti kaip..."
+
+#, fuzzy
+#~ msgid "Close menu"
+#~ msgstr "Uždaryti dabartinį meniu"
+
+#, fuzzy
+#~ msgid "_Quit"
+#~ msgstr "Išeiti"
+
+#, fuzzy
+#~ msgid "Quit Xfce4-Menueditor"
+#~ msgstr "Xfce Meniu"
+
+#~ msgid "_Edit"
+#~ msgstr "_Redaguoti"
+
+#, fuzzy
+#~ msgid "_Edit entry"
+#~ msgstr "Redaguoti meniu įrašą"
+
+#, fuzzy
+#~ msgid "Edit selected entry"
+#~ msgstr "Redaguoti meniu įrašą"
+
+#, fuzzy
+#~ msgid "_Add entry"
+#~ msgstr "Pridėti meniu įrašą"
+
+#, fuzzy
+#~ msgid "Add a new entry in the menu"
+#~ msgstr "Pridėti įrašą į meniu"
+
+#, fuzzy
+#~ msgid "Add _external"
+#~ msgstr "Pridėti išorinį meniu"
+
+#, fuzzy
+#~ msgid "Add an external entry"
+#~ msgstr "Pridėti išorinį meniu"
+
+#, fuzzy
+#~ msgid "Remove entry"
+#~ msgstr "Pridėti meniu įrašą"
+
+#, fuzzy
+#~ msgid "Move entry up"
+#~ msgstr "Perkelti šį įrašą aukštyn"
+
+#, fuzzy
+#~ msgid "Move entry down"
+#~ msgstr "Perkelti šį įrašą žemyn"
+
+#~ msgid "_Help"
+#~ msgstr "_Pagalba"
+
+#~ msgid "_About..."
+#~ msgstr "_Apie..."
+
+#, fuzzy
+#~ msgid "Show informations about xfce4-menueditor"
+#~ msgstr "Neįmanoma paleisti xfce4-menueditor:·%s"
+
+#, fuzzy
+#~ msgid "Collapse all"
+#~ msgstr "Sutraukti medį"
+
+#, fuzzy
+#~ msgid "Collapse all menu entries"
+#~ msgstr "Sutraukti medį"
+
+#, fuzzy
+#~ msgid "Expand all menu entries"
+#~ msgstr "Išskleisti medį"
+
+#~ msgid "Name"
+#~ msgstr "Vardas"
+
+#~ msgid "Command"
+#~ msgstr "Komanda"
+
+#~ msgid "Hidden"
+#~ msgstr "Paslėptas"
+
+#~ msgid "Are you sure you want to close the current menu?"
+#~ msgstr "Ar tikrai norite uždaryti šį meniu?"
+
+#~ msgid "Do you want to save before closing the file?"
+#~ msgstr "Norėtumėte išsaugoti pries uždarydami failą?"
+
+#~ msgid "Do you want to save before opening an other menu ?"
+#~ msgstr "Ar norite išsaugoti prieš atidarydami kitą meniu?"
+
+#~ msgid "Ignore modifications"
+#~ msgstr "Atmesti modifikacijas"
+
+#~ msgid "Open menu file"
+#~ msgstr "Atidaryti meniu failą"
+
+#~ msgid "Do you want to save before opening the default menu ?"
+#~ msgstr "Ar norite išsaugoti prieš atidarydami pagrindinį meniu ?"
+
+#, fuzzy
+#~ msgid "Save menu file as"
+#~ msgstr "Atidaryti meniu failą"
+
+#~ msgid "Do you want to save before closing the menu ?"
+#~ msgstr "Ar norite išsaugoti prieš udarydami meniu ?"
+
+#~ msgid "quit"
+#~ msgstr "išeiti"
+
+#~ msgid "--- separator ---"
+#~ msgstr "--- skyriklis ---"
+
+#~ msgid "--- include ---"
+#~ msgstr "--- įterpti ---"
+
+#~ msgid "system"
+#~ msgstr "sistema"
+
+#~ msgid "Do you want to move the item into the submenu?"
+#~ msgstr "Ar norite perkelti elementą į vidinį meniu?"
+
+#~ msgid "A menu editor for Xfce4"
+#~ msgstr "Xfce4 Meniu redaktorius"
+
+#~ msgid "Contributor"
+#~ msgstr "Bendradarbis"
+
+#~ msgid "Icon designer"
+#~ msgstr "Ikonų dizaineris"
+
+#~ msgid "You have modified the menu, do you want to save it before quitting ?"
+#~ msgstr "Jūs pakeitėte meniu. Ar norėtumėte išsaugoti prieš išeidami ?"
+
+#, fuzzy
+#~ msgid "Forget modifications"
+#~ msgstr "Atmesti modifikacijas"
+
+#, fuzzy
+#~ msgid "Xfce 4 Menu Editor"
+#~ msgstr "Xfce Meniu"
 
 #, fuzzy
 #~ msgid "Xfce 4 Desktop Settings"

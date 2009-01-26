@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 04:40-0800\n"
+"POT-Creation-Date: 2009-01-26 01:15+0100\n"
 "PO-Revision-Date: 2008-04-06 21:50+0300\n"
 "Last-Translator: Rihards Prieditis <RPrieditis@gmail.com>\n"
 "Language-Team: Latvian <RPrieditis@gmail.com>\n"
@@ -25,493 +25,6 @@ msgstr ""
 msgid "Backdrop list file is not valid"
 msgstr "Izvēlaties saraksta faila nosaukumu"
 
-#: ../menueditor/menueditor-add-dialog.c:129
-msgid "Add menu entry"
-msgstr "Pievienot izvēlnes ierakstu"
-
-#. Type
-#: ../menueditor/menueditor-add-dialog.c:142
-#: ../menueditor/menueditor-add-dialog.c:143
-#: ../menueditor/menueditor-add-external-dialog.c:113
-#: ../menueditor/menueditor-add-external-dialog.c:114
-msgid "Type:"
-msgstr "Tips:"
-
-#: ../menueditor/menueditor-add-dialog.c:151
-msgid "Title"
-msgstr "Virsraksts"
-
-#: ../menueditor/menueditor-add-dialog.c:152
-msgid "Submenu"
-msgstr "Apakšizvēlne"
-
-#: ../menueditor/menueditor-add-dialog.c:153
-msgid "Launcher"
-msgstr "Palaidējs"
-
-#: ../menueditor/menueditor-add-dialog.c:154
-msgid "Separator"
-msgstr "Atdalītājs"
-
-#: ../menueditor/menueditor-add-dialog.c:155
-msgid "Quit"
-msgstr "Iziet"
-
-#. Name
-#: ../menueditor/menueditor-add-dialog.c:162
-#: ../menueditor/menueditor-add-dialog.c:163
-#: ../menueditor/menueditor-edit-dialog.c:140
-#: ../menueditor/menueditor-edit-dialog.c:141
-#: ../src/xfdesktop-file-properties-dialog.c:188
-msgid "Name:"
-msgstr "Nosaukums:"
-
-#. Command
-#: ../menueditor/menueditor-add-dialog.c:176
-#: ../menueditor/menueditor-add-dialog.c:177
-#: ../menueditor/menueditor-edit-dialog.c:154
-#: ../menueditor/menueditor-edit-dialog.c:155
-msgid "Command:"
-msgstr "Komanda:"
-
-#. Icon chooser
-#: ../menueditor/menueditor-add-dialog.c:201
-#: ../menueditor/menueditor-add-dialog.c:202
-#: ../menueditor/menueditor-add-dialog.c:244
-#: ../menueditor/menueditor-add-dialog.c:245
-#: ../menueditor/menueditor-edit-dialog.c:179
-#: ../menueditor/menueditor-edit-dialog.c:180
-#: ../menueditor/menueditor-edit-dialog.c:222
-#: ../menueditor/menueditor-edit-dialog.c:223
-msgid "Icon:"
-msgstr "Ikona:"
-
-#. setup a label to tell that no icon was selected
-#: ../menueditor/menueditor-add-dialog.c:213
-#: ../menueditor/menueditor-add-dialog.c:330
-#: ../menueditor/menueditor-edit-dialog.c:191
-#: ../menueditor/menueditor-edit-dialog.c:586
-msgid "No icon"
-msgstr "Nav ikonas"
-
-#: ../menueditor/menueditor-add-dialog.c:225
-#: ../menueditor/menueditor-add-dialog.c:226
-#: ../menueditor/menueditor-edit-dialog.c:203
-#: ../menueditor/menueditor-edit-dialog.c:204
-msgid "Themed icon:"
-msgstr "Tēmas ikona:"
-
-#. allocate the chooser dialog
-#: ../menueditor/menueditor-add-dialog.c:252
-#: ../menueditor/menueditor-add-dialog.c:347
-#: ../menueditor/menueditor-edit-dialog.c:230
-#: ../menueditor/menueditor-edit-dialog.c:384
-msgid "Select icon"
-msgstr "Norādiet ikonu"
-
-#: ../menueditor/menueditor-add-dialog.c:257
-#: ../menueditor/menueditor-add-dialog.c:437
-#: ../menueditor/menueditor-add-external-dialog.c:142
-#: ../menueditor/menueditor-edit-dialog.c:235
-#: ../menueditor/menueditor-edit-dialog.c:296
-#: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:705
-msgid "All Files"
-msgstr "Visi faili"
-
-#: ../menueditor/menueditor-add-dialog.c:261
-#: ../menueditor/menueditor-edit-dialog.c:239
-#: ../panel-plugin/desktop-menu-plugin.c:712
-msgid "Image Files"
-msgstr "Attēlu faili"
-
-#. Start Notify check button
-#: ../menueditor/menueditor-add-dialog.c:283
-#: ../menueditor/menueditor-edit-dialog.c:261
-msgid "Use startup _notification"
-msgstr "Izmantot sāknēša_nas paziņošanu"
-
-#. Run in terminal check button
-#: ../menueditor/menueditor-add-dialog.c:288
-#: ../menueditor/menueditor-edit-dialog.c:266
-msgid "Run in _terminal"
-msgstr "Izpildīt _terminālī"
-
-#: ../menueditor/menueditor-add-dialog.c:427
-#: ../menueditor/menueditor-edit-dialog.c:286
-#: ../menueditor/menueditor-main-window.c:450
-msgid "Select command"
-msgstr "Norādiet komandu"
-
-#: ../menueditor/menueditor-add-dialog.c:442
-#: ../menueditor/menueditor-edit-dialog.c:301
-msgid "Executable Files"
-msgstr "Izpildāmie faili"
-
-#: ../menueditor/menueditor-add-dialog.c:457
-#: ../menueditor/menueditor-edit-dialog.c:316
-msgid "Perl Scripts"
-msgstr "Perl skripti"
-
-#: ../menueditor/menueditor-add-dialog.c:463
-#: ../menueditor/menueditor-edit-dialog.c:322
-msgid "Python Scripts"
-msgstr "Python skripti"
-
-#: ../menueditor/menueditor-add-dialog.c:469
-#: ../menueditor/menueditor-edit-dialog.c:328
-msgid "Ruby Scripts"
-msgstr "Ruby skripti"
-
-#: ../menueditor/menueditor-add-dialog.c:475
-#: ../menueditor/menueditor-edit-dialog.c:334
-msgid "Shell Scripts"
-msgstr "Čaulas skripti"
-
-#: ../menueditor/menueditor-add-external-dialog.c:100
-msgid "Add external menu entry"
-msgstr "Pievienot ārējo izvēlnes ierakstu"
-
-#: ../menueditor/menueditor-add-external-dialog.c:122
-msgid "File"
-msgstr "Fails"
-
-#: ../menueditor/menueditor-add-external-dialog.c:123
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
-msgid "System"
-msgstr "Sistēma"
-
-#. Source
-#: ../menueditor/menueditor-add-external-dialog.c:129
-#: ../menueditor/menueditor-add-external-dialog.c:130
-#: ../menueditor/menueditor-edit-external-dialog.c:109
-#: ../menueditor/menueditor-edit-external-dialog.c:110
-msgid "Source:"
-msgstr "Avots:"
-
-#: ../menueditor/menueditor-add-external-dialog.c:137
-#: ../menueditor/menueditor-edit-external-dialog.c:117
-msgid "Select external menu"
-msgstr "Norādiet ārējo izvēlni"
-
-#: ../menueditor/menueditor-add-external-dialog.c:146
-#: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:715
-msgid "Menu Files"
-msgstr "Izvēlnes faili"
-
-#. Style
-#: ../menueditor/menueditor-add-external-dialog.c:155
-#: ../menueditor/menueditor-add-external-dialog.c:156
-#: ../menueditor/menueditor-edit-external-dialog.c:135
-#: ../menueditor/menueditor-edit-external-dialog.c:136
-msgid "Style:"
-msgstr "Stils:"
-
-#: ../menueditor/menueditor-add-external-dialog.c:165
-#: ../menueditor/menueditor-edit-external-dialog.c:145
-msgid "Simple"
-msgstr "Vienkāršs"
-
-#: ../menueditor/menueditor-add-external-dialog.c:166
-#: ../menueditor/menueditor-edit-external-dialog.c:146
-msgid "Multilevel"
-msgstr "Daudzlīmeņu"
-
-#. Unique check button
-#: ../menueditor/menueditor-add-external-dialog.c:171
-#: ../menueditor/menueditor-edit-external-dialog.c:151
-msgid "_Unique entries only"
-msgstr "_Tikai unikālus ierakstus"
-
-#: ../menueditor/menueditor-edit-dialog.c:127
-msgid "Edit menu entry"
-msgstr "Rediģēt izvēlnes ierakstu"
-
-#: ../menueditor/menueditor-edit-external-dialog.c:96
-msgid "Edit external menu entry"
-msgstr "Rediģēt ārējas izvēlnes ierakstu"
-
-#: ../menueditor/menueditor-main.c:43
-msgid "Xfce4-MenuEditor"
-msgstr "Xfce4-IzvēlnesRedaktors"
-
-#: ../menueditor/menueditor-main.c:57
-msgid "Menueditor Warning"
-msgstr "Izvēlņu redaktora brīdinājums"
-
-#: ../menueditor/menueditor-main.c:59
-msgid "xfce4-menueditor is deprecated"
-msgstr "xfce4-menueditor neiesaka izmantot, novecojis"
-
-#: ../menueditor/menueditor-main.c:60
-msgid ""
-"Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-"edit the new menu file format.  You may continue and edit an old-style menu "
-"file, or quit."
-msgstr ""
-"Xfce izvēlnes sistēma ir aizvietota, un xfce4-menueditor vairs nespēj "
-"rediģēt jauno izvēlņu formātu. Jūs varat izmantot šo programmu, lai rediģētu "
-"vecās izvēlnes, vai arī iziet."
-
-#: ../menueditor/menueditor-main.c:61
-msgid "Continue"
-msgstr "Turpināt"
-
-#: ../menueditor/menueditor-main-window.c:140
-msgid "_File"
-msgstr "_Fails"
-
-#: ../menueditor/menueditor-main-window.c:141
-msgid "_New"
-msgstr "_Jauns"
-
-#: ../menueditor/menueditor-main-window.c:141
-msgid "Create a new empty menu"
-msgstr "Izveidot jaunu tukšu izvēlni"
-
-#: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
-msgid "_Open"
-msgstr "_Atvērt"
-
-#: ../menueditor/menueditor-main-window.c:142
-msgid "Open existing menu"
-msgstr "Atvērt esošu izvēlni"
-
-#: ../menueditor/menueditor-main-window.c:143
-msgid "Open _default menu"
-msgstr "Atvērt _noklusēto izvēlni"
-
-#: ../menueditor/menueditor-main-window.c:143
-msgid "Open default menu"
-msgstr "Atvērt noklusēto izvēlni"
-
-#: ../menueditor/menueditor-main-window.c:144
-msgid "_Save"
-msgstr "_Saglabāt"
-
-#: ../menueditor/menueditor-main-window.c:144
-msgid "Save modifications"
-msgstr "Saglabāt izmaiņas"
-
-#: ../menueditor/menueditor-main-window.c:145
-msgid "Save _as..."
-msgstr "Saglabāt _kā"
-
-#: ../menueditor/menueditor-main-window.c:145
-msgid "Save menu under a given name"
-msgstr "Saglabāt izvēlni zem dotā nosaukuma"
-
-#: ../menueditor/menueditor-main-window.c:146
-msgid "_Close"
-msgstr "Ai_zvērt"
-
-#: ../menueditor/menueditor-main-window.c:146
-msgid "Close menu"
-msgstr "Aizvērt izvēlni"
-
-#: ../menueditor/menueditor-main-window.c:147
-msgid "_Quit"
-msgstr "_Iziet"
-
-#: ../menueditor/menueditor-main-window.c:147
-msgid "Quit Xfce4-Menueditor"
-msgstr "Iziet no Xfce4-IzvēlņuRedaktora"
-
-#: ../menueditor/menueditor-main-window.c:149
-msgid "_Edit"
-msgstr "_Rediģēt"
-
-#: ../menueditor/menueditor-main-window.c:150
-msgid "_Edit entry"
-msgstr "_Rediģēt ierakstu"
-
-#: ../menueditor/menueditor-main-window.c:150
-msgid "Edit selected entry"
-msgstr "Rediģēt izvēlēto ierakstu"
-
-#: ../menueditor/menueditor-main-window.c:151
-msgid "_Add entry"
-msgstr "_Pievienot ierakstu"
-
-#: ../menueditor/menueditor-main-window.c:151
-msgid "Add a new entry in the menu"
-msgstr "Pievienot izvēlnē jaunu ierakstu "
-
-#: ../menueditor/menueditor-main-window.c:152
-msgid "Add _external"
-msgstr "Pievienot ā_rēju"
-
-#: ../menueditor/menueditor-main-window.c:152
-msgid "Add an external entry"
-msgstr "Pievienot ārēju ierakstu"
-
-#: ../menueditor/menueditor-main-window.c:153
-msgid "_Remove entry"
-msgstr "_Dzēst ierakstu"
-
-#: ../menueditor/menueditor-main-window.c:153
-msgid "Remove entry"
-msgstr "Dzēst ierakstu"
-
-#: ../menueditor/menueditor-main-window.c:154
-msgid "_Up"
-msgstr "Uz _augšu"
-
-#: ../menueditor/menueditor-main-window.c:154
-msgid "Move entry up"
-msgstr "Pārvieto ierakstu uz augšu"
-
-#: ../menueditor/menueditor-main-window.c:155
-msgid "_Down"
-msgstr "Uz _leju"
-
-#: ../menueditor/menueditor-main-window.c:155
-msgid "Move entry down"
-msgstr "Pārvieto ierakstu uz leju"
-
-#: ../menueditor/menueditor-main-window.c:157
-msgid "_Help"
-msgstr "_Palīdzība"
-
-#: ../menueditor/menueditor-main-window.c:158
-msgid "_About..."
-msgstr "_Par..."
-
-#: ../menueditor/menueditor-main-window.c:158
-msgid "Show informations about xfce4-menueditor"
-msgstr "Rādīt visu informāciju par xfce4-menueditor"
-
-#: ../menueditor/menueditor-main-window.c:160
-msgid "Collapse all"
-msgstr "Savilkt visu"
-
-#: ../menueditor/menueditor-main-window.c:160
-msgid "Collapse all menu entries"
-msgstr "Savilkt visus izvēlņu ierakstus"
-
-#: ../menueditor/menueditor-main-window.c:161
-msgid "Expand all"
-msgstr "Izplest visu"
-
-#: ../menueditor/menueditor-main-window.c:161
-msgid "Expand all menu entries"
-msgstr "Izplest visus izvēlnes ierakstus"
-
-#: ../menueditor/menueditor-main-window.c:341
-msgid "Name"
-msgstr "Nosaukums"
-
-#: ../menueditor/menueditor-main-window.c:344
-msgid "Command"
-msgstr "Komanda"
-
-#: ../menueditor/menueditor-main-window.c:345
-msgid "Hidden"
-msgstr "Slēpts"
-
-#: ../menueditor/menueditor-main-window.c:427
-msgid "Are you sure you want to close the current menu?"
-msgstr "Esat drošs, ka vēlaties aizvērt esošo izvēlni?"
-
-#: ../menueditor/menueditor-main-window.c:441
-msgid "Do you want to save before closing the file?"
-msgstr "Vai vēlaties saglabāt pirms faila aizvēršanas?"
-
-#: ../menueditor/menueditor-main-window.c:479
-#: ../menueditor/menueditor-main-window.c:532
-#: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
-msgid "Question"
-msgstr "Jautājums"
-
-#: ../menueditor/menueditor-main-window.c:481
-msgid "Do you want to save before opening an other menu ?"
-msgstr "Vai vēlaties saglabāt pirms atvērt citu izvēlni?"
-
-#: ../menueditor/menueditor-main-window.c:483
-#: ../menueditor/menueditor-main-window.c:536
-#: ../menueditor/menueditor-main-window.c:634
-msgid "Ignore modifications"
-msgstr "Ignorēt izmaiņas"
-
-#: ../menueditor/menueditor-main-window.c:494
-msgid "Open menu file"
-msgstr "Atvērt izvēlnes failu"
-
-#: ../menueditor/menueditor-main-window.c:534
-msgid "Do you want to save before opening the default menu ?"
-msgstr "Vai vēlaties saglabāt, pirms atvērt noklusēto izvēlni?"
-
-#: ../menueditor/menueditor-main-window.c:594
-msgid "Save menu file as"
-msgstr "Saglabāt izvēlnes failu kā"
-
-#: ../menueditor/menueditor-main-window.c:632
-#: ../menueditor/menueditor-main-window.c:1343
-msgid "Do you want to save before closing the menu ?"
-msgstr "Vai vēlaties saglabāt pirms izvēlnes aizvēršanas?"
-
-#: ../menueditor/menueditor-main-window.c:858
-#: ../menueditor/menueditor-main-window.c:988
-msgid "quit"
-msgstr "iziet"
-
-#: ../menueditor/menueditor-main-window.c:963
-#: ../menueditor/menueditor-main-window.c:1584
-msgid "--- separator ---"
-msgstr "--- atdalītājs ---"
-
-#: ../menueditor/menueditor-main-window.c:1081
-#: ../menueditor/menueditor-main-window.c:1088
-#: ../menueditor/menueditor-main-window.c:1638
-msgid "--- include ---"
-msgstr "--- iekļaut ---"
-
-#: ../menueditor/menueditor-main-window.c:1089
-#: ../menueditor/menueditor-main-window.c:1655
-msgid "system"
-msgstr "sistēma"
-
-#: ../menueditor/menueditor-main-window.c:1215
-#: ../menueditor/menueditor-main-window.c:1263
-msgid "Do you want to move the item into the submenu?"
-msgstr "Vai vēlaties pārvietot vienumu uz apakšizvēlni?"
-
-#: ../menueditor/menueditor-main-window.c:1293
-msgid "A menu editor for Xfce4"
-msgstr "Xfce4 izvēlņu redaktors"
-
-#. Credits
-#: ../menueditor/menueditor-main-window.c:1298
-msgid "Author/Maintainer"
-msgstr "Autors/Uzturētājs"
-
-#: ../menueditor/menueditor-main-window.c:1299
-#: ../menueditor/menueditor-main-window.c:1300
-#: ../menueditor/menueditor-main-window.c:1301
-msgid "Contributor"
-msgstr "Atbalstītāji"
-
-#: ../menueditor/menueditor-main-window.c:1302
-msgid "Icon designer"
-msgstr "Ikonu autors"
-
-#: ../menueditor/menueditor-main-window.c:1345
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Jūs esat mainījis izvēlni, vai vēlaties saglabāt pirms aizvēršanas?"
-
-#: ../menueditor/menueditor-main-window.c:1347
-msgid "Forget modifications"
-msgstr "Aizmirst izmaiņas"
-
-#: ../menueditor/menueditor-main-window.c:2035
-#, c-format
-msgid "Unable to open the menu file %s in write mode"
-msgstr "Nevarēju atvērt izvēlnes failu %s rakstīšanas režīmā"
-
 #: ../panel-plugin/desktop-menu-plugin.c:653
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
@@ -524,6 +37,18 @@ msgstr "Norādiet ikonu"
 #: ../panel-plugin/desktop-menu-plugin.c:678
 msgid "Select Menu File"
 msgstr "Norādiet izvēlnes failu"
+
+#: ../panel-plugin/desktop-menu-plugin.c:705
+msgid "All Files"
+msgstr "Visi faili"
+
+#: ../panel-plugin/desktop-menu-plugin.c:712
+msgid "Image Files"
+msgstr "Attēlu faili"
+
+#: ../panel-plugin/desktop-menu-plugin.c:715
+msgid "Menu Files"
+msgstr "Izvēlnes faili"
 
 #: ../panel-plugin/desktop-menu-plugin.c:740
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
@@ -756,6 +281,10 @@ msgstr "Pārdēvēt"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Esat drošs, ka vēlaties dzēst \"%s\"?"
 
+#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
+msgid "Question"
+msgstr "Jautājums"
+
 #: ../src/xfdesktop-file-icon-manager.c:681
 #: ../src/xfdesktop-file-icon-manager.c:701
 msgid "If you delete a file, it is permanently lost."
@@ -872,6 +401,11 @@ msgstr "_Atvērt visu"
 msgid "_Open in New Window"
 msgstr "_Atvērt jaunā logā"
 
+#: ../src/xfdesktop-file-icon-manager.c:1718
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+msgid "_Open"
+msgstr "_Atvērt"
+
 #: ../src/xfdesktop-file-icon-manager.c:1733
 msgid "Create _Launcher..."
 msgstr "Izveidot _palaidēju..."
@@ -965,6 +499,10 @@ msgstr "Lasīt & rakstīt"
 #: ../src/xfdesktop-file-properties-dialog.c:163
 msgid "General"
 msgstr "Vispārēji"
+
+#: ../src/xfdesktop-file-properties-dialog.c:188
+msgid "Name:"
+msgstr "Nosaukums:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:214
 msgid "Kind:"
@@ -1164,18 +702,6 @@ msgstr "_Nomontēt sējumu"
 msgid "_Mount Volume"
 msgstr "_Montēt sējumu"
 
-#: ../menueditor/xfce-menueditor.desktop.in.h:1
-msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Grafisks rīks, priekš Xfce 4 izvēlnes rediģēšanas"
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:2
-msgid "Menu Editor"
-msgstr "Izvēlnes redaktors"
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:3
-msgid "Xfce 4 Menu Editor"
-msgstr "Xfce 4 izvēlnes redaktors"
-
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
 msgstr "Piederumi"
@@ -1263,6 +789,10 @@ msgstr "Darbavirsmas un sistēmas lietotņu uzstādījumi"
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
 msgid "Settings"
 msgstr "Uzstādījumi"
+
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
+msgid "System"
+msgstr "Sistēma"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
@@ -1741,6 +1271,297 @@ msgstr ""
 #: ../settings/xfdesktop-settings.glade.h:72
 msgid "gtk-help"
 msgstr ""
+
+#~ msgid "Add menu entry"
+#~ msgstr "Pievienot izvēlnes ierakstu"
+
+#~ msgid "Type:"
+#~ msgstr "Tips:"
+
+#~ msgid "Title"
+#~ msgstr "Virsraksts"
+
+#~ msgid "Submenu"
+#~ msgstr "Apakšizvēlne"
+
+#~ msgid "Launcher"
+#~ msgstr "Palaidējs"
+
+#~ msgid "Separator"
+#~ msgstr "Atdalītājs"
+
+#~ msgid "Quit"
+#~ msgstr "Iziet"
+
+#~ msgid "Command:"
+#~ msgstr "Komanda:"
+
+#~ msgid "Icon:"
+#~ msgstr "Ikona:"
+
+#~ msgid "No icon"
+#~ msgstr "Nav ikonas"
+
+#~ msgid "Themed icon:"
+#~ msgstr "Tēmas ikona:"
+
+#~ msgid "Select icon"
+#~ msgstr "Norādiet ikonu"
+
+#~ msgid "Use startup _notification"
+#~ msgstr "Izmantot sāknēša_nas paziņošanu"
+
+#~ msgid "Run in _terminal"
+#~ msgstr "Izpildīt _terminālī"
+
+#~ msgid "Select command"
+#~ msgstr "Norādiet komandu"
+
+#~ msgid "Executable Files"
+#~ msgstr "Izpildāmie faili"
+
+#~ msgid "Perl Scripts"
+#~ msgstr "Perl skripti"
+
+#~ msgid "Python Scripts"
+#~ msgstr "Python skripti"
+
+#~ msgid "Ruby Scripts"
+#~ msgstr "Ruby skripti"
+
+#~ msgid "Shell Scripts"
+#~ msgstr "Čaulas skripti"
+
+#~ msgid "Add external menu entry"
+#~ msgstr "Pievienot ārējo izvēlnes ierakstu"
+
+#~ msgid "File"
+#~ msgstr "Fails"
+
+#~ msgid "Source:"
+#~ msgstr "Avots:"
+
+#~ msgid "Select external menu"
+#~ msgstr "Norādiet ārējo izvēlni"
+
+#~ msgid "Style:"
+#~ msgstr "Stils:"
+
+#~ msgid "Simple"
+#~ msgstr "Vienkāršs"
+
+#~ msgid "Multilevel"
+#~ msgstr "Daudzlīmeņu"
+
+#~ msgid "_Unique entries only"
+#~ msgstr "_Tikai unikālus ierakstus"
+
+#~ msgid "Edit menu entry"
+#~ msgstr "Rediģēt izvēlnes ierakstu"
+
+#~ msgid "Edit external menu entry"
+#~ msgstr "Rediģēt ārējas izvēlnes ierakstu"
+
+#~ msgid "Xfce4-MenuEditor"
+#~ msgstr "Xfce4-IzvēlnesRedaktors"
+
+#~ msgid "Menueditor Warning"
+#~ msgstr "Izvēlņu redaktora brīdinājums"
+
+#~ msgid "xfce4-menueditor is deprecated"
+#~ msgstr "xfce4-menueditor neiesaka izmantot, novecojis"
+
+#~ msgid ""
+#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
+#~ "edit the new menu file format.  You may continue and edit an old-style "
+#~ "menu file, or quit."
+#~ msgstr ""
+#~ "Xfce izvēlnes sistēma ir aizvietota, un xfce4-menueditor vairs nespēj "
+#~ "rediģēt jauno izvēlņu formātu. Jūs varat izmantot šo programmu, lai "
+#~ "rediģētu vecās izvēlnes, vai arī iziet."
+
+#~ msgid "Continue"
+#~ msgstr "Turpināt"
+
+#~ msgid "_File"
+#~ msgstr "_Fails"
+
+#~ msgid "_New"
+#~ msgstr "_Jauns"
+
+#~ msgid "Create a new empty menu"
+#~ msgstr "Izveidot jaunu tukšu izvēlni"
+
+#~ msgid "Open existing menu"
+#~ msgstr "Atvērt esošu izvēlni"
+
+#~ msgid "Open _default menu"
+#~ msgstr "Atvērt _noklusēto izvēlni"
+
+#~ msgid "Open default menu"
+#~ msgstr "Atvērt noklusēto izvēlni"
+
+#~ msgid "_Save"
+#~ msgstr "_Saglabāt"
+
+#~ msgid "Save modifications"
+#~ msgstr "Saglabāt izmaiņas"
+
+#~ msgid "Save _as..."
+#~ msgstr "Saglabāt _kā"
+
+#~ msgid "Save menu under a given name"
+#~ msgstr "Saglabāt izvēlni zem dotā nosaukuma"
+
+#~ msgid "_Close"
+#~ msgstr "Ai_zvērt"
+
+#~ msgid "Close menu"
+#~ msgstr "Aizvērt izvēlni"
+
+#~ msgid "_Quit"
+#~ msgstr "_Iziet"
+
+#~ msgid "Quit Xfce4-Menueditor"
+#~ msgstr "Iziet no Xfce4-IzvēlņuRedaktora"
+
+#~ msgid "_Edit"
+#~ msgstr "_Rediģēt"
+
+#~ msgid "_Edit entry"
+#~ msgstr "_Rediģēt ierakstu"
+
+#~ msgid "Edit selected entry"
+#~ msgstr "Rediģēt izvēlēto ierakstu"
+
+#~ msgid "_Add entry"
+#~ msgstr "_Pievienot ierakstu"
+
+#~ msgid "Add a new entry in the menu"
+#~ msgstr "Pievienot izvēlnē jaunu ierakstu "
+
+#~ msgid "Add _external"
+#~ msgstr "Pievienot ā_rēju"
+
+#~ msgid "Add an external entry"
+#~ msgstr "Pievienot ārēju ierakstu"
+
+#~ msgid "_Remove entry"
+#~ msgstr "_Dzēst ierakstu"
+
+#~ msgid "Remove entry"
+#~ msgstr "Dzēst ierakstu"
+
+#~ msgid "_Up"
+#~ msgstr "Uz _augšu"
+
+#~ msgid "Move entry up"
+#~ msgstr "Pārvieto ierakstu uz augšu"
+
+#~ msgid "_Down"
+#~ msgstr "Uz _leju"
+
+#~ msgid "Move entry down"
+#~ msgstr "Pārvieto ierakstu uz leju"
+
+#~ msgid "_Help"
+#~ msgstr "_Palīdzība"
+
+#~ msgid "_About..."
+#~ msgstr "_Par..."
+
+#~ msgid "Show informations about xfce4-menueditor"
+#~ msgstr "Rādīt visu informāciju par xfce4-menueditor"
+
+#~ msgid "Collapse all"
+#~ msgstr "Savilkt visu"
+
+#~ msgid "Collapse all menu entries"
+#~ msgstr "Savilkt visus izvēlņu ierakstus"
+
+#~ msgid "Expand all"
+#~ msgstr "Izplest visu"
+
+#~ msgid "Expand all menu entries"
+#~ msgstr "Izplest visus izvēlnes ierakstus"
+
+#~ msgid "Name"
+#~ msgstr "Nosaukums"
+
+#~ msgid "Command"
+#~ msgstr "Komanda"
+
+#~ msgid "Hidden"
+#~ msgstr "Slēpts"
+
+#~ msgid "Are you sure you want to close the current menu?"
+#~ msgstr "Esat drošs, ka vēlaties aizvērt esošo izvēlni?"
+
+#~ msgid "Do you want to save before closing the file?"
+#~ msgstr "Vai vēlaties saglabāt pirms faila aizvēršanas?"
+
+#~ msgid "Do you want to save before opening an other menu ?"
+#~ msgstr "Vai vēlaties saglabāt pirms atvērt citu izvēlni?"
+
+#~ msgid "Ignore modifications"
+#~ msgstr "Ignorēt izmaiņas"
+
+#~ msgid "Open menu file"
+#~ msgstr "Atvērt izvēlnes failu"
+
+#~ msgid "Do you want to save before opening the default menu ?"
+#~ msgstr "Vai vēlaties saglabāt, pirms atvērt noklusēto izvēlni?"
+
+#~ msgid "Save menu file as"
+#~ msgstr "Saglabāt izvēlnes failu kā"
+
+#~ msgid "Do you want to save before closing the menu ?"
+#~ msgstr "Vai vēlaties saglabāt pirms izvēlnes aizvēršanas?"
+
+#~ msgid "quit"
+#~ msgstr "iziet"
+
+#~ msgid "--- separator ---"
+#~ msgstr "--- atdalītājs ---"
+
+#~ msgid "--- include ---"
+#~ msgstr "--- iekļaut ---"
+
+#~ msgid "system"
+#~ msgstr "sistēma"
+
+#~ msgid "Do you want to move the item into the submenu?"
+#~ msgstr "Vai vēlaties pārvietot vienumu uz apakšizvēlni?"
+
+#~ msgid "A menu editor for Xfce4"
+#~ msgstr "Xfce4 izvēlņu redaktors"
+
+#~ msgid "Author/Maintainer"
+#~ msgstr "Autors/Uzturētājs"
+
+#~ msgid "Contributor"
+#~ msgstr "Atbalstītāji"
+
+#~ msgid "Icon designer"
+#~ msgstr "Ikonu autors"
+
+#~ msgid "You have modified the menu, do you want to save it before quitting ?"
+#~ msgstr "Jūs esat mainījis izvēlni, vai vēlaties saglabāt pirms aizvēršanas?"
+
+#~ msgid "Forget modifications"
+#~ msgstr "Aizmirst izmaiņas"
+
+#~ msgid "Unable to open the menu file %s in write mode"
+#~ msgstr "Nevarēju atvērt izvēlnes failu %s rakstīšanas režīmā"
+
+#~ msgid "Graphical tool for editing the Xfce 4 menu"
+#~ msgstr "Grafisks rīks, priekš Xfce 4 izvēlnes rediģēšanas"
+
+#~ msgid "Menu Editor"
+#~ msgstr "Izvēlnes redaktors"
+
+#~ msgid "Xfce 4 Menu Editor"
+#~ msgstr "Xfce 4 izvēlnes redaktors"
 
 #~ msgid "Settings for the Xfce 4 Desktop Manager"
 #~ msgstr "Xfce 4 darbavirsmas pārvaldnieka uzstādījumi"

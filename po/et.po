@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 04:40-0800\n"
+"POT-Creation-Date: 2009-01-26 01:15+0100\n"
 "PO-Revision-Date: 2009-01-15 01:29-0800\n"
 "Last-Translator: Kristjan Siimson <kristjan.siimson@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -19,494 +19,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Narro 0.9.2 on http://tolge.pingviin.org\n"
 
-#: ../common/xfdesktop-common.c:87
-#: ../common/xfdesktop-common.c:191
+#: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Taustapiltide loendisäilik on ebakorrektne"
-
-#: ../menueditor/menueditor-add-dialog.c:129
-msgid "Add menu entry"
-msgstr "Lisada menüü sissekanne"
-
-#. Type
-#: ../menueditor/menueditor-add-dialog.c:142
-#: ../menueditor/menueditor-add-dialog.c:143
-#: ../menueditor/menueditor-add-external-dialog.c:113
-#: ../menueditor/menueditor-add-external-dialog.c:114
-msgid "Type:"
-msgstr "Liik:"
-
-#: ../menueditor/menueditor-add-dialog.c:151
-msgid "Title"
-msgstr "Pealkiri"
-
-#: ../menueditor/menueditor-add-dialog.c:152
-msgid "Submenu"
-msgstr "Alamenüü"
-
-#: ../menueditor/menueditor-add-dialog.c:153
-msgid "Launcher"
-msgstr "Käivitaja"
-
-#: ../menueditor/menueditor-add-dialog.c:154
-msgid "Separator"
-msgstr "Eraldaja"
-
-#: ../menueditor/menueditor-add-dialog.c:155
-msgid "Quit"
-msgstr "Lõpetada"
-
-#. Name
-#: ../menueditor/menueditor-add-dialog.c:162
-#: ../menueditor/menueditor-add-dialog.c:163
-#: ../menueditor/menueditor-edit-dialog.c:140
-#: ../menueditor/menueditor-edit-dialog.c:141
-#: ../src/xfdesktop-file-properties-dialog.c:188
-msgid "Name:"
-msgstr "Nimi:"
-
-#. Command
-#: ../menueditor/menueditor-add-dialog.c:176
-#: ../menueditor/menueditor-add-dialog.c:177
-#: ../menueditor/menueditor-edit-dialog.c:154
-#: ../menueditor/menueditor-edit-dialog.c:155
-msgid "Command:"
-msgstr "Käsk:"
-
-#. Icon chooser
-#: ../menueditor/menueditor-add-dialog.c:201
-#: ../menueditor/menueditor-add-dialog.c:202
-#: ../menueditor/menueditor-add-dialog.c:244
-#: ../menueditor/menueditor-add-dialog.c:245
-#: ../menueditor/menueditor-edit-dialog.c:179
-#: ../menueditor/menueditor-edit-dialog.c:180
-#: ../menueditor/menueditor-edit-dialog.c:222
-#: ../menueditor/menueditor-edit-dialog.c:223
-msgid "Icon:"
-msgstr "Ikoon:"
-
-#. setup a label to tell that no icon was selected
-#: ../menueditor/menueditor-add-dialog.c:213
-#: ../menueditor/menueditor-add-dialog.c:330
-#: ../menueditor/menueditor-edit-dialog.c:191
-#: ../menueditor/menueditor-edit-dialog.c:586
-msgid "No icon"
-msgstr "Ikoonita"
-
-#: ../menueditor/menueditor-add-dialog.c:225
-#: ../menueditor/menueditor-add-dialog.c:226
-#: ../menueditor/menueditor-edit-dialog.c:203
-#: ../menueditor/menueditor-edit-dialog.c:204
-msgid "Themed icon:"
-msgstr "Teemaga ikoon:"
-
-#. allocate the chooser dialog
-#: ../menueditor/menueditor-add-dialog.c:252
-#: ../menueditor/menueditor-add-dialog.c:347
-#: ../menueditor/menueditor-edit-dialog.c:230
-#: ../menueditor/menueditor-edit-dialog.c:384
-msgid "Select icon"
-msgstr "Valida ikoon"
-
-#: ../menueditor/menueditor-add-dialog.c:257
-#: ../menueditor/menueditor-add-dialog.c:437
-#: ../menueditor/menueditor-add-external-dialog.c:142
-#: ../menueditor/menueditor-edit-dialog.c:235
-#: ../menueditor/menueditor-edit-dialog.c:296
-#: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:705
-msgid "All Files"
-msgstr "Kõik säilikud"
-
-#: ../menueditor/menueditor-add-dialog.c:261
-#: ../menueditor/menueditor-edit-dialog.c:239
-#: ../panel-plugin/desktop-menu-plugin.c:712
-msgid "Image Files"
-msgstr "Piltsäilikud"
-
-#. Start Notify check button
-#: ../menueditor/menueditor-add-dialog.c:283
-#: ../menueditor/menueditor-edit-dialog.c:261
-msgid "Use startup _notification"
-msgstr "_Kasutada käivitamisel teavitamist"
-
-#. Run in terminal check button
-#: ../menueditor/menueditor-add-dialog.c:288
-#: ../menueditor/menueditor-edit-dialog.c:266
-msgid "Run in _terminal"
-msgstr "Käivi_tada terminalis"
-
-#: ../menueditor/menueditor-add-dialog.c:427
-#: ../menueditor/menueditor-edit-dialog.c:286
-#: ../menueditor/menueditor-main-window.c:450
-msgid "Select command"
-msgstr "Valige käsklus"
-
-#: ../menueditor/menueditor-add-dialog.c:442
-#: ../menueditor/menueditor-edit-dialog.c:301
-msgid "Executable Files"
-msgstr "Käitatavad säilikud"
-
-#: ../menueditor/menueditor-add-dialog.c:457
-#: ../menueditor/menueditor-edit-dialog.c:316
-msgid "Perl Scripts"
-msgstr "Perli skriptid"
-
-#: ../menueditor/menueditor-add-dialog.c:463
-#: ../menueditor/menueditor-edit-dialog.c:322
-msgid "Python Scripts"
-msgstr "Pythoni skriptid"
-
-#: ../menueditor/menueditor-add-dialog.c:469
-#: ../menueditor/menueditor-edit-dialog.c:328
-msgid "Ruby Scripts"
-msgstr "Ruby skriptid"
-
-#: ../menueditor/menueditor-add-dialog.c:475
-#: ../menueditor/menueditor-edit-dialog.c:334
-msgid "Shell Scripts"
-msgstr "Shelli skriptid"
-
-#: ../menueditor/menueditor-add-external-dialog.c:100
-msgid "Add external menu entry"
-msgstr "Lisada väline menüü sissekanne"
-
-#: ../menueditor/menueditor-add-external-dialog.c:122
-msgid "File"
-msgstr "Säilik"
-
-#: ../menueditor/menueditor-add-external-dialog.c:123
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
-msgid "System"
-msgstr "Süsteem"
-
-#. Source
-#: ../menueditor/menueditor-add-external-dialog.c:129
-#: ../menueditor/menueditor-add-external-dialog.c:130
-#: ../menueditor/menueditor-edit-external-dialog.c:109
-#: ../menueditor/menueditor-edit-external-dialog.c:110
-msgid "Source:"
-msgstr "Asukoht:"
-
-#: ../menueditor/menueditor-add-external-dialog.c:137
-#: ../menueditor/menueditor-edit-external-dialog.c:117
-msgid "Select external menu"
-msgstr "Märgistada välimenüü"
-
-#: ../menueditor/menueditor-add-external-dialog.c:146
-#: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:715
-msgid "Menu Files"
-msgstr "Menüüsäilikud"
-
-#. Style
-#: ../menueditor/menueditor-add-external-dialog.c:155
-#: ../menueditor/menueditor-add-external-dialog.c:156
-#: ../menueditor/menueditor-edit-external-dialog.c:135
-#: ../menueditor/menueditor-edit-external-dialog.c:136
-msgid "Style:"
-msgstr "Kujundus:"
-
-#: ../menueditor/menueditor-add-external-dialog.c:165
-#: ../menueditor/menueditor-edit-external-dialog.c:145
-msgid "Simple"
-msgstr "Lihtne"
-
-#: ../menueditor/menueditor-add-external-dialog.c:166
-#: ../menueditor/menueditor-edit-external-dialog.c:146
-msgid "Multilevel"
-msgstr "Mitmetasandiline"
-
-#. Unique check button
-#: ../menueditor/menueditor-add-external-dialog.c:171
-#: ../menueditor/menueditor-edit-external-dialog.c:151
-msgid "_Unique entries only"
-msgstr "_Ainult ainulaadsed sissekanded"
-
-#: ../menueditor/menueditor-edit-dialog.c:127
-msgid "Edit menu entry"
-msgstr "Muuda menüü sissekanned"
-
-#: ../menueditor/menueditor-edit-external-dialog.c:96
-msgid "Edit external menu entry"
-msgstr "Muuda väline menüü sissekanne"
-
-#: ../menueditor/menueditor-main.c:43
-msgid "Xfce4-MenuEditor"
-msgstr "Xfce4-menüütoimeti"
-
-#: ../menueditor/menueditor-main.c:57
-msgid "Menueditor Warning"
-msgstr "Menüütoimeti hoiatus"
-
-#: ../menueditor/menueditor-main.c:59
-msgid "xfce4-menueditor is deprecated"
-msgstr "xfce4-menueditor on vananenud"
-
-#: ../menueditor/menueditor-main.c:60
-msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
-msgstr "Xfce menüükorraldus on välja vahetatud, ning xfce4-menueditor pole võimeline seda toimetama. Võite jätkata ja toimetada vanamoodset menüüsäilikut, või lõpetada."
-
-#: ../menueditor/menueditor-main.c:61
-msgid "Continue"
-msgstr "Jätkata"
-
-#: ../menueditor/menueditor-main-window.c:140
-msgid "_File"
-msgstr "_Säilik"
-
-#: ../menueditor/menueditor-main-window.c:141
-msgid "_New"
-msgstr "_Uus"
-
-#: ../menueditor/menueditor-main-window.c:141
-msgid "Create a new empty menu"
-msgstr "Loo uus, tühi menüü"
-
-#: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633
-#: ../src/xfdesktop-volume-icon.c:560
-msgid "_Open"
-msgstr "_Ava"
-
-#: ../menueditor/menueditor-main-window.c:142
-msgid "Open existing menu"
-msgstr "Avada olemasolev menüü"
-
-#: ../menueditor/menueditor-main-window.c:143
-msgid "Open _default menu"
-msgstr "Ava_da vaikimisi menüü"
-
-#: ../menueditor/menueditor-main-window.c:143
-msgid "Open default menu"
-msgstr "Ava vaikimisi menüü"
-
-#: ../menueditor/menueditor-main-window.c:144
-msgid "_Save"
-msgstr "_Salvestada"
-
-#: ../menueditor/menueditor-main-window.c:144
-msgid "Save modifications"
-msgstr "Salvesta muudatused"
-
-#: ../menueditor/menueditor-main-window.c:145
-msgid "Save _as..."
-msgstr "S_alvestada kui ..."
-
-#: ../menueditor/menueditor-main-window.c:145
-msgid "Save menu under a given name"
-msgstr "Salvesta menüü antud nimega"
-
-#: ../menueditor/menueditor-main-window.c:146
-msgid "_Close"
-msgstr "_Sulgeda"
-
-#: ../menueditor/menueditor-main-window.c:146
-msgid "Close menu"
-msgstr "Sulge menüü"
-
-#: ../menueditor/menueditor-main-window.c:147
-msgid "_Quit"
-msgstr "_Lõpetada"
-
-#: ../menueditor/menueditor-main-window.c:147
-msgid "Quit Xfce4-Menueditor"
-msgstr "Lõpeta Xfce4-Menuselector"
-
-#: ../menueditor/menueditor-main-window.c:149
-msgid "_Edit"
-msgstr "Toim_etada"
-
-#: ../menueditor/menueditor-main-window.c:150
-msgid "_Edit entry"
-msgstr "Toim_etada sissekannet"
-
-#: ../menueditor/menueditor-main-window.c:150
-msgid "Edit selected entry"
-msgstr "Toimeta valitud sissekannet"
-
-#: ../menueditor/menueditor-main-window.c:151
-msgid "_Add entry"
-msgstr "Lis_ada sissekanne"
-
-#: ../menueditor/menueditor-main-window.c:151
-msgid "Add a new entry in the menu"
-msgstr "Lisa menüüsse uus sissekanne"
-
-#: ../menueditor/menueditor-main-window.c:152
-msgid "Add _external"
-msgstr "Lisada välin_e"
-
-#: ../menueditor/menueditor-main-window.c:152
-msgid "Add an external entry"
-msgstr "Lisa väline sissekanne"
-
-#: ../menueditor/menueditor-main-window.c:153
-msgid "_Remove entry"
-msgstr "_Eemaldada sissekanne"
-
-#: ../menueditor/menueditor-main-window.c:153
-msgid "Remove entry"
-msgstr "Eemalda sissekanne"
-
-#: ../menueditor/menueditor-main-window.c:154
-msgid "_Up"
-msgstr "_Üles"
-
-#: ../menueditor/menueditor-main-window.c:154
-msgid "Move entry up"
-msgstr "Liiguta sissekanne üles"
-
-#: ../menueditor/menueditor-main-window.c:155
-msgid "_Down"
-msgstr "_Alla"
-
-#: ../menueditor/menueditor-main-window.c:155
-msgid "Move entry down"
-msgstr "Liiguta sissekanne alla"
-
-#: ../menueditor/menueditor-main-window.c:157
-msgid "_Help"
-msgstr "_Abi"
-
-#: ../menueditor/menueditor-main-window.c:158
-msgid "_About..."
-msgstr "Te_ave..."
-
-#: ../menueditor/menueditor-main-window.c:158
-msgid "Show informations about xfce4-menueditor"
-msgstr "Näita teavet xfce4-menueditor kohta"
-
-#: ../menueditor/menueditor-main-window.c:160
-msgid "Collapse all"
-msgstr "Ahendada kõik"
-
-#: ../menueditor/menueditor-main-window.c:160
-msgid "Collapse all menu entries"
-msgstr "Kitsenda kõik menüü sissekanded"
-
-#: ../menueditor/menueditor-main-window.c:161
-msgid "Expand all"
-msgstr "Laiendada kõiki"
-
-#: ../menueditor/menueditor-main-window.c:161
-msgid "Expand all menu entries"
-msgstr "Avarda kõik menüü sissekanded"
-
-#: ../menueditor/menueditor-main-window.c:341
-msgid "Name"
-msgstr "Nimi"
-
-#: ../menueditor/menueditor-main-window.c:344
-msgid "Command"
-msgstr "Käsk"
-
-#: ../menueditor/menueditor-main-window.c:345
-msgid "Hidden"
-msgstr "Peidetud"
-
-#: ../menueditor/menueditor-main-window.c:427
-msgid "Are you sure you want to close the current menu?"
-msgstr "Kas olete kindel, et soovite käesoleva menüü sulgeda?"
-
-#: ../menueditor/menueditor-main-window.c:441
-msgid "Do you want to save before closing the file?"
-msgstr "Kas soovite enne säiliku sulgemist salvestada?"
-
-#: ../menueditor/menueditor-main-window.c:479
-#: ../menueditor/menueditor-main-window.c:532
-#: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:679
-#: ../src/xfdesktop-file-utils.c:55
-msgid "Question"
-msgstr "Küsimus"
-
-#: ../menueditor/menueditor-main-window.c:481
-msgid "Do you want to save before opening an other menu ?"
-msgstr "Kas soovite enne teise menüü avamist salvestada?"
-
-#: ../menueditor/menueditor-main-window.c:483
-#: ../menueditor/menueditor-main-window.c:536
-#: ../menueditor/menueditor-main-window.c:634
-msgid "Ignore modifications"
-msgstr "Eirata muudatusi"
-
-#: ../menueditor/menueditor-main-window.c:494
-msgid "Open menu file"
-msgstr "Avada menüüsäilik"
-
-#: ../menueditor/menueditor-main-window.c:534
-msgid "Do you want to save before opening the default menu ?"
-msgstr "Kas soovite enne vaikemenüü avamist salvestada?"
-
-#: ../menueditor/menueditor-main-window.c:594
-msgid "Save menu file as"
-msgstr "Salvestada menüüsäilik kui"
-
-#: ../menueditor/menueditor-main-window.c:632
-#: ../menueditor/menueditor-main-window.c:1343
-msgid "Do you want to save before closing the menu ?"
-msgstr "Kas soovite enne menüü sulgemist salvestada?"
-
-#: ../menueditor/menueditor-main-window.c:858
-#: ../menueditor/menueditor-main-window.c:988
-msgid "quit"
-msgstr "lõpetada"
-
-#: ../menueditor/menueditor-main-window.c:963
-#: ../menueditor/menueditor-main-window.c:1584
-msgid "--- separator ---"
-msgstr "--- eraldaja ---"
-
-#: ../menueditor/menueditor-main-window.c:1081
-#: ../menueditor/menueditor-main-window.c:1088
-#: ../menueditor/menueditor-main-window.c:1638
-msgid "--- include ---"
-msgstr "--- lisada ---"
-
-#: ../menueditor/menueditor-main-window.c:1089
-#: ../menueditor/menueditor-main-window.c:1655
-msgid "system"
-msgstr "süsteem"
-
-#: ../menueditor/menueditor-main-window.c:1215
-#: ../menueditor/menueditor-main-window.c:1263
-msgid "Do you want to move the item into the submenu?"
-msgstr "Kas sa soovid seda asja alam-menüüsse?"
-
-#: ../menueditor/menueditor-main-window.c:1293
-msgid "A menu editor for Xfce4"
-msgstr "Xfce4 menüütoimeti"
-
-#. Credits
-#: ../menueditor/menueditor-main-window.c:1298
-msgid "Author/Maintainer"
-msgstr "Autor/Hooldaja"
-
-#: ../menueditor/menueditor-main-window.c:1299
-#: ../menueditor/menueditor-main-window.c:1300
-#: ../menueditor/menueditor-main-window.c:1301
-msgid "Contributor"
-msgstr "Toetaja"
-
-#: ../menueditor/menueditor-main-window.c:1302
-msgid "Icon designer"
-msgstr "Ikoonide disainer"
-
-#: ../menueditor/menueditor-main-window.c:1345
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Sa oled menüüd muutnud, kas sa soovid muudatused enne väljumist salvestada ?"
-
-#: ../menueditor/menueditor-main-window.c:1347
-msgid "Forget modifications"
-msgstr "Unusta muudatused"
-
-#: ../menueditor/menueditor-main-window.c:2035
-#, c-format
-msgid "Unable to open the menu file %s in write mode"
-msgstr "Ei õnnestu avada menüüsäilikut %s kirjutusrežiimis"
 
 #: ../panel-plugin/desktop-menu-plugin.c:653
 #, c-format
@@ -520,6 +36,18 @@ msgstr "Vali ikoon"
 #: ../panel-plugin/desktop-menu-plugin.c:678
 msgid "Select Menu File"
 msgstr "Vali menüüsäilik"
+
+#: ../panel-plugin/desktop-menu-plugin.c:705
+msgid "All Files"
+msgstr "Kõik säilikud"
+
+#: ../panel-plugin/desktop-menu-plugin.c:712
+msgid "Image Files"
+msgstr "Piltsäilikud"
+
+#: ../panel-plugin/desktop-menu-plugin.c:715
+msgid "Menu Files"
+msgstr "Menüüsäilikud"
 
 #: ../panel-plugin/desktop-menu-plugin.c:740
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
@@ -598,15 +126,11 @@ msgstr "Kompileerimisvalikud:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Töölaua menüü:        %s\n"
 
-#: ../src/main.c:240
-#: ../src/main.c:247
-#: ../src/main.c:254
+#: ../src/main.c:240 ../src/main.c:247 ../src/main.c:254
 msgid "enabled"
 msgstr "lubatud"
 
-#: ../src/main.c:242
-#: ../src/main.c:249
-#: ../src/main.c:256
+#: ../src/main.c:242 ../src/main.c:249 ../src/main.c:256
 msgid "disabled"
 msgstr "keelatud"
 
@@ -642,7 +166,8 @@ msgstr "    --menu        Ilmuta menüü (käesolevas hiire asukohas)\n"
 
 #: ../src/main.c:285
 #, c-format
-msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgid ""
+"    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    --windowlist  Ilmuta aknaloend (käesolevas hiire asukohas)\n"
 
 #: ../src/main.c:286
@@ -678,8 +203,7 @@ msgstr "%d. tööpind"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>%d. tööpind</i>"
 
-#: ../src/windowlist.c:370
-#: ../src/windowlist.c:373
+#: ../src/windowlist.c:370 ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "Lis_ada tööpind"
 
@@ -693,8 +217,7 @@ msgstr "_Eemaldada %d. tööpind"
 msgid "_Remove Workspace '%s'"
 msgstr "_Eemaldada tööpind „%s“"
 
-#: ../src/xfce-desktop.c:742
-#: ../settings/xfdesktop-settings.glade.h:20
+#: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
 msgstr "Töölaud"
 
@@ -709,7 +232,8 @@ msgstr "Viga töölaual"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
-msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "Xfdesktopil ei õnnestunud luua töölaua esemetele kausta „%s“:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
@@ -720,8 +244,11 @@ msgstr "Kausta loomine ebaõnnestus"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
-msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr "Xfdesktop ei saa töölaua esemete jaoks kasutada „%s“, sest see pole kaust."
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr ""
+"Xfdesktop ei saa töölaua esemete jaoks kasutada „%s“, sest see pole kaust."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -748,6 +275,10 @@ msgstr "Muuta nime"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Olete kindel, et soovite kustutada „%s“?"
 
+#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
+msgid "Question"
+msgstr "Küsimus"
+
 #: ../src/xfdesktop-file-icon-manager.c:681
 #: ../src/xfdesktop-file-icon-manager.c:701
 msgid "If you delete a file, it is permanently lost."
@@ -764,8 +295,7 @@ msgstr "Kustutada mitu säilikut"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1633
-#: ../src/xfdesktop-file-icon.c:140
+#: ../src/xfdesktop-file-icon-manager.c:1633 ../src/xfdesktop-file-icon.c:140
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -774,8 +304,7 @@ msgstr "„%s“ käivitamine ebaõnnestus"
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
 #: ../src/xfdesktop-file-icon-manager.c:1240
-#: ../src/xfdesktop-file-icon-manager.c:1634
-#: ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1634 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Viga käivitamisel"
@@ -784,10 +313,13 @@ msgstr "Viga käivitamisel"
 msgid "The application chooser could not be opened."
 msgstr "Rakenduse valijat ei suudetud avada."
 
-#: ../src/xfdesktop-file-icon-manager.c:979
-#: ../src/xfdesktop-file-utils.c:358
-msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-msgstr "Antud võimalus eeldab säilikuhalduri teenuse olemasolu (nagu see, mida Thunar pakub)."
+#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
+msgstr ""
+"Antud võimalus eeldab säilikuhalduri teenuse olemasolu (nagu see, mida "
+"Thunar pakub)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1137
 #, c-format
@@ -805,8 +337,12 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "„%s“-nimelise kausta loomine ebaõnnestus:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1242
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "„xo-desktop-item-edit“, mida on tarvis töölaua käivitajate ja viidete loomiseks ning toimetamiseks, käivitamine ebaõnnestus."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"„xo-desktop-item-edit“, mida on tarvis töölaua käivitajate ja viidete "
+"loomiseks ning toimetamiseks, käivitamine ebaõnnestus."
 
 #: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
@@ -860,6 +396,11 @@ msgstr "_Ava kõik"
 #: ../src/xfdesktop-file-icon-manager.c:1716
 msgid "_Open in New Window"
 msgstr "_Ava uues aknas"
+
+#: ../src/xfdesktop-file-icon-manager.c:1718
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+msgid "_Open"
+msgstr "_Ava"
 
 #: ../src/xfdesktop-file-icon-manager.c:1733
 msgid "Create _Launcher..."
@@ -954,6 +495,10 @@ msgstr "Lugemine & kirjutamine"
 msgid "General"
 msgstr "Üldine"
 
+#: ../src/xfdesktop-file-properties-dialog.c:188
+msgid "Name:"
+msgstr "Nimi:"
+
 #: ../src/xfdesktop-file-properties-dialog.c:214
 msgid "Kind:"
 msgstr "Liik:"
@@ -964,8 +509,7 @@ msgstr "Viite siht:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
-#: ../src/xfdesktop-volume-icon.c:476
-#: ../src/xfdesktop-volume-icon.c:482
+#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
 msgid "(unknown)"
 msgstr "(tundmatu)"
 
@@ -1071,8 +615,7 @@ msgstr "Viga"
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "„%s” muutmine nimeks „%s” ebaõnnestus:"
 
-#: ../src/xfdesktop-special-file-icon.c:259
-#: ../settings/main.c:267
+#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
 msgid "Home"
 msgstr "Kodu"
 
@@ -1090,8 +633,12 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Ei õnnestu saada kontakti Xfce Prügikasti teenusega."
 
 #: ../src/xfdesktop-special-file-icon.c:518
-msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr "Veenduge, et olete paigaldanud Xfce paberikorvi teenust toetava säilikuhalduri, nagu näiteks Thunari."
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr ""
+"Veenduge, et olete paigaldanud Xfce paberikorvi teenust toetava "
+"säilikuhalduri, nagu näiteks Thunari."
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
@@ -1151,18 +698,6 @@ msgstr "_Lahuta andmeruum"
 #: ../src/xfdesktop-volume-icon.c:589
 msgid "_Mount Volume"
 msgstr "_Liida andmeruum"
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:1
-msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Graafiline tööriist Xfce 4 menüüde redigeerimiseks"
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:2
-msgid "Menu Editor"
-msgstr "Menüütoimeti"
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:3
-msgid "Xfce 4 Menu Editor"
-msgstr "Xfce 4 menüütoimeti"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
@@ -1252,6 +787,10 @@ msgstr "Töölaua ning süsteemi seadistuste rakendused"
 msgid "Settings"
 msgstr "Seaded"
 
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
+msgid "System"
+msgstr "Süsteem"
+
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
 msgstr "Süsteemi tööriistad ning utiliidid"
@@ -1339,8 +878,7 @@ msgstr "Eemaldatavad seadmed"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Taustapildiloendi „%s“ loomine ebaõnnestus"
 
-#: ../settings/main.c:430
-#: ../settings/main.c:789
+#: ../settings/main.c:430 ../settings/main.c:789
 msgid "Backdrop List Error"
 msgstr "Viga tausapildiloendiga"
 
@@ -1350,8 +888,11 @@ msgstr "Loo või laadi taustapildiloend"
 
 #: ../settings/main.c:479
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "Säilik „%s“ ei ole korrektne tausapildiloend. Kas soovite selle üle kirjutada?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"Säilik „%s“ ei ole korrektne tausapildiloend. Kas soovite selle üle "
+"kirjutada?"
 
 #: ../settings/main.c:484
 msgid "Invalid List File"
@@ -1650,8 +1191,10 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Täpsustab „parempoolse” või „alumise” värvisiirde värvi"
 
 #: ../settings/xfdesktop-settings.glade.h:57
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Täpsustab ühtlase värvi, või „vasakpoolse” või „ülemise” värvisiirde värvi"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr ""
+"Täpsustab ühtlase värvi, või „vasakpoolse” või „ülemise” värvisiirde värvi"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify how the image will be resized to fit the screen"
@@ -1662,7 +1205,9 @@ msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr "Määra taustapildi taha joonistatava värvi stiil"
 
 #: ../settings/xfdesktop-settings.glade.h:60
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
 msgstr "Määra ikoonikirja taha joonistatava ümara sildi läbipaistvusaste"
 
 #: ../settings/xfdesktop-settings.glade.h:61
@@ -1713,3 +1258,295 @@ msgstr "gtk-close"
 msgid "gtk-help"
 msgstr "gtk-help"
 
+#~ msgid "Add menu entry"
+#~ msgstr "Lisada menüü sissekanne"
+
+#~ msgid "Type:"
+#~ msgstr "Liik:"
+
+#~ msgid "Title"
+#~ msgstr "Pealkiri"
+
+#~ msgid "Submenu"
+#~ msgstr "Alamenüü"
+
+#~ msgid "Launcher"
+#~ msgstr "Käivitaja"
+
+#~ msgid "Separator"
+#~ msgstr "Eraldaja"
+
+#~ msgid "Quit"
+#~ msgstr "Lõpetada"
+
+#~ msgid "Command:"
+#~ msgstr "Käsk:"
+
+#~ msgid "Icon:"
+#~ msgstr "Ikoon:"
+
+#~ msgid "No icon"
+#~ msgstr "Ikoonita"
+
+#~ msgid "Themed icon:"
+#~ msgstr "Teemaga ikoon:"
+
+#~ msgid "Select icon"
+#~ msgstr "Valida ikoon"
+
+#~ msgid "Use startup _notification"
+#~ msgstr "_Kasutada käivitamisel teavitamist"
+
+#~ msgid "Run in _terminal"
+#~ msgstr "Käivi_tada terminalis"
+
+#~ msgid "Select command"
+#~ msgstr "Valige käsklus"
+
+#~ msgid "Executable Files"
+#~ msgstr "Käitatavad säilikud"
+
+#~ msgid "Perl Scripts"
+#~ msgstr "Perli skriptid"
+
+#~ msgid "Python Scripts"
+#~ msgstr "Pythoni skriptid"
+
+#~ msgid "Ruby Scripts"
+#~ msgstr "Ruby skriptid"
+
+#~ msgid "Shell Scripts"
+#~ msgstr "Shelli skriptid"
+
+#~ msgid "Add external menu entry"
+#~ msgstr "Lisada väline menüü sissekanne"
+
+#~ msgid "File"
+#~ msgstr "Säilik"
+
+#~ msgid "Source:"
+#~ msgstr "Asukoht:"
+
+#~ msgid "Select external menu"
+#~ msgstr "Märgistada välimenüü"
+
+#~ msgid "Style:"
+#~ msgstr "Kujundus:"
+
+#~ msgid "Simple"
+#~ msgstr "Lihtne"
+
+#~ msgid "Multilevel"
+#~ msgstr "Mitmetasandiline"
+
+#~ msgid "_Unique entries only"
+#~ msgstr "_Ainult ainulaadsed sissekanded"
+
+#~ msgid "Edit menu entry"
+#~ msgstr "Muuda menüü sissekanned"
+
+#~ msgid "Edit external menu entry"
+#~ msgstr "Muuda väline menüü sissekanne"
+
+#~ msgid "Xfce4-MenuEditor"
+#~ msgstr "Xfce4-menüütoimeti"
+
+#~ msgid "Menueditor Warning"
+#~ msgstr "Menüütoimeti hoiatus"
+
+#~ msgid "xfce4-menueditor is deprecated"
+#~ msgstr "xfce4-menueditor on vananenud"
+
+#~ msgid ""
+#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
+#~ "edit the new menu file format.  You may continue and edit an old-style "
+#~ "menu file, or quit."
+#~ msgstr ""
+#~ "Xfce menüükorraldus on välja vahetatud, ning xfce4-menueditor pole "
+#~ "võimeline seda toimetama. Võite jätkata ja toimetada vanamoodset "
+#~ "menüüsäilikut, või lõpetada."
+
+#~ msgid "Continue"
+#~ msgstr "Jätkata"
+
+#~ msgid "_File"
+#~ msgstr "_Säilik"
+
+#~ msgid "_New"
+#~ msgstr "_Uus"
+
+#~ msgid "Create a new empty menu"
+#~ msgstr "Loo uus, tühi menüü"
+
+#~ msgid "Open existing menu"
+#~ msgstr "Avada olemasolev menüü"
+
+#~ msgid "Open _default menu"
+#~ msgstr "Ava_da vaikimisi menüü"
+
+#~ msgid "Open default menu"
+#~ msgstr "Ava vaikimisi menüü"
+
+#~ msgid "_Save"
+#~ msgstr "_Salvestada"
+
+#~ msgid "Save modifications"
+#~ msgstr "Salvesta muudatused"
+
+#~ msgid "Save _as..."
+#~ msgstr "S_alvestada kui ..."
+
+#~ msgid "Save menu under a given name"
+#~ msgstr "Salvesta menüü antud nimega"
+
+#~ msgid "_Close"
+#~ msgstr "_Sulgeda"
+
+#~ msgid "Close menu"
+#~ msgstr "Sulge menüü"
+
+#~ msgid "_Quit"
+#~ msgstr "_Lõpetada"
+
+#~ msgid "Quit Xfce4-Menueditor"
+#~ msgstr "Lõpeta Xfce4-Menuselector"
+
+#~ msgid "_Edit"
+#~ msgstr "Toim_etada"
+
+#~ msgid "_Edit entry"
+#~ msgstr "Toim_etada sissekannet"
+
+#~ msgid "Edit selected entry"
+#~ msgstr "Toimeta valitud sissekannet"
+
+#~ msgid "_Add entry"
+#~ msgstr "Lis_ada sissekanne"
+
+#~ msgid "Add a new entry in the menu"
+#~ msgstr "Lisa menüüsse uus sissekanne"
+
+#~ msgid "Add _external"
+#~ msgstr "Lisada välin_e"
+
+#~ msgid "Add an external entry"
+#~ msgstr "Lisa väline sissekanne"
+
+#~ msgid "_Remove entry"
+#~ msgstr "_Eemaldada sissekanne"
+
+#~ msgid "Remove entry"
+#~ msgstr "Eemalda sissekanne"
+
+#~ msgid "_Up"
+#~ msgstr "_Üles"
+
+#~ msgid "Move entry up"
+#~ msgstr "Liiguta sissekanne üles"
+
+#~ msgid "_Down"
+#~ msgstr "_Alla"
+
+#~ msgid "Move entry down"
+#~ msgstr "Liiguta sissekanne alla"
+
+#~ msgid "_Help"
+#~ msgstr "_Abi"
+
+#~ msgid "_About..."
+#~ msgstr "Te_ave..."
+
+#~ msgid "Show informations about xfce4-menueditor"
+#~ msgstr "Näita teavet xfce4-menueditor kohta"
+
+#~ msgid "Collapse all"
+#~ msgstr "Ahendada kõik"
+
+#~ msgid "Collapse all menu entries"
+#~ msgstr "Kitsenda kõik menüü sissekanded"
+
+#~ msgid "Expand all"
+#~ msgstr "Laiendada kõiki"
+
+#~ msgid "Expand all menu entries"
+#~ msgstr "Avarda kõik menüü sissekanded"
+
+#~ msgid "Name"
+#~ msgstr "Nimi"
+
+#~ msgid "Command"
+#~ msgstr "Käsk"
+
+#~ msgid "Hidden"
+#~ msgstr "Peidetud"
+
+#~ msgid "Are you sure you want to close the current menu?"
+#~ msgstr "Kas olete kindel, et soovite käesoleva menüü sulgeda?"
+
+#~ msgid "Do you want to save before closing the file?"
+#~ msgstr "Kas soovite enne säiliku sulgemist salvestada?"
+
+#~ msgid "Do you want to save before opening an other menu ?"
+#~ msgstr "Kas soovite enne teise menüü avamist salvestada?"
+
+#~ msgid "Ignore modifications"
+#~ msgstr "Eirata muudatusi"
+
+#~ msgid "Open menu file"
+#~ msgstr "Avada menüüsäilik"
+
+#~ msgid "Do you want to save before opening the default menu ?"
+#~ msgstr "Kas soovite enne vaikemenüü avamist salvestada?"
+
+#~ msgid "Save menu file as"
+#~ msgstr "Salvestada menüüsäilik kui"
+
+#~ msgid "Do you want to save before closing the menu ?"
+#~ msgstr "Kas soovite enne menüü sulgemist salvestada?"
+
+#~ msgid "quit"
+#~ msgstr "lõpetada"
+
+#~ msgid "--- separator ---"
+#~ msgstr "--- eraldaja ---"
+
+#~ msgid "--- include ---"
+#~ msgstr "--- lisada ---"
+
+#~ msgid "system"
+#~ msgstr "süsteem"
+
+#~ msgid "Do you want to move the item into the submenu?"
+#~ msgstr "Kas sa soovid seda asja alam-menüüsse?"
+
+#~ msgid "A menu editor for Xfce4"
+#~ msgstr "Xfce4 menüütoimeti"
+
+#~ msgid "Author/Maintainer"
+#~ msgstr "Autor/Hooldaja"
+
+#~ msgid "Contributor"
+#~ msgstr "Toetaja"
+
+#~ msgid "Icon designer"
+#~ msgstr "Ikoonide disainer"
+
+#~ msgid "You have modified the menu, do you want to save it before quitting ?"
+#~ msgstr ""
+#~ "Sa oled menüüd muutnud, kas sa soovid muudatused enne väljumist "
+#~ "salvestada ?"
+
+#~ msgid "Forget modifications"
+#~ msgstr "Unusta muudatused"
+
+#~ msgid "Unable to open the menu file %s in write mode"
+#~ msgstr "Ei õnnestu avada menüüsäilikut %s kirjutusrežiimis"
+
+#~ msgid "Graphical tool for editing the Xfce 4 menu"
+#~ msgstr "Graafiline tööriist Xfce 4 menüüde redigeerimiseks"
+
+#~ msgid "Menu Editor"
+#~ msgstr "Menüütoimeti"
+
+#~ msgid "Xfce 4 Menu Editor"
+#~ msgstr "Xfce 4 menüütoimeti"

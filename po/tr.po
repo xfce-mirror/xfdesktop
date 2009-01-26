@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 04:40-0800\n"
+"POT-Creation-Date: 2009-01-26 01:15+0100\n"
 "PO-Revision-Date: 2008-11-18 19:06+0200\n"
 "Last-Translator: Gökmen Görgen <gkmngrgn@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
@@ -30,494 +30,6 @@ msgstr ""
 msgid "Backdrop list file is not valid"
 msgstr "Arkaplan listesi dosyası geçersiz"
 
-#: ../menueditor/menueditor-add-dialog.c:129
-msgid "Add menu entry"
-msgstr "Menu girdisi ekle"
-
-#. Type
-#: ../menueditor/menueditor-add-dialog.c:142
-#: ../menueditor/menueditor-add-dialog.c:143
-#: ../menueditor/menueditor-add-external-dialog.c:113
-#: ../menueditor/menueditor-add-external-dialog.c:114
-msgid "Type:"
-msgstr "Tür:"
-
-#: ../menueditor/menueditor-add-dialog.c:151
-msgid "Title"
-msgstr "Başlık"
-
-#: ../menueditor/menueditor-add-dialog.c:152
-msgid "Submenu"
-msgstr "Altı menü"
-
-#: ../menueditor/menueditor-add-dialog.c:153
-msgid "Launcher"
-msgstr "Başlatıcı"
-
-#: ../menueditor/menueditor-add-dialog.c:154
-msgid "Separator"
-msgstr "Ayırıcı"
-
-#: ../menueditor/menueditor-add-dialog.c:155
-msgid "Quit"
-msgstr "Çık"
-
-#. Name
-#: ../menueditor/menueditor-add-dialog.c:162
-#: ../menueditor/menueditor-add-dialog.c:163
-#: ../menueditor/menueditor-edit-dialog.c:140
-#: ../menueditor/menueditor-edit-dialog.c:141
-#: ../src/xfdesktop-file-properties-dialog.c:188
-msgid "Name:"
-msgstr "İsim:"
-
-#. Command
-#: ../menueditor/menueditor-add-dialog.c:176
-#: ../menueditor/menueditor-add-dialog.c:177
-#: ../menueditor/menueditor-edit-dialog.c:154
-#: ../menueditor/menueditor-edit-dialog.c:155
-msgid "Command:"
-msgstr "Komut:"
-
-#. Icon chooser
-#: ../menueditor/menueditor-add-dialog.c:201
-#: ../menueditor/menueditor-add-dialog.c:202
-#: ../menueditor/menueditor-add-dialog.c:244
-#: ../menueditor/menueditor-add-dialog.c:245
-#: ../menueditor/menueditor-edit-dialog.c:179
-#: ../menueditor/menueditor-edit-dialog.c:180
-#: ../menueditor/menueditor-edit-dialog.c:222
-#: ../menueditor/menueditor-edit-dialog.c:223
-msgid "Icon:"
-msgstr "Simge:"
-
-#. setup a label to tell that no icon was selected
-#: ../menueditor/menueditor-add-dialog.c:213
-#: ../menueditor/menueditor-add-dialog.c:330
-#: ../menueditor/menueditor-edit-dialog.c:191
-#: ../menueditor/menueditor-edit-dialog.c:586
-msgid "No icon"
-msgstr "Simge yok"
-
-#: ../menueditor/menueditor-add-dialog.c:225
-#: ../menueditor/menueditor-add-dialog.c:226
-#: ../menueditor/menueditor-edit-dialog.c:203
-#: ../menueditor/menueditor-edit-dialog.c:204
-msgid "Themed icon:"
-msgstr "Temalı simge:"
-
-#. allocate the chooser dialog
-#: ../menueditor/menueditor-add-dialog.c:252
-#: ../menueditor/menueditor-add-dialog.c:347
-#: ../menueditor/menueditor-edit-dialog.c:230
-#: ../menueditor/menueditor-edit-dialog.c:384
-msgid "Select icon"
-msgstr "Simge seç"
-
-#: ../menueditor/menueditor-add-dialog.c:257
-#: ../menueditor/menueditor-add-dialog.c:437
-#: ../menueditor/menueditor-add-external-dialog.c:142
-#: ../menueditor/menueditor-edit-dialog.c:235
-#: ../menueditor/menueditor-edit-dialog.c:296
-#: ../menueditor/menueditor-edit-external-dialog.c:122
-#: ../panel-plugin/desktop-menu-plugin.c:705
-msgid "All Files"
-msgstr "Tüm Dosyalar"
-
-#: ../menueditor/menueditor-add-dialog.c:261
-#: ../menueditor/menueditor-edit-dialog.c:239
-#: ../panel-plugin/desktop-menu-plugin.c:712
-msgid "Image Files"
-msgstr "Resim Dosyaları"
-
-#. Start Notify check button
-#: ../menueditor/menueditor-add-dialog.c:283
-#: ../menueditor/menueditor-edit-dialog.c:261
-msgid "Use startup _notification"
-msgstr "Başlangıç _uyarısı kullan"
-
-#. Run in terminal check button
-#: ../menueditor/menueditor-add-dialog.c:288
-#: ../menueditor/menueditor-edit-dialog.c:266
-msgid "Run in _terminal"
-msgstr "_Uçbirim içinde başlat"
-
-#: ../menueditor/menueditor-add-dialog.c:427
-#: ../menueditor/menueditor-edit-dialog.c:286
-#: ../menueditor/menueditor-main-window.c:450
-msgid "Select command"
-msgstr "Komut seç"
-
-#: ../menueditor/menueditor-add-dialog.c:442
-#: ../menueditor/menueditor-edit-dialog.c:301
-msgid "Executable Files"
-msgstr "Çalıştırılabilir Dosyalar"
-
-#: ../menueditor/menueditor-add-dialog.c:457
-#: ../menueditor/menueditor-edit-dialog.c:316
-msgid "Perl Scripts"
-msgstr "Perl Betikleri"
-
-#: ../menueditor/menueditor-add-dialog.c:463
-#: ../menueditor/menueditor-edit-dialog.c:322
-msgid "Python Scripts"
-msgstr "Python Betikleri"
-
-#: ../menueditor/menueditor-add-dialog.c:469
-#: ../menueditor/menueditor-edit-dialog.c:328
-msgid "Ruby Scripts"
-msgstr "Ruby Betikleri"
-
-#: ../menueditor/menueditor-add-dialog.c:475
-#: ../menueditor/menueditor-edit-dialog.c:334
-msgid "Shell Scripts"
-msgstr "Kabuk Betikleri"
-
-#: ../menueditor/menueditor-add-external-dialog.c:100
-msgid "Add external menu entry"
-msgstr "Harici menü girdisi ekle"
-
-#: ../menueditor/menueditor-add-external-dialog.c:122
-msgid "File"
-msgstr "Dosya"
-
-#: ../menueditor/menueditor-add-external-dialog.c:123
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
-msgid "System"
-msgstr "Sistem"
-
-#. Source
-#: ../menueditor/menueditor-add-external-dialog.c:129
-#: ../menueditor/menueditor-add-external-dialog.c:130
-#: ../menueditor/menueditor-edit-external-dialog.c:109
-#: ../menueditor/menueditor-edit-external-dialog.c:110
-msgid "Source:"
-msgstr "Kaynak:"
-
-#: ../menueditor/menueditor-add-external-dialog.c:137
-#: ../menueditor/menueditor-edit-external-dialog.c:117
-msgid "Select external menu"
-msgstr "Harici menü seç"
-
-#: ../menueditor/menueditor-add-external-dialog.c:146
-#: ../menueditor/menueditor-edit-external-dialog.c:126
-#: ../panel-plugin/desktop-menu-plugin.c:715
-msgid "Menu Files"
-msgstr "Menü Dosyaları"
-
-#. Style
-#: ../menueditor/menueditor-add-external-dialog.c:155
-#: ../menueditor/menueditor-add-external-dialog.c:156
-#: ../menueditor/menueditor-edit-external-dialog.c:135
-#: ../menueditor/menueditor-edit-external-dialog.c:136
-msgid "Style:"
-msgstr "Düzen:"
-
-#: ../menueditor/menueditor-add-external-dialog.c:165
-#: ../menueditor/menueditor-edit-external-dialog.c:145
-msgid "Simple"
-msgstr "Basit"
-
-#: ../menueditor/menueditor-add-external-dialog.c:166
-#: ../menueditor/menueditor-edit-external-dialog.c:146
-msgid "Multilevel"
-msgstr "Çok Katmanlı"
-
-#. Unique check button
-#: ../menueditor/menueditor-add-external-dialog.c:171
-#: ../menueditor/menueditor-edit-external-dialog.c:151
-msgid "_Unique entries only"
-msgstr "Sadece _farklı girdiler"
-
-#: ../menueditor/menueditor-edit-dialog.c:127
-msgid "Edit menu entry"
-msgstr "Menü girdisini düzenle"
-
-#: ../menueditor/menueditor-edit-external-dialog.c:96
-msgid "Edit external menu entry"
-msgstr "Harici menü girdisini düzenle"
-
-#: ../menueditor/menueditor-main.c:43
-msgid "Xfce4-MenuEditor"
-msgstr "Xfce4-Menü Düzenleyicisi"
-
-#: ../menueditor/menueditor-main.c:57
-msgid "Menueditor Warning"
-msgstr "Menü Düzenleyici Uyarısı"
-
-#: ../menueditor/menueditor-main.c:59
-msgid "xfce4-menueditor is deprecated"
-msgstr "xfce4-menueditor artık kullanılmıyor"
-
-#: ../menueditor/menueditor-main.c:60
-msgid ""
-"Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-"edit the new menu file format.  You may continue and edit an old-style menu "
-"file, or quit."
-msgstr ""
-"Xfce'nin menü sistemi yenilendi ve xfce4-menueditor yeni menü biçimini "
-"düzenleyemiyor.  Devam edebilir ve eski menü dosyasını düzenleyebilirsiniz; "
-"ya da çıkabilirsiniz."
-
-#: ../menueditor/menueditor-main.c:61
-msgid "Continue"
-msgstr "Devam"
-
-#: ../menueditor/menueditor-main-window.c:140
-msgid "_File"
-msgstr "_Dosya"
-
-#: ../menueditor/menueditor-main-window.c:141
-msgid "_New"
-msgstr "_Yeni"
-
-#: ../menueditor/menueditor-main-window.c:141
-msgid "Create a new empty menu"
-msgstr "Yeni boş bir menü oluştur"
-
-#: ../menueditor/menueditor-main-window.c:142
-#: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
-msgid "_Open"
-msgstr "_Aç"
-
-#: ../menueditor/menueditor-main-window.c:142
-msgid "Open existing menu"
-msgstr "Var olan menüyü aç"
-
-#: ../menueditor/menueditor-main-window.c:143
-msgid "Open _default menu"
-msgstr "_Öntanımlı menüyü aç"
-
-#: ../menueditor/menueditor-main-window.c:143
-msgid "Open default menu"
-msgstr "Öntanımlı menüyü aç"
-
-#: ../menueditor/menueditor-main-window.c:144
-msgid "_Save"
-msgstr "_Kaydet"
-
-#: ../menueditor/menueditor-main-window.c:144
-msgid "Save modifications"
-msgstr "Değişiklikleri kaydet"
-
-#: ../menueditor/menueditor-main-window.c:145
-msgid "Save _as..."
-msgstr "_Farklı kaydet..."
-
-#: ../menueditor/menueditor-main-window.c:145
-msgid "Save menu under a given name"
-msgstr "Menüyü verilen isim altında kaydet"
-
-#: ../menueditor/menueditor-main-window.c:146
-msgid "_Close"
-msgstr "_Kapat"
-
-#: ../menueditor/menueditor-main-window.c:146
-msgid "Close menu"
-msgstr "Menüyü kapat"
-
-#: ../menueditor/menueditor-main-window.c:147
-msgid "_Quit"
-msgstr "Çı_k"
-
-#: ../menueditor/menueditor-main-window.c:147
-msgid "Quit Xfce4-Menueditor"
-msgstr "Xfce4-Menü düzenleyicisinden çık"
-
-#: ../menueditor/menueditor-main-window.c:149
-msgid "_Edit"
-msgstr "_Düzenle"
-
-#: ../menueditor/menueditor-main-window.c:150
-msgid "_Edit entry"
-msgstr "Girdiyi _düzenle"
-
-#: ../menueditor/menueditor-main-window.c:150
-msgid "Edit selected entry"
-msgstr "Seçilen girdiyi düzenle"
-
-#: ../menueditor/menueditor-main-window.c:151
-msgid "_Add entry"
-msgstr "Girdi _ekle"
-
-#: ../menueditor/menueditor-main-window.c:151
-msgid "Add a new entry in the menu"
-msgstr "Menüye yeni bir girdi ekle"
-
-#: ../menueditor/menueditor-main-window.c:152
-msgid "Add _external"
-msgstr "_Harici menü ekle"
-
-#: ../menueditor/menueditor-main-window.c:152
-msgid "Add an external entry"
-msgstr "Harici bir girdi ekle"
-
-#: ../menueditor/menueditor-main-window.c:153
-msgid "_Remove entry"
-msgstr "Girdiyi _Sil"
-
-#: ../menueditor/menueditor-main-window.c:153
-msgid "Remove entry"
-msgstr "Girdiyi sil"
-
-#: ../menueditor/menueditor-main-window.c:154
-msgid "_Up"
-msgstr "_Yukarı"
-
-#: ../menueditor/menueditor-main-window.c:154
-msgid "Move entry up"
-msgstr "Girdiyi yukarı çıkar"
-
-#: ../menueditor/menueditor-main-window.c:155
-msgid "_Down"
-msgstr "_Aşağı"
-
-#: ../menueditor/menueditor-main-window.c:155
-msgid "Move entry down"
-msgstr "Girdiyi aşağı kaydır"
-
-#: ../menueditor/menueditor-main-window.c:157
-msgid "_Help"
-msgstr "_Yardım"
-
-#: ../menueditor/menueditor-main-window.c:158
-msgid "_About..."
-msgstr "_Hakkında.."
-
-#: ../menueditor/menueditor-main-window.c:158
-msgid "Show informations about xfce4-menueditor"
-msgstr "Xfce4-menü düzenleyicisi hakkında bilgileri göster"
-
-#: ../menueditor/menueditor-main-window.c:160
-msgid "Collapse all"
-msgstr "Hepsini daralt"
-
-#: ../menueditor/menueditor-main-window.c:160
-msgid "Collapse all menu entries"
-msgstr "Tüm menü girdilerini daralt"
-
-#: ../menueditor/menueditor-main-window.c:161
-msgid "Expand all"
-msgstr "Hepsini genişlet"
-
-#: ../menueditor/menueditor-main-window.c:161
-msgid "Expand all menu entries"
-msgstr "Tüm menü girdilerini genişlet"
-
-#: ../menueditor/menueditor-main-window.c:341
-msgid "Name"
-msgstr "İsim"
-
-#: ../menueditor/menueditor-main-window.c:344
-msgid "Command"
-msgstr "Komut"
-
-#: ../menueditor/menueditor-main-window.c:345
-msgid "Hidden"
-msgstr "Gizli"
-
-#: ../menueditor/menueditor-main-window.c:427
-msgid "Are you sure you want to close the current menu?"
-msgstr "Şu an ki menüyü kapatmak istediğinizden emin misiniz?"
-
-#: ../menueditor/menueditor-main-window.c:441
-msgid "Do you want to save before closing the file?"
-msgstr "Dosyayı kapatmadan önce kaydetmek ister misiniz?"
-
-#: ../menueditor/menueditor-main-window.c:479
-#: ../menueditor/menueditor-main-window.c:532
-#: ../menueditor/menueditor-main-window.c:630
-#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
-msgid "Question"
-msgstr "Soru"
-
-#: ../menueditor/menueditor-main-window.c:481
-msgid "Do you want to save before opening an other menu ?"
-msgstr "Başka bir menü açmadan önce kayıt etmek ister misiniz?"
-
-#: ../menueditor/menueditor-main-window.c:483
-#: ../menueditor/menueditor-main-window.c:536
-#: ../menueditor/menueditor-main-window.c:634
-msgid "Ignore modifications"
-msgstr "Değişiklikleri göz ardı et"
-
-#: ../menueditor/menueditor-main-window.c:494
-msgid "Open menu file"
-msgstr "Menü dosyası aç"
-
-#: ../menueditor/menueditor-main-window.c:534
-msgid "Do you want to save before opening the default menu ?"
-msgstr "Öntanımlı menüyü açmadan önce kaydetmek ister misiniz?"
-
-#: ../menueditor/menueditor-main-window.c:594
-msgid "Save menu file as"
-msgstr "Menü dosyasını farklı kaydet"
-
-#: ../menueditor/menueditor-main-window.c:632
-#: ../menueditor/menueditor-main-window.c:1343
-msgid "Do you want to save before closing the menu ?"
-msgstr "Menüyü kapatmadan önce kaydetmek ister misiniz?"
-
-#: ../menueditor/menueditor-main-window.c:858
-#: ../menueditor/menueditor-main-window.c:988
-msgid "quit"
-msgstr "çık"
-
-#: ../menueditor/menueditor-main-window.c:963
-#: ../menueditor/menueditor-main-window.c:1584
-msgid "--- separator ---"
-msgstr "--- ayırıcı ---"
-
-#: ../menueditor/menueditor-main-window.c:1081
-#: ../menueditor/menueditor-main-window.c:1088
-#: ../menueditor/menueditor-main-window.c:1638
-msgid "--- include ---"
-msgstr "--- içer ---"
-
-#: ../menueditor/menueditor-main-window.c:1089
-#: ../menueditor/menueditor-main-window.c:1655
-msgid "system"
-msgstr "sistem"
-
-#: ../menueditor/menueditor-main-window.c:1215
-#: ../menueditor/menueditor-main-window.c:1263
-msgid "Do you want to move the item into the submenu?"
-msgstr "Bileşeni alt mebüye taşımak ister misiniz?"
-
-#: ../menueditor/menueditor-main-window.c:1293
-msgid "A menu editor for Xfce4"
-msgstr "Xfce4 için menü düzenleyicisi"
-
-#. Credits
-#: ../menueditor/menueditor-main-window.c:1298
-msgid "Author/Maintainer"
-msgstr "Yazar/Sürüm Yöneticisi"
-
-#: ../menueditor/menueditor-main-window.c:1299
-#: ../menueditor/menueditor-main-window.c:1300
-#: ../menueditor/menueditor-main-window.c:1301
-msgid "Contributor"
-msgstr "Katkıcı"
-
-#: ../menueditor/menueditor-main-window.c:1302
-msgid "Icon designer"
-msgstr "Simge tasarımcısı"
-
-#: ../menueditor/menueditor-main-window.c:1345
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr ""
-"Menüyü değiştirdiniz, çıkmadan önce değişiklikleri kaydetmek ister misiniz?"
-
-#: ../menueditor/menueditor-main-window.c:1347
-msgid "Forget modifications"
-msgstr "Değişiklikleri göz ardı et"
-
-#: ../menueditor/menueditor-main-window.c:2035
-#, c-format
-msgid "Unable to open the menu file %s in write mode"
-msgstr "%s menü dosyası yazılabilir kipte açılamıyor"
-
 #: ../panel-plugin/desktop-menu-plugin.c:653
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
@@ -530,6 +42,18 @@ msgstr "Simge Seç"
 #: ../panel-plugin/desktop-menu-plugin.c:678
 msgid "Select Menu File"
 msgstr "Menü Dosyası Seç"
+
+#: ../panel-plugin/desktop-menu-plugin.c:705
+msgid "All Files"
+msgstr "Tüm Dosyalar"
+
+#: ../panel-plugin/desktop-menu-plugin.c:712
+msgid "Image Files"
+msgstr "Resim Dosyaları"
+
+#: ../panel-plugin/desktop-menu-plugin.c:715
+msgid "Menu Files"
+msgstr "Menü Dosyaları"
 
 #: ../panel-plugin/desktop-menu-plugin.c:740
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
@@ -759,6 +283,10 @@ msgstr "Yeniden adlandır"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "\"%s\" öğesini silmek istediğinizden emin misiniz?"
 
+#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
+msgid "Question"
+msgstr "Soru"
+
 #: ../src/xfdesktop-file-icon-manager.c:681
 #: ../src/xfdesktop-file-icon-manager.c:701
 msgid "If you delete a file, it is permanently lost."
@@ -875,6 +403,11 @@ msgstr "_Hepsini aç"
 msgid "_Open in New Window"
 msgstr "Y_eni Pencerede Aç"
 
+#: ../src/xfdesktop-file-icon-manager.c:1718
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+msgid "_Open"
+msgstr "_Aç"
+
 #: ../src/xfdesktop-file-icon-manager.c:1733
 msgid "Create _Launcher..."
 msgstr "Başlatıcı _Oluştur..."
@@ -968,6 +501,10 @@ msgstr "Okuma ve Yazma"
 #: ../src/xfdesktop-file-properties-dialog.c:163
 msgid "General"
 msgstr "Genel"
+
+#: ../src/xfdesktop-file-properties-dialog.c:188
+msgid "Name:"
+msgstr "İsim:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:214
 msgid "Kind:"
@@ -1169,18 +706,6 @@ msgstr "Diski _Ayır"
 msgid "_Mount Volume"
 msgstr "Birim _Bağla"
 
-#: ../menueditor/xfce-menueditor.desktop.in.h:1
-msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Xfce 4 menüsünü düzenlemek için arayüz"
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:2
-msgid "Menu Editor"
-msgstr "Menü Düzenleyici"
-
-#: ../menueditor/xfce-menueditor.desktop.in.h:3
-msgid "Xfce 4 Menu Editor"
-msgstr "Xfce4 Menü Düzenleyicisi"
-
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
 msgstr "Donatılar"
@@ -1268,6 +793,10 @@ msgstr "Masaüstü ve sistem seçenekleri uygulamaları"
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
 msgid "Settings"
 msgstr "Ayarlar"
+
+#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
+msgid "System"
+msgstr "Sistem"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
@@ -1734,6 +1263,299 @@ msgstr "gtk-close"
 #: ../settings/xfdesktop-settings.glade.h:72
 msgid "gtk-help"
 msgstr "gtk-help"
+
+#~ msgid "Add menu entry"
+#~ msgstr "Menu girdisi ekle"
+
+#~ msgid "Type:"
+#~ msgstr "Tür:"
+
+#~ msgid "Title"
+#~ msgstr "Başlık"
+
+#~ msgid "Submenu"
+#~ msgstr "Altı menü"
+
+#~ msgid "Launcher"
+#~ msgstr "Başlatıcı"
+
+#~ msgid "Separator"
+#~ msgstr "Ayırıcı"
+
+#~ msgid "Quit"
+#~ msgstr "Çık"
+
+#~ msgid "Command:"
+#~ msgstr "Komut:"
+
+#~ msgid "Icon:"
+#~ msgstr "Simge:"
+
+#~ msgid "No icon"
+#~ msgstr "Simge yok"
+
+#~ msgid "Themed icon:"
+#~ msgstr "Temalı simge:"
+
+#~ msgid "Select icon"
+#~ msgstr "Simge seç"
+
+#~ msgid "Use startup _notification"
+#~ msgstr "Başlangıç _uyarısı kullan"
+
+#~ msgid "Run in _terminal"
+#~ msgstr "_Uçbirim içinde başlat"
+
+#~ msgid "Select command"
+#~ msgstr "Komut seç"
+
+#~ msgid "Executable Files"
+#~ msgstr "Çalıştırılabilir Dosyalar"
+
+#~ msgid "Perl Scripts"
+#~ msgstr "Perl Betikleri"
+
+#~ msgid "Python Scripts"
+#~ msgstr "Python Betikleri"
+
+#~ msgid "Ruby Scripts"
+#~ msgstr "Ruby Betikleri"
+
+#~ msgid "Shell Scripts"
+#~ msgstr "Kabuk Betikleri"
+
+#~ msgid "Add external menu entry"
+#~ msgstr "Harici menü girdisi ekle"
+
+#~ msgid "File"
+#~ msgstr "Dosya"
+
+#~ msgid "Source:"
+#~ msgstr "Kaynak:"
+
+#~ msgid "Select external menu"
+#~ msgstr "Harici menü seç"
+
+#~ msgid "Style:"
+#~ msgstr "Düzen:"
+
+#~ msgid "Simple"
+#~ msgstr "Basit"
+
+#~ msgid "Multilevel"
+#~ msgstr "Çok Katmanlı"
+
+#~ msgid "_Unique entries only"
+#~ msgstr "Sadece _farklı girdiler"
+
+#~ msgid "Edit menu entry"
+#~ msgstr "Menü girdisini düzenle"
+
+#~ msgid "Edit external menu entry"
+#~ msgstr "Harici menü girdisini düzenle"
+
+#~ msgid "Xfce4-MenuEditor"
+#~ msgstr "Xfce4-Menü Düzenleyicisi"
+
+#~ msgid "Menueditor Warning"
+#~ msgstr "Menü Düzenleyici Uyarısı"
+
+#~ msgid "xfce4-menueditor is deprecated"
+#~ msgstr "xfce4-menueditor artık kullanılmıyor"
+
+#~ msgid ""
+#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
+#~ "edit the new menu file format.  You may continue and edit an old-style "
+#~ "menu file, or quit."
+#~ msgstr ""
+#~ "Xfce'nin menü sistemi yenilendi ve xfce4-menueditor yeni menü biçimini "
+#~ "düzenleyemiyor.  Devam edebilir ve eski menü dosyasını "
+#~ "düzenleyebilirsiniz; ya da çıkabilirsiniz."
+
+#~ msgid "Continue"
+#~ msgstr "Devam"
+
+#~ msgid "_File"
+#~ msgstr "_Dosya"
+
+#~ msgid "_New"
+#~ msgstr "_Yeni"
+
+#~ msgid "Create a new empty menu"
+#~ msgstr "Yeni boş bir menü oluştur"
+
+#~ msgid "Open existing menu"
+#~ msgstr "Var olan menüyü aç"
+
+#~ msgid "Open _default menu"
+#~ msgstr "_Öntanımlı menüyü aç"
+
+#~ msgid "Open default menu"
+#~ msgstr "Öntanımlı menüyü aç"
+
+#~ msgid "_Save"
+#~ msgstr "_Kaydet"
+
+#~ msgid "Save modifications"
+#~ msgstr "Değişiklikleri kaydet"
+
+#~ msgid "Save _as..."
+#~ msgstr "_Farklı kaydet..."
+
+#~ msgid "Save menu under a given name"
+#~ msgstr "Menüyü verilen isim altında kaydet"
+
+#~ msgid "_Close"
+#~ msgstr "_Kapat"
+
+#~ msgid "Close menu"
+#~ msgstr "Menüyü kapat"
+
+#~ msgid "_Quit"
+#~ msgstr "Çı_k"
+
+#~ msgid "Quit Xfce4-Menueditor"
+#~ msgstr "Xfce4-Menü düzenleyicisinden çık"
+
+#~ msgid "_Edit"
+#~ msgstr "_Düzenle"
+
+#~ msgid "_Edit entry"
+#~ msgstr "Girdiyi _düzenle"
+
+#~ msgid "Edit selected entry"
+#~ msgstr "Seçilen girdiyi düzenle"
+
+#~ msgid "_Add entry"
+#~ msgstr "Girdi _ekle"
+
+#~ msgid "Add a new entry in the menu"
+#~ msgstr "Menüye yeni bir girdi ekle"
+
+#~ msgid "Add _external"
+#~ msgstr "_Harici menü ekle"
+
+#~ msgid "Add an external entry"
+#~ msgstr "Harici bir girdi ekle"
+
+#~ msgid "_Remove entry"
+#~ msgstr "Girdiyi _Sil"
+
+#~ msgid "Remove entry"
+#~ msgstr "Girdiyi sil"
+
+#~ msgid "_Up"
+#~ msgstr "_Yukarı"
+
+#~ msgid "Move entry up"
+#~ msgstr "Girdiyi yukarı çıkar"
+
+#~ msgid "_Down"
+#~ msgstr "_Aşağı"
+
+#~ msgid "Move entry down"
+#~ msgstr "Girdiyi aşağı kaydır"
+
+#~ msgid "_Help"
+#~ msgstr "_Yardım"
+
+#~ msgid "_About..."
+#~ msgstr "_Hakkında.."
+
+#~ msgid "Show informations about xfce4-menueditor"
+#~ msgstr "Xfce4-menü düzenleyicisi hakkında bilgileri göster"
+
+#~ msgid "Collapse all"
+#~ msgstr "Hepsini daralt"
+
+#~ msgid "Collapse all menu entries"
+#~ msgstr "Tüm menü girdilerini daralt"
+
+#~ msgid "Expand all"
+#~ msgstr "Hepsini genişlet"
+
+#~ msgid "Expand all menu entries"
+#~ msgstr "Tüm menü girdilerini genişlet"
+
+#~ msgid "Name"
+#~ msgstr "İsim"
+
+#~ msgid "Command"
+#~ msgstr "Komut"
+
+#~ msgid "Hidden"
+#~ msgstr "Gizli"
+
+#~ msgid "Are you sure you want to close the current menu?"
+#~ msgstr "Şu an ki menüyü kapatmak istediğinizden emin misiniz?"
+
+#~ msgid "Do you want to save before closing the file?"
+#~ msgstr "Dosyayı kapatmadan önce kaydetmek ister misiniz?"
+
+#~ msgid "Do you want to save before opening an other menu ?"
+#~ msgstr "Başka bir menü açmadan önce kayıt etmek ister misiniz?"
+
+#~ msgid "Ignore modifications"
+#~ msgstr "Değişiklikleri göz ardı et"
+
+#~ msgid "Open menu file"
+#~ msgstr "Menü dosyası aç"
+
+#~ msgid "Do you want to save before opening the default menu ?"
+#~ msgstr "Öntanımlı menüyü açmadan önce kaydetmek ister misiniz?"
+
+#~ msgid "Save menu file as"
+#~ msgstr "Menü dosyasını farklı kaydet"
+
+#~ msgid "Do you want to save before closing the menu ?"
+#~ msgstr "Menüyü kapatmadan önce kaydetmek ister misiniz?"
+
+#~ msgid "quit"
+#~ msgstr "çık"
+
+#~ msgid "--- separator ---"
+#~ msgstr "--- ayırıcı ---"
+
+#~ msgid "--- include ---"
+#~ msgstr "--- içer ---"
+
+#~ msgid "system"
+#~ msgstr "sistem"
+
+#~ msgid "Do you want to move the item into the submenu?"
+#~ msgstr "Bileşeni alt mebüye taşımak ister misiniz?"
+
+#~ msgid "A menu editor for Xfce4"
+#~ msgstr "Xfce4 için menü düzenleyicisi"
+
+#~ msgid "Author/Maintainer"
+#~ msgstr "Yazar/Sürüm Yöneticisi"
+
+#~ msgid "Contributor"
+#~ msgstr "Katkıcı"
+
+#~ msgid "Icon designer"
+#~ msgstr "Simge tasarımcısı"
+
+#~ msgid "You have modified the menu, do you want to save it before quitting ?"
+#~ msgstr ""
+#~ "Menüyü değiştirdiniz, çıkmadan önce değişiklikleri kaydetmek ister "
+#~ "misiniz?"
+
+#~ msgid "Forget modifications"
+#~ msgstr "Değişiklikleri göz ardı et"
+
+#~ msgid "Unable to open the menu file %s in write mode"
+#~ msgstr "%s menü dosyası yazılabilir kipte açılamıyor"
+
+#~ msgid "Graphical tool for editing the Xfce 4 menu"
+#~ msgstr "Xfce 4 menüsünü düzenlemek için arayüz"
+
+#~ msgid "Menu Editor"
+#~ msgstr "Menü Düzenleyici"
+
+#~ msgid "Xfce 4 Menu Editor"
+#~ msgstr "Xfce4 Menü Düzenleyicisi"
 
 #~ msgid "Settings for the Xfce 4 Desktop Manager"
 #~ msgstr "Xfce 4 Masaüstü Yöneticisi için Ayarlar"
