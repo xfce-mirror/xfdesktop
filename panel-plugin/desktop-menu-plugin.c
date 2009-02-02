@@ -522,6 +522,11 @@ dmp_menu_file_set(GtkFileChooser *fc,
 
     g_free(dmp->menu_file);
     dmp->menu_file = gtk_file_chooser_get_filename(fc);
+    if(!dmp->menu_file|| !g_file_test(dmp->menu_file, G_FILE_TEST_EXISTS)) {
+        g_free(dmp->menu_file);
+        dmp->menu_file = NULL;
+        return;
+    }
 
     if(dmp->desktop_menu) {
         const gchar *cur_file = xfce_desktop_menu_get_menu_file(dmp->desktop_menu);
@@ -594,7 +599,7 @@ dmp_use_custom_menu_toggled_cb(GtkToggleButton *tb, gpointer user_data)
         hbox = g_object_get_data(G_OBJECT(tb), "dmp-child-hbox");
         gtk_widget_set_sensitive(hbox, TRUE);
         
-        if(dmp->menu_file) {
+        if(dmp->menu_file && g_file_test(dmp->menu_file, G_FILE_TEST_EXISTS)) {
             if(dmp->desktop_menu)
                 xfce_desktop_menu_destroy(dmp->desktop_menu);
             dmp->desktop_menu = xfce_desktop_menu_new(dmp->menu_file, TRUE);
