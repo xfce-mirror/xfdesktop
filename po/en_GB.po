@@ -3,23 +3,24 @@
 # This file is distributed under the same license as the xfdesktop package.
 # Zuza Software Foundation (Translate.org.za), 2004.
 # Translate.org.za <info@translate.org.za>, 2007.
-#
-#
+# Jeff Bailes <thepizzaking@gmail.com>, 2009.
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.4.0\n"
+"Project-Id-Version: xfdesktop 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-26 01:15+0100\n"
-"PO-Revision-Date: 2008-05-10 12:30+1000\n"
-"Last-Translator: Jeff Bailes <thepizzaking@gmail.com>\n"
-"Language-Team: English/GB\n"
+"PO-Revision-Date: 2009-01-27 13:37+1100\n"
+"Last-Translator:  <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding:\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);"
 
 #: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
-#, fuzzy, c-format
+#, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Choose backdrop list filename"
 
@@ -182,7 +183,7 @@ msgstr "%s is not running.\n"
 
 #: ../src/menu.c:113
 msgid "_Applications"
-msgstr ""
+msgstr "_Applications"
 
 #: ../src/windowlist.c:236
 msgid "Window List"
@@ -222,14 +223,13 @@ msgid "Desktop"
 msgstr "Desktop"
 
 #: ../src/xfce-desktop.c:1009
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Unable to create file \"%s\":"
+msgstr "Unable to load image from backdrop list file \"%s\""
 
 #: ../src/xfce-desktop.c:1011
-#, fuzzy
 msgid "Desktop Error"
-msgstr "Desktop"
+msgstr "Desktop Error"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
@@ -418,9 +418,8 @@ msgid "Create _Folder..."
 msgstr "Create _Folder..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1791
-#, fuzzy
 msgid "Create From _Template"
-msgstr "Create Document from template \"%s\""
+msgstr "Create From _Template"
 
 #: ../src/xfdesktop-file-icon-manager.c:1825
 msgid "_Empty File"
@@ -625,9 +624,8 @@ msgstr "Home"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
-#, fuzzy
 msgid "Kind: Trash"
-msgstr "Kind:"
+msgstr "Kind: Wastebasket"
 
 #: ../src/xfdesktop-special-file-icon.c:515
 msgid "Trash Error"
@@ -652,7 +650,7 @@ msgstr "_Empty Wastebasket"
 #: ../src/xfdesktop-volume-icon.c:474
 #, c-format
 msgid "%s (%s total)"
-msgstr ""
+msgstr "%s (%s total)"
 
 #: ../src/xfdesktop-volume-icon.c:478
 #, c-format
@@ -661,6 +659,9 @@ msgid ""
 "Mount Point: %s\n"
 "Free Space: %s"
 msgstr ""
+"Kind: Removable Volume\n"
+"Mount Point: %s\n"
+"Free Space: %s"
 
 #: ../src/xfdesktop-volume-icon.c:509
 #, c-format
@@ -860,79 +861,74 @@ msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
 msgstr ""
+"%s\n"
+"<i>Size: %dx%d</i>"
 
 #: ../settings/main.c:269
-#, fuzzy
 msgid "Filesystem"
-msgstr "system"
+msgstr "Filesystem"
 
 #: ../settings/main.c:271
-#, fuzzy
 msgid "Trash"
-msgstr "Wastebasket Error"
+msgstr "Wastebasket"
 
 #: ../settings/main.c:273
 msgid "Removable Devices"
-msgstr ""
+msgstr "Removable Devices"
 
 #: ../settings/main.c:426
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Create backdrop list"
+msgstr "Cannot create backdrop list \"%s\""
 
 #: ../settings/main.c:430 ../settings/main.c:789
-#, fuzzy
 msgid "Backdrop List Error"
-msgstr "Backdrop List"
+msgstr "Backdrop List Error"
 
 #: ../settings/main.c:455
-#, fuzzy
 msgid "Create/Load Backdrop List"
-msgstr "Create backdrop list"
+msgstr "Create/Load Backdrop List"
 
 #: ../settings/main.c:479
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 
 #: ../settings/main.c:484
-#, fuzzy
 msgid "Invalid List File"
-msgstr "List Files"
+msgstr "Invalid List File"
 
 #: ../settings/main.c:487
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
+msgstr "Overwriting the file will cause its contents to be lost."
 
 #: ../settings/main.c:489
-#, fuzzy
 msgid "Replace"
-msgstr "Rename"
+msgstr "Replace"
 
 #: ../settings/main.c:785
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Failed to rename \"%s\" to \"%s\":"
+msgstr "Failed to write backdrop list to \"%s\""
 
 #: ../settings/main.c:812
-#, fuzzy
 msgid "Add Image File(s)"
-msgstr "Image Files"
+msgstr "Add Image File(s)"
 
 #: ../settings/main.c:821
 msgid "Image files"
 msgstr "Image files"
 
 #: ../settings/main.c:826
-#, fuzzy
 msgid "All files"
-msgstr "All Files"
+msgstr "All files"
 
 #: ../settings/main.c:1120
-#, fuzzy, c-format
+#, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "Screen %d, Monitor %d"
+msgstr "Screen %d, Monitor %d (%s)"
 
 #: ../settings/main.c:1125
 #, c-format
@@ -947,96 +943,90 @@ msgstr "Screen %d"
 #: ../settings/main.c:1134
 #, c-format
 msgid "Monitor %d (%s)"
-msgstr ""
+msgstr "Monitor %d (%s)"
 
 #: ../settings/main.c:1139
-#, fuzzy, c-format
+#, c-format
 msgid "Monitor %d"
-msgstr "Screen %d, Monitor %d"
+msgstr "Monitor %d"
 
 #: ../settings/main.c:1354
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Settings manager socket"
 
 #: ../settings/main.c:1354
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET ID"
 
 #: ../settings/main.c:1355
-#, fuzzy
 msgid "Version information"
-msgstr "Information"
+msgstr "Version information"
 
 #: ../settings/main.c:1375
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr ""
+msgstr "Type '%s --help' for usage."
 
 #: ../settings/main.c:1387
 msgid "The Xfce development team. All rights reserved."
-msgstr ""
+msgstr "The Xfce development team. All rights reserved."
 
 #: ../settings/main.c:1388
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "Please report bugs to <%s>."
 
 #: ../settings/main.c:1395
 msgid "Desktop Settings"
 msgstr "Desktop Settings"
 
 #: ../settings/main.c:1397
-#, fuzzy
 msgid "Unable to contact settings server"
-msgstr "Unable to contact the Xfce Wastebasket service."
+msgstr "Unable to contact settings server"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop "
-msgstr "Desktop"
+msgstr "Desktop "
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
+msgstr "Set desktop background and menu and icon behaviour"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
-msgstr ""
+msgstr "<b>Adjustments</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:2
-#, fuzzy
 msgid "<b>Appearance</b>"
-msgstr "_Appearance"
+msgstr "<b>Appearance</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:3
-#, fuzzy
 msgid "<b>Colors</b>"
-msgstr "<b>Workspace %d</b>"
+msgstr "<b>Colours</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:4
 msgid "<b>Default Icons</b>"
-msgstr ""
+msgstr "<b>Default Icons</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:5
 msgid "<b>Desktop Menu</b>"
-msgstr ""
+msgstr "<b>Desktop Menu</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:6
 msgid "<b>Image</b>"
-msgstr ""
+msgstr "<b>Image</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:7
 msgid "<b>Images</b>"
-msgstr ""
+msgstr "<b>Images</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:8
-#, fuzzy
 msgid "<b>Window List Menu</b>"
-msgstr "Window List"
+msgstr "<b>Window List Menu</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:9
 msgid "Add an image to the list"
-msgstr ""
+msgstr "Add an image to the list"
 
 #: ../settings/xfdesktop-settings.glade.h:10
 msgid ""
@@ -1047,55 +1037,56 @@ msgid ""
 "Scaled\n"
 "Zoomed"
 msgstr ""
+"Auto\n"
+"Centred\n"
+"Tiled\n"
+"Stretched\n"
+"Scaled\n"
+"Zoomed"
 
 #: ../settings/xfdesktop-settings.glade.h:16
 msgid "Automatically pick a random image from a list file"
-msgstr ""
+msgstr "Automatically pick a random image from a list file"
 
 #: ../settings/xfdesktop-settings.glade.h:17
-#, fuzzy
 msgid "B_rightness:"
-msgstr "A_djust Brightness:"
+msgstr "B_rightness:"
 
 #: ../settings/xfdesktop-settings.glade.h:18
-#, fuzzy
 msgid "B_utton:"
-msgstr "Button"
+msgstr "B_utton:"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
-msgstr ""
+msgstr "Create a new list, or load an existing one"
 
 #: ../settings/xfdesktop-settings.glade.h:21
 msgid "Don't display an image at all"
-msgstr ""
+msgstr "Don't display an image at all"
 
 #: ../settings/xfdesktop-settings.glade.h:22
-#, fuzzy
 msgid "Icon _size:"
-msgstr "_Icon size:"
+msgstr "Icon _size:"
 
 #: ../settings/xfdesktop-settings.glade.h:23
-#, fuzzy
 msgid "Icon _type:"
-msgstr "_Icon size:"
+msgstr "Icon _type:"
 
 #: ../settings/xfdesktop-settings.glade.h:24
-#, fuzzy
 msgid "Image _list"
-msgstr "Image Files"
+msgstr "Image _list"
 
 #: ../settings/xfdesktop-settings.glade.h:25
 msgid "Increase or decrease the brightness of the final image"
-msgstr ""
+msgstr "Increase or decrease the brightness of the final image"
 
 #: ../settings/xfdesktop-settings.glade.h:26
 msgid "Increase or decrease the color saturation of the final image"
-msgstr ""
+msgstr "Increase or decrease the colour saturation of the final image"
 
 #: ../settings/xfdesktop-settings.glade.h:27
 msgid "Label trans_parency:"
-msgstr ""
+msgstr "Label trans_parency:"
 
 #: ../settings/xfdesktop-settings.glade.h:28
 msgid ""
@@ -1103,24 +1094,27 @@ msgid ""
 "Middle\n"
 "Right"
 msgstr ""
+"Left\n"
+"Middle\n"
+"Right"
 
 #: ../settings/xfdesktop-settings.glade.h:31
-#, fuzzy
 msgid "Mo_difier:"
-msgstr "Modified:"
+msgstr "Mo_difier:"
 
 #: ../settings/xfdesktop-settings.glade.h:32
-#, fuzzy
 msgid "Modi_fier:"
-msgstr "Modified:"
+msgstr "Modi_fier:"
 
 #: ../settings/xfdesktop-settings.glade.h:33
-#, fuzzy
 msgid ""
 "None\n"
 "Minimized application icons\n"
 "File/launcher icons"
-msgstr "Minimised application icons"
+msgstr ""
+"None\n"
+"Minimised application icons\n"
+"File/launcher icons"
 
 #: ../settings/xfdesktop-settings.glade.h:36
 msgid ""
@@ -1129,57 +1123,54 @@ msgid ""
 "Alt\n"
 "Control"
 msgstr ""
+"None\n"
+"Shift\n"
+"Alt\n"
+"Control"
 
 #: ../settings/xfdesktop-settings.glade.h:40
 msgid "Remove the selected image(s) from the list"
-msgstr ""
+msgstr "Remove the selected image(s) from the list"
 
 #: ../settings/xfdesktop-settings.glade.h:41
 msgid "Sa_turation:"
-msgstr ""
+msgstr "Sa_turation:"
 
 #: ../settings/xfdesktop-settings.glade.h:42
-#, fuzzy
 msgid "Select First Color"
-msgstr "Fi_rst Colour:"
+msgstr "Select First Colour"
 
 #: ../settings/xfdesktop-settings.glade.h:43
-#, fuzzy
 msgid "Select Second Color"
-msgstr "_Second Colour:"
+msgstr "Select Second Colour"
 
 #: ../settings/xfdesktop-settings.glade.h:44
 msgid "Select a single image as the backdrop"
-msgstr ""
+msgstr "Select a single image as the backdrop"
 
 #: ../settings/xfdesktop-settings.glade.h:45
 msgid "Set desktop background and menu and icon behavior"
-msgstr ""
+msgstr "Set desktop background and menu and icon behaviour"
 
 #: ../settings/xfdesktop-settings.glade.h:46
-#, fuzzy
 msgid "Sh_ow application icons in menu"
-msgstr "Show _icons in menu"
+msgstr "Sh_ow application icons in menu"
 
 #: ../settings/xfdesktop-settings.glade.h:47
-#, fuzzy
 msgid "Show _application icons in menu"
-msgstr "Show _icons in menu"
+msgstr "Show _application icons in menu"
 
 #: ../settings/xfdesktop-settings.glade.h:48
-#, fuzzy
 msgid "Show _window list menu on desktop middle click"
-msgstr "Show _window list on middle click"
+msgstr "Show _window list menu on desktop middle click"
 
 #: ../settings/xfdesktop-settings.glade.h:49
-#, fuzzy
 msgid "Show applications menu on _desktop right click"
-msgstr "Show _desktop menu on right click"
+msgstr "Show applications menu on _desktop right click"
 
 #: ../settings/xfdesktop-settings.glade.h:50
-#, fuzzy
 msgid "Show s_ticky windows only in active workspace"
-msgstr "Show sticky windows only in _active workspace"
+msgstr "Show s_ticky windows only in active workspace"
 
 #: ../settings/xfdesktop-settings.glade.h:51
 msgid "Show workspace _names in list"
@@ -1192,76 +1183,76 @@ msgid ""
 "Vertical gradient\n"
 "Transparent"
 msgstr ""
+"Solid colour\n"
+"Horizontal gradient\n"
+"Vertical gradient\n"
+"Transparent"
 
 #: ../settings/xfdesktop-settings.glade.h:56
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
+msgstr "Specifies the \"right\" or \"bottom\" colour of the gradient"
 
 #: ../settings/xfdesktop-settings.glade.h:57
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
+"Specifies the solid colour, or the \"left\" or \"top\" colour of the gradient"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
+msgstr "Specify how the image will be resized to fit the screen"
 
 #: ../settings/xfdesktop-settings.glade.h:59
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
+msgstr "Specify the style of the colour drawn behind the backdrop image"
 
 #: ../settings/xfdesktop-settings.glade.h:60
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
 
 #: ../settings/xfdesktop-settings.glade.h:61
-#, fuzzy
 msgid "St_yle:"
-msgstr "Style:"
+msgstr "St_yle:"
 
 #: ../settings/xfdesktop-settings.glade.h:62
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "Use _submenus for the windows in each workspace"
 
 #: ../settings/xfdesktop-settings.glade.h:63
-#, fuzzy
 msgid "Use custom _font size:"
-msgstr "Custom _font size:"
+msgstr "Use custom _font size:"
 
 #: ../settings/xfdesktop-settings.glade.h:64
 msgid "_Background"
-msgstr ""
+msgstr "_Background"
 
 #: ../settings/xfdesktop-settings.glade.h:65
-#, fuzzy
 msgid "_Button:"
-msgstr "Button"
+msgstr "_Button:"
 
 #: ../settings/xfdesktop-settings.glade.h:66
-#, fuzzy
 msgid "_Edit desktop menu"
-msgstr "_Edit Menu"
+msgstr "_Edit desktop menu"
 
 #: ../settings/xfdesktop-settings.glade.h:67
-#, fuzzy
 msgid "_Icons"
-msgstr "Icons"
+msgstr "_Icons"
 
 #: ../settings/xfdesktop-settings.glade.h:68
-#, fuzzy
 msgid "_Menus"
-msgstr "Menus"
+msgstr "_Menus"
 
 #: ../settings/xfdesktop-settings.glade.h:69
-#, fuzzy
 msgid "_None"
-msgstr "None"
+msgstr "_None"
 
 #: ../settings/xfdesktop-settings.glade.h:70
 msgid "_Single image"
-msgstr ""
+msgstr "_Single image"
 
 #: ../settings/xfdesktop-settings.glade.h:71
 msgid "gtk-close"
