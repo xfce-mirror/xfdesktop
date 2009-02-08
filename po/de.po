@@ -1,23 +1,24 @@
-# German translations for xfdesktop package.
+# German translation of the xfdesktop package.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Benedikt Meurer <benny@xfce.org>, 2003.
 # Moritz Heiber <moe@xfce.org>, 2004.
-# Fabian Nowak <timystery@arcor.de>, 2005-2007.
+# Fabian Nowak <timystery@arcor.de>, 2005-2008.
 # Nico Schümann <nico@prog.nico22.de>, 2007.
-# Enrico Tröger <enrico.troeger@uvena.de>, 2007.
+# Enrico Tröger <enrico@xfce.org>, 2007-2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.4.0\n"
+"Project-Id-Version: xfdesktop 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 01:15+0100\n"
-"PO-Revision-Date: 2008-10-18 14:00+0100\n"
-"Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
-"Language-Team: German <de@li.org>\n"
+"POT-Creation-Date: 2009-01-31 13:46+0100\n"
+"PO-Revision-Date: 2009-01-24 08:56+0100\n"
+"Last-Translator: Enrico Tröger <enrico@xfce.org>\n"
+"Language-Team: German <xfce-i18n-de@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
 #, c-format
@@ -56,15 +57,15 @@ msgstr "Xfce-Menü"
 
 #: ../panel-plugin/desktop-menu-plugin.c:752
 msgid "Button"
-msgstr "Knopf"
+msgstr "Schaltfläche"
 
 #: ../panel-plugin/desktop-menu-plugin.c:765
 msgid "Button _title:"
-msgstr "_Titel im Knopf:"
+msgstr "_Titel ür die Schaltfläche:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:778
 msgid "_Show title in button"
-msgstr "_Titel im Knopf anzeigen"
+msgstr "_Titel für die Schaltfläche anzeigen"
 
 #: ../panel-plugin/desktop-menu-plugin.c:785
 msgid "Menu File"
@@ -88,7 +89,7 @@ msgstr "Symbole"
 
 #: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "_Button icon:"
-msgstr "_Knopfsymbol:"
+msgstr "_Schaltflächensymbol:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:880
 msgid "Show _icons in menu"
@@ -137,12 +138,12 @@ msgstr "deaktiviert"
 #: ../src/main.c:245
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "    Symbole auf der Arbeitsoberfläche:       %s\n"
+msgstr "    Symbole auf dem Schreibtisch:       %s\n"
 
 #: ../src/main.c:252
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Symbole für Dateien auf der Arbeitsoberfläche:  %s\n"
+msgstr "    Symbole für Dateien auf dem Schreibtisch:  %s\n"
 
 #: ../src/main.c:281
 #, c-format
@@ -157,7 +158,7 @@ msgstr "Optionen sind:\n"
 #: ../src/main.c:283
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr "    --reload      Einstellungen neu laden, Liste auffrischen\n"
+msgstr "    --reload      Einstellungen neu laden, Hintergrundbild erneuern\n"
 
 #: ../src/main.c:284
 #, c-format
@@ -220,7 +221,7 @@ msgstr "A_rbeitsfläche »%s« entfernen"
 
 #: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
-msgstr "Arbeitsoberfläche"
+msgstr "Schreibtisch"
 
 #: ../src/xfce-desktop.c:1009
 #, c-format
@@ -229,15 +230,15 @@ msgstr "Konnte Bild aus Liste »%s« nicht laden"
 
 #: ../src/xfce-desktop.c:1011
 msgid "Desktop Error"
-msgstr "Fehler bei der Arbeitsoberfläche"
+msgstr "Fehler"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
-"Xfdesktop konnte den Ordner »%s« zum Speichern von Elementen der "
-"Arbeitsoberfläche nicht erstellen:"
+"Xfdesktop konnte den Ordner »%s« zum Speichern von Elementen des "
+"Schreibtischs nicht erstellen:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
@@ -251,8 +252,8 @@ msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
-"Xfdesktop kann in »%s« keine Elemente der Arbeitsoberfläche unterbringen, "
-"weil es kein Ordner ist."
+"Xfdesktop kann in »%s« keine Elemente des Schreibtischs unterbringen, weil es "
+"kein Ordner ist."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -291,7 +292,7 @@ msgstr "Wenn Sie eine Datei löschen, ist sie dauerhaft verloren."
 #: ../src/xfdesktop-file-icon-manager.c:695
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "Wollen Sie die folgenden %d Dateien wirklich löschen?"
+msgstr "Wollen Sie die folgende(n) %d Datei(en) wirklich löschen?"
 
 #: ../src/xfdesktop-file-icon-manager.c:698
 msgid "Delete Multiple Files"
@@ -322,8 +323,8 @@ msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
-"Diese Fähigkeit benötigt einen Dienst eines Dateimanagers (wie er z.B. von "
-"Thunar gestellt wird)."
+"Diese Funktion benötigt den Dienst eines Dateimanagers (wie er z.B. von "
+"Thunar bereitgestellt wird)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1137
 #, c-format
@@ -338,7 +339,7 @@ msgstr "Öffnen mit »%s«"
 #: ../src/xfdesktop-file-icon-manager.c:1203
 #, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "Konnte Ordner namens »%s« nicht erstellen:"
+msgstr "Konnte den Ordner »%s« nicht erstellen:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1242
 msgid ""
@@ -346,7 +347,7 @@ msgid ""
 "edit launchers and links on the desktop."
 msgstr ""
 "Kann »exo-desktop-item-edit« nicht starten, was zum Erstellen und Bearbeiten "
-"von Startern und Verknüpfungen auf der Arbeitsoberfläche benötigt wird."
+"von Startern und Verknüpfungen auf dem Schreibtisch benötigt wird."
 
 #: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
@@ -365,7 +366,7 @@ msgstr "Erstellen"
 #: ../src/xfdesktop-file-icon-manager.c:1316
 #, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "Konnte Datei namens »%s« nicht erstellen:"
+msgstr "Konnte die Datei »%s« nicht erstellen:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1319
 msgid "Create File Failed"
@@ -419,9 +420,8 @@ msgid "Create _Folder..."
 msgstr "_Ordner erstellen..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1791
-#, fuzzy
 msgid "Create From _Template"
-msgstr "Dokument aus Vorlage »%s« erstellen"
+msgstr "Aus _Vorlage erstellen"
 
 #: ../src/xfdesktop-file-icon-manager.c:1825
 msgid "_Empty File"
@@ -449,7 +449,7 @@ msgstr "_Umbenennen..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2055
 msgid "Desktop _Settings..."
-msgstr "Arbeitsoberflächen-Ein_stellungen"
+msgstr "Schreibtischein_stellungen"
 
 #: ../src/xfdesktop-file-icon-manager.c:2065
 #: ../src/xfdesktop-volume-icon.c:606
@@ -478,7 +478,7 @@ msgstr "Kann Standardanwendung für »%s« nicht auf »%s« setzen:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:106
 msgid "Properties Error"
-msgstr "Fehler bei den Eigenschaften"
+msgstr "Fehler"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "None"
@@ -506,7 +506,7 @@ msgstr "Name:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:214
 msgid "Kind:"
-msgstr "Gültig:"
+msgstr "Typ:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:234
 msgid "Link Target:"
@@ -631,19 +631,19 @@ msgstr "Typ: Papierkorb"
 
 #: ../src/xfdesktop-special-file-icon.c:515
 msgid "Trash Error"
-msgstr "Fehler beim Papierkob"
+msgstr "Fehler"
 
 #: ../src/xfdesktop-special-file-icon.c:517
 msgid "Unable to contact the Xfce Trash service."
-msgstr "Konnte den Papierkorb-Dienst nicht kontaktieren."
+msgstr "Konnte den Papierkorbdienst nicht ansprechen."
 
 #: ../src/xfdesktop-special-file-icon.c:518
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr ""
-"Stellen Sie sicher, dass Sie einen Dateimanager installiert haben, der den "
-"Papierkorb-Dienst unterstützt, wie z.B. Thunar."
+"Stellen Sie sicher, dass Sie einen Dateimanager installiert haben, der einen "
+"Papierkorb bereitstellt, wie z.B. »Thunar«."
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
@@ -786,7 +786,7 @@ msgstr "Bildschirmschoner"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr "Programme für System- und Arbeitsplatzeinstellungen"
+msgstr "Programme für System- und Schreibtischeinstellungen"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
 msgid "Settings"
@@ -881,11 +881,11 @@ msgstr "Entfernbare Datenträger"
 #: ../settings/main.c:426
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Liste »%s« mit Hintergrundbildern nicht erstellbar"
+msgstr "Kann die Liste mit Hintergrundbildern »%s« nicht erstellen"
 
 #: ../settings/main.c:430 ../settings/main.c:789
 msgid "Backdrop List Error"
-msgstr "Fehler bei der Liste mit Hintergrundbildern"
+msgstr "Fehler"
 
 #: ../settings/main.c:455
 msgid "Create/Load Backdrop List"
@@ -914,7 +914,7 @@ msgstr "Ersetzen"
 #: ../settings/main.c:785
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Konnte Liste mit Hintergrundbildern nicht in »%s« schreiben"
+msgstr "Konnte Liste mit Hintergrundbildern nicht in »%s« schreiben."
 
 #: ../settings/main.c:812
 msgid "Add Image File(s)"
@@ -977,7 +977,7 @@ msgstr "Das Entwicklungsteam von Xfce. Alle Rechte vorbehalten."
 #: ../settings/main.c:1388
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Bitte melden Sie Fehler an <%s>"
+msgstr "Bitte melden Sie Fehler an <%s>."
 
 #: ../settings/main.c:1395
 msgid "Desktop Settings"
@@ -989,12 +989,12 @@ msgstr "Konnte den Einstellungsdienst nicht kontaktieren."
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
-msgstr "Arbeitsoberfläche "
+msgstr "Schreibtisch"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
 msgstr ""
-"Stellen Sie den Hintergrund der Arbeitsoberfläche sowie das Menü- und "
+"Stellen Sie den Hintergrund des Schreibtischs sowie das Menü- und "
 "Symbolverhalten ein"
 
 #: ../settings/xfdesktop-settings.glade.h:1
@@ -1059,7 +1059,7 @@ msgstr "He_lligkeit:"
 
 #: ../settings/xfdesktop-settings.glade.h:18
 msgid "B_utton:"
-msgstr "_Knopf:"
+msgstr "_Schaltfläche:"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
@@ -1156,7 +1156,7 @@ msgstr "Ein einzelnes Bild als Hintergrundbild wählen"
 #: ../settings/xfdesktop-settings.glade.h:45
 msgid "Set desktop background and menu and icon behavior"
 msgstr ""
-"Stellen Sie den Hintergrund der Arbeitsoberfläche sowie das Menü- und "
+"Stellen Sie den Hintergrund des Schreibtischs sowie das Menü- und "
 "Symbolverhalten ein"
 
 #: ../settings/xfdesktop-settings.glade.h:46
@@ -1168,12 +1168,10 @@ msgid "Show _application icons in menu"
 msgstr "_Anwendungssymbole im Menü anzeigen"
 
 #: ../settings/xfdesktop-settings.glade.h:48
-#, fuzzy
 msgid "Show _window list menu on desktop middle click"
 msgstr "_Fensterliste bei Mittelklick anzeigen"
 
 #: ../settings/xfdesktop-settings.glade.h:49
-#, fuzzy
 msgid "Show applications menu on _desktop right click"
 msgstr "_Programm-Menü bei Rechtsklick anzeigen"
 
@@ -1199,28 +1197,33 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings.glade.h:56
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Gibt die \"rechte\" oder \"untere\" Farbe des Verlaufs an"
+msgstr "Gibt die »rechte« oder »untere« Farbe des Verlaufs an"
 
 #: ../settings/xfdesktop-settings.glade.h:57
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
-"Gibt die durchgehend zu verwendende Farbe an oder die \"linke\" "
-"beziehungsweise \"obere\" Farbe des Verlaufs"
+"Gibt die durchgehend zu verwendende Farbe an oder die »linke« beziehungsweise "
+"»obere« Farbe des Verlaufs"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify how the image will be resized to fit the screen"
 msgstr ""
+"Legt die Methode fest, mit der das Bild auf die Bildschirmgröße angepasst "
+"wird"
 
 #: ../settings/xfdesktop-settings.glade.h:59
 msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr ""
+"Gibt an, wie die Farbe hinter dem Hintergrundbild dargestellt werden soll"
 
 #: ../settings/xfdesktop-settings.glade.h:60
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr ""
+"Gibt die Durchsichtigkeit für den abgerundeten Hintergrund der "
+"Symbolbeschriftung an"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "St_yle:"
@@ -1228,7 +1231,7 @@ msgstr "S_til:"
 
 #: ../settings/xfdesktop-settings.glade.h:62
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "Die Fenster für jede Arbeitsfläche in Untermenüs auflisten"
 
 #: ../settings/xfdesktop-settings.glade.h:63
 msgid "Use custom _font size:"
@@ -1240,7 +1243,7 @@ msgstr "_Hintergrund"
 
 #: ../settings/xfdesktop-settings.glade.h:65
 msgid "_Button:"
-msgstr "_Knopf:"
+msgstr "_Schaltfläche:"
 
 #: ../settings/xfdesktop-settings.glade.h:66
 msgid "_Edit desktop menu"
@@ -1269,567 +1272,3 @@ msgstr "gtk-close"
 #: ../settings/xfdesktop-settings.glade.h:72
 msgid "gtk-help"
 msgstr "gtk-help"
-
-#~ msgid "Add menu entry"
-#~ msgstr "Menüeintrag hinzufügen"
-
-#~ msgid "Type:"
-#~ msgstr "Art:"
-
-#~ msgid "Title"
-#~ msgstr "Titel"
-
-#~ msgid "Submenu"
-#~ msgstr "Untermenü"
-
-#~ msgid "Launcher"
-#~ msgstr "Starter"
-
-#~ msgid "Separator"
-#~ msgstr "Trennstrich"
-
-#~ msgid "Quit"
-#~ msgstr "Beenden"
-
-#~ msgid "Command:"
-#~ msgstr "Befehl:"
-
-#~ msgid "Icon:"
-#~ msgstr "Symbol:"
-
-#~ msgid "No icon"
-#~ msgstr "Kein Symbol:"
-
-#~ msgid "Themed icon:"
-#~ msgstr "Themensymbol:"
-
-#~ msgid "Select icon"
-#~ msgstr "Symbol auswählen"
-
-#~ msgid "Use startup _notification"
-#~ msgstr "_Visuelle Rückmeldung über Programmstart"
-
-#~ msgid "Run in _terminal"
-#~ msgstr "In _Terminal ausführen"
-
-#~ msgid "Select command"
-#~ msgstr "Befehl auswählen"
-
-#~ msgid "Executable Files"
-#~ msgstr "Ausführbare Dateien"
-
-#~ msgid "Perl Scripts"
-#~ msgstr "Perl-Skripte"
-
-#~ msgid "Python Scripts"
-#~ msgstr "Python-Skripte"
-
-#~ msgid "Ruby Scripts"
-#~ msgstr "Ruby-Skripte"
-
-#~ msgid "Shell Scripts"
-#~ msgstr "Shell-Skripte"
-
-#~ msgid "Add external menu entry"
-#~ msgstr "Externen Menüeintrag hinzufügen"
-
-#~ msgid "File"
-#~ msgstr "Datei"
-
-#~ msgid "Source:"
-#~ msgstr "Quelle:"
-
-#~ msgid "Select external menu"
-#~ msgstr "Externes Menü auswählen"
-
-#~ msgid "Style:"
-#~ msgstr "Anzeige:"
-
-#~ msgid "Simple"
-#~ msgstr "Einfach"
-
-#~ msgid "Multilevel"
-#~ msgstr "Mehrere Ebenen"
-
-#~ msgid "_Unique entries only"
-#~ msgstr "Nur einde_utige Einträge"
-
-#~ msgid "Edit menu entry"
-#~ msgstr "Menüeintrag bearbeiten"
-
-#~ msgid "Edit external menu entry"
-#~ msgstr "Externen Menüeintrag bearbeiten"
-
-#~ msgid "Xfce4-MenuEditor"
-#~ msgstr "Xfce4-Menüeditor"
-
-#~ msgid "Menueditor Warning"
-#~ msgstr "Warnung vom Menüeditor"
-
-#~ msgid "xfce4-menueditor is deprecated"
-#~ msgstr "Von der Verwendung von »xfce4-menueditor« wird abgeraten"
-
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Das Menüsystem von Xfce wurde ersetzt, und »xfce4-menueditor« kann das "
-#~ "neue Dateiformat für Menüs nicht bearbeiten. Sie können weitermachen und "
-#~ "einen herkömmlichen Menüeintrag bearbeiten, oder das Programm beenden."
-
-#~ msgid "Continue"
-#~ msgstr "Weiter"
-
-#~ msgid "_File"
-#~ msgstr "_Datei"
-
-#~ msgid "_New"
-#~ msgstr "_Neu"
-
-#~ msgid "Create a new empty menu"
-#~ msgstr "Neues, leeres Menü erstellen"
-
-#~ msgid "Open existing menu"
-#~ msgstr "Vorhandenes Menü öffnen"
-
-#~ msgid "Open _default menu"
-#~ msgstr "Stan_dard-Menü öffnen"
-
-#~ msgid "Open default menu"
-#~ msgstr "Standard-Menü öffnen"
-
-#~ msgid "_Save"
-#~ msgstr "_Speichern"
-
-#~ msgid "Save modifications"
-#~ msgstr "Änderungen speichern"
-
-#~ msgid "Save _as..."
-#~ msgstr "Speichern _als..."
-
-#~ msgid "Save menu under a given name"
-#~ msgstr "Menü unter einem angegeben Namen speichern"
-
-#~ msgid "_Close"
-#~ msgstr "S_chließen"
-
-#~ msgid "Close menu"
-#~ msgstr "Menü schließen"
-
-#~ msgid "_Quit"
-#~ msgstr "_Beenden"
-
-#~ msgid "Quit Xfce4-Menueditor"
-#~ msgstr "Xfce4-Menüeditor beenden"
-
-#~ msgid "_Edit"
-#~ msgstr "_Bearbeiten"
-
-#~ msgid "_Edit entry"
-#~ msgstr "_Eintrag bearbeiten"
-
-#~ msgid "Edit selected entry"
-#~ msgstr "Ausgewählten Eintrag bearbeiten"
-
-#~ msgid "_Add entry"
-#~ msgstr "E_intrag hinzufügen"
-
-#~ msgid "Add a new entry in the menu"
-#~ msgstr "Neuen Eintrag zum Menü hinzufügen"
-
-#~ msgid "Add _external"
-#~ msgstr "_Externes Menü hinzufügen"
-
-#~ msgid "Add an external entry"
-#~ msgstr "Externen Eintrag hinzufügen"
-
-#~ msgid "_Remove entry"
-#~ msgstr "Eintrag entfe_rnen"
-
-#~ msgid "Remove entry"
-#~ msgstr "Eintrag entfernen"
-
-#~ msgid "_Up"
-#~ msgstr "H_och"
-
-#~ msgid "Move entry up"
-#~ msgstr "Eintrag nach oben schieben"
-
-#~ msgid "_Down"
-#~ msgstr "Her_unter"
-
-#~ msgid "Move entry down"
-#~ msgstr "Eintrag nach unten schieben"
-
-#~ msgid "_Help"
-#~ msgstr "_Hilfe"
-
-#~ msgid "_About..."
-#~ msgstr "Ü_ber..."
-
-#~ msgid "Show informations about xfce4-menueditor"
-#~ msgstr "Informationen über Menüeditor anzeigen"
-
-#~ msgid "Collapse all"
-#~ msgstr "Alle einklappen"
-
-#~ msgid "Collapse all menu entries"
-#~ msgstr "Alle Menüeinträge einklappen"
-
-#~ msgid "Expand all"
-#~ msgstr "Alle ausklappen"
-
-#~ msgid "Expand all menu entries"
-#~ msgstr "Alle Menüeinträge ausklappen"
-
-#~ msgid "Name"
-#~ msgstr "Name:"
-
-#~ msgid "Command"
-#~ msgstr "Befehl"
-
-#~ msgid "Hidden"
-#~ msgstr "Versteckt"
-
-#~ msgid "Are you sure you want to close the current menu?"
-#~ msgstr "Wollen Sie dieses Menü wirklich schließen?"
-
-#~ msgid "Do you want to save before closing the file?"
-#~ msgstr "Wollen Sie vor dem Schließen speichern?"
-
-#~ msgid "Do you want to save before opening an other menu ?"
-#~ msgstr "Wollen Sie vor dem Öffnen eines anderen Menüs speichern?"
-
-#~ msgid "Ignore modifications"
-#~ msgstr "Änderungen ignorieren"
-
-#~ msgid "Open menu file"
-#~ msgstr "Menüdatei öffnen"
-
-#~ msgid "Do you want to save before opening the default menu ?"
-#~ msgstr "Wollen Sie vor dem Öffnen des Standardmenüs speichern?"
-
-#~ msgid "Save menu file as"
-#~ msgstr "Menüdatei speichern unter"
-
-#~ msgid "Do you want to save before closing the menu ?"
-#~ msgstr "Wollen Sie vor dem Schließen speichern?"
-
-#~ msgid "quit"
-#~ msgstr "Beenden"
-
-#~ msgid "--- separator ---"
-#~ msgstr "--- Trennstrich ---"
-
-#~ msgid "--- include ---"
-#~ msgstr "--- Einschließen ---"
-
-#~ msgid "system"
-#~ msgstr "System"
-
-#~ msgid "Do you want to move the item into the submenu?"
-#~ msgstr "Wollen Sie den Eintrag in das Untermenü verschieben?"
-
-#~ msgid "A menu editor for Xfce4"
-#~ msgstr "Ein Menüeditor für Xfce4"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "Autor/Maintainer"
-
-#~ msgid "Contributor"
-#~ msgstr "Mitentwickler"
-
-#~ msgid "Icon designer"
-#~ msgstr "Symbol-Designer"
-
-#~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr ""
-#~ "Sie haben Änderungen am Menü vorgenommen. Wollen Sie es vor dem Schließen "
-#~ "speichern?"
-
-#~ msgid "Forget modifications"
-#~ msgstr "Änderungen ignorieren"
-
-#~ msgid "Unable to open the menu file %s in write mode"
-#~ msgstr "Kann die Menüdatei »%s« nicht zum Schreiben öffnen"
-
-#~ msgid "Graphical tool for editing the Xfce 4 menu"
-#~ msgstr "Grafisches Werkzeug zum Bearbeiten des Menüs"
-
-#~ msgid "Menu Editor"
-#~ msgstr "Menüeditor"
-
-#~ msgid "Xfce 4 Menu Editor"
-#~ msgstr "Menüeditor"
-
-#~ msgid "Show windows on each workspace in _submenus"
-#~ msgstr "F_enster jeder Abeitsfläche in Untermenüs zeigen"
-
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "Einstellungen für die Xfce4-Arbeitsplatzverwaltung"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "Xfce4-Arbeitsplatzeinstellungen"
-
-#~ msgid "Use _Xfce to manage the desktop"
-#~ msgstr "_Xfce die Arbeitsoberfläche verwalten lassen"
-
-#~ msgid ""
-#~ "Could not save file %s: %s\n"
-#~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
-#~ msgstr ""
-#~ "Konnte Datei »%s« nicht abspeichern: %s\n"
-#~ "\n"
-#~ "Bitte einen anderen Speicherplatz wählen oder abbrechen, um die "
-#~ "Änderungen zu verwerfen."
-
-#~ msgid "Select backdrop image file"
-#~ msgstr "Hintergrundbild auswählen"
-
-#~ msgid "Choose backdrop list filename"
-#~ msgstr "Namen für Liste mit Hintergrundbildern auswählen"
-
-#~ msgid "List Files"
-#~ msgstr "Listendateien"
-
-#~ msgid "backdrops.list"
-#~ msgstr "hintergrundbilder.list"
-
-#~ msgid "List file"
-#~ msgstr "Listendatei"
-
-#~ msgid "Create backdrop list"
-#~ msgstr "Liste mit Hintergrundbildern erstellen"
-
-#~ msgid "Edit backdrop list"
-#~ msgstr "Liste mit Hintergrundbildern bearbeiten"
-
-#~ msgid "Button Label|Desktop"
-#~ msgstr "Arbeitsoberfläche"
-
-#~ msgid "Select backdrop image or list file"
-#~ msgstr "Hintergrundbild oder Liste wählen"
-
-#~ msgid "List Files (*.list)"
-#~ msgstr "Listendateien (*.list)"
-
-#~ msgid "_Edit list..."
-#~ msgstr "_Liste bearbeiten..."
-
-#~ msgid "_New list..."
-#~ msgstr "_Neue Liste..."
-
-#~ msgid "S_tyle:"
-#~ msgstr "_Anzeige:"
-
-#~ msgid "Auto"
-#~ msgstr "Automatisch"
-
-#~ msgid "Centered"
-#~ msgstr "Zentriert"
-
-#~ msgid "Tiled"
-#~ msgstr "Gekachelt"
-
-#~ msgid "Stretched"
-#~ msgstr "Ausgebreitet"
-
-#~ msgid "Scaled"
-#~ msgstr "Skaliert"
-
-#~ msgid "Zoomed"
-#~ msgstr "Vergrößert"
-
-#~ msgid "Xfce will be unable to manage your desktop (%s)."
-#~ msgstr "Xfce wird die Arbeitsoberfläche nicht verwalten können (%s)."
-
-#~ msgid "Unknown Error"
-#~ msgstr "Unbekannter Fehler"
-
-#~ msgid "Unable to start xfdesktop"
-#~ msgstr "Kann Xfdesktop nicht starten"
-
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Um sicherzustellen, dass diese Einstellungen dauerhaft sind, wenn Xfce "
-#~ "das nächste Mal gestartet wird, speichern Sie bitte die Sitzung beim "
-#~ "Abmelden. Falls der Xfce-Sitzungsverwalter (xfce4-session) nicht "
-#~ "verwendet wird, muss die Datei ~/.config/xfce4/xinitrc manuell geändert "
-#~ "werden. Details dazu sind in der Dokumentation unter http://xfce.org/ "
-#~ "verfügbar."
-
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Um sicherzustellen, dass Xfce die Arbeitsoberfläche nicht verwaltet, wenn "
-#~ "Xfce das nächste Mal gestartet wird, speichern Sie bitte die Sitzung beim "
-#~ "Abmelden. Falls der Xfce-Sitzungsverwalter (xfce4-session) nicht "
-#~ "verwendet wird, muss die Datei ~/.config/xfce4/xinitrc manuell geändert "
-#~ "werden. Details dazu sind in der Dokumentation unter http://xfce.org/ "
-#~ "verfügbar."
-
-#~ msgid "_Do not show this again"
-#~ msgstr "_Dies nicht wieder anzeigen"
-
-#~ msgid "Desktop Preferences"
-#~ msgstr "Arbeitsoberflächen-Einstellungen"
-
-#~ msgid "Stretch single backdrop onto _all monitors"
-#~ msgstr "Einzelnes Hintergrundbild auf _alle Bildschirme strecken"
-
-#~ msgid "Color"
-#~ msgstr "Farbe"
-
-#~ msgid "_Color Style:"
-#~ msgstr "_Farbenstil:"
-
-#~ msgid "Solid Color"
-#~ msgstr "Eine Farbe"
-
-#~ msgid "Horizontal Gradient"
-#~ msgstr "Horizontaler Verlauf"
-
-#~ msgid "Vertical Gradient"
-#~ msgstr "Vertikaler Verlauf"
-
-#~ msgid "Image"
-#~ msgstr "Bild"
-
-#~ msgid "Show _Image"
-#~ msgstr "Zeige _Bild"
-
-#~ msgid "_File:"
-#~ msgstr "_Datei:"
-
-#~ msgid "_Behavior"
-#~ msgstr "_Verhalten"
-
-#~ msgid "Desktop Icons"
-#~ msgstr "Symbole auf der Arbeitsoberfläche"
-
-#~ msgid "File/launcher icons"
-#~ msgstr "Symbole für Dateien/Starter"
-
-#~ msgid "Use _system font size"
-#~ msgstr "S_ystemschriftgröße verwenden"
-
-#~ msgid "Des_ktop"
-#~ msgstr "A_rbeitsoberfläche"
-
-#~ msgid "_Desktop Properties..."
-#~ msgstr "_Arbeitsoberflächen-Eigenschaften..."
-
-#~ msgid "Science"
-#~ msgstr "Wissenschaft"
-
-#~ msgid "Scientific applications and tools"
-#~ msgstr "Wissenschaftliche Anwendungen"
-
-#~ msgid "Unable to quit session."
-#~ msgstr "Kann Sitzung nicht beenden"
-
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "Um die Sitzung zu beenden, muss der Xfce-Sitzungsverwalter (xfce4-"
-#~ "session) laufen, er wurde jedoch nicht gefunden. Bitte beenden Sie Xfce "
-#~ "auf andere Weise."
-
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "Um die Sitzung zu beenden, wird der Befehl »xfce4-session-logout« "
-#~ "benötigt, er wurde jedoch nicht gefunden: %s"
-
-#~ msgid "Edit Properties"
-#~ msgstr "Eigenschaften bearbeiten"
-
-#~ msgid " Bytes)"
-#~ msgstr " Bytes)"
-
-#~ msgid "Unknown error."
-#~ msgstr "Unbekannter Fehler."
-
-#~ msgid ""
-#~ "Viewing the contents of the trash requires a file manager that supports "
-#~ "the Xfce trash service, such as Thunar."
-#~ msgstr ""
-#~ "Um den Inhalt des Papierkorbs zu betrachten, braucht man einen "
-#~ "Dateimanager, der den Xfce-Papierkobdienst unterstützt, wie z.B. Thunar."
-
-#~ msgid "Unable to empty the trash."
-#~ msgstr "Kann Papierkorb nicht leeren."
-
-#~ msgid "_Copy Files"
-#~ msgstr "Dateien _kopieren"
-
-#~ msgid "_Copy File"
-#~ msgstr "Datei _kopieren"
-
-#~ msgid "Cu_t Files"
-#~ msgstr "Dateien _ausschneiden"
-
-#~ msgid "Cu_t File"
-#~ msgstr "Datei _ausschneiden"
-
-#~ msgid "Delete Files"
-#~ msgstr "Dateien _löschen"
-
-#~ msgid "_Delete File"
-#~ msgstr "Datei _löschen"
-
-#~ msgid "_Paste Files"
-#~ msgstr "Dateien _einfügen"
-
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "Wollen Sie das Programm wirklich beenden?"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "Den Befehl gibt es nicht!"
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "Alle Felder müssen ausgefüllt sein."
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "Das Feld 'Name' muss ausgefüllt sein."
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "Das Feld 'Quelle' muss ausgefüllt sein"
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "Trennlinien können nicht bearbeitet werden"
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "Datei %s existiert nicht!"
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "Wollen Sie den Eintrag in das vorherige Menü verschieben?"
-
-#~ msgid "Edit"
-#~ msgstr "Bearbeiten"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "Externes Menü einbinden..."
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "Xfce4-Menüdatei öffnen"
-
-#~ msgid "Save current menu"
-#~ msgstr "Dieses Menü speichern"
-
-#~ msgid "Delete the current entry"
-#~ msgstr "Diesen Eintrag löschen"
