@@ -6,14 +6,14 @@
 # Erçin EKER <erc.caldera@gmx.net>, 2003.
 # Eren Türkay <turkay.eren@gmail.com>, 2007.
 # Özgür Kuru <ozgur@ozgurkuru.net>, 2008.
-# Gökmen Görgen <gkmngrgn@gmail.com>, 2008.
+# Gökmen Görgen <gkmngrgn@gmail.com>, 2008, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-26 01:15+0100\n"
-"PO-Revision-Date: 2009-01-30 21:22+0200\n"
+"PO-Revision-Date: 2009-02-11 04:59+0200\n"
 "Last-Translator: Gökmen Görgen <gkmngrgn@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
 "MIME-Version: 1.0\n"
@@ -245,18 +245,18 @@ msgstr "Masaüstü Hatası"
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
 msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "Xfdesktop, masaüstü öğrelerini saklamak için \"%s\" klasörünü oluşturamıyor:"
+msgstr "Xfdesktop, masaüstü öğrelerini saklamak için \"%s\" dizinini oluşturamıyor:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
 #: ../src/xfdesktop-file-icon-manager.c:1206
 msgid "Create Folder Failed"
-msgstr "Klasör Oluşturma Başarısız"
+msgstr "Dizin Oluşturma Başarısız"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
 msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr "Xfdesktop, masaüstü öğrelerini tutmak için \"%s\" klasörünü oluşturamıyor çünkü o bir klasör değil."
+msgstr "Xfdesktop, masaüstü öğrelerini tutmak için \"%s\" dizinini oluşturamıyor; çünkü o bir dizin değil."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -342,7 +342,7 @@ msgstr "\"%s\" Uygulaması İle Aç"
 #: ../src/xfdesktop-file-icon-manager.c:1203
 #, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "\"%s\" adındaki klasör oluşturulamıyor:"
+msgstr "\"%s\" adında dizin oluşturulamıyor:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1242
 msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
@@ -350,11 +350,11 @@ msgstr "Masaüstü üzerinde çalıştırıcıları düzenlemek/oluştumak için
 
 #: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
-msgstr "Yeni Klasör Oluştur"
+msgstr "Yeni Dizin Oluştur"
 
 #: ../src/xfdesktop-file-icon-manager.c:1279
 msgid "New Folder"
-msgstr "Yeni Klasör"
+msgstr "Yeni Dizin"
 
 #: ../src/xfdesktop-file-icon-manager.c:1280
 #: ../src/xfdesktop-file-icon-manager.c:1371
@@ -417,7 +417,7 @@ msgstr "_URL Bağlantısı Oluştur..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1771
 msgid "Create _Folder..."
-msgstr "_Klasör Oluştur..."
+msgstr "_Dizin Oluştur..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1791
 msgid "Create From _Template"
