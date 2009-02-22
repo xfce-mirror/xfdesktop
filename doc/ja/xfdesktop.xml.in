@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY date "January 2007">
+<!ENTITY appversion "@PACKAGE_VERSION@">
+<!ENTITY app "<application>@PACKAGE_NAME@</application>">
+]>
+<article id="xfdesktop" lang="ja">
+  
+  <articleinfo>
+    <title>Xfce 4 デスクトップマネージャ</title>
+    
+    <copyright>
+      <year>2008</year> <holder>Jérôme Guelfucci</holder>
+    </copyright>
+
+    <copyright>
+      <year>2004-2007</year> <holder>Brian Tarricone</holder>
+    </copyright>
+    
+    <copyright>
+      <year>2004</year> <holder>Jasper Huijsmans</holder>
+    </copyright>
+    
+    <copyright>
+      <year>2004</year> <holder>François Le Clainche</holder>
+    </copyright><copyright><year>2009.</year><holder>Masato Hashimoto (cabezon.hashimoto@gmail.com)</holder></copyright>
+    
+<!-- documentation translators: uncomment this and fill in your information.
+    <copyright>
+      <year>2002</year> <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+  -->
+
+<!-- I don;t know about this
+    <legalnotice id="legalnotice">
+      <para>
+        This document is provided under the terms of the GNU GPL, version
+        2 or (at your option) any later version.
+      </para>
+    </legalnotice>
+  -->
+    
+    <authorgroup>
+      <author>
+        <firstname>Brian</firstname> <surname>Tarricone</surname>
+        <affiliation>
+          <address><email>kelnos@xfce.org</email></address>
+        </affiliation>
+      </author>
+      <author>
+        <firstname>Jasper</firstname> <surname>Huijsmans</surname>
+        <affiliation>
+          <address><email>jasper@xfce.org</email></address>
+        </affiliation>
+      </author>
+      
+      <author>
+        <firstname>François</firstname> <surname>Le Clainche</surname>
+        <affiliation>
+          <address><email>fleclainche@wanadoo.fr</email></address>
+        </affiliation>
+      </author>
+
+      <author>
+        <firstname>Jérôme</firstname> <surname>Guelfucci</surname>
+        <affiliation>
+          <address><email>jerome.guelfucci@gmail.com</email></address>
+        </affiliation>
+      </author>
+    </authorgroup>
+    
+    <releaseinfo>この説明書は <application>@PACKAGE_NAME@</application> バージョン @PACKAGE_VERSION@ について書かれています。</releaseinfo>
+  </articleinfo>
+  
+  <sect1 id="xfdesktop-intro">
+    <title>紹介</title>
+    
+    <para><application>@PACKAGE_NAME@</application> アプリケーションはデスクトップと背景を管理します。背景の画像、色、あるいはその両方を設定し、デスクトップ上で右クリックまたは中央クリックすると、それぞれアプリケーションメニューまたは動作中のすべてのアプリケーションのリストをポップアップ表示します。Xfce 4.4 以降では、<application>@PACKAGE_NAME@</application> はデスクトップにアイコンも表示します。</para>
+    
+    <para><application>@PACKAGE_NAME@</application> パッケージは <emphasis>Xfce 4 設定マネージャ</emphasis> で使用する設定ダイアログをインストールします。このダイアログから、背景の画像や色の変更およびメニューやウィンドウリストの変更が行えます。</para>
+  </sect1>
+  
+  <sect1 id="xfdesktop-backdrop">
+    <title>背景</title>
+    
+    <para><application>@PACKAGE_NAME@</application> はデスクトップの背景画像 (「壁紙」と呼ばれたりもします) の描画に関する責任を負います。背景画像の設定には様々なオプションがあります。最終的にモニタに表示される絵柄は単一色あるいはグラデーションで生成され、画像や写真 (透明度も指定できます) は背景色と合成され、半透明の画像と背景色を組み合わせて様々な効果を得ることができます。</para>
+  </sect1>
+  
+  <sect1 id="xfdesktop-icons">
+    <title>アイコン</title>
+    
+    <para>背景画像の描画に加え、<application>@PACKAGE_NAME@</application> はデスクトップにアイコンを配置することもできます。</para>
+    
+    <sect2 id="xfdesktop-window-icons">
+      <title>最小化ウィンドウアイコン</title>
+      
+      <para>設定の中には、最小化されたアプリケーションのアイコンをデスクトップに表示するモードがあり、アイコンの再配置の他、後に再び最小化された時に、以前にアイコンが表示された位置に配置することもできます。アプリケーションアイコンを右クリックすると、ウィンドウの左上にあるウィンドウ操作メニューと同じメニューが表示されます。</para>
+    </sect2>
+    
+    <sect2 id="xfdesktop-file-icons">
+      <title>ファイル/ランチャアイコン</title>
+      
+      <para><application>@PACKAGE_NAME@</application> はまた、XDG ユーザディレクトリ仕様として、<filename>$XDG_CONFIG_DESKTOP</filename> フォルダの内容を、他の多くのデスクトップ環境やオペレーティングシステムと同じようにデスクトップに表示することもできます。ファイルはファイルマネージャから、整列、コピー、移動、あるいはリンクの作成などが行え、またあらかじめ割り当てられたアプリケーションで開くこともできます。アプリケーションおよび URL のランチャをデスクトップ上に作成することもできます。ファイルアイコン表示は、<ulink url="http://thunar.xfce.org/" type="http">Thunar</ulink> ファイルマネージャのルックアンドフィールにならって作成されています。</para>
+    </sect2>
+  </sect1>
+
+  <sect1 id="xfdesktop-menu">
+    <title>デスクトップメニュー</title>
+    
+    <para>デスクトップの背景上で右クリックすると、デスクトップフォルダを Thunar で開いたり、ランチャ、URL リンク、フォルダ、またはテンプレートからファイルを作成するメニューを表示します。また、デスクトップ設定やデスクトップウィンドウのプロパティ、およびシステム内の多くのアプリケーションを起動することもできます。</para>
+    
+    <figure id="root-menu-fig">
+      <title>デスクトップメニュー</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/root_menu.png" format="PNG"/>
+          </imageobject> 
+          <textobject>
+            <phrase><application>@PACKAGE_NAME@</application> 右クリックメニューについて説明します。</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    
+    <para>このメニューの設定ファイル <filename>xfce-applications.menu</filename> は、<filename>$sysconfdir/xdg/menus/xfce-applications.menu</filename> 配下にあります。バイナリパッケージの場合 <filename>$sysconfdir</filename> は多くの場合 <filename>/etc</filename> であり、またソースコンパイルしたものは、デフォルトでは <filename>/usr/local/etc</filename> になります。</para>
+    
+    <para>以前にあったメニューエディタは利用できません。しかし、次の手順でカスタマイズが可能です: <filename>xfce-applications.menu</filename> を <filename>$XDG_CONFIG_HOME/.config/xdg/menus</filename> にコピーし、<application>mousepad</application> や <application>gedit</application> などのテキストエディタで編集します。ファイルの文字エンコーディングは UTF-8 でなければならないことを忘れないでください。</para>
+    
+    <para>この他のカスタマイズとして、<filename>$XDG_CONFIG_HOME/.local/share/applications</filename> に <ulink url="http://standards.freedesktop.org/desktop-entry-spec/latest/" type="http">デスクトップエントリ</ulink> を作成することによってメニューエントリの非表示、修正、または追加が指定できるようになります。</para>
+    
+  </sect1>
+  
+  <sect1 id="xfdesktop-window-list">
+    <title>ウィンドウリストメニュー</title>
+    
+    <para>デスクトップの背景上で中央クリックすると、ワークスペースごとに動作しているすべてのアプリケーションのリストを表示します。また、ワークスペースの追加や削除も行えます。</para>
+
+    <figure id="root-menu2-fig">
+      <title>ウィンドウリストメニュー</title> 
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/root_menu2.png" format="PNG"/>
+          </imageobject> 
+          <textobject>
+            <phrase><application>@PACKAGE_NAME@</application> 中央クリックメニューについて説明します。</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </sect1>
+  
+  <sect1 id="xfdesktop-settings">
+    <title>デスクトップ設定</title>
+    
+    <!-- Needs to be changed once xfce4-settings is documented -->
+    <para>デスクトップの設定ダイアログは、<ulink url="xfce-mcs-manager.html#manager-dialog" type="http">Xfce 設定マネージャ</ulink> の "デスクトップ" をクリックすると表示されます。</para>
+    
+    <sect2 id="xfdesktop-settings-background">
+      <title>「背景」タブ</title>
+      
+      <para>「背景」タブでは、デスクトップの背景画像に関する様々な設定を行えます。</para>
+      
+      <figure id="xfdesktop-background-fig">
+        <title>デスクトップ設定、「背景」タブ</title> 
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/xfdesktop-background-tab.png" format="PNG"/>
+            </imageobject> 
+            <textobject>
+              <phrase>デスクトップ設定の「背景」タブについて説明します。</phrase>
+            </textobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      
+      <variablelist>
+        <varlistentry>
+          <term>画像</term>
+          
+          <listitem>
+            <para><emphasis>"なし"</emphasis> オプションを選択すると、<application>@PACKAGE_NAME@</application> は背景画像を表示せず、選択された色のみを使用します。</para>
+            
+            <para><emphasis>"単一画像"</emphasis> オプションを選択すると、<application>@PACKAGE_NAME@</application> は背景画像を描画します。</para>
+            
+            <para><emphasis>"画像リスト"</emphasis> オプションを選択すると、<application>@PACKAGE_NAME@</application> は画像リストの中から背景画像をランダムで使用します。</para>
+            
+            <para>
+              
+            </para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>画像</term>
+          
+          <!-- Single image stuff -->
+          <listitem>
+            <para><emphasis>"単一画像"</emphasis> オプションを選択すると、ツリービューから背景画像を選択できます。背景に設定したい画像をクリックしてください。<application>@PACKAGE_NAME@</application> はデスクトップの背景を自動的に更新します。</para>
+            
+            <para>ツリービューに画像を追加する場合は "+" ボタンをクリックしてください。ファイル選択ダイアログが表示されます。除去は画像を選択して "-" ボタンをクリックします。</para>
+          </listitem>
+            
+          <!-- Image list stuff -->
+          <listitem>
+            <para><emphasis>"画像リスト"</emphasis> オプションを選択すると、空白のリストが表示され、既存のリストの選択あるいは新規作成のための "新規作成" ボタンが使用できるようになります。また、画像の追加および除去を行うための "+" および "-" ボタンも引き続き使用できます。<application>@PACKAGE_NAME@</application> は毎回起動される度にこのリストの中から背景をランダムに選びます。</para>
+          </listitem>
+          
+          <!-- Images layout options -->
+          <listitem>
+            <para>5 つのスタイルオプション (<emphasis>"中央揃え"</emphasis>, <emphasis>"タイル状"</emphasis>, <emphasis>"縦横比を維持せず全画面化"</emphasis>, <emphasis>"長辺を画面に合わせる"</emphasis> および <emphasis>"短辺を画面に合わせる"</emphasis>) は背景画像を画面サイズにあわせるためのオプションです。また、<emphasis>"自動"</emphasis> を選ぶと <application>@PACKAGE_NAME@</application> が自動的に解決します。</para>
+          </listitem>
+          
+          <!-- To be confirmed as I don't have multiscreen -->
+          <listitem>
+            <para><application>@PACKAGE_NAME@</application> は、Xinerama およびマルチスクリーンモードをサポートしています。マルチスクリーンモードでは、背景タブは画面ごとに個別に表示されます。</para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>色</term>
+          <listitem>
+            <para>色のスタイルはドロップダウンリストにある4つのオプション (単色、水平グラデーション、垂直グラデーション、または透明) から一つを選びます。</para>
+            
+            <para><emphasis>"透明"</emphasis> オプションを選択すると、背景画像を指定していない場合に透明化されたデスクトップウィンドウの下にウィンドウを表示させることができます。この機能を使用するためには、合成処理を有効にする必要があります。</para>
+          </listitem>
+          <listitem>
+            <para>2 つの色のボタンでデスクトップの背景色を選択できます。単一色を選択した場合は第一色のみ有効になります。グラデーションのいずれかを選択した場合は第一、第二色の両方が有効になります。それぞれのボタンをクリックすると色の選択ダイアログが表示されます:</para>
+            
+            <figure id="select_bg_color-fig">
+              <title>背景色の選択</title>
+              <screenshot>
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/select_bg_color.png" format="PNG"/>
+                    </imageobject>
+                  <textobject>
+                    <phrase>色の選択ダイアログについて説明します。</phrase>
+                  </textobject>
+                </mediaobject>
+              </screenshot>
+            </figure>
+            
+            <itemizedlist>
+              <listitem>色の選択では、内側に三角形のあるカラーリングを使用できます。外側のリングで色を選択し、内側の三角形で色の明度および彩度を選択します。明度、彩度、および色相の値に対応した色がエントリの右側に表示されます。</listitem>
+              
+              <listitem>スポイトをクリックすると、画面上のどこでもクリックした所の色が選択されます。</listitem>
+              
+              <listitem>HTML スタイルでの設定も行えます。16 進数の色の値か、<emphasis>"色の名称"</emphasis> エントリの色の名称を入力してください。</listitem>
+            </itemizedlist>
+            
+            <para>ルートウィンドウは選択された色になり、透明な背景画像であればそれを通して表示されます。</para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>調整</term>
+          
+          <listitem>
+            <para>2 つのスライダで背景画像や背景色の明度と彩度の調整が行えます。</para>
+          </listitem>
+        </varlistentry>
+             
+      </variablelist>
+    </sect2>
+    
+    <sect2 id="xfdesktop-settings-menus">
+      <title>「メニュー」タブ</title>
+      
+      <figure id="xfdesktop-menus-tab-fig">
+        <title>デスクトップの設定、「メニュー」タブ</title> 
+        
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/xfdesktop-menus-tab.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>デスクトップ設定ダイアログの「メニュー」タブについて説明します。</phrase>
+            </textobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      
+      <variablelist>
+        <varlistentry>
+          <term>デスクトップメニュー</term>
+          
+          <listitem>
+            <para><emphasis>"デスクトップ上での右クリックでアプリケーションメニューを表示する"</emphasis> にチェックマークをつけると、デスクトップ上で右クリックしたときに <link linkend="xfdesktop-menu">アプリケーションメニュー</link> が表示されます。</para>
+          </listitem>
+          
+          <lisitem>
+            <para><emphasis>"メニューにアイコンを表示する"</emphasis> オプションでメニューにアイコンを表示させることができます。</para>
+          </lisitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>ウィンドウリストメニュー</term>
+          
+          <listitem>
+            <para><emphasis>"デスクトップ上での中央クリックでウィンドウリストを表示する"</emphasis> オプションにチェックマークをつけると、デスクトップ上で中央クリックしたときに <link linkend="xfdesktop-window-list">ウィンドウリストメニュー</link> が表示されます。</para>
+          </listitem>
+          
+          <listitem>
+            <para><emphasis>"メニューにアイコンを表示する"</emphasis> オプションでメニューにアイコンを表示させることができます。</para>
+          </listitem>
+          
+          <!-- Add link to xfwm4 documentation to change workspaces names -->
+          <listitem>
+            <para><emphasis>"リストにワークスペース名を表示する"</emphasis> オプションでリストにワークスペース名を表示させることができます。チェックマークをつけると、ウィンドウ名はそのワークスペース名の下に表示されるようになります。つけなければメニュー内にまとめて表示されます。このオプションは <emphasis>"デスクトップ上での中央クリックでウィンドウリストを表示する"</emphasis> にチェックマークがつけられている場合のみ有効になります。</para>
+          </listitem>
+          
+          <listitem>
+            <para><emphasis>"各ワークスペースのウィンドウをサブメニューで表示する"</emphasis> オプションでウィンドウ名はワークスペース名リストのサブメニューになります。このオプションは <emphasis>"デスクトップ上での中央クリックでウィンドウリストを表示する"</emphasis> にチェックマークがつけられている場合のみ有効になります。</para>
+          </listitem>
+          
+          <listitem>
+            <para><emphasis>"アクティブワークスペースにのみスティッキーウィンドウを表示する"</emphasis> オプションで、スティッキーウィンドウを全てのワークスペースで表示するのではなく、アクティブのワークスペースにのみ表示させることができます。</para>
+          </listitem>
+          
+        </varlistentry>
+      </variablelist>
+    </sect2>
+   
+    <sect2 id="xfdesktop-settings-icons">
+      <title>「アイコン」タブ</title>
+      
+      <figure id="xfdesktop-icons-tab-fig">
+        <title>デスクトップ設定、「アイコン」タブ</title> 
+        
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/xfdesktop-icons-tab.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>デスクトップ設定の「アイコン」タブについて説明します。</phrase>
+            </textobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      
+      <variablelist>
+        <varlistentry>
+          <term>外観</term>
+          
+          <listitem>
+            <para><emphasis>"アイコンタイプ"</emphasis> ドロップダウンリストでは、デスクトップアイコンの振る舞いを 3 つのオプションの中から設定できます。"なし" を選ぶとデスクトップにアイコンは表示されません。"最小化されたアプリケーションアイコン" を選ぶと最小化または隠されたアプリケーションのアイコンがデスクトップに表示されます。"ファイル/ランチャアイコン" を選ぶと <filename>$XDG_CONFIG_HOME</filename> ディレクトリの内容がデスクトップに表示されます。</para>
+            
+            <para>デスクトップアイコンが有効になっている場合、<emphasis>"アイコンのサイズ"</emphasis> オプションでアイコンのサイズをピクセル数で設定でき、<emphasis>"指定フォントサイズを使用する"</emphasis> オプションでアイコンの文字に使用されるフォントのサイズをポイント数で設定できます。<emphasis>"指定フォントサイズを使用する"</emphasis> オプションにチェックマークをつけない場合はシステムデフォルトが使用されます。</para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>デフォルトアイコン</term>
+          
+          <listitem>
+            <para>このチェックボックスでは、<application>@PACKAGE_NAME@</application> がアイコンを表示するよう設定されているときにデスクトップに表示する特殊アイコンを設定できます。デスクトップでこれらのアイコンをダブルクリックすると Thunar ファイルマネージャでそれぞれのパスの内容が表示されます。</para>
+            
+            <para><emphasis>ホーム</emphasis> は <filename>$XDG_CONFIG_HOME</filename> で示されたホームフォルダを表します。<emphasis>ファイルシステム</emphasis> はファイルシステムのルート ( <filename>/</filename> とも表記されます) を表します。<emphasis>ゴミ箱</emphasis> はゴミ箱フォルダを表します。<emphasis>リムーバブルデバイス</emphasis> はフロッピードライブ、USB デバイスや USB キー、外付けハードディスクドライブなどのリムーバブルデバイスを表します。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+  </sect1>
+  
+  <sect1 id="xfdesktop-hidden-options">
+    <title>隠しオプション</title>
+    
+    <para>この他にも Xfce 設定マネージャで設定することはできない多くの隠しオプションがあります。これらの設定にはテキストエディタを使用する必要があります。</para>
+    
+    <variablelist>
+      <varlistentry>
+        <term>アイコン表示の文字の外観</term>
+        <listitem>
+          <para>アイコンの文字およびアイコンの文字の背景色の他、アイコンの文字の背景色の透明度を、<filename>~/.gtkrc-2.0</filename> ファイルに以下のような指定をすることでカスタマイズできます:</para>
+          
+          <programlisting>
+<![CDATA[style "xfdesktop-icon-view" {
+    XfdesktopIconView::label-alpha = 75
+
+    base[NORMAL] = "#00ff00"
+    base[SELECTED] = "#5050ff"
+    base[ACTIVE] = "#0000ff"
+
+    fg[NORMAL] = "#ff0000"
+    fg[SELECTED] = "#ff0000"
+    fg[ACTIVE] = "#ff0000"
+}
+widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"]]>
+          </programlisting>
+          
+          <para>最初のエントリでは文字の背景の透明度を設定しています。3 つの "base" エントリでは文字の背景色を設定しており、"fg" エントリでは文字の色を設定しています。</para>
+          
+          <para>"NORMAL" エントリには通常時および非選択時の色を設定します。"SELECTED" エントリにはアイコンが選択されたときおよびキーボードフォーカスがデスクトップにあるときの色を設定します。"ACTIVE" エントリではアイコンが選択され、キーボードフォーカスがデスクトップにないときの色を設定します。</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect1>
+
+  <sect1 id="xfdesktop-misc">
+    <title>その他</title>
+    
+    <para>メニューやウィンドウリストはコマンドラインからも開くことができます。これはキーボードショートカットに設定するときに役立ちます。メニューを開くときはコマンド <application>@PACKAGE_NAME@</application><application>--menu</application> を、ウィンドウリストを開くときはコマンド <application>@PACKAGE_NAME@</application><application>--windowlist</application> を使用します。現在動作中のインスタンスを終了させる場合は <application>@PACKAGE_NAME@</application><application>--quit</application> を使用します。</para>
+  </sect1>
+  
+  <sect1 id="xfdesktop-copyright">
+    <title><application>@PACKAGE_NAME@</application> について</title>
+    
+    <para><application>@PACKAGE_NAME@</application> は Brian Tarricone (<email>kelnos@xfce.org</email>)、Jasper Huijsmans (<email>jasper@xfce.org</email>)、および Benedikt Meurer (<email>benny@xfce.org</email>) が製作しました。より詳しい情報は <ulink url="http://www.xfce.org" type="http">Xfce のウェブサイト</ulink> を参照してください。</para>
+
+    <para>このアプリケーションや説明書に関するバグの報告やご提案についてはバグ追跡システム <ulink url="http://bugzilla.xfce.org/" type="http">http://bugzilla.xfce.org/</ulink> をご利用下さい。</para>
+    
+    <para>このアプリケーションの使い方やインストール方法についてのご質問は、<ulink url="http://foo-projects.org/mailman/listinfo/xfce" type="http">xfce</ulink> メーリングリストで尋ねてみてください。開発に関する議論は <ulink url="http://foo-projects.org/mailman/listinfo/xfce4-dev" type="http">xfce4-dev</ulink> メーリングリストで行われています。</para>
+    
+    <para>このソフトウェアはフリーソフトウェア財団が公表する GNU 一般公衆利用許諾契約書の条件下に配布されています。第2版、あるいはあなたが選ぶそれ以降の版のいずれかが適用されます。</para>
+    
+    <para>このプログラムには、GNU 一般公衆利用許諾契約書のコピーが附属するはずですが、もし無いのであればフリーソフトウェア財団 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA に連絡してください。</para>
+  </sect1>
+  
+</article>
