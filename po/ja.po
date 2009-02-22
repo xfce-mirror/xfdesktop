@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 01:15+0100\n"
-"PO-Revision-Date: 2009-01-19 22:25+0900\n"
+"POT-Creation-Date: 2009-02-10 14:36+0900\n"
+"PO-Revision-Date: 2009-02-10 14:36+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -24,81 +24,81 @@ msgstr ""
 msgid "Backdrop list file is not valid"
 msgstr "画像リストファイルが正しくありません"
 
-#: ../panel-plugin/desktop-menu-plugin.c:653
+#: ../panel-plugin/desktop-menu-plugin.c:658
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor を実行できません: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676
+#: ../panel-plugin/desktop-menu-plugin.c:681
 msgid "Select Icon"
 msgstr "アイコンを選択してください"
 
-#: ../panel-plugin/desktop-menu-plugin.c:678
+#: ../panel-plugin/desktop-menu-plugin.c:683
 msgid "Select Menu File"
 msgstr "メニューファイルを選択してください"
 
-#: ../panel-plugin/desktop-menu-plugin.c:705
+#: ../panel-plugin/desktop-menu-plugin.c:710
 msgid "All Files"
 msgstr "全てのファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:712
+#: ../panel-plugin/desktop-menu-plugin.c:717
 msgid "Image Files"
 msgstr "画像ファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:715
+#: ../panel-plugin/desktop-menu-plugin.c:720
 msgid "Menu Files"
 msgstr "メニューファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:745
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce メニュー"
 
-#: ../panel-plugin/desktop-menu-plugin.c:752
+#: ../panel-plugin/desktop-menu-plugin.c:757
 msgid "Button"
 msgstr "ボタン"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/desktop-menu-plugin.c:770
 msgid "Button _title:"
 msgstr "ボタンタイトル(_T):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:778
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "_Show title in button"
 msgstr "ボタンにタイトルを表示する(_S)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:785
+#: ../panel-plugin/desktop-menu-plugin.c:790
 msgid "Menu File"
 msgstr "メニューファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:797
+#: ../panel-plugin/desktop-menu-plugin.c:802
 msgid "Use default _desktop menu file"
 msgstr "デフォルトのデスクトップメニューを使用する(_D)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:806
+#: ../panel-plugin/desktop-menu-plugin.c:811
 msgid "Use _custom menu file:"
 msgstr "指定したメニューファイルを使用する(_C):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:847
+#: ../panel-plugin/desktop-menu-plugin.c:852
 msgid "_Edit Menu"
 msgstr "メニューの編集(_E)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:859
 msgid "Icons"
 msgstr "アイコン"
 
-#: ../panel-plugin/desktop-menu-plugin.c:866
+#: ../panel-plugin/desktop-menu-plugin.c:871
 msgid "_Button icon:"
 msgstr "ボタンアイコン(_B):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:880
+#: ../panel-plugin/desktop-menu-plugin.c:885
 msgid "Show _icons in menu"
 msgstr "メニューにアイコンを表示する(_I):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:915
+#: ../panel-plugin/desktop-menu-plugin.c:920
 msgid "There is already a panel menu registered for this screen"
 msgstr "この画面には既にパネルメニューが登録されています"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1030
+#: ../panel-plugin/desktop-menu-plugin.c:1035
 msgid "Edit Menu"
 msgstr "メニューの編集"
 
@@ -345,12 +345,12 @@ msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
-"\"exo-desktop-item-edit\" を実行できません、これはデスクトップにランチャやリ"
-"ンクを作成したり編集するのに必要です。"
+"\"exo-desktop-item-edit\" を実行できません。これはデスクトップにランチャやリ"
+"ンクを作成したり編集したりするために必要です。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
-msgstr "新しいフォルダを作成"
+msgstr "新しいフォルダの作成"
 
 #: ../src/xfdesktop-file-icon-manager.c:1279
 msgid "New Folder"
@@ -378,11 +378,11 @@ msgstr "テンプレート \"%s\" からドキュメントを作成"
 
 #: ../src/xfdesktop-file-icon-manager.c:1377
 msgid "Create Empty File"
-msgstr "空のファイルを作成"
+msgstr "空のファイルの作成"
 
 #: ../src/xfdesktop-file-icon-manager.c:1381
 msgid "New Empty File"
-msgstr "新しい空ファイル"
+msgstr "新しい空のファイル"
 
 #: ../src/xfdesktop-file-icon-manager.c:1414
 #, c-format
@@ -408,15 +408,15 @@ msgstr "開く(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1733
 msgid "Create _Launcher..."
-msgstr "ランチャを作成(_L)..."
+msgstr "ランチャの作成(_L)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1754
 msgid "Create _URL Link..."
-msgstr "URL リンクを作成(_U)..."
+msgstr "URL リンクの作成(_U)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1771
 msgid "Create _Folder..."
-msgstr "フォルダを作成(_F)..."
+msgstr "フォルダの作成(_F)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1791
 msgid "Create From _Template"
