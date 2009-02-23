@@ -316,12 +316,12 @@ xfce_backdrop_init(XfceBackdrop *backdrop)
     backdrop->priv->show_image = TRUE;
 
     /* color defaults */
-    backdrop->priv->color1.red = 0x0f0f;
-    backdrop->priv->color1.green = 0x1717;
-    backdrop->priv->color1.blue = 0x2121;
-    backdrop->priv->color2.red = 0x0f0f;
-    backdrop->priv->color2.green = 0x1717;
-    backdrop->priv->color2.blue = 0x2121;
+    backdrop->priv->color1.red = 0x1515;
+    backdrop->priv->color1.green = 0x2222;
+    backdrop->priv->color1.blue = 0x3333;
+    backdrop->priv->color2.red = 0x1515;
+    backdrop->priv->color2.green = 0x2222;
+    backdrop->priv->color2.blue = 0x3333;
 }
 
 static void
