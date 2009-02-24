@@ -145,6 +145,7 @@ desktop_menu_something_changed(ThunarVfsMonitor *monitor,
                                gpointer user_data)
 {
     XfceDesktopMenu *desktop_menu = user_data;
+    const gchar *filename;
     XfceMenuItemCache *cache = xfce_menu_item_cache_get_default();
     
 #ifdef DEBUG
@@ -154,6 +155,16 @@ desktop_menu_something_changed(ThunarVfsMonitor *monitor,
         TRACE("entering (%d,%s)", event, buf);
     }
 #endif
+
+    /* bug #4979: only trigger on files we care about */
+    filename = thunar_vfs_path_get_name(event_path);
+    if(!g_str_has_suffix(filename, ".desktop")
+       && !g_str_has_suffix(filename, ".menu")
+       && !g_str_has_suffix(filename, ".directory"))
+    {
+        DBG("menu: ignoring change on \"%s\"", filename);
+        return;
+    }
     
     xfce_menu_item_cache_invalidate(cache);
     if(!desktop_menu->idle_id)
