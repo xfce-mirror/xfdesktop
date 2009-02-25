@@ -1,3 +1,134 @@
+2009-02-24 00:57  kelnos
+
+	* NEWS, modules/menu/desktop-menu.c:
+	  menu: discard fiel change notifications on files we don't care
+	  about (bug 4979)
+
+2009-02-23 13:36  olivier
+
+	* settings/xfdesktop-settings.glade, src/xfce-backdrop.c:
+	  Update default background color before final 4.6, to match gtk
+	  theme colors more closely
+
+2009-02-23 12:49  mmassonnet
+
+	* doc/C/xfdesktop.html, doc/da/xfdesktop.html,
+	  doc/fr/xfdesktop.html, doc/ja/xfdesktop.html:
+	  Update html version of the docs
+
+2009-02-23 00:45  kelnos
+
+	* configure.ac.in:
+	  add da and ja docs dirs
+
+2009-02-22 21:56  mmassonnet
+
+	* po/ChangeLog, po/it.po:
+	  Update translation
+
+2009-02-22 20:49  mmassonnet
+
+	* doc/Makefile.am, doc/da, doc/da/Makefile.am, doc/da/images,
+	  doc/da/images/Makefile.am, doc/da/xfdesktop.xml.in, doc/ja,
+	  doc/ja/Makefile.am, doc/ja/images, doc/ja/images/Makefile.am,
+	  doc/ja/images/root_menu.png, doc/ja/images/root_menu2.png,
+	  doc/ja/images/select_bg_color.png,
+	  doc/ja/images/xfdesktop-background-tab.png,
+	  doc/ja/images/xfdesktop-icons-tab.png,
+	  doc/ja/images/xfdesktop-menus-tab.png, doc/ja/xfdesktop.xml.in:
+	  Import xml.in files of translated documentation
+
+2009-02-22 12:42  mmassonnet
+
+	* po-doc/ChangeLog, po-doc/LINGUAS, po-doc/ja.po, po/ChangeLog,
+	  po/ja.po:
+	  update japanese translation
+
+2009-02-22 10:28  mmassonnet
+
+	* po/ChangeLog, po/ru.po:
+	  update translations
+
+2009-02-20 23:58  maximilian
+
+	* po/ChangeLog, po/gl.po:
+	  Translations Updates - ca es gl id it pt_PT zh_CN
+
+2009-02-20 22:04  stavrosg
+
+	* po/ChangeLog, po/el.po:
+	  Greek translations update by Stavros Giannouris and Evaggelos
+	  Balaskas.
+
+2009-02-18 17:57  pko
+
+	* po-doc/ChangeLog, po-doc/da.po:
+	  * da.po: Danish translation updated (Per Kongstad)
+
+2009-02-18 09:17  kelnos
+
+	* settings/xfdesktop-settings.glade:
+	  don't mark gtk stock ids translatable. patch from stefan stuhr
+	  (bug 4721)
+
+2009-02-17 21:51  pko
+
+	* po/ChangeLog, po/da.po:
+	  * da.po: Danish translation update (Per Kongstad)
+
+2009-02-17 18:09  pko
+
+	* po-doc/ChangeLog, po-doc/LINGUAS, po-doc/da.po:
+	  * da.po, LINGUAS: Added Danish translation (Lars Jensen)
+
+2009-02-11 13:29  erenturkay
+
+	* po/ChangeLog, po/tr.po:
+	  Turkish translation update by Turkish translation team.
+
+2009-02-08 08:20  maximilian
+
+	* po/ChangeLog, po/de.po, po/pl.po, po/zh_CN.po:
+	  Translations udaptes - de id ja nb pl zh_CN
+
+2009-02-03 21:07  maximilian
+
+	* po/ChangeLog, po/en_GB.po:
+	  Translations updates - en_GB es
+
+2009-02-02 06:29  kelnos
+
+	* NEWS, panel-plugin/desktop-menu-plugin.c:
+	  don't use the custom menu file name if it's not valid (bug 4879)
+
+2009-01-31 17:38  erenturkay
+
+	* po/ChangeLog, po/tr.po:
+	  Turkish translation update by Gokmen Gorgen and Samed Beyribey
+
+2009-01-27 07:53  stephan
+
+	* modules/menu/menu-data/xfce4-about-xfce.desktop.in:
+	  Fix typo
+
+2009-01-26 22:03  stephan
+
+	* modules/menu/menu-data/xfce4-about-xfce.desktop.in,
+	  modules/menu/menu-data/xfce4-file-manager.desktop.in,
+	  modules/menu/menu-data/xfce4-help.desktop.in,
+	  modules/menu/menu-data/xfce4-logout.desktop.in,
+	  modules/menu/menu-data/xfce4-run-program.desktop.in,
+	  modules/menu/menu-data/xfce4-terminal.desktop.in,
+	  modules/menu/menu-data/xfce4-web-browser.desktop.in:
+	  Update .desktop files to contain icon-naming-spec compliant
+	  icon-names and use exo-open for starting the webbrowser and
+	  terminal emulator
+
+2009-01-26 00:53  jannis
+
+	* ChangeLog:
+	  Update ChangeLog.
+
 2009-01-26 00:51  jannis
 
 	* NEWS, configure.ac.in, doc/C/xfdesktop.html,
