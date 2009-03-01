@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the xfdesktop package.
 # Edscott Wilson Garcia <edscott@xfce.org>, 2004.
 # Rudy Godoy <rudy@stone-head.org>, 2005.
-# Abel Martín <abel.martin.ruiz@gmail.com>, 2008.
+# Abel Martín <abel.martin.ruiz@gmail.com>, 2008-2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-26 01:15+0100\n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2009-02-24 13:39+0100\n"
 "Last-Translator: Abel Martín <abel.martin.ruiz@gmail.com>\n"
 "Language-Team: Spanish/ES <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -126,11 +126,11 @@ msgstr "    Menú de escritorio:        %s\n"
 
 #: ../src/main.c:240 ../src/main.c:247 ../src/main.c:254
 msgid "enabled"
-msgstr "habilitado"
+msgstr "activado"
 
 #: ../src/main.c:242 ../src/main.c:249 ../src/main.c:256
 msgid "disabled"
-msgstr "deshabilitado"
+msgstr "desactivado"
 
 #: ../src/main.c:245
 #, c-format
@@ -140,7 +140,7 @@ msgstr "    Iconos de escritorio:       %s\n"
 #: ../src/main.c:252
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Iconos de archivo de escritorio:  %s\n"
+msgstr "    Iconos de archivos de escritorio:  %s\n"
 
 #: ../src/main.c:281
 #, c-format
@@ -176,7 +176,7 @@ msgstr ""
 #: ../src/main.c:286
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "    --quit        Termina xfdesktop\n"
+msgstr "    --quit        Hace que finalice xfdesktop\n"
 
 #: ../src/main.c:307
 #, c-format
@@ -325,7 +325,7 @@ msgid ""
 "by Thunar)."
 msgstr ""
 "Esta funcionalidad necesita la presencia de un administrador de archivos "
-"(por ejemplo, como el que proporciona Thunar)."
+"(por ejemplo, como el proporcionado por Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1137
 #, c-format
@@ -663,7 +663,7 @@ msgid ""
 "Mount Point: %s\n"
 "Free Space: %s"
 msgstr ""
-"Clase: volumen extraíble\n"
+"Tipo: volumen extraíble\n"
 "Punto de montaje: %s\n"
 "Espacio libre: %s"
 
@@ -883,7 +883,7 @@ msgstr "Dispositivos extraíbles"
 #: ../settings/main.c:426
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "No se puede crear lista de fondos \"%s\""
+msgstr "No se puede crear la lista de fondos \"%s\""
 
 #: ../settings/main.c:430 ../settings/main.c:789
 msgid "Backdrop List Error"
