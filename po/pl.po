@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.5.92\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-27 04:40-0800\n"
-"PO-Revision-Date: 2009-02-21 00:45+0100\n"
+"PO-Revision-Date: 2009-03-07 17:41+0100\n"
 "Last-Translator: Piotr Sokół <piotr.sokol@10g.pl>\n"
 "Language-Team: Polish\n"
 "MIME-Version: 1.0\n"
@@ -268,7 +268,7 @@ msgstr "Tworzy nowy plik"
 #: ../src/xfdesktop-special-file-icon.c:633
 #: ../src/xfdesktop-volume-icon.c:560
 msgid "_Open"
-msgstr "_Otwórz..."
+msgstr "_Otwórz"
 
 #: ../menueditor/menueditor-main-window.c:142
 msgid "Open existing menu"
@@ -854,7 +854,7 @@ msgstr "Błąd tworzenia"
 
 #: ../src/xfdesktop-file-icon-manager.c:1700
 msgid "_Open all"
-msgstr "_Otwórz wszystkie"
+msgstr "Otwórz _wszystkie"
 
 #: ../src/xfdesktop-file-icon-manager.c:1716
 msgid "_Open in New Window"
@@ -866,7 +866,7 @@ msgstr "Utwórz _aktywator..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1754
 msgid "Create _URL Link..."
-msgstr "Utwórz odnośnik _URL..."
+msgstr "Utwórz _odnośnik..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1771
 msgid "Create _Folder..."
@@ -1192,16 +1192,18 @@ msgid "Games"
 msgstr "Gry"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
+#, fuzzy
 msgid "Games, puzzles, and other fun software"
-msgstr ""
+msgstr "Gry, układanki i inne oprogramowanie"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
 msgstr "Grafika"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
+#, fuzzy
 msgid "Graphics creation and manipulation applications"
-msgstr ""
+msgstr "Programy do tworzenia i edycji grafiki"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
@@ -1237,7 +1239,7 @@ msgstr "Inne"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr ""
+msgstr "Aplety wygaszacza ekranu"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
@@ -1626,7 +1628,7 @@ msgstr "W_yświetlanie po kliknięciu prawym klawiszem myszy"
 
 #: ../settings/xfdesktop-settings.glade.h:50
 msgid "Show s_ticky windows only in active workspace"
-msgstr ""
+msgstr "_Przypięte okna tylko w bieżącym obszarze roboczym"
 
 #: ../settings/xfdesktop-settings.glade.h:51
 msgid "Show workspace _names in list"
