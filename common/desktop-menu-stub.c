@@ -39,9 +39,6 @@ void (*xfce_desktop_menu_force_regen)(XfceDesktopMenu *desktop_menu) = NULL;
 void (*xfce_desktop_menu_set_show_icons)(XfceDesktopMenu *desktop_menu, gboolean show_icons) = NULL;
 static void (*xfce_desktop_menu_destroy_p)(XfceDesktopMenu *desktop_menu) = NULL;
 
-static void (*my_xfce_menu_init)(const gchar *env) = NULL;
-static void (*my_xfce_menu_shutdown)() = NULL;
-
 static GQuark
 desktop_menu_error_quark(void)
 {
@@ -117,12 +114,7 @@ desktop_menu_stub_init(GError **err)
         return NULL;
     }
     
-    if(!_setup_functions(module)
-       || !g_module_symbol(module, "xfce_menu_init",
-                           (gpointer)&my_xfce_menu_init)
-       || !g_module_symbol(module, "xfce_menu_shutdown",
-                           (gpointer)&my_xfce_menu_shutdown))
-    {
+    if(!_setup_functions(module)) {
         if(err) {
             g_set_error(err, desktop_menu_error_quark(), 0,
                     "The XfceDesktopMenu module is not valid: %s",
@@ -132,15 +124,12 @@ desktop_menu_stub_init(GError **err)
         return NULL;
     }
     
-    my_xfce_menu_init("XFCE");
-    
     return module;
 }
 
 static void
 desktop_menu_stub_cleanup(GModule *module)
 {
-    my_xfce_menu_shutdown();
     g_module_close(module);
 }
 
