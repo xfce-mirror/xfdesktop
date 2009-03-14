@@ -1,7 +1,8 @@
-SUBDIRS = \
-	C \
-	da \
-	fr \
+SUBDIRS = 	\
+	C 		\
+	da 		\
+	fr 		\
+	it		\
 	ja
 
 noinst_DATA = \
