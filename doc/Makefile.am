@@ -1,5 +1,6 @@
-SUBDIRS = \
-	C \
+SUBDIRS = 	\
+	C		\
+	it		\
 	fr
 
 noinst_DATA = \

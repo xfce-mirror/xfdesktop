@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY date "January 2007">
+<!ENTITY appversion "@PACKAGE_VERSION@">
+<!ENTITY app "<application>@PACKAGE_NAME@</application>">
+]>
+<article id="xfdesktop" lang="it">
+  
+  <articleinfo>
+    <title>Gestore della scrivania di Xfce4</title>
+    
+    <copyright>
+      <year>2004-2007</year> <holder>Brian Tarricone</holder>
+    </copyright>
+    
+    <copyright>
+      <year>2004</year> <holder>Jasper Huijsmans</holder>
+    </copyright>
+    
+    <copyright>
+      <year>2004</year> <holder>François Le Clainche</holder>
+    </copyright>
+    
+<!-- documentation translators: uncomment this and fill in your information.
+    <copyright>
+      <year>2002</year> <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+  -->
+
+<!-- I don;t know about this
+    <legalnotice id="legalnotice">
+      <para>
+        This document is provided under the terms of the GNU GPL, version
+        2 or (at your option) any later version.
+      </para>
+    </legalnotice>
+  -->
+    
+    <authorgroup>
+      <author>
+        <firstname>Brian</firstname> <surname>Tarricone</surname>
+        <affiliation>
+          <address><email>kelnos@xfce.org</email></address>
+        </affiliation>
+      </author>
+      <author>
+        <firstname>Jasper</firstname> <surname>Huijsmans</surname>
+        <affiliation>
+          <address><email>jasper@xfce.org</email></address>
+        </affiliation>
+      </author>
+      
+      <author>
+        <firstname>François</firstname> <surname>Le Clainche</surname>
+        <affiliation>
+          <address><email>fleclainche@wanadoo.fr</email></address>
+        </affiliation>
+      </author>        
+    </authorgroup>
+    
+    <releaseinfo>Questo manuale descrive <application>@PACKAGE_NAME@</application> versione @PACKAGE_VERSION@.</releaseinfo>
+  </articleinfo>
+  
+  <sect1 id="xfdesktop-intro">
+    <title>Introduzione</title>
+    
+    <para>L'applicazione <application>@PACKAGE_NAME@</application> gestisce lo sfondo della scrivania. Permette di impostare un'immagine o un colore di sfondo, di mostrare un menu delle applicazioni e di visualizzare un elenco di quelle in esecuzione facendo clic sulla scrivania rispettivamente con il tasto destro o con quello centrale del mouse. A partire da Xfce 4.4, <application>@PACKAGE_NAME@</application> disegna anche le icone sulla scrivania.</para>
+    
+    <para>Il pacchetto <application>@PACKAGE_NAME@</application> installa una finestra di impostazione da utilizzare con il <emphasis>gestore delle impostazioni di Xfce 4</emphasis>. Da questa finestra è possibile cambiare l'immagine e il colore di sfondo, e modificare le impostazioni per il menu e la lista finestre.</para>
+  </sect1>
+  
+  <sect1 id="xfdesktop-backdrop">
+    <title>Sfondo</title>
+    
+    <para><application>@PACKAGE_NAME@</application> è addetto alla visualizzazione dello sfondo della scrivania (chiamato anche "rivestimento"). Sono disponibili diverse opzioni riguardanti la configurazione di un'immagine di sfondo. Il risultato finale è costituito dalla sovrapposizione di un colore solido (o di un gradiente) e di una immagine (o fotografia); in questo modo sono realizzabili degli effetti particolari utilizzando delle immagini semi trasparenti sovrapposte a varie combinazioni di colore.</para>
+  </sect1>
+  
+  <sect1 id="xfdesktop-icons">
+    <title>Icone</title>
+    
+    <para>Oltre a gestire la visualizzazione dell'immagine di sfondo, <application>@PACKAGE_NAME@</application> è in grado di disegnare le icone sulla scrivania.</para>
+    
+    <sect2 id="xfdesktop-window-icons">
+      <title>Icone delle applicazioni minimizzate</title>
+      
+      <para>Un modo di operare prevede di visualizzare le applicazioni minimizzate come icone sulla scrivania; queste possono essere riordinate e la posizione verrà ricordata nel momento in cui la finestra sarà massimizzata e in seguito minimizzata di nuovo. Le icone forniscono anche un menu, accessibile con un clic del tasto destro del mouse, simile a quello visualizzato quando si fa clic sul pulsante in alto a sinistra nella finestra.</para>
+    </sect2>
+    
+    <sect2 id="xfdesktop-file-icons">
+      <title>Icone di file e avviatori</title>
+      
+      <para><application>@PACKAGE_NAME@</application> è anche in grado di visualizzare sulla scrivania il contenuto della cartella <filename>~/Desktop/</filename>, in modo simile alla vista a icone utilizzata da altri ambienti grafici e sistemi operativi. I file possono essere ordinati, copiati, spostati, collegati da e a un gestore di file, e aperti utilizzando l'applicazione che si preferisce. Sulla scrivania è anche possibile creare degli avviatori per applicazioni e collegamenti. La visualizzazione a icona dei file è progettata per avere uno stile e un aspetto simile a quello del gestore di file <ulink url="http://thunar.xfce.org/" type="http">Thunar</ulink>.</para>
+    </sect2>
+  </sect1>
+
+  <sect1 id="xfdesktop-menu">
+    <title>Il menu delle applicazioni</title>
+    
+    <para>Con un clic del tasto destro del mouse sullo sfondo della scrivania, verrà aperto un menu che permette di avviare la maggior parte delle applicazioni presenti nel sistema.</para>
+    
+    <figure id="root-menu-fig">
+      <title>Menu applicazioni</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/root_menu.png" format="PNG"/>
+          </imageobject> 
+          <textobject>
+            <phrase>Mostra il menu di <application>@PACKAGE_NAME@</application> alla pressione del tasto destro del mouse.</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    
+    <para>Il file di configurazione del menu, <filename>menu.xml</filename>, è situato in <filename>$sysconfdir/xdg/xfce4/menu.xml</filename>. Per i pacchetti binari, <filename>$sysconfdir</filename> è spesso <filename>/etc</filename> mentre per la compilazione da sorgente, è <filename>/usr/local/etc</filename> di default.</para>
+    
+    <para>Anche se è possibile modificare il file manualmente, si raccomanda di utilizzare l'editor del menu di Xfce per modificare il file <filename>menu.xml</filename>. L'editor del menu di Xfce può essere avviato eseguendo il comando <application>xfce4-menueditor</application>, o utilizzando il pulsante «modifica menu della scrivania» disponibile nella linguetta del comportamento presente nella finestra delle impostazioni della scrivania. L'editor del menu supporta anche l'operazione di drag'n'drop da un file manager.</para>
+    
+    <para>Se il menu è stato modificato utilizzando l'applicazione <application>xfce4-menueditor</application>, il file del menu personalizzato verrà salvato in  <filename>$XDG_CONFIG_HOME/xfce4/desktop/menu.xml</filename>. <filename>$XDG_CONFIG_HOME</filename> assume il valore <filename>~/ di default.</filename></para>
+    
+    <para>NB: se si sceglie di modificare il file manualmente, la codifica del file <filename>menu.xml</filename> deve essere UTF-8 per evitare che vengano visualizzati in modo errato gli accenti e gli altri caratteri non ASCII. È quindi necessario disporre di un editor che supporta la codifica UTF-8 quale  <application>mousepad</application> o <application>gedit</application>.</para>
+  </sect1>
+  
+  <sect1 id="xfdesktop-window-list">
+    <title>Il menu della lista finestre</title>
+    
+    <para>Un clic con il tasto centrale del mouse sullo sfondo della scrivania, permette di visualizzare un elenco di tutte le finestre aperte ordinate per spazio di lavoro. Da qui, è anche possibile aggiungere o eliminare uno spazio di lavoro.</para>
+
+    <figure id="root-menu2-fig">
+      <title>Menu della lista finestre</title> 
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/root_menu2.png" format="PNG"/>
+          </imageobject> 
+          <textobject>
+            <phrase>Mostra il menu di <application>@PACKAGE_NAME@</application> alla pressione del tasto centrale del mouse.</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </sect1>
+  
+  <sect1 id="xfdesktop-settings">
+    <title>Impostazioni della scrivania</title>
+    
+    <para>La finestra delle impostazioni della scrivania può essere avviata facendo un clic sul pulsante «scrivania» presente nel <ulink url="xfce-mcs-manager.html#manager-dialog" type="http">gestore delle impostazioni di Xfce</ulink>.</para>
+    
+    <sect2 id="xfdesktop-settings-appearance">
+      <title>Linguetta dell'aspetto</title>
+      
+      <para>La linguetta dell'aspetto permette di configurare varie opzioni relative alla visualizzazione dll'immagine di sfondo della scrivania.</para>
+      
+      <figure id="xfdesktop-appearance-fig">
+        <title>Impostazioni della scrivania, linguetta dell'aspetto</title> 
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/xfdesktop-appearance-tab.png" format="PNG"/>
+            </imageobject> 
+            <textobject>
+              <phrase>Mostra la linguetta del comportamento nella finestra di dialogo delle impostazioni della scrivania</phrase>
+            </textobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      
+      <variablelist>
+        <varlistentry>
+          <term>Stile colore</term>
+          <listitem>
+            <para>Lo stile del colore offre tre opzioni: solido, gradiente orizzontale o gradiente verticale.</para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>Colore primario e secondario</term>
+          <listitem>
+            <para>Quando è selezionata l'opzione di colore solido, è disponibile solamente il colore primario. Quando una delle due opzioni di gradiente è selezionata, sono disponibili sia il colore primario che quello secondario. Entrambi i pulsanti del colore permettono di aprire una finestra di scelta del colore:</para>
+            
+            <figure id="select_bg_color-fig">
+              <title>Selezionare il colore di sfondo</title>
+              <screenshot>
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/select_bg_color.png" format="PNG"/>
+                    </imageobject>
+                  <textobject>
+                    <phrase>Mostra la finestra di scelta del colore</phrase>
+                  </textobject>
+                </mediaobject>
+              </screenshot>
+            </figure>
+            
+            <itemizedlist>
+              <listitem>Utilizzando l'anello circolare con all'interno un triangolo, è possibile selezionare il colore che si desidera dall'anello esterno e selezionare la luminosità del colore stesso utilizzando il triangolo interno. I valori corrispondenti di luminosità e profondità e le quantità di rosso, verde e blu del colore vengono indicati attraverso le voci sulla destra della finestra.</listitem>
+              <listitem>Si può selezionare il contagocce e fare poi clic sullo schermo per selezionare il colore.</listitem>
+              <listitem>È possibile inserire un valore esadecimale in stile HTML, o semplicemente il nome del colore, nella voce «nome colore».</listitem>
+            </itemizedlist>
+            
+            <para>Il colore selezionato andrà a riempire l'intera finestra radice e resterà visibile attraverso un'immagine di sfondo trasparente.</para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>Immagine</term>
+          
+          <listitem>
+            <para>Deselezionare l'opzione «mostra immagine» se si desidera che <application>@PACKAGE_NAME@</application> ignori l'immagine di sfondo e utilizzi solamente il colore selezionato precedentemente.</para>
+            
+            <para>La voce «File» mostra il percorso dell'immagine attualmente selezionata come sfondo. Per cambiarla, è sufficiente trascinare la nuova immagine nel campo del percorso o modificare il percorso stesso. Altrimenti si può anche fare clic sul pulsante sfoglia e verrà aperta una comune finestra per sfogliare i file.</para>
+            
+            <para>È possibile creare una lista di immagini di sfondo che verranno selezionate in modo casuale all'avvio. Fare clic sul pulsante «Nuova lista» per aprire la finestra di modifica della lista:</para>
+            
+            <figure id="xfdesktop-list-fig">
+              <title>Editor della lista degli sfondi</title> 
+              <screenshot>
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/xfdesktop-list.png" format="PNG"/>
+                  </imageobject>
+                  <textobject>
+                    <phrase>Mostra il gestore della lista degli sfondi</phrase>
+                  </textobject>
+                </mediaobject>
+              </screenshot>
+            </figure>
+            
+            <para>Il percorso predefinito e il nome della propria lista personalizzata di sfondi, possono essere cambiati nella voce «File della lista».</para>
+            
+            <para>È possibile aggiungere facilmente un'immagine premendo il pulsante «+»; verrà aperta una finestra del file browser. Per rimuovere un file, selezionarlo dalla lista e premere il pulsante «-». Quando la propria lista è completa, fare clic sul pulsante «Salva» per salvarla. Se si desidera modificarne il contenuto in seguito, utilizzare il pulsante «Modifica lista» nella finestra delle impostazioni della scrivania.</para>
+            
+            <para>È anche possibile recuperare una vecchia lista trascinando il file nome.list nella finestra delle impostazioni dello sfondo, da un file manager.</para>
+            
+            <para>Per aggiornare lo sfondo con una nuova immagine casuale dall'elenco, eseguire nuovamente il comando <application>@PACKAGE_NAME@</application> (per esempio dal terminale o dalla finestra di esegui), o <application>@PACKAGE_NAME@</application><arg>--reload</arg>.</para>
+            
+            <para>Sono disponibili quattro opzioni (centrato, affiancato, stirato e scalato) per specificare come l'immagine debba riempire lo schermo in funzione della sua dimensione. È anche possibile selezionare l'opzione «Automatico» per far scegliere a <application>@PACKAGE_NAME@</application> la modalità migliore.</para>
+            
+            <para>La barra scorrevole nella parte inferiore della finestra, permette di correggere la luminosità dell'immagine o del colore di sfondo.</para>
+            
+            <para>xfdesktop supporta xinerama e la modalità a più schermi; in questa modalità, la linguetta dell'aspetto mostra una linguetta per ogni schermo.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+    
+    <sect2 id="xfdesktop-settings-behavior">
+      <title>Linguetta del comportamento</title>
+      
+      <figure id="xfdesktop-behavior-tab-fig">
+        <title>Impostazioni della scrivania, linguetta dell'aspetto</title> 
+        
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/xfdesktop-behavior-tab.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>Mostra la linguetta del comportamento nella finestra di dialogo delle impostazioni della scrivania</phrase>
+            </textobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      
+      <para>Le prime due opzioni permettono di abilitare o disabilitare il menu della lista finestre e il menu delle applicazioni. È anche disponibile un pulsante che avvia l'editor del menu di Xfce e che permette di modificare il menu delle applicazioni.</para>
+      
+      <para>Qui è inoltre possibile impostare il comportamento delle icone sulla scrivania. Sono disponibili tre opzioni: «nessuna», per disabilitare completamente le icone sulla scrivania; «Icone delle applicazioni minimizzate», per mostrare sulla scrivania le icone delle applicazioni nascoste o minimizzate; «File/icone degli avviatori», per visualizzare sulla scrivania il contenuto della propria directory <filename>~/Desktop</filename>.</para>
+      
+      <para>Se sono attivate le icone sulla scrivania, è possibile controllare la dimensione (in pixel) dell'icona stessa e l'altezza (in punti) del tipo di carattere utilizzato per visualizzare il testo dell'icona. Selezionando l'opzione «Usa la dimensione del carattere di sistema», <application>@PACKAGE_NAME@</application> utilizzerà la dimensione del tipo di carattere selezionata nella finestra delle impostazioni dell'interfaccia utente.</para>
+    </sect2>
+  </sect1>
+  
+  <sect1 id="xfdesktop-menu-editor">
+    <title>Editor del menu per Xfce</title>
+    
+    <para>Il metodo più indicato per modificare il menu delle applicazioni, prevede di utilizzare l'editor del menu di Xfce.</para>
+    
+    <figure id="xfdesktop-editor-fig">
+      <title>Editor del menu per Xfce</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/xfdesktop-editor.png" format="PNG"/>
+          </imageobject> 
+          <textobject>
+            <phrase>Mostra l'editor del menu.</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    
+    <para>L'editor di menu di Xfce mostra il menu come una struttura ad albero composta di vari elementi. Gli elementi esistenti possono essere modificati selezionandoli e utilizzando i pulsanti della barra strumenti o il menu contestuale. Gli elementi possono essere spostati trascinandoli con il mouse. Nuovi elementi possono essere aggiunti utilizzando il pulsante «Aggiungi» o l'elemento menu.</para>
+    
+    <para>Esistono cinque tipi di elementi per il menu: <variablelist>
+        <varlistentry>
+          <term>Titolo</term>
+          <listitem>
+            <para>Un elemento titolo non ha alcuna funzione; permette semplicemente di inserire un testo o un'icona nel menu.</para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>Sottomenu</term>
+          <listitem>
+            <para>Un elemento sottomenu, permette di inserire un sottomenu nel menu.</para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>Avviatore</term>
+          <listitem>
+            <para>Gli avviatori eseguono un'applicazione quando si fa un clic su di essi.</para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>Separatore</term>
+          <listitem>
+            <para>Un elemento separatore crea una riga nel menu.</para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>Esci</term>
+          <listitem>
+            <para>L'opzione esci fa comparire una finestra che permette di eseguire il log out, di spegnere il proprio computer o di riavviarlo.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+    
+    <para>Se la'pplicazione supporta la notifica di avvio, si può abilitare l'opzione; in questo modo il cursore del mouse, mentre l'applicazione si sta caricando, visualizzerà una clessidra. Se non si è sicuri della compatibilità dell'applicazione con la notifica di avvio, si consiglia di non abilitare l'opzione.</para>
+    
+    <para>Se l'applicazione necessita del terminale per essere eseguita, abilitare l'opzione «Esegui nel terminale».</para>
+    
+    <para>Oltre agli elementi menu, ne esistono altri due tipi "speciali" che possono essere aggiunti al menu tramite l'opzione «aggiungi esterna» nel menu modifica. Il menu di sistema ricerca i file <filename>.desktop</filename> in alcune posizioni predeterminate sul disco fisso e crea un menu ad albero delle applicazioni trovate. Il file "esterno" permette di archiviare altri menu in altri file di menu e di unirli con il menu corrente.</para>
+  </sect1>
+  
+  <sect1 id="xfdesktop-hidden-options">
+    <title>Opzioni nascoste</title>
+    
+    <para>Esistono diverse opzioni nascoste che non è possibile configurare tramite il gestore delle impostazioni di Xfce; per modificarle occorre utilizzare un editor di testo.</para>
+    
+    <variablelist>
+      <varlistentry>
+        <term>Aspetto del testo nella visualizzazione a icone</term>
+        <listitem>
+          <para>I colori, il testo e lo sfondo del testo dell'icona come anche l'opacità dello sfondo del testo dell'icona, possono essere personalizzati inserendo, nel file  <filename>~/.gtkrc-2.0</filename>, delle istruzioni simili a quelle riportate di seguito: </para>
+          
+          <programlisting>
+<![CDATA[style "xfdesktop-icon-view" {
+    XfdesktopIconView::label-alpha = 75
+
+    base[NORMAL] = "#00ff00"
+    base[SELECTED] = "#5050ff"
+    base[ACTIVE] = "#0000ff"
+
+    fg[NORMAL] = "#ff0000"
+    fg[SELECTED] = "#ff0000"
+    fg[ACTIVE] = "#ff0000"
+}
+widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"]]>
+          </programlisting>
+          
+          <para>La prima voce permette di impostare l'opacità dello sfondo del testo arrotondato. Le tre voci "base" impostano il colore di sfondo del testo mentre le tre voci "fg" agiscono sul colore del testo stesso.</para>
+          
+          <para>Le voci "NORMAL" permettono di impostare il colore per lo stato normale, non selezionato. Le voci "SELECTED" impostano invece il colore dell'icona quando questa è selezionata e la scrivania ha il fuoco della tastiera. Infine, le voci "ACTIVE" impostano il colore per la situazione in cui l'icona è selezionata ma la scrivania non ha il fuoco della tastiera.</para>
+        </listitem>
+      </varlistentry>
+      
+      <varlistentry>
+        <term>Icone aggiuntive</term>
+        <listitem>
+          <para>Oltre alle icone di file e avviatori, <application>@PACKAGE_NAME@</application> è in grado di visualizzare anche le icone dei volumi rimovibili collegati al proprio computer. Può anche mostrare un'icona per la radice del file system, la cartella casa e il cestino. Di default, queste sono tutte abilitate, ma possono essere disabilitate tramite le opzioni nascoste. Creare o modificare il file <filename>$XDG_CONFIG_HOME/xfce4/desktop/xfdesktoprc</filename> e aggiungere qualcosa di simile a questo:</para>
+          
+          <programlisting>
+<![CDATA[[file-icons]
+show-filesystem=true
+show-home=true
+show-trash=true
+show-removable=true]]>
+          </programlisting>
+          
+          <para>Per disabilitare una particolare caratteristica, cambiarne il valore da  "true" a "false" e salvare il file. Se una voce viene omessa, assume automaticamente il valore "true". Riavviare <application>@PACKAGE_NAME@</application> per rendere effettivi i cambiamenti.</para>
+        </listitem>
+      </varlistentry>
+      
+      <varlistentry>
+        <term>Icone nel menu delle applicazioni e nella lista finestre</term>
+        <listitem>
+          <para>Se si desidera che le icone non vengano visualizzate nel menu delle applicazioni e nel menu della lista finestre, aggiungere il testo seguente al file <filename>~/.gtkrc-2.0</filename>:</para>
+          
+          <programlisting>
+<![CDATA[style "menu-images" {
+    gtk-menu-images = false
+}
+widget_class "*" style "menu-images"]]>
+          </programlisting>
+          
+          <para>Sfortunatamente, verranno interessati tutti i menu Gtk, non solo i menu delle applicazioni e della lista finestre. Attualmente non è possibile impostare questa proprietà solamente per questi due menu.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect1>
+
+  <sect1 id="xfdesktop-misc">
+    <title>Informazioni varie</title>
+    
+    <para>Il menu o la lista finestre può essere aperta anche dalla linea di comando: questo metodo può essere utile per le scorciatoie da tastiera. Per aprire il menu, eseguire il comando <application>@PACKAGE_NAME@</application><application>--menu</application> mentre per la lista finestre usare <application>@PACKAGE_NAME@</application><application>--windowlist</application>. Per interrompere l'istanza corrente, eseguire <application>@PACKAGE_NAME@</application><application>--quit</application>.</para>
+  </sect1>
+  
+  <sect1 id="xfdesktop-copyright">
+    <title>Informazioni su <application>@PACKAGE_NAME@</application></title>
+    
+    <para>L'applicazione <application>@PACKAGE_NAME@</application> è stata scritta da Brian Tarricone (<email>kelnos@xfce.org</email>), Jasper Huijsmans (<email>jasper@xfce.org</email>) e Benedikt Meurer (<email>benny@xfce.org</email>). Per maggiori informazioni, visitare il <ulink url="http://www.xfce.org" type="http">sito di Xfce</ulink>.</para>
+
+    <para>Per segnalare un problema o per avanzare una proposta relativa a questo programma o al manuale, utilizzare il sistema di tracciamento dei bug all'indirizzo <ulink url="http://bugzilla.xfce.org/" type="http">http://bugzilla.xfce.org/</ulink>.</para>
+    
+    <para>Se si hanno domande relative all'utilizzo o all'installazione di questo pacchetto, rivolgersi alla <ulink url="http://foo-projects.org/mailman/listinfo/xfce" type="http">mailing list di xfce</ulink>.Le discussioni relative allo sviluppo si svolgono nella mailing list <ulink url="http://foo-projects.org/mailman/listinfo/xfce4-dev" type="http">xfce4-dev</ulink>.</para>
+    
+    <para>Questo programma è distribuito nel rispetto dei termini della licenza GNU GPL (General Public License) come pubblicata dalla Free Software Foundation, sia questa la versione 2 o, a propria scelta, una qualsiasi versione successiva.</para>
+    
+    <para>Con il programma dovrebbe essere stata anche fornita una copia della GNU General Public License; se così non fosse, scrivere alla: Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.</para>
+  </sect1>
+  
+</article>
