@@ -1377,3 +1377,43 @@ xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
     xfce_desktop_do_menu_popup(desktop, button, activate_time,
                                signals[SIG_POPULATE_SECONDARY_ROOT_MENU]);
 }
+
+void
+xfce_desktop_refresh(XfceDesktop *desktop)
+{
+    gchar buf[256];
+    guint i, max;
+
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+
+    if(!GTK_WIDGET_REALIZED(desktop))
+        return;
+
+    /* reload image */
+    if(desktop->priv->xinerama_stretch)
+        max = 1;
+    else
+        max = desktop->priv->nbackdrops;
+    for(i = 0; i < max; ++i) {
+        GValue val = { 0, };
+
+        g_snprintf(buf, sizeof(buf), "%smonitor%d/image-path",
+                   desktop->priv->property_prefix, i);
+        xfconf_channel_get_property(desktop->priv->channel, buf, &val);
+
+        xfce_desktop_image_filename_changed(desktop->priv->channel, buf,
+                                            &val, desktop);
+
+        if(G_VALUE_TYPE(&val))
+            g_value_unset(&val);
+    }
+
+#ifdef ENABLE_DESKTOP_ICONS
+    /* reload icon view */
+    if(desktop->priv->icon_view) {
+        gtk_widget_destroy(desktop->priv->icon_view);
+        desktop->priv->icon_view = NULL;
+    }
+    xfce_desktop_setup_icon_view(desktop);
+#endif
+}

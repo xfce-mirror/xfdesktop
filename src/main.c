@@ -152,8 +152,17 @@ scroll_cb(GtkWidget *w, GdkEventScroll *evt, gpointer user_data)
 static gboolean 
 reload_idle_cb(gpointer data)
 {
-    //settings_reload_all();  /* FIXME */
+    XfceDesktop **desktops = data;
+    gint i, nscreens;
+
+    nscreens = gdk_display_get_n_screens(gdk_display_get_default());
+    for(i = 0; i < nscreens; ++i) {
+        if(desktops[i])
+            xfce_desktop_refresh(desktops[i]);
+    }
+
     menu_reload();
+
     return FALSE;
 }
 
@@ -162,7 +171,7 @@ client_message_received(GtkWidget *w, GdkEventClient *evt, gpointer user_data)
 {
     if(evt->data_format == 8) {
         if(!strcmp(RELOAD_MESSAGE, evt->data.b)) {
-            g_idle_add ((GSourceFunc)reload_idle_cb, NULL);
+            g_idle_add((GSourceFunc)reload_idle_cb, user_data);
             return TRUE;
         } else if(!strcmp(MENU_MESSAGE, evt->data.b)) {
             xfce_desktop_popup_root_menu(XFCE_DESKTOP(w), 0,
@@ -331,7 +340,7 @@ main(int argc, char **argv)
         channel = xfconf_channel_new(XFDESKTOP_CHANNEL);
 
     nscreens = gdk_display_get_n_screens(gdpy);
-    desktops = g_new(GtkWidget *, nscreens);
+    desktops = g_new0(GtkWidget *, nscreens);
     for(i = 0; i < nscreens; i++) {
         g_snprintf(buf, sizeof(buf), "/backdrop/screen%d/", i);
         desktops[i] = xfce_desktop_new(gdk_display_get_screen(gdpy, i),
@@ -341,7 +350,7 @@ main(int argc, char **argv)
         g_signal_connect(G_OBJECT(desktops[i]), "scroll-event",
                          G_CALLBACK(scroll_cb), NULL);
         g_signal_connect(G_OBJECT(desktops[i]), "client-event",
-                         G_CALLBACK(client_message_received), NULL);
+                         G_CALLBACK(client_message_received), desktops);
         menu_attach(XFCE_DESKTOP(desktops[i]));
         windowlist_attach(XFCE_DESKTOP(desktops[i]));
         gtk_widget_show(desktops[i]);
