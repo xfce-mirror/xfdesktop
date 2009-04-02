@@ -819,6 +819,7 @@ xfce_desktop_unrealize(GtkWidget *widget)
     gdk_property_delete(groot, gdk_atom_intern("_XROOTPMAP_ID", FALSE));
     gdk_property_delete(groot, gdk_atom_intern("ESETROOT_PMAP_ID", FALSE));
     gdk_window_set_back_pixmap(groot, NULL, FALSE);
+    gdk_flush();
     
     if(desktop->priv->backdrops) {
         for(i = 0; i < desktop->priv->nbackdrops; i++) {
