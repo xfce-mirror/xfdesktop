@@ -876,8 +876,14 @@ add_file_button_clicked(GtkWidget *button,
             g_free(pdata);
         }
 
-        if(panel->image_list_loaded)
+        if(panel->image_list_loaded) {
             xfdesktop_settings_save_backdrop_list(panel, model);
+
+            /* if we just added the first image, instruct xfdesktop
+             * to load it */
+            if(gtk_tree_model_iter_n_children(model, NULL) == 1)
+                g_spawn_command_line_async("xfdesktop --reload", NULL);
+        }
     }
 
     gtk_widget_destroy(chooser);
