@@ -855,6 +855,12 @@ add_file_button_clicked(GtkWidget *button,
                                COL_FILENAME, filename,
                                -1);
 
+            /* auto-select the first one added */
+            if(l == filenames) {
+                GtkTreeSelection *sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(panel->image_treeview));
+                gtk_tree_selection_select_iter(sel, &iter);
+            }
+
             pdata->iters = g_slist_prepend(pdata->iters, gtk_tree_iter_copy(&iter));
 
             g_free(filename);
