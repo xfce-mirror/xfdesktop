@@ -744,19 +744,19 @@ xfdesktop_file_icon_manager_delete_files(XfdesktopFileIconManager *fmanager,
         gtk_container_add(GTK_CONTAINER(sw), treeview);
         
         cancel_btn = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
-        GTK_WIDGET_SET_FLAGS(cancel_btn, GTK_CAN_DEFAULT);
         gtk_widget_show(cancel_btn);
         gtk_dialog_add_action_widget(GTK_DIALOG(dlg), cancel_btn,
                                      GTK_RESPONSE_CANCEL);
         
         delete_btn = gtk_button_new_from_stock(GTK_STOCK_DELETE);
+        GTK_WIDGET_SET_FLAGS(delete_btn, GTK_CAN_DEFAULT);
         gtk_widget_show(delete_btn);
         gtk_dialog_add_action_widget(GTK_DIALOG(dlg), delete_btn,
                                      GTK_RESPONSE_ACCEPT);
         
-        gtk_dialog_set_default_response(GTK_DIALOG(dlg), GTK_RESPONSE_CANCEL);
+        gtk_dialog_set_default_response(GTK_DIALOG(dlg), GTK_RESPONSE_ACCEPT);
         gtk_widget_show(dlg);
-        gtk_widget_grab_focus(cancel_btn);
+        gtk_widget_grab_focus(delete_btn);
         
         ret = gtk_dialog_run(GTK_DIALOG(dlg));
         gtk_widget_destroy(dlg);
