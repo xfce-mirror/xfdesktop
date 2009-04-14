@@ -1,3 +1,142 @@
+2009-04-14 21:48  stephan
+
+	* configure.ac.in:
+	  == Release xfce 4.6.1 ==
+
+2009-04-08 11:49  brzydki
+
+	* po/ChangeLog, po/pl.po:
+	  Updated Polish translations
+
+2009-04-02 07:02  kelnos
+
+	* NEWS, settings/main.c:
+	  auto-select images as they're added to the list (bug 5014)
+
+2009-04-02 06:43  kelnos
+
+	* NEWS, settings/main.c:
+	  run 'xfdesktop --reload' when the 1st img is added to an img list
+	  (bug 5001)
+
+2009-04-02 06:34  kelnos
+
+	* NEWS, src/xfdesktop-file-icon-manager.c:
+	  make default action ('accept') in both delete dialogs consistent
+
+2009-04-02 06:23  kelnos
+
+	* NEWS, src/main.c, src/xfce-desktop.c, src/xfce-desktop.h:
+	  reload image and icon view when 'xfdesktop --reload' is run (bug
+	  5156)
+
+2009-04-02 05:43  kelnos
+
+	* NEWS, src/xfce-desktop.c:
+	  call gdk_flush() after removing X properties to ensure they make
+	  it to the X server before xfdesktop quits (bug 5154)
+
+2009-03-29 22:03  maximilian
+
+	* po/ChangeLog, po/es.po:
+	  Translations updates - es it ku
+
+2009-03-28 15:06  mmassonnet
+
+	* po/de.po:
+	  update german translations
+
+2009-03-27 22:27  maximilian
+
+	* po-doc/ChangeLog, po-doc/LINGUAS, po-doc/gl.po, po/ChangeLog,
+	  po/pt.po:
+	  Translations updates - gl pt ru
+
+2009-03-23 10:13  brzydki
+
+	* po/ChangeLog, po/pl.po:
+	  Updated Polish translations
+
+2009-03-20 06:27  hashimo
+
+	* po-doc/ChangeLog, po-doc/ja.po:
+	  * ja.po: Japanese translation update (Masato Hashimoto)
+
+2009-03-19 18:03  kelnos
+
+	* doc/C/xfdesktop.html, doc/C/xfdesktop.xml.in:
+	  fix various typos and incorrect information (bug 5129)
+
+2009-03-19 15:02  hashimo
+
+	* po/ChangeLog, po/ja.po:
+	  * ja.po: Japanese translation update (Masato Hashimoto) * ja.po:
+	  Japanese translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto)
+
+2009-03-17 09:01  kelnos
+
+	* configure.ac.in:
+	  add docs/it/* to makefile generation (bug 5114)
+
+2009-03-16 11:17  brzydki
+
+	* po/pl.po:
+	  Updated Polish translations
+
+2009-03-14 14:55  maximilian
+
+	* doc/Makefile.am, doc/it, doc/it/Makefile.am,
+	  doc/it/images/Makefile.am, doc/it/xfdesktop.html,
+	  doc/it/xfdesktop.xml.in, po-doc/ChangeLog, po-doc/LINGUAS,
+	  po-doc/it.po, po/ChangeLog, po/es.po, po/gl.po:
+	  Translations updates - da es fr gl it nn
+
+2009-03-13 05:27  kelnos
+
+	* NEWS, common/desktop-menu-stub.c, configure.ac.in:
+	  no need to call xfce_menu_init() from the stub; module does it
+	  (bug 3370)
+
+2009-03-08 16:05  brzydki
+
+	* po/pl.po:
+	  Updated Polish translations
+
+2009-03-05 14:52  mmassonnet
+
+	* po/ChangeLog, po/LINGUAS, po/nb.po, po/nb_NO.po, po/pt.po,
+	  po/pt_PT.po:
+	  Renamed pt_PT to pt and nb_NO to nb (bug #4574)
+
+2009-03-03 20:54  maximilian
+
+	* po/ChangeLog, po/it.po:
+	  Translations updates - sl it
+
+2009-03-01 22:47  maximilian
+
+	* po/ChangeLog, po/es.po, po/pl.po:
+	  Translations updates - es pl uk
+
+2009-02-25 23:02  stephan
+
+	* ChangeLog:
+	  Update ChangeLog
+
 2009-02-25 23:00  stephan
 
 	* ChangeLog:
