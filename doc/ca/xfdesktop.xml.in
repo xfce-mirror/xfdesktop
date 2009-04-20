@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY date "January 2007">
+<!ENTITY appversion "@PACKAGE_VERSION@">
+<!ENTITY app "<application>@PACKAGE_NAME@</application>">
+]>
+<article id="xfdesktop" lang="ca">
+  
+  <articleinfo>
+    <title>Gestor d'escriptori de Xfce 4</title>
+    
+    <copyright>
+      <year>2008</year> <holder>Jérôme Guelfucci</holder>
+    </copyright>
+
+    <copyright>
+      <year>2004-2007</year> <holder>Brian Tarricone</holder>
+    </copyright>
+    
+    <copyright>
+      <year>2004</year> <holder>Jasper Huijsmans</holder>
+    </copyright>
+    
+    <copyright>
+      <year>2004</year> <holder>François Le Clainche</holder>
+    </copyright><copyright><year>2009.</year><holder>Carles Muñoz Gorriz «carlesmu@internautas.org»</holder></copyright>
+    
+<!-- documentation translators: uncomment this and fill in your information.
+    <copyright>
+      <year>2002</year> <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+  -->
+
+<!-- I don;t know about this
+    <legalnotice id="legalnotice">
+      <para>
+        This document is provided under the terms of the GNU GPL, version
+        2 or (at your option) any later version.
+      </para>
+    </legalnotice>
+  -->
+    
+    <authorgroup>
+      <author>
+        <firstname>Brian</firstname> <surname>Tarricone</surname>
+        <affiliation>
+          <address><email>kelnos@xfce.org</email></address>
+        </affiliation>
+      </author>
+      <author>
+        <firstname>Jasper</firstname> <surname>Huijsmans</surname>
+        <affiliation>
+          <address><email>jasper@xfce.org</email></address>
+        </affiliation>
+      </author>
+      
+      <author>
+        <firstname>François</firstname> <surname>Le Clainche</surname>
+        <affiliation>
+          <address><email>fleclainche@wanadoo.fr</email></address>
+        </affiliation>
+      </author>
+
+      <author>
+        <firstname>Jérôme</firstname> <surname>Guelfucci</surname>
+        <affiliation>
+          <address><email>jerome.guelfucci@gmail.com</email></address>
+        </affiliation>
+      </author>
+    </authorgroup>
+    
+    <releaseinfo>Aquest manual descriu <application>@PACKAGE_NAME@</application> versió @PACKAGE_VERSION@.</releaseinfo>
+  </articleinfo>
+  
+  <sect1 id="xfdesktop-intro">
+    <title>Introducció</title>
+    
+    <para>L'aplicació <application>@PACKAGE_NAME@</application> gestiona l'escriptori. Fixa la imatge de fons i/o el color. També pot mostrar el menú d'aplicacions i el llistat d'aplicacions en execució quan feu clic en l'escriptori amb el botó de la dreta o el del mig respectivament. Des de la sortida de Xfce 4.4, <application>@PACKAGE_NAME@</application> també pot mostrar icones a l'escriptori.</para>
+    
+    <para>El paquet <application>@PACKAGE_NAME@</application> instaŀla un diàleg d'ajustaments pel  <emphasis>gestor d'ajustaments de Xfce 4</emphasis>. Amb aquest diàleg podeu canviar la imatge i el color de fons i, també, canviar el paràmetres del menú i de la llista de finestres.</para>
+  </sect1>
+  
+  <sect1 id="xfdesktop-backdrop">
+    <title>Fons</title>
+    
+    <para><application>@PACKAGE_NAME@</application> és el responsable de mostrar la imatge de fons de l'escriptori. Hi han vàries opcions per ajustar la imatge de fons. La imatge final que es mostrarà està composada d'un color sòlid i el seu degradat juntament amb la imatge o fotografia, amb una imatge o fotografia (opcionalment amb transparència) a sobre del color i/o degradat de color. Això permet alguns efectes interessants en el cas de que s'empri imatges semi-transparents a sobre de la configuració de color de fons.</para>
+  </sect1>
+  
+  <sect1 id="xfdesktop-icons">
+    <title>Icones</title>
+    
+    <para>A més a més de mostrar la imatge de fons, <application>@PACKAGE_NAME@</application> pot mostrar icones a l'escriptori.</para>
+    
+    <sect2 id="xfdesktop-window-icons">
+      <title>Icones de finestres minimitzades</title>
+      
+      <para>Un dels modes és el de mostrar a l'escriptori les icones de finestres minimitzades, que es poder reordenar, i que pot recordar les seves posicions quan, després de tornar-les a mostrar, es minimitzen un altre cop. A les icones també se'ls hi ha afegit un menú amb el clic-dret similar al del menú de control de la finestra que es mostra amb al fer clic al control de dalt a l'esquerra de la finestra.</para>
+    </sect2>
+    
+    <sect2 id="xfdesktop-file-icons">
+      <title>Icones de fitxer/llançador</title>
+      
+      <para>
+        <application>@PACKAGE_NAME@</application> can also display on the desktop the contents of the 
+        <filename>$XDG_DESKTOP_DIR</filename> folder, which can be set in
+        the <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> file (if you
+        do not have this file, it will use <filename>$HOME/Desktop</filename>).
+        Files can be arranged, copied, moved, 
+        and linked to and from a file manager, and opened using 
+        preferred applications.  Application and URL launchers can 
+        also be created on the desktop.  The file icon view is modeled 
+        to have a similar look and feel as the
+        <ulink url="http://thunar.xfce.org/" type="http">Thunar</ulink> file
+        manager.
+      </para>
+    </sect2>
+  </sect1>
+
+  <sect1 id="xfdesktop-menu">
+    <title>El menú d'escriptori</title>
+    
+    <para>Un clic-dret en el fons de l'escriptori obre un menú que us permetrà obrir el «Thunar» en el directori de l'escriptori, i així poder crear llançadors, enllaços d'URLs, carpetes i fitxers de les plantilles. També us permetrà obrir el gestor d'ajustaments i les propietats de la finestra del directori de l'escriptori, i també iniciar moltes de les aplicacions del vostre sistema.</para>
+    
+    <figure id="root-menu-fig">
+      <title>Menú d'escriptori</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/root_menu.png" format="PNG"/>
+          </imageobject> 
+          <textobject>
+            <phrase>Mostra el menú del botó dret del ratolí de <application>@PACKAGE_NAME@</application>.</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    
+    <para>El fitxer del menú de configuració, <filename>xfce-applications.menu</filename>, es por trobar en el directori <filename>$sysconfdir/xdg/menus/xfce-applications.menu</filename>. Pe paquets instaŀlats, <filename>$sysconfdir</filename> és sovint <filename>/etc</filename> i pels paquets creats localment acostuma a ser <filename>/usr/local/etc</filename>.</para>
+    
+    <para>
+      The previous menu editor is not available anymore. 
+      However you can customize your menu by copying 
+      <filename>xfce-applications.menu</filename> to
+      <filename>$XDG_CONFIG_HOME/menus</filename> and by modifying it
+      with a text editor such as <application>mousepad</application> or
+      <application>gedit</application>. Please remember that the file 
+      should be UTF-8 encoded.  For more information on menu editing, please
+      see <ulink url="http://wiki.xfce.org/howto/customize-menu" type="http">the
+      Xfce Wiki</ulink>.
+    </para>
+    
+    <para>
+      Further customisation can be achived by creating 
+      <ulink url="http://standards.freedesktop.org/desktop-entry-spec/latest/" type="http">desktop
+      entries</ulink> in <filename>$XDG_DATA_HOME/applications</filename> to
+      hide, modify or add entries in the menu.
+    </para>
+    
+  </sect1>
+  
+  <sect1 id="xfdesktop-window-list">
+    <title>El menú de la llista de finestres</title>
+    
+    <para>Un clic amb el botó del mig al fons de l'escriptori us mostrarà una llista de finestres obertes ordenades per espai de treball. També us permetrà afegir o treure espais de treball.</para>
+
+    <figure id="root-menu2-fig">
+      <title>Menú de llista de finestres</title> 
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/root_menu2.png" format="PNG"/>
+          </imageobject> 
+          <textobject>
+            <phrase>Mostra el menú del botó del mig del ratolí de <application>@PACKAGE_NAME@</application>.</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </sect1>
+  
+  <sect1 id="xfdesktop-settings">
+    <title>Configuració de l'escriptori</title>
+    
+    <!-- Needs to be changed once xfce4-settings is documented -->
+    <para>Podeu obrir la finestra d'ajustaments de l'escriptori fent clic al botó «Escriptori» al <ulink url="xfce-mcs-manager.html#manager-dialog" type="http">gestor d'ajustaments de Xfce</ulink>.</para>
+    
+    <sect2 id="xfdesktop-settings-background">
+      <title>Pestanya del rerefons</title>
+      
+      <para>La pestanya de rerefons us permet establir diverses opcions relacionades amb mostrar la imatge de fons de l'escriptori.</para>
+      
+      <figure id="xfdesktop-background-fig">
+        <title>Ajustaments de l'escriptori, pestanya de rerefons</title> 
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/xfdesktop-background-tab.png" format="PNG"/>
+            </imageobject> 
+            <textobject>
+              <phrase>Mostra la pestanya de rerefons al diàleg dels ajustaments de l'escriptori</phrase>
+            </textobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      
+      <variablelist>
+        <varlistentry>
+          <term>Imatge</term>
+          
+          <listitem>
+            <para>Seleccioneu l'opció <emphasis>«Cap»</emphasis> si voleu que <application>@PACKAGE_NAME@</application> ignori la imatge de fons i empri només els colors seleccionats.</para>
+            
+            <para>Seleccioneu l'opció <emphasis>«Una imatge»</emphasis> si voleu que <application>@PACKAGE_NAME@</application> mostri una imatge de fons.</para>
+            
+            <para>Seleccioneu l'opció <emphasis>«Llista d'imatges»</emphasis> si voleu que <application>@PACKAGE_NAME@</application> trii una imatge aleatòria del llistat d'imatges.</para>
+            
+            <para>
+              
+            </para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>Imatges</term>
+          
+          <!-- Single image stuff -->
+          <listitem>
+            <para>Si heu seleccionat l'opció <emphasis>«Una imatge»</emphasis>, podeu triar, en la visualització en arbre, la imatge. Feu clic a la imatge per fixar-la com el fons actual. <application>@PACKAGE_NAME@</application> actualitzarà el fons del vostre escriptori automàticament.</para>
+            
+            <para>Podeu afegir imatges a la visualització en arbre fent clic el el botó «més», el qual us mostrarà un diàleg de selecció de fitxer. Les imatges es poden treure amb el botó «menys».</para>
+          </listitem>
+            
+          <!-- Image list stuff -->
+          <listitem>
+            <para>Si seleccioneu l'opció <emphasis>«Llista d'imatges»</emphasis>, podeu emprar el botó «Nou» per mostrar una llista en blanc per seleccionar una llista ja existent o crear una de nova, emprant un diàleg de selecció de fitxer. Podeu emprar els botons «més» i «menys» per afegir o treure imatges. <application>@PACKAGE_NAME@</application> seleccionarà d'aquesta llista i forma aleatòria quina imatge es mostra cada cop que es torna a arrancar.</para>
+          </listitem>
+          
+          <!-- Images layout options -->
+          <listitem>
+            <para>Hi han 5 opcions d'estil (<emphasis>«Al centre»</emphasis>, <emphasis>En mosaic»</emphasis>, <emphasis>«S'amplia»</emphasis>, <emphasis>«S'escala»</emphasis> i <emphasis>«Zoom»</emphasis>) disponibles per fixar la imatge de fons a l'escriptori, depenent de la seva mida. També podeu seleccionar l'element <emphasis>«Automàtic»</emphasis> si voleu que sigui <application>@PACKAGE_NAME@</application> qui es preocupi d'aquesta opció.</para>
+          </listitem>
+          
+          <!-- To be confirmed as I don't have multiscreen -->
+          <listitem>
+            <para><application>@PACKAGE_NAME@</application> funciona amb «xinerama» i amb modes multi-pantalla. En mode multi-pantalla, la pestanya de rerefons es mostrarà un cop per cada pantalla.</para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>Colors</term>
+          <listitem>
+            <para>L'estil de color ha de ser una de les següents opcions de la llista de selecció: color sòlid, degradat horitzontal, degradat vertical o transparent.</para>
+            
+            <para>L'opció <emphasis>«Transparent»</emphasis>, quan empreu un fons acolorit sense imatge de fons, us permet veure les finestres que estan a sota de la finestra transparent de l'escriptori. Per això us cal un motor de composició («compositor») actiu.</para>
+          </listitem>
+          <listitem>
+            <para>Dos botons acolorits que us permeten triar els colors de l'escriptori. Quan heu triat l'opció de color sòlid, només està disponible el primer color. Quan heu seleccionat qualsevulla de les opcions de degradat, ambdós, el primer i segon color estan disponibles. Els dos botons de colors obren un diàleg de selecció de color:</para>
+            
+            <figure id="select_bg_color-fig">
+              <title>Selecció del color de fons</title>
+              <screenshot>
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/select_bg_color.png" format="PNG"/>
+                    </imageobject>
+                  <textobject>
+                    <phrase>Mostra el diàleg de selecció de color</phrase>
+                  </textobject>
+                </mediaobject>
+              </screenshot>
+            </figure>
+            
+            <itemizedlist>
+              <listitem>Podeu emprar l'anell acolorit que te dins seu un triangle, per seleccionat el color que voleu de la part exterior de l'anell, després seleccioneu el nivell de llum i brillantor emprant el triangle interior. Els valors corresponents de brillantor, intensitat, quantitat de vermell, verd i blau es mostren a la part dreta de la finestra.</listitem>
+              
+              <listitem>Podeu fer clic en el comptagotes i després fer clic en qualsevol lloc de la pantalla per seleccionar el color.</listitem>
+              
+              <listitem>Podeu introduir a l'àrea d'entrada <emphasis>«Nom de color»</emphasis> valors de colors en hexadecimal (al estil HTML) o simplement un nom de color.</listitem>
+            </itemizedlist>
+            
+            <para>Els color seleccionats ompliran tota la finestra arrel i romandran visibles si s'empra una imatge de fons amb transparències.</para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>Ajustaments</term>
+          
+          <listitem>
+            <para>Els dos botons lliscants us permet ajustar la brillantor i saturació de la imatge o el color de fons.</para>
+          </listitem>
+        </varlistentry>
+             
+      </variablelist>
+    </sect2>
+    
+    <sect2 id="xfdesktop-settings-menus">
+      <title>Pestanya de menús</title>
+      
+      <figure id="xfdesktop-menus-tab-fig">
+        <title>Ajustaments d'escriptori, pestanya de menús</title> 
+        
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/xfdesktop-menus-tab.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>Mostra la pestanya de menú en la finestra de diàleg dels ajustaments de l'escriptori</phrase>
+            </textobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      
+      <variablelist>
+        <varlistentry>
+          <term>Menú d'escriptori</term>
+          
+          <listitem>
+            <para>Si marqueu <emphasis>«Mostra el menú d'aplicacions amb el botó dret del ratolí»</emphasis>, el <link linkend="xfdesktop-menu">menú d'aplicacions</link> es mostrarà amb al clicar sobre l'escriptori amb el botó dret del ratolí.</para>
+          </listitem>
+          
+          <lisitem>
+            <para><emphasis>«Mostra les icones d'aplicació al menú»</emphasis> us permet mostrar, o no, icones al menú.</para>
+          </lisitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>Menú de llista de finestres</term>
+          
+          <listitem>
+            <para>Si marqueu l'opció <emphasis>«Mostra la llista de finestres amb el botó del mig del ratolí»</emphasis>, el <link linkend="xfdesktop-window-list">menú amb la llista de finestres</link> es mostrarà al fer clic sobre l'escriptori amb el botó del mig del ratolí.</para>
+          </listitem>
+          
+          <listitem>
+            <para>L'opció <emphasis>«Mostra les icones d'aplicació al menú»</emphasis> us permet mostrar, o no, les icones en el menú. Aquesta opció només està disponible quan <emphasis>«Mostra la llista de finestres amb el botó del mig del ratolí»</emphasis> està marcada.</para>
+          </listitem>
+          
+          <!-- Add link to xfwm4 documentation to change workspaces names -->
+          <listitem>
+            <para>L'opció <emphasis>«Mostra els noms dels espais de treball en una llista»</emphasis> us permet mostrar, o no, els noms dels espais de treball a la llista. Si està marcada, les finestres es mostren sota el nom del seu espai de treball. Si no està marcada, es mostren totes en el mateix lloc del mení. Aquesta opció només està disponible quan l'opció <emphasis>«Mostra la llista de finestres amb el botó del mig del ratolí»</emphasis> està marcada.</para>
+          </listitem>
+          
+          <listitem>
+            <para>L'opció <emphasis>«Empra submenús per les finestres de cada espai de treball»</emphasis> us permet tenir les finestres mostrades en un submenú, que tindrà el títol del nom de l'espai de treball. Aquesta opció només està disponible quan l'opció <emphasis>«Mostra els noms dels espais de treball en una llista»</emphasis> està marcada.</para>
+          </listitem>
+          
+          <listitem>
+            <para>L'opció <emphasis>«Mostra les finestres omnipresents només a l'espai de treball actiu»/emphasis&gt; us permet que les finestres omnipresents només es mostrin a l'espai de treball actiu, encara de que s'estiguin mostrant a tots els espais de treball.</emphasis></para>
+          </listitem>
+          
+        </varlistentry>
+      </variablelist>
+    </sect2>
+   
+    <sect2 id="xfdesktop-settings-icons">
+      <title>Pestanya d'icones</title>
+      
+      <figure id="xfdesktop-icons-tab-fig">
+        <title>Ajustaments de l'escriptori, pestanya d'icones</title> 
+        
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/xfdesktop-icons-tab.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>Mostra la pestanya d'icones en la finestra de diàleg d'ajustaments de l'escriptori</phrase>
+            </textobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      
+      <variablelist>
+        <varlistentry>
+          <term>Appearance</term>
+          
+          <listitem>
+            <para>
+              The <emphasis>"Icon type"</emphasis> dropping list allows
+              you to set the behavior of the desktop icons. There are
+              three options: "None", to disable desktop icons entirely; 
+              "Minimized" application icons, to show icons for 
+              minimized or hidden applications on the desktop; 
+              and "File/launcher" icons, to show the contents of your
+              <filename>$XDG_DESKTOP_DIR</filename> directory on the 
+              desktop.
+            </para>
+            
+            <para>Si les icones d'escriptori estan habilitades, podeu ajustar la seva mida (en píxels) mitjançant l'opció <emphasis>«Mida de les icones»</emphasis>, i la mida del tipus de lletra amb el que es mostrarà el text (en punts) mitjançant l'opció <emphasis>«Empra mida de _lletra personalitzada»</emphasis>. Si no heu marcar aquesta darrera opció, s'empraran els valors per defecte del sistema.</para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>Icones per defecte</term>
+          
+          <listitem>
+            <para>Les caselles de selecció us permeten mostrar o amagar algunes icones especials a l'escriptori, quan <application>@PACKAGE_NAME@</application> està configurat per mostrar icones. Si es fa doble clic en aquestes icones s'obrirà una finestra de Thunar per mostrar el contingut d'una carpeta concreta.</para>
+            
+            <para>
+              <emphasis>Home</emphasis> stands for your home folder, that
+              is to say, <filename>$HOME</filename>.
+              <emphasis>Filesystem</emphasis> stands for the root of your
+              file system, also known as <filename>/</filename>.
+              <emphasis>Trash</emphasis> stands for your trash folder,
+              and <emphasis>Removable devices</emphasis> represents
+              floppy drives, USB drives and keys, external hard drives, optical
+              discs, etc.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+  </sect1>
+  
+  <sect1 id="xfdesktop-hidden-options">
+    <title>Opcions ocultes</title>
+    
+    <para>Hi ha un grapat d'opcions ocultes que no es poden fixar mitjançant el gestor d'ajustaments de Xfce. Per aquestes us caldrà emprar un editor de text.</para>
+    
+    <variablelist>
+      <varlistentry>
+        <term>Aparença del text de les icones</term>
+        <listitem>
+          <para>Els colors del text de les icones i del seu fons, així com la opacitat del fons del text de les icones, es pot ajustar emprant directives similars a les següents en el vostre fitxer filename&gt;~/.gtkrc-2.0</para>
+          
+          <programlisting>
+<![CDATA[style "xfdesktop-icon-view" {
+    XfdesktopIconView::label-alpha = 75
+
+    base[NORMAL] = "#00ff00"
+    base[SELECTED] = "#5050ff"
+    base[ACTIVE] = "#0000ff"
+
+    fg[NORMAL] = "#ff0000"
+    fg[SELECTED] = "#ff0000"
+    fg[ACTIVE] = "#ff0000"
+}
+widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"]]>
+          </programlisting>
+          
+          <para>La primera entrada fixa l'opacitat del fons arrodonit del text. Les tres entrades «base» fixen el color del fons del text, i les tres entrades «fg» fixen el color del text.</para>
+          
+          <para>La entrada «NORMAL» fixa el color de l'estat habitual, estat de no seleccionat. La entrada «SELECTED» fixa el color quan la icona està seleccionada i l'escriptori te el focus del teclat. La entrada «ACTIVE» fixa el color quan la icona està seleccionada però l'escriptori no te el focus del teclat.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect1>
+
+  <sect1 id="xfdesktop-misc">
+    <title>Misceŀlània</title>
+    
+    <para>També podeu obrir el menú o la llista de finestres des de la línia d'ordres. Això pot ser útil si s'empren les dreceres de teclat. Per obrir el menú executeu l'ordre <application>@PACKAGE_NAME@</application><application>--menu</application>, i per la llista de finestres empreu <application>@PACKAGE_NAME@</application><application>--windowlist</application>. Per fer que la instància actual finalitzi, executeu <application>@PACKAGE_NAME@</application><application>--quit</application>.</para>
+  </sect1>
+  
+  <sect1 id="xfdesktop-copyright">
+    <title>Quant a <application>@PACKAGE_NAME@</application></title>
+    
+    <para><application>@PACKAGE_NAME@</application> ha estat escrip per Brian Tarricone (<email>kelnos@xfce.org</email>), Jasper Huijsmans (<email>jasper@xfce.org</email>), i Benedikt Meurer (<email>benny@xfce.org</email>). Per més informació visiteu el <ulink url="http://www.xfce.org" type="http">lloc web de Xfce</ulink>.</para>
+
+    <para>Per informar d'algun error o fer algun suggeriment referent a aquesta aplicació o a aquest manual, empreu el el sistema de seguiment d'errades a <ulink url="http://bugzilla.xfce.org/" type="http">http://bugzilla.xfce.org/</ulink>.</para>
+    
+    <para>Si teniu alguna pregunta referent a l'ús o instaŀlació d'aquest paquet, pregunteu a la  <ulink url="http://foo-projects.org/mailman/listinfo/xfce" type="http">llista de correu xfce</ulink>. Els debats sobre el desenvolupament es fan a la <ulink url="http://foo-projects.org/mailman/listinfo/xfce4-dev" type="http">llista de correu xfce4-dev</ulink>.</para>
+    
+    <para>Aquest programa es distribueix amb els termes de la llicència «GNU General Public License» com es va publicar per la Free Software Foundation; ja sigui la versió 2 de la llicència, o (si ho preferiu) qualsevol versió posterior.</para>
+    
+    <para>Hauríeu d'haver rebut una còpia de la Llicència Pública General GNU juntament amb aquest programa; en cas contrari, escriviu a la Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110‐1301, USA.</para>
+  </sect1>
+  
+</article>
