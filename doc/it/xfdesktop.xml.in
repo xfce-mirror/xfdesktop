@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 <!ENTITY date "January 2007">
-<!ENTITY appversion "4.6.0">
-<!ENTITY app "<application>xfdesktop</application>">
+<!ENTITY appversion "@PACKAGE_VERSION@">
+<!ENTITY app "<application>@PACKAGE_NAME@</application>">
 ]>
 <article id="xfdesktop" lang="it">
   
@@ -69,51 +69,27 @@
       </author>
     </authorgroup>
     
-    <releaseinfo>
-      This manual describes <application>xfdesktop</application> version 4.6.0.
-    </releaseinfo>
+    <releaseinfo>Questo manuale descrive <application>@PACKAGE_NAME@</application> versione @PACKAGE_VERSION@.</releaseinfo>
   </articleinfo>
   
   <sect1 id="xfdesktop-intro">
     <title>Introduzione</title>
     
-    <para>
-      The <application>xfdesktop</application> application manages the desktop backdrop. It sets a
-      backdrop image and/or color and it can pop up an applications
-      menu and a list of all running applications when you click on the desktop
-      with the right or middle mouse button respectively.  As of Xfce 4.4,
-      <application>xfdesktop</application> also draws icons on the desktop.
-    </para>
+    <para>L'applicazione <application>@PACKAGE_NAME@</application> gestisce lo sfondo della scrivania. Permette di impostare un'immagine o un colore di sfondo, di mostrare un menu delle applicazioni e di visualizzare un elenco di quelle in esecuzione facendo clic sulla scrivania rispettivamente con il tasto destro o con quello centrale del mouse.A partire da Xfce 4.4, <application>@PACKAGE_NAME@</application> disegna anche le icone sulla scrivania.</para>
     
-    <para>
-      The <application>xfdesktop</application> package installs a settings dialog for use with 
-      the <emphasis>Xfce 4 Settings Manager</emphasis>. From this dialog you 
-      can change the backdrop image and color and change settings for the menu
-      and the window list.
-    </para>
+    <para>Il pacchetto <application>@PACKAGE_NAME@</application> installa una finestra di impostazione da utilizzare con il <emphasis>gestore delle impostazioni di Xfce 4</emphasis>. Da questa finestra è possibile cambiare l'immagine e il colore di sfondo, e modificare le impostazioni per il menu e la lista finestre.</para>
   </sect1>
   
   <sect1 id="xfdesktop-backdrop">
     <title>Sfondo</title>
     
-    <para>
-      <application>xfdesktop</application> is responsible for drawing the desktop's backdrop (sometimes called
-      "wallpaper") image.  There are various options for setting a backdrop
-      image.  The final picture seen on the monitor is composed of a solid
-      color or gradient, with an image or photo (with optional transparency)
-      composited on top of the color or gradient.  This allows for some
-      interesting effects using semi-transparent images on top of various
-      color arrangements.
-    </para>
+    <para><application>@PACKAGE_NAME@</application> è addetto alla visualizzazione dello sfondo della scrivania (chiamato anche "rivestimento"). Sono possibili diverse opzioniriguardanti la configurazione di un'immagine di sfondo. Il risultato finale è costituito dalla sovrapposizione di un colore solido (o di un gradiente) e di una immagine (o fotografia); in questo modo sono realizzabili degli effetti particaolari utilizzando delle immagini semi trasparenti al di sopra di varie combinazioi di colore.</para>
   </sect1>
   
   <sect1 id="xfdesktop-icons">
     <title>Icone</title>
     
-    <para>
-      In addition to drawing the backdrop image, <application>xfdesktop</application> can draw icons on the
-      desktop.
-    </para>
+    <para>Oltre a gestire la visualizzazione dell'immagine di sfondo, <application>@PACKAGE_NAME@</application> è in grado di disegnare le icone sulla scrivania.</para>
     
     <sect2 id="xfdesktop-window-icons">
       <title>Icone della finestra minimizzata</title>
@@ -125,11 +101,11 @@
       <title>Icone di file e avviatori</title>
       
       <para>
-        <application>xfdesktop</application> can also display on the desktop the contents of the 
-        <filename>$XDG_CONFIG_DESKTOP</filename> folder, as specified per 
-        the XDG user directories specification, 
-        similar to the icon views found in many other desktop environments 
-        and operating systems. Files can be arranged, copied, moved, 
+        <application>@PACKAGE_NAME@</application> can also display on the desktop the contents of the 
+        <filename>$XDG_DESKTOP_DIR</filename> folder, which can be set in
+        the <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> file (if you
+        do not have this file, it will use <filename>$HOME/Desktop</filename>).
+        Files can be arranged, copied, moved, 
         and linked to and from a file manager, and opened using 
         preferred applications.  Application and URL launchers can 
         also be created on the desktop.  The file icon view is modeled 
@@ -153,7 +129,7 @@
             <imagedata fileref="images/root_menu.png" format="PNG"/>
           </imageobject> 
           <textobject>
-            <phrase>Shows <application>xfdesktop</application> right-click mouse menu.</phrase>
+            <phrase>Mostra il menu di <application>@PACKAGE_NAME@</application> alla pressione del tasto destro del mouse.</phrase>
           </textobject>
         </mediaobject>
       </screenshot>
@@ -161,9 +137,24 @@
     
     <para>Il file di configurazione del menu, <filename>xfce-applications.menu</filename>, può essere raggiunto al percorso <filename>$sysconfdir/xdg/menus/xfce-applications.menu</filename>. Per i pacchetti binari, <filename>$sysconfdir</filename> è spesso <filename>/etc</filename> mentre, per la compilazione da sorgente, è di norma <filename>/usr/local/etc</filename>.</para>
     
-    <para>Il precedente editor del menu non è più disponibile. Comunque, il menu può essere personalizzato copiando il file <filename>xfce-applications.menu</filename> in <filename>$XDG_CONFIG_HOME/.config/xdg/menus</filename> e modificandolo con un editor di testo quale <application>mousepad</application> o <application>gedit</application>. Si ricorda che il file deve avere la codifica UTF-8.</para>
+    <para>
+      The previous menu editor is not available anymore. 
+      However you can customize your menu by copying 
+      <filename>xfce-applications.menu</filename> to
+      <filename>$XDG_CONFIG_HOME/menus</filename> and by modifying it
+      with a text editor such as <application>mousepad</application> or
+      <application>gedit</application>. Please remember that the file 
+      should be UTF-8 encoded.  For more information on menu editing, please
+      see <ulink url="http://wiki.xfce.org/howto/customize-menu" type="http">the
+      Xfce Wiki</ulink>.
+    </para>
     
-    <para>Ulteriori personalizzazioni possono essere effettuate creando delle <ulink url="http://standards.freedesktop.org/desktop-entry-spec/latest/" type="http"> desktop entries</ulink> in <filename>$XDG_CONFIG_HOME/.local/share/applications</filename> al fine di nascondere, modificare o aggiungere delle voci al menu.</para>
+    <para>
+      Further customisation can be achived by creating 
+      <ulink url="http://standards.freedesktop.org/desktop-entry-spec/latest/" type="http">desktop
+      entries</ulink> in <filename>$XDG_DATA_HOME/applications</filename> to
+      hide, modify or add entries in the menu.
+    </para>
     
   </sect1>
   
@@ -180,7 +171,7 @@
             <imagedata fileref="images/root_menu2.png" format="PNG"/>
           </imageobject> 
           <textobject>
-            <phrase>Shows <application>xfdesktop</application> middle-click mouse menu.</phrase>
+            <phrase>Mostra il menu di <application>@PACKAGE_NAME@</application> alla pressione del tasto centrale del mouse.</phrase>
           </textobject>
         </mediaobject>
       </screenshot>
@@ -217,21 +208,11 @@
           <term>Immagine</term>
           
           <listitem>
-            <para>
-              Select the <emphasis>"None"</emphasis> option if you want 
-              <application>xfdesktop</application> to ignore the backdrop image and only use the selected 
-              colors.
-            </para>
+            <para>Selezionare l'opzione <emphasis>«nessuna»</emphasis> se si desidera che <application>@PACKAGE_NAME@</application> ignori l'immagine di sfondo e utilizzi solamente il colore selezionato.</para>
             
-            <para>
-              Select the <emphasis>"Single image"</emphasis> option if 
-              you want <application>xfdesktop</application> to draw a backdrop image.
-            </para>
+            <para>Selezionare l'opzione <emphasis>«immagine singola»</emphasis> se si desidera che <application>@PACKAGE_NAME@</application> visualizzi un'immagine di sfondo.</para>
             
-            <para>
-              Select the <emphasis>"Image List"</emphasis> option if you 
-              want <application>xfdesktop</application> to randomly choose the backdrop image among a list.
-            </para>
+            <para>Selezionare l'opzione in <emphasis>«lista di immagini»</emphasis> per far sì che <application>@PACKAGE_NAME@</application>scelga casualmente un'immagine di sfondo da una lista.</para>
             
             <para>
               
@@ -244,49 +225,24 @@
           
           <!-- Single image stuff -->
           <listitem>
-            <para>
-              If you selected the <emphasis>"Single image"</emphasis> option, 
-              you can choose an image from the treeview. Click on an image 
-              to set it as the current backdrop. <application>xfdesktop</application> will update the 
-              background of your desktop automatically.
-            </para>
+            <para>Se è stata selezionata l'opzione <emphasis>«immagine singola»</emphasis>, è possibile selezionare un'immagine dalla visualizzazione ad albero. Fare clic su un'immagine per impostarla come sfondo; <application>@PACKAGE_NAME@</application> aggiornerà automaticamente lo sfondo della scrivania.</para>
             
             <para>È possibile aggiungere delle immagini alla visualizzazione ad albero premendo il pulsante «+»: verrà così visualizzata una finestra di scelta del file. Le immagini possono essere rimosse utilizzando il pulsante «-».</para>
           </listitem>
             
           <!-- Image list stuff -->
           <listitem>
-            <para>
-              If you selected the <emphasis>"Image list"</emphasis> option, 
-              you can use the "New" button displaying a blank sheet to select 
-              an existing list or create a new one, using a file chooser. 
-              You can still use the "plus" and "minus" buttons to add 
-              and remove images. <application>xfdesktop</application> will then randomly choose a backdrop
-              among this list every time it starts.
-            </para>
+            <para>Se è stata selezionata l'opzione <emphasis>«lista di immagini»</emphasis>,  è possibile utilizzare il pulsante «nuova» con il quale verrà visualizzata una pagina vuota per selezionare una lista esistente o crearne una nuova, utilizzando un selezionatore di file. Sono anche disponibili i pulsanti «+» e «-» per aggiungere e rimuovere le immagini alla lista; <application>@PACKAGE_NAME@</application> selezionerà casualmente un'immagine di sfondo dalla lista ogni volta che viene avviato.</para>
           </listitem>
           
           <!-- Images layout options -->
           <listitem>
-            <para>
-              Five Style options (<emphasis>"Centered"</emphasis>, 
-              <emphasis>"Tiled"</emphasis>, 
-              <emphasis>"Stretched"</emphasis>, 
-              <emphasis>"Scaled"</emphasis> and 
-              <emphasis>"Zoomed"</emphasis>) 
-              are available to specify the fitting of the backdrop image 
-              on the screen, depending on its size. You can also select 
-              the <emphasis>"Auto"</emphasis> item if you want to let <application>xfdesktop</application> 
-              take care of this setting.
-            </para>
+            <para>Sono disponibili cinque opzioni (<emphasis>«centrato»</emphasis>, <emphasis>«ripetuto»</emphasis>, <emphasis>«stirato»</emphasis>, <emphasis>«scalato»</emphasis> e <emphasis>«ingrandito»</emphasis>) per specificare come l'immagine debba riempire lo schermo in funzione della sua dimensione. È anche possibile selezionare l'opzione <emphasis>«automatico»</emphasis> per far scegliere a <application>@PACKAGE_NAME@</application> la modalità migliore.</para>
           </listitem>
           
           <!-- To be confirmed as I don't have multiscreen -->
           <listitem>
-            <para>
-              <application>xfdesktop</application> supports xinerama and multiscreen modes. In 
-              multiscreen mode, the Background tab shows one tab per screen.
-            </para>
+            <para><application>@PACKAGE_NAME@</application> supporta xinerama e la modalità multi schermo. In questo caso, la linguetta dello sfondo mostra una linguetta per ogni schermo.</para>
           </listitem>
         </varlistentry>
         
@@ -416,10 +372,19 @@
       
       <variablelist>
         <varlistentry>
-          <term>Aspetto</term>
+          <term>Appearance</term>
           
           <listitem>
-            <para>La lista a comparsa <emphasis>«tipo di icone»</emphasis> permette di impostare il comportamento delle icone sulla scrivania. Sono disponibili tre opzioni: «nessuno», per disabilitare completamente le icone della scrivania; «icone della applicazioni minimizzate» per mostrare, sulla scrivania, le icone delle applicazioni nascoste o minimizzate; «icone di file e avviatori», per mostrare, sulla scrivania,  il contenuto della propria cartella <filename>$XDG_CONFIG_HOME</filename>.</para>
+            <para>
+              The <emphasis>"Icon type"</emphasis> dropping list allows
+              you to set the behavior of the desktop icons. There are
+              three options: "None", to disable desktop icons entirely; 
+              "Minimized" application icons, to show icons for 
+              minimized or hidden applications on the desktop; 
+              and "File/launcher" icons, to show the contents of your
+              <filename>$XDG_DESKTOP_DIR</filename> directory on the 
+              desktop.
+            </para>
             
             <para>Se sono attivate le icone sulla scrivania, è possibile controllare la dimensione (in pixel) dell'icona con l'opzione <emphasis>«dimensione icona»</emphasis>, e l'altezza (in punti) del tipo di carattere utilizzato per visualizzare il testo dell'icona attraverso l'opzione <emphasis>«usa una dimensione del carattere personalizzata»</emphasis>. Se quest'ultima opzione non è selezionata, verranno utilizzate le impostazioni predefinite di sistema.</para>
           </listitem>
@@ -429,14 +394,18 @@
           <term>Icone predefinite</term>
           
           <listitem>
-            <para>
-              The checkboxes allow you to show or hide special icons on
-              the desktop, when <application>xfdesktop</application> is set to draw icons. Double 
-              clicking those icons will open a Thunar window displaying
-              the contents of a particular path.
-            </para>
+            <para>Le opzioni spuntabili permettono di mostrare o nascondere delle speciali icone sulla scrivania, quando <application>@PACKAGE_NAME@</application> è impostato per disegnare le icone. Facendo un doppio clic su queste icone, si aprirà una finestra di Thunar in cui sarà visualizzato il contenuto di un particolare percorso.</para>
             
-            <para><emphasis>Casa</emphasis> rappresenta la propria cartella casa, cioè <filename>$XDG_CONFIG_HOME</filename>. <emphasis>File system</emphasis> rappresenta la radice del proprio file system, indicato anche come <filename>/</filename>. <emphasis>Cestino</emphasis> rappresenta la propria cartella del cestino mentre <emphasis>dispositivi rimovibili</emphasis> rappresenta i dischi floppy, le unità USB, i dischi rigidi esterni ecc...</para>
+            <para>
+              <emphasis>Home</emphasis> stands for your home folder, that
+              is to say, <filename>$HOME</filename>.
+              <emphasis>Filesystem</emphasis> stands for the root of your
+              file system, also known as <filename>/</filename>.
+              <emphasis>Trash</emphasis> stands for your trash folder,
+              and <emphasis>Removable devices</emphasis> represents
+              floppy drives, USB drives and keys, external hard drives, optical
+              discs, etc.
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -480,27 +449,13 @@ widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"]]>
   <sect1 id="xfdesktop-misc">
     <title>Informazioni varie</title>
     
-    <para>
-      You can open the menu or window list from the commandline as well.
-      This can be useful for keyboard shortcuts. To open the menu run the
-      command <application>xfdesktop</application> <application>--menu</application>, and for the windowlist 
-      use <application>xfdesktop</application> <application>--windowlist</application>.  To cause the
-      current running instance to quit, run <application>xfdesktop</application>
-      <application>--quit</application>.
-    </para>
+    <para>Il menu o la lista finestre può essere aperta anche dalla linea di comando: questo metodo può essere utile per le scorciatoie da tastiera. Per aprire il menu, eseguire il comando <application>@PACKAGE_NAME@</application><application>--menu</application> mentre per la lista finestre usare <application>@PACKAGE_NAME@</application><application>--windowlist</application>. Per interrompere l'istanza corrente, eseguire <application>@PACKAGE_NAME@</application><application>--quit</application>.</para>
   </sect1>
   
   <sect1 id="xfdesktop-copyright">
-    <title>About <application>xfdesktop</application></title>
+    <title>Informazioni su <application>@PACKAGE_NAME@</application></title>
     
-    <para>
-      <application>xfdesktop</application> was written by
-      Brian Tarricone (<email>kelnos@xfce.org</email>),
-      Jasper Huijsmans (<email>jasper@xfce.org</email>), and 
-      Benedikt Meurer (<email>benny@xfce.org</email>).
-      For more information, please visit the 
-      <ulink url="http://www.xfce.org" type="http">Xfce website</ulink>. 
-    </para>
+    <para>L'applicazione <application>@PACKAGE_NAME@</application> è stata programmata da Brian Tarricone (<email>kelnos@xfce.org</email>), Jasper Huijsmans (<email>jasper@xfce.org</email>) e Benedikt Meurer (<email>benny@xfce.org</email>). Per maggiori informazioni, visitare il <ulink url="http://www.xfce.org" type="http">sito di Xfce</ulink>.</para>
 
     <para>Per segnalare un problema o per avanzare una proposta relativa a questo programma o al manuale, utilizzare il sistema di tracciamento dei bug all'indirizzo <ulink url="http://bugzilla.xfce.org/" type="http">http://bugzilla.xfce.org/</ulink>.</para>
     

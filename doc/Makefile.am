@@ -2,6 +2,7 @@ SUBDIRS = 	\
 	C 		\
 	da 		\
 	fr 		\
+	gl 		\
 	it		\
 	ja
 

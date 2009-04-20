@@ -92,7 +92,7 @@
     <para>背景画像の描画に加え、<application>@PACKAGE_NAME@</application> はデスクトップにアイコンを配置することもできます。</para>
     
     <sect2 id="xfdesktop-window-icons">
-      <title>最小化ウィンドウアイコン</title>
+      <title>最小化されたアプリケーションアイコン</title>
       
       <para>設定の中には、最小化されたアプリケーションのアイコンをデスクトップに表示するモードがあり、アイコンの再配置の他、後に再び最小化された時に、以前にアイコンが表示された位置に配置することもできます。アプリケーションアイコンを右クリックすると、ウィンドウの左上にあるウィンドウ操作メニューと同じメニューが表示されます。</para>
     </sect2>
@@ -100,7 +100,7 @@
     <sect2 id="xfdesktop-file-icons">
       <title>ファイル/ランチャアイコン</title>
       
-      <para><application>@PACKAGE_NAME@</application> はまた、XDG ユーザディレクトリ仕様として、<filename>$XDG_CONFIG_DESKTOP</filename> フォルダの内容を、他の多くのデスクトップ環境やオペレーティングシステムと同じようにデスクトップに表示することもできます。ファイルはファイルマネージャから、整列、コピー、移動、あるいはリンクの作成などが行え、またあらかじめ割り当てられたアプリケーションで開くこともできます。アプリケーションおよび URL のランチャをデスクトップ上に作成することもできます。ファイルアイコン表示は、<ulink url="http://thunar.xfce.org/" type="http">Thunar</ulink> ファイルマネージャのルックアンドフィールにならって作成されています。</para>
+      <para><application>@PACKAGE_NAME@</application> はまた、XDG ユーザディレクトリ仕様として <filename>$XDG_CONFIG_DESKTOP</filename> フォルダの内容を、他の多くのデスクトップ環境やオペレーティングシステムと同じようにデスクトップに表示することもできます。ファイルはファイルマネージャから、整列、コピー、移動、あるいはリンクの作成などが行え、またあらかじめ割り当てられたアプリケーションで開くこともできます。アプリケーションおよび URL のランチャをデスクトップ上に作成することもできます。ファイルアイコン表示は、<ulink url="http://thunar.xfce.org/" type="http">Thunar</ulink> ファイルマネージャのルックアンドフィールにならって作成されています。</para>
     </sect2>
   </sect1>
 
@@ -125,9 +125,9 @@
     
     <para>このメニューの設定ファイル <filename>xfce-applications.menu</filename> は、<filename>$sysconfdir/xdg/menus/xfce-applications.menu</filename> 配下にあります。バイナリパッケージの場合 <filename>$sysconfdir</filename> は多くの場合 <filename>/etc</filename> であり、またソースコンパイルしたものは、デフォルトでは <filename>/usr/local/etc</filename> になります。</para>
     
-    <para>以前にあったメニューエディタは利用できません。しかし、次の手順でカスタマイズが可能です: <filename>xfce-applications.menu</filename> を <filename>$XDG_CONFIG_HOME/.config/xdg/menus</filename> にコピーし、<application>mousepad</application> や <application>gedit</application> などのテキストエディタで編集します。ファイルの文字エンコーディングは UTF-8 でなければならないことを忘れないでください。</para>
+    <para>以前にあったメニューエディタは利用できません。しかし、次の手順でカスタマイズが可能です: <filename>xfce-applications.menu</filename> を <filename>$XDG_CONFIG_HOME/menus</filename> にコピーし、<application>mousepad</application> や <application>gedit</application> などのテキストエディタで編集します。ファイルの文字エンコーディングは UTF-8 でなければならないことを忘れないでください。</para>
     
-    <para>この他のカスタマイズとして、<filename>$XDG_CONFIG_HOME/.local/share/applications</filename> に <ulink url="http://standards.freedesktop.org/desktop-entry-spec/latest/" type="http">デスクトップエントリ</ulink> を作成することによってメニューエントリの非表示、修正、または追加が指定できるようになります。</para>
+    <para>この他のカスタマイズとして、<filename>$XDG_DATA_HOME/applications</filename> に <ulink url="http://standards.freedesktop.org/desktop-entry-spec/latest/" type="http">デスクトップエントリ</ulink> を作成することによってメニューエントリの非表示、修正、または追加が指定できるようになります。</para>
     
   </sect1>
   
@@ -248,7 +248,7 @@
               
               <listitem>スポイトをクリックすると、画面上のどこでもクリックした所の色が選択されます。</listitem>
               
-              <listitem>HTML スタイルでの設定も行えます。16 進数の色の値か、<emphasis>"色の名称"</emphasis> エントリの色の名称を入力してください。</listitem>
+              <listitem>HTML スタイルでの設定も行えます。<emphasis>"色の名称"</emphasis> エントリに、16 進数の色の値か、色の名称を入力してください。</listitem>
             </itemizedlist>
             
             <para>ルートウィンドウは選択された色になり、透明な背景画像であればそれを通して表示されます。</para>
@@ -348,7 +348,7 @@
           <term>外観</term>
           
           <listitem>
-            <para><emphasis>"アイコンタイプ"</emphasis> ドロップダウンリストでは、デスクトップアイコンの振る舞いを 3 つのオプションの中から設定できます。"なし" を選ぶとデスクトップにアイコンは表示されません。"最小化されたアプリケーションアイコン" を選ぶと最小化または隠されたアプリケーションのアイコンがデスクトップに表示されます。"ファイル/ランチャアイコン" を選ぶと <filename>$XDG_CONFIG_HOME</filename> ディレクトリの内容がデスクトップに表示されます。</para>
+            <para><emphasis>"アイコンタイプ"</emphasis> ドロップダウンリストでは、デスクトップアイコンの振る舞いを 3 つのオプションの中から設定できます。"なし" を選ぶとデスクトップにアイコンは表示されません。"最小化されたアプリケーションアイコン" を選ぶと最小化または隠されたアプリケーションのアイコンがデスクトップに表示されます。"ファイル/ランチャアイコン" を選ぶと <filename>$XDG_DESKTOP_DIR</filename> ディレクトリの内容がデスクトップに表示されます。</para>
             
             <para>デスクトップアイコンが有効になっている場合、<emphasis>"アイコンのサイズ"</emphasis> オプションでアイコンのサイズをピクセル数で設定でき、<emphasis>"指定フォントサイズを使用する"</emphasis> オプションでアイコンの文字に使用されるフォントのサイズをポイント数で設定できます。<emphasis>"指定フォントサイズを使用する"</emphasis> オプションにチェックマークをつけない場合はシステムデフォルトが使用されます。</para>
           </listitem>
@@ -360,7 +360,7 @@
           <listitem>
             <para>このチェックボックスでは、<application>@PACKAGE_NAME@</application> がアイコンを表示するよう設定されているときにデスクトップに表示する特殊アイコンを設定できます。デスクトップでこれらのアイコンをダブルクリックすると Thunar ファイルマネージャでそれぞれのパスの内容が表示されます。</para>
             
-            <para><emphasis>ホーム</emphasis> は <filename>$XDG_CONFIG_HOME</filename> で示されたホームフォルダを表します。<emphasis>ファイルシステム</emphasis> はファイルシステムのルート ( <filename>/</filename> とも表記されます) を表します。<emphasis>ゴミ箱</emphasis> はゴミ箱フォルダを表します。<emphasis>リムーバブルデバイス</emphasis> はフロッピードライブ、USB デバイスや USB キー、外付けハードディスクドライブなどのリムーバブルデバイスを表します。</para>
+            <para><emphasis>ホーム</emphasis> は <filename>$HOME</filename> で示されるホームフォルダを表します。<emphasis>ファイルシステム</emphasis> はファイルシステムのルート ( <filename>/</filename> とも表記されます) を表します。<emphasis>ゴミ箱</emphasis> はゴミ箱フォルダを表します。<emphasis>リムーバブルデバイス</emphasis> はフロッピードライブ、USB デバイスや USB キー、外付けハードディスクドライブなどのリムーバブルデバイスを表します。</para>
           </listitem>
         </varlistentry>
       </variablelist>
