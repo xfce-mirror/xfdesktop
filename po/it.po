@@ -5,9 +5,9 @@
 # Fabio Riga <usul@aruba.it>, 2007
 # Fabio Riga <usul@aruba.it>, 2009.
 # Gianluca Foddis <gianluca.foddis@gmail.com>, 2009 
-# 
-# 
-# 
+#
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop trunk\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
 #, c-format
@@ -250,7 +250,10 @@ msgid ""
 "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
 "edit the new menu file format.  You may continue and edit an old-style menu "
 "file, or quit."
-msgstr "Il menu di sistema di Xfce è stato sostituito e l'editor del menu di Xfce4 non è in grado di modificare il nuovo formato del file. Si può continuare e modificare il file nel vecchio formato oppure uscire."
+msgstr ""
+"Il menu di sistema di Xfce è stato sostituito e l'editor del menu di Xfce4 "
+"non è in grado di modificare il nuovo formato del file. Si può continuare "
+"e modificare il file nel vecchio formato oppure uscire."
 
 #: ../menueditor/menueditor-main.c:61
 msgid "Continue"
@@ -633,20 +636,23 @@ msgstr "Le opzioni sono:\n"
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
-"    -reload      Rilegge tutte le impostazioni, aggiorna la lista delle immagini\n"
+"    -reload      Rilegge tutte le impostazioni, aggiorna la lista delle "
+"immagini\n"
 
 #: ../src/main.c:284
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
-"    -menu        Fa apparire il menu (in corrispondenza della posizione del mouse)\n"
+"    -menu        Fa apparire il menu (in corrispondenza della posizione del "
+"mouse)\n"
 
 #: ../src/main.c:285
 #, c-format
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
-"    -windowlist  Fa apparire la lista delle finestre (in corrispondenza della posizione del mouse)\n"
+"    -windowlist  Fa apparire la lista delle finestre (in corrispondenza "
+"della posizione del mouse)\n"
 
 #: ../src/main.c:286
 #, c-format
@@ -713,7 +719,8 @@ msgstr "Errore nella scrivania"
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
-"Non è stato possibile creare la cartella \"%s\" per salvare gli elementi della scrivania:"
+"Non è stato possibile creare la cartella \"%s\" per salvare gli elementi "
+"della scrivania:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
@@ -727,7 +734,8 @@ msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
-"Impossibile usare \"%s\" per tenere gli elementi della scrivania perché non è una cartella."
+"Impossibile usare \"%s\" per tenere gli elementi della scrivania perché non "
+"è una cartella."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -1103,7 +1111,8 @@ msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr ""
-"Controllare di aver istallato un gestore file che supporti il servizio cestino di Xfce, come ad esempio Thunar."
+"Controllare di aver istallato un gestore file che supporti il servizio "
+"cestino di Xfce, come ad esempio Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
@@ -1120,7 +1129,8 @@ msgid ""
 "Kind: Removable Volume\n"
 "Mount Point: %s\n"
 "Free Space: %s"
-msgstr "Tipo: Dispositivo rimovibile\n"
+msgstr ""
+"Tipo: Dispositivo rimovibile\n"
 "Punto di montaggio: %s\n"
 "Spazio libero: %s"
 
@@ -1364,7 +1374,8 @@ msgstr "Crea/Carica la lista degli sfondi"
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
-"Il file \"%s\" non è valido come file di lista degli sfondi. Si desidera sovrascriverlo?"
+"Il file \"%s\" non è valido come file di lista degli sfondi. Si desidera "
+"sovrascriverlo?"
 
 #: ../settings/main.c:484
 msgid "Invalid List File"
@@ -1460,7 +1471,8 @@ msgstr "Scrivania"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr "Imposta lo sfondo della scrivania, il menu e il comportamento delle icone"
+msgstr ""
+"Imposta lo sfondo della scrivania, il menu e il comportamento delle icone"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
@@ -1620,7 +1632,8 @@ msgstr "Selezionare un'unica immagine come sfondo"
 
 #: ../settings/xfdesktop-settings.glade.h:45
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Imposta lo sfondo della scrivania, il menu e il comportamento delle icone"
+msgstr ""
+"Imposta lo sfondo della scrivania, il menu e il comportamento delle icone"
 
 #: ../settings/xfdesktop-settings.glade.h:46
 msgid "Sh_ow application icons in menu"
@@ -1665,7 +1678,9 @@ msgstr "Specifica il colore \"a destra\" o \"in basso\" del gradiente"
 #: ../settings/xfdesktop-settings.glade.h:57
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Specifica il colore pieno oppure il colore \"a sinistra\" o \"in alto\" del gradiente"
+msgstr ""
+"Specifica il colore pieno oppure il colore \"a sinistra\" o \"in alto\" del "
+"gradiente"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify how the image will be resized to fit the screen"
@@ -1679,7 +1694,9 @@ msgstr "Specifica lo stile del colore dietro l'immagine dello sfondo"
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
-msgstr "Specifica il livello di trasparenza per l'etichetta arrontondata dietro il testo dell'icona"
+msgstr ""
+"Specifica il livello di trasparenza per l'etichetta arrontondata dietro il "
+"testo dell'icona"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "St_yle:"
@@ -1918,16 +1935,16 @@ msgstr "Elimina l'elemento corrente"
 #~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
 #~ "is running, but it was not detected.  Please quit Xfce via another means."
 #~ msgstr ""
-#~ "Per uscire dalla sessione ÃÂÃÂ¨ necessario che il gestore sessioni di Xfce "
-#~ "(xfce4-session) sia avviato, ma non ÃÂÃÂ¨ stato trovato.  BisognerÃÂÃÂ  usare un "
-#~ "altro modo per uscire."
+#~ "Per uscire dalla sessione ÃÂÃÂ¨ necessario che il gestore sessioni di "
+#~ "Xfce (xfce4-session) sia avviato, ma non ÃÂÃÂ¨ stato trovato.  "
+#~ "BisognerÃÂÃÂ  usare un altro modo per uscire."
 
 #~ msgid ""
 #~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
 #~ "could not be found: %s"
 #~ msgstr ""
-#~ "Per uscire dalla sessione ÃÂÃÂ¨ necessario il comando \"xfce4-session-logout"
-#~ "\", ma non ÃÂÃÂ¨ stato trovato: %s"
+#~ "Per uscire dalla sessione ÃÂÃÂ¨ necessario il comando \"xfce4-session-"
+#~ "logout\", ma non ÃÂÃÂ¨ stato trovato: %s"
 
 #~ msgid "Button Label|Desktop"
 #~ msgstr "Scrivania"
@@ -1945,8 +1962,9 @@ msgstr "Elimina l'elemento corrente"
 #~ "Per fare in modo che queste impostazioni abbiano effetto la prossima "
 #~ "volta che verrÃÂÃÂ  avviato Xfce, assicurarsi di salvare la sessione "
 #~ "all'uscita.  Se non si sta usando il gestore sessione di Xfce (xfce4-"
-#~ "session), sarÃÂÃÂ  necessario modificare il file ~/.config/xfce4/xinitrc.  I "
-#~ "dettagli sono disponibili nella documentazione fornita su http://xfce.org."
+#~ "session), sarÃÂÃÂ  necessario modificare il file ~/.config/xfce4/"
+#~ "xinitrc.  I dettagli sono disponibili nella documentazione fornita su "
+#~ "http://xfce.org."
 
 #~ msgid ""
 #~ "To ensure that Xfce does not manage your desktop the next time you start "
@@ -1956,10 +1974,11 @@ msgstr "Elimina l'elemento corrente"
 #~ "in the documentation provided on http://xfce.org/."
 #~ msgstr ""
 #~ "Per fare in modo che Xfce non gestisca la scrivania la prossima volta che "
-#~ "verrÃÂÃÂ  avviato Xfce, assicurarsi di salvare la sessione all'uscita.  Se "
-#~ "non si sta usando il gestore sessione di Xfce (xfce4-session), sarÃÂÃÂ  "
-#~ "necessario modificare il file ~/.config/xfce4/xinitrc.  I dettagli sono "
-#~ "disponibili nella documentazione fornita su http://xfce.org."
+#~ "verrÃÂÃÂ  avviato Xfce, assicurarsi di salvare la sessione "
+#~ "all'uscita.  Se non si sta usando il gestore sessione di Xfce (xfce4-"
+#~ "session), sarÃÂÃÂ  necessario modificare il file ~/.config/xfce4/"
+#~ "xinitrc.  I dettagli sono disponibili nella documentazione fornita su "
+#~ "http://xfce.org."
 
 #~ msgid "Allow _Xfce to manage the desktop"
 #~ msgstr "Permetti a _Xfce di amministrare la scrivania"
