@@ -1,15 +1,15 @@
 # Romanian translation of xfdesktop.
-# Copyright (C) 2003-2006 The Xfce development team.
+# Copyright (C) 2003-2009 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
-# Mişu Moldovan <dumol@gnome.ro>, 2004-2007.
+# Mișu Moldovan <dumol@gnome.ro>, 2004-2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.4.0\n"
+"Project-Id-Version: xfdesktop 4.6.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 01:15+0100\n"
-"PO-Revision-Date: 2007-01-20 22:33+0200\n"
-"Last-Translator: Mişu Moldovan <dumol@gnome.ro>\n"
+"POT-Creation-Date: 2009-04-21 23:29+0300\n"
+"PO-Revision-Date: 2009-04-21 23:23+0300\n"
+"Last-Translator: Mișu Moldovan <dumol@gnome.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,232 +18,231 @@ msgstr ""
 "1:2)\n"
 
 #: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
-#, fuzzy, c-format
+#, c-format
 msgid "Backdrop list file is not valid"
-msgstr "Selectare listă fişiere fundal"
+msgstr "Fișierul cu lista fundalurilor nu este valid"
 
-#: ../panel-plugin/desktop-menu-plugin.c:653
+#: ../panel-plugin/desktop-menu-plugin.c:658
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Nu se poate lansa xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676
+#: ../panel-plugin/desktop-menu-plugin.c:681
 msgid "Select Icon"
-msgstr "Selectare iconiţă"
+msgstr "Selectare iconiță"
 
-#: ../panel-plugin/desktop-menu-plugin.c:678
+#: ../panel-plugin/desktop-menu-plugin.c:683
 msgid "Select Menu File"
-msgstr "Selectare meniu fişier"
+msgstr "Selectare meniu fișier"
 
-#: ../panel-plugin/desktop-menu-plugin.c:705
+#: ../panel-plugin/desktop-menu-plugin.c:710
 msgid "All Files"
-msgstr "Toate fişierele"
+msgstr "Toate fișierele"
 
-#: ../panel-plugin/desktop-menu-plugin.c:712
+#: ../panel-plugin/desktop-menu-plugin.c:717
 msgid "Image Files"
-msgstr "Fişiere tip imagine"
+msgstr "Fișiere tip imagine"
 
-#: ../panel-plugin/desktop-menu-plugin.c:715
+#: ../panel-plugin/desktop-menu-plugin.c:720
 msgid "Menu Files"
-msgstr "Fişiere meniu"
+msgstr "Fișiere meniu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:745
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Meniu Xfce"
 
-#: ../panel-plugin/desktop-menu-plugin.c:752
+#: ../panel-plugin/desktop-menu-plugin.c:757
 msgid "Button"
 msgstr "Buton"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/desktop-menu-plugin.c:770
 msgid "Button _title:"
 msgstr "_Titlu buton:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:778
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "_Show title in button"
 msgstr "_Arată titlul în buton"
 
-#: ../panel-plugin/desktop-menu-plugin.c:785
+#: ../panel-plugin/desktop-menu-plugin.c:790
 msgid "Menu File"
-msgstr "Fişier meniu"
+msgstr "Fișier meniu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:797
+#: ../panel-plugin/desktop-menu-plugin.c:802
 msgid "Use default _desktop menu file"
-msgstr "Utilizează fişierul implicit al meniului _desktop"
+msgstr "Utilizează fișierul implicit al meniului _desktop"
 
-#: ../panel-plugin/desktop-menu-plugin.c:806
+#: ../panel-plugin/desktop-menu-plugin.c:811
 msgid "Use _custom menu file:"
-msgstr "Utilizează un fişier meniu _personalizat"
+msgstr "Utilizează un fișier meniu _personalizat"
 
-#: ../panel-plugin/desktop-menu-plugin.c:847
+#: ../panel-plugin/desktop-menu-plugin.c:852
 msgid "_Edit Menu"
 msgstr "_Editare meniu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:859
 msgid "Icons"
-msgstr "Iconiţe"
+msgstr "Iconițe"
 
-#: ../panel-plugin/desktop-menu-plugin.c:866
+#: ../panel-plugin/desktop-menu-plugin.c:871
 msgid "_Button icon:"
-msgstr "Iconiţă _buton:"
+msgstr "Iconiță _buton:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:880
+#: ../panel-plugin/desktop-menu-plugin.c:885
 msgid "Show _icons in menu"
-msgstr "Arată _iconiţele în meniu"
+msgstr "Arată _iconițele în meniu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:915
+#: ../panel-plugin/desktop-menu-plugin.c:920
 msgid "There is already a panel menu registered for this screen"
 msgstr "Există deja un meniu de panou înregistrat pentru această sesiune"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1030
+#: ../panel-plugin/desktop-menu-plugin.c:1035
 msgid "Edit Menu"
 msgstr "Editare meniu"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr "Arată un meniu conţinând categorii de aplicaţii instalate"
+msgstr "Arată un meniu conținând categorii de aplicații instalate"
 
-#: ../src/main.c:231
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Acesta este %s versiunea %s, pornit în Xfce %s.\n"
 
-#: ../src/main.c:233
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Compilat cu GTK+ %d.%d.%d, linkat cu GTK+ %d.%d.%d."
+msgstr "Compilat cu GTK+ %d.%d.%d, pornit cu GTK+ %d.%d.%d."
 
-#: ../src/main.c:237
+#: ../src/main.c:246
 #, c-format
 msgid "Build options:\n"
-msgstr "Opţiuni de compilare:\n"
+msgstr "Opțiuni de compilare:\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Meniu desktop:        %s\n"
 
-#: ../src/main.c:240 ../src/main.c:247 ../src/main.c:254
+#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
 msgstr "da"
 
-#: ../src/main.c:242 ../src/main.c:249 ../src/main.c:256
+#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
 msgstr "nu"
 
-#: ../src/main.c:245
+#: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "    Iconiţe desktop:       %s\n"
+msgstr "    Iconițe desktop:       %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:261
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Iconiţe fişiere desktop:  %s\n"
+msgstr "    Iconițe fișiere desktop:  %s\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:290
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr "%s: Opţiune necunoscută: %s\n"
+msgstr "%s: Opțiune necunoscută: %s\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:291
 #, c-format
 msgid "Options are:\n"
-msgstr "Opţiunile sunt:\n"
+msgstr "Opțiunile sunt:\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
-"    --reload      Reîncarcă preferinţele, actualizează lista imaginilor\n"
+"    --reload      Reîncarcă preferințele, actualizează lista imaginilor\n"
 
-#: ../src/main.c:284
+#: ../src/main.c:293
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    --menu        Deschide meniul (la poziţia curentă a mausului)\n"
+msgstr "    --menu        Deschide meniul (la poziția curentă a mausului)\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:294
 #, c-format
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
-"    --windowlist  Deschide lista ferestrelor (la poziţia curentă a "
+"    --windowlist  Deschide lista ferestrelor (la poziția curentă a "
 "mausului)\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:295
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "    --quit        Cere închiderea aplicaţiei xfdesktop\n"
+msgstr "    --quit        Cere închiderea aplicației xfdesktop\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:316
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s nu este pornit.\n"
 
 #: ../src/menu.c:113
 msgid "_Applications"
-msgstr ""
+msgstr "_Aplicații"
 
 #: ../src/windowlist.c:236
 msgid "Window List"
-msgstr ""
+msgstr "Listă ferestre"
 
 #: ../src/windowlist.c:262
 #, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "<b>Spaţiul de lucru %d</b>"
+msgstr "<b>Spațiul de lucru %d</b>"
 
 #: ../src/windowlist.c:271
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
-msgstr "<b>Spaţiul de lucru %d</b>"
+msgstr "Spațiul de lucru %d"
 
 #: ../src/windowlist.c:273
 #, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "<i>Spaţiul de lucru %d</i>"
+msgstr "<i>Spațiul de lucru %d</i>"
 
 #: ../src/windowlist.c:370 ../src/windowlist.c:373
 msgid "_Add Workspace"
-msgstr "_Adaugă un spaţiu de lucru"
+msgstr "_Adaugă un spațiu de lucru"
 
 #: ../src/windowlist.c:381
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "Şter_ge spaţiul de lucru %d"
+msgstr "Șt_erge spațiul de lucru %d"
 
 #: ../src/windowlist.c:384
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Şt_erge spaţiul de lucru „%s”"
+msgstr "Șt_erge spațiul de lucru „%s”"
 
 #: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
 msgstr "Desktop"
 
-#: ../src/xfce-desktop.c:1009
-#, fuzzy, c-format
+#: ../src/xfce-desktop.c:1010
+#, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Nu se poate crea fişierul „%s”:"
+msgstr "Nu se poate încărca imaginea din fișierul cu lista fundalurilor „%s”:"
 
-#: ../src/xfce-desktop.c:1011
-#, fuzzy
+#: ../src/xfce-desktop.c:1012
 msgid "Desktop Error"
-msgstr "Desktop"
+msgstr "Eroare desktop"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
-"Nu s-a putut crea directorul „%s” pentru stocarea itemilor desktopului:"
+"Nu s-a putut crea dosarul „%s” pentru stocarea elementelor desktopului:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
 #: ../src/xfdesktop-file-icon-manager.c:1206
 msgid "Create Folder Failed"
-msgstr "Crearea directorului a eşuat"
+msgstr "Crearea dosarului a eșuat"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
@@ -251,12 +250,12 @@ msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
-"Nu se poate utiliza „%s” pentru stocarea itemilor desktopului pentru că nu "
-"este un director"
+"Nu se poate utiliza „%s” pentru stocarea elementelor desktopului pentru că "
+"nu este un dosar"
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
-msgstr "Este necesar să ştergeţi sau să redenumiţi fişierul."
+msgstr "Este necesar să ștergeți sau să redenumiți fișierul."
 
 #: ../src/xfdesktop-file-icon-manager.c:630
 #, c-format
@@ -268,16 +267,16 @@ msgstr "Redenumire „%s”"
 #: ../src/xfdesktop-file-icon-manager.c:1369
 #: ../src/xfdesktop-file-icon-manager.c:1380
 msgid "Enter the new name:"
-msgstr "Introduceţi noul nume:"
+msgstr "Introduceți noul nume:"
 
 #: ../src/xfdesktop-file-icon-manager.c:639
 msgid "Rename"
-msgstr "Redenumeşte"
+msgstr "Redenumește"
 
 #: ../src/xfdesktop-file-icon-manager.c:676
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "Sigur doriţi să ştergeţi „%s”?"
+msgstr "Sigur doriți să ștergeți „%s”?"
 
 #: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
@@ -286,16 +285,16 @@ msgstr "Întrebare"
 #: ../src/xfdesktop-file-icon-manager.c:681
 #: ../src/xfdesktop-file-icon-manager.c:701
 msgid "If you delete a file, it is permanently lost."
-msgstr "Ştergerea unui fişier duce la pierderea sa permanentă."
+msgstr "Ștergerea unui fișier implică pierderea sa definitivă."
 
 #: ../src/xfdesktop-file-icon-manager.c:695
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "Sigur doriţi să ştergeţi următoarele %d fişiere?"
+msgstr "Sigur doriți să ștergeți următoarele %d fișiere?"
 
 #: ../src/xfdesktop-file-icon-manager.c:698
 msgid "Delete Multiple Files"
-msgstr "Ştergere fişiere multiple"
+msgstr "Ștergere fișiere multiple"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
@@ -315,14 +314,14 @@ msgstr "Eroare la lansare"
 
 #: ../src/xfdesktop-file-icon-manager.c:978
 msgid "The application chooser could not be opened."
-msgstr "Selectorul aplicaţiei nu a putut fi deschis."
+msgstr "Selectorul aplicației nu a putut fi pornit."
 
 #: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
-"Această facilitate necesită suport din partea unui administrator de fişiere "
+"Această facilitate necesită suport din partea unui manager de fișiere "
 "(precum Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1137
@@ -338,23 +337,23 @@ msgstr "Deschide cu „%s”"
 #: ../src/xfdesktop-file-icon-manager.c:1203
 #, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "Nu se poate crea directorul cu numele „%s”"
+msgstr "Nu se poate crea dosarul cu numele „%s”"
 
 #: ../src/xfdesktop-file-icon-manager.c:1242
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
-"Nu se poate lansa „exo-desktop-item-edit”, care e necesar pentru crearea şi "
-"editarea de lansatori şi legături pe desktop."
+"Nu se poate porni „exo-desktop-item-edit”, aplicație necesară pentru crearea "
+"și editarea de lansatori și scurtături pe desktop."
 
 #: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
-msgstr "Creează director nou"
+msgstr "Creare dosar nou"
 
 #: ../src/xfdesktop-file-icon-manager.c:1279
 msgid "New Folder"
-msgstr "Nou director"
+msgstr "Nou dosar"
 
 #: ../src/xfdesktop-file-icon-manager.c:1280
 #: ../src/xfdesktop-file-icon-manager.c:1371
@@ -365,29 +364,29 @@ msgstr "Creează"
 #: ../src/xfdesktop-file-icon-manager.c:1316
 #, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "Nu se poate crea un fişier numit „%s”:"
+msgstr "Nu se poate crea fișierul cu numele „%s”:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1319
 msgid "Create File Failed"
-msgstr "Crearea fişierului a eşuat"
+msgstr "Crearea fișierului a eșuat"
 
 #: ../src/xfdesktop-file-icon-manager.c:1358
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr "Creează un document din şablonul „%s”"
+msgstr "Creați un document utilizând șablonul „%s”"
 
 #: ../src/xfdesktop-file-icon-manager.c:1377
 msgid "Create Empty File"
-msgstr "Creează un fişier gol"
+msgstr "Creare fișier gol"
 
 #: ../src/xfdesktop-file-icon-manager.c:1381
 msgid "New Empty File"
-msgstr "Nou fişier gol"
+msgstr "Nou fișier gol"
 
 #: ../src/xfdesktop-file-icon-manager.c:1414
 #, c-format
 msgid "Unable to create file \"%s\":"
-msgstr "Nu se poate crea fişierul „%s”:"
+msgstr "Nu se poate crea fișierul „%s”:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1415
 msgid "Create Error"
@@ -395,11 +394,11 @@ msgstr "Eroare la creare"
 
 #: ../src/xfdesktop-file-icon-manager.c:1700
 msgid "_Open all"
-msgstr "Deschide t_ot"
+msgstr "_Deschide tot"
 
 #: ../src/xfdesktop-file-icon-manager.c:1716
 msgid "_Open in New Window"
-msgstr ""
+msgstr "_Deschide în fereastră nouă"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
 #: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
@@ -408,7 +407,7 @@ msgstr "_Deschide"
 
 #: ../src/xfdesktop-file-icon-manager.c:1733
 msgid "Create _Launcher..."
-msgstr "Creează un _lansator..."
+msgstr "Creează un l_ansator..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1754
 msgid "Create _URL Link..."
@@ -416,20 +415,19 @@ msgstr "Creează un link de tip _URL..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1771
 msgid "Create _Folder..."
-msgstr "Creează un _director..."
+msgstr "Creează un do_sar..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1791
-#, fuzzy
 msgid "Create From _Template"
-msgstr "Creează un document din şablonul „%s”"
+msgstr "Creează din șa_blon"
 
 #: ../src/xfdesktop-file-icon-manager.c:1825
 msgid "_Empty File"
-msgstr "Fişier _gol"
+msgstr "Fișier g_ol"
 
 #: ../src/xfdesktop-file-icon-manager.c:1841
 msgid "_Execute"
-msgstr "_Execută"
+msgstr "E_xecută"
 
 #: ../src/xfdesktop-file-icon-manager.c:1859
 msgid "_Edit Launcher"
@@ -441,7 +439,7 @@ msgstr "Deschide cu"
 
 #: ../src/xfdesktop-file-icon-manager.c:1930
 msgid "Open With Other _Application..."
-msgstr "Deschide cu o altă _aplicaţie..."
+msgstr "Deschide cu o altă _aplicație..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2037
 msgid "_Rename..."
@@ -449,12 +447,12 @@ msgstr "_Redenumire..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2055
 msgid "Desktop _Settings..."
-msgstr "_Preferinţe desktop..."
+msgstr "Preferințe des_ktop..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2065
 #: ../src/xfdesktop-volume-icon.c:606
 msgid "_Properties..."
-msgstr "_Proprietăţi..."
+msgstr "_Proprietăți..."
 
 #: ../src/xfdesktop-file-icon-manager.c:3304
 #: ../src/xfdesktop-regular-file-icon.c:382
@@ -469,16 +467,16 @@ msgstr "Eroare la pornire"
 
 #: ../src/xfdesktop-file-icon.c:144
 msgid "The associated application could not be found or executed."
-msgstr "Aplicaţia asociată nu a putut fi găsită ori pornită."
+msgstr "Aplicația asociată nu a putut fi găsită ori pornită."
 
 #: ../src/xfdesktop-file-properties-dialog.c:103
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr "Nu se poate desemna aplicaţia implicită pentru „%s” ca „%s”:"
+msgstr "Nu se poate desemna aplicația implicită pentru „%s” ca „%s”:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:106
 msgid "Properties Error"
-msgstr "Eroare proprietăţi"
+msgstr "Eroare proprietăți"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "None"
@@ -494,7 +492,7 @@ msgstr "Doar citire"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read & Write"
-msgstr "Citire şi scriere"
+msgstr "Citire și scriere"
 
 #: ../src/xfdesktop-file-properties-dialog.c:163
 msgid "General"
@@ -510,7 +508,7 @@ msgstr "Tip:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:234
 msgid "Link Target:"
-msgstr "Ţinta legăturii:"
+msgstr "Ținta legăturii:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
@@ -532,7 +530,7 @@ msgstr "Accesat:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:395
 msgid "Free Space:"
-msgstr "Spaţiu liber:"
+msgstr "Spațiu liber:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:397
 msgid "Size:"
@@ -551,7 +549,7 @@ msgstr "Drepturi"
 
 #: ../src/xfdesktop-file-properties-dialog.c:450
 msgid "Owner:"
-msgstr "Deţinător:"
+msgstr "Deținător:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:472
 #: ../src/xfdesktop-file-properties-dialog.c:510
@@ -587,7 +585,7 @@ msgstr "A intervenit o eroare la crearea legăturii „%s” către „%s”:"
 
 #: ../src/xfdesktop-file-utils.c:121
 msgid "File Error"
-msgstr "Eroare fişier"
+msgstr "Eroare fișier"
 
 #: ../src/xfdesktop-file-utils.c:137
 msgid "broken link"
@@ -626,13 +624,12 @@ msgstr "Acasă"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
-#, fuzzy
 msgid "Kind: Trash"
-msgstr "Tip:"
+msgstr "Tip: Coș de gunoi"
 
 #: ../src/xfdesktop-special-file-icon.c:515
 msgid "Trash Error"
-msgstr "Eroare coş de gunoi"
+msgstr "Eroare coș de gunoi"
 
 #: ../src/xfdesktop-special-file-icon.c:517
 msgid "Unable to contact the Xfce Trash service."
@@ -643,17 +640,17 @@ msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr ""
-"Asiguraţi-vă ca aveţi instalat un administrator de fişiere cu suport pentru "
+"Asigurați-vă ca aveți instalat un manager de fișiere cu suport pentru "
 "serviciul Xfce Trash (precum Thunar)."
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
-msgstr "_Goleşte gunoiul"
+msgstr "_Golește gunoiul"
 
 #: ../src/xfdesktop-volume-icon.c:474
 #, c-format
 msgid "%s (%s total)"
-msgstr ""
+msgstr "%s (%s în total)"
 
 #: ../src/xfdesktop-volume-icon.c:478
 #, c-format
@@ -662,6 +659,9 @@ msgid ""
 "Mount Point: %s\n"
 "Free Space: %s"
 msgstr ""
+"Tip: Volum amovibil\n"
+"Montat în: %s\n"
+"Spațiu liber: %s"
 
 #: ../src/xfdesktop-volume-icon.c:509
 #, c-format
@@ -675,11 +675,11 @@ msgstr "Nu se poate demonta „%s”:"
 
 #: ../src/xfdesktop-volume-icon.c:513
 msgid "Mount Failed"
-msgstr "Montare eşuată"
+msgstr "Montare eșuată"
 
 #: ../src/xfdesktop-volume-icon.c:513
 msgid "Unmount Failed"
-msgstr "Demontare eşuată"
+msgstr "Demontare eșuată"
 
 #: ../src/xfdesktop-volume-icon.c:531
 #, c-format
@@ -688,7 +688,7 @@ msgstr "Nu se poate ejecta „%s”:"
 
 #: ../src/xfdesktop-volume-icon.c:534
 msgid "Eject Failed"
-msgstr "Ejectare eşuată"
+msgstr "Ejectare eșuată"
 
 #: ../src/xfdesktop-volume-icon.c:576
 msgid "E_ject Volume"
@@ -703,38 +703,36 @@ msgid "_Mount Volume"
 msgstr "_Montare volum"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-#, fuzzy
 msgid "Accessories"
-msgstr "Accesat:"
+msgstr "Accesorii"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
-msgstr ""
+msgstr "Unelte desktop și aplicații comune"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:1
 msgid "Development"
-msgstr ""
+msgstr "Dezvoltare"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:2
 msgid "Software development tools"
-msgstr ""
+msgstr "Unelte pentru dezvoltarea de software"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:1
 msgid "Education"
-msgstr "Jocuri educative"
+msgstr "Educație"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:2
 msgid "Educational software"
-msgstr ""
+msgstr "Software educațional"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-#, fuzzy
 msgid "Games"
-msgstr "Nume"
+msgstr "Jocuri"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
-msgstr ""
+msgstr "Jocuri, joculețe și alte aplicații distractive"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
@@ -742,24 +740,23 @@ msgstr "Grafică"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr ""
+msgstr "Aplicații de creare și manipulare de imagini"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
-msgstr ""
+msgstr "Redare și editare audio/video"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-#, fuzzy
 msgid "Multimedia"
-msgstr "Multinivel"
+msgstr "Multimedia"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
-msgstr "Reţea"
+msgstr "Rețea"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:2
 msgid "Network applications and utilities"
-msgstr ""
+msgstr "Aplicații și utilitare de rețea"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:1
 msgid "Office"
@@ -767,33 +764,31 @@ msgstr "Birou"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:2
 msgid "Office and productivity applications"
-msgstr ""
+msgstr "Aplicații de birou"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:1
 msgid "Applications that don't fit into other categories"
-msgstr ""
+msgstr "Aplicații ce nu intră în celelalte categorii"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-#, fuzzy
 msgid "Other"
-msgstr "/Altele"
+msgstr "Altele"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr ""
+msgstr "Mini-aplicații pentru economizorul de ecran"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
-msgstr ""
+msgstr "Economizoare de ecran"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr ""
+msgstr "Aplicații de editare a opțiunilor desktopului ori sistemului"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-#, fuzzy
 msgid "Settings"
-msgstr "Preferinţe Desktop"
+msgstr "Opțiuni"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:1
 msgid "System"
@@ -801,7 +796,7 @@ msgstr "Sistem"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
-msgstr ""
+msgstr "Unelte de sistem și alte utilitare"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
@@ -809,43 +804,39 @@ msgstr "Despre Xfce"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr ""
+msgstr "Detalii despre mediul desktop Xfce"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
-msgstr "Administrator de fişiere"
+msgstr "Manager de fișiere"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
 msgid "Thunar file manager"
-msgstr ""
+msgstr "Managerul de fișiere Thunar"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-#, fuzzy
 msgid "Help"
-msgstr "_Ajutor"
+msgstr "Ajutor"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr ""
+msgstr "Ajutor pentru Xfce"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
-msgstr ""
+msgstr "Ieșire"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-#, fuzzy
 msgid "Log out of the Xfce Desktop"
-msgstr "Preferinţe pentru administratorul desktopului Xfce 4"
+msgstr "Ieșire din mediul desktop Xfce"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-#, fuzzy
 msgid "Run Program..."
-msgstr "Eroare la pornire"
+msgstr "Pornire aplicație..."
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-#, fuzzy
 msgid "Run a program"
-msgstr "Eroare la pornire"
+msgstr "Porniți o aplicație"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
@@ -853,11 +844,11 @@ msgstr "Terminal"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
 msgid "Terminal emulator"
-msgstr ""
+msgstr "Emulator de terminal"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
 msgid "Browse the web"
-msgstr ""
+msgstr "Navigați pe Internet"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
@@ -870,182 +861,175 @@ msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
 msgstr ""
+"%s\n"
+"<i>Mărime: %dx%d</i>"
 
 #: ../settings/main.c:269
-#, fuzzy
 msgid "Filesystem"
-msgstr "sistem"
+msgstr "Sistem de fișiere"
 
 #: ../settings/main.c:271
-#, fuzzy
 msgid "Trash"
-msgstr "Eroare coş de gunoi"
+msgstr "Coș de gunoi"
 
 #: ../settings/main.c:273
 msgid "Removable Devices"
-msgstr ""
+msgstr "Dispozitive amovibile"
 
 #: ../settings/main.c:426
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Creează listă fundaluri"
+msgstr "Nu s-a putut crea lista imaginilor de fundal „%s”"
 
 #: ../settings/main.c:430 ../settings/main.c:789
-#, fuzzy
 msgid "Backdrop List Error"
-msgstr "Listă fundal"
+msgstr "Eroare listă fundaluri"
 
 #: ../settings/main.c:455
-#, fuzzy
 msgid "Create/Load Backdrop List"
-msgstr "Creează listă fundaluri"
+msgstr "Creare/Încărcare listă fundaluri"
 
 #: ../settings/main.c:479
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
+"Fișierul „%s” nu este o fișier valid de tip listă de fundaluri. Doriți să-l "
+"suprascrieți?"
 
 #: ../settings/main.c:484
-#, fuzzy
 msgid "Invalid List File"
-msgstr "Fişiere în listă"
+msgstr "Fișier listă nevalid"
 
 #: ../settings/main.c:487
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
+msgstr "Suprascrierea fișierului implică pierderea conținutului său."
 
 #: ../settings/main.c:489
-#, fuzzy
 msgid "Replace"
-msgstr "Redenumeşte"
+msgstr "Înlocuiește"
 
 #: ../settings/main.c:785
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Nu s-a putut redenumi „%s” în „%s”:"
+msgstr "Nu s-a putut scrie lista fundalurilor în „%s”"
 
 #: ../settings/main.c:812
-#, fuzzy
 msgid "Add Image File(s)"
-msgstr "Fişiere tip imagine"
+msgstr "Adăugare fișiere de tip imagine"
 
 #: ../settings/main.c:821
 msgid "Image files"
-msgstr "Fişiere imagine"
+msgstr "Fișiere imagine"
 
 #: ../settings/main.c:826
-#, fuzzy
 msgid "All files"
-msgstr "Toate fişierele"
+msgstr "Toate fișierele"
 
-#: ../settings/main.c:1120
-#, fuzzy, c-format
+#: ../settings/main.c:1132
+#, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "Ecran %d, Monitor %d"
+msgstr "Ecran %d, Monitor %d (%s)"
 
-#: ../settings/main.c:1125
+#: ../settings/main.c:1137
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Ecran %d, Monitor %d"
 
-#: ../settings/main.c:1128
+#: ../settings/main.c:1140
 #, c-format
 msgid "Screen %d"
 msgstr "Ecran %d"
 
-#: ../settings/main.c:1134
+#: ../settings/main.c:1146
 #, c-format
 msgid "Monitor %d (%s)"
-msgstr ""
+msgstr "Monitor %d (%s)"
 
-#: ../settings/main.c:1139
-#, fuzzy, c-format
-msgid "Monitor %d"
-msgstr "Ecran %d, Monitor %d"
-
-#: ../settings/main.c:1354
-msgid "Settings manager socket"
-msgstr ""
-
-#: ../settings/main.c:1354
-msgid "SOCKET ID"
-msgstr ""
-
-#: ../settings/main.c:1355
-#, fuzzy
-msgid "Version information"
-msgstr "Detalii"
-
-#: ../settings/main.c:1375
+#: ../settings/main.c:1151
 #, c-format
-msgid "Type '%s --help' for usage."
-msgstr ""
+msgid "Monitor %d"
+msgstr "Monitor %d"
+
+#: ../settings/main.c:1366
+msgid "Settings manager socket"
+msgstr "Socket al managerului de opțiuni"
+
+#: ../settings/main.c:1366
+msgid "SOCKET ID"
+msgstr "SOCKET ID"
+
+#: ../settings/main.c:1367
+msgid "Version information"
+msgstr "Detalii despre versiune"
 
 #: ../settings/main.c:1387
-msgid "The Xfce development team. All rights reserved."
-msgstr ""
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Încercați „%s --help” pentru lista opțiunilor de utilizare."
 
-#: ../settings/main.c:1388
+#: ../settings/main.c:1399
+msgid "The Xfce development team. All rights reserved."
+msgstr "Echipa de dezvoltare Xfce. Toate drepturile sunt rezervate."
+
+#: ../settings/main.c:1400
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "Raportați erorile la <%s>."
 
-#: ../settings/main.c:1395
+#: ../settings/main.c:1407
 msgid "Desktop Settings"
-msgstr "Preferinţe Desktop"
+msgstr "Opțiuni desktop"
 
-#: ../settings/main.c:1397
-#, fuzzy
+#: ../settings/main.c:1409
 msgid "Unable to contact settings server"
-msgstr "Nu se poate contacta serviciul Xfce Trash"
+msgstr "Nu se poate contacta serverul opțiunilor"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop "
-msgstr "Desktop"
+msgstr "Desktop "
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
 msgstr ""
+"Schimbați fundalul desktopului și funcționalitatea meniurilor și iconițelor "
+"sale"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
-msgstr ""
+msgstr "<b>Ajustări</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:2
-#, fuzzy
 msgid "<b>Appearance</b>"
-msgstr "Apa_renţă"
+msgstr "<b>Aspect</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:3
-#, fuzzy
 msgid "<b>Colors</b>"
-msgstr "<b>Spaţiul de lucru %d</b>"
+msgstr "<b>Culori</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:4
 msgid "<b>Default Icons</b>"
-msgstr ""
+msgstr "<b>Iconițe implicite</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:5
 msgid "<b>Desktop Menu</b>"
-msgstr ""
+msgstr "<b>Meniu desktop</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:6
 msgid "<b>Image</b>"
-msgstr ""
+msgstr "<b>Imagine</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:7
 msgid "<b>Images</b>"
-msgstr ""
+msgstr "<b>Imagini</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:8
 msgid "<b>Window List Menu</b>"
-msgstr ""
+msgstr "<b>Meniu listă ferestre</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:9
 msgid "Add an image to the list"
-msgstr ""
+msgstr "Adăugați o imagine listei"
 
 #: ../settings/xfdesktop-settings.glade.h:10
 msgid ""
@@ -1056,55 +1040,56 @@ msgid ""
 "Scaled\n"
 "Zoomed"
 msgstr ""
+"Automat\n"
+"Centrat\n"
+"Tapet\n"
+"Întins\n"
+"Scalat\n"
+"Zoom"
 
 #: ../settings/xfdesktop-settings.glade.h:16
 msgid "Automatically pick a random image from a list file"
-msgstr ""
+msgstr "Alege automat o imagine dintr-o un fișier de tip listă"
 
 #: ../settings/xfdesktop-settings.glade.h:17
-#, fuzzy
 msgid "B_rightness:"
-msgstr "Ajustare _luminozitate:"
+msgstr "Lumino_zitate:"
 
 #: ../settings/xfdesktop-settings.glade.h:18
-#, fuzzy
 msgid "B_utton:"
-msgstr "Buton"
+msgstr "B_uton:"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
-msgstr ""
+msgstr "Creați o nouă listă ori încărcați una existentă"
 
 #: ../settings/xfdesktop-settings.glade.h:21
 msgid "Don't display an image at all"
-msgstr ""
+msgstr "Nu arăta nici o imagine"
 
 #: ../settings/xfdesktop-settings.glade.h:22
-#, fuzzy
 msgid "Icon _size:"
-msgstr "Mărime _iconiţe:"
+msgstr "Mă_rime iconițe:"
 
 #: ../settings/xfdesktop-settings.glade.h:23
-#, fuzzy
 msgid "Icon _type:"
-msgstr "Mărime _iconiţe:"
+msgstr "_Tip iconițe:"
 
 #: ../settings/xfdesktop-settings.glade.h:24
-#, fuzzy
 msgid "Image _list"
-msgstr "Fişiere tip imagine"
+msgstr "_Listă de imagini"
 
 #: ../settings/xfdesktop-settings.glade.h:25
 msgid "Increase or decrease the brightness of the final image"
-msgstr ""
+msgstr "Creșteți ori scădeți luminozitatea imaginii finale"
 
 #: ../settings/xfdesktop-settings.glade.h:26
 msgid "Increase or decrease the color saturation of the final image"
-msgstr ""
+msgstr "Creșteți ori scădeți saturația culorilor imaginii finale"
 
 #: ../settings/xfdesktop-settings.glade.h:27
 msgid "Label trans_parency:"
-msgstr ""
+msgstr "Transparență etic_hetă:"
 
 #: ../settings/xfdesktop-settings.glade.h:28
 msgid ""
@@ -1112,24 +1097,27 @@ msgid ""
 "Middle\n"
 "Right"
 msgstr ""
+"Stânga\n"
+"Mijloc\n"
+"Dreapta"
 
 #: ../settings/xfdesktop-settings.glade.h:31
-#, fuzzy
 msgid "Mo_difier:"
-msgstr "Modificat:"
+msgstr "Mo_dificator:"
 
 #: ../settings/xfdesktop-settings.glade.h:32
-#, fuzzy
 msgid "Modi_fier:"
-msgstr "Modificat:"
+msgstr "Modi_ficator:"
 
 #: ../settings/xfdesktop-settings.glade.h:33
-#, fuzzy
 msgid ""
 "None\n"
 "Minimized application icons\n"
 "File/launcher icons"
-msgstr "Iconiţe ale aplicaţiilor ascunse (minimizate)"
+msgstr ""
+"Fără\n"
+"Aplicații minimizate\n"
+"Fișiere și lansatori"
 
 #: ../settings/xfdesktop-settings.glade.h:36
 msgid ""
@@ -1138,60 +1126,58 @@ msgid ""
 "Alt\n"
 "Control"
 msgstr ""
+"Nimic\n"
+"Shift\n"
+"Alt\n"
+"Control"
 
 #: ../settings/xfdesktop-settings.glade.h:40
 msgid "Remove the selected image(s) from the list"
-msgstr ""
+msgstr "Ștergeți imaginile selectate din listă"
 
 #: ../settings/xfdesktop-settings.glade.h:41
 msgid "Sa_turation:"
-msgstr ""
+msgstr "Sa_turație:"
 
 #: ../settings/xfdesktop-settings.glade.h:42
-#, fuzzy
 msgid "Select First Color"
-msgstr "Culoare _primară:"
+msgstr "Selectare culoare primară"
 
 #: ../settings/xfdesktop-settings.glade.h:43
-#, fuzzy
 msgid "Select Second Color"
-msgstr "Culoare _secundară:"
+msgstr "Selectare culoare secundară"
 
 #: ../settings/xfdesktop-settings.glade.h:44
 msgid "Select a single image as the backdrop"
-msgstr ""
+msgstr "Selectați o singură imagine pentru fundal"
 
 #: ../settings/xfdesktop-settings.glade.h:45
 msgid "Set desktop background and menu and icon behavior"
-msgstr ""
+msgstr "Schimbați fundalul desktopului și comportamentul iconițelor sale"
 
 #: ../settings/xfdesktop-settings.glade.h:46
-#, fuzzy
 msgid "Sh_ow application icons in menu"
-msgstr "Arată _iconiţele în meniu"
+msgstr "A_rată iconițele aplicațiilor în meniu"
 
 #: ../settings/xfdesktop-settings.glade.h:47
-#, fuzzy
 msgid "Show _application icons in menu"
-msgstr "Arată _iconiţele în meniu"
+msgstr "Ara_tă iconițele aplicațiilor în meniu"
 
 #: ../settings/xfdesktop-settings.glade.h:48
-#, fuzzy
 msgid "Show _window list menu on desktop middle click"
-msgstr "Arată _lista ferestrelor la clic median"
+msgstr "Arată lista ferestrelor la clic cu butonul din mijl_oc pe desktop"
 
 #: ../settings/xfdesktop-settings.glade.h:49
-#, fuzzy
 msgid "Show applications menu on _desktop right click"
-msgstr "Arată _meniul desktopului la clic dreapta"
+msgstr "Arată meniul aplicațiilor la clic cu butonul din _dreapta pe desktop"
 
 #: ../settings/xfdesktop-settings.glade.h:50
 msgid "Show s_ticky windows only in active workspace"
-msgstr ""
+msgstr "Arată ferestrele lipite doar în spațiul de lucru acti_v"
 
 #: ../settings/xfdesktop-settings.glade.h:51
 msgid "Show workspace _names in list"
-msgstr ""
+msgstr "Arată în listă _numele spațiilor de lucru"
 
 #: ../settings/xfdesktop-settings.glade.h:52
 msgid ""
@@ -1200,545 +1186,73 @@ msgid ""
 "Vertical gradient\n"
 "Transparent"
 msgstr ""
+"Culoare unică\n"
+"Gradient orizontal\n"
+"Gradient vertical\n"
+"Transparență"
 
 #: ../settings/xfdesktop-settings.glade.h:56
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
+msgstr "Specificați culoarea din dreapta ori de jos a gradientului"
 
 #: ../settings/xfdesktop-settings.glade.h:57
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
+"Specificați culoarea unică ori culoarea din stânga ori de sus a gradientului"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
+msgstr "Specificați cum va fi redimensionată imaginea pe ecran"
 
 #: ../settings/xfdesktop-settings.glade.h:59
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
+msgstr "Specificați stilul culorii desenate în spatele imaginii de fundal"
 
 #: ../settings/xfdesktop-settings.glade.h:60
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr ""
+"Specificați nivelul de transparență al etichetei rotunjite desenate în "
+"spatele textului iconiței"
 
 #: ../settings/xfdesktop-settings.glade.h:61
-#, fuzzy
 msgid "St_yle:"
-msgstr "Stil:"
+msgstr "_Stil:"
 
 #: ../settings/xfdesktop-settings.glade.h:62
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "Generează _sub-meniuri pentru spațiile de lucru"
 
 #: ../settings/xfdesktop-settings.glade.h:63
-#, fuzzy
 msgid "Use custom _font size:"
-msgstr "Mărime personali_zată:"
+msgstr "Mărime personali_zată font:"
 
 #: ../settings/xfdesktop-settings.glade.h:64
 msgid "_Background"
-msgstr ""
+msgstr "_Fundal"
 
 #: ../settings/xfdesktop-settings.glade.h:65
-#, fuzzy
 msgid "_Button:"
-msgstr "Buton"
+msgstr "_Buton:"
 
 #: ../settings/xfdesktop-settings.glade.h:66
-#, fuzzy
 msgid "_Edit desktop menu"
-msgstr "_Editare meniu"
+msgstr "_Editare meniu desktop"
 
 #: ../settings/xfdesktop-settings.glade.h:67
-#, fuzzy
 msgid "_Icons"
-msgstr "Iconiţe"
+msgstr "_Iconițe"
 
 #: ../settings/xfdesktop-settings.glade.h:68
-#, fuzzy
 msgid "_Menus"
-msgstr "Meniuri"
+msgstr "_Meniuri"
 
 #: ../settings/xfdesktop-settings.glade.h:69
-#, fuzzy
 msgid "_None"
-msgstr "Nu"
+msgstr "_Nimic"
 
 #: ../settings/xfdesktop-settings.glade.h:70
 msgid "_Single image"
-msgstr ""
-
-#: ../settings/xfdesktop-settings.glade.h:71
-msgid "gtk-close"
-msgstr ""
-
-#: ../settings/xfdesktop-settings.glade.h:72
-msgid "gtk-help"
-msgstr ""
-
-#~ msgid "Add menu entry"
-#~ msgstr "Adăugare intrare meniu"
-
-#~ msgid "Type:"
-#~ msgstr "Tip:"
-
-#~ msgid "Title"
-#~ msgstr "Titlu"
-
-#~ msgid "Submenu"
-#~ msgstr "Submeniu"
-
-#~ msgid "Launcher"
-#~ msgstr "Lansator"
-
-#~ msgid "Separator"
-#~ msgstr "Separator"
-
-#~ msgid "Quit"
-#~ msgstr "Ieşire"
-
-#~ msgid "Command:"
-#~ msgstr "Comandă:"
-
-#~ msgid "Icon:"
-#~ msgstr "Iconiţă:"
-
-#~ msgid "No icon"
-#~ msgstr "Fără iconiţă"
-
-#~ msgid "Themed icon:"
-#~ msgstr "Iconiţă tematică:"
-
-#~ msgid "Select icon"
-#~ msgstr "Selectare iconiţă"
-
-#~ msgid "Use startup _notification"
-#~ msgstr "_Notificare la pornire"
-
-#~ msgid "Run in _terminal"
-#~ msgstr "Porneşte în _terminal"
-
-#~ msgid "Select command"
-#~ msgstr "Selectare comandă"
-
-#~ msgid "Executable Files"
-#~ msgstr "Fişiere executabile"
-
-#~ msgid "Perl Scripts"
-#~ msgstr "Scripturi Perl"
-
-#~ msgid "Python Scripts"
-#~ msgstr "Scripturi Python"
-
-#~ msgid "Ruby Scripts"
-#~ msgstr "Scripturi Ruby"
-
-#~ msgid "Shell Scripts"
-#~ msgstr "Scripturi shell"
-
-#~ msgid "Add external menu entry"
-#~ msgstr "Adăugare intrare meniu extern"
-
-#~ msgid "File"
-#~ msgstr "Fişier"
-
-#~ msgid "Source:"
-#~ msgstr "Sursă:"
-
-#~ msgid "Select external menu"
-#~ msgstr "Selectare meniu extern"
-
-#~ msgid "Style:"
-#~ msgstr "Stil:"
-
-#~ msgid "Simple"
-#~ msgstr "Simplu"
-
-#~ msgid "Multilevel"
-#~ msgstr "Multinivel"
-
-#~ msgid "_Unique entries only"
-#~ msgstr "Doar intrările _unice"
-
-#~ msgid "Edit menu entry"
-#~ msgstr "Editare intrare meniu"
-
-#~ msgid "Edit external menu entry"
-#~ msgstr "Editare intrare meniu extern"
-
-#~ msgid "Xfce4-MenuEditor"
-#~ msgstr "Editor meniu Xfce4"
-
-#, fuzzy
-#~ msgid "Menueditor Warning"
-#~ msgstr "Editor de meniu"
-
-#, fuzzy
-#~ msgid "Continue"
-#~ msgstr "Contributor"
-
-#~ msgid "_File"
-#~ msgstr "_Fişier"
-
-#~ msgid "_New"
-#~ msgstr "_Nou"
-
-#~ msgid "Create a new empty menu"
-#~ msgstr "Creează un nou meniu gol"
-
-#~ msgid "Open existing menu"
-#~ msgstr "Deschide meniul existent"
-
-#~ msgid "Open _default menu"
-#~ msgstr "Deschide meniul i_mplicit"
-
-#~ msgid "Open default menu"
-#~ msgstr "Deschide meniul implicit"
-
-#~ msgid "_Save"
-#~ msgstr "_Salvează"
-
-#~ msgid "Save modifications"
-#~ msgstr "Salvează modificările"
-
-#~ msgid "Save _as..."
-#~ msgstr "Salvează c_a..."
-
-#~ msgid "Save menu under a given name"
-#~ msgstr "Salvează meniul cu un nume dat"
-
-#~ msgid "_Close"
-#~ msgstr "În_chide"
-
-#~ msgid "Close menu"
-#~ msgstr "Închide meniul"
-
-#~ msgid "_Quit"
-#~ msgstr "_Ieşi"
-
-#~ msgid "Quit Xfce4-Menueditor"
-#~ msgstr "Ieşire din Editorul de meniu Xfce"
-
-#~ msgid "_Edit"
-#~ msgstr "_Editare"
-
-#~ msgid "_Edit entry"
-#~ msgstr "_Editare intrare meniu"
-
-#~ msgid "Edit selected entry"
-#~ msgstr "Editare intrare selectată"
-
-#~ msgid "_Add entry"
-#~ msgstr "Adăugare _intrare"
-
-#~ msgid "Add a new entry in the menu"
-#~ msgstr "Adaugă o nouă intrare în meniu"
-
-#~ msgid "Add _external"
-#~ msgstr "Adăugare e_xternă"
-
-#~ msgid "Add an external entry"
-#~ msgstr "Adăugare meniu extern"
-
-#~ msgid "_Remove entry"
-#~ msgstr "Şt_ergere intrare"
-
-#~ msgid "Remove entry"
-#~ msgstr "Ştergere intrare"
-
-#~ msgid "_Up"
-#~ msgstr "În s_us"
-
-#~ msgid "Move entry up"
-#~ msgstr "Mută intrarea în sus"
-
-#~ msgid "_Down"
-#~ msgstr "În j_os"
-
-#~ msgid "Move entry down"
-#~ msgstr "Mută intrarea în jos"
-
-#~ msgid "_Help"
-#~ msgstr "_Ajutor"
-
-#~ msgid "_About..."
-#~ msgstr "_Despre..."
-
-#~ msgid "Show informations about xfce4-menueditor"
-#~ msgstr "Arată detalii despre xfce4-menueditor"
-
-#~ msgid "Collapse all"
-#~ msgstr "Strânge tot"
-
-#~ msgid "Collapse all menu entries"
-#~ msgstr "Strânge toate intrările meniului"
-
-#~ msgid "Expand all"
-#~ msgstr "Desfă tot"
-
-#~ msgid "Expand all menu entries"
-#~ msgstr "Desfă toate intrările meniului"
-
-#~ msgid "Name"
-#~ msgstr "Nume"
-
-#~ msgid "Command"
-#~ msgstr "Comandă"
-
-#~ msgid "Hidden"
-#~ msgstr "Ascuns"
-
-#~ msgid "Are you sure you want to close the current menu?"
-#~ msgstr "Sigur doriţi să închideţi meniul curent?"
-
-#~ msgid "Do you want to save before closing the file?"
-#~ msgstr "Sigur doriţi să salvaţi înainte de închiderea fişierului?"
-
-#~ msgid "Do you want to save before opening an other menu ?"
-#~ msgstr "Doriţi să salvaţi înainte de a deschide un alt meniu?"
-
-#~ msgid "Ignore modifications"
-#~ msgstr "Ignoră modificările"
-
-#~ msgid "Open menu file"
-#~ msgstr "Deschide fişierul meniu"
-
-#~ msgid "Do you want to save before opening the default menu ?"
-#~ msgstr "Doriţi să salvaţi înainte de a deschide meniul implicit?"
-
-#~ msgid "Save menu file as"
-#~ msgstr "Salvare fişier meniu cu un alt nume"
-
-#~ msgid "Do you want to save before closing the menu ?"
-#~ msgstr "Doriţi să salvaţi înainte de a închide meniul?"
-
-#~ msgid "quit"
-#~ msgstr "ieşire"
-
-#~ msgid "--- separator ---"
-#~ msgstr "--- separator ---"
-
-#~ msgid "--- include ---"
-#~ msgstr "--- include ---"
-
-#~ msgid "system"
-#~ msgstr "sistem"
-
-#~ msgid "Do you want to move the item into the submenu?"
-#~ msgstr "Doriţi să mutaţi itemul într-un submeniu?"
-
-#~ msgid "A menu editor for Xfce4"
-#~ msgstr "Un editor de meniu pentru Xfce4"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "Autor/Responsabil"
-
-#~ msgid "Contributor"
-#~ msgstr "Contributor"
-
-#~ msgid "Icon designer"
-#~ msgstr "Designer iconiţe"
-
-#~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr "Aţi modificat meniul. Doriţi să-l salvaţi înainte de a-l închide?"
-
-#~ msgid "Forget modifications"
-#~ msgstr "Uită modificările"
-
-#~ msgid "Unable to open the menu file %s in write mode"
-#~ msgstr "Nu se poate deschide pentru scriere fişierul meniu %s"
-
-#~ msgid "Graphical tool for editing the Xfce 4 menu"
-#~ msgstr "Unealtă grafică pentru editarea meniului Xfce 4"
-
-#~ msgid "Menu Editor"
-#~ msgstr "Editor de meniu"
-
-#~ msgid "Xfce 4 Menu Editor"
-#~ msgstr "Editor de meniu Xfce 4"
-
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "Preferinţe pentru administratorul desktopului Xfce 4"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "Preferinţe desktop Xfce 4"
-
-#, fuzzy
-#~ msgid "Use _Xfce to manage the desktop"
-#~ msgstr "Permite administrarea desktopului de către _Xfce"
-
-#~ msgid ""
-#~ "Could not save file %s: %s\n"
-#~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
-#~ msgstr ""
-#~ "Nu s-a putut salva fişierul %s: %s\n"
-#~ "\n"
-#~ "Alegeţi o altă locaţie sau renunţaţi la schimbările efectuate"
-
-#~ msgid "Button Label|Desktop"
-#~ msgstr "Desktop"
-
-#~ msgid "backdrops.list"
-#~ msgstr "fundaluri.list"
-
-#~ msgid "Select backdrop image or list file"
-#~ msgstr "Selectare imagine fundal sau fişier listă"
-
-#~ msgid "List Files (*.list)"
-#~ msgstr "Fişiere listă (*.list)"
-
-#~ msgid "_Edit list..."
-#~ msgstr "_Editare listă..."
-
-#~ msgid "_New list..."
-#~ msgstr "Listă _nouă..."
-
-#~ msgid "S_tyle:"
-#~ msgstr "S_til:"
-
-#~ msgid "Auto"
-#~ msgstr "Automat"
-
-#~ msgid "Centered"
-#~ msgstr "Centrat"
-
-#~ msgid "Tiled"
-#~ msgstr "Mozaic"
-
-#~ msgid "Stretched"
-#~ msgstr "Întins"
-
-#~ msgid "Scaled"
-#~ msgstr "Scalat"
-
-#, fuzzy
-#~ msgid "Zoomed"
-#~ msgstr "Acasă"
-
-#~ msgid "Xfce will be unable to manage your desktop (%s)."
-#~ msgstr "Xfce nu vă va putea administra desktopul (%s)."
-
-#~ msgid "Unknown Error"
-#~ msgstr "Eroare necunoscută"
-
-#~ msgid "Unable to start xfdesktop"
-#~ msgstr "Nu se poate porni xfdesktop"
-
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Pentru a vă asigura că această opţiune va fi aplicată când veţi porni "
-#~ "Xfce data viitoare, salvaţi sesiunea la ieşire. Dacă nu utilizaţi "
-#~ "administratorul de sesiuni Xfce (xfce4-session), va trebui să editaţi "
-#~ "manual fişierul ~/.config/xfce4/xinitrc . Detalii în documentaţia "
-#~ "disponibilă la http://xfce.org ."
-
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Pentru a vă asigura că Xfce nu vă administrează desktopul când veţi porni "
-#~ "Xfce data viitoare, salvaţi sesiunea la ieşire. Dacă nu utilizaţi "
-#~ "administratorul de sesiuni Xfce (xfce4-session), va trebui să editaţi "
-#~ "manual fişierul ~/.config/xfce4/xinitrc . Detalii în documentaţia "
-#~ "disponibilă la http://xfce.org . "
-
-#~ msgid "_Do not show this again"
-#~ msgstr "_Nu mai arăta acest mesaj"
-
-#~ msgid "Desktop Preferences"
-#~ msgstr "Preferinţe desktop"
-
-#~ msgid "Stretch single backdrop onto _all monitors"
-#~ msgstr "Întinde fundalul _unic pe toate monitoarele"
-
-#~ msgid "Color"
-#~ msgstr "Culoare"
-
-#~ msgid "_Color Style:"
-#~ msgstr "Stil c_uloare"
-
-#~ msgid "Solid Color"
-#~ msgstr "Culoare uniformă"
-
-#~ msgid "Horizontal Gradient"
-#~ msgstr "Gradient orizontal"
-
-#~ msgid "Vertical Gradient"
-#~ msgstr "Gradient vertical"
-
-#~ msgid "Image"
-#~ msgstr "Imagine"
-
-#~ msgid "Show _Image"
-#~ msgstr "Arată _imaginea:"
-
-#~ msgid "_File:"
-#~ msgstr "Fişi_er:"
-
-#~ msgid "_Behavior"
-#~ msgstr "C_omportament"
-
-#~ msgid "Select backdrop image file"
-#~ msgstr "Selectare fişier imagine fundal"
-
-#~ msgid "List file"
-#~ msgstr "Fişier listă"
-
-#~ msgid "Edit backdrop list"
-#~ msgstr "Editare listă fundaluri"
-
-#~ msgid "Desktop Icons"
-#~ msgstr "Iconiţe Desktop"
-
-#~ msgid "File/launcher icons"
-#~ msgstr "Iconiţe fişiere/lansatori"
-
-#~ msgid "Use _system font size"
-#~ msgstr "Utilizează mărimea fontului _sistem"
-
-#~ msgid "Des_ktop"
-#~ msgstr "Des_ktop"
-
-#~ msgid "_Desktop Properties..."
-#~ msgstr "Proprietăţi _desktop..."
-
-#~ msgid "Science"
-#~ msgstr "Ştiinţă"
-
-#, fuzzy
-#~ msgid "Scientific applications and tools"
-#~ msgstr "Iconiţe ale aplicaţiilor ascunse (minimizate)"
-
-#~ msgid "Unable to quit session."
-#~ msgstr "Nu se poate ieşi din sesiune."
-
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "Ieşirea din sesiune presupune ca administratorul de sesiuni Xfce (xfce4-"
-#~ "session) să fie pornit, dar acest lucru se pare că nu e adevărat. "
-#~ "Încercaţi să ieşiţi din Xfce pe altă cale."
-
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "Ieşirea din sesiune presupune prezenţa comenzii „xfce4-session-logout”, "
-#~ "dar aceasta nu a fost găsită: %s"
-
-#~ msgid "Edit Properties"
-#~ msgstr "Editare proprietăţi"
+msgstr "Imagine _unică"
