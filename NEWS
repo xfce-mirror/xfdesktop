@@ -2,7 +2,10 @@ Xfce 4.6.2
 ----------
 
   * Add Catalan and Galician translations of the manual.
-  * Fix inability to delete broken symlinks on the desktop.
+  * Fix inability to delete broken symlinks on the desktop (bug 5387).
+  * Never show 'Unmount' in volume context menus.
+  * Always show 'Eject' in volume context menus, regardless of whether
+    or not it's mounted (bug 5343).
 
 
 Xfce 4.6.1

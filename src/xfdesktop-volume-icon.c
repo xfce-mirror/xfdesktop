@@ -554,6 +554,7 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
     XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
     ThunarVfsVolume *volume = volume_icon->priv->volume;
     GtkWidget *mi, *img;
+    gboolean mounted, ejectable;
     
     img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
     gtk_widget_show(img);
@@ -568,20 +569,11 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     
-    if(thunar_vfs_volume_is_ejectable(volume)
-       && thunar_vfs_volume_is_mounted(volume))
-    {
-        img = gtk_image_new_from_icon_name("media-eject", GTK_ICON_SIZE_MENU);
-        gtk_widget_show(img);
-        mi = gtk_image_menu_item_new_with_mnemonic(_("E_ject Volume"));
-        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        g_signal_connect(G_OBJECT(mi), "activate",
-                         G_CALLBACK(xfdesktop_volume_icon_menu_eject),
-                         icon);
-    } else {
-        if(thunar_vfs_volume_is_mounted(volume)) {
+    mounted = thunar_vfs_volume_is_mounted(volume);
+    ejectable = thunar_vfs_volume_is_ejectable(volume);
+
+    if(!mounted || (mounted && !ejectable)) {
+        if(mounted) {
             img = gtk_image_new_from_stock(GTK_STOCK_DISCONNECT, GTK_ICON_SIZE_MENU);
             mi = gtk_image_menu_item_new_with_mnemonic(_("_Unmount Volume"));
         } else {
@@ -596,11 +588,23 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
                          G_CALLBACK(xfdesktop_volume_icon_menu_toggle_mount),
                          icon);
     }
-    
+
+    if(ejectable) {
+        img = gtk_image_new_from_icon_name("media-eject", GTK_ICON_SIZE_MENU);
+        gtk_widget_show(img);
+        mi = gtk_image_menu_item_new_with_mnemonic(_("E_ject Volume"));
+        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        g_signal_connect(G_OBJECT(mi), "activate",
+                         G_CALLBACK(xfdesktop_volume_icon_menu_eject),
+                         icon);
+    }
+
     mi = gtk_separator_menu_item_new();
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    
+
     img = gtk_image_new_from_stock(GTK_STOCK_PROPERTIES, GTK_ICON_SIZE_MENU);
     gtk_widget_show(img);
     mi = gtk_image_menu_item_new_with_mnemonic(_("_Properties..."));
