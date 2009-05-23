@@ -80,7 +80,6 @@ static G_CONST_RETURN ThunarVfsInfo *xfdesktop_regular_file_icon_peek_info(Xfdes
 static void xfdesktop_regular_file_icon_update_info(XfdesktopFileIcon *icon,
                                                     ThunarVfsInfo *info);
 static gboolean xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon);
-static gboolean xfdesktop_regular_file_can_write_file(XfdesktopFileIcon *icon);
 static gboolean xfdesktop_regular_file_icon_rename_file(XfdesktopFileIcon *icon,
                                                         const gchar *new_name);
 static gboolean xfdesktop_regular_file_icon_delete_file(XfdesktopFileIcon *icon);
@@ -520,16 +519,6 @@ xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon)
 
     return writable;
 
-}
-
-static gboolean
-xfdesktop_regular_file_can_write_file(XfdesktopFileIcon *icon)
-{
-    XfdesktopRegularFileIcon *file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
-    
-    g_return_val_if_fail(file_icon && file_icon->priv->info, FALSE);
-    
-    return (file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_WRITABLE);
 }
 
 static void
