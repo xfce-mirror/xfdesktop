@@ -10,6 +10,10 @@
     <title>Gestionnaire de bureau Xfce 4</title>
     
     <copyright>
+      <year>2008</year> <holder>Jérôme Guelfucci</holder>
+    </copyright>
+
+    <copyright>
       <year>2004-2007</year> <holder>Brian Tarricone</holder>
     </copyright>
     
@@ -19,7 +23,7 @@
     
     <copyright>
       <year>2004</year> <holder>François Le Clainche</holder>
-    </copyright><copyright><year>2007.</year><holder>Maximilian Schleiss (maxschleiss@bluewin.ch)</holder></copyright>
+    </copyright><copyright><year>2007.</year><holder>Maximilian Schleiss (maximilian@xfce.org)</holder></copyright>
     
 <!-- documentation translators: uncomment this and fill in your information.
     <copyright>
@@ -55,7 +59,14 @@
         <affiliation>
           <address><email>fleclainche@wanadoo.fr</email></address>
         </affiliation>
-      </author>        
+      </author>
+
+      <author>
+        <firstname>Jérôme</firstname> <surname>Guelfucci</surname>
+        <affiliation>
+          <address><email>jerome.guelfucci@gmail.com</email></address>
+        </affiliation>
+      </author>
     </authorgroup>
     
     <releaseinfo>Ce manuel décrit la version @PACKAGE_VERSION@ de <application>@PACKAGE_NAME@</application>.</releaseinfo>
@@ -89,17 +100,35 @@
     <sect2 id="xfdesktop-file-icons">
       <title>Fichiers/Icônes lanceurs</title>
       
-      <para><application>@PACKAGE_NAME@</application> peut aussi afficher le contenu du <filename>~/Bureau/</filename> sur le bureau, tout comme d'autres environnement de bureau et systèmes d'opération. Les fichiers peuvent être arrangés, copiés, déplacés, des liens peuvent être créés vers les fichiers depuis un gestionnaire de fichiers ou depuis le bureau lui-même et ouverts en utilisant les applications favorites. La vue en icônes a été conçue pour avoir le même comportement que le gestionnaire de fichiers <ulink url="http://thunar.xfce.org/" type="http">Thunar</ulink>.</para>
+      <para>
+        <application>@PACKAGE_NAME@</application> can also display on the desktop the contents of the 
+        <filename>$XDG_DESKTOP_DIR</filename> folder, which can be set in
+        the <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> file (if you
+        do not have this file, it will use <filename>$HOME/Desktop</filename>).
+        Files can be arranged, copied, moved, 
+        and linked to and from a file manager, and opened using 
+        preferred applications.  Application and URL launchers can 
+        also be created on the desktop.  The file icon view is modeled 
+        to have a similar look and feel as the
+        <ulink url="http://thunar.xfce.org/" type="http">Thunar</ulink> file
+        manager.
+      </para>
     </sect2>
   </sect1>
 
   <sect1 id="xfdesktop-menu">
-    <title>Le menu d'applications</title>
+    <title>The Desktop Menu</title>
     
-    <para>Un clic droit de la souris permet d'afficher un menu contenant la plupart des applications installées sur le système.</para>
+    <para>
+      A right-click on the desktop backdrop opens a menu that allows you to
+      open a Thunar window in the Desktop directory, to create launchers,
+      URL links, folders and files from templates. It is also possible to
+      open the Desktop Settings and the Properties window of the Desktop 
+      directory and to start many of the applications found on your system.
+    </para>
     
     <figure id="root-menu-fig">
-      <title>Menu d'applications</title>
+      <title>Desktop Menu</title>
       <screenshot>
         <mediaobject>
           <imageobject>
@@ -112,13 +141,34 @@
       </screenshot>
     </figure>
     
-    <para>Fichier de configuration du menu, <filename>menu.xml</filename>, se trouve dans le dossier <filename>$sysconfdir/xdg/xfce4/menu.xml</filename>. Pour les paquets binaires, <filename>$sysconfdir</filename> est souvent <filename>/etc</filename> et pour les fichiers compilés cela se trouvera être <filename>/usr/local/etc</filename>.</para>
+    <para>
+      The menu's configuration file, <filename>xfce-applications.menu</filename>, 
+      can be found under the path
+      <filename>$sysconfdir/xdg/menus/xfce-applications.menu</filename>. 
+      For binary packages, <filename>$sysconfdir</filename> is often
+      <filename>/etc</filename> and for source compiles, it defaults to
+      <filename>/usr/local/etc</filename>.
+    </para>
     
-    <para>Bien qu'il soit possible d'éditer le fichier <filename>menu.xml</filename> du menu manuellement, il est plutôt conseillé de le faire en utilisant l'<application>Éditeur de menu</application> de Xfce, ce en exécutant la commande <application>xfce4-menueditor</application>, en cliquant sur le bouton "Éditer le menu" de l'onglet Comportement de la fenêtre des paramètres du bureau ou en cliquant sur <application>Éditeur de menu</application> dans la section paramètres du menu du bureau. L'éditeur de menu supporte le glisser/déposer depuis un gestionnaire de fichiers.</para>
+    <para>
+      The previous menu editor is not available anymore. 
+      However you can customize your menu by copying 
+      <filename>xfce-applications.menu</filename> to
+      <filename>$XDG_CONFIG_HOME/menus</filename> and by modifying it
+      with a text editor such as <application>mousepad</application> or
+      <application>gedit</application>. Please remember that the file 
+      should be UTF-8 encoded.  For more information on menu editing, please
+      see <ulink url="http://wiki.xfce.org/howto/customize-menu" type="http">the
+      Xfce Wiki</ulink>.
+    </para>
     
-    <para>En éditant le menu avec l'application <application>xfce4-menueditor</application>, le menu est enregistré dans <filename>$XDG_CONFIG_HOME/xfce4/desktop/menu.xml</filename>. <filename>$XDG_CONFIG_HOME</filename> se trouve souvent être le dossier <filename>~/.config</filename>. Lors de l'édition manuelle du fichier, il est préférable de l'enregistrer directement dans ce dossier.</para>
+    <para>
+      Further customisation can be achived by creating 
+      <ulink url="http://standards.freedesktop.org/desktop-entry-spec/latest/" type="http">desktop
+      entries</ulink> in <filename>$XDG_DATA_HOME/applications</filename> to
+      hide, modify or add entries in the menu.
+    </para>
     
-    <para>NB : Si vous choisissez d'éditer le fichier manuellement, <filename>menu.xml</filename> doit être encodé au format UTF-8 pour que les accents et tout autres caractères non-ASCII soient affichés correctement. Vous aurez besoin pour cela d'un éditeur de texte supportant le format UTF-8, comme <application>mousepad</application> ou <application>gedit</application>.</para>
   </sect1>
   
   <sect1 id="xfdesktop-window-list">
@@ -144,22 +194,28 @@
   <sect1 id="xfdesktop-settings">
     <title>Paramètres du bureau</title>
     
+    <!-- Needs to be changed once xfce4-settings is documented -->
     <para>Vous pouvez accéder aux paramètres du bureau en cliquant sur l'icône "Paramètres du bureau" dans le <ulink url="xfce-mcs-manager.html#manager-dialog" type="http">Gestionnaire de paramètres</ulink> de Xfce.</para>
     
-    <sect2 id="xfdesktop-settings-appearance">
-      <title>Onglet Apparence</title>
+    <sect2 id="xfdesktop-settings-background">
+      <title>Background Tab</title>
       
-      <para>L'onglet apparence permet de définir plusieurs options pour l'affichage de l'image de fond d'écran ou la couleur de ce dernier.</para>
+      <para>
+        The Background tab allows you to set various options related to
+        drawing the desktop backdrop picture.
+      </para>
       
-      <figure id="xfdesktop-appearance-fig">
-        <title>Paramètres du bureau, onglet apparence</title> 
+      <figure id="xfdesktop-background-fig">
+        <title>Desktop Settings, Background Tab</title> 
         <screenshot>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/xfdesktop-appearance-tab.png" format="PNG"/>
+              <imagedata fileref="images/xfdesktop-background-tab.png" format="PNG"/>
             </imageobject> 
             <textobject>
-              <phrase>Affiche l'onglet apparence de la fenêtre de dialogue des paramètres du bureau</phrase>
+              <phrase>
+                Shows the Background tab of the Desktop Settings dialog
+              </phrase>
             </textobject>
           </mediaobject>
         </screenshot>
@@ -167,19 +223,114 @@
       
       <variablelist>
         <varlistentry>
-          <term>Style de couleur</term>
+          <term>Image</term>
+          
           <listitem>
-            <para>Le style de couleur peut être l'un des trois suivants : couleur unie, dégradé horizontal ou dégradé vertical.</para>
+            <para>
+              Select the <emphasis>"None"</emphasis> option if you want 
+              <application>@PACKAGE_NAME@</application> to ignore the backdrop image and only use the selected 
+              colors.
+            </para>
+            
+            <para>
+              Select the <emphasis>"Single image"</emphasis> option if 
+              you want <application>@PACKAGE_NAME@</application> to draw a backdrop image.
+            </para>
+            
+            <para>
+              Select the <emphasis>"Image List"</emphasis> option if you 
+              want <application>@PACKAGE_NAME@</application> to randomly choose the backdrop image among a list.
+            </para>
+            
+            <para>
+              
+            </para>
           </listitem>
         </varlistentry>
         
         <varlistentry>
-          <term>Première couleur et seconde couleur</term>
+          <term>Images</term>
+          
+          <!-- Single image stuff -->
           <listitem>
-            <para>Lorsque la couleur unie est choisie, seule l'option de première couleur est disponible. Lorsque le choix se porte dur l'une des deux options de dégradés, la seconde couleur devient elle aussi active. Chacun des deux boutons de couleurs ouvrent un dialogue de choix de la couleur :</para>
+            <para>
+              If you selected the <emphasis>"Single image"</emphasis> option, 
+              you can choose an image from the treeview. Click on an image 
+              to set it as the current backdrop. <application>@PACKAGE_NAME@</application> will update the 
+              background of your desktop automatically.
+            </para>
+            
+            <para>
+              You can add images to the treeview by clicking on the "plus"
+              button, which will pop a file chooser dialog up. Images can be
+              removed using the "minus" button.
+            </para>
+          </listitem>
+            
+          <!-- Image list stuff -->
+          <listitem>
+            <para>
+              If you selected the <emphasis>"Image list"</emphasis> option, 
+              you can use the "New" button displaying a blank sheet to select 
+              an existing list or create a new one, using a file chooser. 
+              You can still use the "plus" and "minus" buttons to add 
+              and remove images. <application>@PACKAGE_NAME@</application> will then randomly choose a backdrop
+              among this list every time it starts.
+            </para>
+          </listitem>
+          
+          <!-- Images layout options -->
+          <listitem>
+            <para>
+              Five Style options (<emphasis>"Centered"</emphasis>, 
+              <emphasis>"Tiled"</emphasis>, 
+              <emphasis>"Stretched"</emphasis>, 
+              <emphasis>"Scaled"</emphasis> and 
+              <emphasis>"Zoomed"</emphasis>) 
+              are available to specify the fitting of the backdrop image 
+              on the screen, depending on its size. You can also select 
+              the <emphasis>"Auto"</emphasis> item if you want to let <application>@PACKAGE_NAME@</application> 
+              take care of this setting.
+            </para>
+          </listitem>
+          
+          <!-- To be confirmed as I don't have multiscreen -->
+          <listitem>
+            <para>
+              <application>@PACKAGE_NAME@</application> supports xinerama and multiscreen modes. In 
+              multiscreen mode, the Background tab shows one tab per screen.
+            </para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>Colors</term>
+          <listitem>
+            <para>
+              The color style is one of four options in dropping list: 
+              a solid color, horizontal gradient, vertical gradient, or 
+              transparent.
+            </para>
+            
+            <para>
+              The <emphasis>"Transparent"</emphasis> option, when you use
+              a colored background without backdrop image, allows you
+              to see the windows that are under the transparent desktop
+              window. This requires an activated compositor.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Two colored buttons allow you to choose the colors for your 
+              desktop. When the solid color option is selected, only the 
+              first color is available.  When either of the gradient 
+              options are selected, both the first and second colors 
+              are available.  Both of the color buttons open a color 
+              chooser dialog:
+            </para>
             
             <figure id="select_bg_color-fig">
-              <title>Choisir la couleur de fond d'écran</title>
+              <title>Select Background Color</title>
               <screenshot>
                 <mediaobject>
                   <imageobject>
@@ -194,8 +345,14 @@
             
             <itemizedlist>
               <listitem>Sélectionnez la couleur en utilisant l'anneau extérieur, vous pouvez ensuite définir le degré d'obscurité et de luminosité de la couleur avec le pointeur dans le triangle intérieur. La case "Teinte" vous donne la position du triangle par rapport à la couleur, en dessous, dans la case "Saturation" s'affiche le niveau d'obscurité de la couleur et dans la case "Valeur" sa luminosité. Les valeurs correspondant à la couleur définie s'affichent dans les différentes cases de la droite de la fenêtre, tel la quantité de rouge, vert ou bleu. Le code de couleur hexadécimal s'affiche dans la case "Nom de la couleur" sur la droite du cercle.</listitem>
+              
               <listitem>Vous pouvez cliquer sur la pipette et ensuite sur n'importe quelle partie de l'écran pour en prendre sa couleur.</listitem>
-              <listitem>La case "Nom de la couleur" permet d'afficher la couleur actuelle au format hexadécimal, d'insérer le nom d'une couleur ou d'entrer soi-même le code hexadécimal d'une couleur.</listitem>
+              
+              <listitem>
+                You can enter an HTML-style hexadecimal color value, or
+                simply a color name, in the <emphasis>"Color Name"</emphasis> 
+                entry.
+              </listitem>
             </itemizedlist>
             
             <para>Les couleurs définies remplissent l'écran et sont visibles à travers une image de fond d'écran transparente.</para>
@@ -203,136 +360,195 @@
         </varlistentry>
         
         <varlistentry>
-          <term>Image</term>
+          <term>Adjustments</term>
           
           <listitem>
-            <para>Décochez la case "Afficher l'image" si vous ne voulez pas laisser <application>@PACKAGE_NAME@</application> afficher l'image de fond d'écran mais seulement la ou les couleurs sélectionnées précédemment.</para>
-            
-            <para>Vous pouvez définir l'image à afficher en entrant le chemin d'accès jusqu'au fichier dans le champ "Fichier", en déposant une image à l'intérieur du champ ou en cliquant sur l'icône dossier pour faire apparaître un menu classique de recherche de fichiers.</para>
-            
-            <para>Il est aussi possible de créer une liste d'images de fond d'écran choisis au hasard à chaque démarrage de Xfce. Cliquez sur le bouton  "Nouvelle liste..." pour faire apparaître la fenêtre d'édition de liste :</para>
-            
-            <figure id="xfdesktop-list-fig">
-              <title>Éditeur de liste de fonds d'écran</title> 
-              <screenshot>
-                <mediaobject>
-                  <imageobject>
-                    <imagedata fileref="images/xfdesktop-list.png" format="PNG"/>
-                  </imageobject>
-                  <textobject>
-                    <phrase>Affiche le gestionnaire d'édition de liste de fonds d'écran</phrase>
-                  </textobject>
-                </mediaobject>
-              </screenshot>
-            </figure>
-            
-            <para>Vous pouvez définir vous-même le fichier contenant la liste d'images de fond d'écran dans le champ "Fichier liste".</para>
-            
-            <para>Les images peuvent être ajoutée grâce au bouton "plus", ce qui ouvrira une fenêtre de navigation de fichiers. Supprimer des images se fait à l'aide du bouton "moins" après avoir sélectionné la ou les images dans la fenêtre "Fichiers images". Lorsque votre liste est terminée, cliquez sur le bouton "Enregistrer" pour... l'enregistrer. Cette liste pourra être modifiée ultérieurement en cliquant sur le bouton "Édition de la liste..." de la fenêtre des paramètres du bureau.</para>
-            
-            <para>Vous pouvez récupérer une ancienne liste en déposant le fichier nom.liste dans la fenêtre des paramètres du bureau depuis un gestionnaire de fichiers.</para>
-            
-            <para>Pour afficher une autre image de fond d'écran de la liste, il suffit d'exécuter à nouveau la commande <application>@PACKAGE_NAME@</application>, e.g. depuis une fenêtre de terminal ou de la fenêtre "exécuter", ou la commande <application>@PACKAGE_NAME@</application><arg>--reload</arg>.</para>
-            
-            <para>Quatre styles d'affichage de l'image à l'écran sont disponibles. Dépendant de la taille de l'image, l'on optera de préférence pour le style centré, mosaïque, étiré ou à l'échelle. Il est aussi possible de laisser <application>@PACKAGE_NAME@</application> choisir le format d'affichage en optant pour le style "Automatique".</para>
-            
-            <para>La barre du bas de la fenêtre des paramètres permet d'ajuster le degré de luminosité de l'image ou de la couleur définie.</para>
-            
-            <para><application>@PACKAGE_NAME@</application> supporte le mode multi-écrans et xinérama. En mode multi-écrans, chaque écran se voit assigné un onglet Apparence.</para>
+            <para>
+              The two sliders allow you to adjust the brightness and the
+              saturation of the backdrop image and or color.
+            </para>
           </listitem>
         </varlistentry>
+             
       </variablelist>
     </sect2>
     
-    <sect2 id="xfdesktop-settings-behavior">
-      <title>Onglet Comportement</title>
+    <sect2 id="xfdesktop-settings-menus">
+      <title>Menus Tab</title>
       
-      <figure id="xfdesktop-behavior-tab-fig">
-        <title>Paramètres du bureau, onglet apparence</title> 
+      <figure id="xfdesktop-menus-tab-fig">
+        <title>Desktop Settings, Menus Tab</title> 
         
         <screenshot>
           <mediaobject>
             <imageobject>
-              <imagedata fileref="images/xfdesktop-behavior-tab.png" format="PNG"/>
+              <imagedata fileref="images/xfdesktop-menus-tab.png" format="PNG"/>
             </imageobject>
             <textobject>
-              <phrase>Affiche l'onglet comportement de la fenêtre de paramètres du bureau</phrase>
+              <phrase>
+                Shows the Menus tab of the Desktop Settings dialog
+              </phrase>
             </textobject>
           </mediaobject>
         </screenshot>
       </figure>
       
-      <para>Les deux premières cases à cocher permettent l'activation des menus d'applications et des fenêtres. Vous y trouverez aussi un bouton pour exécuter l'éditeur de menu de Xfce que vous pourrez utiliser pour éditer le menu d'applications.</para>
-      
-      <para>Le comportement des icônes sur le bureau peut être défini dans cet onglet. Trois options vous sont offertes : Aucune, pour désactiver complètement les icônes sur le bureau; Icônes des applications minimisées, pour afficher sur le bureau les icônes des applications cachées ou minimisées; et Icônes de fichiers/lanceurs, pour afficher sur le bureau le contenu de votre dossier <filename>~/Bureau</filename>.</para>
-      
-      <para>Si les icônes de bureau sont activées, vous pouvez en contrôler la taille en pixels ainsi que la taille de la police d'écriture, utilisée pour afficher le texte de l'icône, en points. En cochant l'option "Utiliser la taille de police du système" vous forcerez <application>@PACKAGE_NAME@</application> à utiliser la taille de police d'écriture définie dans la fenêtre des paramètres de l'interface utilisateur de Xfce.</para>
+      <variablelist>
+        <varlistentry>
+          <term>Desktop Menu</term>
+          
+          <listitem>
+            <para>
+              If you check the 
+              <emphasis>"Show applications menu on desktop right click"</emphasis>,
+              the <link linkend="xfdesktop-menu">applications menu</link>
+              will be shown when right clicking on the desktop.
+            </para>
+          </listitem>
+          
+          <lisitem>
+            <para>
+              The <emphasis>"Show application icons in menu"</emphasis>
+              allows you to show or hide icons in the menu.
+            </para>
+          </lisitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>Menu de liste des fenêtres</term>
+          
+          <listitem>
+            <para>
+              If you check the 
+              <emphasis>"Show window list menu on desktop middle click"</emphasis>
+              option, the 
+              <link linkend="xfdesktop-window-list">window list menu</link>
+              will be shown when middle clicking on the desktop.
+            </para>
+          </listitem>
+          
+          <listitem>
+            <para>
+              The <emphasis>"Show application icons in menu"</emphasis>
+              option allows you to show or hide icons in the menu. This 
+              option is only available when 
+              <emphasis>"Show window list menu on desktop middle click"</emphasis> 
+              is checked.
+            </para>
+          </listitem>
+          
+          <!-- Add link to xfwm4 documentation to change workspaces names -->
+          <listitem>
+            <para>
+              The 
+              <emphasis>"Show workspace names in list"</emphasis> 
+              option allows you to show or hide workspace  names in the list. 
+              If checked, windows are shown under the name of their workspace. 
+              Else, they are all shown in the same portion of the menu. 
+              This option is only available when 
+              <emphasis>"Show window list menu on desktop middle click"</emphasis>
+              is checked.
+            </para>
+          </listitem>
+          
+          <listitem>
+            <para>
+              The 
+              <emphasis>"Show submenus for the windows in each workspace"</emphasis>
+              option allows you to have the windows displayed in a submenu 
+              titled with the workspace name. This option is only available 
+              when
+              <emphasis>"Show workspace names in list"</emphasis> is checked.
+            </para>
+          </listitem>
+          
+          <listitem>
+            <para>
+              The 
+              <emphasis>"Show sticky windows only in active workspace"</emphasis>
+              option allows you to have sticky windows displayed only in 
+              the active workspace, instead of displaying their item in 
+              all workspaces.
+            </para>
+          </listitem>
+          
+        </varlistentry>
+      </variablelist>
     </sect2>
-  </sect1>
-  
-  <sect1 id="xfdesktop-menu-editor">
-    <title>Éditeur de menu Xfce</title>
-    
-    <para>La manière recommandée d'éditer le menu d'applications se fait via l'éditeur de menu Xfce.</para>
-    
-    <figure id="xfdesktop-editor-fig">
-      <title>Éditeur de menu Xfce</title>
-      <screenshot>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="images/xfdesktop-editor.png" format="PNG"/>
-          </imageobject> 
-          <textobject>
-            <phrase>Affiche l'éditeur de menu</phrase>
-          </textobject>
-        </mediaobject>
-      </screenshot>
-    </figure>
-    
-    <para>l'éditeur de menu Xfce affiche le menu en vue arborescente. Les éléments du menu peuvent être édités en double-cliquant dessus, en choisissant "Éditer l'élément" du menu contextuel ou du menu principal Éditer. Les éléments du menu peuvent être déplacés vers le haut ou vers le bas avec les boutons flèches haut et bas ou en prenant l'élément et en le déplaçant vers la position souhaitée. Des éléments peuvent être ajoutés ou supprimés avec les boutons "plus" ou "moins".</para>
-    
-    <para>Il existe cinq types d'éléments de menu : <variablelist>
+   
+    <sect2 id="xfdesktop-settings-icons">
+      <title>Icons Tab</title>
+      
+      <figure id="xfdesktop-icons-tab-fig">
+        <title>Desktop Settings, Icons Tab</title> 
+        
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/xfdesktop-icons-tab.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>
+                Shows the Icons tab of the Desktop Settings dialog
+              </phrase>
+            </textobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      
+      <variablelist>
         <varlistentry>
-          <term>Titre</term>
+          <term>Appearance</term>
+          
           <listitem>
-            <para>L'élément titre n'a pas d'autres fonction que celle de donner un titre et/ou une icône au menu.</para>
+            <para>
+              The <emphasis>"Icon type"</emphasis> dropping list allows
+              you to set the behavior of the desktop icons. There are
+              three options: "None", to disable desktop icons entirely; 
+              "Minimized" application icons, to show icons for 
+              minimized or hidden applications on the desktop; 
+              and "File/launcher" icons, to show the contents of your
+              <filename>$XDG_DESKTOP_DIR</filename> directory on the 
+              desktop.
+            </para>
+            
+            <para>
+             If desktop icons are enabled, you can control the size of the icon
+             itself (in pixels) with the <emphasis>"Icon size"</emphasis>
+             option, and the font size used to display the icon text
+             (in points) with the 
+             <emphasis>"Use custom font size"</emphasis> option. If you 
+             do not check this last option, the system defaults will be
+             used.
+            </para>
           </listitem>
         </varlistentry>
         
         <varlistentry>
-          <term>Sous-menu</term>
+          <term>Default Icons</term>
+          
           <listitem>
-            <para>Un sous-menu permet de créer une certaine arborescence dans le menu.</para>
+            <para>
+              The checkboxes allow you to show or hide special icons on
+              the desktop, when <application>@PACKAGE_NAME@</application> is set to draw icons. Double 
+              clicking those icons will open a Thunar window displaying
+              the contents of a particular path.
+            </para>
+            
+            <para>
+              <emphasis>Home</emphasis> stands for your home folder, that
+              is to say, <filename>$HOME</filename>.
+              <emphasis>Filesystem</emphasis> stands for the root of your
+              file system, also known as <filename>/</filename>.
+              <emphasis>Trash</emphasis> stands for your trash folder,
+              and <emphasis>Removable devices</emphasis> represents
+              floppy drives, USB drives and keys, external hard drives, optical
+              discs, etc.
+            </para>
           </listitem>
         </varlistentry>
-        
-        <varlistentry>
-          <term>Lanceur</term>
-          <listitem>
-            <para>Les lanceurs exécutent une application une fois cliqués.</para>
-          </listitem>
-        </varlistentry>
-        
-        <varlistentry>
-          <term>Séparateur</term>
-          <listitem>
-            <para>Un séparateur dessine une ligne de séparation dans le menu.</para>
-          </listitem>
-        </varlistentry>
-        
-        <varlistentry>
-          <term>Quitter</term>
-          <listitem>
-            <para>L'élément quitter affiche une fenêtre de dialogue vous permettant de vous déconnecter, éteindre ou redémarrer l'ordinateur.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist></para>
-    
-    <para>Si l'application supporte la notification de démarrage, vous pouvez cocher la case et le pointeur de la souris se changera en sablier au moment du chargement de l'application. Si vous n'êtes pas sûr du support de notification de démarrage de l'application, laissez la case décochée.</para>
-    
-    <para>Si l'application ne fonctionne qu'en mode console, cochez la case "Exécuter dans un terminal".</para>
-    
-    <para>En plus des éléments de menu, il existe deux types d'éléments "spéciaux" que vous pouvez ajouter à votre menu en utilisant l'option "Ajouter un menu externe" du menu Éditer ou du menu contextuel. Le menu système cherche dans certaines parties de l'ordianteur pour toutes les applications ayant installé un fichier <filename>.desktop</filename> et crée un menu en arborescence de toutes les applications trouvées. Le menu "Fichier" permet de stocker d'autres menus dans des menus que vous pourrez par la suite fondre à l'intérieur du menu actuel.</para>
+      </variablelist>
+    </sect2>
   </sect1>
   
   <sect1 id="xfdesktop-hidden-options">
@@ -366,39 +582,6 @@ widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"]]>
           <para>Les entrées "NORMAL" définissent la couleur pour les icônes non sélectionnées. Les entrées "SELECTED" définissent leur couleur lorsqu'elles sont sélectionnées et que le clavier est focalisé sur le bureau. Les entrées "ACTIVE" définissent la couleur de l'icône sélectionnée mais uniquement lorsque le clavier ne focalise pas sur le bureau.</para>
         </listitem>
       </varlistentry>
-      
-      <varlistentry>
-        <term>Icônes spéciales supplémentaires</term>
-        <listitem>
-          <para>En plus des fichiers et lanceurs que <application>@PACKAGE_NAME@</application> peut afficher, il peut aussi faire apparaître sur le bureau les icônes des volumes amovibles insérés dans l'ordinateur. Il peut aussi afficher une icône pour le système de fichiers root, le dossier home et la corbeille. Par défaut, ces icônes sont toutes activées mais vous pouvez les désactiver en ajoutant les lignes suivantes au fichier <filename>$XDG_CONFIG_HOME/xfce4/desktop/xfdesktoprc</filename> (s'il n'existe pas, créez le) :</para>
-          
-          <programlisting>
-<![CDATA[[file-icons]
-show-filesystem=true
-show-home=true
-show-trash=true
-show-removable=true]]>
-          </programlisting>
-          
-          <para>Pour désactiver cette fonction  changez le "true" en "false" et enregistrez le fichier. Si un élément venait à manquer, il serait considéré comme "true". Redémarrez <application>@PACKAGE_NAME@</application> pour rendre les changements effectifs.</para>
-        </listitem>
-      </varlistentry>
-      
-      <varlistentry>
-        <term>Icônes dans les menus d'applications et des fenêtres</term>
-        <listitem>
-          <para>Pour désactiver les icônes des menus d'applications et des fenêtres, ajoutez les lignes suivantes au fichier <filename>~/.gtkrc-2.0</filename> :</para>
-          
-          <programlisting>
-<![CDATA[style "menu-images" {
-    gtk-menu-images = false
-}
-widget_class "*" style "menu-images"]]>
-          </programlisting>
-          
-          <para>Malheureusement cette dernière option affectera tous les menus GTK et pas seulement les menus d'applications et des fenêtres. Il n'existe, pour l'instant, pas de moyen de définir ces options uniquement pour ces deux menus.</para>
-        </listitem>
-      </varlistentry>
     </variablelist>
   </sect1>
 
@@ -419,7 +602,12 @@ widget_class "*" style "menu-images"]]>
     
     <para>This program is distributed under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</para>
     
-    <para>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.</para>
+    <para>
+      You should have received a copy of the GNU General Public License 
+      along with this program; if not, write to the Free Software 
+      Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, 
+      USA.
+    </para>
   </sect1>
   
 </article>
