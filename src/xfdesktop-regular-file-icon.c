@@ -79,6 +79,7 @@ static gboolean xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
 static G_CONST_RETURN ThunarVfsInfo *xfdesktop_regular_file_icon_peek_info(XfdesktopFileIcon *icon);
 static void xfdesktop_regular_file_icon_update_info(XfdesktopFileIcon *icon,
                                                     ThunarVfsInfo *info);
+static gboolean xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon);
 static gboolean xfdesktop_regular_file_can_write_file(XfdesktopFileIcon *icon);
 static gboolean xfdesktop_regular_file_icon_rename_file(XfdesktopFileIcon *icon,
                                                         const gchar *new_name);
@@ -127,9 +128,9 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
     
     file_icon_class->peek_info = xfdesktop_regular_file_icon_peek_info;
     file_icon_class->update_info = xfdesktop_regular_file_icon_update_info;
-    file_icon_class->can_rename_file = xfdesktop_regular_file_can_write_file;
+    file_icon_class->can_rename_file = xfdesktop_regular_file_can_write_parent;
     file_icon_class->rename_file = xfdesktop_regular_file_icon_rename_file;
-    file_icon_class->can_delete_file = xfdesktop_regular_file_can_write_file;
+    file_icon_class->can_delete_file = xfdesktop_regular_file_can_write_parent;
     file_icon_class->delete_file = xfdesktop_regular_file_icon_delete_file;
 }
 
@@ -494,6 +495,31 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
     }
     
     return regular_file_icon->priv->tooltip;
+}
+
+static gboolean
+xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon)
+{
+    XfdesktopRegularFileIcon *file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
+    ThunarVfsPath *parent;
+    ThunarVfsInfo *parent_info;
+    gboolean writable;
+
+    g_return_val_if_fail(file_icon && file_icon->priv->info, FALSE);
+
+    parent = thunar_vfs_path_get_parent(file_icon->priv->info->path);
+    if(!parent)
+        return FALSE;
+
+    parent_info = thunar_vfs_info_new_for_path(parent, NULL);
+    if(!parent_info)
+        return FALSE;
+
+    writable = (parent_info->flags & THUNAR_VFS_FILE_FLAGS_WRITABLE);
+    thunar_vfs_info_unref(parent_info);
+
+    return writable;
+
 }
 
 static gboolean
