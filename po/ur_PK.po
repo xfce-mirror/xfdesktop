@@ -12,14 +12,15 @@ msgstr ""
 "Last-Translator: Muhammad Ali Makki <makki.ma@gmail.com>\n"
 "Language-Team: Urdu <makki.ma@gmail.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Urdu\n"
 "X-Poedit-Country: PAKISTAN\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
+#: ../common/xfdesktop-common.c:87
+#: ../common/xfdesktop-common.c:191
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "پس منظر فہرست فائل موزوں نہیں"
@@ -126,11 +127,15 @@ msgstr "بلڈ اختیارات:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    ڈیسک ٹاپ مینیو:        %s\n"
 
-#: ../src/main.c:240 ../src/main.c:247 ../src/main.c:254
+#: ../src/main.c:240
+#: ../src/main.c:247
+#: ../src/main.c:254
 msgid "enabled"
 msgstr "فعال"
 
-#: ../src/main.c:242 ../src/main.c:249 ../src/main.c:256
+#: ../src/main.c:242
+#: ../src/main.c:249
+#: ../src/main.c:256
 msgid "disabled"
 msgstr "معطل"
 
@@ -157,8 +162,7 @@ msgstr "آپشن ہے:\n"
 #: ../src/main.c:283
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    --پھر لوڈ کریں      تمام ترتیبات پھر لوڈ کریں، تصاویر فہرست تازہ کریں\n"
+msgstr "    --پھر لوڈ کریں      تمام ترتیبات پھر لوڈ کریں، تصاویر فہرست تازہ کریں\n"
 
 #: ../src/main.c:284
 #, c-format
@@ -167,8 +171,7 @@ msgstr "    --مینیو        مینیو ظاہر کریں (حالیہ ماؤ�
 
 #: ../src/main.c:285
 #, c-format
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    --ونڈوفہرست  ونڈو لسٹ ظاہر کریں (حالیہ ماؤس پوزیشن پر)\n"
 
 #: ../src/main.c:286
@@ -204,7 +207,8 @@ msgstr "مقام کار %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>مقام کار %d</i>"
 
-#: ../src/windowlist.c:370 ../src/windowlist.c:373
+#: ../src/windowlist.c:370
+#: ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "_مقام کار شامل کریں"
 
@@ -218,7 +222,8 @@ msgstr "م_قام کار %d حذف کریں"
 msgid "_Remove Workspace '%s'"
 msgstr "مقام _کار '%s' حذف کریں"
 
-#: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
+#: ../src/xfce-desktop.c:742
+#: ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
 msgstr "ڈیسک ٹاپ"
 
@@ -233,8 +238,7 @@ msgstr "ڈیسک ٹاپ غلطی"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "Xfdesktop ڈیسک ٹاپ عناصر کو سٹور کرنے کے لیے \"%s\" فولڈر نہیں بناسکا:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
@@ -245,12 +249,8 @@ msgstr "فولڈر بنانے میں ناکامی"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop ڈیسک ٹاپ کے عناصر کو برقرار رکھنے کے لیے \"%s\" کو استعمال نہیں کر "
-"پارہا کیونکہ یہ فولڈر نہیں ہے."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop ڈیسک ٹاپ کے عناصر کو برقرار رکھنے کے لیے \"%s\" کو استعمال نہیں کر پارہا کیونکہ یہ فولڈر نہیں ہے."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -277,7 +277,8 @@ msgstr "پھرنام دیں"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "کیا آپ واقعی \"%s\" کو حذف کرنا چاہتے ہیں؟"
 
-#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:679
+#: ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "سوال"
 
@@ -297,7 +298,8 @@ msgstr "متعدد فائلیں حذف کریں"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1633 ../src/xfdesktop-file-icon.c:140
+#: ../src/xfdesktop-file-icon-manager.c:1633
+#: ../src/xfdesktop-file-icon.c:140
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -306,7 +308,8 @@ msgstr "چلانے میں ناکامی \"%s\":"
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
 #: ../src/xfdesktop-file-icon-manager.c:1240
-#: ../src/xfdesktop-file-icon-manager.c:1634 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1634
+#: ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "چلانے کی غلطی"
@@ -315,12 +318,10 @@ msgstr "چلانے کی غلطی"
 msgid "The application chooser could not be opened."
 msgstr "اطلاقیہ منتخب کار نہیں کھل سکتا."
 
-#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"اس خصوصیت کے لیے فائل منیجر سروس کا ہونا لازمی ہے (جیسی تھنر کے ساتھ آتی ہے)."
+#: ../src/xfdesktop-file-icon-manager.c:979
+#: ../src/xfdesktop-file-utils.c:358
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "اس خصوصیت کے لیے فائل منیجر سروس کا ہونا لازمی ہے (جیسی تھنر کے ساتھ آتی ہے)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1137
 #, c-format
@@ -338,12 +339,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "\"%s\" نام کا فولڈر نہیں بن سکا:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1242
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"\"exo-desktop-item-edit\" کو نہیں چلایا جاسکا جو ڈیسک ٹاپ پر لاؤنچر اور "
-"روابط مدون کرنے کے لیے لازمی ہے."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "\"exo-desktop-item-edit\" کو نہیں چلایا جاسکا جو ڈیسک ٹاپ پر لاؤنچر اور روابط مدون کرنے کے لیے لازمی ہے."
 
 #: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
@@ -399,7 +396,8 @@ msgid "_Open in New Window"
 msgstr "نئی ونڈو میں _کھولیں"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-special-file-icon.c:633
+#: ../src/xfdesktop-volume-icon.c:560
 msgid "_Open"
 msgstr "_کھولیں"
 
@@ -510,7 +508,8 @@ msgstr "ہدف ربط:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
-#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
+#: ../src/xfdesktop-volume-icon.c:476
+#: ../src/xfdesktop-volume-icon.c:482
 msgid "(unknown)"
 msgstr "(نا معلوم)"
 
@@ -616,7 +615,8 @@ msgstr "غلطی"
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "\"%s\" کا \"%s\" نام بدلنے میں ناکامی:"
 
-#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
+#: ../src/xfdesktop-special-file-icon.c:259
+#: ../settings/main.c:267
 msgid "Home"
 msgstr "گھر"
 
@@ -634,9 +634,7 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "ایکسفس ردی سروس سے رابطہ نہیں ہوسکا."
 
 #: ../src/xfdesktop-special-file-icon.c:518
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
 msgstr "ایکسفس ردی سروس کی معاونت کا حامل کوئی فائل منیجر نصب کریں جیسے تھنر."
 
 #: ../src/xfdesktop-special-file-icon.c:651
@@ -877,7 +875,8 @@ msgstr "قابلِ فصل آلات"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "پس منظر فہرست نہیں بنائی جاسکتی \"%s\""
 
-#: ../settings/main.c:430 ../settings/main.c:789
+#: ../settings/main.c:430
+#: ../settings/main.c:789
 msgid "Backdrop List Error"
 msgstr "پس منظر فہرست غلطی"
 
@@ -887,11 +886,8 @@ msgstr "بنائیں/پس منظر فہرست لوڈ کریں"
 
 #: ../settings/main.c:479
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"فائل \"%s\" موزوں پس منظر فہرست فائل نہیں ہے. کیا آپ اس کے اوپر لکھنا چاہتے "
-"ہیں؟"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "فائل \"%s\" موزوں پس منظر فہرست فائل نہیں ہے. کیا آپ اس کے اوپر لکھنا چاہتے ہیں؟"
 
 #: ../settings/main.c:484
 msgid "Invalid List File"
@@ -1190,8 +1186,7 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "میلان کا \"دائین\" یا \"نیچے\" کا رنگ متعین کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:57
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr "میلان کا \"بائیں\" یا \"اوپر\" رنگ یا سخت رنگ متعین کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:58
@@ -1203,9 +1198,7 @@ msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr "پس منظر تصویر کے پیچھے رنگ کا انداز متعین کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:60
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
 msgstr "آئکن کے متن کے پیجھے گول لیبل کی شفافیت کا درجہ متعین کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:61
@@ -1256,376 +1249,210 @@ msgstr "gtk-close"
 msgid "gtk-help"
 msgstr "gtk-help"
 
-msgid "xfce4-menueditor is deprecated"
-msgstr "xfce4-menueditor està desfasat"
-
-msgid ""
-"Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-"edit the new menu file format.  You may continue and edit an old-style menu "
-"file, or quit."
-msgstr ""
-"El sistema de menús de Xfce ha estat substituït i ara «xfce4-menueditor» no "
-"és capaç d'editar el nou format de menú. Podeu continuar i editar l'antic "
-"menú o sortir."
-
 #~ msgid "Add menu entry"
 #~ msgstr "مینیو انٹری شامل کریں"
-
 #~ msgid "Type:"
 #~ msgstr "قسم:"
-
 #~ msgid "Title"
 #~ msgstr "عنوان"
-
 #~ msgid "Submenu"
 #~ msgstr "ذیلی مینیو"
-
 #~ msgid "Launcher"
 #~ msgstr "لاؤنچر"
-
 #~ msgid "Separator"
 #~ msgstr "جداگار"
-
 #~ msgid "Quit"
 #~ msgstr "برخاست"
-
 #~ msgid "Command:"
 #~ msgstr "کمانڈ:"
-
 #~ msgid "Icon:"
 #~ msgstr "آئکن:"
-
 #~ msgid "No icon"
 #~ msgstr "بغیر آئکن"
-
 #~ msgid "Themed icon:"
 #~ msgstr "تھیم زدہ آئکن:"
-
 #~ msgid "Select icon"
 #~ msgstr "آئکن منتخب کریں"
-
 #~ msgid "Use startup _notification"
 #~ msgstr "سٹارٹ اپ ا_طلاع استعمال کریں"
-
 #~ msgid "Run in _terminal"
 #~ msgstr "_ٹرمنل میں چلائیں"
-
 #~ msgid "Select command"
 #~ msgstr "کمانڈ منتخب کریں"
-
 #~ msgid "Executable Files"
 #~ msgstr "اطلاقی فائلیں"
-
 #~ msgid "Perl Scripts"
 #~ msgstr "پرل سکرپٹ"
-
 #~ msgid "Python Scripts"
 #~ msgstr "پائتھن سکرپٹ"
-
 #~ msgid "Ruby Scripts"
 #~ msgstr "روبی سکرپٹ"
-
 #~ msgid "Shell Scripts"
 #~ msgstr "شیل سکرپٹ"
-
 #~ msgid "Add external menu entry"
 #~ msgstr "خارجی مینیو انٹری شامل کریں"
-
 #~ msgid "File"
 #~ msgstr "فائل"
-
 #~ msgid "Source:"
 #~ msgstr "مصدر:"
-
 #~ msgid "Select external menu"
 #~ msgstr "خارجی مینیو منتخب کریں"
-
-#, fuzzy
-#~ msgid "Style:"
-#~ msgstr "ان_داز:"
-
 #~ msgid "Simple"
 #~ msgstr "سادہ"
-
 #~ msgid "Multilevel"
 #~ msgstr "ملٹی لیول"
-
 #~ msgid "_Unique entries only"
 #~ msgstr "_صرف منفرد انٹریاں"
-
 #~ msgid "Edit menu entry"
 #~ msgstr "مینیو انٹری مدون کریں"
-
 #~ msgid "Edit external menu entry"
 #~ msgstr "خارجی مینیو انٹری مدون کریں"
-
 #~ msgid "Xfce4-MenuEditor"
 #~ msgstr "ایکسفس4-مینیو مدون"
-
-#, fuzzy
-#~ msgid "Menueditor Warning"
-#~ msgstr "مینیو مدون"
-
-#, fuzzy
-#~ msgid "Continue"
-#~ msgstr "معاون"
-
 #~ msgid "_File"
 #~ msgstr "_فائل"
-
 #~ msgid "_New"
 #~ msgstr "_نیا"
-
 #~ msgid "Create a new empty menu"
 #~ msgstr "نیا خالی مینیو بنائیں"
-
 #~ msgid "Open existing menu"
 #~ msgstr "سابقہ مینیو کھولیں"
-
 #~ msgid "Open _default menu"
 #~ msgstr "_طے شدہ مینیو کھولیں"
-
 #~ msgid "Open default menu"
 #~ msgstr "طے شدہ مینیو کھولیں"
-
 #~ msgid "_Save"
 #~ msgstr "_محفوظ کریں"
-
 #~ msgid "Save modifications"
 #~ msgstr "تبدیلیاں محفوظ کریں"
-
 #~ msgid "Save _as..."
 #~ msgstr "م_حفوظ بنام..."
-
 #~ msgid "Save menu under a given name"
 #~ msgstr "مینیو کو نئے دیے گئے نام سے محفوظ کریں"
-
 #~ msgid "_Close"
 #~ msgstr "_بند کریں"
-
 #~ msgid "Close menu"
 #~ msgstr "مینیو بند کریں"
-
 #~ msgid "_Quit"
 #~ msgstr "ب_رخاست"
-
 #~ msgid "Quit Xfce4-Menueditor"
 #~ msgstr "ایکسفس4-مینیو مدون بند کریں"
-
 #~ msgid "_Edit"
 #~ msgstr "_تدوین"
-
 #~ msgid "_Edit entry"
 #~ msgstr "_انٹری مدون کریں"
-
 #~ msgid "Edit selected entry"
 #~ msgstr "منتخب کردہ انٹری مدون کریں"
-
 #~ msgid "_Add entry"
 #~ msgstr "ان_ٹری شامل کریں"
-
 #~ msgid "Add a new entry in the menu"
 #~ msgstr "مینیو میں نئی انٹری شامل کریں"
-
 #~ msgid "Add _external"
 #~ msgstr "_خارجی شامل کریں"
-
 #~ msgid "Add an external entry"
 #~ msgstr "خارجی انٹری شامل کریں"
-
 #~ msgid "_Remove entry"
 #~ msgstr "انٹر_ی حذف کریں"
-
 #~ msgid "Remove entry"
 #~ msgstr "انٹری حذف کریں"
-
 #~ msgid "_Up"
 #~ msgstr "ا_وپر"
-
 #~ msgid "Move entry up"
 #~ msgstr "انٹری اوپر منتقل کریں"
-
 #~ msgid "_Down"
 #~ msgstr "نی_چے"
-
 #~ msgid "Move entry down"
 #~ msgstr "انٹری نیچے منتقل کریں"
-
 #~ msgid "_Help"
 #~ msgstr "_ہدایات"
-
 #~ msgid "_About..."
 #~ msgstr "_بابت..."
-
 #~ msgid "Show informations about xfce4-menueditor"
 #~ msgstr "ایکسفس4-مینیو مدون کے بارے میں معومات"
-
 #~ msgid "Collapse all"
 #~ msgstr "سب گرائیں"
-
 #~ msgid "Collapse all menu entries"
 #~ msgstr "تمام مینیو انٹریاں گرادیں"
-
 #~ msgid "Expand all"
 #~ msgstr "سب پھیلائیں"
-
 #~ msgid "Expand all menu entries"
 #~ msgstr "تمام مینیو انٹریاں پھیلادیں"
-
 #~ msgid "Name"
 #~ msgstr "نام"
-
 #~ msgid "Command"
 #~ msgstr "کمانڈ"
-
 #~ msgid "Hidden"
 #~ msgstr "خفیہ"
-
 #~ msgid "Are you sure you want to close the current menu?"
 #~ msgstr "کیا واقعی حالیہ مینیو کو بند کرنا چاہتے ہیں؟"
-
 #~ msgid "Do you want to save before closing the file?"
 #~ msgstr "کیا آپ فائل بند کرنے سے پہلے اسے محفوظ کرنا چاہتے ہیں؟"
-
 #~ msgid "Do you want to save before opening an other menu ?"
 #~ msgstr "کیا آپ دوسرا مینیو کھولنے سے پہلے محفوظ کرنا چاہتے ہیں؟"
-
 #~ msgid "Ignore modifications"
 #~ msgstr "تبدیلیاں نظر انداز کریں"
-
 #~ msgid "Open menu file"
 #~ msgstr "مینیو فائل کھولیں"
-
 #~ msgid "Do you want to save before opening the default menu ?"
 #~ msgstr "کیا آپ طے شدہ مینیو کھولنے سے پہلے محفوظ  کرنا چاہتے ہیں؟"
-
 #~ msgid "Save menu file as"
 #~ msgstr "مینیو فائل محفوظ بنام"
-
 #~ msgid "Do you want to save before closing the menu ?"
 #~ msgstr "کیا آپ مینیو بند کرنے سے پہلے محفوظ کرنا چاہتے ہیں؟"
-
 #~ msgid "quit"
 #~ msgstr "برخاست"
-
 #~ msgid "--- separator ---"
 #~ msgstr "--- جداگار ---"
-
 #~ msgid "--- include ---"
 #~ msgstr "--- شامل ---"
-
-#, fuzzy
-#~ msgid "system"
-#~ msgstr "نظام"
-
 #~ msgid "Do you want to move the item into the submenu?"
 #~ msgstr "کیا آپ عنصر کو سب مینیو میں منتقل کرنا چاہتے ہیں؟"
-
 #~ msgid "A menu editor for Xfce4"
 #~ msgstr "مینیو مدون برائے ایکسفس 4"
-
 #~ msgid "Author/Maintainer"
 #~ msgstr "مالک/منتظم"
-
 #~ msgid "Contributor"
 #~ msgstr "معاون"
-
 #~ msgid "Icon designer"
 #~ msgstr "آئکن ڈیزائنر"
-
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr ""
 #~ "آپ نے مینیو میں تبدیلی کی ہے، کیا آپ بند کرنے سے پہلے اسے محفوظ کرنا "
 #~ "چاہتے ہیں؟"
-
 #~ msgid "Forget modifications"
 #~ msgstr "تبدیلیاں نظر انداز کریں"
-
 #~ msgid "Unable to open the menu file %s in write mode"
 #~ msgstr "لکھنے کے موڈ میں مینیو فائل %s نہیں کھولی جاسکی"
-
-#~ msgid "Graphical tool for editing the Xfce 4 menu"
-#~ msgstr "گریفکل اوزار برائے ایکسفس 4 مینیو تدوین"
-
-#~ msgid "Menu Editor"
-#~ msgstr "مینیو مدون"
-
-#~ msgid "Xfce 4 Menu Editor"
-#~ msgstr "ایکسفس 4 مینیو مدون"
-
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "ترتیبات برائے ایکسفس 4 ڈیسک ٹاپ منیجر"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "ایکسفس 4 ڈیسک ٹاپ ترتیبات"
-
-#, fuzzy
-#~ msgid "Show windows on each workspace in _submenus"
-#~ msgstr "ہر مقام کار میں ونڈوز _ذیلی مینیو میں ظاہر کریں"
-
-#, fuzzy
-#~ msgid "Use _Xfce to manage the desktop"
-#~ msgstr "ایکسفس کو ڈیسک ٹاپ کے انتظام کی اجازت دیں"
-
-#~ msgid ""
-#~ "Could not save file %s: %s\n"
-#~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
-#~ msgstr ""
-#~ "فائل %s کو محفوظ نہیں کیا جاسکتا: %s\n"
-#~ "\n"
-#~ "کوئی دوسرا مقام منتخب کریں یا تبدیلیاں ختم کرنے کے لیے مسترد دبائیں"
-
 #~ msgid "Button Label|Desktop"
 #~ msgstr "ڈیسک ٹاپ"
-
 #~ msgid "backdrops.list"
 #~ msgstr "backdrops.list"
-
 #~ msgid "Select backdrop image or list file"
 #~ msgstr "backdrop تصویر یا فہرست فائل منتخب کریں"
-
 #~ msgid "List Files (*.list)"
 #~ msgstr "فہرست فائلیں (*.list)"
-
 #~ msgid "_Edit list..."
 #~ msgstr "_فہرست مدون کریں..."
-
 #~ msgid "_New list..."
 #~ msgstr "_نئی فہرست..."
-
 #~ msgid "S_tyle:"
 #~ msgstr "_انداز:"
-
 #~ msgid "Auto"
 #~ msgstr "خودکار"
-
 #~ msgid "Centered"
 #~ msgstr "درمیان"
-
 #~ msgid "Tiled"
 #~ msgstr "ٹائلڈ"
-
 #~ msgid "Stretched"
 #~ msgstr "کھنچا ہوا"
-
 #~ msgid "Scaled"
 #~ msgstr "قیاسی"
-
-#, fuzzy
-#~ msgid "Zoomed"
-#~ msgstr "گھر"
-
 #~ msgid "Xfce will be unable to manage your desktop (%s)."
 #~ msgstr "ایکسفس آپ کے ڈیسک ٹاپ کا انتظام نہیں کرسکے گا (%s)."
-
 #~ msgid "Unknown Error"
 #~ msgstr "نامعلوم غلطی"
-
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "ایکس ایف ڈیسک ٹاپ نہیں چلایا جاسکا"
-
 #~ msgid ""
 #~ "To ensure that this setting takes effect the next time you start Xfce, "
 #~ "please be sure to save your session when logging out.  If you are not "
@@ -1638,7 +1465,6 @@ msgstr ""
 #~ "session) استعمال نہیں کر رہے تو آپ کو چاہیے کہ اپنی ~/.config/xfce4/"
 #~ "xinitrc فائل مدون کرلیں. مزید تفصیلات http://xfce.org/ کی فراہم کردہ "
 #~ "دستاویزات میں موجود ہیں."
-
 #~ msgid ""
 #~ "To ensure that Xfce does not manage your desktop the next time you start "
 #~ "Xfce, please be sure to save your session when logging out.  If you are "
@@ -1651,63 +1477,67 @@ msgstr ""
 #~ "(xfce4-session) استعمال نہیں کر رہے تو آپ کو چاہیے کہ اپنی ~/.config/"
 #~ "xfce4/xinitrc فائل مدون کرلیں. مزید تفصیلات http://xfce.org/ کی فراہم "
 #~ "کردہ دستاویزات میں موجود ہیں."
-
 #~ msgid "_Do not show this again"
 #~ msgstr "_یہ پیغام پھر مت دکھائیں"
-
 #~ msgid "Desktop Preferences"
 #~ msgstr "ڈیسک ٹاپ ترجیحات"
-
+#~ msgid "Allow _Xfce to manage the desktop"
+#~ msgstr "ایکسفس کو ڈیسک ٹاپ کے انتظام کی اجازت دیں"
 #~ msgid "Stretch single backdrop onto _all monitors"
 #~ msgstr "مفرد backdrop کو _تمام مانیٹرز پر کھینچيں"
-
 #~ msgid "Color"
 #~ msgstr "رنگ"
-
 #~ msgid "_Color Style:"
 #~ msgstr "_رنگ انداز:"
-
 #~ msgid "Solid Color"
 #~ msgstr "سخت رنگ"
-
 #~ msgid "Horizontal Gradient"
 #~ msgstr "افقی Gradient"
-
 #~ msgid "Vertical Gradient"
 #~ msgstr "عمودی Gradient"
-
 #~ msgid "Image"
 #~ msgstr "تصویر"
-
 #~ msgid "Show _Image"
 #~ msgstr "ت_صویر ظاہر کریں"
-
 #~ msgid "_File:"
 #~ msgstr "_فائل:"
-
 #~ msgid "_Behavior"
 #~ msgstr "_سلوک"
-
+#~ msgid ""
+#~ "Could not save file %s: %s\n"
+#~ "\n"
+#~ "Please choose another location or press cancel in the dialog to discard "
+#~ "your changes"
+#~ msgstr ""
+#~ "فائل %s کو محفوظ نہیں کیا جاسکتا: %s\n"
+#~ "\n"
+#~ "کوئی دوسرا مقام منتخب کریں یا تبدیلیاں ختم کرنے کے لیے مسترد دبائیں"
 #~ msgid "Select backdrop image file"
 #~ msgstr "backdrop تصویر فائل منتخب کریں"
-
 #~ msgid "List file"
 #~ msgstr "فہرست فائل"
-
 #~ msgid "Edit backdrop list"
 #~ msgstr "backdrop فہرست مدون کریں"
-
+#~ msgid "Show windows on each workspace in sub_menus"
+#~ msgstr "ہر مقام کار میں ونڈوز _ذیلی مینیو میں ظاہر کریں"
 #~ msgid "Desktop Icons"
 #~ msgstr "ڈیک ٹاپ آئکنز"
-
 #~ msgid "File/launcher icons"
 #~ msgstr "فائل/لاؤنچر آئکنز"
-
 #~ msgid "Use _system font size"
 #~ msgstr "_نظام کا فونٹ حجم استعمال کریں"
-
 #~ msgid "Des_ktop"
 #~ msgstr "_ڈیسک ٹاپ"
-
 #~ msgid "_Desktop Properties..."
 #~ msgstr "ڈیس_ک ٹاپ خصوصیات..."
+#~ msgid "Graphical tool for editing the Xfce 4 menu"
+#~ msgstr "گریفکل اوزار برائے ایکسفس 4 مینیو تدوین"
+#~ msgid "Menu Editor"
+#~ msgstr "مینیو مدون"
+#~ msgid "Xfce 4 Menu Editor"
+#~ msgstr "ایکسفس 4 مینیو مدون"
+#~ msgid "Settings for the Xfce 4 Desktop Manager"
+#~ msgstr "ترتیبات برائے ایکسفس 4 ڈیسک ٹاپ منیجر"
+#~ msgid "Xfce 4 Desktop Settings"
+#~ msgstr "ایکسفس 4 ڈیسک ٹاپ ترتیبات"
+

@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-26 01:15+0100\n"
-"PO-Revision-Date: 2007-11-01 18:23+0500\n"
-"Last-Translator: Muhammad Ali Makki <makki.ma@gmai.com>\n"
+"PO-Revision-Date: 2009-05-14 02:32+0500\n"
+"Last-Translator: Muhammad Ali Makki <makki.ma@gmail.com>\n"
 "Language-Team: Urdu <makki.ma@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,16 +17,17 @@ msgstr ""
 "X-Poedit-Language: Urdu\n"
 "X-Poedit-Country: PAKISTAN\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
-#, fuzzy, c-format
+#, c-format
 msgid "Backdrop list file is not valid"
-msgstr "backdrop فہرست فائل کا نام منتخب کریں"
+msgstr "پس منظر فہرست فائل موزوں نہیں"
 
 #: ../panel-plugin/desktop-menu-plugin.c:653
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "ایکسفس4-مینیومدون نہیں چلایا جاسکا: %s"
+msgstr "ایکسفس4-مینیو مدون نہیں چلایا جاسکا: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:676
 msgid "Select Icon"
@@ -182,11 +183,11 @@ msgstr "%s نہیں چل رہا.\n"
 
 #: ../src/menu.c:113
 msgid "_Applications"
-msgstr ""
+msgstr "ا_طلاقیے"
 
 #: ../src/windowlist.c:236
 msgid "Window List"
-msgstr ""
+msgstr "ونڈو فہرست"
 
 #: ../src/windowlist.c:262
 #, c-format
@@ -222,14 +223,13 @@ msgid "Desktop"
 msgstr "ڈیسک ٹاپ"
 
 #: ../src/xfce-desktop.c:1009
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "فائل \"%s\" نہیں بنائی جاسکی:"
+msgstr "پس منظر فہرست فائل \"%s\" میں سے تصاویر لوڈ کرنے میں ناکامی"
 
 #: ../src/xfce-desktop.c:1011
-#, fuzzy
 msgid "Desktop Error"
-msgstr "ڈیسک ٹاپ"
+msgstr "ڈیسک ٹاپ غلطی"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
@@ -396,7 +396,7 @@ msgstr "_کھولیں تمام"
 
 #: ../src/xfdesktop-file-icon-manager.c:1716
 msgid "_Open in New Window"
-msgstr ""
+msgstr "نئی ونڈو میں _کھولیں"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
 #: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
@@ -416,9 +416,8 @@ msgid "Create _Folder..."
 msgstr "فولڈر بنائی_ں..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1791
-#, fuzzy
 msgid "Create From _Template"
-msgstr "ٹیمپلیٹ \"%s\" سے دستاویز بنائیں"
+msgstr "_ٹیمپلیٹ سے بنائیں"
 
 #: ../src/xfdesktop-file-icon-manager.c:1825
 msgid "_Empty File"
@@ -426,7 +425,7 @@ msgstr "_خالی فائل"
 
 #: ../src/xfdesktop-file-icon-manager.c:1841
 msgid "_Execute"
-msgstr "_اطلاق"
+msgstr "_چلائیں"
 
 #: ../src/xfdesktop-file-icon-manager.c:1859
 msgid "_Edit Launcher"
@@ -503,7 +502,7 @@ msgstr "نام:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:214
 msgid "Kind:"
-msgstr "قسم:"
+msgstr "نوعیت:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:234
 msgid "Link Target:"
@@ -561,7 +560,7 @@ msgstr "گروپ:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:533
 msgid "Others:"
-msgstr "دوسرے:"
+msgstr "دیگر:"
 
 #: ../src/xfdesktop-file-utils.c:74
 msgid "Yes to _all"
@@ -619,13 +618,12 @@ msgstr "\"%s\" کا \"%s\" نام بدلنے میں ناکامی:"
 
 #: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
 msgid "Home"
-msgstr "ہوم"
+msgstr "گھر"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
-#, fuzzy
 msgid "Kind: Trash"
-msgstr "قسم:"
+msgstr "نوعیت: ردی"
 
 #: ../src/xfdesktop-special-file-icon.c:515
 msgid "Trash Error"
@@ -648,7 +646,7 @@ msgstr "_ردی خالی کریں"
 #: ../src/xfdesktop-volume-icon.c:474
 #, c-format
 msgid "%s (%s total)"
-msgstr ""
+msgstr "%s (کُل %s)"
 
 #: ../src/xfdesktop-volume-icon.c:478
 #, c-format
@@ -657,6 +655,9 @@ msgid ""
 "Mount Point: %s\n"
 "Free Space: %s"
 msgstr ""
+"نوعیت: قابلِ فصل والیم\n"
+"ماؤنٹ پؤائنٹ: %s\n"
+"خالی جگہ: %s"
 
 #: ../src/xfdesktop-volume-icon.c:509
 #, c-format
@@ -719,7 +720,7 @@ msgstr "تعلیم"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:2
 msgid "Educational software"
-msgstr "تعلیم پروگرام"
+msgstr "تعلیمی پروگرام"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
 msgid "Games"
@@ -767,7 +768,7 @@ msgstr "اطلاقیے جو کسی دوسرے زمرے میں نہیں آتے"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
 msgid "Other"
-msgstr "دوسرے"
+msgstr "دیگر"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
@@ -856,79 +857,75 @@ msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
 msgstr ""
+"%s\n"
+"<i>حجم: %dx%d</i>"
 
 #: ../settings/main.c:269
-#, fuzzy
 msgid "Filesystem"
-msgstr "نظام"
+msgstr "فائل سسٹم"
 
 #: ../settings/main.c:271
-#, fuzzy
 msgid "Trash"
-msgstr "ردی غلطی"
+msgstr "ردی"
 
 #: ../settings/main.c:273
 msgid "Removable Devices"
-msgstr ""
+msgstr "قابلِ فصل آلات"
 
 #: ../settings/main.c:426
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "backdrop فہرست بنائیں"
+msgstr "پس منظر فہرست نہیں بنائی جاسکتی \"%s\""
 
 #: ../settings/main.c:430 ../settings/main.c:789
-#, fuzzy
 msgid "Backdrop List Error"
-msgstr "خصوصیات غلطی"
+msgstr "پس منظر فہرست غلطی"
 
 #: ../settings/main.c:455
-#, fuzzy
 msgid "Create/Load Backdrop List"
-msgstr "backdrop فہرست بنائیں"
+msgstr "بنائیں/پس منظر فہرست لوڈ کریں"
 
 #: ../settings/main.c:479
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
+"فائل \"%s\" موزوں پس منظر فہرست فائل نہیں ہے. کیا آپ اس کے اوپر لکھنا چاہتے "
+"ہیں؟"
 
 #: ../settings/main.c:484
-#, fuzzy
 msgid "Invalid List File"
-msgstr "فہرست فائلیں"
+msgstr "ناموزوں فہرست فائل"
 
 #: ../settings/main.c:487
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
+msgstr "فائل کے اوپر لکھنے کے نتیجہ میں اس کا مواد ضائع ہوجائے گا."
 
 #: ../settings/main.c:489
-#, fuzzy
 msgid "Replace"
-msgstr "پھرنام دیں"
+msgstr "تبدیل کریں"
 
 #: ../settings/main.c:785
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "\"%s\" کا \"%s\" نام بدلنے میں ناکامی:"
+msgstr "پس منظر فہرست \"%s\" پر لکھنے میں ناکامی"
 
 #: ../settings/main.c:812
-#, fuzzy
 msgid "Add Image File(s)"
-msgstr "تصاویر فائلیں"
+msgstr "تصاویر فائلیں شامل کریں"
 
 #: ../settings/main.c:821
 msgid "Image files"
 msgstr "تصویر فائلیں"
 
 #: ../settings/main.c:826
-#, fuzzy
 msgid "All files"
 msgstr "تمام فائلیں"
 
 #: ../settings/main.c:1120
-#, fuzzy, c-format
+#, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "سکرین %d، مانیٹر %d"
+msgstr "سکرین %d, مانیٹر %d (%s)"
 
 #: ../settings/main.c:1125
 #, c-format
@@ -943,95 +940,90 @@ msgstr "سکرین %d"
 #: ../settings/main.c:1134
 #, c-format
 msgid "Monitor %d (%s)"
-msgstr ""
+msgstr "مانیٹر %d (%s)"
 
 #: ../settings/main.c:1139
-#, fuzzy, c-format
+#, c-format
 msgid "Monitor %d"
-msgstr "سکرین %d، مانیٹر %d"
+msgstr "مانیٹر %d"
 
 #: ../settings/main.c:1354
 msgid "Settings manager socket"
-msgstr ""
+msgstr "ترتیبات منیجر ساکٹ"
 
 #: ../settings/main.c:1354
 msgid "SOCKET ID"
-msgstr ""
+msgstr "ساکٹ آئی ڈی"
 
 #: ../settings/main.c:1355
-#, fuzzy
 msgid "Version information"
-msgstr "معلومات"
+msgstr "ورژن معلومات"
 
 #: ../settings/main.c:1375
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr ""
+msgstr "ہدایات کے لیے '%s --help' لکھیں"
 
 #: ../settings/main.c:1387
 msgid "The Xfce development team. All rights reserved."
-msgstr ""
+msgstr "ایکسفس ترقی ٹیم. تمام حقوق محفوظ ہیں"
 
 #: ../settings/main.c:1388
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "براہ مہربانی غلطیوں رپورٹ کریں <%s>."
 
 #: ../settings/main.c:1395
 msgid "Desktop Settings"
 msgstr "ڈیسک ٹاپ ترتیبات"
 
 #: ../settings/main.c:1397
-#, fuzzy
 msgid "Unable to contact settings server"
-msgstr "ایکسفس ردی سروس سے رابطہ نہیں ہوسکا."
+msgstr "ترتیبات کے سرور سے رابطہ نہیں ہوسکا"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop "
 msgstr "ڈیسک ٹاپ"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
+msgstr "ڈیسک ٹاپ پس منظر، مینیو اور آئکن کا انداز متعین کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
-msgstr ""
+msgstr "<b>ترتیبات</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:2
-#, fuzzy
 msgid "<b>Appearance</b>"
-msgstr "_مظہر"
+msgstr "<b>مظہر</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:3
-#, fuzzy
 msgid "<b>Colors</b>"
-msgstr "<b>مقام کار %d</b>"
+msgstr "<b>رنگ</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:4
 msgid "<b>Default Icons</b>"
-msgstr ""
+msgstr "<b>طے شدہ آئکن</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:5
 msgid "<b>Desktop Menu</b>"
-msgstr ""
+msgstr "<b>ڈیسک ٹاپ مینیو</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:6
 msgid "<b>Image</b>"
-msgstr ""
+msgstr "<b>تصویر</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:7
 msgid "<b>Images</b>"
-msgstr ""
+msgstr "<b>تصاویر</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:8
 msgid "<b>Window List Menu</b>"
-msgstr ""
+msgstr "<b>ونڈو فہرست مینیو</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:9
 msgid "Add an image to the list"
-msgstr ""
+msgstr "فہرست میں تصویر شامل کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:10
 msgid ""
@@ -1042,55 +1034,56 @@ msgid ""
 "Scaled\n"
 "Zoomed"
 msgstr ""
+"خودکار\n"
+"درمیان\n"
+"ٹائل\n"
+"کھنچا ہوا\n"
+"ناپ شدہ\n"
+"نزدیک"
 
 #: ../settings/xfdesktop-settings.glade.h:16
 msgid "Automatically pick a random image from a list file"
-msgstr ""
+msgstr "فہرست میں سے خودکار طور پر ایک تصویر چنیں"
 
 #: ../settings/xfdesktop-settings.glade.h:17
-#, fuzzy
 msgid "B_rightness:"
-msgstr "چمک دمک ترتیب دیں:"
+msgstr "_چمک دمک:"
 
 #: ../settings/xfdesktop-settings.glade.h:18
-#, fuzzy
 msgid "B_utton:"
-msgstr "بٹن"
+msgstr "ب_ٹن:"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
-msgstr ""
+msgstr "نئی فہرست بنائیں، یا کوئی سابقہ لوڈ کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:21
 msgid "Don't display an image at all"
-msgstr ""
+msgstr "تصویر مت دکھائیں"
 
 #: ../settings/xfdesktop-settings.glade.h:22
-#, fuzzy
 msgid "Icon _size:"
 msgstr "_آئکن حجم:"
 
 #: ../settings/xfdesktop-settings.glade.h:23
-#, fuzzy
 msgid "Icon _type:"
-msgstr "_آئکن حجم:"
+msgstr "_آئکن نوعیت:"
 
 #: ../settings/xfdesktop-settings.glade.h:24
-#, fuzzy
 msgid "Image _list"
-msgstr "تصاویر فائلیں"
+msgstr "تصویر _فہرست"
 
 #: ../settings/xfdesktop-settings.glade.h:25
 msgid "Increase or decrease the brightness of the final image"
-msgstr ""
+msgstr "آخری تصویر کی چمک بڑھائیں یا گھٹائیں"
 
 #: ../settings/xfdesktop-settings.glade.h:26
 msgid "Increase or decrease the color saturation of the final image"
-msgstr ""
+msgstr "آخری تصویر کا رنگ بھراؤ بڑھائیں یا گھٹائیں"
 
 #: ../settings/xfdesktop-settings.glade.h:27
 msgid "Label trans_parency:"
-msgstr ""
+msgstr "_شفافیت لیبل:"
 
 #: ../settings/xfdesktop-settings.glade.h:28
 msgid ""
@@ -1098,24 +1091,27 @@ msgid ""
 "Middle\n"
 "Right"
 msgstr ""
+"بائیں\n"
+"درمیان\n"
+"دائیں"
 
 #: ../settings/xfdesktop-settings.glade.h:31
-#, fuzzy
 msgid "Mo_difier:"
-msgstr "تبدیلی:"
+msgstr "م_بدل کار:"
 
 #: ../settings/xfdesktop-settings.glade.h:32
-#, fuzzy
 msgid "Modi_fier:"
-msgstr "تبدیلی:"
+msgstr "مب_دل کار:"
 
 #: ../settings/xfdesktop-settings.glade.h:33
-#, fuzzy
 msgid ""
 "None\n"
 "Minimized application icons\n"
 "File/launcher icons"
-msgstr "منمائز کیے ہوئے اطلاقیوں کے آئکنز"
+msgstr ""
+"کچھ نہیں\n"
+"چھوٹے کیے اطلاقیہ آئکن\n"
+"فائل/لاؤنچر آئکن"
 
 #: ../settings/xfdesktop-settings.glade.h:36
 msgid ""
@@ -1124,55 +1120,52 @@ msgid ""
 "Alt\n"
 "Control"
 msgstr ""
+"کچھ نہیں\n"
+"شفٹ\n"
+"آلٹ\n"
+"کنٹرول"
 
 #: ../settings/xfdesktop-settings.glade.h:40
 msgid "Remove the selected image(s) from the list"
-msgstr ""
+msgstr "منتخب کردہ تصویر/تصاویر فہرست میں سے حذف کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:41
 msgid "Sa_turation:"
-msgstr ""
+msgstr "بھراؤ:"
 
 #: ../settings/xfdesktop-settings.glade.h:42
-#, fuzzy
 msgid "Select First Color"
-msgstr "پ_ہلا رنگ:"
+msgstr "پہلا رنگ منتخب کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:43
-#, fuzzy
 msgid "Select Second Color"
-msgstr "_دوسرا رنگ:"
+msgstr "دوسرا رنگ منتخب کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:44
 msgid "Select a single image as the backdrop"
-msgstr ""
+msgstr "ایک تصویر بطور پس منظر منتخب کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:45
 msgid "Set desktop background and menu and icon behavior"
-msgstr ""
+msgstr "ڈیسک ٹاپ کا پس منظر، مینیو اور آئکن سلوک متعین کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:46
-#, fuzzy
 msgid "Sh_ow application icons in menu"
-msgstr "مینیو میں _آئکن ظاہرکریں"
+msgstr "مینیو میں اطلاقیوں کے آئکن _ظاہر کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:47
-#, fuzzy
 msgid "Show _application icons in menu"
-msgstr "مینیو میں _آئکن ظاہرکریں"
+msgstr "مینیو میں ا_طلاقیوں کے آئکن ظاہر کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:48
-#, fuzzy
 msgid "Show _window list menu on desktop middle click"
 msgstr "_ونڈوز کی فہرست درمیانی کلک پر ظاہر کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:49
-#, fuzzy
 msgid "Show applications menu on _desktop right click"
-msgstr "دا_ئیں کلک پر ڈیسک ٹاپ مینیو ظاہر کریں"
+msgstr "ڈیسک ٹاپ دائیں کلک پر اطلاقیوں کا مینیو ظاہر کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:50
-#, fuzzy
 msgid "Show s_ticky windows only in active workspace"
 msgstr "چپکی ہوئی ونڈوز صرف _فعال مقام کار میں ظاہر کریں"
 
@@ -1187,84 +1180,81 @@ msgid ""
 "Vertical gradient\n"
 "Transparent"
 msgstr ""
+"سخت رنگ\n"
+"افقی میلان\n"
+"عمودی میلان\n"
+"شفاف"
 
 #: ../settings/xfdesktop-settings.glade.h:56
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
+msgstr "میلان کا \"دائین\" یا \"نیچے\" کا رنگ متعین کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:57
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
+msgstr "میلان کا \"بائیں\" یا \"اوپر\" رنگ یا سخت رنگ متعین کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
+msgstr "تصویر کس طرح حجم تبدیل کر کے سکرین پر فِٹ ہوگی"
 
 #: ../settings/xfdesktop-settings.glade.h:59
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
+msgstr "پس منظر تصویر کے پیچھے رنگ کا انداز متعین کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:60
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
-msgstr ""
+msgstr "آئکن کے متن کے پیجھے گول لیبل کی شفافیت کا درجہ متعین کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:61
-#, fuzzy
 msgid "St_yle:"
-msgstr "انداز:"
+msgstr "ان_داز:"
 
 #: ../settings/xfdesktop-settings.glade.h:62
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "ہر مقام کار میں ونڈوز کے لیے ذیلی مینیو استعمال کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:63
-#, fuzzy
 msgid "Use custom _font size:"
-msgstr "_صوابدیدی فونٹ حجم:"
+msgstr "_صوابدیدی فونٹ حجم استعمال کریں:"
 
 #: ../settings/xfdesktop-settings.glade.h:64
 msgid "_Background"
-msgstr ""
+msgstr "_پس منظر"
 
 #: ../settings/xfdesktop-settings.glade.h:65
-#, fuzzy
 msgid "_Button:"
-msgstr "بٹن"
+msgstr "_بٹن:"
 
 #: ../settings/xfdesktop-settings.glade.h:66
-#, fuzzy
 msgid "_Edit desktop menu"
-msgstr "_مینیو مدون کریں"
+msgstr "ڈیسک ٹاپ مینیو _مدون کریں"
 
 #: ../settings/xfdesktop-settings.glade.h:67
-#, fuzzy
 msgid "_Icons"
-msgstr "آئکنز"
+msgstr "_آئکنز"
 
 #: ../settings/xfdesktop-settings.glade.h:68
-#, fuzzy
 msgid "_Menus"
-msgstr "مینیوز"
+msgstr "_فہرستیں"
 
 #: ../settings/xfdesktop-settings.glade.h:69
-#, fuzzy
 msgid "_None"
-msgstr "کچھ نہیں"
+msgstr "_کچھ نہیں"
 
 #: ../settings/xfdesktop-settings.glade.h:70
 msgid "_Single image"
-msgstr ""
+msgstr "_ایک تصویر"
 
 #: ../settings/xfdesktop-settings.glade.h:71
 msgid "gtk-close"
-msgstr ""
+msgstr "gtk-close"
 
 #: ../settings/xfdesktop-settings.glade.h:72
 msgid "gtk-help"
-msgstr ""
+msgstr "gtk-help"
 
 #~ msgid "Add menu entry"
 #~ msgstr "مینیو انٹری شامل کریں"
@@ -1338,8 +1328,9 @@ msgstr ""
 #~ msgid "Select external menu"
 #~ msgstr "خارجی مینیو منتخب کریں"
 
+#, fuzzy
 #~ msgid "Style:"
-#~ msgstr "انداز:"
+#~ msgstr "ان_داز:"
 
 #~ msgid "Simple"
 #~ msgstr "سادہ"
@@ -1511,6 +1502,7 @@ msgstr ""
 #~ msgid "--- include ---"
 #~ msgstr "--- شامل ---"
 
+#, fuzzy
 #~ msgid "system"
 #~ msgstr "نظام"
 
