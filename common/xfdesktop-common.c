@@ -24,6 +24,10 @@
 
 #include <stdio.h>
 
+#ifdef HAVE_FCNTL_H
+#include <fcntl.h>
+#endif
+
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
@@ -46,6 +50,10 @@
 #include <libxfcegui4/dialogs.h>
 
 #include "xfdesktop-common.h"
+
+#ifndef O_BINARY
+#define O_BINARY  0
+#endif
 
 gboolean
 xfdesktop_backdrop_list_is_valid(const gchar *path)
@@ -258,31 +266,32 @@ gboolean
 xfdesktop_image_file_is_valid(const gchar *filename)
 {
     GdkPixbufLoader *loader;
-    FILE *fp;
+    int fd;
     gboolean size_read = FALSE;
     guchar buf[4096];
-    gint len;
+    gsize len;
 
     g_return_val_if_fail(filename, FALSE);
     
-    fp = fopen(filename, "rb");
-    if(!fp)
+    fd = open(filename, O_RDONLY|O_BINARY);
+    if(fd < 0)
         return FALSE;
     
     loader = gdk_pixbuf_loader_new();
     g_signal_connect(G_OBJECT(loader), "size-prepared",
             G_CALLBACK(pixbuf_loader_size_cb), &size_read);
     
-    while(!feof(fp) && !ferror(fp)) {
-        if((len=fread(buf, 1, sizeof(buf), fp)) > 0) {
+    do {
+        len = read(fd, buf, sizeof(buf));
+        if(len > 0) {
             if(!gdk_pixbuf_loader_write(loader, buf, len, NULL))
                 break;
             if(size_read)
                 break;
         }
-    }
+    } while(len > 0);
     
-    fclose(fp);
+    close(fd);
     gdk_pixbuf_loader_close(loader, NULL);
     g_object_unref(G_OBJECT(loader));
     
