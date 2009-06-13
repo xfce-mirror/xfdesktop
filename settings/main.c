@@ -128,6 +128,11 @@ enum
     N_ICON_COLS,
 };
 
+enum
+{
+    TARGET_TEXT_URI_LIST = 0,
+};
+
 
 /* assumes gdk lock is held on function enter, and should be held
  * on function exit */
@@ -355,6 +360,53 @@ image_list_sort(GtkTreeModel *model,
 }
 
 static GtkTreeIter *
+xfdesktop_settings_image_treeview_add(GtkTreeModel *model,
+                                      const char *path)
+{
+    gboolean added = FALSE;
+    GtkTreeIter iter;
+    gchar *name = NULL, *name_utf8 = NULL, *name_markup = NULL;
+    gchar *lower = NULL, *key = NULL;
+
+    /* FIXME: this is probably too slow */
+    if(!xfdesktop_image_file_is_valid(path))
+        return NULL;
+
+    name = g_path_get_basename(path);
+    if(name) {
+        name_utf8 = g_filename_to_utf8(name, strlen(name),
+                                       NULL, NULL, NULL);
+        if(name_utf8) {
+            name_markup = g_markup_printf_escaped("<b>%s</b>",
+                                                  name_utf8);
+
+            lower = g_utf8_strdown(name_utf8, -1);
+            key = g_utf8_collate_key(lower, -1);
+
+            gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+            gtk_list_store_set(GTK_LIST_STORE(model), &iter,
+                               COL_NAME, name_markup,
+                               COL_FILENAME, path,
+                               COL_COLLATE_KEY, key,
+                               -1);
+
+            added = TRUE;
+        }
+    }
+
+    g_free(name);
+    g_free(name_utf8);
+    g_free(name_markup);
+    g_free(lower);
+    g_free(key);
+
+    if(added)
+        return gtk_tree_iter_copy(&iter);
+    else
+        return NULL;
+}
+
+static GtkTreeIter *
 xfdesktop_image_list_add_dir(GtkListStore *ls,
                              const char *path,
                              const char *cur_image_file)
@@ -362,7 +414,7 @@ xfdesktop_image_list_add_dir(GtkListStore *ls,
     GDir *dir;
     gboolean needs_slash = TRUE;
     const gchar *file;
-    GtkTreeIter iter, *iter_ret = NULL;
+    GtkTreeIter *iter, *iter_ret = NULL;
     gchar buf[PATH_MAX];
 
     dir = g_dir_open(path, 0, 0);
@@ -376,31 +428,12 @@ xfdesktop_image_list_add_dir(GtkListStore *ls,
         g_snprintf(buf, sizeof(buf), needs_slash ? "%s/%s" : "%s%s",
                    path, file);
 
-        /* FIXME: this is probably too slow */
-        if(xfdesktop_image_file_is_valid(buf)) {
-            gchar *name, *name_markup, *key = NULL;
-
-            name = g_filename_to_utf8(file, strlen(file), NULL, NULL, NULL);
-            name_markup = g_markup_printf_escaped("<b>%s</b>", name);
-            if(name) {
-                gchar *lower = g_utf8_strdown(name, -1);
-                key = g_utf8_collate_key(lower, -1);
-                g_free(lower);
-            }
-
-            gtk_list_store_append(ls, &iter);
-            gtk_list_store_set(ls, &iter,
-                               COL_NAME, name_markup,
-                               COL_FILENAME, buf,
-                               COL_COLLATE_KEY, key,
-                               -1);
-
-            if(cur_image_file && !strcmp(buf, cur_image_file))
-                iter_ret = gtk_tree_iter_copy(&iter);
-
-            g_free(name);
-            g_free(name_markup);
-            g_free(key);
+        iter = xfdesktop_settings_image_treeview_add(GTK_TREE_MODEL(ls), buf);
+        if(iter) {
+            if(cur_image_file && !iter_ret && !strcmp(buf, cur_image_file))
+                iter_ret = iter;
+            else
+                gtk_tree_iter_free(iter);
         }
     }
 
@@ -548,7 +581,7 @@ xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
 {
     gchar prop_image[1024], prop_last[1024], *image_file;
     GtkListStore *ls;
-    GtkTreeIter iter, *image_file_iter = NULL;
+    GtkTreeIter *image_file_iter = NULL;
     gboolean do_sort = TRUE;
     GtkTreeSelection *sel;
 
@@ -597,24 +630,9 @@ xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
             xfconf_channel_set_string(panel->channel, prop_last, image_file);
 
             for(i = 0; images[i]; ++i) {
-                gchar *name, *name_markup;
-
-                name = g_strrstr(images[i], G_DIR_SEPARATOR_S);
-                if(name)
-                    name++;
-                else
-                    name = images[i];
-                name = g_filename_to_utf8(name, strlen(name), NULL, NULL, NULL);
-                name_markup = g_markup_printf_escaped("<b>%s</b>", name);
-
-                gtk_list_store_append(ls, &iter);
-                gtk_list_store_set(ls, &iter,
-                                   COL_NAME, name_markup,
-                                   COL_FILENAME, images[i],
-                                   -1);
-
-                g_free(name);
-                g_free(name_markup);
+                GtkTreeIter *iter = xfdesktop_settings_image_treeview_add(GTK_TREE_MODEL(ls), images[i]);
+                if(iter)
+                    gtk_tree_iter_free(iter);
             }
 
             g_strfreev(images);
@@ -653,35 +671,8 @@ xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
                 image_file_iter = tmp;
         }
 
-        if(!image_file_iter) {
-            gchar *name, *name_markup, *key = NULL;
-
-            name = g_strrstr(image_file, G_DIR_SEPARATOR_S);
-            if(name)
-                name++;
-            else
-                name = image_file;
-            name = g_filename_to_utf8(name, strlen(name), NULL, NULL, NULL);
-            name_markup = g_markup_printf_escaped("<b>%s</b>", name);
-
-            if(name) {
-                gchar *lower = g_utf8_strdown(name, -1);
-                key = g_utf8_collate_key(lower, -1);
-                g_free(lower);
-            }
-
-            gtk_list_store_append(ls, &iter);
-            gtk_list_store_set(ls, &iter,
-                               COL_NAME, name_markup,
-                               COL_FILENAME, image_file,
-                               COL_COLLATE_KEY, key,
-                               -1);
-            image_file_iter = gtk_tree_iter_copy(&iter);
-
-            g_free(name);
-            g_free(name_markup);
-            g_free(key);
-        }
+        if(!image_file_iter)
+            image_file_iter = xfdesktop_settings_image_treeview_add(GTK_TREE_MODEL(ls), image_file);
 
         panel->image_list_loaded = FALSE;
         panel->image_selector_loaded = TRUE;
@@ -840,33 +831,16 @@ add_file_button_clicked(GtkWidget *button,
         pdata->model = g_object_ref(G_OBJECT(model));
 
         for(l = filenames; l; l = l->next) {
-            /* all these copies are gross */
-            char *filename = l->data;
-            char *name = g_path_get_basename(filename);
-            gchar *name_utf8 = g_filename_to_utf8(name, strlen(name),
-                                                  NULL, NULL, NULL);
-            gchar *name_markup = g_markup_printf_escaped("<b>%s</b>",
-                                                         name_utf8);
-            GtkTreeIter iter;
+            GtkTreeIter *iter = xfdesktop_settings_image_treeview_add(model, l->data);
+            if(iter) {
+                pdata->iters = g_slist_prepend(pdata->iters, iter);
 
-            gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-            gtk_list_store_set(GTK_LIST_STORE(model), &iter,
-                               COL_NAME, name_markup,
-                               COL_FILENAME, filename,
-                               -1);
-
-            /* auto-select the first one added */
-            if(l == filenames) {
-                GtkTreeSelection *sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(panel->image_treeview));
-                gtk_tree_selection_select_iter(sel, &iter);
+                /* auto-select the first one added */
+                if(l == filenames) {
+                    GtkTreeSelection *sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(panel->image_treeview));
+                    gtk_tree_selection_select_iter(sel, iter);
+                }
             }
-
-            pdata->iters = g_slist_prepend(pdata->iters, gtk_tree_iter_copy(&iter));
-
-            g_free(filename);
-            g_free(name);
-            g_free(name_utf8);
-            g_free(name_markup);
         }
         g_slist_free(filenames);
 
@@ -1077,6 +1051,153 @@ suboptions_set_sensitive(GtkToggleButton *btn,
     gtk_widget_set_sensitive(box, gtk_toggle_button_get_active(btn));
 }
 
+static void
+image_treeview_drag_data_received(GtkWidget *widget,
+                                  GdkDragContext *context,
+                                  gint x,
+                                  gint y,
+                                  GtkSelectionData *selection_data,
+                                  guint info,
+                                  guint time_,
+                                  gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+    gboolean file_added;
+    gchar *p;
+    GtkTreeModel *model = gtk_tree_view_get_model(GTK_TREE_VIEW(widget));
+    PreviewData *pdata = g_new0(PreviewData, 1);
+
+    pdata->model = g_object_ref(G_OBJECT(model));
+
+    if(TARGET_TEXT_URI_LIST != info
+        || selection_data->format != 8
+        || selection_data->length <= 0)
+    {
+        gtk_drag_finish(context, FALSE, FALSE, time_);
+        return;
+    }
+
+    p = (gchar *)selection_data->data;
+    while(*p) {
+        if(*p != '#') {
+            gchar *q;
+
+            while(g_ascii_isspace(*p))
+                p++;
+
+            q = p;
+            while(*q && *q != '\n' && *q != '\r')
+                q++;
+
+            if(q > p) {
+                q--;
+                while(g_ascii_isspace(*q))
+                    q--;
+
+                if(!strncmp(p, "file://", 7)) {
+                    /* we only handle file uris */
+                    gchar oldq, *filename;
+
+                    q++;
+                    oldq = *q;
+                    *q = 0;
+
+                    filename = g_filename_from_uri(p, NULL, NULL);
+                    if(filename) {
+                        GtkTreeIter *iter = NULL;
+
+                        if(g_file_test(filename, G_FILE_TEST_IS_DIR)) {
+                            GDir *dir = g_dir_open(filename, 0, 0);
+
+                            if(dir) {
+                                const gchar *name;
+                                gchar buf[PATH_MAX];
+                                gboolean needs_slash = TRUE;
+
+                                if(filename[strlen(filename)-1] == '/')
+                                    needs_slash = FALSE;
+
+                                while((name = g_dir_read_name(dir))) {
+                                    g_snprintf(buf, sizeof(buf),
+                                               needs_slash ? "%s/%s" : "%s%s",
+                                               filename, name);
+                                    iter = xfdesktop_settings_image_treeview_add(model, buf);
+                                    if(iter)
+                                        pdata->iters = g_slist_prepend(pdata->iters, iter);
+                                }
+                                g_dir_close(dir);
+                            }
+                        } else if(g_file_test(filename, G_FILE_TEST_EXISTS)) {
+                            iter = xfdesktop_settings_image_treeview_add(model, filename);
+                            if(iter)
+                                pdata->iters = g_slist_prepend(pdata->iters, iter);
+                        }
+
+                        g_free(filename);
+                    }
+
+                    *q = oldq;
+                }
+            }
+        }
+
+        p = strchr(p, '\n');
+        if(p)
+            p++;
+    }
+
+    file_added = !!pdata->iters;
+
+    if(!pdata->iters
+       || !g_thread_create(xfdesktop_settings_create_some_previews,
+                           pdata, FALSE, NULL))
+    {
+        if(pdata->iters)
+            g_critical("Unable to create thread for single image preview.");
+        g_object_unref(G_OBJECT(pdata->model));
+        g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
+        g_slist_free(pdata->iters);
+        g_free(pdata);
+    }
+
+    gtk_drag_finish(context, file_added, FALSE, time_);
+
+    if(file_added && panel->image_list_loaded)
+        xfdesktop_settings_save_backdrop_list(panel, model);
+}
+
+static void
+xfdesktop_settings_setup_image_treeview(AppearancePanel *panel)
+{
+    static GtkTargetEntry drag_targets[] = {
+        { "text/uri-list", 0, TARGET_TEXT_URI_LIST },
+    };
+    GtkCellRenderer *render;
+    GtkTreeViewColumn *col;
+
+    render = gtk_cell_renderer_pixbuf_new();
+    col = gtk_tree_view_column_new_with_attributes("thumbnail", render,
+                                                   "pixbuf", COL_PIX, NULL);
+    gtk_tree_view_append_column(GTK_TREE_VIEW(panel->image_treeview),
+                                col);
+    render = gtk_cell_renderer_text_new();
+    col = gtk_tree_view_column_new_with_attributes("name", render,
+                                                   "markup", COL_NAME, NULL);
+    gtk_tree_view_append_column(GTK_TREE_VIEW(panel->image_treeview),
+                                col);
+
+    g_signal_connect(G_OBJECT(gtk_tree_view_get_selection(GTK_TREE_VIEW(panel->image_treeview))),
+                     "changed",
+                     G_CALLBACK(cb_image_selection_changed), panel);
+
+    gtk_tree_view_enable_model_drag_dest(GTK_TREE_VIEW(panel->image_treeview),
+                                         drag_targets, 1,
+                                         GDK_ACTION_DEFAULT | GDK_ACTION_COPY);
+
+    g_signal_connect(G_OBJECT(panel->image_treeview), "drag-data-received",
+                     G_CALLBACK(image_treeview_drag_data_received), panel);
+}
+
 static GtkWidget *
 xfdesktop_settings_dialog_new(GladeXML *main_gxml,
                               XfconfChannel *channel)
@@ -1116,8 +1237,6 @@ xfdesktop_settings_dialog_new(GladeXML *main_gxml,
             GladeXML *appearance_gxml;
             AppearancePanel *panel = g_new0(AppearancePanel, 1);
             GtkWidget *appearance_settings, *appearance_label;
-            GtkCellRenderer *render;
-            GtkTreeViewColumn *col;
 
             panel->channel = channel;
             panel->screen = i;
@@ -1221,20 +1340,7 @@ xfdesktop_settings_dialog_new(GladeXML *main_gxml,
 
             panel->image_treeview = glade_xml_get_widget(appearance_gxml,
                                                          "treeview_imagelist");
-            render = gtk_cell_renderer_pixbuf_new();
-            col = gtk_tree_view_column_new_with_attributes("thumbnail", render,
-                                                           "pixbuf", COL_PIX, NULL);
-            gtk_tree_view_append_column(GTK_TREE_VIEW(panel->image_treeview),
-                                        col);
-            render = gtk_cell_renderer_text_new();
-            col = gtk_tree_view_column_new_with_attributes("name", render,
-                                                           "markup", COL_NAME, NULL);
-            gtk_tree_view_append_column(GTK_TREE_VIEW(panel->image_treeview),
-                                        col);
-
-            g_signal_connect(G_OBJECT(gtk_tree_view_get_selection(GTK_TREE_VIEW(panel->image_treeview))),
-                             "changed",
-                             G_CALLBACK(cb_image_selection_changed), panel);
+            xfdesktop_settings_setup_image_treeview(panel);
 
             panel->btn_plus = glade_xml_get_widget(appearance_gxml, "btn_plus");
             g_signal_connect(G_OBJECT(panel->btn_plus), "clicked",
