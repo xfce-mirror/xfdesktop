@@ -368,7 +368,6 @@ xfdesktop_settings_image_treeview_add(GtkTreeModel *model,
     gchar *name = NULL, *name_utf8 = NULL, *name_markup = NULL;
     gchar *lower = NULL, *key = NULL;
 
-    /* FIXME: this is probably too slow */
     if(!xfdesktop_image_file_is_valid(path))
         return NULL;
 
