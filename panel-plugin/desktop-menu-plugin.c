@@ -1,7 +1,7 @@
 /*
  *  desktop-menu-plugin.c - xfce4-panel plugin that displays the desktop menu
  *
- *  Copyright (C) 2004 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (C) 2004-2009 Brian Tarricone, <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -122,28 +122,9 @@ dmp_get_icon(const gchar *icon_name, gint size, GtkOrientation orientation)
     if(!filename)
         return NULL;
     
-#if GTK_CHECK_VERSION(2, 8, 0)
     w = orientation == GTK_ORIENTATION_HORIZONTAL ? -1 : size;
     h = orientation == GTK_ORIENTATION_VERTICAL ? -1 : size;
     pix = gdk_pixbuf_new_from_file_at_scale(filename, w, h, TRUE, NULL);
-#else
-    pix = gdk_pixbuf_new_from_file(filename, NULL);
-    if(pix) {
-        GdkPixbuf *tmp;
-        gdouble aspect;
-        
-        w = gdk_pixbuf_get_width(pix);
-        h = gdk_pixbuf_get_height(pix);
-        aspect = (gdouble)w / h;
-        
-        w = orientation == GTK_ORIENTATION_HORIZONTAL ? size*aspect : size;
-        h = orientation == GTK_ORIENTATION_VERTICAL ? size*aspect : size;
-        
-        tmp = gdk_pixbuf_scale_simple(pix, w, h, GDK_INTERP_BILINEAR);
-        g_object_unref(G_OBJECT(pix));
-        pix = tmp;
-    }
-#endif
     
     g_free(filename);
     
