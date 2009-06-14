@@ -54,6 +54,18 @@ struct _XfdesktopIconViewClass
     /*< signals >*/
     void (*icon_selection_changed)(XfdesktopIconView *icon_view);
     void (*icon_activated)(XfdesktopIconView *icon_view);
+
+    void (*select_all)(XfdesktopIconView *icon_view);
+    void (*unselect_all)(XfdesktopIconView *icon_view);
+
+    void (*select_cursor_item)(XfdesktopIconView *icon_view);
+    void (*toggle_cursor_item)(XfdesktopIconView *icon_view);
+
+    gboolean (*activate_cursor_item)(XfdesktopIconView *icon_view);
+
+    gboolean (*move_cursor)(XfdesktopIconView *icon_view,
+                            GtkMovementStep step,
+                            gint count);
 };
 
 GType xfdesktop_icon_view_get_type() G_GNUC_CONST;
@@ -91,6 +103,7 @@ GList *xfdesktop_icon_view_get_selected_items(XfdesktopIconView *icon_view);
 
 void xfdesktop_icon_view_select_item(XfdesktopIconView *icon_view,
                                      XfdesktopIcon *icon);
+void xfdesktop_icon_view_select_all(XfdesktopIconView *icon_view);
 void xfdesktop_icon_view_unselect_item(XfdesktopIconView *icon_view,
                                        XfdesktopIcon *icon);
 void xfdesktop_icon_view_unselect_all(XfdesktopIconView *icon_view);
