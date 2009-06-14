@@ -93,11 +93,6 @@ gboolean xfdesktop_icon_get_position(XfdesktopIcon *icon,
                                      guint16 *row,
                                      guint16 *col);
 
-void xfdesktop_icon_set_extents(XfdesktopIcon *icon,
-                                const GdkRectangle *extents);
-gboolean xfdesktop_icon_get_extents(XfdesktopIcon *icon,
-                                    GdkRectangle *extents);
-
 GdkDragAction xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
 
 GdkDragAction xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon);
@@ -118,6 +113,17 @@ void xfdesktop_icon_position_changed(XfdesktopIcon *icon);
 
 void xfdesktop_icon_selected(XfdesktopIcon *icon);
 gboolean xfdesktop_icon_activated(XfdesktopIcon *icon);
+
+/*< private-ish; only for use by XfdesktopIconView >*/
+void xfdesktop_icon_set_extents(XfdesktopIcon *icon,
+                                const GdkRectangle *pixbuf_extents,
+                                const GdkRectangle *text_extents,
+                                const GdkRectangle *total_extents);
+gboolean xfdesktop_icon_get_extents(XfdesktopIcon *icon,
+                                    GdkRectangle *pixbuf_extents,
+                                    GdkRectangle *text_extents,
+                                    GdkRectangle *total_extents);
+void xfdesktop_icon_mark_extents_dirty(XfdesktopIcon *icon);
 
 G_END_DECLS
 

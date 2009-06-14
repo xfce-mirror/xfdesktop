@@ -383,7 +383,7 @@ main(int argc, char **argv)
         g_warning("Unable to set up POSIX signal handlers: %s", error->message);
         g_error_free(error);
     }
-    
+
     gtk_main();
     
     menu_cleanup();

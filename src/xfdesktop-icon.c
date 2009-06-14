@@ -36,7 +36,11 @@ struct _XfdesktopIconPrivate
 {
     gint16 row;
     gint16 col;
-    GdkRectangle extents;
+
+    gboolean extents_dirty;
+    GdkRectangle pixbuf_extents;
+    GdkRectangle text_extents;
+    GdkRectangle total_extents;
 };
 
 enum {
@@ -112,6 +116,7 @@ xfdesktop_icon_init(XfdesktopIcon *icon)
 {
     icon->priv = G_TYPE_INSTANCE_GET_PRIVATE(icon, XFDESKTOP_TYPE_ICON,
                                              XfdesktopIconPrivate);
+    icon->priv->extents_dirty = TRUE;
 }
 
 
@@ -143,25 +148,46 @@ xfdesktop_icon_get_position(XfdesktopIcon *icon,
 
 void
 xfdesktop_icon_set_extents(XfdesktopIcon *icon,
-                           const GdkRectangle *extents)
+                           const GdkRectangle *pixbuf_extents,
+                           const GdkRectangle *text_extents,
+                           const GdkRectangle *total_extents)
 {
-    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
-    
-    memcpy(&icon->priv->extents, extents, sizeof(GdkRectangle));
+    g_return_if_fail(XFDESKTOP_IS_ICON(icon) && pixbuf_extents
+                     && text_extents && total_extents);
+
+    icon->priv->pixbuf_extents = *pixbuf_extents;
+    icon->priv->text_extents = *text_extents;
+    icon->priv->total_extents = *total_extents;
+    icon->priv->extents_dirty = FALSE;
 }
 
 gboolean
 xfdesktop_icon_get_extents(XfdesktopIcon *icon,
-                           GdkRectangle *extents)
+                           GdkRectangle *pixbuf_extents,
+                           GdkRectangle *text_extents,
+                           GdkRectangle *total_extents)
 {
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon) && extents, FALSE);
-    
-    if(icon->priv->extents.width > 0 && icon->priv->extents.height > 0) {
-        memcpy(extents, &icon->priv->extents, sizeof(GdkRectangle));
-        return TRUE;
-    }
-    
-    return FALSE;
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+
+    if(icon->priv->extents_dirty)
+        return FALSE;
+
+    if(pixbuf_extents)
+        *pixbuf_extents = icon->priv->pixbuf_extents;
+    if(text_extents)
+        *text_extents = icon->priv->text_extents;
+    if(total_extents)
+        *total_extents = icon->priv->total_extents;
+
+    return TRUE;
+}
+
+void
+xfdesktop_icon_mark_extents_dirty(XfdesktopIcon *icon)
+{
+    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+
+    icon->priv->extents_dirty = TRUE;
 }
 
 
@@ -286,6 +312,7 @@ void
 xfdesktop_icon_pixbuf_changed(XfdesktopIcon *icon)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+    xfdesktop_icon_mark_extents_dirty(icon);
     g_signal_emit(icon, __signals[SIG_PIXBUF_CHANGED], 0);
 }
 
@@ -293,6 +320,7 @@ void
 xfdesktop_icon_label_changed(XfdesktopIcon *icon)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+    xfdesktop_icon_mark_extents_dirty(icon);
     g_signal_emit(icon, __signals[SIG_LABEL_CHANGED], 0);
 }
 
@@ -300,6 +328,7 @@ void
 xfdesktop_icon_position_changed(XfdesktopIcon *icon)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+    xfdesktop_icon_mark_extents_dirty(icon);
     g_signal_emit(icon, __signals[SIG_POS_CHANGED], 0);
 }
 
@@ -308,6 +337,7 @@ void
 xfdesktop_icon_selected(XfdesktopIcon *icon)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+    xfdesktop_icon_mark_extents_dirty(icon);
     g_signal_emit(G_OBJECT(icon), __signals[SIG_SELECTED], 0, NULL);
 }
 
