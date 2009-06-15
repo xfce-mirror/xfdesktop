@@ -4,14 +4,16 @@
 # This file is distributed under the same license as the xfdesktop package.
 # Yongtao Yang <yongtao.yang@telia.com>, 2004.
 # wuli <wurisky@gmail.com>,2007
-# Chris K. Zhang <plutino@gmail.com>, 2009
+# Chris K. Zhang <plutino@gmail.com>, 2009.
+# Aron Xu <aronmalache@163.com>, 2009.
+# Hunt Xu <huntxu@live.cn>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-26 01:15+0100\n"
-"PO-Revision-Date: 2009-01-12 20:39-0800\n"
-"Last-Translator: Chris K. Zhang <plutino@gmail.com>\n"
+"PO-Revision-Date: 2009-06-14 02:51+0800\n"
+"Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +27,7 @@ msgstr "背景列表文件名无效"
 #: ../panel-plugin/desktop-menu-plugin.c:653
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "无法启动 xfce4 菜单编辑器：%s"
+msgstr "无法启动 xfce4 菜单编辑器: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:676
 msgid "Select Icon"
@@ -270,7 +272,7 @@ msgstr "重命名"
 #: ../src/xfdesktop-file-icon-manager.c:676
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "你确定要删除 \"%s\" 吗？"
+msgstr "您确定要删除“%s”吗？"
 
 #: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
@@ -279,12 +281,12 @@ msgstr "问题"
 #: ../src/xfdesktop-file-icon-manager.c:681
 #: ../src/xfdesktop-file-icon-manager.c:701
 msgid "If you delete a file, it is permanently lost."
-msgstr "如果你删除一个文件，它将永远消失。"
+msgstr "如果您删除一个文件，它将永远消失。"
 
 #: ../src/xfdesktop-file-icon-manager.c:695
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "你确定要删除下面 %d 个文件吗？"
+msgstr "您确定要删除下面 %d 个文件吗？"
 
 #: ../src/xfdesktop-file-icon-manager.c:698
 msgid "Delete Multiple Files"
@@ -486,11 +488,11 @@ msgstr "读写"
 
 #: ../src/xfdesktop-file-properties-dialog.c:163
 msgid "General"
-msgstr "总体"
+msgstr "常规"
 
 #: ../src/xfdesktop-file-properties-dialog.c:188
 msgid "Name:"
-msgstr "名称："
+msgstr "名称:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:214
 msgid "Kind:"
@@ -638,7 +640,7 @@ msgstr "清空回收站(_E)"
 #: ../src/xfdesktop-volume-icon.c:474
 #, c-format
 msgid "%s (%s total)"
-msgstr "%s （总共 %s）"
+msgstr "%s (总共 %s)"
 
 #: ../src/xfdesktop-volume-icon.c:478
 #, c-format
@@ -692,7 +694,7 @@ msgstr "挂载卷(_M)"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
-msgstr "附件："
+msgstr "附件"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
@@ -808,7 +810,7 @@ msgstr "帮助"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr "帮助使用Xfce"
+msgstr "帮助使用 Xfce"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
@@ -816,11 +818,11 @@ msgstr "注销"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
 msgid "Log out of the Xfce Desktop"
-msgstr "注销 Xfce"
+msgstr "从 Xfce 桌面注销"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
 msgid "Run Program..."
-msgstr "启动程序..."
+msgstr "运行程序..."
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
 msgid "Run a program"
@@ -850,7 +852,7 @@ msgid ""
 "<i>Size: %dx%d</i>"
 msgstr ""
 "%s\n"
-"<i>尺寸： %dx%d</i>"
+"<i>尺寸: %dx%d</i>"
 
 #: ../settings/main.c:269
 msgid "Filesystem"
@@ -875,13 +877,13 @@ msgstr "背景列表错误"
 
 #: ../settings/main.c:455
 msgid "Create/Load Backdrop List"
-msgstr "创建／加载背景列表"
+msgstr "创建/加载背景列表"
 
 #: ../settings/main.c:479
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "\"%s\" 是无效背景列表文件，要覆盖吗？"
+msgstr "“%s”是无效背景列表文件，要覆盖吗？"
 
 #: ../settings/main.c:484
 msgid "Invalid List File"
@@ -939,11 +941,11 @@ msgstr "显示器 %d"
 
 #: ../settings/main.c:1354
 msgid "Settings manager socket"
-msgstr "设置管理器套接"
+msgstr "设置管理器套接字"
 
 #: ../settings/main.c:1354
 msgid "SOCKET ID"
-msgstr "SOCKET ID"
+msgstr "套接字 ID"
 
 #: ../settings/main.c:1355
 msgid "Version information"
@@ -956,7 +958,7 @@ msgstr "'%s --help' 可列出使用方法。"
 
 #: ../settings/main.c:1387
 msgid "The Xfce development team. All rights reserved."
-msgstr "Xfce 开发组，版权所有。"
+msgstr "Xfce 开发团队，版权所有。"
 
 #: ../settings/main.c:1388
 #, c-format
@@ -973,7 +975,7 @@ msgstr "无法连到设置服务器"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
-msgstr "桌面 "
+msgstr "桌面"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
@@ -1087,11 +1089,11 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings.glade.h:31
 msgid "Mo_difier:"
-msgstr "修正键(_D)："
+msgstr "修正键(_D):"
 
 #: ../settings/xfdesktop-settings.glade.h:32
 msgid "Modi_fier:"
-msgstr "修正键(_F)："
+msgstr "修正键(_F):"
 
 #: ../settings/xfdesktop-settings.glade.h:33
 msgid ""
@@ -1101,7 +1103,7 @@ msgid ""
 msgstr ""
 "无\n"
 "最小化应用程序图标\n"
-"文件／启动器图标"
+"文件/启动器图标"
 
 #: ../settings/xfdesktop-settings.glade.h:36
 msgid ""
@@ -1350,7 +1352,7 @@ msgstr "gtk-help"
 #~ "edit the new menu file format.  You may continue and edit an old-style "
 #~ "menu file, or quit."
 #~ msgstr ""
-#~ "Xfce 菜单系统做过更改，xfce4-menueditor无法编辑新菜单文件格式，你可以继续"
+#~ "Xfce 菜单系统做过更改，xfce4-menueditor 无法编辑新菜单文件格式，您可以继续"
 #~ "编辑旧风格菜单文件或退出。"
 
 #~ msgid "Continue"
@@ -1468,10 +1470,10 @@ msgstr "gtk-help"
 #~ msgstr "隐藏"
 
 #~ msgid "Are you sure you want to close the current menu?"
-#~ msgstr "你确定要关闭当前菜单吗？"
+#~ msgstr "您确定要关闭当前菜单吗？"
 
 #~ msgid "Do you want to save before closing the file?"
-#~ msgstr "你希望在关闭文件之前保存吗？"
+#~ msgstr "您希望在关闭文件之前保存吗？"
 
 #~ msgid "Do you want to save before opening an other menu ?"
 #~ msgstr "您希望在打开另一个菜单前保存吗？"
@@ -1601,13 +1603,13 @@ msgstr "gtk-help"
 #~ msgstr "Home"
 
 #~ msgid "Xfce will be unable to manage your desktop (%s)."
-#~ msgstr "xfce 将无法管理你的桌面 (%s) "
+#~ msgstr "xfce 将无法管理您的桌面 (%s) "
 
 #~ msgid "Unknown Error"
 #~ msgstr "未知错误"
 
 #~ msgid "Unable to start xfdesktop"
-#~ msgstr "无法启动xfdesktop"
+#~ msgstr "无法启动 xfdesktop"
 
 #~ msgid ""
 #~ "To ensure that this setting takes effect the next time you start Xfce, "
@@ -1617,7 +1619,7 @@ msgstr "gtk-help"
 #~ "documentation provided on http://xfce.org/."
 #~ msgstr ""
 #~ "为使在下次启动xfce时此次设置生效，退出时请确认保存你的会话。如果你现在不是"
-#~ "使用会话管理器，需要手动编辑你的 ~/.config/xfce4/xinitrc文件详细说明可在 "
+#~ "使用会话管理器，需要手动编辑您的 ~/.config/xfce4/xinitrc 文件详细说明可在 "
 #~ "http://xfce.org/  提供的文档中找到。"
 
 #~ msgid ""
@@ -1628,7 +1630,7 @@ msgstr "gtk-help"
 #~ "in the documentation provided on http://xfce.org/."
 #~ msgstr ""
 #~ "为使在下次启动xfce时此次设置生效，退出时请确认保存你的会话。如果你现在不是"
-#~ "使用会话管理器，需要手动编辑你的 ~/.config/xfce4/xinitrc文件详细说明可在 "
+#~ "使用会话管理器，需要手动编辑您的 ~/.config/xfce4/xinitrc 文件详细说明可在 "
 #~ "http://xfce.org/  提供的文档中找到。"
 
 #~ msgid "_Do not show this again"
