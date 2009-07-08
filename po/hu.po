@@ -1,184 +1,183 @@
-# Hungarian translations for xfdesktop package.
-# Copyright (C) 2003-2006 The Xfce development team.
+# Hungarian translation of xfdesktop
+# Copyright (C) 2009. Free Software Foundation, Inc.
 # This file is distributed under the same license as the xfdesktop package.
 # Somogyi Peter <jerry@gnu>, 2003.
 # Egmont Koblinger <egmont@uhulinux.hu>, 2003.
 # SZERVÁC Attila <sas@321>, 2004-2009.
-#
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.4.0\n"
+"Project-Id-Version: untitled\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 01:15+0100\n"
-"PO-Revision-Date: 2008-12-30 09:20+0100\n"
-"Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
-"Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2009-07-01 21:12+0200\n"
+"PO-Revision-Date: 2009-07-08 19:52+0200\n"
+"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"Language-Team: Hungarian <gnome at gnome dot hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Poedit-Country: HUNGARY\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
 #, c-format
 msgid "Backdrop list file is not valid"
-msgstr "Háttér-lista fájl érvénytelen"
+msgstr "A háttérképek listája érvénytelen"
 
-#: ../panel-plugin/desktop-menu-plugin.c:653
+#: ../panel-plugin/desktop-menu-plugin.c:658
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Nem indítható az xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676
+#: ../panel-plugin/desktop-menu-plugin.c:681
 msgid "Select Icon"
-msgstr "Válassz ikont"
+msgstr "Válasszon ikont"
 
-#: ../panel-plugin/desktop-menu-plugin.c:678
+#: ../panel-plugin/desktop-menu-plugin.c:683
 msgid "Select Menu File"
-msgstr "Válassz menüfájlt"
+msgstr "Válasszon menüfájlt"
 
-#: ../panel-plugin/desktop-menu-plugin.c:705
+#: ../panel-plugin/desktop-menu-plugin.c:710
 msgid "All Files"
 msgstr "Minden fájl"
 
-#: ../panel-plugin/desktop-menu-plugin.c:712
+#: ../panel-plugin/desktop-menu-plugin.c:717
 msgid "Image Files"
 msgstr "Képfájlok"
 
-#: ../panel-plugin/desktop-menu-plugin.c:715
+#: ../panel-plugin/desktop-menu-plugin.c:720
 msgid "Menu Files"
 msgstr "Menüfájlok"
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:745
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce menü"
 
-#: ../panel-plugin/desktop-menu-plugin.c:752
+#: ../panel-plugin/desktop-menu-plugin.c:757
 msgid "Button"
 msgstr "Gomb"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/desktop-menu-plugin.c:770
 msgid "Button _title:"
-msgstr "Gomb né_v:"
+msgstr "G_ombfelirat:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:778
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "_Show title in button"
-msgstr "Cím mutatá_sa a gombon"
+msgstr "_Felirat megjelenítése a gombokon"
 
-#: ../panel-plugin/desktop-menu-plugin.c:785
+#: ../panel-plugin/desktop-menu-plugin.c:790
 msgid "Menu File"
 msgstr "Menüfájl"
 
-#: ../panel-plugin/desktop-menu-plugin.c:797
+#: ../panel-plugin/desktop-menu-plugin.c:802
 msgid "Use default _desktop menu file"
-msgstr "_Alap asztali menüfájl használata"
+msgstr "_Alapértelmezett asztali menüfájl használata"
 
-#: ../panel-plugin/desktop-menu-plugin.c:806
+#: ../panel-plugin/desktop-menu-plugin.c:811
 msgid "Use _custom menu file:"
-msgstr "E_gyéni menüfájl használata"
+msgstr "_Egyéni menüfájl használata:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:847
+#: ../panel-plugin/desktop-menu-plugin.c:852
 msgid "_Edit Menu"
-msgstr "Menü sz_erkesztése"
+msgstr "_Menü szerkesztése"
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:859
 msgid "Icons"
 msgstr "Ikonok"
 
-#: ../panel-plugin/desktop-menu-plugin.c:866
+#: ../panel-plugin/desktop-menu-plugin.c:871
 msgid "_Button icon:"
-msgstr "Gomb iko_n:"
+msgstr "Go_mbikon:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:880
+#: ../panel-plugin/desktop-menu-plugin.c:885
 msgid "Show _icons in menu"
-msgstr "Legyenek _ikonok a menüben"
+msgstr "_Ikonok megjelenítése a menüben"
 
-#: ../panel-plugin/desktop-menu-plugin.c:915
+#: ../panel-plugin/desktop-menu-plugin.c:920
 msgid "There is already a panel menu registered for this screen"
-msgstr "Már van egy panel menü a képernyőhöz"
+msgstr "Már van regisztrálva panelmenü ehhez a képernyőhöz"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1030
+#: ../panel-plugin/desktop-menu-plugin.c:1035
 msgid "Edit Menu"
 msgstr "Menü szerkesztése"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr "A telepített programok kategóriáinak menüjét mutatja"
+msgstr "A telepített alkalmazásokat kategóriákba sorolva megjelenítő menü megjelenítése"
 
-#: ../src/main.c:231
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "Ez az alábbi program: %s %s verziója, az Xfce %s verzióján fut.\n"
+msgstr "Ez a(z) %s %s verziója, az Xfce %s környezetben.\n"
 
-#: ../src/main.c:233
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Fordítva az alábbival: GTK+ %d.%d.%d, linkelve: GTK+ %d.%d.%d."
+msgstr "Összeállítva a GTK+ %d.%d.%d, fut a Gtk+-%d.%d.%d változatával."
 
-#: ../src/main.c:237
+#: ../src/main.c:246
 #, c-format
 msgid "Build options:\n"
-msgstr "Fordítási opciók:\n"
+msgstr "összeállítási beállítások:\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "    Asztali Menü:        %s\n"
+msgstr "    Asztali menü:        %s\n"
 
-#: ../src/main.c:240 ../src/main.c:247 ../src/main.c:254
+#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
-msgstr "bekapcsolva"
+msgstr "engedélyezve"
 
-#: ../src/main.c:242 ../src/main.c:249 ../src/main.c:256
+#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
-msgstr "kikapcsolva"
+msgstr "letiltva"
 
-#: ../src/main.c:245
+#: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "    Asztali Ikonok:       %s\n"
+msgstr "    Asztali ikonok:      %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:261
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Asztal fájl ikonok:  %s\n"
+msgstr "    Asztali fájlikonok:  %s\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:290
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr "%s: Ismeretlen lehetőség: %s\n"
+msgstr "%s: Ismeretlen kapcsoló: %s\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:291
 #, c-format
 msgid "Options are:\n"
-msgstr "Lehetőségek:\n"
+msgstr "A kapcsolók:\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr "    --reload      Beállítások visszatöltése, képlista frissítése\n"
+msgstr "    --reload      Minden beállítás újratöltése, képlista frissítése\n"
 
-#: ../src/main.c:284
+#: ../src/main.c:293
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    --menu        Menü megjelenítése (az egér pozíciójánál)\n"
+msgstr "    --menu        A menü megjelenítése (az aktuális egérpozícióban)\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:294
 #, c-format
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    --windowlist  Ablaklista megjelenítése (az egér pozíciójánál)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    --windowlist  Az ablaklista megjelenítése (az aktuális egérpozícióban)\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:295
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "    --quit        Az xfdesktop kilép\n"
+msgstr "    --quit        Az xfdesktop bezárása\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:316
 #, c-format
 msgid "%s is not running.\n"
-msgstr "%s nem fut.\n"
+msgstr "A(z) %s nem fut.\n"
 
 #: ../src/menu.c:113
 msgid "_Applications"
@@ -186,7 +185,7 @@ msgstr "_Alkalmazások"
 
 #: ../src/windowlist.c:236
 msgid "Window List"
-msgstr "Ablak lista"
+msgstr "Ablaklista"
 
 #: ../src/windowlist.c:262
 #, c-format
@@ -205,67 +204,64 @@ msgstr "<i>%d. munkaterület</i>"
 
 #: ../src/windowlist.c:370 ../src/windowlist.c:373
 msgid "_Add Workspace"
-msgstr "Munkaterület hozzá_adása"
+msgstr "M_unkaterület hozzáadása"
 
 #: ../src/windowlist.c:381
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "%d. munkaterület tö_rlése"
+msgstr "%d. munkat_erület eltávolítása"
 
 #: ../src/windowlist.c:384
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "E munkaterület tö_rlése: '%s'"
+msgstr "„%s” mu_nkaterület eltávolítása"
 
 #: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
-msgstr "Munkaasztal"
+msgstr "Asztal"
 
-#: ../src/xfce-desktop.c:1009
+#: ../src/xfce-desktop.c:1010
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Nem tudom a képet betölteni a háttér lista fájlból: \"%s\""
+msgstr "Nem tölthető be a kép a háttérlistafájlból („%s”)"
 
-#: ../src/xfce-desktop.c:1011
+#: ../src/xfce-desktop.c:1012
 msgid "Desktop Error"
-msgstr "Asztal hiba"
+msgstr "Asztalhiba"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "Az Xfdesktop nem tud \"%s\" könyvtárat létrehozni az asztal elemekhez:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Az Xfdesktop nem volt képes létrehozni a(z) „%s” mappát az asztal elemeinek tárolásához:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
 #: ../src/xfdesktop-file-icon-manager.c:1206
 msgid "Create Folder Failed"
-msgstr "Mappa létrehozási hiba"
+msgstr "Mappa létrehozása meghiúsult"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
-msgstr ""
-"Az Xfdesktop nem tudja \"%s\"-t használni az asztali elemekhez, mert nem "
-"könyvtár"
+msgstr "A(z) „%s” nem használható az Xfdesktop asztali elemeinek tárolására, mert nem mappa."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
-msgstr "Töröld vagy nevezd át a fájlt."
+msgstr "Törölje vagy nevezze át a fájlt."
 
 #: ../src/xfdesktop-file-icon-manager.c:630
 #, c-format
 msgid "Rename \"%s\""
-msgstr "\"%s\" átnevezése"
+msgstr "„%s” átnevezése"
 
 #: ../src/xfdesktop-file-icon-manager.c:637
 #: ../src/xfdesktop-file-icon-manager.c:1278
 #: ../src/xfdesktop-file-icon-manager.c:1369
 #: ../src/xfdesktop-file-icon-manager.c:1380
 msgid "Enter the new name:"
-msgstr "Add meg az új nevet:"
+msgstr "Adja meg az új nevet:"
 
 #: ../src/xfdesktop-file-icon-manager.c:639
 msgid "Rename"
@@ -274,7 +270,7 @@ msgstr "Átnevezés"
 #: ../src/xfdesktop-file-icon-manager.c:676
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "Biztos törlöd az alábbit: \"%s\"?"
+msgstr "Biztos, hogy törölni akarja a következőt: „%s”?"
 
 #: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
@@ -283,16 +279,16 @@ msgstr "Kérdés"
 #: ../src/xfdesktop-file-icon-manager.c:681
 #: ../src/xfdesktop-file-icon-manager.c:701
 msgid "If you delete a file, it is permanently lost."
-msgstr "Ha törölsz egy fájlt, örökre elvész"
+msgstr "Ha törli a fájlt, az véglegesen elvész."
 
 #: ../src/xfdesktop-file-icon-manager.c:695
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "Törlöd az alábbi %d fájlt?"
+msgstr "Biztosan törli a következő %d fájlt?"
 
 #: ../src/xfdesktop-file-icon-manager.c:698
 msgid "Delete Multiple Files"
-msgstr "Fájlok törlése"
+msgstr "Több fájl törlése"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
@@ -300,7 +296,7 @@ msgstr "Fájlok törlése"
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "%s nem indítható:"
+msgstr "„%s” nem indítható:"
 
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
@@ -312,37 +308,34 @@ msgstr "Indítási hiba"
 
 #: ../src/xfdesktop-file-icon-manager.c:978
 msgid "The application chooser could not be opened."
-msgstr "Nem tudtam megnyitni az alkalmazás választót"
+msgstr "Az alkalmazásválasztó nem nyitható meg."
 
 #: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
-msgstr ""
-"E képesség fájlkezelő szolgáltatást kíván (mint amilyet például a Thunar ad)"
+msgstr "Ez a szolgáltatás egy fájlkezelő-szolgáltatás jelenlétét igényli (például a Thunar által biztosítottat)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1137
 #, c-format
 msgid "_Open With \"%s\""
-msgstr "Megnyitás ezzel: \"%s\""
+msgstr "Megnyitás e_zzel: „%s”"
 
 #: ../src/xfdesktop-file-icon-manager.c:1140
 #, c-format
 msgid "Open With \"%s\""
-msgstr "Megnyitás ezzel: \"%s\""
+msgstr "Megnyitás ezzel: „%s”"
 
 #: ../src/xfdesktop-file-icon-manager.c:1203
 #, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "\"%s\" könyvtár létrehozása meghiúsult:"
+msgstr "Nem hozható létre „%s” nevű mappa:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1242
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr ""
-"Nem futtatható az \"exo-desktop-item-edit\", mely szükséges az indítók "
-"létrehozásához és szerkesztéséhez az asztalon."
+msgstr "Nem indítható az „exo-desktop-item-edit”, amely szükséges a indítóikonok és hivatkozások létrehozásához az asztalon."
 
 #: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
@@ -361,16 +354,16 @@ msgstr "Létrehozás"
 #: ../src/xfdesktop-file-icon-manager.c:1316
 #, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "\"%s\" fájl létrehozása meghiúsult:"
+msgstr "Nem hozható létre „%s” nevű fájl:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1319
 msgid "Create File Failed"
-msgstr "A fájl létrehozása meghiúsult"
+msgstr "Fájl létrehozása meghiúsult"
 
 #: ../src/xfdesktop-file-icon-manager.c:1358
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr "Dokumentum létrehozása e sablonból: \"%s\""
+msgstr "Dokumentum létrehozása a(z) „%s” sablonból"
 
 #: ../src/xfdesktop-file-icon-manager.c:1377
 msgid "Create Empty File"
@@ -383,52 +376,52 @@ msgstr "Új üres fájl"
 #: ../src/xfdesktop-file-icon-manager.c:1414
 #, c-format
 msgid "Unable to create file \"%s\":"
-msgstr "\"%s\" fájl létrehozása meghiúsult:"
+msgstr "Nem hozható létre „%s” nevű fájl:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1415
 msgid "Create Error"
-msgstr "Létrehozás hiba"
+msgstr "Létrehozási hiba"
 
 #: ../src/xfdesktop-file-icon-manager.c:1700
 msgid "_Open all"
-msgstr "Mindet megnyitja"
+msgstr "Ö_sszes megnyitása"
 
 #: ../src/xfdesktop-file-icon-manager.c:1716
 msgid "_Open in New Window"
-msgstr "Megnyitás új ablakban"
+msgstr "Megnyitás új _ablakban"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
-msgstr "Megnyit"
+msgstr "_Megnyitás"
 
 #: ../src/xfdesktop-file-icon-manager.c:1733
 msgid "Create _Launcher..."
-msgstr "Indító _létrehozása..."
+msgstr "In_dítóikon létrehozása…"
 
 #: ../src/xfdesktop-file-icon-manager.c:1754
 msgid "Create _URL Link..."
-msgstr "_URL lánc létrehozása..."
+msgstr "URL _hivatkozás létrehozása…"
 
 #: ../src/xfdesktop-file-icon-manager.c:1771
 msgid "Create _Folder..."
-msgstr "Mappa létrehozása..."
+msgstr "_Mappa létrehozása…"
 
 #: ../src/xfdesktop-file-icon-manager.c:1791
 msgid "Create From _Template"
-msgstr "Létrehozás sablonból"
+msgstr "_Létrehozás sablonból"
 
 #: ../src/xfdesktop-file-icon-manager.c:1825
 msgid "_Empty File"
-msgstr "Üres fájl"
+msgstr "Ü_res fájl"
 
 #: ../src/xfdesktop-file-icon-manager.c:1841
 msgid "_Execute"
-msgstr "Futtat"
+msgstr "_Végrehajtás"
 
 #: ../src/xfdesktop-file-icon-manager.c:1859
 msgid "_Edit Launcher"
-msgstr "Indító sz_erkesztése"
+msgstr "Indítóikon s_zerkesztése"
 
 #: ../src/xfdesktop-file-icon-manager.c:1899
 msgid "Open With"
@@ -436,26 +429,26 @@ msgstr "Megnyitás ezzel"
 
 #: ../src/xfdesktop-file-icon-manager.c:1930
 msgid "Open With Other _Application..."
-msgstr "Megnyitás más _alkalmazással..."
+msgstr "Megnyitás _más alkalmazással…"
 
 #: ../src/xfdesktop-file-icon-manager.c:2037
 msgid "_Rename..."
-msgstr "Átnevezés..."
+msgstr "Á_tnevezés…"
 
 #: ../src/xfdesktop-file-icon-manager.c:2055
 msgid "Desktop _Settings..."
-msgstr "Asztal beállítá_sok..."
+msgstr "_Asztal beállításai…"
 
 #: ../src/xfdesktop-file-icon-manager.c:2065
-#: ../src/xfdesktop-volume-icon.c:606
+#: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
-msgstr "Tulajdonságok..."
+msgstr "_Tulajdonságok..."
 
 #: ../src/xfdesktop-file-icon-manager.c:3304
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
-msgstr "\"%s\" nem futtatható:"
+msgstr "„%s” futtatása meghiúsult:"
 
 #: ../src/xfdesktop-file-icon-manager.c:3306
 #: ../src/xfdesktop-regular-file-icon.c:384
@@ -464,16 +457,16 @@ msgstr "Futtatási hiba"
 
 #: ../src/xfdesktop-file-icon.c:144
 msgid "The associated application could not be found or executed."
-msgstr "A társított alkalmazás nincs meg vagy nem futtatható"
+msgstr "A társított alkalmazás nem található vagy nem hajtható végre."
 
 #: ../src/xfdesktop-file-properties-dialog.c:103
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr "Nem tudom beállítani \"%s\" alapértelmezett alkalmazását erre: \"%s\":"
+msgstr "Nem állítható be „%s” alapértelmezett alkalmazása erre: „%s”:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:106
 msgid "Properties Error"
-msgstr "Hibás tulajdonságok"
+msgstr "Tulajdonsághiba"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "None"
@@ -481,15 +474,15 @@ msgstr "Nincs"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Write only"
-msgstr "Csak írás"
+msgstr "Csak írható"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read only"
-msgstr "Csak olvasás"
+msgstr "Csak olvasható"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read & Write"
-msgstr "Írás és olvasás"
+msgstr "Olvasás és írás"
 
 #: ../src/xfdesktop-file-properties-dialog.c:163
 msgid "General"
@@ -501,11 +494,11 @@ msgstr "Név:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:214
 msgid "Kind:"
-msgstr "Fajta:"
+msgstr "Típus:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:234
 msgid "Link Target:"
-msgstr "A lánc célja:"
+msgstr "Link célja:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
@@ -515,7 +508,7 @@ msgstr "(ismeretlen)"
 
 #: ../src/xfdesktop-file-properties-dialog.c:273
 msgid "Open With:"
-msgstr "Megnyitás ezzel."
+msgstr "Megnyitás ezzel:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:350
 msgid "Modified:"
@@ -523,11 +516,11 @@ msgstr "Módosítva:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:368
 msgid "Accessed:"
-msgstr "Megnyitva:"
+msgstr "Elérés:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:395
 msgid "Free Space:"
-msgstr "Szabad hely:"
+msgstr "Szabad terület:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:397
 msgid "Size:"
@@ -542,7 +535,7 @@ msgstr "%s (%"
 #. permissions tab
 #: ../src/xfdesktop-file-properties-dialog.c:428
 msgid "Permissions"
-msgstr "Jogok"
+msgstr "Jogosultságok"
 
 #: ../src/xfdesktop-file-properties-dialog.c:450
 msgid "Owner:"
@@ -559,39 +552,39 @@ msgstr "Csoport:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:533
 msgid "Others:"
-msgstr "Mások:"
+msgstr "A többiek:"
 
 #: ../src/xfdesktop-file-utils.c:74
 msgid "Yes to _all"
-msgstr "_Mindet"
+msgstr "Igen _mindre"
 
 #: ../src/xfdesktop-file-utils.c:106
 #, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr "Hiba történt \"%s\" mozgatásakor ide: \"%s\":"
+msgstr "Hiba történt „%s” mozgatásakor ide: „%s”:"
 
 #: ../src/xfdesktop-file-utils.c:109
 #, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr "Hiba történt \"%s\" másolásakor ide: \"%s\":"
+msgstr "Hiba történt „%s” másolásakor ide: „%s”:"
 
 #: ../src/xfdesktop-file-utils.c:112
 #, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr "Hiba történt \"%s\" láncolásakor ide: \"%s\":"
+msgstr "Hiba történt „%s” linkelésekor ide: „%s”:"
 
 #: ../src/xfdesktop-file-utils.c:121
 msgid "File Error"
-msgstr "Fájl hiba"
+msgstr "Fájlhiba"
 
 #: ../src/xfdesktop-file-utils.c:137
 msgid "broken link"
-msgstr "törött lánc"
+msgstr "törött link"
 
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "link to %s"
-msgstr "lánc ide: %s"
+msgstr "link erre: %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:489
 #: ../src/xfdesktop-special-file-icon.c:496
@@ -602,27 +595,27 @@ msgid ""
 "Size: %s"
 msgstr ""
 "Típus: %s\n"
-"Módosítva:%s\n"
+"Módosítva: %s\n"
 "Méret: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:520
-#: ../src/xfdesktop-regular-file-icon.c:584
+#: ../src/xfdesktop-regular-file-icon.c:535
+#: ../src/xfdesktop-regular-file-icon.c:599
 msgid "Error"
-msgstr "hiba"
+msgstr "Hiba"
 
-#: ../src/xfdesktop-regular-file-icon.c:581
+#: ../src/xfdesktop-regular-file-icon.c:596
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr "Nem sikerült átnevezni \"%s\"-t erre: \"%s\":"
+msgstr "Hiba történt „%s” átnevezésekor erre: „%s”:"
 
 #: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
 msgid "Home"
-msgstr "Hon"
+msgstr "Saját mappa"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
 msgid "Kind: Trash"
-msgstr "Fajta: Kuka"
+msgstr "Típus: Kuka"
 
 #: ../src/xfdesktop-special-file-icon.c:515
 msgid "Trash Error"
@@ -630,24 +623,22 @@ msgstr "Kuka hiba"
 
 #: ../src/xfdesktop-special-file-icon.c:517
 msgid "Unable to contact the Xfce Trash service."
-msgstr "Nem tudok kapcsolódni az Xfce kuka szolgáltatáshoz"
+msgstr "Nem érhető el az Xfce Kuka szolgáltatás."
 
 #: ../src/xfdesktop-special-file-icon.c:518
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
-msgstr ""
-"Győződj meg, hogy van Xfce kuka-szolgáltatást támogató fájlkezelőd, mint "
-"amilyen a Thunar."
+msgstr "Győződjön meg, hogy telepítve van az Xfce Kuka szolgáltatást támogató fájlkezelő, például a Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
-msgstr "Ür_es kuka"
+msgstr "_Kuka ürítése"
 
 #: ../src/xfdesktop-volume-icon.c:474
 #, c-format
 msgid "%s (%s total)"
-msgstr "%s (összes: %s)"
+msgstr "%s (%s összesen)"
 
 #: ../src/xfdesktop-volume-icon.c:478
 #, c-format
@@ -656,48 +647,48 @@ msgid ""
 "Mount Point: %s\n"
 "Free Space: %s"
 msgstr ""
-"Fajta: Eltávolítható kötet\n"
+"Típus: Cserélhető kötet\n"
 "Csatolási pont: %s\n"
-"Szabad hely: %s"
+"Szabad terület: %s"
 
 #: ../src/xfdesktop-volume-icon.c:509
 #, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "\"%s\" felcsatolása sikertelen:"
+msgstr "„%s” nem csatolható:"
 
 #: ../src/xfdesktop-volume-icon.c:510
 #, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "\"%s\" lecsatolása sikertelen:"
+msgstr "„%s” nem választható le:"
 
 #: ../src/xfdesktop-volume-icon.c:513
 msgid "Mount Failed"
-msgstr "Sikertelen felcsatolás"
+msgstr "A csatolás meghiúsult"
 
 #: ../src/xfdesktop-volume-icon.c:513
 msgid "Unmount Failed"
-msgstr "Sikertelen lecsatolás"
+msgstr "A leválasztás meghiúsult"
 
 #: ../src/xfdesktop-volume-icon.c:531
 #, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "\"%s\" kiadása sikertelen:"
+msgstr "„%s” nem adható ki:"
 
 #: ../src/xfdesktop-volume-icon.c:534
 msgid "Eject Failed"
-msgstr "Kiadás sikertelen"
+msgstr "A kiadás meghiúsult"
 
-#: ../src/xfdesktop-volume-icon.c:576
-msgid "E_ject Volume"
-msgstr "Kötet kiadása"
-
-#: ../src/xfdesktop-volume-icon.c:586
+#: ../src/xfdesktop-volume-icon.c:578
 msgid "_Unmount Volume"
-msgstr "Kötet lecsatolása"
+msgstr "Kötet _leválasztása"
 
-#: ../src/xfdesktop-volume-icon.c:589
+#: ../src/xfdesktop-volume-icon.c:581
 msgid "_Mount Volume"
-msgstr "Kötet felcsatolása"
+msgstr "Kötet _csatolása"
+
+#: ../src/xfdesktop-volume-icon.c:595
+msgid "E_ject Volume"
+msgstr "Kötet ki_adása"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
@@ -713,7 +704,7 @@ msgstr "Fejlesztés"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:2
 msgid "Software development tools"
-msgstr "Szoftver fejlesztő eszközök"
+msgstr "Szoftverfejlesztési eszközök"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:1
 msgid "Education"
@@ -721,7 +712,7 @@ msgstr "Oktatás"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:2
 msgid "Educational software"
-msgstr "Oktatási szoftverek"
+msgstr "Oktatóprogramok"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
 msgid "Games"
@@ -729,7 +720,7 @@ msgstr "Játékok"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
-msgstr "Játékok, fejtörők és más mókák"
+msgstr "Játékok, fejtörők és más szórakoztató szoftverek"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
@@ -737,11 +728,11 @@ msgstr "Grafika"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr "Képeket alkotó és kezelő alkalmazások"
+msgstr "Képkészítő és -manipulációs alkalmazások"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
-msgstr "Hang- és videó-lejátszók és szerkesztők"
+msgstr "Hang- és videolejátszók és -szerkesztők"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
 msgid "Multimedia"
@@ -753,7 +744,7 @@ msgstr "Hálózat"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:2
 msgid "Network applications and utilities"
-msgstr "Hálózati alkalmazások és eszközök"
+msgstr "Hálózati alkalmazások és segédprogramok"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:1
 msgid "Office"
@@ -761,19 +752,19 @@ msgstr "Iroda"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:2
 msgid "Office and productivity applications"
-msgstr "Irodai alkalmazások"
+msgstr "Irodai és termelékenységi alkalmazások"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:1
 msgid "Applications that don't fit into other categories"
-msgstr "Máshová nem sorolt alkalmazások"
+msgstr "Más kategóriába nem sorolható alkalmazások"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
 msgid "Other"
-msgstr "Más"
+msgstr "Egyéb"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr "Képernyővédő kisalkalmazások"
+msgstr "Képernyővédő alkalmazások"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
@@ -781,7 +772,7 @@ msgstr "Képernyővédők"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr "Asztal és rendszer-beállító alkalmazások"
+msgstr "Asztali környezet és rendszerbeállító alkalmazások"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
 msgid "Settings"
@@ -793,15 +784,15 @@ msgstr "Rendszer"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
-msgstr "Rendszer- és segédeszközök"
+msgstr "Rendszereszközök és segédprogramok"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
-msgstr "Xfce Névjegy"
+msgstr "Az Xfce névjegye"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr "Adatok az Xfce Asztali környezetről"
+msgstr "Információk az Xfce asztali környezetről"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
@@ -817,7 +808,7 @@ msgstr "Súgó"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr "Xfce súgó"
+msgstr "Súgó az Xfce használatához"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
@@ -825,15 +816,15 @@ msgstr "Kijelentkezés"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
 msgid "Log out of the Xfce Desktop"
-msgstr "Kijelentkezés az Xfce Munkakörnyezetből"
+msgstr "Kijelentkezés az Xfce asztali környezetből"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
 msgid "Run Program..."
-msgstr "Program futtatása..."
+msgstr "Program futtatása…"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
 msgid "Run a program"
-msgstr "Program futtatása"
+msgstr "Program elindítása"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
@@ -841,11 +832,11 @@ msgstr "Terminál"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
 msgid "Terminal emulator"
-msgstr "Terminál emulátor"
+msgstr "Terminálemulátor"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
 msgid "Browse the web"
-msgstr "Böngészd a webet"
+msgstr "A világháló böngészése"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
@@ -871,16 +862,16 @@ msgstr "Kuka"
 
 #: ../settings/main.c:273
 msgid "Removable Devices"
-msgstr "Eltávolítható eszközök"
+msgstr "Cserélhető eszközök"
 
 #: ../settings/main.c:426
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Nem tudtam létrehozni \"%s\" háttérlistát"
+msgstr "Nem hozható létre a háttérlista („%s”)"
 
 #: ../settings/main.c:430 ../settings/main.c:789
 msgid "Backdrop List Error"
-msgstr "Háttérlista hiba"
+msgstr "Háttérlistahiba"
 
 #: ../settings/main.c:455
 msgid "Create/Load Backdrop List"
@@ -888,17 +879,16 @@ msgstr "Háttérlista létrehozása/betöltése"
 
 #: ../settings/main.c:479
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "\"%s\" fájl nem érvényes háttér lista fájl. Felülírod?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "A fájl („%s”) nem érvényes háttérlistafájl. Felül kívánja írni?"
 
 #: ../settings/main.c:484
 msgid "Invalid List File"
-msgstr "Érvénytelen lista fájl"
+msgstr "Érvénytelen listafájl"
 
 #: ../settings/main.c:487
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr "A fájl felülírása tartalmának elvesztésével jár."
+msgstr "A fájl felülírásával a tartalma elvész."
 
 #: ../settings/main.c:489
 msgid "Replace"
@@ -907,11 +897,11 @@ msgstr "Csere"
 #: ../settings/main.c:785
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Háttérlista írása meghiúsult ide: \"%s\""
+msgstr "A háttérlista kiírása meghiúsult ide: („%s”)"
 
 #: ../settings/main.c:812
 msgid "Add Image File(s)"
-msgstr "Képfájl(ok) hozzáadása"
+msgstr "Képfájlok hozzáadása"
 
 #: ../settings/main.c:821
 msgid "Image files"
@@ -921,64 +911,64 @@ msgstr "Képfájlok"
 msgid "All files"
 msgstr "Minden fájl"
 
-#: ../settings/main.c:1120
+#: ../settings/main.c:1132
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "%d. képernyő, %d. monitor (%s)"
 
-#: ../settings/main.c:1125
+#: ../settings/main.c:1137
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr "Képernyő %d, Monitor %d"
+msgstr "%d. képernyő, %d. monitor"
 
-#: ../settings/main.c:1128
+#: ../settings/main.c:1140
 #, c-format
 msgid "Screen %d"
-msgstr "Képernyő %d"
+msgstr "%d. képernyő"
 
-#: ../settings/main.c:1134
+#: ../settings/main.c:1146
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "%d. monitor (%s)"
 
-#: ../settings/main.c:1139
+#: ../settings/main.c:1151
 #, c-format
 msgid "Monitor %d"
 msgstr "%d. monitor"
 
-#: ../settings/main.c:1354
+#: ../settings/main.c:1366
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Beállításkezelő foglalat"
 
-#: ../settings/main.c:1354
+#: ../settings/main.c:1366
 msgid "SOCKET ID"
-msgstr ""
+msgstr "FOGLALATAZONOSÍTÓ"
 
-#: ../settings/main.c:1355
+#: ../settings/main.c:1367
 msgid "Version information"
-msgstr "Verzió információ"
-
-#: ../settings/main.c:1375
-#, c-format
-msgid "Type '%s --help' for usage."
-msgstr "Lásd ezt: '%s --help' a használathoz."
+msgstr "Verzióinformációk"
 
 #: ../settings/main.c:1387
-msgid "The Xfce development team. All rights reserved."
-msgstr "Az Xfce fejlesztő csapat. Minden jog fenntartva."
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Segítségért adja ki az „%s --help” parancsot."
 
-#: ../settings/main.c:1388
+#: ../settings/main.c:1399
+msgid "The Xfce development team. All rights reserved."
+msgstr "Az Xfce fejlesztőcsapata. Minden jog fenntartva."
+
+#: ../settings/main.c:1400
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Kérlek, jelentsd a hibákat itt: <%s>."
+msgstr "A hibákat ide jelentse: <%s>."
 
-#: ../settings/main.c:1395
+#: ../settings/main.c:1407
 msgid "Desktop Settings"
 msgstr "Asztal beállításai"
 
-#: ../settings/main.c:1397
+#: ../settings/main.c:1409
 msgid "Unable to contact settings server"
-msgstr "Nem érem el a beállítás kiszolgálót"
+msgstr "Nem érhető el a beállításkiszolgáló"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -986,11 +976,11 @@ msgstr "Asztal"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr "Az asztal hátterének, a menü és ikonok viselkedésének beállítása"
+msgstr "Az asztalháttér, valamint a menü- és ikonviselkedés beállítása"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
-msgstr "<b>Igazítások</b>"
+msgstr "<b>Beállítások</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:2
 msgid "<b>Appearance</b>"
@@ -1002,7 +992,7 @@ msgstr "<b>Színek</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:4
 msgid "<b>Default Icons</b>"
-msgstr "<b>Alap ikonok</b>"
+msgstr "<b>Alapértelmezett ikonok</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:5
 msgid "<b>Desktop Menu</b>"
@@ -1033,44 +1023,44 @@ msgid ""
 "Scaled\n"
 "Zoomed"
 msgstr ""
-"Automata\n"
-"Középre\n"
+"Auto\n"
+"Középre helyezett\n"
 "Mozaik\n"
-"Nyújtva\n"
-"Átméretezve\n"
-"Részlet"
+"Nyújtás\n"
+"Kifeszített\n"
+"Nagyított"
 
 #: ../settings/xfdesktop-settings.glade.h:16
 msgid "Automatically pick a random image from a list file"
-msgstr "Véletlen kép betöltése egy lista fájlból"
+msgstr "Véletlen kép automatikus választása listafájlból"
 
 #: ../settings/xfdesktop-settings.glade.h:17
 msgid "B_rightness:"
-msgstr "Fényerő:"
+msgstr "_Fényerő:"
 
 #: ../settings/xfdesktop-settings.glade.h:18
 msgid "B_utton:"
-msgstr "Gomb:"
+msgstr "_Gomb:"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
-msgstr "Új lista létrehozása vagy létező betöltése"
+msgstr "Új lista létrehozása vagy meglévő betöltése"
 
 #: ../settings/xfdesktop-settings.glade.h:21
 msgid "Don't display an image at all"
-msgstr "Ne jeleníts meg képet"
+msgstr "Egyáltalán ne jelenítsen meg képet"
 
 #: ../settings/xfdesktop-settings.glade.h:22
 msgid "Icon _size:"
-msgstr "Ikon méret:"
+msgstr "Ik_onméret:"
 
 #: ../settings/xfdesktop-settings.glade.h:23
 msgid "Icon _type:"
-msgstr "Ikon _típus:"
+msgstr "Ikon_típus:"
 
 #: ../settings/xfdesktop-settings.glade.h:24
 msgid "Image _list"
-msgstr "Kép_lista"
+msgstr "Ké_plista"
 
 #: ../settings/xfdesktop-settings.glade.h:25
 msgid "Increase or decrease the brightness of the final image"
@@ -1082,7 +1072,7 @@ msgstr "A végső kép színtelítettségének növelése vagy csökkentése"
 
 #: ../settings/xfdesktop-settings.glade.h:27
 msgid "Label trans_parency:"
-msgstr "Címke átlátszóság:"
+msgstr "_Felirat átlátszósága:"
 
 #: ../settings/xfdesktop-settings.glade.h:28
 msgid ""
@@ -1090,9 +1080,9 @@ msgid ""
 "Middle\n"
 "Right"
 msgstr ""
-"Bal\n"
-"Közép\n"
-"Jobb"
+"Balra\n"
+"Középre\n"
+"Jobbra"
 
 #: ../settings/xfdesktop-settings.glade.h:31
 msgid "Mo_difier:"
@@ -1100,7 +1090,7 @@ msgstr "Mó_dosító:"
 
 #: ../settings/xfdesktop-settings.glade.h:32
 msgid "Modi_fier:"
-msgstr "Módosító:"
+msgstr "Mód_osító:"
 
 #: ../settings/xfdesktop-settings.glade.h:33
 msgid ""
@@ -1109,8 +1099,8 @@ msgid ""
 "File/launcher icons"
 msgstr ""
 "Nincs\n"
-"Minimalizált alkalmazás ikonok\n"
-"Fájl/futtató ikonokok"
+"Minimalizált alkalmazásikonok\n"
+"Fájl/indítóikonok"
 
 #: ../settings/xfdesktop-settings.glade.h:36
 msgid ""
@@ -1126,51 +1116,51 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings.glade.h:40
 msgid "Remove the selected image(s) from the list"
-msgstr "Kijelölt kép eltávolítása a listából"
+msgstr "A kiválasztott képek eltávolítása a listából"
 
 #: ../settings/xfdesktop-settings.glade.h:41
 msgid "Sa_turation:"
-msgstr "Telítettség:"
+msgstr "_Telítettség:"
 
 #: ../settings/xfdesktop-settings.glade.h:42
 msgid "Select First Color"
-msgstr "1. szín kijelölés"
+msgstr "Válassza ki az első színt"
 
 #: ../settings/xfdesktop-settings.glade.h:43
 msgid "Select Second Color"
-msgstr "2. szín kijelölés"
+msgstr "Válassza ki a második színt"
 
 #: ../settings/xfdesktop-settings.glade.h:44
 msgid "Select a single image as the backdrop"
-msgstr "Válassz egy képet mint háttér"
+msgstr "Válassza ki a háttérképet"
 
 #: ../settings/xfdesktop-settings.glade.h:45
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Az asztal hátterének, a menü és ikonok viselkedésének beállítása"
+msgstr "Az asztalháttér, valamint a menü- és ikonviselkedés beállítása"
 
 #: ../settings/xfdesktop-settings.glade.h:46
 msgid "Sh_ow application icons in menu"
-msgstr "Alkalmazás ikon_ok a menüben"
+msgstr "_Alkalmazásikonok megjelenítése a menüben"
 
 #: ../settings/xfdesktop-settings.glade.h:47
 msgid "Show _application icons in menu"
-msgstr "_Alkalmazás ikonok a menüben"
+msgstr "Alkalma_zásikonok megjelenítése a menüben"
 
 #: ../settings/xfdesktop-settings.glade.h:48
 msgid "Show _window list menu on desktop middle click"
-msgstr "Ablak lista menü az asztalra középpel kattintva"
+msgstr "Ablaklista me_nü megjelenítése az asztalon középső kattintásra"
 
 #: ../settings/xfdesktop-settings.glade.h:49
 msgid "Show applications menu on _desktop right click"
-msgstr "Alkalmazások menü az asztalon jobbal kattintva"
+msgstr "Alkalmazások m_enü megjelenítése az asztalon jobb kattintásra"
 
 #: ../settings/xfdesktop-settings.glade.h:50
 msgid "Show s_ticky windows only in active workspace"
-msgstr "Ragadós ablakok csak az _aktív munkaterületen"
+msgstr "A min_dig látható ablakok megjelenítése csak az aktív munkaterületen"
 
 #: ../settings/xfdesktop-settings.glade.h:51
 msgid "Show workspace _names in list"
-msgstr "Munkaterület _nevek a listában"
+msgstr "M_unkaterület-nevek megjelenítése a listában"
 
 #: ../settings/xfdesktop-settings.glade.h:52
 msgid ""
@@ -1179,62 +1169,60 @@ msgid ""
 "Vertical gradient\n"
 "Transparent"
 msgstr ""
-"1 szín\n"
+"Homogén szín\n"
 "Vízszintes átmenet\n"
 "Függőleges átmenet\n"
 "Átlátszó"
 
 #: ../settings/xfdesktop-settings.glade.h:56
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Az átmenet \"jobb\" vagy \"alsó\" színét adja meg"
+msgstr "Az átmenet „jobb oldali” vagy „alsó” színe"
 
 #: ../settings/xfdesktop-settings.glade.h:57
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "1 színt, vagy az átmenet \"bal\" vagy \"felső\" színét adja meg"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Az átmenet „bal oldali” vagy „felső” színe"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify how the image will be resized to fit the screen"
-msgstr "Kép átméretezésének módja a képernyőhöz"
+msgstr "A kép a képernyő kitöltése érdekében való átméretezési módja"
 
 #: ../settings/xfdesktop-settings.glade.h:59
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr "Színezés stílusa a háttér kép mögött"
+msgstr "A háttérkép mögötti szín megadása"
 
 #: ../settings/xfdesktop-settings.glade.h:60
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
-msgstr ""
-"Átlátszósági szint megadása a lekerekített címkéhez az ikon szöveg mögött"
+msgstr "Az ikon szövege mögötti lekerekített címke átlátszóságának megadása"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "St_yle:"
-msgstr "Stílus:"
+msgstr "Stíl_us:"
 
 #: ../settings/xfdesktop-settings.glade.h:62
 msgid "Use _submenus for the windows in each workspace"
-msgstr "Almenük az ablakokhoz minden munkaterületen"
+msgstr "Almenük _használata az ablakokhoz minden munkaterületen"
 
 #: ../settings/xfdesktop-settings.glade.h:63
 msgid "Use custom _font size:"
-msgstr "Egyéni betűméret:"
+msgstr "_Egyéni betűméret használata:"
 
 #: ../settings/xfdesktop-settings.glade.h:64
 msgid "_Background"
-msgstr "Háttér"
+msgstr "Hátté_r"
 
 #: ../settings/xfdesktop-settings.glade.h:65
 msgid "_Button:"
-msgstr "Gomb:"
+msgstr "G_omb:"
 
 #: ../settings/xfdesktop-settings.glade.h:66
 msgid "_Edit desktop menu"
-msgstr "Asztali menü sz_erkesztése"
+msgstr "As_ztali menü szerkesztése"
 
 #: ../settings/xfdesktop-settings.glade.h:67
 msgid "_Icons"
-msgstr "_Ikonok"
+msgstr "I_konok"
 
 #: ../settings/xfdesktop-settings.glade.h:68
 msgid "_Menus"
@@ -1246,568 +1234,5 @@ msgstr "_Nincs"
 
 #: ../settings/xfdesktop-settings.glade.h:70
 msgid "_Single image"
-msgstr "1 kép"
+msgstr "_Egyetlen kép"
 
-#: ../settings/xfdesktop-settings.glade.h:71
-msgid "gtk-close"
-msgstr "gtk-close"
-
-#: ../settings/xfdesktop-settings.glade.h:72
-msgid "gtk-help"
-msgstr "gtk-help"
-
-#~ msgid "Add menu entry"
-#~ msgstr "Elem hozzáadása"
-
-#~ msgid "Type:"
-#~ msgstr "Típus:"
-
-#~ msgid "Title"
-#~ msgstr "Cím"
-
-#~ msgid "Submenu"
-#~ msgstr "Almenü"
-
-#~ msgid "Launcher"
-#~ msgstr "Indító"
-
-#~ msgid "Separator"
-#~ msgstr "Elválasztó"
-
-#~ msgid "Quit"
-#~ msgstr "Kilép"
-
-#~ msgid "Command:"
-#~ msgstr "Parancs:"
-
-#~ msgid "Icon:"
-#~ msgstr "Ikon:"
-
-#~ msgid "No icon"
-#~ msgstr "Nincs ikon"
-
-#~ msgid "Themed icon:"
-#~ msgstr "Témázott ikon:"
-
-#~ msgid "Select icon"
-#~ msgstr "Válassz ikont"
-
-#~ msgid "Use startup _notification"
-#~ msgstr "Indítás_jelentés használata"
-
-#~ msgid "Run in _terminal"
-#~ msgstr "Futtatás _terminálban"
-
-#~ msgid "Select command"
-#~ msgstr "Válassz parancsot"
-
-#~ msgid "Executable Files"
-#~ msgstr "Futtatható fájlok"
-
-#~ msgid "Perl Scripts"
-#~ msgstr "Perl szkriptek"
-
-#~ msgid "Python Scripts"
-#~ msgstr "Python szkriptek"
-
-#~ msgid "Ruby Scripts"
-#~ msgstr "Ruby szkriptek"
-
-#~ msgid "Shell Scripts"
-#~ msgstr "Shell szkriptek"
-
-#~ msgid "Add external menu entry"
-#~ msgstr "Külső menü bejegyzés hozzáadása"
-
-#~ msgid "File"
-#~ msgstr "Fájl"
-
-#~ msgid "Source:"
-#~ msgstr "Forrás:"
-
-#~ msgid "Select external menu"
-#~ msgstr "Külső menü kiválasztása"
-
-#~ msgid "Style:"
-#~ msgstr "Stílus:"
-
-#~ msgid "Simple"
-#~ msgstr "Egyszerű"
-
-#~ msgid "Multilevel"
-#~ msgstr "Többszintű"
-
-#~ msgid "_Unique entries only"
-#~ msgstr "Csak _egyedi elemek"
-
-#~ msgid "Edit menu entry"
-#~ msgstr "Elem szerkesztése"
-
-#~ msgid "Edit external menu entry"
-#~ msgstr "Külső menü bejegyzés szerkesztése"
-
-#~ msgid "Xfce4-MenuEditor"
-#~ msgstr "Xfce4-Menüszerkesztő"
-
-#~ msgid "Menueditor Warning"
-#~ msgstr "Menüszerkesztő figyelmeztetés"
-
-#~ msgid "xfce4-menueditor is deprecated"
-#~ msgstr "az xfce4-menueditor elavult"
-
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Az Xfce menürendszer módosult és az xfce4-menueditor nem kezeli az új "
-#~ "formátumot. Folytathatod egy régi-stílusú menü fájl szerkesztésével, vagy "
-#~ "kiléphetsz."
-
-#~ msgid "Continue"
-#~ msgstr "Tovább"
-
-#~ msgid "_File"
-#~ msgstr "_Fájl"
-
-#~ msgid "_New"
-#~ msgstr "Ú_j"
-
-#~ msgid "Create a new empty menu"
-#~ msgstr "Új, üres menü létrehozása"
-
-#~ msgid "Open existing menu"
-#~ msgstr "Létező menü megnyitása"
-
-#~ msgid "Open _default menu"
-#~ msgstr "Alapmenü megnyitása"
-
-#~ msgid "Open default menu"
-#~ msgstr "Alapmenü megnyitása"
-
-#~ msgid "_Save"
-#~ msgstr "_Mentés"
-
-#~ msgid "Save modifications"
-#~ msgstr "Változások mentése"
-
-#~ msgid "Save _as..."
-#~ msgstr "Mentés mint..."
-
-#~ msgid "Save menu under a given name"
-#~ msgstr "Menü mentése adott néven"
-
-#~ msgid "_Close"
-#~ msgstr "_Bezárás"
-
-#~ msgid "Close menu"
-#~ msgstr "Menü bezárása"
-
-#~ msgid "_Quit"
-#~ msgstr "Kilépés"
-
-#~ msgid "Quit Xfce4-Menueditor"
-#~ msgstr "Xfce4-Menüszerkesztő bezárása"
-
-#~ msgid "_Edit"
-#~ msgstr "Sz_erkesztés"
-
-#~ msgid "_Edit entry"
-#~ msgstr "_Elem szerkesztése"
-
-#~ msgid "Edit selected entry"
-#~ msgstr "Kijelölt elem szerkesztése"
-
-#~ msgid "_Add entry"
-#~ msgstr "Bejegyzés hozzá_adása"
-
-#~ msgid "Add a new entry in the menu"
-#~ msgstr "Új bejegyzés a menüben"
-
-#~ msgid "Add _external"
-#~ msgstr "Külső elem hozzáadása"
-
-#~ msgid "Add an external entry"
-#~ msgstr "Külső bejegyzés hozzáadása"
-
-#~ msgid "_Remove entry"
-#~ msgstr "_Elem törlése"
-
-#~ msgid "Remove entry"
-#~ msgstr "Elem eltávolítása"
-
-#~ msgid "_Up"
-#~ msgstr "_Fel"
-
-#~ msgid "Move entry up"
-#~ msgstr "Elem fel"
-
-#~ msgid "_Down"
-#~ msgstr "_Le"
-
-#~ msgid "Move entry down"
-#~ msgstr "Elem le"
-
-#~ msgid "_Help"
-#~ msgstr "_Súgó"
-
-#~ msgid "_About..."
-#~ msgstr "_Névjegy..."
-
-#~ msgid "Show informations about xfce4-menueditor"
-#~ msgstr "Adatokat mutat az xfce4-menueditor-ról"
-
-#~ msgid "Collapse all"
-#~ msgstr "Mindet bezárja"
-
-#~ msgid "Collapse all menu entries"
-#~ msgstr "Minden menüelemet bezár"
-
-#~ msgid "Expand all"
-#~ msgstr "Mindet kinyitja"
-
-#~ msgid "Expand all menu entries"
-#~ msgstr "Menüelemek kinyitása"
-
-#~ msgid "Name"
-#~ msgstr "Név"
-
-#~ msgid "Command"
-#~ msgstr "Parancs"
-
-#~ msgid "Hidden"
-#~ msgstr "Rejtett"
-
-#~ msgid "Are you sure you want to close the current menu?"
-#~ msgstr "Biztos bezárod e menüt?"
-
-#~ msgid "Do you want to save before closing the file?"
-#~ msgstr "Mentesz a fájl bezárása előtt?"
-
-#~ msgid "Do you want to save before opening an other menu ?"
-#~ msgstr "Mentesz, mielőtt megnyitsz egy másik menüt?"
-
-#~ msgid "Ignore modifications"
-#~ msgstr "Változások elvetése"
-
-#~ msgid "Open menu file"
-#~ msgstr "Menüfájl megnyitása"
-
-#~ msgid "Do you want to save before opening the default menu ?"
-#~ msgstr "Akarsz menteni az alapmenü megnyitása előtt?"
-
-#~ msgid "Save menu file as"
-#~ msgstr "Menüfájl mentése mint"
-
-#~ msgid "Do you want to save before closing the menu ?"
-#~ msgstr "Akarsz menteni a menü bezárása előtt?"
-
-#~ msgid "quit"
-#~ msgstr "kilép"
-
-#~ msgid "--- separator ---"
-#~ msgstr "--- elválasztó ---"
-
-#~ msgid "--- include ---"
-#~ msgstr "--- csatolva ---"
-
-#~ msgid "system"
-#~ msgstr "rendszer"
-
-#~ msgid "Do you want to move the item into the submenu?"
-#~ msgstr "Az elemet az almenübe mozgatod?"
-
-#~ msgid "A menu editor for Xfce4"
-#~ msgstr "Xfce4 menüszerkesztő"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "Szerző/karbantartó"
-
-#~ msgid "Contributor"
-#~ msgstr "Közreműködő"
-
-#~ msgid "Icon designer"
-#~ msgstr "Ikon-tervező"
-
-#~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr "Módosítottad a menüt, akarod menteni kilépés előtt?"
-
-#~ msgid "Forget modifications"
-#~ msgstr "Változások elvetése"
-
-#~ msgid "Unable to open the menu file %s in write mode"
-#~ msgstr "Nem tudom megnyitni %s menü fájlt írás módban"
-
-#~ msgid "Graphical tool for editing the Xfce 4 menu"
-#~ msgstr "Grafikus Xfce 4 menüszerkesztő"
-
-#~ msgid "Menu Editor"
-#~ msgstr "Menüszerkesztő"
-
-#~ msgid "Xfce 4 Menu Editor"
-#~ msgstr "Xfce 4 menüszerkesztő"
-
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "Xfce 4 asztalkezelő beállítások"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "Xfce 4 Asztal Beállítások"
-
-#~ msgid "Show windows on each workspace in _submenus"
-#~ msgstr "Ablakok mutatása minden munkaterületen az al_menükben"
-
-#~ msgid "Use _Xfce to manage the desktop"
-#~ msgstr "Az _Xfce kezelje az asztalt"
-
-#~ msgid ""
-#~ "Could not save file %s: %s\n"
-#~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
-#~ msgstr ""
-#~ "%s fájl mentése meghiúsult: %s\n"
-#~ "\n"
-#~ "Válassz más helyet, vagy nyomd meg a Mégsem gombot a párbeszéden a "
-#~ "változások elvetéséhez"
-
-#~ msgid "Button Label|Desktop"
-#~ msgstr "Asztal"
-
-#~ msgid "backdrops.list"
-#~ msgstr "backdrops.list"
-
-#~ msgid "Select backdrop image or list file"
-#~ msgstr "Háttérkép vagy listafájl kiválasztása"
-
-#~ msgid "List Files (*.list)"
-#~ msgstr "Listafájlok (*.list)"
-
-#~ msgid "_Edit list..."
-#~ msgstr "Lista szerkesztése"
-
-#~ msgid "_New list..."
-#~ msgstr "Új lista"
-
-#~ msgid "S_tyle:"
-#~ msgstr "S_tílus:"
-
-#~ msgid "Auto"
-#~ msgstr "Automatikus"
-
-#~ msgid "Centered"
-#~ msgstr "Középre"
-
-#~ msgid "Tiled"
-#~ msgstr "Csempe"
-
-#~ msgid "Stretched"
-#~ msgstr "Nyújtott"
-
-#~ msgid "Scaled"
-#~ msgstr "Átméretezve"
-
-#~ msgid "Zoomed"
-#~ msgstr "Nagyítva"
-
-#~ msgid "Xfce will be unable to manage your desktop (%s)."
-#~ msgstr "Az Xfce nem tudja majd kezelni az asztalt (%s)."
-
-#~ msgid "Unknown Error"
-#~ msgstr "ismeretlen hiba"
-
-#~ msgid "Unable to start xfdesktop"
-#~ msgstr "Az xfdesktop nem indítható"
-
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Hogy e beállítások tutira hassanak az Xfce következő indításakor, mentsd "
-#~ "a folyamatot kijelentkezéskor. Ha nem használod az Xfce folyamatkezelőt "
-#~ "(xfce4-session), kézzel kell szerkesztened a ~/.config/xfce4/xinitrc "
-#~ "fájlt.  Részletek a doksiban a http://xfce.org/ oldalon."
-
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Hogy az Xfce tutira ne kezelje az asztalodat a következő indítástól, "
-#~ "mentsd a munkafolyamatot a kijelentkezéskor. Ha nem használod az Xfce "
-#~ "folyamatkezelőt (xfce4-session), kézzel kell szerkesztened a ~/.config/"
-#~ "xfce4/xinitrc fájlt.  Részletek a doksiban a http://xfce.org/ oldalon."
-
-#~ msgid "_Do not show this again"
-#~ msgstr "Ne mutas_d legközelebb"
-
-#~ msgid "Desktop Preferences"
-#~ msgstr "Asztal beállításai"
-
-#~ msgid "Stretch single backdrop onto _all monitors"
-#~ msgstr "Nyújts egy hátteret v_alamennyi monitorra"
-
-#~ msgid "Color"
-#~ msgstr "Szín"
-
-#~ msgid "_Color Style:"
-#~ msgstr "Szí_nstílus:"
-
-#~ msgid "Solid Color"
-#~ msgstr "Sima szín"
-
-#~ msgid "Horizontal Gradient"
-#~ msgstr "Vízszintes színátmenet"
-
-#~ msgid "Vertical Gradient"
-#~ msgstr "Függőleges színátmenet"
-
-#~ msgid "Image"
-#~ msgstr "Kép"
-
-#~ msgid "Show _Image"
-#~ msgstr "_Kép mutatása"
-
-#~ msgid "_File:"
-#~ msgstr "Fájl:"
-
-#~ msgid "_Behavior"
-#~ msgstr "Viselkedés"
-
-#~ msgid "Select backdrop image file"
-#~ msgstr "Háttérkép fájl kiválasztása"
-
-#~ msgid "List file"
-#~ msgstr "Listafájl"
-
-#~ msgid "Edit backdrop list"
-#~ msgstr "Háttérlista szerkesztése"
-
-#~ msgid "Desktop Icons"
-#~ msgstr "Asztali ikonok"
-
-#~ msgid "File/launcher icons"
-#~ msgstr "Fájl/indító ikonok"
-
-#~ msgid "Use _system font size"
-#~ msgstr "Rendszer betű méret használata"
-
-#~ msgid "Des_ktop"
-#~ msgstr "Mun_kaasztal"
-
-#~ msgid "_Desktop Properties..."
-#~ msgstr "Asztal tulajdonságok..."
-
-#~ msgid "Science"
-#~ msgstr "Tudomány"
-
-#~ msgid "Scientific applications and tools"
-#~ msgstr "Tudományos alkalmazások és eszközök"
-
-#~ msgid "Unable to quit session."
-#~ msgstr "Nem tudok kilépni a folyamatból"
-
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "A folyamatból való kilépés az Xfce folyamatkezelő futását igényli, de az "
-#~ "nem fut. Lépj ki más módon."
-
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "A folyamatból való kilépés az 'xfce4-session-logout' parancsot igényli, "
-#~ "de az nem található: %s"
-
-#~ msgid "Edit Properties"
-#~ msgstr "Tulajdonságok szerkesztése"
-
-#~ msgid ""
-#~ "Viewing the contents of the trash requires a file manager that supports "
-#~ "the Xfce trash service, such as Thunar."
-#~ msgstr ""
-#~ "A kukába való betekintés egy Xfce kuka-szolgáltatást támogató fájlkezelőt "
-#~ "igényel, mint például a Thunar."
-
-#~ msgid "Unable to empty the trash."
-#~ msgstr "Nem lehet kiüríteni a kukát."
-
-#~ msgid "Unknown error."
-#~ msgstr "ismeretlen hiba."
-
-#~ msgid " Bytes)"
-#~ msgstr " bájt)"
-
-#~ msgid "_Copy Files"
-#~ msgstr "Fájlok _Másolása"
-
-#~ msgid "_Copy File"
-#~ msgstr "Fájl _Másolása"
-
-#~ msgid "Cu_t Files"
-#~ msgstr "Fájlok _Kivágása"
-
-#~ msgid "Cu_t File"
-#~ msgstr "Fájl _Kivágása"
-
-#~ msgid "_Delete Files"
-#~ msgstr "Fájlok _Törlése"
-
-#~ msgid "_Delete File"
-#~ msgstr "Fájl _Törlése"
-
-#, fuzzy
-#~ msgid "_Paste Files"
-#~ msgstr "Listafájlok"
-
-#~ msgid "Create _New"
-#~ msgstr "Létrehozás: új"
-
-#~ msgid "_Folder..."
-#~ msgstr "Mappa..."
-
-#, fuzzy
-#~ msgid "Are sure you want to quit?"
-#~ msgstr "Biztos törlöd az alábbit: \"%s\"?"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "Nincs ilyen parancs!"
-
-#~ msgid "All fields must be filled to add an item."
-#~ msgstr "Minden mező kitöltendő egy elem hozzáadásához."
-
-#~ msgid "The 'Name' field is required."
-#~ msgstr "A 'Név' mező kötelező"
-
-#~ msgid "The 'Source' field is required."
-#~ msgstr "A 'Forrás' mező kötelező"
-
-#~ msgid "Separators cannot be edited"
-#~ msgstr "Az elválasztók nem szerkeszthetők"
-
-#~ msgid "File %s doesn't exist !"
-#~ msgstr "Nincs ilyen fájl: %s"
-
-#~ msgid "Do you want to move the item into the parent menu?"
-#~ msgstr "Az elemet a szülőmenübe mozgatod?"
-
-#~ msgid "Edit"
-#~ msgstr "Szerkesztés"
-
-#~ msgid "Add an external menu..."
-#~ msgstr "Külső menü hozzáadása"
-
-#~ msgid "Open an Xfce4 menu file"
-#~ msgstr "Egy Xfce4 menüfájl megnyitása"
-
-#~ msgid "Save current menu"
-#~ msgstr "Jelen menü mentése"
-
-#~ msgid "Delete the current entry"
-#~ msgstr "Elem törlése"
